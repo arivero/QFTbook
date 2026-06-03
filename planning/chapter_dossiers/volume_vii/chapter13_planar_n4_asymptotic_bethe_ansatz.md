@@ -249,10 +249,12 @@ motivational checks, not foundations.
   filling periods, proves the Plemelj jump-to-quasimomentum gluing formula,
   derives the multi-cut filling-period formula
   `S_a=(2 pi i)^{-1} int_{A_a} p dz=int_{C_a} rho ds`, records the
-  cut-reflection monodromy `R_b R_a(p)=p+2 pi(n_b-n_a)`, derives the
-  finite-chain cyclicity congruence `sum_a n_a M_a in L Z` and its
-  finite-density level-matching limit, and identifies the large-spin one-cut
-  curve `y^2=4z^2-1` with sheet exchange `exp(iG)->exp(-iG)`.
+  large-`z` Cauchy-transform moment expansion
+  `G(z)=sum_k M_k z^{-k-1}` with `M_0=sum_a S_a`, records the cut-reflection
+  monodromy `R_b R_a(p)=p+2 pi(n_b-n_a)`, derives the finite-chain cyclicity
+  congruence `sum_a n_a M_a in L Z` and its finite-density level-matching
+  limit, and identifies the large-spin one-cut curve `y^2=4z^2-1` with sheet
+  exchange `exp(iG)->exp(-iG)`.
 - Adds the local \(S^2\) Pohlmeyer reduction cell in the classical
   \(\mathbb R\times S^2\) subsector: from the constant-stress moving frame
   \(e_\pm=\mu^{-1}\partial_\pm n\) and
@@ -396,10 +398,13 @@ crossed Zhukovsky sheets.
 - It checks the multi-cut finite-gap period and monodromy bookkeeping exactly:
   normalized A-cycle jumps reproduce the cut filling fractions, integer mode
   numbers make two-cut exponentiated quasimomentum monodromy trivial, and a
-  noninteger mode fails that test.  It also checks the global mode-filling
-  congruence for cyclicity, the pairwise cancellation of antisymmetric
-  Bethe phases in the summed logarithmic equations, and a locally integer
-  mode assignment that still fails the global closed-chain condition.
+  noninteger mode fails that test.  It also checks the large-`z` moment ledger:
+  finite weighted-root power sums are the Cauchy-transform coefficients,
+  polynomial cut-density moments add under splitting, and higher moments carry
+  data beyond the total filling.  It checks the global mode-filling congruence
+  for cyclicity, the pairwise cancellation of antisymmetric Bethe phases in the
+  summed logarithmic equations, and a locally integer mode assignment that still
+  fails the global closed-chain condition.
 - It checks the local \(S^2\) Pohlmeyer moving-frame compatibility algebra
   exactly over rational data, including failure when the sine-Gordon
   coefficient is shifted.
@@ -448,3 +453,7 @@ crossed Zhukovsky sheets.
   summing finite logarithmic Bethe equations with antisymmetric scattering
   phases, deriving `sum_a n_a M_a in L Z`, and adding exact companion checks
   for the discrete congruence and finite-density scaling.
+- 2026-06-03 #624 finite-gap moment pass: added the large-`z`
+  Cauchy-transform expansion that identifies total filling and higher root
+  moments as charge coordinates before Virasoro, reality, closed-period, or
+  QSC inputs enter; extended the exact companion checks accordingly.

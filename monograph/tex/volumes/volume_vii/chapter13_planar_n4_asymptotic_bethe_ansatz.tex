@@ -2541,6 +2541,55 @@ and \eqref{eq:finite-density-quasimomentum-jump} gives
 non-one-cut datum: each cut carries an independent filling fraction before
 global period and level-matching constraints are imposed.
 
+\paragraph{Large-\(z\) moments as charge coordinates.}
+The same Cauchy transform also records the global root moments.  If the cuts
+lie in a compact set and \(|z|\) is larger than the support, then
+\[
+  \frac1{z-u}
+  =
+  \sum_{k=0}^{K}\frac{u^k}{z^{k+1}}
+  +
+  \frac{u^{K+1}}{z^{K+1}(z-u)} .
+\]
+Hence
+\begin{equation}
+  G(z)
+  =
+  \sum_{k=0}^{K}\frac{\mathcal M_k}{z^{k+1}}
+  +
+  O(|z|^{-K-2}),
+  \qquad
+  \mathcal M_k
+  :=
+  \int_{\mathcal C}u^k\rho(u)\,\dd s(u).
+  \label{eq:finite-density-large-z-moments}
+\end{equation}
+The zeroth moment is the total filling,
+\[
+  \mathcal M_0=\sum_a\mathcal S_a,
+\]
+while higher moments are the large-\(z\) charge coordinates carried by the
+root distribution.  In a particular sector one combines these coefficients
+with the large-\(z\) expansion of the driving term \(V'(z)\) in
+\eqref{eq:finite-density-quasimomentum} and with the chosen normalization of
+the spin-chain or sigma-model charges.  The moment expansion is the
+finite-density Cauchy-coordinate statement; a complete classical string
+solution still imposes the additional Virasoro, reality, and closed-period
+constraints.
+
+The finite regulator has the same bookkeeping before taking a limit.  For
+scaled roots \(\bar u_j\) with weights \(w_j\),
+\[
+  G_N(z)=\sum_j\frac{w_j}{z-\bar u_j}
+  =
+  \sum_{k=0}^{K}\frac{\sum_j w_j\bar u_j^k}{z^{k+1}}
+  +
+  \sum_j
+  \frac{w_j\bar u_j^{K+1}}{z^{K+1}(z-\bar u_j)} .
+\]
+Thus the continuum charge coordinates are limits of finite weighted power
+sums, not independent decorations of the spectral curve.
+
 \paragraph{Cyclicity as a global period constraint.}
 The local cut-reflection algebra does not by itself impose the closed-chain
 condition.  In a finite rank-one spin chain, write a logarithmic Bethe

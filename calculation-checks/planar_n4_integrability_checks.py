@@ -2029,6 +2029,91 @@ def check_multicut_period_reflection_bookkeeping() -> None:
         raise AssertionError("noninteger mode unexpectedly exponentiates trivially")
 
 
+def check_finite_gap_large_z_moment_expansion() -> None:
+    """Check the large-z Cauchy-transform moment ledger exactly."""
+
+    roots = (
+        Fraction(1, 2),
+        Fraction(-2, 3),
+        Fraction(5, 4),
+        Fraction(7, 6),
+    )
+    weights = (
+        Fraction(3, 10),
+        Fraction(1, 5),
+        Fraction(1, 4),
+        Fraction(1, 20),
+    )
+    max_moment = 5
+    finite_moments = [
+        sum(
+            weights[index] * roots[index] ** power
+            for index in range(len(roots))
+        )
+        for power in range(max_moment + 1)
+    ]
+
+    # The formal expansion of sum_j w_j/(z-u_j) in t=1/z has coefficient
+    # M_k at t^(k+1).
+    formal_coefficients = [Fraction(0)]
+    formal_coefficients.extend(finite_moments)
+    for power, expected in enumerate(finite_moments, start=1):
+        if formal_coefficients[power] != expected:
+            raise AssertionError("finite-root large-z moment coefficient failed")
+
+    def integrate_polynomial_moment(coefficients: tuple[Fraction, ...], moment: int) -> Fraction:
+        return sum(
+            coefficient / Fraction(power + moment + 1)
+            for power, coefficient in enumerate(coefficients)
+        )
+
+    cut_densities = {
+        "C1": (Fraction(3, 5), Fraction(1, 7), Fraction(-2, 9)),
+        "C2": (Fraction(4, 7), Fraction(-1, 6), Fraction(5, 11)),
+        "C3": (Fraction(2, 3), Fraction(0), Fraction(1, 13)),
+    }
+    cut_moments = {
+        cut: [
+            integrate_polynomial_moment(coefficients, moment)
+            for moment in range(4)
+        ]
+        for cut, coefficients in cut_densities.items()
+    }
+    total_moments = [
+        sum(cut_moments[cut][moment] for cut in cut_densities)
+        for moment in range(4)
+    ]
+    total_filling = sum(cut_moments[cut][0] for cut in cut_densities)
+    if total_moments[0] != total_filling:
+        raise AssertionError("zeroth Cauchy moment did not equal total filling")
+
+    # Splitting a cut into two pieces should add moments linearly.
+    split_left = (Fraction(3, 10), Fraction(1, 14), Fraction(-1, 9))
+    split_right = tuple(
+        cut_densities["C1"][index] - split_left[index]
+        for index in range(len(split_left))
+    )
+    for moment in range(4):
+        split_total = (
+            integrate_polynomial_moment(split_left, moment)
+            + integrate_polynomial_moment(split_right, moment)
+        )
+        if split_total != cut_moments["C1"][moment]:
+            raise AssertionError("cut moment additivity under splitting failed")
+
+    # A nonzero first moment is not determined by the total filling alone.
+    translated_roots = tuple(root + Fraction(1, 3) for root in roots)
+    translated_m0 = sum(weights)
+    translated_m1 = sum(
+        weights[index] * translated_roots[index]
+        for index in range(len(roots))
+    )
+    if translated_m0 != finite_moments[0]:
+        raise AssertionError("translation changed total filling")
+    if translated_m1 == finite_moments[1]:
+        raise AssertionError("first moment should record charge data beyond filling")
+
+
 def check_finite_gap_level_matching_cyclicity() -> None:
     """Check the global mode-filling congruence behind spin-chain cyclicity."""
 
@@ -5426,6 +5511,7 @@ def main() -> None:
     check_sl2_large_spin_cusp_resolvent()
     check_one_cut_spectral_curve_bookkeeping()
     check_multicut_period_reflection_bookkeeping()
+    check_finite_gap_large_z_moment_expansion()
     check_finite_gap_level_matching_cyclicity()
     check_pohlmeyer_s2_frame_compatibility()
     check_bes_zhukovsky_fourier_transform_signs()
