@@ -981,7 +981,8 @@ Current checks:
   diagonalization/projector resolution over \(G/H\), the pointed module-category
   boundary-OPE associativity cell
   \(\psi_{x+g,h}\psi_{x,g}=\psi_{x,g+h}\), stabilizer-label noncollapse,
-  the pointed stabilizer classifying-idempotent slide identity, boundary
+  the pointed stabilizer classifying-idempotent slide identity and Frobenius
+  two-point/inverse-sector pairing, boundary
   entropy squares, Chan--Paton direct sums, the positive spectral
   weight in the boundary-entropy gradient metric, compact-boson T-duality zero modes,
   Ising boundary-changing fusing constants and OPE powers, the finite

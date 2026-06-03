@@ -1472,6 +1472,46 @@ only the algebraic shadow of bulk-boundary sewing; the analytic rational
 BCFT construction must supply the full center object, correlators, and
 mapping-class-compatible sewing maps.
 
+The same finite cell also displays the boundary two-point normalization that
+is lost if the stabilizer labels are collapsed.  Equip the stabilizer group
+algebra at the boundary \(xH\) with the Frobenius trace
+\[
+  \varepsilon_x(\psi_{x,h})=\delta_{h,0}.
+\]
+Then
+\begin{equation}
+  \varepsilon_x(e_{x,\chi}e_{x,\chi'})
+  =
+  \frac{\delta_{\chi,\chi'}}{|H|}.
+  \label{eq:bcft-pointed-stabilizer-two-point-pairing}
+\end{equation}
+Thus \(|H|^{1/2}e_{x,\chi}\) are orthonormal classifying sectors for this
+finite pairing.  For a boundary-changing label \(g\), define the projected
+sector field
+\[
+  \psi_{x,g;\chi}:=\psi_{x,g}e_{x,\chi}
+  =
+  e_{x+g,\chi}\psi_{x,g}.
+\]
+Since every element of \(G=\mathbb Z_2\times\mathbb Z_2\) is its own inverse,
+\begin{equation}
+  \psi_{x+g,g;\chi'}\circ\psi_{x,g;\chi}
+  =
+  \delta_{\chi,\chi'}e_{x,\chi}.
+  \label{eq:bcft-pointed-stabilizer-sector-inverse}
+\end{equation}
+Applying \(\varepsilon_x\) gives the two-point pairing
+\[
+  \varepsilon_x(
+    \psi_{x+g,g;\chi'}\psi_{x,g;\chi}
+  )
+  =
+  \frac{\delta_{\chi,\chi'}}{|H|}.
+\]
+The stabilizer character is therefore a genuine finite sewing coordinate:
+it is invisible to the annulus quotient \(G/H\), but it is detected by
+boundary endomorphism pairings and by inverse boundary-changing fields.
+
 Bulk fields in the same algebraic construction are bimodule morphisms.  If
 \(U_i^+\otimes A\otimes U_j^-\) denotes the \(A\)-bimodule obtained by using
 the braiding for the left chiral label and the inverse braiding for the

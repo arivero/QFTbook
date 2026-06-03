@@ -145,6 +145,13 @@
   `psi_{x,g} e_{x,chi}=e_{x+g,chi} psi_{x,g}`.  The text identifies this as
   a finite classifying-projector compatibility, not a full analytic
   bulk-boundary sewing construction.
+- Adds the stabilizer-sector two-point ledger in the same finite cell:
+  with Frobenius trace \(\varepsilon_x(\psi_{x,h})=\delta_{h,0}\),
+  \(\varepsilon_x(e_{x,\chi}e_{x,\chi'})=\delta_{\chi,\chi'}/|H|\), and the
+  projected inverse boundary-changing fields obey
+  \(\psi_{x+g,g;\chi'}\psi_{x,g;\chi}=\delta_{\chi,\chi'}e_{x,\chi}\).
+  This shows that stabilizer characters are invisible to the annulus quotient
+  \(G/H\) but visible to boundary two-point sewing.
 
 ## Claims To Verify
 
@@ -219,6 +226,10 @@
     are orthogonal projectors and are compatible with boundary-changing fields
     by the slide identity
     \(\psi_{x,g}e_{x,\chi}=e_{x+g,\chi}\psi_{x,g}\).
+21. The same stabilizer sectors have orthogonal Frobenius two-point pairings
+    \(\varepsilon_x(e_{x,\chi}e_{x,\chi'})=\delta_{\chi,\chi'}/|H|\), and
+    projected inverse boundary-changing fields compose back to the matching
+    stabilizer idempotent rather than collapsing all stabilizer labels.
 
 ## Figures
 
@@ -363,3 +374,8 @@
   classifying idempotents in the finite \(G/H\) module cell and the slide
   identity through boundary-changing fields, with exact checks of idempotent
   algebra and mixed bulk-boundary compatibility.
+- 2026-06-03 pointed stabilizer two-point pass: added the finite Frobenius
+  trace pairing for stabilizer idempotents and the inverse projected
+  boundary-changing sector composition.  Extended `bcft_cardy_checks.py` to
+  verify orthogonal two-point pairings and the fact that inverse fields return
+  to \(e_{x,\chi}\) only in matching stabilizer-character sectors.

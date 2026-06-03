@@ -764,7 +764,7 @@ def check_pointed_module_boundary_ope_associativity() -> None:
 
 
 def check_pointed_stabilizer_classifying_idempotents() -> None:
-    """Check the pointed mixed bulk-boundary stabilizer slide identity."""
+    """Check the pointed mixed bulk-boundary stabilizer sewing cells."""
 
     elements: tuple[GroupElement, ...] = ((0, 0), (1, 0), (0, 1), (1, 1))
     stabilizer: tuple[GroupElement, ...] = ((0, 0), (1, 0))
@@ -789,6 +789,18 @@ def check_pointed_stabilizer_classifying_idempotents() -> None:
             element: coefficient
             for element, coefficient in result.items()
             if coefficient
+        }
+
+    def frobenius_trace(element: dict[GroupElement, Fraction]) -> Fraction:
+        return element.get((0, 0), Fraction(0))
+
+    def sector_field(
+        group_element: GroupElement,
+        idempotent: dict[GroupElement, Fraction],
+    ) -> dict[GroupElement, Fraction]:
+        return {
+            pointed_boundary_compose(group_element, h): coefficient
+            for h, coefficient in idempotent.items()
         }
 
     idempotents = {
@@ -825,6 +837,12 @@ def check_pointed_stabilizer_classifying_idempotents() -> None:
                 product,
                 expected,
             )
+            expected_pairing = Fraction(1, len(stabilizer)) if left_name == right_name else Fraction(0)
+            assert_equal(
+                f"pointed stabilizer Frobenius pairing {left_name} {right_name}",
+                frobenius_trace(product),
+                expected_pairing,
+            )
 
     for source in (0, 1):
         for group_element in elements:
@@ -844,6 +862,27 @@ def check_pointed_stabilizer_classifying_idempotents() -> None:
                     f"g={group_element}, chi={character_name}",
                     before_then_change,
                     change_then_after,
+                )
+
+    for group_element in elements:
+        for left_name, left_idempotent in idempotents.items():
+            for right_name, right_idempotent in idempotents.items():
+                forward = sector_field(group_element, left_idempotent)
+                reverse = sector_field(group_element, right_idempotent)
+                composition = convolution(forward, reverse)
+                expected = left_idempotent if left_name == right_name else {}
+                assert_equal(
+                    "pointed stabilizer inverse sector composition "
+                    f"g={group_element}, left={left_name}, right={right_name}",
+                    composition,
+                    expected,
+                )
+                expected_pairing = Fraction(1, len(stabilizer)) if left_name == right_name else Fraction(0)
+                assert_equal(
+                    "pointed stabilizer inverse sector two-point "
+                    f"g={group_element}, left={left_name}, right={right_name}",
+                    frobenius_trace(composition),
+                    expected_pairing,
                 )
 
     sign_projector = idempotents["sign"]
