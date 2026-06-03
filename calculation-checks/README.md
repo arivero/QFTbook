@@ -994,7 +994,8 @@ Current checks:
   four-boundary Cardy--Lewellen sewing cell, and the Liouville FZZT/ZZ
   hyperbolic identities used in the nonrational boundary-state discussion,
   plus the finite cyclic regulator for the continuous annulus Plancherel
-  quotient \(s\sim -s\).
+  quotient \(s\sim -s\) and the exact simple-pole residue/evaluation algebra
+  behind nonrational contour-crossing prescriptions.
 - `liouville_bpz_checks.py`: exact algebra checks for the Liouville chapter,
   including the probabilistic GMC threshold normalization
   \(Q_\gamma=2/\gamma+\gamma/2=b+b^{-1}\) and the distinction between the

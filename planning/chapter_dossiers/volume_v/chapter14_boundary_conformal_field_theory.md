@@ -78,6 +78,10 @@
   additional open multiplicity.  Also records the exact odd finite-cyclic
   regulator `(2N)^(-1) sum_p c_s(p)c_s'(p)=delta_ss'` on nonzero
   reflection orbits.
+- Adds the local pole-crossing residue cell for nonrational sewing: when a
+  simple pole crosses the closed-channel contour, Cauchy's theorem adds the
+  rank-one evaluation functional `2 pi i phi(alpha) rho(alpha)`, which is the
+  finite local model for a discrete open-channel spectral summand.
 - Adds the analytic sewing datum that the Liouville boundary formulas would
   have to satisfy to become a BCFT construction: a dense nuclear closed
   test space and distributional boundary states, open-channel Hilbert spaces
@@ -196,7 +200,8 @@
    not an integer Cardy matrix.  A nonrational BCFT construction must also
    produce test spaces, open spectral measures, operator domains, contour
    prescriptions, and continuous sewing maps with determinant-line
-   bookkeeping.
+   bookkeeping.  A simple pole crossing adds a residue/evaluation functional;
+   omitting that discrete term in one sewing channel changes the amplitude.
 14. Rational Cardy-Lewellen construction and the boundary entropy gradient
    formula are theorem-boundary inputs; monotonicity of \(g\) is derived from
    the positive gradient formula, not quoted as an independent
@@ -256,7 +261,8 @@
   multiplicities and matrix-unit multiplication, compact-boson zero-mode
   exchange under T-duality, the Liouville FZZT/ZZ hyperbolic identities, and
   the finite cyclic cosine-Plancherel regulator for the continuous annulus
-  quotient \(s\sim -s\).
+  quotient \(s\sim -s\), and the exact simple-pole residue/evaluation algebra
+  for nonrational contour-crossing prescriptions.
 
 ## Remaining Obligations
 
@@ -379,3 +385,7 @@
   boundary-changing sector composition.  Extended `bcft_cardy_checks.py` to
   verify orthogonal two-point pairings and the fact that inverse fields return
   to \(e_{x,\chi}\) only in matching stabilizer-character sectors.
+- 2026-06-03 nonrational pole-crossing pass: added the Cauchy residue
+  accounting cell showing that a crossed pole contributes a rank-one
+  evaluation functional, plus exact rational checks that multiple residue
+  additions commute and that omitting one residue changes the sewing channel.

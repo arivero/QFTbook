@@ -1165,6 +1165,134 @@ def check_continuous_annulus_plancherel_regulator() -> None:
         )
 
 
+Polynomial = tuple[Fraction, ...]
+
+
+def polynomial_multiply(left: Polynomial, right: Polynomial) -> Polynomial:
+    product = [Fraction(0) for _ in range(len(left) + len(right) - 1)]
+    for left_power, left_coefficient in enumerate(left):
+        for right_power, right_coefficient in enumerate(right):
+            product[left_power + right_power] += left_coefficient * right_coefficient
+    while len(product) > 1 and product[-1] == 0:
+        product.pop()
+    return tuple(product)
+
+
+def polynomial_eval(coefficients: Polynomial, point: Fraction) -> Fraction:
+    value = Fraction(0)
+    power = Fraction(1)
+    for coefficient in coefficients:
+        value += coefficient * power
+        power *= point
+    return value
+
+
+def simple_pole_residue(
+    test_polynomial: Polynomial,
+    residue_polynomial: Polynomial,
+    pole: Fraction,
+) -> Fraction:
+    return polynomial_eval(polynomial_multiply(test_polynomial, residue_polynomial), pole)
+
+
+def contour_functional(
+    test_polynomial: Polynomial,
+    continuous_weights: Polynomial,
+    crossings: tuple[tuple[Fraction, Polynomial], ...],
+) -> Fraction:
+    continuous = sum(
+        (
+            coefficient * continuous_weights[power]
+            for power, coefficient in enumerate(test_polynomial)
+        ),
+        Fraction(0),
+    )
+    residues = sum(
+        (
+            simple_pole_residue(test_polynomial, residue_polynomial, pole)
+            for pole, residue_polynomial in crossings
+        ),
+        Fraction(0),
+    )
+    return continuous + residues
+
+
+def check_nonrational_pole_crossing_residue_cell() -> None:
+    """Check the finite algebra of contour-pole residue bookkeeping.
+
+    The monograph's local model says that when a simple pole crosses the
+    closed-channel contour, the change in the sewing functional is the
+    evaluation functional Res_{P=a} rho(P) phi(P)/(P-a) = rho(a) phi(a).
+    The common 2*pi*i orientation factor is suppressed here; the exact rational
+    check is the residue/evaluation algebra and the channel-compatibility
+    consequence.
+    """
+
+    tests: tuple[Polynomial, ...] = (
+        (Fraction(1),),
+        (Fraction(2), Fraction(-3), Fraction(5)),
+        (Fraction(-1, 2), Fraction(4, 3), Fraction(0), Fraction(7, 5)),
+    )
+    residues: tuple[Polynomial, ...] = (
+        (Fraction(5, 7),),
+        (Fraction(1, 3), Fraction(-2, 5)),
+        (Fraction(0), Fraction(3, 2), Fraction(1, 4)),
+    )
+    poles = (Fraction(2, 3), Fraction(-1, 4), Fraction(5, 6))
+
+    for test_polynomial in tests:
+        for residue_polynomial in residues:
+            for pole in poles:
+                direct = polynomial_eval(
+                    polynomial_multiply(test_polynomial, residue_polynomial),
+                    pole,
+                )
+                residue = simple_pole_residue(test_polynomial, residue_polynomial, pole)
+                assert_equal(
+                    "nonrational contour simple-pole residue equals evaluation",
+                    residue,
+                    direct,
+                )
+
+    continuous_weights = (Fraction(1, 2), Fraction(-3, 7), Fraction(5, 11), Fraction(2, 13))
+    test_polynomial = (Fraction(3), Fraction(-2), Fraction(5, 4), Fraction(1, 6))
+    first_crossing = (Fraction(2, 3), (Fraction(5, 7), Fraction(1, 5)))
+    second_crossing = (Fraction(-1, 4), (Fraction(-3, 8), Fraction(2, 9), Fraction(1, 6)))
+    first_then_second = contour_functional(
+        test_polynomial,
+        continuous_weights,
+        (first_crossing, second_crossing),
+    )
+    second_then_first = contour_functional(
+        test_polynomial,
+        continuous_weights,
+        (second_crossing, first_crossing),
+    )
+    assert_equal(
+        "nonrational pole-crossing residue additions commute",
+        first_then_second,
+        second_then_first,
+    )
+
+    omitted_first = contour_functional(
+        test_polynomial,
+        continuous_weights,
+        (second_crossing,),
+    )
+    missing_residue = simple_pole_residue(
+        test_polynomial,
+        first_crossing[1],
+        first_crossing[0],
+    )
+    if missing_residue == 0:
+        raise AssertionError("pole-crossing compatibility diagnostic chose a zero residue")
+    assert_equal(
+        "omitting one crossed pole changes the channel functional by its residue",
+        first_then_second - omitted_first,
+        missing_residue,
+    )
+
+
 def main() -> None:
     check_modular_s()
     check_cardy_annulus()
@@ -1186,12 +1314,14 @@ def main() -> None:
     check_liouville_fzzt_zz_hyperbolic_identity()
     check_liouville_degenerate_shift_sum()
     check_continuous_annulus_plancherel_regulator()
+    check_nonrational_pole_crossing_residue_cell()
     print(
         "All BCFT Cardy, sewing, boundary-gradient, Ising boundary-changing, "
         "matrix-Frobenius, finite-center, pointed-nimrep, Chan-Paton, "
         "pointed-annulus-Fourier, pointed-boundary-OPE, "
         "pointed-stabilizer-slide, compact-boson, "
-        "Liouville-boundary, and continuous-annulus Plancherel checks passed."
+        "Liouville-boundary, continuous-annulus Plancherel, and "
+        "nonrational-pole-residue checks passed."
     )
 
 

@@ -1019,6 +1019,47 @@ prefactors, modular kernels, contour prescriptions, and pole contributions.
 Equation~\eqref{eq:continuous-bcft-annulus-plancherel-cell} proves only the
 Plancherel/reflection coordinate of that analytic sewing problem.
 
+\paragraph{Pole crossing as a discrete sewing summand.}
+The contour prescription mentioned above has a precise local algebraic
+content.  Let \(\phi(P)\) be a holomorphic test function in a strip around the
+real \(P\)-contour, with rapid decay on horizontal translates, and suppose a
+boundary kernel has near a moving pole \(P=\alpha\) the form
+\[
+  K_\alpha(P)
+  =
+  \frac{\rho(P)}{P-\alpha}+K_\alpha^{\rm reg}(P),
+\]
+where \(\rho\) is holomorphic.  If the pole is moved through the contour and
+the amplitude is defined by deforming the contour rather than by simply
+discarding the crossing, Cauchy's theorem gives
+\begin{equation}
+  \int_{\mathcal C_+}\phi(P)K_\alpha(P)\,\dd P
+  =
+  \int_{\mathcal C_-}\phi(P)K_\alpha(P)\,\dd P
+  +
+  2\pi\ii\,\phi(\alpha)\rho(\alpha),
+  \label{eq:bcft-pole-crossing-residue-cell}
+\end{equation}
+with the sign fixed by the orientation of the small circle left behind by the
+deformation.  Thus a crossed pole contributes a rank-one evaluation functional
+on the closed-channel test space.  In open-channel language this is exactly
+the local model for a discrete summand in the spectral measure
+\(\nu_{ab}\): the continuous contour integral and the residue term are two
+pieces of one sewing map.  Omitting the residue in one factorization channel
+but not in another changes the amplitude by
+\(2\pi\ii\,\phi(\alpha)\rho(\alpha)\).  Therefore a nonrational Cardy--Lewellen
+datum must specify one global contour/residue prescription before comparing
+disk, annulus, and higher bordered-surface sewings.  The finite checkable
+shadow is the polynomial identity
+\[
+  \operatorname*{Res}_{P=\alpha}
+  \frac{\rho(P)\sum_{m=0}^{M}c_mP^m}{P-\alpha}\,\dd P
+  =
+  \rho(\alpha)\sum_{m=0}^{M}c_m\alpha^m,
+\]
+and multiple simple crossings commute because these evaluation functionals add
+linearly.
+
 \paragraph{Analytic sewing datum for nonrational boundaries.}
 The preceding wavefunctions become a boundary conformal field theory only
 after they are placed in a functional-analytic sewing datum.  One convenient
