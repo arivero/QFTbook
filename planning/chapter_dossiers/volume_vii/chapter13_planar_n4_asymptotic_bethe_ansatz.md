@@ -249,6 +249,13 @@ motivational checks, not foundations.
   filling periods, proves the Plemelj jump-to-quasimomentum gluing formula,
   and identifies the large-spin one-cut curve `y^2=4z^2-1` with sheet
   exchange `exp(iG)->exp(-iG)`.
+- Adds the local \(S^2\) Pohlmeyer reduction cell in the classical
+  \(\mathbb R\times S^2\) subsector: from the constant-stress moving frame
+  \(e_\pm=\mu^{-1}\partial_\pm n\) and
+  \(e_+\cdot e_-=\cos\alpha\), the frame compatibility coefficient gives
+  \(\partial_+\partial_-\alpha+\mu^2\sin\alpha=0\).  Reconstruction, patching
+  at \(\sin\alpha=0\), closed-period conditions, and quantum QSC
+  interpretation remain separate problems.
 - Adds the all-loop large-spin BES bridge from the `SL(2)` ABA: states the
   fixed-twist/large-spin assumptions, defines the inner-density fluctuation
   `hat sigma(t)`, gives the rational and dressing BES kernels in the
@@ -382,6 +389,9 @@ crossed Zhukovsky sheets.
 - It checks the one-cut finite-density spectral-curve bookkeeping: the curve
   equation `y^2=4z^2-1`, sheet exchange inversion of `exp(iG)`, and branch
   endpoint locations.
+- It checks the local \(S^2\) Pohlmeyer moving-frame compatibility algebra
+  exactly over rational data, including failure when the sine-Gordon
+  coefficient is shifted.
 - It checks the weak BES scaling-function expansion: the `sigma_0`,
   `sigma_1`, and `sigma_2` density coefficients, the Bose-integral
   coefficients `A_0=pi^2/24`, `A_1=-11 pi^4/360`, and
@@ -412,3 +422,8 @@ crossed Zhukovsky sheets.
   Bethe--Yang bookkeeping for already-defined nested scattering factors, not an
   additional theorem and not mirror TBA.  The theorem-form harness rejects the
   old title if it reappears as a theorem-family wrapper.
+- 2026-06-03 #624 Pohlmeyer pass: inserted the classical \(S^2\)
+  moving-frame derivation of the sine-Gordon equation after the finite-density
+  spectral-curve section, with exact companion arithmetic.  This advances the
+  Pohlmeyer/finite-gap item while keeping the quantum spectral-curve and
+  closed-string reconstruction claims outside the local calculation.

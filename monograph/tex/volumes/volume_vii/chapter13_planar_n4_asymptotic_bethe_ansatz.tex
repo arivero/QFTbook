@@ -2536,6 +2536,86 @@ density \eqref{eq:planar-n4-sl2-cusp-density} is precisely the discontinuity
 of this primitive across the cut, and the endpoint square-root behavior is
 the local branch structure of \(\Sigma\).
 
+\paragraph{Classical \(S^2\) Pohlmeyer cell.}
+The finite-gap language also has a classical sigma-model origin.  The
+smallest honest reduction, avoiding all worldsheet quantization, is the
+\(\mathbb R\times S^2\) subsector.  Let
+\[
+  n(\sigma^+,\sigma^-)\in S^2\subset\mathbb R^3,
+  \qquad n\cdot n=1,
+\]
+and impose the constant-stress conformal-gauge constraints
+\[
+  \partial_+ n\cdot\partial_+ n
+  =
+  \partial_- n\cdot\partial_- n
+  =
+  \mu^2 .
+\]
+The sphere equation of motion is
+\begin{equation}
+  \partial_+\partial_- n
+  +
+  (\partial_+n\cdot\partial_-n)\,n
+  =
+  0 .
+  \label{eq:pohlmeyer-s2-sigma-model-equation}
+\end{equation}
+On a patch where \(\partial_+n\) and \(\partial_-n\) are not parallel, put
+\[
+  e_\pm=\mu^{-1}\partial_\pm n,
+  \qquad
+  e_\pm\cdot e_\pm=1,
+  \qquad
+  e_+\cdot e_-=\cos\alpha .
+\]
+Then \eqref{eq:pohlmeyer-s2-sigma-model-equation} gives
+\[
+  \partial_+e_-=-\mu\cos\alpha\,n,
+  \qquad
+  \partial_-e_+=-\mu\cos\alpha\,n .
+\]
+The remaining frame derivatives are fixed by differentiating
+\(e_\pm\cdot e_\pm=1\), \(e_\pm\cdot n=0\), and
+\(e_+\cdot e_-=\cos\alpha\):
+\[
+\begin{aligned}
+  \partial_+ e_+
+  &=
+  -\mu n
+  -
+  \frac{\partial_+\alpha}{\sin\alpha}
+  (e_- -\cos\alpha\,e_+),
+  \\
+  \partial_- e_-
+  &=
+  -\mu n
+  -
+  \frac{\partial_-\alpha}{\sin\alpha}
+  (e_+ -\cos\alpha\,e_-).
+\end{aligned}
+\]
+Now compare the \(e_+\)-coefficient in
+\(\partial_-(\partial_+e_-)=\partial_+(\partial_-e_-)\).  The left hand side
+has no \(e_+\)-component, while the right hand side has
+\[
+  -\mu^2
+  -
+  \frac{\partial_+\partial_-\alpha}{\sin\alpha}.
+\]
+Therefore the reduced field obeys
+\begin{equation}
+  \partial_+\partial_-\alpha+\mu^2\sin\alpha=0 .
+  \label{eq:pohlmeyer-s2-sine-gordon}
+\end{equation}
+This is the classical Pohlmeyer reduction in the \(S^2\) subsector.  It is a
+local equivalence of moving-frame data on nondegenerate patches; reconstructing
+\(n\) from \(\alpha\), gluing across \(\sin\alpha=0\), imposing closed-string
+periodicity, and quantizing the resulting finite-gap data are separate
+problems.  Thus \eqref{eq:pohlmeyer-s2-sine-gordon} explains why integrable
+PDE spectral curves appear in the strong-coupling classical story, but it is
+not a derivation of the planar gauge-theory quantum spectral curve.
+
 The all-loop ABA refines this large-spin calculation rather than replacing
 it.  The macroscopic roots at \(|u|\sim S\) still produce the logarithmic
 enhancement, but the all-loop phase induces an \(O(\log S)\) fluctuation of

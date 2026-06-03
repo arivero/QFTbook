@@ -1955,6 +1955,90 @@ def check_one_cut_spectral_curve_bookkeeping() -> None:
         assert_close("one-cut branch endpoint", y, 0, tol=1.0e-12)
 
 
+def check_pohlmeyer_s2_frame_compatibility() -> None:
+    """Check the S2 Pohlmeyer moving-frame compatibility algebra exactly."""
+
+    mu = Fraction(7, 3)
+    cos_alpha = Fraction(3, 5)
+    sin_alpha = Fraction(4, 5)
+    alpha_plus = Fraction(5, 7)
+    alpha_minus = Fraction(-2, 5)
+    alpha_plus_minus = -(mu * mu) * sin_alpha
+
+    def add(
+        left: dict[str, Fraction],
+        right: dict[str, Fraction],
+    ) -> dict[str, Fraction]:
+        result = dict(left)
+        for key, value in right.items():
+            result[key] = result.get(key, Fraction(0)) + value
+        return {key: value for key, value in result.items() if value}
+
+    def scale(
+        coefficient: Fraction,
+        vector: dict[str, Fraction],
+    ) -> dict[str, Fraction]:
+        return {
+            key: coefficient * value
+            for key, value in vector.items()
+            if coefficient * value
+        }
+
+    d_plus_n = {"e_plus": mu}
+    d_minus_n = {"e_minus": mu}
+    d_plus_e_minus = {"n": -mu * cos_alpha}
+    d_plus_e_plus = {
+        "n": -mu,
+        "e_plus": alpha_plus * cos_alpha / sin_alpha,
+        "e_minus": -alpha_plus / sin_alpha,
+    }
+    d_minus_e_minus = {
+        "n": -mu,
+        "e_plus": -alpha_minus / sin_alpha,
+        "e_minus": alpha_minus * cos_alpha / sin_alpha,
+    }
+
+    left = add(
+        scale(mu * sin_alpha * alpha_minus, {"n": Fraction(1)}),
+        scale(-mu * cos_alpha, d_minus_n),
+    )
+
+    q = alpha_minus / sin_alpha
+    q_plus = alpha_plus_minus / sin_alpha - alpha_minus * cos_alpha * alpha_plus / (
+        sin_alpha * sin_alpha
+    )
+    cos_plus = -sin_alpha * alpha_plus
+
+    right = {}
+    right = add(right, scale(-mu, d_plus_n))
+    right = add(right, scale(-q_plus, {"e_plus": Fraction(1)}))
+    right = add(right, scale(-q, d_plus_e_plus))
+    right = add(
+        right,
+        scale(q_plus * cos_alpha + q * cos_plus, {"e_minus": Fraction(1)}),
+    )
+    right = add(right, scale(q * cos_alpha, d_plus_e_minus))
+
+    if left != right:
+        raise AssertionError(f"Pohlmeyer S2 frame compatibility failed: {left} != {right}")
+
+    wrong_alpha_plus_minus = alpha_plus_minus + Fraction(1, 11)
+    wrong_q_plus = wrong_alpha_plus_minus / sin_alpha - alpha_minus * cos_alpha * alpha_plus / (
+        sin_alpha * sin_alpha
+    )
+    wrong_right = {}
+    wrong_right = add(wrong_right, scale(-mu, d_plus_n))
+    wrong_right = add(wrong_right, scale(-wrong_q_plus, {"e_plus": Fraction(1)}))
+    wrong_right = add(wrong_right, scale(-q, d_plus_e_plus))
+    wrong_right = add(
+        wrong_right,
+        scale(wrong_q_plus * cos_alpha + q * cos_plus, {"e_minus": Fraction(1)}),
+    )
+    wrong_right = add(wrong_right, scale(q * cos_alpha, d_plus_e_minus))
+    if wrong_right == left:
+        raise AssertionError("wrong Pohlmeyer sign unexpectedly satisfied compatibility")
+
+
 def check_bes_zhukovsky_fourier_transform_signs() -> None:
     """Check the signed-t Bessel convention in the BES Fourier transform."""
 
@@ -5196,6 +5280,7 @@ def main() -> None:
     check_bmn_scaling_limit()
     check_sl2_large_spin_cusp_resolvent()
     check_one_cut_spectral_curve_bookkeeping()
+    check_pohlmeyer_s2_frame_compatibility()
     check_bes_zhukovsky_fourier_transform_signs()
     check_bes_weak_scaling_function()
     check_bes_strong_scaling_function_normalization()
