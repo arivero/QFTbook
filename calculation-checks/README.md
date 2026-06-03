@@ -488,10 +488,14 @@ Current checks:
   the finite asymptotic null-quotient wave-map algebra: an overcomplete
   charged asymptotic Gram matrix has the null relation \(e_1+e_2-e_3=0\),
   and quotienting by that relation makes the physical wave-map assignment
-  isometric.  It also checks the finite spectral-measure arithmetic behind
-  the nonconfining charged-sector
-  boundary: common finite-energy windows, Markov's sufficient first-moment
-  estimate, and linear string-energy escape beyond every fixed cutoff.
+  isometric.  It also checks same-flux schedule invariance for the charged
+  wave-map and LSZ interface: rational schedule tails shrink to the same
+  Hilbert limit, the asymptotic Gram form is unchanged, and a
+  schedule-dependent finite coordinate transform leaves the left-inverse
+  residue extraction exact.  It also checks the finite spectral-measure
+  arithmetic behind the nonconfining charged-sector boundary: common
+  finite-energy windows, Markov's sufficient first-moment estimate, and linear
+  string-energy escape beyond every fixed cutoff.
   It also checks soft coherent
   velocity-separation positivity, finite-cutoff Weyl characteristic
   functionals, coherent-overlap decay, and finite Hilbert soft-coordinate

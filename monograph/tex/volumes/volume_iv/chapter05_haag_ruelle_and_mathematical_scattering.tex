@@ -1964,6 +1964,165 @@ existence of the limits \(G_{ab}\) from Wilson-line or Coulomb-dressed
 creators; once those limits are supplied, the null quotient is ordinary
 Hilbert-space bookkeeping.
 
+\begin{proposition}[Same-flux schedule invariance of charged wave maps]
+\label{prop:charged-same-flux-schedule-invariance}
+Assume Hypothesis~\ref{hyp:charged-dollard-cook-package}.  Let
+\(\mathcal S\) and \(\mathcal S'\) be two admissible truncation schedules for
+the same charged packet data, with the same boundary charges and the same
+limiting angular fluxes.  Write
+\(\mathcal C_{I,\mathcal S}^{\sigma}(t)\) and
+\(\mathcal C_{I,\mathcal S'}^{\sigma}(t)\) for the corresponding modified
+comparison vectors.  Suppose that, for every generator \(e_I^\sigma\), there is
+a real locally absolutely continuous function \(\alpha_I^\sigma(t)\) with a
+finite limit \(\alpha_I^\sigma(\infty)\) and
+\begin{equation}
+  d_I^\sigma(T)
+  :=
+  \sup_{\sigma t\ge T}
+  \left\|
+    \mathcal C_{I,\mathcal S}^{\sigma}(t)
+    -
+    \ee^{-\ii\alpha_I^\sigma(t)}
+    \mathcal C_{I,\mathcal S'}^{\sigma}(t)
+  \right\|
+  \longrightarrow 0
+  \qquad (T\to\infty).
+  \label{eq:charged-same-flux-schedule-tail}
+\end{equation}
+Then the two schedules define the same physical charged wave map after the
+finite phase coordinate identification
+\(e_{I,\mathcal S}^{\sigma}\sim
+\ee^{-\ii\alpha_I^\sigma(\infty)}e_{I,\mathcal S'}^{\sigma}\):
+\begin{equation}
+  \Omega_{\sigma,\mathcal S}^{\mathrm{ch}}e_I^\sigma
+  =
+  \ee^{-\ii\alpha_I^\sigma(\infty)}
+  \Omega_{\sigma,\mathcal S'}^{\mathrm{ch}}e_I^\sigma .
+  \label{eq:charged-same-flux-wave-map-invariance}
+\end{equation}
+For two generators \(e_I^\sigma,e_J^\sigma\), the asymptotic Gram forms obey
+\begin{equation}
+  \langle J,I\rangle_{\mathrm{as},\mathcal S}^{\sigma}
+  =
+  \ee^{\ii\alpha_J^\sigma(\infty)}
+  \ee^{-\ii\alpha_I^\sigma(\infty)}
+  \langle J,I\rangle_{\mathrm{as},\mathcal S'}^{\sigma}.
+  \label{eq:charged-same-flux-gram-invariance}
+\end{equation}
+Consequently same-flux schedule changes are quotient data, not new charged
+asymptotic sectors.
+
+If the dressed-correlator interface of
+Hypothesis~\ref{hyp:dressed-correlator-wave-map-interface} is also available
+for the two schedules, and the external overlap maps on each finite coordinate
+frame are related by
+\[
+  z_{\ell,\mathcal S'}(p;t)
+  =
+  M_\ell(t) z_{\ell,\mathcal S}(p;t)+o(1),
+  \qquad
+  M_\ell(t)\longrightarrow M_\ell
+\]
+with \(M_\ell(t)\) invertible for all sufficiently large \(t\) and
+\(M_\ell\) invertible on the chosen same-flux coordinate frame, then the
+left-inverse residue extraction gives the same coefficient
+\(\mathcal A_{\boldsymbol\lambda}\) in the simultaneous external-shell limit.
+\end{proposition}
+
+\begin{proof}
+The Cook bounds in
+\eqref{eq:charged-dollard-cook-package-integrable-derivative} give Hilbert
+limits for both schedules and uniform large-time bounds for the comparison
+vectors.  For \(\sigma t\) large,
+\[
+\begin{aligned}
+&
+\left\|
+  \Omega_{\sigma,\mathcal S}^{\mathrm{ch}}e_I^\sigma
+  -
+  \ee^{-\ii\alpha_I^\sigma(\infty)}
+  \Omega_{\sigma,\mathcal S'}^{\mathrm{ch}}e_I^\sigma
+\right\|
+\\
+&\quad\le
+\left\|
+  \Omega_{\sigma,\mathcal S}^{\mathrm{ch}}e_I^\sigma
+  -
+  \mathcal C_{I,\mathcal S}^{\sigma}(t)
+\right\|
++
+d_I^\sigma(\sigma t)
++
+\left|
+  \ee^{-\ii\alpha_I^\sigma(t)}
+  -
+  \ee^{-\ii\alpha_I^\sigma(\infty)}
+\right|
+\,
+\left\|\mathcal C_{I,\mathcal S'}^{\sigma}(t)\right\|
+\\
+&\qquad+
+\left\|
+  \mathcal C_{I,\mathcal S'}^{\sigma}(t)
+  -
+  \Omega_{\sigma,\mathcal S'}^{\mathrm{ch}}e_I^\sigma
+\right\| .
+\end{aligned}
+\]
+Every term on the right tends to zero.  This proves
+\eqref{eq:charged-same-flux-wave-map-invariance}.
+
+The Gram statement is the same estimate before the last limit is taken.  Put
+\[
+  \widetilde{\mathcal C}_{I,\mathcal S'}^\sigma(t)
+  =
+  \ee^{-\ii\alpha_I^\sigma(t)}
+  \mathcal C_{I,\mathcal S'}^\sigma(t).
+\]
+If \(M_I,M_J\) are large-time norm bounds for the corresponding comparison
+vectors, then
+\[
+\begin{aligned}
+&
+\left|
+  \langle
+    \mathcal C_{J,\mathcal S}^{\sigma}(t),
+    \mathcal C_{I,\mathcal S}^{\sigma}(t)
+  \rangle
+  -
+  \langle
+    \widetilde{\mathcal C}_{J,\mathcal S'}^\sigma(t),
+    \widetilde{\mathcal C}_{I,\mathcal S'}^\sigma(t)
+  \rangle
+\right|
+\\
+&\qquad\le
+M_I d_J^\sigma(\sigma t)+M_J d_I^\sigma(\sigma t).
+\end{aligned}
+\]
+Taking the large-time limit and then replacing
+\(\alpha_I^\sigma(t),\alpha_J^\sigma(t)\) by their finite limits gives
+\eqref{eq:charged-same-flux-gram-invariance}.  The null quotient therefore
+identifies the two schedules by a finite coordinate phase.
+
+For the residue statement, at finite regulator the singular tensor in
+\eqref{eq:dressed-correlator-external-singular-expansion} transforms on the
+\(\ell\)-th external coordinate by \(M_\ell(t)\), while the left inverse
+transforms by \(L_{\ell,\mathcal S}(p;t)M_\ell(t)^{-1}\), for all sufficiently
+large \(t\).  Contracting the external coordinates gives
+\[
+  \bigotimes_{\ell}
+  \bigl(L_{\ell,\mathcal S}M_\ell(t)^{-1}\bigr)
+  \,
+  \bigotimes_{\ell}M_\ell(t)
+  =
+  \bigotimes_{\ell}L_{\ell,\mathcal S}.
+\]
+The \(o(1)\) schedule errors are less singular in the declared shell topology
+and are killed by the same left-inverse contraction in the simultaneous
+external-shell limit.  Hence the extracted coefficient is unchanged.
+\end{proof}
+
 \subsection{Dressed Correlators and Wave-Map Matrix Elements}
 
 The wave-map construction above is formulated in Hilbert space.  A

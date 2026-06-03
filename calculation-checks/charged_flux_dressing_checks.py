@@ -509,6 +509,103 @@ def check_asymptotic_null_quotient_wave_map_cell() -> None:
         assert_equal("null vector pairs trivially with every sample", mixed_null_pairing, Fraction(0))
 
 
+def check_same_flux_schedule_wave_map_invariance() -> None:
+    """Check finite same-flux schedule invariance for wave maps and residues."""
+
+    def add2(left: tuple[Fraction, Fraction], right: tuple[Fraction, Fraction]) -> tuple[Fraction, Fraction]:
+        return (left[0] + right[0], left[1] + right[1])
+
+    def scale2(scale: Fraction, vector: tuple[Fraction, Fraction]) -> tuple[Fraction, Fraction]:
+        return (scale * vector[0], scale * vector[1])
+
+    def subtract2(left: tuple[Fraction, Fraction], right: tuple[Fraction, Fraction]) -> tuple[Fraction, Fraction]:
+        return (left[0] - right[0], left[1] - right[1])
+
+    def dot2(left: tuple[Fraction, Fraction], right: tuple[Fraction, Fraction]) -> Fraction:
+        return left[0] * right[0] + left[1] * right[1]
+
+    def approximant(
+        limit: tuple[Fraction, Fraction],
+        tail: tuple[Fraction, Fraction],
+        cutoff: int,
+    ) -> tuple[Fraction, Fraction]:
+        return add2(limit, scale2(Fraction(1, cutoff * cutoff), tail))
+
+    limit_i = (Fraction(2), Fraction(1))
+    limit_j = (Fraction(-1), Fraction(3))
+    schedule_a_tail_i = (Fraction(3), Fraction(-2))
+    schedule_b_tail_i = (Fraction(-1), Fraction(4))
+    schedule_a_tail_j = (Fraction(2), Fraction(5))
+    schedule_b_tail_j = (Fraction(-3), Fraction(1))
+
+    previous_gap_i: Fraction | None = None
+    previous_gram_gap: Fraction | None = None
+    for cutoff in (8, 32, 128):
+        schedule_a_i = approximant(limit_i, schedule_a_tail_i, cutoff)
+        schedule_b_i = approximant(limit_i, schedule_b_tail_i, cutoff)
+        schedule_a_j = approximant(limit_j, schedule_a_tail_j, cutoff)
+        schedule_b_j = approximant(limit_j, schedule_b_tail_j, cutoff)
+
+        assert_equal(
+            "schedule A tail has the declared n^-2 wave-map scale",
+            subtract2(schedule_a_i, limit_i),
+            scale2(Fraction(1, cutoff * cutoff), schedule_a_tail_i),
+        )
+
+        gap_i = dot2(subtract2(schedule_a_i, schedule_b_i), subtract2(schedule_a_i, schedule_b_i))
+        if previous_gap_i is not None and gap_i >= previous_gap_i:
+            raise AssertionError("same-flux schedule wave-map gaps should decrease")
+        previous_gap_i = gap_i
+
+        assert_equal(
+            "schedule tail gap has the declared n^-4 scale",
+            gap_i,
+            dot2(
+                subtract2(schedule_a_tail_i, schedule_b_tail_i),
+                subtract2(schedule_a_tail_i, schedule_b_tail_i),
+            )
+            / (cutoff**4),
+        )
+
+        gram_a = dot2(schedule_a_j, schedule_a_i)
+        gram_b = dot2(schedule_b_j, schedule_b_i)
+        gram_gap = abs(gram_a - gram_b)
+        if previous_gram_gap is not None and gram_gap >= previous_gram_gap:
+            raise AssertionError("same-flux schedule Gram gaps should decrease")
+        previous_gram_gap = gram_gap
+
+    assert_equal("same-flux schedules have the declared asymptotic Gram", dot2(limit_j, limit_i), Fraction(1))
+
+    z = (Fraction(2), Fraction(3))
+    left_inverse = (Fraction(1, 2), Fraction(0))
+    amplitude = Fraction(7, 5)
+    one_external_residue = tuple(amplitude * za for za in z)
+    previous_coordinate_gap: Fraction | None = None
+
+    for cutoff in (4, 16, 64):
+        schedule_change = ((Fraction(1), Fraction(1, cutoff * cutoff)), (Fraction(0), Fraction(1)))
+        schedule_change_inverse = ((Fraction(1), Fraction(-1, cutoff * cutoff)), (Fraction(0), Fraction(1)))
+        assert_equal(
+            "same-flux schedule coordinate inverse",
+            mat_mul(schedule_change_inverse, schedule_change),
+            ((Fraction(1), Fraction(0)), (Fraction(0), Fraction(1))),
+        )
+
+        transformed_z = mat_vec(schedule_change, z)
+        transformed_left_inverse = row_mat(left_inverse, schedule_change_inverse)
+        transformed_residue = mat_vec(schedule_change, one_external_residue)
+        extracted = sum(
+            transformed_left_inverse[a] * transformed_residue[a]
+            for a in range(len(transformed_residue))
+        )
+        assert_equal("same-flux schedule LSZ extraction is invariant", extracted, amplitude)
+
+        coordinate_gap = sum((transformed_z[a] - z[a]) ** 2 for a in range(len(z)))
+        if previous_coordinate_gap is not None and coordinate_gap >= previous_coordinate_gap:
+            raise AssertionError("same-flux coordinate changes should tend to identity")
+        previous_coordinate_gap = coordinate_gap
+
+
 def catches_equal_velocity_error() -> bool:
     try:
         many_body_dollard_log_coefficient_1d(
@@ -982,6 +1079,7 @@ def main() -> None:
     check_pair_coefficient_residual_budget()
     check_dollard_scalar_product_cauchy_criterion()
     check_asymptotic_null_quotient_wave_map_cell()
+    check_same_flux_schedule_wave_map_invariance()
     check_truncation_schedule_tail_uniformity()
     check_finite_energy_spectral_tightness_boundary()
     check_soft_profile_velocity_separation()

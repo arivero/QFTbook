@@ -154,6 +154,14 @@ resonances.
   relation \(e_1+e_2-e_3=0\), so packet-refinement and same-flux coordinate
   redundancies are removed by the Hilbert-space quotient before the wave map
   becomes isometric.
+- Proves the same-flux schedule-invariance bridge for the charged
+  Dollard--Cook package: if two admissible truncation schedules have vanishing
+  modified-comparison-vector tails up to a finite phase, then their physical
+  charged wave maps and asymptotic Gram forms agree after the corresponding
+  finite coordinate identification.  The same proposition records how a
+  same-flux coordinate matrix in the dressed-correlator interface cancels
+  against the transformed left inverses, so the external-shell residue
+  coefficient is not schedule-dependent.
 - Proves a finite-regulator dressed LSZ theorem under explicit Hilbert-space,
   pole, and dressed-wave-operator hypotheses.  The theorem now distinguishes
   the general rectangular dressed-coordinate case, handled by a left inverse
@@ -256,6 +264,10 @@ resonances.
   also checks the scalar-product Cauchy criterion after Dollard subtraction:
   summable derivative tails give decreasing dyadic inner-product bounds,
   while a wrong logarithmic phase leaves a persistent dyadic obstruction.
+  It now also checks same-flux schedule invariance for charged wave maps and
+  residues: rational schedule tails shrink to a common Hilbert limit and a
+  cutoff-dependent finite coordinate transform leaves the left-inverse LSZ
+  extraction exact.
 - The direct-integral velocity-fiber proposition is purely algebraic and has
   no numerical companion: it is a decomposability statement for the
   representation of the Weyl algebra.
@@ -416,3 +428,10 @@ resonances.
   to a genuine asymptotic Hilbert vector and isometric wave map.  The
   charged-flux companion check verifies the Gram matrix, null relation, and
   refinement equivalence by exact rational arithmetic.
+- 2026-06-03 #527 schedule-invariance pass: added the same-flux
+  schedule-invariance proposition after the abstract charged wave-map
+  construction.  This remains theorem-level because it proves how the
+  already-declared truncation topology propagates through the charged wave map,
+  the asymptotic Gram form, and the finite-coordinate LSZ extraction; the
+  nonperturbative exchange and modified-Cook estimates remain the open analytic
+  burden.
