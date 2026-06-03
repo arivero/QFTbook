@@ -26,6 +26,9 @@ data.
   reexpansion maps.
 - `C_{1,epsilon}`, `C_{2,epsilon}`: one-loop and two-loop local SPDE
   counterterm constants in the displayed BPHZ convention.
+- `g_4`, `lambda_dyn`, `M_epsilon`: Euclidean quartic coefficient, dynamic
+  cubic drift coefficient, and dynamic linear drift coordinate used in the
+  static-dynamic \(\Phi^4_3\) mass-chart translation.
 - `Xi`, `X`, `mathcal I`: noise symbol, stochastic convolution symbol, and
   heat-integration map in the dynamic \(\Phi^4_3\) homogeneity ledger.
 - `Y`: first nonlinear response \(\mathcal I(X^3)\) in the drift-level
@@ -574,6 +577,15 @@ data.
   contraction gives \(+9\lambda^2C_{2,\epsilon}X_\epsilon\), and the drift
   counterterm has the opposite signs.  The proof also separates the nested
   one-loop subdivergence from the new two-loop local coordinate.
+- Proves the static-dynamic \(\Phi^4_3\) mass-coordinate translation:
+  \(\lambda_{\rm dyn}=4g_4\), \(M_\epsilon=-2a_\epsilon\), and
+  \(\alpha_\epsilon=-M_\epsilon/2+
+  (3/2)\lambda_{\rm dyn}C_\epsilon(0)\).  In a common Wick chart with
+  \(C_\epsilon(0)=C_{1,\epsilon}\), the one-loop coordinate cancels and the
+  dynamic normal-ordered mass coordinate becomes
+  \((9/2)\lambda_{\rm dyn}^2C_{2,\epsilon}-c_{\rm fin}/2\); matching this to
+  the constructive sunset coordinate is the remaining common-chart theorem
+  input rather than a raw-drift comparison.
 - Proves the drift-level negative homogeneity ledger for the first nonlinear
   dynamic \(\Phi^4_3\) expansion: for \(0<\kappa<1/14\), the negative cubic
   drift monomials are exactly \(X^3\) and \(X^2\mathcal I(X^3)\), while

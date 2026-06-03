@@ -38,6 +38,12 @@
   \(\lambda:\phi^4:+\alpha_\varepsilon:\phi^2:+\beta_\varepsilon\),
   their conversion to un-Wick-ordered coordinates, and the two-loop
   logarithmic mass-coordinate calculation.
+- Static-to-dynamic \(\Phi^4_3\) mass-coordinate comparison rule: after
+  writing the Euclidean quartic coefficient as \(g_4\), stochastic
+  quantization with dynamic cubic coefficient \(\lambda_{\rm dyn}\) has
+  \(\lambda_{\rm dyn}=4g_4\) and \(M_\varepsilon=-2a_\varepsilon\), so the
+  normal-ordered mass coordinate is
+  \(-M_\varepsilon/2+(3/2)\lambda_{\rm dyn}C_\varepsilon(0)\).
 - Finite-cutoff stability lower bound for the local normal-ordered
   \(\Phi^4_3\) polynomial.
 - Reflection-positivity preservation for split positive-time interactions.
@@ -73,6 +79,7 @@
 | \(\alpha\) | subquadratic exponent in the \(P(\phi)_2\) stability bound |
 | \(a_\varepsilon,b_\varepsilon\) | regulator-dependent local coefficients |
 | \(\alpha_\varepsilon,\beta_\varepsilon\) | normal-ordered \(\Phi^4_3\) mass and vacuum coordinates |
+| \(\lambda_{\rm dyn},M_\varepsilon\) | dynamic cubic and linear drift coordinates used in stochastic quantization |
 | \(J_\varepsilon(R)\) | local sunset integral \(\int_{|x|\le R}C_\varepsilon(x)^3\,d^3x\) |
 | \(p_\varepsilon(q)\) | finite-cutoff normal-ordered local \(\Phi^4_3\) polynomial |
 | \(A_\varepsilon,B_\varepsilon\) | quadratic-in-\(y=q^2\) coefficients of \(p_\varepsilon\) |
@@ -126,21 +133,26 @@
    \(J_\varepsilon(R)=(16\pi^2)^{-1}\log(1/\varepsilon)+O(1)\) and
    \(\alpha_\varepsilon=48\lambda^2J_\varepsilon+\alpha_{\rm fin}
    +O(\lambda^3)\), hence logarithmic coefficient \(3\lambda^2/\pi^2\).
-9. The finite-cutoff local \(\Phi^4_3\) polynomial is bounded below by
+9. The stochastic-quantization comparison is made in
+   \(\alpha_\varepsilon\), not in the raw linear drift: if
+   \(\lambda_{\rm dyn}=4g_4\) and \(M_\varepsilon=-2a_\varepsilon\), then
+   \(\alpha_\varepsilon=-M_\varepsilon/2+
+   (3/2)\lambda_{\rm dyn}C_\varepsilon(0)\).
+10. The finite-cutoff local \(\Phi^4_3\) polynomial is bounded below by
    \(B_\varepsilon-(A_\varepsilon^-)^2/(4\lambda)\); this proves finite-cutoff
    integrability after the vacuum-energy coordinate is chosen, but not the
    continuum theorem.
-10. Split positive-time interactions preserve reflection positivity by the
+11. Split positive-time interactions preserve reflection positivity by the
     identity
     \(\langle\theta F\,F e^{-V_+-\theta V_+}\rangle_0
     =\langle \theta(e^{-V_+}F)(e^{-V_+}F)\rangle_0\).
-11. A scale-decay polymer bound
+12. A scale-decay polymer bound
     \(\sup_{\Delta\in\mathcal D_j}\sum_{X\ni\Delta}e^{a|X|_j}\kappa_j(X)
     \le C_0|\lambda|^{1+\delta}L^{-\alpha j}\)
     implies multiscale cluster summability and an ultraviolet Cauchy bound
     \(C_0|\lambda|^{1+\delta}L^{-\alpha J}/(1-L^{-\alpha})\) under the
     displayed KP smallness condition.
-12. The source-decorated scale bound
+13. The source-decorated scale bound
     \[
     \sup_{\Delta\in\mathcal D_j}\sum_{X\ni\Delta}e^{a|X|_j}\kappa_j(X)
     \prod_{r\in I}|b_{r,j}(X)|
@@ -152,20 +164,20 @@
     applied to decorated vertices gives uniform \(n\)-source bounds and a
     geometric ultraviolet tail.  The model-specific proof must still supply
     these decorated bounds and an OS-admissible growth envelope for \(A_n\).
-13. The full Schwinger coefficient is obtained from connected coefficients by
+14. The full Schwinger coefficient is obtained from connected coefficients by
     summing over set partitions.  If connected block bounds have envelope
     \(A B_0^{|B|}(|B|!)^\gamma\), then the full coefficient has the explicit
     bound
     \((eB_0\max\{1,A\})^n(n!)^{\gamma+1}\prod_r p_r(f_r)\).  The additional
     factorial power is part of the OS-II growth budget and is not hidden in the
     word "connected."
-14. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
+15. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
    the OS properties in the constructed regimes; the chapter now marks this
    as a `quotedtheorem` rather than a locally proved theorem.  The abstract
    summation, reflection-positivity, and ultraviolet-Cauchy components are
    now proved locally; the remaining open proof obligation is the
    model-specific multiscale estimate generating their hypotheses.
-15. Constructive route comparison requires equality of Schwinger functions in
+16. Constructive route comparison requires equality of Schwinger functions in
    a common topology, not merely matching labels.
 
 ## Calculation Checks
@@ -175,6 +187,7 @@
   reversibility and Dirichlet-form normalization, sharp-cutoff tadpole
   coefficients, \(\phi^4_d\) superficial-degree formula, two-loop
   \(\Phi^4_3\) sunset combinatorics, finite-cutoff local stability bound,
+  static-to-dynamic mass-coordinate translation,
   multiscale phase-cell tail estimate, source-decorated Schwinger-seminorm
   variant, connected-to-full partition growth bound, and SPDE exponent
   arithmetic used across this chapter and the neighboring stochastic chapter.

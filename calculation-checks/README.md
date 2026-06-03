@@ -667,8 +667,10 @@ Current checks:
   that comparison under uniform integrability, plus the coarse/fine dyadic
   exponent arithmetic in the compact reconstruction proof and the
   homogeneity/sign/combinatorial checks for the dynamic \(\Phi^4_3\) BPHZ
-  local counterterm calculation, together with exact arithmetic for the
-  abstract modelled-distribution fixed-point ball, contraction, and Picard
+  local counterterm calculation, the static-to-dynamic
+  \(\Phi^4_3\) mass-coordinate translation between Euclidean action
+  coefficients and SPDE drift coordinates, together with exact arithmetic for
+  the abstract modelled-distribution fixed-point ball, contraction, and Picard
   tail estimates, the fixed-point-sector perturbation budget that transfers
   model-map convergence to solution convergence, plus the dyadic geometric-tail arithmetic in the random
   model convergence criterion and the exponent/geometric-factor arithmetic in

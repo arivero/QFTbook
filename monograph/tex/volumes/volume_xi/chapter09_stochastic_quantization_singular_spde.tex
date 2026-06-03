@@ -11459,6 +11459,97 @@ Combining the one-loop and two-loop local parts proves the displayed
 formula.  The finite coordinate \(c_{\rm fin}\) is not fixed by singular
 subtraction; it labels the chosen renormalized mass coordinate.
 
+\begin{proposition}[Static-dynamic mass-coordinate translation]
+\label{prop:phi-four-three-static-dynamic-mass-chart}
+Fix a finite cutoff and write the Euclidean local density of
+Chapter~\ref{ch:constructive-scalar-models-os-data} as
+\[
+  g_4\phi_\epsilon^4+a_\epsilon\phi_\epsilon^2+b_\epsilon .
+\]
+Let the cutoff Langevin equation use the convention of
+\eqref{eq:finite-dimensional-langevin}, so that the drift is the negative
+\(L^2\)-gradient of the regulated action.  If the same dynamics is written as
+\[
+  \partial_\tau\Phi_\epsilon
+  =
+  \Delta\Phi_\epsilon-m^2\Phi_\epsilon
+  -\lambda_{\rm dyn}\Phi_\epsilon^3
+  +M_\epsilon\Phi_\epsilon
+  +\xi_\epsilon ,
+\]
+then
+\begin{equation}
+  \lambda_{\rm dyn}=4g_4,
+  \qquad
+  M_\epsilon=-2a_\epsilon .
+  \label{eq:phi-four-three-static-dynamic-raw-coordinate}
+\end{equation}
+Consequently, relative to the Wick covariance \(C_\epsilon(0)\) used in
+\eqref{eq:phi-four-three-coordinate-conversion}, the normal-ordered mass
+coordinate is
+\begin{equation}
+  \alpha_\epsilon
+  =
+  a_\epsilon+6g_4C_\epsilon(0)
+  =
+  -\frac12M_\epsilon
+  +\frac32\lambda_{\rm dyn}C_\epsilon(0).
+  \label{eq:phi-four-three-static-dynamic-alpha-chart}
+\end{equation}
+In the dynamic BPHZ chart
+\[
+  M_\epsilon
+  =
+  3\lambda_{\rm dyn}C_{1,\epsilon}
+  -9\lambda_{\rm dyn}^2C_{2,\epsilon}
+  +c_{\rm fin}.
+\]
+If the Wick covariance in the constructive chart is the same local covariance,
+\(C_\epsilon(0)=C_{1,\epsilon}\), then the one-loop coordinate cancels in
+\eqref{eq:phi-four-three-static-dynamic-alpha-chart} and
+\begin{equation}
+  \alpha_\epsilon^{\rm dyn}
+  =
+  \frac92\lambda_{\rm dyn}^2C_{2,\epsilon}
+  -\frac12c_{\rm fin}.
+  \label{eq:phi-four-three-dynamic-normal-mass-coordinate}
+\end{equation}
+Thus the common-chart comparison with
+\eqref{eq:phi-four-three-log-mass-coordinate} is a comparison of
+normal-ordered mass coordinates, together with a chosen finite mass
+normalization, not a comparison of the raw \(a_\epsilon\) and \(M_\epsilon\)
+coefficients.  The vacuum coordinate \(b_\epsilon\), or equivalently
+\(\beta_\epsilon\), remains a separate free-energy normalization because an
+additive constant in the action is invisible to the Langevin drift.
+\end{proposition}
+
+\begin{proof}
+For the finite-cutoff local part
+\[
+  \int
+  \left[
+    g_4\phi_\epsilon^4+a_\epsilon\phi_\epsilon^2+b_\epsilon
+  \right]\dd^3x ,
+\]
+the variational derivative contributes
+\[
+  4g_4\Phi_\epsilon^3+2a_\epsilon\Phi_\epsilon .
+\]
+The gradient Langevin drift is its negative, added to the Gaussian drift
+\(\Delta\Phi_\epsilon-m^2\Phi_\epsilon\).  Comparing the cubic and linear
+terms with the displayed dynamic equation gives
+\eqref{eq:phi-four-three-static-dynamic-raw-coordinate}.  The first equality in
+\eqref{eq:phi-four-three-static-dynamic-alpha-chart} is precisely the
+coordinate conversion \eqref{eq:phi-four-three-coordinate-conversion}, with
+the Euclidean quartic coefficient renamed \(g_4\).  Substituting
+\(g_4=\lambda_{\rm dyn}/4\) and \(a_\epsilon=-M_\epsilon/2\) gives the second
+equality.  Finally substituting the BPHZ expression for \(M_\epsilon\) and
+identifying \(C_\epsilon(0)\) with \(C_{1,\epsilon}\) cancels the one-loop
+term and leaves \eqref{eq:phi-four-three-dynamic-normal-mass-coordinate}.
+The constant term \(b_\epsilon\) drops out of the variational derivative, so it
+cannot be recovered from the drift comparison.
+\end{proof}
+
 \begin{theorem}[Abstract local fixed point in modelled distributions]
 \label{thm:spde-abstract-modelled-fixed-point}
 Let \(0<T\leq1\).  Let \(E_T\) be a Banach space of modelled distributions

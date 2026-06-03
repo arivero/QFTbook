@@ -809,6 +809,30 @@ The linear divergence in \(a_\varepsilon\) is therefore the one-loop Wick
 conversion; the logarithmic divergence is the leading divergent part of
 \(\alpha_\varepsilon\).
 
+This is also the coordinate in which the comparison with stochastic
+quantization must be made.  To avoid overloading the symbol \(\lambda\), rename
+the Euclidean quartic coefficient in
+\eqref{eq:phi-four-three-regulated-action} temporarily as \(g_4\).  If the
+same cutoff action is used to generate a Langevin equation in the convention of
+Chapter~\ref{ch:constructive-stochastic-quantization-singular-spde}, and if
+that equation is written with dynamic cubic coefficient \(\lambda_{\rm dyn}\)
+and local linear drift coefficient \(M_\varepsilon\), then
+\[
+  \lambda_{\rm dyn}=4g_4,\qquad
+  M_\varepsilon=-2a_\varepsilon .
+\]
+Therefore the normal-ordered mass coordinate is
+\[
+  \alpha_\varepsilon
+  =
+  -\frac12 M_\varepsilon
+  +\frac32\lambda_{\rm dyn}C_\varepsilon(0).
+\]
+Proposition~\ref{prop:phi-four-three-static-dynamic-mass-chart} expands this
+identity in the dynamic BPHZ coordinates.  The comparison is made in
+\(\alpha_\varepsilon\), not in the raw drift coefficient, because the one-loop
+Wick conversion is a coordinate change between the two presentations.
+
 \begin{lemma}[Universal logarithm in the three-dimensional sunset kernel]
 \label{lem:phi-four-three-sunset-logarithm}
 Let
