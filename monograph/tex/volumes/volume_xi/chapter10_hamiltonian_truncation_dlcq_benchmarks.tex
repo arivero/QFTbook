@@ -1575,6 +1575,56 @@ Section~\ref{sec:blocking-jackknife-bootstrap-error-coordinates}; optimization
 bias, autocorrelation, and architecture bias are additional entries of
 \(\mathcal E_{\rm samp}\), not properties of the finite identities.
 
+For a sampled variational calculation, the local-energy time series has its own
+finite error coordinate.  Let \(X_0,\ldots,X_{N-1}\) be a stationary finite
+Markov chain with invariant distribution \(p_\psi\), and let
+\[
+  F_t=\operatorname{Re}E_{\rm loc}(X_t),\qquad
+  \mu=\mathbb E F_t .
+\]
+Define
+\[
+  \gamma_t=\operatorname{Cov}(F_0,F_t),\qquad \gamma_0>0,\qquad
+  \rho_t=\gamma_t/\gamma_0 .
+\]
+For
+\[
+  \overline F_N=\frac1N\sum_{t=0}^{N-1}F_t ,
+\]
+stationarity gives the exact finite identity
+\begin{equation}
+  \operatorname{Var}(\overline F_N)
+  =
+  \frac{\gamma_0}{N}
+  \left[
+    1+2\sum_{t=1}^{N-1}\left(1-\frac{t}{N}\right)\rho_t
+  \right].
+  \label{eq:vmc-local-energy-autocorrelation-error}
+\end{equation}
+Indeed,
+\[
+  \operatorname{Var}(\overline F_N)
+  =
+  \frac1{N^2}\sum_{r,s=0}^{N-1}\operatorname{Cov}(F_r,F_s)
+  =
+  \frac1{N^2}\left(
+    N\gamma_0+2\sum_{t=1}^{N-1}(N-t)\gamma_t
+  \right),
+\]
+because there are \(N-t\) ordered pairs at separation \(t\) in each direction.
+Thus the finite variance-inflation coordinate is
+\[
+  I_N=1+2\sum_{t=1}^{N-1}\left(1-\frac{t}{N}\right)\rho_t,
+  \qquad
+  N_{\rm eff}=N/I_N .
+\]
+For neural-state and VMC energy estimates, \eqref{eq:vmc-local-energy-autocorrelation-error}
+is the object reported by an error bar after a window or blocking prescription
+has been declared.  Thermalization, slow-mode monitoring, truncation of the
+autocorrelation window, independent-chain comparison, and the same analysis for
+score--local-energy force coordinates remain part of the sampling-error datum,
+not consequences of the local-energy identity.
+
 The force used in a smooth neural-state or variational-Monte-Carlo
 optimization is an equally finite identity.  Let
 \(\theta=(\theta^a)\) be real local coordinates on a patch of \(\Theta\), and
@@ -1739,8 +1789,10 @@ also verifies the finite variational identities
 \eqref{eq:variational-variance-spectrum-distance}--
 \eqref{eq:variational-score-force-identity}: energy variance as residual
 norm, spectral distance bounded by variance, ground-projection leakage from a
-known finite gap, the tangent-gradient formula, and the local-energy
-Monte Carlo and score-force identities in a finite basis.  It also checks the finite
+known finite gap, the tangent-gradient formula, the local-energy
+Monte Carlo identities, the Markov-chain variance-inflation formula
+\eqref{eq:vmc-local-energy-autocorrelation-error}, and the score-force identity
+in a finite basis.  It also checks the finite
 transfer-operator spectral expansion
 \eqref{eq:mps-transfer-spectral-expansion}, the single-mode effective-mass
 identity \eqref{eq:mps-transfer-effective-mass}, the two-mode contamination

@@ -7,6 +7,7 @@ import pathlib
 import sys
 import math
 from fractions import Fraction
+from itertools import product
 
 import numpy as np
 
@@ -562,6 +563,78 @@ def check_variational_energy_bounds() -> None:
     residual_variance = float(np.linalg.norm((matrix - rayleigh * np.eye(matrix.shape[0])) @ nonzero_vector) ** 2 / norm2)
     assert_close("variational local-energy mean", local_mean, rayleigh)
     assert_close("variational local-energy variance", local_variance, residual_variance)
+
+    rational_matrix = [
+        [Fraction(1), Fraction(1, 3)],
+        [Fraction(1, 3), Fraction(2)],
+    ]
+    rational_vector = [Fraction(1), Fraction(2)]
+    rational_norm2 = sum(component * component for component in rational_vector)
+    rational_probabilities = [component * component / rational_norm2 for component in rational_vector]
+    rational_local_energy = [
+        sum(rational_matrix[row][col] * rational_vector[col] for col in range(2)) / rational_vector[row]
+        for row in range(2)
+    ]
+    rational_energy = sum(prob * value for prob, value in zip(rational_probabilities, rational_local_energy))
+    centered_local_energy = [value - rational_energy for value in rational_local_energy]
+    transition = [
+        [Fraction(3, 5), Fraction(2, 5)],
+        [Fraction(1, 10), Fraction(9, 10)],
+    ]
+    stationary = [
+        sum(rational_probabilities[row] * transition[row][col] for row in range(2))
+        for col in range(2)
+    ]
+    assert_equal("VMC Markov stationary local-energy law", stationary, rational_probabilities)
+
+    gamma0 = sum(
+        prob * centered * centered
+        for prob, centered in zip(rational_probabilities, centered_local_energy)
+    )
+    assert_equal("VMC local-energy gamma zero", gamma0, Fraction(1, 25))
+    sample_count = 5
+    lag_factor = Fraction(1, 2)
+    kernel_power = [
+        [Fraction(1), Fraction(0)],
+        [Fraction(0), Fraction(1)],
+    ]
+    for lag in range(sample_count):
+        gamma_from_kernel = sum(
+            rational_probabilities[row]
+            * centered_local_energy[row]
+            * kernel_power[row][col]
+            * centered_local_energy[col]
+            for row in range(2)
+            for col in range(2)
+        )
+        assert_equal(f"VMC local-energy autocovariance lag {lag}", gamma_from_kernel, gamma0 * (lag_factor**lag))
+        kernel_power = [
+            [
+                sum(kernel_power[row][middle] * transition[middle][col] for middle in range(2))
+                for col in range(2)
+            ]
+            for row in range(2)
+        ]
+
+    variance_inflation = Fraction(1) + 2 * sum(
+        (Fraction(1) - Fraction(lag, sample_count)) * (lag_factor**lag)
+        for lag in range(1, sample_count)
+    )
+    variance_formula = gamma0 * variance_inflation / sample_count
+    enumerated_mean = Fraction(0)
+    enumerated_second_moment = Fraction(0)
+    for path in product(range(2), repeat=sample_count):
+        path_probability = rational_probabilities[path[0]]
+        for index in range(sample_count - 1):
+            path_probability *= transition[path[index]][path[index + 1]]
+        path_mean = sum(rational_local_energy[state] for state in path) / sample_count
+        enumerated_mean += path_probability * path_mean
+        enumerated_second_moment += path_probability * path_mean * path_mean
+    enumerated_variance = enumerated_second_moment - enumerated_mean * enumerated_mean
+    assert_equal("VMC Markov sample mean expectation", enumerated_mean, rational_energy)
+    assert_equal("VMC local-energy variance inflation", variance_inflation, Fraction(89, 40))
+    assert_equal("VMC Markov sample mean variance", enumerated_variance, variance_formula)
+    assert_equal("VMC effective sample size coordinate", Fraction(sample_count, 1) / variance_inflation, Fraction(200, 89))
 
     features = np.array(
         [

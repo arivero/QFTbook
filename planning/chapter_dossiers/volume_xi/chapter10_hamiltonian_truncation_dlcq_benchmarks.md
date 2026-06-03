@@ -79,6 +79,9 @@ numerics.
   finite energy variance for a trial state.
 - `E_loc(x)`, `p_psi(x)`: finite-basis local energy and sampling
   probability used by neural-state and variational Monte Carlo estimates.
+- `gamma_t`, `rho_t`, `I_N`, `N_eff`: finite local-energy Markov-chain
+  autocovariance, normalized autocorrelation, variance-inflation coordinate,
+  and effective sample size for sampled VMC energy estimates.
 - `mathsf s_a(x;theta)`: finite score coordinate
   `partial_a log psi_x(theta)` entering the neural/VMC force identity.
 - `mathbb E`, `mathbb E_O`, `lambda_alpha`, `C_O(n)`, `m_eff(a,n)`:
@@ -181,6 +184,10 @@ numerics.
   orthogonality rather than an eigenvector error bound.
 - Derives the finite local-energy mean and variance identities used by
   sampled neural-state and variational Monte Carlo calculations.
+- Derives the finite local-energy Markov-chain variance identity
+  `Var(Fbar_N)=gamma_0 I_N/N` and the corresponding effective sample size
+  coordinate, separating sampled VMC error bars from thermalization,
+  slow-mode, autocorrelation-window, and optimizer-bias assumptions.
 - Derives the finite score-covariance force identity for smooth
   neural-state/VMC ansatz families, and separates the exact finite gradient
   from optimizer convergence, Markov-chain autocorrelation, residual norm, and
@@ -354,7 +361,8 @@ plots.
   identity, and the
   Krylov/Lanczos Ritz-residual plus finite spectral-moment identities.  It
   also checks variational energy variance, ground-projector leakage,
-  tangent-gradient, local-energy mean/variance and score-force identities, and
+  tangent-gradient, local-energy mean/variance, Markov-chain variance
+  inflation, and score-force identities, and
   the benchmark manifest's passing and failing finite pairwise checks.
 
 ## Anti-Wrapper Audit
@@ -379,6 +387,10 @@ plots.
 - 2026-05-31 third statmech numerical-evidence pass: added correlated-fit
   and fit-window stability coordinates as finite data-analysis algebra, not
   as a theorem that finite extrapolation plots prove continuum QFT claims.
+- 2026-06-03 issue #703 neural/VMC sampling pass: added the finite
+  local-energy Markov-chain variance identity and exact effective-sample-size
+  coordinate, with rational path enumeration checking the sampled-error
+  formula rather than merely citing autocorrelation diagnostics.
 - 2026-06-01 issue #494 scalar-truncation pass: added a nonintegrable
   \(1+1\)-dimensional normal-ordered \(\phi^4\) finite-matrix construction
   and script as a regulator benchmark, with finite Hermiticity and the
