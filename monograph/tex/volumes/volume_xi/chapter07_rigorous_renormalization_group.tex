@@ -4611,6 +4611,43 @@ candidate fixed point in an epsilon expansion, in a hierarchical model, or
 in a finite projection truncation.
 \end{remark}
 
+\paragraph{Proof dependency ledger for the ordinary short-range target.}
+The assembly package below is reconstruction-facing; it is not the whole
+ordinary short-range scalar fixed-point theorem.  The missing theorem has to
+close the following dependency chain in this order.
+\begin{enumerate}
+  \item Construct the exact finite short-range block-spin map, including the
+  microscopic Gibbs measures, reflection-compatible block kernel, source
+  adjoint, finite-volume prescription, and localization map into the declared
+  polymer coordinates.
+  \item Prove that the localized RG map is defined on a Banach polymer chart
+  with uniformly bounded coordinate extraction, large-field regulators,
+  finite-range or summable covariance tails, and irrelevant-activity
+  contraction.
+  \item Build the critical trajectory or stable graph for the ordinary
+  short-range map itself, including relevant-coordinate tuning and the
+  nonsemisimple or marginal normal forms when those occur.
+  \item Extend the same trajectory to source windows: retained local source
+  coordinates, connected polymer derivative norms, thermodynamic boundary
+  tails, and Cauchy estimates must all use common source radii and compatible
+  finite test windows.
+  \item Feed those estimates into the RG-to-OS package: cofinal
+  distributional limits, directed reflection positivity, quotient-stable
+  positive-time translations, OS-II growth, and one common scale schedule for
+  every finite reconstruction demand.
+  \item Identify the target.  Hierarchical, long-range, fermionic,
+  functional-RG, tensor, or numerical fixed points count as ordinary
+  short-range scalar evidence only after auxiliary-to-short-range transfer
+  estimates compare the RG maps, observables, normalizations, and
+  reconstruction topology.
+\end{enumerate}
+A failure at any earlier layer is not repaired by a later finite identity.
+For example, a finite OS Gram-window estimate cannot supply the stable graph;
+a source Cauchy bound cannot supply reflection positivity; and a list of
+critical exponents from an auxiliary model cannot identify the ordinary
+short-range Wilson--Fisher QFT without the transfer estimates of
+Definition~\ref{def:auxiliary-to-short-range-rg-transfer-estimates}.
+
 \paragraph{The ordinary short-range scalar RG-to-OS assembly package.}
 The preceding estimates can be organized into one theorem-facing package.  This
 is not an additional theorem about the three-dimensional Ising or

@@ -317,6 +317,14 @@ constructive RG developments.
   reconstruction demand.  The chapter states this as the theorem-facing
   estimate package needed before applying OS reconstruction, not as an
   already-proved theorem for the ordinary short-range critical scalar target.
+- Adds the ordinary short-range scalar proof-dependency ledger immediately
+  before that assembly package.  The ledger orders the missing theorem into:
+  exact finite block-spin/source/localization construction, Banach polymer
+  chart estimates, stable graph or tuned trajectory, source-window extension,
+  RG-to-OS reconstruction estimates, and finally target identification or
+  auxiliary-to-short-range transfer.  It explicitly says that a later finite
+  identity cannot replace an earlier layer such as the stable graph,
+  reflection positivity, or auxiliary transfer estimates.
 - Defines finite-range fluctuation covariance data and proves the exact
   finite-dimensional Gaussian factorization that makes fluctuation
   integration over separated polymer regions independent.  This identifies
@@ -1054,3 +1062,11 @@ remainder contraction.
   companion short-range RG check verifies the exact rational collision
   between a linear \(e_2\) correction and a quadratic \(e_1^2\) reconstruction
   correction.
+- 2026-06-03 ordinary short-range dependency-ledger pass: added the
+  proof-order ledger before the RG-to-OS assembly package.  The new paragraph
+  makes explicit that the ordinary short-range scalar theorem must first
+  construct the finite block-spin map, Banach polymer chart, stable graph or
+  tuned trajectory, source extension, and common reconstruction schedule, and
+  only then apply the OS assembly package or auxiliary transfer estimates.
+  This is a proof-architecture pass for #505, not another correction-to-scaling
+  cell and not a closure of the model-specific Wilson-Fisher construction.
