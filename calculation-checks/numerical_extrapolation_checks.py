@@ -224,6 +224,25 @@ def check_correlated_fit_coordinates():
         raise AssertionError("correlated fit chi-square coordinate is not finite and nonnegative")
 
 
+def check_window_evidence_budget_decomposition():
+    window_intercepts = [Fraction(19, 10), Fraction(2), Fraction(41, 20)]
+    stat_envelopes = [Fraction(1, 30), Fraction(1, 20), Fraction(1, 25)]
+    systematic_envelopes = [Fraction(1, 40), Fraction(3, 100), Fraction(1, 50)]
+
+    window_spread = max(window_intercepts) - min(window_intercepts)
+    max_stat = max(stat_envelopes)
+    max_systematic = max(systematic_envelopes)
+    evidence_budget = window_spread + max_stat + max_systematic
+
+    assert_equal("window evidence spread", window_spread, Fraction(3, 20))
+    assert_equal("window evidence budget", evidence_budget, Fraction(23, 100))
+    for left in range(len(window_intercepts)):
+        for right in range(len(window_intercepts)):
+            pair_budget = abs(window_intercepts[left] - window_intercepts[right])
+            pair_budget += stat_envelopes[left] + systematic_envelopes[right]
+            assert_leq("window evidence pair bound", pair_budget, evidence_budget)
+
+
 def check_public_correlated_extrapolation_script():
     dataset = finite_extrapolation.smoke_dataset()
     windows = finite_extrapolation.parse_windows("0:5,1:6,0:6", int(dataset.regulators.size))
@@ -254,12 +273,44 @@ def check_public_correlated_extrapolation_script():
     expected_systematic = float(np.sum(np.abs(propagator[0, :]) * dataset.remainder_envelopes[:5]))
     assert_close("public extrapolation systematic coordinate", first["intercept_systematic_bound"], expected_systematic)
 
+    intercepts = [float(entry["intercept"]) for entry in result["windows"]]
+    stat_errors = [float(entry["intercept_stat_error"]) for entry in result["windows"]]
+    systematic_bounds = [float(entry["intercept_systematic_bound"]) for entry in result["windows"]]
+    expected_spread = max(intercepts) - min(intercepts)
+    expected_max_stat = max(stat_errors)
+    expected_max_systematic = max(systematic_bounds)
+    expected_budget = expected_spread + expected_max_stat + expected_max_systematic
+    assert_close("public extrapolation window-spread component", result["window_intercept_spread"], expected_spread)
+    assert_close("public extrapolation max statistical component", result["max_intercept_stat_error"], expected_max_stat)
+    assert_close(
+        "public extrapolation max systematic component",
+        result["max_intercept_systematic_bound"],
+        expected_max_systematic,
+    )
+    assert_close("public extrapolation finite evidence budget", result["finite_evidence_budget"], expected_budget)
+    assert_close(
+        "public extrapolation budget component spread",
+        result["evidence_budget_components"]["window_intercept_spread"],
+        expected_spread,
+    )
+    assert_close(
+        "public extrapolation budget component statistical",
+        result["evidence_budget_components"]["max_intercept_stat_error"],
+        expected_max_stat,
+    )
+    assert_close(
+        "public extrapolation budget component systematic",
+        result["evidence_budget_components"]["max_intercept_systematic_bound"],
+        expected_max_systematic,
+    )
+
 
 def main():
     check_finite_data_do_not_determine_limit()
     check_two_cutoff_richardson()
     check_integer_power_weights()
     check_correlated_fit_coordinates()
+    check_window_evidence_budget_decomposition()
     check_public_correlated_extrapolation_script()
     print("All numerical extrapolation checks passed.")
 

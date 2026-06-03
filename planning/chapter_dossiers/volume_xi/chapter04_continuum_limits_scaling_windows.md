@@ -66,16 +66,25 @@
 11. Step scaling is defined by a finite-volume observable coordinate and a
     continuum \(a/L\to0\) limit at fixed \(g_L=u\); its Symanzik
     extrapolation must state exponents and a remainder bound.
-12. Composite-operator continuum coordinates require Wick/contact-term
+12. A numerical scaling-window evidence package must state the observable
+    coordinate, regulator schedule, covariance/autocorrelation data, fit
+    windows, exponent and remainder hypotheses, rank/conditioning diagnostics,
+    and the statistical, systematic, and window-stability components of the
+    finite evidence budget \(B_{\rm num}\).
+13. The finite numerical evidence ledger is a weighted least-squares identity:
+    \(\widehat c_W-c=P_WR_W+P_W\eta_W\), with propagated covariance
+    \(P_W\Sigma_WP_W^T\) and deterministic intercept envelope
+    \(\sum_i |(P_W)_{0i}|\epsilon_i\).
+14. Composite-operator continuum coordinates require Wick/contact-term
    subtractions; finite changes of subtraction are identity contact
    coordinates after smearing.
-13. Reflection positivity passes to the continuum limit by closedness of the
+15. Reflection positivity passes to the continuum limit by closedness of the
    positive cone when the distributions converge on positive-time tests.
-14. Hypercubic invariance becomes Euclidean invariance only after
+16. Hypercubic invariance becomes Euclidean invariance only after
    rotation-breaking local operators are controlled or tuned away.
-15. The relation \(\nu=1/y_t\) follows from a controlled one-relevant-coordinate
+17. The relation \(\nu=1/y_t\) follows from a controlled one-relevant-coordinate
    RG chart and stable-manifold estimates.
-16. The constructive status of massive \(\phi^4_3\), the 3D Ising CFT, and
+18. The constructive status of massive \(\phi^4_3\), the 3D Ising CFT, and
     four-dimensional \(\phi^4_4\) are logically distinct.
 
 ## Calculation Checks
@@ -87,6 +96,11 @@
   \(\nu=1/y_t\) relation, finite-size endpoint variables, irrelevant
   corrections, physical finite-volume scaling variables, and finite
   Wick-subtraction contact shifts.
+- `calculation-checks/numerical_extrapolation_checks.py` verifies exact
+  finite-regulator extrapolation identities, including Lagrange
+  nonuniqueness, Richardson and integer-power weights, correlated
+  least-squares covariance/error propagation, and the finite evidence-budget
+  decomposition used by `qft_scripts/finite_regulator_extrapolation.py`.
 
 ## Figure Ledger
 

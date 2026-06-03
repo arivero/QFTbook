@@ -208,9 +208,10 @@ per task.
   extrapolation diagnostic.  It reads finite data, an optional covariance
   matrix, declared remainder envelopes, and one or more fit windows; it
   reports fitted intercepts, propagated statistical errors, deterministic
-  systematic coordinates, residuals, and window spread.  It is a data-analysis
-  check for a declared finite-regulator ansatz, not a proof of the
-  ansatz.
+  systematic coordinates, residuals, window spread, and the finite
+  evidence-budget decomposition used for scaling-window audits.  It is a
+  data-analysis check for a declared finite-regulator ansatz, not a proof of
+  the ansatz.
 - `benchmark_manifest_consistency.py`: finite cross-method benchmark-manifest
   checker.  It reads a JSON manifest containing a target observable,
   method-specific normalized coordinates, statistical errors, regulator

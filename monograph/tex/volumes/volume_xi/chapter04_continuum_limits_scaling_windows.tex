@@ -534,6 +534,122 @@ coordinate.  It must be included in the scaling data or eliminated by an
 explicit interpolation estimate; ignoring it is harmless only after that
 bounded-coordinate dependence has been controlled.
 
+\begin{definition}[Numerical scaling-window evidence package]
+\label{def:numerical-scaling-window-evidence-package}
+Fix a finite-volume continuum coordinate such as
+Definition~\ref{def:step-scaling-coordinate}, and write \(q_i=a_i/L\) for
+the cutoff coordinate on a chosen set of regulator values.  A numerical
+scaling-window evidence package for a continuum value \(c_0\) consists of
+finite data \(Y_i\), a covariance matrix \(\Sigma\), remainder envelopes
+\(\epsilon_i\ge0\), accepted fit windows \(W\), and declared exponents
+\[
+  0=\omega_0<\omega_1<\cdots<\omega_p ,
+\]
+such that, on each accepted window,
+\begin{equation}
+  Y_i
+  =
+  \sum_{\ell=0}^p c_\ell q_i^{\omega_\ell}
+  +
+  R_i+\eta_i,
+  \qquad
+  |R_i|\le\epsilon_i,
+  \qquad
+  \mathbb E\eta_i=0,\quad
+  \operatorname{Cov}(\eta)=\Sigma .
+  \label{eq:numerical-scaling-window-evidence-model}
+\end{equation}
+For a window \(W\), let \(X_W\) be the design matrix
+\((X_W)_{i\ell}=q_i^{\omega_\ell}\).  The package must record that \(X_W\)
+has full column rank, that \(\Sigma_W\) is positive definite, and that the
+weighted least-squares propagator
+\begin{equation}
+  P_W
+  =
+  (X_W^T\Sigma_W^{-1}X_W)^{-1}X_W^T\Sigma_W^{-1}
+  \label{eq:numerical-scaling-window-propagator}
+\end{equation}
+is the map used to report \(\widehat c_W=P_WY_W\).
+\end{definition}
+
+\begin{lemma}[Finite numerical evidence ledger]
+\label{lem:finite-numerical-evidence-ledger}
+For every accepted window in
+Definition~\ref{def:numerical-scaling-window-evidence-package},
+\begin{equation}
+  \widehat c_W-c=P_WR_W+P_W\eta_W,
+  \qquad
+  \operatorname{Cov}(\widehat c_W)=P_W\Sigma_WP_W^T .
+  \label{eq:finite-numerical-evidence-ledger}
+\end{equation}
+In particular the continuum-coordinate component satisfies
+\begin{equation}
+  |(\widehat c_W)_0-c_0|
+  \le
+  \sum_{i\in W}|(P_W)_{0i}|\,\epsilon_i
+  +
+  |(P_W\eta_W)_0| .
+  \label{eq:finite-numerical-intercept-envelope}
+\end{equation}
+If the accepted windows are collected in \(\mathcal W\), a finite evidence
+budget may be reported as
+\begin{equation}
+  B_{\rm num}
+  =
+  \left(
+    \max_{W\in\mathcal W}(\widehat c_W)_0
+    -
+    \min_{W\in\mathcal W}(\widehat c_W)_0
+  \right)
+  +
+  \max_{W\in\mathcal W}\delta_{\rm stat}(W)
+  +
+  \max_{W\in\mathcal W}\delta_{\rm sys}(W),
+  \label{eq:numerical-scaling-window-evidence-budget}
+\end{equation}
+where
+\[
+  \delta_{\rm sys}(W)=\sum_{i\in W}|(P_W)_{0i}|\,\epsilon_i
+\]
+and \(\delta_{\rm stat}(W)\) is a stated statistical convention, for
+example \(\sqrt{(P_W\Sigma_WP_W^T)_{00}}\) or a block-resampling confidence
+envelope.
+\end{lemma}
+
+\begin{proof}
+Equation~\eqref{eq:numerical-scaling-window-evidence-model} on the selected
+window is \(Y_W=X_Wc+R_W+\eta_W\).  Since
+\[
+  P_WX_W=I
+\]
+by the full-rank assumption and the definition of \(P_W\), applying \(P_W\)
+gives the first identity in
+\eqref{eq:finite-numerical-evidence-ledger}.  The covariance identity follows
+from linear propagation of the centered fluctuation \(\eta_W\).  Taking the
+zeroth component and applying the triangle inequality to the deterministic
+remainder term gives
+\eqref{eq:finite-numerical-intercept-envelope}; the statistical term remains
+probabilistic until a confidence or resampling convention is declared.
+\end{proof}
+
+The evidence package also records the observable coordinate and tuning
+condition, the finite-volume geometry, the regulator schedule, autocorrelation
+or blocking diagnostics for \(\Sigma\), the chosen exponent list and
+remainder hypothesis, rank and condition-number diagnostics for each window,
+residuals and \(\chi^2\) coordinates, and independent action or observable
+cross-checks when a universality claim is being made.  These data make a
+finite numerical result reproducible and auditable.  They still do not
+replace the continuum theorem: the Symanzik or RG expansion, finite-volume
+control, operator-coordinate estimates, and reconstruction target remain the
+mathematical inputs that turn the finite ledger into a continuum statement.
+The companion script
+\[
+  \texttt{qft\_scripts/finite\_regulator\_extrapolation.py}
+\]
+implements the finite linear algebra in
+Lemma~\ref{lem:finite-numerical-evidence-ledger} and reports the budget
+\eqref{eq:numerical-scaling-window-evidence-budget}.
+
 \section{Operator Coordinates and Contact Terms}
 
 Renormalized operator coordinates are part of the continuum-limit input.

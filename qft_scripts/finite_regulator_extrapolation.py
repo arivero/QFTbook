@@ -2,14 +2,15 @@
 """Correlated finite-regulator extrapolation diagnostics.
 
 The script implements the finite linear algebra described in the monograph's
-Hamiltonian-truncation/DLCQ chapter.  It fits finite data to
+finite-regulator and scaling-window chapters.  It fits finite data to
 
     A_K = c_0 + c_1 K^{-omega} + ... + c_p K^{-p omega}
 
 on one or more fit windows, propagates a declared covariance matrix, and
 reports the deterministic systematic coordinate obtained from declared
-remainder envelopes.  The output is a finite-regulator diagnostic.  It is not
-a proof that a QFT observable has the chosen cutoff expansion.
+remainder envelopes together with a finite evidence-budget summary.  The
+output is a finite-regulator diagnostic.  It is not a proof that a QFT
+observable has the chosen cutoff expansion.
 """
 
 from __future__ import annotations
@@ -226,16 +227,32 @@ def run(dataset: DataSet, fit_order: int, base_exponent: float, windows: Sequenc
                 ),
             }
         )
+    require(bool(results), "at least one fit window is required")
     intercepts = np.array([entry["intercept"] for entry in results], dtype=float)
+    stat_errors = np.array([entry["intercept_stat_error"] for entry in results], dtype=float)
+    systematic_bounds = np.array([entry["intercept_systematic_bound"] for entry in results], dtype=float)
+    window_intercept_spread = float(np.max(intercepts) - np.min(intercepts)) if len(intercepts) > 1 else 0.0
+    max_stat_error = float(np.max(stat_errors))
+    max_systematic_bound = float(np.max(systematic_bounds))
+    finite_evidence_budget = window_intercept_spread + max_stat_error + max_systematic_bound
     return {
         "fit_order": int(fit_order),
         "base_exponent": float(base_exponent),
         "covariance_source": dataset.covariance_source,
         "windows": results,
-        "window_intercept_spread": float(np.max(intercepts) - np.min(intercepts)) if len(intercepts) > 1 else 0.0,
+        "window_intercept_spread": window_intercept_spread,
+        "max_intercept_stat_error": max_stat_error,
+        "max_intercept_systematic_bound": max_systematic_bound,
+        "finite_evidence_budget": float(finite_evidence_budget),
+        "evidence_budget_components": {
+            "window_intercept_spread": window_intercept_spread,
+            "max_intercept_stat_error": max_stat_error,
+            "max_intercept_systematic_bound": max_systematic_bound,
+        },
         "interpretation": (
             "finite correlated extrapolation diagnostic only; continuum control requires "
-            "a separately proved cutoff expansion and remainder estimate"
+            "a separately proved cutoff expansion, remainder estimate, and scaling-window "
+            "or reconstruction argument"
         ),
     }
 
