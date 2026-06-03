@@ -35,6 +35,8 @@ relations
     the amputated hard kernel
     hard external momenta convert the Nf=2 four-fermion size integral into a
     Q^(-2) coefficient and exponentially suppress the large-rho endpoint
+    trading the one-loop action for Lambda_ht gives the full hard scaling
+    Lambda_ht^b0 Q^(-b0-2), with net coefficient dimension -2
     mass-saturated QCD vacuum activity carries prod_f(m_f rho), depends on
     theta+arg det M, is locally small-rho finite when b0+Nf>4, and is
     infrared-uncontrolled in zero-temperature QCD if the same one-loop power
@@ -971,6 +973,20 @@ def check_hard_momentum_instanton_size_window() -> None:
         "hard Nf=2 coefficient equals four-fermion operator dimension",
         coefficient_q_power,
         Fraction(4 - 3 * n_f),
+    )
+
+    # If exp[-8*pi^2/g(Q)^2] is traded for Lambda_ht^b0 Q^(-b0), the hard
+    # coefficient falls as Lambda_ht^b0 Q^(-b0-2), up to logarithmic
+    # collective-coordinate prefactors.  The combined mass dimension remains
+    # the four-fermion coefficient dimension.
+    running_exponential_q_power = -b0
+    lambda_power = b0
+    full_hard_q_power = running_exponential_q_power + coefficient_q_power
+    assert_equal("hard Nf=2 full asymptotic Q power", full_hard_q_power, -b0 - 2)
+    assert_equal(
+        "hard Nf=2 Lambda/Q dimension",
+        lambda_power + full_hard_q_power,
+        Fraction(-2),
     )
 
     # A determinant term has two zero-mode source entries.  If both momentum

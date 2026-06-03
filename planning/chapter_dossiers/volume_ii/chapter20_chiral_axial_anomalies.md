@@ -78,7 +78,9 @@
   moment controlling the first nonzero derivative correction to the local
   vertex.  The hard-amplitude continuation adds the \(N_f=2\) hard-momentum
   size window, where the same form factors give a \(Q^{-2}\) four-fermion
-  coefficient and exponentially suppress large instantons.
+  coefficient at \(\mu=Q\), the RG-invariant
+  \(\Lambda_{\rm ht}^{b_0}Q^{-b_0-2}\) hard falloff, and exponential
+  suppression of large instantons.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
@@ -204,7 +206,7 @@
 | \(B_{\eta,ff'}(z)\) | zero-mode-projected source matrix for smeared four-fermion wave packets in the instanton background |
 | \(G^{(4)}_{\eta,\Lambda,Q=1}\) | finite-regulator one-instanton contribution to the smeared four-fermion amplitude |
 | \(h_\rho(y),\widehat h_\rho(q),M_2(R)\) | normalized BPST zero-mode radial envelope, momentum form factor \(zK_1(z)\), and truncated second moment in the local-vertex expansion |
-| \(\mathcal I_{\rm hard}(Q)\) | hard-momentum \(N_f=2\) instanton size factor |
+| \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(c_1,c_2)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless form-factor integral |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
 | \(\zeta_m^{[\rho_-,\rho_+]}\) | mass-saturated one-instanton vacuum activity in a finite size window |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
@@ -486,11 +488,17 @@
     s^{b_0+1}
     \prod_{\ell=1}^{2}(c_\ell sK_1(c_\ell s))\,ds .
   \]
-  The hard form factors exponentially suppress large instantons, so the
-  amplitude is controlled by \(\rho=O(Q^{-1})\) when that range is weakly
-  coupled.  The mass-saturated vacuum theta term below has no such hard
-  external cutoff, which is why its large-\(\rho\) behavior is an infrared
-  input rather than a semiclassical output.
+  This \(Q^{-2}\) is the engineering dimension ledger at \(\mu=Q\).  Rewriting
+  the one-loop action as
+  \(\exp[-8\pi^2/g_{\rm ht}^2(Q)]=(\Lambda_{\rm ht}/Q)^{b_0}\) gives the full
+  hard asymptotic factor
+  \(\Lambda_{\rm ht}^{b_0}Q^{-b_0-2}\mathcal J_{b_0}(c_1,c_2)\), up to the
+  logarithmic collective-coordinate prefactor and higher-loop matching.  The
+  hard form factors exponentially suppress large instantons, so the amplitude
+  is controlled by \(\rho=O(Q^{-1})\) when that range is weakly coupled.  The
+  mass-saturated vacuum theta term below has no such hard external cutoff,
+  which is why its large-\(\rho\) behavior is an infrared input rather than a
+  semiclassical output.
 - For massive vectorlike QCD, the vacuum instanton term is now separated as a
   finite-size-window activity:
   \[
@@ -759,3 +767,10 @@
   mass-saturated vacuum activity.  The BPST check script now verifies the
   small-\(\rho\) margin, \(Q\)-power ledger, hard exponential cutoff, and
   absence of such a cutoff in the vacuum term.
+- 2026-06-03 issue #597 hard-RG scaling pass: extended the same hard-size
+  window by separating the \(\mu=Q\) engineering \(Q^{-2}\) ledger from the
+  RG-invariant one-loop asymptotic form
+  \(\Lambda_{\rm ht}^{b_0}Q^{-b_0-2}\mathcal J_{b_0}\).  The BPST check script
+  now verifies the additional running-exponential \(Q^{-b_0}\), the
+  \(\Lambda_{\rm ht}^{b_0}\) mass dimension, and the resulting net
+  four-fermion coefficient dimension.
