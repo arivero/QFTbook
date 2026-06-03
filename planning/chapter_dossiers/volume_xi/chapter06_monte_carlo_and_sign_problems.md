@@ -5,7 +5,10 @@
 This chapter follows Wilson lattice gauge theory by describing how
 finite-regulator Euclidean integrals are estimated and where positivity
 breaks down.  It prepares later numerical and lattice-continuum comparison
-chapters.
+chapters.  The front of the chapter now fixes a production-evidence
+architecture that separates finite target measure, invariant kernel theorem,
+implementation-defect record, estimator/error record, observable-analysis map,
+and scaling-window inference.
 
 ## Notation Inventory
 
@@ -88,6 +91,10 @@ chapters.
 
 ## Claim Ledger
 
+- Defines a production evidence architecture for lattice Monte Carlo outputs:
+  target finite measure, invariant Markov kernel, implementation-defect
+  record, estimator and covariance analysis, nonlinear observable map, and
+  scaling-window evidence package in the sense of Volume XI Chapter 4.
 - Defines finite-regulator expectation values as finite-dimensional
   probability integrals.
 - States the detailed-balance condition and convergence role of Markov-chain
@@ -336,3 +343,6 @@ the exponential decay of average phase with volume.
   Metropolis warmup requested by the numerical-methods issue, with manuscript
   stability/detailed-balance derivation, public script, and paired
   calculation-check coverage.
+- 2026-06-03 issue #631 architecture pass: added a front-loaded production
+  evidence ladder for lattice Monte Carlo outputs and tied the public script
+  README to the same layer structure.

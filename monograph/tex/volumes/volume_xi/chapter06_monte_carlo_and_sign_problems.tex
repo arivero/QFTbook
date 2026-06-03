@@ -9,6 +9,64 @@ finite-dimensional integration problem plus a convergence theorem for a
 Markov chain.  Their limitation in many QFTs is the absence of a positive
 sampling weight compatible with the target observable.
 
+\section{Production Evidence Architecture}
+\label{sec:monte-carlo-production-evidence-architecture}
+
+A lattice Monte Carlo output becomes evidence through a layered finite record.
+The first layer is the target finite measure: the regulator space, boundary
+conditions, action, source insertions, observables, and normalization
+convention.  This layer fixes the mathematical object
+\[
+  (\Omega_\Lambda,d\nu_\Lambda;O_1,\ldots,O_k)
+\]
+before any algorithm is discussed.  A quoted number without this datum is not
+yet an estimate of a QFT observable; it is at most an entry in an unidentified
+finite computation.
+
+The second layer is the invariant Markov kernel.  For a Metropolis,
+heat-bath, overrelaxation-assisted, HMC, or RHMC computation, the chapter
+separates the proof that a finite kernel preserves \(d\nu_\Lambda\) from the
+empirical question of how well a particular run explores that measure.  The
+theorem layer records the exact proposal law, the acceptance rule or
+conditional distribution, the reversibility or detailed-balance identity, and
+the irreducibility or Harris-recurrence hypotheses invoked by the estimator.
+
+The third layer is the implementation-defect record.  A production lattice
+run records the random-number state, checkpoint format, code revision,
+floating-point precision, linear-solver tolerance, integrator step data,
+Hamiltonian-change distribution, reversibility defect, rational approximation
+interval, and any reweighting convention.  On a cluster this layer also
+contains the job manifest: array coordinate, input deck, environment module
+set, executable hash when available, wall-clock limits, restart policy, and
+the HDF5 or table schema for outputs.  These data make the finite Markov
+chain reproducible enough for an independent rerun and make approximation
+defects visible as finite numbers.
+
+The fourth layer is the estimator and error-analysis record.  It contains
+thermalization cuts, stationarity diagnostics, autocorrelation estimates,
+blocking choices, jackknife or bootstrap covariance estimates, and the rule
+by which nonlinear observables are recomputed on deleted or resampled blocks.
+Wilson-loop effective masses, Creutz ratios, static-source GEVP energies,
+and glueball GEVP energies belong to this layer as functions of correlated
+finite samples, not as independent scalar measurements.
+
+The final layer is the scaling-window transfer to continuum language.  A
+finite production ensemble enters a continuum claim only as input to a
+scaling-window evidence package in the sense of
+Definition~\ref{def:numerical-scaling-window-evidence-package} of
+Chapter~\ref{ch:constructive-continuum-limits-scaling-windows}: selected
+regulator points, covariance data, finite-volume and cutoff coordinates,
+fit ansatz, stability tests, and an evidence-budget decomposition.  The
+output of this chapter is therefore an admissible finite evidence record; the
+continuum interpretation is a further structured inference with its own
+hypotheses.
+
+This architecture governs the examples below.  The small companion scripts
+illustrate individual layers, while the HDF5 samplers and cluster templates
+show how the layers can be serialized.  A full numerical claim must name the
+layer at which each assertion lives: invariant measure, implementation
+defect, estimator error, observable analysis, or scaling-window inference.
+
 \section{Finite-Regulator Expectation Values}
 
 Let \(\Omega_\Lambda\) be a finite-dimensional regulator space and let
@@ -1261,7 +1319,9 @@ algorithmic data, not consequences of QFT axioms.
 
 \paragraph{Solver, rationalization, and reversibility checks.}
 A production HMC or RHMC run must record more than the target action and the
-measured observables.  At finite regulator the algorithmic check record
+measured observables.  This is the implementation-defect layer of
+Section~\ref{sec:monte-carlo-production-evidence-architecture}.  At finite
+regulator the algorithmic check record
 contains the integrator step size \(\epsilon\), the number of leapfrog or
 Omelyan steps, the momentum-refresh law, the linear solver, the rational
 approximation interval \([\lambda_-,\lambda_+]\), the solver tolerance, and

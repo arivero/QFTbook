@@ -60,6 +60,13 @@ For each script, the check record consists of four pieces:
 4. an explicit scope boundary stating what continuum, infinite-volume,
    large-cutoff, or production-ensemble claim is not proved.
 
+For cluster or production-like runs, read the result through the production
+evidence architecture of Volume XI, Chapter 6: finite target measure,
+invariant kernel theorem, implementation-defect record, estimator/error
+record, observable-analysis map, and scaling-window evidence package.  The
+JSON, HDF5, CSV, manifest, and checkpoint fields are designed to occupy those
+layers rather than stand alone as a physical conclusion.
+
 The smoke harness checks implementation health.  It does not prove a
 continuum limit, a physical spectrum, a mass gap, confinement, universality,
 or a systematic-error envelope.
