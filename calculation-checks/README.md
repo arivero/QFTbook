@@ -479,8 +479,11 @@ Current checks:
   modified-Cook derivative tails give decreasing dyadic inner-product
   bounds, a wrong logarithmic coefficient leaves a persistent dyadic phase
   obstruction, and finite same-flux phase changes are Cauchy.  It also checks
-  the finite
-  spectral-measure arithmetic behind the nonconfining charged-sector
+  the finite asymptotic null-quotient wave-map algebra: an overcomplete
+  charged asymptotic Gram matrix has the null relation \(e_1+e_2-e_3=0\),
+  and quotienting by that relation makes the physical wave-map assignment
+  isometric.  It also checks the finite spectral-measure arithmetic behind
+  the nonconfining charged-sector
   boundary: common finite-energy windows, Markov's sufficient first-moment
   estimate, and linear string-energy escape beyond every fixed cutoff.
   It also checks soft coherent

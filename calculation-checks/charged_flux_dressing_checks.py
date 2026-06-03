@@ -426,6 +426,89 @@ def check_dollard_scalar_product_cauchy_criterion() -> None:
         previous_phase_tail = phase_tail
 
 
+def check_asymptotic_null_quotient_wave_map_cell() -> None:
+    """Check the finite null-quotient algebra for charged wave maps."""
+
+    physical_vectors = (
+        (Fraction(1), Fraction(0)),
+        (Fraction(0), Fraction(1)),
+        (Fraction(1), Fraction(1)),
+    )
+    gram = tuple(
+        tuple(
+            sum(left[k] * right[k] for k in range(2))
+            for right in physical_vectors
+        )
+        for left in physical_vectors
+    )
+    expected_gram = (
+        (Fraction(1), Fraction(0), Fraction(1)),
+        (Fraction(0), Fraction(1), Fraction(1)),
+        (Fraction(1), Fraction(1), Fraction(2)),
+    )
+    assert_equal("charged asymptotic finite Gram matrix", gram, expected_gram)
+
+    null_relation = (Fraction(1), Fraction(1), Fraction(-1))
+    assert_equal(
+        "charged asymptotic null relation G n",
+        mat_vec(gram, null_relation),
+        (Fraction(0), Fraction(0), Fraction(0)),
+    )
+
+    def physical_projection(coefficients: tuple[Fraction, Fraction, Fraction]) -> tuple[Fraction, Fraction]:
+        return (
+            coefficients[0] + coefficients[2],
+            coefficients[1] + coefficients[2],
+        )
+
+    def gram_quadratic(coefficients: tuple[Fraction, Fraction, Fraction]) -> Fraction:
+        return sum(
+            coefficients[i] * gram[i][j] * coefficients[j]
+            for i in range(3)
+            for j in range(3)
+        )
+
+    samples = (
+        (Fraction(2), Fraction(-1), Fraction(3)),
+        (Fraction(5), Fraction(2), Fraction(0)),
+        (Fraction(-4), Fraction(7), Fraction(1)),
+    )
+    for coefficients in samples:
+        projected = physical_projection(coefficients)
+        assert_equal(
+            f"charged asymptotic Gram equals physical norm {coefficients}",
+            gram_quadratic(coefficients),
+            projected[0] * projected[0] + projected[1] * projected[1],
+        )
+
+    overcomplete = (Fraction(2), Fraction(-1), Fraction(3))
+    refined = (
+        overcomplete[0] + overcomplete[2],
+        overcomplete[1] + overcomplete[2],
+        Fraction(0),
+    )
+    difference = tuple(left - right for left, right in zip(overcomplete, refined))
+    assert_equal(
+        "same physical projection after packet refinement",
+        physical_projection(overcomplete),
+        physical_projection(refined),
+    )
+    assert_equal(
+        "refinement difference is a null vector",
+        difference,
+        tuple(-3 * entry for entry in null_relation),
+    )
+    assert_equal("null difference has zero asymptotic norm", gram_quadratic(difference), Fraction(0))
+
+    for coefficients in samples:
+        mixed_null_pairing = sum(
+            coefficients[i] * gram[i][j] * difference[j]
+            for i in range(3)
+            for j in range(3)
+        )
+        assert_equal("null vector pairs trivially with every sample", mixed_null_pairing, Fraction(0))
+
+
 def catches_equal_velocity_error() -> bool:
     try:
         many_body_dollard_log_coefficient_1d(
@@ -898,6 +981,7 @@ def main() -> None:
     check_modified_cook_integrability_bookkeeping()
     check_pair_coefficient_residual_budget()
     check_dollard_scalar_product_cauchy_criterion()
+    check_asymptotic_null_quotient_wave_map_cell()
     check_truncation_schedule_tail_uniformity()
     check_finite_energy_spectral_tightness_boundary()
     check_soft_profile_velocity_separation()

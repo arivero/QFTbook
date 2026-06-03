@@ -1912,6 +1912,58 @@ gauge-invariant composite charged operators.  For an unscreened Gauss-law
 charge, the flux tail is part of the asymptotic datum, so any theorem must
 include it from the start.
 
+\paragraph{Finite null-quotient ledger.}
+The quotient in Construction~\ref{cons:charged-dollard-cook-wave-maps} is not
+a cosmetic step.  It is the finite-dimensional algebra which lets packet
+refinements and same-flux coordinate redundancies coexist with a genuine
+asymptotic Hilbert space.  Suppose three asymptotic symbols \(e_1,e_2,e_3\)
+have physical large-time limits
+\[
+  \xi_1=(1,0),\qquad
+  \xi_2=(0,1),\qquad
+  \xi_3=(1,1)
+\]
+in a two-dimensional Hilbert space.  Their asymptotic scalar-product matrix is
+\begin{equation}
+  G_{ab}=\langle \xi_a,\xi_b\rangle
+  =
+  \begin{pmatrix}
+    1&0&1\\
+    0&1&1\\
+    1&1&2
+  \end{pmatrix}.
+  \label{eq:charged-asymptotic-gram-finite-cell}
+\end{equation}
+The matrix is positive semidefinite, not positive definite.  Its null vector
+is
+\begin{equation}
+  n=e_1+e_2-e_3,
+  \qquad
+  G n=0 .
+  \label{eq:charged-asymptotic-null-relation-cell}
+\end{equation}
+Thus \(e_3\) is the same asymptotic vector as the refinement \(e_1+e_2\).
+For any coefficient vector \(c=(c_1,c_2,c_3)\),
+\[
+  c^*Gc
+  =
+  |c_1+c_3|^2+|c_2+c_3|^2
+  =
+  \left\|
+    c_1\xi_1+c_2\xi_2+c_3\xi_3
+  \right\|^2 .
+\]
+Quotienting by the null relation is therefore exactly what makes the
+wave-map assignment \(e_a\mapsto\xi_a\) well defined and isometric.  If
+\((c_1,c_2,c_3)\) is replaced by
+\((c_1+c_3,c_2+c_3,0)\), the two coefficient vectors differ by a multiple of
+\(n\) and define the same asymptotic state.  In the charged theorem this
+finite cell is replaced by the directed family of packet refinements and
+same-flux coordinate relations.  The nontrivial analytic work is still the
+existence of the limits \(G_{ab}\) from Wilson-line or Coulomb-dressed
+creators; once those limits are supplied, the null quotient is ordinary
+Hilbert-space bookkeeping.
+
 \subsection{Dressed Correlators and Wave-Map Matrix Elements}
 
 The wave-map construction above is formulated in Hilbert space.  A

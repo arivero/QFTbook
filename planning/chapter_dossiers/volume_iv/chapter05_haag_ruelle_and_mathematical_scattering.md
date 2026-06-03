@@ -147,6 +147,13 @@ resonances.
   imply Cauchy scalar products in the charged asymptotic representation,
   whereas a wrong logarithmic Dollard coefficient leaves the nonconvergent
   factor \(\exp(i\delta\log t)\).
+- Adds the finite null-quotient ledger behind the charged Dollard--Cook
+  wave-map construction: an overcomplete asymptotic symbol frame with Gram
+  matrix
+  \(\begin{psmallmatrix}1&0&1\\0&1&1\\1&1&2\end{psmallmatrix}\) has null
+  relation \(e_1+e_2-e_3=0\), so packet-refinement and same-flux coordinate
+  redundancies are removed by the Hilbert-space quotient before the wave map
+  becomes isometric.
 - Proves a finite-regulator dressed LSZ theorem under explicit Hilbert-space,
   pole, and dressed-wave-operator hypotheses.  The theorem now distinguishes
   the general rectangular dressed-coordinate case, handled by a left inverse
@@ -402,3 +409,10 @@ resonances.
   leaves \(\exp(i\delta\log t)\), hence no scalar-product limit.  The
   companion check verifies the dyadic Cauchy bound, the wrong-phase
   obstruction, and finite same-flux phase changes.
+- 2026-06-03 #527 null-quotient pass: added the finite asymptotic
+  Gram/null-quotient cell after the charged Dollard--Cook wave-map
+  construction.  The worked ledger shows explicitly how the null relation
+  \(e_1+e_2-e_3=0\) makes an overcomplete same-flux/refinement frame descend
+  to a genuine asymptotic Hilbert vector and isometric wave map.  The
+  charged-flux companion check verifies the Gram matrix, null relation, and
+  refinement equivalence by exact rational arithmetic.
