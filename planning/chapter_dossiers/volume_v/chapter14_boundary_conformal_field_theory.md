@@ -16,6 +16,10 @@
 - Defines an oriented bosonic BCFT datum with boundary-condition labels,
   interval Hilbert spaces, boundary operators, bulk-to-boundary OPE maps, and
   bordered-surface sewing.
+- Adds an explicit sewing-architecture guide that organizes the chapter into
+  Virasoro/annulus kinematics, genus-zero diagonal sewing, rational
+  Frobenius-module mechanisms, nonrational direct-integral/contour data, and
+  the remaining all-surface analytic theorem boundary.
 - States the conformal boundary condition `T = Tbar` on the upper half-plane.
 - Proves that stress-tensor gluing preserves one Virasoro algebra and yields
   the closed-channel condition `(L_n - Lbar_{-n})|B> = 0`.
@@ -389,3 +393,9 @@
   accounting cell showing that a crossed pole contributes a rank-one
   evaluation functional, plus exact rational checks that multiple residue
   additions commute and that omitting one residue changes the sewing channel.
+- 2026-06-03 architecture/coherence pass: added a chapter-level sewing guide,
+  moved the bulk/classifying-algebra block before the pointed \(G/H\)
+  example, and consolidated the pointed formulas as one finite sewing
+  laboratory.  The annulus, Fourier, boundary-OPE, stabilizer-idempotent, and
+  two-point-pairing cells now read as a single rational module mechanism
+  rather than as detached local ledgers.

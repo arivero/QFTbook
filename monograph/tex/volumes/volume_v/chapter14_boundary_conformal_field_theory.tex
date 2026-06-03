@@ -51,6 +51,28 @@ The same closed CFT can admit many inequivalent choices of \(\mathsf B\) and
 sewing data.
 \end{definition}
 
+\paragraph{How the sewing data are organized in this chapter.}
+The definition above is deliberately broader than any one construction.  The
+chapter develops its consequences in four layers.  First come the kinematic
+Virasoro and annulus constraints: stress-tensor gluing gives one preserved
+chiral algebra, Ishibashi states solve the closed-channel linear gluing
+equations, and Cardy's diagonal solution is the first complete rational test.
+Second come the genus-zero sewing equations: boundary OPE associativity,
+disk bulk-boundary classifying coordinates, direct-sum boundary conditions,
+and the finite Ising sewing cell show exactly which finite algebra is being
+checked in the diagonal case.  Third come the two non-diagonal directions.
+For rational chiral data the Frobenius-algebra/module formalism supplies the
+local algebraic mechanism behind annuli, boundary OPEs, classifying
+projectors, and two-point pairings; the pointed \(G/H\) example is one
+coherent finite model of those four shadows.  For nonrational data the
+Liouville/FZZT discussion replaces finite sums by direct-integral
+wavefunctions, contour prescriptions, residues, and continuous sewing maps.
+Fourth, the quoted theorem and open problem at the end record the remaining
+all-surface analytic burden: constructing positive Hilbert spaces, common
+domains for boundary fields, determinant-line compatibility, and sewing maps
+that make the finite rational and nonrational formulas part of one BCFT
+datum.
+
 For a boundary equal to the real axis in the upper half-plane
 \(\mathbb H=\{z=x+\ii y\mid y\ge0\}\), the stress tensor has components
 \[
@@ -1379,8 +1401,94 @@ fusion ring.  It is not a separate classification theorem: it is the
 decategorified shadow of the same \(A\)-module composition law that produces
 \eqref{eq:bcft-module-ope-composition}.
 
+Bulk fields in the same algebraic construction are bimodule morphisms.  If
+\(U_i^+\otimes A\otimes U_j^-\) denotes the \(A\)-bimodule obtained by using
+the braiding for the left chiral label and the inverse braiding for the
+right chiral label, the closed bulk multiplicity is
+\begin{equation}
+  Z_{ij}(A)
+  =
+  \dim
+  \operatorname{Hom}_{A|A}
+  (U_i^+\otimes A\otimes U_j^-,A).
+  \label{eq:bcft-frobenius-bulk-multiplicity}
+\end{equation}
+The diagonal invariant is again recovered from \(A=\mathbf 1\), for which
+the bimodule morphism space is one-dimensional only when \(j=i^\vee\).  The
+bulk-boundary OPE is obtained by evaluating such a bimodule morphism on the
+boundary module \(M\) and then projecting to
+\(\operatorname{End}_{A}(M)\).  This is the categorical form of the
+classifying algebra mentioned above: disk one-point functions are
+simultaneous eigenvalues of the commutative algebra of bulk fields acting on
+elementary boundary modules.  Formula
+\eqref{eq:fusion-ring-character-identity} is the \(A=\mathbf 1\) version of
+this statement.
+
+\paragraph{Finite algebra shadow of the classifying algebra.}
+The preceding categorical sentence has a simple finite algebra model which
+keeps the logic visible in non-diagonal examples.  Let
+\[
+  A_{\rm fin}=\bigoplus_{r=1}^{R}\operatorname{Mat}_{d_r}(\mathbb C)
+\]
+be an ordinary finite-dimensional semisimple algebra, regarded as the
+decategorified shadow of a special symmetric Frobenius algebra object and
+its module category.  Its center is
+\[
+  Z(A_{\rm fin})
+  =
+  \bigoplus_{r=1}^{R}\mathbb C\,e_r ,
+  \qquad
+  e_r e_s=\delta_{rs}e_r,\qquad
+  \sum_{r=1}^{R}e_r=1 .
+\]
+The simple left \(A_{\rm fin}\)-modules are the column modules
+\(M_r=\mathbb C^{d_r}\).  A central element
+\(z=\sum_r z_r e_r\) acts on \(M_r\) by the scalar \(z_r\), and therefore
+defines a character
+\begin{equation}
+  \chi_r:Z(A_{\rm fin})\to\mathbb C,\qquad
+  \chi_r(z)=z_r .
+  \label{eq:bcft-finite-center-character}
+\end{equation}
+The disk identity-channel sewing equation is, in this finite model, exactly
+the multiplicativity of this central character:
+\begin{equation}
+  \chi_r(zz')=\chi_r(z)\chi_r(z'),
+  \qquad z,z'\in Z(A_{\rm fin}) .
+  \label{eq:bcft-finite-center-character-sewing}
+\end{equation}
+This is the non-diagonal analogue of
+\eqref{eq:cardy-disk-two-bulk-classifying-sewing}: the bulk field that
+survives in the boundary identity channel is not a raw element of the
+fusion ring but its image in the commutative classifying algebra acting on
+the elementary boundary module.
+
+Two cautions are part of the statement.  First, a noncentral element of
+\(A_{\rm fin}\) does not act by a scalar on \(M_r\), so it cannot be read as
+a disk one-point coefficient of the identity boundary field.  Its boundary
+image is an endomorphism-valued insertion.  Second, if one replaces the
+elementary boundary condition \(M_r\) by a direct sum
+\(M=\oplus_r M_r^{\oplus n_r}\), the boundary identity algebra becomes
+\(\operatorname{End}_{A_{\rm fin}}(M)\simeq\oplus_r\operatorname{Mat}_{n_r}(\mathbb C)\).
+The scalar character \(\chi_r\) is replaced by a matrix-valued action, or by
+a chosen trace after adding Chan--Paton data.  Such a trace is additive over
+summands but is not a multiplicative character unless the boundary module is
+simple.  Thus Cardy--Lewellen disk sewing distinguishes elementary boundary
+conditions from finite direct sums even before any analytic issue about
+convergence of bordered-surface correlators enters.
+
 A small pointed module example shows how this differs from the diagonal Cardy
-case.  Let the chiral fusion skeleton have labels
+case.  The next group of formulas should be read as one sewing laboratory,
+not as independent finite identities.  The annulus action records how chiral
+labels move boundary conditions; its Fourier diagonalization records the
+classifying data visible to annuli; the boundary-field composition records
+Cardy--Lewellen associativity; the stabilizer idempotents record the
+bulk-boundary classifying sectors invisible to the annulus quotient; and the
+Frobenius pairing records the two-point normalization that detects those
+sectors.  A full rational construction must realize all five pieces by the
+same \(A\)-module category and the same analytic sewing maps.
+
+Let the chiral fusion skeleton have labels
 \(G=\mathbb Z_2\times\mathbb Z_2\), with
 \(U_g\otimes U_h=U_{g+h}\), and take the subgroup
 \(H=\{(0,0),(1,0)\}\).  Boundary labels are the two cosets \(G/H\).  The
@@ -1552,82 +1660,6 @@ Applying \(\varepsilon_x\) gives the two-point pairing
 The stabilizer character is therefore a genuine finite sewing coordinate:
 it is invisible to the annulus quotient \(G/H\), but it is detected by
 boundary endomorphism pairings and by inverse boundary-changing fields.
-
-Bulk fields in the same algebraic construction are bimodule morphisms.  If
-\(U_i^+\otimes A\otimes U_j^-\) denotes the \(A\)-bimodule obtained by using
-the braiding for the left chiral label and the inverse braiding for the
-right chiral label, the closed bulk multiplicity is
-\begin{equation}
-  Z_{ij}(A)
-  =
-  \dim
-  \operatorname{Hom}_{A|A}
-  (U_i^+\otimes A\otimes U_j^-,A).
-  \label{eq:bcft-frobenius-bulk-multiplicity}
-\end{equation}
-The diagonal invariant is again recovered from \(A=\mathbf 1\), for which
-the bimodule morphism space is one-dimensional only when \(j=i^\vee\).  The
-bulk-boundary OPE is obtained by evaluating such a bimodule morphism on the
-boundary module \(M\) and then projecting to
-\(\operatorname{End}_{A}(M)\).  This is the categorical form of the
-classifying algebra mentioned above: disk one-point functions are
-simultaneous eigenvalues of the commutative algebra of bulk fields acting on
-elementary boundary modules.  Formula
-\eqref{eq:fusion-ring-character-identity} is the \(A=\mathbf 1\) version of
-this statement.
-
-\paragraph{Finite algebra shadow of the classifying algebra.}
-The preceding categorical sentence has a simple finite algebra model which
-keeps the logic visible in non-diagonal examples.  Let
-\[
-  A_{\rm fin}=\bigoplus_{r=1}^{R}\operatorname{Mat}_{d_r}(\mathbb C)
-\]
-be an ordinary finite-dimensional semisimple algebra, regarded as the
-decategorified shadow of a special symmetric Frobenius algebra object and
-its module category.  Its center is
-\[
-  Z(A_{\rm fin})
-  =
-  \bigoplus_{r=1}^{R}\mathbb C\,e_r ,
-  \qquad
-  e_r e_s=\delta_{rs}e_r,\qquad
-  \sum_{r=1}^{R}e_r=1 .
-\]
-The simple left \(A_{\rm fin}\)-modules are the column modules
-\(M_r=\mathbb C^{d_r}\).  A central element
-\(z=\sum_r z_r e_r\) acts on \(M_r\) by the scalar \(z_r\), and therefore
-defines a character
-\begin{equation}
-  \chi_r:Z(A_{\rm fin})\to\mathbb C,\qquad
-  \chi_r(z)=z_r .
-  \label{eq:bcft-finite-center-character}
-\end{equation}
-The disk identity-channel sewing equation is, in this finite model, exactly
-the multiplicativity of this central character:
-\begin{equation}
-  \chi_r(zz')=\chi_r(z)\chi_r(z'),
-  \qquad z,z'\in Z(A_{\rm fin}) .
-  \label{eq:bcft-finite-center-character-sewing}
-\end{equation}
-This is the non-diagonal analogue of
-\eqref{eq:cardy-disk-two-bulk-classifying-sewing}: the bulk field that
-survives in the boundary identity channel is not a raw element of the
-fusion ring but its image in the commutative classifying algebra acting on
-the elementary boundary module.
-
-Two cautions are part of the statement.  First, a noncentral element of
-\(A_{\rm fin}\) does not act by a scalar on \(M_r\), so it cannot be read as
-a disk one-point coefficient of the identity boundary field.  Its boundary
-image is an endomorphism-valued insertion.  Second, if one replaces the
-elementary boundary condition \(M_r\) by a direct sum
-\(M=\oplus_r M_r^{\oplus n_r}\), the boundary identity algebra becomes
-\(\operatorname{End}_{A_{\rm fin}}(M)\simeq\oplus_r\operatorname{Mat}_{n_r}(\mathbb C)\).
-The scalar character \(\chi_r\) is replaced by a matrix-valued action, or by
-a chosen trace after adding Chan--Paton data.  Such a trace is additive over
-summands but is not a multiplicative character unless the boundary module is
-simple.  Thus Cardy--Lewellen disk sewing distinguishes elementary boundary
-conditions from finite direct sums even before any analytic issue about
-convergence of bordered-surface correlators enters.
 
 The disk partition function defines the Affleck--Ludwig boundary entropy.
 For a Cardy boundary state in a diagonal rational CFT,
