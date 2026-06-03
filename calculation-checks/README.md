@@ -660,7 +660,9 @@ Current checks:
   coefficient in the chapter's \(\lambda\phi^4+\alpha\phi^2\)
   normalization, the finite-cutoff local stability lower bound, the
   multiscale phase-cell geometric tail estimate and its source-decorated
-  Schwinger-seminorm variant, plus the
+  Schwinger-seminorm variant, the model-specific phase-cell derivation-budget
+  arithmetic combining activity, source, coordinate, and OS-regulator tails,
+  plus the
   stochastic-quantization OU variance, two negative-Sobolev threshold checks,
   heat-kernel smoothing optimization, the path-space
   \(\Phi^4_2\) enhanced-noise increment and Kolmogorov threshold arithmetic,

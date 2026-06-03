@@ -64,6 +64,11 @@
   moment-cumulant partition formula reconstructs full source coefficients
   from connected coefficients, with an explicit Bell-number/factorial growth
   loss that must be included in the OS-II growth budget.
+- Model-specific \(\Phi^4_3\) phase-cell derivation budget: reflection
+  regulator, covariance decomposition, small-/large-field activity bounds,
+  local mass/vacuum extraction, source-decorated bounds, and OS/regulator
+  defect tails are organized as the concrete estimates needed before the
+  abstract phase-cell theorem can internalize the quoted constructive output.
 - Refined proof obligation for a self-contained monograph proof of the quoted
   \(\Phi^4_3\) constructive output theorem: the remaining gap is now the
   model-specific derivation of the phase-cell activities and their
@@ -101,6 +106,9 @@
 | \(C_I\) | source-decorated scale-bound constant for the subset \(I\) of source labels |
 | \(C_{1\cdots n}^{(J,\Lambda)}\) | finite-volume, finite-cutoff connected \(n\)-source coefficient obtained by differentiating \(\log Z_{J,\Lambda}(\lambda)\) |
 | \(A_n\) | source-derivative cluster bound constant; OS reconstruction requires an admissible growth envelope in \(n\) |
+| \(C_{\rm act},C_{\rm loc},C_{\rm OS}\) | model-specific phase-cell activity, local-coordinate, and OS-regulator defect constants |
+| \(\alpha_{\rm act},\alpha_{\rm loc},\alpha_{\rm OS}\) | decay exponents for the constructive phase-cell derivation budget |
+| \(\mathcal R_j^{\rm OS},\mathcal E_J^{\rm constr}\) | OS/regulator truncation defect and total constructive-output defect after scale \(J\) |
 | \(\Pi_n\) | set of partitions of \(\{1,\ldots,n\}\) used in the moment-cumulant reconstruction of the full Schwinger coefficient |
 | \(\varphi_{\mathrm c}(X_1,\ldots,X_n)\) | hard-core Ursell coefficient for the incompatibility graph |
 | \(B_{R_0}\) | finite-range cell-neighbourhood constant for incompatible polymers |
@@ -185,13 +193,23 @@
     \((eB_0\max\{1,A\})^n(n!)^{\gamma+1}\prod_r p_r(f_r)\).  The additional
     factorial power is part of the OS-II growth budget and is not hidden in the
     word "connected."
-16. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
+16. A model-specific \(\Phi^4_3\) phase-cell budget is admissible when the
+    actual finite-regulator estimates produce summable activity bounds,
+    source-decorated bounds, local-coordinate tails, and OS/regulator defect
+    tails.  Under the KP smallness condition, those estimates imply the
+    abstract scale-decay and source-seminorm hypotheses, with total
+    constructive defect
+    \(C_{\rm act}|\lambda|^{1+\delta}L^{-\alpha_{\rm act}J}/
+    (1-L^{-\alpha_{\rm act}})
+    +C_{\rm loc}L^{-\alpha_{\rm loc}J}
+    +C_{\rm OS}L^{-\alpha_{\rm OS}J}\).
+17. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
    the OS properties in the constructed regimes; the chapter now marks this
    as a `quotedtheorem` rather than a locally proved theorem.  The abstract
    summation, reflection-positivity, and ultraviolet-Cauchy components are
    now proved locally; the remaining open proof obligation is the
    model-specific multiscale estimate generating their hypotheses.
-17. Constructive route comparison requires equality of Schwinger functions in
+18. Constructive route comparison requires equality of Schwinger functions in
    a common topology, not merely matching labels.
 
 ## Calculation Checks
@@ -204,8 +222,9 @@
   static-to-dynamic mass-coordinate translation, vacuum-coordinate partition
   and pressure/free-energy shift identities,
   multiscale phase-cell tail estimate, source-decorated Schwinger-seminorm
-  variant, connected-to-full partition growth bound, and SPDE exponent
-  arithmetic used across this chapter and the neighboring stochastic chapter.
+  variant, model-specific phase-cell derivation-budget arithmetic,
+  connected-to-full partition growth bound, and SPDE exponent arithmetic used
+  across this chapter and the neighboring stochastic chapter.
 
 ## Figures
 
@@ -290,6 +309,13 @@
   pressure/free-energy sign convention.  The companion check verifies the
   ratio, log-ratio, pressure, free-energy, coordinate-conversion, and drift
   invisibility identities in exact arithmetic.
+- 2026-06-03 issue #581/#608 constructive-budget pass: the \(\Phi^4_3\)
+  proof stack now has the constructive-side analogue of the SPDE finite-rate
+  schedule.  The model-specific phase-cell budget identifies the exact
+  regulator, activity, source, local-coordinate, and OS-defect estimates that
+  must be proved before the quoted constructive theorem can be internalized,
+  and records the geometric total-defect bound checked by the companion
+  script.
 - 2026-05-29 seventh anti-wrapper pass: demoted the one-site finite-cutoff
   normal-ordered polynomial stability bound from proposition form to worked
   prose.  The lower bound remains as the first elementary stability estimate,

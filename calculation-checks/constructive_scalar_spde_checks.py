@@ -3,6 +3,8 @@
 
 The checks include finite arithmetic shadows of the invariant-law and
 stationary-law comparison steps used in the singular-SPDE-to-OS proof stack.
+They also track the constructive Phi^4_3 phase-cell derivation budget:
+activity tails, source-decorated tails, and local-coordinate/OS defect tails.
 """
 
 from fractions import Fraction
@@ -708,6 +710,46 @@ def check_phi4_three_multiscale_geometric_bound():
         os_envelope = (b_growth**n) * (math.factorial(n) ** gamma)
         if assignment_factor > os_envelope:
             raise AssertionError("phi4_3 source-decorated OS growth envelope failed")
+
+
+def check_phi4_three_model_phase_cell_budget():
+    # Finite arithmetic shadow of the model-specific derivation budget:
+    # several phase-cell estimates with a common geometric rate combine into
+    # the abstract activity bound used by the multiscale theorem.
+    common_ratio = Fraction(1, 2)
+    small_field = Fraction(1, 200)
+    large_field = Fraction(1, 300)
+    irrelevant = Fraction(1, 500)
+    c_act = small_field + large_field + irrelevant
+    assert_equal(c_act, Fraction(31, 3000), "phase-cell activity constant")
+
+    scale_sum = c_act / (1 - common_ratio)
+    assert_equal(scale_sum, Fraction(31, 1500), "phase-cell activity full scale sum")
+    b_r = Fraction(4)
+    a_prime = Fraction(1, 10)
+    if not b_r * scale_sum <= a_prime:
+        raise AssertionError("phase-cell derivation budget KP smallness failed")
+
+    j_cut = 4
+    activity_tail = c_act * common_ratio**j_cut / (1 - common_ratio)
+    assert_equal(activity_tail, Fraction(31, 24000), "phase-cell activity tail")
+
+    source_constant = Fraction(7, 1000)
+    source_seminorm_product = Fraction(2) * Fraction(3, 5)
+    source_tail = source_constant * common_ratio**j_cut / (1 - common_ratio) * source_seminorm_product
+    assert_equal(source_tail, Fraction(21, 20000), "phase-cell source-decorated tail")
+
+    local_coordinate_tail = Fraction(1, 1000) * Fraction(1, 4) ** j_cut / (1 - Fraction(1, 4))
+    os_regulator_tail = Fraction(1, 800) * Fraction(1, 8) ** j_cut / (1 - Fraction(1, 8))
+    assert_equal(local_coordinate_tail, Fraction(1, 192000), "phase-cell local-coordinate tail")
+    assert_equal(os_regulator_tail, Fraction(1, 2867200), "phase-cell OS-regulator tail")
+
+    total_constructive_defect = activity_tail + local_coordinate_tail + os_regulator_tail
+    assert_equal(
+        total_constructive_defect,
+        Fraction(18597, 14336000),
+        "phase-cell constructive output defect",
+    )
 
 
 def set_partitions(items):
@@ -2766,6 +2808,7 @@ def main():
     check_phi4_three_two_loop_mass_coordinate()
     check_phi4_three_finite_cutoff_stability_bound()
     check_phi4_three_multiscale_geometric_bound()
+    check_phi4_three_model_phase_cell_budget()
     check_phi4_three_connected_to_full_growth_bookkeeping()
     check_finite_polymer_source_cumulant_factorization()
     check_spde_ou_and_smoothing_normalizations()
@@ -2820,7 +2863,7 @@ def main():
     check_spde_finite_window_os_defect_budget_arithmetic()
     check_spde_finite_rate_assembly_schedule_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, vacuum-coordinate, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, finite-rate assembly schedule, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, vacuum-coordinate, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, model phase-cell budget, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, finite-rate assembly schedule, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

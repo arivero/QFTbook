@@ -1470,16 +1470,152 @@ statement does not prove the model-specific connected envelope; it records the
 exact growth loss that a constructive proof must budget before invoking OS
 reconstruction.
 
+\begin{definition}[Model-specific phase-cell derivation budget]
+\label{def:phi-four-three-model-phase-cell-budget}
+A model-specific phase-cell derivation budget for the massive
+\(\Phi^4_3\) construction is the data needed to turn the regulated scalar
+measure into the abstract system of
+Definition~\ref{def:phi-four-three-abstract-phase-cell-system}.  It consists
+of:
+\begin{enumerate}[label=(\roman*)]
+\item a reflection-compatible finite-volume regulator, a finite-range
+covariance decomposition into scale pieces \(C_j\), and cell algebras on
+the scale-\(j\) decomposition \(\mathcal D_j\);
+\item small-field norms, large-field weights, and a local extraction map
+\(\mathcal L_j\) onto the vacuum and mass coordinates
+\(\mathcal O_{0,j}\) and \(\mathcal O_{2,j}\);
+\item counterterm increments \(\delta a_j,\delta b_j\) and a remainder
+\[
+  R_j(X)=(1-\mathcal L_j)K_j(X)
+\]
+for each scale-\(j\) activity;
+\item source weights \(b_{r,j}(X)\) and test seminorms \(p_r(f_r)\) for
+local insertions;
+\item regulator-comparison, reflection-positivity, and moment-growth defects
+which measure the distance from the finite phase-cell regulator to the OS
+hierarchy asserted in Quoted
+Theorem~\ref{thm:phi-four-three-constructive-output}.
+\end{enumerate}
+The budget is admissible with exponents
+\(\alpha_{\rm act},\alpha_{\rm loc},\alpha_{\rm OS}>0\) if, after the
+chosen local coordinates have been extracted, the actual estimates imply
+\begin{equation}
+  \sup_{\Delta\in\mathcal D_j}
+  \sum_{X\ni\Delta}
+  e^{a|X|_j}
+  \bigl(\kappa_j^{\rm sf}(X)+\kappa_j^{\rm lf}(X)
+        +\kappa_j^{\rm irr}(X)\bigr)
+  \leq
+  C_{\rm act}|\lambda|^{1+\delta}L^{-\alpha_{\rm act}j},
+  \label{eq:phi-four-three-model-budget-activity-bound}
+\end{equation}
+for the small-field, large-field, and irrelevant-remainder parts of the
+activity, together with the source-decorated estimates
+\begin{equation}
+  \sup_{\Delta\in\mathcal D_j}
+  \sum_{X\ni\Delta}
+  e^{a|X|_j}\kappa_j(X)
+  \prod_{r\in I}|b_{r,j}(X)|
+  \leq
+  C_I|\lambda|^{1+\delta}L^{-\alpha_{\rm act}j}
+  \prod_{r\in I}p_r(f_r)
+  \label{eq:phi-four-three-model-budget-source-bound}
+\end{equation}
+for every finite source set \(I\).  The local coordinates and OS-regulator
+defects must have summable tails:
+\begin{equation}
+  \sum_{m\geq j}
+  \bigl(|\delta a_m-\delta a_m^{\rm target}|
+        +|\delta b_m-\delta b_m^{\rm target}|\bigr)
+  \leq
+  C_{\rm loc}L^{-\alpha_{\rm loc}j},
+  \qquad
+  \mathcal R_j^{\rm OS}
+  \leq
+  C_{\rm OS}L^{-\alpha_{\rm OS}j}.
+  \label{eq:phi-four-three-model-budget-coordinate-os-bound}
+\end{equation}
+Here \(\delta a_m^{\rm target}\) and \(\delta b_m^{\rm target}\) denote the
+declared mass and vacuum-energy coordinate increments, and
+\(\mathcal R_j^{\rm OS}\) includes the regulator-comparison, reflection
+positivity, and moment-growth errors which survive after truncating at scale
+\(j\).  The definition is a proof budget: it records the estimates whose
+model-specific proof produces
+\eqref{eq:phi-four-three-model-budget-activity-bound}--
+\eqref{eq:phi-four-three-model-budget-coordinate-os-bound} from the actual
+finite-regulator scalar measure.
+\end{definition}
+
+\begin{proposition}[From phase-cell budget to constructive output inputs]
+\label{prop:phi-four-three-model-budget-suffices}
+Assume an admissible model-specific phase-cell budget.  Then
+\eqref{eq:phi-four-three-model-budget-activity-bound} implies the abstract
+scale-decay hypothesis
+\eqref{eq:phi-four-three-scale-decay-bound}, with
+\(C_0=C_{\rm act}\) and \(\alpha=\alpha_{\rm act}\).
+Equation~\eqref{eq:phi-four-three-model-budget-source-bound} implies the
+source-decorated Schwinger-seminorm bound
+\eqref{eq:phi-four-three-source-decorated-scale-bound}.  For every cutoff
+scale \(J\), the remaining constructive defect is bounded by
+\begin{equation}
+  \mathcal E_J^{\rm constr}
+  \leq
+  \frac{C_{\rm act}|\lambda|^{1+\delta}L^{-\alpha_{\rm act}J}}
+       {1-L^{-\alpha_{\rm act}}}
+  +
+  C_{\rm loc}L^{-\alpha_{\rm loc}J}
+  +
+  C_{\rm OS}L^{-\alpha_{\rm OS}J}.
+  \label{eq:phi-four-three-model-budget-total-defect}
+\end{equation}
+Consequently, if the Kotecky--Preiss smallness condition
+\eqref{eq:phi-four-three-multiscale-smallness} also holds, the local
+summability, source-seminorm Cauchy property, and finite-window OS limits
+needed by Quoted
+Theorem~\ref{thm:phi-four-three-constructive-output} reduce to proving the
+model-specific estimates in
+Definition~\ref{def:phi-four-three-model-phase-cell-budget}.
+\end{proposition}
+
+\begin{proof}
+The first assertion is just the identification
+\[
+  \kappa_j(X)
+  =
+  \kappa_j^{\rm sf}(X)+\kappa_j^{\rm lf}(X)+\kappa_j^{\rm irr}(X)
+\]
+inside \eqref{eq:phi-four-three-model-budget-activity-bound}.  The second
+assertion is the same estimate with the source weights retained, hence it is
+exactly \eqref{eq:phi-four-three-source-decorated-scale-bound}.  Summing the
+activity bound over \(m\geq J\) gives the geometric tail
+\[
+  \sum_{m\geq J}
+  C_{\rm act}|\lambda|^{1+\delta}L^{-\alpha_{\rm act}m}
+  =
+  \frac{C_{\rm act}|\lambda|^{1+\delta}L^{-\alpha_{\rm act}J}}
+       {1-L^{-\alpha_{\rm act}}}.
+\]
+The local-coordinate and OS-regulator tails are the two terms stated in
+\eqref{eq:phi-four-three-model-budget-coordinate-os-bound}.  Adding these
+three independent errors gives
+\eqref{eq:phi-four-three-model-budget-total-defect}.
+Theorem~\ref{thm:phi-four-three-abstract-multiscale-summability},
+Construction~\ref{con:phi-four-three-source-decorated-phase-cells}, and the
+connected-to-full hierarchy bookkeeping above then supply the abstract
+summation and OS-growth consequences once the displayed model-specific
+inputs are proved.
+\end{proof}
+
 The difficult model-specific part of the \(\Phi^4_3\) construction is now
-located precisely: one must prove
-\eqref{eq:phi-four-three-scale-decay-bound} for the actual phase-cell
-activities obtained from the regulated scalar field after the local
-coordinates have been extracted.  Theorem
-~\ref{thm:phi-four-three-abstract-multiscale-summability} proves that these
-bounds, once established with reflection-positive regulators and uniform
-moment estimates, are sufficient for ultraviolet convergence of the
-Schwinger functions.  Construction
-~\ref{con:phi-four-three-source-decorated-phase-cells} records the additional
+located precisely: one must construct
+Definition~\ref{def:phi-four-three-model-phase-cell-budget} for the actual
+phase-cell activities obtained from the regulated scalar field after the
+local coordinates have been extracted.
+Proposition~\ref{prop:phi-four-three-model-budget-suffices} proves that these bounds,
+once established with reflection-positive regulators and uniform moment
+estimates, are sufficient for ultraviolet convergence of the Schwinger
+functions.  Construction~\ref{con:phi-four-three-source-decorated-phase-cells}
+records the additional
 source-decorated estimate needed to obtain distributional seminorm bounds
 and OS growth rather than only convergence of the vacuum polymer partition
 function.
