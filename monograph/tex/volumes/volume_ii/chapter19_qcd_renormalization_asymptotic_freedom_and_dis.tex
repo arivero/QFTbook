@@ -8819,6 +8819,116 @@ between an operator block and endpoint contact coordinates, in which case the
 flatness equation must be checked in the enlarged chart and the induced change
 of contact distribution must be recorded in the endpoint convention.
 
+\paragraph{Endpoint observable transport budget.}
+The last step in a finite endpoint calculation is not the display of
+\(\gamma\), \(\eta\), or a coefficient row.  It is the statement that the
+retained chart gives a stable distribution when paired with endpoint detector
+tests.  The following finite proposition is the algebraic budget behind that
+statement.
+
+\begin{proposition}[Finite endpoint observable transport budget]
+\label{prop:qcd-eec-finite-endpoint-observable-transport-budget}
+Fix a finite retained light-ray label set \(L\), an endpoint test
+\(\varphi\), and one logarithmic scale \(t=\log\mu\).  Suppose the retained
+small-angle endpoint contribution in a fixed state is represented by
+\begin{equation}
+  V_L(\varphi;t)
+  =
+  C_L(\varphi;t)\,O_L(t)
+  +
+  K_L(\varphi;t),
+  \label{eq:qcd-eec-finite-endpoint-observable-chart}
+\end{equation}
+where \(C_L(\varphi;t)\) is a row of coefficient distributions evaluated on
+\(\varphi\), \(O_L(t)\) is the column of retained light-ray matrix elements,
+and \(K_L(\varphi;t)\) is the explicit endpoint contact coordinate.  Let
+\(\gamma_{LL}(t)\) be the retained anomalous-dimension matrix, and let
+\(D_L(\varphi;t)\) be the row produced by a scale-dependent change of
+endpoint extension convention, such as moving an annulus into a plus-chart.
+Assume
+\begin{align}
+  \partial_tO_L
+  &=
+  -\gamma_{LL}O_L+E_O,
+  \label{eq:qcd-eec-endpoint-budget-operator}\\
+  \partial_tC_L(\varphi)
+  &=
+  C_L(\varphi)\gamma_{LL}
+  +D_L(\varphi)
+  +E_C(\varphi),
+  \label{eq:qcd-eec-endpoint-budget-coefficient}\\
+  \partial_tK_L(\varphi)
+  &=
+  -D_L(\varphi)O_L+E_K(\varphi).
+  \label{eq:qcd-eec-endpoint-budget-contact}
+\end{align}
+Then
+\begin{equation}
+  \partial_tV_L(\varphi;t)
+  =
+  E_C(\varphi;t)O_L(t)
+  +
+  C_L(\varphi;t)E_O(t)
+  +
+  E_K(\varphi;t).
+  \label{eq:qcd-eec-endpoint-budget-residual}
+\end{equation}
+Consequently, for any interval \([t_0,t_1]\),
+\begin{equation}
+  \bigl|V_L(\varphi;t_1)-V_L(\varphi;t_0)\bigr|
+  \leq
+  \int_{t_0}^{t_1}
+  \left(
+    \|E_C(\varphi;t)\|\,\|O_L(t)\|
+    +
+    \|C_L(\varphi;t)\|\,\|E_O(t)\|
+    +
+    |E_K(\varphi;t)|
+  \right)\dd t
+  \label{eq:qcd-eec-endpoint-budget-bound}
+\end{equation}
+for any dual pair of finite vector norms.  In particular, exact operator
+transport, exact coefficient transport, and the matching contact shift make
+the retained endpoint observable independent of \(t\).
+\end{proposition}
+
+\begin{proof}
+Differentiate \eqref{eq:qcd-eec-finite-endpoint-observable-chart} and insert
+\eqref{eq:qcd-eec-endpoint-budget-operator}--\eqref{eq:qcd-eec-endpoint-budget-contact}:
+\[
+\begin{aligned}
+  \partial_tV_L
+  &=
+  (C_L\gamma_{LL}+D_L+E_C)O_L
+  +
+  C_L(-\gamma_{LL}O_L+E_O)
+  -
+  D_LO_L
+  +
+  E_K .
+\end{aligned}
+\]
+The anomalous-dimension terms cancel because the coefficient is a row and the
+operator is a column.  The endpoint-extension row \(D_L\) cancels only because
+the contact coordinate in
+\eqref{eq:qcd-eec-endpoint-budget-contact} carries the compensating sign.
+This gives \eqref{eq:qcd-eec-endpoint-budget-residual}.  Integrating in \(t\)
+and applying the finite norm inequality for a row-column pairing gives
+\eqref{eq:qcd-eec-endpoint-budget-bound}.
+\end{proof}
+
+The rows \(D_L\) are not new anomalous dimensions.  They record changes of
+distributional representative at \(\rho=0\), such as the shift in
+\eqref{eq:qcd-eec-plus-resolution-shift}.  The residuals \(E_O,E_C,E_K\)
+are where an actual finite-basis endpoint calculation must place its omitted
+operator channels, projected curvature, approximate loop-order truncation,
+and endpoint matching defects.  A claimed all-order renormalized light-ray
+OPE for the EEC must drive the right side of
+\eqref{eq:qcd-eec-endpoint-budget-bound} to zero in the declared detector-test
+topology, or must state the resulting approximation error.  Thus a mixing
+matrix and a list of endpoint plus distributions become an observable theorem
+only after this transport budget is supplied.
+
 \paragraph{Minimal cusp-log flatness check.}
 A useful first check is the part of a rapidity-factorized endpoint chart that
 is forced by a cusp logarithm.  Work in a finite block in which the cusp

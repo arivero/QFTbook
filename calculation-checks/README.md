@@ -641,7 +641,9 @@ Current checks:
   light-ray transport, derivative-term signs in the two-scale flatness
   equation, the cusp-log rapidity chart and its wrong-sign curvature
   obstruction, flatness versus curvature obstruction, and the energy-sum
-  left-null-vector condition.
+  left-null-vector condition, plus the endpoint observable transport budget
+  in which coefficient, operator, and contact evolution leave only declared
+  residuals in detector tests.
 - `energy_correlator_track_checks.py`: exact rational checks for the
   selected calorimetric measure and track-energy-correlator bookkeeping,
   including the selected EEC zeroth and first moment identities, selected

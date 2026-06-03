@@ -488,6 +488,17 @@ The chapter must define and derive:
       the omitted-operator channel.  It must be bounded as a remainder or
       removed by enlarging the light-ray/contact-coordinate chart; finite
       retained coordinate changes conjugate this curvature and cannot erase it.
+19bfa. The retained endpoint chart becomes an observable statement only after
+       it is paired with detector tests.  For
+       \(V_L(\varphi;t)=C_L(\varphi;t)O_L(t)+K_L(\varphi;t)\), the row-column
+       anomalous-dimension terms cancel between \(C_L\) and \(O_L\), and the
+       endpoint representative row \(D_L(\varphi;t)\) cancels only against the
+       compensating contact derivative in \(K_L\).  The remaining variation is
+       \(E_C(\varphi;t)O_L(t)+C_L(\varphi;t)E_O(t)+E_K(\varphi;t)\), with a
+       finite detector-test norm bound.  Thus omitted light-ray channels,
+       projected curvature, loop truncation, and endpoint matching defects must
+       appear as residuals in the observable transport budget, not as invisible
+       notation choices.
 19bg. The EEC program is now organized by a proof-status ladder: detector
       measure/contact algebra, CFT fixed-point light-ray charts, QCD
       renormalized light-ray endpoint charts, perturbative endpoint
@@ -775,6 +786,15 @@ The chapter must define and derive:
   remainder estimate or an enlarged light-ray/contact chart.  The companion
   script now checks the block identity and scale-dependent scheme covariance
   exactly over rational matrices.
+- 2026-06-03 issue #519 endpoint-transport-budget pass: added the finite
+  endpoint observable transport proposition for
+  \(V_L(\varphi;t)=C_L(\varphi;t)O_L(t)+K_L(\varphi;t)\).  It proves that the
+  coefficient/operator anomalous-dimension pieces and endpoint-representative
+  row cancel only with the matching contact derivative, leaving a detector-test
+  residual bound built from \(E_C,E_O,E_K\).  Extended
+  `calculation-checks/energy_correlator_light_ray_ope_checks.py` with exact
+  rational checks of the cancellation, the wrong-contact-sign defect, and the
+  finite residual norm bound.
 - 2026-05-31 issue #519 detector-algebra pass: added the outgoing
   direct-integral multiplication model for smeared energy detectors, including
   positivity, self-adjointness, Hamiltonian domain bounds, product domains,
