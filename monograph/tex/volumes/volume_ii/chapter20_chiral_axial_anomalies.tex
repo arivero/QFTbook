@@ -4379,6 +4379,121 @@ determinant constant; RG invariance identifies the universal logarithmic
 coefficient with \(b_0\) in the displayed one-loop density.
 \end{proof}
 
+\begin{proposition}[Instanton zero-mode tail and local limit]
+\label{prop:instanton-zero-mode-tail-local-limit}
+In a BPST \(Q=1\) background, after the spin and color tensors of one
+fundamental zero-mode line are factored out, the radial scalar envelope which
+weights a local mass, Yukawa, or bilinear source is
+\begin{equation}
+  h_\rho(y)
+  =
+  \frac{2\rho^2}{\pi^2(y^2+\rho^2)^3},
+  \qquad
+  \int_{\mathbb R^4}h_\rho(y)\,\dd^4y=1 .
+  \label{eq:instanton-zero-mode-envelope}
+\end{equation}
+Thus a zero-mode-paired source matrix entry has the form
+\begin{equation}
+  B_{ff'}^{(s)}(a,\rho,U)
+  =
+  \rho^{d_s}
+  \int_{\mathbb R^4}
+  h_\rho(y)\,
+  \mathcal B_{ff'}(a+y;U)\,\dd^4y ,
+  \label{eq:instanton-zero-mode-source-convolution}
+\end{equation}
+where \(d_s=1\) for a mass source and \(d_s=3\) for the local quark-bilinear
+source in \eqref{eq:qcd-thooft-vertex-leading-local}.  For
+\(U_R=R/\rho\),
+\begin{equation}
+  \int_{|y|<R}h_\rho(y)\,\dd^4y
+  =
+  \frac{U_R^4}{(1+U_R^2)^2},
+  \qquad
+  \int_{|y|>R}h_\rho(y)\,\dd^4y
+  =
+  \frac{1+2U_R^2}{(1+U_R^2)^2}.
+  \label{eq:instanton-zero-mode-tail-mass}
+\end{equation}
+The first correction to a local Taylor expansion is more delicate.  The
+truncated second moment is
+\begin{equation}
+  M_2(R)
+  :=
+  \int_{|y|<R}|y|^2h_\rho(y)\,\dd^4y
+  =
+  2\rho^2
+  \left[
+    \log(1+U_R^2)
+    +\frac{2}{1+U_R^2}
+    -\frac{1}{2(1+U_R^2)^2}
+    -\frac32
+  \right],
+  \label{eq:instanton-zero-mode-second-moment}
+\end{equation}
+and rotational invariance gives
+\[
+  \int_{|y|<R}y^\mu y^\nu h_\rho(y)\,\dd^4y
+  =
+  \frac{\delta^{\mu\nu}}4M_2(R).
+\]
+Consequently the leading local term in
+\eqref{eq:instanton-zero-mode-source-convolution} is
+\(\rho^{d_s}\mathcal B_{ff'}(a;U)\), with a tail bounded by the second
+quantity in \eqref{eq:instanton-zero-mode-tail-mass}.  But the would-be
+two-derivative coefficient grows as
+\(4\rho^2\log(R/\rho)+O(\rho^2)\) as \(R/\rho\to\infty\).  The local
+'t Hooft vertex is therefore the zeroth adiabatic term of the zero-mode
+source convolution; higher-derivative terms require the external wave-packet,
+mass, or infrared regulator that cuts off the zero-mode tail.
+\end{proposition}
+
+\begin{proof}
+The normalized radial envelope in \eqref{eq:instanton-zero-mode-envelope} is
+the scalar part of the product of two normalized fundamental zero-mode
+wavefunctions in the BPST background.  Using
+\(\dd^4y=2\pi^2r^3\dd r\) and \(u=r/\rho\),
+\[
+  \int_{\mathbb R^4}h_\rho(y)\,\dd^4y
+  =
+  4\int_0^\infty\frac{u^3}{(1+u^2)^3}\,\dd u
+  =
+  1.
+\]
+The same integral cut off at \(U_R\) gives
+\[
+  4\int_0^{U_R}\frac{u^3}{(1+u^2)^3}\,\dd u
+  =
+  1-\frac{2}{1+U_R^2}
+  +\frac{1}{(1+U_R^2)^2}
+  =
+  \frac{U_R^4}{(1+U_R^2)^2},
+\]
+and subtracting from one gives the tail formula in
+\eqref{eq:instanton-zero-mode-tail-mass}.  For the second moment,
+\[
+  M_2(R)
+  =
+  4\rho^2\int_0^{U_R}\frac{u^5}{(1+u^2)^3}\,\dd u .
+\]
+With \(t=1+u^2\), this antiderivative is
+\[
+  2\rho^2
+  \left[
+    \log t+\frac2t-\frac{1}{2t^2}-\frac32
+  \right]_{t=1}^{1+U_R^2},
+\]
+which is \eqref{eq:instanton-zero-mode-second-moment}.  Rotational
+invariance in four Euclidean dimensions gives the displayed
+\(\delta^{\mu\nu}/4\) tensor moment.  The Taylor expansion of
+\(\mathcal B(a+y;U)\) then yields the zeroth local term and the
+\((M_2(R)/8)\partial^2\mathcal B(a;U)\) contribution inside the ball
+\(|y|<R\), while the exterior contribution is controlled by the tail mass
+times the appropriate supremum norm of the source.  Since
+\(\log(1+U_R^2)=2\log(R/\rho)+o(1)\), the full second moment is
+logarithmically infrared sensitive.
+\end{proof}
+
 Thus the \(Q=1\) amplitude is the microscopic origin of the \(U(1)_A\)
 selection rule.  The determinant in
 \eqref{eq:qcd-thooft-vertex-leading-local} carries axial charge \(2N_f\);

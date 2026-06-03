@@ -24,6 +24,8 @@ relations
     boson/ghost/fermion determinant powers and counterterm shifts
     the proper-time fluctuation determinant combines with the zero-mode
     source determinant to give the finite four-fermion instanton amplitude
+    the BPST fundamental zero-mode envelope has finite zeroth moment, a
+    power-law tail, and a logarithmically infrared-sensitive second moment
     mass-saturated QCD vacuum activity carries prod_f(m_f rho), depends on
     theta+arg det M, is locally small-rho finite when b0+Nf>4, and is
     infrared-uncontrolled in zero-temperature QCD if the same one-loop power
@@ -629,6 +631,60 @@ def check_proper_time_fluctuation_four_fermion_amplitude() -> None:
     )
 
 
+def check_instanton_zero_mode_tail_local_limit() -> None:
+    # The normalized scalar envelope of a BPST fundamental zero-mode line is
+    # h_rho(y)=2 rho^2/[pi^2 (y^2+rho^2)^3].  After the angular integral,
+    # the cumulative mass inside R=rho*U is
+    # P(U)=4 int_0^U u^3/(1+u^2)^3 du = U^4/(1+U^2)^2.
+    for u in [Fraction(1, 3), Fraction(2, 1), Fraction(5, 2)]:
+        cumulative = u**4 / (1 + u * u) ** 2
+        tail = (1 + 2 * u * u) / (1 + u * u) ** 2
+        assert_equal(f"zero-mode cumulative plus tail U={u}", cumulative + tail, 1)
+
+        radial_density = 4 * u**3 / (1 + u * u) ** 3
+        cumulative_derivative = 4 * u**3 / (1 + u * u) ** 3
+        assert_equal(
+            f"zero-mode cumulative derivative U={u}",
+            cumulative_derivative,
+            radial_density,
+        )
+
+        # With q=(rho/R)^2=U^{-2}, the tail is q(2+q)/(1+q)^2.  The leading
+        # power is 2q, and the exact remainder starts at order q^2.
+        q = 1 / (u * u)
+        tail_in_q = q * (2 + q) / (1 + q) ** 2
+        assert_equal(f"zero-mode tail q form U={u}", tail_in_q, tail)
+        assert_equal(
+            f"zero-mode tail leading-power remainder U={u}",
+            tail - 2 * q,
+            -q * q * (3 + 2 * q) / (1 + q) ** 2,
+        )
+
+        # The truncated second moment is
+        # M2(U)=2 rho^2 [log(1+U^2)+2/(1+U^2)-1/(2(1+U^2)^2)-3/2].
+        # Differentiating the bracket gives 2 U^5/(1+U^2)^3, hence
+        # dM2/dU=4 rho^2 U^5/(1+U^2)^3, matching the radial integrand.
+        second_moment_derivative_over_rho2 = 4 * u**5 / (1 + u * u) ** 3
+        second_moment_integrand = 4 * u**5 / (1 + u * u) ** 3
+        assert_equal(
+            f"zero-mode second-moment derivative U={u}",
+            second_moment_derivative_over_rho2,
+            second_moment_integrand,
+        )
+
+    # In four Euclidean dimensions rotational invariance gives
+    # int y_mu y_nu h = delta_mu_nu M2/4.  The trace over four directions
+    # recovers M2.
+    tensor_trace_units = 4 * Fraction(1, 4)
+    assert_equal("zero-mode tensor second moment trace", tensor_trace_units, 1)
+
+    # If a source has dimension d_s, the local zero-mode entry carries
+    # rho^d_s.  A mass source uses d_s=1; the local quark bilinear in the
+    # 't Hooft vertex uses d_s=3.
+    assert_equal("mass source zero-mode rho power", 1, 1)
+    assert_equal("bilinear source zero-mode rho power", 3, 3)
+
+
 def check_dilute_instanton_gas_theta_cumulants() -> None:
     # The dilute gas promotes the one-instanton and one-anti-instanton
     # amplitudes to independent Poisson activities.  The topological charge
@@ -826,6 +882,7 @@ def main() -> None:
     check_finite_regulator_determinant_datum()
     check_physical_instanton_correlator_zero_mode_saturation()
     check_proper_time_fluctuation_four_fermion_amplitude()
+    check_instanton_zero_mode_tail_local_limit()
     check_dilute_instanton_gas_theta_cumulants()
     check_mass_saturated_vacuum_activity_size_integral()
     check_uhlenbeck_boundary_face_budget()

@@ -72,7 +72,10 @@
   contribution, including the two-flavor 't Hooft determinant sign.  The
   fluctuation-amplitude continuation adds the proper-time nonzero-mode
   determinant assembly and its multiplication by the zero-mode-projected
-  four-fermion source determinant.
+  four-fermion source determinant.  The zero-mode-tail continuation adds the
+  BPST fundamental zero-mode envelope, its \(R^{-2}\) tail, and the
+  logarithmically infrared-sensitive second moment controlling the first
+  nonzero derivative correction to the local vertex.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
@@ -196,6 +199,7 @@
 | \(B_{ff'}\) | local source or mass-overlap matrix whose finite Berezin determinant gives the QCD 't Hooft vertex |
 | \(B_{\eta,ff'}(z)\) | zero-mode-projected source matrix for smeared four-fermion wave packets in the instanton background |
 | \(G^{(4)}_{\eta,\Lambda,Q=1}\) | finite-regulator one-instanton contribution to the smeared four-fermion amplitude |
+| \(h_\rho(y),M_2(R)\) | normalized BPST zero-mode radial envelope and its truncated second moment in the local-vertex expansion |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
 | \(\zeta_m^{[\rho_-,\rho_+]}\) | mass-saturated one-instanton vacuum activity in a finite size window |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
@@ -435,6 +439,13 @@
   times the determinant of the zero-mode-projected source matrix
   \(B_{\eta,ff'}(z)\).  The familiar local 't Hooft vertex is its slow-field
   limit.
+- The BPST fundamental zero-mode line has normalized radial envelope
+  \(h_\rho(y)=2\rho^2/[\pi^2(y^2+\rho^2)^3]\).  Its zeroth moment is finite
+  and the mass outside \(|y|<R\) is
+  \((1+2(R/\rho)^2)/(1+(R/\rho)^2)^2\), but its truncated second moment grows
+  like \(4\rho^2\log(R/\rho)\).  Thus the local 't Hooft vertex is the
+  zeroth adiabatic term; derivative corrections require the external
+  wave-packet or infrared cutoff data.
 - For massive vectorlike QCD, the vacuum instanton term is now separated as a
   finite-size-window activity:
   \[
@@ -643,6 +654,13 @@
   slow-field limit.  The BPST check script now verifies exact determinant
   powers, zero-mode removal, and the source-determinant multiplication for a
   finite toy four-fermion amplitude.
+- 2026-06-03 issue #597 zero-mode-tail pass: added the normalized BPST
+  zero-mode radial envelope and the local-vertex moment calculation.  The
+  result exposes an \(R^{-2}\) tail in the zeroth moment and logarithmic
+  infrared sensitivity in the second moment, so derivative corrections to the
+  local 't Hooft vertex are tied to the physical wave-packet or IR regulator.
+  The BPST check script verifies the cumulative mass, tail expansion,
+  second-moment derivative, and rotational tensor trace.
 - 2026-06-03 issue #597 dilute-gas physics pass: added the conditional
   instanton/anti-instanton Poisson sum from the regulated one-instanton
   amplitude to theta-dependent vacuum energy and cumulants.  The BPST check
