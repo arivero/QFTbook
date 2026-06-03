@@ -5,11 +5,13 @@ The checks include the singular-instanton compactification arithmetic used in
 the compact-localization chapter: Uhlenbeck stratum codimensions and the
 torsion-free-sheaf charge split, the positive-ADHM-moment-map stability trace
 obstruction, the one-box specialization of the Gieseker tangent Euler class,
-and the two-box Hilbert-scheme localization sum.
+the rank-one Hilbert-scheme tangent-character cancellation, and the two-box
+Hilbert-scheme localization sum.
 """
 
 from __future__ import annotations
 
+from collections import Counter
 from fractions import Fraction
 from math import factorial
 
@@ -421,6 +423,217 @@ def check_one_box_tangent_euler_class() -> None:
         assert_equal(fixed_point_sum, direct_sum, "one-box tangent Euler class")
 
 
+def partition_boxes(partition: list[int]) -> list[tuple[int, int]]:
+    return [
+        (row, col)
+        for row, row_length in enumerate(partition, start=1)
+        for col in range(1, row_length + 1)
+    ]
+
+
+def transpose_partition(partition: list[int]) -> list[int]:
+    return [
+        sum(1 for row_length in partition if row_length >= col)
+        for col in range(1, partition[0] + 1)
+    ]
+
+
+def young_arm_length(partition: list[int], box: tuple[int, int]) -> int:
+    row, col = box
+    return partition[row - 1] - col
+
+
+def young_leg_length(partition: list[int], box: tuple[int, int]) -> int:
+    row, col = box
+    return sum(1 for row_length in partition if row_length >= col) - row
+
+
+def young_arm_leg_pairs(partition: list[int]) -> list[tuple[int, int]]:
+    return [
+        (young_arm_length(partition, box), young_leg_length(partition, box))
+        for box in partition_boxes(partition)
+    ]
+
+
+def hilb_rank_one_tangent_weights(
+    partition: list[int],
+    epsilon1: Fraction,
+    epsilon2: Fraction,
+) -> list[Fraction]:
+    weights: list[Fraction] = []
+    for arm, leg in young_arm_leg_pairs(partition):
+        weights.append(-leg * epsilon1 + (arm + 1) * epsilon2)
+        weights.append((leg + 1) * epsilon1 - arm * epsilon2)
+    return weights
+
+
+def character_normalize(
+    character: Counter[tuple[int, int]],
+) -> Counter[tuple[int, int]]:
+    return Counter(
+        {
+            exponent: coefficient
+            for exponent, coefficient in character.items()
+            if coefficient != 0
+        }
+    )
+
+
+def character_sum(
+    *characters: Counter[tuple[int, int]],
+) -> Counter[tuple[int, int]]:
+    result: Counter[tuple[int, int]] = Counter()
+    for character in characters:
+        for exponent, coefficient in character.items():
+            result[exponent] += coefficient
+    return character_normalize(result)
+
+
+def character_difference(
+    left: Counter[tuple[int, int]],
+    right: Counter[tuple[int, int]],
+) -> Counter[tuple[int, int]]:
+    result: Counter[tuple[int, int]] = Counter(left)
+    for exponent, coefficient in right.items():
+        result[exponent] -= coefficient
+    return character_normalize(result)
+
+
+def character_product(
+    left: Counter[tuple[int, int]],
+    right: Counter[tuple[int, int]],
+) -> Counter[tuple[int, int]]:
+    result: Counter[tuple[int, int]] = Counter()
+    for (left1, left2), left_coefficient in left.items():
+        for (right1, right2), right_coefficient in right.items():
+            result[(left1 + right1, left2 + right2)] += (
+                left_coefficient * right_coefficient
+            )
+    return character_normalize(result)
+
+
+def character_dual(
+    character: Counter[tuple[int, int]],
+) -> Counter[tuple[int, int]]:
+    return Counter(
+        {
+            (-exponent1, -exponent2): coefficient
+            for (exponent1, exponent2), coefficient in character.items()
+        }
+    )
+
+
+def character_shift(
+    character: Counter[tuple[int, int]],
+    shift: tuple[int, int],
+) -> Counter[tuple[int, int]]:
+    shift1, shift2 = shift
+    return Counter(
+        {
+            (exponent1 + shift1, exponent2 + shift2): coefficient
+            for (exponent1, exponent2), coefficient in character.items()
+        }
+    )
+
+
+def quotient_character(partition: list[int]) -> Counter[tuple[int, int]]:
+    return Counter((row - 1, col - 1) for row, col in partition_boxes(partition))
+
+
+def hilb_deformation_complex_character(
+    partition: list[int],
+) -> Counter[tuple[int, int]]:
+    quotient = quotient_character(partition)
+    second_difference = Counter(
+        {(0, 0): 1, (1, 0): -1, (0, 1): -1, (1, 1): 1}
+    )
+    return character_difference(
+        character_sum(character_dual(quotient), character_shift(quotient, (1, 1))),
+        character_product(
+            second_difference,
+            character_product(quotient, character_dual(quotient)),
+        ),
+    )
+
+
+def hilb_arm_leg_character(partition: list[int]) -> Counter[tuple[int, int]]:
+    character: Counter[tuple[int, int]] = Counter()
+    for arm, leg in young_arm_leg_pairs(partition):
+        character[(-leg, arm + 1)] += 1
+        character[(leg + 1, -arm)] += 1
+    return character
+
+
+def check_rank_one_hilbert_scheme_tangent_character() -> None:
+    assert_equal(
+        young_arm_leg_pairs([2]),
+        [(1, 0), (0, 0)],
+        "Hilb2 horizontal arm/leg pairs",
+    )
+    assert_equal(
+        young_arm_leg_pairs([1, 1]),
+        [(0, 1), (0, 0)],
+        "Hilb2 vertical arm/leg pairs",
+    )
+    assert_equal(
+        young_arm_leg_pairs([3, 1]),
+        [(2, 1), (1, 0), (0, 0), (0, 0)],
+        "Hilb4 sample arm/leg pairs",
+    )
+
+    for partition in ([1], [2], [1, 1], [3, 1], [4, 2, 1]):
+        assert_equal(
+            hilb_deformation_complex_character(partition),
+            hilb_arm_leg_character(partition),
+            "rank-one Hilbert tangent character cancellation",
+        )
+
+    samples = [
+        (Fraction(1), Fraction(2)),
+        (Fraction(2), Fraction(5)),
+        (Fraction(3), Fraction(-2)),
+        (Fraction(-5), Fraction(7)),
+    ]
+    for epsilon1, epsilon2 in samples:
+        assert_equal(
+            hilb_rank_one_tangent_weights([1], epsilon1, epsilon2),
+            [epsilon2, epsilon1],
+            "Hilb1 tangent weights",
+        )
+        assert_equal(
+            hilb_rank_one_tangent_weights([3, 1], epsilon1, epsilon2),
+            [
+                -epsilon1 + 3 * epsilon2,
+                2 * epsilon1 - 2 * epsilon2,
+                2 * epsilon2,
+                epsilon1 - epsilon2,
+                epsilon2,
+                epsilon1,
+                epsilon2,
+                epsilon1,
+            ],
+            "Hilb4 sample tangent weights",
+        )
+
+        for partition in ([2], [3, 1], [4, 2, 1]):
+            weights = hilb_rank_one_tangent_weights(partition, epsilon1, epsilon2)
+            transposed_weights = hilb_rank_one_tangent_weights(
+                transpose_partition(partition),
+                epsilon2,
+                epsilon1,
+            )
+            assert_equal(
+                len(weights),
+                2 * sum(partition),
+                "rank-one Hilbert tangent dimension",
+            )
+            assert_equal(
+                sorted(weights),
+                sorted(transposed_weights),
+                "rank-one Hilbert tangent transpose symmetry",
+            )
+
+
 def check_two_box_hilbert_scheme_fixed_points() -> None:
     # Rank-one length-two Gieseker sector Hilb^2(C^2).  The two fixed points
     # are the horizontal partition (2) and the vertical partition (1,1).
@@ -436,15 +649,8 @@ def check_two_box_hilbert_scheme_fixed_points() -> None:
         if epsilon1 == epsilon2:
             continue
 
-        def weights_from_arm_leg(arm_leg_pairs: list[tuple[int, int]]) -> list[Fraction]:
-            weights: list[Fraction] = []
-            for arm, leg in arm_leg_pairs:
-                weights.append(-leg * epsilon1 + (arm + 1) * epsilon2)
-                weights.append((leg + 1) * epsilon1 - arm * epsilon2)
-            return weights
-
-        horizontal_weights = weights_from_arm_leg([(1, 0), (0, 0)])
-        vertical_weights = weights_from_arm_leg([(0, 1), (0, 0)])
+        horizontal_weights = hilb_rank_one_tangent_weights([2], epsilon1, epsilon2)
+        vertical_weights = hilb_rank_one_tangent_weights([1, 1], epsilon1, epsilon2)
         assert_equal(
             horizontal_weights,
             [2 * epsilon2, epsilon1 - epsilon2, epsilon2, epsilon1],
@@ -571,6 +777,7 @@ def main() -> None:
     check_ads_decoupling_recursion()
     check_nekrasov_su2_one_instanton()
     check_one_box_tangent_euler_class()
+    check_rank_one_hilbert_scheme_tangent_character()
     check_two_box_hilbert_scheme_fixed_points()
     check_charge_one_nilpotent_cone_resolution_arithmetic()
     check_young_diagram_one_box_count()

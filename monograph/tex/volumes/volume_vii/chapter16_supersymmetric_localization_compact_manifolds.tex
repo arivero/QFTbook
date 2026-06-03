@@ -883,6 +883,74 @@ in this convention.  Matter multiplets multiply this by the Euler classes of
 their corresponding equivariant index bundles.
 \end{definition}
 
+\begin{proposition}[Rank-one monomial-ideal tangent character]
+\label{prop:rank-one-hilbert-tangent-character}
+Let \(Y\) be a Young diagram and let
+\(I_Y\subset R=\mathbb C[z_1,z_2]\) be the monomial ideal whose quotient has
+basis
+\[
+  Q_Y=R/I_Y,\qquad
+  \{z_1^{i-1}z_2^{j-1}:(i,j)\in Y\}.
+\]
+Let \(z_1\) and \(z_2\) have torus weights
+\(\epsilon_1\) and \(\epsilon_2\), and write \(t_a=e^{\epsilon_a}\).  At the
+fixed point \(I_Y\in{\rm Hilb}^{|Y|}(\mathbb C^2)\), the rank-one tangent
+character is
+\begin{equation}
+  \operatorname{ch}_{T}T_{I_Y}{\rm Hilb}^{|Y|}(\mathbb C^2)
+  =
+  \sum_{s\in Y}
+  \left(
+    t_1^{-L_Y(s)}t_2^{A_Y(s)+1}
+    +
+    t_1^{L_Y(s)+1}t_2^{-A_Y(s)}
+  \right).
+  \label{eq:rank-one-hilbert-tangent-character}
+\end{equation}
+Equivalently, the additive tangent weights are
+\[
+  -L_Y(s)\epsilon_1+(A_Y(s)+1)\epsilon_2,
+  \qquad
+  (L_Y(s)+1)\epsilon_1-A_Y(s)\epsilon_2,
+  \qquad s\in Y .
+\]
+Their product is the \(N=1\) specialization of
+\eqref{eq:nekrasov-tangent-euler-class}.
+\end{proposition}
+
+\begin{proof}
+Set
+\[
+  V_Y=\operatorname{ch}_{T}Q_Y
+  =
+  \sum_{(i,j)\in Y}t_1^{i-1}t_2^{j-1},
+  \qquad
+  V_Y^\vee=\sum_{(i,j)\in Y}t_1^{1-i}t_2^{1-j}.
+\]
+The monomial-ideal deformation complex, equivalently the rank-one ADHM
+deformation complex with framing character \(1\), gives the finite
+equivariant \(K\)-theory identity
+\begin{equation}
+  \operatorname{ch}_{T}T_{I_Y}{\rm Hilb}^{|Y|}(\mathbb C^2)
+  =
+  V_Y^\vee+t_1t_2V_Y-(1-t_1)(1-t_2)V_YV_Y^\vee .
+  \label{eq:rank-one-hilbert-k-character}
+\end{equation}
+Here the last term subtracts the gauge and relation part of the two-arrow
+ADHM complex, while \(V_Y^\vee\) and \(t_1t_2V_Y\) are the two framing
+terms.  Expanding \((1-t_1)(1-t_2)V_YV_Y^\vee\) is a finite second-difference
+calculation on the set of box displacements in \(Y-Y\): every displacement
+whose four adjacent translates stay inside the diagram cancels, and the only
+uncancelled displacements are the two hooks that cross the boundary at each
+box \(s\).  The east hook contributes
+\(t_1^{-L_Y(s)}t_2^{A_Y(s)+1}\), and the south hook contributes
+\(t_1^{L_Y(s)+1}t_2^{-A_Y(s)}\).  Summing over boxes gives
+\eqref{eq:rank-one-hilbert-tangent-character}.  Passing from multiplicative
+characters to additive weights gives the displayed two weights per box, and
+their product is exactly \eqref{eq:nekrasov-tangent-euler-class} with
+\(N=1\) and \(a_\alpha-a_\beta=0\).
+\end{proof}
+
 For \(k=1\), the fixed points are the \(N\) choices in which one Young
 diagram \(Y_\alpha\) consists of a single box.  Formula
 \eqref{eq:nekrasov-tangent-euler-class} gives
@@ -929,6 +997,8 @@ the support cycle \(2[0]\in{\rm Sym}^{2}(\mathbb C^2)\).  The Gieseker space
 retains the punctual quotient data; over the double point the exceptional
 fiber is \(\mathbb P^1\).  The torus \(T^2_{\epsilon_1,\epsilon_2}\) has two
 fixed points, corresponding to the partitions \((2)\) and \((1,1)\).
+Proposition~\ref{prop:rank-one-hilbert-tangent-character} computes their
+tangent characters directly from the monomial ideals.
 
 For the horizontal partition \(Y=(2)\), the boxes have
 \[

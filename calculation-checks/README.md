@@ -1970,8 +1970,10 @@ Current checks:
   Uhlenbeck stratum codimension arithmetic, the positive-ADHM-moment-map
   trace obstruction to unstable small-instanton subspaces, the torsion-free
   sheaf Gieseker-to-Uhlenbeck charge split, the one-box Gieseker tangent
-  Euler-class specialization, the rank-one two-box Hilbert-scheme
-  fixed-point Euler products and localization sum, the charge-one
+  Euler-class specialization, the rank-one Hilbert-scheme
+  tangent-character cancellation from the deformation-complex character to
+  the arm/leg formula, the two-box fixed-point Euler products and
+  localization sum, the charge-one
   Gieseker-to-Uhlenbeck minimal-nilpotent-cone resolution arithmetic,
   the trace-delta to half-trace instanton-action conversion, ADS dimension
   and \(R\)-charge arithmetic, the \(N_f=N_c-1\) one-instanton zero-mode
