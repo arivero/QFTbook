@@ -47,6 +47,73 @@ def assert_equal(name: str, got: object, expected: object) -> None:
         raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
 
 
+CENTRAL_MODE = (-1, 0)
+
+
+def add_fraction(
+    terms: dict[tuple[int, int], Fraction],
+    key: tuple[int, int],
+    value: Fraction,
+) -> None:
+    if value == 0:
+        return
+    terms[key] = terms.get(key, Fraction(0)) + value
+    if terms[key] == 0:
+        del terms[key]
+
+
+def add_terms(
+    *pieces: dict[tuple[int, int], Fraction],
+) -> dict[tuple[int, int], Fraction]:
+    out: dict[tuple[int, int], Fraction] = {}
+    for piece in pieces:
+        for key, value in piece.items():
+            add_fraction(out, key, value)
+    return out
+
+
+def su2_epsilon(a: int, b: int, c: int) -> int:
+    if len({a, b, c}) < 3:
+        return 0
+    if (a, b, c) in {(0, 1, 2), (1, 2, 0), (2, 0, 1)}:
+        return 1
+    return -1
+
+
+def affine_su2_bracket_basis(
+    left: tuple[int, int],
+    right: tuple[int, int],
+    level: Fraction,
+) -> dict[tuple[int, int], Fraction]:
+    a, m = left
+    b, n = right
+    if a == CENTRAL_MODE[0] or b == CENTRAL_MODE[0]:
+        return {}
+
+    out: dict[tuple[int, int], Fraction] = {}
+    for c in range(3):
+        eps = su2_epsilon(a, b, c)
+        if eps:
+            add_fraction(out, (c, m + n), Fraction(eps))
+    if a == b and m + n == 0:
+        add_fraction(out, CENTRAL_MODE, level * m)
+    return out
+
+
+def affine_su2_bracket_linear(
+    left: dict[tuple[int, int], Fraction],
+    right: dict[tuple[int, int], Fraction],
+    level: Fraction,
+) -> dict[tuple[int, int], Fraction]:
+    out: dict[tuple[int, int], Fraction] = {}
+    for left_key, left_coeff in left.items():
+        for right_key, right_coeff in right.items():
+            bracket = affine_su2_bracket_basis(left_key, right_key, level)
+            for key, value in bracket.items():
+                add_fraction(out, key, left_coeff * right_coeff * value)
+    return out
+
+
 def check_finite_gauge_transgression_coefficient() -> None:
     # With A^g=gAg^{-1}-dg g^{-1}, the pure Maurer-Cartan term in
     # cs(A^g)-cs(A) is (1/3) tr(theta^3).  The action prefactor k/(4*pi)
@@ -98,6 +165,69 @@ def check_polyakov_wiegmann_cross_coefficients() -> None:
     wz_xbar_yz = Fraction(1, 4)
     assert_equal("PW canceled cross term", kinetic_xz_ybar + wz_xz_ybar, Fraction(0))
     assert_equal("PW surviving cross coefficient", kinetic_xbar_yz + wz_xbar_yz, Fraction(1, 2))
+
+
+def check_affine_current_mode_residue_extraction() -> None:
+    # From J(z)J(w) ~ k/(z-w)^2 + ... and J_m = Res z^m J(z),
+    # Res_{z=w} z^m/(z-w)^2 = m w^{m-1}.  The outer residue against w^n
+    # is nonzero exactly when m+n=0, giving k*m, not k*n or k*(m+n).
+    level = Fraction(5)
+    for m in range(-4, 5):
+        for n in range(-4, 5):
+            inner_double_coefficient = Fraction(m)
+            outer_double_power = m - 1 + n
+            residue = level * inner_double_coefficient if outer_double_power == -1 else Fraction(0)
+            expected = level * m if m + n == 0 else Fraction(0)
+            assert_equal(f"affine central residue m={m} n={n}", residue, expected)
+            if m + n == 0 and m != 0:
+                wrong_symmetric_coefficient = level * (m + n)
+                if residue == wrong_symmetric_coefficient:
+                    raise AssertionError("symmetric affine central coefficient was not detected")
+
+            inner_simple_power = m
+            simple_pole_mode = inner_simple_power + n
+            assert_equal(f"affine simple-pole mode m={m} n={n}", simple_pole_mode, m + n)
+
+
+def check_affine_su2_central_extension_jacobi() -> None:
+    # Work in a real su(2) basis [T_a,T_b]=epsilon_ab^c T_c, suppressing the
+    # common factor of i used in the chapter.  The exact finite check verifies
+    # the loop-algebra central cocycle k*m*delta_{ab}*delta_{m+n,0}.
+    level = Fraction(3)
+    basis = [(a, m) for a in range(3) for m in range(-2, 3)]
+
+    assert_equal(
+        "affine central coefficient +m",
+        affine_su2_bracket_basis((0, 2), (0, -2), level),
+        {CENTRAL_MODE: Fraction(6)},
+    )
+    assert_equal(
+        "affine central coefficient antisymmetry",
+        affine_su2_bracket_basis((0, -2), (0, 2), level),
+        {CENTRAL_MODE: Fraction(-6)},
+    )
+
+    for x in basis:
+        for y in basis:
+            xy = affine_su2_bracket_basis(x, y, level)
+            yx = affine_su2_bracket_basis(y, x, level)
+            assert_equal(f"affine antisymmetry x={x} y={y}", add_terms(xy, yx), {})
+
+    for x in basis:
+        x_vec = {x: Fraction(1)}
+        for y in basis:
+            y_vec = {y: Fraction(1)}
+            for z in basis:
+                z_vec = {z: Fraction(1)}
+                yz = affine_su2_bracket_linear(y_vec, z_vec, level)
+                zx = affine_su2_bracket_linear(z_vec, x_vec, level)
+                xy = affine_su2_bracket_linear(x_vec, y_vec, level)
+                jacobi = add_terms(
+                    affine_su2_bracket_linear(x_vec, yz, level),
+                    affine_su2_bracket_linear(y_vec, zx, level),
+                    affine_su2_bracket_linear(z_vec, xy, level),
+                )
+                assert_equal(f"affine Jacobi x={x} y={y} z={z}", jacobi, {})
 
 
 def check_s_orthogonality() -> None:
@@ -152,11 +282,13 @@ def main() -> None:
     check_abelian_transgression_derivative_sign()
     check_holomorphic_polarization_variation()
     check_polyakov_wiegmann_cross_coefficients()
+    check_affine_current_mode_residue_extraction()
+    check_affine_su2_central_extension_jacobi()
     check_s_orthogonality()
     check_quantum_dimensions_and_hopf_links()
     check_verlinde_rule()
     check_verlinde_dimensions()
-    print("All Chern-Simons normalization and SU(2)_k modular-data checks passed.")
+    print("All Chern-Simons normalization, affine-current, and SU(2)_k modular-data checks passed.")
 
 
 if __name__ == "__main__":

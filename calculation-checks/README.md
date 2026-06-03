@@ -339,7 +339,8 @@ Current checks:
   coefficient, the Wess--Zumino extension-ambiguity coefficient in the same
   integral-level normalization, the Abelian limit fixing the total-derivative
   sign, holomorphic-polarization boundary-variation coefficients,
-  Polyakov--Wiegmann cross-term bookkeeping, and the \(SU(2)_k\)
+  Polyakov--Wiegmann cross-term bookkeeping, affine-current mode-residue
+  extraction and central-extension Jacobi identity, and the \(SU(2)_k\)
   modular-data orthogonality, quantum dimensions, Hopf links, Verlinde
   coefficients, and genus-zero/one state-space dimensions.
 - `finite_gauge_state_sum_checks.py`: exact finite checks for the Volume VIII

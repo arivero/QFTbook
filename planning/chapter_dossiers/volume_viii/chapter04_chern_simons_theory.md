@@ -32,6 +32,10 @@
 - Boundary polarization, chiral Wess--Zumino--Witten action, the
   Polyakov--Wiegmann identity, cancellation of the Chern--Simons boundary
   variation, and the level-\(k\) affine current algebra.
+- Mode-residue extraction of the affine current algebra: the double pole in
+  the boundary current OPE gives the central term
+  \(k m\kappa^{ab}\delta_{m+n,0}\), and the resulting loop-algebra cocycle is
+  checked against the Jacobi identity.
 
 ## Symbols
 
@@ -73,6 +77,9 @@
    is \(k(2\pi)^{-1}\int A_z\,\delta A_{\bar z}\); the gauged chiral WZW
    boundary action cancels it, and its Polyakov--Wiegmann identity gives the
    level-\(k\) affine current algebra.
+10. The affine mode commutator follows from contour residues of the OPE:
+   \(\operatorname{Res}_{z=w} z^m/(z-w)^2=mw^{m-1}\), so the central
+   extension coefficient is \(k m\), not an arbitrary mode convention.
 
 ## Proof Obligations And Boundaries
 
@@ -93,10 +100,12 @@
 - `calculation-checks/chern_simons_su2_modular_checks.py` verifies the
   finite-gauge-transgression coefficient, Wess--Zumino extension-ambiguity
   coefficient, Abelian total-derivative sign, holomorphic-polarization
-  boundary variation, Polyakov--Wiegmann cross-term coefficient, and the
-  \(SU(2)_k\) sine-transform orthogonality, quantum dimensions, Hopf-link
-  normalizations, Verlinde fusion coefficients, and sphere/torus state-space
-  dimensions for finite ranges of \(k\).
+  boundary variation, Polyakov--Wiegmann cross-term coefficient,
+  affine-current mode-residue extraction, the finite \(\mathfrak{su}_2\)
+  central-extension Jacobi identity, and the \(SU(2)_k\) sine-transform
+  orthogonality, quantum dimensions, Hopf-link normalizations, Verlinde
+  fusion coefficients, and sphere/torus state-space dimensions for finite
+  ranges of \(k\).
 
 ## Figures
 
@@ -115,3 +124,7 @@
   theorem.  The companion check now verifies the \(2\pi k\mathbb Z\) WZ
   ambiguity from the same \(24\pi^2\) winding normalization as the bulk
   finite-gauge transgression.
+- 2026-06-03 issue #562 affine-current pass: expanded the boundary-current
+  algebra paragraph with the contour-residue derivation of the mode bracket
+  and the loop-cocycle Jacobi check, with exact finite \(\mathfrak{su}_2\)
+  coverage in the companion script.

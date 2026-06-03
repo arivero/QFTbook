@@ -615,7 +615,24 @@ algebra at level \(k\),
   +
   \frac{\ii f^{ab}{}_{c}J^c(w)}{z-w},
 \]
-equivalently
+where the double pole is the local expression of the same integral level that
+entered the bulk action.  The mode form is obtained by the contour-residue
+calculation, not by an additional convention.  Define
+\[
+  J_m^a=\oint_0\frac{\dd z}{2\pi\ii}\,z^mJ^a(z),
+  \qquad
+  J^a(z)=\sum_{m\in\mathbb Z}J_m^a z^{-m-1}.
+\]
+With the \(z\)-contour around \(w\) and the \(w\)-contour around the origin,
+the double and simple poles give
+\[
+  \operatorname*{Res}_{z=w}\frac{z^m}{(z-w)^2}
+  =
+  m\,w^{m-1},
+  \qquad
+  \operatorname*{Res}_{z=w}\frac{z^m}{z-w}=w^m .
+\]
+Therefore
 \[
   [J_m^a,J_n^b]
   =
@@ -623,6 +640,21 @@ equivalently
   +
   k\,m\,\kappa^{ab}\delta_{m+n,0}.
 \]
+The central term is the loop-algebra cocycle
+\[
+  \Omega(X_m,Y_n)=k\,m\,\kappa(X,Y)\delta_{m+n,0}.
+\]
+Its Jacobi compatibility follows from invariance of \(\kappa\):
+\[
+  \Omega([X_m,Y_n],Z_\ell)
+  +\Omega([Y_n,Z_\ell],X_m)
+  +\Omega([Z_\ell,X_m],Y_n)=0 .
+\]
+Indeed, when the Kronecker deltas are nonzero, \(m+n+\ell=0\), and the three
+invariant trace factors are cyclic permutations of
+\(\kappa([X,Y],Z)\); their coefficient is
+\((m+n)+(n+\ell)+(\ell+m)=0\).  Thus the mode algebra is a genuine central
+extension of the boundary loop algebra with level \(k\).
 The precise Hilbert space still depends on the boundary polarization and
 global boundary condition, but the local current algebra and its level are
 fixed by the same integer \(k\) that quantizes the bulk Chern--Simons action.
