@@ -1740,7 +1740,8 @@ Current checks:
   kinematics, soliton-breather unitarity/crossing/pole kinematics, and
   lightest-breather unitarity and crossing.  It also checks the
   \(A_r^{(1)}\) affine Toda cycle-Laplacian eigenvalues and the finite
-  \(A_r\) Perron--Frobenius sine-mass relation.
+  \(A_r\) Perron--Frobenius sine-mass relation, plus the exact
+  \(\mathbb Q[\sqrt3]\) \(D_4\) Perron--Frobenius mass cell.
 - `sg_thirring_bosonization_checks.py`: exact rational checks for the
   sine-Gordon/massive-Thirring bosonization section, including the distinction
   between vertex-OPE exponent and scaling dimension, Coleman's coupling map,

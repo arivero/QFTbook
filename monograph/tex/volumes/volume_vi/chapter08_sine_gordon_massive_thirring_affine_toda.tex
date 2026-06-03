@@ -1229,10 +1229,34 @@ This calculation is the finite \(A_r\) algebra behind the Coxeter mass
 language used in the simply-laced affine Toda bootstrap.  For \(D\) and \(E\)
 types, the analogous mass vector is specified by the positive
 Perron--Frobenius eigenvector of the finite Dynkin adjacency matrix with
-eigenvalue \(2\cos(\pi/h)\).  Matching that algebraic mass datum to an exact
-quantum \(S\)-matrix and to a continuum local QFT is part of the model
-comparison problem stated below; it is not supplied by the Hessian
-calculation alone.
+eigenvalue \(2\cos(\pi/h)\).  The first non-\(A\) check is small enough to
+write out.  For \(D_4\), use the node order in which node \(2\) is the central
+trivalent node and nodes \(1,3,4\) are the leaves.  The Coxeter number is
+\(h=6\), so the Perron--Frobenius eigenvalue is
+\[
+  2\cos\!\left(\frac{\pi}{6}\right)=\sqrt3 .
+\]
+Writing the mass vector as
+\[
+  \mathbf M=(x,y,x,x)
+\]
+the adjacency eigenvalue equations are
+\[
+  y=\sqrt3\,x,
+  \qquad
+  3x=\sqrt3\,y .
+\]
+The two equations are compatible and, after the normalization \(x=1\), give
+\[
+  \mathbf M_{D_4}=(1,\sqrt3,1,1).
+\]
+Equivalently, the finite Cartan matrix \(C=2\mathbf 1-I\) sends this vector to
+\((2-\sqrt3)\mathbf M_{D_4}\).  This finite \(D_4\) cell is the algebraic
+content behind the Coxeter-mass phrase: the trivalent node is heavier by the
+factor \(\sqrt3\), while the three outer particles are degenerate.  Matching
+that algebraic mass datum to an exact quantum \(S\)-matrix and to a continuum
+local QFT is part of the model comparison problem stated below; it is not
+supplied by the Hessian calculation alone.
 
 \section{Model-Comparison Summary}
 

@@ -5,13 +5,20 @@ from __future__ import annotations
 
 import cmath
 import math
+from fractions import Fraction
 
 
 ComplexMatrix = list[list[complex]]
+Surd3 = tuple[Fraction, Fraction]
 
 
 def assert_close(name: str, got: complex | float, expected: complex | float, tol: float = 1.0e-10) -> None:
     if abs(got - expected) > tol:
+        raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
+
+
+def assert_equal(name: str, got: object, expected: object) -> None:
+    if got != expected:
         raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
 
 
@@ -275,6 +282,75 @@ def check_affine_toda_a_r_mass_matrix() -> None:
             )
 
 
+def surd3_add(left: Surd3, right: Surd3) -> Surd3:
+    return (left[0] + right[0], left[1] + right[1])
+
+
+def surd3_scale(value: Surd3, coefficient: Fraction) -> Surd3:
+    return (coefficient * value[0], coefficient * value[1])
+
+
+def surd3_mul_sqrt3(value: Surd3) -> Surd3:
+    rational, sqrt_part = value
+    return (3 * sqrt_part, rational)
+
+
+def check_affine_toda_d4_perron_frobenius_mass_cell() -> None:
+    """Check the D4 Coxeter mass vector over Q[sqrt(3)]."""
+
+    one = (Fraction(1), Fraction(0))
+    sqrt3 = (Fraction(0), Fraction(1))
+    zero = (Fraction(0), Fraction(0))
+    d4_masses = (one, sqrt3, one, one)
+    adjacency = (
+        (0, 1, 0, 0),
+        (1, 0, 1, 1),
+        (0, 1, 0, 0),
+        (0, 1, 0, 0),
+    )
+
+    adjacency_action = []
+    for row in adjacency:
+        entry = zero
+        for connected, mass in zip(row, d4_masses):
+            if connected:
+                entry = surd3_add(entry, mass)
+        adjacency_action.append(entry)
+
+    expected = [surd3_mul_sqrt3(mass) for mass in d4_masses]
+    assert_equal(
+        "D4 Perron-Frobenius adjacency equation",
+        tuple(adjacency_action),
+        tuple(expected),
+    )
+    assert_equal(
+        "D4 central-to-leaf mass ratio",
+        d4_masses[1],
+        surd3_mul_sqrt3(d4_masses[0]),
+    )
+
+    cartan_action = []
+    for index, mass in enumerate(d4_masses):
+        cartan_action.append(
+            surd3_add(
+                surd3_scale(mass, Fraction(2)),
+                surd3_scale(adjacency_action[index], Fraction(-1)),
+            )
+        )
+    cartan_eigenvalue_action = [
+        surd3_add(
+            surd3_scale(mass, Fraction(2)),
+            surd3_scale(surd3_mul_sqrt3(mass), Fraction(-1)),
+        )
+        for mass in d4_masses
+    ]
+    assert_equal(
+        "D4 Cartan Coxeter eigenvalue",
+        tuple(cartan_action),
+        tuple(cartan_eigenvalue_action),
+    )
+
+
 def main() -> None:
     check_matrix_unitarity()
     check_yang_baxter_matrix_part()
@@ -285,6 +361,7 @@ def main() -> None:
     check_neutral_block_residues()
     check_breather_breather_direct_fusion_masses()
     check_affine_toda_a_r_mass_matrix()
+    check_affine_toda_d4_perron_frobenius_mass_cell()
     print("All sine-Gordon S-matrix checks passed.")
 
 

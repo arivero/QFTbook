@@ -86,6 +86,11 @@ families.  This chapter supplies the first exact examples before the later
   Laplacian, obtaining
   \(M_a^2=4m^2\sin^2(\pi a/(r+1))\), and then deriving the finite \(A_r\)
   Perron--Frobenius relation for the sine mass vector.
+- Works out the first non-\(A\) Coxeter mass cell explicitly: for \(D_4\),
+  with central node \(2\), the finite Dynkin adjacency equation
+  \(I\mathbf M=\sqrt3\,\mathbf M\) gives
+  \(\mathbf M=(1,\sqrt3,1,1)\), while the quantum \(S\)-matrix/local-QFT
+  comparison remains a separate model-comparison problem.
 
 ## Calculation Checks
 
@@ -94,7 +99,8 @@ families.  This chapter supplies the first exact examples before the later
   soliton-breather unitarity/crossing/pole kinematics, lightest-breather
   direct and crossed poles, neutral-block residue signs, and breather-breather
   fusion mass formulae.  It also verifies the \(A_r^{(1)}\) cycle-Laplacian
-  eigenvalues and finite \(A_r\) Perron--Frobenius sine-mass relation.
+  eigenvalues, finite \(A_r\) Perron--Frobenius sine-mass relation, and exact
+  \(\mathbb Q[\sqrt3]\) \(D_4\) Perron--Frobenius mass cell.
 - `calculation-checks/sg_thirring_bosonization_checks.py` verifies the
   vertex-OPE exponent versus scaling dimension, Coleman's coupling map,
   current-dictionary coefficient, Mandelstam exchange phase, free-fermion
@@ -115,3 +121,9 @@ first simply-laced examples.
   Dynkin-adjacency eigenvector check.  The general \(D/E\) Coxeter mass datum
   is now stated as additional algebraic bootstrap input rather than inferred
   from the displayed Hessian.
+- 2026-06-03 #562 non-\(A\) affine-Toda mass-cell pass: added the explicit
+  \(D_4\) adjacency calculation
+  \(I(1,\sqrt3,1,1)=\sqrt3(1,\sqrt3,1,1)\) and the Cartan
+  \(2-\sqrt3\) eigenvalue check, with an exact \(\mathbb Q[\sqrt3]\)
+  companion verification.  This narrows the assertion-as-derivation gap
+  without claiming the quantum affine-Toda construction.
