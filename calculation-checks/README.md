@@ -523,7 +523,9 @@ Current checks:
   source-response convention for planar singlet two-point functions.
 - `chpt_nlo_checks.py`: finite arithmetic checks for the NLO chiral
   perturbation theory section, including the ten \(L_1,\ldots,L_{10}\)
-  Gasser--Leutwyler labels, selected \(\Gamma_i\) entries, and the
+  Gasser--Leutwyler labels, the Weinberg graph power-counting identity, the
+  \(O(p^4)\) retained-versus-\(O(p^6)\) omitted truncation ledger, selected
+  \(\Gamma_i\) entries, and the
   cancellation of the \(\mu\)-dependence in the two-flavor
   \(M_\pi^2\) chiral logarithm by the running of \(l_3^r(\mu)\).
 - `qed_form_factor_checks.py`: exact rational checks for the Volume I QED

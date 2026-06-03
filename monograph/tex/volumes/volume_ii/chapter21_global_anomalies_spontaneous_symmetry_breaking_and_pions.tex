@@ -2153,6 +2153,52 @@ For a connected graph, \(L=I-\sum_iV_i+1\), hence
 Thus one-loop graphs made only from \(\mathcal L_2\) and tree graphs from the
 order-\(p^4\) Lagrangian both contribute at next-to-leading order.
 
+\begin{controlledapproximation}[Chiral EFT truncation as a seminorm statement]
+\label{ca:chiral-eft-truncation-seminorm}
+The power-counting identity \eqref{eq:weinberg-chiral-power-counting} is only
+the graph algebra.  To use it as a QCD statement one must also specify the
+observable topology in which the low-energy remainder is controlled.  Fix a
+compact family \(K\) of external momenta and smooth flavor sources satisfying
+\[
+  |p_a|\le \epsilon\Lambda_\chi,\qquad
+  \|\ell\|_K+\|r\|_K\le \epsilon\Lambda_\chi,\qquad
+  \|\chi\|_K^{1/2}\le \epsilon\Lambda_\chi,
+  \qquad 0<\epsilon<1,
+\]
+together with a renormalization scheme for the local chiral coordinates.  For
+a connected renormalized graph \(\Gamma\) let
+\[
+  \nu(\Gamma)=2+2L(\Gamma)+\sum_d V_d(\Gamma)(d-2).
+\]
+The useful truncation assertion is a family of seminorm estimates
+\[
+  p_K\!\left(\mathcal A_\Gamma\right)
+  \le C_{\Gamma,K}\epsilon^{\nu(\Gamma)}
+\]
+for the source derivatives or \(S\)-matrix coordinates under consideration,
+and, after retaining all graphs with \(\nu\le N\),
+\begin{equation}
+  p_K\!\left(
+    \mathcal A-\sum_{\nu(\Gamma)\le N}\mathcal A_\Gamma
+  \right)
+  \le C_{K,N}\epsilon^{\nu_+(N)},
+  \qquad
+  \nu_+(N):=\min\{\nu(\Gamma):\nu(\Gamma)>N\}.
+  \label{eq:chiral-eft-seminorm-remainder}
+\end{equation}
+Equation \eqref{eq:chiral-eft-seminorm-remainder} is not a convergence theorem
+for the full chiral series.  It is the controlled EFT input that turns the
+formal graph dimension into a quantitative low-energy approximation on the
+declared compact source window.  At \(N=4\) the retained data are precisely:
+tree graphs from \(\mathcal L_2\), one-loop graphs from \(\mathcal L_2\), and
+tree graphs from \(\mathcal L_4\), including the source-contact terms.  The
+first omitted families have \(\nu=6\): two-loop graphs from \(\mathcal L_2\),
+one-loop graphs with one \(\mathcal L_4\) vertex, and tree graphs from
+\(\mathcal L_6\).  Thus the \(O(p^4)\) calculation below is meaningful only
+inside this remainder ledger; outside such a low-energy window the same local
+formulae are just coordinates, not controlled predictions.
+\end{controlledapproximation}
+
 For \(N_f=3\), the even-intrinsic-parity order-\(p^4\) local functional is the
 Gasser--Leutwyler basis.\footnote{The notation \(L_1,\ldots,L_{10}\) is the
 three-flavor basis introduced by Gasser and Leutwyler in the original chiral

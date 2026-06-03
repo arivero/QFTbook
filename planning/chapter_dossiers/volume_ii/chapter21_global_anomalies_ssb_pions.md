@@ -230,6 +230,12 @@
   \(D_\mu U,\ell_\mu,r_\mu=O(p)\), \(F_{\mu\nu}^{L,R},\chi=O(p^2)\), and
   graph order
   \(\nu=2+2L+\sum_iV_i(d_i-2)\).
+- The chiral power-counting formula is now separated from the approximation
+  claim: the graph identity is exact, while truncating at \(O(p^4)\) requires
+  a compact low-energy source window and a seminorm remainder estimate.  The
+  first omitted families are explicitly recorded as two-loop \(\mathcal L_2\),
+  one-loop \(\mathcal L_4\)-with-\(\mathcal L_2\), and tree
+  \(\mathcal L_6\) graphs, all of order \(p^6\).
 - The three-flavor Gasser--Leutwyler even-parity NLO basis
   \(L_1,\ldots,L_{10}\), together with source-contact \(H_1,H_2\), is displayed
   in the chapter's left/right convention
@@ -380,3 +386,9 @@
   \(L_1,\ldots,L_{10}\) even-parity \(O(p^4)\) basis plus \(H_1,H_2\), the
   \(\Gamma_i\) running table, a worked two-flavor \(M_\pi^2\) chiral logarithm
   with scale cancellation, and `calculation-checks/chpt_nlo_checks.py`.
+- 2026-06-03 issue #630 ChPT rigor pass: added the controlled-approximation
+  ledger `ca:chiral-eft-truncation-seminorm`, making the \(O(p^4)\) ChPT
+  calculation a compact-source-window seminorm statement rather than a bare
+  power-counting slogan.  Extended `chpt_nlo_checks.py` to verify the
+  topological Weinberg graph identity, the NLO retained graph inventory, and
+  the first \(O(p^6)\) omitted-family budget.
