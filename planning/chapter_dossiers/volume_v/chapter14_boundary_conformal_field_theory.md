@@ -127,6 +127,12 @@
   pointed \(G=\mathbb Z_2\times\mathbb Z_2\), \(G/H\) coset example where a
   nontrivial stabilizer object acts trivially and the other coset swaps the
   two boundary labels.
+- Adds the Fourier diagonalization of that pointed annulus nimrep:
+  \(P_\eta=|G/H|^{-1}\sum_{\bar g}\eta(\bar g)^{-1}n_{\bar g}\) are
+  orthogonal projectors and \(n_g=\sum_\eta\eta(g+H)P_\eta\).  The same
+  formula in boundary Fourier coefficients shows that annulus spectra see
+  only the quotient \(G/H\), so stabilizer chiral labels require the later
+  boundary-endomorphism and mixed-projector data.
 - Adds the boundary-OPE composition law in the same pointed \(G/H\) module
   example: the generator \(\psi_{x,g}\) from \(xH\) to \((x+g)H\) obeys
   \(\psi_{x+g,h}\psi_{x,g}=\psi_{x,g+h}\), so the finite
@@ -202,10 +208,14 @@
     representation of the chiral fusion algebra because interval sewing with
     two successive chiral labels can be evaluated either through an
     intermediate boundary module or by fusing the two chiral labels first.
-18. In the pointed \(G/H\) module cell, boundary-field OPE associativity
+18. In the pointed \(G/H\) module cell, the annulus matrices are
+    simultaneously diagonalized by quotient Fourier projectors; stabilizer
+    labels have the vacuum annulus spectrum but do not collapse as boundary
+    endomorphism labels.
+19. In the pointed \(G/H\) module cell, boundary-field OPE associativity
     keeps both endpoint data and chiral labels: stabilizer objects preserve a
     boundary endpoint but do not collapse to the vacuum boundary field.
-19. The stabilizer classifying idempotents in the pointed \(G/H\) module cell
+20. The stabilizer classifying idempotents in the pointed \(G/H\) module cell
     are orthogonal projectors and are compatible with boundary-changing fields
     by the slide identity
     \(\psi_{x,g}e_{x,\chi}=e_{x+g,\chi}\psi_{x,g}\).
@@ -223,6 +233,7 @@
   fusion-ring characters, normalized Cardy two-bulk classifying sewing,
   the finite classifying-center model for non-diagonal rational sewing,
   the pointed module-category annulus nimrep identity,
+  the pointed annulus Fourier diagonalization and stabilizer degeneracy check,
   the pointed module-category boundary-OPE associativity cell,
   the pointed stabilizer classifying-idempotent slide identity,
   boundary entropy squares, Ising
@@ -329,6 +340,13 @@
   pointed \(G/H\) coset module example; extended `bcft_cardy_checks.py` with
   exact integer checks of \(n_g n_h=n_{g+h}\), stabilizer collapse, and the
   boundary-label swap matrix.
+- 2026-06-03 pointed annulus Fourier pass: added the simultaneous
+  diagonalization of the pointed \(G/H\) annulus nimrep by quotient character
+  projectors, the boundary Fourier coefficient formula, and the warning that
+  stabilizer labels have the vacuum annulus spectrum while remaining visible
+  in boundary endomorphism data.  Extended `bcft_cardy_checks.py` to verify
+  projector orthogonality, spectral resolution, Fourier matrix entries, and
+  stabilizer-spectrum degeneracy.
 - 2026-06-02 pointed boundary-OPE pass: added the finite boundary-field
   composition law \(\psi_{x+g,h}\psi_{x,g}=\psi_{x,g+h}\) in the same
   \(G/H\) module example; extended `bcft_cardy_checks.py` to verify endpoint

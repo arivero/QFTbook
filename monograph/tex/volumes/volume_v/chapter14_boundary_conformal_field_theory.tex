@@ -1360,6 +1360,50 @@ Thus \(n_{(0,0)}=n_{(1,0)}=\mathbf 1\), while
 unitary local rational BCFT requires the corresponding modular, Frobenius,
 and analytic sewing data in addition to the displayed matrices.
 
+The annulus matrices in this cell also display the modular diagonalization
+that replaces the diagonal Cardy formula.  Put \(Q=G/H\cong\mathbb Z_2\).
+For a character \(\eta\in\widehat Q\), define the Fourier projector
+\begin{equation}
+  P_\eta
+  =
+  \frac1{|Q|}\sum_{\bar g\in Q}\eta(\bar g)^{-1}n_{\bar g}.
+  \label{eq:bcft-pointed-coset-fourier-projector}
+\end{equation}
+These projectors satisfy
+\[
+  P_\eta P_{\eta'}=\delta_{\eta,\eta'}P_\eta,
+  \qquad
+  \sum_{\eta\in\widehat Q}P_\eta=\mathbf 1,
+\]
+and the spectral resolution of the annulus action is
+\begin{equation}
+  n_g
+  =
+  \sum_{\eta\in\widehat Q}\eta(g+H)\,P_\eta .
+  \label{eq:bcft-pointed-coset-nimrep-diagonalization}
+\end{equation}
+Equivalently, with the normalized boundary Fourier matrix
+\[
+  \Psi_{xH,\eta}=|Q|^{-1/2}\eta(xH),
+\]
+one has
+\begin{equation}
+  (n_g)_{xH}{}^{yH}
+  =
+  \sum_{\eta\in\widehat Q}
+  \Psi_{xH,\eta}\,\eta(g+H)\,\overline{\Psi_{yH,\eta}} .
+  \label{eq:bcft-pointed-coset-annulus-fourier}
+\end{equation}
+This is the finite version of the rational BCFT statement that annulus
+nimreps are diagonalized by boundary classifying data, with eigenvalues
+given by fusion-ring characters.  It also records a limitation of annulus
+spectra: if \(h\in H\), then \(h+H=H\), so \(n_h\) has the same eigenvalues
+and the same matrix as the vacuum.  The stabilizer label is nevertheless
+visible in boundary endomorphism fields and in the mixed projector identity
+below.  Thus annulus modular diagonalization sees the quotient action
+\(G/H\), while full Cardy--Lewellen sewing still needs the stabilizer
+endomorphism and classifying-idempotent data.
+
 The same example also shows the boundary-field composition behind the
 annulus identity.  Let \(x\in G/H\), and let
 \(\psi_{x,g}\) denote the one-dimensional generator of the open sector with

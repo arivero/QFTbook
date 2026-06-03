@@ -527,6 +527,38 @@ def int_matrix_multiply(left: IntMatrix, right: IntMatrix) -> IntMatrix:
     )
 
 
+RatMatrix = tuple[tuple[Fraction, ...], ...]
+
+
+def rat_matrix_add(left: RatMatrix, right: RatMatrix) -> RatMatrix:
+    return tuple(
+        tuple(left[row][column] + right[row][column] for column in range(len(left)))
+        for row in range(len(left))
+    )
+
+
+def rat_matrix_scale(coefficient: Fraction, matrix: RatMatrix) -> RatMatrix:
+    return tuple(
+        tuple(coefficient * entry for entry in row)
+        for row in matrix
+    )
+
+
+def rat_matrix_multiply(left: RatMatrix, right: RatMatrix) -> RatMatrix:
+    size = len(left)
+    return tuple(
+        tuple(
+            sum(left[row][middle] * right[middle][column] for middle in range(size))
+            for column in range(size)
+        )
+        for row in range(size)
+    )
+
+
+def int_to_rat_matrix(matrix: IntMatrix) -> RatMatrix:
+    return tuple(tuple(Fraction(entry) for entry in row) for row in matrix)
+
+
 def z2xz2_add(left: GroupElement, right: GroupElement) -> GroupElement:
     return ((left[0] + right[0]) % 2, (left[1] + right[1]) % 2)
 
@@ -579,6 +611,82 @@ def check_pointed_module_annulus_nimrep() -> None:
                 for entry in row:
                     if entry < 0:
                         raise AssertionError("annulus matrix has a negative entry")
+
+
+def check_pointed_annulus_fourier_diagonalization() -> None:
+    """Check the finite Fourier diagonalization of the pointed annulus nimrep."""
+
+    elements: tuple[GroupElement, ...] = ((0, 0), (1, 0), (0, 1), (1, 1))
+    identity = int_to_rat_matrix(pointed_coset_annulus_matrix((0, 0)))
+    swap = int_to_rat_matrix(pointed_coset_annulus_matrix((0, 1)))
+    zero = ((Fraction(0), Fraction(0)), (Fraction(0), Fraction(0)))
+
+    projectors = {
+        "trivial": rat_matrix_scale(Fraction(1, 2), rat_matrix_add(identity, swap)),
+        "sign": rat_matrix_scale(Fraction(1, 2), rat_matrix_add(identity, rat_matrix_scale(Fraction(-1), swap))),
+    }
+
+    assert_equal(
+        "pointed annulus Fourier projectors sum to identity",
+        rat_matrix_add(projectors["trivial"], projectors["sign"]),
+        identity,
+    )
+    for left_name, left_projector in projectors.items():
+        for right_name, right_projector in projectors.items():
+            product = rat_matrix_multiply(left_projector, right_projector)
+            expected = left_projector if left_name == right_name else zero
+            assert_equal(
+                f"pointed annulus Fourier projector product {left_name} {right_name}",
+                product,
+                expected,
+            )
+
+    def quotient_character(character_name: str, group_element: GroupElement) -> Fraction:
+        if character_name == "trivial":
+            return Fraction(1)
+        if character_name == "sign":
+            return Fraction(1) if group_element[1] == 0 else Fraction(-1)
+        raise AssertionError(character_name)
+
+    for group_element in elements:
+        spectral_resolution = zero
+        for character_name, projector in projectors.items():
+            spectral_resolution = rat_matrix_add(
+                spectral_resolution,
+                rat_matrix_scale(quotient_character(character_name, group_element), projector),
+            )
+        assert_equal(
+            f"pointed annulus Fourier spectral resolution {group_element}",
+            spectral_resolution,
+            int_to_rat_matrix(pointed_coset_annulus_matrix(group_element)),
+        )
+
+    # Boundary Fourier coefficients psi_{x,chi}=|Q|^{-1/2} chi(x) give the
+    # same matrix entries; using psi psi^* removes the square root.
+    for group_element in elements:
+        for source in (0, 1):
+            for target in (0, 1):
+                entry = sum(
+                    Fraction(1, 2)
+                    * quotient_character(character_name, (0, source))
+                    * quotient_character(character_name, group_element)
+                    * quotient_character(character_name, (0, target))
+                    for character_name in projectors
+                )
+                assert_equal(
+                    "pointed annulus boundary Fourier entry "
+                    f"g={group_element}, source={source}, target={target}",
+                    entry,
+                    Fraction(pointed_coset_annulus_matrix(group_element)[source][target]),
+                )
+
+    assert_equal(
+        "pointed annulus stabilizer element has vacuum spectrum",
+        int_to_rat_matrix(pointed_coset_annulus_matrix((1, 0))),
+        identity,
+    )
+    if (1, 0) == (0, 0):
+        raise AssertionError("stabilizer label collapsed before annulus comparison")
 
 
 def check_pointed_module_boundary_ope_associativity() -> None:
@@ -1027,6 +1135,7 @@ def main() -> None:
     check_matrix_frobenius_cutting_move()
     check_finite_classifying_center_characters()
     check_pointed_module_annulus_nimrep()
+    check_pointed_annulus_fourier_diagonalization()
     check_pointed_module_boundary_ope_associativity()
     check_pointed_stabilizer_classifying_idempotents()
     check_boundary_entropy()
@@ -1041,7 +1150,8 @@ def main() -> None:
     print(
         "All BCFT Cardy, sewing, boundary-gradient, Ising boundary-changing, "
         "matrix-Frobenius, finite-center, pointed-nimrep, Chan-Paton, "
-        "pointed-boundary-OPE, pointed-stabilizer-slide, compact-boson, "
+        "pointed-annulus-Fourier, pointed-boundary-OPE, "
+        "pointed-stabilizer-slide, compact-boson, "
         "Liouville-boundary, and continuous-annulus Plancherel checks passed."
     )
 

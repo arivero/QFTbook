@@ -971,7 +971,8 @@ Current checks:
   classifying sewing identity, the matrix-unit Frobenius cutting move behind
   rational boundary sewing, the finite classifying-center model for
   non-diagonal rational boundary sewing, the pointed module-category annulus
-  nimrep identity \(n_g n_h=n_{g+h}\), the pointed module-category
+  nimrep identity \(n_g n_h=n_{g+h}\), the pointed annulus Fourier
+  diagonalization/projector resolution over \(G/H\), the pointed module-category
   boundary-OPE associativity cell
   \(\psi_{x+g,h}\psi_{x,g}=\psi_{x,g+h}\), stabilizer-label noncollapse,
   the pointed stabilizer classifying-idempotent slide identity, boundary
