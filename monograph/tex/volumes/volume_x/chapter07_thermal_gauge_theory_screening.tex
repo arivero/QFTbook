@@ -343,6 +343,97 @@ after renormalizing the line.  Correlators of two Polyakov loops define
 static color-singlet free energies; their large-distance decay belongs to the
 screening spectrum rather than to a zero-temperature particle spectrum.
 
+\begin{definition}[Renormalized static-source free-energy datum]
+\label{def:thermal-static-source-free-energy-datum}
+At finite cutoff \(\Lambda\), let \(P_R^\Lambda(\mathbf x)\) be the
+regularized thermal line in representation \(R\).  A static-source
+renormalization scheme consists of additive line energies
+\(\delta m_R(\Lambda)\), equivalently multiplicative factors
+\[
+  Z_R(\Lambda,\beta)=\exp\{\beta\,\delta m_R(\Lambda)\},
+  \qquad
+  P_R^{\rm ren}(\mathbf x)=Z_R(\Lambda,\beta)P_R^\Lambda(\mathbf x).
+\]
+For a conjugate pair at separation \(r=|\mathbf x-\mathbf y|\), define
+\[
+\begin{aligned}
+  e^{-\beta F_R^{\rm ren}}
+  &:=
+  \left\langle d_R^{-1}\operatorname{tr}_R
+  P_R^{\rm ren}(\mathbf x)\right\rangle,\\
+  e^{-\beta F_{R\bar R}^{\rm ren}(r)}
+  &:=
+  \left\langle d_R^{-2}
+  \operatorname{tr}_R P_R^{\rm ren}(\mathbf x)\,
+  \operatorname{tr}_{\bar R}P_{\bar R}^{\rm ren}(\mathbf y)
+  \right\rangle .
+\end{aligned}
+\]
+Changing the finite part of \(\delta m_R\) shifts \(F_R^{\rm ren}\) by an
+additive constant.  The datum therefore includes the line scheme whenever an
+absolute one-source free energy is quoted.
+\end{definition}
+
+\begin{lemma}[Line self-energy cancellation in static-source ratios]
+\label{lem:thermal-static-source-line-cancellation}
+In the datum of Definition~\ref{def:thermal-static-source-free-energy-datum},
+the pair excess free energy
+\[
+  \Delta F_{R\bar R}(r)
+  =
+  F_{R\bar R}^{\rm ren}(r)-F_R^{\rm ren}-F_{\bar R}^{\rm ren}
+\]
+is independent of the multiplicative line factors \(Z_R,Z_{\bar R}\).  So is
+the static force
+\[
+  \mathcal F_{R\bar R}(r,T)=-\partial_rF_{R\bar R}^{\rm ren}(r,T),
+\]
+provided the line counterterms are local energies of the individual wrapped
+sources and hence independent of \(r\).
+\end{lemma}
+
+\begin{proof}
+Write the cutoff expectations as
+\[
+  C_R^\Lambda=\langle P_R^\Lambda\rangle,\qquad
+  C_{R\bar R}^\Lambda(r)=
+  \langle P_R^\Lambda(\mathbf x)P_{\bar R}^\Lambda(\mathbf y)\rangle
+\]
+with the displayed normalized traces suppressed.  Renormalization gives
+\[
+  C_R^{\rm ren}=Z_R C_R^\Lambda,\qquad
+  C_{R\bar R}^{\rm ren}(r)=Z_RZ_{\bar R}C_{R\bar R}^\Lambda(r).
+\]
+Therefore
+\[
+  \exp\{-\beta\Delta F_{R\bar R}(r)\}
+  =
+  \frac{C_{R\bar R}^{\rm ren}(r)}
+       {C_R^{\rm ren}C_{\bar R}^{\rm ren}}
+  =
+  \frac{C_{R\bar R}^{\Lambda}(r)}
+       {C_R^\Lambda C_{\bar R}^\Lambda},
+\]
+so all one-line factors cancel before the continuum limit is discussed.  For
+the force,
+\[
+  F_{R\bar R}^{\rm ren}(r,T)
+  =
+  F_{R\bar R}^{\Lambda}(r,T)
+  -\delta m_R(\Lambda)-\delta m_{\bar R}(\Lambda),
+\]
+and differentiating with respect to \(r\) removes the same local constants.
+\end{proof}
+
+Thus the absolute number assigned to a single static-source free energy is a
+line-scheme coordinate, while the connected Polyakov-loop ratio and the
+source-pair force are the quantities that can be compared across regulators
+after the same physical state and center-sector limit have been specified.  In
+a center-symmetric finite-volume pure gauge theory the nonzero-\(N\)-ality
+one-point function still vanishes before any finite multiplicative
+renormalization; the source-selected infinite-volume limit is the separate
+order-parameter limit used in phase discussions.
+
 \section{Dimensional Reduction}
 
 At distances much larger than \(\beta\), nonzero Matsubara modes can be

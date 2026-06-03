@@ -17,7 +17,9 @@ theories before kinetic theory and anomalous transport.
   susceptibility derivation of the one-loop Debye coefficient.
 - `A_0`, `A_i`, `g_3^2`: temporal scalar, spatial gauge field, and
   three-dimensional coupling.
-- `P(x)`, `F_Q`: Polyakov loop and static external-charge free energy.
+- `P(x)`, `F_Q`, `Delta F_{R\bar R}`: Polyakov loop, static
+  external-charge free energy, and line-renormalization-independent pair
+  excess free energy.
 
 ## Claim Ledger
 
@@ -40,7 +42,11 @@ theories before kinetic theory and anomalous transport.
   representation contributes `g^2 T^2 T_R/6`.
 - Separates electric matching from nonperturbative magnetic screening in the
   dimensionally reduced theory.
-- Defines Polyakov-loop free energies and the EQCD matching problem.
+- Defines Polyakov-loop free energies and proves that the connected pair
+  excess free energy and static source-pair force cancel local line
+  self-energies, while an absolute one-source free energy remains a
+  line-scheme coordinate.
+- Defines the EQCD matching problem.
 
 ## Figure Ledger
 
@@ -52,7 +58,9 @@ circle, a Polyakov loop pair, and the hierarchy of static scales
 
 - `calculation-checks/thermal_screening_checks.py` verifies the static
   Yukawa/Bessel asymptotic powers, the transverse-projected pole residue, and
-  the trace-convention conversion of the Debye coefficient.
+  the trace-convention conversion of the Debye coefficient, plus the exact
+  finite algebra by which Polyakov-loop pair ratios and static forces cancel
+  line self-energies.
 
 ## Audit Notes
 
@@ -61,3 +69,8 @@ circle, a Polyakov loop pair, and the hierarchy of static scales
   derivation and spatial-transfer-matrix interpretation, and made explicit
   that gauge-invariant screening masses are not the same object as the
   gauge-fixed perturbative Debye pole.
+- 2026-06-03 static-source renormalization pass: added the finite-regulator
+  datum for Polyakov-line multiplicative renormalization, derived cancellation
+  of local line self-energies in connected pair ratios and source-pair forces,
+  and extended the thermal screening companion check to guard the cancellation
+  and finite line-scheme invariance.

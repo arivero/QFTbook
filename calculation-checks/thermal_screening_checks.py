@@ -3,9 +3,10 @@
 
 These checks accompany Volume X, Chapter 7.  They verify algebraic facts that
 are easy to obscure in prose: the Yukawa power in a d-dimensional static
-correlator, the one-dimensional projected pole residue, and the conversion of
-the one-loop Debye coefficient between the monograph trace-delta convention
-and the common half-trace convention.
+correlator, the one-dimensional projected pole residue, static-source line
+renormalization cancellation, and the conversion of the one-loop Debye
+coefficient between the monograph trace-delta convention and the common
+half-trace convention.
 """
 
 from __future__ import annotations
@@ -92,11 +93,70 @@ def check_debye_trace_convention_conversion() -> None:
             )
 
 
+def check_static_source_line_renormalization_cancellation() -> None:
+    # A wrapped source has an additive line self-energy.  Pair excess free
+    # energies and forces must not depend on this local one-line coordinate.
+    beta = Fraction(7, 3)
+    delta_q = Fraction(5, 3)
+    delta_qbar = Fraction(7, 5)
+    finite_shift_q = Fraction(2, 11)
+    finite_shift_qbar = Fraction(-3, 13)
+
+    physical_q = Fraction(11, 7)
+    physical_qbar = Fraction(13, 7)
+    interaction = Fraction(-2, 9)
+
+    bare_q = physical_q + delta_q
+    bare_qbar = physical_qbar + delta_qbar
+    bare_pair = physical_q + physical_qbar + interaction + delta_q + delta_qbar
+
+    ren_q = bare_q - delta_q
+    ren_qbar = bare_qbar - delta_qbar
+    ren_pair = bare_pair - delta_q - delta_qbar
+    bare_excess = bare_pair - bare_q - bare_qbar
+    ren_excess = ren_pair - ren_q - ren_qbar
+
+    assert_equal("Polyakov pair excess cancels bare line energies", bare_excess, interaction)
+    assert_equal("Polyakov pair excess cancels renormalized line energies", ren_excess, interaction)
+    assert_equal(
+        "Polyakov ratio exponent line cancellation",
+        -beta * bare_excess,
+        -beta * ren_excess,
+    )
+
+    shifted_q = ren_q - finite_shift_q
+    shifted_qbar = ren_qbar - finite_shift_qbar
+    shifted_pair = ren_pair - finite_shift_q - finite_shift_qbar
+    assert_equal(
+        "finite line scheme leaves pair excess invariant",
+        shifted_pair - shifted_q - shifted_qbar,
+        interaction,
+    )
+
+    r = Fraction(3)
+    sigma = Fraction(2, 5)
+    coulomb = Fraction(7, 11)
+    constant = Fraction(19, 13)
+    delta_sum = delta_q + delta_qbar
+    bare_potential = delta_sum + constant + sigma * r + coulomb / r
+    ren_potential = bare_potential - delta_sum
+    bare_derivative = sigma - coulomb / (r * r)
+    ren_derivative = sigma - coulomb / (r * r)
+
+    assert_equal("static pair force removes line self-energy", -bare_derivative, -ren_derivative)
+    assert_equal(
+        "static pair potential shifts by line self-energy",
+        bare_potential - ren_potential,
+        delta_sum,
+    )
+
+
 def main() -> None:
     check_yukawa_screening_power()
     check_projected_pole_residue()
     check_debye_trace_convention_conversion()
-    print("All thermal screening convention checks passed.")
+    check_static_source_line_renormalization_cancellation()
+    print("All thermal screening convention and static-source checks passed.")
 
 
 if __name__ == "__main__":
