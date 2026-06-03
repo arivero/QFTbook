@@ -64,6 +64,13 @@ functorial QFT.
 
 - Defines Haag--Kastler \(C^*\)-nets and represented vacuum nets with isotony,
   covariance, locality, spectrum, and vacuum-state data kept distinct.
+- Adds a chapter-level framework ladder separating the abstract \(C^*\)-net,
+  the state-selected represented von Neumann net, the Wightman
+  spectral-projection coordinate net, field-net versus observable-net
+  comparisons, and model-specific estimate-to-property checkpoints.  The
+  ladder makes nuclearity, split inclusions, Haag duality, and DHR
+  reconstruction explicit theorem boundaries rather than consequences of
+  having fields or examples in hand.
 - Constructs the massive scalar Weyl net explicitly from the
   Green-hyperbolic symplectic quotient, proves nondegeneracy of the
   symplectic form, verifies isotony/locality/Poincare covariance/additivity,
@@ -221,6 +228,14 @@ functorial QFT.
 
 ## Audit Notes
 
+- 2026-06-03 framework-architecture pass: inserted the chapter-level and
+  Wightman-section ladders that organize the many local Wightman-to-net,
+  field-net/observable-net, and constructive-checkpoint inserts into a single
+  sequence of proof obligations.  The pass is intentionally architectural:
+  it names where bounded local nets, equality of represented von Neumann
+  algebras, fixed-point observables, nuclearity/split estimates, Haag duality,
+  and DHR reconstruction enter, instead of adding another finite identity
+  adjacent to the existing bridge.
 - 2026-05-28 proof-substance audit: retained the Wightman-to-AQFT theorem
   only in its conditional form; the statement requires essential
   self-adjointness and strong commutativity of closures rather than claiming a

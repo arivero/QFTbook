@@ -2,6 +2,34 @@
 \label{ch:volume-iv-aqft-local-nets-states}
 \ConventionsLorentzian
 
+This chapter uses local nets as the invariant operator-algebraic object and
+treats fields, Euclidean measures, perturbative functionals, and gauge
+variables as different ways of presenting or constructing that object.  The
+logical order matters.  First one specifies an abstract \(C^*\)-net, before a
+state has selected a Hilbert-space representation and before weak operator
+closure has any meaning.  A state then gives a represented von Neumann net by
+the GNS construction.  Only after that represented bounded net is in place can
+one compare it with unbounded Wightman coordinates, field nets, gauge
+fixed-points, or constructive model estimates.  Thus the chapter does not use
+``field'' and ``local algebra'' as interchangeable words: the former is a
+coordinate presentation, while the latter is the bounded localization datum
+whose equality, duality, split, and sector properties have to be proved.
+
+The proof obligations are staged accordingly.  The free Weyl net is a direct
+bounded-algebra benchmark: locality, additivity, and the time-slice property
+are verified inside the \(C^*\)-net itself.  The Wightman comparison is
+conditional: self-adjoint closures, spectral-projection locality, and
+operator-theoretic additivity are additional inputs needed to promote
+domain-level field relations into a represented local net.  Gauge or charged
+coordinates introduce a second comparison, from a field net to the observable
+fixed-point or gauge-invariant subnet, where fixed points and additivity must
+be checked rather than inferred from the presence of neutral expressions.
+Constructive examples such as \(P(\phi)_2\) and the Schwinger model are used
+as estimate-to-property checkpoints: they show which analytic estimates or
+exact bosonizations actually supply the bounded local net, and which stronger
+AQFT properties, such as nuclearity, split inclusions, Haag duality, and DHR
+reconstruction, remain separate theorem boundaries.
+
 
 \section{Local Observable Nets}
 
@@ -1072,6 +1100,19 @@ algebras.  The invariant object is the local observable content:
 Fields are then coordinatizations of local observables, organized by symmetry,
 scaling, and the operator product expansion when those structures are
 available.
+
+The comparison in this section has four distinct layers.  The Wightman layer
+contains vacuum matrix elements and unbounded smeared fields on a common
+domain.  The closure layer asks whether the Hermitian smearings have
+self-adjoint closures whose spectral projections satisfy spacelike strong
+commutation.  The bounded-net layer asks whether those spectral projections
+generate an additive represented von Neumann net.  The observable layer asks
+whether that coordinate-generated net is the actual observable net, or instead
+only a field net whose fixed points, gauge-invariant subalgebra, or BRST/BV
+observable sector must still be identified.  Confusing any two adjacent
+layers is the usual source of false shortcuts: cyclic Wightman data do not
+identify von Neumann algebras, affiliation does not imply generation, and a
+fixed-point formula does not by itself prove Haag--Kastler additivity.
 
 The passage from unbounded Wightman fields to a Haag--Kastler net is not a
 formal consequence of the Wightman axioms in their bare domain formulation.
