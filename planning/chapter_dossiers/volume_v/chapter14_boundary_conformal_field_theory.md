@@ -71,6 +71,13 @@
 - Adds Liouville as the nonrational boundary-state test case: continuous
   direct-integral closed spectrum, FZZT wavefunctions, ZZ finite differences,
   and the hyperbolic kernels replacing finite modular `S`-matrix entries.
+- Adds the stripped continuous annulus Plancherel cell for the even FZZT
+  wave `C_s(P)=2 cos(2 pi sP)`: the heat-regulated closed momentum pairing
+  is `G_t(s-s')+G_t(s+s')`, tending to `delta(s-s')+delta(s+s')`, so the
+  second term records the boundary-label quotient `s ~ -s` rather than an
+  additional open multiplicity.  Also records the exact odd finite-cyclic
+  regulator `(2N)^(-1) sum_p c_s(p)c_s'(p)=delta_ss'` on nonzero
+  reflection orbits.
 - Adds the analytic sewing datum that the Liouville boundary formulas would
   have to satisfy to become a BCFT construction: a dense nuclear closed
   test space and distributional boundary states, open-channel Hilbert spaces
@@ -163,9 +170,13 @@
 13. Liouville FZZT/ZZ boundary states are distributional wavefunctions on a
    continuous spectrum; their finite-difference and degenerate-annulus
    simplifications are hyperbolic algebra, not a substitute for an analytic
-   sewing theorem.  A nonrational BCFT construction must also produce test
-   spaces, open spectral measures, operator domains, contour prescriptions,
-   and continuous sewing maps with determinant-line bookkeeping.
+   sewing theorem.  The stripped FZZT annulus has a continuous Plancherel
+   reflection kernel, `delta(s-s')+delta(s+s')`, so open boundary labels live
+   on the quotient `s ~ -s` and the annulus coefficient is a spectral measure,
+   not an integer Cardy matrix.  A nonrational BCFT construction must also
+   produce test spaces, open spectral measures, operator domains, contour
+   prescriptions, and continuous sewing maps with determinant-line
+   bookkeeping.
 14. Rational Cardy-Lewellen construction and the boundary entropy gradient
    formula are theorem-boundary inputs; monotonicity of \(g\) is derived from
    the positive gradient formula, not quoted as an independent
@@ -209,7 +220,9 @@
   cutting move and specialness scalar, the positive spectral weight in the
   boundary entropy gradient metric, Chan--Paton direct-sum
   multiplicities and matrix-unit multiplication, compact-boson zero-mode
-  exchange under T-duality, and the Liouville FZZT/ZZ hyperbolic identities.
+  exchange under T-duality, the Liouville FZZT/ZZ hyperbolic identities, and
+  the finite cyclic cosine-Plancherel regulator for the continuous annulus
+  quotient \(s\sim -s\).
 
 ## Remaining Obligations
 
@@ -309,3 +322,10 @@
   \(G/H\) module example; extended `bcft_cardy_checks.py` to verify endpoint
   matching, associativity, and the fact that stabilizer chiral labels preserve
   endpoints without collapsing to the vacuum field.
+- 2026-06-03 continuous annulus Plancherel pass: added the stripped FZZT
+  annulus heat-kernel identity
+  \(K_t(s,s')=G_t(s-s')+G_t(s+s')\), isolating the continuous spectral
+  quotient \(s\sim -s\) from the full Liouville sewing theorem.  Extended
+  `bcft_cardy_checks.py` with the exact odd finite-cyclic regulator verifying
+  cosine-Plancherel orthogonality on nonzero reflection orbits and the
+  off-diagonal overlap between unquotiented reflected labels.

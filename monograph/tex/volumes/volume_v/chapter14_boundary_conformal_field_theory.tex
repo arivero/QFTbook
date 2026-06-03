@@ -954,6 +954,71 @@ positivity or distribution interpretation of the annulus spectral density.
 Those are analytic sewing requirements, not consequences of the finite
 hyperbolic identities alone.
 
+\paragraph{Continuous annulus Plancherel cell.}
+It is useful to isolate one piece of the nonrational annulus which is not a
+finite Cardy sum in disguise.  Strip off the common Liouville gamma
+prefactor and the Virasoro character, and keep only the even FZZT momentum
+wave
+\[
+  C_s(P):=2\cos(2\pi sP),\qquad P\ge0 .
+\]
+With a heat regulator \(t>0\), the closed-channel momentum pairing is
+\begin{equation}
+\begin{aligned}
+  K_t(s,s')
+  &:=
+  \int_0^\infty
+  \ee^{-tP^2}C_s(P)C_{s'}(P)\,\dd P
+  \\
+  &=
+  G_t(s-s')+G_t(s+s'),
+  \qquad
+  G_t(x):=\sqrt{\frac{\pi}{t}}\,
+  \exp\!\left(-\frac{\pi^2x^2}{t}\right).
+\end{aligned}
+  \label{eq:continuous-bcft-annulus-plancherel-cell}
+\end{equation}
+Indeed,
+\[
+  4\cos(2\pi sP)\cos(2\pi s'P)
+  =
+  2\cos(2\pi(s-s')P)+2\cos(2\pi(s+s')P),
+\]
+and
+\[
+  \int_0^\infty\ee^{-tP^2}\cos(aP)\,\dd P
+  =
+  \frac12\sqrt{\frac{\pi}{t}}\,
+  \exp\!\left(-\frac{a^2}{4t}\right).
+\]
+The kernel \(G_t\) has total mass one on the real line and tends to
+\(\delta(x)\) as \(t\downarrow0\).  Thus
+\eqref{eq:continuous-bcft-annulus-plancherel-cell} tends distributionally to
+\[
+  \delta(s-s')+\delta(s+s') .
+\]
+The second term is not an extra open-sector multiplicity.  It records that
+the wavefunction is even in the FZZT parameter: \(C_s=C_{-s}\).  Hence a
+nonrational open-channel label is a point of the quotient \(s\sim -s\), and
+the open annulus is a spectral measure on this quotient rather than an
+integer matrix \(n_{ab}{}^k\).  In a finite cyclic regulator this same
+bookkeeping is exact: for odd \(N\), nonzero orbits \(s,s'\in
+\mathbb Z_N/\{\pm1\}\), and
+\[
+  c_s(p):=\ee^{2\pi\ii sp/N}+\ee^{-2\pi\ii sp/N},
+\]
+one has
+\begin{equation}
+  \frac1{2N}\sum_{p\in\mathbb Z_N}c_s(p)c_{s'}(p)=\delta_{s,s'} .
+  \label{eq:finite-cosine-plancherel-regulator}
+\end{equation}
+If \(s\) and \(-s\) are kept as separate labels, the Gram matrix has
+off-diagonal unit entries between them; the quotient is part of the boundary
+data, not a later convention.  The full FZZT annulus restores the Liouville
+prefactors, modular kernels, contour prescriptions, and pole contributions.
+Equation~\eqref{eq:continuous-bcft-annulus-plancherel-cell} proves only the
+Plancherel/reflection coordinate of that analytic sewing problem.
+
 \paragraph{Analytic sewing datum for nonrational boundaries.}
 The preceding wavefunctions become a boundary conformal field theory only
 after they are placed in a functional-analytic sewing datum.  One convenient

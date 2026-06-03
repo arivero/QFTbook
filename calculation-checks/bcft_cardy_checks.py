@@ -863,6 +863,73 @@ def check_liouville_degenerate_shift_sum() -> None:
         assert_equal(f"Liouville degenerate shift sum n={n}", lhs, rhs)
 
 
+def finite_cosine_inner_product(
+    modulus: int,
+    left: int,
+    right: int,
+) -> Fraction:
+    """Exact inner product of even finite Fourier waves on Z/modulus.
+
+    c_s(p)=z^(sp)+z^(-sp).  The normalized half-line/even inner product is
+    (2N)^(-1) sum_p c_left(p)c_right(p).  Orthogonality of roots of unity
+    reduces the calculation to counting zero exponents modulo N.
+    """
+
+    zero_exponent_count = 0
+    for exponent in (
+        left + right,
+        left - right,
+        -left + right,
+        -left - right,
+    ):
+        if exponent % modulus == 0:
+            zero_exponent_count += 1
+    return Fraction(zero_exponent_count, 2)
+
+
+def check_continuous_annulus_plancherel_regulator() -> None:
+    """Check the finite cyclic regulator for the continuous annulus kernel.
+
+    The continuous FZZT wave C_s(P)=2 cos(2 pi s P) identifies s with -s.
+    For odd finite cyclic regulators, the exact even Fourier inner product
+    verifies the same quotient bookkeeping: nonzero reflection orbits are
+    orthonormal after the 1/(2N) normalization, while unquotiented labels
+    s and -s have off-diagonal Gram entry one.
+    """
+
+    for modulus in (5, 7, 9, 11, 13):
+        representatives = tuple(range(1, (modulus + 1) // 2))
+        for left in representatives:
+            for right in representatives:
+                expected = Fraction(1) if left == right else Fraction(0)
+                assert_equal(
+                    "finite cosine Plancherel quotient "
+                    f"N={modulus}, left={left}, right={right}",
+                    finite_cosine_inner_product(modulus, left, right),
+                    expected,
+                )
+
+        for label in representatives:
+            reflected = (-label) % modulus
+            assert_equal(
+                f"finite cosine reflected label overlap N={modulus}, label={label}",
+                finite_cosine_inner_product(modulus, label, reflected),
+                Fraction(1),
+            )
+            if label != reflected and finite_cosine_inner_product(
+                modulus,
+                label,
+                reflected,
+            ) == Fraction(0):
+                raise AssertionError("unquotiented reflected label became orthogonal")
+
+        assert_equal(
+            f"finite cosine constant fixed-orbit norm N={modulus}",
+            finite_cosine_inner_product(modulus, 0, 0),
+            Fraction(2),
+        )
+
+
 def main() -> None:
     check_modular_s()
     check_cardy_annulus()
@@ -881,11 +948,12 @@ def main() -> None:
     check_compact_boson_zero_mode_duality()
     check_liouville_fzzt_zz_hyperbolic_identity()
     check_liouville_degenerate_shift_sum()
+    check_continuous_annulus_plancherel_regulator()
     print(
         "All BCFT Cardy, sewing, boundary-gradient, Ising boundary-changing, "
         "matrix-Frobenius, finite-center, pointed-nimrep, Chan-Paton, "
-        "pointed-boundary-OPE, compact-boson, and Liouville-boundary checks "
-        "passed."
+        "pointed-boundary-OPE, compact-boson, Liouville-boundary, and "
+        "continuous-annulus Plancherel checks passed."
     )
 
 
