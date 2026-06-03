@@ -4,7 +4,8 @@
 The script implements the finite check described in Volume XI,
 Chapter 10.  A manifest records several regulator methods that purport to
 estimate the same finite coordinate of a declared target observable after
-normalization.  For each pair of methods the script checks
+normalization.  For each pair of methods the script first requires matching
+normalization identifiers and then checks
 
     |x_m - x_n| <= e_m + e_n
 
@@ -135,18 +136,21 @@ def analyze_manifest(raw: dict[str, Any]) -> dict[str, Any]:
         difference = np.abs(left.coordinate - right.coordinate)
         bound = left.total_error + right.total_error
         margin = bound - difference
-        passed = bool(np.all(margin >= -1.0e-12))
+        normalizations_match = left.normalization == right.normalization
+        envelopes_pass = bool(np.all(margin >= -1.0e-12))
+        passed = normalizations_match and envelopes_pass
         all_pass = all_pass and passed
         pairs.append(
             {
                 "left": left.name,
                 "right": right.name,
-                "normalizations_match": left.normalization == right.normalization,
+                "normalizations_match": normalizations_match,
                 "max_difference": float(np.max(difference)),
                 "min_margin": float(np.min(margin)),
                 "component_differences": [float(x) for x in difference],
                 "component_bounds": [float(x) for x in bound],
                 "component_margins": [float(x) for x in margin],
+                "envelopes_pass": envelopes_pass,
                 "passes": passed,
             }
         )

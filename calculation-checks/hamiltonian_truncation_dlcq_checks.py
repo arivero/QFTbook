@@ -797,12 +797,31 @@ def check_benchmark_manifest_consistency() -> None:
     )
     if not lattice_truncation["normalizations_match"]:
         raise AssertionError("benchmark manifest smoke normalizations should match")
+    if not lattice_truncation["envelopes_pass"]:
+        raise AssertionError("benchmark manifest smoke envelopes should pass")
 
     failing = benchmark_manifest.smoke_manifest()
     failing["methods"][2]["coordinate"] = [1.6400, 2.0400]
     failing_result = benchmark_manifest.analyze_manifest(failing)
     if failing_result["all_pairs_pass"]:
         raise AssertionError("benchmark manifest must detect coordinates outside declared envelopes")
+
+    normalization_failing = benchmark_manifest.smoke_manifest()
+    normalization_failing["methods"][1]["normalization"] = "deliberately-incompatible"
+    normalization_result = benchmark_manifest.analyze_manifest(normalization_failing)
+    normalization_pairs = {
+        (entry["left"], entry["right"]): entry
+        for entry in normalization_result["pairs"]
+    }
+    mismatched_pair = normalization_pairs[("lattice-transfer-matrix", "hamiltonian-truncation")]
+    if mismatched_pair["normalizations_match"]:
+        raise AssertionError("benchmark manifest regression should create a normalization mismatch")
+    if not mismatched_pair["envelopes_pass"]:
+        raise AssertionError("normalization mismatch regression should change only the normalization label")
+    if mismatched_pair["passes"]:
+        raise AssertionError("normalization mismatch must fail the affected pair")
+    if normalization_result["all_pairs_pass"]:
+        raise AssertionError("normalization mismatch must fail the aggregate manifest result")
 
 
 def main() -> None:

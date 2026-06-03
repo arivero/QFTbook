@@ -522,8 +522,9 @@ Current checks:
   truncation, and DLCQ coordinates after the target observable and
   normalization maps have been declared.  The same check imports the
   reader-facing `qft_scripts/benchmark_manifest_consistency.py` smoke
-  manifest and verifies both a passing finite pairwise check and a
-  deliberately failing manifest outside the declared envelopes.
+  manifest and verifies a passing finite pairwise check, a deliberately
+  failing manifest outside the declared envelopes, and a manifest that must
+  fail because one method declares an incompatible normalization identifier.
 - `charged_flux_dressing_checks.py`: finite checks for the charged-sector
   Haag--Ruelle/LSZ discussion, including the boosted Coulomb flux integral,
   extraction of the charged velocity from flux extrema, the half-line Fourier

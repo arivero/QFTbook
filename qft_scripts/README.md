@@ -230,8 +230,10 @@ independence.
   checker.  It reads a JSON manifest containing a target observable,
   method-specific normalized coordinates, statistical errors, regulator
   envelopes, matching errors, covariance/provenance data when available, and
-  reports the pairwise componentwise consistency matrix.  It verifies only
-  finite compatibility with declared errors, not a continuum QFT conclusion.
+  reports the pairwise componentwise consistency matrix.  Pair success requires
+  matching normalization identifiers as well as compatibility with declared
+  errors; the script still verifies only finite compatibility, not a continuum
+  QFT conclusion.
 - `cluster/chain_ensemble_summary.py`: finite job-array chain aggregator.
   It reads CSV rows `chain,estimate,standard_error[,effective_sample_size]`,
   forms the inverse-variance weighted estimator, reports the internal
