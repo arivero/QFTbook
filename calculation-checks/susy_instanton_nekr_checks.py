@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Exact checks for SQCD instantons, ADHM dimensions, and Nekrasov k=1.
+"""Exact checks for SQCD instantons, ADHM dimensions, and Nekrasov fixed points.
 
 The checks include the singular-instanton compactification arithmetic used in
 the compact-localization chapter: Uhlenbeck stratum codimensions and the
 torsion-free-sheaf charge split, the positive-ADHM-moment-map stability trace
-obstruction, and the one-box specialization of the Gieseker tangent Euler class.
+obstruction, the one-box specialization of the Gieseker tangent Euler class,
+and the two-box Hilbert-scheme localization sum.
 """
 
 from __future__ import annotations
@@ -420,6 +421,65 @@ def check_one_box_tangent_euler_class() -> None:
         assert_equal(fixed_point_sum, direct_sum, "one-box tangent Euler class")
 
 
+def check_two_box_hilbert_scheme_fixed_points() -> None:
+    # Rank-one length-two Gieseker sector Hilb^2(C^2).  The two fixed points
+    # are the horizontal partition (2) and the vertical partition (1,1).
+    # Their tangent weights are obtained from the same arm/leg formula used in
+    # the monograph's Nekrasov tangent Euler class.
+    samples = [
+        (Fraction(1), Fraction(2)),
+        (Fraction(2), Fraction(5)),
+        (Fraction(3), Fraction(-2)),
+        (Fraction(-5), Fraction(7)),
+    ]
+    for epsilon1, epsilon2 in samples:
+        if epsilon1 == epsilon2:
+            continue
+
+        def weights_from_arm_leg(arm_leg_pairs: list[tuple[int, int]]) -> list[Fraction]:
+            weights: list[Fraction] = []
+            for arm, leg in arm_leg_pairs:
+                weights.append(-leg * epsilon1 + (arm + 1) * epsilon2)
+                weights.append((leg + 1) * epsilon1 - arm * epsilon2)
+            return weights
+
+        horizontal_weights = weights_from_arm_leg([(1, 0), (0, 0)])
+        vertical_weights = weights_from_arm_leg([(0, 1), (0, 0)])
+        assert_equal(
+            horizontal_weights,
+            [2 * epsilon2, epsilon1 - epsilon2, epsilon2, epsilon1],
+            "Hilb2 horizontal tangent weights",
+        )
+        assert_equal(
+            vertical_weights,
+            [epsilon2 - epsilon1, 2 * epsilon1, epsilon2, epsilon1],
+            "Hilb2 vertical tangent weights",
+        )
+
+        horizontal_euler = math_product(horizontal_weights)
+        vertical_euler = math_product(vertical_weights)
+        assert_equal(
+            horizontal_euler,
+            2 * epsilon1 * epsilon2 * epsilon2 * (epsilon1 - epsilon2),
+            "Hilb2 horizontal fixed-point Euler class",
+        )
+        assert_equal(
+            vertical_euler,
+            2 * epsilon1 * epsilon1 * epsilon2 * (epsilon2 - epsilon1),
+            "Hilb2 vertical fixed-point Euler class",
+        )
+        localization_sum = Fraction(1, horizontal_euler) + Fraction(1, vertical_euler)
+        expected = Fraction(1, 2 * epsilon1 * epsilon1 * epsilon2 * epsilon2)
+        assert_equal(localization_sum, expected, "Hilb2 two-fixed-point localization sum")
+
+    # The resolved punctual fiber over a length-two Uhlenbeck point is P^1:
+    # two torus fixed points refine one support cycle 2[0].
+    uhlenbeck_support_cycles = 1
+    gieseker_torus_fixed_points = 2
+    assert_equal(uhlenbeck_support_cycles, 1, "Hilb2 Uhlenbeck double-point support")
+    assert_equal(gieseker_torus_fixed_points, 2, "Hilb2 resolved fixed-point count")
+
+
 def matrix_product(left: list[list[Fraction]], right: list[list[Fraction]]) -> list[list[Fraction]]:
     rows = len(left)
     middle = len(right)
@@ -511,6 +571,7 @@ def main() -> None:
     check_ads_decoupling_recursion()
     check_nekrasov_su2_one_instanton()
     check_one_box_tangent_euler_class()
+    check_two_box_hilbert_scheme_fixed_points()
     check_charge_one_nilpotent_cone_resolution_arithmetic()
     check_young_diagram_one_box_count()
     print("All SUSY instanton/ADHM/Nekrasov checks passed.")

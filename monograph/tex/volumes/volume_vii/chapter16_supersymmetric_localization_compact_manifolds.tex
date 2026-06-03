@@ -915,6 +915,75 @@ The two weights in \eqref{eq:nekrasov-tangent-euler-class} are then
 Multiplying the weights and summing over the \(N\) possible positions of the
 one box gives the displayed expression.
 
+\begin{example}[The two-point Gieseker fixed-point laboratory]
+\label{ex:k-two-hilbert-scheme-fixed-points}
+The first place where the resolved punctual data are not just a projective
+orientation space is the rank-one length-two Gieseker sector
+\[
+  \mathfrak M_{2,1}^{G}\simeq {\rm Hilb}^{2}(\mathbb C^2).
+\]
+This is a finite-dimensional model of the resolved ideal-point sector, not a
+claim that ordinary commutative \(U(1)\) Yang--Mills has smooth finite-action
+instantons.  The Uhlenbeck record over a double point at the origin sees only
+the support cycle \(2[0]\in{\rm Sym}^{2}(\mathbb C^2)\).  The Gieseker space
+retains the punctual quotient data; over the double point the exceptional
+fiber is \(\mathbb P^1\).  The torus \(T^2_{\epsilon_1,\epsilon_2}\) has two
+fixed points, corresponding to the partitions \((2)\) and \((1,1)\).
+
+For the horizontal partition \(Y=(2)\), the boxes have
+\[
+  (A,L)=((1,0),(0,0)),
+\]
+and \eqref{eq:nekrasov-tangent-euler-class} gives tangent weights
+\[
+  2\epsilon_2,\quad \epsilon_1-\epsilon_2,\quad
+  \epsilon_2,\quad \epsilon_1 .
+\]
+Hence
+\[
+  e_T(T_{(2)}{\rm Hilb}^{2}(\mathbb C^2))
+  =
+  2\epsilon_1\epsilon_2^2(\epsilon_1-\epsilon_2).
+\]
+For the vertical partition \(Y=(1,1)\), the boxes have
+\[
+  (A,L)=((0,1),(0,0)),
+\]
+and the weights are
+\[
+  \epsilon_2-\epsilon_1,\quad 2\epsilon_1,\quad
+  \epsilon_2,\quad \epsilon_1 ,
+\]
+so
+\[
+  e_T(T_{(1,1)}{\rm Hilb}^{2}(\mathbb C^2))
+  =
+  2\epsilon_1^2\epsilon_2(\epsilon_2-\epsilon_1).
+\]
+The equivariant integral of \(1\) over the resolved length-two sector is
+therefore
+\begin{equation}
+\begin{aligned}
+  \int_{{\rm Hilb}^{2}(\mathbb C^2)}1
+  &=
+  \frac{1}{2\epsilon_1\epsilon_2^2(\epsilon_1-\epsilon_2)}
+  +
+  \frac{1}{2\epsilon_1^2\epsilon_2(\epsilon_2-\epsilon_1)}
+\\
+  &=
+  \frac{1}{2\epsilon_1^2\epsilon_2^2}.
+  \label{eq:hilb-two-equivariant-integral}
+\end{aligned}
+\end{equation}
+This calculation displays the singular-instanton bookkeeping in its smallest
+nontrivial form.  The Uhlenbeck compactification remembers the effective
+cycle \(2[0]\); the Gieseker/Nekrasov resolution remembers which punctual
+monomial ideal lies over that cycle.  A localization formula that uses the
+two Young-diagram residues is therefore using resolved punctual data, and a
+field-theoretic regulator must still explain why this resolved sector, rather
+than the collapsed Uhlenbeck point, is the integration cycle it selects.
+\end{example}
+
 \begin{example}[The charge-one resolution]
 \label{ex:charge-one-gieseker-resolution}
 For \(k=1\), the ADHM matrices \(B_1,B_2\) are complex numbers, hence give

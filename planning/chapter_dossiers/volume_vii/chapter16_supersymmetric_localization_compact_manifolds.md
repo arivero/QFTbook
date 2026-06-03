@@ -43,6 +43,11 @@
 - ADHM stability criterion, its failure as the small-instanton stratum, the
   tangent Euler-class formula at Young-diagram fixed points, and the one-box
   fixed-point derivation of the \(k=1\) Nekrasov term.
+- Rank-one length-two Gieseker/Hilbert-scheme laboratory:
+  \({\rm Hilb}^2(\mathbb C^2)\) has two Young-diagram fixed points over the
+  Uhlenbeck double-point support \(2[0]\), with explicit tangent Euler
+  classes and localization sum
+  \(1/(2\epsilon_1^2\epsilon_2^2)\).
 - Charge-one Gieseker-to-Uhlenbeck map as the resolution
   \(T^\ast\mathbb{CP}^{N-1}\to\overline{\mathcal O}_{\rm min}\) of the
   minimal nilpotent cone, with the zero section mapped to the Uhlenbeck
@@ -109,6 +114,7 @@
 | \(\overline{\mathcal O}_{\rm min}\) | closure of the minimal nilpotent orbit in \(\mathfrak{sl}(W)\) |
 | \(\delta,\zeta_\delta,R_\delta\) | regulator parameter, positive ADHM moment-map parameter, and residual fixed-locus error in the Gieseker-selection datum |
 | \(A_Y(s),L_Y(s)\) | arm and relative leg lengths of a Young-diagram box |
+| \({\rm Hilb}^2(\mathbb C^2)\) | rank-one length-two Gieseker laboratory resolving the Uhlenbeck double-point sector |
 | \(\ell(z)\) | round-\(S^3\) chiral determinant function |
 | \(s_b(x)\) | double sine function |
 | \(\zeta\) | \(3D\) FI parameter |
@@ -159,7 +165,14 @@
    mechanism; the Gieseker quotient resolves it while the Uhlenbeck quotient
    records the lost charge as points of \(\mathbb C^2\).
 13. The displayed tangent Euler class at a Young-diagram fixed point reduces
-    to the standard \(U(N)\) one-instanton fixed-point sum for one box.
+    to the standard \(U(N)\) one-instanton fixed-point sum for one box.  In
+    the rank-one length-two Gieseker laboratory, the horizontal and vertical
+    partitions give Euler classes
+    \(2\epsilon_1\epsilon_2^2(\epsilon_1-\epsilon_2)\) and
+    \(2\epsilon_1^2\epsilon_2(\epsilon_2-\epsilon_1)\), whose fixed-point
+    sum is \(1/(2\epsilon_1^2\epsilon_2^2)\).  This is resolved punctual
+    data over the single Uhlenbeck support cycle \(2[0]\), not an ordinary
+    smooth commutative \(U(1)\) instanton sector.
 14. In charge one, the Gieseker resolution is explicitly
     \(T^\ast\mathbb{CP}^{N-1}\to\overline{\mathcal O}_{\rm min}\),
     \(([I],J)\mapsto J\otimes I\).  The equations
@@ -218,6 +231,8 @@
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies the ADHM
   dimension count, Uhlenbeck stratum codimension arithmetic, the torsion-free
   sheaf charge split, the one-box Gieseker tangent Euler-class specialization,
+  the rank-one two-box Hilbert-scheme fixed-point Euler classes and
+  localization sum,
   the charge-one
   minimal-nilpotent-cone resolution arithmetic, and the \(SU(2)\)
   one-instanton Nekrasov fixed-point sum used by the cross-referenced
@@ -269,3 +284,9 @@
 - 2026-06-03: added the sheaf-theoretic Gieseker-to-Uhlenbeck charge ledger
   `0 -> E -> E** -> Q -> 0`, proving `k(E)=k(E**)+length(Q)` and tying the
   local Nekrasov resolution to the Donaldson--Uhlenbeck boundary policy.
+- 2026-06-03: added the rank-one \(k=2\) Gieseker/Hilbert-scheme fixed-point
+  laboratory.  The two partitions \((2)\) and \((1,1)\) give explicit tangent
+  Euler products whose localization sum is
+  \(1/(2\epsilon_1^2\epsilon_2^2)\), showing concretely how the Gieseker
+  resolution retains punctual quotient data over a single Uhlenbeck double
+  point.
