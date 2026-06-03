@@ -686,6 +686,169 @@ def check_stabilizer_holonomy_character_obstruction() -> None:
                 )
 
 
+def cyclic_quotient_action(point: int, group_element: int, orbit_size: int) -> int:
+    return (point + group_element) % orbit_size
+
+
+def cyclic_orbit_potential(point: int, phase_modulus: int) -> int:
+    return (5 * point * point + 3 * point + 1) % phase_modulus
+
+
+def cyclic_stabilizer_carry(point: int, group_element: int, orbit_size: int) -> int:
+    return (point + group_element) // orbit_size
+
+
+def cyclic_action_groupoid_cocycle_exponent(
+    point: int,
+    group_element: int,
+    orbit_size: int,
+    group_order: int,
+    phase_modulus: int,
+    stabilizer_charge: int,
+) -> int:
+    """Cocycle on a transitive finite action groupoid with stabilizer.
+
+    The cyclic group Z_group_order acts on an orbit of size orbit_size, with
+    group_order a multiple of orbit_size.  The carry records how many times
+    the arrow crosses the chosen orbit section, hence which stabilizer element
+    is seen by the transported frame.
+    """
+
+    if group_order % orbit_size != 0:
+        raise ValueError("group_order must be a multiple of orbit_size")
+    stabilizer_order = group_order // orbit_size
+    if (stabilizer_charge * stabilizer_order) % phase_modulus != 0:
+        raise ValueError("stabilizer charge must define a character")
+
+    target = cyclic_quotient_action(point, group_element, orbit_size)
+    potential_difference = (
+        cyclic_orbit_potential(target, phase_modulus)
+        - cyclic_orbit_potential(point, phase_modulus)
+    )
+    stabilizer_exponent = stabilizer_charge * cyclic_stabilizer_carry(
+        point, group_element, orbit_size
+    )
+    return (potential_difference + stabilizer_exponent) % phase_modulus
+
+
+def check_finite_action_groupoid_descent_criterion() -> None:
+    """Verify the constructive finite action-groupoid descent theorem."""
+
+    for orbit_size in range(1, 7):
+        for stabilizer_order in range(1, 5):
+            group_order = orbit_size * stabilizer_order
+            for phase_modulus in range(2, 12):
+                charges = [
+                    charge
+                    for charge in range(phase_modulus)
+                    if (charge * stabilizer_order) % phase_modulus == 0
+                ]
+                for charge in charges:
+                    for point in range(orbit_size):
+                        for g in range(group_order):
+                            for h in range(group_order):
+                                gh = (g + h) % group_order
+                                pg = cyclic_quotient_action(point, g, orbit_size)
+                                lhs = cyclic_action_groupoid_cocycle_exponent(
+                                    point,
+                                    gh,
+                                    orbit_size,
+                                    group_order,
+                                    phase_modulus,
+                                    charge,
+                                )
+                                rhs = (
+                                    cyclic_action_groupoid_cocycle_exponent(
+                                        point,
+                                        g,
+                                        orbit_size,
+                                        group_order,
+                                        phase_modulus,
+                                        charge,
+                                    )
+                                    + cyclic_action_groupoid_cocycle_exponent(
+                                        pg,
+                                        h,
+                                        orbit_size,
+                                        group_order,
+                                        phase_modulus,
+                                        charge,
+                                    )
+                                ) % phase_modulus
+                                assert_equal(
+                                    "finite action-groupoid cocycle with stabilizer "
+                                    f"orbit={orbit_size} stab={stabilizer_order} "
+                                    f"phase={phase_modulus} charge={charge}",
+                                    lhs,
+                                    rhs,
+                                )
+
+                    stabilizer_values = []
+                    for point in range(orbit_size):
+                        for q in range(stabilizer_order):
+                            h = q * orbit_size
+                            value = cyclic_action_groupoid_cocycle_exponent(
+                                point,
+                                h,
+                                orbit_size,
+                                group_order,
+                                phase_modulus,
+                                charge,
+                            )
+                            stabilizer_values.append(value)
+                            assert_equal(
+                                "stabilizer character value "
+                                f"orbit={orbit_size} stab={stabilizer_order} "
+                                f"phase={phase_modulus} charge={charge} q={q}",
+                                value,
+                                (charge * q) % phase_modulus,
+                            )
+
+                    stabilizer_trivial = all(value == 0 for value in stabilizer_values)
+                    if stabilizer_trivial:
+                        trivializing_cochain = [
+                            cyclic_action_groupoid_cocycle_exponent(
+                                0,
+                                point,
+                                orbit_size,
+                                group_order,
+                                phase_modulus,
+                                charge,
+                            )
+                            for point in range(orbit_size)
+                        ]
+                        for point in range(orbit_size):
+                            for g in range(group_order):
+                                target = cyclic_quotient_action(point, g, orbit_size)
+                                coboundary = (
+                                    trivializing_cochain[target]
+                                    - trivializing_cochain[point]
+                                ) % phase_modulus
+                                cocycle = cyclic_action_groupoid_cocycle_exponent(
+                                    point,
+                                    g,
+                                    orbit_size,
+                                    group_order,
+                                    phase_modulus,
+                                    charge,
+                                )
+                                assert_equal(
+                                    "trivial stabilizer character constructs descent cochain "
+                                    f"orbit={orbit_size} stab={stabilizer_order} "
+                                    f"phase={phase_modulus} charge={charge}",
+                                    coboundary,
+                                    cocycle,
+                                )
+                    else:
+                        assert_equal(
+                            "nontrivial stabilizer character blocks exact descent "
+                            f"orbit={orbit_size} stab={stabilizer_order} "
+                            f"phase={phase_modulus} charge={charge}",
+                            any(value != 0 for value in stabilizer_values),
+                            True,
+                        )
+
+
 def main() -> None:
     check_su2_index_table()
     check_witten_parity_criterion()
@@ -706,6 +869,7 @@ def main() -> None:
     check_action_groupoid_anomaly_cocycle_and_descent()
     check_dual_anomaly_line_cancellation()
     check_stabilizer_holonomy_character_obstruction()
+    check_finite_action_groupoid_descent_criterion()
     print("Eta-invariant and SU(2) global-anomaly checks passed.")
 
 

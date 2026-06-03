@@ -102,9 +102,10 @@ global anomaly as an explicit mod-two-index example.
   global-analysis inputs (APS Fredholm/heat-kernel theorem,
   Bismut--Freed determinant-line holonomy, Dai--Freed boundary-line gluing,
   and the real mod-two index theorem) from the QFT-facing consequences
-  derived in the chapter: cylinder bookkeeping, quotient-groupoid descent,
-  local descent, inflow cancellation, trace-delta parity arithmetic, and
-  anomaly-line tensor-product cancellation.
+  derived in the chapter: cylinder bookkeeping, the finite action-groupoid
+  descent criterion, quotient-groupoid descent, local descent, inflow
+  cancellation, trace-delta parity arithmetic, and anomaly-line tensor-product
+  cancellation.
 - Records the interacting-QFT anomaly-line construction as an open problem.
 
 ## Calculation Ledger
@@ -119,8 +120,9 @@ global anomaly as an explicit mod-two-index example.
   finite skew-block Pfaffian orientation model, cylinder congruence
   arithmetic, action-groupoid anomaly cocycle/coboundary
   identities, based-loop holonomy invariance, the stabilizer-character
-  obstruction to descent, dual anomaly-line cancellation, nontrivial flat
-  stabilizer holonomy before cancellation, and the Quillen spectral-cut
+  obstruction to descent, the constructive finite action-groupoid descent
+  criterion, dual anomaly-line cancellation, nontrivial flat stabilizer
+  holonomy before cancellation, and the Quillen spectral-cut
   transition cocycle for determinant-line charts, the reduced-eta integer
   jump at a one-mode crossing, the finite \(U(1)\)-phase algebra behind
   Dai--Freed gluing, and a finite cochain Stokes model for the
@@ -224,3 +226,11 @@ global anomaly as an explicit mod-two-index example.
   `eta_global_anomaly_checks.py` now verifies frame-change invariance of
   stabilizer characters and the single-orbit representative-independence
   obstruction with exact finite arithmetic.
+- 2026-06-03 finite action-groupoid descent theorem pass: promoted the
+  stabilizer-character converse from prose to
+  `prop:finite-action-groupoid-descent-criterion`, proving that an additive
+  finite action-groupoid line cocycle is a counterterm coboundary exactly when
+  all stabilizer holonomies vanish.  The companion
+  `eta_global_anomaly_checks.py` now constructs the trivializing \(0\)-cochain
+  orbit-by-orbit and verifies the coboundary equation on every finite arrow,
+  while retaining nontrivial stabilizer character as the obstruction.

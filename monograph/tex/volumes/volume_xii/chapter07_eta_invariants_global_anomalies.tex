@@ -640,17 +640,77 @@ The coboundary factor in
 because \(A^g=A\), so \(\chi_A\) is not changed by a local choice of frame.
 If an equivariant nonzero section \(s_A\) satisfying
 \eqref{eq:anomaly-line-equivariant-trivialization} exists, then
-\(\chi_A(g)=1\) for every stabilizer element.  Conversely, on a single
-orbit with fixed stabilizer and with no additional curvature obstruction
-along the orbit, triviality of this stabilizer character is exactly the
-algebraic condition for defining \(s\) by transporting one chosen vector from
-a representative background: different representatives of the same point
-differ by a stabilizer element, and the construction is independent of that
-choice precisely when the stabilizer character is trivial.  Thus a global
-anomaly may be detected before considering arbitrary loops: a nontrivial
-automorphism character of the anomaly line over one background already
-prevents the determinant or Pfaffian vector from being a function on the
-quotient stack of backgrounds.
+\(\chi_A(g)=1\) for every stabilizer element.  The converse is a concrete
+descent theorem in the finite action-groupoid model.
+
+\begin{proposition}[Finite action-groupoid descent criterion]
+\label{prop:finite-action-groupoid-descent-criterion}
+Let a finite group \(G\) act on a finite set \(\mathcal B_0\) of background
+representatives on the right, and write the action groupoid as
+\(\mathcal B_0//G\).  Let
+\[
+  a(A,g)\in\mathbb R/\mathbb Z
+\]
+be an additive representative of a line cocycle,
+\begin{equation}
+  a(A,gh)=a(A,g)+a(A^g,h).
+  \label{eq:finite-action-groupoid-additive-cocycle}
+\end{equation}
+Then \(a\) is a coboundary,
+\begin{equation}
+  a(A,g)=b(A^g)-b(A)
+  \label{eq:finite-action-groupoid-coboundary}
+\end{equation}
+for some \(0\)-cochain \(b:\mathcal B_0\to\mathbb R/\mathbb Z\), if and only
+if its stabilizer character vanishes on every orbit,
+\begin{equation}
+  a(A,h)=0
+  \qquad
+  \text{for all }h\in G_A .
+  \label{eq:finite-action-groupoid-stabilizer-vanishing}
+\end{equation}
+Equivalently, the multiplicative line cocycle
+\(\alpha(A,g)=\exp(2\pi\ii a(A,g))\) is trivializable by a choice of local
+frames exactly when all based-loop holonomies are \(1\).
+\end{proposition}
+
+\begin{proof}
+If \(a(A,g)=b(A^g)-b(A)\), then for a stabilizer element \(h\in G_A\) one has
+\(A^h=A\), so \(a(A,h)=b(A)-b(A)=0\).  Conversely, choose one representative
+\(A_o\) in each orbit and set \(b(A_o)=0\).  If \(A=A_o^g\), define
+\[
+  b(A)=a(A_o,g).
+\]
+This is independent of the chosen \(g\).  Indeed, if \(A_o^g=A_o^{g'}\), then
+\(g'=hg\) for some \(h\in G_{A_o}\), and the cocycle identity gives
+\[
+  a(A_o,g')=a(A_o,hg)=a(A_o,h)+a(A_o^h,g)=a(A_o,g),
+\]
+because \(A_o^h=A_o\) and the stabilizer character vanishes.  For an arbitrary
+arrow \(A=A_o^g\to A^k=A_o^{gk}\), the same cocycle identity gives
+\[
+  b(A^k)-b(A)
+  =
+  a(A_o,gk)-a(A_o,g)
+  =
+  a(A_o^g,k)
+  =
+  a(A,k).
+\]
+Thus the required \(b\) exists.  Exponentiating \(a\) and \(b\) gives the
+multiplicative statement and matches the frame-change law
+\eqref{eq:anomaly-line-groupoid-coboundary}.
+\end{proof}
+
+This finite theorem is the algebraic core used by the smooth anomaly line.
+For connected transformations the Bismut--Freed curvature and the local
+descent calculation determine the infinitesimal part of \(a\).  After that
+curvature has been cancelled, the remaining flat line is detected on
+stabilizers and other closed loops by the eta or mod-two mapping-torus
+holonomy.  Thus a global anomaly may be found before considering arbitrary
+families: a nontrivial automorphism character of the anomaly line over one
+background already prevents the determinant or Pfaffian vector from being a
+function on the quotient stack of backgrounds.
 
 \paragraph{Dual anomaly lines and the cancellation criterion.}
 Let \(L\) be an anomaly line over \(\mathcal B//\mathcal G\).  Its dual line
