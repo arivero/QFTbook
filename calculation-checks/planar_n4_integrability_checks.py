@@ -5304,6 +5304,53 @@ def check_qsc_large_u_coefficient_constraints() -> None:
         )
 
 
+def check_tba_to_qsc_charge_ledger() -> None:
+    """Check the finite charge bookkeeping in the TBA-to-QSC compression ledger."""
+
+    samples = (
+        (Fraction(2), Fraction(2), Fraction(17, 4)),
+        (Fraction(3), Fraction(4), Fraction(36, 5)),
+        (Fraction(5), Fraction(1), Fraction(32, 5)),
+    )
+
+    for twist, spin, delta in samples:
+        p_powers = {
+            1: -twist / 2,
+            2: -twist / 2 - 1,
+            3: twist / 2,
+            4: twist / 2 - 1,
+        }
+        fermionic_ratio_coefficient = delta - twist
+        spin_shadow_root = spin - 1
+
+        reconstructed_twist_13 = p_powers[3] - p_powers[1]
+        reconstructed_twist_24 = p_powers[4] - p_powers[2]
+        if reconstructed_twist_13 != twist or reconstructed_twist_24 != twist:
+            raise AssertionError("QSC P-power gap did not reconstruct the twist")
+
+        reconstructed_delta = reconstructed_twist_13 + fermionic_ratio_coefficient
+        reconstructed_spin = spin_shadow_root + 1
+        if reconstructed_delta != delta:
+            raise AssertionError("QSC fermionic ratio did not reconstruct Delta")
+        if reconstructed_spin != spin:
+            raise AssertionError("QSC spin-shadow root did not reconstruct spin")
+
+        shifted_twist = twist + 1
+        shifted_delta = delta + 1
+        if shifted_delta - shifted_twist != fermionic_ratio_coefficient:
+            raise AssertionError("simultaneous twist/Delta shift should preserve r")
+        if shifted_twist == twist or shifted_delta == delta:
+            raise AssertionError("charge ambiguity sample should change the state")
+
+        if delta == spin_shadow_root:
+            raise AssertionError("root-assignment sample should be nondegenerate")
+        swapped_dimension = spin_shadow_root
+        if swapped_dimension == delta:
+            raise AssertionError("swapped characteristic root should change Delta")
+        if reconstructed_delta - reconstructed_twist_13 != fermionic_ratio_coefficient:
+            raise AssertionError("charge ledger lost the fermionic ratio coefficient")
+
+
 def check_qsc_collapsed_cut_digamma_package() -> None:
     """Check the weak-QSC digamma pole package and its logarithmic coefficient."""
 
@@ -5549,6 +5596,7 @@ def main() -> None:
     check_qsc_weak_mu12_mu24_elimination()
     check_qsc_large_u_mu_power_balance()
     check_qsc_large_u_coefficient_constraints()
+    check_tba_to_qsc_charge_ledger()
     check_qsc_collapsed_cut_digamma_package()
     check_qsc_collapsed_cut_shift_primitive()
     check_pmu_pfaffian_rank_two_update()

@@ -1033,6 +1033,85 @@ discontinuity coefficient in \eqref{eq:planar-n4-pmu-two}, the physical
 gluing conditions, and the equivalence to the exact planar gauge-theory
 spectrum remain QSC framework inputs.
 
+\subsection{TBA-to-QSC Compression Record}
+
+The mirror TBA, the analytic Y-system, the T-hook gauges, and the QSC are not
+four independent spectral claims.  They are successive ways of packaging the
+same planar-integrability data after extra analytic information has been
+attached.  The local Y-system by itself remembers Hirota-gauge invariant
+ratios, but it does not remember the source factors lost by the inverse
+\(s\)-kernel, the sheet on which the central fermionic discontinuity is read,
+or the large-\(u\) charge normalization.  The \(P\mu\)-system is the finite
+Riemann--Hilbert package obtained only after those pieces have been restored.
+
+\begin{proposition}[TBA-to-QSC charge record]
+\label{prop:qsc-tba-to-qsc-charge-record}
+Fix an \(SL(2)\) single-trace state in the analytic framework used above.
+Assume that the mirror-TBA analytic Y-system data of
+Assumption~\ref{ass:planar-n4-analytic-y-system-data}, the T-gauge chain of
+Assumption~\ref{ass:qsc-bold-t-and-mathbb-t-gauges}, and the local
+two-row \(P\mu\) bridge of
+Assumption~\ref{ass:qsc-two-row-t-hook-reconstruction} have all been fixed.
+Suppose further that
+\[
+  \log\bigl(Y_{1,1}(u)Y_{2,2}(u)\bigr)
+  =
+  \frac{\ii r}{u}+O(u^{-2}),
+  \qquad u\to\infty ,
+\]
+and that the \(P\)-function powers are
+\[
+  (p_1,p_2,p_3,p_4)
+  =
+  \left(-\frac J2,-\frac J2-1,\frac J2,\frac J2-1\right),
+  \qquad P_a(u)=O(u^{p_a}).
+\]
+If the physical gluing/asymptotic data select the nonzero characteristic roots
+\(\alpha=\Delta\) and \(\beta=S-1\) in
+Assumption~\ref{ass:qsc-large-u-characteristic-roots}, then the bridge
+recovers the charge triple by the finite record
+\begin{equation}
+  J=p_3-p_1=p_4-p_2,\qquad
+  \Delta=J+r,\qquad
+  S=\beta+1.
+  \label{eq:qsc-tba-to-qsc-charge-record}
+\end{equation}
+Consequently the symbolic Y-system plus Hirota algebra is not, by itself, the
+QSC spectral problem: the fermionic large-\(u\) coefficient, the \(P\)-power
+gap, and the physical characteristic-root assignment are all separate inputs.
+\end{proposition}
+
+\begin{proof}
+The local T-hook calculation above gives
+\[
+  Y_{1,1}Y_{2,2}=\frac{\widetilde\mu_{12}}{\mu_{12}}
+  =\frac{\mu_{12}(u+\ii)}{\mu_{12}(u)} .
+\]
+If \(\mu_{12}(u)=C u^\gamma(1+O(u^{-1}))\), then
+\[
+  \log\frac{\mu_{12}(u+\ii)}{\mu_{12}(u)}
+  =
+  \frac{\ii\gamma}{u}+O(u^{-2}).
+\]
+Comparison with the assumed fermionic-product expansion gives
+\(\gamma=r\).  In the physical branch the dimension-exponent calculation above
+identifies \(\gamma=\Delta-J\), hence \(\Delta=J+r\).
+
+The \(P\)-powers independently recover the twist:
+\[
+  p_3-p_1=\frac J2-\left(-\frac J2\right)=J,\qquad
+  p_4-p_2=\frac J2-1-\left(-\frac J2-1\right)=J.
+\]
+Finally the physical characteristic-root input identifies the spin-shadow root
+\(\beta=S-1\), so \(S=\beta+1\).  These three finite readings give
+\eqref{eq:qsc-tba-to-qsc-charge-record}.  Omitting any of them leaves visible
+ambiguity: \(r\) is unchanged under the simultaneous shift
+\((J,\Delta)\mapsto(J+c,\Delta+c)\), the local Y-functions are invariant under
+T-gauge changes, and the unordered characteristic roots do not distinguish the
+dimension root from the spin-shadow root before the gluing/representation
+assignment is supplied.
+\end{proof}
+
 \section{Q-Omega System and Gauge Choices}
 
 The \(P\mu\)-system is one gauge for the QSC.  A dual description uses four

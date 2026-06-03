@@ -148,6 +148,10 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   regularity conditions.  The text states that global analytic continuation is
   an independent datum to be checked against the mirror sheet and dressing
   branch, not a consequence of local Hirota algebra or of literature authority.
+- Adds a forward status pointer to the Chapter 15 TBA-to-QSC charge record:
+  local Y-system ratios are separated from restored source data, the central
+  fermionic large-`u` coefficient, `P`-power charge gaps, and the physical
+  QSC root assignment.
 - Uses Konishi as the first wrapping test and separates finite-length
   correction from magnon-dispersion correction.
 - Adds the weak-coupling Konishi root expansion and ABA coefficient.

@@ -132,6 +132,13 @@ three-point functions.
   in the chapter from QSC framework inputs: existence of single-short-cut
   functions, the normalized discontinuity coefficient, physical gluing, and
   equivalence to the exact planar gauge-theory spectrum.
+- Adds a TBA-to-QSC compression record proposition: after analytic Y-system
+  data, the T-gauge chain, and the local two-row `Pmu` bridge are fixed, the
+  charge triple is reconstructed from the fermionic large-`u` coefficient
+  `r=Delta-J`, the `P`-power gap `J=p_3-p_1=p_4-p_2`, and the physical
+  characteristic-root assignment `Delta`, `S-1`.  The proposition explicitly
+  marks the Y-system-alone ambiguity and separates charge data from local
+  Hirota algebra.
 - Adds the dual `Qomega` system, defines the `eta^{ij}` raising tensor and
   dual Pfaffian normalization, and explains the analytic-gauge status of
   short and long cuts.
@@ -257,6 +264,10 @@ structure and the pair-of-pants-to-hexagons cut.
   then checks the displayed `A_1A_4` and `A_2A_3` products, including the
   dimension root, the spin-shadow root `S-1`, the intermediate linear
   relation, and sensitivity to an overall sign flip.
+- The same script checks the TBA-to-QSC charge record exactly: the `P`-power
+  gaps reconstruct `J`, the fermionic-product large-`u` coefficient
+  reconstructs `Delta-J`, the spin-shadow root reconstructs `S`, and finite
+  ambiguity samples show why the Y-system data alone are not enough.
 - The same script checks the QSC large-`u` `mu_ab` power balance exactly:
   row homogeneity in `tilde P_a=mu_ab P^b`, the universal monodromy exponent
   `p_a+p_b+alpha=e_ab-1`, and term-by-term homogeneity of the retained

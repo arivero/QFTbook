@@ -1440,7 +1440,10 @@ Current checks:
   congruence behind spin-chain level matching, and the local \(S^2\) Pohlmeyer
   moving-frame compatibility algebra that
   reduces the classical \(\mathbb R\times S^2\) sigma-model cell to the
-  sine-Gordon equation.
+  sine-Gordon equation.  It also checks the TBA-to-QSC charge record: the
+  fermionic-product large-\(u\) coefficient, \(P\)-power charge gap, and
+  physical characteristic-root assignment are independent data needed to
+  recover \(J,\Delta,S\) from the compressed QSC package.
 - `lattice_reflection_positivity_checks.py`: finite character-expansion
   checks for the Osterwalder-Seiler lattice reflection-positivity proof,
   including \(U(1)\) Bessel/Fourier positivity, the \(SU(2)\) Wilson
