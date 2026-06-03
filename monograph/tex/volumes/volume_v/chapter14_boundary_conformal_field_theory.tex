@@ -1661,6 +1661,41 @@ The stabilizer character is therefore a genuine finite sewing coordinate:
 it is invisible to the annulus quotient \(G/H\), but it is detected by
 boundary endomorphism pairings and by inverse boundary-changing fields.
 
+The point of the finite laboratory is not the separate existence of the
+annulus matrices, Fourier projectors, boundary products, stabilizer
+idempotents, and two-point pairings.  They are five shadows of one module
+datum.  For each \(g\in G\),
+\begin{equation}
+  (n_g)_{xH,yH}
+  =
+  \dim \operatorname{span}
+  \{\psi_{x,g}\mid (x+g)H=yH\}.
+  \label{eq:bcft-pointed-laboratory-annulus-field-count}
+\end{equation}
+Thus the open annulus records the graded dimension of exactly the
+boundary-changing sector whose composition law is
+\eqref{eq:bcft-pointed-coset-boundary-ope}.  The quotient Fourier projectors
+diagonalize only the \(G/H\)-motion of the endpoints, whereas the stabilizer
+Fourier inversion
+\begin{equation}
+  \psi_{x,h}
+  =
+  \sum_{\chi\in\widehat H}\chi(h)\,e_{x,\chi},
+  \qquad h\in H,
+  \label{eq:bcft-pointed-stabilizer-fourier-inversion}
+\end{equation}
+recovers the endpoint-preserving boundary endomorphism fields from the
+classifying idempotents.  Equations
+\eqref{eq:bcft-pointed-laboratory-annulus-field-count} and
+\eqref{eq:bcft-pointed-stabilizer-fourier-inversion} are the finite
+end-to-end check that the annulus, disk classifying sector, boundary OPE, and
+two-point pairing are compatible projections of one rational boundary
+coordinate.  A full rational BCFT construction replaces this finite group
+laboratory by an \(A\)-module category in a chiral tensor category and then
+adds the analytic sewing maps; the finite formulas above should be read as
+one dependency diagram, not as independent evidence for the all-surface
+theorem.
+
 The disk partition function defines the Affleck--Ludwig boundary entropy.
 For a Cardy boundary state in a diagonal rational CFT,
 \begin{equation}

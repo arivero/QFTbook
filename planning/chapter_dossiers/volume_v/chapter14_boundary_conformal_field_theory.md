@@ -160,6 +160,13 @@
   \(\psi_{x+g,g;\chi'}\psi_{x,g;\chi}=\delta_{\chi,\chi'}e_{x,\chi}\).
   This shows that stabilizer characters are invisible to the annulus quotient
   \(G/H\) but visible to boundary two-point sewing.
+- Adds the pointed-laboratory dependency ledger: annulus entries equal the
+  graded dimensions of the same boundary-changing sectors
+  \((n_g)_{xH,yH}=\dim\operatorname{span}\{\psi_{x,g}\mid(x+g)H=yH\}\),
+  the stabilizer fields are recovered from classifying idempotents by Fourier
+  inversion \(\psi_{x,h}=\sum_{\chi\in\widehat H}\chi(h)e_{x,\chi}\), and the
+  annulus, boundary OPE, classifying idempotents, and two-point pairings are
+  explicitly presented as projections of one finite module-category datum.
 
 ## Claims To Verify
 
@@ -239,6 +246,11 @@
     \(\varepsilon_x(e_{x,\chi}e_{x,\chi'})=\delta_{\chi,\chi'}/|H|\), and
     projected inverse boundary-changing fields compose back to the matching
     stabilizer idempotent rather than collapsing all stabilizer labels.
+22. The pointed finite laboratory is coherent end-to-end: the annulus matrix
+    entry is the dimension of the corresponding boundary-changing field space,
+    boundary-OPE composition has the same endpoint as annulus multiplication,
+    and stabilizer Fourier inversion recovers endpoint-preserving fields from
+    the classifying idempotents.
 
 ## Figures
 
@@ -256,6 +268,8 @@
   the pointed annulus Fourier diagonalization and stabilizer degeneracy check,
   the pointed module-category boundary-OPE associativity cell,
   the pointed stabilizer classifying-idempotent slide identity,
+  the unified pointed-laboratory dependency check tying annulus entries to
+  boundary-field counts, OPE endpoints, and stabilizer Fourier inversion,
   boundary entropy squares, Ising
   boundary-changing fusing constants and OPE powers, the finite Ising
   four-boundary Cardy--Lewellen sewing cell, the \(A=1\)
@@ -399,3 +413,9 @@
   laboratory.  The annulus, Fourier, boundary-OPE, stabilizer-idempotent, and
   two-point-pairing cells now read as a single rational module mechanism
   rather than as detached local ledgers.
+- 2026-06-03 pointed-laboratory dependency pass: added the end-to-end ledger
+  inside that finite sewing laboratory.  The text now identifies annulus
+  entries with boundary-field counts, recovers stabilizer endomorphism fields
+  from classifying idempotents by Fourier inversion, and states that these are
+  compatible projections of one module-category datum rather than independent
+  evidence for full analytic sewing.

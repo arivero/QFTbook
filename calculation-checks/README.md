@@ -993,7 +993,9 @@ Current checks:
   boundary-OPE associativity cell
   \(\psi_{x+g,h}\psi_{x,g}=\psi_{x,g+h}\), stabilizer-label noncollapse,
   the pointed stabilizer classifying-idempotent slide identity and Frobenius
-  two-point/inverse-sector pairing, boundary
+  two-point/inverse-sector pairing, the unified pointed-laboratory dependency
+  check tying annulus entries to boundary-field counts, OPE endpoints, and
+  stabilizer Fourier inversion, boundary
   entropy squares, Chan--Paton direct sums, the positive spectral
   weight in the boundary-entropy gradient metric, compact-boson T-duality zero modes,
   Ising boundary-changing fusing constants and OPE powers, the finite

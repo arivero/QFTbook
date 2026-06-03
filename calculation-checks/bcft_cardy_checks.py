@@ -890,6 +890,86 @@ def check_pointed_stabilizer_classifying_idempotents() -> None:
         raise AssertionError("nontrivial stabilizer character collapsed")
 
 
+def check_pointed_laboratory_unified_dependency() -> None:
+    """Check that the pointed BCFT cells are projections of one finite datum."""
+
+    elements: tuple[GroupElement, ...] = ((0, 0), (1, 0), (0, 1), (1, 1))
+    stabilizer: tuple[GroupElement, ...] = ((0, 0), (1, 0))
+    characters = {
+        "trivial": {(0, 0): Fraction(1), (1, 0): Fraction(1)},
+        "sign": {(0, 0): Fraction(1), (1, 0): Fraction(-1)},
+    }
+    idempotents = {
+        name: {
+            h: character[h] / len(stabilizer)
+            for h in stabilizer
+        }
+        for name, character in characters.items()
+    }
+
+    for group_element in elements:
+        annulus = pointed_coset_annulus_matrix(group_element)
+        for source in (0, 1):
+            target = pointed_boundary_target(source, group_element)
+            for candidate in (0, 1):
+                expected_dimension = 1 if candidate == target else 0
+                assert_equal(
+                    "pointed laboratory annulus equals boundary-field count "
+                    f"g={group_element}, source={source}, target={candidate}",
+                    annulus[source][candidate],
+                    expected_dimension,
+                )
+
+    for left in elements:
+        for right in elements:
+            for source in (0, 1):
+                middle = pointed_boundary_target(source, left)
+                target_by_fields = pointed_boundary_target(middle, right)
+                target_by_fusion = pointed_boundary_target(
+                    source,
+                    pointed_boundary_compose(left, right),
+                )
+                assert_equal(
+                    "pointed laboratory OPE endpoint matches annulus product "
+                    f"source={source}, left={left}, right={right}",
+                    target_by_fields,
+                    target_by_fusion,
+                )
+
+    for stabilizer_element in stabilizer:
+        reconstructed: dict[GroupElement, Fraction] = {}
+        for character_name, idempotent in idempotents.items():
+            weight = characters[character_name][stabilizer_element]
+            for h, coefficient in idempotent.items():
+                reconstructed[h] = reconstructed.get(h, Fraction(0)) + weight * coefficient
+        reconstructed = {
+            h: coefficient
+            for h, coefficient in reconstructed.items()
+            if coefficient
+        }
+        assert_equal(
+            "pointed stabilizer Fourier inversion "
+            f"h={stabilizer_element}",
+            reconstructed,
+            {stabilizer_element: Fraction(1)},
+        )
+
+    quotient_projector_count = 2
+    stabilizer_sector_count = len(idempotents)
+    assert_equal(
+        "pointed laboratory quotient times stabilizer sectors recovers group labels",
+        quotient_projector_count * stabilizer_sector_count,
+        len(elements),
+    )
+    assert_equal(
+        "nontrivial stabilizer has vacuum annulus but nontrivial idempotent resolution",
+        pointed_coset_annulus_matrix((1, 0)),
+        pointed_coset_annulus_matrix((0, 0)),
+    )
+    if idempotents["sign"] == idempotents["trivial"]:
+        raise AssertionError("stabilizer idempotent resolution collapsed")
+
+
 def check_boundary_entropy() -> None:
     entropies = [S[a][0] / S[0][0] for a in range(3)]
     # The displayed g_a is S_{a0}/sqrt(S_{00}); its square is S_{a0}^2/S_{00}.
@@ -1305,6 +1385,7 @@ def main() -> None:
     check_pointed_annulus_fourier_diagonalization()
     check_pointed_module_boundary_ope_associativity()
     check_pointed_stabilizer_classifying_idempotents()
+    check_pointed_laboratory_unified_dependency()
     check_boundary_entropy()
     check_boundary_gradient_spectral_weight()
     check_chan_paton_direct_sums()
@@ -1319,7 +1400,7 @@ def main() -> None:
         "All BCFT Cardy, sewing, boundary-gradient, Ising boundary-changing, "
         "matrix-Frobenius, finite-center, pointed-nimrep, Chan-Paton, "
         "pointed-annulus-Fourier, pointed-boundary-OPE, "
-        "pointed-stabilizer-slide, compact-boson, "
+        "pointed-stabilizer-slide, pointed-laboratory-unified, compact-boson, "
         "Liouville-boundary, continuous-annulus Plancherel, and "
         "nonrational-pole-residue checks passed."
     )
