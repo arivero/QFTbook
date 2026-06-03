@@ -6,6 +6,10 @@
   CFTs, finite orbifolds, twisted sectors, and twist-field deformations
   inside the CFT volume rather than treating them as string-theory side
   material.
+- Opens the two-dimensional construction block with a proof-status map
+  coordinating sigma-model/orbifold laboratories, VOA modular sewing,
+  Liouville nonrational comparison, BCFT bordered sewing, and spin
+  superconformal constraints as different coordinates on full CFT data.
 - Immediate predecessors: Virasoro/stress-tensor Ward identities, radial
   state--operator construction, conformal perturbation theory, and OPE
   convergence.
@@ -15,6 +19,12 @@
 
 ## Definitions And Results
 
+- States the block-level status convention: local beta-function, KZ,
+  orbifold, Cardy, or spectral-flow calculations prove only local algebra;
+  fixed-channel analytic statements require convergence, topological vector
+  spaces, pairings, or domains; full CFT construction requires Hilbert or
+  state spaces, distributional fields, positivity, modular covariance,
+  anomaly-line bookkeeping, and decomposition-compatible sewing maps.
 - Defines bosonic sigma-model data as maps \(X:\Sigma\to M\), target metric,
   gerbe \(B\)-field, and dilaton coupling.
 - Defines a conformal sigma-model point by the continuum QFT and its
@@ -179,6 +189,10 @@
   global arithmetic quotients treated as additional CFT data.
 
 ## Claims To Verify
+
+Architecture boundary: the opening construction-block map records which data
+are still needed before local sigma-model, VOA, Liouville, BCFT, or spin-SCFT
+coordinates define one full CFT in a common normalization.
 
 1. The sigma-model action is stated as a regularized representative; the
    intrinsic \(B\)-field datum is a gerbe connection.
@@ -466,6 +480,12 @@
 
 ## Anti-Wrapper Audit
 
+- 2026-06-03 issue #697 CFT block-architecture pass: added the opening
+  proof-status map for the two-dimensional construction block.  The new text
+  coordinates sigma-model/orbifold finite laboratories, VOA sewing,
+  Liouville nonrational construction, BCFT bordered sewing, and spin
+  superconformal algebra as distinct layers rather than treating any local
+  cell as a full CFT construction.
 - 2026-05-29 eighth pass: demoted the symmetric-product Riemann--Hurwitz
   genus ledger from proposition form to bookkeeping prose.  The finite tests
   for monodromy product, transitivity, and nonnegative integer genus remain
