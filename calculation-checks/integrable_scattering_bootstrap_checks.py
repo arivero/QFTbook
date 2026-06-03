@@ -5,6 +5,7 @@ The finite matrix check also guards the residue-projection convention in the
 bound-state fusion identity of Volume VI, Chapter 2.
 """
 from check_utils import assert_close as _assert_close
+from check_utils import assert_gt as _assert_gt
 
 import cmath
 import math
@@ -108,8 +109,8 @@ def check_elementary_block_unitarity_and_crossing_pair() -> None:
 def check_residue_signs() -> None:
     for x in (0.2, 0.35, 0.7):
         direct = -1j * block_residue_at_physical_pole(x)
-        if direct.real <= 0 or abs(direct.imag) > 1.0e-13:
-            raise AssertionError(f"single block direct residue sign failed at x={x}: {direct!r}")
+        _assert_gt(f"single block direct residue real part x={x}", direct.real, 0.0)
+        assert_close(f"single block direct residue imaginary part x={x}", direct.imag, 0.0, tol=1.0e-13)
 
         residue_x = -1j * crossing_pair_residue_at_x_pole(x)
         residue_one_minus_x = -1j * crossing_pair_residue_at_one_minus_x_pole(x)

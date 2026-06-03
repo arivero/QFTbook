@@ -9,6 +9,9 @@ if [[ -z "${QFT_HDF5_PYTHON:-}" ]]; then
   QFT_HDF5_PYTHON="$(command -v python3)"
   export QFT_HDF5_PYTHON
 fi
+if [[ -z "${PYTHONWARNINGS:-}" ]]; then
+  export PYTHONWARNINGS="error::RuntimeWarning"
+fi
 
 shopt -s nullglob
 

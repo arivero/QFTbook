@@ -5,6 +5,8 @@ from __future__ import annotations
 
 from check_utils import assert_close as _assert_close
 from check_utils import assert_array_close as _assert_array_close
+from check_utils import assert_geq as _assert_geq
+from check_utils import assert_gt as _assert_gt
 
 Vector2 = tuple[complex, complex]
 Matrix2 = tuple[tuple[complex, complex], tuple[complex, complex]]
@@ -242,8 +244,11 @@ def check_density_fdt_matrix_identity() -> None:
 
     # Use a noncommuting chi/Sigma pair, so the check is genuinely matrix-valued.
     commutator = matadd(matmul(diffusion, sigma), matscale(-1.0, matmul(sigma, diffusion)))
-    if abs(commutator[0][1]) < 1.0e-12 and abs(commutator[1][0]) < 1.0e-12:
-        raise AssertionError("test matrices accidentally commute")
+    _assert_gt(
+        "test matrices noncommuting off-diagonal size",
+        max(abs(commutator[0][1]), abs(commutator[1][0])),
+        1.0e-12,
+    )
 
     resolvent = matinv(matadd(matscale(k2, diffusion), matscale(-1j * omega, identity)))
     advanced_resolvent = matinv(
@@ -265,8 +270,8 @@ def check_density_fdt_matrix_identity() -> None:
     for vector in [(0.3 + 0.2j, -0.7 + 0.1j), (1.1 - 0.4j, 0.6 + 0.9j)]:
         gv = matvec(symmetrized, vector)
         quadratic = vector[0].conjugate() * gv[0] + vector[1].conjugate() * gv[1]
-        if quadratic.real < -1.0e-10 or abs(quadratic.imag) > 1.0e-10:
-            raise AssertionError(f"density noise kernel should be Hermitian positive: {quadratic!r}")
+        _assert_geq("density noise kernel quadratic real part", quadratic.real, 0.0, tol=1.0e-10)
+        assert_close("density noise kernel quadratic imaginary part", quadratic.imag, 0.0, tol=1.0e-10)
 
 
 def main() -> None:

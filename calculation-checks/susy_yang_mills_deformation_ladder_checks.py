@@ -21,6 +21,8 @@ def assert_zero(name: str, expr: sp.Expr) -> None:
 
 def assert_near_zero(name: str, expr: sp.Expr, tol: sp.Float = sp.Float("1e-45")) -> None:
     value = abs(sp.N(expr, 80))
+    if value.is_finite is not True:
+        raise AssertionError(f"{name} produced nonfinite numerical value: {value!r}")
     if value >= tol:
         raise AssertionError(f"{name} failed numerically: {value!r}")
 

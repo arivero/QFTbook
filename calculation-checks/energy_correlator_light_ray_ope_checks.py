@@ -10,6 +10,8 @@ RG equations.
 
 from fractions import Fraction
 
+from check_utils import assert_leq as _assert_leq
+
 
 def assert_equal(left, right, message):
     if left != right:
@@ -610,10 +612,7 @@ def check_endpoint_observable_transport_budget():
         + l1(coeff) * linfty(residual_operator)
         + abs(residual_contact)
     )
-    if abs(derivative) > bound:
-        raise AssertionError(
-            f"endpoint observable residual bound failed: {abs(derivative)!r} > {bound!r}"
-        )
+    _assert_leq("endpoint observable residual bound", abs(derivative), bound)
 
 
 def main():

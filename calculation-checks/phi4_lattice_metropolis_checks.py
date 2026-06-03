@@ -10,6 +10,10 @@ from pathlib import Path
 
 import numpy as np
 
+from check_utils import assert_close as _assert_close
+from check_utils import assert_geq as _assert_geq
+from check_utils import assert_leq as _assert_leq
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "qft_scripts" / "phi4_2d_metropolis.py"
@@ -37,8 +41,7 @@ def check_local_action_change() -> None:
             changed[i, j] = new_value
             direct = phi4.total_action(changed, mass_sq, quartic) - base_action
             local = phi4.local_action_change(field, i, j, new_value, mass_sq, quartic)
-            if abs(direct - local) > 1.0e-12:
-                raise AssertionError("local phi^4 action change does not match total-action difference")
+            _assert_close("local phi^4 action change versus total action", direct, local, tol=1.0e-12)
 
 
 def check_pairwise_detailed_balance() -> None:
@@ -57,8 +60,7 @@ def check_pairwise_detailed_balance() -> None:
                 forward = math.exp(-old_action) * min(1.0, math.exp(-delta))
                 reverse = math.exp(-new_action) * min(1.0, math.exp(delta))
                 scale = max(1.0, abs(forward), abs(reverse))
-                if abs(forward - reverse) / scale > 1.0e-12:
-                    raise AssertionError("pairwise Metropolis detailed balance failed")
+                _assert_leq("pairwise Metropolis detailed balance", abs(forward - reverse) / scale, 1.0e-12)
 
 
 def check_pointwise_stability_bound() -> None:
@@ -69,13 +71,11 @@ def check_pointwise_stability_bound() -> None:
             lower = 0.0
         samples = np.linspace(-5.0, 5.0, 401)
         values = phi4.potential(samples, mass_sq, quartic)
-        if float(np.min(values)) < lower - 2.0e-3:
-            raise AssertionError("quartic potential violates the analytic lower bound on the grid")
+        _assert_geq("quartic potential grid lower bound", float(np.min(values)), lower, tol=2.0e-3)
         if mass_sq < 0.0:
             minimizer = math.sqrt(-6.0 * mass_sq / quartic)
             exact = phi4.potential(minimizer, mass_sq, quartic)
-            if abs(exact - lower) > 1.0e-12:
-                raise AssertionError("analytic double-well lower bound is inconsistent")
+            _assert_close("analytic double-well lower bound", exact, lower, tol=1.0e-12)
 
 
 def main() -> None:

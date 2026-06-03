@@ -9,6 +9,7 @@ eta(v,v)=-(v0)^2+(v1)^2 for the boost plane.
 from __future__ import annotations
 
 from check_utils import assert_close as _assert_close
+from check_utils import assert_geq as _assert_geq
 
 import cmath
 import math
@@ -125,8 +126,7 @@ def check_physical_light_ray_generator_sign() -> None:
     # to the physical inward translation U(a e_+) is therefore P_+=P^0-P^1.
     future_momenta = [(1.0, 0.0), (2.0, 1.1), (2.4, -1.9), (3.0, 3.0)]
     for energy, px in future_momenta:
-        if energy < abs(px):
-            raise AssertionError("sample momentum is not in the future cone")
+        _assert_geq("sample future-cone momentum", energy, abs(px))
         p_plus = energy - px
         covariant_pairing = -energy + px
         if p_plus < -1e-12:

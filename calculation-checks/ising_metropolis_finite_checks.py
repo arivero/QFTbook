@@ -11,6 +11,8 @@ from pathlib import Path
 
 import numpy as np
 
+from check_utils import assert_close as _assert_close
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "qft_scripts" / "ising2d_metropolis.py"
@@ -62,8 +64,7 @@ def check_local_energy_change() -> None:
             for j in range(2):
                 direct = ising.total_energy(flipped(spins, i, j), J=0.7, h=-0.2) - ising.total_energy(spins, J=0.7, h=-0.2)
                 local = ising.local_energy_change(spins, i, j, J=0.7, h=-0.2)
-                if abs(direct - local) > 1.0e-12:
-                    raise AssertionError("local energy change does not match total-energy difference")
+                _assert_close("local energy change versus total-energy difference", direct, local, tol=1.0e-12)
 
 
 def check_detailed_balance() -> None:
@@ -80,8 +81,7 @@ def check_detailed_balance() -> None:
         for target in configs:
             lhs = weights[key(source)] / partition * transition_probability(source, target, beta, J, h)
             rhs = weights[key(target)] / partition * transition_probability(target, source, beta, J, h)
-            if abs(lhs - rhs) > 1.0e-12:
-                raise AssertionError("detailed balance failed for enumerated 2x2 chain")
+            _assert_close("enumerated 2x2 detailed balance", lhs, rhs, tol=1.0e-12)
 
 
 def main() -> None:

@@ -11,6 +11,8 @@ higher-derivative equation.
 from __future__ import annotations
 
 from check_utils import assert_close as _assert_close
+from check_utils import assert_geq as _assert_geq
+from check_utils import assert_gt as _assert_gt
 
 import cmath
 import math
@@ -59,8 +61,7 @@ def check_noise_covariance_positivity() -> None:
             + 2 * covariance[0][1] * x * y
             + covariance[1][1] * y * y
         )
-        if value < -1e-12:
-            raise AssertionError("noise quadratic form should be nonnegative")
+        _assert_geq("noise quadratic form nonnegative", value, 0.0, tol=1e-12)
 
 
 def check_einstein_langevin_pushforward_covariance() -> None:
@@ -103,12 +104,10 @@ def check_reduction_of_order_toy_model() -> None:
     z_low = (-1 + math.sqrt(discriminant)) / (2 * eps)
     z_high = (-1 - math.sqrt(discriminant)) / (2 * eps)
     assert_close(z_low, reduced_lambda_sq, "low-energy reduced root", tol=1e-3)
-    if abs(z_high) < 0.1 / eps:
-        raise AssertionError("discarded higher-derivative root should live at cutoff scale")
+    _assert_gt("discarded higher-derivative root cutoff scale", abs(z_high), 0.1 / eps)
 
     lambda_low = cmath.sqrt(z_low)
-    if abs(lambda_low.real) > 1e-9:
-        raise AssertionError("low-energy root should remain oscillatory in the stable toy model")
+    assert_close(lambda_low.real, 0.0, "low-energy root real part", tol=1e-9)
 
 
 def main() -> None:

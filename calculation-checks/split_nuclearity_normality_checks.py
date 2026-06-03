@@ -12,6 +12,7 @@ classification.
 
 from fractions import Fraction
 
+from check_utils import assert_gt as _assert_gt
 from check_utils import assert_leq as _assert_leq
 
 
@@ -25,8 +26,7 @@ def assert_equal(name: str, actual, expected) -> None:
 
 
 def assert_positive(name: str, value: Fraction) -> None:
-    if value <= 0:
-        raise AssertionError(f"{name}: expected positive value, got {value!r}")
+    _assert_gt(name, value, Fraction(0))
 
 
 def assert_less_equal(name: str, actual: Fraction, bound: Fraction) -> None:

@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 from check_utils import assert_close as _assert_close
+from check_utils import assert_gt as _assert_gt
+from check_utils import assert_lt as _assert_lt
 
 
 from collections import Counter
@@ -567,8 +569,11 @@ def check_crossing_rhs_is_sheet_sensitive() -> None:
         )
 
         naively_crossed_rhs = stringbook_crossing_rhs(1 / x1_plus, 1 / x1_minus)
-        if abs(physical_rhs - naively_crossed_rhs) < 1.0e-6:
-            raise AssertionError("crossing RHS should not be invariant under naive x -> 1/x")
+        _assert_gt(
+            "crossing RHS distinguishes naive x inversion",
+            abs(physical_rhs - naively_crossed_rhs),
+            1.0e-6,
+        )
 
     algebraic_rhs = (
         Fraction(5, 7)
@@ -1072,8 +1077,11 @@ def check_dhm_local_residue_continuation() -> None:
         outside_outside,
     )
     without_contact = inside_inside - psi_x_inside_y + psi_y_inside_x
-    if abs(without_contact - outside_outside) < 1.0e-9:
-        raise AssertionError("DHM double crossing unexpectedly worked without contact term")
+    _assert_gt(
+        "DHM double crossing detects missing contact term",
+        abs(without_contact - outside_outside),
+        1.0e-9,
+    )
 
     x1_plus = 0.72 + 0.13j
     x1_minus = -0.61 + 0.21j
@@ -1130,8 +1138,11 @@ def check_dhm_local_residue_continuation() -> None:
         - psi_x_outside_second(x1_minus, x2_plus)
         + psi_x_outside_second(x1_minus, x2_minus)
     )
-    if abs(raw_crossed_theta + wrong_residue_theta - outside_branch_theta) < 1.0e-9:
-        raise AssertionError("DHM crossed BES theta signs unexpectedly worked when reversed")
+    _assert_gt(
+        "DHM crossed BES theta detects reversed residue signs",
+        abs(raw_crossed_theta + wrong_residue_theta - outside_branch_theta),
+        1.0e-9,
+    )
 
 
 def check_dhm_gamma_pole_lattice_and_admissibility() -> None:
@@ -1761,10 +1772,11 @@ def check_finite_density_aba_counting_normalization() -> None:
         unit_mass_derivative = momentum_derivative(u_value) + float(
             1 + u_value * u_value + Fraction(1, 3)
         )
-        if abs(finite_derivative - continuum_derivative) >= 0.25 * abs(
-            finite_derivative - unit_mass_derivative
-        ):
-            raise AssertionError("ABA counting used the wrong empirical-measure mass")
+        _assert_lt(
+            "ABA counting empirical-measure mass discrimination",
+            abs(finite_derivative - continuum_derivative),
+            0.25 * abs(finite_derivative - unit_mass_derivative),
+        )
 
         small_interval = 1.0e-5
         finite_counting_jump = (
@@ -1858,10 +1870,7 @@ def check_weak_dispersion_expansion() -> None:
         s2 = math.sin(momentum / 2) ** 2
         exact = math.sqrt(1 + 16 * g * g * s2) - 1
         truncated = 8 * g * g * s2 - 32 * g**4 * s2**2 + 256 * g**6 * s2**3
-        if abs(exact - truncated) > 1.0e-15:
-            raise AssertionError(
-                f"weak dispersion expansion: got {exact!r}, truncated {truncated!r}"
-            )
+        assert_close("weak dispersion expansion", exact, truncated, tol=1.0e-15)
 
 
 def check_bmn_scaling_limit() -> None:
@@ -1873,10 +1882,7 @@ def check_bmn_scaling_limit() -> None:
             momentum = 2 * math.pi * mode / charge
             exact = math.sqrt(1 + 16 * g * g * math.sin(momentum / 2) ** 2)
             bmn = math.sqrt(1 + lam_prime * mode * mode)
-            if abs(exact - bmn) > 3.0e-3:
-                raise AssertionError(
-                    f"BMN scaling J={charge} mode={mode}: got {exact}, expected {bmn}"
-                )
+            assert_close(f"BMN scaling J={charge} mode={mode}", exact, bmn, tol=3.0e-3)
 
 
 def check_sl2_large_spin_cusp_resolvent() -> None:
@@ -1940,8 +1946,7 @@ def check_one_cut_spectral_curve_bookkeeping() -> None:
         y = cmath.sqrt(4 * z * z - 1)
         if abs(y - 2 * z) > abs(-y - 2 * z):
             y = -y
-        if abs(y * y - (4 * z * z - 1)) > 1.0e-12:
-            raise AssertionError("one-cut spectral curve equation failed")
+        assert_close("one-cut spectral curve equation", y * y, 4 * z * z - 1, tol=1.0e-12)
 
         exp_i_g = (y + 1j) / (y - 1j)
         exp_i_g_flipped = (-y + 1j) / (-y - 1j)
@@ -2307,12 +2312,10 @@ def check_bes_zhukovsky_fourier_transform_signs() -> None:
                 raise AssertionError(f"BES Fourier Bessel recurrence failed for m={order}")
 
         plus_cut_phase = -1j * ((-1j) ** (order - 1))
-        if abs(plus_cut_phase - (-1j) ** order) > 0:
-            raise AssertionError(f"BES x+ contour phase failed for m={order}")
+        assert_close(f"BES x+ contour phase m={order}", plus_cut_phase, (-1j) ** order, tol=0.0)
 
         lower_signed_t_phase = ((-1) ** order) * ((-1j) ** order)
-        if abs(lower_signed_t_phase - (1j) ** order) > 0:
-            raise AssertionError(f"BES x- signed-t phase failed for m={order}")
+        assert_close(f"BES x- signed-t phase m={order}", lower_signed_t_phase, (1j) ** order, tol=0.0)
 
         lower_abs_t_phase = -((-1j) ** order)
         if order % 2 == 0 and abs(lower_abs_t_phase - lower_signed_t_phase) == 0:
@@ -2623,8 +2626,10 @@ def check_mirror_auxiliary_string_arrays() -> None:
                 sign = abs(factor) - 1
                 if abs(abs(y) - 1) < 1.0e-12:
                     assert_close("mirror y-support unit circle", sign)
-                elif (abs(y) < 1 and sign >= 0) or (abs(y) > 1 and sign <= 0):
-                    raise AssertionError("mirror y-support modulus sign")
+                elif abs(y) < 1:
+                    _assert_lt("mirror y-support inside modulus sign", sign, 0)
+                else:
+                    _assert_gt("mirror y-support outside modulus sign", sign, 0)
 
     for coupling in (0.4, 1.3):
         eta = 0.5j / coupling
@@ -2722,8 +2727,8 @@ def check_one_species_tba_variation() -> None:
     hole_density = [
         level_density[index] - particle_density[index] for index in range(size)
     ]
-    if any(value <= 0 for value in particle_density + level_density + hole_density):
-        raise AssertionError("TBA density check produced nonpositive densities")
+    for value in particle_density + level_density + hole_density:
+        _assert_gt("TBA density positivity", value, 0)
 
     for index in range(size):
         assert_close(
@@ -2888,8 +2893,8 @@ def check_mirror_tba_node_source_inventory() -> None:
         )
         if node[0] in ("y_plus", "y_minus"):
             assert_close("mirror fermion boundary sign", cmath.exp(-driving(node)), -1)
-        elif node[0] != "bullet" and abs(length_energy(node)) > 0:
-            raise AssertionError("auxiliary node must not carry a length driving term")
+        elif node[0] != "bullet":
+            assert_close("auxiliary node length driving term", length_energy(node), 0)
 
     def same_wing(target: tuple[str, int, str], source: tuple[str, int, str]) -> bool:
         return bool(target[2]) and target[2] == source[2]
@@ -3449,8 +3454,7 @@ def check_s_kernel_inverse_data_loss() -> None:
             denominator = 2 * cmath.cosh(math.pi * (boundary_pole - root))
             assert_close("s-kernel zero-mode boundary pole", denominator, 0j, tol=2.0e-15)
         interior_denominator = 2 * cmath.cosh(math.pi * (root + 0.23j - root))
-        if abs(interior_denominator) < 1.0e-8:
-            raise AssertionError("s-kernel zero mode should not have an interior strip pole")
+        _assert_gt("s-kernel interior denominator away from zero", abs(interior_denominator), 1.0e-8)
 
     def source_factor(u_value: complex, root: complex) -> complex:
         return (u_value - root + 0.5j) / (u_value - root - 0.5j)
@@ -3584,8 +3588,7 @@ def check_analytic_y_system_strip_and_cut_data() -> None:
             upper_y22 * lower_y11,
             1,
         )
-        if abs(upper_y22 - lower_y11) < 1.0e-14:
-            raise AssertionError("central inversion check failed to detect sheet inversion")
+        _assert_gt("central inversion detects sheet inversion", abs(upper_y22 - lower_y11), 1.0e-14)
 
     source_powers = Counter({("root_a", 1): 2, ("root_b", -1): 1})
     total_power = sum(power * multiplicity for (_root, power), multiplicity in source_powers.items())
@@ -4053,8 +4056,7 @@ def check_hexagon_scalar_watson_factor() -> None:
         compact_phase = (u1 - u2 + 1j) / (u1 - u2 - 1j)
         sl2_phase = (u1 - u2 - 1j) / (u1 - u2 + 1j)
         assert_close("hexagon scalar weak compact phase", weak_ratio, compact_phase)
-        if abs(weak_ratio - sl2_phase) < 1.0e-4:
-            raise AssertionError("hexagon scalar weak phase should not match SL(2) phase")
+        _assert_gt("hexagon scalar weak phase differs from SL(2)", abs(weak_ratio - sl2_phase), 1.0e-4)
 
 
 def check_bremsstrahlung_displacement_cusp_normalization() -> None:
@@ -4423,10 +4425,16 @@ def check_t_gauge_resolvent_hirota_factorization() -> None:
             hat_lower,
             -lower_gbar,
         )
-        if abs(hat_lower - lower_without_continuation) < 1.0e-14:
-            raise AssertionError("Cauchy sample should detect the sheet-continuation sign")
-        if abs(hat_upper + lower_gbar) < 1.0e-14:
-            raise AssertionError("Cauchy sample should not accidentally erase the sheet sign")
+        _assert_gt(
+            "Cauchy sample detects sheet-continuation sign",
+            abs(hat_lower - lower_without_continuation),
+            1.0e-14,
+        )
+        _assert_gt(
+            "Cauchy sample retains sheet sign",
+            abs(hat_upper + lower_gbar),
+            1.0e-14,
+        )
 
     support = ((-0.9, 1.0), (0.2, -0.75), (1.1, 0.5))
 
@@ -4447,8 +4455,11 @@ def check_t_gauge_resolvent_hirota_factorization() -> None:
             magic_cauchy(point),
             upper_cauchy(point),
         )
-        if abs(lower_cauchy_bar(point) - upper_cauchy(point)) < 1.0e-14:
-            raise AssertionError("lower Cauchy sign should differ before magic continuation")
+        _assert_gt(
+            "lower Cauchy sign differs before magic continuation",
+            abs(lower_cauchy_bar(point) - upper_cauchy(point)),
+            1.0e-14,
+        )
 
     for base, m_value in ((0.13 + 0.04j, 2), (-0.31 - 0.03j, 3)):
         upper_slot = base + 0.5j * m_value
@@ -4458,8 +4469,11 @@ def check_t_gauge_resolvent_hirota_factorization() -> None:
         assert_close("magic-sheet T1 branch sign", magic_t1, branch_t1)
 
         wrong_lower_sign = m_value + upper_cauchy(upper_slot) - lower_cauchy_bar(lower_slot)
-        if abs(wrong_lower_sign - magic_t1) < 1.0e-14:
-            raise AssertionError("magic-sheet T1 check failed to detect lower-sign error")
+        _assert_gt(
+            "magic-sheet T1 detects lower-sign error",
+            abs(wrong_lower_sign - magic_t1),
+            1.0e-14,
+        )
 
         t2_from_factorization = (
             1
@@ -4647,8 +4661,7 @@ def check_t_hook_wronskian_pmu_bridge() -> None:
         mu12,
     ) in samples:
         determinant = p1_plus * p2_minus - p2_plus * p1_minus
-        if abs(determinant) < 1.0e-12:
-            raise AssertionError("Wronskian determinant sample accidentally degenerate")
+        _assert_gt("Wronskian determinant sample nondegenerate", abs(determinant), 1.0e-12)
 
         first_hirota_product = (
             (tilde_p1 * p2_minus - tilde_p2 * p1_minus)
@@ -4980,12 +4993,15 @@ def check_qomega_dual_monodromy_transport() -> None:
             ]
             for row in range(4)
         ]
-        if max(
-            abs(opposite_update[row][col] - updated[row][col])
-            for row in range(4)
-            for col in range(4)
-        ) < 1.0e-12:
-            raise AssertionError("Qomega sample does not detect the transport sign")
+        _assert_gt(
+            "Qomega sample detects transport sign",
+            max(
+                abs(opposite_update[row][col] - updated[row][col])
+                for row in range(4)
+                for col in range(4)
+            ),
+            1.0e-12,
+        )
 
 
 def check_qsc_weak_mu12_mu24_elimination() -> None:
@@ -5281,13 +5297,11 @@ def check_qsc_large_u_coefficient_constraints() -> None:
         )
 
         wrong_sign_a14, wrong_sign_a23 = -a14, -a23
-        if (
-            abs(characteristic(delta, twist, wrong_sign_a14, wrong_sign_a23))
-            < 1.0e-6
-        ):
-            raise AssertionError(
-                "QSC coefficient products are insensitive to an overall sign flip"
-            )
+        _assert_gt(
+            "QSC coefficient products detect overall sign flip",
+            abs(characteristic(delta, twist, wrong_sign_a14, wrong_sign_a23)),
+            1.0e-6,
+        )
 
     for twist, alpha, a14, a23 in (
         (2.0, 1.3 + 0.2j, 0.7 - 0.4j, -0.2 + 0.5j),

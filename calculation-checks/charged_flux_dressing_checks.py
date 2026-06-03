@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from check_utils import assert_close as _assert_close
+from check_utils import assert_gt as _assert_gt
 
 import cmath
 import math
@@ -412,8 +413,11 @@ def check_dollard_scalar_product_cauchy_criterion() -> None:
     for start in (32, 256, 2048):
         phase_start = cmath.exp(1j * delta * math.log(start))
         phase_double = cmath.exp(1j * delta * math.log(2 * start))
-        if abs(phase_double - phase_start) <= 1.9:
-            raise AssertionError("wrong Dollard logarithmic phase should obstruct dyadic Cauchy convergence")
+        _assert_gt(
+            "wrong Dollard logarithmic phase dyadic obstruction",
+            abs(phase_double - phase_start),
+            1.9,
+        )
 
     # A finite same-flux phase change has an L1 derivative; its dyadic scalar
     # product changes shrink.

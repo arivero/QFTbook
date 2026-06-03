@@ -25,6 +25,7 @@ renormalized SPDE, Osterwalder-Schrader reconstruction, or the full Phi^4_3
 constructive theorem.
 """
 from check_utils import assert_close as _assert_close
+from check_utils import assert_leq as _assert_leq
 
 
 from fractions import Fraction
@@ -627,10 +628,8 @@ def check_tadpole_asymptotics():
     # I_d(Lambda,m) = |S^{d-1}|/(2pi)^d int_0^Lambda r^{d-1}/(r^2+m^2) dr.
     coeff_2 = (2 * math.pi) / ((2 * math.pi) ** 2)  # radial integral contributes log Lambda.
     coeff_3 = (4 * math.pi) / ((2 * math.pi) ** 3)  # radial integral contributes Lambda.
-    if abs(coeff_2 - 1 / (2 * math.pi)) > 1e-15:
-        raise AssertionError("two-dimensional tadpole log coefficient mismatch")
-    if abs(coeff_3 - 1 / (2 * math.pi**2)) > 1e-15:
-        raise AssertionError("three-dimensional tadpole linear coefficient mismatch")
+    _assert_close("two-dimensional tadpole log coefficient", coeff_2, 1 / (2 * math.pi), tol=1e-15)
+    _assert_close("three-dimensional tadpole linear coefficient", coeff_3, 1 / (2 * math.pi**2), tol=1e-15)
 
 
 def check_phi4_power_counting():
@@ -935,8 +934,7 @@ def check_spde_ou_and_smoothing_normalizations():
     y_star = theta / t
     lhs = (y_star**theta) * math.exp(-t * y_star)
     rhs = (theta / t) ** theta * math.exp(-theta)
-    if abs(lhs - rhs) > 1.0e-12:
-        raise AssertionError("heat-kernel smoothing optimization failed")
+    _assert_close("heat-kernel smoothing optimization", lhs, rhs, tol=1.0e-12)
 
 
 def check_phi4_two_path_space_increment_arithmetic():
@@ -2731,8 +2729,7 @@ def check_spde_constructive_hierarchy_transfer_arithmetic():
     gamma = 1
     for n, moment in constructive_moments.items():
         envelope = (B ** n) * (math.factorial(n) ** gamma)
-        if abs(spde_moments[n]) > envelope:
-            raise AssertionError("SPDE hierarchy growth transfer failed")
+        _assert_leq("SPDE hierarchy growth transfer", abs(spde_moments[n]), envelope)
 
 
 def check_spde_finite_window_os_defect_budget_arithmetic():

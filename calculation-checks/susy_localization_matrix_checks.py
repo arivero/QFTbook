@@ -24,6 +24,8 @@ import math
 from fractions import Fraction
 import mpmath as mp
 
+from check_utils import assert_leq as _assert_leq
+
 
 mp.mp.dps = 50
 
@@ -249,11 +251,7 @@ def check_s4_protected_insertion_residual_budget() -> None:
         vector_l1_norm(error) * vector_linf_norm(probe)
         for error in (stokes, normal, residual, instanton, continuum)
     )
-    if abs(discrepancy) > residual_bound:
-        raise AssertionError(
-            "S4 protected-insertion residual norm bound: "
-            f"got |{discrepancy!r}| > {residual_bound!r}"
-        )
+    _assert_leq("S4 protected-insertion residual norm bound", abs(discrepancy), residual_bound)
 
     # The Wilson-loop expectation is a ratio, so the unit-insertion residual
     # also enters.  This is the exact finite-dimensional ratio identity.

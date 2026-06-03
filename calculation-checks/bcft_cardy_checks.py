@@ -23,6 +23,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from fractions import Fraction
 
+from check_utils import assert_leq as _assert_leq
+
 
 @dataclass(frozen=True)
 class Qsqrt2:
@@ -1802,8 +1804,7 @@ def check_bordered_sewing_move_defect_budget() -> None:
         for transport in transports[index + 1 :]:
             future_transport *= abs(transport)
         budget += future_transport * abs(defect)
-    if abs(net_defect) > budget:
-        raise AssertionError("bordered sewing move defect budget violated")
+    _assert_leq("bordered sewing move defect budget", abs(net_defect), budget)
 
     zero_amplitude = amplitudes[0]
     for transport in transports:
@@ -1819,8 +1820,11 @@ def check_bordered_sewing_move_defect_budget() -> None:
     first_budget = sum(abs(defect) for defect in first_path_defects)
     second_budget = sum(abs(defect) for defect in second_path_defects)
     path_difference = sum(first_path_defects) - sum(second_path_defects)
-    if abs(path_difference) > first_budget + second_budget:
-        raise AssertionError("two sewing paths exceeded combined local budgets")
+    _assert_leq(
+        "two sewing paths combined local budgets",
+        abs(path_difference),
+        first_budget + second_budget,
+    )
 
 
 def check_finite_sewing_anomaly_cocycle_trivialization() -> None:

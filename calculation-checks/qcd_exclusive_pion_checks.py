@@ -14,6 +14,8 @@ from __future__ import annotations
 from fractions import Fraction
 from math import comb
 
+from check_utils import assert_gt as _assert_gt
+
 
 Poly = dict[int, Fraction]
 
@@ -24,8 +26,7 @@ def assert_equal(name: str, got: Fraction, expected: Fraction) -> None:
 
 
 def assert_positive(name: str, value: Fraction) -> None:
-    if value <= 0:
-        raise AssertionError(f"{name}: expected positive, got {value}")
+    _assert_gt(name, value, Fraction(0))
 
 
 def trim(poly: Poly) -> Poly:

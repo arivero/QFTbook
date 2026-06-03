@@ -22,6 +22,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from fractions import Fraction
 
+from check_utils import assert_leq as _assert_leq
+
 
 Vector = list[Fraction]
 Matrix = list[list[Fraction]]
@@ -91,8 +93,7 @@ def check_one_channel_sewing_equals_inner_product() -> None:
     crude_l1_bound = sum(abs(entry) for entry in u1) * trace_norm * sum(
         abs(entry) for entry in u2
     )
-    if abs(basis_sum) > crude_l1_bound:
-        raise AssertionError("finite sewing bound violated")
+    _assert_leq("finite sewing l1 bound", abs(basis_sum), crude_l1_bound)
 
 
 def check_torus_trace_from_self_sewing() -> None:

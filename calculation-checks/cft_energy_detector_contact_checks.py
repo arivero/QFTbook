@@ -30,6 +30,8 @@ from __future__ import annotations
 from fractions import Fraction
 from itertools import combinations
 
+from check_utils import assert_geq as _assert_geq
+
 
 Atom = tuple[Fraction, str]
 
@@ -40,8 +42,7 @@ def assert_equal(name: str, got: object, expected: object) -> None:
 
 
 def assert_nonnegative(name: str, value: Fraction) -> None:
-    if value < 0:
-        raise AssertionError(f"{name}: got negative value {value!r}")
+    _assert_geq(name, value, Fraction(0))
 
 
 def dot(left: list[Fraction], right: list[Fraction]) -> Fraction:

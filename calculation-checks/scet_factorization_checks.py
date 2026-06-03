@@ -27,6 +27,8 @@ from typing import Mapping
 
 import sympy as sp
 
+from check_utils import assert_leq as _assert_leq
+
 Distribution = Mapping[Fraction, Fraction]
 
 
@@ -137,8 +139,7 @@ def check_distributional_factorization_remainder_bound() -> None:
     }
     pairing = finite_pairing(remainder, test)
     bound = total_variation(remainder) * sup_norm(test)
-    if abs(pairing) > bound:
-        raise AssertionError(f"distributional remainder bound failed: {abs(pairing)} > {bound}")
+    _assert_leq("distributional remainder total-variation bound", abs(pairing), bound)
 
     sign_test = {
         point: Fraction(1) if weight > 0 else Fraction(-1) if weight < 0 else Fraction(0)

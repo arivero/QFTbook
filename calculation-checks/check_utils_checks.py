@@ -9,7 +9,7 @@ from pathlib import Path
 
 import numpy as np
 
-from check_utils import assert_array_close, assert_close, assert_leq, assert_lt
+from check_utils import assert_array_close, assert_close, assert_geq, assert_gt, assert_leq, assert_lt
 
 
 def expect_failure(name: str, thunk) -> None:
@@ -115,6 +115,39 @@ def check_bound_nonfinite_rejection() -> None:
     )
     assert_lt("strict bound finite", 1.0, 2.0)
 
+    for value in (math.nan, math.inf, -math.inf):
+        expect_failure(
+            f"lower bound actual nonfinite {value!r}",
+            lambda value=value: assert_geq("lower bound actual nonfinite", value, 0.0),
+        )
+        expect_failure(
+            f"lower bound target nonfinite {value!r}",
+            lambda value=value: assert_geq("lower bound target nonfinite", 1.0, value),
+        )
+    expect_failure(
+        "lower bound tolerance nonfinite",
+        lambda: assert_geq("lower bound tolerance nonfinite", 1.0, 0.0, tol=math.inf),
+    )
+    expect_failure(
+        "lower bound excessive finite defect",
+        lambda: assert_geq("lower bound excessive finite defect", 1.0 - 2.0e-12, 1.0, tol=1.0e-12),
+    )
+    assert_geq("lower bound finite tolerance", 1.0 - 5.0e-13, 1.0, tol=1.0e-12)
+    for value in (math.nan, math.inf, -math.inf):
+        expect_failure(
+            f"strict lower actual nonfinite {value!r}",
+            lambda value=value: assert_gt("strict lower actual nonfinite", value, 0.0),
+        )
+        expect_failure(
+            f"strict lower target nonfinite {value!r}",
+            lambda value=value: assert_gt("strict lower target nonfinite", 1.0, value),
+        )
+    expect_failure(
+        "strict lower equality",
+        lambda: assert_gt("strict lower equality", 1.0, 1.0),
+    )
+    assert_gt("strict lower finite", 2.0, 1.0)
+
 
 def _call_name(node: ast.AST) -> str:
     if isinstance(node, ast.Name):
@@ -140,62 +173,105 @@ def _contains_np_max_abs(node: ast.AST) -> bool:
     return False
 
 
-def _has_threshold_compare(node: ast.FunctionDef) -> bool:
-    lowered = node.name.lower()
-    is_bound_helper = any(marker in lowered for marker in ("leq", "less", "bound"))
-    for child in ast.walk(node):
-        if not isinstance(child, ast.Compare):
-            continue
-        operands = [child.left, *child.comparators]
-        if _contains_call(child, {"abs", "math.fabs", "np.abs", "numpy.abs"}):
+def _contains_float_like_call(node: ast.AST) -> bool:
+    return _contains_call(
+        node,
+        {
+            "abs",
+            "math.fabs",
+            "math.exp",
+            "math.sqrt",
+            "cmath.exp",
+            "float",
+            "np.abs",
+            "numpy.abs",
+            "np.max",
+            "numpy.max",
+            "np.min",
+            "numpy.min",
+            "np.sqrt",
+            "numpy.sqrt",
+            "np.exp",
+            "numpy.exp",
+            "np.linalg.det",
+            "numpy.linalg.det",
+            "np.linalg.eigvalsh",
+            "numpy.linalg.eigvalsh",
+            "np.linalg.norm",
+            "numpy.linalg.norm",
+        },
+    )
+
+
+def _function_candidate(node: ast.FunctionDef) -> bool:
+    return node.name.startswith(("check_", "assert_", "_assert_", "require_"))
+
+
+def _helper_like_function(node: ast.FunctionDef) -> bool:
+    argument_names = {argument.arg for argument in node.args.args}
+    threshold_names = {"actual", "bound", "expected", "got", "left", "right", "tol", "value"}
+    return node.name.startswith(("assert_", "_assert_", "require_")) or bool(
+        argument_names.intersection(threshold_names)
+    )
+
+
+def _body_raises_assertion(body: list[ast.stmt]) -> bool:
+    for statement in body:
+        if isinstance(statement, ast.Raise):
             return True
-        if any(_contains_np_max_abs(operand) for operand in operands):
-            return True
-        if is_bound_helper and any(
-            isinstance(operator, (ast.Lt, ast.LtE, ast.Gt, ast.GtE))
-            for operator in child.ops
-        ):
+        if isinstance(statement, ast.If) and _body_raises_assertion(statement.body):
             return True
     return False
 
 
-def _numeric_helper_name(name: str) -> bool:
-    lowered = name.lower()
-    return lowered.startswith(("assert", "_assert", "require")) and any(
-        marker in lowered
-        for marker in (
-            "close",
-            "near",
-            "leq",
-            "lt",
-            "less",
-            "bound",
-        )
-    )
+def _comparisons_protected_by_not(node: ast.AST) -> set[int]:
+    protected: set[int] = set()
+    for child in ast.walk(node):
+        if isinstance(child, ast.UnaryOp) and isinstance(child.op, ast.Not):
+            protected.update(
+                id(compare)
+                for compare in ast.walk(child.operand)
+                if isinstance(compare, ast.Compare)
+            )
+    return protected
 
 
-def _delegates_or_guards(node: ast.FunctionDef, segment: str) -> bool:
-    delegated_helpers = {
-        "_assert_close",
-        "_assert_array_close",
-        "_assert_leq",
-        "_assert_lt",
-        "assert_close",
-        "assert_array_close",
-        "assert_leq",
-        "assert_lt",
-        "check_utils.assert_close",
-        "check_utils.assert_array_close",
-        "check_utils.assert_leq",
-        "check_utils.assert_lt",
-    }
-    delegates = any(
-        isinstance(child, ast.Call)
-        and _call_name(child.func) in delegated_helpers
-        and _call_name(child.func) != node.name
-        for child in ast.walk(node)
-    )
-    return delegates or "isfinite" in segment or "assert_finite" in segment
+def _comparison_names(node: ast.Compare) -> set[str]:
+    result: set[str] = set()
+    for operand in [node.left, *node.comparators]:
+        result.update(child.id for child in ast.walk(operand) if isinstance(child, ast.Name))
+    return result
+
+
+def _nan_false_failure_compare(node: ast.Compare, function_node: ast.FunctionDef) -> bool:
+    if not any(isinstance(operator, (ast.Lt, ast.LtE, ast.Gt, ast.GtE)) for operator in node.ops):
+        return False
+    operands = [node.left, *node.comparators]
+    if any(_contains_float_like_call(operand) or _contains_np_max_abs(operand) for operand in operands):
+        return True
+    if _helper_like_function(function_node):
+        threshold_names = {"actual", "bound", "expected", "got", "left", "right", "tol", "value"}
+        return bool(_comparison_names(node).intersection(threshold_names))
+    return False
+
+
+def _has_nan_false_failure_predicate(node: ast.FunctionDef) -> bool:
+    for child in ast.walk(node):
+        if not isinstance(child, ast.If) or not _body_raises_assertion(child.body):
+            continue
+        protected = _comparisons_protected_by_not(child.test)
+        for compare in ast.walk(child.test):
+            if (
+                isinstance(compare, ast.Compare)
+                and id(compare) not in protected
+                and _nan_false_failure_compare(compare, node)
+            ):
+                return True
+    return False
+
+
+def _has_explicit_finiteness_guard(segment: str) -> bool:
+    return "isfinite" in segment or "is_finite" in segment or "assert_finite" in segment
 
 
 def unsafe_numeric_predicate_offenders(path_name: str, text: str) -> list[str]:
@@ -203,9 +279,9 @@ def unsafe_numeric_predicate_offenders(path_name: str, text: str) -> list[str]:
     tree = ast.parse(text)
     lines = text.splitlines(True)
     for node in ast.walk(tree):
-        if isinstance(node, ast.FunctionDef) and _numeric_helper_name(node.name):
+        if isinstance(node, ast.FunctionDef) and _function_candidate(node):
             segment = "".join(lines[node.lineno - 1 : node.end_lineno])
-            if _has_threshold_compare(node) and not _delegates_or_guards(node, segment):
+            if _has_nan_false_failure_predicate(node) and not _has_explicit_finiteness_guard(segment):
                 offenders.append(f"{path_name}:{node.lineno}:{node.name}")
         if isinstance(node, ast.Compare):
             operands = [node.left, *node.comparators]
@@ -217,6 +293,22 @@ def unsafe_numeric_predicate_offenders(path_name: str, text: str) -> list[str]:
 def check_audit_rejects_unsafe_predicate_shapes() -> None:
     bad_source = """
 import numpy as np
+
+def check_value(value, tol):
+    if abs(value) > tol:
+        raise AssertionError("bad")
+
+def check_budget(actual, bound):
+    if actual > bound:
+        raise AssertionError("bad")
+
+def check_bad_case(actual, bound):
+    if actual <= bound:
+        raise AssertionError("bad")
+
+def check_norm(actual):
+    if np.linalg.norm(actual) > 1e-12:
+        raise AssertionError("bad")
 
 def assert_near_integer(value, expected, tol):
     if abs(value - expected) > tol:
@@ -232,13 +324,32 @@ def check_direct_array(actual, expected):
 """
     offenders = unsafe_numeric_predicate_offenders("sample.py", bad_source)
     expected = {
-        "sample.py:4:assert_near_integer",
-        "sample.py:8:assert_leq",
-        "sample.py:13:direct-np-max-abs-threshold",
+        "sample.py:4:check_value",
+        "sample.py:8:check_budget",
+        "sample.py:12:check_bad_case",
+        "sample.py:16:check_norm",
+        "sample.py:20:assert_near_integer",
+        "sample.py:24:assert_leq",
+        "sample.py:28:check_direct_array",
+        "sample.py:29:direct-np-max-abs-threshold",
     }
     missing = expected.difference(offenders)
     if missing:
         raise AssertionError(f"audit missed unsafe predicate samples: {sorted(missing)!r}")
+
+    safe_source = """
+def check_safe_not_predicate(value, bound):
+    if not value < bound:
+        raise AssertionError("safe fail on nan")
+
+def assert_guarded(actual, bound):
+    assert_finite("actual", actual)
+    if actual > bound:
+        raise AssertionError("guarded")
+"""
+    safe_offenders = unsafe_numeric_predicate_offenders("safe.py", safe_source)
+    if safe_offenders:
+        raise AssertionError(f"audit rejected safe predicate samples: {safe_offenders!r}")
 
 
 def check_no_legacy_nan_accepting_helpers() -> None:

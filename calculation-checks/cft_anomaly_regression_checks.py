@@ -17,6 +17,8 @@ from __future__ import annotations
 
 from fractions import Fraction
 
+from check_utils import assert_close as _assert_close
+
 
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
@@ -110,10 +112,8 @@ def check_radial_pk_sign() -> None:
     a_l_in_units_of_a_r = i  # since A_r = -i A_L
     radial_pk_coeff = commutator_scale_from_pk_map * lorentzian_pk_coeff * a_l_in_units_of_a_r
 
-    if abs(radial_pk_coeff - (-2)) > 1e-12:
-        raise AssertionError(f"radial [P,K] coefficient failed: {radial_pk_coeff}")
-    if abs((-radial_pk_coeff) - 2) > 1e-12:
-        raise AssertionError(f"radial [K,P] coefficient failed: {-radial_pk_coeff}")
+    _assert_close("radial [P,K] coefficient", radial_pk_coeff, -2, tol=1e-12)
+    _assert_close("radial [K,P] coefficient", -radial_pk_coeff, 2, tol=1e-12)
 
 
 def main() -> None:

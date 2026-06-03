@@ -269,8 +269,7 @@ def check_large_u_asymptotics() -> None:
 
     leading_dual = 1j * a_val * mp.log(a_val * a_val) / mp.pi
     ratio = aD_period(u) / leading_dual
-    if abs(ratio - 1) > mp.mpf("0.05"):
-        raise AssertionError(f"aD logarithmic asymptotic ratio too far from 1: {ratio}")
+    assert_close("aD logarithmic asymptotic ratio", ratio, 1, tol=mp.mpf("0.05"))
 
 
 def check_monopole_vanishing() -> None:

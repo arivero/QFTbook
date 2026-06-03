@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from check_utils import assert_close as _assert_close
 from check_utils import assert_array_close as _assert_array_close
+from check_utils import assert_gt as _assert_gt
 from check_utils import assert_leq as _assert_leq
 
 import pathlib
@@ -353,8 +354,7 @@ def check_tffsa_spectral_flow_derivatives() -> None:
 
 def check_e8_ising_target_ratios() -> None:
     ratios = e8_ratios.mass_ratios()
-    if float(np.min(np.diff(ratios))) <= 0.0:
-        raise AssertionError("E8 magnetic-Ising target ratios must be strictly increasing")
+    _assert_gt("E8 magnetic-Ising target ratio gaps", float(np.min(np.diff(ratios))), 0.0)
     assert_close("E8 mass-ratio normalization", ratios[0], 1.0)
     assert_close("E8 golden mass ratio", ratios[1], (1.0 + np.sqrt(5.0)) / 2.0)
     assert_close("E8 Coxeter eigenvalue mass ratio", ratios[2], 2.0 * np.cos(np.pi / 30.0))
@@ -384,8 +384,7 @@ def check_thooft_quadratic_form_identity() -> None:
         for m in range(n + 1, K - 1):
             kernel_part += gamma * K * (v[n] - v[m]) ** 2 / float((n - m) ** 2)
     assert_close("DLCQ quadratic-form identity", left, mass_part + kernel_part)
-    if float(np.linalg.eigvalsh(matrix)[0]) <= 0.0:
-        raise AssertionError("finite 't Hooft matrix should be positive definite")
+    _assert_gt("finite 't Hooft matrix smallest eigenvalue", float(np.linalg.eigvalsh(matrix)[0]), 0.0)
 
 
 def check_thooft_large_K_fit_algebra() -> None:

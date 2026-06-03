@@ -10,6 +10,8 @@ from pathlib import Path
 
 import numpy as np
 
+from check_utils import assert_close as _assert_close
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "qft_scripts" / "z2_gauge_3d_metropolis.py"
@@ -58,8 +60,7 @@ def check_pairwise_detailed_balance() -> None:
         backward = proposal * min(1.0, math.exp(-beta * delta))
         lhs = math.exp(beta * z2.total_plaquette_score(links)) * forward
         rhs = math.exp(beta * z2.total_plaquette_score(target)) * backward
-        if abs(lhs - rhs) > 1.0e-10 * max(1.0, abs(lhs), abs(rhs)):
-            raise AssertionError("pairwise detailed balance failed for a Z2 gauge link flip")
+        _assert_close("pairwise detailed balance for a Z2 gauge link flip", lhs, rhs, rtol=1.0e-10)
         links = target
 
 
@@ -72,8 +73,7 @@ def check_gauge_invariance() -> None:
         raise AssertionError("plaquette action is not gauge invariant")
     loop_before = z2.wilson_loop_rectangle(links, 1, 2)
     loop_after = z2.wilson_loop_rectangle(transformed, 1, 2)
-    if abs(loop_before - loop_after) > 1.0e-12:
-        raise AssertionError("Wilson loop is not gauge invariant")
+    _assert_close("Wilson loop gauge invariance", loop_before, loop_after, tol=1.0e-12)
 
 
 def check_one_plaquette_loop_identity() -> None:
@@ -81,8 +81,7 @@ def check_one_plaquette_loop_identity() -> None:
     links = z2.random_links(5, rng)
     plaquette_mean = z2.total_plaquette_score(links) / float(3 * 5**3)
     loop_mean = z2.wilson_loop_rectangle(links, 1, 1)
-    if abs(plaquette_mean - loop_mean) > 1.0e-12:
-        raise AssertionError("1x1 Wilson loop average should equal plaquette average")
+    _assert_close("1x1 Wilson loop average equals plaquette average", plaquette_mean, loop_mean, tol=1.0e-12)
 
 
 def main() -> None:

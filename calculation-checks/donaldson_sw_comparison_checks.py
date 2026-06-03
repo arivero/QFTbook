@@ -5,6 +5,9 @@ from __future__ import annotations
 
 from fractions import Fraction
 
+from check_utils import assert_geq as _assert_geq
+from check_utils import assert_leq as _assert_leq
+
 
 def assert_equal(lhs, rhs, message: str) -> None:
     if lhs != rhs:
@@ -258,8 +261,7 @@ def check_furuta_examples() -> None:
         n = 2 * m
         b2 = 12 * n - 2
         sigma_value = -8 * n
-        if Fraction(b2) < Fraction(10, 8) * abs(sigma_value) + 2:
-            raise AssertionError("E(2m) violates Furuta arithmetic check")
+        _assert_geq("E(2m) Furuta arithmetic check", Fraction(b2), Fraction(10, 8) * abs(sigma_value) + 2)
         assert_equal(
             Fraction(-sigma_value, 8),
             Fraction(n),
@@ -540,10 +542,7 @@ def check_donaldson_sw_comparison_residual_budget() -> None:
             residual_norm,
         )
     )
-    if abs(discrepancy) > bound:
-        raise AssertionError(
-            f"Donaldson-SW residual norm budget failed: {abs(discrepancy)!r} > {bound!r}"
-        )
+    _assert_leq("Donaldson-SW residual norm budget", abs(discrepancy), bound)
 
     # If every comparison arrow is exact, the UV and SW functionals agree on
     # the finite test space.
