@@ -856,6 +856,12 @@ data.
   keeps this separate from the common Schwinger-hierarchy comparison, which is
   still the layer needed for polynomial moments, OS positivity, and Wightman
   reconstruction.
+- Proves the polynomial stationarity-by-truncation criterion: after the
+  bounded-Lipschitz invariant-law comparison, an unbounded polynomial
+  cylinder observable is stationary only if bounded Lipschitz truncations
+  converge in \(L^1\) at stochastic times \(0\) and \(t\).  This pins the
+  polynomial Schwinger-moment upgrade to uniform-integrability estimates
+  rather than to Markov stationarity alone.
 
 ## Figure Ledger
 
@@ -909,6 +915,12 @@ data maps.
   check verifies the rational arithmetic of the zero-time and finite-time
   defects and records that a nonvanishing finite-time residual cannot imply
   invariance.
+- 2026-06-03 SPDE polynomial-stationarity pass: added the truncation
+  criterion upgrading bounded-Lipschitz invariant-law comparison to a
+  polynomial cylinder observable only after \(L^1\) tails vanish at times
+  \(0\) and \(t\).  The companion check records the exact error budget
+  \(T_R(0)+T_R(t)+\operatorname{Lip}(\mathcal O_R)((a_t+1)\delta_n+
+  \epsilon_{n,t})\) and a sample uniform-integrability tail decrease.
 - 2026-05-25 issue #558 pass: the dynamic \(\Phi^4_3\) theorem boundary now
   states the four requested components explicitly: local cutoff
   well-posedness, renormalized convergence with \(C_{1,\epsilon}\) and

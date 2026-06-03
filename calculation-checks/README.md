@@ -652,7 +652,8 @@ Current checks:
   \(\Phi^4_3\), the Young-exponent arithmetic in the smooth DPD energy
   estimate, a finite Markov-chain invariant-measure identity, and the
   bounded-Lipschitz defect arithmetic for the coupled stationary-law
-  comparison, plus the coarse/fine dyadic
+  comparison and the polynomial-observable truncation budget for upgrading
+  that comparison under uniform integrability, plus the coarse/fine dyadic
   exponent arithmetic in the compact reconstruction proof and the
   homogeneity/sign/combinatorial checks for the dynamic \(\Phi^4_3\) BPHZ
   local counterterm calculation, together with exact arithmetic for the

@@ -11832,6 +11832,72 @@ to zero for every bounded Lipschitz \(f\), then
 Polish metric space, so \(P_t^\ast\mu_\ast=\mu_\ast\).
 \end{proof}
 
+\begin{lemma}[Polynomial stationarity by truncation]
+\label{lem:spde-polynomial-stationarity-truncation}
+Keep the hypotheses and notation of
+Lemma~\ref{lem:spde-coupled-stationary-law-comparison}.  Let
+\(\mathcal O:E\to\mathbb C\) be a measurable cylinder observable.  Suppose
+there are bounded Lipschitz functions \(\mathcal O_R:E\to\mathbb C\),
+\(R\geq1\), such that
+\[
+  T_R(t):=
+  \mathbb E|\mathcal O(U_\ast(t))-\mathcal O_R(U_\ast(t))|,
+  \qquad
+  T_R(0):=
+  \mathbb E|\mathcal O(U_\ast(0))-\mathcal O_R(U_\ast(0))|
+\]
+tend to zero as \(R\to\infty\).  Then
+\begin{equation}
+\begin{aligned}
+  \left|
+    \mathbb E\mathcal O(U_\ast(t))
+    -\mathbb E\mathcal O(U_\ast(0))
+  \right|
+  &\leq
+  T_R(t)+T_R(0)  \\
+  &\quad+
+  \operatorname{Lip}(\mathcal O_R)
+  \bigl((a_t+1)\delta_n+\varepsilon_{n,t}\bigr).
+\end{aligned}
+  \label{eq:spde-polynomial-stationarity-truncation-bound}
+\end{equation}
+Consequently, if for each fixed \(R\) the comparison defect
+\((a_t+1)\delta_n+\varepsilon_{n,t}\) tends to zero and the tails
+\(T_R(t)+T_R(0)\) tend to zero, then
+\[
+  \mathbb E\mathcal O(U_\ast(t))
+  =
+  \mathbb E\mathcal O(U_\ast(0)).
+\]
+For polynomial cylinder observables this reduces stationarity to tail
+estimates: the truncations \(\mathcal O_R\) must converge in \(L^1\)
+at times \(0\) and \(t\).
+\end{lemma}
+
+\begin{proof}
+Insert \(\mathcal O_R\) and use the triangle inequality:
+\[
+\begin{aligned}
+  \left|
+    \mathbb E\mathcal O(U_\ast(t))
+    -\mathbb E\mathcal O(U_\ast(0))
+  \right|
+  &\leq
+  T_R(t)+T_R(0) \\
+  &\quad+
+  \left|
+    \mathbb E\mathcal O_R(U_\ast(t))
+    -\mathbb E\mathcal O_R(U_\ast(0))
+  \right|.
+\end{aligned}
+\]
+The last term is controlled by
+Lemma~\ref{lem:spde-coupled-stationary-law-comparison}, applied to the
+bounded Lipschitz test \(\mathcal O_R\).  This proves
+\eqref{eq:spde-polynomial-stationarity-truncation-bound}.  Taking \(n\to\infty\)
+at fixed \(R\), then \(R\to\infty\), proves the equality.
+\end{proof}
+
 In the renormalized \(\Phi^4_3\) problem, Lemma
 \ref{lem:spde-coupled-stationary-law-comparison} is the invariant-law layer
 following the fixed-point-sector comparison.  A stationary cutoff solution
@@ -11839,9 +11905,11 @@ started from \(\mu_n\) supplies \(U_n(0)\) and \(U_n(t)\).  The random-model
 and fixed-point estimates must then be strengthened to a coupling of the
 time-zero and time-\(t\) fields in the topology \(E\) used for the Markov
 process.  This proves invariance of a limiting SPDE law only for bounded
-Lipschitz tests on \(E\).  The polynomial Schwinger moments, reflection
-positivity, and corrected OS-II growth needed for QFT reconstruction still
-come from the hierarchy comparison in
+Lipschitz tests on \(E\).  Lemma~\ref{lem:spde-polynomial-stationarity-truncation}
+records the additional truncation step needed before an unbounded polynomial
+cylinder observable can be treated as stationary.  The polynomial Schwinger
+moments, reflection positivity, and corrected OS-II growth needed for QFT
+reconstruction still come from the hierarchy comparison in
 Construction~\ref{con:spde-common-schwinger-hierarchy-comparison}.
 
 \begin{quotedtheorem}[Renormalized dynamic \(\Phi^4_3\) theorem package]

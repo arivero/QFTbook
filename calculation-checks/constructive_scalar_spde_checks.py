@@ -1151,6 +1151,43 @@ def check_stationary_law_coupling_invariance_defect():
         raise AssertionError("stationary-law nonvanishing defect not detected")
 
 
+def check_stationary_law_polynomial_truncation_arithmetic():
+    # Lemma spde-polynomial-stationarity-truncation separates a bounded
+    # Lipschitz comparison at truncation radius R from the two unbounded
+    # polynomial tails at times 0 and t.
+    tail_zero = Fraction(1, 80)
+    tail_time = Fraction(1, 70)
+    lipschitz_truncation = Fraction(9)
+    delta = Fraction(1, 100)
+    a_t = Fraction(2)
+    epsilon_t = Fraction(1, 200)
+    bounded_defect = lipschitz_truncation * ((a_t + 1) * delta + epsilon_t)
+    total_bound = tail_zero + tail_time + bounded_defect
+    assert_equal(
+        bounded_defect,
+        Fraction(63, 200),
+        "polynomial stationarity bounded truncation defect",
+    )
+    assert_equal(
+        total_bound,
+        Fraction(957, 2800),
+        "polynomial stationarity total truncation budget",
+    )
+
+    # Uniform L^(1+eta) control gives a tail bound by de la Vallee-Poussin:
+    # E[|O| 1_{|O|>R}] <= M / R^eta.  The exact samples record the monotone
+    # disappearance of the tails before the fixed-R bounded comparison is used.
+    moment_bound = Fraction(5)
+    eta = 2
+    previous = None
+    for radius in (2, 4, 8, 16):
+        tail = moment_bound / (radius**eta)
+        if previous is not None and not tail < previous:
+            raise AssertionError("polynomial stationarity tail did not decrease")
+        previous = tail
+    assert_equal(previous, Fraction(5, 256), "polynomial stationarity final sample tail")
+
+
 def check_reconstruction_wavelet_scale_powers():
     # The compact reconstruction proof uses two dyadic sums.  For coarse
     # scales l >= delta the factor is delta^r l^(gamma-r), which sums to
@@ -2558,6 +2595,7 @@ def main():
     check_dpd_besov_energy_compatibility_arithmetic()
     check_invariant_measure_limit_identity()
     check_stationary_law_coupling_invariance_defect()
+    check_stationary_law_polynomial_truncation_arithmetic()
     check_reconstruction_wavelet_scale_powers()
     check_phi4_three_spde_bphz_counterterm_combinatorics()
     check_phi4_three_negative_sector_coordinate_chart()
@@ -2592,7 +2630,7 @@ def main():
     check_spde_os_reconstruction_growth_arithmetic()
     check_spde_constructive_hierarchy_transfer_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":
