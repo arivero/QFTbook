@@ -1988,6 +1988,47 @@ by a given unitary boundary RG flow.  It does not determine which conformal
 boundary condition is reached, nor does it supply the annulus or
 Cardy--Lewellen sewing data.
 
+\paragraph{Chapter-scale proof-status ledger.}
+The examples in this chapter should now be read as a dependency chain, not as
+a collection of unrelated BCFT cells.  A genuine construction of a boundary
+conformal field theory has to pass through the following layers.
+\begin{enumerate}
+  \item The closed chiral input must be fixed first: either a rational
+  semisimple chiral theory with modular functor and fusing data, or a
+  nonrational direct-integral theory with declared test spaces and
+  Plancherel measure.
+  \item Boundary labels must then be promoted to open-channel Hilbert spaces
+  or spectral measures, with common domains for boundary-condition-changing
+  fields and a reflection-positive two-point pairing.
+  \item Local coordinates must be compatible: annulus multiplicities or
+  spectral measures, disk classifying coordinates, boundary OPE products,
+  bulk-boundary maps, and two-point pairings must be projections of the same
+  boundary structure.
+  \item Local moves must be checked in the same normalization.  In the
+  rational case these include open/closed annulus exchange, boundary OPE
+  associativity, disk classifying multiplication, and Frobenius/module
+  cutting moves.  In the nonrational case they also include contour choices,
+  residue summands, direct-integral convergence, and determinant-line
+  bookkeeping.
+  \item All-surface sewing is the final analytic step: the local moves must
+  generate the changes of bordered-surface decomposition, their defects must
+  telescope as in
+  Proposition~\ref{prop:bcft-finite-move-defect-budget}, and closed-loop
+  transports must be trivial after the anomaly line has been included.
+\end{enumerate}
+The diagonal Ising example closes the first few rational finite checks for a
+specific modular tensor category and boundary basis.  The pointed \(G/H\)
+laboratory goes further by showing that annulus matrices, quotient Fourier
+data, stabilizer idempotents, boundary OPEs, and two-point pairings are
+compatible shadows of one module-category mechanism.  The Liouville block
+closes only local nonrational coordinates: hyperbolic FZZT/ZZ identities,
+the even-parameter Plancherel quotient, and pole-crossing residue
+bookkeeping.  None of these examples proves the final generated all-surface
+sewing theorem.  Conversely, the boundary-entropy gradient result uses
+renormalized boundary RG and positivity data once a unitary boundary QFT
+exists; it is not a replacement for constructing the BCFT sewing maps or for
+identifying the infrared boundary condition.
+
 Finally, two-dimensional BCFT fits into the broader boundary/defect language
 of Chapter~\ref{ch:global-boundaries-and-defects}.  A topological line
 defect can end on a boundary only when its endpoint is a specified boundary

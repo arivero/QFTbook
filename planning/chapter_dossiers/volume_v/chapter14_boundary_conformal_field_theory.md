@@ -24,6 +24,10 @@
   boundary-OPE, disk classifying, bulk-boundary, Frobenius/module, contour, and
   anomaly-line moves control all-surface decomposition independence only after
   their defects telescope along paths in the move graph.
+- Adds an end-of-chapter proof-status ledger that reads the Ising diagonal
+  example, pointed \(G/H\) rational laboratory, Liouville/FZZT nonrational
+  block, and boundary-entropy gradient result as different initial segments of
+  one BCFT construction dependency chain rather than as independent local cells.
 - States the conformal boundary condition `T = Tbar` on the upper half-plane.
 - Proves that stress-tensor gluing preserves one Virasoro algebra and yields
   the closed-channel condition `(L_n - Lbar_{-n})|B> = 0`.
@@ -264,6 +268,13 @@
     later sewing transports.  Zero local defects plus closed-loop compatibility
     gives path independence on a connected move graph; analytic construction of
     the actual infinite-dimensional move graph remains a theorem boundary.
+24. A full BCFT construction has a strict dependency order: closed/chiral
+    input, boundary Hilbert or spectral data, compatible annulus/disk/OPE/
+    two-point coordinates, local sewing moves in a common normalization, and
+    finally generated all-surface sewing.  The Ising, pointed rational, and
+    Liouville examples close different early layers of this chain; the
+    boundary-entropy gradient constrains RG flows after a unitary boundary QFT
+    exists and does not replace the sewing construction.
 
 ## Figures
 
@@ -451,3 +462,11 @@
   checks would have to telescope to prove all-surface decomposition
   independence, while keeping the analytic generated-move theorem as an open
   boundary.
+- 2026-06-03 end-to-end BCFT coherence pass: after a chapter-flow read of the
+  2015-line BCFT chapter, added a closing proof-status ledger.  The new ledger
+  separates closed/chiral input, boundary Hilbert or spectral data, compatible
+  local coordinates, local move checks, and generated all-surface sewing; it
+  explicitly places the diagonal Ising cell, pointed \(G/H\) laboratory,
+  Liouville/FZZT block, and boundary-entropy gradient proposition in that
+  dependency chain rather than treating them as cumulative proof of full
+  analytic BCFT sewing.
