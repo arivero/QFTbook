@@ -5935,6 +5935,139 @@ confinement in zero-temperature Yang--Mills.  Its output is the conditional
 theta-dependence and zero-mode-saturated amplitude data above.
 \end{controlledapproximation}
 
+\begin{proposition}[Zero-mode overlap determinant in an instanton ensemble]
+\label{prop:instanton-ensemble-zero-mode-overlap}
+Fix a finite-volume, finite-regulator vectorlike \(SU(N_c)\) QCD background
+which contains \(n_+\) instanton cores and \(n_-\) anti-instanton cores in a
+window where the individual zero modes are identifiable and have been
+orthonormalized.  Let \(\psi_I^+\), \(I=1,\ldots,n_+\), denote the isolated
+zero-mode basis in the chirality sector carried by the instanton cores and let
+\(\psi_{\bar J}^-\), \(\bar J=1,\ldots,n_-\), denote the opposite-chirality
+basis carried by the anti-instanton cores.  The leading overlap matrix is
+\begin{equation}
+  T_{I\bar J}
+  =
+  \bigl\langle
+    \psi_I^+,\mathcal D_E[A_{\rm ens}]\psi_{\bar J}^-
+  \bigr\rangle ,
+  \qquad
+  T:\mathbb C^{n_-}\longrightarrow\mathbb C^{n_+},
+  \label{eq:instanton-ensemble-overlap-matrix}
+\end{equation}
+where \(A_{\rm ens}\) is the chosen multi-lump gauge field.  After the
+nonzero-mode determinant and source-convention factors have been separated as
+in Proposition~\ref{prop:instanton-fermion-determinant-zero-mode-factorization},
+the one-flavor massive Dirac operator restricted to this near-zero-mode
+subspace is
+\begin{equation}
+  \mathcal D_{\rm zm}(m)
+  =
+  \begin{pmatrix}
+    m\,\mathbf 1_{n_+} & T\\
+    -T^\dagger & m\,\mathbf 1_{n_-}
+  \end{pmatrix}
+  +E_{\rm zm},
+  \label{eq:instanton-ensemble-zero-mode-block}
+\end{equation}
+where \(E_{\rm zm}\) collects Gram errors, regulator chirality-breaking terms,
+and Schur-complement terms from the nonzero-mode sector.  If
+\(s_1,\ldots,s_r\) are the singular values of \(T\),
+\(r=\min(n_+,n_-)\), then in the leading block \(E_{\rm zm}=0\),
+\begin{equation}
+  \det\mathcal D_{\rm zm}(m)
+  =
+  m^{|n_+-n_-|}
+  \prod_{\alpha=1}^{r}\left(m^2+s_\alpha^2\right),
+  \label{eq:instanton-ensemble-overlap-determinant}
+\end{equation}
+and
+\begin{equation}
+  \operatorname{Tr}\mathcal D_{\rm zm}(m)^{-1}
+  =
+  \frac{|n_+-n_-|}{m}
+  +
+  2m\sum_{\alpha=1}^{r}\frac1{m^2+s_\alpha^2}.
+  \label{eq:instanton-ensemble-overlap-resolvent}
+\end{equation}
+For \(N_f\) Dirac flavors with masses \(m_f\), the zero-mode part of the
+fermion determinant is the product of
+\eqref{eq:instanton-ensemble-overlap-determinant} over \(f\).  Thus a sector
+with \(n_+\ne n_-\) has exact unpaired zero modes in the massless limit, while a
+balanced instanton--anti-instanton ensemble can acquire small Dirac eigenvalues
+from the singular values of \(T\).
+\end{proposition}
+
+\begin{proof}
+The massless Euclidean Dirac operator anticommutes with \(\gamma_5\), so in a
+chiral zero-mode basis it has only off-diagonal matrix elements at leading
+order.  The choice of signs in \eqref{eq:instanton-ensemble-zero-mode-block} is
+the anti-Hermitian Euclidean convention; replacing it by an equivalent
+Hermitian convention changes phases, not the positive factors below.  Take a
+singular-value decomposition \(T=U\Sigma V^\dagger\).  The unitary change of
+basis \(\operatorname{diag}(U,V)\) preserves the determinant and decomposes the
+block with \(E_{\rm zm}=0\) into \(r\) two-dimensional blocks
+\[
+  \begin{pmatrix}m&s_\alpha\\ -s_\alpha&m\end{pmatrix}
+\]
+plus \(|n_+-n_-|\) unpaired one-dimensional \(m\)-blocks.  Each paired block
+has determinant \(m^2+s_\alpha^2\) and inverse trace
+\(2m/(m^2+s_\alpha^2)\); each unpaired block contributes \(m\) to the
+determinant and \(1/m\) to the trace.  Multiplying these factors gives
+\eqref{eq:instanton-ensemble-overlap-determinant} and
+\eqref{eq:instanton-ensemble-overlap-resolvent}.  Different flavors have
+independent Grassmann coefficient spaces, so their finite determinants
+multiply.
+\end{proof}
+
+\begin{controlledapproximation}[Instanton-liquid spectral-density criterion]
+\label{ca:instanton-liquid-spectral-density-criterion}
+The determinant \eqref{eq:instanton-ensemble-overlap-determinant} is the finite
+linear-algebra core of the instanton-liquid mechanism
+\cite{DiakonovPetrov1986InstantonVacuum}.  It is not a statement about the
+instanton moduli space by itself.  A physical ensemble measure must also include
+the bosonic action, collective-coordinate Jacobians, pure-gauge and fermionic
+nonzero-mode determinants, instanton--anti-instanton interactions, regulator
+remainders \(E_{\rm zm}\), and the determinant reweighting from the overlap
+matrix.  Suppose that, after all those weights are included, the positive
+singular-value density
+\begin{equation}
+  \rho_{\rm zm,\mathcal V_4}(s)
+  =
+  \frac1{\mathcal V_4}
+  \left\langle
+    \sum_{\alpha}\delta(s-s_\alpha)
+  \right\rangle_{\rm ens}
+  \label{eq:instanton-liquid-singular-density}
+\end{equation}
+has a thermodynamic limit \(\rho_{\rm zm}(s)\) continuous at \(s=0\), and that
+the unpaired topological zero-mode density
+\(|n_+-n_-|/\mathcal V_4\) vanishes in the same limit.  Then the zero-mode-zone
+contribution to the scalar-source derivative has the Banks--Casher form
+\begin{equation}
+  \Sigma_{\rm zm}
+  =
+  \lim_{m\downarrow0}
+  \int_0^\infty
+  \frac{2m\,\rho_{\rm zm}(s)}{m^2+s^2}\,\dd s
+  =
+  \pi\rho_{\rm zm}(0),
+  \label{eq:instanton-liquid-banks-casher-criterion}
+\end{equation}
+in the normalization of
+\eqref{eq:qcd-phase-sigma-definition}--\eqref{eq:qcd-phase-banks-casher}.
+
+This is a criterion, not a derivation of the QCD chiral condensate.  The hard
+physics is the generation and control of a finite density of small singular
+values of the overlap matrix after the fluctuation determinants and interactions
+are included.  A dilute Poisson gas with finite isolated activities gives
+theta-cumulants as in \eqref{eq:dilute-instanton-gas-cumulants}; it does not by
+itself prove \(\rho_{\rm zm}(0)>0\).  Conversely, if a controlled ensemble has a
+nonzero near-zero singular-value density, then the instanton zero modes have
+become physical near-zero Dirac eigenstates, and the connection to chiral
+symmetry breaking is the spectral statement above rather than another
+collective-coordinate volume formula.
+\end{controlledapproximation}
+
 For the electroweak \(SU(2)_L\) gauge theory, the same zero-mode logic applies
 to every left-handed doublet.  For one generation there are three colored
 quark doublets and one lepton doublet, hence four \(SU(2)_L\) doublet zero

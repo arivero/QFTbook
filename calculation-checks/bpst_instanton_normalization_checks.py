@@ -69,6 +69,10 @@ relations
     the dilute instanton gas gives the Poisson/Skellam theta cumulants
     chi_top=2 zeta and b2=-1/12 only after the one-instanton amplitude is
     promoted to a finite dilute activity
+    a finite instanton--anti-instanton ensemble has a rectangular zero-mode
+    overlap matrix T whose singular values give the massive determinant
+    m^|n_+-n_-| prod_alpha(m^2+s_alpha^2), the unpaired zero-mode pole, and
+    the Banks--Casher kernel criterion for an instanton-liquid zero-mode zone
     the physical instanton correlator contribution is the top Berezin
     coefficient after operator, mass/source, and zero-mode factors are
     restricted to the instanton zero-mode subspace, giving the full flavor
@@ -1865,6 +1869,123 @@ def check_dilute_instanton_gas_theta_cumulants() -> None:
     )
 
 
+def check_instanton_ensemble_zero_mode_overlap_spectrum() -> None:
+    def zero_matrix(rows: int, cols: int) -> list[list[Fraction]]:
+        return [[Fraction(0) for _ in range(cols)] for _ in range(rows)]
+
+    def identity_scaled(size: int, scalar: Fraction) -> list[list[Fraction]]:
+        return [
+            [scalar if row == col else Fraction(0) for col in range(size)]
+            for row in range(size)
+        ]
+
+    def diagonal_overlap(
+        n_plus: int,
+        n_minus: int,
+        singular_values: list[Fraction],
+    ) -> list[list[Fraction]]:
+        overlap = zero_matrix(n_plus, n_minus)
+        for index, value in enumerate(singular_values):
+            overlap[index][index] = value
+        return overlap
+
+    def negative_transpose(matrix: list[list[Fraction]]) -> list[list[Fraction]]:
+        if not matrix:
+            return []
+        return [
+            [-matrix[row][col] for row in range(len(matrix))]
+            for col in range(len(matrix[0]))
+        ]
+
+    def zero_mode_block_determinant(
+        n_plus: int,
+        n_minus: int,
+        singular_values: list[Fraction],
+        mass: Fraction,
+    ) -> Fraction:
+        overlap = diagonal_overlap(n_plus, n_minus, singular_values)
+        block = block_2x2_fraction(
+            identity_scaled(n_plus, mass),
+            overlap,
+            negative_transpose(overlap),
+            identity_scaled(n_minus, mass),
+        )
+        return det_fraction(block)
+
+    n_plus = 2
+    n_minus = 3
+    singular_values = [Fraction(2), Fraction(3)]
+    mass = Fraction(5)
+    expected_determinant = (
+        mass ** abs(n_plus - n_minus)
+        * product_fraction([mass * mass + s * s for s in singular_values])
+    )
+    assert_equal(
+        "rectangular instanton overlap determinant",
+        zero_mode_block_determinant(n_plus, n_minus, singular_values, mass),
+        expected_determinant,
+    )
+    assert_equal(
+        "massless mismatch leaves unsaturated topological zero mode",
+        zero_mode_block_determinant(n_plus, n_minus, singular_values, Fraction(0)),
+        Fraction(0),
+    )
+    assert_equal(
+        "balanced massless overlap determinant is product of singular squares",
+        zero_mode_block_determinant(2, 2, singular_values, Fraction(0)),
+        product_fraction([s * s for s in singular_values]),
+    )
+
+    resolvent_trace = (
+        Fraction(abs(n_plus - n_minus), 1) / mass
+        + sum(2 * mass / (mass * mass + s * s) for s in singular_values)
+    )
+    assert_equal(
+        "zero-mode overlap resolvent unpaired pole plus paired kernel",
+        resolvent_trace,
+        Fraction(1, 5) + Fraction(10, 29) + Fraction(5, 17),
+    )
+
+    flavor_masses = [Fraction(5), Fraction(7), Fraction(11)]
+    multiflavor_determinant = product_fraction(
+        [
+            m ** abs(n_plus - n_minus)
+            * product_fraction([m * m + s * s for s in singular_values])
+            for m in flavor_masses
+        ]
+    )
+    assert_equal(
+        "multi-flavor instanton-liquid overlap determinants multiply",
+        multiflavor_determinant,
+        zero_mode_block_determinant(n_plus, n_minus, singular_values, Fraction(5))
+        * zero_mode_block_determinant(n_plus, n_minus, singular_values, Fraction(7))
+        * zero_mode_block_determinant(n_plus, n_minus, singular_values, Fraction(11)),
+    )
+
+    # The finite-volume trace formula behind Banks--Casher separates unpaired
+    # topological zero modes from the paired near-zero singular values.  The
+    # former must have zero density before the chiral limit.
+    mismatch = Fraction(abs(n_plus - n_minus))
+    volumes = [Fraction(10), Fraction(100), Fraction(1000)]
+    mismatch_densities = [mismatch / volume for volume in volumes]
+    assert_equal(
+        "topological mismatch density decreases with volume",
+        mismatch_densities[0] > mismatch_densities[1] > mismatch_densities[2],
+        True,
+    )
+
+    rho0 = 0.37
+    cutoff = 11.0
+    small_mass = 1.0e-10
+    constant_density_kernel = 2 * rho0 * math.atan(cutoff / small_mass)
+    assert_close(
+        "instanton-liquid constant-density Banks-Casher kernel limit",
+        constant_density_kernel,
+        math.pi * rho0,
+        tolerance=1e-10,
+    )
+
+
 def check_mass_saturated_vacuum_activity_size_integral() -> None:
     n_c = 3
     n_f = 3
@@ -2013,6 +2134,7 @@ def main() -> None:
     check_instanton_amplitude_error_budget()
     check_hard_momentum_instanton_size_window()
     check_dilute_instanton_gas_theta_cumulants()
+    check_instanton_ensemble_zero_mode_overlap_spectrum()
     check_mass_saturated_vacuum_activity_size_integral()
     check_uhlenbeck_boundary_face_budget()
     check_k_one_adhm_dimension_and_cone_power()

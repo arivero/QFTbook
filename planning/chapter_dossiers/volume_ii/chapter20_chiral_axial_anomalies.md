@@ -585,6 +585,18 @@
   explicitly states the failure modes: unsaturated massless zero modes,
   infrared-divergent size integrals, uncontrolled small-instanton boundaries,
   and non-negligible instanton interactions.
+- The instanton-liquid bridge is now formulated as finite zero-mode overlap
+  algebra rather than moduli geometry.  For \(n_+\) instantons and \(n_-\)
+  anti-instantons, the chiral near-zero-mode block contains a rectangular
+  overlap matrix \(T\) and gives
+  \(m^{|n_+-n_-|}\prod_\alpha(m^2+s_\alpha^2)\), plus the resolvent
+  \(|n_+-n_-|/m+2m\sum_\alpha(m^2+s_\alpha^2)^{-1}\).  The follow-on
+  instanton-liquid statement is explicitly conditional: only after the ensemble
+  measure, fluctuation determinants, interactions, determinant reweighting, and
+  regulator remainders are controlled does a nonzero singular-value density
+  \(\rho_{\rm zm}(0)\) imply \(\Sigma_{\rm zm}=\pi\rho_{\rm zm}(0)\) by the
+  Banks--Casher kernel.  A dilute Poisson gas is not claimed to prove this
+  density.
 - A one-instanton boundary exponent datum records the small-\(\rho\)
   behavior of a specified scalar insertion datum \(\mathcal X\) in the form
   \(\rho^{b_0+\beta_{\mathcal X}-5}\).  The local Uhlenbeck-boundary
