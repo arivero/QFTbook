@@ -5,6 +5,10 @@
 - Role in the monograph: begin the thermal and hydrodynamic volume from
   equilibrium states as algebraic real-time objects, not from a finite-volume
   trace formula.
+- Cross-volume role: front-load the statistical-mechanics-to-QFT absorption
+  route, separating finite identities and numerical evidence from continuum
+  QFT claims until the observable map, limiting topology, positivity/locality
+  conditions, and reconstruction or comparison target are declared.
 - Immediate predecessor: spectral theory, scattering, stress-tensor
   normalization, and local current material from earlier volumes.
 - Immediate successor: finite-temperature path integrals and real-time
@@ -14,6 +18,10 @@
 
 - \(C^\ast\)-dynamical system, analytic element, and analytic core.
 - Gaussian-smearing lemma proving norm-dense entire analytic elements.
+- Statistical-mechanics absorption route map across equilibrium KMS,
+  Kubo/hydrodynamic response, nonequilibrium stochastic/SK representations,
+  finite-locality/topological laboratories, and constructive/numerical
+  continuum evidence.
 - KMS state as a bounded strip-analytic boundary condition.
 - Finite Gibbs trace proof of the KMS condition by explicit energy-basis
   calculation.
@@ -54,19 +62,22 @@
 
 1. Thermal equilibrium is a condition on a state and a declared time
    evolution.
-2. Entire analytic elements are norm dense by Gaussian smearing.
-3. Finite-volume Gibbs traces satisfy KMS by a direct energy-basis proof.
-4. Detailed balance follows from KMS and is verified explicitly by
+2. Statistical-mechanics inputs become QFT claims only after observables,
+   regulators, limits, topology, positivity/locality conditions, and a
+   reconstruction or comparison framework are specified.
+3. Entire analytic elements are norm dense by Gaussian smearing.
+4. Finite-volume Gibbs traces satisfy KMS by a direct energy-basis proof.
+5. Detailed balance follows from KMS and is verified explicitly by
    finite-volume spectral sums.
-5. The spectral density reconstructs greater/lesser functions only after
+6. The spectral density reconstructs greater/lesser functions only after
    zero-frequency singular sectors are separated.
-6. Bosonic fluctuation--dissipation is an algebraic consequence of detailed
+7. Bosonic fluctuation--dissipation is an algebraic consequence of detailed
    balance.
-7. Retarded response follows from the first-order source expansion and is
+8. Retarded response follows from the first-order source expansion and is
    causal by construction.
-8. Transport coefficients are QFT correlator limits only when the relevant
+9. Transport coefficients are QFT correlator limits only when the relevant
    zero-frequency limits exist.
-9. Hydrodynamic fields arise from conserved-density state families and
+10. Hydrodynamic fields arise from conserved-density state families and
    constitutive relations, not from new microscopic local operators.
 
 ## Figures
@@ -82,3 +93,13 @@
   Gibbs-trace KMS boundary condition, detailed balance, spectral
   reconstruction, bosonic fluctuation--dissipation, and the retarded-sign
   convention in the shear Kubo formula.
+
+## Recent Architectural Passes
+
+- 2026-06-03 issue #703 pass: added the opening statistical-mechanics
+  absorption route map.  The map coordinates Volume X equilibrium, transport,
+  hydrodynamic, and nonequilibrium chapters with Volume XI constructive,
+  scaling-window, rigorous-RG, stochastic-quantization, and numerical-evidence
+  chapters, and records the theorem-boundary rule that finite cells or
+  numerical evidence do not become continuum QFT claims without declared
+  limits, topology, locality/positivity, and reconstruction/comparison data.
