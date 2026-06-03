@@ -8051,6 +8051,49 @@ detector definition in the physical Hilbert space, and the short-distance
 limits are computed by matching the detector product onto operators whose
 renormalization group evolution is controlled by QCD anomalous dimensions.
 
+\paragraph{Proof-status architecture for the EEC program.}
+The exact detector identities above and the endpoint formulae below live at
+different levels of the argument.  First, the physical detector layer starts
+from the stress-tensor flux limit or, on the outgoing scattering
+representation, from multiplication by the calorimetric measure.  This layer
+fixes positivity, total-energy moments, diagonal contact strata, multipole
+positivity, and the distinction between ensemble cumulants and eventwise
+contacts.  Second, the conformal fixed-point layer is the light-ray
+operator framework of Chapter~\ref{ch:cft-light-ray-energy-correlators}: it
+supplies representation-theoretic homogeneity, finite light-ray charts,
+diagonal-contact extensions, and endpoint pushforwards only under the
+Lorentzian analyticity and growth hypotheses stated there.  Third, the QCD
+small-angle layer replaces fixed-point light-ray data by renormalized
+Wilson-line/light-ray operator coordinates with ultraviolet and rapidity
+subtractions, protected moment rows, finite chart changes, and projected
+curvature or omitted-channel remainders.  Fourth, the perturbative endpoint
+layer computes coefficients, anomalous dimensions, contact counterterms, and
+matching functions in one declared scheme; the tree-level collinear
+coefficients and cusp-log flatness check are tests of this layer, not the
+full all-order light-ray OPE/mixing theorem.  Finally, the observable
+prediction layer glues the separated bulk, small-angle endpoint,
+back-to-back endpoint, and explicit endpoint atoms so that the detector
+moment identities remain true.
+
+Thus the dependency chain is
+\[
+  \begin{aligned}
+  \text{detector measure and contacts}
+  &\Longrightarrow
+  \text{CFT or QCD light-ray endpoint chart} \\
+  &\Longrightarrow
+  \text{renormalized mixing/factorization calculation} \\
+  &\Longrightarrow
+  \text{endpoint gluing and observable prediction}.
+  \end{aligned}
+\]
+Skipping any arrow changes the mathematical claim.  A separated-angle
+fixed-order distribution without contact data is not the normalized detector
+observable; a finite retained light-ray block without a curvature or
+omitted-channel estimate is not an endpoint theorem; and a resummed endpoint
+formula without the gluing and moment ledger is not yet a prediction for the
+full normalized EEC on \([-1,1]\).
+
 For \(0<\chi<\pi\), the EEC is a separated-angle distribution.  Two endpoint
 regions have different expansions.  In the small-angle region set
 \[

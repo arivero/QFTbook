@@ -485,6 +485,15 @@ The chapter must define and derive:
       the omitted-operator channel.  It must be bounded as a remainder or
       removed by enlarging the light-ray/contact-coordinate chart; finite
       retained coordinate changes conjugate this curvature and cannot erase it.
+19bg. The EEC program is now organized by a proof-status ladder: detector
+      measure/contact algebra, CFT fixed-point light-ray charts, QCD
+      renormalized light-ray endpoint charts, perturbative endpoint
+      mixing/factorization calculations, and final endpoint gluing to the full
+      normalized detector observable.  The ladder states explicitly that exact
+      detector identities, finite light-ray charts, tree-level endpoint
+      coefficients, and cusp-log flatness checks are separate layers and do not
+      by themselves prove the all-order light-ray OPE/mixing theorem or the full
+      endpoint-matched EEC prediction.
 19c. In the back-to-back endpoint, the impact-parameter factorization datum
      yields the leading fixed-coupling Sudakov factor
      \(W_{\rm LL}(b,Q)=W(b,\mu_b)
@@ -788,6 +797,13 @@ The chapter must define and derive:
   full detector measure has nonnegative \(M_0,M_1,M_2\), while deleting the
   coincident detector atom makes the first separated Legendre moment negative
   in a center-of-mass event.
+- 2026-06-03 issue #519 architecture pass: added a proof-status ladder at the
+  start of the light-ray endpoint subsection, separating detector
+  measure/contact identities, CFT light-ray charts, QCD renormalized endpoint
+  charts, perturbative mixing/factorization calculations, and endpoint gluing.
+  The ladder records that the many finite detector and finite-chart checks are
+  inputs to the modern EEC program rather than a substitute for the all-order
+  light-ray OPE/mixing theorem or complete endpoint-matched prediction.
 - 2026-06-02 issue #519 track-energy pass: added selected calorimetric
   measures for track and charged-energy correlators, derived the selected EEC
   moment identities, introduced track functions as nonperturbative
