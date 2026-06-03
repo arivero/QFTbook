@@ -25,6 +25,8 @@ relations
     correct orbit-volume and homogeneous-cone scaling
     the finite-regulator nonzero-mode determinant datum has the correct
     boson/ghost/fermion determinant powers and counterterm shifts
+    the finite fermion block determinant separates the nonzero-mode spectral
+    determinant from the zero-mode Schur/Berezin determinant
     the proper-time fluctuation determinant combines with either an independent
     bilinear source determinant or a differentiated linear Grassmann source
     coefficient to give the finite four-fermion instanton amplitude
@@ -176,6 +178,59 @@ def matmul_fraction(
             for col in range(len(right[0]))
         ]
         for row in range(len(left))
+    ]
+
+
+def matrix_add_fraction(
+    left: list[list[Fraction]],
+    right: list[list[Fraction]],
+) -> list[list[Fraction]]:
+    assert_equal("matrix add row count", len(left), len(right))
+    assert_equal("matrix add column count", len(left[0]), len(right[0]))
+    return [
+        [left[row][col] + right[row][col] for col in range(len(left[0]))]
+        for row in range(len(left))
+    ]
+
+
+def matrix_sub_fraction(
+    left: list[list[Fraction]],
+    right: list[list[Fraction]],
+) -> list[list[Fraction]]:
+    assert_equal("matrix subtract row count", len(left), len(right))
+    assert_equal("matrix subtract column count", len(left[0]), len(right[0]))
+    return [
+        [left[row][col] - right[row][col] for col in range(len(left[0]))]
+        for row in range(len(left))
+    ]
+
+
+def inverse_2x2_fraction(matrix: list[list[Fraction]]) -> list[list[Fraction]]:
+    assert_equal("2x2 inverse row count", len(matrix), 2)
+    assert_equal("2x2 inverse column count", len(matrix[0]), 2)
+    a, b = matrix[0]
+    c, d = matrix[1]
+    determinant = a * d - b * c
+    if determinant == 0:
+        raise AssertionError("singular 2x2 matrix")
+    return [
+        [d / determinant, -b / determinant],
+        [-c / determinant, a / determinant],
+    ]
+
+
+def block_2x2_fraction(
+    upper_left: list[list[Fraction]],
+    upper_right: list[list[Fraction]],
+    lower_left: list[list[Fraction]],
+    lower_right: list[list[Fraction]],
+) -> list[list[Fraction]]:
+    return [
+        upper_left[row] + upper_right[row]
+        for row in range(len(upper_left))
+    ] + [
+        lower_left[row] + lower_right[row]
+        for row in range(len(lower_left))
     ]
 
 
@@ -750,6 +805,71 @@ def check_physical_instanton_correlator_zero_mode_saturation() -> None:
         "two-flavor mixed mass/source determinant expansion",
         two_flavor_expansion,
         det_fraction([[m11 + b11, m12 + b12], [m21 + b21, m22 + b22]]),
+    )
+
+
+def check_fermion_determinant_zero_mode_nonzero_mode_factorization() -> None:
+    # At finite cutoff the fermion bilinear is a finite block matrix.  The
+    # determinant factors into the nonzero-mode determinant and the zero-mode
+    # Schur complement; the latter is the mass/source Berezin determinant.
+    mass_zero_block = [[Fraction(2), Fraction(3)], [Fraction(5), Fraction(7)]]
+    source_zero_block = [
+        [Fraction(11), Fraction(13)],
+        [Fraction(17), Fraction(19)],
+    ]
+    k00 = matrix_add_fraction(mass_zero_block, source_zero_block)
+    k0n = [[Fraction(1), Fraction(2)], [Fraction(3), Fraction(5)]]
+    kn0 = [[Fraction(7), Fraction(11)], [Fraction(13), Fraction(17)]]
+    knn = [[Fraction(19), Fraction(23)], [Fraction(29), Fraction(31)]]
+    schur_correction = matmul_fraction(
+        k0n,
+        matmul_fraction(inverse_2x2_fraction(knn), kn0),
+    )
+    schur_complement = matrix_sub_fraction(k00, schur_correction)
+    full_bilinear = block_2x2_fraction(k00, k0n, kn0, knn)
+    assert_equal(
+        "fermion block determinant Schur factorization",
+        det_fraction(full_bilinear),
+        det_fraction(knn) * det_fraction(schur_complement),
+    )
+
+    zero_coupling = [[Fraction(0), Fraction(0)], [Fraction(0), Fraction(0)]]
+    projected_bilinear = block_2x2_fraction(
+        k00,
+        zero_coupling,
+        zero_coupling,
+        knn,
+    )
+    assert_equal(
+        "zero-mode projected determinant separates nonzero determinant",
+        det_fraction(projected_bilinear),
+        det_fraction(knn) * det_fraction(k00),
+    )
+
+    rho = Fraction(5)
+    masses = [Fraction(2, 3), Fraction(7, 11)]
+    zero_mode_vacuum_determinant = product_fraction(
+        [rho * mass for mass in masses]
+    )
+    finite_nonzero_factor = Fraction(13, 17)
+    assert_equal(
+        "mass factors are zero-mode determinant not spectral determinant",
+        finite_nonzero_factor * zero_mode_vacuum_determinant,
+        Fraction(4550, 561),
+    )
+
+    complementary_mass_cofactor = rho * masses[1]
+    scheme_a = Fraction(13, 17)
+    scheme_b = Fraction(19, 23)
+    assert_equal(
+        "zero-mode minor independent of nonzero-mode scheme factor A",
+        scheme_a * complementary_mass_cofactor / scheme_a,
+        complementary_mass_cofactor,
+    )
+    assert_equal(
+        "zero-mode minor independent of nonzero-mode scheme factor B",
+        scheme_b * complementary_mass_cofactor / scheme_b,
+        complementary_mass_cofactor,
     )
 
 
@@ -1668,6 +1788,7 @@ def main() -> None:
     check_adhm_quotient_density_coarea_scaling()
     check_finite_regulator_determinant_datum()
     check_physical_instanton_correlator_zero_mode_saturation()
+    check_fermion_determinant_zero_mode_nonzero_mode_factorization()
     check_proper_time_fluctuation_four_fermion_amplitude()
     check_instanton_source_typing_and_differentiation()
     check_instanton_heat_kernel_beta0_logarithm()

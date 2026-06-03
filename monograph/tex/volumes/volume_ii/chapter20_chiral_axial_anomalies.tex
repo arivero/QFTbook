@@ -4570,6 +4570,95 @@ factor in \eqref{eq:instanton-source-differentiation-minor}.  The displayed
 two-flavor formula is the specialization to \(N_f=2\).
 \end{proof}
 
+\begin{proposition}[Fermion determinant factor versus zero-mode determinant]
+\label{prop:instanton-fermion-determinant-zero-mode-factorization}
+Fix the same finite-regulator \(Q=1\) chart \(z=(a,\rho,U)\) for vectorlike
+\(SU(N_c)\) QCD, and add a mass matrix and an even bilinear source.  Let
+\(\mathcal K_{\Lambda,z}(M,B)\) be the finite Dirac bilinear between the
+right and left fermion coefficient spaces in this background.  Decompose
+these finite spaces into instanton zero-mode subspaces and nonzero-mode
+complements.  In block form,
+\begin{equation}
+  \mathcal K_{\Lambda,z}(M,B)
+  =
+  \begin{pmatrix}
+    K_{00} & K_{0{\rm n}}\\
+    K_{{\rm n}0} & K_{{\rm nn}}
+  \end{pmatrix},
+  \label{eq:instanton-fermion-block-operator}
+\end{equation}
+where \(K_{00}\) acts between the zero-mode coefficient spaces and
+\(K_{{\rm nn}}\) acts on the nonzero-mode complements.  If \(K_{{\rm nn}}\)
+is invertible, then
+\begin{equation}
+  \det \mathcal K_{\Lambda,z}(M,B)
+  =
+  \det K_{{\rm nn}}\,
+  \det\!\left(
+    K_{00}-K_{0{\rm n}}K_{{\rm nn}}^{-1}K_{{\rm n}0}
+  \right).
+  \label{eq:instanton-fermion-schur-factorization}
+\end{equation}
+Thus the finite nonzero-mode fermion determinant and the zero-mode
+saturation determinant are separate factors before the collective-coordinate
+integral is performed.
+
+In the leading local semiclassical approximation, where the mass/source
+bilinear is restricted to the zero-mode subspace after the nonzero modes have
+supplied their determinant ratio, the Schur complement in
+\eqref{eq:instanton-fermion-schur-factorization} reduces to
+\begin{equation}
+  K_{00}^{\rm eff}(z)
+  =
+  M^{0}(z)+B^{0}(z),
+  \qquad
+  M^{0}_{ff'}(z)=\rho\,M_{ff'}(\mu),
+  \qquad
+  B^{0}_{ff'}(z)=\rho^3\bar\psi_{Rf}\psi_{Lf'}+\cdots .
+  \label{eq:instanton-zero-mode-effective-matrix}
+\end{equation}
+The dots denote derivative corrections to the local source approximation and
+the spin-color contractions fixed by the normalized zero-mode wavefunctions.
+More generally, the Schur correction
+\(-K_{0{\rm n}}K_{{\rm nn}}^{-1}K_{{\rm n}0}\) is a finite
+nonzero-mode-propagator correction in the same regulator and scheme.
+Consequently the light-fermion part of a one-instanton chart has the
+structure
+\begin{equation}
+  \mathcal R_{{\rm f},\Lambda}^{\mathcal S}(z;\mu)\,
+  \det K_{00}^{\rm eff}(z),
+  \label{eq:instanton-fermion-nonzero-zero-factor}
+\end{equation}
+after trivial-sector normalization and local counterterms in the scheme
+\(\mathcal S\).  The finite factor
+\(\mathcal R_{{\rm f},\Lambda}^{\mathcal S}\) is the fermion nonzero-mode
+determinant datum.  It is not determined by the Berezin determinant
+\(\det(M^{0}+B^{0})\).  In particular, in the diagonal massive vacuum
+specialization the factor \(\prod_f(m_f\rho)\) is the zero-mode saturation
+determinant; the remaining finite spectral determinant is an additional
+input to the physical amplitude.
+\end{proposition}
+
+\begin{proof}
+At fixed cutoff the fermion path integral is a finite Berezin Gaussian, hence
+equals the determinant of its finite bilinear matrix after the chosen
+trivial-sector normalization.  Decompose the finite coefficient spaces into
+the zero-mode subspace and its complement.  Gaussian integration over the
+nonzero-mode variables first gives the Schur complement of the lower-right
+block, which is exactly
+\eqref{eq:instanton-fermion-schur-factorization}.  The determinant of
+\(K_{{\rm nn}}\) is the fermionic part of the nonzero-mode determinant factor
+in \(\mathcal W_{\Lambda}^{\rm nz}\).  The determinant of the Schur
+complement is the finite Berezin integral over the zero-mode coefficients.
+When the source and mass insertions are projected to the zero-mode subspace,
+this second determinant is the determinant of \(M^0+B^0\), whose minor
+expansion is Proposition~\ref{prop:instanton-mass-source-minor-expansion}.
+If the source or mass also couples zero and nonzero modes, the same finite
+Gaussian integral produces the displayed Schur correction.  Since
+\(\det K_{{\rm nn}}\) multiplies every zero-mode minor, no zero-mode algebra
+can determine its finite value.
+\end{proof}
+
 \begin{proposition}[Proper-time determinant and zero-mode source functional]
 \label{prop:instanton-proper-time-four-fermion-amplitude}
 Fix a finite-regulator \(Q=1\) chart \(z=(a,\rho,U)\), a background gauge
@@ -5483,9 +5572,14 @@ form
   \rho^{\,b_0+N_f-5}\,\dd\rho ,
   \label{eq:mass-saturated-instanton-window-activity}
 \end{equation}
-up to the finite determinant remainder, orientation-volume convention, and
-higher-loop/operator-renormalization factors of the chosen scheme.  The
-corresponding \(Q=1\) vacuum term carries the phase
+up to higher-loop/operator-renormalization factors of the chosen scheme.  The
+constant \(\mathcal C_{\mathcal S,N_c,N_f}\) contains the pure-gauge
+orientation and determinant convention together with the light-fermion
+nonzero-mode factor \(\mathcal R_{\rm f}^{\mathcal S}\) of
+Proposition~\ref{prop:instanton-fermion-determinant-zero-mode-factorization},
+evaluated in the same small-mass window.  It does not include the displayed
+\(\prod_f(m_f\rho)\) factor: that product is the zero-mode saturation
+determinant.  The corresponding \(Q=1\) vacuum term carries the phase
 \begin{equation}
   V_4\zeta_m^{[\rho_-,\rho_+]}
   \exp\!\left[\ii(\theta+\arg\det M)\right],

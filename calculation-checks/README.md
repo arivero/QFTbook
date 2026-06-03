@@ -416,8 +416,12 @@ Current checks:
   \(0.466\exp[-1.679N]/[(N-1)!(N-2)!]\) and the \(SU(3)\) value
   \(1.51\times10^{-3}\), the
   proper-time nonzero-mode determinant assembly for bilinear-source and
-  source-differentiated four-fermion instanton amplitudes, the regression that a
-  c-number external-wave-packet outer product has zero determinant while the
+  source-differentiated four-fermion instanton amplitudes, the finite block
+  determinant/Schur-complement separation of the light-fermion nonzero-mode
+  spectral factor from the zero-mode mass/source determinant, the regression
+  that the displayed \(\prod_f(m_f\rho)\) factor is a zero-mode saturation
+  determinant rather than a finite spectral determinant, the c-number
+  external-wave-packet outer product has zero determinant while the
   differentiated Grassmann source coefficient is nonzero, the BPST zero-mode
   density-envelope momentum form factor \(zK_1(z)\), tail, and logarithmically
   sensitive second moment in the local-bilinear limit, the individual

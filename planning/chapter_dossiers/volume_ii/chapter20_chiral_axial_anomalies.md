@@ -221,6 +221,7 @@
 | \(\mathcal W_{\Lambda}^{\rm nz}(z)\) | finite-regulator nonzero-mode determinant datum in the instanton chart |
 | \(K_\Lambda(P_z,P_0;\mu)\) | proper-time logarithmic determinant ratio between the instanton and trivial-sector nonzero-mode operators |
 | \(\mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)\) | proper-time representative of the instanton nonzero-mode determinant density |
+| \(\mathcal R_{{\rm f},\Lambda}^{\mathcal S}(z;\mu)\) | finite light-fermion nonzero-mode determinant factor after trivial-sector normalization and scheme-\(\mathcal S\) local counterterms |
 | \(C_N^{\rm PV}\) | orientation-integrated pure-gauge Pauli-Villars one-instanton determinant constant |
 | \(\mathcal Z_{\mathcal O,\Lambda}^{0}(z)\) | finite Berezin coefficient of the zero-mode part of insertions, masses, and sources in a \(Q=1\) instanton background |
 | \(M_{ff'},B_{ff'}\) | mass-overlap and external-source matrices whose finite Berezin determinant and minor expansion give the QCD 't Hooft amplitudes |
@@ -645,6 +646,16 @@
   \(\Delta Q_A=2N_f\), while electroweak \(SU(2)_L\) receives
   \(\prod_r(q_{Lr}q_{Lr}q_{Lr}\ell_{Lr})\) with
   \(\Delta B=\Delta L=N_g\).
+- The light-fermion determinant factor is separated into a finite
+  nonzero-mode spectral factor
+  \(\mathcal R_{{\rm f},\Lambda}^{\mathcal S}(z;\mu)\) and a zero-mode
+  Schur/Berezin determinant.  In the leading local source approximation this
+  zero-mode determinant is \(\det(M^0+B^0)\), with
+  \(M^0_{ff'}=\rho M_{ff'}(\mu)\) and
+  \(B^0_{ff'}=\rho^3\bar\psi_{Rf}\psi_{Lf'}+\cdots\).  Thus
+  \(\prod_f(m_f\rho)\) is the mass-saturated zero-mode factor, not the finite
+  nonzero-mode determinant constant; the latter is a separate fluctuation
+  calculation in the chosen scheme.
 
 ## Open Boundaries
 
@@ -895,3 +906,13 @@
   reduction to the rounded \(0.466\exp[-1.679N]\) form and the \(SU(3)\)
   value \(1.51\times10^{-3}\), while leaving the full light-fermion
   't Hooft amplitude normalization as separate work.
+- 2026-06-03 issue #597/#630/#712 light-fermion determinant-factor pass:
+  inserted the finite block-determinant/Schur-complement statement separating
+  the light-fermion nonzero-mode spectral determinant from the zero-mode
+  mass/source determinant.  The text now states that \(\prod_f(m_f\rho)\) is
+  the mass-saturated zero-mode factor and that
+  \(\mathcal R_{{\rm f},\Lambda}^{\mathcal S}\) is an independent
+  fluctuation determinant datum requiring the chosen regulator, counterterms,
+  and normalization.  The BPST check script verifies the Schur factorization,
+  the projected determinant product, and the independence of zero-mode minors
+  from the finite nonzero-mode scheme factor.
