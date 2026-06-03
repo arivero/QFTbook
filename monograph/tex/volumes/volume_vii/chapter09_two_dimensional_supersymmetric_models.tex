@@ -1010,6 +1010,77 @@ modes leave precisely the twisted \(F\)-term measure, prove
 \(c_i\neq0\), and justify that possible higher connected harmonics do not
 contribute in the protected coordinate being matched.
 
+\begin{proposition}[Single-vortex coefficient as a protected amplitude]
+\label{prop:glsm-single-vortex-exponential-amplitude}
+Fix one charged chiral multiplet \(\Phi_i\) in the abelian GLSM and choose a
+supersymmetric finite regulator preserving the integer vortex number and the
+twisted chiral field strength.  Let \(\mathcal U_{i,1,\Lambda}\) be a smooth
+finite-dimensional chart for the charge-one vortex sector attached to
+\(\Phi_i\), after quotienting by gauge transformations and after choosing
+collective-coordinate coordinates \(z\).  Write
+\(\dd\nu_{i,1,\Lambda}(z)\) for the bosonic zero-mode density,
+\(\mathcal W_{i,1,\Lambda}^{\rm nz}(z)\) for the nonzero-mode determinant
+ratio in that vortex background, and
+\(\mathcal Z_{i,F,\Lambda}^{0}(z)\) for the Berezin coefficient left after
+the two universal fermion zero modes have been identified with
+\(d^2\widetilde\theta\).  Then the charge-one sector contributes to the
+Wilsonian twisted \(F\)-term in the form
+\begin{equation}
+  \Delta\widetilde W_{i,\Lambda}^{(1)}(Y_i)
+  =
+  -\mu\,c_{i,\Lambda}\,e^{-Y_i},
+  \label{eq:glsm-single-vortex-superpotential-term}
+\end{equation}
+where
+\begin{equation}
+  c_{i,\Lambda}
+  =
+  \mu^{-1}
+  \int_{\mathcal U_{i,1,\Lambda}}
+  e^{-S^{\rm red}_{i,1,\Lambda}(z)}\,
+  \mathcal W_{i,1,\Lambda}^{\rm nz}(z)\,
+  \mathcal Z_{i,F,\Lambda}^{0}(z)\,
+  \dd\nu_{i,1,\Lambda}(z).
+  \label{eq:glsm-single-vortex-coefficient-integral}
+\end{equation}
+Here \(S^{\rm red}_{i,1,\Lambda}\) is the regulator action with the
+universal topological coupling to the dual variable \(Y_i\) factored out.
+If additional fermion zero modes remain unsaturated, then
+\(\mathcal Z_{i,F,\Lambda}^{0}=0\) and this vortex sector supplies no
+twisted-superpotential term.  If the continuum limit of
+\eqref{eq:glsm-single-vortex-coefficient-integral} exists and is nonzero,
+then its limit is the coefficient \(c_i\) in
+\eqref{eq:glsm-hv-dual-twisted-superpotential}.
+\end{proposition}
+
+\begin{proof}
+At fixed regulator the semiclassical expansion around the charge-one vortex
+is a finite stationary-phase calculation.  The dual periodic variable
+couples to vortex number, so the charge-one topological factor is
+\(e^{-Y_i}\); the period \(Y_i\sim Y_i+2\pi\ii\) fixes this monomial
+unambiguously.  The remaining finite integral splits into the bosonic
+collective-coordinate density, the nonzero-mode determinant ratio, and the
+finite Berezin integral over fermion zero modes.  Two universal fermion zero
+modes are precisely the superspace measure of a twisted \(F\)-term; every
+extra zero mode must be saturated by an insertion or lifted by an allowed
+deformation.  This gives
+\eqref{eq:glsm-single-vortex-coefficient-integral} and hence
+\eqref{eq:glsm-single-vortex-superpotential-term}.  Multiplying
+\(e^{-Y_i}\) by a nonzero finite constant rescales \(c_i\), which is the same
+finite normalization freedom recorded above as an affine shift of the
+FI-theta coordinate.
+\end{proof}
+
+Formula \eqref{eq:glsm-single-vortex-coefficient-integral} isolates the
+data hidden in the coefficient \(c_i\).  The integer vortex-number coupling
+fixes the monomial \(e^{-Y_i}\); the determinant ratio, the orientation of
+the two universal fermion zero modes, the saturation of possible additional
+zero modes, and the boundary behavior of \(\mathcal U_{i,1,\Lambda}\) decide
+the value and possible vanishing of the coefficient.  Agreement with the
+Coulomb logarithm is then a protected consistency test: it fixes the
+primitive harmonic and exposes any finite FI-coordinate shift caused by
+determinant normalization.
+
 The \(Y_i\)-critical equation is
 \begin{equation}
   \partial_{Y_i}\widetilde W_{\rm dual}=0

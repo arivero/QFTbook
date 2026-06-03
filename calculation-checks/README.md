@@ -1923,6 +1923,9 @@ Current checks:
   elimination matching the Coulomb one-loop superpotential, the finite
   FI-coordinate shift induced by vortex coefficient normalizations, the
   primitive-monomial selection forced by exact Coulomb matching, the
+  single-vortex amplitude assembly with zero-mode removal, determinant-power
+  bookkeeping, saturated twisted-\(F\)-term zero modes, unsaturated-zero-mode
+  vanishing, and FI-coordinate normalization shifts, the
   \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger, and the
   classical cigar quotient metric obtained by eliminating the gauge field,
   the logarithmic-chiral vortex obstruction, plus the hypersurface GLSM

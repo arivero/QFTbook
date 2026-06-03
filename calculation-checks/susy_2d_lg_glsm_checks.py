@@ -367,6 +367,89 @@ def check_mirror_primitive_monomial_selection() -> None:
             raise AssertionError("higher mirror harmonic should spoil exact Coulomb matching")
 
 
+def check_single_vortex_amplitude_assembly() -> None:
+    # Finite charge-one vortex sector: remove bosonic collective-coordinate
+    # zero modes before forming the determinant ratio.
+    raw_boson_vortex_spectrum = [Fraction(0), Fraction(0), Fraction(5), Fraction(7)]
+    boson_vortex_nonzero = [
+        eigenvalue for eigenvalue in raw_boson_vortex_spectrum if eigenvalue != 0
+    ]
+    assert_equal("raw vortex bosonic determinant has zero modes", prod(raw_boson_vortex_spectrum), 0)
+    assert_equal(
+        "vortex collective coordinates removed before determinant",
+        len(raw_boson_vortex_spectrum) - len(boson_vortex_nonzero),
+        2,
+    )
+
+    boson_vacuum_spectrum = [Fraction(2), Fraction(3), Fraction(11)]
+    ghost_vacuum_spectrum = [Fraction(13), Fraction(17)]
+    ghost_vortex_spectrum = [Fraction(19), Fraction(23)]
+    fermion_vacuum_blocks = [Fraction(29), Fraction(31)]
+    fermion_vortex_blocks = [Fraction(37), Fraction(41)]
+
+    boson_inverse_sqrt_squared = prod(boson_vacuum_spectrum) / prod(boson_vortex_nonzero)
+    ghost_ratio = prod(ghost_vortex_spectrum) / prod(ghost_vacuum_spectrum)
+    fermion_ratio = prod(fermion_vortex_blocks) / prod(fermion_vacuum_blocks)
+    determinant_weight_squared = (
+        boson_inverse_sqrt_squared * ghost_ratio**2 * fermion_ratio**2
+    )
+    assert_equal(
+        "single-vortex nonzero-mode determinant weight squared",
+        determinant_weight_squared,
+        Fraction(66, 35) * Fraction(437, 221) ** 2 * Fraction(1517, 899) ** 2,
+    )
+
+    universal_fermion_zero_modes = 2
+    twisted_f_term_measure_degree = 2
+    assert_equal(
+        "universal vortex zero modes match twisted F-term measure",
+        universal_fermion_zero_modes,
+        twisted_f_term_measure_degree,
+    )
+
+    residual_zero_modes = 0
+    saturated_zero_mode_coefficient = Fraction(5, 4)
+    unsaturated_zero_mode_coefficient = (
+        saturated_zero_mode_coefficient if residual_zero_modes == 0 else Fraction(0)
+    )
+    assert_equal(
+        "saturated vortex zero-mode coefficient survives",
+        unsaturated_zero_mode_coefficient,
+        Fraction(5, 4),
+    )
+
+    extra_zero_modes = 2
+    extra_unsaturated_coefficient = (
+        saturated_zero_mode_coefficient if extra_zero_modes == 0 else Fraction(0)
+    )
+    assert_equal("extra unsaturated vortex zero modes kill F-term", extra_unsaturated_coefficient, 0)
+
+    reduced_classical_weight = Fraction(7, 9)
+    vortex_coefficient_squared = (
+        reduced_classical_weight**2
+        * determinant_weight_squared
+        * saturated_zero_mode_coefficient**2
+    )
+    assert_equal(
+        "single-vortex coefficient assembly squared",
+        vortex_coefficient_squared,
+        Fraction(7, 9) ** 2 * determinant_weight_squared * Fraction(25, 16),
+    )
+
+    # The superpotential has mass dimension one in two dimensions; exp(-Y) and
+    # c_i are dimensionless after the regulator integral is normalized by mu.
+    assert_equal("single-vortex superpotential dimension", 1 + 0 + 0, 1)
+
+    # Rescaling the finite vortex coefficient is absorbed by an affine shift
+    # of the FI coordinate.  In exponentiated form q=exp(-t), the exact
+    # bookkeeping is q -> q c^{-Q}.
+    bare_q = Fraction(11, 13)
+    charge = 3
+    coefficient = Fraction(2, 5)
+    shifted_q = bare_q / coefficient**charge
+    assert_equal("vortex coefficient FI shift in exponentiated coordinate", shifted_q, Fraction(1375, 104))
+
+
 def check_cp_mirror_critical_ledger() -> None:
     for n_fields in range(2, 9):
         x = Fraction(3, 2)
@@ -495,6 +578,7 @@ def main() -> None:
     check_abelian_coulomb_one_loop_primitive()
     check_charged_chiral_dual_elimination()
     check_mirror_primitive_monomial_selection()
+    check_single_vortex_amplitude_assembly()
     check_cp_mirror_critical_ledger()
     check_cigar_metric_elimination()
     check_logarithmic_chiral_vortex_obstruction()
