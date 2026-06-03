@@ -1130,6 +1130,82 @@ This is why the constants \(c_i\) are convention data for the protected
 Coulomb matching unless one separately fixes a normalization of the vortex
 measure.
 
+\begin{proposition}[Vortex normalization and all-rank FI coordinates]
+\label{prop:glsm-vortex-normalization-fi-coordinate}
+For an abelian gauge group \(U(1)^s\), fix nonzero vortex coefficients
+\(c_i\) and choices of \(\log c_i\).  Set
+\[
+  \widehat X_i=c_i e^{-Y_i}.
+\]
+Then the mirror superpotential has normalized primitive terms
+\[
+  -\mu\sum_i\widehat X_i ,
+\]
+while the logarithmic-torus constraints are written in the shifted FI
+coordinates
+\begin{equation}
+  \prod_{i=1}^m \widehat X_i^{\,Q_i{}^a}
+  =
+  \exp\left(t_a+\sum_{i=1}^m Q_i{}^a\log c_i\right),
+  \qquad a=1,\ldots,s .
+  \label{eq:glsm-all-rank-vortex-normalized-constraints}
+\end{equation}
+Equivalently, in the Coulomb-eliminated expression the constants \(c_i\)
+replace
+\begin{equation}
+  t_a\longmapsto
+  t_a^{\rm phys}
+  =
+  t_a+\sum_{i=1}^m Q_i{}^a\log c_i .
+  \label{eq:glsm-all-rank-vortex-fi-shift}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The constraint \(\sum_i Q_i{}^aY_i=-t_a\) is equivalent, on the logarithmic
+torus \(X_i=e^{-Y_i}\), to
+\[
+  \prod_iX_i^{Q_i{}^a}=e^{t_a}.
+\]
+Multiplying \(X_i\) by \(c_i\) gives
+\[
+  \prod_i\widehat X_i^{Q_i{}^a}
+  =
+  \left(\prod_iX_i^{Q_i{}^a}\right)
+  \left(\prod_i c_i^{Q_i{}^a}\right),
+\]
+which is \eqref{eq:glsm-all-rank-vortex-normalized-constraints}.  The same
+shift appears before imposing the low-energy constraint.  Since
+\[
+  \sum_i M_i(\Sigma)\log c_i
+  =
+  \sum_i\sum_a Q_i{}^a\Sigma_a\log c_i
+  =
+  \sum_a\Sigma_a\sum_iQ_i{}^a\log c_i ,
+\]
+the \(c_i\)-dependent part of
+\eqref{eq:glsm-hv-eliminated-one-loop-superpotential} is
+\(-\sum_a\Sigma_a\sum_iQ_i{}^a\log c_i\), precisely the affine FI-theta
+shift in \eqref{eq:glsm-all-rank-vortex-fi-shift}.
+\end{proof}
+
+Thus the Hori--Vafa expression is not a normalization-free statement of a
+bare path integral.  Its invariant protected input is the charge lattice, the
+primitive nonzero vortex monomial for each allowed charge-one sector, and the
+FI-theta coordinate after the finite determinant normalization has been
+chosen.  Changing the regulator normalization rescales the mirror torus
+coordinates and moves the same finite data into \(t_a^{\rm phys}\); it does
+not by itself prove the existence or nonvanishing of the vortex coefficient.
+Changing the branch by \(\log c_i\mapsto\log c_i+2\pi\ii n_i\) changes
+\(t_a^{\rm phys}\) by
+\[
+  2\pi\ii\sum_iQ_i{}^a n_i ,
+  \qquad n_i\in\mathbb Z ,
+\]
+which is an integral theta-period shift.  The exponentiated constraints
+\eqref{eq:glsm-all-rank-vortex-normalized-constraints} are therefore the
+branch-independent protected statement.
+
 There is a complementary low-energy use of the same expression.  In a
 regime where the abelian vector multiplet has no independent low-energy
 propagating mode, \(\Sigma_a\) acts as a twisted chiral Lagrange multiplier.

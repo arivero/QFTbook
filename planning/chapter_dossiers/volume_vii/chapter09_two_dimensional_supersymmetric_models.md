@@ -147,6 +147,11 @@ and
 - Proves that eliminating `Y_i` reproduces the Coulomb one-loop
   superpotential and that the constants `c_i` shift the finite definition of
   the FI coordinate.
+- Extends the vortex-normalization/FI-coordinate comparison to all abelian
+  ranks: normalized mirror-torus variables `hat X_i=c_i exp(-Y_i)` move the
+  constants into `t_a^phys=t_a+sum_i Q_i^a log c_i`, and the same shift is
+  checked against the Coulomb affine term, with logarithm-branch changes
+  identified as integral theta-period shifts.
 - Derives the low-energy `Sigma_a` constraints
   `sum_i Q_i^a Y_i=-t_a`, producing the logarithmic-torus mirror
   Landau-Ginzburg presentation of protected twisted-chiral data.
@@ -269,4 +274,7 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   one-vortex amplitude formula for the exponential term and records the
   recheck gate for every Hori--Vafa-derived formula: vortex-number coupling,
   determinant ratio, universal and extra fermion zero modes, boundary
-  behavior, and FI-coordinate normalization.
+  behavior, and FI-coordinate normalization.  The follow-on all-rank
+  normalization pass makes the shifted FI-theta coordinate explicit in both
+  the mirror-torus constraints and the Coulomb-eliminated affine term, and
+  checks the associated logarithm-branch theta periodicity.

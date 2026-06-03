@@ -1996,6 +1996,9 @@ Current checks:
   determinant normalization changes, the charged-chiral mirror-variable
   elimination matching the Coulomb one-loop superpotential, the finite
   FI-coordinate shift induced by vortex coefficient normalizations, the
+  all-rank mirror-torus and Coulomb affine-term ledger showing that vortex
+  determinant constants are absorbed by shifted FI-theta coordinates together
+  with the integral theta-period branch check, the
   primitive-monomial selection forced by exact Coulomb matching, the
   single-vortex amplitude assembly with zero-mode removal, determinant-power
   bookkeeping, saturated twisted-\(F\)-term zero modes, unsaturated-zero-mode

@@ -350,6 +350,75 @@ def check_charged_chiral_dual_elimination() -> None:
     assert_close("rank-one FI coordinate absorbs vortex coefficients", with_coeffs, shifted_form)
 
 
+def check_all_rank_vortex_fi_coordinate_shift() -> None:
+    charges = [
+        [1, 0],
+        [1, 1],
+        [0, 2],
+        [-2, -3],
+        [3, -1],
+    ]
+    rank = 2
+    log_coefficients = [
+        Fraction(2, 3),
+        Fraction(-5, 4),
+        Fraction(7, 6),
+        Fraction(11, 5),
+        Fraction(-13, 7),
+    ]
+    x_logs = [
+        Fraction(17, 5),
+        Fraction(-19, 6),
+        Fraction(23, 7),
+        Fraction(29, 8),
+        Fraction(-31, 9),
+    ]
+    sigmas = [Fraction(11, 3), Fraction(-7, 4)]
+
+    delta_t = [
+        sum(row[a] * ell_i for row, ell_i in zip(charges, log_coefficients))
+        for a in range(rank)
+    ]
+
+    for a in range(rank):
+        bare_constraint_log = sum(row[a] * x_i for row, x_i in zip(charges, x_logs))
+        normalized_constraint_log = sum(
+            row[a] * (x_i + ell_i)
+            for row, x_i, ell_i in zip(charges, x_logs, log_coefficients)
+        )
+        assert_equal(
+            f"all-rank normalized mirror-torus constraint a={a}",
+            normalized_constraint_log,
+            bare_constraint_log + delta_t[a],
+        )
+
+    affine_from_masses = sum(
+        sum(row[a] * sigmas[a] for a in range(rank)) * ell_i
+        for row, ell_i in zip(charges, log_coefficients)
+    )
+    affine_from_fi_shift = sum(sigmas[a] * delta_t[a] for a in range(rank))
+    assert_equal(
+        "all-rank Coulomb affine term equals FI-coordinate shift",
+        affine_from_masses,
+        affine_from_fi_shift,
+    )
+
+    branch_shifts = [1, -2, 3, 0, -1]
+    theta_periods = [
+        sum(row[a] * branch_i for row, branch_i in zip(charges, branch_shifts))
+        for a in range(rank)
+    ]
+    assert_equal("all-rank logarithm branch theta periods", theta_periods, [-4, 5])
+
+    rank_one_charges = [2, -1, 3, 4]
+    rank_one_logs = [Fraction(3, 2), Fraction(-5, 3), Fraction(7, 4), Fraction(11, 5)]
+    assert_equal(
+        "all-rank formula restricts to rank-one FI shift",
+        sum(charge * ell for charge, ell in zip(rank_one_charges, rank_one_logs)),
+        Fraction(1123, 60),
+    )
+
+
 def check_mirror_primitive_monomial_selection() -> None:
     # If the connected protected correction is h(X)=sum_n a_n X^n and exact
     # Coulomb matching demands X(M)=M/a_1 on a branch, then the critical
@@ -577,6 +646,7 @@ def main() -> None:
     check_abelian_glsm_coulomb_ledger()
     check_abelian_coulomb_one_loop_primitive()
     check_charged_chiral_dual_elimination()
+    check_all_rank_vortex_fi_coordinate_shift()
     check_mirror_primitive_monomial_selection()
     check_single_vortex_amplitude_assembly()
     check_cp_mirror_critical_ledger()
