@@ -2541,6 +2541,49 @@ and \eqref{eq:finite-density-quasimomentum-jump} gives
 non-one-cut datum: each cut carries an independent filling fraction before
 global period and level-matching constraints are imposed.
 
+\paragraph{Cyclicity as a global period constraint.}
+The local cut-reflection algebra does not by itself impose the closed-chain
+condition.  In a finite rank-one spin chain, write a logarithmic Bethe
+equation in the form
+\begin{equation}
+  L\,p(u_j)
+  =
+  2\pi n_j
+  +
+  \sum_{\substack{k=1\\k\ne j}}^M\theta(u_j,u_k),
+  \qquad
+  \theta(u,v)=-\theta(v,u),
+  \label{eq:finite-gap-log-bethe-level-matching}
+\end{equation}
+where \(L\) is the chain length and \(n_j\in\mathbb Z\) is the chosen
+logarithm branch.  Summing \eqref{eq:finite-gap-log-bethe-level-matching}
+over \(j\) cancels the two-body phases pairwise:
+\[
+  L\sum_{j=1}^M p(u_j)
+  =
+  2\pi\sum_{j=1}^M n_j .
+\]
+Trace cyclicity requires \(\exp(\ii\sum_jp(u_j))=1\), hence
+\[
+  \sum_{j=1}^M n_j\in L\mathbb Z .
+\]
+If the roots on \(\mathcal C_a\) have a common mode number \(n_a\) and
+multiplicity \(M_a\), this becomes the finite congruence
+\begin{equation}
+  \sum_a n_a M_a\in L\mathbb Z .
+  \label{eq:finite-gap-mode-filling-level-matching}
+\end{equation}
+In a simultaneous finite-density limit with \(M_a/N\to\mathcal S_a\) and
+\(L/N\to\ell\), \eqref{eq:finite-gap-mode-filling-level-matching} is the
+discrete origin of the level-matching condition
+\[
+  \sum_a n_a\mathcal S_a\in \ell\,\mathbb Z
+\]
+whenever the integer multiple is stable along the regulator sequence.  This
+is only the spin-chain global momentum constraint; closed classical strings
+also require the remaining period, reality, and Virasoro conditions of the
+sigma-model reconstruction.
+
 The mode numbers are the affine gluing data.  Equation
 \eqref{eq:finite-density-quasimomentum-gluing} says that analytic continuation
 through \(\mathcal C_a\) acts on the local quasimomentum coordinate by the

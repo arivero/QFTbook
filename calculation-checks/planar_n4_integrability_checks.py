@@ -2029,6 +2029,77 @@ def check_multicut_period_reflection_bookkeeping() -> None:
         raise AssertionError("noninteger mode unexpectedly exponentiates trivially")
 
 
+def check_finite_gap_level_matching_cyclicity() -> None:
+    """Check the global mode-filling congruence behind spin-chain cyclicity."""
+
+    chain_length = 6
+    root_multiplicities = {
+        "C1": 3,
+        "C2": 4,
+        "C3": 5,
+    }
+    mode_numbers = {
+        "C1": 2,
+        "C2": -1,
+        "C3": 2,
+    }
+
+    total_mode_weight = sum(
+        root_multiplicities[cut] * mode_numbers[cut]
+        for cut in root_multiplicities
+    )
+    if total_mode_weight % chain_length != 0:
+        raise AssertionError("cyclic mode-filling congruence unexpectedly failed")
+
+    # Work in units of 2*pi.  Antisymmetric two-body phases cancel in the sum
+    # of logarithmic Bethe equations.
+    phase = {
+        (1, 2): Fraction(2, 5),
+        (1, 3): Fraction(-1, 7),
+        (2, 3): Fraction(3, 11),
+    }
+    roots = [1, 2, 3]
+    directed_phase_sum = Fraction(0)
+    for left in roots:
+        for right in roots:
+            if left == right:
+                continue
+            if (left, right) in phase:
+                directed_phase_sum += phase[(left, right)]
+            else:
+                directed_phase_sum -= phase[(right, left)]
+    if directed_phase_sum != 0:
+        raise AssertionError("antisymmetric Bethe phases did not cancel")
+
+    total_momentum_units = Fraction(total_mode_weight, chain_length)
+    if total_momentum_units.denominator != 1:
+        raise AssertionError("cyclic total momentum is not an integer multiple of 2*pi")
+
+    regulator_size = 12
+    fillings = {
+        cut: Fraction(count, regulator_size)
+        for cut, count in root_multiplicities.items()
+    }
+    scaled_length = Fraction(chain_length, regulator_size)
+    continuum_level_match = sum(
+        Fraction(mode_numbers[cut]) * fillings[cut]
+        for cut in root_multiplicities
+    )
+    if continuum_level_match / scaled_length != total_momentum_units:
+        raise AssertionError("finite-density level-matching scaling failed")
+
+    bad_modes = dict(mode_numbers)
+    bad_modes["C3"] = 3
+    bad_total = sum(
+        root_multiplicities[cut] * bad_modes[cut]
+        for cut in root_multiplicities
+    )
+    if bad_total % chain_length == 0:
+        raise AssertionError("bad mode assignment unexpectedly satisfied cyclicity")
+    if not all(Fraction(mode).denominator == 1 for mode in bad_modes.values()):
+        raise AssertionError("bad modes should still be locally integer")
+
+
 def check_pohlmeyer_s2_frame_compatibility() -> None:
     """Check the S2 Pohlmeyer moving-frame compatibility algebra exactly."""
 
@@ -5355,6 +5426,7 @@ def main() -> None:
     check_sl2_large_spin_cusp_resolvent()
     check_one_cut_spectral_curve_bookkeeping()
     check_multicut_period_reflection_bookkeeping()
+    check_finite_gap_level_matching_cyclicity()
     check_pohlmeyer_s2_frame_compatibility()
     check_bes_zhukovsky_fourier_transform_signs()
     check_bes_weak_scaling_function()
