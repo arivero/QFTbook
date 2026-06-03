@@ -1317,7 +1317,7 @@ Fix \(N_f\) while \(N_c\to\infty\), and assume the following inputs.
   \begin{equation}
     \vartheta
     =
-    \theta-\ii\log\det\widehat U
+    \theta+\ii\log\det\widehat U
     \label{eq:singlet-theta-combination}
   \end{equation}
   on the branch near \(\widehat U=1\).
@@ -1410,7 +1410,7 @@ which is exactly the mass coefficient in
 \eqref{eq:witten-veneziano-chiral-limit}.  The mixed derivative
 \(\partial_\theta\partial_{\eta_0}V=-a\chi_{\rm YM}\) records the sign of the
 anomaly-invariant coordinate
-\(\theta-\ii\log\det\widehat U\); reversing that sign would give the same
+\(\theta+\ii\log\det\widehat U\); reversing that sign would give the same
 positive mass but the opposite singlet screening convention.
 
 \begin{remark}[Why this does not contradict massless-quark theta independence]
@@ -1427,6 +1427,106 @@ susceptibility in \eqref{eq:witten-veneziano-chiral-limit} is the pure
 Yang--Mills susceptibility \(\chi_{\rm YM}\), not the full massless-QCD
 susceptibility.
 \end{remark}
+
+\begin{controlledapproximation}[Instanton determinant as a chiral spurion
+potential]
+\label{ca:instanton-determinant-chiral-spurion-potential}
+Assume, in addition to the chiral phase hypothesis above, that the regulated
+one-instanton amplitude of
+Chapter~\ref{ch:volume-ii-20} has been matched at a scale \(\mu\)
+to a local color-singlet determinant source and that the instanton and
+anti-instanton sectors form a dilute finite-activity expansion in the sense of
+\eqref{ca:dilute-instanton-gas-amplitude}.  Denote the resulting
+renormalized activity in the chosen chiral scheme by
+\(\zeta_\chi(\mu)>0\).  Then the zero-mode determinant and its
+anti-instanton conjugate induce the local singlet potential
+\begin{equation}
+  \begin{aligned}
+    V_{\rm inst}^{\chi}(\widehat U;\theta)
+    &=
+    2\zeta_\chi
+    \left[
+      1-\cos\!\left(\theta+\ii\log\det\widehat U\right)
+    \right] \\
+    &\quad
+    +\hbox{higher-derivative and higher-mass terms}
+    +\hbox{multi-instanton terms},
+  \end{aligned}
+  \label{eq:instanton-chiral-determinant-potential}
+\end{equation}
+on the same local branch as
+\eqref{eq:singlet-theta-combination}.  Equivalently, in the
+\(\widehat U\) convention of \eqref{eq:singlet-u-nf-field}, the corresponding
+Lagrangian vertex is proportional to
+\[
+  \zeta_\chi\,
+  \ee^{\ii\theta}\det\widehat U^\dagger
+  +
+  \zeta_\chi\,
+  \ee^{-\ii\theta}\det\widehat U,
+\]
+up to a field-independent constant in the potential.  If the microscopic
+zero-mode determinant is written with the conjugate row/column convention,
+the displayed vertex is obtained by the corresponding transpose/conjugation
+conversion; the sign used here is fixed by the singlet coordinate
+\eqref{eq:singlet-theta-combination}.
+
+In the \(\eta_0\) chart and sign convention of
+\eqref{eq:theta-eta0-curvature-matrix}, set
+\[
+  a=\frac{\sqrt{2N_f}}{f_\pi},
+  \qquad
+  \theta+\ii\log\det\widehat U
+  =
+  \theta-a\eta_0
+  \quad\hbox{on the chosen exponential branch}.
+\]
+Expanding \eqref{eq:instanton-chiral-determinant-potential} gives
+\begin{equation}
+  V_{\rm inst}^{\chi}(\theta,\eta_0)
+  =
+  \zeta_\chi(\theta-a\eta_0)^2
+  +O((\theta-a\eta_0)^4),
+  \label{eq:instanton-chiral-determinant-quadratic}
+\end{equation}
+so its local curvature matrix is
+\begin{equation}
+  H_{\theta,\eta}^{\rm inst}
+  =
+  2\zeta_\chi
+  \begin{pmatrix}
+    1&-a\\
+    -a&a^2
+  \end{pmatrix}.
+  \label{eq:instanton-chiral-curvature-matrix}
+\end{equation}
+The same coefficient \(2\zeta_\chi\) is the topological susceptibility of the
+conditional dilute gas in
+\eqref{eq:dilute-instanton-gas-cumulants}.  Therefore a regime in which
+\(\zeta_\chi\) is actually calculable would give the singlet mass contribution
+\begin{equation}
+  \Delta m_{\eta_0,{\rm inst}}^2
+  =
+  \frac{2N_f}{f_\pi^2}\,(2\zeta_\chi)
+  =
+  \frac{4N_f\zeta_\chi}{f_\pi^2}.
+  \label{eq:instanton-dilute-singlet-mass-contribution}
+\end{equation}
+This is the dilute-instanton analogue of
+\eqref{eq:witten-veneziano-chiral-limit}, with
+\(\chi_{\rm YM}\) replaced by the finite activity susceptibility
+\(\chi_{\rm top}^{\rm dig}=2\zeta_\chi\).
+
+The qualification is part of the statement.  In zero-temperature confining
+QCD the large-\(\rho\) part of the one-instanton activity and the
+multi-instanton interaction expansion are not controlled by the BPST
+calculation alone.  Thus \eqref{eq:instanton-chiral-determinant-potential} is
+a valid chiral coordinate for a declared finite-activity semiclassical window,
+such as a weakly coupled Higgsed or sufficiently screened regime, but it is
+not a derivation of the physical \(\eta'\) mass from isolated instantons in
+ordinary QCD.  The large-\(N_c\) Witten--Veneziano input above instead uses
+the pure Yang--Mills susceptibility as a nonperturbative datum.
+\end{controlledapproximation}
 
 For nonzero light-quark masses the singlet field mixes with the octet
 pseudoscalars.  This mixing is part of the susceptibility argument at the

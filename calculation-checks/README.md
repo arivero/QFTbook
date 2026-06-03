@@ -321,8 +321,15 @@ Current checks:
   screening, and the Witten--Veneziano mass coefficient.  It also verifies
   the local \((\theta,\eta_0)\) curvature matrix, its screening null vector,
   the screened theta Schur complement, and the sign-sensitive mixed
-  derivative fixed by the anomaly-invariant coordinate.  The same script
-  derives the leading isospin-limit \(N_f=3\) neutral
+  derivative fixed by the anomaly-invariant coordinate.  The dilute-instanton
+  chiral-spurion branch checks the controlled potential
+  \(2\zeta_\chi[1-\cos(\theta+i\log\det\widehat U)]\), its
+  \(\chi_{\rm top}^{\rm dig}=2\zeta_\chi\) susceptibility, the same
+  rank-one screening curvature, the quartic cosine sign, and the finite
+  activity singlet mass contribution \(4N_f\zeta_\chi/f_\pi^2\), keeping this
+  conditional instanton input separate from the Witten--Veneziano pure
+  Yang--Mills susceptibility datum.  The same script derives the leading
+  isospin-limit \(N_f=3\) neutral
   \((\pi^0,\eta_8,\eta_0)\) mass
   matrix from the flavor generators, then checks the \(\eta,\eta'\) trace
   Witten--Veneziano relation and the determinant/mixing ledger.

@@ -198,6 +198,47 @@ def check_massless_quark_theta_screening() -> None:
     assert_zero("massless theta screening", minimized)
 
 
+def check_dilute_instanton_chiral_spurion_potential() -> None:
+    eta, theta, zeta, f = sp.symbols("eta theta zeta f", positive=True)
+    nf = sp.symbols("nf", positive=True, integer=True)
+
+    a = sp.sqrt(2 * nf) / f
+    minus_i_log_det_u = a * eta
+    i_log_det_u = -minus_i_log_det_u
+    theta_eff = theta + i_log_det_u
+    assert_zero("dilute instanton determinant-log convention", theta_eff - (theta - a * eta))
+    potential = 2 * zeta * (1 - sp.cos(theta_eff))
+
+    susceptibility = sp.diff(potential.subs(eta, 0), theta, 2).subs(theta, 0)
+    assert_zero("dilute instanton chiral susceptibility", susceptibility - 2 * zeta)
+
+    hessian = sp.Matrix(
+        [
+            [sp.diff(potential, theta, theta), sp.diff(potential, theta, eta)],
+            [sp.diff(potential, eta, theta), sp.diff(potential, eta, eta)],
+        ]
+    ).subs({theta: 0, eta: 0})
+    expected = 2 * zeta * sp.Matrix([[1, -a], [-a, a**2]])
+    for row in range(2):
+        for col in range(2):
+            assert_zero(
+                f"dilute instanton chiral Hessian entry {row}{col}",
+                hessian[row, col] - expected[row, col],
+            )
+
+    for row, entry in enumerate(hessian * sp.Matrix([a, 1])):
+        assert_zero(f"dilute instanton screening null vector row {row}", entry)
+
+    mass_contribution = hessian[1, 1]
+    assert_zero(
+        "dilute instanton singlet mass contribution",
+        mass_contribution - 4 * nf * zeta / f**2,
+    )
+
+    quartic = sp.diff(potential.subs(eta, 0), theta, 4).subs(theta, 0)
+    assert_zero("dilute instanton cosine fourth derivative", quartic + 2 * zeta)
+
+
 def check_eta_eta_prime_mass_matrix_ledger() -> None:
     m, ms, b0, m0_sq = sp.symbols("m ms B0 m0_sq", positive=True)
     m_pi_sq = 2 * b0 * m
@@ -314,6 +355,7 @@ def main() -> None:
     check_witten_veneziano_mass_coefficient()
     check_theta_eta_curvature_matrix()
     check_massless_quark_theta_screening()
+    check_dilute_instanton_chiral_spurion_potential()
     check_eta_eta_prime_mass_matrix_ledger()
     check_periodic_branch_relabeling()
     check_branch_mixture_cluster_covariance()
