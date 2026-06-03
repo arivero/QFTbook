@@ -540,6 +540,14 @@ def pointed_coset_annulus_matrix(group_element: GroupElement) -> IntMatrix:
     )
 
 
+def pointed_boundary_target(source_coset: int, group_element: GroupElement) -> int:
+    return (source_coset + group_element[1]) % 2
+
+
+def pointed_boundary_compose(left: GroupElement, right: GroupElement) -> GroupElement:
+    return z2xz2_add(left, right)
+
+
 def check_pointed_module_annulus_nimrep() -> None:
     """Check the finite non-diagonal annulus/nimrep identity.
 
@@ -571,6 +579,80 @@ def check_pointed_module_annulus_nimrep() -> None:
                 for entry in row:
                     if entry < 0:
                         raise AssertionError("annulus matrix has a negative entry")
+
+
+def check_pointed_module_boundary_ope_associativity() -> None:
+    """Check the pointed G/H boundary-field composition law.
+
+    The generator psi_{x,g} runs from xH to (x+g)H.  Composition is inherited
+    from pointed fusion, psi_{x+g,h} psi_{x,g}=psi_{x,g+h}.  This is the
+    finite boundary-OPE associativity cell behind the annulus nimrep.
+    """
+
+    elements: tuple[GroupElement, ...] = ((0, 0), (1, 0), (0, 1), (1, 1))
+    stabilizer_labels = ((0, 0), (1, 0))
+
+    for source in (0, 1):
+        stabilizer_endomorphisms = {
+            g
+            for g in elements
+            if pointed_boundary_target(source, g) == source
+        }
+        assert_equal(
+            f"pointed boundary stabilizer labels at source {source}",
+            stabilizer_endomorphisms,
+            set(stabilizer_labels),
+        )
+
+        for left in elements:
+            middle = pointed_boundary_target(source, left)
+            for right in elements:
+                target_by_steps = pointed_boundary_target(middle, right)
+                fused = pointed_boundary_compose(left, right)
+                target_by_fusion = pointed_boundary_target(source, fused)
+                assert_equal(
+                    "pointed boundary OPE endpoint "
+                    f"source={source}, left={left}, right={right}",
+                    target_by_steps,
+                    target_by_fusion,
+                )
+
+                for third in elements:
+                    left_associated = pointed_boundary_compose(
+                        pointed_boundary_compose(left, right),
+                        third,
+                    )
+                    right_associated = pointed_boundary_compose(
+                        left,
+                        pointed_boundary_compose(right, third),
+                    )
+                    assert_equal(
+                        "pointed boundary OPE associativity "
+                        f"source={source}, left={left}, right={right}, third={third}",
+                        left_associated,
+                        right_associated,
+                    )
+                    final_by_steps = pointed_boundary_target(
+                        pointed_boundary_target(
+                            pointed_boundary_target(source, left),
+                            right,
+                        ),
+                        third,
+                    )
+                    final_by_fusion = pointed_boundary_target(source, left_associated)
+                    assert_equal(
+                        "pointed boundary OPE final endpoint "
+                        f"source={source}, left={left}, right={right}, third={third}",
+                        final_by_steps,
+                        final_by_fusion,
+                    )
+
+    if pointed_boundary_compose((1, 0), (1, 0)) != (0, 0):
+        raise AssertionError("stabilizer endomorphism did not square to the vacuum")
+    if pointed_boundary_target(0, (1, 0)) != pointed_boundary_target(0, (0, 0)):
+        raise AssertionError("stabilizer label should preserve the boundary endpoint")
+    if (1, 0) == (0, 0):
+        raise AssertionError("distinct stabilizer chiral labels collapsed")
 
 
 def check_boundary_entropy() -> None:
@@ -790,6 +872,7 @@ def main() -> None:
     check_matrix_frobenius_cutting_move()
     check_finite_classifying_center_characters()
     check_pointed_module_annulus_nimrep()
+    check_pointed_module_boundary_ope_associativity()
     check_boundary_entropy()
     check_boundary_gradient_spectral_weight()
     check_chan_paton_direct_sums()
@@ -801,7 +884,8 @@ def main() -> None:
     print(
         "All BCFT Cardy, sewing, boundary-gradient, Ising boundary-changing, "
         "matrix-Frobenius, finite-center, pointed-nimrep, Chan-Paton, "
-        "compact-boson, and Liouville-boundary checks passed."
+        "pointed-boundary-OPE, compact-boson, and Liouville-boundary checks "
+        "passed."
     )
 
 

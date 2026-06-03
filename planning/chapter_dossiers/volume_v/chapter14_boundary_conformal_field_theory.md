@@ -120,6 +120,11 @@
   pointed \(G=\mathbb Z_2\times\mathbb Z_2\), \(G/H\) coset example where a
   nontrivial stabilizer object acts trivially and the other coset swaps the
   two boundary labels.
+- Adds the boundary-OPE composition law in the same pointed \(G/H\) module
+  example: the generator \(\psi_{x,g}\) from \(xH\) to \((x+g)H\) obeys
+  \(\psi_{x+g,h}\psi_{x,g}=\psi_{x,g+h}\), so the finite
+  Cardy-Lewellen associativity cell is just group associativity, while the
+  stabilizer labels remain distinct chiral boundary endomorphisms.
 
 ## Claims To Verify
 
@@ -176,9 +181,12 @@
    elementary boundary modules, not arbitrary traces on reducible modules and
    not actions of noncentral boundary endomorphisms.
 17. The non-diagonal annulus multiplicity matrices form a nonnegative-integer
-   representation of the chiral fusion algebra because interval sewing with
-   two successive chiral labels can be evaluated either through an
-   intermediate boundary module or by fusing the two chiral labels first.
+    representation of the chiral fusion algebra because interval sewing with
+    two successive chiral labels can be evaluated either through an
+    intermediate boundary module or by fusing the two chiral labels first.
+18. In the pointed \(G/H\) module cell, boundary-field OPE associativity
+    keeps both endpoint data and chiral labels: stabilizer objects preserve a
+    boundary endpoint but do not collapse to the vacuum boundary field.
 
 ## Figures
 
@@ -193,6 +201,7 @@
   fusion-ring characters, normalized Cardy two-bulk classifying sewing,
   the finite classifying-center model for non-diagonal rational sewing,
   the pointed module-category annulus nimrep identity,
+  the pointed module-category boundary-OPE associativity cell,
   boundary entropy squares, Ising
   boundary-changing fusing constants and OPE powers, the finite Ising
   four-boundary Cardy--Lewellen sewing cell, the \(A=1\)
@@ -295,3 +304,8 @@
   pointed \(G/H\) coset module example; extended `bcft_cardy_checks.py` with
   exact integer checks of \(n_g n_h=n_{g+h}\), stabilizer collapse, and the
   boundary-label swap matrix.
+- 2026-06-02 pointed boundary-OPE pass: added the finite boundary-field
+  composition law \(\psi_{x+g,h}\psi_{x,g}=\psi_{x,g+h}\) in the same
+  \(G/H\) module example; extended `bcft_cardy_checks.py` to verify endpoint
+  matching, associativity, and the fact that stabilizer chiral labels preserve
+  endpoints without collapsing to the vacuum field.

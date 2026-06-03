@@ -1295,6 +1295,34 @@ Thus \(n_{(0,0)}=n_{(1,0)}=\mathbf 1\), while
 unitary local rational BCFT requires the corresponding modular, Frobenius,
 and analytic sewing data in addition to the displayed matrices.
 
+The same example also shows the boundary-field composition behind the
+annulus identity.  Let \(x\in G/H\), and let
+\(\psi_{x,g}\) denote the one-dimensional generator of the open sector with
+chiral label \(g\) from the boundary \(xH\) to the boundary \((x+g)H\).
+For \(g,h\in G\) the pointed fusion space is one-dimensional, so the
+module-composition coordinate can be normalized as
+\begin{equation}
+  \psi_{x+g,h}\circ\psi_{x,g}
+  =
+  \psi_{x,g+h}.
+  \label{eq:bcft-pointed-coset-boundary-ope}
+\end{equation}
+Then
+\[
+  (\psi_{x+g+h,k}\circ\psi_{x+g,h})\circ\psi_{x,g}
+  =
+  \psi_{x,g+h+k}
+  =
+  \psi_{x+g,h+k}\circ(\psi_{x+g,h}\circ\psi_{x,g}),
+\]
+which is the Cardy--Lewellen boundary associativity equation in this
+finite module cell.  The stabilizer \(H\) is still visible: both
+\(\psi_{x,(0,0)}\) and \(\psi_{x,(1,0)}\) are boundary endomorphism fields
+of the same boundary label, but they carry different chiral labels.  Thus the
+non-diagonal boundary theory is not obtained by merely identifying chiral
+labels that act on the same coset; the open sector remembers the chiral
+fusion label even when the boundary endpoint is unchanged.
+
 Bulk fields in the same algebraic construction are bimodule morphisms.  If
 \(U_i^+\otimes A\otimes U_j^-\) denotes the \(A\)-bimodule obtained by using
 the braiding for the left chiral label and the inverse braiding for the
