@@ -230,7 +230,12 @@ for dynamic critical models beyond Model A/B: reversible drift must preserve
 the Gibbs density by a finite divergence identity, exact conserved covectors
 must annihilate the dissipative mobility and reversible drift, and Model C/H
 labels are treated as scaling hypotheses about retained slow variables rather
-than theorem labels.  Remaining work in this track is the continuum
+than theorem labels.  The chapter now also opens with a proof-architecture
+ladder separating exact finite probability/operator identities,
+field-theoretic coordinate rewritings, scaling hypotheses, and continuum QFT
+outputs, so the growing MSRJD/Doi--Peliti/fluctuation/SK/dynamic-critical
+inventory is organized as a dependency chain rather than a collection of
+local cells.  Remaining work in this track is the continuum
 renormalization of nonequilibrium stochastic field theories and model-by-model
 RG analyses of conserved and nonconserved stochastic field theories.
 

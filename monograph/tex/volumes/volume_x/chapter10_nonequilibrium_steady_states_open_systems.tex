@@ -18,6 +18,57 @@ Markovian limit
 to a Schwinger--Keldysh influence functional and to hydrodynamic relaxation
 with noise.
 
+\section{Proof Architecture For Nonequilibrium Claims}
+\label{sec:nonequilibrium-proof-architecture}
+
+The chapter has many finite-regulator identities because nonequilibrium QFT
+has several inequivalent entry points.  The entry points serve different
+roles in one dependency ladder.
+
+At the first layer are exact finite probability or operator-algebra
+statements.  These include finite reservoir jump processes, labelled path
+measures and their Radon--Nikodym ratios, finite Gaussian transition kernels,
+finite reaction-network master equations, tilted finite Markov generators,
+empirical-flow costs, finite GKSL maps, and finite Gaussian
+Schwinger--Keldysh kernels.  Each statement at this layer has a specified
+state space, measure, kernel, or matrix generator.  The checks in this chapter
+live at this layer: they protect signs, normalizations, positivity, and
+finite algebra.
+
+The second layer is the representation layer.  Here a finite statement is
+rewritten in a field-theoretic coordinate system: a Fourier-dual MSRJD
+response variable for Gaussian increments, creation and annihilation variables
+for Doi--Peliti occupation dynamics, Keldysh \(r/a\) fields and noise
+kernels for influence functionals, or source variables for tilted
+generators.  A representation at this layer is useful only because it is
+connected to the first layer by an explicit finite identity.  It is not yet a
+continuum stochastic field theory.
+
+The third layer is the scaling-hypothesis layer.  One must declare the
+spatial regulator, local observables, field and rate scalings, time scaling,
+source normalization, topology of convergence, and which Ward identities or
+conservation laws survive the limit.  Dynamic-critical names such as
+Model A, Model B, Model C, and Model H belong here: they are hypotheses about
+retained slow variables, reversible and dissipative structures, and continuum
+renormalization, not finite theorems.
+
+The fourth layer is the continuum QFT output layer.  A construction at this
+layer supplies real-time correlation functions, response functions, entropy
+production, fluctuation or large-deviation functionals, hydrodynamic
+coefficients, and open-system semigroups as limits of regulated objects.  A
+Schwinger--Keldysh action, an MSRJD action, or a Doi--Peliti action counts as
+a QFT object only after this limiting statement and its observable map have
+been specified.
+
+This ladder is the organizing rule for the rest of the chapter.  For example,
+the finite fluctuation theorem proves a path-measure identity; it does not
+construct a continuum entropy-production operator.  The finite MSRJD and
+Doi--Peliti rewritings prove coordinate changes from regulated stochastic
+processes; they do not prove a renormalized nonequilibrium fixed point.  The
+finite SK Gaussian bridge identifies a noise coordinate in a quadratic
+influence functional; it does not by itself prove Markovianity, locality, or
+complete positivity of a reduced continuum dynamics.
+
 \section{Steady-State Datum}
 
 Let \(\mathcal A\) be a \(*\)-algebra of observables for a real-time QFT,
@@ -1938,6 +1989,11 @@ where the noise enters through a divergence.
 
 \section{Theorem Boundary}
 
+The proof architecture in
+\S\ref{sec:nonequilibrium-proof-architecture} is part of the theorem
+boundary: a continuum result must say which finite layer is being used, which
+field-theoretic representation is only a coordinate rewrite, and which
+scaling hypotheses turn that coordinate rewrite into a QFT limit.
 For continuum QFT, a complete nonequilibrium construction must state the
 local algebra, the reservoir states, the topology of the long-time local
 limit, the domains of the current operators, and the order in which weak

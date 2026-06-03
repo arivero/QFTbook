@@ -8,7 +8,11 @@ real-time topics.  The chapter now treats steady states as invariant
 positive functionals, reservoir steady states as local weak limits, finite
 fluctuation relations as path-measure Radon--Nikodym identities, and
 finite-step Langevin/MSRJD variables as exact Fourier rewritings of finite
-Gaussian transition kernels.  It now formulates Model A and Model B as
+Gaussian transition kernels.  It now front-loads a proof-architecture ladder
+separating exact finite probability/operator identities, field-theoretic
+coordinate rewritings, scaling hypotheses, and continuum QFT outputs, so the
+many finite mechanisms are read as dependencies rather than as completed
+continuum theorems.  It now formulates Model A and Model B as
 finite mobility-gradient stochastic field data, deriving the Gibbs invariant
 density and the conserved zero mode for Model B before any continuum
 dynamic-critical terminology is used.  It also formulates coupled
@@ -90,32 +94,37 @@ and contracts it to the level-\(2\) occupation cost in a two-state example.
 
 1. A steady state is a positive normalized functional invariant under the
    real-time automorphism group.
-2. Reservoir nonequilibrium steady states are local weak limits of
+2. Nonequilibrium claims are organized in four layers: finite regulated
+   probability/operator identities, field-theoretic coordinate rewritings,
+   scaling hypotheses, and continuum QFT output statements.  MSRJD,
+   Doi--Peliti, SK noise coordinates, fluctuation relations, and dynamic
+   critical model names must be placed on this ladder before they are used.
+3. Reservoir nonequilibrium steady states are local weak limits of
    long-time evolved observables near the junction.
-3. With currents positive from left to right, reservoir entropy production is
+4. With currents positive from left to right, reservoir entropy production is
    \[
      \dot S_{\rm res}
      =(\beta_R-\beta_L)J_E
      -(\beta_R\mu_R-\beta_L\mu_L)J_Q.
    \]
-4. In linear response, \(\dot S_{\rm res}=X^TLX\), so positivity is
+5. In linear response, \(\dot S_{\rm res}=X^TLX\), so positivity is
    equivalent to positive semidefiniteness of the symmetric Onsager matrix.
-5. Finite fluctuation relations are path-measure statements: after specifying
+6. Finite fluctuation relations are path-measure statements: after specifying
    the labelled trajectory space, reversed protocol, and absolute-continuity
    condition, the trajectory entropy production is a Radon--Nikodym logarithm.
-6. The finite path-measure identity gives
+7. The finite path-measure identity gives
    \(\langle e^{-\Sigma}\rangle=1\); with thermal local detailed balance and
    Gibbs endpoint distributions it becomes the Jarzynski identity
    \(\langle e^{-\beta W_{\rm ext}}\rangle=e^{-\beta\Delta F}\).
-7. A finite-step Ito Langevin process with covariance
+8. A finite-step Ito Langevin process with covariance
    \(2\Delta t\,D\) has an exactly normalized Gaussian transition density.
    Its MSRJD response-field representation is the Fourier transform of that
    transition density at each time step, with \(\hat x_n\) the Fourier-dual
    variable to \(\Delta x_n-\Delta t F_n\).
-8. The generator \(L_t=F^a\partial_a+D^{ab}\partial_a\partial_b\) and the
+9. The generator \(L_t=F^a\partial_a+D^{ab}\partial_a\partial_b\) and the
    Fokker-Planck adjoint equation follow from the finite-step moments before
    a continuum stochastic-field limit is taken.
-9. A finite mobility-gradient Langevin datum
+10. A finite mobility-gradient Langevin datum
    \(dx=-\mathsf M\nabla\mathcal F\,dt+\sqrt{2T}\sigma\,dB\),
    \(\sigma\sigma^T=\mathsf M\), has generator
    \(Lf=-\mathsf M^{ab}\partial_b\mathcal F\,\partial_af+
@@ -123,16 +132,16 @@ and contracts it to the level-\(2\) occupation cost in a two-state example.
    \(J=-\mathsf M(\nabla\mathcal F\,p+T\nabla p)\), so
    \(p_{\rm eq}\propto e^{-\mathcal F/T}\) has zero current on each affine
    sector.
-10. Model A is the finite datum with positive local mobility for a
+11. Model A is the finite datum with positive local mobility for a
     nonconserved order parameter.  Model B is the finite datum
     \(\mathsf M=B^TCB\) on a spatial graph; it has
     \(\mathsf M\mathbf1=0\), hence conserved total order parameter and
     divergence-form noise.
-11. The finite Model A/B MSRJD action is obtained from the finite-step
+12. The finite Model A/B MSRJD action is obtained from the finite-step
     Gaussian Fourier identity with \(F=-\mathsf M\nabla\mathcal F\) and
     \(D=T\mathsf M\).  Dynamic exponents and scaling functions require a
     separate continuum/RG construction.
-12. Coupled slow-variable data are finite Ito processes
+13. Coupled slow-variable data are finite Ito processes
     \(dy=(R-\mathsf M\nabla\mathcal F)dt+\sqrt{2T}\sigma dB\) with
     \(\sigma\sigma^T=\mathsf M\).  The finite Gibbs density is stationary
     when the reversible drift obeys
@@ -140,76 +149,76 @@ and contracts it to the level-\(2\) occupation cost in a two-state example.
     coordinates are characterized by covectors annihilating both
     \(\mathsf M\) and \(R\).  Model C/H labels are therefore hypotheses about
     retained slow variables and scaling limits, not theorem labels.
-13. For a finite reaction network with mass-action rates
+14. For a finite reaction network with mass-action rates
     \(w_r(n)=\kappa_r(n)_{\nu_r}\), the normally ordered Doi-Peliti generator
     \(\sum_r\kappa_r[(a^\dagger)^{\nu'_r}-(a^\dagger)^{\nu_r}]a^{\nu_r}\)
     is exactly the master-equation generator on the algebraic occupation
     domain.
-14. The coherent-state normal symbol
+15. The coherent-state normal symbol
     \(H_{\rm DP}(\bar z,z)=\sum_r\kappa_r(\bar z^{\nu'_r}-\bar z^{\nu_r})z^{\nu_r}\)
     satisfies \(H_{\rm DP}(1,z)=0\) and yields the deterministic
     mass-action rate equation by differentiating at \(\bar z=1\).  The
     identity \(H_{\rm DP}(1,z)=0\) is recorded as the projection-state
     conservation law replacing unitary norm conservation in the non-Hermitian
     Markov representation.
-15. Exponential test functions give the finite-regulator dynamical
+16. Exponential test functions give the finite-regulator dynamical
     large-deviation Hamiltonian
     \(\mathcal H_{\rm LD}(x,p)=\sum_r\lambda_r(x)(e^{p\cdot v_r}-1)\)
     once a density scaling with rates
     \(\kappa_r(n)_{\nu_r}=\Omega\lambda_r(x)+o(\Omega)\) is specified.
-16. For a finite jump process and additive observable
+17. For a finite jump process and additive observable
     \(A_T=\int h_{i(t)}dt+\sum g_{i_{m-1}i_m}\), conditioning on the first
     short interval gives the exact Feynman--Kac semigroup generated by
     \((\mathsf L_\lambda f)_i=\lambda h_if_i+
     \sum_{j\ne i}W_{ij}(e^{\lambda g_{ij}}f_j-f_i)\).
-17. For an irreducible finite chain and real tilting parameter, the
+18. For an irreducible finite chain and real tilting parameter, the
     long-time scaled cumulant generating function is the Perron eigenvalue
     of \(\mathsf L_\lambda\); a path large-deviation principle still
     requires separate analytic and tightness hypotheses.
-18. For stationary entropy production with
+19. For stationary entropy production with
     \(\sigma_{ij}=\log(\pi_iW_{ij}/\pi_jW_{ji})\), the finite matrix
     identity
     \(\mathsf L_q^\Sigma=\Pi^{-1}(\mathsf L_{1-q}^\Sigma)^T\Pi\)
     implies the Gallavotti--Cohen spectral symmetry
     \(\psi_\Sigma(q)=\psi_\Sigma(1-q)\).
-19. Empirical occupations and flows satisfy finite boundary conservation,
+20. Empirical occupations and flows satisfy finite boundary conservation,
     and their finite level-\(2.5\) cost is
     \[
       I_{2.5}(\rho,q)=\sum_{i,j\ne i}
       \left[q_{ij}\log(q_{ij}/\rho_iW_{ij})-q_{ij}+\rho_iW_{ij}\right],
     \]
     with conservation and support constraints.
-20. The level-\(2.5\) cost follows from the Radon--Nikodym density between
+21. The level-\(2.5\) cost follows from the Radon--Nikodym density between
     the original jump process and the auxiliary process
     \(R_{ij}=q_{ij}/\rho_i\); contracting over conserved flows gives the
     level-\(2\) occupation cost, including
     \(I_2(p)=(\sqrt{pa}-\sqrt{(1-p)b})^2\) for a two-state chain.
-21. In the weak-coupling Markovian limit, the bath spectral matrix
+22. In the weak-coupling Markovian limit, the bath spectral matrix
    \(\gamma_{ab}(\omega)\) is positive by the positive-type/Bochner
    argument and yields the Davies/GKSL generator after the van Hove and
    secular limits.
-22. The GKSL form preserves trace, preserves Hermiticity, and generates a
+23. The GKSL form preserves trace, preserves Hermiticity, and generates a
    completely positive semigroup; the proof diagonalizes the positive bath
    spectral matrices and constructs the finite-time map by the
    Dyson-Phillips jump expansion.
-23. KMS bath spectral functions obey detailed balance; the chapter verifies
+24. KMS bath spectral functions obey detailed balance; the chapter verifies
    the sign and index order by spectral resolution and applies the result to
    the Gibbs stationary ratio for a two-level system.
-24. The quadratic Schwinger-Keldysh influence action has explicitly defined
+25. The quadratic Schwinger-Keldysh influence action has explicitly defined
    retarded and noise kernels; KMS relates them by fluctuation-dissipation.
-25. At finite regulator, the Gaussian SK weight
+26. At finite regulator, the Gaussian SK weight
    \(\exp(i\phi_aE-\phi_aN\phi_a/2)\) is exactly the characteristic function
    of a real Gaussian noise vector with covariance \(N\).  Integrating the
    response variable imposes \(E(\phi_r)+\xi=0\), and for linear retarded
    \(E=K\phi_r-J\) the induced covariance is \(K^{-1}NK^{-T}\).
-26. For a Markovian relaxing hydrodynamic density, the Fokker-Planck
+27. For a Markovian relaxing hydrodynamic density, the Fokker-Planck
    stationary-current computation with the stationary Gaussian
    equilibrium weight fixes \(D_n=\gamma\chi T\) and hence
    \(\langle\xi\xi\rangle=2\gamma\chi T\,\delta\).
-27. Continuum QFT constructions must specify the order of long-time,
+28. Continuum QFT constructions must specify the order of long-time,
     thermodynamic, weak-coupling, Markovian, hydrodynamic, and continuum
     limits.
-28. The Doi--Peliti/MSRJD synthesis distinguishes continuous Gaussian
+29. The Doi--Peliti/MSRJD synthesis distinguishes continuous Gaussian
     stochastic fields from integer-occupation jump systems, and defines
     nonequilibrium scaling classes operationally by common continuum
     fixed-point data, relevant perturbations, and scaling correlation/response
@@ -296,3 +305,9 @@ joining, Keldysh influence contours, and relaxation/noise flow diagrams.
   Gibbs-preserving drift, exact conserved covectors, Model C/H interpretation
   as scaling hypotheses, and paired calculation checks for antisymmetric
   reversible currents and conserved-density mobility blocks.
+- 2026-06-03 issue #703 architecture pass: added a front-loaded
+  nonequilibrium proof-architecture ladder separating finite regulated
+  identities, field-theoretic coordinate rewritings, scaling hypotheses, and
+  continuum QFT outputs.  The theorem-boundary section now points back to
+  this ladder so future finite MSRJD, Doi--Peliti, fluctuation, SK, or
+  dynamic-critical cells do not masquerade as continuum constructions.
