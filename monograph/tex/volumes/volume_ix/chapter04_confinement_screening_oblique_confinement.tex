@@ -373,6 +373,104 @@ displayed area estimates are proved for the chosen action.  Its continuum
 analogue requires a continuum limit, a mass gap or other infrared control,
 and renormalized line operators whose asymptotics survive the limit.
 
+\section{Three-Dimensional Monopole Gas Area Mechanism}
+
+There is one important continuum semiclassical setting where magnetic
+topological events do produce a Wilson-loop area law by a direct calculation:
+compact \(U(1)\) gauge theory in three Euclidean dimensions, or the
+long-distance \(U(1)\) sector of the three-dimensional Georgi--Glashow model
+after \(SU(2)\) is Higgsed to \(U(1)\).  The magnetic events are
+monopole-instantons, not four-dimensional BPST instantons.  Their physical
+effect is not a theta-vacuum cumulant; it is a mass for the dual photon and a
+domain-wall cost for an electric Wilson loop.
+
+\begin{controlledapproximation}[3D monopole gas area law]
+\label{ca:polyakov-monopole-gas-area-law}
+Assume a three-dimensional compact Abelian infrared window in which the heavy
+charged fields are separated from the monopole scale, primitive monopoles and
+anti-monopoles have a finite fugacity \(\zeta_{\rm M}\), and the dilute
+Coulomb-gas expansion is controlled on distances large compared with the
+monopole core.  Let \(\varphi\sim\varphi+2\pi\) be the dual photon and choose
+the local normalization
+\begin{equation}
+  S_{\rm dual}[\varphi]
+  =
+  \int_{\mathbb R^3}
+  \left[
+    \frac{\kappa_{\rm d}}2(\partial\varphi)^2
+    +
+    2\zeta_{\rm M}(1-\cos\varphi)
+  \right]\dd^3x .
+  \label{eq:polyakov-dual-photon-action}
+\end{equation}
+This is the sine--Gordon representative of the monopole and anti-monopole
+grand canonical sum in this normalization.  Expanding at a vacuum
+\(\varphi=2\pi n\) gives the dual-photon mass
+\begin{equation}
+  m_\gamma^2=\frac{2\zeta_{\rm M}}{\kappa_{\rm d}} .
+  \label{eq:polyakov-dual-photon-mass}
+\end{equation}
+
+For a primitive electric Wilson loop \(W(C)\) which is not screened by
+dynamical endpoints in the declared low-energy theory, the dual description
+imposes a \(2\pi\) discontinuity of \(\varphi\) across an oriented spanning
+surface \(\Sigma\) with \(\partial\Sigma=C\).  For a large nearly planar loop,
+the leading saddle is a one-dimensional sine--Gordon wall normal to
+\(\Sigma\).  It satisfies
+\[
+  \kappa_{\rm d}\varphi''=2\zeta_{\rm M}\sin\varphi,\qquad
+  \varphi(-\infty)=0,\quad \varphi(+\infty)=2\pi,
+\]
+or, equivalently, the first-order equation
+\begin{equation}
+  \varphi'=2m_\gamma\sin\frac{\varphi}{2}.
+  \label{eq:polyakov-wall-first-order}
+\end{equation}
+The wall tension is therefore
+\begin{equation}
+  \sigma_{\rm P}
+  =
+  \int_0^{2\pi}
+  \sqrt{2\kappa_{\rm d}\,2\zeta_{\rm M}(1-\cos\varphi)}\,\dd\varphi
+  =
+  8\sqrt{2\kappa_{\rm d}\zeta_{\rm M}}
+  =
+  8\kappa_{\rm d}m_\gamma .
+  \label{eq:polyakov-wall-string-tension}
+\end{equation}
+After local line counterterms have removed the perimeter self-energy, the
+Wilson loop has the semiclassical large-area form
+\begin{equation}
+  -\log |\langle W(C)\rangle|
+  =
+  \sigma_{\rm P}\operatorname{Area}(\Sigma_{\rm min})
+  +o(\operatorname{Area})
+  \label{eq:polyakov-monopole-wilson-area-law}
+\end{equation}
+for loop families whose curvature radii and linear sizes are large compared
+with \(m_\gamma^{-1}\), provided no lower-energy screened endpoint channel is
+available.
+
+The derivation is the following finite chain of physical inputs.  The
+monopole fugacity inserts \(\ee^{\ii\varphi}\), the anti-monopole fugacity
+inserts \(\ee^{-\ii\varphi}\), and the dilute grand canonical sum gives the
+cosine potential in
+\eqref{eq:polyakov-dual-photon-action}.  The cosine pins the dual photon and
+opens the mass gap \eqref{eq:polyakov-dual-photon-mass}.  The Wilson loop is
+not evaluated by a monopole moduli-space volume; it changes the dual-photon
+boundary condition across \(\Sigma\).  The minimum action configuration with
+that discontinuity is the sine--Gordon wall, and its action per unit area is
+\eqref{eq:polyakov-wall-string-tension}.
+
+The scope of this mechanism is the three-dimensional compact-Abelian
+semiclassical window.  Here the semiclassical objects live in three Euclidean
+dimensions, the dual photon is a local scalar in the infrared effective
+theory, and the Wilson loop is converted into a calculable wall problem.  The
+dilute BPST instanton gas of Chapter~\ref{ch:volume-ii-20} supplies
+theta-dependent amplitude data in four dimensions rather than this
+dual-photon wall mechanism.
+\end{controlledapproximation}
+
 \section{Condensation and Oblique Confinement}
 
 The finite part of a gapped line-operator response can often be organized by

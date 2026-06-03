@@ -28,6 +28,13 @@
   a positive asymptotic linear potential for the screened charge.
 - Proves the strong-coupling lattice area mechanism from character expansion,
   Haar projection, surface selection, and the convergent-polymer hypothesis.
+- Adds the controlled three-dimensional Polyakov monopole-gas mechanism:
+  monopole fugacity generates a dual-photon sine-Gordon potential, the dual
+  photon mass is \(m_\gamma^2=2\zeta_{\rm M}/\kappa_{\rm d}\), and the
+  primitive Wilson loop becomes a sine-Gordon wall with
+  \(\sigma_{\rm P}=8\sqrt{2\kappa_{\rm d}\zeta_{\rm M}}\).  The chapter
+  explicitly distinguishes this controlled 3D mechanism from a
+  four-dimensional instanton-liquid explanation of Yang--Mills confinement.
 - Defines the finite condensate diagnostic \(K^\perp\), proves the finite
   condensate criterion, and works out magnetic, electric, and oblique
   confinement in \(\mathbb Z_N^{\rm e}\oplus\mathbb Z_N^{\rm m}\).
@@ -45,6 +52,7 @@
 | \(\mathcal C_{\rm top}\) | residual topological charges, \(S^\perp/S\) |
 | \(L_\gamma^{\rm ren}(C)\) | renormalized line operator on contour \(C\) |
 | \(V_\gamma(L)\) | rectangular-loop static potential |
+| \(\varphi,\zeta_{\rm M},\kappa_{\rm d},m_\gamma,\sigma_{\rm P}\) | Polyakov dual photon, monopole fugacity, dual kinetic coefficient, dual-photon mass, and wall/string tension in the controlled 3D monopole-gas mechanism |
 | \(K\) | isotropic condensed charge subgroup |
 | \(K^\perp\) | finite charges with trivial braiding against \(K\) |
 
@@ -63,10 +71,15 @@
 6. Strong-coupling lattice area behavior follows from Haar projection forcing
    plaquette surfaces ending on the loop, plus convergence of the polymer
    expansion.
-7. Oblique confinement is the finite Dirac-pairing criterion for a dyonic
+7. In the controlled three-dimensional compact-Abelian semiclassical window,
+   primitive monopoles generate a dual-photon sine-Gordon potential, a mass
+   gap, and a calculable Wilson-loop area coefficient
+   \(\sigma_{\rm P}=8\kappa_{\rm d}m_\gamma\).  This is not a derivation of
+   four-dimensional Yang--Mills confinement.
+8. Oblique confinement is the finite Dirac-pairing criterion for a dyonic
    condensate \(K=\langle(p,1)\rangle\), with unconfined finite charges
    obeying \(e\equiv pm\pmod N\).
-8. The continuum confinement criterion remains an open theorem-level target,
+9. The continuum confinement criterion remains an open theorem-level target,
    not a definition.
 
 ## Figures
@@ -80,8 +93,9 @@
 - `calculation-checks/oblique_confinement_checks.py` verifies the finite
   charge arithmetic used in the chapter: screened-pairing descent,
   orthogonal complements, maximal isotropic dyonic condensates, the oblique
-  condition \(e\equiv pm\pmod N\), and non-mutual-locality of simultaneous
-  electric/magnetic generators.
+  condition \(e\equiv pm\pmod N\), non-mutual-locality of simultaneous
+  electric/magnetic generators, and the normalization algebra of the 3D
+  Polyakov monopole-gas area law.
 
 ## Audit Notes
 
@@ -89,3 +103,8 @@
   sketch into a theorem-led treatment of line-charge systems, renormalized
   line laws, screening, strong-coupling lattice area law, and oblique
   confinement; added the calculation-check companion.
+- 2026-06-03 issue #597 physics-consequence pass: added the controlled 3D
+  Polyakov monopole-gas area-law mechanism.  The text derives the dual-photon
+  mass, the sine-Gordon wall tension, and the Wilson-loop area coefficient
+  from monopole fugacity data, while explicitly distinguishing this mechanism
+  from any uncontrolled four-dimensional instanton-liquid confinement claim.

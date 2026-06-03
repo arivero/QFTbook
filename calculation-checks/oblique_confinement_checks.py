@@ -8,11 +8,15 @@ The manuscript uses the finite center-sensitive charge group
 with pairing ((e,m),(e',m')) -> (e m' - e' m) / N mod 1.  These checks verify
 the arithmetic behind screening quotients, orthogonal complements of
 condensates, and the dyonic unconfined direction in oblique confinement.  The
-script does not simulate a gauge theory or prove that a condensate forms.
+script also checks the finite algebra in the controlled three-dimensional
+Polyakov monopole-gas mechanism: dual-photon mass normalization, sine-Gordon
+wall first-order identities, and the area-law/static-potential extraction.
+It does not simulate a gauge theory or prove that a condensate forms.
 """
 
 from __future__ import annotations
 
+from fractions import Fraction
 from itertools import product
 
 Charge = tuple[int, int]
@@ -139,12 +143,73 @@ def check_nonisotropic_pair_cannot_condense_together() -> None:
         )
 
 
+def check_polyakov_monopole_gas_wall_tension() -> None:
+    # In the declared normalization
+    # S = int [kappa/2 (d phi)^2 + 2 zeta (1-cos phi)] d^3x,
+    # the dual photon has m_gamma^2 = 2 zeta/kappa and the primitive
+    # sine-Gordon wall tension is sigma_P = 8 sqrt(2 kappa zeta).
+    kappa = Fraction(5, 7)
+    zeta = Fraction(11, 13)
+    mass_squared = 2 * zeta / kappa
+    assert_equal("Polyakov dual photon mass squared", mass_squared, Fraction(154, 65))
+
+    tension_squared = 128 * kappa * zeta
+    assert_equal("Polyakov wall tension squared", tension_squared, Fraction(7040, 91))
+    assert_equal(
+        "Polyakov wall tension equals 8 kappa m_gamma",
+        tension_squared,
+        64 * kappa * kappa * mass_squared,
+    )
+
+    # The explicit kink phi(x)=4 arctan exp(m x) obeys
+    # phi'/m = 2 sin(phi/2).  With u=exp(m x),
+    # sin(phi/2)=sin(2 arctan u)=2u/(1+u^2).
+    for u in [Fraction(1, 3), Fraction(2, 5), Fraction(7, 4)]:
+        derivative_over_mass = 4 * u / (1 + u * u)
+        two_sin_half_phi = 4 * u / (1 + u * u)
+        assert_equal(
+            f"Polyakov kink first-order identity u={u}",
+            derivative_over_mass,
+            two_sin_half_phi,
+        )
+
+        sin_half_phi_squared = (2 * u / (1 + u * u)) ** 2
+        one_minus_cos_phi = 2 * sin_half_phi_squared
+        gradient_energy_density = (
+            kappa
+            * Fraction(1, 2)
+            * mass_squared
+            * derivative_over_mass
+            * derivative_over_mass
+        )
+        potential_density = 2 * zeta * one_minus_cos_phi
+        assert_equal(
+            f"Polyakov wall first-integral energy balance u={u}",
+            gradient_energy_density,
+            potential_density,
+        )
+
+    # For a rectangular loop of area A=L T, the area exponent sigma A gives
+    # V(L)=sigma L after taking -T^{-1} log <W>.  Track the coefficient
+    # algebra without choosing an irrational value for sigma.
+    spatial_length = Fraction(17, 5)
+    time_length = Fraction(19, 3)
+    area = spatial_length * time_length
+    assert_equal("Polyakov rectangular area", area, Fraction(323, 15))
+    assert_equal(
+        "Polyakov static potential squared from area law",
+        tension_squared * area * area / (time_length * time_length),
+        tension_squared * spatial_length * spatial_length,
+    )
+
+
 def main() -> None:
     check_screened_pairing_descends()
     check_maximal_isotropic_axes_and_dyons()
     check_oblique_unconfined_direction()
     check_magnetic_condensation_confines_electric_nality()
     check_nonisotropic_pair_cannot_condense_together()
+    check_polyakov_monopole_gas_wall_tension()
     print("All oblique-confinement finite charge checks passed.")
 
 

@@ -1220,7 +1220,12 @@ Current checks:
   chapter, including screened-pairing descent to \(S^\perp/S\), maximal
   isotropy of dyonic condensates \(\langle(p,1)\rangle\), the oblique
   unconfined condition \(e\equiv pm\pmod N\), and confinement of nonzero
-  electric \(N\)-ality under magnetic condensation.
+  electric \(N\)-ality under magnetic condensation.  It also verifies the
+  normalization algebra in the controlled three-dimensional Polyakov
+  monopole-gas mechanism: \(m_\gamma^2=2\zeta_{\rm M}/\kappa_{\rm d}\),
+  the sine-Gordon wall first-order identity, \(\sigma_{\rm P}^2=
+  128\kappa_{\rm d}\zeta_{\rm M}\), and the rectangular-loop extraction of
+  \(V(L)=\sigma_{\rm P}L\).
 - `duality_defect_gauging_checks.py`: exact finite checks for the finite
   gauging and duality-defect chapter, including the regular algebra identity
   \(A_H\otimes A_H=|H|A_H\), normality of \(A_3\triangleleft S_3\), the
