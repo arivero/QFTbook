@@ -527,6 +527,98 @@ formula is the one used by boundary-changing fields in non-self-conjugate
 examples.
 \end{proof}
 
+\begin{proposition}[Annulus nimrep spectral resolution]
+\label{prop:bcft-annulus-nimrep-spectral-resolution}
+Let \(I\) be the set of simple chiral labels of a unitary rational theory,
+with fusion coefficients \(N_{ij}{}^k\) and modular matrix \(S\).  Let
+\(\mathcal B\) be a finite set of elementary boundary labels, and suppose the
+open annulus multiplicities form matrices
+\[
+  (n_i)_a{}^b=n_{ab}{}^i,
+  \qquad a,b\in\mathcal B,
+\]
+such that
+\begin{equation}
+  n_0=\mathbf 1,\qquad
+  n_i n_j=\sum_k N_{ij}{}^k n_k .
+  \label{eq:bcft-nimrep-ring-representation}
+\end{equation}
+Assume also that these matrices are normal and mutually commuting in the
+unitary boundary two-point pairing.  Then there is a unitary matrix
+\(\Psi_{a e}\), whose columns are indexed by a finite multiset
+\(\mathcal E\) of exponents \(e\), and a chiral label \(\alpha(e)\in I\) for
+each exponent, such that
+\begin{equation}
+  (n_i)_a{}^b
+  =
+  \sum_{e\in\mathcal E}
+  \Psi_{a e}\,
+  \frac{S_{i,\alpha(e)}}{S_{0,\alpha(e)}}\,
+  \overline{\Psi_{b e}} .
+  \label{eq:bcft-annulus-nimrep-spectral-resolution}
+\end{equation}
+The number of copies of a fixed chiral label in \(\mathcal E\) is the
+dimension of the corresponding common eigenspace of the annulus matrices.
+If the closed channel contains one Ishibashi copy \(|e\rangle\!\rangle\) for
+each exponent copy and the boundary-state coefficients are
+\begin{equation}
+  B_a{}^e
+  =
+  \frac{\Psi_{a e}}{\sqrt{S_{0,\alpha(e)}}},
+  \label{eq:bcft-nimrep-boundary-reflection-coefficients}
+\end{equation}
+then the closed-channel annulus formula reproduces precisely the open-channel
+matrices \(n_i\).
+\end{proposition}
+
+\begin{proof}
+The matrices \(n_i\) are simultaneously unitarily diagonalizable because they
+are normal and mutually commute.  On a common eigenline \(e\), the eigenvalues
+\(\lambda_i(e)\) obey
+\[
+  \lambda_i(e)\lambda_j(e)
+  =
+  \sum_k N_{ij}{}^k\lambda_k(e),
+  \qquad
+  \lambda_0(e)=1,
+\]
+so \(i\mapsto\lambda_i(e)\) is a one-dimensional representation of the
+Verlinde fusion algebra.  Since \(S\) diagonalizes this semisimple algebra,
+every such character has the form
+\[
+  \lambda_i(e)=\frac{S_{i,\alpha(e)}}{S_{0,\alpha(e)}}
+\]
+for a chiral label \(\alpha(e)\), with repetitions allowed when the common
+eigenspace has multiplicity.  Writing the spectral projectors in an
+orthonormal eigenbasis gives
+\eqref{eq:bcft-annulus-nimrep-spectral-resolution}.  Finally,
+\eqref{eq:cardy-annulus-integrality-equation} with
+\eqref{eq:bcft-nimrep-boundary-reflection-coefficients} gives
+\[
+  \sum_{e\in\mathcal E}
+  \overline{B_b{}^e}\,B_a{}^e\,S_{\alpha(e)i}
+  =
+  \sum_{e\in\mathcal E}
+  \Psi_{a e}\,
+  \frac{S_{i,\alpha(e)}}{S_{0,\alpha(e)}}\,
+  \overline{\Psi_{b e}},
+\]
+using the symmetry of \(S\), which is the displayed open annulus matrix.
+\end{proof}
+
+This proposition is the annulus part of the open--closed sewing problem, not a
+replacement for the Cardy--Lewellen equations.  It says that a non-diagonal
+rational boundary theory is not specified by arbitrary nonnegative integer
+open spectra: the annulus matrices must form a fusion-ring representation, and
+their common eigenvectors are the closed-channel reflection coefficients of
+the boundary states.  The later boundary OPE, disk classifying algebra, and
+two-point pairing data still have to explain how these reflection coefficients
+participate in local operator products and all bordered-surface sewings.  In
+the diagonal Cardy solution this spectral resolution is the regular
+representation diagonalized by \(S\); in non-diagonal examples the exponent
+multiset records which Ishibashi sectors, and with what multiplicities, are
+visible to the chosen boundary theory.
+
 \section{Boundary OPE and Cardy--Lewellen Equations}
 \label{sec:bcft-boundary-ope-sewing}
 

@@ -46,6 +46,11 @@
   from boundary \(a\) to boundary \(b\) has multiplicity `N_{k a}^b`.
   The old symmetric shorthand is valid only in real/self-conjugate modular
   data after relabelling.
+- Adds the annulus nimrep spectral-resolution bridge: finite open-channel
+  multiplicity matrices that represent the fusion ring are simultaneously
+  diagonalized by boundary reflection data, with eigenvalues
+  `S_i alpha / S_0 alpha`; the exponent multiset records the closed Ishibashi
+  sectors visible to the boundary theory.
 - States explicit rational sewing hypotheses for boundary OPE equations:
   finite semisimple unitary chiral data, convergent genus-zero blocks,
   nondegenerate boundary two-point pairings, and Moore--Seiberg fusing
@@ -197,31 +202,36 @@
 4. Cardy's diagonal solution converts the oriented annulus coefficients into
    Verlinde fusion coefficients \(N_{ka}{}^b\); the bra/ket conjugation is
    load-bearing for non-self-conjugate labels.
-5. Boundary OPE coefficients depend on two-point normalization and block
+5. Annulus nimreps are the open-channel shadow of closed-channel reflection
+   coefficients: after simultaneous diagonalization, each common eigenline
+   carries a Verlinde character `S_i alpha/S_0 alpha`, and the unitary
+   eigenvectors supply the boundary-state coefficients up to the universal
+   `sqrt(S_0 alpha)` normalization.
+6. Boundary OPE coefficients depend on two-point normalization and block
    bases, while the Cardy--Lewellen sewing equation is invariant under basis
    changes.
-6. In the diagonal Cardy case, boundary-changing field multiplicities obey
+7. In the diagonal Cardy case, boundary-changing field multiplicities obey
    `dim psi_i^{ab}=N_ia^b`, and associativity of boundary OPEs is the
    Moore--Seiberg pentagon identity in boundary-field language.
-7. The Verlinde eigenvalue `S_ia/S_0a` is the fusion-ring character; the
+8. The Verlinde eigenvalue `S_ia/S_0a` is the fusion-ring character; the
    Cardy disk one-point coefficient differs by the two-point normalization
    factor `S_0a/sqrt(S_0i)`.
-8. The coefficient `R^a_{i0}` in the bulk-boundary OPE equals the lowered
+9. The coefficient `R^a_{i0}` in the bulk-boundary OPE equals the lowered
    disk one-point coefficient; raising the bulk label inserts the two-point
    metric `D_{ij}`.
-9. Direct-sum boundary conditions compose by matrix units, so annulus
+10. Direct-sum boundary conditions compose by matrix units, so annulus
    multiplicities scale by `nm` and boundary entropy is additive under finite
    sums.
-10. Compact-boson Neumann gluing forces `m=0`, while Dirichlet gluing forces
+11. Compact-boson Neumann gluing forces `m=0`, while Dirichlet gluing forces
    `w=0`; T-duality exchanges these constraints.
-11. The Ising Cardy states reproduce the open spectra of fixed/free boundary
+12. The Ising Cardy states reproduce the open spectra of fixed/free boundary
    conditions.
-12. The Ising boundary-changing OPE constants are the chiral fusing symbols
+13. The Ising boundary-changing OPE constants are the chiral fusing symbols
    in the Cardy basis; raw constants rescale with boundary two-point
    normalizations, while the `sigma sigma sigma` fusing matrix, relative
    fixed-boundary sign, and four-boundary orthogonality sewing cell are
    invariant sewing data.
-13. Liouville FZZT/ZZ boundary states are distributional wavefunctions on a
+14. Liouville FZZT/ZZ boundary states are distributional wavefunctions on a
    continuous spectrum; their finite-difference and degenerate-annulus
    simplifications are hyperbolic algebra, not a substitute for an analytic
    sewing theorem.  The stripped FZZT annulus has a continuous Plancherel
@@ -232,58 +242,58 @@
    prescriptions, and continuous sewing maps with determinant-line
    bookkeeping.  A simple pole crossing adds a residue/evaluation functional;
    omitting that discrete term in one sewing channel changes the amplitude.
-14. Rational Cardy-Lewellen construction remains a theorem-boundary input, but
+15. Rational Cardy-Lewellen construction remains a theorem-boundary input, but
    the boundary entropy block is now split into an analytic gradient input and
    a locally proved monotonicity proposition.  Monotonicity of \(g\) is derived
    from the positive gradient formula, not quoted as an independent
    endpoint-classification statement.  The positivity mechanism of the
    gradient metric is spectral: in a finite regulator each positive boundary
    gap contributes the weight `2 kappa^2/(Delta(Delta^2+kappa^2))`.
-15. The Frobenius-algebra object formalism turns rational Cardy-Lewellen
+16. The Frobenius-algebra object formalism turns rational Cardy-Lewellen
    boundary sewing into module associativity and chiral associator pentagon
    identities; analytic all-surface sewing remains the external theorem
    boundary.
-16. In a finite semisimple algebra shadow of a non-diagonal rational BCFT,
+17. In a finite semisimple algebra shadow of a non-diagonal rational BCFT,
    disk identity-channel one-point coordinates are central characters on
    elementary boundary modules, not arbitrary traces on reducible modules and
    not actions of noncentral boundary endomorphisms.
-17. The non-diagonal annulus multiplicity matrices form a nonnegative-integer
+18. The non-diagonal annulus multiplicity matrices form a nonnegative-integer
     representation of the chiral fusion algebra because interval sewing with
     two successive chiral labels can be evaluated either through an
     intermediate boundary module or by fusing the two chiral labels first.
-18. In the pointed \(G/H\) module cell, the annulus matrices are
+19. In the pointed \(G/H\) module cell, the annulus matrices are
     simultaneously diagonalized by quotient Fourier projectors; stabilizer
     labels have the vacuum annulus spectrum but do not collapse as boundary
     endomorphism labels.
-19. In the pointed \(G/H\) module cell, boundary-field OPE associativity
+20. In the pointed \(G/H\) module cell, boundary-field OPE associativity
     keeps both endpoint data and chiral labels: stabilizer objects preserve a
     boundary endpoint but do not collapse to the vacuum boundary field.
-20. The stabilizer classifying idempotents in the pointed \(G/H\) module cell
+21. The stabilizer classifying idempotents in the pointed \(G/H\) module cell
     are orthogonal projectors and are compatible with boundary-changing fields
     by the slide identity
     \(\psi_{x,g}e_{x,\chi}=e_{x+g,\chi}\psi_{x,g}\).
-21. The same stabilizer sectors have orthogonal Frobenius two-point pairings
+22. The same stabilizer sectors have orthogonal Frobenius two-point pairings
     \(\varepsilon_x(e_{x,\chi}e_{x,\chi'})=\delta_{\chi,\chi'}/|H|\), and
     projected inverse boundary-changing fields compose back to the matching
     stabilizer idempotent rather than collapsing all stabilizer labels.
-22. The pointed finite laboratory is coherent end-to-end: the annulus matrix
+23. The pointed finite laboratory is coherent end-to-end: the annulus matrix
     entry is the dimension of the corresponding boundary-changing field space,
     boundary-OPE composition has the same endpoint as annulus multiplication,
     and stabilizer Fourier inversion recovers endpoint-preserving fields from
     the classifying idempotents.
-23. Local BCFT sewing cells imply all-surface decomposition independence only
+24. Local BCFT sewing cells imply all-surface decomposition independence only
     through a generated move graph: along a finite path, the total amplitude
     defect is bounded by the telescoping sum of local move defects propagated by
     later sewing transports.  Zero local defects plus closed-loop compatibility
     gives path independence on a connected move graph; analytic construction of
     the actual infinite-dimensional move graph remains a theorem boundary.
-24. Projective determinant-line factors in sewing are a separate obstruction
+25. Projective determinant-line factors in sewing are a separate obstruction
     from vector-valued local move defects.  On a finite move graph they can be
     removed by choosing vertex trivializations exactly when the edge scalars
     form a coboundary.  Scalar sewing independence after forgetting the line is
     governed by the total closed-loop transport \(\lambda_\ell T_\ell\), not by
     the scalar line phase alone.
-25. A full BCFT construction has a strict dependency order: closed/chiral
+26. A full BCFT construction has a strict dependency order: closed/chiral
     input, boundary Hilbert or spectral data, compatible annulus/disk/OPE/
     two-point coordinates, local sewing moves in a common normalization, and
     finally generated all-surface sewing.  The Ising, pointed rational, and
@@ -302,7 +312,8 @@
 - `calculation-checks/bcft_cardy_checks.py` verifies the Ising modular
   `S`-matrix arithmetic, Cardy annulus spectra, the oriented cyclic-pointed
   annulus formula that catches the real/self-conjugate shortcut, fusion
-  associativity, fusion-ring characters, normalized Cardy two-bulk
+  associativity, the \(A_3\) Ising annulus nimrep spectral resolution and
+  reflection-product reconstruction, fusion-ring characters, normalized Cardy two-bulk
   classifying sewing,
   the finite classifying-center model for non-diagonal rational sewing,
   the pointed module-category annulus nimrep identity,
@@ -508,3 +519,7 @@
   `n_ab^k = sum_i conjugate(B_b^i) B_a^i S_ik = N_{k a}^b` and added a
   cyclic pointed modular-data check showing that the shortcut fails for
   non-self-conjugate labels.
+- 2026-06-03 annulus spectral-resolution pass: added the general finite
+  nimrep diagonalization bridge from open annulus matrices to closed-channel
+  reflection coefficients, and extended `bcft_cardy_checks.py` with an exact
+  \(A_3\) Ising spectral-resolution/reflection-product check.

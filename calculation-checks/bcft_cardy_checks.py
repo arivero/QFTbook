@@ -143,6 +143,42 @@ def matrix_multiply(lhs: list[list[Qsqrt2]], rhs: list[list[Qsqrt2]]) -> list[li
     ]
 
 
+def q_matrix_add(
+    lhs: list[list[Qsqrt2]],
+    rhs: list[list[Qsqrt2]],
+) -> list[list[Qsqrt2]]:
+    size = len(lhs)
+    return [
+        [lhs[i][j] + rhs[i][j] for j in range(size)]
+        for i in range(size)
+    ]
+
+
+def q_matrix_scale(
+    coefficient: Qsqrt2,
+    matrix: list[list[Qsqrt2]],
+) -> list[list[Qsqrt2]]:
+    return [
+        [coefficient * entry for entry in row]
+        for row in matrix
+    ]
+
+
+def q_zero_matrix(size: int) -> list[list[Qsqrt2]]:
+    return [[ZERO for _ in range(size)] for _ in range(size)]
+
+
+def q_outer(vector: list[Qsqrt2]) -> list[list[Qsqrt2]]:
+    return [
+        [left * right for right in vector]
+        for left in vector
+    ]
+
+
+def q_dot(lhs: list[Qsqrt2], rhs: list[Qsqrt2]) -> Qsqrt2:
+    return sum((left * right for left, right in zip(lhs, rhs)), ZERO)
+
+
 def verlinde(a: int, b: int, c: int) -> Qsqrt2:
     total = ZERO
     for i in range(3):
@@ -174,6 +210,99 @@ def check_cardy_annulus() -> None:
                     f"Cardy annulus {left}-{right} open channel {channel}",
                     coefficient,
                     expected_value,
+                )
+
+
+def check_annulus_nimrep_spectral_resolution() -> None:
+    """Check the A_3 Ising annulus nimrep spectral resolution exactly."""
+
+    n_one = [
+        [ONE, ZERO, ZERO],
+        [ZERO, ONE, ZERO],
+        [ZERO, ZERO, ONE],
+    ]
+    n_epsilon = [
+        [ZERO, ZERO, ONE],
+        [ZERO, ONE, ZERO],
+        [ONE, ZERO, ZERO],
+    ]
+    n_sigma = [
+        [ZERO, ONE, ZERO],
+        [ONE, ZERO, ONE],
+        [ZERO, ONE, ZERO],
+    ]
+    nimreps = {
+        "1": n_one,
+        "epsilon": n_epsilon,
+        "sigma": n_sigma,
+    }
+
+    assert_equal(
+        "A3 Ising nimrep epsilon square",
+        matrix_multiply(n_epsilon, n_epsilon),
+        n_one,
+    )
+    assert_equal(
+        "A3 Ising nimrep epsilon times sigma",
+        matrix_multiply(n_epsilon, n_sigma),
+        n_sigma,
+    )
+    assert_equal(
+        "A3 Ising nimrep sigma square",
+        matrix_multiply(n_sigma, n_sigma),
+        q_matrix_add(n_one, n_epsilon),
+    )
+
+    eigenvectors = {
+        "1": [HALF, INV_SQRT2, HALF],
+        "epsilon": [HALF, -INV_SQRT2, HALF],
+        "sigma": [INV_SQRT2, ZERO, -INV_SQRT2],
+    }
+
+    for left_name, left_vector in eigenvectors.items():
+        for right_name, right_vector in eigenvectors.items():
+            expected = ONE if left_name == right_name else ZERO
+            assert_equal(
+                f"A3 Ising annulus eigenvector orthogonality {left_name} {right_name}",
+                q_dot(left_vector, right_vector),
+                expected,
+            )
+
+    for chiral_index, chiral_label in enumerate(LABELS):
+        spectral_resolution = q_zero_matrix(3)
+        for exponent_label, eigenvector in eigenvectors.items():
+            exponent_index = LABELS.index(exponent_label)
+            eigenvalue = S[chiral_index][exponent_index] / S[0][exponent_index]
+            spectral_resolution = q_matrix_add(
+                spectral_resolution,
+                q_matrix_scale(eigenvalue, q_outer(eigenvector)),
+            )
+        assert_equal(
+            f"A3 Ising annulus spectral resolution for {chiral_label}",
+            spectral_resolution,
+            nimreps[chiral_label],
+        )
+
+    # The boundary coefficients include square roots of S_0e.  The annulus only
+    # needs the products conjugate(B_b^e) B_a^e S_ei, which are exact here.
+    for chiral_index, chiral_label in enumerate(LABELS):
+        for source in range(3):
+            for target in range(3):
+                closed_channel_entry = sum(
+                    (
+                        eigenvector[source]
+                        * eigenvector[target]
+                        * S[chiral_index][LABELS.index(exponent_label)]
+                        / S[0][LABELS.index(exponent_label)]
+                        for exponent_label, eigenvector in eigenvectors.items()
+                    ),
+                    ZERO,
+                )
+                assert_equal(
+                    "A3 Ising reflection-product annulus entry "
+                    f"{chiral_label}: {source}->{target}",
+                    closed_channel_entry,
+                    nimreps[chiral_label][source][target],
                 )
 
 
@@ -1657,6 +1786,7 @@ def check_finite_sewing_anomaly_cocycle_trivialization() -> None:
 def main() -> None:
     check_modular_s()
     check_cardy_annulus()
+    check_annulus_nimrep_spectral_resolution()
     check_oriented_cardy_annulus_for_cyclic_pointed_data()
     check_fusion_associativity()
     check_cardy_fusion_ring_characters()
@@ -1685,6 +1815,7 @@ def main() -> None:
         "All BCFT Cardy, oriented-annulus, sewing, boundary-gradient, "
         "Ising boundary-changing, "
         "matrix-Frobenius, finite-center, pointed-nimrep, Chan-Paton, "
+        "annulus-nimrep-spectral-resolution, "
         "pointed-annulus-Fourier, pointed-boundary-OPE, "
         "pointed-stabilizer-slide, pointed-laboratory-unified, compact-boson, "
         "Liouville-boundary, continuous-annulus Plancherel, "
