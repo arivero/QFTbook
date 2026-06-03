@@ -4629,6 +4629,106 @@ times the appropriate supremum norm of the source.  Since
 logarithmically infrared sensitive.
 \end{proof}
 
+\begin{proposition}[Amputation of the instanton source kernel]
+\label{prop:instanton-external-leg-amputation-kernel}
+Work in the finite-regulator \(Q=1\) chart of
+Proposition~\ref{prop:instanton-proper-time-four-fermion-amplitude}, and
+suppose an auxiliary infrared deformation or source scheme has been chosen in
+which the external quark fields used to probe the kernel have isolated
+nonzero external pole-residue factors.  After the spin and color external
+covectors are fixed, let these adjacent unamputated leg factors be
+\(R_{R,f}(p_{R,f})\) and \(R_{L,f'}(p_{L,f'})\).  For plane-wave packets in
+the zero-mode channel, the zero-mode source matrix has the factorization
+\begin{equation}
+\begin{aligned}
+  B^{\rm unamp}_{ff'}(z)
+  &=
+  R_{R,f}(p_{R,f})\,
+  B^{\rm amp}_{ff'}(z)\,
+  R_{L,f'}(p_{L,f'}),
+\\
+  B^{\rm amp}_{ff'}(z)
+  &=
+  \rho^3
+  \ee^{\ii q_{ff'}\cdot a}\,
+  \widehat h_\rho(q_{ff'})\,
+  \mathcal T_{ff'}(U;p_{R,f},p_{L,f'}),
+  \qquad
+  q_{ff'}=p_{R,f}-p_{L,f'} .
+\end{aligned}
+  \label{eq:instanton-amputated-source-matrix}
+\end{equation}
+Here \(\mathcal T_{ff'}\) is the remaining spin-color orientation tensor
+after the external representatives have been contracted with the normalized
+zero-mode line.  For \(N_f=2\), the unamputated and amputated source
+determinants obey
+\begin{equation}
+  \det B^{\rm unamp}(z)
+  =
+  \left(\prod_{f=1}^{2}R_{R,f}\right)
+  \left(\prod_{f'=1}^{2}R_{L,f'}\right)
+  \det B^{\rm amp}(z).
+  \label{eq:instanton-source-determinant-amputation}
+\end{equation}
+Consequently the source-amputated one-instanton four-fermion kernel is
+\begin{equation}
+  \mathcal M^{(4),{\rm amp}}_{\Lambda,Q=1}
+  =
+  \int_{\mathcal U_{Q=1}}
+  \exp[-S_\Lambda(A_z)+\ii\theta]\,
+  \mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)\,
+  \det B^{\rm amp}(z)\,
+  \dd\nu_{\Lambda,\mathcal M}(z).
+  \label{eq:instanton-amputated-four-fermion-kernel}
+\end{equation}
+Amputation removes only the adjacent external propagator residues.  It does
+not remove the zero-mode form factor
+\(\widehat h_\rho(q)=\rho|q|K_1(\rho|q|)\), the spin-color orientation tensor,
+the nonzero-mode determinant, or the collective-coordinate integral.  Thus
+the local 't Hooft operator is the small-\(\rho|q|\) limit of the amputated
+instanton kernel, not the result of dividing out the instanton zero-mode
+wavefunction itself.
+\end{proposition}
+
+\begin{proof}
+The zero-mode source matrix is obtained by attaching the external source
+wavefunctions to the normalized zero-mode line.  Before amputation, each row
+of the flavor matrix carries the adjacent right-handed external residue
+\(R_{R,f}\), and each column carries the adjacent left-handed external
+residue \(R_{L,f'}\).  Removing these external legs multiplies the
+unamputated matrix on the left and right by the inverse diagonal residue
+matrices, leaving \(B^{\rm amp}\).
+
+The determinant identity
+\[
+  \det(D_R B^{\rm amp} D_L)
+  =
+  \det D_R\,\det B^{\rm amp}\,\det D_L
+\]
+for the diagonal matrices \(D_R=\operatorname{diag}(R_{R,1},R_{R,2})\) and
+\(D_L=\operatorname{diag}(R_{L,1},R_{L,2})\) gives
+\eqref{eq:instanton-source-determinant-amputation}.  Multiplying the
+unamputated Green kernel by the inverse product of the same residues therefore
+gives \eqref{eq:instanton-amputated-four-fermion-kernel}.  The factors in
+\(B^{\rm amp}\) are not external propagators: they are the Fourier transform
+of the zero-mode density and the orientation tensor of the instanton
+background.  They remain part of the hard instanton kernel.
+\end{proof}
+
+The qualification in
+Proposition~\ref{prop:instanton-external-leg-amputation-kernel} is essential.
+Colored quark legs in confining QCD do not define ordinary physical
+asymptotic states.  The displayed object is an auxiliary source-amputated, or
+partonic hard-kernel, coordinate useful for matching the finite-regulator
+Green function to the local effective operator.  Gauge-invariant amplitudes
+must contract the same instanton kernel with color-singlet external
+operators, hadronic matrix elements, or a separately specified infrared
+deformation.  This is the amplitude-level content of the original
+one-instanton computation of 't Hooft
+\cite{tHooft1976Pseudoparticle}: collective coordinates, nonzero-mode
+fluctuation determinants, fermion zero-mode saturation, and external-leg
+normalization are one calculation.
+
 Thus the \(Q=1\) amplitude is the microscopic origin of the \(U(1)_A\)
 selection rule.  The determinant in
 \eqref{eq:qcd-thooft-vertex-leading-local} carries axial charge \(2N_f\);

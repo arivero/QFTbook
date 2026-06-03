@@ -454,6 +454,15 @@
   zeroth adiabatic term; derivative corrections require the external
   wave-packet or infrared cutoff data, equivalently the small-\(q\rho\)
   expansion contains \(q^2\rho^2\log(q\rho)\).
+- The source-amputated instanton four-fermion kernel is obtained by removing
+  only the adjacent external pole-residue factors from the zero-mode source
+  matrix.  Row and column residue factors multiply the flavor determinant and
+  cancel under amputation, while the BPST form factor \(zK_1(z)\), the
+  spin-color orientation tensor, the nonzero-mode determinant, and the
+  collective-coordinate integral remain part of the hard instanton kernel.
+  Because colored quarks are not physical asymptotic states in confining QCD,
+  this is a source-amputated/partonic coordinate, not a gauge-invariant quark
+  \(S\)-matrix element.
 - For massive vectorlike QCD, the vacuum instanton term is now separated as a
   finite-size-window activity:
   \[
@@ -685,3 +694,11 @@
   and the large-\(\rho\) obstruction to a zero-temperature dilute activity.
   The BPST check script now verifies the finite-window integral and endpoint
   classifications exactly.
+- 2026-06-03 issue #597 external-amputation pass: added
+  `prop:instanton-external-leg-amputation-kernel`, which separates the
+  unamputated zero-mode source matrix from the source-amputated hard kernel.
+  The pass proves that external row/column pole-residue factors cancel under
+  amputation but the BPST form factor, orientation tensor, nonzero-mode
+  determinant, and collective-coordinate integral remain.  The BPST check
+  script now verifies this determinant row/column arithmetic and a finite
+  two-cell collective-coordinate integral.

@@ -27,6 +27,9 @@ relations
     the BPST fundamental zero-mode envelope has finite zeroth moment, an
     exact momentum-space form factor, a power-law tail, and a
     logarithmically infrared-sensitive second moment
+    external-leg amputation removes only row/column propagator residues from
+    the zero-mode source matrix and leaves the instanton form factors inside
+    the amputated hard kernel
     mass-saturated QCD vacuum activity carries prod_f(m_f rho), depends on
     theta+arg det M, is locally small-rho finite when b0+Nf>4, and is
     infrared-uncontrolled in zero-temperature QCD if the same one-loop power
@@ -821,6 +824,94 @@ def check_instanton_zero_mode_tail_local_limit() -> None:
     )
 
 
+def check_instanton_external_leg_amputation_kernel() -> None:
+    row_leg_residues = [Fraction(2, 3), Fraction(5, 7)]
+    column_leg_residues = [Fraction(11, 13), Fraction(17, 19)]
+    orientation_tensor = [[Fraction(3), Fraction(5)], [Fraction(7), Fraction(11)]]
+    form_factors = [
+        [Fraction(23, 29), Fraction(31, 37)],
+        [Fraction(41, 43), Fraction(47, 53)],
+    ]
+    amputated_source = [
+        [
+            orientation_tensor[row][col] * form_factors[row][col]
+            for col in range(2)
+        ]
+        for row in range(2)
+    ]
+    unamputated_source = [
+        [
+            row_leg_residues[row]
+            * amputated_source[row][col]
+            * column_leg_residues[col]
+            for col in range(2)
+        ]
+        for row in range(2)
+    ]
+    external_residue_product = (
+        product_fraction(row_leg_residues)
+        * product_fraction(column_leg_residues)
+    )
+    assert_equal(
+        "instanton source determinant row-column external residue factor",
+        det_fraction(unamputated_source),
+        external_residue_product * det_fraction(amputated_source),
+    )
+
+    recovered_amputated_source = [
+        [
+            unamputated_source[row][col]
+            / row_leg_residues[row]
+            / column_leg_residues[col]
+            for col in range(2)
+        ]
+        for row in range(2)
+    ]
+    assert_equal(
+        "external-leg amputation recovers zero-mode source matrix",
+        recovered_amputated_source,
+        amputated_source,
+    )
+
+    expected_amputated_det = (
+        orientation_tensor[0][0]
+        * form_factors[0][0]
+        * orientation_tensor[1][1]
+        * form_factors[1][1]
+        -
+        orientation_tensor[0][1]
+        * form_factors[0][1]
+        * orientation_tensor[1][0]
+        * form_factors[1][0]
+    )
+    assert_equal(
+        "amputated instanton determinant retains form factors",
+        det_fraction(amputated_source),
+        expected_amputated_det,
+    )
+
+    second_amputated_source = [
+        [Fraction(13, 17), Fraction(19, 23)],
+        [Fraction(29, 31), Fraction(37, 41)],
+    ]
+    weights = [Fraction(43, 47), Fraction(53, 59)]
+    unamputated_integral = (
+        weights[0] * det_fraction(unamputated_source)
+        + weights[1]
+        * external_residue_product
+        * det_fraction(second_amputated_source)
+    )
+    amputated_integral = unamputated_integral / external_residue_product
+    assert_equal(
+        "collective integral commutes with external-leg amputation",
+        amputated_integral,
+        (
+            weights[0] * det_fraction(amputated_source)
+            + weights[1] * det_fraction(second_amputated_source)
+        ),
+    )
+
+
 def check_dilute_instanton_gas_theta_cumulants() -> None:
     # The dilute gas promotes the one-instanton and one-anti-instanton
     # amplitudes to independent Poisson activities.  The topological charge
@@ -1019,6 +1110,7 @@ def main() -> None:
     check_physical_instanton_correlator_zero_mode_saturation()
     check_proper_time_fluctuation_four_fermion_amplitude()
     check_instanton_zero_mode_tail_local_limit()
+    check_instanton_external_leg_amputation_kernel()
     check_dilute_instanton_gas_theta_cumulants()
     check_mass_saturated_vacuum_activity_size_integral()
     check_uhlenbeck_boundary_face_budget()

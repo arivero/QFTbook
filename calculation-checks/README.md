@@ -401,9 +401,12 @@ Current checks:
   proper-time nonzero-mode determinant assembly for a smeared four-fermion
   instanton amplitude, the BPST zero-mode envelope momentum form factor
   \(zK_1(z)\), tail, and logarithmically sensitive second moment in the
-  local-vertex limit, the mass-saturated vacuum-activity size integral with
-  its \(\prod_f(m_f\rho)\) zero-mode factors, small-\(\rho\) finiteness
-  margin, large-\(\rho\) obstruction, and massless-flavor vanishing, the
+  local-vertex limit, the source-matrix row/column algebra showing that
+  external-leg amputation removes adjacent propagator residues while retaining
+  instanton zero-mode form factors, the mass-saturated vacuum-activity size
+  integral with its \(\prod_f(m_f\rho)\) zero-mode factors,
+  small-\(\rho\) finiteness margin, large-\(\rho\) obstruction, and
+  massless-flavor vanishing, the
   dilute instanton-gas theta cumulants \(\chi_{\rm top}=2\zeta\) and
   \(b_2=-1/12\) after a finite activity has been supplied, Uhlenbeck
   boundary face codimensions and product power-counting thresholds, and the
