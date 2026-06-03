@@ -10,6 +10,8 @@ two-point contour-to-r/a algebra, and thermal KMS detailed balance.
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
 import cmath
 import math
 
@@ -18,8 +20,7 @@ Matrix = list[list[complex]]
 
 
 def assert_close(lhs: complex, rhs: complex, message: str, tol: float = 1e-9) -> None:
-    if abs(lhs - rhs) > tol:
-        raise AssertionError(f"{message}: {lhs!r} != {rhs!r}")
+    _assert_close(message, lhs, rhs, tol=tol)
 
 
 def assert_true(condition: bool, message: str) -> None:

@@ -29,7 +29,14 @@ mp.mp.dps = 50
 
 
 def assert_close(name: str, got: complex | mp.mpf | mp.mpc, expected: complex | mp.mpf | mp.mpc, tol: mp.mpf) -> None:
-    if abs(got - expected) > tol:
+    if not mp.isfinite(got) or not mp.isfinite(expected):
+        raise AssertionError(f"{name}: nonfinite value {got!r} or {expected!r}")
+    if not mp.isfinite(tol) or tol < 0:
+        raise AssertionError(f"{name}: invalid tolerance {tol}")
+    error = abs(got - expected)
+    if not mp.isfinite(error):
+        raise AssertionError(f"{name}: nonfinite comparison error")
+    if error > tol:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}, tol={tol}")
 
 

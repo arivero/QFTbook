@@ -10,13 +10,14 @@ are finite-dimensional convention checks, not a continuum construction.
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
 import cmath
 import math
 
 
 def assert_close(lhs: complex, rhs: complex, message: str, tol: float = 1e-10) -> None:
-    if abs(lhs - rhs) > tol:
-        raise AssertionError(f"{message}: {lhs!r} != {rhs!r}")
+    _assert_close(message, lhs, rhs, tol=tol)
 
 
 def check_matsubara_boundary_phases() -> None:

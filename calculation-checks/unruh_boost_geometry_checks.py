@@ -8,13 +8,14 @@ eta(v,v)=-(v0)^2+(v1)^2 for the boost plane.
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
 import cmath
 import math
 
 
 def assert_close(got: float, expected: float, label: str, tol: float = 1e-12) -> None:
-    if abs(got - expected) > tol:
-        raise AssertionError(f"{label}: got {got!r}, expected {expected!r}")
+    _assert_close(label, got, expected, tol=tol)
 
 
 def minkowski_square(v0: float, v1: float) -> float:

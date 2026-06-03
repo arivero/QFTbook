@@ -17,6 +17,9 @@ field-theory simulations.
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
+
 from fractions import Fraction
 import math
 
@@ -41,8 +44,7 @@ def assert_equal(name: str, lhs: object, rhs: object) -> None:
 
 
 def assert_close(name: str, lhs: float, rhs: float, tol: float = 1e-12) -> None:
-    if abs(lhs - rhs) > tol:
-        raise AssertionError(f"{name} failed: {lhs!r} != {rhs!r}")
+    _assert_close(name, lhs, rhs, tol=tol)
 
 
 def check_current_duality() -> None:

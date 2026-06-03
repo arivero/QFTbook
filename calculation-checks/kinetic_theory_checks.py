@@ -3,14 +3,15 @@
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
 import math
 
 import sympy as sp
 
 
 def assert_close(name: str, got: float, expected: float, tol: float = 1.0e-11) -> None:
-    if abs(got - expected) > tol:
-        raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
+    _assert_close(name, got, expected, tol=tol)
 
 
 def distribution(beta: float, energy: float, chemical: float, eta: int) -> float:

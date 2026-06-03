@@ -13,8 +13,16 @@ mp.mp.dps = 60
 def assert_close(name, lhs, rhs, tol=mp.mpf("1e-45")):
     lhs = mp.mpf(lhs)
     rhs = mp.mpf(rhs)
+    if not mp.isfinite(lhs) or not mp.isfinite(rhs):
+        raise AssertionError(f"{name}: nonfinite value {lhs} or {rhs}")
+    if not mp.isfinite(tol) or tol < 0:
+        raise AssertionError(f"{name}: invalid tolerance {tol}")
     scale = max(mp.mpf(1), abs(lhs), abs(rhs))
-    if abs(lhs - rhs) > tol * scale:
+    error = abs(lhs - rhs)
+    threshold = tol * scale
+    if not mp.isfinite(error) or not mp.isfinite(threshold):
+        raise AssertionError(f"{name}: nonfinite comparison error")
+    if error > threshold:
         raise AssertionError(f"{name}: {lhs} != {rhs}")
 
 

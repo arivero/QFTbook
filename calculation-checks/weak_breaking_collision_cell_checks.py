@@ -3,6 +3,9 @@
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
+
 from fractions import Fraction
 from math import log
 
@@ -13,8 +16,7 @@ def assert_exact(name: str, got: Fraction, expected: Fraction) -> None:
 
 
 def assert_close(name: str, got: float, expected: float, tol: float = 1e-12) -> None:
-    if abs(got - expected) > tol:
-        raise AssertionError(f"{name} failed: got {got:.16e}, expected {expected:.16e}")
+    _assert_close(name, got, expected, tol=tol)
 
 
 def build_detailed_balance_rates() -> tuple[list[Fraction], list[list[Fraction]]]:

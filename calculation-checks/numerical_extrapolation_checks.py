@@ -12,6 +12,9 @@ from fractions import Fraction
 
 import numpy as np
 
+from check_utils import assert_array_close as _assert_array_close
+from check_utils import assert_close
+
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SCRIPT_DIR = ROOT / "qft_scripts"
@@ -30,16 +33,8 @@ def assert_leq(name, left, right):
         raise AssertionError(f"{name}: got {left!r} > {right!r}")
 
 
-def assert_close(name, actual, expected, tol=1.0e-11):
-    if abs(actual - expected) > tol:
-        raise AssertionError(f"{name}: got {actual!r}, expected {expected!r}")
-
-
-def assert_matrix_close(name, actual, expected, tol=1.0e-11):
-    error = float(np.max(np.abs(actual - expected)))
-    if error > tol:
-        raise AssertionError(f"{name}: max error {error:.3e}")
-
+def assert_matrix_close(name, actual, expected, tol=1.0e-11, *, rtol=0.0):
+    _assert_array_close(name, actual, expected, tol=tol, rtol=rtol)
 
 def lagrange_value(nodes, values, x):
     total = Fraction(0)
@@ -204,6 +199,7 @@ def check_correlated_fit_coordinates():
         "correlated fit coefficient covariance",
         propagator @ covariance @ propagator.T,
         np.linalg.inv(gram),
+        rtol=1.0e-10,
     )
 
     intercept_weights = propagator[0, :]

@@ -9,6 +9,9 @@ spacetime loop integrals or convergence of the perturbation series.
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
+
 from fractions import Fraction
 
 import numpy as np
@@ -20,8 +23,7 @@ def assert_equal(name: str, lhs: int | bool | Fraction, rhs: int | bool | Fracti
 
 
 def assert_close(name: str, lhs: complex, rhs: complex, tol: float = 1e-12) -> None:
-    if abs(lhs - rhs) > tol:
-        raise AssertionError(f"{name}: got {lhs!r}, expected {rhs!r}")
+    _assert_close(name, lhs, rhs, tol=tol)
 
 
 def su_n_trace_delta_basis(n: int) -> list[np.ndarray]:

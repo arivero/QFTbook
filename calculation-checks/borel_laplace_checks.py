@@ -10,6 +10,9 @@ proved in the text.
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
+
 from fractions import Fraction
 from math import factorial
 
@@ -20,8 +23,7 @@ def assert_eq(name: str, value: Fraction | int, expected: Fraction | int) -> Non
 
 
 def assert_close(name: str, value: float, expected: float, tol: float = 1.0e-10) -> None:
-    if abs(value - expected) > tol:
-        raise AssertionError(f"{name}: got {value!r}, expected {expected!r}")
+    _assert_close(name, value, expected, tol=tol)
 
 
 def double_factorial_odd(m: int) -> int:

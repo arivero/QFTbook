@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
 import cmath
 import itertools
 import math
@@ -12,8 +14,7 @@ ComplexMatrix = list[list[complex]]
 
 
 def assert_close(name: str, value: complex, expected: complex = 0j, tol: float = 1e-9) -> None:
-    if abs(value - expected) > tol:
-        raise AssertionError(f"{name}: got {value!r}, expected {expected!r}")
+    _assert_close(name, value, expected, tol=tol)
 
 
 def basis_tuples(dim: int, sites: int) -> list[tuple[int, ...]]:

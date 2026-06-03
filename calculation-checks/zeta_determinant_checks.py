@@ -3,13 +3,14 @@
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
 import math
 from fractions import Fraction
 
 
 def assert_close(name: str, got: float, expected: float, tol: float = 1.0e-10) -> None:
-    if abs(got - expected) > tol:
-        raise AssertionError(f"{name} failed: got {got:.16g}, expected {expected:.16g}")
+    _assert_close(name, got, expected, tol=tol)
 
 
 def assert_equal(name: str, got: object, expected: object) -> None:

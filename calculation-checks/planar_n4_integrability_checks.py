@@ -3,6 +3,9 @@
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
+
 from collections import Counter
 import cmath
 from fractions import Fraction
@@ -11,8 +14,7 @@ import math
 
 
 def assert_close(name: str, value: complex, expected: complex = 0j, tol: float = 1e-9) -> None:
-    if abs(value - expected) > tol:
-        raise AssertionError(f"{name}: got {value!r}, expected {expected!r}")
+    _assert_close(name, value, expected, tol=tol)
 
 
 def zhukovsky_outside(u: complex, coupling: float) -> complex:

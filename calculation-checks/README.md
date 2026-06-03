@@ -5,6 +5,17 @@ algebra used in the monograph.  They are not substitutes for the derivations
 in the text; they are reproducible checks of signs, trace normalizations, and
 finite algebraic reductions.
 
+Install the public verification dependencies with:
+
+```
+python3 -m pip install -r requirements-verification.txt
+```
+
+Python checks should use `check_utils.py` for finite-aware scalar and array
+tolerance assertions.  Its companion `check_utils_checks.py` includes negative
+tests for NaN/Inf inputs and an audit that rejects legacy `abs(x-y) > tol`
+helpers without an explicit finiteness guard.
+
 Plain text formats are preferred over notebook-only formats.  Mathematica
 checks should be committed as Wolfram Language `.wl` files, with optional
 notebooks generated from them when useful.  Computationally heavy checks

@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
 import math
 from dataclasses import dataclass
 from fractions import Fraction
@@ -14,8 +16,8 @@ def assert_equal(name: str, got: object, expected: object) -> None:
 
 
 def assert_close(name: str, got: float, expected: float, tolerance: float = 1e-9) -> None:
-    if abs(got - expected) > tolerance:
-        raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+    _assert_close(name, got, expected, tol=tolerance)
+
 
 
 @dataclass(frozen=True)

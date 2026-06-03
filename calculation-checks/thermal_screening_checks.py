@@ -13,6 +13,9 @@ transverse retarded response.
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
+
 from fractions import Fraction
 from math import exp, pi
 
@@ -23,8 +26,7 @@ def assert_equal(name: str, actual, expected) -> None:
 
 
 def assert_close(name: str, actual: float, expected: float, tol: float = 1.0e-12) -> None:
-    if abs(actual - expected) > tol:
-        raise AssertionError(f"{name}: expected {expected}, got {actual}")
+    _assert_close(name, actual, expected, tol=tol)
 
 
 def yukawa_asymptotic_powers(spatial_dim: int) -> tuple[Fraction, Fraction, Fraction]:

@@ -3,6 +3,9 @@
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+from check_utils import assert_array_close as _assert_array_close
+
 import pathlib
 import sys
 import math
@@ -30,8 +33,7 @@ import benchmark_manifest_consistency as benchmark_manifest  # noqa: E402
 
 
 def assert_close(name: str, actual: float, expected: float, tol: float = 1.0e-11) -> None:
-    if abs(actual - expected) > tol:
-        raise AssertionError(f"{name}: got {actual!r}, expected {expected!r}")
+    _assert_close(name, actual, expected, tol=tol)
 
 
 def assert_equal(name: str, actual: object, expected: object) -> None:
@@ -45,8 +47,7 @@ def assert_leq(name: str, actual: float, bound: float, tol: float = 1.0e-12) -> 
 
 
 def assert_matrix_close(name: str, actual: np.ndarray, expected: np.ndarray, tol: float = 1.0e-11) -> None:
-    if float(np.max(np.abs(actual - expected))) > tol:
-        raise AssertionError(f"{name}: max error {float(np.max(np.abs(actual - expected))):.3e}")
+    _assert_array_close(name, actual, expected, tol=tol)
 
 
 def krylov_orthonormal_basis(matrix: np.ndarray, seed: np.ndarray, dim: int) -> np.ndarray:

@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
 import itertools
 import math
 from collections import defaultdict
@@ -14,8 +16,7 @@ I = 1j
 
 
 def assert_close(name: str, lhs: complex, rhs: complex, tol: float = 2.0e-10) -> None:
-    if abs(lhs - rhs) > tol:
-        raise AssertionError(f"{name}: {lhs!r} != {rhs!r}")
+    _assert_close(name, lhs, rhs, tol=tol)
 
 
 def determinant(matrix: list[list[complex]]) -> complex:

@@ -9,6 +9,9 @@ equations, the Y-system, and mirror TBA.
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
+
 from fractions import Fraction
 import cmath
 import itertools
@@ -16,8 +19,7 @@ import math
 
 
 def assert_close(name: str, value: complex, expected: complex = 0j, tol: float = 1.0e-10) -> None:
-    if abs(value - expected) > tol:
-        raise AssertionError(f"{name}: got {value!r}, expected {expected!r}")
+    _assert_close(name, value, expected, tol=tol)
 
 
 def rapidity_from_momentum(momentum: float) -> float:

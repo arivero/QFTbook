@@ -10,6 +10,8 @@ H(k)=sin(k_x) sigma_x + sin(k_y) sigma_y
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
 import math
 
 
@@ -18,8 +20,7 @@ Matrix = list[list[complex]]
 
 
 def assert_close(lhs: float, rhs: float, message: str, tol: float = 1e-9) -> None:
-    if abs(lhs - rhs) > tol:
-        raise AssertionError(f"{message}: {lhs!r} != {rhs!r}")
+    _assert_close(message, lhs, rhs, tol=tol)
 
 
 def assert_near_integer(value: float, expected: int, message: str, tol: float = 2e-8) -> None:

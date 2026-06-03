@@ -14,13 +14,14 @@ It is not a lattice simulation and does not assume a deconfinement transition.
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
 import cmath
 import math
 
 
 def assert_close(name: str, lhs: complex | float, rhs: complex | float, tol: float = 1e-12) -> None:
-    if abs(lhs - rhs) > tol:
-        raise AssertionError(f"{name} failed: {lhs!r} != {rhs!r}")
+    _assert_close(name, lhs, rhs, tol=tol)
 
 
 def center_phase(n: int, m: int, k: int) -> complex:

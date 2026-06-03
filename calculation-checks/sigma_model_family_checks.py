@@ -25,6 +25,8 @@ import mpmath as mp
 import numpy as np
 import sympy as sp
 
+from check_utils import assert_close
+
 
 def assert_equal(name: str, got, expected) -> None:
     if got != expected:
@@ -40,11 +42,6 @@ def assert_trig_zero(name: str, value) -> None:
     reduced = sp.trigsimp(sp.simplify(value.rewrite(sp.cos)))
     if reduced != 0:
         raise AssertionError(f"{name}: got {value}, expected 0")
-
-
-def assert_close(name: str, got: complex | float, expected: complex | float, tol: float = 1.0e-10) -> None:
-    if abs(got - expected) > tol:
-        raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
 
 
 def check_cp_projector() -> None:

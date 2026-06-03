@@ -10,13 +10,14 @@ higher-derivative equation.
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
 import cmath
 import math
 
 
 def assert_close(got: complex, expected: complex, label: str, tol: float = 1e-10) -> None:
-    if abs(got - expected) > tol:
-        raise AssertionError(f"{label}: got {got!r}, expected {expected!r}")
+    _assert_close(label, got, expected, tol=tol)
 
 
 def check_curvature_squared_traces() -> None:

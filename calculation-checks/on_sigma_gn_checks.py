@@ -8,10 +8,7 @@ import math
 import mpmath as mp
 import numpy as np
 
-
-def assert_close(name: str, got: complex | float, expected: complex | float, tol: float = 1.0e-9) -> None:
-    if abs(got - expected) > tol:
-        raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
+from check_utils import assert_close
 
 
 def sigma2(theta: complex, n: int) -> complex:

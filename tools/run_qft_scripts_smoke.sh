@@ -4,6 +4,12 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
+export PYTHONPATH="$ROOT/qft_scripts:$ROOT${PYTHONPATH:+:$PYTHONPATH}"
+if [[ -z "${QFT_HDF5_PYTHON:-}" ]]; then
+  QFT_HDF5_PYTHON="$(command -v python3)"
+  export QFT_HDF5_PYTHON
+fi
+
 echo "[qft-scripts] ising2d_metropolis --smoke"
 python3 qft_scripts/ising2d_metropolis.py --smoke
 

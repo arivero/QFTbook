@@ -4,6 +4,7 @@
 The finite matrix check also guards the residue-projection convention in the
 bound-state fusion identity of Volume VI, Chapter 2.
 """
+from check_utils import assert_close as _assert_close
 
 import cmath
 import math
@@ -14,8 +15,7 @@ Matrix = list[list[Fraction]]
 
 
 def assert_close(label: str, actual: complex, expected: complex, tol: float = 2.0e-12) -> None:
-    if abs(actual - expected) > tol:
-        raise AssertionError(f"{label}: got {actual!r}, expected {expected!r}")
+    _assert_close(label, actual, expected, tol=tol)
 
 
 def assert_equal(label: str, actual, expected) -> None:

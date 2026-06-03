@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
 import cmath
 import math
 
@@ -11,8 +13,7 @@ TOL = 1e-10
 
 
 def assert_close(label: str, lhs: complex, rhs: complex, tol: float = TOL) -> None:
-    if abs(lhs - rhs) > tol:
-        raise AssertionError(f"{label} failed: {lhs!r} != {rhs!r}")
+    _assert_close(label, lhs, rhs, tol=tol)
 
 
 def coth(z: complex) -> complex:

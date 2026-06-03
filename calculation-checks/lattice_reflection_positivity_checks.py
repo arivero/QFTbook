@@ -9,12 +9,13 @@ positivity.
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
 import math
 
 
 def assert_close(label: str, got: float, expected: float, tol: float = 1.0e-12) -> None:
-    if abs(got - expected) > tol:
-        raise AssertionError(f"{label}: got {got:.16g}, expected {expected:.16g}")
+    _assert_close(label, got, expected, tol=tol)
 
 
 def bessel_i_nonnegative_integer(n: int, beta: float, terms: int = 80) -> float:

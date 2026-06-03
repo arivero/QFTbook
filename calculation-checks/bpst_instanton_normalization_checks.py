@@ -92,6 +92,9 @@ with g_ht = sqrt(2) g_YM.
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
+
 from fractions import Fraction
 import itertools
 import math
@@ -144,8 +147,7 @@ def assert_equal(name: str, lhs: object, rhs: object) -> None:
 
 
 def assert_close(name: str, lhs: float, rhs: float, tolerance: float = 1e-12) -> None:
-    if abs(lhs - rhs) > tolerance:
-        raise AssertionError(f"{name} failed: {lhs!r} != {rhs!r}")
+    _assert_close(name, lhs, rhs, tol=tolerance)
 
 
 def det_fraction(matrix: list[list[Fraction]]) -> Fraction:

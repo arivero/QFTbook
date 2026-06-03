@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
 import importlib.util
 import json
 import os
@@ -34,8 +36,7 @@ def require(condition: bool, message: str) -> None:
 
 
 def assert_close(name: str, got: float, expected: float, tol: float = 1.0e-10) -> None:
-    if abs(got - expected) > tol:
-        raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
+    _assert_close(name, got, expected, tol=tol)
 
 
 def transformed_link(module, links: np.ndarray, site: tuple[int, int, int, int], mu: int, proposal: np.ndarray) -> np.ndarray:

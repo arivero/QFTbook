@@ -3,13 +3,15 @@
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+from check_utils import assert_array_close as _assert_array_close
+
 Vector2 = tuple[complex, complex]
 Matrix2 = tuple[tuple[complex, complex], tuple[complex, complex]]
 
 
 def assert_close(name: str, got: complex | float, expected: complex | float, tol: float = 1.0e-10) -> None:
-    if abs(got - expected) > tol:
-        raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
+    _assert_close(name, got, expected, tol=tol)
 
 
 def matmul(left: Matrix2, right: Matrix2) -> Matrix2:
@@ -70,9 +72,7 @@ def assert_vector_close(name: str, got: Vector2, expected: Vector2, tol: float =
 
 
 def assert_matrix_close(name: str, got: Matrix2, expected: Matrix2, tol: float = 1.0e-10) -> None:
-    for row in range(2):
-        for column in range(2):
-            assert_close(f"{name}[{row},{column}]", got[row][column], expected[row][column], tol)
+    _assert_array_close(name, got, expected, tol=tol)
 
 
 def check_density_response_kernel() -> None:

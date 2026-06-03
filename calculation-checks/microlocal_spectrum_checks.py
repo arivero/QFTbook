@@ -8,13 +8,15 @@ this makes the positive-frequency covector (-E, p) future directed.
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
+
 from fractions import Fraction
 import math
 
 
 def assert_close(got: float, expected: float, label: str, tol: float = 1e-12) -> None:
-    if abs(got - expected) > tol:
-        raise AssertionError(f"{label}: got {got!r}, expected {expected!r}")
+    _assert_close(label, got, expected, tol=tol)
 
 
 def assert_equal(got: Fraction, expected: Fraction, label: str) -> None:

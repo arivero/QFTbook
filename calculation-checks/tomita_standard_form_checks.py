@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+from check_utils import assert_close as _assert_close
+
 import cmath
 from math import sqrt
 
@@ -11,8 +13,7 @@ Matrix = list[list[complex]]
 
 
 def assert_close(name: str, got: complex, expected: complex, tol: float = 1.0e-10) -> None:
-    if abs(got - expected) > tol:
-        raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+    _assert_close(name, got, expected, tol=tol)
 
 
 def matmul(a: Matrix, b: Matrix) -> Matrix:

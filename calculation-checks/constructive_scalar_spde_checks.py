@@ -6,6 +6,8 @@ stationary-law comparison steps used in the singular-SPDE-to-OS proof stack.
 They also track the constructive Phi^4_3 phase-cell derivation budget:
 activity tails, source-decorated tails, and local-coordinate/OS defect tails.
 """
+from check_utils import assert_close as _assert_close
+
 
 from fractions import Fraction
 import math
@@ -17,8 +19,7 @@ def assert_equal(got, expected, label):
 
 
 def assert_close_float(got, expected, label, tol=1.0e-12):
-    if abs(got - expected) > tol:
-        raise AssertionError(f"{label}: got {got!r}, expected {expected!r}")
+    _assert_close(label, got, expected, tol=tol)
 
 
 def hermite_probabilists(n):
