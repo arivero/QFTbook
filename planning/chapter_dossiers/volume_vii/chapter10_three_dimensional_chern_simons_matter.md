@@ -48,8 +48,9 @@ Reviewed source spine:
 - `lambda_i`, `mu_i`: `S^3` localization Cartan variables for the two
   `U(N)` gauge factors.
 - `F(T)`: renormalized three-sphere free energy `-log |Z_{S^3}(T)|`.
-- `mathcal F(R)`: Casini-Huerta renormalized entanglement function for a disk
-  of radius `R`.
+- `mathcal F(R)`: conditional Casini-Huerta renormalized disk-entanglement
+  function, requiring a regulator, split-inclusion limit, or AQFT
+  replacement for sharp-region entropy.
 - `Q^A_B`: finite-regulator inverse free propagator in the planar
   Chern-Simons vector-model light-cone chart.
 - `B^A_B`, `G^A_B`, `Sigma^A_B`: singlet bilocal, its leading large-`N`
@@ -136,10 +137,14 @@ Reviewed source spine:
   denominator `prod_{i,j} 4 cosh^2(pi(lambda_i-mu_j))` from two conjugate
   bifundamental chiral pairs.
 - Defines the renormalized `S^3` free energy with contact-term and framing
-  scheme specified, and states the continuum `F`-theorem with its
-  entanglement/continuum hypotheses rather than as a matrix-model slogan.
-- Proves the endpoint comparison consequence for supersymmetric localized
-  fixed points and proves additivity of `F` for product theories.
+  scheme specified, and demotes the continuum `F`-monotonicity statement from
+  quoted-theorem status to a conditional entropic argument with explicit
+  type-III, split-limit/regulator, strong-subadditivity, conformal-map, and
+  equality-rigidity gaps.
+- Records the AQFT reconstruction of disk-entropy `F`-monotonicity as an open
+  problem, and states only the conditional endpoint comparison for
+  supersymmetric localized fixed points while proving additivity of `F` for
+  product theories.
 - Fixes the free chiral value `F_chiral=(1/2) log 2` in the round-sphere
   determinant convention.
 - Evaluates the rank-one ABJM matrix integral distributionally:
@@ -198,6 +203,10 @@ Reviewed source spine:
   the standard `N=6`, `SU(4)` ABJM datum.  Less-symmetric `N=2`
   Chern-Simons-matter marginal candidates require their own beta-function,
   current-moment-map, and monopole-sector analysis.
+- The `F`-monotonicity discussion is not theorem status in the current
+  foundation: a future pass must construct an AQFT-compatible replacement for
+  sharp disk entropy and prove the fixed-point identification with
+  `-log |Z_{S^3}|` before using it as a foundational continuum theorem.
 
 ## Figure Ledger
 
@@ -218,6 +227,10 @@ quotient, and the two-matrix `S^3` localization contour.
   Legendre-transform kernel inversion.  The pass deliberately uses
   conjecture/status language rather than theorem language; the exact algebra
   is paired with `cs_matter_lightfront_checks.py`.
+- 2026-06-03 entanglement-status correction: removed quoted-theorem status
+  from the sharp-disk \(F\)-theorem block, weakened the endpoint statement to
+  conditional `F_UV >= F_IR`, separated equality rigidity as extra input, and
+  recorded the AQFT construction of an intrinsic monotone as an open problem.
 - 2026-06-03 bosonization architecture pass: upgraded the section from a
   parameter-matching cell to a matching hierarchy.  The pass records which
   parts of the Bose--Fermi duality problem are exact checks here and which

@@ -1452,7 +1452,7 @@ are part of the localization input.  Thus
 inputs are supplied.  A microscopic construction of the continuum theory
 requires independent definition of the underlying three-dimensional QFT.
 
-\section{Sphere Free Energy and the F-Theorem}
+\section{Sphere Free Energy and F-Monotonicity}
 \label{sec:three-d-sphere-free-energy-f-theorem}
 
 Three-dimensional conformal field theories have a distinguished finite
@@ -1497,67 +1497,90 @@ with \(Z^{\rm ABJM}_{S^3}\) defined by
 declared QFT specification; changing the line-operator lattice or contact terms can
 change phases and, in some schemes, finite background terms.
 
-\begin{quotedtheorem}[\(F\)-theorem]
-\label{qt:continuum-f-theorem}
-Let a unitary, Lorentz-invariant three-dimensional QFT define an RG flow
-between ultraviolet and infrared conformal fixed points, and assume the
-stress tensor, vacuum state, ball entanglement entropy, and continuum limit
-are controlled so that strong subadditivity and the Casini--Huerta
-renormalized-entanglement construction apply.  Define
+\begin{remark}[Conditional status of entropic \(F\)-monotonicity]
+\label{rem:conditional-entropic-f-monotonicity}
+The usual entropic route to three-dimensional \(F\)-monotonicity starts from
+vacuum entanglement for disks, not from a localized matrix integral.  At the
+level of the continuum foundations used in this monograph, that argument is
+not yet a theorem: a sharp bounded-region local algebra is expected to be
+type \(\mathrm{III}\), has no faithful normal trace, and does not supply an
+unqualified reduced density matrix whose von Neumann entropy is \(S(R)\).
+The object entering the standard physics argument must therefore be supplied
+by additional data such as a regulator with a proven continuum limit, a split
+inclusion with a controlled collar limit, or an AQFT replacement by relative
+entropy or mutual information.
+
+Under such an additional datum, one may define the renormalized disk
+quantity
 \begin{equation}
   \mathcal F(R)=R\,\frac{dS(R)}{dR}-S(R),
   \label{eq:renormalized-entanglement-f}
 \end{equation}
-where \(S(R)\) is the vacuum entanglement entropy of a disk of radius \(R\).
-Then \(\mathcal F(R)\) is monotone nonincreasing as \(R\) increases.  At a
-conformal fixed point, the conformal map from the causal development of the
-disk to the hyperbolic thermal problem identifies \(\mathcal F\) with the
-renormalized sphere free energy \(F\).  Consequently a nontrivial flow
-satisfying these hypotheses obeys
+where \(S(R)\) denotes the regulated or split-limit disk entropy.  If strong
+subadditivity survives the same limit, the Casini--Huerta deformation
+argument gives \(\mathcal F(R)\) monotone nonincreasing as \(R\) increases.
+If, in addition, the conformal map from the causal development of the disk to
+the hyperbolic thermal problem identifies the fixed-point value of
+\(\mathcal F\) with the renormalized sphere free energy in
+Definition~\ref{def:renormalized-s3-free-energy}, then the endpoint
+consequence is
 \begin{equation}
-  F_{\rm UV}>F_{\rm IR},
-  \label{eq:f-theorem-inequality}
+  F_{\rm UV}\ge F_{\rm IR}.
+  \label{eq:conditional-f-monotonicity}
 \end{equation}
-with equality only for a trivial flow modulo decoupled topological/contact
-data.
-\end{quotedtheorem}
+Strict inequality, or a rigidity statement characterizing equality as a
+trivial flow modulo decoupled topological and contact-term data, is an
+additional input beyond monotone nonincrease.
+\end{remark}
 
-\begin{remark}[The theorem is not a matrix-model identity]
+\begin{openproblem}[AQFT construction of three-dimensional \(F\)-monotonicity]
+\label{op:aqft-f-monotonicity}
+Construct, from the local-algebraic data of a three-dimensional continuum
+QFT, a regulator-independent quantity that replaces the sharp-disk entropy
+in \eqref{eq:renormalized-entanglement-f}, proves the required monotonicity
+from relative entropy, split inclusions, or another intrinsic AQFT object,
+and identifies its conformal fixed-point value with
+\(-\log|Z_{S^3}|\) in a declared background-counterterm scheme.
+\end{openproblem}
+
+\begin{remark}[\(F\)-monotonicity is not a matrix-model identity]
 \label{rem:f-theorem-not-matrix-model-identity}
-The monotonicity theorem is a continuum theorem about unitary RG flows.  A
-localized \(S^3\) matrix model computes \(F\) at a supersymmetric fixed point
-when its localization input is valid; it does not by itself prove
-monotonicity for flows between two fixed points.  Conversely, the
-\(F\)-theorem applies to nonsupersymmetric flows for which no localization
-formula exists.
+The conditional monotonicity statement above is a continuum statement about
+unitary RG flows equipped with the needed entropic or algebraic construction.
+A localized \(S^3\) matrix model computes \(F\) at a supersymmetric fixed
+point when its localization input is valid; it does not by itself prove
+monotonicity for flows between two fixed points.  Conversely, the expected
+monotonicity phenomenon is not limited to supersymmetric flows for which a
+localization formula exists.
 \end{remark}
 
 \begin{remark}[Consequences for supersymmetric fixed-point comparisons]
 \label{rem:f-theorem-susy-comparison}
 Suppose \(\mathcal T_{\rm UV}\to\mathcal T_{\rm IR}\) is a three-dimensional
-unitary RG flow satisfying the hypotheses of
-Quoted Theorem~\ref{qt:continuum-f-theorem}, and suppose both endpoints have
-supersymmetric localization data whose finite parts compute the
-renormalized \(S^3\) partition functions in the scheme of
+unitary RG flow for which the conditional entropic construction in
+Remark~\ref{rem:conditional-entropic-f-monotonicity} has been supplied, and
+suppose both endpoints have supersymmetric localization data whose finite
+parts compute the renormalized \(S^3\) partition functions in the scheme of
 Definition~\ref{def:renormalized-s3-free-energy}.  Then the localized
-numbers obey
+endpoint comparison reads
 \[
   -\log|Z_{S^3}^{\rm loc}(\mathcal T_{\rm UV})|
-  >
+  \ge
   -\log|Z_{S^3}^{\rm loc}(\mathcal T_{\rm IR})|
 \]
-for a nontrivial flow.  For a product of decoupled fixed points
+with strictness only after an equality-rigidity input has also been supplied.
+For a product of decoupled fixed points
 \(\mathcal T_1\otimes\mathcal T_2\), the sphere free energy is additive:
 \begin{equation}
   F(\mathcal T_1\otimes\mathcal T_2)=F(\mathcal T_1)+F(\mathcal T_2).
   \label{eq:s3-free-energy-additivity}
 \end{equation}
 
-The first assertion is the inequality
-\eqref{eq:f-theorem-inequality} after identifying the endpoint \(F\)'s with
-the localized finite parts.  This identification is an endpoint statement:
-it uses the localization input at the fixed point and does not require a
-localized description of the entire RG trajectory.
+The first assertion is the conditional inequality
+\eqref{eq:conditional-f-monotonicity} after identifying the endpoint \(F\)'s
+with the localized finite parts.  This identification is an endpoint
+statement: it uses the localization input at the fixed point and does not
+require a localized description of the entire RG trajectory.
 
 For the product statement, the Hilbert space, operator algebra, and
 Euclidean functional integral factorize.  With product regulators and
@@ -1590,9 +1613,9 @@ flow therefore has
 \[
   F_{\rm UV}=\frac12\log2>0=F_{\rm IR},
 \]
-as required by the \(F\)-theorem.  This example is simple, but it fixes the
-normalization used when more complicated localized matrix integrals are
-compared.
+consistent with the expected \(F\)-monotonicity pattern.  This example is
+simple, but it fixes the normalization used when more complicated localized
+matrix integrals are compared.
 \end{example}
 
 \paragraph{Rank-one ABJM sphere integral.}
