@@ -247,6 +247,7 @@
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(\mathbf c;\mathcal F)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless selected-form-factor integral |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
 | \(\zeta_m^{[\rho_-,\rho_+]}\) | mass-saturated one-instanton vacuum activity in a finite size window |
+| \(T,\mathcal D_{\rm zm},E_{\rm zm},\rho_{\rm zm}\) | instanton--anti-instanton near-zero-mode overlap matrix, projected Dirac block, remainder, and singular-value density used in the instanton-liquid criterion |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
 | \(A_\alpha(\mathcal X),G_\beta(\mathcal X)\) | Uhlenbeck bubbling-scale and collision-face exponents in the multi-instanton boundary budget |
 | \(\mathcal O_{N_c}\) | embedded one-instanton orientation orbit \(U(N_c)/(U(N_c-2)\times U(1))\) |
@@ -633,7 +634,11 @@
   anti-instantons, the chiral near-zero-mode block contains a rectangular
   overlap matrix \(T\) and gives
   \(m^{|n_+-n_-|}\prod_\alpha(m^2+s_\alpha^2)\), plus the resolvent
-  \(|n_+-n_-|/m+2m\sum_\alpha(m^2+s_\alpha^2)^{-1}\).  The follow-on
+  \(|n_+-n_-|/m+2m\sum_\alpha(m^2+s_\alpha^2)^{-1}\), in the leading
+  projected block \(E_{\rm zm}=0\).  Exact full-operator zero modes require an
+  index-preserving regulator and a full background charge \(Q=n_+-n_-\);
+  generic chirality-breaking remainders may lift the projected block zero.
+  The follow-on
   instanton-liquid statement is explicitly conditional: only after the ensemble
   measure, fluctuation determinants, interactions, determinant reweighting, and
   regulator remainders are controlled does a nonzero singular-value density

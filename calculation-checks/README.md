@@ -459,9 +459,10 @@ Current checks:
   \(b_2=-1/12\) after a finite activity has been supplied, the
   finite instanton--anti-instanton zero-mode overlap matrix whose singular
   values give
-  \(m^{|n_+-n_-|}\prod_\alpha(m^2+s_\alpha^2)\), the unpaired topological
-  zero-mode pole, and the constant-density Banks--Casher kernel limit for an
-  instanton-liquid zero-mode zone, Uhlenbeck
+  \(m^{|n_+-n_-|}\prod_\alpha(m^2+s_\alpha^2)\), the leading-block unpaired
+  zero-mode pole, the exact-index qualification and possible lifting by a
+  finite chirality-breaking remainder, and the constant-density
+  Banks--Casher kernel limit for an instanton-liquid zero-mode zone, Uhlenbeck
   boundary face codimensions and product power-counting thresholds, and the
   \(k=1\) ADHM orientation dimension and cone-volume power.
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the

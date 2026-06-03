@@ -2148,7 +2148,7 @@ def check_instanton_ensemble_zero_mode_overlap_spectrum() -> None:
         expected_determinant,
     )
     assert_equal(
-        "massless mismatch leaves unsaturated topological zero mode",
+        "massless leading overlap block has unmatched zero factor",
         zero_mode_block_determinant(n_plus, n_minus, singular_values, Fraction(0)),
         Fraction(0),
     )
@@ -2166,6 +2166,37 @@ def check_instanton_ensemble_zero_mode_overlap_spectrum() -> None:
         "zero-mode overlap resolvent unpaired pole plus paired kernel",
         resolvent_trace,
         Fraction(1, 5) + Fraction(10, 29) + Fraction(5, 17),
+    )
+
+    # The exact zero in the previous determinant is a statement about the
+    # leading projected block.  A generic chirality-breaking remainder can lift
+    # that projected zero unless an exact index-preserving regulator protects
+    # the full operator kernel.
+    overlap = diagonal_overlap(n_plus, n_minus, singular_values)
+    leading_massless_block = block_2x2_fraction(
+        identity_scaled(n_plus, Fraction(0)),
+        overlap,
+        negative_transpose(overlap),
+        identity_scaled(n_minus, Fraction(0)),
+    )
+    chirality_breaking_remainder = zero_matrix(n_plus + n_minus, n_plus + n_minus)
+    chirality_breaking_remainder[-1][-1] = Fraction(7)
+    lifted_block = matrix_add_fraction(leading_massless_block, chirality_breaking_remainder)
+    assert_equal(
+        "leading projected block zero before remainder",
+        det_fraction(leading_massless_block),
+        Fraction(0),
+    )
+    assert_equal(
+        "generic remainder can lift projected mismatch zero",
+        det_fraction(lifted_block),
+        Fraction(252),
+    )
+    total_topological_charge = n_plus - n_minus
+    assert_equal(
+        "index-preserving exact kernel count needs total charge",
+        abs(total_topological_charge),
+        abs(n_plus - n_minus),
     )
 
     flavor_masses = [Fraction(5), Fraction(7), Fraction(11)]

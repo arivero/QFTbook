@@ -6249,7 +6249,8 @@ subspace is
 where \(E_{\rm zm}\) collects Gram errors, regulator chirality-breaking terms,
 and Schur-complement terms from the nonzero-mode sector.  If
 \(s_1,\ldots,s_r\) are the singular values of \(T\),
-\(r=\min(n_+,n_-)\), then in the leading block \(E_{\rm zm}=0\),
+\(r=\min(n_+,n_-)\), then in the leading projected block
+\(E_{\rm zm}=0\),
 \begin{equation}
   \det\mathcal D_{\rm zm}(m)
   =
@@ -6257,7 +6258,7 @@ and Schur-complement terms from the nonzero-mode sector.  If
   \prod_{\alpha=1}^{r}\left(m^2+s_\alpha^2\right),
   \label{eq:instanton-ensemble-overlap-determinant}
 \end{equation}
-and
+and, for real \(m>0\),
 \begin{equation}
   \operatorname{Tr}\mathcal D_{\rm zm}(m)^{-1}
   =
@@ -6267,11 +6268,24 @@ and
   \label{eq:instanton-ensemble-overlap-resolvent}
 \end{equation}
 For \(N_f\) Dirac flavors with masses \(m_f\), the zero-mode part of the
-fermion determinant is the product of
-\eqref{eq:instanton-ensemble-overlap-determinant} over \(f\).  Thus a sector
-with \(n_+\ne n_-\) has exact unpaired zero modes in the massless limit, while a
-balanced instanton--anti-instanton ensemble can acquire small Dirac eigenvalues
-from the singular values of \(T\).
+leading-block fermion determinant is the product of
+\eqref{eq:instanton-ensemble-overlap-determinant} over \(f\).  Hence, inside
+the leading projected block, a sector with \(n_+\ne n_-\) has
+\(|n_+-n_-|\) unpaired zero modes at \(m=0\), while a balanced
+instanton--anti-instanton ensemble can acquire small near-zero Dirac
+eigenvalues from the singular values of \(T\).
+
+The corresponding exact statement for the full finite-regulator Dirac
+operator requires stronger hypotheses.  If the regulator preserves an exact
+chiral/index structure and the full gauge field has topological charge
+\(Q=n_+-n_-\), then the full massless operator has
+\(|Q|\) index-protected zero modes of the corresponding chirality, up to the
+usual convention for whether one counts the kernel of \(\mathcal D\) or
+\(\mathcal D^\dagger\).  A generic nonzero \(E_{\rm zm}\) may lift zero modes
+of the leading projected block; when \(E_{\rm zm}\) is small, the lifted
+near-zero eigenvalues are controlled by the finite-dimensional perturbation
+size of \(E_{\rm zm}\), while the index-protected kernel survives only in an
+index-preserving setup.
 \end{proposition}
 
 \begin{proof}
@@ -6294,6 +6308,16 @@ determinant and \(1/m\) to the trace.  Multiplying these factors gives
 \eqref{eq:instanton-ensemble-overlap-resolvent}.  Different flavors have
 independent Grassmann coefficient spaces, so their finite determinants
 multiply.
+
+The exact-kernel statement is a separate index input.  The displayed
+singular-value reduction diagonalizes the projected leading block with
+\(E_{\rm zm}=0\).  Adding \(E_{\rm zm}\) changes the finite matrix being
+diagonalized; ordinary finite-dimensional perturbation estimates bound the
+movement of the leading-block eigenvalues by the size of this remainder, but
+they do not turn the leading block count into an index theorem.  Exact
+full-operator zero modes follow only when the regulator supplies an exact
+chiral index and the total charge of the full background is the stated
+\(Q=n_+-n_-\).
 \end{proof}
 
 \begin{controlledapproximation}[Instanton-liquid spectral-density criterion]
