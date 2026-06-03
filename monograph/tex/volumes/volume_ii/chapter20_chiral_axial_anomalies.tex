@@ -4420,7 +4420,9 @@ have been fixed, so the only flavor phase is \(\arg\det M\).
 \label{prop:instanton-mass-source-minor-expansion}
 In the same \(Q=1\) QCD zero-mode sector, let \(M\) be the mass-overlap
 matrix and let \(B\) be the matrix supplied by external bilinear sources or
-by zero-mode-projected fermion wave packets.  With
+by a specified zero-mode-paired operator insertion.  Ordinary external fermion
+wave packets are represented instead by the differentiated linear-source
+construction below.  With
 \([N_f]=\{1,\ldots,N_f\}\), write \(M_{I^c,J^c}\) for the submatrix obtained
 by deleting the rows \(I\subset [N_f]\) and columns \(J\subset [N_f]\), and
 write \(B_{I,J}\) for the corresponding \(I\times J\) source submatrix, both
@@ -4484,7 +4486,7 @@ factor in \eqref{eq:instanton-source-differentiation-minor}.  The displayed
 two-flavor formula is the specialization to \(N_f=2\).
 \end{proof}
 
-\begin{proposition}[Proper-time determinant and four-fermion amplitude]
+\begin{proposition}[Proper-time determinant and zero-mode source functional]
 \label{prop:instanton-proper-time-four-fermion-amplitude}
 Fix a finite-regulator \(Q=1\) chart \(z=(a,\rho,U)\), a background gauge
 slice, and a proper-time determinant prescription with renormalization scale
@@ -4521,43 +4523,57 @@ density in \eqref{eq:finite-regulator-instanton-measure-density} is then
 with \(K_\Lambda^{\rm pf,R}\) the Pfaffian or determinant-line version of the
 same nonzero-mode construction for the fermion multiplet \(R\).
 
-For two massless Dirac flavors, let \(\eta_L\) and \(\bar\eta_R\) be four
-external wave packets in the channel saturated by the \(Q=1\) fermion zero
-modes, and let \(\psi_{0,z}\) be the normalized fundamental zero-mode
-wavefunction in the instanton background.  Define the zero-mode source matrix
+For two massless Dirac flavors there are two distinct source constructions.
+An even bilinear source supplies an independent finite matrix \(B(z)\) in the
+zero-mode action \(\sum_{f,f'}\widetilde\lambda_f B_{ff'}(z)\lambda_{f'}\);
+its zero-mode factor is \(\det B(z)\), as in
+Proposition~\ref{prop:qcd-thooft-determinant-zero-mode-amplitude}.  Ordinary
+external fermion wave packets are instead introduced by odd generating
+coordinates.  Let \(\bar\chi_A,\chi_B\), \(A,B=1,2\), be the four external
+source coordinates and set
 \begin{equation}
-  B_{\eta,ff'}(z)
-  =
-  \left(
-    \int \dd^4x\,
-    \bar\eta_{R f}(x)\psi_{0,z}(x)
-  \right)
-  \left(
-    \int \dd^4y\,
-    \psi_{0,z}^{\dagger}(y)\eta_{L f'}(y)
-  \right),
-  \qquad f,f'=1,2,
-  \label{eq:zero-mode-projected-four-fermion-source}
+  \alpha_f(z)=\sum_{A=1}^{2}\bar\chi_A R_{Af}(z),
+  \qquad
+  \beta_f(z)=\sum_{B=1}^{2}L_{fB}(z)\chi_B,
+  \label{eq:zero-mode-linear-source-overlaps}
 \end{equation}
-with spin and color indices contracted in the zero-mode line.  The
-one-instanton contribution to the smeared four-fermion amplitude is
+where \(R_{Af}\) and \(L_{fB}\) are the zero-mode overlaps of the \(A\)th
+right-handed and \(B\)th left-handed external slots with the normalized
+instanton zero-mode wavefunction.  With the same Berezin orientation used in
+\eqref{eq:thooft-vertex-berezin-determinant}, the differentiated source
+coefficient is
 \begin{equation}
-  G^{(4)}_{\eta,\Lambda,Q=1}
+  [\bar\chi_1\bar\chi_2\chi_1\chi_2]\,
+  \prod_{f=1}^{2}\alpha_f(z)\prod_{f=1}^{2}\beta_f(z)
   =
+  \det R(z)\,\det L(z).
+  \label{eq:zero-mode-differentiated-four-slot-coefficient}
+\end{equation}
+Thus the one-instanton generating-functional contribution is
+\begin{equation}
+\begin{aligned}
+  \mathcal G_{\eta,\Lambda,Q=1}^{(4)}[\bar\chi,\chi]
+  &=
   \int_{\mathcal U_{Q=1}}
   \exp[-S_\Lambda(A_z)+\ii\theta]\,
   \mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)\,
-  \det B_\eta(z)\,
-  \dd\nu_{\Lambda,\mathcal M}(z).
+  \prod_{f=1}^{2}\alpha_f(z)\prod_{f=1}^{2}\beta_f(z)\,
+  \dd\nu_{\Lambda,\mathcal M}(z),\\
+  G^{(4)}_{\eta,\Lambda,Q=1}
+  &=
+  [\bar\chi_1\bar\chi_2\chi_1\chi_2]\,
+  \mathcal G_{\eta,\Lambda,Q=1}^{(4)}[\bar\chi,\chi].
+\end{aligned}
   \label{eq:proper-time-four-fermion-instanton-amplitude}
 \end{equation}
-In the slow-field limit this reduces to the local \(N_f=2\) term in
-\eqref{eq:qcd-thooft-vertex-leading-local}.  The small-\(t\) expansion of
+A c-number matrix formed as a single outer product \(u_fv_{f'}\) is not this
+four-slot coefficient; for \(N_f=2\) its determinant vanishes.  The
+small-\(t\) expansion of
 \eqref{eq:proper-time-instanton-determinant-ratio} supplies the local
 counterterms and the universal \((\mu\rho)^{b_0}\) factor, while the finite
-remainder fixes the scheme-dependent numerical constant in the
-four-fermion amplitude.  Thus the physics calculation consists of the
-regulated fluctuation determinant, the zero-mode source projection, and the
+remainder fixes the scheme-dependent numerical constant in the selected
+source functional.  Thus the physics calculation consists of the regulated
+fluctuation determinant, the zero-mode source differentiation, and the
 collective-coordinate integral as a single object.
 \end{proposition}
 
@@ -4574,10 +4590,13 @@ determinant-line factor, giving
 \eqref{eq:proper-time-instanton-Wnz}.  Zero modes have already been removed
 from the traces and determinants, so their finite Berezin integral is exactly
 the calculation in
-Proposition~\ref{prop:qcd-thooft-determinant-zero-mode-amplitude}.  For the
-four external wave packets this Berezin coefficient is
-\(\det B_\eta(z)\).  Multiplication by the collective-coordinate density and
-the classical instanton exponential gives
+Proposition~\ref{prop:qcd-thooft-determinant-zero-mode-amplitude} for an even
+bilinear source matrix.  For linear external sources, expanding
+\(\prod_f\alpha_f\prod_f\beta_f\) and extracting the
+\(\bar\chi_1\bar\chi_2\chi_1\chi_2\) coefficient gives
+\(\det R\,\det L\); this is the source-differentiated correlator coefficient,
+not the determinant of a single c-number outer product.  Multiplication by the
+collective-coordinate density and the classical instanton exponential gives
 \eqref{eq:proper-time-four-fermion-instanton-amplitude}.  Finally, the
 heat-kernel expansion of the trace difference at small \(t\) separates local
 counterterms, the coefficient of \(\log(\mu\rho)\), and the finite
@@ -4585,7 +4604,7 @@ determinant constant; RG invariance identifies the universal logarithmic
 coefficient with \(b_0\) in the displayed one-loop density.
 \end{proof}
 
-\begin{proposition}[Instanton zero-mode form factor and local limit]
+\begin{proposition}[Instanton zero-mode density form factor and local limit]
 \label{prop:instanton-zero-mode-tail-local-limit}
 In a BPST \(Q=1\) background, after the spin and color tensors of one
 fundamental zero-mode line are factored out, the radial scalar envelope which
@@ -4649,10 +4668,13 @@ ordinary analytic Taylor coefficient.  At \(z\gg1\),
   \label{eq:instanton-zero-mode-form-factor-large-momentum}
 \end{equation}
 which displays the suppression of source components varying on scales
-shorter than the instanton size.  This is the source-profile factor inside
-the one-instanton amplitude; it does not replace the determinant
-normalization or the separate external-leg amputation data.  In position
-space, for \(U_R=R/\rho\),
+shorter than the instanton size.  This is the density form factor for a local
+bilinear or mass-source insertion.  A differentiated correlator with four
+ordinary external fermion slots instead uses the Fourier transforms of the
+individual zero-mode wavefunctions in those slots; their product reduces to
+the local bilinear density only after the slot wavefunctions are fused into a
+bilinear source and the local limit is taken.  In position space, for
+\(U_R=R/\rho\),
 \begin{equation}
   \int_{|y|<R}h_\rho(y)\,\dd^4y
   =
@@ -4767,90 +4789,240 @@ times the appropriate supremum norm of the source.  Since
 logarithmically infrared sensitive.
 \end{proof}
 
-\begin{proposition}[Amputation of the instanton source kernel]
+\begin{proposition}[Amputation and source typing of the instanton kernel]
 \label{prop:instanton-external-leg-amputation-kernel}
 Work in the finite-regulator \(Q=1\) chart of
 Proposition~\ref{prop:instanton-proper-time-four-fermion-amplitude}, and
 suppose an auxiliary infrared deformation or source scheme has been chosen in
 which the external quark fields used to probe the kernel have isolated
-nonzero external pole-residue factors.  After the spin and color external
-covectors are fixed, let these adjacent unamputated leg factors be
-\(R_{R,f}(p_{R,f})\) and \(R_{L,f'}(p_{L,f'})\).  For plane-wave packets in
-the zero-mode channel, the zero-mode source matrix has the factorization
+nonzero external pole-residue factors.  For differentiated linear source
+slots, let \(Z^R_A(p_{R,A})\) and \(Z^L_B(p_{L,B})\) be the adjacent
+unamputated pole residues for the two right-handed and two left-handed slots.
+After the spin and color external covectors are fixed, write the zero-mode
+overlap matrices as
 \begin{equation}
 \begin{aligned}
-  B^{\rm unamp}_{ff'}(z)
+  R^{\rm unamp}_{Af}(z)
   &=
-  R_{R,f}(p_{R,f})\,
-  B^{\rm amp}_{ff'}(z)\,
-  R_{L,f'}(p_{L,f'}),
-\\
-  B^{\rm amp}_{ff'}(z)
+  Z^R_A(p_{R,A})\,R^{\rm amp}_{Af}(z),\\
+  L^{\rm unamp}_{fB}(z)
   &=
-  \rho^3
-  \ee^{\ii q_{ff'}\cdot a}\,
-  \widehat h_\rho(q_{ff'})\,
-  \mathcal T_{ff'}(U;p_{R,f},p_{L,f'}),
-  \qquad
-  q_{ff'}=p_{R,f}-p_{L,f'} .
+  L^{\rm amp}_{fB}(z)\,Z^L_B(p_{L,B}),
+  \qquad A,B,f=1,2 .
 \end{aligned}
-  \label{eq:instanton-amputated-source-matrix}
+  \label{eq:instanton-amputated-linear-source-matrices}
 \end{equation}
-Here \(\mathcal T_{ff'}\) is the remaining spin-color orientation tensor
-after the external representatives have been contracted with the normalized
-zero-mode line.  For \(N_f=2\), the unamputated and amputated source
-determinants obey
+The four-slot coefficient from
+\eqref{eq:zero-mode-differentiated-four-slot-coefficient} obeys
 \begin{equation}
-  \det B^{\rm unamp}(z)
+  \det R^{\rm unamp}(z)\det L^{\rm unamp}(z)
   =
-  \left(\prod_{f=1}^{2}R_{R,f}\right)
-  \left(\prod_{f'=1}^{2}R_{L,f'}\right)
-  \det B^{\rm amp}(z).
+  \left(\prod_{A=1}^{2}Z^R_A\right)
+  \left(\prod_{B=1}^{2}Z^L_B\right)
+  \det R^{\rm amp}(z)\det L^{\rm amp}(z).
   \label{eq:instanton-source-determinant-amputation}
 \end{equation}
-Consequently the source-amputated one-instanton four-fermion kernel is
+Consequently the source-amputated differentiated four-fermion kernel is
 \begin{equation}
   \mathcal M^{(4),{\rm amp}}_{\Lambda,Q=1}
   =
   \int_{\mathcal U_{Q=1}}
   \exp[-S_\Lambda(A_z)+\ii\theta]\,
   \mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)\,
-  \det B^{\rm amp}(z)\,
+  \det R^{\rm amp}(z)\det L^{\rm amp}(z)\,
   \dd\nu_{\Lambda,\mathcal M}(z).
   \label{eq:instanton-amputated-four-fermion-kernel}
 \end{equation}
 Amputation removes only the adjacent external propagator residues.  It does
-not remove the zero-mode form factor
-\(\widehat h_\rho(q)=\rho|q|K_1(\rho|q|)\), the spin-color orientation tensor,
-the nonzero-mode determinant, or the collective-coordinate integral.  Thus
-the local 't Hooft operator is the small-\(\rho|q|\) limit of the amputated
-instanton kernel, not the result of dividing out the instanton zero-mode
-wavefunction itself.
+not remove the individual instanton zero-mode Fourier overlaps, the spin-color
+orientation tensors, the nonzero-mode determinant, or the
+collective-coordinate integral.
+
+For an independent even bilinear source matrix the source type is different.
+If \(B^{\rm unamp}=D_RB^{\rm amp}D_L\), with \(D_R,D_L\) diagonal residue
+matrices in flavor space, then
+\begin{equation}
+  \det B^{\rm unamp}
+  =
+  \det D_R\,\det B^{\rm amp}\,\det D_L .
+  \label{eq:instanton-bilinear-source-determinant-amputation}
+\end{equation}
+For a local bilinear source carrying momentum \(q_{ff'}\), the BPST density
+form factor of Proposition~\ref{prop:instanton-zero-mode-tail-local-limit}
+gives a representative entry
+\begin{equation}
+  B^{\rm amp}_{ff'}(a,\rho,U)
+  =
+  \rho^3
+  \ee^{\ii q_{ff'}\cdot a}\,
+  \widehat h_\rho(q_{ff'})\,
+  \mathcal T_{ff'}(U;q_{ff'}),
+  \qquad
+  q_{ff'}=p_{R,f}-p_{L,f'} .
+  \label{eq:instanton-amputated-source-matrix}
+\end{equation}
+This bilinear-source formula is not the determinant of a single c-number
+outer product of external wave packets.  Ordinary external fermions use
+\eqref{eq:instanton-amputated-linear-source-matrices} and the source
+differentiation in
+\eqref{eq:zero-mode-differentiated-four-slot-coefficient}.
 \end{proposition}
 
 \begin{proof}
-The zero-mode source matrix is obtained by attaching the external source
-wavefunctions to the normalized zero-mode line.  Before amputation, each row
-of the flavor matrix carries the adjacent right-handed external residue
-\(R_{R,f}\), and each column carries the adjacent left-handed external
-residue \(R_{L,f'}\).  Removing these external legs multiplies the
-unamputated matrix on the left and right by the inverse diagonal residue
-matrices, leaving \(B^{\rm amp}\).
-
-The determinant identity
-\[
-  \det(D_R B^{\rm amp} D_L)
-  =
-  \det D_R\,\det B^{\rm amp}\,\det D_L
-\]
-for the diagonal matrices \(D_R=\operatorname{diag}(R_{R,1},R_{R,2})\) and
-\(D_L=\operatorname{diag}(R_{L,1},R_{L,2})\) gives
+The linear source overlaps in \eqref{eq:zero-mode-linear-source-overlaps}
+attach each external slot to one normalized zero-mode wavefunction.  The
+chosen infrared scheme supplies one adjacent pole residue per external slot;
+removing those residues gives
+\eqref{eq:instanton-amputated-linear-source-matrices}.  Applying the
+determinant to the right-slot matrix and to the left-slot matrix gives
 \eqref{eq:instanton-source-determinant-amputation}.  Multiplying the
-unamputated Green kernel by the inverse product of the same residues therefore
-gives \eqref{eq:instanton-amputated-four-fermion-kernel}.  The factors in
-\(B^{\rm amp}\) are not external propagators: they are the Fourier transform
-of the zero-mode density and the orientation tensor of the instanton
-background.  They remain part of the hard instanton kernel.
+unamputated differentiated Green kernel by the inverse product of the same
+four residues therefore gives
+\eqref{eq:instanton-amputated-four-fermion-kernel}.
+
+For an even bilinear source, the zero-mode action already contains a matrix
+entry \(B_{ff'}\).  Row and column residue factors then multiply that matrix
+on the left and right, so ordinary determinant multiplicativity gives
+\eqref{eq:instanton-bilinear-source-determinant-amputation}.  The density
+form factor in \eqref{eq:instanton-amputated-source-matrix} comes from the
+product of two zero-mode wavefunctions in a fused bilinear source.  Linear
+external slots are differentiated before the sources are set to zero, so a
+single rank-one c-number matrix never appears as the four-fermion coefficient.
+\end{proof}
+
+\begin{proposition}[Plane-wave assembly of the one-instanton four-fermion
+amplitude]
+\label{prop:instanton-plane-wave-four-fermion-assembly}
+Stay in the \(N_f=2\) source-amputated setup of
+Proposition~\ref{prop:instanton-external-leg-amputation-kernel}, and suppose
+the center coordinate factorizes from the regulated collective-coordinate
+density:
+\[
+  \dd\nu_{\Lambda,\mathcal M}(z)
+  =
+  \mathcal J_\Lambda(\rho,U)\,
+  \dd^4a\,\dd\rho\,\dd\Omega(U).
+\]
+Let
+\[
+  \mathcal P
+  =
+  \sum_{A=1}^{2}p_{R,A}
+  -
+  \sum_{B=1}^{2}p_{L,B}.
+\]
+For plane-wave external slots, write the individual amputated zero-mode
+overlaps in the form
+\[
+  R^{\rm amp}_{Af}(a,\rho,U)
+  =
+  \rho^{3/2}\ee^{\ii p_{R,A}\cdot a}
+  \mathcal R_{Af}(\rho,U;p_{R,A}),
+  \qquad
+  L^{\rm amp}_{fB}(a,\rho,U)
+  =
+  \rho^{3/2}\ee^{-\ii p_{L,B}\cdot a}
+  \mathcal L_{fB}(\rho,U;p_{L,B}),
+\]
+where \(\mathcal R\) and \(\mathcal L\) are obtained from the Fourier
+transforms of the individual normalized zero-mode wavefunctions, with the
+chosen spin-color external covectors already contracted.  Then the
+source-differentiated zero-mode coefficient in
+\eqref{eq:instanton-amputated-four-fermion-kernel} has the factorized form
+\begin{equation}
+\begin{aligned}
+  \det R^{\rm amp}(a,\rho,U)\det L^{\rm amp}(a,\rho,U)
+  &=
+  \rho^6\,
+  \ee^{\ii\mathcal P\cdot a}\,
+  \mathfrak A_2^{\rm lin}(\rho,U;\{p_R,p_L\}),\\
+  \mathfrak A_2^{\rm lin}
+  &=
+  \det\mathcal R(\rho,U;\{p_R\})\,
+  \det\mathcal L(\rho,U;\{p_L\}).
+\end{aligned}
+  \label{eq:instanton-plane-wave-source-determinant}
+\end{equation}
+A separate bilinear-source specialization is obtained by inserting
+\eqref{eq:instanton-amputated-source-matrix} into \(\det B^{\rm amp}\).  In
+that case \(F(z)=zK_1(z)\) appears through the density form factor and
+\[
+  \det B^{\rm amp}
+  =
+  \rho^6\ee^{\ii\mathcal P\cdot a}
+  \left[
+    F(\rho|q_{11}|)F(\rho|q_{22}|)
+    \mathcal T_{11}\mathcal T_{22}
+    -
+    F(\rho|q_{12}|)F(\rho|q_{21}|)
+    \mathcal T_{12}\mathcal T_{21}
+  \right],
+  \qquad q_{ff'}=p_{R,f}-p_{L,f'} ,
+\]
+provided \(B^{\rm amp}\) is an independent bilinear source matrix.  If
+\(B^{\rm amp}_{ff'}=u_fv_{f'}\) is only a c-number outer product, the
+two-flavor determinant is zero.
+Consequently the center integral in infinite volume gives the distributional
+factor
+\begin{equation}
+  \int_{\mathbb R^4}\dd^4a\,
+  \ee^{\ii\mathcal P\cdot a}
+  =
+  (2\pi)^4\delta^{(4)}(\mathcal P),
+  \label{eq:instanton-center-momentum-conservation}
+\end{equation}
+and the source-amputated one-instanton contribution may be written as
+\begin{equation}
+\begin{aligned}
+  \mathcal M^{(4),{\rm amp}}_{\Lambda,Q=1}
+  &=
+  \ee^{\ii\theta}
+  (2\pi)^4\delta^{(4)}(\mathcal P)
+  \int
+  \exp[-S_\Lambda(A_{\rho,U})]\,
+  \mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(\rho,U;\mu) \\
+  &\qquad\qquad\qquad
+  {}\times
+  \rho^6\,
+  \mathfrak A_2^{\rm lin}(\rho,U;\{p_R,p_L\})\,
+  \mathcal J_\Lambda(\rho,U)\,
+  \dd\rho\,\dd\Omega(U).
+\end{aligned}
+  \label{eq:instanton-plane-wave-four-fermion-amplitude}
+\end{equation}
+The anti-instanton term has the conjugate chirality structure and the phase
+\(\ee^{-\ii\theta}\).
+
+Thus the instanton calculation does not first create a local vertex and then
+decorate it.  The finite-regulator amplitude is assembled from four
+load-bearing pieces: the center integral, the individual zero-mode
+Fourier-overlap tensors, the nonzero-mode determinant, and the size integral.
+The local 't Hooft operator is obtained only after the external slots have
+been fused into a local bilinear source, the support of the \(\rho\)-integral
+lies in the small-momentum regime of the relevant zero-mode form factors, and
+the determinant remainder has been replaced by the finite constant of the
+chosen scheme.
+\end{proposition}
+
+\begin{proof}
+In \(\det R^{\rm amp}\), both permutation terms contain the same phase
+\(\ee^{\ii(p_{R,1}+p_{R,2})\cdot a}\).  In \(\det L^{\rm amp}\), both
+permutation terms contain the same phase
+\(\ee^{-\ii(p_{L,1}+p_{L,2})\cdot a}\).  The product therefore carries
+\(\ee^{\ii\mathcal P\cdot a}\).  The four individual zero-mode overlaps carry
+the conventional total power \(\rho^6\), leaving
+\(\det\mathcal R\,\det\mathcal L\) as the nontrivial form-factor and
+orientation coefficient.  This proves
+\eqref{eq:instanton-plane-wave-source-determinant}.  Translation invariance of
+the center coordinate then gives
+\eqref{eq:instanton-center-momentum-conservation} in infinite volume, or the
+corresponding Kronecker delta on a finite periodic regulator.  Substituting the
+factorized coefficient and collective-coordinate density into
+\eqref{eq:instanton-amputated-four-fermion-kernel} gives
+\eqref{eq:instanton-plane-wave-four-fermion-amplitude}.  The bilinear-source
+formula follows from the same phase count applied to
+\eqref{eq:instanton-amputated-source-matrix}; the final rank-one warning is
+the elementary identity \(\det(u v^T)=0\) for two-component c-number vectors.
 \end{proof}
 
 The qualification in
@@ -4918,10 +5090,10 @@ support, then pointwise in \(z\)
   \hbox{terms containing }B^{\rm rem}.
   \label{eq:instanton-color-singlet-determinant-projection}
 \end{equation}
-Thus the BPST form factors, orientation tensor, nonzero-mode determinant, and
-size integral remain the short-distance instanton kernel; the color-singlet
-source overlaps are an additional matching layer, not a replacement for the
-fluctuation calculation.
+Thus the zero-mode form factors appropriate to the selected source family, the
+orientation tensor, the nonzero-mode determinant, and the size integral remain
+the short-distance instanton kernel; the color-singlet source overlaps are an
+additional matching layer, not a replacement for the fluctuation calculation.
 
 For stable hadron external states, the physical amplitude is obtained only
 after applying the usual color-singlet spectral or LSZ extraction to the
@@ -4991,15 +5163,18 @@ ordinary colored-quark \(S\)-matrix element.
 \label{ca:hard-momentum-instanton-size-window}
 Consider the \(N_f=2\) source-amputated four-fermion kernel
 \eqref{eq:instanton-amputated-four-fermion-kernel} in a kinematic region
-where the momentum transfers in the two zero-mode source entries of a
-nonzero determinant term are
+where the hard arguments of the zero-mode form factors are
 \[
-  |q_1|=c_1 Q,\qquad |q_2|=c_2 Q,
-  \qquad c_1,c_2>0,
+  |k_\ell|=c_\ell Q,
+  \qquad c_\ell>0,\qquad \ell=1,\ldots,m,
 \]
-with \(Q\) much larger than the infrared scale of the theory.  Keep only the
-one-loop universal density, the two zero-mode source powers
-\(\rho^3\rho^3\), and the two BPST form factors.  Choosing
+with \(Q\) much larger than the infrared scale of the theory.  For
+differentiated external fermion slots, \(m=4\) and the
+\(\mathcal F_\ell\) below are the individual amputated zero-mode form factors.
+For a fused bilinear source, \(m=2\) and
+\(\mathcal F_\ell(z)=zK_1(z)\).  Keep only the one-loop universal density, the
+total four-zero-mode power \(\rho^6\), and the dimensionless hard form-factor
+product \(\prod_{\ell=1}^m\mathcal F_\ell(c_\ell Q\rho)\).  Choosing
 \(\mu=Q\), the corresponding size factor has the form
 \begin{equation}
   \mathcal I_{\rm hard}(Q)
@@ -5009,8 +5184,8 @@ one-loop universal density, the two zero-mode source powers
   Q^{b_0}
   \int_0^\infty
   \rho^{\,b_0+1}
-  \prod_{\ell=1}^{2}
-  \bigl(c_\ell Q\rho\,K_1(c_\ell Q\rho)\bigr)\,\dd\rho
+  \prod_{\ell=1}^{m}
+  \mathcal F_\ell(c_\ell Q\rho)\,\dd\rho
   \times\mathcal C_{\rm hard},
   \label{eq:hard-momentum-instanton-size-factor}
 \end{equation}
@@ -5020,14 +5195,14 @@ normalizations, and higher-loop matching factors.  With \(s=Q\rho\),
   Q^{b_0}
   \int_0^\infty
   \rho^{\,b_0+1}
-  \prod_{\ell=1}^{2}
-  \bigl(c_\ell Q\rho\,K_1(c_\ell Q\rho)\bigr)\,\dd\rho
+  \prod_{\ell=1}^{m}
+  \mathcal F_\ell(c_\ell Q\rho)\,\dd\rho
   =
   Q^{-2}
   \int_0^\infty
   s^{\,b_0+1}
-  \prod_{\ell=1}^{2}
-  \bigl(c_\ell sK_1(c_\ell s)\bigr)\,\dd s .
+  \prod_{\ell=1}^{m}
+  \mathcal F_\ell(c_\ell s)\,\dd s .
   \label{eq:hard-momentum-instanton-size-scaling}
 \end{equation}
 This \(Q^{-2}\) is the engineering dimension of the source-amputated
@@ -5049,18 +5224,18 @@ then the same hard factor is
   \left(\frac{8\pi^2}{g_{\rm ht}^2(Q)}\right)^{2N_c}
   \Lambda_{\rm ht}^{b_0}\,
   Q^{-b_0-2}\,
-  \mathcal J_{b_0}(c_1,c_2)\,
+  \mathcal J_{b_0}(\mathbf c;\mathcal F)\,
   \mathcal C_{\rm hard},
   \label{eq:hard-momentum-instanton-rg-invariant-scaling}
 \end{equation}
 with
 \[
-  \mathcal J_{b_0}(c_1,c_2)
+  \mathcal J_{b_0}(\mathbf c;\mathcal F)
   =
   \int_0^\infty
   s^{\,b_0+1}
-  \prod_{\ell=1}^{2}
-  \bigl(c_\ell sK_1(c_\ell s)\bigr)\,\dd s .
+  \prod_{\ell=1}^{m}
+  \mathcal F_\ell(c_\ell s)\,\dd s .
 \]
 Thus the semiclassical exponential and the size measure together become a
 power-suppressed hard coefficient.  The remaining displayed
@@ -5069,21 +5244,23 @@ Jacobian prefactor; higher-loop matching changes the logarithmic factor and
 scheme coordinate, not the endpoint mechanism described here.
 The small-\(\rho\) endpoint is finite in asymptotically free QCD because the
 integrand behaves as \(\rho^{b_0+1}\).  The large-\(\rho\) endpoint is cut
-off by
+off when the selected hard form factors obey
 \[
-  \prod_{\ell=1}^{2}c_\ell Q\rho\,K_1(c_\ell Q\rho)
+  \prod_{\ell=1}^{m}\mathcal F_\ell(c_\ell Q\rho)
   =
-  O\!\left(\rho\,\exp[-(c_1+c_2)Q\rho]\right),
+  O\!\left((Q\rho)^\gamma\exp[-d(\mathbf c)Q\rho]\right),
+  \qquad d(\mathbf c)>0,
   \qquad Q\rho\to\infty .
 \]
 Thus a genuinely hard fermionic instanton amplitude is dominated by
 instantons with \(\rho\) of order \(1/Q\), within a dimensionless
-distribution set by the \(c_\ell\).  This is a physical cutoff supplied by
-the external source profiles, not a cutoff on the instanton moduli space.
-The approximation is controlled only when the dominant range also has
-\(1/\rho\) in the weak-coupling regime and when the projection onto the
-chosen hard channel removes determinant monomials whose source entries carry
-no hard momentum transfer and hence no BPST form-factor cutoff.
+distribution set by the \(c_\ell\) and the selected form-factor functions.
+This is a physical cutoff supplied by the external source profiles, not a
+cutoff on the instanton moduli space.  The approximation is controlled only
+when the dominant range also has \(1/\rho\) in the weak-coupling regime and
+when the projection onto the chosen hard channel removes determinant monomials
+whose zero-mode factors carry no hard external momentum and hence no
+form-factor cutoff.
 \end{controlledapproximation}
 
 This hard-size window is the amplitude counterpart of the local
@@ -5171,7 +5348,7 @@ If one quark is massless and no external source saturates its zero modes,
 \(\det M=0\) and the vacuum activity
 \eqref{eq:mass-saturated-instanton-window-activity} vanishes.  This is
 compatible with nonzero instanton contributions to fermionic correlators:
-those correlators use the source determinant of
+those correlators use the source-differentiated zero-mode coefficient in
 \eqref{eq:proper-time-four-fermion-instanton-amplitude} instead of the mass
 determinant in \eqref{eq:mass-saturated-instanton-window-activity}.
 \end{controlledapproximation}

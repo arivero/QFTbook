@@ -411,12 +411,18 @@ Current checks:
   correlator contribution, including the two- and three-flavor 't Hooft
   determinants, the mixed mass/source minor expansion, and the
   \(\theta+\arg\det M\) axial phase ledger, the
-  proper-time nonzero-mode determinant assembly for a smeared four-fermion
-  instanton amplitude, the BPST zero-mode envelope momentum form factor
-  \(zK_1(z)\), tail, and logarithmically sensitive second moment in the
-  local-vertex limit, the source-matrix row/column algebra showing that
-  external-leg amputation removes adjacent propagator residues while retaining
-  instanton zero-mode form factors, the color-singlet source-projection
+  proper-time nonzero-mode determinant assembly for bilinear-source and
+  source-differentiated four-fermion instanton amplitudes, the regression that a
+  c-number external-wave-packet outer product has zero determinant while the
+  differentiated Grassmann source coefficient is nonzero, the BPST zero-mode
+  envelope momentum form factor \(zK_1(z)\), tail, and logarithmically sensitive
+  second moment in the local-bilinear limit, the source-slot and bilinear
+  row/column algebra showing that external-leg amputation removes adjacent
+  propagator residues while retaining the selected instanton zero-mode form
+  factors, the plane-wave four-fermion assembly in which the differentiated
+  right-slot and left-slot determinants share the same center phase and the
+  center integral supplies total momentum conservation, the color-singlet
+  source-projection
   algebra which keeps source-to-zero-mode overlaps and hadronic pole residues
   separate from the hard instanton kernel, the hard-momentum size-window scaling
   that gives the \(N_f=2\) four-fermion coefficient its \(Q^{-2}\) behavior

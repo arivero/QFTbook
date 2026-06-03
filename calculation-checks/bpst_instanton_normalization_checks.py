@@ -22,17 +22,23 @@ relations
     correct orbit-volume and homogeneous-cone scaling
     the finite-regulator nonzero-mode determinant datum has the correct
     boson/ghost/fermion determinant powers and counterterm shifts
-    the proper-time fluctuation determinant combines with the zero-mode
-    source determinant to give the finite four-fermion instanton amplitude
+    the proper-time fluctuation determinant combines with either an independent
+    bilinear source determinant or a differentiated linear Grassmann source
+    coefficient to give the finite four-fermion instanton amplitude
     the heat-kernel logarithm in the nonzero-mode determinant carries the
     vector-plus-ghost 11 C_A/3 coefficient, the Dirac matter subtraction, and
     cancels the cutoff-scale dependence of the bare instanton exponential
     the BPST fundamental zero-mode envelope has finite zeroth moment, an
     exact momentum-space form factor, a power-law tail, and a
     logarithmically infrared-sensitive second moment
-    external-leg amputation removes only row/column propagator residues from
-    the zero-mode source matrix and leaves the instanton form factors inside
-    the amputated hard kernel
+    external-leg amputation removes only source-slot propagator residues from
+    differentiated linear source matrices, and row/column residues from an
+    independent bilinear source matrix
+    plane-wave instanton four-fermion amplitudes factor the common center
+    phase out of the differentiated right-slot and left-slot determinants, so
+    the center integral supplies total momentum conservation while the
+    individual zero-mode form-factor determinants remain inside the size
+    integral
     color-singlet source projection multiplies the hard instanton kernel by
     gauge-invariant source-overlap matrices, while hadronic pole residues are
     separate external spectral data
@@ -233,6 +239,42 @@ def grassmann_source_determinant_top_coefficient(
                 ),
             )
         polynomial = grassmann_add(polynomial, term)
+    return berezin_top_coefficient(polynomial, 2 * flavor_count)
+
+
+def grassmann_linear_source_four_slot_coefficient(
+    right_slots: list[list[Fraction]],
+    left_slots: list[list[Fraction]],
+) -> Fraction:
+    flavor_count = 2
+    assert_equal("right source slot matrix size", len(right_slots), flavor_count)
+    assert_equal("left source flavor matrix size", len(left_slots), flavor_count)
+
+    polynomial = grassmann_monomial(coefficient=Fraction(1))
+    for flavor in range(flavor_count):
+        alpha: GrassmannPolynomial = {}
+        for slot in range(flavor_count):
+            alpha = grassmann_add(
+                alpha,
+                grassmann_monomial(
+                    slot,
+                    coefficient=right_slots[slot][flavor],
+                ),
+            )
+        polynomial = grassmann_mul(polynomial, alpha)
+
+    for flavor in range(flavor_count):
+        beta: GrassmannPolynomial = {}
+        for slot in range(flavor_count):
+            beta = grassmann_add(
+                beta,
+                grassmann_monomial(
+                    flavor_count + slot,
+                    coefficient=left_slots[flavor][slot],
+                ),
+            )
+        polynomial = grassmann_mul(polynomial, beta)
+
     return berezin_top_coefficient(polynomial, 2 * flavor_count)
 
 
@@ -704,10 +746,11 @@ def check_proper_time_fluctuation_four_fermion_amplitude() -> None:
         Fraction(210, 2431) * Fraction(899, 437) ** 2 * Fraction(2021, 1517) ** 2,
     )
 
-    # The four external fermion wave packets enter only through the
-    # zero-mode-projected two-flavor source matrix B_eta.  The full
-    # semiclassical four-point amplitude is W_nz det(B_eta) integrated over
-    # collective coordinates; this finite check tracks the scalar integrand.
+    # An independent even bilinear source matrix enters through the
+    # zero-mode-projected two-flavor determinant.  The full semiclassical
+    # source functional is W_nz times the zero-mode Berezin coefficient,
+    # integrated over collective coordinates; this finite check tracks the
+    # bilinear-source scalar integrand.
     source_matrix = [[Fraction(2), Fraction(3)], [Fraction(5), Fraction(11)]]
     source_determinant = det_fraction(source_matrix)
     assert_equal(
@@ -738,6 +781,38 @@ def check_proper_time_fluctuation_four_fermion_amplitude() -> None:
         "proper-time plus counterterm log power for SU(3) Nf=2",
         spectral_trace_power + coupling_and_local_counterterm_power,
         Fraction(29, 3),
+    )
+
+
+def check_instanton_source_typing_and_differentiation() -> None:
+    right_vector = [Fraction(2), Fraction(3)]
+    left_vector = [Fraction(5), Fraction(7)]
+    cnumber_outer_product = [
+        [right * left for left in left_vector]
+        for right in right_vector
+    ]
+    assert_equal(
+        "c-number external wave-packet outer product determinant vanishes",
+        det_fraction(cnumber_outer_product),
+        Fraction(0),
+    )
+
+    right_slots = [[Fraction(2), Fraction(3)], [Fraction(5), Fraction(11)]]
+    left_slots = [[Fraction(7), Fraction(13)], [Fraction(17), Fraction(19)]]
+    differentiated_coefficient = grassmann_linear_source_four_slot_coefficient(
+        right_slots,
+        left_slots,
+    )
+    expected_coefficient = det_fraction(right_slots) * det_fraction(left_slots)
+    assert_equal(
+        "differentiated Grassmann source four-slot coefficient",
+        differentiated_coefficient,
+        expected_coefficient,
+    )
+    assert_equal(
+        "differentiated source coefficient is nonzero",
+        differentiated_coefficient == 0,
+        False,
     )
 
 
@@ -885,6 +960,52 @@ def check_instanton_zero_mode_tail_local_limit() -> None:
 
 
 def check_instanton_external_leg_amputation_kernel() -> None:
+    right_slot_residues = [Fraction(2, 3), Fraction(5, 7)]
+    left_slot_residues = [Fraction(11, 13), Fraction(17, 19)]
+    right_amputated_slots = [
+        [Fraction(3, 5), Fraction(7, 11)],
+        [Fraction(13, 17), Fraction(19, 23)],
+    ]
+    left_amputated_slots = [
+        [Fraction(29, 31), Fraction(37, 41)],
+        [Fraction(43, 47), Fraction(53, 59)],
+    ]
+    right_unamputated_slots = [
+        [
+            right_slot_residues[slot] * right_amputated_slots[slot][flavor]
+            for flavor in range(2)
+        ]
+        for slot in range(2)
+    ]
+    left_unamputated_slots = [
+        [
+            left_amputated_slots[flavor][slot] * left_slot_residues[slot]
+            for slot in range(2)
+        ]
+        for flavor in range(2)
+    ]
+    slot_residue_product = (
+        product_fraction(right_slot_residues)
+        * product_fraction(left_slot_residues)
+    )
+    assert_equal(
+        "linear source slot determinant external residue factor",
+        det_fraction(right_unamputated_slots)
+        * det_fraction(left_unamputated_slots),
+        slot_residue_product
+        * det_fraction(right_amputated_slots)
+        * det_fraction(left_amputated_slots),
+    )
+    assert_equal(
+        "linear source amputation preserves differentiated coefficient",
+        (
+            det_fraction(right_unamputated_slots)
+            * det_fraction(left_unamputated_slots)
+            / slot_residue_product
+        ),
+        det_fraction(right_amputated_slots) * det_fraction(left_amputated_slots),
+    )
+
     row_leg_residues = [Fraction(2, 3), Fraction(5, 7)]
     column_leg_residues = [Fraction(11, 13), Fraction(17, 19)]
     orientation_tensor = [[Fraction(3), Fraction(5)], [Fraction(7), Fraction(11)]]
@@ -913,7 +1034,7 @@ def check_instanton_external_leg_amputation_kernel() -> None:
         * product_fraction(column_leg_residues)
     )
     assert_equal(
-        "instanton source determinant row-column external residue factor",
+        "bilinear source determinant row-column external residue factor",
         det_fraction(unamputated_source),
         external_residue_product * det_fraction(amputated_source),
     )
@@ -928,7 +1049,7 @@ def check_instanton_external_leg_amputation_kernel() -> None:
         for row in range(2)
     ]
     assert_equal(
-        "external-leg amputation recovers zero-mode source matrix",
+        "bilinear external-leg amputation recovers zero-mode source matrix",
         recovered_amputated_source,
         amputated_source,
     )
@@ -945,7 +1066,7 @@ def check_instanton_external_leg_amputation_kernel() -> None:
         * form_factors[1][0]
     )
     assert_equal(
-        "amputated instanton determinant retains form factors",
+        "amputated bilinear instanton determinant retains form factors",
         det_fraction(amputated_source),
         expected_amputated_det,
     )
@@ -970,6 +1091,106 @@ def check_instanton_external_leg_amputation_kernel() -> None:
             + weights[1] * det_fraction(second_amputated_source)
         ),
     )
+
+
+def check_plane_wave_instanton_four_fermion_assembly() -> None:
+    def add_vec(*vectors: tuple[int, int, int, int]) -> tuple[int, int, int, int]:
+        return tuple(sum(vector[index] for vector in vectors) for index in range(4))
+
+    def sub_vec(
+        left: tuple[int, int, int, int],
+        right: tuple[int, int, int, int],
+    ) -> tuple[int, int, int, int]:
+        return tuple(left[index] - right[index] for index in range(4))
+
+    p_r = [(2, 3, 5, 7), (11, 13, 17, 19)]
+    p_l = [(23, 29, 31, 37), (41, 43, 47, 53)]
+    total_phase = sub_vec(add_vec(*p_r), add_vec(*p_l))
+
+    def neg_vec(vector: tuple[int, int, int, int]) -> tuple[int, int, int, int]:
+        return tuple(-entry for entry in vector)
+
+    def permutation_sign(permutation: tuple[int, ...]) -> Fraction:
+        inversions = sum(
+            permutation[left] > permutation[right]
+            for left in range(len(permutation))
+            for right in range(left + 1, len(permutation))
+        )
+        return Fraction(-1 if inversions % 2 else 1)
+
+    # In the bilinear-source specialization each determinant pairing still has
+    # the same center phase.  This is not a c-number wave-packet outer product;
+    # the independent bilinear source entries are the objects being paired.
+    for permutation in itertools.permutations(range(2)):
+        permutation_phase = add_vec(
+            *[
+                sub_vec(p_r[row], p_l[permutation[row]])
+                for row in range(2)
+            ]
+        )
+        assert_equal(
+            f"bilinear source center phase is permutation independent {permutation}",
+            permutation_phase,
+            total_phase,
+        )
+
+    right_profiles = [[Fraction(2, 3), Fraction(5, 7)], [Fraction(11, 13), Fraction(17, 19)]]
+    left_profiles = [[Fraction(23, 29), Fraction(31, 37)], [Fraction(41, 43), Fraction(47, 53)]]
+    determinant_terms_by_phase: dict[tuple[int, int, int, int], Fraction] = {}
+    for right_permutation in itertools.permutations(range(2)):
+        right_phase = add_vec(*p_r)
+        right_coefficient = permutation_sign(right_permutation) * product_fraction(
+            [
+                right_profiles[slot][right_permutation[slot]]
+                for slot in range(2)
+            ]
+        )
+        for left_permutation in itertools.permutations(range(2)):
+            left_phase = add_vec(*[neg_vec(p_l[left_permutation[flavor]]) for flavor in range(2)])
+            left_coefficient = permutation_sign(left_permutation) * product_fraction(
+                [
+                    left_profiles[flavor][left_permutation[flavor]]
+                    for flavor in range(2)
+                ]
+            )
+            phase = add_vec(right_phase, left_phase)
+            coefficient = right_coefficient * left_coefficient
+            determinant_terms_by_phase[phase] = (
+                determinant_terms_by_phase.get(phase, Fraction(0)) + coefficient
+            )
+
+    assert_equal(
+        "plane-wave linear-source determinants have one center phase",
+        list(determinant_terms_by_phase.keys()),
+        [total_phase],
+    )
+    assert_equal(
+        "plane-wave linear-source coefficient after phase factoring",
+        determinant_terms_by_phase[total_phase],
+        det_fraction(right_profiles) * det_fraction(left_profiles),
+    )
+
+    individual_zero_mode_power = Fraction(3, 2)
+    external_slot_count = 4
+    assert_equal(
+        "plane-wave four-fermion differentiated-source rho power",
+        individual_zero_mode_power * external_slot_count,
+        6,
+    )
+
+    period = 5
+    off_shell_phase = tuple(value % period for value in total_phase)
+    center_sum_off_shell = 0 if any(off_shell_phase) else period**4
+    assert_equal("finite-volume center sum kills nonconserved momentum", center_sum_off_shell, 0)
+
+    p_l_conserved = [p_r[1], p_r[0]]
+    conserved_total_phase = sub_vec(add_vec(*p_r), add_vec(*p_l_conserved))
+    center_sum_conserved = (
+        period**4
+        if not any(value % period for value in conserved_total_phase)
+        else 0
+    )
+    assert_equal("finite-volume center sum keeps conserved momentum", center_sum_conserved, period**4)
 
 
 def check_color_singlet_instanton_source_projection() -> None:
@@ -1064,10 +1285,13 @@ def check_hard_momentum_instanton_size_window() -> None:
     b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
 
     measure_power = Fraction(-5)
-    zero_mode_source_power = Fraction(3 * n_f)
+    individual_form_factor_count = 4
+    individual_zero_mode_power = Fraction(3, 2)
+    zero_mode_source_power = individual_form_factor_count * individual_zero_mode_power
     integrand_power = b0 + measure_power + zero_mode_source_power
     antiderivative_power = integrand_power + 1
     assert_equal("hard Nf=2 b0", b0, Fraction(29, 3))
+    assert_equal("hard Nf=2 four individual zero modes give rho^6", zero_mode_source_power, 6)
     assert_equal("hard Nf=2 size integrand power", integrand_power, b0 + 1)
     assert_equal("hard Nf=2 small-rho margin", antiderivative_power, b0 + 2)
 
@@ -1095,20 +1319,23 @@ def check_hard_momentum_instanton_size_window() -> None:
         Fraction(-2),
     )
 
-    # A determinant term has two zero-mode source entries.  If both momentum
-    # transfers are hard, the large-rho endpoint is exponentially suppressed
-    # by exp[-rho (|q_a|+|q_b|)].
-    diagonal_transfer_sum = Fraction(3) + Fraction(5)
-    off_diagonal_transfer_sum = Fraction(2) + Fraction(7)
-    hard_cutoff = min(diagonal_transfer_sum, off_diagonal_transfer_sum)
-    assert_equal("hard determinant exponential scale", hard_cutoff, Fraction(8))
+    # In the differentiated linear-source version the hard endpoint cutoff is
+    # supplied by the product of the individual zero-mode form factors.  In the
+    # fused bilinear-source specialization the same check applies to the two
+    # density form factors z K_1(z).
+    linear_form_factor_scales = [Fraction(3), Fraction(5), Fraction(2), Fraction(7)]
+    bilinear_density_scales = [Fraction(3), Fraction(5)]
+    linear_hard_cutoff = sum(linear_form_factor_scales)
+    bilinear_hard_cutoff = sum(bilinear_density_scales)
+    assert_equal("hard linear-source exponential scale", linear_hard_cutoff, Fraction(17))
+    assert_equal("hard bilinear-density exponential scale", bilinear_hard_cutoff, Fraction(8))
 
     def large_rho_status(transfer_sum: Fraction) -> str:
         return "exponential_cutoff" if transfer_sum > 0 else "no_form_factor_cutoff"
 
     assert_equal(
-        "hard source term has large-rho cutoff",
-        large_rho_status(hard_cutoff),
+        "hard linear-source term has large-rho cutoff",
+        large_rho_status(linear_hard_cutoff),
         "exponential_cutoff",
     )
     assert_equal(
@@ -1329,9 +1556,11 @@ def main() -> None:
     check_finite_regulator_determinant_datum()
     check_physical_instanton_correlator_zero_mode_saturation()
     check_proper_time_fluctuation_four_fermion_amplitude()
+    check_instanton_source_typing_and_differentiation()
     check_instanton_heat_kernel_beta0_logarithm()
     check_instanton_zero_mode_tail_local_limit()
     check_instanton_external_leg_amputation_kernel()
+    check_plane_wave_instanton_four_fermion_assembly()
     check_color_singlet_instanton_source_projection()
     check_hard_momentum_instanton_size_window()
     check_dilute_instanton_gas_theta_cumulants()
