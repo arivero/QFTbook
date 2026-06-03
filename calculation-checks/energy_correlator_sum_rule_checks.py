@@ -65,6 +65,59 @@ def eec_contact_weight(event: list[Particle]) -> Fraction:
     return sum(z * z for z, _ in event)
 
 
+def three_detector_zeroth_moment(event: list[Particle]) -> Fraction:
+    return sum(
+        z_i * z_j * z_k
+        for z_i, _ in event
+        for z_j, _ in event
+        for z_k, _ in event
+    )
+
+
+def three_detector_pair_moment(
+    event: list[Particle],
+    first_slot: int,
+    second_slot: int,
+) -> Fraction:
+    total = Fraction(0)
+    for first_particle in event:
+        for second_particle in event:
+            for third_particle in event:
+                particles = (first_particle, second_particle, third_particle)
+                weight = particles[0][0] * particles[1][0] * particles[2][0]
+                total += weight * dot(particles[first_slot][1], particles[second_slot][1])
+    return total
+
+
+def three_detector_contact_weights(event: list[Particle]) -> dict[str, Fraction]:
+    all_distinct = Fraction(0)
+    pair_12 = Fraction(0)
+    pair_13 = Fraction(0)
+    pair_23 = Fraction(0)
+    all_same = Fraction(0)
+    for r, (z_r, _) in enumerate(event):
+        for s, (z_s, _) in enumerate(event):
+            for t, (z_t, _) in enumerate(event):
+                weight = z_r * z_s * z_t
+                if r == s == t:
+                    all_same += weight
+                elif r == s:
+                    pair_12 += weight
+                elif r == t:
+                    pair_13 += weight
+                elif s == t:
+                    pair_23 += weight
+                else:
+                    all_distinct += weight
+    return {
+        "all_distinct": all_distinct,
+        "pair_12": pair_12,
+        "pair_13": pair_13,
+        "pair_23": pair_23,
+        "all_same": all_same,
+    }
+
+
 def energy_detector_value(event: list[Particle], values: list[Fraction]) -> Fraction:
     if len(event) != len(values):
         raise ValueError("one detector-test value is required for each particle")
@@ -269,6 +322,34 @@ def check_three_body_orthogonal_rational_event() -> None:
     )
 
 
+def check_three_detector_moment_and_contact_ledger() -> None:
+    event: list[Particle] = [
+        (Fraction(1, 4), (Fraction(1), Fraction(0), Fraction(0))),
+        (Fraction(1, 3), (Fraction(0), Fraction(1), Fraction(0))),
+        (Fraction(5, 12), (Fraction(-3, 5), Fraction(-4, 5), Fraction(0))),
+    ]
+    assert_equal("three-detector total energy", event_total_energy_fraction(event), Fraction(1))
+    assert_equal("three-detector total momentum", event_momentum_fraction(event), (Fraction(0), Fraction(0), Fraction(0)))
+    assert_equal("three-detector zeroth moment", three_detector_zeroth_moment(event), Fraction(1))
+    assert_equal("three-detector zeta12 moment", three_detector_pair_moment(event, 0, 1), Fraction(0))
+    assert_equal("three-detector zeta13 moment", three_detector_pair_moment(event, 0, 2), Fraction(0))
+    assert_equal("three-detector zeta23 moment", three_detector_pair_moment(event, 1, 2), Fraction(0))
+
+    contact_weights = three_detector_contact_weights(event)
+    assert_equal("three-detector all-same contact weight", contact_weights["all_same"], Fraction(1, 8))
+    assert_equal("three-detector 12 pair-contact weight", contact_weights["pair_12"], Fraction(2, 9))
+    assert_equal("three-detector 13 pair-contact weight", contact_weights["pair_13"], Fraction(2, 9))
+    assert_equal("three-detector 23 pair-contact weight", contact_weights["pair_23"], Fraction(2, 9))
+    assert_equal("three-detector all-distinct separated weight", contact_weights["all_distinct"], Fraction(5, 24))
+    assert_equal(
+        "three-detector contact partition exhausts unit moment",
+        sum(contact_weights.values(), Fraction(0)),
+        three_detector_zeroth_moment(event),
+    )
+    if contact_weights["all_distinct"] == three_detector_zeroth_moment(event):
+        raise AssertionError("separated three-detector weight should not include contact strata")
+
+
 def check_endpoint_matching_delta_ledger() -> None:
     # A truncated open-interval matched distribution has finite moments I0,I1.
     # If both endpoint delta coordinates are retained, the two exact EEC moment
@@ -375,6 +456,7 @@ def check_connected_cumulants_do_not_remove_detector_contacts() -> None:
 def main() -> None:
     check_two_body_back_to_back_event()
     check_three_body_orthogonal_rational_event()
+    check_three_detector_moment_and_contact_ledger()
     check_endpoint_matching_delta_ledger()
     check_connected_cumulants_do_not_remove_detector_contacts()
     print("All finite-event energy-correlator detector-algebra checks passed.")

@@ -583,6 +583,8 @@ Current checks:
 - `energy_correlator_sum_rule_checks.py`: exact finite-event checks for the
   energy-energy-correlator zeroth and first moment sum rules and the
   coincident-detector contact weight in the QCD detector-observable chapter;
+  the ordered three-detector unit moment, pairwise angular moments, and
+  all-same and pair-contact diagonal weights;
   it also checks the finite-event multiplication-operator algebra for smeared
   detector products, diagonal contact contributions, ensemble-connected
   cumulants versus detector-contact strata, and the endpoint delta-coordinate

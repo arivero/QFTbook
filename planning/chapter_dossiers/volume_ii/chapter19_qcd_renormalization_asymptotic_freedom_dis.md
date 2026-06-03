@@ -188,6 +188,10 @@ The chapter must define and derive:
   zero opening angle;
 - the eventwise EEC zeroth and first moment sum rules in the center-of-mass
   frame, including the exact coincident-detector contact weight;
+- the ordered three-detector eventwise distribution
+  \(E_{3,X}(\zeta_{12},\zeta_{13},\zeta_{23})\), with unit total moment,
+  vanishing pairwise angular moments in a color-singlet center-of-mass event,
+  and explicit all-same and pair-contact diagonal strata;
 - the distributional endpoint-matching ledger for the full normalized EEC:
   an open-interval matched distribution \(\mathcal R\), explicit endpoint
   atoms \(K_+\delta(1-\zeta)\) and \(K_-\delta(1+\zeta)\), and the two exact
@@ -402,6 +406,12 @@ The chapter must define and derive:
      moment in a color-singlet center-of-mass frame; removing the contact term
      removes the weight \(\sum_r z_r^2\) from the separated-angle
      distribution.
+19aa. The ordered three-detector distribution has unit total moment and three
+      vanishing pairwise angular moments in the same center-of-mass
+      convention.  Its separated support omits the all-same contact
+      \(\sum_r z_r^3\) and the three pair-contact strata
+      \(\sum_{r\ne t} z_r^2z_t\), so separated three-detector data do not
+      satisfy the full moment identities without explicit contact coordinates.
 19ab. Connected energy correlators are cumulants of detector random variables
       over the event ensemble.  They are distinct from contact-subtracted
       separated-detector observables: diagonal strata of
@@ -751,6 +761,12 @@ The chapter must define and derive:
   decomposition of the eventwise product measure; the finite-event companion
   script verifies that deterministic ensemble cumulants can vanish while
   diagonal detector contacts remain nonzero.
+- 2026-06-02 issue #519 three-detector moment pass: added the ordered
+  \(E_{3,X}(\zeta_{12},\zeta_{13},\zeta_{23})\) distribution, its unit
+  total moment, its three vanishing pairwise angular moments in the
+  center-of-mass frame, and its all-same and pair-contact diagonal strata.
+  Extended `energy_correlator_sum_rule_checks.py` with exact rational checks
+  of the three-detector moments and contact weights.
 - 2026-06-02 issue #519 track-energy pass: added selected calorimetric
   measures for track and charged-energy correlators, derived the selected EEC
   moment identities, introduced track functions as nonperturbative

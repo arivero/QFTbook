@@ -7892,6 +7892,81 @@ remaining separated-angle distribution no longer has unit integral by itself;
 the missing weight is \(\langle\sum_r z_r^2\rangle\).
 \end{remark}
 
+\paragraph{Three-detector moment and contact ledger.}
+The same detector definition gives a genuinely higher-point distribution
+before any partonic approximation is made.  For the same event \(X\), define
+the ordered three-detector distribution on the three angular invariants
+\(\zeta_{12},\zeta_{13},\zeta_{23}\) by
+\begin{equation}
+\begin{aligned}
+  E_{3,X}(\zeta_{12},\zeta_{13},\zeta_{23})
+  &:=
+  \sum_{r,s,t\in X}
+  z_rz_sz_t\,
+  \delta(\zeta_{12}-\mathbf n_r\!\cdot\!\mathbf n_s)\,
+  \delta(\zeta_{13}-\mathbf n_r\!\cdot\!\mathbf n_t)          \\
+  &\hspace{6.3em}\times
+  \delta(\zeta_{23}-\mathbf n_s\!\cdot\!\mathbf n_t).
+\end{aligned}
+  \label{eq:eventwise-three-detector-distribution}
+\end{equation}
+Its support is not the whole cube \([-1,1]^3\), but the Gram-positive
+region of triples of unit directions, plus the diagonal strata.  As moments
+of this distribution,
+\begin{equation}
+  \int E_{3,X}=1,
+  \qquad
+  \int \zeta_{12}E_{3,X}
+  =
+  \int \zeta_{13}E_{3,X}
+  =
+  \int \zeta_{23}E_{3,X}
+  =
+  0
+  \label{eq:eventwise-three-detector-moments}
+\end{equation}
+in a color-singlet center-of-mass event.  The proof is the same detector
+algebra as above: the constant test gives
+\((\sum_r z_r)^3=1\), while, for example,
+\[
+  \sum_{r,s,t}z_rz_sz_t\,\mathbf n_r\cdot\mathbf n_s
+  =
+  \left|\sum_r z_r\mathbf n_r\right|^2
+  \left(\sum_t z_t\right)
+  =
+  0 .
+\]
+The other two pair moments are identical after relabeling the ordered
+detectors.
+
+The diagonal contact strata are now richer than in the EEC.  The completely
+coincident stratum is
+\begin{equation}
+  \left(\sum_{r\in X}z_r^3\right)
+  \delta(\zeta_{12}-1)\delta(\zeta_{13}-1)\delta(\zeta_{23}-1).
+  \label{eq:eventwise-three-detector-total-contact}
+\end{equation}
+There are also three pair-coincidence strata.  For instance, the stratum
+where detectors \(1\) and \(2\) hit the same hadron but detector \(3\) hits a
+different hadron is
+\begin{equation}
+  \sum_{\substack{r,t\in X\\ r\neq t}}
+  z_r^2z_t\,
+  \delta(\zeta_{12}-1)
+  \delta(\zeta_{13}-\zeta_{rt})
+  \delta(\zeta_{23}-\zeta_{rt}),
+  \qquad
+  \zeta_{rt}=\mathbf n_r\cdot\mathbf n_t,
+  \label{eq:eventwise-three-detector-pair-contact}
+\end{equation}
+with two analogous terms for \(1=3\) and \(2=3\).  Removing all these
+diagonal strata defines a separated three-detector observable.  It does not
+by itself obey \eqref{eq:eventwise-three-detector-moments}; the missing
+weights are precisely the contact coordinates above.  Thus higher-point
+energy correlators inherit the same lesson as the EEC: endpoint/contact
+coordinates are part of the detector observable, not optional decorations
+added after a partonic calculation.
+
 \subsection{Light-Ray Interpretation and Endpoint Regimes}
 
 The detector density \(\widehat{\mathcal E}(\mathbf n)\) is the QCD analogue
