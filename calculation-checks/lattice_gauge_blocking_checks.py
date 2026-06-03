@@ -562,6 +562,52 @@ def check_gauge_path_deformation_reconstruction_budget() -> None:
     )
 
 
+def gauge_common_window_budget(window: int, scale: int) -> tuple[Fraction, Fraction, Fraction]:
+    """Toy directed-window budget for the gauge reconstruction schedule."""
+
+    locality_tail = Fraction(window, scale)
+    source_window = Fraction(window * window, scale)
+    reconstruction = Fraction(3, 2 * scale)
+    volume_tail = Fraction(1, scale)
+    connector = Fraction(window, 2 * scale)
+    rp_defect = Fraction(2 * window, scale)
+    full_budget = (
+        locality_tail
+        + source_window
+        + reconstruction
+        + volume_tail
+        + connector
+    )
+    reduced_without_connector = full_budget - connector
+    return full_budget, rp_defect, reduced_without_connector
+
+
+def check_gauge_common_reconstruction_schedule() -> None:
+    """Check the diagonal schedule required by the gauge reconstruction ledger."""
+
+    for horizon in range(1, 8):
+        scale = 16 * horizon * horizon * (horizon + 1)
+        tolerance = Fraction(1, horizon)
+        for window in range(1, horizon + 1):
+            full_budget, rp_defect, reduced = gauge_common_window_budget(window, scale)
+            assert_true(
+                "cofinal gauge schedule controls reconstruction budget",
+                full_budget + rp_defect <= tolerance,
+            )
+            assert_true(
+                "connector term is load-bearing in the full gauge budget",
+                full_budget > reduced,
+            )
+
+    bad_horizon = 8
+    bad_scale = bad_horizon * bad_horizon
+    bad_full, bad_rp, _ = gauge_common_window_budget(bad_horizon, bad_scale)
+    assert_true(
+        "fixed per-window-looking schedule fails cofinal gauge control",
+        bad_full + bad_rp > Fraction(1, 2),
+    )
+
+
 def main() -> None:
     check_path_blocking_equivariance()
     check_blocked_wilson_loop()
@@ -575,6 +621,7 @@ def main() -> None:
     check_reflection_positive_compression()
     check_gauge_reconstruction_error_budget()
     check_gauge_path_deformation_reconstruction_budget()
+    check_gauge_common_reconstruction_schedule()
     print("All finite lattice gauge-blocking checks passed.")
 
 

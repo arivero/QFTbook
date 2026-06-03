@@ -1083,3 +1083,12 @@ remainder contraction.
   Newton--Kantorovich lift radius, the ansatz chart error, and the
   reconstruction Lipschitz constants before a projected functional-RG fixed
   point can be read as a controlled finite-window approximation.
+- 2026-06-03 gauge reconstruction schedule pass: added the common-scale
+  ledger for gauge-compatible RG reconstruction.  The chapter now requires
+  locality tails, source-window bounds, volume defects, connector-path
+  identification errors, observable reconstruction estimates, and
+  reflection-positive Gram defects to converge on one cofinal directed-window
+  schedule before a gauge-blocking trajectory is promoted to a continuum
+  gauge-QFT reconstruction claim.  The \(S_3\) lattice gauge companion check
+  now verifies the exact finite arithmetic of this schedule and its failure
+  mode when estimates are controlled only on unrelated finite windows.

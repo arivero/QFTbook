@@ -938,7 +938,10 @@ Current checks:
   finite Gram matrix by a blocking map.  It also detects a nondecaying
   polymer-tail failure mode and checks the finite reconstruction error budget
   \(C\varepsilon+\eta\), including that the residual reconstruction term is
-  load-bearing.
+  load-bearing.  It also checks the common-scale schedule arithmetic for the
+  gauge reconstruction ledger: locality, source, volume, connector,
+  reconstruction, and reflection-positivity defects must be controlled on one
+  cofinal directed-window schedule rather than on unrelated finite windows.
 - `trace_anomaly_checks.py`: exact finite checks for the Volume XII curved
   trace-anomaly chapter, including the conformal-scalar heat-kernel
   curvature combination, the \(R^2\) Weyl-variation shift of the

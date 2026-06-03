@@ -3301,6 +3301,100 @@ compression, and the reconstruction error budget in
 not substitutes for the continuum estimates, but they keep the algebraic
 interfaces of the estimate package explicit.
 
+\paragraph{Common-scale schedule for gauge reconstruction.}
+The estimates above are not independent badges.  A gauge-compatible continuum
+claim needs them on one directed schedule.  Let
+\(\mathfrak A_{\rm gauge}\) be a directed family of finite gauge observation
+windows.  A window \(\alpha\in\mathfrak A_{\rm gauge}\) consists of a finite
+set \(\mathcal W_\alpha\) of gauge-invariant Wilson-loop, small-loop,
+transported-matter, or BV-cohomology source labels; a finite positive-time
+test family \(\mathcal F_\alpha\); a seminorm \(p_\alpha\) on the
+reconstructed observable window; a source polydisc radius
+\(\rho_\alpha>0\); and, when connector paths are to be identified, a finite
+set \(\mathcal P_\alpha\) of path-deformation pairs \((P,P')\).  The
+window remembers the representation, path, endpoint contraction, smearing,
+orientation, and contact/source-coordinate convention for every label.
+
+For a scale \(k\), a polymer truncation radius \(R\), and a finite volume
+\(\Omega\), the gauge reconstruction error for \(\alpha\) is recorded by the
+budget
+\begin{equation}
+\begin{aligned}
+  \mathcal E_{\alpha,k,R,\Omega}^{\rm gauge}
+  &=
+  C_\alpha e^{-\zeta_\alpha R}\|K_k\|_{\zeta}
+  +\chi_{\alpha,k}(R)
+  +\delta_{\alpha,k,\Omega}^{\rm vol}
+  +\delta_{\alpha,k}^{\rm src}                                      \\
+  &\quad+
+  \eta_{\alpha,k}^{\rm rec}
+  +
+  \sum_{(P,P')\in\mathcal P_\alpha}
+  \bigl(
+    C_{P,P',\alpha}\varepsilon_{C_{P',P},k}
+    +\eta_{P,P',\alpha,k}
+  \bigr).
+\end{aligned}
+  \label{eq:gauge-common-reconstruction-budget}
+\end{equation}
+The first two terms are the quasi-local polymer tail from
+\eqref{eq:gauge-blocking-cluster-tail-estimate}; the third is the finite
+volume or boundary-tail defect; the fourth is the holomorphic
+source-window error in
+\eqref{eq:gauge-invariant-source-window-bound}; the fifth is the
+observable reconstruction defect in
+\eqref{eq:gauge-blocking-observable-reconstruction}; and the last line is
+the connector-path identification budget from
+\eqref{eq:gauge-source-path-deformation-reconstruction-bound}.  Reflection
+positivity has its own finite Gram-window defect:
+\begin{equation}
+  \mathcal R_{\alpha,k}^{\rm gauge}
+  =
+  \rho_{k}(\mathcal F_\alpha)
+  +
+  |\mathcal F_\alpha|\,
+  \epsilon_{\alpha,k}^{\rm Gram},
+  \label{eq:gauge-common-rp-budget}
+\end{equation}
+where \(\epsilon_{\alpha,k}^{\rm Gram}\) denotes the entrywise error between
+the regulated and limiting positive-time Gram matrices in that window, or is
+replaced by the corresponding operator-norm error if that stronger estimate
+is available.
+
+A theorem-level gauge continuum limit must provide a cofinal schedule for
+these two budgets.  For a nested cofinal sequence
+\(\alpha_1\preceq\alpha_2\preceq\cdots\), this means choosing
+\[
+  N\longmapsto (k_N,R_N,\Omega_N)
+\]
+so that, for every fixed \(j\),
+\begin{equation}
+  \mathcal E_{\alpha_j,k_N,R_N,\Omega_N}^{\rm gauge}\longrightarrow0,
+  \qquad
+  \mathcal R_{\alpha_j,k_N}^{\rm gauge}\longrightarrow0
+  \qquad(N\to\infty,\ N\ge j).
+  \label{eq:gauge-common-schedule-limit}
+\end{equation}
+Equivalently, after increasing the schedule if necessary, one may demand a
+diagonal bound such as
+\[
+  \mathcal E_{\alpha_j,k_N,R_N,\Omega_N}^{\rm gauge}
+  +
+  \mathcal R_{\alpha_j,k_N}^{\rm gauge}
+  \le 2^{-N},
+  \qquad j\le N ,
+\]
+with constants and radii already fixed by the windows.  This is the
+gauge-theory version of the common-scale requirement in
+Definition~\ref{def:short-range-rg-to-os-assembly-datum}.  Separate
+statements that the locality tail vanishes for one list of Wilson loops,
+the source Cauchy estimate holds on another source polydisc, and reflection
+positivity holds on a third positive-time family do not yet define a
+projective gauge observable germ.  The theorem is the existence of one
+schedule controlling all windows in the directed family, followed by OS,
+Wightman, or BV/cohomological reconstruction in the topology declared by
+those windows.
+
 \begin{warning}[Finite gauge blocking is not a continuum Yang--Mills proof]
 \label{warn:finite-gauge-blocking-not-continuum-proof}
 Construction~\ref{constr:gauge-equivariant-path-blocking-rg} and the finite
