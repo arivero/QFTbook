@@ -411,7 +411,8 @@ Current checks:
   finite-regulator nonzero-mode determinant bookkeeping, the zero-mode
   saturation coefficient that turns an instanton chart into a physical
   correlator contribution, including the two- and three-flavor 't Hooft
-  determinants, the mixed mass/source minor expansion, and the
+  determinants, the two-flavor scalar/pseudoscalar channel decomposition,
+  the mixed mass/source minor expansion, and the
   \(\theta+\arg\det M\) axial phase ledger, the
   pure-gauge Pauli--Villars one-instanton determinant constant
   \(C_N^{\rm PV}\), including its reduction to

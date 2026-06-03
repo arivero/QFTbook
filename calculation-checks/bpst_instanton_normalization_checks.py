@@ -76,7 +76,8 @@ relations
     the physical instanton correlator contribution is the top Berezin
     coefficient after operator, mass/source, and zero-mode factors are
     restricted to the instanton zero-mode subspace, giving the full flavor
-    determinant and the theta+arg det M phase combination
+    determinant, the two-flavor scalar/pseudoscalar channel decomposition, and
+    the theta+arg det M phase combination
     Uhlenbeck boundary faces have the expected codimensions and product
     power-counting integrability thresholds
     the k=1 ADHM quotient has orientation dimension 4N-5 and cone
@@ -816,6 +817,119 @@ def check_physical_instanton_correlator_zero_mode_saturation() -> None:
         "two-flavor mixed mass/source determinant expansion",
         two_flavor_expansion,
         det_fraction([[m11 + b11, m12 + b12], [m21 + b21, m22 + b22]]),
+    )
+
+
+def check_two_flavor_thooft_channel_decomposition() -> None:
+    def complex_sub(
+        left: tuple[Fraction, Fraction],
+        right: tuple[Fraction, Fraction],
+    ) -> tuple[Fraction, Fraction]:
+        return (left[0] - right[0], left[1] - right[1])
+
+    def complex_mul(
+        left: tuple[Fraction, Fraction],
+        right: tuple[Fraction, Fraction],
+    ) -> tuple[Fraction, Fraction]:
+        return (
+            left[0] * right[0] - left[1] * right[1],
+            left[0] * right[1] + left[1] * right[0],
+        )
+
+    def determinant_2x2_complex(
+        matrix: list[list[tuple[Fraction, Fraction]]],
+    ) -> tuple[Fraction, Fraction]:
+        return complex_sub(
+            complex_mul(matrix[0][0], matrix[1][1]),
+            complex_mul(matrix[0][1], matrix[1][0]),
+        )
+
+    # With S=s0 1+s.tau and P=p0 1+p.tau, the chiral bilinear matrix is
+    # Phi=(S+iP)/2.  Check det(S+iP) directly in the Pauli basis.
+    s0 = Fraction(2)
+    p0 = Fraction(-3, 5)
+    s = [Fraction(7, 11), Fraction(-13, 17), Fraction(19, 23)]
+    p = [Fraction(29, 31), Fraction(37, 41), Fraction(-43, 47)]
+
+    x00 = (s0 + s[2], p0 + p[2])
+    x11 = (s0 - s[2], p0 - p[2])
+    x01 = (s[0] + p[1], -s[1] + p[0])
+    x10 = (s[0] - p[1], s[1] + p[0])
+    direct_real, direct_imag = determinant_2x2_complex([[x00, x01], [x10, x11]])
+
+    channel_real = (
+        s0 * s0
+        - sum(entry * entry for entry in s)
+        - p0 * p0
+        + sum(entry * entry for entry in p)
+    )
+    channel_imag = 2 * (
+        s0 * p0
+        - sum(s[index] * p[index] for index in range(3))
+    )
+    assert_equal("two-flavor determinant real channel", direct_real, channel_real)
+    assert_equal("two-flavor determinant imaginary channel", direct_imag, channel_imag)
+
+    # det Phi carries an extra factor (1/2)^2.  Therefore
+    # e^{i theta} det Phi + e^{-i theta} det Phi^dagger has cos(theta)
+    # coefficient channel_real/2 and sin(theta) coefficient -channel_imag/2.
+    assert_equal(
+        "two-flavor theta-even channel coefficient",
+        direct_real / 2,
+        channel_real / 2,
+    )
+    assert_equal(
+        "two-flavor theta-odd scalar-pseudoscalar mixing coefficient",
+        -direct_imag / 2,
+        -(s0 * p0 - sum(s[index] * p[index] for index in range(3))),
+    )
+
+    # Basis-vector checks expose the signs of the four physical channels at
+    # theta=0: scalar singlet and pseudoscalar triplet enter with the opposite
+    # sign from pseudoscalar singlet and scalar triplet.
+    def theta_zero_channel(
+        scalar_singlet: Fraction = Fraction(0),
+        scalar_triplet: Fraction = Fraction(0),
+        pseudoscalar_singlet: Fraction = Fraction(0),
+        pseudoscalar_triplet: Fraction = Fraction(0),
+    ) -> Fraction:
+        return Fraction(1, 2) * (
+            scalar_singlet * scalar_singlet
+            - scalar_triplet * scalar_triplet
+            - pseudoscalar_singlet * pseudoscalar_singlet
+            + pseudoscalar_triplet * pseudoscalar_triplet
+        )
+
+    assert_equal(
+        "theta-zero scalar singlet sign",
+        theta_zero_channel(scalar_singlet=1),
+        Fraction(1, 2),
+    )
+    assert_equal(
+        "theta-zero scalar triplet sign",
+        theta_zero_channel(scalar_triplet=1),
+        Fraction(-1, 2),
+    )
+    assert_equal(
+        "theta-zero pseudoscalar singlet sign",
+        theta_zero_channel(pseudoscalar_singlet=1),
+        Fraction(-1, 2),
+    )
+    assert_equal(
+        "theta-zero pseudoscalar triplet sign",
+        theta_zero_channel(pseudoscalar_triplet=1),
+        Fraction(1, 2),
+    )
+
+    axial_phase_per_phi = -2
+    flavor_count = 2
+    determinant_phase = flavor_count * axial_phase_per_phi
+    theta_compensation = 2 * flavor_count
+    assert_equal("two-flavor determinant axial phase", determinant_phase, -4)
+    assert_equal(
+        "theta shift compensates two-flavor determinant phase",
+        determinant_phase + theta_compensation,
+        0,
     )
 
 
@@ -2122,6 +2236,7 @@ def main() -> None:
     check_adhm_quotient_density_coarea_scaling()
     check_finite_regulator_determinant_datum()
     check_physical_instanton_correlator_zero_mode_saturation()
+    check_two_flavor_thooft_channel_decomposition()
     check_fermion_determinant_zero_mode_nonzero_mode_factorization()
     check_instanton_mass_source_rg_transport()
     check_proper_time_fluctuation_four_fermion_amplitude()

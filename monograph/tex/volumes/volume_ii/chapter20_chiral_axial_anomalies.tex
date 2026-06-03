@@ -4502,6 +4502,95 @@ zero-mode overlap is real after the same regulator and zero-mode orientation
 have been fixed, so the only flavor phase is \(\arg\det M\).
 \end{proof}
 
+\begin{proposition}[Two-flavor channel content of the local instanton vertex]
+\label{prop:two-flavor-thooft-channel-decomposition}
+For \(N_f=2\), set
+\[
+  \Phi_{ff'}=\bar q_{Rf}q_{Lf'},\qquad
+  S_{ff'}=\bar q_fq_{f'},\qquad
+  P_{ff'}=\bar q_f\ii\gamma_5q_{f'} .
+\]
+With the chiral projectors used in this chapter,
+\begin{equation}
+  \Phi=\frac12(S+\ii P).
+  \label{eq:two-flavor-chiral-bilinear-matrix}
+\end{equation}
+Write the scalar and pseudoscalar flavor matrices in the Pauli basis as
+\[
+  S=s_0\mathbf 1+\vec s\cdot\vec\tau,\qquad
+  P=p_0\mathbf 1+\vec p\cdot\vec\tau .
+\]
+Then the local instanton plus anti-instanton flavor factor is
+\begin{equation}
+\begin{aligned}
+  \ee^{\ii\theta}\det\Phi
+  +\ee^{-\ii\theta}\det\Phi^\dagger
+  &=
+  \frac{\cos\theta}{2}
+  \left(s_0^2-\vec s^{\,2}-p_0^2+\vec p^{\,2}\right) \\
+  &\qquad
+  -\sin\theta\left(s_0p_0-\vec s\cdot\vec p\right).
+\end{aligned}
+  \label{eq:two-flavor-thooft-channel-decomposition}
+\end{equation}
+At \(\theta=0\), the one-instanton local vertex therefore separates the
+isosinglet scalar, isotriplet scalar, isosinglet pseudoscalar, and isotriplet
+pseudoscalar channels as
+\begin{equation}
+  \det\Phi+\det\Phi^\dagger
+  =
+  \frac12
+  \left(s_0^2-\vec s^{\,2}-p_0^2+\vec p^{\,2}\right).
+  \label{eq:two-flavor-thooft-theta-zero-channels}
+\end{equation}
+The determinant is invariant under
+\(\Phi\mapsto V_R^\dagger\Phi V_L\), \(V_L,V_R\in SU(2)\), but under the
+flavor-singlet axial rotation \(q\mapsto\ee^{\ii\alpha\gamma_5}q\) it carries
+phase \(\det\Phi\mapsto\ee^{-4\ii\alpha}\det\Phi\).  Hence
+\(\ee^{\ii\theta}\det\Phi+\hbox{\rm conjugate}\) is the local channel form of
+the same anomalous \(U(1)_A\) selection rule as
+\eqref{eq:qcd-thooft-vertex-leading-local}: a compensating
+\(\theta\mapsto\theta+4\alpha\) keeps the \(Q=1\) contribution in the same
+coordinate.
+
+This channel decomposition is only the zeroth local term of the source
+convolution.  The coefficient multiplying
+\eqref{eq:two-flavor-thooft-channel-decomposition} is still the
+size/orientation/nonzero-mode determinant integral discussed below.  The formula
+therefore explains which chiral channels the zero modes select; it is not a
+standalone prediction of scalar or pseudoscalar bound-state masses.
+\end{proposition}
+
+\begin{proof}
+The projector identity gives
+\[
+  \bar q_Rq_L=\bar qP_Lq
+  =\frac12(\bar qq-\bar q\gamma_5q)
+  =\frac12(\bar qq+\ii\,\bar q\ii\gamma_5q),
+\]
+which is \eqref{eq:two-flavor-chiral-bilinear-matrix}.  For any matrix
+\(X=x_0\mathbf 1+\vec x\cdot\vec\tau\), the Pauli relation
+\(\tau_a\tau_b=\delta_{ab}\mathbf 1+\ii\epsilon_{abc}\tau_c\) gives
+\(\det X=x_0^2-\vec x^{\,2}\).  Applying this to
+\(X=S+\ii P\) gives
+\[
+  \det(S+\ii P)
+  =
+  s_0^2-\vec s^{\,2}-p_0^2+\vec p^{\,2}
+  +2\ii(s_0p_0-\vec s\cdot\vec p).
+\]
+Since \(\det\Phi=\frac14\det(S+\ii P)\), taking
+\(\ee^{\ii\theta}\det\Phi+\ee^{-\ii\theta}\det\Phi^\dagger\) proves
+\eqref{eq:two-flavor-thooft-channel-decomposition}.  The
+\(\theta=0\) specialization is immediate.
+
+Finally, an \(SU(2)_L\times SU(2)_R\) rotation multiplies \(\Phi\) by
+unit-determinant matrices on the two sides, so its determinant is unchanged.
+For \(q\mapsto\ee^{\ii\alpha\gamma_5}q\), one has
+\(\bar q_Rq_L\mapsto\ee^{-2\ii\alpha}\bar q_Rq_L\), hence
+\(\det\Phi\mapsto\ee^{-4\ii\alpha}\det\Phi\).
+\end{proof}
+
 \begin{proposition}[Mixed mass-source expansion of the instanton determinant]
 \label{prop:instanton-mass-source-minor-expansion}
 In the same \(Q=1\) QCD zero-mode sector, let \(M\) be the mass-overlap
