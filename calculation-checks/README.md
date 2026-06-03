@@ -411,6 +411,10 @@ Current checks:
   correlator contribution, including the two- and three-flavor 't Hooft
   determinants, the mixed mass/source minor expansion, and the
   \(\theta+\arg\det M\) axial phase ledger, the
+  pure-gauge Pauli--Villars one-instanton determinant constant
+  \(C_N^{\rm PV}\), including its reduction to
+  \(0.466\exp[-1.679N]/[(N-1)!(N-2)!]\) and the \(SU(3)\) value
+  \(1.51\times10^{-3}\), the
   proper-time nonzero-mode determinant assembly for bilinear-source and
   source-differentiated four-fermion instanton amplitudes, the regression that a
   c-number external-wave-packet outer product has zero determinant while the

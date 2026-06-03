@@ -15,6 +15,9 @@ relations
     S_common = 8 pi^2/g_ht^2 = 4 pi^2/g_YM^2,
     d^4 a d rho / rho^5 and (mu rho)^b0 are the universal
     one-loop scale/RG factors in the instanton density
+    the pure-gauge Pauli-Villars one-instanton determinant constant is the
+    orientation-integrated zero-mode constant times the finite nonzero-mode
+    exponential exp[-alpha(1)-2(N-2)alpha(1/2)]
     the one-instanton small-rho boundary exponent criterion is
     b0 + beta_X > 4
     the general charge-k framed ADHM quotient has local real dimension 4 k N
@@ -73,6 +76,7 @@ from __future__ import annotations
 
 from fractions import Fraction
 import itertools
+import math
 
 
 def eps4(a: int, b: int, c: int, d: int) -> int:
@@ -118,6 +122,11 @@ def eta(a: int, mu: int, nu: int) -> int:
 
 def assert_equal(name: str, lhs: object, rhs: object) -> None:
     if lhs != rhs:
+        raise AssertionError(f"{name} failed: {lhs!r} != {rhs!r}")
+
+
+def assert_close(name: str, lhs: float, rhs: float, tolerance: float = 1e-12) -> None:
+    if abs(lhs - rhs) > tolerance:
         raise AssertionError(f"{name} failed: {lhs!r} != {rhs!r}")
 
 
@@ -389,6 +398,50 @@ def check_one_instanton_density_scaling() -> None:
         # beta=-b0 g^3/(16*pi^2) gives the leading RG derivative alpha-b0.
         leading_rg_derivative = alpha - b0
         assert_equal(f"one-loop RG exponent SU({n_c}) Nf={n_f}", leading_rg_derivative, 0)
+
+
+def check_pure_gauge_pv_determinant_constant() -> None:
+    # In the Pauli-Villars convention of the one-loop SU(N) instanton density,
+    # the orientation-integrated zero-mode constant is
+    #   2^(4N+2) pi^(4N-2) (8 pi^2)^(-2N)
+    # = 2^(2-2N) pi^(-2)
+    # after rewriting g^(-4N) as (8 pi^2/g^2)^(2N) (8 pi^2)^(-2N).
+    # The finite nonzero-mode determinant supplies
+    #   exp[-alpha(1)-2(N-2) alpha(1/2)].
+    alpha_one = 0.443307
+    alpha_half = 0.145873
+    compact_prefactor_log = (
+        2 * math.log(2)
+        - 2 * math.log(math.pi)
+        - alpha_one
+        + 4 * alpha_half
+    )
+    compact_slope = -2 * math.log(2) - 2 * alpha_half
+
+    assert_close("PV determinant rounded prefactor", math.exp(compact_prefactor_log), 0.466, 6.0e-4)
+    assert_close("PV determinant rounded exponent slope", -compact_slope, 1.679, 1.0e-3)
+
+    for n_c in [2, 3, 5]:
+        structural_log = (
+            (2 - 2 * n_c) * math.log(2)
+            - 2 * math.log(math.pi)
+            - alpha_one
+            - 2 * (n_c - 2) * alpha_half
+            - math.lgamma(n_c)
+            - math.lgamma(n_c - 1)
+        )
+        compact_log = (
+            compact_prefactor_log
+            + compact_slope * n_c
+            - math.lgamma(n_c)
+            - math.lgamma(n_c - 1)
+        )
+        assert_close(f"PV determinant constant reduction SU({n_c})", structural_log, compact_log)
+
+    su3_constant = math.exp(
+        compact_prefactor_log + 3 * compact_slope - math.lgamma(3) - math.lgamma(2)
+    )
+    assert_close("PV determinant constant SU(3)", su3_constant, 1.51e-3, 1.0e-5)
 
 
 def check_small_instanton_boundary_exponent_criterion() -> None:
@@ -1609,6 +1662,7 @@ def main() -> None:
     check_radial_integrals_and_actions()
     check_radial_cumulative_profile()
     check_one_instanton_density_scaling()
+    check_pure_gauge_pv_determinant_constant()
     check_small_instanton_boundary_exponent_criterion()
     check_general_adhm_quotient_dimension()
     check_adhm_quotient_density_coarea_scaling()

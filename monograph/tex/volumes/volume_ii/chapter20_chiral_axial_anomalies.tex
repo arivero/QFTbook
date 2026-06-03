@@ -4146,6 +4146,90 @@ and is absorbed into the higher-loop correction multiplying
 fixes scale dependence, while the constant term is set by the actual
 regularized determinant and measure normalization.
 
+\begin{proposition}[Pure-gauge Pauli--Villars determinant constant]
+\label{prop:pure-gauge-pv-instanton-determinant-constant}
+In pure \(SU(N)\) Yang--Mills, \(N\geq2\), use the common half-trace
+coupling \(g_{\rm PV}(\mu)\) and the Pauli--Villars determinant convention of
+the one-instanton calculation
+\cite{tHooft1976Pseudoparticle,Bernard1979InstantonDeterminants}.  For
+gauge-invariant insertions, integrate the embedded orientation orbit with the
+corresponding Haar normalization.  Then the one-loop, one-instanton density is
+\begin{equation}
+  \dd n^{\rm PV}_{I,N}
+  =
+  \frac{\dd^4a\,\dd\rho}{\rho^5}\,
+  C^{\rm PV}_{N}\,
+  \left(\frac{8\pi^2}{g_{\rm PV}^2(\mu)}\right)^{2N}
+  (\mu\rho)^{11N/3}
+  \exp\!\left[-\frac{8\pi^2}{g_{\rm PV}^2(\mu)}+\ii\theta\right]
+  \left(1+O(g_{\rm PV}^2)\right),
+  \label{eq:pure-gauge-pv-instanton-density}
+\end{equation}
+where the finite constant is
+\begin{equation}
+  C^{\rm PV}_{N}
+  =
+  \frac{2^{2-2N}}{\pi^2 (N-1)!(N-2)!}\,
+  \exp\!\left[-\alpha(1)-2(N-2)\alpha\!\left(\frac12\right)\right].
+  \label{eq:pure-gauge-pv-instanton-constant-alpha}
+\end{equation}
+Here
+\[
+  \alpha(1)=0.443307\ldots,\qquad
+  \alpha\!\left(\frac12\right)=0.145873\ldots .
+\]
+Equivalently, in the conventional rounded form,
+\begin{equation}
+  C^{\rm PV}_{N}
+  =
+  \frac{0.466\,\exp[-1.679\,N]}{(N-1)!(N-2)!}
+  \quad\hbox{to the displayed precision}.
+  \label{eq:pure-gauge-pv-instanton-constant-rounded}
+\end{equation}
+For example \(C^{\rm PV}_{3}\simeq1.51\times10^{-3}\).
+\end{proposition}
+
+\begin{proof}
+The orientation-integrated singular-gauge collective-coordinate calculation
+gives, after the Pauli--Villars zero-mode mass factors have been combined with
+the logarithmic determinant into \((\mu\rho)^{11N/3}\), the residual
+zero-mode coefficient
+\[
+  \frac{2^{4N+2}\pi^{4N-2}}{(N-1)!(N-2)!}\,g_{\rm PV}^{-4N}.
+\]
+Rewriting
+\[
+  g_{\rm PV}^{-4N}
+  =
+  \left(\frac{8\pi^2}{g_{\rm PV}^2}\right)^{2N}
+  (8\pi^2)^{-2N}
+\]
+turns this residual coefficient into
+\[
+  \frac{2^{2-2N}}{\pi^2 (N-1)!(N-2)!}
+  \left(\frac{8\pi^2}{g_{\rm PV}^2}\right)^{2N}.
+\]
+The finite part of the nonzero-mode determinant contributes
+\[
+  \exp\!\left[-\alpha(1)-2(N-2)\alpha\!\left(\frac12\right)\right],
+\]
+where \(\alpha(1)\) is the \(SU(2)\) vector-ghost block and the
+\(2(N-2)\) copies of \(\alpha(1/2)\) are the additional doublet blocks in the
+embedded \(SU(2)\subset SU(N)\) decomposition.  Multiplying these two factors
+gives \eqref{eq:pure-gauge-pv-instanton-constant-alpha}; combining it with
+the classical action and logarithmic determinant gives
+\eqref{eq:pure-gauge-pv-instanton-density}.  Taking logarithms of
+\eqref{eq:pure-gauge-pv-instanton-constant-alpha} yields
+\[
+  \log C^{\rm PV}_{N}
+  =
+  \log(0.466\ldots)-1.679\ldots\,N
+  -\log((N-1)!)-\log((N-2)!),
+\]
+which is the rounded form
+\eqref{eq:pure-gauge-pv-instanton-constant-rounded}.
+\end{proof}
+
 \begin{proposition}[Heat-kernel source of the instanton logarithm]
 \label{prop:instanton-heat-kernel-beta0-logarithm}
 In the same background-field gauge and half-trace convention, the logarithmic

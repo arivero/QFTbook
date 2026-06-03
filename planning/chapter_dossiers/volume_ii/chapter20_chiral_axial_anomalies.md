@@ -65,8 +65,12 @@
   power, one-loop RG exponent, small-instanton boundary-exponent threshold,
   and the general charge-\(k\) framed ADHM quotient dimension,
   quotient-density coarea scaling count, and finite nonzero-mode determinant
-  bookkeeping.  The 2026-06-03 Uhlenbeck-face continuation adds the
-  higher-charge boundary-face codimension and product integrability budget.
+  bookkeeping.  The Pauli-Villars determinant-constant continuation adds the
+  pure-gauge \(C_N^{\rm PV}\) formula, its
+  \(0.466\exp[-1.679N]/[(N-1)!(N-2)!]\) reduction, and the \(SU(3)\)
+  value \(1.51\times10^{-3}\).  The 2026-06-03 Uhlenbeck-face continuation
+  adds the higher-charge boundary-face codimension and product integrability
+  budget.
   The physics-amplitude continuation adds the finite Berezin zero-mode
   saturation check that turns the instanton measure into a correlator
   contribution, including the two-flavor 't Hooft determinant sign.  The
@@ -217,6 +221,7 @@
 | \(\mathcal W_{\Lambda}^{\rm nz}(z)\) | finite-regulator nonzero-mode determinant datum in the instanton chart |
 | \(K_\Lambda(P_z,P_0;\mu)\) | proper-time logarithmic determinant ratio between the instanton and trivial-sector nonzero-mode operators |
 | \(\mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)\) | proper-time representative of the instanton nonzero-mode determinant density |
+| \(C_N^{\rm PV}\) | orientation-integrated pure-gauge Pauli-Villars one-instanton determinant constant |
 | \(\mathcal Z_{\mathcal O,\Lambda}^{0}(z)\) | finite Berezin coefficient of the zero-mode part of insertions, masses, and sources in a \(Q=1\) instanton background |
 | \(M_{ff'},B_{ff'}\) | mass-overlap and external-source matrices whose finite Berezin determinant and minor expansion give the QCD 't Hooft amplitudes |
 | \(\bar\chi_A,\chi_B\) | odd generating coordinates for differentiated external fermion slots in the instanton zero-mode sector |
@@ -608,6 +613,21 @@
   \]
   up to the finite determinant/orientation-volume constant and higher-loop
   corrections in the chosen scheme.
+- In pure \(SU(N)\) Yang-Mills with the Pauli-Villars convention and
+  orientation orbit integrated in the corresponding Haar normalization, that
+  finite one-loop constant is
+  \[
+    C_N^{\rm PV}
+    =
+    {2^{2-2N}\over \pi^2 (N-1)!(N-2)!}
+    \exp[-\alpha(1)-2(N-2)\alpha(1/2)],
+  \]
+  with \(\alpha(1)=0.443307\ldots\) and
+  \(\alpha(1/2)=0.145873\ldots\).  Equivalently,
+  \(C_N^{\rm PV}=0.466\exp[-1.679N]/[(N-1)!(N-2)!]\) to the displayed
+  precision, giving \(C_3^{\rm PV}\simeq1.51\times10^{-3}\).  This is a
+  pure-gauge scheme constant; light-fermion amplitudes still require their own
+  mass/source determinant normalization.
 - The logarithmic \((\mu\rho)^{b_0}\) factor is traced to the
   background-field heat-kernel coefficient of the nonzero-mode fluctuation
   complex:
@@ -867,3 +887,11 @@
   soft slot fails.  The companion check verifies the Bessel derivative identity,
   the large-\(t\) cancellation through \(t^{-2}\), and the endpoint power
   inequalities.
+- 2026-06-03 issue #597/#712 determinant-constant pass: added the pure-gauge
+  Pauli-Villars one-instanton normalization constant
+  \(C_N^{\rm PV}\) from the orientation-integrated zero-mode coefficient and
+  the finite nonzero-mode determinant
+  \(\exp[-\alpha(1)-2(N-2)\alpha(1/2)]\).  The companion check verifies the
+  reduction to the rounded \(0.466\exp[-1.679N]\) form and the \(SU(3)\)
+  value \(1.51\times10^{-3}\), while leaving the full light-fermion
+  't Hooft amplitude normalization as separate work.
