@@ -1733,6 +1733,43 @@ Dollard bookkeeping that the nonperturbative estimate must reproduce:
 all \(t^{-1}\) tails must be exhausted by oriented pair fluxes, and only the
 residual derivative is allowed to enter the Cook \(L^1\) remainder.
 
+\paragraph{Scalar-product Cauchy criterion.}
+The comparison phase is useful only after it produces limits of scalar
+products in the charged asymptotic representation.  Suppose that two
+velocity-separated lists \(I,J\) have modified comparison vectors
+\(\mathcal C_I(t),\mathcal C_J(t)\) on the charged scattering domain and
+that, for \(t\ge T_0\),
+\[
+  \|\mathcal C_I(t)\|\le M_I,\qquad
+  \|\mathcal C_J(t)\|\le M_J,\qquad
+  \left\|\frac{\dd}{\dd t}\mathcal C_I(t)\right\|\le R_I(t),\qquad
+  \left\|\frac{\dd}{\dd t}\mathcal C_J(t)\right\|\le R_J(t),
+\]
+with \(R_I,R_J\in L^1([T_0,\infty))\).  Then for \(T>S\ge T_0\),
+\begin{equation}
+  \left|
+    \langle\mathcal C_I(T),\mathcal C_J(T)\rangle
+    -
+    \langle\mathcal C_I(S),\mathcal C_J(S)\rangle
+  \right|
+  \le
+  M_J\int_S^T R_I(t)\,\dd t
+  +
+  M_I\int_S^T R_J(t)\,\dd t .
+  \label{eq:charged-scalar-product-cauchy-bound}
+\end{equation}
+Hence the scalar product has a limit once the modified Cook estimates are
+proved on a common domain and the comparison vectors are uniformly bounded.
+If the logarithmic coefficient in \(\Theta_I\) is changed by
+\(\delta\neq0\), the model scalar product acquires the factor
+\(\exp(\ii\delta\log t)\).  Along dyadic times this changes by
+\(\exp(\ii\delta\log2)\), and the function
+\(t\mapsto\exp(\ii\delta\log t)\) has no large-time limit.  Thus the
+scalar-product limit is another place where the flux-pairing coefficient is
+not a harmless convention: the same \(L^1\) residual that makes Cook's
+estimate finite is also what makes the asymptotic inner product well
+defined.
+
 \begin{hypothesis}[Charged Dollard--Cook estimate package]
 \label{hyp:charged-dollard-cook-package}
 Fix a nonconfining charged sector and a dense set

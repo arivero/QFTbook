@@ -384,6 +384,48 @@ def check_pair_coefficient_residual_budget() -> None:
     )
 
 
+def check_dollard_scalar_product_cauchy_criterion() -> None:
+    """Check the scalar-product Cauchy estimate after Dollard subtraction."""
+
+    def dyadic_sum(start: int, term) -> Fraction:
+        return sum((term(n) for n in range(start, 2 * start)), Fraction(0))
+
+    norm_i = Fraction(5)
+    norm_j = Fraction(7)
+
+    previous_bound: Fraction | None = None
+    for start in (32, 128, 512):
+        ri_tail = dyadic_sum(start, lambda n: Fraction(2, n * n))
+        rj_tail = dyadic_sum(start, lambda n: Fraction(3, n * n))
+        scalar_product_cauchy_bound = norm_j * ri_tail + norm_i * rj_tail
+        if scalar_product_cauchy_bound >= Fraction(29, start - 1):
+            raise AssertionError("scalar-product Cauchy bound should obey the integral-test tail")
+        if previous_bound is not None and scalar_product_cauchy_bound >= previous_bound:
+            raise AssertionError("scalar-product Cauchy tails should decrease")
+        previous_bound = scalar_product_cauchy_bound
+
+    # A wrong logarithmic coefficient leaves a factor exp(i delta log t).
+    # With delta=pi/log(2), dyadic times differ by the phase -1, so the
+    # scalar products are not Cauchy.
+    delta = math.pi / math.log(2.0)
+    for start in (32, 256, 2048):
+        phase_start = cmath.exp(1j * delta * math.log(start))
+        phase_double = cmath.exp(1j * delta * math.log(2 * start))
+        if abs(phase_double - phase_start) <= 1.9:
+            raise AssertionError("wrong Dollard logarithmic phase should obstruct dyadic Cauchy convergence")
+
+    # A finite same-flux phase change has an L1 derivative; its dyadic scalar
+    # product changes shrink.
+    previous_phase_tail: float | None = None
+    for start in (32, 256, 2048):
+        finite_phase_start = cmath.exp(1j / start)
+        finite_phase_double = cmath.exp(1j / (2 * start))
+        phase_tail = abs(finite_phase_double - finite_phase_start)
+        if previous_phase_tail is not None and phase_tail >= previous_phase_tail:
+            raise AssertionError("finite same-flux phase changes should be Cauchy")
+        previous_phase_tail = phase_tail
+
+
 def catches_equal_velocity_error() -> bool:
     try:
         many_body_dollard_log_coefficient_1d(
@@ -855,6 +897,7 @@ def main() -> None:
     check_many_body_dollard_phase_bookkeeping()
     check_modified_cook_integrability_bookkeeping()
     check_pair_coefficient_residual_budget()
+    check_dollard_scalar_product_cauchy_criterion()
     check_truncation_schedule_tail_uniformity()
     check_finite_energy_spectral_tightness_boundary()
     check_soft_profile_velocity_separation()

@@ -142,6 +142,11 @@ resonances.
   only through an \(L^1\) remainder.  Equal-velocity charged pairs are
   explicitly excluded from this datum and must be treated as charged clusters
   or separate infraparticle/bound-state sectors.
+- Adds the scalar-product Cauchy criterion for charged modified comparison
+  vectors: uniform norm bounds and \(L^1\) modified-Cook derivative bounds
+  imply Cauchy scalar products in the charged asymptotic representation,
+  whereas a wrong logarithmic Dollard coefficient leaves the nonconvergent
+  factor \(\exp(i\delta\log t)\).
 - Proves a finite-regulator dressed LSZ theorem under explicit Hilbert-space,
   pole, and dressed-wave-operator hypotheses.  The theorem now distinguishes
   the general rectangular dressed-coordinate case, handled by a left inverse
@@ -240,7 +245,10 @@ resonances.
   external-shell poles survive the multi-leg residue extraction, partial
   external poles and contact terms are less singular, higher poles are
   outside the interface, and finite same-flux coordinate changes on each
-  external leg leave the extracted wave-map coefficient invariant.
+  external leg leave the extracted wave-map coefficient invariant.  It now
+  also checks the scalar-product Cauchy criterion after Dollard subtraction:
+  summable derivative tails give decreasing dyadic inner-product bounds,
+  while a wrong logarithmic phase leaves a persistent dyadic obstruction.
 - The direct-integral velocity-fiber proposition is purely algebraic and has
   no numerical companion: it is a decomposability statement for the
   representation of the Weyl algebra.
@@ -387,3 +395,10 @@ resonances.
   changes contribute only \(L^1\) derivatives and finite comparison phases.
   The charged-flux companion check now verifies this finite dyadic arithmetic
   and the equal-velocity boundary.
+- 2026-06-02 #527 scalar-product Cauchy pass: added the functional-analytic
+  estimate that turns uniform bounds plus \(L^1\) modified-Cook derivative
+  tails into Cauchy scalar products of charged comparison vectors.  The
+  manuscript now records that an incorrect logarithmic Dollard coefficient
+  leaves \(\exp(i\delta\log t)\), hence no scalar-product limit.  The
+  companion check verifies the dyadic Cauchy bound, the wrong-phase
+  obstruction, and finite same-flux phase changes.

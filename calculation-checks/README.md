@@ -475,6 +475,10 @@ Current checks:
   \(L^1\) residual, a wrong coefficient leaves a nonintegrable dyadic
   \(1/t\) tail, compact same-flux deformations alter only finite phases, and
   equal velocities lie outside the separated-pair estimate.  It also checks
+  the scalar-product Cauchy criterion after Dollard subtraction: summable
+  modified-Cook derivative tails give decreasing dyadic inner-product
+  bounds, a wrong logarithmic coefficient leaves a persistent dyadic phase
+  obstruction, and finite same-flux phase changes are Cauchy.  It also checks
   the finite
   spectral-measure arithmetic behind the nonconfining charged-sector
   boundary: common finite-energy windows, Markov's sufficient first-moment
