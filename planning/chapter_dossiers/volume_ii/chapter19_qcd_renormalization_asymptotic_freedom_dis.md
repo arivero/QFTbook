@@ -227,7 +227,10 @@ The chapter must define and derive:
   renormalization, Euclidean equal-time spatial bilocals and quasi-/pseudo-PDF
   coordinates as matching observables rather than definitions of PDFs,
   large-momentum matching as a distributional controlled approximation with
-  finite-regulator error terms, factorization assumptions with a compact-\(x_B\)
+  finite-regulator error terms, a common QCD factorization dependency ladder
+  separating exact observables, operator coordinates, subtractions,
+  coefficients, scale transport, boundary mechanisms, remainders, and limiting
+  statements, factorization assumptions with a compact-\(x_B\)
   distributional power-remainder bound, the replacement of abelian
   Bloch--Nordsieck cancellation by nonabelian PDF renormalization for incoming
   colored partons, unambiguous \(D_0\)-based DGLAP kernels, number and momentum
@@ -561,6 +564,14 @@ The chapter must define and derive:
      distributional check rather than theorem form.  The nonsinglet Mellin moment is
      \(C_F[-2H_{N-1}-1/N-1/(N+1)+3/2]\), giving the one-loop cusp coefficient
      \(g^2C_F/(4\pi^2)\) in the monograph trace normalization.
+22bc. QCD factorization claims now pass through a common dependency ladder:
+      exact color-singlet observable, gauge-invariant operator coordinate,
+      subtraction and coefficient maps, dual scale transport, boundary or
+      leading-region mechanism, power-remainder topology, and any regulator
+      limit.  Compact DIS, Drell--Yan/TMD factorization, and small-\(x\)
+      JIMWLK use different entries in this ladder, so finite checks of
+      individual identities are explicitly inputs to, not replacements for,
+      process-level factorization theorems.
 22c. Inclusive DIS factorization is recorded as a leading-twist datum with a
      distributional remainder estimate on compact Bjorken-\(x\) intervals.  The
      threshold \(x\to1\) and small-\(x\) limits are separate boundary problems,
@@ -1056,3 +1067,11 @@ The chapter must define and derive:
   dual cancellation condition.  `calculation-checks/qcd_dglap_checks.py`
   now includes a rational finite-channel check of \(df=P f\), \(dC=-CP\),
   and \(d(Cf)=0\).
+- 2026-06-03 issue #630 factorization-architecture pass: inserted the common
+  QCD factorization dependency ladder before the DIS hypothesis, organizing
+  compact DIS, TMD/Drell--Yan, and small-\(x\)/JIMWLK claims as process
+  comparisons from exact color-singlet observables to factorized coordinates
+  with named operator, subtraction, coefficient, scale-transport, boundary,
+  remainder, and limiting errors.  `calculation-checks/qcd_dglap_checks.py`
+  now verifies the finite additive budget and detects omitted boundary,
+  Glauber, and projective-state terms.

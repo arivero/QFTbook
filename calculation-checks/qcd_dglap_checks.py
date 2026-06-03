@@ -7,13 +7,15 @@ P=(g^2/(8*pi^2)) P^(0)+O(g^4).  These finite rational checks verify the
 plus-distribution convention, one-loop number and momentum sum rules, the
 trace-normalization conversion of the cusp coefficient, and the sign
 normalization of the local moment tower obtained from the Wilson-line light-ray
-operator, and the RG cancellation between coefficient functions and PDFs in a
-factorized DIS convolution.
+operator, the RG cancellation between coefficient functions and PDFs in a
+factorized DIS convolution, and the finite dependency-budget arithmetic behind
+the common QCD factorization ladder.
 """
 
 from __future__ import annotations
 
 from fractions import Fraction
+from typing import Mapping
 
 ComplexRational = tuple[Fraction, Fraction]
 Vector = list[Fraction]
@@ -23,6 +25,11 @@ Matrix = list[list[Fraction]]
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+
+
+def assert_true(name: str, condition: bool) -> None:
+    if not condition:
+        raise AssertionError(name)
 
 
 def complex_mul(left: ComplexRational, right: ComplexRational) -> ComplexRational:
@@ -58,6 +65,10 @@ def row_times_matrix(row: Vector, matrix: Matrix) -> Vector:
 
 def dot(left: Vector, right: Vector) -> Fraction:
     return sum(left[i] * right[i] for i in range(len(left)))
+
+
+def dependency_budget(terms: Mapping[str, Fraction]) -> Fraction:
+    return sum(terms.values(), Fraction(0))
 
 
 def d0_moment(power: int) -> Fraction:
@@ -213,15 +224,82 @@ def check_factorized_rg_cancellation() -> None:
     assert_equal("factorized DIS RG cancellation", observable_derivative, Fraction(0))
 
 
+def check_common_factorization_dependency_budget() -> None:
+    # Finite rational model of the triangle-inequality budget in
+    # eq. (qcd-common-factorization-budget).  The labels are process
+    # requirements, not independent physical observables.
+    common_terms = {
+        "observable": Fraction(1, 40),
+        "operator": Fraction(1, 50),
+        "subtraction": Fraction(1, 60),
+        "coefficient": Fraction(1, 75),
+        "evolution": Fraction(1, 100),
+        "boundary": Fraction(1, 120),
+        "remainder": Fraction(1, 150),
+    }
+    compact_dis_budget = dependency_budget(common_terms)
+    assert_equal("compact-DIS common factorization budget", compact_dis_budget, Fraction(1, 10))
+
+    omitted_boundary_budget = compact_dis_budget - common_terms["boundary"]
+    assert_true(
+        "compact-DIS boundary exclusion is load-bearing",
+        compact_dis_budget > omitted_boundary_budget,
+    )
+
+    drell_yan_terms = {
+        **common_terms,
+        "rapidity": Fraction(1, 80),
+        "glauber": Fraction(1, 200),
+        "y_term": Fraction(1, 240),
+    }
+    drell_yan_budget = dependency_budget(drell_yan_terms)
+    assert_equal("Drell-Yan TMD factorization budget", drell_yan_budget, Fraction(73, 600))
+    assert_true(
+        "Drell-Yan Glauber status is load-bearing",
+        drell_yan_budget > drell_yan_budget - drell_yan_terms["glauber"],
+    )
+
+    small_x_terms = {
+        **common_terms,
+        "projective_state": Fraction(1, 80),
+        "generator_limit": Fraction(1, 120),
+        "process_map": Fraction(1, 200),
+    }
+    small_x_budget = dependency_budget(small_x_terms)
+    assert_equal("small-x JIMWLK factorization budget", small_x_budget, Fraction(151, 1200))
+    assert_true(
+        "small-x projective state limit is load-bearing",
+        small_x_budget > small_x_budget - small_x_terms["projective_state"],
+    )
+
+    previous_budget = None
+    for window in (1, 2, 5, 10):
+        scheduled_terms = {name: term / window for name, term in common_terms.items()}
+        scheduled_budget = dependency_budget(scheduled_terms)
+        assert_equal(
+            f"compact-DIS scheduled budget window {window}",
+            scheduled_budget,
+            Fraction(1, 10 * window),
+        )
+        if previous_budget is not None:
+            assert_true(
+                f"compact-DIS scheduled budget decreases at window {window}",
+                scheduled_budget < previous_budget,
+            )
+        previous_budget = scheduled_budget
+
+
 def main() -> None:
     check_plus_distribution_monomials()
     check_number_and_momentum_sum_rules()
     check_large_spin_and_trace_conversion()
     check_light_ray_moment_normalization()
     check_factorized_rg_cancellation()
+    check_common_factorization_dependency_budget()
     print(
         "All QCD DGLAP plus-distribution, sum-rule, "
-        "cusp-normalization, light-ray moment, and RG-cancellation checks passed."
+        "cusp-normalization, light-ray moment, RG-cancellation, "
+        "and factorization-budget checks passed."
     )
 
 

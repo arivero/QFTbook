@@ -10003,6 +10003,67 @@ light-ray renormalization have been performed, the same observable can be
 coordinatized by universal hadronic light-ray matrix elements and perturbative
 coefficient functions.
 
+\paragraph{Common dependency ladder for QCD factorization.}
+The local definitions above and the boundary sections below are used through a
+single comparison architecture.  For a process family \(\mathfrak P\), a
+theorem-level factorization statement has to provide:
+\begin{enumerate}
+  \item the exact color-singlet observable \(W_{\mathfrak P}\), usually a
+  Wightman current tensor or a finite-regulator Euclidean matrix element;
+  \item the gauge-invariant operator coordinates, including Wilson-line
+  geometry and the ultraviolet, cusp, endpoint, or rapidity subtractions
+  required by that geometry;
+  \item the short-distance coefficient, impact-factor, or matching map in a
+  stated distribution topology;
+  \item the scale-transport equations and finite-scheme covariance making the
+  auxiliary factorization coordinates cancel in the paired observable;
+  \item the leading-region or boundary mechanism, including threshold,
+  small-\(x\), soft, rapidity, \(Y\)-term, or Glauber items whenever the
+  process probes them;
+  \item a power-remainder estimate uniform on the declared test-function
+  window;
+  \item the continuum, infinite-volume, large-momentum, or rapidity-regulator
+  limit when the preceding objects are first constructed at finite regulator.
+\end{enumerate}
+Equivalently, after pairing with a test function \(\varphi\) in the declared
+topology, the comparison between the exact observable and the factorized
+coordinate must be bounded by a sum of named errors,
+\begin{equation}
+\begin{aligned}
+&
+\left|
+  \left\langle
+    W_{\mathfrak P,Q}-\mathcal F_{\mathfrak P,Q},
+    \varphi
+  \right\rangle
+\right|
+\le
+\mathcal E_{\mathfrak P,Q}^{\rm fact}(\varphi),
+\\
+&
+\mathcal E_{\mathfrak P,Q}^{\rm fact}
+:=
+\epsilon_{\mathfrak P,Q}^{\rm obs}
++\epsilon_{\mathfrak P,Q}^{\rm op}
++\epsilon_{\mathfrak P,Q}^{\rm sub}
++\epsilon_{\mathfrak P,Q}^{\rm coeff}
++\epsilon_{\mathfrak P,Q}^{\rm evol}
++\epsilon_{\mathfrak P,Q}^{\rm bdry}
++\epsilon_{\mathfrak P,Q}^{\rm rem}
++\epsilon_{\mathfrak P,Q}^{\rm lim}.
+\end{aligned}
+\label{eq:qcd-common-factorization-budget}
+\end{equation}
+Here \(\mathcal F_{\mathfrak P,Q}\) denotes the claimed factorized coordinate.
+For compact-\(x\) inclusive DIS, the boundary term records the exclusion of
+threshold and small-\(x\) regions.  For Drell--Yan and other TMD observables it
+contains the rapidity subtraction, the \(Y\)-term, and the Glauber status.  For
+small-\(x\) observables it contains the Wilson-line rapidity state, the
+projective generator limit, and the impact-factor map to a measured process.
+The finite calculations retained in this chapter check individual entries in
+this ladder; they are not substitutes for a proof that every required entry can
+be made small on a common directed window.
+
 \begin{hypothesis}[Leading-twist DIS factorization hypothesis]
 \label{hyp:qcd-dis-leading-twist-factorization}
 Fix a factorization scheme and a compact interval

@@ -244,6 +244,10 @@ Current checks:
   coefficient conversion, plus the left-endpoint light-ray moment sign
   convention for quark and gluon PDF moment towers and the finite-channel
   RG cancellation \(df=P f\), \(dC=-CP\) in a factorized DIS convolution.
+  It also checks the additive dependency-budget arithmetic behind the common
+  QCD factorization ladder, including the load-bearing boundary, Glauber, and
+  projective-state terms for compact DIS, Drell--Yan/TMD, and small-\(x\)
+  JIMWLK variants.
 - `qcd_cusp_large_spin_checks.py`: finite checks for the Volume II cusped
   Wilson-line/large-spin section, including the Euclidean cusp angular
   integral \(J(\phi)=\phi\cot\phi\), smooth-line subtraction, the Lorentzian
