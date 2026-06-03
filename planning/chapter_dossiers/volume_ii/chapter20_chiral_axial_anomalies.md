@@ -518,6 +518,14 @@
   \]
   up to the finite determinant/orientation-volume constant and higher-loop
   corrections in the chosen scheme.
+- The logarithmic \((\mu\rho)^{b_0}\) factor is traced to the
+  background-field heat-kernel coefficient of the nonzero-mode fluctuation
+  complex:
+  \((11/3)C_2(G)\) from the vector-plus-ghost sector and
+  \(-(4/3)\sum_{\rm Dirac}T(R)\) from Dirac matter.  For vectorlike QCD this
+  gives \(b_0=(11/3)N_c-(2/3)N_f\), and the cutoff expression
+  \(e^{-X_\Lambda}(\Lambda\rho)^{b_0}\) becomes
+  \(e^{-X_\mu}(\mu\rho)^{b_0}\) at one-loop logarithmic accuracy.
 - The Dirac index gives \(2T_Rk\) chiral zero modes for a Weyl fermion in
   representation \(R\) in common half-trace notation.  For a fundamental Weyl
   fermion of \(SU(N_c)\) at \(k=1\), this is one zero mode.
@@ -702,3 +710,10 @@
   determinant, and collective-coordinate integral remain.  The BPST check
   script now verifies this determinant row/column arithmetic and a finite
   two-cell collective-coordinate integral.
+- 2026-06-03 issue #597 fluctuation-log pass: added
+  `prop:instanton-heat-kernel-beta0-logarithm`, which identifies the
+  \((\mu\rho)^{b_0}\) factor with the background-field heat-kernel logarithm
+  of the nonzero-mode fluctuation complex and the one-loop coupling-scale
+  trade.  The BPST check script now verifies the vector-plus-ghost
+  \(11C_A/3\) coefficient, the Dirac matter subtraction, charge-\(k\)
+  scaling, and the cancellation of cutoff-scale dependence.

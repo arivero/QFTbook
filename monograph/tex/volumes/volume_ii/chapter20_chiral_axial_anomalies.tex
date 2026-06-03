@@ -4072,6 +4072,70 @@ and is absorbed into the higher-loop correction multiplying
 fixes scale dependence, while the constant term is set by the actual
 regularized determinant and measure normalization.
 
+\begin{proposition}[Heat-kernel source of the instanton logarithm]
+\label{prop:instanton-heat-kernel-beta0-logarithm}
+In the same background-field gauge and half-trace convention, the logarithmic
+part of the charge-\(k\) nonzero-mode fluctuation determinant has
+\begin{equation}
+  \partial_{\log\mu}\log\mathcal W_{\rm log}^{\rm nz}
+  =
+  k\left[
+    \frac{11}{3}C_2(G)
+    -\frac{4}{3}\sum_{\text{\rm Dirac }R}T(R)
+  \right].
+  \label{eq:instanton-heat-kernel-beta0-logarithm}
+\end{equation}
+For vectorlike \(SU(N_c)\) QCD with \(N_f\) Dirac fundamentals this coefficient
+is \(k b_0\), with \(b_0\) as in
+\eqref{eq:instanton-density-beta0-definition}.  Hence, in a charge-one BPST
+chart,
+\begin{equation}
+  \log\mathcal W_{\rm log}^{\rm nz}(a,\rho,U;\mu)
+  =
+  b_0\log(\mu\rho)+\log\mathcal W_{\rm fin}^{\rm nz}(U;\mathcal S),
+  \label{eq:instanton-nonzero-mode-log-mu-rho}
+\end{equation}
+up to higher-loop and local finite-subtraction terms in the chosen scheme.
+Equivalently, if \(X_\kappa=8\pi^2/g_{\rm ht}^2(\kappa)\) and
+\(X_\Lambda=X_\mu+b_0\log(\Lambda/\mu)\) at one loop, then
+\begin{equation}
+  \exp[-X_\Lambda+\ii\theta]\,
+  (\Lambda\rho)^{b_0}
+  =
+  \exp[-X_\mu+\ii\theta]\,
+  (\mu\rho)^{b_0}.
+  \label{eq:instanton-cutoff-renormalized-scale-trade}
+\end{equation}
+The factor \((\mu\rho)^{b_0}\) in
+\eqref{eq:one-instanton-universal-density} is therefore the logarithmic
+shadow of the nonzero-mode fluctuation spectrum plus coupling
+renormalization, while the finite constant still requires the full spectral
+determinant calculation.
+\end{proposition}
+
+\begin{proof}
+The small-proper-time expansion of
+\eqref{eq:proper-time-instanton-determinant-ratio} is local in the background
+field.  In background-field gauge the vector fluctuation together with the
+ghost complex contributes the coefficient \((11/3)C_2(G)\) multiplying the
+topological charge in the logarithmic counterterm, and a Dirac fermion in
+representation \(R\) contributes \(-(4/3)T(R)\).  Summing the fields gives
+\eqref{eq:instanton-heat-kernel-beta0-logarithm}.  For a fundamental Dirac
+fermion of \(SU(N_c)\), \(T(\square)=1/2\), so the matter term is
+\(-2N_f/3\), and the total coefficient is
+\((11/3)N_c-(2/3)N_f=b_0\).
+
+A BPST connection with size \(\rho\) is obtained from the unit-size connection
+by translation, global orientation, and dilation.  After the zero modes are
+removed, the logarithmic scale dependence of the determinant can therefore
+depend on the size only through the dimensionless combination \(\mu\rho\),
+apart from finite scheme-dependent terms.  This gives
+\eqref{eq:instanton-nonzero-mode-log-mu-rho}.  Finally, the one-loop running of
+\(X_\kappa\) gives \(X_\Lambda=X_\mu+b_0\log(\Lambda/\mu)\); substituting this
+identity into the cutoff expression proves
+\eqref{eq:instanton-cutoff-renormalized-scale-trade}.
+\end{proof}
+
 Fermion zero modes are controlled by the index theorem already stated in
 \eqref{eq:dirac-index-anomaly}.  In the conventional half-trace notation, a
 left-handed Weyl fermion in representation \(R\) has

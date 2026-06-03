@@ -389,7 +389,10 @@ Current checks:
   \(8\pi^2/g_{\rm ht}^2\) and the monograph trace-delta coupling
   \(4\pi^2/g_{\rm YM}^2\), plus the one-instanton density checks for the
   scale-invariant \(\dd^4a\,\dd\rho/\rho^5\) factor, zero-mode \(g\)-power,
-  one-loop \((\mu\rho)^{b_0}\) RG exponent, the small-instanton
+  one-loop \((\mu\rho)^{b_0}\) RG exponent, the heat-kernel origin of the
+  \(b_0\) logarithm from vector-plus-ghost and Dirac matter coefficients, the
+  cutoff-to-renormalized-scale cancellation in the instanton exponential, the
+  small-instanton
   boundary-exponent threshold \(b_0+\beta_{\mathcal X}>4\), the general
   charge-\(k\) framed ADHM quotient dimension \(4kN_c\), the
   coarea/orbit-volume scaling of the ADHM quotient density, the

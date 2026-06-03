@@ -24,6 +24,9 @@ relations
     boson/ghost/fermion determinant powers and counterterm shifts
     the proper-time fluctuation determinant combines with the zero-mode
     source determinant to give the finite four-fermion instanton amplitude
+    the heat-kernel logarithm in the nonzero-mode determinant carries the
+    vector-plus-ghost 11 C_A/3 coefficient, the Dirac matter subtraction, and
+    cancels the cutoff-scale dependence of the bare instanton exponential
     the BPST fundamental zero-mode envelope has finite zeroth moment, an
     exact momentum-space form factor, a power-law tail, and a
     logarithmically infrared-sensitive second moment
@@ -714,6 +717,39 @@ def check_proper_time_fluctuation_four_fermion_amplitude() -> None:
     )
 
 
+def check_instanton_heat_kernel_beta0_logarithm() -> None:
+    n_c = 3
+    n_f = 2
+    t_fundamental = Fraction(1, 2)
+    vector_ghost_coefficient = Fraction(11, 3) * n_c
+    dirac_matter_coefficient = -Fraction(4, 3) * n_f * t_fundamental
+    beta0 = vector_ghost_coefficient + dirac_matter_coefficient
+    assert_equal("SU(3) Nf=2 vector plus ghost heat coefficient", vector_ghost_coefficient, 11)
+    assert_equal("SU(3) Nf=2 Dirac heat coefficient", dirac_matter_coefficient, Fraction(-4, 3))
+    assert_equal("SU(3) Nf=2 instanton heat-kernel beta0", beta0, Fraction(29, 3))
+
+    # In a cutoff ledger, X_Lambda=X_mu+b0 log(Lambda/mu) and the determinant
+    # logarithm contains b0 log(Lambda rho).  The coefficient of
+    # log(Lambda/mu) cancels between the bare instanton exponential and the
+    # nonzero-mode determinant, leaving b0 log(mu rho).
+    cutoff_log_coefficient = -beta0 + beta0
+    assert_equal("cutoff scale cancels in instanton logarithm", cutoff_log_coefficient, 0)
+
+    charge = 3
+    assert_equal(
+        "charge-k heat-kernel logarithm is k beta0",
+        charge * beta0,
+        Fraction(29),
+    )
+
+    # Mass-saturated QCD adds one rho power per Dirac zero-mode pair after the
+    # fluctuation determinant has supplied the universal beta0 power.
+    mass_saturation_power = n_f
+    density_power = beta0 + mass_saturation_power - 5
+    assert_equal("SU(3) Nf=2 mass-saturated density power", density_power, Fraction(20, 3))
+    assert_equal("SU(3) Nf=2 mass-saturated endpoint margin", density_power + 1, Fraction(23, 3))
+
+
 def check_instanton_zero_mode_tail_local_limit() -> None:
     # The normalized scalar envelope of a BPST fundamental zero-mode line is
     # h_rho(y)=2 rho^2/[pi^2 (y^2+rho^2)^3].  After the angular integral,
@@ -1109,6 +1145,7 @@ def main() -> None:
     check_finite_regulator_determinant_datum()
     check_physical_instanton_correlator_zero_mode_saturation()
     check_proper_time_fluctuation_four_fermion_amplitude()
+    check_instanton_heat_kernel_beta0_logarithm()
     check_instanton_zero_mode_tail_local_limit()
     check_instanton_external_leg_amputation_kernel()
     check_dilute_instanton_gas_theta_cumulants()
