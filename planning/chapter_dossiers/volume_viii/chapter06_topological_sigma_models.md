@@ -55,6 +55,10 @@ Gromov--Witten and B-model outputs obtained after localization.
 - Defines stable maps, evaluation maps, primary GW functionals, and the
   degree-selection rule while explicitly separating virtual integration
   input from continuum QFT construction.
+- Adds an A-model worldsheet-instanton amplitude datum: the fixed-`beta`
+  contribution is the Novikov weight times the virtual integral only after
+  determinant-line, orientation, compactification, gluing, and contact-term
+  data have been specified.
 - Specifies the finite-dimensional virtual integration package used by the
   A-model formulas, including the diagonal refined-pullback identity on
   genus-zero boundary strata.
@@ -62,7 +66,9 @@ Gromov--Witten and B-model outputs obtained after localization.
   conditional consequence of the splitting identity on `Mbar_{0,4}`, without
   treating virtual geometry as a formal corollary of the path integral.
 - Works out the projective-space relation
-  `QH^*(P^m)=C[H,Q]/(H^{m+1}-Q)`.
+  `QH^*(P^m)=C[H,Q]/(H^{m+1}-Q)` from the degree-one
+  line-plus-three-marked-points instanton sector and its incidence
+  normalization.
 - Defines descendants through cotangent-line classes on the universal curve
   and separates them from fixed-worldsheet descent observables.
 - Defines the B-model Dolbeault polyvector complex, trace pairing through
@@ -77,7 +83,8 @@ Gromov--Witten and B-model outputs obtained after localization.
 - `calculation-checks/topological_sigma_model_checks.py`
   verifies the A-model pointwise energy identity, projective-space quantum
   cohomology relation and associativity, the projective-space degree
-  selection rule, the virtual-dimension formula, and the B-model top-form
+  selection rule, the degree-one projective worldsheet-instanton dimension
+  and product ledger, the virtual-dimension formula, and the B-model top-form
   degree condition.
 
 ## Figure Ledger

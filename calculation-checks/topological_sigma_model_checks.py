@@ -117,6 +117,42 @@ def check_quantum_projective_space() -> None:
                 )
 
 
+def check_projective_degree_one_instanton_ledger() -> None:
+    for m in range(1, 7):
+        qh = QuantumProjectiveSpace(m)
+        line_moduli_dimension = 2 * m - 2
+        marked_point_dimension = 3
+        degree_one_three_mark_dimension = line_moduli_dimension + marked_point_dimension
+        assert_equal(
+            degree_one_three_mark_dimension,
+            2 * m + 1,
+            f"CP^{m} degree-one line plus three marked points dimension",
+        )
+        assert_equal(
+            degree_one_three_mark_dimension,
+            m + (m + 1),
+            f"CP^{m} expected dimension of Mbar_0,3(P^m,1)",
+        )
+
+        for a, b, c in product(range(m + 1), repeat=3):
+            three_point = qh.pair(qh.multiply(qh.basis(a), qh.basis(b)), qh.basis(c))
+            degree_one_coefficient = three_point.get(1, Fraction(0))
+            expected = Fraction(1) if a + b + c == 2 * m + 1 else Fraction(0)
+            assert_equal(
+                degree_one_coefficient,
+                expected,
+                f"CP^{m} degree-one invariant selection for ({a},{b},{c})",
+            )
+
+        for a, b in product(range(m + 1), repeat=2):
+            if a + b == m + 1:
+                assert_equal(
+                    qh.multiply(qh.basis(a), qh.basis(b)),
+                    {(1, 0): Fraction(1)},
+                    f"CP^{m} product H^{a}*H^{b}=q when powers sum to m+1",
+                )
+
+
 def check_virtual_dimension_formula() -> None:
     for m, genus, marks, degree in product(range(1, 6), range(0, 4), range(0, 7), range(0, 5)):
         fixed_index = 2 * (m * (1 - genus) + (m + 1) * degree)
@@ -145,6 +181,7 @@ def check_b_model_degree_condition() -> None:
 def main() -> None:
     check_energy_identity()
     check_quantum_projective_space()
+    check_projective_degree_one_instanton_ledger()
     check_virtual_dimension_formula()
     check_b_model_degree_condition()
     print("All topological sigma-model checks passed.")

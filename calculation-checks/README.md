@@ -1173,6 +1173,7 @@ Current checks:
   VIII topological sigma-model chapter, including the A-model pointwise
   energy identity, \(QH^\bullet(\mathbb P^m)\) with \(H^{m+1}=Q\),
   associativity and degree selection in projective-space quantum cohomology,
+  the degree-one projective worldsheet-instanton dimension/incidence ledger,
   the stable-map virtual-dimension formula, and the B-model top-form degree
   condition.
 - `twisting_representation_checks.py`: exact finite checks for the Volume
