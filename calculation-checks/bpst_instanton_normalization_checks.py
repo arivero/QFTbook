@@ -22,6 +22,9 @@ relations
     correct orbit-volume and homogeneous-cone scaling
     the finite-regulator nonzero-mode determinant datum has the correct
     boson/ghost/fermion determinant powers and counterterm shifts
+    the physical instanton correlator contribution is the top Berezin
+    coefficient after operator, mass/source, and zero-mode factors are
+    restricted to the instanton zero-mode subspace
     Uhlenbeck boundary faces have the expected codimensions and product
     power-counting integrability thresholds
     the k=1 ADHM quotient has orientation dimension 4N-5 and cone
@@ -93,6 +96,62 @@ def det_fraction(matrix: list[list[Fraction]]) -> Fraction:
         minor = [row[:j] + row[j + 1 :] for row in matrix[1:]]
         total += ((-1) ** j) * matrix[0][j] * det_fraction(minor)
     return total
+
+
+GrassmannPolynomial = dict[tuple[int, ...], Fraction]
+
+
+def grassmann_monomial(
+    *variables: int,
+    coefficient: Fraction = Fraction(1),
+) -> GrassmannPolynomial:
+    if len(set(variables)) != len(variables):
+        return {}
+    inversions = sum(
+        1
+        for i in range(len(variables))
+        for j in range(i + 1, len(variables))
+        if variables[i] > variables[j]
+    )
+    sign = Fraction(-1) if inversions % 2 else Fraction(1)
+    return {tuple(sorted(variables)): sign * coefficient}
+
+
+def grassmann_add(
+    left: GrassmannPolynomial,
+    right: GrassmannPolynomial,
+) -> GrassmannPolynomial:
+    result = dict(left)
+    for monomial, coefficient in right.items():
+        result[monomial] = result.get(monomial, Fraction(0)) + coefficient
+        if result[monomial] == 0:
+            del result[monomial]
+    return result
+
+
+def grassmann_mul(
+    left: GrassmannPolynomial,
+    right: GrassmannPolynomial,
+) -> GrassmannPolynomial:
+    result: GrassmannPolynomial = {}
+    for left_monomial, left_coefficient in left.items():
+        for right_monomial, right_coefficient in right.items():
+            if set(left_monomial) & set(right_monomial):
+                continue
+            concatenated = left_monomial + right_monomial
+            product = grassmann_monomial(
+                *concatenated,
+                coefficient=left_coefficient * right_coefficient,
+            )
+            result = grassmann_add(result, product)
+    return result
+
+
+def berezin_top_coefficient(
+    polynomial: GrassmannPolynomial,
+    variable_count: int,
+) -> Fraction:
+    return polynomial.get(tuple(range(variable_count)), Fraction(0))
 
 
 def check_eta_self_duality() -> None:
@@ -371,6 +430,60 @@ def check_finite_regulator_determinant_datum() -> None:
     assert_equal("counterterm logarithmic power shift", new_power, Fraction(49, 15))
 
 
+def check_physical_instanton_correlator_zero_mode_saturation() -> None:
+    # Four zero modes in canonical order: R1, L1, R2, L2.  Berezin
+    # integration returns only the coefficient of R1 L1 R2 L2.
+    variable_count = 4
+    unsaturated = grassmann_mul(
+        grassmann_monomial(0, coefficient=Fraction(3)),
+        grassmann_monomial(2, coefficient=Fraction(5)),
+    )
+    assert_equal(
+        "unsaturated instanton zero-mode correlator vanishes",
+        berezin_top_coefficient(unsaturated, variable_count),
+        Fraction(0),
+    )
+
+    operator_pair = grassmann_monomial(0, 1, coefficient=Fraction(7))
+    mass_lift = grassmann_monomial(2, 3, coefficient=Fraction(11))
+    lifted = grassmann_mul(operator_pair, mass_lift)
+    assert_equal(
+        "mass/source lifting supplies missing instanton zero modes",
+        berezin_top_coefficient(lifted, variable_count),
+        Fraction(77),
+    )
+
+    # Two-flavor QCD zero-mode insertions form the determinant
+    # B_11 B_22 - B_12 B_21 as the top Berezin coefficient.
+    b11 = Fraction(2)
+    b12 = Fraction(3)
+    b21 = Fraction(5)
+    b22 = Fraction(7)
+    diagonal_pairing = grassmann_mul(
+        grassmann_monomial(0, 1, coefficient=b11),
+        grassmann_monomial(2, 3, coefficient=b22),
+    )
+    crossed_pairing = grassmann_mul(
+        grassmann_monomial(0, 3, coefficient=b12),
+        grassmann_monomial(2, 1, coefficient=b21),
+    )
+    flavor_determinant_polynomial = grassmann_add(diagonal_pairing, crossed_pairing)
+    determinant = b11 * b22 - b12 * b21
+    assert_equal(
+        "two-flavor 't Hooft determinant from zero-mode Berezin coefficient",
+        berezin_top_coefficient(flavor_determinant_polynomial, variable_count),
+        determinant,
+    )
+
+    axial_charge_per_bilinear = 2
+    flavor_count = 2
+    assert_equal(
+        "QCD instanton axial charge selection",
+        axial_charge_per_bilinear * flavor_count,
+        4,
+    )
+
+
 def check_uhlenbeck_boundary_face_budget() -> None:
     for n_c in range(2, 8):
         for k in range(1, 6):
@@ -438,6 +551,7 @@ def main() -> None:
     check_general_adhm_quotient_dimension()
     check_adhm_quotient_density_coarea_scaling()
     check_finite_regulator_determinant_datum()
+    check_physical_instanton_correlator_zero_mode_saturation()
     check_uhlenbeck_boundary_face_budget()
     check_k_one_adhm_dimension_and_cone_power()
     print("All BPST instanton normalization checks passed.")

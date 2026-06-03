@@ -67,6 +67,9 @@
   quotient-density coarea scaling count, and finite nonzero-mode determinant
   bookkeeping.  The 2026-06-03 Uhlenbeck-face continuation adds the
   higher-charge boundary-face codimension and product integrability budget.
+  The physics-amplitude continuation adds the finite Berezin zero-mode
+  saturation check that turns the instanton measure into a correlator
+  contribution, including the two-flavor 't Hooft determinant sign.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
@@ -184,6 +187,7 @@
 | \(J_\mu(X)\) | coarea Jacobian for the ADHM moment-map submersion |
 | \(L_{\Lambda,z}^{\rm bos},M_{\Lambda,z}^{\rm gh},\mathcal D_{\Lambda,z}^{R}\) | finite-regulator bosonic Hessian, ghost operator, and fermion kinetic operator in the instanton background |
 | \(\mathcal W_{\Lambda}^{\rm nz}(z)\) | finite-regulator nonzero-mode determinant datum in the instanton chart |
+| \(\mathcal Z_{\mathcal O,\Lambda}^{0}(z)\) | finite Berezin coefficient of the zero-mode part of insertions, masses, and sources in a \(Q=1\) instanton background |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
 | \(A_\alpha(\mathcal X),G_\beta(\mathcal X)\) | Uhlenbeck bubbling-scale and collision-face exponents in the multi-instanton boundary budget |
 | \(\mathcal O_{N_c}\) | embedded one-instanton orientation orbit \(U(N_c)/(U(N_c-2)\times U(1))\) |
@@ -397,6 +401,13 @@
   counterterms are part of the regulated Lagrangian and shift the determinant
   datum by the corresponding finite counterterm difference in the instanton
   background.
+- A physical instanton contribution is not the moduli space alone.  In a
+  finite regulator it is the collective-coordinate integral of
+  \(\exp[-S_\Lambda(A_z)+\ii\theta]\mathcal W_\Lambda^{\rm nz}(z)\) multiplied
+  by the zero-mode Berezin coefficient
+  \(\mathcal Z_{\mathcal O,\Lambda}^{0}(z)\) of the operator insertions,
+  masses, or sources.  If the zero-mode top monomial is absent, the instanton
+  sector contribution to that correlator vanishes.
 - A one-instanton boundary exponent datum records the small-\(\rho\)
   behavior of a specified scalar insertion datum \(\mathcal X\) in the form
   \(\rho^{b_0+\beta_{\mathcal X}-5}\).  The local Uhlenbeck-boundary
@@ -557,3 +568,12 @@
   The companion `calculation-checks/inflow_anomaly_line_checks.py` now also
   checks a finite model where the local/descent subgroup is trivial but a flat
   large-transformation holonomy remains nontrivial.
+- 2026-06-03 issue #597 physics-amplitude pass: inserted the physical
+  correlator assembly proposition after the instanton density/determinant
+  setup.  The pass states the finite-regulator collective-coordinate integral,
+  separates the nonzero-mode determinant from the zero-mode Berezin
+  coefficient, and records that moduli-space geometry is only the integration
+  domain; physical amplitudes require insertion/mass/source saturation and
+  boundary-face integrability.  The BPST check script now verifies unsaturated
+  zero-mode vanishing, mass/source lifting, and the two-flavor 't Hooft
+  determinant sign.

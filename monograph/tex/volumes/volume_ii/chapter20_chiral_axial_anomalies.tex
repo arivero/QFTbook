@@ -4103,6 +4103,71 @@ This is the finite-dimensional Berezin rule \(\int\dd\xi\,1=0\),
 \(\int\dd\xi\,\xi=1\) applied after the spectral decomposition of the
 regulated fermion field.
 
+\begin{proposition}[Instanton sectors as physical correlator contributions]
+\label{prop:instanton-sector-physical-correlator-contribution}
+Fix a finite regulator, a \(Q=1\) instanton chart with collective coordinate
+\(z=(a,\rho,U)\), smooth chart domain \(\mathcal U_{Q=1}\), and
+renormalized insertions \(\mathcal O_1,\ldots,\mathcal O_r\).  After gauge
+fixing, collective coordinate separation, and integration of nonzero
+fluctuations, the instanton sector contribution has the form
+\begin{equation}
+  \bigl\langle\mathcal O_1\cdots\mathcal O_r\bigr\rangle_{Q=1,\Lambda}
+  =
+  \int_{\mathcal U_{Q=1}}
+  \ee^{-S_\Lambda(A_z)+\ii\theta}\,
+  \mathcal W_{\Lambda}^{\rm nz}(z)\,
+  \mathcal Z_{\mathcal O,\Lambda}^{0}(z)\,
+  \dd\nu_{\Lambda,\mathcal M}(z),
+  \label{eq:instanton-physical-correlator-assembly}
+\end{equation}
+provided the determinant/Pfaffian line has been paired with the fermion
+zero-mode and anomaly-line data to produce a scalar density.  Here
+\(\mathcal W_{\Lambda}^{\rm nz}\) is the nonzero-mode determinant datum from
+\eqref{eq:finite-regulator-instanton-nonzero-determinant-factor}, while
+\(\mathcal Z_{\mathcal O,\Lambda}^{0}(z)\) is the finite Berezin coefficient
+\begin{equation}
+  \mathcal Z_{\mathcal O,\Lambda}^{0}(z)
+  =
+  \int\dd\xi_{n_0}\cdots\dd\xi_1\,
+  \mathcal O_{1,\Lambda}^{0}(z,\xi)\cdots
+  \mathcal O_{r,\Lambda}^{0}(z,\xi)\,
+  \exp[-S_{\rm lift,\Lambda}^{0}(z,\xi)] .
+  \label{eq:instanton-zero-mode-saturation-functional}
+\end{equation}
+The superscript \(0\) means that each insertion and each mass, Yukawa, or
+source term has been restricted to the zero-mode subspace.  If the integrand
+in \eqref{eq:instanton-zero-mode-saturation-functional} does not contain the
+monomial \(\xi_1\cdots\xi_{n_0}\), then
+\(\mathcal Z_{\mathcal O,\Lambda}^{0}(z)=0\).  If it does contain that
+monomial, the coefficient of that monomial is the only part of the insertions
+which is seen by the instanton sector.
+\end{proposition}
+
+\begin{proof}
+At finite cutoff the gauge-fixed fields split into collective coordinates,
+normal bosonic modes, ghosts, fermion zero modes, and fermion nonzero modes.
+Gaussian integration over the normal bosonic and ghost variables gives the
+determinant factors already isolated in
+\(\mathcal W_{\Lambda}^{\rm nz}\); Gaussian or Pfaffian integration over
+fermion nonzero modes gives the remaining nonzero-mode determinant-line
+factor.  None of these operations integrates over the zero-mode variables
+\(\xi_\alpha\), because the quadratic fermion operator vanishes on them.
+The only finite-dimensional integral left in the fermionic zero-mode sector is
+\eqref{eq:instanton-zero-mode-saturation-functional}.  Berezin integration
+extracts the coefficient of the ordered top monomial
+\(\xi_1\cdots\xi_{n_0}\).  All terms missing at least one zero-mode variable
+therefore vanish, while terms containing the top monomial contribute exactly
+their coefficient.  Multiplying this coefficient by the bosonic
+collective-coordinate density and the nonzero-mode determinant gives
+\eqref{eq:instanton-physical-correlator-assembly}.
+\end{proof}
+
+Thus the moduli space is not the physical answer; it is the domain of a
+semiclassical amplitude.  The physical question is which insertions, masses,
+or sources saturate the fermion zero modes, what nonzero-mode determinant and
+counterterm scheme define \(\mathcal W_{\Lambda}^{\rm nz}\), and whether the
+resulting \(a,\rho,U\) integral is finite at its boundary faces.
+
 For vectorlike QCD with \(N_f\) massless Dirac fundamentals, a \(Q=1\)
 instanton supplies one zero mode for each flavor in one chirality sector.  The
 semiclassical functional integral therefore generates the following leading
