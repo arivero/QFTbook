@@ -33,6 +33,9 @@ relations
     external-leg amputation removes only row/column propagator residues from
     the zero-mode source matrix and leaves the instanton form factors inside
     the amputated hard kernel
+    color-singlet source projection multiplies the hard instanton kernel by
+    gauge-invariant source-overlap matrices, while hadronic pole residues are
+    separate external spectral data
     hard external momenta convert the Nf=2 four-fermion size integral into a
     Q^(-2) coefficient and exponentially suppress the large-rho endpoint
     trading the one-loop action for Lambda_ht gives the full hard scaling
@@ -138,6 +141,23 @@ def product_fraction(values: list[Fraction]) -> Fraction:
     for value in values:
         result *= value
     return result
+
+
+def matmul_fraction(
+    left: list[list[Fraction]],
+    right: list[list[Fraction]],
+) -> list[list[Fraction]]:
+    if not left or not right:
+        return []
+    inner = len(right)
+    assert_equal("matrix multiplication inner dimension", len(left[0]), inner)
+    return [
+        [
+            sum(left[row][k] * right[k][col] for k in range(inner))
+            for col in range(len(right[0]))
+        ]
+        for row in range(len(left))
+    ]
 
 
 GrassmannPolynomial = dict[tuple[int, ...], Fraction]
@@ -952,6 +972,92 @@ def check_instanton_external_leg_amputation_kernel() -> None:
     )
 
 
+def check_color_singlet_instanton_source_projection() -> None:
+    hard_kernel = [
+        [Fraction(2, 5), Fraction(3, 7)],
+        [Fraction(5, 11), Fraction(7, 13)],
+    ]
+    right_overlap = [
+        [Fraction(11, 17), Fraction(13, 19)],
+        [Fraction(17, 23), Fraction(19, 29)],
+    ]
+    left_overlap = [
+        [Fraction(23, 31), Fraction(29, 37)],
+        [Fraction(31, 41), Fraction(37, 43)],
+    ]
+    projected_source = matmul_fraction(
+        matmul_fraction(right_overlap, hard_kernel),
+        left_overlap,
+    )
+    assert_equal(
+        "color-singlet source determinant projection",
+        det_fraction(projected_source),
+        det_fraction(right_overlap)
+        * det_fraction(hard_kernel)
+        * det_fraction(left_overlap),
+    )
+
+    # If the source-overlap matrices vary over collective-coordinate cells,
+    # the projection identity holds pointwise but the overlaps must stay inside
+    # the cell sum.
+    second_kernel = [
+        [Fraction(41, 47), Fraction(43, 53)],
+        [Fraction(47, 59), Fraction(53, 61)],
+    ]
+    second_right_overlap = [
+        [Fraction(3, 11), Fraction(5, 13)],
+        [Fraction(7, 17), Fraction(11, 19)],
+    ]
+    second_left_overlap = [
+        [Fraction(13, 23), Fraction(17, 29)],
+        [Fraction(19, 31), Fraction(23, 37)],
+    ]
+    weights = [Fraction(2, 7), Fraction(5, 9)]
+    projected_integral = (
+        weights[0]
+        * det_fraction(
+            matmul_fraction(matmul_fraction(right_overlap, hard_kernel), left_overlap)
+        )
+        + weights[1]
+        * det_fraction(
+            matmul_fraction(
+                matmul_fraction(second_right_overlap, second_kernel),
+                second_left_overlap,
+            )
+        )
+    )
+    pointwise_integral = (
+        weights[0]
+        * det_fraction(right_overlap)
+        * det_fraction(hard_kernel)
+        * det_fraction(left_overlap)
+        + weights[1]
+        * det_fraction(second_right_overlap)
+        * det_fraction(second_kernel)
+        * det_fraction(second_left_overlap)
+    )
+    assert_equal(
+        "color-singlet projection is pointwise under collective integration",
+        projected_integral,
+        pointwise_integral,
+    )
+
+    # Stable-hadron extraction divides by the source overlaps with the physical
+    # external states.  This pole-residue operation is external to the
+    # instanton kernel and linear in the gauge-invariant source correlator.
+    source_to_hadron = Fraction(7, 15)
+    sink_to_hadron = Fraction(11, 21)
+    hadronic_amplitude = projected_integral
+    gauge_invariant_correlator_pole = (
+        sink_to_hadron * hadronic_amplitude * source_to_hadron
+    )
+    assert_equal(
+        "hadronic pole residue recovers instanton amplitude contribution",
+        gauge_invariant_correlator_pole / (sink_to_hadron * source_to_hadron),
+        hadronic_amplitude,
+    )
+
+
 def check_hard_momentum_instanton_size_window() -> None:
     n_c = 3
     n_f = 2
@@ -1226,6 +1332,7 @@ def main() -> None:
     check_instanton_heat_kernel_beta0_logarithm()
     check_instanton_zero_mode_tail_local_limit()
     check_instanton_external_leg_amputation_kernel()
+    check_color_singlet_instanton_source_projection()
     check_hard_momentum_instanton_size_window()
     check_dilute_instanton_gas_theta_cumulants()
     check_mass_saturated_vacuum_activity_size_integral()

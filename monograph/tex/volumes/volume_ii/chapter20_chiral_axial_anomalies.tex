@@ -4867,6 +4867,126 @@ one-instanton computation of 't Hooft
 fluctuation determinants, fermion zero-mode saturation, and external-leg
 normalization are one calculation.
 
+\begin{controlledapproximation}[Color-singlet matching of the instanton
+kernel]
+\label{ca:instanton-color-singlet-hadronic-matching}
+Stay in the finite-regulator \(Q=1\) setup of
+Proposition~\ref{prop:instanton-external-leg-amputation-kernel}, but replace
+the auxiliary colored external quark representatives by renormalized
+gauge-invariant source families.  Local examples are chiral color-singlet
+bilinears \(\bar q_{R f}\Gamma q_{L f'}\); nonlocal examples must include the
+Wilson line which makes the two quark fields a color singlet.  In a selected
+\(N_f=2\) chirality-violating channel, suppose that the zero-mode projection
+of the chosen source family has the short-distance form
+\begin{equation}
+  B^{\mathcal J}_{AB}(z)
+  =
+  \sum_{f,f'=1}^{2}
+  \Phi^{R}_{A f}(z;\mu)\,
+  B^{\rm amp}_{ff'}(z)\,
+  \Phi^{L}_{f' B}(z;\mu)
+  +
+  B^{\rm rem}_{AB}(z),
+  \label{eq:instanton-color-singlet-source-projection}
+\end{equation}
+where \(A,B\) label two independent color-singlet source coordinates,
+\(\Phi^R,\Phi^L\) are the source-to-zero-mode overlap matrices in the chosen
+renormalization scheme, and \(B^{\rm rem}\) collects higher-dimension source
+components, soft channels not represented by the hard zero-mode kernel, and
+terms outside the selected chirality structure.  The corresponding
+gauge-invariant source correlator receives the one-instanton contribution
+\begin{equation}
+  G^{(4)}_{\mathcal J,\Lambda,Q=1}
+  =
+  \int_{\mathcal U_{Q=1}}
+  \exp[-S_\Lambda(A_z)+\ii\theta]\,
+  \mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)\,
+  \det B^{\mathcal J}(z)\,
+  \dd\nu_{\Lambda,\mathcal M}(z),
+  \label{eq:instanton-color-singlet-source-correlator}
+\end{equation}
+up to the same remainder specification.  If the overlap matrices are square
+and vary only on scales which are soft compared with the hard instanton
+support, then pointwise in \(z\)
+\begin{equation}
+  \det B^{\mathcal J}(z)
+  =
+  \det\Phi^R(z;\mu)\,
+  \det B^{\rm amp}(z)\,
+  \det\Phi^L(z;\mu)
+  +
+  \hbox{terms containing }B^{\rm rem}.
+  \label{eq:instanton-color-singlet-determinant-projection}
+\end{equation}
+Thus the BPST form factors, orientation tensor, nonzero-mode determinant, and
+size integral remain the short-distance instanton kernel; the color-singlet
+source overlaps are an additional matching layer, not a replacement for the
+fluctuation calculation.
+
+For stable hadron external states, the physical amplitude is obtained only
+after applying the usual color-singlet spectral or LSZ extraction to the
+gauge-invariant correlator.  For example, if interpolating sources
+\(\mathcal I_H,\mathcal I_{H'}\) have nonzero isolated overlaps
+\(Z_H,Z_{H'}\) with stable finite-volume states in the sense of
+Proposition~\ref{prop:qcd-stable-current-three-point-extraction}, then a
+termwise semiclassical extraction requires the same pole-residue operation:
+\begin{equation}
+  \mathcal A^{(Q=1)}_{H'\leftarrow H}
+  =
+  \bigl(\overline Z_{H'}Z_H\bigr)^{-1}
+  \operatorname*{Res}_{H',H}
+  G_{\mathcal I_{H'}^\dagger\,\mathcal X\,\mathcal I_H,\Lambda,Q=1},
+  \label{eq:instanton-hadronic-residue-extraction}
+\end{equation}
+where \(\mathcal X\) is the chosen gauge-invariant current or source product
+and the residue notation means the finite-volume large-time projection, or
+the corresponding infinite-volume pole extraction when it exists.  The BPST
+calculation does not determine \(Z_H,Z_{H'}\), the hadronic matrix element of
+the induced 't Hooft operator, or the long-distance part of
+\(\Phi^{R,L}\).  Those are nonperturbative QCD data.  In a hard OPE or
+factorization regime, the small-\(\rho\) instanton calculation can supply a
+Wilson coefficient multiplying a gauge-invariant operator such as
+\(\det[\bar q_R q_L]_\mu\); outside such a regime
+\eqref{eq:instanton-color-singlet-source-correlator} is a source correlator,
+not a prediction for a hadronic amplitude by itself.
+\end{controlledapproximation}
+
+The finite-regulator bookkeeping behind
+\eqref{eq:instanton-color-singlet-source-projection} is entirely
+finite-dimensional.
+At finite regulator the fermion fields have finitely many odd coefficients,
+and every regulated source has a finite expansion in those coefficients.
+Restricting the source to the instanton zero-mode subspace produces a
+finite-dimensional polynomial in the zero-mode variables.  The hypothesis
+\eqref{eq:instanton-color-singlet-source-projection} says that, in the
+chosen hard channel, the part of this polynomial which is bilinear in the
+right and left zero-mode variables factors through the same amputated
+zero-mode kernel \(B^{\rm amp}\), with source-dependent overlap maps on the
+two sides.  Substituting this zero-mode source matrix into the Berezin
+coefficient in
+Proposition~\ref{prop:qcd-thooft-determinant-zero-mode-amplitude} gives
+\(\det B^{\mathcal J}(z)\), and multiplying by the determinant density and
+collective-coordinate measure gives
+\eqref{eq:instanton-color-singlet-source-correlator}.
+
+The determinant relation
+\eqref{eq:instanton-color-singlet-determinant-projection} is the finite
+identity
+\[
+  \det(\Phi^R B^{\rm amp}\Phi^L)
+  =
+  \det\Phi^R\,\det B^{\rm amp}\,\det\Phi^L,
+\]
+applied pointwise in the collective coordinate.  If the overlaps vary with
+\(z\), the same identity still holds pointwise but the overlap factors must
+remain inside the collective-coordinate integral.  Finally, because
+\(G_{\mathcal I_{H'}^\dagger\,\mathcal X\,\mathcal I_H,\Lambda,Q=1}\) is a
+correlator of gauge-invariant sources, the hadronic extraction is the
+standard spectral-residue operation for color-singlet correlators.  Applying
+that operation termwise in a controlled semiclassical expansion gives
+\eqref{eq:instanton-hadronic-residue-extraction}; it never produces an
+ordinary colored-quark \(S\)-matrix element.
+
 \begin{controlledapproximation}[Hard-momentum size window]
 \label{ca:hard-momentum-instanton-size-window}
 Consider the \(N_f=2\) source-amputated four-fermion kernel

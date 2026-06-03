@@ -409,7 +409,9 @@ Current checks:
   \(zK_1(z)\), tail, and logarithmically sensitive second moment in the
   local-vertex limit, the source-matrix row/column algebra showing that
   external-leg amputation removes adjacent propagator residues while retaining
-  instanton zero-mode form factors, the hard-momentum size-window scaling
+  instanton zero-mode form factors, the color-singlet source-projection
+  algebra which keeps source-to-zero-mode overlaps and hadronic pole residues
+  separate from the hard instanton kernel, the hard-momentum size-window scaling
   that gives the \(N_f=2\) four-fermion coefficient its \(Q^{-2}\) behavior
   at \(\mu=Q\), the one-loop RG-invariant rewrite
   \(\Lambda_{\rm ht}^{b_0}Q^{-b_0-2}\) of the same hard coefficient while

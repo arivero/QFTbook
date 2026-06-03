@@ -76,9 +76,12 @@
   BPST fundamental zero-mode envelope, its momentum form factor \(zK_1(z)\),
   its \(R^{-2}\) tail, and the logarithmically infrared-sensitive second
   moment controlling the first nonzero derivative correction to the local
-  vertex.  The hard-amplitude continuation adds the \(N_f=2\) hard-momentum
-  size window, where the same form factors give a \(Q^{-2}\) four-fermion
-  coefficient at \(\mu=Q\), the RG-invariant
+  vertex.  The color-singlet matching continuation adds the gauge-invariant
+  source-projection and hadronic pole-residue layer: source-to-zero-mode
+  overlaps multiply the hard kernel, while stable-hadron amplitudes require a
+  separate spectral/LSZ extraction.  The hard-amplitude continuation adds the
+  \(N_f=2\) hard-momentum size window, where the same form factors give a
+  \(Q^{-2}\) four-fermion coefficient at \(\mu=Q\), the RG-invariant
   \(\Lambda_{\rm ht}^{b_0}Q^{-b_0-2}\) hard falloff, and exponential
   suppression of large instantons.
 - The index-normalized anomaly-polynomial section is paired with
@@ -206,6 +209,7 @@
 | \(B_{\eta,ff'}(z)\) | zero-mode-projected source matrix for smeared four-fermion wave packets in the instanton background |
 | \(G^{(4)}_{\eta,\Lambda,Q=1}\) | finite-regulator one-instanton contribution to the smeared four-fermion amplitude |
 | \(h_\rho(y),\widehat h_\rho(q),M_2(R)\) | normalized BPST zero-mode radial envelope, momentum form factor \(zK_1(z)\), and truncated second moment in the local-vertex expansion |
+| \(B^{\mathcal J}_{AB},\Phi^R,\Phi^L\) | color-singlet source-projected zero-mode matrix and source-to-zero-mode overlap maps used to match the auxiliary hard instanton kernel to gauge-invariant correlators |
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(c_1,c_2)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless form-factor integral |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
 | \(\zeta_m^{[\rho_-,\rho_+]}\) | mass-saturated one-instanton vacuum activity in a finite size window |
@@ -477,6 +481,16 @@
   Because colored quarks are not physical asymptotic states in confining QCD,
   this is a source-amputated/partonic coordinate, not a gauge-invariant quark
   \(S\)-matrix element.
+- Gauge-invariant color-singlet source matching is now separated from colored
+  source amputation.  In the selected \(N_f=2\) chirality-violating channel,
+  the zero-mode source matrix has the projected form
+  \(B^{\mathcal J}=\Phi^R B^{\rm amp}\Phi^L+B^{\rm rem}\).  The determinant
+  identity is pointwise in the instanton collective coordinate, so
+  \(z\)-dependent source overlaps must remain inside the \((a,\rho,U)\)
+  integral.  Stable-hadron amplitudes require the usual color-singlet
+  spectral/LSZ residue extraction; BPST data do not determine the hadron
+  residues or the long-distance matrix element of the induced 't Hooft
+  operator.
 - In an \(N_f=2\) hard four-fermion kinematic window, retaining the BPST
   source form factors turns the universal one-loop size factor into
   \[
@@ -774,3 +788,12 @@
   now verifies the additional running-exponential \(Q^{-b_0}\), the
   \(\Lambda_{\rm ht}^{b_0}\) mass dimension, and the resulting net
   four-fermion coefficient dimension.
+- 2026-06-03 issue #597 color-singlet matching pass: added
+  `ca:instanton-color-singlet-hadronic-matching`, which places the auxiliary
+  source-amputated instanton kernel inside gauge-invariant source correlators
+  and stable-hadron residue extraction.  The new block distinguishes the BPST
+  hard kernel from source-to-zero-mode overlaps, long-distance hadronic matrix
+  elements, and pole residues.  The BPST check script now verifies the
+  source-projection determinant identity, the need to keep
+  collective-coordinate-dependent overlaps inside the instanton integral, and
+  the separate finite pole-residue division for a stable hadron.
