@@ -38,6 +38,10 @@
       "risk_class": "constructive/SPDE reconstruction"
     },
     {
+      "path": "eta_global_anomaly_checks.py",
+      "risk_class": "eta/global anomaly"
+    },
+    {
       "path": "inflow_anomaly_line_checks.py",
       "risk_class": "anomaly inflow"
     },

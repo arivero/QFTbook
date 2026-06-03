@@ -220,7 +220,8 @@ Current checks:
   from nontrivial stabilizer character, the constructive finite
   action-groupoid descent criterion from vanishing stabilizer character, and
   the finite \(U(1)\)-phase algebra of Dai--Freed gluing and boundary-pairing
-  anomaly cancellation, together with a finite cochain Stokes model for the
+  anomaly cancellation, plus intermediate-cut frame cancellation for composed
+  inflow amplitudes, together with a finite cochain Stokes model for the
   contractible-loop step from
   Bismut--Freed curvature to local descent.
 - `free_fock_nuclearity_checks.py`: finite checks for the Volume IV

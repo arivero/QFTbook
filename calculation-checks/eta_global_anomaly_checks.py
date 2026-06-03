@@ -1,5 +1,42 @@
 #!/usr/bin/env python3
-"""Exact checks for eta-invariant and SU(2) global-anomaly conventions."""
+"""Exact checks for eta-invariant and SU(2) global-anomaly conventions.
+
+Evidence contract.
+
+Target claims:
+    APS boundary-sign bookkeeping, determinant/Pfaffian line coordinate
+    algebra, finite action-groupoid descent, Witten SU(2) trace-delta
+    parity arithmetic, and the finite phase algebra used by Dai-Freed
+    gluing, boundary pairing, and intermediate-cut composition.
+
+Independent construction:
+    The checks use exact integer, rational, and finite cyclic phase models
+    built directly from the algebraic definitions in the chapter: spectral
+    windows multiply by finite determinants, Pfaffians multiply by skew-block
+    products, groupoid cocycles are evaluated on every finite arrow, and
+    Dai-Freed line pairings are checked in additive U(1)-exponent
+    coordinates.
+
+Imported assumptions:
+    The script does not prove the APS Fredholm/heat-kernel theorem,
+    Bismut-Freed holonomy theorem, Dai-Freed analytic boundary-line
+    construction, or the real mod-two-index theorem.  It assumes those
+    theorem-level inputs and tests the finite convention and line-algebra
+    consequences used in the monograph.
+
+Negative controls:
+    The checks include nontrivial flat stabilizer holonomy before dual-line
+    cancellation, nontrivial stabilizer-character obstruction to descent,
+    zero-mode exclusion in the APS half-cylinder convention, parity-changing
+    Pfaffian sign crossings, and nontrivial SU(2) mapping-torus generator
+    signs for odd trace-delta index.
+
+Scope boundary:
+    Passing this script verifies exact finite algebra and convention-sensitive
+    coordinates.  It is not a numerical or analytic proof of the continuum
+    eta invariant, determinant/Pfaffian line, Dai-Freed theory, or global
+    index theorems.
+"""
 
 from __future__ import annotations
 
@@ -447,6 +484,59 @@ def check_dai_freed_boundary_pairing_cancels_cocycle() -> None:
                     (paired_first - paired_second) % phase_modulus,
                     closed_phase,
                 )
+
+
+def check_dai_freed_interface_composition_frame_cancellation() -> None:
+    """Finite phase check for gluing through an intermediate anomaly line."""
+
+    for phase_modulus in range(2, 17):
+        for z01 in range(phase_modulus):
+            for z12 in range(phase_modulus):
+                direct_composition = (z01 + z12) % phase_modulus
+                for frame_change in range(phase_modulus):
+                    # e_1 -> q e_1 sends the coefficient of
+                    # L_0^{-1} tensor L_1 by q^{-1} and the coefficient of
+                    # L_1^{-1} tensor L_2 by q.
+                    transformed_z01 = (z01 - frame_change) % phase_modulus
+                    transformed_z12 = (z12 + frame_change) % phase_modulus
+                    assert_equal(
+                        "Dai-Freed intermediate frame cancels in two-step gluing "
+                        f"phase={phase_modulus}",
+                        (transformed_z01 + transformed_z12) % phase_modulus,
+                        direct_composition,
+                    )
+
+                    initial_boundary = (3 * z01 + 5) % phase_modulus
+                    final_functional = (7 * z12 + 11) % phase_modulus
+                    scalar_amplitude = (
+                        initial_boundary + z01 + z12 + final_functional
+                    ) % phase_modulus
+                    transformed_scalar = (
+                        initial_boundary
+                        + transformed_z01
+                        + transformed_z12
+                        + final_functional
+                    ) % phase_modulus
+                    assert_equal(
+                        "Dai-Freed endpoint scalar is independent of intermediate frame "
+                        f"phase={phase_modulus}",
+                        transformed_scalar,
+                        scalar_amplitude,
+                    )
+
+            for z12 in range(phase_modulus):
+                for z23 in range(phase_modulus):
+                    left_grouping = (
+                        (z01 + z12) % phase_modulus + z23
+                    ) % phase_modulus
+                    right_grouping = (
+                        z01 + (z12 + z23) % phase_modulus
+                    ) % phase_modulus
+                    assert_equal(
+                        f"Dai-Freed interface composition is associative phase={phase_modulus}",
+                        left_grouping,
+                        right_grouping,
+                    )
 
 
 def oriented_edge_value(cochain: dict[tuple[int, int], Fraction], start: int, end: int) -> Fraction:
@@ -900,6 +990,7 @@ def main() -> None:
     check_cech_de_rham_line_holonomy_bookkeeping()
     check_dai_freed_gluing_phase_algebra()
     check_dai_freed_boundary_pairing_cancels_cocycle()
+    check_dai_freed_interface_composition_frame_cancellation()
     check_contractible_loop_curvature_stokes()
     check_action_groupoid_anomaly_cocycle_and_descent()
     check_dual_anomaly_line_cancellation()

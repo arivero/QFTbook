@@ -103,6 +103,11 @@ global anomaly as an explicit mod-two-index example.
   Dai--Freed vector transforms by the inverse cocycle, their pairing is a
   gauge-invariant scalar; changing the filling multiplies this scalar by the
   closed Dai--Freed phase of the glued odd manifold.
+- Adds the intermediate-cut composition algebra for Dai--Freed inflow:
+  successive bulk bordisms compose by evaluating the anomaly line on the
+  common cut, the artificial-cut frame cancels between adjacent factors, and
+  the endpoint-paired amplitude is a scalar independent of that intermediate
+  frame.
 - Adds an explicit theorem-boundary paragraph separating the pure
   global-analysis inputs (APS Fredholm/heat-kernel theorem,
   Bismut--Freed determinant-line holonomy, Dai--Freed boundary-line gluing,
@@ -130,8 +135,10 @@ global anomaly as an explicit mod-two-index example.
   holonomy before cancellation, and the Quillen spectral-cut
   transition cocycle for determinant-line charts, the reduced-eta integer
   jump at a one-mode crossing, the finite \(U(1)\)-phase algebra behind
-  Dai--Freed gluing and boundary-pairing anomaly cancellation, and a finite
-  cochain Stokes model for the contractible-loop curvature-to-descent step.
+  Dai--Freed gluing, boundary-pairing anomaly cancellation, and
+  intermediate-cut frame cancellation for composed inflow amplitudes, and a
+  finite cochain Stokes model for the contractible-loop
+  curvature-to-descent step.
 - The same script now checks the Cech-de Rham local connection/transition
   algebra for determinant-line holonomy: \(a_j=a_i-df_{ij}\) on overlaps and
   invariance of the closed-loop exponent under frame changes
@@ -246,3 +253,11 @@ global anomaly as an explicit mod-two-index example.
   pair to a gauge-invariant scalar, and that changing the filling changes
   the scalar by the closed glued-manifold phase.  The companion
   `eta_global_anomaly_checks.py` verifies this finite phase arithmetic.
+- 2026-06-03 Dai--Freed composition pass: added the intermediate-cut gluing
+  algebra
+  `prop:dai-freed-intermediate-cut-frame-cancellation`.  This records the
+  physics-facing amplitude mechanism: two inflow bordisms compose by
+  evaluating the anomaly line on the common cut, and arbitrary frame phases
+  on that cut cancel before endpoint states are paired.  The companion
+  `eta_global_anomaly_checks.py` now verifies this cancellation and
+  associativity in exact finite phase arithmetic.
