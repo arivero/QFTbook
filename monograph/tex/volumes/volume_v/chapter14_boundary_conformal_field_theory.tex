@@ -156,9 +156,12 @@ times the ordinary transport \(T_e\).  For a path
 \[
   \lambda_p=\lambda_{e_N}\cdots\lambda_{e_1}.
 \]
-The scalar \(\lambda_\ell\) on a closed loop \(\ell\) is the finite
-projective sewing anomaly.  The anomaly cocycle is trivial on a connected
-move graph if there are nonzero vertex scalars \(\eta_v\) such that
+The scalar \(\lambda_\ell\) on a closed loop \(\ell\) is the scalar part of
+the finite projective sewing anomaly.  The actual closed-loop action on an
+amplitude is the total operator \(\lambda_\ell T_\ell\), where
+\(T_\ell=T_{e_N}\cdots T_{e_1}\) is the ordinary vector-space transport.  The
+anomaly cocycle is trivial on a connected move graph if there are nonzero
+vertex scalars \(\eta_v\) such that
 \begin{equation}
   \lambda_e=\eta_v\eta_u^{-1}
   \qquad(e:u\to v).
@@ -184,9 +187,20 @@ obey ordinary zero-defect sewing,
   \widetilde A_v=T_e\widetilde A_u .
 \]
 Conversely, if a closed loop has \(\lambda_\ell\ne1\), no such vertex
-trivialization exists on the component containing that loop; a nonzero scalar
-amplitude can be decomposition-independent only as a section of the anomaly
-line, not after forgetting the line.
+trivialization exists on the component containing that loop.  This is an
+obstruction to removing the scalar cocycle by changing local line frames.
+
+Scalar decomposition independence after forgetting the anomaly line is a
+separate condition.  For a closed loop \(\ell\) based at \(v\), a scalar
+amplitude \(A_v\) is loop-independent only if
+\begin{equation}
+  \lambda_\ell T_\ell A_v=A_v .
+  \label{eq:bcft-total-projective-loop-transport}
+\end{equation}
+Therefore \(\lambda_\ell\ne1\) obstructs a nonzero scalar amplitude only after
+the ordinary closed-loop transport has been trivialized on that amplitude, or
+more generally when \(1\) is not an eigenvalue of \(\lambda_\ell T_\ell\) on
+the relevant amplitude subspace.
 \end{proposition}
 
 \begin{proof}
@@ -206,9 +220,15 @@ For the converse, multiply
 \eqref{eq:bcft-sewing-anomaly-coboundary} around a closed loop
 \(\ell=e_N\cdots e_1\).  The vertex factors telescope, so every coboundary
 has \(\lambda_\ell=1\).  A loop with \(\lambda_\ell\ne1\) therefore cannot
-come from vertex rescalings.  Transporting a nonzero scalar amplitude around
-that loop multiplies it by \(\lambda_\ell\), contradicting scalar
-decomposition independence unless the anomaly line is retained.
+come from vertex rescalings.  The local projective sewing relation transported
+around the loop gives \(A_v=\lambda_\ell T_\ell A_v\), equivalently
+\eqref{eq:bcft-total-projective-loop-transport}.  If \(T_\ell A_v=A_v\), this
+reduces to \((\lambda_\ell-1)A_v=0\), so a nonzero scalar amplitude is
+impossible when \(\lambda_\ell\ne1\).  Without that ordinary-transport
+hypothesis, \(\lambda_\ell\) alone is not the scalar path-independence
+obstruction: ordinary holonomy may cancel the scalar phase on a particular
+subspace.  The invariant statement is the total projective loop condition
+\(\lambda_\ell T_\ell A_v=A_v\).
 \end{proof}
 
 This is the finite model for determinant-line bookkeeping in bordered CFT.
@@ -216,7 +236,10 @@ The analytic sewing theorem must construct the relevant anomaly line over
 the moduli/decomposition groupoid, identify the line transports produced by
 cutting and gluing, and either trivialize their cocycle or keep amplitudes as
 line-valued sections.  Local Cardy--Lewellen algebra controls the vector part
-of the move; it does not by itself cancel a closed-loop anomaly.
+of the move; it does not by itself remove the line cocycle.  Conversely, a
+scalar monodromy test must include the ordinary vector transport as well as the
+line factor, because the physical closed-loop comparison is
+\(\lambda_\ell T_\ell\), not \(\lambda_\ell\) alone.
 
 For a boundary equal to the real axis in the upper half-plane
 \(\mathbb H=\{z=x+\ii y\mid y\ge0\}\), the stress tensor has components

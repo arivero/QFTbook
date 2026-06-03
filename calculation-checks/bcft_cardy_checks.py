@@ -1625,6 +1625,34 @@ def check_finite_sewing_anomaly_cocycle_trivialization() -> None:
         Fraction(30),
     )
 
+    # The scalar projective phase alone is not the full scalar
+    # decomposition-independence test.  A one-vertex loop can have nontrivial
+    # anomaly-line phase whose effect on a particular scalar amplitude is
+    # cancelled by ordinary transport.
+    scalar_amplitude = Fraction(7)
+    ordinary_loop_transport = Fraction(1, 30)
+    total_projective_transport = nontrivial_loop_phase * ordinary_loop_transport
+    assert_equal(
+        "ordinary transport can cancel projective sewing phase",
+        total_projective_transport * scalar_amplitude,
+        scalar_amplitude,
+    )
+
+    trivial_ordinary_transport = Fraction(1)
+    assert_equal(
+        "nontrivial sewing phase obstructs scalar amplitude after ordinary transport is trivialized",
+        nontrivial_loop_phase * trivial_ordinary_transport * scalar_amplitude,
+        Fraction(210),
+    )
+    if (
+        nontrivial_loop_phase * trivial_ordinary_transport * scalar_amplitude
+        == scalar_amplitude
+    ):
+        raise AssertionError(
+            "nontrivial sewing phase should move a nonzero scalar amplitude "
+            "when ordinary transport is trivial"
+        )
+
 
 def main() -> None:
     check_modular_s()

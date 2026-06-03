@@ -1100,8 +1100,9 @@ Current checks:
   behind nonrational contour-crossing prescriptions, as well as the finite
   move-defect budget that turns local bordered-sewing defects into a global
   decomposition-independence error bound and the finite sewing-anomaly
-  cocycle check separating removable coboundary phases from nontrivial
-  closed-loop holonomy.
+  cocycle check separating removable coboundary phases from total
+  closed-loop transport, including the case where ordinary transport cancels a
+  nontrivial projective phase.
 - `liouville_bpz_checks.py`: exact algebra checks for the Liouville chapter,
   including the probabilistic GMC threshold normalization
   \(Q_\gamma=2/\gamma+\gamma/2=b+b^{-1}\) and the distinction between the

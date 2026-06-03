@@ -26,9 +26,10 @@
   their defects telescope along paths in the move graph.
 - Adds a finite sewing-anomaly cocycle model: projective line factors on
   elementary moves are removable exactly when they are vertex-rescaling
-  coboundaries; nontrivial closed-loop holonomy obstructs scalar
-  decomposition independence unless amplitudes are kept as anomaly-line
-  sections.
+  coboundaries; scalar decomposition independence is tested by the total
+  closed-loop operator \(\lambda_\ell T_\ell\), so a nontrivial line phase
+  obstructs scalar amplitudes only after the ordinary transport contribution
+  has also been accounted for.
 - Adds an end-of-chapter proof-status ledger that reads the Ising diagonal
   example, pointed \(G/H\) rational laboratory, Liouville/FZZT nonrational
   block, and boundary-entropy gradient result as different initial segments of
@@ -279,8 +280,9 @@
 24. Projective determinant-line factors in sewing are a separate obstruction
     from vector-valued local move defects.  On a finite move graph they can be
     removed by choosing vertex trivializations exactly when the edge scalars
-    form a coboundary; a closed loop with nontrivial holonomy forces
-    amplitudes to remain line-valued or prevents scalar sewing independence.
+    form a coboundary.  Scalar sewing independence after forgetting the line is
+    governed by the total closed-loop transport \(\lambda_\ell T_\ell\), not by
+    the scalar line phase alone.
 25. A full BCFT construction has a strict dependency order: closed/chiral
     input, boundary Hilbert or spectral data, compatible annulus/disk/OPE/
     two-point coordinates, local sewing moves in a common normalization, and
@@ -482,9 +484,17 @@
 - 2026-06-03 finite sewing-anomaly pass: expanded the anomaly-line part of the
   generated-sewing architecture into an explicit projective cocycle.  Edge
   phases on finite sewing moves can be removed precisely when they are
-  coboundaries of vertex trivializations; nontrivial closed-loop holonomy is a
-  determinant-line obstruction to scalar correlators.  Added an exact check of
-  the coboundary telescoping and nontrivial-loop obstruction.
+  coboundaries of vertex trivializations; the closed-loop line phase is a
+  determinant-line datum which must be combined with ordinary transport before
+  making scalar correlator monodromy claims.  Added an exact check of the
+  coboundary telescoping and nontrivial-loop obstruction.
+- 2026-06-03 issue #714 holonomy repair: split the finite sewing-anomaly
+  statement into the scalar-cocycle coboundary obstruction and the separate
+  scalar amplitude monodromy test.  The chapter now uses the total closed-loop
+  transport \(\lambda_\ell T_\ell\), so ordinary transport may cancel a
+  nontrivial projective phase on a given amplitude subspace.  Extended
+  `bcft_cardy_checks.py` with the one-vertex counterexample and the
+  trivial-ordinary-transport obstruction case.
 - 2026-06-03 end-to-end BCFT coherence pass: after a chapter-flow read of the
   2015-line BCFT chapter, added a closing proof-status ledger.  The new ledger
   separates closed/chiral input, boundary Hilbert or spectral data, compatible
