@@ -3104,6 +3104,58 @@ source-window RG estimate must therefore specify the transporter geometry
 and its renormalized path class, or else prove a reconstruction estimate that
 controls the difference between the chosen paths.
 
+\paragraph{Path-deformation ledger for transported sources.}
+The preceding path dependence has an exact finite-regulator algebra.  Let
+\(P,P':x\to y\) be two oriented paths and let \(\bar P:y\to x\) be the
+reverse of \(P\).  Put
+\[
+  C_{P',P}:=P'\bar P ,
+  \qquad
+  U_{C_{P',P}}(A)=U_{P'}(A)U_P(A)^{-1}.
+\]
+Then
+\begin{equation}
+  U_{P'}(A)=U_{C_{P',P}}(A)\,U_P(A),
+  \label{eq:gauge-source-path-deformation-holonomy}
+\end{equation}
+and the two transported sources differ by the endpoint-local loop insertion
+\begin{equation}
+  O_{P',R}-O_{P,R}
+  =
+  \bar\psi_x
+  \left(
+    R(U_{C_{P',P}})-\mathbf 1
+  \right)
+  R(U_P)\psi_y .
+  \label{eq:gauge-source-path-deformation-insertion}
+\end{equation}
+The closed-loop holonomy in
+\eqref{eq:gauge-source-path-deformation-insertion} transforms by conjugation
+at \(x\), and the endpoint vector \(\bar\psi_x\) transforms by the dual
+representation, so the whole difference is still gauge invariant.  If
+\(C_{P',P}\) is a small plaquette loop in a continuum scaling window, then
+\(R(U_{C_{P',P}})-\mathbf1\) is the finite-regulator representative of a
+local curvature insertion plus higher local Wilson-loop coordinates.  Thus
+identifying \(P\) and \(P'\) in a continuum reconstruction is a theorem only
+after the source-window estimate supplies, in the declared seminorms, a bound
+of the form
+\begin{equation}
+  p\!\left(
+    \operatorname{Rec}_{O_{P',R},k}
+    -
+    \operatorname{Rec}_{O_{P,R},k}
+  \right)
+  \leq
+  C_{P,P',p}\,\varepsilon_{C_{P',P},k}
+  +
+  \eta_{P,P',p,k},
+  \label{eq:gauge-source-path-deformation-reconstruction-bound}
+\end{equation}
+where \(\varepsilon_{C_{P',P},k}\) is the local small-loop or curvature
+coordinate controlled by the gauge-invariant Wilsonian chart and
+\(\eta_{P,P',p,k}\to0\).  Without such a bound, different connector paths are
+different source labels, not alternate notations for the same observable.
+
 In the BV form the same statement is slightly sharper.  A finite source
 window is a holomorphic family \(S_k(z)\) with \(S_k(0)=S_k\) satisfying the
 scale-\(k\) quantum master equation and equipped with its composite-operator
@@ -3165,8 +3217,12 @@ checks \eqref{eq:gauge-transported-bilinear-source} in the permutation
 representation: the Wilson-line transported endpoint bilinear is invariant
 under all independent endpoint gauge transformations, the untransported
 endpoint pairing is not, and changing the connecting path changes the
-observable for a configuration with nontrivial holonomy.  The same check file
-also tests the finite locality-tail arithmetic, reflection positive Gram
+observable for a configuration with nontrivial holonomy.  It also verifies
+the exact loop-insertion identity
+\eqref{eq:gauge-source-path-deformation-holonomy}--\eqref{eq:gauge-source-path-deformation-insertion}
+and the finite reconstruction error budget
+\eqref{eq:gauge-source-path-deformation-reconstruction-bound}.  The same
+check file also tests the finite locality-tail arithmetic, reflection positive Gram
 compression, and the reconstruction error budget in
 \eqref{eq:gauge-blocking-observable-reconstruction}; these finite checks are
 not substitutes for the continuum estimates, but they keep the algebraic

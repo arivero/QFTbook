@@ -879,7 +879,10 @@ Current checks:
   representation: the transported bilinear is gauge invariant under
   independent endpoint transformations, the untransported endpoint pairing
   fails the invariance test, and the connector path is part of the source
-  label.  It also checks
+  label.  It also checks the exact connector-deformation identity
+  \(U_{P'}=U_{P'\bar P}U_P\), the resulting inserted-loop formula for the
+  difference of transported sources, and the finite reconstruction budget
+  required before two connector paths can be identified.  It also checks
   the finite arithmetic behind the weighted polymer-tail bound used in the
   gauge-blocking locality datum and the compression of a reflection-positive
   finite Gram matrix by a blocking map.  It also detects a nondecaying

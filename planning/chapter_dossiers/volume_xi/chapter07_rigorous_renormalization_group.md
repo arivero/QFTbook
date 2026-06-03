@@ -401,6 +401,13 @@ constructive RG developments.
   after the Wilson-line transporter, endpoint representation data, and path
   label are included.  Dropping the transporter gives a gauge-fixed source,
   and changing the path changes the observable by the intervening holonomy.
+- Adds the finite path-deformation ledger for transported gauge sources:
+  for two connectors \(P,P':x\to y\), the loop
+  \(C_{P',P}=P'\bar P\) satisfies \(U_{P'}=U_{C_{P',P}}U_P\), so
+  \(O_{P',R}-O_{P,R}\) is a local closed-loop insertion at the endpoint.
+  Identifying connector paths in a continuum reconstruction therefore
+  requires a source-window estimate controlling the corresponding small-loop
+  or curvature coordinate.
 - Defines the gauge-blocking continuum-control datum needed after exact
   finite path blocking: a gauge-invariant polymer representation of the
   blocked measure, an exponential locality norm with a cluster-tail estimate,
@@ -545,8 +552,10 @@ remainder contraction.
   closed-loop source-window descent to coarse gauge orbits, the failure of an
   open-link source to define an invariant window, Wilson-line transported
   endpoint bilinear invariance, the failure of the untransported endpoint
-  pairing, path-label dependence of the connector source, the finite arithmetic
-  behind weighted polymer-tail bounds, a nondecaying tail failure mode,
+  pairing, path-label dependence of the connector source, the exact
+  connector-deformation identity \(U_{P'}=U_{P'\bar P}U_P\), the inserted-loop
+  source-difference formula, the path-deformation reconstruction budget, the
+  finite arithmetic behind weighted polymer-tail bounds, a nondecaying tail failure mode,
   compression of a reflection-positive finite Gram matrix by a blocking map,
   and the finite reconstruction error budget \(C\varepsilon+\eta\).
 
@@ -996,3 +1005,8 @@ remainder contraction.
   bilinears are invariant under independent endpoint gauge transformations,
   while the untransported endpoint pairing and an unspecified connector path
   do not define the same reconstruction source.
+- 2026-06-03 gauge path-deformation pass: added the exact finite connector
+  deformation ledger \(U_{P'}=U_{P'\bar P}U_P\), the corresponding inserted
+  closed-loop source difference, and a reconstruction-budget interface
+  requiring the local small-loop/curvature coordinate to be controlled before
+  two connector paths are identified in the continuum observable.

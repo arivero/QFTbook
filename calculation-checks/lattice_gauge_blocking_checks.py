@@ -9,6 +9,9 @@ gauge-blocking continuum-control datum.  It also checks the finite endpoint
 algebra for matter bilinear sources with Wilson-line transporters: the
 transported bilinear is gauge invariant, the untransported endpoint pairing
 is not, and the connecting path is part of the observable label.
+The path-deformation check verifies the exact finite identity
+U_{P'}=U_{P'\bar P}U_P and the corresponding inserted-loop formula for the
+difference of Wilson-line transported sources.
 """
 
 from __future__ import annotations
@@ -77,6 +80,10 @@ def path_product_oriented(config: FineConfig, path: tuple[Edge, ...]) -> Perm:
     return total
 
 
+def reverse_path(path: tuple[Edge, ...]) -> tuple[Edge, ...]:
+    return tuple((target, source) for source, target in reversed(path))
+
+
 def act(perm: Perm, vector: Vector) -> Vector:
     result = [Fraction(0), Fraction(0), Fraction(0)]
     for index, value in enumerate(vector):
@@ -86,6 +93,10 @@ def act(perm: Perm, vector: Vector) -> Vector:
 
 def dot(left: Vector, right: Vector) -> Fraction:
     return sum(a * b for a, b in zip(left, right, strict=True))
+
+
+def vector_sub(left: Vector, right: Vector) -> Vector:
+    return tuple(a - b for a, b in zip(left, right, strict=True))  # type: ignore[return-value]
 
 
 def transported_bilinear(
@@ -334,6 +345,61 @@ def check_transported_matter_bilinear_source() -> None:
     )
 
 
+def check_transported_path_deformation_loop_insertion() -> None:
+    config = {
+        E01: (1, 2, 0),
+        E12: (0, 2, 1),
+        E23: (2, 0, 1),
+        E30: (1, 0, 2),
+    }
+    base_path = (E01, E12, E23)
+    alternate_path = ((0, 3),)
+    left_endpoint = (Fraction(1, 2), Fraction(-2), Fraction(3, 5))
+    right_endpoint = (Fraction(7, 3), Fraction(1), Fraction(-4, 7))
+
+    base_holonomy = path_product_oriented(config, base_path)
+    alternate_holonomy = path_product_oriented(config, alternate_path)
+    loop_path = alternate_path + reverse_path(base_path)
+    loop_holonomy = path_product_oriented(config, loop_path)
+    assert_equal(
+        "connector deformation holonomy identity",
+        mul(loop_holonomy, base_holonomy),
+        alternate_holonomy,
+    )
+
+    base_vector = act(base_holonomy, right_endpoint)
+    alternate_vector = act(alternate_holonomy, right_endpoint)
+    inserted_loop_vector = vector_sub(
+        act(mul(loop_holonomy, base_holonomy), right_endpoint),
+        act(base_holonomy, right_endpoint),
+    )
+    assert_equal(
+        "connector deformation inserted-loop vector",
+        inserted_loop_vector,
+        vector_sub(alternate_vector, base_vector),
+    )
+    assert_equal(
+        "connector deformation source difference",
+        dot(left_endpoint, inserted_loop_vector),
+        transported_bilinear(config, alternate_path, left_endpoint, right_endpoint)
+        - transported_bilinear(config, base_path, left_endpoint, right_endpoint),
+    )
+
+    trivial_loop = path_product_oriented(config, base_path + reverse_path(base_path))
+    assert_equal("same connector gives trivial deformation loop", trivial_loop, IDENTITY)
+    assert_equal(
+        "trivial deformation has no inserted-loop source change",
+        dot(
+            left_endpoint,
+            vector_sub(
+                act(mul(trivial_loop, base_holonomy), right_endpoint),
+                act(base_holonomy, right_endpoint),
+            ),
+        ),
+        Fraction(0),
+    )
+
+
 def check_fine_weight_gauge_invariance() -> None:
     config = {
         E01: (1, 2, 0),
@@ -469,6 +535,33 @@ def check_gauge_reconstruction_error_budget() -> None:
     )
 
 
+def check_gauge_path_deformation_reconstruction_budget() -> None:
+    """Check the finite path-deformation source-window error budget."""
+
+    local_loop_coordinate = Fraction(1, 100)
+    connector_constant = Fraction(3)
+    residual_path_error = Fraction(1, 50)
+    declared_bound = connector_constant * local_loop_coordinate + residual_path_error
+    actual_path_window_error = Fraction(1, 25)
+
+    assert_equal("gauge path-deformation reconstruction bound", declared_bound, Fraction(1, 20))
+    assert_true(
+        "gauge path-deformation source difference controlled",
+        actual_path_window_error <= declared_bound,
+    )
+    assert_true(
+        "path-deformation residual term is load-bearing",
+        actual_path_window_error > connector_constant * local_loop_coordinate,
+    )
+
+    stagnant_loop_coordinate = Fraction(1, 8)
+    stagnant_bound = connector_constant * stagnant_loop_coordinate + residual_path_error
+    assert_true(
+        "uncontrolled local loop coordinate prevents path identification",
+        stagnant_bound > Fraction(1, 4),
+    )
+
+
 def main() -> None:
     check_path_blocking_equivariance()
     check_blocked_wilson_loop()
@@ -476,10 +569,12 @@ def main() -> None:
     check_gauge_invariant_source_window_descends()
     check_open_link_source_is_not_gauge_invariant()
     check_transported_matter_bilinear_source()
+    check_transported_path_deformation_loop_insertion()
     check_fine_weight_gauge_invariance()
     check_weighted_polymer_tail_bound()
     check_reflection_positive_compression()
     check_gauge_reconstruction_error_budget()
+    check_gauge_path_deformation_reconstruction_budget()
     print("All finite lattice gauge-blocking checks passed.")
 
 
