@@ -313,14 +313,16 @@ Current checks:
   of the closed continuum quadratic-form construction.
 - `qcd_theta_witten_veneziano_checks.py`: exact checks for the Volume II theta
   and singlet-axial discussion, including the finite-volume topological
-  susceptibility cumulant identity, CP-symmetric first moment, theta
-  periodicity by branch relabeling, branch-mixture cluster covariance,
-  thermodynamic branch selection, massless-quark theta screening, and the
-  Witten--Veneziano mass coefficient.  It also verifies the local
-  \((\theta,\eta_0)\) curvature matrix, its screening null vector, the
-  screened theta Schur complement, and the sign-sensitive mixed derivative
-  fixed by the anomaly-invariant coordinate.  The same script derives the
-  leading isospin-limit \(N_f=3\) neutral \((\pi^0,\eta_8,\eta_0)\) mass
+  susceptibility cumulant identity, the finite-regulator local-density
+  double-sum form with its contact-term convention, CP-symmetric first
+  moment, theta periodicity by branch relabeling, branch-mixture cluster
+  covariance, thermodynamic branch selection, massless-quark theta
+  screening, and the Witten--Veneziano mass coefficient.  It also verifies
+  the local \((\theta,\eta_0)\) curvature matrix, its screening null vector,
+  the screened theta Schur complement, and the sign-sensitive mixed
+  derivative fixed by the anomaly-invariant coordinate.  The same script
+  derives the leading isospin-limit \(N_f=3\) neutral
+  \((\pi^0,\eta_8,\eta_0)\) mass
   matrix from the flavor generators, then checks the \(\eta,\eta'\) trace
   Witten--Veneziano relation and the determinant/mixing ledger.
 - `qcd_hqet_checks.py`: finite algebra checks for the Volume II HQET

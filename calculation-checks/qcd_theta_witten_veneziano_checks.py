@@ -27,7 +27,13 @@ def assert_zero(name: str, expr: sp.Expr) -> None:
 def check_finite_volume_cumulant_identity() -> None:
     theta = sp.symbols("theta")
     charges = [-2, -1, 0, 1, 3]
-    weights = [sp.Rational(2, 7), sp.Rational(3, 5), sp.Rational(11, 13), sp.Rational(5, 17), sp.Rational(7, 19)]
+    weights = [
+        sp.Rational(2, 7),
+        sp.Rational(3, 5),
+        sp.Rational(11, 13),
+        sp.Rational(5, 17),
+        sp.Rational(7, 19),
+    ]
     volume = sp.Rational(23, 3)
 
     partition = sum(weight * sp.exp(sp.I * theta * charge) for charge, weight in zip(charges, weights))
@@ -42,6 +48,86 @@ def check_finite_volume_cumulant_identity() -> None:
     assert_zero(
         "finite-volume susceptibility cumulant",
         susceptibility_from_derivatives - susceptibility_from_cumulant,
+    )
+
+
+def check_local_density_susceptibility_cumulant() -> None:
+    density_samples = [
+        (Fraction(1), Fraction(0), Fraction(-1), Fraction(2)),
+        (Fraction(0), Fraction(1), Fraction(1), Fraction(-1)),
+        (Fraction(-2), Fraction(1), Fraction(0), Fraction(0)),
+        (Fraction(1), Fraction(-1), Fraction(2), Fraction(0)),
+    ]
+    weights = [
+        Fraction(2, 7),
+        Fraction(3, 5),
+        Fraction(5, 11),
+        Fraction(7, 13),
+    ]
+    total_weight = sum(weights, Fraction(0))
+    site_count = len(density_samples[0])
+    volume = Fraction(site_count)
+
+    def average(values: list[Fraction]) -> Fraction:
+        return sum(weight * value for weight, value in zip(weights, values)) / total_weight
+
+    charges = [sum(sample, Fraction(0)) for sample in density_samples]
+    charge_mean = average(charges)
+    charge_variance = average([charge * charge for charge in charges]) - charge_mean * charge_mean
+
+    site_means = [
+        average([sample[site] for sample in density_samples])
+        for site in range(site_count)
+    ]
+    density_double_cumulant = sum(
+        average([sample[left] * sample[right] for sample in density_samples])
+        - site_means[left] * site_means[right]
+        for left in range(site_count)
+        for right in range(site_count)
+    )
+    assert_equal(
+        "density double cumulant equals charge variance",
+        density_double_cumulant,
+        charge_variance,
+    )
+    assert_equal(
+        "density susceptibility equals charge susceptibility",
+        density_double_cumulant / volume,
+        charge_variance / volume,
+    )
+
+    contact_shift = Fraction(7, 11)
+    integrated_contact_shift = sum(
+        contact_shift if left == right else Fraction(0)
+        for left in range(site_count)
+        for right in range(site_count)
+    ) / volume
+    assert_equal(
+        "integrated contact term shifts susceptibility",
+        integrated_contact_shift,
+        contact_shift,
+    )
+    assert_equal(
+        "theta counterterm matches contact convention",
+        density_double_cumulant / volume + integrated_contact_shift,
+        charge_variance / volume + contact_shift,
+    )
+
+    periodic_connected = [
+        Fraction(5, 6),
+        Fraction(-1, 7),
+        Fraction(2, 9),
+        Fraction(-1, 7),
+    ]
+    periodic_double_sum = sum(
+        periodic_connected[(left - right) % site_count]
+        for left in range(site_count)
+        for right in range(site_count)
+    ) / volume
+    assert_equal(
+        "periodic double sum reduces to one-origin integral",
+        periodic_double_sum,
+        sum(periodic_connected),
     )
 
 
@@ -223,6 +309,7 @@ def check_unique_branch_thermodynamic_selection() -> None:
 
 def main() -> None:
     check_finite_volume_cumulant_identity()
+    check_local_density_susceptibility_cumulant()
     check_cp_symmetric_first_moment()
     check_witten_veneziano_mass_coefficient()
     check_theta_eta_curvature_matrix()

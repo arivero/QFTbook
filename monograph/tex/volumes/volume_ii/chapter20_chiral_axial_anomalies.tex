@@ -2708,6 +2708,80 @@ Multiplying by \(-1/V_4\) gives
 moment vanishes.
 \end{remark}
 
+\begin{proposition}[Local density form and contact convention]
+\label{prop:finite-regulator-susceptibility-density-cumulant}
+Assume that the finite regulator is placed on a closed four-volume, such as a
+periodic box, or on a volume with boundary data for which the topological
+charge is fixed, and that it supplies a regulated local density
+\(q_{\Lambda,V_4}(x)\) satisfying
+\begin{equation}
+  Q
+  =
+  \int_{V_4} q_{\Lambda,V_4}(x)\,\dd^4x
+  \label{eq:finite-regulator-local-topological-charge}
+\end{equation}
+configuration by configuration.  Then the finite-volume susceptibility is
+equivalently, with the integrals interpreted as the regulator's finite
+sum or integral,
+\begin{equation}
+  E_{\Lambda,V_4}''(0)
+  =
+  \frac1{V_4}
+  \int_{V_4}\dd^4x
+  \int_{V_4}\dd^4y\,
+  \bigl\langle
+    q_{\Lambda,V_4}(x)q_{\Lambda,V_4}(y)
+  \bigr\rangle_{\Lambda,V_4,0}^{\rm c}.
+  \label{eq:finite-regulator-density-susceptibility}
+\end{equation}
+If the regulator and state are translation invariant on a periodic volume,
+this reduces to the zero-momentum two-point function
+\begin{equation}
+  E_{\Lambda,V_4}''(0)
+  =
+  \int_{V_4}\dd^4x\,
+  \bigl\langle
+    q_{\Lambda,V_4}(x)q_{\Lambda,V_4}(0)
+  \bigr\rangle_{\Lambda,V_4,0}^{\rm c}.
+  \label{eq:periodic-density-susceptibility}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Insert \eqref{eq:finite-regulator-local-topological-charge} into the finite
+cumulant:
+\[
+  \langle Q^2\rangle-\langle Q\rangle^2
+  =
+  \int_{V_4}\dd^4x
+  \int_{V_4}\dd^4y\,
+  \left(
+    \langle q_{\Lambda,V_4}(x)q_{\Lambda,V_4}(y)\rangle
+    -
+    \langle q_{\Lambda,V_4}(x)\rangle
+    \langle q_{\Lambda,V_4}(y)\rangle
+  \right).
+\]
+Dividing by \(V_4\) and using
+\eqref{eq:finite-volume-topological-susceptibility} gives
+\eqref{eq:finite-regulator-density-susceptibility}.  Translation invariance
+sets the connected correlator equal to a function of \(x-y\); the double
+integral is then \(V_4\) times the integral over one relative coordinate.
+\end{proof}
+
+The continuum formula
+\(\chi_{\rm top}=\int\dd^4x\,\langle q(x)q(0)\rangle^{\rm c}\) is therefore
+not a bare multiplication rule for two formal \(F\widetilde F\) densities at
+coincident points.  It is the limit of the regulated zero-momentum curvature
+above, with the contact term selected by the same local \(\theta\)-counterterm
+convention used in
+Definition~\ref{def:topological-susceptibility}.  Changing the convention by
+an additive local vacuum-energy term \(\frac12 c_\theta\theta^2\) shifts both
+\(E''(0)\) and the integrated contact part of the density two-point function
+by \(c_\theta\).  Thus Witten--Veneziano matching uses the renormalized
+zero-momentum curvature of pure Yang--Mills, not an unrenormalized
+point-split product with its contact term silently discarded.
+
 \begin{definition}[Topological susceptibility]
 \label{def:topological-susceptibility}
 The topological susceptibility of a continuum theory in a specified phase and
@@ -4115,9 +4189,9 @@ determinant calculation.
 
 \begin{proof}
 The small-proper-time expansion of
-\eqref{eq:proper-time-instanton-determinant-ratio} is local in the background
-field.  In background-field gauge the vector fluctuation together with the
-ghost complex contributes the coefficient \((11/3)C_2(G)\) multiplying the
+\eqref{eq:proper-time-instanton-determinant-ratio} is local in the gauge
+background.  With background-field gauge fixing, the vector fluctuation and
+ghost complex contribute the coefficient \((11/3)C_2(G)\) multiplying the
 topological charge in the logarithmic counterterm, and a Dirac fermion in
 representation \(R\) contributes \(-(4/3)T(R)\).  Summing the fields gives
 \eqref{eq:instanton-heat-kernel-beta0-logarithm}.  For a fundamental Dirac

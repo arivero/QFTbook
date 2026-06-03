@@ -182,6 +182,7 @@
 | \(Q[A]\) | instanton/topological charge |
 | \(Z_{\Lambda,V_4,Q}\) | finite-regulator sector partition weight at topological charge \(Q\) |
 | \(E_{\Lambda,V_4}(\theta)\) | finite-regulator vacuum-energy density near \(\theta=0\) |
+| \(q_{\Lambda,V_4}(x)\) | regulated local topological-charge density integrating to \(Q\) |
 | \(\chi_{\rm top}\), \(\chi_{\rm YM}\) | continuum topological susceptibility, and its pure-Yang--Mills specialization |
 | \(\mathcal B,\beta\) | theta-branch label set and branch label in a finite-regulator or thermodynamic branch datum |
 | \(E_\beta(\theta)\) | theta-branch energy density |
@@ -379,6 +380,14 @@
   and the CP-invariant case has \(\langle Q\rangle=0\).  The finite identity,
   the existence of the continuum limit, and its use in large-\(N_c\) chiral
   matching are kept logically separate.
+- When the finite regulator supplies a local density
+  \(q_{\Lambda,V_4}(x)\) whose integral is \(Q\), the same susceptibility is
+  the finite double integral of the connected density correlator, reducing in
+  a periodic translation-invariant volume to the zero-momentum
+  \(\int\langle q(x)q(0)\rangle^{\rm c}\).  The continuum version includes
+  the contact term fixed by the local \(\theta\)-counterterm convention; a
+  shift \(\frac12c_\theta\theta^2\) in the vacuum energy shifts both
+  \(E''(0)\) and the integrated density contact term by \(c_\theta\).
 - Theta branches are formulated as a datum, not presumed as folklore.  A
   unique branch of smallest energy density dominates the thermodynamic limit
   under the stated uniform free-energy asymptotics.  Convex mixtures of pure
@@ -609,6 +618,12 @@
 - 2026-05-27 follow-up: added the theta-branch and cluster-decomposition
   datum, including thermodynamic branch selection and the exact covariance
   obstruction for mixed branch states.
+- 2026-06-03 issue #630 local-density pass: derived the finite-regulator
+  density-correlator form of the topological susceptibility, including the
+  periodic zero-momentum reduction and the contact-term/\(\theta\)-counterterm
+  convention.  The paired theta/Witten--Veneziano check script now verifies
+  the charge-variance/density-double-cumulant equality and contact shift
+  exactly.
 - 2026-05-30 issue #696 dequote pass: converted the cubic gauge obstruction
   from a `quotedtheorem` to a local proposition with proof from the
   perturbative BRST bicomplex, descent of
