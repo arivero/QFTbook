@@ -1,5 +1,23 @@
 #!/usr/bin/env python3
-"""Exact checks for anomaly-line cocycles and finite inflow identities."""
+"""Exact checks for anomaly-line cocycles and finite inflow identities.
+
+Evidence contract.
+Target claims: the finite cocycle, counterterm, anomaly-line, and inflow
+subclaims in the anomaly-inflow chapter and the Chapter 20 descent bridge.
+Independent construction: explicit cochain coboundaries, finite
+Chevalley-Eilenberg signs, polynomial counterterm representatives, and finite
+Stokes identities are computed directly rather than inferred from the
+displayed anomaly-line slogan.
+Imported assumptions: the chapter's groupoid/cochain orientation convention,
+the chosen finite triangulation models, and the polynomial Lie-algebra action
+used as a local descent shadow.
+Negative controls: nonclosed or noncoboundary representatives fail the
+descent/cancellation identities, and counterterm frame changes are tested as
+coboundaries rather than as changes of the invariant obstruction.
+Scope boundary: a pass checks finite cochain and descent algebra; it does not
+prove continuum locality, determinant-line existence, compactness of the
+space of fields, or Dai-Freed analytic gluing.
+"""
 
 from __future__ import annotations
 

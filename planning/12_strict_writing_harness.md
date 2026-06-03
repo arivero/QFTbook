@@ -732,6 +732,22 @@ integral bookkeeping that may grow combinatorially should be implemented in
 Python, with Wolfram Language used only for compact reader-facing symbolic
 cross-checks.
 
+For load-bearing companions, especially those touching instantons or QCD
+amplitudes, anomaly descent/inflow, CFT sewing/modularity, constructive/SPDE
+reconstruction, or rigorous RG, the check must carry an evidence contract with
+five fields: target claims, independent construction, imported assumptions,
+negative controls, and scope boundary.  The high-risk manifest and local gate
+are:
+
+```bash
+python3 tools/audit_calculation_evidence_contracts.py
+```
+
+This gate proves only that the selected high-risk companions state those
+fields.  It is not a repository-wide proof that every companion has already
+been audited; the command's non-blocking risk report identifies further
+candidates for expansion.
+
 Executable verification is mandatory.  If a commit introduces or edits a
 Wolfram Language check or the calculation-check harness, the verification note
 must name the actual backend used, for example

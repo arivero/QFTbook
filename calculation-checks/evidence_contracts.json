@@ -1,0 +1,49 @@
+{
+  "description": "First-wave high-risk calculation companions that must carry explicit evidence contracts.",
+  "required_sections": [
+    "Evidence contract.",
+    "Target claims:",
+    "Independent construction:",
+    "Imported assumptions:",
+    "Negative controls:",
+    "Scope boundary:"
+  ],
+  "files": [
+    {
+      "path": "anomaly_matching_wzw_checks.py",
+      "risk_class": "anomaly matching"
+    },
+    {
+      "path": "anomaly_polynomial_descent_checks.py",
+      "risk_class": "anomaly descent"
+    },
+    {
+      "path": "bcft_cardy_checks.py",
+      "risk_class": "CFT sewing"
+    },
+    {
+      "path": "bpst_instanton_normalization_checks.py",
+      "risk_class": "instanton amplitudes"
+    },
+    {
+      "path": "cft_higher_genus_sewing_checks.py",
+      "risk_class": "CFT sewing"
+    },
+    {
+      "path": "cft_voa_modular_checks.py",
+      "risk_class": "CFT modularity"
+    },
+    {
+      "path": "constructive_scalar_spde_checks.py",
+      "risk_class": "constructive/SPDE reconstruction"
+    },
+    {
+      "path": "inflow_anomaly_line_checks.py",
+      "risk_class": "anomaly inflow"
+    },
+    {
+      "path": "rg_short_range_reconstruction_checks.py",
+      "risk_class": "rigorous RG reconstruction"
+    }
+  ]
+}

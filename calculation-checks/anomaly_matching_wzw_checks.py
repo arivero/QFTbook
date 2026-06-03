@@ -16,6 +16,25 @@ The script checks algebraic factors only:
 * The two-flavor electromagnetic trace is
   Tr(T^3 {q,q}) = 1/3, giving the N_c=3 coefficient
   e^2/(16 pi^2 f_pi) in the monograph convention.
+
+Evidence contract.
+Target claims: the finite coefficient subclaims in the anomaly-matching and
+Wess-Zumino-Witten sections: level matching, integral extension ambiguity,
+Bardeen-counterterm invariance of the symmetric cubic coordinate, vector
+flavor cancellation, and the two-flavor electromagnetic trace.
+Independent construction: exact rational arithmetic from the displayed
+charge, flavor, and descent-coordinate definitions, plus polarization of the
+Abelianized cubic polynomial rather than substitution of a fitted anomaly
+coefficient.
+Imported assumptions: the chapter's current normalization, flavor-generator
+normalization, WZW variation convention, and the finite list of quark charges.
+Negative controls: counterterm tensors with antisymmetric slots are checked
+to change representatives while preserving the complete symmetric coordinate,
+and vector-pair contributions are checked to cancel between left and right
+components.
+Scope boundary: a pass fixes convention-sensitive finite coefficients; it
+does not prove existence of the WZW functional, current algebra in continuum
+QCD, pion dominance, or nonperturbative anomaly matching.
 """
 
 from __future__ import annotations

@@ -1,5 +1,21 @@
 #!/usr/bin/env python3
-"""Finite checks for the higher-genus sewing formulas in the CFT volume."""
+"""Finite checks for the higher-genus sewing formulas in the CFT volume.
+
+Evidence contract.
+Target claims: the finite algebraic subclaims in the higher-genus sewing
+discussion: basis-sum/inner-product equality, torus self-sewing trace,
+stable-graph genus bookkeeping, and finite truncation/error-budget identities.
+Independent construction: finite matrices, graph Betti-number arithmetic,
+trace computations, and explicit truncation bounds are computed directly from
+the finite model data rather than by substituting the final sewing formula.
+Imported assumptions: the chapter's finite-level truncation model, chosen
+basis pairing, propagation weights, and stable-graph convention.
+Negative controls: the checks include crude norm bounds and graph-genus cases
+where changing an edge or component count changes the sewn genus.
+Scope boundary: a pass checks finite sewing algebra and bookkeeping; it does
+not prove VOA convergence, modular functor existence, higher-genus analytic
+sewing, or positivity of the full continuum CFT Hilbert space.
+"""
 
 from __future__ import annotations
 

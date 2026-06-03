@@ -31,6 +31,18 @@ docstring, the check summary below, or the paired planning dossier:
   thermodynamic-limit, reconstruction, sewing, positivity, or uniform-remainder
   claims.
 
+The first-wave high-risk manifest is `evidence_contracts.json`.  Audit it with:
+
+```
+python3 tools/audit_calculation_evidence_contracts.py
+```
+
+The audit enforces the five contract fields for manifest entries and prints a
+non-blocking risk report for other calculation-check docstrings that mention
+continuum, theorem, reconstruction, sewing, positivity, anomaly, or related
+scope-sensitive terms.  Expanding that manifest is part of the continuing
+verification-hardening work.
+
 Plain text formats are preferred over notebook-only formats.  Mathematica
 checks should be committed as Wolfram Language `.wl` files, with optional
 notebooks generated from them when useful.  Computationally heavy checks

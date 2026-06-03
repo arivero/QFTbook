@@ -28,6 +28,7 @@ tools/run_calculation_checks.sh --list
 tools/run_calculation_checks.sh --only qcd_dglap --skip-wolfram
 tools/run_calculation_checks.sh --python-only --only liouville
 tools/run_calculation_checks.sh --wolfram-only
+python3 tools/audit_calculation_evidence_contracts.py
 ```
 
 `--only` matches substrings of either the path or basename, and may be supplied
@@ -49,6 +50,11 @@ For each script, the ledger entry in `README.md` should identify:
 The index must not assert that every script was run in a pass unless the pass
 actually ran the full suite.  For targeted edits, record the relevant scripts
 in the build-audit note and leave unrelated checks alone.
+
+High-risk load-bearing checks must also carry evidence-contract fields in the
+module docstring.  The current manifest is
+`calculation-checks/evidence_contracts.json`; the audit above enforces its
+entries and reports additional risky candidates for later expansion.
 
 ## Maintenance Rule
 

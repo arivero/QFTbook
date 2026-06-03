@@ -1,5 +1,22 @@
 #!/usr/bin/env python3
-"""Exact BCFT Cardy/Ishibashi bookkeeping checks."""
+"""Exact BCFT Cardy/Ishibashi bookkeeping checks.
+
+Evidence contract.
+Target claims: the finite Cardy/Ishibashi coefficient, annulus, boundary OPE,
+and elementary sewing subclaims in the BCFT chapter.
+Independent construction: exact Q(sqrt(2)) arithmetic, Laurent-polynomial
+character operations, finite annulus matrices, and explicit boundary-field
+counting are computed independently from the candidate Cardy labels.
+Imported assumptions: the chosen Ising modular datum, topological defect and
+boundary-label conventions, and finite character truncation used in the
+chapter's examples.
+Negative controls: inconsistent annulus multiplicities, wrong label
+identifications, and boundary-changing channel counts are tested by exact
+integer/nonnegative constraints.
+Scope boundary: a pass checks finite rational-model bookkeeping; it does not
+prove the full Cardy-Lewellen sewing theorem, nonrational BCFT completeness,
+analytic convergence, or existence of a continuum boundary CFT.
+"""
 
 from __future__ import annotations
 

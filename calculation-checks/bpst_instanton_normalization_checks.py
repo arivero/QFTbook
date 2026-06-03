@@ -99,21 +99,24 @@ relations
 
 with g_ht = sqrt(2) g_YM.
 
-Evidence contract.  Target claims are the BPST normalization, one-instanton
-measure, zero-mode saturation, instanton-orientation Haar projection,
-hard-size/OPE coefficient bookkeeping, and related Chapter 20 instanton labels.
-Independent construction comes from direct radial integrals, finite determinant
-and Schur-complement algebra, source differentiation, inverse-Gram construction
-of the shared SU(2) four-fundamental Haar projector, and finite
-coefficient/operator transport matrices.  Imported assumptions include the BPST
-background and zero-mode formulas, the one-loop determinant coefficients, the
-chosen trace-delta convention, and finite regulator truncations stated in the
-chapter.  Negative controls include the shared-Haar 1/3 versus factorized 1/4
-counterexample, rank-one and color-symmetric source-pair rejections,
-finite-frame inverse checks, and separation of operator RG flow from the
-Wilsonian size-boundary flux.  A pass checks finite algebra and normalization
-interfaces; it does not prove dilute-gas validity, large-size control,
-uniform semiclassical remainders, or physical hadronic matrix elements.
+Evidence contract.
+Target claims: BPST normalization, one-instanton measure, zero-mode saturation,
+instanton-orientation Haar projection, hard-size/OPE coefficient bookkeeping,
+and related Chapter 20 instanton labels.
+Independent construction: direct radial integrals, finite determinant and
+Schur-complement algebra, source differentiation, inverse-Gram construction of
+the shared SU(2) four-fundamental Haar projector, and finite
+coefficient/operator transport matrices.
+Imported assumptions: the BPST background and zero-mode formulas, one-loop
+determinant coefficients, the trace-delta convention, and finite regulator
+truncations stated in the chapter.
+Negative controls: the shared-Haar 1/3 versus factorized 1/4 counterexample,
+rank-one and color-symmetric source-pair rejections, finite-frame inverse
+checks, and separation of operator RG flow from the Wilsonian size-boundary
+flux.
+Scope boundary: a pass checks finite algebra and normalization interfaces; it
+does not prove dilute-gas validity, large-size control, uniform semiclassical
+remainders, or physical hadronic matrix elements.
 """
 
 from __future__ import annotations

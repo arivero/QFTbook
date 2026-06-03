@@ -5,6 +5,24 @@ The checks include finite arithmetic shadows of the invariant-law and
 stationary-law comparison steps used in the singular-SPDE-to-OS proof stack.
 They also track the constructive Phi^4_3 phase-cell derivation budget:
 activity tails, source-decorated tails, and local-coordinate/OS defect tails.
+
+Evidence contract.
+Target claims: finite normalization, phase-cell, source-window, OS-defect,
+and SPDE/constructive hierarchy-transfer subclaims in the constructive scalar
+and singular-SPDE chapters.
+Independent construction: exact rational Wick/chaos arithmetic, finite
+Langevin reversibility checks, dyadic kernel sums, coordinate power counting,
+and explicit error-budget inequalities are computed from finite model data.
+Imported assumptions: the chapter's regulator schedules, finite chaos bases,
+Besov/Sobolev exponent conventions, model-kernel choices, and stated
+renormalized coordinate charts.
+Negative controls: omitted logarithmic slack, underestimated sector budgets,
+wrong edge/cutoff powers, and incompatible OS-defect schedules are represented
+by checks that fail when those finite inequalities are changed.
+Scope boundary: a pass checks finite arithmetic shadows and assembly budgets;
+it does not prove tightness, invariant-measure existence, convergence of the
+renormalized SPDE, Osterwalder-Schrader reconstruction, or the full Phi^4_3
+constructive theorem.
 """
 from check_utils import assert_close as _assert_close
 

@@ -1,5 +1,22 @@
 #!/usr/bin/env python3
-"""Exact checks for the VOA/modular-sewing/logarithmic-CFT chapter."""
+"""Exact checks for the VOA/modular-sewing/logarithmic-CFT chapter.
+
+Evidence contract.
+Target claims: the finite Ising-type modular data, fusion, balancing, Jordan
+block, and logarithmic bookkeeping subclaims used in the VOA/modular chapter.
+Independent construction: exact arithmetic in Q(sqrt(2)), explicit matrix
+multiplication, Verlinde sums, and finite nilpotent/Jordan calculations are
+performed from the displayed finite data.
+Imported assumptions: the selected finite modular datum, top weights,
+normalization of S and T matrices, and the chapter's finite logarithmic block
+model.
+Negative controls: incompatible fusion entries, noninvertible algebraic
+numbers, and nilpotent/Jordan identities are tested in forms that fail when
+the finite modular or logarithmic data are altered.
+Scope boundary: a pass checks finite modular arithmetic and logarithmic block
+bookkeeping; it does not prove VOA existence, rationality, C2-cofiniteness,
+modular invariance of characters, or analytic sewing convergence.
+"""
 
 from __future__ import annotations
 

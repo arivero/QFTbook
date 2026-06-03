@@ -23,6 +23,24 @@ inflow sections:
 * the U(1)^3, mixed gravitational-U(1), and mixed nonabelian-U(1) sums for
   one Standard Model generation;
 * the SU(N) fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
+
+Evidence contract.
+Target claims: the anomaly-polynomial and descent coefficient subclaims in
+the Chapter 20 anomaly-polynomial section, including the index density,
+effective-action inflow conversion, Chern-Weil transgression, consistent and
+covariant coefficient relation, and Standard Model anomaly sums.
+Independent construction: exact rational expansion of the A-hat and Chern
+character terms, separate component/wedge normalization arithmetic, universal
+Chern-Simons coefficient sums, and explicit finite charge traces.
+Imported assumptions: the anti-Hermitian Chern-Weil convention, the chapter's
+trace and epsilon normalizations, one-generation Standard Model charge
+assignment, and the stated representation convention for SU(N).
+Negative controls: Abelianized counterterm shifts are tested to leave only the
+complete symmetric cubic coordinate invariant, and adjoint/fundamental/
+antifundamental SU(N) bookkeeping is checked in separate representations.
+Scope boundary: a pass checks finite descent and coefficient arithmetic; it
+does not prove the local BRST cohomology classification, the analytic index
+theorem, or existence of the regulated continuum chiral gauge theory.
 """
 
 from __future__ import annotations

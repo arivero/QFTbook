@@ -133,6 +133,26 @@ The positive-time translation check verifies the finite Gram-window
 equicontinuity and null-quotient stability bounds that turn translated
 positive-time test vectors into a strongly continuous OS time semigroup after
 taking the continuum limit.
+
+Evidence contract.
+Target claims: the finite block-spin, polymer-contraction, source-window,
+observable-germ, and OS-positivity subclaims in the short-range rigorous RG
+reconstruction chapter.
+Independent construction: finite block-kernel arithmetic, explicit polymer
+budget recursions, source-window Cauchy estimates, projective finite-window
+assembly, and Gram-matrix lower-bound calculations are computed directly from
+finite models.
+Imported assumptions: the chapter's block-spin convention, finite covariance
+model, polymer norm definitions, relevant/stable coordinate split, source
+chart, and directed OS test-window schedule.
+Negative controls: hidden source-window growth, omitted covariance-tail
+constants, uncontrolled coordinate condition numbers, fixed entrywise
+positivity tolerances, and missing orbit-transfer defects are represented by
+finite checks that fail under the weakened budgets.
+Scope boundary: a pass checks finite RG reconstruction arithmetic; it does
+not prove existence of the continuum scalar QFT, convergence of the full RG
+map, reflection positivity on all test functions, or universality beyond the
+declared finite windows.
 """
 
 from fractions import Fraction
