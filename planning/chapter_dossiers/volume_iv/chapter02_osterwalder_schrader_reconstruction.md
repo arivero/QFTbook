@@ -82,6 +82,11 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   Schwinger functions at noncoincident Euclidean points.
 - Proves uniqueness of OS reconstruction by the intrinsic quotient/GNS
   argument.
+- Adds an OS-output-to-AQFT ledger after the reconstruction theorem: OS data
+  reconstruct a Wightman field presentation, while bounded local nets,
+  observable subnets, completeness of Wightman coordinates, Reeh--Schlieder,
+  Haag duality, nuclearity, split inclusions, type classification, DHR/DR, and
+  Bisognano--Wichmann remain separate comparison or theorem-boundary layers.
 - Rewrites the main reconstruction theorem proof as an explicit dependency
   chain: reflection-positive Hilbert quotient, contractive Euclidean
   semigroup and positive Hamiltonian, corrected OS-II analytic continuation,
@@ -161,3 +166,12 @@ many-variable analytic route gives the Lorentzian distributions and locality.
   \(N_0+C_{\rm OS}(2r-1)\) enters the kernel derivative estimate, and why
   \(2r-1,2s-1\le2k+1\) leaves a single affine-in-\(k\) polynomial tube-bound
   exponent for a \(k=r+s-1\) gap scalar block.
+- 2026-06-03 OS-output architecture pass: inserted a reader-facing ledger
+  immediately after Theorem `thm:os-reconstruction` separating the theorem's
+  Wightman field-presentation output from the additional AQFT local-net
+  comparison layer.  The ledger cross-references the Haag--Kastler net,
+  Wightman-to-net comparison, and complete-observable-coordinatization
+  definitions in Chapter 3, and states that nuclearity/split/type
+  classification, Haag duality, DHR/DR reconstruction, Reeh--Schlieder for
+  bounded nets, and Bisognano--Wichmann are later hypotheses or theorem
+  boundaries rather than consequences of OS reconstruction alone.
