@@ -3754,6 +3754,135 @@ instantons, partial Uhlenbeck strata
 \(\mathcal M_{k-\ell,N_c}\times\operatorname{Sym}^{\ell}(\mathbb R^4)\),
 and determinant behavior transverse to each stratum.
 
+\begin{definition}[Uhlenbeck boundary-face integrability datum]
+\label{def:uhlenbeck-boundary-face-integrability-datum}
+Fix an instanton charge \(k\), a gauge group \(SU(N_c)\), and a scalar
+insertion datum \(\mathcal X\) including fermion-zero-mode and anomaly-line
+pairings.  A Uhlenbeck boundary-face integrability datum consists of:
+\begin{enumerate}[label=(\roman*)]
+  \item a bubbling charge \(1\le \ell\le k\), a residual smooth charge
+  \(k-\ell\), and a chart on the open Uhlenbeck stratum
+  \[
+    \mathcal M_{k-\ell,N_c}^{\rm smooth}
+    \times
+    \operatorname{Conf}_{\ell}(\mathbb R^4)/S_\ell ,
+  \]
+  with the pointlike instanton centers kept away from each other and from
+  the local insertions;
+  \item transverse gluing scales \(0<\rho_\alpha<\epsilon\), angular variables
+  \(\omega_\alpha\), and boundary exponents \(A_\alpha(\mathcal X)\) for
+  the \(\ell\) collapsed charge units;
+  \item if some pointlike centers approach each other or an insertion support,
+  collision distances \(0<d_\beta<\epsilon\) and collision exponents
+  \(G_\beta(\mathcal X)\);
+  \item a finite-regulator density bound, uniform on compact subsets of the
+  residual smooth stratum and angular variables, of the form
+  \begin{equation}
+    |\dd\mu_{k,\mathcal X}|
+    \le
+    C\,\dd\nu_{k-\ell}^{\rm sm}
+    \prod_{\alpha=1}^{\ell}
+      \rho_\alpha^{A_\alpha(\mathcal X)-1}
+      (1+|\log\rho_\alpha|)^{q_\alpha}\,
+      \dd\rho_\alpha\,\dd\omega_\alpha
+    \prod_{\beta}
+      d_\beta^{G_\beta(\mathcal X)-1}
+      (1+|\log d_\beta|)^{s_\beta}\,
+      \dd d_\beta\,\dd\zeta_\beta ,
+    \label{eq:uhlenbeck-boundary-face-density-bound}
+  \end{equation}
+  with nonnegative integers \(q_\alpha,s_\beta\).
+\end{enumerate}
+The exponents \(A_\alpha\) and \(G_\beta\) are part of the analytic
+instanton-measure problem.  Classical ADHM dimension counts identify the
+boundary coordinates; determinant, insertion, and counterterm estimates
+supply the powers in
+\eqref{eq:uhlenbeck-boundary-face-density-bound}.
+\end{definition}
+
+\begin{proposition}[Uhlenbeck face dimension and local integrability budget]
+\label{prop:uhlenbeck-face-integrability-budget}
+At a smooth residual instanton and \(\ell\) distinct pointlike ideal
+instantons, the open Uhlenbeck stratum
+\[
+  \mathcal M_{k-\ell,N_c}^{\rm smooth}
+  \times
+  \operatorname{Conf}_{\ell}(\mathbb R^4)/S_\ell
+\]
+has local real codimension
+\begin{equation}
+  4\ell(N_c-1)
+  \label{eq:uhlenbeck-open-stratum-codimension}
+\end{equation}
+inside the smooth charge-\(k\) ADHM dimension count.  If the \(\ell\)
+pointlike charges are grouped into \(r\) collision clusters, the diagonal
+collision stratum contributes the additional codimension \(4(\ell-r)\).
+
+For a boundary-face datum satisfying
+\eqref{eq:uhlenbeck-boundary-face-density-bound}, the local absolute
+integral over the displayed boundary variables is finite whenever
+\begin{equation}
+  A_\alpha(\mathcal X)>0
+  \quad\text{for every }\alpha,
+  \qquad
+  G_\beta(\mathcal X)>0
+  \quad\text{for every }\beta .
+  \label{eq:uhlenbeck-face-integrability-conditions}
+\end{equation}
+If one displayed exponent is zero and the leading coefficient on that face
+has nonzero integral over the remaining bounded variables, the corresponding
+local integral has a logarithmic divergence.  If one displayed exponent is
+negative under the same nonvanishing condition, the divergence is a power
+divergence.
+\end{proposition}
+
+\begin{proof}
+The smooth framed charge-\(k\) dimension from
+Proposition~\ref{prop:adhm-quotient-dimension-count} is \(4kN_c\).  On the
+open Uhlenbeck stratum with \(\ell\) distinct ideal points, the residual
+smooth instanton part has dimension \(4(k-\ell)N_c\), and the unordered
+configuration space of \(\ell\) distinct points in \(\mathbb R^4\) has local
+dimension \(4\ell\).  The codimension is therefore
+\[
+  4kN_c-\bigl(4(k-\ell)N_c+4\ell\bigr)
+  =
+  4\ell(N_c-1),
+\]
+which proves \eqref{eq:uhlenbeck-open-stratum-codimension}.  If the
+\(\ell\) ideal points lie on a diagonal with \(r\) distinct collision
+clusters, the point-configuration dimension drops from \(4\ell\) to \(4r\),
+so the extra diagonal codimension is \(4(\ell-r)\).
+
+For the integrability statement, the compact residual and angular variables
+contribute only a finite multiplicative constant in the stated chart.  Each
+scale integral is reduced to
+\[
+  \int_0^\epsilon
+  t^{A-1}(1+|\log t|)^q\,\dd t .
+\]
+With \(u=-\log t\), this is bounded at \(t=0\) exactly when \(A>0\).  At
+\(A=0\) it is the integral of a nonzero polynomial in \(u\) over an infinite
+ray, hence logarithmic in the cutoff scale.  For \(A<0\), the antiderivative
+has a negative power of the cutoff scale.  Applying this one-dimensional
+criterion to every \(\rho_\alpha\) and \(d_\beta\) proves the product
+criterion and the two divergence alternatives.
+\end{proof}
+
+For the charge-one boundary chart, there are no point-collision variables
+and
+\[
+  A_1(\mathcal X)=b_0+\beta_{\mathcal X}-4 .
+\]
+Thus Proposition~\ref{prop:uhlenbeck-face-integrability-budget} recovers
+\eqref{eq:one-instanton-small-rho-integrability-threshold}.  For \(k>1\) it
+also records the extra data which a multi-instanton measure calculation must
+provide: every bubbling scale, every diagonal collision of ideal instantons,
+and every collision of an ideal instanton center with an inserted operator
+has its own exponent.  A formula for the smooth ADHM quotient density and a
+one-loop determinant on the principal stratum become a continuum
+multi-instanton contribution only after these face estimates are supplied in
+one compatible regulator and renormalization scheme.
+
 \subsection{Scale and Running-Coupling Content of the One-Instanton Density}
 \label{subsec:one-instanton-density-rg-content}
 

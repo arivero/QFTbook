@@ -381,7 +381,8 @@ Current checks:
   boundary-exponent threshold \(b_0+\beta_{\mathcal X}>4\), the general
   charge-\(k\) framed ADHM quotient dimension \(4kN_c\), the
   coarea/orbit-volume scaling of the ADHM quotient density, the
-  finite-regulator nonzero-mode determinant bookkeeping, and the \(k=1\)
+  finite-regulator nonzero-mode determinant bookkeeping, Uhlenbeck boundary
+  face codimensions and product power-counting thresholds, and the \(k=1\)
   ADHM orientation dimension and cone-volume power.
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
   gauge-Higgs soliton and collective-coordinate section, including the

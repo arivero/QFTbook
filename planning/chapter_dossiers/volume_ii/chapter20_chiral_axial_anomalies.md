@@ -65,7 +65,8 @@
   power, one-loop RG exponent, small-instanton boundary-exponent threshold,
   and the general charge-\(k\) framed ADHM quotient dimension,
   quotient-density coarea scaling count, and finite nonzero-mode determinant
-  bookkeeping.
+  bookkeeping.  The 2026-06-03 Uhlenbeck-face continuation adds the
+  higher-charge boundary-face codimension and product integrability budget.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
@@ -178,6 +179,7 @@
 | \(L_{\Lambda,z}^{\rm bos},M_{\Lambda,z}^{\rm gh},\mathcal D_{\Lambda,z}^{R}\) | finite-regulator bosonic Hessian, ghost operator, and fermion kinetic operator in the instanton background |
 | \(\mathcal W_{\Lambda}^{\rm nz}(z)\) | finite-regulator nonzero-mode determinant datum in the instanton chart |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
+| \(A_\alpha(\mathcal X),G_\beta(\mathcal X)\) | Uhlenbeck bubbling-scale and collision-face exponents in the multi-instanton boundary budget |
 | \(\mathcal O_{N_c}\) | embedded one-instanton orientation orbit \(U(N_c)/(U(N_c-2)\times U(1))\) |
 | \(g_{\rm ht},g_{\rm YM}\) | common half-trace coupling and active trace-delta monograph coupling, related by \(g_{\rm ht}=\sqrt2\,g_{\rm YM}\) for the displayed \(SU(2)\) instanton |
 | \(b_0\) | one-loop coefficient of the half-trace Yang--Mills beta function in the instanton-density subsection |
@@ -391,6 +393,15 @@
   integrability threshold is \(b_0+\beta_{\mathcal X}>4\), so asymptotic
   freedom \(b_0>0\) is separated from local integrability of the particular
   instanton integral.
+- A higher-charge Uhlenbeck boundary-face integrability datum records the
+  residual smooth charge, pointlike ideal-instanton centers, bubbling scales,
+  collision distances, and the exponents \(A_\alpha(\mathcal X)\) and
+  \(G_\beta(\mathcal X)\) controlling the product density near that face.
+  The open stratum with \(\ell\) distinct ideal instantons has codimension
+  \(4\ell(N_c-1)\), diagonal collision of the ideal points adds
+  \(4(\ell-r)\), and local absolute integrability follows from positivity
+  of every displayed face exponent.  The charge-one threshold above is the
+  special case \(A_1=b_0+\beta_{\mathcal X}-4\).
 - The centered \(k=1\) ADHM quotient is derived directly from
   \(IJ=0\), \(II^\dagger-J^\dagger J=0\): for \(\rho>0\) it is the cone
   over \(U(N_c)/(U(N_c-2)\times U(1))\), has orientation dimension

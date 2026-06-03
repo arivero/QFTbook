@@ -22,6 +22,8 @@ relations
     correct orbit-volume and homogeneous-cone scaling
     the finite-regulator nonzero-mode determinant datum has the correct
     boson/ghost/fermion determinant powers and counterterm shifts
+    Uhlenbeck boundary faces have the expected codimensions and product
+    power-counting integrability thresholds
     the k=1 ADHM quotient has orientation dimension 4N-5 and cone
     volume power rho^(4N-5)
 
@@ -369,6 +371,62 @@ def check_finite_regulator_determinant_datum() -> None:
     assert_equal("counterterm logarithmic power shift", new_power, Fraction(49, 15))
 
 
+def check_uhlenbeck_boundary_face_budget() -> None:
+    for n_c in range(2, 8):
+        for k in range(1, 6):
+            full_dim = 4 * k * n_c
+            for ell in range(1, k + 1):
+                open_stratum_dim = 4 * (k - ell) * n_c + 4 * ell
+                open_codim = full_dim - open_stratum_dim
+                assert_equal(
+                    f"open Uhlenbeck codim k={k} ell={ell} SU({n_c})",
+                    open_codim,
+                    4 * ell * (n_c - 1),
+                )
+                for clusters in range(1, ell + 1):
+                    diagonal_dim = 4 * (k - ell) * n_c + 4 * clusters
+                    total_codim = full_dim - diagonal_dim
+                    additional_collision_codim = total_codim - open_codim
+                    assert_equal(
+                        f"Uhlenbeck diagonal codim k={k} ell={ell} r={clusters} SU({n_c})",
+                        additional_collision_codim,
+                        4 * (ell - clusters),
+                    )
+                    assert_equal(
+                        f"total Uhlenbeck diagonal codim k={k} ell={ell} r={clusters} SU({n_c})",
+                        total_codim,
+                        4 * ell * (n_c - 1) + 4 * (ell - clusters),
+                    )
+
+    def power_status(exponents: list[Fraction]) -> str:
+        if all(exponent > 0 for exponent in exponents):
+            return "finite"
+        if any(exponent < 0 for exponent in exponents):
+            return "power_divergent"
+        return "log_divergent"
+
+    assert_equal("Uhlenbeck positive product status", power_status([Fraction(1, 3), Fraction(5, 4)]), "finite")
+    assert_equal("Uhlenbeck zero exponent status", power_status([Fraction(2), Fraction(0)]), "log_divergent")
+    assert_equal("Uhlenbeck negative exponent status", power_status([Fraction(2), Fraction(-1, 3)]), "power_divergent")
+
+    # With epsilon=1 and no logarithms, the factorized boundary integral is
+    # product_alpha A_alpha^{-1}.  This is the finite shadow of the product
+    # criterion in the manuscript.
+    exponents = [Fraction(1, 2), Fraction(3, 2), Fraction(2)]
+    product_integral = Fraction(1)
+    for exponent in exponents:
+        product_integral *= Fraction(1, 1) / exponent
+    assert_equal("Uhlenbeck product antiderivative", product_integral, Fraction(2, 3))
+
+    # The charge-one threshold is the same product criterion with a single
+    # scale exponent A=b0+beta_X-4.
+    b0 = Fraction(11, 3) * 3 - Fraction(2, 3) * 9
+    beta_x = Fraction(-1)
+    charge_one_scale_exponent = b0 + beta_x - 4
+    assert_equal("charge-one exponent from b0 beta", charge_one_scale_exponent, Fraction(0))
+    assert_equal("charge-one threshold as face status", power_status([charge_one_scale_exponent]), "log_divergent")
+
+
 def main() -> None:
     check_eta_self_duality()
     check_eta_norm()
@@ -380,6 +438,7 @@ def main() -> None:
     check_general_adhm_quotient_dimension()
     check_adhm_quotient_density_coarea_scaling()
     check_finite_regulator_determinant_datum()
+    check_uhlenbeck_boundary_face_budget()
     check_k_one_adhm_dimension_and_cone_power()
     print("All BPST instanton normalization checks passed.")
 
