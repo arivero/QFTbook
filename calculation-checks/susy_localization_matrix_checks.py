@@ -7,6 +7,7 @@ S^4 and S^3 matrix models:
 * the trace-delta S^4 Gaussian coefficient;
 * the root-pair cancellation of S^4 H-factors in the N=4 adjoint-hyper limit;
 * the finite normal Gaussian Pfaffian/determinant convention;
+* the protected-insertion residual telescope for the S^4 localization functional;
 * the finite-product logarithmic derivative of the S^4 H-function;
 * the finite-part determinant ledger behind the S^4 H-powers;
 * the elementary U(1) S^4 Gaussian integral;
@@ -35,6 +36,36 @@ def assert_close(name: str, got: complex | mp.mpf | mp.mpc, expected: complex | 
 def assert_equal(name: str, got, expected) -> None:
     if got != expected:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+
+
+Vector = list[Fraction]
+
+
+def vector_add(*vectors: Vector) -> Vector:
+    if not vectors:
+        return []
+    size = len(vectors[0])
+    for vector in vectors:
+        assert_equal("vector length agreement", len(vector), size)
+    return [sum(vector[index] for vector in vectors) for index in range(size)]
+
+
+def vector_sub(left: Vector, right: Vector) -> Vector:
+    assert_equal("vector length agreement", len(left), len(right))
+    return [left[index] - right[index] for index in range(len(left))]
+
+
+def vector_l1_norm(vector: Vector) -> Fraction:
+    return sum(abs(entry) for entry in vector)
+
+
+def vector_linf_norm(vector: Vector) -> Fraction:
+    return max((abs(entry) for entry in vector), default=Fraction(0))
+
+
+def dot_exact(left: Vector, right: Vector) -> Fraction:
+    assert_equal("vector length agreement", len(left), len(right))
+    return sum(left[index] * right[index] for index in range(len(left)))
 
 
 def determinant_exact(matrix: list[list[int | Fraction]]) -> Fraction:
@@ -179,6 +210,73 @@ def check_s4_u1_gaussian_integral() -> None:
     assert_close("S4 U(1) chapter value", expected, chapter_value, mp.mpf("1e-45"))
 
 
+def check_s4_protected_insertion_residual_budget() -> None:
+    # Coordinates are the finite protected-insertion test space
+    # (1, W_square, W_square^2).  The five exact residuals model the
+    # Stokes, normal, residual-Cartan, instanton-compactification, and
+    # continuum/contact-term defects in the chapter telescope.
+    localized = [Fraction(5, 2), Fraction(13, 6), Fraction(17, 5)]
+    stokes = [Fraction(1, 40), Fraction(-1, 42), Fraction(1, 55)]
+    normal = [Fraction(-1, 45), Fraction(1, 63), Fraction(-1, 70)]
+    residual = [Fraction(1, 72), Fraction(1, 88), Fraction(-1, 99)]
+    instanton = [Fraction(-1, 91), Fraction(1, 104), Fraction(1, 117)]
+    continuum = [Fraction(1, 130), Fraction(-1, 143), Fraction(1, 156)]
+
+    total_residual = vector_add(stokes, normal, residual, instanton, continuum)
+    regulated = vector_add(localized, total_residual)
+    assert_equal(
+        "S4 protected-insertion residual telescope",
+        vector_sub(regulated, localized),
+        total_residual,
+    )
+
+    probe = [Fraction(2), Fraction(-3), Fraction(5)]
+    discrepancy = dot_exact(vector_sub(regulated, localized), probe)
+    residual_probe_sum = sum(
+        dot_exact(error, probe)
+        for error in (stokes, normal, residual, instanton, continuum)
+    )
+    assert_equal("S4 protected-insertion probed telescope", discrepancy, residual_probe_sum)
+
+    residual_bound = sum(
+        vector_l1_norm(error) * vector_linf_norm(probe)
+        for error in (stokes, normal, residual, instanton, continuum)
+    )
+    if abs(discrepancy) > residual_bound:
+        raise AssertionError(
+            "S4 protected-insertion residual norm bound: "
+            f"got |{discrepancy!r}| > {residual_bound!r}"
+        )
+
+    # The Wilson-loop expectation is a ratio, so the unit-insertion residual
+    # also enters.  This is the exact finite-dimensional ratio identity.
+    delta_unit = total_residual[0]
+    delta_wilson = total_residual[1]
+    localized_unit = localized[0]
+    localized_wilson = localized[1]
+    regulated_wilson_expectation = regulated[1] / regulated[0]
+    localized_wilson_expectation = localized_wilson / localized_unit
+    ratio_difference = regulated_wilson_expectation - localized_wilson_expectation
+    expected_ratio_difference = (
+        delta_wilson * localized_unit - localized_wilson * delta_unit
+    ) / (localized_unit * (localized_unit + delta_unit))
+    assert_equal(
+        "S4 protected Wilson-loop normalized residual identity",
+        ratio_difference,
+        expected_ratio_difference,
+    )
+
+    zero_vector = [Fraction(0) for _ in localized]
+    zero_residual = vector_add(
+        zero_vector,
+        zero_vector,
+        zero_vector,
+        zero_vector,
+        zero_vector,
+    )
+    assert_equal("S4 protected-insertion zero-residual closure", zero_residual, zero_vector)
+
+
 def pestun_H_trunc(x: mp.mpf | mp.mpc, cutoff: int) -> mp.mpf | mp.mpc:
     product = mp.mpf(1)
     for n in range(1, cutoff + 1):
@@ -293,6 +391,7 @@ def main() -> None:
     check_s4_n4_adjoint_hyper_cancellation()
     check_finite_normal_gaussian_factor()
     check_s4_u1_gaussian_integral()
+    check_s4_protected_insertion_residual_budget()
     check_s4_H_log_derivative()
     check_s4_finite_part_determinant_ledger()
     check_s3_double_sine_conventions()

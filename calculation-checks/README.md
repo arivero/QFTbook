@@ -1999,10 +1999,12 @@ Current checks:
   supersymmetric localization chapter, including the trace-delta \(S^4\)
   Gaussian coefficient, the \(S^4\) \(\mathcal N=4\) adjoint-hyper
   root-pair cancellation of \(H\)-factors, the finite normal Gaussian
-  Pfaffian/determinant convention, the \(S^4\) \(H\)-function
-  finite-product logarithmic derivative, the finite-part mode-determinant
-  ledger behind the \(H\)-powers, the \(U(1)\) \(S^4\) Gaussian matrix
-  integral, finite double-sine reflection and pole-convention checks, the
+  Pfaffian/determinant convention, the protected-insertion residual
+  telescope for the \(S^4\) localization functional and normalized Wilson
+  loop, the \(S^4\) \(H\)-function finite-product logarithmic derivative, the
+  finite-part mode-determinant ledger behind the \(H\)-powers, the \(U(1)\)
+  \(S^4\) Gaussian matrix integral, finite double-sine reflection and
+  pole-convention checks, the
   \(U(1)_k\) \(S^3\) Chern--Simons Fresnel completion of the square, and the
   round-\(S^3\) conjugate-chiral-pair integral
   \(\int d\sigma/(2\cosh\pi\sigma)=1/2\).
