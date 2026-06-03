@@ -246,7 +246,10 @@ motivational checks, not foundations.
 - Starts the finite-gap/algebraic-curve development from gauge-theory
   finite-density Bethe roots: defines the empirical root measure, Cauchy
   transform, finite-density Bethe-root curve, meromorphic differential and
-  filling periods, proves the Plemelj jump-to-quasimomentum gluing formula,
+  filling periods, adds a reconstruction ledger from finite logarithmic Bethe
+  records through cut packets, limiting Cauchy transforms, quasimomentum
+  gluing, fillings, large-`z` moments, level matching, and the remaining
+  sigma-model/QSC constraints, proves the Plemelj jump-to-quasimomentum gluing formula,
   derives the multi-cut filling-period formula
   `S_a=(2 pi i)^{-1} int_{A_a} p dz=int_{C_a} rho ds`, records the
   large-`z` Cauchy-transform moment expansion
@@ -457,3 +460,10 @@ crossed Zhukovsky sheets.
   Cauchy-transform expansion that identifies total filling and higher root
   moments as charge coordinates before Virasoro, reality, closed-period, or
   QSC inputs enter; extended the exact companion checks accordingly.
+- 2026-06-03 #624 finite-gap reconstruction pass: inserted a front-loaded
+  reconstruction ledger in the finite-density spectral-curve section, starting
+  from a finite logarithmic Bethe record and organizing the existing local
+  cells as stages in one curve-building program.  The ledger says explicitly
+  that the rank-one Cauchy-transform cells do not prove the full
+  `AdS_5 x S^5` finite-gap construction, closed embedding reconstruction,
+  Virasoro/reality/period constraints, or TBA-to-QSC equivalence.

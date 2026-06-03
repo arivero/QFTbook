@@ -2461,6 +2461,58 @@ The measure \(\rho\) is the continuum limit of roots.  The Riemann surface
 differential \(\lambda\) records the logarithmic Bethe equation: mode numbers
 are period data, not decorations on a drawing of cuts.
 
+\paragraph{Reconstruction ledger.}
+A finite-density root curve is not yet a classical string solution and is not
+yet the quantum spectral curve.  The reconstruction problem used in this
+chapter has the following rank-one spine.  For each regulator \(N\) start with
+a logarithmic Bethe record
+\begin{equation}
+  L_N p_N(u_{j,N})
+  =
+  2\pi n_{j,N}
+  +
+  \sum_{\substack{k=1\\ k\ne j}}^{M_N}
+  \theta_N(u_{j,N},u_{k,N})
+  +
+  r_{j,N},
+  \label{eq:finite-gap-regulator-log-bethe-record}
+\end{equation}
+where \(p_N\) is the one-particle momentum, \(\theta_N\) is the
+antisymmetric two-body phase, \(n_{j,N}\in\mathbb Z\) fixes the logarithm
+branch, and \(r_{j,N}\) denotes regulator terms whose limiting status must be
+declared.  A rank-one finite-gap reconstruction record consists of:
+\begin{enumerate}
+\item a partition of the roots into macroscopic packets converging to the
+  oriented cuts \(\mathcal C_a\), with \(n_{j,N}=n_a\) on each packet away
+  from endpoint layers;
+\item a limiting driving term \(V'(z)\) and a limiting Cauchy transform
+  \(G(z)\) such that the scaled version of
+  \eqref{eq:finite-gap-regulator-log-bethe-record} gives a cutwise
+  principal-value equation with source \(V'(u)-2\pi n_a\);
+\item the quasimomentum \(p=V'/2-G\), whose cut gluing is
+  \(p_++p_-=2\pi n_a\);
+\item \(A\)-cycle fillings
+  \(\mathcal S_a=(2\pi\ii)^{-1}\oint_{A_a}p\,\dd z\) and large-\(z\)
+  moments \(\mathcal M_k\), which are the finite-density charge
+  coordinates before sector-specific constraints are imposed;
+\item the global spin-chain closure condition obtained by summing the finite
+  equations, namely the cyclicity/level-matching constraint on
+  \(\sum_a n_a\mathcal S_a\);
+\item any extra reality involution, closed-period, pole-residue, Virasoro, or
+  target-space reconstruction constraints required by the sigma-model sector
+  under study.
+\end{enumerate}
+The calculations below establish the first five items in the rank-one
+Cauchy-transform setting.  They do not establish the final
+\(\mathrm{AdS}_5\times S^5\) finite-gap construction, where one must replace the
+single \(p\) by the full collection of quasimomenta, impose the inversion and
+reality symmetries of the coset curve, fix the pole residues at the
+distinguished spectral points, and reconstruct closed embedding coordinates.
+Nor do they prove the TBA-to-QSC equivalence.  The QSC later in
+Chapter~\ref{ch:planar-n4-quantum-spectral-curve-hexagon} is the quantum
+finite-difference/Riemann-Hilbert replacement for this classical curve
+record, with additional gluing and asymptotic data.
+
 \paragraph{Jump data from the Cauchy transform.}
 Let \(G\) be the Cauchy transform in
 Definition~\ref{def:finite-density-bethe-root-curve}, and assume that
