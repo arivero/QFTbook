@@ -6,7 +6,10 @@ This chapter follows three-dimensional supersymmetric gauge theories by
 introducing supersymmetric QFTs whose fixed points are often specified
 through representation data, tensor branches, anomalies, strings, and
 compactification tests rather than microscopic Lagrangians.  The current pass
-addresses the six-dimensional part of issue #588.
+addresses the six-dimensional part of issue #588.  A chapter-opening
+construction/test architecture now separates the assumed fixed-point local
+QFT, tensor-branch effective description, finite defect/global-form datum,
+protected compactification tests, and the remaining construction frontier.
 
 Reviewed source spine:
 
@@ -62,6 +65,10 @@ Reviewed source spine:
   `OSp(8^*|4)` representation, tensor-branch quotient, anomaly polynomial,
   BPS root-lattice strings, finite defect group, circle compactification, and
   conditional class-`S` compactification functoriality.
+- Adds a construction/test architecture for the six-dimensional object:
+  fixed-point local QFT data, tensor-branch EFT, finite defect/global-form
+  polarization, protected circle and class-`S` compactification tests, and
+  the final construction frontier are treated as distinct dependency layers.
 - Records that a six-dimensional Yang-Mills coupling has negative mass
   dimension and therefore is not a marginal conformal coordinate; this is
   dimensional bookkeeping, not theorem-family content.
@@ -173,6 +180,10 @@ Reviewed source spine:
 - Compactification to 5D maximally supersymmetric Yang-Mills is treated as a
   protected test/effective description, not as a definition of the parent
   six-dimensional local QFT.
+- The construction/test architecture is now the governing map for the
+  chapter: each derivation should be read as local representation theory,
+  branch EFT, anomaly inflow, finite defect polarization, compactification
+  comparison, or the still-open local-QFT construction problem.
 - Future passes should add the full line/surface defect categories beyond the
   finite topological charge algebra, intrinsic anomaly computations for the
   two-dimensional theories supported on BPS strings, and punctured or
@@ -229,6 +240,9 @@ Reviewed source spine:
   genuine versus relative/non-genuine finite defects, and the Lagrangian
   relation description of polarization-changing interfaces; extended the
   cyclic finite-algebra calculation check accordingly.
+- 2026-06-03 issue #626/#701 architecture pass: added a front-loaded
+  construction/test ladder so the six-dimensional chapter reads as a
+  dependency chain rather than as separate protected-data cells.
 
 ## Figure Ledger
 
