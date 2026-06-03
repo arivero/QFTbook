@@ -146,6 +146,50 @@ def check_planar_bosonization_rank_level_map() -> None:
             )
 
 
+def check_planar_bosonization_matching_hierarchy() -> None:
+    """Finite checks for exact pieces of the bosonization hierarchy."""
+
+    regular_scalar_kernel = ((Fraction(2), Fraction(1)), (Fraction(1), Fraction(3)))
+    critical_scalar_kernel = tuple(
+        tuple(-entry for entry in row) for row in inverse_2x2(regular_scalar_kernel)
+    )
+    assert_equal(
+        "CS bosonization Legendre inverse sign convention",
+        matmul(regular_scalar_kernel, tuple(tuple(-entry for entry in row) for row in critical_scalar_kernel)),
+        identity(2),
+    )
+
+    parity_anomaly_fractional_contact = Fraction(1, 2)
+    for integer_counterterm in range(-4, 5):
+        shifted_contact = parity_anomaly_fractional_contact + integer_counterterm
+        assert_equal(
+            f"CS bosonization contact quotient shift {integer_counterterm}",
+            shifted_contact % 1,
+            parity_anomaly_fractional_contact,
+        )
+
+    # A minimal line/monopole diagnostic: the elementary charge-flux exchange
+    # (q,m) -> (m,-q) preserves the integral Dirac pairing
+    # <(q,m),(q',m')>=q m' - q' m.
+    def dirac_pair(left: tuple[int, int], right: tuple[int, int]) -> int:
+        q, m = left
+        qp, mp = right
+        return q * mp - qp * m
+
+    def exchange(label: tuple[int, int]) -> tuple[int, int]:
+        q, m = label
+        return (m, -q)
+
+    labels = ((1, 0), (0, 1), (2, -3), (-1, 4))
+    for left in labels:
+        for right in labels:
+            assert_equal(
+                f"CS bosonization line-monopole pairing {left} {right}",
+                dirac_pair(exchange(left), exchange(right)),
+                dirac_pair(left, right),
+            )
+
+
 def matmul(left: tuple[tuple[Fraction, ...], ...], right: tuple[tuple[Fraction, ...], ...]) -> tuple[tuple[Fraction, ...], ...]:
     size = len(left)
     return tuple(
@@ -328,6 +372,7 @@ def main() -> None:
     check_t_hooft_coordinate_dimensionless()
     check_bilocal_saddle_scaling()
     check_planar_bosonization_rank_level_map()
+    check_planar_bosonization_matching_hierarchy()
     check_bilocal_self_energy_variation()
     check_planar_dyson_index_convention()
     check_bilocal_hessian_and_ladder_vertex()

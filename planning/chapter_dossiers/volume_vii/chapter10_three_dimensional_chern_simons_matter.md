@@ -99,6 +99,10 @@ Reviewed source spine:
 - Derives the large-`N` scalar-singlet Legendre transform at the
   source-functional level, including the inverse two-point kernel relation
   for the critical chart.
+- Adds a planar bosonization matching hierarchy that separates the already
+  checked higher-spin parameter and scalar-source data from contact-term,
+  line/monopole, finite-`N`, global-form, and Kontsevich-Segal/observable
+  algebra obligations.
 - Derives the Chern-Simons shifted D-term equation by eliminating the
   auxiliary field.
 - Proves the non-abelian pure-Chern-Simons auxiliary equation
@@ -161,7 +165,8 @@ Reviewed source spine:
   finite-matrix Hessian/source-response convention behind the planar
   Bethe-Salpeter equation.  It also checks the exact complementary-coupling
   and effective-degree-count identities used in the planar bosonization
-  datum.
+  datum, together with the Legendre inverse-kernel sign, integer contact-term
+  quotient, and a charge-flux pairing diagnostic for the matching hierarchy.
 
 ## Proof Obligations And Boundaries
 
@@ -176,9 +181,10 @@ Reviewed source spine:
   solved the exact bosonic/fermionic Chern-Simons vector-model vertex
   equations in a continuum conformal chart.
 - The planar bosonization section is a conjectural observable-matching datum.
-  It still requires continuum construction, contact-term matching, finite-`N`
-  status, line/monopole operator matching, and an isomorphism of
-  gauge-invariant observable algebras or Kontsevich-Segal data.
+  The new hierarchy identifies which exact pieces are checked in this chapter
+  and which pieces still require continuum construction, contact-term
+  matching, finite-`N` status, line/monopole operator matching, and an
+  isomorphism of gauge-invariant observable algebras or Kontsevich-Segal data.
 - The general ABJM moduli and supersymmetry-enhancement statements are kept
   as quoted theorem status because they use quantum monopole sectors and
   global-form data beyond the polynomial `N=2` Lagrangian.
@@ -212,3 +218,8 @@ quotient, and the two-matrix `S^3` localization contour.
   Legendre-transform kernel inversion.  The pass deliberately uses
   conjecture/status language rather than theorem language; the exact algebra
   is paired with `cs_matter_lightfront_checks.py`.
+- 2026-06-03 bosonization architecture pass: upgraded the section from a
+  parameter-matching cell to a matching hierarchy.  The pass records which
+  parts of the Bose--Fermi duality problem are exact checks here and which
+  remain contact-term, line/monopole, finite-`N`, global-form, and observable
+  algebra obligations.
