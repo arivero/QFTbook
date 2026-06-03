@@ -44,6 +44,12 @@
   \(\lambda_{\rm dyn}=4g_4\) and \(M_\varepsilon=-2a_\varepsilon\), so the
   normal-ordered mass coordinate is
   \(-M_\varepsilon/2+(3/2)\lambda_{\rm dyn}C_\varepsilon(0)\).
+- Vacuum-coordinate finite-volume identity: shifting
+  \(\beta_\varepsilon\) by \(c_\varepsilon\) multiplies every unnormalized
+  source partition function by \(e^{-c_\varepsilon|\Lambda|}\), leaves
+  normalized Schwinger functions and connected source functionals unchanged,
+  and shifts pressure/free-energy densities by \(-c_\varepsilon\) and
+  \(+c_\varepsilon\), respectively.
 - Finite-cutoff stability lower bound for the local normal-ordered
   \(\Phi^4_3\) polynomial.
 - Reflection-positivity preservation for split positive-time interactions.
@@ -138,21 +144,29 @@
    \(\lambda_{\rm dyn}=4g_4\) and \(M_\varepsilon=-2a_\varepsilon\), then
    \(\alpha_\varepsilon=-M_\varepsilon/2+
    (3/2)\lambda_{\rm dyn}C_\varepsilon(0)\).
-10. The finite-cutoff local \(\Phi^4_3\) polynomial is bounded below by
+10. A shift
+    \(\beta_\varepsilon\mapsto\beta_\varepsilon+c_\varepsilon\) changes
+    \(Z[J]\) by \(e^{-c_\varepsilon|\Lambda|}\).  Normalized Schwinger
+    functions and \(W[J]=\log Z[J]-\log Z[0]\) are invariant, while pressure
+    and free-energy densities shift by \(-c_\varepsilon\) and
+    \(+c_\varepsilon\).  Thus the SPDE drift chart cannot determine the
+    vacuum coordinate; it must be fixed by an unnormalized thermodynamic
+    normalization.
+11. The finite-cutoff local \(\Phi^4_3\) polynomial is bounded below by
    \(B_\varepsilon-(A_\varepsilon^-)^2/(4\lambda)\); this proves finite-cutoff
    integrability after the vacuum-energy coordinate is chosen, but not the
    continuum theorem.
-11. Split positive-time interactions preserve reflection positivity by the
+12. Split positive-time interactions preserve reflection positivity by the
     identity
     \(\langle\theta F\,F e^{-V_+-\theta V_+}\rangle_0
     =\langle \theta(e^{-V_+}F)(e^{-V_+}F)\rangle_0\).
-12. A scale-decay polymer bound
+13. A scale-decay polymer bound
     \(\sup_{\Delta\in\mathcal D_j}\sum_{X\ni\Delta}e^{a|X|_j}\kappa_j(X)
     \le C_0|\lambda|^{1+\delta}L^{-\alpha j}\)
     implies multiscale cluster summability and an ultraviolet Cauchy bound
     \(C_0|\lambda|^{1+\delta}L^{-\alpha J}/(1-L^{-\alpha})\) under the
     displayed KP smallness condition.
-13. The source-decorated scale bound
+14. The source-decorated scale bound
     \[
     \sup_{\Delta\in\mathcal D_j}\sum_{X\ni\Delta}e^{a|X|_j}\kappa_j(X)
     \prod_{r\in I}|b_{r,j}(X)|
@@ -164,20 +178,20 @@
     applied to decorated vertices gives uniform \(n\)-source bounds and a
     geometric ultraviolet tail.  The model-specific proof must still supply
     these decorated bounds and an OS-admissible growth envelope for \(A_n\).
-14. The full Schwinger coefficient is obtained from connected coefficients by
+15. The full Schwinger coefficient is obtained from connected coefficients by
     summing over set partitions.  If connected block bounds have envelope
     \(A B_0^{|B|}(|B|!)^\gamma\), then the full coefficient has the explicit
     bound
     \((eB_0\max\{1,A\})^n(n!)^{\gamma+1}\prod_r p_r(f_r)\).  The additional
     factorial power is part of the OS-II growth budget and is not hidden in the
     word "connected."
-15. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
+16. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
    the OS properties in the constructed regimes; the chapter now marks this
    as a `quotedtheorem` rather than a locally proved theorem.  The abstract
    summation, reflection-positivity, and ultraviolet-Cauchy components are
    now proved locally; the remaining open proof obligation is the
    model-specific multiscale estimate generating their hypotheses.
-16. Constructive route comparison requires equality of Schwinger functions in
+17. Constructive route comparison requires equality of Schwinger functions in
    a common topology, not merely matching labels.
 
 ## Calculation Checks
@@ -187,7 +201,8 @@
   reversibility and Dirichlet-form normalization, sharp-cutoff tadpole
   coefficients, \(\phi^4_d\) superficial-degree formula, two-loop
   \(\Phi^4_3\) sunset combinatorics, finite-cutoff local stability bound,
-  static-to-dynamic mass-coordinate translation,
+  static-to-dynamic mass-coordinate translation, vacuum-coordinate partition
+  and pressure/free-energy shift identities,
   multiscale phase-cell tail estimate, source-decorated Schwinger-seminorm
   variant, connected-to-full partition growth bound, and SPDE exponent
   arithmetic used across this chapter and the neighboring stochastic chapter.
@@ -266,6 +281,15 @@
   finite set partitions and verifies the Bell/factorial bound in exact
   arithmetic.  This closes a bridge in the abstract proof stack while leaving
   the model-specific \(\Phi^4_3\) activity estimates open.
+- 2026-06-03 issue #581 vacuum-coordinate pass: the \(\Phi^4_3\) coordinate
+  discussion now separates the mass coordinate seen by stochastic
+  quantization from the vacuum coordinate seen only by unnormalized
+  partition-function data.  The chapter proves the finite-volume identity
+  \(Z^{(\beta+c)}[J]=e^{-c|\Lambda|}Z^{(\beta)}[J]\), the invariance of
+  normalized Schwinger functions and connected source functionals, and the
+  pressure/free-energy sign convention.  The companion check verifies the
+  ratio, log-ratio, pressure, free-energy, coordinate-conversion, and drift
+  invisibility identities in exact arithmetic.
 - 2026-05-29 seventh anti-wrapper pass: demoted the one-site finite-cutoff
   normal-ordered polynomial stability bound from proposition form to worked
   prose.  The lower bound remains as the first elementary stability estimate,

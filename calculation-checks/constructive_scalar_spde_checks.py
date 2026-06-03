@@ -1368,6 +1368,52 @@ def check_phi4_three_static_dynamic_coordinate_translation():
         raise AssertionError("Phi4_3 dynamic cubic coefficient was reused as static quartic coefficient")
 
 
+def check_phi4_three_vacuum_coordinate_partition_shift():
+    # Shifting beta by c adds c*|Lambda| to the action.  Every unnormalized
+    # source partition function gets the same exp(-c*|Lambda|) factor, so
+    # normalized moments and connected log ratios are unchanged, while
+    # pressure and free-energy densities shift with opposite signs.
+    volume = Fraction(11, 3)
+    delta_beta = Fraction(5, 7)
+    log_z0 = Fraction(19, 5)
+    log_zj = Fraction(23, 5)
+    log_shift = delta_beta * volume
+
+    factor = Fraction(13, 17)
+    moment_numerator = Fraction(29, 31)
+    partition = Fraction(37, 41)
+    normalized = moment_numerator / partition
+    normalized_shifted = (factor * moment_numerator) / (factor * partition)
+    assert_equal(normalized_shifted, normalized, "Phi4_3 beta-shift normalized Schwinger ratio")
+
+    connected_log_ratio = log_zj - log_z0
+    connected_log_ratio_shifted = (log_zj - log_shift) - (log_z0 - log_shift)
+    assert_equal(connected_log_ratio_shifted, connected_log_ratio, "Phi4_3 beta-shift connected log ratio")
+
+    pressure = log_z0 / volume
+    pressure_shifted = (log_z0 - log_shift) / volume
+    free_energy = -log_z0 / volume
+    free_energy_shifted = -(log_z0 - log_shift) / volume
+    assert_equal(pressure_shifted - pressure, -delta_beta, "Phi4_3 beta-shift pressure sign")
+    assert_equal(free_energy_shifted - free_energy, delta_beta, "Phi4_3 beta-shift free-energy sign")
+
+    lam = Fraction(2, 3)
+    c0 = Fraction(7, 5)
+    alpha = Fraction(-4, 9)
+    beta = Fraction(8, 13)
+    a_unwicked = alpha - 6 * lam * c0
+    b_unwicked = beta - alpha * c0 + 3 * lam * c0 * c0
+    a_unwicked_shifted = alpha - 6 * lam * c0
+    b_unwicked_shifted = beta + delta_beta - alpha * c0 + 3 * lam * c0 * c0
+    assert_equal(a_unwicked_shifted - a_unwicked, 0, "Phi4_3 beta-shift mass coordinate")
+    assert_equal(b_unwicked_shifted - b_unwicked, delta_beta, "Phi4_3 beta-shift vacuum coordinate")
+
+    q = Fraction(3, 2)
+    drift = -4 * lam * q**3 - 2 * a_unwicked * q
+    drift_shifted = -4 * lam * q**3 - 2 * a_unwicked_shifted * q
+    assert_equal(drift_shifted, drift, "Phi4_3 beta-shift drift invisibility")
+
+
 def check_phi4_three_negative_sector_coordinate_chart():
     kappa = Fraction(1, 20)
     x = -Fraction(1, 2) - kappa
@@ -2739,6 +2785,7 @@ def main():
     check_reconstruction_wavelet_scale_powers()
     check_phi4_three_spde_bphz_counterterm_combinatorics()
     check_phi4_three_static_dynamic_coordinate_translation()
+    check_phi4_three_vacuum_coordinate_partition_shift()
     check_phi4_three_negative_sector_coordinate_chart()
     check_modelled_fixed_point_contraction_arithmetic()
     check_random_model_cauchy_criterion_arithmetic()
@@ -2773,7 +2820,7 @@ def main():
     check_spde_finite_window_os_defect_budget_arithmetic()
     check_spde_finite_rate_assembly_schedule_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, finite-rate assembly schedule, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, vacuum-coordinate, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, finite-rate assembly schedule, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

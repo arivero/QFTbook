@@ -833,6 +833,89 @@ identity in the dynamic BPHZ coordinates.  The comparison is made in
 \(\alpha_\varepsilon\), not in the raw drift coefficient, because the one-loop
 Wick conversion is a coordinate change between the two presentations.
 
+\begin{proposition}[Vacuum coordinate and normalized Schwinger data]
+\label{prop:phi-four-three-vacuum-coordinate-normalization}
+Fix a cutoff \(\varepsilon\), a bounded volume \(\Lambda\), and a source
+\(J\) supported in \(\Lambda\).  Let \(Z_{\varepsilon,\Lambda}^{(\beta)}[J]\)
+be the finite-volume source partition function formed from
+\eqref{eq:phi-four-three-normal-ordered-coordinates}.  If
+\(\beta_\varepsilon\) is replaced by
+\(\beta_\varepsilon+c_\varepsilon\), with
+\(\lambda\), \(\alpha_\varepsilon\), and the Gaussian reference measure fixed,
+then
+\begin{equation}
+  Z_{\varepsilon,\Lambda}^{(\beta+c)}[J]
+  =
+  e^{-c_\varepsilon|\Lambda|}
+  Z_{\varepsilon,\Lambda}^{(\beta)}[J].
+  \label{eq:phi-four-three-vacuum-coordinate-partition-shift}
+\end{equation}
+Hence every normalized finite-volume Schwinger function is unchanged:
+\begin{equation}
+  S_{n,\varepsilon,\Lambda}^{(\beta+c)}(f_1,\ldots,f_n)
+  =
+  S_{n,\varepsilon,\Lambda}^{(\beta)}(f_1,\ldots,f_n).
+  \label{eq:phi-four-three-vacuum-coordinate-normalized-schwinger}
+\end{equation}
+The connected source functional
+\[
+  W_{\varepsilon,\Lambda}^{(\beta)}[J]
+  :=
+  \log Z_{\varepsilon,\Lambda}^{(\beta)}[J]
+  -\log Z_{\varepsilon,\Lambda}^{(\beta)}[0]
+\]
+is also unchanged, while the unnormalized thermodynamic coordinates shift by
+\begin{equation}
+  p_{\varepsilon,\Lambda}^{(\beta+c)}
+  =
+  p_{\varepsilon,\Lambda}^{(\beta)}
+  -c_\varepsilon,\qquad
+  f_{\varepsilon,\Lambda}^{(\beta+c)}
+  =
+  f_{\varepsilon,\Lambda}^{(\beta)}
+  +c_\varepsilon,
+  \label{eq:phi-four-three-vacuum-coordinate-pressure-shift}
+\end{equation}
+where
+\(p_{\varepsilon,\Lambda}=|\Lambda|^{-1}\log
+Z_{\varepsilon,\Lambda}[0]\) and
+\(f_{\varepsilon,\Lambda}=-|\Lambda|^{-1}\log
+Z_{\varepsilon,\Lambda}[0]\).
+At fixed \(\alpha_\varepsilon\) and \(\lambda\), the same shift changes the
+un-Wick-ordered coordinate in
+\eqref{eq:phi-four-three-coordinate-conversion} by
+\[
+  b_\varepsilon\longmapsto b_\varepsilon+c_\varepsilon,
+  \qquad
+  a_\varepsilon\longmapsto a_\varepsilon .
+\]
+Thus the stochastic-quantization drift chart determines the mass coordinate
+but not the vacuum coordinate; the latter is fixed only after specifying the
+partition-function, pressure, or free-energy normalization.
+\end{proposition}
+
+\begin{proof}
+The replacement
+\(\beta_\varepsilon\mapsto\beta_\varepsilon+c_\varepsilon\) adds the constant
+\(c_\varepsilon|\Lambda|\) to the finite-volume action.  Pulling this factor
+out of the integral gives
+\eqref{eq:phi-four-three-vacuum-coordinate-partition-shift}.  Differentiating
+the source partition function, or equivalently inserting finitely many
+smeared cutoff fields before normalization, multiplies numerator and
+denominator by the same factor \(e^{-c_\varepsilon|\Lambda|}\), proving
+\eqref{eq:phi-four-three-vacuum-coordinate-normalized-schwinger}.  Taking the
+difference
+\(\log Z[J]-\log Z[0]\) cancels the same additive logarithmic term, while
+dividing \(\log Z[0]-c_\varepsilon|\Lambda|\) by \(|\Lambda|\) gives the
+pressure and free-energy shifts in
+\eqref{eq:phi-four-three-vacuum-coordinate-pressure-shift}.
+Finally, the coordinate conversion
+\eqref{eq:phi-four-three-coordinate-conversion} is affine in
+\(\beta_\varepsilon\) and independent of \(\beta_\varepsilon\) in
+\(a_\varepsilon\).  The functional derivative of an additive constant in the
+action is zero, so the Langevin drift sees no \(c_\varepsilon\) term.
+\end{proof}
+
 \begin{lemma}[Universal logarithm in the three-dimensional sunset kernel]
 \label{lem:phi-four-three-sunset-logarithm}
 Let

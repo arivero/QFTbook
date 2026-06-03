@@ -669,7 +669,10 @@ Current checks:
   homogeneity/sign/combinatorial checks for the dynamic \(\Phi^4_3\) BPHZ
   local counterterm calculation, the static-to-dynamic
   \(\Phi^4_3\) mass-coordinate translation between Euclidean action
-  coefficients and SPDE drift coordinates, together with exact arithmetic for
+  coefficients and SPDE drift coordinates, the vacuum-coordinate shift that
+  leaves normalized Schwinger ratios and connected log ratios invariant while
+  changing pressure/free-energy densities with opposite signs, together with
+  exact arithmetic for
   the abstract modelled-distribution fixed-point ball, contraction, and Picard
   tail estimates, the fixed-point-sector perturbation budget that transfers
   model-map convergence to solution convergence, plus the dyadic geometric-tail arithmetic in the random
