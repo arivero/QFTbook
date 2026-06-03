@@ -1524,6 +1524,98 @@ lemma to remove the \(H^0(C,K_C^{1-d_i})\) term; punctures or genus zero/one
 surfaces require additional divisor data and obey different dimension
 formulae.
 
+\paragraph{Regular-puncture pole-order ledger.}
+The preceding count has a controlled extension once the codimension-two
+defect data in Hypothesis~\ref{hyp:class-s-compactification-datum} supply
+pole orders for the Hitchin differentials.  For each invariant degree
+\(d_i\), suppose the defect \(\mathfrak D_a\) specifies an integer
+\[
+  p_{a,i}\ge0
+\]
+and let
+\[
+  D_i=\sum_{a\in A}p_{a,i}p_a
+\]
+be the corresponding effective divisor on \(C\).  The protected Coulomb
+coordinate of degree \(d_i\) is then modeled by
+\begin{equation}
+  \varphi_{d_i}\in H^0(C,K_C^{d_i}(D_i)).
+  \label{eq:class-s-punctured-hitchin-coordinate}
+\end{equation}
+This is only a pole-order ledger for a supplied defect datum.  It does not
+classify codimension-two defects and it does not assert that an arbitrary
+choice of the integers \(p_{a,i}\) defines a four-dimensional QFT.
+
+When the nonspeciality condition
+\begin{equation}
+  H^0(C,K_C^{1-d_i}(-D_i))=0
+  \label{eq:class-s-puncture-nonspeciality}
+\end{equation}
+holds, Riemann--Roch gives the exact dimension
+\begin{equation}
+  \dim_{\mathbb C}H^0(C,K_C^{d_i}(D_i))
+  =
+  (2d_i-1)(g_C-1)+\deg D_i .
+  \label{eq:class-s-punctured-rr-dimension}
+\end{equation}
+Indeed, Riemann--Roch applied to \(L_i=K_C^{d_i}(D_i)\) gives
+\[
+  h^0(C,L_i)-h^0(C,K_C\otimes L_i^{-1})
+  =
+  \deg L_i+1-g_C .
+\]
+But \(K_C\otimes L_i^{-1}=K_C^{1-d_i}(-D_i)\), so
+\eqref{eq:class-s-puncture-nonspeciality} removes the second term.  Since
+\(\deg L_i=d_i(2g_C-2)+\deg D_i\), the displayed formula follows.
+
+Thus a compactification datum with compatible pole orders has protected
+Coulomb-base dimension
+\begin{equation}
+  \dim_{\mathbb C}\mathcal B_{\mathfrak g,C,\{D_i\}}
+  =
+  (g_C-1)d_{\mathfrak g}
+  +
+  \sum_{a\in A}\sum_{i=1}^{r_{\mathfrak g}}p_{a,i},
+  \label{eq:class-s-punctured-coulomb-dimension}
+\end{equation}
+under the same nonspeciality condition for all \(i\).  Residue constraints,
+mass parameters, nilpotent-orbit labels, irregular singularity slopes, and
+defect flavor anomalies are additional parts of the defect datum; they are
+not encoded by the pole-order sum alone.
+
+\begin{example}[Full regular punctures for type \(A_{N-1}\)]
+\label{ex:class-s-full-puncture-a-type-dimension}
+For the full regular puncture of type \(A_{N-1}\), the standard pole-order
+ledger is
+\[
+  p_{a,d}=d-1,\qquad d=2,\ldots,N .
+\]
+If \(n_{\rm full}\) such punctures are supplied and the nonspeciality
+condition holds, then
+\begin{align}
+  \dim_{\mathbb C}\mathcal B_{A_{N-1},C,n_{\rm full}}
+  &=
+  (g_C-1)(N^2-1)
+  +
+  n_{\rm full}\sum_{d=2}^{N}(d-1)
+  \notag\\
+  &=
+  (g_C-1)(N^2-1)
+  +
+  n_{\rm full}\frac{N(N-1)}2 .
+  \label{eq:class-s-full-puncture-a-dimension}
+\end{align}
+For the three-punctured sphere this gives
+\[
+  -(N^2-1)+\frac{3N(N-1)}2
+  =
+  \frac{(N-1)(N-2)}2 .
+\]
+This last number is the Coulomb-base dimension of the protected
+three-full-puncture fixture in this pole-order coordinate.  It is still not
+a substitute for constructing the associated four-dimensional local QFT.
+\end{example}
+
 \begin{example}[ADE degree checks]
 \label{ex:ade-class-s-coulomb-dimension-checks}
 For \(A_{N-1}\), the degrees are \(2,3,\ldots,N\).  Therefore

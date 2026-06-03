@@ -656,6 +656,40 @@ def check_class_s_hitchin_base_degrees() -> None:
             )
 
 
+def check_class_s_punctured_hitchin_pole_orders() -> None:
+    # If a supplied regular-puncture datum gives pole orders p_{a,i}, then
+    # Riemann-Roch with H^0(K^{1-d_i}(-D_i))=0 shifts the unpunctured
+    # Hitchin-base count by sum_a p_{a,i} for each degree.
+    for genus in range(2, 5):
+        for n in range(2, 9):
+            degrees = list(range(2, n + 1))
+            dimension = n * n - 1
+            puncture_count = 3
+            full_puncture_shift = puncture_count * sum(degree - 1 for degree in degrees)
+            rr_dimension = (genus - 1) * sum(2 * degree - 1 for degree in degrees)
+            rr_dimension += full_puncture_shift
+            expected = (genus - 1) * dimension + puncture_count * n * (n - 1) // 2
+            assert_equal(
+                f"A_{n-1} genus-{genus} full-puncture Hitchin dimension",
+                rr_dimension,
+                expected,
+            )
+
+    # The three-full-puncture sphere gives the familiar fixture count
+    # (N-1)(N-2)/2 in the same pole-order coordinate.
+    genus_zero = 0
+    puncture_count = 3
+    for n in range(2, 12):
+        degrees = list(range(2, n + 1))
+        full_puncture_shift = puncture_count * sum(degree - 1 for degree in degrees)
+        rr_dimension = (genus_zero - 1) * (n * n - 1) + full_puncture_shift
+        assert_equal(
+            f"A_{n-1} three-full-puncture sphere dimension",
+            rr_dimension,
+            (n - 1) * (n - 2) // 2,
+        )
+
+
 def check_class_s_anomaly_pushforward_coefficients() -> None:
     # In the twist e(N_2)=x+eta t, the terms linear in t are
     # [I_8(1)]_t = eta x t (x^2 - p + 3u)/48 and
@@ -719,6 +753,7 @@ def main() -> None:
     check_circle_reduction_finite_flux_pairing()
     check_circle_reduction_genuine_defect_polarizations()
     check_class_s_hitchin_base_degrees()
+    check_class_s_punctured_hitchin_pole_orders()
     check_class_s_anomaly_pushforward_coefficients()
     print("All ABJM and six-dimensional SUSY convention checks passed.")
 

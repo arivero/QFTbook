@@ -41,6 +41,9 @@ Reviewed source spine:
   sign.
 - `mathfrak T_g[C,{(p_a,D_a)};eta]`: conditional four-dimensional
   class-`S` local QFT associated with the compactification datum.
+- `p_{a,i}`, `D_i`: pole order supplied by a codimension-two defect for the
+  invariant of degree `d_i`, and the associated effective divisor
+  `D_i=sum_a p_{a,i} p_a`.
 - `I_8`, `I_8(1)`: interacting and free-tensor anomaly polynomials.
 - `N_R`: rank-five `SO(5)_R` background bundle for `(2,0)` anomalies.
 - `Omega^{IJ}`, `X_I^{(4)}`: tensor pairing and Green-Schwarz four-forms.
@@ -144,6 +147,14 @@ Reviewed source spine:
   \(e(N_2)=x+\eta t\), and pushing forward the six-dimensional anomaly
   polynomial to the four-dimensional six-form
   `I_6 = eta chi(C) x [ r_g (x^2-p+3u)/48 + d_g h_g^vee u/12 ]`.
+- Adds a regular-puncture Hitchin pole-order ledger: once each supplied
+  defect gives compatible pole orders \(p_{a,i}\), the degree-\(d_i\)
+  Coulomb coordinate lies in \(H^0(C,K_C^{d_i}(D_i))\).  Under the
+  nonspeciality condition \(H^0(C,K_C^{1-d_i}(-D_i))=0\), Riemann--Roch
+  shifts the unpunctured dimension by \(\sum_a p_{a,i}\).  For full
+  \(A_{N-1}\) punctures this gives
+  \((g_C-1)(N^2-1)+n_{\rm full}N(N-1)/2\), and the three-full-puncture
+  sphere gives \((N-1)(N-2)/2\).
 
 ## Calculation Checks
 
@@ -160,7 +171,8 @@ Reviewed source spine:
   symplectic-graph interface relations, the simply laced
   root-system second-moment identities for the \(A\) and \(D\) series and the
   ADE relation \(d_{\mathfrak g}=r_{\mathfrak g}(h^\vee_{\mathfrak g}+1)\),
-  as well as the class-\(S\) twist anomaly-pushforward coefficients.
+  the class-\(S\) twist anomaly-pushforward coefficients, and regular
+  puncture pole-order shifts for full \(A_{N-1}\) punctures.
 
 ## Proof Obligations And Boundaries
 
@@ -186,8 +198,8 @@ Reviewed source spine:
   comparison, or the still-open local-QFT construction problem.
 - Future passes should add the full line/surface defect categories beyond the
   finite topological charge algebra, intrinsic anomaly computations for the
-  two-dimensional theories supported on BPS strings, and punctured or
-  irregular class-`S` anomaly reductions.
+  two-dimensional theories supported on BPS strings, defect residue/flavor
+  anomaly constraints, and irregular class-`S` anomaly reductions.
 
 ## Development Log
 
@@ -243,6 +255,11 @@ Reviewed source spine:
 - 2026-06-03 issue #626/#701 architecture pass: added a front-loaded
   construction/test ladder so the six-dimensional chapter reads as a
   dependency chain rather than as separate protected-data cells.
+- 2026-06-03 regular-puncture pole-order pass: added the conditional
+  Riemann--Roch ledger for punctured Hitchin-base coordinates
+  \(H^0(C,K_C^{d_i}(D_i))\), including the full \(A_{N-1}\) puncture
+  dimension shift and three-full-puncture sphere count; extended
+  `susy_abjm_6d_checks.py` accordingly.
 
 ## Figure Ledger
 
