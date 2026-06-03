@@ -24,8 +24,9 @@ relations
     boson/ghost/fermion determinant powers and counterterm shifts
     the proper-time fluctuation determinant combines with the zero-mode
     source determinant to give the finite four-fermion instanton amplitude
-    the BPST fundamental zero-mode envelope has finite zeroth moment, a
-    power-law tail, and a logarithmically infrared-sensitive second moment
+    the BPST fundamental zero-mode envelope has finite zeroth moment, an
+    exact momentum-space form factor, a power-law tail, and a
+    logarithmically infrared-sensitive second moment
     mass-saturated QCD vacuum activity carries prod_f(m_f rho), depends on
     theta+arg det M, is locally small-rho finite when b0+Nf>4, and is
     infrared-uncontrolled in zero-temperature QCD if the same one-loop power
@@ -683,6 +684,62 @@ def check_instanton_zero_mode_tail_local_limit() -> None:
     # 't Hooft vertex uses d_s=3.
     assert_equal("mass source zero-mode rho power", 1, 1)
     assert_equal("bilinear source zero-mode rho power", 3, 3)
+
+    # Schwinger-parameter prefactor for the Fourier transform:
+    # h = 2 rho^2/pi^2 * (y^2+rho^2)^(-3), Gamma(3)=2, and
+    # int d^4y exp(-s y^2) = pi^2 s^(-2).  The remaining integral is
+    # rho^2 int ds exp[-rho^2 s - q^2/(4s)] = z K_1(z).
+    schwinger_prefactor = Fraction(2) * Fraction(1, 2)
+    gaussian_prefactor = Fraction(1)
+    assert_equal(
+        "zero-mode Fourier Schwinger prefactor",
+        schwinger_prefactor * gaussian_prefactor,
+        1,
+    )
+
+    # The form factor F(z)=z K_1(z) satisfies z F'' - F' - z F=0.
+    # A small-z ansatz F=1+a z^2 log z+b z^2+... solves the order-z
+    # equation only if a=1/2; b is fixed only after the specific K_1 branch
+    # and its Euler-gamma/log(2) constants are chosen.
+    a = Fraction(1, 2)
+    assert_equal("zero-mode form-factor log coefficient", 2 * a - 1, 0)
+
+    # For large z, K_nu(z) has first correction (4 nu^2-1)/(8z).
+    nu = 1
+    first_large_z_coefficient = Fraction(4 * nu * nu - 1, 8)
+    assert_equal(
+        "zero-mode form-factor large-z first coefficient",
+        first_large_z_coefficient,
+        Fraction(3, 8),
+    )
+
+    # Momentum-dependent source entries carry the form factor before the
+    # flavor Berezin determinant is taken.
+    source_matrix = [[Fraction(2), Fraction(3)], [Fraction(5), Fraction(7)]]
+    form_factors = [[Fraction(11, 13), Fraction(17, 19)], [Fraction(23, 29), Fraction(31, 37)]]
+    dressed_source = [
+        [
+            source_matrix[row][col] * form_factors[row][col]
+            for col in range(2)
+        ]
+        for row in range(2)
+    ]
+    expected_dressed_det = (
+        source_matrix[0][0]
+        * form_factors[0][0]
+        * source_matrix[1][1]
+        * form_factors[1][1]
+        -
+        source_matrix[0][1]
+        * form_factors[0][1]
+        * source_matrix[1][0]
+        * form_factors[1][0]
+    )
+    assert_equal(
+        "zero-mode form factors enter before flavor determinant",
+        det_fraction(dressed_source),
+        expected_dressed_det,
+    )
 
 
 def check_dilute_instanton_gas_theta_cumulants() -> None:

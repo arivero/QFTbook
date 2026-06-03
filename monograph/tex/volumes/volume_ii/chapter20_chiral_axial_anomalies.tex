@@ -4379,7 +4379,7 @@ determinant constant; RG invariance identifies the universal logarithmic
 coefficient with \(b_0\) in the displayed one-loop density.
 \end{proof}
 
-\begin{proposition}[Instanton zero-mode tail and local limit]
+\begin{proposition}[Instanton zero-mode form factor and local limit]
 \label{prop:instanton-zero-mode-tail-local-limit}
 In a BPST \(Q=1\) background, after the spin and color tensors of one
 fundamental zero-mode line are factored out, the radial scalar envelope which
@@ -4403,8 +4403,50 @@ Thus a zero-mode-paired source matrix entry has the form
   \label{eq:instanton-zero-mode-source-convolution}
 \end{equation}
 where \(d_s=1\) for a mass source and \(d_s=3\) for the local quark-bilinear
-source in \eqref{eq:qcd-thooft-vertex-leading-local}.  For
-\(U_R=R/\rho\),
+source in \eqref{eq:qcd-thooft-vertex-leading-local}.  Equivalently, with
+the Fourier convention
+\[
+  \widehat h_\rho(q)=
+  \int_{\mathbb R^4}\ee^{\ii q\cdot y}h_\rho(y)\,\dd^4y ,
+\]
+one has the exact form factor
+\begin{equation}
+  \widehat h_\rho(q)
+  =
+  zK_1(z),
+  \qquad z=\rho |q|,
+  \label{eq:instanton-zero-mode-momentum-form-factor}
+\end{equation}
+where \(K_1\) is the modified Bessel function.  Hence a zero-mode-paired
+source with Fourier momentum \(q\) is not represented by the local vertex
+until \(z\ll1\).
+The small-momentum expansion is
+\begin{equation}
+  zK_1(z)
+  =
+  1+
+  \frac{z^2}{2}
+  \left[
+    \log\frac{z}{2}+\gamma_{\rm E}-\frac12
+  \right]
+  +O(z^4\log z),
+  \label{eq:instanton-zero-mode-form-factor-small-momentum}
+\end{equation}
+so the first nonlocal correction is \(q^2\rho^2\log(|q|\rho)\), not an
+ordinary analytic Taylor coefficient.  At \(z\gg1\),
+\begin{equation}
+  zK_1(z)
+  =
+  \sqrt{\frac{\pi z}{2}}\,
+  \ee^{-z}
+  \left(1+\frac{3}{8z}+O(z^{-2})\right),
+  \label{eq:instanton-zero-mode-form-factor-large-momentum}
+\end{equation}
+which displays the suppression of source components varying on scales
+shorter than the instanton size.  This is the source-profile factor inside
+the one-instanton amplitude; it does not replace the determinant
+normalization or the separate external-leg amputation data.  In position
+space, for \(U_R=R/\rho\),
 \begin{equation}
   \int_{|y|<R}h_\rho(y)\,\dd^4y
   =
@@ -4445,7 +4487,9 @@ two-derivative coefficient grows as
 \(4\rho^2\log(R/\rho)+O(\rho^2)\) as \(R/\rho\to\infty\).  The local
 't Hooft vertex is therefore the zeroth adiabatic term of the zero-mode
 source convolution; higher-derivative terms require the external wave-packet,
-mass, or infrared regulator that cuts off the zero-mode tail.
+mass, or infrared regulator that cuts off the zero-mode tail.  In momentum
+space the same statement is the logarithm in
+\eqref{eq:instanton-zero-mode-form-factor-small-momentum}.
 \end{proposition}
 
 \begin{proof}
@@ -4460,6 +4504,29 @@ wavefunctions in the BPST background.  Using
   =
   1.
 \]
+For the Fourier transform, use the Schwinger representation
+\[
+  \frac1{(y^2+\rho^2)^3}
+  =
+  \frac12\int_0^\infty s^2\ee^{-s(y^2+\rho^2)}\,\dd s .
+\]
+Then
+\[
+\begin{aligned}
+  \widehat h_\rho(q)
+  &=
+  \rho^2\int_0^\infty
+  \exp\!\left[-\rho^2s-\frac{q^2}{4s}\right]\dd s  \\
+  &=
+  \rho |q|\,K_1(\rho |q|),
+\end{aligned}
+\]
+where the last step is the standard integral representation of the modified
+Bessel function.  The small-\(z\) and large-\(z\) formulas are the
+corresponding standard asymptotic expansions of \(K_1\); the logarithmic
+small-\(z\) term is the momentum-space reflection of the logarithmically
+divergent second moment computed below.
+
 The same integral cut off at \(U_R\) gives
 \[
   4\int_0^{U_R}\frac{u^3}{(1+u^2)^3}\,\dd u

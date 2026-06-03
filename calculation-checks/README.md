@@ -397,9 +397,9 @@ Current checks:
   correlator contribution, including the two- and three-flavor 't Hooft
   determinants and the \(\theta+\arg\det M\) axial phase ledger, the
   proper-time nonzero-mode determinant assembly for a smeared four-fermion
-  instanton amplitude, the BPST zero-mode envelope tail and logarithmically
-  sensitive second moment in the local-vertex limit, the mass-saturated
-  vacuum-activity size integral with
+  instanton amplitude, the BPST zero-mode envelope momentum form factor
+  \(zK_1(z)\), tail, and logarithmically sensitive second moment in the
+  local-vertex limit, the mass-saturated vacuum-activity size integral with
   its \(\prod_f(m_f\rho)\) zero-mode factors, small-\(\rho\) finiteness
   margin, large-\(\rho\) obstruction, and massless-flavor vanishing, the
   dilute instanton-gas theta cumulants \(\chi_{\rm top}=2\zeta\) and
