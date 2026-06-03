@@ -13,6 +13,8 @@ anomaly obstruction.
 - `rho_D`: action of a defect on the local-operator space.
 - `N_ab^c`: defect fusion coefficients.
 - `Hom(D_a tensor D_b, D_c)`: junction spaces.
+- `J(X,Y)`, `R(X,Y)`: raw finite junction space for incoming/outgoing defect
+  labels and its reflection-positive Gram radical.
 - `A`, `m`, `eta`: algebra object and its multiplication/unit maps for
   condensation.
 - `A_H`, `Delta`: regular algebra of a finite symmetry and its normalized
@@ -31,6 +33,11 @@ anomaly obstruction.
 ## Claim Ledger
 
 - Defines categorical symmetry from topological defects and fusion.
+- Refines the physical defect category by giving the finite
+  reflection-positive Gram-radical model of the correlation-null quotient:
+  zero-norm junctions are exactly the pairing radical, the quotient has a
+  positive definite pairing, and vertical composition/tensor product descend
+  when the corresponding gluing maps have reflected adjoints.
 - Defines the action of a codimension-one defect on local operators by
   surrounding insertions.
 - Relates associativity of defect fusion to junction spaces and pentagon
@@ -88,8 +95,10 @@ anomaly obstruction.
   Frobenius identities plus self-dual gauging fusion-ring associativity for
   cyclic examples and \(S_3\).
 - `calculation-checks/categorical_defect_structure_checks.py` verifies finite
-  defect-action composition, BPZ/dagger adjoints, isotopy unitarity for
-  junction pairings, and the pointed cyclic modular-category Verlinde
+  defect-action composition, BPZ/dagger adjoints, the finite
+  Gram-radical null quotient with descended composition/adjoint maps,
+  isotopy unitarity for junction pairings, and the pointed cyclic
+  modular-category Verlinde
   diagonalization/eigenvalue-representation mechanism using exact
   root-of-unity sum identities.  It also verifies the pointed cyclic
   associator `3`-cocycle and junction-basis coboundary identities by exact
@@ -116,3 +125,10 @@ condensation networks.
   passing to the limit, and only then extends by boundedness to
   \(\mathcal H_{\rm loc}\).  The text also separates reflection
   self-adjointness from invertible-defect unitarity.
+- 2026-06-03 proof-architecture pass: inserted the finite
+  reflection-positive Gram-radical construction between the raw
+  correlation-null definition and the dagger-category proposition.  This
+  removes the prior jump from "vanishes in all exterior correlations" to
+  "quotient by null junctions" by proving, under finite-dimensional
+  half-ball separation hypotheses, that the zero-norm subspace is the radical
+  and that composition/tensor operations descend to the quotient.

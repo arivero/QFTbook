@@ -8,6 +8,10 @@ eigenvalues form a representation of the fusion algebra.
 
 The finite pointed-anomaly check similarly tracks only exponents modulo n:
 the multiplicative U(1) cocycle equation becomes an exact congruence.
+
+The null-quotient check is the finite reflection-positive skeleton behind the
+physical defect category: a semidefinite junction Gram form is quotiented by
+its radical, and composition is verified to descend exactly.
 """
 
 from __future__ import annotations
@@ -64,6 +68,14 @@ def zero_matrix(rows: int, columns: int) -> Matrix:
 
 def weighted_inner(metric: Matrix, left: Vector, right: Vector) -> Fraction:
     return dot(left, matrix_vector(metric, right))
+
+
+def vector_add(left: Vector, right: Vector) -> Vector:
+    return [a + b for a, b in zip(left, right)]
+
+
+def scalar_vector(scalar: Fraction, vector: Vector) -> Vector:
+    return [scalar * entry for entry in vector]
 
 
 def check_defect_fusion_as_operator_composition() -> None:
@@ -181,6 +193,123 @@ def check_isotopy_matrix_unitarity_for_junction_pairing() -> None:
             dot(transformed, transformed),
             dot(vector, vector),
         )
+
+
+def check_null_quotient_composition_descends() -> None:
+    # A finite raw junction space with reflection-positive but degenerate Gram
+    # form.  The norm is (x_0+x_2)^2+2*x_1^2, so n=(1,0,-1) is the radical.
+    gram: Matrix = [
+        [Fraction(1), Fraction(0), Fraction(1)],
+        [Fraction(0), Fraction(2), Fraction(0)],
+        [Fraction(1), Fraction(0), Fraction(1)],
+    ]
+    null_vector: Vector = [Fraction(1), Fraction(0), Fraction(-1)]
+    raw_basis: list[Vector] = [
+        [Fraction(1), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(1), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(1)],
+    ]
+
+    assert_equal(
+        "null vector has zero reflection norm",
+        weighted_inner(gram, null_vector, null_vector),
+        Fraction(0),
+    )
+    for basis_vector in raw_basis:
+        assert_equal(
+            "zero-norm vector is in the Gram radical",
+            weighted_inner(gram, null_vector, basis_vector),
+            Fraction(0),
+        )
+
+    def quotient_coordinates(vector: Vector) -> Vector:
+        return [vector[0] + vector[2], vector[1]]
+
+    quotient_metric: Matrix = [
+        [Fraction(1), Fraction(0)],
+        [Fraction(0), Fraction(2)],
+    ]
+    for vector in [
+        [Fraction(2), Fraction(-3), Fraction(5)],
+        [Fraction(-1), Fraction(4), Fraction(7)],
+        [Fraction(0), Fraction(5), Fraction(0)],
+    ]:
+        quotient_vector = quotient_coordinates(vector)
+        assert_equal(
+            "Gram form factors through the null quotient",
+            weighted_inner(gram, vector, vector),
+            weighted_inner(quotient_metric, quotient_vector, quotient_vector),
+        )
+        if quotient_vector != [Fraction(0), Fraction(0)]:
+            if weighted_inner(quotient_metric, quotient_vector, quotient_vector) <= 0:
+                raise AssertionError("quotient reflection form should be positive")
+
+    # Composition by a fixed junction.  It is not injective on raw vectors, but
+    # it maps the radical to itself, so it induces a quotient operator.
+    compose: Matrix = [
+        [Fraction(2), Fraction(1), Fraction(0)],
+        [Fraction(0), Fraction(-1), Fraction(0)],
+        [Fraction(0), Fraction(3), Fraction(2)],
+    ]
+    descended: Matrix = [
+        [Fraction(2), Fraction(4)],
+        [Fraction(0), Fraction(-1)],
+    ]
+    assert_equal(
+        "composition preserves the Gram radical",
+        matrix_vector(compose, null_vector),
+        scalar_vector(Fraction(2), null_vector),
+    )
+
+    for vector in [
+        [Fraction(3), Fraction(1), Fraction(-2)],
+        [Fraction(-5), Fraction(7), Fraction(11)],
+    ]:
+        assert_equal(
+            "composition descends to quotient coordinates",
+            quotient_coordinates(matrix_vector(compose, vector)),
+            matrix_vector(descended, quotient_coordinates(vector)),
+        )
+        for coefficient in [Fraction(-3), Fraction(0), Fraction(5)]:
+            representative = vector_add(
+                vector,
+                scalar_vector(coefficient, null_vector),
+            )
+            assert_equal(
+                "composition independent of null representative",
+                quotient_coordinates(matrix_vector(compose, representative)),
+                quotient_coordinates(matrix_vector(compose, vector)),
+            )
+
+    quotient_adjoint = matrix_matrix(
+        matrix_matrix(inverse_2x2(quotient_metric), transpose(descended)),
+        quotient_metric,
+    )
+    assert_equal(
+        "quotient adjoint matrix",
+        quotient_adjoint,
+        [
+            [Fraction(2), Fraction(0)],
+            [Fraction(2), Fraction(-1)],
+        ],
+    )
+    for left in [
+        [Fraction(1), Fraction(2)],
+        [Fraction(-3), Fraction(5)],
+    ]:
+        for right in [
+            [Fraction(7), Fraction(-11)],
+            [Fraction(13), Fraction(17)],
+        ]:
+            assert_equal(
+                "descended composition has reflected adjoint",
+                weighted_inner(quotient_metric, matrix_vector(descended, left), right),
+                weighted_inner(
+                    quotient_metric,
+                    left,
+                    matrix_vector(quotient_adjoint, right),
+                ),
+            )
 
 
 def cyclic_fourier_verlinde_coefficient(n: int, a: int, b: int, c: int) -> int:
@@ -309,9 +438,10 @@ def main() -> None:
     check_dagger_composition_and_pairing()
     check_bpz_weighted_defect_adjoint()
     check_isotopy_matrix_unitarity_for_junction_pairing()
+    check_null_quotient_composition_descends()
     check_pointed_modular_category_verlinde_diagonalization()
     check_pointed_anomaly_cocycle_and_coboundary()
-    print("All categorical-defect action and dagger-structure checks passed.")
+    print("All categorical-defect action, quotient, and dagger checks passed.")
 
 
 if __name__ == "__main__":

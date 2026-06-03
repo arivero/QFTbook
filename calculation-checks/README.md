@@ -1129,8 +1129,9 @@ Current checks:
   categorical-symmetry defect-fusion chapter, including defect fusion as
   composition of local-operator actions, noninvertible projection kernels,
   dagger reversal of junction composition, positivity of the finite
-  reflection pairing, the BPZ weighted-adjoint identity for defect actions,
-  and unitarity of isotopy changes of junction basis.
+  reflection pairing, the Gram-radical null quotient and descended
+  composition/adjoint maps, the BPZ weighted-adjoint identity for defect
+  actions, and unitarity of isotopy changes of junction basis.
 - `free_cylinder_partition_checks.py`: finite character checks for the
   radial-cylinder free-field section, including the four-dimensional scalar
   reduction \(q(1-q^2)/(1-q)^4=q(1+q)/(1-q)^3\), Weyl/Dirac fermion
