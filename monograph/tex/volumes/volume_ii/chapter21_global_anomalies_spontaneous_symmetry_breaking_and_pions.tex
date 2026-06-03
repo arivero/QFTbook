@@ -2536,6 +2536,66 @@ is independent of the extension precisely when \(n\in\mathbb Z\).  This
 integer is the Wess--Zumino level.
 \end{definition}
 
+\begin{proposition}[Finite Wess--Zumino extension ambiguity]
+\label{prop:finite-wz-extension-ambiguity}
+For \(N_f\ge3\), write
+\[
+  \omega_5(U)
+  =
+  -\frac{\ii}{240\pi^2}
+  \operatorname{Tr}(U^{-1}\dd U)^5 .
+\]
+Assume the standard generator normalization in which
+\(\int_{S^5}g^*\omega_5=2\pi\) for a generator
+\([g]\in\pi_5(SU(N_f))\simeq\mathbb Z\).  If two fillings
+\((B_5,\widetilde U)\) and \((B'_5,\widetilde U')\) extend the same boundary
+field \(U:M_4\to SU(N_f)\), then
+\[
+  \Gamma_{\mathrm{WZ}}[B_5,\widetilde U]
+  -
+  \Gamma_{\mathrm{WZ}}[B'_5,\widetilde U']
+  =
+  2\pi k,\qquad k\in\mathbb Z .
+\]
+Consequently the exponentiated pion response
+\(\exp\{\ii n\Gamma_{\mathrm{WZ}}[U]\}\) is a well-defined boundary
+functional for all allowed fillings exactly when \(n\in\mathbb Z\).
+\end{proposition}
+
+\begin{proof}
+Glue \(B_5\) to \(B'_5\) with the opposite orientation along their common
+boundary \(M_4\).  The result is a closed oriented five-manifold
+\[
+  X_5=B_5\cup_{M_4}(-B'_5),
+\]
+and the two extensions glue to a map \(\widehat U:X_5\to SU(N_f)\).
+Additivity of the integral under gluing gives
+\[
+  \Gamma_{\mathrm{WZ}}[B_5,\widetilde U]
+  -
+  \Gamma_{\mathrm{WZ}}[B'_5,\widetilde U']
+  =
+  \int_{X_5}\widehat U^*\omega_5 .
+\]
+The normalized period assumption says that the right hand side lies in
+\(2\pi\mathbb Z\); call it \(2\pi k\).  Changing the filling therefore
+multiplies the exponentiated level-\(n\) response by
+\[
+  \exp(2\pi\ii nk).
+\]
+This factor is \(1\) for every possible extension ambiguity \(k\in\mathbb Z\)
+if \(n\) is an integer.  Conversely, the generator ambiguity \(k=1\) would
+give a nontrivial phase for any nonintegral level.  Thus finite
+extension-independence is the integrality condition \(n\in\mathbb Z\).
+\end{proof}
+
+The finite integrality statement is separate from the infinitesimal anomaly
+coefficient comparison below.  Local descent determines which multiple of the
+generator the pion functional must carry; the proposition says when that
+multiple exponentiates to an honest four-dimensional response rather than a
+choice of five-dimensional filling.  In QCD the same integer is \(N_c\), the
+number of color copies of a fundamental flavor Weyl fermion.
+
 \paragraph{WZW level matching from the flavor descent coefficient.}
 \label{par:wzw-anomaly-matching}
 The equality between the QCD Wess--Zumino--Witten level and the number of

@@ -5,6 +5,8 @@ The script checks algebraic factors only:
 
 * WZW matching forces n=N_c because the UV left-flavor anomaly coefficient is
   N_c/(48 pi^2) and the level-n WZW variation is n/(48 pi^2).
+* The finite Wess-Zumino extension ambiguity exp(2 pi i n k) is trivial for
+  every integer winding k exactly when the level n is integral.
 * Bardeen counterterms change anomaly representatives but leave the completely
   symmetric descent coefficient, hence the WZW level coordinate, unchanged.
 * The Abelianized cubic descent coordinate determines the symmetric cubic
@@ -37,6 +39,33 @@ def check_wzw_level() -> None:
     for n_c in range(2, 10):
         if wzw_level_for_matching(n_c) != n_c:
             raise AssertionError(f"WZW matching failed for N_c={n_c}")
+
+
+def is_trivial_wz_extension_phase(level: Fraction, winding: int) -> bool:
+    # The phase is exp(2 pi i * level * winding).  It is trivial exactly when
+    # the exponent in units of 2 pi is an integer.
+    return (level * winding).denominator == 1
+
+
+def check_wz_extension_ambiguity_integrality() -> None:
+    for integer_level in range(-3, 7):
+        level = Fraction(integer_level, 1)
+        for winding in range(-5, 6):
+            if not is_trivial_wz_extension_phase(level, winding):
+                raise AssertionError(
+                    f"integer WZ level {level} failed at winding {winding}"
+                )
+
+    for fractional_level in (Fraction(1, 2), Fraction(2, 3), Fraction(-5, 4)):
+        if is_trivial_wz_extension_phase(fractional_level, 1):
+            raise AssertionError(f"fractional WZ level {fractional_level} passed")
+
+    for n_c in range(2, 10):
+        assert_eq(
+            f"QCD color multiplicity gives integral WZ level N_c={n_c}",
+            Fraction(Fraction(wzw_level_for_matching(n_c), 1).denominator, 1),
+            Fraction(1),
+        )
 
 
 def check_bardeen_counterterm_preserves_symmetric_class() -> None:
@@ -152,6 +181,7 @@ def check_pi0_two_photon_trace() -> None:
 
 def main() -> None:
     check_wzw_level()
+    check_wz_extension_ambiguity_integrality()
     check_bardeen_counterterm_preserves_symmetric_class()
     check_abelianized_cubic_polarization_identity()
     check_vector_anomaly_cancellation()

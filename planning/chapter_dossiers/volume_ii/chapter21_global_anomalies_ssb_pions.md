@@ -97,6 +97,7 @@
 | \(\Gamma_i\) | one-loop divergence/running coefficients of the \(L_i^r(\mu)\) |
 | \(l_3^r(\mu)\) | two-flavor NLO low-energy constant governing the local contribution to \(M_\pi^2\) |
 | \(Q\) | electromagnetic flavor-charge matrix embedded as a vector flavor background |
+| \(\omega_5(U)\) | normalized closed five-form \(-i\operatorname{Tr}(U^{-1}dU)^5/(240\pi^2)\) whose periods set the Wess--Zumino extension ambiguity |
 | \(\Gamma_{\mathrm{WZ}}\) | ungauged Wess--Zumino functional |
 | \(\Gamma_{\mathrm{WZW}}\) | gauged Wess--Zumino--Witten functional |
 | \(n\) | integer WZW level; QCD anomaly matching forces \(n=N_c\) |
@@ -273,6 +274,13 @@
 - The Wess--Zumino--Witten coefficient is quantized and equals \(N_c\) for QCD
   with fundamental quarks, so the pion functional reproduces the microscopic
   flavor anomaly.
+- The finite Wess--Zumino extension ambiguity is now separated from the local
+  descent coefficient: gluing two fillings gives a closed five-manifold and a
+  period \(\int\widehat U^*\omega_5=2\pi k\), so
+  \(\exp(i n\Gamma_{\mathrm{WZ}})\) is independent of the filling for all
+  allowed ambiguities exactly when \(n\in\mathbb Z\).  The local anomaly
+  comparison then fixes which integral level is required; in QCD this level is
+  \(N_c\).
 - The same equality is used as a worked 't Hooft anomaly-matching test:
   the UV left-flavor anomaly
   \(N_c(48\pi^2)^{-1}\int\operatorname{Tr}(\alpha\,\dd A\,\dd A)+O(A^3)\)
@@ -389,6 +397,13 @@
   \(C_{abc}\alpha^aF^bF^c\) and the cubic polarization identity in the anomaly
   chapter, making clear why commuting-background tests fix the symmetric
   descent class but not a preferred current representative.
+- 2026-06-03 issue #696 finite-WZ-integrality pass: added
+  `prop:finite-wz-extension-ambiguity`, which proves the QFT consequence of
+  the normalized five-form period lattice: the exponentiated Wess--Zumino
+  response is filling-independent exactly at integral level.  The WZW
+  calculation check now verifies the finite phase arithmetic
+  \(\exp(2\pi i n k)\), including the integral \(n=N_c\) QCD case and
+  nontrivial generator phase for fractional test levels.
 - 2026-05-30 issue #696 finite-\(SU(2)\) pass: removed the finite-doublet
   anomaly quoted theorem from the chapter.  The QFT conclusion is now a local
   proposition proved from Dai--Freed/Pfaffian-line holonomy, tensor-product
