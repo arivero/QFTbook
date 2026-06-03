@@ -67,6 +67,94 @@ show how the layers can be serialized.  A full numerical claim must name the
 layer at which each assertion lives: invariant measure, implementation
 defect, estimator error, observable analysis, or scaling-window inference.
 
+\begin{proposition}[Independent-chain aggregation record]
+\label{prop:mc-independent-chain-aggregation-record}
+Suppose a cluster job array produces \(K\) chain-level summaries for the same
+finite-regulator observable:
+\[
+  (\widehat O_a,s_a,N_a^{\rm eff}),\qquad a=1,\ldots,K,
+\]
+where \(s_a>0\) is the declared standard error of the \(a\)-th chain after its
+thermalization cut and autocorrelation analysis, and \(N_a^{\rm eff}\) is an
+optional effective-sample-size coordinate.  Conditional on the finite target
+measure, implementation record, and the hypothesis that the chain-level errors
+are independent with variances \(s_a^2\), define
+\[
+  w_a=s_a^{-2},\qquad
+  \widehat O_{\rm ens}
+  =
+  \frac{\sum_a w_a\widehat O_a}{\sum_a w_a}.
+\]
+Then the internal variance of the weighted estimator is
+\begin{equation}
+  \operatorname{Var}(\widehat O_{\rm ens})
+  =
+  \frac{1}{\sum_a w_a}.
+  \label{eq:mc-independent-chain-internal-variance}
+\end{equation}
+The finite between-chain disagreement coordinate is
+\begin{equation}
+  \chi^2_{\rm chain}
+  =
+  \sum_{a=1}^K w_a
+  \bigl(\widehat O_a-\widehat O_{\rm ens}\bigr)^2,
+  \qquad
+  \nu_{\rm chain}=K-1 .
+  \label{eq:mc-independent-chain-between-chi-square}
+\end{equation}
+It is an estimator-record diagnostic: large
+\(\chi^2_{\rm chain}/\nu_{\rm chain}\) indicates either underestimated
+within-chain errors, insufficient equilibration, hidden correlations between
+tasks, or a mismatch in the finite target measure.  Inflating the internal
+error by
+\[
+  \max\{1,\sqrt{\chi^2_{\rm chain}/\nu_{\rm chain}}\}
+\]
+is therefore a conservative finite reporting convention, not a proof that the
+underlying chains have mixed.
+\end{proposition}
+
+\begin{proof}
+The estimator is a linear combination
+\[
+  \widehat O_{\rm ens}=\sum_a \alpha_a\widehat O_a,
+  \qquad
+  \alpha_a=\frac{w_a}{\sum_b w_b}.
+\]
+Under the stated independence and variance hypotheses,
+\[
+  \operatorname{Var}(\widehat O_{\rm ens})
+  =
+  \sum_a\alpha_a^2s_a^2
+  =
+  \sum_a
+  \frac{w_a^2}{(\sum_b w_b)^2}\frac1{w_a}
+  =
+  \frac{\sum_a w_a}{(\sum_b w_b)^2}
+  =
+  \frac1{\sum_b w_b},
+\]
+which proves \eqref{eq:mc-independent-chain-internal-variance}.  Equation
+\eqref{eq:mc-independent-chain-between-chi-square} is the corresponding
+weighted residual norm after fitting one common mean parameter, hence the
+finite residual coordinate has \(K-1\) formal degrees of freedom when the
+usual independent Gaussian error model is adopted.  Outside that model it is
+still a well-defined finite discrepancy number, but its interpretation is
+diagnostic rather than inferential.
+\end{proof}
+
+The companion utility
+\path{qft_scripts/cluster/chain_ensemble_summary.py} implements exactly this
+finite estimator record for CSV rows
+\[
+  \texttt{chain,estimate,standard\_error}
+\]
+with an optional \texttt{effective\_sample\_size} column.  It belongs to the
+estimator layer of the production-evidence architecture.  The script does not
+replace the target-measure declaration, the Markov-kernel theorem, the
+autocorrelation analysis inside each chain, or the scaling-window evidence
+package.
+
 \section{Finite-Regulator Expectation Values}
 
 Let \(\Omega_\Lambda\) be a finite-dimensional regulator space and let

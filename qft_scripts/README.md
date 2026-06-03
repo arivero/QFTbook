@@ -39,6 +39,7 @@ python3 qft_scripts/thooft_dlcq.py --smoke
 python3 qft_scripts/thooft_dlcq_extrapolation.py --smoke
 python3 qft_scripts/finite_regulator_extrapolation.py --smoke
 python3 qft_scripts/benchmark_manifest_consistency.py --smoke
+python3 qft_scripts/cluster/chain_ensemble_summary.py --smoke
 ```
 
 The scripts use Python 3 and NumPy.  Their output is JSON so that future
@@ -84,6 +85,12 @@ array template, `qft_scripts/cluster/slurm/su3_parameter_sweep_array.sbatch`,
 uses `qft_scripts/cluster/su3_sweep_grid.py` to map SLURM array indices to a
 finite Cartesian product of beta values and random seeds, with one manifest
 per task.
+The downstream summary helper
+`qft_scripts/cluster/chain_ensemble_summary.py` combines per-chain estimates
+from a job array by inverse-variance weighting and reports the between-chain
+chi-square/error-inflation diagnostic.  It is an estimator-record tool for
+declared independent chains; it does not prove Markov-chain mixing or
+independence.
 
 ## Scripts
 
@@ -225,3 +232,9 @@ per task.
   envelopes, matching errors, covariance/provenance data when available, and
   reports the pairwise componentwise consistency matrix.  It verifies only
   finite compatibility with declared errors, not a continuum QFT conclusion.
+- `cluster/chain_ensemble_summary.py`: finite job-array chain aggregator.
+  It reads CSV rows `chain,estimate,standard_error[,effective_sample_size]`,
+  forms the inverse-variance weighted estimator, reports the internal
+  standard error, and exposes a between-chain chi-square and inflated error
+  when independent chains disagree beyond their declared errors.  It is a
+  production-record layer for cluster runs, not a mixing diagnostic by itself.

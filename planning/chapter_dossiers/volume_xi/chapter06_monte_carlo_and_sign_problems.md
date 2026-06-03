@@ -88,6 +88,11 @@ and scaling-window inference.
   reversibility defect, and linear-solver residual diagnostics.
 - `lambda_-`, `W_rat`: spectral lower bound for the positive fermion matrix
   and RHMC determinant reweighting factor.
+- `O_hat_a`, `s_a`, `N_a^eff`, `w_a`: chain-level estimate, declared
+  standard error, optional effective sample size, and inverse-variance weight
+  in the cluster independent-chain aggregation record.
+- `chi^2_chain`, `nu_chain`: between-chain disagreement coordinate and
+  formal residual degree count for a finite job-array estimator record.
 
 ## Claim Ledger
 
@@ -154,6 +159,9 @@ and scaling-window inference.
   reversibility defect, Hamiltonian-change logs, linear-solver residuals,
   spectral interval, rational approximation ledger, and determinant
   reweighting convention.
+- Proves the independent-chain aggregation variance identity for cluster
+  job-array summaries and separates the between-chain chi-square/error
+  inflation diagnostic from any claim of Markov-chain mixing.
 - Derives residual bounds for pseudofermion action and force errors:
   \(|\phi^\dagger A^{-1}\phi-\phi^\dagger x|\le
   \lambda_-^{-1}\|\phi\|\,\|r\|\) and the corresponding force bound from
@@ -258,6 +266,11 @@ the exponential decay of average phase with volume.
   the sample-level mode that recomputes static-potential logarithmic ratios
   on deleted or resampled Monte Carlo blocks; its HDF5 mode reads
   `measurements/wilson_loops[sample,R-1,T-1]`.
+- `qft_scripts/cluster/chain_ensemble_summary.py --smoke`: finite
+  independent-chain aggregation utility for job-array outputs.  It reports an
+  inverse-variance weighted estimate, internal standard error, between-chain
+  chi-square, error-inflation factor, and effective-sample-size sum when
+  supplied.
 
 ## Calculation Checks
 
@@ -304,6 +317,10 @@ the exponential decay of average phase with volume.
   finite block means, blocked standard error, delete-one-block jackknife
   identity, biased autocovariances, and windowed \(\tau_{\rm int}\) used by
   the companion script.
+- `calculation-checks/cluster_chain_ensemble_checks.py` verifies the exact
+  inverse-variance weighted mean, internal standard error, between-chain
+  chi-square, inflated error, effective-sample-size aggregation, and CSV
+  round trip for the job-array chain summary tool.
 - `calculation-checks/static_potential_analysis_checks.py` includes the
   correlated delete-one jackknife check for static-potential nonlinear
   Wilson-loop ratios and the HDF5 bridge from sampler data to static-potential
@@ -346,3 +363,9 @@ the exponential decay of average phase with volume.
 - 2026-06-03 issue #631 architecture pass: added a front-loaded production
   evidence ladder for lattice Monte Carlo outputs and tied the public script
   README to the same layer structure.
+- 2026-06-03 issue #631 cluster estimator pass: added the independent-chain
+  aggregation proposition and the public chain-ensemble summary tool.  This
+  supplies the missing finite job-array estimator record after SLURM tasks have
+  produced per-chain summaries, while explicitly leaving chain independence,
+  equilibration, target-measure equality, and scaling-window interpretation as
+  separate evidence layers.

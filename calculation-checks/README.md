@@ -2147,6 +2147,10 @@ Current checks:
   SU(3) sweep-grid resolver in `qft_scripts/cluster/`, including Cartesian
   task ordering, out-of-range rejection, and environment-variable CLI output
   for SLURM-style job arrays.
+- `cluster_chain_ensemble_checks.py`: independent checks for the cluster
+  chain-ensemble summary tool, including exact inverse-variance weighted mean,
+  internal standard error, between-chain chi-square, error inflation, effective
+  sample-size aggregation, and CSV round trip.
 - `renormalizability_counterterm_checks.py`: finite checks for the
   renormalizability and counterterm discussion, including the one-loop
   \(\phi^3_6\) pole coefficients, the finite-list power-counting logic for

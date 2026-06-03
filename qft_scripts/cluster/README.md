@@ -45,3 +45,19 @@ sbatch --array=0-11 qft_scripts/cluster/slurm/su3_parameter_sweep_array.sbatch
 The array wrapper is a reproducibility and bookkeeping layer.  It does not
 assert Markov-chain mixing, continuum scaling, or independence among nearby
 couplings; those are separate analysis claims.
+
+After an array run has produced one finite summary per chain, use
+`chain_ensemble_summary.py` to form a declared independent-chain estimator
+record:
+
+```bash
+python3 qft_scripts/cluster/chain_ensemble_summary.py \
+  --input results/beta_5p7_chain_summaries.csv
+```
+
+The input CSV columns are `chain,estimate,standard_error`, with an optional
+`effective_sample_size` column.  The output reports the inverse-variance
+weighted estimate, internal standard error, between-chain chi-square,
+error-inflation factor, and effective-sample-size sum when supplied.  This
+summary is a finite estimator record.  It does not prove that the chains are
+independent, equilibrated, or sampling the same scaling window.
