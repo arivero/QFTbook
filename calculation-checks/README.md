@@ -316,7 +316,10 @@ Current checks:
   Witten--Veneziano mass coefficient.  It also verifies the local
   \((\theta,\eta_0)\) curvature matrix, its screening null vector, the
   screened theta Schur complement, and the sign-sensitive mixed derivative
-  fixed by the anomaly-invariant coordinate.
+  fixed by the anomaly-invariant coordinate.  The same script derives the
+  leading isospin-limit \(N_f=3\) neutral \((\pi^0,\eta_8,\eta_0)\) mass
+  matrix from the flavor generators, then checks the \(\eta,\eta'\) trace
+  Witten--Veneziano relation and the determinant/mixing ledger.
 - `qcd_hqet_checks.py`: finite algebra checks for the Volume II HQET
   Wilson-line section, including the mostly-plus heavy-velocity spin
   projectors, the transverse covariant-derivative projector, residual-momentum

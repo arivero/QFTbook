@@ -112,6 +112,66 @@ def check_massless_quark_theta_screening() -> None:
     assert_zero("massless theta screening", minimized)
 
 
+def check_eta_eta_prime_mass_matrix_ledger() -> None:
+    m, ms, b0, m0_sq = sp.symbols("m ms B0 m0_sq", positive=True)
+    m_pi_sq = 2 * b0 * m
+    m_k_sq = b0 * (m + ms)
+
+    mass = sp.diag(m, m, ms)
+    t3 = sp.diag(1, -1, 0) / 2
+    t8 = sp.diag(1, 1, -2) / (2 * sp.sqrt(3))
+    t0 = sp.eye(3) / sp.sqrt(6)
+    generators = [t3, t8, t0]
+    mass_matrix = sp.Matrix(
+        [
+            [
+                4
+                * b0
+                * sp.trace(
+                    mass
+                    * (generators[row] * generators[col] + generators[col] * generators[row])
+                    / 2
+                )
+                for col in range(3)
+            ]
+            for row in range(3)
+        ]
+    )
+    mass_matrix[2, 2] += m0_sq
+
+    expected_neutral = sp.Matrix(
+        [
+            [m_pi_sq, 0, 0],
+            [
+                0,
+                (4 * m_k_sq - m_pi_sq) / 3,
+                -2 * sp.sqrt(2) * (m_k_sq - m_pi_sq) / 3,
+            ],
+            [
+                0,
+                -2 * sp.sqrt(2) * (m_k_sq - m_pi_sq) / 3,
+                (2 * m_k_sq + m_pi_sq) / 3 + m0_sq,
+            ],
+        ]
+    )
+    for row in range(3):
+        for col in range(3):
+            assert_zero(
+                f"eta neutral mass matrix entry {row}{col}",
+                mass_matrix[row, col] - expected_neutral[row, col],
+            )
+
+    eta_block = mass_matrix[1:3, 1:3]
+    trace_relation = sp.trace(eta_block) - 2 * m_k_sq
+    assert_zero("eta eta-prime trace Witten-Veneziano relation", trace_relation - m0_sq)
+
+    determinant_relation = eta_block.det() - (
+        m_pi_sq * (2 * m_k_sq - m_pi_sq)
+        + m0_sq * (4 * m_k_sq - m_pi_sq) / 3
+    )
+    assert_zero("eta eta-prime determinant ledger", determinant_relation)
+
+
 def check_periodic_branch_relabeling() -> None:
     theta, chi = sp.symbols("theta chi")
     k = sp.symbols("k", integer=True)
@@ -167,6 +227,7 @@ def main() -> None:
     check_witten_veneziano_mass_coefficient()
     check_theta_eta_curvature_matrix()
     check_massless_quark_theta_screening()
+    check_eta_eta_prime_mass_matrix_ledger()
     check_periodic_branch_relabeling()
     check_branch_mixture_cluster_covariance()
     check_unique_branch_thermodynamic_selection()
