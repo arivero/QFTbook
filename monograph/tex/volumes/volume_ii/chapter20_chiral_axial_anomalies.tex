@@ -97,6 +97,86 @@ representative; it is not being used as a nonperturbative definition of the
 fermionic path integral.
 \end{warning}
 
+\begin{proposition}[Anomaly-coordinate comparison]
+\label{prop:anomaly-coordinate-comparison}
+Fix a regulated background-field groupoid
+\(\mathcal B_\Lambda//\mathcal G_\Lambda\), with right action
+\(A\mapsto A^g\), and a local regulator chart in which the chiral fermion
+functional is a scalar \(W_\Lambda[A]\).  Then the finite cochain
+\[
+  C_\Lambda(g;A)=W_\Lambda[A^g]-W_\Lambda[A]
+\]
+is the additive coordinate of the anomaly line.  More precisely:
+\begin{enumerate}
+  \item functoriality of the groupoid action gives
+  \(C_\Lambda(gh;A)=C_\Lambda(h;A^g)+C_\Lambda(g;A)\);
+  \item a local counterterm \(B_\Lambda[A]\) changes this coordinate by the
+  coboundary \(B_\Lambda[A^g]-B_\Lambda[A]\);
+  \item after choosing a local frame \(s_A\) for the anomaly line, the
+  exponentiated transport cocycle is
+  \(\alpha_\Lambda(A,g)=\exp C_\Lambda(g;A)\), and the same counterterm is
+  the inverse frame change \(s_A\mapsto \exp(-B_\Lambda[A])s_A\);
+  \item the inflow bulk carries the inverse line coordinate
+  \(\alpha_\Lambda(A,g)^{-1}\);
+  \item differentiating \(C_\Lambda(\exp(t\zeta);A)\) at \(t=0\), then taking
+  the local continuum representative, gives the consistent local anomaly
+  density \(a_4^{(1)}(\zeta,A)\), whose relative BRST class is the
+  perturbative obstruction.
+\end{enumerate}
+Consequently local BRST cancellation removes the obstruction on the identity
+component of the background groupoid, while flat determinant- or Pfaffian-line
+holonomies on based loops remain separate global anomaly data.
+\end{proposition}
+
+\begin{proof}
+The first identity is just the scalar form of functoriality:
+\[
+  W_\Lambda[A^{gh}]-W_\Lambda[A]
+  =
+  \bigl(W_\Lambda[(A^g)^h]-W_\Lambda[A^g]\bigr)
+  +
+  \bigl(W_\Lambda[A^g]-W_\Lambda[A]\bigr).
+\]
+Replacing \(W_\Lambda\) by \(W_\Lambda+B_\Lambda\) gives the displayed
+coboundary.  If the line is locally framed by \(s_A\) and
+\[
+  T_gs_A=\alpha_\Lambda(A,g)s_{A^g},
+\]
+then the frame \(s'_A=\exp(-B_\Lambda[A])s_A\) gives
+\[
+  T_gs'_A
+  =
+  \exp(-B_\Lambda[A])\alpha_\Lambda(A,g)
+  \exp(B_\Lambda[A^g])s'_{A^g},
+\]
+which is the exponential of the same additive coboundary.  The bulk inflow
+line is the inverse anomaly line, so its transport cocycle is
+\(\alpha_\Lambda^{-1}\), and tensoring boundary and bulk transports gives the
+identity transport.
+
+For a one-parameter gauge transformation \(g(t)=\exp(t\zeta)\), the derivative
+of the finite cocycle is
+\[
+  \frac{d}{dt}\bigg|_{t=0}C_\Lambda(g(t);A)
+  =
+  \delta_\zeta W_\Lambda[A].
+\]
+After subtracting local counterterms and passing to the continuum local
+functional, this derivative is represented by
+\(\int_Ma_4^{(1)}(\zeta,A)\).  Differentiating the finite cocycle identity in
+two infinitesimal directions gives the Wess--Zumino consistency condition,
+and replacing the even gauge parameters by the odd ghost gives the relative
+BRST cocycle in \(H^{1,4}(s\mid d)\), developed later in
+Proposition~\ref{prop:local-anomalies-relative-brst-classes}.  A local
+counterterm changes the representative by the corresponding relative
+coboundary.  This infinitesimal argument only sees the identity component of
+the background groupoid.  A flat but nontrivial line holonomy along a based
+loop has zero local curvature and zero local descent class, but still
+prevents a gauge-invariant global scalar section; that global obstruction is
+the determinant/Pfaffian-line story developed in
+Chapter~\ref{ch:curved-eta-invariants-global-anomalies}.
+\end{proof}
+
 For a mass \(m\), the Dirac Lagrangian is
 \[
   \mathcal L

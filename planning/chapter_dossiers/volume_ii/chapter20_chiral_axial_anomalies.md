@@ -121,6 +121,12 @@
   obeys a cocycle identity, and changing the regulated Lagrangian or
   determinant-line frame by a local \(B_\Lambda[A]\) adds the coboundary
   \(B_\Lambda[A^g]-B_\Lambda[A]\).
+- An early coordinate-comparison proposition now ties the finite-regulator
+  cochain, local BRST descent representative, exponentiated anomaly-line
+  transport, inverse inflow line, and determinant/Pfaffian global holonomy
+  together as coordinates on one obstruction-to-descent problem.  Local BRST
+  cancellation controls the identity component, while flat global holonomies
+  are separate based-loop data.
 
 ## Symbols
 
@@ -242,6 +248,10 @@
     \mathcal A([\zeta_1,\zeta_2],A).
   \]
 - Gauge anomalies are ghost-number-one local BRST cohomology classes.
+- The finite-regulator cochain \(C_\Lambda(g;A)\) is the additive coordinate
+  of the anomaly line: it satisfies the groupoid cocycle law, local
+  counterterms add groupoid coboundaries, exponentiation gives the anomaly
+  line transport cocycle, and inflow supplies the inverse line coordinate.
 - The descent construction is now stated as a bicomplex:
   \(\Omega_{\mathrm{loc}}^{p,q}\) carries \(d\) of bidegree \((1,0)\) and
   \(s\) of bidegree \((0,1)\), with \(d^2=s^2=sd+ds=0\).
@@ -541,3 +551,9 @@
   representative but not the relative class.  The companion
   `calculation-checks/inflow_anomaly_line_checks.py` now verifies this
   coboundary arithmetic exactly.
+- 2026-06-03 issue #696 anomaly-coordinate architecture pass: added an early
+  proposition comparing finite-regulator cochains, local BRST descent,
+  anomaly-line transport, inverse inflow coordinates, and global holonomy.
+  The companion `calculation-checks/inflow_anomaly_line_checks.py` now also
+  checks a finite model where the local/descent subgroup is trivial but a flat
+  large-transformation holonomy remains nontrivial.

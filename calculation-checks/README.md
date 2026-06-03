@@ -201,9 +201,10 @@ Current checks:
   cocycles, local counterterm/frame changes of cocycle representatives, the
   finite-regulator scheme-change coboundary identifying cohomologous anomaly
   representatives, the coordinate comparison identifying finite-regulator
-  cochains with line-functor cocycles and inverse inflow phases, and the
-  finite cochain Stokes identity behind the five-dimensional one-form \(BF\)
-  inflow variation.
+  cochains with line-functor cocycles and inverse inflow phases, the
+  separation between vanishing local descent and nontrivial flat global
+  holonomy, and the finite cochain Stokes identity behind the
+  five-dimensional one-form \(BF\) inflow variation.
 - `kms_foundation_checks.py`: finite checks for the Volume X KMS-foundations
   chapter, including the finite Gibbs-trace KMS strip boundary condition,
   detailed balance, spectral reconstruction from \(\rho=G^>-G^<\), the
