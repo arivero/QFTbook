@@ -11984,6 +11984,103 @@ therefore treats the color-glass weight functional as a renormalized
 Wilson-line state, not as a literal probability measure on classical gluon
 fields unless such a measure has been constructed in the chosen regulator.
 
+\paragraph{Projective continuum limit for Wilson-line states.}
+A continuum statement of JIMWLK must be stronger than a sequence of finite
+Balitsky equations.  Let
+\(\{\Lambda_\perp^{(m)}\}_{m\in I}\) be a directed family of finite transverse
+regulators and let
+\(\mathcal A_m=C^\infty(SU(N_c)^{\Lambda_\perp^{(m)}})^{G_{\rm diag}}\) be
+the gauge-invariant Wilson-line algebra on the \(m\)-th regulator.  A
+cylinder observable \(F\) depends on a fixed finite list of transverse labels;
+for all sufficiently fine regulators it has a representative \(F_m\in
+\mathcal A_m\).  A projective Wilson-line state limit on
+\([0,Y_*]\) consists of
+\[
+  \bigl(
+    \omega_{m,Y},\mathcal H_{m,Y},F\mapsto F_m,
+    \omega_Y,\mathcal H^{\rm cyl}_Y,\mathcal I_Y
+  \bigr)
+\]
+with the following data.  First, the finite states are compatible on cylinder
+observables:
+\begin{equation}
+  \sup_{0\le Y\le Y_*}
+  |\omega_{m,Y}(F_m)-\omega_Y(F)|
+  \le \delta_{m,F},
+  \qquad
+  \delta_{m,F}\longrightarrow0 .
+  \label{eq:qcd-jimwlk-projective-state-convergence}
+\end{equation}
+Second, the finite generators converge on the same cylinder test:
+\begin{equation}
+  \sup_{0\le Y\le Y_*}
+  \|
+    \mathcal H_{m,Y}F_m-(\mathcal H^{\rm cyl}_YF)_m
+  \|_\infty
+  \le \varepsilon_{m,F},
+  \qquad
+  \varepsilon_{m,F}\longrightarrow0 .
+  \label{eq:qcd-jimwlk-projective-generator-convergence}
+\end{equation}
+Third, the rapidity dependence is uniformly controlled on cylinder tests, so
+the finite weak equations are equicontinuous in \(Y\) and limits may be
+passed through rapidity integrals.  Fourth, positivity, normalization, and the
+positive-maximum-principle/Markov property hold at finite \(m\) and are closed
+under the cylinder limit.  Fifth, \(\mathcal I_Y\) is the process map: it
+turns the Wilson-line state into the measured small-\(x\) observable with the
+chosen impact factors, subtractions, and power-remainder topology.
+
+Under these hypotheses the finite weak equation has a genuine cylinder
+limit.  Indeed, for \(Y_0<Y_1\),
+\[
+  \omega_{m,Y_1}(F_m)-\omega_{m,Y_0}(F_m)
+  =
+  \int_{Y_0}^{Y_1}
+  \omega_{m,s}(\mathcal H_{m,s}F_m)\,\dd s .
+\]
+After adding and subtracting the limiting terms one obtains the error ledger
+\begin{equation}
+\begin{aligned}
+&
+\left|
+  \omega_{Y_1}(F)-\omega_{Y_0}(F)
+  -
+  \int_{Y_0}^{Y_1}
+    \omega_s(\mathcal H^{\rm cyl}_sF)\,\dd s
+\right|
+\\
+&\qquad\le
+  2\delta_{m,F}
+  +
+  \int_{Y_0}^{Y_1}
+  \bigl(
+    \delta_{m,\mathcal H^{\rm cyl}F}(s)
+    +
+    \varepsilon_{m,F}(s)
+  \bigr)\,\dd s ,
+\end{aligned}
+\label{eq:qcd-jimwlk-projective-weak-limit-budget}
+\end{equation}
+where the right-hand side is written with the corresponding uniform or
+integrable bound on the state error for the generator observable when the
+errors depend on \(s\).  Letting \(m\to\infty\)
+gives the continuum weak equation on the cylinder algebra,
+\[
+  \omega_{Y_1}(F)-\omega_{Y_0}(F)
+  =
+  \int_{Y_0}^{Y_1}
+    \omega_s(\mathcal H^{\rm cyl}_sF)\,\dd s .
+\]
+If \(Y\mapsto\omega_Y(F)\) is absolutely continuous, this is the
+differential weak JIMWLK equation for cylinder observables.  The BK closure
+estimate above controls one projected dipole subsystem and one connected
+covariance coordinate; it does not supply
+\eqref{eq:qcd-jimwlk-projective-state-convergence},
+\eqref{eq:qcd-jimwlk-projective-generator-convergence}, or the process map.
+Thus continuum JIMWLK is a projective theorem about Wilson-line states and
+QCD factorization; the formal functional Hamiltonian names only the candidate
+cylinder generator.
+
 \paragraph{Conformal covariance of the transverse kernel.}
 The measure
 \[

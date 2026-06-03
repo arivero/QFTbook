@@ -270,7 +270,11 @@ Current checks:
   BK-closure ledger: exact \(S\)-to-\(N\) conversion, inward pointing of the
   closed unit-cube vector field, transparent and black-disk fixed points, and
   the \(3L\) finite Gronwall coefficient controlling the connected
-  double-dipole closure error.
+  double-dipole closure error.  It also checks the projective cylinder-limit
+  budget used to pass finite weak JIMWLK equations to a continuum Wilson-line
+  state: representative consistency, the finite-step residual bound, a
+  vanishing error schedule, and the obstruction caused by a nonvanishing
+  generator error.
 - `qcd_tmd_gpd_checks.py`: symbolic checks for the Volume II QCD TMD/GPD
   convention block, including Collins--Soper/UV integrability, finite TMD
   scheme-change covariance, fixed-product rapidity-scale cancellation in

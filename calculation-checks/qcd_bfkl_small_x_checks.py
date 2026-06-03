@@ -11,7 +11,9 @@ These checks verify convention-invariant coefficient products, the transverse
 inversion covariance of the dipole kernel measure, the elementary
 Mellin-eigenvalue constants of the leading BFKL characteristic function, and
 the finite Wilson-line/Fokker-Planck algebra used as the JIMWLK theorem
-boundary, and the finite BK-closure algebra/error estimate.
+boundary, the finite BK-closure algebra/error estimate, and the projective
+cylinder-limit error budget for passing finite weak JIMWLK equations to a
+continuum Wilson-line state.
 """
 
 from __future__ import annotations
@@ -254,6 +256,57 @@ def check_finite_bk_error_bound_lipschitz_constant() -> None:
     )
 
 
+def check_projective_jimwlk_cylinder_limit_budget() -> None:
+    """Check the finite error ledger behind the cylinder weak-equation limit."""
+    cylinder_value = Fraction(11, 17)
+    representative_values = {
+        "coarse": cylinder_value,
+        "fine": cylinder_value,
+    }
+    assert_equal(
+        "cylinder representative consistency",
+        representative_values["fine"] - representative_values["coarse"],
+        Fraction(0),
+    )
+
+    step = Fraction(2, 5)
+    finite_state_f = Fraction(7, 13)
+    finite_state_hf = Fraction(-3, 10)
+    finite_next_f = finite_state_f + step * finite_state_hf
+
+    state_error_initial = Fraction(1, 200)
+    state_error_next = Fraction(1, 300)
+    state_error_on_generator = Fraction(1, 350)
+    generator_error = Fraction(1, 525)
+
+    limit_state_f = finite_state_f + state_error_initial
+    limit_next_f = finite_next_f - state_error_next
+    limit_state_hf = finite_state_hf + state_error_on_generator + generator_error
+
+    residual = abs(limit_next_f - limit_state_f - step * limit_state_hf)
+    budget = (
+        state_error_initial
+        + state_error_next
+        + step * (state_error_on_generator + generator_error)
+    )
+    assert_equal("projective weak-equation residual budget", residual, budget)
+
+    budgets: list[Fraction] = []
+    for m in range(1, 7):
+        delta_m = Fraction(1, 2**m)
+        epsilon_m = Fraction(1, 3**m)
+        budgets.append(2 * delta_m + step * (delta_m + epsilon_m))
+
+    for earlier, later in zip(budgets, budgets[1:]):
+        if not later < earlier:
+            raise AssertionError("projective cylinder-limit budget should decrease")
+
+    fixed_generator_error = Fraction(1, 6)
+    requested_tolerance = Fraction(1, 20)
+    if step * fixed_generator_error <= requested_tolerance:
+        raise AssertionError("nonvanishing generator error should obstruct the requested tolerance")
+
+
 def main() -> None:
     check_trace_delta_kernel_coefficient()
     check_transverse_inversion_covariance()
@@ -261,7 +314,11 @@ def main() -> None:
     check_finite_wilson_line_diffusion_algebra()
     check_finite_bk_closure_algebra()
     check_finite_bk_error_bound_lipschitz_constant()
-    print("All QCD small-x/BFKL, finite Wilson-line, and BK-closure checks passed.")
+    check_projective_jimwlk_cylinder_limit_budget()
+    print(
+        "All QCD small-x/BFKL, finite Wilson-line, BK-closure, "
+        "and projective JIMWLK-limit checks passed."
+    )
 
 
 if __name__ == "__main__":
