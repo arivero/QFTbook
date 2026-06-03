@@ -6216,6 +6216,71 @@ endpoint-control hypothesis on the amplitude, not a property of the BPST
 moduli coordinates alone.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Instanton size-factor split]
+\label{ca:instanton-wilsonian-size-factorization}
+Let \(K_{\Lambda}(\rho;\mu,\mathcal J)\) denote the fully paired
+finite-regulator one-instanton size integrand for a selected source family:
+the center phase, orientation tensor, nonzero-mode determinant, zero-mode
+source coefficient, and any anomaly-line pairing have already been included.
+Fix a finite upper regulator \(\rho_{\max}\) and a factorization scale
+\(\mu_I\) with
+\[
+  0<\rho_I:=\mu_I^{-1}<\rho_{\max}.
+\]
+Then the exact finite-regulator contribution on this size window has the
+split
+\begin{equation}
+  \mathcal A_{\Lambda}^{[0,\rho_{\max}]}
+  =
+  \mathcal A_{\Lambda}^{<}(\mu_I)
+  +
+  \mathcal A_{\Lambda}^{>}(\mu_I),
+  \qquad
+  \mathcal A_{\Lambda}^{<}(\mu_I)
+  =
+  \int_0^{\rho_I}K_\Lambda(\rho)\,\dd\rho ,
+  \quad
+  \mathcal A_{\Lambda}^{>}(\mu_I)
+  =
+  \int_{\rho_I}^{\rho_{\max}}K_\Lambda(\rho)\,\dd\rho .
+  \label{eq:instanton-size-wilsonian-split}
+\end{equation}
+If \(K_\Lambda\) is continuous at \(\rho_I\), the factorization-scale
+derivatives are the boundary flux through the artificial cut:
+\begin{equation}
+  \partial_{\log\mu_I}\mathcal A_{\Lambda}^{<}(\mu_I)
+  =
+  -\rho_I K_\Lambda(\rho_I),
+  \qquad
+  \partial_{\log\mu_I}\mathcal A_{\Lambda}^{>}(\mu_I)
+  =
+  +\rho_I K_\Lambda(\rho_I).
+  \label{eq:instanton-size-factorization-boundary-flow}
+\end{equation}
+Thus \(\mathcal A_{\Lambda}^{[0,\rho_{\max}]}\) is independent of
+\(\mu_I\), while the short-size piece alone is not.
+
+The semiclassical local 't Hooft vertex is therefore a Wilsonian object.  If
+one replaces \(K_\Lambda\) by the one-loop small-size approximation
+\(K_{\rm sc}^{<}\) only for \(0<\rho<\rho_I\), then
+\[
+  C_{\rm inst}^{<}(\mu_I;\mathcal J)
+  =
+  \int_0^{\rho_I}K_{\rm sc}^{<}(\rho;\mu,\mathcal J)\,\dd\rho
+\]
+is a short-instanton coefficient.  Its
+\(-\rho_IK_{\rm sc}^{<}(\rho_I)\) scale derivative is cancelled only by the
+long-distance matrix element or remainder assigned to \(\rho>\rho_I\), up to
+the matching error between \(K_\Lambda\) and \(K_{\rm sc}^{<}\) near the cut.
+Discarding that long part leaves a spurious \(\mu_I\)-dependence whose size is
+precisely the boundary density.  For a hard external scale \(Q\), choosing
+\(\rho_I=R/Q\) identifies this boundary term with the same large-size tail
+diagnostic in \eqref{eq:hard-size-tail-change-variable}.  The computed
+short-instanton coefficient is useful only when this boundary flux and the
+remaining \(\rho>\rho_I\) contribution are controlled by the physical source,
+screening scale, phase, or matching calculation under consideration.
+\end{controlledapproximation}
+
 This hard-size window is the amplitude counterpart of the local
 't Hooft vertex.  The local operator records the \(Q\rho\ll1\) tensor and
 selection rule, while \eqref{eq:hard-momentum-instanton-size-factor} records

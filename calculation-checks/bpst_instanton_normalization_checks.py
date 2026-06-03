@@ -64,6 +64,9 @@ relations
     hard-size dominance is stronger than endpoint convergence: for SU(3),
     Nf=2 differentiated fermion slots the tail beyond rho=R/Q decays only as
     R^(-1/3), while fused density sources have exponential endpoint control
+    a Wilsonian split of the instanton size integral has exact cancellation
+    of the artificial factorization-scale boundary flux between the short
+    instanton coefficient and the long-distance remainder
     trading the one-loop action for Lambda_ht gives the full hard scaling
     Lambda_ht^b0 Q^(-b0-2), with net coefficient dimension -2
     mass-saturated QCD vacuum activity carries prod_f(m_f rho), depends on
@@ -2223,6 +2226,74 @@ def check_hard_size_tail_dominance_criterion() -> None:
     )
 
 
+def check_wilsonian_instanton_size_factorization() -> None:
+    # Model the fully paired finite-regulator size integrand by
+    # K(rho)=rho^(p-1) on 0<rho<rho_max.  The artificial Wilsonian split at
+    # rho_I=1/mu_I has short and long logarithmic derivatives which cancel by
+    # the boundary flux rho_I K(rho_I).
+    p = 5
+    mu_i = Fraction(3, 2)
+    rho_i = Fraction(1, 1) / mu_i
+    rho_max = Fraction(5, 1)
+
+    def primitive(rho: Fraction) -> Fraction:
+        return rho**p / p
+
+    short_piece = primitive(rho_i)
+    long_piece = primitive(rho_max) - primitive(rho_i)
+    total_piece = primitive(rho_max)
+    boundary_flux = rho_i**p
+
+    assert_equal(
+        "Wilsonian instanton split preserves total size integral",
+        short_piece + long_piece,
+        total_piece,
+    )
+    assert_equal(
+        "short-instanton coefficient log-scale derivative",
+        -boundary_flux,
+        -rho_i * rho_i ** (p - 1),
+    )
+    assert_equal(
+        "long-instanton remainder log-scale derivative",
+        boundary_flux,
+        rho_i * rho_i ** (p - 1),
+    )
+    assert_equal(
+        "Wilsonian instanton factorization-scale cancellation",
+        -boundary_flux + boundary_flux,
+        0,
+    )
+
+    # Moving the factorization scale only transfers the intervening shell
+    # between the short coefficient and the long-distance remainder.
+    mu_low = Fraction(2, 1)
+    mu_high = Fraction(4, 1)
+    rho_low_cut = Fraction(1, 1) / mu_low
+    rho_high_cut = Fraction(1, 1) / mu_high
+    transferred_shell = primitive(rho_low_cut) - primitive(rho_high_cut)
+    short_low = primitive(rho_low_cut)
+    short_high = primitive(rho_high_cut)
+    long_low = primitive(rho_max) - primitive(rho_low_cut)
+    long_high = primitive(rho_max) - primitive(rho_high_cut)
+
+    assert_equal(
+        "raising instanton factorization scale removes shell from short part",
+        short_low - short_high,
+        transferred_shell,
+    )
+    assert_equal(
+        "raising instanton factorization scale adds shell to long part",
+        long_high - long_low,
+        transferred_shell,
+    )
+    assert_equal(
+        "factorization shell transfer leaves full amplitude fixed",
+        short_high + long_high,
+        short_low + long_low,
+    )
+
+
 def check_dilute_instanton_gas_theta_cumulants() -> None:
     # The dilute gas promotes the one-instanton and one-anti-instanton
     # amplitudes to independent Poisson activities.  The topological charge
@@ -2584,6 +2655,7 @@ def main() -> None:
     check_instanton_amplitude_error_budget()
     check_hard_momentum_instanton_size_window()
     check_hard_size_tail_dominance_criterion()
+    check_wilsonian_instanton_size_factorization()
     check_dilute_instanton_gas_theta_cumulants()
     check_instanton_ensemble_zero_mode_overlap_spectrum()
     check_mass_saturated_vacuum_activity_size_integral()

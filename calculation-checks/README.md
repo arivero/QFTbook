@@ -462,7 +462,10 @@ Current checks:
   fused-density suppression and the individual-slot power test
   \(b_0+1-3m<-1\), the stronger hard-size dominance criterion showing the
   \(SU(3)\), \(N_f=2\) differentiated-source tail beyond \(\rho=R/Q\) falls
-  only as \(R^{-1/3}\), the one-loop RG-invariant rewrite
+  only as \(R^{-1/3}\), the Wilsonian size-factorization check in which the
+  artificial boundary flux through \(\rho=\mu_I^{-1}\) cancels between the
+  short-instanton coefficient and the long-distance remainder, the one-loop
+  RG-invariant rewrite
   \(\Lambda_{\rm ht}^{b_0}Q^{-b_0-2}\) of the same hard coefficient with the
   large-size endpoint controlled by the selected form-factor mechanism, the
   mass-saturated vacuum-activity size integral with its

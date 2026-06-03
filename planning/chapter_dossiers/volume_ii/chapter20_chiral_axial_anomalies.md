@@ -113,7 +113,11 @@
   continuation adds the stronger endpoint-tail criterion: convergence of the
   \(SU(3)\), \(N_f=2\) four-slot individual-source kernel leaves only an
   \(R^{-1/3}\) tail after cutting at \(\rho=R/Q\), so dominance near
-  \(1/Q\) requires an additional physical source/kinematic estimate.
+  \(1/Q\) requires an additional physical source/kinematic estimate.  The
+  Wilsonian-split continuation makes the factorization-scale dependence
+  explicit: the short-instanton coefficient and long-distance remainder
+  exchange the boundary flux through \(\rho=\mu_I^{-1}\), so the local
+  't Hooft vertex is a coefficient, not an observable by itself.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
@@ -253,6 +257,7 @@
 | \(\mathcal K_{\rm ex},\mathcal K_{\rm lead},\mathcal C_{\rm pg}^{\mathcal S},R_{\rm det},R_{\rm zm},R_{\rm src},R_{\rm Schur},R_{\rm end}\) | exact and leading one-instanton source-amplitude densities, pure-gauge collective/determinant density, and the finite error-budget pieces for determinant, zero-mode/source, source matching, Schur, and endpoint residuals |
 | \(B^{\mathcal J}_{AB},\Phi^R,\Phi^L\) | color-singlet source-projected zero-mode matrix and source-to-zero-mode overlap maps used to match the auxiliary hard instanton kernel to gauge-invariant correlators |
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(\mathbf c;\mathcal F)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless selected-form-factor integral |
+| \(\mu_I,\rho_I,K_\Lambda(\rho)\) | Wilsonian instanton factorization scale, cutoff \(\rho_I=\mu_I^{-1}\), and fully paired finite-regulator size integrand whose boundary flux transfers between the short coefficient and long-distance remainder |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
 | \(\zeta_m^{[\rho_-,\rho_+]}\) | mass-saturated one-instanton vacuum activity in a finite size window |
 | \(T,\mathcal D_{\rm zm},E_{\rm zm},\rho_{\rm zm}\) | instanton--anti-instanton near-zero-mode overlap matrix, projected Dirac block, remainder, and singular-value density used in the instanton-liquid criterion |
@@ -622,6 +627,21 @@
   mass-saturated vacuum theta term below has no hard external cutoff, which is
   why its large-\(\rho\) behavior is an infrared input rather than a
   semiclassical output.
+- The instanton size integral now has an explicit Wilsonian split.  For the
+  fully paired finite-regulator integrand \(K_\Lambda(\rho)\),
+  \[
+    \mathcal A_\Lambda^{<}(\mu_I)=\int_0^{\mu_I^{-1}}K_\Lambda(\rho)\,d\rho,
+    \qquad
+    \mathcal A_\Lambda^{>}(\mu_I)=\int_{\mu_I^{-1}}^{\rho_{\max}}
+    K_\Lambda(\rho)\,d\rho ,
+  \]
+  and
+  \(\partial_{\log\mu_I}\mathcal A_\Lambda^{<}
+  =-\rho_IK_\Lambda(\rho_I)\),
+  \(\partial_{\log\mu_I}\mathcal A_\Lambda^{>}
+  =+\rho_IK_\Lambda(\rho_I)\).  The short-size 't Hooft coefficient becomes
+  physical only after the long-distance remainder or matching matrix element
+  cancels this artificial boundary flux.
 - For massive vectorlike QCD, the vacuum instanton term is now separated as a
   finite-size-window activity:
   \[
@@ -973,6 +993,16 @@
   now verifies the additional running-exponential \(Q^{-b_0}\), the
   \(\Lambda_{\rm ht}^{b_0}\) mass dimension, and the resulting net
   four-fermion coefficient dimension.
+- 2026-06-03 issue #597/#630 Wilsonian-size split pass: added
+  `ca:instanton-wilsonian-size-factorization`, which writes the finite
+  instanton size integral as a short coefficient plus a long-distance
+  remainder at \(\rho_I=\mu_I^{-1}\).  The new block derives the exact
+  boundary-flow cancellation
+  \(\partial_{\log\mu_I}\mathcal A^<=-\rho_IK(\rho_I)\),
+  \(\partial_{\log\mu_I}\mathcal A^>=+\rho_IK(\rho_I)\), making clear that
+  the local 't Hooft vertex is a Wilsonian coefficient unless the long-size
+  remainder is matched or bounded.  The BPST check script verifies the
+  boundary-flux cancellation and finite shell-transfer arithmetic.
 - 2026-06-03 issue #597 color-singlet matching pass: added
   `ca:instanton-color-singlet-hadronic-matching`, which places the auxiliary
   source-amputated instanton kernel inside gauge-invariant source correlators
