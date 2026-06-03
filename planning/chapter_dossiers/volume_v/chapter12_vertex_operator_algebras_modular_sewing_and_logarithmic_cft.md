@@ -105,6 +105,13 @@ current QFT scope.
 
 ## Claim Ledger
 
+- Adds a chapter-level theorem-boundary ladder separating formal VOA and
+  finite-level algebra, fixed-channel analytic block estimates, global sewing
+  across moduli space, and operator-algebraic conformal-net locality.  The
+  ladder also distinguishes rational semisimple, nonrational direct-integral,
+  and logarithmic/nonsemisimple mechanisms so later local calculations are
+  read as proof-boundary exposure rather than as a completed all-surface CFT
+  construction.
 - Gives a self-contained VOA definition with grading, vacuum, state-field
   map, conformal vector, translation, and locality axioms.
 - Derives the chiral OPE expansion from VOA locality and lower truncation.
@@ -292,6 +299,14 @@ current QFT scope.
 
 ## Audit Notes
 
+- 2026-06-03 VOA/modular architecture pass: inserted a front-of-chapter
+  architecture ladder that organizes the existing Zhu, modularity, conformal
+  net, sewing, nonrational, and logarithmic inserts into four layers:
+  formal chiral algebra, fixed-channel analytic estimates, global sewing, and
+  operator-algebraic locality.  This is a coherence/depth pass for #697/#625;
+  it does not claim to prove rational sewing, conformal-net complete
+  rationality, strong-locality correspondence, nonrational sewing, or
+  logarithmic modular closure.
 - 2026-05-26 issue #584 pass: added the VOA/modular-sewing/logarithmic-CFT
   chapter, included it in Volume V, and added the Ising modular-data
   calculation check.

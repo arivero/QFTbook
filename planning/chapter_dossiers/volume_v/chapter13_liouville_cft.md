@@ -53,6 +53,13 @@ boundaries rather than importing the appendix exposition.
 
 ## Claim Ledger
 
+- Adds a chapter-level Liouville comparison ladder separating local
+  background-charge and BPZ/Coulomb-gas calculations, the probabilistic
+  GMC construction, bootstrap coordinates such as DOZZ, elliptic recursion,
+  FZZT/ZZ wavefunctions, and the remaining functorial sewing problem.  This
+  makes explicit that local formula checks do not by themselves prove the
+  probabilistic construction, boundary bootstrap, annulus positivity, or
+  all-surface nonrational CFT gluing.
 - Defines the classical Liouville action with metric, curvature term,
   exponential potential, and all parameters typed.
 - Derives the Euler-Lagrange equation including the curvature and potential
@@ -253,6 +260,12 @@ boundaries rather than importing the appendix exposition.
 
 ## Audit Notes
 
+- 2026-06-03 Liouville architecture pass: inserted a front-of-chapter ladder
+  organizing the chapter as a comparison problem between probabilistic QFT,
+  bootstrap/Virasoro coordinates, continuous spectral decompositions, and
+  closed/bordered sewing.  This is a coherence/depth pass for #697/#625; it
+  does not claim to prove the GKRV construction, DOZZ, FZZT boundary
+  bootstrap, annulus spectral positivity, or functorial Liouville sewing.
 - 2026-05-26 issue #601 partial pass: added a dedicated compiled Liouville
   chapter with classical action, central-charge derivation, Seiberg/GMC
   construction status, DOZZ theorem boundary, BPZ null-vector derivation, and
