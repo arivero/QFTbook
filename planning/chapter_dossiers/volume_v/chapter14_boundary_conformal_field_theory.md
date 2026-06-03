@@ -98,10 +98,12 @@
   objects and module categories supply local finite-categorical sewing data
   for rational examples, while converse/classification and all-surface
   analytic sewing remain external.  The chapter replaces the vague boundary
-  `g`-theorem statement by the boundary entropy gradient formula with explicit
-  trace, entropy, metric, and positivity hypotheses, derives
-  \(g_{\rm UV}\ge g_{\rm IR}\) from it, and adds an `openproblem` for
-  nonrational/continuous-spectrum BCFT sewing.
+  `g`-theorem statement by an explicit boundary entropy gradient input with
+  trace, entropy, Ward-susceptibility, metric, and positivity hypotheses, then
+  proves the local proposition deriving
+  \(d s/d\log L=-B^aG_{ab}B^b\le0\) and \(g_{\rm UV}\ge g_{\rm IR}\) from that
+  datum.  It also adds an `openproblem` for nonrational/continuous-spectrum
+  BCFT sewing.
 - Expands the finite spectral mechanism behind the boundary entropy gradient
   metric: after subtracting the one-point function, a finite half-cylinder
   KMS spectral representation gives positive gap weights
@@ -213,9 +215,10 @@
    prescriptions, and continuous sewing maps with determinant-line
    bookkeeping.  A simple pole crossing adds a residue/evaluation functional;
    omitting that discrete term in one sewing channel changes the amplitude.
-14. Rational Cardy-Lewellen construction and the boundary entropy gradient
-   formula are theorem-boundary inputs; monotonicity of \(g\) is derived from
-   the positive gradient formula, not quoted as an independent
+14. Rational Cardy-Lewellen construction remains a theorem-boundary input, but
+   the boundary entropy block is now split into an analytic gradient input and
+   a locally proved monotonicity proposition.  Monotonicity of \(g\) is derived
+   from the positive gradient formula, not quoted as an independent
    endpoint-classification statement.  The positivity mechanism of the
    gradient metric is spectral: in a finite regulator each positive boundary
    gap contributes the weight `2 kappa^2/(Delta(Delta^2+kappa^2))`.
@@ -345,6 +348,14 @@
   of the boundary two-point function and the positive kernel weight
   \(2\kappa^2/(\Delta(\Delta^2+\kappa^2))\); extended
   `bcft_cardy_checks.py` to verify the rational algebra of this weight.
+- 2026-06-03 boundary entropy dequoting pass: split the former quoted gradient
+  theorem into an analytic boundary entropy gradient input and a local
+  proposition.  The analytic input supplies the trace equation, finite entropy,
+  Ward susceptibility, contact-term prescription, and positive metric; the
+  proposition proves \(\partial_a s=-G_{ab}B^b\),
+  \(d s/d\log L=-B^aG_{ab}B^b\le0\), and \(g_{\rm UV}\ge g_{\rm IR}\) for flows
+  with endpoint limits.  The paired check verifies the finite positive-metric
+  contraction and endpoint entropy inequality.
 - 2026-06-01 finite classifying-center pass: added the finite semisimple
   algebra shadow of non-diagonal rational disk sewing, distinguishing
   central elementary boundary characters from noncentral endomorphism-valued

@@ -1010,6 +1010,62 @@ def check_boundary_gradient_spectral_weight() -> None:
                 raise AssertionError("positive boundary gap produced nonpositive gradient weight")
 
 
+def check_boundary_gradient_monotonicity_from_metric() -> None:
+    """Check the finite algebra of ds/dt = -B^T G B <= 0.
+
+    The analytic BCFT theorem supplies the renormalized Ward susceptibility and
+    the positive metric.  The monograph's local proposition only uses the finite
+    consequence: gradient = -G B and contraction with the RG vector decreases
+    the boundary entropy.
+    """
+
+    metrics = (
+        ((Fraction(2), Fraction(1)), (Fraction(1), Fraction(3))),
+        ((Fraction(5), Fraction(-2)), (Fraction(-2), Fraction(2))),
+        ((Fraction(1), Fraction(0)), (Fraction(0), Fraction(0))),
+    )
+    beta_vectors = (
+        (Fraction(3), Fraction(-1)),
+        (Fraction(1, 2), Fraction(4)),
+        (Fraction(0), Fraction(7)),
+    )
+
+    for metric in metrics:
+        leading_minor = metric[0][0]
+        determinant = metric[0][0] * metric[1][1] - metric[0][1] * metric[1][0]
+        if leading_minor < 0 or determinant < 0:
+            raise AssertionError("sample boundary-gradient metric is not positive semidefinite")
+        for beta in beta_vectors:
+            gradient = tuple(
+                -sum(metric[row][col] * beta[col] for col in range(2))
+                for row in range(2)
+            )
+            entropy_velocity = sum(beta[row] * gradient[row] for row in range(2))
+            quadratic = sum(
+                beta[row] * metric[row][col] * beta[col]
+                for row in range(2)
+                for col in range(2)
+            )
+            assert_equal(
+                "boundary entropy RG contraction equals negative metric norm",
+                entropy_velocity,
+                -quadratic,
+            )
+            if entropy_velocity > 0:
+                raise AssertionError("boundary entropy increased along a positive-metric RG step")
+
+    initial_entropy = Fraction(9, 2)
+    entropy_drops = (Fraction(1, 3), Fraction(2, 5), Fraction(7, 10))
+    final_entropy = initial_entropy - sum(entropy_drops)
+    if final_entropy > initial_entropy:
+        raise AssertionError("boundary entropy endpoint inequality reversed")
+    assert_equal(
+        "boundary entropy endpoint drop",
+        initial_entropy - final_entropy,
+        sum(entropy_drops),
+    )
+
+
 def check_chan_paton_direct_sums() -> None:
     for n in range(1, 5):
         for m in range(1, 5):
@@ -1388,6 +1444,7 @@ def main() -> None:
     check_pointed_laboratory_unified_dependency()
     check_boundary_entropy()
     check_boundary_gradient_spectral_weight()
+    check_boundary_gradient_monotonicity_from_metric()
     check_chan_paton_direct_sums()
     check_ising_boundary_changing_constants()
     check_ising_four_boundary_sewing_cell()

@@ -1709,8 +1709,8 @@ For a Cardy boundary state in a diagonal rational CFT,
 with the vacuum Ishibashi state normalized as in
 \eqref{eq:ishibashi-overlap-character}.
 
-\begin{quotedtheorem}[Boundary entropy gradient formula]
-\label{qthm:boundary-entropy-gradient-formula}
+\begin{hypothesis}[Boundary entropy gradient input]
+\label{hyp:boundary-entropy-gradient-input}
 Let a unitary two-dimensional QFT on a half-cylinder have a fixed conformal
 bulk and a renormalized finite-dimensional chart of boundary couplings
 \(\lambda^a\).  Let \(B^a(\lambda)\) be the boundary RG vector field and
@@ -1733,9 +1733,26 @@ the boundary ground-state energy, and define
   \left(1-L\frac{\partial}{\partial L}\right)\log z(\lambda,L).
   \label{eq:boundary-entropy-away-from-fixed-point}
 \end{equation}
-Under the canonical short-distance and clustering hypotheses needed to
-renormalize the connected boundary two-point functions, there is a positive
-symmetric bilinear form
+Assume the local contact counterterms can be fixed compatibly with boundary
+translation invariance, reflection positivity, and the subtraction in
+\eqref{eq:boundary-entropy-away-from-fixed-point}, so that the finite Ward
+susceptibility identity
+\begin{equation}
+  \partial_a s(\lambda,L)
+  =
+  -\frac12
+  \int_0^L\!\dd\tau_1
+  \int_0^L\!\dd\tau_2\,
+  K_L(\tau_1-\tau_2)
+  \bigl\langle
+    \phi_a(\tau_1)\theta(\tau_2)
+  \bigr\rangle_{\!c}^{\mathrm{ren}},
+  \qquad
+  K_L(\tau)=1-\cos\frac{2\pi\tau}{L}
+  \label{eq:bcft-gradient-ward-susceptibility}
+\end{equation}
+holds on the quotient chart.  Assume also that the connected boundary
+two-point functions define the positive symmetric bilinear form
 \begin{equation}
   G_{ab}(\lambda)
   =
@@ -1748,14 +1765,8 @@ symmetric bilinear form
   \bigl\langle\phi_a(\tau_1)\phi_b(\tau_2)\bigr\rangle_{\!c}^{\mathrm{ren}}
   \label{eq:boundary-gradient-metric}
 \end{equation}
-on the quotient such that
-\begin{equation}
-  \partial_a s(\lambda,L)
-  =
-  -\,G_{ab}(\lambda)B^b(\lambda).
-  \label{eq:boundary-gradient-formula}
-\end{equation}
-\end{quotedtheorem}
+on the quotient by redundant total-derivative directions.
+\end{hypothesis}
 
 The positivity in
 \eqref{eq:boundary-gradient-metric} comes from the spectral representation
@@ -1805,34 +1816,13 @@ identity \eqref{eq:boundary-trace-beta-fields}, and quotient total
 derivative directions so that this finite spectral positivity survives in
 the renormalized coupling chart.
 
-The monotonicity statement is the direct consequence of the gradient formula,
-not an independent classification theorem.  With RG time \(t=\log L\),
-\begin{equation}
-  \frac{d}{dt}s(\lambda(t),L)
-  =
-  B^a\partial_a s
-  =
-  -\,B^aG_{ab}B^b
-  \leq0 .
-  \label{eq:boundary-g-monotonicity-from-gradient}
-\end{equation}
-At a boundary fixed point \(B^a=0\), the quantity \(g=\exp s\) is the
-Affleck--Ludwig disk degeneracy.  Therefore a boundary flow connecting two
-fixed points satisfies
-\[
-  g_{\mathrm{UV}}\ge g_{\mathrm{IR}} .
-\]
-This conclusion gives an ordering constraint on boundary fixed points reached
-by a given unitary boundary RG flow.  It does not determine which conformal
-boundary condition is reached, nor does it supply the annulus or
-Cardy--Lewellen sewing data.
-
 \paragraph{Mechanism of the gradient formula.}
-The theorem identifies a particular renormalized susceptibility with the
-differential of the finite boundary entropy.  We spell out the mechanism
-because the contact-term prescription, the quotient by redundant boundary
-directions, and reflection positivity are part of the mathematical content of
-the statement.
+Hypothesis~\ref{hyp:boundary-entropy-gradient-input} is the analytic input
+behind the finite proposition.  It identifies a particular renormalized
+susceptibility with the differential of the finite boundary entropy.  We spell
+out the mechanism because the contact-term prescription, the quotient by
+redundant boundary directions, and reflection positivity are part of the
+mathematical content of the statement.
 
 Use the sign convention in which the renormalized boundary action is deformed
 by
@@ -1863,29 +1853,44 @@ two-point insertion
 \(\int\!\int\langle\phi_a(\tau_1)\theta(\tau_2)\rangle_c\) together with local
 counterterms.  Those contact terms must be fixed by a renormalization
 prescription compatible with boundary translation invariance, reflection
-positivity, and the subtraction defining \(s=(1-L\partial_L)\log z\).
+positivity, and the subtraction defining \(s=(1-L\partial_L)\log z\).  Equation
+\eqref{eq:bcft-gradient-ward-susceptibility} is the real analytic step in the
+gradient formula: the kernel \(K_L\) is the circle kernel, in this
+normalization, that implements the finite entropy subtraction and removes the
+ambiguous zero-mode and total-derivative pieces after passing to the quotient
+of boundary coupling space.  With weaker analytic control the displayed
+susceptibility records the expected Ward-identity structure rather than a
+proved gradient formula.
 
-With these prescriptions the Ward identity can be written in the finite form
+\begin{proposition}[Boundary entropy monotonicity from the gradient input]
+\label{prop:boundary-entropy-monotonicity-from-gradient-input}
+Under Hypothesis~\ref{hyp:boundary-entropy-gradient-input},
 \begin{equation}
   \partial_a s(\lambda,L)
   =
-  -\frac12
-  \int_0^L\!\dd\tau_1
-  \int_0^L\!\dd\tau_2\,
-  K_L(\tau_1-\tau_2)
-  \bigl\langle
-    \phi_a(\tau_1)\theta(\tau_2)
-  \bigr\rangle_{\!c}^{\mathrm{ren}},
-  \qquad
-  K_L(\tau)=1-\cos\frac{2\pi\tau}{L}.
-  \label{eq:bcft-gradient-ward-susceptibility}
+  -\,G_{ab}(\lambda)B^b(\lambda).
+  \label{eq:boundary-gradient-formula}
 \end{equation}
-Equation \eqref{eq:bcft-gradient-ward-susceptibility} is the real analytic
-step in the gradient formula: the kernel \(K_L\) is the circle kernel, in this
-normalization, that implements the finite entropy subtraction and removes the
-ambiguous zero-mode and total-derivative pieces after passing to the quotient
-of boundary coupling space.  Substituting the trace identity
-\eqref{eq:boundary-trace-beta-fields} gives
+Consequently, along an RG trajectory with \(t=\log L\) and
+\(\dot\lambda^a=B^a(\lambda)\),
+\begin{equation}
+  \frac{d}{dt}s(\lambda(t),L)
+  =
+  B^a\partial_a s
+  =
+  -\,B^aG_{ab}B^b
+  \leq0 .
+  \label{eq:boundary-g-monotonicity-from-gradient}
+\end{equation}
+If the trajectory has conformal endpoints and the finite boundary entropy has
+endpoint limits, then \(g_{\mathrm{UV}}\ge g_{\mathrm{IR}}\), where
+\(g=\exp s\) at a boundary fixed point.
+\end{proposition}
+
+\begin{proof}
+Substitute the trace identity
+\eqref{eq:boundary-trace-beta-fields} into the Ward susceptibility
+\eqref{eq:bcft-gradient-ward-susceptibility}.  At fixed \(\lambda\),
 \[
   \bigl\langle\phi_a(\tau_1)\theta(\tau_2)\bigr\rangle_c^{\mathrm{ren}}
   =
@@ -1895,18 +1900,22 @@ of boundary coupling space.  Substituting the trace identity
   \partial_{\tau_2}
   \bigl\langle\phi_a(\tau_1)j(\tau_2)\bigr\rangle_c^{\mathrm{ren}} .
 \]
-The second term is a redundant direction.  On the quotient it vanishes after
-integration against the Ward kernel and after the prescribed contact
-subtractions.  The first term is exactly the bilinear form
-\eqref{eq:boundary-gradient-metric}, and hence
-\[
-  \partial_a s=-G_{ab}B^b .
-\]
-The positivity of \(G_{ab}\) uses boundary reflection positivity of the
-renormalized theory and the removal of null redundant fields, in addition to
-the trigonometric Ward kernel.  With weaker analytic control the displayed
-formula records the expected Ward-identity structure rather than a proved
-gradient theorem.
+The total-derivative term is a redundant direction; on the quotient in
+Hypothesis~\ref{hyp:boundary-entropy-gradient-input} it vanishes after
+integration against \(K_L\) and after the prescribed contact subtractions.
+The remaining term is exactly
+\(-G_{ab}B^b\) by \eqref{eq:boundary-gradient-metric}, proving
+\eqref{eq:boundary-gradient-formula}.  Contracting with the RG vector field
+gives \eqref{eq:boundary-g-monotonicity-from-gradient}, and positivity of
+\(G\) gives the inequality.  At conformal endpoints \(B=0\) and
+\(g=\exp s\); integrating the monotone inequality from the ultraviolet endpoint
+to the infrared endpoint gives \(g_{\mathrm{UV}}\ge g_{\mathrm{IR}}\).
+\end{proof}
+
+This conclusion gives an ordering constraint on boundary fixed points reached
+by a given unitary boundary RG flow.  It does not determine which conformal
+boundary condition is reached, nor does it supply the annulus or
+Cardy--Lewellen sewing data.
 
 Finally, two-dimensional BCFT fits into the broader boundary/defect language
 of Chapter~\ref{ch:global-boundaries-and-defects}.  A topological line
