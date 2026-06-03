@@ -103,11 +103,17 @@ global anomaly as an explicit mod-two-index example.
   Dai--Freed vector transforms by the inverse cocycle, their pairing is a
   gauge-invariant scalar; changing the filling multiplies this scalar by the
   closed Dai--Freed phase of the glued odd manifold.
-- Adds the intermediate-cut composition algebra for Dai--Freed inflow:
-  successive bulk bordisms compose by evaluating the anomaly line on the
-  common cut, the artificial-cut frame cancels between adjacent factors, and
-  the endpoint-paired amplitude is a scalar independent of that intermediate
-  frame.
+- Adds the intermediate-cut composition algebra for Dai--Freed inflow with
+  the ordinary bordism convention
+  \(\partial Y_{01}=(-M_0)\sqcup M_1\): the inverse Dai--Freed object has
+  variance \(L_{M_0}\otimes L_{M_1}^{-1}\), dual to the relative
+  boundary-QFT transition amplitude, successive bulk bordisms compose by
+  evaluating the anomaly line on the common cut, and the artificial-cut frame
+  cancels between adjacent factors.
+- Separates anomaly-factor composition from full physical gluing: the
+  Dai--Freed line identity is compatible with a separately constructed
+  Hilbert-space/path-integral cut formula, but does not itself supply the
+  state space, measure, gauge fixing, or convergence needed for that formula.
 - Adds an explicit theorem-boundary paragraph separating the pure
   global-analysis inputs (APS Fredholm/heat-kernel theorem,
   Bismut--Freed determinant-line holonomy, Dai--Freed boundary-line gluing,
@@ -135,7 +141,8 @@ global anomaly as an explicit mod-two-index example.
   holonomy before cancellation, and the Quillen spectral-cut
   transition cocycle for determinant-line charts, the reduced-eta integer
   jump at a one-mode crossing, the finite \(U(1)\)-phase algebra behind
-  Dai--Freed gluing, boundary-pairing anomaly cancellation, and
+  Dai--Freed gluing, boundary-pairing anomaly cancellation, typed
+  orientation/variance for the ordinary bordism convention, and
   intermediate-cut frame cancellation for composed inflow amplitudes, and a
   finite cochain Stokes model for the contractible-loop
   curvature-to-descent step.
@@ -256,8 +263,15 @@ global anomaly as an explicit mod-two-index example.
 - 2026-06-03 Dai--Freed composition pass: added the intermediate-cut gluing
   algebra
   `prop:dai-freed-intermediate-cut-frame-cancellation`.  This records the
-  physics-facing amplitude mechanism: two inflow bordisms compose by
-  evaluating the anomaly line on the common cut, and arbitrary frame phases
-  on that cut cancel before endpoint states are paired.  The companion
-  `eta_global_anomaly_checks.py` now verifies this cancellation and
-  associativity in exact finite phase arithmetic.
+  anomaly-factor mechanism: two inflow bordisms compose by evaluating the
+  anomaly line on the common cut, and arbitrary frame phases on that cut
+  cancel.  The companion `eta_global_anomaly_checks.py` verifies this
+  cancellation and associativity in exact finite phase arithmetic.
+- 2026-06-03 Dai--Freed orientation correction: fixed the composition block
+  to use the ordinary bordism convention
+  \(\partial Y_{01}=(-M_0)\sqcup M_1\), so
+  \(Z_{\rm DF}(Y_{01})\in L_{M_0}\otimes L_{M_1}^{-1}\), dual to a relative
+  boundary transition amplitude.  The chapter now states that anomaly-line
+  contraction is not a proof of full physical state/path-integral gluing, and
+  `eta_global_anomaly_checks.py` includes a typed variance diagnostic that
+  rejects the old dualized assignment.

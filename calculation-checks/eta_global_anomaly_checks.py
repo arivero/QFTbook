@@ -6,8 +6,9 @@ Evidence contract.
 Target claims:
     APS boundary-sign bookkeeping, determinant/Pfaffian line coordinate
     algebra, finite action-groupoid descent, Witten SU(2) trace-delta
-    parity arithmetic, and the finite phase algebra used by Dai-Freed
-    gluing, boundary pairing, and intermediate-cut composition.
+    parity arithmetic, typed orientation/variance of Dai-Freed boundary
+    lines, and the finite phase algebra used by Dai-Freed gluing, boundary
+    pairing, and intermediate-cut composition.
 
 Independent construction:
     The checks use exact integer, rational, and finite cyclic phase models
@@ -28,14 +29,16 @@ Negative controls:
     The checks include nontrivial flat stabilizer holonomy before dual-line
     cancellation, nontrivial stabilizer-character obstruction to descent,
     zero-mode exclusion in the APS half-cylinder convention, parity-changing
-    Pfaffian sign crossings, and nontrivial SU(2) mapping-torus generator
-    signs for odd trace-delta index.
+    Pfaffian sign crossings, rejection of the relative boundary-amplitude
+    variance as a Dai-Freed inverse-line variance, and nontrivial SU(2)
+    mapping-torus generator signs for odd trace-delta index.
 
 Scope boundary:
     Passing this script verifies exact finite algebra and convention-sensitive
     coordinates.  It is not a numerical or analytic proof of the continuum
     eta invariant, determinant/Pfaffian line, Dai-Freed theory, or global
-    index theorems.
+    index theorems, and it does not construct physical Hilbert-space or
+    path-integral gluing.
 """
 
 from __future__ import annotations
@@ -46,6 +49,42 @@ from fractions import Fraction
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+
+
+LineType = tuple[int, ...]
+
+
+def invert_line_type(line_type: LineType) -> LineType:
+    return tuple(-entry for entry in line_type)
+
+
+def add_line_types(*line_types: LineType) -> LineType:
+    if not line_types:
+        raise ValueError("at least one line type is required")
+    width = len(line_types[0])
+    if any(len(line_type) != width for line_type in line_types):
+        raise ValueError("line types must have the same width")
+    return tuple(sum(line_type[index] for line_type in line_types) for index in range(width))
+
+
+def dai_freed_bordism_type(source: int, target: int, boundary_count: int) -> LineType:
+    """Line exponents for Z_DF(Y: M_source -> M_target).
+
+    The ordinary bordism convention is boundary(Y) = -M_source union M_target.
+    Since L_{-M} = L_M^{-1} and Z_DF(Y) lives in L_{boundary Y}^{-1}, the
+    source exponent is +1 and the target exponent is -1.
+    """
+
+    boundary_type = [0] * boundary_count
+    boundary_type[source] -= 1
+    boundary_type[target] += 1
+    return invert_line_type(tuple(boundary_type))
+
+
+def relative_boundary_amplitude_type(source: int, target: int, boundary_count: int) -> LineType:
+    """Line exponents for a relative boundary-QFT transition amplitude."""
+
+    return invert_line_type(dai_freed_bordism_type(source, target, boundary_count))
 
 
 def su2_trace_delta_index(n: int) -> int:
@@ -486,6 +525,30 @@ def check_dai_freed_boundary_pairing_cancels_cocycle() -> None:
                 )
 
 
+def check_dai_freed_interface_orientation_variance() -> None:
+    """Typed line-variance check for the ordinary bordism convention."""
+
+    df_01 = dai_freed_bordism_type(0, 1, 3)
+    df_12 = dai_freed_bordism_type(1, 2, 3)
+    df_02 = dai_freed_bordism_type(0, 2, 3)
+    assert_equal("Dai-Freed source-target variance Y01", df_01, (1, -1, 0))
+    assert_equal("Dai-Freed source-target variance Y12", df_12, (0, 1, -1))
+    assert_equal("Dai-Freed source-target variance Y02", df_02, (1, 0, -1))
+    assert_equal("Dai-Freed composition cancels the intermediate line", add_line_types(df_01, df_12), df_02)
+
+    boundary_01 = relative_boundary_amplitude_type(0, 1, 3)
+    boundary_12 = relative_boundary_amplitude_type(1, 2, 3)
+    boundary_02 = relative_boundary_amplitude_type(0, 2, 3)
+    assert_equal("relative boundary amplitude has dual Y01 variance", boundary_01, (-1, 1, 0))
+    assert_equal("relative boundary composition cancels the intermediate line", add_line_types(boundary_01, boundary_12), boundary_02)
+    assert_equal("relative boundary variance is not the Dai-Freed inverse-line variance", boundary_01 == df_01, False)
+    assert_equal(
+        "Dai-Freed and relative boundary amplitudes pair to a scalar",
+        add_line_types(df_02, boundary_02),
+        (0, 0, 0),
+    )
+
+
 def check_dai_freed_interface_composition_frame_cancellation() -> None:
     """Finite phase check for gluing through an intermediate anomaly line."""
 
@@ -495,10 +558,10 @@ def check_dai_freed_interface_composition_frame_cancellation() -> None:
                 direct_composition = (z01 + z12) % phase_modulus
                 for frame_change in range(phase_modulus):
                     # e_1 -> q e_1 sends the coefficient of
-                    # L_0^{-1} tensor L_1 by q^{-1} and the coefficient of
-                    # L_1^{-1} tensor L_2 by q.
-                    transformed_z01 = (z01 - frame_change) % phase_modulus
-                    transformed_z12 = (z12 + frame_change) % phase_modulus
+                    # L_0 tensor L_1^{-1} by q and the coefficient of
+                    # L_1 tensor L_2^{-1} by q^{-1}.
+                    transformed_z01 = (z01 + frame_change) % phase_modulus
+                    transformed_z12 = (z12 - frame_change) % phase_modulus
                     assert_equal(
                         "Dai-Freed intermediate frame cancels in two-step gluing "
                         f"phase={phase_modulus}",
@@ -990,6 +1053,7 @@ def main() -> None:
     check_cech_de_rham_line_holonomy_bookkeeping()
     check_dai_freed_gluing_phase_algebra()
     check_dai_freed_boundary_pairing_cancels_cocycle()
+    check_dai_freed_interface_orientation_variance()
     check_dai_freed_interface_composition_frame_cancellation()
     check_contractible_loop_curvature_stokes()
     check_action_groupoid_anomaly_cocycle_and_descent()

@@ -1236,79 +1236,111 @@ denominator with the same boundary vector \(\Psi(A)\) gives
 \end{proof}
 
 \paragraph{Composition through an intermediate boundary.}
-The same line-valued mechanism controls cutting a physical spacetime into
-successive pieces.  Let \(Y_{01}\) be an invertible bulk bordism from
-\(M_0\) to \(M_1\), and let \(Y_{12}\) be one from \(M_1\) to \(M_2\).
-With orientations fixed by incoming and outgoing boundary components, the
-Dai--Freed vectors have the form
+The same line-valued mechanism controls the anomaly factor when a physical
+spacetime is cut into successive pieces.  We use the ordinary bordism
+orientation convention of Chapter~\ref{ch:tqft-bordism-functoriality-extended}:
+a bordism \(Y_{01}:M_0\to M_1\) has
 \[
-  Z_{\rm DF}(Y_{01})\in L_{M_0}^{-1}\otimes L_{M_1},
+  \partial Y_{01}=(-M_0)\sqcup M_1 .
+\]
+Orientation reversal dualizes the anomaly line,
+\(L_{-M}\simeq L_M^{-1}\).  Since the Dai--Freed object for a manifold with
+boundary is a vector in the inverse line over the full boundary, this gives
+\[
+  Z_{\rm DF}(Y_{01})
+  \in
+  L_{\partial Y_{01}}^{-1}
+  \simeq
+  (L_{-M_0}\otimes L_{M_1})^{-1}
+  \simeq
+  L_{M_0}\otimes L_{M_1}^{-1}.
+\]
+Thus the Dai--Freed bulk has the dual variance to a relative boundary-QFT
+transition amplitude from \(M_0\) to \(M_1\), which would live in
+\(L_{M_0}^{-1}\otimes L_{M_1}\).  The former is the inverse anomaly factor
+that cancels the latter; it is not itself the physical transition kernel.
+
+For successive invertible bulk bordisms \(Y_{01}:M_0\to M_1\) and
+\(Y_{12}:M_1\to M_2\), the resulting Dai--Freed vectors have the form
+\[
+  Z_{\rm DF}(Y_{01})\in L_{M_0}\otimes L_{M_1}^{-1},
   \qquad
-  Z_{\rm DF}(Y_{12})\in L_{M_1}^{-1}\otimes L_{M_2}.
+  Z_{\rm DF}(Y_{12})\in L_{M_1}\otimes L_{M_2}^{-1}.
 \]
 Their composition is obtained by evaluating the two \(M_1\)-factors:
 \begin{equation}
   Z_{\rm DF}(Y_{12}\circ Y_{01})
   =
-  \bigl(\operatorname{id}_{L_{M_0}^{-1}}
+  \bigl(\operatorname{id}_{L_{M_0}}
   \otimes\operatorname{ev}_{L_{M_1}}
-  \otimes\operatorname{id}_{L_{M_2}}\bigr)
+  \otimes\operatorname{id}_{L_{M_2}^{-1}}\bigr)
   \bigl(Z_{\rm DF}(Y_{01})\otimes Z_{\rm DF}(Y_{12})\bigr).
   \label{eq:dai-freed-interface-composition}
 \end{equation}
-This is the anomaly-line form of locality.  A boundary Hilbert-space matrix
-element, or a Euclidean transition amplitude, is first a tensor in the
-anomaly lines attached to the exposed cuts.  When two adjacent regions are
-glued, the anomaly factors on the common cut are paired away.  The result is
-the same line-valued amplitude that the uncut region assigns to its remaining
-boundary.
+Here
+\(\operatorname{ev}_{L_{M_1}}:L_{M_1}^{-1}\otimes L_{M_1}\to\mathbb C\)
+is the evaluation pairing, with the displayed tensor order understood.  In
+the real Pfaffian case \(L_M\) is a \(\mathbb Z_2\)-graded real superline;
+the formulas above are written in the order in which the intermediate factors
+are evaluated, and any reordering of odd Pfaffian factors uses the Koszul sign
+rule.
+
+This is only the anomaly-line component of locality.  A boundary
+Hilbert-space matrix element, or a Euclidean transition amplitude, also
+requires an actual state space, pairing or integration measure, gauge
+treatment, and topology/convergence statement.  Once that physical gluing
+operation has been separately constructed, the anomaly factors on the common
+cut are paired away by \eqref{eq:dai-freed-interface-composition}; the line
+identity alone does not construct the sum or integral over physical degrees
+of freedom.
 
 \begin{proposition}[Intermediate-cut frame cancellation]
 \label{prop:dai-freed-intermediate-cut-frame-cancellation}
 Choose local frames \(e_i\) of the anomaly lines \(L_{M_i}\).  Write
 \[
-  Z_{\rm DF}(Y_{01})=z_{01}\,e_0^{-1}\otimes e_1,
+  Z_{\rm DF}(Y_{01})=z_{01}\,e_0\otimes e_1^{-1},
   \qquad
-  Z_{\rm DF}(Y_{12})=z_{12}\,e_1^{-1}\otimes e_2.
+  Z_{\rm DF}(Y_{12})=z_{12}\,e_1\otimes e_2^{-1}.
 \]
 Then the composed coefficient in
-\(L_{M_0}^{-1}\otimes L_{M_2}\) is \(z_{01}z_{12}\), and it is independent
+\(L_{M_0}\otimes L_{M_2}^{-1}\) is \(z_{01}z_{12}\), and it is independent
 of the choice of frame \(e_1\) on the glued boundary.  If the frame on
 \(M_1\) is changed by \(e_1\mapsto q e_1\), \(q\in U(1)\), the two
-coefficients transform as \(z_{01}\mapsto q^{-1}z_{01}\) and
-\(z_{12}\mapsto q z_{12}\); their product is unchanged.  The same statement
+coefficients transform as \(z_{01}\mapsto qz_{01}\) and
+\(z_{12}\mapsto q^{-1}z_{12}\); their product is unchanged.  The same statement
 holds for real Pfaffian lines with \(q=\pm1\).
 \end{proposition}
 
 \begin{proof}
 The evaluation pairing satisfies
-\(\operatorname{ev}_{L_{M_1}}(e_1\otimes e_1^{-1})=1\).  Substituting the
+\(\operatorname{ev}_{L_{M_1}}(e_1^{-1}\otimes e_1)=1\).  Substituting the
 two displayed expressions into
 \eqref{eq:dai-freed-interface-composition} gives
 \[
   Z_{\rm DF}(Y_{12}\circ Y_{01})
   =
-  z_{01}z_{12}\,e_0^{-1}\otimes e_2 .
+  z_{01}z_{12}\,e_0\otimes e_2^{-1}.
 \]
 After the frame change \(e_1'=q e_1\), the same vectors are written as
 \[
-  Z_{\rm DF}(Y_{01})=(q^{-1}z_{01})\,e_0^{-1}\otimes e_1',
+  Z_{\rm DF}(Y_{01})=(qz_{01})\,e_0\otimes (e_1')^{-1},
   \qquad
-  Z_{\rm DF}(Y_{12})=(q z_{12})\,(e_1')^{-1}\otimes e_2.
+  Z_{\rm DF}(Y_{12})=(q^{-1}z_{12})\,e_1'\otimes e_2^{-1}.
 \]
 The product of the two coefficients is still \(z_{01}z_{12}\), which is the
 coefficient of the glued bordism in the remaining endpoint lines.
 \end{proof}
 
-When a boundary fermion vector \(\Psi_0\in L_{M_0}\) and a final state
-functional \(\Phi_2\in L_{M_2}^{-1}\) are paired with the composed bulk
-vector, all exposed anomaly lines are evaluated and the result is an
-ordinary number.  Equation \eqref{eq:dai-freed-interface-composition} says
-that this number may be computed by first cutting at \(M_1\), summing over
-the physical degrees of freedom on that cut, and evaluating the anomaly-line
-factors there.  All phase data are carried by the exposed endpoint lines and
-by the closed-manifold eta phase that compares two different global gluings,
-as in \eqref{eq:dai-freed-filling-change-closed-phase}.
+When a relative boundary-theory amplitude
+\(\mathcal U_{02}\in L_{M_0}^{-1}\otimes L_{M_2}\) is paired with the
+composed bulk vector, all exposed anomaly lines are evaluated and the result
+is an ordinary number.  If the physical theory supplies a valid cut formula
+for \(\mathcal U_{02}\) through \(M_1\), then
+\eqref{eq:dai-freed-interface-composition} says that the anomaly-line part of
+that cut formula is independent of the artificial frame on \(M_1\).  All
+phase data are carried by the exposed endpoint lines and by the
+closed-manifold eta phase that compares two different global anomaly-line
+trivializations, as in \eqref{eq:dai-freed-filling-change-closed-phase}.
 
 \paragraph{Local descent as the infinitesimal limit of inflow.}
 For a contractible loop of background fields, the Dai--Freed holonomy reduces
@@ -1405,10 +1437,14 @@ cocycle criterion: a chiral determinant descends to the quotient by gauge
 transformations if and only if the anomaly line admits an equivariant
 trivialization; local counterterms alter the cocycle by a coboundary; based
 loop holonomies are invariant.  The Dai--Freed construction supplies the
-boundary vector in the inverse anomaly line and its gluing law.  From that
-line-valued statement the text derives the inflow cancellation criterion and
+boundary vector in the inverse anomaly line, its orientation-dual composition
+law, and the cancellation of anomaly factors on artificial cuts.  From those
+line-valued statements the text derives the inflow cancellation criterion and
 the contractible-loop reduction to the same descent representative used in
-the perturbative anomaly chapter.  Finally, the real mod-two index theorem
+the perturbative anomaly chapter.  They do not by themselves construct the
+physical Hilbert-space pairing, path-integral measure, gauge fixing, or
+convergence needed for a full QFT gluing theorem.  Finally, the real mod-two
+index theorem
 supplies the value of the Pfaffian holonomy for the Witten \(SU(2)\)
 mapping torus.  The trace-delta normalization, the \(2j\equiv1\pmod4\)
 parity criterion, the tensor-product cancellation condition, and the
