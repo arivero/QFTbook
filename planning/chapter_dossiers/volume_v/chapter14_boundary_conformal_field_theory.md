@@ -190,6 +190,13 @@
   inversion \(\psi_{x,h}=\sum_{\chi\in\widehat H}\chi(h)e_{x,\chi}\), and the
   annulus, boundary OPE, classifying idempotents, and two-point pairings are
   explicitly presented as projections of one finite module-category datum.
+- Adds an annulus-shadow nonreconstruction diagnostic: the same endpoint
+  annulus matrices \(n_1=n_h=1\) are compatible, as graded vector-space data,
+  with both the semisimple stabilizer algebra \(\mathbb C[\mathbb Z_2]\) and a
+  nilpotent two-dimensional algebra.  The latter fails the nontrivial
+  idempotent split and has a degenerate coefficient-of-identity pairing on the
+  stabilizer sector, showing that annulus spectra do not determine boundary OPE
+  multiplication, classifying projectors, or two-point sewing.
 
 ## Claims To Verify
 
@@ -281,19 +288,23 @@
     boundary-OPE composition has the same endpoint as annulus multiplication,
     and stabilizer Fourier inversion recovers endpoint-preserving fields from
     the classifying idempotents.
-24. Local BCFT sewing cells imply all-surface decomposition independence only
+24. Annulus endpoint spectra do not reconstruct boundary sewing data: the
+    semisimple stabilizer algebra and a nilpotent two-dimensional algebra have
+    the same endpoint annulus shadow but different multiplication, idempotent
+    decomposition, and two-point pairing behavior.
+25. Local BCFT sewing cells imply all-surface decomposition independence only
     through a generated move graph: along a finite path, the total amplitude
     defect is bounded by the telescoping sum of local move defects propagated by
     later sewing transports.  Zero local defects plus closed-loop compatibility
     gives path independence on a connected move graph; analytic construction of
     the actual infinite-dimensional move graph remains a theorem boundary.
-25. Projective determinant-line factors in sewing are a separate obstruction
+26. Projective determinant-line factors in sewing are a separate obstruction
     from vector-valued local move defects.  On a finite move graph they can be
     removed by choosing vertex trivializations exactly when the edge scalars
     form a coboundary.  Scalar sewing independence after forgetting the line is
     governed by the total closed-loop transport \(\lambda_\ell T_\ell\), not by
     the scalar line phase alone.
-26. A full BCFT construction has a strict dependency order: closed/chiral
+27. A full BCFT construction has a strict dependency order: closed/chiral
     input, boundary Hilbert or spectral data, compatible annulus/disk/OPE/
     two-point coordinates, local sewing moves in a common normalization, and
     finally generated all-surface sewing.  The Ising, pointed rational, and
@@ -322,6 +333,8 @@
   the pointed stabilizer classifying-idempotent slide identity,
   the unified pointed-laboratory dependency check tying annulus entries to
   boundary-field counts, OPE endpoints, and stabilizer Fourier inversion,
+  the annulus-shadow nonreconstruction check comparing semisimple and nilpotent
+  endpoint-preserving algebras with the same annulus shadow,
   boundary entropy squares, Ising
   boundary-changing fusing constants and OPE powers, the finite Ising
   four-boundary Cardy--Lewellen sewing cell, the \(A=1\)
@@ -486,6 +499,12 @@
   from classifying idempotents by Fourier inversion, and states that these are
   compatible projections of one module-category datum rather than independent
   evidence for full analytic sewing.
+- 2026-06-03 annulus-shadow nonreconstruction pass: added the finite diagnostic
+  that endpoint annulus matrices alone do not reconstruct boundary sewing data.
+  The semisimple stabilizer algebra and a nilpotent two-dimensional algebra
+  have identical endpoint annulus shadows but differ in idempotents,
+  multiplication, and two-point pairing; the exact check prevents spectra from
+  being mistaken for a full boundary OPE/classifying datum.
 - 2026-06-03 generated-sewing architecture pass: added the finite move graph and
   move-defect budget near the chapter front.  The text now explains exactly how
   local annulus, boundary-OPE, disk, Frobenius/module, contour, and anomaly-line

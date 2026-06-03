@@ -1976,6 +1976,71 @@ adds the analytic sewing maps; the finite formulas above should be read as
 one dependency diagram, not as independent evidence for the all-surface
 theorem.
 
+\paragraph{Annulus shadows versus sewing data.}
+In the pointed \(G/H\) laboratory, the endpoint annulus matrices do not
+determine the endpoint-preserving boundary algebra, its classifying idempotents,
+or its two-point sewing pairing.  More precisely, the annulus shadow
+\[
+  n_{(0,0)}=n_{(1,0)}=\mathbf 1
+\]
+is compatible with the semisimple stabilizer algebra
+\[
+  E_{\rm ss}=\mathbb C\{1,\tau\},\qquad \tau^2=1,
+\]
+which has primitive idempotents
+\[
+  e_\pm=\frac12(1\pm\tau),
+\]
+but the same endpoint-dimension shadow is also compatible, as a graded vector
+space, with the nilpotent algebra
+\[
+  E_{\rm nil}=\mathbb C\{1,\epsilon\},\qquad \epsilon^2=0.
+\]
+The latter has no nontrivial idempotent decomposition and the
+coefficient-of-\(1\) two-point pairing is degenerate on the \(\epsilon\)
+sector.  Hence the annulus endpoint spectrum by itself is not enough data for
+Cardy--Lewellen sewing; the boundary OPE multiplication, the classifying
+idempotents, and the Frobenius two-point functional are additional structure.
+
+The finite verification is direct.  Both algebras have a one-dimensional
+vacuum-labeled endomorphism sector and a one-dimensional stabilizer-labeled
+endomorphism sector at the same boundary
+endpoint.  Therefore the annulus matrix which records only endpoint
+multiplicity is the identity matrix for both labels \(1\) and the nontrivial
+stabilizer label.
+
+In \(E_{\rm ss}\),
+\[
+  e_\pm^2=e_\pm,\qquad e_+e_-=0,\qquad e_++e_-=1.
+\]
+With \(\varepsilon_{\rm ss}(1)=1\) and \(\varepsilon_{\rm ss}(\tau)=0\), the
+pairing \((x,y)\mapsto\varepsilon_{\rm ss}(xy)\) satisfies
+\[
+  \varepsilon_{\rm ss}(e_\pm e_\pm)=\frac12,\qquad
+  \varepsilon_{\rm ss}(e_+e_-)=0.
+\]
+This is the finite classifying-sector splitting used above.
+
+In \(E_{\rm nil}\), an idempotent \(p=a+b\epsilon\) satisfies
+\[
+  a^2=a,\qquad 2ab=b.
+\]
+The first equation gives \(a=0\) or \(a=1\), and then the second gives
+\(b=0\).  Thus the only idempotents are \(0\) and \(1\).  With the same
+annulus-normalized coefficient-of-\(1\) functional
+\(\varepsilon_{\rm nil}(1)=1\), \(\varepsilon_{\rm nil}(\epsilon)=0\), the
+pairing obeys
+\[
+  \varepsilon_{\rm nil}(\epsilon\epsilon)=0,
+\]
+so the stabilizer sector has no inverse two-point partner in that pairing.
+The two finite systems therefore have the same endpoint annulus shadow but
+different boundary OPE and classifying-sector data.  The semisimple rational
+construction excludes the nilpotent alternative by its Frobenius-module
+identities, while positivity supplies the corresponding two-point
+nondegeneracy.  The example shows why these inputs are not recoverable from
+annulus spectra alone.
+
 The disk partition function defines the Affleck--Ludwig boundary entropy.
 For a Cardy boundary state in a diagonal rational CFT,
 \begin{equation}

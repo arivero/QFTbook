@@ -1133,7 +1133,9 @@ Current checks:
   the pointed stabilizer classifying-idempotent slide identity and Frobenius
   two-point/inverse-sector pairing, the unified pointed-laboratory dependency
   check tying annulus entries to boundary-field counts, OPE endpoints, and
-  stabilizer Fourier inversion, boundary
+  stabilizer Fourier inversion, the annulus-shadow nonreconstruction check
+  comparing semisimple and nilpotent endpoint-preserving algebras with the same
+  annulus matrices, boundary
   entropy squares, Chan--Paton direct sums, the positive spectral
   weight and finite monotonicity contraction in the boundary-entropy gradient
   metric, compact-boson T-duality zero modes,

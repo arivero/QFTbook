@@ -1180,6 +1180,122 @@ def check_pointed_laboratory_unified_dependency() -> None:
         raise AssertionError("stabilizer idempotent resolution collapsed")
 
 
+StabilizerAlgebraElement = tuple[Fraction, Fraction]
+
+
+def two_dimensional_stabilizer_product(
+    left: StabilizerAlgebraElement,
+    right: StabilizerAlgebraElement,
+    generator_square: Fraction,
+) -> StabilizerAlgebraElement:
+    left_one, left_generator = left
+    right_one, right_generator = right
+    return (
+        left_one * right_one + generator_square * left_generator * right_generator,
+        left_one * right_generator + left_generator * right_one,
+    )
+
+
+def check_annulus_shadow_nonreconstruction() -> None:
+    """Check that annulus endpoint data alone do not reconstruct sewing data."""
+
+    one = (Fraction(1), Fraction(0))
+    zero = (Fraction(0), Fraction(0))
+    generator = (Fraction(0), Fraction(1))
+    semisimple_annulus_shadow = {
+        "vacuum": ((1, 0), (0, 1)),
+        "stabilizer": ((1, 0), (0, 1)),
+    }
+    nilpotent_annulus_shadow = {
+        "vacuum": ((1, 0), (0, 1)),
+        "stabilizer": ((1, 0), (0, 1)),
+    }
+    assert_equal(
+        "semisimple and nilpotent endpoint data have the same annulus shadow",
+        semisimple_annulus_shadow,
+        nilpotent_annulus_shadow,
+    )
+
+    semisimple_square = Fraction(1)
+    nilpotent_square = Fraction(0)
+    assert_equal(
+        "semisimple stabilizer generator has inverse sector",
+        two_dimensional_stabilizer_product(generator, generator, semisimple_square),
+        one,
+    )
+    assert_equal(
+        "nilpotent stabilizer generator lacks inverse sector",
+        two_dimensional_stabilizer_product(generator, generator, nilpotent_square),
+        zero,
+    )
+
+    e_plus = (Fraction(1, 2), Fraction(1, 2))
+    e_minus = (Fraction(1, 2), Fraction(-1, 2))
+    assert_equal(
+        "semisimple stabilizer plus idempotent",
+        two_dimensional_stabilizer_product(e_plus, e_plus, semisimple_square),
+        e_plus,
+    )
+    assert_equal(
+        "semisimple stabilizer minus idempotent",
+        two_dimensional_stabilizer_product(e_minus, e_minus, semisimple_square),
+        e_minus,
+    )
+    assert_equal(
+        "semisimple stabilizer orthogonal idempotents",
+        two_dimensional_stabilizer_product(e_plus, e_minus, semisimple_square),
+        zero,
+    )
+    assert_equal(
+        "nilpotent algebra does not support the same plus idempotent",
+        two_dimensional_stabilizer_product(e_plus, e_plus, nilpotent_square)
+        == e_plus,
+        False,
+    )
+
+    samples = (
+        Fraction(-1),
+        Fraction(0),
+        Fraction(1, 2),
+        Fraction(1),
+        Fraction(2),
+    )
+    for scalar in samples:
+        for generator_coefficient in samples:
+            element = (scalar, generator_coefficient)
+            is_idempotent = (
+                two_dimensional_stabilizer_product(element, element, nilpotent_square)
+                == element
+            )
+            expected = element in (zero, one)
+            assert_equal(
+                "nilpotent stabilizer sample idempotents are only zero and one "
+                f"a={scalar}, b={generator_coefficient}",
+                is_idempotent,
+                expected,
+            )
+
+    def trace_identity_coefficient(element: StabilizerAlgebraElement) -> Fraction:
+        return element[0]
+
+    semisimple_generator_pairing = trace_identity_coefficient(
+        two_dimensional_stabilizer_product(generator, generator, semisimple_square)
+    )
+    nilpotent_generator_pairing = trace_identity_coefficient(
+        two_dimensional_stabilizer_product(generator, generator, nilpotent_square)
+    )
+    assert_equal(
+        "semisimple stabilizer two-point pairing sees stabilizer sector",
+        semisimple_generator_pairing,
+        Fraction(1),
+    )
+    assert_equal(
+        "nilpotent endpoint shadow has degenerate identity-coefficient pairing",
+        nilpotent_generator_pairing,
+        Fraction(0),
+    )
+
+
 def check_boundary_entropy() -> None:
     entropies = [S[a][0] / S[0][0] for a in range(3)]
     # The displayed g_a is S_{a0}/sqrt(S_{00}); its square is S_{a0}^2/S_{00}.
@@ -1798,6 +1914,7 @@ def main() -> None:
     check_pointed_module_boundary_ope_associativity()
     check_pointed_stabilizer_classifying_idempotents()
     check_pointed_laboratory_unified_dependency()
+    check_annulus_shadow_nonreconstruction()
     check_boundary_entropy()
     check_boundary_gradient_spectral_weight()
     check_boundary_gradient_monotonicity_from_metric()
@@ -1817,7 +1934,8 @@ def main() -> None:
         "matrix-Frobenius, finite-center, pointed-nimrep, Chan-Paton, "
         "annulus-nimrep-spectral-resolution, "
         "pointed-annulus-Fourier, pointed-boundary-OPE, "
-        "pointed-stabilizer-slide, pointed-laboratory-unified, compact-boson, "
+        "pointed-stabilizer-slide, pointed-laboratory-unified, "
+        "annulus-shadow-nonreconstruction, compact-boson, "
         "Liouville-boundary, continuous-annulus Plancherel, "
         "nonrational-pole-residue, bordered-sewing-budget, and "
         "finite-sewing-anomaly-cocycle checks passed."
