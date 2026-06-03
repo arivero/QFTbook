@@ -1044,7 +1044,9 @@ Current checks:
   quotient \(s\sim -s\) and the exact simple-pole residue/evaluation algebra
   behind nonrational contour-crossing prescriptions, as well as the finite
   move-defect budget that turns local bordered-sewing defects into a global
-  decomposition-independence error bound.
+  decomposition-independence error bound and the finite sewing-anomaly
+  cocycle check separating removable coboundary phases from nontrivial
+  closed-loop holonomy.
 - `liouville_bpz_checks.py`: exact algebra checks for the Liouville chapter,
   including the probabilistic GMC threshold normalization
   \(Q_\gamma=2/\gamma+\gamma/2=b+b^{-1}\) and the distinction between the

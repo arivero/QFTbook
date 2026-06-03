@@ -144,6 +144,80 @@ move graph is generated on a complete topological state space with convergent
 multilinear sewing maps; that is why the all-surface construction remains a
 quoted theorem or open problem rather than a consequence of the examples.
 
+\begin{definition}[Finite sewing anomaly cocycle]
+\label{def:bcft-finite-sewing-anomaly-cocycle}
+In the setting of Proposition~\ref{prop:bcft-finite-move-defect-budget},
+suppose the amplitudes are not scalar vectors but vectors in one-dimensional
+anomaly lines \(\mathcal L_v\) over the vertices of the move graph.  After
+choosing local trivializations of these lines, an elementary sewing move
+\(e:u\to v\) is represented by a scalar \(\lambda_e\in\mathbb C^\times\)
+times the ordinary transport \(T_e\).  For a path
+\(p=e_N\cdots e_1\), set
+\[
+  \lambda_p=\lambda_{e_N}\cdots\lambda_{e_1}.
+\]
+The scalar \(\lambda_\ell\) on a closed loop \(\ell\) is the finite
+projective sewing anomaly.  The anomaly cocycle is trivial on a connected
+move graph if there are nonzero vertex scalars \(\eta_v\) such that
+\begin{equation}
+  \lambda_e=\eta_v\eta_u^{-1}
+  \qquad(e:u\to v).
+  \label{eq:bcft-sewing-anomaly-coboundary}
+\end{equation}
+\end{definition}
+
+\begin{proposition}[Trivializing a finite sewing anomaly]
+\label{prop:bcft-finite-sewing-anomaly-trivialization}
+Let \(\mathcal G\) be a connected finite move graph with projective sewing
+scalars \(\lambda_e\).  Suppose the local projective defects vanish:
+\[
+  A_v=\lambda_e T_e A_u
+  \qquad(e:u\to v).
+\]
+If \(\lambda_e\) has the coboundary form
+\eqref{eq:bcft-sewing-anomaly-coboundary}, then the rescaled amplitudes
+\[
+  \widetilde A_v=\eta_v^{-1}A_v
+\]
+obey ordinary zero-defect sewing,
+\[
+  \widetilde A_v=T_e\widetilde A_u .
+\]
+Conversely, if a closed loop has \(\lambda_\ell\ne1\), no such vertex
+trivialization exists on the component containing that loop; a nonzero scalar
+amplitude can be decomposition-independent only as a section of the anomaly
+line, not after forgetting the line.
+\end{proposition}
+
+\begin{proof}
+Substituting \(\lambda_e=\eta_v\eta_u^{-1}\) gives
+\[
+  \widetilde A_v
+  =
+  \eta_v^{-1}A_v
+  =
+  \eta_v^{-1}\lambda_eT_eA_u
+  =
+  T_e\eta_u^{-1}A_u
+  =
+  T_e\widetilde A_u .
+\]
+For the converse, multiply
+\eqref{eq:bcft-sewing-anomaly-coboundary} around a closed loop
+\(\ell=e_N\cdots e_1\).  The vertex factors telescope, so every coboundary
+has \(\lambda_\ell=1\).  A loop with \(\lambda_\ell\ne1\) therefore cannot
+come from vertex rescalings.  Transporting a nonzero scalar amplitude around
+that loop multiplies it by \(\lambda_\ell\), contradicting scalar
+decomposition independence unless the anomaly line is retained.
+\end{proof}
+
+This is the finite model for determinant-line bookkeeping in bordered CFT.
+The analytic sewing theorem must construct the relevant anomaly line over
+the moduli/decomposition groupoid, identify the line transports produced by
+cutting and gluing, and either trivialize their cocycle or keep amplitudes as
+line-valued sections.  Local Cardy--Lewellen algebra controls the vector part
+of the move; it does not by itself cancel a closed-loop anomaly.
+
 For a boundary equal to the real axis in the upper half-plane
 \(\mathbb H=\{z=x+\ii y\mid y\ge0\}\), the stress tensor has components
 \[
@@ -2014,7 +2088,9 @@ conformal field theory has to pass through the following layers.
   generate the changes of bordered-surface decomposition, their defects must
   telescope as in
   Proposition~\ref{prop:bcft-finite-move-defect-budget}, and closed-loop
-  transports must be trivial after the anomaly line has been included.
+  transports must either be trivialized as in
+  Proposition~\ref{prop:bcft-finite-sewing-anomaly-trivialization} or kept as
+  honest anomaly-line transports.
 \end{enumerate}
 The diagonal Ising example closes the first few rational finite checks for a
 specific modular tensor category and boundary basis.  The pointed \(G/H\)
@@ -2052,5 +2128,7 @@ test-space, open spectral-measure, operator-domain, pole-prescription, and
 determinant-line requirements stated above, and must prove that the rational
 finite-sum construction and the Liouville direct-integral construction are
 two limits of the same sewing notion rather than two unrelated calculational
-recipes.
+recipes.  In particular, closed-loop sewing phases must be identified as a
+trivializable determinant-line cocycle, or the resulting amplitudes must be
+kept as line-valued rather than scalar correlators.
 \end{openproblem}

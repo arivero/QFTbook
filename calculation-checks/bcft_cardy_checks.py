@@ -1480,6 +1480,71 @@ def check_bordered_sewing_move_defect_budget() -> None:
         raise AssertionError("two sewing paths exceeded combined local budgets")
 
 
+def check_finite_sewing_anomaly_cocycle_trivialization() -> None:
+    # Vertex rescalings eta trivialize projective sewing factors
+    # lambda_{u->v}=eta_v/eta_u.  This is the finite determinant-line
+    # skeleton behind the chapter's anomaly-line sewing discussion.
+    vertex_scale = {
+        "left": Fraction(2),
+        "middle": Fraction(3),
+        "right": Fraction(5),
+    }
+    coboundary_edges = {
+        ("left", "middle"): vertex_scale["middle"] / vertex_scale["left"],
+        ("middle", "right"): vertex_scale["right"] / vertex_scale["middle"],
+        ("left", "right"): vertex_scale["right"] / vertex_scale["left"],
+        ("right", "left"): vertex_scale["left"] / vertex_scale["right"],
+    }
+    path_phase = coboundary_edges[("left", "middle")] * coboundary_edges[("middle", "right")]
+    assert_equal(
+        "sewing anomaly coboundary path telescopes",
+        path_phase,
+        coboundary_edges[("left", "right")],
+    )
+    loop_phase = (
+        coboundary_edges[("left", "middle")]
+        * coboundary_edges[("middle", "right")]
+        * coboundary_edges[("right", "left")]
+    )
+    assert_equal("sewing anomaly coboundary loop is trivial", loop_phase, Fraction(1))
+
+    amplitude = {
+        "left": Fraction(7),
+        "middle": coboundary_edges[("left", "middle")] * Fraction(7),
+        "right": coboundary_edges[("left", "right")] * Fraction(7),
+    }
+    rescaled = {
+        vertex: value / vertex_scale[vertex]
+        for vertex, value in amplitude.items()
+    }
+    assert_equal(
+        "sewing anomaly vertex trivialization removes projective factors",
+        set(rescaled.values()),
+        {Fraction(7, 2)},
+    )
+
+    nontrivial_edges = {
+        ("left", "middle"): Fraction(2),
+        ("middle", "right"): Fraction(3),
+        ("right", "left"): Fraction(5),
+    }
+    nontrivial_loop_phase = (
+        nontrivial_edges[("left", "middle")]
+        * nontrivial_edges[("middle", "right")]
+        * nontrivial_edges[("right", "left")]
+    )
+    if nontrivial_loop_phase == 1:
+        raise AssertionError("nontrivial sewing anomaly loop accidentally trivial")
+
+    # Any coboundary would have loop product one, so this holonomy cannot be
+    # removed by changing vertex trivializations.
+    assert_equal(
+        "nontrivial sewing anomaly obstructs scalar trivialization",
+        nontrivial_loop_phase,
+        Fraction(30),
+    )
+
+
 def main() -> None:
     check_modular_s()
     check_cardy_annulus()
@@ -1505,13 +1570,15 @@ def main() -> None:
     check_continuous_annulus_plancherel_regulator()
     check_nonrational_pole_crossing_residue_cell()
     check_bordered_sewing_move_defect_budget()
+    check_finite_sewing_anomaly_cocycle_trivialization()
     print(
         "All BCFT Cardy, sewing, boundary-gradient, Ising boundary-changing, "
         "matrix-Frobenius, finite-center, pointed-nimrep, Chan-Paton, "
         "pointed-annulus-Fourier, pointed-boundary-OPE, "
         "pointed-stabilizer-slide, pointed-laboratory-unified, compact-boson, "
-        "Liouville-boundary, continuous-annulus Plancherel, and "
-        "nonrational-pole-residue, bordered-sewing-budget checks passed."
+        "Liouville-boundary, continuous-annulus Plancherel, "
+        "nonrational-pole-residue, bordered-sewing-budget, and "
+        "finite-sewing-anomaly-cocycle checks passed."
     )
 
 

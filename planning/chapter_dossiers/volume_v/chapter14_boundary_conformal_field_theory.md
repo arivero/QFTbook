@@ -24,6 +24,11 @@
   boundary-OPE, disk classifying, bulk-boundary, Frobenius/module, contour, and
   anomaly-line moves control all-surface decomposition independence only after
   their defects telescope along paths in the move graph.
+- Adds a finite sewing-anomaly cocycle model: projective line factors on
+  elementary moves are removable exactly when they are vertex-rescaling
+  coboundaries; nontrivial closed-loop holonomy obstructs scalar
+  decomposition independence unless amplitudes are kept as anomaly-line
+  sections.
 - Adds an end-of-chapter proof-status ledger that reads the Ising diagonal
   example, pointed \(G/H\) rational laboratory, Liouville/FZZT nonrational
   block, and boundary-entropy gradient result as different initial segments of
@@ -268,7 +273,12 @@
     later sewing transports.  Zero local defects plus closed-loop compatibility
     gives path independence on a connected move graph; analytic construction of
     the actual infinite-dimensional move graph remains a theorem boundary.
-24. A full BCFT construction has a strict dependency order: closed/chiral
+24. Projective determinant-line factors in sewing are a separate obstruction
+    from vector-valued local move defects.  On a finite move graph they can be
+    removed by choosing vertex trivializations exactly when the edge scalars
+    form a coboundary; a closed loop with nontrivial holonomy forces
+    amplitudes to remain line-valued or prevents scalar sewing independence.
+25. A full BCFT construction has a strict dependency order: closed/chiral
     input, boundary Hilbert or spectral data, compatible annulus/disk/OPE/
     two-point coordinates, local sewing moves in a common normalization, and
     finally generated all-surface sewing.  The Ising, pointed rational, and
@@ -305,7 +315,8 @@
   the finite cyclic cosine-Plancherel regulator for the continuous annulus
   quotient \(s\sim -s\), and the exact simple-pole residue/evaluation algebra
   for nonrational contour-crossing prescriptions, plus the finite
-  bordered-sewing move-defect budget.
+  bordered-sewing move-defect budget and finite sewing-anomaly cocycle
+  trivialization.
 
 ## Remaining Obligations
 
@@ -318,7 +329,8 @@
 - Prove the analytic generated-move theorem for actual bordered Riemann
   surfaces: connectivity/generation of decompositions by the listed local
   moves, trace-class/direct-integral convergence of all transports, and
-  vanishing of the closed-loop anomaly in the determinant line.
+  construction of the determinant/anomaly line with a trivialized closed-loop
+  cocycle, or else a line-valued formulation of the correlators.
 
 ## Reference Intake
 
@@ -462,6 +474,12 @@
   checks would have to telescope to prove all-surface decomposition
   independence, while keeping the analytic generated-move theorem as an open
   boundary.
+- 2026-06-03 finite sewing-anomaly pass: expanded the anomaly-line part of the
+  generated-sewing architecture into an explicit projective cocycle.  Edge
+  phases on finite sewing moves can be removed precisely when they are
+  coboundaries of vertex trivializations; nontrivial closed-loop holonomy is a
+  determinant-line obstruction to scalar correlators.  Added an exact check of
+  the coboundary telescoping and nontrivial-loop obstruction.
 - 2026-06-03 end-to-end BCFT coherence pass: after a chapter-flow read of the
   2015-line BCFT chapter, added a closing proof-status ledger.  The new ledger
   separates closed/chiral input, boundary Hilbert or spectral data, compatible
