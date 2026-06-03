@@ -408,8 +408,10 @@ Current checks:
   \(zK_1(z)\), tail, and logarithmically sensitive second moment in the
   local-vertex limit, the source-matrix row/column algebra showing that
   external-leg amputation removes adjacent propagator residues while retaining
-  instanton zero-mode form factors, the mass-saturated vacuum-activity size
-  integral with its \(\prod_f(m_f\rho)\) zero-mode factors,
+  instanton zero-mode form factors, the hard-momentum size-window scaling
+  that gives the \(N_f=2\) four-fermion coefficient its \(Q^{-2}\) behavior
+  while exponentially cutting off large instantons, the mass-saturated
+  vacuum-activity size integral with its \(\prod_f(m_f\rho)\) zero-mode factors,
   small-\(\rho\) finiteness margin, large-\(\rho\) obstruction, and
   massless-flavor vanishing, the
   dilute instanton-gas theta cumulants \(\chi_{\rm top}=2\zeta\) and

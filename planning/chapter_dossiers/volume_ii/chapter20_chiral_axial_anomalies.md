@@ -76,7 +76,9 @@
   BPST fundamental zero-mode envelope, its momentum form factor \(zK_1(z)\),
   its \(R^{-2}\) tail, and the logarithmically infrared-sensitive second
   moment controlling the first nonzero derivative correction to the local
-  vertex.
+  vertex.  The hard-amplitude continuation adds the \(N_f=2\) hard-momentum
+  size window, where the same form factors give a \(Q^{-2}\) four-fermion
+  coefficient and exponentially suppress large instantons.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
@@ -202,6 +204,7 @@
 | \(B_{\eta,ff'}(z)\) | zero-mode-projected source matrix for smeared four-fermion wave packets in the instanton background |
 | \(G^{(4)}_{\eta,\Lambda,Q=1}\) | finite-regulator one-instanton contribution to the smeared four-fermion amplitude |
 | \(h_\rho(y),\widehat h_\rho(q),M_2(R)\) | normalized BPST zero-mode radial envelope, momentum form factor \(zK_1(z)\), and truncated second moment in the local-vertex expansion |
+| \(\mathcal I_{\rm hard}(Q)\) | hard-momentum \(N_f=2\) instanton size factor |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
 | \(\zeta_m^{[\rho_-,\rho_+]}\) | mass-saturated one-instanton vacuum activity in a finite size window |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
@@ -472,6 +475,22 @@
   Because colored quarks are not physical asymptotic states in confining QCD,
   this is a source-amputated/partonic coordinate, not a gauge-invariant quark
   \(S\)-matrix element.
+- In an \(N_f=2\) hard four-fermion kinematic window, retaining the BPST
+  source form factors turns the universal one-loop size factor into
+  \[
+    Q^{b_0}\int_0^\infty
+    \rho^{b_0+1}
+    \prod_{\ell=1}^{2}(c_\ell Q\rho K_1(c_\ell Q\rho))\,d\rho
+    =
+    Q^{-2}\int_0^\infty
+    s^{b_0+1}
+    \prod_{\ell=1}^{2}(c_\ell sK_1(c_\ell s))\,ds .
+  \]
+  The hard form factors exponentially suppress large instantons, so the
+  amplitude is controlled by \(\rho=O(Q^{-1})\) when that range is weakly
+  coupled.  The mass-saturated vacuum theta term below has no such hard
+  external cutoff, which is why its large-\(\rho\) behavior is an infrared
+  input rather than a semiclassical output.
 - For massive vectorlike QCD, the vacuum instanton term is now separated as a
   finite-size-window activity:
   \[
@@ -732,3 +751,11 @@
   trade.  The BPST check script now verifies the vector-plus-ghost
   \(11C_A/3\) coefficient, the Dirac matter subtraction, charge-\(k\)
   scaling, and the cancellation of cutoff-scale dependence.
+- 2026-06-03 issue #597 hard-size pass: added
+  `ca:hard-momentum-instanton-size-window`, which shows how hard external
+  zero-mode form factors make the \(N_f=2\) four-fermion size integral
+  scale as a \(Q^{-2}\) coefficient and cut off \(\rho\gg Q^{-1}\), while
+  distinguishing this hard correlator from the infrared-sensitive
+  mass-saturated vacuum activity.  The BPST check script now verifies the
+  small-\(\rho\) margin, \(Q\)-power ledger, hard exponential cutoff, and
+  absence of such a cutoff in the vacuum term.

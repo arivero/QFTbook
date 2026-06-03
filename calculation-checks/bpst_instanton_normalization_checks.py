@@ -33,6 +33,8 @@ relations
     external-leg amputation removes only row/column propagator residues from
     the zero-mode source matrix and leaves the instanton form factors inside
     the amputated hard kernel
+    hard external momenta convert the Nf=2 four-fermion size integral into a
+    Q^(-2) coefficient and exponentially suppress the large-rho endpoint
     mass-saturated QCD vacuum activity carries prod_f(m_f rho), depends on
     theta+arg det M, is locally small-rho finite when b0+Nf>4, and is
     infrared-uncontrolled in zero-temperature QCD if the same one-loop power
@@ -948,6 +950,66 @@ def check_instanton_external_leg_amputation_kernel() -> None:
     )
 
 
+def check_hard_momentum_instanton_size_window() -> None:
+    n_c = 3
+    n_f = 2
+    b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+
+    measure_power = Fraction(-5)
+    zero_mode_source_power = Fraction(3 * n_f)
+    integrand_power = b0 + measure_power + zero_mode_source_power
+    antiderivative_power = integrand_power + 1
+    assert_equal("hard Nf=2 b0", b0, Fraction(29, 3))
+    assert_equal("hard Nf=2 size integrand power", integrand_power, b0 + 1)
+    assert_equal("hard Nf=2 small-rho margin", antiderivative_power, b0 + 2)
+
+    mu_power = b0
+    rho_integral_q_power = -antiderivative_power
+    coefficient_q_power = mu_power + rho_integral_q_power
+    assert_equal("hard Nf=2 coefficient dimension", coefficient_q_power, Fraction(-2))
+    assert_equal(
+        "hard Nf=2 coefficient equals four-fermion operator dimension",
+        coefficient_q_power,
+        Fraction(4 - 3 * n_f),
+    )
+
+    # A determinant term has two zero-mode source entries.  If both momentum
+    # transfers are hard, the large-rho endpoint is exponentially suppressed
+    # by exp[-rho (|q_a|+|q_b|)].
+    diagonal_transfer_sum = Fraction(3) + Fraction(5)
+    off_diagonal_transfer_sum = Fraction(2) + Fraction(7)
+    hard_cutoff = min(diagonal_transfer_sum, off_diagonal_transfer_sum)
+    assert_equal("hard determinant exponential scale", hard_cutoff, Fraction(8))
+
+    def large_rho_status(transfer_sum: Fraction) -> str:
+        return "exponential_cutoff" if transfer_sum > 0 else "no_form_factor_cutoff"
+
+    assert_equal(
+        "hard source term has large-rho cutoff",
+        large_rho_status(hard_cutoff),
+        "exponential_cutoff",
+    )
+    assert_equal(
+        "zero-momentum source term lacks hard cutoff",
+        large_rho_status(Fraction(0)),
+        "no_form_factor_cutoff",
+    )
+
+    # The mass-saturated vacuum integral has no hard form factor; with the same
+    # one-loop power it is small-rho finite but large-rho power divergent.
+    vacuum_antiderivative_power = b0 + n_f - 4
+    assert_equal(
+        "Nf=2 mass-saturated vacuum small-rho margin",
+        vacuum_antiderivative_power,
+        Fraction(23, 3),
+    )
+    assert_equal(
+        "positive vacuum size power is not a hard cutoff",
+        large_rho_status(Fraction(0)),
+        "no_form_factor_cutoff",
+    )
+
+
 def check_dilute_instanton_gas_theta_cumulants() -> None:
     # The dilute gas promotes the one-instanton and one-anti-instanton
     # amplitudes to independent Poisson activities.  The topological charge
@@ -1148,6 +1210,7 @@ def main() -> None:
     check_instanton_heat_kernel_beta0_logarithm()
     check_instanton_zero_mode_tail_local_limit()
     check_instanton_external_leg_amputation_kernel()
+    check_hard_momentum_instanton_size_window()
     check_dilute_instanton_gas_theta_cumulants()
     check_mass_saturated_vacuum_activity_size_integral()
     check_uhlenbeck_boundary_face_budget()

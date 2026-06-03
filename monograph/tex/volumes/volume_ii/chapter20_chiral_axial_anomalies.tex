@@ -4867,6 +4867,77 @@ one-instanton computation of 't Hooft
 fluctuation determinants, fermion zero-mode saturation, and external-leg
 normalization are one calculation.
 
+\begin{controlledapproximation}[Hard-momentum size window]
+\label{ca:hard-momentum-instanton-size-window}
+Consider the \(N_f=2\) source-amputated four-fermion kernel
+\eqref{eq:instanton-amputated-four-fermion-kernel} in a kinematic region
+where the momentum transfers in the two zero-mode source entries of a
+nonzero determinant term are
+\[
+  |q_1|=c_1 Q,\qquad |q_2|=c_2 Q,
+  \qquad c_1,c_2>0,
+\]
+with \(Q\) much larger than the infrared scale of the theory.  Keep only the
+one-loop universal density, the two zero-mode source powers
+\(\rho^3\rho^3\), and the two BPST form factors.  Choosing
+\(\mu=Q\), the corresponding size factor has the form
+\begin{equation}
+  \mathcal I_{\rm hard}(Q)
+  =
+  \exp\!\left[-\frac{8\pi^2}{g_{\rm ht}^2(Q)}+\ii\theta\right]
+  \left(\frac{8\pi^2}{g_{\rm ht}^2(Q)}\right)^{2N_c}
+  Q^{b_0}
+  \int_0^\infty
+  \rho^{\,b_0+1}
+  \prod_{\ell=1}^{2}
+  \bigl(c_\ell Q\rho\,K_1(c_\ell Q\rho)\bigr)\,\dd\rho
+  \times\mathcal C_{\rm hard},
+  \label{eq:hard-momentum-instanton-size-factor}
+\end{equation}
+up to finite determinant remainders, orientation tensors, source
+normalizations, and higher-loop matching factors.  With \(s=Q\rho\),
+\begin{equation}
+  Q^{b_0}
+  \int_0^\infty
+  \rho^{\,b_0+1}
+  \prod_{\ell=1}^{2}
+  \bigl(c_\ell Q\rho\,K_1(c_\ell Q\rho)\bigr)\,\dd\rho
+  =
+  Q^{-2}
+  \int_0^\infty
+  s^{\,b_0+1}
+  \prod_{\ell=1}^{2}
+  \bigl(c_\ell sK_1(c_\ell s)\bigr)\,\dd s .
+  \label{eq:hard-momentum-instanton-size-scaling}
+\end{equation}
+The small-\(\rho\) endpoint is finite in asymptotically free QCD because the
+integrand behaves as \(\rho^{b_0+1}\).  The large-\(\rho\) endpoint is cut
+off by
+\[
+  \prod_{\ell=1}^{2}c_\ell Q\rho\,K_1(c_\ell Q\rho)
+  =
+  O\!\left(\rho\,\exp[-(c_1+c_2)Q\rho]\right),
+  \qquad Q\rho\to\infty .
+\]
+Thus a genuinely hard fermionic instanton amplitude is dominated by
+instantons with \(\rho\) of order \(1/Q\), within a dimensionless
+distribution set by the \(c_\ell\).  This is a physical cutoff supplied by
+the external source profiles, not a cutoff on the instanton moduli space.
+The approximation is controlled only when the dominant range also has
+\(1/\rho\) in the weak-coupling regime and when the projection onto the
+chosen hard channel removes determinant monomials whose source entries carry
+no hard momentum transfer and hence no BPST form-factor cutoff.
+\end{controlledapproximation}
+
+This hard-size window is the amplitude counterpart of the local
+'t Hooft vertex.  The local operator records the \(Q\rho\ll1\) tensor and
+selection rule, while \eqref{eq:hard-momentum-instanton-size-factor} records
+how the same zero modes and fluctuation determinant enter an actual hard
+correlator.  It also explains why the mass-saturated vacuum activity below is
+a different object: a vacuum theta term has no external form factor to
+exclude \(\rho\to\infty\), so its large-size behavior is an infrared
+question, not a semiclassical prediction.
+
 Thus the \(Q=1\) amplitude is the microscopic origin of the \(U(1)_A\)
 selection rule.  The determinant in
 \eqref{eq:qcd-thooft-vertex-leading-local} carries axial charge \(2N_f\);
