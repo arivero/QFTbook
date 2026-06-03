@@ -2886,6 +2886,60 @@ def check_spde_directed_os_prehilbert_comparison_arithmetic():
     )
 
 
+def check_dpd_low_mode_energy_forcing_arithmetic():
+    # Proposition spde-dpd-energy-low-mode-forcing uses exactly the energy
+    # exponents produced by the smooth DPD estimate.  In spacetime, the
+    # nonlinear terms all land in L^{4/3}.
+    target_dual = Fraction(3, 4)  # reciprocal exponent of L^{4/3}
+    assert_equal(
+        Fraction(1, 4) + Fraction(1, 4) + Fraction(1, 4),
+        target_dual,
+        "low-mode Y^3 Holder exponent",
+    )
+    assert_equal(
+        Fraction(1, 4) + Fraction(1, 4) + Fraction(1, 4),
+        target_dual,
+        "low-mode Y^2 X1 Holder exponent",
+    )
+    assert_equal(
+        Fraction(1, 4) + Fraction(1, 2),
+        target_dual,
+        "low-mode Y X2 Holder exponent",
+    )
+
+    # The finite-dimensional low-mode embedding on T^2 uses Bernstein
+    # L^{4/3} -> L^\infty, whose scale exponent is d/p = 3/2, followed by
+    # the C^{-kappa} block weight.
+    kappa = Fraction(1, 8)
+    bernstein_power = Fraction(3, 2) - kappa
+    assert bernstein_power > 0, "low-mode Bernstein power is finite for fixed R"
+
+    # The energy forcing is L^{4/3} in time.  Pairing it with the heat-kernel
+    # singularity (t-s)^(-theta) uses L^4 in time and requires 4 theta < 1.
+    alpha = Fraction(1, 4)
+    kappa = Fraction(1, 8)
+    theta = (alpha + kappa) / 2
+    time_gain = Fraction(1, 4) - theta
+    assert theta < Fraction(1, 4), "low-mode Duhamel time integrability"
+    assert_equal(time_gain, Fraction(1, 16), "low-mode Duhamel time gain")
+
+    # After the low/high split, only the high-mode residual is absorbed:
+    #   S <= C0 y + low + a (B + epsilon S)
+    # becomes
+    #   S <= 2 C0 y + 2 low + 2 a B
+    # under a epsilon <= 1/2.
+    C0 = Fraction(3, 2)
+    y = Fraction(5, 3)
+    low = Fraction(7, 5)
+    a = Fraction(1, 6)
+    B = Fraction(11, 4)
+    epsilon = Fraction(3)
+    assert a * epsilon <= Fraction(1, 2), "low/high forcing absorption"
+    absorbed = 2 * C0 * y + 2 * low + 2 * a * B
+    expected = Fraction(5) + Fraction(14, 5) + Fraction(11, 12)
+    assert_equal(absorbed, expected, "low/high forcing absorbed bound")
+
+
 def check_rough_forcing_bootstrap_arithmetic():
     # Proposition spde-dpd-rough-forcing-bootstrap uses the absorption
     # condition |lambda| C1 delta^(1-theta) epsilon <= 1/2 to turn
@@ -2990,8 +3044,9 @@ def main():
     check_spde_finite_rate_assembly_schedule_arithmetic()
     check_spde_phase_cell_cross_route_budget_arithmetic()
     check_spde_directed_os_prehilbert_comparison_arithmetic()
+    check_dpd_low_mode_energy_forcing_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, vacuum-coordinate, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, model phase-cell budget, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, Phi4_2 finite-volume route identification, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, finite-rate assembly schedule, cross-route phase-cell/SPDE budget, directed OS pre-Hilbert comparison, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, vacuum-coordinate, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, model phase-cell budget, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, Phi4_2 finite-volume route identification, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, finite-rate assembly schedule, cross-route phase-cell/SPDE budget, directed OS pre-Hilbert comparison, DPD low-mode energy forcing, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

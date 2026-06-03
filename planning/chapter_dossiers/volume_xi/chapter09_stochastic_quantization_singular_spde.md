@@ -424,6 +424,14 @@ data.
   cutoff-convergence input in the \(\Phi^4_2\) assembly theorem to a precise
   rough a priori estimate rather than treating global DPD convergence as a
   black box.
+- Proves the low-frequency part of the rough DPD forcing estimate from the
+  same energy exponents used in the smooth compactness theorem.  A finite
+  Fourier projection of \(Y^3+3Y^2X_1+3YX_2+X_3\) is controlled in
+  \(L^{4/3}_t\mathcal C^{-\kappa}\) by the \(L^4,L^2,L^{4/3}\) energy norms,
+  and heat smoothing gives a local
+  \(|I|^{1/4-(\alpha+\kappa)/2}\) Besov gain.  The chapter now isolates the
+  remaining rough-energy task as the high-frequency paracontrolled residual,
+  not the whole local forcing estimate.
 - Proves an invariant-measure passage lemma: weak convergence of invariant
   cutoff measures plus compact-uniform semigroup convergence on
   high-probability compact sets implies invariance of the limiting measure.
@@ -569,9 +577,10 @@ data.
 - Develops the Da Prato--Debussche decomposition for `Phi^4_2`, identifies
   the role of the enhanced noise, proves a Sobolev local fixed-point version,
   proves the Besov-Holder local fixed-point mechanism, and records the
-  sharper global closure as a concrete estimate ledger: the local
-  rough-forcing estimate, Nelson stability for the chosen Wick quartic cutoff
-  family, regulator comparison, uniform integrability, and OS-II growth.
+  sharper global closure as a concrete estimate ledger: the energy-controlled
+  low-mode forcing estimate, the high-frequency rough-forcing residual,
+  Nelson stability for the chosen Wick quartic cutoff family, regulator
+  comparison, uniform integrability, and OS-II growth.
 - Defines regularity structures, models, and the reconstruction theorem at the
   level needed for singular SPDE; the compact finite-sector reconstruction
   theorem is now proved from the model and modelled-distribution seminorms by
@@ -1315,6 +1324,15 @@ data maps.
   with no unabsorbed positive power of the Besov continuation norm.  The
   calculation-check companion verifies the absorption and recursion
   arithmetic.
+- 2026-06-03 DPD low-mode energy-forcing pass: added a theorem-level
+  low-frequency estimate below the rough-forcing bootstrap.  The new
+  proposition proves that finite Fourier modes of the DPD nonlinearity are
+  controlled by the \(L^4,L^2,L^{4/3}\) energy norms and gain
+  \(|I|^{1/4-(\alpha+\kappa)/2}\) after Besov heat smoothing.  The associated
+  low/high corollary rewrites the remaining global-continuity gap as the
+  high-frequency paracontrolled residual with an absorbable Besov coefficient.
+  The calculation-check companion verifies the Holder exponents, Bernstein
+  low-mode exponent, time-integrability gain, and absorption arithmetic.
 - 2026-05-26 singular-SPDE ledger pass: revised the monograph open-problem
   ledger so it no longer lists already-proved \(\Phi^4_2\) infrastructure as
   quoted theorem-boundary material.  The remaining two-dimensional tasks are

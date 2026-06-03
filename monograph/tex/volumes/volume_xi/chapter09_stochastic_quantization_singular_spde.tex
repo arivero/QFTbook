@@ -2694,14 +2694,205 @@ consequence follows by taking the supremum of the right hand side over the
 compact family.
 \end{proof}
 
-The preceding proposition makes the remaining analytic obligation precise.
-The phrase ``rough energy-to-Besov bound'' means a proof of
-\eqref{eq:spde-local-rough-forcing-estimate} with \(A_\ell\) controlled by
-the coercive energy estimates, by the enhanced-noise norms, and by no
-unabsorbed positive power of
-\(\|Y\|_{C(I_\ell;\mathcal C^\alpha)}\).  Once such a local estimate is
-proved, the conversion to the global Besov bound is the elementary
-parabolic bootstrap above.
+\begin{proposition}[Energy low-mode forcing estimate]
+\label{prop:spde-dpd-energy-low-mode-forcing}
+Let \(0<\kappa<\alpha\) and put
+\[
+  \theta=\frac{\alpha+\kappa}{2}<\frac14 .
+\]
+Let \(P_{\leq R}\) be a smooth Fourier multiplier on \(\mathbb T^2\) whose
+range is contained in the span of the modes \(|k|\leq R\), with \(R\geq1\).
+For an interval \(I=[a,b]\) of length at most one and smooth fields
+\(Y,X_1,X_2,X_3\) on \(I\times\mathbb T^2\), define
+\[
+  \mathcal N(Y,\mathbb X)
+  =
+  Y^3+3Y^2X_1+3YX_2+X_3
+\]
+and
+\[
+\begin{aligned}
+  L_I(Y,\mathbb X)
+  &:=
+  \|Y\|_{L^4(I\times\mathbb T^2)}^3
+  +3\|Y\|_{L^4(I\times\mathbb T^2)}^2
+     \|X_1\|_{L^4(I\times\mathbb T^2)}
+\\
+  &\qquad
+  +3\|Y\|_{L^4(I\times\mathbb T^2)}
+     \|X_2\|_{L^2(I\times\mathbb T^2)}
+  +\|X_3\|_{L^{4/3}(I\times\mathbb T^2)} .
+\end{aligned}
+\]
+Then there are constants \(C_{\kappa,R}\) and
+\(C_{\alpha,\kappa,R,m}\) such that
+\begin{equation}
+  \|P_{\leq R}\mathcal N(Y,\mathbb X)\|_
+    {L^{4/3}(I;\mathcal C^{-\kappa})}
+  \leq
+  C_{\kappa,R}L_I(Y,\mathbb X)
+  \label{eq:spde-low-mode-forcing-l43}
+\end{equation}
+and, with \(A=\Delta-m^2\),
+\begin{equation}
+  \left\|
+    \int_a^t e^{(t-s)A}
+      P_{\leq R}\mathcal N(Y(s),\mathbb X(s))\,\dd s
+  \right\|_{C(I;\mathcal C^\alpha)}
+  \leq
+  C_{\alpha,\kappa,R,m}
+  |I|^{1/4-\theta}L_I(Y,\mathbb X).
+  \label{eq:spde-low-mode-forcing-duhamel}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The only finite-dimensional input is the low-mode embedding
+\begin{equation}
+  \|P_{\leq R}f\|_{\mathcal C^{-\kappa}}
+  \leq
+  C_{\kappa,R}\|f\|_{L^{4/3}(\mathbb T^2)} .
+  \label{eq:spde-low-mode-l43-to-cminus}
+\end{equation}
+Indeed, only dyadic blocks with \(2^j\lesssim R\) can contribute.  Bernstein's
+inequality on \(\mathbb T^2\), with \(p=4/3\), gives
+\[
+  2^{-j\kappa}\|\Delta_jP_{\leq R}f\|_{L^\infty}
+  \leq
+  C2^{j(3/2-\kappa)}\|f\|_{L^{4/3}},
+\]
+and the supremum over the finitely many contributing \(j\)'s is absorbed into
+\(C_{\kappa,R}\).
+
+Holder's inequality in spacetime gives the exact energy exponents
+\[
+\begin{aligned}
+  \|Y^3\|_{L^{4/3}(I\times\mathbb T^2)}
+    &=\|Y\|_{L^4(I\times\mathbb T^2)}^3,\\
+  \|Y^2X_1\|_{L^{4/3}(I\times\mathbb T^2)}
+    &\leq
+    \|Y\|_{L^4(I\times\mathbb T^2)}^2
+    \|X_1\|_{L^4(I\times\mathbb T^2)},\\
+  \|YX_2\|_{L^{4/3}(I\times\mathbb T^2)}
+    &\leq
+    \|Y\|_{L^4(I\times\mathbb T^2)}
+    \|X_2\|_{L^2(I\times\mathbb T^2)} .
+\end{aligned}
+\]
+Together with \eqref{eq:spde-low-mode-l43-to-cminus}, these estimates prove
+\eqref{eq:spde-low-mode-forcing-l43}.  Proposition
+\ref{prop:spde-besov-heat-smoothing}, with \(\rho=-\kappa\) and
+\(\rho+2\theta=\alpha\), gives
+\[
+  \|e^{(t-s)A}F(s)\|_{\mathcal C^\alpha}
+  \leq
+  C_{\alpha,\kappa,m}(t-s)^{-\theta}
+  \|F(s)\|_{\mathcal C^{-\kappa}} .
+\]
+Applying this to \(F=P_{\leq R}\mathcal N(Y,\mathbb X)\) and using Holder's
+inequality in time with conjugate exponents \(4\) and \(4/3\) gives
+\[
+  \int_a^t
+    (t-s)^{-\theta}
+    \|F(s)\|_{\mathcal C^{-\kappa}}\,\dd s
+  \leq
+  \left(\int_0^{|I|}r^{-4\theta}\,\dd r\right)^{1/4}
+  \|F\|_{L^{4/3}(I;\mathcal C^{-\kappa})}.
+\]
+The time integral is finite exactly because \(4\theta<1\), and it contributes
+a constant times \(|I|^{1/4-\theta}\).  Inserting
+\eqref{eq:spde-low-mode-forcing-l43} proves
+\eqref{eq:spde-low-mode-forcing-duhamel}.
+\end{proof}
+
+\begin{corollary}[Low--high form of the rough-forcing input]
+\label{cor:spde-dpd-low-high-rough-forcing-input}
+Keep the notation of
+Proposition~\ref{prop:spde-dpd-rough-forcing-bootstrap} and assume also
+\(\theta<1/4\).  Let \(P_{\leq R}\) be as in
+Proposition~\ref{prop:spde-dpd-energy-low-mode-forcing}.  Assume that the
+low-frequency Duhamel term is represented by an energy-compatible smooth
+approximation, so that
+\eqref{eq:spde-low-mode-forcing-duhamel} holds on the intervals below with
+the displayed \(L^4,L^2,L^{4/3}\) norms.  On every interval
+\(I_\ell=[t_\ell,t_{\ell+1}]\), suppose the high-mode remainder satisfies
+\begin{equation}
+  \|(1-P_{\leq R})\mathcal N_{\mathcal C}(Y,\mathbb X)\|_
+    {C(I_\ell;\mathcal C^{-\kappa})}
+  \leq
+  B_{\ell,R}
+  +\varepsilon\|Y\|_{C(I_\ell;\mathcal C^\alpha)}
+  \label{eq:spde-high-mode-rough-forcing-residual}
+\end{equation}
+and that the absorption condition
+\eqref{eq:spde-rough-forcing-absorption-condition} holds.  Then, writing
+\[
+  S_\ell=\|Y\|_{C(I_\ell;\mathcal C^\alpha)}
+\]
+and using the quantity \(L_{I_\ell}(Y,\mathbb X)\) from
+Proposition~\ref{prop:spde-dpd-energy-low-mode-forcing}, one has
+\begin{equation}
+\begin{aligned}
+  S_\ell
+  \leq
+  &\,2C_0\|Y(t_\ell)\|_{\mathcal C^\alpha}
+  +2|\lambda|C_{\alpha,\kappa,R,m}
+      |I_\ell|^{1/4-\theta}L_{I_\ell}(Y,\mathbb X)
+\\
+  &\quad
+  +2|\lambda|C_1|I_\ell|^{1-\theta}B_{\ell,R}.
+\end{aligned}
+  \label{eq:spde-low-high-rough-forcing-single-step}
+\end{equation}
+Consequently, a uniform energy bound on the displayed \(L^4,L^2,L^{4/3}\)
+norms and a high-mode residual of the form
+\eqref{eq:spde-high-mode-rough-forcing-residual} give the same global
+compact-continuity input as the local estimate
+\eqref{eq:spde-local-rough-forcing-estimate}.
+\end{corollary}
+
+\begin{proof}
+Restart the mild equation at \(t_\ell\), split the nonlinearity into
+\(P_{\leq R}\mathcal N_{\mathcal C}\) and
+\((1-P_{\leq R})\mathcal N_{\mathcal C}\), and estimate the low-frequency
+Duhamel term by
+Proposition~\ref{prop:spde-dpd-energy-low-mode-forcing}, using the stated
+energy-compatible approximation.  The high-frequency term is estimated by
+\eqref{eq:spde-rough-forcing-bootstrap-semigroup} and
+\eqref{eq:spde-high-mode-rough-forcing-residual}.  Thus
+\[
+\begin{aligned}
+  S_\ell
+  \leq
+  &\,C_0\|Y(t_\ell)\|_{\mathcal C^\alpha}
+  +|\lambda|C_{\alpha,\kappa,R,m}
+      |I_\ell|^{1/4-\theta}L_{I_\ell}(Y,\mathbb X)
+\\
+  &\quad
+  +|\lambda|C_1|I_\ell|^{1-\theta}
+      \bigl(B_{\ell,R}+\varepsilon S_\ell\bigr).
+\end{aligned}
+\]
+The absorption condition moves the last term to the left and gives
+\eqref{eq:spde-low-high-rough-forcing-single-step}.  Iterating this
+single-step estimate over the partition is identical to the recursion in
+Proposition~\ref{prop:spde-dpd-rough-forcing-bootstrap}, with the low-mode
+energy contribution and \(B_{\ell,R}\) replacing the single abstract
+\(A_\ell\).
+\end{proof}
+
+The preceding propositions sharpen the remaining analytic obligation.  The
+energy estimate and finite-mode smoothing already control the low-frequency
+part of the DPD forcing from the same \(L^4,L^2,L^{4/3}\) quantities used in
+Proposition~\ref{prop:spde-dpd-energy-compactness}.  What is still missing
+is not another finite exponent identity, but a genuinely rough high-frequency
+estimate of the form
+\eqref{eq:spde-high-mode-rough-forcing-residual}, with \(B_{\ell,R}\)
+controlled by the coercive energy estimates and enhanced-noise norms and
+with an absorbable coefficient as \(R\) and the local time step are chosen.
+This is the paracontrolled commutator/noise-tail step in the
+rough energy-to-Besov bound.  Once it is proved, the conversion to the
+global Besov bound is the elementary parabolic bootstrap above.
 
 \begin{lemma}[Passing invariance through a cutoff limit]
 \label{lem:spde-invariant-measure-limit}

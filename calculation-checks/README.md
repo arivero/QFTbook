@@ -751,7 +751,9 @@ Current checks:
   and a nonzero connected
   cumulant with such a bridge, exact set-partition enumeration for the
   connected-to-full Schwinger hierarchy growth loss, and the
-  interval-recursion arithmetic in the rough-forcing energy-to-Besov
+  low-mode DPD energy-forcing arithmetic that converts the \(L^4,L^2,L^{4/3}\)
+  energy exponents into an \(L^{4/3}_t\mathcal C^{-\kappa}\) Duhamel gain,
+  and the interval-recursion arithmetic in the rough-forcing energy-to-Besov
   bootstrap.
 - `continuum_scaling_window_checks.py`: finite checks for the Volume XI
   continuum-limit chapter, including the lattice momentum expansion, the
