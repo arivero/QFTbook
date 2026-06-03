@@ -69,7 +69,10 @@
   higher-charge boundary-face codimension and product integrability budget.
   The physics-amplitude continuation adds the finite Berezin zero-mode
   saturation check that turns the instanton measure into a correlator
-  contribution, including the two-flavor 't Hooft determinant sign.
+  contribution, including the two-flavor 't Hooft determinant sign.  The
+  fluctuation-amplitude continuation adds the proper-time nonzero-mode
+  determinant assembly and its multiplication by the zero-mode-projected
+  four-fermion source determinant.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
@@ -187,8 +190,12 @@
 | \(J_\mu(X)\) | coarea Jacobian for the ADHM moment-map submersion |
 | \(L_{\Lambda,z}^{\rm bos},M_{\Lambda,z}^{\rm gh},\mathcal D_{\Lambda,z}^{R}\) | finite-regulator bosonic Hessian, ghost operator, and fermion kinetic operator in the instanton background |
 | \(\mathcal W_{\Lambda}^{\rm nz}(z)\) | finite-regulator nonzero-mode determinant datum in the instanton chart |
+| \(K_\Lambda(P_z,P_0;\mu)\) | proper-time logarithmic determinant ratio between the instanton and trivial-sector nonzero-mode operators |
+| \(\mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)\) | proper-time representative of the instanton nonzero-mode determinant density |
 | \(\mathcal Z_{\mathcal O,\Lambda}^{0}(z)\) | finite Berezin coefficient of the zero-mode part of insertions, masses, and sources in a \(Q=1\) instanton background |
 | \(B_{ff'}\) | local source or mass-overlap matrix whose finite Berezin determinant gives the QCD 't Hooft vertex |
+| \(B_{\eta,ff'}(z)\) | zero-mode-projected source matrix for smeared four-fermion wave packets in the instanton background |
+| \(G^{(4)}_{\eta,\Lambda,Q=1}\) | finite-regulator one-instanton contribution to the smeared four-fermion amplitude |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
 | \(A_\alpha(\mathcal X),G_\beta(\mathcal X)\) | Uhlenbeck bubbling-scale and collision-face exponents in the multi-instanton boundary budget |
 | \(\mathcal O_{N_c}\) | embedded one-instanton orientation orbit \(U(N_c)/(U(N_c-2)\times U(1))\) |
@@ -402,6 +409,12 @@
   counterterms are part of the regulated Lagrangian and shift the determinant
   datum by the corresponding finite counterterm difference in the instanton
   background.
+- The proper-time representative of \(\mathcal W_\Lambda^{\rm nz}\) is a
+  heat-kernel trace difference with collective-coordinate, residual-gauge,
+  and fermion zero modes removed before determinant formation.  Its small-time
+  asymptotics supply local counterterms and the universal
+  \((\mu\rho)^{b_0}\) running factor, while the finite remainder is the
+  determinant constant of the selected scheme.
 - A physical instanton contribution is not the moduli space alone.  In a
   finite regulator it is the collective-coordinate integral of
   \(\exp[-S_\Lambda(A_z)+\ii\theta]\mathcal W_\Lambda^{\rm nz}(z)\) multiplied
@@ -415,6 +428,11 @@
   for complete mass saturation the same determinant has the phase of
   \(\det M\), so the one-instanton vacuum term depends on
   \(\bar\theta=\theta+\arg\det M\).
+- For \(N_f=2\), the smeared four-fermion instanton amplitude is the
+  collective-coordinate integral of the proper-time nonzero-mode determinant
+  times the determinant of the zero-mode-projected source matrix
+  \(B_{\eta,ff'}(z)\).  The familiar local 't Hooft vertex is its slow-field
+  limit.
 - A one-instanton boundary exponent datum records the small-\(\rho\)
   behavior of a specified scalar insertion datum \(\mathcal X\) in the form
   \(\rho^{b_0+\beta_{\mathcal X}-5}\).  The local Uhlenbeck-boundary
@@ -590,3 +608,12 @@
   the mass-saturated phase \(\theta+\arg\det M\), and the \(U(1)_A\) selection
   rule as the same instanton zero-mode calculation.  The BPST check script now
   verifies the three-flavor determinant and the strong-CP phase ledger.
+- 2026-06-03 issue #597 fluctuation-amplitude pass: added the proper-time
+  representative of the instanton nonzero-mode determinant and the
+  finite-regulator \(N_f=2\) smeared four-fermion amplitude.  The pass makes
+  the 't Hooft amplitude calculation depend on the regulated fluctuation
+  spectrum, local counterterms, zero-mode source projection, and the final
+  collective-coordinate integral, with the local vertex appearing as the
+  slow-field limit.  The BPST check script now verifies exact determinant
+  powers, zero-mode removal, and the source-determinant multiplication for a
+  finite toy four-fermion amplitude.

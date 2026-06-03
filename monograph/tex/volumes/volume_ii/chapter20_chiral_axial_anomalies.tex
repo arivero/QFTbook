@@ -4278,6 +4278,107 @@ zero-mode overlap is real after the same regulator and zero-mode orientation
 have been fixed, so the only flavor phase is \(\arg\det M\).
 \end{proof}
 
+\begin{proposition}[Proper-time determinant and four-fermion amplitude]
+\label{prop:instanton-proper-time-four-fermion-amplitude}
+Fix a finite-regulator \(Q=1\) chart \(z=(a,\rho,U)\), a background gauge
+slice, and a proper-time determinant prescription with renormalization scale
+\(\mu\).  For each positive nonzero-mode operator \(P_{\Lambda,z}\) in the
+instanton background, compared with the corresponding operator
+\(P_{\Lambda,0}\) in the trivial sector, define the regulated logarithmic
+determinant ratio by
+\begin{equation}
+  K_\Lambda(P_z,P_0;\mu)
+  =
+  -\int_{\epsilon_\Lambda}^{\infty}
+    \frac{\dd t}{t}\,r(t\mu^2)
+    \left(
+      \operatorname{Tr}' e^{-tP_{\Lambda,z}}
+      -
+      \operatorname{Tr} e^{-tP_{\Lambda,0}}
+    \right)
+  +C_{\Lambda,P}^{\rm loc}(z;\mu),
+  \label{eq:proper-time-instanton-determinant-ratio}
+\end{equation}
+where \(r\) is a smooth cutoff profile with \(r(0)=1\), the prime removes
+collective-coordinate, residual-gauge, and fermion zero modes as appropriate,
+and \(C_{\Lambda,P}^{\rm loc}\) is the chosen local subtraction in the
+instanton background relative to the trivial background.  The determinant
+density in \eqref{eq:finite-regulator-instanton-measure-density} is then
+\begin{equation}
+  \log \mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)
+  =
+  K_\Lambda(M_z^{\rm gh},M_0^{\rm gh};\mu)
+  -\frac12 K_\Lambda(L_z^{\rm bos},L_0^{\rm bos};\mu)
+  +\sum_R K_\Lambda^{\rm pf,R}(z,0;\mu),
+  \label{eq:proper-time-instanton-Wnz}
+\end{equation}
+with \(K_\Lambda^{\rm pf,R}\) the Pfaffian or determinant-line version of the
+same nonzero-mode construction for the fermion multiplet \(R\).
+
+For two massless Dirac flavors, let \(\eta_L\) and \(\bar\eta_R\) be four
+external wave packets in the channel saturated by the \(Q=1\) fermion zero
+modes, and let \(\psi_{0,z}\) be the normalized fundamental zero-mode
+wavefunction in the instanton background.  Define the zero-mode source matrix
+\begin{equation}
+  B_{\eta,ff'}(z)
+  =
+  \left(
+    \int \dd^4x\,
+    \bar\eta_{R f}(x)\psi_{0,z}(x)
+  \right)
+  \left(
+    \int \dd^4y\,
+    \psi_{0,z}^{\dagger}(y)\eta_{L f'}(y)
+  \right),
+  \qquad f,f'=1,2,
+  \label{eq:zero-mode-projected-four-fermion-source}
+\end{equation}
+with spin and color indices contracted in the zero-mode line.  The
+one-instanton contribution to the smeared four-fermion amplitude is
+\begin{equation}
+  G^{(4)}_{\eta,\Lambda,Q=1}
+  =
+  \int_{\mathcal U_{Q=1}}
+  \exp[-S_\Lambda(A_z)+\ii\theta]\,
+  \mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)\,
+  \det B_\eta(z)\,
+  \dd\nu_{\Lambda,\mathcal M}(z).
+  \label{eq:proper-time-four-fermion-instanton-amplitude}
+\end{equation}
+In the slow-field limit this reduces to the local \(N_f=2\) term in
+\eqref{eq:qcd-thooft-vertex-leading-local}.  The small-\(t\) expansion of
+\eqref{eq:proper-time-instanton-determinant-ratio} supplies the local
+counterterms and the universal \((\mu\rho)^{b_0}\) factor, while the finite
+remainder fixes the scheme-dependent numerical constant in the
+four-fermion amplitude.  Thus the physics calculation consists of the
+regulated fluctuation determinant, the zero-mode source projection, and the
+collective-coordinate integral as a single object.
+\end{proposition}
+
+\begin{proof}
+For a finite positive operator \(P\), the identity
+\(\log\det P=-\int_{\epsilon}^{\infty}\dd t\,t^{-1}\operatorname{Tr}e^{-tP}\)
+holds up to the subtraction convention at the lower endpoint.  Applying this
+identity to the instanton and trivial-sector operators and adding the chosen
+local counterterm gives
+\eqref{eq:proper-time-instanton-determinant-ratio}.  Bosonic Gaussian
+integration contributes the exponent \(-1/2\), ghost Berezin integration
+contributes \(+1\), and fermionic nonzero modes contribute the Pfaffian or
+determinant-line factor, giving
+\eqref{eq:proper-time-instanton-Wnz}.  Zero modes have already been removed
+from the traces and determinants, so their finite Berezin integral is exactly
+the calculation in
+Proposition~\ref{prop:qcd-thooft-determinant-zero-mode-amplitude}.  For the
+four external wave packets this Berezin coefficient is
+\(\det B_\eta(z)\).  Multiplication by the collective-coordinate density and
+the classical instanton exponential gives
+\eqref{eq:proper-time-four-fermion-instanton-amplitude}.  Finally, the
+heat-kernel expansion of the trace difference at small \(t\) separates local
+counterterms, the coefficient of \(\log(\mu\rho)\), and the finite
+determinant constant; RG invariance identifies the universal logarithmic
+coefficient with \(b_0\) in the displayed one-loop density.
+\end{proof}
+
 Thus the \(Q=1\) amplitude is the microscopic origin of the \(U(1)_A\)
 selection rule.  The determinant in
 \eqref{eq:qcd-thooft-vertex-leading-local} carries axial charge \(2N_f\);

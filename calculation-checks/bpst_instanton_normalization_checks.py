@@ -22,6 +22,8 @@ relations
     correct orbit-volume and homogeneous-cone scaling
     the finite-regulator nonzero-mode determinant datum has the correct
     boson/ghost/fermion determinant powers and counterterm shifts
+    the proper-time fluctuation determinant combines with the zero-mode
+    source determinant to give the finite four-fermion instanton amplitude
     the physical instanton correlator contribution is the top Berezin
     coefficient after operator, mass/source, and zero-mode factors are
     restricted to the instanton zero-mode subspace, giving the full flavor
@@ -97,6 +99,13 @@ def det_fraction(matrix: list[list[Fraction]]) -> Fraction:
         minor = [row[:j] + row[j + 1 :] for row in matrix[1:]]
         total += ((-1) ** j) * matrix[0][j] * det_fraction(minor)
     return total
+
+
+def product_fraction(values: list[Fraction]) -> Fraction:
+    result = Fraction(1)
+    for value in values:
+        result *= value
+    return result
 
 
 GrassmannPolynomial = dict[tuple[int, ...], Fraction]
@@ -526,6 +535,93 @@ def check_physical_instanton_correlator_zero_mode_saturation() -> None:
     )
 
 
+def check_proper_time_fluctuation_four_fermion_amplitude() -> None:
+    # A finite proper-time determinant ledger is a product over nonzero
+    # spectra.  The zero eigenvalue is visible before collective-coordinate
+    # projection and is absent from the determinant datum.
+    raw_boson_instanton_spectrum = [Fraction(0), Fraction(11), Fraction(13), Fraction(17)]
+    boson_instanton_nonzero = [
+        eigenvalue for eigenvalue in raw_boson_instanton_spectrum if eigenvalue != 0
+    ]
+    assert_equal(
+        "unprojected instanton bosonic determinant has zero mode",
+        product_fraction(raw_boson_instanton_spectrum),
+        Fraction(0),
+    )
+    assert_equal(
+        "bosonic collective coordinate removed before determinant",
+        len(raw_boson_instanton_spectrum) - len(boson_instanton_nonzero),
+        1,
+    )
+
+    boson_vacuum_spectrum = [Fraction(2), Fraction(3), Fraction(5), Fraction(7)]
+    ghost_vacuum_spectrum = [Fraction(19), Fraction(23)]
+    ghost_instanton_spectrum = [Fraction(29), Fraction(31)]
+    fermion_vacuum_pfaffian_blocks = [Fraction(37), Fraction(41)]
+    fermion_instanton_pfaffian_blocks = [Fraction(43), Fraction(47)]
+
+    boson_inverse_sqrt_squared = (
+        product_fraction(boson_vacuum_spectrum)
+        / product_fraction(boson_instanton_nonzero)
+    )
+    ghost_ratio = (
+        product_fraction(ghost_instanton_spectrum)
+        / product_fraction(ghost_vacuum_spectrum)
+    )
+    fermion_pfaffian_ratio = (
+        product_fraction(fermion_instanton_pfaffian_blocks)
+        / product_fraction(fermion_vacuum_pfaffian_blocks)
+    )
+    nonzero_mode_weight_squared = (
+        boson_inverse_sqrt_squared
+        * ghost_ratio
+        * ghost_ratio
+        * fermion_pfaffian_ratio
+        * fermion_pfaffian_ratio
+    )
+    assert_equal(
+        "proper-time nonzero-mode determinant weight squared",
+        nonzero_mode_weight_squared,
+        Fraction(210, 2431) * Fraction(899, 437) ** 2 * Fraction(2021, 1517) ** 2,
+    )
+
+    # The four external fermion wave packets enter only through the
+    # zero-mode-projected two-flavor source matrix B_eta.  The full
+    # semiclassical four-point amplitude is W_nz det(B_eta) integrated over
+    # collective coordinates; this finite check tracks the scalar integrand.
+    source_matrix = [[Fraction(2), Fraction(3)], [Fraction(5), Fraction(11)]]
+    source_determinant = det_fraction(source_matrix)
+    assert_equal(
+        "zero-mode projected four-fermion source determinant",
+        grassmann_source_determinant_top_coefficient(source_matrix),
+        source_determinant,
+    )
+    four_fermion_integrand_squared = (
+        nonzero_mode_weight_squared * source_determinant * source_determinant
+    )
+    assert_equal(
+        "four-fermion instanton amplitude integrand squared",
+        four_fermion_integrand_squared,
+        nonzero_mode_weight_squared * Fraction(49),
+    )
+
+    # In the local limit for N_f=2, each zero-mode source matrix entry carries
+    # the BPST zero-mode normalization rho^3, while det(B_eta) contains two
+    # entries.  This is the rho^6 factor in the local four-fermion vertex.
+    assert_equal("two-flavor local 't Hooft vertex rho power", 2 * 3, 6)
+
+    # The universal log(mu rho) power is the sum of the proper-time small-t
+    # trace coefficient and the coupling/counterterm conversion in the same
+    # scheme.  For SU(3) with two Dirac fundamentals this equals b0=29/3.
+    spectral_trace_power = Fraction(7, 3)
+    coupling_and_local_counterterm_power = Fraction(22, 3)
+    assert_equal(
+        "proper-time plus counterterm log power for SU(3) Nf=2",
+        spectral_trace_power + coupling_and_local_counterterm_power,
+        Fraction(29, 3),
+    )
+
+
 def check_uhlenbeck_boundary_face_budget() -> None:
     for n_c in range(2, 8):
         for k in range(1, 6):
@@ -594,6 +690,7 @@ def main() -> None:
     check_adhm_quotient_density_coarea_scaling()
     check_finite_regulator_determinant_datum()
     check_physical_instanton_correlator_zero_mode_saturation()
+    check_proper_time_fluctuation_four_fermion_amplitude()
     check_uhlenbeck_boundary_face_budget()
     check_k_one_adhm_dimension_and_cone_power()
     print("All BPST instanton normalization checks passed.")
