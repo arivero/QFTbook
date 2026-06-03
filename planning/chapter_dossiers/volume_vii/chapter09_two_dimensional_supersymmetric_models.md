@@ -7,8 +7,9 @@ lower-dimensional supersymmetric examples with `2D` `N=(2,2)` theories.
 The LG/GLSM and mirror-duality material uses Xi's stringbook Appendix K as an
 internal source lead and convention comparator.  It is rewritten here as an
 intrinsic two-dimensional QFT development, with the charged-chiral
-dualization, one-loop matching, vortex-term proof boundary, and
-cigar/Liouville comparison made more explicit than the stringbook appendix.
+dualization, one-loop matching, vortex-term proof boundary, protected
+projective-space residue test, and cigar/Liouville comparison made more
+explicit than the stringbook appendix.
 Hori--Vafa is treated as a protected-data benchmark and source lead rather
 than as an authority to quote through; every imported formula must be
 rechecked against the chapter's regulator, determinant, zero-mode, boundary,
@@ -55,6 +56,10 @@ and
   twisted variables, first-order real superfields, real dual coordinates,
   charge-linear Coulomb masses, vortex-normalization constants, and
   exponential torus coordinates in the abelian mirror presentation.
+- `hat X_i`, `q_phys`, `R_{P^{N-1}}`, `H`: vortex-normalized mirror-torus
+  coordinate, physical exponentiated FI coordinate after finite determinant
+  normalization, normalized projective-space mirror residue trace, and
+  hyperplane/Coulomb class in the `P^{N-1}` protected ring test.
 - `U_{i,1,Lambda}`, `W_{i,1,Lambda}^{nz}`, `Z_{i,F,Lambda}^0`,
   `c_{i,Lambda}`: finite-regulator one-vortex chart, nonzero-mode
   determinant ratio, zero-mode Berezin coefficient for the twisted
@@ -157,6 +162,13 @@ and
   Landau-Ginzburg presentation of protected twisted-chiral data.
 - Works out the `P^{N-1}` mirror critical equations and matches their `N`
   simple critical points to the Coulomb vacuum count.
+- Adds the `P^{N-1}` protected observable test after Hori--Vafa
+  normalization: with `q_phys=exp(t+sum_i log c_i)`, the constrained mirror
+  logarithmic Hessian is `N x^{N-1}` and the finite residue trace gives
+  `R(H^k)=q_phys^d` for `k=N-1+dN` and zero off that selection rule.  This
+  recovers the protected quantum-product relation `H^N=q_phys` only after the
+  vortex coefficient, determinant-line orientation, and A-twisted
+  compactification/contact data are fixed.
 - Derives the classical cigar quotient metric by solving the auxiliary
   constraint, gauge fixing the logarithmic chiral scalar, and eliminating the
   gauge field.
@@ -241,6 +253,10 @@ and
     twisted `F`-term zero-mode coefficient, vanishing with extra unsaturated
     zero modes, and the finite FI shift induced by the vortex coefficient;
   - the `P^{N-1}` mirror critical-point simplicity ledger;
+  - the `P^{N-1}` mirror residue/quantum-product test: exact Hessian
+    determinant, root-of-unity selection rule, `R(H^{N-1+dN})=q_phys^d`,
+    off-selection vanishing, and the trace recurrence equivalent to
+    `H^N=q_phys`;
   - the cigar quotient metric coefficients after algebraic elimination of
     the gauge field.
   - the logarithmic-chiral vortex obstruction: a unit-norm charged section
@@ -278,3 +294,8 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   normalization pass makes the shifted FI-theta coordinate explicit in both
   the mirror-torus constraints and the Coulomb-eliminated affine term, and
   checks the associated logarithm-branch theta periodicity.
+- The 2026-06-03 projective-space residue pass extends that scrutiny from
+  mirror critical points to a protected observable: it computes the finite
+  Hessian/residue trace behind the `P^{N-1}` A-model selection rule and records
+  the remaining physics inputs needed before using Hori--Vafa as a full QFT
+  equivalence theorem.

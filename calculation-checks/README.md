@@ -2023,8 +2023,9 @@ Current checks:
   single-vortex amplitude assembly with zero-mode removal, determinant-power
   bookkeeping, saturated twisted-\(F\)-term zero modes, unsaturated-zero-mode
   vanishing, and FI-coordinate normalization shifts, the
-  \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger, and the
-  classical cigar quotient metric obtained by eliminating the gauge field,
+  \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger and protected
+  residue/quantum-product selection rule, and the classical cigar quotient
+  metric obtained by eliminating the gauge field,
   the logarithmic-chiral vortex obstruction, plus the hypersurface GLSM
   adjunction sign,
   Landau--Ginzburg/sigma-model central-charge matching condition, residual

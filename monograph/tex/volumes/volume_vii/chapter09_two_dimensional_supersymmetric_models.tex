@@ -1264,6 +1264,118 @@ reproduce after its regulator, local operators, and topological sectors have
 been specified.
 \end{example}
 
+\begin{proposition}[\(\mathbb P^{N-1}\) mirror residue and the quantum-product test]
+\label{prop:cpn-hv-residue-quantum-product}
+For the charge-one \(\mathbb P^{N-1}\) GLSM, use the normalized mirror
+variables of Proposition~\ref{prop:glsm-vortex-normalization-fi-coordinate}
+and write
+\begin{equation}
+  q_{\rm phys}
+  =
+  \exp\left(t+\sum_{i=1}^N\log c_i\right)
+  \neq0 .
+  \label{eq:cpn-hv-physical-q}
+\end{equation}
+On the logarithmic torus
+\[
+  \prod_{i=1}^N\widehat X_i=q_{\rm phys},
+  \qquad
+  \widetilde W=-\mu\sum_{i=1}^N\widehat X_i ,
+\]
+let \(H\) denote the protected hyperplane/Coulomb class represented in the
+mirror Jacobi quotient by \([\widehat X_1]\).  With the determinant-line
+normalization that strips the universal factor \((-\mu)^{N-1}\) from the
+logarithmic Hessian, the mirror residue trace is
+\begin{equation}
+  \mathcal R_{\mathbb P^{N-1}}(H^k)
+  =
+  \sum_{x^N=q_{\rm phys}}
+  \frac{x^k}{N x^{N-1}}
+  =
+  \begin{cases}
+    q_{\rm phys}^{\,d}, & k=N-1+dN,\quad d\ge0,\\
+    0, & k\not\equiv N-1\pmod{N} .
+  \end{cases}
+  \label{eq:cpn-hv-residue-selection-rule}
+\end{equation}
+Consequently the protected Frobenius algebra seen by this trace has
+\[
+  H^N=q_{\rm phys},
+  \qquad
+  \mathcal R_{\mathbb P^{N-1}}(H^{N-1})=1 .
+\]
+\end{proposition}
+
+\begin{proof}
+Use logarithmic coordinates
+\[
+  u_a=\log\widehat X_a,\qquad a=1,\ldots,N-1,
+\]
+and eliminate
+\[
+  \widehat X_N=q_{\rm phys}\exp\left(-\sum_{a=1}^{N-1}u_a\right).
+\]
+For the reduced function
+\[
+  S(u)=\sum_{a=1}^{N-1}e^{u_a}
+  +
+  q_{\rm phys}\exp\left(-\sum_{a=1}^{N-1}u_a\right),
+\]
+the critical equations are
+\[
+  e^{u_a}=\widehat X_N,\qquad a=1,\ldots,N-1.
+\]
+Thus every critical point has
+\[
+  \widehat X_1=\cdots=\widehat X_N=x,
+  \qquad
+  x^N=q_{\rm phys}.
+\]
+At such a point the logarithmic Hessian of \(S\) is
+\[
+  x(I_{N-1}+J_{N-1}),
+\]
+where \(J_{N-1}\) is the all-ones matrix.  Since \(I_{N-1}+J_{N-1}\) has
+eigenvalues \(1,\ldots,1,N\), its determinant is \(N x^{N-1}\).  The factor
+from \(\widetilde W=-\mu S\) is the universal \((-\mu)^{N-1}\) determinant-line
+factor already fixed in the trace normalization, leaving the denominator in
+\eqref{eq:cpn-hv-residue-selection-rule}.
+
+It remains to evaluate the finite root sum.  Put
+\[
+  \ell=k-(N-1).
+\]
+Then
+\[
+  \sum_{x^N=q_{\rm phys}}\frac{x^k}{N x^{N-1}}
+  =
+  \frac1N\sum_{x^N=q_{\rm phys}}x^\ell .
+\]
+If \(\ell\) is not divisible by \(N\), the sum over the \(N\)-th roots vanishes.
+If \(\ell=dN\) with \(d\ge0\), each critical point contributes \(x^{dN}
+=q_{\rm phys}^{\,d}\), and the prefactor \(1/N\) cancels the number of roots.
+The same critical-point equations identify \(H^N\) and \(q_{\rm phys}\) in the
+Jacobi quotient; the nondegenerate residue pairing separates the quotient
+classes.
+\end{proof}
+
+The status of Proposition~\ref{prop:cpn-hv-residue-quantum-product} is a
+protected observable test of the vortex-normalized mirror, not a standalone
+proof of mirror equivalence.  Once a compactified A-twisted GLSM or
+sigma-model construction identifies \(H\) with the hyperplane class and
+\(q_{\rm phys}\) with the degree-one vortex amplitude, the formula becomes the
+primary selection rule
+\[
+  \langle H^{N-1+dN}\rangle_{0}=q_{\rm phys}^{\,d},
+  \qquad
+  \langle H^k\rangle_0=0
+  \quad(k\not\equiv N-1\!\!\pmod{N}).
+\]
+The mirror residue supplies the finite Hessian and root-sum side of that
+statement.  The physical identification still depends on the same determinant,
+orientation, zero-mode, compactification, and contact-term data isolated in
+\eqref{eq:glsm-single-vortex-coefficient-integral}.
+
 \section{The Cigar--Liouville Mirror Chain as a QFT Duality Problem}
 \label{sec:cigar-liouville-mirror-qft-problem}
 

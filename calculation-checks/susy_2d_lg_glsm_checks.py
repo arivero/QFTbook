@@ -16,6 +16,29 @@ def assert_close(label: str, left: float, right: float, tol: float = 1e-11) -> N
         raise AssertionError(f"{label} failed: {left!r} != {right!r}")
 
 
+def determinant_fraction(matrix: list[list[Fraction]]) -> Fraction:
+    reduced = [row[:] for row in matrix]
+    size = len(reduced)
+    determinant = Fraction(1)
+    for column in range(size):
+        pivot = next(
+            (row for row in range(column, size) if reduced[row][column] != 0),
+            None,
+        )
+        if pivot is None:
+            return Fraction(0)
+        if pivot != column:
+            reduced[column], reduced[pivot] = reduced[pivot], reduced[column]
+            determinant *= -1
+        pivot_value = reduced[column][column]
+        determinant *= pivot_value
+        for row in range(column + 1, size):
+            factor = reduced[row][column] / pivot_value
+            for col in range(column, size):
+                reduced[row][col] -= factor * reduced[column][col]
+    return determinant
+
+
 def fermat_weights(degrees: list[int]) -> list[Fraction]:
     return [Fraction(1, degree) for degree in degrees]
 
@@ -538,6 +561,69 @@ def check_cp_mirror_critical_ledger() -> None:
             raise AssertionError("CP mirror critical Hessian should be nonzero")
 
 
+def nth_root_power_sum(n_fields: int, exponent: int, q_value: Fraction) -> Fraction:
+    if exponent % n_fields != 0:
+        return Fraction(0)
+    return Fraction(n_fields) * q_value ** (exponent // n_fields)
+
+
+def cp_mirror_residue_trace(n_fields: int, insertion_power: int, q_value: Fraction) -> Fraction:
+    if insertion_power < 0:
+        raise ValueError(
+            "CP mirror residue trace is defined here for polynomial insertions"
+        )
+    root_power = insertion_power - (n_fields - 1)
+    return nth_root_power_sum(n_fields, root_power, q_value) / n_fields
+
+
+def check_cp_mirror_residue_correlators() -> None:
+    for n_fields in range(2, 9):
+        q_phys = Fraction(n_fields + 1, n_fields + 4)
+        x = Fraction(5, 3)
+
+        # In the constrained logarithmic torus the Hessian denominator of the
+        # normalized mirror trace is det(x(I+J))=N x^{N-1}.
+        hessian = [
+            [x * (1 + int(row == col)) for col in range(n_fields - 1)]
+            for row in range(n_fields - 1)
+        ]
+        assert_equal(
+            f"CP^{n_fields - 1} residue Hessian denominator",
+            determinant_fraction(hessian),
+            n_fields * x ** (n_fields - 1),
+        )
+
+        assert_equal(
+            f"CP^{n_fields - 1} top trace normalization",
+            cp_mirror_residue_trace(n_fields, n_fields - 1, q_phys),
+            Fraction(1),
+        )
+
+        for degree in range(1, 4):
+            insertion_power = n_fields - 1 + degree * n_fields
+            assert_equal(
+                f"CP^{n_fields - 1} degree-{degree} residue selection",
+                cp_mirror_residue_trace(n_fields, insertion_power, q_phys),
+                q_phys**degree,
+            )
+
+        for insertion_power in range(0, 4 * n_fields):
+            selected = (insertion_power - (n_fields - 1)) % n_fields == 0
+            if not selected:
+                assert_equal(
+                    f"CP^{n_fields - 1} off-selection residue vanishes k={insertion_power}",
+                    cp_mirror_residue_trace(n_fields, insertion_power, q_phys),
+                    Fraction(0),
+                )
+
+        for insertion_power in range(0, 3 * n_fields):
+            assert_equal(
+                f"CP^{n_fields - 1} quantum-product trace recurrence k={insertion_power}",
+                cp_mirror_residue_trace(n_fields, insertion_power + n_fields, q_phys),
+                q_phys * cp_mirror_residue_trace(n_fields, insertion_power, q_phys),
+            )
+
+
 def check_cigar_metric_elimination() -> None:
     examples = [
         (Fraction(9, 5), Fraction(7, 3)),
@@ -650,6 +736,7 @@ def main() -> None:
     check_mirror_primitive_monomial_selection()
     check_single_vortex_amplitude_assembly()
     check_cp_mirror_critical_ledger()
+    check_cp_mirror_residue_correlators()
     check_cigar_metric_elimination()
     check_logarithmic_chiral_vortex_obstruction()
     check_hypersurface_phase_ledger()
