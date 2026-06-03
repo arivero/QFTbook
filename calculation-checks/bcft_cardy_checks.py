@@ -655,6 +655,94 @@ def check_pointed_module_boundary_ope_associativity() -> None:
         raise AssertionError("distinct stabilizer chiral labels collapsed")
 
 
+def check_pointed_stabilizer_classifying_idempotents() -> None:
+    """Check the pointed mixed bulk-boundary stabilizer slide identity."""
+
+    elements: tuple[GroupElement, ...] = ((0, 0), (1, 0), (0, 1), (1, 1))
+    stabilizer: tuple[GroupElement, ...] = ((0, 0), (1, 0))
+    characters = {
+        "trivial": {(0, 0): Fraction(1), (1, 0): Fraction(1)},
+        "sign": {(0, 0): Fraction(1), (1, 0): Fraction(-1)},
+    }
+
+    def convolution(
+        left: dict[GroupElement, Fraction],
+        right: dict[GroupElement, Fraction],
+    ) -> dict[GroupElement, Fraction]:
+        result: dict[GroupElement, Fraction] = {}
+        for left_element, left_coefficient in left.items():
+            for right_element, right_coefficient in right.items():
+                product = pointed_boundary_compose(left_element, right_element)
+                result[product] = (
+                    result.get(product, Fraction(0))
+                    + left_coefficient * right_coefficient
+                )
+        return {
+            element: coefficient
+            for element, coefficient in result.items()
+            if coefficient
+        }
+
+    idempotents = {
+        name: {
+            h: character[h] / len(stabilizer)
+            for h in stabilizer
+        }
+        for name, character in characters.items()
+    }
+    identity = {(0, 0): Fraction(1)}
+    summed_idempotents: dict[GroupElement, Fraction] = {}
+    for idempotent in idempotents.values():
+        for element, coefficient in idempotent.items():
+            summed_idempotents[element] = (
+                summed_idempotents.get(element, Fraction(0)) + coefficient
+            )
+    summed_idempotents = {
+        element: coefficient
+        for element, coefficient in summed_idempotents.items()
+        if coefficient
+    }
+    assert_equal(
+        "pointed stabilizer idempotents sum to identity",
+        summed_idempotents,
+        identity,
+    )
+
+    for left_name, left_idempotent in idempotents.items():
+        for right_name, right_idempotent in idempotents.items():
+            product = convolution(left_idempotent, right_idempotent)
+            expected = left_idempotent if left_name == right_name else {}
+            assert_equal(
+                f"pointed stabilizer idempotent product {left_name} {right_name}",
+                product,
+                expected,
+            )
+
+    for source in (0, 1):
+        for group_element in elements:
+            target = pointed_boundary_target(source, group_element)
+            for character_name, idempotent in idempotents.items():
+                before_then_change = {
+                    pointed_boundary_compose(h, group_element): coefficient
+                    for h, coefficient in idempotent.items()
+                }
+                change_then_after = {
+                    pointed_boundary_compose(group_element, h): coefficient
+                    for h, coefficient in idempotent.items()
+                }
+                assert_equal(
+                    "pointed stabilizer classifying slide "
+                    f"source={source}, target={target}, "
+                    f"g={group_element}, chi={character_name}",
+                    before_then_change,
+                    change_then_after,
+                )
+
+    sign_projector = idempotents["sign"]
+    if sign_projector == idempotents["trivial"]:
+        raise AssertionError("nontrivial stabilizer character collapsed")
+
+
 def check_boundary_entropy() -> None:
     entropies = [S[a][0] / S[0][0] for a in range(3)]
     # The displayed g_a is S_{a0}/sqrt(S_{00}); its square is S_{a0}^2/S_{00}.
@@ -940,6 +1028,7 @@ def main() -> None:
     check_finite_classifying_center_characters()
     check_pointed_module_annulus_nimrep()
     check_pointed_module_boundary_ope_associativity()
+    check_pointed_stabilizer_classifying_idempotents()
     check_boundary_entropy()
     check_boundary_gradient_spectral_weight()
     check_chan_paton_direct_sums()
@@ -952,8 +1041,8 @@ def main() -> None:
     print(
         "All BCFT Cardy, sewing, boundary-gradient, Ising boundary-changing, "
         "matrix-Frobenius, finite-center, pointed-nimrep, Chan-Paton, "
-        "pointed-boundary-OPE, compact-boson, Liouville-boundary, and "
-        "continuous-annulus Plancherel checks passed."
+        "pointed-boundary-OPE, pointed-stabilizer-slide, compact-boson, "
+        "Liouville-boundary, and continuous-annulus Plancherel checks passed."
     )
 
 

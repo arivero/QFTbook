@@ -960,7 +960,8 @@ Current checks:
   nimrep identity \(n_g n_h=n_{g+h}\), the pointed module-category
   boundary-OPE associativity cell
   \(\psi_{x+g,h}\psi_{x,g}=\psi_{x,g+h}\), stabilizer-label noncollapse,
-  boundary entropy squares, Chan--Paton direct sums, the positive spectral
+  the pointed stabilizer classifying-idempotent slide identity, boundary
+  entropy squares, Chan--Paton direct sums, the positive spectral
   weight in the boundary-entropy gradient metric, compact-boson T-duality zero modes,
   Ising boundary-changing fusing constants and OPE powers, the finite
   four-boundary Cardy--Lewellen sewing cell, and the Liouville FZZT/ZZ

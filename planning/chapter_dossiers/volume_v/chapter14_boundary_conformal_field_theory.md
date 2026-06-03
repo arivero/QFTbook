@@ -132,6 +132,13 @@
   \(\psi_{x+g,h}\psi_{x,g}=\psi_{x,g+h}\), so the finite
   Cardy-Lewellen associativity cell is just group associativity, while the
   stabilizer labels remain distinct chiral boundary endomorphisms.
+- Adds the mixed bulk-boundary sewing shadow in the pointed \(G/H\) cell:
+  stabilizer character idempotents
+  `e_{x,chi}=|H|^{-1} sum_h chi(h)^{-1} psi_{x,h}` obey orthogonal
+  idempotent algebra and slide through boundary-changing fields by
+  `psi_{x,g} e_{x,chi}=e_{x+g,chi} psi_{x,g}`.  The text identifies this as
+  a finite classifying-projector compatibility, not a full analytic
+  bulk-boundary sewing construction.
 
 ## Claims To Verify
 
@@ -198,6 +205,10 @@
 18. In the pointed \(G/H\) module cell, boundary-field OPE associativity
     keeps both endpoint data and chiral labels: stabilizer objects preserve a
     boundary endpoint but do not collapse to the vacuum boundary field.
+19. The stabilizer classifying idempotents in the pointed \(G/H\) module cell
+    are orthogonal projectors and are compatible with boundary-changing fields
+    by the slide identity
+    \(\psi_{x,g}e_{x,\chi}=e_{x+g,\chi}\psi_{x,g}\).
 
 ## Figures
 
@@ -213,6 +224,7 @@
   the finite classifying-center model for non-diagonal rational sewing,
   the pointed module-category annulus nimrep identity,
   the pointed module-category boundary-OPE associativity cell,
+  the pointed stabilizer classifying-idempotent slide identity,
   boundary entropy squares, Ising
   boundary-changing fusing constants and OPE powers, the finite Ising
   four-boundary Cardy--Lewellen sewing cell, the \(A=1\)
@@ -329,3 +341,7 @@
   `bcft_cardy_checks.py` with the exact odd finite-cyclic regulator verifying
   cosine-Plancherel orthogonality on nonzero reflection orbits and the
   off-diagonal overlap between unquotiented reflected labels.
+- 2026-06-03 pointed mixed sewing pass: added the stabilizer-character
+  classifying idempotents in the finite \(G/H\) module cell and the slide
+  identity through boundary-changing fields, with exact checks of idempotent
+  algebra and mixed bulk-boundary compatibility.

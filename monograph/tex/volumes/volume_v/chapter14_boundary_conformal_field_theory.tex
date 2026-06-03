@@ -1388,6 +1388,46 @@ non-diagonal boundary theory is not obtained by merely identifying chiral
 labels that act on the same coset; the open sector remembers the chiral
 fusion label even when the boundary endpoint is unchanged.
 
+The mixed bulk-boundary sewing shadow is visible in the same finite cell.
+At a fixed boundary \(xH\), the stabilizer fields
+\(\{\psi_{x,h}\}_{h\in H}\) form the group algebra of \(H\).  For a character
+\(\chi\in\widehat H\), define the primitive stabilizer idempotent
+\begin{equation}
+  e_{x,\chi}
+  =
+  \frac1{|H|}
+  \sum_{h\in H}\chi(h)^{-1}\psi_{x,h}.
+  \label{eq:bcft-pointed-stabilizer-idempotent}
+\end{equation}
+Then
+\begin{equation}
+  e_{x,\chi}e_{x,\chi'}
+  =
+  \delta_{\chi,\chi'}e_{x,\chi},
+  \qquad
+  \sum_{\chi\in\widehat H}e_{x,\chi}=\psi_{x,(0,0)} .
+  \label{eq:bcft-pointed-stabilizer-idempotent-algebra}
+\end{equation}
+The compatibility of this classifying projector with a boundary-changing
+field is the slide identity
+\begin{equation}
+  \psi_{x,g}\circ e_{x,\chi}
+  =
+  e_{x+g,\chi}\circ\psi_{x,g}.
+  \label{eq:bcft-pointed-bulk-boundary-slide}
+\end{equation}
+Using \eqref{eq:bcft-pointed-coset-boundary-ope}, both sides are
+\[
+  \frac1{|H|}\sum_{h\in H}\chi(h)^{-1}\psi_{x,g+h},
+\]
+where \(G\) is abelian.  This is a finite mixed Cardy--Lewellen sewing cell:
+projecting to a stabilizer classifying sector and then changing the boundary
+condition gives the same amplitude as first changing the boundary condition
+and then using the transported projector at the new endpoint.  It is still
+only the algebraic shadow of bulk-boundary sewing; the analytic rational
+BCFT construction must supply the full center object, correlators, and
+mapping-class-compatible sewing maps.
+
 Bulk fields in the same algebraic construction are bimodule morphisms.  If
 \(U_i^+\otimes A\otimes U_j^-\) denotes the \(A\)-bimodule obtained by using
 the braiding for the left chiral label and the inverse braiding for the
