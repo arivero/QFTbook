@@ -71,6 +71,74 @@ Weyl-fermion index representative, and the noninvertible wall examples below
 are different coordinate presentations of the same kind of background-line and
 invertible-bulk structure.
 
+\paragraph{Coordinate comparison.}
+The anomaly line has three coordinate shadows used in different volumes.
+In a finite-regulator chart such as the one used in
+Chapter~\ref{ch:volume-ii-20}, a background transformation \(g:A\to A^g\)
+is represented by the additive cochain
+\begin{equation}
+  C_\Lambda(g;A)
+  =
+  W_\Lambda[A^g]-W_\Lambda[A]
+  \quad\in\mathbb R/\mathbb Z ,
+  \qquad
+  C_\Lambda(gh;A)
+  =
+  C_\Lambda(g;A)+C_\Lambda(h;A^g).
+  \label{eq:inflow-finite-regulator-cochain-coordinate}
+\end{equation}
+After a local frame \(s_A\) for the anomaly line is chosen, the same
+information is the multiplicative line cocycle
+\begin{equation}
+  \alpha_\Lambda(A,g)
+  =
+  \exp\!\bigl(2\pi\ii C_\Lambda(g;A)\bigr),
+  \qquad
+  \mathcal L(g)s_A=\alpha_\Lambda(A,g)s_{A^g}.
+  \label{eq:inflow-cochain-to-line-cocycle-coordinate}
+\end{equation}
+Adding a local finite-regulator counterterm \(B_\Lambda(A)\) shifts the
+effective-action representative by
+\begin{equation}
+  C_\Lambda(g;A)
+  \longmapsto
+  C_\Lambda(g;A)+B_\Lambda(A^g)-B_\Lambda(A).
+  \label{eq:inflow-regulator-counterterm-coboundary-coordinate}
+\end{equation}
+Equivalently, moving that counterterm from the scalar coordinate into the line
+frame uses the inverse frame change
+\(s_A\mapsto\exp(-2\pi\ii B_\Lambda(A))s_A\), giving the same transformed
+\(\alpha_\Lambda\).
+
+The inflow bulk carries the inverse coordinate.  If a cylinder or mapping
+cylinder realizes the transformation \(g\), then the bulk transition phase on
+that bordism is
+\begin{equation}
+  \mathcal Z_{\rm bulk}([0,1]\times_g M)
+  =
+  \alpha_\Lambda(A,g)^{-1}
+  =
+  \exp\!\bigl(-2\pi\ii C_\Lambda(g;A)\bigr),
+  \label{eq:inflow-bulk-inverse-line-coordinate}
+\end{equation}
+so that the boundary vector and the bulk state pair to a background-invariant
+number.  In the free-fermion global-anomaly chapter the same line cocycle is
+computed analytically by determinant-line transport,
+\[
+  \alpha_{\rm det}(A,g)
+  =
+  \operatorname{Hol}_g(\operatorname{Det}D)
+  =
+  \exp\!\left(-2\pi\ii\,\xi(B_{Y_g})\right),
+\]
+or by the corresponding Pfaffian sign in the real case.  Thus the finite
+cochain, the inflow boundary line, and the determinant/Pfaffian holonomy are
+not separate anomaly notions; they are regulator, invertible-bulk, and
+global-analysis coordinates on the same obstruction to descent.  The analytic
+theorems quoted in Chapter~\ref{ch:curved-eta-invariants-global-anomalies}
+compute this coordinate for Dirac families, while the algebra above is the
+QFT-facing descent and cancellation bookkeeping.
+
 \section{Background Fields and Relative Partition Functions}
 
 Let \(M\) be a closed \(D\)-manifold with the spacetime structure required by

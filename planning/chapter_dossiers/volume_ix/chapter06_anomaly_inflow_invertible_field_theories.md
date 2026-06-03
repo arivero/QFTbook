@@ -17,6 +17,10 @@ boundary condition for an invertible bulk theory.
 - `Z_partial,M(A)`: relative boundary partition vector in the anomaly line.
 - `alpha_M(u;A)`: scalar representative of the anomaly-line functor in a
   chosen frame.
+- `C_Lambda(g;A)`: finite-regulator additive anomaly cochain
+  `W_Lambda[A^g]-W_Lambda[A]`, whose exponential is the line cocycle.
+- `B_Lambda(A)`: local finite-regulator counterterm shifting `C_Lambda` by a
+  one-coboundary.
 - `Z_bulk`: invertible `(D+1)`-dimensional bulk theory valued in complex
   lines.
 - `I_{D+1}^{(0)}`, `P_{D+2}`: Chern-Simons representative and invariant
@@ -40,6 +44,10 @@ boundary condition for an invertible bulk theory.
   induced boundary anomaly lines, and a relative boundary partition vector.
 - Defines anomalous partition functions as sections of anomaly-line functors
   over background-field groupoids.
+- Adds the coordinate comparison tying the finite-regulator cochain
+  `C_Lambda(g;A)`, the exponentiated line cocycle `alpha_Lambda(A,g)`, the
+  inverse inflow bulk phase, and the determinant/Pfaffian holonomy coordinate
+  of Volume XII into one anomaly-line datum.
 - Proves the functorial cocycle condition for scalar anomaly representatives
   and the frame-change law under local counterterms.
 - Constructs the boundary anomaly line from an invertible bulk by comparing
@@ -89,11 +97,21 @@ boundary condition for an invertible bulk theory.
   one-generation Standard Model anomaly sums.
 - `calculation-checks/inflow_anomaly_line_checks.py` verifies anomaly-line
   cocycle composition, the finite Chevalley--Eilenberg sign identity behind
-  Wess--Zumino consistency, frame/counterterm shifts of representatives, and
-  the finite cochain Stokes identity for one-form \(BF\) inflow.
+  Wess--Zumino consistency, frame/counterterm shifts of representatives, the
+  finite-regulator-to-line-to-inflow coordinate comparison, and the finite cochain
+  Stokes identity for one-form \(BF\) inflow.
 
 ## Figure Ledger
 
 - `fig:inflow-boundary-line-gluing`: compares two fillings of the same
   boundary background and shows how the closed bulk phase relates frames of
   the anomaly line.
+
+## Audit Notes
+
+- 2026-06-03 anomaly-coordinate comparison pass: added the chapter-opening bridge
+  between Volume II finite-regulator anomaly cochains, Volume IX inflow
+  boundary-line functors, and Volume XII determinant/Pfaffian holonomy.  This
+  is an architecture/coherence pass for #696: it identifies the shared
+  anomaly-line datum and leaves the APS/Bismut--Freed/Dai--Freed analytic
+  theorem boundaries external.

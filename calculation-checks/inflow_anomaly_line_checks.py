@@ -213,6 +213,56 @@ def check_finite_regulator_scheme_change_is_coboundary() -> None:
                             )
 
 
+def check_coordinate_comparison_between_cochain_line_and_inflow() -> None:
+    """Tie finite-regulator, line-functor, and inflow coordinates together."""
+
+    for n in range(2, 19):
+        samples = sorted({0, 1, n // 3, n // 2, n - 1})
+        for level in samples:
+            for quadratic in samples:
+                for linear in samples:
+                    for background in samples:
+                        for first in samples:
+                            for second in samples:
+                                composed = anomaly_cocycle(n, level, first + second, background)
+                                after_second = (background + second) % n
+                                line_composition = (
+                                    anomaly_cocycle(n, level, first, after_second)
+                                    + anomaly_cocycle(n, level, second, background)
+                                ) % n
+                                assert_equal(
+                                    composed,
+                                    line_composition,
+                                    "finite cochain exponentiates to the line functor cocycle",
+                                )
+
+                                target = (background + first) % n
+                                base = anomaly_cocycle(n, level, first, background)
+                                counterterm_shift = (
+                                    counterterm(n, quadratic, linear, target)
+                                    - counterterm(n, quadratic, linear, background)
+                                ) % n
+                                effective_action_coordinate = (base + counterterm_shift) % n
+
+                                inverse_frame_source = -counterterm(n, quadratic, linear, background)
+                                inverse_frame_target = -counterterm(n, quadratic, linear, target)
+                                line_frame_coordinate = (
+                                    base + inverse_frame_source - inverse_frame_target
+                                ) % n
+                                assert_equal(
+                                    line_frame_coordinate,
+                                    effective_action_coordinate,
+                                    "counterterm and inverse line-frame coordinates agree",
+                                )
+
+                                bulk_inverse = (-effective_action_coordinate) % n
+                                assert_equal(
+                                    (effective_action_coordinate + bulk_inverse) % n,
+                                    0,
+                                    "bulk inflow coordinate is inverse to boundary anomaly line",
+                                )
+
+
 def simplices(top_dimension: int, degree: int) -> list[Simplex]:
     return list(combinations(range(top_dimension + 1), degree + 1))
 
@@ -296,8 +346,12 @@ def main() -> None:
     check_functorial_cocycle_condition()
     check_counterterm_frame_change_preserves_cocycle()
     check_finite_regulator_scheme_change_is_coboundary()
+    check_coordinate_comparison_between_cochain_line_and_inflow()
     check_finite_bf_boundary_variation()
-    print("Anomaly-line, descent-cocycle, and finite-inflow cochain checks passed.")
+    print(
+        "Anomaly-line, descent-cocycle, coordinate-comparison, and finite-inflow "
+        "cochain checks passed."
+    )
 
 
 if __name__ == "__main__":
