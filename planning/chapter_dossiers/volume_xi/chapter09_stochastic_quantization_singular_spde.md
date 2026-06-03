@@ -84,6 +84,10 @@ data.
 - `delta_n`, `epsilon_{n,t}`, `a_t`: time-zero coupling defect, time-\(t\)
   residual convergence defect, and finite-time Lipschitz amplification
   constant in the stationary-law comparison.
+- `W_k`, `m_k`, `e_n`, `T_{k,R}`, `eta_k`, `Delta_k`: finite OS window,
+  window cardinality, model/fixed-point defect, polynomial truncation tail,
+  constructive hierarchy comparison defect, and total finite-rate assembly
+  defect in the dynamic \(\Phi^4_3\) OS schedule.
 - `eta`, `kappa`, `p`, `K_R`: Hilbert-scale tightness parameters in the
   cutoff-field compactness criterion; \(0<\eta<\kappa\), the moment order is
   \(p\), and \(K_R\) is the \(H^{-\eta}\)-ball viewed inside
@@ -867,6 +871,13 @@ data.
   converge in \(L^1\) at stochastic times \(0\) and \(t\).  This pins the
   polynomial Schwinger-moment upgrade to uniform-integrability estimates
   rather than to Markov stationarity alone.
+- Proves the finite-rate dynamic \(\Phi^4_3\) assembly schedule: for a growing
+  positive-time OS window, cutoff OS defect, projective model/fixed-point
+  error, polynomial tail error, and constructive hierarchy comparison error
+  combine as
+  \(\Delta_k=\delta_{k,n(k)}+m_k(C_ke_{n(k)}+T_{k,R(k)}+\eta_k)\).  The sample
+  rate pattern shows the model/fixed-point defect must beat both window
+  cardinality and window amplification.
 
 ## Figure Ledger
 
@@ -937,6 +948,13 @@ data maps.
   a constructive Euclidean hierarchy.  The paired check verifies the
   \(M\epsilon\) loss and the corrected OS-II growth-envelope transfer by
   exact rational arithmetic.
+- 2026-06-03 SPDE finite-rate assembly schedule pass: added the finite
+  composition ledger immediately before the remaining dynamic \(\Phi^4_3\)
+  theorem boundary.  It combines projective model/fixed-point error,
+  polynomial truncation, hierarchy comparison, and finite-window OS positivity
+  into the single defect
+  \(\Delta_k=\delta_{k,n(k)}+m_k(C_ke_{n(k)}+T_{k,R(k)}+\eta_k)\), with a
+  checked sample rate schedule.
 - 2026-05-25 issue #558 pass: the dynamic \(\Phi^4_3\) theorem boundary now
   states the four requested components explicitly: local cutoff
   well-posedness, renormalized convergence with \(C_{1,\epsilon}\) and

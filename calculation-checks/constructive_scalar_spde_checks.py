@@ -2598,6 +2598,46 @@ def check_spde_finite_window_os_defect_budget_arithmetic():
         raise AssertionError("finite-window OS-II growth transfer failed")
 
 
+def check_spde_finite_rate_assembly_schedule_arithmetic():
+    # Proposition spde-finite-rate-assembly-schedule: a growing OS window pays
+    # both its cardinality and the amplification constant carried by the
+    # model/fixed-point comparison.
+    alpha = 2
+    beta = 3
+    previous_defect = None
+    for k in range(1, 7):
+        window_size = 2 ** (alpha * k)
+        amplification = 2 ** (beta * k)
+        model_error = Fraction(1, 2) ** ((alpha + beta + 3) * k)
+        tail_error = Fraction(1, 2) ** ((alpha + 3) * k)
+        hierarchy_error = Fraction(1, 2) ** ((alpha + 3) * k)
+        cutoff_os_defect = Fraction(1, 2) ** k
+        assembly_defect = cutoff_os_defect + window_size * (
+            amplification * model_error + tail_error + hierarchy_error
+        )
+        stated_bound = 4 * (Fraction(1, 2) ** k)
+        if assembly_defect > stated_bound:
+            raise AssertionError("finite-rate assembly schedule bound failed")
+        if previous_defect is not None and assembly_defect >= previous_defect:
+            raise AssertionError("finite-rate assembly defect did not decrease")
+        previous_defect = assembly_defect
+
+    # A schedule that beats window size but not amplification leaves a growing
+    # contribution after multiplying by m_k C_k.
+    k = 4
+    weak_model_error = Fraction(1, 2) ** ((alpha + 1) * k)
+    weak_contribution = (
+        2 ** (alpha * k)
+        * 2 ** (beta * k)
+        * weak_model_error
+    )
+    assert_equal(
+        weak_contribution,
+        2 ** ((beta - 1) * k),
+        "finite-rate weak model defect",
+    )
+
+
 def check_rough_forcing_bootstrap_arithmetic():
     # Proposition spde-dpd-rough-forcing-bootstrap uses the absorption
     # condition |lambda| C1 delta^(1-theta) epsilon <= 1/2 to turn
@@ -2695,8 +2735,9 @@ def main():
     check_spde_os_reconstruction_growth_arithmetic()
     check_spde_constructive_hierarchy_transfer_arithmetic()
     check_spde_finite_window_os_defect_budget_arithmetic()
+    check_spde_finite_rate_assembly_schedule_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, finite-rate assembly schedule, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

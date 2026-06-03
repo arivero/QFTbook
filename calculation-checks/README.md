@@ -717,8 +717,10 @@ Current checks:
   bookkeeping that keeps reflected positive-time cylinder tests at linear
   seminorm order, the finite SPDE/constructive hierarchy-transfer check for
   matching OS Gram forms and growth envelopes, the finite-window OS defect
-  budget including the \(M\epsilon\) entrywise-to-quadratic-form loss and the
-  OS-II comparison-envelope transfer, a finite hard-core polymer
+  budget including the \(M\epsilon\) entrywise-to-quadratic-form loss, the
+  OS-II comparison-envelope transfer, and the finite-rate assembly schedule
+  showing that model/fixed-point defects must beat both window cardinality and
+  window amplification, a finite hard-core polymer
   source-cumulant check showing factorization without an incompatibility bridge
   and a nonzero connected
   cumulant with such a bridge, exact set-partition enumeration for the

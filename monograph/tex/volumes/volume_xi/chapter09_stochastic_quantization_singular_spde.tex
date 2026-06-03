@@ -12062,6 +12062,83 @@ seminorms, the constructive constants alone control the limiting SPDE
 hierarchy.
 \end{proof}
 
+\begin{proposition}[Finite-rate assembly schedule for dynamic \(\Phi^4_3\)]
+\label{prop:spde-finite-rate-assembly-schedule}
+Let
+\[
+  \mathcal W_k=\{F_{k,1},\ldots,F_{k,m_k}\},
+  \qquad k=1,2,\ldots,
+\]
+be a directed sequence of finite positive-time polynomial OS windows.  Suppose
+that the model estimates, fixed-point-sector comparison, stationary-law
+coupling, and polynomial truncation have been assembled into the entrywise
+window bound
+\begin{equation}
+  \max_{i,j\leq m_k}|G_{k,ij}^{\rm spde}-G_{k,ij}^{(n)}|
+  \leq C_k e_n+T_{k,R}.
+  \label{eq:spde-finite-rate-entrywise-assembly}
+\end{equation}
+Here \(G^{(n)}\) is the cutoff OS Gram matrix, \(G^{\rm spde}\) is the limiting
+stationary-SPDE Gram matrix, \(e_n\) is the projective model/fixed-point
+defect, \(C_k\) is the finite-window amplification constant, and \(T_{k,R}\)
+is the polynomial-tail truncation error.  Assume also that the cutoff window
+has lower OS defect \(\delta_{k,n}\), and that the constructive hierarchy is
+entrywise comparable to the limiting SPDE hierarchy:
+\begin{equation}
+  \max_{i,j\leq m_k}|G_{k,ij}^{\rm spde}-H_{k,ij}^{\rm cons}|
+  \leq \eta_k.
+  \label{eq:spde-finite-rate-constructive-entrywise}
+\end{equation}
+Then for every cutoff and truncation schedule \(n=n(k)\), \(R=R(k)\),
+\begin{equation}
+\begin{aligned}
+  \sum_{i,j\leq m_k}\overline{c_i}c_jH_{k,ij}^{\rm cons}
+  &\geq -\Delta_k\sum_{i\leq m_k}|c_i|^2,\\
+  \Delta_k &:=
+  \delta_{k,n(k)}
+  +m_k\bigl(C_k e_{n(k)}+T_{k,R(k)}+\eta_k\bigr).
+\end{aligned}
+  \label{eq:spde-finite-rate-assembly-defect}
+\end{equation}
+If \(\Delta_k\to0\), the directed union has the same positive-time OS
+pre-Hilbert form as the constructive hierarchy.  The OS-II growth constants
+transfer whenever the truncation and comparison errors are dominated by a
+common OS-II seminorm envelope.
+
+For example, if \(m_k\leq2^{\alpha k}\) and \(C_k\leq2^{\beta k}\), choose
+\[
+  e_{n(k)}\leq2^{-(\alpha+\beta+3)k},\qquad
+  T_{k,R(k)}\leq2^{-(\alpha+3)k},\qquad
+  \eta_k\leq2^{-(\alpha+3)k},\qquad
+  \delta_{k,n(k)}\leq2^{-k}.
+\]
+Then
+\[
+  \Delta_k
+  \leq
+  2^{-k}+2^{-3k}+2^{-3k}+2^{-3k}
+  \leq 4\,2^{-k}.
+\]
+\end{proposition}
+
+\begin{proof}
+Apply Proposition~\ref{prop:spde-finite-window-os-assembly-defect-budget} to
+the \(k\)-th window with
+\(\varepsilon_{\mathcal W_k,n,R}=C_k e_n+T_{k,R}\).  This gives a limiting
+SPDE lower defect
+\(\delta_{k,n}+m_k(C_k e_n+T_{k,R})\).  Comparing the SPDE Gram matrix with the
+constructive Gram matrix by
+\eqref{eq:spde-finite-rate-constructive-entrywise} adds at most
+\(m_k\eta_k\sum_i|c_i|^2\) to the lower defect, proving
+\eqref{eq:spde-finite-rate-assembly-defect}.  The sample schedule is the
+displayed arithmetic: the model/fixed-point error must beat both the window
+cardinality \(m_k\) and the window amplification \(C_k\), while truncation and
+hierarchy-comparison errors only pay the window-cardinality loss.  The
+directed-union and OS-II statements are the corresponding conclusions of
+Proposition~\ref{prop:spde-finite-window-os-assembly-defect-budget} applied
+along the schedule.
+\end{proof}
+
 \begin{quotedtheorem}[Renormalized dynamic \(\Phi^4_3\) theorem package]
 \label{thm:renormalized-phi-four-three-spde-datum}
 Let the spatial manifold be a finite three-dimensional torus, let
