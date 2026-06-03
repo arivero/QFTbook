@@ -397,7 +397,9 @@ Current checks:
   correlator contribution, including the two- and three-flavor 't Hooft
   determinants and the \(\theta+\arg\det M\) axial phase ledger, the
   proper-time nonzero-mode determinant assembly for a smeared four-fermion
-  instanton amplitude, Uhlenbeck
+  instanton amplitude, the dilute instanton-gas theta cumulants
+  \(\chi_{\rm top}=2\zeta\) and \(b_2=-1/12\) after a finite activity has
+  been supplied, Uhlenbeck
   boundary face codimensions and product power-counting thresholds, and the
   \(k=1\) ADHM orientation dimension and cone-volume power.
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the

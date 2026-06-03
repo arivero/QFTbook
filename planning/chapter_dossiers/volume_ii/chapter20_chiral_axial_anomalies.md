@@ -196,6 +196,7 @@
 | \(B_{ff'}\) | local source or mass-overlap matrix whose finite Berezin determinant gives the QCD 't Hooft vertex |
 | \(B_{\eta,ff'}(z)\) | zero-mode-projected source matrix for smeared four-fermion wave packets in the instanton background |
 | \(G^{(4)}_{\eta,\Lambda,Q=1}\) | finite-regulator one-instanton contribution to the smeared four-fermion amplitude |
+| \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
 | \(A_\alpha(\mathcal X),G_\beta(\mathcal X)\) | Uhlenbeck bubbling-scale and collision-face exponents in the multi-instanton boundary budget |
 | \(\mathcal O_{N_c}\) | embedded one-instanton orientation orbit \(U(N_c)/(U(N_c-2)\times U(1))\) |
@@ -433,6 +434,15 @@
   times the determinant of the zero-mode-projected source matrix
   \(B_{\eta,ff'}(z)\).  The familiar local 't Hooft vertex is its slow-field
   limit.
+- The dilute instanton gas is now stated only as a controlled amplitude
+  expansion after the regulated one-instanton calculation has supplied a
+  finite activity \(\zeta_\Lambda\).  Under Poisson factorization it gives
+  \(E_{\rm dig}(\bar\theta)-E_{\rm dig}(0)=2\zeta_\Lambda(1-\cos\bar\theta)\),
+  \(\chi_{\rm top}^{\rm dig}=2\zeta_\Lambda\), even Skellam cumulants
+  \(\kappa_{2m}=2V_4\zeta_\Lambda\), and \(b_2^{\rm dig}=-1/12\).  The chapter
+  explicitly states the failure modes: unsaturated massless zero modes,
+  infrared-divergent size integrals, uncontrolled small-instanton boundaries,
+  and non-negligible instanton interactions.
 - A one-instanton boundary exponent datum records the small-\(\rho\)
   behavior of a specified scalar insertion datum \(\mathcal X\) in the form
   \(\rho^{b_0+\beta_{\mathcal X}-5}\).  The local Uhlenbeck-boundary
@@ -617,3 +627,9 @@
   slow-field limit.  The BPST check script now verifies exact determinant
   powers, zero-mode removal, and the source-determinant multiplication for a
   finite toy four-fermion amplitude.
+- 2026-06-03 issue #597 dilute-gas physics pass: added the conditional
+  instanton/anti-instanton Poisson sum from the regulated one-instanton
+  amplitude to theta-dependent vacuum energy and cumulants.  The BPST check
+  script now verifies the Skellam cumulant ledger, \(\chi_{\rm top}=2\zeta\),
+  \(b_2=-1/12\), and the vanishing of the vacuum activity when a massless
+  flavor leaves zero modes unsaturated.

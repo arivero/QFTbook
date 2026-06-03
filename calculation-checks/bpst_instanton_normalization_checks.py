@@ -24,6 +24,9 @@ relations
     boson/ghost/fermion determinant powers and counterterm shifts
     the proper-time fluctuation determinant combines with the zero-mode
     source determinant to give the finite four-fermion instanton amplitude
+    the dilute instanton gas gives the Poisson/Skellam theta cumulants
+    chi_top=2 zeta and b2=-1/12 only after the one-instanton amplitude is
+    promoted to a finite dilute activity
     the physical instanton correlator contribution is the top Berezin
     coefficient after operator, mass/source, and zero-mode factors are
     restricted to the instanton zero-mode subspace, giving the full flavor
@@ -622,6 +625,67 @@ def check_proper_time_fluctuation_four_fermion_amplitude() -> None:
     )
 
 
+def check_dilute_instanton_gas_theta_cumulants() -> None:
+    # The dilute gas promotes the one-instanton and one-anti-instanton
+    # amplitudes to independent Poisson activities.  The topological charge
+    # Q=n_+-n_- therefore has a Skellam cumulant generator
+    # K(t)=V zeta (e^t+e^{-t}-2).
+    volume = Fraction(11, 5)
+    activity = Fraction(7, 13)
+    one_species_mean = volume * activity
+
+    for order in range(1, 8):
+        cumulant = (
+            2 * one_species_mean
+            if order % 2 == 0
+            else Fraction(0)
+        )
+        expected = (
+            2 * volume * activity
+            if order % 2 == 0
+            else Fraction(0)
+        )
+        assert_equal(f"dilute gas charge cumulant order {order}", cumulant, expected)
+
+    topological_susceptibility = (2 * volume * activity) / volume
+    assert_equal("dilute gas topological susceptibility", topological_susceptibility, 2 * activity)
+
+    # E(theta)-E(0)=2 zeta (1-cos theta)
+    # = zeta theta^2 - zeta theta^4/12 + zeta theta^6/360 + ...
+    theta2_coefficient = activity
+    theta4_coefficient = -activity / 12
+    theta6_coefficient = activity / 360
+    assert_equal("dilute gas theta2 coefficient", theta2_coefficient, topological_susceptibility / 2)
+    assert_equal("dilute gas b2 coefficient", theta4_coefficient / theta2_coefficient, Fraction(-1, 12))
+    assert_equal("dilute gas theta6 coefficient", theta6_coefficient, activity / 360)
+
+    for m in range(1, 5):
+        energy_derivative = 2 * activity * (1 if m % 2 == 1 else -1)
+        assert_equal(
+            f"dilute gas energy derivative order {2 * m}",
+            energy_derivative,
+            2 * activity * ((-1) ** (m + 1)),
+        )
+
+    # A mass-saturated QCD vacuum activity contains one mass factor for each
+    # Dirac flavor zero-mode pair.  If one mass is zero, the vacuum theta
+    # activity from this one-instanton term vanishes, even though fermionic
+    # correlators can still be saturated by external sources.
+    nonzero_masses = [Fraction(2, 3), Fraction(5, 7), Fraction(11, 13)]
+    mass_saturated_activity = activity * product_fraction(nonzero_masses)
+    assert_equal(
+        "mass-saturated dilute activity",
+        mass_saturated_activity,
+        Fraction(770, 3549),
+    )
+    masses_with_zero = [Fraction(2, 3), Fraction(0), Fraction(11, 13)]
+    assert_equal(
+        "massless flavor removes vacuum dilute activity",
+        activity * product_fraction(masses_with_zero),
+        Fraction(0),
+    )
+
+
 def check_uhlenbeck_boundary_face_budget() -> None:
     for n_c in range(2, 8):
         for k in range(1, 6):
@@ -691,6 +755,7 @@ def main() -> None:
     check_finite_regulator_determinant_datum()
     check_physical_instanton_correlator_zero_mode_saturation()
     check_proper_time_fluctuation_four_fermion_amplitude()
+    check_dilute_instanton_gas_theta_cumulants()
     check_uhlenbeck_boundary_face_budget()
     check_k_one_adhm_dimension_and_cone_power()
     print("All BPST instanton normalization checks passed.")

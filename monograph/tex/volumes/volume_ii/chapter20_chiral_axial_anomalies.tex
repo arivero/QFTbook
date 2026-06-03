@@ -4388,6 +4388,68 @@ combination \(\bar\theta=\theta+\arg\det M\) from
 coordinate system where the fermion zero modes of the instanton background
 have been integrated.
 
+\begin{controlledapproximation}[Dilute instanton gas as an amplitude expansion]
+\label{ca:dilute-instanton-gas-amplitude}
+Suppose the regulated one-instanton and one-anti-instanton amplitudes obtained
+above admit finite, translation-invariant vacuum activities \(\zeta_\Lambda\)
+per Euclidean four-volume after the size, orientation, nonzero-mode
+determinant, and any required zero-mode mass-overlap factors have all been
+included.  Assume further that the multi-instanton cluster expansion has a
+window in which overlap corrections, instanton--anti-instanton interactions,
+and boundary-face remainders contribute \(o(V_4)\) to \(\log Z\).  Then the
+leading dilute-gas theta dependence is not a new moduli-space statement; it is
+the Poisson sum of the already constructed amplitudes:
+\begin{equation}
+  \frac{Z_{\rm dig}(\bar\theta)}{Z_0}
+  =
+  \sum_{n_+,n_-\ge0}
+  \frac{(V_4\zeta_\Lambda)^{n_+}}{n_+!}
+  \frac{(V_4\zeta_\Lambda)^{n_-}}{n_-!}
+  \ee^{\ii(n_+-n_-)\bar\theta}
+  =
+  \exp\!\left(2V_4\zeta_\Lambda\cos\bar\theta\right).
+  \label{eq:dilute-instanton-gas-partition}
+\end{equation}
+Thus the vacuum-energy difference in this approximation is
+\begin{equation}
+  E_{\rm dig}(\bar\theta)-E_{\rm dig}(0)
+  =
+  2\zeta_\Lambda(1-\cos\bar\theta),
+  \label{eq:dilute-instanton-gas-energy}
+\end{equation}
+and the topological-charge cumulants at \(\bar\theta=0\) obey
+\begin{equation}
+  \kappa_{2m}(Q)=2V_4\zeta_\Lambda,
+  \qquad
+  \kappa_{2m+1}(Q)=0,
+  \qquad
+  \chi_{\rm top}^{\rm dig}=2\zeta_\Lambda .
+  \label{eq:dilute-instanton-gas-cumulants}
+\end{equation}
+Equivalently, writing
+\[
+  E_{\rm dig}(\bar\theta)-E_{\rm dig}(0)
+  =
+  \frac12\chi_{\rm top}^{\rm dig}\bar\theta^2
+  \left(
+    1+b_2^{\rm dig}\bar\theta^2+O(\bar\theta^4)
+  \right)
+\]
+gives \(b_2^{\rm dig}=-1/12\).
+
+This is a controlled semiclassical amplitude expansion only when the activity
+is finite and dilute in the relevant correlation volume.  If a massless quark
+zero mode is not saturated by a mass or source, the vacuum activity for this
+term vanishes; instanton sectors may still contribute to fermionic correlators
+such as \eqref{eq:proper-time-four-fermion-instanton-amplitude}.  If the
+\(\rho\)-integral is infrared divergent, if small-instanton boundary terms are
+not controlled, or if instanton interactions are not negligible, then the
+Poisson form \eqref{eq:dilute-instanton-gas-partition} has not been derived.
+In particular, this dilute four-dimensional gas is not a derivation of
+confinement in zero-temperature Yang--Mills.  Its output is the conditional
+theta-dependence and zero-mode-saturated amplitude data above.
+\end{controlledapproximation}
+
 For the electroweak \(SU(2)_L\) gauge theory, the same zero-mode logic applies
 to every left-handed doublet.  For one generation there are three colored
 quark doublets and one lepton doublet, hence four \(SU(2)_L\) doublet zero
