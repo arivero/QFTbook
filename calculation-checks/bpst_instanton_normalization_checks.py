@@ -76,8 +76,9 @@ relations
     the physical instanton correlator contribution is the top Berezin
     coefficient after operator, mass/source, and zero-mode factors are
     restricted to the instanton zero-mode subspace, giving the full flavor
-    determinant, the two-flavor scalar/pseudoscalar channel decomposition, and
-    the theta+arg det M phase combination
+    determinant, the two-flavor scalar/pseudoscalar channel decomposition, the
+    induced local source-curvature splittings, and the theta+arg det M phase
+    combination
     Uhlenbeck boundary faces have the expected codimensions and product
     power-counting integrability thresholds
     the k=1 ADHM quotient has orientation dimension 4N-5 and cone
@@ -931,6 +932,45 @@ def check_two_flavor_thooft_channel_decomposition() -> None:
         determinant_phase + theta_compensation,
         0,
     )
+
+
+def check_two_flavor_instanton_source_curvature() -> None:
+    kappa = Fraction(17, 19)
+    cos_theta = Fraction(5, 7)
+    sin_theta = Fraction(11, 13)
+
+    # The local finite-activity source coordinate is
+    # kappa[(cos theta/2)(s0^2-s^2-p0^2+p^2)-sin theta(s0 p0-s.p)].
+    # The source curvatures are its second derivatives at zero source.
+    sigma_curvature = 2 * kappa * cos_theta / 2
+    delta_curvature = 2 * (-kappa * cos_theta / 2)
+    eta_curvature = 2 * (-kappa * cos_theta / 2)
+    pion_curvature = 2 * kappa * cos_theta / 2
+    assert_equal("instanton sigma source curvature", sigma_curvature, kappa * cos_theta)
+    assert_equal("instanton delta source curvature", delta_curvature, -kappa * cos_theta)
+    assert_equal("instanton eta source curvature", eta_curvature, -kappa * cos_theta)
+    assert_equal("instanton pion source curvature", pion_curvature, kappa * cos_theta)
+
+    assert_equal(
+        "instanton U(1)_A pion-delta splitting",
+        pion_curvature - delta_curvature,
+        2 * kappa * cos_theta,
+    )
+    assert_equal(
+        "instanton U(1)_A sigma-eta splitting",
+        sigma_curvature - eta_curvature,
+        2 * kappa * cos_theta,
+    )
+
+    sigma_eta_mixing = -kappa * sin_theta
+    delta_pion_mixing = kappa * sin_theta
+    assert_equal("theta-odd sigma-eta source mixing", sigma_eta_mixing, -kappa * sin_theta)
+    assert_equal("theta-odd delta-pion source mixing", delta_pion_mixing, kappa * sin_theta)
+
+    # At theta=0 the CP-odd source mixings vanish, while the U(1)_A splitting
+    # remains proportional to the finite local instanton activity.
+    assert_equal("theta-zero CP-odd mixing vanishes", -kappa * 0, Fraction(0))
+    assert_equal("theta-zero pion-delta splitting", 2 * kappa, Fraction(34, 19))
 
 
 def check_fermion_determinant_zero_mode_nonzero_mode_factorization() -> None:
@@ -2237,6 +2277,7 @@ def main() -> None:
     check_finite_regulator_determinant_datum()
     check_physical_instanton_correlator_zero_mode_saturation()
     check_two_flavor_thooft_channel_decomposition()
+    check_two_flavor_instanton_source_curvature()
     check_fermion_determinant_zero_mode_nonzero_mode_factorization()
     check_instanton_mass_source_rg_transport()
     check_proper_time_fluctuation_four_fermion_amplitude()

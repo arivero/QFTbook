@@ -4591,6 +4591,94 @@ For \(q\mapsto\ee^{\ii\alpha\gamma_5}q\), one has
 \(\det\Phi\mapsto\ee^{-4\ii\alpha}\det\Phi\).
 \end{proof}
 
+\begin{controlledapproximation}[Instanton contribution to two-flavor chiral
+source curvatures]
+\label{ca:two-flavor-instanton-source-susceptibility}
+Suppose the finite-regulator \(Q=\pm1\) calculation, including the
+size/orientation integral, nonzero-mode determinant, source normalization, and
+local derivative expansion, supplies a finite coefficient
+\(\kappa_{\rm inst}^{(2)}(\mu)\) multiplying the local \(N_f=2\) source density
+of Proposition~\ref{prop:two-flavor-thooft-channel-decomposition}.  Equivalently,
+for constant renormalized scalar and pseudoscalar source coordinates
+\[
+  S=s_0\mathbf 1+\vec s\cdot\vec\tau,\qquad
+  P=p_0\mathbf 1+\vec p\cdot\vec\tau ,
+\]
+the instanton part of the source generating-density coordinate
+\(\mathcal W=V_4^{-1}\log Z\) has quadratic term
+\begin{equation}
+\begin{aligned}
+  \mathcal W_{\rm inst}^{(2)}
+  &=
+  \kappa_{\rm inst}^{(2)}
+  \left[
+    \frac{\cos\theta}{2}
+    \left(s_0^2-\vec s^{\,2}-p_0^2+\vec p^{\,2}\right)
+    -\sin\theta\left(s_0p_0-\vec s\cdot\vec p\right)
+  \right]  \\
+  &\qquad
+  +O(J^3,\partial J),
+\end{aligned}
+  \label{eq:two-flavor-instanton-source-curvature-functional}
+\end{equation}
+where \(J\) denotes the collection of source coordinates.  Define the local
+source curvatures by differentiating \(\mathcal W\) at zero source:
+\[
+  \chi_\sigma=\partial_{s_0}^2\mathcal W,\quad
+  \chi_{\delta_a}=\partial_{s_a}^2\mathcal W,\quad
+  \chi_\eta=\partial_{p_0}^2\mathcal W,\quad
+  \chi_{\pi_a}=\partial_{p_a}^2\mathcal W,
+  \qquad\hbox{no sum on }a .
+\]
+Then the local instanton contribution is
+\begin{equation}
+  \chi_\sigma^{\rm inst}
+  =
+  \chi_{\pi_a}^{\rm inst}
+  =
+  \kappa_{\rm inst}^{(2)}\cos\theta,
+  \qquad
+  \chi_{\delta_a}^{\rm inst}
+  =
+  \chi_{\eta}^{\rm inst}
+  =
+  -\kappa_{\rm inst}^{(2)}\cos\theta ,
+  \label{eq:two-flavor-instanton-channel-curvatures}
+\end{equation}
+and the CP-odd source-mixing curvatures are
+\begin{equation}
+  \partial_{s_0}\partial_{p_0}\mathcal W_{\rm inst}^{(2)}
+  =
+  -\kappa_{\rm inst}^{(2)}\sin\theta,
+  \qquad
+  \partial_{s_a}\partial_{p_b}\mathcal W_{\rm inst}^{(2)}
+  =
+  \kappa_{\rm inst}^{(2)}\sin\theta\,\delta_{ab}.
+  \label{eq:two-flavor-instanton-cp-odd-source-mixing}
+\end{equation}
+At \(\theta=0\), the two \(U(1)_A\)-paired differences supplied by this
+finite-activity term are therefore
+\begin{equation}
+  \left(\chi_{\pi_a}-\chi_{\delta_a}\right)_{\rm inst}
+  =
+  \left(\chi_\sigma-\chi_\eta\right)_{\rm inst}
+  =
+  2\kappa_{\rm inst}^{(2)} .
+  \label{eq:two-flavor-instanton-u1a-susceptibility-splitting}
+\end{equation}
+
+Equations
+\eqref{eq:two-flavor-instanton-channel-curvatures}--\eqref{eq:two-flavor-instanton-u1a-susceptibility-splitting}
+are source-curvature statements in the declared local window.  The full
+zero-momentum QCD susceptibilities also contain connected long-distance
+propagation, Goldstone poles in the chiral limit, ordinary perturbative and
+confining contributions, and finite contact-term conventions.  Thus the
+instanton calculation identifies the \(U(1)_A\)-violating local curvature it
+adds to the generating functional.  A spectrum statement additionally requires
+the color-singlet spectral representation, long-distance matrix elements, and
+the continuum/volume limits in the chosen QCD phase.
+\end{controlledapproximation}
+
 \begin{proposition}[Mixed mass-source expansion of the instanton determinant]
 \label{prop:instanton-mass-source-minor-expansion}
 In the same \(Q=1\) QCD zero-mode sector, let \(M\) be the mass-overlap
