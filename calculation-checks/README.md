@@ -710,7 +710,9 @@ Current checks:
   double-increment scale gains entering that bound, the OS-II reconstruction-growth
   bookkeeping that keeps reflected positive-time cylinder tests at linear
   seminorm order, the finite SPDE/constructive hierarchy-transfer check for
-  matching OS Gram forms and growth envelopes, a finite hard-core polymer
+  matching OS Gram forms and growth envelopes, the finite-window OS defect
+  budget including the \(M\epsilon\) entrywise-to-quadratic-form loss and the
+  OS-II comparison-envelope transfer, a finite hard-core polymer
   source-cumulant check showing factorization without an incompatibility bridge
   and a nonzero connected
   cumulant with such a bridge, exact set-partition enumeration for the

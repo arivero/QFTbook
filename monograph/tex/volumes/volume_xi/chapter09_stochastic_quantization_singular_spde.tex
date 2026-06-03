@@ -11912,6 +11912,156 @@ moments, reflection positivity, and corrected OS-II growth needed for QFT
 reconstruction still come from the hierarchy comparison in
 Construction~\ref{con:spde-common-schwinger-hierarchy-comparison}.
 
+\begin{proposition}[Finite-window OS assembly defect budget]
+\label{prop:spde-finite-window-os-assembly-defect-budget}
+Let
+\[
+  \mathcal W=\{F_1,\ldots,F_M\}
+\]
+be a finite family of positive-time polynomial cylinder observables.  Let
+\(\Theta\) denote physical Euclidean time reflection.  For a cutoff
+stationary SPDE law \(\mu_N\), define the finite OS Gram matrix
+\[
+  G_{ij}^{(N)}
+  =
+  \int
+    \overline{F_i(\Theta\Phi)}\,F_j(\Phi)\,
+    \dd\mu_N(\Phi),
+  \qquad 1\leq i,j\leq M,
+\]
+and let \(G_{ij}\) be the corresponding entries of a candidate limiting
+Schwinger hierarchy.  Suppose that, for this window, the cutoff Gram form has
+a lower OS defect
+\begin{equation}
+  \sum_{i,j=1}^M \overline{c_i}c_jG_{ij}^{(N)}
+  \geq
+  -\delta_{\mathcal W,N}\sum_{i=1}^M |c_i|^2
+  \label{eq:spde-finite-window-cutoff-os-defect}
+\end{equation}
+for every \(c\in\C^M\), and that the limiting entries are controlled
+entrywise by
+\begin{equation}
+  \max_{1\leq i,j\leq M}|G_{ij}-G_{ij}^{(N)}|
+  \leq
+  \varepsilon_{\mathcal W,N}.
+  \label{eq:spde-finite-window-entrywise-defect}
+\end{equation}
+Then the limiting window obeys
+\begin{equation}
+  \sum_{i,j=1}^M \overline{c_i}c_jG_{ij}
+  \geq
+  -\bigl(\delta_{\mathcal W,N}
+       +M\varepsilon_{\mathcal W,N}\bigr)
+  \sum_{i=1}^M|c_i|^2 .
+  \label{eq:spde-finite-window-limit-os-defect}
+\end{equation}
+Consequently, a directed family of finite positive-time windows gives
+polynomial OS positivity for the limiting hierarchy if one can choose a
+cutoff \(N(\mathcal W)\) for each window such that
+\[
+  \delta_{\mathcal W,N(\mathcal W)}
+  +|\mathcal W|\varepsilon_{\mathcal W,N(\mathcal W)}
+  \longrightarrow0
+\]
+along the directed window net.
+
+Now let \(H_{ij}\) be the OS Gram entries of a constructive Euclidean
+hierarchy in the same field-normalization and local-counterterm chart.  If
+\[
+  \max_{i,j}|G_{ij}-H_{ij}|\leq\eta_{\mathcal W},
+\]
+then
+\begin{equation}
+  \left|
+  \sum_{i,j=1}^M\overline{c_i}c_j(G_{ij}-H_{ij})
+  \right|
+  \leq
+  M\eta_{\mathcal W}\sum_{i=1}^M|c_i|^2 .
+  \label{eq:spde-finite-window-constructive-comparison-defect}
+\end{equation}
+Thus equality of all finite-window entries identifies the positive-time
+pre-Hilbert inner products and their null spaces.  If the comparison is
+first obtained with finite-window defects, the same directed-window schedule
+must send \(M\eta_{\mathcal W}\) to zero before one may identify the OS
+quotients.
+
+Finally, suppose the constructive hierarchy satisfies a corrected OS-II
+growth estimate
+\[
+  |S_n^{\rm cons}(F)|
+  \leq
+  A B^n(n!)^\gamma q_{n,N_0+C_{\rm OS}n}(F),
+\]
+and the SPDE/constructive difference satisfies, for the same or a dominated
+seminorm family,
+\[
+  |S_n^{\rm spde}(F)-S_n^{\rm cons}(F)|
+  \leq
+  A_\Delta B_\Delta^n(n!)^{\gamma_\Delta}
+  q_{n,N_\Delta+C_\Delta n}(F).
+\]
+Then \(S_n^{\rm spde}\) satisfies a corrected OS-II estimate with constants
+obtained by replacing \(A\) by \(A+A_\Delta\), \(B\) by
+\(\max\{B,B_\Delta\}\), \(\gamma\) by
+\(\max\{\gamma,\gamma_\Delta\}\), and the linear seminorm order by a common
+dominating order.  In particular, if the hierarchy comparison error tends to
+zero in the stated seminorms, the OS-II growth package transfers from the
+constructive hierarchy to the SPDE hierarchy.
+\end{proposition}
+
+\begin{proof}
+Subtract the cutoff Gram form from the limiting Gram form:
+\[
+\begin{aligned}
+  \sum_{i,j}\overline{c_i}c_jG_{ij}
+  &=
+  \sum_{i,j}\overline{c_i}c_jG_{ij}^{(N)}
+  +
+  \sum_{i,j}\overline{c_i}c_j(G_{ij}-G_{ij}^{(N)}).
+\end{aligned}
+\]
+The first term is bounded from below by
+\eqref{eq:spde-finite-window-cutoff-os-defect}.  The second satisfies
+\[
+  \left|
+  \sum_{i,j}\overline{c_i}c_j(G_{ij}-G_{ij}^{(N)})
+  \right|
+  \leq
+  \varepsilon_{\mathcal W,N}
+  \left(\sum_i |c_i|\right)^2
+  \leq
+  M\varepsilon_{\mathcal W,N}\sum_i |c_i|^2,
+\]
+by Cauchy's inequality.  This proves
+\eqref{eq:spde-finite-window-limit-os-defect}.  If the directed-window
+schedule drives the displayed defect to zero, every finite positive-time
+polynomial OS quadratic form is nonnegative in the limit, which is exactly
+polynomial OS positivity on the directed cylinder algebra.
+
+The constructive comparison estimate
+\eqref{eq:spde-finite-window-constructive-comparison-defect} is the same
+calculation with \(G-H\) in place of \(G-G^{(N)}\).  When every finite-window
+entry is equal, the Gram matrices are equal, so the positive-time inner
+products and null spaces are equal before completion.  With defects, the
+factor \(M\) is the price of entrywise control; a growing OS window therefore
+requires a schedule strong enough to make \(M\eta_{\mathcal W}\) vanish, or
+else an operator-norm comparison replacing the entrywise bound.
+
+For the growth statement, use the triangle inequality and dominate the two
+Schwartz seminorms by one member of the increasing seminorm family.  Since
+\[
+  B^n(n!)^\gamma,\quad
+  B_\Delta^n(n!)^{\gamma_\Delta}
+  \leq
+  \max\{B,B_\Delta\}^n
+  (n!)^{\max\{\gamma,\gamma_\Delta\}},
+\]
+the displayed constants give the asserted OS-II bound for
+\(S_n^{\rm spde}\).  If the difference term tends to zero in the relevant
+seminorms, the constructive constants alone control the limiting SPDE
+hierarchy.
+\end{proof}
+
 \begin{quotedtheorem}[Renormalized dynamic \(\Phi^4_3\) theorem package]
 \label{thm:renormalized-phi-four-three-spde-datum}
 Let the spatial manifold be a finite three-dimensional torus, let
@@ -12203,6 +12353,10 @@ regularity, and the corrected linear-growth estimate.  For \(\Phi^4_2\) and
 the SPDE invariant law with the corresponding constructive Euclidean measure
 in a common renormalization chart, because the constructive measure is where
 reflection positivity and OS growth are naturally controlled.
+Proposition~\ref{prop:spde-finite-window-os-assembly-defect-budget} is the
+finite-window bookkeeping for this comparison: it records the exact loss
+incurred when cutoff OS positivity, polynomial truncation, and hierarchy
+comparison are known only with window-dependent defects.
 
 \begin{construction}[Common Schwinger-hierarchy comparison]
 \label{con:spde-common-schwinger-hierarchy-comparison}

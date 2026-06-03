@@ -261,6 +261,11 @@ data.
 - `mu_spde`, `mu_cons`, `S_n^spde`, `S_n^cons`, `D`: stationary SPDE law,
   constructive Euclidean measure, their Schwinger hierarchies, and the dense
   test-function subspace used in the common-hierarchy comparison criterion.
+- `mathcal W`, `G^{(N)}`, `G`, `H`, `delta_{mathcal W,N}`,
+  `epsilon_{mathcal W,N}`, `eta_{mathcal W}`: finite positive-time OS
+  observable window, cutoff/limiting/constructive Gram entries, cutoff lower
+  OS defect, limiting entrywise error, and constructive comparison defect in
+  the finite-window OS assembly budget.
 
 ## Claim Ledger
 
@@ -921,6 +926,17 @@ data maps.
   \(0\) and \(t\).  The companion check records the exact error budget
   \(T_R(0)+T_R(t)+\operatorname{Lip}(\mathcal O_R)((a_t+1)\delta_n+
   \epsilon_{n,t})\) and a sample uniform-integrability tail decrease.
+- 2026-06-03 SPDE finite-window OS assembly pass: added the explicit
+  defect-budget proposition between polynomial stationarity and the quoted
+  \(\Phi^4_3\) theorem boundary.  The proposition proves that an
+  \(M\)-observable OS Gram window with cutoff lower defect
+  \(\delta_{\mathcal W,N}\) and entrywise convergence error
+  \(\epsilon_{\mathcal W,N}\) has limiting lower defect
+  \(\delta_{\mathcal W,N}+M\epsilon_{\mathcal W,N}\), and records the
+  analogous \(M\eta_{\mathcal W}\) cost for comparing the SPDE Gram form with
+  a constructive Euclidean hierarchy.  The paired check verifies the
+  \(M\epsilon\) loss and the corrected OS-II growth-envelope transfer by
+  exact rational arithmetic.
 - 2026-05-25 issue #558 pass: the dynamic \(\Phi^4_3\) theorem boundary now
   states the four requested components explicitly: local cutoff
   well-posedness, renormalized convergence with \(C_{1,\epsilon}\) and

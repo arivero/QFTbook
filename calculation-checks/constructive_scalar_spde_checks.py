@@ -2533,6 +2533,71 @@ def check_spde_constructive_hierarchy_transfer_arithmetic():
             raise AssertionError("SPDE hierarchy growth transfer failed")
 
 
+def check_spde_finite_window_os_defect_budget_arithmetic():
+    # Proposition spde-finite-window-os-assembly-defect-budget: entrywise
+    # convergence of an M-observable OS Gram window costs M epsilon in the
+    # quadratic form unless one has an operator-norm estimate.
+    M = 4
+    c = [Fraction(1), Fraction(-2), Fraction(1), Fraction(1)]
+    norm_sq = sum(abs(ci) ** 2 for ci in c)
+    l1_sq = sum(abs(ci) for ci in c) ** 2
+    delta = Fraction(1, 40)
+    epsilon = Fraction(1, 200)
+    assert_equal(norm_sq, Fraction(7), "finite-window coefficient norm")
+    if l1_sq > M * norm_sq:
+        raise AssertionError("finite-window Cauchy loss failed")
+
+    cutoff_lower_bound = -delta * norm_sq
+    worst_entrywise_shift = -epsilon * l1_sq
+    actual_limit_lower_bound = cutoff_lower_bound + worst_entrywise_shift
+    stated_limit_lower_bound = -(delta + M * epsilon) * norm_sq
+    assert_equal(
+        stated_limit_lower_bound,
+        Fraction(-63, 200),
+        "finite-window OS defect stated bound",
+    )
+    if actual_limit_lower_bound < stated_limit_lower_bound:
+        raise AssertionError("finite-window OS defect budget failed")
+
+    eta = Fraction(1, 300)
+    actual_constructive_difference = eta * l1_sq
+    stated_constructive_bound = M * eta * norm_sq
+    assert_equal(
+        stated_constructive_bound,
+        Fraction(7, 75),
+        "finite-window constructive comparison bound",
+    )
+    if actual_constructive_difference > stated_constructive_bound:
+        raise AssertionError("finite-window constructive comparison failed")
+
+    # Growth transfer: the SPDE hierarchy is bounded by the constructive
+    # envelope plus the comparison-defect envelope, after replacing constants
+    # by a common dominating family.
+    n = 5
+    q_value = Fraction(7)
+    A = Fraction(2)
+    B = Fraction(3)
+    gamma = 1
+    A_delta = Fraction(1)
+    B_delta = Fraction(4)
+    gamma_delta = 2
+    constructive_bound = A * (B ** n) * (math.factorial(n) ** gamma) * q_value
+    defect_bound = (
+        A_delta
+        * (B_delta ** n)
+        * (math.factorial(n) ** gamma_delta)
+        * q_value
+    )
+    common_bound = (
+        (A + A_delta)
+        * (max(B, B_delta) ** n)
+        * (math.factorial(n) ** max(gamma, gamma_delta))
+        * q_value
+    )
+    if constructive_bound + defect_bound > common_bound:
+        raise AssertionError("finite-window OS-II growth transfer failed")
+
+
 def check_rough_forcing_bootstrap_arithmetic():
     # Proposition spde-dpd-rough-forcing-bootstrap uses the absorption
     # condition |lambda| C1 delta^(1-theta) epsilon <= 1/2 to turn
@@ -2629,8 +2694,9 @@ def main():
     check_regulator_comparison_error_budget_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
     check_spde_constructive_hierarchy_transfer_arithmetic()
+    check_spde_finite_window_os_defect_budget_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":
