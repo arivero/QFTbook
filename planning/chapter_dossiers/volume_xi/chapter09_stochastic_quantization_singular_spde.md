@@ -96,6 +96,10 @@ data.
   finite-window amplification constant, constructive phase-cell tail from
   Chapter 2, and total cross-route OS defect after the SPDE and constructive
   budgets are composed.
+- `V_k`, `G^{spde}`, `H^{cons}`, `E_k`, `N_spde`, `N_cons`: directed
+  positive-time polynomial OS windows, the stationary-SPDE and constructive
+  Gram forms, their entrywise comparison error, and the corresponding null
+  spaces in the algebraic OS pre-Hilbert quotient.
 - `eta`, `kappa`, `p`, `K_R`: Hilbert-scale tightness parameters in the
   cutoff-field compactness criterion; \(0<\eta<\kappa\), the moment order is
   \(p\), and \(K_R\) is the \(H^{-\eta}\)-ball viewed inside
@@ -905,6 +909,15 @@ data.
   \(m_kD_k\mathcal E_J^{\rm constr}\).  This ties the Chapter 2 phase-cell
   budget to the Chapter 9 SPDE schedule rather than leaving the two proof
   ledgers parallel.
+- Proves the directed OS pre-Hilbert comparison bridge: once the cross-route
+  schedules give vanishing lower OS defects and vanishing entrywise SPDE-vs-
+  constructive Gram errors on an increasing exhaustion of positive-time
+  polynomial windows, the limiting SPDE and constructive OS forms agree on the
+  algebraic cylinder algebra, their null spaces coincide, and the identity map
+  gives the canonical isometry of OS pre-Hilbert quotients.  The dossier keeps
+  this quotient argument separate from the remaining analytic inputs:
+  model-specific BPHZ estimates, finite-chart comparison, OS-II growth,
+  covariance, locality, and domain statements.
 
 ## Figure Ledger
 
@@ -989,6 +1002,15 @@ data maps.
   \(\mathcal E_J^{\rm constr}\).  The paired check verifies that the combined
   defect decreases only when the phase-cell tail beats both the OS window
   size and its own amplification constant.
+- 2026-06-03 directed OS pre-Hilbert comparison pass: added the quotient-level
+  bridge after the cross-route defect budget.  The proposition proves that
+  vanishing finite-window lower defects and vanishing SPDE/constructive
+  entrywise Gram errors identify the algebraic positive-time OS pre-Hilbert
+  spaces by the identity map, while explicitly leaving model estimates,
+  chart comparison, OS-II growth, covariance, locality, and Wightman-domain
+  reconstruction as separate analytic obligations.  The companion finite
+  check verifies the directed defect decrease and the exact null-quotient
+  isometry in a rank-deficient Gram example.
 - 2026-05-25 issue #558 pass: the dynamic \(\Phi^4_3\) theorem boundary now
   states the four requested components explicitly: local cutoff
   well-posedness, renormalized convergence with \(C_{1,\epsilon}\) and

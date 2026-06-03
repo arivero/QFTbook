@@ -737,7 +737,9 @@ Current checks:
   showing that model/fixed-point defects must beat both window cardinality and
   window amplification, together with the cross-route phase-cell/SPDE budget
   showing that the constructive phase-cell tail must also beat its own
-  finite-window amplification, a finite hard-core polymer
+  finite-window amplification, the directed OS pre-Hilbert comparison check
+  showing that vanishing lower defects and vanishing Gram-entry errors
+  identify the algebraic null quotient, a finite hard-core polymer
   source-cumulant check showing factorization without an incompatibility bridge
   and a nonzero connected
   cumulant with such a bridge, exact set-partition enumeration for the

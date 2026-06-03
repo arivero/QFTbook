@@ -2809,6 +2809,57 @@ def check_spde_phase_cell_cross_route_budget_arithmetic():
     )
 
 
+def check_spde_directed_os_prehilbert_comparison_arithmetic():
+    # Proposition spde-directed-os-prehilbert-comparison: vanishing directed
+    # lower defects give positivity on each fixed vector, and vanishing
+    # entrywise form errors identify the algebraic OS quotient.
+    coeff_v = [Fraction(1), Fraction(-2), Fraction(1)]
+    coeff_w = [Fraction(2), Fraction(0), Fraction(-1)]
+    l2_v = sum(c * c for c in coeff_v)
+    l1_v = sum(abs(c) for c in coeff_v)
+    l1_w = sum(abs(c) for c in coeff_w)
+
+    previous_entry_bound = None
+    previous_lower_defect = None
+    for k in range(1, 8):
+        entry_error = Fraction(1, 2) ** k
+        lower_defect = Fraction(1, 3) ** k
+        entry_bound = entry_error * l1_v * l1_w
+        lower_bound = -lower_defect * l2_v
+        if previous_entry_bound is not None and entry_bound >= previous_entry_bound:
+            raise AssertionError("directed OS entry bound did not decrease")
+        if previous_lower_defect is not None and lower_bound <= previous_lower_defect:
+            raise AssertionError("directed OS lower defect did not approach zero")
+        previous_entry_bound = entry_bound
+        previous_lower_defect = lower_bound
+
+    # Exact finite quotient shadow: a rank-one Gram block has the null vector
+    # e1-e2.  Equality of SPDE and constructive forms makes the identity map
+    # an isometry on representatives modulo this null space.
+    gram = [
+        [Fraction(1), Fraction(1), Fraction(0)],
+        [Fraction(1), Fraction(1), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(2)],
+    ]
+
+    def gram_quadratic(vec):
+        total = Fraction(0)
+        for i, vi in enumerate(vec):
+            for j, vj in enumerate(vec):
+                total += vi * gram[i][j] * vj
+        return total
+
+    null_vec = [Fraction(1), Fraction(-1), Fraction(0)]
+    base_vec = [Fraction(0), Fraction(1), Fraction(1)]
+    shifted_vec = [base_vec[i] + null_vec[i] for i in range(3)]
+    assert_equal(gram_quadratic(null_vec), Fraction(0), "directed OS null norm")
+    assert_equal(
+        gram_quadratic(base_vec),
+        gram_quadratic(shifted_vec),
+        "directed OS quotient representative norm",
+    )
+
+
 def check_rough_forcing_bootstrap_arithmetic():
     # Proposition spde-dpd-rough-forcing-bootstrap uses the absorption
     # condition |lambda| C1 delta^(1-theta) epsilon <= 1/2 to turn
@@ -2911,8 +2962,9 @@ def main():
     check_spde_finite_window_os_defect_budget_arithmetic()
     check_spde_finite_rate_assembly_schedule_arithmetic()
     check_spde_phase_cell_cross_route_budget_arithmetic()
+    check_spde_directed_os_prehilbert_comparison_arithmetic()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, vacuum-coordinate, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, model phase-cell budget, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, finite-rate assembly schedule, cross-route phase-cell/SPDE budget, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, vacuum-coordinate, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, model phase-cell budget, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, finite-rate assembly schedule, cross-route phase-cell/SPDE budget, directed OS pre-Hilbert comparison, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":
