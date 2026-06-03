@@ -1027,9 +1027,11 @@ Current checks:
   Zamolodchikov-recursion companion rather than this global-block evaluator.
 - `bcft_cardy_checks.py`: exact checks for the two-dimensional BCFT chapter,
   including the Ising modular \(S\)-matrix arithmetic, Cardy annulus spectra,
-  fusion associativity, fusion-ring characters, the normalized Cardy two-bulk
-  classifying sewing identity, the matrix-unit Frobenius cutting move behind
-  rational boundary sewing, the finite classifying-center model for
+  the oriented Cardy annulus formula on cyclic pointed modular data where the
+  real/self-conjugate shortcut fails, fusion associativity, fusion-ring
+  characters, the normalized Cardy two-bulk classifying sewing identity, the
+  matrix-unit Frobenius cutting move behind rational boundary sewing, the
+  finite classifying-center model for
   non-diagonal rational boundary sewing, the pointed module-category annulus
   nimrep identity \(n_g n_h=n_{g+h}\), the pointed annulus Fourier
   diagonalization/projector resolution over \(G/H\), the pointed module-category

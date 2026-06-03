@@ -295,16 +295,19 @@ The same annulus amplitude must have the form
   =
   \operatorname{Tr}_{\Hilb_{ab}}q^{L_0-c/24}
   =
-  \langle a|
+  \langle b|
   \tilde q^{(L_0+\bar L_0-c/12)/2}
-  |b\rangle
+  |a\rangle
   =
   Z_{ab}^{\mathrm{closed}}(\tilde q).
   \label{eq:bcft-open-closed-annulus}
 \end{equation}
 The factor \(1/2\) in the closed Hamiltonian is a convention fixed by the
 modular parameter of the annulus; changing cylinder coordinates changes both
-sides by the same reparametrization.
+sides by the same reparametrization.  The order
+\(\langle b|\cdots|a\rangle\) is the orientation convention used below:
+\(\Hilb_{ab}\) is the open Hilbert space of fields that begin at boundary
+condition \(a\) and end at boundary condition \(b\).
 
 \begin{definition}[Ishibashi state]
 \label{def:ishibashi-state}
@@ -442,14 +445,18 @@ Using \(\chi_i(\tilde q)=\sum_k S_{ik}\chi_k(q)\), the annulus equality gives
 \begin{equation}
   n_{ab}{}^k
   =
-  \sum_i B_a{}^i B_b{}^i S_{ik}
+  \sum_i \overline{B_b{}^i}\,B_a{}^i S_{ik}
   \label{eq:cardy-annulus-integrality-equation}
 \end{equation}
-for real unitary boundary coefficients.  Cardy consistency is the demand
-that these numbers be nonnegative integers and that the resulting open
-operator algebras sew consistently.
+for unitary boundary coefficients in this orientation convention.  If the
+modular data are real and all labels are self-conjugate, this reduces to the
+familiar symmetric shorthand.  In general the conjugation records the
+direction of the boundary-changing open sector.
+Cardy consistency is the demand that these numbers be nonnegative integers
+and that the resulting open operator algebras sew consistently.
 
-\paragraph{Cardy solution for the diagonal invariant.}
+\begin{proposition}[Oriented Cardy annulus for the diagonal invariant]
+\label{prop:oriented-cardy-annulus-diagonal}
 Let a unitary rational CFT have diagonal closed Hilbert space
 \eqref{eq:diagonal-closed-hilbert-space-bcft}, unitary modular matrix \(S\),
 and fusion coefficients \(N_{ab}{}^k\) obeying the Verlinde formula.  Then
@@ -465,25 +472,37 @@ the boundary states
 \end{equation}
 satisfy the annulus integrality condition with
 \begin{equation}
-  n_{ab}{}^k=N_{ab}{}^k .
+  n_{ab}{}^k=N_{ka}{}^b .
   \label{eq:cardy-open-spectrum-fusion}
 \end{equation}
+\end{proposition}
 
-Substitute \(B_a{}^i=S_{ai}/\sqrt{S_{0i}}\) and
-\(B_b{}^i=S_{bi}/\sqrt{S_{0i}}\) into
-\eqref{eq:cardy-annulus-integrality-equation}.  Since the theory is unitary
-and the Cardy labels are self-conjugate after replacing \(b\) by its
-conjugate when necessary,
+\begin{proof}
+Substitute \(B_a{}^i=S_{ai}/\sqrt{S_{0i}}\) into
+\eqref{eq:cardy-annulus-integrality-equation}.  The coefficient of the
+open-channel character \(\chi_k(q)\) is
 \[
   n_{ab}{}^k
   =
   \sum_i
-  \frac{S_{ai}S_{bi}S_{ki}}{S_{0i}} .
+  \frac{\overline{S_{bi}}\,S_{ai}S_{ik}}{S_{0i}} .
 \]
-This is exactly the Verlinde formula for the fusion coefficient
-\(N_{ab}{}^k\), with complex conjugation inserted on the label appropriate
-to the orientation convention.  Fusion coefficients are dimensions of
-three-point chiral block spaces, hence are nonnegative integers.
+By unitarity and charge conjugation, \(\overline{S_{bi}}=S_{\bar b i}\), and
+the Verlinde formula gives
+\[
+  N_{ka}{}^b
+  =
+  \sum_i
+  \frac{S_{ki}S_{ai}\overline{S_{bi}}}{S_{0i}} .
+\]
+Since \(S\) is symmetric, these expressions agree.  Fusion coefficients are
+dimensions of three-point chiral block spaces, hence are nonnegative
+integers.  For self-conjugate labels and real \(S\)-matrix entries this
+orientation-aware statement collapses to the common symmetric shorthand after
+the corresponding relabelling of boundary orientation, but the displayed
+formula is the one used by boundary-changing fields in non-self-conjugate
+examples.
+\end{proof}
 
 \section{Boundary OPE and Cardy--Lewellen Equations}
 \label{sec:bcft-boundary-ope-sewing}
@@ -566,16 +585,17 @@ fusing matrices of the chiral theory, then
 for the fusing matrices.
 
 The open spectrum for Cardy boundary labels is
-\(\Hilb_{ab}\simeq\oplus_iN_{ab}{}^i\mathcal H_i\).  After conjugating
-orientation conventions, this is equivalently
-\eqref{eq:cardy-boundary-field-multiplicity}.  Boundary three-point
-functions are chiral three-point blocks on the doubled disk.  The operation
-of composing two boundary OPEs is therefore the operation of changing
+\(\Hilb_{ab}\simeq\oplus_iN_{ia}{}^b\mathcal H_i\), matching
+\eqref{eq:cardy-open-spectrum-fusion} and
+\eqref{eq:cardy-boundary-field-multiplicity}.  Boundary three-point functions
+are chiral three-point blocks on the doubled disk.  The operation of
+composing two boundary OPEs is therefore the operation of changing
 parenthesization in a four-point chiral block.  The Moore--Seiberg fusing
 matrix is exactly the transition matrix between the two parenthesizations.
 The pentagon identity says that all ways of changing parenthesization in a
-five-point block agree.  Specializing the pentagon to the four-boundary-field
-factorization diagram gives \eqref{eq:cardy-lewellen-boundary-sewing}.
+five-point block agree.  Specializing the pentagon to the
+four-boundary-field factorization diagram gives
+\eqref{eq:cardy-lewellen-boundary-sewing}.
 
 The disk one-point coefficient of a spinless bulk primary is another piece
 of sewing data.  In the diagonal Cardy case the coefficient of the identity

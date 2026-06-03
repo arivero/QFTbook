@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact BCFT Cardy/Ishibashi bookkeeping checks in the Ising example."""
+"""Exact BCFT Cardy/Ishibashi bookkeeping checks."""
 
 from __future__ import annotations
 
@@ -175,6 +175,87 @@ def check_cardy_annulus() -> None:
                     coefficient,
                     expected_value,
                 )
+
+
+def cyclic_character_sum_order(n: int, exponent: int) -> int:
+    return 1 if exponent % n == 0 else 0
+
+
+def cyclic_fusion(n: int, left: int, right: int, target: int) -> int:
+    return 1 if (left + right - target) % n == 0 else 0
+
+
+def cyclic_oriented_cardy_annulus(
+    n: int,
+    left_boundary: int,
+    right_boundary: int,
+    open_label: int,
+) -> int:
+    # For the pointed modular data S_ai=n^(-1/2) exp(2 pi i a i/n), the
+    # coefficient of chi_k in <right|tilde q^H|left> is the character sum with
+    # exponent -right_boundary + left_boundary + open_label.
+    return cyclic_character_sum_order(n, left_boundary + open_label - right_boundary)
+
+
+def cyclic_unoriented_cardy_shortcut(
+    n: int,
+    left_boundary: int,
+    right_boundary: int,
+    open_label: int,
+) -> int:
+    # This is the old real/self-conjugate shortcut without the bra conjugation.
+    # It is correct for Ising-like real modular data but wrong for pointed
+    # non-self-conjugate labels.
+    return cyclic_character_sum_order(n, left_boundary + right_boundary + open_label)
+
+
+def check_oriented_cardy_annulus_for_cyclic_pointed_data() -> None:
+    for order in (3, 5, 7):
+        for left_boundary in range(order):
+            for right_boundary in range(order):
+                for open_label in range(order):
+                    expected = cyclic_fusion(
+                        order,
+                        open_label,
+                        left_boundary,
+                        right_boundary,
+                    )
+                    got = cyclic_oriented_cardy_annulus(
+                        order,
+                        left_boundary,
+                        right_boundary,
+                        open_label,
+                    )
+                    assert_equal(
+                        "oriented Cardy annulus for cyclic pointed modular data "
+                        f"n={order}, a={left_boundary}, "
+                        f"b={right_boundary}, k={open_label}",
+                        got,
+                        expected,
+                    )
+
+    old_shortcut = cyclic_unoriented_cardy_shortcut(
+        3,
+        left_boundary=0,
+        right_boundary=1,
+        open_label=1,
+    )
+    oriented = cyclic_oriented_cardy_annulus(
+        3,
+        left_boundary=0,
+        right_boundary=1,
+        open_label=1,
+    )
+    assert_equal(
+        "oriented cyclic Cardy annulus detects the boundary changer",
+        oriented,
+        1,
+    )
+    assert_equal(
+        "unoriented cyclic Cardy shortcut misses that boundary changer",
+        old_shortcut,
+        0,
+    )
 
 
 def check_fusion_associativity() -> None:
@@ -1548,6 +1629,7 @@ def check_finite_sewing_anomaly_cocycle_trivialization() -> None:
 def main() -> None:
     check_modular_s()
     check_cardy_annulus()
+    check_oriented_cardy_annulus_for_cyclic_pointed_data()
     check_fusion_associativity()
     check_cardy_fusion_ring_characters()
     check_cardy_unit_algebra_module_multiplicities()
@@ -1572,7 +1654,8 @@ def main() -> None:
     check_bordered_sewing_move_defect_budget()
     check_finite_sewing_anomaly_cocycle_trivialization()
     print(
-        "All BCFT Cardy, sewing, boundary-gradient, Ising boundary-changing, "
+        "All BCFT Cardy, oriented-annulus, sewing, boundary-gradient, "
+        "Ising boundary-changing, "
         "matrix-Frobenius, finite-center, pointed-nimrep, Chan-Paton, "
         "pointed-annulus-Fourier, pointed-boundary-OPE, "
         "pointed-stabilizer-slide, pointed-laboratory-unified, compact-boson, "

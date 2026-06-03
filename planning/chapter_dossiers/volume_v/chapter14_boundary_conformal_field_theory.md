@@ -40,9 +40,11 @@
   and closed-channel boundary states.
 - Constructs Ishibashi states from an orthonormal basis and an antiunitary
   orientation-reversal map; proves the Virasoro gluing equation.
-- Derives the diagonal-rational Cardy solution
-  `|a> = sum_i S_ai / sqrt(S_0i) |i>>` and proves that the open spectrum is
-  the fusion coefficient `N_ab^k` by the Verlinde formula.
+- Derives the orientation-aware diagonal-rational Cardy solution
+  `|a> = sum_i S_ai / sqrt(S_0i) |i>>` and proves that the open sector
+  from boundary \(a\) to boundary \(b\) has multiplicity `N_{k a}^b`.
+  The old symmetric shorthand is valid only in real/self-conjugate modular
+  data after relabelling.
 - States explicit rational sewing hypotheses for boundary OPE equations:
   finite semisimple unitary chiral data, convergent genus-zero blocks,
   nondegenerate boundary two-point pairings, and Moore--Seiberg fusing
@@ -191,8 +193,9 @@
    the antiholomorphic contour orientation.
 3. Ishibashi states are distributional states; their regulated overlaps are
    characters.
-4. Cardy's diagonal solution converts the annulus coefficients into Verlinde
-   fusion coefficients.
+4. Cardy's diagonal solution converts the oriented annulus coefficients into
+   Verlinde fusion coefficients \(N_{ka}{}^b\); the bra/ket conjugation is
+   load-bearing for non-self-conjugate labels.
 5. Boundary OPE coefficients depend on two-point normalization and block
    bases, while the Cardy--Lewellen sewing equation is invariant under basis
    changes.
@@ -295,8 +298,10 @@
 ## Checks
 
 - `calculation-checks/bcft_cardy_checks.py` verifies the Ising modular
-  `S`-matrix arithmetic, Cardy annulus spectra, fusion associativity,
-  fusion-ring characters, normalized Cardy two-bulk classifying sewing,
+  `S`-matrix arithmetic, Cardy annulus spectra, the oriented cyclic-pointed
+  annulus formula that catches the real/self-conjugate shortcut, fusion
+  associativity, fusion-ring characters, normalized Cardy two-bulk
+  classifying sewing,
   the finite classifying-center model for non-diagonal rational sewing,
   the pointed module-category annulus nimrep identity,
   the pointed annulus Fourier diagonalization and stabilizer degeneracy check,
@@ -488,3 +493,8 @@
   Liouville/FZZT block, and boundary-entropy gradient proposition in that
   dependency chain rather than treating them as cumulative proof of full
   analytic BCFT sewing.
+- 2026-06-03 oriented Cardy annulus pass: replaced the real/self-conjugate
+  annulus shorthand by the oriented coefficient
+  `n_ab^k = sum_i conjugate(B_b^i) B_a^i S_ik = N_{k a}^b` and added a
+  cyclic pointed modular-data check showing that the shortcut fails for
+  non-self-conjugate labels.
