@@ -40,6 +40,8 @@ constructive RG developments.
   projection, and projected RG subspace.
 - `epsilon_N(V_N;A)`: complement residual after solving the projected RG
   fixed-point equation.
+- `r_N^*`, `eta_N^FRG`: omitted functional-RG beta component at a projected
+  fixed point and its Newton--Kantorovich lifted residual.
 - `B_ker`: Banach space of kernels in a constructive fermionic fixed-point
   output datum.
 - `C_Lambda`, `V_*`: fixed-cutoff covariance and fixed interaction in the
@@ -228,6 +230,11 @@ constructive RG developments.
   the omitted vector-field component \(Q_N\mathcal F_t(\gamma_N(t))\) is
   integrated with the RG amplification factor and then transported through
   observable seminorms.
+- Adds the functional-RG projected fixed-point residual gate: a zero of the
+  retained beta functions in a derivative expansion is only a controlled
+  finite-window approximation after the omitted beta-function component,
+  Newton--Kantorovich lift radius, ansatz chart error, and reconstruction
+  Lipschitz constants are bounded in the full effective-action norm.
 - Adds the tensor-RG truncation-window estimate: exact and algorithmic tensor
   orbits are compared by a one-step residual
   \(\|\mathcal T_j(\widehat T_j)-\widehat{\mathcal T}_j(\widehat T_j)\|\),
@@ -1070,3 +1077,9 @@ remainder contraction.
   only then apply the OS assembly package or auxiliary transfer estimates.
   This is a proof-architecture pass for #505, not another correction-to-scaling
   cell and not a closure of the model-specific Wilson-Fisher construction.
+- 2026-06-03 functional-RG projected fixed-point pass: added the
+  derivative-expansion fixed-point residual gate.  The new controlled
+  approximation requires the omitted beta-function component, the
+  Newton--Kantorovich lift radius, the ansatz chart error, and the
+  reconstruction Lipschitz constants before a projected functional-RG fixed
+  point can be read as a controlled finite-window approximation.

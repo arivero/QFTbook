@@ -36,7 +36,7 @@ def sub(left, right):
 
 
 def norm_l1(vector):
-    return abs(vector[0]) + abs(vector[1])
+    return sum(abs(entry) for entry in vector)
 
 
 def product(values):
@@ -217,6 +217,64 @@ def check_frg_projected_flow_residual_budget():
     assert_true("FRG projected-flow bad residual detected", bad_bound > Fraction(1, 4))
 
 
+def check_frg_projected_fixed_point_residual_gate():
+    # A projected fixed point of a dimensionless FRG beta vector field is not
+    # a full fixed point until the omitted beta component is lifted in the full
+    # Banach chart.  The triangular finite model below has a projected zero at
+    # the origin, but the exact zero shifts all coordinates.
+    epsilon = Fraction(1, 30)
+
+    def beta(point):
+        x_value, y_value, z_value = point
+        return (
+            x_value + z_value / 2,
+            y_value - z_value / 3,
+            z_value - epsilon,
+        )
+
+    projected_zero = (Fraction(0), Fraction(0), Fraction(0))
+    projected_beta = beta(projected_zero)[:2] + (Fraction(0),)
+    complement_beta = (Fraction(0), Fraction(0), beta(projected_zero)[2])
+    assert_equal("FRG projected fixed point retained beta", projected_beta, (Fraction(0), Fraction(0), Fraction(0)))
+    assert_equal("FRG projected fixed point omitted beta", complement_beta, (Fraction(0), Fraction(0), -epsilon))
+
+    def approximate_inverse(vector):
+        first, second, third = vector
+        return (first - third / 2, second + third / 3, third)
+
+    lifted_residual = approximate_inverse(complement_beta)
+    lift_radius = norm_l1(lifted_residual)
+    assert_equal("FRG projected fixed point lifted residual", lifted_residual, (epsilon / 2, -epsilon / 3, -epsilon))
+    assert_equal("FRG projected fixed point NK radius", lift_radius, Fraction(11, 180))
+
+    rho = Fraction(0)
+    lipschitz_derivative = Fraction(0)
+    assert_true(
+        "FRG projected fixed point lift condition",
+        lift_radius + rho * lift_radius + lipschitz_derivative * lift_radius * lift_radius / 2 <= lift_radius,
+    )
+
+    exact_zero = (
+        -epsilon / 2,
+        epsilon / 3,
+        epsilon,
+    )
+    assert_equal("FRG projected fixed point exact beta", beta(exact_zero), (Fraction(0), Fraction(0), Fraction(0)))
+    distance = tuple(left - right for left, right in zip(exact_zero, projected_zero))
+    assert_equal("FRG projected fixed point distance", norm_l1(distance), lift_radius)
+
+    observable_chart_error = Fraction(1, 100)
+    reconstruction_lipschitz = Fraction(4)
+    observable_error = observable_chart_error + reconstruction_lipschitz * lift_radius
+    assert_equal("FRG projected fixed point observable window error", observable_error, Fraction(229, 900))
+
+    # If the complement beta is ignored, the retained critical exponents look
+    # exact while the vector field is still nonzero in the full chart.
+    retained_linear_eigenvalues = (Fraction(1), Fraction(1))
+    assert_equal("FRG retained eigenvalue list unchanged", retained_linear_eigenvalues, (Fraction(1), Fraction(1)))
+    assert_true("FRG omitted beta obstruction detected", norm_l1(complement_beta) > 0)
+
+
 def check_tensor_rg_truncation_window_budget():
     # Exact finite recursion for tensor-RG truncation residuals:
     # e_{j+1} <= L_j e_j + delta_j.
@@ -255,6 +313,7 @@ def main():
     check_irrelevant_tail_residual()
     check_projected_observable_lift_budget()
     check_frg_projected_flow_residual_budget()
+    check_frg_projected_fixed_point_residual_gate()
     check_tensor_rg_truncation_window_budget()
     print("All RG projection checks passed.")
 

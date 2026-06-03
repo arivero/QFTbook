@@ -2483,6 +2483,79 @@ accompanied by an omitted-direction residual in the same function space as the
 exact effective action, and by observable reconstruction estimates in the
 seminorms actually used.
 
+\begin{controlledapproximation}[Functional-RG projected fixed points]
+\label{cap:functional-rg-projected-fixed-point-residual}
+In dimensionless autonomous variables, write the exact regulated
+functional-RG vector field as
+\[
+  \dot\Gamma=\beta(\Gamma),
+  \qquad
+  \beta:\mathcal U_\Gamma\subset\mathcal B_\Gamma\to\mathcal B_\Gamma .
+\]
+Let \(P_N:\mathcal B_\Gamma\to\mathcal B_N\) be a finite ansatz projection,
+\(Q_N=1-P_N\), and let \(\Gamma_N^\ast\in\mathcal B_N\) solve only the
+projected fixed-point equation
+\begin{equation}
+  P_N\beta(\Gamma_N^\ast)=0.
+  \label{eq:frg-projected-fixed-point-equation}
+\end{equation}
+The omitted beta-function component is
+\begin{equation}
+  r_N^\ast=Q_N\beta(\Gamma_N^\ast).
+  \label{eq:frg-projected-fixed-point-residual}
+\end{equation}
+Suppose an approximate inverse \(A:\mathcal B_\Gamma\to\mathcal B_\Gamma\)
+for \(D\beta(\Gamma_N^\ast)\) and constants \(\rho,L\) satisfy the
+Newton--Kantorovich estimates of
+Theorem~\ref{thm:newton-kantorovich-rg-fixed-point}, with
+\[
+  \eta_N^{\rm FRG}:=\|A r_N^\ast\|_{\mathcal B_\Gamma}.
+\]
+If, for some \(r_N\),
+\begin{equation}
+  \eta_N^{\rm FRG}+\rho r_N+\frac{L}{2}r_N^2\le r_N,
+  \qquad
+  \rho+Lr_N<1,
+  \label{eq:frg-projected-fixed-point-lift}
+\end{equation}
+then there is an exact fixed point \(\Gamma_\ast\) of the full vector field
+in the ball \(\|\Gamma_\ast-\Gamma_N^\ast\|\le r_N\).  If a finite
+observable window \(p_\alpha\) is reconstructed by a map
+\(\operatorname{Rec}_\alpha\) that is \(L_{\alpha,N}\)-Lipschitz on the same
+ball, and if the ansatz observable itself has chart error
+\(\delta_{\alpha,N}\), then
+\begin{equation}
+  p_\alpha\!\left(
+    \operatorname{Rec}_{\alpha,N}(\Gamma_N^\ast)
+    -
+    \operatorname{Rec}_\alpha(\Gamma_\ast)
+  \right)
+  \le
+  \delta_{\alpha,N}+L_{\alpha,N}r_N .
+  \label{eq:frg-projected-fixed-point-observable-error}
+\end{equation}
+Thus a zero of the beta functions retained in a derivative expansion is not
+yet a Wilsonian fixed-point theorem.  It is a controlled finite-window
+approximation only to the extent that
+\eqref{eq:frg-projected-fixed-point-residual},
+\eqref{eq:frg-projected-fixed-point-lift}, and
+\eqref{eq:frg-projected-fixed-point-observable-error} are supplied in the
+full regulated effective-action norm and in the declared observable
+seminorms.
+\end{controlledapproximation}
+
+\noindent
+The proof is the projected-zero lifting argument above, applied to
+\(F=\beta\).  Since \eqref{eq:frg-projected-fixed-point-equation} kills only
+the retained coordinates, \(\beta(\Gamma_N^\ast)=r_N^\ast\).  The
+Newton--Kantorovich theorem gives the nearby exact zero once the omitted
+component is small after applying \(A\).  The observable estimate is the same
+triangle inequality as
+\eqref{eq:projected-rg-observable-lift-error}.  The important point is
+negative: a critical exponent matrix computed inside the ansatz subspace
+does not control the discarded beta-function directions, the existence of a
+full fixed point, or the reconstruction of Schwinger or Wightman data.
+
 \section{Fixed-Point Claim Content}
 \label{sec:rg-fixed-point-claim-content}
 

@@ -751,8 +751,11 @@ Current checks:
   It also checks the residual-lift plus reconstruction-seminorm budget that
   turns a projected fixed point into a controlled finite-window observable
   approximation, and the finite-step residual amplification bound for a
-  projected functional-RG flow.  It also checks the tensor-RG truncation
-  residual recursion and its finite observable-window transport.
+  projected functional-RG flow.  It also checks the projected functional-RG
+  fixed-point residual gate: a zero of the retained beta functions may still
+  have an omitted beta component that shifts the exact fixed point and
+  contributes to the observable-window error.  It also checks the tensor-RG
+  truncation residual recursion and its finite observable-window transport.
 - `rg_fermionic_fixed_point_checks.py`: exact rational checks for the
   Volume XI long-range fermionic rigorous-RG benchmark, including the
   kernel scaling-dimension ledger
