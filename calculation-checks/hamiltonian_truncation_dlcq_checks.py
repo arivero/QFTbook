@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from check_utils import assert_close as _assert_close
 from check_utils import assert_array_close as _assert_array_close
+from check_utils import assert_leq as _assert_leq
 
 import pathlib
 import sys
@@ -42,8 +43,7 @@ def assert_equal(name: str, actual: object, expected: object) -> None:
 
 
 def assert_leq(name: str, actual: float, bound: float, tol: float = 1.0e-12) -> None:
-    if actual > bound + tol:
-        raise AssertionError(f"{name}: got {actual!r}, bound {bound!r}")
+    _assert_leq(name, actual, bound, tol=tol)
 
 
 def assert_matrix_close(name: str, actual: np.ndarray, expected: np.ndarray, tol: float = 1.0e-11) -> None:
@@ -309,8 +309,7 @@ def check_tffsa_connected_spin_block() -> None:
     )
     free_eigs = np.linalg.eigvalsh(tffsa.finite_matrix(free_cfg))
     expected_free = np.array([0.0] + [state.energy for state in states])
-    if np.max(np.abs(free_eigs - expected_free)) > 1.0e-12:
-        raise AssertionError("TFFSA zero-coupling spectrum does not match free energies")
+    assert_matrix_close("TFFSA zero-coupling spectrum", free_eigs, expected_free, tol=1.0e-12)
 
 
 def check_tffsa_spectral_flow_derivatives() -> None:

@@ -71,7 +71,7 @@
     windows, exponent and remainder hypotheses, rank/conditioning diagnostics,
     and the statistical, systematic, and window-stability components of the
     finite evidence budget \(B_{\rm num}\).
-13. The finite numerical evidence ledger is a weighted least-squares identity:
+13. The finite numerical evidence propagation identity is
     \(\widehat c_W-c=P_WR_W+P_W\eta_W\), with propagated covariance
     \(P_W\Sigma_WP_W^T\) and deterministic intercept envelope
     \(\sum_i |(P_W)_{0i}|\epsilon_i\).
@@ -101,6 +101,13 @@
   nonuniqueness, Richardson and integer-power weights, correlated
   least-squares covariance/error propagation, and the finite evidence-budget
   decomposition used by `qft_scripts/finite_regulator_extrapolation.py`.
+
+## Development Log
+
+- 2026-06-03 style-density follow-up for issue #726: renamed the finite
+  numerical evidence lemma heading from "ledger" to "propagation" and changed
+  one prose sentence from "finite ledger" to "finite calculation."  The
+  weighted least-squares identity and budget formula were unchanged.
 
 ## Figure Ledger
 

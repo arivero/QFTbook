@@ -1095,3 +1095,8 @@ The chapter must define and derive:
   remainder, and limiting errors.  `calculation-checks/qcd_dglap_checks.py`
   now verifies the finite additive budget and detects omitted boundary,
   Glauber, and projective-state terms.
+- 2026-06-03 style-density follow-up for issue #726: changed the integrated
+  PDF definition heading and opening sentence from repeated "datum" language
+  to "coordinate" language.  Labels and mathematical content were left
+  unchanged; the change only reduces internal-process diction in the
+  reader-facing PDF section.

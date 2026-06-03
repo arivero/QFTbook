@@ -11,6 +11,8 @@ from fractions import Fraction
 from itertools import product
 from math import exp, log, pi, sqrt
 
+from check_utils import assert_lt as _assert_lt
+
 
 def assert_equal(name: str, actual, expected) -> None:
     if actual != expected:
@@ -18,8 +20,7 @@ def assert_equal(name: str, actual, expected) -> None:
 
 
 def assert_less(name: str, actual: float, bound: float) -> None:
-    if not actual < bound:
-        raise AssertionError(f"{name}: expected {actual} < {bound}")
+    _assert_lt(name, actual, bound)
 
 
 def check_bosonic_product_formula() -> None:

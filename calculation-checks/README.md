@@ -11,10 +11,25 @@ Install the public verification dependencies with:
 python3 -m pip install -r requirements-verification.txt
 ```
 
-Python checks should use `check_utils.py` for finite-aware scalar and array
-tolerance assertions.  Its companion `check_utils_checks.py` includes negative
-tests for NaN/Inf inputs and an audit that rejects legacy `abs(x-y) > tol`
-helpers without an explicit finiteness guard.
+Python checks should use `check_utils.py` for finite-aware scalar, array, and
+bound assertions.  Its companion `check_utils_checks.py` includes negative
+tests for NaN/Inf inputs and an audit that rejects legacy `abs(x-y) > tol`,
+unsafe bound helpers, and direct `np.max(np.abs(...)) > tol` comparisons
+without an explicit finiteness guard.
+
+Load-bearing companions should carry an evidence contract, either in the file
+docstring, the check summary below, or the paired planning dossier:
+
+- Target claim: the manuscript label and the precise subclaim checked.
+- Independent construction: how the checked quantity is computed without
+  substituting the target formula or repeating its disputed step.
+- Imported assumptions: identities, truncations, regulator choices,
+  representation conventions, and external formulas assumed by the check.
+- Negative controls: at least one deliberately wrong coefficient, sign,
+  pairing, domain, or limiting assumption that the check rejects when feasible.
+- Scope boundary: what a pass does not prove, especially for continuum,
+  thermodynamic-limit, reconstruction, sewing, positivity, or uniform-remainder
+  claims.
 
 Plain text formats are preferred over notebook-only formats.  Mathematica
 checks should be committed as Wolfram Language `.wl` files, with optional
@@ -451,7 +466,9 @@ Current checks:
   right-slot and left-slot determinants share the same center phase and the
   center integral supplies total momentum conservation, the \(SU(2)\)
   instanton-orientation Haar projection of two colored zero-mode slots onto
-  the antisymmetric invariant tensor, the color-singlet source-projection
+  the antisymmetric invariant tensor, the genuine shared-orientation four-slot
+  Haar projector with its \(1/3\) counterexample to the factorized shortcut, the
+  color-singlet source-projection
   algebra which keeps source-to-zero-mode overlaps and hadronic pole residues
   separate from the hard instanton kernel, the finite one-instanton amplitude
   error budget separating determinant, zero-mode/source, matching, Schur, and
@@ -464,7 +481,10 @@ Current checks:
   \(SU(3)\), \(N_f=2\) differentiated-source tail beyond \(\rho=R/Q\) falls
   only as \(R^{-1/3}\), the Wilsonian size-factorization check in which the
   artificial boundary flux through \(\rho=\mu_I^{-1}\) cancels between the
-  short-instanton coefficient and the long-distance remainder, the one-loop
+  short-instanton coefficient and the long-distance remainder, the finite
+  short-instanton OPE coefficient transport check showing inverse
+  operator-frame transformation, dual operator-mixing RG flow, and separation
+  from the Wilsonian size-boundary flux, the one-loop
   RG-invariant rewrite
   \(\Lambda_{\rm ht}^{b_0}Q^{-b_0-2}\) of the same hard coefficient with the
   large-size endpoint controlled by the selected form-factor mechanism, the

@@ -24,8 +24,7 @@ def assert_close(lhs: float, rhs: float, message: str, tol: float = 1e-9) -> Non
 
 
 def assert_near_integer(value: float, expected: int, message: str, tol: float = 2e-8) -> None:
-    if abs(value - expected) > tol:
-        raise AssertionError(f"{message}: {value!r} != {expected}")
+    _assert_close(message, value, expected, tol=tol)
 
 
 def dot(a: Vector, b: Vector) -> float:

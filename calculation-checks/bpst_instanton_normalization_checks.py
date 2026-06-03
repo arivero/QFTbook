@@ -48,8 +48,8 @@ relations
     integral
     the SU(2) instanton orientation Haar average projects two colored
     zero-mode slots onto the antisymmetric invariant tensor and makes the
-    four-slot coefficient proportional to the product of right and left source
-    determinants
+    shared-orientation four-slot coefficient a genuine four-fundamental Haar
+    projector rather than a product of two independent two-slot averages
     color-singlet source projection multiplies the hard instanton kernel by
     gauge-invariant source-overlap matrices, while hadronic pole residues are
     separate external spectral data
@@ -67,6 +67,9 @@ relations
     a Wilsonian split of the instanton size integral has exact cancellation
     of the artificial factorization-scale boundary flux between the short
     instanton coefficient and the long-distance remainder
+    short-instanton OPE coefficients transform inversely to the renormalized
+    operator basis, satisfy the dual operator-mixing RG equation, and still
+    carry a separate Wilsonian size-boundary flux
     trading the one-loop action for Lambda_ht gives the full hard scaling
     Lambda_ht^b0 Q^(-b0-2), with net coefficient dimension -2
     mass-saturated QCD vacuum activity carries prod_f(m_f rho), depends on
@@ -95,6 +98,22 @@ relations
     volume power rho^(4N-5)
 
 with g_ht = sqrt(2) g_YM.
+
+Evidence contract.  Target claims are the BPST normalization, one-instanton
+measure, zero-mode saturation, instanton-orientation Haar projection,
+hard-size/OPE coefficient bookkeeping, and related Chapter 20 instanton labels.
+Independent construction comes from direct radial integrals, finite determinant
+and Schur-complement algebra, source differentiation, inverse-Gram construction
+of the shared SU(2) four-fundamental Haar projector, and finite
+coefficient/operator transport matrices.  Imported assumptions include the BPST
+background and zero-mode formulas, the one-loop determinant coefficients, the
+chosen trace-delta convention, and finite regulator truncations stated in the
+chapter.  Negative controls include the shared-Haar 1/3 versus factorized 1/4
+counterexample, rank-one and color-symmetric source-pair rejections,
+finite-frame inverse checks, and separation of operator RG flow from the
+Wilsonian size-boundary flux.  A pass checks finite algebra and normalization
+interfaces; it does not prove dilute-gas validity, large-size control,
+uniform semiclassical remainders, or physical hadronic matrix elements.
 """
 
 from __future__ import annotations
@@ -1856,6 +1875,52 @@ def check_instanton_orientation_haar_projection() -> None:
         0,
     )
 
+    def pairing_a(
+        first: int,
+        second: int,
+        third: int,
+        fourth: int,
+    ) -> Fraction:
+        return epsilon2(first, second) * epsilon2(third, fourth)
+
+    def pairing_b(
+        first: int,
+        second: int,
+        third: int,
+        fourth: int,
+    ) -> Fraction:
+        return epsilon2(first, third) * epsilon2(second, fourth)
+
+    def haar_four_same(
+        colors: tuple[int, int, int, int],
+        cores: tuple[int, int, int, int],
+    ) -> Fraction:
+        color_a = pairing_a(*colors)
+        color_b = pairing_b(*colors)
+        core_a = pairing_a(*cores)
+        core_b = pairing_b(*cores)
+        return (
+            Fraction(1, 3) * color_a * core_a
+            - Fraction(1, 6) * color_a * core_b
+            - Fraction(1, 6) * color_b * core_a
+            + Fraction(1, 3) * color_b * core_b
+        )
+
+    # This is the counterexample to the factorized two-slot shortcut:
+    # for U=[[a,b],[-conj(b),conj(a)]], the integral is int |a|^4 dU=1/3,
+    # not (int det U dU / 2)^2=1/4.
+    shared_counterexample = haar_four_same((0, 1, 0, 1), (0, 1, 0, 1))
+    factorized_counterexample = (
+        haar_two_same(0, 1, 0, 1)
+        * haar_two_same(0, 1, 0, 1)
+    )
+    assert_equal("SU2 shared four-slot Haar counterexample", shared_counterexample, Fraction(1, 3))
+    assert_equal(
+        "SU2 shared four-slot differs from factorized shortcut",
+        shared_counterexample == factorized_counterexample,
+        False,
+    )
+
     right_sources = [
         [Fraction(2), Fraction(3)],
         [Fraction(5), Fraction(7)],
@@ -1864,16 +1929,68 @@ def check_instanton_orientation_haar_projection() -> None:
         [Fraction(11), Fraction(13)],
         [Fraction(17), Fraction(19)],
     ]
-    right_det = det_fraction(right_sources)
-    left_det = det_fraction(left_sources)
-    four_slot_projection = (
-        two_slot_projection(0, 1, right_sources[0], right_sources[1])
-        * two_slot_projection(0, 1, left_sources[0], left_sources[1])
+
+    def det_pair(first: list[Fraction], second: list[Fraction]) -> Fraction:
+        return first[0] * second[1] - first[1] * second[0]
+
+    def four_slot_source_projection(
+        colors: tuple[int, int, int, int],
+        right_first: list[Fraction],
+        right_second: list[Fraction],
+        left_first: list[Fraction],
+        left_second: list[Fraction],
+    ) -> Fraction:
+        return sum(
+            haar_four_same(colors, (core_1, core_2, core_3, core_4))
+            * right_first[core_1]
+            * right_second[core_2]
+            * left_first[core_3]
+            * left_second[core_4]
+            for core_1 in range(2)
+            for core_2 in range(2)
+            for core_3 in range(2)
+            for core_4 in range(2)
+        )
+
+    colors = (0, 1, 0, 1)
+    delta_12_34 = det_pair(right_sources[0], right_sources[1]) * det_pair(
+        left_sources[0],
+        left_sources[1],
+    )
+    delta_13_24 = det_pair(right_sources[0], left_sources[0]) * det_pair(
+        right_sources[1],
+        left_sources[1],
+    )
+    expected_shared_projection = (
+        pairing_a(*colors)
+        * (Fraction(1, 3) * delta_12_34 - Fraction(1, 6) * delta_13_24)
+        + pairing_b(*colors)
+        * (-Fraction(1, 6) * delta_12_34 + Fraction(1, 3) * delta_13_24)
     )
     assert_equal(
-        "SU2 orientation four-slot determinant product",
-        four_slot_projection,
-        right_det * left_det / 4,
+        "SU2 shared four-slot source projector",
+        four_slot_source_projection(
+            colors,
+            right_sources[0],
+            right_sources[1],
+            left_sources[0],
+            left_sources[1],
+        ),
+        expected_shared_projection,
+    )
+
+    rank_one_right = [3 * entry for entry in right_sources[0]]
+    rank_one_four_slot = four_slot_source_projection(
+        colors,
+        right_sources[0],
+        rank_one_right,
+        left_sources[0],
+        left_sources[1],
+    )
+    assert_equal(
+        "SU2 shared four-slot rank-one right pair need not vanish",
+        rank_one_four_slot == 0,
+        False,
     )
 
 
@@ -2294,6 +2411,82 @@ def check_wilsonian_instanton_size_factorization() -> None:
     )
 
 
+def check_short_instanton_ope_coefficient_transport() -> None:
+    # A local instanton vertex coefficient is a row vector pairing with a
+    # renormalized operator column.  If dO/dlog(mu)=-gamma O, the coefficient
+    # obeys dC/dlog(mu)=C gamma so that C O is scale independent.
+    coefficient = [[Fraction(2, 3), Fraction(5, 7)]]
+    operator_matrix_element = [[Fraction(11, 13)], [Fraction(17, 19)]]
+    gamma = [
+        [Fraction(1, 3), Fraction(2, 5)],
+        [Fraction(-1, 7), Fraction(3, 11)],
+    ]
+
+    coefficient_flow = matmul_fraction(coefficient, gamma)
+    operator_flow = [
+        [-entry[0]]
+        for entry in matmul_fraction(gamma, operator_matrix_element)
+    ]
+    pair_flow = (
+        matmul_fraction(coefficient_flow, operator_matrix_element)[0][0]
+        + matmul_fraction(coefficient, operator_flow)[0][0]
+    )
+    assert_equal("short-instanton coefficient/operator RG cancellation", pair_flow, 0)
+
+    # A finite operator-frame change O_tilde=M O requires C_tilde=C M^{-1};
+    # the coefficient alone changes, but the local insertion is unchanged.
+    frame_change = [[Fraction(2), Fraction(1)], [Fraction(1), Fraction(1)]]
+    frame_inverse = inverse_2x2_fraction(frame_change)
+    coefficient_tilde = matmul_fraction(coefficient, frame_inverse)
+    operator_tilde = matmul_fraction(frame_change, operator_matrix_element)
+    assert_equal(
+        "short-instanton coefficient frame change leaves insertion pairing",
+        matmul_fraction(coefficient_tilde, operator_tilde)[0][0],
+        matmul_fraction(coefficient, operator_matrix_element)[0][0],
+    )
+
+    # With a scale-dependent finite frame, the connection law of Chapter 12
+    # makes the transformed coefficient obey the same dual transport equation.
+    frame_change_flow = [
+        [Fraction(1, 5), Fraction(1, 7)],
+        [Fraction(1, 11), Fraction(-1, 13)],
+    ]
+    gamma_tilde = matrix_sub_fraction(
+        matmul_fraction(matmul_fraction(frame_change, gamma), frame_inverse),
+        matmul_fraction(frame_change_flow, frame_inverse),
+    )
+    coefficient_tilde_flow_direct = matrix_sub_fraction(
+        matmul_fraction(coefficient_flow, frame_inverse),
+        matmul_fraction(
+            coefficient_tilde,
+            matmul_fraction(frame_change_flow, frame_inverse),
+        ),
+    )
+    coefficient_tilde_flow_connection = matmul_fraction(coefficient_tilde, gamma_tilde)
+    assert_equal(
+        "short-instanton coefficient follows transformed operator connection",
+        coefficient_tilde_flow_direct,
+        coefficient_tilde_flow_connection,
+    )
+
+    # The Wilsonian size cut is a different scale.  Its boundary flux cancels
+    # only against the long-distance coefficient/remainder, not against the
+    # operator-mixing RG transport above.
+    boundary_flux = [[Fraction(3, 17), Fraction(5, 19)]]
+    short_size_flow = [[-entry for entry in boundary_flux[0]]]
+    long_size_flow = boundary_flux
+    assert_equal(
+        "short and long OPE coefficient size-boundary flux cancels",
+        matrix_add_fraction(short_size_flow, long_size_flow),
+        [[Fraction(0), Fraction(0)]],
+    )
+    assert_equal(
+        "operator RG transport is distinct from size-factorization flux",
+        coefficient_flow == short_size_flow,
+        False,
+    )
+
+
 def check_dilute_instanton_gas_theta_cumulants() -> None:
     # The dilute gas promotes the one-instanton and one-anti-instanton
     # amplitudes to independent Poisson activities.  The topological charge
@@ -2656,6 +2849,7 @@ def main() -> None:
     check_hard_momentum_instanton_size_window()
     check_hard_size_tail_dominance_criterion()
     check_wilsonian_instanton_size_factorization()
+    check_short_instanton_ope_coefficient_transport()
     check_dilute_instanton_gas_theta_cumulants()
     check_instanton_ensemble_zero_mode_overlap_spectrum()
     check_mass_saturated_vacuum_activity_size_integral()

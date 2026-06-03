@@ -5,6 +5,8 @@ import cmath
 import math
 from fractions import Fraction
 
+from check_utils import assert_close as _assert_close
+
 
 def require(condition, message):
     if not condition:
@@ -103,8 +105,7 @@ def parafermion_modular_s(level, left, right):
 
 
 def require_close_complex(value, target, message, tolerance=1.0e-9):
-    if abs(value - target) > tolerance:
-        raise AssertionError(f"{message}: got {value!r}, expected {target!r}")
+    _assert_close(message, value, target, tol=tolerance)
 
 
 def check_parafermion_modular_verlinde(max_level=7):

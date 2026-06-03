@@ -12,6 +12,8 @@ classification.
 
 from fractions import Fraction
 
+from check_utils import assert_leq as _assert_leq
+
 
 Matrix = list[list[Fraction]]
 Vector = list[Fraction]
@@ -28,8 +30,7 @@ def assert_positive(name: str, value: Fraction) -> None:
 
 
 def assert_less_equal(name: str, actual: Fraction, bound: Fraction) -> None:
-    if actual > bound:
-        raise AssertionError(f"{name}: expected {actual!r} <= {bound!r}")
+    _assert_leq(name, actual, bound)
 
 
 def matmul(left: Matrix, right: Matrix) -> Matrix:

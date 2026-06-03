@@ -14,6 +14,7 @@ import numpy as np
 
 from check_utils import assert_array_close as _assert_array_close
 from check_utils import assert_close
+from check_utils import assert_leq as _assert_leq
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -29,8 +30,7 @@ def assert_equal(name, actual, expected):
 
 
 def assert_leq(name, left, right):
-    if left > right:
-        raise AssertionError(f"{name}: got {left!r} > {right!r}")
+    _assert_leq(name, left, right)
 
 
 def assert_matrix_close(name, actual, expected, tol=1.0e-11, *, rtol=0.0):

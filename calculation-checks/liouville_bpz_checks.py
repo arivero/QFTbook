@@ -6,6 +6,8 @@ from __future__ import annotations
 import math
 from fractions import Fraction
 
+from check_utils import assert_close as _assert_close
+
 
 class Laurent:
     """Laurent polynomial in t=b^2 with rational coefficients."""
@@ -362,10 +364,7 @@ for name, value in [
     ("screening b-power form", screening_b_power_form),
 ]:
     scale = max(1.0, abs(screening_original), abs(value))
-    if abs(screening_original - value) > 1e-12 * scale:
-        raise AssertionError(
-            f"{name} mismatch: {screening_original!r} != {value!r}"
-        )
+    _assert_close(name, screening_original, value, tol=1.0e-12 * scale)
 
 sample_u = 1.0 / sample_t
 sample_ab = sample_alpha / sample_b
@@ -388,16 +387,16 @@ scale = max(
     abs(dual_screening_original),
     abs(dual_screening_b_power_form),
 )
-if abs(dual_screening_original - dual_screening_b_power_form) > 1e-12 * scale:
-    raise AssertionError(
-        "dual screening b-power form mismatch: "
-        f"{dual_screening_original!r} != {dual_screening_b_power_form!r}"
-    )
+_assert_close(
+    "dual screening b-power form",
+    dual_screening_original,
+    dual_screening_b_power_form,
+    tol=1.0e-12 * scale,
+)
 
 def require_close(name: str, left: float, right: float) -> None:
     scale = max(1.0, abs(left), abs(right))
-    if abs(left - right) > 1e-11 * scale:
-        raise AssertionError(f"{name} mismatch: {left!r} != {right!r}")
+    _assert_close(name, left, right, tol=1.0e-11 * scale)
 
 
 def check_degenerate_connection_shift(

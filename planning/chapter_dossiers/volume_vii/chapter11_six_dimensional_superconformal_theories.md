@@ -260,6 +260,10 @@ Reviewed source spine:
   \(H^0(C,K_C^{d_i}(D_i))\), including the full \(A_{N-1}\) puncture
   dimension shift and three-full-puncture sphere count; extended
   `susy_abjm_6d_checks.py` accordingly.
+- 2026-06-03 style-density follow-up for issue #726: rewrote the local
+  "pole-order ledger" wording as a pole-order chart/list while preserving the
+  Riemann--Roch formulae and defect-scope caveats.  This was an editorial
+  flow repair, not a new class-\(S\) claim.
 
 ## Figure Ledger
 

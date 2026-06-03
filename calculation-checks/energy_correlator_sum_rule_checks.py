@@ -17,6 +17,8 @@ from collections.abc import Iterable
 from fractions import Fraction
 from math import factorial
 
+from check_utils import assert_leq as _assert_leq
+
 Vector = tuple[Fraction, Fraction, Fraction]
 Particle = tuple[Fraction, Vector]
 WeightedEvent = tuple[Fraction, list[Particle]]
@@ -293,8 +295,7 @@ def sup_norm(values: list[Fraction]) -> Fraction:
 def assert_detector_bound(event: list[Particle], values: list[Fraction], name: str) -> None:
     total_energy = event_total_energy_fraction(event)
     value = energy_detector_value(event, values)
-    if abs(value) > sup_norm(values) * total_energy:
-        raise AssertionError(f"{name}: detector bound failed")
+    _assert_leq(name, abs(value), sup_norm(values) * total_energy)
 
 
 def check_multiplication_model_for_event(

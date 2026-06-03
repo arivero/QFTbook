@@ -5693,21 +5693,74 @@ vectors \(v_A,v_B\in\mathbb C^2\) have orientation average
   \frac12\varepsilon_{ij}\det(v_A,v_B).
   \label{eq:instanton-orientation-two-slot-determinant}
 \end{equation}
-For an \(N_f=2\) differentiated four-slot source in the \(SU(2)\) core, if
-the two right slots carry rows \(v_1^R,v_2^R\) and the two left slots carry
-rows \(v_1^L,v_2^L\), the core orientation average contains the finite tensor
+For an \(N_f=2\) differentiated four-slot source, the four slots share the same
+orientation variable.  One must therefore use the single four-point Haar
+projector, not the product of two two-point averages.  When all four selected
+slots have been written as fundamental \(SU(2)\) core indices, set
+\[
+  A_{i_1i_2j_1j_2}
+  =
+  \varepsilon_{i_1i_2}\varepsilon_{j_1j_2},
+  \qquad
+  B_{i_1i_2j_1j_2}
+  =
+  \varepsilon_{i_1j_1}\varepsilon_{i_2j_2},
+\]
+and use the same symbols with upper core indices.  Then
 \begin{equation}
-  \frac14\,
-  \varepsilon_{i_1i_2}\varepsilon_{j_1j_2}\,
-  \det(v_1^R,v_2^R)\det(v_1^L,v_2^L).
-  \label{eq:instanton-four-slot-orientation-projection}
+\begin{aligned}
+  &\int_{SU(2)}
+    U_{i_1}{}^{\alpha_1}U_{i_2}{}^{\alpha_2}
+    U_{j_1}{}^{\beta_1}U_{j_2}{}^{\beta_2}\,\dd U       \\
+  &\quad =
+  \frac13 A_{i_1i_2j_1j_2}A^{\alpha_1\alpha_2\beta_1\beta_2}
+  -\frac16 A_{i_1i_2j_1j_2}B^{\alpha_1\alpha_2\beta_1\beta_2} \\
+  &\qquad
+  -\frac16 B_{i_1i_2j_1j_2}A^{\alpha_1\alpha_2\beta_1\beta_2}
+  +\frac13 B_{i_1i_2j_1j_2}B^{\alpha_1\alpha_2\beta_1\beta_2}.
+\end{aligned}
+  \label{eq:instanton-four-slot-orientation-projector}
 \end{equation}
-If either pair of external source covectors is linearly dependent, this
-orientation-projected coefficient vanishes.  Thus the color-orientation
-collective coordinate is a genuine part of the amplitude rather than a
-passive coordinate volume: it enforces the invariant antisymmetric color
-tensor and removes source components which do not couple to the instanton
-zero-mode determinant.  For an \(SU(N_c)\) instanton
+If the left slots are kept as conjugate or dual slots instead, they must first
+be converted to the chosen fundamental convention by the \(SU(2)\) pseudoreal
+\(\varepsilon\)-tensor, or else the corresponding mixed \(U\overline U\)
+Weingarten projector must be used.  Contracting
+\eqref{eq:instanton-four-slot-orientation-projector} with core source vectors
+\(v_1^R,v_2^R,v_1^L,v_2^L\) gives
+\begin{equation}
+\begin{aligned}
+  &A_{i_1i_2j_1j_2}
+  \left[
+    \frac13\Delta_{12|34}
+    -\frac16\Delta_{13|24}
+  \right]
+  +
+  B_{i_1i_2j_1j_2}
+  \left[
+    -\frac16\Delta_{12|34}
+    +\frac13\Delta_{13|24}
+  \right],
+\end{aligned}
+  \label{eq:instanton-four-slot-source-projector}
+\end{equation}
+where
+\[
+  \Delta_{12|34}
+  =
+  \varepsilon_{\alpha_1\alpha_2}v_1^{R,\alpha_1}v_2^{R,\alpha_2}\,
+  \varepsilon_{\beta_1\beta_2}v_1^{L,\beta_1}v_2^{L,\beta_2},
+  \qquad
+  \Delta_{13|24}
+  =
+  \varepsilon_{\alpha_1\beta_1}v_1^{R,\alpha_1}v_1^{L,\beta_1}\,
+  \varepsilon_{\alpha_2\beta_2}v_2^{R,\alpha_2}v_2^{L,\beta_2}.
+\]
+Thus the color-orientation collective coordinate is a genuine part of the
+amplitude rather than a passive coordinate volume: it enforces the full
+invariant four-slot projector.  A product of right and left flavor
+determinants appears only after the Berezin source coefficient and the final
+color-singlet source contraction impose that additional structure.  For an
+\(SU(N_c)\) instanton
 embedded through an \(SU(2)\) subgroup, the full orientation-orbit integral
 is the corresponding \(SU(N_c)\)-invariant projection with a convention
 dependent normalization; the displayed \(SU(2)\) core identity is the local
@@ -5739,10 +5792,32 @@ in \(\wedge^2\mathbb C^2\otimes\wedge^2(\mathbb C^2)^*\), and must be
 \]
 so \(c=1/2\).  Multiplying the averaged matrix elements by the two source
 vectors gives
-\eqref{eq:instanton-orientation-two-slot-determinant}.  Applying the same
-two-slot identity separately to the right and left differentiated pairs gives
-\eqref{eq:instanton-four-slot-orientation-projection}.  Linear dependence of
-one pair sets the corresponding determinant to zero.
+\eqref{eq:instanton-orientation-two-slot-determinant}.
+
+For four slots, the invariant subspace of
+\((\mathbb C^2)^{\otimes4}\) is two-dimensional.  Use the two spanning
+invariant tensors \(A\) and \(B\) above.  Their Gram matrix is
+\[
+  \begin{pmatrix}
+  \langle A,A\rangle & \langle A,B\rangle\\
+  \langle B,A\rangle & \langle B,B\rangle
+  \end{pmatrix}
+  =
+  \begin{pmatrix}4&2\\2&4\end{pmatrix},
+  \qquad
+  G^{-1}
+  =
+  \begin{pmatrix}\frac13&-\frac16\\[2pt]-\frac16&\frac13\end{pmatrix}.
+\]
+The Haar average is the orthogonal projection onto this invariant subspace,
+with one copy of \(G^{-1}\) connecting the color invariant basis to the core
+invariant basis.  This gives
+\eqref{eq:instanton-four-slot-orientation-projector}.  Contracting that
+projector with the four core source vectors gives
+\eqref{eq:instanton-four-slot-source-projector}.  The calculation uses one
+shared Haar variable throughout; replacing it by a product of two two-slot
+averages would project two independent orientations and gives the wrong
+four-slot normalization.
 \end{proof}
 
 The qualification in
@@ -6279,6 +6354,79 @@ diagnostic in \eqref{eq:hard-size-tail-change-variable}.  The computed
 short-instanton coefficient is useful only when this boundary flux and the
 remaining \(\rho>\rho_I\) contribution are controlled by the physical source,
 screening scale, phase, or matching calculation under consideration.
+\end{controlledapproximation}
+
+\begin{controlledapproximation}[Short-instanton OPE coefficient]
+\label{ca:short-instanton-ope-coefficient}
+The short side of
+ControlledApproximation~\ref{ca:instanton-wilsonian-size-factorization} becomes
+a local 't Hooft vertex only after it is projected onto a renormalized local
+operator basis.  Let \(\{[O_I]_\mu\}_{I\in\mathcal B}\) be a finite
+source-normalized basis in the selected quantum-number channel, containing
+\([\det(\bar q_Rq_L)]_\mu\) and any operators of the same dimension and
+symmetry which are retained by the chosen hard OPE.  Suppose the short-size
+part of a gauge-invariant source correlator admits the expansion
+\begin{equation}
+  G_{\mathcal J,\Lambda}^{<}(\mu_I)
+  =
+  \sum_{I\in\mathcal B}
+    C_I^{<}(\mu_I,\mu)\,
+    \left\langle\mathcal J\,[O_I]_\mu\right\rangle
+  +
+  R_{\rm OPE}^{<}(\mu_I,\mu).
+  \label{eq:short-instanton-ope-coefficient-expansion}
+\end{equation}
+The coefficient \(C_I^{<}\) is obtained by integrating the small-size instanton
+density, the nonzero-mode determinant, the zero-mode source coefficient, and
+the orientation tensor against the projector onto \([O_I]_\mu\), over
+\(0<\rho<\rho_I=\mu_I^{-1}\).  For the leading \(N_f=2\) determinant channel,
+this is the coefficient of \([\det(\bar q_Rq_L)]_\mu\); derivative operators,
+mass insertions, and source-matching remnants belong either to the retained
+basis or to \(R_{\rm OPE}^{<}\).
+
+This projection has two different scale laws.  The renormalization scale
+\(\mu\) is the composite-operator scale.  In the convention of
+Chapter~\ref{ch:volume-ii-renormalized-operators-minimal-subtraction},
+\[
+  \frac{\dd}{\dd\log\mu}[O_I]_\mu
+  =
+  -\gamma_{IK}(\mu)[O_K]_\mu .
+\]
+Therefore the coefficient row must obey
+\begin{equation}
+  \frac{\dd}{\dd\log\mu}C_K^{<}(\mu_I,\mu)
+  =
+  \sum_{I\in\mathcal B}C_I^{<}(\mu_I,\mu)\,\gamma_{IK}(\mu)
+  \label{eq:short-instanton-coefficient-rg}
+\end{equation}
+up to the truncation error \(R_{\rm OPE}^{<}\).  A finite operator-frame change
+\([\widetilde O_A]_\mu=M_{AI}(\mu)[O_I]_\mu\) changes the displayed coefficient
+by the inverse rule
+\begin{equation}
+  \widetilde C_A^{<}=C_I^{<}(M^{-1})_{IA},
+  \qquad
+  \sum_A\widetilde C_A^{<}[\widetilde O_A]_\mu
+  =
+  \sum_I C_I^{<}[O_I]_\mu .
+  \label{eq:short-instanton-coefficient-frame-change}
+\end{equation}
+Thus the local 't Hooft vertex coefficient is not a scheme-independent number;
+only its pairing with the renormalized operator basis and matrix elements is.
+
+The factorization scale \(\mu_I\) is different.  If
+\(K_I^{\rm OPE}(\rho;\mu)\) is the \([O_I]_\mu\)-projected short-size
+integrand, then
+\begin{equation}
+  \partial_{\log\mu_I}C_I^{<}(\mu_I,\mu)
+  =
+  -\rho_I K_I^{\rm OPE}(\rho_I;\mu).
+  \label{eq:short-instanton-coefficient-factorization-flow}
+\end{equation}
+This artificial boundary flow is not cancelled by operator anomalous
+dimensions.  It is cancelled by the long-size matrix element or remainder, as
+in \eqref{eq:instanton-size-factorization-boundary-flow}.  Consequently a
+standalone local 't Hooft operator with no declared \(\mu_I\), no operator
+scheme, and no long-distance remainder is not a physical instanton amplitude.
 \end{controlledapproximation}
 
 This hard-size window is the amplitude counterpart of the local

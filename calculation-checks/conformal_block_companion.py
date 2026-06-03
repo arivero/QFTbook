@@ -342,7 +342,21 @@ def point_from_radial(r: float | int | str | mp.mpf, theta: float | int | str | 
 
 
 def _assert_close(name: str, got: complex | mp.mpc, expected: complex | mp.mpc, tol: str = "1e-8") -> None:
-    if abs(mp.mpc(got) - mp.mpc(expected)) > mp.mpf(tol):
+    got_m = mp.mpc(got)
+    expected_m = mp.mpc(expected)
+    tolerance = mp.mpf(tol)
+    for label, value in (
+        ("got", got_m),
+        ("expected", expected_m),
+    ):
+        if not (mp.isfinite(mp.re(value)) and mp.isfinite(mp.im(value))):
+            raise AssertionError(f"{name} failed: {label} is nonfinite: {value!r}")
+    if tolerance < 0 or not mp.isfinite(tolerance):
+        raise AssertionError(f"{name} failed: nonfinite or negative tolerance {tol!r}")
+    error = abs(got_m - expected_m)
+    if not mp.isfinite(error):
+        raise AssertionError(f"{name} failed: nonfinite error {error!r}")
+    if error > tolerance:
         raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
 
 

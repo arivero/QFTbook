@@ -99,8 +99,9 @@
   conservation is produced by the center integral while the individual
   zero-mode form-factor determinants remain inside the size integral.  The
   orientation-projection continuation adds the \(SU(2)\) Haar identities which
-  turn two colored zero-mode slots into the antisymmetric invariant tensor
-  times the source determinant.  The color-singlet matching continuation adds
+  turn two colored zero-mode slots into the antisymmetric invariant tensor and
+  replace the four-slot shortcut by the genuine shared-orientation Haar
+  projector.  The color-singlet matching continuation adds
   the gauge-invariant source-projection and hadronic pole-residue layer:
   source-to-zero-mode overlaps multiply the hard kernel, while stable-hadron
   amplitudes require a separate spectral/LSZ extraction.  The hard-amplitude
@@ -117,7 +118,14 @@
   Wilsonian-split continuation makes the factorization-scale dependence
   explicit: the short-instanton coefficient and long-distance remainder
   exchange the boundary flux through \(\rho=\mu_I^{-1}\), so the local
-  't Hooft vertex is a coefficient, not an observable by itself.
+  't Hooft vertex is a coefficient, not an observable by itself.  The
+  short-OPE continuation then projects that coefficient onto the Ch12
+  renormalized-operator bundle, with inverse operator-frame transformation and
+  dual operator-mixing RG flow separated from the Wilsonian size-boundary
+  flow.  The 2026-06-03 verification-contract follow-up records, in the
+  calculation-check docstring rather than the TeX, the target claims,
+  independent constructions, imported assumptions, negative controls, and
+  finite/continuum scope boundary for this instanton companion.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
@@ -254,10 +262,12 @@
 | \(\mathcal P\) | total right-minus-left external momentum carried by a plane-wave instanton four-fermion source coefficient |
 | \(\mathfrak A_2^{\rm lin}(\rho,U;\{p_R,p_L\})\) | product of the right-slot and left-slot individual zero-mode form-factor determinants left after the instanton center phase is factored out |
 | \(U_i{}^\alpha\) | \(SU(2)\) instanton core-orientation matrix element whose Haar integral projects colored zero-mode slots onto invariant tensors |
+| \(A_{i_1i_2j_1j_2},B_{i_1i_2j_1j_2}\) | two invariant four-fundamental \(SU(2)\) tensors used in the shared-orientation Haar projector |
 | \(\mathcal K_{\rm ex},\mathcal K_{\rm lead},\mathcal C_{\rm pg}^{\mathcal S},R_{\rm det},R_{\rm zm},R_{\rm src},R_{\rm Schur},R_{\rm end}\) | exact and leading one-instanton source-amplitude densities, pure-gauge collective/determinant density, and the finite error-budget pieces for determinant, zero-mode/source, source matching, Schur, and endpoint residuals |
 | \(B^{\mathcal J}_{AB},\Phi^R,\Phi^L\) | color-singlet source-projected zero-mode matrix and source-to-zero-mode overlap maps used to match the auxiliary hard instanton kernel to gauge-invariant correlators |
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(\mathbf c;\mathcal F)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless selected-form-factor integral |
 | \(\mu_I,\rho_I,K_\Lambda(\rho)\) | Wilsonian instanton factorization scale, cutoff \(\rho_I=\mu_I^{-1}\), and fully paired finite-regulator size integrand whose boundary flux transfers between the short coefficient and long-distance remainder |
+| \(C_I^{<},[O_I]_\mu,\gamma_{IK}\) | short-instanton OPE coefficient, retained renormalized operator basis, and operator-mixing anomalous-dimension matrix used to distinguish composite-operator RG transport from size-factorization flow |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
 | \(\zeta_m^{[\rho_-,\rho_+]}\) | mass-saturated one-instanton vacuum activity in a finite size window |
 | \(T,\mathcal D_{\rm zm},E_{\rm zm},\rho_{\rm zm}\) | instanton--anti-instanton near-zero-mode overlap matrix, projected Dirac block, remainder, and singular-value density used in the instanton-liquid criterion |
@@ -585,10 +595,14 @@
   two-slot identity
   \(\int U_i{}^\alpha U_j{}^\beta dU=\frac12
   \varepsilon_{ij}\varepsilon^{\alpha\beta}\) turns a pair of source covectors
-  into the antisymmetric color tensor times their determinant, and the
-  four-slot \(N_f=2\) core coefficient is proportional to the product of the
-  right and left source determinants.  Rank-one or color-symmetric slot data
-  are removed by this orientation integral.
+  into the antisymmetric color tensor times their determinant.  The four-slot
+  \(N_f=2\) core coefficient now uses the single shared-orientation projector
+  on the two-dimensional invariant subspace of four fundamentals:
+  the \(A,B\) Gram matrix is \(\begin{psmallmatrix}4&2\\2&4\end{psmallmatrix}\)
+  and \(G^{-1}=\begin{psmallmatrix}1/3&-1/6\\-1/6&1/3\end{psmallmatrix}\).
+  Any further determinant factor or vanishing statement belongs to the Berezin
+  source coefficient and color-singlet contraction, not to a factorized Haar
+  average.
 - Gauge-invariant color-singlet source matching is now separated from colored
   source amputation.  In the selected \(N_f=2\) chirality-violating channel,
   the zero-mode source matrix has the projected form
@@ -642,6 +656,23 @@
   =+\rho_IK_\Lambda(\rho_I)\).  The short-size 't Hooft coefficient becomes
   physical only after the long-distance remainder or matching matrix element
   cancels this artificial boundary flux.
+- The short-size coefficient is now also tied to the renormalized local
+  operator bundle:
+  \[
+    G_{\mathcal J,\Lambda}^{<}
+    =
+    \sum_I C_I^{<}(\mu_I,\mu)
+    \langle\mathcal J[O_I]_\mu\rangle
+    +R_{\rm OPE}^{<}.
+  \]
+  With the chapter-12 convention
+  \(\partial_{\log\mu}[O_I]_\mu=-\gamma_{IK}[O_K]_\mu\), the coefficient row
+  obeys
+  \(\partial_{\log\mu}C_K^{<}=C_I^{<}\gamma_{IK}\), while a finite operator
+  frame change \([\widetilde O_A]=M_{AI}[O_I]\) gives
+  \(\widetilde C_A^{<}=C_I^{<}(M^{-1})_{IA}\).  This operator-scheme transport
+  is distinct from the size-factorization flow
+  \(\partial_{\log\mu_I}C_I^{<}=-\rho_IK_I^{\rm OPE}(\rho_I)\).
 - For massive vectorlike QCD, the vacuum instanton term is now separated as a
   finite-size-window activity:
   \[
@@ -1003,6 +1034,17 @@
   the local 't Hooft vertex is a Wilsonian coefficient unless the long-size
   remainder is matched or bounded.  The BPST check script verifies the
   boundary-flux cancellation and finite shell-transfer arithmetic.
+- 2026-06-03 issue #597/#630 short-instanton OPE pass: added
+  `ca:short-instanton-ope-coefficient`, which projects the short-size
+  instanton contribution onto the retained renormalized local operator basis
+  before calling it a local 't Hooft vertex.  The block records the coefficient
+  RG equation dual to
+  \(\partial_{\log\mu}[O_I]_\mu=-\gamma_{IK}[O_K]_\mu\), the inverse finite
+  operator-frame transformation, and the separate
+  \(\mu_I\)-boundary flux
+  \(-\rho_IK_I^{\rm OPE}(\rho_I)\).  The companion BPST check verifies the
+  finite coefficient/operator pairing, transformed connection law, and
+  distinction between operator RG and size-factorization flow.
 - 2026-06-03 issue #597 color-singlet matching pass: added
   `ca:instanton-color-singlet-hadronic-matching`, which places the auxiliary
   source-amputated instanton kernel inside gauge-invariant source correlators
@@ -1020,16 +1062,20 @@
   `bpst_instanton_normalization_checks.py` to verify the center-phase
   permutation identities, coefficient after phase factoring, \(\rho^6\)
   zero-mode source power, and finite-volume momentum-selection rule.
-- 2026-06-03 issue #597 orientation-projection pass: inserted
+- 2026-06-03 issue #597/#724 orientation-projection repair: inserted and then
+  corrected
   `prop:instanton-color-orientation-haar-projection`, which shows that the
   embedded \(SU(2)\) instanton orientation is an amplitude projection rather
   than an inert moduli-space volume.  The chapter derives the Haar identities
   sending two colored zero-mode slots to
-  \(\frac12\varepsilon_{ij}\det(v_A,v_B)\) and the \(N_f=2\) four-slot
-  coefficient to the product of the right and left source determinants.
+  \(\frac12\varepsilon_{ij}\det(v_A,v_B)\) and replaces the earlier incorrect
+  factorized four-slot shortcut by the genuine shared Haar projector with
+  \(G^{-1}=\begin{psmallmatrix}1/3&-1/6\\-1/6&1/3\end{psmallmatrix}\).
   Extended `bpst_instanton_normalization_checks.py` to verify one-slot
-  vanishing, mixed-trace normalization, epsilon projection, rank-one source
-  removal, color-symmetric removal, and the four-slot determinant product.
+  vanishing, mixed-trace normalization, epsilon projection, the explicit
+  \(1/3\) counterexample to the factorized \(1/4\) shortcut, the
+  source-contracted shared projector, and the fact that a rank-one right pair
+  need not vanish before the remaining source/color contractions are imposed.
 - 2026-06-03 issue #712 source-typing repair: revised the four-fermion
   instanton chain so ordinary c-number external wave packets are not treated as
   a nonzero determinant of a rank-one matrix.  The chapter now separates

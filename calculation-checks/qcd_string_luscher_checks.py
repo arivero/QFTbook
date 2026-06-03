@@ -8,6 +8,8 @@ from fractions import Fraction
 
 import sympy as sp
 
+from check_utils import assert_lt as _assert_lt
+
 
 def assert_equal(name: str, got: Fraction, expected: Fraction) -> None:
     if got != expected:
@@ -15,8 +17,7 @@ def assert_equal(name: str, got: Fraction, expected: Fraction) -> None:
 
 
 def assert_less(name: str, left: Fraction, right: Fraction) -> None:
-    if not left < right:
-        raise AssertionError(f"{name} failed: expected {left} < {right}")
+    _assert_lt(name, left, right)
 
 
 def assert_zero(name: str, expr: sp.Expr) -> None:

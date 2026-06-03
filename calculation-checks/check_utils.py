@@ -51,6 +51,36 @@ def assert_close(
         )
 
 
+def assert_leq(
+    name: str,
+    actual: Any,
+    bound: Any,
+    tol: Any = 0.0,
+) -> None:
+    """Assert a finite scalar upper bound with an optional tolerance."""
+
+    if tol < 0.0:
+        raise AssertionError(f"{name}: negative tolerance")
+    assert_finite(f"{name} actual", actual)
+    assert_finite(f"{name} bound", bound)
+    assert_finite(f"{name} tolerance", tol)
+    if actual > bound + tol:
+        raise AssertionError(f"{name}: got {actual!r}, bound {bound!r}, tolerance {tol!r}")
+
+
+def assert_lt(
+    name: str,
+    actual: Any,
+    bound: Any,
+) -> None:
+    """Assert a finite strict scalar upper bound."""
+
+    assert_finite(f"{name} actual", actual)
+    assert_finite(f"{name} bound", bound)
+    if not actual < bound:
+        raise AssertionError(f"{name}: expected {actual!r} < {bound!r}")
+
+
 def assert_array_close(
     name: str,
     actual: Any,
