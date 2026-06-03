@@ -70,6 +70,38 @@ def check_witten_veneziano_mass_coefficient() -> None:
     assert_zero("Witten-Veneziano coefficient", mass_squared - 2 * nf * chi / f**2)
 
 
+def check_theta_eta_curvature_matrix() -> None:
+    eta, theta, chi, f = sp.symbols("eta theta chi f", positive=True)
+    nf = sp.symbols("nf", positive=True, integer=True)
+
+    a = sp.sqrt(2 * nf) / f
+    potential = sp.Rational(1, 2) * chi * (theta - a * eta) ** 2
+    hessian = sp.Matrix(
+        [
+            [sp.diff(potential, theta, theta), sp.diff(potential, theta, eta)],
+            [sp.diff(potential, eta, theta), sp.diff(potential, eta, eta)],
+        ]
+    )
+    expected = chi * sp.Matrix([[1, -a], [-a, a**2]])
+    for row in range(2):
+        for col in range(2):
+            assert_zero(f"theta-eta Hessian entry {row}{col}", hessian[row, col] - expected[row, col])
+
+    assert_zero("theta-eta Hessian determinant", hessian.det())
+    null_vector = sp.Matrix([a, 1])
+    for row, entry in enumerate(hessian * null_vector):
+        assert_zero(f"theta-eta screening null vector row {row}", entry)
+
+    fixed_theta_mass = hessian[1, 1]
+    assert_zero("fixed-theta singlet mass coefficient", fixed_theta_mass - 2 * nf * chi / f**2)
+    schur_curvature = hessian[0, 0] - hessian[0, 1] * hessian[1, 0] / hessian[1, 1]
+    assert_zero("screened theta Schur complement", schur_curvature)
+
+    wrong_sign_potential = sp.Rational(1, 2) * chi * (theta + a * eta) ** 2
+    wrong_mixed = sp.diff(wrong_sign_potential, theta, eta)
+    assert_zero("wrong-sign mixed derivative differs by 2 a chi", wrong_mixed - hessian[0, 1] - 2 * a * chi)
+
+
 def check_massless_quark_theta_screening() -> None:
     eta, theta, chi, f = sp.symbols("eta theta chi f", positive=True)
     nf_value = sp.Integer(3)
@@ -133,6 +165,7 @@ def main() -> None:
     check_finite_volume_cumulant_identity()
     check_cp_symmetric_first_moment()
     check_witten_veneziano_mass_coefficient()
+    check_theta_eta_curvature_matrix()
     check_massless_quark_theta_screening()
     check_periodic_branch_relabeling()
     check_branch_mixture_cluster_covariance()

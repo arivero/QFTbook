@@ -185,6 +185,12 @@
   full massless-QCD topological susceptibility vanishes after \(\eta_0\) is
   minimized, so \(\chi_{\rm YM}\) must not be confused with the full-QCD
   susceptibility.
+- The same matching is now expressed as the local \((\theta,\eta_0)\)
+  curvature matrix
+  \(\chi_{\rm YM}\begin{psmallmatrix}1&-a\\-a&a^2\end{psmallmatrix}\),
+  \(a=\sqrt{2N_f}/f_\pi\).  This records the screening null direction, the
+  fixed-\(\theta\) singlet mass coefficient, and the mixed-derivative sign of
+  the anomaly-invariant coordinate.
 - The leading pion Lagrangian is the invariant two-derivative functional of
   the \(SU(N_f)\)-valued Goldstone field and external flavor backgrounds.
 - The non-singlet axial-current Ward identity with one current insertion and
@@ -392,3 +398,9 @@
   power-counting slogan.  Extended `chpt_nlo_checks.py` to verify the
   topological Weinberg graph identity, the NLO retained graph inventory, and
   the first \(O(p^6)\) omitted-family budget.
+- 2026-06-03 issue #630 theta/Witten--Veneziano pass: added the local
+  \((\theta,\eta_0)\) curvature-matrix ledger, tying the finite-regulator
+  susceptibility sign from Chapter 20 to the singlet mass, screening Schur
+  complement, and anomaly-coordinate mixed derivative.  Extended
+  `qcd_theta_witten_veneziano_checks.py` with exact symbolic checks of these
+  identities.

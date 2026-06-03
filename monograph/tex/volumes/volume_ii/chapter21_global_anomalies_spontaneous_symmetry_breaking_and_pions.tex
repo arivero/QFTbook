@@ -1370,6 +1370,49 @@ The kinetic term
 \(\operatorname{Tr}(T^0T^0)=1/2\).  The displayed coefficient is therefore the
 mass squared.
 
+\paragraph{Theta-curvature matrix and the screening direction.}
+The finite-regulator cumulant identity
+\eqref{eq:finite-volume-topological-susceptibility} fixes the sign of the
+pure Yang--Mills curvature:
+\[
+  \chi_{\rm YM}=E_{\rm YM}''(0)\ge0
+\]
+when the limit exists in a CP-invariant branch.  In the local singlet chart set
+\[
+  a:=\frac{\sqrt{2N_f}}{f_\pi},
+  \qquad
+  V(\theta,\eta_0)
+  =
+  \frac12\chi_{\rm YM}(\theta-a\eta_0)^2 .
+\]
+The Hessian in the coordinate pair \((\theta,\eta_0)\) is the rank-one matrix
+\begin{equation}
+  H_{\theta,\eta}
+  =
+  \chi_{\rm YM}
+  \begin{pmatrix}
+    1&-a\\
+    -a&a^2
+  \end{pmatrix}.
+  \label{eq:theta-eta0-curvature-matrix}
+\end{equation}
+Thus \(H_{\theta,\eta}(a,1)^T=0\): shifting \(\theta\) and \(\eta_0\) together
+so that \(\theta-a\eta_0\) is fixed is the massless-quark screening direction.
+By contrast, the fixed-\(\theta\) curvature in the \(\eta_0\) direction is
+\[
+  \partial_{\eta_0}^2V|_{\theta=0}
+  =
+  a^2\chi_{\rm YM}
+  =
+  \frac{2N_f}{f_\pi^2}\chi_{\rm YM},
+\]
+which is exactly the mass coefficient in
+\eqref{eq:witten-veneziano-chiral-limit}.  The mixed derivative
+\(\partial_\theta\partial_{\eta_0}V=-a\chi_{\rm YM}\) records the sign of the
+anomaly-invariant coordinate
+\(\theta-\ii\log\det\widehat U\); reversing that sign would give the same
+positive mass but the opposite singlet screening convention.
+
 \begin{remark}[Why this does not contradict massless-quark theta independence]
 \label{rem:massless-quark-theta-independence-wv}
 If the quark masses vanish and \(\eta_0\) is included as a dynamical field,

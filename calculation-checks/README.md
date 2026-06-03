@@ -301,7 +301,10 @@ Current checks:
   susceptibility cumulant identity, CP-symmetric first moment, theta
   periodicity by branch relabeling, branch-mixture cluster covariance,
   thermodynamic branch selection, massless-quark theta screening, and the
-  Witten--Veneziano mass coefficient.
+  Witten--Veneziano mass coefficient.  It also verifies the local
+  \((\theta,\eta_0)\) curvature matrix, its screening null vector, the
+  screened theta Schur complement, and the sign-sensitive mixed derivative
+  fixed by the anomaly-invariant coordinate.
 - `qcd_hqet_checks.py`: finite algebra checks for the Volume II HQET
   Wilson-line section, including the mostly-plus heavy-velocity spin
   projectors, the transverse covariant-derivative projector, residual-momentum
