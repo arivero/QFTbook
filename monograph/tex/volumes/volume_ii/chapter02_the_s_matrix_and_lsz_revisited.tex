@@ -75,6 +75,149 @@ therefore a crossed-channel timelike invariant, not a physical
 \end{definition}
 
 
+\section{Cross-Volume Scattering Architecture}
+\label{sec:cross-volume-scattering-architecture}
+
+The scattering chapters use several inequivalent objects.  This section is a
+routing convention for those objects before the detailed chapters branch
+apart.  Its main rule is that an amplitude, an inclusive rate, a detector
+distribution, and a resonance pole are different outputs of different
+hypotheses.  A formula may connect two of them only after the hypotheses on
+both sides have been stated.
+
+\begin{definition}[Status labels for scattering constructions]
+\label{def:scattering-status-labels}
+In this part the following labels have fixed meanings.
+\begin{enumerate}
+  \item A \emph{theorem} is a statement proved from the stated Hilbert-space,
+  locality, spectral, and domain hypotheses.
+  \item A \emph{conditional theorem} is a theorem after additional analytic
+  hypotheses have been supplied, for example a factorization, asymptotic
+  completeness, or convergence assumption.
+  \item A \emph{regulated construction} is a finite-cutoff or perturbative
+  object with a specified regulator and subtraction prescription.
+  \item \emph{Numerical evidence} is a finite-volume, lattice, bootstrap, or
+  Monte Carlo datum that supports but does not replace the continuum
+  construction.
+  \item An \emph{open problem} is a required bridge whose hypotheses,
+  convergence, or physical state-space construction are not supplied in this
+  monograph.
+\end{enumerate}
+\end{definition}
+
+\paragraph{Framework matrix.}
+\begin{description}
+  \item[Massive Haag--Ruelle/LSZ.]
+  The primary objects are the in/out maps, the scattering operator, and the
+  external residues used to extract amplitudes.  The input is a mass gap or
+  isolated shell, local fields or almost-local creators, velocity separation,
+  and distributional time
+  ordering.  Under those hypotheses this is a theorem producing wave-packet
+  \(S\)-matrix elements and invariant amplitudes.  It stops when charged
+  sectors, confinement, or massless thresholds remove the isolated particle
+  shell.
+  \item[Charged QED and long-range sectors.]
+  The primary objects are dressed hard states, the soft photon cloud, and an
+  inclusive detector resolution.  The input is Gauss-law flux, the massless
+  photon spectrum, an infrared cutoff or detector resolution, and a dressing
+  or inclusive prescription.  This gives conditional perturbative and
+  algebraic constructions.  The exact charged electron is not an ordinary LSZ
+  particle of the massless theory; inclusive rates or dressed matrix elements
+  replace bare charged \(S\)-matrix kernels.
+  \item[Detector and event-shape observables.]
+  The primary observables are event-shape distributions and energy-flow
+  measures.  Light-ray detector products give one operator realization.  The
+  input is an outgoing physical state space, a positive detector measure, a
+  contact convention, and either IRC safety or a declared nonperturbative
+  function.  The output is an observable distribution rather than an amplitude.
+  Perturbative kernels enter only after matching, subtraction, and detector
+  limits have been fixed.
+  \item[Analytic \(S\)-matrix and resonances.]
+  The primary objects are partial waves, dispersion relations, and
+  second-sheet poles.  The input is a previously constructed amplitude,
+  unitarity, crossing domain, spectral condition, and analyticity
+  assumptions.  This gives a conditional analytic continuation of amplitudes.
+  Resonance poles encode unstable states; they are not normalizable
+  asymptotic particles.
+  \item[Confining gauge theory and QCD factorization.]
+  The primary objects are hadronic cross sections, PDFs, TMDs, jets, and
+  energy correlators.  The input is color-singlet external states, operator
+  definitions, factorization, Glauber status, power counting, and a detector
+  or parton-density scheme.  The output is a conditional factorized
+  observable.  Colored partonic amplitudes are short-distance coordinates,
+  not physical external \(S\)-matrix elements.
+  \item[Integrable two-dimensional scattering.]
+  The primary objects are factorized scattering functions, form factors, and
+  TBA data.  The input is elastic factorization, Yang--Baxter constraints,
+  locality axioms for form factors, convergence, and completeness assumptions.
+  The output is exact algebraic and thermodynamic data.  Reconstruction of
+  local observables and local algebras is a separate analytic bridge.
+\end{description}
+
+\paragraph{Massive route.}
+In a massive theory with a stable isolated one-particle shell, the route is:
+local fields and spectrum; Haag--Ruelle wave operators
+\(\Omega_{\rm in/out}\); the scattering operator \(S\); the invariant
+amplitude \(\mathcal M\); and finally the cross section \(\sigma\).
+The first arrow is Haag--Ruelle theory
+(Chapters~\ref{ch:haag-ruelle} and
+\ref{ch:volume-iv-haag-ruelle-mathematical-scattering}).  The second is the
+definition of the scattering operator.  The third is LSZ residue extraction
+(Chapter~\ref{ch:lsz-reduction} and this chapter).  The fourth is phase-space
+integration with the flux and normalization conventions of
+Chapter~\ref{ch:cross-sections-unitarity}.  Analytic continuation, partial
+waves, and resonance poles may then be studied in
+Chapters~\ref{ch:volume-ii-resonances-dressed-propagators} and
+\ref{ch:volume-ii-07}, but those analytic objects start from the amplitude
+already obtained on the physical sheet.
+
+\paragraph{Charged QED route.}
+In massless QED the charged sector does not satisfy the massive LSZ input.
+Gauss-law flux and arbitrarily soft photons change the spectral support of a
+charged state, so the bare electron Green-function residue is not an exact
+one-particle \(S\)-matrix coordinate of the full theory.  The route is
+instead: a hard charged process; soft dressing or an inclusive sum; and a
+detector-resolved rate.
+Chapter~\ref{ch:qed-external-states} fixes external-state conventions for
+regulated perturbative calculations.  Chapter~\ref{ch:volume-ii-infrared-inclusive-qed}
+then supplies the inclusive and dressed replacements.  A perturbative hard
+amplitude remains useful, but only as an ingredient in the resolution
+dependent observable after the soft sector has been attached.
+
+\paragraph{Detector and QCD route.}
+For QCD event shapes and energy correlators the physical object is a
+color-singlet detector distribution.  The route is: a current or hadron
+source; factorized operator data; jet, soft, or parton-density functions; and
+the detector measure.
+Chapter~\ref{ch:volume-ii-19} gives the QCD operator and factorization
+layers, Chapter~\ref{ch:jets-ir-safe-observables-hadronization} develops
+event shapes, track functions, and hadronization coordinates, and
+Chapter~\ref{ch:cft-light-ray-energy-correlators} supplies the conformal
+light-ray and detector-algebra comparison.  A partonic amplitude or splitting
+kernel is a short-distance coordinate inside this route.  It becomes a
+physical prediction only after the observable, subtraction scheme, Glauber
+status, endpoint/contact convention, and nonperturbative inputs have been
+declared.
+
+\paragraph{Map and non-map ledger.}
+The following implications are used in later chapters.
+\begin{enumerate}
+  \item Haag--Ruelle plus LSZ hypotheses give massive wave-packet amplitudes.
+  \item Massive amplitudes plus analyticity hypotheses give partial waves,
+  dispersion relations, and resonance poles.
+  \item A charged hard process plus soft or inclusive data gives
+  infrared-safe charged rates.
+  \item QCD operator definitions plus factorization data give detector and
+  event-shape distributions.
+\end{enumerate}
+The converse arrows are absent without extra hypotheses.  A detector
+distribution does not determine a unique amplitude; a resonance pole does not
+produce an asymptotic particle vector; an inclusive QED rate does not restore
+a bare charged LSZ state; a finite partonic or lattice check does not supply
+the continuum factorization or reconstruction theorem.  This ledger is the
+cross-volume convention used whenever the later chapters compare these
+languages.
+
 \section{Scattering Operator and Kernel Notation}
 
 This chapter fixes the distributional kernel notation used in the analytic

@@ -56,6 +56,12 @@
   Euclidean reconstructed distributions after OS/analytic-continuation
   hypotheses, or formal/regulator-dependent perturbative coefficients.  No
   path integral defines the Haag--Ruelle \(S\)-operator.
+- The chapter now opens a cross-volume scattering architecture section:
+  massive Haag--Ruelle/LSZ amplitudes, charged QED inclusive/dressed
+  observables, detector/event-shape distributions, analytic \(S\)-matrix
+  continuations, confining QCD factorization, and integrable factorized
+  scattering are compared by their primary objects, inputs, outputs, and
+  failure modes.
 - The physical cluster theorem is stated with the quantitative estimate needed
   to pass from finite-time almost-local products to Haag--Ruelle scattering
   states.
@@ -114,6 +120,16 @@
 - The physical equal-mass \(s\)-channel has \(s\ge4m^2\) and \(t,u\le0\);
   positive \(t\) or \(u\) in crossing and fixed-\(t\) arguments denotes a
   crossed-channel timelike invariant.
+- The cross-volume architecture records three end-to-end routes:
+  massive local fields to Haag--Ruelle wave operators, LSZ amplitudes, and
+  cross sections; hard charged QED processes to soft/inclusive
+  detector-resolved rates; and QCD sources to factorized operator data,
+  jet/soft/parton-density functions, and detector measures.
+- The same architecture states non-maps used later: detector distributions do
+  not determine unique amplitudes, resonance poles do not supply asymptotic
+  particle vectors, inclusive QED rates do not restore bare charged LSZ
+  states, and finite partonic or lattice checks do not supply continuum
+  factorization or reconstruction theorems.
 - 2026-05-25 issue #446 pass: removed the boxed LSZ restatement from the
   chapter, retained only the kernel-use paragraph pointing to
   Theorem~\ref{thm:lsz-wave-packet}, and changed the Haag--Ruelle input to the
@@ -135,7 +151,10 @@
 - No perturbative formula for a specific interaction.
 - No bound-state or resonance derivation.
 - No dispersion relation.
-- No infrared-inclusive or dressed charged scattering construction.
+- No new infrared-inclusive, dressed charged, QCD factorization, detector, or
+  integrable reconstruction construction; the new section is a status and
+  routing layer pointing to the chapters where those constructions are
+  developed.
 
 ## Audit Notes
 
@@ -150,3 +169,13 @@
 - 2026-05-24 issue #435 pass: added the part-wide mostly-plus Mandelstam
   convention and physical-region sign statement before the analytic chapters
   use \(s,t,u\).
+- 2026-06-03 issue #732 scattering architecture pass: added
+  Section~\ref{sec:cross-volume-scattering-architecture}, a cross-volume
+  comparison and status ledger that distinguishes amplitudes, inclusive
+  charged rates, detector distributions, analytic continuations, QCD
+  factorized observables, and integrable exact data.  This is architecture and
+  theorem-boundary work, not a new physical gluing or reconstruction theorem.
+  It coordinates the live detector/light-ray (#519), jet-substructure (#526),
+  charged scattering (#527), and QCD-factorization (#630) lanes by routing
+  later claims through the same status matrix instead of duplicating their
+  detailed content here.
