@@ -28,9 +28,11 @@ relations
     the heat-kernel logarithm in the nonzero-mode determinant carries the
     vector-plus-ghost 11 C_A/3 coefficient, the Dirac matter subtraction, and
     cancels the cutoff-scale dependence of the bare instanton exponential
-    the BPST fundamental zero-mode envelope has finite zeroth moment, an
-    exact momentum-space form factor, a power-law tail, and a
-    logarithmically infrared-sensitive second moment
+    the BPST fundamental zero-mode density envelope has finite zeroth moment,
+    an exact momentum-space form factor, a power-law tail, and a
+    logarithmically infrared-sensitive second moment, while the individual
+    singular-gauge zero-mode slot form factor is normalized at zero momentum
+    and has the large-momentum tail 3/(4t^3)
     external-leg amputation removes only source-slot propagator residues from
     differentiated linear source matrices, and row/column residues from an
     independent bilinear source matrix
@@ -43,7 +45,9 @@ relations
     gauge-invariant source-overlap matrices, while hadronic pole residues are
     separate external spectral data
     hard external momenta convert the Nf=2 four-fermion size integral into a
-    Q^(-2) coefficient and exponentially suppress the large-rho endpoint
+    Q^(-2) coefficient; fused bilinear density sources exponentially suppress
+    the large-rho endpoint, while individual fermion slots obey the power test
+    b0+1-3m<-1
     trading the one-loop action for Lambda_ht gives the full hard scaling
     Lambda_ht^b0 Q^(-b0-2), with net coefficient dimension -2
     mass-saturated QCD vacuum activity carries prod_f(m_f rho), depends on
@@ -930,6 +934,48 @@ def check_instanton_zero_mode_tail_local_limit() -> None:
         Fraction(3, 8),
     )
 
+    # The individual singular-gauge zero-mode slot is different from the fused
+    # density h_rho.  Its standard scalar form factor is
+    # F_zm(t)=-t d_t[I0(t)K0(t)-I1(t)K1(t)]
+    #       =2t(I0K1-I1K0)-2I1K1, t=rho |p|/2.
+    # At small t, I0K1 contributes 1/t and I1K1 contributes 1/2, so F_zm(0)=1.
+    small_t_first_term = Fraction(2)
+    small_t_second_term = Fraction(-1)
+    assert_equal(
+        "individual zero-mode form-factor normalization",
+        small_t_first_term + small_t_second_term,
+        Fraction(1),
+    )
+
+    # Large-t asymptotics of the products, after removing their common 1/(2t),
+    # are checked through the first nonzero term of F_zm.  In
+    # F_n = (I0K1)_n - (I1K0)_n - (I1K1)_{n-1}, the n=0,1,2 coefficients cancel
+    # and the n=3 coefficient is 3/4.
+    i0k1 = [Fraction(1), Fraction(1, 2), Fraction(0), Fraction(3, 16)]
+    i1k0 = [Fraction(1), Fraction(-1, 2), Fraction(0), Fraction(-3, 16)]
+    i1k1 = [Fraction(1), Fraction(0), Fraction(-3, 8)]
+    individual_large_coefficients = []
+    for order in range(4):
+        coefficient = i0k1[order] - i1k0[order]
+        if order >= 1:
+            coefficient -= i1k1[order - 1]
+        individual_large_coefficients.append(coefficient)
+    assert_equal(
+        "individual zero-mode form-factor large-t cancellations",
+        individual_large_coefficients[:3],
+        [Fraction(0), Fraction(0), Fraction(0)],
+    )
+    assert_equal(
+        "individual zero-mode form-factor t^-3 coefficient",
+        individual_large_coefficients[3],
+        Fraction(3, 4),
+    )
+    assert_equal(
+        "individual zero-mode form-factor z^-3 coefficient",
+        individual_large_coefficients[3] * 8,
+        Fraction(6),
+    )
+
     # Momentum-dependent source entries carry the form factor before the
     # flavor Berezin determinant is taken.
     source_matrix = [[Fraction(2), Fraction(3)], [Fraction(5), Fraction(7)]]
@@ -1319,29 +1365,42 @@ def check_hard_momentum_instanton_size_window() -> None:
         Fraction(-2),
     )
 
-    # In the differentiated linear-source version the hard endpoint cutoff is
-    # supplied by the product of the individual zero-mode form factors.  In the
-    # fused bilinear-source specialization the same check applies to the two
-    # density form factors z K_1(z).
-    linear_form_factor_scales = [Fraction(3), Fraction(5), Fraction(2), Fraction(7)]
+    # In the fused bilinear-source specialization the density form factors
+    # z K_1(z) give exponential large-rho suppression.
     bilinear_density_scales = [Fraction(3), Fraction(5)]
-    linear_hard_cutoff = sum(linear_form_factor_scales)
     bilinear_hard_cutoff = sum(bilinear_density_scales)
-    assert_equal("hard linear-source exponential scale", linear_hard_cutoff, Fraction(17))
     assert_equal("hard bilinear-density exponential scale", bilinear_hard_cutoff, Fraction(8))
 
     def large_rho_status(transfer_sum: Fraction) -> str:
         return "exponential_cutoff" if transfer_sum > 0 else "no_form_factor_cutoff"
 
     assert_equal(
-        "hard linear-source term has large-rho cutoff",
-        large_rho_status(linear_hard_cutoff),
+        "hard bilinear-density term has exponential large-rho cutoff",
+        large_rho_status(bilinear_hard_cutoff),
         "exponential_cutoff",
     )
+
+    # Individual singular-gauge fermion zero-mode slots have only the power tail
+    # F_zm(c Q rho/2) ~ (Q rho)^(-3).  The four-slot Nf=2 SU(3) hard kernel has
+    # large-rho integrand power b0+1-12=-4/3, hence a positive convergence
+    # margin 1/3.  If one slot is soft, only three hard powers remain and the
+    # same one-loop size integral is not controlled by the hard source profile.
+    individual_slot_tail_power = Fraction(-3)
+    hard_slot_count = 4
+    large_rho_power = integrand_power + individual_slot_tail_power * hard_slot_count
+    large_rho_margin = Fraction(-1) - large_rho_power
+    assert_equal("hard individual-slot large-rho power", large_rho_power, Fraction(-4, 3))
+    assert_equal("hard individual-slot large-rho margin", large_rho_margin, Fraction(1, 3))
+    assert_equal("hard individual-slot b0 threshold", 3 * hard_slot_count - 2, 10)
+    assert_equal("hard individual-slot b0 threshold margin", Fraction(10) - b0, Fraction(1, 3))
+
+    soft_slot_count = 3
+    soft_large_rho_power = integrand_power + individual_slot_tail_power * soft_slot_count
+    assert_equal("soft individual-slot large-rho power", soft_large_rho_power, Fraction(5, 3))
     assert_equal(
-        "zero-momentum source term lacks hard cutoff",
-        large_rho_status(Fraction(0)),
-        "no_form_factor_cutoff",
+        "soft individual-slot term fails hard large-rho test",
+        soft_large_rho_power < -1,
+        False,
     )
 
     # The mass-saturated vacuum integral has no hard form factor; with the same

@@ -415,8 +415,11 @@ Current checks:
   source-differentiated four-fermion instanton amplitudes, the regression that a
   c-number external-wave-packet outer product has zero determinant while the
   differentiated Grassmann source coefficient is nonzero, the BPST zero-mode
-  envelope momentum form factor \(zK_1(z)\), tail, and logarithmically sensitive
-  second moment in the local-bilinear limit, the source-slot and bilinear
+  density-envelope momentum form factor \(zK_1(z)\), tail, and logarithmically
+  sensitive second moment in the local-bilinear limit, the individual
+  singular-gauge zero-mode slot form factor
+  \(F_{\rm zm}(t)=-t\partial_t(I_0K_0-I_1K_1)\) and its \(3/(4t^3)\) hard tail,
+  the source-slot and bilinear
   row/column algebra showing that external-leg amputation removes adjacent
   propagator residues while retaining the selected instanton zero-mode form
   factors, the plane-wave four-fermion assembly in which the differentiated
@@ -426,10 +429,13 @@ Current checks:
   algebra which keeps source-to-zero-mode overlaps and hadronic pole residues
   separate from the hard instanton kernel, the hard-momentum size-window scaling
   that gives the \(N_f=2\) four-fermion coefficient its \(Q^{-2}\) behavior
-  at \(\mu=Q\), the one-loop RG-invariant rewrite
-  \(\Lambda_{\rm ht}^{b_0}Q^{-b_0-2}\) of the same hard coefficient while
-  exponentially cutting off large instantons, the mass-saturated
-  vacuum-activity size integral with its \(\prod_f(m_f\rho)\) zero-mode factors,
+  at \(\mu=Q\), the large-\(\rho\) endpoint distinction between exponential
+  fused-density suppression and the individual-slot power test
+  \(b_0+1-3m<-1\), the one-loop RG-invariant rewrite
+  \(\Lambda_{\rm ht}^{b_0}Q^{-b_0-2}\) of the same hard coefficient with the
+  large-size endpoint controlled by the selected form-factor mechanism, the
+  mass-saturated vacuum-activity size integral with its
+  \(\prod_f(m_f\rho)\) zero-mode factors,
   small-\(\rho\) finiteness margin, large-\(\rho\) obstruction, and
   massless-flavor vanishing, the
   dilute instanton-gas theta cumulants \(\chi_{\rm top}=2\zeta\) and
