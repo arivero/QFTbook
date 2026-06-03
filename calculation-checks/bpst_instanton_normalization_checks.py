@@ -77,8 +77,8 @@ relations
     coefficient after operator, mass/source, and zero-mode factors are
     restricted to the instanton zero-mode subspace, giving the full flavor
     determinant, the two-flavor scalar/pseudoscalar channel decomposition, the
-    induced local source-curvature splittings, and the theta+arg det M phase
-    combination
+    induced local source-curvature splittings, their anomalous axial Ward
+    ledger, and the theta+arg det M phase combination
     Uhlenbeck boundary faces have the expected codimensions and product
     power-counting integrability thresholds
     the k=1 ADHM quotient has orientation dimension 4N-5 and cone
@@ -971,6 +971,74 @@ def check_two_flavor_instanton_source_curvature() -> None:
     # remains proportional to the finite local instanton activity.
     assert_equal("theta-zero CP-odd mixing vanishes", -kappa * 0, Fraction(0))
     assert_equal("theta-zero pion-delta splitting", 2 * kappa, Fraction(34, 19))
+
+
+def check_two_flavor_instanton_source_ward_ledger() -> None:
+    kappa = Fraction(17, 19)
+    cos_theta = Fraction(5, 7)
+    sin_theta = Fraction(11, 13)
+    s0 = Fraction(2)
+    s_vec = [Fraction(3), Fraction(5), Fraction(7)]
+    p0 = Fraction(11)
+    p_vec = [Fraction(13), Fraction(17), Fraction(19)]
+
+    channel_a = s0 * s0 - sum(x * x for x in s_vec) - p0 * p0 + sum(x * x for x in p_vec)
+    channel_b = s0 * p0 - sum(s * p for s, p in zip(s_vec, p_vec))
+
+    delta_s0 = 2 * p0
+    delta_s_vec = [2 * p for p in p_vec]
+    delta_p0 = -2 * s0
+    delta_p_vec = [-2 * s for s in s_vec]
+    delta_a = (
+        2 * s0 * delta_s0
+        - 2 * sum(s * ds for s, ds in zip(s_vec, delta_s_vec))
+        - 2 * p0 * delta_p0
+        + 2 * sum(p * dp for p, dp in zip(p_vec, delta_p_vec))
+    )
+    delta_b = (
+        delta_s0 * p0
+        + s0 * delta_p0
+        - sum(ds * p + s * dp for s, ds, p, dp in zip(s_vec, delta_s_vec, p_vec, delta_p_vec))
+    )
+    assert_equal("two-flavor axial source variation of A", delta_a, 8 * channel_b)
+    assert_equal("two-flavor axial source variation of B", delta_b, -2 * channel_a)
+
+    theta_variation = 4 * kappa * (
+        -sin_theta * channel_a / 2 - cos_theta * channel_b
+    )
+    source_variation = kappa * (
+        cos_theta * delta_a / 2 - sin_theta * delta_b
+    )
+    assert_equal(
+        "two-flavor instanton source Ward identity",
+        theta_variation + source_variation,
+        Fraction(0),
+    )
+
+    # For each axial pair W=epsilon*kappa[(cos theta/2)(s^2-p^2)-sin theta sp].
+    # The singlet pair has epsilon=+1; a triplet pair has epsilon=-1.
+    for label, epsilon in [("singlet", Fraction(1)), ("triplet", Fraction(-1))]:
+        chi_s = epsilon * kappa * cos_theta
+        chi_p = -epsilon * kappa * cos_theta
+        mixing = -epsilon * kappa * sin_theta
+        dtheta_chi_s = -epsilon * kappa * sin_theta
+        dtheta_chi_p = epsilon * kappa * sin_theta
+        dtheta_mixing = -epsilon * kappa * cos_theta
+        assert_equal(f"{label} Ward dtheta chi_s", dtheta_chi_s, mixing)
+        assert_equal(f"{label} Ward dtheta chi_p", dtheta_chi_p, -mixing)
+        assert_equal(
+            f"{label} Ward curvature difference",
+            chi_s - chi_p,
+            -2 * dtheta_mixing,
+        )
+
+    theta_zero_triplet_delta = -kappa
+    theta_zero_triplet_pion = kappa
+    assert_equal(
+        "triplet Ward ledger matches positive pion-delta order",
+        theta_zero_triplet_pion - theta_zero_triplet_delta,
+        2 * kappa,
+    )
 
 
 def check_fermion_determinant_zero_mode_nonzero_mode_factorization() -> None:
@@ -2278,6 +2346,7 @@ def main() -> None:
     check_physical_instanton_correlator_zero_mode_saturation()
     check_two_flavor_thooft_channel_decomposition()
     check_two_flavor_instanton_source_curvature()
+    check_two_flavor_instanton_source_ward_ledger()
     check_fermion_determinant_zero_mode_nonzero_mode_factorization()
     check_instanton_mass_source_rg_transport()
     check_proper_time_fluctuation_four_fermion_amplitude()

@@ -4679,6 +4679,104 @@ the color-singlet spectral representation, long-distance matrix elements, and
 the continuum/volume limits in the chosen QCD phase.
 \end{controlledapproximation}
 
+\begin{proposition}[Axial Ward ledger for the instanton source curvatures]
+\label{prop:two-flavor-instanton-source-ward-ledger}
+The local two-flavor instanton source functional
+\eqref{eq:two-flavor-instanton-source-curvature-functional} obeys the
+finite-dimensional anomalous singlet-axial Ward identity
+\begin{equation}
+  \left[
+    4\partial_\theta
+    +2p_0\partial_{s_0}
+    +2\sum_{a=1}^{3}p_a\partial_{s_a}
+    -2s_0\partial_{p_0}
+    -2\sum_{a=1}^{3}s_a\partial_{p_a}
+  \right]
+  \mathcal W_{\rm inst}^{(2)}
+  =
+  O(J^3,\partial J).
+  \label{eq:two-flavor-instanton-source-ward-identity}
+\end{equation}
+Here the source coordinates transform as the mass/source spurions in the
+finite-regulator path integral:
+\[
+  \delta_\alpha S=2\alpha P,\qquad
+  \delta_\alpha P=-2\alpha S,\qquad
+  \delta_\alpha\theta=4\alpha .
+\]
+Thus the same anomalous Jacobian which shifts \(\theta\) also rotates the
+local scalar and pseudoscalar source coordinates.  The susceptibility
+splittings in
+\eqref{eq:two-flavor-instanton-u1a-susceptibility-splitting} are the
+second-source derivatives of the same anomalous Ward identity which produces
+the 't Hooft vertex.
+
+More explicitly, for each paired coordinate \(s,p\), with \(s=s_0,p=p_0\)
+or \(s=s_a,p=p_a\), define
+\[
+  \chi_s=\partial_s^2\mathcal W_{\rm inst}^{(2)},\qquad
+  \chi_p=\partial_p^2\mathcal W_{\rm inst}^{(2)},\qquad
+  m_{sp}=\partial_s\partial_p\mathcal W_{\rm inst}^{(2)}
+\]
+at zero source.  Then the differentiated Ward identity gives
+\begin{equation}
+  \partial_\theta\chi_s=m_{sp},\qquad
+  \partial_\theta\chi_p=-m_{sp},\qquad
+  \chi_s-\chi_p=-2\,\partial_\theta m_{sp}.
+  \label{eq:two-flavor-instanton-curvature-ward-relations}
+\end{equation}
+For the singlet pair this is the \((\sigma,\eta)\) relation; for a triplet
+pair it is the \((\delta_a,\pi_a)\) relation, so reversing the order of the
+difference gives the positive \(\pi_a-\delta_a\) splitting displayed above.
+\end{proposition}
+
+\begin{proof}
+Under an infinitesimal singlet axial rotation,
+\(S+\ii P\mapsto (1-2\ii\alpha)(S+\ii P)\), which gives
+\(\delta S=2\alpha P\) and \(\delta P=-2\alpha S\).  The anomaly shifts the
+source-sector theta coordinate by \(\delta\theta=4\alpha\) for \(N_f=2\).
+Consequently the infinitesimal Ward vector field is the operator displayed in
+\eqref{eq:two-flavor-instanton-source-ward-identity}.
+
+Let
+\[
+  A=s_0^2-\vec s^{\,2}-p_0^2+\vec p^{\,2},
+  \qquad
+  B=s_0p_0-\vec s\cdot\vec p .
+\]
+The source rotation gives
+\[
+  \delta_\alpha A=8\alpha B,\qquad
+  \delta_\alpha B=-2\alpha A .
+\]
+The theta derivative of the quadratic part of
+\eqref{eq:two-flavor-instanton-source-curvature-functional} contributes
+\[
+  4\alpha\,\kappa_{\rm inst}^{(2)}
+  \left[-\frac{\sin\theta}{2}A-\cos\theta\,B\right],
+\]
+whereas the source rotation contributes
+\[
+  \kappa_{\rm inst}^{(2)}
+  \left[4\alpha\cos\theta\,B+2\alpha\sin\theta\,A\right].
+\]
+The two terms cancel, proving
+\eqref{eq:two-flavor-instanton-source-ward-identity} to the declared local
+order.
+
+Now apply \(\partial_s^2\), \(\partial_p^2\), and \(\partial_s\partial_p\) to
+the one-pair form of the Ward identity
+\((4\partial_\theta+2p\partial_s-2s\partial_p)\mathcal W=0\), and then set all
+sources to zero.  The three resulting identities are
+\[
+  4\partial_\theta\chi_s-4m_{sp}=0,\qquad
+  4\partial_\theta\chi_p+4m_{sp}=0,\qquad
+  4\partial_\theta m_{sp}+2\chi_s-2\chi_p=0,
+\]
+which are exactly
+\eqref{eq:two-flavor-instanton-curvature-ward-relations}.
+\end{proof}
+
 \begin{proposition}[Mixed mass-source expansion of the instanton determinant]
 \label{prop:instanton-mass-source-minor-expansion}
 In the same \(Q=1\) QCD zero-mode sector, let \(M\) be the mass-overlap
