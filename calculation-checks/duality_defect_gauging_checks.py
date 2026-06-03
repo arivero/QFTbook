@@ -7,6 +7,8 @@ The corresponding chapter uses only finite algebra in several places:
   A_H tensor A_H = |H| A_H;
 * normal-subgroup gauging for A_3 normal in S_3 leaves an S_3/A_3 residual
   symmetry;
+* the finite gauging slab sum is the same regular-algebra/orbit-projector
+  mechanism as the dual-character projector on the gauged side;
 * orbifold pair-of-pants sectors obey g1 g2 = g3;
 * the S, T, and T^p line-lattice maps preserve the finite Dirac pairing.
 
@@ -18,11 +20,14 @@ equivalence.
 from __future__ import annotations
 
 from collections import Counter
+from fractions import Fraction
 from itertools import product
 
 Permutation = tuple[int, int, int]
 Charge = tuple[int, int]
 Matrix = tuple[tuple[int, int], tuple[int, int]]
+RationalMatrix = list[list[Fraction]]
+RationalVector = list[Fraction]
 
 
 def assert_equal(name: str, got: object, expected: object) -> None:
@@ -55,6 +60,43 @@ def cyclic_group(n: int) -> list[int]:
     return list(range(n))
 
 
+def zero_matrix(size: int) -> RationalMatrix:
+    return [[Fraction(0) for _ in range(size)] for _ in range(size)]
+
+
+def mat_add(lhs: RationalMatrix, rhs: RationalMatrix) -> RationalMatrix:
+    return [
+        [left + right for left, right in zip(lhs_row, rhs_row)]
+        for lhs_row, rhs_row in zip(lhs, rhs)
+    ]
+
+
+def mat_mul(lhs: RationalMatrix, rhs: RationalMatrix) -> RationalMatrix:
+    size = len(lhs)
+    return [
+        [
+            sum(lhs[i][k] * rhs[k][j] for k in range(size))
+            for j in range(size)
+        ]
+        for i in range(size)
+    ]
+
+
+def mat_scale(scalar: Fraction, matrix: RationalMatrix) -> RationalMatrix:
+    return [[scalar * entry for entry in row] for row in matrix]
+
+
+def mat_vec_mul(matrix: RationalMatrix, vector: RationalVector) -> RationalVector:
+    return [sum(entry * value for entry, value in zip(row, vector)) for row in matrix]
+
+
+def translation_matrix(n: int, shift: int) -> RationalMatrix:
+    matrix = zero_matrix(n)
+    for h in range(n):
+        matrix[(h + shift) % n][h] = Fraction(1)
+    return matrix
+
+
 def regular_algebra_square_counts(group: list[object], multiply) -> Counter:
     counts: Counter = Counter()
     for g, h in product(group, repeat=2):
@@ -73,6 +115,79 @@ def check_regular_algebra_square() -> None:
     counts_s3 = regular_algebra_square_counts(group_s3, compose)
     assert_equal("S3 regular algebra support", set(counts_s3), set(group_s3))
     assert_equal("S3 regular algebra multiplicities", set(counts_s3.values()), {6})
+
+
+def check_gauging_projector_coordinate_comparison() -> None:
+    for n in range(2, 11):
+        regular_algebra = zero_matrix(n)
+        for shift in range(n):
+            regular_algebra = mat_add(regular_algebra, translation_matrix(n, shift))
+
+        assert_equal(
+            f"C_{n} regular algebra matrix square",
+            mat_mul(regular_algebra, regular_algebra),
+            mat_scale(Fraction(n), regular_algebra),
+        )
+
+        projector = mat_scale(Fraction(1, n), regular_algebra)
+        assert_equal(
+            f"C_{n} normalized slab sum is idempotent",
+            mat_mul(projector, projector),
+            projector,
+        )
+
+        invariant_vector = [Fraction(1) for _ in range(n)]
+        assert_equal(
+            f"C_{n} projector fixes invariant vector",
+            mat_vec_mul(projector, invariant_vector),
+            invariant_vector,
+        )
+
+        for h in range(1, n):
+            difference_vector = [Fraction(0) for _ in range(n)]
+            difference_vector[0] = Fraction(-1)
+            difference_vector[h] = Fraction(1)
+            assert_equal(
+                f"C_{n} projector kills nontrivial orbit difference {h}",
+                mat_vec_mul(projector, difference_vector),
+                [Fraction(0) for _ in range(n)],
+            )
+
+        dual_character_regular_algebra = zero_matrix(n)
+        dual_character_regular_algebra[0][0] = Fraction(n)
+        assert_equal(
+            f"C_{n} dual-character regular algebra square",
+            mat_mul(dual_character_regular_algebra, dual_character_regular_algebra),
+            mat_scale(Fraction(n), dual_character_regular_algebra),
+        )
+
+        dual_projector = mat_scale(Fraction(1, n), dual_character_regular_algebra)
+        assert_equal(
+            f"C_{n} dual-character projector idempotent",
+            mat_mul(dual_projector, dual_projector),
+            dual_projector,
+        )
+
+        for h in range(n):
+            character_exponents = Counter((character * h) % n for character in range(n))
+            if h == 0:
+                assert_equal(
+                    f"C_{n} dual-character sum at trivial holonomy",
+                    character_exponents,
+                    Counter({0: n}),
+                )
+            else:
+                multiplicities = set(character_exponents.values())
+                assert_equal(
+                    f"C_{n} dual-character nontrivial holonomy multiplicity",
+                    len(multiplicities),
+                    1,
+                )
+                assert_equal(
+                    f"C_{n} dual-character nontrivial holonomy has cancellation orbit",
+                    len(character_exponents) > 1,
+                    True,
+                )
 
 
 def sign(p: Permutation) -> int:
@@ -193,6 +308,7 @@ def check_quantum_dimensions() -> None:
 
 def main() -> None:
     check_regular_algebra_square()
+    check_gauging_projector_coordinate_comparison()
     check_a3_normal_and_quotient()
     check_orbifold_pair_of_pants_and_centralizers()
     check_line_lattice_pairing_preservation()

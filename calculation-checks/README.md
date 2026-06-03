@@ -1158,7 +1158,8 @@ Current checks:
 - `duality_defect_gauging_checks.py`: exact finite checks for the finite
   gauging and duality-defect chapter, including the regular algebra identity
   \(A_H\otimes A_H=|H|A_H\), normality of \(A_3\triangleleft S_3\), the
-  \(S_3/A_3\simeq\mathbb Z_2\) quotient multiplication, orbifold
+  normalized regular-algebra/orbit-sum projector, the dual-character holonomy
+  projector, \(S_3/A_3\simeq\mathbb Z_2\) quotient multiplication, orbifold
   pair-of-pants monodromy, centralizer sizes, and preservation of the
   electric-magnetic Dirac pairing by \(S\), \(T\), and \(T^p\).
 - `walker_wang_boundary_checks.py`: exact finite checks for the Walker--Wang

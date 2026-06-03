@@ -294,6 +294,72 @@ simple summand \(D_k\) appears with multiplicity \(|G|\), which gives
 \(|G|A_G\).
 \end{definition}
 
+\section{Mechanism Map For Finite Gauging}
+\label{sec:finite-gauging-mechanism-map}
+
+The same finite gauging operation appears in four coordinate systems in this
+chapter.  In the background-field coordinate it is the groupoid-cardinality sum
+\eqref{eq:finite-gauging-groupoid-sum}.  In the interface coordinate it is the
+wall \(\mathcal N_G\) and its reverse, whose slab fusion gives the regular
+algebra \(A_G\).  In the local-operator coordinate it is the passage from
+punctured-disk holonomy \(g\) to conjugacy classes and centralizer invariants.
+In the symmetry-TFT coordinate it is a boundary-changing operation: the
+ungauged boundary remembers \(G\)-backgrounds, while the gauged boundary
+condenses the finite symmetry algebra and exposes the quantum symmetry of the
+gauged theory.  These are not four independent principles; they are four
+readings of the same finite sum, after the anomaly trivialization and
+normalization have been chosen.
+
+For a finite Abelian subgroup \(H\), the comparison can be written without any
+continuum input.  Let \(V_H=\mathbb C[H]\) have basis \(e_h\), interpreted as a
+finite slab holonomy state, and let the original symmetry defect \(D_a\) act by
+translation,
+\[
+  D_a e_h=e_{a+h}.
+\]
+Then the regular algebra
+\[
+  A_H=\sum_{a\in H}D_a
+\]
+satisfies
+\begin{equation}
+  A_H e_h=\sum_{k\in H}e_k,\qquad
+  A_H^2=|H|A_H,\qquad
+  \Pi_H:=|H|^{-1}A_H,\qquad
+  \Pi_H^2=\Pi_H .
+  \label{eq:finite-gauging-projector-coordinate}
+\end{equation}
+Thus the normalized slab sum is the orbit-sum projector onto the \(H\)-invariant
+part.  This is the finite linear-algebra shadow of
+\(\mathcal N_H^\dagger\mathcal N_H=A_H\): fusing the two interfaces on the
+ungauged side projects by summing over the original symmetry line.
+
+The gauged side has the Fourier-dual description.  Its ordinary quantum
+symmetry is the character group \(\widehat H\).  On a holonomy sector \(e_h\),
+the character defect \(\widehat D_\chi\) acts by multiplication by \(\chi(h)\).
+The dual regular algebra therefore acts by
+\begin{equation}
+  \widehat A_H e_h
+  =
+  \sum_{\chi\in\widehat H}\chi(h)e_h
+  =
+  \begin{cases}
+    |H|e_0,& h=0,\\
+    0,& h\ne 0 .
+  \end{cases}
+  \label{eq:finite-gauging-dual-character-projector}
+\end{equation}
+Equations~\eqref{eq:finite-gauging-projector-coordinate}
+and~\eqref{eq:finite-gauging-dual-character-projector} are the two boundary
+coordinates of the same interface pair.  The first condenses the original
+\(H\)-symmetry defects; the second resolves the holonomy sectors by the dual
+character symmetry.  A self-duality equivalence
+\(\Phi:\mathcal Q/H\to\mathcal Q\), when it exists, identifies these two
+boundary descriptions as defects of one QFT.  The noninvertibility conclusion
+then follows from the regular algebra.  The existence of \(\Phi\), topological
+invariance of the interface, and reflection-positive state spaces are separate
+QFT inputs, not consequences of the finite Fourier calculation.
+
 \section{Orbifold Local Operators In Two Dimensions}
 
 For a two-dimensional QFT with finite internal symmetry \(G\), a local
