@@ -24,6 +24,10 @@ relations
     boson/ghost/fermion determinant powers and counterterm shifts
     the proper-time fluctuation determinant combines with the zero-mode
     source determinant to give the finite four-fermion instanton amplitude
+    mass-saturated QCD vacuum activity carries prod_f(m_f rho), depends on
+    theta+arg det M, is locally small-rho finite when b0+Nf>4, and is
+    infrared-uncontrolled in zero-temperature QCD if the same one-loop power
+    is extended to large rho
     the dilute instanton gas gives the Poisson/Skellam theta cumulants
     chi_top=2 zeta and b2=-1/12 only after the one-instanton amplitude is
     promoted to a finite dilute activity
@@ -686,6 +690,73 @@ def check_dilute_instanton_gas_theta_cumulants() -> None:
     )
 
 
+def check_mass_saturated_vacuum_activity_size_integral() -> None:
+    n_c = 3
+    n_f = 3
+    b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+    size_integrand_power = b0 + n_f - 5
+    antiderivative_power = size_integrand_power + 1
+    assert_equal("SU(3) Nf=3 mass-saturated b0", b0, Fraction(9))
+    assert_equal(
+        "mass-saturated size-integral antiderivative power",
+        antiderivative_power,
+        b0 + n_f - 4,
+    )
+    assert_equal("SU(3) Nf=3 mass-saturated endpoint margin", antiderivative_power, 8)
+
+    def endpoint_status(power: Fraction) -> tuple[str, str]:
+        if power > 0:
+            return ("small_finite", "large_power_divergent")
+        if power == 0:
+            return ("small_log_divergent", "large_log_divergent")
+        return ("small_power_divergent", "large_finite")
+
+    assert_equal(
+        "positive instanton size margin endpoint status",
+        endpoint_status(antiderivative_power),
+        ("small_finite", "large_power_divergent"),
+    )
+    assert_equal(
+        "borderline instanton size margin endpoint status",
+        endpoint_status(Fraction(0)),
+        ("small_log_divergent", "large_log_divergent"),
+    )
+    assert_equal(
+        "negative instanton size margin endpoint status",
+        endpoint_status(Fraction(-2)),
+        ("small_power_divergent", "large_finite"),
+    )
+
+    rho_low = Fraction(1, 2)
+    rho_high = Fraction(3, 2)
+    finite_size_window = (
+        rho_high**antiderivative_power
+        - rho_low**antiderivative_power
+    ) / antiderivative_power
+    assert_equal("mass-saturated finite size window", finite_size_window, Fraction(205, 64))
+
+    masses = [Fraction(2, 3), Fraction(5, 7), Fraction(11, 13)]
+    determinant_abs = product_fraction(masses)
+    scheme_prefactor = Fraction(5, 7)
+    window_activity = scheme_prefactor * determinant_abs * finite_size_window
+    assert_equal("mass-saturated finite-window activity", window_activity, Fraction(56375, 61152))
+
+    one_massless = [Fraction(2, 3), Fraction(0), Fraction(11, 13)]
+    assert_equal(
+        "massless flavor removes mass-saturated vacuum activity",
+        scheme_prefactor * product_fraction(one_massless) * finite_size_window,
+        Fraction(0),
+    )
+
+    theta_shift = Fraction(19, 5)
+    arg_det_m_shift = -Fraction(19, 5)
+    assert_equal(
+        "mass-saturated phase theta plus arg det M invariant",
+        theta_shift + arg_det_m_shift,
+        Fraction(0),
+    )
+
+
 def check_uhlenbeck_boundary_face_budget() -> None:
     for n_c in range(2, 8):
         for k in range(1, 6):
@@ -756,6 +827,7 @@ def main() -> None:
     check_physical_instanton_correlator_zero_mode_saturation()
     check_proper_time_fluctuation_four_fermion_amplitude()
     check_dilute_instanton_gas_theta_cumulants()
+    check_mass_saturated_vacuum_activity_size_integral()
     check_uhlenbeck_boundary_face_budget()
     check_k_one_adhm_dimension_and_cone_power()
     print("All BPST instanton normalization checks passed.")

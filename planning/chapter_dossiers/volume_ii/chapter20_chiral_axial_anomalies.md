@@ -197,6 +197,7 @@
 | \(B_{\eta,ff'}(z)\) | zero-mode-projected source matrix for smeared four-fermion wave packets in the instanton background |
 | \(G^{(4)}_{\eta,\Lambda,Q=1}\) | finite-regulator one-instanton contribution to the smeared four-fermion amplitude |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
+| \(\zeta_m^{[\rho_-,\rho_+]}\) | mass-saturated one-instanton vacuum activity in a finite size window |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
 | \(A_\alpha(\mathcal X),G_\beta(\mathcal X)\) | Uhlenbeck bubbling-scale and collision-face exponents in the multi-instanton boundary budget |
 | \(\mathcal O_{N_c}\) | embedded one-instanton orientation orbit \(U(N_c)/(U(N_c-2)\times U(1))\) |
@@ -434,6 +435,21 @@
   times the determinant of the zero-mode-projected source matrix
   \(B_{\eta,ff'}(z)\).  The familiar local 't Hooft vertex is its slow-field
   limit.
+- For massive vectorlike QCD, the vacuum instanton term is now separated as a
+  finite-size-window activity:
+  \[
+    \zeta_m^{[\rho_-,\rho_+]}
+    \propto
+    |\det M(\mu)|\,\mu^{b_0}
+    \int_{\rho_-}^{\rho_+}\rho^{b_0+N_f-5}\,d\rho .
+  \]
+  Each mass-saturated Dirac zero-mode pair supplies \(m_f\rho\), the phase is
+  \(\theta+\arg\det M\), and a massless unsourced flavor kills the vacuum
+  activity.  The small-\(\rho\) endpoint is finite iff \(b_0+N_f>4\); for
+  \(SU(3)\) the margin is \(7+N_f/3\), while extending the same one-loop
+  formula to \(\rho=\infty\) gives an infrared power divergence.  A finite
+  dilute activity therefore requires extra infrared physics or a separate
+  controlled window.
 - The dilute instanton gas is now stated only as a controlled amplitude
   expansion after the regulated one-instanton calculation has supplied a
   finite activity \(\zeta_\Lambda\).  Under Poisson factorization it gives
@@ -633,3 +649,10 @@
   script now verifies the Skellam cumulant ledger, \(\chi_{\rm top}=2\zeta\),
   \(b_2=-1/12\), and the vanishing of the vacuum activity when a massless
   flavor leaves zero modes unsaturated.
+- 2026-06-03 issue #597 mass-saturation size-integral pass: added the
+  finite-window mass-saturated QCD instanton vacuum activity, deriving the
+  \(\prod_f(m_f\rho)\) zero-mode factor, the
+  \(\theta+\arg\det M\) phase, the \(b_0+N_f>4\) small-\(\rho\) criterion,
+  and the large-\(\rho\) obstruction to a zero-temperature dilute activity.
+  The BPST check script now verifies the finite-window integral and endpoint
+  classifications exactly.

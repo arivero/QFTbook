@@ -4388,6 +4388,78 @@ combination \(\bar\theta=\theta+\arg\det M\) from
 coordinate system where the fermion zero modes of the instanton background
 have been integrated.
 
+\begin{controlledapproximation}[Mass-saturated vacuum activity and the
+size integral]
+\label{ca:mass-saturated-instanton-vacuum-activity}
+Assume vectorlike \(SU(N_c)\) QCD with \(N_f\) Dirac fundamentals, a diagonal
+renormalized mass matrix \(M(\mu)\), and a one-instanton size window
+\(\rho_-<\rho<\rho_+\) in which the one-loop density and the leading
+zero-mode mass overlaps are valid.  In the same local normalization as
+\eqref{eq:qcd-thooft-vertex-leading-local}, saturating one Dirac zero-mode
+pair by the mass term supplies the dimensionless factor \(m_f(\mu)\rho\).
+Thus the mass-saturated one-instanton vacuum activity in this window has the
+form
+\begin{equation}
+  \zeta_m^{[\rho_-,\rho_+]}(\mu)
+  =
+  \mathcal C_{\mathcal S,N_c,N_f}\,
+  \left(\frac{8\pi^2}{g_{\rm ht}^2(\mu)}\right)^{2N_c}
+  \exp\!\left[-\frac{8\pi^2}{g_{\rm ht}^2(\mu)}\right]
+  |\det M(\mu)|\,\mu^{b_0}
+  \int_{\rho_-}^{\rho_+}
+  \rho^{\,b_0+N_f-5}\,\dd\rho ,
+  \label{eq:mass-saturated-instanton-window-activity}
+\end{equation}
+up to the finite determinant remainder, orientation-volume convention, and
+higher-loop/operator-renormalization factors of the chosen scheme.  The
+corresponding \(Q=1\) vacuum term carries the phase
+\begin{equation}
+  V_4\zeta_m^{[\rho_-,\rho_+]}
+  \exp\!\left[\ii(\theta+\arg\det M)\right],
+  \label{eq:mass-saturated-instanton-vacuum-phase}
+\end{equation}
+while the anti-instanton term carries the complex conjugate phase.
+
+The displayed size integral isolates the two endpoint questions:
+\begin{equation}
+  \int_{\rho_-}^{\rho_+}
+  \rho^{\,b_0+N_f-5}\,\dd\rho
+  =
+  \begin{cases}
+    \dfrac{\rho_+^{\,b_0+N_f-4}-\rho_-^{\,b_0+N_f-4}}
+          {b_0+N_f-4},
+      & b_0+N_f\ne4,\\[10pt]
+    \log(\rho_+/\rho_-),
+      & b_0+N_f=4 .
+  \end{cases}
+  \label{eq:mass-saturated-size-window-integral}
+\end{equation}
+The small-size endpoint is locally finite precisely when
+\(b_0+N_f>4\).  For \(SU(3)\), this margin is
+\[
+  b_0+N_f-4
+  =
+  7+\frac{N_f}{3},
+\]
+so the mass-saturated one-instanton vacuum term is not obstructed at
+\(\rho=0\) in the asymptotically free range.  The same positive power means
+that extending the one-loop formula to \(\rho_+=\infty\) would give an
+infrared power divergence.  That divergence is not a new ultraviolet
+counterterm; it says that the zero-temperature large-size region is outside
+the controlled weak-coupling instanton calculation.  A finite dilute activity
+therefore requires an additional physical infrared cutoff or mechanism, such
+as a Higgs scale, a thermal screening scale, or a separately justified
+confining/chiral-dynamics input.
+
+If one quark is massless and no external source saturates its zero modes,
+\(\det M=0\) and the vacuum activity
+\eqref{eq:mass-saturated-instanton-window-activity} vanishes.  This is
+compatible with nonzero instanton contributions to fermionic correlators:
+those correlators use the source determinant of
+\eqref{eq:proper-time-four-fermion-instanton-amplitude} instead of the mass
+determinant in \eqref{eq:mass-saturated-instanton-window-activity}.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Dilute instanton gas as an amplitude expansion]
 \label{ca:dilute-instanton-gas-amplitude}
 Suppose the regulated one-instanton and one-anti-instanton amplitudes obtained
