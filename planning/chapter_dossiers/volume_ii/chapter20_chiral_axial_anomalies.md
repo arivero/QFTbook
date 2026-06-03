@@ -197,7 +197,7 @@
 | \(K_\Lambda(P_z,P_0;\mu)\) | proper-time logarithmic determinant ratio between the instanton and trivial-sector nonzero-mode operators |
 | \(\mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)\) | proper-time representative of the instanton nonzero-mode determinant density |
 | \(\mathcal Z_{\mathcal O,\Lambda}^{0}(z)\) | finite Berezin coefficient of the zero-mode part of insertions, masses, and sources in a \(Q=1\) instanton background |
-| \(B_{ff'}\) | local source or mass-overlap matrix whose finite Berezin determinant gives the QCD 't Hooft vertex |
+| \(M_{ff'},B_{ff'}\) | mass-overlap and external-source matrices whose finite Berezin determinant and minor expansion give the QCD 't Hooft amplitudes |
 | \(B_{\eta,ff'}(z)\) | zero-mode-projected source matrix for smeared four-fermion wave packets in the instanton background |
 | \(G^{(4)}_{\eta,\Lambda,Q=1}\) | finite-regulator one-instanton contribution to the smeared four-fermion amplitude |
 | \(h_\rho(y),\widehat h_\rho(q),M_2(R)\) | normalized BPST zero-mode radial envelope, momentum form factor \(zK_1(z)\), and truncated second moment in the local-vertex expansion |
@@ -435,6 +435,11 @@
   for complete mass saturation the same determinant has the phase of
   \(\det M\), so the one-instanton vacuum term depends on
   \(\bar\theta=\theta+\arg\det M\).
+- More generally \(\det(M+B)\) expands as complementary minors
+  \(\det M_{I^c,J^c}\det B_{I,J}\).  Differentiating with respect to
+  external zero-mode-pair sources therefore inserts the antisymmetric source
+  minor and leaves precisely the complementary mass minor to saturate the
+  unobserved zero modes.
 - For \(N_f=2\), the smeared four-fermion instanton amplitude is the
   collective-coordinate integral of the proper-time nonzero-mode determinant
   times the determinant of the zero-mode-projected source matrix
@@ -647,7 +652,8 @@
   flavor source matrix.  The pass identifies the \(2N_f\)-fermion operator,
   the mass-saturated phase \(\theta+\arg\det M\), and the \(U(1)_A\) selection
   rule as the same instanton zero-mode calculation.  The BPST check script now
-  verifies the three-flavor determinant and the strong-CP phase ledger.
+  verifies the three-flavor determinant, the mixed mass/source minor
+  expansion, and the strong-CP phase ledger.
 - 2026-06-03 issue #597 fluctuation-amplitude pass: added the proper-time
   representative of the instanton nonzero-mode determinant and the
   finite-regulator \(N_f=2\) smeared four-fermion amplitude.  The pass makes

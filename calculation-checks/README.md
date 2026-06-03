@@ -395,7 +395,8 @@ Current checks:
   finite-regulator nonzero-mode determinant bookkeeping, the zero-mode
   saturation coefficient that turns an instanton chart into a physical
   correlator contribution, including the two- and three-flavor 't Hooft
-  determinants and the \(\theta+\arg\det M\) axial phase ledger, the
+  determinants, the mixed mass/source minor expansion, and the
+  \(\theta+\arg\det M\) axial phase ledger, the
   proper-time nonzero-mode determinant assembly for a smeared four-fermion
   instanton amplitude, the BPST zero-mode envelope momentum form factor
   \(zK_1(z)\), tail, and logarithmically sensitive second moment in the

@@ -4278,6 +4278,74 @@ zero-mode overlap is real after the same regulator and zero-mode orientation
 have been fixed, so the only flavor phase is \(\arg\det M\).
 \end{proof}
 
+\begin{proposition}[Mixed mass-source expansion of the instanton determinant]
+\label{prop:instanton-mass-source-minor-expansion}
+In the same \(Q=1\) QCD zero-mode sector, let \(M\) be the mass-overlap
+matrix and let \(B\) be the matrix supplied by external bilinear sources or
+by zero-mode-projected fermion wave packets.  With
+\([N_f]=\{1,\ldots,N_f\}\), write \(M_{I^c,J^c}\) for the submatrix obtained
+by deleting the rows \(I\subset [N_f]\) and columns \(J\subset [N_f]\), and
+write \(B_{I,J}\) for the corresponding \(I\times J\) source submatrix, both
+with increasing orders; empty determinants are \(1\).  Then
+\begin{equation}
+  \det(M+B)
+  =
+  \sum_{r=0}^{N_f}
+  \sum_{\substack{I,J\subset [N_f]\\ |I|=|J|=r}}
+  (-1)^{\sum_{i\in I}i+\sum_{j\in J}j}\,
+  \det M_{I^c,J^c}\,
+  \det B_{I,J}.
+  \label{eq:instanton-mass-source-minor-expansion}
+\end{equation}
+Thus a correlator with \(r\) zero-mode-paired external insertions is not
+obtained by appending those insertions to an already-formed vacuum
+determinant.  It is the degree-\(r\) part of the same finite Berezin
+determinant; the unobserved \(N_f-r\) zero-mode pairs must be saturated by the
+complementary mass minor.  Equivalently, for increasing
+\(I=(i_1<\cdots<i_r)\), \(J=(j_1<\cdots<j_r)\), and
+\(\pi\in S_r\), the coefficient of
+\(\prod_{\ell=1}^r B_{i_\ell,j_{\pi(\ell)}}\) in \(\det(M+B)\) is
+\begin{equation}
+  (-1)^{\sum I+\sum J}\,
+  \operatorname{sgn}(\pi)\,
+  \det M_{I^c,J^c}.
+  \label{eq:instanton-source-differentiation-minor}
+\end{equation}
+For \(N_f=2\),
+\begin{equation}
+\begin{aligned}
+  \det(M+B)
+  &=
+  \det M
+  +M_{22}B_{11}-M_{21}B_{12}
+  -M_{12}B_{21}+M_{11}B_{22}  \\
+  &\hspace{2.5em}
+  +B_{11}B_{22}-B_{12}B_{21}.
+\end{aligned}
+  \label{eq:instanton-two-flavor-mass-source-expansion}
+\end{equation}
+The last line is the massless four-fermion 't Hooft vertex.  The middle line
+is the mixed amplitude in which one flavor is supplied by an external
+zero-mode pair and the other by a mass insertion.  If a flavor is neither
+externally inserted nor present in the complementary mass minor, the
+instanton contribution to that correlator vanishes.
+\end{proposition}
+
+\begin{proof}
+Apply the determinant expansion to \(M+B\).  Each contributing permutation
+\(\sigma\in S_{N_f}\) chooses, for every row, either an \(M\)-entry or a
+\(B\)-entry.  Let \(I\) be the set of rows where a \(B\)-entry was chosen and
+let \(J=\sigma(I)\).  Reordering the rows and columns so that the \(B\)-block
+appears in the \(I,J\) positions gives the cofactor sign
+\((-1)^{\sum I+\sum J}\).  Summing over the restriction of \(\sigma\) to
+\(I\) gives \(\det B_{I,J}\), while summing over the complementary
+restriction gives \(\det M_{I^c,J^c}\).  This proves
+\eqref{eq:instanton-mass-source-minor-expansion}.  Extracting a particular
+source monomial from \(\det B_{I,J}\) gives the \(\operatorname{sgn}(\pi)\)
+factor in \eqref{eq:instanton-source-differentiation-minor}.  The displayed
+two-flavor formula is the specialization to \(N_f=2\).
+\end{proof}
+
 \begin{proposition}[Proper-time determinant and four-fermion amplitude]
 \label{prop:instanton-proper-time-four-fermion-amplitude}
 Fix a finite-regulator \(Q=1\) chart \(z=(a,\rho,U)\), a background gauge

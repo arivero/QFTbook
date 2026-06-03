@@ -111,6 +111,18 @@ def det_fraction(matrix: list[list[Fraction]]) -> Fraction:
     return total
 
 
+def submatrix(
+    matrix: list[list[Fraction]],
+    rows: set[int],
+    cols: set[int],
+) -> list[list[Fraction]]:
+    return [
+        [entry for col, entry in enumerate(row) if col in cols]
+        for row_index, row in enumerate(matrix)
+        if row_index in rows
+    ]
+
+
 def product_fraction(values: list[Fraction]) -> Fraction:
     result = Fraction(1)
     for value in values:
@@ -542,6 +554,73 @@ def check_physical_instanton_correlator_zero_mode_saturation() -> None:
         "strong CP phase theta plus arg det M is axial invariant",
         theta_shift + mass_phase_shift,
         0,
+    )
+
+    # Mixed mass/source saturation is the determinant identity
+    # det(M+B)=sum_{I,J} (-1)^{sum I + sum J} det M_{I^c,J^c} det B_{I,J},
+    # with one-based row/column labels in the sign.  This is the exact
+    # finite-dimensional statement behind differentiating the instanton
+    # source functional.
+    mass_matrix = [
+        [Fraction(2), Fraction(3), Fraction(5)],
+        [Fraction(7), Fraction(11), Fraction(13)],
+        [Fraction(17), Fraction(19), Fraction(23)],
+    ]
+    source_matrix = [
+        [Fraction(29), Fraction(31), Fraction(37)],
+        [Fraction(41), Fraction(43), Fraction(47)],
+        [Fraction(53), Fraction(59), Fraction(61)],
+    ]
+    flavor_indices = set(range(3))
+    minor_expansion = Fraction(0)
+    for r in range(4):
+        for rows_tuple in itertools.combinations(range(3), r):
+            rows = set(rows_tuple)
+            rows_complement = flavor_indices - rows
+            for cols_tuple in itertools.combinations(range(3), r):
+                cols = set(cols_tuple)
+                cols_complement = flavor_indices - cols
+                one_based_sum = (
+                    sum(row + 1 for row in rows)
+                    + sum(col + 1 for col in cols)
+                )
+                cofactor_sign = Fraction(1 if one_based_sum % 2 == 0 else -1)
+                mass_minor = det_fraction(
+                    submatrix(mass_matrix, rows_complement, cols_complement)
+                )
+                source_minor = det_fraction(submatrix(source_matrix, rows, cols))
+                minor_expansion += cofactor_sign * mass_minor * source_minor
+
+    combined_matrix = [
+        [
+            mass_matrix[row][col] + source_matrix[row][col]
+            for col in range(3)
+        ]
+        for row in range(3)
+    ]
+    assert_equal(
+        "instanton mixed mass/source minor expansion",
+        minor_expansion,
+        det_fraction(combined_matrix),
+    )
+
+    # For N_f=2 the one-source coefficient is the complementary mass cofactor,
+    # and the all-source coefficient is the antisymmetric massless vertex.
+    m11, m12, m21, m22 = Fraction(2), Fraction(3), Fraction(5), Fraction(7)
+    b11, b12, b21, b22 = Fraction(11), Fraction(13), Fraction(17), Fraction(19)
+    two_flavor_expansion = (
+        (m11 * m22 - m12 * m21)
+        + m22 * b11
+        - m21 * b12
+        - m12 * b21
+        + m11 * b22
+        + b11 * b22
+        - b12 * b21
+    )
+    assert_equal(
+        "two-flavor mixed mass/source determinant expansion",
+        two_flavor_expansion,
+        det_fraction([[m11 + b11, m12 + b12], [m21 + b21, m22 + b22]]),
     )
 
 
