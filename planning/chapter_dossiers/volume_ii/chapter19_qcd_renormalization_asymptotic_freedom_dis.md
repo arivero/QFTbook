@@ -188,6 +188,11 @@ The chapter must define and derive:
   zero opening angle;
 - the eventwise EEC zeroth and first moment sum rules in the center-of-mass
   frame, including the exact coincident-detector contact weight;
+- contact-inclusive EEC Legendre moments are positive calorimetric multipoles:
+  \(M_{\ell,X}=\frac{4\pi}{2\ell+1}\sum_a|\sum_r z_r
+  Y_{\ell a}(\mathbf n_r)|^2\ge0\), with \(M_1\) the momentum square and
+  \(M_2=\frac32\operatorname{tr}Q^2\); separated-angle data alone do not
+  preserve these constraints after the contact atom is deleted;
 - the ordered three-detector eventwise distribution
   \(E_{3,X}(\zeta_{12},\zeta_{13},\zeta_{23})\), with unit total moment,
   vanishing pairwise angular moments in a color-singlet center-of-mass event,
@@ -767,6 +772,14 @@ The chapter must define and derive:
   center-of-mass frame, and its all-same and pair-contact diagonal strata.
   Extended `energy_correlator_sum_rule_checks.py` with exact rational checks
   of the three-detector moments and contact weights.
+- 2026-06-03 issue #519 EEC multipole pass: added contact-inclusive
+  Legendre-moment positivity for the eventwise EEC, deriving the spherical
+  harmonic square formula, the \(\ell=1\) momentum-square reduction, and the
+  \(\ell=2\) quadrupole norm.  Extended
+  `energy_correlator_sum_rule_checks.py` with exact rational checks that the
+  full detector measure has nonnegative \(M_0,M_1,M_2\), while deleting the
+  coincident detector atom makes the first separated Legendre moment negative
+  in a center-of-mass event.
 - 2026-06-02 issue #519 track-energy pass: added selected calorimetric
   measures for track and charged-energy correlators, derived the selected EEC
   moment identities, introduced track functions as nonperturbative

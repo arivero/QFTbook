@@ -595,6 +595,9 @@ Current checks:
 - `energy_correlator_sum_rule_checks.py`: exact finite-event checks for the
   energy-energy-correlator zeroth and first moment sum rules and the
   coincident-detector contact weight in the QCD detector-observable chapter;
+  Legendre-multipole positivity, including the momentum-square and quadrupole
+  reductions and the failure of separated-angle data alone to preserve the
+  first multipole constraint;
   the ordered three-detector unit moment, pairwise angular moments, and
   all-same and pair-contact diagonal weights;
   it also checks the finite-event multiplication-operator algebra for smeared

@@ -7892,6 +7892,78 @@ remaining separated-angle distribution no longer has unit integral by itself;
 the missing weight is \(\langle\sum_r z_r^2\rangle\).
 \end{remark}
 
+\paragraph{Legendre moments and calorimetric multipoles.}
+The contact-inclusive two-detector distribution has stronger eventwise
+constraints than the first two moments alone.  For every \(\ell\ge0\) define
+\[
+  M_{\ell,X}:=
+  \int_{-1}^{1}P_\ell(\zeta)E_{2,X}(\zeta)\,\dd\zeta
+  =
+  \sum_{r,s\in X}z_rz_s P_\ell(\mathbf n_r\!\cdot\!\mathbf n_s).
+\]
+With the usual orthonormal complex spherical harmonics on \(S^2\), the
+addition theorem gives
+\[
+  P_\ell(\mathbf n\!\cdot\!\mathbf m)
+  =
+  \frac{4\pi}{2\ell+1}
+  \sum_{a=-\ell}^{\ell}
+  Y_{\ell a}(\mathbf n)\overline{Y_{\ell a}(\mathbf m)} .
+\]
+Hence
+\begin{equation}
+  M_{\ell,X}
+  =
+  \frac{4\pi}{2\ell+1}
+  \sum_{a=-\ell}^{\ell}
+  \left|
+    \sum_{r\in X} z_rY_{\ell a}(\mathbf n_r)
+  \right|^2
+  \ge0 .
+  \label{eq:eventwise-eec-legendre-positivity}
+\end{equation}
+This positivity is a property of the positive calorimetric measure
+\(\sum_r z_r\delta_{\mathbf n_r}\).  It is not a property of the
+separated-angle density after the coincident-detector atom has been removed.
+Indeed, for \(\ell=1\),
+\[
+  M_{1,X}
+  =
+  \sum_{r,s}z_rz_s\,\mathbf n_r\!\cdot\!\mathbf n_s
+  =
+  \left|\sum_r z_r\mathbf n_r\right|^2,
+\]
+so the color-singlet center-of-mass condition sets the full moment to zero;
+the separated part alone then has first Legendre moment
+\(-\sum_r z_r^2\).  The contact atom is therefore forced by positivity and
+momentum conservation, not by a cosmetic endpoint convention.
+
+The next moment displays the quadrupole coordinate.  Put
+\[
+  Q_{ij}(X):=
+  \sum_{r\in X}z_r
+  \left(n_r^in_r^j-\frac13\delta_{ij}\right).
+\]
+Then
+\[
+  \operatorname{tr}Q(X)^2
+  =
+  \sum_{r,s}z_rz_s
+  \left((\mathbf n_r\!\cdot\!\mathbf n_s)^2-\frac13\right),
+  \qquad
+  M_{2,X}
+  =
+  \frac32\,\operatorname{tr}Q(X)^2
+  \ge0 .
+\]
+Cross-section averaging preserves
+\eqref{eq:eventwise-eec-legendre-positivity}.  Thus any perturbative,
+resummed, shower, or finite-resolution representation of the normalized EEC
+must say which endpoint/contact convention realizes these multipole
+positivity constraints.  A separated-angle approximation that fits the bulk
+shape but gives a negative contact-inclusive \(M_{\ell}\) is not a positive
+detector measure.
+
 \paragraph{Three-detector moment and contact ledger.}
 The same detector definition gives a genuinely higher-point distribution
 before any partonic approximation is made.  For the same event \(X\), define

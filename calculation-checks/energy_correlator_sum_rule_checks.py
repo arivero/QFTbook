@@ -6,7 +6,9 @@ energy-energy-correlator sum rules and the asymptotic multiplication-operator
 model in the QCD chapter.  It does not model a cross section; averaging
 positive event weights preserves these identities.  It also checks the
 finite distinction between detector contact strata and ensemble-connected
-cumulants.
+cumulants.  The Legendre-multipole check verifies that contact-inclusive
+EEC moments are positive quadratic forms of the calorimetric measure, while
+separated-angle data alone need not preserve those positivity constraints.
 """
 
 from __future__ import annotations
@@ -63,6 +65,44 @@ def eec_first_moment(event: list[Particle]) -> Fraction:
 
 def eec_contact_weight(event: list[Particle]) -> Fraction:
     return sum(z * z for z, _ in event)
+
+
+def legendre_value(ell: int, zeta: Fraction) -> Fraction:
+    if ell == 0:
+        return Fraction(1)
+    if ell == 1:
+        return zeta
+    if ell == 2:
+        return (3 * zeta * zeta - 1) / 2
+    raise ValueError("only ell=0,1,2 are used in this finite check")
+
+
+def eec_legendre_moment(event: list[Particle], ell: int, include_contact: bool = True) -> Fraction:
+    total = Fraction(0)
+    for r, (z_r, n_r) in enumerate(event):
+        for s, (z_s, n_s) in enumerate(event):
+            if not include_contact and r == s:
+                continue
+            total += z_r * z_s * legendre_value(ell, dot(n_r, n_s))
+    return total
+
+
+def quadrupole_tensor(event: list[Particle]) -> tuple[tuple[Fraction, Fraction, Fraction], ...]:
+    rows: list[tuple[Fraction, Fraction, Fraction]] = []
+    for i in range(3):
+        row = []
+        for j in range(3):
+            entry = sum(
+                z * (n[i] * n[j] - (Fraction(1, 3) if i == j else Fraction(0)))
+                for z, n in event
+            )
+            row.append(entry)
+        rows.append(tuple(row))  # type: ignore[arg-type]
+    return tuple(rows)
+
+
+def tensor_square_norm(tensor: tuple[tuple[Fraction, Fraction, Fraction], ...]) -> Fraction:
+    return sum(tensor[i][j] * tensor[i][j] for i in range(3) for j in range(3))
 
 
 def three_detector_zeroth_moment(event: list[Particle]) -> Fraction:
@@ -322,6 +362,41 @@ def check_three_body_orthogonal_rational_event() -> None:
     )
 
 
+def check_eec_legendre_multipole_positivity() -> None:
+    event: list[Particle] = [
+        (Fraction(1, 4), (Fraction(1), Fraction(0), Fraction(0))),
+        (Fraction(1, 3), (Fraction(0), Fraction(1), Fraction(0))),
+        (Fraction(5, 12), (Fraction(-3, 5), Fraction(-4, 5), Fraction(0))),
+    ]
+    momentum = event_momentum_fraction(event)
+    momentum_norm_squared = dot(momentum, momentum)
+    quadrupole = quadrupole_tensor(event)
+    quadrupole_norm_squared = tensor_square_norm(quadrupole)
+
+    assert_equal("EEC Legendre M0", eec_legendre_moment(event, 0), Fraction(1))
+    assert_equal("EEC Legendre M1 as momentum square", eec_legendre_moment(event, 1), momentum_norm_squared)
+    assert_equal("EEC Legendre M1 center-of-mass", eec_legendre_moment(event, 1), Fraction(0))
+    assert_equal("EEC quadrupole norm", quadrupole_norm_squared, Fraction(4, 15))
+    assert_equal(
+        "EEC Legendre M2 as quadrupole square",
+        eec_legendre_moment(event, 2),
+        Fraction(3, 2) * quadrupole_norm_squared,
+    )
+    assert_equal("EEC Legendre M2 value", eec_legendre_moment(event, 2), Fraction(2, 5))
+    for ell in range(3):
+        assert_true(
+            f"contact-inclusive Legendre moment ell={ell} is nonnegative",
+            eec_legendre_moment(event, ell) >= 0,
+        )
+
+    separated_first_moment = eec_legendre_moment(event, 1, include_contact=False)
+    assert_equal("separated first Legendre moment misses contact", separated_first_moment, -eec_contact_weight(event))
+    assert_true(
+        "separated-angle EEC alone can violate Legendre positivity",
+        separated_first_moment < 0,
+    )
+
+
 def check_three_detector_moment_and_contact_ledger() -> None:
     event: list[Particle] = [
         (Fraction(1, 4), (Fraction(1), Fraction(0), Fraction(0))),
@@ -456,6 +531,7 @@ def check_connected_cumulants_do_not_remove_detector_contacts() -> None:
 def main() -> None:
     check_two_body_back_to_back_event()
     check_three_body_orthogonal_rational_event()
+    check_eec_legendre_multipole_positivity()
     check_three_detector_moment_and_contact_ledger()
     check_endpoint_matching_delta_ledger()
     check_connected_cumulants_do_not_remove_detector_contacts()
