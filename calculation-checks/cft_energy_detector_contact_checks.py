@@ -21,6 +21,8 @@ one-variable small-angle EEC power.
 The endpoint-gluing check verifies the contact-coordinate sign when a
 small-angle annulus is moved between the ordinary bulk representative and
 the endpoint plus distribution.
+The finite chart-transport check verifies the one-parameter row/column
+transport and the matching contact-coordinate derivative.
 """
 
 from __future__ import annotations
@@ -40,6 +42,56 @@ def assert_equal(name: str, got: object, expected: object) -> None:
 def assert_nonnegative(name: str, value: Fraction) -> None:
     if value < 0:
         raise AssertionError(f"{name}: got negative value {value!r}")
+
+
+def dot(left: list[Fraction], right: list[Fraction]) -> Fraction:
+    if len(left) != len(right):
+        raise ValueError("dot product requires equal-length vectors")
+    return sum(left_i * right_i for left_i, right_i in zip(left, right))
+
+
+def mat_vec(matrix: list[list[Fraction]], vector: list[Fraction]) -> list[Fraction]:
+    if not matrix:
+        return []
+    if len(matrix[0]) != len(vector):
+        raise ValueError("matrix/vector dimensions do not match")
+    return [dot(row, vector) for row in matrix]
+
+
+def row_mat(row: list[Fraction], matrix: list[list[Fraction]]) -> list[Fraction]:
+    if not matrix:
+        return []
+    if len(row) != len(matrix):
+        raise ValueError("row/matrix dimensions do not match")
+    return [
+        sum(row[i] * matrix[i][j] for i in range(len(row)))
+        for j in range(len(matrix[0]))
+    ]
+
+
+def mat_mat(left: list[list[Fraction]], right: list[list[Fraction]]) -> list[list[Fraction]]:
+    if not left or not right:
+        return []
+    if len(left[0]) != len(right):
+        raise ValueError("matrix dimensions do not match")
+    return [
+        [
+            sum(left[i][k] * right[k][j] for k in range(len(right)))
+            for j in range(len(right[0]))
+        ]
+        for i in range(len(left))
+    ]
+
+
+def inv2(matrix: list[list[Fraction]]) -> list[list[Fraction]]:
+    (a, b), (c, d) = matrix
+    determinant = a * d - b * c
+    if determinant == 0:
+        raise AssertionError("matrix is singular")
+    return [
+        [d / determinant, -b / determinant],
+        [-c / determinant, a / determinant],
+    ]
 
 
 def detector_value(atoms: list[Atom], values: list[Fraction]) -> Fraction:
@@ -365,6 +417,77 @@ def check_finite_light_ray_chart_covariance() -> None:
         raise AssertionError("unshifted contact coordinate failed to change the detector functional")
 
 
+def check_finite_light_ray_chart_transport_with_contact() -> None:
+    # One-parameter version of V = c ell + k.  The basis velocity
+    # A = B^{-1} dB acts on rows and columns with opposite signs, while a
+    # moving diagonal-extension row d_s must be paired with the derivative of
+    # the explicit contact coordinate.
+    ell0 = [Fraction(2), Fraction(-1)]
+    c0 = [Fraction(3), Fraction(5)]
+    contact0 = Fraction(7, 11)
+
+    B = [
+        [Fraction(1), Fraction(2, 5)],
+        [Fraction(0), Fraction(3, 2)],
+    ]
+    dB = [
+        [Fraction(0), Fraction(1, 7)],
+        [Fraction(0), Fraction(-1, 11)],
+    ]
+    B_inv = inv2(B)
+    A = mat_mat(B_inv, dB)
+
+    contact_shift_row = [Fraction(1, 3), Fraction(-2, 5)]
+    contact_shift_velocity = [Fraction(5, 13), Fraction(7, 17)]
+
+    ell = mat_vec(B_inv, ell0)
+    c = row_mat(
+        [
+            c0[0] + contact_shift_row[0],
+            c0[1] + contact_shift_row[1],
+        ],
+        B,
+    )
+    contact = contact0 - dot(contact_shift_row, ell0)
+    assert_equal(
+        "finite chart transport preserves detector value",
+        dot(c, ell) + contact,
+        dot(c0, ell0) + contact0,
+    )
+
+    ell_velocity = [-entry for entry in mat_vec(A, ell)]
+    basis_row_velocity = row_mat(c, A)
+    contact_row_velocity = row_mat(contact_shift_velocity, B)
+    c_velocity = [
+        basis_row_velocity[i] + contact_row_velocity[i]
+        for i in range(len(c))
+    ]
+    contact_velocity_scalar = dot(contact_row_velocity, ell)
+    contact_velocity = -contact_velocity_scalar
+    detector_velocity = dot(c_velocity, ell) + dot(c, ell_velocity) + contact_velocity
+    assert_equal("finite chart transport derivative cancels", detector_velocity, Fraction(0))
+
+    wrong_contact_velocity = contact_velocity_scalar
+    wrong_contact_derivative = dot(c_velocity, ell) + dot(c, ell_velocity) + wrong_contact_velocity
+    assert_equal(
+        "finite chart wrong contact sign defect",
+        wrong_contact_derivative,
+        2 * contact_velocity_scalar,
+    )
+    if wrong_contact_derivative == 0:
+        raise AssertionError("wrong contact sign accidentally preserved the detector value")
+
+    wrong_ell_velocity = mat_vec(A, ell)
+    wrong_basis_derivative = dot(c_velocity, ell) + dot(c, wrong_ell_velocity) + contact_velocity
+    assert_equal(
+        "finite chart wrong column sign defect",
+        wrong_basis_derivative,
+        2 * dot(basis_row_velocity, ell),
+    )
+    if wrong_basis_derivative == 0:
+        raise AssertionError("wrong basis sign accidentally preserved the detector value")
+
+
 def check_small_angle_eec_pushforward_exponents() -> None:
     # Detector sphere dimension d_perp = D-2.  The local angular shell has
     # power d_perp-1, while the EEC kernel
@@ -455,6 +578,7 @@ def main() -> None:
     check_three_detector_partition_decomposition()
     check_finite_light_ray_ope_chart_bound()
     check_finite_light_ray_chart_covariance()
+    check_finite_light_ray_chart_transport_with_contact()
     check_small_angle_eec_pushforward_exponents()
     check_endpoint_distribution_gluing()
     print("All CFT energy-detector contact and moment checks passed.")

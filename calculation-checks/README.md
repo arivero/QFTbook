@@ -570,10 +570,13 @@ Current checks:
   coordinate.  It also checks retained-basis covariance of the finite
   light-ray chart and the compensating contact-coordinate shift required when
   diagonal distributions are reshuffled between retained coefficient maps and
-  explicit contact terms.  It also checks the small-angle EEC pushforward
-  exponent: the actual \(\delta(\cos\chi-\cos\theta)\) kernel contributes one
-  inverse shell power relative to a \(\delta(\chi-\theta)\) convention, and
-  changing to \(z=(1-\cos\chi)/2\) halves the leading power.  It also checks
+  explicit contact terms, together with the one-parameter finite-chart
+  transport equations whose row/column terms cancel only when the contact
+  derivative has the matching sign.  It also checks the small-angle EEC
+  pushforward exponent: the actual \(\delta(\cos\chi-\cos\theta)\) kernel
+  contributes one inverse shell power relative to a
+  \(\delta(\chi-\theta)\) convention, and changing to
+  \(z=(1-\cos\chi)/2\) halves the leading power.  It also checks
   the endpoint distribution-gluing sign: moving a small-angle annulus from
   the ordinary bulk representative into the endpoint plus chart requires the
   explicit contact coordinate to shift by the annulus constant.

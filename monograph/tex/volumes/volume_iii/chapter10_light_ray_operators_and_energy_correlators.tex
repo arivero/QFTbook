@@ -1293,6 +1293,57 @@ not fix a separated-angle coefficient convention by itself.  A finite
 light-ray OPE chart used for a full energy correlator must therefore state
 both its retained-basis convention and its diagonal-contact convention.
 
+\paragraph{One-parameter finite chart transport.}
+The same bookkeeping can be differentiated.  This is useful because it
+separates a harmless change of finite coordinates from a genuine change of the
+detector distribution.  Let \(s\) parametrize a family of retained-basis
+changes \(B_s\in GL(r,\mathbb C)\) and diagonal-extension shifts
+\(d_{s,\Phi}\in(\mathbb C^r)^*\), both stated in the original retained
+coordinates.  For
+\[
+  V_\Psi(\Phi)=c_\Phi\ell_\Psi+k_\Phi+R_N(\Phi;\Psi)
+\]
+define
+\begin{equation}
+  \ell_{s,\Psi}=B_s^{-1}\ell_\Psi,\qquad
+  c_{s,\Phi}=(c_\Phi+d_{s,\Phi})B_s,\qquad
+  k_{s,\Phi}=k_\Phi-d_{s,\Phi}\ell_\Psi .
+  \label{eq:cft-light-ray-chart-transport-coordinates}
+\end{equation}
+Then
+\[
+  c_{s,\Phi}\ell_{s,\Psi}+k_{s,\Phi}
+  =
+  c_\Phi\ell_\Psi+k_\Phi .
+\]
+Put \(A_s=B_s^{-1}\partial_sB_s\).  Differentiating
+\eqref{eq:cft-light-ray-chart-transport-coordinates} gives
+\begin{align}
+  \partial_s\ell_{s,\Psi}
+  &=
+  -A_s\ell_{s,\Psi},&
+  \partial_sc_{s,\Phi}
+  &=
+  c_{s,\Phi}A_s+(\partial_sd_{s,\Phi})B_s,
+  \label{eq:cft-light-ray-chart-transport-row-column}\\
+  \partial_sk_{s,\Phi}
+  &=
+  -(\partial_sd_{s,\Phi})B_s\ell_{s,\Psi}.
+  \label{eq:cft-light-ray-chart-transport-contact}
+\end{align}
+The \(c_{s,\Phi}A_s\) and \(-A_s\ell_{s,\Psi}\) terms cancel in
+\(\partial_s(c_s\ell_s+k_s)\); the remaining
+\((\partial_sd_s)B_s\ell_s\) term cancels only against the contact derivative
+\eqref{eq:cft-light-ray-chart-transport-contact}.  With the opposite contact
+sign the constant detector test would change by twice this endpoint
+contribution.  Equations
+\eqref{eq:cft-light-ray-chart-transport-row-column}--\eqref{eq:cft-light-ray-chart-transport-contact}
+are finite-chart identities at a conformal fixed point, not anomalous
+dimensions.  Their QCD analogue is the renormalized light-ray mixing chart of
+Chapter~\ref{ch:volume-ii-19}, where \(s\) is replaced by physical
+renormalization or rapidity scales after the regulator, subtraction scheme,
+and endpoint contact convention have been fixed.
+
 \paragraph{Small-angle pushforward to the EEC variable.}
 The finite light-ray chart lives first as a distribution in the two detector
 directions.  The one-variable EEC is obtained by pushing that distribution

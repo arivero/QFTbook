@@ -90,6 +90,10 @@ The chapter establishes:
   retained representation list is not a controlled EEC approximation unless
   these chart and remainder data are supplied, and that retained-basis changes
   are distinct from diagonal-contact coordinate changes.
+- one-parameter finite chart transport: a basis velocity
+  \(A_s=B_s^{-1}\partial_sB_s\) acts with opposite signs on retained
+  light-ray columns and coefficient rows, while a moving diagonal-extension
+  row requires a matching derivative of the explicit contact coordinate.
 - endpoint distribution charts in the one-variable EEC coordinate
   \(z=(1-\cos\chi)/2\), including subtracted extensions of singular
   small-angle densities, explicit \(\delta^{(j)}(z)\) contact coordinates,
@@ -131,6 +135,8 @@ The chapter establishes:
 | \(C_{\alpha,m}\) | relative-coordinate coefficient distribution in a finite light-ray OPE chart |
 | \(\psi_{\alpha,m,\Phi}\) | center-coordinate test induced from a two-detector test \(\Phi\) by \(C_{\alpha,m}\) |
 | \(R_N(\Phi;\Psi)\) | finite-chart light-ray OPE remainder functional in state \(\Psi\) |
+| \(B_s\), \(A_s\) | one-parameter finite chart basis change and velocity \(A_s=B_s^{-1}\partial_sB_s\) |
+| \(d_{s,\Phi}\), \(k_{s,\Phi}\) | diagonal-extension shift row and matching explicit contact coordinate in a moving finite chart |
 | \(z=(1-\cos\chi)/2\) | small-angle EEC endpoint coordinate |
 | \([f]_{J,z_0,+}\) | Taylor-subtracted endpoint extension of a singular one-variable density |
 | \(K_j^{(N)}\) | explicit endpoint contact coordinate multiplying \(\delta^{(j)}(z)\) |
@@ -204,14 +210,21 @@ The chapter establishes:
     diagonal distributions to retained coefficient maps changes the full
     detector distribution unless the explicit contact coordinate is shifted
     by the corresponding retained light-ray matrix element.
-15. The small-angle EEC distribution is the angular pushforward of the
+15. A one-parameter finite chart transport differentiates this covariance:
+    \(A_s=B_s^{-1}\partial_sB_s\) gives
+    \(\partial_s\ell_s=-A_s\ell_s\) and
+    \(\partial_sc_s=c_sA_s+(\partial_sd_s)B_s\), while
+    \(\partial_sk_s=-(\partial_sd_s)B_s\ell_s\).  These identities preserve
+    \(c_s\ell_s+k_s\) and are fixed-point chart identities, not QCD anomalous
+    dimensions.
+16. The small-angle EEC distribution is the angular pushforward of the
     two-detector light-ray distribution.  The kernel
     \(\delta(\cos\chi-\cos\theta)\) contributes the Jacobian
     \((\sin\chi)^{D-4}\); a retained coefficient homogeneous of degree
     \(-\lambda\) therefore contributes \(\chi^{D-4-\lambda}\) in the
     \(\chi\)-density, with the leading exponent halved in
     \(z=(1-\cos\chi)/2\).
-16. The pushed-forward small-angle density must be extended across
+17. The pushed-forward small-angle density must be extended across
     \(z=0\) as a distribution with explicit endpoint contact coordinates.
     Separated-angle light-ray coefficients do not determine those contacts;
     changing the endpoint resolution interval shifts the explicit
@@ -247,11 +260,17 @@ The chapter establishes:
   coefficient-map norms, light-ray form bounds, and a declared remainder, and
   detects the separated-angle-only loss of the diagonal contact coordinate;
   the same script checks retained-basis covariance and the compensating
-  contact-coordinate shift under diagonal-distribution reshuffling.  It also
-  checks the one-variable endpoint distribution-gluing sign: moving a
+  contact-coordinate shift under diagonal-distribution reshuffling, together
+  with the one-parameter finite-chart transport equation and its wrong-sign
+  contact defect.  It also checks the one-variable endpoint
+  distribution-gluing sign: moving a
   small-angle annulus from the bulk representative into the endpoint plus
   chart requires a positive contact-coordinate shift by the annulus constant,
   while the opposite sign changes the constant-detector moment.
+- 2026-06-03 #519 finite-chart transport pass: added the
+  one-parameter CFT light-ray chart transport equations and paired exact
+  rational checks for row/column covariance, moving diagonal-extension rows,
+  and the contact-coordinate derivative sign.
 - The finite helicity reduction of the four-dimensional collider bounds is
   checked by `calculation-checks/conformal_collider_checks.py`, together with
   the full helicity-projector spectral decomposition of a generic polarization,
