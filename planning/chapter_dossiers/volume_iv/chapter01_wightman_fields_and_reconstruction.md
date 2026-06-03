@@ -3,8 +3,14 @@
 ## Source Position
 
 This chapter fixes the Lorentzian Hilbert-space field-presentation framework
-used by the foundational volumes.  Its central object is now the cyclic
-Wightman field presentation of
+used by the foundational volumes.  Its opening now also supplies the
+cross-route proof contract for the Wightman/OS/AQFT/DHR block: Wightman
+distributions reconstruct cyclic field presentations, OS-positive Euclidean
+data reconstruct Wightman distributions away from contact-term choices,
+fields compare with bounded observable nets only after closure/localization
+input, and DHR/modular/split/type conclusions require separate AQFT
+hypotheses after a net has been constructed.  Its central object is now the
+cyclic Wightman field presentation of
 `def:cyclic-wightman-field-presentation`: Hilbert space, vacuum, Poincare
 representation, common invariant domain, field-label adjunction and parity,
 operator-valued tempered distributions, covariance, spectrum, graded locality,
@@ -36,6 +42,9 @@ Minkowski setting used in the reconstruction theorem.
 
 ## Claim Ledger
 
+- Establishes a foundations-block route map before the Wightman definitions,
+  separating Wightman reconstruction, OS reconstruction, Wightman-to-net
+  comparison, and structural AQFT input as distinct theorem boundaries.
 - Defines the cyclic Wightman field presentation before any theorem uses the
   term, separating the base presentation from the stronger pure-vacuum-sector
   condition.
@@ -73,6 +82,10 @@ Minkowski setting used in the reconstruction theorem.
 
 ## Proof Obligations And Boundaries
 
+- The opening route map is an architecture statement, not an additional
+  comparison theorem: it names the hypotheses needed at each boundary and
+  leaves the actual closure, affiliation, net-construction, sector, modular,
+  and split-property proofs in the chapters where their hypotheses are stated.
 - The definition is a field presentation, not a construction of an interacting
   model.  Concrete models must still construct the Hilbert space, domain,
   fields, and Wightman distributions or obtain them by OS reconstruction.
@@ -133,3 +146,8 @@ Minkowski setting used in the reconstruction theorem.
   `wightman_cluster_spectral_checks.py` so the product-vacuum term and
   rank-one projection equivalence are reproducible apart from the
   analytic Jost/Rajchman theorem boundary.
+- 2026-06-03 issue #695 foundations architecture pass: added the opening
+  Wightman/OS/AQFT/DHR proof-contract route map so the foundational block now
+  tells readers which reconstruction/comparison link is being used before the
+  first Wightman definition appears.  This is a coherence repair rather than a
+  new calculation cell.
