@@ -470,6 +470,11 @@ constructive RG developments.
   universality theorem: stable irrelevant eigendirections, rates
   \(\omega_a\), microscopic amplitudes \(c_{i,a}\), reconstructed correction
   distributions \(\mathcal C_a\), and seminorm remainder estimates.
+- Extends the correction-to-scaling datum to nonsemisimple stable
+  linearizations: a stable Jordan chain contributes
+  \(L^{-n\omega}\binom{n}{q}\) factors to the stable-coordinate and
+  observable expansions, so a pure-power correction ansatz is a
+  semisimplicity hypothesis rather than a consequence of the exponent list.
 - Records the finite-codimension critical-surface statement in prose rather
   than as a theorem-family result: after a \(C^1\) stable graph and microscopic
   transversality have been proved, the codimension statement is the standard
@@ -508,9 +513,11 @@ remainder contraction.
 - `calculation-checks/rg_short_range_reconstruction_checks.py`: exact rational
   checks for ordinary short-range scalar block-spin normalization, pairing,
   covariance scaling, reconstruction-bound arithmetic, and
-  correction-to-scaling bookkeeping, plus the auxiliary-transfer telescoping
-  estimate, relevant-direction amplification formula, non-diagonal unstable
-  Jordan-block finite-depth tuning loss, differentiated Lyapunov--Perron
+  correction-to-scaling bookkeeping, including the nonsemisimple stable
+  Jordan-block binomial factors in the observable correction expansion, plus
+  the auxiliary-transfer telescoping estimate, relevant-direction
+  amplification formula, non-diagonal unstable Jordan-block finite-depth
+  tuning loss, differentiated Lyapunov--Perron
   \(C^1\) stable-graph formula, and projective
   observable-germ finite-window estimate.  The same script now checks the
   projective distribution-window extension lemma: restriction
@@ -1010,3 +1017,11 @@ remainder contraction.
   closed-loop source difference, and a reconstruction-budget interface
   requiring the local small-loop/curvature coordinate to be controlled before
   two connector paths are identified in the continuum observable.
+- 2026-06-03 nonsemisimple stable-correction pass: extended the
+  correction-to-scaling datum beyond semisimple stable eigendirections.  The
+  manuscript now records the stable Jordan-chain relation, the exact iterate
+  \(L^{-n\omega}\sum_q\binom{n}{q}e_{r-q}\), and the resulting observable
+  correction expansion with binomial polynomial factors.  The companion
+  short-range RG check verifies the size-three stable Jordan block, detects
+  the failure of a pure-power diagonal ansatz, and checks a
+  polynomial-times-decay bound.

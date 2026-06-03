@@ -749,7 +749,10 @@ Current checks:
   error bound, independent-site covariance scaling, geometric
   reconstruction-bound arithmetic, and correction-to-scaling bookkeeping
   separating universal irrelevant exponents/correction
-  distributions from regulator-dependent amplitudes.  The script also checks
+  distributions from regulator-dependent amplitudes.  It also checks the
+  nonsemisimple stable-block correction formula, where binomial polynomial
+  factors multiply irrelevant eigenvalue decay and a pure-power ansatz would
+  silently assume semisimplicity.  The script also checks
   the auxiliary-to-short-range RG transfer telescope and the relevant-direction
   amplification formula, together with the quantitative microscopic tuning
   contraction constants used to separate stable comparison estimates from

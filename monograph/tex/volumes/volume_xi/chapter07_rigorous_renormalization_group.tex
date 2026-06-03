@@ -6220,6 +6220,64 @@ The coefficients \(c_{i,a}\) are microscopic coordinates.  The exponents
 \(\omega_a\) and correction distributions \(\mathcal C_a\) are fixed-point
 data in the declared Wilsonian chart and observable topology.
 
+\paragraph{Nonsemisimple stable blocks.}
+The definition above is the semisimple case.  If the stable linearization is
+not diagonalizable, the correction-to-scaling datum must record the Jordan
+chains; otherwise the theorem silently drops polynomial factors.  Suppose a
+stable block has \(\lambda_b=L^{-\omega_b}\), \(\omega_b>0\), and a chain
+\(e_{b,0},\ldots,e_{b,m_b-1}\) with
+\begin{equation}
+  D\mathcal R|_{V_\ast} e_{b,r}
+  =
+  \lambda_b e_{b,r}+\lambda_b e_{b,r-1},
+  \qquad
+  e_{b,-1}:=0 .
+  \label{eq:stable-jordan-chain-rg-corrections}
+\end{equation}
+Equivalently, on the block \(D\mathcal R|_{V_\ast}=\lambda_b(1+N_b)\) with
+\(N_b^{m_b}=0\).  The exact iterate is
+\begin{equation}
+  (D\mathcal R|_{V_\ast})^n e_{b,r}
+  =
+  L^{-n\omega_b}
+  \sum_{q=0}^{r}\binom{n}{q} e_{b,r-q}.
+  \label{eq:stable-jordan-iterate-rg-corrections}
+\end{equation}
+Thus a stable-coordinate expansion with amplitudes \(c_{i,b,r}\) gives
+\begin{equation}
+  w_i(n)
+  =
+  \sum_b L^{-n\omega_b}
+  \sum_{r=0}^{m_b-1} c_{i,b,r}
+  \sum_{q=0}^{r}\binom{n}{q}e_{b,r-q}
+  +
+  \rho_i(n),
+  \label{eq:jordan-correction-stable-coordinate-expansion}
+\end{equation}
+with a remainder bounded in the declared stable norm.  Applying the
+linearized reconstruction map gives
+\begin{equation}
+  g_i\operatorname{Rec}_{i,n}(V_i)
+  =
+  O_\ast+
+  \sum_b L^{-n\omega_b}
+  \sum_{r=0}^{m_b-1} c_{i,b,r}
+  \sum_{q=0}^{r}\binom{n}{q}\mathcal C_{b,r-q}
+  +
+  \mathcal E_i(n),
+  \qquad
+  \mathcal C_{b,r}:=D\operatorname{Rec}_\ast(e_{b,r}).
+  \label{eq:jordan-correction-observable-expansion}
+\end{equation}
+The factor \(n^{m_b-1}L^{-n\omega_b}\) is still decaying, but it is not a
+pure power law.  In finite-volume or numerical RG comparisons, fitting
+corrections only by \(L^{-n\omega_b}\) therefore tests a semisimplicity
+hypothesis about the stable block.  A theorem-level correction-to-scaling
+statement must either prove semisimplicity in the chosen chart or include
+the binomial factors in
+\eqref{eq:jordan-correction-observable-expansion}, together with seminorm
+bounds for the nilpotent-chain remainder.
+
 \begin{openproblem}[Nonperturbative Wilsonian fixed points]
 \label{op:constructive-rg-nonperturbative-fixed-points}
 Construct non-Gaussian Wilsonian fixed points in three and four dimensions as

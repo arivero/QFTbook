@@ -93,6 +93,10 @@ solution of the relevant-coordinate tuning equation inside a declared ball.
 The unstable-block tuning check verifies the finite-depth polynomial
 amplification caused by a non-diagonal Jordan block and the corresponding
 amplification of one-step relevant-coordinate errors.
+The stable-block correction check verifies the dual correction-to-scaling
+lesson: a nonsemisimple stable block produces binomial polynomial factors
+times the irrelevant eigenvalue decay, so a pure-power correction ansatz is a
+semisimplicity assumption rather than a consequence of the RG spectrum alone.
 The projective distribution-window check verifies the finite arithmetic
 behind compatibility of restriction maps and a uniform seminorm bound,
 the two inputs that let finite test-function windows extend to a tempered
@@ -341,6 +345,84 @@ def check_correction_to_scaling_bookkeeping():
             after_leading_subtraction,
             expected_subleading,
         )
+
+
+def check_nonsemisimple_stable_correction_to_scaling():
+    # Stable Jordan block with T e0 = lambda e0,
+    # T e1 = lambda(e1 + e0), T e2 = lambda(e2 + e1).
+    # The iterate is lambda^n(e2 + n e1 + binom(n, 2)e0), so a
+    # correction-to-scaling theorem must include polynomial factors unless
+    # semisimplicity of the stable block has been proved.
+    lam = Fraction(1, 4)
+    initial = (Fraction(7, 3), Fraction(-1, 2), Fraction(3, 5))
+    reconstruction = (Fraction(2), Fraction(-3), Fraction(5))
+
+    def block_step(vector):
+        c0, c1, c2 = vector
+        return (lam * (c0 + c1), lam * (c1 + c2), lam * c2)
+
+    def iterate_by_matrix(step):
+        vector = initial
+        for _ in range(step):
+            vector = block_step(vector)
+        return vector
+
+    def binom(n, r):
+        if r == 0:
+            return Fraction(1)
+        if r == 1:
+            return Fraction(n)
+        if r == 2:
+            return Fraction(n * (n - 1), 2)
+        raise AssertionError("only size-three Jordan block used")
+
+    def iterate_by_jordan_formula(step):
+        c0, c1, c2 = initial
+        return (
+            lam**step * (c0 + binom(step, 1) * c1 + binom(step, 2) * c2),
+            lam**step * (c1 + binom(step, 1) * c2),
+            lam**step * c2,
+        )
+
+    def pairing(vector):
+        return sum(coord * obs for coord, obs in zip(vector, reconstruction))
+
+    scaled_observables = []
+    for step in range(6):
+        matrix_value = iterate_by_matrix(step)
+        formula_value = iterate_by_jordan_formula(step)
+        assert_equal(f"stable Jordan iterate step {step}", matrix_value, formula_value)
+        scaled_observables.append(pairing(matrix_value) / (lam**step))
+
+    c2 = initial[2]
+    c_rec0 = reconstruction[0]
+    expected_second_difference = c2 * c_rec0
+    for step in range(4):
+        second_difference = (
+            scaled_observables[step + 2]
+            - 2 * scaled_observables[step + 1]
+            + scaled_observables[step]
+        )
+        assert_equal(
+            f"stable Jordan scaled second difference step {step}",
+            second_difference,
+            expected_second_difference,
+        )
+
+    diagonal_only = lam**4 * pairing(initial)
+    actual_fourth = pairing(iterate_by_matrix(4))
+    assert_true(
+        "stable Jordan correction is not pure-power diagonal decay",
+        actual_fourth != diagonal_only,
+    )
+
+    polynomial_bound_constant = sum(abs(value) for value in initial) * sum(
+        abs(value) for value in reconstruction
+    )
+    for step in range(1, 6):
+        actual = abs(pairing(iterate_by_matrix(step)))
+        bound = polynomial_bound_constant * (1 + step + binom(step, 2)) * lam**step
+        assert_true(f"stable Jordan polynomial-times-decay bound step {step}", actual <= bound)
 
 
 def check_auxiliary_transfer_telescoping_bound():
@@ -2615,6 +2697,7 @@ def main():
     check_independent_covariance_scaling()
     check_geometric_reconstruction_bound()
     check_correction_to_scaling_bookkeeping()
+    check_nonsemisimple_stable_correction_to_scaling()
     check_auxiliary_transfer_telescoping_bound()
     check_auxiliary_projective_window_transfer_estimate()
     check_relevant_direction_tuning_amplification()
