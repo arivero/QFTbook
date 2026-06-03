@@ -150,6 +150,11 @@ current QFT scope.
   \(n=2\) gamma-function formula, the ordered-chamber finite polynomial
   expansion, and the screening--screening Vandermonde exponent as the first
   genuinely multi-screening datum.
+- Adds a screening-to-BPZ construction budget that separates raw
+  Dotsenko--Fateev integrals, Virasoro Ward/intertwiner checks, closed
+  twisted-cycle projection, BPZ solution-basis comparison, analytic
+  continuation, and nonchiral sewing pairing into five residuals rather than
+  treating a screening integral as a full correlator.
 - Defines sewing of blocks through dual bases of a module and its dual, with
   the annulus propagation factor \(q^{h_a+n-c/24}\).
 - Expands the finite sewing-graph estimate: after finite-level truncation,
@@ -277,7 +282,8 @@ current QFT scope.
   agreement with the exact \(SU(2)\)-quotient fusion rule, level-two Ising
   Gram determinant/null vector, the level-two Kac determinant roots
   \(h_{1,2}\) and \(h_{2,1}\), the one-screening beta integral and
-  two-screening Selberg finite-sum/factorial identity, Ising BPZ block
+  two-screening Selberg finite-sum/factorial identity, the finite
+  screening-to-BPZ residual telescope and norm bound, Ising BPZ block
   differential equation, and the crossing matrix fixing
   \(C_{\sigma\sigma\varepsilon}=1/2\).
 
@@ -406,6 +412,11 @@ current QFT scope.
   the \(n=2\) Selberg chamber, its finite ordered-chamber polynomial
   expansion, and exact rational checks comparing that expansion with the
   factorial Selberg formula.
+- 2026-06-03 screening-to-BPZ budget pass: added a finite construction
+  budget from Dotsenko--Fateev screening coordinates through twisted cycles,
+  BPZ basis comparison, analytic continuation, and nonchiral sewing pairing;
+  the paired calculation check verifies the residual telescope and norm
+  bound.
 - 2026-05-31 Cardy Tauberian mechanism pass: expanded the quoted
   exponential-Tauberian boundary by proving the elementary positive-measure
   Laplace upper bound, isolating the nontrivial Tauberian lower-bound input,
