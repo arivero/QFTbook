@@ -1933,8 +1933,9 @@ Current checks:
 - `susy_instanton_nekr_checks.py`: exact rational checks for the
   supersymmetric instanton expansion, including the ADHM dimension count,
   Uhlenbeck stratum codimension arithmetic, the positive-ADHM-moment-map
-  trace obstruction to unstable small-instanton subspaces, the one-box
-  Gieseker tangent Euler-class specialization, the charge-one
+  trace obstruction to unstable small-instanton subspaces, the torsion-free
+  sheaf Gieseker-to-Uhlenbeck charge split, the one-box Gieseker tangent
+  Euler-class specialization, the charge-one
   Gieseker-to-Uhlenbeck minimal-nilpotent-cone resolution arithmetic,
   the trace-delta to half-trace instanton-action conversion, ADS dimension
   and \(R\)-charge arithmetic, the \(N_f=N_c-1\) one-instanton zero-mode

@@ -37,6 +37,9 @@
 - Singular-instanton compactification choices: Uhlenbeck stratification,
   Gieseker/framed torsion-free-sheaf resolution, and Donaldson--Uhlenbeck
   compactification on a compact four-manifold.
+- Gieseker-to-Uhlenbeck charge bookkeeping via the double-dual sequence
+  `0 -> E -> E** -> Q -> 0`, proving `k(E)=k(E**)+length(Q)` before the
+  ADHM stability and fixed-point analysis.
 - ADHM stability criterion, its failure as the small-instanton stratum, the
   tangent Euler-class formula at Young-diagram fixed points, and the one-box
   fixed-point derivation of the \(k=1\) Nekrasov term.
@@ -147,31 +150,36 @@
    \(2\ell(N-1)\) in complex dimension, so the familiar real codimension-four
    one-point boundary is the \(N=2,\ell=1\) case rather than a universal
    statement for all \(U(N)\).
-11. ADHM stability failure is the finite-dimensional small-instanton
+11. The Gieseker-to-Uhlenbeck morphism has an exact sheaf-theoretic charge
+    ledger: for `0 -> E -> E** -> Q -> 0` with `length(Q)=ell`,
+    additivity of the Chern character gives `k(E)=k(E**)+ell`.  Uhlenbeck
+    keeps the lower-charge smooth instanton and the support cycle; Gieseker
+    keeps the punctual quotient data resolving that boundary.
+12. ADHM stability failure is the finite-dimensional small-instanton
    mechanism; the Gieseker quotient resolves it while the Uhlenbeck quotient
    records the lost charge as points of \(\mathbb C^2\).
-12. The displayed tangent Euler class at a Young-diagram fixed point reduces
+13. The displayed tangent Euler class at a Young-diagram fixed point reduces
     to the standard \(U(N)\) one-instanton fixed-point sum for one box.
-13. In charge one, the Gieseker resolution is explicitly
+14. In charge one, the Gieseker resolution is explicitly
     \(T^\ast\mathbb{CP}^{N-1}\to\overline{\mathcal O}_{\rm min}\),
     \(([I],J)\mapsto J\otimes I\).  The equations
     \(I(J)=0\), \(\operatorname{Tr}(J\otimes I)=0\), and
     \((J\otimes I)^2=0\) identify the Uhlenbeck boundary as the cone apex.
-14. The equality between the Gieseker-resolved equivariant integral and the
+15. The equality between the Gieseker-resolved equivariant integral and the
     \(S^4\) field-theoretic localized path integral is recorded as a
     field-theoretic matching hypothesis unless a regulator proves it.  The
     chapter now cross-references the finite BV boundary-obstruction formula:
     a smooth-stratum pushforward fails the residual QME by the
     small-instanton boundary functional unless a resolution, relative cycle,
     residue datum, or vanishing theorem cancels it.
-15. The new Gieseker-sector regulator selection datum separates the five
+16. The new Gieseker-sector regulator selection datum separates the five
     proof obligations hidden in the usual shorthand: finite-regulator BV
     \(Q\)-Stokes data, local ADHM/resolution reduction, determinant-line and
     orientation comparison, Uhlenbeck-collar boundary cancellation, and the
     equivariant limiting theorem for insertions.  The positive-ADHM
     moment-map proposition proves only the finite-dimensional stability
     component after the pole-local reduction has been obtained.
-16. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
+17. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
    Gaussian matrix model with the Weyl/Vandermonde factor.  The chapter now
    defines the circular-loop Gaussian coupling, derives the exact finite-\(N\)
    Laguerre-polynomial Wilson-loop formula from the Hermite kernel, derives
@@ -208,8 +216,9 @@
   \(\lambda d\log W/d\lambda\) agrees term by term with the
   \(\sqrt{\lambda}I_2/(2I_1)\) Bessel-ratio expression.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies the ADHM
-  dimension count, Uhlenbeck stratum codimension arithmetic, the one-box
-  Gieseker tangent Euler-class specialization, the charge-one
+  dimension count, Uhlenbeck stratum codimension arithmetic, the torsion-free
+  sheaf charge split, the one-box Gieseker tangent Euler-class specialization,
+  the charge-one
   minimal-nilpotent-cone resolution arithmetic, and the \(SU(2)\)
   one-instanton Nekrasov fixed-point sum used by the cross-referenced
   Seiberg-Witten chapter.
@@ -257,3 +266,6 @@
   Uhlenbeck-collar cancellation, and equivariant limiting theorem required
   before the Nekrasov/Gieseker factor can be claimed as selected by a
   continuum four-dimensional supersymmetric path integral.
+- 2026-06-03: added the sheaf-theoretic Gieseker-to-Uhlenbeck charge ledger
+  `0 -> E -> E** -> Q -> 0`, proving `k(E)=k(E**)+length(Q)` and tying the
+  local Nekrasov resolution to the Donaldson--Uhlenbeck boundary policy.

@@ -658,6 +658,60 @@ a specified regulator must explain which compactification, or which
 equivalent contour, it produces.
 \end{definition}
 
+\begin{construction}[Gieseker-to-Uhlenbeck charge bookkeeping]
+\label{cons:gieseker-uhlenbeck-charge-bookkeeping}
+Work on the framed \(U(N)\) instanton compactification on \(\mathbb C^2\),
+equivalently on \(\mathbb P^2\) with a fixed framing along the line at
+infinity, and take \(c_1=0\).  Let \(E\) be a framed torsion-free sheaf in
+the Gieseker compactification.  Its double dual \(E^{\ast\ast}\) is locally
+free, and there is an exact sequence
+\begin{equation}
+  0\longrightarrow E\longrightarrow E^{\ast\ast}
+  \longrightarrow Q\longrightarrow0
+  \label{eq:torsion-free-double-dual-quotient}
+\end{equation}
+with \(Q\) a zero-dimensional sheaf of length \(\ell\).  If the instanton
+number is \(k(F)=-\int_{\mathbb P^2}{\rm ch}_2(F)\) in the framed
+\(c_1=0\) convention, then
+\begin{equation}
+  k(E)=k(E^{\ast\ast})+\ell .
+  \label{eq:gieseker-uhlenbeck-charge-split}
+\end{equation}
+Thus the Uhlenbeck morphism sends \(E\) to the smooth framed instanton
+represented by \(E^{\ast\ast}\), together with the effective length-\(\ell\)
+zero-cycle supporting \(Q\).
+\end{construction}
+
+The charge identity in
+\eqref{eq:gieseker-uhlenbeck-charge-split} is a finite Chern-character
+calculation.  On a smooth complex surface the double dual of a torsion-free
+sheaf is locally free, and the quotient in
+\eqref{eq:torsion-free-double-dual-quotient} is supported in complex
+codimension two.  The Chern character is additive in exact sequences, so
+\[
+  {\rm ch}(E^{\ast\ast})={\rm ch}(E)+{\rm ch}(Q).
+\]
+Since \(Q\) is zero-dimensional of length \(\ell\), its only nonzero Chern
+character component is \({\rm ch}_2(Q)=\ell[{\rm pt}]\).  Therefore
+\[
+  {\rm ch}_2(E)={\rm ch}_2(E^{\ast\ast})-\ell[{\rm pt}].
+\]
+Integrating and multiplying by the instanton-number sign convention gives
+\[
+  k(E)
+  =
+  -\int{\rm ch}_2(E)
+  =
+  -\int{\rm ch}_2(E^{\ast\ast})+\ell
+  =
+  k(E^{\ast\ast})+\ell .
+\]
+The support cycle of \(Q\) is an element of
+\({\rm Sym}^{\ell}(\mathbb C^2)\).  Keeping only
+\((E^{\ast\ast},{\rm supp}\,Q)\) gives the corresponding Uhlenbeck stratum,
+while the Gieseker space retains the punctual quotient data that resolve that
+stratum.
+
 \begin{remark}[Dimension of Uhlenbeck strata]
 \label{rem:uhlenbeck-stratum-dimension}
 The complex dimension of the top stratum

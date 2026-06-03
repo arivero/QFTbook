@@ -3,8 +3,8 @@
 
 The checks include the singular-instanton compactification arithmetic used in
 the compact-localization chapter: Uhlenbeck stratum codimensions and the
-positive-ADHM-moment-map stability trace obstruction, and the one-box
-specialization of the Gieseker tangent Euler class.
+torsion-free-sheaf charge split, the positive-ADHM-moment-map stability trace
+obstruction, and the one-box specialization of the Gieseker tangent Euler class.
 """
 
 from __future__ import annotations
@@ -43,6 +43,37 @@ def check_uhlenbeck_stratum_codimension() -> None:
                     "Uhlenbeck stratum codimension",
                 )
     assert_equal(2 * 1 * (2 - 1), 2, "SU(2) one-point complex codimension")
+
+
+def check_torsion_free_sheaf_uhlenbeck_charge_split() -> None:
+    # For 0 -> E -> E** -> Q -> 0 on a surface, additivity of Chern
+    # characters gives ch_2(E)=ch_2(E**)-length(Q)[pt].  In the framed c1=0
+    # instanton convention k(F)=-int ch_2(F), so k(E)=k(E**)+length(Q).
+    for reflexive_charge in range(0, 8):
+        ch2_double_dual = -reflexive_charge
+        for quotient_length in range(0, 8):
+            ch2_quotient = quotient_length
+            ch2_sheaf = ch2_double_dual - ch2_quotient
+            sheaf_charge = -ch2_sheaf
+            assert_equal(
+                sheaf_charge,
+                reflexive_charge + quotient_length,
+                "Gieseker-to-Uhlenbeck charge split",
+            )
+            assert_equal(
+                sheaf_charge - quotient_length,
+                reflexive_charge,
+                "Uhlenbeck lower-charge recovery",
+            )
+
+    for total_charge in range(1, 8):
+        for lost_charge in range(0, total_charge + 1):
+            smooth_charge = total_charge - lost_charge
+            assert_equal(
+                smooth_charge + lost_charge,
+                total_charge,
+                "Uhlenbeck stratum charge conservation",
+            )
 
 
 def check_positive_adhm_moment_map_stability_trace() -> None:
@@ -467,6 +498,7 @@ def check_young_diagram_one_box_count() -> None:
 def main() -> None:
     check_adhm_dimension_count()
     check_uhlenbeck_stratum_codimension()
+    check_torsion_free_sheaf_uhlenbeck_charge_split()
     check_positive_adhm_moment_map_stability_trace()
     check_instanton_exponential_coupling_conversion()
     check_ads_dimensions_and_r_charges()

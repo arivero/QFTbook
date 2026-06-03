@@ -26,6 +26,8 @@ gauge theory.
   classes, and simple-type coefficients.
 - `M_k^sm`, `overline M_k^U`, `B_S`: smooth ASD stratum, Uhlenbeck
   compactification, and BV boundary functional for compactification strata.
+- `E`, `E**`, `Q`: local torsion-free sheaf, double dual, and punctual
+  quotient used to compare Donaldson--Uhlenbeck and Gieseker policies.
 - `u`, `a_D`, `a`, `tau(u)`: Seiberg-Witten Coulomb-branch data.
 - `s`, `S^pm_s`, `L_s`, `B`, `q`, `sigma(q)`: Spin^c structure, spinor
   bundles, determinant line, Abelian connection, monopole spinor, and
@@ -58,6 +60,10 @@ gauge theory.
   constant-coefficient ODEs along every surface direction.
 - Recasts Uhlenbeck small-instanton, reducible, and obstructed strata as BV
   boundary functionals using the finite BV pushforward obstruction theorem.
+- Adds a Donaldson--Uhlenbeck versus Gieseker comparison policy: the same
+  lost second Chern class is kept as an Uhlenbeck support cycle for
+  Donaldson invariants, but as punctual quotient data and equivariant Euler
+  classes in the Nekrasov/Gieseker resolution.
 - Defines the Donaldson descent observables, their degrees, and the
   differential-geometric `mu`-map via the universal bundle.
 - Proves the Spin^c characteristic-lift torsor statement, including the
@@ -170,3 +176,8 @@ the Abelian monopole theory.
   contact Gaussian, determinant-line phase, universal constant, and
   chamber/\(u\)-plane boundary analysis are no longer left for the reader to
   infer from adjacent local mechanisms.
+- 2026-06-03 small-instanton compactification policy pass: linked the
+  Donaldson--Uhlenbeck BV boundary functional to the local Gieseker
+  double-dual charge ledger, separating Uhlenbeck \(\mu\)-class extension and
+  wall-boundary cancellation from Nekrasov/Gieseker resolved fixed-point
+  integration.
