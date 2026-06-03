@@ -420,7 +420,9 @@ Current checks:
   determinant/Schur-complement separation of the light-fermion nonzero-mode
   spectral factor from the zero-mode mass/source determinant, the regression
   that the displayed \(\prod_f(m_f\rho)\) factor is a zero-mode saturation
-  determinant rather than a finite spectral determinant, the c-number
+  determinant rather than a finite spectral determinant, the homogeneous
+  source-functional RG transport showing how the finite fermion determinant
+  factor cancels the anomalous running of \(\det(M^0+J^0)\), the c-number
   external-wave-packet outer product has zero determinant while the
   differentiated Grassmann source coefficient is nonzero, the BPST zero-mode
   density-envelope momentum form factor \(zK_1(z)\), tail, and logarithmically

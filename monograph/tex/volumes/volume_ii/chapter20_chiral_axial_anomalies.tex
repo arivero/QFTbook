@@ -4659,6 +4659,110 @@ Gaussian integral produces the displayed Schur correction.  Since
 can determine its finite value.
 \end{proof}
 
+\begin{proposition}[Mass/source RG transport of the instanton vertex]
+\label{prop:instanton-mass-source-rg-transport}
+Work in a mass-independent renormalization scheme in the same \(Q=1\)
+vectorlike QCD chart.  Let \(\gamma_m(g)\) be the anomalous dimension of the
+quark mass coordinate in the convention
+\begin{equation}
+  \mu\frac{\dd M}{\dd\mu}=-\gamma_m(g)M,
+  \qquad
+  \mu\frac{\dd J}{\dd\mu}=-\gamma_m(g)J,
+  \label{eq:instanton-mass-source-running}
+\end{equation}
+where \(J\) is a renormalized source coordinate coupled to the same chiral
+scalar density as the mass matrix.  Let \(M^0(z)=\rho M\), and let
+\(J^0(z)\) be the zero-mode projection of \(J\), a linear function of \(J\)
+with the same anomalous transport as \(J\).  Let
+\(\mathcal R_{\rm f}^{\mathcal S}(z;\mu)\) denote the finite light-fermion
+nonzero-mode determinant factor in the source convention of
+Proposition~\ref{prop:instanton-fermion-determinant-zero-mode-factorization}.
+If, at the logarithmic accuracy under consideration,
+\begin{equation}
+  \left(\mu\partial_\mu+\beta(g)\partial_g\right)
+  \log \mathcal R_{\rm f}^{\mathcal S}(z;\mu)
+  =
+  N_f\,\gamma_m(g),
+  \label{eq:instanton-fermion-factor-mass-anomalous-rge}
+\end{equation}
+then the zero-mode source functional
+\begin{equation}
+  \mathcal V_{\rm inst}^{0}(z;M,J,\mu)
+  =
+  \mathcal R_{\rm f}^{\mathcal S}(z;\mu)\,
+  \det\!\left(M^0(z)+J^0(z)\right)
+  \label{eq:instanton-renormalized-source-functional}
+\end{equation}
+obeys
+\begin{equation}
+  \left[
+    \mu\partial_\mu+\beta(g)\partial_g
+    -\gamma_m(g)
+    \sum_{f,f'}
+    \left(
+      M_{ff'}\frac{\partial}{\partial M_{ff'}}
+      +J_{ff'}\frac{\partial}{\partial J_{ff'}}
+    \right)
+  \right]
+  \mathcal V_{\rm inst}^{0}
+  =
+  0 .
+  \label{eq:instanton-source-functional-rge}
+\end{equation}
+Thus the mass/source determinant is not an RG-invariant number by itself.
+The source functional is covariant only after the finite nonzero-mode
+determinant factor and the source renormalization convention are included.
+The symbol \(J\) denotes the source coordinate before differentiation.  The
+scalar-density operator obtained after differentiating the generating
+functional uses the corresponding operator normalization; in the local
+operator convention that differentiated insertion has the
+\(B^0_{ff'}=\rho^3\bar\psi_{Rf}\psi_{Lf'}+\cdots\) normalization of
+\eqref{eq:instanton-zero-mode-effective-matrix}.
+
+In particular, for diagonal masses and \(J=0\), the anomalous-dimension part
+of the vacuum factor
+\[
+  \mathcal R_{\rm f}^{\mathcal S}(\mu)\prod_{f=1}^{N_f}m_f(\mu)
+\]
+is scale invariant at the same logarithmic accuracy.  The phase
+\(\theta+\arg\det M\) is unaffected by the positive real mass
+renormalization factor; it is fixed instead by the anomalous chiral rotation
+described in \eqref{eq:qcd-physical-theta}.  After differentiating
+\eqref{eq:instanton-renormalized-source-functional} \(r\) times with respect
+to \(J\) and setting \(J=0\), the resulting mixed mass/source minor has the
+RG covariance of an \(r\)-fold insertion of the renormalized scalar density,
+rather than the covariance of a vacuum activity.
+\end{proposition}
+
+\begin{proof}
+The matrix \(M^0(z)+J^0(z)\) is homogeneous of degree one in the source
+coordinates \(M\) and \(J\), while the projection factors depending on
+\(\rho\), \(U\), and the normalized zero-mode wavefunctions are collective
+coordinate data and are not acted on by the source anomalous dimension.  The
+determinant is therefore homogeneous of degree \(N_f\):
+\[
+  \sum_{f,f'}
+  \left(
+    M_{ff'}\frac{\partial}{\partial M_{ff'}}
+    +J_{ff'}\frac{\partial}{\partial J_{ff'}}
+  \right)
+  \det(M^0+J^0)
+  =
+  N_f\det(M^0+J^0).
+\]
+Combining this identity with
+\eqref{eq:instanton-fermion-factor-mass-anomalous-rge} gives
+\eqref{eq:instanton-source-functional-rge}.  Setting \(J=0\) gives the
+vacuum statement.  Differentiating the source-functional equation \(r\) times
+with respect to \(J\) transfers \(r\) source anomalous-dimension terms from
+the transport operator to the differentiated coefficient, which is the usual
+Callan--Symanzik covariance of \(r\) renormalized scalar-density insertions.
+The phase statement follows from a separate observation.  In a vectorlike
+mass-independent scheme, multiplicative mass renormalization changes the
+magnitude of \(M\).  The anomalous flavor-singlet chiral rotation changes
+\(\arg\det M\) and \(\theta\) in opposite directions.
+\end{proof}
+
 \begin{proposition}[Proper-time determinant and zero-mode source functional]
 \label{prop:instanton-proper-time-four-fermion-amplitude}
 Fix a finite-regulator \(Q=1\) chart \(z=(a,\rho,U)\), a background gauge

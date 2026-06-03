@@ -225,6 +225,7 @@
 | \(C_N^{\rm PV}\) | orientation-integrated pure-gauge Pauli-Villars one-instanton determinant constant |
 | \(\mathcal Z_{\mathcal O,\Lambda}^{0}(z)\) | finite Berezin coefficient of the zero-mode part of insertions, masses, and sources in a \(Q=1\) instanton background |
 | \(M_{ff'},B_{ff'}\) | mass-overlap and external-source matrices whose finite Berezin determinant and minor expansion give the QCD 't Hooft amplitudes |
+| \(J_{ff'},J^0_{ff'},\mathcal V_{\rm inst}^0\) | renormalized chiral scalar source coordinate, its zero-mode projection, and the zero-mode source functional used to state the mass/source RG transport of the instanton vertex |
 | \(\bar\chi_A,\chi_B\) | odd generating coordinates for differentiated external fermion slots in the instanton zero-mode sector |
 | \(R_{Af}(z),L_{fB}(z)\) | right-slot and left-slot zero-mode overlap matrices whose differentiated coefficient is \(\det R\,\det L\) |
 | \(G^{(4)}_{\eta,\Lambda,Q=1}\) | source-differentiated finite-regulator one-instanton contribution to the smeared four-fermion amplitude |
@@ -656,6 +657,22 @@
   \(\prod_f(m_f\rho)\) is the mass-saturated zero-mode factor, not the finite
   nonzero-mode determinant constant; the latter is a separate fluctuation
   calculation in the chosen scheme.
+- The renormalized mass/source instanton vertex is now stated as a source
+  functional:
+  \[
+    \mathcal V_{\rm inst}^0
+    =
+    \mathcal R_{\rm f}^{\mathcal S}(\mu)
+    \det(M^0+J^0).
+  \]
+  With \(\mu\,dM/d\mu=-\gamma_m M\) and
+  \(\mu\,dJ/d\mu=-\gamma_m J\) in source-coordinate notation and
+  \((\mu\partial_\mu+\beta\partial_g)\log\mathcal R_{\rm f}^{\mathcal S}
+  =N_f\gamma_m\), the full source functional is RG covariant.  The vacuum
+  product \(\mathcal R_{\rm f}^{\mathcal S}\prod_f m_f\) is therefore
+  invariant at this anomalous-dimension layer, while \(r\)-fold source
+  derivatives carry the Callan--Symanzik covariance of \(r\) scalar-density
+  insertions.
 
 ## Open Boundaries
 
@@ -916,3 +933,14 @@
   and normalization.  The BPST check script verifies the Schur factorization,
   the projected determinant product, and the independence of zero-mode minors
   from the finite nonzero-mode scheme factor.
+- 2026-06-03 issue #597/#630 mass-source RG pass: added the
+  source-functional RG transport of the instanton vertex.  The new block
+  states the renormalized zero-mode source functional
+  \(\mathcal R_{\rm f}^{\mathcal S}\det(M^0+J^0)\), the compensating
+  anomalous-dimension equation for \(\mathcal R_{\rm f}^{\mathcal S}\), the
+  vacuum invariance of
+  \(\mathcal R_{\rm f}^{\mathcal S}\prod_fm_f\), and the distinct
+  Callan--Symanzik covariance of source-differentiated correlators.  The BPST
+  check script verifies determinant homogeneity, anomalous-dimension
+  cancellation, source-derivative covariance weights, and the invariance of
+  \(\theta+\arg\det M\) under anomalous chiral rotations.

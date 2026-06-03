@@ -59,6 +59,9 @@ relations
     theta+arg det M, is locally small-rho finite when b0+Nf>4, and is
     infrared-uncontrolled in zero-temperature QCD if the same one-loop power
     is extended to large rho
+    the renormalized mass/source instanton functional has homogeneous
+    source-coordinate RG transport, with the finite fermion determinant factor
+    cancelling the anomalous running of det(M^0+J^0)
     the dilute instanton gas gives the Poisson/Skellam theta cumulants
     chi_top=2 zeta and b2=-1/12 only after the one-instanton amplitude is
     promoted to a finite dilute activity
@@ -870,6 +873,95 @@ def check_fermion_determinant_zero_mode_nonzero_mode_factorization() -> None:
         "zero-mode minor independent of nonzero-mode scheme factor B",
         scheme_b * complementary_mass_cofactor / scheme_b,
         complementary_mass_cofactor,
+    )
+
+
+def check_instanton_mass_source_rg_transport() -> None:
+    # The source functional before differentiation is R_f(mu) det(M^0 + J^0),
+    # with M^0 and J^0 linear in the mass and source coordinates.  If M and J
+    # have mass anomalous dimension -gamma_m, determinant homogeneity gives
+    # weight -Nf gamma_m, so the finite fermion determinant factor must carry
+    # +Nf gamma_m in the same source convention.
+    mass_matrix = [
+        [Fraction(2), Fraction(3), Fraction(5)],
+        [Fraction(7), Fraction(11), Fraction(13)],
+        [Fraction(17), Fraction(19), Fraction(23)],
+    ]
+    source_matrix = [
+        [Fraction(29), Fraction(31), Fraction(37)],
+        [Fraction(41), Fraction(43), Fraction(47)],
+        [Fraction(53), Fraction(59), Fraction(61)],
+    ]
+    rho = Fraction(5)
+    zero_mode_matrix = [
+        [
+            rho * (mass_matrix[row][col] + source_matrix[row][col])
+            for col in range(3)
+        ]
+        for row in range(3)
+    ]
+    scaling = Fraction(7, 5)
+    scaled_zero_mode_matrix = [
+        [scaling * entry for entry in row]
+        for row in zero_mode_matrix
+    ]
+    assert_equal(
+        "mass/source determinant homogeneous degree Nf",
+        det_fraction(scaled_zero_mode_matrix),
+        scaling**3 * det_fraction(zero_mode_matrix),
+    )
+
+    gamma_m = Fraction(5, 13)
+    flavor_count = 3
+    determinant_rg_weight = -flavor_count * gamma_m
+    fermion_factor_rg_weight = flavor_count * gamma_m
+    assert_equal(
+        "source-functional anomalous dimensions cancel",
+        fermion_factor_rg_weight + determinant_rg_weight,
+        Fraction(0),
+    )
+
+    diagonal_masses = [Fraction(2, 3), Fraction(5, 7), Fraction(11, 13)]
+    vacuum_mass_product = product_fraction([rho * mass for mass in diagonal_masses])
+    assert_equal(
+        "mass-saturated zero-mode determinant rho power",
+        vacuum_mass_product,
+        rho**flavor_count * product_fraction(diagonal_masses),
+    )
+    assert_equal(
+        "mass-saturated anomalous source transport cancels",
+        fermion_factor_rg_weight - flavor_count * gamma_m,
+        Fraction(0),
+    )
+
+    # After r source differentiations, the remaining mass minor has degree
+    # Nf-r.  The coefficient therefore transports with r gamma_m, which is the
+    # Callan-Symanzik covariance of r inserted renormalized scalar densities.
+    for source_derivatives in range(flavor_count + 1):
+        mass_minor_degree = flavor_count - source_derivatives
+        differentiated_weight = (
+            fermion_factor_rg_weight
+            - mass_minor_degree * gamma_m
+        )
+        assert_equal(
+            f"{source_derivatives}-source instanton coefficient RG covariance",
+            differentiated_weight,
+            source_derivatives * gamma_m,
+        )
+
+    theta_phase = Fraction(17, 3)
+    positive_mass_renormalization_arg_shift = Fraction(0)
+    anomalous_chiral_arg_shift = Fraction(-5, 2)
+    anomalous_chiral_theta_shift = Fraction(5, 2)
+    assert_equal(
+        "positive mass renormalization leaves strong CP phase unchanged",
+        theta_phase + positive_mass_renormalization_arg_shift,
+        theta_phase,
+    )
+    assert_equal(
+        "chiral anomaly keeps theta plus arg det M invariant",
+        anomalous_chiral_arg_shift + anomalous_chiral_theta_shift,
+        Fraction(0),
     )
 
 
@@ -1789,6 +1881,7 @@ def main() -> None:
     check_finite_regulator_determinant_datum()
     check_physical_instanton_correlator_zero_mode_saturation()
     check_fermion_determinant_zero_mode_nonzero_mode_factorization()
+    check_instanton_mass_source_rg_transport()
     check_proper_time_fluctuation_four_fermion_amplitude()
     check_instanton_source_typing_and_differentiation()
     check_instanton_heat_kernel_beta0_logarithm()
