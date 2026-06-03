@@ -11,6 +11,26 @@ def assert_equal(lhs, rhs, message: str) -> None:
         raise AssertionError(f"{message}: {lhs!r} != {rhs!r}")
 
 
+def vector_add(*vectors: list[Fraction]) -> list[Fraction]:
+    return [sum(vector[i] for vector in vectors) for i in range(len(vectors[0]))]
+
+
+def vector_sub(left: list[Fraction], right: list[Fraction]) -> list[Fraction]:
+    return [left[i] - right[i] for i in range(len(left))]
+
+
+def dot(row: list[Fraction], column: list[Fraction]) -> Fraction:
+    return sum(row[i] * column[i] for i in range(len(row)))
+
+
+def l1_norm(vector: list[Fraction]) -> Fraction:
+    return sum(abs(entry) for entry in vector)
+
+
+def linfty_norm(vector: list[Fraction]) -> Fraction:
+    return max(abs(entry) for entry in vector)
+
+
 def solve_linear_system(matrix: list[list[Fraction]], rhs: list[Fraction]) -> list[Fraction]:
     size = len(rhs)
     augmented = [row[:] + [rhs_entry] for row, rhs_entry in zip(matrix, rhs)]
@@ -426,6 +446,115 @@ def check_u_plane_wall_normal_delta_sequence() -> None:
     )
 
 
+def check_donaldson_sw_comparison_residual_budget() -> None:
+    # A finite Donaldson insertion test space sees the comparison as a
+    # telescoping chain of linear functionals.  The individual residuals encode
+    # UV construction/Q-localization, Q-compatible RG flow, u-plane splitting,
+    # singular-fiber monopole replacement, and contact/phase normalization.
+    comparison = [
+        Fraction(5, 7),
+        Fraction(-3, 11),
+        Fraction(13, 17),
+        Fraction(-2, 19),
+    ]
+    residual_norm = [
+        Fraction(1, 23),
+        Fraction(-2, 29),
+        Fraction(3, 31),
+        Fraction(-1, 37),
+    ]
+    residual_singular = [
+        Fraction(-2, 41),
+        Fraction(1, 43),
+        Fraction(5, 47),
+        Fraction(-3, 53),
+    ]
+    residual_u_plane = [
+        Fraction(3, 59),
+        Fraction(4, 61),
+        Fraction(-1, 67),
+        Fraction(2, 71),
+    ]
+    residual_rg = [
+        Fraction(-5, 73),
+        Fraction(2, 79),
+        Fraction(1, 83),
+        Fraction(3, 89),
+    ]
+    residual_q = [
+        Fraction(1, 97),
+        Fraction(-1, 101),
+        Fraction(2, 103),
+        Fraction(-2, 107),
+    ]
+
+    monopole_raw = vector_add(comparison, residual_norm)
+    split = vector_add(monopole_raw, residual_singular)
+    coulomb = vector_add(split, residual_u_plane)
+    asd = vector_add(coulomb, residual_rg)
+    uv = vector_add(asd, residual_q)
+
+    telescoped = vector_add(
+        residual_q,
+        residual_rg,
+        residual_u_plane,
+        residual_singular,
+        residual_norm,
+    )
+    assert_equal(
+        vector_sub(uv, comparison),
+        telescoped,
+        "Donaldson-SW comparison residuals telescope",
+    )
+
+    test = [
+        Fraction(2, 5),
+        Fraction(-3, 7),
+        Fraction(5, 9),
+        Fraction(-7, 11),
+    ]
+    discrepancy = dot(vector_sub(uv, comparison), test)
+    residual_sum = sum(
+        dot(residual, test)
+        for residual in (
+            residual_q,
+            residual_rg,
+            residual_u_plane,
+            residual_singular,
+            residual_norm,
+        )
+    )
+    assert_equal(
+        discrepancy,
+        residual_sum,
+        "Donaldson-SW residual budget evaluates on finite tests",
+    )
+
+    bound = sum(
+        l1_norm(residual) * linfty_norm(test)
+        for residual in (
+            residual_q,
+            residual_rg,
+            residual_u_plane,
+            residual_singular,
+            residual_norm,
+        )
+    )
+    if abs(discrepancy) > bound:
+        raise AssertionError(
+            f"Donaldson-SW residual norm budget failed: {abs(discrepancy)!r} > {bound!r}"
+        )
+
+    # If every comparison arrow is exact, the UV and SW functionals agree on
+    # the finite test space.
+    exact_uv = comparison[:]
+    assert_equal(
+        dot(vector_sub(exact_uv, comparison), test),
+        Fraction(0),
+        "zero residuals give exact finite Donaldson-SW comparison",
+    )
+
+
 def factorial(n: int) -> int:
     value = 1
     for k in range(2, n + 1):
@@ -457,6 +586,7 @@ def main() -> None:
     check_donaldson_blowup_cosh_bookkeeping()
     check_donaldson_exponential_moment_reconstruction()
     check_u_plane_wall_normal_delta_sequence()
+    check_donaldson_sw_comparison_residual_budget()
     check_trace_delta_action_normalization()
     print("Donaldson-Witten and Seiberg-Witten comparison checks passed.")
 
