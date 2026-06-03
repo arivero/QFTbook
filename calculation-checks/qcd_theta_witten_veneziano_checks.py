@@ -146,12 +146,49 @@ def check_cp_symmetric_first_moment() -> None:
     require(mean == 0, "CP-symmetric theta weights should have zero first moment")
 
 
+def check_anomaly_invariant_singlet_coordinate_and_mass_alignment() -> None:
+    theta, i_log_det_u, alpha, arg_det_m = sp.symbols(
+        "theta i_log_det_u alpha arg_det_m"
+    )
+    nf = sp.symbols("nf", positive=True, integer=True)
+
+    theta_shifted = theta - 2 * nf * alpha
+    i_log_det_u_shifted = i_log_det_u - 2 * nf * alpha
+
+    invariant = theta - i_log_det_u
+    shifted_invariant = theta_shifted - i_log_det_u_shifted
+    assert_zero(
+        "theta minus i log det U is axial invariant",
+        shifted_invariant - invariant,
+    )
+
+    wrong_coordinate = theta + i_log_det_u
+    shifted_wrong_coordinate = theta_shifted + i_log_det_u_shifted
+    assert_zero(
+        "theta plus i log det U shifts by minus four N_f alpha",
+        shifted_wrong_coordinate - wrong_coordinate + 4 * nf * alpha,
+    )
+    require(
+        sp.simplify(shifted_wrong_coordinate - wrong_coordinate) != 0,
+        "wrong singlet coordinate accidentally became invariant",
+    )
+
+    # If the leading mass spurion aligns U with the phase of M, then
+    # log det U = i arg det M and i log det U = - arg det M.
+    i_log_det_u_at_mass_alignment = -arg_det_m
+    assert_zero(
+        "singlet coordinate matches microscopic strong-CP phase",
+        invariant.subs(i_log_det_u, i_log_det_u_at_mass_alignment)
+        - (theta + arg_det_m),
+    )
+
+
 def check_witten_veneziano_mass_coefficient() -> None:
     eta, theta, chi, f = sp.symbols("eta theta chi f", positive=True)
     nf = sp.symbols("nf", positive=True, integer=True)
 
     determinant_phase = sp.sqrt(2 * nf) * eta / f
-    potential = sp.Rational(1, 2) * chi * (theta - determinant_phase) ** 2
+    potential = sp.Rational(1, 2) * chi * (theta + determinant_phase) ** 2
     mass_squared = sp.diff(potential.subs(theta, 0), eta, 2)
     assert_zero("Witten-Veneziano coefficient", mass_squared - 2 * nf * chi / f**2)
 
@@ -161,20 +198,23 @@ def check_theta_eta_curvature_matrix() -> None:
     nf = sp.symbols("nf", positive=True, integer=True)
 
     a = sp.sqrt(2 * nf) / f
-    potential = sp.Rational(1, 2) * chi * (theta - a * eta) ** 2
+    potential = sp.Rational(1, 2) * chi * (theta + a * eta) ** 2
     hessian = sp.Matrix(
         [
             [sp.diff(potential, theta, theta), sp.diff(potential, theta, eta)],
             [sp.diff(potential, eta, theta), sp.diff(potential, eta, eta)],
         ]
     )
-    expected = chi * sp.Matrix([[1, -a], [-a, a**2]])
+    expected = chi * sp.Matrix([[1, a], [a, a**2]])
     for row in range(2):
         for col in range(2):
-            assert_zero(f"theta-eta Hessian entry {row}{col}", hessian[row, col] - expected[row, col])
+            assert_zero(
+                f"theta-eta Hessian entry {row}{col}",
+                hessian[row, col] - expected[row, col],
+            )
 
     assert_zero("theta-eta Hessian determinant", hessian.det())
-    null_vector = sp.Matrix([a, 1])
+    null_vector = sp.Matrix([-a, 1])
     for row, entry in enumerate(hessian * null_vector):
         assert_zero(f"theta-eta screening null vector row {row}", entry)
 
@@ -183,17 +223,20 @@ def check_theta_eta_curvature_matrix() -> None:
     schur_curvature = hessian[0, 0] - hessian[0, 1] * hessian[1, 0] / hessian[1, 1]
     assert_zero("screened theta Schur complement", schur_curvature)
 
-    wrong_sign_potential = sp.Rational(1, 2) * chi * (theta + a * eta) ** 2
+    wrong_sign_potential = sp.Rational(1, 2) * chi * (theta - a * eta) ** 2
     wrong_mixed = sp.diff(wrong_sign_potential, theta, eta)
-    assert_zero("wrong-sign mixed derivative differs by 2 a chi", wrong_mixed - hessian[0, 1] - 2 * a * chi)
+    assert_zero(
+        "wrong-sign mixed derivative differs by minus 2 a chi",
+        wrong_mixed - hessian[0, 1] + 2 * a * chi,
+    )
 
 
 def check_massless_quark_theta_screening() -> None:
     eta, theta, chi, f = sp.symbols("eta theta chi f", positive=True)
     nf_value = sp.Integer(3)
     determinant_phase = sp.sqrt(2 * nf_value) * eta / f
-    potential = sp.Rational(1, 2) * chi * (theta - determinant_phase) ** 2
-    eta_at_minimum = theta * f / sp.sqrt(2 * nf_value)
+    potential = sp.Rational(1, 2) * chi * (theta + determinant_phase) ** 2
+    eta_at_minimum = -theta * f / sp.sqrt(2 * nf_value)
     minimized = sp.simplify(potential.subs(eta, eta_at_minimum))
     assert_zero("massless theta screening", minimized)
 
@@ -205,9 +248,19 @@ def check_dilute_instanton_chiral_spurion_potential() -> None:
     a = sp.sqrt(2 * nf) / f
     minus_i_log_det_u = a * eta
     i_log_det_u = -minus_i_log_det_u
-    theta_eff = theta + i_log_det_u
-    assert_zero("dilute instanton determinant-log convention", theta_eff - (theta - a * eta))
+    theta_eff = theta - i_log_det_u
+    assert_zero("dilute instanton determinant-log convention", theta_eff - (theta + a * eta))
     potential = 2 * zeta * (1 - sp.cos(theta_eff))
+
+    det_phase = sp.symbols("det_phase", real=True)
+    determinant_vertex = sp.exp(sp.I * theta) * sp.exp(sp.I * det_phase) + sp.exp(
+        -sp.I * theta
+    ) * sp.exp(-sp.I * det_phase)
+    cosine_vertex = 2 * sp.cos(theta + det_phase).rewrite(sp.exp)
+    assert_zero(
+        "dilute instanton determinant vertex conjugation",
+        sp.simplify(determinant_vertex - cosine_vertex),
+    )
 
     susceptibility = sp.diff(potential.subs(eta, 0), theta, 2).subs(theta, 0)
     assert_zero("dilute instanton chiral susceptibility", susceptibility - 2 * zeta)
@@ -218,7 +271,7 @@ def check_dilute_instanton_chiral_spurion_potential() -> None:
             [sp.diff(potential, eta, theta), sp.diff(potential, eta, eta)],
         ]
     ).subs({theta: 0, eta: 0})
-    expected = 2 * zeta * sp.Matrix([[1, -a], [-a, a**2]])
+    expected = 2 * zeta * sp.Matrix([[1, a], [a, a**2]])
     for row in range(2):
         for col in range(2):
             assert_zero(
@@ -226,7 +279,7 @@ def check_dilute_instanton_chiral_spurion_potential() -> None:
                 hessian[row, col] - expected[row, col],
             )
 
-    for row, entry in enumerate(hessian * sp.Matrix([a, 1])):
+    for row, entry in enumerate(hessian * sp.Matrix([-a, 1])):
         assert_zero(f"dilute instanton screening null vector row {row}", entry)
 
     mass_contribution = hessian[1, 1]
@@ -352,6 +405,7 @@ def main() -> None:
     check_finite_volume_cumulant_identity()
     check_local_density_susceptibility_cumulant()
     check_cp_symmetric_first_moment()
+    check_anomaly_invariant_singlet_coordinate_and_mass_alignment()
     check_witten_veneziano_mass_coefficient()
     check_theta_eta_curvature_matrix()
     check_massless_quark_theta_screening()

@@ -319,11 +319,13 @@ Current checks:
   moment, theta periodicity by branch relabeling, branch-mixture cluster
   covariance, thermodynamic branch selection, massless-quark theta
   screening, and the Witten--Veneziano mass coefficient.  It also verifies
-  the local \((\theta,\eta_0)\) curvature matrix, its screening null vector,
+  the axial invariance of \(\theta-i\log\det\widehat U\), its alignment with
+  the microscopic \(\theta+\arg\det M\) phase after mass-spurion locking, the
+  local \((\theta,\eta_0)\) curvature matrix, its screening null vector,
   the screened theta Schur complement, and the sign-sensitive mixed
   derivative fixed by the anomaly-invariant coordinate.  The dilute-instanton
   chiral-spurion branch checks the controlled potential
-  \(2\zeta_\chi[1-\cos(\theta+i\log\det\widehat U)]\), its
+  \(2\zeta_\chi[1-\cos(\theta-i\log\det\widehat U)]\), its
   \(\chi_{\rm top}^{\rm dig}=2\zeta_\chi\) susceptibility, the same
   rank-one screening curvature, the quartic cosine sign, and the finite
   activity singlet mass contribution \(4N_f\zeta_\chi/f_\pi^2\), keeping this

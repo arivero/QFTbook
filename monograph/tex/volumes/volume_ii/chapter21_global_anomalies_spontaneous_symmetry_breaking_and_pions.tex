@@ -1317,10 +1317,16 @@ Fix \(N_f\) while \(N_c\to\infty\), and assume the following inputs.
   \begin{equation}
     \vartheta
     =
-    \theta+\ii\log\det\widehat U
+    \theta-\ii\log\det\widehat U
     \label{eq:singlet-theta-combination}
   \end{equation}
-  on the branch near \(\widehat U=1\).
+  on the branch near \(\widehat U=1\).  With the convention
+  \(U\mapsto LUR^{-1}\), a common axial change of variables sends
+  \(\theta\mapsto\theta-2N_f\alpha\) and
+  \(\ii\log\det\widehat U\mapsto
+  \ii\log\det\widehat U-2N_f\alpha\), so this is the invariant coordinate.
+  When the mass term aligns \(\widehat U\) with the phase of \(M\), it reduces
+  to the microscopic strong-CP phase \(\theta+\arg\det M\).
 \end{enumerate}
 \end{hypothesis}
 
@@ -1355,7 +1361,7 @@ on the branch near the identity.  Substituting
   =
   \frac12\chi_{\rm YM}
   \left(
-    \theta-\frac{\sqrt{2N_f}}{f_\pi}\eta_0
+    \theta+\frac{\sqrt{2N_f}}{f_\pi}\eta_0
   \right)^2
   +O(N_c^{-2})
   \]
@@ -1383,7 +1389,7 @@ when the limit exists in a CP-invariant branch.  In the local singlet chart set
   \qquad
   V(\theta,\eta_0)
   =
-  \frac12\chi_{\rm YM}(\theta-a\eta_0)^2 .
+  \frac12\chi_{\rm YM}(\theta+a\eta_0)^2 .
 \]
 The Hessian in the coordinate pair \((\theta,\eta_0)\) is the rank-one matrix
 \begin{equation}
@@ -1391,13 +1397,13 @@ The Hessian in the coordinate pair \((\theta,\eta_0)\) is the rank-one matrix
   =
   \chi_{\rm YM}
   \begin{pmatrix}
-    1&-a\\
-    -a&a^2
+    1&a\\
+    a&a^2
   \end{pmatrix}.
   \label{eq:theta-eta0-curvature-matrix}
 \end{equation}
-Thus \(H_{\theta,\eta}(a,1)^T=0\): shifting \(\theta\) and \(\eta_0\) together
-so that \(\theta-a\eta_0\) is fixed is the massless-quark screening direction.
+Thus \(H_{\theta,\eta}(-a,1)^T=0\): shifting \(\theta\) and \(\eta_0\) so that
+\(\theta+a\eta_0\) is fixed is the massless-quark screening direction.
 By contrast, the fixed-\(\theta\) curvature in the \(\eta_0\) direction is
 \[
   \partial_{\eta_0}^2V|_{\theta=0}
@@ -1408,9 +1414,9 @@ By contrast, the fixed-\(\theta\) curvature in the \(\eta_0\) direction is
 \]
 which is exactly the mass coefficient in
 \eqref{eq:witten-veneziano-chiral-limit}.  The mixed derivative
-\(\partial_\theta\partial_{\eta_0}V=-a\chi_{\rm YM}\) records the sign of the
+\(\partial_\theta\partial_{\eta_0}V=a\chi_{\rm YM}\) records the sign of the
 anomaly-invariant coordinate
-\(\theta+\ii\log\det\widehat U\); reversing that sign would give the same
+\(\theta-\ii\log\det\widehat U\); reversing that sign would give the same
 positive mass but the opposite singlet screening convention.
 
 \begin{remark}[Why this does not contradict massless-quark theta independence]
@@ -1418,7 +1424,7 @@ positive mass but the opposite singlet screening convention.
 If the quark masses vanish and \(\eta_0\) is included as a dynamical field,
 the vacuum minimizes
 \(
-\theta-\sqrt{2N_f}\eta_0/f_\pi
+\theta+\sqrt{2N_f}\eta_0/f_\pi
 \).
 Thus the full massless QCD vacuum energy is locally independent of
 \(\theta\), and its topological susceptibility vanishes, while the curvature
@@ -1446,7 +1452,7 @@ anti-instanton conjugate induce the local singlet potential
     &=
     2\zeta_\chi
     \left[
-      1-\cos\!\left(\theta+\ii\log\det\widehat U\right)
+      1-\cos\!\left(\theta-\ii\log\det\widehat U\right)
     \right] \\
     &\quad
     +\hbox{higher-derivative and higher-mass terms}
@@ -1460,10 +1466,10 @@ on the same local branch as
 Lagrangian vertex is proportional to
 \[
   \zeta_\chi\,
-  \ee^{\ii\theta}\det\widehat U^\dagger
+  \ee^{\ii\theta}\det\widehat U
   +
   \zeta_\chi\,
-  \ee^{-\ii\theta}\det\widehat U,
+  \ee^{-\ii\theta}\det\widehat U^\dagger,
 \]
 up to a field-independent constant in the potential.  If the microscopic
 zero-mode determinant is written with the conjugate row/column convention,
@@ -1476,17 +1482,17 @@ In the \(\eta_0\) chart and sign convention of
 \[
   a=\frac{\sqrt{2N_f}}{f_\pi},
   \qquad
-  \theta+\ii\log\det\widehat U
+  \theta-\ii\log\det\widehat U
   =
-  \theta-a\eta_0
+  \theta+a\eta_0
   \quad\hbox{on the chosen exponential branch}.
 \]
 Expanding \eqref{eq:instanton-chiral-determinant-potential} gives
 \begin{equation}
   V_{\rm inst}^{\chi}(\theta,\eta_0)
   =
-  \zeta_\chi(\theta-a\eta_0)^2
-  +O((\theta-a\eta_0)^4),
+  \zeta_\chi(\theta+a\eta_0)^2
+  +O((\theta+a\eta_0)^4),
   \label{eq:instanton-chiral-determinant-quadratic}
 \end{equation}
 so its local curvature matrix is
@@ -1495,8 +1501,8 @@ so its local curvature matrix is
   =
   2\zeta_\chi
   \begin{pmatrix}
-    1&-a\\
-    -a&a^2
+    1&a\\
+    a&a^2
   \end{pmatrix}.
   \label{eq:instanton-chiral-curvature-matrix}
 \end{equation}

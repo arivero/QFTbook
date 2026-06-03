@@ -189,7 +189,7 @@
   \(U(N_f)\), the singlet potential
   \[
     \frac12\chi_{\rm YM}
-    \left(\theta-\sqrt{2N_f}\eta_0/f_\pi\right)^2
+    \left(\theta+\sqrt{2N_f}\eta_0/f_\pi\right)^2
   \]
   gives the chiral-limit Witten--Veneziano mass
   \(m_{\eta_0}^2=2N_f\chi_{\rm YM}/f_\pi^2\).  The text also states why the
@@ -198,16 +198,18 @@
   susceptibility.
 - The same matching is now expressed as the local \((\theta,\eta_0)\)
   curvature matrix
-  \(\chi_{\rm YM}\begin{psmallmatrix}1&-a\\-a&a^2\end{psmallmatrix}\),
+  \(\chi_{\rm YM}\begin{psmallmatrix}1&a\\a&a^2\end{psmallmatrix}\),
   \(a=\sqrt{2N_f}/f_\pi\).  This records the screening null direction, the
   fixed-\(\theta\) singlet mass coefficient, and the mixed-derivative sign of
-  the anomaly-invariant coordinate.
+  the anomaly-invariant coordinate \(\theta-i\log\det\widehat U\), which
+  reduces to the microscopic \(\theta+\arg\det M\) phase after mass-spurion
+  alignment.
 - Under the separate finite-activity dilute-instanton hypothesis inherited
   from Chapter 20, the matched zero-mode determinant induces the conditional
   chiral potential
-  \(2\zeta_\chi[1-\cos(\theta+i\log\det\widehat U)]\).  Its local
+  \(2\zeta_\chi[1-\cos(\theta-i\log\det\widehat U)]\).  Its local
   \((\theta,\eta_0)\) curvature is
-  \(2\zeta_\chi\begin{psmallmatrix}1&-a\\-a&a^2\end{psmallmatrix}\), its
+  \(2\zeta_\chi\begin{psmallmatrix}1&a\\a&a^2\end{psmallmatrix}\), its
   conditional dilute-gas susceptibility is
   \(\chi_{\rm top}^{\rm dig}=2\zeta_\chi\), and the fixed-\(\theta\) singlet
   mass contribution is \(4N_f\zeta_\chi/f_\pi^2\).  The chapter explicitly
@@ -463,3 +465,8 @@
   semiclassical statement from the nonperturbative Witten--Veneziano
   susceptibility input and records why isolated BPST instantons do not by
   themselves compute the ordinary zero-temperature QCD eta-prime mass.
+- 2026-06-03 issue #715 sign-regression repair: restored the anomaly-invariant
+  singlet coordinate to \(\theta-i\log\det\widehat U\), swapped the determinant
+  conjugations in the dilute-instanton chiral vertex, and added exact checks
+  for axial invariance and mass-spurion alignment with the microscopic
+  \(\theta+\arg\det M\) phase.
