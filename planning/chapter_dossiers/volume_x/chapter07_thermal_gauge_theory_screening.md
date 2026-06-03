@@ -17,9 +17,10 @@ theories before kinetic theory and anomalous transport.
   susceptibility derivation of the one-loop Debye coefficient.
 - `A_0`, `A_i`, `g_3^2`: temporal scalar, spatial gauge field, and
   three-dimensional coupling.
-- `P(x)`, `F_Q`, `Delta F_{R\bar R}`: Polyakov loop, static
+- `P(x)`, `C_R`, `C_{R\bar R}`, `F_Q`, `Delta F_{R\bar R}`:
+  Polyakov loop, one-line expectation, neutral pair correlator, static
   external-charge free energy, and line-renormalization-independent pair
-  excess free energy.
+  excess free energy in sectors where the one-line expectations are nonzero.
 
 ## Claim Ledger
 
@@ -43,9 +44,10 @@ theories before kinetic theory and anomalous transport.
 - Separates electric matching from nonperturbative magnetic screening in the
   dimensionally reduced theory.
 - Defines Polyakov-loop free energies and proves that the connected pair
-  excess free energy and static source-pair force cancel local line
-  self-energies, while an absolute one-source free energy remains a
-  line-scheme coordinate.
+  excess free energy cancels local line self-energies only in a fixed
+  state/center sector or source-selected limit with nonzero one-line
+  expectations.  Separately proves that the static source-pair force cancels
+  local line self-energies without dividing by one-point functions.
 - Defines the EQCD matching problem.
 
 ## Figure Ledger
@@ -60,7 +62,8 @@ circle, a Polyakov loop pair, and the hierarchy of static scales
   Yukawa/Bessel asymptotic powers, the transverse-projected pole residue, and
   the trace-convention conversion of the Debye coefficient, plus the exact
   finite algebra by which Polyakov-loop pair ratios and static forces cancel
-  line self-energies.
+  line self-energies, including the zero-one-point center-symmetric domain
+  distinction.
 
 ## Audit Notes
 
@@ -74,3 +77,8 @@ circle, a Polyakov loop pair, and the hierarchy of static scales
   of local line self-energies in connected pair ratios and source-pair forces,
   and extended the thermal screening companion check to guard the cancellation
   and finite line-scheme invariance.
+- 2026-06-03 ratio-domain correction: qualified the pair-excess ratio by the
+  nonzero one-line expectation/source-selected sector hypothesis, separated it
+  from the direct source-pair force, and recorded the finite-volume
+  center-symmetric observable as the neutral pair correlator or its
+  \(r\)-derivative rather than a one-source free energy.

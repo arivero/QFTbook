@@ -377,6 +377,10 @@ absolute one-source free energy is quoted.
 \begin{lemma}[Line self-energy cancellation in static-source ratios]
 \label{lem:thermal-static-source-line-cancellation}
 In the datum of Definition~\ref{def:thermal-static-source-free-energy-datum},
+assume the expectation values are taken in a fixed physical state and
+center-sector prescription, or in a source-selected infinite-volume limit, for
+which the one-source expectations satisfy
+\(C_R^{\rm ren}C_{\bar R}^{\rm ren}\ne 0\).  Then
 the pair excess free energy
 \[
   \Delta F_{R\bar R}(r)
@@ -388,8 +392,10 @@ the static force
 \[
   \mathcal F_{R\bar R}(r,T)=-\partial_rF_{R\bar R}^{\rm ren}(r,T),
 \]
-provided the line counterterms are local energies of the individual wrapped
-sources and hence independent of \(r\).
+which requires no division by the one-source expectations, provided the pair
+correlator defines \(F_{R\bar R}^{\rm ren}\) and the line counterterms are
+local energies of the individual wrapped sources and hence independent of
+\(r\).
 \end{lemma}
 
 \begin{proof}
@@ -404,7 +410,8 @@ with the displayed normalized traces suppressed.  Renormalization gives
   C_R^{\rm ren}=Z_R C_R^\Lambda,\qquad
   C_{R\bar R}^{\rm ren}(r)=Z_RZ_{\bar R}C_{R\bar R}^\Lambda(r).
 \]
-Therefore
+When \(C_R^\Lambda C_{\bar R}^\Lambda\ne0\), equivalently after finite
+renormalization \(C_R^{\rm ren}C_{\bar R}^{\rm ren}\ne0\), therefore
 \[
   \exp\{-\beta\Delta F_{R\bar R}(r)\}
   =
@@ -414,8 +421,9 @@ Therefore
   \frac{C_{R\bar R}^{\Lambda}(r)}
        {C_R^\Lambda C_{\bar R}^\Lambda},
 \]
-so all one-line factors cancel before the continuum limit is discussed.  For
-the force,
+so all one-line factors cancel before the continuum limit is discussed.  This
+is a conditional ratio statement, not a definition in a sector where either
+one-point function vanishes.  For the force, no one-point divisor is used:
 \[
   F_{R\bar R}^{\rm ren}(r,T)
   =
@@ -426,13 +434,30 @@ and differentiating with respect to \(r\) removes the same local constants.
 \end{proof}
 
 Thus the absolute number assigned to a single static-source free energy is a
-line-scheme coordinate, while the connected Polyakov-loop ratio and the
-source-pair force are the quantities that can be compared across regulators
-after the same physical state and center-sector limit have been specified.  In
-a center-symmetric finite-volume pure gauge theory the nonzero-\(N\)-ality
-one-point function still vanishes before any finite multiplicative
-renormalization; the source-selected infinite-volume limit is the separate
-order-parameter limit used in phase discussions.
+line-scheme coordinate, while the conditional connected Polyakov-loop ratio
+and the source-pair force are the quantities that can be compared across
+regulators after the same physical state and center-sector limit have been
+specified.  In a center-symmetric finite-volume pure gauge theory the
+nonzero-\(N\)-ality one-point function still vanishes before any finite
+multiplicative renormalization; the source-selected infinite-volume limit is
+the separate order-parameter limit used in phase discussions.  In the
+center-symmetric sector itself one instead uses the neutral pair correlator
+\[
+  G_{R\bar R}^{\rm ren}(r)
+  =
+  \left\langle d_R^{-2}
+  \operatorname{tr}_R P_R^{\rm ren}(\mathbf x)\,
+  \operatorname{tr}_{\bar R}P_{\bar R}^{\rm ren}(\mathbf y)
+  \right\rangle
+\]
+or, where this correlator is nonzero and differentiable in \(r\), the direct
+pair force
+\[
+  -\partial_rF_{R\bar R}^{\rm ren}(r,T)
+  =
+  \beta^{-1}\partial_r\log G_{R\bar R}^{\rm ren}(r),
+\]
+without assigning finite one-source free energies.
 
 \section{Dimensional Reduction}
 

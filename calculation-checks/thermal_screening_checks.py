@@ -4,9 +4,9 @@
 These checks accompany Volume X, Chapter 7.  They verify algebraic facts that
 are easy to obscure in prose: the Yukawa power in a d-dimensional static
 correlator, the one-dimensional projected pole residue, static-source line
-renormalization cancellation, and the conversion of the one-loop Debye
-coefficient between the monograph trace-delta convention and the common
-half-trace convention.
+renormalization cancellation with its nonzero one-point domain, and the
+conversion of the one-loop Debye coefficient between the monograph trace-delta
+convention and the common half-trace convention.
 """
 
 from __future__ import annotations
@@ -151,11 +151,59 @@ def check_static_source_line_renormalization_cancellation() -> None:
     )
 
 
+def pair_excess_ratio(pair_correlator: Fraction, source_one_point: Fraction, antisource_one_point: Fraction) -> Fraction:
+    if source_one_point == 0 or antisource_one_point == 0:
+        raise ValueError("pair-excess ratio requires nonzero one-point functions")
+    return pair_correlator / (source_one_point * antisource_one_point)
+
+
+def check_static_source_ratio_domain_and_center_symmetric_force() -> None:
+    # In a center-symmetric finite-volume pure gauge sector, a nonzero-N-ality
+    # one-point function vanishes.  The neutral pair correlator may still be
+    # nonzero, but the pair-excess ratio is not a defined observable.
+    center_symmetric_one_point = Fraction(0)
+    neutral_pair_correlator = Fraction(5, 7)
+    assert_equal("center-symmetric one-point vanishes", center_symmetric_one_point, Fraction(0))
+    assert_equal("neutral pair correlator can be nonzero", neutral_pair_correlator != 0, True)
+
+    try:
+        pair_excess_ratio(neutral_pair_correlator, center_symmetric_one_point, center_symmetric_one_point)
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("zero one-point functions should not define a pair-excess ratio")
+
+    selected_source = Fraction(2, 5)
+    selected_antisource = Fraction(3, 7)
+    selected_pair = Fraction(11, 13)
+    line_factor = Fraction(17, 19)
+    assert_equal(
+        "source-selected pair ratio cancels finite line factors",
+        pair_excess_ratio(line_factor * line_factor * selected_pair, line_factor * selected_source, line_factor * selected_antisource),
+        pair_excess_ratio(selected_pair, selected_source, selected_antisource),
+    )
+
+    # The direct pair force uses only the pair free energy.  An r-independent
+    # wrapped-line self-energy shifts the potential but not its derivative,
+    # so this statement survives without one-point denominators.
+    r = Fraction(5)
+    sigma = Fraction(7, 11)
+    coulomb = Fraction(13, 17)
+    line_self_energy = Fraction(23, 29)
+    bare_pair_potential = line_self_energy + sigma * r + coulomb / r
+    ren_pair_potential = bare_pair_potential - line_self_energy
+    bare_pair_derivative = sigma - coulomb / (r * r)
+    ren_pair_derivative = sigma - coulomb / (r * r)
+    assert_equal("center-sector direct pair potential shifts by line energy", bare_pair_potential - ren_pair_potential, line_self_energy)
+    assert_equal("center-sector direct pair force removes line energy", -bare_pair_derivative, -ren_pair_derivative)
+
+
 def main() -> None:
     check_yukawa_screening_power()
     check_projected_pole_residue()
     check_debye_trace_convention_conversion()
     check_static_source_line_renormalization_cancellation()
+    check_static_source_ratio_domain_and_center_symmetric_force()
     print("All thermal screening convention and static-source checks passed.")
 
 
