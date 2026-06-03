@@ -12230,6 +12230,138 @@ Proposition~\ref{prop:spde-finite-window-os-assembly-defect-budget} applied
 along the schedule.
 \end{proof}
 
+\begin{proposition}[Cross-route phase-cell/SPDE assembly budget]
+\label{prop:spde-constructive-phase-cell-cross-route-budget}
+Work in one finite-volume chart: the same field normalization, Wick-ordering
+convention, renormalized mass coordinate, and local counterterm normalization
+are used for the phase-cell construction of
+Chapter~\ref{ch:constructive-scalar-models-os-data} and for the dynamic
+\(\Phi^4_3\) SPDE construction.  For a positive-time polynomial OS window
+\[
+  \mathcal W_k=\{F_{k,1},\ldots,F_{k,m_k}\}
+\]
+let \(G_{k,ij}^{\rm spde}\) be the limiting stationary-SPDE Gram entries,
+\(G_{k,ij}^{(n)}\) a cutoff SPDE Gram matrix, \(H_{k,ij}^{(J)}\) the
+corresponding phase-cell regulator at constructive scale \(J\), and
+\(H_{k,ij}^{\rm cons}\) the limiting constructive Gram matrix.  Suppose that
+\begin{align}
+  \max_{i,j\leq m_k}
+  |G_{k,ij}^{\rm spde}-G_{k,ij}^{(n)}|
+  &\leq C_k^{\rm spde} e_n+T_{k,R},
+  \label{eq:spde-cross-route-spde-entrywise}\\
+  \max_{i,j\leq m_k}
+  |G_{k,ij}^{(n)}-H_{k,ij}^{(J)}|
+  &\leq \chi_{k,n,J},
+  \label{eq:spde-cross-route-finite-chart}\\
+  \max_{i,j\leq m_k}
+  |H_{k,ij}^{(J)}-H_{k,ij}^{\rm cons}|
+  &\leq D_k\,\mathcal E_J^{\rm constr}.
+  \label{eq:spde-cross-route-constructive-tail}
+\end{align}
+Here \(e_n\) is the projective model/fixed-point SPDE defect, \(T_{k,R}\) is
+the polynomial truncation tail, \(\chi_{k,n,J}\) is the finite-chart
+comparison error between the stochastic and phase-cell regulators, and
+\(\mathcal E_J^{\rm constr}\) is the constructive phase-cell defect bounded in
+\eqref{eq:phi-four-three-model-budget-total-defect}.  If the phase-cell
+window has lower OS defect
+\begin{equation}
+  \sum_{i,j\leq m_k}\overline{c_i}c_jH_{k,ij}^{(J)}
+  \geq
+  -\delta_{k,n,J}\sum_{i\leq m_k}|c_i|^2,
+  \label{eq:spde-cross-route-phase-cell-os-defect}
+\end{equation}
+then the limiting SPDE Gram matrix satisfies
+\begin{equation}
+  \sum_{i,j\leq m_k}\overline{c_i}c_jG_{k,ij}^{\rm spde}
+  \geq
+  -\Xi_{k,n,J,R}\sum_{i\leq m_k}|c_i|^2,
+  \label{eq:spde-cross-route-spde-os-defect}
+\end{equation}
+where
+\begin{equation}
+  \Xi_{k,n,J,R}
+  =
+  \delta_{k,n,J}
+  +m_k\bigl(C_k^{\rm spde} e_n+T_{k,R}+\chi_{k,n,J}\bigr).
+  \label{eq:spde-cross-route-spde-defect}
+\end{equation}
+Moreover
+\begin{equation}
+  \max_{i,j\leq m_k}
+  |G_{k,ij}^{\rm spde}-H_{k,ij}^{\rm cons}|
+  \leq
+  C_k^{\rm spde} e_n+T_{k,R}+\chi_{k,n,J}
+  +D_k\mathcal E_J^{\rm constr}.
+  \label{eq:spde-cross-route-hierarchy-comparison}
+\end{equation}
+Consequently, if there is a directed schedule
+\((n(k),J(k),R(k))\) for which
+\[
+  \Xi_{k,n(k),J(k),R(k)}\to0,\qquad
+  m_k\bigl(C_k^{\rm spde} e_{n(k)}+T_{k,R(k)}
+  +\chi_{k,n(k),J(k)}
+  +D_k\mathcal E_{J(k)}^{\rm constr}\bigr)\to0,
+\]
+then the directed SPDE hierarchy and the constructive hierarchy have the same
+positive-time OS pre-Hilbert form.  The corrected OS-II growth package
+transfers from the constructive hierarchy whenever the entrywise comparison
+errors are dominated by a common OS-II seminorm envelope.
+
+For instance, if
+\[
+  m_k\leq2^{\alpha k},\qquad
+  C_k^{\rm spde}\leq2^{\beta k},\qquad
+  D_k\leq2^{\gamma k},
+\]
+then the sample choices
+\[
+\begin{gathered}
+  e_{n(k)}\leq2^{-(\alpha+\beta+4)k},\qquad
+  T_{k,R(k)}\leq2^{-(\alpha+4)k},\\
+  \chi_{k,n(k),J(k)}\leq2^{-(\alpha+4)k},\qquad
+  \mathcal E_{J(k)}^{\rm constr}\leq2^{-(\alpha+\gamma+4)k},\\
+  \delta_{k,n(k),J(k)}\leq2^{-k}
+\end{gathered}
+\]
+make the combined finite-window defect at most \(2\,2^{-k}\).
+\end{proposition}
+
+\begin{proof}
+By the triangle inequality,
+\[
+  |G_{k,ij}^{\rm spde}-H_{k,ij}^{(J)}|
+  \leq
+  C_k^{\rm spde}e_n+T_{k,R}+\chi_{k,n,J}.
+\]
+Substituting this estimate into the quadratic form and using
+\((\sum_i|c_i|)^2\leq m_k\sum_i|c_i|^2\), exactly as in
+Proposition~\ref{prop:spde-finite-window-os-assembly-defect-budget}, gives
+\eqref{eq:spde-cross-route-spde-os-defect} and
+\eqref{eq:spde-cross-route-spde-defect}.  Adding
+\eqref{eq:spde-cross-route-constructive-tail} to the same triangle estimate
+proves \eqref{eq:spde-cross-route-hierarchy-comparison}.
+
+If the directed schedule sends the two displayed defects to zero, every
+finite positive-time polynomial OS quadratic form in the SPDE hierarchy is the
+limit of the corresponding constructive form, and the finite-window
+comparison identifies the null spaces before completion.  The OS-II growth
+statement follows from the growth-transfer part of
+Proposition~\ref{prop:spde-finite-window-os-assembly-defect-budget}.
+
+For the sample rate schedule, multiply each entrywise error by the worst
+window factor \(m_k\).  The model/fixed-point contribution is bounded by
+\[
+  2^{\alpha k}2^{\beta k}2^{-(\alpha+\beta+4)k}=2^{-4k},
+\]
+the truncation and finite-chart comparison terms by \(2^{-4k}\), and the
+phase-cell tail by
+\[
+  2^{\alpha k}2^{\gamma k}2^{-(\alpha+\gamma+4)k}=2^{-4k}.
+\]
+Together with the lower OS defect \(2^{-k}\), this is
+\(2^{-k}+4\,2^{-4k}\leq2\,2^{-k}\) for \(k\geq1\).
+\end{proof}
+
 \begin{quotedtheorem}[Renormalized dynamic \(\Phi^4_3\) theorem package]
 \label{thm:renormalized-phi-four-three-spde-datum}
 Let the spatial manifold be a finite three-dimensional torus, let

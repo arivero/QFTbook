@@ -69,6 +69,11 @@
   local mass/vacuum extraction, source-decorated bounds, and OS/regulator
   defect tails are organized as the concrete estimates needed before the
   abstract phase-cell theorem can internalize the quoted constructive output.
+- The resulting constructive defect \(\mathcal E_J^{\rm constr}\) is now
+  explicitly consumed by the Chapter 9 cross-route phase-cell/SPDE assembly
+  budget, where it must beat both OS window size and phase-cell
+  finite-window amplification before the SPDE and constructive hierarchies
+  can be identified.
 - Refined proof obligation for a self-contained monograph proof of the quoted
   \(\Phi^4_3\) constructive output theorem: the remaining gap is now the
   model-specific derivation of the phase-cell activities and their
@@ -202,7 +207,9 @@
     \(C_{\rm act}|\lambda|^{1+\delta}L^{-\alpha_{\rm act}J}/
     (1-L^{-\alpha_{\rm act}})
     +C_{\rm loc}L^{-\alpha_{\rm loc}J}
-    +C_{\rm OS}L^{-\alpha_{\rm OS}J}\).
+    +C_{\rm OS}L^{-\alpha_{\rm OS}J}\).  Chapter 9 now uses this
+    \(\mathcal E_J^{\rm constr}\) as the constructive tail in the
+    cross-route SPDE/phase-cell finite-window comparison.
 17. Constructive \(\Phi^4_3\) theorems produce Schwinger functions satisfying
    the OS properties in the constructed regimes; the chapter now marks this
    as a `quotedtheorem` rather than a locally proved theorem.  The abstract
@@ -223,8 +230,9 @@
   and pressure/free-energy shift identities,
   multiscale phase-cell tail estimate, source-decorated Schwinger-seminorm
   variant, model-specific phase-cell derivation-budget arithmetic,
-  connected-to-full partition growth bound, and SPDE exponent arithmetic used
-  across this chapter and the neighboring stochastic chapter.
+  connected-to-full partition growth bound, cross-route phase-cell/SPDE
+  budget arithmetic, and SPDE exponent arithmetic used across this chapter
+  and the neighboring stochastic chapter.
 
 ## Figures
 
@@ -316,6 +324,12 @@
   must be proved before the quoted constructive theorem can be internalized,
   and records the geometric total-defect bound checked by the companion
   script.
+- 2026-06-03 issue #581/#582/#608 cross-route assembly pass: the neighboring
+  stochastic chapter now consumes \(\mathcal E_J^{\rm constr}\) in a
+  finite-window phase-cell/SPDE comparison theorem.  This turns the
+  constructive phase-cell budget into an input of the common OS-hierarchy
+  assembly schedule rather than leaving it as a standalone open estimate
+  ledger.
 - 2026-05-29 seventh anti-wrapper pass: demoted the one-site finite-cutoff
   normal-ordered polynomial stability bound from proposition form to worked
   prose.  The lower bound remains as the first elementary stability estimate,

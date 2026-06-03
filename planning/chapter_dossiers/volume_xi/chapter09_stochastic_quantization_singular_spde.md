@@ -91,6 +91,11 @@ data.
   window cardinality, model/fixed-point defect, polynomial truncation tail,
   constructive hierarchy comparison defect, and total finite-rate assembly
   defect in the dynamic \(\Phi^4_3\) OS schedule.
+- `chi_{k,n,J}`, `D_k`, `mathcal E_J^{constr}`, `Xi_{k,n,J,R}`:
+  finite stochastic/phase-cell chart comparison error, phase-cell
+  finite-window amplification constant, constructive phase-cell tail from
+  Chapter 2, and total cross-route OS defect after the SPDE and constructive
+  budgets are composed.
 - `eta`, `kappa`, `p`, `K_R`: Hilbert-scale tightness parameters in the
   cutoff-field compactness criterion; \(0<\eta<\kappa\), the moment order is
   \(p\), and \(K_R\) is the \(H^{-\eta}\)-ball viewed inside
@@ -890,6 +895,16 @@ data.
   \(\Delta_k=\delta_{k,n(k)}+m_k(C_ke_{n(k)}+T_{k,R(k)}+\eta_k)\).  The sample
   rate pattern shows the model/fixed-point defect must beat both window
   cardinality and window amplification.
+- Proves the cross-route phase-cell/SPDE assembly budget: in a common
+  finite-volume renormalization chart, the limiting SPDE Gram matrix is
+  compared to the constructive phase-cell regulator and then to the
+  constructive limit.  The finite-window defect is
+  \(\Xi_{k,n,J,R}=\delta_{k,n,J}
+  +m_k(C_k^{\rm spde}e_n+T_{k,R}+\chi_{k,n,J})\), while equality with the
+  constructive hierarchy additionally pays
+  \(m_kD_k\mathcal E_J^{\rm constr}\).  This ties the Chapter 2 phase-cell
+  budget to the Chapter 9 SPDE schedule rather than leaving the two proof
+  ledgers parallel.
 
 ## Figure Ledger
 
@@ -967,6 +982,13 @@ data maps.
   into the single defect
   \(\Delta_k=\delta_{k,n(k)}+m_k(C_ke_{n(k)}+T_{k,R(k)}+\eta_k)\), with a
   checked sample rate schedule.
+- 2026-06-03 issue #581/#582/#608 cross-route assembly pass: added the
+  finite-window proposition composing the SPDE model/fixed-point schedule,
+  stochastic/phase-cell chart comparison error, and the Chapter 2
+  constructive phase-cell tail
+  \(\mathcal E_J^{\rm constr}\).  The paired check verifies that the combined
+  defect decreases only when the phase-cell tail beats both the OS window
+  size and its own amplification constant.
 - 2026-05-25 issue #558 pass: the dynamic \(\Phi^4_3\) theorem boundary now
   states the four requested components explicitly: local cutoff
   well-posedness, renormalized convergence with \(C_{1,\epsilon}\) and

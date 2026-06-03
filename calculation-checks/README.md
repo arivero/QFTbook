@@ -734,7 +734,9 @@ Current checks:
   budget including the \(M\epsilon\) entrywise-to-quadratic-form loss, the
   OS-II comparison-envelope transfer, and the finite-rate assembly schedule
   showing that model/fixed-point defects must beat both window cardinality and
-  window amplification, a finite hard-core polymer
+  window amplification, together with the cross-route phase-cell/SPDE budget
+  showing that the constructive phase-cell tail must also beat its own
+  finite-window amplification, a finite hard-core polymer
   source-cumulant check showing factorization without an incompatibility bridge
   and a nonzero connected
   cumulant with such a bridge, exact set-partition enumeration for the
