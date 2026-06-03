@@ -144,8 +144,11 @@ per task.
   on deleted or resampled Monte Carlo blocks for correlated
   jackknife/bootstrap errors.  The HDF5 mode reads the subgroup-Metropolis
   dataset `measurements/wilson_loops` with index convention
-  `wilson_loops[sample,R-1,T-1]`.  The smoke test uses synthetic
-  area-plus-perimeter data.
+  `wilson_loops[sample,R-1,T-1]`.  The static-source matrix mode reads
+  Hermitian transporter-correlator matrices with columns `R,T,i,j,C` or
+  `R,T,i,j,real,imag`, solves the finite GEVP by positive whitening, and
+  reports `static_gevp_energy` levels.  The smoke test uses synthetic
+  area-plus-perimeter data and an exact two-state static-source matrix.
 - `glueball_gevp_from_correlators.py`: finite-regulator GEVP analysis tool
   for Hermitian correlator matrices with CSV columns `t,i,j,C` or
   `t,i,j,real,imag`.  It solves `C(t) v = lambda C(t0) v` by positive

@@ -1314,8 +1314,10 @@ Current checks:
   synthetic area-plus-perimeter Wilson-loop data reproduce the expected
   transfer-matrix effective masses and Creutz ratios, including elementary
   ratio-error propagation and sample-level correlated delete-one jackknife
-  errors for nonlinear Wilson-loop ratios.  The check also exercises the HDF5
-  bridge from the sampler convention
+  errors for nonlinear Wilson-loop ratios.  It also verifies the static-source
+  matrix GEVP mode by exact rational trace/determinant invariants and by a CSV
+  one-based-index round trip.  The check also exercises the HDF5 bridge from
+  the sampler convention
   `measurements/wilson_loops[sample,R-1,T-1]` to the correlated
   static-potential analysis.
 - `nonabelian_lattice_observable_checks.py`: finite convention checks for

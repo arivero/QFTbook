@@ -14,11 +14,19 @@ Aggregate-input CSV columns:
 Sample-input CSV columns:
     sample,R,T,W
 
+Static-source matrix CSV columns:
+    R,T,i,j,C
+or:
+    R,T,i,j,real,imag
+
 Aggregate-output CSV columns:
     observable,R,T,value,error
 
 Sample-output CSV columns:
     observable,R,T,value,jackknife_error,bootstrap_error
+
+Static-source matrix output columns:
+    observable,R,T,level,value,lambda
 
 Here R and T are integer lattice extents.  The optional error column dW is
 treated as an independent standard error for elementary propagation only; a
@@ -36,6 +44,8 @@ import math
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+
+import numpy as np
 
 
 @dataclass(frozen=True)
@@ -71,6 +81,16 @@ class ResampledObservableDatum:
     value: float
     jackknife_error: float | None = None
     bootstrap_error: float | None = None
+
+
+@dataclass(frozen=True)
+class StaticGevpDatum:
+    observable: str
+    r: int
+    t: int
+    level: int
+    value: float
+    lambda_value: float
 
 
 def require(condition: bool, message: str) -> None:
@@ -164,6 +184,64 @@ def read_wilson_loop_sample_hdf5(
         return wilson_loop_grid_to_sample_data(handle[dataset][...])
 
 
+def parse_complex(row: dict[str, str]) -> complex:
+    if "C" in row and row["C"] != "":
+        return complex(float(row["C"]), 0.0)
+    if "real" in row and row["real"] != "":
+        real = float(row["real"])
+        imag = float(row.get("imag", "0") or "0")
+        return complex(real, imag)
+    raise ValueError("matrix CSV rows must contain either C or real[,imag] columns")
+
+
+def hermitian_part(a: np.ndarray) -> np.ndarray:
+    return 0.5 * (a + a.conjugate().T)
+
+
+def read_static_matrix_csv(path: Path, *, one_based: bool) -> dict[int, dict[int, np.ndarray]]:
+    rows: list[tuple[int, int, int, int, complex]] = []
+    max_index_by_r: dict[int, int] = {}
+    with path.open(newline="") as handle:
+        reader = csv.DictReader(handle)
+        require(reader.fieldnames is not None, "matrix CSV input must have a header")
+        require({"R", "T"}.issubset(set(reader.fieldnames)), "matrix CSV columns must include R,T")
+        for row in reader:
+            r = int(row["R"])
+            t = int(row["T"])
+            i_key = "i" if "i" in row else "op_i"
+            j_key = "j" if "j" in row else "op_j"
+            require(i_key in row and j_key in row, "matrix CSV columns must include i,j or op_i,op_j")
+            i = int(row[i_key])
+            j = int(row[j_key])
+            if one_based:
+                i -= 1
+                j -= 1
+            require(r >= 0 and t >= 0, "R and T must be nonnegative")
+            require(i >= 0 and j >= 0, "operator indices must be nonnegative after indexing convention")
+            rows.append((r, t, i, j, parse_complex(row)))
+            max_index_by_r[r] = max(max_index_by_r.get(r, -1), i, j)
+    require(len(rows) > 0, "matrix CSV input must contain at least one row")
+
+    by_r_time: dict[int, dict[int, np.ndarray]] = {}
+    present: dict[tuple[int, int], set[tuple[int, int]]] = {}
+    for r, t, i, j, value in rows:
+        n_ops = max_index_by_r[r] + 1
+        by_time = by_r_time.setdefault(r, {})
+        by_time.setdefault(t, np.zeros((n_ops, n_ops), dtype=np.complex128))
+        by_time[t][i, j] = value
+        present.setdefault((r, t), set()).add((i, j))
+    for r, by_time in by_r_time.items():
+        n_ops = max_index_by_r[r] + 1
+        for t, matrix in by_time.items():
+            seen = present[(r, t)]
+            for i in range(n_ops):
+                for j in range(n_ops):
+                    if (i, j) not in seen and (j, i) in seen:
+                        matrix[i, j] = matrix[j, i].conjugate()
+            by_time[t] = hermitian_part(matrix)
+    return by_r_time
+
+
 def index_data(data: list[WilsonLoopDatum]) -> dict[tuple[int, int], WilsonLoopDatum]:
     indexed: dict[tuple[int, int], WilsonLoopDatum] = {}
     for datum in data:
@@ -241,6 +319,57 @@ def observable_key(datum: ObservableDatum) -> tuple[str, int, int]:
 
 def observable_map(data: list[ObservableDatum]) -> dict[tuple[str, int, int], float]:
     return {observable_key(datum): datum.value for datum in data}
+
+
+def positive_whitener(c0: np.ndarray, *, floor: float = 1.0e-12) -> np.ndarray:
+    c0_h = hermitian_part(c0)
+    evals, evecs = np.linalg.eigh(c0_h)
+    min_eval = float(np.min(evals))
+    require(
+        min_eval > floor,
+        f"static-source C(t0) is not positive definite at tolerance {floor}: min eigenvalue {min_eval:.6e}",
+    )
+    return evecs @ np.diag(evals ** -0.5) @ evecs.conjugate().T
+
+
+def static_gevp_lambdas(c_t: np.ndarray, c_t0: np.ndarray) -> np.ndarray:
+    whitener = positive_whitener(c_t0)
+    whitened = hermitian_part(whitener @ c_t @ whitener)
+    return np.array(sorted((float(x) for x in np.linalg.eigvalsh(whitened)), reverse=True), dtype=float)
+
+
+def parse_times(value: str | None) -> list[int] | None:
+    if value is None or value.strip() == "":
+        return None
+    return [int(piece) for piece in value.split(",") if piece.strip()]
+
+
+def static_gevp_from_matrices(
+    matrices: dict[int, dict[int, np.ndarray]],
+    *,
+    selected_r: int | None,
+    t0: int,
+    times: list[int] | None,
+    lattice_spacing: float,
+) -> list[StaticGevpDatum]:
+    require(lattice_spacing > 0.0, "lattice spacing must be positive")
+    r_values = [selected_r] if selected_r is not None else sorted(matrices)
+    output: list[StaticGevpDatum] = []
+    for r in r_values:
+        require(r in matrices, f"R={r} is not present in the static-source matrix data")
+        by_time = matrices[r]
+        require(t0 in by_time, f"t0={t0} is not present for R={r}")
+        selected_times = sorted(t for t in (times if times is not None else by_time) if t > t0)
+        require(len(selected_times) > 0, f"no static-source matrix times with T>t0 were supplied for R={r}")
+        c0 = by_time[t0]
+        for t in selected_times:
+            require(t in by_time, f"T={t} is not present for R={r}")
+            lambdas = static_gevp_lambdas(by_time[t], c0)
+            dt = lattice_spacing * (t - t0)
+            for level, lambda_value in enumerate(lambdas):
+                energy = float("nan") if lambda_value <= 0.0 else -math.log(lambda_value) / dt
+                output.append(StaticGevpDatum("static_gevp_energy", r, t, level, energy, lambda_value))
+    return output
 
 
 def mean_wilson_loop_data(
@@ -403,6 +532,23 @@ def write_resampled_observables(path: Path, data: list[ResampledObservableDatum]
             )
 
 
+def write_static_gevp_observables(path: Path, data: list[StaticGevpDatum]) -> None:
+    with path.open("w", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=["observable", "R", "T", "level", "value", "lambda"])
+        writer.writeheader()
+        for datum in data:
+            writer.writerow(
+                {
+                    "observable": datum.observable,
+                    "R": datum.r,
+                    "T": datum.t,
+                    "level": datum.level,
+                    "value": f"{datum.value:.17g}",
+                    "lambda": f"{datum.lambda_value:.17g}",
+                }
+            )
+
+
 def synthetic_area_perimeter_data(sigma: float, mu: float, constant: float, max_r: int, max_t: int) -> list[WilsonLoopDatum]:
     data: list[WilsonLoopDatum] = []
     for r in range(max_r + 1):
@@ -426,6 +572,15 @@ def synthetic_area_perimeter_sample_data(
                 exponent = sigma * r * t + mu * (r + t) + constant
                 data.append(WilsonLoopSampleDatum(sample, r, t, math.exp(-exponent)))
     return data
+
+
+def exact_static_gevp_matrices(r: int, energies: list[float]) -> dict[int, dict[int, np.ndarray]]:
+    z = np.array([[1.0, 0.35], [0.45, 1.10]], dtype=float)
+    energy_array = np.array(energies, dtype=float)
+    matrices: dict[int, dict[int, np.ndarray]] = {r: {}}
+    for t in range(0, 6):
+        matrices[r][t] = z @ np.diag(np.exp(-energy_array * t)) @ z.T
+    return matrices
 
 
 def run_smoke_test() -> None:
@@ -458,6 +613,19 @@ def run_smoke_test() -> None:
     samples = synthetic_area_perimeter_sample_data([0.29, 0.31, 0.36, 0.42], mu, constant, max_r=3, max_t=4)
     resampled = resampled_static_observables(samples, lattice_spacing=1.0, block_size=1, bootstrap_samples=16, seed=2026)
     require(any(datum.jackknife_error is not None and datum.jackknife_error > 0.0 for datum in resampled), "resampled smoke check should have a positive jackknife error")
+    gevp_energies = [0.62, 1.45]
+    gevp_data = static_gevp_from_matrices(
+        exact_static_gevp_matrices(r=2, energies=gevp_energies),
+        selected_r=2,
+        t0=1,
+        times=[2, 4],
+        lattice_spacing=1.0,
+    )
+    for level, expected in enumerate(gevp_energies):
+        got = [datum.value for datum in gevp_data if datum.level == level]
+        require(len(got) == 2, "static-source GEVP smoke should produce both requested times")
+        for value in got:
+            require(abs(value - expected) < 2.0e-12, "static-source GEVP smoke energy mismatch")
     print("static_potential_from_wilson_loops.py smoke test passed.")
 
 
@@ -466,6 +634,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--input", type=Path, help="CSV file with columns R,T,W[,dW]")
     parser.add_argument("--samples-input", type=Path, help="CSV file with columns sample,R,T,W")
     parser.add_argument("--samples-hdf5", type=Path, help="HDF5 file with measurements/wilson_loops[sample,R-1,T-1]")
+    parser.add_argument("--matrix-input", type=Path, help="CSV file with static-source matrix rows R,T,i,j,C or R,T,i,j,real,imag")
+    parser.add_argument("--matrix-r", type=int, help="optional fixed R value for --matrix-input")
+    parser.add_argument("--t0", type=int, default=1, help="reference Euclidean time for --matrix-input")
+    parser.add_argument("--times", help="comma-separated analysis times for --matrix-input; default: all T>t0")
+    parser.add_argument("--one-based", action="store_true", help="interpret matrix operator indices as one-based")
     parser.add_argument("--hdf5-dataset", default="measurements/wilson_loops", help="Wilson-loop dataset inside --samples-hdf5")
     parser.add_argument("--output", type=Path, help="output CSV for extracted observables")
     parser.add_argument("--lattice-spacing", type=float, default=1.0)
@@ -486,9 +659,9 @@ def main() -> None:
     require(args.output is not None, "--output is required outside --smoke")
     input_count = sum(
         value is not None
-        for value in (args.input, args.samples_input, args.samples_hdf5)
+        for value in (args.input, args.samples_input, args.samples_hdf5, args.matrix_input)
     )
-    require(input_count == 1, "choose exactly one of --input, --samples-input, and --samples-hdf5")
+    require(input_count == 1, "choose exactly one of --input, --samples-input, --samples-hdf5, and --matrix-input")
     if not args.no_effective_mass:
         include_effective_mass = True
     else:
@@ -502,6 +675,17 @@ def main() -> None:
         if include_creutz:
             output.extend(creutz_ratios(data))
         write_observables(args.output, output)
+        return
+    if args.matrix_input is not None:
+        matrices = read_static_matrix_csv(args.matrix_input, one_based=args.one_based)
+        output = static_gevp_from_matrices(
+            matrices,
+            selected_r=args.matrix_r,
+            t0=args.t0,
+            times=parse_times(args.times),
+            lattice_spacing=args.lattice_spacing,
+        )
+        write_static_gevp_observables(args.output, output)
         return
     if args.samples_input is not None:
         sample_data = read_wilson_loop_sample_csv(args.samples_input)

@@ -106,6 +106,8 @@
 | \(u_0,g_{\rm TI}\) | plaquette mean link and boosted/tadpole-improved coupling coordinate |
 | \(W_S(n,m)\) | normalized rectangular Wilson loop in representation \(S\) |
 | \(V_{a,S}(n)\) | finite-cutoff static potential in a static-source sector |
+| \(C_{ij}^{(n,S)}(m)\) | static-source transporter correlator matrix at separation \(n\) |
+| \(\Lambda_\alpha^{(n,S)}(m,m_0)\) | static-source GEVP eigenvalue |
 | \(\chi(n,m)\) | Creutz ratio |
 | \(O_i,\widetilde O_i\) | glueball time-slice source and its vacuum-subtracted version |
 | \(C_{ij}(n)\) | finite-lattice glueball correlator matrix |
@@ -165,7 +167,10 @@
     statements require a specified observable and truncation order.
 16. Rectangular Wilson loops are transfer-matrix correlators in static-source
    sectors; an isolated lowest state gives the finite-lattice static
-   potential by the effective-mass ratio.
+   potential by the effective-mass ratio.  In an exact finite static-source
+   matrix subspace, the GEVP eigenvalues are
+   \(e^{-a(m-m_0)E_\alpha(n,S)}\) and are invariant under invertible
+   source-basis changes.
 17. Creutz ratios cancel the area-plus-perimeter ansatz down to the lattice
     string-tension coordinate plus a second finite difference of correction
     terms.
@@ -208,7 +213,8 @@
 - `qft_scripts/static_potential_from_wilson_loops.py --smoke`: finite
   Wilson-loop analysis tool for transfer-matrix effective masses and Creutz
   ratios from positive rectangular-loop data, including a sample-level
-  correlated jackknife/bootstrap mode for CSV or HDF5 sampler output.
+  correlated jackknife/bootstrap mode for CSV or HDF5 sampler output and a
+  static-source matrix GEVP mode for smeared transporter correlators.
 - `qft_scripts/glueball_gevp_from_correlators.py --smoke`: finite
   correlator-matrix GEVP analysis tool.  The smoke mode uses an exact
   two-state transfer-matrix spectral matrix and verifies that whitening by
@@ -263,7 +269,8 @@
   static-potential companion script on synthetic area-plus-perimeter
   Wilson-loop data, including elementary ratio-error propagation and
   correlated delete-one jackknife errors for nonlinear Wilson-loop ratios;
-  it also checks the HDF5 bridge from
+  it verifies exact finite static-source GEVP trace/determinant invariants and
+  a CSV matrix-mode round trip; it also checks the HDF5 bridge from
   `measurements/wilson_loops[sample,R-1,T-1]`.
 - `calculation-checks/qcd_glueball_spectrum_checks.py` verifies the exact
   finite GEVP trace/determinant invariants, large-\(N\) glueball counting,
@@ -323,3 +330,6 @@
   covariance, and clarified that pure Yang--Mills glueballs are only the
   running example.  QCD and pure-SYM chapters now reference this section
   rather than duplicating the linear algebra.
+- 2026-06-03 issue #631 pass: added the static-source variational matrix GEVP
+  for smeared/path-varied spatial transporters at fixed separation, plus
+  theorem-anchored script and exact rational calculation checks.

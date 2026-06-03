@@ -4,12 +4,16 @@
 from __future__ import annotations
 
 import importlib.util
+import csv
 import math
 import os
 import subprocess
 import sys
 import tempfile
+from fractions import Fraction
 from pathlib import Path
+
+import numpy as np
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -55,6 +59,109 @@ def find_hdf5_python() -> Path:
         if candidate.exists() and python_has_h5py(candidate):
             return candidate
     raise AssertionError("static-potential HDF5 check requires h5py; set QFT_HDF5_PYTHON")
+
+
+Matrix2 = tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]
+
+
+def mat_mul(a: Matrix2, b: Matrix2) -> Matrix2:
+    return (
+        (
+            a[0][0] * b[0][0] + a[0][1] * b[1][0],
+            a[0][0] * b[0][1] + a[0][1] * b[1][1],
+        ),
+        (
+            a[1][0] * b[0][0] + a[1][1] * b[1][0],
+            a[1][0] * b[0][1] + a[1][1] * b[1][1],
+        ),
+    )
+
+
+def transpose(a: Matrix2) -> Matrix2:
+    return ((a[0][0], a[1][0]), (a[0][1], a[1][1]))
+
+
+def inv2(a: Matrix2) -> Matrix2:
+    det = a[0][0] * a[1][1] - a[0][1] * a[1][0]
+    if det == 0:
+        raise AssertionError("singular matrix in static-source GEVP check")
+    return (
+        (a[1][1] / det, -a[0][1] / det),
+        (-a[1][0] / det, a[0][0] / det),
+    )
+
+
+def diag(d1: Fraction, d2: Fraction) -> Matrix2:
+    return ((d1, Fraction(0)), (Fraction(0), d2))
+
+
+def corr_matrix(z: Matrix2, r1: Fraction, r2: Fraction, t: int) -> Matrix2:
+    return mat_mul(mat_mul(z, diag(r1**t, r2**t)), transpose(z))
+
+
+def check_static_source_gevp_matrix_mode(module) -> None:
+    z: Matrix2 = ((Fraction(1), Fraction(2)), (Fraction(2), Fraction(5)))
+    r1 = Fraction(1, 3)
+    r2 = Fraction(1, 8)
+    t0 = 1
+    t = 4
+    gevp_matrix = mat_mul(inv2(corr_matrix(z, r1, r2, t0)), corr_matrix(z, r1, r2, t))
+    trace = gevp_matrix[0][0] + gevp_matrix[1][1]
+    determinant = gevp_matrix[0][0] * gevp_matrix[1][1] - gevp_matrix[0][1] * gevp_matrix[1][0]
+    require(trace == r1 ** (t - t0) + r2 ** (t - t0), "static GEVP trace invariant failed")
+    require(determinant == (r1 * r2) ** (t - t0), "static GEVP determinant invariant failed")
+
+    matrices = {
+        3: {
+            time: np.array(
+                [[float(entry) for entry in row] for row in corr_matrix(z, r1, r2, time)],
+                dtype=np.complex128,
+            )
+            for time in [1, 2, 4]
+        }
+    }
+    results = module.static_gevp_from_matrices(matrices, selected_r=3, t0=1, times=[2, 4], lattice_spacing=1.0)
+    expected = [-math.log(float(r1)), -math.log(float(r2))]
+    for level, energy in enumerate(expected):
+        got = [datum.value for datum in results if datum.level == level]
+        require(len(got) == 2, "static GEVP matrix mode should return both analysis times")
+        for value in got:
+            require(abs(value - energy) < 1.0e-12, "static GEVP matrix-mode energy failed")
+
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp_path = Path(tmp)
+        matrix_path = tmp_path / "static_matrix.csv"
+        out_path = tmp_path / "static_gevp.csv"
+        with matrix_path.open("w", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=["R", "T", "i", "j", "C"])
+            writer.writeheader()
+            for time, matrix in matrices[3].items():
+                for i in range(2):
+                    for j in range(2):
+                        writer.writerow({"R": 3, "T": time, "i": i + 1, "j": j + 1, "C": f"{matrix[i, j].real:.17g}"})
+        subprocess.run(
+            [
+                sys.executable,
+                str(SCRIPT),
+                "--matrix-input",
+                str(matrix_path),
+                "--matrix-r",
+                "3",
+                "--t0",
+                "1",
+                "--times",
+                "2,4",
+                "--one-based",
+                "--output",
+                str(out_path),
+            ],
+            check=True,
+        )
+        with out_path.open(newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        require(len(rows) == 4, "static GEVP CSV mode should write two levels at two times")
+        require({row["observable"] for row in rows} == {"static_gevp_energy"}, "static GEVP CSV observable label failed")
+        require(any(row["level"] == "0" and abs(float(row["value"]) - expected[0]) < 1.0e-12 for row in rows), "static GEVP CSV ground energy failed")
 
 
 def check_hdf5_static_potential_bridge() -> None:
@@ -180,6 +287,7 @@ def main() -> None:
     require(abs(datum.jackknife_error - expected_jackknife) < 1e-14, "correlated jackknife error failed")
     require(datum.bootstrap_error > 0.0, "block bootstrap error should be positive on varying samples")
 
+    check_static_source_gevp_matrix_mode(module)
     check_hdf5_static_potential_bridge()
 
     print("All static-potential analysis checks passed.")

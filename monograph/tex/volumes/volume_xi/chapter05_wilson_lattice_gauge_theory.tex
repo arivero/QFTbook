@@ -1040,6 +1040,58 @@ which both tend to \(1\), and the difference from \(1\) is bounded by a
 constant times \(e^{-am(E_1-E_0)}\).  Taking the logarithm gives
 \eqref{eq:finite-static-effective-mass-error}.
 
+The same static-source sector admits a finite variational analysis.  Fix the
+separation \(n\), representation \(S\), and a finite list of gauge-covariant
+spatial transporters \(P_i^{(n,S)}\), for example different smearing levels or
+path shapes joining the static source to the antisource.  They define vectors
+\(\Psi_{i,n,S}\) in the same static sector and a Hermitian matrix
+\begin{equation}
+  C_{ij}^{(n,S)}(m)
+  =
+  \langle \Psi_{i,n,S},T^m\Psi_{j,n,S}\rangle .
+  \label{eq:static-source-correlator-matrix}
+\end{equation}
+If the chosen source space is exactly \(r\)-dimensional and has spectral form
+\begin{equation}
+  C^{(n,S)}(m)
+  =
+  Z_{n,S}\operatorname{diag}(\lambda_\alpha(n,S)^m)Z_{n,S}^{\dagger},
+  \qquad
+  \lambda_\alpha(n,S)=e^{-aE_\alpha(n,S)},
+  \label{eq:static-source-exact-matrix-spectrum}
+\end{equation}
+with \(Z_{n,S}\) invertible, then the generalized eigenvalue problem
+\begin{equation}
+  C^{(n,S)}(m)v_\alpha
+  =
+  \Lambda_\alpha^{(n,S)}(m,m_0)C^{(n,S)}(m_0)v_\alpha
+  \label{eq:static-source-gevp}
+\end{equation}
+has eigenvalues
+\begin{equation}
+  \Lambda_\alpha^{(n,S)}(m,m_0)
+  =
+  \lambda_\alpha(n,S)^{m-m_0}
+  =
+  e^{-a(m-m_0)E_\alpha(n,S)} .
+  \label{eq:static-source-gevp-eigenvalues}
+\end{equation}
+Indeed
+\[
+  C^{(n,S)}(m_0)^{-1}C^{(n,S)}(m)
+  =
+  (Z_{n,S}^{\dagger})^{-1}
+  \operatorname{diag}(\lambda_\alpha(n,S)^{m-m_0})
+  Z_{n,S}^{\dagger},
+\]
+so the finite GEVP is only a similarity transform of the diagonal
+transfer-matrix ratios.  Under an invertible change of static-source basis the
+matrices transform by congruence and these generalized eigenvalues are
+unchanged.  With higher-state contamination, the residual norm after whitening
+by \(C^{(n,S)}(m_0)\), the separation \(n\), the representation \(S\), the
+smearing or path recipe, and the chosen line self-energy subtraction are all
+part of the finite observable datum.
+
 The Creutz ratio is a finite-difference observable designed to cancel the
 leading perimeter and constant terms in a rectangular Wilson-loop ansatz.
 For positive Wilson loops define
@@ -1095,7 +1147,13 @@ finite-regulator implementation of the
 correlated jackknife construction in
 Chapter~\ref{ch:constructive-monte-carlo-sign-problems}.  The optional
 elementary error propagation in aggregate mode is only the independent-error
-algebra of the displayed logarithms.
+algebra of the displayed logarithms.  The script also has a static-source matrix
+mode for rows \(\texttt{R},\texttt{T},i,j,C\) or
+\(\texttt{R},\texttt{T},i,j,\texttt{real},\texttt{imag}\).  For each fixed
+separation it solves \eqref{eq:static-source-gevp} by positive whitening of
+\(C(m_0)\) and reports \(\texttt{static\_gevp\_energy}\) levels; this is
+finite variational source-space analysis of smeared transporters, not
+continuum string-tension evidence.
 
 \section{Finite-Volume Correlator Matrices and the GEVP}
 \label{sec:lattice-glueball-correlator-gevp}
