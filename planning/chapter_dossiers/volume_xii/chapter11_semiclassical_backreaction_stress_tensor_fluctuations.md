@@ -29,10 +29,11 @@ recording fluctuation data required for controlled backreaction.
 - `C_h`: retained metric covariance induced by stress-tensor noise.
 - `epsilon_mean`, `epsilon_fluc`: dimensionless mean-response and fluctuation
   smallness diagnostics.
-- `Sigma_{omega,H}`, `rho_lambda`, `q_a`, `j_a^{(lambda)}`: Wick-square
+- `Sigma_{omega,H}`, `rho_lambda`, `q_a`, `j_a^{(lambda,pot)}`: Wick-square
   variance of a centered quasifree Hadamard state in a chosen Hadamard
-  coordinate, the first-order `lambda phi^4` potential source density, and
-  its projection into the retained semiclassical response sector.
+  coordinate, the first-order `lambda phi^4` potential-insertion source
+  coordinate, and its projection into the retained semiclassical response
+  sector.
 
 ## Claim Ledger
 
@@ -60,14 +61,17 @@ recording fluctuation data required for controlled backreaction.
   after gauge fixing/constraint projection and reduction of order, the
   retained response matrix must have no unstable poles, a bounded retarded
   inverse, controlled mean response, and controlled noise pushforward.
-- Adds a worked interacting stress-tensor source: the potential part of a
-  first-order `lambda phi^4` interaction in a centered quasifree Hadamard
-  state gives `delta<T_{mu nu}> = -rho_lambda g_{mu nu}` with
-  `rho_lambda=lambda Sigma^2/8`, distinguishes Hadamard-coordinate transport
-  from local Wick-renormalization dependence, shifts the cosmological
-  coordinate by `8 pi G_N rho_lambda` in the homogeneous case, and gives a
-  retained response bound
-  `||h_lambda|| <= M_I rho_lambda ||q||`.
+- Adds a worked retained potential-source coordinate: the explicit potential
+  insertion from a first-order `lambda phi^4` interaction in a centered
+  quasifree Hadamard state gives
+  `delta<T_{mu nu}>^{pot} = -rho_lambda g_{mu nu}` with
+  `rho_lambda=lambda Sigma^2/8`, while the text states that the full
+  interacting source also requires Bogoliubov/interacting-field corrections,
+  time-ordered-product contact terms, interaction-dependent composite
+  counterterms, and a conservation-compatible stress-tensor prescription.
+  The homogeneous potential coordinate shifts
+  `Lambda_eff^{pot}` by `8 pi G_N rho_lambda`, and the retained response
+  check uses `||h_lambda^{pot}|| <= M_I |rho_lambda| ||q||`.
 - Records validity conditions and the EFT reduction-of-order treatment for
   higher-curvature terms.
 
@@ -78,10 +82,12 @@ recording fluctuation data required for controlled backreaction.
   fluctuation-dissipation factor, positivity of a finite noise covariance,
   the Einstein-Langevin pushforward covariance identity, exact retained-sector
   mean-response and noise trace bounds for the finite response-window
-  diagnostic, the first-order `lambda phi^4` quasifree source coefficient,
-  its local Wick-renormalization/cosmological-coordinate shifts, its retained
-  response bound, and the low-energy root selected by reduction of order in a
-  toy higher-derivative equation.
+  diagnostic, the first-order `lambda phi^4` potential-insertion source
+  coordinate, its restricted local Wick-renormalization/cosmological-coordinate
+  shifts, negative controls for independent quartic/stress-tensor finite
+  counterterms and signed negative-density norm bounds, its retained response
+  bound, and the low-energy root selected by reduction of order in a toy
+  higher-derivative equation.
 
 ## Figure Ledger
 
@@ -106,9 +112,9 @@ curvature, microscopic, and EFT scales.
   semiclassical equation to bounded retarded response, absence of unstable
   poles, stress-tensor noise amplification, and small dimensionless metric
   fluctuation criteria.
-- 2026-06-04: added a first-order interacting source example for issue #729.
-  The calculation follows a concrete `lambda phi^4` stress-tensor
-  contribution to a quasifree Hadamard-state output, its renormalization
+- 2026-06-04: added a first-order retained potential-source coordinate for
+  issue #729.  The calculation follows the explicit `lambda phi^4` potential
+  insertion to a quasifree Hadamard-state output, its renormalization
   coordinate dependence, its cosmological-coordinate interpretation, and its
   retained metric-response bound; it explicitly states the conservation
   limitation of the potential-only display.
@@ -116,3 +122,9 @@ curvature, microscopic, and EFT scales.
   stating that pure Hadamard-coordinate transport preserves expectations when
   states are transported, while the displayed density shift belongs to a
   fixed-state comparison of local Wick-renormalization prescriptions.
+- 2026-06-04: repaired issue #741 by relabeling the example as a retained
+  potential-insertion coordinate, adding the full interacting stress-tensor
+  source ledger and Hollands--Wald conservation requirements, separating the
+  restricted Wick-square shift from independent `Phi^4`/stress-tensor finite
+  renormalizations, and replacing the signed response estimate by an
+  absolute-value norm bound.

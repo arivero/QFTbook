@@ -2012,10 +2012,12 @@ Current checks:
   positivity of a finite noise covariance, the Einstein--Langevin
   pushforward covariance identity \(GNG^T\), exact retained-sector
   mean-response and noise trace bounds for the finite response-window
-  diagnostic, the first-order `lambda phi^4` quasifree source density,
-  its local Wick-renormalization and cosmological-coordinate shifts, its
-  retained metric-response bound, and the low-energy root selected by
-  reduction of order in a toy higher-derivative equation.
+  diagnostic, the first-order `lambda phi^4` potential-insertion source
+  coordinate, its restricted local Wick-renormalization and
+  cosmological-coordinate shifts, negative controls for independent
+  quartic/stress-tensor finite counterterms and signed negative-density norm
+  bounds, its retained metric-response bound, and the low-energy root selected
+  by reduction of order in a toy higher-derivative equation.
 - `schwinger_keldysh_operator_checks.py`: finite two-level-system checks for
   the real-time Schwinger--Keldysh operator chapter, including diagonal
   unitarity, branch-exchange reality, the \(|Z|\le1\) positivity bound,

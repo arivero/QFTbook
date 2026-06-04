@@ -51,9 +51,13 @@ Hadamard functions and causal factorization.
   values are invariant for the same abstract observable.  Separately, a
   local covariant finite Wick-renormalization scalar produces finite mass and
   curvature-coupling coordinate shifts, geometric source terms, and a
-  fixed-state Wick-square prescription shift.  This gives the Volume XII
-  interacting-example lane a concrete renormalization/state/output
-  calculation rather than only the formal relative-S-matrix definition.
+  fixed-state Wick-square prescription shift.  The chapter now states that
+  this is only the Wick-coordinate subfamily: a full interacting stress-tensor
+  construction also fixes time-ordered products, Bogoliubov-field contact
+  terms, independent `Phi^4` finite counterterms, and the conserved local
+  stress-tensor tensors.  This gives the Volume XII interacting-example lane a
+  concrete renormalization/state/output calculation without mistaking a
+  Wick-square coordinate check for the full conserved interacting source.
 
 ## Calculation Checks
 
@@ -83,3 +87,7 @@ Hadamard star-product comparison maps.
   `omega_H` and `omega_Hprime`, recording expectation invariance under
   coordinate/state transport, and reserving c-number Wick-square shifts for
   fixed-state comparisons of local covariant Wick prescriptions.
+- 2026-06-04: extended the scheme discussion for issue #741 so the
+  `lambda phi^4` passage distinguishes the restricted Wick-coordinate
+  subfamily from the full finite-renormalization and conservation budget of an
+  interacting stress tensor.

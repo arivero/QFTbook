@@ -715,16 +715,19 @@ the bridge from the formal semiclassical equation to a physical
 backreaction statement: the mean response, the fluctuation response, and the
 absence of unstable response poles must be checked together.
 
-\section{Worked Interacting Source Shift}
+\section{Worked Retained Potential-Source Coordinate}
 \label{sec:semiclassical-worked-interacting-source-shift}
 
 The response-window criterion is empty unless the source vector is supplied
-by an actual stress-tensor calculation.  The simplest interacting source
-comes from the scalar interaction of
-Chapter~\ref{ch:curved-perturbative-algebraic-qft}, now viewed as a
-contribution to the stress tensor.  Work to first order in \(\lambda\), fix a
-Hadamard Wick coordinate \(H\), and assume a centered quasifree Hadamard
-state \(\omega\) on a stationary region \(U\) where the smooth Wick variance
+by a declared stress-tensor construction.  The following calculation is
+deliberately narrower than a full interacting stress tensor.  It isolates the
+explicit potential insertion from the scalar interaction of
+Chapter~\ref{ch:curved-perturbative-algebraic-qft}, evaluates that insertion
+in the reference free quasifree state, and then records how this retained
+source coordinate would enter the finite response matrix.  Work to first
+order in \(\lambda\), fix a Hadamard Wick coordinate \(H\), and assume a
+centered quasifree Hadamard state \(\omega\) on a stationary region \(U\)
+where the smooth Wick variance
 \begin{equation}
   \Sigma_{\omega,H}(x)
   :=
@@ -732,8 +735,8 @@ state \(\omega\) on a stationary region \(U\) where the smooth Wick variance
   \label{eq:semiclassical-wick-variance}
 \end{equation}
 is constant.  The interaction cutoff is taken to be \(1\) on \(U\); edges of
-the cutoff are outside the observables considered here.  The potential part
-of the first-order interacting stress tensor is
+the cutoff are outside the observables considered here.  The potential
+insertion in the first-order variation of the interaction action gives
 \begin{equation}
   \delta_\lambda T_{\mu\nu}^{\rm pot}(x)
   =
@@ -757,7 +760,7 @@ so the observable output for any test tensor \(f^{\mu\nu}\) supported in
   f^{\mu\nu}(x)g_{\mu\nu}(x)\Sigma_{\omega,H}^2 .
   \label{eq:semiclassical-interacting-smeared-source}
 \end{equation}
-Equivalently, the local source is
+Equivalently, the local retained potential source coordinate is
 \begin{equation}
   \delta_\lambda
   \langle T_{\mu\nu}\rangle_{\omega,H}^{\rm pot}
@@ -769,15 +772,50 @@ Equivalently, the local source is
   \frac{\lambda}{8}\Sigma_{\omega,H}^2 .
   \label{eq:semiclassical-interacting-vacuum-source}
 \end{equation}
-This is an interacting stress source, not a free-field trace anomaly.  It is
-also a renormalized composite-field coordinate.  Under a pure Hadamard
-coordinate transport \(H\to H'=H+w\), the observable and state must be
-transported together and the expectation value is unchanged.  A c-number
-change of the displayed density instead compares two local covariant Wick
-prescriptions in the same physical state.  If that finite Wick-square
-renormalization adds the local scalar \(c\), then
-\(\Sigma_{\omega,H}\) is replaced in this comparison by
-\(\Sigma_{\omega,H}+\hbar c\), and
+Equation~\eqref{eq:semiclassical-interacting-vacuum-source} is not, by
+itself, the full order-\(\lambda\) expectation value of the renormalized
+interacting stress tensor.  A full first-order source has the bookkeeping
+ledger
+\begin{equation}
+\begin{aligned}
+  \delta_\lambda
+  \langle T_{\mu\nu}^{\rm ren}\rangle_{\omega,H}^{\rm full}
+  =
+  &\ \delta_\lambda
+  \langle T_{\mu\nu}\rangle_{\omega,H}^{\rm pot}
+  +\delta_\lambda
+  \left\langle R_V(T_{\mu\nu}^{\rm free})\right\rangle_{\omega,H}^{(1)}
+  \\
+  &\ +C_{\mu\nu}^{\rm int}[g;m,\xi,\lambda,H] .
+\end{aligned}
+  \label{eq:semiclassical-full-interacting-source-ledger}
+\end{equation}
+The second term is the Bogoliubov/interacting-field correction to the free
+stress tensor, and \(C_{\mu\nu}^{\rm int}\) collects the chosen
+time-ordered-product contact terms, interaction-dependent composite-field
+counterterms, and local stress-tensor curvature terms.  The conservation
+condition
+\[
+  \nabla^\mu
+  \delta_\lambda
+  \langle T_{\mu\nu}^{\rm ren}\rangle_{\omega,H}^{\rm full}
+  =
+  0
+\]
+is a Ward condition on this whole sum, not on the potential insertion alone.
+This is the curved-spacetime pAQFT renormalization problem isolated by
+Hollands--Wald local Wick products, time-ordered products, and interacting
+stress-tensor conservation
+\cite{HollandsWald2001LocalWick,HollandsWald2005Conservation,HollandsWald2015QFCS}.
+
+The displayed \(\rho_\lambda\) is therefore a renormalized composite-field
+coordinate inside a restricted sector.  Under a pure Hadamard coordinate
+transport \(H\to H'=H+w\), the observable and state must be transported
+together and the expectation value is unchanged.  A c-number change of the
+displayed density instead compares two local covariant Wick prescriptions in
+the same physical state.  If that finite Wick-square renormalization adds the
+local scalar \(c\), then \(\Sigma_{\omega,H}\) is replaced in this comparison
+by \(\Sigma_{\omega,H}+\hbar c\), and
 \begin{equation}
   \rho_\lambda^{(c)}
   =
@@ -785,13 +823,34 @@ renormalization adds the local scalar \(c\), then
   \left(\Sigma_{\omega,H}+\hbar c\right)^2 .
   \label{eq:semiclassical-interacting-source-scheme-shift}
 \end{equation}
-Thus a quoted number for \(\rho_\lambda\) is not a physical prediction until
-the Wick-square or stress-tensor renormalization condition has been fixed.
-In the homogeneous situation above,
+This Wick-square-generated shift is only one finite-renormalization
+subfamily.  A general locally covariant \(\Phi^4\) prescription also permits
+independent local lower-field and geometric terms of the form
+\[
+  \Phi_H^4
+  \mapsto
+  \Phi_H^4
+  +A_1m^2\Phi_H^2
+  +A_2R\Phi_H^2
+  +A_3m^4
+  +A_4m^2R
+  +A_5R^2
+  +A_6R_{\alpha\beta}R^{\alpha\beta}
+  +A_7\Box R ,
+\]
+subject to the chosen local covariance, scaling, and action-Ward conditions.
+The stress tensor has its own independent conserved local curvature tensors,
+as in Proposition~\ref{prop:finite-local-freedom-scalar-stress-tensor}, plus
+the interaction-dependent contact terms in
+\eqref{eq:semiclassical-full-interacting-source-ledger}.  Fixing the
+Wick-square prescription by itself therefore does not make the number
+\(\rho_\lambda\) a physical interacting energy-density prediction.
+
+In the homogeneous retained-coordinate calculation,
 \eqref{eq:semiclassical-interacting-vacuum-source} is conserved and may be
-absorbed into the gravitational coordinate
+absorbed into a potential-sector gravitational coordinate
 \begin{equation}
-  \Lambda_{\rm eff}
+  \Lambda_{\rm eff}^{\rm pot}
   =
   \Lambda
   +
@@ -803,33 +862,42 @@ absorbed into the gravitational coordinate
 The sign follows from the convention
 \(E_{\mu\nu}^{\rm grav}=\langle T_{\mu\nu}\rangle\): a positive potential
 energy gives \(T_{\mu\nu}=-\rho_\lambda g_{\mu\nu}\) and therefore moves the
-source to the left side as \(+\rho_\lambda g_{\mu\nu}\).
+source to the left side as \(+\rho_\lambda g_{\mu\nu}\).  For a physical
+semiclassical equation this scalar coordinate must be replaced by the
+corresponding scalar component of the conserved, scheme-fixed full source in
+\eqref{eq:semiclassical-full-interacting-source-ledger}.
 
-The same source can be fed into the retained response diagnostic.  With the
-finite source basis \(f_a\) of
+The same retained potential coordinate can be fed into the response
+diagnostic as a toy source-coordinate check.  With the finite source basis
+\(f_a\) of
 \eqref{eq:semiclassical-retained-response-matrix}, define
 \begin{equation}
   q_a
   =
   \int_U\dd\operatorname{vol}_g\, f_a^{\mu\nu}g_{\mu\nu},
   \qquad
-  j_a^{(\lambda)}
+  j_a^{(\lambda,{\rm pot})}
   =
   -\rho_\lambda q_a .
   \label{eq:semiclassical-interacting-retained-source}
 \end{equation}
 If the response-window hypotheses hold, then
 \begin{equation}
-  \lVert h_\lambda(\omega)\rVert_2
+  \lVert h_\lambda^{\rm pot}(\omega)\rVert_2
   \le
-  M_I\rho_\lambda\lVert q\rVert_2,
+  M_I|\rho_\lambda|\lVert q\rVert_2,
   \qquad
   \omega\in I .
   \label{eq:semiclassical-interacting-response-bound}
 \end{equation}
-This is the promised backreaction datum in miniature: an interaction, a
-state assumption, a renormalization coordinate, an observable stress-tensor
-output, and a metric-response test.  If
+This is the retained-sector bookkeeping test: an interaction, a state
+assumption, a renormalization coordinate, an observable potential-insertion
+output, and a metric-response bound.  It becomes a physical backreaction
+datum only after
+\(\delta_\lambda\langle T_{\mu\nu}\rangle^{\rm pot}\) is replaced by the
+conserved full source
+\(\delta_\lambda
+\langle T_{\mu\nu}^{\rm ren}\rangle_{\omega,H}^{\rm full}\).  If
 \(\Sigma_{\omega,H}\) varies across the region, the potential term alone has
 \(\nabla^\mu(-\rho_\lambda g_{\mu\nu})=-\partial_\nu\rho_\lambda\).  The
 full interacting stress tensor must then include the derivative and local
