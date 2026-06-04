@@ -126,7 +126,11 @@
   short-OPE continuation then projects that coefficient onto the Ch12
   renormalized-operator bundle, with inverse operator-frame transformation and
   dual operator-mixing RG flow separated from the Wilsonian size-boundary
-  flow.  The 2026-06-03 verification-contract follow-up records, in the
+  flow.  The finite light-fermion determinant frame continuation fixes the
+  inverse \( \det Z_R\det Z_L \) transformation law for
+  \(\mathcal R_{\rm f}^{\mathcal S}\), separating source-frame covariance from
+  local determinant counterterm shifts.  The 2026-06-03
+  verification-contract follow-up records, in the
   calculation-check docstring rather than the TeX, the target claims,
   independent constructions, imported assumptions, negative controls, and
   finite/continuum scope boundary for this instanton companion.
@@ -251,6 +255,7 @@
 | \(K_\Lambda(P_z,P_0;\mu)\) | proper-time logarithmic determinant ratio between the instanton and trivial-sector nonzero-mode operators |
 | \(\mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)\) | proper-time representative of the instanton nonzero-mode determinant density |
 | \(\mathcal R_{{\rm f},\Lambda}^{\mathcal S}(z;\mu)\) | finite light-fermion nonzero-mode determinant factor after trivial-sector normalization and scheme-\(\mathcal S\) local counterterms |
+| \(Z_R,Z_L,\Delta C_{\rm f}\) | finite right/left zero-mode source-frame changes and finite local light-fermion determinant counterterm controlling the frame law of \(\mathcal R_{\rm f}^{\mathcal S}\) |
 | \(C_N^{\rm PV}\) | orientation-integrated pure-gauge Pauli-Villars one-instanton determinant constant |
 | \(\mathcal Z_{\mathcal O,\Lambda}^{0}(z)\) | finite Berezin coefficient of the zero-mode part of insertions, masses, and sources in a \(Q=1\) instanton background |
 | \(M_{ff'},B_{ff'}\) | mass-overlap and external-source matrices whose finite Berezin determinant and minor expansion give the QCD 't Hooft amplitudes |
@@ -1136,7 +1141,12 @@
   fluctuation determinant datum requiring the chosen regulator, counterterms,
   and normalization.  The BPST check script verifies the Schur factorization,
   the projected determinant product, and the independence of zero-mode minors
-  from the finite nonzero-mode scheme factor.
+  from the finite nonzero-mode scheme factor.  The 2026-06-04 source-frame
+  continuation added the finite covariance law
+  \(\mathcal R_{\rm f}'=\mathcal R_{\rm f}/(\det Z_R\det Z_L)\) under
+  \(K_{00}^{\rm eff}\mapsto Z_RK_{00}^{\rm eff}Z_L\), together with the
+  separate local counterterm multiplier \(\exp[-\Delta C_{\rm f}]\); the
+  companion check verifies both the matrix and scalar-frame cases.
 - 2026-06-03 issue #597/#630 mass-source RG pass: added the
   source-functional RG transport of the instanton vertex.  The new block
   states the renormalized zero-mode source functional

@@ -4936,6 +4936,78 @@ Gaussian integral produces the displayed Schur correction.  Since
 can determine its finite value.
 \end{proof}
 
+\begin{proposition}[Finite source-frame covariance of the light-fermion determinant]
+\label{prop:instanton-light-fermion-source-frame-covariance}
+In the setting of
+Proposition~\ref{prop:instanton-fermion-determinant-zero-mode-factorization},
+write the finite zero-mode source functional as
+\begin{equation}
+  \mathcal V_{\rm inst}^{0,\mathcal S}(z)
+  =
+  \mathcal R_{{\rm f},\Lambda}^{\mathcal S}(z;\mu)\,
+  \det K_{00}^{\rm eff}(z).
+  \label{eq:instanton-light-fermion-source-frame-functional}
+\end{equation}
+Let \(Z_R,Z_L\in {\rm GL}(N_f,\mathbb C)\) be a finite change of the right and left
+zero-mode source frames, so that the same source insertion is represented by
+\begin{equation}
+  K_{00}^{\rm eff\,\prime}=Z_RK_{00}^{\rm eff}Z_L .
+  \label{eq:instanton-zero-mode-source-frame-change}
+\end{equation}
+Then the same finite-regulator amplitude coordinate is represented only if
+\begin{equation}
+  \mathcal R_{{\rm f},\Lambda}^{\mathcal S\,\prime}
+  =
+  \frac{\mathcal R_{{\rm f},\Lambda}^{\mathcal S}}
+       {\det Z_R\,\det Z_L},
+  \qquad
+  \mathcal R_{{\rm f},\Lambda}^{\mathcal S\,\prime}
+  \det K_{00}^{\rm eff\,\prime}
+  =
+  \mathcal R_{{\rm f},\Lambda}^{\mathcal S}
+  \det K_{00}^{\rm eff}.
+  \label{eq:instanton-light-fermion-source-frame-covariance}
+\end{equation}
+If the finite scheme is also changed by a local fermion determinant counterterm
+\(\Delta C_{\rm f}(z)\), then the determinant coordinate is instead multiplied
+by \(\exp[-\Delta C_{\rm f}(z)]\):
+\begin{equation}
+  \mathcal R_{{\rm f},\Lambda}^{\mathcal S'}
+  =
+  \ee^{-\Delta C_{\rm f}(z)}
+  \frac{\mathcal R_{{\rm f},\Lambda}^{\mathcal S}}
+       {\det Z_R\,\det Z_L}.
+  \label{eq:instanton-light-fermion-counterterm-frame-change}
+\end{equation}
+Thus a numerical value for
+\(\mathcal R_{{\rm f},\Lambda}^{\mathcal S}\) is not a standalone output of
+the zero-mode determinant.  It has meaning only together with the finite source
+frame, local counterterm convention, and operator normalization used to extract
+the physical correlator.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:instanton-zero-mode-source-frame-change} and determinant
+multiplicativity give
+\[
+  \det K_{00}^{\rm eff\,\prime}
+  =
+  \det Z_R\,\det K_{00}^{\rm eff}\,\det Z_L .
+\]
+The inverse transformation of
+\(\mathcal R_{{\rm f},\Lambda}^{\mathcal S}\) in
+\eqref{eq:instanton-light-fermion-source-frame-covariance} is therefore exactly
+what preserves the finite product
+\eqref{eq:instanton-light-fermion-source-frame-functional}.  A finite local
+counterterm changes the regulated determinant density by the exponential of
+minus the counterterm difference between the instanton and trivial sectors, as
+in \eqref{eq:finite-regulator-instanton-measure-density}; this gives
+\eqref{eq:instanton-light-fermion-counterterm-frame-change}.  The final
+statement follows because source-frame changes and local counterterms act on
+the finite spectral determinant factor, while the Berezin determinant records
+only the zero-mode saturation algebra.
+\end{proof}
+
 \begin{proposition}[Mass/source RG transport of the instanton vertex]
 \label{prop:instanton-mass-source-rg-transport}
 Work in a mass-independent renormalization scheme in the same \(Q=1\)
@@ -6364,7 +6436,10 @@ pure-gauge constant in
 \eqref{eq:pure-gauge-pv-instanton-density}, while
 \(\mathcal R_{\rm f}^{\rm PV}\) is not fixed by the pure-gauge determinant
 calculation; it is the finite light-fermion nonzero-mode determinant factor of
-the same regulator and source normalization.  The five remainders are the
+the same regulator and source normalization, with the finite-frame covariance
+fixed by
+Proposition~\ref{prop:instanton-light-fermion-source-frame-covariance}.  The
+five remainders are the
 determinant, zero-mode/source, source-matching, Schur, and endpoint residuals
 of Proposition~\ref{prop:instanton-amplitude-assembly-error-budget}.
 

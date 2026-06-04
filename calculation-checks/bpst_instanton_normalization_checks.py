@@ -27,6 +27,10 @@ relations
     boson/ghost/fermion determinant powers and counterterm shifts
     the finite fermion block determinant separates the nonzero-mode spectral
     determinant from the zero-mode Schur/Berezin determinant
+    finite source-frame changes multiply the zero-mode determinant by
+    det Z_R det Z_L and require the inverse transformation of the finite
+    light-fermion nonzero-mode determinant factor; local finite determinant
+    counterterms give a separate multiplicative scheme shift
     the proper-time fluctuation determinant combines with either an independent
     bilinear source determinant or a differentiated linear Grassmann source
     coefficient to give the finite four-fermion instanton amplitude
@@ -1143,6 +1147,51 @@ def check_fermion_determinant_zero_mode_nonzero_mode_factorization() -> None:
         "zero-mode minor independent of nonzero-mode scheme factor B",
         scheme_b * complementary_mass_cofactor / scheme_b,
         complementary_mass_cofactor,
+    )
+
+
+def check_light_fermion_determinant_source_frame_covariance() -> None:
+    zero_mode_kernel = [
+        [Fraction(2, 3), Fraction(3, 5)],
+        [Fraction(5, 7), Fraction(7, 11)],
+    ]
+    finite_fermion_factor = Fraction(13, 17)
+    source_functional = finite_fermion_factor * det_fraction(zero_mode_kernel)
+
+    z_r = [[Fraction(2), Fraction(1)], [Fraction(1), Fraction(3)]]
+    z_l = [[Fraction(3), Fraction(2)], [Fraction(1), Fraction(2)]]
+    transformed_kernel = matmul_fraction(
+        matmul_fraction(z_r, zero_mode_kernel),
+        z_l,
+    )
+    determinant_multiplier = det_fraction(z_r) * det_fraction(z_l)
+    transformed_factor = finite_fermion_factor / determinant_multiplier
+
+    assert_equal(
+        "light-fermion determinant inverse source-frame covariance",
+        transformed_factor * det_fraction(transformed_kernel),
+        source_functional,
+    )
+
+    scalar_frame = Fraction(3, 2)
+    scalar_kernel = [
+        [scalar_frame * scalar_frame * entry for entry in row]
+        for row in zero_mode_kernel
+    ]
+    flavor_count = 2
+    scalar_factor = finite_fermion_factor / (scalar_frame ** (2 * flavor_count))
+    assert_equal(
+        "scalar source-frame power is two zero-mode sides per flavor",
+        scalar_factor * det_fraction(scalar_kernel),
+        source_functional,
+    )
+
+    counterterm_multiplier = Fraction(5, 9)
+    counterterm_factor = counterterm_multiplier * transformed_factor
+    assert_equal(
+        "finite determinant counterterm multiplies source functional",
+        counterterm_factor * det_fraction(transformed_kernel),
+        counterterm_multiplier * source_functional,
     )
 
 
@@ -2907,6 +2956,7 @@ def main() -> None:
     check_two_flavor_instanton_source_curvature()
     check_two_flavor_instanton_source_ward_ledger()
     check_fermion_determinant_zero_mode_nonzero_mode_factorization()
+    check_light_fermion_determinant_source_frame_covariance()
     check_instanton_mass_source_rg_transport()
     check_proper_time_fluctuation_four_fermion_amplitude()
     check_instanton_source_typing_and_differentiation()
