@@ -27,8 +27,8 @@ human print-size inspection.
 - Unique physical PDF pages containing figures: 168
 - Rendered page PNGs: 168
 - Contact sheets: 14
-- Human-reviewed figures so far: 20
-- Pending figures after these tranches: 152
+- Human-reviewed figures so far: 30
+- Pending figures after these tranches: 142
 
 ## Method
 
@@ -54,7 +54,7 @@ the following checks:
 - whether the figure has semantic value beyond restating prose;
 - whether the figure is being overread as theorem-level evidence.
 
-Higher-resolution crops were not needed for the twenty reviewed figures; none has
+Higher-resolution crops were not needed for the thirty reviewed figures; none has
 dense small labels beyond the original page render.  Later dense figures should
 receive crop review when the full-page PNG is insufficient.
 
@@ -95,10 +95,28 @@ explicitly: the lightcone, local operation, and spacelike-signal distinctions
 are carried by labels, geometry, dashed/solid arrows, and placement rather than
 by hue alone.
 
+The following third-tranche figures also passed original-resolution review:
+
+- `fig:kallen-lehmann-feynman-contour-closures`
+- `fig:standard-boost-positive-mass-shell`
+- `fig:kallen-lehmann-pole-and-continuum`
+- `fig:normalized-correlator-component-selection`
+- `fig:euclidean-phi-four-feynman-rules`
+- `fig:four-point-wick-connected-decomposition`
+- `fig:bcfw-factorization`
+- `fig:haag-ruelle-spectral-transfer`
+- `fig:exchange-model-stu-tree-routings`
+- `fig:resonance-k-plane-outgoing-growth`
+
+The third tranche includes the color-warning page 451.  It was checked
+explicitly: the positive mass-shell neighborhood, support region, reflected
+transfer, and cone geometry are carried by labels, placement, filled regions,
+and dashed reference lines rather than by hue alone.
+
 ## Boundary
 
-This pass establishes the durable ledger and audits the first twenty figures.
+This pass establishes the durable ledger and audits the first thirty figures.
 The older contact-sheet inspection remains useful for triage, but it is not
-treated here as evidence for the remaining 152 pending figure rows.  Issue #767
+treated here as evidence for the remaining 142 pending figure rows.  Issue #767
 should stay open until all rows are reviewed and any defects found in later
 tranches are repaired and re-rendered.
