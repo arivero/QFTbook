@@ -129,9 +129,12 @@ For a full rendered figure pass after building the monograph, run
 tools/render_figure_pages.py --force
 ```
 
-and inspect the contact sheets in
-`monograph/tex/build/figure_audit_current/contact/` against the figure style
-guide.
+The command requires `qpdf`, Poppler's `pdftoppm`, and Pillow by default.  Use
+the generated contact sheets in
+`monograph/tex/build/figure_audit_current/contact/` as overview/triage images,
+then inspect the rendered page PNGs at 100 percent scale for print-size labels,
+line weights, grayscale distinctions, and caption separation against the figure
+style guide.
 
 For convention-sensitive derivations, run the public calculation checks.  The
 default entry point is

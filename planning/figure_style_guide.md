@@ -107,7 +107,13 @@ reads the compiled `main.aux` and PDF hyperref destination tree, writes a
 manifest of every floated figure label to
 `monograph/tex/build/figure_audit_current/figure_pages_manifest.tsv`, renders
 each physical PDF page that contains a figure, and builds contact sheets under
-`monograph/tex/build/figure_audit_current/contact/`.  Use these sheets for the
-print-size legibility pass: clipping, line weight, labels, caption separation,
-grayscale readability, page placement, and whether the displayed schematic
-still carries the mathematical or physical datum claimed by the text.
+`monograph/tex/build/figure_audit_current/contact/`.  The command requires
+`qpdf`, Poppler's `pdftoppm`, and Pillow by default; pass
+`--no-contact-sheets` only when the manifest plus full page PNGs are the
+intended artifact.  Treat the contact sheets as overview and triage images for
+gross clipping, figure/page navigation, and obvious missing-content failures.
+Inspect the 120-dpi page PNGs at 100 percent scale, or higher-resolution
+figure crops when needed, for print-size legibility: small labels, line
+weight, grayscale distinctions, caption separation, and whether the displayed
+schematic still carries the mathematical or physical datum claimed by the
+text.

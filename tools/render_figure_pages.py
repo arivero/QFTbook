@@ -11,6 +11,7 @@ anchor, printed page, and physical page.
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import re
 import shutil
@@ -131,6 +132,30 @@ def run_json(command: list[str]) -> Any:
     return json.loads(proc.stdout)
 
 
+def check_dependencies(*, render_page_images: bool, contact_sheets: bool) -> None:
+    missing: list[str] = []
+    if shutil.which("qpdf") is None:
+        missing.append("qpdf (required to read PDF destination pages)")
+    if render_page_images and shutil.which("pdftoppm") is None:
+        missing.append("pdftoppm from Poppler (required to render page PNGs)")
+    if contact_sheets and importlib.util.find_spec("PIL") is None:
+        missing.append(
+            "Pillow (required to write contact sheets; pass --no-contact-sheets "
+            "only when page PNGs plus the manifest are the intended output)"
+        )
+    if missing:
+        joined = "\n  - ".join(missing)
+        raise SystemExit(f"missing required dependencies:\n  - {joined}")
+
+
+def remove_unexpected_files(directory: Path, pattern: str, expected_names: set[str]) -> None:
+    if not directory.exists():
+        return
+    for path in directory.glob(pattern):
+        if path.name not in expected_names:
+            path.unlink()
+
+
 def pdf_destination_pages(pdf_path: Path) -> dict[str, int]:
     data = run_json(["qpdf", "--json", "--json-key=pages", "--json-key=qpdf", str(pdf_path)])
     page_by_object = {
@@ -194,9 +219,9 @@ def write_manifest(rows: list[FigureManifestRow], out_dir: Path) -> None:
 
 
 def render_pages(pdf_path: Path, pages: list[int], page_dir: Path, dpi: int, force: bool) -> None:
-    if shutil.which("pdftoppm") is None:
-        raise SystemExit("pdftoppm is required to render figure pages")
     page_dir.mkdir(parents=True, exist_ok=True)
+    expected_names = {f"page-{page:04d}.png" for page in pages}
+    remove_unexpected_files(page_dir, "page-*.png", expected_names)
     for page in pages:
         target = page_dir / f"page-{page:04d}.png"
         if target.exists() and not force:
@@ -226,11 +251,7 @@ def write_contact_sheets(
     columns: int,
     thumb_width: int,
 ) -> None:
-    try:
-        from PIL import Image, ImageDraw, ImageFont
-    except ImportError:
-        print("Pillow not available; skipped contact sheets.", file=sys.stderr)
-        return
+    from PIL import Image, ImageDraw, ImageFont
 
     page_dir = out_dir / "pages"
     sheet_dir = out_dir / "contact"
@@ -244,6 +265,9 @@ def write_contact_sheets(
     entries = sorted(by_page.items())
     rows_per_sheet = 4
     max_cells = columns * rows_per_sheet
+    sheet_count = (len(entries) + max_cells - 1) // max_cells
+    expected_names = {f"sheet-{sheet_no:02d}.png" for sheet_no in range(1, sheet_count + 1)}
+    remove_unexpected_files(sheet_dir, "sheet-*.png", expected_names)
     margin = 18
     label_height = 58
 
@@ -297,6 +321,10 @@ def main() -> int:
     aux_path = args.aux if args.aux.is_absolute() else ROOT / args.aux
     pdf_path = args.pdf if args.pdf.is_absolute() else ROOT / args.pdf
     out_dir = args.out_dir if args.out_dir.is_absolute() else ROOT / args.out_dir
+    render_page_images = not args.manifest_only
+    contact_sheets = render_page_images and not args.no_contact_sheets
+
+    check_dependencies(render_page_images=render_page_images, contact_sheets=contact_sheets)
 
     figures = parse_aux_figures(aux_path)
     destination_pages = pdf_destination_pages(pdf_path)
@@ -322,10 +350,12 @@ def main() -> int:
     write_manifest(rows, out_dir)
     unique_pages = sorted({row.physical_page for row in rows})
 
-    if not args.manifest_only:
+    if render_page_images:
         render_pages(pdf_path, unique_pages, out_dir / "pages", args.dpi, args.force)
-        if not args.no_contact_sheets:
+        if contact_sheets:
             write_contact_sheets(rows, out_dir, args.columns, args.thumb_width)
+        elif args.force:
+            shutil.rmtree(out_dir / "contact", ignore_errors=True)
 
     print("Rendered figure-page audit data")
     print(f"  figures: {len(rows)}")

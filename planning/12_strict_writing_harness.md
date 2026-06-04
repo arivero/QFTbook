@@ -593,9 +593,11 @@ tools/render_figure_pages.py --force
 ```
 
 The strict structural gate is `tools/audit_figures.py --strict`.  The rendered
-audit command writes a current figure-page manifest and contact sheets under
-`monograph/tex/build/figure_audit_current/`; use those images for the
-print-size legibility and semantic-value pass.
+audit command requires `qpdf`, Poppler's `pdftoppm`, and Pillow by default,
+then writes a current figure-page manifest, full page PNGs, and contact sheets
+under `monograph/tex/build/figure_audit_current/`.  Use the contact sheets as
+overview/triage images and inspect the page PNGs, or higher-resolution crops
+when needed, for print-size legibility and semantic-value judgments.
 
 ## QFT Ordering Rule
 

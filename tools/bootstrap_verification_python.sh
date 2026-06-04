@@ -77,5 +77,5 @@ echo "[qft-python-bootstrap] creating/updating .venv with ${selected_python}"
 "$selected_python" -m venv "$ROOT/.venv"
 "$ROOT/.venv/bin/python" -m pip install --upgrade pip
 "$ROOT/.venv/bin/python" -m pip install -r "$ROOT/requirements-verification.txt"
-"$ROOT/.venv/bin/python" -c 'import h5py, mpmath, numpy, sympy'
+"$ROOT/.venv/bin/python" -c 'import h5py, mpmath, numpy, PIL, sympy'
 echo "[qft-python-bootstrap] verification Python ready: $ROOT/.venv/bin/python"
