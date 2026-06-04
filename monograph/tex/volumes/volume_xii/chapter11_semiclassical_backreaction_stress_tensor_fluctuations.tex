@@ -1222,6 +1222,155 @@ of keeping the potential-sector calculation narrow: it is a computable
 coordinate inside the interacting source, while the conserved mean and noise
 that feed semiclassical gravity require the full Ward-compatible pAQFT package.
 
+\begin{controlledapproximation}[Interacting stress-tensor and noise package]
+\label{ca:semiclassical-interacting-stress-noise-package}
+The retained Ward projector diagnoses admissible conserved coordinates; the
+physical backreaction input comes from the interacting stress tensor itself.
+Fix a pAQFT renormalization prescription \(\mathcal S\), an interaction \(V\),
+a Hadamard state \(\omega\) in the selected state class, and a retained
+stress-tensor test basis \(\tau_a^{\mu\nu}\).  A backreaction-ready interacting
+package on this retained sector consists of the three objects
+\begin{equation}
+\begin{aligned}
+  j_a^{\rm full}
+  &=
+  \omega\!\left(T_{\rm int}^{\mathcal S,V}(\tau_a)\right),\\
+  \mathsf N_{ab}^{\rm full}
+  &=
+  \frac12\,
+  \omega\!\left(
+    \left\{
+      \Delta T_{\rm int}^{\mathcal S,V}(\tau_a),
+      \Delta T_{\rm int}^{\mathcal S,V}(\tau_b)
+    \right\}
+  \right)_{\rm ren},\\
+  \mathsf K_{ab}^{\rm ret}
+  &=
+  \ii\,\omega\!\left(
+    \left[
+      T_{\rm int}^{\mathcal S,V}(\tau_a),
+      T_{\rm int}^{\mathcal S,V}(\tau_b)
+    \right]
+  \right)_{\rm ret}
+  +\mathsf K_{ab}^{\rm loc}.
+\end{aligned}
+  \label{eq:semiclassical-full-interacting-package}
+\end{equation}
+Here
+\(\Delta T=T-\omega(T)\), the subscript ``ren'' means that the time-ordered
+and coincident-point extensions of the stress-tensor product have been fixed
+in the same prescription \(\mathcal S\), and
+\(\mathsf K^{\rm loc}\) contains the local metric-variation/contact terms
+which enter the linearized semiclassical equation.  The same renormalized
+operator-valued distribution \(T_{\rm int}^{\mathcal S,V}\) must be used in
+all three entries.  Otherwise the mean equation, the Einstein--Langevin noise,
+and the retarded response are coordinates from different theories.
+
+If, for bookkeeping, the interacting tensor is decomposed in one local chart as
+\[
+  T_{\rm int}^{\mathcal S,V}
+  =
+  T^{(0)}
+  +T^{\rm pot}
+  +T^{\rm Bog}
+  +T^{\rm der}
+  +T^{\rm ct}
+\]
+then the mean and noise are not obtained by keeping only the separately
+computed component variances.  With \(i,j\) running over the displayed
+components,
+\begin{equation}
+  j_a^{\rm full}
+  =
+  \sum_i
+  \omega\!\left(T^i(\tau_a)\right),
+  \qquad
+  \mathsf N_{ab}^{\rm full}
+  =
+  \frac12
+  \sum_{i,j}
+  \omega\!\left(
+    \left\{
+      \Delta T^i(\tau_a),
+      \Delta T^j(\tau_b)
+    \right\}
+  \right)_{\rm ren}.
+  \label{eq:semiclassical-full-noise-component-sum}
+\end{equation}
+The off-diagonal \(i\ne j\) entries are part of the physical covariance.  They
+are the fluctuation analogue of the missing Bogoliubov/contact terms in the
+mean source equation, and they are required before the Ward test can be applied
+to the full noise:
+\begin{equation}
+  \mathsf B j^{\rm full}=0,
+  \qquad
+  \mathsf B\mathsf N^{\rm full}=0,
+  \qquad
+  \mathsf N^{\rm full}\mathsf B^*=0 .
+  \label{eq:semiclassical-full-package-ward-conditions}
+\end{equation}
+A projected partial covariance
+\(\mathsf P_{\ker\mathsf B}\mathsf N^{\rm pot}\mathsf P_{\ker\mathsf B}^*\)
+is therefore only a retained diagnostic or an explicit truncated model.  It is
+not the fluctuation input of the interacting semiclassical equation unless the
+omitted component covariances and cross-covariances have been proved to vanish
+or have been included as controlled residuals.
+
+Finite renormalization makes the distinction sharper.  A c-number local
+curvature ambiguity
+\[
+  T_{\mu\nu}\mapsto T_{\mu\nu}+A_{\mu\nu}[g]\mathbf 1
+\]
+shifts \(j^{\rm full}\) and the gravitational EFT coordinates but drops out of
+the connected noise.  By contrast, a finite composite-operator mixing
+\[
+  T_{\mu\nu}\mapsto
+  T_{\mu\nu}+\sum_r c_r\,\mathcal O^{(r)}_{\mu\nu}
+\]
+changes the noise by cross terms:
+\begin{equation}
+\begin{aligned}
+  \mathsf N'_{ab}
+  &=
+  \mathsf N_{ab}
+  +
+  \sum_r c_r
+  \mathsf N_{ab}(T,\mathcal O^{(r)})
+  +
+  \sum_r c_r
+  \mathsf N_{ab}(\mathcal O^{(r)},T) \\
+  &\qquad
+  +
+  \sum_{r,s}c_rc_s\,
+  \mathsf N_{ab}(\mathcal O^{(r)},\mathcal O^{(s)}).
+\end{aligned}
+  \label{eq:semiclassical-noise-finite-renormalization}
+\end{equation}
+Thus choosing the finite stress-tensor scheme is not only a mean-source
+choice.  It also fixes which composite fluctuations and cross-correlations are
+fed into the Einstein--Langevin covariance.
+
+On a retained frequency window, the interacting semiclassical input is the
+pair
+\[
+  h^{\rm full}(\omega)
+  =
+  \mathsf D(\omega+\ii0)^{-1}j^{\rm full}(\omega),
+  \qquad
+  \mathsf C_h^{\rm full}(\omega)
+  =
+  \mathsf D(\omega+\ii0)^{-1}
+  \mathsf N^{\rm full}(\omega)
+  \mathsf D(\omega+\ii0)^{-*},
+\]
+with \(\mathsf D\) built from the same gravitational EFT coordinates and
+retarded response \(\mathsf K^{\rm ret}\).  A calculation has reached the
+interacting backreaction level only when it supplies
+\eqref{eq:semiclassical-full-interacting-package} in one scheme, or supplies
+residual bounds for the missing state, product-extension, Ward, response, and
+finite-renormalization data.
+\end{controlledapproximation}
+
 \section{Validity Conditions And Reduction Of Order}
 
 The semiclassical approximation requires more than small curvature.  A

@@ -41,6 +41,10 @@ recording fluctuation data required for controlled backreaction.
 - `B`, `P_{ker B}`, `j_min`, `k`, `N^{full}`: finite retained Ward map, its
   least-norm diagnostic projector, the unresolved conserved source component,
   and the full interacting noise covariance tested by the Ward identities.
+- `T_int^{S,V}`, `K^{ret}`, `N(T^i,T^j)`: the scheme-fixed interacting
+  stress tensor, its retained retarded response kernel, and the component
+  covariance/cross-covariance entries required to assemble full interacting
+  stress-tensor noise.
 
 ## Claim Ledger
 
@@ -103,6 +107,17 @@ recording fluctuation data required for controlled backreaction.
   `j^{full}=P_{ker B}j^{raw}+k`, `k in ker B`.  The physical source/noise are
   the objects constructed by the full pAQFT ledger; projecting a partial source
   or partial covariance is recorded only as a diagnostic/model choice.
+- Adds the full retained interacting stress-tensor/noise package for
+  backreaction.  A scheme-fixed `T_int^{S,V}` supplies the mean source,
+  connected symmetrized noise, and retarded response in one prescription.  If
+  `T_int` is decomposed into potential, Bogoliubov, derivative, and counterterm
+  components, the full noise is the double component-covariance sum
+  `sum_{i,j} N(T^i,T^j)`, not the sum of separate component variances.  Local
+  c-number curvature ambiguities shift the mean but not connected noise, while
+  finite composite-operator mixing changes the noise through cross terms.
+  Thus Ward-clean retained data are accepted as physical backreaction inputs
+  only after the full pAQFT stress tensor and its renormalized products, or
+  controlled residuals for the missing entries, have been supplied.
 - Records validity conditions and the EFT reduction-of-order treatment for
   higher-curvature terms.
 
@@ -125,7 +140,11 @@ recording fluctuation data required for controlled backreaction.
   metric-covariance trace bound, the retained Ward-diagnostic projector for
   interacting source/noise coordinates with wrong-sign, transverse-ambiguity,
   projection-versus-physical-completion, projected-partial-noise versus
-  full-noise, and unprojected-longitudinal-noise negative controls, and the
+  full-noise, and unprojected-longitudinal-noise negative controls, the full
+  retained interacting stress-tensor/noise package with component
+  cross-covariances, finite composite-operator-mixing cross terms, and a
+  c-number connected-noise negative control that can still pass the Ward test,
+  and the
   low-energy root selected by reduction of order in a toy higher-derivative
   equation.
 
@@ -198,3 +217,12 @@ curvature, microscopic, and EFT scales.
   cross-covariances to the full pAQFT construction, and the companion includes
   source/noise counterexamples showing that projection can erase physical
   conserved source and fluctuation data.
+- 2026-06-04 issue #729 interacting-package pass: added
+  `ca:semiclassical-interacting-stress-noise-package`, which upgrades the
+  retained Ward-clean diagnostics into a full backreaction-ready package:
+  mean source, connected noise, and retarded response must all come from the
+  same scheme-fixed interacting stress tensor.  The new finite companion checks
+  that component variances alone fail, cross-covariances restore the
+  Ward-clean full noise, finite operator mixing changes noise through cross
+  terms, and c-number curvature counterterms must not be inserted into
+  connected noise even when the resulting wrong covariance remains Ward-clean.

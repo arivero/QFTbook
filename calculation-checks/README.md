@@ -2066,7 +2066,12 @@ Current checks:
   metric-covariance trace bound, the retained Ward-diagnostic projector for
   interacting source/noise coordinates with wrong-sign, transverse-ambiguity,
   projection-versus-physical-completion, projected-partial-noise versus
-  full-noise, and unprojected-longitudinal-noise negative controls, and the
+  full-noise, and unprojected-longitudinal-noise negative controls, the full
+  retained interacting stress-tensor/noise package whose component
+  cross-covariances and finite composite-operator-mixing cross terms are
+  required before Ward-clean mean/noise data are fed into the metric response,
+  with c-number counterterm noise rejected even though it can pass the Ward
+  test, and the
   low-energy root selected by reduction of order in a toy higher-derivative
   equation.
 - `schwinger_keldysh_operator_checks.py`: finite two-level-system checks for

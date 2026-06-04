@@ -8,6 +8,8 @@ covariance, finite response-window metric fluctuation bounds, the first-order
 lambda-phi-four potential-insertion source coordinate, the retained
 lambda-phi-four potential-noise coordinate using the full separated two-point
 function, retained Ward diagnostics for interacting source/noise coordinates,
+the full retained interacting stress-tensor/noise package with component
+cross-covariances and finite composite-operator mixing,
 and the low-energy root selected by reduction of order in a toy
 higher-derivative equation.
 
@@ -20,7 +22,9 @@ coordinate, the retained potential-noise Wick contraction with full separated
 two-point cross covariance and metric pushforward, the restricted
 finite-renormalization ledger for that coordinate, the finite retained
 Ward-diagnostic/projected-noise algebra for interacting sources, and the
-low-energy root selected by reduction of order.
+full interacting package algebra in which component cross-covariances and
+finite operator-mixing terms are required before Ward tests are applied to
+the noise, and the low-energy root selected by reduction of order.
 Independent construction: the checks recompute traces, KMS factors,
 matrix pushforwards, exact retained-sector inverses, Wick-contraction
 coefficients, cosmological-coordinate shifts, independent finite counterterm
@@ -41,13 +45,15 @@ disconnected noise pieces, pretending a transverse counterterm cancels a Ward
 violation, wrong-sign Ward repairs, identifying the least-norm projection with
 the physical completion, identifying projected partial noise with full physical
 noise, unprojected longitudinal noise, and cutoff-scale higher-derivative roots
-are rejected.
+component-variance-only noise packages, missing finite-renormalization cross
+terms, and c-number counterterms incorrectly added to connected noise are
+rejected.
 Scope boundary: a pass checks coefficient, positivity, and response-bound
-bookkeeping for the retained potential-insertion coordinate; it does not
-construct the full interacting stress-tensor expectation, prove existence of
-interacting Hadamard states, construct renormalized stress-tensor products,
-solve stochastic semiclassical equations, or address nonperturbative quantum
-gravity dynamics.
+bookkeeping for the retained potential-insertion coordinate and the finite
+algebra of a full retained stress-tensor package; it does not construct the
+pAQFT interacting stress tensor, prove existence of interacting Hadamard
+states, construct renormalized stress-tensor products, solve stochastic
+semiclassical equations, or address nonperturbative quantum gravity dynamics.
 """
 
 from __future__ import annotations
@@ -135,6 +141,15 @@ def matsub(left: Matrix, right: Matrix) -> Matrix:
         tuple(left[row][col] - right[row][col] for col in range(len(left[0])))
         for row in range(len(left))
     )
+
+
+def matsum(matrices: tuple[Matrix, ...]) -> Matrix:
+    if not matrices:
+        raise AssertionError("empty matrix sum")
+    result = zero_matrix(len(matrices[0]), len(matrices[0][0]))
+    for matrix in matrices:
+        result = matadd(result, matrix)
+    return result
 
 
 def trace(matrix: Matrix) -> Fraction:
@@ -615,6 +630,120 @@ def check_retained_interacting_source_ward_diagnostics() -> None:
         raise AssertionError("contractive response should bound diagnostic noise trace")
 
 
+def check_interacting_stress_tensor_noise_package() -> None:
+    # A finite retained analogue of T_int = sum_i T_i.  The total operator
+    # map is Ward-clean, while individual pieces are not.
+    ward: Matrix = (
+        (Fraction(1), Fraction(-1), Fraction(0)),
+        (Fraction(0), Fraction(1), Fraction(-1)),
+    )
+    state_covariance: Matrix = (
+        (Fraction(2), Fraction(1, 3)),
+        (Fraction(1, 3), Fraction(3)),
+    )
+    if det2(state_covariance) <= 0:
+        raise AssertionError("test state covariance should be positive")
+
+    potential_map: Matrix = (
+        (Fraction(1), Fraction(0)),
+        (Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(0)),
+    )
+    bogoliubov_map: Matrix = (
+        (Fraction(0), Fraction(1)),
+        (Fraction(1), Fraction(1)),
+        (Fraction(0), Fraction(1)),
+    )
+    counterterm_map: Matrix = (
+        (Fraction(0), Fraction(1)),
+        (Fraction(0), Fraction(1)),
+        (Fraction(1), Fraction(1)),
+    )
+    component_maps = (potential_map, bogoliubov_map, counterterm_map)
+    total_map = matsum(component_maps)
+    if matmul(ward, total_map) != zero_matrix(2, 2):
+        raise AssertionError("full interacting stress-tensor map should be Ward-clean")
+    for component in component_maps:
+        if matmul(ward, component) == zero_matrix(2, 2):
+            raise AssertionError("test components should expose nonconserved partial pieces")
+
+    def covariance_from_map(operator_map: Matrix) -> Matrix:
+        return matmul(matmul(operator_map, state_covariance), transpose(operator_map))
+
+    def cross_covariance(left_map: Matrix, right_map: Matrix) -> Matrix:
+        return matmul(matmul(left_map, state_covariance), transpose(right_map))
+
+    full_noise = covariance_from_map(total_map)
+    component_variance_only = matsum(tuple(covariance_from_map(m) for m in component_maps))
+    component_cross_terms = matsum(
+        tuple(
+            cross_covariance(component_maps[i], component_maps[j])
+            for i in range(len(component_maps))
+            for j in range(len(component_maps))
+            if i != j
+        )
+    )
+    if full_noise != matadd(component_variance_only, component_cross_terms):
+        raise AssertionError("full noise should be the double component-covariance sum")
+    if component_variance_only == full_noise:
+        raise AssertionError("negative control failed: component variances alone gave full noise")
+    if matmul(ward, full_noise) != zero_matrix(2, 3):
+        raise AssertionError("full interacting noise should have no longitudinal row")
+    if matmul(full_noise, transpose(ward)) != zero_matrix(3, 2):
+        raise AssertionError("full interacting noise should have no longitudinal column")
+    if matmul(ward, component_variance_only) == zero_matrix(2, 3):
+        raise AssertionError("negative control failed: diagonal component noise was Ward-clean")
+
+    for test_vector in [
+        ((Fraction(1),), (Fraction(0),), (Fraction(-1),)),
+        ((Fraction(2),), (Fraction(-3),), (Fraction(1),)),
+        ((Fraction(1),), (Fraction(1),), (Fraction(1),)),
+    ]:
+        if quadratic_form(full_noise, test_vector) < 0:
+            raise AssertionError("full interacting noise should be positive semidefinite")
+
+    state_mean: Matrix = ((Fraction(3),), (Fraction(5),))
+    c_number_counterterm: Matrix = (
+        (Fraction(2),),
+        (Fraction(2),),
+        (Fraction(2),),
+    )
+    full_mean_source = matadd(matmul(total_map, state_mean), c_number_counterterm)
+    if matmul(ward, full_mean_source) != zero_matrix(2, 1):
+        raise AssertionError("c-number shifted full source should remain Ward-clean")
+
+    wrong_c_number_noise = matadd(full_noise, matmul(c_number_counterterm, transpose(c_number_counterterm)))
+    if wrong_c_number_noise == full_noise:
+        raise AssertionError("test c-number counterterm should visibly change a wrong noise formula")
+    if matmul(ward, wrong_c_number_noise) != zero_matrix(2, 3):
+        raise AssertionError("conserved c-number counterterm should not spoil the Ward row test")
+    if matmul(wrong_c_number_noise, transpose(ward)) != zero_matrix(3, 2):
+        raise AssertionError("conserved c-number counterterm should not spoil the Ward column test")
+
+    finite_operator_mixing: Matrix = (
+        (Fraction(0), Fraction(1, 2)),
+        (Fraction(0), Fraction(1, 2)),
+        (Fraction(0), Fraction(1, 2)),
+    )
+    if matmul(ward, finite_operator_mixing) != zero_matrix(2, 2):
+        raise AssertionError("test finite operator mixing should preserve the Ward map")
+    mixed_map = matadd(total_map, finite_operator_mixing)
+    mixed_noise = covariance_from_map(mixed_map)
+    mixing_covariance = covariance_from_map(finite_operator_mixing)
+    mixing_cross_terms = matadd(
+        cross_covariance(total_map, finite_operator_mixing),
+        cross_covariance(finite_operator_mixing, total_map),
+    )
+    if mixed_noise != matadd(matadd(full_noise, mixing_cross_terms), mixing_covariance):
+        raise AssertionError("finite operator mixing noise requires cross terms")
+    if mixed_noise == matadd(full_noise, mixing_covariance):
+        raise AssertionError("negative control failed: finite mixing cross terms were omitted")
+    if matmul(ward, mixed_noise) != zero_matrix(2, 3):
+        raise AssertionError("finite-mixed full noise should satisfy the Ward row condition")
+    if matmul(mixed_noise, transpose(ward)) != zero_matrix(3, 2):
+        raise AssertionError("finite-mixed full noise should satisfy the Ward column condition")
+
+
 def check_reduction_of_order_toy_model() -> None:
     # Toy equation: x'' + omega0^2 x + epsilon x'''' = 0.
     # For x ~ exp(lambda t), epsilon lambda^4 + lambda^2 + omega0^2 = 0.
@@ -643,6 +772,7 @@ def main() -> None:
     check_lambda_phi4_potential_source_coordinate()
     check_lambda_phi4_potential_noise_kernel()
     check_retained_interacting_source_ward_diagnostics()
+    check_interacting_stress_tensor_noise_package()
     check_reduction_of_order_toy_model()
     print("All semiclassical backreaction checks passed.")
 
