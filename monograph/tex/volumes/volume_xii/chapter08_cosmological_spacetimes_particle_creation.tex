@@ -690,6 +690,90 @@ de Sitter-invariant two-point functions must be tested against the Hadamard
 short-distance condition; de Sitter invariance alone is not a state-selection
 principle.
 
+\section{Produced Stress Tensor In An Out Region}
+
+The number \(|\beta_k|^2\) is not yet a source for gravity.  It becomes a
+backreaction datum only after it is converted into the renormalized stress
+tensor in a specified state and scheme.  In an asymptotically static future
+region this conversion has a simple finite part which is useful because it
+separates the produced-particle contribution from the vacuum-polarization and
+curvature-counterterm pieces of \(\langle T_{\mu\nu}\rangle_{\rm ren}\).
+
+\begin{controlledapproximation}[Out-region produced stress tensor]
+\label{ca:cosmology-out-produced-stress-tensor}
+Assume \(a(\eta)\to a_+\) in the future, with vanishing curvature derivatives
+in the retained out window, and let
+\begin{equation}
+  \Omega_k^+=\sqrt{k^2+a_+^2m^2}
+  \label{eq:cosmology-out-frequency}
+\end{equation}
+be the conformal-time out frequency.  Normal ordering with respect to the
+out complex structure removes the out-vacuum term.  If the produced-particle
+energy moment is finite, then the homogeneous produced contribution to the
+future stress tensor in \(d\) spacetime dimensions is
+\begin{align}
+  \rho_\beta
+  &=
+  a_+^{-d}
+  \int
+  \frac{d^{d-1}\mathbf k}{(2\pi)^{d-1}}\,
+  \Omega_k^+\,|\beta_k|^2,
+  \label{eq:cosmology-produced-energy-density}
+  \\
+  P_\beta
+  &=
+  a_+^{-d}
+  \int
+  \frac{d^{d-1}\mathbf k}{(2\pi)^{d-1}}\,
+  \frac{k^2}{(d-1)\Omega_k^+}\,|\beta_k|^2 .
+  \label{eq:cosmology-produced-pressure}
+\end{align}
+The factor \(a_+^{-d}\) is not optional: \(a_+^{-(d-1)}\) converts comoving
+momentum measure to physical momentum measure, and the additional \(a_+^{-1}\)
+converts conformal energy \(\Omega_k^+\) to physical energy.  For a massless
+field in the out region, \(P_\beta=\rho_\beta/(d-1)\).  For modes with
+\(k^2\ll a_+^2m^2\), the pressure is suppressed relative to the energy
+density.
+
+The full stress tensor in the out region is not
+\eqref{eq:cosmology-produced-energy-density} alone.  In a declared
+renormalization scheme it has the structure
+\begin{equation}
+  \langle T_{\mu\nu}\rangle_{\rm ren}
+  =
+  T_{\mu\nu}^{\rm prod}[\beta]
+  +
+  T_{\mu\nu}^{\rm vac,sub}
+  +
+  T_{\mu\nu}^{\rm geom,fin}
+  +
+  T_{\mu\nu}^{\rm tail},
+  \label{eq:cosmology-stress-produced-decomposition}
+\end{equation}
+where the last term records omitted nonstatic-window, endpoint, or adiabatic
+matching remainders.  Thus particle production supplies a finite physical
+source only after the fourth-order adiabatic or point-splitting subtraction,
+finite local curvature coordinates, and tail bounds have also been fixed.
+
+For a spatially flat homogeneous semiclassical Friedmann equation in the same
+out window, write \(\kappa_d=8\pi G_d\).  Since
+\[
+  G_{tt}=\frac{(d-1)(d-2)}2 H_t^2 ,
+\]
+a retained small produced source changes the Hubble-square coordinate by
+\begin{equation}
+  \delta H_t^2
+  =
+  \frac{2\kappa_d}{(d-1)(d-2)}\,\delta\rho_\beta
+  \label{eq:cosmology-produced-friedmann-response}
+\end{equation}
+before stability and state-transport residuals are included.  This is the
+minimal bridge from Bogoliubov coefficients to semiclassical backreaction:
+\(|\beta_k|^2\) gives a particle diagnostic, while
+\(\rho_\beta\), the subtraction convention, and the Friedmann response window
+give the gravitational source datum.
+\end{controlledapproximation}
+
 \section{Backreaction Boundary}
 
 The expectation value \(\langle T_{\mu\nu}\rangle\) in a time-dependent state

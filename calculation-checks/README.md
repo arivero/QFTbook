@@ -823,7 +823,11 @@ Current checks:
   conformal-coupling cancellation in arbitrary dimension, de Sitter
   \(\nu\)-parameter arithmetic, sudden-quench Bogoliubov normalization, the
   Riccati equation for a power-law adiabatic frequency, and finite positive
-  type of detector-response Gram forms.
+  type of detector-response Gram forms.  It also checks the out-region
+  produced stress-tensor bridge from \(|\beta_k|^2\) to
+  \(a_+^{-d}\int \Omega_k^+|\beta_k|^2\), the pressure formula, the
+  massless equation of state, and the homogeneous Friedmann response
+  coefficient.
 - `energy_correlator_sum_rule_checks.py`: exact finite-event checks for the
   energy-energy-correlator zeroth and first moment sum rules and the
   coincident-detector contact weight in the QCD detector-observable chapter;

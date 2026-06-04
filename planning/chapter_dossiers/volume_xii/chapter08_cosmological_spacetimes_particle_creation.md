@@ -26,6 +26,9 @@ about ambiguity.
   two-point function.
 - `H`, `nu`: de Sitter Hubble constant and Hankel index for Bunch--Davies
   modes.
+- `rho_beta`, `P_beta`, `Omega_k^+`, `a_+`: produced-particle energy
+  density, pressure, out conformal frequency, and future static scale factor
+  used in the stress-tensor/backreaction bridge.
 
 ## Claim Ledger
 
@@ -51,6 +54,15 @@ about ambiguity.
   functions.
 - Derives the de Sitter \(\nu\) parameter and gives normalized
   Bunch--Davies Hankel modes with their past positive-frequency asymptotic.
+- Converts out-region Bogoliubov particle data into the finite produced
+  stress-tensor contribution
+  \(\rho_\beta=a_+^{-d}\int\Omega_k^+|\beta_k|^2\) and
+  \(P_\beta=a_+^{-d}\int k^2|\beta_k|^2/((d-1)\Omega_k^+)\), separating this
+  from vacuum subtraction, finite curvature counterterms, and tail/adiabatic
+  remainders.
+- Records the homogeneous Friedmann response
+  \(\delta H_t^2=2\kappa_d\delta\rho_\beta/((d-1)(d-2))\) as the retained
+  source bridge from particle production to semiclassical backreaction.
 - States the backreaction boundary: particle production is a diagnostic of a
   state, not a closed semiclassical Einstein equation.
 
@@ -59,7 +71,10 @@ about ambiguity.
 - `calculation-checks/cosmological_particle_creation_checks.py` checks the
   conformal-coupling cancellation, de Sitter \(\nu\)-parameter arithmetic,
   sudden-quench Bogoliubov normalization, a power-law adiabatic Riccati
-  identity, and finite positive-type detector-response Gram forms.
+  identity, finite positive-type detector-response Gram forms, the out-region
+  produced energy/pressure formulas, the required \(a_+^{-d}\) scale-factor
+  power, the massless equation of state, and the Friedmann response
+  coefficient.
 - Related scripts: `calculation-checks/point_splitting_stress_checks.py` for
   de Sitter stress-tensor/anomaly arithmetic and
   `calculation-checks/hawking_bogoliubov_checks.py` for the black-hole
@@ -87,3 +102,8 @@ timelike detector worldline sampling the two-point function.
   whereas global Fock-unitary equivalence is the Hilbert--Schmidt condition
   and, for exact continuum-diagonal multiplication, fails unless the
   multiplication part vanishes almost everywhere.
+- 2026-06-04 issue #729 cosmological backreaction pass: added
+  `ca:cosmology-out-produced-stress-tensor`, converting out-region particle
+  production into a renormalized-stress source coordinate and homogeneous
+  Friedmann response while keeping vacuum-subtraction, curvature-counterterm,
+  and tail/remainder data separate.

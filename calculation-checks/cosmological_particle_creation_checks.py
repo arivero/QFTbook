@@ -100,6 +100,75 @@ def check_detector_positive_type_finite_model() -> None:
             raise AssertionError(f"positive-type detector Gram form failed: {quadratic}")
 
 
+def check_out_region_produced_stress_tensor() -> None:
+    # In d spacetime dimensions, the out-region produced energy density is
+    # a^{-d} sum Omega_k |beta_k|^2 over comoving modes.  The extra a^{-1}
+    # converts conformal energy to physical energy.
+    d = 4
+    scale_factor = Fraction(2)
+    modes = [
+        # degeneracy, comoving momentum k, conformal frequency Omega, |beta|^2
+        (3, Fraction(8), Fraction(10), Fraction(1, 5)),
+        (2, Fraction(0), Fraction(6), Fraction(1, 7)),
+    ]
+    energy_sum = sum(
+        Fraction(degeneracy) * omega * beta2
+        for degeneracy, _k, omega, beta2 in modes
+    )
+    pressure_sum = sum(
+        Fraction(degeneracy) * k * k * beta2 / ((d - 1) * omega)
+        for degeneracy, k, omega, beta2 in modes
+    )
+    energy_density = energy_sum / (scale_factor ** d)
+    pressure = pressure_sum / (scale_factor ** d)
+    assert_equal("out produced energy density", energy_density, Fraction(27, 56))
+    assert_equal("out produced pressure", pressure, Fraction(2, 25))
+
+    wrong_comoving_volume_only_density = energy_sum / (scale_factor ** (d - 1))
+    assert_equal(
+        "comoving-volume-only density has wrong scale factor power",
+        wrong_comoving_volume_only_density == energy_density,
+        False,
+    )
+
+    massless_modes = [
+        (1, Fraction(3), Fraction(3), Fraction(2, 9)),
+        (4, Fraction(5), Fraction(5), Fraction(1, 25)),
+    ]
+    massless_energy_sum = sum(
+        Fraction(degeneracy) * omega * beta2
+        for degeneracy, _k, omega, beta2 in massless_modes
+    )
+    massless_pressure_sum = sum(
+        Fraction(degeneracy) * k * k * beta2 / ((d - 1) * omega)
+        for degeneracy, k, omega, beta2 in massless_modes
+    )
+    assert_equal(
+        "massless produced equation of state",
+        massless_pressure_sum,
+        massless_energy_sum / (d - 1),
+    )
+
+    no_particles = [
+        (1, Fraction(3), Fraction(5), Fraction(0)),
+        (2, Fraction(4), Fraction(7), Fraction(0)),
+    ]
+    assert_equal(
+        "zero beta gives zero produced energy",
+        sum(Fraction(degeneracy) * omega * beta2 for degeneracy, _k, omega, beta2 in no_particles),
+        Fraction(0),
+    )
+
+    kappa_d = Fraction(3, 2)
+    friedmann_coefficient = 2 * kappa_d / ((d - 1) * (d - 2))
+    assert_equal("four-dimensional Friedmann response coefficient", friedmann_coefficient, Fraction(1, 2))
+    assert_equal(
+        "produced Friedmann Hubble-square response",
+        friedmann_coefficient * energy_density,
+        Fraction(27, 112),
+    )
+
+
 def main() -> None:
     check_conformal_cancellation()
     check_de_sitter_nu_values()
@@ -107,6 +176,7 @@ def main() -> None:
     check_sudden_quench_bogoliubov()
     check_adiabatic_riccati_power_law()
     check_detector_positive_type_finite_model()
+    check_out_region_produced_stress_tensor()
     print("Cosmological particle-creation convention checks passed.")
 
 
