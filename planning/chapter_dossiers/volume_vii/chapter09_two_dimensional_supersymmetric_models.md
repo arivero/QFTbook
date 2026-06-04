@@ -74,6 +74,12 @@ and
   `c_{i,Lambda}`: finite-regulator one-vortex chart, nonzero-mode
   determinant ratio, zero-mode Berezin coefficient for the twisted
   `F`-term measure, and regulated vortex coefficient.
+- `U_R`, `C_R`, `M_R`, `kappa_R`, `T_R`, `epsilon_det`,
+  `epsilon_zm`, `epsilon_cpt`, `epsilon_cont`: retained compact vortex
+  window, its signed one-vortex coefficient, its absolute one-vortex mass,
+  the noncancellation margin, and the tail/determinant/zero-mode,
+  compactification-boundary, and continuum residual bounds used to certify
+  that the regulated single-vortex coefficient is genuinely nonzero.
 - `D_{F,i,Lambda}`, `Pi_univ`, `K^{res}_{i,Lambda}`,
   `nu^{res}_{i,Lambda}`: vortex-sector fermion Hessian, universal
   two-dimensional zero-mode pair, residual fermion-zero-mode space, and its
@@ -157,6 +163,12 @@ and
   the twisted `F`-term measure, possible extra zero-mode saturation, and
   collective-coordinate integration.  This makes the Hori--Vafa exponential
   term a rechecked amplitude datum in the chapter's conventions.
+- Adds the single-vortex coefficient noncancellation certificate: after
+  choosing a retained compact vortex window, the signed coefficient `C_R`
+  must dominate the absolute one-vortex mass by a margin `kappa_R` and must
+  exceed the tail, determinant, zero-mode/orientation, compactification, and
+  continuum residual budget.  This separates the physical nonzero-amplitude
+  claim from charge matching, holomorphy, and Coulomb-logarithm matching.
 - Adds the vortex zero-mode filter for twisted `F`-terms: after the two
   universal fermion zero modes are identified with `d^2 theta_tilde`, the
   residual Berezin integral extracts the top residual Grassmann degree, so the
@@ -293,6 +305,12 @@ and
     formation, determinant-power bookkeeping, survival of the saturated
     twisted `F`-term zero-mode coefficient, vanishing with extra unsaturated
     zero modes, and the finite FI shift induced by the vortex coefficient;
+  - the single-vortex coefficient noncancellation certificate: exact
+    retained-window signed value, retained absolute mass, residual telescope,
+    signed-window domination over determinant/zero-mode/boundary/continuum
+    errors, relative-error budget, and negative controls rejecting both
+    omitted determinant residuals and symmetry-only nonzero claims under
+    coherent signed cancellation;
   - the `P^{N-1}` mirror critical-point simplicity ledger;
   - the `P^{N-1}` mirror residue/quantum-product test: exact Hessian
     determinant, root-of-unity selection rule, `R(H^{N-1+dN})=q_phys^d`,
@@ -373,3 +391,10 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   combination of `mu`, the FI coordinate, and finite vortex determinant
   constants, and the companion rejects both bare-FI and uncompensated-`mu`
   shortcuts before a Coulomb root or mirror coordinate is treated as physical.
+- The 2026-06-04 single-vortex noncancellation pass answers the instanton
+  depth concern directly inside the two-dimensional GLSM lane: it upgrades
+  the coefficient integral into a retained-window amplitude certificate,
+  requiring determinant-line orientation, zero-mode saturation, boundary
+  control, and continuum comparison errors to be smaller than the signed
+  one-vortex coefficient before the Hori--Vafa primitive term is used as a
+  nonzero physical input.

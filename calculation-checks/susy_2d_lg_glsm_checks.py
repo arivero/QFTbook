@@ -3,34 +3,40 @@
 Evidence contract.
 Target claims: the finite LG/GLSM charge ledgers, abelian duality
 normalizations, charged-chiral mirror elimination, vortex-zero-mode filter,
-vortex-to-FI-coordinate normalization, P^{N-1} mirror residue trace, and
+vortex-to-FI-coordinate normalization, single-vortex coefficient
+noncancellation certificate, P^{N-1} mirror residue trace, and
 vortex-to-protected-observable residual ledger, together with the
 vortex-fugacity dimensional-transmutation coordinate and the degree-one
 P^{N-1} stable-map gate for the quantum-product relation, in Volume VII
 Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
-elimination, Berezin-degree tests, root-of-unity residue sums, and explicit
-residual telescopes are computed directly from finite data rather than by
-substituting the displayed final identities.
+elimination, Berezin-degree tests, retained-window signed/mass coefficient
+bounds, root-of-unity residue sums, and explicit residual telescopes are
+computed directly from finite data rather than by substituting the displayed
+final identities.
 Imported assumptions: the finite GLSM charge matrix, selected regulator-stage
 factorization, nonzero-mode determinant placeholders, logarithm-branch
 conventions, and the chapter's protected-coordinate definitions are assumed
 as finite input.
 Negative controls: extra unsaturated zero modes, omitted vortex
-normalization constants, unbalanced regulator-scale changes, wrong residue
-selection powers, underspecified residual budgets, stable-map dimension
-mismatches, and finite-gauge invariance failures are rejected when the finite
-model can represent them.
+normalization constants, unbalanced regulator-scale changes, coherent signed
+cancellations with nonzero absolute mass, wrong residue selection powers,
+underspecified residual budgets, stable-map dimension mismatches, and
+finite-gauge invariance failures are rejected when the finite model can
+represent them.
 Scope boundary: a pass checks finite algebra and bookkeeping interfaces; it
 does not prove continuum GLSM existence, Hori--Vafa mirror equivalence,
-vortex compactness, determinant nonvanishing, virtual-cycle construction, or
-uniform remainder estimates.
+vortex compactness, determinant nonvanishing beyond the stated certificate,
+virtual-cycle construction, or uniform remainder estimates.
 """
 
 from __future__ import annotations
 
 from fractions import Fraction
 from math import exp, isclose, log, prod
+
+from check_utils import assert_gt as assert_gt_bound
+from check_utils import assert_leq as assert_leq_bound
 
 
 def assert_equal(label: str, left, right) -> None:
@@ -640,6 +646,88 @@ def check_single_vortex_amplitude_assembly() -> None:
     assert_equal("vortex coefficient FI shift in exponentiated coordinate", shifted_q, Fraction(1375, 104))
 
 
+def check_vortex_coefficient_noncancellation_certificate() -> None:
+    # The retained one-vortex window carries a signed integrand, not just an
+    # allowed charge.  A usable amplitude certificate needs a margin between
+    # the signed coefficient and all determinant, zero-mode, boundary, and
+    # continuum errors.
+    retained_cells = [Fraction(3, 4), Fraction(-1, 8), Fraction(1, 16)]
+    retained_signed = sum(retained_cells, Fraction(0))
+    retained_mass = sum(abs(cell) for cell in retained_cells)
+    noncancellation_fraction = abs(retained_signed) / retained_mass
+
+    assert_equal(
+        "retained vortex coefficient signed value",
+        retained_signed,
+        Fraction(11, 16),
+    )
+    assert_equal(
+        "retained vortex coefficient absolute mass",
+        retained_mass,
+        Fraction(15, 16),
+    )
+    assert_equal(
+        "retained vortex noncancellation fraction",
+        noncancellation_fraction,
+        Fraction(11, 15),
+    )
+
+    residuals = {
+        "tail": Fraction(1, 80),
+        "determinant": Fraction(1, 90),
+        "zero-mode orientation": Fraction(1, 100),
+        "compactification boundary": Fraction(1, 110),
+        "continuum comparison": Fraction(1, 120),
+    }
+    total_residual_bound = sum(residuals.values(), Fraction(0))
+    certified_coefficient = retained_signed + total_residual_bound
+    actual_error = abs(certified_coefficient - retained_signed)
+
+    assert_equal(
+        "one-vortex coefficient residual telescope",
+        actual_error,
+        total_residual_bound,
+    )
+    assert_gt_bound(
+        "one-vortex signed window dominates residuals",
+        abs(retained_signed),
+        total_residual_bound,
+    )
+    assert_leq_bound(
+        "one-vortex relative coefficient error",
+        total_residual_bound / (noncancellation_fraction * retained_mass),
+        Fraction(1, 10),
+    )
+
+    omitted_determinant_budget = total_residual_bound - residuals["determinant"]
+    assert_gt_bound(
+        "omitting determinant residual underbudgets vortex coefficient",
+        actual_error,
+        omitted_determinant_budget,
+    )
+
+    canceling_cells = [Fraction(1, 3), Fraction(-1, 3)]
+    canceling_signed = sum(canceling_cells, Fraction(0))
+    canceling_mass = sum(abs(cell) for cell in canceling_cells)
+    charge_and_zero_mode_allowed = True
+    determinant_line_declared = True
+    symmetry_only_nonzero_claim = (
+        charge_and_zero_mode_allowed
+        and determinant_line_declared
+        and canceling_signed != 0
+    )
+    assert_equal(
+        "coherent signed cancellation can leave nonzero mass",
+        canceling_mass,
+        Fraction(2, 3),
+    )
+    assert_equal(
+        "symmetry-only vortex coefficient nonzero claim rejected",
+        symmetry_only_nonzero_claim,
+        False,
+    )
+
+
 def check_cp_mirror_critical_ledger() -> None:
     for n_fields in range(2, 9):
         x = Fraction(3, 2)
@@ -957,6 +1045,7 @@ def main() -> None:
     check_mirror_primitive_monomial_selection()
     check_vortex_zero_mode_filter()
     check_single_vortex_amplitude_assembly()
+    check_vortex_coefficient_noncancellation_certificate()
     check_cp_mirror_critical_ledger()
     check_cp_mirror_residue_correlators()
     check_vortex_to_observable_residual_budget()

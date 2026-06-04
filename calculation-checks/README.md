@@ -2259,7 +2259,10 @@ Current checks:
   primitive-monomial selection forced by exact Coulomb matching, the
   single-vortex amplitude assembly with zero-mode removal, determinant-power
   bookkeeping, saturated twisted-\(F\)-term zero modes, unsaturated-zero-mode
-  vanishing, and FI-coordinate normalization shifts, the
+  vanishing, and FI-coordinate normalization shifts, the retained-window
+  one-vortex coefficient noncancellation certificate with signed/mass
+  margin, residual telescope, relative-error bound, and negative controls for
+  omitted determinant residuals and symmetry-only nonzero claims, the
   \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger and protected
   residue/quantum-product selection rule, the vortex-to-protected-observable
   residual telescope with negative controls for omitted vortex coefficients,

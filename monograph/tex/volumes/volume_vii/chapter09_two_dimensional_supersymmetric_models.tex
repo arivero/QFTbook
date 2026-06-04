@@ -1146,6 +1146,76 @@ Coulomb logarithm is then a protected consistency test: it fixes the
 primitive harmonic and exposes any finite FI-coordinate shift caused by
 determinant normalization.
 
+\begin{controlledapproximation}[Single-vortex coefficient noncancellation certificate]
+\label{ca:glsm-vortex-coefficient-noncancellation}
+Fix a compact retained window
+\(\mathcal U_R\Subset \mathcal U_{i,1,\Lambda}\) in the regulated
+charge-one vortex chart and write the scalar integrand in
+\eqref{eq:glsm-single-vortex-coefficient-integral} as
+\[
+  K_{i,\Lambda}(z)
+  =
+  e^{-S^{\rm red}_{i,1,\Lambda}(z)}
+  \mathcal W_{i,1,\Lambda}^{\rm nz}(z)
+  \mathcal Z_{i,F,\Lambda}^{0}(z).
+\]
+Let
+\[
+  C_R
+  =
+  \mu^{-1}\int_{\mathcal U_R}K_{i,\Lambda}(z)\,\dd\nu_{i,1,\Lambda}(z),
+  \qquad
+  M_R
+  =
+  \mu^{-1}\int_{\mathcal U_R}|K_{i,\Lambda}(z)|\,\dd\nu_{i,1,\Lambda}(z),
+\]
+and suppose \(M_R>0\) and
+\[
+  |C_R|\ge \kappa_R M_R,\qquad 0<\kappa_R\le 1 .
+\]
+The number \(\kappa_R\) is the retained-window noncancellation margin: it
+measures how much of the absolute one-vortex mass survives the determinant
+phase, the orientation of the universal fermion-zero-mode line, and the
+residual Berezin coefficient.  Assume further that the omitted part of the
+vortex chart, the determinant comparison, the zero-mode/orientation
+identification, the compactification boundary, and the continuum comparison
+are bounded by
+\[
+  T_R,\quad
+  \epsilon_{\rm det},\quad
+  \epsilon_{\rm zm},\quad
+  \epsilon_{\rm cpt},\quad
+  \epsilon_{\rm cont}.
+\]
+Set \(c_i^\star=c_{i,\Lambda}\) for a fixed-regulator certificate, with
+\(\epsilon_{\rm cont}=0\), and set \(c_i^\star=c_i\) when the continuum
+coefficient exists and the last comparison error is included.  Then
+\begin{equation}
+  |c_i^\star-C_R|
+  \le
+  T_R+\epsilon_{\rm det}+\epsilon_{\rm zm}
+  +\epsilon_{\rm cpt}+\epsilon_{\rm cont}.
+  \label{eq:glsm-vortex-coefficient-noncancellation-bound}
+\end{equation}
+If the right-hand side of
+\eqref{eq:glsm-vortex-coefficient-noncancellation-bound} is strictly smaller
+than \(|C_R|\), then \(c_i^\star\neq0\); more quantitatively,
+\[
+  \frac{|c_i^\star-C_R|}{|C_R|}
+  \le
+  \frac{
+    T_R+\epsilon_{\rm det}+\epsilon_{\rm zm}
+    +\epsilon_{\rm cpt}+\epsilon_{\rm cont}
+  }{\kappa_R M_R}.
+\]
+This certificate is stronger than charge matching, holomorphy, or the
+Coulomb logarithm alone.  Those inputs identify the allowed primitive
+monomial and its FI-coordinate normalization.  The certificate is the
+amplitude-side statement that the regulated determinant line, zero-mode
+saturation, and boundary tail have not made the one-vortex coefficient
+cancel to zero.
+\end{controlledapproximation}
+
 The \(Y_i\)-critical equation is
 \begin{equation}
   \partial_{Y_i}\widetilde W_{\rm dual}=0
