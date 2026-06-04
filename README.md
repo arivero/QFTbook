@@ -448,9 +448,9 @@ tools/verify_release.sh --rendered-figures --qft-scripts-smoke
 ```
 
 when the release pass should also regenerate rendered figure-page artifacts and
-run the public numerical smoke suite.  A clean release signoff should not use
-`--allow-dirty`; that flag is only for diagnosing the gate while local edits are
-present.
+run the rendered-page QA audit plus the public numerical smoke suite.  A clean
+release signoff should not use `--allow-dirty`; that flag is only for
+diagnosing the gate while local edits are present.
 
 The planning layer records additional writing standards and audit procedures.
 

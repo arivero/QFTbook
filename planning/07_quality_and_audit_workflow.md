@@ -175,9 +175,9 @@ audits, evidence-contract audit, full calculation-check runner, monograph build,
 PDF integrity, PDF page count/hash, figure count, and command logs in
 timestamped JSON and Markdown manifests under
 `monograph/tex/build/release_verification/`.  Add
-`--rendered-figures` for a full rendered figure-page regeneration and
-`--qft-scripts-smoke` for the public numerical smoke suite; skipped optional
-passes are recorded explicitly in the manifest.
+`--rendered-figures` for a full rendered figure-page regeneration plus
+rendered-page QA audit and `--qft-scripts-smoke` for the public numerical smoke
+suite; skipped optional passes are recorded explicitly in the manifest.
 
 ## Stage 6: Cross-Chapter Audit
 

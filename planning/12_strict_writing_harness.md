@@ -817,8 +817,9 @@ Markdown manifests in `monograph/tex/build/release_verification/`, records tool
 versions, selected Python, dirty state, PDF page count/hash, figure count, and
 per-command logs, and fails on mandatory audit/build/check failures.  Use
 `--rendered-figures` and `--qft-scripts-smoke` only when those expensive
-optional passes are part of the release candidate under review; their skipped
-state is otherwise recorded explicitly.
+optional passes are part of the release candidate under review.  The rendered
+figure option runs both forced page rendering and rendered-page QA; skipped
+optional state is otherwise recorded explicitly.
 
 ## Audit Questions
 

@@ -272,17 +272,24 @@ def release_steps(args: argparse.Namespace) -> list[tuple[str, list[str], bool]]
         ("pdf_integrity", ["qpdf", "--check", str(PDF_PATH)], True),
     ]
     if args.rendered_figures:
-        steps.append(
-            (
-                "rendered_figure_pages",
-                [
-                    "tools/render_figure_pages.py",
-                    "--force",
-                    "--dpi",
-                    str(args.rendered_figure_dpi),
-                ],
-                False,
-            )
+        steps.extend(
+            [
+                (
+                    "rendered_figure_pages",
+                    [
+                        "tools/render_figure_pages.py",
+                        "--force",
+                        "--dpi",
+                        str(args.rendered_figure_dpi),
+                    ],
+                    False,
+                ),
+                (
+                    "rendered_figure_page_audit",
+                    ["tools/audit_rendered_figure_pages.py"],
+                    False,
+                ),
+            ]
         )
     if args.qft_scripts_smoke:
         steps.append(("qft_scripts_smoke", ["tools/run_qft_scripts_smoke.sh"], False))
