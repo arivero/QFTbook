@@ -78,6 +78,127 @@ Conversely, once the masses and the total invariant mass are fixed,
 \(\cosh(\theta_1-\theta_2)\) is fixed; the sign of
 \(\theta_1-\theta_2\) records the ordering of the two momenta.
 
+\section{Reconstruction Spine and Status Labels}
+\label{sec:integrable-reconstruction-spine}
+
+The exact data in this volume do not all have the same logical status.  A
+two-body \(S\)-matrix satisfying unitarity, crossing, and Yang--Baxter is
+on-shell scattering data.  A TBA equation is a thermodynamic or mirror-channel
+functional equation after Bethe--Yang quantization has been accepted.  A
+form-factor solution is a family of candidate local-operator matrix elements.
+None of these, by itself, is a constructed local quantum field theory.  The
+volume therefore uses a common dependency spine with two intertwined chains.
+The Hilbert-space chain runs from a local massive QFT with higher-spin charges
+to elastic factorized scattering, then to \(S\)-Fock/ZF data, wedge-local
+fields, local algebras, and finally local fields and Wightman functions.  The
+thermodynamic chain runs from Bethe--Yang finite-volume quantization to TBA
+pseudoenergies, mirror finite-size data, and GHD currents.
+The arrows in these chains are not equivalent.  Some are theorems under
+standard Hilbert-space hypotheses; some are conditional theorems after
+analytic and nuclearity assumptions are imposed; some are formal constructions
+whose output still lacks positivity or locality; some are numerical or
+finite-regulator evidence; and some are open problems.
+
+\begin{definition}[Status labels for integrable-QFT bridges]
+\label{def:integrable-reconstruction-status-labels}
+For the rest of this volume, a bridge between two layers of exact data carries
+one of the following labels.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item \emph{Theorem}: the stated hypotheses construct the target object in a
+  Hilbert space or algebra of local observables and prove the claimed property.
+\item \emph{Conditional theorem}: the proof is valid once explicitly stated
+  analytic, domain, nuclearity, thermodynamic-limit, or state-space hypotheses
+  are supplied.
+\item \emph{Formal construction}: the formula produces algebraic or
+  distributional candidates, but positivity, locality, convergence, or domain
+  control is not yet part of the statement.
+\item \emph{Numerical or finite-regulator evidence}: a calculation check
+  verifies a finite identity, normalization, sign, or approximation window.  It
+  is not evidence for continuum reconstruction unless the limiting theorem is
+  separately stated.
+\item \emph{Open problem}: a named missing implication whose hypotheses and
+  target object are known well enough to be stated.
+\end{enumerate}
+\end{definition}
+
+The main bridges in this volume should be read with the following status map.
+The entries are deliberately conservative; upgrading a row requires proving the
+missing analytic statement, not adding another finite identity.
+\begin{center}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.23\textwidth}
+  >{\raggedright\arraybackslash}p{0.18\textwidth}
+  >{\raggedright\arraybackslash}p{0.49\textwidth}@{}}
+\textbf{Bridge} & \textbf{Status} & \textbf{Load-bearing evidence} \\
+\hline
+local QFT to factorized scattering
+& conditional theorem
+& Haag--Ruelle scattering, mass gap, separating higher-spin charges,
+regular distribution kernels, and control of threshold and bound-state
+singularities. \\
+factorized \(S\) to \(S\)-Fock/ZF algebra
+& theorem at the algebraic Hilbert-space level
+& Unitarity gives positive chamber inner products; Yang--Baxter gives
+path-independent chamber continuation and associative exchange. \\
+\(S\)-Fock data to wedge-local fields
+& conditional theorem
+& Regularity, crossing, and analytic bounds strong enough to define
+polarization-free generators and wedge-local operator domains. \\
+wedge-local fields to local algebras
+& conditional theorem
+& Nontriviality of double-cone intersections, usually via modular nuclearity
+or related phase-space bounds. \\
+form-factor equations to local fields
+& formal construction unless convergence and locality are proved
+& Watson, cyclicity, and residue equations plus growth bounds; the
+missing analytic work is convergence of spectral sums, positivity, domains,
+and locality of reconstructed fields. \\
+Bethe--Yang data to ground-state TBA
+& conditional theorem
+& Finite-volume quantization with controlled errors, density convergence,
+convex free-energy functional, and fixed normalization of the mirror channel. \\
+ground-state TBA to excited-state or mirror data
+& conditional or formal, model by model
+& Specified singularity motion, contour deformation, source terms, and a check
+that no untracked pole crosses the continuation path. \\
+TBA densities to GHD
+& conditional hydrodynamic limit
+& Local generalized Gibbs ensembles, dressing invertibility, Euler-scale
+limit, clustering/mixing, and absence or controlled size of integrability
+breaking.
+\end{tabular}
+\end{center}
+
+Two models serve as reference points for this status discipline.  In the
+massive Ising model, the scattering datum is the scalar \(S=-1\), the
+\(S\)-Fock space is the antisymmetric free-fermion Fock space, and the local
+energy field is a Wick polynomial of the Majorana field.  The local QFT and
+its Wightman functions are therefore constructed by the free-field theorem;
+the form-factor expansion for separated Euclidean correlators is a theorem
+after the usual Fock-space domain and convergence estimates.  The spin and
+disorder fields require the additional order/disorder semi-locality structure
+developed later in the volume, but their status is not inferred merely from
+the equation \(S=-1\).
+
+For a regular scalar factorizing model such as sinh-Gordon, the exact
+two-body scattering function gives an \(S\)-symmetric Fock space and
+wedge-local polarization-free generators under the standard analyticity and
+crossing bounds.  The existence of nontrivial double-cone algebras is then a
+conditional theorem once the relevant modular nuclearity estimate is proved.
+Pointlike local fields obtained from form-factor series, and completeness of a
+declared family of such fields, remain separate analytic tasks.  TBA
+predictions for the same model are therefore thermodynamic consequences of
+the scattering specification under Bethe--Yang and mirror-channel hypotheses;
+they are not, by themselves, a proof that the local double-cone net has been
+constructed.
+
+This status map is also how calculation companions are used.  A finite
+Yang--Baxter, residue, TBA-kernel, or form-factor check verifies the stated
+finite algebra in its row of the map.  It does not upgrade a formal
+form-factor solution to a local field, nor a TBA equation to a theorem about
+finite-size spectra, unless the missing Hilbert-space, convergence, and
+thermodynamic-limit assumptions have been supplied at the point of use.
+
 \section{Factorized Scattering Datum}
 
 \begin{definition}[Elastic factorized scattering system]

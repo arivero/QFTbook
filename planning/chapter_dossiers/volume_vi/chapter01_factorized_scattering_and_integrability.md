@@ -7,6 +7,9 @@
 - Immediate predecessor: Volume II scattering and analytic structure.
 - Immediate successor: detailed two-dimensional integrable models, form
   factors, and thermodynamic Bethe ansatz.
+- Cross-volume role: supplies the Volume VI reconstruction-status spine that
+  separates on-shell exact data, Hilbert-space construction, local observables,
+  TBA/mirror thermodynamics, and hydrodynamic limits.
 
 ## Definitions And Results
 
@@ -35,6 +38,20 @@
   conditions.
 - Boundary between on-shell scattering data and reconstruction of local
   fields through form factors.
+- Volume-level reconstruction spine from local QFT with higher-spin charges to
+  factorized scattering, \(S\)-Fock/ZF data, wedge-local fields, local
+  algebras, local fields/Wightman functions, TBA, mirror finite-size data, and
+  GHD.
+- Status labels for integrable-QFT bridges: theorem, conditional theorem,
+  formal construction, numerical or finite-regulator evidence, and open
+  problem.
+- Bridge-status map for the main Volume VI arrows, including the exact
+  load-bearing assumptions needed to upgrade finite algebra or formal
+  functional equations to local-QFT statements.
+- Reference model discipline: massive Ising as a free-field theorem-level
+  calibration; regular scalar factorizing models such as sinh-Gordon as
+  conditional wedge-local/local-algebra constructions whose point-field
+  form-factor completeness remains separate.
 
 ## Symbols
 
@@ -50,6 +67,10 @@
 | \(Q_{s,\lambda}\) | conserved charge of Lorentz spin \(s\) |
 | \(\Phi_N\) | higher-spin charge moment map on \(N\)-particle multisets |
 | \(\mathsf T_i\) | adjacent chamber-transition map induced by two-body scattering |
+| \(S\)-Fock space | Hilbert space of \(S\)-symmetric finite-particle wavefunctions |
+| ZF algebra | Zamolodchikov--Faddeev exchange algebra encoding ordered scattering bases |
+| TBA | thermodynamic Bethe ansatz; conditional thermodynamic/mirror functional equation |
+| GHD | generalized hydrodynamics; conditional Euler-scale limit of locally equilibrated integrable states |
 
 ## Claim Ledger
 
@@ -68,6 +89,14 @@
    bases; it should not be compressed into the phrase "locality gives".
 6. Local QFT reconstruction from factorized \(S\)-matrices requires separate
    form-factor and locality analysis.
+7. Exact finite identities, TBA equations, and form-factor functional
+   equations occupy different locations in the reconstruction spine; finite
+   calculation checks verify algebraic cells but do not prove local algebras,
+   point-field domains, spectral convergence, or thermodynamic limits.
+8. Massive Ising and regular scalar factorizing models provide two calibration
+   paths: the former is theorem-level through free-field construction, while
+   the latter is conditional on analytic/nuclearity estimates for local
+   algebras and separate form-factor convergence for point fields.
 
 ## Figures
 
@@ -83,3 +112,8 @@
   Added `calculation-checks/factorized_scattering_algebra_checks.py` for the
   rapidity-sign convention, Newton identities, braid relations, rational
   Yang--Baxter identity, scalar unitarity, and Watson coefficient bookkeeping.
+- 2026-06-03 reconstruction-spine pass: added a reader-facing status map for
+  the whole Volume VI exact-data-to-local-QFT chain.  The pass deliberately
+  demotes finite checks and formal bootstrap/TBA equations to their proper
+  evidence class unless the missing Hilbert-space, convergence, nuclearity,
+  mirror-continuation, or hydrodynamic-limit assumptions are supplied.

@@ -637,12 +637,20 @@ The finite-volume form-factor formalism supplies a computable chain
   \longrightarrow
   \text{correlation functions}.
 \]
-It does not by itself prove that the resulting distributions define a local
-QFT.  A construction theorem must prove positivity of the reconstructed
-correlation functions, covariance, locality or wedge-locality with a local
-subalgebra, clustering, and compatibility with the scattering theory used at
-the beginning.  The finite-volume regulator is valuable precisely because
-each pre-limit step has a declared Hilbert space and normalizable vectors.
+Each arrow has its own status.  The first arrow is on-shell scattering data.
+The second is the operator bootstrap and crossing prescription.  The third is
+a finite-volume normalization statement with normalizable Bethe states and
+Gaudin densities.  The last arrow is a reconstruction step: it asks that the
+regulated matrix-element sums converge to distributions with positivity,
+covariance, locality or wedge-locality with a local subalgebra, clustering,
+and compatibility with the scattering theory used at the beginning.  Thus the
+finite-volume regulator is valuable precisely because each pre-limit step has
+a declared Hilbert space and normalizable vectors, but removing the regulator
+is still an analytic theorem, not a bookkeeping identity.  The free Majorana
+energy-density example realizes the chain inside an already constructed local
+theory.  For an interacting regular factorizing model, the same chain is a
+conditional reconstruction program until convergence, domains, and locality
+have been proved.
 
 \begin{openproblem}[Form-factor construction]
 \label{op:form-factor-construction}

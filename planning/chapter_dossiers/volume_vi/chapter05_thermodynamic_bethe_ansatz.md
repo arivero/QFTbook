@@ -24,6 +24,10 @@
 - Scaling Lee--Yang interacting one-particle TBA computation giving
   \(c_{\rm eff}=2/5\) from the kernel integral, golden-ratio plateau, and
   Rogers dilogarithm.
+- Status checkpoint from scattering data to TBA: the kernel identity is
+  separated from finite-volume Bethe--Yang control, root-density convergence,
+  microscopic Bethe-cell entropy, free-energy minimizer control, and the
+  mirror-channel identification of finite-size ground-state energy.
 - Euler-scale generalized-hydrodynamics bridge from local TBA root densities:
   filling functions, dressing equation, effective velocity, conditional
   root-density continuity equation, charge-current conservation check, and a
@@ -79,6 +83,11 @@
     gives relative-entropy decay, exact charges are preserved by the
     transition graph, and higher Bethe charges decay precisely when the
     perturbation permits transitions that change them.
+11. The TBA status checkpoint prevents the Lee--Yang and free-Majorana
+    computations from being overclaimed: they verify specific TBA kernels,
+    plateau equations, and ultraviolet asymptotics, but do not by themselves
+    derive the finite-volume spectrum of an arbitrary local Hamiltonian with
+    the same proposed scattering phase.
 
 ## Calculation Checks
 
@@ -110,6 +119,10 @@
   collision-cell datum and weak-integrability-breaking kinetic scaling layer,
   so the exact conservation and entropy statements are separated from the
   open microscopic derivation of the kinetic limit.
+- 2026-06-03 reconstruction-spine point-of-use pass: added the TBA status
+  checkpoint separating the on-shell scattering kernel from the finite-volume,
+  thermodynamic-limit, entropy, variational, and mirror-identification inputs
+  needed for theorem-level TBA.
 
 ## Figures
 

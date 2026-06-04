@@ -33,6 +33,10 @@
   mixed bra/ket product formula, the odd Ising order/twist form-factor
   family, and separated Euclidean convergence estimates for the infinite
   spin/twist spectral series.
+- Status checkpoint from form-factor equations to local fields: Hilbert-space
+  domain/closability, Wightman-distribution convergence including collision
+  diagonals, positivity/covariance/spectrum condition, spacelike
+  local-commutativity or semi-locality, and sector completeness.
 - Reconstruction boundary for Wightman distributions from spectral series.
 
 ## Symbols
@@ -106,7 +110,13 @@
    \(I_m(r)=K_0(mr)/\pi\), and the even/odd exponential majorants
    \(\cosh I_m(r)\) and \(\sinh I_m(r)\), with uniform convergence of
    \(r\)-derivatives on compact subsets of \(r>0\).
-12. Form-factor axioms do not by themselves complete local reconstruction;
+12. The reconstruction checkpoint separates theorem-level Ising/free-fermion
+   control from the interacting factorizing-model program: Watson, cyclicity,
+   and residue equations are matrix-element identities, while local-field
+   reconstruction additionally requires common domains, closability,
+   distributional convergence, contact-term extension, positivity,
+   covariance, spacelike locality or semi-locality, and sector completeness.
+13. Form-factor axioms do not by themselves complete local reconstruction;
    convergence, locality, clustering, and Wightman domains remain theorem
    obligations.
 
@@ -136,6 +146,10 @@
   \(\coth\)-matrix element, and Fonseca--Zamolodchikov comparison remain
   explicit; theorem-family rank remains with the separated Euclidean
   spectral-series convergence result.
+- 2026-06-03 reconstruction-spine point-of-use pass: added the chapter-level
+  status checkpoint preventing form-factor equations from being read as a
+  local-field construction without Hilbert-space, convergence, positivity,
+  locality, and completeness input.
 
 ## Figures
 

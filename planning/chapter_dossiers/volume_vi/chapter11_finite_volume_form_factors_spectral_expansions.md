@@ -53,8 +53,13 @@ normalization and convergence obligations explicit.
     its Bessel-kernel reduction.
 14. States the thermal connected-diagonal Leclair-Mussardo type series with
     the TBA and convergence dependencies explicit.
-15. Separates finite-volume calculability from the open construction theorem
-    for local QFT from form-factor data.
+15. Labels the reconstruction chain arrow by arrow: on-shell scattering data,
+    operator bootstrap/crossing, finite-volume Gaudin-normalized matrix
+    elements, and the final analytic reconstruction of distributions.
+16. Separates finite-volume calculability from the open construction theorem
+    for local QFT from form-factor data, with the free Majorana chain
+    identified as theorem-level only because the local free field is already
+    constructed.
 
 ## Calculation Checks
 
@@ -79,3 +84,8 @@ decomposition of diagonal disconnected contractions.
   normalization, diagonal connected-form-factor combinatorics, spectral
   expansion convergence criteria, and the free-Majorana energy-density
   example.
+- 2026-06-03 reconstruction-spine point-of-use pass: expanded the
+  reconstruction boundary so finite-volume matrix-element convergence is not
+  conflated with positivity, covariance, locality or wedge-locality,
+  clustering, domain control, and scattering compatibility of the continuum
+  QFT.

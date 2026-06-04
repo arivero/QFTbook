@@ -47,6 +47,11 @@ language.
   \(O(R^{-1/2}e^{-2m_*R})\) bound on the two-winding remainder.
 - States the first excited-state finite-size correction with the required
   analytic-strip and pole-data hypotheses.
+- Adds an excited-state continuation status checkpoint: direct-state
+  insertions, continuation path in \(R\) and rapidity space, crossed
+  singularities, source terms, omitted-pole control, and comparison with the
+  direct-channel spectral trace are theorem obligations beyond the
+  one-winding formula.
 - Defines wrapping effects as finite-cycle mirror propagation and records the
   distinction from later planar spectral wrapping.
 
@@ -64,6 +69,10 @@ language.
 - 2026-06-02 issue #561 dossier-link pass: recorded the already-existing
   mirror-channel finite-size calculation check explicitly in the chapter
   dossier.  No new formula was changed in the manuscript.
+- 2026-06-03 reconstruction-spine point-of-use pass: added the excited-state
+  continuation checkpoint so F-terms and \(\mu\)-term residues are presented
+  as the first entries of a contour/singularity ledger rather than as a
+  theorem-level excited-state TBA construction.
 
 ## Figure Ledger
 
