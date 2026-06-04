@@ -99,6 +99,10 @@ GitHub issue #628.
 
 - Defines a QCD phase datum requiring pressure, exact symmetries, order
   parameters, limit prescriptions, and status labels.
+- Adds an explicit operational spine tying the chapter's finite-regulator,
+  order-parameter, response-function, baryon-density, high-density, and CFL
+  subsections back to that phase datum rather than leaving them as parallel
+  technical modules.
 - Adds a finite-lattice thermal gauge datum and proves finite-regulator
   analyticity: finite lattice partition functions are entire in finite
   couplings and masses and Laurent-polynomial in fugacity.
@@ -362,6 +366,10 @@ GitHub issue #628.
   photon-gluon mass matrix in ideal CFL, identified the massless rotated
   photon and screened orthogonal combination, and paired the statement with
   exact trace-delta charge and determinant checks.
+- 2026-06-04 chapter-spine pass: added an operational spine after the QCD
+  phase specification and a closing bridge in the confinement-comparison
+  section, so the chapter explicitly relates phase labels to pressure,
+  symmetry, source, response, and limiting data.
 - 2026-05-27 CFL anomaly-matching pass: added the local UV anomaly polynomial
   for chiral flavor plus baryon backgrounds, the level-\(N_c\) WZW matching
   statement for the CFL chiral field, and the baryon-Goldstone mixed-anomaly
