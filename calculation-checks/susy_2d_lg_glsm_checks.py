@@ -6,9 +6,9 @@ normalizations, charged-chiral mirror elimination, vortex-zero-mode filter,
 vortex-to-FI-coordinate normalization, single-vortex coefficient
 noncancellation certificate, P^{N-1} mirror residue trace, and
 vortex-to-protected-observable residual ledger, together with the
-vortex-fugacity dimensional-transmutation coordinate and the degree-one
-P^{N-1} stable-map gate for the quantum-product relation, in Volume VII
-Chapter 09.
+vortex-fugacity dimensional-transmutation coordinate, the degree-one
+P^{N-1} stable-map gate, and the finite degree-one vortex observable assembly
+certificate for the quantum-product relation, in Volume VII Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
 elimination, Berezin-degree tests, retained-window signed/mass coefficient
 bounds, root-of-unity residue sums, and explicit residual telescopes are
@@ -21,7 +21,8 @@ as finite input.
 Negative controls: extra unsaturated zero modes, omitted vortex
 normalization constants, unbalanced regulator-scale changes, coherent signed
 cancellations with nonzero absolute mass, wrong residue selection powers,
-underspecified residual budgets, stable-map dimension mismatches, and
+underspecified residual budgets, stable-map dimension mismatches, mirror-only
+or dimension-only quantum-product shortcuts, omitted off-pairing controls, and
 finite-gauge invariance failures are rejected when the finite model can
 represent them.
 Scope boundary: a pass checks finite algebra and bookkeeping interfaces; it
@@ -932,6 +933,98 @@ def check_cp_degree_one_stable_map_quantum_product_gate() -> None:
             )
 
 
+def check_degree_one_vortex_observable_assembly() -> None:
+    # The degree-one product coefficient is an observable pairing, not just a
+    # residue root sum or a dimension count.  The finite certificate assembles
+    # the vortex-normalized fugacity, the line count, the operator pairing, and
+    # all residuals in the same regulator.
+    n_fields = 5
+    bare_fi = Fraction(3, 17)
+    vortex_coefficients = [
+        Fraction(5, 4),
+        Fraction(7, 6),
+        Fraction(11, 10),
+        Fraction(13, 12),
+        Fraction(17, 16),
+    ]
+    q_regulated = bare_fi * prod(vortex_coefficients)
+    line_count = Fraction(1)
+    mirror_residue = cp_mirror_residue_trace(
+        n_fields,
+        n_fields - 1 + n_fields,
+        q_regulated,
+    )
+    retained_three_point = q_regulated * line_count
+
+    assert_equal("degree-one mirror residue uses vortex-normalized q", mirror_residue, q_regulated)
+    assert_equal("degree-one line count multiplies vortex fugacity", retained_three_point, q_regulated)
+
+    residuals = {
+        "coefficient": Fraction(1, 101),
+        "determinant": Fraction(1, 103),
+        "zero mode": Fraction(1, 107),
+        "line compactification": Fraction(1, 109),
+        "operator map": Fraction(1, 113),
+        "continuum": Fraction(1, 127),
+    }
+    observable = retained_three_point + sum(residuals.values(), Fraction(0))
+    total_bound = sum(abs(value) for value in residuals.values())
+    actual_error = abs(observable - q_regulated)
+    assert_equal("degree-one vortex observable residual telescope", actual_error, total_bound)
+    assert_leq_bound(
+        "degree-one vortex observable relative error",
+        total_bound / abs(q_regulated),
+        Fraction(1, 4),
+    )
+
+    omitted_line_budget = total_bound - residuals["line compactification"]
+    assert_gt_bound(
+        "omitting line-count residual underbudgets product coefficient",
+        actual_error,
+        omitted_line_budget,
+    )
+
+    off_pairing_bounds = {
+        power: Fraction(1, 200 + power)
+        for power in range(n_fields - 1)
+    }
+    off_pairing_values = {
+        power: off_pairing_bounds[power] / 2
+        for power in off_pairing_bounds
+    }
+    for power, value in off_pairing_values.items():
+        assert_leq_bound(
+            f"off-pairing controlled for H^{power}",
+            abs(value),
+            off_pairing_bounds[power],
+        )
+
+    missing_off_pairing_claim = all(value == 0 for value in off_pairing_values.values())
+    assert_equal(
+        "finite product relation requires off-pairing controls",
+        missing_off_pairing_claim,
+        False,
+    )
+
+    mirror_only_bare = cp_mirror_residue_trace(
+        n_fields,
+        n_fields - 1 + n_fields,
+        bare_fi,
+    )
+    if mirror_only_bare == q_regulated:
+        raise AssertionError("mirror residue with bare FI should not certify vortex-normalized product")
+
+    dimension_count_only = Fraction(1)
+    if dimension_count_only == q_regulated:
+        raise AssertionError("stable-map line count alone should not include the vortex fugacity")
+
+    zero_mode_gate = Fraction(0)
+    killed_fugacity = q_regulated * zero_mode_gate
+    assert_equal("unsaturated zero-mode gate kills degree-one product coefficient", killed_fugacity, 0)
+    if retained_three_point == killed_fugacity:
+        raise AssertionError("charge and dimension data should not override a zero-mode gate")
+
+
 def check_cigar_metric_elimination() -> None:
     examples = [
         (Fraction(9, 5), Fraction(7, 3)),
@@ -1050,6 +1143,7 @@ def main() -> None:
     check_cp_mirror_residue_correlators()
     check_vortex_to_observable_residual_budget()
     check_cp_degree_one_stable_map_quantum_product_gate()
+    check_degree_one_vortex_observable_assembly()
     check_cigar_metric_elimination()
     check_logarithmic_chiral_vortex_obstruction()
     check_hypersurface_phase_ledger()

@@ -1742,6 +1742,77 @@ With \(0\le a\le N-1\), it is satisfied only for \(d=1\) and
 Nondegeneracy of the classical pairing gives the product relation.
 \end{proof}
 
+\begin{controlledapproximation}[Degree-one vortex observable assembly]
+\label{ca:cpn-degree-one-vortex-observable-assembly}
+The degree-one product coefficient is a physical A-twisted observable only
+after the vortex normalization and the stable-map line count have been tied to
+the same finite regulator.  Let
+\[
+  q_\Lambda=\exp(t)\prod_{i=1}^N c_{i,\Lambda}
+\]
+be the vortex-normalized charge-one fugacity in the regulated
+\(\mathbb P^{N-1}\) GLSM, and let
+\[
+  C_{\Lambda,1}
+  =
+  \eta_\Lambda(H\star_\Lambda H^{N-1},H^{N-1})
+  =
+  \big\langle H,H^{N-1},H^{N-1}\big\rangle_{\Lambda,d=1}^{A}
+\]
+be the retained degree-one three-point coefficient in the same operator
+coordinate.  The direct line-count calculation supplies the integer
+\(L_1=1\), while the finite vortex path integral supplies the complex
+coefficient \(q_\Lambda\).  A usable comparison therefore has the form
+\begin{equation}
+  C_{\Lambda,1}-q_\Lambda
+  =
+  R_{\rm coeff}
+  +R_{\rm det}
+  +R_{\rm zm}
+  +R_{\rm line}
+  +R_{\rm op}
+  +R_{\rm cont},
+  \label{eq:cpn-degree-one-vortex-observable-telescope}
+\end{equation}
+where \(R_{\rm coeff}\) compares the retained charge-one vortex integral with
+the coefficients \(c_{i,\Lambda}\), \(R_{\rm det}\) tracks determinant-line and
+orientation choices, \(R_{\rm zm}\) tracks the universal and residual fermion
+zero modes, \(R_{\rm line}\) tracks compactification, obstruction, and boundary
+corrections to the degree-one line count, \(R_{\rm op}\) tracks the local
+operator map to the hyperplane class, and \(R_{\rm cont}\) is the continuum
+comparison remainder.  If \(|R_\alpha|\le\epsilon_\alpha\), then
+\begin{equation}
+  |C_{\Lambda,1}-q_\Lambda|
+  \le
+  \epsilon_{\rm coeff}
+  +\epsilon_{\rm det}
+  +\epsilon_{\rm zm}
+  +\epsilon_{\rm line}
+  +\epsilon_{\rm op}
+  +\epsilon_{\rm cont}.
+  \label{eq:cpn-degree-one-vortex-observable-bound}
+\end{equation}
+The off-pairings also have to be certified.  For \(0\le a<N-1\), require
+\begin{equation}
+  \left|
+    \eta_\Lambda(H\star_\Lambda H^{N-1},H^a)
+  \right|
+  \le \epsilon_{{\rm off},a}.
+  \label{eq:cpn-degree-one-off-pairing-bound}
+\end{equation}
+Equations
+\eqref{eq:cpn-degree-one-vortex-observable-bound}--\eqref{eq:cpn-degree-one-off-pairing-bound}
+are the finite observable certificate for the product
+\[
+  H\star H^{N-1}=q_{\rm phys}\,1.
+\]
+The mirror residue gives the same algebraic root sum, and the stable-map
+dimension count gives the integer line count.  The coefficient in the QFT
+correlator is established only when the vortex determinant, zero-mode,
+orientation, compactification, operator-map, off-pairing, and continuum
+residuals are controlled in the shared regulator.
+\end{controlledapproximation}
+
 \section{The Cigar--Liouville Mirror Chain as a QFT Duality Problem}
 \label{sec:cigar-liouville-mirror-qft-problem}
 

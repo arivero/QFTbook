@@ -2298,7 +2298,10 @@ Current checks:
   residual telescope with negative controls for omitted vortex coefficients,
   unsaturated zero modes, and underbudgeted comparison residuals, the
   degree-one \(\mathbb P^{N-1}\) stable-map dimension and line-count gate for
-  the quantum-product relation \(H^N=q\), and the
+  the quantum-product relation \(H^N=q\), the finite degree-one vortex
+  observable assembly certificate tying the vortex-normalized fugacity to the
+  three-point product coefficient with residual, off-pairing, mirror-only,
+  dimension-only, and zero-mode-gate negative controls, and the
   classical cigar quotient metric obtained by eliminating the gauge field,
   the logarithmic-chiral vortex obstruction, plus the hypersurface GLSM
   adjunction sign,
