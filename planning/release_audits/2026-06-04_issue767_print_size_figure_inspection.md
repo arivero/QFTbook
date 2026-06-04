@@ -27,8 +27,8 @@ human print-size inspection.
 - Unique physical PDF pages containing figures: 168
 - Rendered page PNGs: 168
 - Contact sheets: 14
-- Human-reviewed figures so far: 30
-- Pending figures after these tranches: 142
+- Human-reviewed figures so far: 40
+- Pending figures after these tranches: 132
 
 ## Method
 
@@ -54,7 +54,7 @@ the following checks:
 - whether the figure has semantic value beyond restating prose;
 - whether the figure is being overread as theorem-level evidence.
 
-Higher-resolution crops were not needed for the thirty reviewed figures; none has
+Higher-resolution crops were not needed for the forty reviewed figures; none has
 dense small labels beyond the original page render.  Later dense figures should
 receive crop review when the full-page PNG is insufficient.
 
@@ -113,10 +113,30 @@ explicitly: the positive mass-shell neighborhood, support region, reflected
 transfer, and cone geometry are carried by labels, placement, filled regions,
 and dashed reference lines rather than by hue alone.
 
+The following fourth-tranche figures also passed original-resolution review:
+
+- `fig:resonance-second-sheet-energy-plane`
+- `fig:self-energy-cut-continuation`
+- `fig:chain-amplitude-single-channel`
+- `fig:bethe-salpeter-kernel-homogeneous-equation`
+- `fig:fixed-t-physical-edge-cuts`
+- `fig:triangle-landau-positive-parameter-data`
+- `fig:triangle-landau-convex-hull-criterion`
+- `fig:lehmann-ellipse-nearest-singularity`
+- `fig:watson-elastic-form-factor-cut`
+- `fig:eikonal-impact-parameter-exponentiation`
+
+The fourth tranche includes the color-warning page 515.  It was checked
+explicitly: first-sheet and second-sheet branch data, bound-state markers, cut
+direction, and the resonance pole are carried by labels, placement, arrows, and
+the caption rather than by hue alone.  Physical page 571 carries two reviewed
+figures; both the Landau vector-closure figure and the convex-hull criterion
+figure were checked on the full original page.
+
 ## Boundary
 
-This pass establishes the durable ledger and audits the first thirty figures.
+This pass establishes the durable ledger and audits the first forty figures.
 The older contact-sheet inspection remains useful for triage, but it is not
-treated here as evidence for the remaining 142 pending figure rows.  Issue #767
+treated here as evidence for the remaining 132 pending figure rows.  Issue #767
 should stay open until all rows are reviewed and any defects found in later
 tranches are repaired and re-rendered.
