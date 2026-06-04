@@ -89,6 +89,10 @@ relations
     determinant/zero-mode/source density from determinant remainders,
     zero-mode truncation, source matching, Schur corrections, and endpoint
     tails; the collective-coordinate measure alone is not the amplitude
+    source-dependent fluctuation cumulants around the instanton saddle refine
+    the determinant residual in a selected amplitude; vacuum determinant
+    calibration and signed cumulant cancellation are rejected as
+    source-amplitude certificates
     hard external momenta convert the Nf=2 four-fermion size integral into a
     Q^(-2) coefficient; fused bilinear density sources exponentially suppress
     the large-rho endpoint, while individual fermion slots obey the power test
@@ -181,15 +185,15 @@ with g_ht = sqrt(2) g_YM.
 Evidence contract.
 Target claims: BPST normalization, one-instanton measure, zero-mode saturation,
 proper-time determinant residual propagation, instanton-orientation Haar
-projection, hard-size/OPE coefficient bookkeeping, and related Chapter 20
-instanton labels.
+projection, source-dependent fluctuation-cumulant residuals, hard-size/OPE
+coefficient bookkeeping, and related Chapter 20 instanton labels.
 Independent construction: direct radial integrals, finite determinant and
 Schur-complement algebra, source differentiation, inverse-Gram construction of
 the shared SU(2) four-fundamental Haar projector, absolute logarithmic
 determinant-residual certificates, finite reference-amplitude calibration
 ratios, finite-scheme transport ratios, zero-mode overlap determinant-stability bounds,
-coefficient/operator transport matrices, and exact retained size-shell
-stationarity equations.
+finite cumulant telescopes, coefficient/operator transport matrices, and exact
+retained size-shell stationarity equations.
 Imported assumptions: the BPST background and zero-mode formulas, one-loop
 determinant coefficients, the trace-delta convention, and finite regulator
 truncations stated in the chapter.
@@ -199,6 +203,8 @@ cancellations rejected as fluctuation-error certificates, negative/complex
 thermal amplitude kernels rejected from signed activity bounds, finite-frame
 inverse checks, canceled reference-amplitude normalization, stale determinant
 constants under finite scheme changes, rank-one four-source zero-mode collapse,
+vacuum determinant calibration substituted for a source-dependent fluctuation
+certificate, signed fluctuation-cumulant cancellations,
 hard-only and screening-only shell substitutions in the mixed size-majorant
 problem, and separation of operator RG flow from the Wilsonian size-boundary
 flux.
@@ -3103,6 +3109,81 @@ def check_instanton_amplitude_error_budget() -> None:
     )
 
 
+def check_source_dependent_fluctuation_cumulant_certificate() -> None:
+    # A vacuum/spectral determinant normalization is not enough for an
+    # instanton amplitude with source insertions.  The selected source must also
+    # be stable under the same nonzero-mode fluctuation measure.
+    weights = [Fraction(1, 2), Fraction(1, 3), Fraction(1, 6)]
+    assert_equal("fluctuation-cell weights normalize", sum(weights, Fraction(0)), Fraction(1))
+
+    first_cumulants = [Fraction(1, 12), -Fraction(1, 18), Fraction(1, 24)]
+    second_cumulants = [Fraction(1, 70), -Fraction(1, 84), Fraction(1, 105)]
+    tail_remainders = [Fraction(1, 200), -Fraction(1, 180), Fraction(1, 252)]
+
+    exact_source_ratio = sum(
+        weight * (1 + first + second + tail)
+        for weight, first, second, tail in zip(
+            weights, first_cumulants, second_cumulants, tail_remainders
+        )
+    )
+    first_mean = sum(
+        weight * first for weight, first in zip(weights, first_cumulants)
+    )
+    second_mean = sum(
+        weight * second for weight, second in zip(weights, second_cumulants)
+    )
+    tail_mean = sum(
+        weight * tail for weight, tail in zip(weights, tail_remainders)
+    )
+    assert_equal(
+        "source-dependent fluctuation cumulant telescope",
+        exact_source_ratio,
+        1 + first_mean + second_mean + tail_mean,
+    )
+
+    fluctuation_certificate = sum(
+        weight * (abs(first) + abs(second) + abs(tail))
+        for weight, first, second, tail in zip(
+            weights, first_cumulants, second_cumulants, tail_remainders
+        )
+    )
+    if not abs(exact_source_ratio - 1) <= fluctuation_certificate:
+        raise AssertionError("source-dependent fluctuation certificate failed")
+
+    # Propagate the same source-dependent correction through a finite signed
+    # hard window.  The absolute mass, not the signed coefficient alone, controls
+    # the error.
+    window_cells = [Fraction(3, 5), -Fraction(1, 10), Fraction(7, 20)]
+    fluctuation_errors = [Fraction(1, 20), -Fraction(1, 30), Fraction(1, 40)]
+    leading_window = sum(window_cells, Fraction(0))
+    absolute_window_mass = sum(abs(cell) for cell in window_cells)
+    exact_window = sum(
+        cell * (1 + error) for cell, error in zip(window_cells, fluctuation_errors)
+    )
+    epsilon_fluc = max(abs(error) for error in fluctuation_errors)
+    if not abs(exact_window - leading_window) <= epsilon_fluc * absolute_window_mass:
+        raise AssertionError("finite-window fluctuation residual bound failed")
+
+    # A determinant normalized in a vacuum channel can have no source residual,
+    # while the selected source amplitude still has a nonzero fluctuation
+    # correction.
+    vacuum_determinant_residual = Fraction(0)
+    if not abs(exact_source_ratio - 1) > vacuum_determinant_residual:
+        raise AssertionError(
+            "vacuum determinant calibration was mistaken for source fluctuation control"
+        )
+
+    # Signed fluctuation cumulants can cancel.  The certificate must use absolute
+    # cumulant control, not the signed sum.
+    canceling_cumulants = [Fraction(1, 8), -Fraction(1, 8)]
+    signed_cumulant_sum = sum(canceling_cumulants, Fraction(0))
+    absolute_cumulant_sum = sum(abs(term) for term in canceling_cumulants)
+    assert_equal("signed fluctuation cumulants cancel", signed_cumulant_sum, Fraction(0))
+    signed_only_budget = abs(signed_cumulant_sum)
+    if not absolute_cumulant_sum > signed_only_budget:
+        raise AssertionError("signed cancellation erased the absolute fluctuation budget")
+
+
 def check_hard_momentum_instanton_size_window() -> None:
     n_c = 3
     n_f = 2
@@ -4613,6 +4694,7 @@ def main() -> None:
     check_instanton_euclidean_to_physical_residual_budget()
     check_instanton_unitarity_cut_pairing()
     check_instanton_amplitude_error_budget()
+    check_source_dependent_fluctuation_cumulant_certificate()
     check_hard_momentum_instanton_size_window()
     check_hard_size_tail_dominance_criterion()
     check_hard_screened_instanton_size_shell()

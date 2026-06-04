@@ -539,7 +539,9 @@ Current checks:
   the relative cut residual,
   the finite one-instanton amplitude
   error budget separating determinant, zero-mode/source, matching, Schur, and
-  endpoint residuals from the leading density, the hard-momentum
+  endpoint residuals from the leading density, the source-dependent
+  fluctuation-cumulant certificate which refines the determinant residual and
+  rejects vacuum-determinant and signed-cancellation shortcuts, the hard-momentum
   size-window scaling
   that gives the \(N_f=2\) four-fermion coefficient its \(Q^{-2}\) behavior
   at \(\mu=Q\), the large-\(\rho\) endpoint distinction between exponential

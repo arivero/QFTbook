@@ -7026,6 +7026,90 @@ one-instanton calculation is deep precisely because it performs this whole
 assembly, rather than because it merely parametrizes the BPST collective
 coordinates.
 
+\begin{controlledapproximation}[Source-dependent fluctuation certificate]
+\label{ca:instanton-source-fluctuation-cumulant-certificate}
+The nonzero-mode determinant in
+\eqref{eq:instanton-leading-amplitude-density} is only the Gaussian
+normalization of the fluctuation integral.  For an actual source or operator
+insertion one must also control how the same nonzero modes enter the insertion.
+After zero modes and residual gauge modes have been projected out, let
+\(\eta\in\mathcal N_z\) be the finite-regulator normal fluctuation coordinate
+at the instanton \(A_z\), let \(d\gamma_z(\eta)\) be the normalized Gaussian
+measure defined by the nonzero-mode Hessian, let \(V_z(\eta;g)\) collect cubic
+and higher action vertices together with finite counterterm remainders, and let
+\(\mathcal Z_z(\eta;\mathcal J)\) be the source factor after the explicit
+fermion zero-mode coefficient has been separated.  On a chart where
+\(\mathcal Z_z(0;\mathcal J)\ne0\), the source-dependent fluctuation ratio is
+\[
+  \mathcal R_{\rm fluc}(z;\mathcal J)
+  =
+  \frac{
+    \left\langle
+      \mathcal Z_z(\eta;\mathcal J)
+      \exp[-V_z(\eta;g)]
+    \right\rangle_{\gamma_z}
+  }{
+    \mathcal Z_z(0;\mathcal J)
+  } .
+\]
+Thus the determinant constant and the source fluctuation correction are
+different coordinates: the first normalizes \(d\gamma_z\), while the second
+tests the selected source under the same fluctuation measure.
+
+Suppose that on the retained hard/source window
+\[
+  \mathcal R_{\rm fluc}(z;\mathcal J)
+  =
+  1+C_1(z;\mathcal J)+C_2(z;\mathcal J)+R_{\ge3}(z;\mathcal J)
+\]
+and that
+\[
+  |C_1|\le\epsilon_1,\qquad
+  |C_2|\le\epsilon_2,\qquad
+  |R_{\ge3}|\le\epsilon_{\ge3}.
+\]
+Then the fluctuation part of the determinant residual in
+\eqref{eq:instanton-amplitude-error-density} is bounded by
+\[
+  \epsilon_{\rm fluc}
+  =
+  \epsilon_1+\epsilon_2+\epsilon_{\ge3}.
+\]
+For the hard finite-window certificate this refines
+\eqref{eq:hard-instanton-window-absolute-certificate} to
+\[
+  \left|
+  C_{\rm inst}^{(4),{\rm ex}}(Q)-\mathcal N(Q)J_R
+  \right|
+  \le
+  |\mathcal N(Q)|M_R
+  \bigl(
+    \epsilon_{\rm spec}
+    +\epsilon_{\rm fluc}
+    +\epsilon_{\rm zm}
+    +\epsilon_{\rm src}
+    +\epsilon_{\rm Schur}
+    +\tau_R
+  \bigr),
+\]
+where \(\epsilon_{\rm spec}\) denotes the source-independent spectral
+determinant and counterterm remainder.  If
+\(\mathcal Z_z(0;\mathcal J)\) loses its rank or noncancellation margin, this
+relative form is invalid; the fluctuation contribution must then be kept as an
+absolute source residual of the kind represented by \(\Delta_{\rm Schur}\) or
+\(R_{\rm src}\).
+
+This is the semiclassical point hidden by many shorthand presentations of the
+'t Hooft vertex.  A vacuum determinant calibration can fix the Gaussian
+normalization and still say too little about a four-fermion amplitude, because
+the latter asks whether the source insertion is stable under fluctuations
+around the instanton.  The controlled weak-coupling claim is therefore not
+``BPST moduli space plus a determinant constant.''  It is a uniform statement,
+on the chosen source and size window, about the determinant, zero-mode
+overlaps, fluctuation cumulants, endpoint tails, and physical projection
+residuals together.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Hard-momentum size window]
 \label{ca:hard-momentum-instanton-size-window}
 Consider the \(N_f=2\) source-amputated four-fermion kernel

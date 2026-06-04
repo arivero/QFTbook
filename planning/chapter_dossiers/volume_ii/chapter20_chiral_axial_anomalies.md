@@ -344,6 +344,7 @@
 | \(U_i{}^\alpha\) | \(SU(2)\) instanton core-orientation matrix element whose Haar integral projects colored zero-mode slots onto invariant tensors |
 | \(A_{i_1i_2j_1j_2},B_{i_1i_2j_1j_2}\) | two invariant four-fundamental \(SU(2)\) tensors used in the shared-orientation Haar projector |
 | \(\mathcal K_{\rm ex},\mathcal K_{\rm lead},\mathcal C_{\rm pg}^{\mathcal S},R_{\rm det},R_{\rm zm},R_{\rm src},R_{\rm Schur},R_{\rm end}\) | exact and leading one-instanton source-amplitude densities, pure-gauge collective/determinant density, and the finite error-budget pieces for determinant, zero-mode/source, source matching, Schur, and endpoint residuals |
+| \(\eta,\mathcal N_z,d\gamma_z,\mathcal R_{\rm fluc},C_1,C_2,R_{\ge3},\epsilon_{\rm fluc}\) | normal nonzero-mode fluctuation coordinate, Gaussian fluctuation measure, source-dependent fluctuation ratio, cumulant pieces, and fluctuation residual refining the instanton determinant error |
 | \(B^{\mathcal J}_{AB},\Phi^R,\Phi^L\) | color-singlet source-projected zero-mode matrix and source-to-zero-mode overlap maps used to match the auxiliary hard instanton kernel to gauge-invariant correlators |
 | \(\mathcal A_{\rm phys}^{Q=1},\mathcal A_{\rm inst}^{\rm lead},R_{\rm reg},R_{\rm cont},R_{\rm spec},R_{\rm IR},R_{\rm cut},R_{\rm match},R_\rho\) | physical one-instanton amplitude coordinate, leading continued/projected instanton-kernel coordinate, and the residuals separating Euclidean source kernels from physical amplitudes |
 | \(A_I,A_{\bar I},\Gamma_{I\bar I},\mathcal C_{\rm cut},M^{(0)}_{I\bar I},\varepsilon_{\rm cut}\) | instanton and anti-instanton amplitude coordinates, paired inclusive cut/rate kernel, cut weight, absolute majorant, and cut residual used to turn a theta-charged amplitude kernel into a neutral spectral weight |
@@ -732,6 +733,15 @@
   exactly where a weakly coupled, thermal, hard-OPE, or hadronic projection
   must supply additional physics after the BPST determinant and zero-mode
   calculation.
+- The determinant residual in a selected source amplitude now has a
+  source-dependent fluctuation refinement.  After the Gaussian nonzero-mode
+  determinant has normalized \(d\gamma_z\), the selected source insertion must
+  have a controlled ratio
+  \(\mathcal R_{\rm fluc}=1+C_1+C_2+R_{\ge3}\).  The residual
+  \(\epsilon_{\rm fluc}=\epsilon_1+\epsilon_2+\epsilon_{\ge3}\) enters the
+  same hard-window amplitude bound as the spectral determinant, while vacuum
+  determinant calibration and signed cumulant cancellation are insufficient
+  evidence for a four-fermion amplitude.
 - In an \(N_f=2\) hard four-fermion kinematic window, retaining the selected
   zero-mode form factors turns the universal one-loop size factor into
   \[
@@ -1554,3 +1564,11 @@
   multiplicative amplitude error.  The BPST companion verifies exact rational
   transport, stale-constant and missing-source-compensation negative controls,
   and the nonvanishing absolute certificate for canceling residuals.
+- 2026-06-04 issue #597 source-fluctuation pass: added
+  `ca:instanton-source-fluctuation-cumulant-certificate`, refining the
+  determinant residual in the one-instanton amplitude budget into
+  source-independent spectral/counterterm and source-dependent fluctuation
+  cumulant pieces.  The BPST companion verifies the finite cumulant telescope,
+  finite-window propagation through \(M_R\), and negative controls against
+  replacing source fluctuation control by a vacuum determinant calibration or a
+  signed cancellation.
