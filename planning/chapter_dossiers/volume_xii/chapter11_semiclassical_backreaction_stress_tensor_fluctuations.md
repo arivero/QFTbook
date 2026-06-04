@@ -45,6 +45,9 @@ recording fluctuation data required for controlled backreaction.
   stress tensor, its retained retarded response kernel, and the component
   covariance/cross-covariance entries required to assemble full interacting
   stress-tensor noise.
+- `D_0`, `R^{ret}`, `D_full`, `eta_I`: the reduced gravitational/local-contact
+  operator, retained interacting stress-tensor feedback, full linearized
+  backreaction operator, and small-gain parameter on a frequency window.
 
 ## Claim Ledger
 
@@ -118,6 +121,15 @@ recording fluctuation data required for controlled backreaction.
   Thus Ward-clean retained data are accepted as physical backreaction inputs
   only after the full pAQFT stress tensor and its renormalized products, or
   controlled residuals for the missing entries, have been supplied.
+- Adds the retained small-gain stability layer for interacting backreaction:
+  after the full source/noise/response package is fixed in one scheme, the
+  full linearized operator is `D_full=D_0-R^{ret}`.  A finite frequency window
+  is controlled when `D_0^{-1}` is bounded and
+  `eta_I=sup ||D_0^{-1}R^{ret}||<1`, giving the inverse
+  `(1-D_0^{-1}R^{ret})^{-1}D_0^{-1}` and explicit mean/noise amplification
+  bounds.  The layer also identifies physical failures: uncontrolled feedback,
+  upper-half-plane poles, Ward-clean noise amplified beyond the metric chart,
+  and missing-noise residuals not included in the covariance budget.
 - Records validity conditions and the EFT reduction-of-order treatment for
   higher-curvature terms.
 
@@ -144,9 +156,12 @@ recording fluctuation data required for controlled backreaction.
   retained interacting stress-tensor/noise package with component
   cross-covariances, finite composite-operator-mixing cross terms, and a
   c-number connected-noise negative control that can still pass the Ward test,
-  and the
-  low-energy root selected by reduction of order in a toy higher-derivative
-  equation.
+  the small-gain feedback inverse for the full retained backreaction operator,
+  Ward-clean source/noise inputs, mean-response and noise-amplification
+  bounds, residual missing-noise trace propagation, and singular-feedback,
+  overlarge-feedback, unconserved-input, and conserved-but-unstable
+  amplification negative controls, and the low-energy root selected by
+  reduction of order in a toy higher-derivative equation.
 
 ## Figure Ledger
 
@@ -226,3 +241,10 @@ curvature, microscopic, and EFT scales.
   Ward-clean full noise, finite operator mixing changes noise through cross
   terms, and c-number curvature counterterms must not be inserted into
   connected noise even when the resulting wrong covariance remains Ward-clean.
+- 2026-06-04 issue #729 small-gain pass: added
+  `ca:semiclassical-backreaction-small-gain-stability`, which turns the
+  scheme-fixed interacting source/noise/response package into an actual
+  retained backreaction control test.  The new companion checks the exact
+  feedback inverse, the bounded-response and covariance trace estimates,
+  residual missing-noise propagation, and the fact that Ward-clean data can
+  still fail through singular or strongly amplifying metric feedback.

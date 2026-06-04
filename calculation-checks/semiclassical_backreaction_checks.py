@@ -10,6 +10,8 @@ lambda-phi-four potential-noise coordinate using the full separated two-point
 function, retained Ward diagnostics for interacting source/noise coordinates,
 the full retained interacting stress-tensor/noise package with component
 cross-covariances and finite composite-operator mixing,
+the small-gain stability and fluctuation-validity check for the linearized
+interacting backreaction operator,
 and the low-energy root selected by reduction of order in a toy
 higher-derivative equation.
 
@@ -24,13 +26,15 @@ finite-renormalization ledger for that coordinate, the finite retained
 Ward-diagnostic/projected-noise algebra for interacting sources, and the
 full interacting package algebra in which component cross-covariances and
 finite operator-mixing terms are required before Ward tests are applied to
-the noise, and the low-energy root selected by reduction of order.
+the noise, the small-gain feedback inverse and noise-amplification bound for
+the full retained backreaction operator, and the low-energy root selected by
+reduction of order.
 Independent construction: the checks recompute traces, KMS factors,
 matrix pushforwards, exact retained-sector inverses, Wick-contraction
 coefficients, cosmological-coordinate shifts, independent finite counterterm
 controls, signed/absolute norm bounds, Ward maps, kernel projectors, projected
-covariances, and toy roots directly from finite formulas rather than importing
-chapter display strings.
+covariances, small-gain inverses, response/noise bounds, and toy roots
+directly from finite formulas rather than importing chapter display strings.
 Imported assumptions: the tests use finite-dimensional retained sectors,
 centered quasifree Wick combinatorics, formal first- and second-order lambda
 coordinates, positive finite noise matrices, full-rank finite Ward maps, and the
@@ -44,10 +48,11 @@ separated two-point function, premature real-part projection, retained
 disconnected noise pieces, pretending a transverse counterterm cancels a Ward
 violation, wrong-sign Ward repairs, identifying the least-norm projection with
 the physical completion, identifying projected partial noise with full physical
-noise, unprojected longitudinal noise, and cutoff-scale higher-derivative roots
+noise, unprojected longitudinal noise, cutoff-scale higher-derivative roots,
 component-variance-only noise packages, missing finite-renormalization cross
 terms, and c-number counterterms incorrectly added to connected noise are
-rejected.
+rejected, as are singular feedback operators, overlarge small-gain feedback,
+unconserved sources/noise, and conserved-but-unstable retained data.
 Scope boundary: a pass checks coefficient, positivity, and response-bound
 bookkeeping for the retained potential-insertion coordinate and the finite
 algebra of a full retained stress-tensor package; it does not construct the
@@ -158,6 +163,10 @@ def trace(matrix: Matrix) -> Fraction:
 
 def squared_norm(column: Matrix) -> Fraction:
     return sum(column[i][0] * column[i][0] for i in range(len(column)))
+
+
+def frobenius_norm_sq(matrix: Matrix) -> Fraction:
+    return sum(entry * entry for row in matrix for entry in row)
 
 
 def quadratic_form(matrix: Matrix, column: Matrix) -> Fraction:
@@ -744,6 +753,125 @@ def check_interacting_stress_tensor_noise_package() -> None:
         raise AssertionError("finite-mixed full noise should satisfy the Ward column condition")
 
 
+def check_backreaction_small_gain_stability() -> None:
+    # Finite retained model for D_full = D0 - R_ret and
+    # D_full^{-1} = (I - D0^{-1} R_ret)^{-1} D0^{-1}.
+    gravitational_operator: Matrix = (
+        (Fraction(3), Fraction(0)),
+        (Fraction(0), Fraction(4)),
+    )
+    gravitational_inverse = inverse2(gravitational_operator)
+    retarded_feedback: Matrix = (
+        (Fraction(1, 5), Fraction(1, 10)),
+        (Fraction(1, 20), Fraction(1, 6)),
+    )
+    full_operator = matsub(gravitational_operator, retarded_feedback)
+    full_inverse = inverse2(full_operator)
+
+    feedback_map = matmul(gravitational_inverse, retarded_feedback)
+    neumann_inverse = inverse2(matsub(identity(2), feedback_map))
+    small_gain_inverse = matmul(neumann_inverse, gravitational_inverse)
+    if small_gain_inverse != full_inverse:
+        raise AssertionError("small-gain inverse should equal the exact full inverse")
+    if matmul(full_operator, small_gain_inverse) != identity(2):
+        raise AssertionError("full feedback inverse should invert D_full")
+
+    certified_m0 = Fraction(1, 2)
+    certified_eta = Fraction(1, 4)
+    if frobenius_norm_sq(gravitational_inverse) > certified_m0 * certified_m0:
+        raise AssertionError("gravitational inverse exceeds the certified M0 bound")
+    if frobenius_norm_sq(feedback_map) > certified_eta * certified_eta:
+        raise AssertionError("retarded feedback exceeds the certified small-gain bound")
+    certified_full_bound = certified_m0 / (1 - certified_eta)
+
+    ward: Matrix = ((Fraction(1), Fraction(-1)),)
+    source: Matrix = ((Fraction(2, 7),), (Fraction(2, 7),))
+    if matmul(ward, source) != zero_matrix(1, 1):
+        raise AssertionError("test source should be Ward-clean")
+    nonconserved_source: Matrix = ((Fraction(2, 7),), (Fraction(1, 7),))
+    if matmul(ward, nonconserved_source) == zero_matrix(1, 1):
+        raise AssertionError("negative control failed: nonconserved source passed Ward test")
+
+    mean_metric = matmul(full_inverse, source)
+    if squared_norm(mean_metric) > certified_full_bound * certified_full_bound * squared_norm(source):
+        raise AssertionError("small-gain mean-response bound failed")
+
+    ward_clean_noise: Matrix = (
+        (Fraction(5, 6), Fraction(5, 6)),
+        (Fraction(5, 6), Fraction(5, 6)),
+    )
+    if matmul(ward, ward_clean_noise) != zero_matrix(1, 2):
+        raise AssertionError("test full noise should have no longitudinal row")
+    if matmul(ward_clean_noise, transpose(ward)) != zero_matrix(2, 1):
+        raise AssertionError("test full noise should have no longitudinal column")
+    if quadratic_form(ward_clean_noise, ((Fraction(1),), (Fraction(1),))) <= 0:
+        raise AssertionError("Ward-clean noise should have positive retained variance")
+    if quadratic_form(ward_clean_noise, ((Fraction(1),), (Fraction(-1),))) != 0:
+        raise AssertionError("Ward-clean noise should vanish on the longitudinal test vector")
+
+    unclean_noise: Matrix = (
+        (Fraction(1), Fraction(0)),
+        (Fraction(0), Fraction(1)),
+    )
+    if matmul(ward, unclean_noise) == zero_matrix(1, 2):
+        raise AssertionError("negative control failed: unclean noise passed Ward row test")
+    if unclean_noise == ward_clean_noise:
+        raise AssertionError("negative control failed: clean and unclean noise coincided")
+
+    metric_covariance = matmul(matmul(full_inverse, ward_clean_noise), transpose(full_inverse))
+    if metric_covariance != transpose(metric_covariance):
+        raise AssertionError("small-gain metric covariance should be symmetric")
+    for test_vector in [
+        ((Fraction(1),), (Fraction(0),)),
+        ((Fraction(1),), (Fraction(-2),)),
+        ((Fraction(3),), (Fraction(5),)),
+    ]:
+        if quadratic_form(metric_covariance, test_vector) < 0:
+            raise AssertionError("small-gain metric covariance should be positive semidefinite")
+    if trace(metric_covariance) > certified_full_bound * certified_full_bound * trace(ward_clean_noise):
+        raise AssertionError("small-gain noise-amplification trace bound failed")
+
+    retained_noise_trace = Fraction(1, 4)
+    missing_noise_trace = trace(ward_clean_noise) - retained_noise_trace
+    if missing_noise_trace <= 0:
+        raise AssertionError("test retained noise should leave a positive missing trace budget")
+    wrong_truncated_bound = certified_full_bound * certified_full_bound * retained_noise_trace
+    correct_residual_bound = certified_full_bound * certified_full_bound * (
+        retained_noise_trace + missing_noise_trace
+    )
+    if trace(metric_covariance) > correct_residual_bound:
+        raise AssertionError("residual-augmented noise trace bound failed")
+    if trace(metric_covariance) <= wrong_truncated_bound:
+        raise AssertionError("negative control failed: missing noise trace was not needed")
+
+    singular_feedback = gravitational_operator
+    singular_full_operator = matsub(gravitational_operator, singular_feedback)
+    if det2(singular_full_operator) != 0:
+        raise AssertionError("negative control should produce a singular feedback operator")
+
+    large_feedback: Matrix = (
+        (Fraction(4), Fraction(0)),
+        (Fraction(0), Fraction(0)),
+    )
+    large_feedback_map = matmul(gravitational_inverse, large_feedback)
+    if frobenius_norm_sq(large_feedback_map) < Fraction(1):
+        raise AssertionError("negative control should violate the small-gain hypothesis")
+
+    unstable_operator: Matrix = (
+        (Fraction(1, 50), Fraction(0)),
+        (Fraction(0), Fraction(4)),
+    )
+    unstable_inverse = inverse2(unstable_operator)
+    unstable_metric_covariance = matmul(
+        matmul(unstable_inverse, ward_clean_noise),
+        transpose(unstable_inverse),
+    )
+    if matmul(ward, ward_clean_noise) != zero_matrix(1, 2):
+        raise AssertionError("test conserved noise was unexpectedly not Ward-clean")
+    if trace(unstable_metric_covariance) <= 100 * trace(ward_clean_noise):
+        raise AssertionError("conserved noise can still be amplified beyond validity")
+
+
 def check_reduction_of_order_toy_model() -> None:
     # Toy equation: x'' + omega0^2 x + epsilon x'''' = 0.
     # For x ~ exp(lambda t), epsilon lambda^4 + lambda^2 + omega0^2 = 0.
@@ -773,6 +901,7 @@ def main() -> None:
     check_lambda_phi4_potential_noise_kernel()
     check_retained_interacting_source_ward_diagnostics()
     check_interacting_stress_tensor_noise_package()
+    check_backreaction_small_gain_stability()
     check_reduction_of_order_toy_model()
     print("All semiclassical backreaction checks passed.")
 

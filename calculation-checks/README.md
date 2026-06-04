@@ -2079,7 +2079,11 @@ Current checks:
   cross-covariances and finite composite-operator-mixing cross terms are
   required before Ward-clean mean/noise data are fed into the metric response,
   with c-number counterterm noise rejected even though it can pass the Ward
-  test, and the
+  test, the small-gain stability check for the full retained backreaction
+  operator with exact feedback inverse, Ward-clean source/noise tests,
+  noise-amplification and missing-noise residual bounds, and negative controls
+  for singular feedback, overlarge feedback, unconserved inputs, and
+  conserved-but-unstable amplification, and the
   low-energy root selected by reduction of order in a toy higher-derivative
   equation.
 - `schwinger_keldysh_operator_checks.py`: finite two-level-system checks for

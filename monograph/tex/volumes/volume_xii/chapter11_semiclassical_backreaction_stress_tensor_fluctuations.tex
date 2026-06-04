@@ -1371,6 +1371,117 @@ residual bounds for the missing state, product-extension, Ward, response, and
 finite-renormalization data.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Backreaction small-gain stability]
+\label{ca:semiclassical-backreaction-small-gain-stability}
+The interacting package above is still only source data until the metric
+operator with stress-tensor feedback is controlled.  Work on one retained
+Ward-clean frequency window \(I\).  Let \(\mathsf D_0(\omega)\) denote the
+gauge-fixed gravitational and local-contact operator after constraint
+reduction and reduction of order, before the nonlocal interacting
+stress-tensor response is fed back.  Let
+\(\mathsf R^{\rm ret}(\omega)\) denote the corresponding retained retarded
+stress response from the same package
+\eqref{eq:semiclassical-full-interacting-package}, with the factor \(1/2\)
+and the sign convention of
+\eqref{eq:semiclassical-retained-response-matrix} absorbed into
+\(\mathsf R^{\rm ret}\).  Thus
+\begin{equation}
+  \mathsf D_{\rm full}(\omega)
+  =
+  \mathsf D_0(\omega)-\mathsf R^{\rm ret}(\omega).
+  \label{eq:semiclassical-full-feedback-operator}
+\end{equation}
+Assume that \(\mathsf D_0\) has a retarded inverse on the reduced sector and
+that, on \(I\),
+\begin{equation}
+  M_0
+  =
+  \sup_{\omega\in I}
+  \left\lVert
+    \mathsf D_0(\omega+\ii0)^{-1}
+  \right\rVert_2
+  <\infty,
+  \qquad
+  \eta_I
+  =
+  \sup_{\omega\in I}
+  \left\lVert
+    \mathsf D_0(\omega+\ii0)^{-1}
+    \mathsf R^{\rm ret}(\omega+\ii0)
+  \right\rVert_2
+  <1 .
+  \label{eq:semiclassical-small-gain-hypothesis}
+\end{equation}
+Then the full retained inverse exists on the same window and is
+\begin{equation}
+  \mathsf D_{\rm full}^{-1}
+  =
+  \left(
+    \mathbf 1-\mathsf D_0^{-1}\mathsf R^{\rm ret}
+  \right)^{-1}
+  \mathsf D_0^{-1},
+  \qquad
+  \left\lVert\mathsf D_{\rm full}^{-1}\right\rVert_2
+  \le
+  \frac{M_0}{1-\eta_I}.
+  \label{eq:semiclassical-small-gain-inverse}
+\end{equation}
+For a Ward-clean interacting source and noise package,
+\[
+  \mathsf B j^{\rm full}=0,\qquad
+  \mathsf B\mathsf N^{\rm full}=0,\qquad
+  \mathsf N^{\rm full}\mathsf B^*=0,
+\]
+the retained mean response and metric covariance obey
+\begin{equation}
+  h^{\rm full}
+  =
+  \mathsf D_{\rm full}^{-1}j^{\rm full},
+  \qquad
+  \mathsf C_h^{\rm full}
+  =
+  \mathsf D_{\rm full}^{-1}
+  \mathsf N^{\rm full}
+  \mathsf D_{\rm full}^{-*},
+  \label{eq:semiclassical-small-gain-response-covariance}
+\end{equation}
+with
+\begin{equation}
+  \lVert h^{\rm full}\rVert_2
+  \le
+  \frac{M_0}{1-\eta_I}\lVert j^{\rm full}\rVert_2,
+  \qquad
+  \operatorname{tr}\mathsf C_h^{\rm full}
+  \le
+  \frac{M_0^2}{(1-\eta_I)^2}
+  \operatorname{tr}\mathsf N^{\rm full}.
+  \label{eq:semiclassical-small-gain-mean-noise-bound}
+\end{equation}
+If a truncated calculation supplies only
+\(\mathsf N^{\rm ret}\) and a positive trace residual
+\(\operatorname{tr}\mathsf N^{\rm miss}\le r_N\), the last bound is replaced
+by the same expression with
+\(\operatorname{tr}\mathsf N^{\rm ret}+r_N\).  This is the place where a
+finite interacting example becomes a backreaction statement: the retarded
+feedback must be small enough, or otherwise explicitly invertible, in the
+same Ward-clean sector in which the mean source and connected noise are
+defined.
+
+Failure of any part of this test has physical content.  If
+\(\eta_I\ge1\) and no sharper inverse estimate is supplied, the perturbative
+feedback expansion is not controlled.  If
+\(\mathsf D_{\rm full}^{-1}\) has an upper-half-plane pole, the retained
+background is linearly unstable in the semiclassical problem.  If
+\(\operatorname{tr}\mathsf C_h^{\rm full}\) is comparable to the square of
+the metric reference scale, or the induced curvature covariance is comparable
+to the square of the background curvature scale, the mean semiclassical
+metric is not a self-averaging output of the declared state.  Ward projection
+alone cannot diagnose these failures: a projected source may be conserved
+while the retarded feedback is unstable, and a conserved connected noise
+kernel may still be amplified beyond the validity of the linearized metric
+chart.
+\end{controlledapproximation}
+
 \section{Validity Conditions And Reduction Of Order}
 
 The semiclassical approximation requires more than small curvature.  A
