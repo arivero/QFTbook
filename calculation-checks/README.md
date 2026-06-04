@@ -668,7 +668,11 @@ Current checks:
   \(\phi^8/\mathcal M^4\) pole to the residual sector, and the same scalar
   EFT's local field-redefinition coordinate shifts, Jacobian/source/composite
   transforms, and on-shell four-point observable equality with negative
-  controls for wrong graph combinatorics and incomplete basis changes.
+  controls for wrong graph combinatorics and incomplete basis changes.  It
+  also checks the evanescent-operator \(O(\epsilon)\times1/\epsilon\) finite
+  shift under one-loop projection, the compensating finite coefficient shift
+  under evanescent representative changes, and the hypotheses needed before
+  EOM, BRST-exact, or boundary representatives may be removed.
 - `borel_laplace_checks.py`: exact checks for the Borel--Laplace and
   zero-dimensional quartic large-order section, including Gaussian moments,
   perturbative coefficients, the ratio

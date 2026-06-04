@@ -13,6 +13,10 @@ Target claims:
 - In the same scalar EFT, a local field redefinition preserves the on-shell
   four-point observable only when the action, Jacobian, source transform,
   composite transform, and Wilson-coordinate shifts are carried together.
+- Evanescent operators in dimensional regularization must be retained through
+  one-loop mixing and projected only after subtraction, because an
+  \(O(\epsilon)\) evanescent matrix element multiplying a UV pole produces a
+  finite physical Wilson-coefficient shift.
 
 Independent construction:
 - The heavy-kernel identity is checked as an exact rational identity and as a
@@ -24,6 +28,9 @@ Independent construction:
 - The field-redefinition check computes the transformed scalar EFT
   coefficients, source/composite/Jacobian terms, and the tree four-point
   kernel on and away from the external mass shell.
+- The evanescent check computes the finite \(epsilon \times 1/epsilon\)
+  projection shift and its compensation under a changed evanescent
+  representative.
 
 Imported assumptions:
 - Euclidean low-energy kinematics with q^2 >= 0 and q^2 <= Q^2 << M^2.
@@ -34,6 +41,9 @@ Imported assumptions:
   Gamma_div^(1)=(32 pi^2 epsilon)^(-1) int (V'')^2.
 - The field-redefinition observable check uses the analytically continued
   external pole condition p_i^2=-m^2.
+- The evanescent example is an algebraic one-loop renormalization model for a
+  physical operator Q and an evanescent representative E; it fixes a
+  convention for the finite shift rather than a universal sign convention.
 
 Negative controls:
 - Reversing the heavy-kernel remainder sign fails the exact identity.
@@ -44,6 +54,9 @@ Negative controls:
 - Dropping either the derivative term or the mass-coordinate shift spoils the
   field-redefinition equality of the on-shell four-point kernel; dropping the
   Jacobian, source transform, or composite transform is also detected.
+- Prematurely quotienting the evanescent operator misses the finite shift, and
+  changing the evanescent representative without the compensating physical
+  coefficient shift changes the projected amplitude.
 
 Scope boundary:
 - This script checks finite algebra and bookkeeping for the EFT prediction
@@ -204,11 +217,96 @@ def check_scalar_eft_field_redefinition_observable() -> None:
     assert_nonzero("dropping composite transform changes insertions", composite_phi_squared_shift)
 
 
+def check_evanescent_mixing_projection() -> None:
+    eps = sp.symbols("eps")
+    C_Q, C_E, u, kappa, alpha = sp.symbols("C_Q C_E u kappa alpha", nonzero=True)
+
+    # A regulated evanescent matrix element can be O(epsilon) in the physical
+    # direction before four-dimensional projection.  A one-loop UV pole then
+    # leaves a finite physical shift.
+    evanescent_matrix_element = eps * kappa
+    one_loop_pole_from_evanescent = C_E * u / eps * evanescent_matrix_element
+    finite_shift = sp.limit(one_loop_pole_from_evanescent, eps, 0)
+    assert_zero("evanescent pole projection gives finite physical shift", finite_shift - C_E * u * kappa)
+
+    premature_quotient_shift = sp.Integer(0)
+    assert_nonzero(
+        "premature evanescent quotient misses finite physical shift",
+        finite_shift - premature_quotient_shift,
+    )
+
+    # Changing the evanescent representative by epsilon*alpha*Q is a finite
+    # scheme change in the projected physical coefficient.
+    changed_representative_matrix_element = eps * (kappa + alpha)
+    changed_shift = sp.limit(C_E * u / eps * changed_representative_matrix_element, eps, 0)
+    assert_zero("changed evanescent representative finite shift", changed_shift - C_E * u * (kappa + alpha))
+    assert_nonzero(
+        "uncompensated evanescent representative change alters projected coefficient",
+        changed_shift - finite_shift,
+    )
+
+    projected_old = C_Q + finite_shift
+    physical_countershift = -C_E * u * alpha
+    projected_new = C_Q + physical_countershift + changed_shift
+    assert_zero("finite coefficient countershift preserves projected observable", projected_new - projected_old)
+
+    projected_new_without_countershift = C_Q + changed_shift
+    assert_nonzero(
+        "omitting finite scheme countershift changes projected observable",
+        projected_new_without_countershift - projected_old,
+    )
+
+
+def check_operator_redundancy_conditions() -> None:
+    def can_remove_eom(*, on_shell: bool, sources_transformed: bool, contacts_carried: bool) -> bool:
+        return on_shell and sources_transformed and contacts_carried
+
+    def can_remove_brst_exact(*, physical_sector: bool, anomaly_free: bool, brst_preserved: bool) -> bool:
+        return physical_sector and anomaly_free and brst_preserved
+
+    def can_quotient_boundary_term(*, no_physical_boundary: bool, no_boundary_observable: bool, no_edge_charge: bool) -> bool:
+        return no_physical_boundary and no_boundary_observable and no_edge_charge
+
+    if not can_remove_eom(on_shell=True, sources_transformed=True, contacts_carried=True):
+        raise AssertionError("EOM removal should be allowed for the matched on-shell observable class")
+    for condition in ("on_shell", "sources_transformed", "contacts_carried"):
+        kwargs = {"on_shell": True, "sources_transformed": True, "contacts_carried": True}
+        kwargs[condition] = False
+        if can_remove_eom(**kwargs):
+            raise AssertionError(f"EOM removal incorrectly ignored missing {condition}")
+
+    if not can_remove_brst_exact(physical_sector=True, anomaly_free=True, brst_preserved=True):
+        raise AssertionError("BRST-exact removal should be allowed in anomaly-free physical cohomology")
+    for condition in ("physical_sector", "anomaly_free", "brst_preserved"):
+        kwargs = {"physical_sector": True, "anomaly_free": True, "brst_preserved": True}
+        kwargs[condition] = False
+        if can_remove_brst_exact(**kwargs):
+            raise AssertionError(f"BRST-exact removal incorrectly ignored missing {condition}")
+
+    if not can_quotient_boundary_term(
+        no_physical_boundary=True,
+        no_boundary_observable=True,
+        no_edge_charge=True,
+    ):
+        raise AssertionError("boundary-term quotient should be allowed when all boundary data are absent")
+    for condition in ("no_physical_boundary", "no_boundary_observable", "no_edge_charge"):
+        kwargs = {
+            "no_physical_boundary": True,
+            "no_boundary_observable": True,
+            "no_edge_charge": True,
+        }
+        kwargs[condition] = False
+        if can_quotient_boundary_term(**kwargs):
+            raise AssertionError(f"boundary quotient incorrectly ignored missing {condition}")
+
+
 def main() -> None:
     check_heavy_kernel_expansion()
     check_matching_scale_cancellation()
     check_one_loop_scalar_eft_closure()
     check_scalar_eft_field_redefinition_observable()
+    check_evanescent_mixing_projection()
+    check_operator_redundancy_conditions()
     print("All EFT prediction-calculus checks passed.")
 
 

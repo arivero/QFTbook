@@ -161,9 +161,10 @@ The chapter must define and derive:
   implicit-function consequence, not as an independent QFT theorem;
 - an operational EFT-prediction datum that includes the observable class,
   kinematic domain, high-scale or bottom-up input, regulator/renormalization
-  prescription, retained field/symmetry data, operator quotient, expansion
-  parameters, matching/RG data, infrared/external-state prescription, and
-  topology or norm for the omitted contribution;
+  prescription, retained field/symmetry data, a regulated operator module
+  with observable-dependent equivalence/projection maps, expansion parameters,
+  matching/RG data, infrared/external-state prescription, and topology or norm
+  for the omitted contribution;
 - the output form
   \(\mathcal O_{\rm phys}=\mathcal O_{\rm EFT}^{[N]}+R_N\), with \(R_N\)
   classified as an exact finite-regulator identity, fixed-order perturbative
@@ -177,6 +178,13 @@ The chapter must define and derive:
   measure Jacobian, source term, and observable representative together, and
   the resulting warning that EOM operators may be removed from an on-shell
   matched basis only with the corresponding source/observable transformation;
+- a regulated operator-basis paragraph separating physical, evanescent, EOM,
+  BRST/BV-exact, and boundary/defect sectors, with evanescent representatives
+  retained through mixing and matching before scheme-dependent projection;
+- a one-loop evanescent mixing/projection example showing that an
+  \(O(\epsilon)\) evanescent matrix element multiplied by a \(1/\epsilon\)
+  UV pole shifts a physical Wilson coefficient, and that evanescent
+  representative changes require finite coefficient countershifts;
 - a power-counting paragraph that treats canonical, loop, chiral, velocity,
   large-\(N\), endpoint, or multi-parameter filtrations as error organizations
   only after counterterm closure, coefficient assumptions, logarithmic mixing,
@@ -473,26 +481,34 @@ The chapter must define and derive:
     only when the Jacobian, source coupling, and observable representative are
     transformed together.  EOM removal changes off-shell Green functions and
     basis coefficients unless the observable map is also carried along.
-20. Power counting is a closure and error ledger: logs and anomalous-dimension
+20. Operator reduction is regulator- and observable-dependent: evanescent
+    representatives remain in the regulated basis through mixing/matching
+    before projection; BRST-exact terms require an anomaly-free physical
+    cohomology setting; and boundary terms remain physical whenever boundary,
+    defect, edge, charge, or boundary-observable data are part of the datum.
+21. A one-loop evanescent insertion with an \(O(\epsilon)\) physical projection
+    and a \(1/\epsilon\) UV pole gives a finite physical Wilson-coefficient
+    shift.  Premature four-dimensional quotienting loses that finite term.
+22. Power counting is a closure and error ledger: logs and anomalous-dimension
     mixing do not lower the declared order, and new kinematic regions require
     new expansion parameters or a changed prediction datum.
-21. In the heavy-light scalar model, tree-level heavy exchange gives an exact
+23. In the heavy-light scalar model, tree-level heavy exchange gives an exact
     nonlocal \(K_M^{-1}\) kernel whose derivative expansion has a concrete
     \(Q/M\) remainder away from thresholds.
-22. One-loop hard matching supplies threshold coefficients, but a low-energy
+24. One-loop hard matching supplies threshold coefficients, but a low-energy
     prediction also requires low-field loops, external-state/IR prescriptions,
     RG transport, and cancellation of matching-scale dependence.
-23. In the massive scalar EFT with \(\phi^4+\phi^6/\mathcal M^2\), the
+25. In the massive scalar EFT with \(\phi^4+\phi^6/\mathcal M^2\), the
     one-loop background-field pole produces retained \(\phi^4\) and
     \(\phi^6/\mathcal M^2\) counterterms and first generates
     \(\phi^8/\mathcal M^4\) outside the target canonical excess.  This is the
     chapter's concrete counterterm-closure example.
-24. The local redefinition \(\phi=\psi+a\psi^3/\mathcal M^2\) shifts
+26. The local redefinition \(\phi=\psi+a\psi^3/\mathcal M^2\) shifts
     \(\lambda\), the derivative operator coefficient, and \(c_6\), carries a
     regulator Jacobian and transformed sources/composites, and leaves the
     on-shell four-point kernel invariant only after all these pieces are
     included.
-25. Decoupling is scoped: fixed-loop asymptotic expansion, exact
+27. Decoupling is scoped: fixed-loop asymptotic expansion, exact
     finite-regulator large-\(M\) expansion, and nonperturbative decoupling are
     different claims with different hypotheses.
 
@@ -665,3 +681,10 @@ The chapter must define and derive:
   \(\phi=\psi+a\psi^3/\mathcal M^2\) basis change with Jacobian, sources,
   composites, Wilson-coordinate shifts, and an on-shell four-point observable
   check.
+- 2026-06-04 issue #824 pass: replaced the unconditional operator quotient in
+  the EFT prediction datum with a regulated operator module plus
+  observable-dependent equivalence/projection maps.  The chapter now keeps
+  evanescent representatives through one-loop mixing and matching, states the
+  hypotheses for EOM and BRST-exact removal, retains boundary/defect/edge
+  sectors when they are physical input, and gives the finite
+  \(O(\epsilon)\times1/\epsilon\) evanescent Wilson-coefficient shift example.
