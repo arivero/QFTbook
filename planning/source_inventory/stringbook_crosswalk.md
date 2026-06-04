@@ -3,12 +3,12 @@
 Source snapshot for this crosswalk:
 
 - Source repository: `xiyin137/stringbook`.
-- Audited source revision: `4262f9c821859ace1b6ee43b31afa72fc1542ecd`
-  (`main`; the local source checkout was one commit ahead of `origin/main` at
-  audit time).
+- Audited source revision: `9fbd771d17945ce502ee030fdb7936061cef01d6`
+  (`main`; reachable at
+  `https://github.com/xiyin137/stringbook/commit/9fbd771d17945ce502ee030fdb7936061cef01d6`).
 - QFT monograph repository baseline reviewed against this source snapshot:
-  `103801886cff04d54a001376e0bedb92d733d612`; the present crosswalk update
-  records the resulting reproducibility ledger.
+  `259a2005c84b64e5f23a12e065cf5ff69ce956f6`; the present crosswalk update
+  records the resulting #745 reproducibility ledger.
 - Primary source anchors are repository-relative paths:
   `texsource/string notes.tex` and `codes/*.nb`.  The generated
   `texsource/string notes.toc` in the audited checkout was used only as an
@@ -20,6 +20,19 @@ Source snapshot for this crosswalk:
   stringbook source head.
 - Current companion-notebook inventory at the audited source revision: 18
   Mathematica notebooks in `codes/`, as listed in the notebook table below.
+- Reproducibility verification on 2026-06-04: a fresh clone of
+  `https://github.com/xiyin137/stringbook.git` resolved
+  `9fbd771d17945ce502ee030fdb7936061cef01d6` as `HEAD`, `git cat-file -t`
+  returned `commit`, `git ls-tree -r --name-only <sha> -- codes` listed the 18
+  notebooks below, and
+  `git show <sha>:'texsource/string notes.tex' | wc -l` returned `24946`.
+  The formerly pinned local-only commit
+  `4262f9c821859ace1b6ee43b31afa72fc1542ecd` has identical tree objects for
+  the authoritative anchors (`texsource/string notes.tex` and `codes/`) to the
+  reachable commit above, so the notebook and prose inventories below are
+  repinned without changing their source content.  The prose-section inventory
+  below was rerun against this reachable 24,946-line TeX source; all recorded
+  source ranges remain inside the verified file.
 
 The string book is an adjacent high-value source. It may supply mature
 appendix material, examples, convention checks, and source leads for any
@@ -105,13 +118,13 @@ physics.
 ## Current-Head Companion-Notebook Audit
 
 The following notebook pass is the current-head reproducibility inventory for
-#731.  Together with the prose-section audit below, it removes the old notebook
-path ambiguity and routes each notebook to a verifiable QFT status.
+#731/#745.  Together with the prose-section audit below, it removes the old
+notebook path ambiguity and routes each notebook to a verifiable QFT status.
 
 | Source notebook | QFT classification | Monograph evidence or focused issue |
 | --- | --- | --- |
 | `codes/2D local susy variations.nb` | Contextual | Worldsheet local supersymmetry is string-context material.  QFT-side superconformal algebra and spectral-flow conventions are rebuilt in Volume V Chapter 15 and checked by `calculation-checks/superconformal_algebra_checks.py`; no direct import is needed unless a later worldsheet-gauge comparison is explicitly opened. |
-| `codes/2D superspace.nb` | Incorporated with boundary | Two-dimensional superspace/LG/GLSM material is rebuilt in Volume VII Chapter 9 and checked by `calculation-checks/susy_2d_lg_glsm_checks.py`; continuum mirror/Hori--Vafa proof obligations remain tracked under #731/#625 as described in the Appendix K row below. |
+| `codes/2D superspace.nb` | Incorporated with boundary | Two-dimensional superspace/LG/GLSM material is rebuilt in Volume VII Chapter 9 and checked by `calculation-checks/susy_2d_lg_glsm_checks.py`; continuum mirror/Hori--Vafa proof obligations remain tracked under #626, with Hori--Vafa formulas treated as derivations to scrutinize and recheck rather than as authority, as described in the Appendix K row below. |
 | `codes/4D superspace.nb` | Incorporated | Four-dimensional superspace and component conventions are rebuilt in Volume VII Chapters 2--4, with checks in `calculation-checks/susy_superspace_component_checks.py`, `calculation-checks/susy_vector_superfield_checks.py`, and `calculation-checks/susy_superfield_operator_algebra_checks.py`. |
 | `codes/BES equation.nb` | Boundary linked | Weak-coupling BES coefficient checks are incorporated in Volume VII Chapter 13 and `calculation-checks/planar_n4_integrability_checks.py`; the remaining notebook-to-Python audit and strong/global BES branch construction are routed to #624 and the planar crosswalk. |
 | `codes/Conformal blocks and bootstrap demo.nb` | Incorporated with boundary | Global-block kinematics, BPZ equations, Virasoro blocks, and crossing examples are rebuilt in Volumes III and V with `calculation-checks/conformal_block_companion.py`, `calculation-checks/cft_virasoro_minimal_checks.py`, and `calculation-checks/liouville_bpz_checks.py`; numerical SDP/bootstrap-tool depth remains routed to #631. |

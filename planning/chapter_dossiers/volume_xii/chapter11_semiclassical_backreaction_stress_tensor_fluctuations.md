@@ -38,9 +38,9 @@ recording fluctuation data required for controlled backreaction.
   Wick-coordinate remainder, full separated state two-point function, and
   finite retained potential-noise matrix for the second-order `lambda phi^4`
   stress-noise coordinate.
-- `B`, `P_{ker B}`, `j_perp`, `N_perp`: finite retained Ward map, its
-  conserved-sector projector, and the Ward-clean mean/noise data used in the
-  interacting backreaction diagnostic.
+- `B`, `P_{ker B}`, `j_min`, `k`, `N^{full}`: finite retained Ward map, its
+  least-norm diagnostic projector, the unresolved conserved source component,
+  and the full interacting noise covariance tested by the Ward identities.
 
 ## Claim Ledger
 
@@ -93,16 +93,16 @@ recording fluctuation data required for controlled backreaction.
   subtracted, the retained stress-noise matrix is positive as a covariance, and
   its metric pushforward satisfies
   `tr C_h^{(lambda,pot)} <= M_I^2 tr N^{(lambda,pot)}`.
-- Adds a conservation-completion layer for interacting sources.  The potential
+- Adds a retained Ward-diagnostic layer for interacting sources.  The potential
   source has divergence `-partial_nu rho_lambda` when the Wick-square
   coordinate varies, so the Bogoliubov/interacting-field correction and local
   contact/composite counterterms must supply the missing Ward term.  In the
   retained response sector this is encoded by a finite Ward map `B`, the
-  condition `B j^{full}=0`, the projector
-  `P_{ker B}=I-B^*(B B^*)^{-1}B`, and the Ward-clean noise covariance
-  `N_perp=P_{ker B} N^{full} P_{ker B}^*`.  The text treats the projected
-  potential coordinate as a diagnostic inside the full Hollands--Wald
-  interacting stress tensor and its renormalized square.
+  condition `B j^{full}=0`, the least-norm diagnostic projector
+  `P_{ker B}=I-B^*(B B^*)^{-1}B`, and the general conserved source
+  `j^{full}=P_{ker B}j^{raw}+k`, `k in ker B`.  The physical source/noise are
+  the objects constructed by the full pAQFT ledger; projecting a partial source
+  or partial covariance is recorded only as a diagnostic/model choice.
 - Records validity conditions and the EFT reduction-of-order treatment for
   higher-curvature terms.
 
@@ -122,10 +122,12 @@ recording fluctuation data required for controlled backreaction.
   disconnected-subtraction, dropped-mixed-term, same-state Wick-coordinate,
   smooth-remainder-only, and premature-real-part negative controls, quadratic
   coupling scaling, positivity of the retained noise matrix, its
-  metric-covariance trace bound, the retained Ward-completion projector for
+  metric-covariance trace bound, the retained Ward-diagnostic projector for
   interacting source/noise coordinates with wrong-sign, transverse-ambiguity,
-  and unprojected-longitudinal-noise negative controls, and the low-energy root
-  selected by reduction of order in a toy higher-derivative equation.
+  projection-versus-physical-completion, projected-partial-noise versus
+  full-noise, and unprojected-longitudinal-noise negative controls, and the
+  low-energy root selected by reduction of order in a toy higher-derivative
+  equation.
 
 ## Figure Ledger
 
@@ -189,11 +191,10 @@ curvature, microscopic, and EFT scales.
   This keeps the chapter's mean-response and noise calculations inside their
   conditional backreaction status rather than letting them read as a general
   interacting semiclassical existence theorem.
-- 2026-06-04 issue #729 conservation-completion pass: added a retained Ward
-  map for interacting source and noise coordinates.  This converts the earlier
-  caveat about the nonconserved potential-only source into a concrete
-  backreaction gate: the source/noise entering the response window must be
-  projected to the conserved sector, while the missing longitudinal piece is
-  assigned to the Bogoliubov, contact, and composite-counterterm part of the
-  full interacting stress tensor rather than silently absorbed into the
-  potential calculation.
+- 2026-06-04 issue #746 Ward-diagnostic correction: revised the retained
+  Ward-map passage so the orthogonal projector is only an admissible-subspace
+  diagnostic or explicit least-norm model.  The text now parameterizes
+  \(j^{\rm full}=j_{\rm min}+k\), assigns \(k\) and the missing noise
+  cross-covariances to the full pAQFT construction, and the companion includes
+  source/noise counterexamples showing that projection can erase physical
+  conserved source and fluctuation data.

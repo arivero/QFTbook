@@ -2052,10 +2052,12 @@ Current checks:
   covariance, disconnected-subtraction, dropped-mixed-term, same-state
   Wick-coordinate, smooth-remainder-only, and premature-real-part negative
   controls, quadratic coupling scaling, retained noise positivity, and its
-  metric-covariance trace bound, the retained Ward-completion projector for
+  metric-covariance trace bound, the retained Ward-diagnostic projector for
   interacting source/noise coordinates with wrong-sign, transverse-ambiguity,
-  and unprojected-longitudinal-noise negative controls, and the low-energy root
-  selected by reduction of order in a toy higher-derivative equation.
+  projection-versus-physical-completion, projected-partial-noise versus
+  full-noise, and unprojected-longitudinal-noise negative controls, and the
+  low-energy root selected by reduction of order in a toy higher-derivative
+  equation.
 - `schwinger_keldysh_operator_checks.py`: finite two-level-system checks for
   the real-time Schwinger--Keldysh operator chapter, including diagonal
   unitarity, branch-exchange reality, the \(|Z|\le1\) positivity bound,

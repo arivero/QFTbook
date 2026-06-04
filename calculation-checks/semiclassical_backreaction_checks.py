@@ -7,7 +7,7 @@ dimensions, the KMS fluctuation-dissipation factor, positivity of the noise
 covariance, finite response-window metric fluctuation bounds, the first-order
 lambda-phi-four potential-insertion source coordinate, the retained
 lambda-phi-four potential-noise coordinate using the full separated two-point
-function, retained Ward completion of interacting source/noise coordinates,
+function, retained Ward diagnostics for interacting source/noise coordinates,
 and the low-energy root selected by reduction of order in a toy
 higher-derivative equation.
 
@@ -19,7 +19,7 @@ metric-response bounds, the lambda-phi-four potential-insertion source
 coordinate, the retained potential-noise Wick contraction with full separated
 two-point cross covariance and metric pushforward, the restricted
 finite-renormalization ledger for that coordinate, the finite retained
-Ward-completion/projected-noise algebra for interacting sources, and the
+Ward-diagnostic/projected-noise algebra for interacting sources, and the
 low-energy root selected by reduction of order.
 Independent construction: the checks recompute traces, KMS factors,
 matrix pushforwards, exact retained-sector inverses, Wick-contraction
@@ -38,8 +38,10 @@ counterterms, signed negative density norm bounds, dropped connected
 potential-noise terms, using the smooth Wick remainder instead of the full
 separated two-point function, premature real-part projection, retained
 disconnected noise pieces, pretending a transverse counterterm cancels a Ward
-violation, wrong-sign Ward completions, unprojected longitudinal noise, and
-cutoff-scale higher-derivative roots are rejected.
+violation, wrong-sign Ward repairs, identifying the least-norm projection with
+the physical completion, identifying projected partial noise with full physical
+noise, unprojected longitudinal noise, and cutoff-scale higher-derivative roots
+are rejected.
 Scope boundary: a pass checks coefficient, positivity, and response-bound
 bookkeeping for the retained potential-insertion coordinate; it does not
 construct the full interacting stress-tensor expectation, prove existence of
@@ -469,7 +471,7 @@ def check_lambda_phi4_potential_noise_kernel() -> None:
         raise AssertionError("unit certified response norm should bound potential-noise trace")
 
 
-def check_retained_interacting_source_ward_completion() -> None:
+def check_retained_interacting_source_ward_diagnostics() -> None:
     # Finite analogue of the conservation condition B j_full = 0.
     ward: Matrix = (
         (Fraction(1), Fraction(-1), Fraction(2)),
@@ -499,16 +501,16 @@ def check_retained_interacting_source_ward_completion() -> None:
     if matmul(ward, transverse_projector) != zero_matrix(2, 3):
         raise AssertionError("retained Ward projector should land in ker B")
 
-    transverse_source = matmul(transverse_projector, potential_source)
-    ward_completion = matsub(transverse_source, potential_source)
-    if ward_completion == zero_matrix(3, 1):
-        raise AssertionError("inhomogeneous potential source needs a nonzero Ward completion")
-    if matmul(ward, transverse_source) != zero_matrix(2, 1):
-        raise AssertionError("Ward-completed source should be conserved")
+    diagnostic_source = matmul(transverse_projector, potential_source)
+    least_norm_repair = matsub(diagnostic_source, potential_source)
+    if least_norm_repair == zero_matrix(3, 1):
+        raise AssertionError("inhomogeneous potential source needs a nonzero least-norm repair")
+    if matmul(ward, diagnostic_source) != zero_matrix(2, 1):
+        raise AssertionError("Ward-diagnostic projected source should be conserved")
 
-    wrong_sign_source = matsub(potential_source, ward_completion)
+    wrong_sign_source = matsub(potential_source, least_norm_repair)
     if matmul(ward, wrong_sign_source) == zero_matrix(2, 1):
-        raise AssertionError("negative control failed: wrong-sign Ward completion conserved source")
+        raise AssertionError("negative control failed: wrong-sign Ward repair conserved source")
 
     transverse_counterterm: Matrix = (
         (Fraction(-3, 7),),
@@ -520,41 +522,83 @@ def check_retained_interacting_source_ward_completion() -> None:
     if matmul(ward, matadd(potential_source, transverse_counterterm)) == zero_matrix(2, 1):
         raise AssertionError("negative control failed: transverse ambiguity cancelled Ward violation")
 
-    full_noise: Matrix = (
+    simple_ward: Matrix = ((Fraction(1), Fraction(0)),)
+    simple_projector: Matrix = (
+        (Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(1)),
+    )
+    simple_raw_source: Matrix = ((Fraction(1),), (Fraction(0),))
+    physical_completion: Matrix = ((Fraction(-1),), (Fraction(5, 7),))
+    physical_source = matadd(simple_raw_source, physical_completion)
+    projected_simple_source = matmul(simple_projector, simple_raw_source)
+    if matmul(simple_ward, physical_source) != zero_matrix(1, 1):
+        raise AssertionError("test physical completion should satisfy the Ward constraint")
+    if projected_simple_source != zero_matrix(2, 1):
+        raise AssertionError("least-norm diagnostic should erase this raw longitudinal source")
+    if projected_simple_source == physical_source:
+        raise AssertionError("negative control failed: projection was identified with physical completion")
+
+    raw_partial_noise: Matrix = (
+        (Fraction(1), Fraction(0)),
+        (Fraction(0), Fraction(0)),
+    )
+    physical_full_noise: Matrix = (
+        (Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(1)),
+    )
+    projected_partial_noise = matmul(
+        matmul(simple_projector, raw_partial_noise),
+        transpose(simple_projector),
+    )
+    if projected_partial_noise != zero_matrix(2, 2):
+        raise AssertionError("projected raw partial noise should vanish in this counterexample")
+    if matmul(simple_ward, physical_full_noise) != zero_matrix(1, 2):
+        raise AssertionError("full physical noise should have no longitudinal row")
+    if matmul(physical_full_noise, transpose(simple_ward)) != zero_matrix(2, 1):
+        raise AssertionError("full physical noise should have no longitudinal column")
+    if (
+        matmul(matmul(simple_projector, physical_full_noise), transpose(simple_projector))
+        != physical_full_noise
+    ):
+        raise AssertionError("projector should act as identity on already Ward-clean full noise")
+    if projected_partial_noise == physical_full_noise:
+        raise AssertionError("negative control failed: partial projected noise became full noise")
+
+    partial_noise: Matrix = (
         (Fraction(5, 2), Fraction(1, 3), Fraction(1, 4)),
         (Fraction(1, 3), Fraction(3, 2), Fraction(-1, 5)),
         (Fraction(1, 4), Fraction(-1, 5), Fraction(4, 3)),
     )
     if (
-        full_noise[0][0] <= 0
-        or det2((full_noise[0][:2], full_noise[1][:2])) <= 0
-        or det3(full_noise) <= 0
+        partial_noise[0][0] <= 0
+        or det2((partial_noise[0][:2], partial_noise[1][:2])) <= 0
+        or det3(partial_noise) <= 0
     ):
-        raise AssertionError("test full noise matrix should be positive definite")
+        raise AssertionError("test partial noise matrix should be positive definite")
 
-    projected_noise = matmul(
-        matmul(transverse_projector, full_noise),
+    diagnostic_noise = matmul(
+        matmul(transverse_projector, partial_noise),
         transpose(transverse_projector),
     )
-    if projected_noise != transpose(projected_noise):
-        raise AssertionError("Ward-projected noise should be symmetric")
-    if matmul(ward, projected_noise) != zero_matrix(2, 3):
-        raise AssertionError("Ward-projected noise should have no longitudinal row")
-    if matmul(projected_noise, transpose(ward)) != zero_matrix(3, 2):
-        raise AssertionError("Ward-projected noise should have no longitudinal column")
-    if trace(projected_noise) > trace(full_noise):
-        raise AssertionError("orthogonal Ward projection should not increase trace")
+    if diagnostic_noise != transpose(diagnostic_noise):
+        raise AssertionError("Ward-diagnostic noise should be symmetric")
+    if matmul(ward, diagnostic_noise) != zero_matrix(2, 3):
+        raise AssertionError("Ward-diagnostic noise should have no longitudinal row")
+    if matmul(diagnostic_noise, transpose(ward)) != zero_matrix(3, 2):
+        raise AssertionError("Ward-diagnostic noise should have no longitudinal column")
+    if trace(diagnostic_noise) > trace(partial_noise):
+        raise AssertionError("orthogonal Ward projection should not increase diagnostic trace")
 
-    if matmul(ward, full_noise) == zero_matrix(2, 3):
-        raise AssertionError("negative control failed: unprojected noise was Ward-clean")
+    if matmul(ward, partial_noise) == zero_matrix(2, 3):
+        raise AssertionError("negative control failed: unprojected partial noise was Ward-clean")
 
     for test_vector in [
         ((Fraction(1),), (Fraction(2),), (Fraction(-1),)),
         ((Fraction(0),), (Fraction(1),), (Fraction(3),)),
         ((Fraction(2),), (Fraction(-1),), (Fraction(1),)),
     ]:
-        if quadratic_form(projected_noise, test_vector) < 0:
-            raise AssertionError("Ward-projected noise should be positive semidefinite")
+        if quadratic_form(diagnostic_noise, test_vector) < 0:
+            raise AssertionError("Ward-diagnostic noise should be positive semidefinite")
 
     response_inverse: Matrix = (
         (Fraction(1, 2), Fraction(0), Fraction(0)),
@@ -562,13 +606,13 @@ def check_retained_interacting_source_ward_completion() -> None:
         (Fraction(0), Fraction(0), Fraction(1, 4)),
     )
     metric_covariance = matmul(
-        matmul(response_inverse, projected_noise),
+        matmul(response_inverse, diagnostic_noise),
         transpose(response_inverse),
     )
     if metric_covariance != transpose(metric_covariance):
-        raise AssertionError("Ward-clean metric covariance should be symmetric")
-    if trace(metric_covariance) > trace(projected_noise):
-        raise AssertionError("contractive response should bound Ward-clean noise trace")
+        raise AssertionError("diagnostic metric covariance should be symmetric")
+    if trace(metric_covariance) > trace(diagnostic_noise):
+        raise AssertionError("contractive response should bound diagnostic noise trace")
 
 
 def check_reduction_of_order_toy_model() -> None:
@@ -598,7 +642,7 @@ def main() -> None:
     check_finite_response_window_bounds()
     check_lambda_phi4_potential_source_coordinate()
     check_lambda_phi4_potential_noise_kernel()
-    check_retained_interacting_source_ward_completion()
+    check_retained_interacting_source_ward_diagnostics()
     check_reduction_of_order_toy_model()
     print("All semiclassical backreaction checks passed.")
 

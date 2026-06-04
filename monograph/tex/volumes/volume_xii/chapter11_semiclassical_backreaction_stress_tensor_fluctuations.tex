@@ -1042,8 +1042,8 @@ only after the conserved full stress tensor and its renormalized square have
 been fixed in the same locally covariant scheme.
 \end{controlledapproximation}
 
-\section{Conservation Completion For Interacting Sources}
-\label{sec:semiclassical-interacting-source-conservation-completion}
+\section{Ward Diagnostics For Interacting Sources}
+\label{sec:semiclassical-interacting-source-ward-diagnostics}
 
 The retained potential source and retained potential noise above are useful only
 after their conservation status has been made explicit.  In a region where the
@@ -1070,7 +1070,7 @@ correction in
   \right)
   =
   \partial_\nu\rho_\lambda ,
-  \label{eq:semiclassical-interacting-ward-completion}
+  \label{eq:semiclassical-interacting-ward-diagnostic-source-equation}
 \end{equation}
 up to the same distributional contact terms and field-equation ideals used in
 the locally covariant construction of the stress tensor.  This is where the
@@ -1107,29 +1107,52 @@ A retained source is admissible in the conserved backreaction sector only if
   j^{(\lambda,{\rm ct})}.
   \label{eq:semiclassical-retained-source-ward-condition}
 \end{equation}
-In orthonormal retained coordinates, when \(\mathsf B\) has full row rank on
-the tested constraint subspace, the minimum-norm Ward completion of a raw
-source coordinate is the projected source
+The retained Ward equation fixes the longitudinal part of the missing source
+coordinate.  In orthonormal retained coordinates, when \(\mathsf B\) has full
+row rank on the tested constraint subspace, one convenient particular
+longitudinal repair of a raw source coordinate is
 \begin{equation}
-  j_\perp
+  c_{\rm min}
   =
-  \mathsf P_{\ker \mathsf B}j^{\rm raw},
+  -
+  \mathsf B^*
+  \left(\mathsf B\mathsf B^*\right)^{-1}
+  \mathsf B j^{\rm raw},
   \qquad
   \mathsf P_{\ker \mathsf B}
   =
   \mathsf I-\mathsf B^*
   \left(\mathsf B\mathsf B^*\right)^{-1}
-  \mathsf B .
+  \mathsf B,
+  \qquad
+  j_{\rm min}
+  =
+  \mathsf P_{\ker \mathsf B}j^{\rm raw}.
   \label{eq:semiclassical-retained-ward-projector}
 \end{equation}
 With non-orthonormal retained test functions the same formula is written with
 the corresponding Gram matrices inserted.  Equation
-\eqref{eq:semiclassical-retained-ward-projector} is the retained-sector shadow
-of the Hollands--Wald interacting stress-tensor construction: it detects a
-longitudinal violation such as \(\mathsf B j^{(\lambda,{\rm pot})}\ne0\),
-records the amount that must be supplied by the
-Bogoliubov/contact/composite counterterm part, and separates it from the
-remaining transverse finite-renormalization freedom.
+\eqref{eq:semiclassical-retained-ward-projector} is a retained-sector
+diagnostic.  It detects a longitudinal violation such as
+\(\mathsf B j^{(\lambda,{\rm pot})}\ne0\), records a least-norm particular
+repair of that violation, and exposes the transverse datum that the Ward
+identity leaves open:
+\begin{equation}
+  j^{\rm full}
+  =
+  j_{\rm min}+k,
+  \qquad
+  k\in\ker\mathsf B .
+  \label{eq:semiclassical-retained-ward-transverse-freedom}
+\end{equation}
+The vector \(k\) is part of the interacting QFT data.  It is fixed, in the
+full construction, by the Bogoliubov correction, time-ordered-product
+extensions, composite-operator finite renormalizations, local covariance, action
+Ward identities, and physical renormalization conditions.  The Euclidean
+least-norm retained vector \(j_{\rm min}\) is therefore a diagnostic or an
+explicit model choice inside the retained source space; the physical source is
+the \(j^{\rm full}\) obtained from the pAQFT ledger and then tested by
+\(\mathsf B j^{\rm full}=0\).
 In the homogeneous special case \(\partial_\nu\rho_\lambda=0\), the retained
 potential coordinate is already in \(\ker\mathsf B\), which is why the
 cosmological-coordinate shift in
@@ -1151,43 +1174,53 @@ In the retained sector this says
   \mathsf N^{\rm full}\mathsf B^*=0 .
   \label{eq:semiclassical-retained-noise-ward-condition}
 \end{equation}
-Thus a Ward-clean retained covariance is
-\begin{equation}
-  \mathsf N_\perp
+The full covariance includes all component covariances and cross-covariances:
+\[
+  \mathsf N^{\rm full}
   =
+  \mathsf N^{\rm pot}
+  +
+  \mathsf N^{\rm Bog}
+  +
+  \mathsf N^{\rm ct}
+  +
+  \mathsf N^{\rm cross}.
+\]
+If this full object has already been constructed and satisfies
+\eqref{eq:semiclassical-retained-noise-ward-condition}, then
+\begin{equation}
   \mathsf P_{\ker \mathsf B}
   \mathsf N^{\rm full}
-  \mathsf P_{\ker \mathsf B}^* .
+  \mathsf P_{\ker \mathsf B}^*
+  =
+  \mathsf N^{\rm full}.
   \label{eq:semiclassical-retained-noise-ward-projection}
 \end{equation}
-Projection preserves positivity because
-\(\eta^*\mathsf N_\perp\eta
-=(\mathsf P_{\ker \mathsf B}^*\eta)^*
-\mathsf N^{\rm full}
-(\mathsf P_{\ker \mathsf B}^*\eta)\ge0\).
-Applying the same operation only to
-\(\mathsf N^{(\lambda,{\rm pot})}\) gives a useful diagnostic for the potential
-coordinate.  The complete Einstein--Langevin noise also includes the
-Bogoliubov, derivative, contact, and composite-counterterm contributions in the
-same Ward-compatible prescription.  The physical retained metric data are
+Applying the projection to a partial covariance, such as
+\(\mathsf N^{(\lambda,{\rm pot})}\), gives a positive diagnostic covariance for
+the chosen least-norm retained model.  It also omits the interacting correction
+fluctuations and the raw/correction cross-correlations that enter
+\(\mathsf N^{\rm full}\).  The physical retained metric data are consequently
 \begin{equation}
-  h_\perp(\omega)
+  h^{\rm full}(\omega)
   =
-  \mathsf D(\omega+\ii0)^{-1}j_\perp(\omega),
+  \mathsf D(\omega+\ii0)^{-1}j^{\rm full}(\omega),
   \qquad
-  \mathsf C_{h,\perp}(\omega)
+  \mathsf C_h^{\rm full}(\omega)
   =
   \mathsf D(\omega+\ii0)^{-1}
-  \mathsf N_\perp(\omega)
+  \mathsf N^{\rm full}(\omega)
   \mathsf D(\omega+\ii0)^{-*},
   \label{eq:semiclassical-ward-clean-response-data}
 \end{equation}
 with the same bounded-response estimates as in
 \eqref{eq:semiclassical-mean-response-bound} and
-\eqref{eq:semiclassical-retained-noise-bound}.  This is the point of keeping
-the potential-sector calculation narrow: it is a computable coordinate inside
-the interacting source, while the conserved mean and noise that feed
-semiclassical gravity require the full Ward-compatible pAQFT package.
+\eqref{eq:semiclassical-retained-noise-bound}, provided the Ward map, the
+constraint-reduced source space, and the gauge-fixed gravitational inverse
+\(\mathsf D^{-1}\) are defined on the same retained sector.  This is the point
+of keeping the potential-sector calculation narrow: it is a computable
+coordinate inside the interacting source, while the conserved mean and noise
+that feed semiclassical gravity require the full Ward-compatible pAQFT package.
 
 \section{Validity Conditions And Reduction Of Order}
 

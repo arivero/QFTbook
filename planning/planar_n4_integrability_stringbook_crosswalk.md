@@ -15,10 +15,20 @@ to a focused issue with an explicit construction or theorem boundary.
 ## Source Scope
 
 - Stringbook source repository: `xiyin137/stringbook`.
-- Audited source revision: `4262f9c821859ace1b6ee43b31afa72fc1542ecd`.
+- Audited source revision: `9fbd771d17945ce502ee030fdb7936061cef01d6`
+  (`main`; reachable at
+  `https://github.com/xiyin137/stringbook/commit/9fbd771d17945ce502ee030fdb7936061cef01d6`).
 - QFT monograph repository baseline reviewed against this source snapshot:
-  `81ea1d5506d82ac778a0d8379ea7feae9df6da4c`.
+  `259a2005c84b64e5f23a12e065cf5ff69ce956f6`.
 - Primary TeX source anchor: `texsource/string notes.tex`.
+- Reproducibility verification on 2026-06-04: a fresh clone of
+  `https://github.com/xiyin137/stringbook.git` resolved the audited revision as
+  `HEAD`, `git cat-file -t <sha>^{commit}` returned `commit`, and the three
+  relevant notebook paths below are present under `codes/`.  The formerly pinned
+  local-only source commit `4262f9c821859ace1b6ee43b31afa72fc1542ecd` has
+  identical tree objects for `texsource/string notes.tex` and `codes/` to this
+  reachable revision, so this ledger is repinned without changing its source
+  content.
 - Chapter I source range:
   `Strings from N=4 SYM I: planar integrability and the asymptotic Bethe
   ansatz`, approximately lines 15617--16748.
