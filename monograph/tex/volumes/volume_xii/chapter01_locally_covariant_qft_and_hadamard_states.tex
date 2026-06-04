@@ -63,6 +63,74 @@ semiclassical Einstein equation.  The later chapters therefore state their
 state class, renormalization scheme, and response assumptions at the point
 where those assumptions first become load bearing.
 
+The following status matrix is the volume spine.  It is conservative by
+design: a row is upgraded only by adding the missing physical construction or
+theorem, not by adjoining more formal notation.
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.18}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.24\textwidth}
+  >{\raggedright\arraybackslash}p{0.19\textwidth}
+  >{\raggedright\arraybackslash}p{0.47\textwidth}@{}}
+\textbf{Claim family} & \textbf{Status in this volume} & \textbf{What is
+controlled, and what remains outside the row} \\
+\hline
+Locally covariant free scalar and Hadamard states
+& theorem-level model
+& The category, time-slice property, causal commutator, and Hadamard
+short-distance class are constructed for the Klein--Gordon functor below.
+The locally covariant framework and microlocal Hadamard theorem are the
+external boundary for the general formulation
+\cite{BrunettiFredenhagenVerch2003,Radzikowski1996}. \\
+Point-split stress tensor and trace anomaly
+& free-field renormalization theorem boundary
+& Chapters~\ref{ch:point-splitting-stress-tensor-renormalization}
+and~\ref{ch:curved-trace-anomalies} use Hadamard subtraction, local
+covariance, conservation, and finite curvature counterterm freedom.  The
+result is a scheme-dependent locally covariant composite field, not a unique
+state-independent energy density. \\
+Unruh, Hawking, and cosmological particle creation
+& fixed-background theorem or controlled approximation
+& Chapters~\ref{ch:curved-unruh-effect-modular-theory},
+\ref{ch:curved-hawking-effect}, and
+\ref{ch:curved-cosmological-spacetimes-particle-creation} derive thermal or particle
+creation statements for specified free or algebraic states.  Interacting
+horizon thermality and backreaction are not consequences of these fixed-metric
+arguments; bifurcate-horizon uniqueness/thermal inputs require their own
+hypotheses \cite{KayWald1991}. \\
+Perturbative interacting fields on curved backgrounds
+& perturbative construction
+& Chapter~\ref{ch:curved-perturbative-algebraic-qft} constructs interacting
+fields order by order from microcausal functionals, time-ordered products,
+relative \(S\)-matrices, and local renormalization maps.  This is the
+Hollands--Wald pAQFT control level
+\cite{HollandsWald2001LocalWick,HollandsWald2005Conservation,
+HollandsWald2015QFCS}; it is not a nonperturbative Hilbert-space
+construction. \\
+Interacting stress tensor and composite sources
+& perturbative, scheme-fixed composite field
+& The interacting stress tensor requires a common choice of Wick products,
+time-ordered products, contact terms, finite composite counterterms, and Ward
+identity/conservation prescription.  The retained \(\lambda\Phi^4\) source in
+Chapter~\ref{ch:curved-semiclassical-backreaction} is an observable coordinate
+inside this scheme, not the full conserved source by itself. \\
+Semiclassical Einstein and Einstein--Langevin equations
+& conditional semiclassical framework
+& A physical backreaction claim must specify the state, renormalized stress
+tensor, gravitational EFT coordinates, reduction of order, retarded response,
+noise kernel, stability window, and smallness diagnostics.
+Chapter~\ref{ch:curved-semiclassical-backreaction} proves finite response and noise
+pushforward statements after those inputs are fixed; it does not solve the
+nonlinear interacting semiclassical problem in general. \\
+Nonperturbative interacting curved QFT
+& open boundary
+& Exact interacting state spaces, horizon thermality, Hawking radiation,
+cosmological particle creation, anomaly lines, and backreaction beyond
+perturbation theory remain open unless a separate construction supplies the
+locally covariant algebras, admissible states, composite fields, and dynamics.
+\end{tabular}
+\end{center}
+
 \section{Spacetimes And Causal Embeddings}
 
 Let \(M\) be a smooth \(D\)-manifold with Lorentzian metric \(g\) of

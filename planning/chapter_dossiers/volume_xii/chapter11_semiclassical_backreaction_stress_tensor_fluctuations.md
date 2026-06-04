@@ -50,6 +50,11 @@ recording fluctuation data required for controlled backreaction.
   earlier in Volume XII, and gives the local variational calculation and trace
   checks in four dimensions without presenting the duplicated formula block as
   a new theorem.
+- Links the semiclassical Einstein equation back to the Volume XII
+  theorem-status spine: all backreaction statements in this chapter are
+  conditional semiclassical control until the locally covariant algebra,
+  admissible state class, renormalized stress tensor, gravitational EFT
+  coordinates, state transport, and response window are fixed together.
 - Defines a semiclassical solution as a pair \((g,\omega)\), not merely a
   metric, and formalizes the backreaction datum.
 - Derives the linear-response kernel from the retarded stress-tensor
@@ -164,3 +169,8 @@ curvature, microscopic, and EFT scales.
   now checks that a same-state Wick coordinate still has nonzero separated
   fourth-power noise, while smooth-remainder-only and premature-real-part
   formulas fail.
+- 2026-06-04 issue #729 status-spine linkage: added an explicit backlink from
+  the semiclassical Einstein equation to the Volume XII control-level matrix.
+  This keeps the chapter's mean-response and noise calculations inside their
+  conditional backreaction status rather than letting them read as a general
+  interacting semiclassical existence theorem.

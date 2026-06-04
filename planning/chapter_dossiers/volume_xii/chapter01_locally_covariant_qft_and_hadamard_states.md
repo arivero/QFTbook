@@ -19,6 +19,13 @@
   theory, perturbative interacting theory, conditional semiclassical theory,
   and nonperturbative interacting curved QFT, with the input data and
   controlled outputs for each level.
+- Adds the explicit theorem-status spine for the volume: free locally
+  covariant/Hadamard statements, point-split stress-tensor and anomaly
+  statements, fixed-background thermal/Hawking/cosmological claims,
+  perturbative interacting pAQFT fields, interacting composite stress
+  tensors, conditional semiclassical Einstein--Langevin statements, and
+  nonperturbative interacting curved-QFT claims are separated by status and
+  by the missing physical inputs required to upgrade them.
 - Defines a locally covariant QFT as a functor
   `A : Loc -> Alg_*` with injective algebra morphisms, Einstein causality,
   and the time-slice axiom.
@@ -67,6 +74,7 @@
 | \(\sigma(x,y)\) | Synge world function |
 | \(H_{\epsilon,\mu}\) | local Hadamard singular distribution |
 | \(U,V,W_\omega\) | Hadamard geometric coefficients and smooth state-dependent part |
+| status spine | volume-level classification of theorem, perturbative construction, conditional semiclassical framework, and open nonperturbative boundary |
 
 ## Claim Ledger
 
@@ -89,6 +97,12 @@
 9. The volume's curved-spacetime claims are organized by control level: free
    fixed-background, perturbative interacting, conditional semiclassical, and
    nonperturbative/open.  Crossing levels requires additional hypotheses.
+10. The theorem-status matrix makes the cross-chapter spine explicit: fixed
+    background thermal or particle-creation statements do not imply
+    interacting horizon results, pAQFT order-by-order constructions do not
+    provide nonperturbative state spaces, and finite response/noise checks
+    become backreaction evidence only after the state, stress tensor,
+    response, stability, and EFT-reduction data are fixed together.
 
 ## Calculation Checks
 
@@ -120,3 +134,8 @@
   support free, perturbative interacting, conditional semiclassical, and
   nonperturbative claims, and prevents formal adjacent chapters from being
   read as one continuous theorem chain.
+- 2026-06-04: upgraded the control-level prose to an explicit theorem-status
+  spine with point-of-use curved-spacetime references.  The matrix separates
+  the strong fixed-background and pAQFT claims from conditional
+  semiclassical/backreaction claims and from genuinely open nonperturbative
+  interacting curved-QFT statements.
