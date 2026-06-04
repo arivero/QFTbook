@@ -4,11 +4,10 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
+# shellcheck source=tools/qft_python_env.sh
+source "$ROOT/tools/qft_python_env.sh"
+
 export PYTHONPATH="$ROOT/calculation-checks:$ROOT/qft_scripts:$ROOT${PYTHONPATH:+:$PYTHONPATH}"
-if [[ -z "${QFT_HDF5_PYTHON:-}" ]]; then
-  QFT_HDF5_PYTHON="$(command -v python3)"
-  export QFT_HDF5_PYTHON
-fi
 if [[ -z "${PYTHONWARNINGS:-}" ]]; then
   export PYTHONWARNINGS="error::RuntimeWarning"
 fi
@@ -132,9 +131,12 @@ if ((${#python_checks[@]} + ${#wolfram_checks[@]} == 0)); then
 fi
 
 if ((${#python_checks[@]})); then
+  QFT_PYTHON_RESOLVED="$(qft_resolve_python "$ROOT")"
+  export QFT_PYTHON="$QFT_PYTHON_RESOLVED"
+  export QFT_HDF5_PYTHON="$QFT_PYTHON_RESOLVED"
   for check in "${python_checks[@]}"; do
     echo "[calculation-checks] python ${check}"
-    python3 "$check"
+    "$QFT_PYTHON" "$check"
   done
 fi
 

@@ -8,8 +8,14 @@ scripts illustrate numerical regulator frameworks.
 Quick smoke run:
 
 ```bash
+tools/bootstrap_verification_python.sh
 tools/run_qft_scripts_smoke.sh
 ```
+
+The smoke runner uses the same canonical verification interpreter as
+`tools/run_calculation_checks.sh`: it prefers `.venv/bin/python` when that
+environment imports the required packages, including `h5py`, and accepts
+`QFT_PYTHON=/absolute/path/to/python` as an explicit override.
 
 Individual examples:
 

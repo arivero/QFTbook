@@ -8,8 +8,14 @@ finite algebraic reductions.
 Install the public verification dependencies with:
 
 ```
-python3 -m pip install -r requirements-verification.txt
+tools/bootstrap_verification_python.sh
 ```
+
+`tools/run_calculation_checks.sh` prefers `.venv/bin/python` when it imports
+the required verification packages, including `h5py`.  Set
+`QFT_PYTHON=/absolute/path/to/python` only for an explicit nonstandard
+environment; the selected interpreter is used for ordinary Python checks and
+HDF5 checks alike.
 
 Python checks should use `check_utils.py` for finite-aware scalar, array,
 matrix-product, and upper/lower-bound assertions.  Its companion
@@ -1629,15 +1635,14 @@ Current checks:
   `qft_scripts/su3_gauge_4d_metropolis_hdf5.py`, verifying embedded subgroup
   proposals, local score changes, gauge invariance, the \(1\times1\)
   Wilson-loop/plaquette identity, and HDF5 measurement/checkpoint output.
-  If the default Python lacks `h5py`, the check uses `QFT_HDF5_PYTHON` or the
-  bundled Codex runtime Python when available.
+  The public runner supplies the canonical `QFT_PYTHON` interpreter for the
+  subprocess HDF5 leg.
 - `su3_wilson_flow_checks.py`: finite checks for
   `qft_scripts/su3_wilson_flow_hdf5.py`, verifying the explicit \(SU(3)\)
   Wilson-score gradient by directional derivatives, one-step gauge
   covariance, small-step monotonicity, group preservation, HDF5 trajectory
-  layout, and flow from a sampler checkpoint.  If the default Python lacks
-  `h5py`, the check uses `QFT_HDF5_PYTHON` or the bundled Codex runtime
-  Python when available.
+  layout, and flow from a sampler checkpoint.  The public runner supplies the
+  canonical `QFT_PYTHON` interpreter for the subprocess HDF5 leg.
 - `su3_ape_smearing_checks.py`: finite checks for
   `qft_scripts/su3_ape_smearing_hdf5.py`, verifying the cold fixed point,
   spatial-mode preservation of temporal links, gauge covariance of the APE
@@ -1648,9 +1653,8 @@ Current checks:
   oriented plaquette conventions, clover-field anti-Hermiticity and
   antisymmetry, vanishing on the cold configuration, gauge invariance of
   \(Q_{\rm clover}\) and the clover action density, and the
-  sampler-to-flow-to-topology HDF5 pipeline.  If the default Python lacks
-  `h5py`, the check uses `QFT_HDF5_PYTHON` or the bundled Codex runtime
-  Python when available.
+  sampler-to-flow-to-topology HDF5 pipeline.  The public runner supplies the
+  canonical `QFT_PYTHON` interpreter for the subprocess HDF5 leg.
 - `lattice_gradient_flow_checks.py`: exact finite checks for the Volume XI
   Wilson-flow section, including negative-gradient monotonicity, adjoint
   norm invariance, linearized heat-kernel damping, the \(w_0\) scale

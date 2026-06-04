@@ -375,6 +375,19 @@ The script runs the reader-facing text audit, builds
 `monograph/tex/main.tex`, scans the final LaTeX logs for serious issues, and
 writes the compiled PDF to `monograph/tex/main.pdf`.
 
+Public Python verification runners expect one repository-level Python
+environment with the numerical and HDF5 dependencies used by both
+`calculation-checks/` and `qft_scripts/`.  Create or refresh it with:
+
+```bash
+tools/bootstrap_verification_python.sh
+```
+
+The runners prefer `.venv/bin/python` when it imports the required packages.
+Set `QFT_PYTHON=/absolute/path/to/python` only when using a nonstandard
+environment; that one interpreter is then used for ordinary Python checks and
+HDF5 checks alike.
+
 Convention-sensitive calculation checks can be run with:
 
 ```bash

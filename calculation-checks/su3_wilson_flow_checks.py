@@ -114,6 +114,8 @@ def python_has_h5py(python: Path) -> bool:
 
 def find_hdf5_python() -> Path:
     candidates: list[Path] = []
+    if os.environ.get("QFT_PYTHON"):
+        candidates.append(Path(os.environ["QFT_PYTHON"]))
     if os.environ.get("QFT_HDF5_PYTHON"):
         candidates.append(Path(os.environ["QFT_HDF5_PYTHON"]))
     candidates.append(Path(sys.executable))
@@ -124,7 +126,7 @@ def find_hdf5_python() -> Path:
     for candidate in candidates:
         if candidate.exists() and python_has_h5py(candidate):
             return candidate
-    raise AssertionError("SU(3) Wilson-flow HDF5 check requires h5py; set QFT_HDF5_PYTHON")
+    raise AssertionError("SU(3) Wilson-flow HDF5 check requires h5py; set QFT_PYTHON")
 
 
 def check_hdf5_pipeline() -> None:
