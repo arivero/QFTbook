@@ -8,7 +8,15 @@ import math
 import mpmath as mp
 import numpy as np
 
-from check_utils import assert_close
+from check_utils import assert_array_close, assert_close, assert_finite_array, finite_matmul, finite_max_abs
+
+
+def expect_assertion(name: str, thunk) -> None:
+    try:
+        thunk()
+    except AssertionError:
+        return
+    raise AssertionError(f"{name}: expected AssertionError")
 
 
 def sigma2(theta: complex, n: int) -> complex:
@@ -62,20 +70,32 @@ def smatrix(theta: complex, n: int) -> np.ndarray:
                     if i == ell and j == k:
                         value += s3
                     matrix[k * n + ell, col] = value
-    return matrix
+    return assert_finite_array(f"O(N) S-matrix theta={theta} N={n}", matrix, ndim=2)
+
+
+def finite_kron(name: str, left: np.ndarray, right: np.ndarray) -> np.ndarray:
+    return assert_finite_array(
+        name,
+        np.kron(assert_finite_array(f"{name} left", left), assert_finite_array(f"{name} right", right)),
+        ndim=2,
+    )
 
 
 def op12(two_body: np.ndarray, n: int) -> np.ndarray:
-    return np.kron(two_body, np.eye(n, dtype=complex))
+    return finite_kron("O(N) op12", two_body, np.eye(n, dtype=complex))
 
 
 def op23(two_body: np.ndarray, n: int) -> np.ndarray:
-    return np.kron(np.eye(n, dtype=complex), two_body)
+    return finite_kron("O(N) op23", np.eye(n, dtype=complex), two_body)
 
 
 def op13(two_body: np.ndarray, n: int) -> np.ndarray:
     flip23 = op23(flip(n), n)
-    return flip23 @ op12(two_body, n) @ flip23
+    return finite_matmul(
+        "O(N) op13 right conjugation",
+        finite_matmul("O(N) op13 left conjugation", flip23, op12(two_body, n)),
+        flip23,
+    )
 
 
 def flip(n: int) -> np.ndarray:
@@ -83,7 +103,7 @@ def flip(n: int) -> np.ndarray:
     for i in range(n):
         for j in range(n):
             matrix[j * n + i, i * n + j] = 1.0
-    return matrix
+    return assert_finite_array(f"O(N) flip N={n}", matrix, ndim=2)
 
 
 def check_sigma2_scalar_identity() -> None:
@@ -123,10 +143,43 @@ def check_yang_baxter_identity() -> None:
             s_theta = smatrix(theta, n)
             s_phi = smatrix(phi, n)
             s_sum = smatrix(theta + phi, n)
-            lhs = op12(s_theta, n) @ op13(s_sum, n) @ op23(s_phi, n)
-            rhs = op23(s_phi, n) @ op13(s_sum, n) @ op12(s_theta, n)
-            error = np.max(np.abs(lhs - rhs))
-            assert_close(f"Yang-Baxter identity N={n} theta={theta} phi={phi}", error, 0.0)
+            lhs = finite_matmul(
+                f"Yang-Baxter lhs final N={n} theta={theta} phi={phi}",
+                finite_matmul(
+                    f"Yang-Baxter lhs first N={n} theta={theta} phi={phi}",
+                    op12(s_theta, n),
+                    op13(s_sum, n),
+                ),
+                op23(s_phi, n),
+            )
+            rhs = finite_matmul(
+                f"Yang-Baxter rhs final N={n} theta={theta} phi={phi}",
+                finite_matmul(
+                    f"Yang-Baxter rhs first N={n} theta={theta} phi={phi}",
+                    op23(s_phi, n),
+                    op13(s_sum, n),
+                ),
+                op12(s_theta, n),
+            )
+            assert_array_close(f"Yang-Baxter identity N={n} theta={theta} phi={phi}", lhs, rhs)
+
+
+def check_nonfinite_matrix_negative_controls() -> None:
+    bad_input = np.eye(2, dtype=complex)
+    bad_input[0, 1] = math.inf
+    expect_assertion(
+        "O(N) matrix product rejects nonfinite input",
+        lambda: finite_matmul("O(N) bad finite input", bad_input, np.eye(2, dtype=complex)),
+    )
+    huge = np.full((2, 2), 1.0e308, dtype=float)
+    expect_assertion(
+        "O(N) matrix product rejects nonfinite output",
+        lambda: finite_matmul("O(N) bad finite output", huge, huge),
+    )
+    expect_assertion(
+        "O(N) max abs rejects nonfinite input",
+        lambda: finite_max_abs("O(N) bad max abs", np.array([1.0, math.nan])),
+    )
 
 
 def check_large_n_gap_and_beta() -> None:
@@ -151,6 +204,7 @@ def main() -> None:
     check_channel_unitarity()
     check_crossing_relations()
     check_yang_baxter_identity()
+    check_nonfinite_matrix_negative_controls()
     check_large_n_gap_and_beta()
     print("All O(N) sigma-model and large-N gap checks passed.")
 

@@ -11,14 +11,16 @@ Install the public verification dependencies with:
 python3 -m pip install -r requirements-verification.txt
 ```
 
-Python checks should use `check_utils.py` for finite-aware scalar, array, and
-upper/lower-bound assertions.  Its companion `check_utils_checks.py` includes
-negative tests for NaN/Inf inputs and an audit that rejects legacy
-`abs(x-y) > tol`, unsafe ordinary `check_*` failure predicates, unsafe bound
-helpers, and direct `np.max(np.abs(...)) > tol` comparisons without an
-explicit finiteness guard.  The public runner treats Python `RuntimeWarning`
-as a failure by default, so expected singular-limit probes must catch and
-justify their warnings locally instead of leaking them into suite output.
+Python checks should use `check_utils.py` for finite-aware scalar, array,
+matrix-product, and upper/lower-bound assertions.  Its companion
+`check_utils_checks.py` includes negative tests for NaN/Inf inputs and an
+audit that rejects legacy `abs(x-y) > tol`, unsafe ordinary `check_*` failure
+predicates, unsafe bound helpers, and direct `np.max(np.abs(...)) > tol`
+comparisons unless the values entering that comparison are guarded on the
+path to it or the comparison delegates to a finite-aware helper.  The public
+runner treats Python `RuntimeWarning` as a failure by default, so expected
+singular-limit probes must catch and justify their warnings locally instead
+of leaking them into suite output.
 
 Load-bearing companions should carry an evidence contract, either in the file
 docstring, the check summary below, or the paired planning dossier:

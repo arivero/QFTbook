@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import math
+import warnings
 from typing import Any
 
 
@@ -22,6 +23,93 @@ def _finite_scalar(value: Any) -> bool:
 def assert_finite(name: str, value: Any) -> None:
     if not _finite_scalar(value):
         raise AssertionError(f"{name}: nonfinite value {value!r}")
+
+
+def assert_finite_array(name: str, value: Any, *, ndim: int | None = None):
+    """Return a NumPy array after proving all entries are finite."""
+
+    import numpy as np
+
+    array = np.asarray(value)
+    if ndim is not None and array.ndim != ndim:
+        raise AssertionError(f"{name}: expected {ndim} dimensions, got {array.ndim}")
+    if not bool(np.all(np.isfinite(array))):
+        raise AssertionError(f"{name}: array contains nonfinite entries")
+    return array
+
+
+def _reference_matmul(left, right):
+    import numpy as np
+
+    if left.ndim != 2:
+        raise AssertionError(f"left matrix: expected 2 dimensions, got {left.ndim}")
+    if right.ndim not in {1, 2}:
+        raise AssertionError(f"right factor: expected 1 or 2 dimensions, got {right.ndim}")
+    if left.shape[1] != right.shape[0]:
+        raise AssertionError(f"matrix product: shape mismatch {left.shape!r} @ {right.shape!r}")
+
+    dtype = np.result_type(left, right)
+    if right.ndim == 1:
+        result = np.empty(left.shape[0], dtype=dtype)
+        for row in range(left.shape[0]):
+            total = 0
+            for middle in range(left.shape[1]):
+                total += left[row, middle] * right[middle]
+            result[row] = total
+        return result
+
+    result = np.empty((left.shape[0], right.shape[1]), dtype=dtype)
+    for row in range(left.shape[0]):
+        for col in range(right.shape[1]):
+            total = 0
+            for middle in range(left.shape[1]):
+                total += left[row, middle] * right[middle, col]
+            result[row, col] = total
+    return result
+
+
+def finite_matmul(name: str, left: Any, right: Any):
+    """Matrix product with finite input/output checks and a warning-clean fallback."""
+
+    import numpy as np
+
+    left_array = assert_finite_array(f"{name} left", left, ndim=2)
+    right_array = assert_finite_array(f"{name} right", right)
+    if right_array.ndim not in {1, 2}:
+        raise AssertionError(f"{name}: right factor has unsupported dimension {right_array.ndim}")
+    if left_array.shape[1] != right_array.shape[0]:
+        raise AssertionError(f"{name}: shape mismatch {left_array.shape!r} @ {right_array.shape!r}")
+
+    try:
+        with warnings.catch_warnings():
+            warnings.simplefilter("error", RuntimeWarning)
+            with np.errstate(all="raise"):
+                product = np.matmul(left_array, right_array)
+    except (FloatingPointError, RuntimeWarning):
+        try:
+            product = _reference_matmul(left_array, right_array)
+        except (FloatingPointError, RuntimeWarning, OverflowError) as reference_exc:
+            raise AssertionError(f"{name}: matrix product raised a finite-arithmetic warning") from reference_exc
+    return assert_finite_array(f"{name} product", product)
+
+
+def finite_max_abs(name: str, value: Any) -> float:
+    """Return max(abs(value)) after proving the array and magnitudes are finite."""
+
+    import numpy as np
+
+    array = assert_finite_array(f"{name} input", value)
+    if array.size == 0:
+        raise AssertionError(f"{name}: empty array has no maximum")
+    try:
+        with warnings.catch_warnings():
+            warnings.simplefilter("error", RuntimeWarning)
+            with np.errstate(all="raise"):
+                magnitudes = np.abs(array)
+    except (FloatingPointError, RuntimeWarning):
+        magnitudes = np.array([abs(complex(entry)) for entry in array.flat]).reshape(array.shape)
+    magnitudes = assert_finite_array(f"{name} magnitudes", magnitudes)
+    return float(np.max(magnitudes))
 
 
 def assert_close(

@@ -9,7 +9,17 @@ from pathlib import Path
 
 import numpy as np
 
-from check_utils import assert_array_close, assert_close, assert_geq, assert_gt, assert_leq, assert_lt
+from check_utils import (
+    assert_array_close,
+    assert_close,
+    assert_finite_array,
+    assert_geq,
+    assert_gt,
+    assert_leq,
+    assert_lt,
+    finite_matmul,
+    finite_max_abs,
+)
 
 
 def expect_failure(name: str, thunk) -> None:
@@ -79,6 +89,24 @@ def check_array_finite_tolerance() -> None:
             tol=1.0e-12,
         ),
     )
+
+
+def check_finite_matrix_helpers() -> None:
+    left = np.array([[1.0, 2.0], [3.0, 4.0]])
+    right = np.array([[5.0, 6.0], [7.0, 8.0]])
+    assert_array_close("finite matmul matrix", finite_matmul("finite matmul matrix", left, right), left @ right)
+    assert_array_close("finite matmul vector", finite_matmul("finite matmul vector", left, right[:, 0]), left @ right[:, 0])
+    assert_close("finite max abs", finite_max_abs("finite max abs", np.array([3.0 + 4.0j, -2.0])), 5.0)
+    expect_failure(
+        "finite array rejects input nonfinite",
+        lambda: assert_finite_array("finite array rejects input nonfinite", np.array([1.0, math.inf])),
+    )
+    bad = np.eye(2)
+    bad[0, 1] = math.nan
+    expect_failure("finite matmul rejects nonfinite input", lambda: finite_matmul("bad input", bad, np.eye(2)))
+    huge = np.array([[1.0e308, 1.0e308], [1.0e308, 1.0e308]])
+    expect_failure("finite matmul rejects nonfinite output", lambda: finite_matmul("bad output", huge, huge))
+    expect_failure("finite max abs rejects nonfinite", lambda: finite_max_abs("bad max", np.array([1.0, math.nan])))
 
 
 def check_bound_nonfinite_rejection() -> None:
@@ -237,56 +265,185 @@ def _comparisons_protected_by_not(node: ast.AST) -> set[int]:
 
 
 def _comparison_names(node: ast.Compare) -> set[str]:
+    ignored_names = {
+        "abs",
+        "bool",
+        "cmath",
+        "complex",
+        "float",
+        "int",
+        "math",
+        "mp",
+        "np",
+        "numpy",
+        "sp",
+    }
     result: set[str] = set()
     for operand in [node.left, *node.comparators]:
         result.update(child.id for child in ast.walk(operand) if isinstance(child, ast.Name))
-    return result
+    return result.difference(ignored_names)
 
 
-def _nan_false_failure_compare(node: ast.Compare, function_node: ast.FunctionDef) -> bool:
+def _comparison_required_guards(node: ast.Compare, function_node: ast.FunctionDef) -> set[str]:
     if not any(isinstance(operator, (ast.Lt, ast.LtE, ast.Gt, ast.GtE)) for operator in node.ops):
-        return False
+        return set()
     operands = [node.left, *node.comparators]
+    names = _comparison_names(node)
     if any(_contains_float_like_call(operand) or _contains_np_max_abs(operand) for operand in operands):
-        return True
+        return names
     if _helper_like_function(function_node):
         threshold_names = {"actual", "bound", "expected", "got", "left", "right", "tol", "value"}
-        return bool(_comparison_names(node).intersection(threshold_names))
+        return names.intersection(threshold_names)
+    return set()
+
+
+def _finite_guard_call_names(node: ast.AST) -> set[str]:
+    if not isinstance(node, ast.Call):
+        return set()
+    call_name = _call_name(node.func)
+    if (
+        call_name in {"math.isfinite", "mp.isfinite", "np.isfinite", "numpy.isfinite", "isfinite", "is_finite"}
+        and node.args
+    ):
+        argument = node.args[0]
+        if isinstance(argument, ast.Name):
+            return {argument.id}
+        return set()
+    if call_name in {"np.all", "numpy.all", "all", "bool"} and node.args:
+        return _finite_guard_truth_names(node.args[0])
+    if isinstance(node.func, ast.Attribute) and node.func.attr == "all":
+        return _finite_guard_truth_names(node.func.value)
+    return set()
+
+
+def _finite_guard_truth_names(node: ast.AST) -> set[str]:
+    call_names = _finite_guard_call_names(node)
+    if call_names:
+        return call_names
+    if isinstance(node, ast.BoolOp) and isinstance(node.op, ast.And):
+        names: set[str] = set()
+        for value in node.values:
+            names.update(_finite_guard_truth_names(value))
+        return names
+    return set()
+
+
+def _finite_guard_false_names(node: ast.AST) -> set[str]:
+    if isinstance(node, ast.UnaryOp) and isinstance(node.op, ast.Not):
+        return _finite_guard_truth_names(node.operand)
+    if (
+        isinstance(node, ast.Compare)
+        and len(node.ops) == 1
+        and isinstance(node.ops[0], ast.IsNot)
+        and len(node.comparators) == 1
+        and isinstance(node.comparators[0], ast.Constant)
+        and node.comparators[0].value is True
+        and isinstance(node.left, ast.Attribute)
+        and node.left.attr == "is_finite"
+        and isinstance(node.left.value, ast.Name)
+    ):
+        return {node.left.value.id}
+    if isinstance(node, ast.BoolOp) and isinstance(node.op, ast.Or):
+        names: set[str] = set()
+        for value in node.values:
+            names.update(_finite_guard_false_names(value))
+        return names
+    return set()
+
+
+def _body_unconditionally_raises_assertion(body: list[ast.stmt]) -> bool:
+    for statement in body:
+        if isinstance(statement, ast.Raise):
+            return True
+        if (
+            isinstance(statement, ast.If)
+            and _body_unconditionally_raises_assertion(statement.body)
+            and _body_unconditionally_raises_assertion(statement.orelse)
+        ):
+            return True
     return False
 
 
-def _has_nan_false_failure_predicate(node: ast.FunctionDef) -> bool:
-    for child in ast.walk(node):
-        if not isinstance(child, ast.If) or not _body_raises_assertion(child.body):
+def _statement_explicit_guard_names(statement: ast.stmt) -> set[str]:
+    if isinstance(statement, ast.Expr) and isinstance(statement.value, ast.Call):
+        call = statement.value
+        call_name = _call_name(call.func)
+        if call_name in {
+            "assert_finite",
+            "_assert_finite",
+            "check_utils.assert_finite",
+            "assert_finite_array",
+            "_assert_finite_array",
+        }:
+            guarded_argument = call.args[1] if len(call.args) >= 2 else call.args[0] if call.args else None
+            if isinstance(guarded_argument, ast.Name):
+                return {guarded_argument.id}
+        return set()
+    if isinstance(statement, ast.Assign) and isinstance(statement.value, ast.Call):
+        call_name = _call_name(statement.value.func)
+        if call_name in {"assert_finite_array", "_assert_finite_array", "check_utils.assert_finite_array"}:
+            return {target.id for target in statement.targets if isinstance(target, ast.Name)}
+    if isinstance(statement, ast.Assert):
+        return _finite_guard_truth_names(statement.test)
+    if isinstance(statement, ast.If) and _body_unconditionally_raises_assertion(statement.body):
+        return _finite_guard_false_names(statement.test)
+    return set()
+
+
+def _audit_unsafe_numeric_predicates(
+    path_name: str,
+    function_node: ast.FunctionDef,
+    statements: list[ast.stmt],
+    guarded_names: set[str],
+    offenders: list[str],
+) -> set[str]:
+    active_guards = set(guarded_names)
+    for statement in statements:
+        if isinstance(statement, ast.If):
+            protected = _comparisons_protected_by_not(statement.test)
+            same_test_guards = active_guards.union(_finite_guard_false_names(statement.test))
+            if _body_raises_assertion(statement.body):
+                for compare in ast.walk(statement.test):
+                    if not isinstance(compare, ast.Compare) or id(compare) in protected:
+                        continue
+                    required = _comparison_required_guards(compare, function_node)
+                    missing = required.difference(same_test_guards)
+                    if missing:
+                        offenders.append(
+                            f"{path_name}:{compare.lineno}:{function_node.name}:"
+                            f"unguarded-{','.join(sorted(missing))}"
+                        )
+
+            body_guards = active_guards.union(_finite_guard_truth_names(statement.test))
+            else_guards = active_guards.union(_finite_guard_false_names(statement.test))
+            _audit_unsafe_numeric_predicates(path_name, function_node, statement.body, body_guards, offenders)
+            _audit_unsafe_numeric_predicates(path_name, function_node, statement.orelse, else_guards, offenders)
+
+            if _body_unconditionally_raises_assertion(statement.body):
+                active_guards.update(_finite_guard_false_names(statement.test))
+            elif statement.orelse and _body_unconditionally_raises_assertion(statement.orelse):
+                active_guards.update(_finite_guard_truth_names(statement.test))
             continue
-        protected = _comparisons_protected_by_not(child.test)
-        for compare in ast.walk(child.test):
-            if (
-                isinstance(compare, ast.Compare)
-                and id(compare) not in protected
-                and _nan_false_failure_compare(compare, node)
-            ):
-                return True
-    return False
 
+        if isinstance(statement, (ast.For, ast.While, ast.With, ast.Try)):
+            for body_name in ("body", "orelse", "finalbody"):
+                child_body = getattr(statement, body_name, [])
+                if child_body:
+                    _audit_unsafe_numeric_predicates(path_name, function_node, child_body, active_guards, offenders)
+            for handler in getattr(statement, "handlers", []):
+                _audit_unsafe_numeric_predicates(path_name, function_node, handler.body, active_guards, offenders)
+            continue
 
-def _has_explicit_finiteness_guard(segment: str) -> bool:
-    return "isfinite" in segment or "is_finite" in segment or "assert_finite" in segment
+        active_guards.update(_statement_explicit_guard_names(statement))
+    return active_guards
 
 
 def unsafe_numeric_predicate_offenders(path_name: str, text: str) -> list[str]:
     offenders: list[str] = []
     tree = ast.parse(text)
-    lines = text.splitlines(True)
     for node in ast.walk(tree):
         if isinstance(node, ast.FunctionDef) and _function_candidate(node):
-            segment = "".join(lines[node.lineno - 1 : node.end_lineno])
-            if _has_nan_false_failure_predicate(node) and not _has_explicit_finiteness_guard(segment):
-                offenders.append(f"{path_name}:{node.lineno}:{node.name}")
-        if isinstance(node, ast.Compare):
-            operands = [node.left, *node.comparators]
-            if any(_contains_np_max_abs(operand) for operand in operands):
-                offenders.append(f"{path_name}:{node.lineno}:direct-np-max-abs-threshold")
+            _audit_unsafe_numeric_predicates(path_name, node, node.body, set(), offenders)
     return offenders
 
 
@@ -321,19 +478,54 @@ def assert_leq(actual, bound):
 def check_direct_array(actual, expected):
     if np.max(np.abs(actual - expected)) > 1.0e-12:
         raise AssertionError("bad")
+
+def check_bad_guarded_only_tol(actual, expected, tol):
+    assert_finite("tol", tol)
+    if abs(actual - expected) > tol:
+        raise AssertionError("bad")
+
+def check_bad_guarded_only_actual(actual, expected, tol):
+    if not isfinite(actual):
+        raise AssertionError("bad")
+    if abs(actual - expected) > tol:
+        raise AssertionError("bad")
+
+def check_bad_non_dominating_guard(actual, bound):
+    if isfinite(actual):
+        pass
+    if actual > bound:
+        raise AssertionError("bad")
+
+def check_bad_docstring_guard_mention(actual, bound):
+    \"\"\"A textual assert_finite mention is not a semantic guard.\"\"\"
+    if actual > bound:
+        raise AssertionError("bad")
+
+def check_bad_comment_guard_mention(actual, bound):
+    # isfinite(actual) is only a comment here.
+    if actual > bound:
+        raise AssertionError("bad")
 """
     offenders = unsafe_numeric_predicate_offenders("sample.py", bad_source)
-    expected = {
-        "sample.py:4:check_value",
-        "sample.py:8:check_budget",
-        "sample.py:12:check_bad_case",
-        "sample.py:16:check_norm",
-        "sample.py:20:assert_near_integer",
-        "sample.py:24:assert_leq",
-        "sample.py:28:check_direct_array",
-        "sample.py:29:direct-np-max-abs-threshold",
+    expected_function_names = {
+        "check_value",
+        "check_budget",
+        "check_bad_case",
+        "check_norm",
+        "assert_near_integer",
+        "assert_leq",
+        "check_direct_array",
+        "check_bad_guarded_only_tol",
+        "check_bad_guarded_only_actual",
+        "check_bad_non_dominating_guard",
+        "check_bad_docstring_guard_mention",
+        "check_bad_comment_guard_mention",
     }
-    missing = expected.difference(offenders)
+    missing = {
+        name
+        for name in expected_function_names
+        if not any(f":{name}:" in offender for offender in offenders)
+    }
     if missing:
         raise AssertionError(f"audit missed unsafe predicate samples: {sorted(missing)!r}")
 
@@ -344,8 +536,19 @@ def check_safe_not_predicate(value, bound):
 
 def assert_guarded(actual, bound):
     assert_finite("actual", actual)
+    assert_finite("bound", bound)
     if actual > bound:
         raise AssertionError("guarded")
+
+def assert_guarded_by_rejecting_branch(actual, bound):
+    if not isfinite(actual) or not isfinite(bound):
+        raise AssertionError("nonfinite")
+    if actual > bound:
+        raise AssertionError("guarded")
+
+def check_exact_integer_predicate(count, target):
+    if count > target:
+        raise AssertionError("integer count exceeds target")
 """
     safe_offenders = unsafe_numeric_predicate_offenders("safe.py", safe_source)
     if safe_offenders:

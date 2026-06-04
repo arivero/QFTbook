@@ -25,7 +25,7 @@ import mpmath as mp
 import numpy as np
 import sympy as sp
 
-from check_utils import assert_close
+from check_utils import assert_array_close, assert_close, assert_finite_array, finite_matmul, finite_max_abs
 
 
 def assert_equal(name: str, got, expected) -> None:
@@ -36,6 +36,14 @@ def assert_equal(name: str, got, expected) -> None:
 def assert_zero(name: str, value) -> None:
     if sp.simplify(value) != 0:
         raise AssertionError(f"{name}: got {value}, expected 0")
+
+
+def expect_assertion(name: str, thunk) -> None:
+    try:
+        thunk()
+    except AssertionError:
+        return
+    raise AssertionError(f"{name}: expected AssertionError")
 
 
 def assert_trig_zero(name: str, value) -> None:
@@ -214,7 +222,7 @@ def flip(n: int) -> np.ndarray:
     for i in range(n):
         for j in range(n):
             matrix[j * n + i, i * n + j] = 1.0
-    return matrix
+    return assert_finite_array(f"flip N={n}", matrix, ndim=2)
 
 
 def rational_r(theta: complex, n: int, normalized: bool) -> np.ndarray:
@@ -222,21 +230,33 @@ def rational_r(theta: complex, n: int, normalized: bool) -> np.ndarray:
     identity = np.eye(n * n, dtype=complex)
     numerator = theta * identity - 1j * lam * flip(n)
     if normalized:
-        return numerator / (theta - 1j * lam)
-    return numerator
+        return assert_finite_array(f"rational R normalized theta={theta} N={n}", numerator / (theta - 1j * lam), ndim=2)
+    return assert_finite_array(f"rational R unnormalized theta={theta} N={n}", numerator, ndim=2)
+
+
+def finite_kron(name: str, left: np.ndarray, right: np.ndarray) -> np.ndarray:
+    return assert_finite_array(
+        name,
+        np.kron(assert_finite_array(f"{name} left", left), assert_finite_array(f"{name} right", right)),
+        ndim=2,
+    )
 
 
 def op12(two_body: np.ndarray, n: int) -> np.ndarray:
-    return np.kron(two_body, np.eye(n, dtype=complex))
+    return finite_kron("op12", two_body, np.eye(n, dtype=complex))
 
 
 def op23(two_body: np.ndarray, n: int) -> np.ndarray:
-    return np.kron(np.eye(n, dtype=complex), two_body)
+    return finite_kron("op23", np.eye(n, dtype=complex), two_body)
 
 
 def op13(two_body: np.ndarray, n: int) -> np.ndarray:
     swap23 = op23(flip(n), n)
-    return swap23 @ op12(two_body, n) @ swap23
+    return finite_matmul(
+        "op13 right conjugation",
+        finite_matmul("op13 left conjugation", swap23, op12(two_body, n)),
+        swap23,
+    )
 
 
 def projective_annihilation(n: int) -> np.ndarray:
@@ -247,7 +267,7 @@ def projective_annihilation(n: int) -> np.ndarray:
             if i == j:
                 for m in range(n):
                     matrix[m * n + m, input_index] = 1.0
-    return matrix
+    return assert_finite_array(f"projective annihilation N={n}", matrix, ndim=2)
 
 
 def check_projective_crossing_tensors() -> None:
@@ -257,7 +277,10 @@ def check_projective_crossing_tensors() -> None:
         annihilation = projective_annihilation(n)
         assert_close(
             f"projective annihilation idempotent N={n}",
-            np.max(np.abs(annihilation @ annihilation - n * annihilation)),
+            finite_max_abs(
+                f"projective annihilation idempotent residual N={n}",
+                finite_matmul(f"projective annihilation squared N={n}", annihilation, annihilation) - n * annihilation,
+            ),
             0.0,
         )
 
@@ -265,17 +288,28 @@ def check_projective_crossing_tensors() -> None:
         adjoint_projector = identity - singlet_projector
         assert_close(
             f"projective singlet projector N={n}",
-            np.max(np.abs(singlet_projector @ singlet_projector - singlet_projector)),
+            finite_max_abs(
+                f"projective singlet projector residual N={n}",
+                finite_matmul(f"projective singlet projector squared N={n}", singlet_projector, singlet_projector)
+                - singlet_projector,
+            ),
             0.0,
         )
         assert_close(
             f"projective adjoint projector N={n}",
-            np.max(np.abs(adjoint_projector @ adjoint_projector - adjoint_projector)),
+            finite_max_abs(
+                f"projective adjoint projector residual N={n}",
+                finite_matmul(f"projective adjoint projector squared N={n}", adjoint_projector, adjoint_projector)
+                - adjoint_projector,
+            ),
             0.0,
         )
         assert_close(
             f"projective projector orthogonality N={n}",
-            np.max(np.abs(singlet_projector @ adjoint_projector)),
+            finite_max_abs(
+                f"projective projector orthogonality residual N={n}",
+                finite_matmul(f"projective projector product N={n}", singlet_projector, adjoint_projector),
+            ),
             0.0,
         )
 
@@ -289,12 +323,19 @@ def check_projective_crossing_tensors() -> None:
         antisymmetric[1 * n + 0] = -1.0
         assert_close(
             f"projective VV symmetric eigenvalue N={n}",
-            np.max(np.abs(vv_matrix @ symmetric - (a + b) * symmetric)),
+            finite_max_abs(
+                f"projective VV symmetric eigenvalue residual N={n}",
+                finite_matmul(f"projective VV symmetric action N={n}", vv_matrix, symmetric) - (a + b) * symmetric,
+            ),
             0.0,
         )
         assert_close(
             f"projective VV antisymmetric eigenvalue N={n}",
-            np.max(np.abs(vv_matrix @ antisymmetric - (a - b) * antisymmetric)),
+            finite_max_abs(
+                f"projective VV antisymmetric eigenvalue residual N={n}",
+                finite_matmul(f"projective VV antisymmetric action N={n}", vv_matrix, antisymmetric)
+                - (a - b) * antisymmetric,
+            ),
             0.0,
         )
 
@@ -307,12 +348,20 @@ def check_projective_crossing_tensors() -> None:
             singlet_vector[m * n + m] = 1.0
         assert_close(
             f"projective VbarV adjoint eigenvalue N={n}",
-            np.max(np.abs(vbar_matrix @ adjoint_vector - a * adjoint_vector)),
+            finite_max_abs(
+                f"projective VbarV adjoint eigenvalue residual N={n}",
+                finite_matmul(f"projective VbarV adjoint action N={n}", vbar_matrix, adjoint_vector)
+                - a * adjoint_vector,
+            ),
             0.0,
         )
         assert_close(
             f"projective VbarV singlet eigenvalue N={n}",
-            np.max(np.abs(vbar_matrix @ singlet_vector - (a + n * b) * singlet_vector)),
+            finite_max_abs(
+                f"projective VbarV singlet eigenvalue residual N={n}",
+                finite_matmul(f"projective VbarV singlet action N={n}", vbar_matrix, singlet_vector)
+                - (a + n * b) * singlet_vector,
+            ),
             0.0,
         )
 
@@ -363,20 +412,36 @@ def check_su_n_rational_block() -> None:
     for n in (3, 4):
         identity = np.eye(n * n, dtype=complex)
         for theta in (0.37, 1.11):
-            unitary_error = np.max(np.abs(rational_r(theta, n, True) @ rational_r(-theta, n, True) - identity))
+            unitary_error = finite_max_abs(
+                f"SU(N) rational block unitarity residual N={n} theta={theta}",
+                finite_matmul(
+                    f"SU(N) rational block unitarity product N={n} theta={theta}",
+                    rational_r(theta, n, True),
+                    rational_r(-theta, n, True),
+                )
+                - identity,
+            )
             assert_close(f"SU(N) rational block unitarity N={n} theta={theta}", unitary_error, 0.0)
         for theta, phi in ((0.41, 0.73), (0.82, 1.19)):
-            lhs = (
-                op12(rational_r(theta, n, False), n)
-                @ op13(rational_r(theta + phi, n, False), n)
-                @ op23(rational_r(phi, n, False), n)
+            lhs = finite_matmul(
+                f"SU(N) rational YBE lhs final N={n} theta={theta} phi={phi}",
+                finite_matmul(
+                    f"SU(N) rational YBE lhs first N={n} theta={theta} phi={phi}",
+                    op12(rational_r(theta, n, False), n),
+                    op13(rational_r(theta + phi, n, False), n),
+                ),
+                op23(rational_r(phi, n, False), n),
             )
-            rhs = (
-                op23(rational_r(phi, n, False), n)
-                @ op13(rational_r(theta + phi, n, False), n)
-                @ op12(rational_r(theta, n, False), n)
+            rhs = finite_matmul(
+                f"SU(N) rational YBE rhs final N={n} theta={theta} phi={phi}",
+                finite_matmul(
+                    f"SU(N) rational YBE rhs first N={n} theta={theta} phi={phi}",
+                    op23(rational_r(phi, n, False), n),
+                    op13(rational_r(theta + phi, n, False), n),
+                ),
+                op12(rational_r(theta, n, False), n),
             )
-            ybe_error = np.max(np.abs(lhs - rhs))
+            ybe_error = finite_max_abs(f"SU(N) rational YBE residual N={n} theta={theta} phi={phi}", lhs - rhs)
             assert_close(f"SU(N) rational YBE N={n} theta={theta} phi={phi}", ybe_error, 0.0)
 
 
@@ -654,7 +719,11 @@ def sausage_charge_one_matrix(theta: complex, lam: float) -> np.ndarray:
         / mp.sinh(lam * (theta - 2j * math.pi))
         * sausage_spp(theta, lam)
     )
-    return np.array([[direct, exchange], [exchange, direct]], dtype=complex)
+    return assert_finite_array(
+        f"sausage charge-one matrix theta={theta} lambda={lam}",
+        np.array([[direct, exchange], [exchange, direct]], dtype=complex),
+        ndim=2,
+    )
 
 
 def sausage_charge_zero_matrix(theta: complex, lam: float) -> np.ndarray:
@@ -674,13 +743,17 @@ def sausage_charge_zero_matrix(theta: complex, lam: float) -> np.ndarray:
         )
     )
     h_entry = sausage_charge_one_matrix(theta, lam)[0, 0] + g_entry
-    return np.array(
-        [
-            [e_entry, f_entry, g_entry],
-            [f_entry, h_entry, f_entry],
-            [g_entry, f_entry, e_entry],
-        ],
-        dtype=complex,
+    return assert_finite_array(
+        f"sausage charge-zero matrix theta={theta} lambda={lam}",
+        np.array(
+            [
+                [e_entry, f_entry, g_entry],
+                [f_entry, h_entry, f_entry],
+                [g_entry, f_entry, e_entry],
+            ],
+            dtype=complex,
+        ),
+        ndim=2,
     )
 
 
@@ -706,7 +779,7 @@ def sausage_full_triplet_matrix(theta: complex, lam: float) -> np.ndarray:
         for col, (in_first, in_second) in enumerate(zero_basis):
             matrix[pair_index(out_first, out_second), pair_index(in_first, in_second)] = charge_zero[row, col]
 
-    return matrix
+    return assert_finite_array(f"sausage full-triplet matrix theta={theta} lambda={lam}", matrix, ndim=2)
 
 
 def sausage_op13(two_particle_matrix: np.ndarray) -> np.ndarray:
@@ -728,7 +801,7 @@ def sausage_op13(two_particle_matrix: np.ndarray) -> np.ndarray:
                         row = triple_index(first_out, second, third_out)
                         pair_row = pair_index(first_out, third_out)
                         operator[row, col] = two_particle_matrix[pair_row, pair_col]
-    return operator
+    return assert_finite_array("sausage op13", operator, ndim=2)
 
 
 def sausage_formal_sinh(z: sp.Expr, shift: int, q: sp.Symbol) -> sp.Expr:
@@ -869,21 +942,41 @@ def check_sausage_repulsive_smatrix_ledgers() -> None:
             inverse_matrix = sausage_charge_one_matrix(-theta, lam)
             assert_close(
                 f"sausage charge-one unitarity lambda={lam} theta={theta}",
-                np.max(np.abs(matrix @ inverse_matrix - np.eye(2))),
+                finite_max_abs(
+                    f"sausage charge-one unitarity residual lambda={lam} theta={theta}",
+                    finite_matmul(f"sausage charge-one unitarity product lambda={lam} theta={theta}", matrix, inverse_matrix)
+                    - np.eye(2),
+                ),
                 0.0,
             )
             zero_matrix = sausage_charge_zero_matrix(theta, lam)
             zero_inverse_matrix = sausage_charge_zero_matrix(-theta, lam)
             assert_close(
                 f"sausage charge-zero unitarity lambda={lam} theta={theta}",
-                np.max(np.abs(zero_matrix @ zero_inverse_matrix - np.eye(3))),
+                finite_max_abs(
+                    f"sausage charge-zero unitarity residual lambda={lam} theta={theta}",
+                    finite_matmul(
+                        f"sausage charge-zero unitarity product lambda={lam} theta={theta}",
+                        zero_matrix,
+                        zero_inverse_matrix,
+                    )
+                    - np.eye(3),
+                ),
                 0.0,
             )
             full_matrix = sausage_full_triplet_matrix(theta, lam)
             full_inverse_matrix = sausage_full_triplet_matrix(-theta, lam)
             assert_close(
                 f"sausage full triplet unitarity lambda={lam} theta={theta}",
-                np.max(np.abs(full_matrix @ full_inverse_matrix - np.eye(9))),
+                finite_max_abs(
+                    f"sausage full triplet unitarity residual lambda={lam} theta={theta}",
+                    finite_matmul(
+                        f"sausage full triplet unitarity product lambda={lam} theta={theta}",
+                        full_matrix,
+                        full_inverse_matrix,
+                    )
+                    - np.eye(9),
+                ),
                 0.0,
             )
 
@@ -913,14 +1006,30 @@ def check_sausage_repulsive_smatrix_ledgers() -> None:
             s_theta = sausage_full_triplet_matrix(theta, lam)
             s_phi = sausage_full_triplet_matrix(phi, lam)
             s_sum = sausage_full_triplet_matrix(theta + phi, lam)
-            op12 = np.kron(s_theta, identity_three)
-            op23 = np.kron(identity_three, s_phi)
-            op13 = sausage_op13(s_sum)
-            lhs = op12 @ op13 @ op23
-            rhs = op23 @ op13 @ op12
+            op12_matrix = finite_kron("sausage op12", s_theta, identity_three)
+            op23_matrix = finite_kron("sausage op23", identity_three, s_phi)
+            op13_matrix = sausage_op13(s_sum)
+            lhs = finite_matmul(
+                f"sausage YBE lhs final lambda={lam} theta={theta} phi={phi}",
+                finite_matmul(
+                    f"sausage YBE lhs first lambda={lam} theta={theta} phi={phi}",
+                    op12_matrix,
+                    op13_matrix,
+                ),
+                op23_matrix,
+            )
+            rhs = finite_matmul(
+                f"sausage YBE rhs final lambda={lam} theta={theta} phi={phi}",
+                finite_matmul(
+                    f"sausage YBE rhs first lambda={lam} theta={theta} phi={phi}",
+                    op23_matrix,
+                    op13_matrix,
+                ),
+                op12_matrix,
+            )
             assert_close(
                 f"sausage full triplet YBE lambda={lam} theta={theta} phi={phi}",
-                np.max(np.abs(lhs - rhs)),
+                finite_max_abs(f"sausage YBE residual lambda={lam} theta={theta} phi={phi}", lhs - rhs),
                 0.0,
             )
 
@@ -991,6 +1100,24 @@ def check_sausage_metric_curvature() -> None:
     assert_zero("sausage cylinder angular limit", angular_limit - h)
 
 
+def check_nonfinite_matrix_negative_controls() -> None:
+    bad_input = np.eye(2, dtype=complex)
+    bad_input[0, 0] = math.nan
+    expect_assertion(
+        "sigma-family matrix product rejects nonfinite input",
+        lambda: finite_matmul("sigma-family bad input", bad_input, np.eye(2, dtype=complex)),
+    )
+    huge = np.full((2, 2), 1.0e308, dtype=float)
+    expect_assertion(
+        "sigma-family matrix product rejects nonfinite output",
+        lambda: finite_matmul("sigma-family bad output", huge, huge),
+    )
+    expect_assertion(
+        "sigma-family max abs rejects nonfinite input",
+        lambda: finite_max_abs("sigma-family bad max abs", np.array([1.0, math.inf])),
+    )
+
+
 def main() -> None:
     check_cp_projector()
     check_cp1_o3_pauli_ledger()
@@ -1010,6 +1137,7 @@ def main() -> None:
     check_sausage_repulsive_smatrix_ledgers()
     check_sausage_formal_yang_baxter_components()
     check_sausage_metric_curvature()
+    check_nonfinite_matrix_negative_controls()
     print("All sigma-model family checks passed.")
 
 

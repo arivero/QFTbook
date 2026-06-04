@@ -14,6 +14,7 @@ import numpy as np
 
 from check_utils import assert_array_close as _assert_array_close
 from check_utils import assert_close
+from check_utils import assert_finite_array as _assert_finite_array
 from check_utils import assert_leq as _assert_leq
 
 
@@ -182,7 +183,9 @@ def check_correlated_fit_coordinates():
         ],
         dtype=float,
     )
-    if float(np.linalg.eigvalsh(covariance)[0]) <= 0.0:
+    covariance = _assert_finite_array("correlated-fit covariance", covariance, ndim=2)
+    covariance_eigenvalues = _assert_finite_array("correlated-fit covariance eigenvalues", np.linalg.eigvalsh(covariance))
+    if float(covariance_eigenvalues[0]) <= 0.0:
         raise AssertionError("correlated-fit covariance test matrix is not positive definite")
 
     inverse_covariance = np.linalg.inv(covariance)
