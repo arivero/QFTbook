@@ -15,7 +15,9 @@ boundary, the finite BK-closure algebra/error estimate, and the projective
 cylinder-limit error budget for passing finite weak JIMWLK equations to a
 continuum Wilson-line state.  They also check the residual telescope that
 turns the Wilson-line state and impact factor into a tested measured small-x
-observable.
+observable, and a finite leading-DIS dipole channel in which photon
+wave-function weights propagate rapidity, BK-closure, and endpoint errors to
+the measured bin.
 """
 
 from __future__ import annotations
@@ -373,6 +375,216 @@ def check_small_x_measured_observable_residual_budget() -> None:
     )
 
 
+def check_leading_dis_dipole_observable_channel() -> None:
+    """Check the finite leading small-x DIS dipole observable ledger."""
+
+    q2 = Fraction(9)
+    z_cells = (
+        (Fraction(1, 5), Fraction(1, 6)),
+        (Fraction(2, 5), Fraction(1, 3)),
+        (Fraction(3, 5), Fraction(1, 3)),
+        (Fraction(4, 5), Fraction(1, 6)),
+    )
+    r_weights = {"small": Fraction(2, 7), "mid": Fraction(5, 7)}
+    b_weights = {"central": Fraction(3, 5), "edge": Fraction(2, 5)}
+    k0_sq = {"small": Fraction(3, 2), "mid": Fraction(5, 4)}
+    k1_sq = {"small": Fraction(5, 2), "mid": Fraction(7, 5)}
+    flavors = (
+        {"charge2": Fraction(4, 9), "mass2": Fraction(1, 25)},
+        {"charge2": Fraction(1, 9), "mass2": Fraction(4, 25)},
+    )
+    test_bin = {
+        ("small", "central"): Fraction(5, 4),
+        ("small", "edge"): Fraction(1, 3),
+        ("mid", "central"): Fraction(2, 3),
+        ("mid", "edge"): Fraction(1, 2),
+    }
+
+    def epsilon2(z: Fraction, flavor: dict[str, Fraction]) -> Fraction:
+        return z * (1 - z) * q2 + flavor["mass2"]
+
+    def photon_weight(
+        polarization: str,
+        z: Fraction,
+        r_label: str,
+        flavor: dict[str, Fraction],
+    ) -> Fraction:
+        charge2 = flavor["charge2"]
+        mass2 = flavor["mass2"]
+        spin_t = z * z + (1 - z) * (1 - z)
+        if polarization == "T":
+            return charge2 * (
+                spin_t * epsilon2(z, flavor) * k1_sq[r_label]
+                + mass2 * k0_sq[r_label]
+            )
+        if polarization == "L":
+            return charge2 * 4 * q2 * z * z * (1 - z) * (1 - z) * k0_sq[r_label]
+        raise ValueError(f"unknown polarization {polarization!r}")
+
+    for polarization in ("T", "L"):
+        for z, _weight in z_cells:
+            for r_label in r_weights:
+                for flavor in flavors:
+                    assert_equal(
+                        f"{polarization} photon kernel z-reflection symmetry",
+                        photon_weight(polarization, z, r_label, flavor),
+                        photon_weight(polarization, 1 - z, r_label, flavor),
+                    )
+
+    bk_n = {
+        ("small", "central"): Fraction(1, 5),
+        ("small", "edge"): Fraction(1, 3),
+        ("mid", "central"): Fraction(2, 5),
+        ("mid", "edge"): Fraction(1, 2),
+    }
+    dipole_error = {
+        ("small", "central"): Fraction(1, 20),
+        ("small", "edge"): Fraction(0),
+        ("mid", "central"): Fraction(0),
+        ("mid", "edge"): Fraction(0),
+    }
+    exact_n = {
+        key: value + dipole_error[key]
+        for key, value in bk_n.items()
+    }
+
+    def dipole_observable(
+        polarization: str,
+        amplitude: dict[tuple[str, str], Fraction],
+    ) -> Fraction:
+        total = Fraction(0)
+        for z, z_weight in z_cells:
+            for r_label, r_weight in r_weights.items():
+                for b_label, b_weight in b_weights.items():
+                    measure = (
+                        z_weight
+                        * r_weight
+                        * b_weight
+                        * test_bin[(r_label, b_label)]
+                    )
+                    kernel_sum = sum(
+                        photon_weight(polarization, z, r_label, flavor)
+                        for flavor in flavors
+                    )
+                    total += 2 * measure * kernel_sum * amplitude[(r_label, b_label)]
+        return total
+
+    for polarization in ("T", "L"):
+        exact_observable = dipole_observable(polarization, exact_n)
+        bk_observable = dipole_observable(polarization, bk_n)
+        actual_error = exact_observable - bk_observable
+
+        propagated_bound = Fraction(0)
+        unweighted_bound = Fraction(0)
+        for z, z_weight in z_cells:
+            for r_label, r_weight in r_weights.items():
+                for b_label, b_weight in b_weights.items():
+                    measure = (
+                        z_weight
+                        * r_weight
+                        * b_weight
+                        * abs(test_bin[(r_label, b_label)])
+                    )
+                    kernel_sum = sum(
+                        photon_weight(polarization, z, r_label, flavor)
+                        for flavor in flavors
+                    )
+                    propagated_bound += (
+                        2
+                        * measure
+                        * kernel_sum
+                        * abs(dipole_error[(r_label, b_label)])
+                    )
+                    unweighted_bound += (
+                        2
+                        * measure
+                        * abs(dipole_error[(r_label, b_label)])
+                    )
+
+        assert_equal(
+            f"{polarization} DIS dipole error equals weighted BK image",
+            actual_error,
+            propagated_bound,
+        )
+        assert_gt(
+            f"{polarization} DIS photon kernel is necessary in the error budget",
+            abs(actual_error),
+            unweighted_bound,
+        )
+
+    def matvec(
+        matrix: tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]],
+        vector: tuple[Fraction, Fraction],
+    ) -> tuple[Fraction, Fraction]:
+        return (
+            matrix[0][0] * vector[0] + matrix[0][1] * vector[1],
+            matrix[1][0] * vector[0] + matrix[1][1] * vector[1],
+        )
+
+    def dot(left: tuple[Fraction, Fraction], right: tuple[Fraction, Fraction]) -> Fraction:
+        return left[0] * right[0] + left[1] * right[1]
+
+    generator = (
+        (Fraction(2, 3), Fraction(1, 5)),
+        (Fraction(1, 5), Fraction(1, 2)),
+    )
+    target_state = (Fraction(3, 7), Fraction(4, 7))
+    impact_factor = (
+        dipole_observable("T", bk_n),
+        dipole_observable("L", bk_n),
+    )
+    target_rapidity_term = dot(target_state, matvec(generator, impact_factor))
+    projectile_subtraction = matvec(generator, impact_factor)
+
+    assert_equal(
+        "DIS rapidity-separation cancellation",
+        target_rapidity_term - dot(target_state, projectile_subtraction),
+        Fraction(0),
+    )
+    assert_gt(
+        "wrong rapidity-subtraction sign leaves a measured residual",
+        abs(target_rapidity_term + dot(target_state, projectile_subtraction)),
+        Fraction(0),
+    )
+
+    delta, z = sp.symbols("delta z")
+    transverse_tail = sp.integrate(
+        z**2 + (1 - z) ** 2,
+        (z, 0, delta),
+    )
+    longitudinal_tail = sp.integrate(
+        4 * z**2 * (1 - z) ** 2,
+        (z, 0, delta),
+    )
+    assert_zero(
+        "transverse endpoint spin primitive",
+        transverse_tail - (delta - delta**2 + sp.Rational(2, 3) * delta**3),
+    )
+    assert_zero(
+        "longitudinal endpoint spin primitive",
+        longitudinal_tail
+        - (
+            sp.Rational(4, 3) * delta**3
+            - 2 * delta**4
+            + sp.Rational(4, 5) * delta**5
+        ),
+    )
+
+    endpoint = sp.Rational(1, 10)
+    assert_leq(
+        "transverse endpoint spin bound",
+        transverse_tail.subs(delta, endpoint),
+        endpoint,
+        tol=Fraction(0),
+    )
+    assert_leq(
+        "longitudinal endpoint spin bound",
+        longitudinal_tail.subs(delta, endpoint),
+        sp.Rational(4, 3) * endpoint**3,
+        tol=Fraction(0),
+    )
+
+
 def main() -> None:
     check_trace_delta_kernel_coefficient()
     check_transverse_inversion_covariance()
@@ -382,9 +594,11 @@ def main() -> None:
     check_finite_bk_error_bound_lipschitz_constant()
     check_projective_jimwlk_cylinder_limit_budget()
     check_small_x_measured_observable_residual_budget()
+    check_leading_dis_dipole_observable_channel()
     print(
         "All QCD small-x/BFKL, finite Wilson-line, BK-closure, "
-        "projective JIMWLK-limit, and measured-observable budget checks passed."
+        "projective JIMWLK-limit, measured-observable budget, and leading DIS "
+        "dipole-channel checks passed."
     )
 
 

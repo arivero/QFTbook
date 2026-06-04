@@ -336,7 +336,13 @@ Current checks:
   residual telescope: impact-factor matching, rapidity subtraction,
   projective regulator removal, evolution, closure, and power remainders add
   to the exact tested-observable mismatch, and omitting either the
-  impact-factor or BK-closure entry under-budgets the finite example.
+  impact-factor or BK-closure entry under-budgets the finite example.  It
+  now also checks a leading inclusive-DIS dipole channel: the transverse and
+  longitudinal photon-kernel spin factors are symmetric under
+  \(z\leftrightarrow 1-z\), the BK dipole error is propagated through the
+  measured photon-weighted bin, the rapidity-separation derivative cancels
+  only with the projectile subtraction sign, and the endpoint spin-factor
+  primitives obey the stated finite-bin bounds.
 - `qcd_tmd_gpd_checks.py`: symbolic checks for the Volume II QCD TMD/GPD
   convention block, including Collins--Soper/UV integrability, finite TMD
   scheme-change covariance, fixed-product rapidity-scale cancellation in

@@ -586,6 +586,17 @@ The chapter must define and derive:
       JIMWLK use different entries in this ladder, so finite checks of
       individual identities are explicitly inputs to, not replacements for,
       process-level factorization theorems.
+22bd. The leading small-\(x\) inclusive-DIS dipole channel is now an
+      instantiated measured-observable bridge rather than an abstract
+      Wilson-line statement: the transverse/longitudinal photon wave-function
+      weights define the tested bin, rapidity-separation cancellation is
+      written as an equality between target JIMWLK evolution and projectile
+      impact-factor subtraction, BK/JIMWLK errors are pushed through the same
+      photon kernel, and endpoint/finite-\(Q\) tails remain declared
+      remainders with explicit retained-bin estimates.  The small-\(x\)
+      section now also carries point-of-use primary citations for the
+      BFKL kernel/eigenvalue, virtual-photon dipole representation, Balitsky/BK
+      hierarchy, and JIMWLK Wilson-line evolution.
 22c. Inclusive DIS factorization is recorded as a leading-twist datum with a
      distributional remainder estimate on compact Bjorken-\(x\) intervals.  The
      threshold \(x\to1\) and small-\(x\) limits are separate boundary problems,
@@ -908,6 +919,18 @@ The chapter must define and derive:
   `calculation-checks/qcd_bfkl_small_x_checks.py` exact example checks the
   telescope and includes negative controls for omitted impact-factor and
   closure entries.
+- 2026-06-04 issue #630 leading inclusive-DIS dipole continuation: instantiated
+  the measured small-\(x\) bridge for the virtual-photon channel, including
+  transverse and longitudinal \(q\bar q\) wave-function weights, the
+  photon-kernel convolution defining the tested bin, the rapidity-separation
+  cancellation equation, BK/JIMWLK error propagation through the measured
+  kernel, and endpoint/finite-\(Q\) retained-bin estimates.  The companion
+  `calculation-checks/qcd_bfkl_small_x_checks.py` now verifies the kernel
+  symmetries, photon-weighted BK error image, rapidity-subtraction sign, and
+  endpoint spin-factor primitives, so this pass is a physical DIS-channel
+  instantiation rather than another abstract residual ledger.  The same pass
+  added point-of-use primary references for BFKL, virtual-photon dipole DIS,
+  Balitsky/BK evolution, and the JIMWLK Wilson renormalization group.
 - 2026-05-28 issue #630 Drell--Yan/Glauber pass: added the Drell--Yan
   hadronic tensor, leading-power kinematics, TMD factorization datum with
   past-pointing staples, finite tensor-product unitarity lemma for the
