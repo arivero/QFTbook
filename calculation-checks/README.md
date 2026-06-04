@@ -1526,9 +1526,12 @@ Current checks:
   state counting, connected diagonal subset combinatorics, and the
   free-Majorana two-particle Bessel-reduction prefactor and separated-window
   rapidity-tail bookkeeping, plus the interacting one-species growth-window
-  particle-number and rapidity-cut tail bounds with negative controls for
-  missing factorial suppression, omitted union-bound factors, and use outside
-  the particle-tail smallness condition.
+  particle-number and rapidity-cut tail bounds, the thermal
+  Leclair-Mussardo one-point residual and tail budget, and negative controls
+  for missing factorial suppression, omitted union-bound factors, use outside
+  the particle-tail smallness condition, exact TBA occupations overread as
+  local expectation values, and symmetric diagonal finite parts substituted
+  for connected diagonal ones.
 - `ising_metropolis_finite_checks.py`: exact enumeration checks for the
   `qft_scripts/ising2d_metropolis.py` companion script, verifying the local
   energy difference and detailed balance on the \(2\times2\) periodic Ising

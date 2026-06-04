@@ -789,6 +789,149 @@ form factor.  The formula is meaningful only with a fixed prescription for
 the TBA kernel, the connected diagonal finite part, and the convergence
 domain.
 
+\begin{controlledapproximation}[Thermal one-point reconstruction package]
+\label{ca:thermal-lm-one-point-reconstruction-package}
+Formula~\eqref{eq:lm-connected-diagonal-series} is a local observable statement
+only after the thermal state, connected diagonal prescription, and convergence
+window are tied to the same finite-volume thermodynamic limit.  For a retained
+particle number \(N\), rapidity cutoff \(\Lambda\), approximate occupation
+\(\widehat n_a(\theta)\), and chosen connected diagonal representatives
+\(\widehat F^{\mathcal O}_{2n,c}\), define
+\begin{equation}
+\begin{aligned}
+  \mathcal L^{\mathcal O}_{R;N,\Lambda}
+  &:=
+  \sum_{n=0}^{N}\frac{1}{n!}
+  \sum_{a_1,\ldots,a_n}
+  \int_{[-\Lambda,\Lambda]^n}
+  \prod_{j=1}^n\frac{\dd\theta_j}{2\pi}\,
+  \prod_{j=1}^n\widehat n_{a_j}(\theta_j)\,
+  \widehat F^{\mathcal O}_{2n,c}(\theta_1,\ldots,\theta_n).
+\end{aligned}
+  \label{eq:thermal-lm-retained-approximant}
+\end{equation}
+The target local KMS expectation in the same theory has the residual
+decomposition
+\begin{equation}
+\begin{aligned}
+  \langle\mathcal O\rangle_{R,{\rm loc}}
+  &=
+  \mathcal L^{\mathcal O}_{R;N,\Lambda}
+  +\Delta_{\rm TBA}
+  +\Delta_{\rm cd}
+  +\Delta_N
+  +\Delta_\Lambda  \\
+  &\qquad
+  +\Delta_{\rm th}
+  +\Delta_{\rm op}.
+\end{aligned}
+  \label{eq:thermal-lm-residual-decomposition}
+\end{equation}
+Here \(\Delta_{\rm TBA}\) is the pseudoenergy/occupation and kernel-convention
+error; \(\Delta_{\rm cd}\) is the connected-diagonal finite-part and contact
+extension error; \(\Delta_N\) and \(\Delta_\Lambda\) are the particle-number
+and rapidity-cut tails; \(\Delta_{\rm th}\) is the finite-volume Gibbs-trace to
+thermodynamic-KMS-state error; and \(\Delta_{\rm op}\) contains the local
+operator domain, positivity, and completeness comparison with the Hilbert-space
+thermal state.  If
+\begin{equation}
+  |\Delta_a|\le E_a,
+  \qquad
+  a\in\{\mathrm{TBA},\mathrm{cd},N,\Lambda,\mathrm{th},\mathrm{op}\},
+  \label{eq:thermal-lm-component-bounds}
+\end{equation}
+then
+\begin{equation}
+  \left|
+  \langle\mathcal O\rangle_{R,{\rm loc}}
+  -
+  \mathcal L^{\mathcal O}_{R;N,\Lambda}
+  \right|
+  \le
+  E_{\rm TBA}+E_{\rm cd}+E_N+E_\Lambda+E_{\rm th}+E_{\rm op}.
+  \label{eq:thermal-lm-total-bound}
+\end{equation}
+Thus an exact numerical solution of the TBA equations supplies only the
+occupation coordinate in
+\eqref{eq:thermal-lm-retained-approximant}.  A thermal local expectation value
+also requires the connected diagonal prescription, thermodynamic state limit,
+and local-operator reconstruction inputs.
+\end{controlledapproximation}
+
+\begin{controlledapproximation}[Thermal Leclair--Mussardo convergence window]
+\label{ca:thermal-lm-convergence-window}
+For a one-species massive diagonal model, a useful sufficient condition for the
+tail entries in
+Controlled Approximation~\ref{ca:thermal-lm-one-point-reconstruction-package}
+is a joint occupation/form-factor majorant.  Suppose that on the chosen
+temperature interval
+\begin{equation}
+  |\widehat n(\theta)|
+  \le
+  C_{\rm occ}\exp[-a\cosh\theta],
+  \qquad a>0,
+  \label{eq:thermal-lm-occupation-majorant}
+\end{equation}
+and that the connected diagonal representatives obey
+\begin{equation}
+  \left|
+  \widehat F^{\mathcal O}_{2n,c}(\theta_1,\ldots,\theta_n)
+  \right|
+  \le
+  C_{\mathcal O} B_{\mathcal O}^{\,n}
+  \prod_{j=1}^n e^{\gamma|\theta_j|}.
+  \label{eq:thermal-lm-connected-diagonal-majorant}
+\end{equation}
+Define
+\begin{equation}
+  I_\gamma^T(a)
+  =
+  \int_{\mathbb R}
+  \frac{\dd\theta}{2\pi}\,
+  e^{-a\cosh\theta+\gamma|\theta|},
+  \qquad
+  X_T=C_{\rm occ}B_{\mathcal O}I_\gamma^T(a).
+  \label{eq:thermal-lm-one-particle-majorant}
+\end{equation}
+Then the absolute value of the \(n\)th retained thermal diagonal sector is at
+most \(C_{\mathcal O}X_T^n/n!\).  If \(X_T<N+2\), the omitted
+particle-number tail is bounded by
+\begin{equation}
+  E_N
+  \le
+  C_{\mathcal O}
+  \frac{X_T^{N+1}}{(N+1)!}
+  \frac{1}{1-X_T/(N+2)}.
+  \label{eq:thermal-lm-particle-tail-bound}
+\end{equation}
+For a rapidity cutoff \(\Lambda\), set
+\begin{equation}
+  I_{\gamma,\Lambda}^{T,{\rm tail}}(a)
+  =
+  \int_{|\theta|>\Lambda}
+  \frac{\dd\theta}{2\pi}\,
+  e^{-a\cosh\theta+\gamma|\theta|}.
+  \label{eq:thermal-lm-rapidity-tail-integral}
+\end{equation}
+The difference between the sectors \(1\le n\le N\) integrated over all
+rapidities and the same sectors restricted to \([-\Lambda,\Lambda]^n\) obeys
+\begin{equation}
+  E_\Lambda
+  \le
+  C_{\mathcal O}C_{\rm occ}B_{\mathcal O}
+  I_{\gamma,\Lambda}^{T,{\rm tail}}(a)
+  \sum_{k=0}^{N-1}\frac{X_T^k}{k!}.
+  \label{eq:thermal-lm-rapidity-cut-bound}
+\end{equation}
+These bounds are deliberately tied to the connected diagonal finite part and
+thermal occupation convention used in
+\eqref{eq:lm-connected-diagonal-series}.  Replacing
+\(\widehat F_{2n,c}^{\mathcal O}\) by symmetric diagonal finite parts, moving
+statistics between \(\widehat n\) and the form factor, or changing the TBA
+kernel convention changes the retained coordinate and must be recorded in
+\(\Delta_{\rm cd}\) or \(\Delta_{\rm TBA}\).
+\end{controlledapproximation}
+
 \section{Reconstruction Boundary}
 
 The finite-volume form-factor formalism supplies a computable chain

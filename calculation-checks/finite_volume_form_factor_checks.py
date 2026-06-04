@@ -12,6 +12,9 @@ The checks cover algebraic identities used in the finite-volume chapter:
   distance window;
 * interacting one-species form-factor growth-window bookkeeping for
   particle-number and rapidity-cut tails;
+* Leclair-Mussardo thermal one-point reconstruction bookkeeping, including
+  retained connected-diagonal coordinates, residual propagation, and thermal
+  particle/rapidity tail bounds;
 * finite reconstruction residual budget separating finite-volume, tail,
   diagonal/contact, domain, locality, and completeness errors.
 
@@ -25,13 +28,15 @@ determinant, Gaudin-density cancellation in the sum-integral limit, connected
 diagonal subset combinatorics, the free-Majorana energy-density Bessel
 prefactor, the separated-window rapidity-cut tail bound for that local
 observable, the interacting form-factor growth-window particle-number and
-rapidity-cut tail bounds, and the residual ledger separating finite-volume,
-tail, diagonal/contact, domain, locality, and completeness errors.
+rapidity-cut tail bounds, the thermal Leclair-Mussardo one-point retained
+coordinate and residual/tail budget, and the residual ledger separating
+finite-volume, tail, diagonal/contact, domain, locality, and completeness
+errors.
 Independent construction: the checks recompute the Jacobian determinant,
-state-counting cancellations, subset sums, Bessel prefactors, elementary
-rapidity-tail constants, tail primitive, interacting growth-window majorants,
-and residual decompositions directly from finite formulas rather than importing
-chapter display strings.
+state-counting cancellations, subset sums, thermal connected-diagonal finite
+sums, Bessel prefactors, elementary rapidity-tail constants, tail primitive,
+interacting growth-window majorants, and residual decompositions directly from
+finite formulas rather than importing chapter display strings.
 Imported assumptions: the tests use diagonal Bethe-Yang quantization, finite
 nonzero Gaudin densities, regular connected diagonal finite parts, the
 free-Majorana energy operator's two-particle form-factor support after the
@@ -43,7 +48,9 @@ decay from using the wrong cosh lower bound, confusing the free energy
 operator's zero particle-number tail with the nonzero rapidity-cut tail, and
 accidentally vanishing reconstruction residuals are rejected, as are missing
 factorial suppression, omitted union-bound factors in interacting rapidity
-cuts, and particle-tail estimates used outside their small-tail condition.
+cuts, particle-tail estimates used outside their small-tail condition, exact
+TBA occupation data overread as a local expectation, and symmetric diagonal
+finite parts substituted for the connected diagonal prescription.
 Scope boundary: a pass checks finite algebra, normalization, and explicit
 tail-bookkeeping coordinates for the displayed finite-volume/form-factor
 claims; it does not prove general form-factor convergence, construct local
@@ -324,6 +331,149 @@ def check_interacting_form_factor_growth_window() -> None:
         raise AssertionError("negative control failed: higher retained sectors needed no union factor")
 
 
+def check_thermal_lm_one_point_reconstruction_package() -> None:
+    retained_coordinate = Fraction(17, 9)
+    residuals = {
+        "TBA occupation": Fraction(1, 80),
+        "connected diagonal": -Fraction(1, 90),
+        "particle tail": Fraction(1, 126),
+        "rapidity tail": -Fraction(1, 210),
+        "thermodynamic limit": Fraction(1, 168),
+        "operator reconstruction": -Fraction(1, 280),
+    }
+    residual_total = sum(residuals.values(), Fraction(0))
+    target_local_expectation = retained_coordinate + residual_total
+
+    assert_equal(
+        "thermal LM residual decomposition",
+        target_local_expectation - retained_coordinate,
+        residual_total,
+    )
+    if residual_total == 0:
+        raise AssertionError("thermal LM residual budget accidentally vanished")
+
+    residual_bound = sum(abs(value) for value in residuals.values())
+    _assert_leq(
+        "thermal LM residual triangle budget",
+        abs(residual_total),
+        residual_bound,
+        tol=Fraction(0),
+    )
+
+    # Exact TBA occupation data supplies only one coordinate in the thermal
+    # local-observable calculation.
+    exact_tba_residual = Fraction(0)
+    non_tba_residual = residual_total - residuals["TBA occupation"]
+    non_tba_target = retained_coordinate + exact_tba_residual + non_tba_residual
+    assert_equal(
+        "exact TBA occupation leaves non-TBA LM residual",
+        non_tba_target - retained_coordinate,
+        non_tba_residual,
+    )
+    if non_tba_residual == 0:
+        raise AssertionError("negative control failed: exact TBA solved every LM residual")
+
+    vacuum_coordinate = Fraction(5, 11)
+    occupation_1 = Fraction(1, 3)
+    occupation_pair = Fraction(1, 6)
+    connected_f2 = Fraction(7, 13)
+    connected_f4 = -Fraction(11, 17)
+    symmetric_f4 = Fraction(19, 23)
+    connected_retained_coordinate = (
+        vacuum_coordinate
+        + occupation_1 * connected_f2
+        + occupation_pair * connected_f4 / factorial(2)
+    )
+    symmetric_retained_coordinate = (
+        vacuum_coordinate
+        + occupation_1 * connected_f2
+        + occupation_pair * symmetric_f4 / factorial(2)
+    )
+    if connected_retained_coordinate == symmetric_retained_coordinate:
+        raise AssertionError(
+            "negative control failed: symmetric diagonal substitution did not change LM coordinate"
+        )
+
+    c_o = Fraction(5, 7)
+    c_occ = Fraction(2, 3)
+    b_o = Fraction(3, 5)
+    i_majorant = Fraction(5, 4)
+    x_t = c_occ * b_o * i_majorant
+    assert_equal("thermal LM one-particle majorant X_T", x_t, Fraction(1, 2))
+
+    retained_order = 3
+    if not x_t < retained_order + 2:
+        raise AssertionError("test fixture should satisfy the thermal particle-tail condition")
+    particle_tail_bound = (
+        c_o
+        * x_t ** (retained_order + 1)
+        / factorial(retained_order + 1)
+        / (1 - x_t / (retained_order + 2))
+    )
+    first_two_omitted = c_o * (
+        x_t ** (retained_order + 1) / factorial(retained_order + 1)
+        + x_t ** (retained_order + 2) / factorial(retained_order + 2)
+    )
+    _assert_leq(
+        "thermal LM particle-number tail finite sample below certified bound",
+        first_two_omitted,
+        particle_tail_bound,
+        tol=Fraction(0),
+    )
+
+    bad_x_t = Fraction(6, 1)
+    if bad_x_t < retained_order + 2:
+        raise AssertionError("negative control should violate the thermal tail-ratio condition")
+    bad_denominator = 1 - bad_x_t / (retained_order + 2)
+    if bad_denominator > 0:
+        raise AssertionError("negative control failed: invalid thermal tail denominator looked usable")
+
+    thermal_tail = Fraction(1, 11)
+    retained_i_majorant = i_majorant - thermal_tail
+    exact_cut_error = Fraction(0)
+    union_bound = Fraction(0)
+    for n in range(1, retained_order + 1):
+        coefficient = c_o * (c_occ * b_o) ** n / factorial(n)
+        exact_sector_error = coefficient * (
+            i_majorant**n - retained_i_majorant**n
+        )
+        sector_union_bound = (
+            coefficient
+            * n
+            * i_majorant ** (n - 1)
+            * thermal_tail
+        )
+        _assert_leq(
+            f"thermal LM rapidity-cut sector union bound n={n}",
+            exact_sector_error,
+            sector_union_bound,
+            tol=Fraction(0),
+        )
+        exact_cut_error += exact_sector_error
+        union_bound += sector_union_bound
+
+    chapter_cut_bound = (
+        c_o
+        * c_occ
+        * b_o
+        * thermal_tail
+        * sum(x_t**k / factorial(k) for k in range(retained_order))
+    )
+    assert_equal(
+        "thermal LM rapidity-cut bound equals finite union-bound sum",
+        union_bound,
+        chapter_cut_bound,
+    )
+    _assert_leq(
+        "thermal LM rapidity-cut exact error below certified bound",
+        exact_cut_error,
+        chapter_cut_bound,
+        tol=Fraction(0),
+    )
+    if exact_cut_error <= c_o * c_occ * b_o * thermal_tail:
+        raise AssertionError("negative control failed: higher thermal sectors needed no union factor")
+
+
 def check_subset_count() -> None:
     for n in range(0, 8):
         count = sum(1 for r in range(n + 1) for _ in combinations(range(n), r))
@@ -376,6 +526,7 @@ def main() -> None:
     check_bessel_prefactor_reduction()
     check_majorana_energy_rapidity_tail_bound()
     check_interacting_form_factor_growth_window()
+    check_thermal_lm_one_point_reconstruction_package()
     check_subset_count()
     check_reconstruction_residual_budget()
     print("All finite-volume form-factor checks passed.")

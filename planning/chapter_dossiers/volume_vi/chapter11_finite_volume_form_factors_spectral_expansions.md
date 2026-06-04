@@ -30,6 +30,15 @@ normalization and convergence obligations explicit.
   observable window.
 - `n_a(theta)`: TBA occupation factor.
 - `epsilon_a(theta)`: TBA pseudoenergy.
+- `\mathcal L^O_{R;N,Lambda}`: retained thermal Leclair-Mussardo one-point
+  approximant with particle cutoff \(N\) and rapidity cutoff \(\Lambda\).
+- `Delta_TBA`, `Delta_cd`, `Delta_N`, `Delta_Lambda`, `Delta_th`,
+  `Delta_op`: residual coordinates separating TBA occupation/kernel,
+  connected-diagonal prescription, particle tail, rapidity-cut tail,
+  thermodynamic-state, and local-operator reconstruction errors.
+- `I^T_gamma(a)`, `I^{T,tail}_{gamma,Lambda}(a)`, `X_T`: thermal
+  one-particle and tail majorants for the connected-diagonal LM convergence
+  window.
 
 ## Claim Ledger
 
@@ -68,14 +77,21 @@ normalization and convergence obligations explicit.
     positivity, domains, or scattering-state completeness.
 16. States the thermal connected-diagonal Leclair-Mussardo type series with
     the TBA and convergence dependencies explicit.
-17. Labels the reconstruction chain arrow by arrow: on-shell scattering data,
+17. Adds a thermal one-point reconstruction package: the retained LM
+    coordinate is separated from residuals for TBA occupation/kernel choice,
+    connected diagonal finite part, particle-number tail, rapidity-cut tail,
+    thermodynamic KMS limit, and local-operator reconstruction.
+18. Gives a one-species thermal convergence window with \(X_T\), an explicit
+    particle-number tail, and a rapidity-cut union bound; the statement
+    emphasizes that exact TBA data controls only the occupation coordinate.
+19. Labels the reconstruction chain arrow by arrow: on-shell scattering data,
     operator bootstrap/crossing, finite-volume Gaudin-normalized matrix
     elements, and the final analytic reconstruction of distributions.
-18. Separates finite-volume calculability from the open construction theorem
+20. Separates finite-volume calculability from the open construction theorem
     for local QFT from form-factor data, with the free Majorana chain
     identified as theorem-level only because the local free field is already
     constructed.
-19. Adds a separated-Euclidean reconstruction package and residual budget:
+21. Adds a separated-Euclidean reconstruction package and residual budget:
     finite-volume-to-rapidity error, particle-number tail, diagonal/contact
     extension, domain/positivity, locality, and sector-completeness residuals
     must all be controlled before a Gaudin-normalized finite-volume approximant
@@ -91,8 +107,11 @@ normalization and convergence obligations explicit.
   free-Majorana separated-window rapidity-tail prefactor and primitive, the
   interacting growth-window sector/tail majorants with negative controls for
   missing factorial suppression, omitted rapidity-cut union factors, and
-  invalid particle-tail ratios, and the finite reconstruction residual budget
-  with a deliberately nonzero analytic and operator-level defect.
+  invalid particle-tail ratios, the thermal LM one-point retained coordinate,
+  residual decomposition, particle-tail and rapidity-tail budgets with
+  negative controls against overreading exact TBA occupations and substituting
+  symmetric diagonal finite parts, and the finite reconstruction residual
+  budget with a deliberately nonzero analytic and operator-level defect.
 
 ## Figure Ledger
 
@@ -129,3 +148,9 @@ decomposition of diagonal disconnected contractions.
   particle-number-tail and rapidity-cut estimates for separated Euclidean
   observables, while keeping locality, positivity, domains, contact extension,
   and completeness as independent reconstruction obligations.
+- 2026-06-04 issue #728 thermal LM one-point pass: added a retained
+  Leclair-Mussardo approximant, residual decomposition, and thermal tail
+  window for finite-temperature one-point functions.  The companion check
+  verifies that exact TBA occupation data does not eliminate connected
+  diagonal, thermodynamic-state, or local-operator residuals, and that
+  symmetric diagonal finite parts change the retained coordinate.
