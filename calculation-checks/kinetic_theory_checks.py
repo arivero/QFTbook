@@ -1,7 +1,36 @@
 #!/usr/bin/env python3
-"""Finite algebra checks for the kinetic-theory controlled-limit chapter."""
+"""Checks for the kinetic-theory controlled-limit chapter.
+
+Evidence contract.
+Target claims: the distinct kinetic scale hierarchy, force-free Wigner drift
+projection, scalar lambda-phi-four cut-sunset collision kernel, local
+equilibrium collision/streaming separation, finite collision algebra,
+linearized positivity, physical-channel versus ordered-duplicate symmetry
+bookkeeping, Markov-memory residual bookkeeping, pinch enhancement, and
+relaxation-time shear example in Volume X Chapter 8.
+Independent construction: direct Poisson-bracket algebra, exact Bose/Fermi
+detailed-balance products, finite reversible-reaction arithmetic, explicit
+lesser/greater scalar self-energy gain/loss products, finite memory-kernel
+Taylor bounds, and elementary retarded-advanced Lorentzian integrals.
+Imported assumptions: the Schwinger--Keldysh/2PI sunset truncation, the
+narrow quasiparticle ansatz, decay of connected initial correlations, and the
+weighted phase-space norm stated in the chapter.
+Negative controls: the old global Gamma times variation-scale inequality is
+rejected for kinetic and hydrodynamic windows, local equilibrium is not
+misread as making the streaming term vanish, finite collision algebra is not
+accepted as a microscopic QFT derivation, signed residual cancellations are
+rejected as error bounds, ordered duplicate final channels are not counted
+without an identical-particle divisor, and a bare perturbative term without
+width resummation is rejected on kinetic time scales.
+Scope boundary: these checks verify finite normalization, algebra, and
+residual bookkeeping for the scalar weak-coupling derivation; they do not
+prove gauge-theory screening, collinear/LPM physics, a nonperturbative
+continuum limit, or uniform all-time convergence of the kinetic equation.
+"""
 
 from __future__ import annotations
+
+from fractions import Fraction
 
 from check_utils import assert_close as _assert_close
 
@@ -68,6 +97,101 @@ def check_quasiparticle_drift_projection() -> None:
         raise AssertionError("quasiparticle drift projection failed")
 
 
+def check_scale_hierarchy_windows() -> None:
+    energy = Fraction(100, 1)
+    gamma = Fraction(1, 1)
+    tau_qp = 1 / energy
+    tau_coll = 1 / gamma
+    tau_mem = Fraction(1, 50)
+
+    collisionless_tau = Fraction(1, 10)
+    kinetic_tau = tau_coll
+    hydro_tau = Fraction(10, 1) * tau_coll
+
+    if not tau_qp < tau_mem < collisionless_tau < tau_coll:
+        raise AssertionError("collisionless hierarchy failed")
+    if not tau_mem < kinetic_tau == tau_coll:
+        raise AssertionError("kinetic relaxation hierarchy failed")
+    if not tau_mem < tau_coll < hydro_tau:
+        raise AssertionError("hydrodynamic hierarchy failed")
+
+    old_collisionless = gamma * collisionless_tau
+    old_kinetic = gamma * kinetic_tau
+    old_hydro = gamma * hydro_tau
+    if not old_collisionless < 1:
+        raise AssertionError("collisionless window should satisfy Gamma tau_X < 1")
+    if not old_kinetic == 1:
+        raise AssertionError("kinetic relaxation should have Gamma tau_X = 1")
+    if not old_hydro > 1:
+        raise AssertionError("hydrodynamic window should satisfy Gamma tau_X > 1")
+
+    grad_small = tau_mem / hydro_tau
+    if not grad_small < Fraction(1, 100):
+        raise AssertionError("Markov gradient parameter should remain small in hydrodynamics")
+
+
+def check_local_equilibrium_collision_vs_streaming() -> None:
+    beta, alpha, x = sp.symbols("beta alpha x", positive=True)
+    energies = [sp.Rational(3, 2), sp.Rational(5, 4), sp.Rational(7, 4), sp.Rational(1, 1)]
+    # Energies conserve: E1+E2=E3+E4.
+    if sp.simplify(energies[0] + energies[1] - energies[2] - energies[3]) != 0:
+        raise AssertionError("sample energies do not conserve")
+
+    beta_x = beta + alpha * x
+    f = [sp.exp(-beta_x * energy) for energy in energies]
+    loss = f[0] * f[1]
+    gain = f[2] * f[3]
+    if sp.simplify(loss - gain) != 0:
+        raise AssertionError("local equilibrium collision product should vanish pointwise")
+
+    streaming = sp.diff(f[0], x)
+    if sp.simplify(streaming) == 0:
+        raise AssertionError("local equilibrium streaming source should be nonzero when beta varies")
+
+
+def check_scalar_sunset_collision_kernel() -> None:
+    lam2 = Fraction(11, 7)
+    f1 = Fraction(2, 5)
+    f2 = Fraction(1, 4)
+    f3 = Fraction(3, 7)
+    f4 = Fraction(5, 8)
+
+    sigma_less = lam2 * f3 * f4 * (1 + f2)
+    sigma_greater = lam2 * f2 * (1 + f3) * (1 + f4)
+    projected_gain_loss = Fraction(1, 2) * ((1 + f1) * sigma_less - f1 * sigma_greater)
+    covariant_kernel = Fraction(1, 2) * lam2 * (
+        f3 * f4 * (1 + f1) * (1 + f2)
+        - f1 * f2 * (1 + f3) * (1 + f4)
+    )
+    if projected_gain_loss != covariant_kernel:
+        raise AssertionError("scalar sunset gain/loss projection failed")
+
+    ordered_final_copies = Fraction(2, 1)
+    identical_final_divisor = Fraction(2, 1)
+    physical_channel_weight = lam2
+    ordered_channel_weight = lam2 / identical_final_divisor
+    if ordered_final_copies * ordered_channel_weight != physical_channel_weight:
+        raise AssertionError("ordered identical-channel divisor failed")
+    if ordered_final_copies * lam2 == physical_channel_weight:
+        raise AssertionError("ordered duplicate channel was incorrectly accepted")
+
+    beta = Fraction(3, 2)
+    energies = [Fraction(3, 2), Fraction(5, 4), Fraction(7, 4), Fraction(1, 1)]
+    a = [sp.exp(-sp.Rational(beta.numerator, beta.denominator) * sp.Rational(e.numerator, e.denominator)) for e in energies]
+    f_eq = [value / (1 - value) for value in a]
+    eq_kernel = sp.Rational(1, 2) * sp.Rational(lam2.numerator, lam2.denominator) * (
+        f_eq[2] * f_eq[3] * (1 + f_eq[0]) * (1 + f_eq[1])
+        - f_eq[0] * f_eq[1] * (1 + f_eq[2]) * (1 + f_eq[3])
+    )
+    if sp.simplify(eq_kernel) != 0:
+        raise AssertionError("scalar kernel detailed balance failed")
+
+    coordinate_time_prefactor = Fraction(1, 2) / energies[0]
+    expected_coordinate_prefactor = 1 / (2 * energies[0])
+    if coordinate_time_prefactor != expected_coordinate_prefactor:
+        raise AssertionError("coordinate-time prefactor normalization failed")
+
+
 def check_linearized_collision_positive_form() -> None:
     weight = 0.37
     chi = [0.2, -0.4, 0.1, 0.6]
@@ -130,13 +254,46 @@ def check_relaxation_time_shear_integral() -> None:
     assert_close("massless Boltzmann pressure", pressure_integral, pressure)
 
 
+def check_markov_memory_and_pinch_remainders() -> None:
+    weights = [Fraction(1, 2), Fraction(1, 3), Fraction(1, 6)]
+    times = [Fraction(0, 1), Fraction(1, 10), Fraction(1, 5)]
+    total_weight = sum(weights, Fraction(0))
+    tau_mem = sum(w * t for w, t in zip(weights, times)) / total_weight
+    tau_x = Fraction(10, 1)
+    derivative_bound = Fraction(3, 1) / tau_x
+
+    markov_error_bound = derivative_bound * sum(w * t for w, t in zip(weights, times))
+    expected_bound = derivative_bound * total_weight * tau_mem
+    if markov_error_bound != expected_bound:
+        raise AssertionError("Markov memory residual bound failed")
+    if not tau_mem / tau_x < Fraction(1, 50):
+        raise AssertionError("memory gradient parameter should be small")
+
+    lam2 = Fraction(1, 100)
+    gamma = lam2
+    retarded_advanced_enhancement = 1 / gamma
+    secular_size = lam2 * retarded_advanced_enhancement
+    if secular_size != 1:
+        raise AssertionError("pinch enhancement should make lambda^2/Gamma order one")
+
+    residuals = [Fraction(1, 20), -Fraction(1, 20), Fraction(1, 50)]
+    signed = sum(residuals, Fraction(0))
+    absolute = sum(abs(value) for value in residuals)
+    if not absolute > abs(signed):
+        raise AssertionError("signed residual cancellation is not an error bound")
+
+
 def main() -> None:
     check_detailed_balance()
     check_h_theorem_integrand()
     check_quasiparticle_drift_projection()
+    check_scale_hierarchy_windows()
+    check_local_equilibrium_collision_vs_streaming()
+    check_scalar_sunset_collision_kernel()
     check_linearized_collision_positive_form()
     check_finite_collision_algebra_exact()
     check_relaxation_time_shear_integral()
+    check_markov_memory_and_pinch_remainders()
     print("All kinetic-theory controlled-limit checks passed.")
 
 

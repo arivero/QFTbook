@@ -34,6 +34,10 @@
       "risk_class": "broken gauge-theory external-state amplitudes"
     },
     {
+      "path": "kinetic_theory_checks.py",
+      "risk_class": "Schwinger-Keldysh kinetic collision kernel"
+    },
+    {
       "path": "eft_prediction_calculus_checks.py",
       "risk_class": "EFT prediction and decoupling"
     },

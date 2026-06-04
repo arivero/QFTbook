@@ -66,17 +66,54 @@ expansion.  Equivalently, near \(p^0=E_a(\mathbf p)\),
   \delta(p^0-E_a(\mathbf p))
   +\text{controlled off-shell remainder}.
 \]
-The pole approximation requires
+The pole approximation requires the spectral width to be small compared with
+the quasiparticle energy,
 \begin{equation}
-  \Gamma_a(\mathbf p)\ll E_a(\mathbf p),
-  \qquad
-  \Gamma_a(\mathbf p)\,\ell_{\rm variation}\ll1,
-  \label{eq:kinetic-quasiparticle-scale-assumptions}
+  \varepsilon_{\rm width}(\mathbf p)
+  =
+  \frac{\Gamma_a(\mathbf p)}{E_a(\mathbf p)}
+  \ll1.
+  \label{eq:kinetic-width-small-parameter}
 \end{equation}
-where \(\Gamma_a\) is the damping width and
-\(\ell_{\rm variation}\) is the spacetime scale over which \(f_a\) changes.
-These inequalities are hypotheses on the state and on the coupling regime;
-they are not consequences of conservation laws alone.
+It does not require one universal inequality involving
+\(\Gamma_a\ell_{\rm variation}\).  Let
+\[
+  \tau_{\rm qp}\sim E_a^{-1},\qquad
+  \tau_{\rm coll}\sim\Gamma_a^{-1},\qquad
+  \tau_{\rm mem},\qquad
+  \tau_X
+\]
+denote, respectively, the microscopic oscillation time, the damping or
+mean-free time, the memory time of the connected self-energy kernel, and the
+macroscopic time scale on which \(f_a(X,\mathbf p)\) varies.  The Markov
+gradient expansion requires
+\begin{equation}
+  \varepsilon_{\rm grad}
+  =
+  \frac{\tau_{\rm mem}}{\tau_X}\ll1,
+  \label{eq:kinetic-memory-gradient-small-parameter}
+\end{equation}
+with the analogous spatial statement using the memory length and the
+macroscopic gradient length.  The relation between \(\tau_X\) and
+\(\tau_{\rm coll}\) distinguishes regimes:
+\[
+\begin{array}{lll}
+\text{collisionless kinetic window} &
+  \tau_{\rm mem}\ll \tau_X\ll\tau_{\rm coll},
+  & \Gamma_a\tau_X\ll1,\\[2pt]
+\text{kinetic relaxation window} &
+  \tau_{\rm mem}\ll \tau_X\sim\tau_{\rm coll},
+  & \Gamma_a\tau_X=O(1),\\[2pt]
+\text{hydrodynamic window} &
+  \tau_{\rm mem}\ll\tau_{\rm coll}\ll\tau_X,
+  & \Gamma_a\tau_X\gg1 .
+\end{array}
+\]
+Thus a Boltzmann equation can describe relaxation on the collision time, while
+hydrodynamics is the still longer scale on which nonconserved kinetic modes
+have already decayed.  These inequalities are hypotheses on the state,
+coupling regime, and initial correlations; they are not consequences of
+conservation laws alone.
 
 \section{Quasiparticle Projection of the Two-Point Equation}
 \label{sec:kinetic-quasiparticle-projection-two-point-equation}
@@ -174,6 +211,222 @@ which is \eqref{eq:kinetic-projected-boltzmann-equation}.  Dividing by
 \(\mathbf v=\mathbf p/E\).
 \end{remark}
 
+\section{Microscopic Scalar Derivation of a Collision Kernel}
+\label{sec:kinetic-scalar-sk-collision-kernel}
+
+We now derive one collision kernel rather than only declaring it.  The example
+is deliberately modest: a weakly coupled real scalar with interaction
+\(-\lambda\phi^4/4!\), no gauge fields, no collinear singularities, and a
+single narrow quasiparticle branch.  Gauge-theory soft exchange, screening,
+collinear splitting, and LPM resummation are separate layers, not consequences
+of this scalar calculation.
+
+\begin{controlledapproximation}[Weak scalar 2PI/Kadanoff--Baym datum]
+\label{ca:kinetic-scalar-2pi-kb-datum}
+Fix a real scalar field in a regulated Schwinger--Keldysh theory with
+renormalized local interaction
+\[
+  \mathcal L_{\rm int}=-\frac{\lambda_R}{4!}\phi^4 .
+\]
+Use the two-particle-irreducible truncation that retains the sunset functional
+\begin{equation}
+  \Phi_2[G]
+  =
+  -\frac{\lambda_R^2}{48}
+  \int_{\mathcal C}\dd^Dx\,\dd^Dy\,
+  G(x,y)^4,
+  \label{eq:kinetic-scalar-2pi-sunset-functional}
+\end{equation}
+besides the local tadpole mass counterterm.  The local tadpole shifts the
+quasiparticle mass \(m_R\); it does not produce a \(2\to2\) collision kernel.
+The nonlocal self-energy obtained by differentiating
+\(\Phi_2\) has the sunset form
+\begin{equation}
+  \Sigma_{\mathcal C}(x,y)
+  =
+  -\frac{\ii\lambda_R^2}{6}\,G_{\mathcal C}(x,y)^3
+  +\Sigma_{\rm ct}(x,y),
+  \label{eq:kinetic-scalar-sunset-self-energy}
+\end{equation}
+where \(\Sigma_{\rm ct}\) is local in the renormalized mass/coupling chart.
+Assume:
+\begin{enumerate}
+\item the connected four-point initial correlations either vanish in the
+      prepared state or contribute a residual
+      \(\varepsilon_{\rm corr}\) after the microscopic transient;
+\item the memory kernel built from the connected self-energy decays in
+      relative time on a scale \(\tau_{\rm mem}\);
+\item the spectral function has the narrow positive-energy form
+      \eqref{eq:kinetic-narrow-spectral-form} with
+      \(\Gamma/E\ll1\);
+\item the Wigner transform varies on a scale \(\tau_X\) with
+      \(\tau_{\rm mem}/\tau_X\ll1\).
+\end{enumerate}
+\end{controlledapproximation}
+
+Under Controlled
+Approximation~\ref{ca:kinetic-scalar-2pi-kb-datum}, the lesser/greater
+Kadanoff--Baym equation has, to first Wigner-gradient order,
+\begin{equation}
+  \frac12
+  \{p^2-m_R^2-\operatorname{Re}\Sigma_R,\,
+    G^<\}_{\rm kin}
+  =
+  \frac12\left(\Sigma^<G^>-\Sigma^>G^<\right)
+  +R_{\rm grad}+R_{\rm mem}.
+  \label{eq:kinetic-scalar-kb-with-collision}
+\end{equation}
+The right side is the first place where irreversible kinetics enters.  In
+equilibrium the KMS relation makes it vanish.  Away from equilibrium it is a
+difference between gain and loss cuts of the sunset graph.
+
+\paragraph{Cut sunset and on-shell rates.}
+Insert the quasiparticle forms
+\begin{align}
+  G^<(X,p)
+  &=
+  2\pi\delta_+(p^2-m_R^2)\,f(X,\mathbf p)+G^<_{\rm off},\\
+  G^>(X,p)
+  &=
+  2\pi\delta_+(p^2-m_R^2)\,\bigl(1+f(X,\mathbf p)\bigr)+G^>_{\rm off},
+  \label{eq:kinetic-scalar-lesser-greater-on-shell}
+\end{align}
+where \(\delta_+(p^2-m^2)=\theta(p^0)\delta(p^2-m^2)\).  The cut sunset
+then gives, at \(p_1^0=E_1\),
+\begin{align}
+  \Sigma^<(X,p_1)
+  &=
+  \lambda_R^2
+  \int d\Pi_2d\Pi_3d\Pi_4\,
+  (2\pi)^D\delta^{(D)}(p_1+p_2-p_3-p_4)
+  \nonumber\\
+  &\qquad\qquad\times
+  f_3f_4(1+f_2)+R_{\Sigma<},
+  \label{eq:kinetic-scalar-sigma-lesser-cut}\\
+  \Sigma^>(X,p_1)
+  &=
+  \lambda_R^2
+  \int d\Pi_2d\Pi_3d\Pi_4\,
+  (2\pi)^D\delta^{(D)}(p_1+p_2-p_3-p_4)
+  \nonumber\\
+  &\qquad\qquad\times
+  f_2(1+f_3)(1+f_4)+R_{\Sigma>}.
+  \label{eq:kinetic-scalar-sigma-greater-cut}
+\end{align}
+The displayed coefficient is the tree channel weight
+\(|\mathcal M_{\phi\phi\to\phi\phi}|^2=\lambda_R^2\) in the scattering
+normalization of the previous volumes, after the sunset combinatorics has
+been reduced to one unordered \(\phi\phi\to\phi\phi\) channel.  If the same
+physics is implemented as an ordered final-state phase-space sum, the usual
+identical-particle divisor belongs to the channel weight.  The three internal
+on-shell lines in the sunset are precisely the partner particle and the two
+outgoing particles of the binary process.  The residuals \(R_{\Sigma<,>}\)
+collect off-shell spectral tails, higher gradients, memory corrections, and
+connected correlation corrections not represented by the product of two-point
+functions.
+
+Using
+\[
+  G^<(p_1)=2\pi\delta_+(p_1^2-m_R^2)f_1,\qquad
+  G^>(p_1)=2\pi\delta_+(p_1^2-m_R^2)(1+f_1),
+\]
+and projecting \eqref{eq:kinetic-scalar-kb-with-collision} on the positive
+mass shell gives
+\begin{align}
+  p_1^\mu\partial_\mu f_1
+  &=
+  \frac12
+  \int d\Pi_2d\Pi_3d\Pi_4\,
+  (2\pi)^D\delta^{(D)}(p_1+p_2-p_3-p_4)
+  \lambda_R^2
+  \nonumber\\
+  &\quad\times
+  \Big[
+  f_3f_4(1+f_1)(1+f_2)
+  -
+  f_1f_2(1+f_3)(1+f_4)
+  \Big]
+  +R_{\rm kin}.
+  \label{eq:kinetic-scalar-derived-boltzmann-kernel}
+\end{align}
+The factor \(1/2\) appears because the chapter writes the covariant equation
+\(p^\mu\partial_\mu f=\mathcal C[f]\); after division by \(E_1\) it is the
+usual coordinate-time prefactor \(1/(2E_1)\).  Identical-channel counting is
+fixed by the same physical-channel convention used for \(\lambda_R^2\);
+changing to an ordered channel convention moves the same finite factor into
+the channel weight, not into the distribution algebra.
+
+\paragraph{Memory, closure, and secular terms.}
+The Markov step is a Taylor expansion of a memory integral, not the
+replacement of \(\tau_{\rm mem}\) by the damping time.  If
+\[
+  \int_0^\infty\dd s\, |K(s)| <\infty,\qquad
+  \tau_{\rm mem}
+  =
+  \frac{\int_0^\infty\dd s\,s|K(s)|}{\int_0^\infty\dd s\,|K(s)|},
+\]
+then for a component of \(f\) varying on \(\tau_X\),
+\begin{equation}
+  \int_0^\infty\dd s\,K(s)f(X^0-s,\mathbf X,\mathbf p)
+  =
+  \left(\int_0^\infty\dd s\,K(s)\right)f(X,\mathbf p)
+  +O\!\left(\frac{\tau_{\rm mem}}{\tau_X}\right).
+  \label{eq:kinetic-markov-memory-expansion}
+\end{equation}
+The closure assumption is similarly explicit: connected higher correlators and
+initial correlations are either included in \(R_{\rm kin}\) or shown to decay
+after the microscopic transient.  This is the QFT version of molecular chaos.
+
+The same calculation explains why the kinetic time is nontrivial.  A naive
+fixed-order perturbation theory contains retarded-advanced products of the
+form
+\begin{equation}
+  G_R(p)G_A(p)
+  \simeq
+  \frac{1}{(p^2-m_R^2)^2+(p^0\Gamma)^2}
+  \longrightarrow
+  \frac{\pi}{p^0\Gamma}\delta(p^2-m_R^2)
+  \label{eq:kinetic-pinch-enhancement}
+\end{equation}
+in the narrow-width limit.  Since \(\Gamma=O(\lambda_R^2)\) in the scalar
+example, the apparent higher-order sunset correction is enhanced by
+\(1/\Gamma\) on times \(t\sim\Gamma^{-1}\).  The Boltzmann equation resums
+these secularly enhanced insertions into time evolution of \(f\).
+
+\paragraph{Remainder topology.}
+A concrete kinetic claim must say where the residual is small.  One convenient
+norm for scalar distributions is the weighted phase-space \(L^1\) norm
+\[
+  \|h\|_{w}
+  =
+  \int 2d\Pi(p)\,w(\mathbf p)|h(\mathbf p)|,
+  \qquad
+  w(\mathbf p)=1+E(\mathbf p)^2 .
+\]
+Under the assumptions above, the scalar derivation asserts a bound of the
+form
+\begin{equation}
+  \|R_{\rm kin}\|_{w}
+  \le
+  C_w\Gamma
+  \left(
+    \varepsilon_{\rm grad}
+    +
+    \varepsilon_{\rm width}
+    +
+    \varepsilon_{\rm off}
+    +
+    \varepsilon_{\rm corr}
+  \right)
+  (1+\|f\|_{w'}),
+  \label{eq:kinetic-scalar-remainder-ledger}
+\end{equation}
+where \(\varepsilon_{\rm off}\) is the weighted off-shell spectral tail and
+\(w'\) is a weight large enough to control the moments in the collision
+integral.  The formula is a ledger for the controlled approximation: setting
+one of these terms to zero is an additional theorem or assumption, not a
+definition of kinetic theory.
+
 \section{Boltzmann Equation and Collision Kernel}
 
 The covariant Boltzmann equation is
@@ -223,9 +476,13 @@ The \(2\to2\) contribution to \(\mathcal C_a\) is
 \end{align}
 The factor \(1/2\) converts the coordinate-time normalization to the
 covariant equation \eqref{eq:kinetic-covariant-boltzmann}; equivalently,
-\(C^{(t)}_a\) carries the familiar prefactor \(1/(2E_1)\).  Symmetry factors
-for identical particles are included in the definition of
-\(|\mathcal M|^2\) and in the channel sum.
+\(C^{(t)}_a\) carries the familiar prefactor \(1/(2E_1)\).  The sum over
+\(b,c,d\) is a sum over physical channels.  If one instead sums over ordered
+duplicates of an identical final channel, the channel weight must include the
+corresponding divisor \(1/S_{cd}\).  In the scalar derivation
+\eqref{eq:kinetic-scalar-derived-boltzmann-kernel}, this convention is fixed
+by the cut-sunset channel weight
+\(|\mathcal M_{\phi\phi\to\phi\phi}|^2=\lambda_R^2\).
 
 The matrix element in \eqref{eq:kinetic-2to2-collision} is the on-shell
 scattering amplitude in the normalization of the scattering chapters, after
@@ -273,9 +530,11 @@ equals the gain product
 This is an algebraic consequence of
 \eqref{eq:kinetic-one-plus-eta-f}: the exponential multiplying
 \(f_1f_2f_3f_4\) is the same on the two sides by energy-momentum and charge
-conservation.  Therefore the collision term vanishes on global equilibrium,
-and on local equilibrium it vanishes up to gradients of \(\beta u^\mu\) and
-\(\beta\mu_A\).
+conservation.  Therefore the collision term vanishes pointwise for the local
+equilibrium form at each fixed \(X\).  Gradients do not make the local
+collision term nonzero; they make the streaming term
+\(p^\mu\partial_\mu f^{(0)}\) nonzero.  First-order hydrodynamics solves the
+linearized collision equation with this streaming term as the source.
 
 \section{Kinetic Entropy and the H Theorem}
 
@@ -747,21 +1006,26 @@ transport coefficient is a well-defined weak-coupling prediction.
 \section{Controlled-Limit Requirements}
 
 A kinetic derivation from QFT requires:
-\[
-\begin{array}{ll}
-\text{spectral input} &
-  \text{narrow quasiparticle peaks with a controlled off-shell remainder},\\
-\text{scale separation} &
-  \ell_{\rm micro}\ll \ell_{\rm variation}
-  \ \text{and}\ \Gamma\ell_{\rm variation}\ll1,\\
-\text{collision input} &
-  \text{on-shell amplitudes with regulator and medium corrections},\\
-\text{conservation laws} &
-  \text{collision invariants matching QFT Ward identities},\\
-\text{error estimate} &
-  \text{bounds on neglected gradients, memory terms, and off-shell terms}.
-\end{array}
-\]
+\begin{center}
+\begin{tabular}{@{}p{0.23\linewidth}p{0.68\linewidth}@{}}
+\textbf{spectral input} &
+  narrow quasiparticle peaks with a controlled off-shell remainder,\\[0.25em]
+\textbf{scale separation} &
+  $\tau_{\rm qp}\ll\tau_{\rm coll}$, $\tau_{\rm mem}\ll\tau_X$, with the
+  regime-specific relation between $\tau_X$ and $\tau_{\rm coll}$,\\[0.25em]
+\textbf{collision input} &
+  on-shell amplitudes or cut self-energies with regulator and medium
+  corrections,\\[0.25em]
+\textbf{closure input} &
+  decay or bounding of connected higher correlators and initial
+  correlations,\\[0.25em]
+\textbf{conservation laws} &
+  collision invariants matching QFT Ward identities,\\[0.25em]
+\textbf{error estimate} &
+  bounds on gradients, finite width, off-shell tails, memory, and closure
+  residuals.
+\end{tabular}
+\end{center}
 
 \begin{openproblem}[QFT derivation of kinetic theory with errors]
 \label{op:qft-kinetic-theory-error-derivation}

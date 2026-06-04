@@ -1735,12 +1735,16 @@ Current checks:
   \(2\times1\) rectangular surface counts, and the finite entropy-bound
   arithmetic used in the strong-coupling area estimate.
 - `kinetic_theory_checks.py`: finite algebra checks for the Volume X kinetic
-  theory chapter, including Bose/Fermi detailed balance, the H-theorem
-  integrand, the force-free quasiparticle drift projection from the
-  Wigner-space mass-shell bracket, exact finite reversible-collision
-  detailed balance, exact linearized rate and collision-invariant algebra,
-  linearized collision-operator positivity and null vectors, and the
-  relaxation-time shear-viscosity integral.
+  theory chapter, including the corrected collisionless/kinetic/hydrodynamic
+  scale hierarchy, Bose/Fermi detailed balance, the H-theorem integrand, the
+  force-free quasiparticle drift projection from the Wigner-space mass-shell
+  bracket, local-equilibrium collision versus streaming separation, the
+  weak-scalar cut-sunset gain/loss products that produce the \(2\to2\)
+  kernel with \(|\mathcal M_{\phi\phi\to\phi\phi}|^2=\lambda_R^2\), exact
+  finite reversible-collision detailed balance, exact linearized rate and
+  collision-invariant algebra, linearized collision-operator positivity and
+  null vectors, Markov-memory residual and pinch-enhancement bookkeeping, and
+  the relaxation-time shear-viscosity integral.
 - `monte_carlo_sign_problem_checks.py`: exact finite checks for the Volume XI
   Monte Carlo and sign-problem chapter, including the finite-\(N\)
   autocorrelation variance identity, the reweighting identity, the
