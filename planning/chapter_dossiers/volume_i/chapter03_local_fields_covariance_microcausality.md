@@ -38,14 +38,21 @@ Working framework:
 - `references/sound_references/buchholz_dybalski_scattering_2023.pdf`,
   opening discussion for Wightman fields as operator-valued distributions and
   their relation to bounded local algebras.
+- Haag--Hall--Wightman theorem lineage for the fixed-time
+  interaction-picture obstruction: Haag 1955, Hall--Wightman 1957,
+  Reeh--Schlieder 1961, Streater--Wightman, Jost, Reed--Simon II, and
+  Strocchi's nonperturbative account.
 
 ## External Reference Needs
 
-- Wightman axioms for operator-valued distributions: still needs a classical
-  reference candidate in the source-control layer.
+- Wightman axioms for operator-valued distributions: classical references are
+  attached in the bibliography through Wightman, Streater--Wightman, and Jost.
 - AQFT local algebra comparison: Fewster--Rejzner currently used.
 - Scattering-oriented Wightman/AQFT comparison: Buchholz--Dybalski currently
   used.
+- Haag theorem: the chapter now quotes the four-dimensional
+  Haag--Hall--Wightman fixed-time obstruction and identifies Hall--Wightman's
+  invariant analytic theorem as the external proof boundary.
 
 ## Notation Inventory
 
@@ -77,7 +84,9 @@ Working framework:
 - microcausality for smeared fields;
 - graded locality for fermionic fields;
 - local polynomial field algebra on a common domain;
-- Wightman distribution of a field multiplet.
+- Wightman distribution of a field multiplet;
+- Haag--Hall--Wightman fixed-time obstruction and the interaction-picture
+  boundary.
 
 ## Claim Ledger
 
@@ -128,6 +137,16 @@ Working framework:
 - Wightman distributions inherit field covariance and locality by smearing.
   Status: consequence recorded in chapter prose. Certification:
   paragraph "Field axioms inherited by Wightman distributions."
+- Under the four-dimensional Wightman hypotheses, a global fixed-time unitary
+  equivalence between a free scalar equal-time field algebra and a candidate
+  interacting scalar field forces equality of the two-, three-, and four-point
+  Wightman distributions, and if one field is free the other is free.
+  Status: quoted theorem with mechanism sketch. Certification:
+  `qt:haag-hall-wightman-fixed-time-obstruction`.
+- Regulated perturbative expansions, local algebraic cocycles,
+  Haag--Ruelle wave operators, and LSZ extraction do not assume the forbidden
+  global fixed-time unitary. Status: framework boundary. Certification:
+  Section "Haag Theorem And The Interaction-Picture Boundary."
 - Local fields can coordinate local observable data but need not be the only
   primitive.
   Status: framework comparison. Certification: AQFT comparison.
@@ -140,6 +159,7 @@ Working framework:
 - Microcausality.
 - Field coordinates and local algebras.
 - Wightman functions.
+- Haag theorem and the interaction-picture boundary.
 - Position in the construction.
 
 ## Drafting Constraints
@@ -159,6 +179,11 @@ Working framework:
   infinitesimal translation law, localization covariance, spacelike support
   invariance, graded commutator, polynomial field algebra, and Wightman
   distribution inheritance statements.
+- 2026-06-04 issue #768 pass: added a quoted Haag--Hall--Wightman
+  fixed-time obstruction, mechanism sketch, regulator/perturbation boundary,
+  and Haag--Ruelle/LSZ non-contradiction paragraph. Keep this as a foundations
+  theorem boundary, not as a ban on finite-regulator unitary dynamics or formal
+  renormalized perturbation theory.
 
 ## Figure Ledger
 

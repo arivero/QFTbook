@@ -30,6 +30,13 @@
     cutoffs, Wilsonian
     effective actions, and scale dependence;
   - full Wilsonian RG is reserved for a later volume.
+- Volume I, Chapter 3, Section
+  `sec:haag-theorem-interaction-picture-boundary`:
+  - used to delimit the Lorentzian interaction-picture reading of regulated
+    Euclidean formulas;
+  - the chapter's Green-function expansion remains finite-cutoff or
+    coefficientwise renormalized bookkeeping, not a global fixed-time unitary
+    equivalence between free and interacting continuum Wightman fields.
 
 ## Framework
 
@@ -37,6 +44,9 @@
   status.
 - The formal field variable \(\phi\) is integrated with a regulated Gaussian
   measure or treated as a perturbative symbol.
+- No continuum interaction-picture unitary is assumed; the new Haag-theorem
+  cross-reference records this at the first occurrence of the regulated
+  interaction coordinate.
 - Correlation functions are normalized Schwinger functions, not scattering
   amplitudes.
 - Connected functions are obtained either by cancellation of vacuum components
@@ -132,3 +142,6 @@
   regulator or constructive theorem.
 - No broad Wilsonian RG treatment beyond the local counterterm bookkeeping
   needed for the pole-mass discussion.
+- No claim that the finite-regulator interaction coordinate defines a single
+  global fixed-time unitary conjugating an interacting continuum Wightman field
+  to a free field.

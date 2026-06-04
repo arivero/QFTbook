@@ -16,6 +16,10 @@
 - Buchholz--Dybalski Section 3 is used for the theorem boundary:
   LSZ follows after the Haag--Ruelle construction and is valid under massive
   one-particle and stability assumptions.
+- Volume I, Chapter 3, Section
+  `sec:haag-theorem-interaction-picture-boundary` is now cross-referenced at
+  the opening of this chapter to separate Haag--Ruelle/LSZ asymptotic maps from
+  the fixed-time interaction-picture unitary excluded by Haag's theorem.
 - The chapter reproduces the scalar momentum-space reduction formula in the
   monograph's mostly-plus and \(-i/(k^2+m^2-i0)\) propagator convention.
 - No LSZ statement is made for massless/infraparticle sectors in this chapter.
@@ -69,6 +73,9 @@
 - The object computed by LSZ is the Hilbert-space matrix element
   \(\langle F_{\rm out},S F_{\rm in}\rangle_{\mathcal F_s(\Hilb_1)}\), with
   \(S\) supplied by Haag--Ruelle wave operators.
+- The Haag--Ruelle wave operators are large-time asymptotic maps and do not
+  identify the interacting local field algebra with a free field algebra at a
+  fixed time; the opening paragraph now points to the Haag-theorem boundary.
 - Definitions `def:massive-scalar-lsz-datum`,
   `def:lsz-relativistic-external-normalization`, and
   `def:lsz-wave-packet-scattering-matrix-element` isolate the hypotheses,

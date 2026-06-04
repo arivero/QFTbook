@@ -526,6 +526,135 @@ insertions have spacelike separated supports. The spectrum condition will give
 the analytic and spectral properties used in the K\"all\'en--Lehmann
 representation.
 
+\section{Haag Theorem And The Interaction-Picture Boundary}
+\label{sec:haag-theorem-interaction-picture-boundary}
+
+The preceding field data are exactly the hypotheses under which the familiar
+interaction-picture slogan becomes dangerous.  In finite-dimensional quantum
+mechanics one can often put a free Hamiltonian and an interacting Hamiltonian on
+the same Hilbert space and relate their pictures by a time-dependent unitary.
+For a relativistic continuum field, the corresponding claim would say much more:
+at a fixed time the interacting local field algebra is unitarily the same as a
+free one, with the vacuum, covariance, spectrum condition, locality, and field
+regularity still intact.  Haag's theorem says that this package is too strong.
+
+\begin{quotedtheorem}[Haag--Hall--Wightman fixed-time obstruction]
+\label{qt:haag-hall-wightman-fixed-time-obstruction}
+\emph{Proof references.}\footnote{Haag's original no-go argument is
+R.~Haag, ``On quantum field theories,'' \emph{Det Kongelige Danske
+Videnskabernes Selskab, Matematisk-fysiske Meddelelser} \textbf{29}
+(1955), no.~12, 1--37.  The analytic theorem completing the standard
+Wightman-form proof is D.~Hall and A.~S.~Wightman, ``A theorem on invariant
+analytic functions with applications to relativistic quantum field theory,''
+\emph{Det Kongelige Danske Videnskabernes Selskab, Matematisk-fysiske
+Meddelelser} \textbf{31} (1957), no.~5, 1--41.  Textbook accounts and related
+free-field criteria are in Streater--Wightman and Jost; the unitary
+inequivalence of free scalar fields of different masses is reviewed in
+Reed--Simon, Volume II.  A modern nonperturbative discussion is Strocchi
+\cite{Haag1955,HallWightman1957,StreaterWightman1964,Jost1965,
+ReehSchlieder1961,ReedSimon1975II,Strocchi2013NonPerturbative}.}
+Work in four-dimensional Minkowski spacetime.  Let \(\phi_0\) and \(\phi\) be
+scalar Wightman fields, possibly first realized on two Hilbert spaces and then
+represented on one common Hilbert space by a candidate unitary \(V\).  Assume
+the usual Wightman hypotheses:
+tempered operator-valued distributions on common invariant domains, positive
+Hilbert-space metric, Poincare covariance with unique invariant vacua
+\(\Omega_0\) and \(\Omega\), spectrum condition, locality, and cyclicity of the
+vacuum for the polynomial field algebra.  Assume also the equal-time
+regularity needed to restrict the fields, and for a canonical scalar the
+time derivatives, to \(x^0=0\) as spatial operator-valued distributions.
+
+Suppose that the equal-time field algebra is irreducible and that there is a
+fixed-time unitary equivalence
+\[
+  \phi(0,h)=V^{-1}\phi_0(0,h)V,\qquad
+  \partial_0\phi(0,h)
+  =
+  V^{-1}\partial_0\phi_0(0,h)V
+\]
+for all \(h\in C_c^\infty(\mathbb R^3)\), with
+\(V\Omega=e^{\ii\alpha}\Omega_0\)
+or, equivalently in the Hall--Wightman setup, with the vacuum identification
+forced by the stated covariance, irreducibility, and uniqueness assumptions.
+Then the two-, three-, and four-point Wightman distributions of \(\phi\) and
+\(\phi_0\) agree at arbitrary spacetime arguments.  In particular, if
+\(\phi_0\) is a free Klein--Gordon field of mass \(m\), then \(\phi\) is also a
+free Klein--Gordon field of the same mass.  Thus a nontrivial interacting
+four-dimensional Wightman field cannot be obtained by a single global
+fixed-time unitary conjugation of a free field while all of these hypotheses are
+retained.
+\end{quotedtheorem}
+
+The load-bearing mechanism is short enough to record.  The fixed-time unitary
+first identifies equal-time vacuum matrix elements:
+\[
+  \bra{\Omega}\phi(0,\vec x_1)\cdots\phi(0,\vec x_n)\ket{\Omega}
+  =
+  \bra{\Omega_0}\phi_0(0,\vec x_1)\cdots\phi_0(0,\vec x_n)\ket{\Omega_0},
+  \qquad n\le4,
+\]
+as distributions in the spatial variables, with the same statement after
+smearing.  Poincare covariance transports this equality to spacelike
+configurations lying on arbitrary spacelike hyperplanes.  The spectrum condition
+then supplies tube analyticity for the corresponding Wightman functions, while
+locality supplies the Jost-edge identifications of the different orderings.  The
+external analytic input of Hall--Wightman is the invariant-function theorem that
+extends those equal-time data to the full two-, three-, and four-point
+Wightman distributions.  This is the same analytic architecture used later for
+Wightman reconstruction and edge-of-the-wedge continuation in
+Theorem~\ref{thm:distributional-edge-of-the-wedge} and
+Chapter~\ref{ch:volume-iv-wightman-fields-reconstruction}; the present chapter
+does not reprove the Hall--Wightman several-variable theorem.
+
+If the comparison field is free, equality of the two-point function gives the
+free mass-shell support and the Klein--Gordon equation on vacuum matrix
+elements.  By cyclicity and the Reeh--Schlieder mechanism, the equation holds as
+an operator-valued distribution on the field domain.  The Jost--Schroer
+free-field criterion then identifies \(\phi\) as a free field.  Equivalently, a
+nonzero connected four-point LSZ amplitude cannot survive under the hypotheses
+above, because the four-point Wightman data have already been forced to the free
+ones.
+
+\paragraph{What the theorem does not forbid.}
+The theorem is not a ban on finite-regulator dynamics.  In a finite box with a
+finite number of modes, on a lattice with finite volume, or in an ultraviolet
+cutoff Hamiltonian system, ordinary unitary time evolution can exist on an
+ordinary Hilbert space.  Haag's obstruction appears when one asks for a
+continuum relativistic Wightman limit in which a single fixed-time unitary still
+conjugates the interacting local field to the free field while preserving the
+vacuum and covariance hypotheses.  The theorem also does not apply verbatim to
+nonrelativistic finite-degree-of-freedom systems, to lower-dimensional or
+non-Wightman settings without the Hall--Wightman analytic hypotheses, or to
+gauge-fixed fields before positivity is restored on the physical BRST
+cohomology.  In algebraic formulations, one often works with local algebras,
+local relative \(S\)-matrices, or cocycles.  Those are local or representation
+changing structures, not a single global equal-time unitary identifying the
+whole interacting continuum field with a free one.
+
+\paragraph{Perturbation theory and LSZ.}
+The regulated Euclidean expansions of
+Chapter~\ref{ch:perturbative-green-functions} therefore have a precise status:
+they are finite-cutoff identities or coefficientwise renormalized definitions
+of Green functions, not a proof that the continuum interacting field is
+\(V^{-1}\phi_0V\) on the free Fock space.  Renormalized time-ordered products
+and post-LSZ diagrammatics evade the forbidden premise by working with
+regulated or formal source functionals, counterterms, and boundary values before
+asking for a nonperturbative Hilbert-space reconstruction.
+
+Likewise Haag--Ruelle scattering, Moller wave operators, and LSZ do not
+contradict Haag's theorem.  Haag--Ruelle/Moller wave operators are large-time
+limits from an asymptotic Fock space onto scattering subspaces of the physical
+Hilbert space.  The scattering operator is
+\[
+  S=\Omega_{\mathrm{out}}^*\Omega_{\mathrm{in}},
+\]
+an operator on the asymptotic particle space after those limits have been
+constructed.  It is not a fixed-time unitary conjugating the local interacting
+field algebra to a free field algebra on the same vacuum representation.  LSZ
+then extracts the already-defined scattering matrix elements from one-particle
+pole data of time-ordered Green functions; it does not reintroduce the global
+interaction picture ruled out above.
+
 \section{Position In The Construction}
 
 The data introduced in this chapter are local field data: test functions,
