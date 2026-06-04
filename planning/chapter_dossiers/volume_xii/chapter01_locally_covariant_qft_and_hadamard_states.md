@@ -15,6 +15,10 @@
 
 - Defines globally hyperbolic spacetime, causal future/past, causally convex
   open subset, the background category `Loc`, and Cauchy morphisms.
+- Adds a Volume XII control-level matrix separating fixed-background free
+  theory, perturbative interacting theory, conditional semiclassical theory,
+  and nonperturbative interacting curved QFT, with the input data and
+  controlled outputs for each level.
 - Defines a locally covariant QFT as a functor
   `A : Loc -> Alg_*` with injective algebra morphisms, Einstein causality,
   and the time-slice axiom.
@@ -82,6 +86,9 @@
    Hadamard two-point functions are smooth.
 8. Wick powers and the stress tensor require a locally covariant subtraction
    and retain finite local curvature-coordinate freedom.
+9. The volume's curved-spacetime claims are organized by control level: free
+   fixed-background, perturbative interacting, conditional semiclassical, and
+   nonperturbative/open.  Crossing levels requires additional hypotheses.
 
 ## Calculation Checks
 
@@ -105,3 +112,11 @@
 - Naturality square for locally covariant fields is included in the chapter.
 - Future figures should include a causal-convex embedding diagram and a
   point-splitting diagram in a convex normal neighborhood.
+
+## Anti-Wrapper Audit
+
+- 2026-06-04: added the Volume XII control-level matrix for issue #729.  This
+  is architectural theorem-status content: it tells the reader which data
+  support free, perturbative interacting, conditional semiclassical, and
+  nonperturbative claims, and prevents formal adjacent chapters from being
+  read as one continuous theorem chain.

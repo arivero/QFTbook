@@ -29,6 +29,10 @@ recording fluctuation data required for controlled backreaction.
 - `C_h`: retained metric covariance induced by stress-tensor noise.
 - `epsilon_mean`, `epsilon_fluc`: dimensionless mean-response and fluctuation
   smallness diagnostics.
+- `Sigma_{omega,H}`, `rho_lambda`, `q_a`, `j_a^{(lambda)}`: Wick-square
+  variance of a centered quasifree Hadamard state in a chosen Hadamard
+  coordinate, the first-order `lambda phi^4` potential source density, and
+  its projection into the retained semiclassical response sector.
 
 ## Claim Ledger
 
@@ -56,6 +60,14 @@ recording fluctuation data required for controlled backreaction.
   after gauge fixing/constraint projection and reduction of order, the
   retained response matrix must have no unstable poles, a bounded retarded
   inverse, controlled mean response, and controlled noise pushforward.
+- Adds a worked interacting stress-tensor source: the potential part of a
+  first-order `lambda phi^4` interaction in a centered quasifree Hadamard
+  state gives `delta<T_{mu nu}> = -rho_lambda g_{mu nu}` with
+  `rho_lambda=lambda Sigma^2/8`, distinguishes Hadamard-coordinate transport
+  from local Wick-renormalization dependence, shifts the cosmological
+  coordinate by `8 pi G_N rho_lambda` in the homogeneous case, and gives a
+  retained response bound
+  `||h_lambda|| <= M_I rho_lambda ||q||`.
 - Records validity conditions and the EFT reduction-of-order treatment for
   higher-curvature terms.
 
@@ -66,8 +78,10 @@ recording fluctuation data required for controlled backreaction.
   fluctuation-dissipation factor, positivity of a finite noise covariance,
   the Einstein-Langevin pushforward covariance identity, exact retained-sector
   mean-response and noise trace bounds for the finite response-window
-  diagnostic, and the low-energy root selected by reduction of order in a toy
-  higher-derivative equation.
+  diagnostic, the first-order `lambda phi^4` quasifree source coefficient,
+  its local Wick-renormalization/cosmological-coordinate shifts, its retained
+  response bound, and the low-energy root selected by reduction of order in a
+  toy higher-derivative equation.
 
 ## Figure Ledger
 
@@ -92,3 +106,13 @@ curvature, microscopic, and EFT scales.
   semiclassical equation to bounded retarded response, absence of unstable
   poles, stress-tensor noise amplification, and small dimensionless metric
   fluctuation criteria.
+- 2026-06-04: added a first-order interacting source example for issue #729.
+  The calculation follows a concrete `lambda phi^4` stress-tensor
+  contribution to a quasifree Hadamard-state output, its renormalization
+  coordinate dependence, its cosmological-coordinate interpretation, and its
+  retained metric-response bound; it explicitly states the conservation
+  limitation of the potential-only display.
+- 2026-06-04: aligned the interacting source example with issue #740 by
+  stating that pure Hadamard-coordinate transport preserves expectations when
+  states are transported, while the displayed density shift belongs to a
+  fixed-state comparison of local Wick-renormalization prescriptions.

@@ -577,16 +577,44 @@ coordinate, is
 \end{aligned}
   \label{eq:paqft-phi-four-scheme-shift}
 \end{equation}
-This is the smallest curved pAQFT calculation in which interaction,
-renormalization choice, state class, and gravitational source coordinates
-meet.  If the allowed local smooth diagonal change has the dimension-two
-form
+Equations \eqref{eq:paqft-wick-power-scheme-transport} and
+\eqref{eq:paqft-phi-four-scheme-shift} are algebra-coordinate statements.
+They do not by themselves produce a physical expectation-value shift.  If
+\(\omega_H\) is a state on the \(H\)-presentation and \(\omega_{H'}\) is the
+transported state on the \(H'\)-presentation, defined by
+\[
+  \omega_{H'}(\alpha_w A)=\omega_H(A),
+\]
+then
+\[
+  \omega_{H'}\!\left(\alpha_w V_{\lambda,H}(g)\right)
+  =
+  \omega_H\!\left(V_{\lambda,H}(g)\right).
+\]
+This is the same abstract observable in two Hadamard coordinates.
+
+A finite local Wick-renormalization change is a different comparison.  It is
+not an arbitrary smooth difference of two Hadamard two-point functions; local
+covariance restricts the diagonal scalar inserted into Wick powers.  In four
+dimensions, for the dimension-two part, write
 \begin{equation}
-  w_\Delta(x)=a_m m^2+a_R R(x),
-  \label{eq:paqft-local-hadamard-diagonal-change}
+  c(x)=a_m m^2+a_R R(x).
+  \label{eq:paqft-local-wick-finite-renormalization}
 \end{equation}
-then the quadratic term in
-\eqref{eq:paqft-phi-four-scheme-shift} is the finite coordinate shift
+Changing the Wick prescription by this local scalar uses the same polynomial
+combinatorics as \eqref{eq:paqft-wick-power-scheme-transport}, with
+\(w_\Delta\) replaced by \(c\), but it compares two local covariant
+composite-field prescriptions in a fixed physical state.  The quartic
+interaction then acquires the finite local terms
+\[
+  \int_M\dd\operatorname{vol}_g\,g(x)
+  \left[
+    \frac{\hbar\lambda}{4}c\Phi_H^2
+    +
+    \frac{\hbar^2\lambda}{8}c^2
+  \right](x).
+\]
+The quadratic term is the finite coordinate shift
 \begin{equation}
   \delta m^2=\frac{\hbar\lambda}{2}a_m m^2,
   \qquad
@@ -597,28 +625,35 @@ in the local scalar operator
 \(\frac12(m^2+\xi R)\Phi^2\).  The last term in
 \eqref{eq:paqft-phi-four-scheme-shift} is a finite shift of the purely
 geometric source functional, producing \(m^4\), \(m^2R\), and \(R^2\)
-coordinates when \eqref{eq:paqft-local-hadamard-diagonal-change} is used.
+coordinates when \eqref{eq:paqft-local-wick-finite-renormalization} is used.
 Those coordinates are precisely the ones that reappear in the stress-tensor
 and gravitational EFT bookkeeping of
 Chapters~\ref{ch:point-splitting-stress-tensor-renormalization}
 and~\ref{ch:curved-semiclassical-backreaction}.
 
-For a Hadamard state \(\omega\), the local Wick-square observable also has a
-visible finite output.  If
+The local Wick-square comparison has a visible c-number output only in this
+fixed-state, changed-prescription sense.  If
 \[
   F_f=\int_M\dd\operatorname{vol}_g\, f(x)\Phi_H^2(x),
   \qquad f\in C_c^\infty(M),
 \]
+and the second Wick-square prescription is
+\[
+  F_f^{(c)}
+  =
+  F_f+\hbar\int_M\dd\operatorname{vol}_g\,f(x)c(x),
+\]
 then
 \begin{equation}
-  \omega\bigl(\alpha_w(F_f)\bigr)-\omega(F_f)
+  \omega_H\!\left(F_f^{(c)}\right)-\omega_H(F_f)
   =
-  \hbar\int_M\dd\operatorname{vol}_g\,f(x)w_\Delta(x).
+  \hbar\int_M\dd\operatorname{vol}_g\,f(x)c(x).
   \label{eq:paqft-wick-square-observable-shift}
 \end{equation}
-The right side is state independent because the change is a local
-renormalization coordinate, not particle production.  A physical
-renormalization condition fixes \(a_m,a_R\) or fixes the value of
+The right side is state independent because it is a local renormalization
+coordinate, not particle production and not the transport of a state between
+two algebra presentations.  A physical renormalization condition fixes
+\(a_m,a_R\) or fixes the value of
 \eqref{eq:paqft-wick-square-observable-shift} on selected backgrounds and
 states.  Without that condition, the number is a coordinate of the composite
 operator, not an invariant prediction.
@@ -633,11 +668,15 @@ For a local polynomial at one point, the smooth-change isomorphism acts by
 \]
 Applying this operator to \(\phi^2\) and \(\phi^4\) gives
 \eqref{eq:paqft-wick-power-scheme-transport}.  Multiplication by
-\(\lambda/4!\) gives
-\eqref{eq:paqft-phi-four-scheme-shift}; the identities
+\(\lambda/4!\) gives the coordinate-transport identity
+\eqref{eq:paqft-phi-four-scheme-shift}.  The local Wick-renormalization
+comparison uses the same finite polynomial identity with the locally
+covariant scalar \(c\) in place of the generic smooth diagonal
+\(w_\Delta\); the identities
 \eqref{eq:paqft-phi-four-mass-curvature-shifts} follow by comparing the
 coefficient of \(\frac12(m^2+\xi R)\Phi^2\).  Finally, applying the first
-line of \eqref{eq:paqft-wick-power-scheme-transport} inside \(F_f\) gives
+line of \eqref{eq:paqft-wick-power-scheme-transport} with
+\(w_\Delta\) replaced by \(c\) inside \(F_f\) gives
 \eqref{eq:paqft-wick-square-observable-shift}.
 
 \section{Gauge Theories And The BV Condition}

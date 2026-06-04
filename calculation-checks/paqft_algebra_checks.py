@@ -13,18 +13,19 @@ Evidence contract.
 Target claims: the finite algebra subclaims in Volume XII Chapter 10,
 including Hadamard star-product associativity, smooth-Hadamard-change
 intertwining, scaling-degree ambiguity counts, and the lambda-phi-four
-Hadamard-scheme transport example.
+Hadamard-coordinate/local-Wick-renormalization example.
 Independent construction: exact polynomial derivatives, contraction sums,
 Taylor-extension counts, and Wick-power transport coefficients are computed
 directly in a finite polynomial model rather than copied from the prose
 formulae.
 Imported assumptions: the one-component polynomial model, formal hbar
-grading, smooth diagonal Hadamard difference, and the chapter's normalization
-of the quartic interaction lambda Phi^4/4! are finite inputs.
+grading, smooth diagonal Hadamard coordinate difference, local finite Wick
+renormalization scalar, and the chapter's normalization of the quartic
+interaction lambda Phi^4/4! are finite inputs.
 Negative controls: wrong scaling-degree uniqueness thresholds, missing
-quartic tadpole factors, omitted vacuum bubble terms, and incorrect
-mass/curvature-coordinate factors are rejected by exact rational
-comparisons.
+quartic tadpole factors, omitted vacuum bubble terms, untyped
+coordinate-transport expectation shifts, and incorrect mass/curvature
+coordinate factors are rejected by exact rational comparisons.
 Scope boundary: a pass checks finite pAQFT algebra and coefficient
 bookkeeping; it does not prove microlocal extension theorems, continuum
 Hadamard state existence, perturbative convergence, interacting stress-tensor
@@ -147,6 +148,23 @@ def assert_equal(got: HPoly, expected: HPoly, label: str) -> None:
         raise AssertionError(f"{label}: got {got}, expected {expected}")
 
 
+def quasifree_expectation(poly: HPoly, wick_square: Fraction) -> Fraction:
+    total = Fraction(0)
+    for hpower, terms in poly.items():
+        hbar_factor = Fraction(1)  # hbar is kept as a grading and set to one here.
+        for degree, coeff in terms.items():
+            if degree == 0:
+                moment = Fraction(1)
+            elif degree == 2:
+                moment = wick_square
+            elif degree == 4:
+                moment = 3 * wick_square * wick_square
+            else:
+                raise AssertionError(f"unsupported quasifree moment degree {degree}")
+            total += hbar_factor * coeff * moment
+    return total
+
+
 def check_associativity() -> None:
     h = Fraction(3, 5)
     f = monomial(3)        # phi^3
@@ -195,21 +213,46 @@ def check_lambda_phi4_hadamard_scheme_transport() -> None:
     assert_equal(
         transported_quartic,
         expected_quartic,
-        "lambda phi^4 Hadamard scheme transport",
+        "lambda phi^4 Hadamard-coordinate transport",
     )
 
     wrong_tadpole_factor = coupling * w / 8
     if transported_quartic[1][2] == wrong_tadpole_factor:
         raise AssertionError("quartic tadpole factor should be 6/4!, not 3/4!")
     if transported_quartic.get(2, {}).get(0, Fraction(0)) == 0:
-        raise AssertionError("quartic scheme transport should retain the vacuum term")
+        raise AssertionError("quartic coordinate transport should retain the vacuum term")
 
     transported_wick_square = alpha(monomial(2), w)
     assert_equal(
         transported_wick_square,
         {0: {2: Fraction(1)}, 1: {0: w}},
-        "Wick-square observable Hadamard scheme shift",
+        "Wick-square Hadamard-coordinate transport",
     )
+
+    omega_h_square = Fraction(11, 5)
+    omega_hprime_square = omega_h_square - w
+    transported_value = quasifree_expectation(transported_wick_square, omega_hprime_square)
+    original_value = quasifree_expectation(monomial(2), omega_h_square)
+    if transported_value != original_value:
+        raise AssertionError("coordinate transport with transported state should be invariant")
+
+    untyped_same_state_shift = (
+        quasifree_expectation(transported_wick_square, omega_h_square)
+        - original_value
+    )
+    if untyped_same_state_shift == transported_value - original_value:
+        raise AssertionError("untyped expectation-shift interpretation was not rejected")
+    if untyped_same_state_shift != w:
+        raise AssertionError("same-state coordinate comparison should expose the c-number pitfall")
+
+    local_wick_shift = Fraction(3, 10)
+    fixed_state_wick_square = add_hpoly(monomial(2), {1: {0: local_wick_shift}})
+    fixed_state_shift = (
+        quasifree_expectation(fixed_state_wick_square, omega_h_square)
+        - original_value
+    )
+    if fixed_state_shift != local_wick_shift:
+        raise AssertionError("fixed-state Wick-renormalization shift coefficient is incorrect")
 
     a_m = Fraction(2, 5)
     a_r = Fraction(3, 7)

@@ -20,10 +20,10 @@ Hadamard functions and causal factorization.
 - `S(F)`, `S_V(F)`, `R_V(F)`: time-ordered exponential, relative S-matrix,
   and interacting Bogoliubov field.
 - `Z`: local renormalization map between time-ordered-product choices.
-- `V_{lambda,H}(g)`, `w_Delta`, `a_m`, `a_R`: compactly supported
+- `V_{lambda,H}(g)`, `w_Delta`, `c`, `a_m`, `a_R`: compactly supported
   `lambda phi^4` interaction in a Hadamard Wick coordinate, smooth diagonal
-  Hadamard-scheme change, and the local mass/curvature components of that
-  change.
+  Hadamard-coordinate difference, and the separate local covariant finite
+  Wick-renormalization scalar with its mass/curvature components.
 - `S_BV`, `Delta_BV`: BV action and renormalized BV second-order operator.
 
 ## Claim Ledger
@@ -46,22 +46,24 @@ Hadamard functions and causal factorization.
 - Records the Stueckelberg--Petermann local renormalization map and the BV
   quantum master equation as the gauge-theory consistency condition.
 - Adds a worked interacting scalar coordinate: a compactly supported
-  `lambda phi^4` interaction is transported under a smooth Hadamard-scheme
-  change, producing the exact quartic Wick-power shift, finite mass and
+  `lambda phi^4` interaction is transported under a smooth
+  Hadamard-coordinate isomorphism with typed state transport, so expectation
+  values are invariant for the same abstract observable.  Separately, a
+  local covariant finite Wick-renormalization scalar produces finite mass and
   curvature-coupling coordinate shifts, geometric source terms, and a
-  state-independent Wick-square observable shift in any Hadamard state.
-  This gives the Volume XII interacting-example lane a concrete
-  renormalization/state/output calculation rather than only the formal
-  relative-S-matrix definition.
+  fixed-state Wick-square prescription shift.  This gives the Volume XII
+  interacting-example lane a concrete renormalization/state/output
+  calculation rather than only the formal relative-S-matrix definition.
 
 ## Calculation Checks
 
 - `calculation-checks/paqft_algebra_checks.py`: verifies the finite
   polynomial model of star-product associativity, the smooth-Hadamard-change
   intertwiner, the combinatorics of scaling-degree extension ambiguity, and
-  the `lambda phi^4` Hadamard-scheme transport coefficients: quartic tadpole,
-  vacuum term, Wick-square observable shift, mass/curvature coordinate
-  shifts, and geometric-source coordinates.
+  the `lambda phi^4` Hadamard-coordinate/local-Wick-renormalization
+  coefficients: quartic tadpole, vacuum term, transported-state expectation
+  invariance, fixed-state Wick-square prescription shift, mass/curvature
+  coordinate shifts, and geometric-source coordinates.
 
 ## Figure Ledger
 
@@ -73,6 +75,11 @@ Hadamard star-product comparison maps.
 
 - 2026-06-04: added a worked interacting scalar example for issue #729.  The
   passage follows a concrete `lambda phi^4` interaction through a
-  Hadamard-scheme change to mass, curvature-coupling, geometric-source, and
-  Wick-square observable outputs; it does not present the pAQFT machinery as
-  a nonperturbative curved-spacetime construction.
+  Hadamard-coordinate change and a separate local Wick-renormalization
+  comparison to mass, curvature-coupling, geometric-source, and Wick-square
+  outputs; it does not present the pAQFT machinery as a nonperturbative
+  curved-spacetime construction.
+- 2026-06-04: corrected the worked example for issue #740 by typing
+  `omega_H` and `omega_Hprime`, recording expectation invariance under
+  coordinate/state transport, and reserving c-number Wick-square shifts for
+  fixed-state comparisons of local covariant Wick prescriptions.

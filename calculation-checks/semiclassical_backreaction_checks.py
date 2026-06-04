@@ -4,9 +4,32 @@
 These checks verify algebraic identities that are easy to lose by a sign or
 normalization: traces of the curvature-squared Euler tensors in four
 dimensions, the KMS fluctuation-dissipation factor, positivity of the noise
-covariance, finite response-window metric fluctuation bounds, and the
-low-energy root selected by reduction of order in a toy higher-derivative
-equation.
+covariance, finite response-window metric fluctuation bounds, the first-order
+interacting vacuum-source shift, and the low-energy root selected by
+reduction of order in a toy higher-derivative equation.
+
+Evidence contract.
+Target claims: the finite algebra and response-window subclaims in Volume
+XII Chapter 11, including curvature-squared trace normalizations,
+fluctuation-dissipation factors, noise-covariance positivity, retained
+metric-response bounds, the lambda-phi-four quasifree source coefficient,
+and the low-energy root selected by reduction of order.
+Independent construction: the checks recompute traces, KMS factors,
+matrix pushforwards, exact retained-sector inverses, Wick-contraction
+coefficients, cosmological-coordinate shifts, and toy roots directly from
+finite formulas rather than importing chapter display strings.
+Imported assumptions: the tests use finite-dimensional retained sectors,
+centered quasifree Wick combinatorics, a formal first-order lambda expansion,
+positive finite noise matrices, and the chapter's convention
+E_grav = <T_ren>.
+Negative controls: singular retained response matrices, wrong Wick
+contraction factors, omitted local-Wick-renormalization quadratic terms, wrong
+cosmological-coordinate signs, and cutoff-scale higher-derivative roots are
+rejected.
+Scope boundary: a pass checks coefficient, positivity, and response-bound
+bookkeeping; it does not prove existence of interacting Hadamard states,
+renormalized stress-tensor products, stochastic semiclassical solutions, or
+nonperturbative quantum gravity dynamics.
 """
 
 from __future__ import annotations
@@ -173,6 +196,49 @@ def check_finite_response_window_bounds() -> None:
         raise AssertionError("finite response noise trace bound failed")
 
 
+def check_interacting_quasifree_source_shift() -> None:
+    # Centered quasifree Wick combinatorics gives <Phi_H^4> = 3 Sigma^2.
+    coupling = Fraction(4, 9)
+    wick_variance = Fraction(3, 2)
+    wick_four = 3 * wick_variance * wick_variance
+    source_density = coupling * wick_four / 24
+    if source_density != Fraction(1, 8):
+        raise AssertionError("lambda phi^4 quasifree source density should be lambda Sigma^2/8")
+
+    missing_wick_pairings = coupling * wick_variance * wick_variance / 24
+    if source_density == missing_wick_pairings:
+        raise AssertionError("negative control failed: Wick factor 3 was lost")
+
+    kappa = Fraction(6, 5)  # kappa = 8 pi G_N in the chapter notation.
+    cosmological_shift = kappa * source_density
+    if cosmological_shift != Fraction(3, 20):
+        raise AssertionError("cosmological-coordinate shift should be +kappa rho_lambda")
+    if -cosmological_shift == kappa * source_density:
+        raise AssertionError("negative control failed: cosmological-coordinate sign was not tested")
+
+    local_wick_shift = Fraction(1, 2)
+    shifted_density = coupling * (wick_variance + local_wick_shift) ** 2 / 8
+    density_change = shifted_density - source_density
+    if density_change != Fraction(7, 72):
+        raise AssertionError("local Wick-renormalization density shift should include the quadratic term")
+    linear_only_change = coupling * wick_variance * local_wick_shift / 4
+    if density_change == linear_only_change:
+        raise AssertionError("negative control failed: omitted quadratic scheme term")
+
+    source_profile: Matrix = (
+        (-source_density * Fraction(5, 6),),
+        (source_density * Fraction(1, 3),),
+    )
+    response_inverse: Matrix = (
+        (Fraction(1, 2), Fraction(1, 4)),
+        (Fraction(-1, 4), Fraction(1, 2)),
+    )
+    mean_metric = matmul(response_inverse, source_profile)
+    certified_norm_sq = Fraction(9, 25)
+    if squared_norm(mean_metric) > certified_norm_sq * squared_norm(source_profile):
+        raise AssertionError("interacting source response exceeds certified retained bound")
+
+
 def check_reduction_of_order_toy_model() -> None:
     # Toy equation: x'' + omega0^2 x + epsilon x'''' = 0.
     # For x ~ exp(lambda t), epsilon lambda^4 + lambda^2 + omega0^2 = 0.
@@ -198,6 +264,7 @@ def main() -> None:
     check_noise_covariance_positivity()
     check_einstein_langevin_pushforward_covariance()
     check_finite_response_window_bounds()
+    check_interacting_quasifree_source_shift()
     check_reduction_of_order_toy_model()
     print("All semiclassical backreaction checks passed.")
 

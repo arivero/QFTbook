@@ -1979,9 +1979,10 @@ Current checks:
 - `paqft_algebra_checks.py`: finite polynomial checks for the curved pAQFT
   chapter, including Hadamard star-product associativity, the smooth
   Hadamard-change intertwiner, scaling-degree ambiguity combinatorics, and
-  the `lambda phi^4` Hadamard-scheme transport example: the quartic tadpole
-  coefficient, Wick-square observable shift, mass/curvature-coordinate
-  shifts, and geometric-source terms.
+  the `lambda phi^4` Hadamard-coordinate and local Wick-renormalization
+  example: the quartic tadpole coefficient, transported-state expectation
+  invariance, the fixed-state Wick-square prescription shift,
+  mass/curvature-coordinate shifts, and geometric-source terms.
 - `point_splitting_stress_checks.py`: finite checks for the point-split
   stress-tensor examples, including the flat Synge identities and leading
   Hadamard \(U\)-transport equation, the first logarithmic \(v_0\) transport
@@ -2007,8 +2008,10 @@ Current checks:
   positivity of a finite noise covariance, the Einstein--Langevin
   pushforward covariance identity \(GNG^T\), exact retained-sector
   mean-response and noise trace bounds for the finite response-window
-  diagnostic, and the low-energy root selected by reduction of order in a toy
-  higher-derivative equation.
+  diagnostic, the first-order `lambda phi^4` quasifree source density,
+  its local Wick-renormalization and cosmological-coordinate shifts, its
+  retained metric-response bound, and the low-energy root selected by
+  reduction of order in a toy higher-derivative equation.
 - `schwinger_keldysh_operator_checks.py`: finite two-level-system checks for
   the real-time Schwinger--Keldysh operator chapter, including diagonal
   unitarity, branch-exchange reality, the \(|Z|\le1\) positivity bound,

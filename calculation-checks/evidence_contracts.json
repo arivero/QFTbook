@@ -54,6 +54,10 @@
       "risk_class": "rigorous RG reconstruction"
     },
     {
+      "path": "semiclassical_backreaction_checks.py",
+      "risk_class": "semiclassical backreaction"
+    },
+    {
       "path": "susy_2d_lg_glsm_checks.py",
       "risk_class": "GLSM mirror/vortex amplitudes"
     }
