@@ -586,8 +586,11 @@ Current checks:
   finite chirality-breaking remainder, and the constant-density
   Banks--Casher kernel limit for an instanton-liquid zero-mode zone, together
   with the finite \(U(1)_A\)-odd \(\pi-\delta\) source-trace kernel and its
-  constant-, linear-, and superlinear-density chiral limits, the electroweak
-  instanton/sphaleron charge ledger and generic \(B+L\) relaxation rate
+  constant-, linear-, and superlinear-density chiral limits, the cumulative
+  mode-count criterion \(N(\lambda)=O(\lambda^{2+\epsilon})\) for suppressing
+  the \(U(1)_A\)-odd zero-mode-zone channel after exact-topology density is
+  removed, the electroweak instanton/sphaleron charge ledger and generic
+  \(B+L\) relaxation rate
   \((2N_g)^2\Gamma_{\rm CS}/(\chi_XT)\), Uhlenbeck boundary face codimensions
   and product power-counting thresholds, and the \(k=1\) ADHM orientation
   dimension and cone-volume power.

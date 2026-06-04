@@ -354,7 +354,7 @@
 | \(m_{\rm scr},A,\mathcal A_{\rm scr}^{(0)}\) | physical infrared screening scale, screened size-integral power \(A=b_0+\beta_{\mathcal X}-4\), and leading screened one-instanton amplitude |
 | \(m_T,R_T,\mathcal A_T^G,\mathcal M_T^G\) | high-temperature determinant screening scale, finite-temperature determinant residual, Gaussian thermal one-instanton approximation, and absolute Gaussian majorant for non-positive/complex source channels |
 | \(\zeta_T^G,\chi_{\rm top}^{T,G}\) | Gaussian high-temperature dilute one-instanton activity and its induced topological susceptibility |
-| \(T,\mathcal D_{\rm zm},E_{\rm zm},\rho_{\rm zm},\Delta_{\pi-\delta}^{\rm zm}\) | instanton--anti-instanton near-zero-mode overlap matrix, projected Dirac block, remainder, singular-value density, and zero-mode-zone \(U(1)_A\)-odd susceptibility splitting used in the instanton-liquid criteria |
+| \(T,\mathcal D_{\rm zm},E_{\rm zm},\rho_{\rm zm},N_{\rm zm},\nu_{\mathcal V_4},\Delta_{\pi-\delta}^{\rm zm}\) | instanton--anti-instanton near-zero-mode overlap matrix, projected Dirac block, remainder, singular-value density, cumulative singular-value count, exact-topology density, and zero-mode-zone \(U(1)_A\)-odd susceptibility splitting used in the instanton-liquid criteria |
 | \(\Gamma_{\rm CS},\chi_X,n_X\) | Chern--Simons diffusion rate, \(B+L\) susceptibility, and homogeneous \(B+L\) density used in the electroweak sphaleron response bridge |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
 | \(A_\alpha(\mathcal X),G_\beta(\mathcal X)\) | Uhlenbeck bubbling-scale and collision-face exponents in the multi-instanton boundary budget |
@@ -878,6 +878,17 @@
   \(\rho_{\rm zm}(0)\) imply \(\Sigma_{\rm zm}=\pi\rho_{\rm zm}(0)\) by the
   Banks--Casher kernel.  A dilute Poisson gas is not claimed to prove this
   density.
+- The zero-mode-zone \(U(1)_A\) criterion is now also stated in cumulative
+  mode-count form.  The finite Stieltjes formula separates the exact
+  topological pole \(2\nu_{\mathcal V_4}/m^2\) from paired near-zero singular
+  values, so the thermodynamic limit must remove exact-topology density before
+  the chiral limit.  After that, a bound
+  \(N_{\rm zm}(\lambda)\le C\lambda^{2+\epsilon}\) suppresses
+  \(\chi_\pi-\chi_\delta\), while constant and merely linear near-zero
+  densities respectively give the \(1/m\) divergence and finite remnant.
+  The BPST companion checks the Stieltjes/spectral equality, the order-of-limit
+  pole, the superlinear dyadic bound, and the constant/linear negative
+  controls.
 - A one-instanton boundary exponent datum records the small-\(\rho\)
   behavior of a specified scalar insertion datum \(\mathcal X\) in the form
   \(\rho^{b_0+\beta_{\mathcal X}-5}\).  The local Uhlenbeck-boundary
@@ -1463,6 +1474,15 @@
   point-splitting, off-diagonal negative-control, CP-odd contact, and
   spectral-reversal checks, so this pass strengthens the observable layer
   rather than adding another moduli-space identity.
+- 2026-06-04 issue #597 mode-count \(U(1)_A\) pass: added
+  `ca:instanton-u1a-mode-count-restoration`, recasting the zero-mode-zone
+  \(\pi-\delta\) criterion in terms of the cumulative singular-value count
+  \(N_{\rm zm}(\lambda)\).  The text derives the finite Stieltjes formula,
+  exposes the exact-topology \(m^{-2}\) pole and order-of-limits requirement,
+  and proves the superlinear count bound needed to make the paired near-zero
+  contribution vanish.  Extended `bpst_instanton_normalization_checks.py` with
+  exact topology, Stieltjes sum, dyadic superlinear bound, and constant/linear
+  density negative controls.
 - 2026-06-04 issue #597 finite hard-window pass: added
   `ca:hard-instanton-finite-window-certificate`, which upgrades the specialized
   \(SU(3)\), \(N_f=2\) hard four-slot coefficient from a formal convergent

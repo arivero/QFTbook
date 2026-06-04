@@ -8279,6 +8279,93 @@ specific near-zero singular-value law for \(T\); that law is what decides the
 \(\pi\)-\(\delta\) channel.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Mode-count criterion for the \(U(1)_A\)-odd
+channel]
+\label{ca:instanton-u1a-mode-count-restoration}
+The previous criterion can be stated without assuming that the near-zero
+singular values already have a smooth density.  At finite volume define the
+positive counting function
+\begin{equation}
+  N_{\rm zm,\mathcal V_4}(\lambda)
+  =
+  \frac1{\mathcal V_4}
+  \left\langle
+    \#\{\alpha:0<s_\alpha\le\lambda\}
+  \right\rangle_{\rm ens},
+  \qquad \lambda>0,
+  \label{eq:instanton-u1a-mode-counting-function}
+\end{equation}
+and let
+\(\nu_{\mathcal V_4}=\mathcal V_4^{-1}\langle |n_+-n_-|\rangle_{\rm ens}\)
+be the density of index-protected unpaired modes in the same ensemble
+coordinate.  The finite zero-mode-zone splitting may be written as the
+Stieltjes integral
+\begin{equation}
+  \Delta_{\pi-\delta}^{\rm zm}(m;\mathcal V_4)
+  =
+  \frac{2\nu_{\mathcal V_4}}{m^2}
+  +
+  4m^2\int_{(0,\infty)}
+  \frac{\dd N_{\rm zm,\mathcal V_4}(s)}{(m^2+s^2)^2}.
+  \label{eq:instanton-u1a-mode-count-stieltjes}
+\end{equation}
+Thus the order of limits is part of the observable.  At fixed finite volume
+and nonzero index, the first term diverges as \(m^{-2}\).  The thermodynamic
+limit must first make \(\nu_{\mathcal V_4}\to0\) before the chiral limit is
+used to test the paired near-zero zone.
+
+Fix a small \(\delta>0\).  Suppose that, after the thermodynamic limit and
+after removing the index-protected density, the paired singular values obey a
+mode-count bound
+\begin{equation}
+  N_{\rm zm}(\lambda)
+  \le
+  C\,\lambda^{2+\varepsilon},
+  \qquad 0<\lambda\le\delta,
+  \qquad \varepsilon>0,
+  \label{eq:instanton-u1a-superlinear-mode-count-bound}
+\end{equation}
+and that the total retained near-zero-zone density above \(\delta\) is
+bounded.  Split the Stieltjes integral in
+\eqref{eq:instanton-u1a-mode-count-stieltjes} into
+\((0,m]\), dyadic shells \((2^jm,2^{j+1}m]\) below \(\delta\), and the
+remaining interval above \(\delta\).  The first piece is at most
+\[
+  \frac{4N_{\rm zm}(m)}{m^2}
+  \le 4C m^\varepsilon .
+\]
+On the \(j\)-th shell,
+\[
+  \frac{4m^2}{(m^2+s^2)^2}
+  \le
+  \frac{4m^2}{(2^{2j}m^2)^2},
+\]
+so \eqref{eq:instanton-u1a-superlinear-mode-count-bound} gives a summable
+bound proportional to
+\[
+  C m^\varepsilon 2^{-(2-\varepsilon)j}
+\]
+when \(0<\varepsilon<2\); the cases \(\varepsilon\ge2\) are even easier after
+enlarging the constant on \(0<\lambda\le\delta\).  The tail above \(\delta\)
+is \(O(m^2)\).  Therefore
+\begin{equation}
+  \Delta_{\pi-\delta}^{\rm zm}(m)\longrightarrow0 .
+  \label{eq:instanton-u1a-mode-count-vanishing}
+\end{equation}
+
+This is the finite-regulator observable form of the criterion.  A constant
+near-zero density has \(N_{\rm zm}(\lambda)\sim\rho_0\lambda\) and produces
+the \(1/m\) term in
+\eqref{eq:instanton-zero-mode-zone-u1a-kernel}.  A linear density has
+\(N_{\rm zm}(\lambda)\sim(c_1/2)\lambda^2\) and can leave a finite remnant.
+Vanishing of the Banks--Casher condensate is only the statement that
+\(N_{\rm zm}(\lambda)=o(\lambda)\); it is not strong enough.  Suppression of
+the \(U(1)_A\)-odd channel requires the stronger cumulative depletion
+\eqref{eq:instanton-u1a-superlinear-mode-count-bound}, or an equivalent
+bound, after the fluctuation determinant and the ensemble weight have been
+included.
+\end{controlledapproximation}
+
 For the electroweak \(SU(2)_L\) gauge theory, the same zero-mode logic applies
 to every left-handed doublet.  For one generation there are three colored
 quark doublets and one lepton doublet, hence four \(SU(2)_L\) doublet zero

@@ -143,7 +143,10 @@ relations
     the Banks--Casher kernel criterion for an instanton-liquid zero-mode zone;
     the same finite block gives the U(1)_A-odd pi-delta susceptibility kernel,
     where constant, linear, and superlinear near-zero singular-value densities
-    respectively give pi*rho0/m, 2*c1, and a vanishing chiral-limit remnant;
+    respectively give pi*rho0/m, 2*c1, and a vanishing chiral-limit remnant,
+    and the equivalent cumulative mode-count criterion requires
+    N(lambda)=O(lambda^(2+epsilon)) after the exact-topology density has been
+    removed;
     electroweak instanton/sphaleron physics uses the same anomalous charge
     ledger, but the real-time B+L washout rate is q_X^2 Gamma_CS/(chi_X T),
     with q_X=2N_g and B-L exactly conserved;
@@ -3791,6 +3794,119 @@ def check_instanton_zero_mode_zone_u1a_susceptibility() -> None:
     )
 
 
+def check_u1a_mode_count_restoration_criterion() -> None:
+    mass = Fraction(1, 16)
+    smaller_mass = mass / 2
+    volume = Fraction(97)
+    topological_mismatch = Fraction(3)
+    topological_pole = 2 * topological_mismatch / (volume * mass * mass)
+    smaller_mass_pole = 2 * topological_mismatch / (volume * smaller_mass * smaller_mass)
+    assert_equal(
+        "fixed-volume exact topology pole is chiral singular",
+        smaller_mass_pole,
+        4 * topological_pole,
+    )
+    larger_volume = 100 * volume
+    assert_equal(
+        "thermodynamic first suppresses exact topology density",
+        2 * topological_mismatch / (larger_volume * mass * mass)
+        < topological_pole,
+        True,
+    )
+
+    singular_value_multiplicities = [
+        (Fraction(1, 4), 2),
+        (Fraction(3, 8), 1),
+        (Fraction(5, 8), 3),
+    ]
+
+    def atomic_stieltjes_integral(
+        atoms: list[tuple[Fraction, int]],
+        mass_value: Fraction,
+        volume_value: Fraction,
+    ) -> Fraction:
+        total = Fraction(0)
+        for singular_value, multiplicity in sorted(atoms):
+            jump = Fraction(multiplicity, volume_value)
+            total += (
+                4
+                * mass_value
+                * mass_value
+                * jump
+                / (mass_value * mass_value + singular_value * singular_value) ** 2
+            )
+        return total
+
+    stieltjes_sum = atomic_stieltjes_integral(
+        singular_value_multiplicities,
+        mass,
+        volume,
+    )
+    finite_spectral_sum = sum(
+        4
+        * mass
+        * mass
+        * multiplicity
+        / (volume * (mass * mass + singular_value * singular_value) ** 2)
+        for singular_value, multiplicity in singular_value_multiplicities
+    )
+    assert_equal(
+        "finite Stieltjes mode-count integral equals spectral sum",
+        stieltjes_sum,
+        finite_spectral_sum,
+    )
+
+    count_constant = Fraction(7, 5)
+    total_retained_density = Fraction(11, 3)
+
+    def dyadic_count_bound(mass_value: Fraction, cumulative_power: int, shells: int = 5) -> Fraction:
+        low_modes = 4 * count_constant * mass_value**cumulative_power / (mass_value * mass_value)
+        shell_bound = Fraction(0)
+        for shell in range(shells):
+            lower = Fraction(2**shell) * mass_value
+            upper = Fraction(2 ** (shell + 1)) * mass_value
+            cumulative_upper = count_constant * upper**cumulative_power
+            shell_bound += (
+                4
+                * mass_value
+                * mass_value
+                * cumulative_upper
+                / lower**4
+            )
+        high_tail = 4 * mass_value * mass_value * total_retained_density
+        return low_modes + shell_bound + high_tail
+
+    superlinear_bound = dyadic_count_bound(mass, cumulative_power=3)
+    superlinear_bound_smaller = dyadic_count_bound(smaller_mass, cumulative_power=3)
+    assert_equal(
+        "superlinear cumulative count bound decreases toward chiral limit",
+        superlinear_bound_smaller < superlinear_bound,
+        True,
+    )
+
+    linear_density_low_modes = (
+        4 * count_constant * mass**2 / (mass * mass)
+    )
+    linear_density_low_modes_smaller = (
+        4 * count_constant * smaller_mass**2 / (smaller_mass * smaller_mass)
+    )
+    assert_equal(
+        "linear density cumulative count leaves finite low-mode remnant",
+        linear_density_low_modes_smaller,
+        linear_density_low_modes,
+    )
+
+    constant_density_low_modes = 4 * count_constant * mass / (mass * mass)
+    constant_density_low_modes_smaller = (
+        4 * count_constant * smaller_mass / (smaller_mass * smaller_mass)
+    )
+    assert_equal(
+        "constant density cumulative count diverges in chiral limit",
+        constant_density_low_modes_smaller,
+        2 * constant_density_low_modes,
+    )
+
+
 def check_mass_saturated_vacuum_activity_size_integral() -> None:
     n_c = 3
     n_f = 3
@@ -4172,6 +4288,7 @@ def main() -> None:
     check_first_cluster_correction_to_dilute_instanton_gas()
     check_instanton_ensemble_zero_mode_overlap_spectrum()
     check_instanton_zero_mode_zone_u1a_susceptibility()
+    check_u1a_mode_count_restoration_criterion()
     check_mass_saturated_vacuum_activity_size_integral()
     check_screened_one_instanton_size_integral()
     check_thermal_instanton_determinant_screening()
