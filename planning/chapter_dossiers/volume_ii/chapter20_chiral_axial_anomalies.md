@@ -352,6 +352,7 @@
 | \(\rho_*,dQ,m_{\rm scr}\) | mixed hard-source/physical-screening log-shell coordinate, hard exponential envelope, and screening mass in the retained instanton size majorant |
 | \(C_{\rm inst}^{(4)}(Q;R),\mathcal P_{\rm orient}\) | specialized \(SU(3)\), \(N_f=2\) hard four-fermion instanton coefficient and shared orientation projector, with the Pauli-Villars pure-gauge constant, light-fermion determinant factor, and explicit endpoint residual |
 | \(J_R,M_R,T_R,\kappa_R\) | retained signed hard-instanton window integral, retained absolute mass, omitted absolute tail, and noncancellation margin used to certify a relative hard-coefficient error |
+| \(X_{\mathcal S},\delta_X,z_B,z_O,\epsilon_C\) | finite scheme-transport data for an instanton determinant constant: coupling-coordinate shift, zero-mode/source and operator/projection frame factors, and logarithmic constant residual |
 | \(B_R,B_L,d_R,d_L,\epsilon_{\rm rank}\) | right/left four-source zero-mode overlap matrices, determinant margins, and rank-margin residual used to certify a nondegenerate \(N_f=2\) instanton four-source amplitude |
 | \(\mu_I,\rho_I,K_\Lambda(\rho)\) | Wilsonian instanton factorization scale, cutoff \(\rho_I=\mu_I^{-1}\), and fully paired finite-regulator size integrand whose boundary flux transfers between the short coefficient and long-distance remainder |
 | \(C_I^{<},[O_I]_\mu,\gamma_{IK}\) | short-instanton OPE coefficient, retained renormalized operator basis, and operator-mixing anomalous-dimension matrix used to distinguish composite-operator RG transport from size-factorization flow |
@@ -1033,6 +1034,14 @@
   \(4L\eta+2\eta^2\) determinant bounds, and the resulting
   \(\epsilon_{\rm rank}\) is propagated into the finite-window amplitude error.
   Nonzero moduli/determinant weights do not rescue a rank-one source tensor.
+- The finite-scheme transport certificate now makes determinant constants
+  amplitude data rather than detached normalization numbers: a finite shift
+  \(X_{\mathcal S'}=X_{\mathcal S}+\delta_X\) must be compensated by
+  \(C_{\mathcal S'}^{\rm det}=e^{\delta_X}C_{\mathcal S}^{\rm det}/(z_Bz_O)\),
+  and logarithmic residuals in the coupling, source frame, operator projection,
+  and determinant constant produce the multiplicative bound
+  \(\exp(\epsilon_C+\epsilon_X+\epsilon_B+\epsilon_O)-1\).  This records the
+  declared-scheme layer missing from a bare Pauli-Villars constant quote.
 
 ## Open Boundaries
 
@@ -1537,3 +1546,11 @@
   physical projection residuals outside the Euclidean source kernel.  The BPST
   companion verifies the exact determinant bounds, rank-margin residual, and
   rank-one source-collapse negative control.
+- 2026-06-04 issue #597 determinant scheme-transport pass: added
+  `ca:instanton-determinant-scheme-transport`, which turns a finite instanton
+  determinant constant into declared amplitude data.  The block derives the
+  compensation law for finite coupling-coordinate shifts and source/operator
+  frame factors, then propagates logarithmic scheme residuals into a
+  multiplicative amplitude error.  The BPST companion verifies exact rational
+  transport, stale-constant and missing-source-compensation negative controls,
+  and the nonvanishing absolute certificate for canceling residuals.

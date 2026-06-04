@@ -5376,6 +5376,96 @@ remaining channels therefore requires the margin in
 \eqref{eq:instanton-reference-noncancellation-margin}.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Finite-scheme transport of an instanton
+determinant constant]
+\label{ca:instanton-determinant-scheme-transport}
+A quoted instanton determinant constant is meaningful only as part of a
+finite scheme datum.  Let \(\mathcal S\) and \(\mathcal S'\) be two
+mass-independent finite schemes for the same \(Q=1\) amplitude channel, with
+the same classical chart and the same physical external observable.  Write
+\[
+  X_{\mathcal S}(\mu)=\frac{8\pi^2}{g_{\mathcal S}^2(\mu)} .
+\]
+Suppose the finite coupling-coordinate change, source-zero-mode coordinate
+change, and final operator/source projection are
+\begin{equation}
+  X_{\mathcal S'}=X_{\mathcal S}+\delta_X+r_X,\qquad
+  B_{\mathcal S'}=z_B\,\ee^{r_B}B_{\mathcal S},\qquad
+  O_{\mathcal S'}=z_O\,\ee^{r_O}O_{\mathcal S},
+  \label{eq:instanton-finite-scheme-map}
+\end{equation}
+with \(z_B,z_O\ne0\).  Here \(B_{\mathcal S}\) denotes the retained
+zero-mode/source integral or finite-window source tensor, while
+\(O_{\mathcal S}\) is the matrix element, OPE-basis element, or physical
+projection coordinate multiplying the instanton coefficient.  Logarithms are
+taken in the chosen finite coordinate patch; for a positive activity bound one
+uses the same formulas with logarithms of absolute values.  For a purely
+Euclidean source coefficient one sets \(z_O=1\).  For a mass-saturated vacuum
+term, \(z_B\) is the determinant of the finite mass-coordinate change; for a
+four-source amplitude it is the product of the right and left source-frame
+determinants.
+
+If the leading one-instanton contribution is represented in scheme
+\(\mathcal S\) by
+\[
+  \mathcal A_{\mathcal S}^{\rm lead}
+  =
+  C_{\mathcal S}^{\rm det}
+  \ee^{-X_{\mathcal S}}
+  B_{\mathcal S}O_{\mathcal S},
+\]
+then the transported determinant constant in \(\mathcal S'\) is
+\begin{equation}
+  C_{\mathcal S'}^{\rm det,lead}
+  =
+  \frac{\ee^{\delta_X}}{z_Bz_O}\,
+  C_{\mathcal S}^{\rm det}.
+  \label{eq:instanton-determinant-finite-scheme-transport}
+\end{equation}
+Indeed, inserting
+\eqref{eq:instanton-determinant-finite-scheme-transport} and dropping the
+remainders \(r_X,r_B,r_O\) gives the same leading amplitude coordinate.
+Thus one may not change from a Pauli--Villars coupling to another finite
+coupling convention, or rescale the external source/operator frame, while
+reusing the old numerical determinant constant.
+
+More generally, suppose the actually supplied constant satisfies the
+logarithmic certificate
+\begin{equation}
+  \left|
+  \log C_{\mathcal S'}^{\rm det}
+  -
+  \log C_{\mathcal S}^{\rm det}
+  -
+  \delta_X+\log z_B+\log z_O
+  \right|
+  \le\epsilon_C,
+  \label{eq:instanton-determinant-scheme-log-certificate}
+\end{equation}
+and that
+\[
+  |r_X|\le\epsilon_X,\qquad |r_B|\le\epsilon_B,\qquad
+  |r_O|\le\epsilon_O .
+\]
+Then the leading amplitude coordinates in the two schemes obey
+\begin{equation}
+  \left|
+  \frac{\mathcal A_{\mathcal S'}^{\rm lead}}
+       {\mathcal A_{\mathcal S}^{\rm lead}}
+  -1
+  \right|
+  \le
+  \exp(\epsilon_C+\epsilon_X+\epsilon_B+\epsilon_O)-1 .
+  \label{eq:instanton-determinant-scheme-amplitude-bound}
+\end{equation}
+This bound is a scheme-transport residual.  It is distinct from the
+proper-time determinant residual, the rank/source residual, and the endpoint
+tail.  A finite determinant constant in a declared scheme is therefore not a
+decorative number attached to the BPST moduli measure; it is an amplitude
+coordinate whose compensation against the coupling, source, and operator
+coordinates must be checked.
+\end{controlledapproximation}
+
 \begin{proposition}[Mass/source RG transport of the instanton vertex]
 \label{prop:instanton-mass-source-rg-transport}
 Work in a mass-independent renormalization scheme in the same \(Q=1\)

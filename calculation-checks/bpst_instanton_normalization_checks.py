@@ -39,6 +39,10 @@ relations
     predicts other channels only through same-frame ratios B_alpha/B_0; the
     reference residual is amplified by that ratio and a noncancellation margin
     for B_0 is required
+    finite-scheme transport of an instanton determinant constant compensates
+    the finite coupling-coordinate shift together with source and operator
+    frame normalizations; reusing the old constant after a scheme change
+    changes the amplitude
     the proper-time fluctuation determinant combines with either an independent
     bilinear source determinant or a differentiated linear Grassmann source
     coefficient to give the finite four-fermion instanton amplitude
@@ -183,7 +187,7 @@ Independent construction: direct radial integrals, finite determinant and
 Schur-complement algebra, source differentiation, inverse-Gram construction of
 the shared SU(2) four-fundamental Haar projector, absolute logarithmic
 determinant-residual certificates, finite reference-amplitude calibration
-ratios, zero-mode overlap determinant-stability bounds,
+ratios, finite-scheme transport ratios, zero-mode overlap determinant-stability bounds,
 coefficient/operator transport matrices, and exact retained size-shell
 stationarity equations.
 Imported assumptions: the BPST background and zero-mode formulas, one-loop
@@ -193,10 +197,11 @@ Negative controls: the shared-Haar 1/3 versus factorized 1/4 counterexample,
 rank-one and color-symmetric source-pair rejections, signed determinant-trace
 cancellations rejected as fluctuation-error certificates, negative/complex
 thermal amplitude kernels rejected from signed activity bounds, finite-frame
-inverse checks, canceled reference-amplitude normalization, rank-one
-four-source zero-mode collapse, hard-only and screening-only shell
-substitutions in the mixed size-majorant problem, and separation of operator
-RG flow from the Wilsonian size-boundary flux.
+inverse checks, canceled reference-amplitude normalization, stale determinant
+constants under finite scheme changes, rank-one four-source zero-mode collapse,
+hard-only and screening-only shell substitutions in the mixed size-majorant
+problem, and separation of operator RG flow from the Wilsonian size-boundary
+flux.
 Scope boundary: a pass checks finite algebra and normalization interfaces; it
 does not prove dilute-gas validity, large-size control, uniform semiclassical
 remainders, or physical hadronic matrix elements.
@@ -1619,6 +1624,95 @@ def check_light_fermion_reference_amplitude_calibration() -> None:
         abs(reference_residual * b_target / b_cancel)
         > 50 * abs(reference_residual * b_target / b_ref),
         True,
+    )
+
+
+def check_instanton_finite_scheme_transport_certificate() -> None:
+    # Work with the exponential of the finite coupling-coordinate shift,
+    # exp(delta_X), as an exact rational fixture.  The common exp(-X_S) factor
+    # is omitted; exp(-X_S') contributes the inverse shift.
+    determinant_constant = Fraction(7, 11)
+    source_integral = Fraction(13, 17)
+    operator_matrix_element = Fraction(19, 23)
+    leading_amplitude = determinant_constant * source_integral * operator_matrix_element
+
+    coupling_shift_factor = Fraction(5, 3)
+    source_frame_factor = Fraction(11, 7)
+    operator_frame_factor = Fraction(4, 5)
+    transported_constant = (
+        coupling_shift_factor
+        * determinant_constant
+        / (source_frame_factor * operator_frame_factor)
+    )
+    shifted_exponential_factor = Fraction(1, 1) / coupling_shift_factor
+    shifted_source = source_frame_factor * source_integral
+    shifted_operator = operator_frame_factor * operator_matrix_element
+
+    assert_equal(
+        "finite scheme transport preserves instanton amplitude",
+        transported_constant * shifted_exponential_factor * shifted_source * shifted_operator,
+        leading_amplitude,
+    )
+
+    stale_constant_amplitude = (
+        determinant_constant
+        * shifted_exponential_factor
+        * shifted_source
+        * shifted_operator
+    )
+    assert_equal(
+        "stale determinant constant changes scheme-shifted amplitude",
+        stale_constant_amplitude == leading_amplitude,
+        False,
+    )
+    assert_equal(
+        "stale determinant constant amplitude ratio",
+        stale_constant_amplitude / leading_amplitude,
+        source_frame_factor * operator_frame_factor / coupling_shift_factor,
+    )
+
+    missing_source_compensation = (
+        coupling_shift_factor * determinant_constant / operator_frame_factor
+    )
+    assert_equal(
+        "missing source-frame inverse compensation changes amplitude",
+        missing_source_compensation
+        * shifted_exponential_factor
+        * shifted_source
+        * shifted_operator
+        == leading_amplitude,
+        False,
+    )
+
+    # Multiplicative residuals are written as exp(r_i).  The log-certificate
+    # bound exp(sum |r_i|)-1 is checked exactly as prod max(q_i, q_i^(-1))-1.
+    residual_factors = [
+        Fraction(101, 100),  # determinant constant residual
+        Fraction(99, 100),  # coupling-coordinate residual in exp(-X)
+        Fraction(51, 50),  # source-coordinate residual
+        Fraction(98, 100),  # operator/projection residual
+    ]
+    residual_amplitude_ratio = product_fraction(residual_factors)
+    log_certificate_multiplier = product_fraction(
+        factor if factor >= 1 else Fraction(1, 1) / factor for factor in residual_factors
+    )
+    assert_equal(
+        "finite scheme residual amplitude bound",
+        abs(residual_amplitude_ratio - 1) <= log_certificate_multiplier - 1,
+        True,
+    )
+
+    canceling_residual_factors = [Fraction(3, 2), Fraction(2, 3)]
+    canceling_ratio = product_fraction(canceling_residual_factors)
+    canceling_certificate = product_fraction(
+        factor if factor >= 1 else Fraction(1, 1) / factor
+        for factor in canceling_residual_factors
+    )
+    assert_equal("canceling finite-scheme residuals can hide in the ratio", canceling_ratio, Fraction(1))
+    assert_equal(
+        "finite scheme certificate does not vanish by residual cancellation",
+        canceling_certificate == Fraction(1),
+        False,
     )
 
 
@@ -4504,6 +4598,7 @@ def main() -> None:
     check_fermion_determinant_zero_mode_nonzero_mode_factorization()
     check_light_fermion_determinant_source_frame_covariance()
     check_light_fermion_reference_amplitude_calibration()
+    check_instanton_finite_scheme_transport_certificate()
     check_instanton_mass_source_rg_transport()
     check_proper_time_fluctuation_four_fermion_amplitude()
     check_proper_time_determinant_residual_window()

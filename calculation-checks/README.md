@@ -549,6 +549,9 @@ Current checks:
   only as \(R^{-1/3}\), the finite-window hard-coefficient certificate
   requiring an absolute error budget, a tail majorant, and a noncancellation
   margin \(|J_R|/M_R\) before a relative instanton coefficient is quoted, the
+  finite-scheme transport certificate showing how instanton determinant
+  constants compensate coupling-coordinate shifts and source/operator frame
+  normalizations, the
   four-source amplitude certificate requiring nondegenerate right/left
   zero-mode overlap determinants and propagating entrywise overlap errors
   through a rank-margin residual, the
