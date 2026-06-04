@@ -542,3 +542,11 @@
   nimrep diagonalization bridge from open annulus matrices to closed-channel
   reflection coefficients, and extended `bcft_cardy_checks.py` with an exact
   \(A_3\) Ising spectral-resolution/reflection-product check.
+- 2026-06-04 issue #755 editorial-flow pass: expanded the coordinate meaning
+  of the Cardy--Lewellen boundary sewing equation.  The chapter no longer
+  hides the chiral-block dual-basis contractions behind a "standard pairing"
+  phrase; it states the \(s\)- and \(t\)-channel bases, identifies the fusing
+  matrix as the coordinate matrix of the associator, and explains why basis
+  changes act on the \(C\)-tensors and \(F\)-matrix through the corresponding
+  source and target change-of-basis matrices while leaving the associative
+  boundary-OPE statement invariant.
