@@ -1313,12 +1313,319 @@ Controlled Approximation~\ref{capprox:finite-order-bphz-wilsonian-matching}
 and in the
 finite-coordinate continuum-limit theorem below.
 
-This gives a precise meaning to effective field theory.  A finite list of
-relevant and marginal coordinates must be measured or tuned.  Irrelevant
-operators are still present, and their coefficients encode real short-distance
-physics, but their effect on low-energy observables is organized by powers of
-the ratio of scales and by the symmetries that determine which operators may
-appear.
+This gives one structural input for effective field theory: irrelevant
+coordinates can be suppressed in a normed low-energy chart.  It is not yet an
+EFT prediction.  A prediction also needs an observable, a domain, matching and
+renormalization data, an infrared prescription, and a stated status for the
+discarded terms.
+
+\section{What an EFT Prediction Contains}
+\label{sec:eft-prediction-datum}
+
+The slogan ``write the most general Lagrangian'' is useful only after it is
+embedded in a prediction problem.  The local action is one coordinate choice
+inside a larger datum.
+
+\begin{definition}[EFT prediction datum]
+\label{def:eft-prediction-datum}
+An EFT prediction datum for an observable class \(\mathcal R\) on a kinematic
+domain \(\mathcal D\) consists of:
+\begin{enumerate}
+  \item the observables to be predicted, for example smeared correlators,
+  inclusive rates, finite-volume energies, or scattering functionals, together
+  with the external-state and infrared prescription used to define them;
+  \item the high-scale input, if one is assumed.  In a top-down EFT this is a
+  specified microscopic or higher-scale model and matching prescription; in a
+  bottom-up EFT the Wilson coefficients are empirical or nonperturbative input
+  coordinates;
+  \item a regulator and renormalization prescription, including the treatment
+  of evanescent operators and of scheme-dependent finite parts;
+  \item the retained field variables, symmetries, gauge or BRST/BV data when
+  present, and the local operator space modulo integration by parts, equations
+  of motion, local invertible field redefinitions, gauge- or BRST-exact
+  representatives, boundary terms, and evanescent representatives;
+  \item the expansion parameters and the joint ordering rule: canonical
+  dimension, chiral dimension, velocity, loop order, large-\(N\) order,
+  endpoint parameter, or another declared filtration;
+  \item matching conditions at the high scale and the renormalization-group
+  transport below it, including threshold and overlap subtractions when more
+  than one momentum region is present;
+  \item a norm, seminorm, or distributional topology on \(\mathcal R\) over
+  \(\mathcal D\), and a statement of what is known about the omitted
+  contribution in that topology.
+\end{enumerate}
+Given such data, an \(N\)-th order EFT prediction has the form
+\begin{equation}
+  \mathcal O_{\rm phys}(r;d)
+  =
+  \mathcal O_{\rm EFT}^{[N]}(r;d)
+  +
+  R_N(r;d),
+  \qquad
+  r\in\mathcal R,\quad d\in\mathcal D,
+  \label{eq:eft-prediction-output-remainder}
+\end{equation}
+where \(R_N\) is not a decorative symbol.  It is an exact finite-regulator
+remainder, a fixed-order perturbative remainder, an asymptotic remainder in a
+specified regime, a nonperturbative bound in a specified topology, a
+conditional inference from high-scale assumptions, or a heuristic size prior.
+\end{definition}
+
+This datum is the Wilsonian form of the operational EFT viewpoint: the local
+operators allowed by the symmetries must be paired with a power counting,
+matching or coefficient input, and an observable range
+\cite{Weinberg1979PhenomenologicalLagrangians,Georgi1993EffectiveFieldTheory}.
+This definition separates several claims that are often conflated.
+Top-down matching supplies coefficients from a higher-scale model, but the
+low-energy EFT prediction is still the statement
+\eqref{eq:eft-prediction-output-remainder} for a chosen observable.  Bottom-up
+EFT uses coefficients fixed from data or separate nonperturbative input; it
+need not come with a local Lorentz-invariant UV completion.  Analyticity or
+positivity constraints derived from additional high-energy assumptions, such
+as the dispersion-theory hypotheses of Chapter~\ref{ch:volume-ii-07}, are
+therefore conditional restrictions on coefficients, not the definition of the
+EFT; matching and the error statement remain separate entries of the
+prediction datum.
+
+The status of \(R_N\) should be named in the text whenever a calculation is
+used.  The useful categories are:
+\begin{enumerate}
+  \item exact finite-regulator identity;
+  \item fixed-loop or fixed-order perturbative statement;
+  \item asymptotic expansion with a declared remainder notion;
+  \item nonperturbative theorem in a specified model and topology;
+  \item conditional inference from UV assumptions;
+  \item heuristic coefficient-size estimate.
+\end{enumerate}
+Power counting belongs to the same datum.  A filtration is predictive only if
+counterterms generated by retained interactions close within the retained
+filtration through the target order, logarithms and mixing are transported by
+the RG without lowering the declared order, the coefficient-size assumptions
+are stated, and the kinematic region does not introduce a new small or large
+parameter that changes the ordering.  In a two-parameter example, a term with
+loop order \(L\) and canonical excess \(k\) might be assigned
+\[
+  w(L,k)=2L+k,
+  \qquad
+  \Pi_{\le N}L_{\rm EFT}
+  =
+  \sum_{w(L,k)\le N} C_{L,k}O_{L,k}.
+\]
+This is a closed power counting through \(N\) only after the counterterm
+projection of every graph built from \(w\le N\) vertices lands again in
+\(w\le N\), with the \(w>N\) part assigned to \(R_N\).  If endpoint,
+nonrelativistic, large-\(N\), or chiral regions are simultaneously present,
+the map \(w\) must be replaced by the corresponding multi-index order and the
+observable domain \(\mathcal D\) must say which scaling regime is being used.
+The SCET factorization datum in
+Hypothesis~\ref{hyp:leading-power-scet-factorization} and the distributional
+estimate in
+Controlled Approximation~\ref{ca:scet-distributional-factorization-estimate}
+are an example of this discipline: mode labels and operators are not yet a
+prediction until the observable, overlap/rapidity prescription, factorization
+hypothesis, test-space topology, and remainder are also present.
+
+Local field redefinitions are exact changes of variables at finite regulator,
+not magic erasers for physical input.  For an invertible local map
+\(\phi=F_\epsilon(\psi)\),
+\begin{equation}
+\begin{aligned}
+  &\int [\dd\phi]\,
+    O[\phi]\,
+    \exp\{-S[\phi]+\langle J,\phi\rangle\}      \\
+  &\qquad =
+    \int[\dd\psi]\,
+    \det\!\left(\frac{\delta F_\epsilon}{\delta\psi}\right)
+    O[F_\epsilon(\psi)]\,
+    \exp\{-S[F_\epsilon(\psi)]
+      +\langle J,F_\epsilon(\psi)\rangle\}.
+\end{aligned}
+  \label{eq:eft-field-redefinition-source-identity}
+\end{equation}
+Thus the action, source coupling, measure, and observable representative
+transform together.  Operators proportional to the equations of motion may be
+removed from an on-shell matched observable basis only with this accompanying
+source and observable transformation.  Off-shell Green functions, boundary
+terms, and the chosen list of physical input quantities change unless they
+are carried through the same map.  Wilson coefficients are basis coordinates;
+matched observables are the basis-independent objects.
+
+\section{Heavy-Light Matching as a Prediction}
+\label{sec:heavy-light-eft-prediction}
+
+The simplest place where the definition becomes concrete is a stable light
+scalar \(\phi\) coupled to a heavy scalar \(H\) of mass \(M\).  Work in a
+finite Euclidean volume or with a smooth finite ultraviolet regulator, and
+take nonexceptional external momenta with
+\[
+  |p_i|,\;m_\phi \le Q\ll M,
+\]
+away from heavy-particle thresholds.  A useful normalization is
+\begin{equation}
+  S[\phi,H]
+  =
+  S_\ell[\phi]
+  +
+  \frac12\int H K_M H
+  +
+  \frac{\eta}{2}\int H\phi^2
+  +
+  \frac{\rho}{4}\int H^2\phi^2,
+  \qquad
+  K_M=-\partial^2+M^2 .
+  \label{eq:heavy-light-euclidean-action}
+\end{equation}
+The tree-level integration over the heavy field in the \(\eta\)-coupling gives
+the exact finite-regulator nonlocal light-field functional
+\begin{equation}
+  S_{\rm eff}^{\rm tree}[\phi]
+  =
+  S_\ell[\phi]
+  -
+  \frac{\eta^2}{8}
+  \int \dd^Dx\,\dd^Dy\,
+  \phi(x)^2 K_M^{-1}(x,y)\phi(y)^2 .
+  \label{eq:heavy-light-tree-nonlocal}
+\end{equation}
+For a momentum transfer \(q\) in a low-energy four-light amplitude,
+\begin{equation}
+  \frac{1}{M^2+q^2}
+  =
+  \sum_{r=0}^{N}
+  \frac{(-q^2)^r}{M^{2r+2}}
+  +
+  \frac{(-q^2)^{N+1}}
+       {M^{2N+2}(M^2+q^2)} .
+  \label{eq:heavy-kernel-local-expansion}
+\end{equation}
+On the domain \(0\le q^2\le Q^2\), the last term is bounded by
+\[
+  \frac{Q^{2N+2}}{M^{2N+4}}.
+\]
+Thus the local tree-level EFT begins as
+\begin{equation}
+  S_{\rm EFT}^{\rm tree}[\phi]
+  =
+  S_\ell[\phi]
+  -
+  \frac{\eta^2}{8M^2}\int\phi^4
+  +
+  \frac{\eta^2}{8M^4}\int
+    \partial_\mu(\phi^2)\partial^\mu(\phi^2)
+  +
+  O_{\mathcal D}\!\left(\frac{Q^4}{M^6}\right),
+  \label{eq:heavy-light-tree-local-action}
+\end{equation}
+where the displayed remainder is a low-momentum kernel estimate, not a claim
+about threshold kinematics.
+
+The one-loop hard matching illustrates what is harder than writing the local
+operators.  The \(\rho H^2\phi^2/4\) term changes the heavy quadratic operator
+to \(K_M+\rho\phi^2/2\), so the heavy determinant contributes
+\[
+  \frac12\operatorname{Tr}\log
+  \left(1+\frac{\rho}{2}K_M^{-1}\phi^2\right)
+  \supset
+  -\frac{\rho^2}{16}
+  \operatorname{Tr}(K_M^{-1}\phi^2K_M^{-1}\phi^2).
+\]
+In a mass-independent subtraction scheme this produces a local hard threshold
+correction to the light quartic coordinate.  With the convention
+\(S_{\rm EFT}\supset \lambda_{\rm EFT}\int\phi^4/4!\),
+\begin{equation}
+  \lambda_{\rm EFT}(\mu_M)
+  =
+  \lambda_{\rm full}(\mu_M)
+  -
+  \frac{3\eta^2}{M^2}
+  +
+  \Delta\lambda_H(\mu_M)
+  +
+  O\!\left(\frac{Q^2}{M^2}\right),
+  \qquad
+  \Delta\lambda_H(\mu_M)
+  =
+  -b_H\log\frac{\mu_M}{M}
+  +
+  c_H^{\mathfrak s}.
+  \label{eq:heavy-light-one-loop-threshold}
+\end{equation}
+Here \(b_H\) is the heavy-field contribution to the full-theory one-loop beta
+function for the chosen quartic coordinate, and \(c_H^{\mathfrak s}\) is the
+finite constant of the subtraction scheme \(\mathfrak s\).  For the scalar
+normalization above, the determinant term gives \(b_H=3\rho^2/(16\pi^2)\)
+up to terms involving other couplings.  The point of
+\eqref{eq:heavy-light-one-loop-threshold} is not the constant itself but the
+separation between hard matching and low-field running.
+
+Let \(\beta_{\rm full}=\beta_\ell+b_H\) at the order under discussion, and
+run the EFT from the matching scale \(\mu_M\) down to a low scale
+\(\mu_\ell\).  The quartic coordinate entering a low-energy four-point
+observable contains
+\begin{equation}
+  \lambda_{\rm full}(M)
+  +
+  \beta_{\rm full}\log\frac{\mu_M}{M}
+  +
+  \Delta\lambda_H(\mu_M)
+  +
+  \beta_\ell\log\frac{\mu_\ell}{\mu_M}
+  =
+  \lambda_{\rm full}(M)
+  +
+  \beta_\ell\log\frac{\mu_\ell}{M}
+  +
+  c_H^{\mathfrak s}
+  +
+  O(\hbox{two-loop}),
+  \label{eq:heavy-light-rg-scale-cancellation}
+\end{equation}
+so the artificial matching scale cancels at the order retained.  If the
+observable is computed to one loop in the low theory, the light bubble,
+external-state prescription, and subtraction convention must be included in
+\(\mathcal O_{\rm EFT}^{[N]}\); the threshold coefficient alone is not a
+prediction.
+
+\begin{controlledapproximation}[Heavy-scalar decoupling for low-energy amplitudes]
+\label{ca:heavy-scalar-decoupling-low-energy}
+Fix a finite regulator, a massive light scalar with an infrared prescription,
+a nonexceptional Euclidean momentum domain \(\mathcal D_Q\) with
+\(Q\ll M\), and a fixed loop order.  After matching the retained light-field
+operators through canonical excess \(2N\) and running them below \(M\), the
+full and EFT four-light amplitudes satisfy
+\[
+  \Gamma_{\rm full}^{(4)}(\mathcal P)
+  =
+  \Gamma_{\rm EFT}^{(4),[N]}(\mathcal P)
+  +
+  R_N(\mathcal P),
+  \qquad
+  |R_N(\mathcal P)|
+  \le
+  C_N
+  \left(\frac{Q}{M}\right)^{2N+2}
+  +
+  R_{\rm pert}.
+ \]
+The constant \(C_N\) depends on the finite-regulator norm and on the distance
+from thresholds; \(R_{\rm pert}\) is the truncation error of the fixed-loop
+series.  Removing the regulator, or making a nonperturbative statement, is an
+additional analytic problem.
+\end{controlledapproximation}
+
+This is the Appelquist--Carazzone decoupling mechanism in the restricted form
+needed here \cite{AppelquistCarazzone1975}: heavy lines at low external
+momenta produce local hard coefficients plus powers of \(Q/M\).  The
+hypotheses matter.  In a mass-dependent subtraction scheme part of the
+decoupling is automatic, while in \(\overline{\rm MS}\)-type schemes heavy
+fields remain in beta functions until threshold matching is performed.
+Relevant parameters, especially scalar masses, require separate tuning rather
+than automatic power suppression.  Symmetry breaking, anomalies and
+Wess--Zumino terms, topological terms, threshold kinematics, infrared
+singularities, and couplings that grow with the heavy mass can leave
+unsuppressed low-energy effects.  Nondecoupling top-Yukawa or Higgs-sector
+effects are not paradoxes; they violate the fixed-coupling, fixed-kinematic
+large-\(M\) hypotheses of the displayed estimate.
 
 \section{A Quartic-Sextic Toy Flow}
 

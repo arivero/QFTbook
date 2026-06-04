@@ -24,6 +24,10 @@
   effective-average-action paper, Morris' continuous-RG treatment, and
   Rosten's exact-RG review, used only to guard terminology and theorem
   boundaries.  The chapter follows the local logical order and conventions.
+- `SRC-EXTERNAL-EFT`: Appelquist--Carazzone decoupling, Weinberg's
+  phenomenological-Lagrangian viewpoint, and Georgi's EFT review, used only as
+  source anchors for the operational EFT-prediction and heavy-light matching
+  material.
 - `SRC-EXTERNAL-BOUNDS`: Polchinski's smooth-cutoff perturbative
   renormalizability argument, Salmhofer's rigorous RG framework, and
   Kopper--Muller-type perturbative cutoff estimates, together with
@@ -154,6 +158,37 @@ The chapter must define and derive:
   zero set a \(C^k\) embedded Banach submanifold of codimension equal to the
   number of relevant coordinates; the dossier records this as an
   implicit-function consequence, not as an independent QFT theorem;
+- an operational EFT-prediction datum that includes the observable class,
+  kinematic domain, high-scale or bottom-up input, regulator/renormalization
+  prescription, retained field/symmetry data, operator quotient, expansion
+  parameters, matching/RG data, infrared/external-state prescription, and
+  topology or norm for the omitted contribution;
+- the output form
+  \(\mathcal O_{\rm phys}=\mathcal O_{\rm EFT}^{[N]}+R_N\), with \(R_N\)
+  classified as an exact finite-regulator identity, fixed-order perturbative
+  remainder, asymptotic remainder, nonperturbative theorem in a stated model,
+  conditional UV inference, or heuristic coefficient-size estimate;
+- the distinction between top-down matching and bottom-up coefficient input,
+  including the warning that positivity/analyticity constraints are
+  conditional UV restrictions on coefficients rather than the definition or
+  justification of an EFT;
+- a source-aware local field-redefinition identity carrying the action,
+  measure Jacobian, source term, and observable representative together, and
+  the resulting warning that EOM operators may be removed from an on-shell
+  matched basis only with the corresponding source/observable transformation;
+- a power-counting paragraph that treats canonical, loop, chiral, velocity,
+  large-\(N\), endpoint, or multi-parameter filtrations as error organizations
+  only after counterterm closure, coefficient assumptions, logarithmic mixing,
+  kinematic regions, and remainder status have been stated;
+- a scalar heavy-light model with \(K_M=-\partial^2+M^2\), a tree-level
+  nonlocal kernel \(K_M^{-1}\), its local expansion and low-momentum remainder
+  bound, one-loop hard threshold matching in a declared scheme, RG running
+  below \(M\), and cancellation of the artificial matching scale;
+- the scoped decoupling statement for fixed-loop nonexceptional low-energy
+  amplitudes, together with the boundaries from mass-dependent versus
+  mass-independent schemes, relevant parameters, symmetry breaking, anomalies,
+  Wess--Zumino/topological terms, thresholds, infrared singularities, and
+  heavy couplings that scale with mass;
 - the \(D=4\) massless scalar toy truncation
   \(L_\Lambda=\int(g_4\phi^4+g_6\phi^6)\), with
   \(\lambda_4=g_4\), \(\lambda_6=\Lambda^2g_6\);
@@ -417,6 +452,30 @@ The chapter must define and derive:
     exact Wilsonian computation by generated vertices and low-mode
     integration; in a finite low-momentum projection their Taylor expansion is
     part of the local matching map.
+17. An EFT prediction is a datum for observables, not merely a local
+    Lagrangian or a list of operators.  The reader-facing output must be an
+    observable approximation plus a named remainder status.
+18. Top-down EFTs use a specified high-scale model and matching map; bottom-up
+    EFTs use coefficients fixed by data or other nonperturbative input and
+    need not have a local Lorentz-invariant UV completion.  Analyticity and
+    positivity bounds are conditional UV constraints, not the definition of
+    the EFT.
+19. Local field redefinitions are exact finite-regulator changes of variables
+    only when the Jacobian, source coupling, and observable representative are
+    transformed together.  EOM removal changes off-shell Green functions and
+    basis coefficients unless the observable map is also carried along.
+20. Power counting is a closure and error ledger: logs and anomalous-dimension
+    mixing do not lower the declared order, and new kinematic regions require
+    new expansion parameters or a changed prediction datum.
+21. In the heavy-light scalar model, tree-level heavy exchange gives an exact
+    nonlocal \(K_M^{-1}\) kernel whose derivative expansion has a concrete
+    \(Q/M\) remainder away from thresholds.
+22. One-loop hard matching supplies threshold coefficients, but a low-energy
+    prediction also requires low-field loops, external-state/IR prescriptions,
+    RG transport, and cancellation of matching-scale dependence.
+23. Decoupling is scoped: fixed-loop asymptotic expansion, exact
+    finite-regulator large-\(M\) expansion, and nonperturbative decoupling are
+    different claims with different hypotheses.
 
 ## Figure Requirements
 
@@ -569,3 +628,12 @@ The chapter must define and derive:
   gives the constant-field local-potential projection, and separates this
   infrared-regulated 1PI flow from the Wilson-Polchinski Wilsonian action
   flow.
+- 2026-06-04 issue #782 pass: added the operational EFT-prediction datum,
+  claim-status ledger, bottom-up/top-down distinction, source-aware
+  field-redefinition identity, power-counting closure criterion, and a
+  heavy-light scalar matching section with tree-level nonlocal kernel
+  expansion, one-loop hard threshold matching, RG matching-scale cancellation,
+  and scoped decoupling/nondecoupling boundaries.  Added
+  `calculation-checks/eft_prediction_calculus_checks.py` to verify the heavy
+  kernel expansion, threshold-log cancellation, field-redefinition source
+  algebra, and residual-ledger arithmetic.

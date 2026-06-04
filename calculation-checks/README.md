@@ -657,6 +657,14 @@ Current checks:
   cancellation
   \(s/v^2-s^2/(v^2(s-m_h^2))=-m_h^2s/(v^2(s-m_h^2))\), and the ordered
   \(a_0=\mathcal M/(16\pi)\) partial-wave normalization.
+- `eft_prediction_calculus_checks.py`: exact finite checks for the EFT
+  prediction calculus in the Wilsonian chapter, including the heavy-scalar
+  kernel expansion with its low-momentum remainder bound, the local derivative
+  sign and \(\lambda\phi^4/4!\) normalization inherited from the nonlocal tree
+  functional, one-loop hard-threshold matching-scale cancellation against full/EFT running, source-aware
+  field-redefinition invariance with negative controls for omitted Jacobian or
+  source terms, and a multi-parameter power-counting residual ledger that
+  rejects using logarithms as order-lowering terms.
 - `borel_laplace_checks.py`: exact checks for the Borel--Laplace and
   zero-dimensional quartic large-order section, including Gaussian moments,
   perturbative coefficients, the ratio

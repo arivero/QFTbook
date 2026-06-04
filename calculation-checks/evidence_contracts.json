@@ -30,6 +30,10 @@
       "risk_class": "broken gauge-theory external-state amplitudes"
     },
     {
+      "path": "eft_prediction_calculus_checks.py",
+      "risk_class": "EFT prediction and decoupling"
+    },
+    {
       "path": "qcd_theta_witten_veneziano_checks.py",
       "risk_class": "QCD theta/Witten-Veneziano Ward identities"
     },

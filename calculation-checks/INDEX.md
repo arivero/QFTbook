@@ -8,8 +8,8 @@ The detailed per-script narrative ledger lives in
 tools/run_calculation_checks.sh --list
 ```
 
-As of the 2026-06-04 longitudinal-vector/Goldstone equivalence pass the
-directory contains 235 active check scripts: 233 Python checks and 2 Wolfram
+As of the 2026-06-04 EFT prediction-calculus pass the
+directory contains 236 active check scripts: 234 Python checks and 2 Wolfram
 Language companion checks.  The runner selects all `calculation-checks/*.py` and
 `calculation-checks/*.wl` files unless a filter is supplied.
 
