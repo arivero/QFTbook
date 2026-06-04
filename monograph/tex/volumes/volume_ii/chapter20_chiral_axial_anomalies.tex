@@ -7467,6 +7467,93 @@ symmetry breaking is the spectral statement above rather than another
 collective-coordinate volume formula.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Zero-mode-zone \(U(1)_A\) susceptibility
+criterion]
+\label{ca:instanton-zero-mode-zone-u1a-susceptibility}
+The same leading zero-mode-zone block distinguishes two different physical
+questions.  A nonzero \(\rho_{\rm zm}(0)\) gives the condensate criterion
+\eqref{eq:instanton-liquid-banks-casher-criterion}; restoration of the
+\(U(1)_A\)-paired isovector scalar and pseudoscalar susceptibilities is a
+stronger infrared test.  Use the source convention of
+\eqref{eq:qcd-axial-current-pseudoscalar-density} and the local curvature
+normalization of
+\eqref{eq:two-flavor-instanton-source-curvature-functional}--\eqref{eq:two-flavor-instanton-u1a-susceptibility-splitting}.
+For a finite leading block with positive singular values \(s_\alpha\), define
+the zero-mode-zone spectral contribution to the \(U(1)_A\)-odd splitting by
+\begin{equation}
+  \Delta_{\pi-\delta}^{\rm zm}(m;\mathcal V_4)
+  =
+  \frac{2|n_+-n_-|}{\mathcal V_4m^2}
+  +
+  \frac{4m^2}{\mathcal V_4}
+  \sum_{\alpha}
+  \frac1{(m^2+s_\alpha^2)^2}.
+  \label{eq:instanton-zero-mode-zone-u1a-finite}
+\end{equation}
+The first term is the exact topological zero-mode pole in this projected
+coordinate; it must be removed by taking the thermodynamic limit before the
+chiral limit, just as in the Banks--Casher statement.  The paired term follows
+directly from the source derivatives of a two-dimensional chiral block:
+for \(D_{\alpha,m}=\left(\begin{smallmatrix}m&s_\alpha\\
+-s_\alpha&m\end{smallmatrix}\right)\) and
+\(\gamma_5=\operatorname{diag}(1,-1)\),
+\[
+  \operatorname{Tr}(D_{\alpha,m}^{-1}\gamma_5D_{\alpha,m}^{-1}\gamma_5)
+  +
+  \operatorname{Tr}(D_{\alpha,m}^{-1}D_{\alpha,m}^{-1})
+  =
+  \frac{4m^2}{(m^2+s_\alpha^2)^2}.
+\]
+The plus sign is the Euclidean source sign: differentiating twice with respect
+to the scalar source gives \(-\operatorname{Tr}D^{-1}D^{-1}\), whereas the
+pseudoscalar source \(i\gamma_5p\) gives
+\(+\operatorname{Tr}D^{-1}\gamma_5D^{-1}\gamma_5\).
+
+Assume now that the ensemble measure in
+\eqref{eq:instanton-liquid-singular-density} has a thermodynamic limit, the
+topological zero-mode density vanishes first, and the ultraviolet part of the
+near-zero-zone density is locally dominated so that the small-\(s\) behavior
+controls the chiral singularity.  Then
+\begin{equation}
+  \Delta_{\pi-\delta}^{\rm zm}(m)
+  =
+  4m^2\int_0^\infty
+  \frac{\rho_{\rm zm}(s)}{(m^2+s^2)^2}\,\dd s .
+  \label{eq:instanton-zero-mode-zone-u1a-kernel}
+\end{equation}
+Consequently
+\begin{align}
+  \rho_{\rm zm}(s)=\rho_0+o(1)
+  &\quad\Longrightarrow\quad
+  \Delta_{\pi-\delta}^{\rm zm}(m)
+  =
+  \frac{\pi\rho_0}{m}+o(m^{-1}), \\
+  \rho_{\rm zm}(s)=c_1s+o(s)
+  &\quad\Longrightarrow\quad
+  \Delta_{\pi-\delta}^{\rm zm}(m)
+  =
+  2c_1+o(1), \\
+  \rho_{\rm zm}(s)=O(s^{1+\epsilon}),\quad \epsilon>0
+  &\quad\Longrightarrow\quad
+  \Delta_{\pi-\delta}^{\rm zm}(m)\longrightarrow0
+\end{align}
+under the same local domination hypothesis.  Thus an instanton ensemble that
+produces a Banks--Casher condensate automatically leaves a divergent
+\(U(1)_A\)-odd zero-mode-zone susceptibility.  Even an ensemble with
+\(\rho_{\rm zm}(0)=0\) can retain a finite \(U(1)_A\)-odd remnant if the
+near-zero density is only linear.  Suppression of this channel in the chiral
+limit requires a stronger depletion of the overlap singular values than the
+vanishing of the condensate alone.
+
+This criterion is deliberately phrased in terms of the weighted ensemble
+spectral density, not the geometry of isolated instantons.  The ADHM or
+collective-coordinate measure supplies only part of the input.  The physical
+question is whether the full fluctuation determinant, fermion determinant,
+instanton--anti-instanton interaction, and regulator remainder produce a
+specific near-zero singular-value law for \(T\); that law is what decides the
+\(\pi\)-\(\delta\) channel.
+\end{controlledapproximation}
+
 For the electroweak \(SU(2)_L\) gauge theory, the same zero-mode logic applies
 to every left-handed doublet.  For one generation there are three colored
 quark doublets and one lepton doublet, hence four \(SU(2)_L\) doublet zero

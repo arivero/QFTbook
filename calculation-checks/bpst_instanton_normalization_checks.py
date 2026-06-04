@@ -114,7 +114,10 @@ relations
     a finite instanton--anti-instanton ensemble has a rectangular zero-mode
     overlap matrix T whose singular values give the massive determinant
     m^|n_+-n_-| prod_alpha(m^2+s_alpha^2), the unpaired zero-mode pole, and
-    the Banks--Casher kernel criterion for an instanton-liquid zero-mode zone
+    the Banks--Casher kernel criterion for an instanton-liquid zero-mode zone;
+    the same finite block gives the U(1)_A-odd pi-delta susceptibility kernel,
+    where constant, linear, and superlinear near-zero singular-value densities
+    respectively give pi*rho0/m, 2*c1, and a vanishing chiral-limit remnant;
     the physical instanton correlator contribution is the top Berezin
     coefficient after operator, mass/source, and zero-mode factors are
     restricted to the instanton zero-mode subspace, giving the full flavor
@@ -279,6 +282,11 @@ def matrix_sub_fraction(
         [left[row][col] - right[row][col] for col in range(len(left[0]))]
         for row in range(len(left))
     ]
+
+
+def trace_fraction(matrix: list[list[Fraction]]) -> Fraction:
+    assert_equal("matrix trace square row count", len(matrix), len(matrix[0]))
+    return sum(matrix[index][index] for index in range(len(matrix)))
 
 
 def inverse_2x2_fraction(matrix: list[list[Fraction]]) -> list[list[Fraction]]:
@@ -2949,6 +2957,107 @@ def check_instanton_ensemble_zero_mode_overlap_spectrum() -> None:
     )
 
 
+def check_instanton_zero_mode_zone_u1a_susceptibility() -> None:
+    mass = Fraction(3, 5)
+    gamma5 = [
+        [Fraction(1), Fraction(0)],
+        [Fraction(0), Fraction(-1)],
+    ]
+
+    def paired_source_trace_kernel(singular_value: Fraction) -> Fraction:
+        chiral_block = [
+            [mass, singular_value],
+            [-singular_value, mass],
+        ]
+        propagator = inverse_2x2_fraction(chiral_block)
+        scalar_source_curvature = -trace_fraction(
+            matmul_fraction(propagator, propagator)
+        )
+        pseudoscalar_source_curvature = trace_fraction(
+            matmul_fraction(
+                matmul_fraction(matmul_fraction(propagator, gamma5), propagator),
+                gamma5,
+            )
+        )
+        return pseudoscalar_source_curvature - scalar_source_curvature
+
+    singular_value = Fraction(2, 7)
+    paired_kernel = 4 * mass * mass / (mass * mass + singular_value * singular_value) ** 2
+    assert_equal(
+        "paired zero-mode U1A source-trace kernel",
+        paired_source_trace_kernel(singular_value),
+        paired_kernel,
+    )
+
+    volume = Fraction(97)
+    mismatch = Fraction(2)
+    singular_values = [Fraction(2, 7), Fraction(5, 11), Fraction(7, 13)]
+    finite_splitting = (
+        2 * mismatch / (volume * mass * mass)
+        + sum(
+            4 * mass * mass / (volume * (mass * mass + s * s) ** 2)
+            for s in singular_values
+        )
+    )
+    trace_splitting = (
+        2 * mismatch / (volume * mass * mass)
+        + sum(paired_source_trace_kernel(s) / volume for s in singular_values)
+    )
+    assert_equal(
+        "finite zero-mode-zone pi-delta susceptibility splitting",
+        finite_splitting,
+        trace_splitting,
+    )
+
+    larger_volume = Fraction(10) * volume
+    assert_equal(
+        "topological U1A pole density is volume controlled",
+        2 * mismatch / (volume * mass * mass)
+        > 2 * mismatch / (larger_volume * mass * mass),
+        True,
+    )
+
+    rho0 = 0.37
+    c1 = 0.23
+    c2 = 0.19
+    cutoff = 11.0
+    small_mass = 1.0e-8
+    constant_density_kernel = rho0 * (
+        2 * cutoff / (cutoff * cutoff + small_mass * small_mass)
+        + 2 / small_mass * math.atan(cutoff / small_mass)
+    )
+    assert_close(
+        "constant-density U1A kernel asymptotic pi rho0 over m",
+        small_mass * constant_density_kernel,
+        math.pi * rho0,
+        tolerance=1e-10,
+    )
+
+    linear_density_kernel = c1 * (
+        2 * (1 - small_mass * small_mass / (cutoff * cutoff + small_mass * small_mass))
+    )
+    assert_close(
+        "linear-density U1A kernel finite remnant",
+        linear_density_kernel,
+        2 * c1,
+        tolerance=1e-14,
+    )
+
+    quadratic_density_kernel = c2 * (
+        2 * small_mass * math.atan(cutoff / small_mass)
+        - 2
+        * small_mass
+        * small_mass
+        * cutoff
+        / (cutoff * cutoff + small_mass * small_mass)
+    )
+    assert_equal(
+        "superlinear-density U1A kernel vanishes in chiral limit",
+        quadratic_density_kernel < 1.0e-7,
+        True,
+    )
+
+
 def check_mass_saturated_vacuum_activity_size_integral() -> None:
     n_c = 3
     n_f = 3
@@ -3239,6 +3348,7 @@ def main() -> None:
     check_dilute_instanton_gas_theta_cumulants()
     check_first_cluster_correction_to_dilute_instanton_gas()
     check_instanton_ensemble_zero_mode_overlap_spectrum()
+    check_instanton_zero_mode_zone_u1a_susceptibility()
     check_mass_saturated_vacuum_activity_size_integral()
     check_screened_one_instanton_size_integral()
     check_thermal_instanton_determinant_screening()

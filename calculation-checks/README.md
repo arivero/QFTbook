@@ -538,9 +538,11 @@ Current checks:
   \(m^{|n_+-n_-|}\prod_\alpha(m^2+s_\alpha^2)\), the leading-block unpaired
   zero-mode pole, the exact-index qualification and possible lifting by a
   finite chirality-breaking remainder, and the constant-density
-  Banks--Casher kernel limit for an instanton-liquid zero-mode zone, Uhlenbeck
-  boundary face codimensions and product power-counting thresholds, and the
-  \(k=1\) ADHM orientation dimension and cone-volume power.
+  Banks--Casher kernel limit for an instanton-liquid zero-mode zone, together
+  with the finite \(U(1)_A\)-odd \(\pi-\delta\) source-trace kernel and its
+  constant-, linear-, and superlinear-density chiral limits, Uhlenbeck boundary
+  face codimensions and product power-counting thresholds, and the \(k=1\)
+  ADHM orientation dimension and cone-volume power.
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
   gauge-Higgs soliton and collective-coordinate section, including the
   Bogomolny and vortex square completions, the Prasad-Sommerfield profile

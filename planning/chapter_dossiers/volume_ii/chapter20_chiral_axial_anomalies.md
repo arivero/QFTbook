@@ -145,7 +145,14 @@
   continuation then pushes that activity into
   \(\chi_{\rm top}^{T,{\rm dig}}=2\zeta_T\), \(b_2=-1/12\), and the
   \(SU(3)\), \(N_f=2\) \(T^{-23/3}\) scaling law for the theta curvature,
-  with the determinant residual propagated to the susceptibility.  The 2026-06-03
+  with the determinant residual propagated to the susceptibility.  The
+  instanton-liquid continuation then pushes the zero-mode overlap spectrum
+  beyond the Banks--Casher condensate criterion into the \(U(1)_A\)-odd
+  \(\pi-\delta\) susceptibility: the finite source-trace kernel is
+  \(4m^2/(m^2+s_\alpha^2)^2\), constant near-zero density gives a
+  \(\pi\rho_0/m\) chiral singularity, linear density leaves a finite
+  \(2c_1\) remnant, and superlinear depletion is the criterion for suppressing
+  the zero-mode-zone contribution.  The 2026-06-03
   verification-contract follow-up records, in the
   calculation-check docstring rather than the TeX, the target claims,
   independent constructions, imported assumptions, negative controls, and
@@ -303,7 +310,7 @@
 | \(m_{\rm scr},A,\mathcal A_{\rm scr}^{(0)}\) | physical infrared screening scale, screened size-integral power \(A=b_0+\beta_{\mathcal X}-4\), and leading screened one-instanton amplitude |
 | \(m_T,R_T,\mathcal A_T^G\) | high-temperature determinant screening scale, finite-temperature determinant residual, and Gaussian thermal one-instanton approximation |
 | \(\zeta_T^G,\chi_{\rm top}^{T,G}\) | Gaussian high-temperature dilute one-instanton activity and its induced topological susceptibility |
-| \(T,\mathcal D_{\rm zm},E_{\rm zm},\rho_{\rm zm}\) | instanton--anti-instanton near-zero-mode overlap matrix, projected Dirac block, remainder, and singular-value density used in the instanton-liquid criterion |
+| \(T,\mathcal D_{\rm zm},E_{\rm zm},\rho_{\rm zm},\Delta_{\pi-\delta}^{\rm zm}\) | instanton--anti-instanton near-zero-mode overlap matrix, projected Dirac block, remainder, singular-value density, and zero-mode-zone \(U(1)_A\)-odd susceptibility splitting used in the instanton-liquid criteria |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
 | \(A_\alpha(\mathcal X),G_\beta(\mathcal X)\) | Uhlenbeck bubbling-scale and collision-face exponents in the multi-instanton boundary budget |
 | \(\mathcal O_{N_c}\) | embedded one-instanton orientation orbit \(U(N_c)/(U(N_c-2)\times U(1))\) |
