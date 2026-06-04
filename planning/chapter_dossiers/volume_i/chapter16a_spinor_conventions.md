@@ -143,7 +143,11 @@
 - 2026-06-04 issue #755 follow-up: resolved the ambiguous phrase "even
   finite-dimensional/classical spinor" in the current-adjoint discussion.  The
   chapter now separates the ordinary commuting spinor-vector matrix test from
-  the Grassmann-odd classical-field statement with the graded adjoint, and it
-  identifies the quantum local current as a renormalized composite
+  the Grassmann-odd classical-field statement.  A second follow-up spells out
+  the Grassmann conjugation convention as the unsigned order-reversing
+  anti-involution \((uv)^\dagger=v^\dagger u^\dagger\) and gives the
+  one-line component calculation showing that
+  \(\bar\psi\gamma^\mu\psi\) is anti-Hermitian under this convention.  The
+  chapter identifies the quantum local current as a renormalized composite
   operator-valued distribution rather than treating normal ordering as a
   regulator-independent definition.

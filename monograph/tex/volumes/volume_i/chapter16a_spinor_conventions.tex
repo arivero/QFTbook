@@ -109,13 +109,28 @@ The explicit factor of \(\ii\) is fixed by the adjoint convention:
 Thus, for an ordinary commuting spinor vector \(s\in S\), the finite
 matrix test \(s^\dagger\beta\gamma^\mu s\) is anti-Hermitian, while
 \(\ii s^\dagger\beta\gamma^\mu s\) is Hermitian.  For Grassmann-odd
-classical spinor components with the graded adjoint, the dagger reverses the
-order of the two odd fields and the same matrix identity gives
-\((\bar\psi\gamma^\mu\psi)^\dagger=-\bar\psi\gamma^\mu\psi\).  In a quantum
-field theory, the local current is a renormalized composite
-operator-valued distribution; normal ordering is the free-field/Fock
-realization of this adjoint convention, not a general definition of the
-coincident product.
+classical spinor components we use the unsigned order-reversing
+anti-involution
+\[
+  (uv)^\dagger=v^\dagger u^\dagger
+\]
+for homogeneous Grassmann variables \(u,v\), with no additional
+\((-1)^{|u||v|}\) factor.  Hence, componentwise for
+\(A=\beta\gamma^\mu\),
+\[
+  (\psi^\dagger A\psi)^\dagger
+  =
+  \sum_{i,j}\psi_j^\dagger\,\overline{A_{ij}}\,\psi_i
+  =
+  \psi^\dagger A^\dagger\psi
+  =
+  -\psi^\dagger A\psi .
+\]
+Thus \((\bar\psi\gamma^\mu\psi)^\dagger=-\bar\psi\gamma^\mu\psi\).  In a
+quantum field theory, the local current is a renormalized composite
+operator-valued distribution; a normal-ordered free current is one
+representation-dependent model of that composite field, not a general
+definition of the coincident product.
 \end{definition}
 
 \paragraph{Basic Clifford, adjoint, and current identities.}
@@ -133,8 +148,8 @@ obey
 Consequently the pairing \(s,t\mapsto s^\dagger\beta t\) is the invariant
 Dirac pairing used throughout the monograph, and
 \(\ii\bar\psi\gamma^\mu\psi\) is Hermitian both for the commuting-vector
-matrix test and for Grassmann-odd classical spinor fields with the graded
-adjoint.
+matrix test and for Grassmann-odd classical spinor fields with the unsigned
+order-reversing anti-involution stated above.
 The square of \(\not p=p_\mu\gamma^\mu\) is
 \[
   p_\mu p_\nu\gamma^\mu\gamma^\nu
@@ -167,10 +182,10 @@ Thus \(\beta\gamma^\mu\) is anti-Hermitian.  With the adjoint convention
 \(\bar\psi=\psi^\dagger\beta\), the bilinear
 \(\bar\psi\gamma^\mu\psi\) is anti-Hermitian for an ordinary commuting
 spinor vector, and the same conclusion holds for Grassmann-odd classical
-spinor fields with the graded adjoint.  Multiplication by \(\ii\) gives the
-Hermitian current normalization.  The quantum statement concerns the
-renormalized composite current as an operator-valued distribution; a
-normal-ordered free current is one representation-dependent model of that
+spinor fields with the unsigned order-reversing anti-involution.  Multiplication
+by \(\ii\) gives the Hermitian current normalization.  The quantum statement
+concerns the renormalized composite current as an operator-valued distribution;
+a normal-ordered free current is one representation-dependent model of that
 composite field.
 
 \section{Spin Representation and Chirality}
