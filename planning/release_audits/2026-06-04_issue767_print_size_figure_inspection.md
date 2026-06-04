@@ -27,8 +27,8 @@ human print-size inspection.
 - Unique physical PDF pages containing figures: 168
 - Rendered page PNGs: 168
 - Contact sheets: 14
-- Human-reviewed figures so far: 40
-- Pending figures after these tranches: 132
+- Human-reviewed figures so far: 50
+- Pending figures after these tranches: 122
 
 ## Method
 
@@ -54,7 +54,7 @@ the following checks:
 - whether the figure has semantic value beyond restating prose;
 - whether the figure is being overread as theorem-level evidence.
 
-Higher-resolution crops were not needed for the forty reviewed figures; none has
+Higher-resolution crops were not needed for the fifty reviewed figures; none has
 dense small labels beyond the original page render.  Later dense figures should
 receive crop review when the full-page PNG is insufficient.
 
@@ -133,10 +133,33 @@ the caption rather than by hue alone.  Physical page 571 carries two reviewed
 figures; both the Landau vector-closure figure and the convex-hull criterion
 figure were checked on the full original page.
 
+The following fifth-tranche figures also passed original-resolution review:
+
+- `fig:regge-pole-contour`
+- `fig:partial-wave-box-profile-lehmann-domain`
+- `fig:subtracted-fixed-t-cauchy-contour`
+- `fig:volume-ii-source-legendre`
+- `fig:background-field-shifted-cubic-vertices`
+- `fig:volume-ii-tadpoles-and-1pi`
+- `fig:volume-ii-connected-from-1pi`
+- `fig:volume-ii-branch-perturbation-condition`
+- `fig:volume-ii-euclidean-convexity`
+- `fig:volume-ii-counterterm-census`
+
+The fifth tranche includes the color-warning pages 607, 638, and 639.  They
+were checked explicitly: the Cauchy-contour figure distinguishes cuts,
+subtraction points, and contour deformation by labels and geometry; the
+branch-condition figure distinguishes the tangent, branch point, and shifted
+exponent by labels, panels, and dashed/solid line style; the Euclidean convexity
+figure distinguishes support lines, stationary branches, and the exact convex
+effective action by labels and dashed/solid line style.  Physical page 624
+carries two reviewed figures; both the shifted cubic-vertex expansion and the
+tadpole/1PI mechanism figure were checked on the full original page.
+
 ## Boundary
 
-This pass establishes the durable ledger and audits the first forty figures.
+This pass establishes the durable ledger and audits the first fifty figures.
 The older contact-sheet inspection remains useful for triage, but it is not
-treated here as evidence for the remaining 132 pending figure rows.  Issue #767
+treated here as evidence for the remaining 122 pending figure rows.  Issue #767
 should stay open until all rows are reviewed and any defects found in later
 tranches are repaired and re-rendered.
