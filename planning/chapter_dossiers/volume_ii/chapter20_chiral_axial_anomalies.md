@@ -183,6 +183,11 @@
   finite stage product, the vanishing of an unsaturated zero-mode cell, the
   failure of moduli-only or determinant-omitted shortcuts, source-frame
   reshuffling invariance, and the residual telescope.
+  The electroweak continuation then connects the zero-temperature
+  't Hooft vertex to real-time \(B+L\) washout: the check verifies the
+  \(\Delta B=\Delta L=N_g\Delta N_{\rm CS}\), \(B-L\)-conservation ledger and
+  the generic susceptibility-rate normalization
+  \((2N_g)^2\Gamma_{\rm CS}/(\chi_XT)\).
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
@@ -339,6 +344,7 @@
 | \(m_T,R_T,\mathcal A_T^G,\mathcal M_T^G\) | high-temperature determinant screening scale, finite-temperature determinant residual, Gaussian thermal one-instanton approximation, and absolute Gaussian majorant for non-positive/complex source channels |
 | \(\zeta_T^G,\chi_{\rm top}^{T,G}\) | Gaussian high-temperature dilute one-instanton activity and its induced topological susceptibility |
 | \(T,\mathcal D_{\rm zm},E_{\rm zm},\rho_{\rm zm},\Delta_{\pi-\delta}^{\rm zm}\) | instanton--anti-instanton near-zero-mode overlap matrix, projected Dirac block, remainder, singular-value density, and zero-mode-zone \(U(1)_A\)-odd susceptibility splitting used in the instanton-liquid criteria |
+| \(\Gamma_{\rm CS},\chi_X,n_X\) | Chern--Simons diffusion rate, \(B+L\) susceptibility, and homogeneous \(B+L\) density used in the electroweak sphaleron response bridge |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
 | \(A_\alpha(\mathcal X),G_\beta(\mathcal X)\) | Uhlenbeck bubbling-scale and collision-face exponents in the multi-instanton boundary budget |
 | \(\mathcal O_{N_c}\) | embedded one-instanton orientation orbit \(U(N_c)/(U(N_c-2)\times U(1))\) |
@@ -1409,3 +1415,12 @@
   fed directly into the dilute topological susceptibility.  Extended
   `bpst_instanton_normalization_checks.py` with negative \(K_0\), complex
   \(K_0\), and non-positive-activity controls.
+- 2026-06-04 issue #597 electroweak response pass: added
+  `ca:electroweak-sphaleron-bplusl-response`, separating the zero-temperature
+  instanton vertex from the real-time sphaleron/Chern--Simons diffusion rate.
+  The text now derives the \(B+L\) relaxation coefficient from the anomalous
+  charge step, plasma susceptibility, and \(\Gamma_{\rm CS}\), while preserving
+  \(B-L\) and assigning the rate itself to the thermal transport problem rather
+  than to instanton zero-mode counting.  The BPST companion verifies the charge
+  ledger, susceptibility drift, diffusion variance, and zero-rate negative
+  control.

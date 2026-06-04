@@ -7986,6 +7986,64 @@ Section~\ref{sec:gauge-higgs-classical-solitons}; both effects are controlled
 by the same anomalous relation between topological charge and fermion-number
 violation.
 
+\begin{controlledapproximation}[Electroweak \(B+L\) response from topological
+transitions]
+\label{ca:electroweak-sphaleron-bplusl-response}
+The operator in \eqref{eq:electroweak-thooft-vertex} is a zero-temperature
+Euclidean tunneling coordinate.  A plasma rate is different data.  In a
+thermal \(SU(2)_L\)-Higgs plasma, let
+\[
+  \Gamma_{\rm CS}
+  =
+  \lim_{Vt\to\infty}
+  \frac{\left\langle
+  (N_{\rm CS}(t)-N_{\rm CS}(0))^2\right\rangle}{Vt}
+\]
+be the Chern--Simons diffusion rate in the normalization where one transition
+between neighboring vacua has \(|\Delta N_{\rm CS}|=1\).  The anomaly gives
+\begin{equation}
+  \Delta B=\Delta L=N_g\,\Delta N_{\rm CS},
+  \qquad
+  \Delta(B-L)=0,
+  \qquad
+  \Delta X=2N_g\,\Delta N_{\rm CS},
+  \quad X:=B+L .
+  \label{eq:electroweak-bplusl-cs-charge-ledger}
+\end{equation}
+Thus \(B-L\) is not washed out by these transitions, while \(B+L\) is.  If the
+long-wavelength plasma free energy for a small homogeneous \(X\)-density is
+\[
+  f_X(n_X)=\frac{n_X^2}{2\chi_X},
+  \qquad
+  \mu_X=\frac{\partial f_X}{\partial n_X}=\frac{n_X}{\chi_X},
+\]
+then detailed balance for diffusion in \(N_{\rm CS}\) gives the linear response
+\begin{equation}
+  \frac{\dd n_X}{\dd t}
+  =
+  -
+  \frac{(2N_g)^2\Gamma_{\rm CS}}{\chi_X T}\,n_X .
+  \label{eq:electroweak-sphaleron-bplusl-relaxation}
+\end{equation}
+The coefficient \(\chi_X\) is the susceptibility of the actual light plasma
+degrees of freedom after any imposed conserved charges have been projected out.
+It is not determined by the instanton zero-mode counting.  Likewise
+\(\Gamma_{\rm CS}\) is a real-time transport coefficient.  In the symmetric
+high-temperature phase it is a magnetic-sector rate; in the broken phase it is
+Boltzmann-suppressed by the sphaleron barrier.  In a leading-barrier
+coordinate one writes
+\[
+  \Gamma_{\rm CS}^{\rm br}
+  =
+  \kappa_{\rm br}(T)\,\exp[-E_{\rm sph}(T)/T],
+\]
+after the negative mode, gauge zero modes, fluctuation determinant, and thermal
+prefactor have been fixed.  The Euclidean instanton vertex supplies the
+selection rule and the zero-temperature tunneling coordinate; the physical
+baryon/lepton washout rate requires the separate sphaleron diffusion problem
+and the plasma susceptibility.
+\end{controlledapproximation}
+
 \section{Anomalous Pion Couplings}
 
 The axial anomaly has observable low-energy consequences.  In two-flavor QCD,

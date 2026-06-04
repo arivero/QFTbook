@@ -137,6 +137,9 @@ relations
     the same finite block gives the U(1)_A-odd pi-delta susceptibility kernel,
     where constant, linear, and superlinear near-zero singular-value densities
     respectively give pi*rho0/m, 2*c1, and a vanishing chiral-limit remnant;
+    electroweak instanton/sphaleron physics uses the same anomalous charge
+    ledger, but the real-time B+L washout rate is q_X^2 Gamma_CS/(chi_X T),
+    with q_X=2N_g and B-L exactly conserved;
     the physical instanton correlator contribution is the top Berezin
     coefficient after operator, mass/source, and zero-mode factors are
     restricted to the instanton zero-mode subspace, giving the full flavor
@@ -3772,6 +3775,41 @@ def check_thermal_dilute_topological_susceptibility() -> None:
     )
 
 
+def check_electroweak_sphaleron_response_ledger() -> None:
+    generations = 3
+    delta_ncs = Fraction(1)
+    delta_b = generations * delta_ncs
+    delta_l = generations * delta_ncs
+    delta_b_minus_l = delta_b - delta_l
+    delta_x = delta_b + delta_l
+    assert_equal("electroweak instanton B change", delta_b, Fraction(3))
+    assert_equal("electroweak instanton L change", delta_l, Fraction(3))
+    assert_equal("electroweak instanton conserves B-L", delta_b_minus_l, Fraction(0))
+    assert_equal("electroweak instanton changes B+L", delta_x, Fraction(6))
+
+    gamma_cs = Fraction(7, 11)
+    temperature = Fraction(5, 3)
+    susceptibility = Fraction(13, 17)
+    x_density = Fraction(19, 23)
+    chemical_potential = x_density / susceptibility
+    relaxation_rate = delta_x * delta_x * gamma_cs / (susceptibility * temperature)
+    drift = -relaxation_rate * x_density
+    detailed_balance_drift = -delta_x * gamma_cs * (delta_x * chemical_potential) / temperature
+    assert_equal("sphaleron B+L relaxation drift", drift, detailed_balance_drift)
+
+    variance_rate_b_plus_l = delta_x * delta_x * gamma_cs
+    variance_rate_b_minus_l = delta_b_minus_l * delta_b_minus_l * gamma_cs
+    assert_equal("Chern-Simons diffusion induces B+L diffusion", variance_rate_b_plus_l, 36 * gamma_cs)
+    assert_equal("Chern-Simons diffusion leaves B-L unchanged", variance_rate_b_minus_l, Fraction(0))
+
+    zero_sphaleron_rate = Fraction(0)
+    assert_equal(
+        "no real-time sphaleron diffusion gives no washout despite vertex selection rule",
+        delta_x * delta_x * zero_sphaleron_rate / (susceptibility * temperature),
+        Fraction(0),
+    )
+
+
 def check_uhlenbeck_boundary_face_budget() -> None:
     for n_c in range(2, 8):
         for k in range(1, 6):
@@ -3874,6 +3912,7 @@ def main() -> None:
     check_screened_one_instanton_size_integral()
     check_thermal_instanton_determinant_screening()
     check_thermal_dilute_topological_susceptibility()
+    check_electroweak_sphaleron_response_ledger()
     check_uhlenbeck_boundary_face_budget()
     check_k_one_adhm_dimension_and_cone_power()
     print("All BPST instanton normalization checks passed.")
