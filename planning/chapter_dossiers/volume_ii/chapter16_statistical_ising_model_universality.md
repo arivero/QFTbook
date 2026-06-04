@@ -143,6 +143,9 @@ The chapter must define and derive:
    source expansions and the switching identity for GKS, the Gaussian
    four-copy proof mechanism for GHS magnetization concavity, and clustering as
    the additional condition that makes the limiting Gibbs state pure.
+3a. The ordered Ising phase is explicitly marked as discrete \(\mathbb Z_2\)
+    phase selection, not as an exception to the
+    Mermin--Wagner--Hohenberg continuous-symmetry obstruction.
 4. Critical spin correlators define the spin scaling dimension
    \(\Delta_\sigma\).
 5. The scaling limit of near-critical lattice correlators produces Euclidean

@@ -726,6 +726,12 @@ Elements \(T_i\in\mathfrak h\) generate unbroken transformations and elements
 \(X_a\in\mathfrak m\) generate broken directions.
 \end{definition}
 
+This is an infinite-volume datum, not an automatic consequence of writing a
+continuous symmetry into the Lagrangian.  In low dimensions the infrared
+fluctuations recorded in
+Section~\ref{sec:low-dimensional-continuous-ssb-no-go} can prevent the
+nonzero order parameter required by this definition.
+
 \begin{definition}[Goldstone effective action in CCWZ coordinates]
 \label{def:goldstone-effective-action}
 Goldstone fields are local coordinates on the coset \(G/H\).  A coset
@@ -927,6 +933,188 @@ with three polarizations and the gauge-invariant scalar excitation \(h\), plus
 any Goldstone particles associated with broken global symmetries that remain
 after the gauge redundancy has been quotiented.
 \end{remark}
+
+\section{Low-Dimensional Continuous-Symmetry No-Go Theorems}
+\label{sec:low-dimensional-continuous-ssb-no-go}
+
+The Goldstone proposition is conditional: if a conserved global current acts
+on a positive physical Hilbert space and if a local order parameter has a
+nonzero variation, then massless spectral weight follows.  The low-dimensional
+no-go theorems remove the premise in important settings.  They do not say that
+all two-dimensional systems are disordered, and they do not contradict
+Goldstone's theorem; they say that ordinary local long-range order for a
+continuous internal symmetry is destroyed by infrared fluctuations under
+specific hypotheses.
+
+\begin{quotedtheorem}[Coleman no-Goldstone theorem in \(1+1\) dimensions]
+\label{qthm:coleman-no-goldstone-two-dimensions}
+\emph{Proof reference.}\footnote{See
+Coleman's original positive-metric Wightman proof
+\cite{Coleman1973NoGoldstone}.}
+Let a relativistic \(1+1\)-dimensional quantum field theory satisfy the
+positive-metric Wightman assumptions, translation invariance, locality, the
+spectrum condition, and clustering in the chosen vacuum sector.  Let a
+continuous internal symmetry be implemented by a conserved local current
+\(j_A^\mu\) whose smeared charges generate the local field variations.  Then
+there is no local field or local observable \(\mathcal O\) for which
+\[
+  \langle\vac,\delta_A\mathcal O(0)\vac\rangle\ne0
+\]
+under these hypotheses.  Equivalently, an ordinary relativistic
+\(1+1\)-dimensional positive-metric local QFT has no Goldstone boson produced
+by spontaneous breaking of a continuous internal symmetry.
+\end{quotedtheorem}
+
+Here is the infrared mechanism in the form needed for the present chapter.
+Suppose the order-parameter variation in
+\eqref{eq:goldstone-order-parameter} were nonzero in \(1+1\) dimensions.
+The same Ward identity that led to
+Proposition~\ref{prop:goldstone-spectral-pole} would force a longitudinal
+massless contribution in the mixed current-operator distribution.  Positivity
+then lets one compare the required longitudinal channel with the
+infrared-regulated massless scalar covariance.  At equal time, with spatial
+momenta cut off by \(\Lambda\) and with an infrared mass \(m\),
+\begin{equation}
+  \int_{-\Lambda}^{\Lambda}
+  \frac{\dd k}{2\pi}\,
+  \frac{1}{2\sqrt{k^2+m^2}}
+  =
+  \frac{1}{2\pi}\operatorname{arsinh}\frac{\Lambda}{m}
+  =
+  \frac{1}{2\pi}\log\frac{2\Lambda}{m}+o(1)
+  \qquad(m\downarrow0).
+  \label{eq:coleman-massless-scalar-log}
+\end{equation}
+The logarithm is the obstruction.  A compactly supported smeared local field
+must have finite vacuum norm.  The would-be Goldstone coordinate in two
+spacetime dimensions instead behaves like a massless scalar whose zero-mode
+fluctuations grow without bound.  The sharp Coleman proof does not assume the
+field is literally free; it uses smeared current Ward identities, locality,
+the spectral condition, and positive Hilbert-space norms to force the same
+massless longitudinal infrared singularity and then shows that it is
+incompatible with a local charged order parameter.
+
+This distinction is essential in bosonized two-dimensional models.  Derivative
+currents, compact-boson vertex operators with a specified radius, and
+topological or winding sectors can be perfectly good local or semi-local QFT
+data.  What Coleman forbids is the unsmeared massless scalar expectation, or
+an ordinary local field whose vacuum expectation would choose a point on a
+continuous internal orbit.  Sine-Gordon soliton sectors, Thirring currents,
+WZW currents, and compact torus CFT vertex operators therefore do not by
+themselves constitute continuous-symmetry breaking.
+
+\begin{quotedtheorem}[Mermin--Wagner--Hohenberg infrared obstruction]
+\label{qthm:mermin-wagner-hohenberg}
+\emph{Proof references.}\footnote{For the finite-temperature spin-system
+and continuum equilibrium origins see Mermin--Wagner
+\cite{MerminWagner1966} and Hohenberg \cite{Hohenberg1967}.  The
+Berezinskii and Kosterlitz--Thouless developments
+\cite{Berezinskii1971,KosterlitzThouless1973} explain the compatible
+quasi-long-range/topological alternative in two-dimensional \(U(1)\)-type
+systems.}
+Let a one- or two-dimensional equilibrium statistical-mechanics system have a
+continuous compact internal symmetry, a translation-invariant thermodynamic
+limit, finite-range or sufficiently fast decaying interactions, clustering
+compatible with an extremal Gibbs or KMS phase, and a local order parameter
+transforming nontrivially under the symmetry.  At nonzero temperature, the
+ordinary local order parameter has zero spontaneous expectation in the
+symmetry-breaking-field limit.  The theorem applies to continuous internal
+symmetries under the stated short-range equilibrium hypotheses; it does not
+apply to discrete symmetries, to finite volumes, or to systems whose
+long-range, gauge, boundary, nonunitary, or non-equilibrium structure changes
+the infrared estimate.
+\end{quotedtheorem}
+
+The statistical-mechanics estimate is even more elementary in spin-wave
+language.  If a continuous order parameter of stiffness \(\rho_s\) existed at
+temperature \(T=\beta^{-1}\), its angular fluctuations would contain
+\begin{equation}
+  \langle \pi^2\rangle_{\rm IR}
+  \sim
+  \frac{T}{\rho_s}
+  \int_{|k|<\Lambda}
+  \frac{\dd^d k}{(2\pi)^d}\,
+  \frac{1}{k^2+m^2},
+  \label{eq:mwh-spin-wave-integral}
+\end{equation}
+where \(m\) is an infrared field or inverse box-size regulator.  The
+dimension split is
+\begin{align}
+  d=1:\quad&
+  \int_{-\Lambda}^{\Lambda}
+  \frac{\dd k}{2\pi}\,\frac1{k^2+m^2}
+  =
+  \frac{1}{\pi m}\arctan\frac{\Lambda}{m}
+  \sim \frac{1}{2m},
+  \nonumber\\
+  d=2:\quad&
+  \int_{|k|<\Lambda}
+  \frac{\dd^2 k}{(2\pi)^2}\,\frac1{k^2+m^2}
+  =
+  \frac{1}{4\pi}\log\frac{\Lambda^2+m^2}{m^2}
+  =
+  \frac{1}{2\pi}\log\frac{\Lambda}{m}+o(1),
+  \nonumber\\
+  d=3:\quad&
+  \int_{|k|<\Lambda}
+  \frac{\dd^3 k}{(2\pi)^3}\,\frac1{k^2+m^2}
+  =
+  \frac{1}{2\pi^2}
+  \left(\Lambda-m\arctan\frac{\Lambda}{m}\right)
+  \longrightarrow \frac{\Lambda}{2\pi^2}.
+  \label{eq:mwh-infrared-dimension-split}
+\end{align}
+Thus the long-wavelength variance diverges in \(d=1,2\) and is infrared-finite
+in \(d=3\).  In the Bogoliubov-inequality form used for rigorous lattice
+systems, the same mechanism appears as a bound of the form
+\begin{equation}
+  m_{\rm ord}^2
+  \le
+  \frac{C}{\beta}
+  \left[
+    \int_{\operatorname{BZ}}
+    \frac{\dd^d k}{(2\pi)^d}\,
+    \frac{1}{h+\epsilon(k)}
+  \right]^{-1},
+  \qquad
+  \epsilon(k)\le C'|k|^2
+  \quad(k\to0),
+  \label{eq:mwh-bogoliubov-bound}
+\end{equation}
+where \(h>0\) is the symmetry-breaking field and \(\epsilon(k)\) is the
+small-momentum spin-wave energy.  Sending first the volume to infinity and
+then \(h\downarrow0\), the integral diverges for \(d\le2\), forcing
+\(m_{\rm ord}=0\).
+
+The standard qualifications are part of the theorem, not marginal notes.
+Finite volumes have no spontaneous order parameter in the strict sense; phase
+selection is an order of limits.  Discrete symmetries are not ruled out by
+Coleman or Mermin--Wagner--Hohenberg, so a two-dimensional Ising phase and a
+\(1+1\)-dimensional model with a broken discrete chiral symmetry require
+separate analysis.  A two-dimensional \(U(1)\) system may have a
+Berezinskii--Kosterlitz--Thouless phase with power-law correlations and
+vortex unbinding, but not a nonzero local magnetization transforming under
+the \(U(1)\).  Large-\(N\) saddle points, long-range forces, gauge
+redundancies, boundary order, nonunitary theories, and non-equilibrium states
+can evade one or more hypotheses and must be declared as different
+problems.
+
+Three comparison cases fix the intended reading.
+\begin{enumerate}
+  \item The low-temperature two-dimensional Ising model has a
+  \(\mathbb Z_2\) order parameter.  Its plus/minus thermodynamic phases are
+  not an exception to Mermin--Wagner--Hohenberg because the broken symmetry is
+  discrete.
+  \item The two-dimensional \(XY\) or compact-boson/BKT laboratory has a
+  continuous \(U(1)\) symmetry, algebraic correlations in part of the phase
+  diagram, and vortex physics.  It has no ordinary nonzero local \(U(1)\)
+  order parameter in the thermodynamic limit.
+  \item A massive relativistic \(1+1\)-dimensional \(O(N)\) sigma-model or
+  Gross--Neveu-family construction may have particles in nontrivial internal
+  multiplets and exact factorized scattering.  The continuous internal group
+  organizes the spectrum; it is not spontaneously broken unless a separate
+  local order parameter is supplied outside Coleman's hypotheses.
+\end{enumerate}
 
 \section{The \texorpdfstring{\(U(1)\)}{U(1)} Goldstone Model}
 

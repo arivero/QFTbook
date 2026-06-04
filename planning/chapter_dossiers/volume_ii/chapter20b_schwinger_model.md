@@ -40,6 +40,9 @@
   dictionary
   \(J^\mu=\pi^{-1/2}\epsilon^{\mu\nu}\partial_\nu\varphi\) implies
   \(J_A^\mu=-\pi^{-1/2}\partial^\mu\varphi\).
+- The bosonized scalar is explicitly interpreted as current/line-sector
+  data, not as an ordinary local continuous-symmetry order parameter; this is
+  aligned with the Coleman obstruction recorded in the following SSB chapter.
 - Maxwell's equations together with the exact anomaly give directly
   \((\Box-e^2/\pi)E=0\), before using the bosonized action.
 - The massless Dirac current-generating functional is exactly reproduced by
@@ -83,3 +86,6 @@
   result to the scalar Gaussian integral.  The compact period is stated as
   vertex-sector data, not as something determined by derivative current
   correlators alone.
+- 2026-06-04 issue #770 re-audit: added the Coleman-compatible reading of the
+  bosonized scalar as current/line-sector data rather than a continuous local
+  order parameter.

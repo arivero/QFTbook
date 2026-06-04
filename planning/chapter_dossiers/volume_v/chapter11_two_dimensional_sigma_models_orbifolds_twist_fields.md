@@ -25,6 +25,10 @@
   spaces, pairings, or domains; full CFT construction requires Hilbert or
   state spaces, distributional fields, positivity, modular covariance,
   anomaly-line bookkeeping, and decomposition-compatible sewing maps.
+- Adds the low-dimensional continuous-symmetry guardrail: target-space
+  symmetries, compact-boson vertices, WZW currents, winding sectors, and
+  conformal moduli are not silently interpreted as ordinary local continuous
+  order parameters in two dimensions.
 - Defines bosonic sigma-model data as maps \(X:\Sigma\to M\), target metric,
   gerbe \(B\)-field, and dilaton coupling.
 - Defines a conformal sigma-model point by the continuum QFT and its

@@ -25,6 +25,10 @@ symmetry.
 ## Claim Ledger
 
 - Decomposes nonabelian two-particle scattering through representation theory.
+- States that continuous internal symmetry in the \(1+1\)-dimensional
+  families labels multiplets, currents, and scattering tensors rather than an
+  undeclared broken continuous order parameter; possible discrete order is a
+  separate problem not covered by Coleman's theorem.
 - Derives the `O(N)` projector basis for invariant two-particle amplitudes.
 - Displays the exact minimal `O(N)` sigma-model vector S-matrix in index form,
   with the gamma-function expression for `sigma_2` and the rational relations
@@ -91,6 +95,9 @@ symmetry.
   explicit, but the text now assigns the real mathematical burden to the
   regulator realization: neutral Haag--Ruelle scattering, meromorphic boundary
   control, pole/residue matching, finite-volume data, and form-factor data.
+- 2026-06-04 issue #770 re-audit: added the Coleman continuous-symmetry
+  guardrail for the \(O(N)\), Gross--Neveu, and sigma-model families, while
+  leaving discrete chiral phase-selection questions separate.
 
 ## Figure Ledger
 

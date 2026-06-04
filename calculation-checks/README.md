@@ -2125,6 +2125,11 @@ Current checks:
   gamma-function S-matrix scalar identity, channel unitarity, crossing,
   finite-dimensional Yang-Baxter component identity, and large-\(N\) cutoff
   gap and beta-function algebra.
+- `low_dimensional_ssb_ir_checks.py`: finite analytic checks for the
+  Coleman and Mermin--Wagner--Hohenberg infrared estimates, including the
+  equal-time massless-scalar logarithm, the \(d=1,2,3\) spin-wave integral
+  split, and negative controls for wrong logarithm coefficients and wrong
+  infrared-limit assumptions.
 - `orbifold_twist_weight_checks.py`: finite rational checks for the
   two-dimensional orbifold chapter, including the cyclic permutation twist
   weight \(h=c_0(K-K^{-1})/24\), its Schwarzian-cover derivation, the

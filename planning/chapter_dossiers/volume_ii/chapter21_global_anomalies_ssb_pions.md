@@ -37,6 +37,10 @@
   and sidecar, especially Sections 2, 4, 7, 9, and 10, for current
   generating functionals, external fields, Ward identities, Goldstone
   effective Lagrangians, anomalies, and spurions.
+- `SRC-EXTERNAL`: Coleman, Mermin--Wagner, Hohenberg, Berezinskii, and
+  Kosterlitz--Thouless primary papers for the low-dimensional
+  continuous-symmetry obstruction, the separate statistical-mechanics
+  theorem, and the BKT/quasi-long-range qualification.
 - `SRC-INTERNAL`: Volume II Chapter 20 instanton section and
   `calculation-checks/bpst_instanton_normalization_checks.py` for the
   regulated one-instanton determinant, source-matrix saturation, color-singlet
@@ -55,6 +59,11 @@
 - Goldstone claims use locality, current conservation, an order parameter,
   Lorentz invariance, the spectrum condition, and uniqueness of the vacuum in
   the chosen phase.
+- Low-dimensional continuous-symmetry claims are scoped separately:
+  Coleman's theorem is a \(1+1\)-dimensional positive-metric relativistic QFT
+  statement, while Mermin--Wagner--Hohenberg is a short-range equilibrium
+  thermodynamic-limit statement.  Neither is used as a blanket ban on all
+  two-dimensional phase selection.
 - Chiral effective theory is a derivative expansion for current generating
   functionals at momenta below the chiral-symmetry-breaking scale.
 
@@ -179,6 +188,14 @@
   and the BRST doublet/quartet structure explain why the would-be Goldstone
   coordinate is absent from the positive BRST cohomology as an independent
   massless particle.
+- The low-dimensional no-go section adds separate Coleman and
+  Mermin--Wagner--Hohenberg quoted-theorem blocks.  It derives the Coleman
+  massless-scalar equal-time logarithm, the \(d=1,2,3\)
+  Mermin--Wagner--Hohenberg spin-wave integrals, and the Bogoliubov-bound
+  form showing how the divergent infrared integral forces the continuous
+  order parameter to vanish.  The worked comparison distinguishes discrete
+  Ising order, BKT/quasi-long-range order, and massive symmetric
+  \(1+1\)-dimensional internal-symmetry multiplets.
 - The explicit \(U(1)\) Goldstone model is developed in polar variables, with
   \(j^\mu=2r^2\partial^\mu\theta\), \([Q,\theta]=i\), a massive radial mode,
   and a pseudo-Goldstone mass from a small \(-\epsilon\operatorname{Re}\phi\)
@@ -353,6 +370,13 @@
   the full gauge-plus-fermion regulator, the vectorlike Dirac determinant
   positivity condition, and existence of the volume/mass limits used to select
   a phase.
+
+## Calculation Checks
+
+- `calculation-checks/low_dimensional_ssb_ir_checks.py` verifies the
+  Coleman logarithm coefficient and the Mermin--Wagner--Hohenberg
+  \(d=1,2,3\) infrared split, with negative controls for wrong coefficients
+  and wrong limiting behavior.
 
 ## Figure And Render Checks
 

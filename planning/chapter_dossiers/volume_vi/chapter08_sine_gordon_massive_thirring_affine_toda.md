@@ -40,6 +40,10 @@ families.  This chapter supplies the first exact examples before the later
 
 - Defines an integrable model family as matched UV, perturbing, conserved,
   scattering, and form-factor data.
+- Marks compact scalar coordinates, soliton charge, and Thirring current
+  dictionaries as current/topological-sector data rather than ordinary
+  continuous-symmetry order parameters, cross-referencing the
+  Coleman/Mermin--Wagner--Hohenberg boundary.
 - Fixes sine-Gordon normalization, topological charge, and the attractive
   regime spectrum.
 - Adds the UV-normal-ordered mass-coupling coordinate
@@ -140,3 +144,7 @@ first simply-laced examples.
   Lorentzian kinetic term, and records that the Coleman \(g_T\) coordinate is
   attached to \(-g_T J_\mu J^\mu/2\), equivalently \(+g_T B_\mu B^\mu/2\) for
   the anti-Hermitian bilinear \(B^\mu=\bar\psi\gamma^\mu\psi\).
+- 2026-06-04 issue #770 re-audit: added the low-dimensional
+  continuous-symmetry caveat so the sine-Gordon/Thirring compact-boson
+  dictionary is read as a current/topological-sector equivalence, not as a
+  hidden continuous order parameter.

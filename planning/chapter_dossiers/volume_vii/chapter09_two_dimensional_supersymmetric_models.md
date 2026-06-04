@@ -126,6 +126,10 @@ and
   the elliptic-genus interface.
 - Defines sigma-model and GLSM data and separates protected coordinates from
   full infrared QFT equivalence.
+- Records the Coleman low-dimensional continuous-symmetry caveat for
+  \(1+1\)-dimensional flavor and \(R\)-symmetry language: protected chiral
+  rings, indices, anomalies, twists, and topological sectors are not ordinary
+  local continuous order parameters.
 - Defines the A/B twist spin-shift convention and proves that
   `Q_A = bar Q_+ + Q_-` and `Q_B = bar Q_+ + bar Q_-` are scalar nilpotent
   supercharges in the central-charge-free local sector.
