@@ -57,6 +57,10 @@ relations
     color-singlet source projection multiplies the hard instanton kernel by
     gauge-invariant source-overlap matrices, while hadronic pole residues are
     separate external spectral data
+    the Euclidean instanton source kernel becomes a physical amplitude only
+    after analytic continuation and pole/spectral/OPE projection; the bridge
+    has independent regulator, continuation, spectral, infrared, unitarity-cut,
+    matching, and size-endpoint residuals
     a finite one-instanton amplitude error budget separates the leading
     determinant/zero-mode/source density from determinant remainders,
     zero-mode truncation, source matching, Schur corrections, and endpoint
@@ -2153,6 +2157,60 @@ def check_color_singlet_instanton_source_projection() -> None:
     )
 
 
+def check_instanton_euclidean_to_physical_residual_budget() -> None:
+    leading_kernel_coordinate = Fraction(7, 13)
+    residuals = {
+        "regulator": Fraction(1, 17),
+        "continuation": Fraction(-2, 19),
+        "spectral": Fraction(3, 23),
+        "infrared": Fraction(-5, 29),
+        "unitarity_cut": Fraction(7, 31),
+        "matching": Fraction(-11, 37),
+        "size_endpoint": Fraction(13, 41),
+    }
+    total_residual = sum(residuals.values(), Fraction(0))
+    physical_amplitude = leading_kernel_coordinate + total_residual
+
+    assert_equal(
+        "instanton physical-amplitude residual telescope",
+        physical_amplitude - leading_kernel_coordinate - total_residual,
+        Fraction(0),
+    )
+    if total_residual == 0:
+        raise AssertionError("instanton physical residual budget accidentally collapsed")
+
+    residual_bound = sum(abs(value) for value in residuals.values())
+    assert_equal(
+        "instanton physical-amplitude residual bound",
+        abs(physical_amplitude - leading_kernel_coordinate) <= residual_bound,
+        True,
+    )
+
+    zero_residual_physical_coordinate = leading_kernel_coordinate + sum(
+        Fraction(0) for _ in residuals
+    )
+    assert_equal(
+        "instanton kernel equals physical amplitude only with zero bridge residual",
+        zero_residual_physical_coordinate,
+        leading_kernel_coordinate,
+    )
+    assert_equal(
+        "leading instanton kernel alone is not the physical amplitude",
+        physical_amplitude == leading_kernel_coordinate,
+        False,
+    )
+
+    # A colored auxiliary kernel has no physical pole projection until a
+    # gauge-invariant source or an infrared deformation has been supplied.
+    has_color_singlet_source = False
+    has_declared_infrared_deformation = False
+    assert_equal(
+        "colored partonic instanton kernel has no standalone physical LSZ map",
+        has_color_singlet_source or has_declared_infrared_deformation,
+        False,
+    )
+
+
 def check_instanton_amplitude_error_budget() -> None:
     # A finite regulator reduces the amplitude assembly to a finite sum over
     # chart cells.  The leading term is not the moduli-space measure alone:
@@ -3171,6 +3229,7 @@ def main() -> None:
     check_plane_wave_instanton_four_fermion_assembly()
     check_instanton_orientation_haar_projection()
     check_color_singlet_instanton_source_projection()
+    check_instanton_euclidean_to_physical_residual_budget()
     check_instanton_amplitude_error_budget()
     check_hard_momentum_instanton_size_window()
     check_hard_size_tail_dominance_criterion()

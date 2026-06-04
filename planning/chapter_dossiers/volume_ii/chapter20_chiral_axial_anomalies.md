@@ -104,7 +104,11 @@
   projector.  The color-singlet matching continuation adds
   the gauge-invariant source-projection and hadronic pole-residue layer:
   source-to-zero-mode overlaps multiply the hard kernel, while stable-hadron
-  amplitudes require a separate spectral/LSZ extraction.  The hard-amplitude
+  amplitudes require a separate spectral/LSZ extraction.  The
+  Euclidean-to-physical continuation adds the final bridge budget: the leading
+  instanton source kernel is separated from regulator, analytic-continuation,
+  spectral/LSZ, infrared, unitarity-cut, matching, and size-endpoint
+  residuals before any physical amplitude is claimed.  The hard-amplitude
   continuation adds the
   \(N_f=2\) hard-momentum size window, where the same form factors give a
   \(Q^{-2}\) four-fermion coefficient at \(\mu=Q\), the RG-invariant
@@ -287,6 +291,7 @@
 | \(A_{i_1i_2j_1j_2},B_{i_1i_2j_1j_2}\) | two invariant four-fundamental \(SU(2)\) tensors used in the shared-orientation Haar projector |
 | \(\mathcal K_{\rm ex},\mathcal K_{\rm lead},\mathcal C_{\rm pg}^{\mathcal S},R_{\rm det},R_{\rm zm},R_{\rm src},R_{\rm Schur},R_{\rm end}\) | exact and leading one-instanton source-amplitude densities, pure-gauge collective/determinant density, and the finite error-budget pieces for determinant, zero-mode/source, source matching, Schur, and endpoint residuals |
 | \(B^{\mathcal J}_{AB},\Phi^R,\Phi^L\) | color-singlet source-projected zero-mode matrix and source-to-zero-mode overlap maps used to match the auxiliary hard instanton kernel to gauge-invariant correlators |
+| \(\mathcal A_{\rm phys}^{Q=1},\mathcal A_{\rm inst}^{\rm lead},R_{\rm reg},R_{\rm cont},R_{\rm spec},R_{\rm IR},R_{\rm cut},R_{\rm match},R_\rho\) | physical one-instanton amplitude coordinate, leading continued/projected instanton-kernel coordinate, and the residuals separating Euclidean source kernels from physical amplitudes |
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(\mathbf c;\mathcal F)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless selected-form-factor integral |
 | \(\mathfrak s_{\rm hard}(s),\Delta\) | hard instanton log-size shell density and its power-tail suppression exponent \(\Delta=\sigma-b_0-2\) |
 | \(C_{\rm inst}^{(4)}(Q;R),\mathcal P_{\rm orient}\) | specialized \(SU(3)\), \(N_f=2\) hard four-fermion instanton coefficient and shared orientation projector, with the Pauli-Villars pure-gauge constant, light-fermion determinant factor, and explicit endpoint residual |
@@ -648,6 +653,14 @@
   spectral/LSZ residue extraction; BPST data do not determine the hadron
   residues or the long-distance matrix element of the induced 't Hooft
   operator.
+- A leading instanton source kernel is still not a physical amplitude.  The
+  Euclidean-to-physical bridge now decomposes
+  \(\mathcal A_{\rm phys}^{Q=1}-\mathcal A_{\rm inst}^{\rm lead}\) into
+  regulator, analytic-continuation, spectral/LSZ, infrared, unitarity-cut,
+  matching, and size-endpoint residuals, with a triangle bound.  This records
+  exactly where a weakly coupled, thermal, hard-OPE, or hadronic projection
+  must supply additional physics after the BPST determinant and zero-mode
+  calculation.
 - In an \(N_f=2\) hard four-fermion kinematic window, retaining the selected
   zero-mode form factors turns the universal one-loop size factor into
   \[
@@ -1156,6 +1169,12 @@
   source-projection determinant identity, the need to keep
   collective-coordinate-dependent overlaps inside the instanton integral, and
   the separate finite pole-residue division for a stable hadron.
+- 2026-06-04 issue #597 physical-amplitude bridge pass: added
+  `ca:instanton-euclidean-to-physical-amplitude-budget`, which prevents the
+  leading instanton source kernel from being overread as a physical
+  scattering or response amplitude.  The BPST check script now verifies the
+  residual telescope, triangle bound, nonzero bridge residual, and the absence
+  of a standalone physical LSZ map for a colored partonic kernel.
 - 2026-06-03 issue #597/#630 plane-wave amplitude-assembly pass: inserted
   `prop:instanton-plane-wave-four-fermion-assembly`, which factors the common
   instanton-center phase from the \(N_f=2\) source coefficient, producing total

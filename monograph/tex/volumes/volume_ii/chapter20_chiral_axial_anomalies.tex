@@ -6119,6 +6119,89 @@ that operation termwise in a controlled semiclassical expansion gives
 \eqref{eq:instanton-hadronic-residue-extraction}; it never produces an
 ordinary colored-quark \(S\)-matrix element.
 
+\begin{controlledapproximation}[Euclidean instanton kernel to physical
+amplitude]
+\label{ca:instanton-euclidean-to-physical-amplitude-budget}
+Let \(G^{E,Q=1}_{\mathcal J,\Lambda}\) be the finite-regulator
+gauge-invariant Euclidean source correlator obtained from the one-instanton
+chart after zero modes, nonzero-mode determinants, source projections, and
+collective coordinates have all been paired.  Let
+\[
+  \mathcal A_{\rm inst}^{\rm lead}
+  =
+  \operatorname*{Proj}_{\rm phys}
+  \operatorname*{Cont}_{\mathcal S}
+  G^{E,Q=1}_{\mathcal J,{\rm lead}}
+\]
+denote the result of first replacing the finite-regulator density by the
+declared leading instanton kernel, then analytically continuing on a specified
+sheet \(\mathcal S\), and finally applying the chosen physical projection:
+a stable-particle pole residue, an inclusive spectral weight, or a hard OPE
+coefficient.  The corresponding physical one-instanton contribution
+\(\mathcal A_{\rm phys}^{Q=1}\) differs from this coordinate by
+\begin{equation}
+  \mathcal A_{\rm phys}^{Q=1}
+  -
+  \mathcal A_{\rm inst}^{\rm lead}
+  =
+  R_{\rm reg}
+  +
+  R_{\rm cont}
+  +
+  R_{\rm spec}
+  +
+  R_{\rm IR}
+  +
+  R_{\rm cut}
+  +
+  R_{\rm match}
+  +
+  R_{\rho}.
+  \label{eq:instanton-euclidean-to-physical-residual-budget}
+\end{equation}
+Here \(R_{\rm reg}\) records finite-volume, cutoff, and order-of-limits errors
+between the regulated Euclidean sector and its continuum source correlator;
+\(R_{\rm cont}\) records analytic-continuation and sheet choices, including
+thresholds and singularities crossed by the chosen continuation;
+\(R_{\rm spec}\) records the pole, spectral, or OPE projection error;
+\(R_{\rm IR}\) records confinement, massless radiation, inclusive-sum, or
+external Wilson-line data not contained in a colored partonic kernel;
+\(R_{\rm cut}\) records unitarity-cut and conjugate-sector effects, including
+instanton--anti-instanton sectors needed before an \(S\)-matrix statement can
+obey an optical theorem; \(R_{\rm match}\) records the matching from the
+chosen source family to the local operator or hadronic observable; and
+\(R_{\rho}\) is the remaining instanton-size endpoint and determinant-tail
+contribution after the selected hard, screened, or Wilsonian window has been
+declared.
+
+If on the selected kinematic window each residual satisfies
+\[
+  |R_\kappa|\le \varepsilon_\kappa,
+  \qquad
+  \kappa\in
+  \{{\rm reg},{\rm cont},{\rm spec},{\rm IR},{\rm cut},{\rm match},\rho\},
+\]
+then
+\begin{equation}
+  \left|
+  \mathcal A_{\rm phys}^{Q=1}
+  -
+  \mathcal A_{\rm inst}^{\rm lead}
+  \right|
+  \le
+  \sum_\kappa\varepsilon_\kappa .
+  \label{eq:instanton-physical-amplitude-residual-bound}
+\end{equation}
+The point is not to add another approximation.  It is to identify where the
+physics lives after the moduli-space and determinant calculation has been
+done.  In a weakly coupled Higgsed theory, a thermal screened regime, or a
+hard Euclidean OPE window, the physical projection and endpoint controls can
+sometimes be declared explicitly.  In confining zero-temperature QCD, a
+colored four-slot kernel is only a short-distance source coordinate until the
+gauge-invariant spectral or OPE projection and the long-size remainder have
+been supplied.
+\end{controlledapproximation}
+
 \begin{proposition}[One-instanton amplitude assembly and error budget]
 \label{prop:instanton-amplitude-assembly-error-budget}
 Fix a finite-regulator \(Q=1\) chart and a gauge-invariant source channel.
