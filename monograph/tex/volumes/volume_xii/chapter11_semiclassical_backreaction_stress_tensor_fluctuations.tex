@@ -911,27 +911,57 @@ insertion as in
 Section~\ref{sec:semiclassical-worked-interacting-source-shift}, but now ask
 for the stress-tensor fluctuation sourced by the interaction.  Let
 \[
-  C_{\omega,H}(x,y)
+  R_{\omega,H}(x,y)
   =
-  \operatorname{Re}\!\left(\omega_2(x,y)-H_+(x,y)\right)
+  \omega_2(x,y)-H_+(x,y),
+  \qquad
+  W_\omega(x,y)=\omega_2(x,y)
 \]
-denote the smooth real Wick covariance retained in the test region; \(H_+\)
-is the two-point Hadamard parametrix used in this Wick chart, and
-\(C_{\omega,H}(x,x)=\Sigma_{\omega,H}(x)\).  The Gaussian generating
-function for \(H\)-Wick powers gives, away from the diagonal and before the
-contact extension of the stress-tensor square,
+Here \(H_+\) is the Hadamard two-point parametrix for the Wick chart, and
+\[
+  \Sigma_{\omega,H}(x)=R_{\omega,H}(x,x)
+\]
+is the smooth Wick-square expectation.  The separated cross contraction is the
+full \(W_\omega(x,y)\); the smooth remainder \(R_{\omega,H}(x,y)\) is only one
+piece of the typed \(H\)-chart calculation:
 \begin{equation}
 \begin{aligned}
   &\omega\!\left(
-    \Phi_H^4(x)\Phi_H^4(y)
+    \exp_H(t\Phi(x))\star_H\exp_H(s\Phi(y))
+  \right) \\
+  &\qquad =
+  \exp\!\left(t s H_+(x,y)\right)
+  \exp\!\left(
+    \frac{t^2}{2}\Sigma_{\omega,H}(x)
+    +t s R_{\omega,H}(x,y)
+    +\frac{s^2}{2}\Sigma_{\omega,H}(y)
+  \right) \\
+  &\qquad =
+  \exp\!\left(
+    \frac{t^2}{2}\Sigma_{\omega,H}(x)
+    +t s W_\omega(x,y)
+    +\frac{s^2}{2}\Sigma_{\omega,H}(y)
+  \right).
+\end{aligned}
+  \label{eq:semiclassical-star-H-state-wick-generating}
+\end{equation}
+The first exponential is the \(\star_H\)-product contraction, while the second
+is the state evaluation of the \(H\)-Wick exponential.  They combine to the full
+state two-point function between distinct insertions.  Differentiating
+\eqref{eq:semiclassical-star-H-state-wick-generating} gives, away from the
+diagonal and before the contact extension of the stress-tensor square,
+\begin{equation}
+\begin{aligned}
+  &\omega\!\left(
+    \Phi_H^4(x)\star_H\Phi_H^4(y)
   \right)_{\rm conn}
   \\
   &\qquad =
   72\,
   \Sigma_{\omega,H}(x)\Sigma_{\omega,H}(y)
-  C_{\omega,H}(x,y)^2
+  W_\omega(x,y)^2
   +
-  24\,C_{\omega,H}(x,y)^4 .
+  24\,W_\omega(x,y)^4 .
 \end{aligned}
   \label{eq:semiclassical-wick-four-noise-contractions}
 \end{equation}
@@ -939,35 +969,41 @@ The disconnected term
 \(9\Sigma_{\omega,H}(x)^2\Sigma_{\omega,H}(y)^2\) has been subtracted.  The
 first term in
 \eqref{eq:semiclassical-wick-four-noise-contractions} is present whenever
-the state covariance differs from the Wick coordinate; the shortcut
-\(24C_{\omega,H}(x,y)^4\) is valid only in the special normal-ordering
-coordinate with vanishing one-point Wick square.
+the state covariance differs from the Wick coordinate at the individual
+insertions.  If the Wick coordinate is chosen from the same quasifree state,
+then \(\Sigma_{\omega,H}=0\) and \(R_{\omega,H}=0\), but the separated
+connected fourth-Wick-power covariance remains
+\(24W_\omega(x,y)^4\).  A formula built only from the smooth remainder would
+erase this propagation term.
 
 Thus the retained potential contribution to the stress-noise kernel is
 \begin{equation}
   N_{\mu\nu,\rho\sigma}^{(\lambda,{\rm pot})}(x,y)
   =
   \lambda^2 g_{\mu\nu}(x)g_{\rho\sigma}(y)
-  \left[
+  \operatorname{Re}\!\left[
     \frac18\Sigma_{\omega,H}(x)\Sigma_{\omega,H}(y)
-    C_{\omega,H}(x,y)^2
+    W_\omega(x,y)^2
     +
-    \frac1{24}C_{\omega,H}(x,y)^4
+    \frac1{24}W_\omega(x,y)^4
   \right],
   \label{eq:semiclassical-potential-noise-kernel}
 \end{equation}
-in the retained potential sector.  For the finite source basis
+in the retained potential sector.  The real part is taken after the square and
+fourth power; it is the symmetrized Lorentzian noise operation, not a
+replacement of \(W_\omega(x,y)\) by \(\operatorname{Re}W_\omega(x,y)\) before
+the polynomial is formed.  For the finite source basis
 \eqref{eq:semiclassical-retained-response-matrix}, set
 \[
   \mathsf N_{ab}^{(\lambda,{\rm pot})}
   =
   \int_{U\times U}
   q_a(x)
-  \left[
+  \operatorname{Re}\!\left[
     \frac18\Sigma_{\omega,H}(x)\Sigma_{\omega,H}(y)
-    C_{\omega,H}(x,y)^2
+    W_\omega(x,y)^2
     +
-    \frac1{24}C_{\omega,H}(x,y)^4
+    \frac1{24}W_\omega(x,y)^4
   \right]
   q_b(y)\,
   \lambda^2\,

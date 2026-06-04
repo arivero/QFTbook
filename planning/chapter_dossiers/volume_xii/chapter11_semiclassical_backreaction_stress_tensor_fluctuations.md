@@ -34,9 +34,10 @@ recording fluctuation data required for controlled backreaction.
   coordinate, the first-order `lambda phi^4` potential-insertion source
   coordinate, and its projection into the retained semiclassical response
   sector.
-- `C_{omega,H}(x,y)`, `N_{ab}^{(lambda,pot)}`: retained smooth covariance
-  and finite retained potential-noise matrix for the second-order
-  `lambda phi^4` stress-noise coordinate.
+- `R_{omega,H}(x,y)`, `W_omega(x,y)`, `N_{ab}^{(lambda,pot)}`: smooth
+  Wick-coordinate remainder, full separated state two-point function, and
+  finite retained potential-noise matrix for the second-order `lambda phi^4`
+  stress-noise coordinate.
 
 ## Claim Ledger
 
@@ -77,9 +78,12 @@ recording fluctuation data required for controlled backreaction.
   check uses `||h_lambda^{pot}|| <= M_I |rho_lambda| ||q||`.
 - Adds the corresponding retained potential-noise coordinate: the connected
   Wick-four covariance is
-  `72 Sigma_x Sigma_y C(x,y)^2 + 24 C(x,y)^4`, the disconnected term is
-  subtracted, the retained stress-noise matrix is positive as a covariance,
-  and its metric pushforward satisfies
+  `72 Sigma_x Sigma_y W_omega(x,y)^2 + 24 W_omega(x,y)^4`, where
+  `W_omega=omega_2` is the full separated two-point function rather than the
+  smooth Wick-coordinate remainder; the real part is taken after forming the
+  polynomial for symmetrized Lorentzian noise.  The disconnected term is
+  subtracted, the retained stress-noise matrix is positive as a covariance, and
+  its metric pushforward satisfies
   `tr C_h^{(lambda,pot)} <= M_I^2 tr N^{(lambda,pot)}`.
 - Records validity conditions and the EFT reduction-of-order treatment for
   higher-curvature terms.
@@ -96,10 +100,12 @@ recording fluctuation data required for controlled backreaction.
   shifts, negative controls for independent quartic/stress-tensor finite
   counterterms and signed negative-density norm bounds, its retained response
   bound, the retained `lambda phi^4` potential-noise kernel with the
-  connected Wick-four covariance, disconnected-subtraction and dropped
-  mixed-term negative controls, quadratic coupling scaling, positivity of the
-  retained noise matrix, its metric-covariance trace bound, and the low-energy
-  root selected by reduction of order in a toy higher-derivative equation.
+  connected Wick-four covariance using the full separated two-point function,
+  disconnected-subtraction, dropped-mixed-term, same-state Wick-coordinate,
+  smooth-remainder-only, and premature-real-part negative controls, quadratic
+  coupling scaling, positivity of the retained noise matrix, its
+  metric-covariance trace bound, and the low-energy root selected by reduction
+  of order in a toy higher-derivative equation.
 
 ## Figure Ledger
 
@@ -144,7 +150,17 @@ curvature, microscopic, and EFT scales.
   stress-noise coordinate for the same `lambda phi^4` example.  This extends
   the mean-source response into an Einstein--Langevin fluctuation input:
   the text derives the connected Wick-four covariance, records the
-  disconnected subtraction and the mixed `Sigma Sigma C^2` term, feeds the
+  disconnected subtraction and the mixed `Sigma Sigma W_omega^2` term, feeds the
   retained noise through the response-window trace bound, and states that the
   full interacting noise also requires Bogoliubov, derivative, contact, and
   composite-counterterm pieces.
+- 2026-06-04 issue #742 Wick-four cross-contraction correction: revised the
+  retained potential-noise coordinate so separated contractions use the full
+  quasifree two-point function \(W_\omega(x,y)=\omega_2(x,y)\).  The text now
+  derives this from the typed \(\star_H\)/state Wick-exponential calculation:
+  the \(H_+\) cross contraction from the product and the smooth state remainder
+  \(R_{\omega,H}\) combine to \(W_\omega\).  The symmetrized Lorentzian noise
+  takes the real part after the square and fourth power.  The finite companion
+  now checks that a same-state Wick coordinate still has nonzero separated
+  fourth-power noise, while smooth-remainder-only and premature-real-part
+  formulas fail.

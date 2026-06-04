@@ -6,17 +6,19 @@ normalization: traces of the curvature-squared Euler tensors in four
 dimensions, the KMS fluctuation-dissipation factor, positivity of the noise
 covariance, finite response-window metric fluctuation bounds, the first-order
 lambda-phi-four potential-insertion source coordinate, the retained
-lambda-phi-four potential-noise coordinate, and the low-energy root selected
-by reduction of order in a toy higher-derivative equation.
+lambda-phi-four potential-noise coordinate using the full separated two-point
+function, and the low-energy root selected by reduction of order in a toy
+higher-derivative equation.
 
 Evidence contract.
 Target claims: the finite algebra and response-window subclaims in Volume
 XII Chapter 11, including curvature-squared trace normalizations,
 fluctuation-dissipation factors, noise-covariance positivity, retained
 metric-response bounds, the lambda-phi-four potential-insertion source
-coordinate, the retained potential-noise Wick contraction and metric
-pushforward, the restricted finite-renormalization ledger for that coordinate,
-and the low-energy root selected by reduction of order.
+coordinate, the retained potential-noise Wick contraction with full separated
+two-point cross covariance and metric pushforward, the restricted
+finite-renormalization ledger for that coordinate, and the low-energy root
+selected by reduction of order.
 Independent construction: the checks recompute traces, KMS factors,
 matrix pushforwards, exact retained-sector inverses, Wick-contraction
 coefficients, cosmological-coordinate shifts, independent finite counterterm
@@ -28,10 +30,12 @@ coordinates, positive finite noise matrices, and the chapter's convention
 E_grav = <T_ren>.
 Negative controls: singular retained response matrices, wrong Wick
 contraction factors, omitted local-Wick-renormalization quadratic terms, wrong
-cosmological-coordinate signs, erased independent quartic/stress-tensor
-finite counterterms, signed negative density norm bounds, dropped connected
-potential-noise terms, retained disconnected noise pieces, and cutoff-scale
-higher-derivative roots are rejected.
+cosmological-coordinate signs, erased independent quartic/stress-tensor finite
+counterterms, signed negative density norm bounds, dropped connected
+potential-noise terms, using the smooth Wick remainder instead of the full
+separated two-point function, premature real-part projection, retained
+disconnected noise pieces, and cutoff-scale higher-derivative roots are
+rejected.
 Scope boundary: a pass checks coefficient, positivity, and response-bound
 bookkeeping for the retained potential-insertion coordinate; it does not
 construct the full interacting stress-tensor expectation, prove existence of
@@ -282,27 +286,72 @@ def check_lambda_phi4_potential_noise_kernel() -> None:
     coupling = Fraction(2, 3)
     sigma_x = Fraction(3, 5)
     sigma_y = Fraction(5, 7)
-    covariance_xy = Fraction(2, 11)
+    full_two_point_xy = Fraction(2, 11)
+    smooth_remainder_xy = Fraction(1, 17)
 
     disconnected = 9 * sigma_x * sigma_x * sigma_y * sigma_y
     connected = (
-        72 * sigma_x * sigma_y * covariance_xy * covariance_xy
-        + 24 * covariance_xy**4
+        72 * sigma_x * sigma_y * full_two_point_xy * full_two_point_xy
+        + 24 * full_two_point_xy**4
     )
     full_wick_four_product = disconnected + connected
     if full_wick_four_product - disconnected != connected:
         raise AssertionError("connected Wick-four covariance subtraction failed")
 
-    dropped_mixed_term = 24 * covariance_xy**4
+    dropped_mixed_term = 24 * full_two_point_xy**4
     if dropped_mixed_term == connected:
-        raise AssertionError("negative control failed: mixed Sigma Sigma C^2 term was dropped")
+        raise AssertionError("negative control failed: mixed Sigma Sigma W^2 term was dropped")
     if full_wick_four_product == connected:
         raise AssertionError("negative control failed: disconnected Wick-four term was retained")
 
+    remainder_only_connected = (
+        72 * sigma_x * sigma_y * smooth_remainder_xy * smooth_remainder_xy
+        + 24 * smooth_remainder_xy**4
+    )
+    if remainder_only_connected == connected:
+        raise AssertionError("negative control failed: full separated two-point function was omitted")
+
+    state_wick_sigma = Fraction(0)
+    state_wick_remainder = Fraction(0)
+    state_wick_two_point = Fraction(3, 7)
+    state_wick_connected = (
+        72 * state_wick_sigma * state_wick_sigma * state_wick_two_point**2
+        + 24 * state_wick_two_point**4
+    )
+    state_wick_remainder_only = (
+        72 * state_wick_sigma * state_wick_sigma * state_wick_remainder**2
+        + 24 * state_wick_remainder**4
+    )
+    if state_wick_connected == 0:
+        raise AssertionError("same-state Wick coordinate should retain separated fourth-power noise")
+    if state_wick_remainder_only != 0:
+        raise AssertionError("same-state Wick remainder control should be zero")
+    if state_wick_connected == state_wick_remainder_only:
+        raise AssertionError("negative control failed: same-state Wick coordinate erased cross noise")
+
+    complex_re = Fraction(2, 5)
+    complex_im = Fraction(1, 3)
+    complex_square_real = complex_re * complex_re - complex_im * complex_im
+    complex_square_imag = 2 * complex_re * complex_im
+    complex_fourth_real = (
+        complex_square_real * complex_square_real
+        - complex_square_imag * complex_square_imag
+    )
+    symmetrized_real_after = (
+        72 * sigma_x * sigma_y * complex_square_real
+        + 24 * complex_fourth_real
+    )
+    premature_real_projection = (
+        72 * sigma_x * sigma_y * complex_re * complex_re
+        + 24 * complex_re**4
+    )
+    if symmetrized_real_after == premature_real_projection:
+        raise AssertionError("negative control failed: real part was taken before powers")
+
     potential_noise_cell = coupling * coupling * connected / (24 * 24)
     expected_cell = coupling * coupling * (
-        sigma_x * sigma_y * covariance_xy * covariance_xy / 8
-        + covariance_xy**4 / 24
+        sigma_x * sigma_y * full_two_point_xy * full_two_point_xy / 8
+        + full_two_point_xy**4 / 24
     )
     if potential_noise_cell != expected_cell:
         raise AssertionError("lambda phi^4 potential-noise coefficient changed")
