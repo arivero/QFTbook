@@ -1853,6 +1853,91 @@ define transport coefficients, but they do not by themselves derive
 hydrodynamics from QCD.
 \end{controlledapproximation}
 
+\begin{proposition}[Momentum-projected baryon diffusion current]
+\label{prop:qcd-incoherent-baryon-current}
+In a translationally invariant QCD phase at nonzero baryon density, the raw
+baryon current is not itself the diffusive current.  Let
+\[
+  n_B=\frac{\partial p}{\partial\mu_B},\qquad
+  w=\epsilon+p,
+  \qquad P^i=T^{0i},
+\]
+and let \(J_B^i\) be the spatial baryon-number current.  In a homogeneous
+fluid state boosted by a small velocity \(\delta u^i\),
+\[
+  \delta\langle P^i\rangle=w\,\delta u^i,\qquad
+  \delta\langle J_B^i\rangle=n_B\,\delta u^i .
+\]
+Thus the static susceptibility Gram matrix in the vector sector contains
+\[
+  \chi_{P^iP^j}=w\,\delta^{ij},
+  \qquad
+  \chi_{J_B^iP^j}=n_B\,\delta^{ij}.
+\]
+The momentum-orthogonal baryon current is therefore
+\begin{equation}
+  J_{\rm inc}^i
+  =
+  J_B^i-\frac{n_B}{w}T^{0i}.
+  \label{eq:qcd-incoherent-baryon-current}
+\end{equation}
+Writing \(\chi_{J_B^iJ_B^j}=\chi_{JJ}\delta^{ij}\), it obeys
+\begin{equation}
+  \chi_{J_{\rm inc}^iP^j}=0,\qquad
+  \chi_{J_{\rm inc}^iJ_{\rm inc}^j}
+  =
+  \left(\chi_{JJ}-\frac{n_B^2}{w}\right)\delta^{ij}.
+  \label{eq:qcd-incoherent-current-gram}
+\end{equation}
+Consequently the baryon conductivity entering the diffusive part of
+\(\mathcal T_{\rm QCD}\) is the regular Kubo slope of
+\(J_{\rm inc}\),
+\begin{equation}
+  \Sigma_B^{\rm inc}
+  =
+  \lim_{\omega\downarrow0}
+  \frac1{2\omega}
+  \rho^{\rm reg}_{J_{\rm inc}^iJ_{\rm inc}^i}(\omega,\mathbf0),
+  \label{eq:qcd-incoherent-baryon-conductivity}
+\end{equation}
+with the Drude sector separated as in
+\eqref{eq:kubo-drude-regular-decomposition}.  At \(n_B=0\),
+\(J_{\rm inc}=J_B\).  At \(n_B\ne0\), the raw
+\(J_BJ_B\) response contains a convective contribution from the exactly
+conserved momentum.  If translations are weakly broken this contribution
+becomes a narrow momentum-relaxation peak; that peak is a property of the
+relaxation mechanism, not the intrinsic QCD baryon-diffusion coefficient.
+\end{proposition}
+
+\begin{proof}
+The ideal constitutive relations in the local rest frame are
+\[
+  T^{0i}=w\,u^i+O(\partial),\qquad
+  J_B^i=n_B\,u^i+O(\partial).
+\]
+Differentiating the expectation values with respect to a uniform velocity
+source gives the displayed static overlaps.  Equation
+\eqref{eq:qcd-incoherent-baryon-current} is then ordinary Gram--Schmidt
+projection in the static susceptibility inner product, so
+\[
+  \chi_{J_{\rm inc}P}
+  =
+  \chi_{J_BP}-\frac{n_B}{w}\chi_{PP}
+  =
+  n_B-\frac{n_B}{w}w
+  =
+  0.
+\]
+The second identity in \eqref{eq:qcd-incoherent-current-gram} is the same
+projection applied to the norm of the current.  Positivity is the Schur
+complement positivity of the static susceptibility matrix.  The last
+statement is then the Drude separation of
+\eqref{eq:kubo-drude-regular-decomposition}: any current with a nonzero
+static overlap with a conserved momentum has a singular zero-frequency
+sector, while the projected current is the object whose regular spectral
+slope can be matched to the diffusive hydrodynamic coefficient.
+\end{proof}
+
 \begin{remark}[The \(\eta/s\) lower-bound claim]
 The value \(1/(4\pi)\) is an important result in a class of strongly coupled
 large-\(N\) theories with classical gravity duals.  It is not a theorem of

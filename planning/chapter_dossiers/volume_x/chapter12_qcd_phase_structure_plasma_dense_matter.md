@@ -84,11 +84,12 @@ GitHub issue #628.
 - `A_L`, `A_R`, `B`, `F_L`, `F_R`, `F_B`, `D_B phi_B`: chiral flavor and
   baryon background fields used in CFL anomaly matching, their curvatures,
   and the baryon-Goldstone covariant one-form.
-- `mathcal T_QCD`, `chi_ab`, `Sigma_ab`, `D_eta`, `D_B`, `Gamma_s`: QCD
-  hydrodynamic transport datum, conserved-charge susceptibility and
-  conductivity matrices, shear diffusion constant, projected baryon diffusion
-  eigenvalue, and sound attenuation coefficient used in the microscopic
-  response-window comparison.
+- `mathcal T_QCD`, `chi_ab`, `Sigma_ab`, `J_inc^i`, `D_eta`, `D_B`,
+  `Gamma_s`: QCD hydrodynamic transport datum, conserved-charge
+  susceptibility and conductivity matrices, momentum-orthogonal baryon
+  current, shear diffusion constant, projected baryon diffusion eigenvalue,
+  and sound attenuation coefficient used in the microscopic response-window
+  comparison.
 
 ## Claim Ledger
 
@@ -168,9 +169,12 @@ GitHub issue #628.
   angular integral with its Landau cut as worked prose rather than
   theorem-family content.
 - Defines transport coefficients through Kubo spectral limits rather than
-  phenomenological language, and now records the additional microscopic
+  phenomenological language, records the additional microscopic
   response-window estimate and coupled charge-diffusion matrix needed before
-  those coefficients imply hydrodynamic poles of QCD correlators.
+  those coefficients imply hydrodynamic poles of QCD correlators, and derives
+  the finite-density momentum projection
+  `J_inc^i=J_B^i-(n_B/w)T^{0i}` needed to remove the convective Drude sector
+  before identifying the intrinsic baryon-diffusion conductivity.
 - Proves the origin of the finite-density sign problem from loss of
   \(\gamma_5\)-Hermiticity at real chemical potential.
 - Defines imaginary chemical potential as a thermal boundary-condition
@@ -261,8 +265,8 @@ GitHub issue #628.
   bookkeeping, CFL gauge-invariant composite charge bookkeeping, CFL
   screening-sector and collective-mode count bookkeeping, dense
   Fermi-surface stress bookkeeping, CFL anomaly-matching coefficient
-  bookkeeping, QCD hydrodynamic response-window and coupled-diffusion
-  bookkeeping, and CFL Goldstone count.
+  bookkeeping, QCD hydrodynamic response-window, coupled-diffusion, and
+  momentum-projected baryon-current bookkeeping, and CFL Goldstone count.
 
 ## Open Issues
 

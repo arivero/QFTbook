@@ -284,8 +284,9 @@ Current checks:
   composite charges, dense neutrality bookkeeping, CFL screening-sector and
   collective-mode counts, dense Fermi-surface stress scales, CFL
   anomaly-matching coefficients, hydrodynamic response-window bookkeeping for
-  QCD shear, scalar and coupled diffusion, and sound matching, and the CFL
-  Goldstone count.
+  QCD shear, scalar and coupled diffusion, sound matching, and the
+  momentum-projected baryon current which removes the convective Drude sector
+  at finite density, and the CFL Goldstone count.
 - `qcd_dglap_checks.py`: exact rational checks for the Volume II DIS/DGLAP
   conventions, including the \(D_0=(1-x)^{-1}_+\) monomial moments, quark
   number conservation, quark/gluon momentum-column sum rules, the exact

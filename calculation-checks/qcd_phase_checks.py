@@ -15,8 +15,9 @@ baryon-number cumulants, Roberge--Weiss periodicity bookkeeping, dense-matter
 neutrality constraints, color-flavor-locked gauge-invariant composite
 charges, screening and collective-mode counts, dense Fermi-surface stress
 scales, color-flavor-locked anomaly matching, hydrodynamic response-window
-bookkeeping, and the color-flavor-locked symmetry count.  It is not a
-lattice simulation and it does not assert the
+bookkeeping, momentum-projected baryon diffusion current bookkeeping, and the
+color-flavor-locked symmetry count.  It is not a lattice simulation and it
+does not assert the
 existence or order of any QCD phase transition.
 """
 
@@ -678,6 +679,50 @@ def check_hydrodynamic_response_window_bookkeeping():
     assert_equal("QCD shear diffusion constant", shear_diffusion, Fraction(25, 91))
     assert_equal("QCD decoupled baryon diffusion constant", baryon_diffusion, Fraction(437, 493))
     assert_equal("QCD sound attenuation constant", sound_attenuation, Fraction(1310, 3003))
+
+    # At finite baryon density the raw baryon current overlaps with conserved
+    # momentum.  The diffusion conductivity is extracted from the
+    # momentum-orthogonal current J_inc=J_B-(n_B/w)P, not from the raw
+    # current-current Drude sector.
+    baryon_density = Fraction(11, 13)
+    current_static_norm = Fraction(7, 5)
+    projection_coeff = baryon_density / enthalpy
+    raw_current_momentum_overlap = baryon_density
+    momentum_static_norm = enthalpy
+    incoherent_momentum_overlap = (
+        raw_current_momentum_overlap
+        - projection_coeff * momentum_static_norm
+    )
+    incoherent_current_norm = (
+        current_static_norm
+        - raw_current_momentum_overlap * raw_current_momentum_overlap / momentum_static_norm
+    )
+    raw_drude_weight = (
+        raw_current_momentum_overlap
+        * raw_current_momentum_overlap
+        / momentum_static_norm
+    )
+    assert_equal(
+        "QCD incoherent baryon current momentum projection",
+        incoherent_momentum_overlap,
+        Fraction(0),
+    )
+    assert_true(
+        "QCD incoherent baryon current Schur norm positive",
+        incoherent_current_norm > 0,
+    )
+    assert_equal(
+        "QCD raw current static norm splits into Drude plus incoherent pieces",
+        raw_drude_weight + incoherent_current_norm,
+        current_static_norm,
+    )
+
+    zero_density_projection = Fraction(0) / enthalpy
+    assert_equal(
+        "zero-density QCD current needs no momentum projection",
+        zero_density_projection,
+        Fraction(0),
+    )
 
     def matmul_2(a, b):
         return (
