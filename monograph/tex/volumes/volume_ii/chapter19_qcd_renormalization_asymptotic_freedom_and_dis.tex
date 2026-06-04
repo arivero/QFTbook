@@ -10749,6 +10749,94 @@ which gives \(x_Ax_B=\tau\) at leading power.  The rapidity satisfies
 Solving the two equations gives
 \eqref{eq:qcd-drell-yan-xa-xb}.
 
+\paragraph{Integrated collinear factorization coordinate.}
+If the lepton-pair transverse momentum is not kept differential, the appropriate
+leading-power coordinate is the integrated collinear factorization formula, not
+the TMD formula below.  Fix a compact rapidity and invariant-mass window in
+which \(x_A,x_B\in K\Subset(0,1)\) and the threshold and small-\(x\) boundaries
+are excluded.  A leading-power integrated Drell--Yan factorization hypothesis
+consists of renormalized integrated PDF coordinates
+\(f_{i/A},f_{j/B}\), a short-distance coefficient distribution
+\(C^{\rm DY}_{ij}\), and a distributional remainder bound such that
+\begin{equation}
+  \frac{\dd\sigma_{\rm DY}}{\dd Q^2\dd y}
+  =
+  \sum_{i,j}
+  \int_{x_A}^{1}\frac{\dd \xi_A}{\xi_A}
+  \int_{x_B}^{1}\frac{\dd \xi_B}{\xi_B}\,
+  f_{i/A}(\xi_A,\mu)\,
+  f_{j/B}(\xi_B,\mu)\,
+  C^{\rm DY}_{ij}
+  \!\left(\frac{x_A}{\xi_A},\frac{x_B}{\xi_B};
+  Q,\mu\right)
+  +
+  R_{\rm DY}.
+  \label{eq:qcd-drell-yan-integrated-factorization}
+\end{equation}
+The PDFs in \eqref{eq:qcd-drell-yan-integrated-factorization} are the
+Wilson-line light-ray matrix elements of
+Definition~\ref{def:qcd-renormalized-integrated-pdf-datum}.  The
+coefficient \(C^{\rm DY}_{ij}\) is a hard matching distribution in the same
+factorization scheme; it includes the chosen flux, electroweak-current, and
+Jacobian normalization.  The remainder \(R_{\rm DY}\) contains the declared
+power corrections, threshold and small-\(x\) exclusions, perturbative truncation
+remainder, and the Glauber item discussed below.  Thus the formula is not an
+identity between colored partonic cross sections.  It is a comparison between
+the exact color-singlet Wightman tensor
+\eqref{eq:qcd-drell-yan-current-product} and a factorized coordinate built from
+two incoming light-ray operator matrix elements.
+
+The scale cancellation is the two-incoming-leg analogue of
+\eqref{eq:qcd-dis-coefficient-dual-rg}.  In a Mellin or Laplace chart where the
+two convolutions become products, let \(f_A(N_A,\mu)\) and \(f_B(N_B,\mu)\) be
+column vectors in parton species, and write the factorized coordinate as
+\begin{equation}
+  \widetilde\Sigma_{\rm DY}(N_A,N_B;\mu)
+  =
+  f_A(N_A,\mu)^T
+  \widetilde C_{\rm DY}(N_A,N_B;Q,\mu)
+  f_B(N_B,\mu).
+  \label{eq:qcd-drell-yan-transform-coordinate}
+\end{equation}
+If
+\[
+  \mu\frac{\dd f_A}{\dd\mu}=P_A f_A,
+  \qquad
+  \mu\frac{\dd f_B}{\dd\mu}=P_B f_B,
+\]
+then auxiliary-scale independence of
+\eqref{eq:qcd-drell-yan-transform-coordinate} requires
+\begin{equation}
+  \mu\frac{\dd \widetilde C_{\rm DY}}{\dd\mu}
+  =
+  -P_A^T\widetilde C_{\rm DY}
+  -\widetilde C_{\rm DY}P_B .
+  \label{eq:qcd-drell-yan-coefficient-dual-rg}
+\end{equation}
+Indeed,
+\[
+  \mu\frac{\dd}{\dd\mu}
+  \bigl(f_A^T\widetilde C_{\rm DY}f_B\bigr)
+  =
+  f_A^T
+  \bigl(P_A^T\widetilde C_{\rm DY}
+  +\mu\partial_\mu\widetilde C_{\rm DY}
+  +\widetilde C_{\rm DY}P_B\bigr)
+  f_B,
+\]
+which vanishes by
+\eqref{eq:qcd-drell-yan-coefficient-dual-rg}.  A finite factorization-scheme
+change \(f_A'=R_A f_A\), \(f_B'=R_B f_B\) preserves the same physical coordinate
+only if
+\[
+  \widetilde C_{\rm DY}'=(R_A^{-1})^T\widetilde C_{\rm DY}R_B^{-1}.
+\]
+This matrix identity is the clean bookkeeping behind statements that the two
+incoming collinear singularities have been absorbed into the PDFs.  A
+factorization proof must still supply the leading-region analysis, soft
+cancellation or soft factor, Glauber status, and the remainder topology; the
+algebra above only fixes the paired RG structure once those objects exist.
+
 \begin{hypothesis}[Drell--Yan small-\(q_\perp\) TMD factorization hypothesis]
 \label{hyp:qcd-drell-yan-tmd-factorization-hypothesis}
 A leading-power Drell--Yan TMD factorization hypothesis consists of:

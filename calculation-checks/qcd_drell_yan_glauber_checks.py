@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
-"""Finite checks for the Drell-Yan/Glauber-status block in Volume II."""
+"""Finite checks for the Drell-Yan/Glauber-status block in Volume II.
+
+These checks verify kinematic and finite-algebra facts used in the text.  They
+do not prove Drell-Yan factorization.  The nontrivial algebraic checks are the
+two-incoming-leg RG cancellation
+    dC = -P_A^T C - C P_B
+for the transform-space coordinate f_A^T C f_B, and the finite scheme
+covariance
+    C' = (R_A^{-1})^T C R_B^{-1}.
+"""
 
 from __future__ import annotations
 
@@ -37,6 +46,71 @@ def check_t_odd_orientation_sign() -> None:
     assert_zero("T-odd projection", (sidis - drell_yan) / 2 - odd)
 
 
+def check_integrated_drell_yan_rg_cancellation() -> None:
+    p_a = sp.Matrix(
+        [
+            [sp.Rational(2, 5), sp.Rational(-1, 7)],
+            [sp.Rational(3, 11), sp.Rational(5, 13)],
+        ]
+    )
+    p_b = sp.Matrix(
+        [
+            [sp.Rational(-2, 3), sp.Rational(1, 5)],
+            [sp.Rational(7, 17), sp.Rational(4, 19)],
+        ]
+    )
+    coeff = sp.Matrix(
+        [
+            [sp.Rational(11, 23), sp.Rational(13, 29)],
+            [sp.Rational(17, 31), sp.Rational(19, 37)],
+        ]
+    )
+    f_a = sp.Matrix([sp.Rational(3, 2), sp.Rational(5, 4)])
+    f_b = sp.Matrix([sp.Rational(7, 6), sp.Rational(11, 8)])
+
+    d_coeff = -p_a.T * coeff - coeff * p_b
+    derivative = (
+        (p_a * f_a).T * coeff * f_b
+        + f_a.T * d_coeff * f_b
+        + f_a.T * coeff * (p_b * f_b)
+    )
+    assert_zero("integrated Drell-Yan two-leg RG cancellation", derivative[0])
+
+
+def check_integrated_drell_yan_scheme_covariance() -> None:
+    coeff = sp.Matrix(
+        [
+            [sp.Rational(5, 7), sp.Rational(2, 3)],
+            [sp.Rational(11, 13), sp.Rational(17, 19)],
+        ]
+    )
+    f_a = sp.Matrix([sp.Rational(3, 5), sp.Rational(7, 11)])
+    f_b = sp.Matrix([sp.Rational(13, 17), sp.Rational(19, 23)])
+    r_a = sp.Matrix(
+        [
+            [sp.Rational(2, 3), sp.Rational(1, 5)],
+            [sp.Rational(1, 7), sp.Rational(5, 4)],
+        ]
+    )
+    r_b = sp.Matrix(
+        [
+            [sp.Rational(7, 6), sp.Rational(-1, 8)],
+            [sp.Rational(2, 9), sp.Rational(11, 10)],
+        ]
+    )
+
+    original = f_a.T * coeff * f_b
+    f_a_prime = r_a * f_a
+    f_b_prime = r_b * f_b
+    coeff_prime = r_a.inv().T * coeff * r_b.inv()
+    shifted = f_a_prime.T * coeff_prime * f_b_prime
+
+    assert_zero(
+        "integrated Drell-Yan finite scheme covariance",
+        shifted[0] - original[0],
+    )
+
+
 def check_finite_glauber_unitarity() -> None:
     c = sp.Rational(3, 5)
     s = sp.Rational(4, 5)
@@ -67,6 +141,8 @@ def main() -> None:
     check_drell_yan_kinematics()
     check_rapidity_scale_product()
     check_t_odd_orientation_sign()
+    check_integrated_drell_yan_rg_cancellation()
+    check_integrated_drell_yan_scheme_covariance()
     check_finite_glauber_unitarity()
     print("All QCD Drell-Yan kinematics and Glauber-status checks passed.")
 

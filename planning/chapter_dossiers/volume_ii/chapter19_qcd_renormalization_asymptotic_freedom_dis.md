@@ -241,7 +241,9 @@ The chapter must define and derive:
   \(\chi(\gamma)=2\psi(1)-\psi(\gamma)-\psi(1-\gamma)\), TMDs as
   soft-subtracted transverse light-ray matrix elements with Collins--Soper
   rapidity evolution, Drell--Yan as a timelike current-current Wightman tensor
-  with past-pointing TMD staples and an explicit Glauber-status datum,
+  with an integrated two-PDF collinear factorization coordinate, transform-space
+  two-leg RG cancellation, past-pointing TMD staples, and an explicit
+  Glauber-status datum,
   small-\(q_\perp\) color-singlet TMD factorization data, GPDs as off-forward
   light-ray matrix elements, GPD polynomiality from local twist-two
   covariance, logarithmic scaling violation, and the endpoint/large-spin cusp
@@ -625,9 +627,15 @@ The chapter must define and derive:
        dipole subsystem.
 22cd. Drell--Yan is formulated as a timelike current-current Wightman tensor
       between two hadron states.  The leading-power kinematic variables obey
-      \(x_Ax_B=Q^2/s\) and \(y=\frac12\log(x_A/x_B)\).  The TMD factorization
-      datum uses past-pointing staples, \(\zeta_A\zeta_B=Q^4\), a \(Y\)-term,
-      a power-remainder topology, and an explicit Glauber item.  The finite
+      \(x_Ax_B=Q^2/s\) and \(y=\frac12\log(x_A/x_B)\).  When the lepton-pair
+      transverse momentum is integrated, the collinear factorized coordinate is
+      a double convolution of two integrated PDFs with
+      \(C^{DY}_{ij}\); in transform space the paired auxiliary-scale
+      cancellation is
+      \(\mu dC/d\mu=-P_A^T C-C P_B\), and finite PDF scheme changes require
+      \(C'=(R_A^{-1})^T C R_B^{-1}\).  The small-\(q_\perp\) TMD datum instead
+      uses past-pointing staples, \(\zeta_A\zeta_B=Q^4\), a \(Y\)-term, a
+      power-remainder topology, and an explicit Glauber item.  The finite
       Glauber lemma proves only the tensor-product unitarity identity
       \(\operatorname{Tr}[(M\otimes1)(1\otimes U)\rho(1\otimes U^\dagger)]
       =\operatorname{Tr}[(M\otimes1)\rho]\); applying this identity to QCD
@@ -880,7 +888,11 @@ The chapter must define and derive:
   hadronic tensor, leading-power kinematics, TMD factorization datum with
   past-pointing staples, finite tensor-product unitarity lemma for the
   algebraic content of Glauber cancellation, and
-  `calculation-checks/qcd_drell_yan_glauber_checks.py`.
+  `calculation-checks/qcd_drell_yan_glauber_checks.py`.  The 2026-06-03
+  integrated-factorization continuation inserted the two-PDF collinear
+  factorization coordinate for \(d\sigma/dQ^2dy\), separated it from the
+  small-\(q_\perp\) TMD formula, and extended the companion check with exact
+  transform-space RG-cancellation and finite scheme-covariance tests.
 - 2026-05-24 issue #490 pass: the compiled Volume IV successor chapter now
   develops jets, IRC-safe measurement functions, parton showers,
   fragmentation functions, and hadronization as the final-state observable
