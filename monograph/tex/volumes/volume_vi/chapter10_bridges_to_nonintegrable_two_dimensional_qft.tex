@@ -401,6 +401,88 @@ Chapter~\ref{ch:integrable-finite-volume-form-factors}.  Applying the weak
 kernel limit \(K_T\to2\pi\delta\) to the limiting absolutely continuous
 spectral measure gives the displayed inclusive rate.
 
+\begin{controlledapproximation}[Decay-rate reconstruction certificate]
+\label{ca:nonintegrable-decay-rate-reconstruction-certificate}
+The rate formula above is a bridge from integrable matrix elements to a
+nonintegrable observable.  It is not a pointwise identity between a finite box
+sum and a continuum decay width.  Fix a source channel, a momentum window, and
+a finite set \(\mathcal C\) of final-state particle channels.  Let
+\[
+  \Gamma_A^{\rm lead}(\mathcal C)
+  =
+  2\pi\epsilon^2
+  \sum_{\beta\in\mathcal C}
+  \int d\Phi_\beta\,
+  \delta(E_A-E_\beta)
+  \left|
+    \langle\beta|\mathcal O_b(0)|A\rangle_{\rm conn}
+  \right|^2
+\]
+be the retained connected-form-factor coordinate in the chosen normalization.
+Let \(\Gamma_A^{\rm phys}\) denote the corresponding continuum rate extracted
+from the regulated finite-volume dynamics after the specified order of limits.
+Then the statement that the integrable data compute the physical rate has the
+form
+\begin{equation}
+  \Gamma_A^{\rm phys}
+  -
+  \Gamma_A^{\rm lead}(\mathcal C)
+  =
+  R_{\rm weak}
+  +R_L
+  +R_{\rm BY}
+  +R_{\rm ff}
+  +R_{\rm chan}
+  +R_{\rm th}
+  +R_{\epsilon^3}.
+  \label{eq:nonintegrable-decay-rate-residual-budget}
+\end{equation}
+Here \(R_{\rm weak}\) is the error in replacing the finite-time kernel
+\(K_T\) by \(2\pi\delta\) in the chosen spectral test topology; \(R_L\) is the
+finite-volume spectral-measure error before the continuum rapidity measure has
+formed; \(R_{\rm BY}\) records Bethe--Yang state counting and finite-volume
+matrix-element normalization errors; \(R_{\rm ff}\) records the crossed
+form-factor boundary value, diagonal/contact subtraction, and operator
+normalization error; \(R_{\rm chan}\) is the omitted-channel or
+high-particle-number tail; \(R_{\rm th}\) records threshold, near-degenerate
+mixing, resonance-pole, and long-time recurrence effects not controlled by
+the regular on-shell formula; and \(R_{\epsilon^3}\) contains higher-order
+terms in the nonintegrable coupling together with the counterterm coordinates
+needed at that order.  If
+\[
+  |R_\kappa|\le \delta_\kappa,\qquad
+  \kappa\in
+  \{\mathrm{weak},L,\mathrm{BY},\mathrm{ff},\mathrm{chan},
+    \mathrm{th},\epsilon^3\},
+\]
+then
+\begin{equation}
+  \left|
+  \Gamma_A^{\rm phys}
+  -
+  \Gamma_A^{\rm lead}(\mathcal C)
+  \right|
+  \le
+  \delta_{\rm weak}+\delta_L+\delta_{\rm BY}+\delta_{\rm ff}
+  +\delta_{\rm chan}+\delta_{\rm th}+\delta_{\epsilon^3}.
+  \label{eq:nonintegrable-decay-rate-residual-bound}
+\end{equation}
+For a relative width statement one also needs a noncancellation margin for the
+retained channel,
+\[
+  \Gamma_A^{\rm lead}(\mathcal C)\ge\kappa_\Gamma M_\Gamma,\qquad
+  \kappa_\Gamma>0,
+\]
+where \(M_\Gamma\) is the absolute phase-space/form-factor majorant on the
+same window.  Exact integrable form factors can make \(R_{\rm ff}\) small, and
+an exactly diagonalized finite box can make the finite sum exact at that
+cutoff, but neither fact removes \(R_{\rm weak}\), \(R_L\), \(R_{\rm chan}\),
+or \(R_{\rm th}\).  Near threshold, where the two-body density carries the
+\(1/p_*\) factor displayed below, \(R_{\rm th}\) is often the dominant datum
+and the naive golden-rule width is only a coordinate until the threshold
+scaling window has been supplied.
+\end{controlledapproximation}
+
 \section{Two-Particle Phase Space In Two Dimensions}
 
 The finite-volume formula becomes especially sharp for the first allowed

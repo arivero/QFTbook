@@ -17,6 +17,11 @@ and near two-dimensional CFT perturbations.
   law.
 - `M_beta alpha`, `Gamma_A`: first-order transition matrix element and
   second-order decay width.
+- `Gamma_A^lead(C)`, `R_weak`, `R_L`, `R_BY`, `R_ff`, `R_chan`,
+  `R_th`, `R_epsilon3`: retained connected-form-factor decay-width coordinate
+  and the residuals separating it from a physical continuum rate.
+- `M_Gamma`, `kappa_Gamma`: absolute phase-space/form-factor majorant and
+  noncancellation margin for relative rate statements.
 - `lambda(x,y,z)`, `p_*`: Kallen polynomial and relative momentum for the
   two-particle \(1+1\)-dimensional decay-width formula.
 - `E_cut`: truncated conformal-space cutoff.
@@ -33,6 +38,11 @@ and near two-dimensional CFT perturbations.
   finite-volume spectral sums converge to an absolutely continuous
   infinite-volume rapidity measure, avoiding the false pointwise
   \(T\to\infty\) limit at fixed \(L\).
+- Adds a decay-rate reconstruction certificate: the retained connected
+  form-factor width is separated from weak-kernel, finite-volume,
+  Bethe--Yang normalization, form-factor-boundary, channel-tail,
+  threshold/window, and higher-order/counterterm residuals before it is
+  identified with a physical nonintegrable decay or damping rate.
 - Evaluates the two-particle \(1+1\)-dimensional phase-space integral from
   the rapidity measure, including the Jacobian, threshold condition, and
   identical-particle counting convention.
@@ -48,8 +58,10 @@ and near two-dimensional CFT perturbations.
   higher-charge commutator ledger, first-order form-factor mass shift,
   semi-local kinematic residue, Ising false-vacuum string tension,
   two-particle \(1+1\)-dimensional phase-space Jacobian, TCSA coupling and
-  counterterm powers, and the Airy scaling of confined kink--antikink bound
-  states.
+  counterterm powers, the finite residual telescope for the decay-rate
+  reconstruction certificate, negative controls against finite-box and exact
+  form-factor overread, omitted threshold residuals, and signed cancellations,
+  and the Airy scaling of confined kink--antikink bound states.
 
 ## Figure Ledger
 
@@ -67,3 +79,11 @@ deformation diagrams.
 - 2026-06-02 issue #561 dossier-link pass: recorded the already-existing
   nonintegrable-bridge calculation check explicitly in the chapter dossier.
   No new formula was changed in the manuscript.
+- 2026-06-04 issue #728 decay-rate reconstruction pass: added
+  `ca:nonintegrable-decay-rate-reconstruction-certificate`, making the
+  transition from integrable form-factor data to a physical nonintegrable rate
+  depend on weak-kernel, finite-volume, Bethe--Yang, form-factor-boundary,
+  channel-tail, threshold, and higher-order residual control.  The companion
+  check now carries an evidence contract and exact negative controls for
+  finite-box overread, exact-form-factor overread, omitted threshold budgets,
+  and signed cancellation.

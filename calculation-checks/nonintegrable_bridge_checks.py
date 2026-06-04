@@ -1,5 +1,26 @@
 #!/usr/bin/env python3
-"""Exact checks for Volume VI bridges from integrable to nonintegrable 2D QFT."""
+"""Exact checks for Volume VI bridges from integrable to nonintegrable 2D QFT.
+
+Evidence contract.
+Target claims: the broken-charge ledger, first-order FFPT mass shift,
+semi-local confinement diagnostic, finite-volume golden-rule/phase-space
+normalization, and decay-rate reconstruction certificate in Volume VI
+Chapter 10.
+Independent construction: direct commutator eigenvalue arithmetic,
+finite-volume diagonal matrix-element normalization, Kallen/Jacobian algebra,
+finite residual telescopes, and absolute majorants for rate reconstruction.
+Imported assumptions: integrable asymptotic states, connected crossed form
+factors, weak convergence of the finite-time kernel, Bethe--Yang
+finite-volume normalization, and the regulated local perturbation chart stated
+in the chapter.
+Negative controls: fixed finite-volume/time sums are rejected as continuum
+rates, exact form-factor data are rejected as full decay-width evidence,
+omitted threshold/channel residuals underbudget the width, and signed residual
+cancellations are rejected as certificates.
+Scope boundary: these are exact finite checks of normalization and residual
+bookkeeping; they do not prove existence of the nonintegrable continuum limit,
+uniform threshold control, or convergence of all form-factor/channel tails.
+"""
 
 from __future__ import annotations
 
@@ -111,6 +132,83 @@ def check_two_body_phase_space_jacobian() -> None:
     assert_equal("two-body Jacobian inverse", derivative_squared * reciprocal_squared, 1)
 
 
+def check_decay_rate_reconstruction_certificate() -> None:
+    leading_rate = Fraction(7, 10)
+    residuals = {
+        "weak kernel": Fraction(1, 40),
+        "finite volume": Fraction(1, 50),
+        "Bethe-Yang normalization": Fraction(1, 60),
+        "form-factor boundary": Fraction(1, 70),
+        "channel tail": Fraction(1, 80),
+        "threshold window": Fraction(1, 12),
+        "higher order": Fraction(1, 90),
+    }
+    residual_total = sum(residuals.values(), Fraction(0))
+    physical_rate = leading_rate + residual_total
+    assert_equal(
+        "nonintegrable decay-rate residual telescope",
+        physical_rate - leading_rate,
+        residual_total,
+    )
+
+    absolute_majorant = sum(abs(value) for value in residuals.values())
+    assert_equal(
+        "nonintegrable decay-rate absolute bound",
+        abs(physical_rate - leading_rate) <= absolute_majorant,
+        True,
+    )
+
+    phase_space_majorant = Fraction(9, 10)
+    noncancellation_margin = leading_rate / phase_space_majorant
+    assert_equal(
+        "nonintegrable decay-rate noncancellation margin",
+        noncancellation_margin,
+        Fraction(7, 9),
+    )
+    relative_bound = absolute_majorant / leading_rate
+    assert_equal(
+        "nonintegrable decay-rate relative certificate",
+        abs(physical_rate - leading_rate) / leading_rate <= relative_bound,
+        True,
+    )
+
+    finite_box_rate = (
+        leading_rate
+        + residuals["weak kernel"]
+        + residuals["finite volume"]
+    )
+    assert_equal(
+        "finite box and finite time rate is not continuum golden-rule rate",
+        finite_box_rate == leading_rate,
+        False,
+    )
+
+    exact_form_factor_residual = Fraction(0)
+    non_form_factor_residual = residual_total - residuals["form-factor boundary"]
+    assert_equal(
+        "exact form factors leave spectral-limit residuals",
+        non_form_factor_residual > exact_form_factor_residual,
+        True,
+    )
+
+    omitted_threshold_budget = absolute_majorant - residuals["threshold window"]
+    assert_equal(
+        "omitted threshold residual underbudgets decay rate",
+        abs(physical_rate - leading_rate) <= omitted_threshold_budget,
+        False,
+    )
+
+    signed_canceling_residuals = [Fraction(1, 6), -Fraction(1, 6)]
+    signed_sum = sum(signed_canceling_residuals, Fraction(0))
+    absolute_sum = sum(abs(value) for value in signed_canceling_residuals)
+    assert_equal("signed decay residuals can cancel", signed_sum, Fraction(0))
+    assert_equal(
+        "signed cancellation is not a decay-rate certificate",
+        absolute_sum > abs(signed_sum),
+        True,
+    )
+
+
 def main() -> None:
     check_broken_charge_ledger()
     check_ffpt_mass_shift()
@@ -118,6 +216,7 @@ def main() -> None:
     check_tcsa_coupling_and_counterterm_powers()
     check_airy_scaling_dimension()
     check_two_body_phase_space_jacobian()
+    check_decay_rate_reconstruction_certificate()
     print("All nonintegrable-bridge checks passed.")
 
 

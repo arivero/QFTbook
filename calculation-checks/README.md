@@ -1984,8 +1984,13 @@ Current checks:
   broken-charge commutator ledger, first-order form-factor mass shift,
   semi-local kinematic residue, Ising false-vacuum string tension,
   two-body phase-space Jacobian for \(1+1\)-dimensional decay widths,
-  TCSA coupling and counterterm powers, and the Airy scaling of confined
-  kink--antikink bound states.
+  the decay-rate reconstruction certificate separating weak-kernel,
+  finite-volume, Bethe--Yang normalization, form-factor-boundary,
+  channel-tail, threshold-window, and higher-order residuals from the retained
+  connected-form-factor width, with negative controls against finite-box
+  overread, exact-form-factor overread, omitted threshold budgets, and signed
+  cancellation, TCSA coupling and counterterm powers, and the Airy scaling of
+  confined kink--antikink bound states.
 - `numerical_extrapolation_checks.py`: exact rational and finite-matrix
   checks for the Volume XI finite-regulator extrapolation section, including
   Lagrange interpolation nonuniqueness of finite cutoff data, two-cutoff

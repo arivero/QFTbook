@@ -62,6 +62,10 @@
       "risk_class": "integrable hydrodynamic reconstruction"
     },
     {
+      "path": "nonintegrable_bridge_checks.py",
+      "risk_class": "integrability-breaking decay-rate reconstruction"
+    },
+    {
       "path": "inflow_anomaly_line_checks.py",
       "risk_class": "anomaly inflow"
     },
