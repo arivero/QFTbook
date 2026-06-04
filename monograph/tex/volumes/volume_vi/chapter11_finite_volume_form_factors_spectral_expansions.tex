@@ -652,6 +652,96 @@ theory.  For an interacting regular factorizing model, the same chain is a
 conditional reconstruction program until convergence, domains, and locality
 have been proved.
 
+\begin{controlledapproximation}[Separated Euclidean reconstruction package]
+\label{ca:finite-volume-form-factor-separated-reconstruction-package}
+Fix a separated Euclidean test space \(\mathcal T_{r_0,r_1}\) whose tests are
+supported at distances \(r_0\le r\le r_1\), with \(0<r_0<r_1<\infty\).  A
+form-factor reconstruction claim for a local scalar operator \(\mathcal O\) on
+this window consists of the following data:
+\begin{enumerate}
+  \item a finite-volume approximation
+  \(G_{L,N}^{\mathcal O}[\psi]\), \(\psi\in\mathcal T_{r_0,r_1}\), built from
+  normalizable Bethe states and Gaudin-normalized matrix elements through
+  particle number \(N\);
+  \item a finite-volume-to-rapidity-integral error for taking \(L\to\infty\)
+  on the retained sectors;
+  \item a particle-number tail estimate for the omitted sectors \(n>N\);
+  \item a collision/contact extension controlling coincident rapidities,
+  diagonal finite parts, and possible \(r=0\) contact coordinates;
+  \item a common-domain and positivity statement strong enough for the tested
+  Schwinger functions to define a Hilbert-space operator or local algebra;
+  \item a locality or wedge-locality-with-local-subalgebra statement;
+  \item a sector-completeness statement comparing the scattering states used in
+  the expansion with the physical Hilbert-space sectors under study.
+\end{enumerate}
+The separated window removes the ultraviolet contact point from the tested
+observable, but it does not remove the domain, positivity, locality, or
+completeness obligations.  Those are additional reconstruction inputs, not
+consequences of Bethe--Yang normalization.
+\end{controlledapproximation}
+
+\begin{proposition}[Finite form-factor reconstruction residual budget]
+\label{prop:finite-form-factor-reconstruction-residual-budget}
+In the setting of
+Controlled Approximation~\ref{ca:finite-volume-form-factor-separated-reconstruction-package},
+let \(G_{\rm loc}^{\mathcal O}[\psi]\) denote the target separated Euclidean
+functional of a local QFT, and suppose that, for a fixed \(L,N\),
+\begin{equation}
+  G_{\rm loc}^{\mathcal O}[\psi]
+  =
+  G_{L,N}^{\mathcal O}[\psi]
+  +\Delta_{\rm FV}[\psi]
+  +\Delta_{\rm tail}[\psi]
+  +\Delta_{\rm diag}[\psi]
+  +\Delta_{\rm dom}[\psi]
+  +\Delta_{\rm loc}[\psi]
+  +\Delta_{\rm comp}[\psi].
+  \label{eq:finite-form-factor-reconstruction-residual-decomposition}
+\end{equation}
+Assume each residual is bounded in the dual test norm,
+\begin{equation}
+  |\Delta_a[\psi]|
+  \le
+  \epsilon_a(L,N;r_0,r_1)\,\|\psi\|_{\mathcal T},
+  \qquad
+  a\in\{\mathrm{FV},\mathrm{tail},\mathrm{diag},
+  \mathrm{dom},\mathrm{loc},\mathrm{comp}\}.
+  \label{eq:finite-form-factor-reconstruction-component-bounds}
+\end{equation}
+Then
+\begin{equation}
+  \left|
+  G_{\rm loc}^{\mathcal O}[\psi]-G_{L,N}^{\mathcal O}[\psi]
+  \right|
+  \le
+  \left(
+  \epsilon_{\rm FV}
+  +\epsilon_{\rm tail}
+  +\epsilon_{\rm diag}
+  +\epsilon_{\rm dom}
+  +\epsilon_{\rm loc}
+  +\epsilon_{\rm comp}
+  \right)\|\psi\|_{\mathcal T}.
+  \label{eq:finite-form-factor-reconstruction-budget-bound}
+\end{equation}
+In particular, exact Gaudin-density cancellation and exact finite-volume
+matrix-element normalization control only the retained pre-limit coordinate
+\(G_{L,N}^{\mathcal O}\).  They do not prove local-QFT reconstruction unless
+the six residual budgets are driven to zero, or are retained as declared
+approximation errors, in the stated test topology.
+\end{proposition}
+
+\begin{proof}
+Subtract \(G_{L,N}^{\mathcal O}[\psi]\) from
+\eqref{eq:finite-form-factor-reconstruction-residual-decomposition} and apply
+the triangle inequality together with
+\eqref{eq:finite-form-factor-reconstruction-component-bounds}.  The final
+statement follows because the Gaudin cancellation and finite-volume
+normalization enter only in the definition of the retained approximant
+\(G_{L,N}^{\mathcal O}\).  The other terms measure analytic and operator
+properties that are invisible to finite state-counting algebra.
+\end{proof}
+
 \begin{openproblem}[Form-factor construction]
 \label{op:form-factor-construction}
 Construct an interacting factorizing QFT from bootstrap scattering and

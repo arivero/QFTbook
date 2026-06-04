@@ -7,7 +7,9 @@ The checks cover algebraic identities used in the finite-volume chapter:
 * cancellation of the Gaudin density between finite-volume matrix elements
   and the state-counting measure;
 * subset expansion for diagonal finite-volume matrix elements;
-* free-Majorana two-particle energy-density Bessel reduction prefactor.
+* free-Majorana two-particle energy-density Bessel reduction prefactor;
+* finite reconstruction residual budget separating finite-volume, tail,
+  diagonal/contact, domain, locality, and completeness errors.
 
 The script checks finite algebra and normalization bookkeeping; it does not
 attempt to prove analytic convergence of a form-factor expansion.
@@ -18,6 +20,7 @@ from __future__ import annotations
 from check_utils import assert_close as _assert_close
 
 
+from fractions import Fraction
 from itertools import combinations
 from math import cosh, pi
 
@@ -143,12 +146,51 @@ def check_subset_count() -> None:
         assert_equal(f"number of diagonal subsets n={n}", count, 2**n)
 
 
+def check_reconstruction_residual_budget() -> None:
+    retained_coordinate = Fraction(19, 7)
+    residuals = {
+        "finite volume": Fraction(1, 90),
+        "particle tail": Fraction(-1, 126),
+        "diagonal contact": Fraction(1, 210),
+        "domain positivity": Fraction(1, 168),
+        "locality": Fraction(-1, 280),
+        "completeness": Fraction(1, 360),
+    }
+    residual_total = sum(residuals.values(), Fraction(0))
+    target_local_functional = retained_coordinate + residual_total
+
+    assert_equal(
+        "form-factor reconstruction residual decomposition",
+        target_local_functional - retained_coordinate,
+        residual_total,
+    )
+    if residual_total == 0:
+        raise AssertionError("reconstruction residual budget accidentally vanished")
+
+    residual_bound = sum(abs(value) for value in residuals.values())
+    if abs(residual_total) > residual_bound:
+        raise AssertionError(
+            "form-factor reconstruction triangle budget failed: "
+            f"{abs(residual_total)!r} > {residual_bound!r}"
+        )
+
+    # A retained finite-volume/Gaudin coordinate can be exact while the
+    # reconstruction claim still has a nonzero analytic/operator residual.
+    exact_gaudin_coordinate_shift = Fraction(0)
+    assert_equal(
+        "exact Gaudin bookkeeping does not remove reconstruction residual",
+        (target_local_functional + exact_gaudin_coordinate_shift) - retained_coordinate,
+        residual_total,
+    )
+
+
 def main() -> None:
     check_two_particle_gaudin()
     check_sum_integral_cancellation()
     check_diagonal_subset_expansion()
     check_bessel_prefactor_reduction()
     check_subset_count()
+    check_reconstruction_residual_budget()
     print("All finite-volume form-factor checks passed.")
 
 

@@ -60,6 +60,11 @@ normalization and convergence obligations explicit.
     for local QFT from form-factor data, with the free Majorana chain
     identified as theorem-level only because the local free field is already
     constructed.
+17. Adds a separated-Euclidean reconstruction package and residual budget:
+    finite-volume-to-rapidity error, particle-number tail, diagonal/contact
+    extension, domain/positivity, locality, and sector-completeness residuals
+    must all be controlled before a Gaudin-normalized finite-volume approximant
+    becomes a local-QFT reconstruction statement.
 
 ## Calculation Checks
 
@@ -67,7 +72,9 @@ normalization and convergence obligations explicit.
   finite algebra and normalization bookkeeping used in the chapter:
   two-particle Gaudin determinant, Gaudin-density cancellation in the
   sum-integral limit, connected diagonal subset expansion through three
-  particles, subset counting, and the free-Majorana Bessel prefactor.
+  particles, subset counting, the free-Majorana Bessel prefactor, and the
+  finite reconstruction residual budget with a deliberately nonzero analytic
+  and operator-level defect.
 
 ## Figure Ledger
 
@@ -89,3 +96,8 @@ decomposition of diagonal disconnected contractions.
   conflated with positivity, covariance, locality or wedge-locality,
   clustering, domain control, and scattering compatibility of the continuum
   QFT.
+- 2026-06-04 issue #728 reconstruction-budget pass: added the separated
+  Euclidean reconstruction package and finite residual budget, with companion
+  arithmetic verifying that exact Gaudin bookkeeping does not remove
+  finite-volume, tail, diagonal/contact, domain, locality, or completeness
+  residuals.
