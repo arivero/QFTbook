@@ -17,12 +17,18 @@ Target claims:
   QCD: it may shift the anomaly-invariant curvature, but it may not produce a
   nonzero full-QCD theta Schur complement unless finite masses or an explicit
   symmetry-breaking source are declared.
+- The physical singlet mass at the same order is a generalized eigenvalue:
+  the singlet kinetic normalization, or equivalently F_0^2/f_pi^2, is an
+  independent residual from the theta-potential curvature.
 
 Independent construction:
 - Builds finite theta partition functions directly from weighted topological
   sectors, differentiates log Z, and compares to cumulants.
 - Differentiates the singlet local potential and all Hessians symbolically,
   then computes Schur complements and null-vector conditions from the matrices.
+- Computes the one-field and neutral two-field generalized eigenvalue
+  conditions from K^{-1}H data instead of identifying a Hessian entry with a
+  physical pole mass.
 - Derives the eta/eta-prime mass matrix from flavor generators rather than
   importing the displayed matrix entries.
 
@@ -38,6 +44,8 @@ Negative controls:
 - An unconstrained residual Hessian is explicitly rejected as a massless-QCD
   residual when its Schur complement is nonzero and its screening vector is
   broken.
+- A nontrivial singlet kinetic residual rejects the shortcut which reads the
+  physical eta_0 mass directly from the potential Hessian.
 - A branch mixture gives a nonzero cluster covariance, while a pure selected
   branch has zero covariance.
 
@@ -436,6 +444,108 @@ def check_witten_veneziano_ward_compatible_residual_budget() -> None:
     )
 
 
+def check_witten_veneziano_kinetic_normalization_residual() -> None:
+    chi, dchi, f_pi, z0, nf = sp.symbols(
+        "chi dchi f_pi z0 nf",
+        positive=True,
+    )
+    r_chi, r_z = sp.symbols("r_chi r_z", positive=True)
+
+    a = sp.sqrt(2 * nf) / f_pi
+    h_eta_eta = a**2 * (chi + dchi)
+    physical_mass = sp.simplify(h_eta_eta / z0)
+    expected_mass = 2 * nf * (chi + dchi) / (z0 * f_pi**2)
+    assert_zero(
+        "WV physical mass uses generalized one-field eigenvalue",
+        physical_mass - expected_mass,
+    )
+
+    leading_mass = 2 * nf * chi / f_pi**2
+    exact_shift = sp.simplify(physical_mass - leading_mass)
+    expected_shift = sp.simplify(
+        2 * nf / f_pi**2 * ((chi + dchi) / z0 - chi)
+    )
+    assert_zero("WV kinetic-normalization mass shift", exact_shift - expected_shift)
+
+    values = {
+        chi: sp.Rational(5, 1),
+        dchi: sp.Rational(-1, 7),
+        nf: sp.Rational(3, 1),
+        f_pi: sp.Rational(11, 1),
+        z0: sp.Rational(12, 11),
+    }
+    wrong_hessian_mass = h_eta_eta.subs(values)
+    right_generalized_mass = physical_mass.subs(values)
+    require(
+        sp.simplify(wrong_hessian_mass - right_generalized_mass) != 0,
+        "nontrivial Z0 should reject Hessian-entry mass shortcut",
+    )
+
+    bound_values = {
+        chi: sp.Rational(5, 1),
+        dchi: -sp.Rational(1, 7),
+        nf: sp.Rational(3, 1),
+        f_pi: sp.Rational(11, 1),
+        z0: sp.Rational(12, 11),
+        r_chi: sp.Rational(1, 7),
+        r_z: sp.Rational(1, 11),
+    }
+    bounded_shift = abs(sp.simplify(exact_shift.subs(bound_values)))
+    bound = (
+        2
+        * bound_values[nf]
+        / bound_values[f_pi] ** 2
+        * (bound_values[r_chi] + bound_values[chi] * bound_values[r_z])
+        / (1 - bound_values[r_z])
+    )
+    require(
+        bounded_shift <= bound,
+        "WV combined curvature and kinetic residual bound should dominate shift",
+    )
+
+    theta_hessian = (chi + dchi) * sp.Matrix([[1, a], [a, a**2]])
+    schur = (
+        theta_hessian[0, 0]
+        - theta_hessian[0, 1] * theta_hessian[1, 0] / theta_hessian[1, 1]
+    )
+    assert_zero(
+        "WV kinetic normalization does not alter massless theta Schur complement",
+        schur,
+    )
+
+    h88, h80, h00, k88, k80, k00, mass_sq = sp.symbols(
+        "h88 h80 h00 k88 k80 k00 mass_sq"
+    )
+    h_neutral = sp.Matrix([[h88, h80], [h80, h00]])
+    k_neutral = sp.Matrix([[k88, k80], [k80, k00]])
+    characteristic = sp.factor((h_neutral - mass_sq * k_neutral).det())
+    expected_characteristic = sp.factor(
+        (h88 - mass_sq * k88) * (h00 - mass_sq * k00)
+        - (h80 - mass_sq * k80) ** 2
+    )
+    assert_zero(
+        "WV neutral generalized eigenvalue characteristic",
+        characteristic - expected_characteristic,
+    )
+
+    single_field_root = sp.simplify(
+        (h00 / k00).subs({h00: sp.Rational(7), k00: sp.Rational(5)})
+    )
+    mixed_values = {
+        h88: sp.Rational(2),
+        h80: sp.Rational(1, 3),
+        h00: sp.Rational(7),
+        k88: sp.Rational(1),
+        k80: sp.Rational(1, 5),
+        k00: sp.Rational(5),
+        mass_sq: single_field_root,
+    }
+    require(
+        sp.simplify(characteristic.subs(mixed_values)) != 0,
+        "finite eta0-octet mixing should reject the unmixed singlet mass root",
+    )
+
+
 def check_massless_quark_theta_screening() -> None:
     eta, theta, chi, f = sp.symbols("eta theta chi f", positive=True)
     nf_value = sp.Integer(3)
@@ -615,6 +725,7 @@ def main() -> None:
     check_witten_veneziano_mass_coefficient()
     check_theta_eta_curvature_matrix()
     check_witten_veneziano_ward_compatible_residual_budget()
+    check_witten_veneziano_kinetic_normalization_residual()
     check_massless_quark_theta_screening()
     check_dilute_instanton_chiral_spurion_potential()
     check_eta_eta_prime_mass_matrix_ledger()

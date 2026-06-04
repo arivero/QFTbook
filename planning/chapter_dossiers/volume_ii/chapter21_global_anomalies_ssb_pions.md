@@ -87,7 +87,9 @@
 | \(\chi_{\rm YM}\) | pure Yang--Mills topological susceptibility entering the large-\(N_c\) Witten--Veneziano matching datum |
 | \(m_0^2\) | anomalous singlet curvature \(2N_f\chi_{\rm YM}/f_\pi^2\) entering the leading \(\eta_8,\eta_0\) mass matrix |
 | \(\delta\chi,\chi_{\rm eff}\) | Ward-compatible scalar residual and effective anomaly-invariant curvature \(\chi_{\rm YM}+\delta\chi\) in the massless Witten--Veneziano matching window |
+| \(Z_0,F_0\) | singlet kinetic/wavefunction residual and associated singlet decay constant, \(F_0^2=Z_0f_\pi^2\), needed to convert the residual curvature into a physical pole-mass statement |
 | \(\chi_{\rm QCD}^{m=0,{\rm loc}}\) | local full-QCD theta curvature after minimizing the singlet field in the exactly massless, symmetry-preserving Witten--Veneziano window; it is identically zero |
+| \(K_{AB},H_{AB}\) | neutral-sector kinetic and potential-curvature matrices whose generalized eigenvalues give pseudoscalar pole masses when finite quark masses or \(\eta_0\)-octet mixing are retained |
 | \(B,b_{\theta\theta},b_{\theta\eta},b_{\eta\eta},\chi_{\rm break}^{\rm loc}\) | explicitly declared finite-mass or Ward-breaking Hessian diagnostic, not a residual allowed in the massless full-QCD theory |
 | \(\zeta_\chi\) | renormalized finite-activity instanton determinant coefficient in the chosen chiral matching scheme |
 | \(V_{\rm inst}^{\chi}\) | conditional dilute-instanton chiral determinant potential for \(\widehat U\) and \(\theta\) |
@@ -212,13 +214,18 @@
   residual preserves the screening vector \((-a,1)\), so
   \(H=(\chi_{\rm YM}+\delta\chi)
   \begin{psmallmatrix}1&a\\a&a^2\end{psmallmatrix}\).  The manuscript derives
-  the fixed-\(\theta\) singlet mass shift and the identically zero full-QCD
-  massless theta Schur complement.  A separate matrix
+  the fixed-\(\theta\) singlet potential-curvature shift, the independent
+  singlet kinetic/decay-constant residual \(Z_0\) or \(F_0\), the resulting
+  physical mass bound, and the identically zero full-QCD massless theta Schur
+  complement.  A separate matrix
   \(B=(b_{\theta\theta},b_{\theta\eta},b_{\eta\eta})\) is retained only as a
   finite-mass or explicit Ward-breaking diagnostic, not as an allowed
-  massless residual.  This is local bookkeeping after a branch and counterterm
-  convention are fixed; it is not a proof of the Yang--Mills continuum limit,
-  the large-\(N_c\) expansion, or absence of branch crossings.
+  massless residual.  When finite quark masses or \(\eta_0\)-octet mixing are
+  kept, the physical masses are generalized eigenvalues
+  \(\det(H-m^2K)=0\), not entries of the potential Hessian.  This is local
+  bookkeeping after a branch and counterterm convention are fixed; it is not a
+  proof of the Yang--Mills continuum limit, the large-\(N_c\) expansion, or
+  absence of branch crossings.
 - Under the separate finite-activity dilute-instanton hypothesis inherited
   from Chapter 20, the matched zero-mode determinant induces the conditional
   chiral potential
@@ -489,6 +496,15 @@
   semiclassical statement from the nonperturbative Witten--Veneziano
   susceptibility input and records why isolated BPST instantons do not by
   themselves compute the ordinary zero-temperature QCD eta-prime mass.
+- 2026-06-04 issue #630 kinetic-normalization follow-up: repaired the
+  residual-controlled Witten--Veneziano mass statement so the physical
+  \(\eta_0\) pole mass uses the generalized eigenvalue
+  \(H_{\eta\eta}/Z_0=2N_f(\chi_{\rm YM}+\delta\chi)/F_0^2\), with an explicit
+  combined \((\delta\chi,Z_0)\) bound and a finite-mass neutral-sector
+  generalized-eigenvalue caveat.  Extended
+  `qcd_theta_witten_veneziano_checks.py` with symbolic and rational negative
+  controls rejecting the Hessian-entry shortcut and the unmixed singlet root in
+  the presence of \(\eta_0\)-octet mixing.
 - 2026-06-03 issue #715 sign-regression repair: restored the anomaly-invariant
   singlet coordinate to \(\theta-i\log\det\widehat U\), swapped the determinant
   conjugations in the dilute-instanton chiral vertex, and added exact checks

@@ -377,7 +377,12 @@ Current checks:
   Ward-compatible residual Witten--Veneziano Hessian budget, including the
   singlet mass shift, the exact zero full-QCD massless theta Schur complement,
   and a negative control which rejects an unconstrained residual Hessian unless
-  it is interpreted as finite-mass or explicit Ward-breaking input.  The
+  it is interpreted as finite-mass or explicit Ward-breaking input.  It also
+  checks the independent singlet kinetic/wavefunction residual
+  \(Z_0=F_0^2/f_\pi^2\), the resulting generalized-eigenvalue mass formula and
+  combined \((\delta\chi,Z_0)\) bound, plus a finite-mass
+  \(\eta_0\)-octet mixing negative control which rejects reading a physical
+  mass directly from a potential-Hessian entry.  The
   dilute-instanton chiral-spurion branch checks the controlled potential
   \(2\zeta_\chi[1-\cos(\theta-i\log\det\widehat U)]\), its
   \(\chi_{\rm top}^{\rm dig}=2\zeta_\chi\) susceptibility, the same

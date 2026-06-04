@@ -1450,14 +1450,15 @@ with \(\chi_{\rm eff}>0\) in the selected local branch.  The scalar
 \(\delta\chi\) records the declared large-\(N_c\), branch-selection, and local
 counterterm uncertainty in the same renormalization convention as
 \(\chi_{\rm YM}\); it shifts the fixed-\(\theta\) singlet curvature and the
-mixed curvature together.  At fixed \(\theta\), the singlet mass coefficient is
+mixed curvature together.  At fixed \(\theta\), the singlet potential
+curvature in the leading field coordinate is
 \begin{equation}
-  m_{\eta_0}^2
+  H_{\eta\eta}^{\rm loc}
   =
   a^2\chi_{\rm eff}
   =
   \frac{2N_f}{f_\pi^2}(\chi_{\rm YM}+\delta\chi).
-  \label{eq:wv-residual-singlet-mass}
+  \label{eq:wv-residual-singlet-curvature}
 \end{equation}
 But minimizing the same local quadratic form over the singlet field gives
 \begin{equation}
@@ -1472,18 +1473,46 @@ But minimizing the same local quadratic form over the singlet field gives
 \end{equation}
 The exact zero in \eqref{eq:wv-residual-schur-curvature} is part of the
 massless matching condition, not an optional cancellation imposed after the
-fact.  The usable uncertainty statement is therefore a mass statement:
-if \(|\delta\chi|\le r_\chi\), then
+fact.
+
+A physical pole mass also requires the kinetic normalization of the singlet
+field.  At the same order at which \(\delta\chi\) is kept, write the local
+quadratic kinetic term in the \(\eta_0\) coordinate as
+\begin{equation}
+  \frac12 Z_0\,\partial_\mu\eta_0\partial^\mu\eta_0,
+  \qquad
+  F_0^2:=Z_0f_\pi^2 .
+  \label{eq:wv-singlet-kinetic-residual}
+\end{equation}
+Then the mass statement is the one-field generalized eigenvalue
+\begin{equation}
+  m_{\eta_0,{\rm phys}}^2
+  =
+  \frac{H_{\eta\eta}^{\rm loc}}{Z_0}
+  =
+  \frac{2N_f}{F_0^2}(\chi_{\rm YM}+\delta\chi),
+  \label{eq:wv-residual-physical-singlet-mass}
+\end{equation}
+while \eqref{eq:wv-residual-singlet-curvature} is the corresponding potential
+curvature in the leading field coordinate.  Thus the usable uncertainty
+statement is: if \(|\delta\chi|\le r_\chi\), \(|Z_0-1|\le r_Z<1\), and the
+leading comparison mass is \(m_{\rm WV,0}^2=2N_f\chi_{\rm YM}/f_\pi^2\), then
 \begin{equation}
   \left|
-    m_{\eta_0}^2-\frac{2N_f}{f_\pi^2}\chi_{\rm YM}
+    m_{\eta_0,{\rm phys}}^2-m_{\rm WV,0}^2
   \right|
   \le
-  \frac{2N_f}{f_\pi^2}\,r_\chi ,
+  \frac{2N_f}{f_\pi^2}\,
+  \frac{r_\chi+\chi_{\rm YM}r_Z}{1-r_Z},
   \qquad
   \chi_{\rm QCD}^{m=0,{\rm loc}}\equiv0 .
   \label{eq:wv-residual-mass-bound}
 \end{equation}
+The first term in the numerator is the potential-curvature uncertainty; the
+second is the independent singlet decay-constant or wavefunction uncertainty.
+The anomalous Ward identity fixes the screening coordinate of the potential.  It
+does not fix \(Z_0\).
+
 If one intentionally leaves this massless Ward-compatible setting, for example
 by keeping finite quark masses or by introducing an explicit symmetry-breaking
 regulator/counterterm error, one may add a separate Ward-breaking matrix
@@ -1524,6 +1553,25 @@ prove the Yang--Mills continuum limit, the large-\(N_c\) expansion, or the
 absence of branch crossings; they state how those inputs enter the observable
 singlet curvature once a local branch and counterterm convention have been
 fixed.
+
+With nonzero quark masses the same caveat becomes a matrix statement.  For the
+neutral fields retained in the effective theory, write
+\[
+  \mathcal L_2
+  =
+  \frac12 K_{AB}\partial_\mu\varphi^A\partial^\mu\varphi^B
+  -\frac12 H_{AB}\varphi^A\varphi^B+\cdots .
+\]
+The physical pseudoscalar masses are the generalized eigenvalues
+\begin{equation}
+  \det(H-m^2K)=0 ,
+  \label{eq:wv-neutral-generalized-eigenvalue}
+\end{equation}
+so \(\eta_0\)-octet potential mixing, kinetic mixing, and the singlet
+wavefunction residual must be separated from the pure-Yang--Mills theta
+curvature.  The scalar formula
+\eqref{eq:wv-residual-physical-singlet-mass} is the chiral, unmixed,
+single-field specialization of \eqref{eq:wv-neutral-generalized-eigenvalue}.
 \end{controlledapproximation}
 
 \begin{remark}[Why this does not contradict massless-quark theta independence]
