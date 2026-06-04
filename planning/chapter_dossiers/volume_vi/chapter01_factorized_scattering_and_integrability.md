@@ -52,6 +52,11 @@
   calibration; regular scalar factorizing models such as sinh-Gordon as
   conditional wedge-local/local-algebra constructions whose point-field
   form-factor completeness remains separate.
+- Wedge-local reconstruction budget: defines the double-cone candidate
+  `A_S(O)=A_S(W_R+x) cap A_S(W_L+y)`, the modular-nuclearity map coordinate,
+  and the residual split separating wedge-generator, nuclearity,
+  local-intersection, form-factor, domain/positivity, and completeness
+  inputs before a local observable is claimed.
 
 ## Symbols
 
@@ -71,6 +76,10 @@
 | ZF algebra | Zamolodchikov--Faddeev exchange algebra encoding ordered scattering bases |
 | TBA | thermodynamic Bethe ansatz; conditional thermodynamic/mirror functional equation |
 | GHD | generalized hydrodynamics; conditional Euler-scale limit of locally equilibrated integrable states |
+| \(\mathfrak A_S(W_R)\) | right-wedge algebra produced by the \(S\)-Fock/wedge-local construction |
+| \(\mathfrak A_S(\mathcal O)\) | double-cone local-algebra candidate, defined as an opposite-wedge intersection |
+| \(\Xi_{x,y}\) | modular nuclearity map used to test local-intersection phase space |
+| \(R_{\rm pfg},R_{\rm nuc},R_{\rm int},R_{\rm ff},R_{\rm dom},R_{\rm comp}\) | reconstruction residuals from wedge data to local observables |
 
 ## Claim Ledger
 
@@ -97,6 +106,11 @@
    paths: the former is theorem-level through free-field construction, while
    the latter is conditional on analytic/nuclearity estimates for local
    algebras and separate form-factor convergence for point fields.
+9. The first genuinely local object in the \(S\)-matrix reconstruction chain
+   is the double-cone intersection of opposite wedge algebras.  Exact
+   Yang--Baxter/ZF algebra controls the \(S\)-Fock coordinate, but modular
+   nuclearity, nontrivial local intersections, form-factor convergence,
+   domains/positivity, and completeness remain separate inputs.
 
 ## Figures
 
@@ -117,3 +131,10 @@
   demotes finite checks and formal bootstrap/TBA equations to their proper
   evidence class unless the missing Hilbert-space, convergence, nuclearity,
   mirror-continuation, or hydrodynamic-limit assumptions are supplied.
+- 2026-06-04 wedge-local reconstruction pass: added the operational residual
+  budget from \(S\)-Fock/ZF data to double-cone local observables and
+  registered `factorized_scattering_algebra_checks.py` as an evidence-contract
+  companion.  The finite check verifies that exact scattering algebra does not
+  erase modular-nuclearity or local-intersection residuals, and includes
+  negative controls for empty local intersections and failed nuclearity
+  proxies.

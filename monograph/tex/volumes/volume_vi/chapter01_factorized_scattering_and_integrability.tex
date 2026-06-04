@@ -199,6 +199,130 @@ form-factor solution to a local field, nor a TBA equation to a theorem about
 finite-size spectra, unless the missing Hilbert-space, convergence, and
 thermodynamic-limit assumptions have been supplied at the point of use.
 
+\begin{controlledapproximation}[Wedge-local reconstruction budget from an
+\(S\)-matrix]
+\label{ca:integrable-wedge-local-reconstruction-budget}
+Let \(S(\theta)\) be an elastic factorizing scattering function satisfying
+the algebraic conditions in
+Definition~\ref{def:elastic-factorized-scattering-system}, and assume the
+regularity and crossing bounds needed to define an \(S\)-symmetric Fock space
+\(\Hilb_S\), Zamolodchikov--Faddeev operators, and wedge-local
+polarization-free generators on a common invariant domain.  Denote the
+resulting right-wedge algebra by \(\mathfrak A_S(W_R)\), its translated
+wedges by \(\mathfrak A_S(W_R+x)\), and the opposite wedge algebra by
+\(\mathfrak A_S(W_L+y)\).  For a double cone written as an intersection of
+opposite wedges,
+\[
+  \mathcal O_{x,y}=(W_R+x)\cap(W_L+y),
+  \qquad x\prec y ,
+\]
+the local-algebra candidate is
+\begin{equation}
+  \mathfrak A_S(\mathcal O_{x,y})
+  :=
+  \mathfrak A_S(W_R+x)\cap\mathfrak A_S(W_L+y).
+  \label{eq:integrable-double-cone-local-intersection}
+\end{equation}
+This intersection is the first genuinely local object in the reconstruction
+chain.  The \(S\)-Fock space and ZF exchange algebra alone do not prove that
+\eqref{eq:integrable-double-cone-local-intersection} contains any nontrivial
+observable.
+
+The phase-space estimate used to promote wedge-local data to local algebras
+is a modular nuclearity statement.  In the notation of the AQFT nuclearity
+discussion in
+Chapter~\ref{ch:volume-iv-superselection-sectors-locality-properties}, the
+relevant map is represented by
+\begin{equation}
+  \Xi_{x,y}(A)
+  =
+  \Delta_{W_R}^{1/4}\,U(y-x)\,A\Omega,
+  \qquad
+  A\in\mathfrak A_S(W_R),\quad \|A\|\le 1 ,
+  \label{eq:integrable-modular-nuclearity-map}
+\end{equation}
+with the precise translation vector and wedge chosen so that the translated
+right wedge lies inside the opposite wedge defining
+\(\mathcal O_{x,y}\).  A nuclear norm bound on \(\Xi_{x,y}\), uniform in the
+declared double-cone window, is a conditional-theorem input for nontrivial
+local intersections, Reeh--Schlieder-type cyclicity on the local algebra, and
+the construction of a local net.  Unitarity, Yang--Baxter, and the finite
+chamber-extension algebra supply the on-shell \(S\)-Fock coordinate; the
+phase-space estimate is an additional local-observable input.
+
+Consequently an observable reconstructed from factorized scattering carries
+the residual budget
+\begin{equation}
+\begin{aligned}
+  \mathcal W_{\rm loc}[\varphi]
+  -
+  \mathcal W_{\rm lead}^{S}[\varphi]
+  &=
+  R_{\rm pfg}[\varphi]
+  +R_{\rm nuc}[\varphi]
+  +R_{\rm int}[\varphi]
+  +R_{\rm ff}[\varphi]  \\
+  &\qquad
+  +R_{\rm dom}[\varphi]
+  +R_{\rm comp}[\varphi] .
+\end{aligned}
+  \label{eq:integrable-local-reconstruction-residual-budget}
+\end{equation}
+Here \(\mathcal W_{\rm lead}^{S}\) is the candidate observable coordinate
+computed from the retained \(S\)-Fock or form-factor data; \(R_{\rm pfg}\)
+records failures of the wedge-local generator construction, analytic
+regularity, or common domains; \(R_{\rm nuc}\) records the modular nuclearity
+or phase-space estimate; \(R_{\rm int}\) records nontriviality, isotony, and
+covariance of the double-cone intersections; \(R_{\rm ff}\) records
+form-factor convergence and collision/contact extensions; \(R_{\rm dom}\)
+records operator-domain, positivity, and Wightman/OS distribution issues; and
+\(R_{\rm comp}\) records scattering-state and local-field completeness.
+If each term is controlled on the same test-function window by
+\[
+  |R_\kappa[\varphi]|\le\varepsilon_\kappa\|\varphi\|_{\mathcal T},
+  \qquad
+  \kappa\in
+  \{{\rm pfg},{\rm nuc},{\rm int},{\rm ff},{\rm dom},{\rm comp}\},
+\]
+then
+\begin{equation}
+  \left|
+    \mathcal W_{\rm loc}[\varphi]
+    -
+    \mathcal W_{\rm lead}^{S}[\varphi]
+  \right|
+  \le
+  \left(
+    \varepsilon_{\rm pfg}
+    +\varepsilon_{\rm nuc}
+    +\varepsilon_{\rm int}
+    +\varepsilon_{\rm ff}
+    +\varepsilon_{\rm dom}
+    +\varepsilon_{\rm comp}
+  \right)\|\varphi\|_{\mathcal T}.
+  \label{eq:integrable-local-reconstruction-residual-bound}
+\end{equation}
+This is a reconstruction budget, not another exact scattering identity.  The
+rows of the status table enter at different places: Yang--Baxter and
+unitarity build the \(S\)-Fock coordinate; regular crossing and wedge-domain
+control build wedge generators; modular nuclearity makes
+\(\mathfrak A_S(\mathcal O)\) nontrivial; form-factor estimates construct
+pointlike or smeared local fields affiliated with that local algebra; and
+completeness identifies the resulting local observables with the intended
+QFT.
+
+In the massive Ising model the same budget collapses because the local net is
+already supplied by the free Majorana field: the wedge and local algebras,
+domains, positivity, and energy-density form-factor convergence are inherited
+from the free-field construction.  For a regular interacting scalar
+factorizing model, by contrast, exact \(S\)-matrix algebra and strong
+form-factor evidence still leave the nuclearity, local-intersection, domain,
+and completeness entries as separate analytic claims.  This distinction is
+the physics of reconstruction: it decides whether the exact on-shell data
+have produced local observables or only a beautifully consistent scattering
+calculus.
+\end{controlledapproximation}
+
 \section{Factorized Scattering Datum}
 
 \begin{definition}[Elastic factorized scattering system]

@@ -1894,7 +1894,10 @@ Current checks:
   factorized-scattering opening chapter, including mostly-plus rapidity
   kinematics, Newton separation of rapidity multisets, chamber braid
   relations, the rational Yang--Baxter identity, scalar two-body unitarity,
-  and Watson-exchange coefficient bookkeeping.
+  Watson-exchange coefficient bookkeeping, and the wedge-local to
+  double-cone-local reconstruction residual ledger which keeps exact S-Fock/ZF
+  algebra, modular nuclearity, local intersections, form-factor convergence,
+  operator domains, and completeness as separate load-bearing inputs.
 - `yang_baxter_internal_symmetry_checks.py`: exact checks for the Volume VI
   Yang--Baxter/internal-symmetry chapter, including the additive
   fixed-tensor-product rational Yang--Baxter identity, the spectral classical

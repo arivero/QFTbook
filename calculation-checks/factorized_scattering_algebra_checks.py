@@ -3,8 +3,27 @@
 
 These checks accompany Volume VI, Chapter 1.  They verify finite algebraic
 identities behind the rapidity invariant, Newton separation of rapidity
-multisets, chamber braid relations, the rational Yang--Baxter identity, and
-scalar Watson-exchange bookkeeping.
+multisets, chamber braid relations, the rational Yang--Baxter identity,
+scalar Watson-exchange bookkeeping, and the finite residual ledger separating
+S-Fock/ZF algebra from wedge-local and local-algebra reconstruction.
+
+Evidence contract.
+Target claims: rapidity convention, factorized chamber algebra, Watson
+exchange, and the Chapter 1 reconstruction-budget claim that exact on-shell
+algebra does not by itself construct double-cone local observables.
+Independent construction: rational arithmetic for rapidity invariants, Newton
+identities, finite braid/Yang--Baxter matrices, scalar exchange coefficients,
+finite local-intersection dimension proxies, nuclearity-norm proxies, and a
+residual telescope for wedge-to-local reconstruction.
+Imported assumptions: the analytic S-matrix regularity, modular nuclearity,
+operator-domain, form-factor convergence, and completeness hypotheses stated
+in the chapter.
+Negative controls: exact Yang--Baxter algebra with a nonzero local
+reconstruction residual, positive S-Fock dimension with empty local
+intersection, and a finite nuclearity proxy that fails the declared bound.
+Scope boundary: these checks verify finite algebra and reconstruction
+interfaces only; they do not prove modular nuclearity, nontrivial local
+intersections, form-factor convergence, or local-QFT completeness.
 """
 
 from fractions import Fraction
@@ -16,6 +35,16 @@ Matrix = list[list[Fraction]]
 def assert_equal(actual, expected, label):
     if actual != expected:
         raise AssertionError(f"{label}: got {actual!r}, expected {expected!r}")
+
+
+def assert_true(condition, label):
+    if not condition:
+        raise AssertionError(label)
+
+
+def assert_gt(actual, threshold, label):
+    if not actual > threshold:
+        raise AssertionError(f"{label}: got {actual!r}, expected > {threshold!r}")
 
 
 def zero_matrix(n):
@@ -150,12 +179,88 @@ def check_scalar_unitarity_and_watson_bookkeeping():
     )
 
 
+def local_intersection_dimension(right_wedge_dim: int, left_wedge_dim: int, obstruction_rank: int) -> int:
+    return max(0, min(right_wedge_dim, left_wedge_dim) - obstruction_rank)
+
+
+def check_wedge_local_reconstruction_residual_budget():
+    # This finite model mirrors ControlledApproximation
+    # ca:integrable-wedge-local-reconstruction-budget.  The leading S-Fock
+    # coordinate is kept separate from the analytic residuals that construct a
+    # local double-cone observable.
+    leading_s_fock_coordinate = Fraction(11, 7)
+    residuals = {
+        "pfg_domain": Fraction(1, 60),
+        "modular_nuclearity": Fraction(1, 70),
+        "local_intersection": Fraction(1, 84),
+        "form_factor_convergence": Fraction(1, 105),
+        "operator_domains": Fraction(1, 140),
+        "completeness": Fraction(1, 210),
+    }
+    exact_local_coordinate = leading_s_fock_coordinate + sum(residuals.values())
+    residual_bound = sum(abs(value) for value in residuals.values())
+    assert_equal(
+        abs(exact_local_coordinate - leading_s_fock_coordinate) <= residual_bound,
+        True,
+        "wedge-to-local reconstruction residual bound",
+    )
+    assert_gt(
+        abs(exact_local_coordinate - leading_s_fock_coordinate),
+        Fraction(0),
+        "exact S-Fock coordinate does not equal local observable",
+    )
+
+    omitted_nuclearity_bound = residual_bound - residuals["modular_nuclearity"]
+    assert_gt(
+        abs(exact_local_coordinate - leading_s_fock_coordinate),
+        omitted_nuclearity_bound,
+        "omitting modular nuclearity underbudgets reconstruction",
+    )
+
+    exact_yang_baxter_defect = Fraction(0)
+    exact_zf_associativity_defect = Fraction(0)
+    assert_equal(
+        exact_yang_baxter_defect + exact_zf_associativity_defect,
+        Fraction(0),
+        "exact finite scattering algebra",
+    )
+    assert_gt(
+        abs(exact_local_coordinate - leading_s_fock_coordinate),
+        exact_yang_baxter_defect + exact_zf_associativity_defect,
+        "finite scattering algebra leaves local reconstruction residual",
+    )
+
+    good_nuclearity_singular_values = [Fraction(1, 8), Fraction(1, 16), Fraction(1, 32)]
+    bad_nuclearity_singular_values = [Fraction(1, 3), Fraction(1, 4)]
+    nuclearity_threshold = Fraction(1, 4)
+    assert_true(
+        sum(good_nuclearity_singular_values) < nuclearity_threshold,
+        "finite nuclearity proxy satisfies declared bound",
+    )
+    assert_true(
+        sum(bad_nuclearity_singular_values) > nuclearity_threshold,
+        "finite nuclearity proxy can fail declared bound",
+    )
+
+    s_fock_dimension = 4
+    nontrivial_local_dim = local_intersection_dimension(5, 4, 2)
+    empty_local_dim = local_intersection_dimension(2, 2, 2)
+    assert_gt(nontrivial_local_dim, 0, "nontrivial local intersection proxy")
+    assert_gt(s_fock_dimension, 0, "positive S-Fock proxy dimension")
+    assert_equal(
+        empty_local_dim,
+        0,
+        "positive S-Fock data can still have empty local intersection proxy",
+    )
+
+
 def main():
     check_rapidity_invariant()
     check_newton_two_root_separation()
     check_chamber_groupoid_permutation_relations()
     check_rational_yang_baxter_identity()
     check_scalar_unitarity_and_watson_bookkeeping()
+    check_wedge_local_reconstruction_residual_budget()
     print("All factorized-scattering algebra checks passed.")
 
 

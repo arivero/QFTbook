@@ -50,6 +50,10 @@
       "risk_class": "integrable reconstruction"
     },
     {
+      "path": "factorized_scattering_algebra_checks.py",
+      "risk_class": "integrable local-algebra reconstruction"
+    },
+    {
       "path": "inflow_anomaly_line_checks.py",
       "risk_class": "anomaly inflow"
     },
