@@ -266,6 +266,7 @@
 | \(\mathcal K_{\rm ex},\mathcal K_{\rm lead},\mathcal C_{\rm pg}^{\mathcal S},R_{\rm det},R_{\rm zm},R_{\rm src},R_{\rm Schur},R_{\rm end}\) | exact and leading one-instanton source-amplitude densities, pure-gauge collective/determinant density, and the finite error-budget pieces for determinant, zero-mode/source, source matching, Schur, and endpoint residuals |
 | \(B^{\mathcal J}_{AB},\Phi^R,\Phi^L\) | color-singlet source-projected zero-mode matrix and source-to-zero-mode overlap maps used to match the auxiliary hard instanton kernel to gauge-invariant correlators |
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(\mathbf c;\mathcal F)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless selected-form-factor integral |
+| \(C_{\rm inst}^{(4)}(Q;R),\mathcal P_{\rm orient}\) | specialized \(SU(3)\), \(N_f=2\) hard four-fermion instanton coefficient and shared orientation projector, with the Pauli-Villars pure-gauge constant, light-fermion determinant factor, and explicit endpoint residual |
 | \(\mu_I,\rho_I,K_\Lambda(\rho)\) | Wilsonian instanton factorization scale, cutoff \(\rho_I=\mu_I^{-1}\), and fully paired finite-regulator size integrand whose boundary flux transfers between the short coefficient and long-distance remainder |
 | \(C_I^{<},[O_I]_\mu,\gamma_{IK}\) | short-instanton OPE coefficient, retained renormalized operator basis, and operator-mixing anomalous-dimension matrix used to distinguish composite-operator RG transport from size-factorization flow |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
@@ -820,6 +821,16 @@
   hadronic matching, nonzero-mode Schur corrections, and endpoint tails.  This
   makes precise that the collective-coordinate measure is only one input to the
   QFT amplitude.
+- The hard four-fermion instanton coefficient is now specialized to
+  \(SU(3)\), \(N_f=2\) in the Pauli-Villars pure-gauge convention:
+  \(b_0=29/3\), the collective prefactor is
+  \((8\pi^2/g^2)^6\), the RG-invariant hard falloff is
+  \(\Lambda_{\rm ht}^{29/3}Q^{-35/3}\), and the individual-slot endpoint tail
+  is
+  \(3\cdot6^4(\prod_\ell c_\ell^{-3})R^{-1/3}+O(R^{-7/3})\).  The text keeps
+  the light-fermion determinant factor, shared orientation projector, and five
+  residuals explicit, so this is a declared hard-source coefficient rather than
+  a claim of a complete hadronic amplitude.
 
 ## Open Boundaries
 
@@ -1134,3 +1145,13 @@
   decomposition, the absolute error bound, finite source-convention
   invariance, and the fact that the collective-coordinate measure alone is not
   the amplitude.
+- 2026-06-03 issue #597 hard-coefficient specialization pass: added
+  `ca:su3-two-flavor-hard-instanton-coefficient`, which packages the
+  \(SU(3)\), \(N_f=2\) source-amputated hard coefficient with the PV
+  pure-gauge constant, light-fermion determinant factor, orientation projector,
+  \(\Lambda_{\rm ht}^{29/3}Q^{-35/3}\) scaling, and the explicit
+  \(R^{-1/3}\) individual-slot endpoint tail.  The BPST check script now
+  verifies the exponent ledger and tail coefficient exactly.  Remaining #597
+  scope still includes fuller light-fermion determinant normalization in a
+  declared scheme, multi-instanton/boundary estimates, and the broader
+  soliton/monopole/instanton chapter architecture.

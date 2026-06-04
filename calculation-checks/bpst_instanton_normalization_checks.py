@@ -63,7 +63,11 @@ relations
     b0+1-3m<-1
     hard-size dominance is stronger than endpoint convergence: for SU(3),
     Nf=2 differentiated fermion slots the tail beyond rho=R/Q decays only as
-    R^(-1/3), while fused density sources have exponential endpoint control
+    R^(-1/3), while fused density sources have exponential endpoint control;
+    the specialized SU(3), Nf=2 hard four-fermion instanton coefficient has
+    b0=29/3, size-integrand power 32/3, RG-invariant falloff
+    Lambda_ht^(29/3) Q^(-35/3), and leading individual-slot endpoint tail
+    3*6^4 prod_l c_l^(-3) R^(-1/3);
     a Wilsonian split of the instanton size integral has exact cancellation
     of the artificial factorization-scale boundary flux between the short
     instanton coefficient and the long-distance remainder
@@ -2346,6 +2350,58 @@ def check_hard_size_tail_dominance_criterion() -> None:
     )
 
 
+def check_su3_two_flavor_hard_instanton_coefficient() -> None:
+    n_c = 3
+    n_f = 2
+    b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+    zero_mode_power = Fraction(6)
+    measure_power = Fraction(-5)
+    size_integrand_power = b0 + zero_mode_power + measure_power
+
+    assert_equal("SU3 Nf2 hard coefficient b0", b0, Fraction(29, 3))
+    assert_equal("SU3 Nf2 hard coefficient collective power", 2 * n_c, 6)
+    assert_equal("SU3 Nf2 hard size integrand power", size_integrand_power, Fraction(32, 3))
+
+    q_power_at_mu_q = b0 - (size_integrand_power + 1)
+    assert_equal("SU3 Nf2 hard coefficient Q power at mu=Q", q_power_at_mu_q, Fraction(-2))
+
+    lambda_power = b0
+    rg_invariant_q_power = -b0 + q_power_at_mu_q
+    assert_equal("SU3 Nf2 hard Lambda power", lambda_power, Fraction(29, 3))
+    assert_equal("SU3 Nf2 hard RG-invariant Q power", rg_invariant_q_power, Fraction(-35, 3))
+    assert_equal(
+        "SU3 Nf2 hard coefficient mass dimension",
+        lambda_power + rg_invariant_q_power,
+        Fraction(-2),
+    )
+
+    # For F_zm(c_l s/2) ~ 6 c_l^(-3) s^(-3), four differentiated slots give
+    # an integrand s^(32/3-12)=s^(-4/3).  The tail integral is
+    # 3*6^4*prod c_l^(-3)*R^(-1/3), with the next term O(R^(-7/3)).
+    c_values = [Fraction(1), Fraction(2), Fraction(3), Fraction(4)]
+    leading_slot_coefficient = product_fraction([Fraction(6, 1) / (c**3) for c in c_values])
+    tail_integrand_power = size_integrand_power - 12
+    tail_antiderivative_power = tail_integrand_power + 1
+    leading_tail_coefficient = -leading_slot_coefficient / tail_antiderivative_power
+
+    assert_equal("SU3 Nf2 hard tail integrand power", tail_integrand_power, Fraction(-4, 3))
+    assert_equal("SU3 Nf2 hard tail antiderivative power", tail_antiderivative_power, Fraction(-1, 3))
+    assert_equal(
+        "SU3 Nf2 hard tail leading coefficient",
+        leading_tail_coefficient,
+        3 * leading_slot_coefficient,
+    )
+    assert_equal(
+        "SU3 Nf2 hard tail coefficient with sample c",
+        leading_tail_coefficient,
+        Fraction(3 * 6**4, (1 * 2 * 3 * 4) ** 3),
+    )
+
+    next_slot_power = -14
+    next_tail_power = size_integrand_power + next_slot_power + 1
+    assert_equal("SU3 Nf2 hard tail next exponent", next_tail_power, Fraction(-7, 3))
+
+
 def check_wilsonian_instanton_size_factorization() -> None:
     # Model the fully paired finite-regulator size integrand by
     # K(rho)=rho^(p-1) on 0<rho<rho_max.  The artificial Wilsonian split at
@@ -2851,6 +2907,7 @@ def main() -> None:
     check_instanton_amplitude_error_budget()
     check_hard_momentum_instanton_size_window()
     check_hard_size_tail_dominance_criterion()
+    check_su3_two_flavor_hard_instanton_coefficient()
     check_wilsonian_instanton_size_factorization()
     check_short_instanton_ope_coefficient_transport()
     check_dilute_instanton_gas_theta_cumulants()
