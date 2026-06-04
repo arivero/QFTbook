@@ -115,7 +115,11 @@
   \(SU(3)\), \(N_f=2\) four-slot individual-source kernel leaves only an
   \(R^{-1/3}\) tail after cutting at \(\rho=R/Q\), so dominance near
   \(1/Q\) requires an additional physical source/kinematic estimate.  The
-  Wilsonian-split continuation makes the factorization-scale dependence
+  log-shell continuation restates the same fact per \(\dd\log\rho\): the
+  individual-slot shell also decays only as \(R^{-1/3}\), so tenfold
+  suppression of the normalized power-tail majorant costs three decades in
+  the size cutoff.  The Wilsonian-split continuation makes the
+  factorization-scale dependence
   explicit: the short-instanton coefficient and long-distance remainder
   exchange the boundary flux through \(\rho=\mu_I^{-1}\), so the local
   't Hooft vertex is a coefficient, not an observable by itself.  The
@@ -266,6 +270,7 @@
 | \(\mathcal K_{\rm ex},\mathcal K_{\rm lead},\mathcal C_{\rm pg}^{\mathcal S},R_{\rm det},R_{\rm zm},R_{\rm src},R_{\rm Schur},R_{\rm end}\) | exact and leading one-instanton source-amplitude densities, pure-gauge collective/determinant density, and the finite error-budget pieces for determinant, zero-mode/source, source matching, Schur, and endpoint residuals |
 | \(B^{\mathcal J}_{AB},\Phi^R,\Phi^L\) | color-singlet source-projected zero-mode matrix and source-to-zero-mode overlap maps used to match the auxiliary hard instanton kernel to gauge-invariant correlators |
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(\mathbf c;\mathcal F)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless selected-form-factor integral |
+| \(\mathfrak s_{\rm hard}(s),\Delta\) | hard instanton log-size shell density and its power-tail suppression exponent \(\Delta=\sigma-b_0-2\) |
 | \(C_{\rm inst}^{(4)}(Q;R),\mathcal P_{\rm orient}\) | specialized \(SU(3)\), \(N_f=2\) hard four-fermion instanton coefficient and shared orientation projector, with the Pauli-Villars pure-gauge constant, light-fermion determinant factor, and explicit endpoint residual |
 | \(\mu_I,\rho_I,K_\Lambda(\rho)\) | Wilsonian instanton factorization scale, cutoff \(\rho_I=\mu_I^{-1}\), and fully paired finite-regulator size integrand whose boundary flux transfers between the short coefficient and long-distance remainder |
 | \(C_I^{<},[O_I]_\mu,\gamma_{IK}\) | short-instanton OPE coefficient, retained renormalized operator basis, and operator-mixing anomalous-dimension matrix used to distinguish composite-operator RG transport from size-factorization flow |
@@ -831,6 +836,12 @@
   the light-fermion determinant factor, shared orientation projector, and five
   residuals explicit, so this is a declared hard-source coefficient rather than
   a claim of a complete hadronic amplitude.
+- The hard-size endpoint diagnostic now includes the log-shell density
+  \(s^{b_0+2}|\mathcal F_{\rm hard}(s)|\).  For the \(SU(3)\), \(N_f=2\)
+  differentiated four-slot kernel the shell/tail exponent is only
+  \(\Delta=1/3\); the normalized power-tail majorant \(3R^{-1/3}\) falls
+  below \(0.1\) only after \(R>27000\).  This is recorded as a physics
+  endpoint-control warning, not as a new moduli-space fact.
 
 ## Open Boundaries
 
@@ -1155,3 +1166,9 @@
   scope still includes fuller light-fermion determinant normalization in a
   declared scheme, multi-instanton/boundary estimates, and the broader
   soliton/monopole/instanton chapter architecture.
+- 2026-06-03 issue #597 log-shell endpoint pass: surfaced the hard-size
+  endpoint evidence per logarithmic size shell, making explicit that the
+  individual-slot \(SU(3)\), \(N_f=2\) hard kernel has only \(R^{-1/3}\)
+  shell/tail suppression.  The companion BPST check verifies the shell power,
+  three-decade cost for tenfold power-tail suppression, and \(R>27000\)
+  normalized-tail threshold.

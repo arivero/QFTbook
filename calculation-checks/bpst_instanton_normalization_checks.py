@@ -62,8 +62,10 @@ relations
     the large-rho endpoint, while individual fermion slots obey the power test
     b0+1-3m<-1
     hard-size dominance is stronger than endpoint convergence: for SU(3),
-    Nf=2 differentiated fermion slots the tail beyond rho=R/Q decays only as
-    R^(-1/3), while fused density sources have exponential endpoint control;
+    Nf=2 differentiated fermion slots the log-size shell and the tail beyond
+    rho=R/Q decay only as R^(-1/3), so tenfold suppression of the power-tail
+    majorant costs three decades in R, while fused density sources have
+    exponential endpoint control;
     the specialized SU(3), Nf=2 hard four-fermion instanton coefficient has
     b0=29/3, size-integrand power 32/3, RG-invariant falloff
     Lambda_ht^(29/3) Q^(-35/3), and leading individual-slot endpoint tail
@@ -2311,6 +2313,7 @@ def check_hard_size_tail_dominance_criterion() -> None:
     assert_equal("hard-size individual slot sigma", sigma, 12)
     assert_equal("hard-size convergence condition margin", sigma - b0 - 2, Fraction(1, 3))
     assert_equal("hard-size tail power after R cutoff", b0 + 2 - sigma, Fraction(-1, 3))
+    assert_equal("hard-size log-shell power", b0 + 2 - sigma, Fraction(-1, 3))
 
     # With the normalized model bound |F_hard(s)| <= C s^{-12}, the tail
     # integral is C/(sigma-b0-2) R^(b0+2-sigma)=3 C R^(-1/3).  Convergence is
@@ -2318,6 +2321,15 @@ def check_hard_size_tail_dominance_criterion() -> None:
     # R > (3/epsilon)^3.
     normalized_tail_prefactor = Fraction(1, 1) / (sigma - b0 - 2)
     assert_equal("hard-size normalized tail prefactor", normalized_tail_prefactor, 3)
+
+    # Since the shell/tail exponent is 1/3, one decade in R gives only a
+    # 10^(-1/3) improvement.  A tenfold improvement requires three decades.
+    decades_for_tenfold_tail_suppression = Fraction(1, 1) / (sigma - b0 - 2)
+    assert_equal(
+        "hard-size decades for tenfold tail suppression",
+        decades_for_tenfold_tail_suppression,
+        3,
+    )
 
     epsilon = Fraction(1, 10)
     required_r_cubed = (normalized_tail_prefactor / epsilon) ** 3
