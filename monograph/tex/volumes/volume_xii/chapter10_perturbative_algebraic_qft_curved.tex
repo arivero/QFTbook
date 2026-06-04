@@ -527,6 +527,119 @@ not limited to flat-space monomials: covariance permits terms built from the
 metric, curvature, masses, background couplings, and their covariant
 derivatives, constrained by dimension, symmetries, and field independence.
 
+\section{Worked Interacting Scalar Coordinate}
+\label{sec:paqft-worked-interacting-scalar-coordinate}
+
+The previous sections describe the abstract perturbative construction.  A
+curved-background interacting example must also say which local coordinates
+are being held fixed and what observable changes when those coordinates are
+changed.  Consider a real scalar with compact spacetime cutoff \(g\), and
+write the quartic interaction in a Hadamard Wick coordinate \(H\) as
+\begin{equation}
+  V_{\lambda,H}(g)
+  =
+  \int_M \dd\operatorname{vol}_g\,
+  g(x)\,\frac{\lambda}{4!}\Phi_H^4(x).
+  \label{eq:paqft-lambda-phi-four-interaction-coordinate}
+\end{equation}
+Let \(H'=H+w\), with \(w\) smooth, and write
+\[
+  w_\Delta(x)=w(x,x).
+\]
+The smooth-change isomorphism
+Proposition~\ref{prop:paqft-hadamard-change-isomorphism} gives the local
+diagonal identities
+\begin{equation}
+\begin{aligned}
+  \alpha_w\bigl(\Phi_H^2(x)\bigr)
+  &=
+  \Phi_{H'}^2(x)+\hbar w_\Delta(x),\\
+  \alpha_w\bigl(\Phi_H^4(x)\bigr)
+  &=
+  \Phi_{H'}^4(x)
+  +6\hbar w_\Delta(x)\Phi_{H'}^2(x)
+  +3\hbar^2w_\Delta(x)^2 .
+\end{aligned}
+  \label{eq:paqft-wick-power-scheme-transport}
+\end{equation}
+Thus the same abstract quartic interaction, transported to the \(H'\)
+coordinate, is
+\begin{equation}
+\begin{aligned}
+  \alpha_w V_{\lambda,H}(g)
+  =
+  \int_M\dd\operatorname{vol}_g\,g(x)
+  \left[
+    \frac{\lambda}{4!}\Phi_{H'}^4
+    +\frac{\hbar\lambda}{4}w_\Delta\Phi_{H'}^2
+    +\frac{\hbar^2\lambda}{8}w_\Delta^2
+  \right](x).
+\end{aligned}
+  \label{eq:paqft-phi-four-scheme-shift}
+\end{equation}
+This is the smallest curved pAQFT calculation in which interaction,
+renormalization choice, state class, and gravitational source coordinates
+meet.  If the allowed local smooth diagonal change has the dimension-two
+form
+\begin{equation}
+  w_\Delta(x)=a_m m^2+a_R R(x),
+  \label{eq:paqft-local-hadamard-diagonal-change}
+\end{equation}
+then the quadratic term in
+\eqref{eq:paqft-phi-four-scheme-shift} is the finite coordinate shift
+\begin{equation}
+  \delta m^2=\frac{\hbar\lambda}{2}a_m m^2,
+  \qquad
+  \delta\xi=\frac{\hbar\lambda}{2}a_R
+  \label{eq:paqft-phi-four-mass-curvature-shifts}
+\end{equation}
+in the local scalar operator
+\(\frac12(m^2+\xi R)\Phi^2\).  The last term in
+\eqref{eq:paqft-phi-four-scheme-shift} is a finite shift of the purely
+geometric source functional, producing \(m^4\), \(m^2R\), and \(R^2\)
+coordinates when \eqref{eq:paqft-local-hadamard-diagonal-change} is used.
+Those coordinates are precisely the ones that reappear in the stress-tensor
+and gravitational EFT bookkeeping of
+Chapters~\ref{ch:point-splitting-stress-tensor-renormalization}
+and~\ref{ch:curved-semiclassical-backreaction}.
+
+For a Hadamard state \(\omega\), the local Wick-square observable also has a
+visible finite output.  If
+\[
+  F_f=\int_M\dd\operatorname{vol}_g\, f(x)\Phi_H^2(x),
+  \qquad f\in C_c^\infty(M),
+\]
+then
+\begin{equation}
+  \omega\bigl(\alpha_w(F_f)\bigr)-\omega(F_f)
+  =
+  \hbar\int_M\dd\operatorname{vol}_g\,f(x)w_\Delta(x).
+  \label{eq:paqft-wick-square-observable-shift}
+\end{equation}
+The right side is state independent because the change is a local
+renormalization coordinate, not particle production.  A physical
+renormalization condition fixes \(a_m,a_R\) or fixes the value of
+\eqref{eq:paqft-wick-square-observable-shift} on selected backgrounds and
+states.  Without that condition, the number is a coordinate of the composite
+operator, not an invariant prediction.
+
+\paragraph{Derivation.}
+For a local polynomial at one point, the smooth-change isomorphism acts by
+\[
+  \alpha_w
+  =
+  \exp\left(\frac{\hbar}{2}w_\Delta
+  \frac{\partial^2}{\partial\phi^2}\right).
+\]
+Applying this operator to \(\phi^2\) and \(\phi^4\) gives
+\eqref{eq:paqft-wick-power-scheme-transport}.  Multiplication by
+\(\lambda/4!\) gives
+\eqref{eq:paqft-phi-four-scheme-shift}; the identities
+\eqref{eq:paqft-phi-four-mass-curvature-shifts} follow by comparing the
+coefficient of \(\frac12(m^2+\xi R)\Phi^2\).  Finally, applying the first
+line of \eqref{eq:paqft-wick-power-scheme-transport} inside \(F_f\) gives
+\eqref{eq:paqft-wick-square-observable-shift}.
+
 \section{Gauge Theories And The BV Condition}
 
 The preceding scalar construction is not a foundation for gauge theory by

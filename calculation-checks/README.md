@@ -1978,7 +1978,10 @@ Current checks:
   reflection twist value \(h=1/16\).
 - `paqft_algebra_checks.py`: finite polynomial checks for the curved pAQFT
   chapter, including Hadamard star-product associativity, the smooth
-  Hadamard-change intertwiner, and scaling-degree ambiguity combinatorics.
+  Hadamard-change intertwiner, scaling-degree ambiguity combinatorics, and
+  the `lambda phi^4` Hadamard-scheme transport example: the quartic tadpole
+  coefficient, Wick-square observable shift, mass/curvature-coordinate
+  shifts, and geometric-source terms.
 - `point_splitting_stress_checks.py`: finite checks for the point-split
   stress-tensor examples, including the flat Synge identities and leading
   Hadamard \(U\)-transport equation, the first logarithmic \(v_0\) transport

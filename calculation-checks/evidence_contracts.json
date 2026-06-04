@@ -46,6 +46,10 @@
       "risk_class": "anomaly inflow"
     },
     {
+      "path": "paqft_algebra_checks.py",
+      "risk_class": "curved pAQFT interactions"
+    },
+    {
       "path": "rg_short_range_reconstruction_checks.py",
       "risk_class": "rigorous RG reconstruction"
     },

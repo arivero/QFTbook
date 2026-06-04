@@ -8,6 +8,27 @@ The script models a one-dimensional version of the Hadamard star product
 on polynomials.  This cannot prove the distributional theorems, but it checks
 the algebraic identities used in the chapter: associativity and the
 intertwiner for a smooth change H -> H + w.
+
+Evidence contract.
+Target claims: the finite algebra subclaims in Volume XII Chapter 10,
+including Hadamard star-product associativity, smooth-Hadamard-change
+intertwining, scaling-degree ambiguity counts, and the lambda-phi-four
+Hadamard-scheme transport example.
+Independent construction: exact polynomial derivatives, contraction sums,
+Taylor-extension counts, and Wick-power transport coefficients are computed
+directly in a finite polynomial model rather than copied from the prose
+formulae.
+Imported assumptions: the one-component polynomial model, formal hbar
+grading, smooth diagonal Hadamard difference, and the chapter's normalization
+of the quartic interaction lambda Phi^4/4! are finite inputs.
+Negative controls: wrong scaling-degree uniqueness thresholds, missing
+quartic tadpole factors, omitted vacuum bubble terms, and incorrect
+mass/curvature-coordinate factors are rejected by exact rational
+comparisons.
+Scope boundary: a pass checks finite pAQFT algebra and coefficient
+bookkeeping; it does not prove microlocal extension theorems, continuum
+Hadamard state existence, perturbative convergence, interacting stress-tensor
+existence, or nonperturbative curved-spacetime QFT.
 """
 
 from __future__ import annotations
@@ -40,6 +61,13 @@ def add_poly(a: Poly, b: Poly) -> Poly:
 
 def scale_poly(poly: Poly, coeff: Fraction) -> Poly:
     return clean_poly({degree: coeff * value for degree, value in poly.items()})
+
+
+def scale_hpoly(poly: HPoly, coeff: Fraction) -> HPoly:
+    return clean_hpoly({
+        hpower: scale_poly(p, coeff)
+        for hpower, p in poly.items()
+    })
 
 
 def mul_poly(a: Poly, b: Poly) -> Poly:
@@ -154,10 +182,58 @@ def check_scaling_degree_ambiguity_count() -> None:
         raise AssertionError("derivatives through order two in R^4 count 15")
 
 
+def check_lambda_phi4_hadamard_scheme_transport() -> None:
+    w = Fraction(7, 13)
+    coupling = Fraction(5, 11)
+
+    transported_quartic = scale_hpoly(alpha(monomial(4), w), coupling / 24)
+    expected_quartic: HPoly = {
+        0: {4: coupling / 24},
+        1: {2: coupling * w / 4},
+        2: {0: coupling * w * w / 8},
+    }
+    assert_equal(
+        transported_quartic,
+        expected_quartic,
+        "lambda phi^4 Hadamard scheme transport",
+    )
+
+    wrong_tadpole_factor = coupling * w / 8
+    if transported_quartic[1][2] == wrong_tadpole_factor:
+        raise AssertionError("quartic tadpole factor should be 6/4!, not 3/4!")
+    if transported_quartic.get(2, {}).get(0, Fraction(0)) == 0:
+        raise AssertionError("quartic scheme transport should retain the vacuum term")
+
+    transported_wick_square = alpha(monomial(2), w)
+    assert_equal(
+        transported_wick_square,
+        {0: {2: Fraction(1)}, 1: {0: w}},
+        "Wick-square observable Hadamard scheme shift",
+    )
+
+    a_m = Fraction(2, 5)
+    a_r = Fraction(3, 7)
+    if coupling * a_m / 2 != Fraction(1, 11):
+        raise AssertionError("mass-coordinate shift coefficient is incorrect")
+    if coupling * a_r / 2 != Fraction(15, 154):
+        raise AssertionError("curvature-coupling shift coefficient is incorrect")
+
+    vacuum_m4 = coupling * a_m * a_m / 8
+    vacuum_m2r = coupling * a_m * a_r / 4
+    vacuum_r2 = coupling * a_r * a_r / 8
+    if vacuum_m4 != Fraction(1, 110):
+        raise AssertionError("m^4 geometric-source coordinate is incorrect")
+    if vacuum_m2r != Fraction(3, 154):
+        raise AssertionError("m^2 R geometric-source coordinate is incorrect")
+    if vacuum_r2 != Fraction(45, 4312):
+        raise AssertionError("R^2 geometric-source coordinate is incorrect")
+
+
 def main() -> None:
     check_associativity()
     check_hadamard_change_intertwiner()
     check_scaling_degree_ambiguity_count()
+    check_lambda_phi4_hadamard_scheme_transport()
     print("All pAQFT algebra and scaling-degree checks passed.")
 
 
