@@ -7082,7 +7082,7 @@ If the chosen amplitude window controls the residual by
 \[
   |R_T(\rho)|\le\varepsilon_T ,
 \]
-then the Gaussian approximation
+define the Gaussian approximation
 \begin{equation}
   \mathcal A_T^{G}
   =
@@ -7091,16 +7091,42 @@ then the Gaussian approximation
   \Gamma\!\left(\frac A2\right)
   \label{eq:thermal-instanton-gaussian-amplitude}
 \end{equation}
-has the multiplicative error bound
+and the absolute Gaussian majorant
+\begin{equation}
+  \mathcal M_T^{G}
+  =
+  \frac{|K_0|}{2}
+  \left(\pi^2T^2\frac{2N_c+N_f}{3}\right)^{-A/2}
+  \Gamma\!\left(\frac A2\right).
+  \label{eq:thermal-instanton-gaussian-majorant}
+\end{equation}
+Since
+\(|\ee^{R_T(\rho)}-1|\le\ee^{\varepsilon_T}-1\), the general
+source-projected amplitude satisfies the manifestly positive estimate
 \begin{equation}
   \left|\mathcal A_T-\mathcal A_T^{G}\right|
   \le
-  \bigl(\ee^{\varepsilon_T}-1\bigr)\mathcal A_T^{G}
+  \bigl(\ee^{\varepsilon_T}-1\bigr)\mathcal M_T^{G}
   \label{eq:thermal-instanton-residual-bound}
 \end{equation}
 whenever the same size window contains the support of the amplitude.  The
+stronger positive-activity form
+\[
+  \left|\mathcal A_T-\mathcal A_T^{G}\right|
+  \le
+  \bigl(\ee^{\varepsilon_T}-1\bigr)\mathcal A_T^{G}
+\]
+is allowed only when \(K_0\ge0\) and the residual is real in the selected
+channel, so that the integrand is a positive activity density.  If
+\(K_0=\ee^{\ii\varphi}|K_0|\) has a fixed phase and \(R_T\) is real, the same
+proof gives the fixed-phase estimate with \(|\mathcal A_T^{G}|\) on the
+right-hand side.  For a genuinely complex source amplitude, only
+\eqref{eq:thermal-instanton-residual-bound} is an absolute-error bound.  The
 leading thermal size moments are the moments in
-\eqref{eq:screened-one-instanton-size-moments} with \(m_{\rm scr}=m_T\).
+\eqref{eq:screened-one-instanton-size-moments} with \(m_{\rm scr}=m_T\); in a
+complex channel they are moments of the Gaussian majorant, not probability
+moments of the amplitude itself.
+
 For the mass-saturated \(SU(3)\), \(N_f=2\) vacuum channel,
 \[
   m_T^2=\frac83\pi^2T^2,\qquad
@@ -7290,7 +7316,8 @@ Combine the thermal determinant-screened one-instanton activity of
 ControlledApproximation~\ref{ca:thermal-instanton-determinant-screening} with
 the dilute-gas hypothesis in
 ControlledApproximation~\ref{ca:dilute-instanton-gas-amplitude}.  Write the
-Gaussian one-instanton activity per Euclidean four-volume as
+Gaussian one-instanton activity per Euclidean four-volume in a positive
+mass/source-saturated channel as
 \begin{equation}
   \zeta_T^{G}
   =
@@ -7304,9 +7331,12 @@ Gaussian one-instanton activity per Euclidean four-volume as
 where \(K_{T,0}\) contains the collective-coordinate normalization,
 zero-temperature nonzero-mode determinant convention, mass/source
 zero-mode-saturation coefficient, and any finite source-frame normalization in
-the selected channel.  If the finite-temperature determinant residual obeys
-\(|R_T(\rho)|\le\varepsilon_T\) on the same size window, the exact activity
-\(\zeta_T\) satisfies
+the selected channel.  Here \(K_{T,0}\ge0\) and the residual is real; otherwise
+one has a source amplitude controlled by the majorant
+\eqref{eq:thermal-instanton-gaussian-majorant}, not a positive dilute-gas
+activity.  If the finite-temperature determinant residual obeys
+\(|R_T(\rho)|\le\varepsilon_T\) on the same size window, the exact positive
+activity \(\zeta_T\) satisfies
 \begin{equation}
   \left|\zeta_T-\zeta_T^{G}\right|
   \le

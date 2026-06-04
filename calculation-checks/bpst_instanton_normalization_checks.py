@@ -102,9 +102,11 @@ relations
     trace-delta Debye convention and giving pi^2 T^2 rho_shell^2=23/16
     for the SU(3), Nf=2 mass-saturated channel
     the corresponding dilute high-temperature topological susceptibility has
-    chi_top=2 zeta_T, b2=-1/12, the same multiplicative determinant-residual
-    bound as zeta_T, and SU(3), Nf=2 scaling
-    |m_u m_d| Lambda_ht^(29/3) T^(-23/3)
+    chi_top=2 zeta_T, b2=-1/12, the same positive-activity determinant
+    residual bound as zeta_T, and SU(3), Nf=2 scaling
+    |m_u m_d| Lambda_ht^(29/3) T^(-23/3); negative and complex source
+    amplitudes require a fixed-phase absolute value or an absolute-kernel
+    majorant instead of a signed activity bound
     the renormalized mass/source instanton functional has homogeneous
     source-coordinate RG transport, with the finite fermion determinant factor
     cancelling the anomalous running of det(M^0+J^0)
@@ -147,7 +149,8 @@ Imported assumptions: the BPST background and zero-mode formulas, one-loop
 determinant coefficients, the trace-delta convention, and finite regulator
 truncations stated in the chapter.
 Negative controls: the shared-Haar 1/3 versus factorized 1/4 counterexample,
-rank-one and color-symmetric source-pair rejections, finite-frame inverse
+rank-one and color-symmetric source-pair rejections, negative/complex thermal
+amplitude kernels rejected from signed activity bounds, finite-frame inverse
 checks, and separation of operator RG flow from the Wilsonian size-boundary
 flux.
 Scope boundary: a pass checks finite algebra and normalization interfaces; it
@@ -245,6 +248,24 @@ def product_fraction(values: list[Fraction]) -> Fraction:
     for value in values:
         result *= value
     return result
+
+
+ComplexFraction = tuple[Fraction, Fraction]
+
+
+def complex_mul_fraction(left: ComplexFraction, right: ComplexFraction) -> ComplexFraction:
+    return (
+        left[0] * right[0] - left[1] * right[1],
+        left[0] * right[1] + left[1] * right[0],
+    )
+
+
+def complex_scale_fraction(scale: Fraction, value: ComplexFraction) -> ComplexFraction:
+    return (scale * value[0], scale * value[1])
+
+
+def complex_abs_sq_fraction(value: ComplexFraction) -> Fraction:
+    return value[0] * value[0] + value[1] * value[1]
 
 
 def matmul_fraction(
@@ -3340,14 +3361,46 @@ def check_thermal_instanton_determinant_screening() -> None:
     assert_equal("thermal instanton Gaussian T power", -2 * gamma_argument, -Fraction(23, 3))
 
     # If |R_T| <= eps on the chosen size window, then |exp(R_T)-1| is bounded by
-    # exp(eps)-1 pointwise; this finite rational witness checks the norm ledger.
-    gaussian_weight = Fraction(11, 7)
+    # exp(eps)-1 pointwise.  A positive activity may use the signed Gaussian
+    # activity itself as the majorant.
+    gaussian_majorant = Fraction(11, 7)
     residual_multiplier_bound = Fraction(1, 5)
-    residual_error_bound = residual_multiplier_bound * gaussian_weight
-    actual_residual_error = Fraction(3, 20) * gaussian_weight
+    residual_error_bound = residual_multiplier_bound * gaussian_majorant
+    actual_residual_error = Fraction(3, 20) * gaussian_majorant
     assert_equal(
-        "thermal determinant residual bounded by multiplicative window norm",
+        "thermal positive-activity residual bounded by multiplicative window norm",
         actual_residual_error <= residual_error_bound,
+        True,
+    )
+
+    # The old signed form is invalid for a negative kernel: its right-hand side
+    # is negative even though the left-hand side is an absolute error.
+    negative_gaussian = -gaussian_majorant
+    invalid_signed_rhs = residual_multiplier_bound * negative_gaussian
+    assert_equal("negative K0 makes signed thermal residual RHS negative", invalid_signed_rhs < 0, True)
+    fixed_phase_error_bound = residual_multiplier_bound * abs(negative_gaussian)
+    fixed_phase_actual_error = Fraction(3, 20) * abs(negative_gaussian)
+    assert_equal(
+        "thermal fixed-phase residual uses absolute Gaussian amplitude",
+        fixed_phase_actual_error <= fixed_phase_error_bound,
+        True,
+    )
+
+    # A complex source-projected amplitude needs an absolute-kernel majorant.
+    # The complex number below has modulus gaussian_majorant.
+    complex_gaussian = (
+        Fraction(3, 5) * gaussian_majorant,
+        Fraction(4, 5) * gaussian_majorant,
+    )
+    complex_signed_rhs = complex_scale_fraction(residual_multiplier_bound, complex_gaussian)
+    assert_equal("complex signed thermal RHS has imaginary part", complex_signed_rhs[1] != 0, True)
+    complex_residual_factor = (Fraction(1, 10), Fraction(1, 10))
+    complex_error = complex_mul_fraction(complex_residual_factor, complex_gaussian)
+    complex_error_abs_sq = complex_abs_sq_fraction(complex_error)
+    complex_majorant_abs_sq = (residual_multiplier_bound * gaussian_majorant) ** 2
+    assert_equal(
+        "thermal complex residual controlled by absolute-kernel majorant",
+        complex_error_abs_sq <= complex_majorant_abs_sq,
         True,
     )
 
@@ -3378,8 +3431,8 @@ def check_thermal_dilute_topological_susceptibility() -> None:
     assert_equal("thermal dilute topological susceptibility", chi_top, Fraction(26, 7))
     assert_equal("thermal dilute theta b2", b2, -Fraction(1, 12))
 
-    # A multiplicative determinant residual for zeta_T propagates unchanged to
-    # chi_top=2*zeta_T.
+    # A positive multiplicative determinant residual for zeta_T propagates
+    # unchanged to chi_top=2*zeta_T.
     residual_multiplier_bound = Fraction(1, 6)
     activity_error = residual_multiplier_bound * zeta_units
     susceptibility_error = 2 * activity_error
@@ -3388,6 +3441,22 @@ def check_thermal_dilute_topological_susceptibility() -> None:
         "thermal dilute susceptibility residual inherits activity bound",
         susceptibility_error,
         susceptibility_error_bound,
+    )
+
+    negative_activity = -zeta_units
+    invalid_negative_susceptibility_bound = residual_multiplier_bound * 2 * negative_activity
+    assert_equal(
+        "negative thermal activity cannot define positive susceptibility bound",
+        invalid_negative_susceptibility_bound < 0,
+        True,
+    )
+
+    complex_activity = (Fraction(3, 7), Fraction(4, 7))
+    complex_susceptibility = complex_scale_fraction(Fraction(2), complex_activity)
+    assert_equal(
+        "complex source amplitude cannot be used as topological susceptibility",
+        complex_susceptibility[1] != 0,
+        True,
     )
 
 
