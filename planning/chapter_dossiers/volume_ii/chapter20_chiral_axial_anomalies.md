@@ -211,7 +211,7 @@
   't Hooft vertex to real-time \(B+L\) washout: the check verifies the
   \(\Delta B=\Delta L=N_g\Delta N_{\rm CS}\), \(B-L\)-conservation ledger and
   the generic susceptibility-rate normalization
-  \((2N_g)^2\Gamma_{\rm CS}/(\chi_XT)\).  The constrained-plasma continuation
+  \((2N_g)^2\Gamma_{\rm CS}/(2\chi_XT)\).  The constrained-plasma continuation
   adds the Schur-complement computation of \(\chi_{X\mid C}\) after exact
   conserved charges or neutrality constraints are imposed.  The QCD
   thermal-transport continuation adds
@@ -220,7 +220,7 @@
   axial-charge relaxation rate.  The text records the KMS distinction between
   the static propagated spectral-area/contact convention for
   \(\chi_{\rm top}^E\) and the zero-frequency Chern--Simons diffusion slope, derives
-  \((2N_f)^2\Gamma_{\rm CS}/(\chi_5T)\) in the massless limit, and keeps
+  \((2N_f)^2\Gamma_{\rm CS}/(2\chi_5T)\) in the massless limit, and keeps
   massive-quark pseudoscalar and cross spectral weights as separate
   \(\dot Q_5\) inputs.
 - The index-normalized anomaly-polynomial section is paired with
@@ -1521,13 +1521,26 @@
   axial-charge relaxation.  The block states the finite-temperature spectral
   distinction between the Euclidean propagated area integral
   \(2\rho_{qq}(\omega)/\omega\) plus the theta-contact convention and the KMS diffusion slope
-  \(\lim_{\omega\downarrow0}2T\rho_{qq}(\omega)/\omega\), derives the
+  \(\lim_{\omega\downarrow0}T\rho_{qq}(\omega)/\omega\), derives the
   massless relaxation coefficient
-  \((2N_f)^2\Gamma_{\rm CS}/(\chi_5T)\), and assigns massive-quark
+  \((2N_f)^2\Gamma_{\rm CS}/(2\chi_5T)\), and assigns massive-quark
   pseudoscalar and cross spectral weights to the full \(\dot Q_5\) noise
   matrix.  The BPST companion verifies detailed-balance drift,
   same-\(\chi_{\rm top}^E\)/different-slope and zero-diffusion negative
   controls, plus the massive-channel noise expansion.
+- 2026-06-04 issue #747 diffusion-normalization correction: aligned
+  `ca:qcd-topological-diffusion-axial-relaxation` with the Volume X
+  fluctuation--dissipation convention
+  \(G^{\rm sym}=\frac12\coth(\beta\omega/2)\rho\), so the regular
+  zero-frequency weight is \(T\rho/\omega\).  With
+  \(\Gamma_{\rm CS}\) defined as the \(N_{\rm CS}\) variance rate, the
+  Fokker--Planck coefficient is \(\Gamma_{\rm CS}V/2\), giving QCD axial and
+  electroweak \(B+L\) relaxation coefficients
+  \((2N_f)^2\Gamma_{\rm CS}/(2\chi_5T)\) and
+  \((2N_g)^2\Gamma_{\rm CS}/(2\chi_XT)\), with the same factor in the
+  constrained susceptibility formula.  The BPST companion now tests this from
+  random-walk/detailed-balance data and rejects both the old no-half drift and
+  the extra-\(2\) KMS weight.
 - 2026-06-04 issue #739 sign/phase repair: re-audited the thermal instanton
   residual estimates against the amplitude-versus-activity distinction.  The
   manuscript now gives every absolute-error estimate a nonnegative right-hand

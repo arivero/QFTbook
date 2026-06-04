@@ -600,9 +600,10 @@ Current checks:
   QCD axial-charge relaxation bridge separating the Euclidean topological
   susceptibility propagated spectral-area/contact convention from the
   real-time KMS Chern--Simons diffusion slope, with detailed-balance drift
-  \((2N_f)^2\Gamma_{\rm CS}/(\chi_5T)\), same-static-susceptibility/different
-  Kubo-slope and zero-diffusion negative controls, and the massive-quark
-  pseudoscalar/cross-noise extension of the \(\dot Q_5\) matrix, the
+  \((2N_f)^2\Gamma_{\rm CS}/(2\chi_5T)\), no-extra-\(2\) KMS and no-half-rate
+  negative controls, same-static-susceptibility/different Kubo-slope and
+  zero-diffusion negative controls, and the massive-quark pseudoscalar/cross-noise
+  extension of the \(\dot Q_5\) matrix, the
   dilute instanton-gas theta cumulants \(\chi_{\rm top}=2\zeta\) and
   \(b_2=-1/12\) after a finite activity has been supplied, the first
   two-body cluster correction showing that same-charge clusters generate a
@@ -621,7 +622,7 @@ Current checks:
   the \(U(1)_A\)-odd zero-mode-zone channel after exact-topology density is
   removed, the electroweak instanton/sphaleron charge ledger and generic
   \(B+L\) relaxation rate
-  \((2N_g)^2\Gamma_{\rm CS}/(\chi_XT)\), including the constrained
+  \((2N_g)^2\Gamma_{\rm CS}/(2\chi_XT)\), including the constrained
   susceptibility Schur complement after \(B-L\) or neutrality constraints are
   projected out, Uhlenbeck boundary face codimensions and product
   power-counting thresholds, and the \(k=1\) ADHM orientation dimension and

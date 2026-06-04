@@ -8603,7 +8603,7 @@ zero-frequency symmetric weights
   \Gamma_{AB}^{(0)}
   =
   \lim_{\omega\downarrow0}
-  \frac{2T}{\omega}\rho_{AB}(\omega),
+  \frac{T}{\omega}\rho_{AB}(\omega),
   \label{eq:qcd-axial-kms-zero-frequency-weights}
 \end{equation}
 whenever the limit exists in the selected hydrodynamic window.  The topological
@@ -8647,7 +8647,7 @@ then linear response gives
   \frac{\dd n_5}{\dd t}
   =
   -
-  \frac{\Gamma_{\dot Q_5}^{(0)}}{\chi_5T}\,n_5,
+  \frac{\Gamma_{\dot Q_5}^{(0)}}{2\chi_5T}\,n_5,
   \qquad
   \Gamma_{\dot Q_5}^{(0)}
   =
@@ -8662,9 +8662,14 @@ For massless quarks this reduces to the topological contribution
 \begin{equation}
   \gamma_5^{\rm top}
   =
-  \frac{(2N_f)^2\Gamma_{\rm CS}}{\chi_5T}.
+  \frac{(2N_f)^2\Gamma_{\rm CS}}{2\chi_5T}.
   \label{eq:qcd-massless-topological-axial-relaxation}
 \end{equation}
+The factor \(1/2\) is fixed by the displayed variance convention for
+\(\Gamma_{\rm CS}\): diffusion of \(N_{\rm CS}\) has Fokker--Planck
+coefficient \(\Gamma_{\rm CS}V/2\), and a step of axial charge
+\(2N_f\) then drifts in the free energy \(Vn_5^2/(2\chi_5)\) with coefficient
+\((2N_f)^2\Gamma_{\rm CS}/(2\chi_5T)\).
 Thus an instanton-induced Euclidean \(U(1)_A\) susceptibility, a theta
 curvature, and a real-time axial relaxation rate are related by the anomaly
 but are not the same observable.  The rate requires the retarded low-frequency
@@ -9068,9 +9073,12 @@ then detailed balance for diffusion in \(N_{\rm CS}\) gives the linear response
   \frac{\dd n_X}{\dd t}
   =
   -
-  \frac{(2N_g)^2\Gamma_{\rm CS}}{\chi_X T}\,n_X .
+  \frac{(2N_g)^2\Gamma_{\rm CS}}{2\chi_X T}\,n_X .
   \label{eq:electroweak-sphaleron-bplusl-relaxation}
 \end{equation}
+Again the factor \(1/2\) follows from defining \(\Gamma_{\rm CS}\) as the
+variance rate of \(N_{\rm CS}\), not as the Fokker--Planck diffusion
+coefficient itself.
 The coefficient \(\chi_X\) is the susceptibility of the actual light plasma
 degrees of freedom after any imposed conserved charges have been projected out.
 It is not determined by the instanton zero-mode counting.  Likewise
@@ -9129,7 +9137,7 @@ Therefore
   \frac{\dd n_X}{\dd t}
   =
   -
-  \frac{(2N_g)^2\Gamma_{\rm CS}}{\chi_{X\mid C}T}\,n_X
+  \frac{(2N_g)^2\Gamma_{\rm CS}}{2\chi_{X\mid C}T}\,n_X
 \]
 when the only remaining slow departure from equilibrium is this constrained
 \(B+L\) coordinate.

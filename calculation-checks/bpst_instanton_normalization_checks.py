@@ -4771,14 +4771,26 @@ def check_qcd_axial_charge_relaxation_kubo_bridge() -> None:
     mu5 = n5_density / chi5
 
     topological_relaxation_rate = (
-        axial_step * axial_step * gamma_cs / (chi5 * temperature)
+        axial_step * axial_step * gamma_cs / (2 * chi5 * temperature)
     )
     drift = -topological_relaxation_rate * n5_density
-    detailed_balance_drift = -axial_step * gamma_cs * (axial_step * mu5) / temperature
+    ncs_fokker_planck_diffusion = gamma_cs / 2
+    detailed_balance_drift = (
+        -axial_step
+        * ncs_fokker_planck_diffusion
+        * (axial_step * mu5)
+        / temperature
+    )
     assert_equal(
         "massless QCD axial relaxation detailed-balance drift",
         drift,
         detailed_balance_drift,
+    )
+    old_no_half_rate = axial_step * axial_step * gamma_cs / (chi5 * temperature)
+    assert_equal(
+        "variance-rate convention rejects no-half axial relaxation",
+        old_no_half_rate == topological_relaxation_rate,
+        False,
     )
 
     # The Euclidean topological susceptibility is a spectral-area integral,
@@ -4792,8 +4804,8 @@ def check_qcd_axial_charge_relaxation_kubo_bridge() -> None:
     low_area_b = 2 * slope_b * low_window_width
     high_area_a = euclidean_chi - low_area_a
     high_area_b = euclidean_chi - low_area_b
-    kubo_a = 2 * temperature * slope_a
-    kubo_b = 2 * temperature * slope_b
+    kubo_a = temperature * slope_a
+    kubo_b = temperature * slope_b
     assert_equal("first spectral model has positive high-frequency area", high_area_a > 0, True)
     assert_equal("second spectral model has positive high-frequency area", high_area_b > 0, True)
     assert_equal(
@@ -4801,13 +4813,18 @@ def check_qcd_axial_charge_relaxation_kubo_bridge() -> None:
         low_area_a + high_area_a == low_area_b + high_area_b and kubo_a != kubo_b,
         True,
     )
+    assert_equal(
+        "KMS zero-frequency weight has no extra factor two",
+        kubo_a == 2 * temperature * slope_a,
+        False,
+    )
 
     nonzero_static_instanton_susceptibility = Fraction(2, 7)
     zero_topological_diffusion = Fraction(0)
     assert_equal(
         "nonzero static instanton susceptibility is not a topological relaxation rate",
         nonzero_static_instanton_susceptibility > 0
-        and axial_step * axial_step * zero_topological_diffusion / (chi5 * temperature) == 0,
+        and axial_step * axial_step * zero_topological_diffusion / (2 * chi5 * temperature) == 0,
         True,
     )
 
@@ -4855,10 +4872,22 @@ def check_electroweak_sphaleron_response_ledger() -> None:
     susceptibility = Fraction(13, 17)
     x_density = Fraction(19, 23)
     chemical_potential = x_density / susceptibility
-    relaxation_rate = delta_x * delta_x * gamma_cs / (susceptibility * temperature)
+    relaxation_rate = delta_x * delta_x * gamma_cs / (2 * susceptibility * temperature)
     drift = -relaxation_rate * x_density
-    detailed_balance_drift = -delta_x * gamma_cs * (delta_x * chemical_potential) / temperature
+    ncs_fokker_planck_diffusion = gamma_cs / 2
+    detailed_balance_drift = (
+        -delta_x
+        * ncs_fokker_planck_diffusion
+        * (delta_x * chemical_potential)
+        / temperature
+    )
     assert_equal("sphaleron B+L relaxation drift", drift, detailed_balance_drift)
+    old_no_half_rate = delta_x * delta_x * gamma_cs / (susceptibility * temperature)
+    assert_equal(
+        "variance-rate convention rejects no-half B+L relaxation",
+        old_no_half_rate == relaxation_rate,
+        False,
+    )
 
     variance_rate_b_plus_l = delta_x * delta_x * gamma_cs
     variance_rate_b_minus_l = delta_b_minus_l * delta_b_minus_l * gamma_cs
@@ -4868,7 +4897,7 @@ def check_electroweak_sphaleron_response_ledger() -> None:
     zero_sphaleron_rate = Fraction(0)
     assert_equal(
         "no real-time sphaleron diffusion gives no washout despite vertex selection rule",
-        delta_x * delta_x * zero_sphaleron_rate / (susceptibility * temperature),
+        delta_x * delta_x * zero_sphaleron_rate / (2 * susceptibility * temperature),
         Fraction(0),
     )
 
@@ -4893,14 +4922,17 @@ def check_electroweak_sphaleron_response_ledger() -> None:
     )
 
     projected_relaxation_rate = (
-        delta_x * delta_x * gamma_cs / (constrained_chi_x * temperature)
+        delta_x * delta_x * gamma_cs / (2 * constrained_chi_x * temperature)
     )
     projected_drift = -projected_relaxation_rate * x_density
     projected_chemical_potential = x_density / constrained_chi_x
     assert_equal(
         "projected susceptibility gives detailed-balance drift",
         projected_drift,
-        -delta_x * gamma_cs * (delta_x * projected_chemical_potential) / temperature,
+        -delta_x
+        * ncs_fokker_planck_diffusion
+        * (delta_x * projected_chemical_potential)
+        / temperature,
     )
     assert_equal(
         "unconstrained susceptibility differs when B-L is fixed",
