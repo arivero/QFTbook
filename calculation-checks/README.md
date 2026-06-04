@@ -2173,7 +2173,11 @@ Current checks:
   FI-coordinate shift induced by vortex coefficient normalizations, the
   all-rank mirror-torus and Coulomb affine-term ledger showing that vortex
   determinant constants are absorbed by shifted FI-theta coordinates together
-  with the integral theta-period branch check, the
+  with the integral theta-period branch check, the rank-one
+  vortex-fugacity dimensional-transmutation check showing that
+  \(\mu^{\sum_iQ_i}\exp(t+\sum_iQ_i\log c_i)/\prod_iQ_i^{Q_i}\) is the
+  invariant Coulomb scale while bare-FI and uncompensated-\(\mu\) shortcuts
+  fail, the
   primitive-monomial selection forced by exact Coulomb matching, the
   single-vortex amplitude assembly with zero-mode removal, determinant-power
   bookkeeping, saturated twisted-\(F\)-term zero modes, unsaturated-zero-mode

@@ -1271,6 +1271,70 @@ which is an integral theta-period shift.  The exponentiated constraints
 \eqref{eq:glsm-all-rank-vortex-normalized-constraints} are therefore the
 branch-independent protected statement.
 
+\begin{controlledapproximation}[Vortex fugacity and dimensional transmutation]
+\label{ca:glsm-vortex-fugacity-transmutation}
+For a rank-one abelian GLSM with nonzero charges \(Q_i\), put
+\[
+  Q_\Sigma=\sum_i Q_i,\qquad
+  C_Q^{\rm br}
+  =
+  \exp\!\left(\sum_i Q_i\log_{\rm br}Q_i\right),
+\]
+where the logarithm branches are the same branches used in the Coulomb
+determinant.  The vortex-normalized exponentiated FI coordinate at regulator
+scale \(\mu\) is
+\begin{equation}
+  q_{\rm phys}(\mu)
+  =
+  \exp\!\left(t(\mu)+\sum_iQ_i\log c_i(\mu)\right).
+  \label{eq:glsm-vortex-normalized-fugacity}
+\end{equation}
+After the \(Y_i\) variables are eliminated, the Coulomb critical equation is
+therefore
+\begin{equation}
+  C_Q^{\rm br}\,\mu^{-Q_\Sigma}\sigma^{Q_\Sigma}
+  =
+  q_{\rm phys}(\mu).
+  \label{eq:glsm-vortex-normalized-coulomb-scale-equation}
+\end{equation}
+If \(Q_\Sigma\neq0\), the protected scale coordinate is the
+renormalization-group invariant combination
+\begin{equation}
+  \Lambda_Q^{\,Q_\Sigma}
+  =
+  \frac{\mu^{Q_\Sigma}q_{\rm phys}(\mu)}{C_Q^{\rm br}},
+  \qquad
+  \sigma^{Q_\Sigma}=\Lambda_Q^{\,Q_\Sigma}.
+  \label{eq:glsm-vortex-dimensional-transmutation-scale}
+\end{equation}
+Changing the regulator scale or the finite vortex determinant normalization
+does not preserve the protected Coulomb roots unless
+\begin{equation}
+  \frac{d}{d\log\mu}
+  \left(
+    t(\mu)+\sum_iQ_i\log c_i(\mu)+Q_\Sigma\log\mu
+  \right)
+  =
+  0
+  \label{eq:glsm-vortex-fugacity-rg-invariance}
+\end{equation}
+on the selected branch.  If \(Q_\Sigma=0\), the \(\mu\)-power cancels instead:
+the same finite determinant constants only define a dimensionless
+exponentiated FI coordinate.
+
+This is the field-theoretic content behind the statement that the scale
+\(\mu\) in the mirror superpotential is fake.  It is fake only after the
+one-loop Coulomb determinant, the finite vortex coefficient, and the FI
+counterterm have been combined into
+\eqref{eq:glsm-vortex-normalized-fugacity}--\eqref{eq:glsm-vortex-dimensional-transmutation-scale}.
+Using the bare \(e^t\) while dropping the \(c_i\), or varying \(\mu\) without
+the compensating FI flow, changes the Coulomb roots and hence changes the
+protected massive vacua.  Conversely, even an invariant
+\(\Lambda_Q^{Q_\Sigma}\) proves only the protected twisted-\(F\)-term
+coordinate; it does not prove by itself that the full GLSM and the
+Landau--Ginzburg mirror are equivalent as continuum QFTs.
+\end{controlledapproximation}
+
 There is a complementary low-energy use of the same expression.  In a
 regime where the abelian vector multiplet has no independent low-energy
 propagating mode, \(\Sigma_a\) acts as a twisted chiral Lagrange multiplier.

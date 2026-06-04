@@ -4,7 +4,8 @@ Evidence contract.
 Target claims: the finite LG/GLSM charge ledgers, abelian duality
 normalizations, charged-chiral mirror elimination, vortex-zero-mode filter,
 vortex-to-FI-coordinate normalization, P^{N-1} mirror residue trace, and
-vortex-to-protected-observable residual ledger, together with the degree-one
+vortex-to-protected-observable residual ledger, together with the
+vortex-fugacity dimensional-transmutation coordinate and the degree-one
 P^{N-1} stable-map gate for the quantum-product relation, in Volume VII
 Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
@@ -16,9 +17,10 @@ factorization, nonzero-mode determinant placeholders, logarithm-branch
 conventions, and the chapter's protected-coordinate definitions are assumed
 as finite input.
 Negative controls: extra unsaturated zero modes, omitted vortex
-normalization constants, wrong residue selection powers, underspecified
-residual budgets, stable-map dimension mismatches, and finite-gauge
-invariance failures are rejected when the finite model can represent them.
+normalization constants, unbalanced regulator-scale changes, wrong residue
+selection powers, underspecified residual budgets, stable-map dimension
+mismatches, and finite-gauge invariance failures are rejected when the finite
+model can represent them.
 Scope boundary: a pass checks finite algebra and bookkeeping interfaces; it
 does not prove continuum GLSM existence, Hori--Vafa mirror equivalence,
 vortex compactness, determinant nonvanishing, virtual-cycle construction, or
@@ -467,6 +469,46 @@ def check_all_rank_vortex_fi_coordinate_shift() -> None:
     )
 
 
+def check_vortex_fugacity_dimensional_transmutation() -> None:
+    charges = [2, 3, 5]
+    charge_sum = sum(charges)
+    charge_constant = prod(Fraction(charge) ** charge for charge in charges)
+    bare_q = Fraction(7, 11)
+    vortex_coefficients = [Fraction(2, 3), Fraction(5, 7), Fraction(11, 13)]
+    q_phys = bare_q * prod(
+        coefficient**charge
+        for coefficient, charge in zip(vortex_coefficients, charges)
+    )
+    mu = Fraction(17, 5)
+    lambda_power = mu**charge_sum * q_phys / charge_constant
+
+    scale_factor = Fraction(19, 7)
+    mu_prime = mu * scale_factor
+    q_phys_prime = q_phys / scale_factor**charge_sum
+    assert_equal(
+        "GLSM vortex fugacity RG-invariant scale",
+        mu_prime**charge_sum * q_phys_prime / charge_constant,
+        lambda_power,
+    )
+
+    wrong_uncompensated_scale = mu_prime**charge_sum * q_phys / charge_constant
+    if wrong_uncompensated_scale == lambda_power:
+        raise AssertionError("changing mu without FI flow should move the Coulomb scale")
+
+    bare_lambda_power = mu**charge_sum * bare_q / charge_constant
+    if bare_lambda_power == lambda_power:
+        raise AssertionError("bare FI coordinate should not ignore vortex coefficients")
+
+    anomaly_free_charges = [1, 1, 1, -3]
+    assert_equal("anomaly-free GLSM has no mu power", sum(anomaly_free_charges), 0)
+    q_anomaly_free = Fraction(23, 29)
+    assert_equal(
+        "anomaly-free fugacity is dimensionless under mu rescaling",
+        q_anomaly_free * mu ** sum(anomaly_free_charges),
+        q_anomaly_free,
+    )
+
+
 def check_mirror_primitive_monomial_selection() -> None:
     # If the connected protected correction is h(X)=sum_n a_n X^n and exact
     # Coulomb matching demands X(M)=M/a_1 on a branch, then the critical
@@ -911,6 +953,7 @@ def main() -> None:
     check_abelian_coulomb_one_loop_primitive()
     check_charged_chiral_dual_elimination()
     check_all_rank_vortex_fi_coordinate_shift()
+    check_vortex_fugacity_dimensional_transmutation()
     check_mirror_primitive_monomial_selection()
     check_vortex_zero_mode_filter()
     check_single_vortex_amplitude_assembly()

@@ -60,6 +60,9 @@ and
   coordinate, physical exponentiated FI coordinate after finite determinant
   normalization, normalized projective-space mirror residue trace, and
   hyperplane/Coulomb class in the `P^{N-1}` protected ring test.
+- `Q_Sigma`, `C_Q^br`, `Lambda_Q`: rank-one GLSM charge sum, branch-fixed
+  Coulomb charge constant, and RG-invariant vortex/Coulomb transmutation
+  scale after the vortex coefficients and FI coordinate have been combined.
 - `A^A_{Lambda,k}`, `S_k(q_Lambda)`, `R_coeff`, `R_det`, `R_zm`,
   `R_cpt`, `R_gl`, `R_op`, `R_cont`: finite-regulator A-twisted observable,
   mirror-residue prediction, and stage residuals in the vortex-to-observable
@@ -174,6 +177,11 @@ and
   constants into `t_a^phys=t_a+sum_i Q_i^a log c_i`, and the same shift is
   checked against the Coulomb affine term, with logarithm-branch changes
   identified as integral theta-period shifts.
+- Adds the rank-one vortex-fugacity transmutation certificate: the protected
+  Coulomb roots depend on
+  `mu^{sum_i Q_i} exp(t+sum_i Q_i log c_i)/prod_i Q_i^{Q_i}`, so `mu` is
+  fake only after FI running and finite vortex determinant normalization are
+  combined; in the anomaly-free case the `mu` power cancels instead.
 - Derives the low-energy `Sigma_a` constraints
   `sum_i Q_i^a Y_i=-t_a`, producing the logarithmic-torus mirror
   Landau-Ginzburg presentation of protected twisted-chiral data.
@@ -294,6 +302,9 @@ and
     telescope, underbudget negative control, rejection of bare-FI shortcuts
     that ignore finite vortex coefficients, and vanishing when the zero-mode
     gate is unsaturated;
+  - the vortex-fugacity transmutation ledger: RG-invariant Coulomb scale,
+    rejection of bare-FI and uncompensated-regulator-scale shortcuts, and the
+    anomaly-free zero `mu`-power check;
   - the direct `P^{N-1}` degree-one stable-map quantum-product gate:
     virtual-dimension/codimension matching for
     `I_1(H,H^{N-1},H^{N-1})`, wrong-degree and lower-insertion negative
@@ -357,3 +368,8 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   calculation for `I_1(H,H^{N-1},H^{N-1})=1`, the resulting `H^N=q_phys`
   product gate, and finite checks rejecting mirror-only or dimension-mismatched
   shortcuts.
+- The 2026-06-04 vortex-fugacity pass scrutinizes the Hori--Vafa scale
+  statement itself: the chapter now derives the RG-invariant rank-one
+  combination of `mu`, the FI coordinate, and finite vortex determinant
+  constants, and the companion rejects both bare-FI and uncompensated-`mu`
+  shortcuts before a Coulomb root or mirror coordinate is treated as physical.
