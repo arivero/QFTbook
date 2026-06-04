@@ -373,13 +373,21 @@ Current Appendix K absorption:
   as mechanisms to reconstruct rather than proof sources.  The remaining
   proof obligations are regulator-level construction of the vortex sectors,
   determinant normalizations, local operator maps, topological sectors, and
-  equality of continuum Hilbert spaces/local algebras.
+  equality of continuum Hilbert spaces/local algebras.  The 2026-06-04
+  follow-through adds a residual-controlled bridge from the regulated
+  vortex coefficient to the protected `P^{N-1}` A-twisted observable, so the
+  Hori--Vafa residue identity is explicitly separated from the physical
+  determinant, zero-mode, compactification, gluing, operator-map, and
+  continuum inputs it still needs.
 - Companion checks in `calculation-checks/susy_2d_lg_glsm_checks.py` now
   cover the finite algebra in the charged-dual elimination, FI shift,
   `P^{N-1}` critical ledger, cigar metric elimination, hypersurface
   adjunction/central-charge matching, residual finite-gauge invariant
-  monomials, the Coulomb-coordinate signal, and the Fermat Wilsonian
-  superpotential spurion-selection arithmetic.
+  monomials, the Coulomb-coordinate signal, the vortex-to-observable
+  residual telescope, and the Fermat Wilsonian superpotential
+  spurion-selection arithmetic.  The companion is now in the evidence-contract
+  manifest because the mirror/vortex checks are load-bearing and
+  scope-sensitive.
 
 ### Planar Integrability
 

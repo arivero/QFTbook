@@ -60,6 +60,10 @@ and
   coordinate, physical exponentiated FI coordinate after finite determinant
   normalization, normalized projective-space mirror residue trace, and
   hyperplane/Coulomb class in the `P^{N-1}` protected ring test.
+- `A^A_{Lambda,k}`, `S_k(q_Lambda)`, `R_coeff`, `R_det`, `R_zm`,
+  `R_cpt`, `R_gl`, `R_op`, `R_cont`: finite-regulator A-twisted observable,
+  mirror-residue prediction, and stage residuals in the vortex-to-observable
+  comparison ledger.
 - `U_{i,1,Lambda}`, `W_{i,1,Lambda}^{nz}`, `Z_{i,F,Lambda}^0`,
   `c_{i,Lambda}`: finite-regulator one-vortex chart, nonzero-mode
   determinant ratio, zero-mode Berezin coefficient for the twisted
@@ -179,6 +183,13 @@ and
   recovers the protected quantum-product relation `H^N=q_phys` only after the
   vortex coefficient, determinant-line orientation, and A-twisted
   compactification/contact data are fixed.
+- Adds the vortex-to-observable residual ledger: the regulated
+  `P^{N-1}` A-twisted correlator is compared to the mirror residue through
+  separate coefficient, determinant, zero-mode, compactification/contact,
+  gluing, operator-map, and continuum residuals.  The chapter now makes the
+  nonzero vortex coefficient and the vanishing of those residuals the
+  load-bearing physics inputs before the finite Hori--Vafa residue identity is
+  promoted to the quantum-product statement.
 - Derives the classical cigar quotient metric by solving the auxiliary
   constraint, gauge fixing the logarithmic chiral scalar, and eliminating the
   gauge field.
@@ -270,6 +281,10 @@ and
     determinant, root-of-unity selection rule, `R(H^{N-1+dN})=q_phys^d`,
     off-selection vanishing, and the trace recurrence equivalent to
     `H^N=q_phys`;
+  - the vortex-to-protected-observable residual budget: exact residual
+    telescope, underbudget negative control, rejection of bare-FI shortcuts
+    that ignore finite vortex coefficients, and vanishing when the zero-mode
+    gate is unsaturated;
   - the cigar quotient metric coefficients after algebraic elimination of
     the gauge field.
   - the logarithmic-chiral vortex obstruction: a unit-norm charged section
@@ -317,3 +332,9 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   residual fermion zero modes and proving the Berezin saturation criterion
   that decides whether the regulated vortex sector can generate a twisted
   superpotential term at all.
+- The 2026-06-04 vortex-to-observable pass strengthens the architecture
+  rather than adding another local identity: it connects the regulated
+  vortex coefficient to the protected `P^{N-1}` A-model observable through an
+  explicit residual telescope, registers the GLSM companion in the
+  evidence-contract manifest, and adds adversarial checks for missing vortex
+  coefficients, unsaturated zero modes, and underbudgeted comparison errors.

@@ -1441,6 +1441,93 @@ statement.  The physical identification still depends on the same determinant,
 orientation, zero-mode, compactification, and contact-term data isolated in
 \eqref{eq:glsm-single-vortex-coefficient-integral}.
 
+\begin{proposition}[From vortex coefficient to protected observable]
+\label{prop:glsm-vortex-to-observable-residual-ledger}
+In the charge-one \(\mathbb P^{N-1}\) GLSM, fix a finite supersymmetric
+regulator and let \(c_{i,\Lambda}\) be the regulated coefficients in
+\eqref{eq:glsm-single-vortex-coefficient-integral}.  Put
+\[
+  q_\Lambda
+  =
+  \exp(t)\prod_{i=1}^N c_{i,\Lambda}.
+\]
+For \(k\ge0\), define the finite mirror-residue prediction
+\[
+  S_k(q_\Lambda)
+  =
+  \begin{cases}
+    q_\Lambda^{\,d}, & k=N-1+dN,\quad d\ge0,\\
+    0, & k\not\equiv N-1\pmod N .
+  \end{cases}
+\]
+Let \(A_{\Lambda,k}^{A}\) be the corresponding regulated A-twisted
+correlator after the local operator assigned to \(H^k\) has been chosen.
+Suppose the comparison is organized through the stage residuals
+\begin{equation}
+  A_{\Lambda,k}^{A}-S_k(q_\Lambda)
+  =
+  R_{\rm coeff}
+  +R_{\rm det}
+  +R_{\rm zm}
+  +R_{\rm cpt}
+  +R_{\rm gl}
+  +R_{\rm op}
+  +R_{\rm cont}.
+  \label{eq:glsm-vortex-to-observable-residual-telescope}
+\end{equation}
+Here \(R_{\rm coeff}\) measures the difference between the continuum
+charge-one vortex amplitude and the regulated coefficient
+\eqref{eq:glsm-single-vortex-coefficient-integral},
+\(R_{\rm det}\) the nonzero-mode determinant and determinant-line
+normalization error, \(R_{\rm zm}\) the residual zero-mode saturation and
+source-insertion error, \(R_{\rm cpt}\) the compactification, obstruction,
+boundary, and contact-term error, \(R_{\rm gl}\) the multi-vortex or
+degree-\(d\) gluing error when \(d>1\), \(R_{\rm op}\) the map from the GLSM
+operator to the hyperplane/Coulomb class, and \(R_{\rm cont}\) the continuum
+limit remainder.  If
+\[
+  |R_\alpha|\le \epsilon_\alpha
+  \quad
+  (\alpha={\rm coeff,det,zm,cpt,gl,op,cont}),
+\]
+then
+\begin{equation}
+  \left|A_{\Lambda,k}^{A}-S_k(q_\Lambda)\right|
+  \le
+  \epsilon_{\rm coeff}
+  +\epsilon_{\rm det}
+  +\epsilon_{\rm zm}
+  +\epsilon_{\rm cpt}
+  +\epsilon_{\rm gl}
+  +\epsilon_{\rm op}
+  +\epsilon_{\rm cont}.
+  \label{eq:glsm-vortex-to-observable-residual-bound}
+\end{equation}
+Consequently the quantum-product statement \(H^N=q_{\rm phys}\) follows from
+the mirror residue only after \(q_\Lambda\to q_{\rm phys}\neq0\) and all
+seven residuals vanish in the protected comparison.  If some
+\(c_{i,\Lambda}=0\) because the determinant line is unoriented, an extra
+fermion zero mode is unsaturated, or the compactified vortex integral
+vanishes, then \(q_\Lambda=0\); the nonzero degree-one quantum product cannot
+be recovered by holomorphy or charge matching alone.
+\end{proposition}
+
+\begin{proof}
+The identity
+\eqref{eq:glsm-vortex-to-observable-residual-telescope} is obtained by
+adding and subtracting the successive finite approximants: the regulated
+vortex coefficient, the determinant-normalized coefficient, the
+zero-mode-saturated coefficient, the compactified A-model amplitude, the
+glued degree-\(d\) sector, the local-operator identification, and the
+continuum protected correlator.  The estimate
+\eqref{eq:glsm-vortex-to-observable-residual-bound} is the triangle
+inequality.  Proposition~\ref{prop:cpn-hv-residue-quantum-product} supplies
+the finite residue value \(S_k(q_\Lambda)\), but it contains no information
+about whether the regulated vortex coefficient is nonzero or whether the
+comparison residuals vanish.  That information is precisely the physical
+amplitude input isolated above.
+\end{proof}
+
 \section{The Cigar--Liouville Mirror Chain as a QFT Duality Problem}
 \label{sec:cigar-liouville-mirror-qft-problem}
 

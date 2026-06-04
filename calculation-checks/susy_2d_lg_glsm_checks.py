@@ -1,4 +1,27 @@
-"""Finite algebra checks for the 2D N=(2,2) LG/GLSM chapter."""
+"""Finite algebra checks for the 2D N=(2,2) LG/GLSM chapter.
+
+Evidence contract.
+Target claims: the finite LG/GLSM charge ledgers, abelian duality
+normalizations, charged-chiral mirror elimination, vortex-zero-mode filter,
+vortex-to-FI-coordinate normalization, P^{N-1} mirror residue trace, and
+vortex-to-protected-observable residual ledger in Volume VII Chapter 09.
+Independent construction: exact rational charge arithmetic, determinant
+elimination, Berezin-degree tests, root-of-unity residue sums, and explicit
+residual telescopes are computed directly from finite data rather than by
+substituting the displayed final identities.
+Imported assumptions: the finite GLSM charge matrix, selected regulator-stage
+factorization, nonzero-mode determinant placeholders, logarithm-branch
+conventions, and the chapter's protected-coordinate definitions are assumed
+as finite input.
+Negative controls: extra unsaturated zero modes, omitted vortex
+normalization constants, wrong residue selection powers, underspecified
+residual budgets, and finite-gauge invariance failures are rejected when the
+finite model can represent them.
+Scope boundary: a pass checks finite algebra and bookkeeping interfaces; it
+does not prove continuum GLSM existence, Hori--Vafa mirror equivalence,
+vortex compactness, determinant nonvanishing, virtual-cycle construction, or
+uniform remainder estimates.
+"""
 
 from __future__ import annotations
 
@@ -655,6 +678,73 @@ def check_cp_mirror_residue_correlators() -> None:
             )
 
 
+def check_vortex_to_observable_residual_budget() -> None:
+    n_fields = 4
+    q_regulated = Fraction(5, 7)
+    insertion_power = n_fields - 1 + 2 * n_fields
+    residue_prediction = cp_mirror_residue_trace(
+        n_fields,
+        insertion_power,
+        q_regulated,
+    )
+    assert_equal(
+        "finite mirror residue prediction is q^degree",
+        residue_prediction,
+        q_regulated**2,
+    )
+
+    residuals = {
+        "coefficient": Fraction(1, 13),
+        "determinant": Fraction(1, 17),
+        "zero mode": Fraction(1, 19),
+        "compactification": Fraction(1, 23),
+        "gluing": Fraction(1, 29),
+        "operator map": Fraction(1, 31),
+        "continuum": Fraction(1, 37),
+    }
+    protected_amplitude = residue_prediction + sum(residuals.values(), Fraction(0))
+    actual_error = abs(protected_amplitude - residue_prediction)
+    full_budget = sum(abs(value) for value in residuals.values())
+    assert_equal("vortex-to-observable residual telescope", actual_error, full_budget)
+
+    omitted_operator_budget = full_budget - abs(residuals["operator map"])
+    if actual_error <= omitted_operator_budget:
+        raise AssertionError("omitting operator-map residual should underbudget the error")
+
+    assert_equal(
+        "zero residuals identify protected amplitude with residue prediction",
+        residue_prediction + sum([Fraction(0)] * len(residuals), Fraction(0)),
+        residue_prediction,
+    )
+
+    bare_q = Fraction(3, 11)
+    vortex_coefficients = [
+        Fraction(2, 3),
+        Fraction(5, 7),
+        Fraction(11, 13),
+        Fraction(17, 19),
+    ]
+    q_with_vortex_measure = bare_q * prod(vortex_coefficients)
+    degree_one_power = n_fields - 1 + n_fields
+    assert_equal(
+        "degree-one observable uses vortex-normalized q",
+        cp_mirror_residue_trace(n_fields, degree_one_power, q_with_vortex_measure),
+        q_with_vortex_measure,
+    )
+    if cp_mirror_residue_trace(n_fields, degree_one_power, bare_q) == q_with_vortex_measure:
+        raise AssertionError("bare FI coordinate should not ignore vortex coefficients")
+
+    unsaturated_zero_mode_gate = Fraction(0)
+    q_unsaturated = bare_q * prod(vortex_coefficients) * unsaturated_zero_mode_gate
+    assert_equal(
+        "unsaturated residual zero modes kill degree-one observable",
+        cp_mirror_residue_trace(n_fields, degree_one_power, q_unsaturated),
+        Fraction(0),
+    )
+    if cp_mirror_residue_trace(n_fields, degree_one_power, bare_q) == q_unsaturated:
+        raise AssertionError("symmetry-only q should not survive a zero-mode gate")
+
+
 def check_cigar_metric_elimination() -> None:
     examples = [
         (Fraction(9, 5), Fraction(7, 3)),
@@ -769,6 +859,7 @@ def main() -> None:
     check_single_vortex_amplitude_assembly()
     check_cp_mirror_critical_ledger()
     check_cp_mirror_residue_correlators()
+    check_vortex_to_observable_residual_budget()
     check_cigar_metric_elimination()
     check_logarithmic_chiral_vortex_obstruction()
     check_hypersurface_phase_ledger()

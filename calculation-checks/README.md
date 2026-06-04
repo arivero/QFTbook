@@ -2103,8 +2103,10 @@ Current checks:
   bookkeeping, saturated twisted-\(F\)-term zero modes, unsaturated-zero-mode
   vanishing, and FI-coordinate normalization shifts, the
   \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger and protected
-  residue/quantum-product selection rule, and the classical cigar quotient
-  metric obtained by eliminating the gauge field,
+  residue/quantum-product selection rule, the vortex-to-protected-observable
+  residual telescope with negative controls for omitted vortex coefficients,
+  unsaturated zero modes, and underbudgeted comparison residuals, and the
+  classical cigar quotient metric obtained by eliminating the gauge field,
   the logarithmic-chiral vortex obstruction, plus the hypersurface GLSM
   adjunction sign,
   Landau--Ginzburg/sigma-model central-charge matching condition, residual

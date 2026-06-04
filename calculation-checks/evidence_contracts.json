@@ -48,6 +48,10 @@
     {
       "path": "rg_short_range_reconstruction_checks.py",
       "risk_class": "rigorous RG reconstruction"
+    },
+    {
+      "path": "susy_2d_lg_glsm_checks.py",
+      "risk_class": "GLSM mirror/vortex amplitudes"
     }
   ]
 }
