@@ -72,7 +72,7 @@ typography.
 
 ## Audit Command
 
-The repository audit command
+The structural audit command
 
 ```bash
 tools/audit_figures.py
@@ -96,3 +96,18 @@ tools/audit_figures.py --list-inline --inline-long-threshold 30
 
 to audit inline TikZ locations.  An inline diagram above the threshold should
 be inspected as a candidate for promotion to a floated, captioned figure.
+
+The rendered audit command
+
+```bash
+tools/render_figure_pages.py --force
+```
+
+reads the compiled `main.aux` and PDF hyperref destination tree, writes a
+manifest of every floated figure label to
+`monograph/tex/build/figure_audit_current/figure_pages_manifest.tsv`, renders
+each physical PDF page that contains a figure, and builds contact sheets under
+`monograph/tex/build/figure_audit_current/contact/`.  Use these sheets for the
+print-size legibility pass: clipping, line weight, labels, caption separation,
+grayscale readability, page placement, and whether the displayed schematic
+still carries the mathematical or physical datum claimed by the text.

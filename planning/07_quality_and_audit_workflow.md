@@ -123,6 +123,16 @@ Every paragraph should be classifiable as one of:
 Run the audit and build scripts. Inspect the log and the rendered PDF. Figures
 must be checked visually against their mathematical intent.
 
+For a full rendered figure pass after building the monograph, run
+
+```bash
+tools/render_figure_pages.py --force
+```
+
+and inspect the contact sheets in
+`monograph/tex/build/figure_audit_current/contact/` against the figure style
+guide.
+
 For convention-sensitive derivations, run the public calculation checks.  The
 default entry point is
 

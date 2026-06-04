@@ -585,14 +585,17 @@ through line style, weight, marker shape, or direct labeling, not color alone.
 Spacetime-axis conventions must either follow the project default, time
 vertical and space horizontal, or state the local departure before the figure.
 The detailed project policy is `planning/figure_style_guide.md`; the audit
-tool is
+tools are
 
 ```bash
 tools/audit_figures.py
+tools/render_figure_pages.py --force
 ```
 
-and `tools/audit_figures.py --strict` is the gate once the existing figure
-backlog has been fully remediated.
+The strict structural gate is `tools/audit_figures.py --strict`.  The rendered
+audit command writes a current figure-page manifest and contact sheets under
+`monograph/tex/build/figure_audit_current/`; use those images for the
+print-size legibility and semantic-value pass.
 
 ## QFT Ordering Rule
 
