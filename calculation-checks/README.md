@@ -525,7 +525,11 @@ Current checks:
   \(\chi_{\rm top}^{T,{\rm dig}}=2\zeta_T\) with \(b_2=-1/12\),
   \(T^{-23/3}\) \(SU(3)\), \(N_f=2\) scaling, and inherited residual bound, the
   dilute instanton-gas theta cumulants \(\chi_{\rm top}=2\zeta\) and
-  \(b_2=-1/12\) after a finite activity has been supplied, the
+  \(b_2=-1/12\) after a finite activity has been supplied, the first
+  two-body cluster correction showing that same-charge clusters generate a
+  \(\cos 2\theta\) harmonic and shift \(\chi_{\rm top}\) and \(b_2\), while
+  neutral instanton--anti-instanton molecules cancel from
+  \(E(\theta)-E(0)\) at this order, the
   finite instanton--anti-instanton zero-mode overlap matrix whose singular
   values give
   \(m^{|n_+-n_-|}\prod_\alpha(m^2+s_\alpha^2)\), the leading-block unpaired

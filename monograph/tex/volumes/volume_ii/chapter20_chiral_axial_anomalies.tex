@@ -7051,6 +7051,101 @@ confinement in zero-temperature Yang--Mills.  Its output is the conditional
 theta-dependence and zero-mode-saturated amplitude data above.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[First cluster correction to the dilute
+instanton gas]
+\label{ca:first-cluster-correction-dilute-instantons}
+The Poisson formula
+\eqref{eq:dilute-instanton-gas-partition} is the zeroth term in a cluster
+expansion.  The collective-coordinate chart supplies the integration
+variables, while the finite-regulator amplitude scheme must also supply
+finite two-body connected cluster integrals \(\mathfrak B_{\sigma\tau}\),
+\(\sigma,\tau\in\{+,-\}\), after all relative centers, sizes, orientations,
+nonzero-mode determinants, zero-mode saturations, and interaction remainders
+in the selected window have been included.  With
+\(z_+=\zeta_\Lambda\ee^{\ii\bar\theta}\) and
+\(z_-=\zeta_\Lambda\ee^{-\ii\bar\theta}\), the first Mayer correction to the
+logarithm has the local form
+\begin{equation}
+  \frac1{V_4}\log\frac{Z_{\rm cl}(\bar\theta)}{Z_0}
+  =
+  z_+ + z_-
+  +
+  \frac12
+  \sum_{\sigma,\tau=\pm}
+    z_\sigma z_\tau\,\mathfrak B_{\sigma\tau}
+  +O(\zeta_\Lambda^3).
+  \label{eq:instanton-first-mayer-pressure}
+\end{equation}
+Assume CP symmetry in this window, so
+\[
+  \mathfrak B_{++}=\mathfrak B_{--}=:\mathfrak B_2,
+  \qquad
+  \mathfrak B_{+-}=\mathfrak B_{-+}=:\mathfrak B_0 .
+\]
+Then
+\begin{equation}
+  \frac1{V_4}\log\frac{Z_{\rm cl}(\bar\theta)}{Z_0}
+  =
+  2\zeta_\Lambda\cos\bar\theta
+  +
+  \zeta_\Lambda^2
+  \bigl(\mathfrak B_2\cos(2\bar\theta)+\mathfrak B_0\bigr)
+  +O(\zeta_\Lambda^3).
+  \label{eq:instanton-first-mayer-theta-pressure}
+\end{equation}
+The neutral instanton--anti-instanton molecule \(\mathfrak B_0\) changes the
+vacuum pressure and the validity of the dilute expansion, but it cancels from
+the energy difference \(E(\bar\theta)-E(0)\) at this order.  The same-charge
+clusters carry topological charge \(\pm2\), and therefore generate a second
+theta harmonic:
+\begin{equation}
+  E_{\rm cl}(\bar\theta)-E_{\rm cl}(0)
+  =
+  2\zeta_\Lambda(1-\cos\bar\theta)
+  +
+  \zeta_\Lambda^2\mathfrak B_2(1-\cos(2\bar\theta))
+  +O(\zeta_\Lambda^3).
+  \label{eq:instanton-first-cluster-energy}
+\end{equation}
+Consequently
+\begin{equation}
+  \chi_{\rm top}^{\rm cl}
+  =
+  2\zeta_\Lambda+4\zeta_\Lambda^2\mathfrak B_2+O(\zeta_\Lambda^3),
+  \qquad
+  \partial_{\bar\theta}^4E_{\rm cl}\big|_{0}
+  =
+  -2\zeta_\Lambda-16\zeta_\Lambda^2\mathfrak B_2+O(\zeta_\Lambda^3),
+  \label{eq:instanton-first-cluster-curvatures}
+\end{equation}
+and, in the expansion convention of
+\eqref{eq:dilute-instanton-gas-energy},
+\begin{equation}
+  b_2^{\rm cl}
+  =
+  -\frac{1+8\zeta_\Lambda\mathfrak B_2}
+         {12(1+2\zeta_\Lambda\mathfrak B_2)}
+  +O(\zeta_\Lambda^2)
+  =
+  -\frac1{12}-\frac12\zeta_\Lambda\mathfrak B_2
+  +O(\zeta_\Lambda^2).
+  \label{eq:instanton-first-cluster-b2}
+\end{equation}
+Thus \(b_2=-1/12\) is not a universal instanton prediction.  It is the
+Poisson limit of independent \(Q=\pm1\) amplitudes.  The first same-charge
+connected cluster already changes the fourth theta curvature, while a neutral
+instanton--anti-instanton molecule first tests the cluster expansion and
+neutral observables rather than the theta dependence at this order.
+
+The identities above are only as controlled as the two-body cluster
+integrals.  They require a single regulator and source convention for the
+one-body amplitudes, relative collective-coordinate measure, fluctuation
+determinants, zero-mode overlap factors, and boundary-face estimates.  They
+do not derive \(\mathfrak B_{\sigma\tau}\) from ADHM data without the
+determinant and interaction estimates, nor do they prove that the omitted
+three-body and higher clusters are small.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Thermal dilute topological susceptibility]
 \label{ca:thermal-dilute-instanton-susceptibility}
 Combine the thermal determinant-screened one-instanton activity of

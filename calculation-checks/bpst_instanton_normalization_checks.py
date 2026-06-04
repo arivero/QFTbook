@@ -103,6 +103,10 @@ relations
     the dilute instanton gas gives the Poisson/Skellam theta cumulants
     chi_top=2 zeta and b2=-1/12 only after the one-instanton amplitude is
     promoted to a finite dilute activity
+    the first two-body Mayer correction changes the theta harmonics through
+    same-charge instanton clusters, while the neutral instanton-anti-instanton
+    cluster cancels from E(theta)-E(0) at this order; the corresponding
+    susceptibility and b2 ratio are checked exactly
     a finite instanton--anti-instanton ensemble has a rectangular zero-mode
     overlap matrix T whose singular values give the massive determinant
     m^|n_+-n_-| prod_alpha(m^2+s_alpha^2), the unpaired zero-mode pole, and
@@ -2679,6 +2683,66 @@ def check_dilute_instanton_gas_theta_cumulants() -> None:
     )
 
 
+def check_first_cluster_correction_to_dilute_instanton_gas() -> None:
+    zeta = Fraction(5, 17)
+    same_charge_cluster = Fraction(-3, 19)
+    neutral_cluster = Fraction(7, 23)
+
+    # Mayer pressure through two-body clusters:
+    # p(theta)=2 zeta cos(theta)
+    #        + zeta^2 (B_2 cos(2 theta)+B_0).
+    # The theta-independent neutral cluster cancels from E(theta)-E(0).
+    pressure_zero = 2 * zeta + zeta * zeta * (
+        same_charge_cluster + neutral_cluster
+    )
+    pressure_theta_dependent_zero = 2 * zeta + zeta * zeta * same_charge_cluster
+    assert_equal(
+        "neutral instanton-anti-instanton cluster is theta independent",
+        pressure_zero - pressure_theta_dependent_zero,
+        zeta * zeta * neutral_cluster,
+    )
+
+    # E(theta)-E(0)=p(0)-p(theta).  For 1-cos(n theta), the second and fourth
+    # derivatives at zero are n^2 and -n^4.
+    susceptibility = 2 * zeta + 4 * zeta * zeta * same_charge_cluster
+    fourth_curvature = -2 * zeta - 16 * zeta * zeta * same_charge_cluster
+    assert_equal(
+        "first cluster susceptibility harmonic",
+        susceptibility,
+        2 * zeta * (1 + 2 * zeta * same_charge_cluster),
+    )
+    assert_equal(
+        "first cluster fourth theta curvature harmonic",
+        fourth_curvature,
+        -2 * zeta * (1 + 8 * zeta * same_charge_cluster),
+    )
+
+    b2 = fourth_curvature / (12 * susceptibility)
+    assert_equal(
+        "first cluster b2 exact ratio",
+        b2,
+        -(
+            1 + 8 * zeta * same_charge_cluster
+        ) / (12 * (1 + 2 * zeta * same_charge_cluster)),
+    )
+
+    poisson_b2 = Fraction(-1, 12)
+    first_order_shift = -zeta * same_charge_cluster / 2
+    linearized_b2 = poisson_b2 + first_order_shift
+    cluster_parameter = zeta * same_charge_cluster
+    exact_minus_linearized = b2 - linearized_b2
+    assert_equal(
+        "first cluster b2 shift starts at same-charge cluster",
+        first_order_shift,
+        Fraction(15, 646),
+    )
+    assert_equal(
+        "first cluster b2 linearization error is quadratic",
+        exact_minus_linearized,
+        cluster_parameter * cluster_parameter / (1 + 2 * cluster_parameter),
+    )
+
+
 def check_instanton_ensemble_zero_mode_overlap_spectrum() -> None:
     def zero_matrix(rows: int, cols: int) -> list[list[Fraction]]:
         return [[Fraction(0) for _ in range(cols)] for _ in range(rows)]
@@ -3114,6 +3178,7 @@ def main() -> None:
     check_wilsonian_instanton_size_factorization()
     check_short_instanton_ope_coefficient_transport()
     check_dilute_instanton_gas_theta_cumulants()
+    check_first_cluster_correction_to_dilute_instanton_gas()
     check_instanton_ensemble_zero_mode_overlap_spectrum()
     check_mass_saturated_vacuum_activity_size_integral()
     check_screened_one_instanton_size_integral()

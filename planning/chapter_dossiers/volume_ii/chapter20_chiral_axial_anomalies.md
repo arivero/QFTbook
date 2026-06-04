@@ -293,6 +293,7 @@
 | \(\mu_I,\rho_I,K_\Lambda(\rho)\) | Wilsonian instanton factorization scale, cutoff \(\rho_I=\mu_I^{-1}\), and fully paired finite-regulator size integrand whose boundary flux transfers between the short coefficient and long-distance remainder |
 | \(C_I^{<},[O_I]_\mu,\gamma_{IK}\) | short-instanton OPE coefficient, retained renormalized operator basis, and operator-mixing anomalous-dimension matrix used to distinguish composite-operator RG transport from size-factorization flow |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
+| \(\mathfrak B_{++},\mathfrak B_{+-},\mathfrak B_2,\mathfrak B_0\) | two-body instanton cluster integrals in the first Mayer correction, with same-charge and neutral CP-even combinations |
 | \(\zeta_m^{[\rho_-,\rho_+]}\) | mass-saturated one-instanton vacuum activity in a finite size window |
 | \(m_{\rm scr},A,\mathcal A_{\rm scr}^{(0)}\) | physical infrared screening scale, screened size-integral power \(A=b_0+\beta_{\mathcal X}-4\), and leading screened one-instanton amplitude |
 | \(m_T,R_T,\mathcal A_T^G\) | high-temperature determinant screening scale, finite-temperature determinant residual, and Gaussian thermal one-instanton approximation |
@@ -757,6 +758,17 @@
   explicitly states the failure modes: unsaturated massless zero modes,
   infrared-divergent size integrals, uncontrolled small-instanton boundaries,
   and non-negligible instanton interactions.
+- The first two-body cluster correction is now displayed as a finite
+  amplitude-level Mayer term.  In a CP-even window,
+  \(V_4^{-1}\log Z\) acquires
+  \(\zeta_\Lambda^2(\mathfrak B_2\cos(2\bar\theta)+\mathfrak B_0)\).  The
+  neutral instanton--anti-instanton molecule \(\mathfrak B_0\) cancels from
+  \(E(\bar\theta)-E(0)\) at this order, while same-charge clusters shift
+  \(\chi_{\rm top}=2\zeta_\Lambda+4\zeta_\Lambda^2\mathfrak B_2\) and
+  \(b_2=-(1+8\zeta_\Lambda\mathfrak B_2)/
+  [12(1+2\zeta_\Lambda\mathfrak B_2)]+O(\zeta_\Lambda^2)\).  This records a
+  physical interaction correction to the theta harmonics, not a moduli-space
+  conclusion.
 - The instanton-liquid bridge is now formulated as finite zero-mode overlap
   algebra rather than moduli geometry.  For \(n_+\) instantons and \(n_-\)
   anti-instantons, the chiral near-zero-mode block contains a rectangular
@@ -1068,6 +1080,14 @@
   script now verifies the Skellam cumulant ledger, \(\chi_{\rm top}=2\zeta\),
   \(b_2=-1/12\), and the vanishing of the vacuum activity when a massless
   flavor leaves zero modes unsaturated.
+- 2026-06-04 issue #597 first-cluster theta pass: added
+  `ca:first-cluster-correction-dilute-instantons`, which promotes the dilute
+  gas from a Poisson endpoint to the first Mayer correction.  Same-charge
+  two-instanton clusters now generate the \(\cos2\theta\) harmonic and shift
+  \(\chi_{\rm top}\) and \(b_2\), while the neutral instanton--anti-instanton
+  cluster cancels from the theta energy difference at this order.  The BPST
+  companion check verifies the finite pressure/energy sign, neutral
+  cancellation, same-charge curvature shift, and exact \(b_2\) ratio.
 - 2026-06-03 issue #597 mass-saturation size-integral pass: added the
   finite-window mass-saturated QCD instanton vacuum activity, deriving the
   \(\prod_f(m_f\rho)\) zero-mode factor, the
