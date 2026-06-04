@@ -110,12 +110,58 @@ def check_mu_residue_orientation_ledger() -> None:
     assert_equal("mu-term orientation reversal", -sigma_plus * residue, sigma_minus * residue)
 
 
+def check_excited_state_continuation_residual_budget() -> None:
+    bethe_yang_energy = Fraction(50, 7)
+    f_term = Fraction(-3, 11)
+    mu_term = Fraction(2, 13)
+    one_winding_coordinate = bethe_yang_energy + f_term + mu_term
+
+    residuals = {
+        "trace": Fraction(1, 11),
+        "contour": Fraction(-2, 13),
+        "branch": Fraction(3, 17),
+        "pole": Fraction(-1, 19),
+        "multi": Fraction(5, 23),
+        "density": Fraction(-7, 29),
+        "normalization": Fraction(11, 31),
+    }
+    total_residual = sum(residuals.values(), Fraction(0))
+    direct_energy = one_winding_coordinate + total_residual
+
+    assert_equal(
+        "excited-state continuation residual telescope",
+        direct_energy - one_winding_coordinate - total_residual,
+        Fraction(0),
+    )
+    if total_residual == 0:
+        raise AssertionError("excited-state residual budget accidentally collapsed")
+
+    residual_bound = sum(abs(value) for value in residuals.values())
+    if abs(direct_energy - one_winding_coordinate) > residual_bound:
+        raise AssertionError("excited-state residual triangle budget failed")
+
+    exact_when_residuals_vanish = one_winding_coordinate + sum(
+        Fraction(0) for _ in residuals
+    )
+    assert_equal(
+        "zero residual gives exact one-winding coordinate",
+        exact_when_residuals_vanish,
+        one_winding_coordinate,
+    )
+    assert_equal(
+        "one-winding coordinate still misses direct energy",
+        direct_energy - one_winding_coordinate,
+        total_residual,
+    )
+
+
 def main() -> None:
     check_two_winding_tba_expansion()
     check_vacuum_luscher_coefficient_and_threshold()
     check_bessel_k1_asymptotic_coefficients()
     check_f_term_product_subtraction()
     check_mu_residue_orientation_ledger()
+    check_excited_state_continuation_residual_budget()
     print("All mirror-channel TBA wrapping checks passed.")
 
 

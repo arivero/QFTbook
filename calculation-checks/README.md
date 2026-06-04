@@ -1863,7 +1863,9 @@ Current checks:
   coefficients, the vacuum Luescher \(K_1\) normalization and exponential
   remainder threshold, the \(K_1\) large-\(r\) asymptotic coefficients,
   F-term product subtraction, and the orientation sign in the \(\mu\)-term
-  residue ledger.
+  residue ledger, plus the excited-state continuation residual budget from
+  the direct spectral trace to the Bethe--Yang plus one-winding
+  F-/\(\mu\)-term coordinate.
 - `nonintegrable_bridge_checks.py`: exact arithmetic checks for the Volume VI
   bridge from integrable to nonintegrable two-dimensional QFT, including the
   broken-charge commutator ledger, first-order form-factor mass shift,

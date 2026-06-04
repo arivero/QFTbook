@@ -578,6 +578,87 @@ the direct-channel spectral trace.  The one-winding \(F\)-term and the
 \(\mu\)-term residue above are the first controlled pieces of this
 continuation ledger.
 
+\begin{controlledapproximation}[Excited-state continuation residual budget]
+\label{ca:excited-state-continuation-residual-budget}
+Let
+\[
+  \mathcal E_\Psi^{\rm dir}(R)=E_\Psi(R)-E_0(R)
+\]
+be the direct-channel excitation energy above the vacuum.  Let
+\(\mathcal E_\Psi^{\rm ins}\) be the same quantity extracted from the mirror
+trace with the direct-state insertions kept at the regulator level,
+\(\mathcal E_\Psi^{\rm cont}\) the expression after the declared contour and
+branch continuation, and \(\mathcal E_\Psi^{\rm src}\) the expression after
+all crossed singularities on that declared path have been converted into
+source or residue terms.  Finally set
+\begin{equation}
+  \mathcal E_\Psi^{1{\rm w}}(R)
+  =
+  E_\Psi^{\rm BY}(R)
+  +
+  \Delta E_\Psi^{F}(R)
+  +
+  \Delta E_\Psi^{\mu}(R),
+  \label{eq:excited-state-one-winding-coordinate}
+\end{equation}
+where \(E_\Psi^{\rm BY}\) is the Bethe--Yang energy in the chosen
+finite-volume normalization and the last two terms are the one-winding
+F-term and the crossed-pole \(\mu\)-term retained above.  The exact
+difference between the direct spectral coordinate and the one-winding
+coordinate decomposes as
+\begin{equation}
+  \mathcal E_\Psi^{\rm dir}(R)-\mathcal E_\Psi^{1{\rm w}}(R)
+  =
+  R_{\rm trace}
+  +
+  R_{\rm cont}
+  +
+  R_{\rm branch}
+  +
+  R_{\rm pole}
+  +
+  R_{\rm multi}
+  +
+  R_{\rm dens}
+  +
+  R_{\rm norm}.
+  \label{eq:excited-state-continuation-residual-budget}
+\end{equation}
+Here \(R_{\rm trace}\) compares the direct spectral trace with the mirror
+insertion trace; \(R_{\rm cont}\) is the error in the contour deformation
+inside the declared analytic strip; \(R_{\rm branch}\) records logarithm and
+source-branch changes; \(R_{\rm pole}\) is the net contribution of crossed
+singularities not included in \(\Delta E_\Psi^\mu\); \(R_{\rm multi}\) is the
+omitted two- and higher-mirror-particle sector; \(R_{\rm dens}\) records the
+finite-volume density and Bethe-rapidity normalization mismatch; and
+\(R_{\rm norm}\) records local operator, state, and bulk-energy normalization
+differences between the direct and mirror coordinates.  Consequently, if on
+a window \(R\in I\) these residuals obey
+\[
+  |R_\kappa(R)|\le \varepsilon_\kappa(R),
+  \qquad
+  \kappa\in\{
+  {\rm trace},{\rm cont},{\rm branch},{\rm pole},
+  {\rm multi},{\rm dens},{\rm norm}\},
+\]
+then
+\begin{equation}
+  \left|
+  \mathcal E_\Psi^{\rm dir}(R)-\mathcal E_\Psi^{1{\rm w}}(R)
+  \right|
+  \le
+  \sum_\kappa\varepsilon_\kappa(R).
+  \label{eq:excited-state-continuation-residual-bound}
+\end{equation}
+\end{controlledapproximation}
+
+The budget is only an identity plus declared estimates, but it is the right
+identity to audit.  A successful excited-state TBA theorem proves that the
+residuals vanish in the intended limit or remain within a stated approximation
+window.  A one-winding formula without these seven controls is a semiclassical
+finite-size coordinate, not a reconstruction of the direct-channel spectral
+trace.
+
 \section{Wrapping Effects for Local Operators}
 
 A wrapping contribution is a finite-volume term represented in the mirror
