@@ -11,6 +11,28 @@ covariance
 The theorem-boundary check keeps separate leading-region, soft, Glauber, power,
 and regulator residuals between the exact Wightman functional and the
 factorized coordinate; exact RG bookkeeping does not remove a nonzero residual.
+The finite inclusive-projection check verifies that a Glauber unitary cancels
+for measurements in the inclusive commutant and leaves a bounded nonzero
+residual when the measurement resolves the spectator sector.
+
+Evidence contract.
+Target claims: Drell-Yan leading-power kinematic coordinates, two-incoming-leg
+RG and scheme covariance of the factorized coordinate, TMD rapidity-scale and
+orientation bookkeeping, and finite algebraic models for theorem-boundary
+Glauber residuals.
+Independent construction: exact symbolic matrix/vector arithmetic, finite
+unitary conjugation, residual decomposition, and a spectator-resolving
+negative control independent of any diagrammatic factorization proof.
+Imported assumptions: the chapter's PDF/TMD operator definitions, the
+existence of regulated leading regions, and the identification of the
+finite unitary model as the algebraic shadow of QCD Glauber exchange.
+Negative controls: a deliberately nonzero Wightman-to-factorized residual,
+the statement that RG covariance does not remove that residual, and a
+measurement resolving the unobserved sector that leaves a nonzero but bounded
+Glauber remainder.
+Scope boundary: these checks do not prove Drell-Yan factorization, contour
+deformation, soft cancellation in continuum QCD, universality of TMDs, or
+power-suppressed remainder estimates.
 """
 
 from __future__ import annotations
@@ -206,6 +228,55 @@ def check_finite_glauber_unitarity() -> None:
     assert_zero("Glauber finite trace identity", after - before)
 
 
+def check_inclusive_glauber_projection_residual() -> None:
+    # The unobserved two-state sector is swapped by a finite Glauber unitary.
+    # A measurement acting only on the observed sector is invariant, while a
+    # resolved measurement that distinguishes the unobserved states is not.
+    swap = sp.Matrix([[0, 1], [1, 0]])
+    glauber = sp.kronecker_product(sp.eye(2), swap)
+
+    rho = sp.diag(
+        sp.Rational(1, 10),
+        sp.Rational(2, 10),
+        sp.Rational(3, 10),
+        sp.Rational(4, 10),
+    )
+    assert_zero("finite density trace normalization", sp.trace(rho) - 1)
+
+    inclusive_measurement = sp.kronecker_product(
+        sp.diag(sp.Rational(5, 3), sp.Rational(-2, 7)),
+        sp.eye(2),
+    )
+    inclusive_delta = glauber.T * inclusive_measurement * glauber - inclusive_measurement
+    assert_zero("inclusive measurement commutes with Glauber unitary", inclusive_delta.norm())
+    assert_zero(
+        "inclusive Glauber residual vanishes",
+        sp.trace(rho * inclusive_delta),
+    )
+
+    resolved_measurement = sp.diag(
+        sp.Rational(0),
+        sp.Rational(1),
+        sp.Rational(2),
+        sp.Rational(4),
+    )
+    resolved_delta = glauber.T * resolved_measurement * glauber - resolved_measurement
+    residual = sp.trace(rho * resolved_delta)
+    if residual == 0:
+        raise AssertionError("resolved Glauber residual accidentally vanished")
+
+    # Since rho is diagonal positive with trace one and resolved_delta is
+    # diagonal, this is the finite trace-norm/operator-norm bound in the text.
+    trace_norm = sp.trace(rho)
+    operator_norm = max(abs(entry) for entry in resolved_delta.diagonal())
+    _assert_leq(
+        "resolved Glauber residual bounded by trace-op norm",
+        abs(residual),
+        trace_norm * operator_norm,
+        tol=sp.Rational(0),
+    )
+
+
 def main() -> None:
     check_drell_yan_kinematics()
     check_rapidity_scale_product()
@@ -214,6 +285,7 @@ def main() -> None:
     check_integrated_drell_yan_scheme_covariance()
     check_integrated_drell_yan_factorization_residual_budget()
     check_finite_glauber_unitarity()
+    check_inclusive_glauber_projection_residual()
     print("All QCD Drell-Yan kinematics and Glauber-status checks passed.")
 
 

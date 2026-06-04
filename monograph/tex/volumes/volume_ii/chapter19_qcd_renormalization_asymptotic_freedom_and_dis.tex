@@ -10856,7 +10856,9 @@ leading-power integrated factorization theorem for this window must supply:
   incoming collinear sectors, with its error measured in
   \(\mathcal D_K^\ast\);
   \item a soft-cancellation or soft-factor construction in the same regulator;
-  \item a Glauber statement strong enough for the chosen measurement topology;
+  \item a Glauber statement strong enough for the chosen measurement topology,
+  such as a commutator or inclusive-projection bound of the form described
+  below;
   \item a power-remainder topology, including hadron-mass, threshold,
   small-\(x\), and perturbative-truncation qualifications;
   \item a regulator-limit statement identifying which residuals vanish and
@@ -11015,6 +11017,55 @@ under unitary conjugation on that same unobserved factor.  The finite model
 therefore isolates the algebraic input used in inclusive Glauber-cancellation
 arguments: the observed measurement must be insensitive to the unitary acting
 on the summed-over sector.
+
+The same finite model also gives the residual which must be bounded when the
+measurement is not fully inclusive.  For a general tested measurement
+\(M_\varphi\) on
+\(\mathcal H_{\rm obs}\otimes\mathcal H_{\rm un}\), define
+\begin{equation}
+  \Delta_{\rm G}^{\rm fin}[\varphi]
+  =
+  \operatorname{Tr}
+  \left[
+    \rho
+    \bigl(
+      (\mathbf1\otimes U_G^\dagger)
+      M_\varphi
+      (\mathbf1\otimes U_G)
+      -
+      M_\varphi
+    \bigr)
+  \right].
+  \label{eq:qcd-finite-glauber-resolved-measurement-residual}
+\end{equation}
+Then
+\[
+  \Delta_{\rm G}^{\rm fin}[\varphi]=0
+  \quad\hbox{if}\quad
+  [M_\varphi,\mathbf1\otimes U_G]=0,
+\]
+and in finite dimension
+\begin{equation}
+  |\Delta_{\rm G}^{\rm fin}[\varphi]|
+  \leq
+  \|\rho\|_1\,
+  \left\|
+      (\mathbf1\otimes U_G^\dagger)
+      M_\varphi
+      (\mathbf1\otimes U_G)
+      -
+      M_\varphi
+  \right\|_{\rm op}.
+  \label{eq:qcd-finite-glauber-resolved-measurement-bound}
+\end{equation}
+Thus the integrated Drell--Yan Glauber residual
+\(\Delta_{\rm G}[\varphi]\) in
+\eqref{eq:qcd-drell-yan-tested-residual-decomposition} is not a ceremonial
+slot.  It asks whether, after the leading-region and contour-deformation
+analysis has identified the regulated eikonal Glauber action, the tested
+color-singlet observable is inclusive enough for the commutator to vanish, or
+whether the remaining commutator is quantitatively small in the declared
+measurement topology.
 
 \begin{controlledapproximation}[What the finite Glauber calculation proves]
 \label{ca:qcd-glauber-cancellation-status}

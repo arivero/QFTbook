@@ -904,6 +904,12 @@ The chapter must define and derive:
   separating leading-region, soft, Glauber, power, and regulator residuals; the
   companion check keeps the residual nonzero while verifying that exact
   RG-covariance of the factorized coordinate does not erase it.
+  The 2026-06-04 inclusive-projection continuation makes the Glauber residual
+  operational: after the regulated eikonal action is identified, the tested
+  color-singlet observable must either commute with the unobserved Glauber
+  unitary or leave a norm-bounded commutator residual.  The paired check adds a
+  negative control in which a spectator-resolving measurement gives a nonzero
+  but bounded residual.
 - 2026-05-24 issue #490 pass: the compiled Volume IV successor chapter now
   develops jets, IRC-safe measurement functions, parton showers,
   fragmentation functions, and hadronization as the final-state observable

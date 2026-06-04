@@ -307,8 +307,10 @@ Current checks:
 - `qcd_drell_yan_glauber_checks.py`: finite checks for the Volume II
   Drell--Yan/Glauber-status block, including leading-power rapidity
   kinematics, rapidity-scale product bookkeeping, time-reversal-odd staple
-  orientation signs, and the finite tensor-product unitarity identity used as
-  the algebraic model for Glauber cancellation.
+  orientation signs, the finite tensor-product unitarity identity used as
+  the algebraic model for Glauber cancellation, and the inclusive-projection
+  negative control where a spectator-resolving measurement leaves a bounded
+  nonzero Glauber residual.
 - `qcd_non_global_log_checks.py`: exact rational checks for the finite
   non-global soft-dipole datum in the jets chapter, including real--virtual
   cancellation for unmeasured angular cells, the second-order expansion
