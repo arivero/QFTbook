@@ -129,7 +129,11 @@
   flow.  The finite light-fermion determinant frame continuation fixes the
   inverse \( \det Z_R\det Z_L \) transformation law for
   \(\mathcal R_{\rm f}^{\mathcal S}\), separating source-frame covariance from
-  local determinant counterterm shifts.  The 2026-06-03
+  local determinant counterterm shifts.  The screened-size continuation adds
+  the exact \(I_A(m_{\rm scr})=\frac12m_{\rm scr}^{-A}\Gamma(A/2)\)
+  amplitude integral, moment ledger, shell location, and \(SU(3)\), \(N_f=2\)
+  mass-saturated \(A=23/3\) specialization when a physical infrared scale is
+  supplied.  The 2026-06-03
   verification-contract follow-up records, in the
   calculation-check docstring rather than the TeX, the target claims,
   independent constructions, imported assumptions, negative controls, and
@@ -281,6 +285,7 @@
 | \(C_I^{<},[O_I]_\mu,\gamma_{IK}\) | short-instanton OPE coefficient, retained renormalized operator basis, and operator-mixing anomalous-dimension matrix used to distinguish composite-operator RG transport from size-factorization flow |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
 | \(\zeta_m^{[\rho_-,\rho_+]}\) | mass-saturated one-instanton vacuum activity in a finite size window |
+| \(m_{\rm scr},A,\mathcal A_{\rm scr}^{(0)}\) | physical infrared screening scale, screened size-integral power \(A=b_0+\beta_{\mathcal X}-4\), and leading screened one-instanton amplitude |
 | \(T,\mathcal D_{\rm zm},E_{\rm zm},\rho_{\rm zm}\) | instanton--anti-instanton near-zero-mode overlap matrix, projected Dirac block, remainder, and singular-value density used in the instanton-liquid criterion |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
 | \(A_\alpha(\mathcal X),G_\beta(\mathcal X)\) | Uhlenbeck bubbling-scale and collision-face exponents in the multi-instanton boundary budget |
@@ -699,6 +704,15 @@
   formula to \(\rho=\infty\) gives an infrared power divergence.  A finite
   dilute activity therefore requires extra infrared physics or a separate
   controlled window.
+- If a physical infrared mechanism supplies a positive Gaussian screening
+  factor \(\exp[-m_{\rm scr}^2\rho^2]\) in the same regulated amplitude, the
+  leading screened size integral is
+  \(\frac12K_0m_{\rm scr}^{-A}\Gamma(A/2)\), with
+  \(m_{\rm scr}^2\langle\rho^2\rangle=A/2\).  For \(SU(3)\), \(N_f=2\)
+  mass-saturated QCD, \(A=23/3\), so the screened leading activity scales as
+  \(m_{\rm scr}^{-23/3}\Gamma(23/6)\).  This is a controlled formula only
+  when the resulting dominant size shell remains in the weak-coupling window;
+  it does not justify the unscreened large-\(\rho\) integral.
 - The dilute instanton gas is now stated only as a controlled amplitude
   expansion after the regulated one-instanton calculation has supplied a
   finite activity \(\zeta_\Lambda\).  Under Poisson factorization it gives
@@ -1182,3 +1196,14 @@
   shell/tail suppression.  The companion BPST check verifies the shell power,
   three-decade cost for tenfold power-tail suppression, and \(R>27000\)
   normalized-tail threshold.
+- 2026-06-04 issue #597 screened-size amplitude pass: added
+  `prop:screened-one-instanton-size-integral`, which turns the prior
+  large-size warning into an explicit amplitude calculation when a physical
+  infrared screening scale is part of the same regulated problem.  The block
+  computes the gamma-function size integral, size moments, dominant shell, and
+  \(SU(3)\), \(N_f=2\) mass-saturated specialization \(A=23/3\), while stating
+  that the formula is controlled only if the screened shell remains in the
+  weak-coupling window.  Extended
+  `bpst_instanton_normalization_checks.py` to verify the exact power, moment,
+  saddle, and mass-dimension bookkeeping.  This is amplitude-side progress,
+  not additional moduli-space infrastructure.

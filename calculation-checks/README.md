@@ -509,7 +509,10 @@ Current checks:
   mass-saturated vacuum-activity size integral with its
   \(\prod_f(m_f\rho)\) zero-mode factors,
   small-\(\rho\) finiteness margin, large-\(\rho\) obstruction, and
-  massless-flavor vanishing, the
+  massless-flavor vanishing, the screened one-instanton size integral
+  \(I_A(m_{\rm scr})=\frac12m_{\rm scr}^{-A}\Gamma(A/2)\), including exact
+  moment, shell-location, and \(SU(3)\), \(N_f=2\) mass-saturated dimension
+  bookkeeping, the
   dilute instanton-gas theta cumulants \(\chi_{\rm top}=2\zeta\) and
   \(b_2=-1/12\) after a finite activity has been supplied, the
   finite instanton--anti-instanton zero-mode overlap matrix whose singular

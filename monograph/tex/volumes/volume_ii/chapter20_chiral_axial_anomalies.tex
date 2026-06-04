@@ -6725,6 +6725,96 @@ those correlators use the source-differentiated zero-mode coefficient in
 determinant in \eqref{eq:mass-saturated-instanton-window-activity}.
 \end{controlledapproximation}
 
+\begin{proposition}[Screened one-instanton size integral]
+\label{prop:screened-one-instanton-size-integral}
+Let a selected one-instanton amplitude channel have the one-loop small-size
+density
+\[
+  K_{\rm sc}(\rho)
+  =
+  K_0\,\rho^{A-1},
+  \qquad A=b_0+\beta_{\mathcal X}-4>0,
+\]
+after the collective-coordinate density, nonzero-mode determinant convention,
+and zero-mode source coefficient have been assembled.  Suppose a physical
+infrared mechanism in the same regulated problem contributes a positive
+screening factor
+\[
+  \exp[-m_{\rm scr}^2\rho^2],
+  \qquad m_{\rm scr}>0,
+\]
+for example from Higgsing, thermal screening, or a declared source envelope.
+The screened leading contribution is then
+\begin{equation}
+  \mathcal A_{\rm scr}^{(0)}
+  =
+  K_0\int_0^\infty
+  \rho^{A-1}\ee^{-m_{\rm scr}^2\rho^2}\,\dd\rho
+  =
+  \frac{K_0}{2}\,
+  m_{\rm scr}^{-A}\,
+  \Gamma\!\left(\frac A2\right).
+  \label{eq:screened-one-instanton-size-integral}
+\end{equation}
+In the leading screened density, even moments of the instanton size are
+\begin{equation}
+  \bigl\langle\rho^{2n}\bigr\rangle_0
+  =
+  m_{\rm scr}^{-2n}
+  \frac{\Gamma(A/2+n)}{\Gamma(A/2)},
+  \qquad
+  m_{\rm scr}^2\langle\rho^2\rangle_0=\frac A2 .
+  \label{eq:screened-one-instanton-size-moments}
+\end{equation}
+If \(A>1\), the logarithmic size-shell density
+\(\rho^{A}\exp[-m_{\rm scr}^2\rho^2]\) is stationary at
+\begin{equation}
+  m_{\rm scr}^2\rho_{\rm shell}^2=\frac{A}{2},
+  \label{eq:screened-one-instanton-log-shell}
+\end{equation}
+while the ordinary \(\dd\rho\)-density is stationary at
+\begin{equation}
+  m_{\rm scr}^2\rho_{\rm dens}^2=\frac{A-1}{2}.
+  \label{eq:screened-one-instanton-density-saddle}
+\end{equation}
+For \(SU(3)\) with \(N_f=2\) massive Dirac fundamentals in the mass-saturated
+vacuum channel, \(\beta_{\mathcal X}=N_f\) and
+\[
+  A=b_0+N_f-4=\frac{23}{3}.
+\]
+Thus the screened leading activity is proportional to
+\[
+  m_{\rm scr}^{-23/3}\Gamma(23/6),
+  \qquad
+  m_{\rm scr}^2\langle\rho^2\rangle_0=\frac{23}{6},
+  \qquad
+  m_{\rm scr}^2\rho_{\rm shell}^2=\frac{23}{6}.
+\]
+This is a controlled amplitude formula only when the same physical screening
+scale keeps the dominant shell inside the weak-coupling and finite-regulator
+window.  Sending \(m_{\rm scr}\to0\) recovers the infrared divergence of
+\eqref{eq:mass-saturated-size-window-integral}; the screened formula is not a
+license to use the one-loop instanton density at arbitrarily large size.
+\end{proposition}
+
+\begin{proof}
+The substitution \(u=m_{\rm scr}^2\rho^2\) gives
+\[
+  \int_0^\infty\rho^{A-1}\ee^{-m_{\rm scr}^2\rho^2}\,\dd\rho
+  =
+  \frac12m_{\rm scr}^{-A}
+  \int_0^\infty u^{A/2-1}\ee^{-u}\,\dd u,
+\]
+which is \eqref{eq:screened-one-instanton-size-integral}.  Dividing the same
+integral with \(A\) replaced by \(A+2n\) by the \(n=0\) integral gives
+\eqref{eq:screened-one-instanton-size-moments}.  The stationary-shell formulas
+come from differentiating
+\(A\log\rho-m_{\rm scr}^2\rho^2\) for the \(\dd\log\rho\) shell and
+\((A-1)\log\rho-m_{\rm scr}^2\rho^2\) for the ordinary density.  The
+\(SU(3)\), \(N_f=2\) specialization substitutes
+\(b_0=29/3\) and \(\beta_{\mathcal X}=2\).
+\end{proof}
+
 \begin{controlledapproximation}[Dilute instanton gas as an amplitude expansion]
 \label{ca:dilute-instanton-gas-amplitude}
 Suppose the regulated one-instanton and one-anti-instanton amplitudes obtained

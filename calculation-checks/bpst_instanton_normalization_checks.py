@@ -86,6 +86,9 @@ relations
     theta+arg det M, is locally small-rho finite when b0+Nf>4, and is
     infrared-uncontrolled in zero-temperature QCD if the same one-loop power
     is extended to large rho
+    a physical Gaussian screening scale turns the one-instanton size integral
+    into 1/2 m_scr^(-A) Gamma(A/2), with exact moment and shell-location
+    bookkeeping; for SU(3), Nf=2 mass saturation A=23/3
     the renormalized mass/source instanton functional has homogeneous
     source-coordinate RG transport, with the finite fermion determinant factor
     cancelling the anomalous running of det(M^0+J^0)
@@ -2883,6 +2886,47 @@ def check_mass_saturated_vacuum_activity_size_integral() -> None:
     )
 
 
+def check_screened_one_instanton_size_integral() -> None:
+    n_c = 3
+    n_f = 2
+    b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+    beta_x = Fraction(n_f)
+    screened_power = b0 + beta_x - 4
+    assert_equal("SU(3) Nf=2 screened mass-saturated A", screened_power, Fraction(23, 3))
+
+    gamma_argument = screened_power / 2
+    assert_equal("screened instanton gamma argument", gamma_argument, Fraction(23, 6))
+
+    # If I_A(m)=1/2 m^{-A} Gamma(A/2), then
+    # I_{A+2}/I_A = m^{-2} A/2 and
+    # I_{A+4}/I_A = m^{-4} (A/2)(A/2+1).
+    m_scr = Fraction(5, 3)
+    moment_two = gamma_argument / (m_scr * m_scr)
+    moment_four = gamma_argument * (gamma_argument + 1) / (m_scr**4)
+    assert_equal("screened instanton rho^2 moment", moment_two, Fraction(69, 50))
+    assert_equal("screened instanton rho^4 moment", moment_four, Fraction(6003, 2500))
+
+    log_shell_location = gamma_argument
+    ordinary_density_location = (screened_power - 1) / 2
+    assert_equal("screened instanton log-shell location", log_shell_location, Fraction(23, 6))
+    assert_equal("screened instanton ordinary-density saddle", ordinary_density_location, Fraction(10, 3))
+
+    # The screened integral contributes m_scr^{-A}.  For a mass-saturated vacuum
+    # activity, the prefactor |det M| mu^{b0} has dimension Nf+b0, so the
+    # screened activity remains a four-dimensional energy density.
+    prefactor_mass_dimension = Fraction(n_f) + b0
+    screened_integral_dimension = -screened_power
+    assert_equal(
+        "screened mass-saturated instanton activity dimension",
+        prefactor_mass_dimension + screened_integral_dimension,
+        Fraction(4),
+    )
+
+    # Without the screening scale, A>0 is exactly the large-rho power divergence
+    # exposed by the finite-window formula.
+    assert_equal("screened formula diverges as m_scr -> 0 when A positive", screened_power > 0, True)
+
+
 def check_uhlenbeck_boundary_face_budget() -> None:
     for n_c in range(2, 8):
         for k in range(1, 6):
@@ -2975,6 +3019,7 @@ def main() -> None:
     check_dilute_instanton_gas_theta_cumulants()
     check_instanton_ensemble_zero_mode_overlap_spectrum()
     check_mass_saturated_vacuum_activity_size_integral()
+    check_screened_one_instanton_size_integral()
     check_uhlenbeck_boundary_face_budget()
     check_k_one_adhm_dimension_and_cone_power()
     print("All BPST instanton normalization checks passed.")
