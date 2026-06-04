@@ -34,6 +34,9 @@ recording fluctuation data required for controlled backreaction.
   coordinate, the first-order `lambda phi^4` potential-insertion source
   coordinate, and its projection into the retained semiclassical response
   sector.
+- `C_{omega,H}(x,y)`, `N_{ab}^{(lambda,pot)}`: retained smooth covariance
+  and finite retained potential-noise matrix for the second-order
+  `lambda phi^4` stress-noise coordinate.
 
 ## Claim Ledger
 
@@ -72,6 +75,12 @@ recording fluctuation data required for controlled backreaction.
   The homogeneous potential coordinate shifts
   `Lambda_eff^{pot}` by `8 pi G_N rho_lambda`, and the retained response
   check uses `||h_lambda^{pot}|| <= M_I |rho_lambda| ||q||`.
+- Adds the corresponding retained potential-noise coordinate: the connected
+  Wick-four covariance is
+  `72 Sigma_x Sigma_y C(x,y)^2 + 24 C(x,y)^4`, the disconnected term is
+  subtracted, the retained stress-noise matrix is positive as a covariance,
+  and its metric pushforward satisfies
+  `tr C_h^{(lambda,pot)} <= M_I^2 tr N^{(lambda,pot)}`.
 - Records validity conditions and the EFT reduction-of-order treatment for
   higher-curvature terms.
 
@@ -86,8 +95,11 @@ recording fluctuation data required for controlled backreaction.
   coordinate, its restricted local Wick-renormalization/cosmological-coordinate
   shifts, negative controls for independent quartic/stress-tensor finite
   counterterms and signed negative-density norm bounds, its retained response
-  bound, and the low-energy root selected by reduction of order in a toy
-  higher-derivative equation.
+  bound, the retained `lambda phi^4` potential-noise kernel with the
+  connected Wick-four covariance, disconnected-subtraction and dropped
+  mixed-term negative controls, quadratic coupling scaling, positivity of the
+  retained noise matrix, its metric-covariance trace bound, and the low-energy
+  root selected by reduction of order in a toy higher-derivative equation.
 
 ## Figure Ledger
 
@@ -128,3 +140,11 @@ curvature, microscopic, and EFT scales.
   restricted Wick-square shift from independent `Phi^4`/stress-tensor finite
   renormalizations, and replacing the signed response estimate by an
   absolute-value norm bound.
+- 2026-06-04 issue #729 retained-noise pass: added the potential-sector
+  stress-noise coordinate for the same `lambda phi^4` example.  This extends
+  the mean-source response into an Einstein--Langevin fluctuation input:
+  the text derives the connected Wick-four covariance, records the
+  disconnected subtraction and the mixed `Sigma Sigma C^2` term, feeds the
+  retained noise through the response-window trace bound, and states that the
+  full interacting noise also requires Bogoliubov, derivative, contact, and
+  composite-counterterm pieces.

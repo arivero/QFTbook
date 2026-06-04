@@ -904,6 +904,101 @@ full interacting stress tensor must then include the derivative and local
 counterterm pieces fixed by the same pAQFT renormalization prescription; the
 potential-only display is no longer a conserved standalone source.
 
+\begin{controlledapproximation}[Retained interacting potential noise]
+\label{ca:semiclassical-interacting-potential-noise}
+Keep the same Hadamard Wick coordinate, quasifree state, and potential
+insertion as in
+Section~\ref{sec:semiclassical-worked-interacting-source-shift}, but now ask
+for the stress-tensor fluctuation sourced by the interaction.  Let
+\[
+  C_{\omega,H}(x,y)
+  =
+  \operatorname{Re}\!\left(\omega_2(x,y)-H_+(x,y)\right)
+\]
+denote the smooth real Wick covariance retained in the test region; \(H_+\)
+is the two-point Hadamard parametrix used in this Wick chart, and
+\(C_{\omega,H}(x,x)=\Sigma_{\omega,H}(x)\).  The Gaussian generating
+function for \(H\)-Wick powers gives, away from the diagonal and before the
+contact extension of the stress-tensor square,
+\begin{equation}
+\begin{aligned}
+  &\omega\!\left(
+    \Phi_H^4(x)\Phi_H^4(y)
+  \right)_{\rm conn}
+  \\
+  &\qquad =
+  72\,
+  \Sigma_{\omega,H}(x)\Sigma_{\omega,H}(y)
+  C_{\omega,H}(x,y)^2
+  +
+  24\,C_{\omega,H}(x,y)^4 .
+\end{aligned}
+  \label{eq:semiclassical-wick-four-noise-contractions}
+\end{equation}
+The disconnected term
+\(9\Sigma_{\omega,H}(x)^2\Sigma_{\omega,H}(y)^2\) has been subtracted.  The
+first term in
+\eqref{eq:semiclassical-wick-four-noise-contractions} is present whenever
+the state covariance differs from the Wick coordinate; the shortcut
+\(24C_{\omega,H}(x,y)^4\) is valid only in the special normal-ordering
+coordinate with vanishing one-point Wick square.
+
+Thus the retained potential contribution to the stress-noise kernel is
+\begin{equation}
+  N_{\mu\nu,\rho\sigma}^{(\lambda,{\rm pot})}(x,y)
+  =
+  \lambda^2 g_{\mu\nu}(x)g_{\rho\sigma}(y)
+  \left[
+    \frac18\Sigma_{\omega,H}(x)\Sigma_{\omega,H}(y)
+    C_{\omega,H}(x,y)^2
+    +
+    \frac1{24}C_{\omega,H}(x,y)^4
+  \right],
+  \label{eq:semiclassical-potential-noise-kernel}
+\end{equation}
+in the retained potential sector.  For the finite source basis
+\eqref{eq:semiclassical-retained-response-matrix}, set
+\[
+  \mathsf N_{ab}^{(\lambda,{\rm pot})}
+  =
+  \int_{U\times U}
+  q_a(x)
+  \left[
+    \frac18\Sigma_{\omega,H}(x)\Sigma_{\omega,H}(y)
+    C_{\omega,H}(x,y)^2
+    +
+    \frac1{24}C_{\omega,H}(x,y)^4
+  \right]
+  q_b(y)\,
+  \lambda^2\,
+  \dd\operatorname{vol}_g(x)\dd\operatorname{vol}_g(y),
+\]
+where \(q_a(x)=f_a^{\mu\nu}(x)g_{\mu\nu}(x)\).  This matrix is positive
+semidefinite because it is the covariance of the retained random variables
+\(-(\lambda/4!)\int q_a\Phi_H^4\).  The potential-noise contribution to the
+retained metric covariance is therefore
+\begin{equation}
+  \mathsf C_h^{(\lambda,{\rm pot})}
+  =
+  \mathsf D^{-1}\mathsf N^{(\lambda,{\rm pot})}\mathsf D^{-*},
+  \qquad
+  \operatorname{tr}\mathsf C_h^{(\lambda,{\rm pot})}
+  \le
+  M_I^2\operatorname{tr}\mathsf N^{(\lambda,{\rm pot})}.
+  \label{eq:semiclassical-potential-noise-response-bound}
+\end{equation}
+
+The full interacting noise kernel also contains cross terms with the
+Bogoliubov correction to the free stress tensor, local contact extensions of
+stress-tensor products, derivative terms, and finite composite-operator
+counterterms.  Equation~\eqref{eq:semiclassical-potential-noise-kernel} is
+therefore the fluctuation analogue of
+\eqref{eq:semiclassical-interacting-vacuum-source}: it is a retained
+potential-sector coordinate.  It becomes a physical Einstein--Langevin input
+only after the conserved full stress tensor and its renormalized square have
+been fixed in the same locally covariant scheme.
+\end{controlledapproximation}
+
 \section{Validity Conditions And Reduction Of Order}
 
 The semiclassical approximation requires more than small curvature.  A

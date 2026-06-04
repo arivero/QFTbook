@@ -5,15 +5,17 @@ These checks verify algebraic identities that are easy to lose by a sign or
 normalization: traces of the curvature-squared Euler tensors in four
 dimensions, the KMS fluctuation-dissipation factor, positivity of the noise
 covariance, finite response-window metric fluctuation bounds, the first-order
-lambda-phi-four potential-insertion source coordinate, and the low-energy
-root selected by reduction of order in a toy higher-derivative equation.
+lambda-phi-four potential-insertion source coordinate, the retained
+lambda-phi-four potential-noise coordinate, and the low-energy root selected
+by reduction of order in a toy higher-derivative equation.
 
 Evidence contract.
 Target claims: the finite algebra and response-window subclaims in Volume
 XII Chapter 11, including curvature-squared trace normalizations,
 fluctuation-dissipation factors, noise-covariance positivity, retained
 metric-response bounds, the lambda-phi-four potential-insertion source
-coordinate, the restricted finite-renormalization ledger for that coordinate,
+coordinate, the retained potential-noise Wick contraction and metric
+pushforward, the restricted finite-renormalization ledger for that coordinate,
 and the low-energy root selected by reduction of order.
 Independent construction: the checks recompute traces, KMS factors,
 matrix pushforwards, exact retained-sector inverses, Wick-contraction
@@ -21,13 +23,14 @@ coefficients, cosmological-coordinate shifts, independent finite counterterm
 controls, signed/absolute norm bounds, and toy roots directly from finite
 formulas rather than importing chapter display strings.
 Imported assumptions: the tests use finite-dimensional retained sectors,
-centered quasifree Wick combinatorics, a formal first-order lambda expansion,
-positive finite noise matrices, and the chapter's convention
+centered quasifree Wick combinatorics, formal first- and second-order lambda
+coordinates, positive finite noise matrices, and the chapter's convention
 E_grav = <T_ren>.
 Negative controls: singular retained response matrices, wrong Wick
 contraction factors, omitted local-Wick-renormalization quadratic terms, wrong
 cosmological-coordinate signs, erased independent quartic/stress-tensor
-finite counterterms, signed negative density norm bounds, and cutoff-scale
+finite counterterms, signed negative density norm bounds, dropped connected
+potential-noise terms, retained disconnected noise pieces, and cutoff-scale
 higher-derivative roots are rejected.
 Scope boundary: a pass checks coefficient, positivity, and response-bound
 bookkeeping for the retained potential-insertion coordinate; it does not
@@ -275,6 +278,94 @@ def check_lambda_phi4_potential_source_coordinate() -> None:
         raise AssertionError("potential source response exceeds certified retained bound")
 
 
+def check_lambda_phi4_potential_noise_kernel() -> None:
+    coupling = Fraction(2, 3)
+    sigma_x = Fraction(3, 5)
+    sigma_y = Fraction(5, 7)
+    covariance_xy = Fraction(2, 11)
+
+    disconnected = 9 * sigma_x * sigma_x * sigma_y * sigma_y
+    connected = (
+        72 * sigma_x * sigma_y * covariance_xy * covariance_xy
+        + 24 * covariance_xy**4
+    )
+    full_wick_four_product = disconnected + connected
+    if full_wick_four_product - disconnected != connected:
+        raise AssertionError("connected Wick-four covariance subtraction failed")
+
+    dropped_mixed_term = 24 * covariance_xy**4
+    if dropped_mixed_term == connected:
+        raise AssertionError("negative control failed: mixed Sigma Sigma C^2 term was dropped")
+    if full_wick_four_product == connected:
+        raise AssertionError("negative control failed: disconnected Wick-four term was retained")
+
+    potential_noise_cell = coupling * coupling * connected / (24 * 24)
+    expected_cell = coupling * coupling * (
+        sigma_x * sigma_y * covariance_xy * covariance_xy / 8
+        + covariance_xy**4 / 24
+    )
+    if potential_noise_cell != expected_cell:
+        raise AssertionError("lambda phi^4 potential-noise coefficient changed")
+
+    doubled_coupling_noise = (2 * coupling) * (2 * coupling) * connected / (24 * 24)
+    if doubled_coupling_noise != 4 * potential_noise_cell:
+        raise AssertionError("potential noise should scale quadratically in lambda")
+
+    covariance: Matrix = (
+        (Fraction(2), Fraction(1)),
+        (Fraction(1), Fraction(3)),
+    )
+    sigmas = (covariance[0][0], covariance[1][1])
+    wick_four_covariance: Matrix = tuple(
+        tuple(
+            72 * sigmas[i] * sigmas[j] * covariance[i][j] ** 2
+            + 24 * covariance[i][j] ** 4
+            for j in range(2)
+        )
+        for i in range(2)
+    )
+    if wick_four_covariance[0][0] <= 0 or det2(wick_four_covariance) <= 0:
+        raise AssertionError("finite Wick-four covariance should be positive definite")
+
+    profiles: Matrix = (
+        (Fraction(1, 5), Fraction(2, 7)),
+        (Fraction(3, 11), Fraction(-1, 13)),
+    )
+    retained_noise: Matrix = tuple(
+        tuple(
+            coupling
+            * coupling
+            * sum(
+                profiles[a][i] * wick_four_covariance[i][j] * profiles[b][j]
+                for i in range(2)
+                for j in range(2)
+            )
+            / (24 * 24)
+            for b in range(2)
+        )
+        for a in range(2)
+    )
+    if retained_noise != transpose(retained_noise):
+        raise AssertionError("retained potential-noise matrix should be symmetric")
+    if retained_noise[0][0] <= 0 or det2(retained_noise) <= 0:
+        raise AssertionError("retained potential-noise matrix should be positive definite")
+
+    response_inverse: Matrix = (
+        (Fraction(1, 2), Fraction(1, 4)),
+        (Fraction(-1, 4), Fraction(1, 2)),
+    )
+    metric_covariance = matmul(
+        matmul(response_inverse, retained_noise),
+        transpose(response_inverse),
+    )
+    if metric_covariance != transpose(metric_covariance):
+        raise AssertionError("potential-noise metric covariance should be symmetric")
+    if metric_covariance[0][0] < 0 or det2(metric_covariance) < 0:
+        raise AssertionError("potential-noise metric covariance should be positive")
+    if trace(metric_covariance) > trace(retained_noise):
+        raise AssertionError("unit certified response norm should bound potential-noise trace")
+
+
 def check_reduction_of_order_toy_model() -> None:
     # Toy equation: x'' + omega0^2 x + epsilon x'''' = 0.
     # For x ~ exp(lambda t), epsilon lambda^4 + lambda^2 + omega0^2 = 0.
@@ -301,6 +392,7 @@ def main() -> None:
     check_einstein_langevin_pushforward_covariance()
     check_finite_response_window_bounds()
     check_lambda_phi4_potential_source_coordinate()
+    check_lambda_phi4_potential_noise_kernel()
     check_reduction_of_order_toy_model()
     print("All semiclassical backreaction checks passed.")
 

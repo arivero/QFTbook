@@ -2024,8 +2024,12 @@ Current checks:
   coordinate, its restricted local Wick-renormalization and
   cosmological-coordinate shifts, negative controls for independent
   quartic/stress-tensor finite counterterms and signed negative-density norm
-  bounds, its retained metric-response bound, and the low-energy root selected
-  by reduction of order in a toy higher-derivative equation.
+  bounds, its retained metric-response bound, the retained `lambda phi^4`
+  potential-noise kernel with the \(72\Sigma_x\Sigma_y C^2+24C^4\) connected
+  Wick-four covariance, disconnected-subtraction and dropped-mixed-term
+  negative controls, quadratic coupling scaling, retained noise positivity,
+  and its metric-covariance trace bound, and the low-energy root selected by
+  reduction of order in a toy higher-derivative equation.
 - `schwinger_keldysh_operator_checks.py`: finite two-level-system checks for
   the real-time Schwinger--Keldysh operator chapter, including diagonal
   unitarity, branch-exchange reality, the \(|Z|\le1\) positivity bound,
