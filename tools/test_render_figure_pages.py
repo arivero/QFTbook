@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import importlib.util
+import json
+import subprocess
 import sys
 import tempfile
 from pathlib import Path
@@ -119,11 +121,114 @@ def test_write_contact_sheets_removes_stale_sheets() -> None:
             raise AssertionError("stale contact sheet was not removed")
 
 
+def test_write_manifest_includes_render_provenance() -> None:
+    module = load_module()
+    with tempfile.TemporaryDirectory() as tmp:
+        out_dir = Path(tmp)
+        row = module.FigureManifestRow(
+            label="fig:test",
+            number="1.1",
+            printed_page="1",
+            physical_page=7,
+            anchor="figure.test",
+            caption="test figure",
+        )
+        provenance = {
+            "schema": module.PROVENANCE_SCHEMA,
+            "pdf": {"path": "main.pdf", "sha256": "pdf-digest"},
+            "renderer": {
+                "program": "pdftoppm",
+                "executable": "pdftoppm",
+                "version": "pdftoppm test",
+            },
+            "options": {"dpi": 72, "format": "png"},
+        }
+
+        module.write_manifest(
+            [row],
+            out_dir,
+            provenance=provenance,
+            page_sha256={7: "page-digest"},
+        )
+
+        data = json.loads(
+            (out_dir / "figure_pages_manifest.json").read_text(encoding="utf-8")
+        )
+        if data[0]["pdf_sha256"] != "pdf-digest":
+            raise AssertionError("manifest did not record the PDF digest")
+        if data[0]["page_image_sha256"] != "page-digest":
+            raise AssertionError("manifest did not record the page image digest")
+        if data[0]["renderer"]["version"] != "pdftoppm test":
+            raise AssertionError("manifest did not record the renderer version")
+
+
+def test_render_pages_repairs_wrong_same_named_cache() -> None:
+    module = load_module()
+    from PIL import Image
+
+    with tempfile.TemporaryDirectory() as tmp:
+        out_dir = Path(tmp)
+        pdf_path = out_dir / "main.pdf"
+        pdf_path.write_bytes(b"%PDF-1.7 fake test file\n")
+        colors = {
+            1: (30, 60, 90),
+            2: (190, 40, 20),
+        }
+        rendered_pages: list[int] = []
+        original_run = module.subprocess.run
+
+        def fake_run(command, **_kwargs):
+            executable = Path(command[0]).name
+            if executable == "pdftoppm" and command[1:] == ["-v"]:
+                return subprocess.CompletedProcess(
+                    command,
+                    0,
+                    stdout="",
+                    stderr="pdftoppm version test-1.0\n",
+                )
+            if executable == "pdftoppm":
+                page = int(command[command.index("-f") + 1])
+                prefix = Path(command[-1])
+                Image.new("RGB", (18, 18), colors[page]).save(
+                    prefix.with_suffix(".png")
+                )
+                rendered_pages.append(page)
+                return subprocess.CompletedProcess(command, 0)
+            raise AssertionError(f"unexpected command: {command}")
+
+        try:
+            module.subprocess.run = fake_run
+            first = module.render_pages(pdf_path, [1, 2], out_dir, dpi=72, force=False)
+            if rendered_pages != [1, 2]:
+                raise AssertionError(f"first render did not render both pages: {rendered_pages}")
+            first_page_digest = first.page_sha256[1]
+            Image.new("RGB", (18, 18), colors[2]).save(out_dir / "pages" / "page-0001.png")
+
+            rendered_pages.clear()
+            second = module.render_pages(pdf_path, [1, 2], out_dir, dpi=72, force=False)
+        finally:
+            module.subprocess.run = original_run
+
+        if rendered_pages != [1]:
+            raise AssertionError(f"wrong same-named cache was not repaired: {rendered_pages}")
+        if second.rendered != 1 or second.reused != 1:
+            raise AssertionError("rerun did not re-render only the corrupted page")
+        if second.page_sha256[1] != first_page_digest:
+            raise AssertionError("repaired page digest does not match the original render")
+        provenance = json.loads(
+            (out_dir / module.PROVENANCE_FILE).read_text(encoding="utf-8")
+        )
+        if provenance["pages"]["1"]["sha256"] != first_page_digest:
+            raise AssertionError("provenance was not refreshed after repairing the page")
+
+
 def main() -> int:
     test_dependency_gate_requires_pillow_by_default()
     test_dependency_gate_reports_missing_render_tools()
     test_remove_unexpected_managed_outputs()
     test_write_contact_sheets_removes_stale_sheets()
+    test_write_manifest_includes_render_provenance()
+    test_render_pages_repairs_wrong_same_named_cache()
     print("render_figure_pages tests passed.")
     return 0
 

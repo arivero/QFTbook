@@ -110,10 +110,14 @@ each physical PDF page that contains a figure, and builds contact sheets under
 `monograph/tex/build/figure_audit_current/contact/`.  The command requires
 `qpdf`, Poppler's `pdftoppm`, and Pillow by default; pass
 `--no-contact-sheets` only when the manifest plus full page PNGs are the
-intended artifact.  Treat the contact sheets as overview and triage images for
-gross clipping, figure/page navigation, and obvious missing-content failures.
-Inspect the 120-dpi page PNGs at 100 percent scale, or higher-resolution
-figure crops when needed, for print-size legibility: small labels, line
-weight, grayscale distinctions, caption separation, and whether the displayed
-schematic still carries the mathematical or physical datum claimed by the
-text.
+intended artifact.  The render cache is valid only through
+`render_provenance.json`: non-forced runs may reuse a page PNG only when the
+PDF content digest, DPI, Poppler renderer identity/version, render options, and
+recorded page-image digest all match.  Contact sheets are rebuilt from the
+validated page PNGs.  Treat the contact sheets as overview and triage images
+for gross clipping, figure/page navigation, and obvious missing-content
+failures.  Inspect the 120-dpi page PNGs at 100 percent scale, or
+higher-resolution figure crops when needed, for print-size legibility: small
+labels, line weight, grayscale distinctions, caption separation, and whether
+the displayed schematic still carries the mathematical or physical datum
+claimed by the text.

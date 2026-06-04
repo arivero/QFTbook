@@ -129,8 +129,12 @@ For a full rendered figure pass after building the monograph, run
 tools/render_figure_pages.py --force
 ```
 
-The command requires `qpdf`, Poppler's `pdftoppm`, and Pillow by default.  Use
-the generated contact sheets in
+The command requires `qpdf`, Poppler's `pdftoppm`, and Pillow by default.  It
+records render provenance under
+`monograph/tex/build/figure_audit_current/render_provenance.json`; a non-forced
+rerun may reuse cached page PNGs only when the PDF digest, DPI, renderer
+identity/version, render options, and stored page digest still match.  Use the
+generated contact sheets in
 `monograph/tex/build/figure_audit_current/contact/` as overview/triage images,
 then inspect the rendered page PNGs at 100 percent scale for print-size labels,
 line weights, grayscale distinctions, and caption separation against the figure

@@ -11,6 +11,7 @@ anchor, printed page, and physical page.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib.util
 import json
 import re
@@ -26,6 +27,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_AUX = ROOT / "monograph" / "tex" / "main.aux"
 DEFAULT_PDF = ROOT / "monograph" / "tex" / "main.pdf"
 DEFAULT_OUT = ROOT / "monograph" / "tex" / "build" / "figure_audit_current"
+PROVENANCE_FILE = "render_provenance.json"
+PROVENANCE_SCHEMA = 1
 
 
 @dataclass(frozen=True)
@@ -45,6 +48,14 @@ class FigureManifestRow:
     physical_page: int
     anchor: str
     caption: str
+
+
+@dataclass(frozen=True)
+class RenderPagesResult:
+    page_sha256: dict[int, str]
+    rendered: int
+    reused: int
+    provenance: dict[str, Any]
 
 
 def read_group(text: str, start: int) -> tuple[str, int]:
@@ -156,6 +167,135 @@ def remove_unexpected_files(directory: Path, pattern: str, expected_names: set[s
             path.unlink()
 
 
+def display_path(path: Path) -> str:
+    return str(path.relative_to(ROOT) if path.is_relative_to(ROOT) else path)
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def pdftoppm_identity() -> dict[str, str]:
+    executable = shutil.which("pdftoppm") or "pdftoppm"
+    version = "unknown"
+    try:
+        proc = subprocess.run(
+            [executable, "-v"],
+            check=False,
+            text=True,
+            capture_output=True,
+        )
+    except FileNotFoundError:
+        executable = "pdftoppm"
+    else:
+        output = (proc.stderr or proc.stdout).strip()
+        if output:
+            version = output.splitlines()[0]
+        elif proc.returncode:
+            version = f"pdftoppm -v exited with status {proc.returncode}"
+    return {
+        "program": "pdftoppm",
+        "executable": executable,
+        "version": version,
+    }
+
+
+def render_options(dpi: int) -> dict[str, Any]:
+    return {
+        "dpi": dpi,
+        "format": "png",
+        "singlefile": True,
+        "pdftoppm_args": ["-r", str(dpi), "-png", "-singlefile"],
+    }
+
+
+def base_provenance(pdf_path: Path, dpi: int) -> dict[str, Any]:
+    return {
+        "schema": PROVENANCE_SCHEMA,
+        "pdf": {
+            "path": display_path(pdf_path),
+            "sha256": sha256_file(pdf_path),
+        },
+        "options": render_options(dpi),
+    }
+
+
+def current_render_provenance(pdf_path: Path, dpi: int) -> dict[str, Any]:
+    provenance = base_provenance(pdf_path, dpi)
+    provenance["renderer"] = pdftoppm_identity()
+    return provenance
+
+
+def load_render_provenance(out_dir: Path) -> dict[str, Any]:
+    provenance_path = out_dir / PROVENANCE_FILE
+    if not provenance_path.exists():
+        return {}
+    try:
+        data = json.loads(provenance_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def provenance_matches(previous: dict[str, Any], current: dict[str, Any]) -> bool:
+    return (
+        previous.get("schema") == PROVENANCE_SCHEMA
+        and previous.get("pdf") == current.get("pdf")
+        and previous.get("renderer") == current.get("renderer")
+        and previous.get("options") == current.get("options")
+    )
+
+
+def reusable_page_sha256(
+    target: Path,
+    page: int,
+    previous: dict[str, Any],
+    current: dict[str, Any],
+    *,
+    force: bool,
+) -> str | None:
+    if force or not target.exists() or not provenance_matches(previous, current):
+        return None
+    pages = previous.get("pages")
+    if not isinstance(pages, dict):
+        return None
+    record = pages.get(str(page))
+    if not isinstance(record, dict):
+        return None
+    expected_sha256 = record.get("sha256")
+    if not isinstance(expected_sha256, str):
+        return None
+    actual_sha256 = sha256_file(target)
+    return actual_sha256 if actual_sha256 == expected_sha256 else None
+
+
+def write_render_provenance(
+    out_dir: Path,
+    current: dict[str, Any],
+    pages: list[int],
+    page_sha256: dict[int, str],
+) -> dict[str, Any]:
+    provenance = {
+        **current,
+        "pages": {
+            str(page): {
+                "file": f"pages/page-{page:04d}.png",
+                "sha256": page_sha256[page],
+            }
+            for page in pages
+        },
+    }
+    (out_dir / PROVENANCE_FILE).write_text(
+        json.dumps(provenance, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    return provenance
+
+
 def pdf_destination_pages(pdf_path: Path) -> dict[str, int]:
     data = run_json(["qpdf", "--json", "--json-key=pages", "--json-key=qpdf", str(pdf_path)])
     page_by_object = {
@@ -193,9 +333,35 @@ def pdf_destination_pages(pdf_path: Path) -> dict[str, int]:
     return figure_pages
 
 
-def write_manifest(rows: list[FigureManifestRow], out_dir: Path) -> None:
+def write_manifest(
+    rows: list[FigureManifestRow],
+    out_dir: Path,
+    *,
+    provenance: dict[str, Any] | None = None,
+    page_sha256: dict[int, str] | None = None,
+) -> None:
     manifest_json = out_dir / "figure_pages_manifest.json"
     manifest_tsv = out_dir / "figure_pages_manifest.tsv"
+    page_sha256 = page_sha256 or {}
+    pdf_sha256 = ""
+    render_dpi = ""
+    renderer_version = ""
+    render_options_payload: dict[str, Any] = {}
+    renderer_payload: dict[str, Any] = {}
+    if provenance is not None:
+        pdf = provenance.get("pdf", {})
+        options = provenance.get("options", {})
+        renderer = provenance.get("renderer", {})
+        if isinstance(pdf, dict) and isinstance(pdf.get("sha256"), str):
+            pdf_sha256 = pdf["sha256"]
+        if isinstance(options, dict):
+            render_options_payload = options
+            if "dpi" in options:
+                render_dpi = str(options["dpi"])
+        if isinstance(renderer, dict):
+            renderer_payload = renderer
+            if isinstance(renderer.get("version"), str):
+                renderer_version = renderer["version"]
     serializable = [
         {
             "label": row.label,
@@ -204,27 +370,52 @@ def write_manifest(rows: list[FigureManifestRow], out_dir: Path) -> None:
             "physical_page": row.physical_page,
             "anchor": row.anchor,
             "caption": row.caption,
+            "pdf_sha256": pdf_sha256 or None,
+            "render_dpi": int(render_dpi) if render_dpi.isdigit() else None,
+            "renderer": renderer_payload or None,
+            "render_options": render_options_payload or None,
+            "page_image_sha256": page_sha256.get(row.physical_page),
         }
         for row in rows
     ]
     manifest_json.write_text(json.dumps(serializable, indent=2) + "\n", encoding="utf-8")
     with manifest_tsv.open("w", encoding="utf-8") as handle:
-        handle.write("label\tnumber\tprinted_page\tphysical_page\tanchor\tcaption\n")
+        handle.write(
+            "label\tnumber\tprinted_page\tphysical_page\tanchor\tcaption\t"
+            "pdf_sha256\trender_dpi\trenderer_version\tpage_image_sha256\n"
+        )
         for row in rows:
             caption = re.sub(r"\s+", " ", row.caption).replace("\t", " ")
+            page_digest = page_sha256.get(row.physical_page, "")
             handle.write(
                 f"{row.label}\t{row.number}\t{row.printed_page}\t"
-                f"{row.physical_page}\t{row.anchor}\t{caption}\n"
+                f"{row.physical_page}\t{row.anchor}\t{caption}\t"
+                f"{pdf_sha256}\t{render_dpi}\t{renderer_version}\t{page_digest}\n"
             )
 
 
-def render_pages(pdf_path: Path, pages: list[int], page_dir: Path, dpi: int, force: bool) -> None:
+def render_pages(
+    pdf_path: Path,
+    pages: list[int],
+    out_dir: Path,
+    dpi: int,
+    force: bool,
+) -> RenderPagesResult:
+    page_dir = out_dir / "pages"
     page_dir.mkdir(parents=True, exist_ok=True)
     expected_names = {f"page-{page:04d}.png" for page in pages}
     remove_unexpected_files(page_dir, "page-*.png", expected_names)
+    previous = load_render_provenance(out_dir)
+    current = current_render_provenance(pdf_path, dpi)
+    page_sha256: dict[int, str] = {}
+    rendered = 0
+    reused = 0
     for page in pages:
         target = page_dir / f"page-{page:04d}.png"
-        if target.exists() and not force:
+        reusable_digest = reusable_page_sha256(target, page, previous, current, force=force)
+        if reusable_digest is not None:
+            page_sha256[page] = reusable_digest
+            reused += 1
             continue
         prefix = page_dir / f"page-{page:04d}"
         subprocess.run(
@@ -243,6 +434,17 @@ def render_pages(pdf_path: Path, pages: list[int], page_dir: Path, dpi: int, for
             ],
             check=True,
         )
+        if not target.exists():
+            raise SystemExit(f"pdftoppm did not write expected page image: {target}")
+        page_sha256[page] = sha256_file(target)
+        rendered += 1
+    provenance = write_render_provenance(out_dir, current, pages, page_sha256)
+    return RenderPagesResult(
+        page_sha256=page_sha256,
+        rendered=rendered,
+        reused=reused,
+        provenance=provenance,
+    )
 
 
 def write_contact_sheets(
@@ -347,21 +549,36 @@ def main() -> int:
     rows.sort(key=lambda row: (row.physical_page, row.number, row.label))
 
     out_dir.mkdir(parents=True, exist_ok=True)
-    write_manifest(rows, out_dir)
     unique_pages = sorted({row.physical_page for row in rows})
+    render_result: RenderPagesResult | None = None
 
     if render_page_images:
-        render_pages(pdf_path, unique_pages, out_dir / "pages", args.dpi, args.force)
+        render_result = render_pages(pdf_path, unique_pages, out_dir, args.dpi, args.force)
+        write_manifest(
+            rows,
+            out_dir,
+            provenance=render_result.provenance,
+            page_sha256=render_result.page_sha256,
+        )
         if contact_sheets:
+            # Rebuild expected sheets every run; source page digests may change
+            # even when the sheet filenames and page numbers do not.
             write_contact_sheets(rows, out_dir, args.columns, args.thumb_width)
         elif args.force:
             shutil.rmtree(out_dir / "contact", ignore_errors=True)
+    else:
+        write_manifest(rows, out_dir, provenance={**base_provenance(pdf_path, args.dpi), "renderer": None})
 
     print("Rendered figure-page audit data")
     print(f"  figures: {len(rows)}")
     print(f"  unique physical pages: {len(unique_pages)}")
-    print(f"  PDF: {pdf_path.relative_to(ROOT) if pdf_path.is_relative_to(ROOT) else pdf_path}")
-    print(f"  output: {out_dir.relative_to(ROOT) if out_dir.is_relative_to(ROOT) else out_dir}")
+    print(f"  PDF: {display_path(pdf_path)}")
+    if render_result is not None:
+        print(f"  PDF sha256: {render_result.provenance['pdf']['sha256']}")
+        print(f"  renderer: {render_result.provenance['renderer']['version']}")
+        print(f"  page images: {render_result.rendered} rendered, {render_result.reused} reused")
+        print(f"  provenance: {display_path(out_dir / PROVENANCE_FILE)}")
+    print(f"  output: {display_path(out_dir)}")
     print(f"  first physical page: {unique_pages[0] if unique_pages else 'n/a'}")
     print(f"  last physical page: {unique_pages[-1] if unique_pages else 'n/a'}")
     return 0
