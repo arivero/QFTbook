@@ -7,7 +7,8 @@ dimensions, the KMS fluctuation-dissipation factor, positivity of the noise
 covariance, finite response-window metric fluctuation bounds, the first-order
 lambda-phi-four potential-insertion source coordinate, the retained
 lambda-phi-four potential-noise coordinate using the full separated two-point
-function, and the low-energy root selected by reduction of order in a toy
+function, retained Ward completion of interacting source/noise coordinates,
+and the low-energy root selected by reduction of order in a toy
 higher-derivative equation.
 
 Evidence contract.
@@ -17,25 +18,28 @@ fluctuation-dissipation factors, noise-covariance positivity, retained
 metric-response bounds, the lambda-phi-four potential-insertion source
 coordinate, the retained potential-noise Wick contraction with full separated
 two-point cross covariance and metric pushforward, the restricted
-finite-renormalization ledger for that coordinate, and the low-energy root
-selected by reduction of order.
+finite-renormalization ledger for that coordinate, the finite retained
+Ward-completion/projected-noise algebra for interacting sources, and the
+low-energy root selected by reduction of order.
 Independent construction: the checks recompute traces, KMS factors,
 matrix pushforwards, exact retained-sector inverses, Wick-contraction
 coefficients, cosmological-coordinate shifts, independent finite counterterm
-controls, signed/absolute norm bounds, and toy roots directly from finite
-formulas rather than importing chapter display strings.
+controls, signed/absolute norm bounds, Ward maps, kernel projectors, projected
+covariances, and toy roots directly from finite formulas rather than importing
+chapter display strings.
 Imported assumptions: the tests use finite-dimensional retained sectors,
 centered quasifree Wick combinatorics, formal first- and second-order lambda
-coordinates, positive finite noise matrices, and the chapter's convention
-E_grav = <T_ren>.
+coordinates, positive finite noise matrices, full-rank finite Ward maps, and the
+chapter's convention E_grav = <T_ren>.
 Negative controls: singular retained response matrices, wrong Wick
 contraction factors, omitted local-Wick-renormalization quadratic terms, wrong
 cosmological-coordinate signs, erased independent quartic/stress-tensor finite
 counterterms, signed negative density norm bounds, dropped connected
 potential-noise terms, using the smooth Wick remainder instead of the full
 separated two-point function, premature real-part projection, retained
-disconnected noise pieces, and cutoff-scale higher-derivative roots are
-rejected.
+disconnected noise pieces, pretending a transverse counterterm cancels a Ward
+violation, wrong-sign Ward completions, unprojected longitudinal noise, and
+cutoff-scale higher-derivative roots are rejected.
 Scope boundary: a pass checks coefficient, positivity, and response-bound
 bookkeeping for the retained potential-insertion coordinate; it does not
 construct the full interacting stress-tensor expectation, prove existence of
@@ -85,12 +89,62 @@ def det2(matrix: Matrix) -> Fraction:
     return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
 
 
+def det3(matrix: Matrix) -> Fraction:
+    return (
+        matrix[0][0]
+        * (matrix[1][1] * matrix[2][2] - matrix[1][2] * matrix[2][1])
+        - matrix[0][1]
+        * (matrix[1][0] * matrix[2][2] - matrix[1][2] * matrix[2][0])
+        + matrix[0][2]
+        * (matrix[1][0] * matrix[2][1] - matrix[1][1] * matrix[2][0])
+    )
+
+
+def inverse2(matrix: Matrix) -> Matrix:
+    determinant = det2(matrix)
+    if determinant == 0:
+        raise AssertionError("attempted to invert a singular two-by-two matrix")
+    return (
+        (matrix[1][1] / determinant, -matrix[0][1] / determinant),
+        (-matrix[1][0] / determinant, matrix[0][0] / determinant),
+    )
+
+
+def identity(size: int) -> Matrix:
+    return tuple(
+        tuple(Fraction(1) if row == col else Fraction(0) for col in range(size))
+        for row in range(size)
+    )
+
+
+def zero_matrix(rows: int, cols: int) -> Matrix:
+    return tuple(tuple(Fraction(0) for _ in range(cols)) for _ in range(rows))
+
+
+def matadd(left: Matrix, right: Matrix) -> Matrix:
+    return tuple(
+        tuple(left[row][col] + right[row][col] for col in range(len(left[0])))
+        for row in range(len(left))
+    )
+
+
+def matsub(left: Matrix, right: Matrix) -> Matrix:
+    return tuple(
+        tuple(left[row][col] - right[row][col] for col in range(len(left[0])))
+        for row in range(len(left))
+    )
+
+
 def trace(matrix: Matrix) -> Fraction:
     return sum(matrix[i][i] for i in range(len(matrix)))
 
 
 def squared_norm(column: Matrix) -> Fraction:
     return sum(column[i][0] * column[i][0] for i in range(len(column)))
+
+
+def quadratic_form(matrix: Matrix, column: Matrix) -> Fraction:
+    return matmul(matmul(transpose(column), matrix), column)[0][0]
 
 
 def check_curvature_squared_traces() -> None:
@@ -415,6 +469,108 @@ def check_lambda_phi4_potential_noise_kernel() -> None:
         raise AssertionError("unit certified response norm should bound potential-noise trace")
 
 
+def check_retained_interacting_source_ward_completion() -> None:
+    # Finite analogue of the conservation condition B j_full = 0.
+    ward: Matrix = (
+        (Fraction(1), Fraction(-1), Fraction(2)),
+        (Fraction(0), Fraction(1), Fraction(1)),
+    )
+    potential_source: Matrix = (
+        (Fraction(3, 10),),
+        (Fraction(-1, 5),),
+        (Fraction(1, 4),),
+    )
+    ward_violation = matmul(ward, potential_source)
+    if ward_violation == zero_matrix(2, 1):
+        raise AssertionError("negative control failed: potential source was already conserved")
+
+    ward_gram = matmul(ward, transpose(ward))
+    if det2(ward_gram) == 0:
+        raise AssertionError("finite Ward map should have full row rank")
+    ward_gram_inverse = inverse2(ward_gram)
+    longitudinal_projector = matmul(
+        matmul(transpose(ward), ward_gram_inverse),
+        ward,
+    )
+    transverse_projector = matsub(identity(3), longitudinal_projector)
+
+    if matmul(transverse_projector, transverse_projector) != transverse_projector:
+        raise AssertionError("retained Ward projector should be idempotent")
+    if matmul(ward, transverse_projector) != zero_matrix(2, 3):
+        raise AssertionError("retained Ward projector should land in ker B")
+
+    transverse_source = matmul(transverse_projector, potential_source)
+    ward_completion = matsub(transverse_source, potential_source)
+    if ward_completion == zero_matrix(3, 1):
+        raise AssertionError("inhomogeneous potential source needs a nonzero Ward completion")
+    if matmul(ward, transverse_source) != zero_matrix(2, 1):
+        raise AssertionError("Ward-completed source should be conserved")
+
+    wrong_sign_source = matsub(potential_source, ward_completion)
+    if matmul(ward, wrong_sign_source) == zero_matrix(2, 1):
+        raise AssertionError("negative control failed: wrong-sign Ward completion conserved source")
+
+    transverse_counterterm: Matrix = (
+        (Fraction(-3, 7),),
+        (Fraction(-1, 7),),
+        (Fraction(1, 7),),
+    )
+    if matmul(ward, transverse_counterterm) != zero_matrix(2, 1):
+        raise AssertionError("test transverse counterterm should lie in ker B")
+    if matmul(ward, matadd(potential_source, transverse_counterterm)) == zero_matrix(2, 1):
+        raise AssertionError("negative control failed: transverse ambiguity cancelled Ward violation")
+
+    full_noise: Matrix = (
+        (Fraction(5, 2), Fraction(1, 3), Fraction(1, 4)),
+        (Fraction(1, 3), Fraction(3, 2), Fraction(-1, 5)),
+        (Fraction(1, 4), Fraction(-1, 5), Fraction(4, 3)),
+    )
+    if (
+        full_noise[0][0] <= 0
+        or det2((full_noise[0][:2], full_noise[1][:2])) <= 0
+        or det3(full_noise) <= 0
+    ):
+        raise AssertionError("test full noise matrix should be positive definite")
+
+    projected_noise = matmul(
+        matmul(transverse_projector, full_noise),
+        transpose(transverse_projector),
+    )
+    if projected_noise != transpose(projected_noise):
+        raise AssertionError("Ward-projected noise should be symmetric")
+    if matmul(ward, projected_noise) != zero_matrix(2, 3):
+        raise AssertionError("Ward-projected noise should have no longitudinal row")
+    if matmul(projected_noise, transpose(ward)) != zero_matrix(3, 2):
+        raise AssertionError("Ward-projected noise should have no longitudinal column")
+    if trace(projected_noise) > trace(full_noise):
+        raise AssertionError("orthogonal Ward projection should not increase trace")
+
+    if matmul(ward, full_noise) == zero_matrix(2, 3):
+        raise AssertionError("negative control failed: unprojected noise was Ward-clean")
+
+    for test_vector in [
+        ((Fraction(1),), (Fraction(2),), (Fraction(-1),)),
+        ((Fraction(0),), (Fraction(1),), (Fraction(3),)),
+        ((Fraction(2),), (Fraction(-1),), (Fraction(1),)),
+    ]:
+        if quadratic_form(projected_noise, test_vector) < 0:
+            raise AssertionError("Ward-projected noise should be positive semidefinite")
+
+    response_inverse: Matrix = (
+        (Fraction(1, 2), Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(1, 3), Fraction(0)),
+        (Fraction(0), Fraction(0), Fraction(1, 4)),
+    )
+    metric_covariance = matmul(
+        matmul(response_inverse, projected_noise),
+        transpose(response_inverse),
+    )
+    if metric_covariance != transpose(metric_covariance):
+        raise AssertionError("Ward-clean metric covariance should be symmetric")
+    if trace(metric_covariance) > trace(projected_noise):
+        raise AssertionError("contractive response should bound Ward-clean noise trace")
+
+
 def check_reduction_of_order_toy_model() -> None:
     # Toy equation: x'' + omega0^2 x + epsilon x'''' = 0.
     # For x ~ exp(lambda t), epsilon lambda^4 + lambda^2 + omega0^2 = 0.
@@ -442,6 +598,7 @@ def main() -> None:
     check_finite_response_window_bounds()
     check_lambda_phi4_potential_source_coordinate()
     check_lambda_phi4_potential_noise_kernel()
+    check_retained_interacting_source_ward_completion()
     check_reduction_of_order_toy_model()
     print("All semiclassical backreaction checks passed.")
 

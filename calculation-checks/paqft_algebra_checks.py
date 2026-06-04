@@ -25,16 +25,16 @@ grading, smooth diagonal Hadamard coordinate difference, local finite Wick
 renormalization scalar, and the chapter's normalization of the quartic
 interaction lambda Phi^4/4! are finite inputs.  The response check uses the
 chapter's retained local tadpole approximation and finite retarded/advanced
-test-function samples; the sunset check uses finite greater/lesser two-point
-data away from the diagonal.
+test-function samples; the sunset check uses finite Hermitian-compatible
+complex greater/lesser two-point data away from the diagonal.
 Negative controls: wrong scaling-degree uniqueness thresholds, missing
 quartic tadpole factors, omitted vacuum bubble terms, untyped
 coordinate-transport expectation shifts, incorrect mass/curvature coordinate
 factors, wrong tadpole self-energy combinatorics, omitted Born signs, and
 constant replacements for nonconstant local Wick-square densities, wrong
-sunset symmetry factors, acausal symmetric kernels, and conflation of local
-diagonal counterterms with off-diagonal kernels are rejected by exact rational
-comparisons.
+sunset symmetry factors, omitted retarded i-factors, acausal symmetric kernels,
+and conflation of local diagonal counterterms with off-diagonal kernels are
+rejected by exact rational comparisons.
 Scope boundary: a pass checks finite pAQFT algebra and coefficient
 bookkeeping; it does not prove microlocal extension theorems, continuum
 Hadamard state existence, perturbative convergence, interacting stress-tensor
@@ -50,6 +50,7 @@ from math import comb, factorial
 
 Poly = dict[int, Fraction]
 HPoly = dict[int, Poly]
+RatComplex = tuple[Fraction, Fraction]
 
 
 def clean_poly(poly: Poly) -> Poly:
@@ -361,16 +362,63 @@ def check_lambda_phi4_nonlocal_sunset_response() -> None:
     cutoff = [Fraction(1), Fraction(4, 5), Fraction(3, 5)]
     advanced_test = [Fraction(2, 5), Fraction(-1, 3), Fraction(3, 7)]
     retarded_test = [Fraction(4, 9), Fraction(5, 8), Fraction(-2, 3)]
-    greater = [
-        [Fraction(0), Fraction(1, 3), Fraction(-2, 5)],
-        [Fraction(5, 7), Fraction(0), Fraction(3, 4)],
-        [Fraction(1, 6), Fraction(-4, 9), Fraction(0)],
+    greater: list[list[RatComplex]] = [
+        [
+            (Fraction(0), Fraction(0)),
+            (Fraction(1, 3), Fraction(1, 5)),
+            (Fraction(-2, 5), Fraction(1, 7)),
+        ],
+        [
+            (Fraction(1, 3), Fraction(-1, 5)),
+            (Fraction(0), Fraction(0)),
+            (Fraction(3, 4), Fraction(-2, 9)),
+        ],
+        [
+            (Fraction(-2, 5), Fraction(-1, 7)),
+            (Fraction(3, 4), Fraction(2, 9)),
+            (Fraction(0), Fraction(0)),
+        ],
     ]
+
+    def cconj(value: RatComplex) -> RatComplex:
+        return (value[0], -value[1])
+
+    def csub(left: RatComplex, right: RatComplex) -> RatComplex:
+        return (left[0] - right[0], left[1] - right[1])
+
+    def cmul(left: RatComplex, right: RatComplex) -> RatComplex:
+        return (
+            left[0] * right[0] - left[1] * right[1],
+            left[0] * right[1] + left[1] * right[0],
+        )
+
+    def cscale(factor: Fraction, value: RatComplex) -> RatComplex:
+        return (factor * value[0], factor * value[1])
+
+    def ccube(value: RatComplex) -> RatComplex:
+        return cmul(cmul(value, value), value)
+
+    def minus_i_times(value: RatComplex) -> RatComplex:
+        return (value[1], -value[0])
+
+    for i in range(3):
+        for j in range(3):
+            if greater[j][i] != cconj(greater[i][j]):
+                raise AssertionError("greater/lesser fixture should be Hermitian-compatible")
+
+    def retarded_cubic_difference(i: int, j: int) -> Fraction:
+        cubic_difference = csub(ccube(greater[i][j]), ccube(greater[j][i]))
+        if cubic_difference[0] != 0 or cubic_difference[1] == 0:
+            raise AssertionError("Hermitian cubic difference should be purely imaginary")
+        retarded_difference = minus_i_times(cubic_difference)
+        if retarded_difference[1] != 0:
+            raise AssertionError("retarded -i factor should make the cubic difference real")
+        return retarded_difference[0]
 
     def causal_sunset_kernel(i: int, j: int, symmetry_factor: Fraction) -> Fraction:
         if i <= j:
             return Fraction(0)
-        causal_difference = greater[i][j] ** 3 - greater[j][i] ** 3
+        causal_difference = retarded_cubic_difference(i, j)
         return (
             -coupling * coupling * symmetry_factor
             * cutoff[i] * cutoff[j]
@@ -383,8 +431,8 @@ def check_lambda_phi4_nonlocal_sunset_response() -> None:
     ]
     expected = [
         [Fraction(0), Fraction(0), Fraction(0)],
-        [Fraction(-6064, 1867635), Fraction(0), Fraction(0)],
-        [Fraction(-1853, 3630000), Fraction(23779, 7840800), Fraction(0)],
+        [Fraction(8, 6875), Fraction(0), Fraction(0)],
+        [Fraction(5067, 5187875), Fraction(-193, 44550), Fraction(0)],
     ]
     if kernel != expected:
         raise AssertionError("retarded sunset kernel coefficients changed")
@@ -395,14 +443,21 @@ def check_lambda_phi4_nonlocal_sunset_response() -> None:
         -coupling * coupling / 12
         * cutoff[1]
         * cutoff[0]
-        * (greater[1][0] ** 3 - greater[0][1] ** 3)
+        * retarded_cubic_difference(1, 0)
     )
     if 2 * bilocal_action_coeff != kernel[1][0]:
         raise AssertionError("quadratic-action coefficient no longer doubles to the kernel")
 
     response = bilocal_response(weights, advanced_test, kernel, retarded_test)
-    if response != Fraction(-4473298301, 806818320000):
+    if response != Fraction(264703867, 39220335000):
         raise AssertionError("sunset Born response coefficient or sign changed")
+
+    omitted_i_cell = cscale(
+        -coupling * coupling / 6 * cutoff[1] * cutoff[0],
+        csub(ccube(greater[1][0]), ccube(greater[0][1])),
+    )
+    if omitted_i_cell[0] != 0 or omitted_i_cell[1] == 0:
+        raise AssertionError("negative control failed: omitted i-factor did not leave imaginary kernel")
 
     wrong_factor_kernel = [
         [causal_sunset_kernel(i, j, Fraction(1, 2)) for j in range(3)]
@@ -419,7 +474,7 @@ def check_lambda_phi4_nonlocal_sunset_response() -> None:
         for j in range(3):
             if i == j:
                 continue
-            causal_difference = greater[i][j] ** 3 - greater[j][i] ** 3
+            causal_difference = retarded_cubic_difference(i, j)
             symmetric_kernel[i][j] = (
                 -coupling * coupling / 6 * cutoff[i] * cutoff[j] * causal_difference
             )

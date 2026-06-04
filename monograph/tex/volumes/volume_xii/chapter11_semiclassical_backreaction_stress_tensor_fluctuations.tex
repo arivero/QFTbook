@@ -1042,6 +1042,153 @@ only after the conserved full stress tensor and its renormalized square have
 been fixed in the same locally covariant scheme.
 \end{controlledapproximation}
 
+\section{Conservation Completion For Interacting Sources}
+\label{sec:semiclassical-interacting-source-conservation-completion}
+
+The retained potential source and retained potential noise above are useful only
+after their conservation status has been made explicit.  In a region where the
+Wick-square coordinate varies,
+\begin{equation}
+  s_\nu^{\rm pot}
+  :=
+  \nabla^\mu
+  \delta_\lambda\langle T_{\mu\nu}\rangle_{\omega,H}^{\rm pot}
+  =
+  -\partial_\nu\rho_\lambda .
+  \label{eq:semiclassical-potential-source-divergence}
+\end{equation}
+The missing term is therefore part of the source equation.  The interacting
+correction in
+\eqref{eq:semiclassical-full-interacting-source-ledger} must satisfy
+\begin{equation}
+  \nabla^\mu
+  \left(
+    \delta_\lambda
+    \left\langle R_V(T_{\mu\nu}^{\rm free})\right\rangle_{\omega,H}^{(1)}
+    +
+    C_{\mu\nu}^{\rm int}[g;m,\xi,\lambda,H]
+  \right)
+  =
+  \partial_\nu\rho_\lambda ,
+  \label{eq:semiclassical-interacting-ward-completion}
+\end{equation}
+up to the same distributional contact terms and field-equation ideals used in
+the locally covariant construction of the stress tensor.  This is where the
+physics of the interacting stress tensor enters the backreaction problem: the
+potential energy coordinate supplies one part of the source, but the
+Bogoliubov correction, time-ordered-product extension, and local finite
+counterterms determine whether the source can actually drive a metric.
+
+The finite response window of
+Controlled Approximation~\ref{ca:semiclassical-finite-response-window} gives a
+compact way to keep this requirement visible.  Choose retained stress profiles
+\(\tau_{\mu\nu}^{(a)}\) dual to the source coordinates \(j_a\), and test the
+divergence against compact vector fields \(u_\alpha^\nu\).  This gives the
+finite Ward map
+\begin{equation}
+  (\mathsf B j)_\alpha
+  =
+  \sum_a j_a
+  \int_U
+  u_\alpha^\nu\nabla^\mu\tau_{\mu\nu}^{(a)}
+  \,\dd\operatorname{vol}_g .
+  \label{eq:semiclassical-retained-ward-map}
+\end{equation}
+A retained source is admissible in the conserved backreaction sector only if
+\begin{equation}
+  \mathsf B j^{\rm full}=0,
+  \qquad
+  j^{\rm full}
+  =
+  j^{(\lambda,{\rm pot})}
+  +
+  j^{(\lambda,{\rm Bog})}
+  +
+  j^{(\lambda,{\rm ct})}.
+  \label{eq:semiclassical-retained-source-ward-condition}
+\end{equation}
+In orthonormal retained coordinates, when \(\mathsf B\) has full row rank on
+the tested constraint subspace, the minimum-norm Ward completion of a raw
+source coordinate is the projected source
+\begin{equation}
+  j_\perp
+  =
+  \mathsf P_{\ker \mathsf B}j^{\rm raw},
+  \qquad
+  \mathsf P_{\ker \mathsf B}
+  =
+  \mathsf I-\mathsf B^*
+  \left(\mathsf B\mathsf B^*\right)^{-1}
+  \mathsf B .
+  \label{eq:semiclassical-retained-ward-projector}
+\end{equation}
+With non-orthonormal retained test functions the same formula is written with
+the corresponding Gram matrices inserted.  Equation
+\eqref{eq:semiclassical-retained-ward-projector} is the retained-sector shadow
+of the Hollands--Wald interacting stress-tensor construction: it detects a
+longitudinal violation such as \(\mathsf B j^{(\lambda,{\rm pot})}\ne0\),
+records the amount that must be supplied by the
+Bogoliubov/contact/composite counterterm part, and separates it from the
+remaining transverse finite-renormalization freedom.
+In the homogeneous special case \(\partial_\nu\rho_\lambda=0\), the retained
+potential coordinate is already in \(\ker\mathsf B\), which is why the
+cosmological-coordinate shift in
+\eqref{eq:semiclassical-interacting-lambda-shift} is a consistent scalar
+bookkeeping coordinate there.
+
+The same conservation test applies to fluctuations.  The full interacting
+noise kernel must obey the distributional Ward identities
+\[
+  \nabla_x^\mu N_{\mu\nu,\rho\sigma}^{\rm full}(x,y)=0,
+  \qquad
+  \nabla_y^\rho N_{\mu\nu,\rho\sigma}^{\rm full}(x,y)=0,
+\]
+after the renormalized square of the interacting stress tensor has been fixed.
+In the retained sector this says
+\begin{equation}
+  \mathsf B\mathsf N^{\rm full}=0,
+  \qquad
+  \mathsf N^{\rm full}\mathsf B^*=0 .
+  \label{eq:semiclassical-retained-noise-ward-condition}
+\end{equation}
+Thus a Ward-clean retained covariance is
+\begin{equation}
+  \mathsf N_\perp
+  =
+  \mathsf P_{\ker \mathsf B}
+  \mathsf N^{\rm full}
+  \mathsf P_{\ker \mathsf B}^* .
+  \label{eq:semiclassical-retained-noise-ward-projection}
+\end{equation}
+Projection preserves positivity because
+\(\eta^*\mathsf N_\perp\eta
+=(\mathsf P_{\ker \mathsf B}^*\eta)^*
+\mathsf N^{\rm full}
+(\mathsf P_{\ker \mathsf B}^*\eta)\ge0\).
+Applying the same operation only to
+\(\mathsf N^{(\lambda,{\rm pot})}\) gives a useful diagnostic for the potential
+coordinate.  The complete Einstein--Langevin noise also includes the
+Bogoliubov, derivative, contact, and composite-counterterm contributions in the
+same Ward-compatible prescription.  The physical retained metric data are
+\begin{equation}
+  h_\perp(\omega)
+  =
+  \mathsf D(\omega+\ii0)^{-1}j_\perp(\omega),
+  \qquad
+  \mathsf C_{h,\perp}(\omega)
+  =
+  \mathsf D(\omega+\ii0)^{-1}
+  \mathsf N_\perp(\omega)
+  \mathsf D(\omega+\ii0)^{-*},
+  \label{eq:semiclassical-ward-clean-response-data}
+\end{equation}
+with the same bounded-response estimates as in
+\eqref{eq:semiclassical-mean-response-bound} and
+\eqref{eq:semiclassical-retained-noise-bound}.  This is the point of keeping
+the potential-sector calculation narrow: it is a computable coordinate inside
+the interacting source, while the conserved mean and noise that feed
+semiclassical gravity require the full Ward-compatible pAQFT package.
+
 \section{Validity Conditions And Reduction Of Order}
 
 The semiclassical approximation requires more than small curvature.  A

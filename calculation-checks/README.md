@@ -2013,7 +2013,9 @@ Current checks:
   adversarial checks for the combinatorial factor, Born sign, finite
   Wick-square scheme shift, nonconstant local tadpole density, and the
   off-diagonal sunset self-energy response: the \(-\lambda^2/6\) kernel
-  coefficient, causal support, bilocal Born sign, and separation of local
+  coefficient, causal support, the \(-i\) retardedization on
+  Hermitian-compatible complex Wightman samples, bilocal Born sign, omitted
+  `i`-factor and acausal-support negative controls, and separation of local
   diagonal counterterm freedom from the nonlocal kernel.
 - `point_splitting_stress_checks.py`: finite checks for the point-split
   stress-tensor examples, including the flat Synge identities and leading
@@ -2050,8 +2052,10 @@ Current checks:
   covariance, disconnected-subtraction, dropped-mixed-term, same-state
   Wick-coordinate, smooth-remainder-only, and premature-real-part negative
   controls, quadratic coupling scaling, retained noise positivity, and its
-  metric-covariance trace bound, and the low-energy root selected by reduction
-  of order in a toy higher-derivative equation.
+  metric-covariance trace bound, the retained Ward-completion projector for
+  interacting source/noise coordinates with wrong-sign, transverse-ambiguity,
+  and unprojected-longitudinal-noise negative controls, and the low-energy root
+  selected by reduction of order in a toy higher-derivative equation.
 - `schwinger_keldysh_operator_checks.py`: finite two-level-system checks for
   the real-time Schwinger--Keldysh operator chapter, including diagonal
   unitarity, branch-exchange reality, the \(|Z|\le1\) positivity bound,

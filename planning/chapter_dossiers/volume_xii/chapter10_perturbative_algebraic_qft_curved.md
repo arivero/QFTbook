@@ -29,9 +29,9 @@ Hadamard functions and causal factorization.
   operators used in the first Born response of the interacting two-point
   function.
 - `W_omega^>`, `W_omega^<`, `Pi_sun^ret`, `Ext_EG`: greater/lesser
-  two-point functions, the retained nonlocal sunset self-energy kernel, and
-  the Epstein--Glaser extension map separating off-diagonal propagation from
-  local diagonal counterterms.
+  two-point functions, the retained nonlocal sunset self-energy kernel with the
+  closed-time-path `-i` retardedization, and the Epstein--Glaser extension map
+  separating off-diagonal propagation from local diagonal counterterms.
 - `S_BV`, `Delta_BV`: BV action and renormalized BV second-order operator.
 
 ## Claim Ledger
@@ -76,12 +76,13 @@ Hadamard functions and causal factorization.
   interacting self-energy, cutoff-edge corrections, and higher-loop physics.
 - Adds a third worked interacting scalar response layer: the order
   `lambda^2` sunset self-energy is written off diagonal as a retarded
-  greater/lesser causal difference with coefficient `-lambda^2/6`, then
-  inserted into the bilocal Born response for the retarded two-point
-  function.  The chapter derives the coefficient from the second cumulant and
-  explicitly separates the off-diagonal kernel from the Epstein--Glaser
-  extension and local two-point counterterms needed for a renormalized
-  interacting propagator.
+  greater/lesser causal difference with coefficient `-lambda^2/6` and the
+  closed-time-path factor `-i`, then inserted into the bilocal Born response for
+  the retarded two-point function.  The chapter derives the coefficient from the
+  second cumulant, checks that Hermitian Wightman data give a real time-domain
+  inverse-kernel insertion, and explicitly separates the off-diagonal kernel
+  from the Epstein--Glaser extension and local two-point counterterms needed for
+  a renormalized interacting propagator.
 
 ## Calculation Checks
 
@@ -97,9 +98,10 @@ Hadamard functions and causal factorization.
   finite Wick-square scheme shifts, and rejection of constant averaging for a
   nonconstant local tadpole density.  It also verifies the off-diagonal
   sunset response: the quadratic-action-to-kernel factor, retarded support,
-  bilocal Born sign, rejection of the wrong symmetry factor and acausal
-  symmetric kernel, and separation of diagonal local counterterm response from
-  the nonlocal sunset kernel.
+  the `-i` retardedization on Hermitian-compatible complex Wightman samples,
+  bilocal Born sign, rejection of the wrong symmetry factor, omitted `i` factor,
+  and acausal symmetric kernel, and separation of diagonal local counterterm
+  response from the nonlocal sunset kernel.
 
 ## Figure Ledger
 
@@ -134,3 +136,8 @@ Hadamard star-product comparison maps.
   memory kernel and by marking the diagonal extension/counterterm problem as
   required extra data, so the section does not present a separated-point
   kernel as a full renormalized propagator.
+- 2026-06-04 issue #744: restored the closed-time-path `-i` factor in the
+  retarded sunset kernel.  The companion now uses Hermitian-compatible complex
+  Wightman samples, verifies that the retarded kernel is real on real test
+  data, and rejects the old omitted-`i` convention as an imaginary
+  inverse-kernel insertion.

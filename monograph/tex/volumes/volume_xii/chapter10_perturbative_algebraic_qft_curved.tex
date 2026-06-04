@@ -800,10 +800,16 @@ chosen quasifree Hadamard state as
   \qquad
   W_\omega^<(x,y)=W_\omega^>(y,x).
 \]
-Let \(\Theta_{\rm ret}(x,y)\) denote the retarded support factor, supported
-where \(x\in J^+(y)\).  With the conventional factors of \(\ii\) absorbed into
-the real retarded response kernel as in
-Chapter~\ref{ch:thermal-schwinger-keldysh}, the off-diagonal sunset kernel
+For a Hermitian real scalar field,
+\(W_\omega^<(x,y)=\overline{W_\omega^>(x,y)}\) as a distributional boundary
+value away from the diagonal.  Let
+\(\Theta_{\rm ret}(x,y)\) denote the retarded support factor, supported where
+\(x\in J^+(y)\).  Following the closed-time-path convention
+\[
+  G^{\rm R}=-\ii\,\Theta_{\rm ret}(G^>-G^<)
+\]
+from Chapter~\ref{ch:thermal-schwinger-keldysh}, retardedizing the cubic
+Wightman product supplies the factor \(-\ii\).  The off-diagonal sunset kernel
 inserted into the inverse two-point operator is
 \begin{equation}
   \Pi_{\rm sun,off}^{\rm ret}(x,y)
@@ -811,12 +817,17 @@ inserted into the inverse two-point operator is
   -\frac{\lambda^2}{6}\,
   g(x)g(y)\,
   \Theta_{\rm ret}(x,y)
-  \left[
+  \left[-\ii
+  \left(
     W_\omega^>(x,y)^3-W_\omega^<(x,y)^3
-  \right],
+  \right)\right],
   \qquad x\ne y .
   \label{eq:paqft-sunset-retarded-kernel-offdiagonal}
 \end{equation}
+For Hermitian Wightman data the parenthesized cubic difference is purely
+imaginary, so the displayed kernel is real on real test functions.  Omitting
+the \(-\ii\) factor would turn this time-domain inverse-kernel insertion into
+an imaginary source for a real retarded response.
 This is the first nonlocal part of the two-point response: the value at
 \((x,y)\) remembers propagation through three internal state contractions
 between two interaction points.  A replacement by a diagonal scalar such as
@@ -837,10 +848,9 @@ bilocal kernel:
   \label{eq:paqft-sunset-born-response}
 \end{equation}
 The kernel \(\Pi_{\rm sun}^{\rm ret}\) in
-\eqref{eq:paqft-sunset-born-response} is not just
-\eqref{eq:paqft-sunset-retarded-kernel-offdiagonal}.  The off-diagonal
-formula must be extended across \(x=y\), and that Epstein--Glaser extension
-has local freedom:
+\eqref{eq:paqft-sunset-born-response} includes
+\eqref{eq:paqft-sunset-retarded-kernel-offdiagonal} together with its extension
+across \(x=y\).  That Epstein--Glaser extension has local freedom:
 \begin{equation}
   \Pi_{\rm sun}^{\rm ret}
   =
@@ -855,8 +865,8 @@ has local freedom:
 The displayed local terms are representative members of the same finite
 two-point counterterm family that fixes field normalization, mass, curvature
 coupling, and higher local curvature coordinates at the chosen dimension.
-They are not optional decorations: without them,
-\eqref{eq:paqft-sunset-born-response} is only a separated-point kernel, not a
+They are required data for promoting
+\eqref{eq:paqft-sunset-born-response} from a separated-point kernel to a
 renormalized interacting propagator.
 
 \paragraph{Coefficient and causality check.}
@@ -877,12 +887,12 @@ as the coefficient of the bilocal quadratic action
 is twice the quadratic-action coefficient, hence
 \(-\lambda^2/6\).  Passing to retarded response replaces the symmetric
 Feynman product by the closed-time-path causal difference
-\(\Theta_{\rm ret}\bigl((W_\omega^>)^3-(W_\omega^<)^3\bigr)\).  The finite
-check attached to this chapter verifies exactly this off-diagonal
-coefficient, the retarded support, and the Born sign.  It does not verify the
-continuum distributional extension or the physical renormalization condition
-fixing
-\eqref{eq:paqft-sunset-local-extension-freedom}.
+\(-\ii\Theta_{\rm ret}\bigl((W_\omega^>)^3-(W_\omega^<)^3\bigr)\).  The finite
+check attached to this chapter verifies this off-diagonal coefficient, the
+retarded support, the \(-\ii\) reality factor on Hermitian Wightman samples, and
+the Born sign.  The continuum distributional extension and the physical
+renormalization condition fixing
+\eqref{eq:paqft-sunset-local-extension-freedom} remain additional data.
 
 \section{Gauge Theories And The BV Condition}
 
