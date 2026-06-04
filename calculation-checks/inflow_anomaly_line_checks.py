@@ -2,18 +2,21 @@
 """Exact checks for anomaly-line cocycles and finite inflow identities.
 
 Evidence contract.
-Target claims: the finite cocycle, counterterm, anomaly-line, and inflow
-subclaims in the anomaly-inflow chapter and the Chapter 20 descent bridge.
+Target claims: the finite cocycle, counterterm, anomaly-line, bulk-state-line
+variance, and inflow subclaims in the anomaly-inflow chapter and the Chapter
+20 descent bridge.
 Independent construction: explicit cochain coboundaries, finite
-Chevalley-Eilenberg signs, polynomial counterterm representatives, and finite
-Stokes identities are computed directly rather than inferred from the
-displayed anomaly-line slogan.
+Chevalley-Eilenberg signs, polynomial counterterm representatives, one-line
+duality exponents, and finite Stokes identities are computed directly rather
+than inferred from the displayed anomaly-line slogan.
 Imported assumptions: the chapter's groupoid/cochain orientation convention,
 the chosen finite triangulation models, and the polynomial Lie-algebra action
 used as a local descent shadow.
 Negative controls: nonclosed or noncoboundary representatives fail the
-descent/cancellation identities, and counterterm frame changes are tested as
-coboundaries rather than as changes of the invariant obstruction.
+descent/cancellation identities; counterterm frame changes are tested as
+coboundaries rather than as changes of the invariant obstruction; and a
+filling typed as either a scalar or a boundary-anomaly-line vector fails the
+bulk-boundary evaluation type test.
 Scope boundary: a pass checks finite cochain and descent algebra; it does not
 prove continuum locality, determinant-line existence, compactness of the
 space of fields, or Dai-Freed analytic gluing.
@@ -281,6 +284,67 @@ def check_coordinate_comparison_between_cochain_line_and_inflow() -> None:
                                 )
 
 
+def check_bulk_boundary_dual_line_variance() -> None:
+    """Verify the typed line algebra behind boundary/filling evaluation.
+
+    Represent tensor powers of the boundary anomaly line L by integers:
+    a boundary partition vector has type +1, the bulk state supplied by a
+    filling has type -1 because B_bulk ~= L^vee, and a scalar has type 0.
+    This exact type ledger is what scalar phase checks alone cannot see.
+    """
+
+    scalar = 0
+    boundary_vector = 1
+    bulk_state = -1
+    dual_boundary = -boundary_vector
+
+    assert_equal(
+        bulk_state,
+        dual_boundary,
+        "a filling state has the dual variance to the boundary anomaly vector",
+    )
+    assert_equal(
+        boundary_vector + bulk_state,
+        scalar,
+        "boundary covector evaluates on the bulk state to a scalar",
+    )
+    assert_equal(
+        -boundary_vector,
+        bulk_state,
+        "orientation reversal dualizes the boundary anomaly line",
+    )
+
+    wrong_scalar_filling = 0
+    if boundary_vector + wrong_scalar_filling == scalar:
+        raise AssertionError("negative control failed: scalar filling cannot cancel anomaly line")
+
+    wrong_same_line_filling = boundary_vector
+    if boundary_vector + wrong_same_line_filling == scalar:
+        raise AssertionError("negative control failed: same-line filling cannot cancel anomaly line")
+
+    # If b_X' = lambda b_X in the bulk state line, then the dual frame obeys
+    # (b_X')^{-1} = lambda^{-1} b_X^{-1}.  Therefore a vector z b_X^{-1}
+    # has coordinate z' = z lambda in the X' dual frame.  Check the additive
+    # finite-phase version of this filling-quotient transition law.
+    for modulus in range(2, 19):
+        samples = sorted({0, 1, modulus // 3, modulus // 2, modulus - 1})
+        for transition in samples:
+            for coordinate in samples:
+                bulk_frame_shift = transition
+                dual_frame_shift = (-transition) % modulus
+                new_coordinate = (coordinate + transition) % modulus
+                assert_equal(
+                    (bulk_frame_shift + dual_frame_shift) % modulus,
+                    0,
+                    "bulk frame and dual anomaly frame have inverse transition",
+                )
+                assert_equal(
+                    (new_coordinate + dual_frame_shift) % modulus,
+                    coordinate % modulus,
+                    "filling quotient is the coordinate law for dual frames",
+                )
+
+
 def check_local_descent_zero_can_leave_global_holonomy() -> None:
     """Separate identity-component cancellation from a flat global anomaly.
 
@@ -416,10 +480,11 @@ def main() -> None:
     check_counterterm_frame_change_preserves_cocycle()
     check_finite_regulator_scheme_change_is_coboundary()
     check_coordinate_comparison_between_cochain_line_and_inflow()
+    check_bulk_boundary_dual_line_variance()
     check_local_descent_zero_can_leave_global_holonomy()
     check_finite_bf_boundary_variation()
     print(
-        "Anomaly-line, descent-cocycle, coordinate-comparison, "
+        "Anomaly-line, descent-cocycle, coordinate-comparison, line-variance, "
         "local/global-holonomy, and finite-inflow cochain checks passed."
     )
 

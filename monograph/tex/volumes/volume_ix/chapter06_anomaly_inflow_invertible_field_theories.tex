@@ -276,6 +276,49 @@ then the value on \(X\) is obtained by pairing the line assigned to \(M\) from
 \(X_1\) with the dual line assigned from \(X_2\).  This gluing axiom is the
 mathematical content behind the word ``inflow''.
 
+It is useful to name the two line variances separately.  For a boundary
+background \(A\in\mathcal B(M)\), write
+\[
+  \mathcal B^{\rm bulk}_M(A)
+  :=
+  \mathcal Z_{\rm bulk}(M,A)
+\]
+for the bulk state line assigned to the closed \(D\)-manifold \(M\).  With
+the convention of Definition~\ref{def:anomaly-inflow-datum}, the boundary
+anomaly line is the dual line
+\begin{equation}
+  \mathcal L_M(A)
+  =
+  \bigl(\mathcal B^{\rm bulk}_M(A)\bigr)^\vee .
+  \label{eq:inflow-boundary-line-bulk-dual}
+\end{equation}
+Thus a relative boundary partition vector is a covector on the bulk state
+line, while a filling of \(M\) supplies a vector in the bulk state line.
+For a background isomorphism \(u:A\to A'\), the bulk line map
+\[
+  \mathcal B^{\rm bulk}_M(u):
+  \mathcal B^{\rm bulk}_M(A)\longrightarrow
+  \mathcal B^{\rm bulk}_M(A')
+\]
+induces the anomaly-line map by inverse duality,
+\[
+  \mathcal L_M(u)
+  =
+  \bigl(\mathcal B^{\rm bulk}_M(u)^{-1}\bigr)^\vee:
+  \mathcal L_M(A)\longrightarrow \mathcal L_M(A').
+\]
+Orientation reversal dualizes these lines:
+\[
+  \mathcal B^{\rm bulk}_{-M}(A)\simeq
+  \bigl(\mathcal B^{\rm bulk}_M(A)\bigr)^\vee,
+  \qquad
+  \mathcal L_{-M}(A)\simeq \mathcal L_M(A)^\vee .
+\]
+This is the same variance used in the Dai--Freed construction of
+Chapter~\ref{ch:curved-eta-invariants-global-anomalies}: the boundary
+fermion determinant is a vector in the anomaly line, and the filling supplies
+the inverse-line vector with which it is evaluated.
+
 When the bulk is represented locally by a \((D+1)\)-cocycle
 \[
   I_{D+1}(\widetilde A)\in C^{D+1}(X,\mathbb R/\mathbb Z)
@@ -291,15 +334,38 @@ representative by a globally defined coboundary leaves the closed value
 unchanged.
 
 There is a concrete construction of the boundary anomaly line from the bulk.
-Fix \(A\in\mathcal B(M)\).  A vector in the line \(\mathcal L_M(A)\) may be
-represented by a pair
+Fix \(A\in\mathcal B(M)\).  A filling
 \[
   (X,\widetilde A),
   \qquad
   \partial X=M,\quad
   \widetilde A|_M=A,
 \]
-together with a complex coefficient.  Two representatives
+is a bordism \(\emptyset\to(M,A)\), so the bulk functor supplies a state
+\[
+  b_X(\widetilde A)
+  :=
+  \mathcal Z_{\rm bulk}(X,\widetilde A)(1)
+  \in
+  \mathcal B^{\rm bulk}_M(A),
+\]
+not a number.  Since the bulk is invertible this state is nonzero, hence it
+determines a dual frame
+\[
+  b_X(\widetilde A)^{-1}
+  \in
+  \bigl(\mathcal B^{\rm bulk}_M(A)\bigr)^\vee
+  =
+  \mathcal L_M(A),
+  \qquad
+  b_X(\widetilde A)^{-1}\bigl(b_X(\widetilde A)\bigr)=1 .
+\]
+A vector in the anomaly line may therefore be represented as
+\[
+  z\,b_X(\widetilde A)^{-1},
+  \qquad z\in\mathbb C.
+\]
+Two representatives
 \((X,\widetilde A,z)\) and \((X',\widetilde A',z')\) are identified if
 \[
   z'
@@ -308,11 +374,35 @@ together with a complex coefficient.  Two representatives
   \mathcal Z_{\mathrm{bulk}}
   \bigl((-X)\cup_M X',\,(-\widetilde A)\cup_A\widetilde A'\bigr).
 \]
+Equivalently, the closed phase relates the two bulk states by
+\[
+  b_{X'}(\widetilde A')
+  =
+  \mathcal Z_{\mathrm{bulk}}
+  \bigl((-X)\cup_M X',\,(-\widetilde A)\cup_A\widetilde A'\bigr)\,
+  b_X(\widetilde A),
+\]
+so the dual frames in \(\mathcal L_M(A)\) transform by the inverse phase and
+the coordinate \(z\) transforms by the displayed phase.  The quotient is
+therefore the coordinate law for dual frames, not a declaration that the
+filling itself is a scalar.
 This quotient is one-dimensional whenever the background admits the relevant
 extensions and the usual bordism-locality assumptions hold.  A relative
-boundary theory assigns a vector in this line.  Multiplying the boundary
-vector by the bulk number for a filling gives an ordinary complex number, but
-only after the filling has been chosen.
+boundary theory assigns a vector in this line.  The scalar attached to a
+chosen compatible filling is the evaluation pairing
+\begin{equation}
+  Z_{\rm glued}(X;A)
+  =
+  \operatorname{ev}_{\mathcal B^{\rm bulk}_M(A)}
+  \bigl(
+    Z_{\partial,M}(A)\otimes b_X(\widetilde A)
+  \bigr)
+  \in\mathbb C .
+  \label{eq:inflow-boundary-bulk-evaluation}
+\end{equation}
+Thus the filling supplies the bulk state that is evaluated by the boundary
+covector; a filling with nonempty boundary is not itself a numerical bulk
+partition function.
 
 \paragraph{Bulk gluing and the anomaly line.}
 The construction above defines a line functor over the background groupoid of
@@ -336,15 +426,20 @@ background isomorphism \(u:A\to A'\) maps a filling of \(A\) to the same
 filling with boundary background identified by \(u\), hence gives a linear
 map between the corresponding quotient lines.  Functoriality of these maps is
 again the gluing axiom.  A trivialization of the bulk functor supplies
-canonical vectors in all boundary lines, and therefore trivializes the line
+canonical nonzero vectors in all bulk state lines, hence dual frames in all
+boundary anomaly lines, and therefore trivializes the line
 functor.  In the absence of such a trivialization, the boundary partition
-function is a vector in the anomaly line, and pairing with a compatible bulk
-filling produces a number.  Gauge covariance of the number follows because
-the bulk and boundary line transformations are inverse under this pairing.
+function is a vector in the anomaly line, and evaluation on the compatible
+bulk filling state produces a number.  Gauge covariance of the number follows
+because the bulk state and boundary covector transform by dual line maps under
+this pairing.  Scalar phase checks after gluing can verify the resulting
+number, but by themselves they cannot detect a mistaken global dualization of
+\(\mathcal B^{\rm bulk}_M(A)\) and \(\mathcal L_M(A)\); the line variance in
+\eqref{eq:inflow-boundary-line-bulk-dual} is part of the datum.
 
 Figure~\ref{fig:inflow-boundary-line-gluing} records the gluing statement for
-anomaly inflow: a boundary partition vector pairs with a compatible bulk
-filling to give a gauge-covariant number.
+anomaly inflow: a boundary partition vector evaluates on a compatible bulk
+filling state to give a gauge-covariant number.
 
 \begin{figure}[H]
 \centering
@@ -364,9 +459,9 @@ filling to give a gauge-covariant number.
     -- cycle;
   \node at (0.8,-1.45) {closed bulk phase relates boundary-line frames};
 \end{tikzpicture}
-\caption{A boundary anomaly line is obtained by comparing fillings.  Gluing
-two fillings along their common boundary produces the closed invertible-bulk
-phase that changes the frame.}
+\caption{A boundary anomaly line is obtained by comparing the dual frames
+defined by fillings.  Gluing two fillings along their common boundary
+produces the closed invertible-bulk phase that changes the frame.}
 \label{fig:inflow-boundary-line-gluing}
 \end{figure}
 

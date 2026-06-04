@@ -14,6 +14,11 @@ boundary condition for an invertible bulk theory.
 - `B(M)`: groupoid of background fields on spacetime `M`.
 - `u:A->A'`: background-field isomorphism.
 - `L_M(A)`: anomaly line over a background `A`.
+- `B_M^{bulk}(A)`: bulk boundary-state line
+  `Z_bulk(M,A)`, with `L_M(A) ~= (B_M^{bulk}(A))^vee`.
+- `b_X(A_tilde)`: bulk state supplied by a filling
+  `X: empty -> (M,A)`, lying in `B_M^{bulk}(A)`, whose dual frame
+  `b_X^{-1}` coordinatizes `L_M(A)`.
 - `Z_partial,M(A)`: relative boundary partition vector in the anomaly line.
 - `alpha_M(u;A)`: scalar representative of the anomaly-line functor in a
   chosen frame.
@@ -51,9 +56,15 @@ boundary condition for an invertible bulk theory.
 - Proves the functorial cocycle condition for scalar anomaly representatives
   and the frame-change law under local counterterms.
 - Constructs the boundary anomaly line from an invertible bulk by comparing
-  fillings and records the gluing argument as line-functor prose, with the
-  functorial bulk gluing law, filling/colimit input, and background-isomorphism
-  lift made explicit.
+  the dual frames determined by fillings and records the gluing argument as
+  line-functor prose, with the functorial bulk gluing law, filling/colimit
+  input, background-isomorphism lift, and the distinction between the bulk
+  state line and its dual boundary anomaly line made explicit.
+- States the typed bulk-boundary pairing:
+  a filling supplies a vector in `B_M^{bulk}(A)`, the boundary partition is a
+  covector in `L_M(A) ~= (B_M^{bulk}(A))^vee`, and only their evaluation is a
+  scalar.  This matches the Volume XII Dai-Freed convention that a filling
+  supplies the inverse-line vector paired with the fermion determinant.
 - Derives the connected-symmetry descent variation from
   `dI_{D+1}^{(0)}=P_{D+2}`.
 - Derives Wess--Zumino consistency as the Chevalley--Eilenberg cocycle
@@ -98,8 +109,9 @@ boundary condition for an invertible bulk theory.
 - `calculation-checks/inflow_anomaly_line_checks.py` verifies anomaly-line
   cocycle composition, the finite Chevalley--Eilenberg sign identity behind
   Wess--Zumino consistency, frame/counterterm shifts of representatives, the
-  finite-regulator-to-line-to-inflow coordinate comparison, and the finite cochain
-  Stokes identity for one-form \(BF\) inflow.
+  finite-regulator-to-line-to-inflow coordinate comparison, the finite
+  line-variance ledger for filling states versus boundary anomaly vectors,
+  and the finite cochain Stokes identity for one-form \(BF\) inflow.
 
 ## Figure Ledger
 
@@ -115,3 +127,9 @@ boundary condition for an invertible bulk theory.
   is an architecture/coherence pass for #696: it identifies the shared
   anomaly-line datum and leaves the APS/Bismut--Freed/Dai--Freed analytic
   theorem boundaries external.
+- 2026-06-03 issue #735 correction pass: typed the filling construction by
+  separating the bulk boundary-state line from the boundary anomaly line,
+  identifying \(L_M\simeq (B_M^{\rm bulk})^\vee\), and replacing the old
+  scalar language for nonempty-boundary fillings by the evaluation pairing
+  between the boundary vector and the bulk filling state.  The companion check
+  now includes line-variance and negative-control tests.
