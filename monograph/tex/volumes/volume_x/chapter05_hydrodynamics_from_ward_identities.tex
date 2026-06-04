@@ -7,10 +7,11 @@ Hydrodynamics is the long-wavelength effective theory of conserved
 densities.  Its variables are local thermodynamic parameters attached to a
 family of states whose correlators are controlled, at long distances and long
 times, by Ward identities and by an expansion in gradients.  This chapter
-develops the
-deterministic first-order theory in flat spacetime and fixes the sign and
-normalization conventions that connect it to the Kubo formulae of
-Chapter~\ref{ch:thermal-spectral-kubo-transport}.
+develops the deterministic first-order theory in flat spacetime, fixes the
+sign and normalization conventions that connect it to the Kubo formulae of
+Chapter~\ref{ch:thermal-spectral-kubo-transport}, and then separates that
+asymptotic low-frequency theory from the stronger problem of causal,
+well-posed time evolution.
 
 Let \(D=d+1\), where \(d\) is the number of spatial dimensions.  The
 Minkowski metric is mostly plus, \(\eta_{\mu\nu}=(-,+,\ldots,+)\).  Repeated
@@ -880,6 +881,164 @@ Eliminating \(v_L\) gives
 \]
 Solving perturbatively at small \(k\) gives
 \eqref{eq:hydro-sound-poles}.
+
+\section{First-Order Hydrodynamics Is Not a Causal Evolution Law}
+\label{sec:hydro-first-order-acausality}
+
+The poles above are hydrodynamic correlator data in a small
+\((\omega,\mathbf k)\) region.  They are not, by themselves, a fundamental
+initial-value problem at arbitrary wave number.  The transverse channel makes
+the distinction explicit.  For a shear perturbation
+\(v_x(t,y)\) with all other fluctuations set to zero,
+\eqref{eq:hydro-linear-momentum} gives
+\begin{equation}
+  \partial_t v_x-D_\eta\,\partial_y^2v_x=0,
+  \qquad
+  D_\eta=\frac{\eta}{w}.
+  \label{eq:hydro-first-order-shear-diffusion-pde}
+\end{equation}
+The retarded Green function of this equation on the line is
+\begin{equation}
+  G_{\rm diff}(t,y)
+  =
+  \theta(t)\frac{1}{\sqrt{4\pi D_\eta t}}\,
+  \exp\!\left[-\frac{y^2}{4D_\eta t}\right],
+  \qquad D_\eta>0.
+  \label{eq:hydro-shear-heat-kernel}
+\end{equation}
+For every \(t>0\), this kernel is nonzero at arbitrarily large \(|y|\).  If
+\eqref{eq:hydro-first-order-shear-diffusion-pde} is treated as an exact
+relativistic PDE, it therefore has instantaneous spatial support and cannot
+respect the microscopic light cone.  This conclusion does not contradict
+microscopic causality: the exact retarded QFT correlator is causal, while the
+diffusion pole is only the first term in a hydrodynamic scaling expansion.
+Analytic contact terms, nonhydrodynamic poles, branch cuts, and ultimately the
+ultraviolet completion are invisible if the pole is extrapolated outside
+\(\omega\tau_{\rm micro}\ll1\), \(|\mathbf k|\ell_{\rm micro}\ll1\).
+
+The same failure appears as a boosted-frame pathology.  Suppose one takes the
+rest-frame diffusion pole
+\(\omega'=-\ii D_\eta k'^2\) and rewrites it in a frame moving with speed
+\(u\), \(0<|u|<1\), along the wave vector:
+\[
+  \omega'=\gamma(\omega-uk),
+  \qquad
+  k'=\gamma(k-u\omega),
+  \qquad
+  \gamma=(1-u^2)^{-1/2}.
+\]
+The boosted dispersion relation is
+\begin{equation}
+  \omega-uk+\ii D_\eta\gamma(k-u\omega)^2=0 .
+  \label{eq:hydro-boosted-diffusion-dispersion}
+\end{equation}
+It is now quadratic in \(\omega\).  At sufficiently large real \(k\) one
+branch has \(\operatorname{Im}\omega>0\).  This growing branch is not a new QFT
+instability; it is the high-wave-number artifact of boosting a parabolic
+truncation beyond the scaling window in which it was derived.  Hydrodynamic
+frame choices matter here.  A frame is a choice of variables away from
+equilibrium, and different choices move time derivatives among the
+constitutive relations.  Landau-frame first-order hydrodynamics is a valid
+low-frequency correlator expansion but is not a causal global evolution
+system.  Some first-order frames can be arranged to be causal and stable under extra
+coefficient inequalities, but those inequalities are additional dynamical
+input, not consequences of the first-order entropy argument alone.
+
+\section{A Causal Relaxation Completion in the Shear Channel}
+\label{sec:hydro-causal-shear-relaxation}
+
+A minimal way to see what causal completion adds is to keep the shear stress
+as a transient variable instead of replacing it instantly by
+\(-\eta\sigma^{\mu\nu}\).  In the same transverse channel write
+\(\Pi(t,y)=\delta T^{xy}\).  The linear Muller--Israel--Stewart shear sector is
+\begin{align}
+  w\,\partial_t v_x+\partial_y\Pi&=0,
+  \label{eq:hydro-mis-shear-momentum}\\
+  \tau_\pi\,\partial_t\Pi+\Pi&=-\eta\,\partial_yv_x .
+  \label{eq:hydro-mis-shear-relaxation}
+\end{align}
+The new datum \(\tau_\pi\) is a relaxation time for the nonhydrodynamic shear
+stress.  Eliminating \(\Pi\) gives the telegrapher equation
+\begin{equation}
+  \tau_\pi\,\partial_t^2v_x+\partial_tv_x
+  -D_\eta\,\partial_y^2v_x=0,
+  \qquad D_\eta=\frac{\eta}{w}.
+  \label{eq:hydro-mis-shear-telegrapher}
+\end{equation}
+For \(v_x\propto e^{-\ii\omega t+\ii ky}\), the dispersion relation is
+\begin{equation}
+  \tau_\pi\omega^2+\ii\omega-D_\eta k^2=0.
+  \label{eq:hydro-mis-shear-dispersion}
+\end{equation}
+At small \(k\) it has two poles:
+\begin{align}
+  \omega_{\rm hydro}
+  &=
+  -\ii D_\eta k^2+O(k^4),
+  \label{eq:hydro-mis-hydrodynamic-shear-pole}\\
+  \omega_{\rm transient}
+  &=
+  -\frac{\ii}{\tau_\pi}
+  +\ii D_\eta k^2+O(k^4).
+  \label{eq:hydro-mis-transient-shear-pole}
+\end{align}
+The first pole reproduces first-order shear diffusion inside the hydrodynamic
+regime.  The second pole is a gapped, nonhydrodynamic relaxation mode.  At
+large \(k\),
+\[
+  \omega_\pm
+  =
+  \pm v_T k-\frac{\ii}{2\tau_\pi}+O(k^{-1}),
+  \qquad
+  v_T^2=\frac{D_\eta}{\tau_\pi}
+  =
+  \frac{\eta}{w\tau_\pi}.
+\]
+Thus the shear sector is linearly stable and causal in this simplified sense
+if
+\begin{equation}
+  w>0,\qquad
+  \eta\ge0,\qquad
+  \tau_\pi>0,\qquad
+  v_T^2\le1 .
+  \label{eq:hydro-mis-shear-stability-conditions}
+\end{equation}
+The first two inequalities follow from thermodynamic stability and entropy or
+Kubo positivity.  Retarded analyticity of the microscopic QFT requires exact
+singularities to lie in the lower half \(\omega\)-plane and exact response to
+have causal support.  It does not, by itself, prove that a finite
+Muller--Israel--Stewart or BRSSS truncation is hyperbolic, nor does it fix
+\(\tau_\pi\) or the full set of second-order coefficients.  Those are
+additional matching data and coefficient inequalities of the chosen
+transient-hydrodynamic model.
+
+For the sound channel and for nonlinear flows, the theorem boundary is
+stronger.  One must choose state variables and frame, include the appropriate
+bulk and shear relaxation sectors, and impose coefficient inequalities that
+make the resulting PDE hyperbolic with a causal characteristic cone.  Linear
+well-posedness around homogeneous equilibrium is known in selected
+MIS/BRSSS-type and causal first-order formulations under such hypotheses.
+Nonlinear well-posedness is also formulation- and regime-dependent, usually
+proved only for states close to equilibrium and coefficients satisfying
+specified bounds.  Therefore this chapter uses causal relaxation theory as a
+controlled completion example, not as a general theorem that every
+second-order hydrodynamic truncation of every QFT is causal.
+
+Matching back to first order is a low-frequency operation.  Solving
+\eqref{eq:hydro-mis-shear-relaxation} in Fourier space gives
+\[
+  \Pi(\omega,k)
+  =
+  -\frac{\eta}{1-\ii\omega\tau_\pi}\,\ii k\,v_x(\omega,k)
+  =
+  -\eta\,\ii k\,v_x
+  +O(\omega\tau_\pi\,\partial v).
+\]
+Only when \(|\omega|\tau_\pi\ll1\) and \(|k|\ell_{\rm micro}\ll1\) may the
+transient stress be integrated out and the first-order constitutive relation
+used.  The causal completion and the first-order expansion therefore agree on
+the shear pole through \(O(k^2)\), while disagreeing precisely where the
+parabolic equation had been extrapolated beyond its domain.
 
 \section{Retarded Source-Response Pole Matching}
 

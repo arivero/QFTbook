@@ -3,9 +3,9 @@
 ## Logical Role
 
 - Role in the monograph: derive deterministic first-order hydrodynamics,
-  entropy production, and the hydrodynamic pole structure from Ward
-  identities, background-source response, and local thermodynamics after
-  Kubo formulae have been defined.
+  entropy production, hydrodynamic pole structure, and the causal-evolution
+  boundary from Ward identities, background-source response, and local
+  thermodynamics after Kubo formulae have been defined.
 - Immediate predecessor: spectral functions, Kubo formulae, and transport.
 - Immediate successor: Schwinger--Keldysh hydrodynamic effective actions.
 
@@ -43,6 +43,13 @@
   Einstein relation \(D=\Sigma\chi^{-1}\).
 - Linearized neutral stress tensor, shear pole, sound poles, and attenuation
   \(\Gamma_s=(\zeta+2\eta(d-1)/d)/(\varepsilon+p)\).
+- First-order shear diffusion as a parabolic equation with nonzero heat-kernel
+  support outside the light cone when extrapolated beyond the scaling window.
+- Boosted-frame high-\(k\) instability of the parabolic truncation as a
+  frame/variable-choice warning.
+- Linear MIS shear relaxation completion, telegrapher equation,
+  hydrodynamic shear pole, transient nonhydrodynamic pole, and shear-sector
+  stability/front-speed conditions.
 - Diffusive density source-response kernel
   \(K^R_{nn}=\chi Dk^2/(Dk^2-i\omega)+\text{analytic}\), with the sign
   relation to the commutator-retarded convention stated explicitly.
@@ -76,6 +83,10 @@
 | \(K^R_{n_An_B}\) | density source-response kernel for the \(H-\int h_A n_A\) source convention |
 | \(c_s\) | speed of sound |
 | \(\Gamma_s\) | sound attenuation constant |
+| \(D_\eta\) | shear diffusion constant \(\eta/(\varepsilon+p)\) |
+| \(\Pi\) | transient shear stress in the linear causal-completion example |
+| \(\tau_\pi\) | shear-stress relaxation time in the MIS example |
+| \(v_T\) | shear-sector front speed \((D_\eta/\tau_\pi)^{1/2}\) |
 
 ## Claim Ledger
 
@@ -127,11 +138,33 @@
      \omega=\pm c_sk-\frac{i}{2}
      \frac{\zeta+2\eta(d-1)/d}{\varepsilon+p}k^2+\cdots .
    \]
-16. Hydrodynamic correlator poles match the Kubo coefficients only after the
+16. The corresponding first-order shear PDE is parabolic; its heat kernel has
+    instantaneous spatial support when treated as an exact initial-value
+    equation.
+17. Boosting the parabolic diffusion pole outside its hydrodynamic regime
+    produces a high-\(k\) growing branch, so frame/variable choice and regime
+    bounds are part of the causal-evolution problem.
+18. A linear MIS shear relaxation sector produces
+    \(\tau_\pi\omega^2+i\omega-D_\eta k^2=0\), with a hydrodynamic shear pole
+    and a transient pole at \(-i/\tau_\pi\); shear-sector stability and
+    subluminal front speed require \(w>0\), \(\eta\ge0\), \(\tau_\pi>0\), and
+    \(D_\eta/\tau_\pi\le1\).
+19. Retarded analyticity/positivity supplies exact QFT causality and Kubo
+    positivity but does not by itself prove finite-truncation hyperbolicity or
+    nonlinear well-posedness; these are formulation-dependent assumptions.
+20. Hydrodynamic correlator poles match the Kubo coefficients only after the
    thermodynamic and hydrodynamic scaling limits are specified.
-17. The microscopic QFT theorem boundary requires local equilibration,
+21. The microscopic QFT theorem boundary requires local equilibration,
    clustering, analyticity, and control of nonconserved modes and long-time
    tails.
+
+## Audit Notes
+
+- 2026-06-04 causality pass: added the first-order shear heat-kernel
+  acausality derivation, boosted-frame parabolic instability diagnostic,
+  linear MIS shear relaxation completion, explicit stability/front-speed
+  ledger, and theorem/assumption boundary for retarded analyticity,
+  hyperbolicity, and nonlinear well-posedness.
 
 ## Calculation Checks
 
@@ -139,7 +172,10 @@
   sound dispersion equations, the entropy-production positivity structure,
   the sourceful Euler thermodynamic-force reduction, the diffusion Einstein
   relation, the multi-charge susceptibility geometry, and the static limit of
-  the diffusive density source-response kernel.
+  the diffusive density source-response kernel.  It also checks the
+  first-order heat-kernel acausal-support diagnostic, boosted high-\(k\)
+  instability negative control, and the MIS shear relaxation
+  hydrodynamic/transient poles with a subluminal-front-speed condition.
 
 ## Figures
 

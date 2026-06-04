@@ -1589,7 +1589,11 @@ Current checks:
   attenuation, entropy-production positivity for sample transport matrices,
   the sourceful ideal-Euler reduction of acceleration to thermodynamic force
   variables, the diffusion Einstein relation, the multi-charge susceptibility
-  geometry, and the static limit of the density source-response pole.
+  geometry, the static limit of the density source-response pole, the
+  heat-kernel acausal-support diagnostic for first-order shear diffusion, the
+  boosted high-\(k\) instability negative control for parabolic diffusion, and
+  the MIS shear relaxation completion with hydrodynamic/transient poles and a
+  subluminal-front-speed check.
 - `hydrodynamic_long_time_tail_checks.py`: finite checks for the Volume X
   hydrodynamic fluctuation chapter, including diffusive static covariance,
   the classical FDT relation, the finite bond-current contraction behind the

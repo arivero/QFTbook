@@ -1,5 +1,29 @@
 #!/usr/bin/env python3
-"""Finite algebra checks for Volume X hydrodynamic Ward-identity modes."""
+"""Finite algebra checks for Volume X hydrodynamic Ward-identity modes.
+
+Evidence contract.
+Target claims: the first-order shear and sound poles, entropy-production
+positivity, sourceful Euler force reduction, susceptibility geometry,
+first-order shear acausality as a parabolic initial-value equation, boosted
+high-k instability of the parabolic truncation, and the linear causal
+relaxation completion of the shear sector in Volume X Chapter 5.
+Independent construction: direct finite-dimensional algebra for the Ward
+identity modes, exact heat-kernel positivity away from the origin, explicit
+quadratic roots for boosted diffusion and MIS shear relaxation, and matrix
+similarity checks for multi-charge diffusion.
+Imported assumptions: homogeneous KMS thermodynamic stability, the stated
+Landau-frame constitutive relations, positivity of transport coefficients from
+entropy/Kubo arguments, and the choice of a single linear MIS shear relaxation
+time.
+Negative controls: first-order shear diffusion is not accepted as a causal
+finite-speed PDE, Lorentz-boosted parabolic diffusion is not accepted as a
+stable high-k theory, a causal relaxation model with superluminal shear front
+speed is rejected, and linear shear completion is not treated as a theorem for
+full nonlinear causal hydrodynamics.
+Scope boundary: these checks verify finite algebra and linear-mode
+bookkeeping; they do not prove microscopic hydrodynamic emergence, nonlinear
+well-posedness, or the complete BRSSS/MIS coefficient inequalities.
+"""
 
 from __future__ import annotations
 
@@ -122,6 +146,73 @@ def check_shear_mode() -> None:
     assert_close("shear dispersion equation", -1j * omega * enthalpy + eta * k * k, 0.0)
     assert omega.imag < 0.0
     assert_close("shear diffusion constant", -omega.imag / (k * k), eta / enthalpy)
+
+
+def check_first_order_shear_acausality() -> None:
+    diffusion = 0.37
+    time = 0.2
+    distant_point = 10.0
+    kernel = math.exp(-(distant_point**2) / (4.0 * diffusion * time))
+    kernel /= math.sqrt(4.0 * math.pi * diffusion * time)
+    if not kernel > 0.0:
+        raise AssertionError("heat kernel should have nonzero support at any finite distance")
+
+    lightcone_distance = time
+    outside_lightcone = distant_point > lightcone_distance
+    if not outside_lightcone:
+        raise AssertionError("sample point should be outside the relativistic light cone")
+
+
+def boosted_diffusion_roots(diffusion: float, boost: float, k: float) -> tuple[complex, complex]:
+    gamma = 1.0 / math.sqrt(1.0 - boost * boost)
+    # omega - u k + i D gamma (k - u omega)^2 = 0.
+    a = 1j * diffusion * gamma * boost * boost
+    b = 1.0 - 2j * diffusion * gamma * boost * k
+    c = -boost * k + 1j * diffusion * gamma * k * k
+    root = cmath.sqrt(b * b - 4.0 * a * c)
+    return ((-b + root) / (2.0 * a), (-b - root) / (2.0 * a))
+
+
+def check_boosted_diffusion_instability_negative_control() -> None:
+    roots = boosted_diffusion_roots(diffusion=0.4, boost=0.55, k=80.0)
+    imag_parts = [root.imag for root in roots]
+    if not max(imag_parts) > 0.0:
+        raise AssertionError("boosted parabolic diffusion should expose a growing high-k branch")
+    if not min(imag_parts) < 0.0:
+        raise AssertionError("one boosted branch should still be damped")
+
+
+def mis_shear_roots(diffusion: float, tau_pi: float, k: float) -> tuple[complex, complex]:
+    # Roots of tau_pi omega^2 + i omega - D_eta k^2 = 0.
+    b = 1j
+    c = -diffusion * k * k
+    root = cmath.sqrt(b * b - 4.0 * tau_pi * c)
+    return ((-b + root) / (2.0 * tau_pi), (-b - root) / (2.0 * tau_pi))
+
+
+def check_mis_shear_relaxation_completion() -> None:
+    diffusion = 0.21
+    tau_pi = 0.7
+    small_k = 1.0e-4
+    hydro, transient = mis_shear_roots(diffusion, tau_pi, small_k)
+    assert_close("MIS hydrodynamic shear pole", hydro, -1j * diffusion * small_k * small_k, tol=1.0e-14)
+    assert_close(
+        "MIS transient shear pole",
+        transient,
+        -1j / tau_pi + 1j * diffusion * small_k * small_k,
+        tol=1.0e-14,
+    )
+    if not hydro.imag < 0.0 or not transient.imag < 0.0:
+        raise AssertionError("MIS shear modes should be damped for positive eta and tau_pi")
+
+    front_speed_squared = diffusion / tau_pi
+    if not front_speed_squared <= 1.0:
+        raise AssertionError("chosen causal sample should have subluminal shear front speed")
+
+    bad_tau = diffusion / 1.44
+    bad_front_speed = math.sqrt(diffusion / bad_tau)
+    if not bad_front_speed > 1.0:
+        raise AssertionError("superluminal shear front-speed negative control failed")
 
 
 def check_sound_mode_expansion() -> None:
@@ -250,6 +341,9 @@ def check_multicharge_diffusion_geometry() -> None:
 
 def main() -> None:
     check_shear_mode()
+    check_first_order_shear_acausality()
+    check_boosted_diffusion_instability_negative_control()
+    check_mis_shear_relaxation_completion()
     check_sound_mode_expansion()
     check_entropy_production_coefficients()
     check_sourceful_euler_force_basis()
