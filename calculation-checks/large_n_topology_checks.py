@@ -5,6 +5,10 @@ The checks are deliberately algebraic.  They verify the SU(N) completeness
 relation in the monograph convention tr_fund(t^a t^b)=delta^{ab}, and the
 Euler-characteristic powers used in the planar expansion.  They do not test
 spacetime loop integrals or convergence of the perturbation series.
+The genus-truncation check below verifies only the finite arithmetic of a
+declared coefficient/remainder certificate; it also includes a toy
+order-of-limits negative control showing why fixed-graph topology is not a
+continuum large-N theorem.
 """
 
 from __future__ import annotations
@@ -99,6 +103,45 @@ def check_theta_graph_suppression() -> None:
     assert_equal("planar theta graph is sphere", planar_power, surface_power(0, 0))
     assert_equal("one-handle theta graph is torus", handle_power, surface_power(1, 0))
     assert_equal("one-handle suppression", handle_power - planar_power, -2)
+
+
+def check_genus_truncation_certificate() -> None:
+    # After the overall leading N-power has been factored out, a controlled
+    # genus expansion through H=2 requires a residual bounded by epsilon/N^6.
+    n_colors = 5
+    coefficients = [Fraction(3, 2), -Fraction(2, 3), Fraction(5, 7)]
+    truncated = sum(
+        coefficient / (n_colors ** (2 * genus))
+        for genus, coefficient in enumerate(coefficients)
+    )
+    residual = Fraction(1, 13 * n_colors**6)
+    epsilon_h = Fraction(1, 10)
+    residual_bound = epsilon_h / (n_colors**6)
+    exact = truncated + residual
+
+    assert_equal("large-N genus truncation residual extraction", exact - truncated, residual)
+    assert_equal(
+        "large-N genus truncation residual certificate",
+        abs(exact - truncated) <= residual_bound,
+        True,
+    )
+
+    underbudgeted_residual = Fraction(1, 2 * n_colors**6)
+    assert_equal(
+        "large-N genus truncation underbudgeted tail fails",
+        underbudgeted_residual <= residual_bound,
+        False,
+    )
+
+    # A fixed-regulator large-N limit and a volume/continuum limit cannot be
+    # interchanged from color topology alone.  The rational toy observable
+    # f(N,L)=N^2/(N^2+L) is close to one at fixed L=1 and close to zero along
+    # L=N^4.  The check is not a QCD model; it is the finite arithmetic behind
+    # the warning that uniformity in regulator variables is a separate datum.
+    fixed_l_value = Fraction(n_colors * n_colors, n_colors * n_colors + 1)
+    path_l_value = Fraction(n_colors * n_colors, n_colors * n_colors + n_colors**4)
+    assert_equal("large-N fixed-volume sample is near planar value", fixed_l_value > Fraction(9, 10), True)
+    assert_equal("large-N growing-volume sample is not near planar value", path_l_value < Fraction(1, 10), True)
 
 
 def check_half_trace_coupling_conversion() -> None:
@@ -241,6 +284,7 @@ def main() -> None:
         check_trace_normalization(n)
         check_su_completeness(n)
     check_theta_graph_suppression()
+    check_genus_truncation_certificate()
     check_half_trace_coupling_conversion()
     check_single_trace_and_quark_boundary_scaling()
     check_eguchi_kawai_center_selection()

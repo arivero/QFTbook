@@ -1646,6 +1646,61 @@ This is a finite color-index statement at each fixed ribbon graph.  It does
 not by itself prove convergence of the perturbation series, nor does it define
 the four-dimensional continuum gauge theory nonperturbatively.
 
+\begin{controlledapproximation}[Genus truncation as a regulated observable
+statement]
+\label{ca:qcd-large-n-genus-truncation-certificate}
+Let \(X_{N_c,\Lambda,L}(\lambda;\mathcal J)\) be a regulated color-singlet
+observable: the ultraviolet regulator, spatial volume, boundary conditions,
+operator/source normalization, and coupling coordinate have all been fixed.
+After the overall \(N_c\)-power predicted by
+\eqref{eq:qcd-large-n-ribbon-power} has been factored out, a controlled
+large-\(N_c\) genus expansion through genus \(H\) is the statement that on a
+declared coupling and source window
+\begin{equation}
+  X_{N_c,\Lambda,L}
+  =
+  \sum_{h=0}^{H}N_c^{-2h}X_{h,\Lambda,L}
+  +
+  R_{H,N_c,\Lambda,L},
+  \label{eq:qcd-large-n-genus-truncated-observable}
+\end{equation}
+with bounds
+\begin{equation}
+  |X_{h,\Lambda,L}|\le M_h,
+  \qquad
+  |R_{H,N_c,\Lambda,L}|
+  \le
+  \varepsilon_H N_c^{-2H-2}.
+  \label{eq:qcd-large-n-genus-truncation-bound}
+\end{equation}
+The ribbon-graph Euler characteristic supplies the allowed powers of
+\(1/N_c\).  The coefficient bounds and the remainder bound are additional
+analytic information about the regulated QCD observable.  Without them,
+``planar dominance'' is a formal color-topology classification, not a
+controlled approximation to a physical matrix element or correlation
+function.
+
+The regulator labels in
+\eqref{eq:qcd-large-n-genus-truncated-observable} are load-bearing.  A
+continuum, infinite-volume, or massless limit may be taken after the
+large-\(N_c\) limit only if the bounds are uniform in the corresponding
+regulator variables, or if a separate argument proves equality of the
+interchanged limits:
+\[
+  \lim_{\Lambda,L}\lim_{N_c\to\infty}X_{N_c,\Lambda,L}
+  =
+  \lim_{N_c\to\infty}\lim_{\Lambda,L}X_{N_c,\Lambda,L}.
+\]
+Large-\(N_c\) factorization, volume reduction, baryon scaling, and QCD-string
+interpretations therefore require more than the fixed-graph power count: they
+require the regulated state, observable class, spectral or line-operator
+data, and the uniformity needed for the limit being asserted.  Contributions
+which are smaller than every power of \(1/N_c\), or phase choices which become
+visible only after an infinite-volume limit, are invisible to the genus
+polynomial at any fixed \(H\) but can still affect a nonperturbative
+large-\(N_c\) statement.
+\end{controlledapproximation}
+
 Single-trace operator insertions are counted as boundaries.  For adjoint words
 \[
   \mathcal O_r(x)

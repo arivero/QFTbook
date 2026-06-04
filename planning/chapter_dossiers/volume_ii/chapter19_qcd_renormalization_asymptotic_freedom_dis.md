@@ -108,8 +108,10 @@ The chapter must define and derive:
   -N_c^{-1}\delta^i{}_j\delta^k{}_\ell\), double-line notation, the
   single-trace adjoint action normalization, the ribbon-graph power
   \(N_c^{V-E+F}=N_c^{2-2h-b}\), the explicit planar-versus-one-handle
-  theta-graph \(N_c^{-2}\) suppression, single-trace factorization,
-  fixed-\(N_f\) and Veneziano quark-boundary counting, and the leading
+  theta-graph \(N_c^{-2}\) suppression, the regulated genus-truncation
+  certificate separating formal topology from a controlled observable
+  approximation, single-trace factorization, fixed-\(N_f\) and Veneziano
+  quark-boundary counting, and the leading
   large-\(N_c\) scaling of meson, glueball, baryon, and vacuum amplitudes,
   including baryon operator normalization, fixed-\(N_f\) order of limits,
   Hartree pair-counting, spin-flavor symmetry of the color-antisymmetric
@@ -1170,3 +1172,12 @@ The chapter must define and derive:
   to "coordinate" language.  Labels and mathematical content were left
   unchanged; the change only reduces internal-process diction in the
   reader-facing PDF section.
+- 2026-06-04 issue #630 large-\(N_c\) rigor-boundary pass: added
+  `ca:qcd-large-n-genus-truncation-certificate`, which upgrades the planar
+  counting section from fixed-ribbon graph power counting to an operational
+  criterion for a quoted large-\(N_c\) observable approximation.  The new block
+  requires coefficient bounds, a genus-tail bound, and uniform regulator or
+  limit-interchange control before planar dominance, volume reduction, baryon
+  scaling, or QCD-string language is treated as a nonperturbative statement.
+  `large_n_topology_checks.py` now verifies a finite genus-truncation
+  certificate and an order-of-limits negative control.
