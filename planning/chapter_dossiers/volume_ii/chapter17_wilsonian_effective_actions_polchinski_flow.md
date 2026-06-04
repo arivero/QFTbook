@@ -27,7 +27,8 @@
 - `SRC-EXTERNAL-EFT`: Appelquist--Carazzone decoupling, Weinberg's
   phenomenological-Lagrangian viewpoint, and Georgi's EFT review, used only as
   source anchors for the operational EFT-prediction and heavy-light matching
-  material.
+  material.  The scalar one-loop closure example is a self-contained
+  background-field pole calculation in the chapter's stated normalization.
 - `SRC-EXTERNAL-BOUNDS`: Polchinski's smooth-cutoff perturbative
   renormalizability argument, Salmhofer's rigorous RG framework, and
   Kopper--Muller-type perturbative cutoff estimates, together with
@@ -184,6 +185,14 @@ The chapter must define and derive:
   nonlocal kernel \(K_M^{-1}\), its local expansion and low-momentum remainder
   bound, one-loop hard threshold matching in a declared scheme, RG running
   below \(M\), and cancellation of the artificial matching scale;
+- a concrete massive scalar EFT retaining \(\phi^4\) and
+  \(\phi^6/\mathcal M^2\), with a one-loop background-field pole calculation
+  showing closure through canonical excess two and the first omitted
+  \(\phi^8/\mathcal M^4\) operator assigned to the remainder;
+- a same-EFT local field redefinition
+  \(\phi=\psi+a\psi^3/\mathcal M^2\), carrying the action, regulator
+  Jacobian, source term, composite representatives, Wilson coefficients, and
+  the on-shell four-point observable together;
 - the scoped decoupling statement for fixed-loop nonexceptional low-energy
   amplitudes, together with the boundaries from mass-dependent versus
   mass-independent schemes, relevant parameters, symmetry breaking, anomalies,
@@ -473,7 +482,17 @@ The chapter must define and derive:
 22. One-loop hard matching supplies threshold coefficients, but a low-energy
     prediction also requires low-field loops, external-state/IR prescriptions,
     RG transport, and cancellation of matching-scale dependence.
-23. Decoupling is scoped: fixed-loop asymptotic expansion, exact
+23. In the massive scalar EFT with \(\phi^4+\phi^6/\mathcal M^2\), the
+    one-loop background-field pole produces retained \(\phi^4\) and
+    \(\phi^6/\mathcal M^2\) counterterms and first generates
+    \(\phi^8/\mathcal M^4\) outside the target canonical excess.  This is the
+    chapter's concrete counterterm-closure example.
+24. The local redefinition \(\phi=\psi+a\psi^3/\mathcal M^2\) shifts
+    \(\lambda\), the derivative operator coefficient, and \(c_6\), carries a
+    regulator Jacobian and transformed sources/composites, and leaves the
+    on-shell four-point kernel invariant only after all these pieces are
+    included.
+25. Decoupling is scoped: fixed-loop asymptotic expansion, exact
     finite-regulator large-\(M\) expansion, and nonperturbative decoupling are
     different claims with different hypotheses.
 
@@ -635,5 +654,14 @@ The chapter must define and derive:
   expansion, one-loop hard threshold matching, RG matching-scale cancellation,
   and scoped decoupling/nondecoupling boundaries.  Added
   `calculation-checks/eft_prediction_calculus_checks.py` to verify the heavy
-  kernel expansion, threshold-log cancellation, field-redefinition source
-  algebra, and residual-ledger arithmetic.
+  kernel expansion, threshold-log cancellation, and the initial
+  field-redefinition/source algebra; issue #823 replaced the formal
+  residual-ledger part with the concrete one-loop scalar EFT closure example.
+- 2026-06-04 issue #823 pass: replaced the formal power-counting and Gaussian
+  field-redefinition evidence with a concrete scalar EFT calculation.  The
+  chapter now derives the one-loop poles from \((V''(\phi))^2\), shows
+  retained \(\phi^4\)/\(\phi^6\) closure and the generated
+  \(\phi^8/\mathcal M^4\) residual, and carries the same EFT through a local
+  \(\phi=\psi+a\psi^3/\mathcal M^2\) basis change with Jacobian, sources,
+  composites, Wilson-coordinate shifts, and an on-shell four-point observable
+  check.

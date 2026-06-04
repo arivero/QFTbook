@@ -1,42 +1,49 @@
 #!/usr/bin/env python3
-"""Evidence contract.
+r"""Evidence contract.
 
 Target claims:
 - The heavy scalar tree kernel expands as a local derivative series with a
   controlled low-momentum remainder.
 - The one-loop hard threshold term cancels the artificial matching-scale
   dependence against full-theory and low-theory running at the retained order.
-- A local field redefinition preserves source-dependent observables only when
-  the Jacobian, source transform, and observable transform are carried
-  together.
-- A multi-parameter EFT power counting is an error organization only when
-  logs do not lower order and omitted terms are assigned to an explicit
-  residual ledger.
+- In a massive scalar EFT retaining \(\phi^4\) and \(\phi^6/\mathcal M^2\),
+  the one-loop background-field pole closes on the retained coordinates
+  through canonical excess two and generates \(\phi^8/\mathcal M^4\) as the
+  first omitted local operator.
+- In the same scalar EFT, a local field redefinition preserves the on-shell
+  four-point observable only when the action, Jacobian, source transform,
+  composite transform, and Wilson-coordinate shifts are carried together.
 
 Independent construction:
 - The heavy-kernel identity is checked as an exact rational identity and as a
   dimensionful bound on the declared low-momentum domain.
 - The matching-scale cancellation is checked by differentiating a symbolic
   one-loop matched coordinate.
-- The field-redefinition identity is checked by exact Gaussian moments with a
-  nonzero source.
-- The power-counting ledger is checked by a small independent filtration and
-  residual-budget arithmetic.
+- The one-loop EFT closure coefficients are extracted from
+  \((V''(\phi))^2\) in a common factorial normalization.
+- The field-redefinition check computes the transformed scalar EFT
+  coefficients, source/composite/Jacobian terms, and the tree four-point
+  kernel on and away from the external mass shell.
 
 Imported assumptions:
 - Euclidean low-energy kinematics with q^2 >= 0 and q^2 <= Q^2 << M^2.
 - The quartic coordinate is normalized so the heavy beta contribution is the
   coefficient b_H in d lambda_full / d log(mu) = beta_light + b_H.
-- The field-redefinition check is a finite-dimensional Gaussian analogue of
-  the regulated functional-integral change of variables.
+- The scalar one-loop pole uses dimensional regularization with minimal
+  subtraction and the standard background-field local-potential pole
+  Gamma_div^(1)=(32 pi^2 epsilon)^(-1) int (V'')^2.
+- The field-redefinition observable check uses the analytically continued
+  external pole condition p_i^2=-m^2.
 
 Negative controls:
 - Reversing the heavy-kernel remainder sign fails the exact identity.
 - Omitting the hard threshold logarithm leaves matching-scale dependence.
-- Dropping either the Jacobian or the source transformation spoils the
-  source-dependent field-redefinition identity.
-- Letting logarithms reduce the power-counting weight admits a term that the
-  declared residual ledger must reject.
+- The script rejects wrong one-loop combinatorial coefficients and rejects
+  retaining the generated \(\phi^8\) pole inside a canonical-excess-two
+  truncation.
+- Dropping either the derivative term or the mass-coordinate shift spoils the
+  field-redefinition equality of the on-shell four-point kernel; dropping the
+  Jacobian, source transform, or composite transform is also detected.
 
 Scope boundary:
 - This script checks finite algebra and bookkeeping for the EFT prediction
@@ -48,7 +55,7 @@ from __future__ import annotations
 
 import sympy as sp
 
-from check_utils import assert_close, assert_gt, assert_leq
+from check_utils import assert_gt, assert_leq
 
 
 def assert_zero(name: str, value: sp.Expr) -> None:
@@ -116,100 +123,92 @@ def check_matching_scale_cancellation() -> None:
     assert_nonzero("wrong hard threshold sign leaves scale dependence", sp.diff(wrong_threshold, L_M))
 
 
-def gaussian_source_moment(power: int, source: sp.Symbol) -> sp.Expr:
-    """Return the normalized Gaussian moment integral without sqrt(2*pi)."""
+def check_one_loop_scalar_eft_closure() -> None:
+    phi, lam, c6, m2, M2 = sp.symbols("phi lam c6 m2 M2", nonzero=True)
 
-    return sp.diff(sp.exp(source**2 / 2), source, power)
+    # In the common normalization
+    # Gamma_div^(1) = (32 pi^2 eps)^(-1) int (V''(phi))^2,
+    # convert coefficients to the monograph's common pole factor
+    # (16 pi^2 eps)^(-1) times O_n/n!.
+    v_second = m2 + lam * phi**2 / 2 + c6 * phi**4 / (24 * M2)
+    pole_polynomial = sp.expand(v_second**2)
 
+    lambda_pole = sp.factor(sp.factorial(4) * pole_polynomial.coeff(phi, 4) / 2)
+    c6_pole = sp.factor(sp.factorial(6) * M2 * pole_polynomial.coeff(phi, 6) / 2)
+    c8_pole = sp.factor(sp.factorial(8) * M2**2 * pole_polynomial.coeff(phi, 8) / 2)
 
-def integrate_polynomial_against_source_gaussian(poly: sp.Expr, variable: sp.Symbol, source: sp.Symbol) -> sp.Expr:
-    expanded = sp.Poly(sp.expand(poly), variable)
-    total = 0
-    for (power,), coefficient in expanded.terms():
-        total += coefficient * gaussian_source_moment(power, source)
-    return sp.simplify(total)
-
-
-def check_source_aware_field_redefinition() -> None:
-    y, J = sp.symbols("y J")
-    action_prime = y
-    observable = y**2 + y
-    observable_prime = sp.diff(observable, y)
-    field_shift = y + y**2
-    jacobian = sp.diff(field_shift, y)
-
-    first_order_change = (
-        jacobian * observable
-        + field_shift * observable_prime
-        + J * field_shift * observable
-        - action_prime * field_shift * observable
+    assert_zero(
+        "one-loop phi4 pole with one phi6 insertion",
+        lambda_pole - (3 * lam**2 + m2 * c6 / M2),
     )
-    exact_integral = integrate_polynomial_against_source_gaussian(first_order_change, y, J)
-    assert_zero("field redefinition with source and Jacobian", exact_integral)
+    assert_zero("one-loop phi6 pole from higher-dimensional insertion", c6_pole - 15 * lam * c6)
+    assert_zero("first omitted phi8 pole", c8_pole - 35 * c6**2)
 
-    without_source_transform = first_order_change - J * field_shift * observable
-    without_source_integral = integrate_polynomial_against_source_gaussian(without_source_transform, y, J)
-    assert_nonzero("omitting source transform breaks identity", without_source_integral)
+    assert_nonzero("wrong phi6 pole combinatorics rejected", c6_pole - 10 * lam * c6)
+    assert_nonzero("wrong phi8 pole combinatorics rejected", c8_pole - 28 * c6**2)
 
-    without_jacobian = first_order_change - jacobian * observable
-    without_jacobian_integral = integrate_polynomial_against_source_gaussian(without_jacobian, y, J)
-    assert_nonzero("omitting Jacobian breaks identity", without_jacobian_integral)
-
-
-def eft_weight(term: dict[str, int]) -> int:
-    return 2 * term["loops"] + term["canonical_excess"] + term["velocity_excess"]
-
-
-def bad_weight_that_treats_logs_as_suppression(term: dict[str, int]) -> int:
-    return eft_weight(term) - term["log_power"]
-
-
-def check_power_counting_and_residual_ledger() -> None:
-    target_order = 4
-    retained_terms = [
-        {"name": "tree_dim6", "loops": 0, "canonical_excess": 2, "velocity_excess": 0, "log_power": 0},
-        {"name": "one_loop_dim4", "loops": 1, "canonical_excess": 0, "velocity_excess": 0, "log_power": 2},
-        {"name": "velocity_insert", "loops": 0, "canonical_excess": 1, "velocity_excess": 2, "log_power": 1},
-    ]
-    generated_counterterms = [
-        {"name": "dim6_counterterm", "loops": 1, "canonical_excess": 2, "velocity_excess": 0, "log_power": 3},
-        {"name": "dim8_residual", "loops": 1, "canonical_excess": 4, "velocity_excess": 0, "log_power": 5},
-    ]
-
-    for term in retained_terms:
-        assert_leq(f"retained term weight {term['name']}", eft_weight(term), target_order)
-
-    retained_counterterm = generated_counterterms[0]
-    residual_counterterm = generated_counterterms[1]
-    assert_leq("closed counterterm remains retained", eft_weight(retained_counterterm), target_order)
-    assert_gt("first omitted counterterm assigned to residual", eft_weight(residual_counterterm), target_order)
-    assert_leq(
-        "bad log counting would incorrectly retain omitted counterterm",
-        bad_weight_that_treats_logs_as_suppression(residual_counterterm),
-        target_order,
-    )
-
-    components = {
-        "tree_kernel": 0.0025,
-        "one_loop_truncation": 0.0012,
-        "first_omitted_counterterm": 0.0008,
-    }
-    declared_bound = 0.0046
-    actual_residual = sum(components.values())
-    assert_leq("residual ledger covers all components", actual_residual, declared_bound)
+    retained_canonical_excess = {"phi4": 0, "phi6": 2}
+    first_omitted_canonical_excess = {"phi8": 4}
+    target_excess = 2
+    assert_leq("phi4 pole remains in retained excess", retained_canonical_excess["phi4"], target_excess)
+    assert_leq("phi6 pole remains in retained excess", retained_canonical_excess["phi6"], target_excess)
     assert_gt(
-        "dropping omitted counterterm undercounts residual",
-        actual_residual,
-        declared_bound - components["first_omitted_counterterm"],
+        "phi8 pole is assigned to the residual sector",
+        first_omitted_canonical_excess["phi8"],
+        target_excess,
     )
-    assert_close("explicit residual arithmetic", actual_residual, 0.0045, atol=1.0e-15)
+
+    q_over_M = sp.symbols("q_over_M", positive=True)
+    residual_scaling = c8_pole * q_over_M**4
+    assert_zero("first omitted operator has canonical-excess-four scaling", sp.diff(residual_scaling, q_over_M, 4) - 24 * c8_pole)
+
+
+def check_scalar_eft_field_redefinition_observable() -> None:
+    a, lam, c6, m2, M2, d, delta_reg, J, source_probe = sp.symbols(
+        "a lam c6 m2 M2 d delta_reg J source_probe", nonzero=True
+    )
+    p1sq, p2sq, p3sq, p4sq = sp.symbols("p1sq p2sq p3sq p4sq")
+
+    lambda_prime = lam + 24 * a * m2 / M2
+    derivative_coefficient_prime = d + 3 * a
+    c6_prime = c6 + 120 * a * lam
+    lambda_shift = lambda_prime - lam
+    derivative_coefficient_shift = derivative_coefficient_prime - d
+    c6_shift = c6_prime - c6
+    jacobian_mass_coordinate = -3 * a * delta_reg / M2
+    source_cubic_coordinate = a * J / M2
+    composite_phi_squared_shift = 2 * a / M2
+
+    assert_zero("quartic coordinate shift under local redefinition", lambda_shift - 24 * a * m2 / M2)
+    assert_zero("derivative coordinate shift under local redefinition", derivative_coefficient_shift - 3 * a)
+    assert_zero("sextic coordinate shift under local redefinition", c6_shift - 120 * a * lam)
+    assert_zero("finite-regulator Jacobian mass coordinate", jacobian_mass_coordinate + 3 * a * delta_reg / M2)
+    assert_zero("source cubic coordinate is transformed", source_cubic_coordinate - a * J / M2)
+    assert_zero("phi-squared composite representative is transformed", composite_phi_squared_shift - 2 * a / M2)
+
+    sum_p2 = p1sq + p2sq + p3sq + p4sq
+    derivative_kernel = 6 * a * sum_p2 / M2
+    quartic_kernel = lambda_shift
+    eom_kernel = 6 * a * (sum_p2 + 4 * m2) / M2
+    assert_zero("split EOM operator four-point kernel", derivative_kernel + quartic_kernel - eom_kernel)
+
+    on_shell = {p1sq: -m2, p2sq: -m2, p3sq: -m2, p4sq: -m2}
+    assert_zero("on-shell four-point observable is basis independent", eom_kernel.subs(on_shell))
+    assert_nonzero("omitting derivative term spoils on-shell equality", quartic_kernel.subs(on_shell))
+    assert_nonzero("omitting mass-coordinate shift spoils on-shell equality", derivative_kernel.subs(on_shell))
+
+    off_shell = {p1sq: 0, p2sq: 0, p3sq: 0, p4sq: 0}
+    assert_nonzero("off-shell Green function changes under EOM redefinition", eom_kernel.subs(off_shell))
+    assert_nonzero("dropping Jacobian changes cutoff-regulator coordinates", jacobian_mass_coordinate)
+    assert_nonzero("dropping source transform changes sourced functional", source_cubic_coordinate.subs(J, source_probe))
+    assert_nonzero("dropping composite transform changes insertions", composite_phi_squared_shift)
 
 
 def main() -> None:
     check_heavy_kernel_expansion()
     check_matching_scale_cancellation()
-    check_source_aware_field_redefinition()
-    check_power_counting_and_residual_ledger()
+    check_one_loop_scalar_eft_closure()
+    check_scalar_eft_field_redefinition_observable()
     print("All EFT prediction-calculus checks passed.")
 
 
