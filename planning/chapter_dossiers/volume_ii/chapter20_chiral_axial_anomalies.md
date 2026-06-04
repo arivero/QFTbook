@@ -127,7 +127,12 @@
   log-shell continuation restates the same fact per \(\dd\log\rho\): the
   individual-slot shell also decays only as \(R^{-1/3}\), so tenfold
   suppression of the normalized power-tail majorant costs three decades in
-  the size cutoff.  The Wilsonian-split continuation makes the
+  the size cutoff.  The mixed hard/screened-shell continuation adds the
+  combined majorant
+  \(\rho^{A-1}\exp[-dQ\rho-m_{\rm scr}^2\rho^2]\): the dominant log shell
+  solves \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\), so hard-only and
+  screening-only saddle estimates are limiting cases rather than substitute
+  derivations.  The Wilsonian-split continuation makes the
   factorization-scale dependence
   explicit: the short-instanton coefficient and long-distance remainder
   exchange the boundary flux through \(\rho=\mu_I^{-1}\), so the local
@@ -316,6 +321,7 @@
 | \(A_I,A_{\bar I},\Gamma_{I\bar I},\mathcal C_{\rm cut},M^{(0)}_{I\bar I},\varepsilon_{\rm cut}\) | instanton and anti-instanton amplitude coordinates, paired inclusive cut/rate kernel, cut weight, absolute majorant, and cut residual used to turn a theta-charged amplitude kernel into a neutral spectral weight |
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(\mathbf c;\mathcal F)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless selected-form-factor integral |
 | \(\mathfrak s_{\rm hard}(s),\Delta\) | hard instanton log-size shell density and its power-tail suppression exponent \(\Delta=\sigma-b_0-2\) |
+| \(\rho_*,dQ,m_{\rm scr}\) | mixed hard-source/physical-screening log-shell coordinate, hard exponential envelope, and screening mass in the retained instanton size majorant |
 | \(C_{\rm inst}^{(4)}(Q;R),\mathcal P_{\rm orient}\) | specialized \(SU(3)\), \(N_f=2\) hard four-fermion instanton coefficient and shared orientation projector, with the Pauli-Villars pure-gauge constant, light-fermion determinant factor, and explicit endpoint residual |
 | \(\mu_I,\rho_I,K_\Lambda(\rho)\) | Wilsonian instanton factorization scale, cutoff \(\rho_I=\mu_I^{-1}\), and fully paired finite-regulator size integrand whose boundary flux transfers between the short coefficient and long-distance remainder |
 | \(C_I^{<},[O_I]_\mu,\gamma_{IK}\) | short-instanton OPE coefficient, retained renormalized operator basis, and operator-mixing anomalous-dimension matrix used to distinguish composite-operator RG transport from size-factorization flow |
@@ -711,6 +717,19 @@
   mass-saturated vacuum theta term below has no hard external cutoff, which is
   why its large-\(\rho\) behavior is an infrared input rather than a
   semiclassical output.
+- If a hard source envelope and physical screening factor both occur in the
+  same assembled one-instanton density, the retained absolute majorant is
+  \[
+    K_0\rho^{A-1}\exp[-dQ\rho-m_{\rm scr}^2\rho^2],
+  \]
+  and the logarithmic size shell is fixed by
+  \(2m_{\rm scr}^2\rho_*^2+dQ\rho_*-A=0\).  Hence hard-only dominance
+  \(\rho\sim A/(dQ)\) and screened-only dominance
+  \(\rho\sim \sqrt{A/2}/m_{\rm scr}\) are limiting cases.  In the mixed
+  regime, the determinant/screening physics and source form factors cooperate
+  to move the dominant shell, and a short-distance instanton coefficient is
+  controlled only if that shell and its tails remain in a weak-coupling
+  window.
 - The instanton size integral now has an explicit Wilsonian split.  For the
   fully paired finite-regulator integrand \(K_\Lambda(\rho)\),
   \[
@@ -1323,6 +1342,16 @@
   `bpst_instanton_normalization_checks.py` to verify the exact power, moment,
   saddle, and mass-dimension bookkeeping.  This is amplitude-side progress,
   not additional moduli-space infrastructure.
+- 2026-06-04 issue #597 mixed hard/screened-shell pass: added
+  `ca:hard-screened-instanton-size-shell`, which keeps hard source envelopes
+  and physical determinant screening in the same retained size integral.  The
+  block derives the combined log-shell equation
+  \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\), identifies hard-only and screened-only
+  shells as limiting coordinates, and states the weak-coupling-shell criterion
+  needed before the majorant can support a physical hard coefficient.  The
+  BPST check script verifies the exact mixed shell, the limiting ratio, and
+  negative controls rejecting both shortcut saddles when both effects are
+  present.
 - 2026-06-04 issue #597 thermal determinant-screening pass: added
   `ca:thermal-instanton-determinant-screening`, which specializes the generic
   Gaussian screening scale to the high-temperature QCD determinant coefficient

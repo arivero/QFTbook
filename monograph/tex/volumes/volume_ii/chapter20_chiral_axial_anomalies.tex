@@ -6716,6 +6716,84 @@ until the chosen source profile, kinematics, or matching calculation improves
 this log-shell bound.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Hard source envelope with physical screening]
+\label{ca:hard-screened-instanton-size-shell}
+The hard and screened size estimates above address different failures of the
+same amplitude integral.  A hard source can suppress large instantons through
+external form factors, while a physical Higgs, thermal, or medium scale can
+screen them through the fluctuation determinant.  When both mechanisms are
+present, the dominant size is not obtained by choosing whichever formula is
+more convenient.  It is fixed by the combined size density.
+
+Assume that in the selected one-instanton channel the absolute value of the
+fully assembled density is bounded in the retained window by
+\begin{equation}
+  |\mathcal K(\rho)|
+  \le
+  K_0\,\rho^{A-1}
+  \exp[-dQ\rho-m_{\rm scr}^2\rho^2],
+  \qquad
+  A>0,\quad d>0,\quad m_{\rm scr}>0.
+  \label{eq:hard-screened-size-majorant}
+\end{equation}
+Here \(A=b_0+\beta_{\mathcal X}-4\) contains the collective density,
+determinant convention, and zero-mode/source power of the chosen amplitude
+channel.  The coefficient \(dQ\) is a proven exponential envelope for the
+hard form factors or source wave packets; it is absent for the differentiated
+individual zero-mode slots unless such a stronger source bound has actually
+been supplied.  The scale \(m_{\rm scr}\) is a physical screening mass from
+the same regulated problem, not a hand-inserted cutoff.
+
+The absolute logarithmic size shell of the majorant is
+\[
+  \rho^A\exp[-dQ\rho-m_{\rm scr}^2\rho^2]\,\dd\log\rho .
+\]
+Its stationary point solves
+\begin{equation}
+  2m_{\rm scr}^2\rho_*^2+dQ\rho_*-A=0,
+  \qquad
+  \rho_*
+  =
+  \frac{2A}
+       {dQ+\sqrt{d^2Q^2+8A m_{\rm scr}^2}}.
+  \label{eq:hard-screened-log-shell}
+\end{equation}
+Thus the hard-only shell \(A/(dQ)\) and the screened-only shell
+\(\sqrt{A/2}/m_{\rm scr}\) are limiting coordinates of one combined
+problem:
+\[
+  \frac{\rho_*}{A/(dQ)}
+  =
+  \frac{2}{1+\sqrt{1+8A m_{\rm scr}^2/(d^2Q^2)}}.
+\]
+The two limiting diagnostics are
+\[
+  \epsilon_{\rm hard}=\frac{A m_{\rm scr}}{dQ},
+  \qquad
+  \epsilon_{\rm scr}=\frac{dQ}{m_{\rm scr}}\sqrt{\frac A2}.
+\]
+If \(\epsilon_{\rm hard}\ll1\), the hard envelope sets the shell and
+screening is a perturbation.  If \(\epsilon_{\rm scr}\ll1\), the physical
+screening scale sets the shell and the hard source is only a slowly varying
+factor.  In the intermediate regime the two suppressions cooperate and the
+dominant size is smaller than either pure estimate.
+
+This criterion is deliberately stronger than convergence.  A hard instanton
+coefficient is a controlled short-distance object only if the combined shell
+and a surrounding tail bound lie inside a weak-coupling region,
+\[
+  \Lambda_{\rm QCD}\rho_*\ll1
+\]
+or inside the corresponding Higgs/thermal weak-coupling window.  If
+\(\rho_*\) is instead set by a soft screening scale comparable to the
+confinement scale, the formula is at best an absolute majorant on a
+semiclassical coordinate; it is not a derivation of a physical QCD amplitude.
+This is exactly the point hidden by a moduli-space-only discussion: the
+collective coordinate supplies the integration variable, but the determinant,
+zero-mode form factors, physical screening, and endpoint estimate decide
+whether the instanton sector contributes a controlled observable coefficient.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[\(SU(3)\), two-flavor hard instanton
 coefficient]
 \label{ca:su3-two-flavor-hard-instanton-coefficient}

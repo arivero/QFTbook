@@ -82,6 +82,10 @@ relations
     rho=R/Q decay only as R^(-1/3), so tenfold suppression of the power-tail
     majorant costs three decades in R, while fused density sources have
     exponential endpoint control;
+    if a hard exponential source envelope and a physical screening mass are
+    both present, the absolute log-size shell solves
+    2 m_scr^2 rho^2+d Q rho-A=0; dropping either term gives the wrong
+    dominant-size coordinate except in its own limiting regime
     the specialized SU(3), Nf=2 hard four-fermion instanton coefficient has
     b0=29/3, size-integrand power 32/3, RG-invariant falloff
     Lambda_ht^(29/3) Q^(-35/3), and leading individual-slot endpoint tail
@@ -147,16 +151,18 @@ instanton-orientation Haar projection, hard-size/OPE coefficient bookkeeping,
 and related Chapter 20 instanton labels.
 Independent construction: direct radial integrals, finite determinant and
 Schur-complement algebra, source differentiation, inverse-Gram construction of
-the shared SU(2) four-fundamental Haar projector, and finite
-coefficient/operator transport matrices.
+the shared SU(2) four-fundamental Haar projector, finite
+coefficient/operator transport matrices, and exact retained size-shell
+stationarity equations.
 Imported assumptions: the BPST background and zero-mode formulas, one-loop
 determinant coefficients, the trace-delta convention, and finite regulator
 truncations stated in the chapter.
 Negative controls: the shared-Haar 1/3 versus factorized 1/4 counterexample,
 rank-one and color-symmetric source-pair rejections, negative/complex thermal
 amplitude kernels rejected from signed activity bounds, finite-frame inverse
-checks, and separation of operator RG flow from the Wilsonian size-boundary
-flux.
+checks, hard-only and screening-only shell substitutions in the mixed
+size-majorant problem, and separation of operator RG flow from the Wilsonian
+size-boundary flux.
 Scope boundary: a pass checks finite algebra and normalization interfaces; it
 does not prove dilute-gas validity, large-size control, uniform semiclassical
 remainders, or physical hadronic matrix elements.
@@ -2718,6 +2724,102 @@ def check_hard_size_tail_dominance_criterion() -> None:
     )
 
 
+def check_hard_screened_instanton_size_shell() -> None:
+    # Majorant shell for rho^A exp[-dQ rho - m_scr^2 rho^2] d log rho.
+    # Choose exact data for which the mixed stationary point is rational.
+    shell_power = Fraction(8)
+    hard_envelope = Fraction(6)
+    screening_mass_squared = Fraction(1)
+    discriminant = (
+        hard_envelope * hard_envelope
+        + 8 * shell_power * screening_mass_squared
+    )
+    assert_equal("hard-screened discriminant", discriminant, Fraction(100))
+    sqrt_discriminant = math.isqrt(discriminant.numerator)
+    assert_equal(
+        "hard-screened discriminant is square",
+        sqrt_discriminant * sqrt_discriminant,
+        discriminant.numerator,
+    )
+
+    rho_star = (
+        -hard_envelope + Fraction(sqrt_discriminant)
+    ) / (4 * screening_mass_squared)
+    assert_equal("hard-screened mixed shell", rho_star, Fraction(1))
+    assert_equal(
+        "hard-screened stationarity equation",
+        2 * screening_mass_squared * rho_star * rho_star
+        + hard_envelope * rho_star
+        - shell_power,
+        Fraction(0),
+    )
+
+    hard_only_shell = shell_power / hard_envelope
+    screened_only_shell = Fraction(2)  # sqrt(A/(2 m^2)) for A=8, m^2=1.
+    assert_equal("mixed shell below hard-only shell", rho_star < hard_only_shell, True)
+    assert_equal("mixed shell below screened-only shell", rho_star < screened_only_shell, True)
+
+    # Exact ratio to the hard-only shell:
+    # rho_*/(A/dQ) = 2/(1+sqrt(1+8 A m^2/(dQ)^2)).
+    eta = 8 * shell_power * screening_mass_squared / (hard_envelope * hard_envelope)
+    assert_equal("hard-screened eta", eta, Fraction(16, 9))
+    sqrt_one_plus_eta = Fraction(sqrt_discriminant, hard_envelope)
+    assert_equal("hard-screened sqrt one plus eta", sqrt_one_plus_eta, Fraction(5, 3))
+    assert_equal(
+        "hard-screened ratio to hard shell",
+        rho_star / hard_only_shell,
+        Fraction(2) / (1 + sqrt_one_plus_eta),
+    )
+
+    def log_shell_derivative(
+        rho: Fraction,
+        include_hard: bool,
+        include_screening: bool,
+    ) -> Fraction:
+        return (
+            shell_power
+            - (hard_envelope * rho if include_hard else 0)
+            - (2 * screening_mass_squared * rho * rho if include_screening else 0)
+        )
+
+    assert_equal(
+        "hard-only shell fails when screening is present",
+        log_shell_derivative(
+            hard_only_shell,
+            include_hard=True,
+            include_screening=True,
+        ) == 0,
+        False,
+    )
+    assert_equal(
+        "screened-only shell fails when hard envelope is present",
+        log_shell_derivative(
+            screened_only_shell,
+            include_hard=True,
+            include_screening=True,
+        ) == 0,
+        False,
+    )
+    assert_equal(
+        "hard shell is correct only after dropping screening",
+        log_shell_derivative(hard_only_shell, include_hard=True, include_screening=False),
+        Fraction(0),
+    )
+    assert_equal(
+        "screened shell is correct only after dropping hard envelope",
+        log_shell_derivative(screened_only_shell, include_hard=False, include_screening=True),
+        Fraction(0),
+    )
+
+    # Limiting-regime diagnostics used by the prose.  A small value means the
+    # named effect is a perturbation across the pure shell; neither replaces
+    # the exact mixed stationarity equation in the intermediate region.
+    hard_shell_screening_ratio = screening_mass_squared * hard_only_shell * hard_only_shell
+    screened_shell_hard_ratio = hard_envelope * screened_only_shell / shell_power
+    assert_equal("screening across hard-only shell", hard_shell_screening_ratio, Fraction(16, 9))
+    assert_equal("hard envelope across screened-only shell", screened_shell_hard_ratio, Fraction(3, 2))
+
+
 def check_su3_two_flavor_hard_instanton_coefficient() -> None:
     n_c = 3
     n_f = 2
@@ -3618,6 +3720,7 @@ def main() -> None:
     check_instanton_amplitude_error_budget()
     check_hard_momentum_instanton_size_window()
     check_hard_size_tail_dominance_criterion()
+    check_hard_screened_instanton_size_shell()
     check_su3_two_flavor_hard_instanton_coefficient()
     check_wilsonian_instanton_size_factorization()
     check_short_instanton_ope_coefficient_transport()
