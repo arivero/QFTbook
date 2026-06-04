@@ -5,7 +5,8 @@ These checks verify algebraic identities that are easy to lose by a sign or
 normalization: traces of the curvature-squared Euler tensors in four
 dimensions, the KMS fluctuation-dissipation factor, positivity of the noise
 covariance, finite response-window metric fluctuation bounds, the first-order
-lambda-phi-four potential-insertion source coordinate, the retained
+large-species scaling of mean backreaction versus metric fluctuations, the
+first-order lambda-phi-four potential-insertion source coordinate, the retained
 lambda-phi-four potential-noise coordinate using the full separated two-point
 function, retained Ward diagnostics for interacting source/noise coordinates,
 the full retained interacting stress-tensor/noise package with component
@@ -22,9 +23,11 @@ Evidence contract.
 Target claims: the finite algebra and response-window subclaims in Volume
 XII Chapter 11, including curvature-squared trace normalizations,
 fluctuation-dissipation factors, noise-covariance positivity, retained
-metric-response bounds, the lambda-phi-four potential-insertion source
-coordinate, the retained potential-noise Wick contraction with full separated
-two-point cross covariance and metric pushforward, the restricted
+metric-response bounds, the large-N_sp species scaling of the rescaled mean
+source, source-noise covariance, and higher connected cumulants, the
+lambda-phi-four potential-insertion source coordinate, the retained
+potential-noise Wick contraction with full separated two-point cross covariance
+and metric pushforward, the restricted
 finite-renormalization ledger for that coordinate, the finite retained
 Ward-diagnostic/projected-noise algebra for interacting sources, and the
 full interacting package algebra in which component cross-covariances and
@@ -42,10 +45,10 @@ coefficients, cosmological-coordinate shifts, independent finite counterterm
 controls, signed/absolute norm bounds, Ward maps, kernel projectors, projected
 covariances, finite influence-functional quadratic forms, retarded-support
 tests, fluctuation-dissipation ratios, small-gain inverses, response/noise
-bounds, nonlinear fixed-point radii, residual size and residual Lipschitz
-budgets, state-transport Lipschitz constants, noise-validity inequalities, and
-toy roots directly from finite formulas rather than importing chapter display
-strings.
+bounds, species sums, 1/N_sp gravitational-coupling scaling, cumulant scaling,
+nonlinear fixed-point radii, residual size and residual Lipschitz budgets,
+state-transport Lipschitz constants, noise-validity inequalities, and toy roots
+directly from finite formulas rather than importing chapter display strings.
 Imported assumptions: the tests use finite-dimensional retained sectors,
 centered quasifree Wick combinatorics, formal first- and second-order lambda
 coordinates, positive finite noise matrices, full-rank finite Ward maps, and the
@@ -68,7 +71,9 @@ operators, overlarge small-gain feedback, unconserved sources/noise, and
 conserved-but-unstable retained data, signed nonlinear residual cancellations,
 omitted state-transport Lipschitz constants, omitted residual Lipschitz
 constants, bounded non-Lipschitz residuals with multiple fixed points, overlarge
-quadratic nonlinear feedback, and linear-noise-only validity estimates.
+quadratic nonlinear feedback, linear-noise-only validity estimates,
+fixed-G_N large-species scaling, coherent N_sp^2 noise scaling, correlated
+species noise, and wrong higher-cumulant suppression estimates.
 Scope boundary: a pass checks coefficient, positivity, and response-bound
 bookkeeping for the retained potential-insertion coordinate and the finite
 algebra of a full retained stress-tensor package; it does not construct the
@@ -261,6 +266,89 @@ def check_einstein_langevin_pushforward_covariance() -> None:
         assert_close(direct_metric_variance, noise_variance, "pushforward covariance quadratic form")
         if direct_metric_variance < -1e-12:
             raise AssertionError("pushforward metric covariance should be positive semidefinite")
+
+
+def check_large_species_semiclassical_scaling() -> None:
+    # Independent identical sectors: <T_N> = N <T_1>, Noise_N = N Noise_1.
+    # Keeping kappa_bar = N kappa_N fixed makes the mean source finite and the
+    # metric covariance O(1/N).
+    species_count = 25
+    kappa_bar = Fraction(3, 5)
+    kappa_n = kappa_bar / species_count
+    one_sector_mean_source = Fraction(2, 3)
+    one_sector_noise_trace = Fraction(5, 6)
+
+    mean_source = kappa_n * species_count * one_sector_mean_source
+    assert_equal("large-N finite mean source", mean_source, Fraction(2, 5))
+
+    source_noise_trace = (
+        kappa_n * kappa_n * species_count * one_sector_noise_trace
+    )
+    assert_equal("large-N source-noise trace", source_noise_trace, Fraction(3, 250))
+    if species_count * source_noise_trace != kappa_bar * kappa_bar * one_sector_noise_trace:
+        raise AssertionError("large-N source noise should scale exactly as 1/N")
+
+    response_bound_sq = Fraction(4)
+    metric_noise_trace_bound = response_bound_sq * source_noise_trace
+    assert_equal(
+        "large-N metric covariance trace bound",
+        metric_noise_trace_bound,
+        Fraction(6, 125),
+    )
+    if metric_noise_trace_bound >= Fraction(1, 16):
+        raise AssertionError("test large-N metric covariance should fit the chart")
+
+    one_sector_third_cumulant = Fraction(7, 8)
+    metric_source_third_cumulant = (
+        kappa_n**3 * species_count * one_sector_third_cumulant
+    )
+    assert_equal(
+        "large-N third source cumulant",
+        metric_source_third_cumulant,
+        Fraction(189, 625000),
+    )
+    if (
+        species_count
+        * species_count
+        * metric_source_third_cumulant
+        != kappa_bar**3 * one_sector_third_cumulant
+    ):
+        raise AssertionError("third connected metric cumulant should scale as 1/N^2")
+
+    fixed_gn_mean_source = kappa_bar * species_count * one_sector_mean_source
+    fixed_gn_noise_trace = (
+        kappa_bar * kappa_bar * species_count * one_sector_noise_trace
+    )
+    if fixed_gn_mean_source <= mean_source:
+        raise AssertionError("negative control failed: fixed G_N did not grow the mean")
+    if fixed_gn_noise_trace <= source_noise_trace:
+        raise AssertionError("negative control failed: fixed G_N did not grow the noise")
+
+    coherent_noise_trace = (
+        kappa_n * kappa_n * species_count * species_count * one_sector_noise_trace
+    )
+    assert_equal("coherent species noise trace", coherent_noise_trace, Fraction(3, 10))
+    if coherent_noise_trace <= 10 * source_noise_trace:
+        raise AssertionError("negative control failed: coherent N^2 noise looked suppressed")
+
+    pair_correlation_trace = Fraction(1, 10)
+    correlated_source_noise_trace = kappa_n * kappa_n * (
+        species_count * one_sector_noise_trace
+        + species_count * (species_count - 1) * pair_correlation_trace
+    )
+    assert_equal(
+        "correlated species source-noise trace",
+        correlated_source_noise_trace,
+        Fraction(291, 6250),
+    )
+    if correlated_source_noise_trace <= 3 * source_noise_trace:
+        raise AssertionError("negative control failed: pair correlations were harmless")
+
+    wrong_third_cumulant = (
+        kappa_bar**3 * one_sector_third_cumulant / species_count
+    )
+    if wrong_third_cumulant <= metric_source_third_cumulant:
+        raise AssertionError("negative control failed: wrong third-cumulant scaling passed")
 
 
 def check_finite_response_window_bounds() -> None:
@@ -1188,6 +1276,7 @@ def main() -> None:
     check_kms_fluctuation_dissipation()
     check_noise_covariance_positivity()
     check_einstein_langevin_pushforward_covariance()
+    check_large_species_semiclassical_scaling()
     check_finite_response_window_bounds()
     check_lambda_phi4_potential_source_coordinate()
     check_lambda_phi4_potential_noise_kernel()

@@ -2178,7 +2178,12 @@ Current checks:
   test, the closed-time-path influence-functional consistency checks tying the
   interacting mean source, retarded kernel, and connected noise to one package
   with Ward identities, retarded support, noise positivity, equal-branch
-  normalization, and KMS/FDT compatibility, the small-gain stability check for
+  normalization, and KMS/FDT compatibility, the large-species semiclassical
+  scaling window with finite mean source,
+  \(1/N_{\rm sp}\) source-noise and metric covariance, \(1/N_{\rm sp}^2\)
+  third connected metric-source cumulant, and negative controls for fixed
+  \(G_N\), coherent species noise, pair correlations, and wrong cumulant
+  suppression, the small-gain stability check for
   the full retained backreaction operator with exact feedback inverse,
   Ward-clean source/noise tests,
   noise-amplification and missing-noise residual bounds, and negative controls

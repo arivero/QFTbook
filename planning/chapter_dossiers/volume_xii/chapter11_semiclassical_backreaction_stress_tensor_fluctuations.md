@@ -29,6 +29,9 @@ recording fluctuation data required for controlled backreaction.
 - `C_h`: retained metric covariance induced by stress-tensor noise.
 - `epsilon_mean`, `epsilon_fluc`: dimensionless mean-response and fluctuation
   smallness diagnostics.
+- `N_sp`, `kappa_N`, `bar kappa`: number of independent matter species, the
+  species-dependent gravitational coupling, and the fixed large-species
+  semiclassical coupling `bar kappa=N_sp kappa_N`.
 - `Sigma_{omega,H}`, `rho_lambda`, `q_a`, `j_a^{(lambda,pot)}`: Wick-square
   variance of a centered quasifree Hadamard state in a chosen Hadamard
   coordinate, the first-order `lambda phi^4` potential-insertion source
@@ -83,6 +86,12 @@ recording fluctuation data required for controlled backreaction.
 - Defines the Einstein-Langevin approximation as a Gaussian generalized
   random tensor with covariance \(N\), and gives the induced metric
   covariance through a retarded inverse.
+- Adds the large-`N_sp` semiclassical scaling window: for independent identical
+  matter sectors, `<T^{(N_sp)}>=N_sp t`, `N^{(N_sp)}=N_sp N_1`, and
+  `bar kappa=N_sp kappa_N` fixed give a finite mean geometry but metric
+  covariance of size `bar kappa^2 N_1/N_sp`.  The text also states the failure
+  modes: fixed `G_N`, coherent or pairwise-correlated species noise, growing
+  response bounds, growing one-sector cumulants, and species-cutoff violations.
 - Adds a finite response-window diagnostic for semiclassical backreaction:
   after gauge fixing/constraint projection and reduction of order, the
   retained response matrix must have no unstable poles, a bounded retarded
@@ -149,7 +158,8 @@ recording fluctuation data required for controlled backreaction.
   is written as a Ward-clean fixed-point map
   `h=h_lin+G_full(Q_2(h,h)+S_st(h)+R_nl(h))`; the self-map and contraction
   tests combine the linear small-gain bound with quadratic metric/source
-  feedback, state-transport Lipschitz control, and omitted residual size.
+  feedback, state-transport Lipschitz control, omitted residual size, and
+  residual Lipschitz control.
   The same chart refines the stochastic validity condition by adding missing
   connected-noise trace and nonlinear/state-transport noise budgets before
   the metric fluctuations are compared with the chart radius.
@@ -161,7 +171,11 @@ recording fluctuation data required for controlled backreaction.
 - `calculation-checks/semiclassical_backreaction_checks.py`: verifies the
   four-dimensional traces of \(H^{(1)}\) and \(H^{(2)}\), the KMS
   fluctuation-dissipation factor, positivity of a finite noise covariance,
-  the Einstein-Langevin pushforward covariance identity, exact retained-sector
+  the Einstein-Langevin pushforward covariance identity, large-`N_sp`
+  semiclassical scaling of finite mean source, `1/N_sp` source-noise and metric
+  covariance, and `1/N_sp^2` third connected metric-source cumulant with
+  negative controls for fixed `G_N`, coherent `N_sp^2` noise, pair-correlated
+  species, and wrong higher-cumulant scaling, exact retained-sector
   mean-response and noise trace bounds for the finite response-window
   diagnostic, the first-order `lambda phi^4` potential-insertion source
   coordinate, its restricted local Wick-renormalization/cosmological-coordinate
@@ -187,11 +201,13 @@ recording fluctuation data required for controlled backreaction.
   bounds, residual missing-noise trace propagation, and singular-feedback,
   overlarge-feedback, unconserved-input, and conserved-but-unstable
   amplification negative controls, the nonlinear fixed-point chart self-map,
-  contraction, correction, Ward-clean nonlinear source, missing-noise, and
+  residual-Lipschitz contraction, correction, Ward-clean nonlinear source,
+  missing-noise, and
   stochastic validity budgets with negative controls for signed residual
-  cancellation, omitted state transport, overlarge quadratic feedback, and
-  linear-noise-only validity, and the low-energy root selected by
-  reduction of order in a toy higher-derivative equation.
+  cancellation, omitted state transport, omitted residual variation, bounded
+  non-Lipschitz residuals with multiple fixed points, overlarge quadratic
+  feedback, and linear-noise-only validity, and the low-energy root selected
+  by reduction of order in a toy higher-derivative equation.
 
 ## Figure Ledger
 
@@ -308,3 +324,14 @@ curvature, microscopic, and EFT scales.
   contraction claim.  The companion adds an omitted-residual-variation negative
   control and the one-dimensional bounded non-Lipschitz residual with three
   fixed points.
+- 2026-06-04 issue #729 large-species scaling pass: added
+  `ca:semiclassical-large-n-scaling-window`, which states the physical
+  parametric regime behind the semiclassical mean equation and
+  Einstein-Langevin fluctuations.  With \(N_{\rm sp}\) independent identical
+  matter sectors and \(\bar\kappa=N_{\rm sp}\kappa_N\) fixed, the mean geometry
+  remains finite while metric covariance is \(O(1/N_{\rm sp})\) and higher
+  connected metric cumulants are further suppressed.  The text also records
+  the failure modes: fixed \(G_N\), correlated or coherent species noise,
+  growing response bounds/cumulants, and species-cutoff violations.  The
+  companion checks the finite mean, `1/N_sp` covariance, `1/N_sp^2` third
+  cumulant, and negative controls for each false large-`N_sp` shortcut.

@@ -608,6 +608,84 @@ fluctuation.  The formula is therefore a covariance statement for the declared
 linearized problem, not a replacement for the gravitational constraint
 analysis.
 
+\begin{controlledapproximation}[Large-\(N_{\rm sp}\) semiclassical scaling
+window]
+\label{ca:semiclassical-large-n-scaling-window}
+The stochastic equation is often justified as the first correction to a
+large-species semiclassical limit, but the scaling is a statement about
+stress-tensor cumulants and the gravitational coupling, not a slogan.  Take
+\(N_{\rm sp}\) independent identical matter sectors in the same admissible
+Hadamard state class and write
+\begin{equation}
+  T_{\mu\nu}^{(N_{\rm sp})}
+  =
+  \sum_{i=1}^{N_{\rm sp}}T_{\mu\nu}^{(i)},
+  \qquad
+  \langle T_{\mu\nu}^{(N_{\rm sp})}\rangle
+  =
+  N_{\rm sp}\,t_{\mu\nu},
+  \qquad
+  N^{(N_{\rm sp})}
+  =
+  N_{\rm sp}\,N_1 ,
+  \label{eq:semiclassical-large-n-stress-noise}
+\end{equation}
+where \(N_1\) is the connected stress-noise kernel of one sector in the fixed
+renormalization prescription.  Multiply the gravitational equation by
+\(\kappa_N=8\pi G_N\) and keep
+\begin{equation}
+  \bar\kappa
+  :=
+  N_{\rm sp}\kappa_N
+  \quad\text{fixed as}\quad
+  N_{\rm sp}\to\infty .
+  \label{eq:semiclassical-large-n-kappa-scaling}
+\end{equation}
+Then the mean source in the rescaled metric equation is finite,
+\(\kappa_N\langle T^{(N_{\rm sp})}\rangle=\bar\kappa\,t\), while the source
+covariance seen by the metric is
+\begin{equation}
+  \kappa_N^2 N^{(N_{\rm sp})}
+  =
+  \frac{\bar\kappa^2}{N_{\rm sp}}\,N_1 .
+  \label{eq:semiclassical-large-n-source-noise}
+\end{equation}
+Thus, on a retained response window with unit-normalized inverse bound
+\(M_{\rm cl}\), the metric covariance satisfies
+\begin{equation}
+  \operatorname{tr}\mathsf C_h^{(N_{\rm sp})}
+  \le
+  \frac{\bar\kappa^2M_{\rm cl}^2}{N_{\rm sp}}\,
+  \operatorname{tr}\mathsf N_1 ,
+  \label{eq:semiclassical-large-n-metric-noise}
+\end{equation}
+where \(\mathsf N_1\) is the retained one-sector noise matrix.  The same
+cumulant counting gives, for every \(r\ge2\),
+\begin{equation}
+  \kappa_N^r
+  \operatorname{Cum}_r(T^{(N_{\rm sp})})
+  =
+  \frac{\bar\kappa^r}{N_{\rm sp}^{\,r-1}}\,
+  \operatorname{Cum}_r(T^{(1)}) .
+  \label{eq:semiclassical-large-n-cumulants}
+\end{equation}
+The Einstein--Langevin covariance is therefore the leading connected
+metric-fluctuation layer around the mean geometry, with rms size
+\(O(N_{\rm sp}^{-1/2})\), while higher connected metric cumulants are further
+suppressed.  This conclusion requires the response bound, the one-sector
+renormalized stress cumulants, and the state-transport residuals to stay
+uniform in \(N_{\rm sp}\).  It also requires independence or sufficiently weak
+cross-correlations between sectors.  If pairwise sector correlations contribute
+\(N_{12}\), the noise contains
+\(N_{\rm sp}(N_{\rm sp}-1)N_{12}\); after multiplying by \(\kappa_N^2\), this
+term is not \(1/N_{\rm sp}\)-suppressed.  Likewise, keeping \(G_N\) fixed makes
+both the mean geometry and the metric noise grow with \(N_{\rm sp}\).  The
+large-species argument also does not remove the gravitational EFT cutoff or
+species-cutoff constraint: the curvature radius and the retained response
+window must remain below the microscopic and gravitational cutoff scales of the
+chosen hybrid theory.
+\end{controlledapproximation}
+
 \section{Finite Response Window And Stability Diagnostics}
 
 The preceding formulae become physically useful only after one asks whether
