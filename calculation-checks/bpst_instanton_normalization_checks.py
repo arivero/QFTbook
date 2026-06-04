@@ -90,6 +90,11 @@ relations
     perturbative leakage, anti-instanton leakage, two-instanton leakage,
     IbarI amplitude-sector leakage, and higher-sector remainder enter an
     absolute majorant before a relative one-instanton claim is valid
+    a physical instanton observable requires an ordered assembly ladder:
+    Euclidean determinant/source/fluctuation/window residuals, sector
+    leakage, and continuation/projection/infrared/cut/scheme residuals all
+    enter before a finite instanton source coefficient is quoted as a
+    scattering, OPE, susceptibility, or rate contribution
     a finite one-instanton amplitude error budget separates the leading
     determinant/zero-mode/source density from determinant remainders,
     zero-mode truncation, source matching, Schur corrections, and endpoint
@@ -215,7 +220,10 @@ hard-only and screening-only shell substitutions in the mixed size-majorant
 problem, and separation of operator RG flow from the Wilsonian size-boundary
 flux, perturbative sector leakage mistaken for an exact selection rule,
 omitted neighboring-sector leakage, and signed adjacent-sector cancellation
-mistaken for sector isolation.
+mistaken for sector isolation, the collective-coordinate measure alone
+mistaken for the observable coefficient, the Euclidean source coefficient
+mistaken for the physical observable after bridge residuals, omitted
+endpoint/sector budgets, and signed physical residual cancellation.
 Scope boundary: a pass checks finite algebra and normalization interfaces; it
 does not prove dilute-gas validity, large-size control, uniform semiclassical
 remainders, or physical hadronic matrix elements.
@@ -3294,6 +3302,121 @@ def check_source_dependent_fluctuation_cumulant_certificate() -> None:
         raise AssertionError("signed cancellation erased the absolute fluctuation budget")
 
 
+def check_instanton_observable_assembly_ladder() -> None:
+    # The physical observable is not the collective-coordinate measure and not
+    # even the Euclidean source coefficient.  It is obtained only after the
+    # source coefficient, sector isolation, and physical projection residuals
+    # have been budgeted in one normalization.
+    collective_measure = Fraction(2, 5)
+    pure_gauge_determinant = Fraction(3, 7)
+    zero_mode_source = Fraction(5, 9)
+    orientation_projection = Fraction(7, 11)
+    hard_window_factor = Fraction(11, 13)
+    full_euclidean_cell = (
+        collective_measure
+        * pure_gauge_determinant
+        * zero_mode_source
+        * orientation_projection
+        * hard_window_factor
+    )
+    assert_equal(
+        "instanton observable cell uses more than collective measure",
+        full_euclidean_cell == collective_measure,
+        False,
+    )
+
+    leading_source_coefficient = Fraction(5, 8)
+    physical_projection_factor = Fraction(9, 10)
+    leading_physical_coordinate = (
+        physical_projection_factor * leading_source_coefficient
+    )
+    assert_equal(
+        "Euclidean instanton source coefficient is not yet physical observable",
+        leading_source_coefficient == leading_physical_coordinate,
+        False,
+    )
+
+    window_mass = Fraction(3, 4)
+    deltas = {
+        "spectral_counterterm": Fraction(1, 60),
+        "source_fluctuation": Fraction(1, 70),
+        "zero_mode_rank": Fraction(1, 80),
+        "schur": Fraction(1, 90),
+        "endpoint": Fraction(1, 18),
+        "sector": Fraction(1, 20),
+        "continuation": Fraction(1, 75),
+        "projection": Fraction(1, 84),
+        "infrared": Fraction(1, 96),
+        "cut": Fraction(1, 108),
+        "scheme": Fraction(1, 120),
+    }
+    residuals = {
+        name: window_mass * delta for name, delta in deltas.items()
+    }
+    residual_sum = sum(residuals.values(), Fraction(0))
+    exact_physical_observable = leading_physical_coordinate + residual_sum
+
+    assert_equal(
+        "instanton observable assembly residual telescope",
+        exact_physical_observable,
+        leading_physical_coordinate + residual_sum,
+    )
+    majorant = window_mass * sum(deltas.values(), Fraction(0))
+    assert_equal(
+        "instanton observable assembly absolute bound",
+        abs(exact_physical_observable - leading_physical_coordinate) <= majorant,
+        True,
+    )
+
+    noncancellation_margin = abs(leading_physical_coordinate) / window_mass
+    assert_equal(
+        "instanton observable noncancellation margin",
+        noncancellation_margin,
+        Fraction(3, 4),
+    )
+    relative_bound = majorant / abs(leading_physical_coordinate)
+    assert_equal(
+        "instanton observable assembly relative certificate",
+        abs(exact_physical_observable - leading_physical_coordinate)
+        / abs(leading_physical_coordinate)
+        <= relative_bound,
+        True,
+    )
+
+    omitted_endpoint_sector_bound = (
+        majorant - abs(residuals["endpoint"]) - abs(residuals["sector"])
+    )
+    assert_equal(
+        "omitting endpoint and sector budgets undercertifies observable",
+        abs(exact_physical_observable - leading_physical_coordinate)
+        <= omitted_endpoint_sector_bound,
+        False,
+    )
+
+    unprojected_perturbative_leakage = Fraction(2)
+    assert_equal(
+        "unprojected lower-action sector can overwhelm instanton observable",
+        abs(unprojected_perturbative_leakage) > abs(leading_physical_coordinate),
+        True,
+    )
+
+    canceling_physical_residuals = [Fraction(1, 8), -Fraction(1, 8)]
+    signed_physical_residual = sum(canceling_physical_residuals, Fraction(0))
+    absolute_physical_residual = sum(
+        abs(term) for term in canceling_physical_residuals
+    )
+    assert_equal(
+        "signed physical residuals can cancel",
+        signed_physical_residual,
+        Fraction(0),
+    )
+    assert_equal(
+        "signed cancellation is not observable-assembly evidence",
+        absolute_physical_residual > abs(signed_physical_residual),
+        True,
+    )
+
+
 def check_hard_momentum_instanton_size_window() -> None:
     n_c = 3
     n_f = 2
@@ -4806,6 +4929,7 @@ def main() -> None:
     check_one_instanton_sector_isolation_certificate()
     check_instanton_amplitude_error_budget()
     check_source_dependent_fluctuation_cumulant_certificate()
+    check_instanton_observable_assembly_ladder()
     check_hard_momentum_instanton_size_window()
     check_hard_size_tail_dominance_criterion()
     check_hard_screened_instanton_size_shell()

@@ -130,7 +130,14 @@
   retained \(Q=1\) coefficient is separated from same-sector residuals,
   perturbative leakage, anti-instanton leakage, two-instanton leakage,
   \(I\bar I\) amplitude-sector leakage, and higher-sector remainder before a
-  relative one-instanton amplitude claim is allowed.  The hard-amplitude
+  relative one-instanton amplitude claim is allowed.  The observable-assembly
+  continuation then collects those local certificates
+  into one ordered map from the finite Euclidean source coefficient to a
+  physical scattering, OPE, susceptibility, or rate contribution: internal
+  determinant/source/fluctuation/window errors, sector leakage, and
+  continuation/projection/IR/cut/scheme residuals are all required before the
+  retained instanton coefficient is quoted as an observable.
+  The hard-amplitude
   continuation adds the
   \(N_f=2\) hard-momentum size window, where the same form factors give a
   \(Q^{-2}\) four-fermion coefficient at \(\mu=Q\), the RG-invariant
@@ -354,6 +361,7 @@
 | \(\mathcal A_{\rm phys}^{Q=1},\mathcal A_{\rm inst}^{\rm lead},R_{\rm reg},R_{\rm cont},R_{\rm spec},R_{\rm IR},R_{\rm cut},R_{\rm match},R_\rho\) | physical one-instanton amplitude coordinate, leading continued/projected instanton-kernel coordinate, and the residuals separating Euclidean source kernels from physical amplitudes |
 | \(A_I,A_{\bar I},\Gamma_{I\bar I},\mathcal C_{\rm cut},M^{(0)}_{I\bar I},\varepsilon_{\rm cut}\) | instanton and anti-instanton amplitude coordinates, paired inclusive cut/rate kernel, cut weight, absolute majorant, and cut residual used to turn a theta-charged amplitude kernel into a neutral spectral weight |
 | \(\Pi_{\mathcal O},J_I,M_I,\lambda_\alpha,M_\alpha,E_{\ge2},\kappa_I\) | selected source/charge/spectral projection, retained one-instanton coefficient, retained \(Q=1\) absolute mass, adjacent-sector leakage factors and majorants, higher-sector remainder, and noncancellation margin in the one-instanton isolation certificate |
+| \(\mathfrak L_{\mathcal O},\kappa_{\mathcal O},R_{\rm sector},R_{\rm proj},R_{\rm scheme}\) | leading physical observable map, observable-level noncancellation margin, and the sector/projection/scheme residuals in the instanton observable assembly ladder |
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(\mathbf c;\mathcal F)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless selected-form-factor integral |
 | \(\mathfrak s_{\rm hard}(s),\Delta\) | hard instanton log-size shell density and its power-tail suppression exponent \(\Delta=\sigma-b_0-2\) |
 | \(\rho_*,dQ,m_{\rm scr}\) | mixed hard-source/physical-screening log-shell coordinate, hard exponential envelope, and screening mass in the retained instanton size majorant |
@@ -1592,3 +1600,14 @@
   one-instanton amplitude claim is made.  The BPST companion verifies the exact
   sector telescope and negative controls for perturbative contamination,
   omitted adjacent-sector budgets, and signed cancellation.
+- 2026-06-04 issue #597 architecture/coherence pass: added
+  `ca:instanton-observable-assembly-ladder`, which consolidates the recent
+  instanton amplitude certificates into an ordered physical-observable map.
+  The new block keeps Euclidean determinant/source/fluctuation/window
+  residuals, neighboring-sector leakage, and continuation/projection/IR/cut/
+  scheme residuals in one absolute certificate before a scattering, OPE,
+  susceptibility, or rate contribution is quoted.  The BPST companion verifies
+  the finite residual telescope, absolute and relative observable bounds, and
+  negative controls against moduli-only, Euclidean-equals-physical,
+  endpoint/sector omission, lower-action leakage, and signed-cancellation
+  shortcuts.

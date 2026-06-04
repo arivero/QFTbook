@@ -546,7 +546,13 @@ Current checks:
   error budget separating determinant, zero-mode/source, matching, Schur, and
   endpoint residuals from the leading density, the source-dependent
   fluctuation-cumulant certificate which refines the determinant residual and
-  rejects vacuum-determinant and signed-cancellation shortcuts, the hard-momentum
+  rejects vacuum-determinant and signed-cancellation shortcuts, the
+  observable-assembly ladder which keeps Euclidean source-integral residuals,
+  sector leakage, and physical continuation/projection/IR/cut/scheme residuals
+  in one ordered certificate before a scattering, OPE, susceptibility, or rate
+  contribution is quoted, with negative controls against moduli-only,
+  Euclidean-equals-physical, omitted endpoint/sector, and signed-cancellation
+  shortcuts, the hard-momentum
   size-window scaling
   that gives the \(N_f=2\) four-fermion coefficient its \(Q^{-2}\) behavior
   at \(\mu=Q\), the large-\(\rho\) endpoint distinction between exponential

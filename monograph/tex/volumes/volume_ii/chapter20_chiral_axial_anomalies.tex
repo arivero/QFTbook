@@ -7108,6 +7108,91 @@ one-instanton calculation is deep precisely because it performs this whole
 assembly, rather than because it merely parametrizes the BPST collective
 coordinates.
 
+\begin{controlledapproximation}[Instanton observable assembly ladder]
+\label{ca:instanton-observable-assembly-ladder}
+The preceding certificates address different layers of the same physical
+calculation.  To prevent the reader from mistaking them for independent
+annexes, fix a selected observable channel \(\mathcal O\), a source family
+\(\mathfrak h\), and a retained one-instanton window.  Let
+\[
+  J_I[\mathfrak h]
+\]
+be the leading finite-window coefficient after the collective-coordinate
+density, pure-gauge determinant convention, light-fermion nonzero-mode
+factor, source zero-mode determinant, orientation projection, and hard-size
+window have all been included.  Let \(M_I[\mathfrak h]\) be its absolute
+window mass.  The physical observable map is not the identity map on this
+Euclidean source coefficient.  It contains analytic continuation, LSZ or OPE
+projection, infrared or hadronic matching, possible inclusive cuts, and the
+sector projection used to isolate the \(Q=1\) amplitude coordinate.  Write its
+leading linear part as \(\mathfrak L_{\mathcal O}\).
+
+The finite-regulator statement has the form
+\begin{equation}
+\begin{aligned}
+  \mathcal O_{\rm phys}^{(Q=1)}
+  &=
+  \mathfrak L_{\mathcal O}\!\left[J_I[\mathfrak h]\right]
+  +R_{\rm spec}+R_{\rm fluc}+R_{\rm rank}+R_{\rm Schur}
+  +R_{\rm end}                                      \\
+  &\qquad{}
+  +R_{\rm sector}+R_{\rm cont}+R_{\rm proj}
+  +R_{\rm IR}+R_{\rm cut}+R_{\rm scheme}.
+\end{aligned}
+  \label{eq:instanton-observable-assembly-ladder}
+\end{equation}
+The first line is internal to the Euclidean instanton source integral.  It
+records determinant and counterterm remainders, source fluctuation cumulants,
+zero-mode rank or source-overlap loss, finite Schur complement corrections,
+and the omitted size or boundary tail.  The second line promotes that source
+coordinate to the declared physical observable.  It records leakage from
+neighboring amplitude sectors, continuation residuals, LSZ/OPE or hadronic
+projection errors, infrared and volume residuals, cut errors when a rate is
+formed, and finite scheme transport errors.
+
+If these residuals are bounded in the same source normalization by
+\[
+  |R_\alpha|\le\delta_\alpha M_I[\mathfrak h],
+  \qquad
+  \alpha\in
+  \{\mathrm{spec},\mathrm{fluc},\mathrm{rank},\mathrm{Schur},
+    \mathrm{end},\mathrm{sector},\mathrm{cont},\mathrm{proj},
+    \mathrm{IR},\mathrm{cut},\mathrm{scheme}\},
+\]
+then
+\begin{equation}
+  \left|
+  \mathcal O_{\rm phys}^{(Q=1)}
+  -
+  \mathfrak L_{\mathcal O}[J_I]
+  \right|
+  \le
+  M_I
+  \sum_\alpha\delta_\alpha .
+  \label{eq:instanton-observable-assembly-bound}
+\end{equation}
+A relative physical statement further requires a margin
+\[
+  |\mathfrak L_{\mathcal O}[J_I]|\ge\kappa_{\mathcal O} M_I,
+  \qquad \kappa_{\mathcal O}>0.
+\]
+Only after this margin is present may one divide
+\eqref{eq:instanton-observable-assembly-bound} by the quoted leading
+observable.  Signed cancellation among the residuals, or between neighboring
+amplitude sectors, does not replace the absolute budget.
+
+This ladder is the structural distinction between an instanton-moduli
+calculation and an instanton contribution to a QFT observable.  The moduli
+space supplies the variables and zero-mode Jacobian inside \(J_I\).  The
+fluctuation determinant, source stability, boundary estimates, sector
+projection, and physical observable map decide whether \(J_I\) is a
+controlled contribution to a scattering amplitude, an OPE coefficient, a
+susceptibility, or an inclusive rate.  The operations are deliberately ordered:
+one first assembles and bounds the finite source coefficient, then applies
+the physical projection and its own residual budget.  Reversing this order
+usually replaces a controlled amplitude calculation by a formal local vertex.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Source-dependent fluctuation certificate]
 \label{ca:instanton-source-fluctuation-cumulant-certificate}
 The nonzero-mode determinant in
