@@ -369,8 +369,11 @@ Current checks:
   the microscopic \(\theta+\arg\det M\) phase after mass-spurion locking, the
   local \((\theta,\eta_0)\) curvature matrix, its screening null vector,
   the screened theta Schur complement, and the sign-sensitive mixed
-  derivative fixed by the anomaly-invariant coordinate.  The dilute-instanton
-  chiral-spurion branch checks the controlled potential
+  derivative fixed by the anomaly-invariant coordinate.  It also checks the
+  residual Witten--Veneziano Hessian budget, including the exact Schur
+  numerator, the singlet mass shift, the residual-free cancellation, and a
+  finite residual bound for the screened full-QCD theta curvature.  The
+  dilute-instanton chiral-spurion branch checks the controlled potential
   \(2\zeta_\chi[1-\cos(\theta-i\log\det\widehat U)]\), its
   \(\chi_{\rm top}^{\rm dig}=2\zeta_\chi\) susceptibility, the same
   rank-one screening curvature, the quartic cosine sign, and the finite

@@ -313,6 +313,61 @@ def check_theta_eta_curvature_matrix() -> None:
     )
 
 
+def check_witten_veneziano_residual_budget() -> None:
+    chi, a = sp.symbols("chi a", positive=True)
+    dtt, dte, dee = sp.symbols("dtt dte dee")
+
+    htt = chi + dtt
+    hte = a * chi + dte
+    hee = a**2 * chi + dee
+    schur_curvature = htt - hte**2 / hee
+    schur_numerator = (
+        chi * dee
+        + a**2 * chi * dtt
+        + dtt * dee
+        - 2 * a * chi * dte
+        - dte**2
+    )
+
+    assert_zero(
+        "WV residual Schur numerator",
+        schur_curvature - schur_numerator / hee,
+    )
+    assert_zero("WV residual singlet mass shift", hee - a**2 * chi - dee)
+    assert_zero(
+        "WV residual-free Schur cancellation",
+        schur_curvature.subs({dtt: 0, dte: 0, dee: 0}),
+    )
+
+    chi_value = sp.Rational(5, 3)
+    a_value = sp.Rational(3, 2)
+    dtt_value = sp.Rational(1, 17)
+    dte_value = -sp.Rational(1, 19)
+    dee_value = sp.Rational(1, 23)
+    schur_value = schur_curvature.subs(
+        {chi: chi_value, a: a_value, dtt: dtt_value, dte: dte_value, dee: dee_value}
+    )
+
+    rtt = abs(dtt_value)
+    rte = abs(dte_value)
+    ree = abs(dee_value)
+    require(
+        a_value**2 * chi_value > ree,
+        "WV residual denominator hypothesis should hold in the exact test datum",
+    )
+    schur_bound = (
+        chi_value * ree
+        + a_value**2 * chi_value * rtt
+        + rtt * ree
+        + 2 * a_value * chi_value * rte
+        + rte**2
+    ) / (a_value**2 * chi_value - ree)
+    require(
+        abs(schur_value) <= schur_bound,
+        "WV residual Schur bound should dominate the exact residual curvature",
+    )
+
+
 def check_massless_quark_theta_screening() -> None:
     eta, theta, chi, f = sp.symbols("eta theta chi f", positive=True)
     nf_value = sp.Integer(3)
@@ -491,6 +546,7 @@ def main() -> None:
     check_anomaly_invariant_singlet_coordinate_and_mass_alignment()
     check_witten_veneziano_mass_coefficient()
     check_theta_eta_curvature_matrix()
+    check_witten_veneziano_residual_budget()
     check_massless_quark_theta_screening()
     check_dilute_instanton_chiral_spurion_potential()
     check_eta_eta_prime_mass_matrix_ledger()

@@ -1419,6 +1419,106 @@ anomaly-invariant coordinate
 \(\theta-\ii\log\det\widehat U\); reversing that sign would give the same
 positive mass but the opposite singlet screening convention.
 
+\begin{controlledapproximation}[Residual-controlled Witten--Veneziano matching]
+\label{ca:residual-controlled-witten-veneziano}
+The preceding rank-one matrix is the leading local Hessian in the chiral,
+fixed-\(N_f\), large-\(N_c\) matching window.  To use it as a quantitative
+statement, keep the first residual Hessian rather than hiding it in the words
+``large \(N_c\)''.  Write the local quadratic part of the singlet potential as
+\begin{equation}
+  V_{\rm loc}(\theta,\eta_0)
+  =
+  \frac12
+  \begin{pmatrix}\theta&\eta_0\end{pmatrix}
+  \left[
+    \chi_{\rm YM}
+    \begin{pmatrix}1&a\\ a&a^2\end{pmatrix}
+    +
+    \Delta H
+  \right]
+  \begin{pmatrix}\theta\\ \eta_0\end{pmatrix}
+  +O((\theta,\eta_0)^3),
+  \qquad
+  a=\frac{\sqrt{2N_f}}{f_\pi},
+  \label{eq:wv-residual-local-hessian}
+\end{equation}
+where
+\[
+  \Delta H=
+  \begin{pmatrix}
+    \delta_{\theta\theta}&\delta_{\theta\eta}\\
+    \delta_{\theta\eta}&\delta_{\eta\eta}
+  \end{pmatrix}
+\]
+collects the declared large-\(N_c\), chiral, branch-selection, and local
+counterterm residuals in the same renormalization convention as
+\(\chi_{\rm YM}\).  At fixed \(\theta\), the singlet mass coefficient is
+\begin{equation}
+  m_{\eta_0}^2
+  =
+  a^2\chi_{\rm YM}+\delta_{\eta\eta}.
+  \label{eq:wv-residual-singlet-mass}
+\end{equation}
+If \(a^2\chi_{\rm YM}+\delta_{\eta\eta}>0\), minimizing the local potential
+over the singlet field gives the full massless-QCD theta curvature in this
+window as the Schur complement
+\begin{equation}
+  \chi_{\rm QCD}^{m=0,{\rm loc}}
+  =
+  \chi_{\rm YM}+\delta_{\theta\theta}
+  -
+  \frac{(a\chi_{\rm YM}+\delta_{\theta\eta})^2}
+       {a^2\chi_{\rm YM}+\delta_{\eta\eta}} .
+  \label{eq:wv-residual-schur-curvature}
+\end{equation}
+Equivalently,
+\begin{equation}
+  \chi_{\rm QCD}^{m=0,{\rm loc}}
+  =
+  \frac{
+    \chi_{\rm YM}\delta_{\eta\eta}
+    +a^2\chi_{\rm YM}\delta_{\theta\theta}
+    +\delta_{\theta\theta}\delta_{\eta\eta}
+    -2a\chi_{\rm YM}\delta_{\theta\eta}
+    -\delta_{\theta\eta}^2}
+  {a^2\chi_{\rm YM}+\delta_{\eta\eta}} .
+  \label{eq:wv-residual-schur-numerator}
+\end{equation}
+Thus the vanishing of the massless-QCD susceptibility is not a separate
+assumption; it is the rank-one cancellation of the same Hessian which gives
+the singlet mass.  A nonzero residual leaves a nonzero Schur complement unless
+its entries satisfy the corresponding cancellation.
+
+For a usable estimate, suppose
+\[
+  |\delta_{\theta\theta}|\le r_{\theta\theta},\qquad
+  |\delta_{\theta\eta}|\le r_{\theta\eta},\qquad
+  |\delta_{\eta\eta}|\le r_{\eta\eta},
+  \qquad
+  a^2\chi_{\rm YM}>r_{\eta\eta}.
+\]
+Then
+\begin{equation}
+  \left|\chi_{\rm QCD}^{m=0,{\rm loc}}\right|
+  \le
+  \frac{
+    \chi_{\rm YM}r_{\eta\eta}
+    +a^2\chi_{\rm YM}r_{\theta\theta}
+    +r_{\theta\theta}r_{\eta\eta}
+    +2a\chi_{\rm YM}r_{\theta\eta}
+    +r_{\theta\eta}^2}
+  {a^2\chi_{\rm YM}-r_{\eta\eta}} .
+  \label{eq:wv-residual-schur-bound}
+\end{equation}
+Equations \eqref{eq:wv-residual-singlet-mass}--\eqref{eq:wv-residual-schur-bound}
+are the local bookkeeping needed before comparing a measured \(\eta'\) mass,
+a lattice \(\chi_{\rm YM}\), and a full-QCD topological susceptibility.  They
+do not prove the Yang--Mills continuum limit, the large-\(N_c\) expansion, or
+the absence of branch crossings; they state how those inputs enter the
+observable curvatures once a local branch and counterterm convention have
+been fixed.
+\end{controlledapproximation}
+
 \begin{remark}[Why this does not contradict massless-quark theta independence]
 \label{rem:massless-quark-theta-independence-wv}
 If the quark masses vanish and \(\eta_0\) is included as a dynamical field,
