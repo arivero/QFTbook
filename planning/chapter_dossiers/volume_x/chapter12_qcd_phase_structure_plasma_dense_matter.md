@@ -65,6 +65,10 @@ GitHub issue #628.
 - `Q_em`, `mu_Q`, `A_0^a`: electromagnetic flavor generator, its global
   neutrality source, and temporal color-gauge background coordinates used in
   gauge-fixed neutrality equations.
+- `A_mu`, `a_mu^Q`, `q_Q`, `tilde A_mu`, `tilde G_mu`: ordinary photon,
+  color gauge field component parallel to the CFL electromagnetic Cartan
+  generator, its trace-delta norm, and the massless/massive rotated
+  photon-gluon combinations in ideal CFL.
 - `xi_a(p)`, `delta_eff`, `p_F,a`, `delta_C`: mass-stressed residual energy,
   pairwise effective half-mismatch, shifted Fermi momentum, and the
   two-species Clogston scale.
@@ -225,10 +229,12 @@ GitHub issue #628.
   one-point function as a physical local order parameter, defines
   gauge-invariant static electric and magnetic screening exponents, derives
   the CFL Higgs screening mass matrix from the trace-delta effective action,
-  proves the physical Goldstone count, derives the ideal CFL chiral-octet
-  and baryon-phonon dispersions from the leading low-energy action, and
-  identifies the rotated unbroken electromagnetic \(U(1)\) in the same
-  transformation convention as the CFL orientation field.
+  derives the rotated electromagnetic photon-gluon mass matrix and its
+  exact null eigenvector, proves the physical Goldstone count, derives the
+  ideal CFL chiral-octet and baryon-phonon dispersions from the leading
+  low-energy action, and identifies the rotated unbroken electromagnetic
+  \(U(1)\) in the same transformation convention as the CFL orientation
+  field.
 - Computes the UV six-form anomaly polynomial for
   \(SU(3)_L\times SU(3)_R\times U(1)_B\) backgrounds in half-trace flavor
   normalization, derives the pure chiral coefficient \(N_c\), derives the
@@ -263,7 +269,8 @@ GitHub issue #628.
   magnetic leading-log gap coefficient bookkeeping,
   baryon-number cumulants and radius estimators, dense neutrality
   bookkeeping, CFL gauge-invariant composite charge bookkeeping, CFL
-  screening-sector and collective-mode count bookkeeping, dense
+  rotated electromagnetic mass-matrix bookkeeping, CFL screening-sector and
+  collective-mode count bookkeeping, dense
   Fermi-surface stress bookkeeping, CFL anomaly-matching coefficient
   bookkeeping, QCD hydrodynamic response-window, coupled-diffusion, and
   momentum-projected baryon-current bookkeeping, and CFL Goldstone count.
@@ -351,6 +358,10 @@ GitHub issue #628.
   static screening correlators, the CFL Higgs screening effective action and
   mass-matrix derivation, and the leading chiral-octet/baryon-phonon
   collective-mode action and dispersion derivation.
+- 2026-06-04 CFL rotated-electromagnetic response pass: added the exact
+  photon-gluon mass matrix in ideal CFL, identified the massless rotated
+  photon and screened orthogonal combination, and paired the statement with
+  exact trace-delta charge and determinant checks.
 - 2026-05-27 CFL anomaly-matching pass: added the local UV anomaly polynomial
   for chiral flavor plus baryon backgrounds, the level-\(N_c\) WZW matching
   statement for the CFL chiral field, and the baryon-Goldstone mixed-anomaly

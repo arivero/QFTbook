@@ -281,7 +281,8 @@ Current checks:
   coefficients, one-gluon exchange color factors in dense pairing channels,
   leading-log magnetic gap coefficient and exponent conversion,
   baryon-number cumulants and radius estimators, CFL gauge-invariant
-  composite charges, dense neutrality bookkeeping, CFL screening-sector and
+  composite charges, dense neutrality bookkeeping, CFL rotated
+  electromagnetic mass-matrix bookkeeping, CFL screening-sector and
   collective-mode counts, dense Fermi-surface stress scales, CFL
   anomaly-matching coefficients, hydrodynamic response-window bookkeeping for
   QCD shear, scalar and coupled diffusion, sound matching, and the

@@ -3888,6 +3888,120 @@ operator is an invariant bilinear form on the adjoint.  Since the adjoint of
 \(\delta^{ab}\), and the direct computation fixes the proportionality
 constant.
 
+\begin{proposition}[Rotated electromagnetic response in ideal CFL]
+\label{prop:qcd-cfl-rotated-electromagnetic-response}
+Couple the ideal CFL effective coordinate to a dynamical electromagnetic
+field \(A_\mu\) with coupling \(e\) and flavor generator
+\[
+  Q_{\rm em}
+  =
+  \operatorname{diag}\!\left(\frac23,-\frac13,-\frac13\right).
+\]
+In the same trace-delta convention as
+Controlled Approximation~\ref{ca:qcd-cfl-higgs-screening-effective-action},
+embed \(Q_{\rm em}\) in the color Cartan subalgebra and write
+\[
+  q_Q^2=\operatorname{tr}(Q_{\rm em}^2)=\frac23,
+  \qquad
+  \widehat Q=\frac{Q_{\rm em}}{q_Q},
+  \qquad
+  a_\mu^Q=\operatorname{tr}(a_\mu\widehat Q).
+\]
+The gauge-covariant derivative is
+\begin{equation}
+  D_\mu U
+  =
+  \partial_\mu U-i g\,a_\mu U+i e\,A_\mu UQ_{\rm em}.
+  \label{eq:qcd-cfl-qed-covariant-derivative}
+\end{equation}
+In unitary gauge \(U=1\), the electric quadratic form in the
+\((a_0^Q,A_0)\) sector is
+\begin{equation}
+  \frac{F_H^2}{2}
+  \begin{pmatrix}a_0^Q&A_0\end{pmatrix}
+  \begin{pmatrix}
+    g^2 & -g e q_Q\\
+    -g e q_Q & e^2 q_Q^2
+  \end{pmatrix}
+  \begin{pmatrix}a_0^Q\\ A_0\end{pmatrix}.
+  \label{eq:qcd-cfl-rotated-em-mass-matrix}
+\end{equation}
+The determinant of this matrix is zero.  The massless long-range gauge field
+is the rotated photon
+\begin{equation}
+  \widetilde A_\mu
+  =
+  \frac{g A_\mu+e q_Q a_\mu^Q}{\sqrt{g^2+e^2q_Q^2}},
+  \label{eq:qcd-cfl-rotated-photon}
+\end{equation}
+while the orthogonal combination
+\begin{equation}
+  \widetilde G_\mu
+  =
+  \frac{g a_\mu^Q-e q_Q A_\mu}{\sqrt{g^2+e^2q_Q^2}}
+  \label{eq:qcd-cfl-screened-em-gluon}
+\end{equation}
+has electric screening mass squared
+\[
+  m_{\widetilde G,E}^2
+  =
+  F_H^2(g^2+e^2q_Q^2).
+\]
+The spatial response has the same null and massive eigenvectors, with the
+massive eigenvalue multiplied by \(v_H^2\).  The seven color directions
+orthogonal to \(\widehat Q\) retain the CFL Higgs screening masses in
+\eqref{eq:qcd-cfl-higgs-screening-masses}.
+
+Thus ideal CFL is not a superconductor for the unbroken rotated
+\(U(1)\) gauge field.  It is a medium in which all eight color directions
+are screened, one of them after mixing with the ordinary photon, while the
+orthogonal photon-gluon combination remains long-ranged.
+\end{proposition}
+
+\begin{proof}
+The right action in
+\eqref{eq:qcd-cfl-qed-covariant-derivative} is the gauged version of the
+locked flavor transformation \(U\mapsto hUg^{-1}\).  In the local chart
+\(U=1\),
+\[
+  D_\mu U=-i g a_\mu+i e A_\mu Q_{\rm em}.
+\]
+Decompose the color gauge field as
+\[
+  a_\mu=a_\mu^\perp+a_\mu^Q\widehat Q,
+  \qquad
+  \operatorname{tr}(a_\mu^\perp\widehat Q)=0.
+\]
+Then
+\[
+  \operatorname{tr}\!\left[
+    (g a_\mu-eA_\mu Q_{\rm em})^2
+  \right]
+  =
+  g^2\operatorname{tr}\!\left[(a_\mu^\perp)^2\right]
+  +(g a_\mu^Q-e q_QA_\mu)^2.
+\]
+This gives
+\eqref{eq:qcd-cfl-rotated-em-mass-matrix} for the electric part of the
+effective action and the corresponding factor of \(v_H^2\) for the spatial
+part.  The two-by-two matrix has
+\[
+  \det
+  \begin{pmatrix}
+    g^2 & -g e q_Q\\
+    -g e q_Q & e^2 q_Q^2
+  \end{pmatrix}
+  =
+  g^2e^2q_Q^2-g^2e^2q_Q^2=0,
+\]
+and trace \(g^2+e^2q_Q^2\).  Its null vector is proportional to
+\((e q_Q,g)\), giving \(\widetilde A_\mu\), and its nonzero eigenvector is
+proportional to \((g,-e q_Q)\), giving \(\widetilde G_\mu\).  The remaining
+color components are orthogonal to \(Q_{\rm em}\), so they do not mix with
+the photon and keep the color-Higgs screening coefficients of
+\eqref{eq:qcd-cfl-higgs-screening-masses}.
+\end{proof}
+
 \begin{definition}[CFL collective fields]
 \label{def:qcd-cfl-collective-fields}
 Ignoring quark-mass effects and the anomalous axial \(U(1)\), the

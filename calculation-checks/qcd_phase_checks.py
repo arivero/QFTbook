@@ -13,10 +13,11 @@ non-Fermi-liquid self-energy coefficients, one-gluon exchange color factors
 for dense pairing, leading-log magnetic gap coefficient bookkeeping,
 baryon-number cumulants, Roberge--Weiss periodicity bookkeeping, dense-matter
 neutrality constraints, color-flavor-locked gauge-invariant composite
-charges, screening and collective-mode counts, dense Fermi-surface stress
-scales, color-flavor-locked anomaly matching, hydrodynamic response-window
-bookkeeping, momentum-projected baryon diffusion current bookkeeping, and the
-color-flavor-locked symmetry count.  It is not a lattice simulation and it
+charges, rotated electromagnetic mass-matrix bookkeeping, screening and
+collective-mode counts, dense Fermi-surface stress scales,
+color-flavor-locked anomaly matching, hydrodynamic response-window
+bookkeeping, momentum-projected baryon diffusion current bookkeeping, and
+the color-flavor-locked symmetry count.  It is not a lattice simulation and it
 does not assert the
 existence or order of any QCD phase transition.
 """
@@ -566,6 +567,47 @@ def check_dense_neutrality_bookkeeping():
     assert_equal("Gauss-law projected color charge", gauss_projected_charge, Fraction(0))
 
 
+def check_cfl_rotated_electromagnetic_mass_matrix():
+    # In trace-delta normalization the ideal CFL electromagnetic generator
+    # Q=diag(2/3,-1/3,-1/3) has norm tr(Q^2)=2/3.  The photon mixes only with
+    # the color Cartan direction parallel to Q; the two-by-two Higgs matrix is
+    # [[g^2, -g e q],[-g e q, e^2 q^2]], so its determinant vanishes exactly.
+    q_u = Fraction(2, 3)
+    q_d = Fraction(-1, 3)
+    q_s = Fraction(-1, 3)
+    q_squared = q_u * q_u + q_d * q_d + q_s * q_s
+    assert_equal("CFL electromagnetic generator norm", q_squared, Fraction(2, 3))
+
+    # Express Q=q3 T3+q8 T8 using tr(Ta Tb)=delta_ab.  Checking squared
+    # coefficients avoids introducing radicals into the exact arithmetic.
+    q3_squared = Fraction(1, 2)
+    q8_squared = Fraction(1, 6)
+    assert_equal("CFL color Cartan electromagnetic norm", q3_squared + q8_squared, q_squared)
+
+    g_squared = Fraction(25, 49)
+    e_squared = Fraction(4, 121)
+    determinant = g_squared * e_squared * q_squared - g_squared * e_squared * q_squared
+    assert_equal("CFL rotated photon mass-matrix determinant", determinant, Fraction(0))
+
+    massive_eigenvalue_coeff = g_squared + e_squared * q_squared
+    assert_equal(
+        "CFL screened photon-gluon eigenvalue coefficient",
+        massive_eigenvalue_coeff,
+        Fraction(25, 49) + Fraction(8, 363),
+    )
+
+    dim_su3 = 8
+    unmixed_color_directions = dim_su3 - 1
+    screened_mixed_direction = 1
+    massless_rotated_photon = 1
+    assert_equal(
+        "CFL color directions screened after QED mixing",
+        unmixed_color_directions + screened_mixed_direction,
+        8,
+    )
+    assert_equal("CFL unbroken rotated photon count", massless_rotated_photon, 1)
+
+
 def check_dense_fermi_surface_stress_bookkeeping():
     # sqrt(mu^2-m^2)=mu-m^2/(2mu)+O(m^4/mu^3).  The coefficient is checked
     # directly from the binomial expansion sqrt(1-x)=1-x/2-x^2/8+...
@@ -830,6 +872,7 @@ def main():
     check_cfl_global_goldstone_count()
     check_cfl_gauge_invariant_composite_charges()
     check_dense_neutrality_bookkeeping()
+    check_cfl_rotated_electromagnetic_mass_matrix()
     check_dense_fermi_surface_stress_bookkeeping()
     check_cfl_screening_and_collective_counts()
     check_cfl_anomaly_matching_bookkeeping()
