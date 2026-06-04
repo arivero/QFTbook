@@ -251,6 +251,7 @@
 | \(Q[A]\) | instanton/topological charge |
 | \(Z_{\Lambda,V_4,Q}\) | finite-regulator sector partition weight at topological charge \(Q\) |
 | \(E_{\Lambda,V_4}(\theta)\) | finite-regulator vacuum-energy density near \(\theta=0\) |
+| \(\mathcal K_Q,\kappa_n^{(Q)},b_{2,\Lambda,V_4},b_{4,\Lambda,V_4}\) | finite-regulator topological-charge cumulant generator, charge cumulants, and branchwise theta-expansion coefficients |
 | \(q_{\Lambda,V_4}(x)\) | regulated local topological-charge density integrating to \(Q\) |
 | \(\chi_{\rm top}\), \(\chi_{\rm YM}\) | continuum topological susceptibility, and its pure-Yang--Mills specialization |
 | \(\mathcal B,\beta\) | theta-branch label set and branch label in a finite-regulator or thermodynamic branch datum |
@@ -473,6 +474,13 @@
   and the CP-invariant case has \(\langle Q\rangle=0\).  The finite identity,
   the existence of the continuum limit, and its use in large-\(N_c\) chiral
   matching are kept logically separate.
+- The finite-regulator theta expansion is now tracked through the full charge
+  cumulant generator: \(E(\theta)-E(0)=-V_4^{-1}\mathcal K_Q(i\theta)\),
+  \(E^{(n)}(0)=-i^n\kappa_n^{(Q)}/V_4\), and in a CP-invariant finite volume
+  \(b_2=-\kappa_4/(12\kappa_2)\), \(b_4=\kappa_6/(360\kappa_2)\).  The dossier
+  flags the branch/counterterm scope: these are exact finite identities, while
+  continuum theta coefficients require a selected analytic branch and a fixed
+  local theta-counterterm convention.
 - When the finite regulator supplies a local density
   \(q_{\Lambda,V_4}(x)\) whose integral is \(Q\), the same susceptibility is
   the finite double integral of the connected density correlator, reducing in
@@ -968,6 +976,12 @@
   convention.  The paired theta/Witten--Veneziano check script now verifies
   the charge-variance/density-double-cumulant equality and contact shift
   exactly.
+- 2026-06-04 issue #630 theta-cumulant hierarchy pass: extended the
+  finite-regulator theta ledger from the susceptibility to all charge
+  cumulants, with explicit \(b_2,b_4\) signs, branchwise differentiability
+  caveat, and local theta-counterterm derivative shifts.  The paired
+  theta/Witten--Veneziano check script verifies the hierarchy from a concrete
+  CP-symmetric charge distribution.
 - 2026-05-30 issue #696 dequote pass: converted the cubic gauge obstruction
   from a `quotedtheorem` to a local proposition with proof from the
   perturbative BRST bicomplex, descent of

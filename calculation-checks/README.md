@@ -358,8 +358,10 @@ Current checks:
   of the closed continuum quadratic-form construction.
 - `qcd_theta_witten_veneziano_checks.py`: exact checks for the Volume II theta
   and singlet-axial discussion, including the finite-volume topological
-  susceptibility cumulant identity, the finite-regulator local-density
-  double-sum form with its contact-term convention, CP-symmetric first
+  susceptibility cumulant identity, the finite-regulator theta-cumulant
+  hierarchy through \(b_2,b_4\) with the local theta-counterterm derivative
+  shifts, the finite-regulator local-density double-sum form with its
+  contact-term convention, CP-symmetric first
   moment, theta periodicity by branch relabeling, branch-mixture cluster
   covariance, thermodynamic branch selection, massless-quark theta
   screening, and the Witten--Veneziano mass coefficient.  It also verifies

@@ -2708,6 +2708,99 @@ Multiplying by \(-1/V_4\) gives
 moment vanishes.
 \end{remark}
 
+\begin{proposition}[Finite-regulator theta-cumulant hierarchy]
+\label{prop:finite-regulator-theta-cumulant-hierarchy}
+For finite-regulator theta data, define the charge cumulants at \(\theta=0\)
+by
+\begin{equation}
+  \mathcal K_Q(t)
+  =
+  \log\left\langle \ee^{tQ}\right\rangle_{\Lambda,V_4,0}
+  =
+  \sum_{n\ge1}\kappa_n^{(Q)}\frac{t^n}{n!}.
+  \label{eq:finite-regulator-charge-cumulant-generator}
+\end{equation}
+Then, in the analytic neighborhood where
+Definition~\ref{def:finite-regulator-theta-data} applies,
+\begin{equation}
+  E_{\Lambda,V_4}(\theta)-E_{\Lambda,V_4}(0)
+  =
+  -\frac1{V_4}\,\mathcal K_Q(\ii\theta),
+  \qquad
+  \partial_\theta^n E_{\Lambda,V_4}(0)
+  =
+  -\frac{\ii^n}{V_4}\,\kappa_n^{(Q)} .
+  \label{eq:finite-regulator-theta-cumulant-derivatives}
+\end{equation}
+If the \(\theta=0\) weights are CP invariant, all odd charge cumulants vanish
+and the finite-volume expansion can be written
+\begin{equation}
+  E_{\Lambda,V_4}(\theta)-E_{\Lambda,V_4}(0)
+  =
+  \frac12\chi_{\Lambda,V_4}\theta^2
+  \left(
+    1+b_{2,\Lambda,V_4}\theta^2
+     +b_{4,\Lambda,V_4}\theta^4+O(\theta^6)
+  \right),
+  \label{eq:finite-regulator-theta-even-expansion}
+\end{equation}
+with
+\begin{equation}
+  \chi_{\Lambda,V_4}
+  =
+  \frac{\kappa_2^{(Q)}}{V_4},\qquad
+  b_{2,\Lambda,V_4}
+  =
+  -\frac{\kappa_4^{(Q)}}{12\kappa_2^{(Q)}},\qquad
+  b_{4,\Lambda,V_4}
+  =
+  \frac{\kappa_6^{(Q)}}{360\kappa_2^{(Q)}} ,
+  \label{eq:finite-regulator-theta-b2-b4-cumulants}
+\end{equation}
+provided \(\kappa_2^{(Q)}\neq0\).
+
+These are finite-volume identities, not yet continuum statements.  In the
+thermodynamic limit the derivatives in
+\eqref{eq:finite-regulator-theta-cumulant-derivatives} must be taken on a
+selected analytic branch of the vacuum energy; branch crossings or
+spontaneous CP breaking can obstruct a single Taylor series.  In addition, if
+the renormalization convention permits adding a local vacuum counterterm
+\(f_{\rm ct}(\theta)\), then the displayed derivatives shift by
+\(f_{\rm ct}^{(n)}(0)\).  The same counterterm convention must therefore be
+used for \(\chi_{\rm top}\), \(b_2\), \(b_4\), and any Witten--Veneziano
+matching data.
+\end{proposition}
+
+\begin{proof}
+Divide \eqref{eq:finite-regulator-theta-partition-function} by
+\(Z_{\Lambda,V_4}(0)\).  The ratio is the characteristic function
+\(\langle\ee^{\ii\theta Q}\rangle_{\Lambda,V_4,0}\), hence
+\[
+  \log\frac{Z_{\Lambda,V_4}(\theta)}{Z_{\Lambda,V_4}(0)}
+  =
+  \mathcal K_Q(\ii\theta).
+\]
+Subtracting \(E_{\Lambda,V_4}(0)\) from
+\eqref{eq:finite-regulator-theta-energy} gives the first identity in
+\eqref{eq:finite-regulator-theta-cumulant-derivatives}; differentiating gives
+the second.  CP invariance pairs the \(Q\) and \(-Q\) sector weights, so
+\(\mathcal K_Q(t)=\mathcal K_Q(-t)\) and the odd cumulants vanish.  Expanding
+the even part gives
+\[
+  E(\theta)-E(0)
+  =
+  \frac{\kappa_2^{(Q)}}{2V_4}\theta^2
+  -
+  \frac{\kappa_4^{(Q)}}{24V_4}\theta^4
+  +
+  \frac{\kappa_6^{(Q)}}{720V_4}\theta^6+\cdots .
+\]
+Comparison with \eqref{eq:finite-regulator-theta-even-expansion} gives
+\eqref{eq:finite-regulator-theta-b2-b4-cumulants}.  The last paragraph is the
+definition of branchwise differentiability and local counterterm covariance
+for the finite-volume identities just derived.
+\end{proof}
+
 \begin{proposition}[Local density form and contact convention]
 \label{prop:finite-regulator-susceptibility-density-cumulant}
 Assume that the finite regulator is placed on a closed four-volume, such as a

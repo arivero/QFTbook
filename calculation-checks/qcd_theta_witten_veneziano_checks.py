@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Exact checks for theta, susceptibility, and Witten-Veneziano normalizations."""
+"""Exact checks for theta, susceptibility, and Witten-Veneziano normalizations.
+
+The finite theta-data checks distinguish exact finite-volume cumulant
+identities from the continuum and branch-selection assumptions needed for QCD
+theta physics.
+"""
 
 from __future__ import annotations
 
@@ -36,7 +41,10 @@ def check_finite_volume_cumulant_identity() -> None:
     ]
     volume = sp.Rational(23, 3)
 
-    partition = sum(weight * sp.exp(sp.I * theta * charge) for charge, weight in zip(charges, weights))
+    partition = sum(
+        weight * sp.exp(sp.I * theta * charge)
+        for charge, weight in zip(charges, weights)
+    )
     energy = -sp.log(partition) / volume
     susceptibility_from_derivatives = sp.diff(energy, theta, 2).subs(theta, 0)
 
@@ -49,6 +57,80 @@ def check_finite_volume_cumulant_identity() -> None:
         "finite-volume susceptibility cumulant",
         susceptibility_from_derivatives - susceptibility_from_cumulant,
     )
+
+
+def check_finite_volume_theta_cumulant_hierarchy() -> None:
+    theta, t = sp.symbols("theta t")
+    charges = [-3, -2, -1, 0, 1, 2, 3]
+    weights = [
+        sp.Rational(2, 7),
+        sp.Rational(3, 11),
+        sp.Rational(5, 13),
+        sp.Rational(17, 19),
+        sp.Rational(5, 13),
+        sp.Rational(3, 11),
+        sp.Rational(2, 7),
+    ]
+    volume = sp.Rational(31, 5)
+    normalization = sum(weights)
+
+    partition = sum(
+        weight * sp.exp(sp.I * theta * charge)
+        for charge, weight in zip(charges, weights)
+    )
+    energy = -sp.log(partition) / volume
+    cumulant_generator = sp.log(
+        sum(
+            weight * sp.exp(t * charge)
+            for charge, weight in zip(charges, weights)
+        )
+        / normalization
+    )
+    cumulants = {
+        order: sp.diff(cumulant_generator, t, order).subs(t, 0)
+        for order in range(1, 7)
+    }
+
+    for order in range(1, 7):
+        energy_derivative = sp.diff(energy, theta, order).subs(theta, 0)
+        expected = -(sp.I ** order) * cumulants[order] / volume
+        assert_zero(
+            f"finite theta cumulant derivative order {order}",
+            energy_derivative - expected,
+        )
+
+    assert_zero("CP-symmetric third charge cumulant", cumulants[3])
+    assert_zero("CP-symmetric fifth charge cumulant", cumulants[5])
+
+    chi = cumulants[2] / volume
+    b2_from_derivatives = sp.diff(energy, theta, 4).subs(theta, 0) / (12 * chi)
+    b4_from_derivatives = sp.diff(energy, theta, 6).subs(theta, 0) / (360 * chi)
+    assert_zero(
+        "finite theta b2 cumulant sign",
+        b2_from_derivatives + cumulants[4] / (12 * cumulants[2]),
+    )
+    assert_zero(
+        "finite theta b4 cumulant sign",
+        b4_from_derivatives - cumulants[6] / (360 * cumulants[2]),
+    )
+
+    counterterm = (
+        sp.Rational(7, 23) * theta**2 / 2
+        + sp.Rational(11, 29) * theta**4 / 24
+        + sp.Rational(13, 31) * theta**6 / 720
+    )
+    shifted_energy = energy + counterterm
+    for order, shift in {
+        2: sp.Rational(7, 23),
+        4: sp.Rational(11, 29),
+        6: sp.Rational(13, 31),
+    }.items():
+        assert_zero(
+            f"theta local counterterm shifts derivative order {order}",
+            sp.diff(shifted_energy, theta, order).subs(theta, 0)
+            - sp.diff(energy, theta, order).subs(theta, 0)
+            - shift,
+        )
 
 
 def check_local_density_susceptibility_cumulant() -> None:
@@ -403,6 +485,7 @@ def check_unique_branch_thermodynamic_selection() -> None:
 
 def main() -> None:
     check_finite_volume_cumulant_identity()
+    check_finite_volume_theta_cumulant_hierarchy()
     check_local_density_susceptibility_cumulant()
     check_cp_symmetric_first_moment()
     check_anomaly_invariant_singlet_coordinate_and_mass_alignment()
