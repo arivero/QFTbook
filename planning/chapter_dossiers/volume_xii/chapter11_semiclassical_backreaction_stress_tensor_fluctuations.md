@@ -51,6 +51,10 @@ recording fluctuation data required for controlled backreaction.
 - `D_0`, `R^{ret}`, `D_full`, `eta_I`: the reduced gravitational/local-contact
   operator, retained interacting stress-tensor feedback, full linearized
   backreaction operator, and small-gain parameter on a frequency window.
+- `G_full`, `M_full`, `B_h(r_h)`, `C_2`, `L_st`, `epsilon_nl`,
+  `kappa_nl`, `r_N`, `Delta_N(r_h)`: the full retained inverse and nonlinear
+  finite-window chart data controlling the self-map, state transport, omitted
+  residuals, contraction constant, and noise-validity budget.
 
 ## Claim Ledger
 
@@ -141,6 +145,14 @@ recording fluctuation data required for controlled backreaction.
   bounds.  The layer also identifies physical failures: uncontrolled feedback,
   upper-half-plane poles, Ward-clean noise amplified beyond the metric chart,
   and missing-noise residuals not included in the covariance budget.
+- Adds the nonlinear finite-window backreaction chart.  The retained equation
+  is written as a Ward-clean fixed-point map
+  `h=h_lin+G_full(Q_2(h,h)+S_st(h)+R_nl(h))`; the self-map and contraction
+  tests combine the linear small-gain bound with quadratic metric/source
+  feedback, state-transport Lipschitz control, and omitted residual size.
+  The same chart refines the stochastic validity condition by adding missing
+  connected-noise trace and nonlinear/state-transport noise budgets before
+  the metric fluctuations are compared with the chart radius.
 - Records validity conditions and the EFT reduction-of-order treatment for
   higher-curvature terms.
 
@@ -174,7 +186,11 @@ recording fluctuation data required for controlled backreaction.
   Ward-clean source/noise inputs, mean-response and noise-amplification
   bounds, residual missing-noise trace propagation, and singular-feedback,
   overlarge-feedback, unconserved-input, and conserved-but-unstable
-  amplification negative controls, and the low-energy root selected by
+  amplification negative controls, the nonlinear fixed-point chart self-map,
+  contraction, correction, Ward-clean nonlinear source, missing-noise, and
+  stochastic validity budgets with negative controls for signed residual
+  cancellation, omitted state transport, overlarge quadratic feedback, and
+  linear-noise-only validity, and the low-energy root selected by
   reduction of order in a toy higher-derivative equation.
 
 ## Figure Ledger
@@ -270,3 +286,13 @@ curvature, microscopic, and EFT scales.
   feedback inverse, the bounded-response and covariance trace estimates,
   residual missing-noise propagation, and the fact that Ward-clean data can
   still fail through singular or strongly amplifying metric feedback.
+- 2026-06-04 issue #729 nonlinear-chart pass: added
+  `ca:semiclassical-nonlinear-backreaction-chart`, which extends the linear
+  small-gain layer into a finite retained-sector existence/stability criterion
+  for the mean solution and its fluctuations.  This is architecture work: the
+  text now requires one matched chart containing the interacting
+  source/noise/response package, Ward-clean constraint reduction, quadratic
+  nonlinear feedback, state transport, residual budgets, and a fluctuation
+  radius.  The companion rejects signed residual cancellations, omitted
+  state-transport Lipschitz control, overlarge nonlinear feedback, and
+  linear-noise-only validity estimates.

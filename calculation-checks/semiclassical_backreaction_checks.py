@@ -13,7 +13,8 @@ cross-covariances and finite composite-operator mixing, the closed-time-path
 influence-functional consistency of the interacting mean, retarded response,
 and noise package,
 the small-gain stability and fluctuation-validity check for the linearized
-interacting backreaction operator,
+interacting backreaction operator, the finite nonlinear fixed-point chart for
+the retained semiclassical equation,
 and the low-energy root selected by reduction of order in a toy
 higher-derivative equation.
 
@@ -31,15 +32,18 @@ finite operator-mixing terms are required before Ward tests are applied to the
 noise, the closed-time-path package tests tying Ward identities, retarded
 support, positivity, and fluctuation-dissipation compatibility together, the
 small-gain feedback inverse and noise-amplification bound for the full retained
-backreaction operator, and the low-energy root selected by reduction of order.
+backreaction operator, the finite nonlinear self-map/contraction and
+mean/noise-validity budgets for a retained backreaction chart, and the
+low-energy root selected by reduction of order.
 Independent construction: the checks recompute traces, KMS factors,
 matrix pushforwards, exact retained-sector inverses, Wick-contraction
 coefficients, cosmological-coordinate shifts, independent finite counterterm
 controls, signed/absolute norm bounds, Ward maps, kernel projectors, projected
 covariances, finite influence-functional quadratic forms, retarded-support
 tests, fluctuation-dissipation ratios, small-gain inverses, response/noise
-bounds, and toy roots directly from finite formulas rather than importing
-chapter display strings.
+bounds, nonlinear fixed-point radii, residual budgets, state-transport
+Lipschitz constants, noise-validity inequalities, and toy roots directly from
+finite formulas rather than importing chapter display strings.
 Imported assumptions: the tests use finite-dimensional retained sectors,
 centered quasifree Wick combinatorics, formal first- and second-order lambda
 coordinates, positive finite noise matrices, full-rank finite Ward maps, and the
@@ -59,7 +63,9 @@ terms, c-number counterterms incorrectly added to connected noise, advanced
 response kernels, independent noise spectra violating the KMS factor, and
 spurious closed-time-path h_c h_c terms are rejected, as are singular feedback
 operators, overlarge small-gain feedback, unconserved sources/noise, and
-conserved-but-unstable retained data.
+conserved-but-unstable retained data, signed nonlinear residual cancellations,
+omitted state-transport Lipschitz constants, overlarge quadratic nonlinear
+feedback, and linear-noise-only validity estimates.
 Scope boundary: a pass checks coefficient, positivity, and response-bound
 bookkeeping for the retained potential-insertion coordinate and the finite
 algebra of a full retained stress-tensor package; it does not construct the
@@ -993,6 +999,102 @@ def check_backreaction_small_gain_stability() -> None:
         raise AssertionError("conserved noise can still be amplified beyond validity")
 
 
+def check_nonlinear_backreaction_fixed_point_chart() -> None:
+    # Exact retained analogue of the finite-window nonlinear map
+    # h = h_lin + G_full(Q_2(h,h) + S_st(h) + R_nl(h)).
+    m_full = Fraction(2, 3)
+    radius = Fraction(1, 2)
+    h_linear_norm = Fraction(1, 5)
+    quadratic_bound = Fraction(1, 4)
+    state_lipschitz = Fraction(1, 8)
+    residual_bound = Fraction(1, 20)
+
+    nonlinear_budget = (
+        quadratic_bound * radius * radius
+        + state_lipschitz * radius
+        + residual_bound
+    )
+    self_map_bound = h_linear_norm + m_full * nonlinear_budget
+    if self_map_bound != Fraction(19, 60):
+        raise AssertionError("nonlinear retained self-map budget changed")
+    if self_map_bound > radius:
+        raise AssertionError("nonlinear retained map should stay inside the chart")
+
+    contraction = m_full * (2 * quadratic_bound * radius + state_lipschitz)
+    if contraction != Fraction(1, 4):
+        raise AssertionError("nonlinear contraction constant changed")
+    if contraction >= 1:
+        raise AssertionError("nonlinear retained map should be contractive")
+
+    correction_bound = m_full * nonlinear_budget / (1 - contraction)
+    if correction_bound != Fraction(7, 45):
+        raise AssertionError("nonlinear correction bound changed")
+    if h_linear_norm + correction_bound > radius:
+        raise AssertionError("nonlinear correction should keep the solution in the chart")
+
+    ward: Matrix = ((Fraction(1), Fraction(-1)),)
+    retained_nonlinear_source: Matrix = ((Fraction(3, 10),), (Fraction(3, 10),))
+    if matmul(ward, retained_nonlinear_source) != zero_matrix(1, 1):
+        raise AssertionError("test nonlinear source should be Ward-clean")
+    nonconserved_nonlinear_source: Matrix = ((Fraction(3, 10),), (Fraction(1, 5),))
+    if matmul(ward, nonconserved_nonlinear_source) == zero_matrix(1, 1):
+        raise AssertionError("negative control failed: nonconserved nonlinear source passed")
+
+    bad_quadratic_bound = Fraction(2)
+    bad_quadratic_contraction = m_full * (
+        2 * bad_quadratic_bound * radius + state_lipschitz
+    )
+    if bad_quadratic_contraction <= 1:
+        raise AssertionError("negative control failed: overlarge nonlinear feedback accepted")
+
+    omitted_state_lipschitz_contraction = m_full * (2 * quadratic_bound * radius)
+    bad_state_lipschitz = Fraction(3, 2)
+    actual_state_contraction = m_full * (
+        2 * quadratic_bound * radius + bad_state_lipschitz
+    )
+    if omitted_state_lipschitz_contraction >= 1:
+        raise AssertionError("test omitted-state contraction should look falsely safe")
+    if actual_state_contraction <= 1:
+        raise AssertionError("negative control failed: omitted state transport was harmless")
+
+    signed_residual = Fraction(-1, 2)
+    signed_self_map_bound = h_linear_norm + m_full * (
+        quadratic_bound * radius * radius
+        + state_lipschitz * radius
+        + signed_residual
+    )
+    absolute_residual_self_map_bound = h_linear_norm + m_full * (
+        quadratic_bound * radius * radius
+        + state_lipschitz * radius
+        + abs(signed_residual)
+    )
+    if signed_self_map_bound > radius:
+        raise AssertionError("test signed residual should appear falsely safe")
+    if absolute_residual_self_map_bound <= radius:
+        raise AssertionError("negative control failed: residual cancellation was not rejected")
+
+    linear_noise_trace = Fraction(1, 30)
+    missing_noise_trace = Fraction(1, 20)
+    nonlinear_noise_tail = Fraction(1, 15)
+    noise_amplification = m_full * m_full / ((1 - contraction) * (1 - contraction))
+    full_noise_validity_bound = (
+        linear_noise_trace
+        + noise_amplification * missing_noise_trace
+        + nonlinear_noise_tail
+    )
+    if full_noise_validity_bound != Fraction(113, 810):
+        raise AssertionError("nonlinear noise validity budget changed")
+    validity_scale = Fraction(1, 5)
+    if full_noise_validity_bound >= validity_scale:
+        raise AssertionError("test nonlinear noise budget should fit the declared chart")
+
+    too_small_metric_scale = Fraction(1, 9)
+    if linear_noise_trace >= too_small_metric_scale:
+        raise AssertionError("test linear-only noise should look falsely safe")
+    if full_noise_validity_bound <= too_small_metric_scale:
+        raise AssertionError("negative control failed: nonlinear/missing noise budget was omitted")
+
+
 def check_reduction_of_order_toy_model() -> None:
     # Toy equation: x'' + omega0^2 x + epsilon x'''' = 0.
     # For x ~ exp(lambda t), epsilon lambda^4 + lambda^2 + omega0^2 = 0.
@@ -1024,6 +1126,7 @@ def main() -> None:
     check_interacting_stress_tensor_noise_package()
     check_interacting_influence_functional_consistency()
     check_backreaction_small_gain_stability()
+    check_nonlinear_backreaction_fixed_point_chart()
     check_reduction_of_order_toy_model()
     print("All semiclassical backreaction checks passed.")
 

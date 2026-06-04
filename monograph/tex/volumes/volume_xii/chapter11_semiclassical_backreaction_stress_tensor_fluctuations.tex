@@ -1564,6 +1564,122 @@ kernel may still be amplified beyond the validity of the linearized metric
 chart.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Nonlinear finite-window backreaction chart]
+\label{ca:semiclassical-nonlinear-backreaction-chart}
+The small-gain test controls the linearized operator.  A semiclassical
+solution also needs a chart in which the nonlinear gravitational terms, the
+metric-dependence of the interacting state, and the omitted retained
+stress-tensor residuals stay inside the same response window.  Keep the
+Ward-clean retained sector and write
+\[
+  \mathsf G_{\rm full}
+  =
+  \mathsf D_{\rm full}^{-1},
+  \qquad
+  M_{\rm full}
+  =
+  \frac{M_0}{1-\eta_I},
+  \qquad
+  h_{\rm lin}
+  =
+  \mathsf G_{\rm full}j^{\rm full}.
+\]
+After gauge fixing, constraint reduction, and reduction of order, suppose the
+retained nonlinear equation in a ball
+\(B_h(r_h)=\{h:\lVert h\rVert\le r_h\}\) has the form
+\begin{equation}
+  h=\Phi(h)
+  =
+  h_{\rm lin}
+  +
+  \mathsf G_{\rm full}
+  \left(
+    \mathcal Q_2(h,h)+\mathcal S_{\rm st}(h)+\mathcal R_{\rm nl}(h)
+  \right),
+  \label{eq:semiclassical-nonlinear-fixed-map}
+\end{equation}
+where \(\mathcal Q_2\) contains the retained quadratic metric terms and
+second metric variations of the source, \(\mathcal S_{\rm st}\) is the
+linearized state-transport contribution in the chosen Hadamard chart, and
+\(\mathcal R_{\rm nl}\) is the declared residual from omitted higher retained
+orders and unresolved stress-tensor products.  All three terms are required to
+land in the Ward-clean sector; otherwise the fixed-point problem has left the
+same constraint-reduced space in which
+\(\mathsf G_{\rm full}\) was estimated.
+
+Assume that, for \(h,\tilde h\in B_h(r_h)\),
+\begin{equation}
+\begin{gathered}
+  \lVert\mathcal Q_2(h,h)\rVert\le C_2\lVert h\rVert^2,
+  \qquad
+  \lVert
+    \mathcal Q_2(h,h)-\mathcal Q_2(\tilde h,\tilde h)
+  \rVert
+  \le
+  2C_2r_h\lVert h-\tilde h\rVert,
+  \\
+  \lVert\mathcal S_{\rm st}(h)\rVert\le L_{\rm st}\lVert h\rVert,
+  \qquad
+  \lVert
+    \mathcal S_{\rm st}(h)-\mathcal S_{\rm st}(\tilde h)
+  \rVert
+  \le
+  L_{\rm st}\lVert h-\tilde h\rVert,
+  \qquad
+  \sup_{B_h(r_h)}\lVert\mathcal R_{\rm nl}\rVert\le\epsilon_{\rm nl}.
+\end{gathered}
+  \label{eq:semiclassical-nonlinear-chart-bounds}
+\end{equation}
+Then the retained equation is controlled on this finite window when
+\begin{equation}
+  \lVert h_{\rm lin}\rVert
+  +
+  M_{\rm full}
+  \left(C_2r_h^2+L_{\rm st}r_h+\epsilon_{\rm nl}\right)
+  \le r_h,
+  \qquad
+  \kappa_{\rm nl}
+  =
+  M_{\rm full}(2C_2r_h+L_{\rm st})<1 .
+  \label{eq:semiclassical-nonlinear-contraction-test}
+\end{equation}
+The first inequality says that the declared source and residuals stay inside
+the metric chart; the second says that nonlinear feedback and state transport
+cannot undo the linear small-gain estimate.  In that case the Picard sequence
+defined by \(\Phi\) converges to a unique retained solution in \(B_h(r_h)\),
+and the nonlinear correction to the linear response is bounded by
+\begin{equation}
+  \lVert h-h_{\rm lin}\rVert
+  \le
+  \frac{
+    M_{\rm full}\left(C_2r_h^2+L_{\rm st}r_h+\epsilon_{\rm nl}\right)
+  }{1-\kappa_{\rm nl}} .
+  \label{eq:semiclassical-nonlinear-correction-bound}
+\end{equation}
+
+The stochastic part needs the same bookkeeping.  If \(r_N\) is the trace
+budget for omitted connected stress noise and \(\Delta_N(r_h)\) is the
+declared nonlinear/state-transport correction to the noise in this chart, the
+metric-fluctuation validity test is refined to
+\begin{equation}
+  \operatorname{tr}\mathsf C_h^{\rm full}
+  +
+  \frac{M_{\rm full}^2}{(1-\kappa_{\rm nl})^2}\,r_N
+  +
+  \Delta_N(r_h)
+  \ll r_h^2 .
+  \label{eq:semiclassical-nonlinear-noise-validity}
+\end{equation}
+Thus a finite backreaction statement consists of a matched package: a
+scheme-fixed interacting source/noise/response calculation, a Ward-clean
+constraint reduction, a bounded feedback inverse, a state-transport radius,
+and residual budgets small enough for both the mean solution and its metric
+fluctuations to remain in the declared semiclassical chart.  A full
+semiclassical existence theorem would replace these finite retained
+inequalities by topology, hyperbolic evolution, and Hadamard-state
+propagation estimates for the infinite-dimensional problem.
+\end{controlledapproximation}
+
 \section{Validity Conditions And Reduction Of Order}
 
 The semiclassical approximation requires more than small curvature.  A
