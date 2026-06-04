@@ -42,6 +42,10 @@
       "risk_class": "relativistic hydrodynamics causality"
     },
     {
+      "path": "finite_temperature_path_integral_checks.py",
+      "risk_class": "thermal Euclidean spectral reconstruction"
+    },
+    {
       "path": "eft_prediction_calculus_checks.py",
       "risk_class": "EFT prediction and decoupling"
     },

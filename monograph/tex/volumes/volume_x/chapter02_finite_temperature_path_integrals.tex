@@ -475,6 +475,136 @@ the Euclidean data determine a spectral distribution with the stated
 analytic control; the discrete Matsubara values alone do not constitute such
 a proof.
 
+\section{Uniqueness, Stability, and Spectral Inference}
+\label{sec:thermal-euclidean-reconstruction-stability}
+
+There are three different data problems hidden behind the phrase analytic
+continuation.
+\begin{center}
+\begin{tabular}{@{}lp{0.62\linewidth}@{}}
+\textbf{exact continuum data} &
+  \(G_E(\tau)\) known for every \(0<\tau<\beta\),\\[0.25em]
+\textbf{complete Matsubara data} &
+  \(G_E(\ii\omega_n)\) known for every allowed \(n\),\\[0.25em]
+\textbf{finite noisy data} &
+  \(G_E(\tau_j)\) or \(G_E(\ii\omega_{n_j})\) known with errors.
+\end{tabular}
+\end{center}
+The first two can imply uniqueness only after the function class is declared.
+For example, if the spectral distribution is tempered with enough
+exponential control that \eqref{eq:thermal-euclidean-spectral-representation}
+defines a distributional boundary value analytic in the KMS strip, exact
+knowledge of \(G_E(\tau)\) on any open subinterval determines the strip
+function by the identity theorem and then determines the spectral
+distribution by the corresponding boundary-value inversion.  Similarly, an
+infinite Matsubara sequence determines the same object only inside a class
+with a Carlson/Hardy/Nevanlinna-type growth bound that rules out functions
+vanishing at all Matsubara points.  These are uniqueness statements.  They
+are not stability statements.
+
+For Hermitian bosonic \(A\), write the positive-frequency part as
+\[
+  \rho_{AA}(\omega)=2\omega\,\sigma_A(\omega),
+  \qquad
+  \sigma_A(\omega)\ge0
+  \quad(\omega>0).
+\]
+Then, away from the zero mode,
+\begin{equation}
+  G_E(\tau)-G_0
+  =
+  \int_0^\infty d\omega\,
+  2\omega\sigma_A(\omega)
+  K_\beta(\tau,\omega),
+  \qquad
+  K_\beta(\tau,\omega)
+  =
+  \frac{\cosh[\omega(\beta/2-\tau)]}{\sinh(\beta\omega/2)} .
+  \label{eq:thermal-positive-frequency-kernel}
+\end{equation}
+On every finite frequency band \(0\le\omega\le\Omega\) and every interior
+Euclidean window \(\delta\le\tau\le\beta-\delta\), the kernel
+\(2\omega K_\beta(\tau,\omega)\) is continuous.  The resulting map from
+\(L^2(0,\Omega)\) spectral slopes to \(L^2(\delta,\beta-\delta)\) Euclidean
+data is Hilbert--Schmidt, hence compact.  On the full half-line, high
+frequencies are exponentially smoothed on interior Euclidean times.  A compact
+smoothing map may be one-to-one on a restricted function class, but its
+inverse cannot be uniformly continuous on infinite-dimensional sets.  Small
+Euclidean errors can therefore correspond to large changes in local spectral
+features.
+
+The low-frequency transport limit is the sharpest version of this
+ill-conditioning.  Fix a number \(\eta_\ast>0\) and, for
+\(0<\varepsilon<1/\beta\), define a positive spectral slope
+\[
+  \sigma_\varepsilon(\omega)
+  =
+  \eta_\ast\,\mathbf 1_{0<\omega<\varepsilon}.
+\]
+Equivalently, the odd spectral density is
+\[
+  \rho_\varepsilon(\omega)
+  =
+  2\eta_\ast\omega\,\mathbf 1_{0<\omega<\varepsilon}
+  -2\eta_\ast|\omega|\,\mathbf 1_{-\varepsilon<\omega<0}.
+\]
+It has transport slope
+\[
+  \lim_{\omega\downarrow0}\frac{\rho_\varepsilon(\omega)}{2\omega}
+  =
+  \eta_\ast
+\]
+for every \(\varepsilon\).  Yet its Euclidean contribution satisfies, for all
+\(0<\tau<\beta\),
+\begin{equation}
+  0\le
+  \Delta G_E^\varepsilon(\tau)
+  =
+  \int_0^\varepsilon
+  2\eta_\ast\omega K_\beta(\tau,\omega)\,d\omega
+  \le
+  \frac{6\eta_\ast}{\beta}\,\varepsilon .
+  \label{eq:thermal-transport-instability-example}
+\end{equation}
+The last inequality uses \(K_\beta(\tau,\omega)\le 3/(\beta\omega)\) for
+\(\beta\omega\le1\).  Thus the spectral densities \(0\) and
+\(\rho_\varepsilon\) become indistinguishable in any fixed Euclidean
+\(L^p(0,\beta)\) norm as \(\varepsilon\to0\), while their Kubo slope differs
+by \(\eta_\ast\).  The conclusion reflects the different observables:
+Euclidean data smear the spectral density over a thermal kernel, whereas
+transport asks for a pointwise
+low-frequency slope after the thermodynamic and zero-frequency limits have
+been taken.
+
+Several pieces of bookkeeping must also be kept separate.
+\begin{center}
+\begin{tabular}{@{}p{0.25\linewidth}p{0.66\linewidth}@{}}
+\textbf{zero mode} &
+  The constant term \(G_0\) in
+  \eqref{eq:thermal-euclidean-spectral-representation} is not encoded in the
+  commutator spectral density.\\[0.3em]
+\textbf{contact terms} &
+  Local source counterterms change Euclidean zero modes and polynomial
+  response pieces but not the nonzero-frequency commutator spectral measure.\\[0.3em]
+\textbf{finite volume} &
+  The spectral density is a sum of lines.  Dissipative transport requires a
+  thermodynamic limit in which those lines form the appropriate
+  low-frequency distribution.\\[0.3em]
+\textbf{continuum limit} &
+  Ultraviolet subtraction and operator renormalization must be fixed before
+  comparing Euclidean data with real-time spectral functions.\\[0.3em]
+\textbf{finite data} &
+  A finite noisy set of Euclidean samples gives finitely many smeared
+  constraints.  Positivity and sum rules narrow the feasible set but do not
+  by themselves select a unique low-frequency slope.
+\end{tabular}
+\end{center}
+Maximum entropy reconstructions, Bayesian priors, Backus--Gilbert estimators,
+Padé or conformal ansatz fits, and Tikhonov-type regularizations add
+information by choosing a prior, a resolution functional, or a model class.
+They can be useful numerical procedures, but their output is not a theorem
+following from KMS, positivity, and finitely many Euclidean data points alone.
+
 \section{Chemical Potentials, Twists, and Holonomies}
 
 Let \(Q\) be the self-adjoint generator of a global \(U(1)\) symmetry and

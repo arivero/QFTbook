@@ -1,11 +1,27 @@
 #!/usr/bin/env python3
 """Finite checks for thermal path-integral conventions.
 
-The checks cover algebraic facts used in the finite-temperature path-integral
-chapter: circle eigenvalue quantization, finite-volume spectral representation
-of Euclidean correlators, the one-mode fermionic coherent-state trace sign,
-Matsubara Cauchy transforms, and chemical-potential twist bookkeeping.  They
-are finite-dimensional convention checks, not a continuum construction.
+Evidence contract.
+Target claims: circle eigenvalue quantization, finite-volume spectral
+representation of Euclidean correlators, the separate zero mode, Matsubara
+Cauchy transforms, chemical-potential twist bookkeeping, and the
+Euclidean-to-real-time reconstruction instability example in Volume X
+Chapter 2.
+Independent construction: direct finite Gibbs sums, direct Matsubara
+integration, exact boundary phases, finite Berezin-sign arithmetic, and a
+low-frequency positive spectral-slope family whose Euclidean transform is
+bounded while its Kubo slope is fixed.
+Imported assumptions: the finite-regulator Gibbs trace, the bosonic spectral
+kernel stated in the chapter, positivity of Hermitian positive-frequency
+spectral weights, and the use of Euclidean norms as data-error topology.
+Negative controls: the Euclidean zero mode is not inferred from the
+commutator spectral density, finite Matsubara values are not accepted as
+stable spectral reconstruction, and small Euclidean error is not accepted as
+control of the low-frequency Kubo slope.
+Scope boundary: these checks verify finite algebra and the explicit
+ill-conditioning construction; they do not prove a continuum reconstruction
+theorem, Carlson-class uniqueness, or the correctness of any numerical
+analytic-continuation prior.
 """
 
 from __future__ import annotations
@@ -160,6 +176,24 @@ def cauchy_matsubara_transform(atoms: list[tuple[float, complex]], matsubara_fre
     return sum(weight / (omega - 1j * matsubara_frequency) for omega, weight in atoms)
 
 
+def euclidean_transport_kernel(beta: float, tau: float, omega: float) -> float:
+    """Kernel multiplying sigma(omega)=rho(omega)/(2 omega) for omega>0."""
+
+    if abs(omega) < 1.0e-12:
+        return 4.0 / beta
+    return 2.0 * omega * math.cosh(omega * (0.5 * beta - tau)) / math.sinh(0.5 * beta * omega)
+
+
+def low_frequency_transport_bump(beta: float, tau: float, epsilon: float, eta_star: float) -> float:
+    intervals = 400
+    step = epsilon / intervals
+    total = 0.0
+    for index in range(intervals):
+        omega = (index + 0.5) * step
+        total += eta_star * euclidean_transport_kernel(beta, tau, omega) * step
+    return total
+
+
 def check_bosonic_spectral_representation() -> None:
     energies = [0.25, 1.1, 2.3]
     beta = 1.4
@@ -204,6 +238,35 @@ def check_bosonic_spectral_representation() -> None:
     )
 
 
+def check_low_frequency_transport_instability() -> None:
+    beta = 2.0
+    eta_star = 0.9
+    epsilon = 1.0e-4
+    tau_samples = [0.1, 0.4, 0.9, 1.6, 1.9]
+    noise_floor = 1.0e-3
+
+    # The positive-frequency spectral family has rho(omega)=2 eta_star omega
+    # on (0, epsilon), hence the Kubo slope rho/(2 omega) is eta_star for
+    # every epsilon even though its Euclidean transform is O(epsilon).
+    for omega in [0.25 * epsilon, 0.5 * epsilon, 0.75 * epsilon]:
+        rho = 2.0 * eta_star * omega
+        assert_close(rho / (2.0 * omega), eta_star, "fixed low-frequency Kubo slope")
+
+    bound = 6.0 * eta_star * epsilon / beta
+    for tau in tau_samples:
+        delta_g = low_frequency_transport_bump(beta, tau, epsilon, eta_star)
+        if not 0.0 <= delta_g <= bound:
+            raise AssertionError("Euclidean low-frequency bump exceeded chapter bound")
+        if not delta_g < noise_floor:
+            raise AssertionError("finite noisy Euclidean samples should not resolve this fixed-slope bump")
+
+    larger = low_frequency_transport_bump(beta, beta / 2.0, 4.0 * epsilon, eta_star)
+    smaller = low_frequency_transport_bump(beta, beta / 2.0, epsilon, eta_star)
+    ratio = larger / smaller
+    if not 3.9 < ratio < 4.1:
+        raise AssertionError("Euclidean bump should scale linearly with epsilon at small epsilon")
+
+
 def check_chemical_potential_twist() -> None:
     beta = 2.0
     mu = 0.37
@@ -229,6 +292,7 @@ def main() -> None:
     check_matsubara_boundary_phases()
     check_one_mode_fermionic_trace_identity()
     check_bosonic_spectral_representation()
+    check_low_frequency_transport_instability()
     check_chemical_potential_twist()
     print("Finite-temperature path-integral convention checks passed.")
 

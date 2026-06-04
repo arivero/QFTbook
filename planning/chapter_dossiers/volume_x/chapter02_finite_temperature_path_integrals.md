@@ -24,6 +24,12 @@ or constructive definition.
 - `s`: thermal boundary sign, `+1` for bosons and `-1` for thermal fermions.
 - `omega_n^B`, `omega_n^F`: bosonic and fermionic Matsubara frequencies.
 - `rho_AB(omega)`: finite-volume thermal spectral distribution.
+- `sigma_A(omega)`: positive-frequency spectral slope
+  `rho_AA(omega)/(2 omega)` for Hermitian bosonic operators.
+- `K_beta(tau,omega)`: Euclidean thermal spectral kernel
+  `cosh(omega(beta/2-tau))/sinh(beta omega/2)`.
+- `sigma_epsilon`: compactly supported low-frequency spectral-slope bump used
+  to show Euclidean reconstruction instability.
 - `Q`, `mu`, `q`: conserved global charge, chemical potential, and charge of
   an operator or field.
 - `P(x)`: thermal gauge holonomy/Polyakov loop.
@@ -52,20 +58,38 @@ or constructive definition.
 9. Derives the finite-volume bosonic thermal spectral representation,
    including the separate zero-frequency degenerate contribution, and the
    Matsubara Cauchy-transform formula.
-10. States the analytic-continuation problem precisely: retarded functions
-   require a spectral distribution and growth hypotheses, not only discrete
-   Matsubara values.
-11. Derives chemical potential as either \(D_\tau\mapsto D_\tau-\mu q\) or a
+10. Separates exact continuum Euclidean data, complete Matsubara sequences,
+   and finite noisy data; uniqueness requires explicit growth/function-space
+   hypotheses and is not the same as stable inversion.
+11. Shows that the Euclidean spectral transform is smoothing/compact on
+   natural finite-band topologies, so the inverse map is not uniformly stable.
+12. Gives an explicit positive low-frequency spectral-slope family with
+   Euclidean norm \(O(\epsilon)\) but fixed Kubo slope, proving that transport
+   extraction is more unstable than broad-feature reconstruction.
+13. Separates zero modes, contact terms, finite-volume lines, thermodynamic
+   limits, continuum limits, and finite-data priors in the reconstruction
+   problem.
+14. Derives chemical potential as either \(D_\tau\mapsto D_\tau-\mu q\) or a
    twisted boundary condition.
-12. Separates fixed global background holonomies from dynamical gauge
+15. Separates fixed global background holonomies from dynamical gauge
     holonomy integration on the thermal circle.
+
+## Audit Notes
+
+- 2026-06-04 reconstruction-stability pass: added the theorem-status ledger
+  distinguishing exact Euclidean data, complete Matsubara data, and finite
+  noisy data; proved compact smoothing of the positive-frequency spectral
+  transform; added the low-frequency transport-slope instability example; and
+  separated zero modes, contact terms, finite-volume lines, thermodynamic
+  limits, continuum limits, and numerical priors.
 
 ## Calculation Checks
 
 - `calculation-checks/finite_temperature_path_integral_checks.py` verifies
   Matsubara boundary phases, the one-mode coherent-state trace sign, the
   finite-volume spectral representation, the separate Euclidean zero mode,
-  the Matsubara Cauchy transform, and chemical-potential twist bookkeeping.
+  the Matsubara Cauchy transform, the low-frequency Euclidean reconstruction
+  instability example, and chemical-potential twist bookkeeping.
 
 ## Figure Ledger
 

@@ -31,6 +31,9 @@
   hydrodynamic closure.
 - Conductivity, shear-viscosity, and bulk-viscosity Kubo formulae with
   explicit order of limits and conserved-density projections.
+- Direct warning that extracting the low-frequency Kubo slope from Euclidean
+  thermal data is more unstable than reconstructing a broad spectral feature,
+  because the Euclidean kernel smooths the spectral density.
 - Once-subtracted retarded dispersion relation and its theorem boundary.
 - Open theorem boundary from Kubo formulae to hydrodynamics.
 
@@ -90,9 +93,12 @@
 10. Conductivity and viscosity are low-frequency spectral slopes after contact
    terms, Drude weights, order of limits, and conserved-density mixings are
    specified.
-11. Subtracted dispersion relations require large-\(\omega\) control and an
+11. Euclidean data constrain smeared spectral integrals; they do not stably
+   determine the transport slope without additional real-time input, priors, or
+   a controlled model class.
+12. Subtracted dispersion relations require large-\(\omega\) control and an
    explicit declaration of contact terms.
-12. Hydrodynamic control requires additional analyticity, clustering,
+13. Hydrodynamic control requires additional analyticity, clustering,
    equilibration, and limit-exchange hypotheses.
 
 ## Calculation Checks
@@ -134,3 +140,7 @@
   coordinate formulae remain; theorem-family weight is reserved for the
   hydrodynamic closure hypotheses and estimates needed after the
   thermodynamic limit.
+- 2026-06-04 transport-reconstruction pass: connected the conductivity Kubo
+  slope to the Chapter 2 Euclidean reconstruction instability, emphasizing that
+  positivity, sum rules, and finite Euclidean samples do not stably determine
+  \(\rho(\omega)/(2\omega)\) as \(\omega\downarrow0\).
