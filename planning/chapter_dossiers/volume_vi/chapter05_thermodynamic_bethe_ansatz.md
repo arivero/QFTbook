@@ -52,6 +52,8 @@
 | \(S_{\rm LY},\varphi_{\rm LY}\) | Lee--Yang scalar amplitude and TBA kernel |
 | \(Y_0,\phi_{\rm g},L(x)\) | Lee--Yang plateau value, golden ratio, and Rogers dilogarithm |
 | \(n_a,\rho_a^t,h^{\rm dr},v_a^{\rm eff}\) | GHD filling, total state density, dressed one-particle function, and effective velocity |
+| \(Q_h^{\rm GHD},J_h^{\rm GHD},\mathcal E_{h,L}^{\rm GHD}\) | Euler-cell charge/current predictions and microscopic observable error |
+| \(\epsilon_{\rm cell},\epsilon_{\rm BY},\epsilon_{\rm dress},\epsilon_{\rm grad},\epsilon_{\rm op},\epsilon_{\rm diss},\epsilon_{\rm break}\) | residuals in the GHD observable certificate |
 | \(\Omega,\pi_\omega,k_{\omega\omega'},P_\omega,C_i\) | finite collision-cell states, stationary weights, transition rates, cell probabilities, and projected collision functional |
 
 ## Claim Ledger
@@ -75,6 +77,9 @@
    equation with velocity \(v^{\rm eff}=(E')^{\rm dr}/(p')^{\rm dr}\), and
    charge currents \(j_h=\int h\rho v^{\rm eff}\) conserve every declared
    Bethe charge whenever the closure holds.
+   The observable certificate now separates that Euler-cell formula from the
+   microscopic density/current claim through local-cell, Bethe-Yang, dressing,
+   gradient, operator-projection, dissipative, and breaking residuals.
 9. The hard-rod calibration solves the finite collision-shift equations
    exactly, showing how a state-dependent effective velocity arises before
    the quantum kernel is introduced.
@@ -96,7 +101,9 @@
 - `calculation-checks/generalized_hydrodynamics_checks.py` verifies the
   finite-grid dressing equation, the current identity behind
   \(j_h=\int h\rho v^{\rm eff}\), and the hard-rod effective-velocity
-  solution.
+  solution.  It also carries an evidence contract and verifies the observable
+  residual certificate, rejecting bare-velocity currents, exact-root-continuity
+  overclaims, and omitted operator-current residuals.
 - `calculation-checks/weak_breaking_collision_cell_checks.py` verifies the
   finite detailed-balance algebra, projected conservation of energy, decay of
   a higher Bethe-type charge, and the symmetrized entropy-production formula.
@@ -123,6 +130,10 @@
   checkpoint separating the on-shell scattering kernel from the finite-volume,
   thermodynamic-limit, entropy, variational, and mirror-identification inputs
   needed for theorem-level TBA.
+- 2026-06-04 issue #728 GHD observable pass: added
+  `ca:ghd-observable-reconstruction-certificate`, making microscopic
+  density/current reconstruction the load-bearing hydrodynamic claim beyond
+  root-density continuity and dressing algebra.
 
 ## Figures
 

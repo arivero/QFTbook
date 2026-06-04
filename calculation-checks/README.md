@@ -1912,7 +1912,10 @@ Current checks:
   Volume VI generalized-hydrodynamics bridge, including the finite-grid
   dressing equation, the equality of \(\sum h\rho v^{\rm eff}\) with the
   dressed-energy current expression, and the exact hard-rod
-  effective-velocity solution.
+  effective-velocity solution.  It also checks the observable-level residual
+  certificate separating Euler root-density closure from microscopic
+  density/current reconstruction, with negative controls against bare
+  velocities and omitted operator-current residuals.
 - `weak_breaking_collision_cell_checks.py`: finite collision-cell checks for
   the Volume VI weak-integrability-breaking kinetic layer, including
   detailed balance, exact conservation of projected energy, nonconservation

@@ -645,6 +645,83 @@ not this algebraic conservation check, but the scaling theorem that the
 microscopic inhomogeneous QFT actually converges to
 \eqref{eq:ghd-root-density-continuity}.
 
+\begin{controlledapproximation}[Observable certificate for Euler GHD]
+\label{ca:ghd-observable-reconstruction-certificate}
+The formulas
+\eqref{eq:ghd-root-density-continuity}--\eqref{eq:ghd-charge-current} are
+hydrodynamic observables only after microscopic local densities and currents
+have been matched to the local Bethe cell.  For a test function \(\chi(x)\)
+and a conserved charge \(h\), define the Euler-cell predictions
+\[
+  Q_h^{\rm GHD}[\chi;t]
+  =
+  \int dx\,\chi(x)
+  \sum_a\int d\theta\,h_a(\theta)\rho_a(x,t,\theta),
+\]
+and
+\[
+  J_h^{\rm GHD}[\chi;t]
+  =
+  \int dx\,\chi(x)
+  \sum_a\int d\theta\,
+  h_a(\theta)v_a^{\rm eff}(x,t,\theta)\rho_a(x,t,\theta).
+\]
+Let \(Q_{h,L}^{\rm mic}[\chi;t]\) and \(J_{h,L}^{\rm mic}[\chi;t]\) be the
+corresponding smeared microscopic density and current operators in the finite
+system.  A theorem-level GHD derivation must control the discrepancy
+\begin{equation}
+\begin{aligned}
+  \mathcal E_{h,L}^{\rm GHD}[\chi;t]
+  &=
+  \left|
+    \left\langle Q_{h,L}^{\rm mic}[\chi;t]\right\rangle
+    -
+    Q_h^{\rm GHD}[\chi;t]
+  \right| \\
+  &\quad+
+  \left|
+    \left\langle J_{h,L}^{\rm mic}[\chi;t]\right\rangle
+    -
+    J_h^{\rm GHD}[\chi;t]
+  \right|.
+\end{aligned}
+  \label{eq:ghd-observable-error}
+\end{equation}
+The useful certificate is not a new conserved charge; it is a residual ledger:
+\begin{equation}
+  \mathcal E_{h,L}^{\rm GHD}[\chi;t]
+  \le
+  \epsilon_{\rm cell}
+  +\epsilon_{\rm BY}
+  +\epsilon_{\rm dress}
+  +\epsilon_{\rm grad}
+  +\epsilon_{\rm op}
+  +\epsilon_{\rm diss}
+  +\epsilon_{\rm break}.
+  \label{eq:ghd-observable-residual-certificate}
+\end{equation}
+For the same test data and state family, \(\epsilon_{\rm cell}\) controls
+replacement of the microscopic state in each mesoscopic box by a local
+thermodynamic Bethe state;
+\(\epsilon_{\rm BY}\) controls finite-volume Bethe--Yang/counting errors;
+\(\epsilon_{\rm dress}\) controls stability of the inverse in
+\eqref{eq:ghd-dressing-equation}; \(\epsilon_{\rm grad}\) controls gradients
+discarded at Euler scale; \(\epsilon_{\rm op}\) controls the projection from
+microscopic local density and current operators to the chosen one-particle
+charge \(h_a(\theta)\); \(\epsilon_{\rm diss}\) controls diffusive, noise, and
+memory corrections; and \(\epsilon_{\rm break}\) controls inelastic or
+integrability-breaking channels.
+
+This is the point at which GHD becomes physics rather than a reformulation of
+TBA.  The bare velocity \(E'_a/p'_a\) is not the current velocity in an
+interacting thermodynamic cell; the collision shifts already encoded in
+\(\varphi\) change it to \(v_a^{\rm eff}\).  Conversely, even an exact solution
+of \eqref{eq:ghd-root-density-continuity} certifies only the quasiparticle
+density coordinate.  It does not by itself identify the microscopic current
+operator, remove finite-volume recurrences, control gradients, or exclude
+diffusive and inelastic corrections.
+\end{controlledapproximation}
+
 The formula for \(v^{\rm eff}\) is also the linearized counting formula for
 a dressed wave packet.  Insert a single quasiparticle into a thermodynamic
 cell and perturb the Bethe counting function.  The shift of available

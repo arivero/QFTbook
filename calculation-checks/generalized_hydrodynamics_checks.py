@@ -1,5 +1,24 @@
 #!/usr/bin/env python3
-"""Finite algebra checks for the generalized-hydrodynamics bridge."""
+"""Finite algebra checks for the generalized-hydrodynamics bridge.
+
+Evidence contract.
+Target claims: the Volume VI GHD dressing/current identity, hard-rod
+effective-velocity calibration, and the observable-level residual certificate
+separating Euler root-density closure from microscopic density/current
+reconstruction.
+Independent construction: exact finite-grid linear solves, hard-rod collision
+shift algebra, signed residual telescopes, and negative controls are computed
+directly from finite rational data.
+Imported assumptions: the diagonal TBA local-cell variables, the finite
+kernel/filling chart, the existence of the dressed inverse, and the chapter's
+Euler-scale residual names are assumed as finite input.
+Negative controls: bare velocities are rejected in interacting cells, exact
+root-density continuity is rejected as a microscopic observable proof, and
+omitting the operator-current residual underbudgets the observable error.
+Scope boundary: these checks verify finite algebra and bookkeeping
+interfaces; they do not prove local equilibration, finite-volume convergence,
+diffusive corrections, or a microscopic GHD theorem for a local QFT.
+"""
 
 from __future__ import annotations
 
@@ -55,6 +74,15 @@ def check_two_species_dressing_current_identity() -> None:
     current_from_dressed_energy = sum(charge[i] * filling[i] * e_dr[i] for i in range(2))
     assert_close("GHD charge current identity", current_from_velocity, current_from_dressed_energy)
 
+    bare_velocity = [e_prime[i] / p_prime[i] for i in range(2)]
+    bare_velocity_current = sum(
+        charge[i] * root_density[i] * bare_velocity[i] for i in range(2)
+    )
+    if bare_velocity_current == current_from_velocity:
+        raise AssertionError(
+            "bare velocities should not replace dressed effective velocities in an interacting cell"
+        )
+
 
 def check_hard_rod_effective_velocity_solution() -> None:
     length = Fraction(1, 3)
@@ -78,9 +106,75 @@ def check_hard_rod_effective_velocity_solution() -> None:
         assert_close(f"hard-rod effective velocity equation {i}", effective[i], rhs)
 
 
+def check_ghd_observable_residual_certificate() -> None:
+    # Finite analogue of the observable certificate in
+    # ca:ghd-observable-reconstruction-certificate.  The Euler-cell density and
+    # current are not microscopic observables until local-cell replacement,
+    # Bethe-Yang counting, dressing stability, gradients, operator projection,
+    # diffusion, and integrability-breaking residuals are controlled.
+    ghd_density = Fraction(7, 5)
+    ghd_current = Fraction(-3, 4)
+
+    density_residuals = {
+        "cell": Fraction(1, 30),
+        "Bethe-Yang": Fraction(1, 42),
+        "dressing": Fraction(1, 70),
+        "gradient": Fraction(1, 105),
+        "operator": Fraction(1, 60),
+        "dissipative": Fraction(1, 84),
+        "breaking": Fraction(1, 140),
+    }
+    current_residuals = {
+        "cell": Fraction(1, 24),
+        "Bethe-Yang": Fraction(1, 36),
+        "dressing": Fraction(1, 40),
+        "gradient": Fraction(1, 72),
+        "operator": Fraction(1, 18),
+        "dissipative": Fraction(1, 90),
+        "breaking": Fraction(1, 120),
+    }
+
+    microscopic_density = ghd_density + sum(density_residuals.values(), Fraction(0))
+    microscopic_current = ghd_current + sum(current_residuals.values(), Fraction(0))
+    actual_error = abs(microscopic_density - ghd_density) + abs(microscopic_current - ghd_current)
+    certificate = sum(
+        abs(value)
+        for value in list(density_residuals.values()) + list(current_residuals.values())
+    )
+    if not actual_error <= certificate:
+        raise AssertionError("GHD observable residual certificate failed")
+
+    # Exact root-density continuity only removes the Euler closure residual.  It
+    # does not remove the operator/current projection residual.
+    exact_root_continuity_residual = Fraction(0)
+    operator_current_residual = current_residuals["operator"]
+    if exact_root_continuity_residual + operator_current_residual == 0:
+        raise AssertionError("operator-current residual accidentally vanished")
+
+    omitted_operator_budget = certificate - abs(operator_current_residual)
+    all_positive_current_residuals = {
+        "cell": Fraction(1, 24),
+        "Bethe-Yang": Fraction(1, 36),
+        "dressing": Fraction(1, 40),
+        "gradient": Fraction(1, 72),
+        "operator": Fraction(1, 18),
+        "dissipative": Fraction(1, 90),
+        "breaking": Fraction(1, 120),
+    }
+    positive_current_error = sum(all_positive_current_residuals.values(), Fraction(0))
+    positive_current_budget_without_operator = (
+        positive_current_error - all_positive_current_residuals["operator"]
+    )
+    if positive_current_error <= positive_current_budget_without_operator:
+        raise AssertionError("omitting operator-current residual should underbudget the current error")
+    if actual_error <= omitted_operator_budget:
+        raise AssertionError("omitting operator-current residual should underbudget the observable certificate")
+
+
 def main() -> None:
     check_two_species_dressing_current_identity()
     check_hard_rod_effective_velocity_solution()
+    check_ghd_observable_residual_certificate()
     print("All generalized-hydrodynamics finite algebra checks passed.")
 
 

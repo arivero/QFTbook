@@ -54,6 +54,10 @@
       "risk_class": "integrable local-algebra reconstruction"
     },
     {
+      "path": "generalized_hydrodynamics_checks.py",
+      "risk_class": "integrable hydrodynamic reconstruction"
+    },
+    {
       "path": "inflow_anomaly_line_checks.py",
       "risk_class": "anomaly inflow"
     },
