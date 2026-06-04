@@ -56,8 +56,9 @@
   nondegenerate boundary two-point pairings, and Moore--Seiberg fusing
   isomorphisms satisfying the pentagon identity.
 - Defines boundary-condition-changing fields, writes the boundary OPE
-  coefficient tensor, and displays the Cardy--Lewellen four-boundary-field
-  sewing equation.
+  coefficient tensor, and displays the multiplicity-free scalar
+  Cardy--Lewellen four-boundary-field sewing equation while separating
+  boundary-field multiplicities from chiral fusion-intertwiner multiplicities.
 - Proves that in the diagonal Cardy case boundary-field multiplicities are
   fusion coefficients and that normalized fusing matrices reduce boundary
   sewing to the pentagon identity.
@@ -214,9 +215,10 @@
    carries a Verlinde character `S_i alpha/S_0 alpha`, and the unitary
    eigenvectors supply the boundary-state coefficients up to the universal
    `sqrt(S_0 alpha)` normalization.
-6. Boundary OPE coefficients depend on two-point normalization and block
-   bases, while the Cardy--Lewellen sewing equation is invariant under basis
-   changes.
+6. Boundary OPE coefficients depend on two-point normalization and, in the
+   general semisimple case, on chiral-intertwiner bases separate from
+   boundary-field multiplicity bases; the displayed scalar Cardy--Lewellen
+   equation is the multiplicity-free specialization.
 7. In the diagonal Cardy case, boundary-changing field multiplicities obey
    `dim psi_i^{ab}=N_ia^b`, and associativity of boundary OPEs is the
    Moore--Seiberg pentagon identity in boundary-field language.
@@ -335,7 +337,8 @@
   boundary-field counts, OPE endpoints, and stabilizer Fourier inversion,
   the annulus-shadow nonreconstruction check comparing semisimple and nilpotent
   endpoint-preserving algebras with the same annulus shadow,
-  boundary entropy squares, Ising
+  the boundary/chiral multiplicity-axis diagnostic separating boundary-field
+  labels from chiral fusion-intertwiner labels, boundary entropy squares, Ising
   boundary-changing fusing constants and OPE powers, the finite Ising
   four-boundary Cardy--Lewellen sewing cell, the \(A=1\)
   Frobenius-algebra module multiplicity formula, the matrix-unit Frobenius
@@ -544,9 +547,15 @@
   \(A_3\) Ising spectral-resolution/reflection-product check.
 - 2026-06-04 issue #755 editorial-flow pass: expanded the coordinate meaning
   of the Cardy--Lewellen boundary sewing equation.  The chapter no longer
-  hides the chiral-block dual-basis contractions behind a "standard pairing"
-  phrase; it states the \(s\)- and \(t\)-channel bases, identifies the fusing
-  matrix as the coordinate matrix of the associator, and explains why basis
-  changes act on the \(C\)-tensors and \(F\)-matrix through the corresponding
-  source and target change-of-basis matrices while leaving the associative
-  boundary-OPE statement invariant.
+  hides the coordinate contractions behind a "standard pairing" phrase; it
+  identifies the fusing matrix as the coordinate matrix of the chiral
+  associator and explains why the associative boundary-OPE statement is basis
+  invariant.
+- 2026-06-04 issue #763 multiplicity-axis repair: narrowed the displayed
+  Cardy--Lewellen scalar equation to multiplicity-free chiral fusion, kept
+  \(\mu,\eta\) as boundary-field multiplicity labels contracted by the
+  boundary two-point pairing, and stated the separate
+  \((p,r,s)\), \((q,t,u)\) chiral-intertwiner indices required in the general
+  semisimple case.  Extended `bcft_cardy_checks.py` with a dimension diagnostic
+  showing that the Ising cell is multiplicity-free and that boundary-field
+  multiplicity cannot be used as a chiral fusing-basis index.

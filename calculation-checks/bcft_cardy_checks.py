@@ -3,7 +3,8 @@
 
 Evidence contract.
 Target claims: the finite Cardy/Ishibashi coefficient, annulus, boundary OPE,
-and elementary sewing subclaims in the BCFT chapter.
+the multiplicity-free scalar Cardy-Lewellen coordinate chart, and elementary
+sewing subclaims in the BCFT chapter.
 Independent construction: exact Q(sqrt(2)) arithmetic, Laurent-polynomial
 character operations, finite annulus matrices, and explicit boundary-field
 counting are computed independently from the candidate Cardy labels.
@@ -11,11 +12,13 @@ Imported assumptions: the chosen Ising modular datum, topological defect and
 boundary-label conventions, and finite character truncation used in the
 chapter's examples.
 Negative controls: inconsistent annulus multiplicities, wrong label
-identifications, and boundary-changing channel counts are tested by exact
-integer/nonnegative constraints.
+identifications, boundary-changing channel counts, and a finite diagnostic in
+which boundary-field multiplicity differs from chiral fusion multiplicity are
+tested by exact integer/nonnegative constraints.
 Scope boundary: a pass checks finite rational-model bookkeeping; it does not
 prove the full Cardy-Lewellen sewing theorem, nonrational BCFT completeness,
-analytic convergence, or existence of a continuum boundary CFT.
+analytic convergence, non-multiplicity-free fusing matrices, or existence of a
+continuum boundary CFT.
 """
 
 from __future__ import annotations
@@ -1501,8 +1504,130 @@ def check_ising_boundary_changing_constants() -> None:
     )
 
 
+@dataclass(frozen=True)
+class SewingChannelAxes:
+    boundary_field_multiplicity: int
+    left_chiral_multiplicity: int
+    right_chiral_multiplicity: int
+
+    @property
+    def chiral_block_dimension(self) -> int:
+        return self.left_chiral_multiplicity * self.right_chiral_multiplicity
+
+    @property
+    def full_channel_term_count(self) -> int:
+        return self.boundary_field_multiplicity * self.chiral_block_dimension
+
+
+def channel_chiral_dimension(channels: tuple[SewingChannelAxes, ...]) -> int:
+    return sum(channel.chiral_block_dimension for channel in channels)
+
+
+def channel_boundary_dimension(channels: tuple[SewingChannelAxes, ...]) -> int:
+    return sum(channel.boundary_field_multiplicity for channel in channels)
+
+
+def channel_full_term_count(channels: tuple[SewingChannelAxes, ...]) -> int:
+    return sum(channel.full_channel_term_count for channel in channels)
+
+
+def scalar_fusing_chart_applies(channels: tuple[SewingChannelAxes, ...]) -> bool:
+    return all(channel.chiral_block_dimension == 1 for channel in channels)
+
+
+def check_boundary_and_chiral_multiplicity_axes_are_separate() -> None:
+    """Check the finite dimension bookkeeping behind the scalar sewing formula."""
+
+    ising_cell = (
+        SewingChannelAxes(
+            boundary_field_multiplicity=1,
+            left_chiral_multiplicity=1,
+            right_chiral_multiplicity=1,
+        ),
+        SewingChannelAxes(
+            boundary_field_multiplicity=1,
+            left_chiral_multiplicity=1,
+            right_chiral_multiplicity=1,
+        ),
+    )
+    assert_equal(
+        "Ising cell is multiplicity-free in the chiral block axis",
+        scalar_fusing_chart_applies(ising_cell),
+        True,
+    )
+    assert_equal(
+        "Ising scalar sewing cell has two chiral basis lines",
+        channel_chiral_dimension(ising_cell),
+        2,
+    )
+    assert_equal(
+        "Ising boundary and chiral counts agree only accidentally",
+        channel_boundary_dimension(ising_cell),
+        channel_chiral_dimension(ising_cell),
+    )
+
+    boundary_rich_cell = (
+        SewingChannelAxes(
+            boundary_field_multiplicity=2,
+            left_chiral_multiplicity=1,
+            right_chiral_multiplicity=1,
+        ),
+    )
+    assert_equal(
+        "boundary multiplicity does not enlarge the chiral fusing source",
+        channel_chiral_dimension(boundary_rich_cell),
+        1,
+    )
+    assert_equal(
+        "boundary contraction still has two intermediate boundary fields",
+        channel_boundary_dimension(boundary_rich_cell),
+        2,
+    )
+    if channel_boundary_dimension(boundary_rich_cell) == channel_chiral_dimension(
+        boundary_rich_cell
+    ):
+        raise AssertionError(
+            "boundary-field labels were misread as chiral basis labels"
+        )
+    assert_equal(
+        "scalar F still applies with boundary multiplicity "
+        "and multiplicity-free chiral fusion",
+        scalar_fusing_chart_applies(boundary_rich_cell),
+        True,
+    )
+
+    fusion_rich_cell = (
+        SewingChannelAxes(
+            boundary_field_multiplicity=1,
+            left_chiral_multiplicity=2,
+            right_chiral_multiplicity=1,
+        ),
+    )
+    assert_equal(
+        "nontrivial chiral fusion multiplicity enlarges "
+        "the associator source",
+        channel_chiral_dimension(fusion_rich_cell),
+        2,
+    )
+    assert_equal(
+        "boundary labels alone miss the fusion-multiplicity axis",
+        channel_boundary_dimension(fusion_rich_cell),
+        1,
+    )
+    assert_equal(
+        "scalar F chart rejects a fusion-multiplicity cell",
+        scalar_fusing_chart_applies(fusion_rich_cell),
+        False,
+    )
+    assert_equal(
+        "full channel terms carry both boundary and chiral axes",
+        channel_full_term_count(fusion_rich_cell),
+        2,
+    )
+
+
 def check_ising_four_boundary_sewing_cell() -> None:
-    """Check the finite Cardy-Lewellen sewing cell in the Ising example."""
+    """Check the multiplicity-free Cardy-Lewellen sewing cell in Ising."""
 
     row_vectors = {
         "+": (INV_SQRT2, INV_SQRT2),
@@ -1941,6 +2066,7 @@ def main() -> None:
     check_boundary_gradient_monotonicity_from_metric()
     check_chan_paton_direct_sums()
     check_ising_boundary_changing_constants()
+    check_boundary_and_chiral_multiplicity_axes_are_separate()
     check_ising_four_boundary_sewing_cell()
     check_compact_boson_zero_mode_duality()
     check_liouville_fzzt_zz_hyperbolic_identity()
@@ -1952,6 +2078,7 @@ def main() -> None:
     print(
         "All BCFT Cardy, oriented-annulus, sewing, boundary-gradient, "
         "Ising boundary-changing, "
+        "boundary/chiral-multiplicity-separation, "
         "matrix-Frobenius, finite-center, pointed-nimrep, Chan-Paton, "
         "annulus-nimrep-spectral-resolution, "
         "pointed-annulus-Fourier, pointed-boundary-OPE, "

@@ -1312,12 +1312,14 @@ Current checks:
   check tying annulus entries to boundary-field counts, OPE endpoints, and
   stabilizer Fourier inversion, the annulus-shadow nonreconstruction check
   comparing semisimple and nilpotent endpoint-preserving algebras with the same
-  annulus matrices, boundary
+  annulus matrices, the boundary/chiral multiplicity-axis diagnostic separating
+  boundary-field labels from chiral fusion-intertwiner labels, boundary
   entropy squares, Chan--Paton direct sums, the positive spectral
   weight and finite monotonicity contraction in the boundary-entropy gradient
   metric, compact-boson T-duality zero modes,
   Ising boundary-changing fusing constants and OPE powers, the finite
-  four-boundary Cardy--Lewellen sewing cell, and the Liouville FZZT/ZZ
+  multiplicity-free four-boundary Cardy--Lewellen sewing cell, and the
+  Liouville FZZT/ZZ
   hyperbolic identities used in the nonrational boundary-state discussion,
   plus the finite cyclic regulator for the continuous annulus Plancherel
   quotient \(s\sim -s\) and the exact simple-pole residue/evaluation algebra

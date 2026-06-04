@@ -657,9 +657,10 @@ boundary conditions \(a,b,c\), the boundary OPE has the form
   \label{eq:boundary-changing-ope}
 \end{equation}
 The coefficient is not just a number attached to three labels; it depends on
-normalizations of boundary two-point functions and on a choice of basis in
-each chiral block space.  A change of those bases conjugates the coefficient
-tensors, while the sewing equations below are invariant statements.
+normalizations of boundary two-point functions and, when a chiral fusion space
+has dimension larger than one, on a separate choice of chiral-intertwiner
+basis.  A change of those bases conjugates the coefficient tensors, while the
+sewing equations below are invariant statements.
 
 For four boundary fields on a disk, with boundary conditions
 \[
@@ -668,8 +669,8 @@ For four boundary fields on a disk, with boundary conditions
 \]
 there are two ways to perform the OPE.  In a rational theory the two chiral
 decompositions are related by the fusing matrix \(F\).  The resulting
-Cardy--Lewellen boundary sewing equation, written in the chiral-block
-coordinate convention described below, is
+Cardy--Lewellen boundary sewing equation has the following scalar-coordinate
+form when the four chiral fusion spaces in the cell are multiplicity-free:
 \begin{align}
   &\sum_{p,\mu}
   C\!\begin{bmatrix} a&b&c\\ i&j&p \end{bmatrix}_{\alpha\beta}^{\mu}
@@ -683,24 +684,39 @@ coordinate convention described below, is
   \label{eq:cardy-lewellen-boundary-sewing}
 \end{align}
 The displayed formula is a coordinate expression for an equality of chiral
-blocks, not a scalar identity independent of bases.  For each intermediate
-label \(p\), choose a basis \(e_{p,\mu}\) of the \(s\)-channel block space
-and the dual basis \(e^{p,\mu}\) of its dual; similarly choose
-\(t\)-channel bases \(f_{q,\eta}\).  The fusing matrix is the coordinate
-matrix of the associator
+blocks, not a scalar identity independent of bases.  The indices \(\mu\) and
+\(\eta\) are boundary-field multiplicity labels: the sum over them is the
+composition of boundary OPE tensors, with the boundary two-point pairing used
+to identify the intermediate field space with its dual.  In a nonorthonormal
+boundary basis, the displayed repeated-index convention inserts the inverse
+two-point metric \(g^{(ac,p)}_{\mu\nu}\), and similarly in the \(q\)-channel.
+The multiplicity-free chiral block coordinates are instead basis lines
+\(e_p\) and \(f_q\), and the fusing matrix is the coordinate matrix of the
+associator
 \[
-  F:\bigoplus_{p}\operatorname{span}\{e_{p,\mu}\}
+  F:\bigoplus_{p}\operatorname{span}\{e_p\}
   \longrightarrow
-  \bigoplus_{q}\operatorname{span}\{f_{q,\eta}\}.
+  \bigoplus_{q}\operatorname{span}\{f_q\}.
 \]
 The left side of \eqref{eq:cardy-lewellen-boundary-sewing} first contracts the
-two boundary-OPE tensors against the \(s\)-channel dual basis and then applies
-this associator; the right side gives the same vector's coordinates in the
-\(t\)-channel basis after the other OPE ordering.  If the chiral-block bases
-are changed, the \(C\)-tensors and \(F\)-matrix transform by the corresponding
-source and target change-of-basis matrices, so the equality is really the
-statement that boundary OPE coefficients form an associative multiplication
-object in the chiral tensor category.
+two boundary-OPE tensors through the boundary two-point duality and then
+applies this chiral associator; the right side gives the same vector's
+coordinates after the other OPE ordering.  If the chiral fusion has
+multiplicity, the label \(p\) must be refined to
+\((p,r,s)\), with
+\(r\in\operatorname{Hom}(i\otimes j,p)\) and
+\(s\in\operatorname{Hom}(p\otimes k,\ell)\), and similarly
+\(q\) to \((q,t,u)\).  Then \(F_{pq}\) is replaced by the full matrix
+\[
+  F_{(p,r,s),(q,t,u)}
+  \!\begin{bmatrix} i&j\\ k&\ell \end{bmatrix},
+\]
+and the OPE tensors carry these chiral-intertwiner indices separately from the
+boundary-field labels \(\alpha,\beta,\gamma,\delta,\mu,\eta\).  The scalar
+formula \eqref{eq:cardy-lewellen-boundary-sewing} is the
+multiplicity-free specialization used by the diagonal Ising cell below; the
+general semisimple mechanism is the module-associativity formulation developed
+later in this chapter.
 
 \paragraph{Cardy boundary fields from fusion.}
 In the diagonal Cardy solution, the multiplicity of boundary primaries from
