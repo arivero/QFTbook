@@ -162,6 +162,23 @@ Language is for lightweight symbolic convention checks and reader-facing
 algebra.  Use `QFT_SKIP_WOLFRAM=1 tools/run_calculation_checks.sh` only for an
 explicitly Python-only pass, never as verification of a touched `.wl` file.
 
+For release candidates, do not confuse a clean build with a release signoff.
+Run the aggregate local gate
+
+```bash
+tools/verify_release.sh
+```
+
+after the working tree is clean.  It records the Git revision, dirty-state
+check, tool versions, selected verification Python, dossier and figure-structure
+audits, evidence-contract audit, full calculation-check runner, monograph build,
+PDF integrity, PDF page count/hash, figure count, and command logs in
+timestamped JSON and Markdown manifests under
+`monograph/tex/build/release_verification/`.  Add
+`--rendered-figures` for a full rendered figure-page regeneration and
+`--qft-scripts-smoke` for the public numerical smoke suite; skipped optional
+passes are recorded explicitly in the manifest.
+
 ## Stage 6: Cross-Chapter Audit
 
 Check:

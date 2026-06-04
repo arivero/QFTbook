@@ -805,6 +805,21 @@ Only chapters that pass this harness may be included in the compiled
 manuscript. Draft files may remain on disk but must stay out of volume include
 files.
 
+The fast compilation gate is `tools/build_monograph.sh`.  A release candidate
+requires the aggregate local gate
+
+```bash
+tools/verify_release.sh
+```
+
+from a clean working tree.  The release gate writes revision-stamped JSON and
+Markdown manifests in `monograph/tex/build/release_verification/`, records tool
+versions, selected Python, dirty state, PDF page count/hash, figure count, and
+per-command logs, and fails on mandatory audit/build/check failures.  Use
+`--rendered-figures` and `--qft-scripts-smoke` only when those expensive
+optional passes are part of the release candidate under review; their skipped
+state is otherwise recorded explicitly.
+
 ## Audit Questions
 
 - What is the framework?

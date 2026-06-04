@@ -419,7 +419,7 @@ accompanying chapter states and proves the finite claim being checked.
 
 ## Quality Gates
 
-Before a manuscript change is considered ready:
+For ordinary edit readiness, use the fast local gate:
 
 1. Run `tools/build_monograph.sh`.
 2. Check that the strict monograph text audit is clean.
@@ -430,6 +430,27 @@ Before a manuscript change is considered ready:
    the relevant script in `calculation-checks/`.
 6. For edits to public numerical companion scripts, run
    `tools/run_qft_scripts_smoke.sh` or the edited script's smoke mode.
+
+For a release candidate, run the aggregate local gate instead:
+
+```bash
+tools/verify_release.sh
+```
+
+This writes timestamped JSON and Markdown manifests under
+`monograph/tex/build/release_verification/`, recording the Git revision and
+dirty state, tool versions, selected verification Python, mandatory audit/build
+results, PDF page count and SHA-256, figure count, command logs, and skipped or
+selected optional passes.  Add
+
+```bash
+tools/verify_release.sh --rendered-figures --qft-scripts-smoke
+```
+
+when the release pass should also regenerate rendered figure-page artifacts and
+run the public numerical smoke suite.  A clean release signoff should not use
+`--allow-dirty`; that flag is only for diagnosing the gate while local edits are
+present.
 
 The planning layer records additional writing standards and audit procedures.
 
