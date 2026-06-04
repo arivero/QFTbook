@@ -64,6 +64,10 @@ and
   `c_{i,Lambda}`: finite-regulator one-vortex chart, nonzero-mode
   determinant ratio, zero-mode Berezin coefficient for the twisted
   `F`-term measure, and regulated vortex coefficient.
+- `D_{F,i,Lambda}`, `Pi_univ`, `K^{res}_{i,Lambda}`,
+  `nu^{res}_{i,Lambda}`: vortex-sector fermion Hessian, universal
+  two-dimensional zero-mode pair, residual fermion-zero-mode space, and its
+  dimension after the universal `d^2 theta_tilde` pair is removed.
 - `Y_P`, `rho`, `vartheta`, `u`, `chi`, `k`: logarithmic-chiral dual
   variable, polar coordinate for the charged chiral scalar, angular
   coordinate, real and periodic parts of `P`, and cigar level parameter.
@@ -143,6 +147,12 @@ and
   the twisted `F`-term measure, possible extra zero-mode saturation, and
   collective-coordinate integration.  This makes the Hori--Vafa exponential
   term a rechecked amplitude datum in the chapter's conventions.
+- Adds the vortex zero-mode filter for twisted `F`-terms: after the two
+  universal fermion zero modes are identified with `d^2 theta_tilde`, the
+  residual Berezin integral extracts the top residual Grassmann degree, so the
+  uninserted vortex superpotential term vanishes unless no residual zero modes
+  remain.  This isolates the physical amplitude gate behind the compact mirror
+  monomial.
 - Derives that a general connected holomorphic correction
   `h_i(X_i)`, `X_i=exp(-Y_i)`, is forced to be the primitive monomial
   `mu c_i X_i` if the eliminated branch is required to reproduce the
@@ -248,6 +258,9 @@ and
   - primitive mirror monomial selection from exact Coulomb matching, showing
     that higher connected harmonics spoil the branch identity
     `X_i(M_i)=M_i/(mu c_i)`;
+  - vortex zero-mode filter: residual Berezin saturation, vanishing of the
+    uninserted twisted `F`-term when extra residual zero modes remain, and
+    removal of the two universal modes into the superspace measure;
   - single-vortex amplitude assembly: zero-mode removal before determinant
     formation, determinant-power bookkeeping, survival of the saturated
     twisted `F`-term zero-mode coefficient, vanishing with extra unsaturated
@@ -299,3 +312,8 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   Hessian/residue trace behind the `P^{N-1}` A-model selection rule and records
   the remaining physics inputs needed before using Hori--Vafa as a full QFT
   equivalence theorem.
+- The 2026-06-03 vortex zero-mode filter pass advances the same physics-first
+  instanton standard by separating the universal `d^2 theta_tilde` pair from
+  residual fermion zero modes and proving the Berezin saturation criterion
+  that decides whether the regulated vortex sector can generate a twisted
+  superpotential term at all.

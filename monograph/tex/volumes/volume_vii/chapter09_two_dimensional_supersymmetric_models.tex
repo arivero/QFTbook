@@ -1010,6 +1010,69 @@ modes leave precisely the twisted \(F\)-term measure, prove
 \(c_i\neq0\), and justify that possible higher connected harmonics do not
 contribute in the protected coordinate being matched.
 
+\begin{proposition}[Vortex zero-mode filter for twisted \(F\)-terms]
+\label{prop:glsm-vortex-zero-mode-filter}
+In the finite-regulator charge-one sector used below, let
+\(\mathcal D_{F,i,\Lambda}(z)\) be the fermion Hessian at a vortex
+configuration \(z\).  Assume its kernel has been split as
+\[
+  \ker \mathcal D_{F,i,\Lambda}(z)
+  =
+  \Pi_{\rm univ}(z)\oplus K^{\rm res}_{i,\Lambda}(z),
+  \qquad
+  \dim \Pi_{\rm univ}=2,
+\]
+where \(\Pi_{\rm univ}\) is the universal pair identified with the
+\(d^2\widetilde\theta\) measure.  Let
+\[
+  \nu^{\rm res}_{i,\Lambda}(z)=\dim K^{\rm res}_{i,\Lambda}(z).
+\]
+After the universal pair has been removed, the residual fermion-zero-mode
+coefficient has the Berezin form
+\begin{equation}
+  \mathcal Z^0_{i,F,\Lambda}(z;P)
+  =
+  \int
+  \prod_{\alpha=1}^{\nu^{\rm res}_{i,\Lambda}(z)} \dd\eta_\alpha\,
+  P_{\rm ins}(z,\eta),
+  \label{eq:glsm-vortex-berezin-zero-mode-filter}
+\end{equation}
+where \(P_{\rm ins}\) denotes insertions or regulator-allowed zero-mode
+liftings.  Hence the charge-one sector can contribute to the uninserted
+twisted superpotential only on the locus
+\[
+  \nu^{\rm res}_{i,\Lambda}(z)=0 .
+\]
+If \(\nu^{\rm res}_{i,\Lambda}(z)>0\) and no insertion or lifting supplies the
+missing residual Grassmann degree, then
+\(\mathcal Z^0_{i,F,\Lambda}(z;1)=0\).  The nonzero-mode determinant entering
+the coefficient is therefore the determinant on the complement of the full
+kernel of \(\mathcal D_{F,i,\Lambda}(z)\), not the raw determinant before
+zero-mode removal.
+\end{proposition}
+
+\begin{proof}
+The two universal zero modes are coordinates on the superspace measure of the
+twisted \(F\)-term, so they are not integrated into the scalar coefficient.
+All remaining fermion zero modes are ordinary Grassmann variables in the
+finite stationary-phase integral.  Berezin integration extracts the coefficient
+of the top exterior monomial
+\(\eta_1\cdots\eta_{\nu^{\rm res}_{i,\Lambda}(z)}\).  If the insertion
+polynomial has smaller residual Grassmann degree, that coefficient is absent
+and the integral vanishes.  With no insertion or lifting, the polynomial is
+constant, so the only nonzero case is
+\(\nu^{\rm res}_{i,\Lambda}(z)=0\).  Removing the full kernel before forming
+the determinant is the same collective-coordinate separation on the fermionic
+side as the bosonic zero-mode quotient in the vortex measure.
+\end{proof}
+
+This is the amplitude gate hidden behind the compact mirror formula.  The
+integer vortex number fixes the exponential \(e^{-Y_i}\), and Coulomb matching
+fixes the primitive harmonic once a nonzero coefficient is present.  Neither
+step proves that the regulated vortex sector has exactly the two universal
+fermion zero modes or that its determinant line has been oriented
+consistently.
+
 \begin{proposition}[Single-vortex coefficient as a protected amplitude]
 \label{prop:glsm-single-vortex-exponential-amplitude}
 Fix one charged chiral multiplet \(\Phi_i\) in the abelian GLSM and choose a
@@ -1023,7 +1086,9 @@ collective-coordinate coordinates \(z\).  Write
 ratio in that vortex background, and
 \(\mathcal Z_{i,F,\Lambda}^{0}(z)\) for the Berezin coefficient left after
 the two universal fermion zero modes have been identified with
-\(d^2\widetilde\theta\).  Then the charge-one sector contributes to the
+\(d^2\widetilde\theta\), as filtered by
+Proposition~\ref{prop:glsm-vortex-zero-mode-filter}.  Then the charge-one
+sector contributes to the
 Wilsonian twisted \(F\)-term in the form
 \begin{equation}
   \Delta\widetilde W_{i,\Lambda}^{(1)}(Y_i)

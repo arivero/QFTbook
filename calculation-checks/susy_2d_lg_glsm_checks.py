@@ -459,6 +459,37 @@ def check_mirror_primitive_monomial_selection() -> None:
             raise AssertionError("higher mirror harmonic should spoil exact Coulomb matching")
 
 
+def check_vortex_zero_mode_filter() -> None:
+    # After the two universal zero modes have been identified with the twisted
+    # F-term measure, the residual Berezin integral extracts the top exterior
+    # degree.  Without insertions, only zero residual modes survive.
+    def survives(residual_zero_modes: int, insertion_degree: int) -> bool:
+        return insertion_degree == residual_zero_modes
+
+    for residual_zero_modes in range(0, 7):
+        assert_equal(
+            f"uninserted vortex F-term survives iff no residual zero modes {residual_zero_modes}",
+            survives(residual_zero_modes, 0),
+            residual_zero_modes == 0,
+        )
+        for insertion_degree in range(0, 7):
+            assert_equal(
+                f"vortex Berezin top-degree saturation r={residual_zero_modes} d={insertion_degree}",
+                survives(residual_zero_modes, insertion_degree),
+                insertion_degree == residual_zero_modes,
+            )
+
+    # Universal zero modes are removed into d^2 theta_tilde before the scalar
+    # coefficient is formed; residual modes are the only Grassmann degree left
+    # for the coefficient integral.
+    total_fermion_zero_modes = 6
+    universal_twisted_f_modes = 2
+    residual_zero_modes = total_fermion_zero_modes - universal_twisted_f_modes
+    assert_equal("vortex residual zero-mode count", residual_zero_modes, 4)
+    assert_equal("residual insertions saturate Berezin integral", survives(4, 4), True)
+    assert_equal("missing residual insertion kills Berezin integral", survives(4, 3), False)
+
+
 def check_single_vortex_amplitude_assembly() -> None:
     # Finite charge-one vortex sector: remove bosonic collective-coordinate
     # zero modes before forming the determinant ratio.
@@ -734,6 +765,7 @@ def main() -> None:
     check_charged_chiral_dual_elimination()
     check_all_rank_vortex_fi_coordinate_shift()
     check_mirror_primitive_monomial_selection()
+    check_vortex_zero_mode_filter()
     check_single_vortex_amplitude_assembly()
     check_cp_mirror_critical_ledger()
     check_cp_mirror_residue_correlators()
