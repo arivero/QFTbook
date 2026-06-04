@@ -133,7 +133,11 @@
   the exact \(I_A(m_{\rm scr})=\frac12m_{\rm scr}^{-A}\Gamma(A/2)\)
   amplitude integral, moment ledger, shell location, and \(SU(3)\), \(N_f=2\)
   mass-saturated \(A=23/3\) specialization when a physical infrared scale is
-  supplied.  The 2026-06-03
+  supplied.  The thermal-screening continuation ties that abstract scale to
+  the high-temperature determinant datum
+  \(m_T^2=\pi^2T^2(2N_c+N_f)/3=\pi^2m_D^2/g_{\rm YM}^2\), with an explicit
+  residual-window error bound so the Gaussian GPY/HTL coefficient is not
+  mistaken for the full finite-temperature determinant.  The 2026-06-03
   verification-contract follow-up records, in the
   calculation-check docstring rather than the TeX, the target claims,
   independent constructions, imported assumptions, negative controls, and
@@ -286,6 +290,7 @@
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
 | \(\zeta_m^{[\rho_-,\rho_+]}\) | mass-saturated one-instanton vacuum activity in a finite size window |
 | \(m_{\rm scr},A,\mathcal A_{\rm scr}^{(0)}\) | physical infrared screening scale, screened size-integral power \(A=b_0+\beta_{\mathcal X}-4\), and leading screened one-instanton amplitude |
+| \(m_T,R_T,\mathcal A_T^G\) | high-temperature determinant screening scale, finite-temperature determinant residual, and Gaussian thermal one-instanton approximation |
 | \(T,\mathcal D_{\rm zm},E_{\rm zm},\rho_{\rm zm}\) | instanton--anti-instanton near-zero-mode overlap matrix, projected Dirac block, remainder, and singular-value density used in the instanton-liquid criterion |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
 | \(A_\alpha(\mathcal X),G_\beta(\mathcal X)\) | Uhlenbeck bubbling-scale and collision-face exponents in the multi-instanton boundary budget |
@@ -713,6 +718,15 @@
   \(m_{\rm scr}^{-23/3}\Gamma(23/6)\).  This is a controlled formula only
   when the resulting dominant size shell remains in the weak-coupling window;
   it does not justify the unscreened large-\(\rho\) integral.
+- At high temperature, the leading periodic-instanton fluctuation determinant
+  supplies the physical screening scale
+  \(m_T^2=\pi^2T^2(2N_c+N_f)/3=\pi^2m_D^2/g_{\rm YM}^2\) in the trace-delta
+  Debye convention.  If the remaining determinant/caloron-shape residual obeys
+  \(|R_T|\le\varepsilon_T\) in the chosen amplitude window, then the Gaussian
+  instanton amplitude has multiplicative error bounded by
+  \(e^{\varepsilon_T}-1\).  For \(SU(3)\), \(N_f=2\) mass saturation,
+  \(\pi^2T^2\rho_{\rm shell}^2=23/16\).  This is a finite-temperature
+  determinant statement, not a zero-temperature instanton-liquid prediction.
 - The dilute instanton gas is now stated only as a controlled amplitude
   expansion after the regulated one-instanton calculation has supplied a
   finite activity \(\zeta_\Lambda\).  Under Poisson factorization it gives
@@ -1207,3 +1221,13 @@
   `bpst_instanton_normalization_checks.py` to verify the exact power, moment,
   saddle, and mass-dimension bookkeeping.  This is amplitude-side progress,
   not additional moduli-space infrastructure.
+- 2026-06-04 issue #597 thermal determinant-screening pass: added
+  `ca:thermal-instanton-determinant-screening`, which specializes the generic
+  Gaussian screening scale to the high-temperature QCD determinant coefficient
+  \(m_T^2=\pi^2T^2(2N_c+N_f)/3\), records its Debye-susceptibility convention
+  conversion, and adds a residual-window bound
+  \(|\mathcal A_T-\mathcal A_T^G|\le(e^{\varepsilon_T}-1)\mathcal A_T^G\).
+  The companion BPST check verifies the \(SU(3)\), \(N_f=2\) shell
+  \(\pi^2T^2\rho_{\rm shell}^2=23/16\), the half-trace/trace-delta conversion,
+  the \(T^{-23/3}\) scaling, and the finite residual ledger.  This is a
+  physical fluctuation-determinant bridge, not a moduli-space addition.

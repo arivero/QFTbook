@@ -6815,6 +6815,87 @@ come from differentiating
 \(b_0=29/3\) and \(\beta_{\mathcal X}=2\).
 \end{proof}
 
+\begin{controlledapproximation}[Thermal determinant screening of the size integral]
+\label{ca:thermal-instanton-determinant-screening}
+Consider weak-coupling finite-temperature \(SU(N_c)\) QCD with \(N_f\) light
+Dirac fundamentals and a one-instanton amplitude channel whose zero-temperature
+small-size density has the form used in
+Proposition~\ref{prop:screened-one-instanton-size-integral}.  The leading
+high-temperature fluctuation determinant around the periodic one-instanton
+background supplies the Gaussian size weight
+\begin{equation}
+  K_T(\rho)
+  =
+  K_0\,\rho^{A-1}
+  \exp[-m_T^2\rho^2]\,
+  \exp[R_T(\rho)],
+  \qquad
+  m_T^2=\pi^2T^2\,\frac{2N_c+N_f}{3}.
+  \label{eq:thermal-instanton-screening-density}
+\end{equation}
+Here \(R_T\) denotes the nonquadratic finite-temperature determinant and
+caloron-shape remainder in the same regulator and source convention.  In the
+trace-delta coupling convention of
+Chapter~\ref{ch:thermal-gauge-theory-screening},
+\eqref{eq:one-loop-debye-mass-general} gives
+\[
+  \frac{m_D^2}{g_{\rm YM}^2}
+  =
+  T^2\,\frac{2N_c+N_f}{3}
+\]
+for fundamental Dirac matter, so \(m_T^2=\pi^2m_D^2/g_{\rm YM}^2\).  The
+thermal instanton cutoff is therefore a determinant response of the plasma,
+not a classical bound on the BPST moduli space.
+
+If the chosen amplitude window controls the residual by
+\[
+  |R_T(\rho)|\le\varepsilon_T ,
+\]
+then the Gaussian approximation
+\begin{equation}
+  \mathcal A_T^{G}
+  =
+  \frac{K_0}{2}
+  \left(\pi^2T^2\frac{2N_c+N_f}{3}\right)^{-A/2}
+  \Gamma\!\left(\frac A2\right)
+  \label{eq:thermal-instanton-gaussian-amplitude}
+\end{equation}
+has the multiplicative error bound
+\begin{equation}
+  \left|\mathcal A_T-\mathcal A_T^{G}\right|
+  \le
+  \bigl(\ee^{\varepsilon_T}-1\bigr)\mathcal A_T^{G}
+  \label{eq:thermal-instanton-residual-bound}
+\end{equation}
+whenever the same size window contains the support of the amplitude.  The
+leading thermal size moments are the moments in
+\eqref{eq:screened-one-instanton-size-moments} with \(m_{\rm scr}=m_T\).
+For the mass-saturated \(SU(3)\), \(N_f=2\) vacuum channel,
+\[
+  m_T^2=\frac83\pi^2T^2,\qquad
+  A=\frac{23}{3},
+\]
+so
+\begin{equation}
+  \mathcal A_T^{G}
+  =
+  \frac{K_0}{2}
+  \left(\frac83\pi^2T^2\right)^{-23/6}
+  \Gamma\!\left(\frac{23}{6}\right),
+  \qquad
+  \pi^2T^2\langle\rho^2\rangle_G
+  =
+  \pi^2T^2\rho_{\rm shell}^2
+  =
+  \frac{23}{16}.
+  \label{eq:thermal-su3-nf2-screened-instanton}
+\end{equation}
+The formula is useful only in a regime where the periodic-instanton determinant,
+the residual \(R_T\), and the source or volume limits are controlled.  Near the
+thermal transition, or in zero-temperature QCD after sending \(T\to0\), it
+does not replace the large-size dynamics by a semiclassical prediction.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Dilute instanton gas as an amplitude expansion]
 \label{ca:dilute-instanton-gas-amplitude}
 Suppose the regulated one-instanton and one-anti-instanton amplitudes obtained

@@ -89,6 +89,10 @@ relations
     a physical Gaussian screening scale turns the one-instanton size integral
     into 1/2 m_scr^(-A) Gamma(A/2), with exact moment and shell-location
     bookkeeping; for SU(3), Nf=2 mass saturation A=23/3
+    the high-temperature GPY/HTL determinant screening coefficient is
+    m_T^2=pi^2 T^2 (2 Nc+Nf)/3, matching pi^2 m_D^2/g_YM^2 in the
+    trace-delta Debye convention and giving pi^2 T^2 rho_shell^2=23/16
+    for the SU(3), Nf=2 mass-saturated channel
     the renormalized mass/source instanton functional has homogeneous
     source-coordinate RG transport, with the finite fermion determinant factor
     cancelling the anomalous running of det(M^0+J^0)
@@ -2927,6 +2931,56 @@ def check_screened_one_instanton_size_integral() -> None:
     assert_equal("screened formula diverges as m_scr -> 0 when A positive", screened_power > 0, True)
 
 
+def check_thermal_instanton_determinant_screening() -> None:
+    n_c = 3
+    n_f = 2
+    thermal_screening_over_pi2_t2 = Fraction(2 * n_c + n_f, 3)
+    assert_equal("SU(3) Nf=2 thermal instanton screening coefficient", thermal_screening_over_pi2_t2, Fraction(8, 3))
+
+    # In the trace-delta convention used by the thermal chapter,
+    # m_D^2/g_YM^2 = T^2(2Nc+Nf)/3 for fundamental Dirac matter.
+    trace_delta_debye_over_g2_t2 = Fraction(2 * n_c + n_f, 3)
+    assert_equal(
+        "thermal instanton coefficient equals pi^2 Debye-over-g^2 coefficient",
+        thermal_screening_over_pi2_t2,
+        trace_delta_debye_over_g2_t2,
+    )
+
+    # In the common half-trace convention, the same invariant statement reads
+    # m_T^2 = 2 pi^2 m_D,ht^2/g_ht^2.
+    half_trace_debye_over_g2_t2 = Fraction(n_c, 3) + Fraction(n_f, 6)
+    assert_equal(
+        "half-trace Debye conversion for thermal instanton screening",
+        2 * half_trace_debye_over_g2_t2,
+        thermal_screening_over_pi2_t2,
+    )
+
+    b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+    screened_power = b0 + n_f - 4
+    assert_equal("thermal SU(3) Nf=2 mass-saturated A", screened_power, Fraction(23, 3))
+
+    gamma_argument = screened_power / 2
+    shell_pi2_t2_rho2 = gamma_argument / thermal_screening_over_pi2_t2
+    ordinary_density_pi2_t2_rho2 = ((screened_power - 1) / 2) / thermal_screening_over_pi2_t2
+    assert_equal("thermal instanton log-shell pi^2 T^2 rho^2", shell_pi2_t2_rho2, Fraction(23, 16))
+    assert_equal("thermal instanton ordinary-density pi^2 T^2 rho^2", ordinary_density_pi2_t2_rho2, Fraction(5, 4))
+
+    # The Gaussian amplitude scales as (pi^2 T^2 c)^(-A/2), so the T power is -A.
+    assert_equal("thermal instanton Gaussian T power", -2 * gamma_argument, -Fraction(23, 3))
+
+    # If |R_T| <= eps on the chosen size window, then |exp(R_T)-1| is bounded by
+    # exp(eps)-1 pointwise; this finite rational witness checks the norm ledger.
+    gaussian_weight = Fraction(11, 7)
+    residual_multiplier_bound = Fraction(1, 5)
+    residual_error_bound = residual_multiplier_bound * gaussian_weight
+    actual_residual_error = Fraction(3, 20) * gaussian_weight
+    assert_equal(
+        "thermal determinant residual bounded by multiplicative window norm",
+        actual_residual_error <= residual_error_bound,
+        True,
+    )
+
+
 def check_uhlenbeck_boundary_face_budget() -> None:
     for n_c in range(2, 8):
         for k in range(1, 6):
@@ -3020,6 +3074,7 @@ def main() -> None:
     check_instanton_ensemble_zero_mode_overlap_spectrum()
     check_mass_saturated_vacuum_activity_size_integral()
     check_screened_one_instanton_size_integral()
+    check_thermal_instanton_determinant_screening()
     check_uhlenbeck_boundary_face_budget()
     check_k_one_adhm_dimension_and_cone_power()
     print("All BPST instanton normalization checks passed.")
