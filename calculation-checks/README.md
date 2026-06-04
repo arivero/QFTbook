@@ -536,7 +536,12 @@ Current checks:
   which distinguishes the theta-charged one-instanton amplitude coordinate
   from a neutral inclusive rate kernel, verifies the order-\(e^{-S_I}\)
   interference negative control before a selection rule is imposed, and bounds
-  the relative cut residual,
+  the relative cut residual, the one-instanton sector-isolation certificate
+  separating the retained \(Q=1\) coefficient from same-sector residuals,
+  perturbative leakage, anti-instanton leakage, two-instanton leakage,
+  \(I\bar I\) amplitude-sector leakage, and higher-sector remainders, with
+  negative controls for perturbative contamination, omitted neighboring-sector
+  budgets, and signed adjacent-sector cancellation,
   the finite one-instanton amplitude
   error budget separating determinant, zero-mode/source, matching, Schur, and
   endpoint residuals from the leading density, the source-dependent

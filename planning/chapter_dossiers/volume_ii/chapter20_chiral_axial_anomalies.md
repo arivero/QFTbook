@@ -125,7 +125,12 @@
   interference is removed by an explicit selection/projection hypothesis before
   theta-charge cancellation and doubled semiclassical action are asserted for
   the diagonal rate channel.  Final-state/relative \(I\bar I\) cut weights then
-  sit under an explicit majorant bound.  The hard-amplitude
+  sit under an explicit majorant bound.  The one-instanton isolation
+  continuation adds the corresponding amplitude-level certificate: the
+  retained \(Q=1\) coefficient is separated from same-sector residuals,
+  perturbative leakage, anti-instanton leakage, two-instanton leakage,
+  \(I\bar I\) amplitude-sector leakage, and higher-sector remainder before a
+  relative one-instanton amplitude claim is allowed.  The hard-amplitude
   continuation adds the
   \(N_f=2\) hard-momentum size window, where the same form factors give a
   \(Q^{-2}\) four-fermion coefficient at \(\mu=Q\), the RG-invariant
@@ -348,6 +353,7 @@
 | \(B^{\mathcal J}_{AB},\Phi^R,\Phi^L\) | color-singlet source-projected zero-mode matrix and source-to-zero-mode overlap maps used to match the auxiliary hard instanton kernel to gauge-invariant correlators |
 | \(\mathcal A_{\rm phys}^{Q=1},\mathcal A_{\rm inst}^{\rm lead},R_{\rm reg},R_{\rm cont},R_{\rm spec},R_{\rm IR},R_{\rm cut},R_{\rm match},R_\rho\) | physical one-instanton amplitude coordinate, leading continued/projected instanton-kernel coordinate, and the residuals separating Euclidean source kernels from physical amplitudes |
 | \(A_I,A_{\bar I},\Gamma_{I\bar I},\mathcal C_{\rm cut},M^{(0)}_{I\bar I},\varepsilon_{\rm cut}\) | instanton and anti-instanton amplitude coordinates, paired inclusive cut/rate kernel, cut weight, absolute majorant, and cut residual used to turn a theta-charged amplitude kernel into a neutral spectral weight |
+| \(\Pi_{\mathcal O},J_I,M_I,\lambda_\alpha,M_\alpha,E_{\ge2},\kappa_I\) | selected source/charge/spectral projection, retained one-instanton coefficient, retained \(Q=1\) absolute mass, adjacent-sector leakage factors and majorants, higher-sector remainder, and noncancellation margin in the one-instanton isolation certificate |
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(\mathbf c;\mathcal F)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless selected-form-factor integral |
 | \(\mathfrak s_{\rm hard}(s),\Delta\) | hard instanton log-size shell density and its power-tail suppression exponent \(\Delta=\sigma-b_0-2\) |
 | \(\rho_*,dQ,m_{\rm scr}\) | mixed hard-source/physical-screening log-shell coordinate, hard exponential envelope, and screening mass in the retained instanton size majorant |
@@ -625,6 +631,11 @@
   coefficient \(\det R\,\det L\).  A single c-number outer product
   \(u_fv_{f'}\) has zero two-flavor determinant and is not the physical
   four-slot amplitude.
+- A selected one-instanton amplitude needs sector isolation in addition to
+  the \(Q=1\) saddle calculation.  The projection must bound perturbative,
+  anti-instanton, two-instanton, \(I\bar I\) amplitude-sector, and remaining
+  higher-sector leakage in the same source normalization, and a relative
+  coefficient claim also requires a \(Q=1\) noncancellation margin.
 - The BPST fundamental zero-mode density has normalized radial envelope
   \(h_\rho(y)=2\rho^2/[\pi^2(y^2+\rho^2)^3]\).  Its zeroth moment is finite
   and its momentum-space form factor is \(zK_1(z)\), \(z=\rho|q|\).  The
@@ -1572,3 +1583,12 @@
   finite-window propagation through \(M_R\), and negative controls against
   replacing source fluctuation control by a vacuum determinant calibration or a
   signed cancellation.
+- 2026-06-04 issue #597 one-instanton isolation pass: added
+  `ca:one-instanton-sector-isolation-certificate`, which makes the selected
+  amplitude-sector projection part of the instanton calculation.  The block
+  separates the retained \(Q=1\) coefficient from same-sector residuals,
+  perturbative, anti-instanton, two-instanton, \(I\bar I\), and higher-sector
+  leakage, then requires a noncancellation margin before a relative
+  one-instanton amplitude claim is made.  The BPST companion verifies the exact
+  sector telescope and negative controls for perturbative contamination,
+  omitted adjacent-sector budgets, and signed cancellation.

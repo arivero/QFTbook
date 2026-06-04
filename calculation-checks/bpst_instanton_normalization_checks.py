@@ -85,6 +85,11 @@ relations
     term, while the diagonal IbarI contribution has doubled action and is
     leading only after a selection rule or projection removes lower-action
     interference
+    a selected one-instanton amplitude requires a separate sector-isolation
+    certificate: the retained Q=1 coefficient, same-sector residual,
+    perturbative leakage, anti-instanton leakage, two-instanton leakage,
+    IbarI amplitude-sector leakage, and higher-sector remainder enter an
+    absolute majorant before a relative one-instanton claim is valid
     a finite one-instanton amplitude error budget separates the leading
     determinant/zero-mode/source density from determinant remainders,
     zero-mode truncation, source matching, Schur corrections, and endpoint
@@ -191,9 +196,10 @@ Independent construction: direct radial integrals, finite determinant and
 Schur-complement algebra, source differentiation, inverse-Gram construction of
 the shared SU(2) four-fundamental Haar projector, absolute logarithmic
 determinant-residual certificates, finite reference-amplitude calibration
-ratios, finite-scheme transport ratios, zero-mode overlap determinant-stability bounds,
-finite cumulant telescopes, coefficient/operator transport matrices, and exact
-retained size-shell stationarity equations.
+ratios, finite-scheme transport ratios, zero-mode overlap determinant-stability
+bounds, finite cumulant telescopes, coefficient/operator transport matrices,
+exact retained size-shell stationarity equations, and finite amplitude-sector
+isolation telescopes.
 Imported assumptions: the BPST background and zero-mode formulas, one-loop
 determinant coefficients, the trace-delta convention, and finite regulator
 truncations stated in the chapter.
@@ -207,7 +213,9 @@ vacuum determinant calibration substituted for a source-dependent fluctuation
 certificate, signed fluctuation-cumulant cancellations,
 hard-only and screening-only shell substitutions in the mixed size-majorant
 problem, and separation of operator RG flow from the Wilsonian size-boundary
-flux.
+flux, perturbative sector leakage mistaken for an exact selection rule,
+omitted neighboring-sector leakage, and signed adjacent-sector cancellation
+mistaken for sector isolation.
 Scope boundary: a pass checks finite algebra and normalization interfaces; it
 does not prove dilute-gas validity, large-size control, uniform semiclassical
 remainders, or physical hadronic matrix elements.
@@ -2992,6 +3000,108 @@ def check_instanton_unitarity_cut_pairing() -> None:
     )
 
 
+def check_one_instanton_sector_isolation_certificate() -> None:
+    # A selected one-instanton coefficient is not isolated merely because a
+    # BPST saddle exists.  Adjacent amplitude sectors must either be killed by
+    # an exact source/charge projection or bounded in the same normalization.
+    retained_one_instanton = Fraction(5, 7)
+    one_window_mass = Fraction(9, 10)
+    same_sector_residual = Fraction(3, 50)
+    same_sector_epsilon = Fraction(1, 12)
+    assert_equal(
+        "one-instanton same-sector residual bound",
+        abs(same_sector_residual) <= same_sector_epsilon * one_window_mass,
+        True,
+    )
+
+    sector_masses = {
+        "perturbative": Fraction(4, 3),
+        "anti_instanton": Fraction(5, 6),
+        "two_instanton": Fraction(7, 8),
+        "instanton_anti_instanton_amplitude": Fraction(9, 10),
+    }
+    leakage_factors = {
+        "perturbative": Fraction(0),
+        "anti_instanton": Fraction(1, 25),
+        "two_instanton": Fraction(2, 35),
+        "instanton_anti_instanton_amplitude": Fraction(1, 18),
+    }
+    projected_sector_leakage = {
+        name: leakage_factors[name] * sector_masses[name]
+        for name in sector_masses
+    }
+    higher_sector_remainder = Fraction(1, 60)
+
+    projected_observable = (
+        retained_one_instanton
+        + same_sector_residual
+        + sum(projected_sector_leakage.values(), Fraction(0))
+        + higher_sector_remainder
+    )
+    isolation_error = projected_observable - retained_one_instanton
+    isolation_majorant = (
+        same_sector_epsilon * one_window_mass
+        + sum(
+            leakage_factors[name] * sector_masses[name]
+            for name in sector_masses
+        )
+        + higher_sector_remainder
+    )
+    assert_equal(
+        "one-instanton sector-isolation majorant",
+        abs(isolation_error) <= isolation_majorant,
+        True,
+    )
+
+    noncancellation_margin = abs(retained_one_instanton) / one_window_mass
+    assert_equal(
+        "one-instanton noncancellation margin",
+        noncancellation_margin,
+        Fraction(50, 63),
+    )
+    relative_isolation_bound = isolation_majorant / abs(retained_one_instanton)
+    assert_equal(
+        "one-instanton relative isolation certificate",
+        abs(isolation_error) / abs(retained_one_instanton)
+        <= relative_isolation_bound,
+        True,
+    )
+
+    # Negative controls: a generic source with perturbative leakage is not a
+    # one-instanton observable, omitting a neighboring sector underbudgets the
+    # error, and signed cancellations between adjacent sectors do not certify
+    # isolation.
+    unprojected_perturbative_leakage = Fraction(3)
+    assert_equal(
+        "unprojected perturbative sector can dominate one-instanton coefficient",
+        abs(unprojected_perturbative_leakage) > abs(retained_one_instanton),
+        True,
+    )
+
+    missing_anti_instanton_bound = (
+        isolation_majorant - projected_sector_leakage["anti_instanton"]
+    )
+    assert_equal(
+        "omitting anti-instanton leakage underbudgets isolation error",
+        abs(isolation_error) <= missing_anti_instanton_bound,
+        False,
+    )
+
+    canceling_adjacent_sectors = [Fraction(1, 3), -Fraction(1, 3)]
+    signed_sector_sum = sum(canceling_adjacent_sectors, Fraction(0))
+    absolute_sector_sum = sum(abs(term) for term in canceling_adjacent_sectors)
+    assert_equal(
+        "signed adjacent-sector leakage can cancel",
+        signed_sector_sum,
+        Fraction(0),
+    )
+    assert_equal(
+        "signed cancellation is not sector-isolation evidence",
+        absolute_sector_sum > abs(signed_sector_sum),
+        True,
+    )
+
+
 def check_instanton_amplitude_error_budget() -> None:
     # A finite regulator reduces the amplitude assembly to a finite sum over
     # chart cells.  The leading term is not the moduli-space measure alone:
@@ -4693,6 +4803,7 @@ def main() -> None:
     check_color_singlet_instanton_source_projection()
     check_instanton_euclidean_to_physical_residual_budget()
     check_instanton_unitarity_cut_pairing()
+    check_one_instanton_sector_isolation_certificate()
     check_instanton_amplitude_error_budget()
     check_source_dependent_fluctuation_cumulant_certificate()
     check_hard_momentum_instanton_size_window()

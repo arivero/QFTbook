@@ -6884,6 +6884,88 @@ anti-instanton density, final-state cut, and relative \(I\bar I\)
 fluctuation determinants and interactions in addition to that kernel.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[One-instanton sector isolation certificate]
+\label{ca:one-instanton-sector-isolation-certificate}
+The previous cut-pairing discussion separates amplitude sectors for rates.
+For a selected one-instanton amplitude there is a prior, more elementary
+question: has the \(Q=1\) source coordinate actually been isolated from the
+neighboring sectors in the observable under study?  Let \(\Pi_{\mathcal O}\)
+denote the finite source, charge, chirality, or spectral projection used to
+extract the coefficient.  On the same regulator and kinematic window write
+the projected amplitude-sector expansion as
+\begin{equation}
+  \Pi_{\mathcal O}\mathcal A
+  =
+  \Pi_{\mathcal O}A_0
+  +
+  \Pi_{\mathcal O}A_I
+  +
+  \Pi_{\mathcal O}A_{\bar I}
+  +
+  \Pi_{\mathcal O}A_{2I}
+  +
+  \Pi_{\mathcal O}A_{I\bar I}^{\rm amp}
+  +
+  R_{\ge2}^{\rm other}.
+  \label{eq:instanton-one-sector-isolation-expansion}
+\end{equation}
+Here \(A_{I\bar I}^{\rm amp}\) is an amplitude-sector contribution before
+forming an inclusive cut rate; it is not the diagonal rate term in
+\eqref{eq:instanton-cut-paired-rate-leading}.  Let \(J_I\) be the retained
+leading \(Q=1\) coefficient, obtained after the determinant, zero-mode,
+orientation, source, and size-window choices have all been made, and let
+\(M_I\) be the absolute mass of that retained \(Q=1\) window.  Suppose
+\begin{equation}
+  \left|\Pi_{\mathcal O}A_I-J_I\right|
+  \le
+  \epsilon_I M_I,
+  \qquad
+  \left|\Pi_{\mathcal O}A_\alpha\right|
+  \le
+  \lambda_\alpha M_\alpha
+  \quad
+  (\alpha=0,\bar I,2I,I\bar I),
+  \qquad
+  |R_{\ge2}^{\rm other}|\le E_{\ge2}.
+  \label{eq:instanton-one-sector-isolation-hypotheses}
+\end{equation}
+Then the selected observable differs from the retained one-instanton
+coefficient by
+\begin{equation}
+  \left|\Pi_{\mathcal O}\mathcal A-J_I\right|
+  \le
+  \epsilon_I M_I
+  +
+  \lambda_0M_0
+  +
+  \lambda_{\bar I}M_{\bar I}
+  +
+  \lambda_{2I}M_{2I}
+  +
+  \lambda_{I\bar I}M_{I\bar I}
+  +
+  E_{\ge2}.
+  \label{eq:instanton-one-sector-isolation-bound}
+\end{equation}
+If in addition the retained one-instanton coefficient has a noncancellation
+margin
+\[
+  |J_I|\ge\kappa_I M_I,\qquad \kappa_I>0,
+\]
+then \eqref{eq:instanton-one-sector-isolation-bound} gives a relative
+certificate after division by \(|J_I|\).  The projection factors
+\(\lambda_\alpha\) are part of the physics, not bookkeeping decoration.  In a
+chirality-violating source the perturbative leakage \(\lambda_0M_0\) can
+vanish by an exact zero-mode selection rule.  In an ordinary gauge-invariant
+spectral channel it usually does not, and a small instanton saddle can be
+buried under a lower-action sector.  Likewise, signed cancellation between
+\(\bar I\), \(2I\), and \(I\bar I\) contributions is not an isolation
+certificate; the bound uses absolute sector majorants in the same source
+normalization.  A quoted ``one-instanton amplitude'' is therefore a leading
+sector coordinate until the sector projection and leakage bounds above have
+also been supplied.
+\end{controlledapproximation}
+
 \begin{proposition}[One-instanton amplitude assembly and error budget]
 \label{prop:instanton-amplitude-assembly-error-budget}
 Fix a finite-regulator \(Q=1\) chart and a gauge-invariant source channel.
