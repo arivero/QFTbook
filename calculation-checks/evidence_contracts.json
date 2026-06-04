@@ -26,6 +26,10 @@
       "risk_class": "instanton amplitudes"
     },
     {
+      "path": "false_vacuum_decay_checks.py",
+      "risk_class": "false-vacuum contour and metastability"
+    },
+    {
       "path": "longitudinal_goldstone_equivalence_checks.py",
       "risk_class": "broken gauge-theory external-state amplitudes"
     },

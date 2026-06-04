@@ -95,10 +95,12 @@
   Wilson coefficients in an EFT extension are separate data.
 - Defines high-scale RG continuation as a statement about renormalized
   coupling coordinates, not a Wilsonian cutoff theory; defines
-  quartic-positivity and metastability as specified claims; derives the radial Higgs
-  potential with \(O_H=(H^\dagger H)^3\) and the general higher-operator
-  large-field ratio; and isolates the one-loop top-Yukawa contribution that
-  can drive the minimal-subtraction quartic coordinate through zero.
+  quartic-positivity and metastability as specified claims; ties
+  metastability to the Volume I false-vacuum state/contour/bounce
+  construction; derives the radial Higgs potential with
+  \(O_H=(H^\dagger H)^3\) and the general higher-operator large-field ratio;
+  and isolates the one-loop top-Yukawa contribution that can drive the
+  minimal-subtraction quartic coordinate through zero.
 - Defines the precision electroweak \(S,T,U\) self-energy coordinates from
   renormalized transverse two-point functions after fixing the input scheme,
   and derives the relation between \(T\) and the first-order shift of the
@@ -162,6 +164,12 @@
   \(W_L^+W_L^-\to Z_LZ_L\): the longitudinal \(m/E\) kinematics, external-pole
   residue separation, Higgs cancellation of the apparent \(s/v^2\) growth, and
   the \(a_0=\mathcal M/(16\pi)\) normalization.
+- `calculation-checks/false_vacuum_decay_checks.py` verifies the imported
+  scalar false-vacuum contour calculus used to scope Higgs metastability:
+  quartic bounce action and zero-mode norm, negative and zero fluctuation
+  modes, half-contour factor, collective-coordinate/determinant ledger,
+  dilute exponentiation, real-time width extraction, and negative controls
+  against finite-time/running-coupling overread.
 
 ## Claim Ledger
 
@@ -203,11 +211,15 @@
    electroweak coupling chart under analyticity and input-scheme assumptions;
    they do not replace vertex, box, four-fermion, or detector-function data.
 13. Higgs large-field claims are conditional statements about a specified
-   coupling chart, decay functional, or additional Wilsonian/EFT problem; a sign statement about
-   \(\lambda(\mu)\) alone is not a
-   nonperturbative vacuum statement, and a high-scale RG endpoint is not a
-   Wilsonian cutoff unless a Wilsonian, regulator, or constructive definition has been
-   supplied.
+   coupling chart, decay functional, or additional Wilsonian/EFT problem; a
+   sign statement about \(\lambda(\mu)\) alone is not a nonperturbative vacuum
+   statement, and a high-scale RG endpoint is not a Wilsonian cutoff unless a
+   Wilsonian, regulator, or constructive definition has been supplied.  A
+   metastability claim must additionally route through the false-vacuum
+   state/contour construction: constrained branch versus exact convex 1PI
+   action, negative-mode cycle, collective-coordinate determinant, dilute
+   exponentiation, real-time survival interpretation, gauge/Nielsen control,
+   and EFT field-range remainder.
 14. The Standard Model is used through a hybrid definition, not as an
    assumed complete constructive four-dimensional continuum theorem; the
    electroweak part is all-orders renormalized perturbation theory, not a
@@ -313,3 +325,10 @@
   vector/Goldstone equivalence relation and a pole convention for unstable
   vectors; the high-energy \(W_LW_L\) Higgs-cancellation algebra is checked in
   `longitudinal_goldstone_equivalence_checks.py`.
+- 2026-06-04 issue #788 metastability pass: strengthened the
+  quartic-positivity/metastability block so Higgs lifetime claims import the
+  Volume I false-vacuum contour construction rather than resting on
+  \(\lambda(\mu)<0\).  The Standard Model chapter now separates exact convex
+  1PI action from a constrained false branch, lists the gauge/Nielsen and EFT
+  field-range obligations, and treats finite-temperature or gravitational
+  vacuum decay as separate state-and-contour problems.

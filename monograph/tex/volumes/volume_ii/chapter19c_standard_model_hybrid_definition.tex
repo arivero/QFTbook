@@ -1690,10 +1690,14 @@ unless the additional regulator and observable data below make it one.
 \label{def:sm-metastability-statement}
 In the same chart, a metastability claim is not the assertion
 \(\lambda(\mu)<0\).  It is a semiclassical statement about a
-false-vacuum decay functional: one must specify the gauge-fixed effective
-action used for the bounce calculation, the fluctuation determinant
-convention, the renormalization scale-setting prescription, the spacetime
-volume or cosmological history against which the rate is compared, and the
+false-vacuum decay functional in the sense of
+Section~\ref{sec:false-vacuum-decay-contour-problem}: one must specify the
+finite-volume or resonant false state, the branch or constrained effective
+action used for the bounce calculation, the integration cycle through the
+negative mode, the fluctuation determinant convention, the collective
+coordinate normalization, the dilute multi-bounce assumptions, the
+renormalization scale-setting prescription, the spacetime volume or
+cosmological history against which the rate is compared, and the
 higher-dimensional operators retained in the field range of the bounce.  The
 output is an inequality of the form
 \begin{equation}
@@ -1705,6 +1709,43 @@ is one input to such a calculation, not the calculation itself.  It becomes a
 prediction of a QFT only after the path integral, field range, and omitted
 operator remainder are controlled in the regime sampled by the bounce.
 \end{definition}
+
+\paragraph{Proof-status ledger for Higgs metastability.}
+The exact Euclidean 1PI effective action of
+Chapter~\ref{ch:volume-ii-generating-functionals-1pi} is convex under its
+finite-regulator positivity hypotheses.  It is therefore not the object whose
+nonconvex barrier is inserted into a false-vacuum bounce.  A Higgs
+metastability computation uses a gauge-fixed perturbative branch, or a
+constrained false-vacuum effective action, together with the contour and
+state data of Definition~\ref{def:finite-volume-false-vacuum-datum}.  The
+scalar-regulator steps in
+Example~\ref{ex:quartic-oscillator-false-vacuum-bounce} show how the negative
+mode, zero-mode Jacobian, determinant ratio, dilute exponentiation, and
+real-time width fit together.  The Standard Model problem has additional
+obligations:
+\begin{enumerate}
+\item The bounce field range must lie inside the stated EFT domain, with an
+      omitted-operator majorant for the tower in
+      \eqref{eq:sm-higgs-general-large-field-operator}.
+\item Gauge fixing must be accompanied by the BRST or Nielsen-identity
+      statement that the decay exponent and the claimed part of the prefactor
+      are gauge-parameter independent at the order being quoted; otherwise the
+      computation is a gauge-chart number, not an observable metastability
+      claim.  The needed gauge-effective-action control belongs to the BV
+      framework of Chapter~\ref{ch:bv-master-formalism}.
+\item The negative-mode and collective-coordinate analysis must be performed
+      for the actual scalar-gauge fluctuation complex, including ghosts and
+      any residual stabilizer volume, not copied from the one-coordinate
+      scalar example.
+\item Finite-temperature thermal activation and gravitational decay in a
+      cosmological background are separate state-and-contour problems.  They
+      require the thermal density matrix or spacetime saddle, not only the
+      zero-temperature flat-space bounce.
+\end{enumerate}
+Thus the historical phrase ``Higgs vacuum lifetime'' is a shorthand for a
+conditional semiclassical construction with these inputs.  A running quartic,
+even with high-loop RG improvement, is only one coordinate entering that
+construction.
 
 \paragraph{Large-field EFT expansion requires a field-domain hypothesis.}
 Let \(h\) be the radial Higgs coordinate defined by

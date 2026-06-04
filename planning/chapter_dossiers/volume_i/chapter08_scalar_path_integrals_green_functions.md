@@ -22,6 +22,12 @@ states that it is not used as a default path-integral construction.
 Issue #478 added a self-contained spectral zeta determinant section with the
 one-loop quadratic-fluctuation formula, the thermal harmonic-oscillator
 determinant, and the circle Casimir finite part.
+The 2026-06-04 metastability pass added a false-vacuum decay section that
+starts from a finite-volume metastable state, treats the negative mode as a
+contour problem, works through the quartic scalar oscillator bounce,
+separates the translation zero mode and determinant ratio, derives dilute
+multi-bounce exponentiation, and states the field-theory proof-status
+boundary.
 The 2026-05-29 anti-wrapper pass retitled the finite-dimensional regulator
 proposition positively, demoted the zeta-scale calculation and the free
 Feynman pole-placement check to worked paragraphs, and kept the determinant
@@ -122,6 +128,10 @@ Working framework:
 | \(\det_\zeta(A/\mu^r)\) | regularized determinant | zeta-regularized determinant of an order-\(r\) positive operator relative to scale \(\mu\) |
 | \(A_\omega=-\dd_\tau^2+\omega^2\) | periodic operator | thermal oscillator fluctuation operator on \(S^1_\beta\) |
 | \(\zeta_{\rm R}\) | Riemann zeta function | analytic continuation used in the circle Casimir finite part |
+| \(\Psi_F\), \(A_F(t)\) | metastable-state datum | finite-volume false-vacuum vector/density matrix and survival amplitude |
+| \(q_B\), \(B\), \(M_B\) | bounce data | quartic oscillator bounce profile, action, and fluctuation operator |
+| \(\det{}''M_B\) | nonzero-mode determinant | determinant with negative and zero modes separated |
+| \(K_B\), \(\Gamma\) | decay coordinates | semiclassical prefactor and real-time width in the exponential window |
 
 ## Definition Ledger
 
@@ -144,6 +154,9 @@ Working framework:
 - spectral zeta function and determinant for positive self-adjoint elliptic
   operators with compact resolvent, zero-mode exclusion, heat-trace
   continuation, and reference scale \(\mu\);
+- finite-volume false-vacuum datum: metastable vector/density matrix,
+  survival amplitude, exponential time window, and regulator/volume limiting
+  prescription;
 - field wave functional and field-configuration generalized eigenstate;
 - Euclidean scalar action and Euclidean correlation function;
 - uniform Wick rotation preserving imaginary-time ordering;
@@ -170,6 +183,10 @@ Working framework:
 | A positive quadratic bosonic fluctuation operator contributes \(\frac12\log\det_\zeta(A/\mu^r)\) to the one-loop effective action, modulo zero modes and vacuum normalization. | Worked calculation | One-loop determinant paragraph; demoted from proposition wrapper on 2026-05-29 |
 | For \(A_\omega=-\dd_\tau^2+\omega^2\) on the thermal circle, \(\det_\zeta A_\omega=4\sinh^2(\beta\omega/2)\), giving the canonical oscillator partition function. | Worked example | Example `ex:zeta-thermal-harmonic-oscillator`; calculation check `zeta_determinant_checks.py` |
 | The zeta finite part of the massless real scalar circle vacuum energy is \(-\pi/(6L)\) after zero-mode separation. | Worked example | Example `ex:zeta-circle-casimir-energy`; calculation check `zeta_determinant_checks.py` |
+| A finite-volume false vacuum is a metastable state or branch with a specified survival amplitude and time window, not an exact decaying eigenvector of a self-adjoint finite-volume Hamiltonian. | Definition/framework statement | Definition `def:finite-volume-false-vacuum-datum` |
+| In the quartic scalar oscillator, \(q_B=\omega(2g)^{-1/2}\operatorname{sech}\omega(\tau-\tau_0)\), \(B=\omega^3/(3g)\), \(M_B=-\partial_\tau^2+\omega^2-6\omega^2\operatorname{sech}^2\omega(\tau-\tau_0)\), and \((\det{}''M_B/\det M_F)_{\rm reg}=1/(36\omega^2)\) when the negative and zero modes are separated. | Worked regulated scalar example | Example `ex:quartic-oscillator-false-vacuum-bounce`; calculation check `false_vacuum_decay_checks.py` |
+| The negative mode supplies a half-contour factor \(\pm i/2\), while the translation zero mode gives \((B/2\pi)^{1/2}\dd\tau_0\); neither is part of an ordinary positive determinant. | Worked contour and collective-coordinate calculation | Equations `eq:false-vacuum-negative-mode-half-gaussian` and `eq:false-vacuum-translation-zero-mode-jacobian`; calculation check `false_vacuum_decay_checks.py` |
+| Dilute multi-bounce exponentiation gives a complex resonance energy and a real-time width only after the state, contour, separation, and residual assumptions are supplied. | Controlled semiclassical framework | Equations `eq:false-vacuum-dilute-bounce-exponentiation` and `eq:false-vacuum-real-time-width`; calculation check `false_vacuum_decay_checks.py` |
 | Euclidean ordering of insertion times gives analytic continuation to time-ordered Lorentzian correlators under spectral/analytic assumptions. | Framework statement with derivation in free case | Complex-time contour and uniform Wick rotation |
 | Euclidean field-insertion notation records the boundary value \(x^0=-i\tau\) inside ordered correlation functions. | Definition | Analytic-continuation convention |
 | The free Euclidean two-point function is the Green function of \(-\partial_E^2+m^2\). | Derived | Gaussian functional integral |
@@ -203,6 +220,9 @@ Rendered check:
 - Do not introduce perturbative graph expansion in this chapter.
 - Do not use scattering language.
 - Preserve the transition into the Kallen-Lehmann chapter.
+- Keep false-vacuum decay tied to state, contour, determinant, zero-mode,
+  dilute-gas, and real-time interpretation data; do not reduce it to a bounce
+  equation or a potential sketch.
 
 ## Audit Notes
 
@@ -249,3 +269,10 @@ Rendered check:
   the one-loop quadratic-fluctuation formula, the thermal oscillator
   determinant, and the circle Casimir finite part; added
   `calculation-checks/zeta_determinant_checks.py`.
+- 2026-06-04, issue #788: added the false-vacuum decay contour construction.
+  The pass develops a regulated scalar oscillator example from metastable
+  state through negative-mode contour, determinant/zero-mode separation,
+  dilute exponentiation, and real-time width, and registers
+  `calculation-checks/false_vacuum_decay_checks.py` as a high-risk evidence
+  contract.  This is physics-depth infrastructure for Higgs metastability and
+  instanton/tunneling discussions, not a moduli-space mathematics addition.

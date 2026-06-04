@@ -2592,6 +2592,15 @@ Current checks:
   partition function, the circle Casimir coefficient
   \(\zeta_{\rm R}(-1)=-1/12\), and the sign of the determinant's scale
   dependence.
+- `false_vacuum_decay_checks.py`: exact finite checks for the false-vacuum
+  contour section, including the quartic oscillator bounce equation, action,
+  and zero-mode norm, the Pöschl--Teller negative and translation-zero-mode
+  identities, the half-contour factor through the negative Gaussian, the
+  collective-coordinate and determinant ledger with the zero mode omitted, the
+  dilute multi-bounce exponentiation algebra, and the Euclidean
+  resonance-energy to real-time width relation, with negative controls against
+  the no-factor-two action, real-axis negative Gaussian, zero-mode determinant
+  inclusion, finite-time rate overread, and signed residual cancellation.
 - `cft_correlator_kinematics_checks.py`: symbolic checks for CFT
   correlator kinematics, including scalar three-point weights, four-point
   prefactor inversion weights, the generic four-point conformal-frame

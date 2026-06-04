@@ -1189,6 +1189,301 @@ normalization are separate data.  In two-dimensional CFT language the result
 is the \(c=1\) case of \(E_0=-\pi c/(6L)\) on the cylinder.
 \end{example}
 
+\section{False-Vacuum Decay as a Contour Problem}
+\label{sec:false-vacuum-decay-contour-problem}
+
+The Euclidean word ``bounce'' is dangerous when it is separated from the
+state and contour data that make a decay rate.  A stationary point of
+\(S_E\) is not by itself a physical width.  The construction has four
+distinct layers: a metastable state or branch, a complex integration cycle, a
+negative fluctuation direction, and a real-time interpretation.  The standard
+semiclassical formulae of Coleman and Callan--Coleman
+\cite{Coleman1977FalseVacuum,CallanColeman1977Fate} are used below as
+historical anchors; the logical content here is the finite-regulator
+calculus, not the authority of the name.
+
+\begin{definition}[Finite-volume false-vacuum datum]
+\label{def:finite-volume-false-vacuum-datum}
+At fixed finite spatial volume and regulator let \(H_\Lambda\) be a
+self-adjoint Hamiltonian on \(\Hilb_\Lambda\).  Since
+\(\operatorname{spec}(H_\Lambda)\subset\mathbb R\), a false vacuum is not an
+exact decaying eigenvector.  A finite-volume false-vacuum datum consists of:
+\begin{enumerate}
+\item a normalized vector or density matrix \(\Psi_F\) localized in the basin
+      of a local minimum, or equivalently the ground state of a constrained
+      Hamiltonian with a declared boundary at the escape surface;
+\item a time window \(t_{\rm micro}\ll t\ll t_{\rm rec}\) on which resonant
+      exponential behavior is asserted;
+\item a survival amplitude
+      \begin{equation}
+        A_F(t)=\langle\Psi_F,\ee^{-\ii H_\Lambda t}\Psi_F\rangle
+        \label{eq:false-vacuum-survival-amplitude}
+      \end{equation}
+      or a projected survival probability for the chosen basin;
+\item a limiting prescription in volume and regulator, including the order in
+      which the semiclassical, long-time, and infinite-volume limits are
+      taken.
+\end{enumerate}
+A decay rate \(\Gamma\) is a statement that, in the declared window,
+\[
+  A_F(t)=Z_F\ee^{-\ii E_R t-\Gamma t/2}+R_F(t)
+\]
+with a controlled remainder.  Exact finite-volume spectral decompositions have
+real frequencies and long-time recurrences; the exponential law is a resonant
+or scaling-window statement.
+\end{definition}
+
+This definition is the state-space counterpart of the path-integral contour.
+In Euclidean notation the false-vacuum functional is a branch or constrained
+functional integral around one basin.  It is not the exact convex Euclidean
+1PI effective action of
+Chapter~\ref{ch:volume-ii-generating-functionals-1pi}.  The exact convex
+Legendre transform mixes competing stable branches when the source is varied.
+A bounce calculation instead keeps a chosen false branch and studies its
+analytic continuation through the escape saddle.
+
+\paragraph{The negative Gaussian is not an ordinary Gaussian.}
+Let \(a\) be the coordinate along a single negative fluctuation direction and
+let \(\lambda_-=|\lambda_{\rm neg}|>0\).  Near the saddle the Euclidean weight
+has the factor
+\[
+  \exp\left(+\frac12\lambda_- a^2\right),
+\]
+which diverges on the real \(a\)-axis.  The steepest-descent cycles are
+\(a=\pm \ii y\).  A half-cycle through the saddle gives
+\begin{equation}
+  \int_{\mathcal J_-^{\rm half}}\dd a\,
+  \exp\left(+\frac12\lambda_-a^2\right)
+  =
+  \pm\frac{\ii}{2}
+  \left(\frac{2\pi}{\lambda_-}\right)^{1/2}.
+  \label{eq:false-vacuum-negative-mode-half-gaussian}
+\end{equation}
+The factor of \(1/2\), the sign, and the imaginary unit are contour data.
+They are not supplied by the Euclidean equation of motion.  The physical sign
+is fixed by the outgoing resonance or by the original \(+\ii0\) deformation of
+the false-vacuum energy; choosing the opposite cycle gives the conjugate
+resonance.
+
+\begin{example}[Regulated quartic oscillator bounce]
+\label{ex:quartic-oscillator-false-vacuum-bounce}
+Consider the one-coordinate Euclidean action
+\begin{equation}
+  S_E[q]
+  =
+  \int_{-\infty}^{\infty}\dd\tau\,
+  \left[
+    \frac12\dot q^2
+    +
+    \frac12\omega^2 q^2
+    -
+    g q^4
+  \right],
+  \qquad \omega>0,\quad g>0 .
+  \label{eq:quartic-false-vacuum-euclidean-action}
+\end{equation}
+The potential is unbounded on the real axis, so the false-vacuum problem is
+defined by analytic continuation from a stable contour or by a declared pair of
+Lefschetz cycles.  The local well at \(q=0\) supplies the false harmonic
+state.  The Euclidean equation is
+\[
+  \ddot q=\omega^2q-4gq^3,
+\]
+with boundary condition \(q(\tau)\to0\) as
+\(|\tau|\to\infty\).  The bounce family is
+\begin{equation}
+  q_B(\tau-\tau_0)
+  =
+  \frac{\omega}{\sqrt{2g}}\,
+  \operatorname{sech}\!\bigl(\omega(\tau-\tau_0)\bigr).
+  \label{eq:quartic-false-vacuum-bounce-profile}
+\end{equation}
+Using the first integral
+\(\frac12\dot q_B^2=V(q_B)\), its action is
+\begin{equation}
+  B
+  =
+  S_E[q_B]-S_E[0]
+  =
+  2\int_0^{\omega/\sqrt{2g}}\dd q\,
+    q\sqrt{\omega^2-2gq^2}
+  =
+  \frac{\omega^3}{3g}.
+  \label{eq:quartic-false-vacuum-bounce-action}
+\end{equation}
+The fluctuation operator is
+\begin{equation}
+  M_B
+  =
+  -\frac{\dd^2}{\dd\tau^2}
+  +
+  \omega^2
+  -
+  6\omega^2
+  \operatorname{sech}^2\!\bigl(\omega(\tau-\tau_0)\bigr).
+  \label{eq:quartic-false-vacuum-fluctuation-operator}
+\end{equation}
+After \(x=\omega(\tau-\tau_0)\), this is the \(l=2\) Pöschl--Teller operator
+\(\omega^2[-\partial_x^2+1-6\operatorname{sech}^2x]\).  It has the
+node-free negative mode
+\[
+  \eta_-(x)=\operatorname{sech}^2x,\qquad
+  M_B\eta_-=-3\omega^2\eta_-,
+\]
+and the translational zero mode
+\[
+  \eta_0(\tau)=\dot q_B(\tau),\qquad M_B\eta_0=0 .
+\]
+Because the zero mode has one node while the negative mode has none, the
+Sturm oscillation theorem gives exactly one negative eigenvalue in this
+one-dimensional model.  This proof is special to the regulated scalar
+oscillator; in higher-dimensional field theory the corresponding
+one-negative-mode statement is an additional spectral assertion about the
+chosen bounce and fluctuation operator.
+
+The zero mode is not put into the determinant.  Since
+\[
+  \int_{-\infty}^{\infty}\dot q_B(\tau)^2\dd\tau=B,
+\]
+the change from the normalized zero-mode coefficient to the collective
+coordinate \(\tau_0\) gives
+\begin{equation}
+  \frac{\dd c_0}{\sqrt{2\pi}}
+  =
+  \left(\frac{B}{2\pi}\right)^{1/2}\dd\tau_0 .
+  \label{eq:false-vacuum-translation-zero-mode-jacobian}
+\end{equation}
+Let \(M_F=-\dd_\tau^2+\omega^2\) be the false-harmonic fluctuation operator,
+and let \(\det{}''M_B\) denote the determinant with both the negative mode and
+the translational zero mode omitted.  In the determinant normalization matched
+to the free operator \(M_F\), the exact Pöschl--Teller calculation gives
+\begin{equation}
+  \left(\frac{\det{}''M_B}{\det M_F}\right)_{\rm reg}
+  =
+  \frac{1}{36\omega^2}.
+  \label{eq:quartic-false-vacuum-positive-determinant-ratio}
+\end{equation}
+If the absolute value of the negative eigenvalue is included while the zero
+mode is still omitted, the corresponding ratio is \(1/12\).  The convention in
+\eqref{eq:false-vacuum-one-bounce-amplitude} keeps the negative mode outside
+the determinant because its integration cycle supplies the imaginary
+half-factor in
+\eqref{eq:false-vacuum-negative-mode-half-gaussian}.  A one-bounce
+contribution in a time interval of length \(T\) has the form
+\begin{equation}
+  Z_1(T)
+  =
+  Z_F(T)\,
+  \left(\pm\frac{\ii}{2}\right)
+  T
+  \left(\frac{B}{2\pi}\right)^{1/2}
+  \left(\frac{\det M_F}{\det{}'' M_B}\right)_{\rm reg}^{1/2}
+  \ee^{-B}
+  \bigl(1+R_1\bigr).
+  \label{eq:false-vacuum-one-bounce-amplitude}
+\end{equation}
+The determinant ratio is a regulated nonzero-mode fluctuation determinant,
+not a moduli-space volume.  The residual \(R_1\) contains cubic and higher
+fluctuation vertices, determinant-regulator remainders, endpoint errors of the
+time interval, and the chosen contour residual.
+\end{example}
+
+\paragraph{Dilute exponentiation and real time.}
+For \(n\) well-separated bounces the collective coordinates are ordered
+\(\tau_1<\cdots<\tau_n\).  If the bounce cores have size \(O(\omega^{-1})\)
+and the separation window satisfies
+\[
+  \omega^{-1}\ll |\tau_i-\tau_j|,\qquad
+  n\,\omega^{-1}\ll T,
+\]
+and if the interaction between separated cores is summably small, the ordered
+collective-coordinate volume is \(T^n/n!\) up to a controlled boundary and
+interaction residual.  Thus
+\begin{equation}
+  Z_F^{\rm dilute}(T)
+  =
+  Z_F(T)
+  \exp\left[
+    \pm\frac{\ii}{2}
+    K_B T\ee^{-B}
+  \right]
+  \bigl(1+R_{\rm dilute}\bigr),
+  \label{eq:false-vacuum-dilute-bounce-exponentiation}
+\end{equation}
+where
+\begin{equation}
+  K_B
+  =
+  \left(\frac{B}{2\pi}\right)^{1/2}
+  \left(\frac{\det M_F}{\det{}''M_B}\right)_{\rm reg}^{1/2}
+  \label{eq:false-vacuum-bounce-prefactor}
+\end{equation}
+for the one-coordinate model.  Interpreting
+\(Z_F(T)\exp[\pm\ii K_BT\ee^{-B}/2]\) as
+\(\exp[-E_{\rm res}T]\) gives
+\[
+  E_{\rm res}=E_F\mp\frac{\ii}{2}K_B\ee^{-B}.
+\]
+The outgoing resonance has \(\operatorname{Im}E_{\rm res}<0\), and the
+Lorentzian survival probability in the exponential window is
+\begin{equation}
+  |A_F(t)|^2\simeq \exp[-\Gamma t],
+  \qquad
+  \Gamma=K_B\ee^{-B}.
+  \label{eq:false-vacuum-real-time-width}
+\end{equation}
+The passage from the Euclidean branch to the real-time width therefore uses
+the metastable state of
+Definition~\ref{def:finite-volume-false-vacuum-datum}, the negative-mode
+cycle \eqref{eq:false-vacuum-negative-mode-half-gaussian}, and the
+dilute-gas residual in
+\eqref{eq:false-vacuum-dilute-bounce-exponentiation}.
+
+\paragraph{Field-theory extension and proof status.}
+For a scalar field in \(D\) Euclidean dimensions, the bounce equations are
+\[
+  -\partial_E^2\phi_B+V'(\phi_B)=0,\qquad
+  \phi_B(x)\to\phi_F\quad |x|\to\infty .
+\]
+For an \(O(D)\)-symmetric scalar bounce this becomes
+\[
+  \phi_B''(r)+\frac{D-1}{r}\phi_B'(r)=V'(\phi_B),
+  \qquad
+  \phi_B'(0)=0,\qquad
+  \phi_B(\infty)=\phi_F .
+\]
+The fluctuation operator is
+\begin{equation}
+  M_B=-\partial_E^2+V''(\phi_B(x)).
+  \label{eq:false-vacuum-field-bounce-fluctuation-operator}
+\end{equation}
+The \(D\) translational zero modes are separated into the collective coordinate
+\(x_0\), with Gram matrix
+\[
+  G_{\mu\nu}
+  =
+  \int\dd^Dx\,
+  \partial_\mu\phi_B\,\partial_\nu\phi_B .
+\]
+For an \(O(D)\)-symmetric bounce \(G_{\mu\nu}=(B/D)\delta_{\mu\nu}\) when
+the action is \(B\).  Internal symmetry or gauge zero modes require their own
+collective coordinates, stabilizer volumes, gauge fixing, ghost determinants,
+and orbit metrics.  A leading field-theory rate formula written as
+\[
+  \frac{\Gamma}{V_D}
+  =
+  K_{\rm FT}\ee^{-B}
+\]
+is conditional on the following data: existence of the bounce in the
+specified regulator, exactly one negative mode in the physical scalar sector,
+separation of all zero modes, a regulated nonzero-mode determinant ratio,
+renormalization of local counterterms, a dilute multi-bounce bound, and a
+real-time metastable state or resonance interpretation.  Finite-temperature
+activation and gravitational Coleman--De Luccia problems
+\cite{ColemanDeLuccia1980} are different problems: the state, boundary
+conditions, negative-mode analysis, and contour are not inherited unchanged
+from the zero-temperature flat-space calculation.
+
 \section{The Feynman Prescription}
 
 \begin{definition}[Wick-rotated free propagator poles]
