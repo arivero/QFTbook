@@ -9,7 +9,9 @@ lambda-phi-four potential-insertion source coordinate, the retained
 lambda-phi-four potential-noise coordinate using the full separated two-point
 function, retained Ward diagnostics for interacting source/noise coordinates,
 the full retained interacting stress-tensor/noise package with component
-cross-covariances and finite composite-operator mixing,
+cross-covariances and finite composite-operator mixing, the closed-time-path
+influence-functional consistency of the interacting mean, retarded response,
+and noise package,
 the small-gain stability and fluctuation-validity check for the linearized
 interacting backreaction operator,
 and the low-energy root selected by reduction of order in a toy
@@ -25,16 +27,19 @@ two-point cross covariance and metric pushforward, the restricted
 finite-renormalization ledger for that coordinate, the finite retained
 Ward-diagnostic/projected-noise algebra for interacting sources, and the
 full interacting package algebra in which component cross-covariances and
-finite operator-mixing terms are required before Ward tests are applied to
-the noise, the small-gain feedback inverse and noise-amplification bound for
-the full retained backreaction operator, and the low-energy root selected by
-reduction of order.
+finite operator-mixing terms are required before Ward tests are applied to the
+noise, the closed-time-path package tests tying Ward identities, retarded
+support, positivity, and fluctuation-dissipation compatibility together, the
+small-gain feedback inverse and noise-amplification bound for the full retained
+backreaction operator, and the low-energy root selected by reduction of order.
 Independent construction: the checks recompute traces, KMS factors,
 matrix pushforwards, exact retained-sector inverses, Wick-contraction
 coefficients, cosmological-coordinate shifts, independent finite counterterm
 controls, signed/absolute norm bounds, Ward maps, kernel projectors, projected
-covariances, small-gain inverses, response/noise bounds, and toy roots
-directly from finite formulas rather than importing chapter display strings.
+covariances, finite influence-functional quadratic forms, retarded-support
+tests, fluctuation-dissipation ratios, small-gain inverses, response/noise
+bounds, and toy roots directly from finite formulas rather than importing
+chapter display strings.
 Imported assumptions: the tests use finite-dimensional retained sectors,
 centered quasifree Wick combinatorics, formal first- and second-order lambda
 coordinates, positive finite noise matrices, full-rank finite Ward maps, and the
@@ -50,9 +55,11 @@ violation, wrong-sign Ward repairs, identifying the least-norm projection with
 the physical completion, identifying projected partial noise with full physical
 noise, unprojected longitudinal noise, cutoff-scale higher-derivative roots,
 component-variance-only noise packages, missing finite-renormalization cross
-terms, and c-number counterterms incorrectly added to connected noise are
-rejected, as are singular feedback operators, overlarge small-gain feedback,
-unconserved sources/noise, and conserved-but-unstable retained data.
+terms, c-number counterterms incorrectly added to connected noise, advanced
+response kernels, independent noise spectra violating the KMS factor, and
+spurious closed-time-path h_c h_c terms are rejected, as are singular feedback
+operators, overlarge small-gain feedback, unconserved sources/noise, and
+conserved-but-unstable retained data.
 Scope boundary: a pass checks coefficient, positivity, and response-bound
 bookkeeping for the retained potential-insertion coordinate and the finite
 algebra of a full retained stress-tensor package; it does not construct the
@@ -82,6 +89,11 @@ def assert_close(
     tol: float = 1e-10,
 ) -> None:
     _assert_close(label, got, expected, tol=tol)
+
+
+def assert_equal(label: str, got: object, expected: object) -> None:
+    if got != expected:
+        raise AssertionError(f"{label}: got {got!r}, expected {expected!r}")
 
 
 def transpose(matrix: Matrix) -> Matrix:
@@ -753,6 +765,115 @@ def check_interacting_stress_tensor_noise_package() -> None:
         raise AssertionError("finite-mixed full noise should satisfy the Ward column condition")
 
 
+def check_interacting_influence_functional_consistency() -> None:
+    # The mean source, retarded feedback kernel, and connected noise should be
+    # derivative data of one retained closed-time-path influence functional.
+    ward: Matrix = ((Fraction(1), -Fraction(1)),)
+    source: Matrix = ((Fraction(3),), (Fraction(3),))
+    retarded_response: Matrix = (
+        (Fraction(1, 5), Fraction(1, 5)),
+        (Fraction(1, 5), Fraction(1, 5)),
+    )
+    noise: Matrix = (
+        (Fraction(2), Fraction(2)),
+        (Fraction(2), Fraction(2)),
+    )
+
+    if matmul(ward, source) != zero_matrix(1, 1):
+        raise AssertionError("interacting CTP source should be Ward-clean")
+    if matmul(ward, retarded_response) != zero_matrix(1, 2):
+        raise AssertionError("interacting CTP retarded kernel should have no longitudinal row")
+    if matmul(retarded_response, transpose(ward)) != zero_matrix(2, 1):
+        raise AssertionError("interacting CTP retarded kernel should have no longitudinal column")
+    if matmul(ward, noise) != zero_matrix(1, 2):
+        raise AssertionError("interacting CTP noise should have no longitudinal row")
+    if matmul(noise, transpose(ward)) != zero_matrix(2, 1):
+        raise AssertionError("interacting CTP noise should have no longitudinal column")
+
+    physical_test: Matrix = ((Fraction(2),), (Fraction(2),))
+    longitudinal_test: Matrix = ((Fraction(1),), (-Fraction(1),))
+    if quadratic_form(noise, physical_test) <= 0:
+        raise AssertionError("interacting CTP noise should be positive on physical tests")
+    if quadratic_form(noise, longitudinal_test) != 0:
+        raise AssertionError("interacting CTP noise should vanish on pure Ward tests")
+
+    center: Matrix = ((Fraction(5),), (Fraction(7),))
+    difference: Matrix = ((Fraction(1),), (Fraction(2),))
+
+    def influence_quadratic(h_delta: Matrix, h_center: Matrix) -> tuple[Fraction, Fraction]:
+        real_part = (
+            matmul(transpose(h_delta), source)[0][0]
+            + matmul(matmul(transpose(h_delta), retarded_response), h_center)[0][0]
+        )
+        imaginary_part = Fraction(1, 2) * quadratic_form(noise, h_delta)
+        return real_part, imaginary_part
+
+    assert_equal(
+        "closed-time-path normalization removes equal-branch influence",
+        influence_quadratic(zero_matrix(2, 1), center),
+        (Fraction(0), Fraction(0)),
+    )
+    assert_equal(
+        "pure Ward difference direction decouples from CTP package",
+        influence_quadratic(longitudinal_test, center),
+        (Fraction(0), Fraction(0)),
+    )
+    real_part, imaginary_part = influence_quadratic(difference, center)
+    assert_equal("interacting CTP real quadratic coordinate", real_part, Fraction(81, 5))
+    assert_equal("interacting CTP imaginary noise coordinate", imaginary_part, Fraction(9))
+
+    h_c_only_term = quadratic_form(
+        ((Fraction(1), Fraction(0)), (Fraction(0), Fraction(1))),
+        center,
+    )
+    if h_c_only_term == 0:
+        raise AssertionError("test h_c h_c term should be visible")
+    assert_equal(
+        "spurious h_c h_c term would violate CTP normalization",
+        h_c_only_term == influence_quadratic(zero_matrix(2, 1), center)[1],
+        False,
+    )
+
+    def is_retarded_time_kernel(kernel: Matrix) -> bool:
+        return all(
+            kernel[row][col] == 0
+            for row in range(len(kernel))
+            for col in range(row + 1, len(kernel[0]))
+        )
+
+    retarded_time_kernel: Matrix = (
+        (Fraction(1), Fraction(0), Fraction(0)),
+        (Fraction(2), Fraction(3), Fraction(0)),
+        (Fraction(4), Fraction(5), Fraction(6)),
+    )
+    advanced_polluted_kernel: Matrix = (
+        (Fraction(1), Fraction(0), Fraction(7)),
+        (Fraction(2), Fraction(3), Fraction(0)),
+        (Fraction(4), Fraction(5), Fraction(6)),
+    )
+    assert_equal(
+        "finite CTP response has retarded support",
+        is_retarded_time_kernel(retarded_time_kernel),
+        True,
+    )
+    assert_equal(
+        "advanced response pollution is rejected",
+        is_retarded_time_kernel(advanced_polluted_kernel),
+        False,
+    )
+
+    spectral_density = Fraction(6, 7)
+    coth_half_beta_omega = Fraction(5, 3)
+    kms_noise = Fraction(1, 2) * coth_half_beta_omega * spectral_density
+    assert_equal("interacting CTP KMS noise spectrum", kms_noise, Fraction(5, 7))
+    independently_chosen_noise = Fraction(4, 7)
+    assert_equal(
+        "independent noise spectrum violates retained FDT package",
+        independently_chosen_noise == kms_noise,
+        False,
+    )
+
+
 def check_backreaction_small_gain_stability() -> None:
     # Finite retained model for D_full = D0 - R_ret and
     # D_full^{-1} = (I - D0^{-1} R_ret)^{-1} D0^{-1}.
@@ -901,6 +1022,7 @@ def main() -> None:
     check_lambda_phi4_potential_noise_kernel()
     check_retained_interacting_source_ward_diagnostics()
     check_interacting_stress_tensor_noise_package()
+    check_interacting_influence_functional_consistency()
     check_backreaction_small_gain_stability()
     check_reduction_of_order_toy_model()
     print("All semiclassical backreaction checks passed.")

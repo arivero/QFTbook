@@ -2085,8 +2085,12 @@ Current checks:
   cross-covariances and finite composite-operator-mixing cross terms are
   required before Ward-clean mean/noise data are fed into the metric response,
   with c-number counterterm noise rejected even though it can pass the Ward
-  test, the small-gain stability check for the full retained backreaction
-  operator with exact feedback inverse, Ward-clean source/noise tests,
+  test, the closed-time-path influence-functional consistency checks tying the
+  interacting mean source, retarded kernel, and connected noise to one package
+  with Ward identities, retarded support, noise positivity, equal-branch
+  normalization, and KMS/FDT compatibility, the small-gain stability check for
+  the full retained backreaction operator with exact feedback inverse,
+  Ward-clean source/noise tests,
   noise-amplification and missing-noise residual bounds, and negative controls
   for singular feedback, overlarge feedback, unconserved inputs, and
   conserved-but-unstable amplification, and the

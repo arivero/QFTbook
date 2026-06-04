@@ -1371,6 +1371,88 @@ residual bounds for the missing state, product-extension, Ward, response, and
 finite-renormalization data.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Closed-time-path consistency of the interacting
+backreaction package]
+\label{ca:semiclassical-interacting-influence-package}
+The three entries in
+\eqref{eq:semiclassical-full-interacting-package} should be viewed as
+derivatives of one renormalized closed-time-path influence functional, not as
+three independently fitted matrices.  On the retained sector write
+\[
+  h_c=\frac12(h_++h_-),
+  \qquad
+  h_\Delta=h_+-h_- .
+\]
+After the state, product extension, local counterterms, and Ward reduction have
+all been fixed in the same prescription, the quadratic influence functional has
+the retained form
+\begin{equation}
+\begin{aligned}
+  \Gamma_{\rm IF}^{(2)}
+  &=
+  \int h_\Delta^a j_a^{\rm full}
+  +
+  \int h_\Delta^a\,
+       \mathsf R^{\rm ret}_{ab}\,
+       h_c^b
+  +
+  \frac{\ii}{2}
+  \int h_\Delta^a\,
+       \mathsf N_{ab}^{\rm full}\,
+       h_\Delta^b
+  +R_{\rm IF}.
+\end{aligned}
+  \label{eq:semiclassical-ctp-influence-package}
+\end{equation}
+Here \(\mathsf R^{\rm ret}\) is the same interacting retarded stress response
+used in \(\mathsf D_{\rm full}=\mathsf D_0-\mathsf R^{\rm ret}\), including
+the declared local metric-variation terms, and \(R_{\rm IF}\) is the residual
+from omitted products, higher cumulants, higher metric powers, and truncation
+outside the retained window.
+
+The form \eqref{eq:semiclassical-ctp-influence-package} encodes four physical
+requirements.  First, normalization of the closed time path gives
+\(\Gamma_{\rm IF}[h,h]=0\); hence there is no standalone \(h_c h_c\) kernel
+and no mean term linear in \(h_c\).  Second, causality puts
+\(\mathsf R^{\rm ret}_{ab}(t,t')=0\) unless the support of \(\tau_a\) lies in
+the causal future of the support of \(\tau_b\).  Third, the imaginary quadratic
+part is a covariance:
+\begin{equation}
+  v^a\mathsf N_{ab}^{\rm full}v^b\ge0
+  \qquad
+  \text{for every real retained test vector }v .
+  \label{eq:semiclassical-ctp-noise-positivity}
+\end{equation}
+Fourth, diffeomorphism covariance acts on the whole package:
+\begin{equation}
+  \mathsf B j^{\rm full}=0,\qquad
+  \mathsf B\mathsf R^{\rm ret}=0,\qquad
+  \mathsf R^{\rm ret}\mathsf B^*=0,\qquad
+  \mathsf B\mathsf N^{\rm full}=0,\qquad
+  \mathsf N^{\rm full}\mathsf B^*=0
+  \label{eq:semiclassical-ctp-package-ward}
+\end{equation}
+after reduction to the retained Ward-clean sector.  In a stationary KMS state,
+the same package must also satisfy the fluctuation--dissipation relation
+\eqref{eq:semiclassical-fdt} for the interacting stress tensor in the chosen
+scheme.  Thus a positive noise matrix and a causal retarded matrix are not yet
+enough: their spectral parts must be compatible with the same state.
+
+Once \eqref{eq:semiclassical-ctp-noise-positivity} holds, the
+Einstein--Langevin source is the Hubbard--Stratonovich representative of the
+imaginary part of \(\Gamma_{\rm IF}^{(2)}\):
+\[
+  \langle\xi_a\xi_b\rangle=\mathsf N^{\rm full}_{ab}.
+\]
+The stochastic equation is therefore not an additional assumption placed on top
+of the interacting stress calculation.  It is the real-noise representation of
+the same influence functional whose real part supplies the mean source and the
+retarded dissipative kernel.  Any calculation that supplies \(j^{\rm full}\),
+\(\mathsf N^{\rm full}\), and \(\mathsf R^{\rm ret}\) from different schemes,
+or supplies a Ward-clean noise with an unrelated retarded kernel, has not yet
+defined an interacting semiclassical backreaction datum.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Backreaction small-gain stability]
 \label{ca:semiclassical-backreaction-small-gain-stability}
 The interacting package above is still only source data until the metric

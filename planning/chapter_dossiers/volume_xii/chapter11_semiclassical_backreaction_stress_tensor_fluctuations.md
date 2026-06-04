@@ -45,6 +45,9 @@ recording fluctuation data required for controlled backreaction.
   stress tensor, its retained retarded response kernel, and the component
   covariance/cross-covariance entries required to assemble full interacting
   stress-tensor noise.
+- `Gamma_IF`, `h_c`, `h_Delta`, `R_IF`: retained closed-time-path influence
+  functional, average/difference metric perturbations, and the residual outside
+  the quadratic interacting backreaction package.
 - `D_0`, `R^{ret}`, `D_full`, `eta_I`: the reduced gravitational/local-contact
   operator, retained interacting stress-tensor feedback, full linearized
   backreaction operator, and small-gain parameter on a frequency window.
@@ -121,6 +124,14 @@ recording fluctuation data required for controlled backreaction.
   Thus Ward-clean retained data are accepted as physical backreaction inputs
   only after the full pAQFT stress tensor and its renormalized products, or
   controlled residuals for the missing entries, have been supplied.
+- Adds the closed-time-path consistency layer for the interacting package.  The
+  retained quadratic influence functional in `h_Delta,h_c` has one mean source,
+  one retarded kernel, and one positive connected-noise covariance, with no
+  standalone `h_c h_c` term after equal-branch normalization.  The same package
+  must satisfy retarded support, Ward identities for source/response/noise, and
+  the KMS fluctuation-dissipation relation in stationary states; otherwise the
+  Langevin noise and dissipative feedback have been assembled from different
+  theories rather than from one interacting stress tensor.
 - Adds the retained small-gain stability layer for interacting backreaction:
   after the full source/noise/response package is fixed in one scheme, the
   full linearized operator is `D_full=D_0-R^{ret}`.  A finite frequency window
@@ -156,7 +167,10 @@ recording fluctuation data required for controlled backreaction.
   retained interacting stress-tensor/noise package with component
   cross-covariances, finite composite-operator-mixing cross terms, and a
   c-number connected-noise negative control that can still pass the Ward test,
-  the small-gain feedback inverse for the full retained backreaction operator,
+  the closed-time-path influence-package test tying mean source, retarded
+  response, and connected noise to equal-branch normalization, retarded support,
+  Ward identities, positivity, and KMS/FDT compatibility, the small-gain
+  feedback inverse for the full retained backreaction operator,
   Ward-clean source/noise inputs, mean-response and noise-amplification
   bounds, residual missing-noise trace propagation, and singular-feedback,
   overlarge-feedback, unconserved-input, and conserved-but-unstable
@@ -241,6 +255,14 @@ curvature, microscopic, and EFT scales.
   Ward-clean full noise, finite operator mixing changes noise through cross
   terms, and c-number curvature counterterms must not be inserted into
   connected noise even when the resulting wrong covariance remains Ward-clean.
+- 2026-06-04 issue #729 influence-package pass: added
+  `ca:semiclassical-interacting-influence-package`, which requires the
+  interacting mean source, retarded response, and connected noise to arise as
+  the quadratic closed-time-path derivative data of one scheme-fixed influence
+  functional.  The companion checks equal-branch normalization, Ward-clean
+  source/response/noise, retarded time support, positive noise, a pure-Ward
+  decoupling direction, KMS/FDT noise normalization, and negative controls for
+  advanced support, independent noise spectra, and spurious `h_c h_c` terms.
 - 2026-06-04 issue #729 small-gain pass: added
   `ca:semiclassical-backreaction-small-gain-stability`, which turns the
   scheme-fixed interacting source/noise/response package into an actual
