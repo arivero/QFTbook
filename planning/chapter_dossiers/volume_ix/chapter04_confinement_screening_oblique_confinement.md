@@ -26,6 +26,11 @@
 - Records the variational endpoint-screening bound: finite-mass screened
   endpoint trial states bound the large-separation static energy and rule out
   a positive asymptotic linear potential for the screened charge.
+- Adds a Wilson-loop string-breaking spectral certificate: the single
+  Wilson-loop channel may stay flux-tube dominated over a finite Euclidean-time
+  window even when the screened broken-string state is the static ground state,
+  so resolving string breaking requires a full-rank correlator basis, spectral
+  tails, and entry-error margins.
 - Proves the strong-coupling lattice area mechanism from character expansion,
   Haar projection, surface selection, and the convergent-polymer hypothesis.
 - Adds the controlled three-dimensional Polyakov monopole-gas mechanism:
@@ -52,6 +57,8 @@
 | \(\mathcal C_{\rm top}\) | residual topological charges, \(S^\perp/S\) |
 | \(L_\gamma^{\rm ren}(C)\) | renormalized line operator on contour \(C\) |
 | \(V_\gamma(L)\) | rectangular-loop static potential |
+| \(O_{\rm F}(L)\), \(O_{\rm B}(L)\) | flux-tube and broken-string trial operators in a static-source sector |
+| \(C_{ij}(L,T)\), \(Z_{in}(L)\) | static-source correlator matrix and spectral overlap matrix |
 | \(\varphi,\zeta_{\rm M},\kappa_{\rm d},m_\gamma,\sigma_{\rm P}\) | Polyakov dual photon, monopole fugacity, dual kinetic coefficient, dual-photon mass, and wall/string tension in the controlled 3D monopole-gas mechanism |
 | \(K\) | isotropic condensed charge subgroup |
 | \(K^\perp\) | finite charges with trivial braiding against \(K\) |
@@ -68,18 +75,22 @@
    static potential with the bottom of the static-source spectrum.
 5. Endpoint screening by finite-energy dynamical particles bounds the static
    potential at large separation.
-6. Strong-coupling lattice area behavior follows from Haar projection forcing
+6. In a theory with dynamical screening fields, a single finite-time Wilson
+   loop is not a confinement order parameter: the flux-tube overlap can hide the
+   broken-string ground state unless a full-rank flux/broken-string correlator
+   matrix and GEVP extraction resolve both states.
+7. Strong-coupling lattice area behavior follows from Haar projection forcing
    plaquette surfaces ending on the loop, plus convergence of the polymer
    expansion.
-7. In the controlled three-dimensional compact-Abelian semiclassical window,
+8. In the controlled three-dimensional compact-Abelian semiclassical window,
    primitive monopoles generate a dual-photon sine-Gordon potential, a mass
    gap, and a calculable Wilson-loop area coefficient
    \(\sigma_{\rm P}=8\kappa_{\rm d}m_\gamma\).  This is not a derivation of
    four-dimensional Yang--Mills confinement.
-8. Oblique confinement is the finite Dirac-pairing criterion for a dyonic
+9. Oblique confinement is the finite Dirac-pairing criterion for a dyonic
    condensate \(K=\langle(p,1)\rangle\), with unconfined finite charges
    obeying \(e\equiv pm\pmod N\).
-9. The continuum confinement criterion remains an open theorem-level target,
+10. The continuum confinement criterion remains an open theorem-level target,
    not a definition.
 
 ## Figures
@@ -95,7 +106,10 @@
   orthogonal complements, maximal isotropic dyonic condensates, the oblique
   condition \(e\equiv pm\pmod N\), non-mutual-locality of simultaneous
   electric/magnetic generators, and the normalization algebra of the 3D
-  Polyakov monopole-gas area law.
+  Polyakov monopole-gas area law.  It also checks the finite string-breaking
+  spectral model behind the Wilson-loop certificate: finite-time flux
+  dominance despite a screened ground state, exact two-channel GEVP roots,
+  rank-one basis failure, and an omitted-tail entry bound.
 
 ## Audit Notes
 
@@ -108,3 +122,6 @@
   mass, the sine-Gordon wall tension, and the Wilson-loop area coefficient
   from monopole fugacity data, while explicitly distinguishing this mechanism
   from any uncontrolled four-dimensional instanton-liquid confinement claim.
+- 2026-06-04 QCD confinement-diagnostics pass: added the string-breaking
+  spectral certificate to separate finite-time Wilson-loop area signals from
+  the asymptotic screened static energy, with an exact finite companion check.

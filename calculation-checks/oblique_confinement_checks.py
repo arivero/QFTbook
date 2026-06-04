@@ -10,8 +10,10 @@ the arithmetic behind screening quotients, orthogonal complements of
 condensates, and the dyonic unconfined direction in oblique confinement.  The
 script also checks the finite algebra in the controlled three-dimensional
 Polyakov monopole-gas mechanism: dual-photon mass normalization, sine-Gordon
-wall first-order identities, and the area-law/static-potential extraction.
-It does not simulate a gauge theory or prove that a condensate forms.
+wall first-order identities, and the area-law/static-potential extraction.  A
+separate finite transfer-matrix model checks the string-breaking spectral
+certificate for Wilson-loop diagnostics.  It does not simulate a gauge theory
+or prove that a condensate forms.
 """
 
 from __future__ import annotations
@@ -20,11 +22,32 @@ from fractions import Fraction
 from itertools import product
 
 Charge = tuple[int, int]
+Matrix = list[list[Fraction]]
 
 
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+
+
+def assert_true(name: str, condition: bool) -> None:
+    if not condition:
+        raise AssertionError(name)
+
+
+def det2(matrix: Matrix) -> Fraction:
+    return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+
+
+def matrix_scale(coefficient: Fraction, matrix: Matrix) -> Matrix:
+    return [[coefficient * entry for entry in row] for row in matrix]
+
+
+def matrix_sub(lhs: Matrix, rhs: Matrix) -> Matrix:
+    return [
+        [lhs[row][col] - rhs[row][col] for col in range(2)]
+        for row in range(2)
+    ]
 
 
 def add_charge(n: int, lhs: Charge, rhs: Charge) -> Charge:
@@ -203,6 +226,154 @@ def check_polyakov_monopole_gas_wall_tension() -> None:
     )
 
 
+def two_state_correlator(
+    overlap: Matrix,
+    transfer_eigenvalues: tuple[Fraction, Fraction],
+    time: int,
+) -> Matrix:
+    return [
+        [
+            sum(
+                overlap[row][state]
+                * overlap[col][state]
+                * transfer_eigenvalues[state] ** time
+                for state in range(2)
+            )
+            for col in range(2)
+        ]
+        for row in range(2)
+    ]
+
+
+def one_channel_correlator(
+    string_overlap: Fraction,
+    broken_overlap: Fraction,
+    string_eigenvalue: Fraction,
+    broken_eigenvalue: Fraction,
+    time: int,
+) -> Fraction:
+    return (
+        string_overlap * string_overlap * string_eigenvalue**time
+        + broken_overlap * broken_overlap * broken_eigenvalue**time
+    )
+
+
+def generalized_characteristic_value(
+    overlap: Matrix,
+    transfer_eigenvalues: tuple[Fraction, Fraction],
+    time: int,
+    test_eigenvalue: Fraction,
+) -> Fraction:
+    c_now = two_state_correlator(overlap, transfer_eigenvalues, time)
+    c_next = two_state_correlator(overlap, transfer_eigenvalues, time + 1)
+    return det2(matrix_sub(c_next, matrix_scale(test_eigenvalue, c_now)))
+
+
+def check_string_breaking_spectral_certificate() -> None:
+    string_eigenvalue = Fraction(1, 5)
+    broken_eigenvalue = Fraction(1, 3)
+    transfer_eigenvalues = (string_eigenvalue, broken_eigenvalue)
+    assert_true(
+        "broken-string state is the lower static energy in transfer ordering",
+        broken_eigenvalue > string_eigenvalue,
+    )
+
+    # A Wilson-loop-like flux operator may have tiny overlap with the broken
+    # ground state, so its finite-time effective eigenvalue can look string-like.
+    string_overlap = Fraction(1)
+    broken_overlap = Fraction(1, 20)
+    midpoint = (string_eigenvalue + broken_eigenvalue) / 2
+    early_time = 1
+    late_time = 12
+    early_effective = one_channel_correlator(
+        string_overlap,
+        broken_overlap,
+        string_eigenvalue,
+        broken_eigenvalue,
+        early_time + 1,
+    ) / one_channel_correlator(
+        string_overlap,
+        broken_overlap,
+        string_eigenvalue,
+        broken_eigenvalue,
+        early_time,
+    )
+    late_effective = one_channel_correlator(
+        string_overlap,
+        broken_overlap,
+        string_eigenvalue,
+        broken_eigenvalue,
+        late_time + 1,
+    ) / one_channel_correlator(
+        string_overlap,
+        broken_overlap,
+        string_eigenvalue,
+        broken_eigenvalue,
+        late_time,
+    )
+    assert_true(
+        "short-time Wilson channel still looks flux-tube dominated",
+        early_effective < midpoint,
+    )
+    assert_true(
+        "late-time Wilson channel tends toward the screened ground state",
+        late_effective > midpoint,
+    )
+
+    # Adding a broken-string trial operator gives an invertible overlap matrix.
+    overlap = [
+        [Fraction(1), Fraction(1, 20)],
+        [Fraction(1, 10), Fraction(1)],
+    ]
+    assert_equal("string-breaking overlap determinant", det2(overlap), Fraction(199, 200))
+    time = 3
+    c_now = two_state_correlator(overlap, transfer_eigenvalues, time)
+    assert_true("two-channel correlator is full rank", det2(c_now) > 0)
+    for eigenvalue in transfer_eigenvalues:
+        assert_equal(
+            f"GEVP characteristic vanishes at retained eigenvalue {eigenvalue}",
+            generalized_characteristic_value(overlap, transfer_eigenvalues, time, eigenvalue),
+            Fraction(0),
+        )
+
+    # A rank-one basis cannot distinguish the flux-tube and broken-string levels.
+    rank_one_overlap = [
+        [Fraction(1), Fraction(1, 20)],
+        [Fraction(2), Fraction(1, 10)],
+    ]
+    assert_equal("rank-one overlap determinant", det2(rank_one_overlap), Fraction(0))
+    assert_equal(
+        "rank-one correlator determinant",
+        det2(two_state_correlator(rank_one_overlap, transfer_eigenvalues, time)),
+        Fraction(0),
+    )
+
+    # A higher retained-energy tail gives an entrywise perturbation bounded by
+    # the largest omitted overlap product times its transfer eigenvalue.
+    tail_eigenvalue = Fraction(1, 7)
+    tail_overlaps = [Fraction(1, 4), Fraction(1, 5)]
+    tail_matrix = [
+        [
+            tail_overlaps[row] * tail_overlaps[col] * tail_eigenvalue**time
+            for col in range(2)
+        ]
+        for row in range(2)
+    ]
+    tail_entry_bound = max(tail_overlaps) ** 2 * tail_eigenvalue**time
+    for row in range(2):
+        for col in range(2):
+            assert_true(
+                f"string-breaking tail entry bound ({row},{col})",
+                abs(tail_matrix[row][col]) <= tail_entry_bound,
+            )
+    measurement_entry_error = Fraction(1, 10000)
+    gap_margin = broken_eigenvalue - string_eigenvalue
+    assert_true(
+        "declared entry budget is below the transfer gap margin",
+        tail_entry_bound + measurement_entry_error < gap_margin / 10,
+    )
+
+
 def main() -> None:
     check_screened_pairing_descends()
     check_maximal_isotropic_axes_and_dyons()
@@ -210,6 +381,7 @@ def main() -> None:
     check_magnetic_condensation_confines_electric_nality()
     check_nonisotropic_pair_cannot_condense_together()
     check_polyakov_monopole_gas_wall_tension()
+    check_string_breaking_spectral_certificate()
     print("All oblique-confinement finite charge checks passed.")
 
 

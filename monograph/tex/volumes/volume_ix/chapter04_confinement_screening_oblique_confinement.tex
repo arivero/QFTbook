@@ -272,6 +272,85 @@ creation.  Fredenhagen--Marcu type ratios, defined in
 Chapter~\ref{ch:global-phases-of-gauge-theories}, measure a different
 overlap after dividing out the universal flux cost.
 
+\begin{controlledapproximation}[Wilson-loop string-breaking spectral
+certificate]
+\label{ca:wilson-loop-string-breaking-spectral-certificate}
+Assume a reflection-positive regulator and a transfer matrix in the sector
+with a static charge-anticharge pair of separation \(L\).  Let
+\(O_{\rm F}(L)\) be a gauge-invariant operator with large overlap on an
+unbroken flux-tube trial state, and let \(O_{\rm B}(L)\) be a gauge-invariant
+operator whose endpoints are dressed by the dynamical screening fields.  The
+measured object is then a correlator matrix,
+\begin{equation}
+  C_{ij}(L,T)
+  =
+  \langle O_i(L)^\dagger e^{-T(H_L-E_0)}O_j(L)\rangle,
+  \qquad i,j\in\{{\rm F},{\rm B}\}.
+  \label{eq:string-breaking-correlator-matrix}
+\end{equation}
+Its spectral form is
+\begin{equation}
+  C_{ij}(L,T)
+  =
+  \sum_n Z_{in}(L)\overline{Z_{jn}(L)}\,e^{-E_n(L)T},
+  \qquad
+  Z_{in}(L)=\langle n,L|O_i(L)|\Omega\rangle .
+  \label{eq:string-breaking-spectral-matrix}
+\end{equation}
+In a string-breaking window the two lowest relevant energies have the
+asymptotic form
+\[
+  E_{\rm s}(L)=\sigma L+\mu+o(1),
+  \qquad
+  E_{\rm b}(L)=2M_{\rm scr}+o(1).
+\]
+The ground static energy is the lower of these levels, with an avoided crossing
+once mixing is included.  The diagonal Wilson-loop channel \(C_{{\rm F}{\rm F}}\)
+need not reveal that ground state at accessible \(T\): if
+\(|Z_{{\rm F}{\rm b}}|\) is small, then the flux-tube term can dominate
+\(C_{{\rm F}{\rm F}}(L,T)\) over a long finite interval even when
+\(E_{\rm b}(L)<E_{\rm s}(L)\).
+
+A controlled string-breaking extraction therefore has to state more than an
+area fit to one loop.  On a declared operator space it supplies a retained
+two-state matrix
+\begin{equation}
+  C^{(0)}(L,T)
+  =
+  Z(L)
+  \begin{pmatrix}
+    e^{-E_{\rm s}(L)T} & 0\\
+    0 & e^{-E_{\rm b}(L)T}
+  \end{pmatrix}
+  Z(L)^* ,
+  \qquad |\det Z(L)|\ge d(L)>0,
+  \label{eq:string-breaking-retained-two-state-matrix}
+\end{equation}
+plus a spectral-tail bound
+\(\|C(L,T)-C^{(0)}(L,T)\|\le \tau(L,T)\) and measurement/renormalization
+entry errors small compared with the rank and gap margins.  In a time-lattice
+normalization the variational transfer problem
+\begin{equation}
+  C(L,T+a_t)v_n
+  =
+  \lambda_n(L,T)\,C(L,T)v_n
+  \label{eq:string-breaking-gevp}
+\end{equation}
+then returns \(\lambda_n=e^{-a_tE_n(L)}\) for the retained matrix, with errors
+controlled by the declared tail and entry budgets.  The static potential is an
+eigenvalue statement in this matrix problem, not the slope of a single
+finite-\(T\) Wilson-loop plateau.
+
+This is the diagnostic distinction between center confinement and string
+breaking.  If an exact center one-form symmetry forbids a dynamical endpoint of
+the relevant \(N\)-ality, no broken-string state lies in the same static-source
+sector and an area law can be an order parameter after the remaining infrared
+hypotheses are supplied.  If dynamical fundamental matter screens that
+\(N\)-ality, the broken-string channel is present; a finite-window area signal
+then measures overlap with an excited flux tube unless the correlator basis and
+spectral extraction actually resolve the screened ground state.
+\end{controlledapproximation}
+
 \section{Strong-Coupling Lattice Area Law}
 
 Consider a hypercubic Euclidean lattice gauge theory with compact group

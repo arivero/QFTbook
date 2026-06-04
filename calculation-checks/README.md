@@ -1447,7 +1447,11 @@ Current checks:
   monopole-gas mechanism: \(m_\gamma^2=2\zeta_{\rm M}/\kappa_{\rm d}\),
   the sine-Gordon wall first-order identity, \(\sigma_{\rm P}^2=
   128\kappa_{\rm d}\zeta_{\rm M}\), and the rectangular-loop extraction of
-  \(V(L)=\sigma_{\rm P}L\).
+  \(V(L)=\sigma_{\rm P}L\).  The same companion checks a finite
+  string-breaking spectral certificate: a single Wilson-loop channel can look
+  flux-tube dominated at short Euclidean time even when the screened state is
+  the ground state, while a full-rank flux/broken-string correlator matrix
+  recovers both transfer eigenvalues and a rank-one basis fails.
 - `duality_defect_gauging_checks.py`: exact finite checks for the finite
   gauging and duality-defect chapter, including the regular algebra identity
   \(A_H\otimes A_H=|H|A_H\), normality of \(A_3\triangleleft S_3\), the
