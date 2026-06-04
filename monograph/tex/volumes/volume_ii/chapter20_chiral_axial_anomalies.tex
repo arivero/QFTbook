@@ -8546,6 +8546,71 @@ baryon/lepton washout rate requires the separate sphaleron diffusion problem
 and the plasma susceptibility.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Constrained susceptibility entering
+electroweak washout]
+\label{ca:electroweak-constrained-washout-susceptibility}
+The susceptibility in
+\eqref{eq:electroweak-sphaleron-bplusl-relaxation} is itself an observable
+thermodynamic input.  Let \(n_i\) be a finite list of slow charge densities in
+the plasma, with quadratic free-energy density
+\begin{equation}
+  f(n)=\frac12 n_i(\chi^{-1})_{ij}n_j,
+  \label{eq:electroweak-charge-free-energy-matrix}
+\end{equation}
+where \(\chi\) is the static susceptibility matrix after fast reactions have
+been equilibrated.  Let \(X=w_i n_i\) be the charge coordinate washed out by
+sphalerons, and impose independent exactly conserved charges or neutrality
+conditions \(C_{\alpha i}n_i=0\), with \(C\chi C^T\) invertible on the
+constraint space.  The susceptibility of \(X\) on the constrained thermal
+subspace is the Schur complement
+\begin{equation}
+  \chi_{X\mid C}
+  =
+  w^T\chi w
+  -
+  w^T\chi C^T
+  (C\chi C^T)^{-1}
+  C\chi w .
+  \label{eq:electroweak-constrained-susceptibility}
+\end{equation}
+Equivalently, \(\chi_{X\mid C}\) is defined by minimizing
+\eqref{eq:electroweak-charge-free-energy-matrix} at fixed \(X\) and fixed
+conserved charges:
+\[
+  f_{\rm min}(X)=\frac{X^2}{2\chi_{X\mid C}}.
+\]
+Therefore
+\eqref{eq:electroweak-sphaleron-bplusl-relaxation} becomes
+\[
+  \frac{\dd n_X}{\dd t}
+  =
+  -
+  \frac{(2N_g)^2\Gamma_{\rm CS}}{\chi_{X\mid C}T}\,n_X
+\]
+when the only remaining slow departure from equilibrium is this constrained
+\(B+L\) coordinate.
+
+For two charges \(n=(n_B,n_L)\), diagonal susceptibilities
+\(\chi_B,\chi_L\), and fixed \(B-L\), this gives
+\begin{equation}
+  \chi_{B+L\mid B-L}
+  =
+  \chi_B+\chi_L
+  -
+  \frac{(\chi_B-\chi_L)^2}{\chi_B+\chi_L}
+  =
+  \frac{4\chi_B\chi_L}{\chi_B+\chi_L}.
+  \label{eq:electroweak-bl-projected-susceptibility}
+\end{equation}
+The naive \(\chi_B+\chi_L\) is correct only if \(B-L\) is allowed to fluctuate
+along with \(B+L\).  Conversely, if the imposed constraints already fix
+\(B+L\), the Schur complement vanishes and there is no washout coordinate for
+the sphaleron diffusion to relax.  This is another place where the Euclidean
+'t Hooft vertex is not enough: the anomaly supplies the charge step, but the
+rate coefficient is set by real-time diffusion and the constrained equilibrium
+thermodynamics of the plasma.
+\end{controlledapproximation}
+
 \section{Anomalous Pion Couplings}
 
 The axial anomaly has observable low-energy consequences.  In two-flavor QCD,

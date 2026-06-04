@@ -595,9 +595,11 @@ Current checks:
   the \(U(1)_A\)-odd zero-mode-zone channel after exact-topology density is
   removed, the electroweak instanton/sphaleron charge ledger and generic
   \(B+L\) relaxation rate
-  \((2N_g)^2\Gamma_{\rm CS}/(\chi_XT)\), Uhlenbeck boundary face codimensions
-  and product power-counting thresholds, and the \(k=1\) ADHM orientation
-  dimension and cone-volume power.
+  \((2N_g)^2\Gamma_{\rm CS}/(\chi_XT)\), including the constrained
+  susceptibility Schur complement after \(B-L\) or neutrality constraints are
+  projected out, Uhlenbeck boundary face codimensions and product
+  power-counting thresholds, and the \(k=1\) ADHM orientation dimension and
+  cone-volume power.
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
   gauge-Higgs soliton and collective-coordinate section, including the
   Bogomolny and vortex square completions, the Prasad-Sommerfield profile

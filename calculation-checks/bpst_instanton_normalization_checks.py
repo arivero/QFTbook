@@ -153,7 +153,9 @@ relations
     removed;
     electroweak instanton/sphaleron physics uses the same anomalous charge
     ledger, but the real-time B+L washout rate is q_X^2 Gamma_CS/(chi_X T),
-    with q_X=2N_g and B-L exactly conserved;
+    with q_X=2N_g and B-L exactly conserved; the susceptibility entering that
+    rate is the constrained Schur complement after conserved charges and
+    neutrality conditions have been projected out;
     the physical instanton correlator contribution is the top Berezin
     coefficient after operator, mass/source, and zero-mode factors are
     restricted to the instanton zero-mode subspace, giving the full flavor
@@ -4278,6 +4280,54 @@ def check_electroweak_sphaleron_response_ledger() -> None:
     assert_equal(
         "no real-time sphaleron diffusion gives no washout despite vertex selection rule",
         delta_x * delta_x * zero_sphaleron_rate / (susceptibility * temperature),
+        Fraction(0),
+    )
+
+    # The susceptibility in the washout rate is the thermodynamic
+    # susceptibility after exact conserved charges have been projected out.
+    chi_b = Fraction(2)
+    chi_l = Fraction(3)
+    unconstrained_chi_x = chi_b + chi_l
+    w_chi_c = chi_b - chi_l
+    c_chi_c = chi_b + chi_l
+    constrained_chi_x = unconstrained_chi_x - w_chi_c * w_chi_c / c_chi_c
+    direct_fixed_b_minus_l_chi = 4 * chi_b * chi_l / (chi_b + chi_l)
+    assert_equal(
+        "electroweak constrained B+L susceptibility Schur complement",
+        constrained_chi_x,
+        direct_fixed_b_minus_l_chi,
+    )
+    assert_equal(
+        "electroweak fixed B-L susceptibility value",
+        constrained_chi_x,
+        Fraction(24, 5),
+    )
+
+    projected_relaxation_rate = (
+        delta_x * delta_x * gamma_cs / (constrained_chi_x * temperature)
+    )
+    projected_drift = -projected_relaxation_rate * x_density
+    projected_chemical_potential = x_density / constrained_chi_x
+    assert_equal(
+        "projected susceptibility gives detailed-balance drift",
+        projected_drift,
+        -delta_x * gamma_cs * (delta_x * projected_chemical_potential) / temperature,
+    )
+    assert_equal(
+        "unconstrained susceptibility differs when B-L is fixed",
+        unconstrained_chi_x == constrained_chi_x,
+        False,
+    )
+
+    # If a constraint already fixes B+L, the Schur complement vanishes: there
+    # is no independent B+L coordinate for the sphaleron diffusion to relax.
+    fixed_x_projected_chi = (
+        unconstrained_chi_x
+        - unconstrained_chi_x * unconstrained_chi_x / unconstrained_chi_x
+    )
+    assert_equal(
+        "fixed B+L constraint removes washout susceptibility",
+        fixed_x_projected_chi,
         Fraction(0),
     )
 

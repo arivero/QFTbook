@@ -199,7 +199,9 @@
   't Hooft vertex to real-time \(B+L\) washout: the check verifies the
   \(\Delta B=\Delta L=N_g\Delta N_{\rm CS}\), \(B-L\)-conservation ledger and
   the generic susceptibility-rate normalization
-  \((2N_g)^2\Gamma_{\rm CS}/(\chi_XT)\).
+  \((2N_g)^2\Gamma_{\rm CS}/(\chi_XT)\).  The constrained-plasma continuation
+  adds the Schur-complement computation of \(\chi_{X\mid C}\) after exact
+  conserved charges or neutrality constraints are imposed.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
@@ -359,7 +361,7 @@
 | \(m_T,R_T,\mathcal A_T^G,\mathcal M_T^G\) | high-temperature determinant screening scale, finite-temperature determinant residual, Gaussian thermal one-instanton approximation, and absolute Gaussian majorant for non-positive/complex source channels |
 | \(\zeta_T^G,\chi_{\rm top}^{T,G}\) | Gaussian high-temperature dilute one-instanton activity and its induced topological susceptibility |
 | \(T,\mathcal D_{\rm zm},E_{\rm zm},\rho_{\rm zm},N_{\rm zm},\nu_{\mathcal V_4},\Delta_{\pi-\delta}^{\rm zm}\) | instanton--anti-instanton near-zero-mode overlap matrix, projected Dirac block, remainder, singular-value density, cumulative singular-value count, exact-topology density, and zero-mode-zone \(U(1)_A\)-odd susceptibility splitting used in the instanton-liquid criteria |
-| \(\Gamma_{\rm CS},\chi_X,n_X\) | Chern--Simons diffusion rate, \(B+L\) susceptibility, and homogeneous \(B+L\) density used in the electroweak sphaleron response bridge |
+| \(\Gamma_{\rm CS},\chi_X,\chi_{X\mid C},C_{\alpha i},n_X\) | Chern--Simons diffusion rate, unconstrained and constrained \(B+L\) susceptibilities, conserved-charge/neutrality constraint matrix, and homogeneous \(B+L\) density used in the electroweak sphaleron response bridge |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
 | \(A_\alpha(\mathcal X),G_\beta(\mathcal X)\) | Uhlenbeck bubbling-scale and collision-face exponents in the multi-instanton boundary budget |
 | \(\mathcal O_{N_c}\) | embedded one-instanton orientation orbit \(U(N_c)/(U(N_c-2)\times U(1))\) |
@@ -1473,7 +1475,11 @@
   \(B-L\) and assigning the rate itself to the thermal transport problem rather
   than to instanton zero-mode counting.  The BPST companion verifies the charge
   ledger, susceptibility drift, diffusion variance, and zero-rate negative
-  control.
+  control.  The constrained-susceptibility continuation adds the Schur
+  complement \(\chi_{X\mid C}\) for conserved charges and neutrality
+  constraints; the check verifies the fixed-\(B-L\) two-charge projection,
+  rejects the unconstrained \(\chi_B+\chi_L\) shortcut, and confirms that
+  constraining \(B+L\) itself removes the washout coordinate.
 - 2026-06-04 issue #597 tested-susceptibility pass: added
   `ca:instanton-tested-chiral-susceptibility-contact`, which turns the local
   two-flavor instanton source curvature into a tested Euclidean susceptibility
