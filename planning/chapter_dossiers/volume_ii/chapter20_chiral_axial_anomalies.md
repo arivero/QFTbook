@@ -108,7 +108,12 @@
   Euclidean-to-physical continuation adds the final bridge budget: the leading
   instanton source kernel is separated from regulator, analytic-continuation,
   spectral/LSZ, infrared, unitarity-cut, matching, and size-endpoint
-  residuals before any physical amplitude is claimed.  The hard-amplitude
+  residuals before any physical amplitude is claimed.  The unitarity-cut
+  continuation sharpens the \(R_{\rm cut}\) coordinate by pairing the
+  instanton source kernel with the conjugate anti-instanton kernel, cancelling
+  theta charge, doubling the semiclassical action in the rate channel, and
+  putting final-state/relative \(I\bar I\) cut weights under an explicit
+  majorant bound.  The hard-amplitude
   continuation adds the
   \(N_f=2\) hard-momentum size window, where the same form factors give a
   \(Q^{-2}\) four-fermion coefficient at \(\mu=Q\), the RG-invariant
@@ -308,6 +313,7 @@
 | \(\mathcal K_{\rm ex},\mathcal K_{\rm lead},\mathcal C_{\rm pg}^{\mathcal S},R_{\rm det},R_{\rm zm},R_{\rm src},R_{\rm Schur},R_{\rm end}\) | exact and leading one-instanton source-amplitude densities, pure-gauge collective/determinant density, and the finite error-budget pieces for determinant, zero-mode/source, source matching, Schur, and endpoint residuals |
 | \(B^{\mathcal J}_{AB},\Phi^R,\Phi^L\) | color-singlet source-projected zero-mode matrix and source-to-zero-mode overlap maps used to match the auxiliary hard instanton kernel to gauge-invariant correlators |
 | \(\mathcal A_{\rm phys}^{Q=1},\mathcal A_{\rm inst}^{\rm lead},R_{\rm reg},R_{\rm cont},R_{\rm spec},R_{\rm IR},R_{\rm cut},R_{\rm match},R_\rho\) | physical one-instanton amplitude coordinate, leading continued/projected instanton-kernel coordinate, and the residuals separating Euclidean source kernels from physical amplitudes |
+| \(A_I,A_{\bar I},\Gamma_{I\bar I},\mathcal C_{\rm cut},M^{(0)}_{I\bar I},\varepsilon_{\rm cut}\) | instanton and anti-instanton amplitude coordinates, paired inclusive cut/rate kernel, cut weight, absolute majorant, and cut residual used to turn a theta-charged amplitude kernel into a neutral spectral weight |
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(\mathbf c;\mathcal F)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless selected-form-factor integral |
 | \(\mathfrak s_{\rm hard}(s),\Delta\) | hard instanton log-size shell density and its power-tail suppression exponent \(\Delta=\sigma-b_0-2\) |
 | \(C_{\rm inst}^{(4)}(Q;R),\mathcal P_{\rm orient}\) | specialized \(SU(3)\), \(N_f=2\) hard four-fermion instanton coefficient and shared orientation projector, with the Pauli-Villars pure-gauge constant, light-fermion determinant factor, and explicit endpoint residual |
@@ -1280,6 +1286,16 @@
   decomposition, the absolute error bound, finite source-convention
   invariance, and the fact that the collective-coordinate measure alone is not
   the amplitude.
+- 2026-06-04 issue #597 unitarity-cut pairing pass: inserted
+  `ca:instanton-unitarity-cut-pairing`, which turns the earlier \(R_{\rm cut}\)
+  placeholder into a finite paired \(I\bar I\) rate ledger.  The text now
+  separates the theta-charged one-instanton amplitude coordinate from the
+  neutral inclusive spectral weight, displays the \(e^{-2S_I}\) factorized
+  cut exponent, records the final-state/relative cut kernel, and proves a
+  cut-residual majorant bound.  The BPST check script verifies theta-charge
+  cancellation, the same-charge negative control, the doubled action power,
+  the conjugate zero-mode slot count, the necessity of final-state cut
+  weights, and the residual bound.
 - 2026-06-03 issue #597 hard-coefficient specialization pass: added
   `ca:su3-two-flavor-hard-instanton-coefficient`, which packages the
   \(SU(3)\), \(N_f=2\) source-amputated hard coefficient with the PV

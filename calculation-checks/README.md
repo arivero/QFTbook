@@ -509,7 +509,10 @@ Current checks:
   separate from the hard instanton kernel, the Euclidean-to-physical
   instanton amplitude residual budget separating continuation, spectral/LSZ,
   infrared, unitarity-cut, matching, and size-endpoint controls from the
-  leading source kernel, the finite one-instanton amplitude
+  leading source kernel, the instanton--anti-instanton cut-pairing check
+  which distinguishes the theta-charged one-instanton amplitude coordinate
+  from a neutral inclusive rate kernel and bounds the relative cut residual,
+  the finite one-instanton amplitude
   error budget separating determinant, zero-mode/source, matching, Schur, and
   endpoint residuals from the leading density, the hard-momentum
   size-window scaling

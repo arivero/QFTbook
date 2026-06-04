@@ -65,6 +65,10 @@ relations
     after analytic continuation and pole/spectral/OPE projection; the bridge
     has independent regulator, continuation, spectral, infrared, unitarity-cut,
     matching, and size-endpoint residuals
+    inclusive spectral weights and rates pair an instanton amplitude kernel
+    with a conjugate anti-instanton kernel, so theta charge cancels,
+    semiclassical action doubles, and final-state/relative cut weights enter
+    as separate load-bearing data with their own residual bound
     a finite one-instanton amplitude error budget separates the leading
     determinant/zero-mode/source density from determinant remainders,
     zero-mode truncation, source matching, Schur corrections, and endpoint
@@ -2376,6 +2380,71 @@ def check_instanton_euclidean_to_physical_residual_budget() -> None:
     )
 
 
+def check_instanton_unitarity_cut_pairing() -> None:
+    instanton_charge = 1
+    anti_instanton_charge = -1
+    assert_equal(
+        "instanton anti-instanton cut cancels theta charge",
+        instanton_charge + anti_instanton_charge,
+        0,
+    )
+    assert_equal(
+        "same-charge instanton pair is theta charged",
+        instanton_charge + instanton_charge == 0,
+        False,
+    )
+
+    one_instanton_action_power = 1
+    cut_pair_action_power = one_instanton_action_power + one_instanton_action_power
+    assert_equal("inclusive cut doubles instanton action power", cut_pair_action_power, 2)
+
+    n_flavors = 2
+    amplitude_zero_mode_slots = 2 * n_flavors
+    cut_pair_zero_mode_slots = 2 * amplitude_zero_mode_slots
+    assert_equal("two-flavor cut pair has conjugate zero-mode slots", cut_pair_zero_mode_slots, 8)
+
+    instanton_cells = [Fraction(2, 5), Fraction(3, 7), Fraction(5, 11)]
+    anti_instanton_cells = [Fraction(7, 13), Fraction(11, 17), Fraction(13, 19)]
+    cut_weights = [Fraction(3, 2), Fraction(5, 3), Fraction(7, 5)]
+    leading_cut_rate = sum(
+        left * right * cut
+        for left, right, cut in zip(instanton_cells, anti_instanton_cells, cut_weights)
+    )
+    uncut_product = sum(
+        left * right for left, right in zip(instanton_cells, anti_instanton_cells)
+    )
+    assert_equal(
+        "final-state cut weights are part of instanton rate datum",
+        leading_cut_rate == uncut_product,
+        False,
+    )
+
+    one_amplitude_coordinate = sum(instanton_cells)
+    assert_equal(
+        "one-instanton amplitude coordinate is not the inclusive cut rate",
+        one_amplitude_coordinate == leading_cut_rate,
+        False,
+    )
+
+    relative_cut_errors = [Fraction(1, 10), Fraction(-1, 20), Fraction(1, 30)]
+    exact_cut_rate = sum(
+        left * right * cut * (1 + residual)
+        for left, right, cut, residual in zip(
+            instanton_cells, anti_instanton_cells, cut_weights, relative_cut_errors
+        )
+    )
+    cut_majorant = sum(
+        abs(left * right * cut)
+        for left, right, cut in zip(instanton_cells, anti_instanton_cells, cut_weights)
+    )
+    epsilon_cut = max(abs(residual) for residual in relative_cut_errors)
+    assert_equal(
+        "instanton cut-pair residual bound",
+        abs(exact_cut_rate - leading_cut_rate) <= epsilon_cut * cut_majorant,
+        True,
+    )
+
+
 def check_instanton_amplitude_error_budget() -> None:
     # A finite regulator reduces the amplitude assembly to a finite sum over
     # chart cells.  The leading term is not the moduli-space measure alone:
@@ -3545,6 +3614,7 @@ def main() -> None:
     check_instanton_orientation_haar_projection()
     check_color_singlet_instanton_source_projection()
     check_instanton_euclidean_to_physical_residual_budget()
+    check_instanton_unitarity_cut_pairing()
     check_instanton_amplitude_error_budget()
     check_hard_momentum_instanton_size_window()
     check_hard_size_tail_dominance_criterion()

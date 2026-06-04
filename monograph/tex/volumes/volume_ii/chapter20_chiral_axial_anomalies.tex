@@ -6257,6 +6257,95 @@ gauge-invariant spectral or OPE projection and the long-size remainder have
 been supplied.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Instanton cut pairing for inclusive rates]
+\label{ca:instanton-unitarity-cut-pairing}
+Stay in the source channel of
+ControlledApproximation~\ref{ca:instanton-euclidean-to-physical-amplitude-budget}.
+After the determinant, zero-mode, orientation, and source-matching factors
+have been assembled, write a finite one-instanton amplitude coordinate as
+\begin{equation}
+  A_I[\mathcal J]
+  =
+  \ee^{\ii\theta}
+  \int_{\mathcal U_I}
+  K_I(z;\mathcal J)\,\dd\nu_I(z),
+  \label{eq:instanton-one-amplitude-kernel-coordinate}
+\end{equation}
+where \(z\) denotes the collective coordinates and finite fluctuation/source
+data retained in the chosen regulator.  The conjugate channel has an
+anti-instanton density
+\[
+  A_{\bar I}[\mathcal J^\dagger]
+  =
+  \ee^{-\ii\theta}
+  \int_{\mathcal U_{\bar I}}
+  K_{\bar I}(\bar z;\mathcal J^\dagger)\,\dd\nu_{\bar I}(\bar z).
+\]
+A leading inclusive spectral weight or cut rate associated to this amplitude
+has the paired form
+\begin{equation}
+  \Gamma^{(0)}_{I\bar I}[\mathcal J]
+  =
+  \int_{\mathcal U_I\times\mathcal U_{\bar I}}
+  K_I(z;\mathcal J)\,
+  K_{\bar I}(\bar z;\mathcal J^\dagger)\,
+  \mathcal C_{\rm cut}^{(0)}(z,\bar z)\,
+  \dd\nu_I(z)\,\dd\nu_{\bar I}(\bar z).
+  \label{eq:instanton-cut-paired-rate-leading}
+\end{equation}
+Here \(\mathcal C_{\rm cut}^{(0)}\) contains the chosen leading final-state
+sum, on-shell or spectral projector, relative \(I\bar I\) separation and
+orientation weight, and leading relative fluctuation determinant.  At the
+factorized level the topological phases cancel in the cut channel,
+\[
+  \ee^{\ii\theta}\ee^{-\ii\theta}=1,
+  \qquad
+  \ee^{\ii\theta}\ee^{\ii\theta}=\ee^{2\ii\theta}.
+\]
+Thus a same-charge pair belongs to a charge-two amplitude sector rather than
+to the amplitude-times-conjugate contribution to a neutral inclusive rate.  The
+semiclassical exponential is correspondingly \(e^{-2S_I}\) at this
+factorized cut level.
+
+The full cut kernel can be organized as
+\[
+  \mathcal C_{\rm cut}
+  =
+  \mathcal C_{\rm cut}^{(0)}(1+\delta_{\rm cut}),
+  \qquad
+  |\delta_{\rm cut}(z,\bar z)|\le \varepsilon_{\rm cut},
+\]
+where \(\delta_{\rm cut}\) absorbs the difference between the declared leading
+cut package and the actual final-state sum, relative \(I\bar I\) interaction,
+valley or quasi-zero-mode treatment, and nonzero-mode determinant ratio.  If
+\[
+  M^{(0)}_{I\bar I}
+  =
+  \int
+  |K_I(z;\mathcal J)|\,|K_{\bar I}(\bar z;\mathcal J^\dagger)|\,
+  |\mathcal C_{\rm cut}^{(0)}(z,\bar z)|\,
+  \dd\nu_I(z)\,\dd\nu_{\bar I}(\bar z)
+  <\infty ,
+\]
+then the exact cut contribution satisfies
+\begin{equation}
+  \left|
+  \Gamma_{I\bar I}[\mathcal J]
+  -
+  \Gamma^{(0)}_{I\bar I}[\mathcal J]
+  \right|
+  \le
+  \varepsilon_{\rm cut} M^{(0)}_{I\bar I}.
+  \label{eq:instanton-cut-pairing-error-bound}
+\end{equation}
+This is the concrete finite-regulator content of the \(R_{\rm cut}\) entry in
+\eqref{eq:instanton-euclidean-to-physical-residual-budget}.  The local
+'t Hooft vertex supplies the chirality-violating amplitude kernel.  Inclusive
+cross sections, decay rates, and spectral weights require the conjugate
+anti-instanton density, final-state cut, and relative \(I\bar I\)
+fluctuation determinants and interactions in addition to that kernel.
+\end{controlledapproximation}
+
 \begin{proposition}[One-instanton amplitude assembly and error budget]
 \label{prop:instanton-amplitude-assembly-error-budget}
 Fix a finite-regulator \(Q=1\) chart and a gauge-invariant source channel.
