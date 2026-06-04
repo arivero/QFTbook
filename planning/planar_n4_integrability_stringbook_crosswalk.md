@@ -2,19 +2,20 @@
 
 ## Purpose
 
-This file is the working ledger for the floor requirement: every purely-QFT
-integrability detail in the two stringbook integrability chapters must appear
-in the monograph in a defined, hypothesis-stated, derivation-grade form, with
-calculation checks where conventions or algebra are delicate.
+This file is the working ledger for the floor requirement: every pure-QFT
+integrability detail in the two stringbook integrability chapters must either
+appear in the monograph in a defined, hypothesis-stated, derivation-grade form
+with calculation checks where conventions or algebra are delicate, or be
+routed to a focused issue with an explicit theorem/construction boundary.
 
-This ledger is not a certificate of completion.  It records what is already
-expanded, what is present only with honest proof-boundary status, and what
-still needs development.
+This ledger is not a completion certificate.  It records the current
+classification at the audited source head.
 
 ## Source Scope
 
-- Stringbook source:
-  `/Users/xiyin/PhysicsLogic/references/stringbook/string notes.tex`.
+- Stringbook source repository: `xiyin137/stringbook`.
+- Audited source revision: `4262f9c821859ace1b6ee43b31afa72fc1542ecd`.
+- Primary TeX source anchor: `texsource/string notes.tex`.
 - Chapter I source range:
   `Strings from N=4 SYM I: planar integrability and the asymptotic Bethe
   ansatz`, approximately lines 15617--16748.
@@ -22,10 +23,10 @@ still needs development.
   `Strings from N=4 SYM II: mirror TBA and the quantum spectral curve`,
   approximately lines 16749--17808.
 - Stringbook calculation notebooks directly relevant to this lane:
-  `/Users/xiyin/PhysicsLogic/references/stringbook/Code repository/su(2|2) spin chain.nb`,
-  `/Users/xiyin/PhysicsLogic/references/stringbook/Code repository/BES equation.nb`,
+  `codes/su(2|2) spin chain.nb`,
+  `codes/BES equation.nb`,
   and
-  `/Users/xiyin/PhysicsLogic/references/stringbook/Code repository/mirror TBA and wrapping corrections.nb`.
+  `codes/mirror TBA and wrapping corrections.nb`.
 - Monograph target files:
   `monograph/tex/volumes/volume_vii/chapter12_planar_n4_spectral_problem_spin_chains.tex`,
   `monograph/tex/volumes/volume_vii/chapter13_planar_n4_asymptotic_bethe_ansatz.tex`,
@@ -39,16 +40,18 @@ still needs development.
   local derivation or proof, and has companion checks when the calculation is
   convention-sensitive.
 - `Boundary`: the monograph contains the material with an explicit theorem,
-  assumption, or open-problem boundary.  This is acceptable only when the
-  omitted part is genuinely a global framework theorem or conjectural
+  assumption, or issue-linked development boundary.  This is acceptable only
+  when the omitted part is genuinely a global framework theorem or conjectural
   integrability input, not when it is merely tedious algebra.
-- `Partial`: the monograph has the topic, but some stringbook detail or
-  calculation is still not crosswalked or is not yet at uniform depth.
 - `Context`: the stringbook material is primarily holographic string-worldsheet
   context rather than a pure QFT integrability input.  The monograph may use it
   for normalization or orientation, but it is not counted as a pure-QFT floor
   item unless explicitly imported into the gauge-theory derivation.
-- `Open`: not yet incorporated at the required standard.
+- `Issue-routed`: the material is a pure-QFT floor item whose missing part is
+  owned by a focused issue.  For this ledger the relevant issue is usually
+  #624, with analytic-infrastructure overlaps to #728 when the missing object
+  is a general TBA/Q-system reconstruction theorem rather than a planar
+  \(\mathcal N=4\) specialization.
 
 ## Crosswalk
 
@@ -62,9 +65,9 @@ still needs development.
 | Crossing equation and crossing-symmetric dressing factor | `The crossing-symmetric dressing factor` | `Expanded/Boundary`: Chapter 13 now explicitly separates magnon crossing from ordinary four-dimensional Wightman-LSZ crossing, identifies the strong-coupling relativistic string worldsheet as the physical source of the crossing/mirror intuition, then derives scalar unitarity, shifted-cut crossing-path monodromy for `x^pm`, DHM weak coefficients, the local DHM residue-continuation rules from the stringbook notebook convention, the induced crossed-first-particle BES-phase residue package, the DHM Gamma-kernel pole lattice and admissibility conditions, reciprocal convention algebra, the finite matrix-channel origin of the Janik rational multiplier, the scalar crossing monodromy cocycle, the explicit double-crossing branch displacement, and the CDD quotient equations with zero/pole propagation; it states BES/crossing as a theorem | Still needs the genuinely global scalar-branch construction: minimal BES branch uniqueness and analyticity, global `chi` continuation, and a systematic comparison with any remaining stringbook notebook crossing experiments not yet ported. |
 | Asymptotic Bethe ansatz and finite-density ABA assumption | `Asymptotic Bethe ansatz and the cusp anomalous dimension` | `Expanded/Boundary`: Chapter 13 states the long-chain ABA regime, distinguishes it from TBA, derives the finite-density counting equation, and gives weak/large-spin BES checks | Need keep the status precise: ABA is a long-chain quantization rule assumed to remain valid for controlled finite-density states, not thermodynamic Bethe ansatz. |
 | One-loop `SL(2)` sector and large-spin cusp | stringbook `SL(2)` subsection | `Expanded`: Chapter 13 derives the one-loop noncompact resolvent and `8 g^2 log S` coefficient | No major gap except maintaining normalization against the BES scaling-function convention. |
-| BES equation and weak scaling function | stringbook all-order cusp subsection and `BES equation.nb` | `Partial/Expanded`: Chapter 13 derives the BES bridge and weak coefficients through `g^6`; checks cover signed Zhukovsky Fourier transform and weak integrals | Needs a direct notebook-to-Python crosswalk for all stringbook BES experimental calculations and a clearer boundary for strong-coupling BES results. |
+| BES equation and weak scaling function | stringbook all-order cusp subsection and `BES equation.nb` | `Boundary` linked to #624: Chapter 13 derives the BES bridge and weak coefficients through `g^6`; checks cover signed Zhukovsky Fourier transform and weak integrals | Owed work: direct notebook-to-Python crosswalk for every remaining BES experiment and a sharper strong-coupling/global BES branch boundary. |
 | Nested Bethe ansatz: level-II one-defect step | `Level II excitations` | `Expanded`: Chapter 13 derives `f(y,p)` and `S^{II,I}` from adjacent-transposition coefficient equations; checks clear the local identities | No major gap for one-defect step. |
-| Nested Bethe ansatz: two level-II excitations and level-III step | `Level II scattering`, `Level III` | `Expanded/Partial`: Chapter 13 records `M,N`, contact coefficient, level-III scattering, and checks local identities | The many-excitation ZF construction should be kept explicit if the text is later expanded; current derivation covers the local algebra but not every combinatorial many-body induction detail. |
+| Nested Bethe ansatz: two level-II excitations and level-III step | `Level II scattering`, `Level III` | `Expanded` with #624/#728 boundary: Chapter 13 records `M,N`, contact coefficient, level-III scattering, and checks local identities | The many-excitation ZF construction should be kept explicit if the text is later expanded; current derivation covers the local algebra but not every combinatorial many-body induction detail. |
 | Bethe-Yang equations and string-basis frame | `Bethe-Yang equations` | `Expanded`: Chapter 13 proves single-copy transport equations, records nesting numbers, and states full `su(2|2)^2` frame factors | Need ensure every future formula identifies whether it is spin-chain basis, string basis, `SU(2)` vacuum, or `SL(2)` vacuum. |
 | Physical bound states and fused Bethe-Yang equations | `Bound States` subsection | `Expanded/Boundary`: Chapter 13 now constructs the `Q`-string endpoints, proves momentum and energy telescoping, derives the bound-state shortening dispersion, proves the level-II auxiliary-factor telescoping, and defines the fused `SL(2)` scalar product used in bound-state Bethe-Yang equations; Chapter 14 uses the same `Q|bullet` charges on the mirror side | Remaining boundary is the full bound-state matrix intertwiner projection and scalar-branch residue normalization at the pole.  The endpoint fusion and scalar product are now checked by `check_bound_state_fusion_telescoping()`. |
 | Mirror double Wick rotation and mirror dispersion | `Mirror model and thermodynamic Bethe ansatz` | `Expanded`: Chapter 14 separates mirror magnons from ordinary four-dimensional asymptotic particles, explains their origin as the mirror channel of the relativistic string worldsheet before gauge fixing, and derives mirror dispersion, mirror sheet placement, and weak Boltzmann scaling | No major gap; maintain stringbook convention `E=i tilde p`, `p=i tilde E`. |
@@ -74,16 +77,16 @@ still needs development.
 | Mirror Bethe strings: `y`, `v|M`, `w|M`, and `bullet_Q` support | `Bethe strings of the mirror model` | `Expanded`: Chapter 14 derives the support and pole-cancellation arrays, with string-hypothesis status for real centers | Need verify every stringbook array and naming convention against the companion checks and the mirror TBA notation table. |
 | Full mirror TBA equations | `Mirror TBA` | `Expanded/Boundary`: Chapter 14 contains the TBA framework, node/source inventory, fused `bullet bullet`, `y bullet`, `(v|M) bullet`, and auxiliary `K_mn` formula crosswalk, and enough structure for Y-system and Konishi | Remaining boundary is global dressing-phase analytic continuation for `chi`, possible extra crossed singularities, and the excited-state source crosswalk beyond the one-species residue theorem. |
 | Y-system from TBA/Hirota and analytic Y-system data | `The Y-system` | `Expanded/Boundary`: Chapter 14 proves local Hirota-to-Y-system algebra, T-gauge cancellation, the regular-domain `s`-inverse, explicit `s`-zero-mode data loss, shifted zero-pole source factors, and now records the stringbook node map, strip assumptions, branch-point lattice, central fermionic cut inversion, and source-factor bookkeeping as explicit analytic data with companion checks | The finite algebra and bookkeeping are internalized; the remaining boundary is the global analytic-continuation proof selecting the physical sheet, dressing branch, and excited-state source positions. |
-| Excited finite-volume states and asymptotic conditions | `Excited states in finite volume and asymptotic conditions` | `Partial`: Chapter 14 and Chapter 15 derive several local bridges and mark remaining QSC/TBA framework inputs | Needs a tighter bridge from excited-state TBA source terms to QSC asymptotics, including all assumptions on roots, contours, and physical gluing. |
-| Konishi wrapping | `The Konishi operator and wrapping corrections`; `mirror TBA and wrapping corrections.nb` | `Expanded/Boundary`: Chapter 14 now derives weak-density rationalization, pole structure, exact residue reduction, telescoping, and final coefficient; the leading mirror input remains an explicit assumption | Need audit the whole notebook, not just the rational density/residue path, and decide whether the leading mirror input can be derived further from the preceding ABA/mirror data. |
+| Excited finite-volume states and asymptotic conditions | `Excited states in finite volume and asymptotic conditions` | `Issue-routed` to #624: Chapter 14 and Chapter 15 derive several local bridges and mark remaining QSC/TBA framework inputs | Owed work: tighter bridge from excited-state TBA source terms to QSC asymptotics, including all assumptions on roots, contours, and physical gluing. |
+| Konishi wrapping | `The Konishi operator and wrapping corrections`; `mirror TBA and wrapping corrections.nb` | `Expanded/Boundary` linked to #624: Chapter 14 now derives weak-density rationalization, pole structure, exact residue reduction, telescoping, and final coefficient; the leading mirror input remains an explicit assumption | Owed work: audit the whole notebook, not just the rational density/residue path, and decide whether the leading mirror input can be derived further from the preceding ABA/mirror data. |
 | T-gauge, `T`-gauge, `mathbb T`-gauge, and `Pmu` system | QSC subsections through `The Pmu-system` | `Expanded/Boundary`: Chapter 15 now derives the one-row analytic gauge, magic-sheet Cauchy continuation, fermionic `mathbf T`/`mathbb T` gauge bridge, central-row discontinuity telescope, two-row local Wronskian algebra, central-cut `Pmu` bridge, Pfaffian, and recursion; global analytic reconstruction remains assumption/theorem input | Remaining boundary is the global Riemann-Hilbert existence/gluing problem and the mirror-TBA discontinuity relation itself, rather than the finite T-gauge algebra. |
 | QSC asymptotic conditions and coefficient products | `Asymptotic conditions for the Pmu-system` | `Expanded/Boundary`: Chapter 15 derives `mu_12` power, `mu_ab` powers, characteristic determinant, and coefficient products; physical root assignment is an explicit input | Need ensure every use of large-`u`, sheet exponent, and no-cancellation hypothesis is stated uniformly. |
 | QSC weak-coupling limit and Baxter equation | `Weak coupling limit` | `Expanded/Boundary`: Chapter 15 derives the pre-Baxter equation, Baxter limit, digamma package, and twist-two family under explicit weak-regularity assumptions | Need continue replacing weak-QSC regularity assumptions with derivations when feasible; otherwise keep them as honest QSC framework boundaries. |
 | Small-spin QSC slope | `Small spin expansion` | `Expanded/Boundary`: Chapter 15 now states the small-spin QSC germ as the analytic input and derives the Bessel slope formula as a coefficient extraction from that germ | Need derive or clearly boundary-label the analytic continuation from small spin to integer spin and any higher-order `K` terms. |
-| Konishi at strong coupling | `Konishi at strong coupling` | `Open/Boundary`: Chapter 15 records benchmark status but does not yet derive the `K^2` small-spin input or strong Konishi expansion self-containedly | Needs a dedicated QSC strong-coupling pass; until then, do not present strong Konishi coefficients as derived monograph results. |
+| Konishi at strong coupling | `Konishi at strong coupling` | `Issue-routed` to #624: Chapter 15 records benchmark status but does not yet derive the `K^2` small-spin input or strong Konishi expansion self-containedly | Owed work: dedicated QSC strong-coupling pass; until then, do not present strong Konishi coefficients as derived monograph results. |
 | Hexagon form factors | Not part of the two stringbook integrability chapters; added in monograph Chapter 15 | `Boundary`: current text defines the hexagon framework, proves bridge kinematics and local scalar Watson identity, and marks derivation of the full expansion as open | Keep hexagon downstream of the spectral chain.  Do not let it displace unresolved crossing/dressing, ABA, mirror TBA, Y-system, and QSC foundations. |
 
-## Open Floor Work Queue
+## Focused Issue Work Queue
 
 1. Audit the three relevant stringbook notebooks against
    `calculation-checks/planar_n4_integrability_checks.py`; every Mathematica
@@ -126,6 +129,7 @@ still needs development.
 
 The integrability floor is met only after every row above is either
 `Expanded` or explicitly classified as `Context`/`Boundary` for a reason that
-is mathematical rather than editorial.  A row marked `Partial` or `Open`
-blocks any statement that all stringbook integrability details have been
-incorporated in depth.
+is mathematical rather than editorial, with any remaining pure-QFT work linked
+to #624 or #728 as appropriate.  A boundary without a focused issue and
+acceptance criteria blocks any statement that all stringbook integrability
+details have been incorporated in depth.

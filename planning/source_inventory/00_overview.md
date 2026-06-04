@@ -34,7 +34,8 @@ change the monograph.
 
 ### Adjacent Projects
 
-- `/Users/xiyin/ResearchIdeas/stringbook/`
+- `xiyin137/stringbook` (tracked in this repo by revision plus repo-relative
+  source anchors in `planning/source_inventory/stringbook_crosswalk.md`)
 - `/Users/xiyin/statmech/`
 - `/Users/xiyin/StringGeometry/`
 - `/Users/xiyin/StringAlgebra/`

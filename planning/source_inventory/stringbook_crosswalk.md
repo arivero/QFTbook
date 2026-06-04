@@ -1,9 +1,19 @@
 # String Book Crosswalk
 
-Source:
+Source snapshot for this crosswalk:
 
-- `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`
-- `/Users/xiyin/ED3-orbifold/references/stringbook-main/texsource/string notes.tex`
+- Source repository: `xiyin137/stringbook`.
+- Audited source revision: `4262f9c821859ace1b6ee43b31afa72fc1542ecd`
+  (`main`; the local source checkout was one commit ahead of `origin/main` at
+  audit time).
+- Primary source anchors are repository-relative paths:
+  `texsource/string notes.tex`, `texsource/string notes.toc`, and `codes/*.nb`.
+- Older generated extraction aids under `PhysicsLogic/docs/stringbook/` may be
+  useful for comparison, but they are not authoritative for this QFT monograph
+  crosswalk because their last recorded inventory predates the current
+  stringbook source head.
+- Current companion-notebook inventory at the audited source revision: 18
+  Mathematica notebooks in `codes/`, as listed in the notebook table below.
 
 The string book is an adjacent high-value source. It may supply mature
 appendix material, examples, convention checks, and source leads for any
@@ -67,16 +77,62 @@ operator or path-integral status, symmetry algebra, representation category,
 regularization, and analytic assumptions before using any
 stringbook-motivated formula.
 
+## Classification Vocabulary
+
+- `Incorporated`: the QFT monograph contains an independent development with
+  definitions, hypotheses, derivation/proof boundary, and a calculation
+  companion when the finite algebra is convention-sensitive.
+- `Boundary linked`: the monograph has the topic only up to an explicit
+  theorem, conjecture, construction, or approximation boundary, and the owed
+  development is linked to a focused open issue.
+- `Contextual`: the material is mostly string-theory or geometry context; it
+  may suggest examples or convention checks, but it is not a pure-QFT floor
+  item unless the QFT monograph independently reconstructs it.
+- `Outside pure-QFT scope`: the material belongs to the stringbook as string
+  background, brane, or supergravity material and should not be imported into
+  the QFT monograph except as explicitly labeled comparison context.
+
+No row is allowed to sit in an untracked middle state.  If a pure-QFT topic is
+not incorporated, the row must name the focused issue that owns the missing
+physics.
+
+## Current-Head Companion-Notebook Audit
+
+The following notebook pass is a current-head reproducibility slice for #731.
+It is not a claim that every prose subsection in the stringbook has now been
+fully crosswalked; it removes the stale notebook ambiguity and routes each
+notebook to a verifiable QFT status.
+
+| Source notebook | QFT classification | Monograph evidence or focused issue |
+| --- | --- | --- |
+| `codes/2D local susy variations.nb` | Contextual | Worldsheet local supersymmetry is string-context material.  QFT-side superconformal algebra and spectral-flow conventions are rebuilt in Volume V Chapter 15 and checked by `calculation-checks/superconformal_algebra_checks.py`; no direct import is needed unless a later worldsheet-gauge comparison is explicitly opened. |
+| `codes/2D superspace.nb` | Incorporated with boundary | Two-dimensional superspace/LG/GLSM material is rebuilt in Volume VII Chapter 9 and checked by `calculation-checks/susy_2d_lg_glsm_checks.py`; continuum mirror/Hori--Vafa proof obligations remain tracked under #731/#625 as described in the Appendix K row below. |
+| `codes/4D superspace.nb` | Incorporated | Four-dimensional superspace and component conventions are rebuilt in Volume VII Chapters 2--4, with checks in `calculation-checks/susy_superspace_component_checks.py`, `calculation-checks/susy_vector_superfield_checks.py`, and `calculation-checks/susy_superfield_operator_algebra_checks.py`. |
+| `codes/BES equation.nb` | Boundary linked | Weak-coupling BES coefficient checks are incorporated in Volume VII Chapter 13 and `calculation-checks/planar_n4_integrability_checks.py`; the remaining notebook-to-Python audit and strong/global BES branch construction are routed to #624 and the planar crosswalk. |
+| `codes/Conformal blocks and bootstrap demo.nb` | Incorporated with boundary | Global-block kinematics, BPZ equations, Virasoro blocks, and crossing examples are rebuilt in Volumes III and V with `calculation-checks/conformal_block_companion.py`, `calculation-checks/cft_virasoro_minimal_checks.py`, and `calculation-checks/liouville_bpz_checks.py`; numerical SDP/bootstrap-tool depth remains routed to #631. |
+| `codes/G2 conical geometry.nb` | Outside pure-QFT scope | Special-holonomy cone geometry is string/M-theory background material.  It should not be imported into the QFT monograph except as comparison context in a later string-geometry project. |
+| `codes/GS kappa symmetry.nb` | Outside pure-QFT scope | Green--Schwarz kappa symmetry is a worldsheet string gauge-symmetry check, not a pure-QFT floor item for this monograph. |
+| `codes/Instanton and anomalies.nb` | Boundary linked | Anomaly-polynomial finite algebra is rebuilt in the anomaly chapters and checked by `calculation-checks/anomaly_polynomial_descent_checks.py` and `calculation-checks/gamma_trace_checks.py`.  The Yang--Mills instanton part is routed to #597/#629/#630: the QFT monograph must prioritize determinant measures, zero modes, operator insertions, and physical amplitudes over moduli-space description alone. |
+| `codes/Liouville CFT.nb` | Incorporated with theorem boundary | Liouville spectrum, DOZZ/BPZ boundaries, block recursion interface, and boundary Liouville checks are rebuilt in Volume V Chapters 13--14 and checked by `calculation-checks/liouville_bpz_checks.py` and `calculation-checks/bcft_cardy_checks.py`.  DOZZ/completeness remain theorem-boundary inputs rather than notebook-derived results. |
+| `codes/Type II basic worldsheet calculations.nb` | Contextual | OPE and free-field worldsheet calculations inform CFT examples only when rebuilt from QFT-side chiral algebra and Ward identities.  Tree-level graviton string amplitudes are outside the pure-QFT floor. |
+| `codes/Type II torus 4-graviton amplitude check.nb` | Outside pure-QFT scope | Type-II genus-one graviton amplitudes belong to string perturbation theory, not the QFT monograph's pure-QFT incorporation floor. |
+| `codes/conifold geometry.nb` | Contextual | Conifold geometry is relevant only as background/motivation for supersymmetric gauge dynamics; the QFT material is rebuilt in Volume VII through moduli, duality, and gauge-dynamics chapters without importing the geometry notebook as proof. |
+| `codes/gamma matrices.nb` | Incorporated | Spinor and gamma-matrix conventions are rebuilt in Volume I/II spinor and anomaly chapters, with checks in `calculation-checks/gamma_trace_checks.py`, `calculation-checks/spinor_convention_checks.py`, and `calculation-checks/standard_model_anomaly_checks.py`. |
+| `codes/mirror TBA and wrapping corrections.nb` | Boundary linked | Mirror kinematics and the leading Konishi wrapping calculation are rebuilt in Volume VII Chapter 14 and checked by `calculation-checks/planar_n4_integrability_checks.py`; full excited-state and notebook-wide source-term audit is routed to #624. |
+| `codes/special geometry.nb` | Incorporated with boundary | Seiberg--Witten special-coordinate and period material is rebuilt in Volume VII Chapter 7 with `calculation-checks/sw_su2_periods.py`; higher-rank/global special-geometry extensions remain part of the SUSY depth lanes (#626/#701) rather than a stringbook import. |
+| `codes/spinfield cocycles.nb` | Contextual | Spin-field cocycles are string-worldsheet convention material.  Only the QFT-side chiral algebra, locality, and spin-structure lessons are used, rebuilt in Volume V rather than imported as NSR worldsheet proof. |
+| `codes/string coupling conventions.nb` | Outside pure-QFT scope | String coupling and brane-tension normalization conventions are not pure-QFT material. |
+| `codes/su(2|2) spin chain.nb` | Boundary linked | Planar magnon dispersion, S-matrix local checks, crossing rational multiplier, and rank certificates are rebuilt in Volume VII Chapter 13 and `calculation-checks/planar_n4_integrability_checks.py`; global scalar branch, Yang--Baxter, and bound-state matrix-intertwiner work remain routed to #624. |
+
 ## Relevant Sections
 
 ### The Path Integral
 
 Consulted source:
 
-- `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`,
-  section "The path integral", especially the subsections "Path integral
-  formulation of quantum mechanics" and "Path integral with Grassmann-odd
-  field variables".
+- `texsource/string notes.tex`, section "The path integral", especially the
+  subsections "Path integral formulation of quantum mechanics" and "Path
+  integral with Grassmann-odd field variables".
 
 Potential use:
 
