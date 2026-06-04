@@ -426,3 +426,9 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   control, and continuum comparison errors to be smaller than the signed
   one-vortex coefficient before the Hori--Vafa primitive term is used as a
   nonzero physical input.
+- The 2026-06-04 comparison-spine pass is an issue #755/#626 coherence repair:
+  before the detailed Hori--Vafa formulas, the chapter now separates local
+  dualization, Coulomb matching, vortex-amplitude construction, and protected
+  observable comparison.  This keeps the reader-facing argument architecture
+  ahead of the many finite checks and makes the physics-first instanton
+  standard explicit without putting process directives in the TeX.
