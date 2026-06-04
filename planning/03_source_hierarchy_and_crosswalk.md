@@ -8,15 +8,18 @@ No source is trusted blindly. Each source has a role.
 
 1. Xi Yin's handwritten QFT PDFs in `references/`.
 2. The faithful transcription in `transcription/`.
-3. Xi Yin's related string notes and appendices in
-   `/Users/xiyin/ResearchIdeas/stringbook/`, used as internal source
+3. Xi Yin's related string notes and appendices, identified for this audit by
+   the repository `xiyin137/stringbook` and the source anchors recorded in
+   `planning/source_inventory/stringbook_crosswalk.md`, used as internal source
    material, convention checks, and source leads for QFT-relevant material,
    while still requiring independent QFT-side definitions, hypotheses, and
    derivations in the monograph.
-4. Related formalization projects in `/Users/xiyin/StringGeometry/` and
-   `/Users/xiyin/StringAlgebra/` where relevant.
-5. The statmech project in `/Users/xiyin/statmech/` for workflow precedent and
-   statistical-field-theory overlap.
+4. Related formalization projects `StringGeometry` and `StringAlgebra` where
+   relevant, recorded by project identity and audited source anchors rather
+   than as source-authority paths.
+5. The statmech project for workflow precedent and statistical-field-theory
+   overlap, with any substantive transfer recorded in
+   `planning/source_inventory/statmech_crosswalk.md`.
 
 These sources fix the project stance and logical order.
 
@@ -54,10 +57,10 @@ external inputs rather than consequences derived in the book.
 | Current QFT transcription | `transcription/qft_notes.tex`, `transcription/tex/` | Source layer and audit aid, not the final monograph. |
 | Ben Lou notes | `references/253a_notes.tex`, `references/253b transcribed lecture notes.tex`, `references/253c_notes.tex` | Non-authoritative comparison layer. |
 | Sound reference shelf | `references/sound_references/` | Downloaded external sources for rigorous frameworks and theorem boundaries. |
-| Statmech project | `/Users/xiyin/statmech/` | Workflow precedent and overlap with RG/statistical field theory. |
-| String book | `/Users/xiyin/ResearchIdeas/stringbook/` | Internal source material, convention checks, and source leads for related QFT material throughout the project; never a substitute for an independent QFT monograph development with its own definitions, assumptions, and derivations. |
-| StringGeometry | `/Users/xiyin/StringGeometry/` | Later-volume mathematical structures. |
-| StringAlgebra | `/Users/xiyin/StringAlgebra/` | Algebraic and categorical structures for advanced volumes. |
+| Statmech project | `planning/source_inventory/statmech_crosswalk.md` | Workflow precedent and overlap with RG/statistical field theory; local checkout paths are not source identities. |
+| String book | `xiyin137/stringbook`; audited anchors in `planning/source_inventory/stringbook_crosswalk.md` | Internal source material, convention checks, and source leads for related QFT material throughout the project; never a substitute for an independent QFT monograph development with its own definitions, assumptions, and derivations. |
+| StringGeometry | project identity plus dossier-specific audited anchors | Later-volume mathematical structures; local checkout paths are not source identities. |
+| StringAlgebra | project identity plus dossier-specific audited anchors | Algebraic and categorical structures for advanced volumes; local checkout paths are not source identities. |
 
 ## External Reference Roles
 

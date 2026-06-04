@@ -6,8 +6,14 @@ Source snapshot for this crosswalk:
 - Audited source revision: `4262f9c821859ace1b6ee43b31afa72fc1542ecd`
   (`main`; the local source checkout was one commit ahead of `origin/main` at
   audit time).
+- QFT monograph repository baseline reviewed against this source snapshot:
+  `103801886cff04d54a001376e0bedb92d733d612`; the present crosswalk update
+  records the resulting reproducibility ledger.
 - Primary source anchors are repository-relative paths:
-  `texsource/string notes.tex`, `texsource/string notes.toc`, and `codes/*.nb`.
+  `texsource/string notes.tex` and `codes/*.nb`.  The generated
+  `texsource/string notes.toc` in the audited checkout was used only as an
+  extraction aid; source citations below point back to the TeX source line
+  ranges.
 - Older generated extraction aids under `PhysicsLogic/docs/stringbook/` may be
   useful for comparison, but they are not authoritative for this QFT monograph
   crosswalk because their last recorded inventory predates the current
@@ -98,10 +104,9 @@ physics.
 
 ## Current-Head Companion-Notebook Audit
 
-The following notebook pass is a current-head reproducibility slice for #731.
-It is not a claim that every prose subsection in the stringbook has now been
-fully crosswalked; it removes the stale notebook ambiguity and routes each
-notebook to a verifiable QFT status.
+The following notebook pass is the current-head reproducibility inventory for
+#731.  Together with the prose-section audit below, it removes the stale
+notebook ambiguity and routes each notebook to a verifiable QFT status.
 
 | Source notebook | QFT classification | Monograph evidence or focused issue |
 | --- | --- | --- |
@@ -123,6 +128,42 @@ notebook to a verifiable QFT status.
 | `codes/spinfield cocycles.nb` | Contextual | Spin-field cocycles are string-worldsheet convention material.  Only the QFT-side chiral algebra, locality, and spin-structure lessons are used, rebuilt in Volume V rather than imported as NSR worldsheet proof. |
 | `codes/string coupling conventions.nb` | Outside pure-QFT scope | String coupling and brane-tension normalization conventions are not pure-QFT material. |
 | `codes/su(2|2) spin chain.nb` | Boundary linked | Planar magnon dispersion, S-matrix local checks, crossing rational multiplier, and rank certificates are rebuilt in Volume VII Chapter 13 and `calculation-checks/planar_n4_integrability_checks.py`; global scalar branch, Yang--Baxter, and bound-state matrix-intertwiner work remain routed to #624. |
+
+## Current-Head Prose Section Audit
+
+This table is the section-level audit of pure-QFT prose at the same source
+revision.  It is intentionally a routing ledger, not a certificate that every
+boundary theorem has been proved in the monograph.  The crosswalk is complete
+only in the sense that no pure-QFT source range is left in an unclassified
+middle state: each range is incorporated, contextual or outside pure-QFT scope,
+or boundary-linked to a live focused issue.
+
+| Source range in `texsource/string notes.tex` | QFT classification | Monograph evidence or focused issue |
+| --- | --- | --- |
+| Non-extracted worldsheet/string ranges before AdS/CFT: `512--5064`, `5249--6217`, `6409--9684`, `10240--10994`, `11060--11716`, `11735--11803`, and `13111--13276` | Contextual with extracted QFT mechanisms | The pure-QFT mechanisms are routed to the later appendix rows: BRST/BV to Volume IV, 2D CFT/sewing to Volumes III/V, defects and orbifolds to Volume V, supersymmetry to Volume VII, and anomalies to Volume II.  String amplitudes, supermoduli, D-brane dynamics, string field theory, and RR-flux string backgrounds are not imported as pure-QFT claims. |
+| `5065--5248`, `6218--6408`, and `11804--13110`: NLSM backgrounds, Calabi--Yau/singular CFT material, worldsheet instantons, cosets, conifold, and Liouville/cigar bridges | Incorporated with boundary | Volume V Chapter 11 covers NLSM beta functions, WZW/cosets, orbifolds, and twist fields; Volume V Chapter 15 covers the \(N=2\) SCA and spectral-flow data; Volume VII Chapter 9 covers the intrinsic \(2D\) \((2,2)\) LG/GLSM mirror lane.  Worldsheet-instanton or Hori--Vafa-style formulas are not treated as authority: determinant normalization, vortex compactness, zero modes, operator maps, and continuum equivalence remain routed to #626 and the Chapter 9 dossier. |
+| `9685--10239`, `10995--11059`, `11717--11734`: D-instantons and heterotic/gauge-instanton string-duality material | Contextual; pure-QFT instanton work boundary-linked | These ranges are not imported as QFT instanton derivations.  Volume II Chapters 20--21 develop Yang--Mills instantons from regulated determinant/zero-mode/operator-insertion amplitudes and explicitly prioritize physical observables over moduli-space geometry; remaining singular-instanton and QCD-rigor obligations are owned by #597, #629, and #630. |
+| `13277--15616`: AdS/CFT, ABJM, \(6D\) \((0,2)\), D1--D5, and AdS\(_3\) string material | Boundary linked or contextual | Pure gauge-theory and SCFT structures are routed to Volume VII and the focused depth issues #624 and #626.  Holographic supergravity/string derivations are comparison context, not pure-QFT proof sources. |
+| `15617--17808`: planar \(\mathcal N=4\) integrability, mirror TBA, and QSC | Boundary linked through dedicated crosswalk | The section-by-section ledger lives in `planning/planar_n4_integrability_stringbook_crosswalk.md`; local algebra and finite checks are incorporated in Volume VII Chapters 12--15, while global BES/crossing, excited-state TBA, QSC gluing, strong Konishi, and analytic reconstruction remain routed to #624 and #728. |
+| `17809--18747`: holographic Wilson lines, confinement models, Sakai--Sugimoto, Klebanov--Witten, and holographic cascade | Boundary linked or contextual | Wilson-line/cusp/Bremsstrahlung QFT aspects are part of the supersymmetry and planar-depth lanes #624/#626.  Holographic confinement and brane-engineered gauge dynamics are context for Volume IX/QCD discussions but are not imported as derivations of confinement; QCD rigor boundaries remain with #630. |
+| `18748--19215`: Matrix theory and matrix string | Contextual | D0 quantum mechanics, Matrix theory, and matrix-string conjectures are outside the pure-QFT incorporation floor.  The symmetric-product orbifold and twist-field CFT mechanisms are already rebuilt in Volume V Chapter 11; conjectural M-theory identifications are not imported. |
+| `19381--19922`: path integrals, tunneling/instantons, supersymmetric quantum mechanics, Borel resummation, and Lefschetz thimbles | Incorporated with boundary | Volume I path-integral chapters cover regulated bosonic and fermionic constructions; Volume II instanton chapters handle field-theoretic instanton amplitudes.  Semiclassical/resurgent technology beyond the regulated instanton-amplitude lanes is routed to #597 when it bears on soliton/instanton physics and otherwise remains contextual rather than silently incorporated. |
+| `19949--20065`: Faddeev--Popov and BV quantization of gauge theory | Incorporated | Volume IV develops gauge fixing, BRST, BV, master equations, local observables, and finite BV/localization checks, with companion scripts for signs and regulated identities. |
+| `20066--20240`: local QFTs, fields, correlators, conformal symmetry, and OPE | Incorporated with theorem boundary | Volumes I, III, IV, and V rebuild the Wightman/OS/local-net/functorial/QFT-side CFT frameworks.  Quoted OS/AQFT structural proof debt remains tracked by #695. |
+| `20241--20882`: general \(2D\) CFT, Virasoro, Weyl anomaly, conformal blocks, and block recursion | Incorporated with boundary | Volumes III and V contain the Virasoro/Ward/BPZ/block development and checks; remaining KZ, Coulomb-gas, Moore--Seiberg, and full sewing depth is routed to #625 and #697. |
+| `20882--21100`: Riemann surfaces and modular invariance | Incorporated with boundary | Volumes V Chapters 12--14 cover modular covariance, sewing hypotheses, Cardy data, and BCFT boundaries; theorem-level modular/sewing proof debt remains with #625/#697. |
+| `21100--21460`: free bosons and fermions on Riemann surfaces | Incorporated | Volumes III/V rebuild the free-field examples, lattice locality, cocycles, spin structures, and modular checks; string-worldsheet uses are not treated as proof sources. |
+| `21460--21764`: symmetries, defects, orbifolds, Ising CFT, and Narain lattices | Incorporated with boundary | Volume V develops the generalized-symmetry/defect/orbifold/Narain material with arithmetic checks.  Full categorical/sewing depth remains coordinated with #625/#697. |
+| `21764--22157`: Lagrangian descriptions of \(2D\) CFTs, NLSM Weyl anomaly, Buscher rules, gauged WZW/cosets, and Liouville | Incorporated with boundary | Volume V Chapter 11 includes the covariant NLSM renormalization, torsion/dilaton representative, Buscher/coset geometry checks, and Liouville boundary links.  Exact conformality and completeness inputs remain theorem boundaries under #625/#697. |
+| `22157--22461`: \(2D\) superconformal symmetry | Incorporated | Volume V Chapter 15 rebuilds the \(N=1\), \(N=2\), and extended spectral-flow algebra, with checks in `superconformal_algebra_checks.py`; no string-context proof is imported. |
+| `22461--22749`: \(2D\) RG flows, LG models, GLSMs, Calabi--Yau/LG phases, abelian duality, and cigar/Liouville mirror | Incorporated with boundary | Volume VII Chapter 9 develops LG/GLSM data, Coulomb one-loop determinants, vortex-normalized mirror terms, \(P^{N-1}\) protected observables, and Hori--Vafa scrutiny with `susy_2d_lg_glsm_checks.py`.  Full continuum mirror equivalence, vortex compactness, determinant nonvanishing, and operator-map/gluing are routed to #626 and kept out of the monograph as derived claims until proved. |
+| `22750--22972`: spinor conventions | Incorporated | Volume I/II/VII convention material and `gamma_trace_checks.py`/`spinor_convention_checks.py` cover the QFT-side spinor and gamma-matrix conventions. |
+| `22972--23299`: super-Poincare symmetry, \(4D\) superspace, nonrenormalization, \(4D\) \(N=2\), and \(3D\) supersymmetric gauge theories | Incorporated with boundary | Volume VII develops supersymmetry, superspace, protected quantities, and Seiberg--Witten-style examples; deeper HLS, localization, Wilson-loop, \(F\)-theorem, duality, and \(6D\) material remains routed to #626. |
+| `23300--23652`: supergravity appendices | Outside pure-QFT scope with selected convention use | Supergravity formulae are not pure-QFT source material.  Special-geometry conventions may serve as comparison for Volume VII, but any use must be rebuilt as QFT-side Seiberg--Witten/supersymmetric effective-action data and routed through #626 if not already developed. |
+| `23717--24166`: anomalies | Incorporated with boundary | Volume II and Volume XII anomaly chapters rebuild axial/gauge/gravitational anomaly machinery with descent and gamma-trace checks.  Remaining proof-debt and convention-boundary work is tracked by #696 and QCD rigor issue #630. |
+| `24166--24414`: boundary CFT | Incorporated with boundary | Volume V Chapter 14 covers conformal boundary conditions, boundary states, Cardy consistency, compact-boson and Ising boundaries, and Liouville boundary bridges with `bcft_cardy_checks.py`; full Cardy--Lewellen sewing depth remains with #625/#697. |
+| `24414--24663`: double-scaled matrix quantum mechanics | Contextual | This material is noncritical-string/matrix-model context.  It may suggest examples for quantum mechanics or \(c=1\) CFT, but it is not a pure-QFT monograph floor item unless a focused matrix-model issue is opened. |
+| `24663--24848`: holographic correlator kinematics | Contextual with extracted CFT kinematics | Boundary CFT correlator kinematics and conformal blocks are covered in Volumes III/V; Witten diagrams and AdS bulk dynamics are holographic comparison context rather than pure-QFT derivations. |
 
 ## Relevant Sections
 
