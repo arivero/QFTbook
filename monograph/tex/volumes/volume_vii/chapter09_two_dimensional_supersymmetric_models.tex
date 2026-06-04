@@ -1742,16 +1742,94 @@ With \(0\le a\le N-1\), it is satisfied only for \(d=1\) and
 Nondegeneracy of the classical pairing gives the product relation.
 \end{proof}
 
-\begin{controlledapproximation}[Degree-one vortex observable assembly]
+\begin{controlledapproximation}[Degree-one vortex observable residual template]
 \label{ca:cpn-degree-one-vortex-observable-assembly}
-The degree-one product coefficient is a physical A-twisted observable only
-after the vortex normalization and the stable-map line count have been tied to
-the same finite regulator.  Let
+The degree-one product coefficient is a physical A-twisted observable only after
+the vortex normalization, determinant orientation, zero-mode integral,
+compactification contribution, and local-operator map have been tied to the
+same finite regulator.  In a diagonal finite spectral regulator, write the
+charge-one determinant factor of the \(i\)th chiral multiplet as
+\[
+  c_{i,\Lambda}
+  =
+  Z_{i,\Lambda}^{\rm zm}
+  \frac{
+    \det F_{i,\Lambda}^{(1)}\det G_{i,\Lambda}^{(1)}
+    \det B_{i,\Lambda}^{(0)}
+  }{
+    \det{}' B_{i,\Lambda}^{(1)}
+    \det F_{i,\Lambda}^{(0)}
+    \det G_{i,\Lambda}^{(0)}
+  },
+\]
+where the prime removes the bosonic degree-one zero modes and
+\(Z_{i,\Lambda}^{\rm zm}\) is the finite zero-mode metric factor in the chosen
+orientation convention.  Then
 \[
   q_\Lambda=\exp(t)\prod_{i=1}^N c_{i,\Lambda}
 \]
-be the vortex-normalized charge-one fugacity in the regulated
-\(\mathbb P^{N-1}\) GLSM, and let
+is the retained charge-one fugacity in that regulator.  The retained zero-mode
+integral can be checked without using the mirror residue.  A degree-one map is
+written
+\[
+  \Phi_i([u:v])=A_i u+B_i v,
+  \qquad i=0,\ldots,N-1,
+\]
+modulo the common complex scale.  Fix the three marked domain points
+\([1:0]\), \([0:1]\), and \([1:1]\), fix the scale by \(A_0=1\), and impose the
+incidence representatives
+\[
+  \Phi([1:0])=[1:0:\cdots:0],
+  \qquad
+  \Phi([0:1])=[0:1:0:\cdots:0],
+  \qquad
+  X_1-X_0=0\quad\hbox{at }[1:1].
+\]
+Equivalently,
+\[
+  A_j=0\ (j>0),\qquad
+  B_0=0,\qquad
+  B_1-A_0=0,\qquad
+  B_j=0\ (j\ge2).
+\]
+With coordinates
+\[
+  (A_1,\ldots,A_{N-1},B_0,B_1,\ldots,B_{N-1})
+\]
+on this affine zero-mode chart, the incidence Jacobian is
+\[
+  \det
+  \frac{
+    \partial(A_1,\ldots,A_{N-1},B_0,B_1-A_0,B_2,\ldots,B_{N-1})
+  }{
+    \partial(A_1,\ldots,A_{N-1},B_0,B_1,\ldots,B_{N-1})
+  }
+  =+1 .
+\]
+Thus the determinant-line orientation of this retained chart is positive.  The
+complex zero-mode dimension is \(2N-1\), while the insertions
+\((H,H^{N-1},H^{N-1})\) have complex degree
+\[
+  1+(N-1)+(N-1)=2N-1,
+\]
+so the A-twisted fermion zero modes are saturated exactly.  The two point
+constraints are distinct, and the hyperplane \(X_1-X_0=0\) contains neither of
+them, so the contracted-boundary strata in which a degree-zero component would
+carry both point insertions, or one point insertion together with the
+hyperplane insertion, do not contribute in this finite chart.  With the
+operator \(H\) normalized by the unit hyperplane equation, the retained
+calculation gives
+\begin{equation}
+  C_{\Lambda,1}^{\rm zm}
+  =
+  q_\Lambda .
+  \label{eq:cpn-degree-one-vortex-zero-mode-retained}
+\end{equation}
+Changing the determinant orientation, omitting one fermion zero mode, allowing
+the two point constraints to collide, or rescaling the representative of \(H\)
+changes this value.
+
+Let
 \[
   C_{\Lambda,1}
   =
@@ -1759,10 +1837,10 @@ be the vortex-normalized charge-one fugacity in the regulated
   =
   \big\langle H,H^{N-1},H^{N-1}\big\rangle_{\Lambda,d=1}^{A}
 \]
-be the retained degree-one three-point coefficient in the same operator
-coordinate.  The direct line-count calculation supplies the integer
-\(L_1=1\), while the finite vortex path integral supplies the complex
-coefficient \(q_\Lambda\).  A usable comparison therefore has the form
+be the full degree-one three-point coefficient in the same operator coordinate.
+Equation \eqref{eq:cpn-degree-one-vortex-zero-mode-retained} is only the
+retained finite chart.  A usable QFT comparison therefore has the conditional
+form
 \begin{equation}
   C_{\Lambda,1}-q_\Lambda
   =
@@ -1792,7 +1870,9 @@ comparison remainder.  If \(|R_\alpha|\le\epsilon_\alpha\), then
   +\epsilon_{\rm cont}.
   \label{eq:cpn-degree-one-vortex-observable-bound}
 \end{equation}
-The off-pairings also have to be certified.  For \(0\le a<N-1\), require
+The same zero-mode degree count gives no retained off-pairing for
+\(0\le a<N-1\), but the full shared-regulator statement still requires the
+separate bounds
 \begin{equation}
   \left|
     \eta_\Lambda(H\star_\Lambda H^{N-1},H^a)
@@ -1802,15 +1882,16 @@ The off-pairings also have to be certified.  For \(0\le a<N-1\), require
 \end{equation}
 Equations
 \eqref{eq:cpn-degree-one-vortex-observable-bound}--\eqref{eq:cpn-degree-one-off-pairing-bound}
-are the finite observable certificate for the product
+are a residual-budget template for the product
 \[
   H\star H^{N-1}=q_{\rm phys}\,1.
 \]
-The mirror residue gives the same algebraic root sum, and the stable-map
-dimension count gives the integer line count.  The coefficient in the QFT
-correlator is established only when the vortex determinant, zero-mode,
-orientation, compactification, operator-map, off-pairing, and continuum
-residuals are controlled in the shared regulator.
+They become evidence for the QFT correlator only when the coefficient,
+determinant, zero-mode, compactification, operator-map, off-pairing, and
+continuum residuals are supplied by independent estimates in the shared
+regulator.  The mirror residue gives the same algebraic root sum, and the
+stable-map dimension count gives the geometric line count; neither replaces the
+determinant and fluctuation comparison in the A-twisted path integral.
 \end{controlledapproximation}
 
 \section{The Cigar--Liouville Mirror Chain as a QFT Duality Problem}

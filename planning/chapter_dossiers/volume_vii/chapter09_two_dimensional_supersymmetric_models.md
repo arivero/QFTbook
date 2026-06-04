@@ -223,14 +223,16 @@ and
   codimension `2N-1`, and the geometric line count is one.  This supplies the
   physical stable-map side of `H^N=q_phys` after the virtual class,
   determinant orientation, compactification, and operator map have been fixed.
-- Adds the degree-one vortex observable assembly certificate: the product
-  coefficient
-  `eta_Lambda(H star_Lambda H^{N-1},H^{N-1})` is compared with the
-  vortex-normalized fugacity `q_Lambda` through coefficient, determinant,
-  zero-mode, line-count, operator-map, and continuum residuals, while
-  off-pairings are separately bounded.  This prevents both mirror-residue-only
-  and dimension-count-only arguments from being treated as the physical
-  A-twisted correlator.
+- Replaces the degree-one vortex observable assembly claim with a retained
+  finite zero-mode/intersection model plus a conditional residual template: the
+  check computes the determinant-normalized fugacity, incidence orientation,
+  Berezin saturation, compactification exclusion, and unit hyperplane
+  normalization before comparing
+  `eta_Lambda(H star_Lambda H^{N-1},H^{N-1})` with `q_Lambda` through
+  coefficient, determinant, zero-mode, line-count, operator-map, off-pairing,
+  and continuum residuals.  This prevents both mirror-residue-only and
+  dimension-count-only arguments from being treated as the physical A-twisted
+  correlator.
 - Derives the classical cigar quotient metric by solving the auxiliary
   constraint, gauge fixing the logarithmic chiral scalar, and eliminating the
   gauge field.
@@ -340,11 +342,14 @@ and
     `I_1(H,H^{N-1},H^{N-1})`, wrong-degree and lower-insertion negative
     controls, the unique-line/hyperplane-intersection count, and the finite
     quantum-product pairing check for `H * H^{N-1}=q`;
-  - the degree-one vortex observable assembly certificate: exact
-    vortex-normalized fugacity, line-count multiplication, residual telescope,
-    relative-error bound, omitted-line-residual negative control, off-pairing
-    controls, and negative controls rejecting mirror-only, dimension-only, and
-    zero-mode-gate shortcuts;
+  - the degree-one vortex zero-mode/intersection model and residual template:
+    exact determinant-line fugacity from finite spectra, incidence-orientation
+    determinant, Berezin saturation, compactification-boundary exclusion,
+    unit-hyperplane normalization, independently signed conditional residual
+    budget, off-pairing vanishing by zero-mode degree, and negative controls
+    rejecting mirror-only, dimension-only, determinant-orientation,
+    zero-mode-multiplicity, compactification, and hyperplane-normalization
+    shortcuts;
   - the cigar quotient metric coefficients after algebraic elimination of the
     gauge field.
   - the logarithmic-chiral vortex obstruction: a unit-norm charged section
@@ -403,10 +408,12 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   calculation for `I_1(H,H^{N-1},H^{N-1})=1`, the resulting `H^N=q_phys`
   product gate, and finite checks rejecting mirror-only or dimension-mismatched
   shortcuts.
-- The 2026-06-04 degree-one vortex observable assembly pass ties that direct
-  line count to the regulated vortex fugacity in the actual three-point product
-  coefficient, with off-pairing controls and adversarial checks against
-  mirror-residue-only, dimension-count-only, and zero-mode-gate shortcuts.
+- The 2026-06-04 degree-one vortex observable repair pass replaces the circular
+  assembly check with a finite zero-mode/intersection calculation: it derives
+  the determinant-normalized fugacity, incidence orientation, Berezin
+  saturation, compactification exclusion, and hyperplane normalization before
+  leaving the full continuum comparison in a conditional residual budget with
+  adversarial controls.
 - The 2026-06-04 vortex-fugacity pass scrutinizes the Hori--Vafa scale
   statement itself: the chapter now derives the RG-invariant rank-one
   combination of `mu`, the FI coordinate, and finite vortex determinant

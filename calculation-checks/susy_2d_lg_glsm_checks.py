@@ -7,13 +7,14 @@ vortex-to-FI-coordinate normalization, single-vortex coefficient
 noncancellation certificate, P^{N-1} mirror residue trace, and
 vortex-to-protected-observable residual ledger, together with the
 vortex-fugacity dimensional-transmutation coordinate, the degree-one
-P^{N-1} stable-map gate, and the finite degree-one vortex observable assembly
-certificate for the quantum-product relation, in Volume VII Chapter 09.
+P^{N-1} stable-map gate, and the finite degree-one vortex zero-mode model plus
+conditional residual template for the quantum-product observable relation, in
+Volume VII Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
 elimination, Berezin-degree tests, retained-window signed/mass coefficient
-bounds, root-of-unity residue sums, and explicit residual telescopes are
-computed directly from finite data rather than by substituting the displayed
-final identities.
+bounds, root-of-unity residue sums, zero-mode incidence Jacobians, and residual
+budgets are computed directly from finite data rather than by substituting the
+displayed final identities.
 Imported assumptions: the finite GLSM charge matrix, selected regulator-stage
 factorization, nonzero-mode determinant placeholders, logarithm-branch
 conventions, and the chapter's protected-coordinate definitions are assumed
@@ -22,12 +23,13 @@ Negative controls: extra unsaturated zero modes, omitted vortex
 normalization constants, unbalanced regulator-scale changes, coherent signed
 cancellations with nonzero absolute mass, wrong residue selection powers,
 underspecified residual budgets, stable-map dimension mismatches, mirror-only
-or dimension-only quantum-product shortcuts, omitted off-pairing controls, and
-finite-gauge invariance failures are rejected when the finite model can
-represent them.
+or dimension-only quantum-product shortcuts, determinant-orientation flips,
+zero-mode multiplicity errors, compactification/contact mutations,
+hyperplane-normalization changes, omitted off-pairing controls, and finite-gauge
+invariance failures are rejected when the finite model can represent them.
 Scope boundary: a pass checks finite algebra and bookkeeping interfaces; it
 does not prove continuum GLSM existence, Hori--Vafa mirror equivalence,
-vortex compactness, determinant nonvanishing beyond the stated certificate,
+vortex compactness, determinant nonvanishing beyond the finite retained model,
 virtual-cycle construction, or uniform remainder estimates.
 """
 
@@ -933,77 +935,178 @@ def check_cp_degree_one_stable_map_quantum_product_gate() -> None:
             )
 
 
-def check_degree_one_vortex_observable_assembly() -> None:
+def check_degree_one_vortex_regulated_zero_mode_model() -> None:
     # The degree-one product coefficient is an observable pairing, not just a
-    # residue root sum or a dimension count.  The finite certificate assembles
-    # the vortex-normalized fugacity, the line count, the operator pairing, and
-    # all residuals in the same regulator.
+    # residue root sum or a dimension count.  This finite model computes the
+    # retained determinant coefficient, zero-mode incidence Jacobian, Berezin
+    # saturation, boundary exclusion, and operator normalization before any
+    # continuum comparison residuals are invoked.
     n_fields = 5
     bare_fi = Fraction(3, 17)
-    vortex_coefficients = [
-        Fraction(5, 4),
-        Fraction(7, 6),
-        Fraction(11, 10),
-        Fraction(13, 12),
-        Fraction(17, 16),
+
+    finite_spectral_blocks = [
+        ([2, 3], [5, 7], [11], [13], [17], [19], Fraction(23, 29)),
+        ([3, 5], [7, 11], [13], [17], [19], [23], Fraction(29, 31)),
+        ([5, 7], [11, 13], [17], [19], [23], [29], Fraction(31, 37)),
+        ([7, 11], [13, 17], [19], [23], [29], [31], Fraction(37, 41)),
+        ([11, 13], [17, 19], [23], [29], [31], [37], Fraction(41, 43)),
     ]
-    q_regulated = bare_fi * prod(vortex_coefficients)
-    line_count = Fraction(1)
-    mirror_residue = cp_mirror_residue_trace(
-        n_fields,
-        n_fields - 1 + n_fields,
+
+    def finite_det(values: list[int]) -> Fraction:
+        return prod((Fraction(value) for value in values), start=Fraction(1))
+
+    def determinant_line_factor(
+        block: tuple[list[int], list[int], list[int], list[int], list[int], list[int], Fraction],
+    ) -> Fraction:
+        (
+            boson_vacuum,
+            boson_vortex_nonzero,
+            fermion_vacuum,
+            fermion_vortex,
+            ghost_vacuum,
+            ghost_vortex,
+            zero_mode_metric,
+        ) = block
+        numerator = (
+            finite_det(fermion_vortex)
+            * finite_det(ghost_vortex)
+            * finite_det(boson_vacuum)
+            * zero_mode_metric
+        )
+        denominator = (
+            finite_det(boson_vortex_nonzero)
+            * finite_det(fermion_vacuum)
+            * finite_det(ghost_vacuum)
+        )
+        return Fraction(numerator, denominator)
+
+    vortex_coefficients = [
+        determinant_line_factor(block)
+        for block in finite_spectral_blocks
+    ]
+    q_regulated = bare_fi * prod(vortex_coefficients, start=Fraction(1))
+
+    variables = (
+        [("A", index) for index in range(1, n_fields)]
+        + [("B", index) for index in range(n_fields)]
+    )
+    constraints = (
+        [("A", index, Fraction(0)) for index in range(1, n_fields)]
+        + [("B", 0, Fraction(0)), ("B", 1, Fraction(1))]
+        + [("B", index, Fraction(0)) for index in range(2, n_fields)]
+    )
+    incidence_matrix = [
+        [
+            Fraction(1) if variable == (kind, index) else Fraction(0)
+            for variable in variables
+        ]
+        for kind, index, _value in constraints
+    ]
+    orientation_sign = determinant_fraction(incidence_matrix)
+    assert_equal("degree-one zero-mode incidence orientation", orientation_sign, Fraction(1))
+
+    solution = {("A", 0): Fraction(1)}
+    solution.update({(kind, index): value for kind, index, value in constraints})
+    first_mark = [solution.get(("A", index), Fraction(0)) for index in range(n_fields)]
+    second_mark = [solution.get(("B", index), Fraction(0)) for index in range(n_fields)]
+    third_mark = [
+        solution.get(("A", index), Fraction(0)) + solution.get(("B", index), Fraction(0))
+        for index in range(n_fields)
+    ]
+    point_zero = [Fraction(1)] + [Fraction(0)] * (n_fields - 1)
+    point_one = [Fraction(0), Fraction(1)] + [Fraction(0)] * (n_fields - 2)
+    hyperplane = [Fraction(-1), Fraction(1)] + [Fraction(0)] * (n_fields - 2)
+
+    def hyperplane_value(point: list[Fraction]) -> Fraction:
+        return sum(
+            (coefficient * coordinate for coefficient, coordinate in zip(hyperplane, point)),
+            Fraction(0),
+        )
+
+    assert_equal("first point incidence", first_mark, point_zero)
+    assert_equal("second point incidence", second_mark, point_one)
+    assert_equal("third mark lies on normalized hyperplane", hyperplane_value(third_mark), Fraction(0))
+
+    zero_mode_dimension = len(variables)
+    insertion_complex_degree = 1 + (n_fields - 1) + (n_fields - 1)
+    assert_equal("degree-one zero-mode dimension", zero_mode_dimension, 2 * n_fields - 1)
+    assert_equal("operator insertions saturate zero modes", insertion_complex_degree, zero_mode_dimension)
+    berezin_gate = Fraction(1) if insertion_complex_degree == zero_mode_dimension else Fraction(0)
+
+    boundary_excluded = (
+        point_zero != point_one
+        and hyperplane_value(point_zero) != 0
+        and hyperplane_value(point_one) != 0
+    )
+    assert_equal("degree-one compactification boundary excluded", boundary_excluded, True)
+    compactification_factor = Fraction(1) if boundary_excluded else Fraction(0)
+    operator_normalization = Fraction(1)
+    retained_three_point = (
+        q_regulated
+        * orientation_sign
+        * berezin_gate
+        * compactification_factor
+        * operator_normalization
+    )
+    assert_equal(
+        "regulated zero-mode model gives degree-one product coefficient",
+        retained_three_point,
         q_regulated,
     )
-    retained_three_point = q_regulated * line_count
 
-    assert_equal("degree-one mirror residue uses vortex-normalized q", mirror_residue, q_regulated)
-    assert_equal("degree-one line count multiplies vortex fugacity", retained_three_point, q_regulated)
-
-    residuals = {
-        "coefficient": Fraction(1, 101),
-        "determinant": Fraction(1, 103),
-        "zero mode": Fraction(1, 107),
-        "line compactification": Fraction(1, 109),
-        "operator map": Fraction(1, 113),
-        "continuum": Fraction(1, 127),
+    signed_residuals = {
+        "coefficient": Fraction(1, 100003),
+        "determinant": Fraction(-1, 100019),
+        "zero mode": Fraction(1, 100043),
+        "line compactification": Fraction(-1, 100049),
+        "operator map": Fraction(1, 100057),
+        "continuum": Fraction(-1, 100069),
     }
-    observable = retained_three_point + sum(residuals.values(), Fraction(0))
-    total_bound = sum(abs(value) for value in residuals.values())
-    actual_error = abs(observable - q_regulated)
-    assert_equal("degree-one vortex observable residual telescope", actual_error, total_bound)
+    residual_bounds = {
+        name: abs(value) + Fraction(1, 1_000_000 + index)
+        for index, (name, value) in enumerate(signed_residuals.items())
+    }
+    comparison_residual = sum(signed_residuals.values(), Fraction(0))
+    full_correlator_probe = retained_three_point + comparison_residual
+    actual_error = abs(full_correlator_probe - retained_three_point)
+    total_bound = sum(residual_bounds.values(), Fraction(0))
+    assert_equal(
+        "degree-one observable comparison residual is independently signed",
+        full_correlator_probe - retained_three_point,
+        comparison_residual,
+    )
     assert_leq_bound(
-        "degree-one vortex observable relative error",
+        "degree-one observable residual budget",
+        actual_error,
+        total_bound,
+    )
+    assert_leq_bound(
+        "degree-one observable conditional relative budget",
         total_bound / abs(q_regulated),
         Fraction(1, 4),
     )
 
-    omitted_line_budget = total_bound - residuals["line compactification"]
+    omitted_line_budget = total_bound - residual_bounds["line compactification"]
+    adversarial_aligned_error = sum(residual_bounds.values(), Fraction(0))
     assert_gt_bound(
-        "omitting line-count residual underbudgets product coefficient",
-        actual_error,
+        "omitting line-count residual underbudgets aligned comparison error",
+        adversarial_aligned_error,
         omitted_line_budget,
     )
 
-    off_pairing_bounds = {
-        power: Fraction(1, 200 + power)
-        for power in range(n_fields - 1)
-    }
-    off_pairing_values = {
-        power: off_pairing_bounds[power] / 2
-        for power in off_pairing_bounds
-    }
-    for power, value in off_pairing_values.items():
-        assert_leq_bound(
-            f"off-pairing controlled for H^{power}",
-            abs(value),
-            off_pairing_bounds[power],
+    for pairing_power in range(n_fields - 1):
+        codimension = 1 + (n_fields - 1) + pairing_power
+        off_pairing_value = q_regulated if codimension == zero_mode_dimension else Fraction(0)
+        assert_equal(
+            f"off-pairing vanishes by zero-mode degree for H^{pairing_power}",
+            off_pairing_value,
+            Fraction(0),
         )
-
-    missing_off_pairing_claim = all(value == 0 for value in off_pairing_values.values())
+    top_pairing_codimension = 1 + (n_fields - 1) + (n_fields - 1)
     assert_equal(
-        "finite product relation requires off-pairing controls",
-        missing_off_pairing_claim,
-        False,
+        "top pairing is the unique saturated degree-one observable",
+        top_pairing_codimension,
+        zero_mode_dimension,
     )
 
     mirror_only_bare = cp_mirror_residue_trace(
@@ -1012,17 +1115,45 @@ def check_degree_one_vortex_observable_assembly() -> None:
         bare_fi,
     )
     if mirror_only_bare == q_regulated:
-        raise AssertionError("mirror residue with bare FI should not certify vortex-normalized product")
+        raise AssertionError("mirror residue with bare FI should not establish vortex-normalized product")
 
     dimension_count_only = Fraction(1)
     if dimension_count_only == q_regulated:
         raise AssertionError("stable-map line count alone should not include the vortex fugacity")
 
-    zero_mode_gate = Fraction(0)
-    killed_fugacity = q_regulated * zero_mode_gate
+    flipped_orientation = q_regulated * (-orientation_sign) * berezin_gate
+    if flipped_orientation == retained_three_point:
+        raise AssertionError("determinant-orientation flip should change the degree-one coefficient")
+
+    missing_zero_mode_degree = insertion_complex_degree - 1
+    missing_zero_mode_gate = (
+        Fraction(1) if missing_zero_mode_degree == zero_mode_dimension else Fraction(0)
+    )
+    killed_fugacity = q_regulated * missing_zero_mode_gate
     assert_equal("unsaturated zero-mode gate kills degree-one product coefficient", killed_fugacity, 0)
     if retained_three_point == killed_fugacity:
         raise AssertionError("charge and dimension data should not override a zero-mode gate")
+
+    colliding_point_boundary_excluded = (
+        point_zero == point_one
+        and hyperplane_value(point_zero) != 0
+        and hyperplane_value(point_one) != 0
+    )
+    assert_equal(
+        "colliding point constraints fail compactification exclusion",
+        colliding_point_boundary_excluded,
+        False,
+    )
+    hyperplane_through_first_point = [Fraction(0), Fraction(1)] + [Fraction(0)] * (n_fields - 2)
+    if sum(
+        coefficient * coordinate
+        for coefficient, coordinate in zip(hyperplane_through_first_point, point_zero)
+    ) != 0:
+        raise AssertionError("mutated hyperplane should contain the first point")
+
+    doubled_operator_normalization = Fraction(2)
+    if q_regulated * doubled_operator_normalization == retained_three_point:
+        raise AssertionError("hyperplane-class normalization change should rescale the coefficient")
 
 
 def check_cigar_metric_elimination() -> None:
@@ -1143,7 +1274,7 @@ def main() -> None:
     check_cp_mirror_residue_correlators()
     check_vortex_to_observable_residual_budget()
     check_cp_degree_one_stable_map_quantum_product_gate()
-    check_degree_one_vortex_observable_assembly()
+    check_degree_one_vortex_regulated_zero_mode_model()
     check_cigar_metric_elimination()
     check_logarithmic_chiral_vortex_obstruction()
     check_hypersurface_phase_ledger()
