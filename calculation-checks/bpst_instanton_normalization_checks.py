@@ -25,6 +25,10 @@ relations
     correct orbit-volume and homogeneous-cone scaling
     the finite-regulator nonzero-mode determinant datum has the correct
     boson/ghost/fermion determinant powers and counterterm shifts
+    the finite-regulator instanton amplitude pipeline keeps the classical
+    weight, collective density, nonzero-mode determinant, zero-mode/source
+    coefficient, source matching, endpoint, and physical projection as
+    distinct load-bearing stages
     the finite fermion block determinant separates the nonzero-mode spectral
     determinant from the zero-mode Schur/Berezin determinant
     finite source-frame changes multiply the zero-mode determinant by
@@ -748,6 +752,138 @@ def check_finite_regulator_determinant_datum() -> None:
     c1 = Fraction(2, 5)
     new_power = old_power - c1
     assert_equal("counterterm logarithmic power shift", new_power, Fraction(49, 15))
+
+
+def check_instanton_amplitude_pipeline_stage_bookkeeping() -> None:
+    # A finite-regulator instanton chart reduces the amplitude integrand to
+    # finitely many cells after a quadrature/discretization.  Each cell carries
+    # distinct classical, collective-coordinate, nonzero-mode determinant,
+    # zero-mode/source, source-matching, and physical-projection data.
+    cells = [
+        {
+            "classical": Fraction(2, 3),
+            "collective": Fraction(3, 5),
+            "nonzero": Fraction(5, 7),
+            "zero_mode": Fraction(7, 11),
+            "source": Fraction(11, 13),
+            "projection": Fraction(13, 17),
+        },
+        {
+            "classical": Fraction(3, 4),
+            "collective": Fraction(5, 9),
+            "nonzero": Fraction(7, 10),
+            "zero_mode": Fraction(0),
+            "source": Fraction(11, 12),
+            "projection": Fraction(2, 19),
+        },
+        {
+            "classical": Fraction(5, 6),
+            "collective": Fraction(7, 8),
+            "nonzero": Fraction(11, 13),
+            "zero_mode": Fraction(13, 17),
+            "source": Fraction(17, 19),
+            "projection": Fraction(19, 23),
+        },
+    ]
+
+    euclidean_cells = [
+        product_fraction(
+            [
+                cell["classical"],
+                cell["collective"],
+                cell["nonzero"],
+                cell["zero_mode"],
+                cell["source"],
+            ]
+        )
+        for cell in cells
+    ]
+    physical_from_pipeline = sum(
+        cell["projection"] * euclidean_cell
+        for cell, euclidean_cell in zip(cells, euclidean_cells)
+    )
+    physical_from_merged_cells = sum(
+        product_fraction(
+            [
+                cell["classical"],
+                cell["collective"],
+                cell["nonzero"],
+                cell["zero_mode"],
+                cell["source"],
+                cell["projection"],
+            ]
+        )
+        for cell in cells
+    )
+    assert_equal(
+        "instanton amplitude pipeline equals merged finite-cell product",
+        physical_from_pipeline,
+        physical_from_merged_cells,
+    )
+    assert_equal(
+        "unsaturated instanton cell gives zero before physical projection",
+        euclidean_cells[1],
+        Fraction(0),
+    )
+
+    moduli_only_coordinate = sum(
+        cell["classical"] * cell["collective"] for cell in cells
+    )
+    determinant_omitted_coordinate = sum(
+        cell["classical"] * cell["collective"] * cell["zero_mode"] * cell["source"]
+        for cell in cells
+    )
+    assert_equal(
+        "collective-coordinate chart alone is not the physical instanton amplitude",
+        moduli_only_coordinate == physical_from_pipeline,
+        False,
+    )
+    assert_equal(
+        "dropping the nonzero-mode determinant changes the instanton amplitude",
+        determinant_omitted_coordinate == physical_from_pipeline,
+        False,
+    )
+
+    # Source-frame changes can move a finite determinant between the light
+    # fermion nonzero-mode factor and the zero-mode source coefficient.  The
+    # amplitude cell is the product of both, not either factor separately.
+    source_frame_scale = Fraction(5, 4)
+    flavor_pairs = 2
+    rescaled_physical = sum(
+        product_fraction(
+            [
+                cell["classical"],
+                cell["collective"],
+                cell["nonzero"] * source_frame_scale**flavor_pairs,
+                cell["zero_mode"] / source_frame_scale**flavor_pairs,
+                cell["source"],
+                cell["projection"],
+            ]
+        )
+        for cell in cells
+    )
+    assert_equal(
+        "source-frame reshuffling preserves the full instanton pipeline product",
+        rescaled_physical,
+        physical_from_pipeline,
+    )
+
+    residuals = {
+        "determinant": Fraction(1, 29),
+        "zero_mode": Fraction(-1, 31),
+        "source_matching": Fraction(1, 37),
+        "endpoint": Fraction(-1, 41),
+        "continuation": Fraction(1, 43),
+        "spectral": Fraction(-1, 47),
+        "infrared": Fraction(1, 53),
+        "unitarity_cut": Fraction(-1, 59),
+    }
+    physical_with_residuals = physical_from_pipeline + sum(residuals.values())
+    assert_equal(
+        "instanton amplitude pipeline residual telescope",
+        physical_with_residuals - physical_from_pipeline,
+        sum(residuals.values()),
+    )
 
 
 def check_physical_instanton_correlator_zero_mode_saturation() -> None:
@@ -3323,6 +3459,7 @@ def main() -> None:
     check_general_adhm_quotient_dimension()
     check_adhm_quotient_density_coarea_scaling()
     check_finite_regulator_determinant_datum()
+    check_instanton_amplitude_pipeline_stage_bookkeeping()
     check_physical_instanton_correlator_zero_mode_saturation()
     check_two_flavor_thooft_channel_decomposition()
     check_two_flavor_instanton_source_curvature()

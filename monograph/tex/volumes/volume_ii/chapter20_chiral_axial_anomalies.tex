@@ -4485,6 +4485,61 @@ or sources saturate the fermion zero modes, what nonzero-mode determinant and
 counterterm scheme define \(\mathcal W_{\Lambda}^{\rm nz}\), and whether the
 resulting \(a,\rho,U\) integral is finite at its boundary faces.
 
+\paragraph{From collective coordinates to an amplitude.}
+For later use, it is helpful to compress the \(Q=1\) calculation into the
+ordered finite-regulator pipeline
+\begin{equation}
+  K_{\Lambda,\mathcal J}^{E}(z)
+  =
+  \ee^{-S_\Lambda(A_z)+\ii\theta}\,
+  \mathcal W_{\Lambda}^{\rm nz}(z)\,
+  \mathcal Z_{\mathcal J,\Lambda}^{0}(z)\,
+  \dd\nu_{\Lambda,\mathcal M}(z),
+  \qquad
+  G_{\Lambda,\mathcal J}^{E,Q=1}
+  =
+  \int_{\mathcal U_{Q=1}}K_{\Lambda,\mathcal J}^{E}(z).
+  \label{eq:instanton-amplitude-pipeline-euclidean-kernel}
+\end{equation}
+The first factor selects the topological sector and its classical action; the
+last factor is the collective-coordinate density; the middle two factors are
+where the fluctuation and fermion-saturation calculation enters.  A
+semiclassical local vertex is obtained only after replacing
+\(K_{\Lambda,\mathcal J}^{E}\) on a declared window by a leading kernel and
+then projecting it onto an observable coordinate:
+\begin{equation}
+  \mathcal A_{\rm phys}^{Q=1}[\mathcal J]
+  =
+  \operatorname*{Proj}_{\rm phys}
+  \operatorname*{Cont}_{\mathcal S}
+  \int_{\mathcal U_{\rm win}}
+  K_{{\rm lead},\mathcal J}^{E}(z)
+  +
+  R_{\rm det}+R_{\rm zm}+R_{\rm src}+R_{\rm Schur}
+  +R_{\rho}+R_{\rm cont}+R_{\rm spec}+R_{\rm IR}+R_{\rm cut}.
+  \label{eq:instanton-amplitude-pipeline-physical-map}
+\end{equation}
+Here the determinant residual includes the nonzero-mode spectrum and local
+counterterms; \(R_{\rm zm}\) records the zero-mode projection or derivative
+expansion of the sources; \(R_{\rm src}\) records the color-singlet,
+hadronic, or OPE matching layer; \(R_{\rm Schur}\) records finite
+nonzero-mode corrections to the zero-mode block; \(R_{\rho}\) is the size and
+Uhlenbeck-face endpoint remainder; and the final four terms are the
+continuation, spectral-projection, infrared, and unitarity-cut remnants
+needed before a physical amplitude is asserted.
+
+This ordering is part of the content of the instanton calculation.  The ADHM
+or BPST moduli space supplies the domain and the collective-coordinate
+Jacobian.  It does not supply the nonzero-mode determinant, the fermion
+zero-mode Berezin coefficient, the source-to-observable matching, or the
+endpoint estimates.  Conversely, the local 't Hooft operator is the
+small-size, source-adiabatic coordinate of
+\eqref{eq:instanton-amplitude-pipeline-euclidean-kernel}; the four-point
+amplitude calculation keeps the zero-mode form factors, determinant
+normalization, external source residues, and size tails inside the same
+integral until a hard, screened, thermal, or Wilsonian window justifies
+separating them.
+
 For vectorlike QCD with \(N_f\) massless Dirac fundamentals, a \(Q=1\)
 instanton supplies one zero mode for each flavor in one chirality sector.  The
 semiclassical functional integral therefore generates the following leading

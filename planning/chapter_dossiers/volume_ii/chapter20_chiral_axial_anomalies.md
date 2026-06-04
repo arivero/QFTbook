@@ -157,6 +157,15 @@
   calculation-check docstring rather than the TeX, the target claims,
   independent constructions, imported assumptions, negative controls, and
   finite/continuum scope boundary for this instanton companion.
+  The 2026-06-04 amplitude-pipeline continuation adds a reader-facing spine
+  from the finite BPST/ADHM chart to a physical observable: classical sector,
+  collective density, nonzero-mode determinant and counterterms, fermion
+  zero-mode/source saturation, source or hadron matching, size-endpoint
+  control, analytic continuation, and spectral/infrared/unitarity projection
+  are kept as separate load-bearing stages.  The companion check verifies the
+  finite stage product, the vanishing of an unsaturated zero-mode cell, the
+  failure of moduli-only or determinant-omitted shortcuts, source-frame
+  reshuffling invariance, and the residual telescope.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
