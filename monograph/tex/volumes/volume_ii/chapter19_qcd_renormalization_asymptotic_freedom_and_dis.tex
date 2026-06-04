@@ -8175,7 +8175,11 @@ computable at large transverse scale \(Q\theta\), and the evolution of
 
 In the back-to-back region set
 \[
-  q_T^2:=Q^2(1+\cos\chi)\ll Q^2 .
+  z:=\frac{1-\cos\chi}{2},
+  \qquad
+  q_T^2:=Q^2(1-z)
+  =
+  \frac{Q^2}{2}(1+\cos\chi)\ll Q^2 .
 \]
 Momentum conservation forces the two measured energy deposits to recoil
 against soft and collinear radiation of small total transverse momentum.  The
@@ -8313,16 +8317,21 @@ back-to-back endpoint window
 \begin{equation}
   \varphi_Q(q_T^2)
   :=
-  \varphi\!\left(-1+\frac{q_T^2}{Q^2}\right),
+  \varphi\!\left(-1+\frac{2q_T^2}{Q^2}\right),
   \qquad
-  q_T^2=Q^2(1+\zeta).
+  q_T^2=\frac{Q^2}{2}(1+\zeta).
   \label{eq:qcd-eec-recoil-test-pullback}
 \end{equation}
-The open recoil chart is then the distribution on \(0<q_T<q_0\) obtained by
-pairing \(\varphi_Q\) with the Fourier kernel in
+This is the pushforward of the standard EEC variable
+\(z=(1-\zeta)/2\) together with \(1-z=q_T^2/Q^2\).  Equivalently,
+\(\dd\sigma/\dd\zeta=(Q^2/2)\,\dd\sigma/\dd q_T^2\) at
+\(q_T^2=Q^2(1+\zeta)/2\); in test-function form the same Jacobian is already
+accounted for by pairing the \(q_T^2\)-distribution with
+\(\varphi_Q(q_T^2)\).  The open recoil chart is then the distribution on
+\(0<q_T<q_0\) obtained by pairing \(\varphi_Q\) with the Fourier kernel in
 \eqref{eq:qcd-eec-back-to-back-factorization}, after the overlap with the
-fixed-order bulk chart has been subtracted.  Endpoint support at \(q_T=0\),
-or equivalently \(\zeta=-1\), is carried by the separate endpoint atom
+fixed-order bulk chart has been subtracted.  Endpoint support at \(q_T=0\), or
+equivalently \(\zeta=-1\), is carried by the separate endpoint atom
 \(K_-^\tau\) in
 \eqref{eq:qcd-measured-eec-factorization-budget}.  This separation is
 essential because a Born-level back-to-back contribution, a perturbative

@@ -15,12 +15,14 @@ Target claims:
   - Eq. (qcd-eec-leading-sudakov-factor): the fixed-coupling cusp integral
     gives the coefficient L_b^2/2 with the displayed sign convention.
   - Controlled approximation (qcd-eec-tested-back-to-back-recoil): a tested
-    recoil chart pulls detector tests back by zeta=-1+q_T^2/Q^2 and its
-    residual budget must retain perturbative, matching, large-b, and power
-    components separately.
+    recoil chart pulls detector tests back by the physical EEC relation
+    z=(1-zeta)/2 and 1-z=q_T^2/Q^2, hence zeta=-1+2q_T^2/Q^2, and its residual
+    budget must retain perturbative, matching, large-b, and power components
+    separately.
 Independent construction:
-  - Polynomial antiderivatives compute the cusp integral and the q_T^2 test
-    pullback directly, without substituting the target formulas.
+  - Polynomial antiderivatives compute the cusp integral, derive the q_T^2
+    test pullback from the independent z and recoil definitions, and compare
+    the q_T^2 and zeta-density Jacobian pairings.
   - The residual check uses exact signed rational defects and an l1 bound.
 Imported assumptions:
   - Fixed coupling, omitted non-cusp anomalous dimensions, the declared
@@ -28,8 +30,8 @@ Imported assumptions:
     chart for the tested recoil functional.
 Negative controls:
   - The half-trace conversion would fail if g^2 C_F were not invariant.
-  - The wrong angular pullback zeta=-1-q_T^2/Q^2 gives a different first
-    moment.
+  - The old missing-half angular pullback zeta=-1+q_T^2/Q^2 and the wrong-sign
+    pullback zeta=-1-2q_T^2/Q^2 give different generic moments.
   - Dropping the large-b/nonperturbative residual can make the tested bound
     false.
 Scope boundary:
@@ -71,16 +73,42 @@ def integrate_recoil_test_pullback(
     q2_max: Fraction,
     q2_scale: Fraction,
     *,
-    sign: int = 1,
+    slope: Fraction = Fraction(2),
 ) -> Fraction:
-    """Integrate phi(-1 + sign*s/Q^2) ds over 0 <= s <= q2_max."""
+    """Integrate phi(-1 + slope*s/Q^2) ds over 0 <= s <= q2_max."""
 
     total = Fraction(0)
     for power, coeff in enumerate(zeta_poly):
         for k in range(power + 1):
             binomial_coeff = Fraction(comb(power, k))
-            zeta_coeff = coeff * binomial_coeff * Fraction(-1) ** (power - k) * Fraction(sign) ** k
+            zeta_coeff = (
+                coeff
+                * binomial_coeff
+                * Fraction(-1) ** (power - k)
+                * slope**k
+            )
             total += zeta_coeff * q2_max ** (k + 1) / (Fraction(k + 1) * q2_scale**k)
+    return total
+
+
+def integrate_zeta_density_pullback(
+    zeta_poly: tuple[Fraction, ...],
+    q2_max: Fraction,
+    q2_scale: Fraction,
+) -> Fraction:
+    """Integrate the zeta-density pushforward of a unit q_T^2 density."""
+
+    zeta_low = Fraction(-1)
+    zeta_high = Fraction(-1) + Fraction(2) * q2_max / q2_scale
+    total = Fraction(0)
+    for power, coeff in enumerate(zeta_poly):
+        total += (
+            q2_scale
+            / 2
+            * coeff
+            * (zeta_high ** (power + 1) - zeta_low ** (power + 1))
+            / Fraction(power + 1)
+        )
     return total
 
 
@@ -120,14 +148,24 @@ def check_fixed_coupling_solution() -> None:
 
 
 def check_back_to_back_test_pullback() -> None:
-    # In the recoil endpoint chart q_T^2 = Q^2 (1 + zeta), so detector tests
-    # pull back as phi_Q(s)=phi(-1+s/Q^2).  Check the first two moments by
-    # exact polynomial integration in s=q_T^2.
+    # The standard EEC variable is z=(1-zeta)/2, and TMD recoil satisfies
+    # 1-z=q_T^2/Q^2.  Therefore zeta=-1+2q_T^2/Q^2.  Check the first two
+    # moments and the equivalent zeta-density Jacobian by exact polynomial
+    # integration in s=q_T^2.
     q2_scale = Fraction(25)
     q2_max = Fraction(5)
     constant_test = (Fraction(1),)
     zeta_test = (Fraction(0), Fraction(1))
     quadratic_test = (Fraction(3, 7), Fraction(-2, 5), Fraction(11, 13))
+
+    sample_s = Fraction(3)
+    z_from_recoil = Fraction(1) - sample_s / q2_scale
+    zeta_from_z = Fraction(1) - 2 * z_from_recoil
+    assert_equal(
+        "physical EEC recoil map",
+        zeta_from_z,
+        Fraction(-1) + 2 * sample_s / q2_scale,
+    )
 
     assert_equal(
         "recoil constant-test pullback",
@@ -137,11 +175,32 @@ def check_back_to_back_test_pullback() -> None:
     assert_equal(
         "recoil zeta-test pullback",
         integrate_recoil_test_pullback(zeta_test, q2_max, q2_scale),
-        -q2_max + q2_max**2 / (2 * q2_scale),
+        -q2_max + q2_max**2 / q2_scale,
+    )
+    assert_equal(
+        "recoil zeta-density Jacobian",
+        integrate_zeta_density_pullback(quadratic_test, q2_max, q2_scale),
+        integrate_recoil_test_pullback(quadratic_test, q2_max, q2_scale),
     )
 
     correct = integrate_recoil_test_pullback(quadratic_test, q2_max, q2_scale)
-    wrong_sign = integrate_recoil_test_pullback(quadratic_test, q2_max, q2_scale, sign=-1)
+    missing_half = integrate_recoil_test_pullback(
+        quadratic_test,
+        q2_max,
+        q2_scale,
+        slope=Fraction(1),
+    )
+    if correct == missing_half:
+        raise AssertionError(
+            "missing-half recoil angular pullback should not preserve a generic test"
+        )
+
+    wrong_sign = integrate_recoil_test_pullback(
+        quadratic_test,
+        q2_max,
+        q2_scale,
+        slope=Fraction(-2),
+    )
     if correct == wrong_sign:
         raise AssertionError("wrong recoil angular pullback should not preserve a generic test")
 

@@ -219,10 +219,13 @@ The chapter must define and derive:
   \(\Gamma_{\rm cusp}^q=g^2C_F/(4\pi^2)+O(g^4)\), now presented as a
   scoped endpoint calculation rather than theorem form;
 - the tested back-to-back recoil chart: the pullback
-  \(\varphi_Q(q_T^2)=\varphi(-1+q_T^2/Q^2)\), the separation of the open
-  recoil integral from the endpoint atom \(K_-^\tau\), the large-\(b\)
-  nonperturbative boundary, and the measured-bin residual decomposition for
-  factorization, evolution, matching, large-\(b\), Glauber, and power errors;
+  \(\varphi_Q(q_T^2)=\varphi(-1+2q_T^2/Q^2)\) following
+  \(z=(1-\zeta)/2\) and \(1-z=q_T^2/Q^2\), the corresponding
+  \(\dd\sigma/\dd\zeta=(Q^2/2)\dd\sigma/\dd q_T^2\) Jacobian, the separation
+  of the open recoil integral from the endpoint atom \(K_-^\tau\), the
+  large-\(b\) nonperturbative boundary, and the measured-bin residual
+  decomposition for factorization, evolution, matching, large-\(b\), Glauber,
+  and power errors;
 - the tree-level resolved collinear EEC coefficient, derived from the ordered
   detector weight \(2x(1-x)\) multiplying the real final-state splitting
   kernels, with exact coefficients
@@ -550,8 +553,9 @@ The chapter must define and derive:
      convention.
 19ca. A back-to-back endpoint formula contributes to a measured EEC only
       after it is turned into a tested recoil chart.  Angular tests pull back
-      by \(\varphi_Q(q_T^2)=\varphi(-1+q_T^2/Q^2)\); the open \(q_T>0\)
-      recoil distribution is kept separate from the endpoint atom
+      by \(\varphi_Q(q_T^2)=\varphi(-1+2q_T^2/Q^2)\), equivalently
+      \(q_T^2=Q^2(1+\zeta)/2\); the open \(q_T>0\) recoil distribution is kept
+      separate from the endpoint atom
       \(K_-^\tau\); and the large-\(b\) region must be supplied by a
       nonperturbative shape or fitted prescription, or counted as an
       excluded-bin residual.  The recoil error entering the measured EEC
@@ -945,6 +949,13 @@ The chapter must define and derive:
   `calculation-checks/energy_correlator_sudakov_checks.py` with exact checks
   of the pullback and a residual budget that fails if the large-\(b\)
   component is omitted.
+- 2026-06-04 issue #748 recoil-normalization correction: restored the
+  standard physical EEC back-to-back map \(z=(1-\zeta)/2\) and
+  \(1-z=q_T^2/Q^2\), replacing the previous missing-half pullback by
+  \(\zeta=-1+2q_T^2/Q^2\) and recording the induced
+  \(\dd\sigma/\dd\zeta=(Q^2/2)\dd\sigma/\dd q_T^2\) Jacobian.  The Sudakov
+  companion now derives the pullback from the independent \(z\) and recoil
+  definitions and includes a negative control for the old no-half map.
 - 2026-06-04 issue #519 timelike-momentum pass: added
   `prop:qcd-eec-timelike-momentum-sum-rule`, making the protected
   total-energy row in the small-angle EEC light-ray chart concrete at one

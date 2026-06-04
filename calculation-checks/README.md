@@ -905,7 +905,8 @@ Current checks:
   \(\exp[-\Gamma_{\rm cusp}^qL_b^2/2]\), trace-delta versus half-trace
   invariance of the one-loop cusp coefficient \(g^2C_F/(4\pi^2)\), the
   back-to-back \(q_T^2\)-test pullback
-  \(\zeta=-1+q_T^2/Q^2\), and the measured-bin recoil residual budget whose
+  \(\zeta=-1+2q_T^2/Q^2\) with its zeta-density Jacobian check, and the
+  measured-bin recoil residual budget whose
   negative control fails when the large-\(b\) component is omitted.
 - `constructive_scalar_spde_checks.py`: finite checks for the constructive
   scalar and singular-SPDE chapters, including Hermite/Wick coefficients for
