@@ -1531,7 +1531,10 @@ Current checks:
   spectral-density reconstruction, greybody-weighted retained flux, negative
   controls against free spectral-density substitution and using \(G^>\) as the
   emitted occupation, residual-budget undercounting, and stress-flux mass-loss
-  bookkeeping.
+  bookkeeping.  It also checks the flux-to-mass backreaction window:
+  residual telescopes, Lipschitz drift control, quasi-stationary failure on
+  long windows, retained flux-noise chart bounds, and rejection of number-flux
+  substitution for stress-energy flux.
 - `hydrodynamic_modes_checks.py`: finite algebra checks for the Volume X
   hydrodynamic Ward-identity chapter, including shear diffusion, sound
   attenuation, entropy-production positivity for sample transport matrices,

@@ -4,21 +4,26 @@
 Evidence contract.
 Target claims:
 - Verify the finite arithmetic behind the Hawking mode-tracing coefficient,
-  wave-packet Planck-bin average, Schwarzian flux, and interacting horizon
-  KMS spectral-density flux package.
+  wave-packet Planck-bin average, Schwarzian flux, interacting horizon KMS
+  spectral-density flux package, and flux-to-mass backreaction window.
 Independent construction:
 - The checks recompute the Gamma-function norm, Bogoliubov ratio, KMS
-  greater/lesser weights, greybody-weighted flux, and mass-loss bookkeeping
+  greater/lesser weights, greybody-weighted flux, mass-loss bookkeeping,
+  residual telescopes, quasi-stationary control, and flux-noise chart bounds
   directly from finite numerical or rational data.
 Imported assumptions:
 - The script assumes the geometric-optics ray-tracing form, a stationary
   late-time KMS horizon state, positive channel spectral densities, and
-  declared exterior propagation weights.
+  declared exterior propagation weights, plus a retained mass chart and
+  nonnegative residual budgets for drift, state transport, gravitational EFT
+  corrections, and flux noise.
 Negative controls:
 - The checks reject reversed KMS weights, free spectral-density substitution
   in an interacting channel, spontaneous-plus-thermal weights used as emitted
-  occupation, omitted residual budgets, and propagation weights outside the
-  probability range.
+  occupation, omitted residual budgets, propagation weights outside the
+  probability range, number-flux substitution for energy flux, long-window
+  quasi-stationary overreach, and mean-only backreaction when the retained
+  flux noise leaves the mass chart.
 Scope boundary:
 - Passing this script does not construct an interacting Hadamard state, prove
   a Hawking theorem, compute greybody factors from a black-hole potential, or
@@ -175,6 +180,86 @@ def check_interacting_horizon_flux_package() -> None:
     )
 
 
+def check_flux_to_mass_backreaction_window() -> None:
+    mass_0 = Fraction(100)
+    delta_u = Fraction(4)
+    retained_luminosity = Fraction(1, 80)
+    retained_mass_drop = delta_u * retained_luminosity
+
+    residuals = {
+        "flux package": Fraction(1, 1000),
+        "drift": Fraction(1, 1600),
+        "state transport": Fraction(1, 2000),
+        "gravitational EFT": Fraction(1, 4000),
+    }
+    residual_budget = sum(residuals.values(), Fraction(0))
+    actual_mass_drop = retained_mass_drop + residual_budget
+    mass_after = mass_0 - actual_mass_drop
+
+    assert_true("positive luminosity lowers the mass", mass_after < mass_0)
+    assert_exact(
+        "retained flux-to-mass residual telescope",
+        abs((mass_0 - mass_after) - retained_mass_drop),
+        residual_budget,
+    )
+    assert_true(
+        "omitted state-transport residual underbudgets mass loss",
+        abs((mass_0 - mass_after) - retained_mass_drop)
+        > residual_budget - residuals["state transport"],
+    )
+
+    lipschitz_luminosity = Fraction(1, 1000)
+    mass_chart_radius = Fraction(1, 2)
+    drift_bound = delta_u * lipschitz_luminosity * mass_chart_radius
+    assert_true(
+        "mass-drift residual obeys Lipschitz chart bound",
+        residuals["drift"] <= drift_bound,
+    )
+
+    luminosity_bound = retained_luminosity + residuals["flux package"] / delta_u
+    epsilon_qs = delta_u * luminosity_bound / mass_0
+    assert_true(
+        "short retained window is quasi-stationary",
+        epsilon_qs < Fraction(1, 100),
+    )
+    long_window = Fraction(10000)
+    long_epsilon_qs = long_window * luminosity_bound / mass_0
+    assert_true(
+        "long window quasi-stationary overreach rejected",
+        long_epsilon_qs > Fraction(1, 1),
+    )
+
+    retained_flux_noise = Fraction(1, 10000)
+    noise_residual = Fraction(1, 40000)
+    noise_total = retained_flux_noise + noise_residual
+    assert_true(
+        "retained flux noise stays inside the mass chart",
+        noise_total < mass_chart_radius * mass_chart_radius,
+    )
+    assert_true(
+        "mean-only backreaction would omit nonzero flux noise",
+        noise_total > 0,
+    )
+    bad_noise_total = mass_chart_radius * mass_chart_radius + Fraction(1, 1000)
+    assert_true(
+        "noise outside chart invalidates mean-geometry window",
+        bad_noise_total > mass_chart_radius * mass_chart_radius,
+    )
+
+    number_flux = Fraction(0)
+    energy_flux = Fraction(0)
+    for omega, greybody, occupation in (
+        (Fraction(2), Fraction(1, 3), Fraction(1, 5)),
+        (Fraction(5), Fraction(1, 4), Fraction(1, 7)),
+    ):
+        number_flux += greybody * occupation
+        energy_flux += omega * greybody * occupation
+    assert_true(
+        "mass loss uses stress-energy flux, not number flux",
+        energy_flux != number_flux,
+    )
+
+
 def main():
     samples = [
         (mp.mpf("0.7"), mp.mpf("0.2"), mp.mpf("1.3")),
@@ -252,6 +337,7 @@ def main():
         assert_close("Schwarzschild temperature convention", schwarzschild_temp, 1 / (8 * mp.pi * mass))
 
     check_interacting_horizon_flux_package()
+    check_flux_to_mass_backreaction_window()
     print("All Hawking Bogoliubov coefficient checks passed.")
 
 

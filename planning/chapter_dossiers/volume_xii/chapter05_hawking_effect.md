@@ -33,7 +33,9 @@
   universal thermal ratio, while the spectral density, channel mixing,
   stress-tensor renormalization, greybody propagation, nonstationary tails, and
   backreaction corrections remain declared model-dependent inputs/residuals.
-- Semiclassical back-reaction boundary and adiabatic mass-loss equation.
+- Semiclassical back-reaction boundary, adiabatic mass-loss equation, and
+  flux-to-mass backreaction window with drift, state-transport, gravitational,
+  quasi-stationary, and flux-noise controls.
 - Interacting Hawking theorem open problem.
 
 ## Symbols
@@ -59,6 +61,10 @@
 | `G_A^>(omega)`, `G_A^<(omega)` | interacting horizon-channel Wightman boundary values |
 | `rho_A(omega)` | positive horizon spectral density `G_A^>-G_A^<` |
 | `F_I^{ret}`, `R_I` | retained interacting flux on a frequency window and its residual |
+| `L_I^{ret}(M_0)` | retained stress-flux luminosity on a mass chart |
+| `R_flux`, `R_drift`, `R_state`, `R_grav` | flux, drift, state-transport, and gravitational residuals in the mass-loss window |
+| `N_J` | integrated connected covariance of the retained flux observable on a retarded-time window |
+| `epsilon_qs` | quasi-stationary control parameter for the mass-loss window |
 
 ## Claim Ledger
 
@@ -85,7 +91,11 @@
     spectral-density relation.  The flux at infinity also requires the
     interacting spectral density, channel basis, greybody propagation,
     stress-tensor conversion, and residual budget.
-11. Semiclassical back-reaction requires additional hypotheses and is not a
+11. The adiabatic mass-loss ODE is a controlled finite-window approximation
+    only after the retained stress-flux luminosity, drift bound,
+    state-transport error, gravitational EFT residual, quasi-stationary
+    parameter, and integrated flux noise are all controlled.
+12. Semiclassical back-reaction requires additional hypotheses and is not a
     consequence of the fixed-background Hawking calculation alone.
 
 ## Calculation Ledger
@@ -96,7 +106,9 @@
   exponential precursor blueshift, Schwarzian flux, chiral Planck flux, and
   Schwarzschild temperature convention.  It also checks the interacting
   horizon KMS spectral-density package, greybody-weighted retained flux,
-  residual-budget negative controls, and stress-flux mass-loss bookkeeping.
+  residual-budget negative controls, stress-flux mass-loss bookkeeping, and
+  the flux-to-mass backreaction window with drift, quasi-stationary, noise,
+  and number-flux negative controls.
 
 ## Figures
 
@@ -111,3 +123,7 @@
   particle-number formula as the interacting stress-flux statement.  The
   companion is now an evidence-contract check with negative controls against
   overreading KMS thermality as a full interacting Hawking theorem.
+- 2026-06-04 issue #729 backreaction-window pass: strengthened the
+  fixed-background-to-semiclassical interface by requiring mass-loss drift,
+  state/gravity residuals, quasi-stationary control, and flux-noise chart
+  control before an interacting horizon flux is read as an evaporating metric.

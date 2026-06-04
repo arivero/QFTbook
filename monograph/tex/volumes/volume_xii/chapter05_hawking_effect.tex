@@ -664,6 +664,66 @@ stress-tensor fluctuations except through their mean, and presupposes that
 the state remains close to an Unruh-type Hadamard state on each instantaneous
 exterior.
 
+\begin{controlledapproximation}[Flux-to-mass backreaction window]
+\label{ca:hawking-flux-to-mass-window}
+Fix a retarded-time interval \(J=[u_0,u_0+\Delta u]\) during which the
+geometry is represented by a Schwarzschild parameter \(M(u)\) in a chart
+\(|M(u)-M_0|\leq \delta M\).  Let \(L_I^{\rm ret}(M_0)\) be the retained
+renormalized stress-flux luminosity obtained from
+\eqref{eq:hawking-interacting-retained-flux}, including the selected
+frequency window and channels.  The mean mass-loss approximation is the
+finite-window statement
+\[
+  M(u_0+\Delta u)
+  =
+  M_0-\Delta u\,L_I^{\rm ret}(M_0)
+  +R_{\rm flux}+R_{\rm drift}+R_{\rm state}+R_{\rm grav}.
+\]
+These are signed remainders whose absolute values must be bounded by declared
+nonnegative error budgets.  The residuals have distinct meanings.
+\(R_{\rm flux}\) is the spectral, greybody, stress-renormalization, Ward, and
+tail budget already attached to the retained flux.  \(R_{\rm drift}\) is the
+error from replacing \(L_I(M(u))\) by \(L_I(M_0)\).  If \(L_I\) is Lipschitz
+with constant \(K_I\) on the chart, then
+\[
+  |R_{\rm drift}|
+  \leq
+  \Delta u\,K_I\,\delta M .
+\]
+\(R_{\rm state}\) measures failure of the transported state to remain in the
+declared Unruh-type Hadamard class on the window, and \(R_{\rm grav}\)
+measures omitted gravitational EFT, higher-derivative, and nonlinear metric
+corrections.
+
+The same window must also control fluctuations.  Let
+\[
+  \mathcal N_J
+  =
+  \int_J du\int_J du'\,
+  \langle \delta F(u)\delta F(u')\rangle_{\rm c}
+\]
+be the retained connected covariance of the renormalized flux observable
+\(F(u)=\int_{\mathcal I^+_u}T_{uu}^{\rm ren}\), with its own nonnegative
+residual \(R_{\mathcal N}\).  A mean evaporating geometry is a controlled
+output only when
+\[
+  \epsilon_{\rm qs}
+  :=
+  \Delta u\,
+  \frac{L_I^{\rm ret}(M_0)+|R_{\rm flux}|/\Delta u}
+       {M_0}
+  \ll 1,
+  \qquad
+  \sqrt{\mathcal N_J+R_{\mathcal N}}\ll \delta M .
+\]
+The first inequality is the quasi-stationary condition
+\(\Delta u\,|\dot\kappa|/\kappa\ll1\) for \(\kappa=1/(4M)\).  The second says
+that the integrated flux noise remains inside the same metric chart in which
+the mean mass loss is being computed.  If either test fails, the stationary
+Hawking flux remains a fixed-background observable, but the adiabatic
+evaporating metric has not been derived.
+\end{controlledapproximation}
+
 \section{QFT Boundary}
 
 A theorem-level Hawking effect for an interacting local QFT on black-hole
