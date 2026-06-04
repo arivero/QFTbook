@@ -124,3 +124,19 @@
 - No supersymmetry transformation law is fixed here; later supersymmetry
   chapters must import these spinor conventions and then define their own
   field and Hilbert-space representation conventions separately.
+
+## Editorial Audit Notes
+
+- 2026-06-04 issue #755 pass:
+  local audit note
+  `planning/build_audits/2026-06-04_issue755_spinor_conventions_editorial_pass.md`
+  records the working evidence.  The committed scope was deliberately narrow:
+  the pass expanded the Hermitian-current adjoint calculation at first use,
+  replacing the compressed "it follows" inference by the finite matrix identity
+  \((\beta\gamma^\mu)^\dagger=-\beta\gamma^\mu\), and removed duplicated
+  Wess-Bagger phase-change prose while preserving the explicit block
+  multiplication check.  The chapter-facing soft-phrase scan after the edit
+  has no remaining `it follows`, `standard`, `well-known`, `one can show`, or
+  `it is known` hits.  This is not a closure audit for #755; the full issue
+  still requires the same sentence-by-sentence review across all compiled
+  sections and theorem-like environments.

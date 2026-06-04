@@ -98,9 +98,19 @@ For a real Abelian charge \(q\), the Hermitian vector current is
 \[
   j^\mu=\ii q\,\bar\psi\gamma^\mu\psi .
 \]
-The explicit factor of \(\ii\) is not optional: it follows from
-\eqref{eq:appendix-dirac-adjoint} and the anti-Hermitian nature of
-\(\bar\psi\gamma^\mu\psi\) in the mostly-plus convention.
+The explicit factor of \(\ii\) is fixed by the adjoint convention:
+\[
+  (\beta\gamma^\mu)^\dagger
+  =
+  (\gamma^\mu)^\dagger\beta
+  =
+  -\beta\gamma^\mu .
+\]
+Thus \(\bar\psi\gamma^\mu\psi=\psi^\dagger\beta\gamma^\mu\psi\) is
+anti-Hermitian in the even finite-dimensional model, while
+\(\ii\bar\psi\gamma^\mu\psi\) is Hermitian.  The operator-valued current uses
+the same adjoint convention after products at coincident points have been
+represented in the chosen regulator or by normal ordering.
 \end{definition}
 
 \paragraph{Basic Clifford, adjoint, and current identities.}
@@ -580,13 +590,10 @@ that minus sign, together with a different convention for upper and lower
 the two systems must therefore translate both the gamma matrices and the
 index algebra.
 
-The chirality matrix defined by
-\[
-  \gamma_5=-\ii\gamma^0\gamma^1\gamma^2\gamma^3
-\]
-is unchanged by the similarity transformation
-\eqref{eq:appendix-wb-phase-change}.  The Dirac adjoint is also the same
-abstract Hermitian pairing after the basis change:
+The chirality matrix
+\(\gamma_5=-\ii\gamma^0\gamma^1\gamma^2\gamma^3\) is unchanged by the
+similarity transformation \eqref{eq:appendix-wb-phase-change}.  The Dirac
+adjoint is also the same abstract Hermitian pairing after the basis change:
 \[
   \bar s=s^\dagger(\ii\gamma^0)
   =
@@ -595,24 +602,9 @@ abstract Hermitian pairing after the basis change:
   s_{\rm WB}.
 \]
 The displayed matrix in the last expression is the Wess-Bagger-basis matrix
-for the same invariant pairing.
-
-At the fixed metric \(\eta=\operatorname{diag}(-,+,+,+)\), the
-Wess--Bagger-type matrices used here are related to the Weinberg-compatible
-matrices by a finite chiral phase change.  The matrix
-\[
-  U_{\rm ch}=\begin{pmatrix}I_2&0\\0&\ii I_2\end{pmatrix}
-\]
-relates the Wess-Bagger-type basis
-\eqref{eq:appendix-wb-gamma-basis} to the Weinberg-compatible basis by
-\[
-  \gamma^\mu=U_{\rm ch}\gamma^\mu_{\rm WB}U_{\rm ch}^{-1}.
-\]
-The chirality operator is unchanged as an endomorphism of the abstract
-spinor module, while the antichiral coordinate column is multiplied by
-\(\ii\).  Hence any formula imported from Wess-Bagger-type notation must
-translate both the gamma matrices and the epsilon-index convention.
-Since \(U_{\rm ch}^{-1}=\operatorname{diag}(I_2,-\ii I_2)\), direct block
+for the same invariant pairing.  The basis relation in
+\eqref{eq:appendix-wb-phase-change} is not just a naming convention: since
+\(U_{\rm ch}^{-1}=\operatorname{diag}(I_2,-\ii I_2)\), direct block
 multiplication gives
 \[
   U_{\rm ch}
