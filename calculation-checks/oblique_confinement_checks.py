@@ -8,16 +8,18 @@ The manuscript uses the finite center-sensitive charge group
 with pairing ((e,m),(e',m')) -> (e m' - e' m) / N mod 1.  These checks verify
 the arithmetic behind screening quotients, orthogonal complements of
 condensates, and the dyonic unconfined direction in oblique confinement.  They
-also verify the finite bookkeeping behind the continuum line-confinement
-criterion: condensate pairing distance, local perimeter/cusp subtraction,
-positive area-rate extraction, static-potential limit order, and
-endpoint-screening negative controls.  The
-script also checks the finite algebra in the controlled three-dimensional
+also verify the finite bookkeeping behind the conditional line-asymptotic
+classifier: condensate pairing distance, local perimeter/cusp subtraction,
+area-rate extraction from supplied surface-cost bounds, static-potential limit
+order, and endpoint-screening negative controls.  The script separately checks
+the primitive finite algebra in a strong-coupling polymer surface window and in
+the controlled three-dimensional
 Polyakov monopole-gas mechanism: dual-photon mass normalization, sine-Gordon
 wall first-order identities, and the area-law/static-potential extraction.  A
 separate finite transfer-matrix model checks the string-breaking spectral
-extraction test for Wilson-loop diagnostics.  It does not simulate a gauge theory
-or prove that a condensate forms.
+extraction test for Wilson-loop diagnostics.  It does not simulate a continuum
+gauge theory, prove four-dimensional continuum surface-cost bounds, or prove
+that a condensate forms.
 """
 
 from __future__ import annotations
@@ -177,11 +179,12 @@ def check_nonisotropic_pair_cannot_condense_together() -> None:
         )
 
 
-def check_continuum_line_confinement_criterion() -> None:
+def check_conditional_line_asymptotic_classifier() -> None:
     for n in range(2, 13):
         for p in range(n):
             condensate = subgroup_generated(n, [(p, 1)])
             unconfined = orthogonal_complement(n, condensate)
+            sigma_star = Fraction(1, n * n)
             for charge in all_charges(n):
                 distance = pairing_distance_numerator(n, charge, condensate)
                 assert_equal(
@@ -189,20 +192,25 @@ def check_continuum_line_confinement_criterion() -> None:
                     distance == 0,
                     charge in unconfined,
                 )
-                lower_string_tension = Fraction(distance * distance, n * n)
+                supplied_lower_area_rate = sigma_star * distance * distance
                 if charge in unconfined:
                     assert_equal(
-                        f"K-perp charge has zero finite surface-cost signal N={n} p={p} charge={charge}",
-                        lower_string_tension,
+                        f"K-perp charge has zero supplied classifier rate N={n} p={p} charge={charge}",
+                        supplied_lower_area_rate,
                         Fraction(0),
                     )
                 else:
                     assert_true(
-                        f"non-K-perp charge has positive finite surface-cost signal N={n} p={p} charge={charge}",
-                        lower_string_tension > 0,
+                        f"non-K-perp charge is classified by positive supplied rate N={n} p={p} charge={charge}",
+                        supplied_lower_area_rate > 0,
+                    )
+                    topological_data_alone_rate = Fraction(0)
+                    assert_true(
+                        f"pairing alone does not derive a surface cost N={n} p={p} charge={charge}",
+                        topological_data_alone_rate < supplied_lower_area_rate,
                     )
 
-    sigma = Fraction(7, 19)
+    supplied_area_rate = Fraction(7, 19)
     finite_perimeter = Fraction(5, 23)
     divergent_perimeter = Fraction(101, 3)
     divergent_cusp = Fraction(97, 5)
@@ -212,7 +220,7 @@ def check_continuum_line_confinement_criterion() -> None:
         area = Fraction(size * size)
         perimeter = Fraction(4 * size)
         bare_exponent = (
-            sigma * area
+            supplied_area_rate * area
             + (finite_perimeter + divergent_perimeter) * perimeter
             + divergent_cusp * cusps
             + Fraction(1, size)
@@ -222,13 +230,17 @@ def check_continuum_line_confinement_criterion() -> None:
             - divergent_perimeter * perimeter
             - divergent_cusp * cusps
         )
-        expected_renormalized = sigma * area + finite_perimeter * perimeter + Fraction(1, size)
+        expected_renormalized = (
+            supplied_area_rate * area
+            + finite_perimeter * perimeter
+            + Fraction(1, size)
+        )
         assert_equal(
             f"local line counterterms remove cutoff pieces size={size}",
             renormalized_exponent,
             expected_renormalized,
         )
-        rate_error = renormalized_exponent / area - sigma
+        rate_error = renormalized_exponent / area - supplied_area_rate
         assert_equal(
             f"large-loop rate error is perimeter plus residual size={size}",
             rate_error,
@@ -241,7 +253,7 @@ def check_continuum_line_confinement_criterion() -> None:
             )
         previous_rate_error = rate_error
 
-        unrenormalized_rate = bare_exponent / area - sigma
+        unrenormalized_rate = bare_exponent / area - supplied_area_rate
         assert_true(
             f"large-loop rate before line renormalization keeps cutoff pollution size={size}",
             unrenormalized_rate > rate_error,
@@ -253,7 +265,11 @@ def check_continuum_line_confinement_criterion() -> None:
     for euclidean_time in [20, 40, 80]:
         area = spatial_separation * euclidean_time
         perimeter = 2 * euclidean_time + 2 * spatial_separation
-        exponent = sigma * area + source_self_energy * perimeter + corner_counterterm * 4
+        exponent = (
+            supplied_area_rate * area
+            + source_self_energy * perimeter
+            + corner_counterterm * 4
+        )
         source_subtracted_rate = exponent / euclidean_time - 2 * source_self_energy
         finite_time_error = (
             2 * source_self_energy * spatial_separation
@@ -262,34 +278,62 @@ def check_continuum_line_confinement_criterion() -> None:
         assert_equal(
             f"rectangular static limit isolates linear coefficient T={euclidean_time}",
             source_subtracted_rate,
-            sigma * spatial_separation + finite_time_error,
+            supplied_area_rate * spatial_separation + finite_time_error,
         )
 
     screening_mass = Fraction(13, 5)
     large_separation = Fraction(100)
-    positive_linear_candidate = sigma * large_separation
+    positive_linear_candidate = supplied_area_rate * large_separation
     assert_true(
         "endpoint screening bound rejects positive asymptotic linear potential",
         positive_linear_candidate > 2 * screening_mass,
     )
 
+
+def check_strong_coupling_polymer_surface_window() -> None:
+    # This is the finite arithmetic of the non-circular strong-coupling
+    # mechanism: a nonzero minimal surface sum plus a smaller decorated tail
+    # yields a two-sided exponential area window.  No continuum string tension
+    # is inserted.
     q = Fraction(1, 6)
-    minimal_area = 12
-    minimal_surface = q**minimal_area
-    decorated_tail = minimal_surface * Fraction(1, 10)
-    retained_plus_tail = minimal_surface + decorated_tail
-    assert_true(
-        "strong-coupling calibration has nonzero minimal surface contribution",
-        minimal_surface > 0,
-    )
-    assert_true(
-        "decorated strong-coupling surfaces are a controlled tail",
-        decorated_tail < minimal_surface,
-    )
-    assert_true(
-        "strong-coupling surface window gives finite positive area rate",
-        retained_plus_tail < q ** (minimal_area - 1),
-    )
+    minimal_prefactor = Fraction(5, 7)
+    tail_fraction = Fraction(1, 10)
+    previous_upper_rate_proxy: Fraction | None = None
+    for minimal_area in [12, 18, 24]:
+        minimal_surface = minimal_prefactor * q**minimal_area
+        decorated_tail = minimal_surface * tail_fraction
+        lower_window = minimal_surface - decorated_tail
+        upper_window = minimal_surface + decorated_tail
+        assert_true(
+            f"strong-coupling minimal surface is nonzero A={minimal_area}",
+            minimal_surface > 0,
+        )
+        assert_true(
+            f"decorated strong-coupling tail is smaller than minimal sector A={minimal_area}",
+            decorated_tail < minimal_surface,
+        )
+        assert_true(
+            f"polymer window lower bound stays positive A={minimal_area}",
+            lower_window >= minimal_surface / 2,
+        )
+        assert_true(
+            f"polymer window upper bound has positive area suppression A={minimal_area}",
+            upper_window < q ** (minimal_area - 1),
+        )
+        upper_rate_proxy = upper_window / q**minimal_area
+        assert_equal(
+            f"strong-coupling prefactor is area-independent A={minimal_area}",
+            upper_rate_proxy,
+            minimal_prefactor * (1 + tail_fraction),
+        )
+        if previous_upper_rate_proxy is not None:
+            assert_equal(
+                f"polymer prefactor does not smuggle in area growth A={minimal_area}",
+                upper_rate_proxy,
+                previous_upper_rate_proxy,
+            )
+        previous_upper_rate_proxy = upper_rate_proxy
+
 
 
 def check_polyakov_monopole_gas_wall_tension() -> None:
@@ -506,7 +550,8 @@ def main() -> None:
     check_oblique_unconfined_direction()
     check_magnetic_condensation_confines_electric_nality()
     check_nonisotropic_pair_cannot_condense_together()
-    check_continuum_line_confinement_criterion()
+    check_conditional_line_asymptotic_classifier()
+    check_strong_coupling_polymer_surface_window()
     check_polyakov_monopole_gas_wall_tension()
     check_string_breaking_spectral_extraction_test()
     print("All oblique-confinement finite charge checks passed.")
