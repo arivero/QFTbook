@@ -76,7 +76,12 @@
   contribution, including the two-flavor 't Hooft determinant sign.  The
   fluctuation-amplitude continuation adds the proper-time nonzero-mode
   determinant assembly and its multiplication by the zero-mode-projected
-  four-fermion source determinant.  The zero-mode-tail continuation adds the
+  four-fermion source determinant.  The determinant-residual continuation adds
+  the finite-regulator amplitude-window certificate: absolute proper-time
+  trace remainders bound the logarithmic determinant error, which becomes a
+  multiplicative bound on the instanton amplitude; signed ghost/boson/fermion
+  cancellations are recorded as inadequate evidence.  The zero-mode-tail
+  continuation adds the
   BPST fundamental zero-mode density envelope, its momentum form factor
   \(zK_1(z)\), its \(R^{-2}\) tail, and the logarithmically infrared-sensitive
   second moment controlling the first nonzero derivative correction to the
@@ -1148,6 +1153,12 @@
   slow-field limit.  The BPST check script now verifies exact determinant
   powers, zero-mode removal, and the source-determinant multiplication for a
   finite toy four-fermion amplitude.
+- 2026-06-04 issue #597 determinant-residual pass: added the
+  proper-time determinant residual window after the four-fermion amplitude
+  assembly.  The new block propagates absolute trace-remainder bounds to a
+  logarithmic determinant certificate and then to a multiplicative amplitude
+  error bound, rejecting signed cancellations among fluctuation sectors as
+  sufficient evidence.
 - 2026-06-03 issue #597 zero-mode-tail pass: added the normalized BPST
   zero-mode radial envelope, the momentum-space form factor \(zK_1(z)\), and
   the local-vertex moment calculation.  The result exposes both the

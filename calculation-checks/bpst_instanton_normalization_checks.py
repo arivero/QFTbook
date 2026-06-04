@@ -38,6 +38,9 @@ relations
     the proper-time fluctuation determinant combines with either an independent
     bilinear source determinant or a differentiated linear Grassmann source
     coefficient to give the finite four-fermion instanton amplitude
+    a proper-time determinant residual certificate gives an absolute logarithmic
+    bound and a multiplicative amplitude error bound; signed cancellations of
+    ghost, boson, and fermion trace remainders are rejected as certificates
     the heat-kernel logarithm in the nonzero-mode determinant carries the
     vector-plus-ghost 11 C_A/3 coefficient, the Dirac matter subtraction, and
     cancels the cutoff-scale dependence of the bare instanton exponential
@@ -157,20 +160,23 @@ with g_ht = sqrt(2) g_YM.
 
 Evidence contract.
 Target claims: BPST normalization, one-instanton measure, zero-mode saturation,
-instanton-orientation Haar projection, hard-size/OPE coefficient bookkeeping,
-and related Chapter 20 instanton labels.
+proper-time determinant residual propagation, instanton-orientation Haar
+projection, hard-size/OPE coefficient bookkeeping, and related Chapter 20
+instanton labels.
 Independent construction: direct radial integrals, finite determinant and
 Schur-complement algebra, source differentiation, inverse-Gram construction of
-the shared SU(2) four-fundamental Haar projector, finite
+the shared SU(2) four-fundamental Haar projector, absolute logarithmic
+determinant-residual certificates, finite
 coefficient/operator transport matrices, and exact retained size-shell
 stationarity equations.
 Imported assumptions: the BPST background and zero-mode formulas, one-loop
 determinant coefficients, the trace-delta convention, and finite regulator
 truncations stated in the chapter.
 Negative controls: the shared-Haar 1/3 versus factorized 1/4 counterexample,
-rank-one and color-symmetric source-pair rejections, negative/complex thermal
-amplitude kernels rejected from signed activity bounds, finite-frame inverse
-checks, hard-only and screening-only shell substitutions in the mixed
+rank-one and color-symmetric source-pair rejections, signed determinant-trace
+cancellations rejected as fluctuation-error certificates, negative/complex
+thermal amplitude kernels rejected from signed activity bounds, finite-frame
+inverse checks, hard-only and screening-only shell substitutions in the mixed
 size-majorant problem, and separation of operator RG flow from the Wilsonian
 size-boundary flux.
 Scope boundary: a pass checks finite algebra and normalization interfaces; it
@@ -1682,6 +1688,78 @@ def check_proper_time_fluctuation_four_fermion_amplitude() -> None:
         spectral_trace_power + coupling_and_local_counterterm_power,
         Fraction(29, 3),
     )
+
+
+def check_proper_time_determinant_residual_window() -> None:
+    # The log determinant is a weighted sum of block trace remainders.  A
+    # certificate for a physical amplitude needs the absolute weighted sum,
+    # because exp(delta_log) multiplies the zero-mode/source kernel pointwise.
+    weights = {
+        "ghost": Fraction(1),
+        "boson": Fraction(-1, 2),
+        "fermion": Fraction(1),
+    }
+    trace_residuals = {
+        "ghost": Fraction(1, 40),
+        "boson": Fraction(-1, 18),
+        "fermion": Fraction(1, 63),
+    }
+    trace_bounds = {
+        "ghost": Fraction(1, 30),
+        "boson": Fraction(1, 15),
+        "fermion": Fraction(1, 42),
+    }
+    log_residual = sum(
+        weights[name] * trace_residuals[name]
+        for name in weights
+    )
+    epsilon_det = sum(
+        abs(weights[name]) * trace_bounds[name]
+        for name in weights
+    )
+    assert_equal(
+        "proper-time determinant log residual certificate",
+        abs(log_residual) <= epsilon_det,
+        True,
+    )
+
+    lead_weight = Fraction(5, 7)
+    exact_weight = float(lead_weight) * math.exp(float(log_residual))
+    determinant_bound = float(lead_weight) * (math.exp(float(epsilon_det)) - 1.0)
+    if not abs(exact_weight - float(lead_weight)) <= determinant_bound:
+        raise AssertionError("determinant multiplicative residual bound failed")
+
+    lead_cells = [Fraction(2, 7), Fraction(3, 11), Fraction(5, 13)]
+    local_log_residuals = [Fraction(1, 50), Fraction(-1, 45), Fraction(1, 60)]
+    window_epsilon = Fraction(1, 30)
+    exact_amplitude = sum(
+        float(cell) * math.exp(float(delta))
+        for cell, delta in zip(lead_cells, local_log_residuals)
+    )
+    lead_amplitude = sum(float(cell) for cell in lead_cells)
+    amplitude_bound = sum(float(abs(cell)) for cell in lead_cells) * (
+        math.exp(float(window_epsilon)) - 1.0
+    )
+    if not abs(exact_amplitude - lead_amplitude) <= amplitude_bound:
+        raise AssertionError("proper-time determinant amplitude-window bound failed")
+
+    signed_fake_certificate = (
+        weights["ghost"] * Fraction(1, 12)
+        + weights["boson"] * Fraction(1, 3)
+        + weights["fermion"] * Fraction(1, 12)
+    )
+    absolute_certificate = (
+        abs(weights["ghost"]) * Fraction(1, 12)
+        + abs(weights["boson"]) * Fraction(1, 3)
+        + abs(weights["fermion"]) * Fraction(1, 12)
+    )
+    assert_equal(
+        "signed determinant residuals can cancel spuriously",
+        signed_fake_certificate,
+        Fraction(0),
+    )
+    if not absolute_certificate > 0:
+        raise AssertionError("absolute determinant certificate vanished")
 
 
 def check_instanton_source_typing_and_differentiation() -> None:
@@ -3998,6 +4076,7 @@ def main() -> None:
     check_light_fermion_determinant_source_frame_covariance()
     check_instanton_mass_source_rg_transport()
     check_proper_time_fluctuation_four_fermion_amplitude()
+    check_proper_time_determinant_residual_window()
     check_instanton_source_typing_and_differentiation()
     check_instanton_heat_kernel_beta0_logarithm()
     check_instanton_zero_mode_tail_local_limit()

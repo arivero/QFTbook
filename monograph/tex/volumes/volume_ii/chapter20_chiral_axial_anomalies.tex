@@ -5505,6 +5505,83 @@ determinant constant; RG invariance identifies the universal logarithmic
 coefficient with \(b_0\) in the displayed one-loop density.
 \end{proof}
 
+\begin{controlledapproximation}[Proper-time determinant residual on an amplitude window]
+\label{ca:instanton-proper-time-determinant-residual-window}
+The proper-time determinant in
+Proposition~\ref{prop:instanton-proper-time-four-fermion-amplitude} becomes
+useful for a physical source amplitude only after its finite remainder is
+controlled uniformly on the same collective-coordinate window as the
+zero-mode and source estimates.  Fix a window \(\mathcal U_{\rm win}\) in a
+one-instanton chart and write, after the local heat-kernel subtraction and
+the universal \(b_0\log(\mu\rho)\) term have been separated,
+\[
+  \log\mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)
+  =
+  \log\mathcal W_{{\rm lead}}^{\rm nz}(z;\mu)
+  +\delta_{\rm det}(z),
+  \qquad z\in\mathcal U_{\rm win}.
+\]
+For each fluctuation block \(j\) let \(c_j\) be its logarithmic weight:
+\[
+  c_{\rm gh}=1,\qquad c_{\rm bos}=-\frac12,\qquad
+  c_{\rm pf,R}=1
+\]
+with the Pfaffian or determinant-line pairing convention already fixed.  A
+determinant-residual certificate on \(\mathcal U_{\rm win}\) is a collection
+of trace-remainder bounds
+\[
+  \left|
+    \int_{\epsilon_\Lambda}^{\infty}
+    \frac{\dd t}{t}\,r(t\mu^2)\,
+    \delta T_{j,\Lambda}(t,z)
+  \right|
+  \le \epsilon_j,
+  \qquad z\in\mathcal U_{\rm win},
+\]
+where \(\delta T_{j,\Lambda}\) is the remaining trace difference after the
+declared local subtraction and leading determinant datum have been removed.
+It gives the uniform logarithmic bound
+\begin{equation}
+  |\delta_{\rm det}(z)|
+  \le
+  \epsilon_{\rm det}:=\sum_j |c_j|\epsilon_j .
+  \label{eq:instanton-proper-time-determinant-log-bound}
+\end{equation}
+Consequently the multiplicative determinant error satisfies
+\begin{equation}
+  \left|
+    \mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)
+    -
+    \mathcal W_{{\rm lead}}^{\rm nz}(z;\mu)
+  \right|
+  \le
+  \left|\mathcal W_{{\rm lead}}^{\rm nz}(z;\mu)\right|
+  \left(e^{\epsilon_{\rm det}}-1\right).
+  \label{eq:instanton-proper-time-determinant-multiplicative-bound}
+\end{equation}
+Thus the determinant part of the amplitude error budget obeys
+\begin{equation}
+  |R_{\rm det}|
+  \le
+  \left(e^{\epsilon_{\rm det}}-1\right)
+  \int_{\mathcal U_{\rm win}}
+  |\mathcal K_{\rm lead}(z)|\,\dd z ,
+  \label{eq:instanton-proper-time-determinant-amplitude-bound}
+\end{equation}
+provided the leading kernel contains the same zero-mode source coefficient,
+collective density, and local counterterm convention.
+
+This is the finite-regulator form of the fluctuation calculation hidden in a
+``determinant constant.''  A signed cancellation among the ghost, bosonic,
+and fermionic trace remainders is weaker than
+\eqref{eq:instanton-proper-time-determinant-log-bound}; the amplitude bound
+uses absolute logarithmic control because the determinant multiplies the
+zero-mode source coefficient pointwise over the size and orientation window.
+The finite constant may be pulled outside the instanton size integral only
+when the same certificate also bounds the residual \(z\)-dependence of the
+finite determinant over that window.
+\end{controlledapproximation}
+
 \begin{proposition}[Instanton zero-mode density form factor and local limit]
 \label{prop:instanton-zero-mode-tail-local-limit}
 In a BPST \(Q=1\) background, after the spin and color tensors of one

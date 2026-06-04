@@ -495,7 +495,10 @@ Current checks:
   \(0.466\exp[-1.679N]/[(N-1)!(N-2)!]\) and the \(SU(3)\) value
   \(1.51\times10^{-3}\), the
   proper-time nonzero-mode determinant assembly for bilinear-source and
-  source-differentiated four-fermion instanton amplitudes, the finite block
+  source-differentiated four-fermion instanton amplitudes, the
+  proper-time determinant residual-window certificate that propagates
+  absolute logarithmic fluctuation errors to multiplicative amplitude bounds
+  and rejects signed trace-cancellation shortcuts, the finite block
   determinant/Schur-complement separation of the light-fermion nonzero-mode
   spectral factor from the zero-mode mass/source determinant, the regression
   that the displayed \(\prod_f(m_f\rho)\) factor is a zero-mode saturation
