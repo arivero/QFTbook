@@ -2159,7 +2159,9 @@ Current checks:
   \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger and protected
   residue/quantum-product selection rule, the vortex-to-protected-observable
   residual telescope with negative controls for omitted vortex coefficients,
-  unsaturated zero modes, and underbudgeted comparison residuals, and the
+  unsaturated zero modes, and underbudgeted comparison residuals, the
+  degree-one \(\mathbb P^{N-1}\) stable-map dimension and line-count gate for
+  the quantum-product relation \(H^N=q\), and the
   classical cigar quotient metric obtained by eliminating the gauge field,
   the logarithmic-chiral vortex obstruction, plus the hypersurface GLSM
   adjunction sign,

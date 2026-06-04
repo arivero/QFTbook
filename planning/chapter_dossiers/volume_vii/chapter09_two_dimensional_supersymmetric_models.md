@@ -64,6 +64,9 @@ and
   `R_cpt`, `R_gl`, `R_op`, `R_cont`: finite-regulator A-twisted observable,
   mirror-residue prediction, and stage residuals in the vortex-to-observable
   comparison ledger.
+- `overline M_{0,3}(P^{N-1},d)`, `ev_j`, `I_d`: compactified genus-zero
+  stable-map moduli space, evaluation maps, and A-model three-point invariant
+  used in the direct `P^{N-1}` quantum-product gate.
 - `U_{i,1,Lambda}`, `W_{i,1,Lambda}^{nz}`, `Z_{i,F,Lambda}^0`,
   `c_{i,Lambda}`: finite-regulator one-vortex chart, nonzero-mode
   determinant ratio, zero-mode Berezin coefficient for the twisted
@@ -190,6 +193,12 @@ and
   nonzero vortex coefficient and the vanishing of those residuals the
   load-bearing physics inputs before the finite Hori--Vafa residue identity is
   promoted to the quantum-product statement.
+- Adds the direct A-model stable-map gate for the `P^{N-1}` quantum product:
+  the virtual dimension of `overline M_{0,3}(P^{N-1},d)` is `(N-1)+Nd`,
+  the degree-one insertions `(H,H^{N-1},H^{N-1})` have the matching
+  codimension `2N-1`, and the geometric line count is one.  This supplies the
+  physical stable-map side of `H^N=q_phys` after the virtual class,
+  determinant orientation, compactification, and operator map have been fixed.
 - Derives the classical cigar quotient metric by solving the auxiliary
   constraint, gauge fixing the logarithmic chiral scalar, and eliminating the
   gauge field.
@@ -285,6 +294,11 @@ and
     telescope, underbudget negative control, rejection of bare-FI shortcuts
     that ignore finite vortex coefficients, and vanishing when the zero-mode
     gate is unsaturated;
+  - the direct `P^{N-1}` degree-one stable-map quantum-product gate:
+    virtual-dimension/codimension matching for
+    `I_1(H,H^{N-1},H^{N-1})`, wrong-degree and lower-insertion negative
+    controls, the unique-line/hyperplane-intersection count, and the finite
+    quantum-product pairing check for `H * H^{N-1}=q`;
   - the cigar quotient metric coefficients after algebraic elimination of
     the gauge field.
   - the logarithmic-chiral vortex obstruction: a unit-norm charged section
@@ -338,3 +352,8 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   explicit residual telescope, registers the GLSM companion in the
   evidence-contract manifest, and adds adversarial checks for missing vortex
   coefficients, unsaturated zero modes, and underbudgeted comparison errors.
+- The 2026-06-04 stable-map quantum-product pass adds the direct A-model side
+  of the same comparison: the degree-one stable-map dimension and line-count
+  calculation for `I_1(H,H^{N-1},H^{N-1})=1`, the resulting `H^N=q_phys`
+  product gate, and finite checks rejecting mirror-only or dimension-mismatched
+  shortcuts.

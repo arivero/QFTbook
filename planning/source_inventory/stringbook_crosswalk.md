@@ -488,13 +488,18 @@ Current Appendix K absorption:
   vortex coefficient to the protected `P^{N-1}` A-twisted observable, so the
   Hori--Vafa residue identity is explicitly separated from the physical
   determinant, zero-mode, compactification, gluing, operator-map, and
-  continuum inputs it still needs.
+  continuum inputs it still needs.  The same lane now also records the direct
+  A-model stable-map gate for the `P^{N-1}` quantum product, deriving the
+  degree-one dimension match and line count behind
+  `I_1(H,H^{N-1},H^{N-1})=1` before identifying the mirror coordinate with
+  the physical \(q\).
 - Companion checks in `calculation-checks/susy_2d_lg_glsm_checks.py` now
   cover the finite algebra in the charged-dual elimination, FI shift,
   `P^{N-1}` critical ledger, cigar metric elimination, hypersurface
   adjunction/central-charge matching, residual finite-gauge invariant
   monomials, the Coulomb-coordinate signal, the vortex-to-observable
-  residual telescope, and the Fermat Wilsonian superpotential
+  residual telescope, the degree-one stable-map quantum-product gate, and
+  the Fermat Wilsonian superpotential
   spurion-selection arithmetic.  The companion is now in the evidence-contract
   manifest because the mirror/vortex checks are load-bearing and
   scope-sensitive.

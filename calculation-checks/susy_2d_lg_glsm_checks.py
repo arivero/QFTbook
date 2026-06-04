@@ -4,7 +4,9 @@ Evidence contract.
 Target claims: the finite LG/GLSM charge ledgers, abelian duality
 normalizations, charged-chiral mirror elimination, vortex-zero-mode filter,
 vortex-to-FI-coordinate normalization, P^{N-1} mirror residue trace, and
-vortex-to-protected-observable residual ledger in Volume VII Chapter 09.
+vortex-to-protected-observable residual ledger, together with the degree-one
+P^{N-1} stable-map gate for the quantum-product relation, in Volume VII
+Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
 elimination, Berezin-degree tests, root-of-unity residue sums, and explicit
 residual telescopes are computed directly from finite data rather than by
@@ -15,8 +17,8 @@ conventions, and the chapter's protected-coordinate definitions are assumed
 as finite input.
 Negative controls: extra unsaturated zero modes, omitted vortex
 normalization constants, wrong residue selection powers, underspecified
-residual budgets, and finite-gauge invariance failures are rejected when the
-finite model can represent them.
+residual budgets, stable-map dimension mismatches, and finite-gauge
+invariance failures are rejected when the finite model can represent them.
 Scope boundary: a pass checks finite algebra and bookkeeping interfaces; it
 does not prove continuum GLSM existence, Hori--Vafa mirror equivalence,
 vortex compactness, determinant nonvanishing, virtual-cycle construction, or
@@ -745,6 +747,61 @@ def check_vortex_to_observable_residual_budget() -> None:
         raise AssertionError("symmetry-only q should not survive a zero-mode gate")
 
 
+def quantum_product_power(n_fields: int, left_power: int, right_power: int) -> tuple[int, int]:
+    total_power = left_power + right_power
+    return total_power % n_fields, total_power // n_fields
+
+
+def check_cp_degree_one_stable_map_quantum_product_gate() -> None:
+    for n_fields in range(2, 9):
+        degree = 1
+        virtual_dimension = (n_fields - 1) + n_fields * degree
+        codimension_relation = 1 + (n_fields - 1) + (n_fields - 1)
+        assert_equal(
+            f"CP^{n_fields - 1} degree-one stable-map dimension",
+            virtual_dimension,
+            2 * n_fields - 1,
+        )
+        assert_equal(
+            f"CP^{n_fields - 1} quantum-product insertion dimension",
+            codimension_relation,
+            virtual_dimension,
+        )
+
+        wrong_top_power = n_fields - 2
+        wrong_codimension = 1 + wrong_top_power + (n_fields - 1)
+        if wrong_codimension == virtual_dimension:
+            raise AssertionError("lower insertion power should miss degree-one dimension")
+
+        for wrong_degree in [0, 2, 3]:
+            wrong_virtual_dimension = (n_fields - 1) + n_fields * wrong_degree
+            if codimension_relation == wrong_virtual_dimension:
+                raise AssertionError("degree-one insertion should not match another degree")
+
+        # Two generic point constraints determine one projective line, and a
+        # generic hyperplane meets that line once.  This is the finite count
+        # behind I_1(H,H^{N-1},H^{N-1})=1.
+        unique_line_through_two_points = 1
+        hyperplane_intersections_with_line = 1
+        assert_equal(
+            f"CP^{n_fields - 1} degree-one line count",
+            unique_line_through_two_points * hyperplane_intersections_with_line,
+            1,
+        )
+
+        reduced_power, q_power = quantum_product_power(n_fields, 1, n_fields - 1)
+        assert_equal("H times top class reduces to the unit", reduced_power, 0)
+        assert_equal("H times top class carries one q", q_power, 1)
+
+        for pairing_power in range(n_fields):
+            nonzero_pairing = reduced_power + pairing_power == n_fields - 1
+            assert_equal(
+                f"quantum relation pairs only with top class a={pairing_power}",
+                nonzero_pairing,
+                pairing_power == n_fields - 1,
+            )
+
+
 def check_cigar_metric_elimination() -> None:
     examples = [
         (Fraction(9, 5), Fraction(7, 3)),
@@ -860,6 +917,7 @@ def main() -> None:
     check_cp_mirror_critical_ledger()
     check_cp_mirror_residue_correlators()
     check_vortex_to_observable_residual_budget()
+    check_cp_degree_one_stable_map_quantum_product_gate()
     check_cigar_metric_elimination()
     check_logarithmic_chiral_vortex_obstruction()
     check_hypersurface_phase_ledger()

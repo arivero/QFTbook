@@ -1528,6 +1528,86 @@ comparison residuals vanish.  That information is precisely the physical
 amplitude input isolated above.
 \end{proof}
 
+\begin{proposition}[Stable-map gate for the \(\mathbb P^{N-1}\) quantum product]
+\label{prop:cpn-stable-map-quantum-product-gate}
+Let \(N\ge2\).  Work in the A-twisted positive chamber of the
+\(\mathbb P^{N-1}\) GLSM, or equivalently in the large-volume sigma-model
+chart, and assume the compactified genus-zero stable-map moduli spaces
+\[
+  \overline{\mathcal M}_{0,3}(\mathbb P^{N-1},d)
+\]
+come with their virtual fundamental classes, determinant-line orientation,
+evaluation maps \({\rm ev}_j\), and the operator map identifying \(H\) with
+the hyperplane class.  Then
+\[
+  {\rm vdim}_{\mathbb C}\,
+  \overline{\mathcal M}_{0,3}(\mathbb P^{N-1},d)
+  =
+  (N-1)+Nd .
+\]
+For \(d=1\), the three-point invariant
+\begin{equation}
+  I_1(H,H^{N-1},H^{N-1})
+  =
+  \int_{[\overline{\mathcal M}_{0,3}(\mathbb P^{N-1},1)]^{\rm vir}}
+  {\rm ev}_1^\ast H\,
+  {\rm ev}_2^\ast H^{N-1}\,
+  {\rm ev}_3^\ast H^{N-1}
+  \label{eq:cpn-degree-one-stable-map-line-count}
+\end{equation}
+equals \(1\), with the complex orientation.  Consequently the degree-one
+part of the A-model product gives
+\[
+  H\star H^{N-1}=q_{\rm phys}\,1,
+  \qquad
+  H^N=q_{\rm phys}
+\]
+provided the degree-one stable-map/vortex coefficient is the same
+\(q_{\rm phys}\) used in the normalized mirror coordinate.  If the virtual
+class, determinant orientation, compactification boundary terms, or operator
+map are not fixed, this implication is only a target comparison, not a
+derivation from the mirror residue.
+\end{proposition}
+
+\begin{proof}
+The expected-dimension formula for genus-zero stable maps gives
+\[
+  {\rm vdim}_{\mathbb C}
+  =
+  \dim_{\mathbb C}\mathbb P^{N-1}
+  +c_1(T\mathbb P^{N-1})\cdot d
+  =
+  (N-1)+Nd
+\]
+for three marked points.  At \(d=1\), the insertion in
+\eqref{eq:cpn-degree-one-stable-map-line-count} has complex codimension
+\[
+  1+(N-1)+(N-1)=2N-1,
+\]
+which is exactly the virtual dimension.  Geometrically, the two
+\(H^{N-1}\) insertions constrain the image line to pass through two generic
+points of \(\mathbb P^{N-1}\).  There is a unique such line.  A generic
+hyperplane is not that line and intersects it once, giving the first marked
+point uniquely.  The complex orientation gives positive sign, so the count is
+one.
+
+For the quantum product,
+\[
+  \eta(\alpha\star\beta,\gamma)
+  =
+  \sum_{d\ge0}q_{\rm phys}^{\,d} I_d(\alpha,\beta,\gamma).
+  \]
+Taking \(\alpha=H\), \(\beta=H^{N-1}\), and
+\(\gamma=H^a\), the dimension constraint is
+\[
+  1+(N-1)+a=N-1+Nd .
+\]
+With \(0\le a\le N-1\), it is satisfied only for \(d=1\) and
+\(a=N-1\).  Thus \(H\star H^{N-1}\) pairs with the top class exactly as
+\(q_{\rm phys}1\) does, and it pairs trivially with the other basis classes.
+Nondegeneracy of the classical pairing gives the product relation.
+\end{proof}
+
 \section{The Cigar--Liouville Mirror Chain as a QFT Duality Problem}
 \label{sec:cigar-liouville-mirror-qft-problem}
 
