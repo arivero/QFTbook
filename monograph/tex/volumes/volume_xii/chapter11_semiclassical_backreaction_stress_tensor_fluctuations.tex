@@ -615,7 +615,10 @@ The stochastic equation is often justified as the first correction to a
 large-species semiclassical limit, but the scaling is a statement about
 stress-tensor cumulants and the gravitational coupling, not a slogan.  Take
 \(N_{\rm sp}\) independent identical matter sectors in the same admissible
-Hadamard state class and write
+Hadamard state class.  Stress-tensor products are understood after smearing
+against the retained compactly supported tensor tests and after using the fixed
+renormalization prescription; no pointwise product of distribution-valued
+tensors is being assumed.  Write
 \begin{equation}
   T_{\mu\nu}^{(N_{\rm sp})}
   =
@@ -659,31 +662,45 @@ Thus, on a retained response window with unit-normalized inverse bound
   \operatorname{tr}\mathsf N_1 ,
   \label{eq:semiclassical-large-n-metric-noise}
 \end{equation}
-where \(\mathsf N_1\) is the retained one-sector noise matrix.  The same
-cumulant counting gives, for every \(r\ge2\),
+where \(\mathsf N_1\) is the retained one-sector noise matrix.  For retained
+smeared stress observables \(T_a=T(f_a)\), the same source-cumulant counting
+gives, for every \(r\ge2\),
 \begin{equation}
   \kappa_N^r
-  \operatorname{Cum}_r(T^{(N_{\rm sp})})
+  \operatorname{Cum}_r
+  \bigl(T_{a_1}^{(N_{\rm sp})},\ldots,T_{a_r}^{(N_{\rm sp})}\bigr)
   =
   \frac{\bar\kappa^r}{N_{\rm sp}^{\,r-1}}\,
-  \operatorname{Cum}_r(T^{(1)}) .
+  \operatorname{Cum}_r
+  \bigl(T_{a_1}^{(1)},\ldots,T_{a_r}^{(1)}\bigr) .
   \label{eq:semiclassical-large-n-cumulants}
 \end{equation}
-The Einstein--Langevin covariance is therefore the leading connected
-metric-fluctuation layer around the mean geometry, with rms size
-\(O(N_{\rm sp}^{-1/2})\), while higher connected metric cumulants are further
-suppressed.  This conclusion requires the response bound, the one-sector
-renormalized stress cumulants, and the state-transport residuals to stay
-uniform in \(N_{\rm sp}\).  It also requires independence or sufficiently weak
-cross-correlations between sectors.  If pairwise sector correlations contribute
-\(N_{12}\), the noise contains
-\(N_{\rm sp}(N_{\rm sp}-1)N_{12}\); after multiplying by \(\kappa_N^2\), this
-term is not \(1/N_{\rm sp}\)-suppressed.  Likewise, keeping \(G_N\) fixed makes
-both the mean geometry and the metric noise grow with \(N_{\rm sp}\).  The
+Equation \eqref{eq:semiclassical-large-n-cumulants} is a statement about
+rescaled stress-source cumulants.  The Gaussian Einstein--Langevin equation
+uses only a centered Gaussian stochastic source with covariance
+\(N^{(N_{\rm sp})}\), so it constructs the leading induced two-point metric
+covariance, namely the linear retarded pushforward
+\eqref{eq:semiclassical-large-n-metric-noise}, around the mean geometry.  Its
+rms metric size is \(O(N_{\rm sp}^{-1/2})\).  Higher connected metric cumulants
+require extra data: either a non-Gaussian stochastic hierarchy or the
+higher-order closed-time-path influence functional, the retarded pushforward of
+the smeared higher stress cumulants, and the nonlinear gravitational response
+terms at the same order.  The \(N_{\rm sp}^{1-r}\) source scaling is input for
+that separate construction, not a result of the Gaussian equation by itself.
+These statements require the response bound, the one-sector renormalized stress
+cumulants, and the state-transport residuals to stay uniform in \(N_{\rm sp}\).
+They also require independence or sufficiently weak cross-correlations between
+sectors.  If pairwise sector correlations contribute \(N_{12}\), the noise
+contains \(N_{\rm sp}(N_{\rm sp}-1)N_{12}\); after multiplying by
+\(\kappa_N^2\), this term is not \(1/N_{\rm sp}\)-suppressed.  Likewise,
+keeping \(G_N\) fixed makes both the mean geometry and the metric noise grow
+with \(N_{\rm sp}\).  The
 large-species argument also does not remove the gravitational EFT cutoff or
-species-cutoff constraint: the curvature radius and the retained response
-window must remain below the microscopic and gravitational cutoff scales of the
-chosen hybrid theory.
+species-cutoff constraint: curvature invariants and retained response
+frequencies or momenta must remain small compared with the microscopic and
+gravitational cutoff scales of the chosen hybrid theory.  Equivalently, the
+curvature radius and the response wavelengths must remain large compared with
+the corresponding cutoff lengths.
 \end{controlledapproximation}
 
 \section{Finite Response Window And Stability Diagnostics}

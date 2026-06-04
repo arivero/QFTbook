@@ -6,6 +6,7 @@ normalization: traces of the curvature-squared Euler tensors in four
 dimensions, the KMS fluctuation-dissipation factor, positivity of the noise
 covariance, finite response-window metric fluctuation bounds, the first-order
 large-species scaling of mean backreaction versus metric fluctuations, the
+large-species scaling of retained stress-source cumulants, the
 first-order lambda-phi-four potential-insertion source coordinate, the retained
 lambda-phi-four potential-noise coordinate using the full separated two-point
 function, retained Ward diagnostics for interacting source/noise coordinates,
@@ -24,8 +25,8 @@ Target claims: the finite algebra and response-window subclaims in Volume
 XII Chapter 11, including curvature-squared trace normalizations,
 fluctuation-dissipation factors, noise-covariance positivity, retained
 metric-response bounds, the large-N_sp species scaling of the rescaled mean
-source, source-noise covariance, and higher connected cumulants, the
-lambda-phi-four potential-insertion source coordinate, the retained
+source, source-noise covariance, and higher connected stress-source cumulants,
+the lambda-phi-four potential-insertion source coordinate, the retained
 potential-noise Wick contraction with full separated two-point cross covariance
 and metric pushforward, the restricted
 finite-renormalization ledger for that coordinate, the finite retained
@@ -45,10 +46,11 @@ coefficients, cosmological-coordinate shifts, independent finite counterterm
 controls, signed/absolute norm bounds, Ward maps, kernel projectors, projected
 covariances, finite influence-functional quadratic forms, retarded-support
 tests, fluctuation-dissipation ratios, small-gain inverses, response/noise
-bounds, species sums, 1/N_sp gravitational-coupling scaling, cumulant scaling,
-nonlinear fixed-point radii, residual size and residual Lipschitz budgets,
-state-transport Lipschitz constants, noise-validity inequalities, and toy roots
-directly from finite formulas rather than importing chapter display strings.
+bounds, species sums, 1/N_sp gravitational-coupling scaling, source-cumulant
+scaling, nonlinear fixed-point radii, residual size and residual Lipschitz
+budgets, state-transport Lipschitz constants, noise-validity inequalities, and
+toy roots directly from finite formulas rather than importing chapter display
+strings.
 Imported assumptions: the tests use finite-dimensional retained sectors,
 centered quasifree Wick combinatorics, formal first- and second-order lambda
 coordinates, positive finite noise matrices, full-rank finite Ward maps, and the
@@ -73,12 +75,13 @@ omitted state-transport Lipschitz constants, omitted residual Lipschitz
 constants, bounded non-Lipschitz residuals with multiple fixed points, overlarge
 quadratic nonlinear feedback, linear-noise-only validity estimates,
 fixed-G_N large-species scaling, coherent N_sp^2 noise scaling, correlated
-species noise, and wrong higher-cumulant suppression estimates.
+species noise, and wrong higher-source-cumulant suppression estimates.
 Scope boundary: a pass checks coefficient, positivity, and response-bound
 bookkeeping for the retained potential-insertion coordinate and the finite
 algebra of a full retained stress-tensor package; it does not construct the
 pAQFT interacting stress tensor, prove existence of interacting Hadamard
-states, construct renormalized stress-tensor products, solve stochastic
+states, construct renormalized stress-tensor products, build a non-Gaussian
+stochastic hierarchy or higher-metric-cumulant response map, solve stochastic
 semiclassical equations, or address nonperturbative quantum gravity dynamics.
 """
 
@@ -299,21 +302,21 @@ def check_large_species_semiclassical_scaling() -> None:
         raise AssertionError("test large-N metric covariance should fit the chart")
 
     one_sector_third_cumulant = Fraction(7, 8)
-    metric_source_third_cumulant = (
+    rescaled_source_third_cumulant = (
         kappa_n**3 * species_count * one_sector_third_cumulant
     )
     assert_equal(
         "large-N third source cumulant",
-        metric_source_third_cumulant,
+        rescaled_source_third_cumulant,
         Fraction(189, 625000),
     )
     if (
         species_count
         * species_count
-        * metric_source_third_cumulant
+        * rescaled_source_third_cumulant
         != kappa_bar**3 * one_sector_third_cumulant
     ):
-        raise AssertionError("third connected metric cumulant should scale as 1/N^2")
+        raise AssertionError("third connected source cumulant should scale as 1/N^2")
 
     fixed_gn_mean_source = kappa_bar * species_count * one_sector_mean_source
     fixed_gn_noise_trace = (
@@ -347,8 +350,8 @@ def check_large_species_semiclassical_scaling() -> None:
     wrong_third_cumulant = (
         kappa_bar**3 * one_sector_third_cumulant / species_count
     )
-    if wrong_third_cumulant <= metric_source_third_cumulant:
-        raise AssertionError("negative control failed: wrong third-cumulant scaling passed")
+    if wrong_third_cumulant <= rescaled_source_third_cumulant:
+        raise AssertionError("negative control failed: wrong third-source-cumulant scaling passed")
 
 
 def check_finite_response_window_bounds() -> None:
