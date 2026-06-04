@@ -485,7 +485,10 @@ Current checks:
   correlator contribution, including the two- and three-flavor 't Hooft
   determinants, the two-flavor scalar/pseudoscalar channel decomposition,
   the induced local \(U(1)_A\) source-curvature splittings and their
-  anomalous axial Ward ledger, the mixed mass/source minor expansion, and the
+  anomalous axial Ward ledger, the tested-susceptibility contact rule showing
+  that the local instanton curvature weights only the diagonal of the test
+  kernel while spectral/remainder data remain separate, the mixed mass/source
+  minor expansion, and the
   \(\theta+\arg\det M\) axial phase ledger, the
   pure-gauge Pauli--Villars one-instanton determinant constant
   \(C_N^{\rm PV}\), including its reduction to

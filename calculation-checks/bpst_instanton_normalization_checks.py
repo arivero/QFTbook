@@ -145,7 +145,9 @@ relations
     restricted to the instanton zero-mode subspace, giving the full flavor
     determinant, the two-flavor scalar/pseudoscalar channel decomposition, the
     induced local source-curvature splittings, their anomalous axial Ward
-    ledger, and the theta+arg det M phase combination
+    ledger, the tested-susceptibility contact rule in which the local
+    instanton curvature weights only the diagonal value of the test kernel,
+    and the theta+arg det M phase combination
     Uhlenbeck boundary faces have the expected codimensions and product
     power-counting integrability thresholds
     the k=1 ADHM quotient has orientation dimension 4N-5 and cone
@@ -1284,6 +1286,114 @@ def check_two_flavor_instanton_source_ward_ledger() -> None:
         "triplet Ward ledger matches positive pion-delta order",
         theta_zero_triplet_pion - theta_zero_triplet_delta,
         2 * kappa,
+    )
+
+
+def check_two_flavor_instanton_tested_susceptibility_contact() -> None:
+    kappa = Fraction(17, 19)
+    cos_theta = Fraction(5, 7)
+    sin_theta = Fraction(11, 13)
+
+    # A finite tested susceptibility weights a local curvature only by the
+    # diagonal of the test kernel.  Off-diagonal entries belong to the
+    # propagated/spectral two-point function, not to the local contact term.
+    test_kernel = [
+        [Fraction(2), Fraction(101), Fraction(-37)],
+        [Fraction(101), Fraction(3), Fraction(59)],
+        [Fraction(-37), Fraction(59), Fraction(5)],
+    ]
+    volume = Fraction(len(test_kernel))
+    diagonal_weight = sum(
+        test_kernel[index][index] for index in range(len(test_kernel))
+    ) / volume
+    full_kernel_weight = sum(sum(row) for row in test_kernel) / volume
+
+    pion_contact = kappa * cos_theta * diagonal_weight
+    delta_contact = -kappa * cos_theta * diagonal_weight
+    sigma_eta_contact = -kappa * sin_theta * diagonal_weight
+    delta_pion_contact = kappa * sin_theta * diagonal_weight
+    assert_equal(
+        "tested pion local instanton contact",
+        pion_contact,
+        kappa * cos_theta * diagonal_weight,
+    )
+    assert_equal(
+        "tested delta local instanton contact",
+        delta_contact,
+        -kappa * cos_theta * diagonal_weight,
+    )
+    assert_equal(
+        "tested U1A contact splitting",
+        pion_contact - delta_contact,
+        2 * kappa * cos_theta * diagonal_weight,
+    )
+    assert_equal(
+        "tested sigma-eta CP-odd contact",
+        sigma_eta_contact,
+        -kappa * sin_theta * diagonal_weight,
+    )
+    assert_equal(
+        "tested delta-pion CP-odd contact",
+        delta_pion_contact,
+        kappa * sin_theta * diagonal_weight,
+    )
+
+    assert_equal(
+        "off-diagonal test weight is not a local contact weight",
+        full_kernel_weight == diagonal_weight,
+        False,
+    )
+    assert_equal(
+        "wrong full-kernel contact weighting is rejected",
+        2 * kappa * cos_theta * full_kernel_weight
+        == pion_contact - delta_contact,
+        False,
+    )
+
+    point_split_kernel = [
+        [Fraction(0), Fraction(7), Fraction(11)],
+        [Fraction(7), Fraction(0), Fraction(13)],
+        [Fraction(11), Fraction(13), Fraction(0)],
+    ]
+    point_split_diagonal = sum(
+        point_split_kernel[index][index] for index in range(len(point_split_kernel))
+    ) / volume
+    assert_equal("point-split diagonal weight", point_split_diagonal, Fraction(0))
+    assert_equal(
+        "point-split local instanton contact vanishes",
+        2 * kappa * cos_theta * point_split_diagonal,
+        Fraction(0),
+    )
+
+    spectral_difference = Fraction(-31, 23)
+    counterterm_difference = Fraction(5, 29)
+    local_remainder = Fraction(-7, 31)
+    regulator_remainder = Fraction(2, 37)
+    total_tested_difference = (
+        pion_contact
+        - delta_contact
+        + spectral_difference
+        + counterterm_difference
+        + local_remainder
+        + regulator_remainder
+    )
+    assert_equal(
+        "tested susceptibility separates contact and propagated data",
+        total_tested_difference,
+        2 * kappa * cos_theta * diagonal_weight
+        + spectral_difference
+        + counterterm_difference
+        + local_remainder
+        + regulator_remainder,
+    )
+
+    large_negative_spectral_difference = (
+        -(pion_contact - delta_contact) - Fraction(1, 41)
+    )
+    assert_equal(
+        "spectral term can reverse the full tested splitting",
+        pion_contact - delta_contact + large_negative_spectral_difference < 0,
+        True,
     )
 
 
@@ -3883,6 +3993,7 @@ def main() -> None:
     check_two_flavor_thooft_channel_decomposition()
     check_two_flavor_instanton_source_curvature()
     check_two_flavor_instanton_source_ward_ledger()
+    check_two_flavor_instanton_tested_susceptibility_contact()
     check_fermion_determinant_zero_mode_nonzero_mode_factorization()
     check_light_fermion_determinant_source_frame_covariance()
     check_instanton_mass_source_rg_transport()

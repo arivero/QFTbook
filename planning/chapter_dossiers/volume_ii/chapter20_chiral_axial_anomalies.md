@@ -317,6 +317,7 @@
 | \(\Phi,S,P,s_0,\vec s,p_0,\vec p\) | two-flavor chiral, scalar, and pseudoscalar bilinear coordinates used to decompose the local 't Hooft determinant into physical channels |
 | \(\kappa_{\rm inst}^{(2)}\) | finite local two-flavor instanton source-density coefficient after the size/orientation/nonzero-mode determinant integral has been controlled |
 | \(\mathcal D_A\) | finite singlet-axial Ward vector \(4\partial_\theta+2p\partial_s-2s\partial_p\) acting on the two-flavor local instanton source coordinates |
+| \(F_\Delta,\mathsf S_A[F]\) | average diagonal value of a tested susceptibility kernel and the propagated/spectral color-singlet two-point contribution kept separate from the local instanton contact term |
 | \(J_{ff'},J^0_{ff'},\mathcal V_{\rm inst}^0\) | renormalized chiral scalar source coordinate, its zero-mode projection, and the zero-mode source functional used to state the mass/source RG transport of the instanton vertex |
 | \(\bar\chi_A,\chi_B\) | odd generating coordinates for differentiated external fermion slots in the instanton zero-mode sector |
 | \(R_{Af}(z),L_{fB}(z)\) | right-slot and left-slot zero-mode overlap matrices whose differentiated coefficient is \(\det R\,\det L\) |
@@ -654,6 +655,17 @@
   \(\chi_s-\chi_p=-2\partial_\theta m_{sp}\).  Thus the local susceptibility
   splitting is tied to the anomalous theta shift rather than being an
   independent channel-label assertion.
+- The local source curvature has now been embedded into tested Euclidean
+  chiral susceptibilities.  A local instanton term contributes only
+  \(C_A^{\rm inst}F_\Delta\), where \(F_\Delta\) is the average diagonal value
+  of the test kernel; off-diagonal propagation, spectral weights, contact
+  counterterm conventions, Goldstone/screening data, and regulator/IR
+  remainders are separate inputs.  At \(\theta=0\) the local
+  \(U(1)_A\)-odd contacts are
+  \((\chi_{\pi_a}-\chi_{\delta_a})_{\rm inst,loc}[F]
+  =(\chi_\sigma-\chi_\eta)_{\rm inst,loc}[F]
+  =2\kappa_{\rm inst}^{(2)}F_\Delta\), so point-split observables with
+  \(F_\Delta=0\) do not receive this contact term.
 - The source-amputated instanton four-fermion kernel is obtained by removing
   only adjacent external pole-residue factors.  For differentiated linear
   sources these are source-slot residues multiplying \(\det R\,\det L\); for
@@ -1424,3 +1436,14 @@
   than to instanton zero-mode counting.  The BPST companion verifies the charge
   ledger, susceptibility drift, diffusion variance, and zero-rate negative
   control.
+- 2026-06-04 issue #597 tested-susceptibility pass: added
+  `ca:instanton-tested-chiral-susceptibility-contact`, which turns the local
+  two-flavor instanton source curvature into a tested Euclidean susceptibility
+  contribution.  The new block isolates the \(F_\Delta\) contact term from the
+  propagated color-singlet spectral function, finite contact counterterms,
+  derivative-expansion remainders, regulator/volume residuals, and IR
+  Goldstone/screening data.  Extended
+  `bpst_instanton_normalization_checks.py` with diagonal-test-kernel,
+  point-splitting, off-diagonal negative-control, CP-odd contact, and
+  spectral-reversal checks, so this pass strengthens the observable layer
+  rather than adding another moduli-space identity.

@@ -4925,6 +4925,133 @@ which are exactly
 \eqref{eq:two-flavor-instanton-curvature-ward-relations}.
 \end{proof}
 
+\begin{controlledapproximation}[Tested chiral susceptibilities from the
+local instanton curvature]
+\label{ca:instanton-tested-chiral-susceptibility-contact}
+Keep the same two-flavor source convention, but now let the scalar and
+pseudoscalar sources depend on Euclidean position in a finite regulator.  Write
+\[
+  O_\sigma=\bar q q,\qquad
+  O_{\delta_a}=\bar q\tau_a q,\qquad
+  O_\eta=\bar q\ii\gamma_5q,\qquad
+  O_{\pi_a}=\bar q\ii\gamma_5\tau_aq ,
+\]
+with the same normalization as the source coordinates
+\((s_0,s_a,p_0,p_a)\) above.  For a symmetric test kernel \(F(x,y)\), define
+the per-volume tested Euclidean susceptibility coordinate
+\begin{equation}
+  \chi_A[F]
+  =
+  \frac{1}{V_4}
+  \left.
+  \int\dd^4x\,\dd^4y\,
+  F(x,y)
+  \frac{\delta^2\log Z}{\delta J_A(x)\delta J_A(y)}
+  \right|_{J=0},
+  \qquad
+  F_\Delta=
+  \frac{1}{V_4}\int\dd^4x\,F(x,x).
+  \label{eq:instanton-tested-susceptibility-definition}
+\end{equation}
+On a lattice or other cutoff regulator the integrals are the corresponding
+finite sums and \(F_\Delta\) is the average diagonal value of the test kernel.
+If \(F(x,y)=f(x-y)\) is translation-invariant, then \(F_\Delta=f(0)\); if the
+observable is point-split so that the diagonal is removed, \(F_\Delta=0\).
+
+The local part of the one-instanton source functional is
+\[
+  \log Z_{\rm inst,loc}^{(2)}
+  =
+  \int\dd^4x\,
+  \mathcal W_{\rm inst}^{(2)}(J(x)) ,
+\]
+up to the derivative-expansion and finite-window remainders already declared
+in ControlledApproximation~\ref{ca:two-flavor-instanton-source-susceptibility}.
+Two functional derivatives of this local term produce only the regulator
+diagonal:
+\[
+  \left.
+  \frac{\delta^2\log Z_{\rm inst,loc}^{(2)}}
+       {\delta J_A(x)\delta J_B(y)}
+  \right|_{J=0}
+  =
+  C_{AB}^{\rm inst}\,\delta_\Lambda(x,y).
+\]
+The nonzero diagonal entries are
+\[
+  C_{\sigma\sigma}^{\rm inst}
+  =
+  C_{\pi_a\pi_a}^{\rm inst}
+  =
+  \kappa_{\rm inst}^{(2)}\cos\theta,
+  \qquad
+  C_{\delta_a\delta_a}^{\rm inst}
+  =
+  C_{\eta\eta}^{\rm inst}
+  =
+  -\kappa_{\rm inst}^{(2)}\cos\theta,
+\]
+and the CP-odd contact mixings are
+\[
+  C_{\sigma\eta}^{\rm inst}
+  =
+  -\kappa_{\rm inst}^{(2)}\sin\theta,
+  \qquad
+  C_{\delta_a\pi_b}^{\rm inst}
+  =
+  \kappa_{\rm inst}^{(2)}\sin\theta\,\delta_{ab}.
+\]
+Consequently the local instanton contribution to a tested susceptibility is
+\begin{equation}
+  \chi_{A,{\rm inst,loc}}[F]
+  =
+  C_{AA}^{\rm inst}\,F_\Delta ,
+  \label{eq:instanton-tested-susceptibility-local-contact}
+\end{equation}
+and, at \(\theta=0\),
+\begin{equation}
+  \left(\chi_{\pi_a}[F]-\chi_{\delta_a}[F]\right)_{\rm inst,loc}
+  =
+  \left(\chi_{\sigma}[F]-\chi_{\eta}[F]\right)_{\rm inst,loc}
+  =
+  2\kappa_{\rm inst}^{(2)}F_\Delta .
+  \label{eq:instanton-tested-u1a-contact-splitting}
+\end{equation}
+
+Thus the local 't Hooft calculation contributes the diagonal contact
+coordinate of the tested correlator, not the full off-diagonal two-point
+function.  A full color-singlet susceptibility difference has the
+finite-regulator decomposition
+\begin{equation}
+\begin{aligned}
+  \chi_{\pi_a-\delta_a}[F]
+  &=
+  2\kappa_{\rm inst}^{(2)}\cos\theta\,F_\Delta
+  +
+  \left(\mathsf S_{\pi_a}[F]-\mathsf S_{\delta_a}[F]\right)  \\
+  &\qquad
+  +
+  \left(\mathsf C_{\pi_a}^{\rm ct}[F]-\mathsf C_{\delta_a}^{\rm ct}[F]\right)
+  +
+  R_{\rm loc}[F]+R_{\rm reg}[F]+R_{\rm IR}[F],
+\end{aligned}
+  \label{eq:instanton-tested-susceptibility-full-decomposition}
+\end{equation}
+with the analogous \(\sigma-\eta\) formula.  Here
+\(\mathsf S_A[F]\) is the connected propagated, or spectral, part of the
+renormalized color-singlet two-point function after the contact convention has
+been chosen; \(\mathsf C_A^{\rm ct}\) records finite local counterterm
+conventions; \(R_{\rm loc}\) is the omitted derivative expansion of the
+instanton source kernel; \(R_{\rm reg}\) is the cutoff and volume residual;
+and \(R_{\rm IR}\) contains long-distance phase information such as Goldstone
+poles or screening.  In a finite box the propagated term may be extracted from
+the usual Hilbert-space spectral representation of the color-singlet
+operators.  The instanton calculation fixes the local \(U(1)_A\)-violating
+contact coefficient in that representation.  It does not by itself determine
+the spectral weights, pole residues, screening masses, or the continuum
+contact convention.
+\end{controlledapproximation}
+
 \begin{proposition}[Mixed mass-source expansion of the instanton determinant]
 \label{prop:instanton-mass-source-minor-expansion}
 In the same \(Q=1\) QCD zero-mode sector, let \(M\) be the mass-overlap
