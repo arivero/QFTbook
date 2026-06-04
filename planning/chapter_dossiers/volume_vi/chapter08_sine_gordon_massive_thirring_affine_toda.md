@@ -26,10 +26,11 @@ families.  This chapter supplies the first exact examples before the later
   breather-breather scattering amplitude.
 - `psi_pm`, `K_pm`: Mandelstam soliton-creating fermion fields and Klein
   factors in the massive Thirring equivalence.
-- `psi`, `g_T`, `K`, `phi_0`: massive Thirring fermion, current-current
-  coupling, massless Thirring current-sector kinetic coefficient
-  \(K=1+g_T/\pi\), and the free-Dirac bosonization scalar before the canonical
-  sine-Gordon rescaling.
+- `psi`, `J^mu`, `g_T`, `K`, `phi_0`: massive Thirring fermion, Hermitian
+  mostly-plus vector current \(J^\mu=\ii\bar\psi\gamma^\mu\psi\),
+  current-current coupling, massless Thirring current-sector kinetic
+  coefficient \(K=1+g_T/\pi\), and the free-Dirac bosonization scalar before
+  the canonical sine-Gordon rescaling.
 - `V_alpha`, `Delta_alpha`: canonical free-boson vertex operator and its
   scaling dimension \(\alpha^2/(4\pi)\).
 - `g`, `alpha_i`, `theta`, `n_i`: Lie algebra, roots, highest root, and
@@ -63,9 +64,10 @@ families.  This chapter supplies the first exact examples before the later
 - Derives the canonical free-boson vertex OPE, separating the
   \(V_\alpha V_{-\alpha}\) short-distance exponent
   \(\alpha^2/(2\pi)\) from the scaling dimension \(\alpha^2/(4\pi)\).
-- Derives Coleman's coupling relation by representing the massless Thirring
-  current sector as a Gaussian scalar with kinetic coefficient
-  \(K=1+g_T/\pi\), then rescaling the free-Dirac bosonization mass operator.
+- Derives Coleman's coupling relation in the monograph mostly-plus spinor
+  chart by representing the massless Thirring Hermitian-current sector as a
+  Gaussian scalar with kinetic coefficient \(K=1+g_T/\pi\), then rescaling the
+  free-Dirac bosonization mass operator.
 - Derives the sine-Gordon/Thirring current dictionary and shows that fermion
   number equals sine-Gordon topological charge.
 - Proves the Mandelstam semi-local exchange phase directly from the
@@ -104,7 +106,10 @@ families.  This chapter supplies the first exact examples before the later
 - `calculation-checks/sg_thirring_bosonization_checks.py` verifies the
   vertex-OPE exponent versus scaling dimension, Coleman's coupling map,
   current-dictionary coefficient, Mandelstam exchange phase, free-fermion
-  point, and relevance threshold using exact rational arithmetic.
+  point, and relevance threshold using exact rational arithmetic.  It also
+  checks the mostly-plus Clifford/current convention and rejects the old
+  anti-Hermitian-current sign by showing that it would move the marginal
+  endpoint from \(g_T/\pi=-1/2\) to \(+1/2\).
 
 ## Figure Ledger
 
@@ -127,3 +132,11 @@ first simply-laced examples.
   \(2-\sqrt3\) eigenvalue check, with an exact \(\mathbb Q[\sqrt3]\)
   companion verification.  This narrows the assertion-as-derivation gap
   without claiming the quantum affine-Toda construction.
+- 2026-06-04 issue #761 convention pass: translated the massive-Thirring
+  action, vector current, current square, current dictionary, and Coleman
+  coupling coordinate into the monograph mostly-plus spinor convention.  The
+  section now uses the Hermitian current
+  \(J^\mu=\ii\bar\psi\gamma^\mu\psi\), removes the extra \(\ii\) from the
+  Lorentzian kinetic term, and records that the Coleman \(g_T\) coordinate is
+  attached to \(-g_T J_\mu J^\mu/2\), equivalently \(+g_T B_\mu B^\mu/2\) for
+  the anti-Hermitian bilinear \(B^\mu=\bar\psi\gamma^\mu\psi\).

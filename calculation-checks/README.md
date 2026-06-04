@@ -2231,7 +2231,11 @@ Current checks:
   sine-Gordon/massive-Thirring bosonization section, including the distinction
   between vertex-OPE exponent and scaling dimension, Coleman's coupling map,
   the current-dictionary coefficient, the Mandelstam exchange phase, the
-  free-fermion point, and the sine-Gordon relevance threshold.
+  free-fermion point, and the sine-Gordon relevance threshold.  It also
+  includes a finite mostly-plus Clifford/current-reality check for the
+  monograph convention \(J^\mu=\ii\bar\psi\gamma^\mu\psi\), together with a
+  negative control showing that the old anti-Hermitian-current sign would give
+  the wrong Coleman marginal endpoint.
 - `ks_allowability_checks.py`: finite complex-linear-algebra checks for the
   Kontsevich--Segal allowability chapter, including the angle criterion,
   Euclidean and Lorentzian boundary examples, two-time exclusion, and

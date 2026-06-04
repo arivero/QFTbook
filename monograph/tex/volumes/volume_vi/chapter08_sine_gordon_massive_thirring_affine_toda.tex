@@ -681,29 +681,48 @@ which proves the claim.
 \section{Massive Thirring Equivalence}
 \label{sec:sine-gordon-massive-thirring-equivalence}
 
-We use the Lorentzian mostly-plus metric in this section, set
-\(\epsilon^{01}=+1\), and write
+We use the same \(1+1\)-dimensional mostly-plus spinor chart as
+Section~\ref{sec:spinor-conventions} and the Schwinger-model chapter:
 \[
-  j^\mu=\bar\psi\gamma^\mu\psi .
+  \eta_{\mu\nu}=\operatorname{diag}(-,+),
+  \qquad
+  \epsilon^{01}=+1,
+  \qquad
+  \{\gamma^\mu,\gamma^\nu\}=2\eta^{\mu\nu},
+  \qquad
+  \beta_{\rm D}=\ii\gamma^0,
+  \qquad
+  \bar\psi=\psi^\dagger\beta_{\rm D}.
 \]
+In this convention
+\(\bar\psi\gamma^\mu\psi\) is anti-Hermitian, while the physical vector
+current is the Hermitian composite
+\begin{equation}
+  J^\mu=\ii\bar\psi\gamma^\mu\psi .
+  \label{eq:sg-thirring-hermitian-current}
+\end{equation}
 The massive Thirring model has Dirac field \(\psi\) and action
 \[
   S_{\mathrm{MT}}
   =
   \int d^2x\,
   \left[
-  \ii\bar\psi\gamma^\mu\partial_\mu\psi
+  -\bar\psi\gamma^\mu\partial_\mu\psi
   -m\bar\psi\psi
   -\frac{g_{\mathrm{T}}}{2}
-  (\bar\psi\gamma^\mu\psi)(\bar\psi\gamma_\mu\psi)
+  J^\mu J_\mu
   \right].
 \]
-The parameter \(g_{\mathrm T}\) is the coefficient of the displayed
-renormalized current square in the vector-current point-splitting scheme used
-below.  Changing the current contact term changes this coordinate; the
-relation to the sine-Gordon coupling is therefore a relation between declared
-renormalization charts with specified current contact terms and vertex
-normal-ordering schemes.
+The kinetic bilinear without an extra factor of \(\ii\) is Hermitian after
+integrating by parts and discarding the boundary term.  Equivalently, if
+\(B^\mu=\bar\psi\gamma^\mu\psi\), then \(J^\mu=\ii B^\mu\) and the displayed
+interaction is \(+(g_{\mathrm T}/2)B^\mu B_\mu\).  Thus \(g_{\mathrm T}\) is
+the Coleman coordinate multiplying the square of the Hermitian vector current,
+not the coefficient one would read from the anti-Hermitian bilinear \(B^\mu\).
+Changing the current contact term, or changing between these current charts
+without the factor of \(\ii\), changes this coordinate; the relation to the
+sine-Gordon coupling is therefore a relation between declared renormalization
+charts with specified current contact terms and vertex normal-ordering schemes.
 
 \subsection{Free-Boson Vertex Chart}
 
@@ -774,7 +793,7 @@ Let \(\phi_0\) denote the canonical scalar that bosonizes the current sector
 of a free massless Dirac fermion.  With the vector-current point-splitting
 contact term fixed by the Schwinger term, the current map is
 \begin{equation}
-  j^\mu
+  J^\mu
   =
   \frac{1}{\sqrt\pi}\epsilon^{\mu\nu}\partial_\nu\phi_0 .
   \label{eq:sg-thirring-free-current-map}
@@ -826,13 +845,13 @@ This relation is a normalization consequence of the current-sector Gaussian,
 not an independent theorem.  For one free Dirac fermion, the current map
 \eqref{eq:sg-thirring-free-current-map} gives in Euclidean signature
 \[
-  j_\mu j_\mu=\frac1\pi\,\partial_\mu\phi_0\,\partial_\mu\phi_0 .
+  J_\mu J_\mu=\frac1\pi\,\partial_\mu\phi_0\,\partial_\mu\phi_0 .
 \]
 The Euclidean Thirring weight corresponding to the Lorentzian interaction
 displayed at the beginning of this section therefore contributes
 \[
   \frac{g_{\mathrm T}}{2}
-  \int\dd^2x\,j_\mu j_\mu
+  \int\dd^2x\,J_\mu J_\mu
   =
   \frac{g_{\mathrm T}}{2\pi}
   \int\dd^2x\,(\partial\phi_0)^2 .
@@ -862,14 +881,14 @@ Thus the sine-Gordon vertex charge is
 Combining \eqref{eq:sg-thirring-free-current-map} with the same rescaling
 gives the current dictionary in the sine-Gordon canonical field,
 \begin{equation}
-  j^\mu
+  J^\mu
   =
   \frac{\beta}{2\pi}\epsilon^{\mu\nu}\partial_\nu\varphi .
   \label{eq:sg-thirring-current-dictionary}
 \end{equation}
 The integrated charge is
 \[
-  \int dx\,j^0
+  \int dx\,J^0
   =
   \frac{\beta}{2\pi}
   \int dx\,\partial_x\varphi
@@ -972,7 +991,7 @@ At \(\beta^2=4\pi\) this gives \(\Delta_\psi=1/2\), the free Dirac value.
 With the conventions fixed above, the local operator dictionary begins as
 \begin{equation}
 \begin{array}{ccl}
-  j^\mu=\bar\psi\gamma^\mu\psi
+  J^\mu=\ii\bar\psi\gamma^\mu\psi
   &\longleftrightarrow&
   \dfrac{\beta}{2\pi}\epsilon^{\mu\nu}\partial_\nu\varphi,
   \\[1.1em]
@@ -980,7 +999,7 @@ With the conventions fixed above, the local operator dictionary begins as
   &\longleftrightarrow&
   C_m:\!\cos(\beta\varphi)\!:,
   \\[1.1em]
-  j_\mu j_\mu\ \text{in Euclidean signature}
+  J_\mu J_\mu\ \text{in Euclidean signature}
   &\longleftrightarrow&
   \left(\dfrac{\beta}{2\pi}\right)^2
   \partial_\mu\varphi\,\partial_\mu\varphi,
