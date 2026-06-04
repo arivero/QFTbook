@@ -10,6 +10,8 @@ The checks cover algebraic identities used in the finite-volume chapter:
 * free-Majorana two-particle energy-density Bessel reduction prefactor;
 * free-Majorana rapidity-cut tail bookkeeping on a separated Euclidean
   distance window;
+* interacting one-species form-factor growth-window bookkeeping for
+  particle-number and rapidity-cut tails;
 * finite reconstruction residual budget separating finite-volume, tail,
   diagonal/contact, domain, locality, and completeness errors.
 
@@ -22,12 +24,14 @@ bookkeeping claims in Volume VI Chapter 11, including the two-particle Gaudin
 determinant, Gaudin-density cancellation in the sum-integral limit, connected
 diagonal subset combinatorics, the free-Majorana energy-density Bessel
 prefactor, the separated-window rapidity-cut tail bound for that local
-observable, and the residual ledger separating finite-volume, tail,
-diagonal/contact, domain, locality, and completeness errors.
+observable, the interacting form-factor growth-window particle-number and
+rapidity-cut tail bounds, and the residual ledger separating finite-volume,
+tail, diagonal/contact, domain, locality, and completeness errors.
 Independent construction: the checks recompute the Jacobian determinant,
 state-counting cancellations, subset sums, Bessel prefactors, elementary
-rapidity-tail constants, tail primitive, and residual decompositions directly
-from finite formulas rather than importing chapter display strings.
+rapidity-tail constants, tail primitive, interacting growth-window majorants,
+and residual decompositions directly from finite formulas rather than importing
+chapter display strings.
 Imported assumptions: the tests use diagonal Bethe-Yang quantization, finite
 nonzero Gaudin densities, regular connected diagonal finite parts, the
 free-Majorana energy operator's two-particle form-factor support after the
@@ -37,7 +41,9 @@ Negative controls: wrong Gaudin determinants, missed density cancellations,
 wrong subset counts, omitted identical-particle factors, overstrong rapidity
 decay from using the wrong cosh lower bound, confusing the free energy
 operator's zero particle-number tail with the nonzero rapidity-cut tail, and
-accidentally vanishing reconstruction residuals are rejected.
+accidentally vanishing reconstruction residuals are rejected, as are missing
+factorial suppression, omitted union-bound factors in interacting rapidity
+cuts, and particle-tail estimates used outside their small-tail condition.
 Scope boundary: a pass checks finite algebra, normalization, and explicit
 tail-bookkeeping coordinates for the displayed finite-volume/form-factor
 claims; it does not prove general form-factor convergence, construct local
@@ -52,7 +58,7 @@ from check_utils import assert_leq as _assert_leq
 
 from fractions import Fraction
 from itertools import combinations
-from math import cosh, exp, pi
+from math import cosh, exp, factorial, pi
 
 
 def assert_close(name: str, got: float, expected: float, tol: float = 1.0e-11) -> None:
@@ -226,6 +232,98 @@ def check_majorana_energy_rapidity_tail_bound() -> None:
         )
 
 
+def check_interacting_form_factor_growth_window() -> None:
+    # Exact finite analogue of a one-species bound
+    # |F_n|^2 <= C^2 B^(2n) exp(2 gamma sum |theta_i|).
+    c_squared = Fraction(5, 7)
+    b_squared = Fraction(3, 5)
+    one_particle_majorant = Fraction(4, 3)
+    x0 = b_squared * one_particle_majorant
+    assert_equal("interacting form-factor window majorant X0", x0, Fraction(4, 5))
+
+    two_particle_bound = c_squared * x0 * x0 / factorial(2)
+    missing_identical_factor = c_squared * x0 * x0
+    if two_particle_bound == missing_identical_factor:
+        raise AssertionError("negative control failed: factorial suppression was lost")
+    _assert_leq(
+        "interacting two-particle sector below missing-factorial control",
+        two_particle_bound,
+        missing_identical_factor,
+        tol=Fraction(0),
+    )
+
+    retained_order = 3
+    if not x0 < retained_order + 2:
+        raise AssertionError("test fixture should satisfy the particle-tail smallness condition")
+    particle_tail_bound = (
+        c_squared
+        * x0 ** (retained_order + 1)
+        / factorial(retained_order + 1)
+        / (1 - x0 / (retained_order + 2))
+    )
+    first_two_omitted = c_squared * (
+        x0 ** (retained_order + 1) / factorial(retained_order + 1)
+        + x0 ** (retained_order + 2) / factorial(retained_order + 2)
+    )
+    _assert_leq(
+        "interacting particle-number tail finite sample below certified bound",
+        first_two_omitted,
+        particle_tail_bound,
+        tol=Fraction(0),
+    )
+
+    bad_x0 = Fraction(7, 1)
+    if bad_x0 < retained_order + 2:
+        raise AssertionError("negative control should violate the tail-ratio condition")
+    bad_denominator = 1 - bad_x0 / (retained_order + 2)
+    if bad_denominator > 0:
+        raise AssertionError("negative control failed: invalid particle-tail denominator looked usable")
+
+    rapidity_tail = Fraction(1, 13)
+    retained_rapidity_integral = one_particle_majorant - rapidity_tail
+    finite_cut_error = Fraction(0)
+    union_bound = Fraction(0)
+    for n in range(1, retained_order + 1):
+        coefficient = c_squared * b_squared**n / factorial(n)
+        exact_cut_error = coefficient * (
+            one_particle_majorant**n - retained_rapidity_integral**n
+        )
+        sector_union_bound = (
+            coefficient
+            * n
+            * one_particle_majorant ** (n - 1)
+            * rapidity_tail
+        )
+        _assert_leq(
+            f"interacting rapidity-cut sector union bound n={n}",
+            exact_cut_error,
+            sector_union_bound,
+            tol=Fraction(0),
+        )
+        finite_cut_error += exact_cut_error
+        union_bound += sector_union_bound
+
+    chapter_cut_bound = (
+        c_squared
+        * b_squared
+        * rapidity_tail
+        * sum(x0**k / factorial(k) for k in range(retained_order))
+    )
+    assert_equal(
+        "interacting rapidity-cut bound equals finite union-bound sum",
+        union_bound,
+        chapter_cut_bound,
+    )
+    _assert_leq(
+        "interacting rapidity-cut exact error below certified bound",
+        finite_cut_error,
+        chapter_cut_bound,
+        tol=Fraction(0),
+    )
+    if finite_cut_error <= c_squared * b_squared * rapidity_tail:
+        raise AssertionError("negative control failed: higher retained sectors needed no union factor")
+
+
 def check_subset_count() -> None:
     for n in range(0, 8):
         count = sum(1 for r in range(n + 1) for _ in combinations(range(n), r))
@@ -277,6 +375,7 @@ def main() -> None:
     check_diagonal_subset_expansion()
     check_bessel_prefactor_reduction()
     check_majorana_energy_rapidity_tail_bound()
+    check_interacting_form_factor_growth_window()
     check_subset_count()
     check_reconstruction_residual_budget()
     print("All finite-volume form-factor checks passed.")

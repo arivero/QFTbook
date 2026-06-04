@@ -24,6 +24,10 @@ normalization and convergence obligations explicit.
 - `F^O_n`: infinite-volume vacuum-to-\(n\)-particle form factor.
 - `F^O_{2n,c}`: connected diagonal form factor.
 - `m_*`: lightest mass in the theory.
+- `C_O`, `B_O`, `gamma`, `I_gamma`, `X_0`: constants and one-particle
+  majorant used to turn a model-specific interacting form-factor growth bound
+  into particle-number and rapidity-cut control on a separated Euclidean
+  observable window.
 - `n_a(theta)`: TBA occupation factor.
 - `epsilon_a(theta)`: TBA pseudoenergy.
 
@@ -55,16 +59,23 @@ normalization and convergence obligations explicit.
     free-Majorana local energy-density observable: the particle-number tail is
     zero only because the local free-field bilinear is already constructed,
     while the finite rapidity cutoff has an explicit Bessel-tail error bound.
-15. States the thermal connected-diagonal Leclair-Mussardo type series with
+15. Adds an interacting one-species growth-window criterion: a proved bound on
+    `|F_n^O|^2` gives a uniform separated Euclidean sector majorant, an
+    explicit particle-number tail, and an explicit rapidity-cut tail for the
+    retained sectors.  The statement is a quantitative path from interacting
+    on-shell data to a tested local Schwinger function once the operator
+    reconstruction inputs are supplied; it does not by itself prove locality,
+    positivity, domains, or scattering-state completeness.
+16. States the thermal connected-diagonal Leclair-Mussardo type series with
     the TBA and convergence dependencies explicit.
-16. Labels the reconstruction chain arrow by arrow: on-shell scattering data,
+17. Labels the reconstruction chain arrow by arrow: on-shell scattering data,
     operator bootstrap/crossing, finite-volume Gaudin-normalized matrix
     elements, and the final analytic reconstruction of distributions.
-17. Separates finite-volume calculability from the open construction theorem
+18. Separates finite-volume calculability from the open construction theorem
     for local QFT from form-factor data, with the free Majorana chain
     identified as theorem-level only because the local free field is already
     constructed.
-18. Adds a separated-Euclidean reconstruction package and residual budget:
+19. Adds a separated-Euclidean reconstruction package and residual budget:
     finite-volume-to-rapidity error, particle-number tail, diagonal/contact
     extension, domain/positivity, locality, and sector-completeness residuals
     must all be controlled before a Gaudin-normalized finite-volume approximant
@@ -77,9 +88,11 @@ normalization and convergence obligations explicit.
   two-particle Gaudin determinant, Gaudin-density cancellation in the
   sum-integral limit, connected diagonal subset expansion through three
   particles, subset counting, the free-Majorana Bessel prefactor, and the
-  free-Majorana separated-window rapidity-tail prefactor and primitive, and
-  the finite reconstruction residual budget with a deliberately nonzero
-  analytic and operator-level defect.
+  free-Majorana separated-window rapidity-tail prefactor and primitive, the
+  interacting growth-window sector/tail majorants with negative controls for
+  missing factorial suppression, omitted rapidity-cut union factors, and
+  invalid particle-tail ratios, and the finite reconstruction residual budget
+  with a deliberately nonzero analytic and operator-level defect.
 
 ## Figure Ledger
 
@@ -110,3 +123,9 @@ decomposition of diagonal disconnected contractions.
   energy-density example from a Bessel reduction to a separated-window
   approximation with an explicit rapidity-tail bound, while keeping the
   theorem-level claim tied to the already constructed free local field.
+- 2026-06-04 issue #728 interacting-window pass: added the one-species
+  interacting form-factor growth-window criterion.  The new block turns a
+  model-specific form-factor growth theorem into quantitative
+  particle-number-tail and rapidity-cut estimates for separated Euclidean
+  observables, while keeping locality, positivity, domains, contact extension,
+  and completeness as independent reconstruction obligations.

@@ -674,6 +674,94 @@ collision prescriptions, domain and positivity control, locality, and sector
 completeness.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Interacting form-factor growth window]
+\label{ca:interacting-form-factor-growth-window}
+The simplest interacting reconstruction test is not another exact
+Bethe--Yang identity, but a bound on the actual Euclidean observable produced
+by the interacting form factors.  Consider a one-species massive diagonal
+factorizing model with mass \(m>0\) and scalar form factors
+\(F_n^{\mathcal O}(\theta_1,\ldots,\theta_n)\).  Fix
+\(0<r_0<r_1\), and suppose a model-specific form-factor estimate has been
+proved on the real rapidity chamber:
+\begin{equation}
+  |F_n^{\mathcal O}(\theta_1,\ldots,\theta_n)|^2
+  \le
+  C_{\mathcal O}^2 B_{\mathcal O}^{2n}
+  \exp\!\left(2\gamma\sum_{j=1}^n|\theta_j|\right),
+  \qquad
+  0\le\gamma\le\frac12 .
+  \label{eq:interacting-form-factor-growth-bound}
+\end{equation}
+Set
+\begin{equation}
+  I_\gamma(s)
+  =
+  \frac1{2\pi}
+  \int_{\mathbb R}
+  \exp\!\left(2\gamma|\theta|-s\cosh\theta\right)\,\dd\theta,
+  \qquad
+  X_0=B_{\mathcal O}^2I_\gamma(mr_0).
+  \label{eq:interacting-form-factor-one-particle-majorant}
+\end{equation}
+Then the absolute \(n\)-particle Euclidean term is bounded uniformly for
+\(r\in[r_0,r_1]\) by
+\begin{equation}
+  |C_n^{\mathcal O}(r)|
+  \le
+  \frac{C_{\mathcal O}^2}{n!}\,X_0^n .
+  \label{eq:interacting-form-factor-sector-bound}
+\end{equation}
+Consequently, if \(N+2>X_0\), the omitted particle-number tail obeys
+\begin{equation}
+  \sum_{n>N}|C_n^{\mathcal O}(r)|
+  \le
+  C_{\mathcal O}^2
+  \frac{X_0^{N+1}}{(N+1)!}
+  \frac{1}{1-X_0/(N+2)} .
+  \label{eq:interacting-form-factor-particle-tail-bound}
+\end{equation}
+
+There is also a finite rapidity-window version of the same test.  Let
+\[
+  I_{\gamma,\Lambda}^{\rm tail}(s)
+  =
+  \frac1{2\pi}
+  \int_{|\theta|>\Lambda}
+  \exp\!\left(2\gamma|\theta|-s\cosh\theta\right)\,\dd\theta .
+\]
+For \(r\ge r_0\), put \(a=mr_0/2\) and \(U=e^\Lambda\).  Since
+\(\cosh\theta\ge e^{|\theta|}/2\), and
+\(u^{2\gamma-1}\le U^{2\gamma-1}\) for \(u\ge U\) when
+\(\gamma\le1/2\),
+\begin{equation}
+  I_{\gamma,\Lambda}^{\rm tail}(mr_0)
+  \le
+  \frac{1}{\pi a}\,
+  U^{2\gamma-1}e^{-aU}.
+  \label{eq:interacting-form-factor-rapidity-tail-majorant}
+\end{equation}
+The difference between the sectors \(1\le n\le N\) integrated over all
+rapidities and the same sectors restricted to \(|\theta_j|\le\Lambda\) is
+bounded by
+\begin{equation}
+  C_{\mathcal O}^2B_{\mathcal O}^2
+  I_{\gamma,\Lambda}^{\rm tail}(mr_0)
+  \sum_{k=0}^{N-1}\frac{X_0^k}{k!}.
+  \label{eq:interacting-form-factor-rapidity-cut-bound}
+\end{equation}
+Equations
+\eqref{eq:interacting-form-factor-particle-tail-bound} and
+\eqref{eq:interacting-form-factor-rapidity-cut-bound} turn a model-specific
+form-factor growth theorem into a separated Euclidean observable
+approximation.  They still do not prove that the bootstrap data define a
+local QFT.  Positivity, common domains, collision/contact extensions,
+locality or a wedge-local construction with local intersections, and
+scattering-state completeness remain the additional reconstruction inputs.
+The point is sharper: once those operator inputs are supplied, the displayed
+growth estimate gives a quantitative path from interacting on-shell data to a
+tested local Schwinger function.
+\end{controlledapproximation}
+
 \section{Thermal Traces And Connected Diagonal Series}
 
 At finite temperature, the Gibbs trace is organized by the thermodynamic
