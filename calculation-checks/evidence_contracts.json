@@ -46,6 +46,10 @@
       "risk_class": "eta/global anomaly"
     },
     {
+      "path": "finite_volume_form_factor_checks.py",
+      "risk_class": "integrable reconstruction"
+    },
+    {
       "path": "inflow_anomaly_line_checks.py",
       "risk_class": "anomaly inflow"
     },

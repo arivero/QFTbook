@@ -598,6 +598,82 @@ finite-volume matrix element contains the inverse Gaudin determinant, the sum
 over Bethe integers contains the Gaudin determinant, and the infinite-volume
 answer contains only the invariant rapidity measure and the form factor.
 
+\begin{controlledapproximation}[Majorana energy truncation on a separated window]
+\label{ca:majorana-energy-separated-window-tail}
+The previous calculation becomes a reconstruction statement only after the
+operator has been identified with the local free-field energy density.  In
+that theorem-level free theory, \(\varepsilon\) is a fermion bilinear, so its
+vacuum spectral expansion has no particle-number sectors above the
+two-particle sector.  The remaining finite approximation error in the displayed
+coordinate is therefore a rapidity cutoff error, not a hidden
+particle-number tail.
+
+Fix \(0<r_0<r_1<\infty\) and define
+\begin{equation}
+  C_{2,A}^\varepsilon(r)
+  =
+  \frac{2|\kappa|^2}{(2\pi)^2}
+  \int_0^A
+  \dd\alpha\,
+  \sinh^2\frac{\alpha}{2}\,
+  K_0\!\left(2mr\cosh\frac{\alpha}{2}\right).
+  \label{eq:majorana-energy-rapidity-cut-approximant}
+\end{equation}
+Let
+\[
+  M_0(r_0,m)=\sup_{z\ge 2mr_0} e^{z/2}K_0(z),
+\]
+which is finite because \(K_0(z)\) has exponential large-\(z\) decay and is
+bounded on every interval away from \(z=0\).  For \(r\ge r_0\),
+\[
+  K_0\!\left(2mr\cosh\frac{\alpha}{2}\right)
+  \le
+  M_0(r_0,m)e^{-mr_0\cosh(\alpha/2)} .
+\]
+Using
+\(\cosh(\alpha/2)\ge e^{\alpha/2}/2\) and
+\(\sinh^2(\alpha/2)\le e^\alpha/4\), the omitted rapidity tail obeys
+\begin{equation}
+  \left|C_2^\varepsilon(r)-C_{2,A}^\varepsilon(r)\right|
+  \le
+  \frac{|\kappa|^2 M_0(r_0,m)}{4\pi^2}
+  e^{-aU}\left(\frac{U}{a}+\frac{1}{a^2}\right),
+  \qquad
+  a=\frac{mr_0}{2},\quad U=e^{A/2}.
+  \label{eq:majorana-energy-rapidity-tail-bound}
+\end{equation}
+Indeed,
+\[
+  \int_A^\infty e^\alpha e^{-a e^{\alpha/2}}\,\dd\alpha
+  =
+  2\int_{e^{A/2}}^\infty u e^{-au}\,\dd u
+  =
+  2e^{-aU}\left(\frac{U}{a}+\frac{1}{a^2}\right),
+\]
+and the extra factor \(1/4\) comes from the elementary bound on
+\(\sinh^2(\alpha/2)\).
+
+Consequently, for a bounded radial test \(\psi\) supported in
+\([r_0,r_1]\),
+\[
+  \left|
+    \int_{r_0}^{r_1}
+    \psi(r)\bigl(C_2^\varepsilon(r)-C_{2,A}^\varepsilon(r)\bigr)\,\dd r
+  \right|
+  \le
+  (r_1-r_0)\lVert\psi\rVert_\infty
+  \frac{|\kappa|^2 M_0(r_0,m)}{4\pi^2}
+  e^{-aU}\left(\frac{U}{a}+\frac{1}{a^2}\right).
+\]
+This is a controlled local-observable approximation in the already
+constructed free theory.  The inference runs from the existing local
+free-field construction to the form-factor approximation.  In an interacting
+factorizing model the corresponding statement requires, in addition to
+finite-volume normalization, independent particle-number growth bounds,
+collision prescriptions, domain and positivity control, locality, and sector
+completeness.
+\end{controlledapproximation}
+
 \section{Thermal Traces And Connected Diagonal Series}
 
 At finite temperature, the Gibbs trace is organized by the thermodynamic

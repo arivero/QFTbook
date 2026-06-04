@@ -1509,7 +1509,8 @@ Current checks:
   finite-volume form-factor chapter, including the two-particle Gaudin
   determinant, cancellation of the Gaudin density between matrix elements and
   state counting, connected diagonal subset combinatorics, and the
-  free-Majorana two-particle Bessel-reduction prefactor.
+  free-Majorana two-particle Bessel-reduction prefactor and separated-window
+  rapidity-tail bookkeeping.
 - `ising_metropolis_finite_checks.py`: exact enumeration checks for the
   `qft_scripts/ising2d_metropolis.py` companion script, verifying the local
   energy difference and detailed balance on the \(2\times2\) periodic Ising

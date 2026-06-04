@@ -51,16 +51,20 @@ normalization and convergence obligations explicit.
     series.
 13. Works out the free-Majorana energy-density two-particle spectral term and
     its Bessel-kernel reduction.
-14. States the thermal connected-diagonal Leclair-Mussardo type series with
+14. Adds a separated-window reconstruction control for the same
+    free-Majorana local energy-density observable: the particle-number tail is
+    zero only because the local free-field bilinear is already constructed,
+    while the finite rapidity cutoff has an explicit Bessel-tail error bound.
+15. States the thermal connected-diagonal Leclair-Mussardo type series with
     the TBA and convergence dependencies explicit.
-15. Labels the reconstruction chain arrow by arrow: on-shell scattering data,
+16. Labels the reconstruction chain arrow by arrow: on-shell scattering data,
     operator bootstrap/crossing, finite-volume Gaudin-normalized matrix
     elements, and the final analytic reconstruction of distributions.
-16. Separates finite-volume calculability from the open construction theorem
+17. Separates finite-volume calculability from the open construction theorem
     for local QFT from form-factor data, with the free Majorana chain
     identified as theorem-level only because the local free field is already
     constructed.
-17. Adds a separated-Euclidean reconstruction package and residual budget:
+18. Adds a separated-Euclidean reconstruction package and residual budget:
     finite-volume-to-rapidity error, particle-number tail, diagonal/contact
     extension, domain/positivity, locality, and sector-completeness residuals
     must all be controlled before a Gaudin-normalized finite-volume approximant
@@ -73,8 +77,9 @@ normalization and convergence obligations explicit.
   two-particle Gaudin determinant, Gaudin-density cancellation in the
   sum-integral limit, connected diagonal subset expansion through three
   particles, subset counting, the free-Majorana Bessel prefactor, and the
-  finite reconstruction residual budget with a deliberately nonzero analytic
-  and operator-level defect.
+  free-Majorana separated-window rapidity-tail prefactor and primitive, and
+  the finite reconstruction residual budget with a deliberately nonzero
+  analytic and operator-level defect.
 
 ## Figure Ledger
 
@@ -101,3 +106,7 @@ decomposition of diagonal disconnected contractions.
   arithmetic verifying that exact Gaudin bookkeeping does not remove
   finite-volume, tail, diagonal/contact, domain, locality, or completeness
   residuals.
+- 2026-06-04 issue #728 local-observable pass: upgraded the free-Majorana
+  energy-density example from a Bessel reduction to a separated-window
+  approximation with an explicit rapidity-tail bound, while keeping the
+  theorem-level claim tied to the already constructed free local field.

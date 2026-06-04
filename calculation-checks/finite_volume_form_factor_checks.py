@@ -8,11 +8,41 @@ The checks cover algebraic identities used in the finite-volume chapter:
   and the state-counting measure;
 * subset expansion for diagonal finite-volume matrix elements;
 * free-Majorana two-particle energy-density Bessel reduction prefactor;
+* free-Majorana rapidity-cut tail bookkeeping on a separated Euclidean
+  distance window;
 * finite reconstruction residual budget separating finite-volume, tail,
   diagonal/contact, domain, locality, and completeness errors.
 
 The script checks finite algebra and normalization bookkeeping; it does not
 attempt to prove analytic convergence of a form-factor expansion.
+
+Evidence contract.
+Target claims: the finite-volume form-factor normalization and reconstruction
+bookkeeping claims in Volume VI Chapter 11, including the two-particle Gaudin
+determinant, Gaudin-density cancellation in the sum-integral limit, connected
+diagonal subset combinatorics, the free-Majorana energy-density Bessel
+prefactor, the separated-window rapidity-cut tail bound for that local
+observable, and the residual ledger separating finite-volume, tail,
+diagonal/contact, domain, locality, and completeness errors.
+Independent construction: the checks recompute the Jacobian determinant,
+state-counting cancellations, subset sums, Bessel prefactors, elementary
+rapidity-tail constants, tail primitive, and residual decompositions directly
+from finite formulas rather than importing chapter display strings.
+Imported assumptions: the tests use diagonal Bethe-Yang quantization, finite
+nonzero Gaudin densities, regular connected diagonal finite parts, the
+free-Majorana energy operator's two-particle form-factor support after the
+local free field has already been constructed, and the elementary separated
+Bessel majorant stated in the chapter.
+Negative controls: wrong Gaudin determinants, missed density cancellations,
+wrong subset counts, omitted identical-particle factors, overstrong rapidity
+decay from using the wrong cosh lower bound, confusing the free energy
+operator's zero particle-number tail with the nonzero rapidity-cut tail, and
+accidentally vanishing reconstruction residuals are rejected.
+Scope boundary: a pass checks finite algebra, normalization, and explicit
+tail-bookkeeping coordinates for the displayed finite-volume/form-factor
+claims; it does not prove general form-factor convergence, construct local
+operators from arbitrary factorizing S-matrices, establish Osterwalder-Schrader
+positivity, prove locality, or prove scattering-state completeness.
 """
 
 from __future__ import annotations
@@ -22,7 +52,7 @@ from check_utils import assert_leq as _assert_leq
 
 from fractions import Fraction
 from itertools import combinations
-from math import cosh, pi
+from math import cosh, exp, pi
 
 
 def assert_close(name: str, got: float, expected: float, tol: float = 1.0e-11) -> None:
@@ -140,6 +170,62 @@ def check_bessel_prefactor_reduction() -> None:
     assert_close("free-Majorana two-particle Bessel prefactor", prefactor, 1.0 / (2.0 * pi**2))
 
 
+def check_majorana_energy_rapidity_tail_bound() -> None:
+    bessel_prefactor_without_pi_squared = Fraction(1, 2)
+    sinh_upper_bound_factor = Fraction(1, 4)
+    substitution_factor = Fraction(2, 1)
+    final_tail_prefactor_without_pi_squared = (
+        bessel_prefactor_without_pi_squared
+        * sinh_upper_bound_factor
+        * substitution_factor
+    )
+    assert_equal(
+        "free-Majorana separated-window rapidity-tail prefactor",
+        final_tail_prefactor_without_pi_squared,
+        Fraction(1, 4),
+    )
+
+    missing_identical_particle_factor = Fraction(1, 1)
+    wrong_tail_prefactor = (
+        missing_identical_particle_factor
+        * sinh_upper_bound_factor
+        * substitution_factor
+    )
+    if wrong_tail_prefactor == final_tail_prefactor_without_pi_squared:
+        raise AssertionError("omitted identical-particle factor did not change tail prefactor")
+    _assert_leq(
+        "correct rapidity-tail prefactor below omitted-identical-particle prefactor",
+        final_tail_prefactor_without_pi_squared,
+        wrong_tail_prefactor,
+        tol=Fraction(0),
+    )
+
+    a = Fraction(3, 5)
+    lower_cutoff = Fraction(7, 3)
+    tail_factor = lower_cutoff / a + Fraction(1, 1) / (a * a)
+    derivative_coefficient = Fraction(1, 1) / a - a * tail_factor
+    assert_equal(
+        "rapidity-tail primitive differentiates to lower-limit integrand",
+        derivative_coefficient,
+        -lower_cutoff,
+    )
+
+    correct_tail = exp(-float(a * lower_cutoff)) * float(tail_factor)
+    stronger_decay = 2 * a
+    overstrong_tail_factor = lower_cutoff / stronger_decay + Fraction(1, 1) / (
+        stronger_decay * stronger_decay
+    )
+    overstrong_tail = exp(-float(stronger_decay * lower_cutoff)) * float(overstrong_tail_factor)
+    if not overstrong_tail < correct_tail:
+        raise AssertionError("wrong stronger rapidity decay was not detected as a smaller bound")
+
+    particle_number_tail = Fraction(0)
+    if not final_tail_prefactor_without_pi_squared > particle_number_tail:
+        raise AssertionError(
+            "free energy operator's particle-number tail was confused with rapidity-cut tail"
+        )
+
+
 def check_subset_count() -> None:
     for n in range(0, 8):
         count = sum(1 for r in range(n + 1) for _ in combinations(range(n), r))
@@ -190,6 +276,7 @@ def main() -> None:
     check_sum_integral_cancellation()
     check_diagonal_subset_expansion()
     check_bessel_prefactor_reduction()
+    check_majorana_energy_rapidity_tail_bound()
     check_subset_count()
     check_reconstruction_residual_budget()
     print("All finite-volume form-factor checks passed.")
