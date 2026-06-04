@@ -20,7 +20,7 @@ Euclidean rapidity majorants.
 Negative controls: wrong energy-density exchange/cyclicity signs, reversed
 Cauchy orientation, missed identical-particle factors, wrong Bessel
 prefactors, an illicit higher-particle tail for a quadratic Wick operator,
-and a bootstrap-only local-field reconstruction certificate with missing
+and a bootstrap-only local-field reconstruction overclaim with missing
 domain/locality/positivity/completeness inputs are rejected, as are the
 wrong spin-field monodromy and residue signs.
 Scope boundary: a pass checks finite algebra, normalization, and the
@@ -173,7 +173,7 @@ def check_energy_two_particle_reconstruction() -> None:
     )
 
 
-def check_majorana_energy_local_reconstruction_certificate() -> None:
+def check_majorana_energy_local_reconstruction_status() -> None:
     # A normal-ordered quadratic Majorana Wick polynomial has only a
     # two-creation component in the vacuum-to-particle channel.
     wick_degree = 2
@@ -361,7 +361,7 @@ def main() -> None:
     check_energy_density_form_factor()
     check_kinematic_cauchy_kernel_orientation()
     check_energy_two_particle_reconstruction()
-    check_majorana_energy_local_reconstruction_certificate()
+    check_majorana_energy_local_reconstruction_status()
     check_sigma_exchange_and_cyclicity()
     check_spin_even_semilocal_family()
     check_sigma_kinematic_residue()

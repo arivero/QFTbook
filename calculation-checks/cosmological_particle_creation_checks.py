@@ -184,7 +184,7 @@ def check_out_region_produced_stress_tensor() -> None:
     )
 
 
-def check_produced_stress_continuity_certificate() -> None:
+def check_produced_stress_continuity_check() -> None:
     # In physical Robertson-Walker time,
     # rho=a^(-d) sum Omega n and
     # P=a^(-d) sum k^2 n/((d-1) Omega) obey
@@ -273,7 +273,7 @@ def main() -> None:
     check_adiabatic_riccati_power_law()
     check_detector_positive_type_finite_model()
     check_out_region_produced_stress_tensor()
-    check_produced_stress_continuity_certificate()
+    check_produced_stress_continuity_check()
     print("Cosmological particle-creation convention checks passed.")
 
 

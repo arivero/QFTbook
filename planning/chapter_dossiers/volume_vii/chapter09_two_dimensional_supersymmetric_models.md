@@ -70,7 +70,7 @@ and
 - `C_{Lambda,1}`, `R_line`, `epsilon_{off,a}`: finite-regulator degree-one
   three-point coefficient for the `P^{N-1}` quantum product, the line-count
   compactification/orientation residual, and off-pairing bounds needed before
-  the product relation is a certified A-twisted observable.
+  the product relation is a controlled A-twisted observable.
 - `overline M_{0,3}(P^{N-1},d)`, `ev_j`, `I_d`: compactified genus-zero
   stable-map moduli space, evaluation maps, and A-model three-point invariant
   used in the direct `P^{N-1}` quantum-product gate.
@@ -82,7 +82,7 @@ and
   `epsilon_zm`, `epsilon_cpt`, `epsilon_cont`: retained compact vortex
   window, its signed one-vortex coefficient, its absolute one-vortex mass,
   the noncancellation margin, and the tail/determinant/zero-mode,
-  compactification-boundary, and continuum residual bounds used to certify
+  compactification-boundary, and continuum residual bounds used to control
   that the regulated single-vortex coefficient is genuinely nonzero.
 - `D_{F,i,Lambda}`, `Pi_univ`, `K^{res}_{i,Lambda}`,
   `nu^{res}_{i,Lambda}`: vortex-sector fermion Hessian, universal
@@ -167,7 +167,7 @@ and
   the twisted `F`-term measure, possible extra zero-mode saturation, and
   collective-coordinate integration.  This makes the Hori--Vafa exponential
   term a rechecked amplitude datum in the chapter's conventions.
-- Adds the single-vortex coefficient noncancellation certificate: after
+- Adds the single-vortex coefficient noncancellation bound: after
   choosing a retained compact vortex window, the signed coefficient `C_R`
   must dominate the absolute one-vortex mass by a margin `kappa_R` and must
   exceed the tail, determinant, zero-mode/orientation, compactification, and
@@ -193,7 +193,7 @@ and
   constants into `t_a^phys=t_a+sum_i Q_i^a log c_i`, and the same shift is
   checked against the Coulomb affine term, with logarithm-branch changes
   identified as integral theta-period shifts.
-- Adds the rank-one vortex-fugacity transmutation certificate: the protected
+- Adds the rank-one vortex-fugacity transmutation check: the protected
   Coulomb roots depend on
   `mu^{sum_i Q_i} exp(t+sum_i Q_i log c_i)/prod_i Q_i^{Q_i}`, so `mu` is
   fake only after FI running and finite vortex determinant normalization are
@@ -319,7 +319,7 @@ and
     formation, determinant-power bookkeeping, survival of the saturated
     twisted `F`-term zero-mode coefficient, vanishing with extra unsaturated
     zero modes, and the finite FI shift induced by the vortex coefficient;
-  - the single-vortex coefficient noncancellation certificate: exact
+  - the single-vortex coefficient noncancellation bound: exact
     retained-window signed value, retained absolute mass, residual telescope,
     signed-window domination over determinant/zero-mode/boundary/continuum
     errors, relative-error budget, and negative controls rejecting both
@@ -421,7 +421,7 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   shortcuts before a Coulomb root or mirror coordinate is treated as physical.
 - The 2026-06-04 single-vortex noncancellation pass answers the instanton
   depth concern directly inside the two-dimensional GLSM lane: it upgrades
-  the coefficient integral into a retained-window amplitude certificate,
+  the coefficient integral into a retained-window amplitude bound,
   requiring determinant-line orientation, zero-mode saturation, boundary
   control, and continuum comparison errors to be smaller than the signed
   one-vortex coefficient before the Hori--Vafa primitive term is used as a

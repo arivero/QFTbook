@@ -3,7 +3,7 @@
 
 Evidence contract.
 Target claims: the Volume VI GHD dressing/current identity, hard-rod
-effective-velocity calibration, and the observable-level residual certificate
+effective-velocity calibration, and the observable-level residual bound
 separating Euler root-density closure from microscopic density/current
 reconstruction.
 Independent construction: exact finite-grid linear solves, hard-rod collision
@@ -106,9 +106,9 @@ def check_hard_rod_effective_velocity_solution() -> None:
         assert_close(f"hard-rod effective velocity equation {i}", effective[i], rhs)
 
 
-def check_ghd_observable_residual_certificate() -> None:
-    # Finite analogue of the observable certificate in
-    # ca:ghd-observable-reconstruction-certificate.  The Euler-cell density and
+def check_ghd_observable_residual_bound() -> None:
+    # Finite analogue of the observable residual bound in
+    # ca:ghd-observable-reconstruction-residual-bound.  The Euler-cell density and
     # current are not microscopic observables until local-cell replacement,
     # Bethe-Yang counting, dressing stability, gradients, operator projection,
     # diffusion, and integrability-breaking residuals are controlled.
@@ -137,12 +137,12 @@ def check_ghd_observable_residual_certificate() -> None:
     microscopic_density = ghd_density + sum(density_residuals.values(), Fraction(0))
     microscopic_current = ghd_current + sum(current_residuals.values(), Fraction(0))
     actual_error = abs(microscopic_density - ghd_density) + abs(microscopic_current - ghd_current)
-    certificate = sum(
+    residual_bound = sum(
         abs(value)
         for value in list(density_residuals.values()) + list(current_residuals.values())
     )
-    if not actual_error <= certificate:
-        raise AssertionError("GHD observable residual certificate failed")
+    if not actual_error <= residual_bound:
+        raise AssertionError("GHD observable residual bound failed")
 
     # Exact root-density continuity only removes the Euler closure residual.  It
     # does not remove the operator/current projection residual.
@@ -151,7 +151,7 @@ def check_ghd_observable_residual_certificate() -> None:
     if exact_root_continuity_residual + operator_current_residual == 0:
         raise AssertionError("operator-current residual accidentally vanished")
 
-    omitted_operator_budget = certificate - abs(operator_current_residual)
+    omitted_operator_budget = residual_bound - abs(operator_current_residual)
     all_positive_current_residuals = {
         "cell": Fraction(1, 24),
         "Bethe-Yang": Fraction(1, 36),
@@ -168,13 +168,13 @@ def check_ghd_observable_residual_certificate() -> None:
     if positive_current_error <= positive_current_budget_without_operator:
         raise AssertionError("omitting operator-current residual should underbudget the current error")
     if actual_error <= omitted_operator_budget:
-        raise AssertionError("omitting operator-current residual should underbudget the observable certificate")
+        raise AssertionError("omitting operator-current residual should underbudget the observable bound")
 
 
 def main() -> None:
     check_two_species_dressing_current_identity()
     check_hard_rod_effective_velocity_solution()
-    check_ghd_observable_residual_certificate()
+    check_ghd_observable_residual_bound()
     print("All generalized-hydrodynamics finite algebra checks passed.")
 
 

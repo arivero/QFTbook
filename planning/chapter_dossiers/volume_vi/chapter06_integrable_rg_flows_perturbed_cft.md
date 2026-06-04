@@ -43,7 +43,7 @@ chapters on sine-Gordon, affine Toda, sigma models, and bridges to CFT.
 - Derives the form-factor trace-sum-rule coefficient \(9/E^4\) under
   absolute spectral convergence, making trace normalization a local check of
   proposed integrable flows.
-- Adds a retained trace form-factor \(c\)-sum certificate that separates the
+- Adds a retained trace form-factor \(c\)-sum residual bound that separates the
   positive local-observable coordinate from particle/rapidity tails,
   contact/source extensions, Fubini domination, local operator reconstruction,
   trace normalization, and TBA endpoint identification.
@@ -62,7 +62,7 @@ chapters on sine-Gordon, affine Toda, sigma models, and bridges to CFT.
   trace-sum-rule coefficient, and the
   central-charge targets for the \(\mathcal M(m,m+1)\to\mathcal M(m-1,m)\)
   flow family.  It also checks the retained trace form-factor \(c\)-sum
-  certificate with monotone positive approximants, observable and
+  residual bound with monotone positive approximants, observable and
   TBA-comparison residual telescopes, and negative controls against exact
   endpoint overread, omitted trace/local reconstruction residuals, and signed
   residual cancellation.

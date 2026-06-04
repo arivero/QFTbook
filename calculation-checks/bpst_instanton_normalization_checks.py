@@ -46,9 +46,9 @@ relations
     the proper-time fluctuation determinant combines with either an independent
     bilinear source determinant or a differentiated linear Grassmann source
     coefficient to give the finite four-fermion instanton amplitude
-    a proper-time determinant residual certificate gives an absolute logarithmic
+    a proper-time determinant residual bound gives an absolute logarithmic
     bound and a multiplicative amplitude error bound; signed cancellations of
-    ghost, boson, and fermion trace remainders are rejected as certificates
+    ghost, boson, and fermion trace remainders are rejected as valid bounds
     the heat-kernel logarithm in the nonzero-mode determinant carries the
     vector-plus-ghost 11 C_A/3 coefficient, the Dirac matter subtraction, and
     cancels the cutoff-scale dependence of the bare instanton exponential
@@ -86,7 +86,7 @@ relations
     leading only after a selection rule or projection removes lower-action
     interference
     a selected one-instanton amplitude requires a separate sector-isolation
-    certificate: the retained Q=1 coefficient, same-sector residual,
+    bound: the retained Q=1 coefficient, same-sector residual,
     perturbative leakage, anti-instanton leakage, two-instanton leakage,
     IbarI amplitude-sector leakage, and higher-sector remainder enter an
     absolute majorant before a relative one-instanton claim is valid
@@ -102,7 +102,7 @@ relations
     source-dependent fluctuation cumulants around the instanton saddle refine
     the determinant residual in a selected amplitude; vacuum determinant
     calibration and signed cumulant cancellation are rejected as
-    source-amplitude certificates
+    source-amplitude bounds
     hard external momenta convert the Nf=2 four-fermion size integral into a
     Q^(-2) coefficient; fused bilinear density sources exponentially suppress
     the large-rho endpoint, while individual fermion slots obey the power test
@@ -124,7 +124,7 @@ relations
     signed integral J_R, absolute mass M_R, tail T_R, and noncancellation
     margin kappa_R=|J_R|/M_R; cancellation can defeat relative control even
     when the absolute tail budget is small
-    a four-source instanton amplitude certificate requires nondegenerate
+    a four-source instanton amplitude bound requires nondegenerate
     right/left zero-mode overlap determinants; entrywise overlap errors give
     an explicit 2x2 determinant-stability bound and rank-margin residual
     a Wilsonian split of the instanton size integral has exact cancellation
@@ -206,7 +206,7 @@ coefficient bookkeeping, and related Chapter 20 instanton labels.
 Independent construction: direct radial integrals, finite determinant and
 Schur-complement algebra, source differentiation, inverse-Gram construction of
 the shared SU(2) four-fundamental Haar projector, absolute logarithmic
-determinant-residual certificates, finite reference-amplitude calibration
+determinant-residual bounds, finite reference-amplitude calibration
 ratios, finite-scheme transport ratios, zero-mode overlap determinant-stability
 bounds, finite cumulant telescopes, coefficient/operator transport matrices,
 exact retained size-shell stationarity equations, and finite amplitude-sector
@@ -216,7 +216,7 @@ determinant coefficients, the trace-delta convention, and finite regulator
 truncations stated in the chapter.
 Negative controls: the shared-Haar 1/3 versus factorized 1/4 counterexample,
 rank-one and color-symmetric source-pair rejections, signed determinant-trace
-cancellations rejected as fluctuation-error certificates, negative/complex
+cancellations rejected as fluctuation-error bounds, negative/complex
 thermal amplitude kernels rejected from signed activity bounds, finite-frame
 inverse checks, canceled reference-amplitude normalization, stale determinant
 constants under finite scheme changes, rank-one four-source zero-mode collapse,
@@ -224,7 +224,7 @@ same Euclidean topological susceptibility paired with different Kubo slopes,
 nonzero Euclidean instanton susceptibility paired with zero real-time
 diffusion,
 vacuum determinant calibration substituted for a source-dependent fluctuation
-certificate, signed fluctuation-cumulant cancellations,
+bound, signed fluctuation-cumulant cancellations,
 hard-only and screening-only shell substitutions in the mixed size-majorant
 problem, and separation of operator RG flow from the Wilsonian size-boundary
 flux, perturbative sector leakage mistaken for an exact selection rule,
@@ -1658,7 +1658,7 @@ def check_light_fermion_reference_amplitude_calibration() -> None:
     )
 
 
-def check_instanton_finite_scheme_transport_certificate() -> None:
+def check_instanton_finite_scheme_transport_bound() -> None:
     # Work with the exponential of the finite coupling-coordinate shift,
     # exp(delta_X), as an exact rational fixture.  The common exp(-X_S) factor
     # is omitted; exp(-X_S') contributes the inverse shift.
@@ -1715,7 +1715,7 @@ def check_instanton_finite_scheme_transport_certificate() -> None:
         False,
     )
 
-    # Multiplicative residuals are written as exp(r_i).  The log-certificate
+    # Multiplicative residuals are written as exp(r_i).  The logarithmic bound
     # bound exp(sum |r_i|)-1 is checked exactly as prod max(q_i, q_i^(-1))-1.
     residual_factors = [
         Fraction(101, 100),  # determinant constant residual
@@ -1724,25 +1724,25 @@ def check_instanton_finite_scheme_transport_certificate() -> None:
         Fraction(98, 100),  # operator/projection residual
     ]
     residual_amplitude_ratio = product_fraction(residual_factors)
-    log_certificate_multiplier = product_fraction(
+    log_bound_multiplier = product_fraction(
         factor if factor >= 1 else Fraction(1, 1) / factor for factor in residual_factors
     )
     assert_equal(
         "finite scheme residual amplitude bound",
-        abs(residual_amplitude_ratio - 1) <= log_certificate_multiplier - 1,
+        abs(residual_amplitude_ratio - 1) <= log_bound_multiplier - 1,
         True,
     )
 
     canceling_residual_factors = [Fraction(3, 2), Fraction(2, 3)]
     canceling_ratio = product_fraction(canceling_residual_factors)
-    canceling_certificate = product_fraction(
+    canceling_bound = product_fraction(
         factor if factor >= 1 else Fraction(1, 1) / factor
         for factor in canceling_residual_factors
     )
     assert_equal("canceling finite-scheme residuals can hide in the ratio", canceling_ratio, Fraction(1))
     assert_equal(
-        "finite scheme certificate does not vanish by residual cancellation",
-        canceling_certificate == Fraction(1),
+        "finite scheme bound does not vanish by residual cancellation",
+        canceling_bound == Fraction(1),
         False,
     )
 
@@ -1926,7 +1926,7 @@ def check_proper_time_fluctuation_four_fermion_amplitude() -> None:
 
 def check_proper_time_determinant_residual_window() -> None:
     # The log determinant is a weighted sum of block trace remainders.  A
-    # certificate for a physical amplitude needs the absolute weighted sum,
+    # bound for a physical amplitude needs the absolute weighted sum,
     # because exp(delta_log) multiplies the zero-mode/source kernel pointwise.
     weights = {
         "ghost": Fraction(1),
@@ -1952,7 +1952,7 @@ def check_proper_time_determinant_residual_window() -> None:
         for name in weights
     )
     assert_equal(
-        "proper-time determinant log residual certificate",
+        "proper-time determinant log residual bound",
         abs(log_residual) <= epsilon_det,
         True,
     )
@@ -1977,23 +1977,23 @@ def check_proper_time_determinant_residual_window() -> None:
     if not abs(exact_amplitude - lead_amplitude) <= amplitude_bound:
         raise AssertionError("proper-time determinant amplitude-window bound failed")
 
-    signed_fake_certificate = (
+    signed_fake_bound = (
         weights["ghost"] * Fraction(1, 12)
         + weights["boson"] * Fraction(1, 3)
         + weights["fermion"] * Fraction(1, 12)
     )
-    absolute_certificate = (
+    absolute_bound = (
         abs(weights["ghost"]) * Fraction(1, 12)
         + abs(weights["boson"]) * Fraction(1, 3)
         + abs(weights["fermion"]) * Fraction(1, 12)
     )
     assert_equal(
         "signed determinant residuals can cancel spuriously",
-        signed_fake_certificate,
+        signed_fake_bound,
         Fraction(0),
     )
-    if not absolute_certificate > 0:
-        raise AssertionError("absolute determinant certificate vanished")
+    if not absolute_bound > 0:
+        raise AssertionError("absolute determinant bound vanished")
 
 
 def check_instanton_source_typing_and_differentiation() -> None:
@@ -3017,7 +3017,7 @@ def check_instanton_unitarity_cut_pairing() -> None:
     )
 
 
-def check_one_instanton_sector_isolation_certificate() -> None:
+def check_one_instanton_sector_isolation_bound() -> None:
     # A selected one-instanton coefficient is not isolated merely because a
     # BPST saddle exists.  Adjacent amplitude sectors must either be killed by
     # an exact source/charge projection or bounded in the same normalization.
@@ -3078,7 +3078,7 @@ def check_one_instanton_sector_isolation_certificate() -> None:
     )
     relative_isolation_bound = isolation_majorant / abs(retained_one_instanton)
     assert_equal(
-        "one-instanton relative isolation certificate",
+        "one-instanton relative isolation bound",
         abs(isolation_error) / abs(retained_one_instanton)
         <= relative_isolation_bound,
         True,
@@ -3086,7 +3086,7 @@ def check_one_instanton_sector_isolation_certificate() -> None:
 
     # Negative controls: a generic source with perturbative leakage is not a
     # one-instanton observable, omitting a neighboring sector underbudgets the
-    # error, and signed cancellations between adjacent sectors do not certify
+    # error, and signed cancellations between adjacent sectors do not establish
     # isolation.
     unprojected_perturbative_leakage = Fraction(3)
     assert_equal(
@@ -3236,7 +3236,7 @@ def check_instanton_amplitude_error_budget() -> None:
     )
 
 
-def check_source_dependent_fluctuation_cumulant_certificate() -> None:
+def check_source_dependent_fluctuation_cumulant_bound() -> None:
     # A vacuum/spectral determinant normalization is not enough for an
     # instanton amplitude with source insertions.  The selected source must also
     # be stable under the same nonzero-mode fluctuation measure.
@@ -3268,14 +3268,14 @@ def check_source_dependent_fluctuation_cumulant_certificate() -> None:
         1 + first_mean + second_mean + tail_mean,
     )
 
-    fluctuation_certificate = sum(
+    fluctuation_bound = sum(
         weight * (abs(first) + abs(second) + abs(tail))
         for weight, first, second, tail in zip(
             weights, first_cumulants, second_cumulants, tail_remainders
         )
     )
-    if not abs(exact_source_ratio - 1) <= fluctuation_certificate:
-        raise AssertionError("source-dependent fluctuation certificate failed")
+    if not abs(exact_source_ratio - 1) <= fluctuation_bound:
+        raise AssertionError("source-dependent fluctuation bound failed")
 
     # Propagate the same source-dependent correction through a finite signed
     # hard window.  The absolute mass, not the signed coefficient alone, controls
@@ -3300,7 +3300,7 @@ def check_source_dependent_fluctuation_cumulant_certificate() -> None:
             "vacuum determinant calibration was mistaken for source fluctuation control"
         )
 
-    # Signed fluctuation cumulants can cancel.  The certificate must use absolute
+    # Signed fluctuation cumulants can cancel.  The bound must use absolute
     # cumulant control, not the signed sum.
     canceling_cumulants = [Fraction(1, 8), -Fraction(1, 8)]
     signed_cumulant_sum = sum(canceling_cumulants, Fraction(0))
@@ -3385,7 +3385,7 @@ def check_instanton_observable_assembly_ladder() -> None:
     )
     relative_bound = majorant / abs(leading_physical_coordinate)
     assert_equal(
-        "instanton observable assembly relative certificate",
+        "instanton observable assembly relative bound",
         abs(exact_physical_observable - leading_physical_coordinate)
         / abs(leading_physical_coordinate)
         <= relative_bound,
@@ -3396,7 +3396,7 @@ def check_instanton_observable_assembly_ladder() -> None:
         majorant - abs(residuals["endpoint"]) - abs(residuals["sector"])
     )
     assert_equal(
-        "omitting endpoint and sector budgets undercertifies observable",
+        "omitting endpoint and sector budgets underbounds observable",
         abs(exact_physical_observable - leading_physical_coordinate)
         <= omitted_endpoint_sector_bound,
         False,
@@ -3730,7 +3730,7 @@ def check_su3_two_flavor_hard_instanton_coefficient() -> None:
     assert_equal("SU3 Nf2 hard tail next exponent", next_tail_power, Fraction(-7, 3))
 
 
-def check_hard_instanton_finite_window_certificate() -> None:
+def check_hard_instanton_finite_window_bound() -> None:
     # A finite hard coefficient needs an absolute error budget and a
     # noncancellation margin |J_R| >= kappa_R M_R.  Otherwise a small absolute
     # tail can be a large relative error in the signed/source-projected
@@ -3759,14 +3759,14 @@ def check_hard_instanton_finite_window_certificate() -> None:
     )
     actual_tail = Fraction(1, 40) * m_r
     exact_coefficient = j_r + actual_residual + actual_tail
-    absolute_certificate = m_r * (eps_total + tau_r)
-    if not abs(exact_coefficient - j_r) <= absolute_certificate:
-        raise AssertionError("hard instanton finite-window absolute certificate failed")
+    absolute_bound = m_r * (eps_total + tau_r)
+    if not abs(exact_coefficient - j_r) <= absolute_bound:
+        raise AssertionError("hard instanton finite-window absolute bound failed")
 
-    relative_certificate = (eps_total + tau_r) / kappa_r
+    relative_bound = (eps_total + tau_r) / kappa_r
     actual_relative_error = abs(exact_coefficient - j_r) / abs(j_r)
-    if not actual_relative_error <= relative_certificate:
-        raise AssertionError("hard instanton finite-window relative certificate failed")
+    if not actual_relative_error <= relative_bound:
+        raise AssertionError("hard instanton finite-window relative bound failed")
 
     # The SU(3), Nf=2 differentiated four-slot power tail is
     # s^(32/3) s^(-12)=s^(-4/3), hence the retained tail bound
@@ -3799,7 +3799,7 @@ def check_hard_instanton_finite_window_certificate() -> None:
     )
 
 
-def check_four_source_instanton_amplitude_certificate() -> None:
+def check_four_source_instanton_amplitude_rank_bound() -> None:
     def max_abs_entry(matrix: list[list[Fraction]]) -> Fraction:
         return max(abs(entry) for row in matrix for entry in row)
 
@@ -3864,7 +3864,7 @@ def check_four_source_instanton_amplitude_certificate() -> None:
     )
     exact_euclidean_coefficient = j_r + actual_euclidean_residual
     if not abs(exact_euclidean_coefficient - j_r) <= euclidean_error_bound:
-        raise AssertionError("four-source instanton Euclidean amplitude certificate failed")
+        raise AssertionError("four-source instanton Euclidean amplitude bound failed")
 
     physical_projection_residual = Fraction(1, 70)
     physical_amplitude = exact_euclidean_coefficient + physical_projection_residual
@@ -5030,7 +5030,7 @@ def main() -> None:
     check_fermion_determinant_zero_mode_nonzero_mode_factorization()
     check_light_fermion_determinant_source_frame_covariance()
     check_light_fermion_reference_amplitude_calibration()
-    check_instanton_finite_scheme_transport_certificate()
+    check_instanton_finite_scheme_transport_bound()
     check_instanton_mass_source_rg_transport()
     check_proper_time_fluctuation_four_fermion_amplitude()
     check_proper_time_determinant_residual_window()
@@ -5044,16 +5044,16 @@ def main() -> None:
     check_color_singlet_instanton_source_projection()
     check_instanton_euclidean_to_physical_residual_budget()
     check_instanton_unitarity_cut_pairing()
-    check_one_instanton_sector_isolation_certificate()
+    check_one_instanton_sector_isolation_bound()
     check_instanton_amplitude_error_budget()
-    check_source_dependent_fluctuation_cumulant_certificate()
+    check_source_dependent_fluctuation_cumulant_bound()
     check_instanton_observable_assembly_ladder()
     check_hard_momentum_instanton_size_window()
     check_hard_size_tail_dominance_criterion()
     check_hard_screened_instanton_size_shell()
     check_su3_two_flavor_hard_instanton_coefficient()
-    check_hard_instanton_finite_window_certificate()
-    check_four_source_instanton_amplitude_certificate()
+    check_hard_instanton_finite_window_bound()
+    check_four_source_instanton_amplitude_rank_bound()
     check_wilsonian_instanton_size_factorization()
     check_short_instanton_ope_coefficient_transport()
     check_dilute_instanton_gas_theta_cumulants()

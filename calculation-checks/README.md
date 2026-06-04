@@ -500,7 +500,7 @@ Current checks:
   \(1.51\times10^{-3}\), the
   proper-time nonzero-mode determinant assembly for bilinear-source and
   source-differentiated four-fermion instanton amplitudes, the
-  proper-time determinant residual-window certificate that propagates
+  proper-time determinant residual-window bound that propagates
   absolute logarithmic fluctuation errors to multiplicative amplitude bounds
   and rejects signed trace-cancellation shortcuts, the finite block
   determinant/Schur-complement separation of the light-fermion nonzero-mode
@@ -540,7 +540,7 @@ Current checks:
   which distinguishes the theta-charged one-instanton amplitude coordinate
   from a neutral inclusive rate kernel, verifies the order-\(e^{-S_I}\)
   interference negative control before a selection rule is imposed, and bounds
-  the relative cut residual, the one-instanton sector-isolation certificate
+  the relative cut residual, the one-instanton sector-isolation bound
   separating the retained \(Q=1\) coefficient from same-sector residuals,
   perturbative leakage, anti-instanton leakage, two-instanton leakage,
   \(I\bar I\) amplitude-sector leakage, and higher-sector remainders, with
@@ -549,11 +549,11 @@ Current checks:
   the finite one-instanton amplitude
   error budget separating determinant, zero-mode/source, matching, Schur, and
   endpoint residuals from the leading density, the source-dependent
-  fluctuation-cumulant certificate which refines the determinant residual and
+  fluctuation-cumulant bound which refines the determinant residual and
   rejects vacuum-determinant and signed-cancellation shortcuts, the
   observable-assembly ladder which keeps Euclidean source-integral residuals,
   sector leakage, and physical continuation/projection/IR/cut/scheme residuals
-  in one ordered certificate before a scattering, OPE, susceptibility, or rate
+  in one ordered residual ledger before a scattering, OPE, susceptibility, or rate
   contribution is quoted, with negative controls against moduli-only,
   Euclidean-equals-physical, omitted endpoint/sector, and signed-cancellation
   shortcuts, the hard-momentum
@@ -563,13 +563,13 @@ Current checks:
   fused-density suppression and the individual-slot power test
   \(b_0+1-3m<-1\), the stronger hard-size dominance criterion showing the
   \(SU(3)\), \(N_f=2\) differentiated-source tail beyond \(\rho=R/Q\) falls
-  only as \(R^{-1/3}\), the finite-window hard-coefficient certificate
+  only as \(R^{-1/3}\), the finite-window hard-coefficient bound
   requiring an absolute error budget, a tail majorant, and a noncancellation
   margin \(|J_R|/M_R\) before a relative instanton coefficient is quoted, the
-  finite-scheme transport certificate showing how instanton determinant
+  finite-scheme transport bound showing how instanton determinant
   constants compensate coupling-coordinate shifts and source/operator frame
   normalizations, the
-  four-source amplitude certificate requiring nondegenerate right/left
+  four-source amplitude rank-and-error bound requiring nondegenerate right/left
   zero-mode overlap determinants and propagating entrywise overlap errors
   through a rank-margin residual, the
   mixed hard-source plus physical-screening log-shell equation
@@ -859,7 +859,7 @@ Current checks:
   produced stress-tensor bridge from \(|\beta_k|^2\) to
   \(a_+^{-d}\int \Omega_k^+|\beta_k|^2\), the pressure formula, the
   massless equation of state, and the homogeneous Friedmann response
-  coefficient.  The same companion checks the finite continuity certificate
+  coefficient.  The same companion checks the finite continuity identity
   \(\dot\rho+(d-1)H(\rho+P)=a^{-d}\int\Omega_k\dot n_k\), with negative
   controls against wrong pressure normalization, wrong scale-factor power, and
   treating ongoing production as a conserved fluid.
@@ -1579,7 +1579,7 @@ Current checks:
   cyclicity, the Cauchy-kernel orientation behind the kinematic-pole residue
   sign, the two-particle invariant-mass identity, the energy-density spectral
   threshold factor, the Euclidean Bessel-kernel prefactor, the finite
-  Wick-degree support certificate for the local Majorana energy density, the
+  Wick-degree support status check for the local Majorana energy density, the
   negative control against a bootstrap-only reconstruction overclaim, the even
   spin-field semi-local cyclicity phase, the crossed \(\coth\) matrix
   element, the mixed bra/ket product formula, the semi-local kinematic-pole
@@ -1724,7 +1724,7 @@ Current checks:
   large-\(N\) section, including the \(SU(N)\) completeness relation in the
   monograph trace normalization, the planar-versus-one-handle theta-graph
   \(N^{-2}\) suppression, the half-trace coupling conversion
-  \(g_{\rm ht}^2=2g^2\), a finite genus-truncation remainder certificate and
+  \(g_{\rm ht}^2=2g^2\), a finite genus-truncation remainder bound and
   order-of-limits negative control, normalized single-trace scaling, and
   fixed-\(N_f\) versus Veneziano quark-boundary counting, Eguchi--Kawai
   reduced-word center-charge selection, plus the displayed baryon Hartree
@@ -1963,7 +1963,7 @@ Current checks:
   dressing equation, the equality of \(\sum h\rho v^{\rm eff}\) with the
   dressed-energy current expression, and the exact hard-rod
   effective-velocity solution.  It also checks the observable-level residual
-  certificate separating Euler root-density closure from microscopic
+  residual bound separating Euler root-density closure from microscopic
   density/current reconstruction, with negative controls against bare
   velocities and omitted operator-current residuals.
 - `weak_breaking_collision_cell_checks.py`: finite collision-cell checks for
@@ -2004,11 +2004,11 @@ Current checks:
   right/left massless dispersion identities, plus the
   Zamolodchikov trace-sum-rule coefficient \(9/E^4\) and the
   \(\phi_{1,3}\) minimal-flow central-charge targets.  It also checks the
-  retained trace-form-factor \(c\)-sum reconstruction certificate, including
+  retained trace-form-factor \(c\)-sum reconstruction bound, including
   monotone positive approximants, observable and TBA-comparison residual
   telescopes, and negative controls against exact endpoint overread, omitted
   trace/local reconstruction residuals, and signed-cancellation
-  pseudo-certificates.
+  pseudo-bounds.
 - `mirror_tba_wrapping_checks.py`: exact algebra checks for the Volume VI
   mirror-channel finite-size chapter, including the two-winding TBA expansion
   of \(L_a=\log(1+e^{-\epsilon_a})\), the displayed vacuum-energy
@@ -2023,7 +2023,7 @@ Current checks:
   broken-charge commutator ledger, first-order form-factor mass shift,
   semi-local kinematic residue, Ising false-vacuum string tension,
   two-body phase-space Jacobian for \(1+1\)-dimensional decay widths,
-  the decay-rate reconstruction certificate separating weak-kernel,
+  the decay-rate reconstruction residual bound separating weak-kernel,
   finite-volume, Bethe--Yang normalization, form-factor-boundary,
   channel-tail, threshold-window, and higher-order residuals from the retained
   connected-form-factor width, with negative controls against finite-box
@@ -2300,7 +2300,7 @@ Current checks:
   single-vortex amplitude assembly with zero-mode removal, determinant-power
   bookkeeping, saturated twisted-\(F\)-term zero modes, unsaturated-zero-mode
   vanishing, and FI-coordinate normalization shifts, the retained-window
-  one-vortex coefficient noncancellation certificate with signed/mass
+  one-vortex coefficient noncancellation bound with signed/mass
   margin, residual telescope, relative-error bound, and negative controls for
   omitted determinant residuals and symmetry-only nonzero claims, the
   \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger and protected
@@ -2309,7 +2309,7 @@ Current checks:
   unsaturated zero modes, and underbudgeted comparison residuals, the
   degree-one \(\mathbb P^{N-1}\) stable-map dimension and line-count gate for
   the quantum-product relation \(H^N=q\), the finite degree-one vortex
-  observable assembly certificate tying the vortex-normalized fugacity to the
+  observable assembly residual ledger tying the vortex-normalized fugacity to the
   three-point product coefficient with residual, off-pairing, mirror-only,
   dimension-only, and zero-mode-gate negative controls, and the
   classical cigar quotient metric obtained by eliminating the gauge field,

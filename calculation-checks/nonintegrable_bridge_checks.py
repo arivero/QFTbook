@@ -4,7 +4,7 @@
 Evidence contract.
 Target claims: the broken-charge ledger, first-order FFPT mass shift,
 semi-local confinement diagnostic, finite-volume golden-rule/phase-space
-normalization, and decay-rate reconstruction certificate in Volume VI
+normalization, and decay-rate reconstruction residual bound in Volume VI
 Chapter 10.
 Independent construction: direct commutator eigenvalue arithmetic,
 finite-volume diagonal matrix-element normalization, Kallen/Jacobian algebra,
@@ -16,7 +16,7 @@ in the chapter.
 Negative controls: fixed finite-volume/time sums are rejected as continuum
 rates, exact form-factor data are rejected as full decay-width evidence,
 omitted threshold/channel residuals underbudget the width, and signed residual
-cancellations are rejected as certificates.
+cancellations are rejected as valid residual bounds.
 Scope boundary: these are exact finite checks of normalization and residual
 bookkeeping; they do not prove existence of the nonintegrable continuum limit,
 uniform threshold control, or convergence of all form-factor/channel tails.
@@ -132,7 +132,7 @@ def check_two_body_phase_space_jacobian() -> None:
     assert_equal("two-body Jacobian inverse", derivative_squared * reciprocal_squared, 1)
 
 
-def check_decay_rate_reconstruction_certificate() -> None:
+def check_decay_rate_reconstruction_residual_bound() -> None:
     leading_rate = Fraction(7, 10)
     residuals = {
         "weak kernel": Fraction(1, 40),
@@ -167,7 +167,7 @@ def check_decay_rate_reconstruction_certificate() -> None:
     )
     relative_bound = absolute_majorant / leading_rate
     assert_equal(
-        "nonintegrable decay-rate relative certificate",
+        "nonintegrable decay-rate relative residual bound",
         abs(physical_rate - leading_rate) / leading_rate <= relative_bound,
         True,
     )
@@ -203,7 +203,7 @@ def check_decay_rate_reconstruction_certificate() -> None:
     absolute_sum = sum(abs(value) for value in signed_canceling_residuals)
     assert_equal("signed decay residuals can cancel", signed_sum, Fraction(0))
     assert_equal(
-        "signed cancellation is not a decay-rate certificate",
+        "signed cancellation is not a decay-rate residual bound",
         absolute_sum > abs(signed_sum),
         True,
     )
@@ -216,7 +216,7 @@ def main() -> None:
     check_tcsa_coupling_and_counterterm_powers()
     check_airy_scaling_dimension()
     check_two_body_phase_space_jacobian()
-    check_decay_rate_reconstruction_certificate()
+    check_decay_rate_reconstruction_residual_bound()
     print("All nonintegrable-bridge checks passed.")
 
 

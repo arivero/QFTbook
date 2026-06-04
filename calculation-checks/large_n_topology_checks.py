@@ -6,7 +6,7 @@ relation in the monograph convention tr_fund(t^a t^b)=delta^{ab}, and the
 Euler-characteristic powers used in the planar expansion.  They do not test
 spacetime loop integrals or convergence of the perturbation series.
 The genus-truncation check below verifies only the finite arithmetic of a
-declared coefficient/remainder certificate; it also includes a toy
+declared coefficient/remainder bound; it also includes a toy
 order-of-limits negative control showing why fixed-graph topology is not a
 continuum large-N theorem.
 """
@@ -105,7 +105,7 @@ def check_theta_graph_suppression() -> None:
     assert_equal("one-handle suppression", handle_power - planar_power, -2)
 
 
-def check_genus_truncation_certificate() -> None:
+def check_genus_truncation_remainder_bound() -> None:
     # After the overall leading N-power has been factored out, a controlled
     # genus expansion through H=2 requires a residual bounded by epsilon/N^6.
     n_colors = 5
@@ -121,7 +121,7 @@ def check_genus_truncation_certificate() -> None:
 
     assert_equal("large-N genus truncation residual extraction", exact - truncated, residual)
     assert_equal(
-        "large-N genus truncation residual certificate",
+        "large-N genus truncation residual bound",
         abs(exact - truncated) <= residual_bound,
         True,
     )
@@ -284,7 +284,7 @@ def main() -> None:
         check_trace_normalization(n)
         check_su_completeness(n)
     check_theta_graph_suppression()
-    check_genus_truncation_certificate()
+    check_genus_truncation_remainder_bound()
     check_half_trace_coupling_conversion()
     check_single_trace_and_quark_boundary_scaling()
     check_eguchi_kawai_center_selection()

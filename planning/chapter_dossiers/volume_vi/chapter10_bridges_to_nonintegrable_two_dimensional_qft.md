@@ -38,7 +38,7 @@ and near two-dimensional CFT perturbations.
   finite-volume spectral sums converge to an absolutely continuous
   infinite-volume rapidity measure, avoiding the false pointwise
   \(T\to\infty\) limit at fixed \(L\).
-- Adds a decay-rate reconstruction certificate: the retained connected
+- Adds a decay-rate reconstruction residual bound: the retained connected
   form-factor width is separated from weak-kernel, finite-volume,
   Bethe--Yang normalization, form-factor-boundary, channel-tail,
   threshold/window, and higher-order/counterterm residuals before it is
@@ -59,7 +59,7 @@ and near two-dimensional CFT perturbations.
   semi-local kinematic residue, Ising false-vacuum string tension,
   two-particle \(1+1\)-dimensional phase-space Jacobian, TCSA coupling and
   counterterm powers, the finite residual telescope for the decay-rate
-  reconstruction certificate, negative controls against finite-box and exact
+  reconstruction residual bound, negative controls against finite-box and exact
   form-factor overread, omitted threshold residuals, and signed cancellations,
   and the Airy scaling of confined kink--antikink bound states.
 
@@ -80,7 +80,7 @@ deformation diagrams.
   nonintegrable-bridge calculation check explicitly in the chapter dossier.
   No new formula was changed in the manuscript.
 - 2026-06-04 issue #728 decay-rate reconstruction pass: added
-  `ca:nonintegrable-decay-rate-reconstruction-certificate`, making the
+  `ca:nonintegrable-decay-rate-reconstruction-residual-bound`, making the
   transition from integrable form-factor data to a physical nonintegrable rate
   depend on weak-kernel, finite-volume, Bethe--Yang, form-factor-boundary,
   channel-tail, threshold, and higher-order residual control.  The companion

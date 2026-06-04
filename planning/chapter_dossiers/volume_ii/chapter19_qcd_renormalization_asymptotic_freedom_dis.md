@@ -117,7 +117,7 @@ The chapter must define and derive:
   single-trace adjoint action normalization, the ribbon-graph power
   \(N_c^{V-E+F}=N_c^{2-2h-b}\), the explicit planar-versus-one-handle
   theta-graph \(N_c^{-2}\) suppression, the regulated genus-truncation
-  certificate separating formal topology from a controlled observable
+  bound separating formal topology from a controlled observable
   approximation, single-trace factorization, fixed-\(N_f\) and Veneziano
   quark-boundary counting, and the leading
   large-\(N_c\) scaling of meson, glueball, baryon, and vacuum amplitudes,
@@ -1275,11 +1275,11 @@ The chapter must define and derive:
   unchanged; the change only reduces internal-process diction in the
   reader-facing PDF section.
 - 2026-06-04 issue #630 large-\(N_c\) rigor-boundary pass: added
-  `ca:qcd-large-n-genus-truncation-certificate`, which upgrades the planar
+  `ca:qcd-large-n-genus-truncation-remainder-bound`, which upgrades the planar
   counting section from fixed-ribbon graph power counting to an operational
   criterion for a quoted large-\(N_c\) observable approximation.  The new block
   requires coefficient bounds, a genus-tail bound, and uniform regulator or
   limit-interchange control before planar dominance, volume reduction, baryon
   scaling, or QCD-string language is treated as a nonperturbative statement.
   `large_n_topology_checks.py` now verifies a finite genus-truncation
-  certificate and an order-of-limits negative control.
+  bound and an order-of-limits negative control.

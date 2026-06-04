@@ -29,7 +29,7 @@
 - Bound-state pole equations.
 - Free Majorana examples: the energy-density two-particle form factor, its
   explicit two-particle Wightman spectral density and Euclidean Bessel-kernel
-  reconstruction, the free-field reconstruction-status certificate for the
+  reconstruction, the free-field reconstruction-status result for the
   local energy-density observable, the even semi-local Ising spin-field
   family, its crossed mixed bra/ket product formula, the odd Ising
   order/twist form-factor family, and separated Euclidean convergence
@@ -136,7 +136,7 @@
   cyclicity, and kinematic-pole residue signs.  It also checks the
   two-particle invariant-mass identity, the spectral-density normalization
   after the identical-particle cancellation, the Euclidean Bessel-reduction
-  prefactor, the finite Wick-degree support certificate for the normal
+  prefactor, the finite Wick-degree support check for the normal
   ordered quadratic energy density, the negative control against reading
   bootstrap equations alone as a local-field reconstruction theorem, the even
   spin-field semi-local cyclicity phase, the crossed \(\coth\) matrix
@@ -163,7 +163,7 @@
   locality, and completeness input.
 - 2026-06-04 issue #728 end-to-end model pass: promoted the free-Majorana
   energy-density example from a two-particle spectral calculation to a
-  labeled local-observable reconstruction-status certificate, with the CAR
+  labeled local-observable reconstruction-status result, with the CAR
   free-field construction named as the source of domain, positivity, locality,
   and completeness.  The companion check now rejects both an illicit
   higher-particle tail for the quadratic Wick operator and a bootstrap-only

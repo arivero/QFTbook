@@ -28,4 +28,6 @@ if [[ "$RG_STATUS" -eq 0 ]]; then
   exit 1
 fi
 
+python3 "$ROOT/tools/audit_certificate_language.py"
+
 echo "Strict monograph text audit clean."

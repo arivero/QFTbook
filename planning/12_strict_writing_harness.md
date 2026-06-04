@@ -543,6 +543,11 @@ diagonalization, flatness condition, finite-window bound, or exact arithmetic
 check.  Terms such as "certificate pass" or "certified theorem" are forbidden
 unless the text exhibits the verifier and the proof object.  Every finite
 check must also state what continuum or QFT theorem it does not prove.
+The blocking reader-facing gate is
+`tools/audit_certificate_language.py`, which is also called by
+`tools/audit_monograph_text.sh`; any genuine future proof-object usage must
+declare the verifier explicitly and carry a nearby `proof-object-ok:` source
+comment explaining the exception.
 
 High-density clusters of these terms should be treated as an audit finding
 even when every individual occurrence is locally defensible.  When

@@ -4,7 +4,7 @@ Evidence contract.
 Target claims: the finite LG/GLSM charge ledgers, abelian duality
 normalizations, charged-chiral mirror elimination, vortex-zero-mode filter,
 vortex-to-FI-coordinate normalization, single-vortex coefficient
-noncancellation certificate, P^{N-1} mirror residue trace, and
+noncancellation bound, P^{N-1} mirror residue trace, and
 vortex-to-protected-observable residual ledger, together with the
 vortex-fugacity dimensional-transmutation coordinate, the degree-one
 P^{N-1} stable-map gate, and the finite degree-one vortex zero-mode model plus
@@ -649,9 +649,9 @@ def check_single_vortex_amplitude_assembly() -> None:
     assert_equal("vortex coefficient FI shift in exponentiated coordinate", shifted_q, Fraction(1375, 104))
 
 
-def check_vortex_coefficient_noncancellation_certificate() -> None:
+def check_vortex_coefficient_noncancellation_bound() -> None:
     # The retained one-vortex window carries a signed integrand, not just an
-    # allowed charge.  A usable amplitude certificate needs a margin between
+    # allowed charge.  A usable amplitude bound needs a margin between
     # the signed coefficient and all determinant, zero-mode, boundary, and
     # continuum errors.
     retained_cells = [Fraction(3, 4), Fraction(-1, 8), Fraction(1, 16)]
@@ -683,8 +683,8 @@ def check_vortex_coefficient_noncancellation_certificate() -> None:
         "continuum comparison": Fraction(1, 120),
     }
     total_residual_bound = sum(residuals.values(), Fraction(0))
-    certified_coefficient = retained_signed + total_residual_bound
-    actual_error = abs(certified_coefficient - retained_signed)
+    bounded_coefficient = retained_signed + total_residual_bound
+    actual_error = abs(bounded_coefficient - retained_signed)
 
     assert_equal(
         "one-vortex coefficient residual telescope",
@@ -1269,7 +1269,7 @@ def main() -> None:
     check_mirror_primitive_monomial_selection()
     check_vortex_zero_mode_filter()
     check_single_vortex_amplitude_assembly()
-    check_vortex_coefficient_noncancellation_certificate()
+    check_vortex_coefficient_noncancellation_bound()
     check_cp_mirror_critical_ledger()
     check_cp_mirror_residue_correlators()
     check_vortex_to_observable_residual_budget()

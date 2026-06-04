@@ -66,7 +66,7 @@ about ambiguity.
 - Records the homogeneous Friedmann response
   \(\delta H_t^2=2\kappa_d\delta\rho_\beta/((d-1)(d-2))\) as the retained
   source bridge from particle production to semiclassical backreaction.
-- Adds the finite continuity certificate
+- Adds the finite continuity check
   \(\dot\rho_n+(d-1)H(\rho_n+P_n)=a^{-d}\int\Omega_k\dot n_k\), showing that
   a time-dependent particle diagnostic becomes a backreaction source only
   together with pressure work and the production term; an out region with
@@ -119,7 +119,7 @@ timelike detector worldline sampling the two-point function.
   and tail/remainder data separate.
 - 2026-06-04 issue #729 produced-stress continuity pass: added
   `ca:cosmology-produced-stress-continuity`, deriving the finite continuity
-  certificate for time-dependent diagonal particle occupations.  The companion
+  check for time-dependent diagonal particle occupations.  The companion
   verifies the pressure-work cancellation, the source term
   \(a^{-d}\int\Omega_k\dot n_k\), and negative controls against pressure,
   scale-factor, and conserved-fluid shortcuts.

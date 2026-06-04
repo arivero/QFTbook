@@ -645,8 +645,8 @@ not this algebraic conservation check, but the scaling theorem that the
 microscopic inhomogeneous QFT actually converges to
 \eqref{eq:ghd-root-density-continuity}.
 
-\begin{controlledapproximation}[Observable certificate for Euler GHD]
-\label{ca:ghd-observable-reconstruction-certificate}
+\begin{controlledapproximation}[Observable residual bound for Euler GHD]
+\label{ca:ghd-observable-reconstruction-residual-bound}
 The formulas
 \eqref{eq:ghd-root-density-continuity}--\eqref{eq:ghd-charge-current} are
 hydrodynamic observables only after microscopic local densities and currents
@@ -687,7 +687,7 @@ system.  A theorem-level GHD derivation must control the discrepancy
 \end{aligned}
   \label{eq:ghd-observable-error}
 \end{equation}
-The useful certificate is not a new conserved charge; it is a residual ledger:
+The useful statement is not a new conserved charge; it is a residual ledger:
 \begin{equation}
   \mathcal E_{h,L}^{\rm GHD}[\chi;t]
   \le
@@ -698,7 +698,7 @@ The useful certificate is not a new conserved charge; it is a residual ledger:
   +\epsilon_{\rm op}
   +\epsilon_{\rm diss}
   +\epsilon_{\rm break}.
-  \label{eq:ghd-observable-residual-certificate}
+  \label{eq:ghd-observable-residual-bound}
 \end{equation}
 For the same test data and state family, \(\epsilon_{\rm cell}\) controls
 replacement of the microscopic state in each mesoscopic box by a local
@@ -716,7 +716,7 @@ This is the point at which GHD becomes physics rather than a reformulation of
 TBA.  The bare velocity \(E'_a/p'_a\) is not the current velocity in an
 interacting thermodynamic cell; the collision shifts already encoded in
 \(\varphi\) change it to \(v_a^{\rm eff}\).  Conversely, even an exact solution
-of \eqref{eq:ghd-root-density-continuity} certifies only the quasiparticle
+of \eqref{eq:ghd-root-density-continuity} controls only the quasiparticle
 density coordinate.  It does not by itself identify the microscopic current
 operator, remove finite-volume recurrences, control gradients, or exclude
 diffusive and inelastic corrections.

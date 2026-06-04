@@ -77,7 +77,7 @@
   fluctuation-amplitude continuation adds the proper-time nonzero-mode
   determinant assembly and its multiplication by the zero-mode-projected
   four-fermion source determinant.  The determinant-residual continuation adds
-  the finite-regulator amplitude-window certificate: absolute proper-time
+  the finite-regulator amplitude-window bound: absolute proper-time
   trace remainders bound the logarithmic determinant error, which becomes a
   multiplicative bound on the instanton amplitude; signed ghost/boson/fermion
   cancellations are recorded as inadequate evidence.  The zero-mode-tail
@@ -126,12 +126,12 @@
   theta-charge cancellation and doubled semiclassical action are asserted for
   the diagonal rate channel.  Final-state/relative \(I\bar I\) cut weights then
   sit under an explicit majorant bound.  The one-instanton isolation
-  continuation adds the corresponding amplitude-level certificate: the
+  continuation adds the corresponding amplitude-level bound: the
   retained \(Q=1\) coefficient is separated from same-sector residuals,
   perturbative leakage, anti-instanton leakage, two-instanton leakage,
   \(I\bar I\) amplitude-sector leakage, and higher-sector remainder before a
   relative one-instanton amplitude claim is allowed.  The observable-assembly
-  continuation then collects those local certificates
+  continuation then collects those local bounds
   into one ordered map from the finite Euclidean source coefficient to a
   physical scattering, OPE, susceptibility, or rate contribution: internal
   determinant/source/fluctuation/window errors, sector leakage, and
@@ -151,7 +151,7 @@
   log-shell continuation restates the same fact per \(\dd\log\rho\): the
   individual-slot shell also decays only as \(R^{-1/3}\), so tenfold
   suppression of the normalized power-tail majorant costs three decades in
-  the size cutoff.  The finite-window certificate continuation turns this
+  the size cutoff.  The finite-window bound continuation turns this
   into an operational hard-coefficient test: the retained signed window
   \(J_R\), absolute mass \(M_R\), tail \(T_R\), and noncancellation margin
   \(\kappa_R=|J_R|/M_R\) must be supplied before a relative hard instanton
@@ -371,15 +371,15 @@
 | \(B^{\mathcal J}_{AB},\Phi^R,\Phi^L\) | color-singlet source-projected zero-mode matrix and source-to-zero-mode overlap maps used to match the auxiliary hard instanton kernel to gauge-invariant correlators |
 | \(\mathcal A_{\rm phys}^{Q=1},\mathcal A_{\rm inst}^{\rm lead},R_{\rm reg},R_{\rm cont},R_{\rm spec},R_{\rm IR},R_{\rm cut},R_{\rm match},R_\rho\) | physical one-instanton amplitude coordinate, leading continued/projected instanton-kernel coordinate, and the residuals separating Euclidean source kernels from physical amplitudes |
 | \(A_I,A_{\bar I},\Gamma_{I\bar I},\mathcal C_{\rm cut},M^{(0)}_{I\bar I},\varepsilon_{\rm cut}\) | instanton and anti-instanton amplitude coordinates, paired inclusive cut/rate kernel, cut weight, absolute majorant, and cut residual used to turn a theta-charged amplitude kernel into a neutral spectral weight |
-| \(\Pi_{\mathcal O},J_I,M_I,\lambda_\alpha,M_\alpha,E_{\ge2},\kappa_I\) | selected source/charge/spectral projection, retained one-instanton coefficient, retained \(Q=1\) absolute mass, adjacent-sector leakage factors and majorants, higher-sector remainder, and noncancellation margin in the one-instanton isolation certificate |
+| \(\Pi_{\mathcal O},J_I,M_I,\lambda_\alpha,M_\alpha,E_{\ge2},\kappa_I\) | selected source/charge/spectral projection, retained one-instanton coefficient, retained \(Q=1\) absolute mass, adjacent-sector leakage factors and majorants, higher-sector remainder, and noncancellation margin in the one-instanton isolation bound |
 | \(\mathfrak L_{\mathcal O},\kappa_{\mathcal O},R_{\rm sector},R_{\rm proj},R_{\rm scheme}\) | leading physical observable map, observable-level noncancellation margin, and the sector/projection/scheme residuals in the instanton observable assembly ladder |
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(\mathbf c;\mathcal F)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless selected-form-factor integral |
 | \(\mathfrak s_{\rm hard}(s),\Delta\) | hard instanton log-size shell density and its power-tail suppression exponent \(\Delta=\sigma-b_0-2\) |
 | \(\rho_*,dQ,m_{\rm scr}\) | mixed hard-source/physical-screening log-shell coordinate, hard exponential envelope, and screening mass in the retained instanton size majorant |
 | \(C_{\rm inst}^{(4)}(Q;R),\mathcal P_{\rm orient}\) | specialized \(SU(3)\), \(N_f=2\) hard four-fermion instanton coefficient and shared orientation projector, with the Pauli-Villars pure-gauge constant, light-fermion determinant factor, and explicit endpoint residual |
-| \(J_R,M_R,T_R,\kappa_R\) | retained signed hard-instanton window integral, retained absolute mass, omitted absolute tail, and noncancellation margin used to certify a relative hard-coefficient error |
+| \(J_R,M_R,T_R,\kappa_R\) | retained signed hard-instanton window integral, retained absolute mass, omitted absolute tail, and noncancellation margin used to bound a relative hard-coefficient error |
 | \(X_{\mathcal S},\delta_X,z_B,z_O,\epsilon_C\) | finite scheme-transport data for an instanton determinant constant: coupling-coordinate shift, zero-mode/source and operator/projection frame factors, and logarithmic constant residual |
-| \(B_R,B_L,d_R,d_L,\epsilon_{\rm rank}\) | right/left four-source zero-mode overlap matrices, determinant margins, and rank-margin residual used to certify a nondegenerate \(N_f=2\) instanton four-source amplitude |
+| \(B_R,B_L,d_R,d_L,\epsilon_{\rm rank}\) | right/left four-source zero-mode overlap matrices, determinant margins, and rank-margin residual used to control a nondegenerate \(N_f=2\) instanton four-source amplitude |
 | \(\mu_I,\rho_I,K_\Lambda(\rho)\) | Wilsonian instanton factorization scale, cutoff \(\rho_I=\mu_I^{-1}\), and fully paired finite-regulator size integrand whose boundary flux transfers between the short coefficient and long-distance remainder |
 | \(C_I^{<},[O_I]_\mu,\gamma_{IK}\) | short-instanton OPE coefficient, retained renormalized operator basis, and operator-mixing anomalous-dimension matrix used to distinguish composite-operator RG transport from size-factorization flow |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
@@ -1076,14 +1076,14 @@
   \(\Delta=1/3\); the normalized power-tail majorant \(3R^{-1/3}\) falls
   below \(0.1\) only after \(R>27000\).  This is recorded as a physics
   endpoint-control warning, not as a new moduli-space fact.
-- The four-source instanton amplitude certificate now records the missing
+- The four-source instanton amplitude rank-and-error bound now records the missing
   rank-stability layer between hard slots and a usable four-point coefficient:
   right and left \(2\times2\) zero-mode overlap determinants must have margins
   \(d_R,d_L\), entrywise overlap errors give
   \(4L\eta+2\eta^2\) determinant bounds, and the resulting
   \(\epsilon_{\rm rank}\) is propagated into the finite-window amplitude error.
   Nonzero moduli/determinant weights do not rescue a rank-one source tensor.
-- The finite-scheme transport certificate now makes determinant constants
+- The finite-scheme transport bound now makes determinant constants
   amplitude data rather than detached normalization numbers: a finite shift
   \(X_{\mathcal S'}=X_{\mathcal S}+\delta_X\) must be compensated by
   \(C_{\mathcal S'}^{\rm det}=e^{\delta_X}C_{\mathcal S}^{\rm det}/(z_Bz_O)\),
@@ -1258,7 +1258,7 @@
 - 2026-06-04 issue #597 determinant-residual pass: added the
   proper-time determinant residual window after the four-fermion amplitude
   assembly.  The new block propagates absolute trace-remainder bounds to a
-  logarithmic determinant certificate and then to a multiplicative amplitude
+  logarithmic determinant bound and then to a multiplicative amplitude
   error bound, rejecting signed cancellations among fluctuation sectors as
   sufficient evidence.
 - 2026-06-03 issue #597 zero-mode-tail pass: added the normalized BPST
@@ -1600,12 +1600,12 @@
   exact topology, Stieltjes sum, dyadic superlinear bound, and constant/linear
   density negative controls.
 - 2026-06-04 issue #597 finite hard-window pass: added
-  `ca:hard-instanton-finite-window-certificate`, which upgrades the specialized
+  `ca:hard-instanton-finite-window-bound`, which upgrades the specialized
   \(SU(3)\), \(N_f=2\) hard four-slot coefficient from a formal convergent
   size integral to a quoted-coefficient criterion.  The block requires the
   retained signed window \(J_R\), absolute mass \(M_R\), tail \(T_R\), residual
   budget, and noncancellation margin \(\kappa_R=|J_R|/M_R\), then derives the
-  absolute and relative coefficient-error certificates.  The BPST companion
+  absolute and relative coefficient-error bounds.  The BPST companion
   verifies the exact finite-window inequality, the \(R^{-1/3}\) tail model, and
   a cancellation negative control.  This responds to the amplitude-control
   concern directly: endpoint convergence alone is not physical dominance.
@@ -1621,7 +1621,7 @@
   This keeps the focus on physical amplitude normalization rather than adding
   more instanton moduli-space infrastructure.
 - 2026-06-04 issue #597 four-source amplitude pass: added
-  `ca:four-source-instanton-amplitude-certificate`, which certifies the
+  `ca:four-source-instanton-amplitude-rank-bound`, which controls the
   zero-mode source-overlap layer of the \(N_f=2\) four-point instanton
   amplitude.  The block derives the \(2\times2\) determinant-stability bound,
   propagates the right/left rank margins into \(\epsilon_{\rm rank}\), and keeps
@@ -1635,9 +1635,9 @@
   frame factors, then propagates logarithmic scheme residuals into a
   multiplicative amplitude error.  The BPST companion verifies exact rational
   transport, stale-constant and missing-source-compensation negative controls,
-  and the nonvanishing absolute certificate for canceling residuals.
+  and the nonvanishing absolute bound for canceling residuals.
 - 2026-06-04 issue #597 source-fluctuation pass: added
-  `ca:instanton-source-fluctuation-cumulant-certificate`, refining the
+  `ca:instanton-source-fluctuation-cumulant-bound`, refining the
   determinant residual in the one-instanton amplitude budget into
   source-independent spectral/counterterm and source-dependent fluctuation
   cumulant pieces.  The BPST companion verifies the finite cumulant telescope,
@@ -1645,7 +1645,7 @@
   replacing source fluctuation control by a vacuum determinant calibration or a
   signed cancellation.
 - 2026-06-04 issue #597 one-instanton isolation pass: added
-  `ca:one-instanton-sector-isolation-certificate`, which makes the selected
+  `ca:one-instanton-sector-isolation-bound`, which makes the selected
   amplitude-sector projection part of the instanton calculation.  The block
   separates the retained \(Q=1\) coefficient from same-sector residuals,
   perturbative, anti-instanton, two-instanton, \(I\bar I\), and higher-sector
@@ -1655,10 +1655,10 @@
   omitted adjacent-sector budgets, and signed cancellation.
 - 2026-06-04 issue #597 architecture/coherence pass: added
   `ca:instanton-observable-assembly-ladder`, which consolidates the recent
-  instanton amplitude certificates into an ordered physical-observable map.
+  instanton amplitude bounds into an ordered physical-observable map.
   The new block keeps Euclidean determinant/source/fluctuation/window
   residuals, neighboring-sector leakage, and continuation/projection/IR/cut/
-  scheme residuals in one absolute certificate before a scattering, OPE,
+  scheme residuals in one absolute ledger before a scattering, OPE,
   susceptibility, or rate contribution is quoted.  The BPST companion verifies
   the finite residual telescope, absolute and relative observable bounds, and
   negative controls against moduli-only, Euclidean-equals-physical,
