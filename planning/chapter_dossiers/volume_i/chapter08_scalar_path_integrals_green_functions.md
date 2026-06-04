@@ -28,6 +28,11 @@ contour problem, works through the quartic scalar oscillator bounce,
 separates the translation zero mode and determinant ratio, derives dilute
 multi-bounce exponentiation, and states the field-theory proof-status
 boundary.
+The 2026-06-04 issue #818 correction tightened that section by replacing the
+quartic determinant ratio with the phase-shift/zero-mode-normalized value,
+reproducing the leading quartic resonance width, correcting the field-theory
+translation Gram matrix, and separating Euclidean spacetime activity from the
+physical spatial rate density.
 The 2026-05-29 anti-wrapper pass retitled the finite-dimensional regulator
 proposition positively, demoted the zeta-scale calculation and the free
 Feynman pole-placement check to worked paragraphs, and kept the determinant
@@ -184,9 +189,10 @@ Working framework:
 | For \(A_\omega=-\dd_\tau^2+\omega^2\) on the thermal circle, \(\det_\zeta A_\omega=4\sinh^2(\beta\omega/2)\), giving the canonical oscillator partition function. | Worked example | Example `ex:zeta-thermal-harmonic-oscillator`; calculation check `zeta_determinant_checks.py` |
 | The zeta finite part of the massless real scalar circle vacuum energy is \(-\pi/(6L)\) after zero-mode separation. | Worked example | Example `ex:zeta-circle-casimir-energy`; calculation check `zeta_determinant_checks.py` |
 | A finite-volume false vacuum is a metastable state or branch with a specified survival amplitude and time window, not an exact decaying eigenvector of a self-adjoint finite-volume Hamiltonian. | Definition/framework statement | Definition `def:finite-volume-false-vacuum-datum` |
-| In the quartic scalar oscillator, \(q_B=\omega(2g)^{-1/2}\operatorname{sech}\omega(\tau-\tau_0)\), \(B=\omega^3/(3g)\), \(M_B=-\partial_\tau^2+\omega^2-6\omega^2\operatorname{sech}^2\omega(\tau-\tau_0)\), and \((\det{}''M_B/\det M_F)_{\rm reg}=1/(36\omega^2)\) when the negative and zero modes are separated. | Worked regulated scalar example | Example `ex:quartic-oscillator-false-vacuum-bounce`; calculation check `false_vacuum_decay_checks.py` |
+| In the analytically continued quartic scalar oscillator, \(q_B=\omega(2g)^{-1/2}\operatorname{sech}\omega(\tau-\tau_0)\), \(B=\omega^3/(3g)\), \(M_B=-\partial_\tau^2+\omega^2-6\omega^2\operatorname{sech}^2\omega(\tau-\tau_0)\), \((\det{}''M_B/\det M_F)_{\rm reg}=1/(48\omega^2)\), and the leading width is \(\sqrt{8\omega^5/(\pi g)}\exp[-\omega^3/(3g)]\). | Worked analytic-continuation resonance example | Example `ex:quartic-oscillator-false-vacuum-bounce`; reflectionless phase-shift and zero-mode-normalization calculation; calculation check `false_vacuum_decay_checks.py` |
 | The negative mode supplies a half-contour factor \(\pm i/2\), while the translation zero mode gives \((B/2\pi)^{1/2}\dd\tau_0\); neither is part of an ordinary positive determinant. | Worked contour and collective-coordinate calculation | Equations `eq:false-vacuum-negative-mode-half-gaussian` and `eq:false-vacuum-translation-zero-mode-jacobian`; calculation check `false_vacuum_decay_checks.py` |
 | Dilute multi-bounce exponentiation gives a complex resonance energy and a real-time width only after the state, contour, separation, and residual assumptions are supplied. | Controlled semiclassical framework | Equations `eq:false-vacuum-dilute-bounce-exponentiation` and `eq:false-vacuum-real-time-width`; calculation check `false_vacuum_decay_checks.py` |
+| For a flat \(O(D)\)-symmetric field-theory bounce, the translational Gram matrix is \(G_{\mu\nu}=B\delta_{\mu\nu}\), the collective factor is \((B/2\pi)^{D/2}\dd^Dx_0\), and the physical rate density is \(\Gamma/V_{D-1}=K_{\rm FT}e^{-B}\) while the Euclidean activity is per \(\mathcal V_D=T V_{D-1}\). | Semiclassical normalization and rate convention | Field-theory extension paragraph; scaling/virial identity; calculation check `false_vacuum_decay_checks.py` |
 | Euclidean ordering of insertion times gives analytic continuation to time-ordered Lorentzian correlators under spectral/analytic assumptions. | Framework statement with derivation in free case | Complex-time contour and uniform Wick rotation |
 | Euclidean field-insertion notation records the boundary value \(x^0=-i\tau\) inside ordered correlation functions. | Definition | Analytic-continuation convention |
 | The free Euclidean two-point function is the Green function of \(-\partial_E^2+m^2\). | Derived | Gaussian functional integral |
@@ -223,6 +229,10 @@ Rendered check:
 - Keep false-vacuum decay tied to state, contour, determinant, zero-mode,
   dilute-gas, and real-time interpretation data; do not reduce it to a bounce
   equation or a potential sketch.
+- Keep the unbounded quartic oscillator framed as an analytic-continuation
+  resonance calibration rather than the self-adjoint finite-volume datum.
+- Keep field-theory rates as Lorentzian rates per spatial volume, with
+  Euclidean spacetime volume used only for the bounce-gas activity.
 
 ## Audit Notes
 
@@ -276,3 +286,12 @@ Rendered check:
   `calculation-checks/false_vacuum_decay_checks.py` as a high-risk evidence
   contract.  This is physics-depth infrastructure for Higgs metastability and
   instanton/tunneling discussions, not a moduli-space mathematics addition.
+- 2026-06-04, issue #818: corrected the quartic determinant ratio from
+  \(1/(36\omega^2)\) to \(1/(48\omega^2)\), recorded the
+  \(|\lambda_-|\)-included ratio \(1/16\), reproduced the leading quartic
+  resonance width, replaced the hard-coded determinant check by a
+  reflectionless scattering-phase and zero-mode normalization derivation,
+  replaced self-confirming node and half-contour predicates by exact
+  \(u=\tanh x\) node counts and an oriented Gaussian half-cycle check,
+  corrected \(G_{\mu\nu}=B\delta_{\mu\nu}\), and separated the physical
+  spatial rate density from Euclidean spacetime activity.

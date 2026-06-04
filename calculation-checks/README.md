@@ -2608,12 +2608,20 @@ Current checks:
 - `false_vacuum_decay_checks.py`: exact finite checks for the false-vacuum
   contour section, including the quartic oscillator bounce equation, action,
   and zero-mode norm, the Pöschl--Teller negative and translation-zero-mode
-  identities, the half-contour factor through the negative Gaussian, the
-  collective-coordinate and determinant ledger with the zero mode omitted, the
-  dilute multi-bounce exponentiation algebra, and the Euclidean
-  resonance-energy to real-time width relation, with negative controls against
-  the no-factor-two action, real-axis negative Gaussian, zero-mode determinant
-  inclusion, finite-time rate overread, and signed residual cancellation.
+  identities, exact node counts in the \(u=\tanh x\) coordinate, the
+  reflectionless scattering-phase and zero-mode-normalization determinant
+  derivation giving
+  \((\det{}''M_B/\det M_F)_{\rm reg}=1/(48\omega^2)\), the half-contour factor
+  through an oriented negative-Gaussian half-cycle, the collective-coordinate
+  ledger with the zero mode omitted, the field-theory translation Gram matrix
+  \(G_{\mu\nu}=B\delta_{\mu\nu}\), the separation of Euclidean spacetime
+  activity from physical spatial rate density, the dilute multi-bounce
+  exponentiation algebra, and the Euclidean resonance-energy to real-time
+  width relation, with negative controls against the no-factor-two action, the
+  old quartic determinant ratios, real-axis negative Gaussian, zero-mode
+  determinant inclusion, a doubled negative-mode contour, loss of contour
+  orientation, the old \(B/D\) Gram matrix, spacetime-volume rate-density
+  division, finite-time rate overread, and signed residual cancellation.
 - `cft_correlator_kinematics_checks.py`: symbolic checks for CFT
   correlator kinematics, including scalar three-point weights, four-point
   prefactor inversion weights, the generic four-point conformal-frame

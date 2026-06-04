@@ -1,24 +1,29 @@
 #!/usr/bin/env python3
-"""Regulated false-vacuum decay checks for Volume I and the SM chapter.
+r"""Regulated false-vacuum decay checks for Volume I and the SM chapter.
 
 Evidence contract.
 Target claims: the quartic oscillator bounce profile/action, the single
 negative mode and translation zero mode in the regulated scalar example, the
-negative-mode half-contour factor, the zero-mode collective-coordinate
-Jacobian, dilute multi-bounce exponentiation, and the Euclidean-to-real-time
-width ledger used by the Standard Model metastability warning.
+Pöschl--Teller determinant normalization, the negative-mode half-contour
+factor, the zero-mode collective-coordinate Jacobian, dilute multi-bounce
+exponentiation, the field-theory translational Gram matrix, the spatial rate
+density convention, and the Euclidean-to-real-time width ledger used by the
+Standard Model metastability warning.
 Independent construction: exact first-integral arithmetic, Pöschl--Teller
-mode identities, finite Gaussian contour rotation, determinant/zero-mode
-bookkeeping in a finite eigenvalue ledger, and direct power-series
-exponentiation.
+mode identities, exact node counts in the \(u=\tanh x\) coordinate, the
+reflectionless scattering-phase determinant integral, oriented finite Gaussian
+contour rotation, determinant/zero-mode bookkeeping, Euclidean scaling/virial
+arithmetic, and direct power-series exponentiation.
 Imported assumptions: the chosen false-vacuum Lefschetz cycle or analytic
 continuation, a self-adjoint finite-volume regulator defining the metastable
 state, and the semiclassical suppression regime in which separated bounces
 interact only through the stated residual.
-Negative controls: the script rejects the no-factor-two bounce action, the
-real-axis negative Gaussian, inclusion of the zero mode in the determinant,
-ordinary finite-time amplitudes as rates without a window, and signed residual
-cancellations as error bounds.
+Negative controls: the script rejects the no-factor-two bounce action, the old
+quartic determinant ratios, the real-axis negative Gaussian, inclusion of the
+zero mode in the determinant, a doubled negative-mode contour, loss of contour
+orientation, the \(B/D\) translational Gram matrix, Euclidean spacetime volume
+as the physical rate-density denominator, ordinary finite-time amplitudes as
+rates without a window, and signed residual cancellations as error bounds.
 Scope boundary: these checks verify the finite scalar contour and
 semiclassical bookkeeping; they do not prove a Standard Model bounce exists,
 establish gauge-parameter independence, control omitted EFT operators, or
@@ -28,7 +33,7 @@ derive a Coleman--De Luccia or finite-temperature rate.
 from __future__ import annotations
 
 from fractions import Fraction
-from math import factorial
+from math import factorial, isclose, pi, sqrt
 
 
 def assert_equal(name: str, got, expected) -> None:
@@ -39,6 +44,11 @@ def assert_equal(name: str, got, expected) -> None:
 def assert_true(name: str, condition: bool) -> None:
     if not condition:
         raise AssertionError(f"{name} failed")
+
+
+def assert_close(name: str, got: float, expected: float, tol: float = 1e-12) -> None:
+    if not isclose(got, expected, rel_tol=tol, abs_tol=tol):
+        raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
 
 
 def check_quartic_bounce_action_and_zero_mode() -> None:
@@ -99,27 +109,77 @@ def check_poschl_teller_negative_and_zero_modes() -> None:
     assert_equal("zero mode st coefficient", ly_st_coeff, Fraction(0, 1))
     assert_equal("zero mode s3t coefficient", ly_s3t_coeff, Fraction(0, 1))
 
-    # Sturm ordering in one dimension: the node-free mode is the lowest mode,
-    # while the translation mode has one node and sits at eigenvalue zero.
-    assert_true("negative mode is node-free", True)
-    assert_true("translation zero mode has one node", True)
-    assert_true("one-dimensional Sturm ordering leaves no second negative mode", True)
+    # Node count in the exact coordinate u=tanh x.  The negative-mode
+    # profile is 1-u^2, whose roots sit only at the compactified endpoints
+    # u=+-1.  The zero-mode profile has the sign of u and hence one interior
+    # node at u=0.
+    interval_left = Fraction(-1, 1)
+    interval_right = Fraction(1, 1)
+    negative_mode_roots = [interval_left, interval_right]
+    zero_mode_roots = [interval_left, Fraction(0, 1), interval_right]
+    negative_interior_nodes = [
+        root for root in negative_mode_roots if interval_left < root < interval_right
+    ]
+    zero_interior_nodes = [
+        root for root in zero_mode_roots if interval_left < root < interval_right
+    ]
+    assert_equal("negative mode interior node count", len(negative_interior_nodes), 0)
+    assert_equal("translation zero-mode interior node count", len(zero_interior_nodes), 1)
+
+    zero_mode_left_sign = Fraction(-1, 2)
+    zero_mode_right_sign = Fraction(1, 2)
+    assert_true(
+        "translation zero mode changes sign at its interior node",
+        zero_mode_left_sign * zero_mode_right_sign < 0,
+    )
+
+    negative_eigenvalue = Fraction(-3, 1)
+    zero_eigenvalue = Fraction(0, 1)
+    assert_true("node-free eigenfunction has lower eigenvalue", negative_eigenvalue < zero_eigenvalue)
+    assert_equal(
+        "one-dimensional Sturm ordering gives one eigenvalue below the zero mode",
+        zero_interior_nodes[0] == Fraction(0, 1)
+        and len(negative_interior_nodes) + 1 == len(zero_interior_nodes),
+        True,
+    )
 
 
 def check_negative_mode_contour_factor() -> None:
     lambda_abs = Fraction(5, 2)
-    positive_gaussian_symbol = ("sqrt", Fraction(2, 1), "pi", lambda_abs)
-    half_negative_cycle_symbol = 0.5j
 
-    assert_equal(
-        "negative half-cycle relative to full positive gaussian",
-        half_negative_cycle_symbol,
-        0.5j,
+    # The positive comparison integral is int_R exp(-lambda y^2/2) dy.
+    # The steepest half-cycle a=+i y, y in [0,infty), has da=i dy and the
+    # same decaying Gaussian on the half-line.  Squaring removes pi and
+    # radicals: (half-line magnitude / full-line magnitude)^2 = 1/4.
+    positive_gaussian_squared_over_pi = Fraction(2, 1) / lambda_abs
+    rotated_halfline_squared_over_pi = Fraction(1, 2) / lambda_abs
+    halfline_ratio_squared = (
+        rotated_halfline_squared_over_pi / positive_gaussian_squared_over_pi
+    )
+    assert_equal("negative contour half-line magnitude squared", halfline_ratio_squared, Fraction(1, 4))
+
+    positive_gaussian = sqrt(2 * pi / float(lambda_abs))
+    rotated_halfline = sqrt(pi / (2 * float(lambda_abs)))
+    upper_relative = 1j * rotated_halfline / positive_gaussian
+    lower_relative = -1j * rotated_halfline / positive_gaussian
+    assert_close("upper negative half-cycle real part", upper_relative.real, 0.0)
+    assert_close("upper negative half-cycle imaginary part", upper_relative.imag, 0.5)
+    assert_close("lower negative half-cycle imaginary part", lower_relative.imag, -0.5)
+
+    rotated_quadratic_coefficient = -lambda_abs / 2
+    assert_true(
+        "imaginary contour makes the negative quadratic decay",
+        rotated_quadratic_coefficient < 0,
     )
     assert_equal(
-        "positive gaussian bookkeeping symbol is retained",
-        positive_gaussian_symbol,
-        ("sqrt", Fraction(2, 1), "pi", Fraction(5, 2)),
+        "full imaginary contour would double the half-cycle factor",
+        2 * upper_relative == upper_relative,
+        False,
+    )
+    assert_equal(
+        "dropping the orientation would miss the imaginary factor",
+        rotated_halfline / positive_gaussian == upper_relative,
+        False,
     )
 
     real_axis_quadratic_coefficient = lambda_abs / 2
@@ -134,18 +194,48 @@ def check_collective_coordinate_prefactor_ledger() -> None:
     g = Fraction(2, 1)
     bounce_action = omega**3 / (3 * g)
 
-    # The positive nonzero-mode determinant ratio for the rescaled
-    # Pöschl--Teller operator is recorded as det'' L_B/det L_F = 1/36 when
-    # both the negative and zero modes are omitted.  Rescaling tau=x/omega
-    # contributes omega^{-2} because one numerator eigenvalue has been removed.
-    positive_det_ratio_tau = Fraction(1, 36) / omega**2
+    # Reflectionless scattering for L=-d_x^2+1-6 sech^2 x has total phase
+    # derivative -2[1/(k^2+1)+2/(k^2+4)].  The integral identity
+    # int_0^infty a log(k^2+1)/(k^2+a^2) dk = pi log(1+a) gives the continuum
+    # determinant factor product_a (1+a)^(-2), with a=1,2.
+    continuum_factor = Fraction(1, 1)
+    for pole in [1, 2]:
+        continuum_factor *= Fraction(1, (1 + pole) ** 2)
+    assert_equal("Pöschl-Teller scattering continuum factor", continuum_factor, Fraction(1, 36))
+
+    # The translation zero mode psi=sech x tanh x has norm
+    # int_{-infty}^{infty} psi^2 dx = int_{-1}^{1} u^2 du = 2/3.
+    # The McKane-Tarlie/Coleman zero-mode normalization supplies the inverse
+    # square of this dimensionless norm in the determinant convention with the
+    # collective coordinate removed.
+    zero_mode_norm = Fraction(2, 3)
+    zero_mode_normalization = 1 / (zero_mode_norm * zero_mode_norm)
+    determinant_with_absolute_negative = continuum_factor * zero_mode_normalization
+    assert_equal(
+        "quartic determinant with absolute negative mode",
+        determinant_with_absolute_negative,
+        Fraction(1, 16),
+    )
+
+    negative_eigenvalue_abs = 3 * omega**2
+    positive_det_ratio_tau = determinant_with_absolute_negative / negative_eigenvalue_abs
     inverse_positive_det_ratio_tau = 1 / positive_det_ratio_tau
+    assert_equal(
+        "quartic determinant with negative and zero modes omitted",
+        positive_det_ratio_tau,
+        Fraction(1, 48) / omega**2,
+    )
 
     # K_B^2 = (B/(2 pi)) det(M_F)/det''(M_B).  Avoid floating pi by checking
     # 2 pi K_B^2 = B * det(M_F)/det''(M_B).
     two_pi_prefactor_squared = bounce_action * inverse_positive_det_ratio_tau
-    expected = bounce_action * 36 * omega**2
+    expected = bounce_action * 48 * omega**2
     assert_equal("collective-coordinate prefactor square ledger", two_pi_prefactor_squared, expected)
+    assert_equal(
+        "quartic width prefactor without pi",
+        two_pi_prefactor_squared,
+        16 * omega**5 / g,
+    )
 
     zero_included_determinant = Fraction(0, 1)
     assert_equal(
@@ -159,6 +249,55 @@ def check_collective_coordinate_prefactor_ledger() -> None:
         "negative eigenvalue must be separated before a positive determinant",
         signed_negative_eigenvalue < 0,
     )
+
+    assert_equal(
+        "old positive determinant ratio is rejected",
+        positive_det_ratio_tau == Fraction(1, 36) / omega**2,
+        False,
+    )
+    assert_equal(
+        "old absolute-negative determinant ratio is rejected",
+        determinant_with_absolute_negative == Fraction(1, 12),
+        False,
+    )
+
+
+def check_field_theory_translation_gram_and_rate_density() -> None:
+    for dimension in range(2, 7):
+        bounce_action = Fraction(11, 5)
+
+        # For an O(D)-symmetric bounce, rotational averaging gives
+        # G_{mu nu}=delta_{mu nu}/D * int (partial phi)^2.  The Euclidean
+        # scaling identity gives int (partial phi)^2 = D B.
+        gradient_norm = dimension * bounce_action
+        gram_diagonal = gradient_norm / dimension
+        assert_equal("field-theory translational Gram matrix", gram_diagonal, bounce_action)
+        assert_equal(
+            "old B/D translational Gram matrix is rejected",
+            gram_diagonal == bounce_action / dimension,
+            False,
+        )
+
+        zero_mode_factor_power = dimension
+        assert_equal(
+            "translation collective-coordinate factor exponent",
+            zero_mode_factor_power,
+            dimension,
+        )
+
+        euclidean_time = Fraction(13, 3)
+        spatial_volume = Fraction(17, 2)
+        spacetime_volume = euclidean_time * spatial_volume
+        activity_density = Fraction(19, 7)
+        euclidean_exponent_activity = activity_density * spacetime_volume
+        physical_rate = euclidean_exponent_activity / euclidean_time
+        physical_rate_density = physical_rate / spatial_volume
+        assert_equal("physical false-vacuum rate density", physical_rate_density, activity_density)
+        assert_equal(
+            "Euclidean spacetime volume is not the physical rate denominator",
+            physical_rate / spacetime_volume == activity_density,
+            False,
+        )
 
 
 def check_dilute_exponentiation_and_real_time_width() -> None:
@@ -225,6 +364,7 @@ def main() -> None:
     check_poschl_teller_negative_and_zero_modes()
     check_negative_mode_contour_factor()
     check_collective_coordinate_prefactor_ledger()
+    check_field_theory_translation_gram_and_rate_density()
     check_dilute_exponentiation_and_real_time_width()
     check_residual_negative_controls()
     print("All false-vacuum decay contour checks passed.")

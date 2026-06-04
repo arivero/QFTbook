@@ -1285,7 +1285,11 @@ Consider the one-coordinate Euclidean action
 The potential is unbounded on the real axis, so the false-vacuum problem is
 defined by analytic continuation from a stable contour or by a declared pair of
 Lefschetz cycles.  The local well at \(q=0\) supplies the false harmonic
-state.  The Euclidean equation is
+state.  Thus this example calibrates the contour and fluctuation normalization
+of an analytically continued resonance rather than supplying the
+self-adjoint finite-volume datum of
+Definition~\ref{def:finite-volume-false-vacuum-datum}.  The Euclidean
+equation is
 \[
   \ddot q=\omega^2q-4gq^3,
 \]
@@ -1356,15 +1360,45 @@ coordinate \(\tau_0\) gives
 Let \(M_F=-\dd_\tau^2+\omega^2\) be the false-harmonic fluctuation operator,
 and let \(\det{}''M_B\) denote the determinant with both the negative mode and
 the translational zero mode omitted.  In the determinant normalization matched
-to the free operator \(M_F\), the exact Pöschl--Teller calculation gives
+to the free operator \(M_F\), set
+\[
+  L_B=-\partial_x^2+1-6\operatorname{sech}^2x .
+\]
+Its reflectionless scattering phase obeys
+\[
+  \frac{\dd\delta}{\dd k}
+  =
+  -2\left(\frac{1}{k^2+1}+\frac{2}{k^2+4}\right),
+\]
+and the identity
+\[
+  \int_0^\infty
+  \frac{a\log(k^2+1)}{k^2+a^2}\,\dd k
+  =
+  \pi\log(1+a)
+\]
+gives the continuum determinant factor
+\((2^2 3^2)^{-1}=1/36\).  The dimensionless translation mode
+\(\operatorname{sech}x\,\tanh x\) has norm \(2/3\), and the zero-mode
+removal formula contributes the inverse square of this norm.  Hence
+\[
+  |\lambda_-|
+  \left(\frac{\det{}''M_B}{\det M_F}\right)_{\rm reg}
+  =
+  \frac{1}{36}\left(\frac32\right)^2
+  =
+  \frac{1}{16},
+  \qquad |\lambda_-|=3\omega^2 .
+\]
+Therefore
 \begin{equation}
   \left(\frac{\det{}''M_B}{\det M_F}\right)_{\rm reg}
   =
-  \frac{1}{36\omega^2}.
+  \frac{1}{48\omega^2}.
   \label{eq:quartic-false-vacuum-positive-determinant-ratio}
 \end{equation}
 If the absolute value of the negative eigenvalue is included while the zero
-mode is still omitted, the corresponding ratio is \(1/12\).  The convention in
+mode is still omitted, the corresponding ratio is \(1/16\).  The convention in
 \eqref{eq:false-vacuum-one-bounce-amplitude} keeps the negative mode outside
 the determinant because its integration cycle supplies the imaginary
 half-factor in
@@ -1432,12 +1466,26 @@ Lorentzian survival probability in the exponential window is
   \Gamma=K_B\ee^{-B}.
   \label{eq:false-vacuum-real-time-width}
 \end{equation}
-The passage from the Euclidean branch to the real-time width therefore uses
-the metastable state of
-Definition~\ref{def:finite-volume-false-vacuum-datum}, the negative-mode
-cycle \eqref{eq:false-vacuum-negative-mode-half-gaussian}, and the
-dilute-gas residual in
-\eqref{eq:false-vacuum-dilute-bounce-exponentiation}.
+For the analytically continued quartic oscillator above,
+\eqref{eq:quartic-false-vacuum-positive-determinant-ratio} gives the leading
+resonance width
+\begin{equation}
+  \Gamma
+  =
+  \sqrt{\frac{8\omega^5}{\pi g}}\,
+  \exp\left[-\frac{\omega^3}{3g}\right]
+  \left(1+O\!\left(\frac{g}{\omega^3}\right)\right).
+  \label{eq:quartic-false-vacuum-leading-width}
+\end{equation}
+The passage from the Euclidean branch to a real-time width has two logically
+separate state-space inputs.  For a bounded-below finite-volume false vacuum
+it uses the metastable state of
+Definition~\ref{def:finite-volume-false-vacuum-datum}.  For the unbounded
+quartic model it uses the declared outgoing resonance branch supplied by the
+analytic continuation or Lefschetz contour.  In either case the calculation
+also needs the negative-mode cycle
+\eqref{eq:false-vacuum-negative-mode-half-gaussian} and the dilute-gas
+residual in \eqref{eq:false-vacuum-dilute-bounce-exponentiation}.
 
 \paragraph{Field-theory extension and proof status.}
 For a scalar field in \(D\) Euclidean dimensions, the bounce equations are
@@ -1465,21 +1513,49 @@ The \(D\) translational zero modes are separated into the collective coordinate
   \int\dd^Dx\,
   \partial_\mu\phi_B\,\partial_\nu\phi_B .
 \]
-For an \(O(D)\)-symmetric bounce \(G_{\mu\nu}=(B/D)\delta_{\mu\nu}\) when
-the action is \(B\).  Internal symmetry or gauge zero modes require their own
-collective coordinates, stabilizer volumes, gauge fixing, ghost determinants,
-and orbit metrics.  A leading field-theory rate formula written as
+For an \(O(D)\)-symmetric flat-space bounce, rotational symmetry gives
 \[
-  \frac{\Gamma}{V_D}
+  G_{\mu\nu}
   =
-  K_{\rm FT}\ee^{-B}
+  \frac{\delta_{\mu\nu}}{D}
+  \int\dd^Dx\,(\partial\phi_B)^2 .
 \]
-is conditional on the following data: existence of the bounce in the
-specified regulator, exactly one negative mode in the physical scalar sector,
-separation of all zero modes, a regulated nonzero-mode determinant ratio,
-renormalization of local counterterms, a dilute multi-bounce bound, and a
-real-time metastable state or resonance interpretation.  Finite-temperature
-activation and gravitational Coleman--De Luccia problems
+With the potential normalized relative to the false vacuum, the scaling
+identity for the stationary bounce gives
+\[
+  \int\dd^Dx\,(\partial\phi_B)^2=DB,
+  \qquad
+  G_{\mu\nu}=B\,\delta_{\mu\nu}.
+\]
+The translational collective-coordinate measure therefore contains
+\[
+  \left(\frac{B}{2\pi}\right)^{D/2}\dd^Dx_0 .
+\]
+Internal symmetry or gauge zero modes require their own collective
+coordinates, stabilizer volumes, gauge fixing, ghost determinants, and orbit
+metrics.  The dilute Euclidean bounce gas first supplies an activity per
+Euclidean spacetime volume,
+\[
+  \log Z_E
+  \supset
+  \pm\frac{\ii}{2}\,\mathcal V_D\,K_{\rm FT}\ee^{-B},
+  \qquad
+  \mathcal V_D=T V_{D-1}.
+\]
+After dividing by the observation time \(T\), the physical rate density is
+\[
+  \frac{\Gamma}{V_{D-1}}
+  =
+  K_{\rm FT}\ee^{-B}.
+\]
+Thus \(\mathcal V_D\) is the denominator for Euclidean activity, not the
+spatial denominator of the Lorentzian decay rate.  The formula is conditional
+on the following data: existence of the bounce in the specified regulator,
+exactly one negative mode in the physical scalar sector, separation of all
+zero modes, a regulated nonzero-mode determinant ratio, renormalization of
+local counterterms, a dilute multi-bounce bound, and a real-time metastable
+state or resonance interpretation.  Finite-temperature activation and
+gravitational Coleman--De Luccia problems
 \cite{ColemanDeLuccia1980} are different problems: the state, boundary
 conditions, negative-mode analysis, and contour are not inherited unchanged
 from the zero-temperature flat-space calculation.
