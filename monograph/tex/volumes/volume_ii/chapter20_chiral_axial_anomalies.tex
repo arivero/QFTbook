@@ -2901,6 +2901,81 @@ about the theory.  The use of \(\chi_{\rm YM}\) inside a chiral effective
 description with dynamical quarks is a further large-\(N_c\) matching
 assumption, developed in the next chapter.
 
+\begin{controlledapproximation}[Fixed-topology extraction and bias]
+\label{ca:fixed-topology-theta-extraction}
+The sector weights themselves carry physical information, but a simulation or
+semiclassical ensemble constrained to one integer \(Q\) is not the
+\(\theta=0\) vacuum.  Let a selected CP-even branch have, in a neighborhood of
+\(\theta=0\),
+\begin{equation}
+  E(\theta)-E(0)
+  =
+  \frac12\chi\theta^2
+  \left(1+b_2\theta^2+R_6(\theta)\right),
+  \qquad \chi>0 ,
+  \label{eq:theta-fixed-topology-branch-expansion}
+\end{equation}
+and assume \(\chi V_4\gg1\), no competing branch on the saddle contour, and
+controlled endpoint and \(R_6\) remainders.  Fourier inversion of the sector
+sum gives the fixed-topology weight
+\begin{equation}
+  \widehat Z_Q
+  =
+  \int_{-\pi}^{\pi}\frac{\dd\theta}{2\pi}\,
+  \exp\!\left[-V_4E(\theta)-\ii Q\theta\right].
+  \label{eq:fixed-topology-fourier-inversion}
+\end{equation}
+Keeping the Gaussian saddle and the first quartic correction gives
+\begin{equation}
+  \frac{\widehat Z_Q}{\ee^{-V_4E(0)}}
+  =
+  \frac{1}{\sqrt{2\pi\chi V_4}}\,
+  \exp\!\left[-\frac{Q^2}{2\chi V_4}\right]
+  \left[
+    1-\frac{b_2}{2}
+    \left(
+      \frac{3}{\chi V_4}
+      -\frac{6Q^2}{(\chi V_4)^2}
+      +\frac{Q^4}{(\chi V_4)^3}
+    \right)
+    +R_Q
+  \right],
+  \label{eq:fixed-topology-gaussian-sector-weight}
+\end{equation}
+where \(R_Q\) contains the sixth-and-higher theta cumulants, endpoint tails,
+and branch-selection defects in the declared \(Q^2/(\chi V_4)\) window.
+Thus the curvature \(\chi\) can be extracted from the Gaussian slope of
+\(\log\widehat Z_Q\) as a function of \(Q^2\), but not from the variance of
+\(Q\) inside a single fixed sector.  In a fixed-\(Q\) ensemble the random
+variable \(Q\) has zero variance by construction.
+
+The same saddle controls local observables.  If a CP-even local observable has
+branch expectation
+\[
+  O(\theta)=O_0+\frac12 O_2\theta^2+O(\theta^4),
+\]
+then its fixed-topology expectation is
+\begin{equation}
+  O_Q
+  =
+  O_0
+  +
+  \frac{O_2}{2\chi V_4}
+  \left(
+    1-\frac{Q^2}{\chi V_4}
+  \right)
+  +R_{O,Q}.
+  \label{eq:fixed-topology-local-observable-bias}
+\end{equation}
+The \(1/V_4\) correction is the leading fixed-topology bias.  It is harmless
+only when it is smaller than the stated statistical, continuum, and
+finite-volume error budget.  Otherwise fixed-sector measurements must either
+fit the sector weights \(\widehat Z_Q\), reweight in \(\theta\), or subtract
+\eqref{eq:fixed-topology-local-observable-bias} with independently controlled
+\(\chi\) and \(O_2\).  This is why topological freezing is an observable
+systematic, beyond an algorithmic autocorrelation problem.
+\end{controlledapproximation}
+
 \section{Theta Branches and Cluster Decomposition}
 \label{sec:theta-branches-cluster-decomposition}
 

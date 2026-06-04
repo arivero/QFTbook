@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact checks for theta, susceptibility, and Witten-Veneziano normalizations.
+r"""Exact checks for theta, susceptibility, and Witten-Veneziano normalizations.
 
 The finite theta-data checks distinguish exact finite-volume cumulant
 identities from the continuum and branch-selection assumptions needed for QCD
@@ -24,6 +24,9 @@ Target claims:
 Independent construction:
 - Builds finite theta partition functions directly from weighted topological
   sectors, differentiates log Z, and compares to cumulants.
+- Derives fixed-topology sector weights and local-observable biases from the
+  Gaussian Fourier saddle rather than estimating susceptibility inside a
+  single fixed sector.
 - Differentiates the singlet local potential and all Hessians symbolically,
   then computes Schur complements and null-vector conditions from the matrices.
 - Computes the one-field and neutral two-field generalized eigenvalue
@@ -48,6 +51,9 @@ Negative controls:
   physical eta_0 mass directly from the potential Hessian.
 - A branch mixture gives a nonzero cluster covariance, while a pure selected
   branch has zero covariance.
+- A fixed-topology sector has zero charge variance and therefore cannot by
+  itself estimate the theta susceptibility; omitting the \(Q^2/(\chi V)\)
+  bias term gives the wrong fixed-sector local observable for \(Q\ne0\).
 
 Scope boundary:
 - These checks verify algebraic identities and local matching bookkeeping.
@@ -259,6 +265,81 @@ def check_local_density_susceptibility_cumulant() -> None:
         "periodic double sum reduces to one-origin integral",
         periodic_double_sum,
         sum(periodic_connected),
+    )
+
+
+def check_fixed_topology_saddle_extraction() -> None:
+    charge, sigma = sp.symbols("charge sigma", positive=True)
+    leading_sector_weight = sp.exp(-charge**2 / (2 * sigma))
+
+    gaussian_second_moment = -sp.diff(leading_sector_weight, charge, 2) / leading_sector_weight
+    assert_zero(
+        "fixed-topology Gaussian second theta moment",
+        gaussian_second_moment - (1 / sigma - charge**2 / sigma**2),
+    )
+
+    gaussian_fourth_moment = sp.diff(leading_sector_weight, charge, 4) / leading_sector_weight
+    expected_fourth = (
+        3 / sigma**2
+        - 6 * charge**2 / sigma**3
+        + charge**4 / sigma**4
+    )
+    assert_zero(
+        "fixed-topology Gaussian fourth theta moment",
+        gaussian_fourth_moment - expected_fourth,
+    )
+
+    volume, chi, b2 = sp.symbols("volume chi b2", positive=True)
+    sigma_substitution = {sigma: chi * volume}
+    quartic_prefactor = chi * volume * b2 / 2
+    quartic_log_correction = -quartic_prefactor * expected_fourth.subs(sigma_substitution)
+    expected_correction = -b2 / 2 * (
+        3 / (chi * volume)
+        - 6 * charge**2 / (chi * volume) ** 2
+        + charge**4 / (chi * volume) ** 3
+    )
+    assert_zero(
+        "fixed-topology quartic sector correction",
+        quartic_log_correction - expected_correction,
+    )
+
+    slope_in_charge_squared = -1 / (2 * chi * volume)
+    extracted_chi = -1 / (2 * volume * slope_in_charge_squared)
+    assert_zero("fixed-topology sector slope extracts chi", extracted_chi - chi)
+
+    observable_curvature = sp.symbols("observable_curvature")
+    fixed_q_observable_shift = (
+        observable_curvature
+        / 2
+        * gaussian_second_moment.subs(sigma_substitution)
+    )
+    expected_shift = observable_curvature / (2 * chi * volume) * (
+        1 - charge**2 / (chi * volume)
+    )
+    assert_zero(
+        "fixed-topology local observable bias",
+        fixed_q_observable_shift - expected_shift,
+    )
+
+    values = {
+        chi: sp.Rational(5, 7),
+        volume: sp.Rational(11, 1),
+        charge: sp.Rational(2, 1),
+        observable_curvature: sp.Rational(3, 13),
+    }
+    missing_charge_bias = values[observable_curvature] / (
+        2 * values[chi] * values[volume]
+    )
+    require(
+        sp.simplify(fixed_q_observable_shift.subs(values) - missing_charge_bias) != 0,
+        "fixed-topology observable bias must retain the Q^2/(chi V) term",
+    )
+
+    fixed_sector_charge_variance = sp.Integer(0)
+    theta_susceptibility_variance = chi * volume
+    require(
+        sp.simplify(fixed_sector_charge_variance - theta_susceptibility_variance) != 0,
+        "fixed-topology charge variance should not estimate theta susceptibility",
     )
 
 
@@ -720,6 +801,7 @@ def main() -> None:
     check_finite_volume_cumulant_identity()
     check_finite_volume_theta_cumulant_hierarchy()
     check_local_density_susceptibility_cumulant()
+    check_fixed_topology_saddle_extraction()
     check_cp_symmetric_first_moment()
     check_anomaly_invariant_singlet_coordinate_and_mass_alignment()
     check_witten_veneziano_mass_coefficient()

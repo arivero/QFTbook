@@ -328,9 +328,11 @@
 | \(Q[A]\) | instanton/topological charge |
 | \(Z_{\Lambda,V_4,Q}\) | finite-regulator sector partition weight at topological charge \(Q\) |
 | \(E_{\Lambda,V_4}(\theta)\) | finite-regulator vacuum-energy density near \(\theta=0\) |
+| \(\widehat Z_Q,R_Q\) | fixed-topology sector weight obtained by theta Fourier inversion, and its saddle/endpoint/branch residual |
 | \(\mathcal K_Q,\kappa_n^{(Q)},b_{2,\Lambda,V_4},b_{4,\Lambda,V_4}\) | finite-regulator topological-charge cumulant generator, charge cumulants, and branchwise theta-expansion coefficients |
 | \(q_{\Lambda,V_4}(x)\) | regulated local topological-charge density integrating to \(Q\) |
 | \(\chi_{\rm top}\), \(\chi_{\rm YM}\) | continuum topological susceptibility, and its pure-Yang--Mills specialization |
+| \(O_Q,O_2,R_{O,Q}\) | fixed-topology local-observable expectation, its theta-curvature coefficient, and the fixed-sector bias residual |
 | \(\mathcal B,\beta\) | theta-branch label set and branch label in a finite-regulator or thermodynamic branch datum |
 | \(E_\beta(\theta)\) | theta-branch energy density |
 | \(\omega_\beta\) | local state associated with a selected theta branch |
@@ -580,6 +582,14 @@
   the contact term fixed by the local \(\theta\)-counterterm convention; a
   shift \(\frac12c_\theta\theta^2\) in the vacuum energy shifts both
   \(E''(0)\) and the integrated density contact term by \(c_\theta\).
+- Fixed-topology measurements are not \(\theta=0\) measurements.  Under a
+  selected CP-even branch saddle with \(\chi V_4\gg1\),
+  \(\widehat Z_Q\) has Gaussian slope
+  \(\exp[-Q^2/(2\chi V_4)]\) with the displayed \(b_2\) correction, and a
+  local observable has leading fixed-sector bias
+  \(O_2(1-Q^2/(\chi V_4))/(2\chi V_4)\).  A single fixed-\(Q\) sector has zero
+  charge variance, so \(\chi\) must be extracted from sector weights,
+  reweighting, or an independently controlled bias subtraction.
 - Theta branches are formulated as a datum, not presumed as folklore.  A
   unique branch of smallest energy density dominates the thermodynamic limit
   under the stated uniform free-energy asymptotics.  Convex mixtures of pure
@@ -1167,6 +1177,13 @@
   caveat, and local theta-counterterm derivative shifts.  The paired
   theta/Witten--Veneziano check script verifies the hierarchy from a concrete
   CP-symmetric charge distribution.
+- 2026-06-04 issue #630 fixed-topology extraction pass: added
+  `ca:fixed-topology-theta-extraction`, deriving the Gaussian
+  theta-Fourier saddle for sector weights, the first \(b_2\) correction, and
+  the leading fixed-\(Q\) local-observable bias.  The theta/Witten--Veneziano
+  check now derives the Gaussian second/fourth moments, the slope extraction
+  of \(\chi\), and negative controls for fixed-sector variance and omitted
+  \(Q^2/(\chi V)\) bias.
 - 2026-05-30 issue #696 dequote pass: converted the cubic gauge obstruction
   from a `quotedtheorem` to a local proposition with proof from the
   perturbative BRST bicomplex, descent of

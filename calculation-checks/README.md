@@ -376,10 +376,13 @@ Current checks:
   susceptibility cumulant identity, the finite-regulator theta-cumulant
   hierarchy through \(b_2,b_4\) with the local theta-counterterm derivative
   shifts, the finite-regulator local-density double-sum form with its
-  contact-term convention, CP-symmetric first
-  moment, theta periodicity by branch relabeling, branch-mixture cluster
-  covariance, thermodynamic branch selection, massless-quark theta
-  screening, and the Witten--Veneziano mass coefficient.  It also verifies
+  contact-term convention, the fixed-topology Gaussian sector-weight saddle,
+  quartic correction, slope extraction of \(\chi\), and local-observable
+  \(Q^2/(\chi V)\) bias with fixed-sector variance and omitted-bias negative
+  controls, CP-symmetric first moment, theta periodicity by branch relabeling,
+  branch-mixture cluster covariance, thermodynamic branch selection,
+  massless-quark theta screening, and the Witten--Veneziano mass coefficient.
+  It also verifies
   the axial invariance of \(\theta-i\log\det\widehat U\), its alignment with
   the microscopic \(\theta+\arg\det M\) phase after mass-spurion locking, the
   local \((\theta,\eta_0)\) curvature matrix, its screening null vector,
