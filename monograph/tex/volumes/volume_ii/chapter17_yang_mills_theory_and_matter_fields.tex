@@ -1421,6 +1421,192 @@ Chapter~\ref{ch:volume-ii-18}.  Unitary gauge is a useful reduced coordinate
 description of the classical spectrum, but it is not the gauge in which the
 renormalizability proof is manifest.
 
+\section{Longitudinal Vectors and Would-Be Goldstone Amplitudes}
+\label{sec:longitudinal-goldstone-equivalence}
+
+The BEH construction identifies which local scalar coordinates become
+longitudinal polarizations of massive vectors.  It does not by itself say what
+is computed when a high-energy experiment prepares an external longitudinal
+massive gauge boson.  That statement is an amplitude statement, and it uses
+BRST control, external-pole residues, and a high-energy expansion.  The
+conventional slogan that a longitudinal vector is a Goldstone boson at high
+energy is therefore useful only after the following data have been fixed.  The
+perturbative lineage includes
+\cite{CornwallLevinTiktopoulos1974,LeeQuiggThacker1977,
+ChanowitzGaillard1985,Veltman1990EquivalenceTheorem,BaggerSchmidt1990}.
+
+\begin{definition}[Broken-gauge amplitude datum]
+\label{def:broken-gauge-amplitude-datum}
+A broken-gauge amplitude datum consists of:
+\begin{enumerate}
+\item a perturbative gauge theory expanded around a scalar background \(v\)
+  in an \(R_\xi\) chart of the form
+  \eqref{eq:nonabelian-beh-rxi-functional};
+\item an anomaly-free BRST/Slavnov--Taylor identity, either exact in the
+  finite regulator or restored order by order by the cohomological mechanism of
+  Theorem~\ref{thm:all-order-slavnov-taylor-restoration};
+\item a renormalization scheme and field-coordinate choice for the mixed
+  vector/Goldstone two-point functions;
+\item isolated massive-vector poles with nonzero residues, so that the
+  external-pole extraction of Chapter~\ref{ch:lsz-reduction} is meaningful;
+  and
+\item an energy range \(E\gg m_a\) separated from thresholds, resonant pole
+  regions, forward singularities, and soft or collinear regions that would
+  require a separate infrared construction.
+\end{enumerate}
+For the physical Standard Model the \(W\) and \(Z\) are unstable.  Literal LSZ
+external states then require a stable deformation of the model, a complex-pole
+scheme, or a narrow-width idealization.  The perturbative relation below is not
+a nonperturbative theorem about the full electroweak theory.
+\end{definition}
+
+\begin{controlledapproximation}[Longitudinal-vector/Goldstone equivalence relation]
+\label{ca:longitudinal-goldstone-equivalence}
+Fix the datum of Definition~\ref{def:broken-gauge-amplitude-datum}.  Let
+\(\mathcal A_R^{\mu,a}(k;X)\) denote a renormalized amputated connected
+amplitude with one external broken vector field before contraction with its
+polarization, and let \(\mathcal A_R^{\varphi_b}(k;X)\) denote the corresponding
+amplitude with the would-be Goldstone coordinate in the broken direction \(b\).
+Then the Slavnov--Taylor identity and the mixed two-point residue
+diagonalization give a contracted-amplitude identity of the form
+\begin{equation}
+  k_\mu \mathcal A_R^{\mu,a}(k;X)
+  =
+  m_a C^a{}_{b}\,\mathcal A_R^{\varphi_b}(k;X)
+  +
+  \mathcal N^a(k;X).
+  \label{eq:contracted-vector-goldstone-amplitude}
+\end{equation}
+Here \(C^a{}_{b}\) is a finite conversion matrix determined by the
+renormalized pole residues and vector/Goldstone mixing convention, while
+\(\mathcal N^a\) contains terms with no external massive-vector pole or
+BRST-exact insertions between physical external states.  After external-pole
+extraction these \(\mathcal N^a\) terms do not contribute to the physical
+one-vector amplitude.
+
+For a momentum \(k^\mu=(E,0,0,|\vec k|)\), \(E^2=|\vec k|^2+m_a^2\), a
+longitudinal polarization may be chosen as
+\begin{equation}
+  \epsilon_L^\mu(k)
+  =
+  \frac{1}{m_a}\bigl(|\vec k|,0,0,E\bigr),
+  \qquad
+  \epsilon_L^2=1,\qquad k_\mu\epsilon_L^\mu=0 .
+  \label{eq:longitudinal-polarization-vector}
+\end{equation}
+It differs from \(k^\mu/m_a\) by
+\begin{equation}
+  r^\mu(k)
+  :=
+  \epsilon_L^\mu(k)-\frac{k^\mu}{m_a}
+  =
+  \frac{1}{m_a}\bigl(|\vec k|-E,0,0,E-|\vec k|\bigr),
+  \qquad
+  |r^\mu(k)|=O(m_a/E).
+  \label{eq:longitudinal-polarization-remainder}
+\end{equation}
+Combining \eqref{eq:contracted-vector-goldstone-amplitude} with
+\eqref{eq:longitudinal-polarization-remainder} gives, for one hard external
+longitudinal leg,
+\begin{equation}
+  \mathcal M\bigl(V_L^a(k),X\bigr)
+  =
+  C^a{}_{b}\,\mathcal M\bigl(\varphi^b(k),X\bigr)
+  +
+  O(m_a/E)\,\mathcal M_{\rm hard}(k,X).
+  \label{eq:longitudinal-goldstone-equivalence-one-leg}
+\end{equation}
+With several longitudinal legs the same statement is applied to each hard leg,
+with a product of the corresponding conversion matrices and remainders
+suppressed by at least one factor \(m/E\).
+\end{controlledapproximation}
+
+The proof mechanism is local in perturbation theory.  In an \(R_\xi\) gauge one
+introduces the auxiliary field \(B^a\) and the BRST doublet
+\[
+  s\bar c^a=B^a,\qquad sB^a=0 .
+\]
+For physical external insertions \(\mathcal O_{\rm phys}\), BRST invariance
+gives
+\[
+  0=\langle s(\bar c^a\mathcal O_{\rm phys})\rangle
+   =\langle B^a\mathcal O_{\rm phys}\rangle .
+\]
+The \(B\)-equation identifies \(B^a\) with the gauge-fixing functional, so the
+broken-sector linear insertion is
+\[
+  \partial^\mu V^a_\mu+\xi\,m_a\,\varphi^a
+\]
+up to the field-coordinate matrix supplied by \(q_v^\dagger\).  Differentiating
+the Slavnov--Taylor identity with respect to the antighost and the remaining
+sources turns this statement into a relation among connected Green functions.
+Passing to 1PI functions and then to amputated connected amplitudes requires
+diagonalizing the mixed \((V_\mu,\varphi)\) two-point matrix at the physical
+massive-vector pole.  The vector residue, the Goldstone residue, and the finite
+mixing counterterms are exactly what appear in \(C^a{}_{b}\).  This is why the
+identity is not just the classical sentence ``replace \(V_L\) by
+\(\varphi\)'': the external-pole convention is part of the statement.
+
+In the Abelian Higgs model of
+\eqref{eq:abelian-higgs-lagrangian-beh}--\eqref{eq:abelian-higgs-rxi-functional},
+with canonical vector \(\mathcal A_\mu=A_\mu/e\), the tree-level diagonal
+\(R_\xi\) chart gives \(C=1\) in the matching convention where
+\begin{equation}
+  k_\mu\,\mathcal A_R^\mu(k;X)
+  =
+  m_{\mathcal A}\,\mathcal A_R^\pi(k;X)
+  +
+  \hbox{terms without the external massive-vector pole}.
+  \label{eq:abelian-higgs-tree-equivalence}
+\end{equation}
+Different sign conventions for the Fourier transform, the BRST variation, or
+the Goldstone coordinate move a phase into \(C\); the matched physical
+observable is unchanged.
+
+For an electroweak example, use the Standard Model scalar chart of
+Definition~\ref{def:sm-electroweak-scalar-chart}.  In the hard region away from
+the Higgs pole,
+\begin{equation}
+  \mathcal M(W_L^+W_L^-\to Z_LZ_L)
+  =
+  \mathcal M(\varphi^+\varphi^-\to\chi_3\chi_3)
+  +
+  O(m_W/E,m_Z/E),
+  \label{eq:wlwl-goldstone-scattering-equivalence}
+\end{equation}
+after the chosen external-pole conversion factors are applied.  The leading
+custodial scalar-sector algebra may be written as
+\begin{align}
+  \mathcal M_{\rm deriv}(s) &= \frac{s}{v^2}, \nonumber\\
+  \mathcal M_h(s) &= -\frac{s^2}{v^2(s-m_h^2)}, \nonumber\\
+  \mathcal M_{\rm tot}(s) &=
+  -\frac{m_h^2s}{v^2(s-m_h^2)} .
+  \label{eq:ww-higgs-cancellation-amplitude}
+\end{align}
+Thus the apparent \(s/v^2\) growth is not a physical high-energy prediction of
+the Higgs theory: the Higgs-sector exchange cancels it to the constant
+\(-m_h^2/v^2\) as \(s\to\infty\).  With the partial-wave convention of
+Chapter~\ref{ch:cross-sections-unitarity}, a constant amplitude gives
+\begin{equation}
+  a_0=\frac{\mathcal M_{\rm const}}{16\pi},
+  \qquad
+  a_0\longrightarrow -\frac{m_h^2}{16\pi v^2}.
+  \label{eq:ww-higgs-cancellation-a0}
+\end{equation}
+This calculation illustrates the point of the equivalence relation: the
+Goldstone amplitude is a controlled high-energy representative of a physical
+longitudinal-vector amplitude, while the gauge-dependent Goldstone fields are
+not themselves asymptotic particles in the physical electroweak spectrum.
+
+The claim status should be kept explicit.  The antighost/\(B\)-field identity
+is an exact finite-regulator identity only in a BRST-preserving regulator.  In
+dimensional or other perturbative schemes it is an all-orders consequence after
+Slavnov--Taylor restoration.  The step from the contracted identity to
+external longitudinal vectors is a high-energy asymptotic expansion in \(m/E\).
+Gauge-parameter and scheme dependence may appear in \(C^a{}_{b}\), but it
+cancels from the matched physical observable once the same pole convention is
+used on both sides.
+
 \section{Finite-Energy Gauge-Higgs Solitons}
 \label{sec:gauge-higgs-classical-solitons}
 

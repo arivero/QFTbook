@@ -161,6 +161,11 @@
   it applies only to stable massive isolated local-field poles; massless
   gauge, infraparticle, confinement, resonance, and conformal cases require
   their own asymptotic data and reduction theorems.
+- The longitudinal-vector/Goldstone equivalence relation in the broken
+  Yang--Mills chapter may use this LSZ machinery only after supplying an
+  isolated massive-vector pole and residue convention.  For physical \(W,Z\)
+  bosons, literal stable-particle LSZ is replaced by a stable deformation,
+  complex-pole scheme, or narrow-width idealization.
 - 2026-05-24 issue #393 pass: standardized the one-particle residue in the
   LSZ chapter as \(Z_\phi\).  The unsubscripted source-functional notation
   \(Z[J]\), \(Z_-[J]\), and \(Z_E[J_E]\) remains separate.
@@ -182,6 +187,9 @@
 - No cross-section formulas; those belong in the next chapter.
 - No unitarity/optical theorem development beyond the amplitude convention.
 - No LSZ formula for massless gauge particles or infraparticles.
+- No literal stable-particle LSZ formula for unstable electroweak \(W,Z\)
+  bosons; those require pole-scheme or narrow-width data before external
+  longitudinal amplitudes are interpreted.
 - Companion checks are finite convention checks only; they do not replace the
   distributional boundary-value theorem.
 
@@ -211,3 +219,6 @@
   connected-source convention, external-amputation map, invariant-amplitude
   convention, partition formula, tree \(\phi^4\) post-reduction example, and
   scalar-LSZ scope boundary.
+- 2026-06-04 issue #780 cross-reference pass: recorded the stable-pole
+  boundary needed when the broken Yang--Mills chapter invokes LSZ-style
+  external-pole extraction for longitudinal massive vectors.

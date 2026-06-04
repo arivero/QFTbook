@@ -648,6 +648,15 @@ Current checks:
   half-charge bookkeeping with integer-charge and unpaired-spectrum negative
   controls, the coordinate transformation of \(\sqrt{\det G_{ab}}\,d^mz\),
   and the \(4N_c\) local dimension count of the embedded one-instanton moduli.
+- `longitudinal_goldstone_equivalence_checks.py`: finite checks for the
+  longitudinal-vector/Goldstone equivalence section, including the mostly-plus
+  longitudinal polarization identities, the \(O(m/E)\) remainder from
+  \(\epsilon_L-k/m\), negative controls rejecting \(k/m\) as an exact
+  polarization, the external-pole residue/analytic-term separation used in the
+  contracted Slavnov--Taylor identity, the high-energy Higgs-sector
+  cancellation
+  \(s/v^2-s^2/(v^2(s-m_h^2))=-m_h^2s/(v^2(s-m_h^2))\), and the ordered
+  \(a_0=\mathcal M/(16\pi)\) partial-wave normalization.
 - `borel_laplace_checks.py`: exact checks for the Borel--Laplace and
   zero-dimensional quartic large-order section, including Gaussian moments,
   perturbative coefficients, the ratio

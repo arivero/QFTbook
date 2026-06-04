@@ -302,6 +302,12 @@
   \(\Delta_N\) is local, the Slavnov consistency identity makes it a
   \(\mathcal B_{S_0}\)-cocycle, the anomaly hypothesis writes it as
   \(s_0 b_N+d r_N\), and the local counterterm \(-\int b_N\) cancels it.
+- The restored Slavnov--Taylor identity is now explicitly used in the
+  preceding Yang--Mills--matter chapter to derive the contracted
+  vector/Goldstone amplitude identity behind the high-energy longitudinal
+  equivalence relation.  The BRST input is the antighost/\(B\)-field insertion
+  identity plus the mixed vector/Goldstone pole-residue bookkeeping, not a
+  nonperturbative external-state theorem.
 - The chapter explicitly separates regularization, renormalization, and
   operator-insertion regularization/source-coordinate choices for composite
   operators.
@@ -435,3 +441,8 @@
   \(\gamma_5=-\ii\gamma^0\gamma^1\gamma^2\gamma^3\), stated the associated
   trace identity with \(\epsilon^{0123}=+1\), and cross-referenced the spinor
   convention appendix.
+- 2026-06-04 issue #780 cross-reference pass: recorded that the
+  Slavnov--Taylor restoration theorem supplies the perturbative identity used
+  by the longitudinal-vector/Goldstone equivalence section, with its scope
+  limited to restored BRST/ST perturbation theory and external-pole residue
+  conventions.

@@ -128,6 +128,11 @@
   transition probability, amplitude convention, sharp-density limit, invariant
   phase space, flux, two-body phase space, optical theorem, and partial-wave
   unitarity geometry; added `cross_section_partial_wave_checks.py`.
+- 2026-06-04 issue #780 cross-reference pass: the broken Yang--Mills
+  longitudinal-vector example now uses this chapter's ordered convention that
+  a constant invariant amplitude contributes \(a_0=\mathcal M/(16\pi)\);
+  `longitudinal_goldstone_equivalence_checks.py` rejects the common
+  \(32\pi\) mismatch for that ordered normalization.
 
 ## Figure Requirements
 

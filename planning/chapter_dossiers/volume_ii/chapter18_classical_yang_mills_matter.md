@@ -100,6 +100,12 @@ The chapter must define and derive:
   dimension-four shifted action, \(p^{-2}\) vector propagators, and BRST
   identities controlling counterterms, while unitary gauge is kept as a
   classical spectrum coordinate chart rather than the manifest proof gauge;
+- the longitudinal-vector/Goldstone equivalence relation as a perturbative
+  amplitude statement: broken-gauge datum, contracted Slavnov--Taylor identity,
+  vector/Goldstone pole-residue conversion matrix, \(O(m/E)\) longitudinal
+  polarization expansion, Abelian Higgs tree convention, electroweak
+  \(W_LW_L\) scalar representative, Higgs cancellation of \(s/v^2\) growth,
+  and the unstable-\(W/Z\) pole-scheme or narrow-width caveat;
 - finite-energy gauge-Higgs sectors for adjoint scalar fields, including the
   vacuum orbit \(\mathcal O_v\), stabilizer \(H\), and the boundary map
   \(S^2_\infty\to G/H\);
@@ -175,7 +181,12 @@ The chapter must define and derive:
     would-be Goldstone fields; in \(R_\xi\) gauges they are unphysical
     gauge-dependent fields paired with ghosts by BRST, while the physical
     spectrum contains massive vector particles and gauge-invariant scalar
-    excitations.
+    excitations.  The high-energy equivalence between external longitudinal
+    massive vectors and would-be Goldstone amplitudes is a separate
+    perturbative external-pole statement controlled by Slavnov--Taylor
+    identities, residue/mixing conventions, and the \(m/E\) expansion; it is
+    not a nonperturbative theorem and it does not make gauge-dependent
+    Goldstone fields physical asymptotic particles.
 15. In a nonabelian scalar vacuum \(v\), the gauge-boson mass matrix is
     determined by \(K_{ab}=\operatorname{Re}(t_R^a v,t_R^b v)_R\); its kernel
     is the stabilizer Lie algebra \(\mathfrak h\), so the massive-vector count
@@ -228,6 +239,11 @@ The chapter must define and derive:
   invariance, the one-instanton orientation dimension count, and the
   Jackiw-Rebbi kink zero-mode profile/normalization/half-charge algebra with
   integer-charge and unpaired-spectrum negative controls.
+- `calculation-checks/longitudinal_goldstone_equivalence_checks.py`: verifies
+  the longitudinal-polarization \(O(m/E)\) remainder, the external-pole
+  residue/analytic-term separation, the electroweak Higgs-sector cancellation,
+  and the ordered \(16\pi\) partial-wave normalization used by the new
+  equivalence-relation section.
 
 ## Figure Requirements
 
@@ -322,3 +338,10 @@ The chapter must define and derive:
   matrix-valued curvature and that changing the generator trace normalization
   necessarily changes component coordinates and the component coordinate
   called \(g_{\mathrm{YM}}\).
+- 2026-06-04 issue #780 pass: added a longitudinal-vector/Goldstone
+  equivalence section after the BEH construction.  The pass keeps hypotheses
+  before conclusions: \(R_\xi\) datum, restored Slavnov--Taylor identity,
+  vector/Goldstone pole residues, high-energy \(m/E\) expansion, stable-pole
+  LSZ versus unstable \(W/Z\) caveat, Abelian Higgs tree convention,
+  electroweak \(W_LW_L\) scalar representative, and Higgs cancellation of the
+  apparent \(s/v^2\) growth.

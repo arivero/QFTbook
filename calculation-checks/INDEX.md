@@ -8,9 +8,9 @@ The detailed per-script narrative ledger lives in
 tools/run_calculation_checks.sh --list
 ```
 
-As of the 2026-06-04 low-dimensional SSB infrared pass the directory
-contains 234 active check scripts: 232 Python checks and 2 Wolfram Language
-companion checks.  The runner selects all `calculation-checks/*.py` and
+As of the 2026-06-04 longitudinal-vector/Goldstone equivalence pass the
+directory contains 235 active check scripts: 233 Python checks and 2 Wolfram
+Language companion checks.  The runner selects all `calculation-checks/*.py` and
 `calculation-checks/*.wl` files unless a filter is supplied.
 
 ## Runner Policy

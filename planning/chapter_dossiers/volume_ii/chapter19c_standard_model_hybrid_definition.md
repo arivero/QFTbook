@@ -157,6 +157,11 @@
   and higher-operator identities, and elementary \(S,T,U\)
   two-point-coordinate identities, plus the muon \(g-2\) Schwinger coefficient,
   leading electroweak coefficient normalization, and HVP kernel algebra.
+- `calculation-checks/longitudinal_goldstone_equivalence_checks.py` verifies
+  the high-energy electroweak scalar representative used for
+  \(W_L^+W_L^-\to Z_LZ_L\): the longitudinal \(m/E\) kinematics, external-pole
+  residue separation, Higgs cancellation of the apparent \(s/v^2\) growth, and
+  the \(a_0=\mathcal M/(16\pi)\) normalization.
 
 ## Claim Ledger
 
@@ -171,6 +176,11 @@
    at \(H_0=(0,v/\sqrt2)^T\).
 5. The Higgs radial mass and tree-level \(\rho\)-identity are coordinate
    identities in the perturbative electroweak construction.
+   High-energy longitudinal \(W,Z\) amplitudes use the broken Yang--Mills
+   equivalence relation only after choosing a perturbative pole convention; the
+   \(\chi_i\) are gauge-orbit representatives, not physical asymptotic
+   particles, and unstable \(W,Z\) bosons require pole-scheme or narrow-width
+   external-state data.
 6. Local and finite weak anomalies cancel generation by generation.
 7. \(B+L\) is anomalous in the electroweak sector, while \(B-L\) has the
    stated mixed-gauge cancellations and requires \(\nu^c\) for cubic and
@@ -298,3 +308,8 @@
   operators are explicitly complex coordinates with Hermitian conjugates.
   `standard_model_anomaly_checks.py` now verifies the adjoint sign, diagonal
   Hermiticity, and an off-diagonal flavor pair.
+- 2026-06-04 issue #780 cross-reference pass: added the electroweak warning
+  that longitudinal \(W,Z\) amplitudes require the perturbative
+  vector/Goldstone equivalence relation and a pole convention for unstable
+  vectors; the high-energy \(W_LW_L\) Higgs-cancellation algebra is checked in
+  `longitudinal_goldstone_equivalence_checks.py`.

@@ -26,6 +26,10 @@
       "risk_class": "instanton amplitudes"
     },
     {
+      "path": "longitudinal_goldstone_equivalence_checks.py",
+      "risk_class": "broken gauge-theory external-state amplitudes"
+    },
+    {
       "path": "qcd_theta_witten_veneziano_checks.py",
       "risk_class": "QCD theta/Witten-Veneziano Ward identities"
     },
