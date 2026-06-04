@@ -374,9 +374,10 @@ Current checks:
   local \((\theta,\eta_0)\) curvature matrix, its screening null vector,
   the screened theta Schur complement, and the sign-sensitive mixed
   derivative fixed by the anomaly-invariant coordinate.  It also checks the
-  residual Witten--Veneziano Hessian budget, including the exact Schur
-  numerator, the singlet mass shift, the residual-free cancellation, and a
-  finite residual bound for the screened full-QCD theta curvature.  The
+  Ward-compatible residual Witten--Veneziano Hessian budget, including the
+  singlet mass shift, the exact zero full-QCD massless theta Schur complement,
+  and a negative control which rejects an unconstrained residual Hessian unless
+  it is interpreted as finite-mass or explicit Ward-breaking input.  The
   dilute-instanton chiral-spurion branch checks the controlled potential
   \(2\zeta_\chi[1-\cos(\theta-i\log\det\widehat U)]\), its
   \(\chi_{\rm top}^{\rm dig}=2\zeta_\chi\) susceptibility, the same

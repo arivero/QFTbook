@@ -26,6 +26,10 @@
       "risk_class": "instanton amplitudes"
     },
     {
+      "path": "qcd_theta_witten_veneziano_checks.py",
+      "risk_class": "QCD theta/Witten-Veneziano Ward identities"
+    },
+    {
       "path": "cft_higher_genus_sewing_checks.py",
       "risk_class": "CFT sewing"
     },

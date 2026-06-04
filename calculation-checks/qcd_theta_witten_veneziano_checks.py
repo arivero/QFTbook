@@ -4,6 +4,47 @@
 The finite theta-data checks distinguish exact finite-volume cumulant
 identities from the continuum and branch-selection assumptions needed for QCD
 theta physics.
+
+Evidence contract.
+
+Target claims:
+- Volume II's theta and singlet-axial section uses the finite-volume
+  susceptibility cumulant identity with the correct signs and contact-term
+  convention.
+- The Witten-Veneziano matching coordinate is theta - i log det U, and its
+  local Hessian has the screening null vector required by a massless quark.
+- The residual Witten-Veneziano budget is Ward-compatible in exactly massless
+  QCD: it may shift the anomaly-invariant curvature, but it may not produce a
+  nonzero full-QCD theta Schur complement unless finite masses or an explicit
+  symmetry-breaking source are declared.
+
+Independent construction:
+- Builds finite theta partition functions directly from weighted topological
+  sectors, differentiates log Z, and compares to cumulants.
+- Differentiates the singlet local potential and all Hessians symbolically,
+  then computes Schur complements and null-vector conditions from the matrices.
+- Derives the eta/eta-prime mass matrix from flavor generators rather than
+  importing the displayed matrix entries.
+
+Imported assumptions:
+- The continuum branch and pure-Yang-Mills susceptibility are external inputs
+  when the Witten-Veneziano matching window is invoked.
+- The dilute-instanton spurion check assumes a finite-activity one-instanton
+  determinant coefficient in the declared chiral matching scheme.
+
+Negative controls:
+- The wrong singlet coordinate fails axial invariance and flips the mixed
+  derivative convention.
+- An unconstrained residual Hessian is explicitly rejected as a massless-QCD
+  residual when its Schur complement is nonzero and its screening vector is
+  broken.
+- A branch mixture gives a nonzero cluster covariance, while a pure selected
+  branch has zero covariance.
+
+Scope boundary:
+- These checks verify algebraic identities and local matching bookkeeping.
+  They do not prove the Yang-Mills continuum limit, the large-N expansion, the
+  absence of branch crossings, or the semiclassical instanton measure.
 """
 
 from __future__ import annotations
@@ -313,58 +354,85 @@ def check_theta_eta_curvature_matrix() -> None:
     )
 
 
-def check_witten_veneziano_residual_budget() -> None:
+def check_witten_veneziano_ward_compatible_residual_budget() -> None:
     chi, a = sp.symbols("chi a", positive=True)
-    dtt, dte, dee = sp.symbols("dtt dte dee")
+    dchi = sp.symbols("dchi")
+    btt, bte, bee, bchi = sp.symbols("btt bte bee bchi")
 
-    htt = chi + dtt
-    hte = a * chi + dte
-    hee = a**2 * chi + dee
-    schur_curvature = htt - hte**2 / hee
-    schur_numerator = (
-        chi * dee
-        + a**2 * chi * dtt
-        + dtt * dee
-        - 2 * a * chi * dte
-        - dte**2
+    rank_one = sp.Matrix([[1, a], [a, a**2]])
+    null_vector = sp.Matrix([-a, 1])
+    ward_hessian = (chi + dchi) * rank_one
+
+    for row, entry in enumerate(ward_hessian * null_vector):
+        assert_zero(f"WV Ward-compatible residual null vector row {row}", entry)
+
+    ward_schur = (
+        ward_hessian[0, 0]
+        - ward_hessian[0, 1] * ward_hessian[1, 0] / ward_hessian[1, 1]
     )
-
+    assert_zero("WV Ward-compatible massless Schur complement", ward_schur)
     assert_zero(
-        "WV residual Schur numerator",
-        schur_curvature - schur_numerator / hee,
+        "WV Ward-compatible singlet mass shift",
+        ward_hessian[1, 1] - a**2 * chi - a**2 * dchi,
     )
-    assert_zero("WV residual singlet mass shift", hee - a**2 * chi - dee)
+
+    compatible_extra = sp.Matrix([[bchi, a * bchi], [a * bchi, a**2 * bchi]])
+    for row, entry in enumerate(compatible_extra * null_vector):
+        assert_zero(f"WV rank-one extra residual null vector row {row}", entry)
+    compatible_schur = (
+        (ward_hessian + compatible_extra)[0, 0]
+        - (ward_hessian + compatible_extra)[0, 1]
+        * (ward_hessian + compatible_extra)[1, 0]
+        / (ward_hessian + compatible_extra)[1, 1]
+    )
+    assert_zero("WV rank-one extra residual remains screened", compatible_schur)
+
+    breaking = sp.Matrix([[btt, bte], [bte, bee]])
+    breaking_hessian = ward_hessian + breaking
+    breaking_schur = (
+        breaking_hessian[0, 0]
+        - breaking_hessian[0, 1] * breaking_hessian[1, 0] / breaking_hessian[1, 1]
+    )
+    chi_eff = chi + dchi
+    breaking_numerator = (
+        chi_eff * bee
+        + a**2 * chi_eff * btt
+        + btt * bee
+        - 2 * a * chi_eff * bte
+        - bte**2
+    )
     assert_zero(
-        "WV residual-free Schur cancellation",
-        schur_curvature.subs({dtt: 0, dte: 0, dee: 0}),
+        "WV Ward-breaking Schur diagnostic numerator",
+        breaking_schur - breaking_numerator / breaking_hessian[1, 1],
     )
 
-    chi_value = sp.Rational(5, 3)
-    a_value = sp.Rational(3, 2)
-    dtt_value = sp.Rational(1, 17)
-    dte_value = -sp.Rational(1, 19)
-    dee_value = sp.Rational(1, 23)
-    schur_value = schur_curvature.subs(
-        {chi: chi_value, a: a_value, dtt: dtt_value, dte: dte_value, dee: dee_value}
+    bad_values = {
+        chi: sp.Rational(5, 3),
+        dchi: sp.Rational(1, 7),
+        a: sp.Rational(3, 2),
+        btt: sp.Rational(1, 17),
+        bte: -sp.Rational(1, 19),
+        bee: sp.Rational(1, 23),
+    }
+    bad_schur = sp.simplify(breaking_schur.subs(bad_values))
+    require(
+        bad_schur != 0,
+        "unconstrained residual Hessian must not be accepted as massless screening",
+    )
+    bad_null = [sp.simplify(entry.subs(bad_values)) for entry in breaking_hessian * null_vector]
+    require(
+        any(entry != 0 for entry in bad_null),
+        "unconstrained residual Hessian should break the massless screening vector",
     )
 
-    rtt = abs(dtt_value)
-    rte = abs(dte_value)
-    ree = abs(dee_value)
-    require(
-        a_value**2 * chi_value > ree,
-        "WV residual denominator hypothesis should hold in the exact test datum",
-    )
-    schur_bound = (
-        chi_value * ree
-        + a_value**2 * chi_value * rtt
-        + rtt * ree
-        + 2 * a_value * chi_value * rte
-        + rte**2
-    ) / (a_value**2 * chi_value - ree)
-    require(
-        abs(schur_value) <= schur_bound,
-        "WV residual Schur bound should dominate the exact residual curvature",
+    constrained_values = {
+        btt: bchi,
+        bte: a * bchi,
+        bee: a**2 * bchi,
+    }
+    assert_zero(
+        "WV constrained residual Schur cancellation",
+        breaking_schur.subs(constrained_values),
     )
 
 
@@ -546,7 +614,7 @@ def main() -> None:
     check_anomaly_invariant_singlet_coordinate_and_mass_alignment()
     check_witten_veneziano_mass_coefficient()
     check_theta_eta_curvature_matrix()
-    check_witten_veneziano_residual_budget()
+    check_witten_veneziano_ward_compatible_residual_budget()
     check_massless_quark_theta_screening()
     check_dilute_instanton_chiral_spurion_potential()
     check_eta_eta_prime_mass_matrix_ledger()
