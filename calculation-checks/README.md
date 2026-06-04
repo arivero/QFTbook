@@ -504,7 +504,10 @@ Current checks:
   propagator residues while retaining the selected instanton zero-mode form
   factors, the plane-wave four-fermion assembly in which the differentiated
   right-slot and left-slot determinants share the same center phase and the
-  center integral supplies total momentum conservation, the \(SU(2)\)
+  center integral supplies total momentum conservation, the
+  hard-wave-packet source-support check which requires rank-two projected
+  overlap matrices and a positive hard momentum margin before applying the
+  \(R^{-1/3}\) tail bound, the \(SU(2)\)
   instanton-orientation Haar projection of two colored zero-mode slots onto
   the antisymmetric invariant tensor, the genuine shared-orientation four-slot
   Haar projector with its \(1/3\) counterexample to the factorized shortcut, the

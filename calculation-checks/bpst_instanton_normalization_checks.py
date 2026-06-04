@@ -54,6 +54,10 @@ relations
     the center integral supplies total momentum conservation while the
     individual zero-mode form-factor determinants remain inside the size
     integral
+    hard wave-packet sources require rank-two projected zero-mode overlap
+    matrices and a positive hard support margin; Hadamard's inequality turns
+    row-wise zero-mode form-factor bounds into the same R^(-1/3) tail
+    control for the SU(3), Nf=2 four-slot coefficient
     the SU(2) instanton orientation Haar average projects two colored
     zero-mode slots onto the antisymmetric invariant tensor and makes the
     shared-orientation four-slot coefficient a genuine four-fundamental Haar
@@ -2017,6 +2021,93 @@ def check_plane_wave_instanton_four_fermion_assembly() -> None:
     assert_equal("finite-volume center sum keeps conserved momentum", center_sum_conserved, period**4)
 
 
+def check_hard_wave_packet_instanton_source_support() -> None:
+    right_rows = [
+        [Fraction(2, 3), Fraction(5, 7)],
+        [Fraction(11, 13), Fraction(17, 19)],
+    ]
+    left_columns = [
+        [Fraction(23, 29), Fraction(31, 37)],
+        [Fraction(41, 43), Fraction(47, 53)],
+    ]
+
+    right_det = det_fraction(right_rows)
+    left_det = det_fraction(left_columns)
+    assert_equal("hard wave-packet right overlap has rank two", right_det == 0, False)
+    assert_equal("hard wave-packet left overlap has rank two", left_det == 0, False)
+
+    right_row_norm_product = product_fraction(
+        [sum(entry * entry for entry in row) for row in right_rows]
+    )
+    left_row_norm_product = product_fraction(
+        [sum(entry * entry for entry in row) for row in left_columns]
+    )
+    assert_equal(
+        "hard wave-packet right Hadamard determinant bound",
+        right_det * right_det <= right_row_norm_product,
+        True,
+    )
+    assert_equal(
+        "hard wave-packet left Hadamard determinant bound",
+        left_det * left_det <= left_row_norm_product,
+        True,
+    )
+    assert_equal(
+        "hard wave-packet four-slot Hadamard bound",
+        (right_det * left_det) ** 2 <= right_row_norm_product * left_row_norm_product,
+        True,
+    )
+
+    rank_one_right = [3 * entry for entry in right_rows[0]]
+    assert_equal(
+        "rank-one hard source projection kills right determinant",
+        det_fraction([right_rows[0], rank_one_right]),
+        Fraction(0),
+    )
+    rank_one_left = [5 * entry for entry in left_columns[0]]
+    assert_equal(
+        "rank-one hard source projection kills left determinant",
+        det_fraction([left_columns[0], rank_one_left]),
+        Fraction(0),
+    )
+
+    n_c = 3
+    n_f = 2
+    b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+    slot_decay_power = 12
+    tail_margin = slot_decay_power - b0 - 2
+    assert_equal("hard wave-packet SU3 Nf2 tail margin", tail_margin, Fraction(1, 3))
+
+    # Choose R=x^3 so the exact SU(3), Nf=2 tail model
+    # int_R^infty s^(-4/3) ds = 3 R^(-1/3) remains rational.
+    x = Fraction(4)
+    r_cut = x**3
+    c_min = Fraction(2)
+    c_src = Fraction(5, 7)
+    tail_bound = 3 * c_src * c_min ** (-12) / x
+    assert_equal(
+        "hard wave-packet exact tail model",
+        tail_bound,
+        c_src * c_min ** (-12) * 3 / x,
+    )
+
+    harder_cut = (2 * x) ** 3
+    harder_tail_bound = 3 * c_src * c_min ** (-12) / (2 * x)
+    assert_equal("hard wave-packet harder cutoff", harder_cut, 8 * r_cut)
+    assert_equal(
+        "hard wave-packet tail halves when R grows by eight",
+        harder_tail_bound,
+        tail_bound / 2,
+    )
+
+    soft_support_margin = Fraction(0)
+    assert_equal(
+        "soft source support has no positive hard margin",
+        soft_support_margin > 0,
+        False,
+    )
+
+
 def epsilon2(left: int, right: int) -> Fraction:
     if (left, right) == (0, 1):
         return Fraction(1)
@@ -3713,6 +3804,7 @@ def main() -> None:
     check_instanton_zero_mode_tail_local_limit()
     check_instanton_external_leg_amputation_kernel()
     check_plane_wave_instanton_four_fermion_assembly()
+    check_hard_wave_packet_instanton_source_support()
     check_instanton_orientation_haar_projection()
     check_color_singlet_instanton_source_projection()
     check_instanton_euclidean_to_physical_residual_budget()

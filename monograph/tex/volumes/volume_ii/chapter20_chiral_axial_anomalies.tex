@@ -5877,6 +5877,92 @@ formula follows from the same phase count applied to
 the elementary identity \(\det(u v^T)=0\) for two-component c-number vectors.
 \end{proof}
 
+\begin{controlledapproximation}[Hard wave-packet support in the four-slot
+instanton kernel]
+\label{ca:instanton-hard-wave-packet-source-support}
+The plane-wave formula above is a useful coordinate, but a physical hard
+source is a wave packet or a source smearing.  In the source-amputated
+\(N_f=2\) setup, replace the plane-wave slot covectors by wave packets and
+write the reduced zero-mode overlap matrices, after extracting the explicit
+\(\rho^{3/2}\) from each slot, as
+\begin{equation}
+\begin{aligned}
+  \mathcal R_{Af}(\rho,U)
+  &=
+  \int \widehat f^R_A(p)\,
+  F_{\rm zm}(\rho |p|/2)\,
+  \mathcal T^R_{Af}(\widehat p,U)\,\dd\Pi_R(p),\\
+  \mathcal L_{fB}(\rho,U)
+  &=
+  \int
+  F_{\rm zm}(\rho |p|/2)\,
+  \mathcal T^L_{fB}(\widehat p,U)\,
+  \widehat f^L_B(p)\,\dd\Pi_L(p),
+\end{aligned}
+  \label{eq:instanton-wave-packet-zero-mode-overlaps}
+\end{equation}
+where \(\dd\Pi_{R,L}\) denote the chosen finite-regulator momentum measures
+and \(\mathcal T^{R,L}\) contain the spin-color tensors and source
+normalizations.  Suppose each slot is supported in a hard annulus
+\[
+  c_-Q\le |p|\le c_+Q,\qquad c_->0,
+\]
+and suppose the source tensors and wave packets give row-norm bounds
+\begin{equation}
+  \sum_f|\mathcal R_{Af}(\rho,U)|^2\le
+  C^2_{R,A}(1+c_-Q\rho)^{-6},
+  \qquad
+  \sum_f|\mathcal L_{fB}(\rho,U)|^2\le
+  C^2_{L,B}(1+c_-Q\rho)^{-6}.
+  \label{eq:instanton-wave-packet-row-bound}
+\end{equation}
+Such a bound follows, for example, from the large-slot estimate
+\(|F_{\rm zm}(t)|\le C_{\rm zm}(1+t)^{-3}\) together with bounded source
+norms.  Hadamard's inequality then gives the pointwise four-slot estimate
+\begin{equation}
+  \left|
+  \rho^6\det\mathcal R(\rho,U)\det\mathcal L(\rho,U)
+  \right|
+  \le
+  \rho^6 C_{\rm src}(1+c_-Q\rho)^{-12},
+  \qquad
+  C_{\rm src}:=\prod_A C_{R,A}\prod_B C_{L,B}.
+  \label{eq:instanton-wave-packet-four-slot-bound}
+\end{equation}
+For the one-loop \(SU(3)\), \(N_f=2\) hard density, this gives the explicit
+tail bound
+\begin{equation}
+\begin{aligned}
+  Q^{b_0}
+  \int_{R/Q}^{\infty}
+  \rho^{b_0+1}
+  C_{\rm src}(1+c_-Q\rho)^{-12}\,\dd\rho
+  &\le
+  Q^{-2}C_{\rm src}c_-^{-12}
+  \frac{R^{\,b_0-10}}{10-b_0}  \\
+  &=
+  3Q^{-2}C_{\rm src}c_-^{-12}R^{-1/3},
+\end{aligned}
+  \label{eq:instanton-wave-packet-hard-tail-bound}
+\end{equation}
+where \(b_0=29/3\) and the inequality is written for \(R\) in the region
+where \(c_-R\ge1\).  This is a source-level version of the hard-tail estimate
+in ControlledApproximation~\ref{ca:hard-size-dominance-vs-convergence}.
+
+The same formula also records two failure modes.  First, the source must
+remain rank-two in each chirality after projection to the instanton
+zero-mode subspace: if the two right-handed rows of \(\mathcal R\), or the
+two left-handed columns of \(\mathcal L\), become proportional, then
+\(\det\mathcal R\det\mathcal L=0\) and the selected four-slot channel has no
+leading zero-mode coefficient.  Second, a wave packet with support reaching
+soft momentum has \(c_-=0\), so
+\eqref{eq:instanton-wave-packet-hard-tail-bound} is unavailable.  The
+calculation must then use the actual soft source profile, a fused bilinear
+source, physical screening, or a Wilsonian long-size remainder.  Hardness is
+therefore a property of the source projection and endpoint estimate, not of
+the BPST moduli coordinates alone.
+\end{controlledapproximation}
+
 \begin{proposition}[Orientation projection in the instanton four-slot kernel]
 \label{prop:instanton-color-orientation-haar-projection}
 The global \(SU(2)\) orientation in the embedded BPST core enters the

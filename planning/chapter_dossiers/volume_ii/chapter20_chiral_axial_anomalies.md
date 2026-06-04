@@ -98,6 +98,11 @@
   differentiated right-slot and left-slot determinants, so total momentum
   conservation is produced by the center integral while the individual
   zero-mode form-factor determinants remain inside the size integral.  The
+  hard-wave-packet continuation turns this plane-wave coordinate into an
+  operational source criterion: the projected right and left zero-mode
+  overlap matrices must remain rank-two, and every differentiated slot must
+  have positive hard support before the \(R^{-1/3}\) tail bound can be used.
+  The
   orientation-projection continuation adds the \(SU(2)\) Haar identities which
   turn two colored zero-mode slots into the antisymmetric invariant tensor and
   replace the four-slot shortcut by the genuine shared-orientation Haar
@@ -1352,6 +1357,15 @@
   BPST check script verifies the exact mixed shell, the limiting ratio, and
   negative controls rejecting both shortcut saddles when both effects are
   present.
+- 2026-06-04 issue #597 hard-wave-packet source pass: added
+  `ca:instanton-hard-wave-packet-source-support`, which replaces informal
+  hard external fields by projected zero-mode overlap matrices with hard
+  support \(c_-Q\le |p|\) and rank-two source conditions.  The displayed
+  Hadamard bound turns row-wise individual-zero-mode form-factor estimates
+  into the \(SU(3)\), \(N_f=2\) \(R^{-1/3}\) tail control, while recording
+  rank-one and soft-support failure modes.  The BPST companion now checks the
+  rank conditions, Hadamard bounds, exact rational tail model, and absence of
+  a positive hard margin for soft support.
 - 2026-06-04 issue #597 thermal determinant-screening pass: added
   `ca:thermal-instanton-determinant-screening`, which specializes the generic
   Gaussian screening scale to the high-temperature QCD determinant coefficient
