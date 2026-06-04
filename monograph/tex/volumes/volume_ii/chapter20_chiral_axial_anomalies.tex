@@ -7245,6 +7245,124 @@ give a controlled physical four-point contribution until the hard-source tail
 and the remaining remainders have been bounded in the same scheme.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Finite-window certificate for a hard
+instanton coefficient]
+\label{ca:hard-instanton-finite-window-certificate}
+The hard coefficient
+\eqref{eq:su3-nf2-hard-instanton-coefficient} should be quoted only with a
+window certificate.  After the center delta function, source tensor, and
+orientation projection have been fixed, write the retained dimensionless
+leading size integrand as
+\[
+  H_{\rm lead}(s)
+  =
+  s^{32/3}\,
+  \mathcal P_{\rm orient}(s)
+  \prod_{\ell=1}^{4}F_{\rm zm}(c_\ell s/2),
+\]
+where \(\mathcal P_{\rm orient}(s)\) includes any source or orientation
+weight which remains inside the size integral.  For a cutoff \(R\), define
+\begin{equation}
+  J_R=\int_0^R H_{\rm lead}(s)\,\dd s,\qquad
+  M_R=\int_0^R |H_{\rm lead}(s)|\,\dd s,\qquad
+  T_R=\int_R^\infty |H_{\rm lead}(s)|\,\dd s .
+  \label{eq:hard-instanton-window-jmt}
+\end{equation}
+The number \(M_R\) is not the coefficient; it is the absolute mass of the
+retained window.  Its role is to measure how much cancellation is present in
+the actual signed or complex coefficient \(J_R\).
+
+Suppose the finite-regulator density on \(0<s<R\) differs from the displayed
+leading density by multiplicative determinant, zero-mode, and source errors
+with absolute window bounds
+\[
+  |\varepsilon_{\rm det}(s)|\le\epsilon_{\rm det},\qquad
+  |\varepsilon_{\rm zm}(s)|\le\epsilon_{\rm zm},\qquad
+  |\varepsilon_{\rm src}(s)|\le\epsilon_{\rm src},
+\]
+and suppose the Schur-complement remainder satisfies
+\[
+  \int_0^R|\Delta_{\rm Schur}(s)|\,\dd s
+  \le\epsilon_{\rm Schur}M_R .
+\]
+Finally suppose the exact contribution from the omitted tail, including the
+difference between the exact and leading kernels beyond \(R\), is bounded by
+\[
+  |R_{s>R}|\le \tau_R M_R .
+\]
+Then, after restoring the common prefactor \(\mathcal N(Q)\) in
+\eqref{eq:su3-nf2-hard-instanton-coefficient},
+\begin{equation}
+  \left|
+  C_{\rm inst}^{(4),{\rm ex}}(Q)
+  -
+  \mathcal N(Q)J_R
+  \right|
+  \le
+  |\mathcal N(Q)|\,M_R\,
+  \bigl(
+    \epsilon_{\rm det}
+    +\epsilon_{\rm zm}
+    +\epsilon_{\rm src}
+    +\epsilon_{\rm Schur}
+    +\tau_R
+  \bigr).
+  \label{eq:hard-instanton-window-absolute-certificate}
+\end{equation}
+If the retained leading window is nondegenerate in the sense that
+\[
+  |J_R|\ge \kappa_R M_R,\qquad \kappa_R>0,
+\]
+the same data give the relative certificate
+\begin{equation}
+  \frac{
+  \left|
+  C_{\rm inst}^{(4),{\rm ex}}(Q)
+  -
+  \mathcal N(Q)J_R
+  \right|}
+  {|\mathcal N(Q)J_R|}
+  \le
+  \frac{
+    \epsilon_{\rm det}
+    +\epsilon_{\rm zm}
+    +\epsilon_{\rm src}
+    +\epsilon_{\rm Schur}
+    +\tau_R}
+  {\kappa_R}.
+  \label{eq:hard-instanton-window-relative-certificate}
+\end{equation}
+Thus endpoint convergence is only one ingredient.  A hard instanton
+coefficient can be numerically unstable if the retained window is small after
+signed source or orientation cancellations, even when \(T_R/M_R\) is small.
+
+For the differentiated \(SU(3)\), \(N_f=2\) four-slot kernel, a power-tail
+majorant of the form
+\[
+  |H_{\rm lead}(s)|
+  \le
+  B_\infty s^{-4/3},
+  \qquad s\ge R_0,
+\]
+gives
+\begin{equation}
+  T_R
+  \le
+  3B_\infty R^{-1/3},
+  \qquad R\ge R_0 .
+  \label{eq:hard-instanton-window-tail-certificate}
+\end{equation}
+With only the individual zero-mode large-\(s\) envelope one may take
+\(B_\infty\) proportional to
+\(6^4\prod_\ell c_\ell^{-3}\) times the source-orientation norm bound.  This
+is the quantitative meaning of the slow-tail warning above: a finite hard
+coefficient becomes a controlled short-distance observable only after the
+chosen source supplies a usable \(M_R\), a noncancellation margin
+\(\kappa_R\), and a tail/error budget in the same normalization.  Otherwise
+the calculation has produced a valuable source coordinate, not yet a
+controlled physical coefficient.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Instanton size-factor split]
 \label{ca:instanton-wilsonian-size-factorization}
 Let \(K_{\Lambda}(\rho;\mu,\mathcal J)\) denote the fully paired

@@ -98,6 +98,10 @@ relations
     b0=29/3, size-integrand power 32/3, RG-invariant falloff
     Lambda_ht^(29/3) Q^(-35/3), and leading individual-slot endpoint tail
     3*6^4 prod_l c_l^(-3) R^(-1/3);
+    quoting the hard coefficient on a finite window requires the retained
+    signed integral J_R, absolute mass M_R, tail T_R, and noncancellation
+    margin kappa_R=|J_R|/M_R; cancellation can defeat relative control even
+    when the absolute tail budget is small
     a Wilsonian split of the instanton size integral has exact cancellation
     of the artificial factorization-scale boundary flux between the short
     instanton coefficient and the long-distance remainder
@@ -3204,6 +3208,75 @@ def check_su3_two_flavor_hard_instanton_coefficient() -> None:
     assert_equal("SU3 Nf2 hard tail next exponent", next_tail_power, Fraction(-7, 3))
 
 
+def check_hard_instanton_finite_window_certificate() -> None:
+    # A finite hard coefficient needs an absolute error budget and a
+    # noncancellation margin |J_R| >= kappa_R M_R.  Otherwise a small absolute
+    # tail can be a large relative error in the signed/source-projected
+    # coefficient.
+    window_cells = [Fraction(3, 5), -Fraction(1, 10), Fraction(7, 20)]
+    j_r = sum(window_cells, Fraction(0))
+    m_r = sum(abs(cell) for cell in window_cells)
+    kappa_r = abs(j_r) / m_r
+    assert_equal("hard instanton finite-window leading integral", j_r, Fraction(17, 20))
+    assert_equal("hard instanton finite-window absolute mass", m_r, Fraction(21, 20))
+    assert_equal("hard instanton finite-window noncancellation margin", kappa_r, Fraction(17, 21))
+
+    eps_det = Fraction(1, 40)
+    eps_zm = Fraction(1, 60)
+    eps_src = Fraction(1, 120)
+    eps_schur = Fraction(1, 80)
+    tau_r = Fraction(1, 32)
+    eps_total = eps_det + eps_zm + eps_src + eps_schur
+    assert_equal("hard instanton finite-window residual sum", eps_total, Fraction(1, 16))
+
+    actual_residual = (
+        Fraction(1, 80) * m_r
+        - Fraction(1, 100) * m_r
+        + Fraction(1, 200) * m_r
+        + Fraction(1, 100) * m_r
+    )
+    actual_tail = Fraction(1, 40) * m_r
+    exact_coefficient = j_r + actual_residual + actual_tail
+    absolute_certificate = m_r * (eps_total + tau_r)
+    if not abs(exact_coefficient - j_r) <= absolute_certificate:
+        raise AssertionError("hard instanton finite-window absolute certificate failed")
+
+    relative_certificate = (eps_total + tau_r) / kappa_r
+    actual_relative_error = abs(exact_coefficient - j_r) / abs(j_r)
+    if not actual_relative_error <= relative_certificate:
+        raise AssertionError("hard instanton finite-window relative certificate failed")
+
+    # The SU(3), Nf=2 differentiated four-slot power tail is
+    # s^(32/3) s^(-12)=s^(-4/3), hence the retained tail bound
+    # int_R^infty B s^(-4/3) ds = 3 B R^(-1/3).
+    n_c = 3
+    n_f = 2
+    b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+    large_s_power = b0 + 1 - 12
+    assert_equal("hard instanton finite-window tail integrand power", large_s_power, -Fraction(4, 3))
+    b_infty = Fraction(5, 7)
+    r_cuberoot = Fraction(3)
+    tail_bound = 3 * b_infty / r_cuberoot
+    assert_equal("hard instanton finite-window R=27 tail bound", tail_bound, b_infty)
+
+    # Cancellation negative control: a tiny signed window coefficient cannot
+    # be assigned a small relative uncertainty from an absolute majorant alone.
+    cancel_cells = [Fraction(1), -Fraction(99, 100)]
+    cancel_j = sum(cancel_cells, Fraction(0))
+    cancel_m = sum(abs(cell) for cell in cancel_cells)
+    cancel_kappa = abs(cancel_j) / cancel_m
+    assert_equal("hard instanton cancellation window coefficient", cancel_j, Fraction(1, 100))
+    assert_equal("hard instanton cancellation margin", cancel_kappa, Fraction(1, 199))
+
+    nominal_absolute_ratio = Fraction(1, 100)
+    relative_bound = nominal_absolute_ratio / cancel_kappa
+    assert_equal(
+        "hard instanton cancellation makes relative control fail",
+        relative_bound <= Fraction(1, 10),
+        False,
+    )
+
+
 def check_wilsonian_instanton_size_factorization() -> None:
     # Model the fully paired finite-regulator size integrand by
     # K(rho)=rho^(p-1) on 0<rho<rho_max.  The artificial Wilsonian split at
@@ -4092,6 +4165,7 @@ def main() -> None:
     check_hard_size_tail_dominance_criterion()
     check_hard_screened_instanton_size_shell()
     check_su3_two_flavor_hard_instanton_coefficient()
+    check_hard_instanton_finite_window_certificate()
     check_wilsonian_instanton_size_factorization()
     check_short_instanton_ope_coefficient_transport()
     check_dilute_instanton_gas_theta_cumulants()

@@ -139,7 +139,11 @@
   log-shell continuation restates the same fact per \(\dd\log\rho\): the
   individual-slot shell also decays only as \(R^{-1/3}\), so tenfold
   suppression of the normalized power-tail majorant costs three decades in
-  the size cutoff.  The mixed hard/screened-shell continuation adds the
+  the size cutoff.  The finite-window certificate continuation turns this
+  into an operational hard-coefficient test: the retained signed window
+  \(J_R\), absolute mass \(M_R\), tail \(T_R\), and noncancellation margin
+  \(\kappa_R=|J_R|/M_R\) must be supplied before a relative hard instanton
+  coefficient can be quoted.  The mixed hard/screened-shell continuation adds the
   combined majorant
   \(\rho^{A-1}\exp[-dQ\rho-m_{\rm scr}^2\rho^2]\): the dominant log shell
   solves \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\), so hard-only and
@@ -341,6 +345,7 @@
 | \(\mathfrak s_{\rm hard}(s),\Delta\) | hard instanton log-size shell density and its power-tail suppression exponent \(\Delta=\sigma-b_0-2\) |
 | \(\rho_*,dQ,m_{\rm scr}\) | mixed hard-source/physical-screening log-shell coordinate, hard exponential envelope, and screening mass in the retained instanton size majorant |
 | \(C_{\rm inst}^{(4)}(Q;R),\mathcal P_{\rm orient}\) | specialized \(SU(3)\), \(N_f=2\) hard four-fermion instanton coefficient and shared orientation projector, with the Pauli-Villars pure-gauge constant, light-fermion determinant factor, and explicit endpoint residual |
+| \(J_R,M_R,T_R,\kappa_R\) | retained signed hard-instanton window integral, retained absolute mass, omitted absolute tail, and noncancellation margin used to certify a relative hard-coefficient error |
 | \(\mu_I,\rho_I,K_\Lambda(\rho)\) | Wilsonian instanton factorization scale, cutoff \(\rho_I=\mu_I^{-1}\), and fully paired finite-regulator size integrand whose boundary flux transfers between the short coefficient and long-distance remainder |
 | \(C_I^{<},[O_I]_\mu,\gamma_{IK}\) | short-instanton OPE coefficient, retained renormalized operator basis, and operator-mixing anomalous-dimension matrix used to distinguish composite-operator RG transport from size-factorization flow |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
@@ -1458,3 +1463,13 @@
   point-splitting, off-diagonal negative-control, CP-odd contact, and
   spectral-reversal checks, so this pass strengthens the observable layer
   rather than adding another moduli-space identity.
+- 2026-06-04 issue #597 finite hard-window pass: added
+  `ca:hard-instanton-finite-window-certificate`, which upgrades the specialized
+  \(SU(3)\), \(N_f=2\) hard four-slot coefficient from a formal convergent
+  size integral to a quoted-coefficient criterion.  The block requires the
+  retained signed window \(J_R\), absolute mass \(M_R\), tail \(T_R\), residual
+  budget, and noncancellation margin \(\kappa_R=|J_R|/M_R\), then derives the
+  absolute and relative coefficient-error certificates.  The BPST companion
+  verifies the exact finite-window inequality, the \(R^{-1/3}\) tail model, and
+  a cancellation negative control.  This responds to the amplitude-control
+  concern directly: endpoint convergence alone is not physical dominance.

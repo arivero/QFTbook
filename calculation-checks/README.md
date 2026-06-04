@@ -542,9 +542,12 @@ Current checks:
   fused-density suppression and the individual-slot power test
   \(b_0+1-3m<-1\), the stronger hard-size dominance criterion showing the
   \(SU(3)\), \(N_f=2\) differentiated-source tail beyond \(\rho=R/Q\) falls
-  only as \(R^{-1/3}\), the mixed hard-source plus physical-screening
-  log-shell equation \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\) with negative
-  controls against hard-only and screening-only saddle substitutions, the
+  only as \(R^{-1/3}\), the finite-window hard-coefficient certificate
+  requiring an absolute error budget, a tail majorant, and a noncancellation
+  margin \(|J_R|/M_R\) before a relative instanton coefficient is quoted, the
+  mixed hard-source plus physical-screening log-shell equation
+  \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\) with negative controls against
+  hard-only and screening-only saddle substitutions, the
   Wilsonian size-factorization check in which the
   artificial boundary flux through \(\rho=\mu_I^{-1}\) cancels between the
   short-instanton coefficient and the long-distance remainder, the finite
