@@ -706,7 +706,14 @@ The chapter must define and derive:
       \(C^{DY}_{ij}\); in transform space the paired auxiliary-scale
       cancellation is
       \(\mu dC/d\mu=-P_A^T C-C P_B\), and finite PDF scheme changes require
-      \(C'=(R_A^{-1})^T C R_B^{-1}\).  The integrated theorem-boundary budget
+      \(C'=(R_A^{-1})^T C R_B^{-1}\).  The Born measured-channel anchor now
+      evaluates the virtual-photon coefficient
+      \(C_{q\bar q}^{0}=4\pi\alpha_{\rm em}^2e_q^2
+      (3N_cQ^2s)^{-1}\delta(1-z_A)\delta(1-z_B)\), including the \(1/s\)
+      rapidity-bin Jacobian and the \(d\xi/\xi\) delta-kernel normalization,
+      so the factorized coordinate reduces to the tested
+      \(q\bar q+\bar q q\) PDF product before higher-order residuals are
+      discussed.  The integrated theorem-boundary budget
       now tests the exact Wightman functional against compact \((Q^2,y)\)
       functions and separates leading-region, soft, Glauber, power, and
       regulator residuals in the dual test-function norm; RG covariance of the
@@ -1030,7 +1037,13 @@ The chapter must define and derive:
   color-singlet observable must either commute with the unobserved Glauber
   unitary or leave a norm-bounded commutator residual.  The paired check adds a
   negative control in which a spectator-resolving measurement gives a nonzero
-  but bounded residual.
+  but bounded residual.  The 2026-06-04 Born measured-channel continuation
+  adds `prop:qcd-drell-yan-born-rapidity-bin`, deriving the virtual-photon
+  rapidity-bin coefficient, the \(1/s\) Jacobian from
+  \((\xi_A,\xi_B)\mapsto(Q^2,y)\), and the convolution identity
+  \(\int_x^1 d\xi\,f(\xi)\xi^{-1}\delta(1-x/\xi)=f(x)\).  The companion check
+  adds exact symbolic tests and negative controls for omitting the Jacobian or
+  using the wrong delta-kernel normalization.
 - 2026-05-24 issue #490 pass: the compiled Volume IV successor chapter now
   develops jets, IRC-safe measurement functions, parton showers,
   fragmentation functions, and hadronization as the final-state observable

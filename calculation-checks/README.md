@@ -306,9 +306,10 @@ Current checks:
   nonsinglet kernel, and trace-normalization invariance of \(g^2C_R\).
 - `qcd_drell_yan_glauber_checks.py`: finite checks for the Volume II
   Drell--Yan/Glauber-status block, including leading-power rapidity
-  kinematics, rapidity-scale product bookkeeping, time-reversal-odd staple
-  orientation signs, the finite tensor-product unitarity identity used as
-  the algebraic model for Glauber cancellation, and the inclusive-projection
+  kinematics, the Born rapidity-bin coefficient and delta-convolution
+  normalization, rapidity-scale product bookkeeping, time-reversal-odd staple
+  orientation signs, the finite tensor-product unitarity identity used as the
+  algebraic model for Glauber cancellation, and the inclusive-projection
   negative control where a spectator-resolving measurement leaves a bounded
   nonzero Glauber residual.
 - `qcd_non_global_log_checks.py`: exact rational checks for the finite

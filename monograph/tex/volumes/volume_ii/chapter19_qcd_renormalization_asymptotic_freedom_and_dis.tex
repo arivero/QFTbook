@@ -11212,6 +11212,94 @@ the exact color-singlet Wightman tensor
 \eqref{eq:qcd-drell-yan-current-product} and a factorized coordinate built from
 two incoming light-ray operator matrix elements.
 
+\begin{proposition}[Born Drell--Yan rapidity-bin coefficient]
+\label{prop:qcd-drell-yan-born-rapidity-bin}
+At leading power and Born order for a single virtual photon, the integrated
+coefficient in
+\eqref{eq:qcd-drell-yan-integrated-factorization} is supported at
+\(z_A=z_B=1\).  With \(N_c\) colors and electromagnetic quark charge \(e_q\),
+\begin{equation}
+  C_{q\bar q}^{\rm DY,0}(z_A,z_B;Q)
+  =
+  C_{\bar q q}^{\rm DY,0}(z_A,z_B;Q)
+  =
+  \frac{4\pi\alpha_{\rm em}^2e_q^2}
+       {3N_c\,Q^2s}\,
+  \delta(1-z_A)\delta(1-z_B),
+  \label{eq:qcd-drell-yan-born-coefficient}
+\end{equation}
+for the cross section differential in \(Q^2\) and \(y\), after integrating the
+lepton-pair decay angles.  Consequently, for a compact test function
+\(\varphi(Q^2,y)\) whose support keeps \(x_A,x_B\in(0,1)\),
+\begin{equation}
+\begin{aligned}
+  \mathfrak T_{\rm DY}^{0}[\varphi]
+  &=
+  \sum_q
+  \int\dd Q^2\,\dd y\,
+  \varphi(Q^2,y)\,
+  \frac{4\pi\alpha_{\rm em}^2e_q^2}
+       {3N_c\,Q^2s}                                     \\
+  &\qquad{}\times
+  \Bigl[
+    f_{q/A}(x_A,\mu)f_{\bar q/B}(x_B,\mu)
+    +
+    f_{\bar q/A}(x_A,\mu)f_{q/B}(x_B,\mu)
+  \Bigr],
+  \qquad
+  x_{A,B}=\sqrt{\frac{Q^2}{s}}\,\ee^{\pm y}.
+\end{aligned}
+  \label{eq:qcd-drell-yan-born-tested-bin}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The color-averaged partonic annihilation
+\(q\bar q\to\gamma^\ast\to\ell^+\ell^-\) has the Born angular distribution
+\[
+  \frac{\dd\hat\sigma_{q\bar q}^{0}}{\dd\cos\theta}
+  =
+  \frac{\pi\alpha_{\rm em}^2e_q^2}{2N_cQ^2}
+  (1+\cos^2\theta),
+\]
+where the factor \(1/N_c\) is the color average of the singlet electromagnetic
+current.  Integrating \(\cos\theta\in[-1,1]\) gives
+\[
+  \hat\sigma_{q\bar q}^{0}(\hat s=Q^2)
+  =
+  \frac{4\pi\alpha_{\rm em}^2e_q^2}{3N_cQ^2}.
+\]
+At Born level the pair has zero transverse momentum, so
+\[
+  Q^2=s\xi_A\xi_B,
+  \qquad
+  y=\frac12\log\frac{\xi_A}{\xi_B}.
+\]
+The change of variables \((\xi_A,\xi_B)\mapsto(Q^2,y)\) has
+\[
+  \left|
+  \det\frac{\partial(Q^2,y)}{\partial(\xi_A,\xi_B)}
+  \right|=s,
+\]
+which supplies the factor \(1/s\) in
+\eqref{eq:qcd-drell-yan-born-coefficient}.  The convolution measure in
+\eqref{eq:qcd-drell-yan-integrated-factorization} is also part of the
+normalization: for \(0<x<1\),
+\[
+  \int_x^1\frac{\dd\xi}{\xi}\,
+  f(\xi)\,\delta\!\left(1-\frac{x}{\xi}\right)
+  =
+  f(x),
+\]
+because
+\(\delta(1-x/\xi)=x\,\delta(\xi-x)\).  Inserting the two Born delta functions
+therefore evaluates the two PDFs at \(x_A\) and \(x_B\), giving
+\eqref{eq:qcd-drell-yan-born-tested-bin}.  This proposition instantiates the
+factorized coordinate in one measured channel; the residuals of
+Proposition~\ref{prop:qcd-drell-yan-tested-factorization-residual-budget}
+remain the additional all-order QCD factorization data.
+\end{proof}
+
 The scale cancellation is the two-incoming-leg analogue of
 \eqref{eq:qcd-dis-coefficient-dual-rg}.  In a Mellin or Laplace chart where the
 two convolutions become products, let \(f_A(N_A,\mu)\) and \(f_B(N_B,\mu)\) be

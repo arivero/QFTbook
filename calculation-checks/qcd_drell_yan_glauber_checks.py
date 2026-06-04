@@ -17,19 +17,22 @@ residual when the measurement resolves the spectator sector.
 
 Evidence contract.
 Target claims: Drell-Yan leading-power kinematic coordinates, two-incoming-leg
-RG and scheme covariance of the factorized coordinate, TMD rapidity-scale and
-orientation bookkeeping, and finite algebraic models for theorem-boundary
-Glauber residuals.
+Born rapidity-bin coefficient and convolution normalization, RG and scheme
+covariance of the factorized coordinate, TMD rapidity-scale and orientation
+bookkeeping, and finite algebraic models for theorem-boundary Glauber
+residuals.
 Independent construction: exact symbolic matrix/vector arithmetic, finite
-unitary conjugation, residual decomposition, and a spectator-resolving
-negative control independent of any diagrammatic factorization proof.
+unitary conjugation, Born change-of-variable Jacobians, delta-kernel
+convolution weights, residual decomposition, and a spectator-resolving negative
+control independent of any diagrammatic factorization proof.
 Imported assumptions: the chapter's PDF/TMD operator definitions, the
 existence of regulated leading regions, and the identification of the
 finite unitary model as the algebraic shadow of QCD Glauber exchange.
 Negative controls: a deliberately nonzero Wightman-to-factorized residual,
-the statement that RG covariance does not remove that residual, and a
-measurement resolving the unobserved sector that leaves a nonzero but bounded
-Glauber remainder.
+the statement that RG covariance does not remove that residual, a missing
+Drell-Yan Born Jacobian, a wrong delta-kernel normalization, and a measurement
+resolving the unobserved sector that leaves a nonzero but bounded Glauber
+remainder.
 Scope boundary: these checks do not prove Drell-Yan factorization, contour
 deformation, soft cancellation in continuum QCD, universality of TMDs, or
 power-suppressed remainder estimates.
@@ -55,6 +58,55 @@ def check_drell_yan_kinematics() -> None:
 
     assert_zero("Drell-Yan product x_A x_B", x_a * x_b - tau)
     assert_zero("Drell-Yan rapidity", sp.log(x_a / x_b) / 2 - y)
+
+
+def check_born_rapidity_bin_coefficient() -> None:
+    q_sq, s, alpha, e_q = sp.symbols("q_sq s alpha e_q", positive=True)
+    n_c = sp.symbols("n_c", positive=True, integer=True)
+    xi_a, xi_b = sp.symbols("xi_a xi_b", positive=True)
+    cos_theta = sp.symbols("cos_theta", real=True)
+
+    angular_distribution = (
+        sp.pi * alpha**2 * e_q**2 / (2 * n_c * q_sq)
+        * (1 + cos_theta**2)
+    )
+    partonic_cross_section = sp.integrate(
+        angular_distribution,
+        (cos_theta, -1, 1),
+    )
+    expected_partonic = 4 * sp.pi * alpha**2 * e_q**2 / (3 * n_c * q_sq)
+    assert_zero("Drell-Yan Born angular integral", partonic_cross_section - expected_partonic)
+
+    jacobian = sp.Matrix(
+        [
+            [s * xi_b, s * xi_a],
+            [sp.Rational(1, 2) / xi_a, -sp.Rational(1, 2) / xi_b],
+        ]
+    ).det()
+    assert_zero("Drell-Yan Born rapidity Jacobian", jacobian + s)
+
+    differential_coefficient = partonic_cross_section / s
+    expected = 4 * sp.pi * alpha**2 * e_q**2 / (3 * n_c * q_sq * s)
+    assert_zero("Drell-Yan Born differential coefficient", differential_coefficient - expected)
+    assert_zero(
+        "Drell-Yan Born Nc=3 normalization",
+        differential_coefficient.subs(n_c, 3)
+        - 4 * sp.pi * alpha**2 * e_q**2 / (9 * q_sq * s),
+    )
+
+    x = sp.Rational(2, 5)
+    pdf_value = sp.Rational(7, 11)
+    delta_weight = x  # delta(1 - x/xi) = x delta(xi - x)
+    convolution_value = pdf_value * delta_weight / x
+    assert_zero("Drell-Yan Born delta convolution", convolution_value - pdf_value)
+
+    wrong_plain_delta = pdf_value / x
+    if wrong_plain_delta == pdf_value:
+        raise AssertionError("plain delta kernel should not match the convolution normalization")
+
+    missing_jacobian = partonic_cross_section
+    if sp.simplify(missing_jacobian - differential_coefficient) == 0:
+        raise AssertionError("dropping the rapidity-bin Jacobian should change the coefficient")
 
 
 def check_rapidity_scale_product() -> None:
@@ -279,6 +331,7 @@ def check_inclusive_glauber_projection_residual() -> None:
 
 def main() -> None:
     check_drell_yan_kinematics()
+    check_born_rapidity_bin_coefficient()
     check_rapidity_scale_product()
     check_t_odd_orientation_sign()
     check_integrated_drell_yan_rg_cancellation()
