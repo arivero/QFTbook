@@ -32,7 +32,9 @@
   so resolving string breaking requires a full-rank correlator basis, spectral
   tails, and entry-error margins.
 - Proves the strong-coupling lattice area mechanism from character expansion,
-  Haar projection, surface selection, and the convergent-polymer hypothesis.
+  Haar projection, surface selection, a signed minimal-sector noncancellation
+  estimate, an absolute minimal-sector upper majorant, and the
+  convergent-polymer decorated-tail hypothesis.
 - Adds the controlled three-dimensional Polyakov monopole-gas mechanism:
   monopole fugacity generates a dual-photon sine-Gordon potential, the dual
   photon mass is \(m_\gamma^2=2\zeta_{\rm M}/\kappa_{\rm d}\), and the
@@ -88,8 +90,9 @@
    broken-string ground state unless a full-rank flux/broken-string correlator
    matrix and GEVP extraction resolve both states.
 7. Strong-coupling lattice area behavior follows from Haar projection forcing
-   plaquette surfaces ending on the loop, plus convergence of the polymer
-   expansion.
+   plaquette surfaces ending on the loop, a nonzero minimal-surface sector, a
+   separate absolute upper majorant for that minimal sector, and convergence of
+   the decorated-surface polymer tail.
 8. In the controlled three-dimensional compact-Abelian semiclassical window,
    primitive monopoles generate a dual-photon sine-Gordon potential, a mass
    gap, and a calculable Wilson-loop area coefficient
@@ -124,7 +127,8 @@
   verifies the continuum criterion's finite line-charge arithmetic, pairing
   distance, local perimeter/cusp subtraction, positive area-rate extraction,
   rectangular static-limit ordering, endpoint-screening negative control, and
-  strong-coupling surface-window calibration.
+  strong-coupling surface-window calibration with distinct lower
+  noncancellation and upper absolute-sum estimates.
 
 ## Audit Notes
 
@@ -145,3 +149,8 @@
   connecting the chapter to the QCD rigor track (#630) and the generalized
   symmetry/defect proof-debt track (#698) without treating finite charge
   arithmetic or cochain laboratories as continuum confinement proofs.
+- 2026-06-04 issue #759 repair: separated the strong-coupling minimal-sector
+  estimates into a signed lower noncancellation bound and an independent
+  absolute upper majorant.  The proof of the upper area-law side now uses the
+  absolute minimal-sector majorant plus the decorated-tail bound; the lower
+  side still uses noncancellation to prevent destructive cancellation.

@@ -1486,7 +1486,9 @@ Current checks:
   \(V(L)=\sigma_{\rm P}L\).  It verifies the continuum criterion's finite
   line-charge arithmetic, pairing distance, local perimeter/cusp subtraction,
   positive area-rate extraction, static-limit ordering, endpoint-screening
-  negative control, and strong-coupling surface-window calibration.  The same
+  negative control, and strong-coupling surface-window calibration with a
+  separate signed lower noncancellation estimate and absolute upper estimate
+  for the minimal sector.  The same
   companion checks a finite string-breaking spectral extraction test: a single
   Wilson-loop channel can look
   flux-tube dominated at short Euclidean time even when the screened state is

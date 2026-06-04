@@ -292,48 +292,64 @@ def check_conditional_line_asymptotic_classifier() -> None:
 
 def check_strong_coupling_polymer_surface_window() -> None:
     # This is the finite arithmetic of the non-circular strong-coupling
-    # mechanism: a nonzero minimal surface sum plus a smaller decorated tail
-    # yields a two-sided exponential area window.  No continuum string tension
-    # is inserted.
+    # mechanism.  The signed lower estimate on the minimal surface sum prevents
+    # cancellation; a separate absolute upper estimate on that same minimal
+    # sector supplies area suppression from above; a smaller decorated tail then
+    # preserves the two-sided window.  No continuum string tension is inserted.
     q = Fraction(1, 6)
-    minimal_prefactor = Fraction(5, 7)
-    tail_fraction = Fraction(1, 10)
-    previous_upper_rate_proxy: Fraction | None = None
+    tail_ratio = Fraction(1, 2)
+    minimal_lower_prefactor = Fraction(5, 7)
+    minimal_upper_prefactor = Fraction(9, 7)
+    tail_prefactor = Fraction(3, 5)
+    previous_upper_prefactor_proxy: Fraction | None = None
     for minimal_area in [12, 18, 24]:
-        minimal_surface = minimal_prefactor * q**minimal_area
-        decorated_tail = minimal_surface * tail_fraction
-        lower_window = minimal_surface - decorated_tail
-        upper_window = minimal_surface + decorated_tail
+        minimal_lower = minimal_lower_prefactor * q**minimal_area
+        minimal_upper = minimal_upper_prefactor * q**minimal_area
+        decorated_tail = tail_prefactor * (q * tail_ratio) ** minimal_area
+        lower_window = minimal_lower - decorated_tail
+        upper_window = minimal_upper + decorated_tail
         assert_true(
-            f"strong-coupling minimal surface is nonzero A={minimal_area}",
-            minimal_surface > 0,
+            f"strong-coupling signed minimal sector is nonzero A={minimal_area}",
+            minimal_lower > 0,
         )
         assert_true(
-            f"decorated strong-coupling tail is smaller than minimal sector A={minimal_area}",
-            decorated_tail < minimal_surface,
+            f"decorated strong-coupling tail is smaller than lower minimal sector A={minimal_area}",
+            decorated_tail < minimal_lower,
         )
         assert_true(
             f"polymer window lower bound stays positive A={minimal_area}",
-            lower_window >= minimal_surface / 2,
+            lower_window >= minimal_lower / 2,
+        )
+        assert_true(
+            f"absolute minimal-sector majorant decays with area A={minimal_area}",
+            minimal_upper <= 2 * q**minimal_area,
         )
         assert_true(
             f"polymer window upper bound has positive area suppression A={minimal_area}",
-            upper_window < q ** (minimal_area - 1),
+            upper_window <= (minimal_upper_prefactor + tail_prefactor) * q**minimal_area,
         )
-        upper_rate_proxy = upper_window / q**minimal_area
+        upper_prefactor_proxy = upper_window / q**minimal_area
         assert_equal(
-            f"strong-coupling prefactor is area-independent A={minimal_area}",
-            upper_rate_proxy,
-            minimal_prefactor * (1 + tail_fraction),
+            f"upper prefactor separates minimal and decorated estimates A={minimal_area}",
+            upper_prefactor_proxy,
+            minimal_upper_prefactor + tail_prefactor * tail_ratio**minimal_area,
         )
-        if previous_upper_rate_proxy is not None:
-            assert_equal(
+        if previous_upper_prefactor_proxy is not None:
+            assert_true(
                 f"polymer prefactor does not smuggle in area growth A={minimal_area}",
-                upper_rate_proxy,
-                previous_upper_rate_proxy,
+                upper_prefactor_proxy < previous_upper_prefactor_proxy,
             )
-        previous_upper_rate_proxy = upper_rate_proxy
+        previous_upper_prefactor_proxy = upper_prefactor_proxy
 
+        rogue_minimal_sum = Fraction(1)
+        assert_true(
+            f"lower noncancellation estimate alone permits nondecaying minimal sum A={minimal_area}",
+            rogue_minimal_sum >= minimal_lower,
+        )
+        assert_true(
+            f"absolute minimal-sector majorant is independent evidence A={minimal_area}",
+            rogue_minimal_sum > minimal_upper,
+        )
 
 
 def check_polyakov_monopole_gas_wall_tension() -> None:

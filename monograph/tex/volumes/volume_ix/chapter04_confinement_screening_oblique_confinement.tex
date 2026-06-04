@@ -399,22 +399,32 @@ planar loops \(C_R\), let \(A_{\min}(C_R)\) be the minimal lattice area of a
 plaquette surface spanning \(C_R\).  A strong-coupling proof of an area
 mechanism consists of the following uniform polymer-expansion estimates.
 First, the Haar-projection selection rule permits no center-sensitive
-contribution of area \(<A_{\min}(C_R)\).  Second, the sum of all minimal-area
-contributions is nonzero and has magnitude at least
+contribution of area \(<A_{\min}(C_R)\).  Second, if \(M_R\) denotes the full
+signed minimal-area sum, then the minimal sector is nonzero and has magnitude at
+least
 \[
   m_0\exp[-\sigma_+ A_{\min}(C_R)]
 \]
-for some \(m_0>0\) and finite \(\sigma_+\).  Third, the total contribution of
-all larger decorated surfaces is bounded by
+for some \(m_0>0\) and finite \(\sigma_+\).  Third, the same minimal sector has
+an absolute upper majorant
+\[
+  |M_R|
+  \le
+  M_1\exp[-\sigma_- A_{\min}(C_R)]
+\]
+for some \(M_1>0\) and \(0<\sigma_-\le \sigma_+\).  This upper estimate is a
+separate polymer/character-coefficient bound; it is not implied by the lower
+noncancellation estimate.  Fourth, the total contribution of all larger
+decorated surfaces is bounded by
 \[
   M_0\exp[-(\sigma_++\delta)A_{\min}(C_R)]
 \]
 for some \(M_0>0\) and \(\delta>0\), after possibly restricting to a
 sufficiently small strong-coupling neighborhood.
 These are primitive estimates in the character/polymer expansion: they are
-statements about link integration, the nonvanishing minimal surface sum, and a
-controlled decorated-surface tail, not a restatement of an already-known Wilson
-loop area law.
+statements about link integration, the signed minimal-surface sum, an absolute
+minimal-sector majorant, and a controlled decorated-surface tail, not a
+restatement of an already-known Wilson loop area law.
 Once these estimates have actually been proved for the chosen lattice action,
 there are constants \(a,b>0\) such that
 \[
@@ -431,11 +441,22 @@ positive and finite.
 
 The first hypothesis is the kinematic selection part: link integration forces
 the center-sensitive flux to be carried by a plaquette two-chain with boundary
-\(C_R\), so no term of smaller area can occur.  The third hypothesis gives the
-upper bound after choosing \(a<\sigma_+\) and absorbing the subexponential
-number of local decorations into the prefactor.  For the lower bound, write
-the expectation as \(M_R+E_R\), where \(M_R\) is the minimal-area sum and
-\(|E_R|\le M_0e^{-(\sigma_++\delta)A_{\min}}\).  The lower estimate on
+\(C_R\), so no term of smaller area can occur.  Put
+\(A_{\min}=A_{\min}(C_R)\).  For the upper bound, write the expectation as
+\(M_R+E_R\), where \(E_R\) is the decorated-surface remainder.
+The absolute minimal-sector and tail estimates give
+\[
+  |M_R+E_R|
+  \le
+  M_1e^{-\sigma_-A_{\min}}
+  +
+  M_0e^{-(\sigma_++\delta)A_{\min}}
+  \le
+  (M_1+M_0)e^{-\sigma_-A_{\min}},
+\]
+because \(\sigma_++\delta\ge\sigma_-\).  This gives the upper exponential
+bound with any \(a<\sigma_-\), after absorbing constants into the allowed
+subexponential factors.  For the lower bound, the lower estimate on
 \(|M_R|\) gives
 \[
   |M_R+E_R|
@@ -848,7 +869,8 @@ The strong-coupling lattice mechanism
 the surface-cost input in
 Lemma~\ref{lem:conditional-line-asymptotic-classification}: Haar projection
 supplies the surface selection rule, the nonzero minimal-surface sector gives
-the lower exponential bound, and the convergent polymer expansion controls the
+the lower exponential bound, the absolute minimal-sector majorant gives the
+upper exponential bound, and the convergent polymer expansion controls the
 decorated tail.  Finite cochain models and center-charge arithmetic supply the
 pairing, quotient, and condensate labels; they do not by themselves supply
 surface-cost bounds for four-dimensional continuum Yang--Mills.
