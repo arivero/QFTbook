@@ -48,10 +48,13 @@
 - Adds a finite charge-lattice figure for the oblique unconfined direction.
 - Adds the continuum line-confinement criterion from renormalized Wilson,
   't Hooft, and dyonic lines: UV line renormalization, thermodynamic limit, and
-  large-loop/static limits are ordered explicitly; the surface-cost hypothesis
-  converts screening, clustering, endpoint, and condensate data into positive
-  area rates for charges outside \(K^\perp\), while isolating the remaining
-  four-dimensional Yang--Mills theorem boundary.
+  large-loop/static limits are ordered explicitly.  The conditional
+  line-asymptotic classifier takes positive area-rate bounds outside
+  \(K^\perp\) and zero-tension bounds inside \(K^\perp\) as already-derived
+  dynamical inputs, then classifies the corresponding charge sectors.  Deriving
+  those asymptotics from clustering, mass-gap, endpoint, and condensate
+  mechanisms remains the separate four-dimensional Yang--Mills theorem
+  boundary.
 
 ## Symbols
 
@@ -101,11 +104,14 @@
 9. Oblique confinement is the finite Dirac-pairing criterion for a dyonic
    condensate \(K=\langle(p,1)\rangle\), with unconfined finite charges
    obeying \(e\equiv pm\pmod N\).
-10. The continuum line-confinement criterion is now formulated as a conditional
-    implication from renormalized-line existence, infrared clustering/static
-    spectral control, endpoint data, and surface-cost bounds to positive area
-    rates.  The remaining open theorem-level target is proving those
-    surface-cost bounds from four-dimensional continuum Yang--Mills.
+10. The continuum line-confinement criterion is now a conditional classifier:
+    given renormalized-line existence, screened endpoint bounds, positive
+    area-rate bounds outside \(K^\perp\), and zero-tension bounds inside
+    \(K^\perp\), it identifies the confined, screened, and perimeter-compatible
+    charge sectors.  The remaining open theorem-level target is deriving those
+    line asymptotics from a four-dimensional continuum Yang--Mills construction,
+    using whatever mass-gap, clustering, screening-endpoint, and condensate
+    input that proof requires.
 
 ## Figures
 
@@ -154,3 +160,9 @@
   absolute upper majorant.  The proof of the upper area-law side now uses the
   absolute minimal-sector majorant plus the decorated-tail bound; the lower
   side still uses noncancellation to prevent destructive cancellation.
+- 2026-06-04 issue #765 planning-consistency repair: synchronized the dossier
+  with Lemma~\ref{lem:conditional-line-asymptotic-classification}.  The
+  continuum criterion is recorded as a classifier that takes area-rate and
+  zero-tension asymptotics as dynamical inputs; clustering, mass-gap,
+  screening-endpoint, and condensate mechanisms are now assigned to the
+  separate theorem boundary for deriving those inputs.
