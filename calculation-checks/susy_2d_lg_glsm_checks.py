@@ -7,18 +7,18 @@ vortex-to-FI-coordinate normalization, single-vortex coefficient
 noncancellation bound, P^{N-1} mirror residue trace, and
 vortex-to-protected-observable residual ledger, together with the
 vortex-fugacity dimensional-transmutation coordinate, the degree-one
-P^{N-1} stable-map gate, and the finite degree-one vortex zero-mode model plus
-conditional residual template for the quantum-product observable relation, in
-Volume VII Chapter 09.
+P^{N-1} stable-map gate, and the finite degree-one stable-map incidence model
+with supplied vortex coefficient input plus conditional residual template for
+the quantum-product observable relation, in Volume VII Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
 elimination, Berezin-degree tests, retained-window signed/mass coefficient
-bounds, root-of-unity residue sums, zero-mode incidence Jacobians, and residual
-budgets are computed directly from finite data rather than by substituting the
-displayed final identities.
+bounds, root-of-unity residue sums, stable-map incidence Jacobians, and
+residual budgets are computed directly from finite data rather than by
+substituting the displayed final identities.
 Imported assumptions: the finite GLSM charge matrix, selected regulator-stage
-factorization, nonzero-mode determinant placeholders, logarithm-branch
-conventions, and the chapter's protected-coordinate definitions are assumed
-as finite input.
+factorization, supplied vortex coefficients, nonzero-mode determinant
+placeholders, logarithm-branch conventions, and the chapter's
+protected-coordinate definitions are assumed as finite input.
 Negative controls: extra unsaturated zero modes, omitted vortex
 normalization constants, unbalanced regulator-scale changes, coherent signed
 cancellations with nonzero absolute mass, wrong residue selection powers,
@@ -29,7 +29,8 @@ hyperplane-normalization changes, omitted off-pairing controls, and finite-gauge
 invariance failures are rejected when the finite model can represent them.
 Scope boundary: a pass checks finite algebra and bookkeeping interfaces; it
 does not prove continuum GLSM existence, Hori--Vafa mirror equivalence,
-vortex compactness, determinant nonvanishing beyond the finite retained model,
+vortex compactness, derivation of the vortex fluctuation spectra or gauge-ghost
+complex, determinant nonvanishing beyond the supplied finite input,
 virtual-cycle construction, or uniform remainder estimates.
 """
 
@@ -935,16 +936,16 @@ def check_cp_degree_one_stable_map_quantum_product_gate() -> None:
             )
 
 
-def check_degree_one_vortex_regulated_zero_mode_model() -> None:
+def check_degree_one_stable_map_incidence_model() -> None:
     # The degree-one product coefficient is an observable pairing, not just a
-    # residue root sum or a dimension count.  This finite model computes the
-    # retained determinant coefficient, zero-mode incidence Jacobian, Berezin
-    # saturation, boundary exclusion, and operator normalization before any
-    # continuum comparison residuals are invoked.
+    # residue root sum or a dimension count.  This finite model treats the
+    # vortex coefficients as supplied input and checks the stable-map incidence
+    # Jacobian, selection degree, boundary exclusion, operator normalization,
+    # and residual budget before any continuum comparison residuals are invoked.
     n_fields = 5
     bare_fi = Fraction(3, 17)
 
-    finite_spectral_blocks = [
+    supplied_spectral_blocks = [
         ([2, 3], [5, 7], [11], [13], [17], [19], Fraction(23, 29)),
         ([3, 5], [7, 11], [13], [17], [19], [23], Fraction(29, 31)),
         ([5, 7], [11, 13], [17], [19], [23], [29], Fraction(31, 37)),
@@ -955,7 +956,7 @@ def check_degree_one_vortex_regulated_zero_mode_model() -> None:
     def finite_det(values: list[int]) -> Fraction:
         return prod((Fraction(value) for value in values), start=Fraction(1))
 
-    def determinant_line_factor(
+    def supplied_vortex_coefficient(
         block: tuple[list[int], list[int], list[int], list[int], list[int], list[int], Fraction],
     ) -> Fraction:
         (
@@ -981,8 +982,8 @@ def check_degree_one_vortex_regulated_zero_mode_model() -> None:
         return Fraction(numerator, denominator)
 
     vortex_coefficients = [
-        determinant_line_factor(block)
-        for block in finite_spectral_blocks
+        supplied_vortex_coefficient(block)
+        for block in supplied_spectral_blocks
     ]
     q_regulated = bare_fi * prod(vortex_coefficients, start=Fraction(1))
 
@@ -1003,7 +1004,7 @@ def check_degree_one_vortex_regulated_zero_mode_model() -> None:
         for kind, index, _value in constraints
     ]
     orientation_sign = determinant_fraction(incidence_matrix)
-    assert_equal("degree-one zero-mode incidence orientation", orientation_sign, Fraction(1))
+    assert_equal("degree-one stable-map incidence orientation", orientation_sign, Fraction(1))
 
     solution = {("A", 0): Fraction(1)}
     solution.update({(kind, index): value for kind, index, value in constraints})
@@ -1017,21 +1018,24 @@ def check_degree_one_vortex_regulated_zero_mode_model() -> None:
     point_one = [Fraction(0), Fraction(1)] + [Fraction(0)] * (n_fields - 2)
     hyperplane = [Fraction(-1), Fraction(1)] + [Fraction(0)] * (n_fields - 2)
 
-    def hyperplane_value(point: list[Fraction]) -> Fraction:
+    def linear_value(linear_form: list[Fraction], point: list[Fraction]) -> Fraction:
         return sum(
-            (coefficient * coordinate for coefficient, coordinate in zip(hyperplane, point)),
+            (coefficient * coordinate for coefficient, coordinate in zip(linear_form, point)),
             Fraction(0),
         )
+
+    def hyperplane_value(point: list[Fraction]) -> Fraction:
+        return linear_value(hyperplane, point)
 
     assert_equal("first point incidence", first_mark, point_zero)
     assert_equal("second point incidence", second_mark, point_one)
     assert_equal("third mark lies on normalized hyperplane", hyperplane_value(third_mark), Fraction(0))
 
-    zero_mode_dimension = len(variables)
+    incidence_chart_dimension = len(variables)
     insertion_complex_degree = 1 + (n_fields - 1) + (n_fields - 1)
-    assert_equal("degree-one zero-mode dimension", zero_mode_dimension, 2 * n_fields - 1)
-    assert_equal("operator insertions saturate zero modes", insertion_complex_degree, zero_mode_dimension)
-    berezin_gate = Fraction(1) if insertion_complex_degree == zero_mode_dimension else Fraction(0)
+    assert_equal("degree-one incidence-chart dimension", incidence_chart_dimension, 2 * n_fields - 1)
+    assert_equal("stable-map insertion degree saturates the chart", insertion_complex_degree, incidence_chart_dimension)
+    selection_gate = Fraction(1) if insertion_complex_degree == incidence_chart_dimension else Fraction(0)
 
     boundary_excluded = (
         point_zero != point_one
@@ -1044,12 +1048,12 @@ def check_degree_one_vortex_regulated_zero_mode_model() -> None:
     retained_three_point = (
         q_regulated
         * orientation_sign
-        * berezin_gate
+        * selection_gate
         * compactification_factor
         * operator_normalization
     )
     assert_equal(
-        "regulated zero-mode model gives degree-one product coefficient",
+        "stable-map incidence model gives supplied degree-one product coefficient",
         retained_three_point,
         q_regulated,
     )
@@ -1096,9 +1100,9 @@ def check_degree_one_vortex_regulated_zero_mode_model() -> None:
 
     for pairing_power in range(n_fields - 1):
         codimension = 1 + (n_fields - 1) + pairing_power
-        off_pairing_value = q_regulated if codimension == zero_mode_dimension else Fraction(0)
+        off_pairing_value = q_regulated if codimension == incidence_chart_dimension else Fraction(0)
         assert_equal(
-            f"off-pairing vanishes by zero-mode degree for H^{pairing_power}",
+            f"off-pairing vanishes by stable-map degree for H^{pairing_power}",
             off_pairing_value,
             Fraction(0),
         )
@@ -1106,7 +1110,7 @@ def check_degree_one_vortex_regulated_zero_mode_model() -> None:
     assert_equal(
         "top pairing is the unique saturated degree-one observable",
         top_pairing_codimension,
-        zero_mode_dimension,
+        incidence_chart_dimension,
     )
 
     mirror_only_bare = cp_mirror_residue_trace(
@@ -1121,38 +1125,79 @@ def check_degree_one_vortex_regulated_zero_mode_model() -> None:
     if dimension_count_only == q_regulated:
         raise AssertionError("stable-map line count alone should not include the vortex fugacity")
 
-    flipped_orientation = q_regulated * (-orientation_sign) * berezin_gate
+    flipped_orientation = q_regulated * (-orientation_sign) * selection_gate
     if flipped_orientation == retained_three_point:
-        raise AssertionError("determinant-orientation flip should change the degree-one coefficient")
+        raise AssertionError("orientation flip should change the retained incidence coefficient")
 
-    missing_zero_mode_degree = insertion_complex_degree - 1
-    missing_zero_mode_gate = (
-        Fraction(1) if missing_zero_mode_degree == zero_mode_dimension else Fraction(0)
+    missing_selection_degree = insertion_complex_degree - 1
+    missing_selection_gate = (
+        Fraction(1) if missing_selection_degree == incidence_chart_dimension else Fraction(0)
     )
-    killed_fugacity = q_regulated * missing_zero_mode_gate
-    assert_equal("unsaturated zero-mode gate kills degree-one product coefficient", killed_fugacity, 0)
+    killed_fugacity = q_regulated * missing_selection_gate
+    assert_equal("unsaturated selection-degree gate kills degree-one product coefficient", killed_fugacity, 0)
     if retained_three_point == killed_fugacity:
-        raise AssertionError("charge and dimension data should not override a zero-mode gate")
+        raise AssertionError("charge and dimension data should not override a selection gate")
 
+    collided_point_one = point_zero
     colliding_point_boundary_excluded = (
-        point_zero == point_one
+        point_zero != collided_point_one
         and hyperplane_value(point_zero) != 0
-        and hyperplane_value(point_one) != 0
+        and hyperplane_value(collided_point_one) != 0
+    )
+    colliding_point_factor = Fraction(1) if colliding_point_boundary_excluded else Fraction(0)
+    colliding_point_three_point = (
+        q_regulated
+        * orientation_sign
+        * selection_gate
+        * colliding_point_factor
+        * operator_normalization
     )
     assert_equal(
-        "colliding point constraints fail compactification exclusion",
-        colliding_point_boundary_excluded,
-        False,
+        "colliding point mutation removes the retained incidence coefficient",
+        colliding_point_three_point,
+        Fraction(0),
     )
+    if colliding_point_three_point == retained_three_point:
+        raise AssertionError("colliding point mutation should recompute and fail the retained observable")
+
     hyperplane_through_first_point = [Fraction(0), Fraction(1)] + [Fraction(0)] * (n_fields - 2)
-    if sum(
-        coefficient * coordinate
-        for coefficient, coordinate in zip(hyperplane_through_first_point, point_zero)
-    ) != 0:
+    if linear_value(hyperplane_through_first_point, point_zero) != 0:
         raise AssertionError("mutated hyperplane should contain the first point")
+    hyperplane_mutation_boundary_excluded = (
+        point_zero != point_one
+        and linear_value(hyperplane_through_first_point, point_zero) != 0
+        and linear_value(hyperplane_through_first_point, point_one) != 0
+    )
+    hyperplane_mutation_factor = Fraction(1) if hyperplane_mutation_boundary_excluded else Fraction(0)
+    hyperplane_mutation_three_point = (
+        q_regulated
+        * orientation_sign
+        * selection_gate
+        * hyperplane_mutation_factor
+        * operator_normalization
+    )
+    assert_equal(
+        "hyperplane-through-point mutation removes the retained incidence coefficient",
+        hyperplane_mutation_three_point,
+        Fraction(0),
+    )
+    if hyperplane_mutation_three_point == retained_three_point:
+        raise AssertionError("hyperplane contact mutation should recompute and fail the retained observable")
 
     doubled_operator_normalization = Fraction(2)
-    if q_regulated * doubled_operator_normalization == retained_three_point:
+    rescaled_three_point = (
+        q_regulated
+        * orientation_sign
+        * selection_gate
+        * compactification_factor
+        * doubled_operator_normalization
+    )
+    assert_equal(
+        "hyperplane-class normalization rescales the retained coefficient",
+        rescaled_three_point,
+        2 * retained_three_point,
+    )
+    if rescaled_three_point == retained_three_point:
         raise AssertionError("hyperplane-class normalization change should rescale the coefficient")
 
 
@@ -1274,7 +1319,7 @@ def main() -> None:
     check_cp_mirror_residue_correlators()
     check_vortex_to_observable_residual_budget()
     check_cp_degree_one_stable_map_quantum_product_gate()
-    check_degree_one_vortex_regulated_zero_mode_model()
+    check_degree_one_stable_map_incidence_model()
     check_cigar_metric_elimination()
     check_logarithmic_chiral_vortex_obstruction()
     check_hypersurface_phase_ledger()

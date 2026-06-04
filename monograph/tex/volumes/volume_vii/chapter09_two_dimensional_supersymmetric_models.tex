@@ -1742,13 +1742,20 @@ With \(0\le a\le N-1\), it is satisfied only for \(d=1\) and
 Nondegeneracy of the classical pairing gives the product relation.
 \end{proof}
 
-\begin{controlledapproximation}[Degree-one vortex observable residual template]
+\begin{controlledapproximation}[Degree-one stable-map incidence residual template]
 \label{ca:cpn-degree-one-vortex-observable-assembly}
 The degree-one product coefficient is a physical A-twisted observable only after
 the vortex normalization, determinant orientation, zero-mode integral,
 compactification contribution, and local-operator map have been tied to the
-same finite regulator.  In a diagonal finite spectral regulator, write the
-charge-one determinant factor of the \(i\)th chiral multiplet as
+same finite regulator.  The finite calculation in this paragraph deliberately
+does not compute that regulated vortex fluctuation problem.  It treats the
+charge-one vortex coefficients \(c_{i,\Lambda}\) as supplied input from a
+separate gauge-fixed construction in that regulator and checks only the
+stable-map incidence coordinate that the comparison must match.  If a diagonal
+spectral regulator has separately supplied the full gauge-matter deformation
+complex, its
+boundary conditions, zero-mode removal, and determinant-line orientation, one
+may record the \(i\)th supplied coefficient in the bookkeeping form
 \[
   c_{i,\Lambda}
   =
@@ -1764,13 +1771,16 @@ charge-one determinant factor of the \(i\)th chiral multiplet as
 \]
 where the prime removes the bosonic degree-one zero modes and
 \(Z_{i,\Lambda}^{\rm zm}\) is the finite zero-mode metric factor in the chosen
-orientation convention.  Then
+orientation convention.  The symbols \(B,F,G\) here denote already-derived
+finite spectral blocks of the full gauge, matter, and ghost complex; assigning
+such blocks by hand is only determinant arithmetic and is not a derivation of
+the vortex coefficient.  Then
 \[
   q_\Lambda=\exp(t)\prod_{i=1}^N c_{i,\Lambda}
 \]
-is the retained charge-one fugacity in that regulator.  The retained zero-mode
-integral can be checked without using the mirror residue.  A degree-one map is
-written
+is the supplied charge-one fugacity in that regulator.  What can be checked
+without a vortex determinant calculation is the stable-map incidence chart.  A
+degree-one map is written
 \[
   \Phi_i([u:v])=A_i u+B_i v,
   \qquad i=0,\ldots,N-1,
@@ -1806,28 +1816,34 @@ on this affine zero-mode chart, the incidence Jacobian is
   }
   =+1 .
 \]
-Thus the determinant-line orientation of this retained chart is positive.  The
-complex zero-mode dimension is \(2N-1\), while the insertions
+Thus the incidence orientation of this affine stable-map chart is positive once
+the stable-map virtual orientation has already been fixed.  The determinant-line
+orientation of the regulated GLSM vortex fluctuation complex remains separate
+input in the comparison.
+The complex chart dimension is \(2N-1\), while the insertions
 \((H,H^{N-1},H^{N-1})\) have complex degree
 \[
   1+(N-1)+(N-1)=2N-1,
 \]
-so the A-twisted fermion zero modes are saturated exactly.  The two point
-constraints are distinct, and the hyperplane \(X_1-X_0=0\) contains neither of
-them, so the contracted-boundary strata in which a degree-zero component would
-carry both point insertions, or one point insertion together with the
-hyperplane insertion, do not contribute in this finite chart.  With the
-operator \(H\) normalized by the unit hyperplane equation, the retained
-calculation gives
+so the stable-map selection degree is saturated.  The A-twisted fermion
+Berezin measure, the insertion map that saturates it, and the comparison from
+the GLSM vortex complex to this stable-map chart remain part of the residual
+data below.  The two point constraints are distinct, and the hyperplane
+\(X_1-X_0=0\) contains neither of them, so the contracted-boundary strata in
+which a degree-zero component would carry both point insertions, or one point
+insertion together with the hyperplane insertion, do not contribute in this
+finite incidence chart.  With the operator \(H\) normalized by the unit
+hyperplane equation, the retained incidence calculation gives
 \begin{equation}
-  C_{\Lambda,1}^{\rm zm}
+  C_{\Lambda,1}^{\rm inc}
   =
   q_\Lambda .
-  \label{eq:cpn-degree-one-vortex-zero-mode-retained}
+  \label{eq:cpn-degree-one-stable-map-incidence-retained}
 \end{equation}
-Changing the determinant orientation, omitting one fermion zero mode, allowing
-the two point constraints to collide, or rescaling the representative of \(H\)
-changes this value.
+Changing the stable-map orientation, failing the GLSM zero-mode comparison,
+allowing the two point constraints to collide, letting the hyperplane pass
+through a point constraint, or rescaling the representative of \(H\) changes
+this retained value.
 
 Let
 \[
@@ -1838,8 +1854,9 @@ Let
   \big\langle H,H^{N-1},H^{N-1}\big\rangle_{\Lambda,d=1}^{A}
 \]
 be the full degree-one three-point coefficient in the same operator coordinate.
-Equation \eqref{eq:cpn-degree-one-vortex-zero-mode-retained} is only the
-retained finite chart.  A usable QFT comparison therefore has the conditional
+Equation \eqref{eq:cpn-degree-one-stable-map-incidence-retained} is only the
+retained finite stable-map incidence chart with supplied vortex coefficients.
+A usable QFT comparison therefore has the conditional
 form
 \begin{equation}
   C_{\Lambda,1}-q_\Lambda
@@ -1870,7 +1887,7 @@ comparison remainder.  If \(|R_\alpha|\le\epsilon_\alpha\), then
   +\epsilon_{\rm cont}.
   \label{eq:cpn-degree-one-vortex-observable-bound}
 \end{equation}
-The same zero-mode degree count gives no retained off-pairing for
+The same stable-map degree count gives no retained off-pairing for
 \(0\le a<N-1\), but the full shared-regulator statement still requires the
 separate bounds
 \begin{equation}
