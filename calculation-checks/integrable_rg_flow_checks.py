@@ -1,9 +1,38 @@
 #!/usr/bin/env python3
-"""Exact arithmetic checks for Volume VI integrable RG-flow conventions."""
+r"""Exact arithmetic checks for Volume VI integrable RG-flow conventions.
+
+Evidence contract.
+Target claims: the perturbed-CFT and integrable-RG-flow arithmetic in Volume
+VI Chapter 6, including the \(\phi_{1,3}\) Kac data, minimal-model
+central-charge drops, polynomial scalar Landau-Ginzburg multicritical ledger,
+source-scaling and massless-dispersion signs, the Zamolodchikov trace
+sum-rule coefficient \(9/E^4\), the minimal-flow central-charge targets, and
+the retained trace-form-factor \(c\)-sum reconstruction certificate.
+Independent construction: the checks recompute Kac weights, source exponents,
+central charges, radial-integral coefficients, toy spectral atoms, and
+residual decompositions directly with exact rational arithmetic rather than
+reading chapter display strings.
+Imported assumptions: the tests use the unitary minimal-model central-charge
+formula, the chapter's stress-tensor normalization, positivity of retained
+trace spectral weights, and declared nonnegative reconstruction residuals for
+particle tails, rapidity tails, contact/source extensions, Fubini exchange,
+local operator reconstruction, trace normalization, and TBA endpoint
+identification.
+Negative controls: wrong signs or coefficients, missing residual terms,
+exact TBA endpoint matching overread as a local observable certificate, and
+signed-cancellation pseudo-certificates are rejected.
+Scope boundary: a pass checks finite arithmetic and reconstruction-budget
+bookkeeping; it does not prove existence of a local QFT, analytic convergence
+of a form-factor expansion, trace-operator normalization in a concrete model,
+or the TBA/vacuum-energy identification theorem.
+"""
 
 from __future__ import annotations
 
 from fractions import Fraction
+
+from check_utils import assert_gt as assert_gt_bound
+from check_utils import assert_leq as assert_leq_bound
 
 
 def assert_equal(name: str, got: Fraction, expected: Fraction) -> None:
@@ -196,6 +225,91 @@ def check_phi13_trace_sum_rule_targets() -> None:
         )
 
 
+def check_trace_c_sum_rule_reconstruction_certificate() -> None:
+    # Tricritical Ising to Ising supplies a concrete positive target
+    # Delta c = 1/5.  The retained coordinate below is intentionally
+    # incomplete; the certificate must keep the omitted observable and
+    # endpoint/normalization residuals visible.
+    delta_c_loc = minimal_c(4) - minimal_c(3)
+    retained_sequence = [
+        Fraction(1, 10),
+        Fraction(3, 20),
+        Fraction(7, 40),
+    ]
+    retained = retained_sequence[-1]
+    assert_equal("tricritical-to-Ising target for certificate", delta_c_loc, Fraction(1, 5))
+
+    for earlier, later in zip(retained_sequence, retained_sequence[1:]):
+        assert_leq_bound(
+            "positive retained c-sum approximants are monotone",
+            earlier,
+            later,
+            tol=Fraction(0, 1),
+        )
+    assert_leq_bound(
+        "retained positive c-sum stays below full positive target",
+        retained,
+        delta_c_loc,
+        tol=Fraction(0, 1),
+    )
+
+    observable_residuals = {
+        "particle-tail": Fraction(1, 80),
+        "rapidity-tail": Fraction(1, 160),
+        "contact-source-extension": Fraction(1, 320),
+        "fubini-domination": Fraction(1, 640),
+        "local-operator-reconstruction": Fraction(1, 640),
+    }
+    observable_budget = sum(observable_residuals.values(), Fraction(0, 1))
+    observable_error = abs(delta_c_loc - retained)
+    assert_equal("trace c-sum observable residual telescope", observable_error, observable_budget)
+    assert_leq_bound(
+        "trace c-sum observable certificate bound",
+        observable_error,
+        observable_budget,
+        tol=Fraction(0, 1),
+    )
+
+    trace_normalization_residual = Fraction(1, 320)
+    tba_endpoint_residual = Fraction(1, 640)
+    tba_delta = delta_c_loc + trace_normalization_residual + tba_endpoint_residual
+    comparison_error = abs(tba_delta - retained)
+    comparison_budget = observable_budget + trace_normalization_residual + tba_endpoint_residual
+    assert_equal("trace c-sum TBA comparison residual telescope", comparison_error, comparison_budget)
+    assert_leq_bound(
+        "trace c-sum TBA comparison certificate bound",
+        comparison_error,
+        comparison_budget,
+        tol=Fraction(0, 1),
+    )
+
+    assert_gt_bound(
+        "exact endpoint match still leaves local observable residual",
+        abs(delta_c_loc - retained),
+        Fraction(0, 1),
+    )
+    assert_gt_bound(
+        "omitted trace normalization underbudgets TBA comparison",
+        comparison_error,
+        comparison_budget - trace_normalization_residual,
+    )
+    assert_gt_bound(
+        "omitted local reconstruction underbudgets observable comparison",
+        observable_error,
+        observable_budget - observable_residuals["local-operator-reconstruction"],
+    )
+
+    signed_residuals = [Fraction(1, 80), -Fraction(1, 80)]
+    signed_budget = sum(signed_residuals, Fraction(0, 1))
+    absolute_budget = sum((abs(term) for term in signed_residuals), Fraction(0, 1))
+    assert_equal("signed residual cancellation vanishes", signed_budget, Fraction(0, 1))
+    assert_gt_bound(
+        "signed cancellation hides nonzero positive residual mass",
+        absolute_budget,
+        signed_budget,
+    )
+
+
 def main() -> None:
     check_phi_13_data()
     check_minimal_model_c_drops()
@@ -205,6 +319,7 @@ def main() -> None:
     check_massless_dispersion_identities()
     check_trace_sum_rule_coefficient()
     check_phi13_trace_sum_rule_targets()
+    check_trace_c_sum_rule_reconstruction_certificate()
     print("All integrable RG-flow checks passed.")
 
 

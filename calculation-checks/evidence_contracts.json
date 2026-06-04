@@ -62,6 +62,10 @@
       "risk_class": "integrable hydrodynamic reconstruction"
     },
     {
+      "path": "integrable_rg_flow_checks.py",
+      "risk_class": "integrable RG-flow observable reconstruction"
+    },
+    {
       "path": "nonintegrable_bridge_checks.py",
       "risk_class": "integrability-breaking decay-rate reconstruction"
     },

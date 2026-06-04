@@ -1978,7 +1978,12 @@ Current checks:
   \(m-2\), Kac-table identification, source-scaling sign, and
   right/left massless dispersion identities, plus the
   Zamolodchikov trace-sum-rule coefficient \(9/E^4\) and the
-  \(\phi_{1,3}\) minimal-flow central-charge targets.
+  \(\phi_{1,3}\) minimal-flow central-charge targets.  It also checks the
+  retained trace-form-factor \(c\)-sum reconstruction certificate, including
+  monotone positive approximants, observable and TBA-comparison residual
+  telescopes, and negative controls against exact endpoint overread, omitted
+  trace/local reconstruction residuals, and signed-cancellation
+  pseudo-certificates.
 - `mirror_tba_wrapping_checks.py`: exact algebra checks for the Volume VI
   mirror-channel finite-size chapter, including the two-winding TBA expansion
   of \(L_a=\log(1+e^{-\epsilon_a})\), the displayed vacuum-energy
