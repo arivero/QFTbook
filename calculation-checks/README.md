@@ -100,7 +100,9 @@ Current checks:
   the Higgs mass coefficient, \(B-L\) anomaly bookkeeping with and
   without a singlet \(\nu^c\), Weinberg-operator mass normalization,
   tree-level singlet-neutrino matching, the dimension-six Warsaw-type
-  one-generation class counts and field-content dimensions, the local and
+  one-generation class counts and field-content dimensions, the monograph
+  mostly-plus Hermiticity convention for Warsaw \(H^2D\psi^2\) vector-current
+  templates and an off-diagonal flavor pair, the local and
   finite determinant-line obstruction checks used in the chiral-lattice
   regulator discussion, including small-cell local holonomy exponents and
   the weak-\(SU(2)\) Pfaffian parity sign,

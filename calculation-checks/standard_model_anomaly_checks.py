@@ -20,6 +20,9 @@ from fractions import Fraction
 from math import comb
 
 
+FlavorIndex = tuple[int, int]
+
+
 FIELDS = [
     ("Q_L", 3, 2, Fraction(1, 6), True),
     ("u^c", 3, 1, Fraction(-2, 3), False),
@@ -58,6 +61,49 @@ def assert_zero(name: str, value: Fraction) -> None:
 def assert_equal(name: str, value, expected) -> None:
     if value != expected:
         raise AssertionError(f"{name} = {value}, expected {expected}")
+
+
+def adjoint_flavor_pair(pair: FlavorIndex) -> FlavorIndex:
+    return pair[1], pair[0]
+
+
+def adjoint_vector_bilinear(
+    pair: FlavorIndex,
+    *,
+    includes_monograph_i: bool,
+) -> tuple[int, FlavorIndex]:
+    """Return the adjoint sign and flavor pair for a vector bilinear.
+
+    In the monograph mostly-plus Dirac-adjoint chart,
+    (bar psi_p gamma^mu psi_r)^dagger = - bar psi_r gamma^mu psi_p.
+    Multiplication by the displayed monograph factor i removes that minus sign.
+    """
+
+    raw_sign = -1
+    if includes_monograph_i:
+        return -raw_sign, adjoint_flavor_pair(pair)
+    return raw_sign, adjoint_flavor_pair(pair)
+
+
+def adjoint_vector_current_term(
+    coefficient: complex,
+    pair: FlavorIndex,
+    *,
+    includes_monograph_i: bool,
+) -> tuple[complex, FlavorIndex]:
+    sign, adjoint_pair = adjoint_vector_bilinear(
+        pair,
+        includes_monograph_i=includes_monograph_i,
+    )
+    return sign * coefficient.conjugate(), adjoint_pair
+
+
+def hermitian_matrix_value(
+    matrix: list[list[complex]],
+    row: int,
+    col: int,
+) -> complex:
+    return matrix[row][col]
 
 
 def check_su3_su3_u1() -> None:
@@ -473,6 +519,85 @@ def check_dimension_six_basis_counts() -> None:
         assert_equal(f"dimension-six field-content dimension for {name}", dimension, 6)
 
 
+def check_warsaw_vector_current_hermiticity_chart() -> None:
+    pair = (0, 1)
+    raw_sign, raw_pair = adjoint_vector_bilinear(pair, includes_monograph_i=False)
+    current_sign, current_pair = adjoint_vector_bilinear(pair, includes_monograph_i=True)
+    assert_equal("raw mostly-plus vector bilinear adjoint sign", raw_sign, -1)
+    assert_equal("raw mostly-plus vector bilinear flavor swap", raw_pair, (1, 0))
+    assert_equal("monograph Warsaw current adjoint sign", current_sign, 1)
+    assert_equal("monograph Warsaw current flavor swap", current_pair, (1, 0))
+
+    coefficient = [
+        [2 + 0j, 3 + 5j],
+        [3 - 5j, -7 + 0j],
+    ]
+    for row in range(2):
+        for col in range(2):
+            assert_equal(
+                f"Hermitian C_Hpsi flavor matrix {row}{col}",
+                hermitian_matrix_value(coefficient, col, row),
+                hermitian_matrix_value(coefficient, row, col).conjugate(),
+            )
+
+    # With the monograph current, C_pr O_pr + C_rp O_rp is Hermitian for a
+    # Hermitian flavor matrix.  Without the factor i, the same coefficients
+    # would multiply an anti-Hermitian diagonal operator.
+    off_diagonal_adjoint = adjoint_vector_current_term(
+        coefficient[0][1],
+        (0, 1),
+        includes_monograph_i=True,
+    )
+    assert_equal(
+        "off-diagonal monograph current term closes under Hermitian C_Hpsi",
+        off_diagonal_adjoint,
+        (coefficient[1][0], (1, 0)),
+    )
+    raw_off_diagonal_adjoint = adjoint_vector_current_term(
+        coefficient[0][1],
+        (0, 1),
+        includes_monograph_i=False,
+    )
+    assert_equal(
+        "raw off-diagonal vector term has the wrong Warsaw-coordinate sign",
+        raw_off_diagonal_adjoint,
+        (-coefficient[1][0], (1, 0)),
+    )
+
+    diagonal_raw_sign, diagonal_raw_pair = adjoint_vector_bilinear(
+        (0, 0),
+        includes_monograph_i=False,
+    )
+    diagonal_current_sign, diagonal_current_pair = adjoint_vector_bilinear(
+        (0, 0),
+        includes_monograph_i=True,
+    )
+    assert_equal(
+        "raw diagonal vector operator is anti-Hermitian",
+        (diagonal_raw_sign, diagonal_raw_pair),
+        (-1, (0, 0)),
+    )
+    assert_equal(
+        "monograph diagonal vector current is Hermitian",
+        (diagonal_current_sign, diagonal_current_pair),
+        (1, (0, 0)),
+    )
+
+    hud_pair = (0, 1)
+    hud_adjoint_sign, hud_adjoint_pair = adjoint_vector_bilinear(
+        hud_pair,
+        includes_monograph_i=True,
+    )
+    assert_equal("O_Hud current adjoint sign", hud_adjoint_sign, 1)
+    assert_equal(
+        "O_Hud current adjoint swaps u,d flavor labels",
+        hud_adjoint_pair,
+        (1, 0),
+    )
+    hud_coefficient = 11 - 13j
+    assert_equal("O_Hud conjugate coefficient", hud_coefficient.conjugate(), 11 + 13j)
+
+
 def check_chiral_lattice_obstruction_conditions() -> None:
     # The chiral-lattice regulator discussion uses the vanishing of the same
     # local anomaly coefficients as the determinant-line obstruction.
@@ -549,6 +674,7 @@ def main() -> None:
     check_oblique_parameter_identities()
     check_muon_gminus_two_hybrid_identities()
     check_dimension_six_basis_counts()
+    check_warsaw_vector_current_hermiticity_chart()
     check_chiral_lattice_obstruction_conditions()
     print("All Standard Model representation, flavor, SMEFT, chiral-lattice, electroweak, RG, and hybrid-observable checks passed.")
 

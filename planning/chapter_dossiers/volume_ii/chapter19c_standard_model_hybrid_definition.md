@@ -74,9 +74,10 @@
   matching map, field domain, and matrix elements.
 - Defines the dimension-six quotient by total derivatives and
   equation-of-motion field-coordinate changes, lists the Warsaw-type
-  baryon-number preserving basis by operator class, records the
-  baryon-violating dimension-six classes, and proves field-content exhaustion
-  from engineering dimensions.
+  baryon-number preserving basis by operator class, including the
+  mostly-plus Hermitian current convention for \(H^2D\psi^2\) vector
+  operators, records the baryon-violating dimension-six classes, and proves
+  field-content exhaustion from engineering dimensions.
 - States the regulator assumption behind equation-of-motion coordinate
   changes: near-identity local field redefinitions must have trivial or local
   Jacobians absorbable into EFT coupling coordinates.
@@ -289,3 +290,11 @@
   equivariant nonvanishing sections, separates local small-cell holonomy from
   the global weak-\(SU(2)\) Pfaffian sign, and keeps anomaly cancellation as a
   necessary condition rather than a completed regulator theorem.
+- 2026-06-04 issue #762 convention pass: translated the Warsaw
+  \(H^2D\psi^2\) vector-current templates into the monograph mostly-plus
+  spinor convention.  Neutral vector operators now use
+  \(J_{\psi,pr}^\mu=\ii\bar\psi_p\gamma^\mu\psi_r\) and Hermitian flavor
+  coefficient matrices; charged \(O_{Hud}\), dipoles, and Yukawa-like
+  operators are explicitly complex coordinates with Hermitian conjugates.
+  `standard_model_anomaly_checks.py` now verifies the adjoint sign, diagonal
+  Hermiticity, and an off-diagonal flavor pair.
