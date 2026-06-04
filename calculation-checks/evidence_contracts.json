@@ -38,6 +38,10 @@
       "risk_class": "QCD theta/Witten-Veneziano Ward identities"
     },
     {
+      "path": "scet_factorization_checks.py",
+      "risk_class": "SCET/factorization proof-status boundary"
+    },
+    {
       "path": "cft_higher_genus_sewing_checks.py",
       "risk_class": "CFT sewing"
     },

@@ -44,12 +44,22 @@ The chapter establishes:
   making explicit that an overlap region is subtracted once and that
   regulator-dependent scaleless-zero statements do not remove the need to
   specify the subtraction datum;
+- a fixed-regulator endpoint-region expansion for
+  \(I_\lambda[f]=\int_0^1 f(x)\dd x/(x+\lambda)\), displaying the endpoint
+  logarithm, overlap-subtracted hard functional, nonzero
+  \(O(\lambda\log(1/\lambda))\) remainder bound, and negative controls for an
+  unsubtracted hard integral and unpaired intermediate split;
 - controlled approximation `ca:scet-distributional-factorization-estimate`,
   stating leading-power SCET factorization as a bound on smeared physical
   cross-section functionals on a Banach endpoint test space, with the
   physical functional, factorized singular coordinate, endpoint parameter,
   topology, power remainder, perturbative truncation remainder, and finite
   transform-space scheme covariance all explicitly named;
+- a claim-status ledger for the factorization material, tying SCET,
+  fixed-regulator diagnostics, massive-vector Sudakov charts, soft drop,
+  non-global logarithms, QCD DIS/Drell--Yan/EEC/small-\(x\)/exclusive
+  formulae, and HQET/NRQCD/thermal matching statements to the EFT prediction
+  status categories rather than to historical theorem labels;
 - a transform-space SCET renormalization-group transport datum for resummed
   singular coordinates, including hard/jet/soft anomalous-dimension
   consistency, evolution kernels from natural scales to a common scale, and
@@ -60,7 +70,9 @@ The chapter establishes:
   genuine factorization obstruction; the diagnostic now includes the exact
   finite remainder
   \(\operatorname{Tr}((U_G^\dagger M U_G-M)\rho_{\rm spec})\), its norm
-  bound, and the Duhamel commutator estimate for \(U_G=\exp(\ii K_G)\);
+  bound, the Duhamel commutator estimate for \(U_G=\exp(\ii K_G)\), and the
+  explicit two-state rotation example
+  \(\Delta_G=(r_2-r_1)\sin^2\theta\);
 - a massive-vector Sudakov boundary chart for high-energy electroweak jet
   measurements, deriving the triangular soft-collinear area
   \(A_V=\frac14\log^2(Q^2/M_V^2)\) and separating scalar one-line transport
@@ -174,6 +186,14 @@ The chapter establishes:
      both counted.  A convention change is harmless only when paired between
      collinear and soft coordinates; a scaleless integral in a particular
      regulator is not an invariant absence of overlap.
+8aaa. The endpoint-region integral
+      \(I_\lambda[f]=\int_0^1f(x)\dd x/(x+\lambda)\) supplies a genuine
+      fixed-order positive case: the endpoint logarithm and hard functional
+      are separated only after overlap subtraction, and the remainder is
+      bounded by
+      \(\lambda\|f'\|_\infty\log((1+\lambda)/\lambda)\).  The unsubtracted
+      hard term diverges and an unpaired split retains arbitrary split-scale
+      dependence.
 8ab. Resummation is a renormalization-group transport datum on a declared
      factorized coordinate.  In transform space the hard, jet, and soft
      anomalous dimensions must sum to zero as convolution kernels, and the
@@ -189,6 +209,13 @@ The chapter establishes:
      soft coordinates represent the same singular distribution only when the
      product of the finite factors is one; anomalous-dimension consistency is
      then preserved by the paired logarithmic shifts.
+8aca. The SCET/factorization claim-status ledger classifies finite algebraic
+      mechanisms, operator specifications, fixed-order coefficient
+      calculations, conditional factorization hypotheses, phenomenological
+      ansatz layers, and theorem-level claims separately.  A historical
+      physics phrase such as "factorization theorem" is not a proof-status
+      certificate unless the dependency ladder and observable-topology
+      remainder are supplied.
 8ad. Massive electroweak vector corrections to high-energy jet observables are
      controlled by a physical mass boundary \(M_V\), while the QCD sector
      retains its own operator and regulator datum.  In the one-line
@@ -207,7 +234,9 @@ The chapter establishes:
      Exact cancellation requires the measured algebra to be invariant under
      \(U_G\); approximate cancellation requires a small commutator in the
      topology used for the smeared cross section, not merely a verbal
-     assertion that Glauber exchanges cancel.
+     assertion that Glauber exchanges cancel.  In the two-state rotation
+     negative control, \(\Delta_G=(r_2-r_1)\sin^2\theta\), so a
+     noncommuting measurement generically detects the exchange.
 8c. Non-global angular measurements are not governed by a single linear soft
     anomalous dimension.  In a finite soft-dipole cell datum, unmeasured
     emissions are real--virtual balanced at first order but split the original
@@ -424,3 +453,13 @@ The chapter establishes:
   second-order coefficient separating the global Sudakov square from the
   first non-global term, and added
   `calculation-checks/qcd_non_global_log_checks.py`.
+- 2026-06-04 issue #783 proof-status pass: replaced the remaining
+  construction-overstating SCET language with conditional operator-coordinate
+  language; added the fixed-regulator endpoint-region expansion with a
+  nonzero remainder and negative controls; added the factorization
+  claim-status ledger tying SCET, QCD factorization, soft-drop, non-global,
+  massive-vector, HQET/NRQCD, and thermal matching uses to explicit status
+  categories; strengthened the finite Glauber obstruction with the two-state
+  \((r_2-r_1)\sin^2\theta\) example; and promoted
+  `calculation-checks/scet_factorization_checks.py` to a high-risk
+  evidence-contract check.

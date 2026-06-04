@@ -1,22 +1,47 @@
 #!/usr/bin/env python3
-"""Finite checks for the SCET factorization datum in the jets chapter.
+"""Evidence contract.
 
-These checks do not prove a factorization theorem.  They verify the exact
-algebraic facts used in the exposition: convolution of jet and soft
-distributions preserves normalization and first moments; a finite
-distributional factorization remainder is bounded by total variation times
-the endpoint-test-function norm; finite zero-bin subtraction is
-inclusion--exclusion; finite multiplicative scheme changes preserve the
-transform-space hard/jet/soft product and anomalous-dimension consistency
-only when their product is one; a finite Wilson-line change of variables
-removes the leading soft covariant derivative when the Wilson line solves its
-defining differential equation; scalar RG transport is independent of the
-common scale when the relevant anomalous dimensions satisfy the factorization
-consistency equation; and the soft-drop boundary scales solve the simultaneous
-mass/grooming equations.  It also checks the finite phase-space area behind
-the massive-vector Sudakov chart used for electroweak jet boundaries and the
-finite unitarity/remainder diagnostic for Glauber cancellation versus
-measurement obstruction.
+Target claims:
+- Endpoint convolution, distributional pairing, zero-bin subtraction, finite
+  scheme changes, RG transport, Wilson-line decoupling, Glauber diagnostics,
+  soft-drop scales, and massive-vector Sudakov areas obey the finite algebra
+  stated in the jets/SCET chapter.
+- The regulated endpoint-region integral has a real fixed-order remainder
+  bound, and unsubtracted or unpaired region splits fail as negative controls.
+- A noncommuting finite measurement can detect a Glauber rotation, so a
+  residual slot is not a proof of factorization.
+
+Independent construction:
+- All checks use finite distributions, rational matrices, exact polynomial
+  integrals, or symbolic identities built independently of the manuscript
+  prose.
+- The endpoint-region expansion is checked by direct symbolic integration and
+  by the Lipschitz remainder bound.
+- The Glauber-breaking example is checked both as a concrete rational matrix
+  model and as a symbolic two-state rotation formula.
+
+Imported assumptions:
+- The checks are finite-regulator or fixed-order algebraic tests of a proposed
+  SCET/factorization datum.
+- The endpoint integral is a one-dimensional Feynman-parameter endpoint model;
+  it is not a continuum QCD theorem.
+- The finite Glauber Hilbert space is a diagnostic model for measurement
+  commutation, not a construction of the QCD Glauber region.
+
+Negative controls:
+- Naively double-counting the zero-bin leaves exactly the overlap term.
+- A finite scheme change whose factors do not multiply to one changes the
+  hard/jet/soft product.
+- The unsubtracted hard endpoint integral diverges, and an unpaired
+  intermediate split retains arbitrary split-scale dependence.
+- A noncommuting measurement gives a nonzero Glauber remainder.
+
+Scope boundary:
+- This script verifies finite algebra, fixed-order endpoint expansion, and
+  proof-obligation diagnostics.  It does not construct SCET, prove
+  composite-operator existence, prove regulator removal, derive mode
+  decompositions from QCD, or establish all-order factorization for a
+  physical cross section.
 """
 
 from __future__ import annotations
@@ -204,6 +229,40 @@ def check_zero_bin_scheme_reshuffling() -> None:
     assert_equal("paired zero-bin scheme reshuffling", shifted, base)
 
 
+def check_regulated_endpoint_region_expansion() -> None:
+    x = sp.symbols("x", positive=True)
+    eps = sp.symbols("eps", positive=True)
+    eta = sp.symbols("eta", positive=True)
+    lam = sp.Rational(1, 7)
+    f = 1 + 3 * x + 2 * x**2
+    f0 = f.subs(x, 0)
+
+    exact = sp.integrate(f / (x + lam), (x, 0, 1))
+    endpoint = f0 * sp.log((1 + lam) / lam)
+    hard = sp.integrate((f - f0) / x, (x, 0, 1))
+    remainder = -lam * sp.integrate((f - f0) / (x * (x + lam)), (x, 0, 1))
+    assert_equal(
+        "regulated endpoint expansion identity",
+        sp.simplify(exact - endpoint - hard - remainder),
+        0,
+    )
+
+    lipschitz_bound = lam * sp.Rational(7) * sp.log((1 + lam) / lam)
+    _assert_leq(
+        "regulated endpoint Lipschitz remainder bound",
+        float(abs(remainder.evalf())),
+        float(lipschitz_bound.evalf()),
+    )
+
+    unsubtracted_hard = sp.integrate(f / x, (x, eps, 1))
+    if sp.limit(unsubtracted_hard, eps, 0, dir="+") != sp.oo:
+        raise AssertionError("unsubtracted endpoint hard integral should diverge")
+
+    naive_split = f0 * sp.log(eta / lam) + sp.integrate(f / x, (x, eta, 1))
+    split_derivative = sp.simplify(sp.diff(naive_split, eta))
+    assert_equal("naive split-scale dependence", split_derivative, -2 * eta - 3)
+
+
 def check_multiplicative_scheme_covariance() -> None:
     hard = Fraction(2, 3)
     jet_n = Fraction(5, 7)
@@ -219,6 +278,9 @@ def check_multiplicative_scheme_covariance() -> None:
 
     shifted_product = (hard * r_h) * (jet_n * r_n) * (jet_barn * r_barn) * (soft * r_s)
     assert_equal("factorized product under finite scheme change", shifted_product, base_product)
+    bad_shifted_product = (hard * r_h) * (jet_n * r_n) * (jet_barn * r_barn) * (soft * r_s * 2)
+    if bad_shifted_product == base_product:
+        raise AssertionError("unpaired finite scheme change should alter the factorized product")
 
     gamma_h = Fraction(5, 6)
     gamma_n = Fraction(-1, 3)
@@ -405,6 +467,21 @@ def check_glauber_unitarity_diagnostic() -> None:
         raise AssertionError(f"Glauber Hilbert-Schmidt remainder bound failed: {lhs} > {rhs}")
 
 
+def check_symbolic_glauber_breaking_example() -> None:
+    c, s, r1, r2 = sp.symbols("c s r1 r2")
+    unitary = sp.Matrix([[c, s], [-s, c]])
+    measurement = sp.Matrix([[1, 0], [0, 0]])
+    rho = sp.diag(r1, r2)
+    evolved = unitary * rho * unitary.T
+    delta = sp.trace(measurement * evolved) - sp.trace(measurement * rho)
+    delta_on_unit_circle = sp.simplify(delta.subs(c**2, 1 - s**2))
+    assert_equal("symbolic finite Glauber breaking", delta_on_unit_circle, s**2 * (r2 - r1))
+
+    concrete = delta_on_unit_circle.subs({s: sp.Rational(4, 5), r1: sp.Rational(1, 5), r2: sp.Rational(3, 5)})
+    if concrete == 0:
+        raise AssertionError("concrete Glauber-breaking negative control should be nonzero")
+
+
 def massive_vector_sudakov_area(log_q2_over_m2: Fraction) -> Fraction:
     return log_q2_over_m2 * log_q2_over_m2 / 4
 
@@ -445,16 +522,19 @@ def main() -> None:
     check_distributional_factorization_remainder_bound()
     check_zero_bin_inclusion_exclusion()
     check_zero_bin_scheme_reshuffling()
+    check_regulated_endpoint_region_expansion()
     check_multiplicative_scheme_covariance()
     check_rg_transport_common_scale_independence()
     check_soft_drop_boundary_scales_and_rg_consistency()
     check_soft_wilson_line_decoupling_identity()
     check_glauber_unitarity_diagnostic()
+    check_symbolic_glauber_breaking_example()
     check_massive_vector_sudakov_area()
     print(
         "All SCET convolution, distributional-remainder, zero-bin, "
-        "scheme-covariance, RG-transport, soft-drop-scale, soft-Wilson-line, "
-        "Glauber-unitarity, and massive-vector Sudakov checks passed."
+        "endpoint-expansion, scheme-covariance, RG-transport, soft-drop-scale, "
+        "soft-Wilson-line, Glauber-unitarity/breaking, and massive-vector "
+        "Sudakov checks passed."
     )
 
 

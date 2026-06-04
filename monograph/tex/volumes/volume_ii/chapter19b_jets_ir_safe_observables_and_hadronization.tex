@@ -399,7 +399,7 @@ subtraction prescription.  For thrust-like two-jet kinematics,
   p_s^\mu\sim Q(\lambda^2,\lambda^2,\lambda^2),
 \]
 where the three entries denote
-\((n\cdot p,\bar n\cdot p,p_\perp)\).  A leading-power factorization theorem
+\((n\cdot p,\bar n\cdot p,p_\perp)\).  A leading-power factorization claim
 is a statement that, for \(e\ll1\) and away from additional measured
 hierarchies,
 \[
@@ -531,6 +531,61 @@ requires estimates showing that the regulated partition, the overlap
 approximants, and the measurement remainder converge in the topology in which
 the cross section is tested.
 
+\paragraph{A fixed-regulator endpoint-region expansion.}
+The next calculation is a positive example of what the monograph can prove
+without importing a full SCET construction.  It is the endpoint subintegral
+that appears after Feynman parametrization or one-emission phase-space
+reduction in many one-loop two-scale problems.  Fix \(0<\lambda<1/2\) and a
+twice differentiable test numerator \(f\) on \([0,1]\).  Define
+\begin{equation}
+  I_\lambda[f]
+  =
+  \int_0^1\frac{f(x)}{x+\lambda}\,\dd x .
+  \label{eq:regulated-endpoint-region-integral}
+\end{equation}
+The endpoint expansion is
+\begin{equation}
+  I_\lambda[f]
+  =
+  f(0)\log\frac{1+\lambda}{\lambda}
+  +
+  \int_0^1\frac{f(x)-f(0)}{x}\,\dd x
+  +
+  R_\lambda[f],
+  \label{eq:regulated-endpoint-region-expansion}
+\end{equation}
+where
+\begin{equation}
+  R_\lambda[f]
+  =
+  -\lambda\int_0^1
+  \frac{f(x)-f(0)}{x(x+\lambda)}\,\dd x .
+  \label{eq:regulated-endpoint-region-remainder}
+\end{equation}
+If \(L_f=\sup_{0\le x\le1}|f'(x)|\), then
+\begin{equation}
+  |R_\lambda[f]|
+  \le
+  \lambda L_f\log\frac{1+\lambda}{\lambda}.
+  \label{eq:regulated-endpoint-region-remainder-bound}
+\end{equation}
+The first term in
+\eqref{eq:regulated-endpoint-region-expansion} is the endpoint coordinate,
+the second is the finite hard matching functional after subtracting the
+endpoint overlap, and the third is a genuine fixed-regulator remainder.  The
+negative control is equally important: replacing the second term by
+\(\int_0^1 f(x)\dd x/x\) is divergent at the endpoint, while splitting the
+integral at an arbitrary intermediate point without subtracting the overlap
+leaves dependence on that point.  Thus even in this one-loop model the
+region expansion is a paired approximation plus subtraction plus remainder,
+not a naming convention for pieces of the exact integral.
+
+This calculation is deliberately modest.  It is a fixed-order expansion of a
+specified regulated integral.  It does not construct lightlike Wilson-line
+operators, prove rapidity renormalization, control Glauber exchange, or
+derive a QCD factorization formula.  Its role is to show the kind of
+observable-level remainder that a larger factorization argument must contain.
+
 \paragraph{Leading soft Wilson-line decoupling identity.}
 At finite regulator and at leading power in the \(n\)-collinear sector, the
 soft connection appearing through \(n\cdot D_s=n\cdot\partial-\ii n\cdot A_s\)
@@ -646,6 +701,34 @@ and hence
   \le
   \|[M,K_G]\| .
 \]
+For a concrete breaking example take
+\[
+  U_G=
+  \begin{pmatrix}
+    \cos\theta&\sin\theta\\
+    -\sin\theta&\cos\theta
+  \end{pmatrix},
+  \qquad
+  M=
+  \begin{pmatrix}
+    1&0\\0&0
+  \end{pmatrix},
+  \qquad
+  \rho_{\rm spec}=
+  \begin{pmatrix}
+    r_1&0\\0&r_2
+  \end{pmatrix}.
+\]
+Then
+\[
+  \Delta_G(M,\rho_{\rm spec})
+  =
+  (r_2-r_1)\sin^2\theta .
+\]
+Unless \(r_1=r_2\) or \(\theta\in\pi\mathbb Z\), the measurement detects the
+Glauber rotation.  The proposed factorized expression must then carry this
+Glauber operator or restrict the measurement; allocating a residual symbol
+does not by itself prove that the residual is small.
 The finite diagnostic therefore has an honest error coordinate: exact
 factorization is recovered when the measured algebra is invariant under the
 Glauber unitary, and approximate factorization requires a small commutator in
@@ -697,11 +780,12 @@ distributions under discussion.  The physical smeared functional is
   \label{eq:scet-physical-smeared-functional}
 \end{equation}
 A two-jet operator specification \(\mathcal D_{\rm SCET}\) as in
-Definition~\ref{def:scet-two-jet-operator-datum} defines, after the specified
-regulator, overlap subtraction, rapidity subtraction when needed, and
-renormalization scheme, a singular distributional coordinate
-\(\dd\mu_{Q,\rm sing}^{\rm SCET}(e;\mathcal D_{\rm SCET})\).  Its smeared
-functional is
+Definition~\ref{def:scet-two-jet-operator-datum} is treated, once the
+specified regulator, operator existence, overlap subtraction, rapidity
+subtraction when needed, and renormalization scheme have been supplied, as a
+singular distributional coordinate
+\(\dd\mu_{Q,\rm sing}^{\rm SCET}(e;\mathcal D_{\rm SCET})\).  In that
+conditional coordinate system its smeared functional is
 \begin{equation}
   \Sigma_{Q,\rm sing}^{\rm SCET}(\varphi;\mathcal D_{\rm SCET})
   =
@@ -768,6 +852,53 @@ about matrix kernels and path-ordered products.  It is part of the coordinate
 structure of the factorized approximation, not an optional convention added after
 the formula has been written.
 \end{controlledapproximation}
+
+\paragraph{Claim-status ledger for factorization uses.}
+The categories below refine the EFT prediction status ledger of
+Definition~\ref{def:eft-prediction-datum} for the factorization material in
+this volume.  They apply whenever the historical term ``factorization
+theorem'' appears in the cited physics literature.
+\begin{enumerate}
+  \item The two-jet SCET operator datum in
+  Definition~\ref{def:scet-two-jet-operator-datum} is an operator
+  specification whose renormalized existence is part of the datum unless a
+  regulator construction is supplied.  The estimate in
+  Controlled Approximation~\ref{ca:scet-distributional-factorization-estimate}
+  is a conditional leading-power factorization hypothesis in a topology on
+  smeared endpoint cross sections.
+  \item The endpoint integral
+  \eqref{eq:regulated-endpoint-region-expansion}, the zero-bin
+  inclusion--exclusion identity
+  \eqref{eq:finite-scet-zero-bin-inclusion-exclusion}, the soft Wilson-line
+  algebra, and the finite Glauber diagnostic are fixed-regulator or
+  fixed-order mechanisms.  They are necessary local checks on a
+  factorization construction, not continuum QCD factorization proofs.
+  \item The massive-vector Sudakov chart in
+  Controlled Approximation~\ref{ca:massive-vector-sudakov-chart} is a
+  fixed-order strongly ordered phase-space coordinate with a declared
+  hierarchy \(Q\gg M_V\).  It is not a complete electroweak jet theorem.
+  \item The soft-drop and groomed-mass formulae below are conditional
+  factorization data for specified measurements.  The fixed-coupling
+  radiator calculations are finite perturbative mechanisms inside that data,
+  while the resummed prediction additionally assumes the listed operator and
+  remainder entries.
+  \item The non-global soft-dipole evolution is a finite large-\(N_c\),
+  strongly energy-ordered soft model.  Its nonlinear term is a concrete
+  obstruction to a single global soft function; continuum finite-\(N_c\)
+  claims require separate factorization hypotheses.
+  \item The QCD chapter's back-to-back EEC, compact-\(x\) DIS, integrated and
+  TMD Drell--Yan, small-\(x\) Wilson-line, exclusive-pion, GPD, and TMD
+  formulae are to be read through the common dependency ladder of
+  Chapter~\ref{ch:volume-ii-19}.  Their short-distance coefficient calculations
+  are fixed-order perturbative statements; the process-level formulae are
+  conditional factorization hypotheses unless the stated proof obligations
+  are supplied in the declared framework.
+  \item HQET, NRQCD, pNRQCD, and thermal dimensional-reduction formulae are
+  EFT matching statements.  They become predictions only after the observable,
+  regulator, matching, running, external-state or thermal-state prescription,
+  and remainder status are stated as in
+  Definition~\ref{def:eft-prediction-datum}.
+\end{enumerate}
 
 Renormalization of the hard, jet, and soft functions gives evolution
 equations.  The resummation structure is clearest after a Laplace transform, or

@@ -2466,17 +2466,19 @@ Current checks:
   datum in the jets chapter, including exact endpoint-convolution
   normalization and first-moment identities, the total-variation bound for a
   finite distributional factorization remainder, finite zero-bin
-  inclusion--exclusion and scheme-reshuffling identities, finite
+  inclusion--exclusion and scheme-reshuffling identities, the regulated
+  endpoint-region expansion with its fixed-order remainder bound and negative
+  controls for unsubtracted hard and unpaired split-scale terms, finite
   multiplicative hard/jet/soft scheme covariance and anomalous-dimension
-  consistency, scalar renormalization-group transport independence under the
+  consistency with an unpaired-scheme negative control, scalar renormalization-group transport independence under the
   hard/jet/soft anomalous-dimension consistency equation, exact soft-drop
   boundary scale identities and hard/global-soft/jet/collinear-soft RG
   consistency, a finite Wilson-line algebra check of leading soft
   covariant-derivative decoupling, a finite Glauber unitarity diagnostic
   separating inclusive cancellation from noncommuting measurement obstruction
-  together with an exact finite remainder identity and Hilbert--Schmidt bound,
-  and the triangular logarithmic phase-space area behind the massive-vector
-  Sudakov chart.
+  together with an exact finite remainder identity, Hilbert--Schmidt bound,
+  and symbolic two-state breaking example, and the triangular logarithmic
+  phase-space area behind the massive-vector Sudakov chart.
 - `track_function_moment_checks.py`: exact rational checks for the finite-kernel
   track-function RG identities, verifying preservation of normalization, the
   first-moment evolution formula, and the full finite moment-tower formula
