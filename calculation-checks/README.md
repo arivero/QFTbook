@@ -2319,6 +2319,8 @@ Current checks:
   real/complex quotient dimension count, the equivariance of an invariant
   superpotential's \(F\)-term ideal, and the rank-one hyperk\"ahler quotient
   dimension and cotangent-transition algebra for \(T^\ast\mathbb P^{N-1}\),
+  the two-dimensional \(\mathcal N=(4,4)\) ADHM/D1--D5 Higgs-branch
+  dimension ledger and positive-FI exclusion of the empty-framing boundary,
   plus the \(SU(2)\), \(N_f=2\) Plucker/Pfaffian quotient identity and
   dimension ledger, nonzero quantum-deformation smoothness test,
   diagonal-mass two-vacuum algebra, and holomorphic threshold scale matching.

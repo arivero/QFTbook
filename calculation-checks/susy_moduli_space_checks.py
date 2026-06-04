@@ -172,6 +172,74 @@ def check_rank_one_hyperkahler_cotangent_transition():
             )
 
 
+def check_d1_d5_adhm_higgs_branch_dimension():
+    """Check the ADHM Higgs-branch dimension ledger for the N=(4,4) model."""
+
+    for q1 in range(1, 8):
+        for q5 in range(1, 9):
+            ambient_complex_dimension = 2 * q1 * q1 + 2 * q1 * q5
+            complex_moment_equations = q1 * q1
+            complex_gauge_dimension = q1 * q1
+            quotient_complex_dimension = (
+                ambient_complex_dimension
+                - complex_moment_equations
+                - complex_gauge_dimension
+            )
+
+            ambient_real_dimension = 4 * (q1 * q1 + q1 * q5)
+            real_moment_equations = 3 * q1 * q1
+            compact_gauge_dimension = q1 * q1
+            quotient_real_dimension = (
+                ambient_real_dimension
+                - real_moment_equations
+                - compact_gauge_dimension
+            )
+
+            assert_equal(
+                quotient_complex_dimension,
+                2 * q1 * q5,
+                "D1-D5 ADHM complex Higgs-branch dimension",
+            )
+            assert_equal(
+                quotient_real_dimension,
+                4 * q1 * q5,
+                "D1-D5 ADHM real Higgs-branch dimension",
+            )
+            assert_equal(
+                2 * quotient_complex_dimension,
+                quotient_real_dimension,
+                "D1-D5 ADHM real/complex dimension match",
+            )
+
+
+def check_d1_d5_positive_fi_excludes_empty_framing_boundary():
+    """Trace the real moment map at I=J=0 to expose the FI boundary case."""
+
+    for q1 in range(1, 12):
+        zeta = Fraction(q1 + 2, q1 + 5)
+
+        # At I=J=0 the trace of [B_1,B_1^\dagger]+[B_2,B_2^\dagger] is zero.
+        # The positive-FI equation requires trace(zeta * 1_K)=zeta*q1.
+        trace_left_at_empty_framing = Fraction(0)
+        trace_positive_fi = zeta * q1
+
+        assert_equal(
+            trace_left_at_empty_framing,
+            0,
+            "D1-D5 ADHM commutator trace at empty framing",
+        )
+        assert_equal(
+            trace_positive_fi > 0,
+            True,
+            "D1-D5 ADHM positive FI trace is nonzero",
+        )
+        assert_equal(
+            trace_left_at_empty_framing == trace_positive_fi,
+            False,
+            "D1-D5 ADHM positive FI excludes I=J=0 boundary",
+        )
+
+
 def su2_nf2_minors(row_1, row_2):
     """Return V^{IJ}=row_1^I row_2^J-row_1^J row_2^I for I<J."""
 
@@ -419,6 +487,8 @@ def main():
     check_rank_one_hyperkahler_quotient_dimensions()
     check_rank_one_hyperkahler_one_form_descent()
     check_rank_one_hyperkahler_cotangent_transition()
+    check_d1_d5_adhm_higgs_branch_dimension()
+    check_d1_d5_positive_fi_excludes_empty_framing_boundary()
     check_su2_nf2_plucker_identity()
     check_su2_nf2_plucker_converse_chart()
     check_su2_nf2_dimension_ledger()

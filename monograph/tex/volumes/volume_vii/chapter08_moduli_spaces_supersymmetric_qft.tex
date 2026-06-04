@@ -581,10 +581,49 @@ hypermultiplet scalars and are hyperk\"ahler quotients:
 Mixed branches have both vector and hypermultiplet massless fields after
 solving compatibility conditions between vector scalar expectation values
 and hypermultiplet expectation values.  The Coulomb-branch metric may receive
-quantum corrections encoded by Seiberg-Witten periods.  In many Lagrangian
-examples the Higgs-branch hyperk\"ahler metric is protected, but this protection
-is a statement about the supersymmetric Wilsonian scheme and the branch
-coordinates, not a statement about arbitrary coordinate choices.
+quantum corrections encoded by Seiberg-Witten periods.  The phrase protected
+Higgs-branch metric has a narrower meaning.
+
+\paragraph{Smooth Wilsonian Higgs-branch protection.}
+Let a Lagrangian theory with eight supercharges in dimension at most four have
+compact gauge group \(G\), hypermultiplet scalar space \(\mathcal X\), a
+supersymmetric regulator, and declared mass and FI parameters.  Let
+\(U\subset\mathcal M_H^{\rm sm}\) be a smooth open stratum of the Higgs branch
+on which the gauge group is completely broken, vector multiplets and transverse
+hypermultiplets have a mass gap \(M_\perp\), and no mixed branch or additional
+massless sector meets \(U\).  The protected metric statement is the claim that
+the two-derivative Wilsonian effective action for momenta
+\(|p|\ll M_\perp\), restricted to \(U\), has target metric isometric to the
+hyperk\"ahler quotient metric induced from the ultraviolet hypermultiplet
+kinetic term,
+\[
+  g_H
+  =
+  (g_{\mathcal X})_{{\rm HKQ}_{\zeta,G}} ,
+\]
+after the declared background parameters have been matched.  Holomorphic
+coordinates, source coordinates, and wave-function normalizations may change
+the components \(g_{i\bar j}\); the invariant statement is equality of the
+intrinsic hyperk\"ahler metric on \(U\).  In this monograph the local
+perturbative part is used as the eight-supercharge Wilsonian
+nonrenormalization theorem.  A global nonperturbative continuum equality is
+asserted only with the hypotheses above and only on smooth strata; singular
+points, mixed branches, incomplete quotients, accidental massless fields, and
+coordinate charts across such loci are outside the assertion.
+
+The theorem-status bookkeeping is therefore:
+\begin{center}
+\begin{tabular}{@{}lp{0.58\linewidth}@{}}
+\textbf{smooth Higgs stratum} & protected two-derivative metric under
+the smooth Wilsonian protection statement above,\\[0.2em]
+\textbf{coordinate representative} & scheme-dependent components of the same
+intrinsic metric,\\[0.2em]
+\textbf{Coulomb branch} & quantum-corrected vector-multiplet metric in
+general,\\[0.2em]
+\textbf{singular or mixed locus} & new light fields; branch sigma-model metric
+no longer closed by itself.
+\end{tabular}
+\end{center}
 
 The quotient statement has concrete content already in the simplest
 hypermultiplet model.  We spell it out because this is the local model behind
@@ -725,6 +764,62 @@ while the coefficient of \(dz_i^{(a)}\) is
 \eqref{eq:rank-one-hyperkahler-cotangent-one-form} and identifies the quotient
 with \(T^\ast\mathbb P^{N-1}\).
 \end{proof}
+
+\begin{example}[Two-dimensional \(\mathcal N=(4,4)\) ADHM Higgs branch]
+\label{ex:d1-d5-adhm-higgs-branch}
+The standard gauge-theory model behind the D1--D5 Higgs branch can be stated
+without using any string-theory input.  Fix
+\[
+  K\simeq\mathbb C^{Q_1},\qquad W\simeq\mathbb C^{Q_5},
+\]
+and take a two-dimensional \(\mathcal N=(4,4)\) gauge theory with gauge group
+\(U(K)\).  Its hypermultiplet scalars consist of an adjoint hypermultiplet
+\((B_1,B_2)\in{\rm End}(K)^{\oplus2}\) and a fundamental hypermultiplet
+\[
+  I\in{\rm Hom}(W,K),\qquad J\in{\rm Hom}(K,W).
+\]
+In one complex structure the complex and real moment-map equations are
+\begin{align}
+  [B_1,B_2]+IJ&=0,
+  \label{eq:d1-d5-adhm-complex-moment}\\
+  [B_1,B_1^\dagger]+[B_2,B_2^\dagger]+II^\dagger-J^\dagger J
+  &=\zeta\,{\bf 1}_K .
+  \label{eq:d1-d5-adhm-real-moment}
+\end{align}
+For \(\zeta>0\), the Higgs branch is the hyperk\"ahler quotient
+\begin{equation}
+  \mathcal M_{Q_1,Q_5}(\zeta)
+  =
+  \{\,\eqref{eq:d1-d5-adhm-complex-moment},
+       \eqref{eq:d1-d5-adhm-real-moment}\,\}/U(K),
+  \label{eq:d1-d5-adhm-higgs-quotient}
+\end{equation}
+equivalently the stable complex quotient of
+\([B_1,B_2]+IJ=0\) by \(GL(K)\).  The finite-dimensional count is already
+physical:
+\[
+\begin{array}{rcl}
+\dim_{\mathbb C}\{B_1,B_2,I,J\}&=&2Q_1^2+2Q_1Q_5,\\
+\dim_{\mathbb C}\mu_{\mathbb C}^{-1}(0)&=&Q_1^2,\\
+\dim_{\mathbb C}GL(K)&=&Q_1^2,
+\end{array}
+\qquad
+\dim_{\mathbb R}\mathcal M_{Q_1,Q_5}=4Q_1Q_5 .
+\]
+On a smooth stable stratum where \(U(K)\) is completely broken, the
+two-derivative \(\mathcal N=(4,4)\) sigma-model metric is the quotient metric
+in the smooth Wilsonian protection statement above.  This is the
+protected Higgs-branch statement.  It is stronger than saying that the
+algebraic quotient has the ADHM equations, because it identifies the
+Wilsonian kinetic term of the massless QFT fields.  It is also weaker than a
+claim about every point of the quotient: when \(\zeta=0\), the locus
+\(I=J=0\) and commuting \(B_1,B_2\) meets the small-instanton and Coulomb
+directions, the gauge stabilizer can jump, and additional massless fields must
+be restored.  The Coulomb branch of the same two-dimensional gauge theory is a
+boundary case rather than another protected metric; integrating out
+hypermultiplets changes the vector-multiplet metric, so the quotient
+calculation alone does not determine the full infrared geometry.
+\end{example}
 
 \section{Singularities}
 

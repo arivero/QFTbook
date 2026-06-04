@@ -75,6 +75,16 @@ later lower-dimensional examples, protected sectors, and localization.
   rank-one \(U(1)\) hypermultiplet Higgs branch as
   \(T^\ast\mathbb P^{N-1}\), including dimension, local coordinates, moment
   map solving, and one-form descent.
+- Smooth Wilsonian Higgs-branch protection statement: scoped smooth-stratum
+  metric-protection statement for eight-supercharge Lagrangian theories.
+- `K`, `W`, `Q_1`, `Q_5`: vector spaces and ranks in the two-dimensional
+  \(\mathcal N=(4,4)\) ADHM/D1--D5 gauge-theory example.
+- `B_1`, `B_2`, `I`, `J`: adjoint and fundamental hypermultiplet scalars in
+  the ADHM/D1--D5 example.
+- `eq:d1-d5-adhm-complex-moment`,
+  `eq:d1-d5-adhm-real-moment`, and
+  `eq:d1-d5-adhm-higgs-quotient`: complex moment map, real moment map, and
+  Higgs-branch quotient for the \(\mathcal N=(4,4)\) ADHM gauge theory.
 
 ## Claim Ledger
 
@@ -121,6 +131,21 @@ later lower-dimensional examples, protected sectors, and localization.
   \(\zeta>0\), including the elementary real-moment representative,
   local cotangent coordinates, and preservation of the canonical holomorphic
   one-form on overlaps.
+- Replaces the vague protected-Higgs-metric sentence by a scoped
+  theorem-status ledger: local Wilsonian perturbative protection is tied to
+  eight supercharges, a smooth completely-Higgsed stratum, a transverse mass
+  gap, and absence of mixed/additional massless sectors; global
+  nonperturbative equality is asserted only under those hypotheses and as an
+  intrinsic metric statement, not as a coordinate-component statement.
+- Adds the two-dimensional \(\mathcal N=(4,4)\) ADHM/D1--D5 gauge-theory
+  example with adjoint and fundamental hypermultiplets, explicit complex and
+  real moment maps, quotient, dimension count
+  \(\dim_{\mathbb R}\mathcal M=4Q_1Q_5\), and the QFT interpretation of the
+  protected two-derivative Higgs-branch sigma-model metric.
+- Records boundary cases: the \(\zeta=0\), \(I=J=0\), commuting-\(B\) locus
+  meets small-instanton/Coulomb directions and invalidates the smooth-stratum
+  sigma-model closure; Coulomb-branch vector-multiplet metrics can receive
+  quantum corrections and are not determined by the Higgs quotient.
 - Identifies singularities as loci where the low-energy theory changes and
   records the domain of validity of branch effective actions.
 
@@ -131,6 +156,8 @@ later lower-dimensional examples, protected sectors, and localization.
   dimension count, F-term ideal equivariance for an invariant
   superpotential, and the rank-one hyperkahler quotient dimension, one-form
   descent, and cotangent transition algebra for \(T^\ast\mathbb P^{N-1}\),
+  the two-dimensional \(\mathcal N=(4,4)\) ADHM/D1--D5 dimension ledger and
+  positive-FI exclusion of the \(I=J=0\) boundary,
   together with the \(SU(2)\), \(N_f=2\) Pfaffian/Plucker identity,
   converse reconstruction chart, quotient dimension ledger, nonzero
   quantum-deformation smoothness test, diagonal-mass two-vacuum algebra, and
@@ -160,3 +187,8 @@ local models.
 - 2026-05-30 Wightman-to-KS refinement: sharpened Open Problem~93.3 so the
   moduli-space datum is treated as an output of the structural passage from
   local Wightman data to KS-style boundary/sewing/amplitude data.
+- 2026-06-04 Higgs-branch protection pass: separated intrinsic metric
+  protection from coordinate representatives and from bare hyperkahler
+  quotient geometry, added the smooth-stratum Wilsonian status ledger,
+  developed the \(\mathcal N=(4,4)\) ADHM/D1--D5 QFT example, and added finite
+  checks for the dimension/FI-boundary arithmetic.
