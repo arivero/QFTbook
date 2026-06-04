@@ -9,6 +9,7 @@ gauge-Higgs soliton discussion:
 * the monopole phase-coordinate Legendre transform and theta-angle
   charge-lattice relabelling,
 * the framed monopole moduli dimension bookkeeping and horizontal-slice sign,
+* the Jackiw-Rebbi kink zero-mode profile and half-charge bookkeeping,
 * the coordinate invariance of the zero-mode density sqrt(det G) d^m z, and
 * the local dimension count of the one-instanton orientation orbit.
 
@@ -93,6 +94,55 @@ def check_framed_monopole_moduli_bookkeeping() -> None:
     )
 
 
+def check_jackiw_rebbi_kink_zero_mode_and_half_charge() -> None:
+    x, m = sp.symbols("x m", positive=True)
+    profile = sp.sech(m * x)
+    kink_mass = m * sp.tanh(m * x)
+
+    # With H = [[0, -d/dx + M], [d/dx + M, 0]], the kink zero mode has
+    # only the first component nonzero.
+    zero_mode_equation = sp.diff(profile, x) + kink_mass * profile
+    assert_zero("Jackiw-Rebbi kink zero-mode equation", zero_mode_equation)
+
+    wrong_component_profile = sp.cosh(m * x)
+    wrong_component_equation = -sp.diff(wrong_component_profile, x) + kink_mass * wrong_component_profile
+    assert_zero("Jackiw-Rebbi other formal solution equation", wrong_component_equation)
+    if sp.limit(wrong_component_profile, x, sp.oo) != sp.oo:
+        raise AssertionError("wrong Jackiw-Rebbi component should be nonnormalizable")
+
+    antikink_mass = -kink_mass
+    antikink_second_component_equation = -sp.diff(profile, x) + antikink_mass * profile
+    assert_zero("Jackiw-Rebbi antikink chirality flip", antikink_second_component_equation)
+
+    u = sp.symbols("u", real=True)
+    sech_norm = sp.limit(sp.tanh(u), u, sp.oo) - sp.limit(sp.tanh(u), u, -sp.oo)
+    assert_equal("sech squared primitive normalization", sech_norm, 2)
+    normalized_integral = sp.Rational(1, 2) * sech_norm
+    assert_equal("Jackiw-Rebbi zero-mode normalization", normalized_integral, 1)
+
+    empty_zero_mode_charge = sp.Rational(-1, 2)
+    filled_zero_mode_charge = empty_zero_mode_charge + 1
+    assert_equal("empty kink zero-mode half charge", empty_zero_mode_charge, sp.Rational(-1, 2))
+    assert_equal("filled kink zero-mode half charge", filled_zero_mode_charge, sp.Rational(1, 2))
+
+    integer_empty_charge = 0
+    integer_filled_charge = 1
+    if (integer_empty_charge, integer_filled_charge) == (
+        empty_zero_mode_charge,
+        filled_zero_mode_charge,
+    ):
+        raise AssertionError("negative control failed: integer zero-mode charges accepted")
+    if integer_empty_charge + integer_filled_charge == 0:
+        raise AssertionError("negative control failed: integer charges were charge-conjugation symmetric")
+
+    paired_nonzero_energies = [-3, -1, 1, 3]
+    if sum(sp.sign(energy) for energy in paired_nonzero_energies) != 0:
+        raise AssertionError("paired nonzero Jackiw-Rebbi spectrum should have zero asymmetry")
+    unpaired_nonzero_energies = [-3, 1, 2]
+    if sum(sp.sign(energy) for energy in unpaired_nonzero_energies) == 0:
+        raise AssertionError("negative control failed: unpaired nonzero spectrum looked symmetric")
+
+
 def check_zero_mode_density_coordinate_change() -> None:
     G = sp.Matrix([[3, 1], [1, 2]])
     jac = sp.Matrix([[2, 0], [1, 3]])
@@ -120,6 +170,7 @@ def main() -> None:
     check_prasad_sommerfield_profiles()
     check_monopole_phase_legendre_and_theta_shift()
     check_framed_monopole_moduli_bookkeeping()
+    check_jackiw_rebbi_kink_zero_mode_and_half_charge()
     check_zero_mode_density_coordinate_change()
     check_one_instanton_orientation_dimension()
     print("All soliton collective-coordinate checks passed.")

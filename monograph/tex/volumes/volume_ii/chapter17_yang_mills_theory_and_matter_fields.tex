@@ -2372,6 +2372,74 @@ present, while the zero-mode wavefunctions determine the gauge, spin, and
 flavor tensor multiplying them.
 \end{construction}
 
+\begin{example}[Jackiw--Rebbi zero mode on a kink]
+\label{ex:jackiw-rebbi-kink-zero-mode}
+The preceding Berezin rule becomes a physical quantum number in the simplest
+one-dimensional soliton sector.  Couple a two-component Dirac fermion to a
+real scalar background through the static Hamiltonian
+\begin{equation}
+  H_M
+  =
+  -\ii\sigma_2\frac{\dd}{\dd x}+\sigma_1 M(x),
+  \qquad
+  M(x)=m\tanh\!\bigl(m(x-X)\bigr),\qquad m>0 .
+  \label{eq:jackiw-rebbi-kink-hamiltonian}
+\end{equation}
+In components this is
+\[
+  H_M
+  =
+  \begin{pmatrix}
+  0&-\partial_x+M(x)\\
+  \partial_x+M(x)&0
+  \end{pmatrix}.
+\]
+The kink interpolates between opposite signs of the fermion mass:
+\(M(-\infty)=-m\), \(M(+\infty)=m\).  The zero-energy equation is therefore
+\[
+  (-\partial_x+M)\psi_2=0,\qquad
+  (\partial_x+M)\psi_1=0 .
+\]
+Only the second equation gives an \(L^2\) solution:
+\begin{equation}
+  \psi_0(x)
+  =
+  \sqrt{\frac m2}\,
+  \operatorname{sech}\!\bigl(m(x-X)\bigr)
+  \begin{pmatrix}1\\0\end{pmatrix},
+  \qquad
+  H_M\psi_0=0,
+  \qquad
+  \int_{-\infty}^{\infty}\psi_0^\dagger\psi_0\,\dd x=1 .
+  \label{eq:jackiw-rebbi-zero-mode-wavefunction}
+\end{equation}
+For an anti-kink the sign of \(M(x)\) is reversed and the normalizable
+component is \((0,1)^T\).  A constant mass with the same local gap has no such
+normalizable solution: the mode exists because the mass changes sign across
+the soliton.
+
+This zero mode is not just a classical degeneracy of the background.  Since
+\(\{\sigma_3,H_M\}=0\), every nonzero eigenstate of energy \(E\) is paired
+with a state of energy \(-E\).  Quantizing the fermion in the kink sector and
+separating the zero-mode operator \(f\), the charge operator relative to the
+charge-conjugation symmetric sea has the form
+\begin{equation}
+  Q_{\rm kink}
+  =
+  \sum_{E>0}
+  \left(a_E^\dagger a_E-b_E^\dagger b_E\right)
+  +f^\dagger f-\frac12 .
+  \label{eq:jackiw-rebbi-half-charge-operator}
+\end{equation}
+Thus the two kink-sector states obtained by leaving the zero mode empty or
+filled have fermion numbers \(-1/2\) and \(+1/2\).  The half unit is not an
+extra assumption placed on top of the soliton; it is the spectral-pairing
+bookkeeping left after the single unpaired normalizable zero mode has been
+separated from the nonzero continuum.  Omitting the \(-1/2\) term would assign
+integer charges to the two zero-mode states and would break charge conjugation
+inside the soliton sector.
+\end{example}
+
 The same finite-energy logic also produces codimension-two vortices.  In the
 Abelian Higgs model on \(\mathbb R^2\), with
 \[

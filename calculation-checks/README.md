@@ -632,9 +632,11 @@ Current checks:
   Bogomolny and vortex square completions, the Prasad-Sommerfield profile
   equations, the monopole phase-coordinate Legendre transform and
   theta-angle charge-lattice relabelling, the framed monopole moduli
-  dimension bookkeeping and horizontal-slice sign, the coordinate
-  transformation of \(\sqrt{\det G_{ab}}\,d^mz\), and the \(4N_c\) local
-  dimension count of the embedded one-instanton moduli.
+  dimension bookkeeping and horizontal-slice sign, the Jackiw-Rebbi kink
+  zero-mode wavefunction, chirality flip, normalization, paired-spectrum, and
+  half-charge bookkeeping with integer-charge and unpaired-spectrum negative
+  controls, the coordinate transformation of \(\sqrt{\det G_{ab}}\,d^mz\),
+  and the \(4N_c\) local dimension count of the embedded one-instanton moduli.
 - `borel_laplace_checks.py`: exact checks for the Borel--Laplace and
   zero-dimensional quartic large-order section, including Gaussian moments,
   perturbative coefficients, the ratio

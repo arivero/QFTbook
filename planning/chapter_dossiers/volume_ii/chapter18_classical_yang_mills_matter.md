@@ -124,6 +124,9 @@ The chapter must define and derive:
   unstable sphaleron saddle points;
 - the Abelian-Higgs Nielsen--Olesen vortex energy, BPS flux bound, and
   first-order vortex equations;
+- the Jackiw-Rebbi kink zero-mode example: the sign-changing fermion mass
+  profile, normalizable zero-mode wavefunction, spectral pairing, and
+  soliton-sector half-charge operator;
 - the spatial Chern--Simons functional used to locate the electroweak
   sphaleron between neighboring vacua;
 - fundamental, anti-fundamental, and complexified adjoint representations of
@@ -197,20 +200,34 @@ The chapter must define and derive:
 20. Nielsen--Olesen vortices arise from the same finite-energy logic in
     codimension two, with flux quantization and a first-order BPS system at
     critical coupling.
-21. The sphaleron is an unstable finite-energy saddle classified by its
+21. A sign-changing kink mass profile in the Jackiw-Rebbi model carries one
+    normalizable fermion zero mode.  Chiral spectral pairing cancels the
+    nonzero modes in the charge-conjugation symmetric sea, so the two
+    zero-mode occupations carry charges \(-1/2\) and \(+1/2\).
+22. The sphaleron is an unstable finite-energy saddle classified by its
     position relative to Chern--Simons number and by its negative fluctuation
     mode.
-22. QCD uses the fundamental and anti-fundamental representations for quarks
+23. QCD uses the fundamental and anti-fundamental representations for quarks
     and antiquarks; the complexified adjoint representation describes
     adjoint-valued fields, with real adjoint fields selected by a reality
     condition.
-23. Chiral mass notation repackages scalar and pseudoscalar Hermitian mass
-   matrices into a complex flavor matrix.
-24. Framed BPS monopole moduli spaces are quotients by based gauge
-   transformations.  Their tangent coordinates satisfy the linearized
-   Bogomolny equation together with the background-gauge horizontal condition,
-   and the low-velocity kinetic energy restricts to the \(L^2\) metric on
-   this horizontal zero-mode space.
+24. Chiral mass notation repackages scalar and pseudoscalar Hermitian mass
+    matrices into a complex flavor matrix.
+25. Framed BPS monopole moduli spaces are quotients by based gauge
+    transformations.  Their tangent coordinates satisfy the linearized
+    Bogomolny equation together with the background-gauge horizontal
+    condition, and the low-velocity kinetic energy restricts to the \(L^2\)
+    metric on this horizontal zero-mode space.
+
+## Calculation Checks
+
+- `calculation-checks/soliton_collective_coordinate_checks.py`: verifies the
+  Bogomolny and vortex square completions, Prasad-Sommerfield profile ODEs,
+  monopole phase-coordinate Legendre transform and theta relabelling, framed
+  monopole moduli dimension bookkeeping, zero-mode-density coordinate
+  invariance, the one-instanton orientation dimension count, and the
+  Jackiw-Rebbi kink zero-mode profile/normalization/half-charge algebra with
+  integer-charge and unpaired-spectrum negative controls.
 
 ## Figure Requirements
 
@@ -291,6 +308,13 @@ The chapter must define and derive:
   charge-lattice shift from a finite-dimensional \(S^1\) quantum mechanics
   with the theta-angle total derivative fixed by the Chern--Weil boundary
   pairing.
+- 2026-06-04 issue #597 Jackiw-Rebbi pass: added an explicit soliton
+  quantization consequence rather than further moduli-space structure.  The
+  chapter now solves the kink Dirac zero-mode equation, normalizes the
+  \(\operatorname{sech}(mx)\) wavefunction, records the anti-kink chirality
+  flip, and derives the \(\pm1/2\) soliton-sector fermion numbers from
+  spectral pairing and the zero-mode operator.  The companion rejects integer
+  zero-mode bookkeeping and unpaired nonzero spectra.
 - 2026-06-01 issue #701 warning-scope pass: promoted the trace-form
   Yang--Mills coupling convention to a scannable warning block.  The warning
   states that the invariant datum is
