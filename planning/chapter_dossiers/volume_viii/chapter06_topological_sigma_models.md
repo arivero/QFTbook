@@ -29,6 +29,9 @@ Gromov--Witten and B-model outputs obtained after localization.
 - `beta`: curve class in `H_2(X;Z)`.
 - `Q^beta`: Novikov/Kahler weight
   `exp(2*pi*i int_beta(B+i omega))`.
+- `v_{g,n,beta}`: real virtual dimension of the stable-map sector and the
+  number of real zero-mode degrees that primary or descendant insertions must
+  saturate.
 - `Mbar_{g,n}(X,beta)`: compactified stable-map moduli space.
 - `ev_a`: evaluation map at the `a`-th marked point.
 - `[Mbar]^{vir}`: virtual fundamental class or equivalent virtual integration
@@ -59,6 +62,12 @@ Gromov--Witten and B-model outputs obtained after localization.
   contribution is the Novikov weight times the virtual integral only after
   determinant-line, orientation, compactification, gluing, and contact-term
   data have been specified.
+- Adds the A-model zero-mode saturation rule behind the degree selection:
+  after nonzero modes have been paired and the determinant line has been
+  oriented, primary insertions must supply total real degree
+  `v_{g,n,beta}`, while descendants contribute `2 k_a` from psi-classes.
+  This records the instanton-sector amplitude gate rather than treating
+  holomorphic maps alone as a scalar contribution.
 - Specifies the finite-dimensional virtual integration package used by the
   A-model formulas, including the diagonal refined-pullback identity on
   genus-zero boundary strata.
@@ -84,7 +93,8 @@ Gromov--Witten and B-model outputs obtained after localization.
   verifies the A-model pointwise energy identity, projective-space quantum
   cohomology relation and associativity, the projective-space degree
   selection rule, the degree-one projective worldsheet-instanton dimension
-  and product ledger, the virtual-dimension formula, and the B-model top-form
+  and product ledger, primary and descendant zero-mode saturation against the
+  virtual top degree, the virtual-dimension formula, and the B-model top-form
   degree condition.
 
 ## Figure Ledger

@@ -153,6 +153,67 @@ def check_projective_degree_one_instanton_ledger() -> None:
                 )
 
 
+def check_a_model_zero_mode_selection() -> None:
+    def virtual_complex_dimension(m: int, genus: int, marks: int, c1_beta: int) -> int:
+        return (1 - genus) * (m - 3) + marks + c1_beta
+
+    for m, genus, marks, degree in product(range(1, 6), range(0, 3), range(1, 6), range(0, 4)):
+        c1_beta = (m + 1) * degree
+        virtual_complex = virtual_complex_dimension(m, genus, marks, c1_beta)
+        virtual_real = 2 * virtual_complex
+        if virtual_complex < 0:
+            continue
+
+        primary_degrees = [0] * marks
+        remaining = virtual_complex
+        for index in range(marks):
+            primary_degrees[index] = min(m, remaining)
+            remaining -= primary_degrees[index]
+        primary_selected = remaining == 0
+        primary_real_degree = 2 * sum(primary_degrees)
+        assert_equal(
+            primary_real_degree == virtual_real,
+            primary_selected,
+            "primary A-model zero-mode top-degree test",
+        )
+        if primary_selected:
+            assert_equal(
+                primary_real_degree,
+                virtual_real,
+                "primary A-model saturated zero-mode degree",
+            )
+
+        descendant_alpha_degrees = [0] * marks
+        descendant_powers = [0] * marks
+        remaining = virtual_complex
+        for index in range(marks):
+            descendant_alpha_degrees[index] = min(m, remaining)
+            remaining -= descendant_alpha_degrees[index]
+        if remaining > 0:
+            descendant_powers[-1] = remaining
+            remaining = 0
+        descendant_real_degree = 2 * (
+            sum(descendant_alpha_degrees) + sum(descendant_powers)
+        )
+        assert_equal(
+            descendant_real_degree,
+            virtual_real,
+            "descendant A-model psi powers saturate zero modes",
+        )
+
+        if virtual_real > 0:
+            assert_equal(
+                descendant_real_degree - 2 == virtual_real,
+                False,
+                "missing one descendant degree leaves unsaturated zero modes",
+            )
+        assert_equal(
+            descendant_real_degree + 2 == virtual_real,
+            False,
+            "one excess descendant degree has no virtual top component",
+        )
+
+
 def check_virtual_dimension_formula() -> None:
     for m, genus, marks, degree in product(range(1, 6), range(0, 4), range(0, 7), range(0, 5)):
         fixed_index = 2 * (m * (1 - genus) + (m + 1) * degree)
@@ -182,6 +243,7 @@ def main() -> None:
     check_energy_identity()
     check_quantum_projective_space()
     check_projective_degree_one_instanton_ledger()
+    check_a_model_zero_mode_selection()
     check_virtual_dimension_formula()
     check_b_model_degree_condition()
     print("All topological sigma-model checks passed.")

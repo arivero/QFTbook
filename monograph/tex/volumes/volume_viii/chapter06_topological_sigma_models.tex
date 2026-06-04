@@ -494,7 +494,69 @@ contact prescription \(\mathfrak c_A\).  These steps produce
 \eqref{eq:amodel-fixed-beta-localized-amplitude}.
 \end{proof}
 
-The degree-selection rule is a dimension statement.  The integral vanishes unless
+\begin{proposition}[Zero-mode saturation and the A-model selection rule]
+\label{prop:amodel-zero-mode-selection-rule}
+Let
+\[
+  v_{g,n,\beta}
+  =
+  {\rm vdim}_{\mathbb R}\,
+  \overline{\mathcal M}_{g,n}(X,\beta).
+\]
+After the nonzero modes have been paired by the cohomological regulator and
+the determinant line has been oriented by \(\mathfrak V_X\), the fixed
+\(\beta\) primary amplitude is a top-degree extraction on the remaining
+zero-mode space.  Therefore
+\[
+  \left\langle \alpha_1,\ldots,\alpha_n
+  \right\rangle_{g,n,\beta}^{X}=0
+  \quad\text{unless}\quad
+  \sum_{a=1}^n\deg_{\mathbb R}\alpha_a=v_{g,n,\beta}.
+\]
+For gravitational descendants the same zero-mode extraction gives
+\begin{equation}
+  \left\langle
+  \tau_{k_1}(\alpha_1)\cdots\tau_{k_n}(\alpha_n)
+  \right\rangle_{g,n,\beta}^{X}=0
+  \quad\text{unless}\quad
+  \sum_{a=1}^n\bigl(\deg_{\mathbb R}\alpha_a+2k_a\bigr)
+  =
+  v_{g,n,\beta}.
+  \label{eq:amodel-descendant-zero-mode-selection}
+\end{equation}
+Equivalently, in complex degree
+\(|\alpha|_{\mathbb C}=\deg_{\mathbb R}\alpha/2\),
+\begin{equation}
+  \sum_{a=1}^n\bigl(|\alpha_a|_{\mathbb C}+k_a\bigr)
+  =
+  (1-g)(m-3)+n+\int_\beta c_1(TX).
+  \label{eq:amodel-complex-degree-selection}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+On a regular component of the holomorphic-map locus, the odd scalar zero modes
+are identified with differentials on the finite-dimensional zero-mode
+manifold.  The insertion \(\mathcal O_{\alpha_a}\) restricts to the form
+\({\rm ev}_a^\ast\alpha_a\).  Berezin integration over the odd zero modes is
+therefore ordinary top-form extraction: a form of total real degree smaller
+than \(v_{g,n,\beta}\) leaves unsaturated odd zero modes, while a form of
+larger degree has no component of the required top degree.  On a nonregular
+component the same statement is imposed on the virtual tangent-obstruction
+complex by the orientation and obstruction data in \(\mathfrak V_X\).  The
+classes \(\psi_a^{k_a}\) have real degree \(2k_a\), so descendants simply add
+the terms \(2k_a\) in
+\eqref{eq:amodel-descendant-zero-mode-selection}.  Substituting the virtual
+dimension formula gives
+\eqref{eq:amodel-complex-degree-selection}.
+\end{proof}
+
+Thus the selection rule is not a slogan about holomorphic maps.  It is the
+zero-mode saturation condition for the regulated instanton sector after the
+nonzero-mode determinant and virtual orientation have supplied a scalar
+measure.  In the primary case,
+Proposition~\ref{prop:amodel-zero-mode-selection-rule} specializes to the
+familiar dimension rule: the integral vanishes unless
 \[
   \sum_{a=1}^n \deg_{\mathbb R}\alpha_a
   =

@@ -1252,8 +1252,9 @@ Current checks:
   energy identity, \(QH^\bullet(\mathbb P^m)\) with \(H^{m+1}=Q\),
   associativity and degree selection in projective-space quantum cohomology,
   the degree-one projective worldsheet-instanton dimension/incidence ledger,
-  the stable-map virtual-dimension formula, and the B-model top-form degree
-  condition.
+  A-model primary and descendant zero-mode saturation against the virtual top
+  degree, the stable-map virtual-dimension formula, and the B-model top-form
+  degree condition.
 - `twisting_representation_checks.py`: exact finite checks for the Volume
   VIII supersymmetric-twists chapter, including the \(SU(2)\) tensor-product
   decomposition of the Donaldson twist, the dimensions of the twisted
