@@ -106,6 +106,9 @@ relations
     signed integral J_R, absolute mass M_R, tail T_R, and noncancellation
     margin kappa_R=|J_R|/M_R; cancellation can defeat relative control even
     when the absolute tail budget is small
+    a four-source instanton amplitude certificate requires nondegenerate
+    right/left zero-mode overlap determinants; entrywise overlap errors give
+    an explicit 2x2 determinant-stability bound and rank-margin residual
     a Wilsonian split of the instanton size integral has exact cancellation
     of the artificial factorization-scale boundary flux between the short
     instanton coefficient and the long-distance remainder
@@ -179,9 +182,10 @@ instanton labels.
 Independent construction: direct radial integrals, finite determinant and
 Schur-complement algebra, source differentiation, inverse-Gram construction of
 the shared SU(2) four-fundamental Haar projector, absolute logarithmic
-determinant-residual certificates, finite
-reference-amplitude calibration ratios, coefficient/operator transport
-matrices, and exact retained size-shell stationarity equations.
+determinant-residual certificates, finite reference-amplitude calibration
+ratios, zero-mode overlap determinant-stability bounds,
+coefficient/operator transport matrices, and exact retained size-shell
+stationarity equations.
 Imported assumptions: the BPST background and zero-mode formulas, one-loop
 determinant coefficients, the trace-delta convention, and finite regulator
 truncations stated in the chapter.
@@ -189,9 +193,10 @@ Negative controls: the shared-Haar 1/3 versus factorized 1/4 counterexample,
 rank-one and color-symmetric source-pair rejections, signed determinant-trace
 cancellations rejected as fluctuation-error certificates, negative/complex
 thermal amplitude kernels rejected from signed activity bounds, finite-frame
-inverse checks, canceled reference-amplitude normalization, hard-only and
-screening-only shell substitutions in the mixed size-majorant problem, and
-separation of operator RG flow from the Wilsonian size-boundary flux.
+inverse checks, canceled reference-amplitude normalization, rank-one
+four-source zero-mode collapse, hard-only and screening-only shell
+substitutions in the mixed size-majorant problem, and separation of operator
+RG flow from the Wilsonian size-boundary flux.
 Scope boundary: a pass checks finite algebra and normalization interfaces; it
 does not prove dilute-gas validity, large-size control, uniform semiclassical
 remainders, or physical hadronic matrix elements.
@@ -3377,6 +3382,96 @@ def check_hard_instanton_finite_window_certificate() -> None:
     )
 
 
+def check_four_source_instanton_amplitude_certificate() -> None:
+    def max_abs_entry(matrix: list[list[Fraction]]) -> Fraction:
+        return max(abs(entry) for row in matrix for entry in row)
+
+    right_overlap = [[Fraction(2), Fraction(1)], [Fraction(1), Fraction(2)]]
+    left_overlap = [[Fraction(3), Fraction(1)], [Fraction(2), Fraction(2)]]
+    right_det = det_fraction(right_overlap)
+    left_det = det_fraction(left_overlap)
+    assert_equal("four-source right zero-mode determinant", right_det, Fraction(3))
+    assert_equal("four-source left zero-mode determinant", left_det, Fraction(4))
+
+    eta_right = Fraction(1, 20)
+    eta_left = Fraction(1, 30)
+    right_entry_bound = max_abs_entry(right_overlap)
+    left_entry_bound = max_abs_entry(left_overlap)
+    right_det_error_bound = 4 * right_entry_bound * eta_right + 2 * eta_right * eta_right
+    left_det_error_bound = 4 * left_entry_bound * eta_left + 2 * eta_left * eta_left
+
+    right_delta = [
+        [eta_right, -eta_right],
+        [Fraction(0), eta_right],
+    ]
+    left_delta = [
+        [eta_left, Fraction(0)],
+        [-eta_left, eta_left],
+    ]
+    right_exact = matrix_add_fraction(right_overlap, right_delta)
+    left_exact = matrix_add_fraction(left_overlap, left_delta)
+    actual_right_det_error = abs(det_fraction(right_exact) - right_det)
+    actual_left_det_error = abs(det_fraction(left_exact) - left_det)
+
+    if not actual_right_det_error <= right_det_error_bound:
+        raise AssertionError("right overlap determinant-stability bound failed")
+    if not actual_left_det_error <= left_det_error_bound:
+        raise AssertionError("left overlap determinant-stability bound failed")
+
+    rank_relative_bound = (
+        right_det_error_bound / abs(right_det)
+        + left_det_error_bound / abs(left_det)
+        + right_det_error_bound * left_det_error_bound / (abs(right_det) * abs(left_det))
+    )
+    exact_source_factor = det_fraction(right_exact) * det_fraction(left_exact)
+    leading_source_factor = right_det * left_det
+    actual_rank_relative_error = abs(exact_source_factor - leading_source_factor) / abs(
+        leading_source_factor
+    )
+    if not actual_rank_relative_error <= rank_relative_bound:
+        raise AssertionError("four-source rank-margin residual bound failed")
+
+    window_cells = [Fraction(3, 5), -Fraction(1, 10), Fraction(7, 20)]
+    j_r = sum(window_cells, Fraction(0)) * leading_source_factor
+    m_r = sum(abs(cell) for cell in window_cells) * abs(leading_source_factor)
+
+    eps_det = Fraction(1, 80)
+    eps_schur = Fraction(1, 120)
+    eps_proj = Fraction(1, 100)
+    tau_r = Fraction(1, 90)
+    euclidean_error_bound = m_r * (eps_det + rank_relative_bound + eps_schur + eps_proj + tau_r)
+    actual_euclidean_residual = (
+        m_r * Fraction(1, 200)
+        - m_r * Fraction(1, 300)
+        + m_r * Fraction(1, 240)
+    )
+    exact_euclidean_coefficient = j_r + actual_euclidean_residual
+    if not abs(exact_euclidean_coefficient - j_r) <= euclidean_error_bound:
+        raise AssertionError("four-source instanton Euclidean amplitude certificate failed")
+
+    physical_projection_residual = Fraction(1, 70)
+    physical_amplitude = exact_euclidean_coefficient + physical_projection_residual
+    if physical_amplitude == exact_euclidean_coefficient:
+        raise AssertionError("physical projection residual accidentally vanished")
+    if physical_amplitude - j_r == actual_euclidean_residual:
+        raise AssertionError(
+            "negative control failed: physical projection residual was merged into Euclidean kernel"
+        )
+
+    rank_one_right = [[Fraction(1), Fraction(2)], [Fraction(2), Fraction(4)]]
+    assert_equal("rank-one right source determinant", det_fraction(rank_one_right), Fraction(0))
+    rank_one_source_factor = det_fraction(rank_one_right) * left_det
+    if rank_one_source_factor != 0:
+        raise AssertionError("rank-one right source still produced a four-source zero-mode factor")
+
+    moduli_measure_weight = Fraction(5, 7)
+    determinant_weight = Fraction(11, 13)
+    if moduli_measure_weight * determinant_weight == rank_one_source_factor:
+        raise AssertionError(
+            "negative control failed: moduli and determinant weights detected zero-mode rank collapse"
+        )
+
+
 def check_wilsonian_instanton_size_factorization() -> None:
     # Model the fully paired finite-regulator size integrand by
     # K(rho)=rho^(p-1) on 0<rho<rho_max.  The artificial Wilsonian split at
@@ -4428,6 +4523,7 @@ def main() -> None:
     check_hard_screened_instanton_size_shell()
     check_su3_two_flavor_hard_instanton_coefficient()
     check_hard_instanton_finite_window_certificate()
+    check_four_source_instanton_amplitude_certificate()
     check_wilsonian_instanton_size_factorization()
     check_short_instanton_ope_coefficient_transport()
     check_dilute_instanton_gas_theta_cumulants()

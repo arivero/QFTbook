@@ -7456,6 +7456,104 @@ the calculation has produced a valuable source coordinate, not yet a
 controlled physical coefficient.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Four-source instanton amplitude certificate]
+\label{ca:four-source-instanton-amplitude-certificate}
+The finite-window coefficient above still assumes that the four external
+fermion slots have already been converted into a nondegenerate zero-mode
+source tensor.  This is the step which turns the collective-coordinate
+integral into the kind of four-point amplitude computed in the original
+instanton calculation.  For \(N_f=2\), let
+\(h^R_1,h^R_2,h^L_1,h^L_2\) be four fixed external test spinors or amputated
+source covectors in the chosen regulator and source frame.  On a selected
+instanton chart define the right and left zero-mode overlap matrices
+\[
+  B_R(z)_{if}=\langle h_i^R,\psi_{0,f}^R(A_z)\rangle,\qquad
+  B_L(z)_{jf}=\langle h_j^L,\psi_{0,f}^L(A_z)\rangle,
+  \qquad i,j,f=1,2 .
+\]
+After orientation and spin-color contraction, the fermion zero-mode part of
+the four-source instanton integrand contains
+\[
+  Z_0(z)=\det B_R(z)\det B_L(z).
+\]
+Thus a hard momentum scale by itself does not guarantee a nonzero four-point
+instanton amplitude.  The two right slots and the two left slots must each
+span the corresponding zero-mode coefficient plane after the same
+orientation and source projection have been applied.
+
+Let \(B_R^0(s,U)\) and \(B_L^0(s,U)\) be the retained leading overlap matrices
+inside \(0<s<R\).  Suppose their entries are bounded by \(L_R,L_L\), while
+the exact overlaps obey
+\[
+  |(B_R-B_R^0)_{if}|\le\eta_R,\qquad
+  |(B_L-B_L^0)_{jf}|\le\eta_L .
+\]
+For any \(2\times2\) matrix \(B^0\) with \(|B^0_{ab}|\le L\),
+\begin{equation}
+  |\det(B^0+\Delta B)-\det B^0|
+  \le
+  4L\eta+2\eta^2,
+  \qquad |\Delta B_{ab}|\le\eta .
+  \label{eq:four-source-determinant-stability}
+\end{equation}
+Consequently, if
+\[
+  |\det B_R^0|\ge d_R>0,\qquad
+  |\det B_L^0|\ge d_L>0
+\]
+on the retained window, the zero-mode source factor has relative error
+\begin{equation}
+  \epsilon_{\rm rank}
+  \le
+  \frac{E_R}{d_R}
+  +
+  \frac{E_L}{d_L}
+  +
+  \frac{E_RE_L}{d_Rd_L},
+  \qquad
+  E_R=4L_R\eta_R+2\eta_R^2,\quad
+  E_L=4L_L\eta_L+2\eta_L^2 .
+  \label{eq:four-source-rank-error}
+\end{equation}
+The word ``rank'' in \(\epsilon_{\rm rank}\) is intentional: if either
+determinant margin \(d_R\) or \(d_L\) is absent, the four-source amplitude is
+not certified by the BPST measure, by the nonzero-mode determinant, or by the
+large-momentum tail estimate.
+
+Write \(J_R\) and \(M_R\) for the signed retained integral and absolute mass
+from \eqref{eq:hard-instanton-window-jmt}, now including
+\(\det B_R^0\det B_L^0\) in the leading source tensor.  If the determinant,
+Schur, projection/matching, and endpoint bounds on the same window are
+\(\epsilon_{\rm det}\), \(\epsilon_{\rm Schur}\),
+\(\epsilon_{\rm proj}\), and \(\tau_R\), then the Euclidean four-source
+coefficient obeys
+\begin{equation}
+  \left|
+    C_{\rm inst}^{(4),{\rm ex}}[\mathfrak h]
+    -\mathcal N(Q)J_R[\mathfrak h]
+  \right|
+  \le
+  |\mathcal N(Q)|M_R[\mathfrak h]\,
+  \bigl(
+    \epsilon_{\rm det}
+    +\epsilon_{\rm rank}
+    +\epsilon_{\rm Schur}
+    +\epsilon_{\rm proj}
+    +\tau_R
+  \bigr).
+  \label{eq:four-source-instanton-amplitude-bound}
+\end{equation}
+A physical scattering, spectral, or OPE coefficient still requires the
+continuation/projection residuals already displayed in
+\eqref{eq:instanton-amplitude-pipeline-physical-map}.  The point of
+\eqref{eq:four-source-instanton-amplitude-bound} is narrower but crucial:
+the hard four-point instanton calculation is not an analysis of the instanton
+moduli space alone.  It is a stability statement for a product of the
+collective-coordinate density, the fluctuation determinant, the four
+zero-mode source overlaps, the size-window tail, and the final observable
+projection.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Instanton size-factor split]
 \label{ca:instanton-wilsonian-size-factorization}
 Let \(K_{\Lambda}(\rho;\mu,\mathcal J)\) denote the fully paired

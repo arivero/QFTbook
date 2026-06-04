@@ -352,6 +352,7 @@
 | \(\rho_*,dQ,m_{\rm scr}\) | mixed hard-source/physical-screening log-shell coordinate, hard exponential envelope, and screening mass in the retained instanton size majorant |
 | \(C_{\rm inst}^{(4)}(Q;R),\mathcal P_{\rm orient}\) | specialized \(SU(3)\), \(N_f=2\) hard four-fermion instanton coefficient and shared orientation projector, with the Pauli-Villars pure-gauge constant, light-fermion determinant factor, and explicit endpoint residual |
 | \(J_R,M_R,T_R,\kappa_R\) | retained signed hard-instanton window integral, retained absolute mass, omitted absolute tail, and noncancellation margin used to certify a relative hard-coefficient error |
+| \(B_R,B_L,d_R,d_L,\epsilon_{\rm rank}\) | right/left four-source zero-mode overlap matrices, determinant margins, and rank-margin residual used to certify a nondegenerate \(N_f=2\) instanton four-source amplitude |
 | \(\mu_I,\rho_I,K_\Lambda(\rho)\) | Wilsonian instanton factorization scale, cutoff \(\rho_I=\mu_I^{-1}\), and fully paired finite-regulator size integrand whose boundary flux transfers between the short coefficient and long-distance remainder |
 | \(C_I^{<},[O_I]_\mu,\gamma_{IK}\) | short-instanton OPE coefficient, retained renormalized operator basis, and operator-mixing anomalous-dimension matrix used to distinguish composite-operator RG transport from size-factorization flow |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
@@ -1025,6 +1026,13 @@
   \(\Delta=1/3\); the normalized power-tail majorant \(3R^{-1/3}\) falls
   below \(0.1\) only after \(R>27000\).  This is recorded as a physics
   endpoint-control warning, not as a new moduli-space fact.
+- The four-source instanton amplitude certificate now records the missing
+  rank-stability layer between hard slots and a usable four-point coefficient:
+  right and left \(2\times2\) zero-mode overlap determinants must have margins
+  \(d_R,d_L\), entrywise overlap errors give
+  \(4L\eta+2\eta^2\) determinant bounds, and the resulting
+  \(\epsilon_{\rm rank}\) is propagated into the finite-window amplitude error.
+  Nonzero moduli/determinant weights do not rescue a rank-one source tensor.
 
 ## Open Boundaries
 
@@ -1521,3 +1529,11 @@
   identity, source-frame invariance, and a canceled-reference negative control.
   This keeps the focus on physical amplitude normalization rather than adding
   more instanton moduli-space infrastructure.
+- 2026-06-04 issue #597 four-source amplitude pass: added
+  `ca:four-source-instanton-amplitude-certificate`, which certifies the
+  zero-mode source-overlap layer of the \(N_f=2\) four-point instanton
+  amplitude.  The block derives the \(2\times2\) determinant-stability bound,
+  propagates the right/left rank margins into \(\epsilon_{\rm rank}\), and keeps
+  physical projection residuals outside the Euclidean source kernel.  The BPST
+  companion verifies the exact determinant bounds, rank-margin residual, and
+  rank-one source-collapse negative control.

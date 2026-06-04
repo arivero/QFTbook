@@ -549,6 +549,9 @@ Current checks:
   only as \(R^{-1/3}\), the finite-window hard-coefficient certificate
   requiring an absolute error budget, a tail majorant, and a noncancellation
   margin \(|J_R|/M_R\) before a relative instanton coefficient is quoted, the
+  four-source amplitude certificate requiring nondegenerate right/left
+  zero-mode overlap determinants and propagating entrywise overlap errors
+  through a rank-margin residual, the
   mixed hard-source plus physical-screening log-shell equation
   \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\) with negative controls against
   hard-only and screening-only saddle substitutions, the
