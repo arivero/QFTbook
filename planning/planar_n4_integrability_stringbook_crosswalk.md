@@ -8,13 +8,16 @@ appear in the monograph in a defined, hypothesis-stated, derivation-grade form
 with calculation checks where conventions or algebra are delicate, or be
 routed to a focused issue with an explicit theorem/construction boundary.
 
-This ledger is not a completion certificate.  It records the current
-classification at the audited source head.
+This ledger records the current classification at the audited source head.
+Every row is either expanded in the monograph, contextual, or boundary-linked
+to a focused issue with an explicit construction or theorem boundary.
 
 ## Source Scope
 
 - Stringbook source repository: `xiyin137/stringbook`.
 - Audited source revision: `4262f9c821859ace1b6ee43b31afa72fc1542ecd`.
+- QFT monograph repository baseline reviewed against this source snapshot:
+  `81ea1d5506d82ac778a0d8379ea7feae9df6da4c`.
 - Primary TeX source anchor: `texsource/string notes.tex`.
 - Chapter I source range:
   `Strings from N=4 SYM I: planar integrability and the asymptotic Bethe

@@ -105,8 +105,8 @@ physics.
 ## Current-Head Companion-Notebook Audit
 
 The following notebook pass is the current-head reproducibility inventory for
-#731.  Together with the prose-section audit below, it removes the stale
-notebook ambiguity and routes each notebook to a verifiable QFT status.
+#731.  Together with the prose-section audit below, it removes the old notebook
+path ambiguity and routes each notebook to a verifiable QFT status.
 
 | Source notebook | QFT classification | Monograph evidence or focused issue |
 | --- | --- | --- |
