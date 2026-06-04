@@ -893,8 +893,11 @@ Current checks:
 - `energy_correlator_sudakov_checks.py`: exact rational checks for the
   back-to-back EEC leading Sudakov factor, including
   \(\int_0^{L_b}u\,du=L_b^2/2\), the fixed-coupling differential equation for
-  \(\exp[-\Gamma_{\rm cusp}^qL_b^2/2]\), and trace-delta versus half-trace
-  invariance of the one-loop cusp coefficient \(g^2C_F/(4\pi^2)\).
+  \(\exp[-\Gamma_{\rm cusp}^qL_b^2/2]\), trace-delta versus half-trace
+  invariance of the one-loop cusp coefficient \(g^2C_F/(4\pi^2)\), the
+  back-to-back \(q_T^2\)-test pullback
+  \(\zeta=-1+q_T^2/Q^2\), and the measured-bin recoil residual budget whose
+  negative control fails when the large-\(b\) component is omitted.
 - `constructive_scalar_spde_checks.py`: finite checks for the constructive
   scalar and singular-SPDE chapters, including Hermite/Wick coefficients for
   \(:\phi^2:\), \(:\phi^3:\), \(:\phi^4:\), finite Wiener-chaos isometry and

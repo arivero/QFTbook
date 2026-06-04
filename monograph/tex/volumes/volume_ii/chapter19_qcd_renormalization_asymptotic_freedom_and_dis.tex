@@ -8303,6 +8303,93 @@ cusp-controlled double logarithm that any such consistent factorization scheme
 must reproduce.
 \end{remark}
 
+\paragraph{Tested recoil chart and the large-\(b\) boundary.}
+The impact-parameter formula becomes the measured contribution
+\(\mathcal P_\tau^{\rm rec}\) in
+\eqref{eq:qcd-measured-eec-factorization-budget} only after it has been
+turned into a detector-test functional.  One must first choose a
+back-to-back endpoint window
+\(0<q_T<q_0\) and pull angular tests back by
+\begin{equation}
+  \varphi_Q(q_T^2)
+  :=
+  \varphi\!\left(-1+\frac{q_T^2}{Q^2}\right),
+  \qquad
+  q_T^2=Q^2(1+\zeta).
+  \label{eq:qcd-eec-recoil-test-pullback}
+\end{equation}
+The open recoil chart is then the distribution on \(0<q_T<q_0\) obtained by
+pairing \(\varphi_Q\) with the Fourier kernel in
+\eqref{eq:qcd-eec-back-to-back-factorization}, after the overlap with the
+fixed-order bulk chart has been subtracted.  Endpoint support at \(q_T=0\),
+or equivalently \(\zeta=-1\), is carried by the separate endpoint atom
+\(K_-^\tau\) in
+\eqref{eq:qcd-measured-eec-factorization-budget}.  This separation is
+essential because a Born-level back-to-back contribution, a perturbative
+recoil singularity, and a nonperturbative endpoint model are different
+coordinates of the same measured distribution.
+
+The Fourier integral also has a physical boundary absent from the displayed
+leading logarithm.  Perturbation theory controls the factorized kernel only
+while all transverse-distance functions are evaluated at scales safely above
+\(\Lambda_{\rm QCD}\).  Large impact parameters \(b\gtrsim
+\Lambda_{\rm QCD}^{-1}\), or bins with \(q_T\) of hadronic size, require a
+nonperturbative shape function, a fitted large-\(b\) prescription, or an
+excluded-bin remainder.  Changing from one such prescription to another
+changes the long-distance input paired with the detector test, rather than
+merely reshuffling the cusp logarithm.
+
+\begin{controlledapproximation}[Tested back-to-back EEC recoil chart]
+\label{ca:qcd-eec-tested-back-to-back-recoil}
+A back-to-back contribution to a measured calorimetric or selected-track EEC
+is controlled only after the following data have been specified:
+\begin{enumerate}
+  \item the endpoint window, angular test space, and pullback
+  \eqref{eq:qcd-eec-recoil-test-pullback};
+  \item the hard, jet, and soft functions in one ultraviolet and rapidity
+  scheme, including the track-function or fragmentation lift when
+  \(\tau\ne1\);
+  \item the running-coupling, non-cusp, and rapidity evolution solving the
+  same factorization equations as the fixed-order matching coefficients;
+  \item the large-\(b\) prescription or shape input, together with the status
+  of Glauber contributions and ordinary \(q_T/Q\) power corrections;
+  \item the overlap subtraction with the separated-angle bulk chart and the
+  endpoint atom convention for \(K_-^\tau\).
+\end{enumerate}
+If these choices give a recoil functional
+\(\mathcal P_{\tau}^{\rm rec}[\varphi;Q]\), its contribution to the measured
+residual in \eqref{eq:qcd-measured-eec-residual-bound} must be bounded in the
+detector-test topology by a decomposition of the form
+\begin{equation}
+  \bigl|R_{\tau,Q}^{\rm rec}[\varphi]\bigr|
+  \leq
+  \epsilon_{\rm fac}^{\rm rec}(\varphi)
+  +
+  \epsilon_{\rm evo}^{\rm rec}(\varphi)
+  +
+  \epsilon_{\rm match}^{\rm rec}(\varphi)
+  +
+  \epsilon_{\rm large\text{-}b}^{\rm rec}(\varphi)
+  +
+  \epsilon_{\rm Glauber}^{\rm rec}(\varphi)
+  +
+  \epsilon_{\rm pow}^{\rm rec}(\varphi).
+  \label{eq:qcd-eec-tested-recoil-residual-bound}
+\end{equation}
+Here \(\epsilon_{\rm fac}^{\rm rec}\) is the leading-power factorization
+defect, \(\epsilon_{\rm evo}^{\rm rec}\) is the perturbative evolution and
+truncation error, \(\epsilon_{\rm match}^{\rm rec}\) includes fixed-order
+matching and overlap-subtraction errors, \(\epsilon_{\rm large\text{-}b}^{\rm rec}\)
+is the nonperturbative impact-parameter contribution or excluded-bin error,
+\(\epsilon_{\rm Glauber}^{\rm rec}\) records any failure or hypothesis of
+Glauber cancellation, and \(\epsilon_{\rm pow}^{\rm rec}\) is the remaining
+power correction.  The leading Sudakov factor
+\eqref{eq:qcd-eec-leading-sudakov-factor} supplies only the cusp-controlled
+piece of the evolution item.  The recoil contribution to a measured EEC bin
+additionally requires the tested chart, endpoint matching, large-\(b\)
+input, and residual data listed above.
+\end{controlledapproximation}
+
 \begin{lemma}[Tree-level collinear coefficient for the separated EEC]
 \label{lem:qcd-eec-tree-collinear-coefficient}
 Use the standard four-dimensional, azimuth-integrated, final-state collinear

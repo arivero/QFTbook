@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact checks for the back-to-back EEC leading Sudakov factor.
+"""Exact checks for the back-to-back EEC Sudakov and recoil bookkeeping.
 
 The QCD energy-correlator section derives the fixed-coupling leading
 Sudakov exponent
@@ -9,11 +9,41 @@ Sudakov exponent
 from the cusp-evolution integral between mu_b and Q.  This script verifies
 the rational coefficient of the logarithmic integral and the trace-delta
 versus half-trace convention conversion for the one-loop cusp coefficient.
+
+Evidence contract.
+Target claims:
+  - Eq. (qcd-eec-leading-sudakov-factor): the fixed-coupling cusp integral
+    gives the coefficient L_b^2/2 with the displayed sign convention.
+  - Controlled approximation (qcd-eec-tested-back-to-back-recoil): a tested
+    recoil chart pulls detector tests back by zeta=-1+q_T^2/Q^2 and its
+    residual budget must retain perturbative, matching, large-b, and power
+    components separately.
+Independent construction:
+  - Polynomial antiderivatives compute the cusp integral and the q_T^2 test
+    pullback directly, without substituting the target formulas.
+  - The residual check uses exact signed rational defects and an l1 bound.
+Imported assumptions:
+  - Fixed coupling, omitted non-cusp anomalous dimensions, the declared
+    trace-delta generator convention, and a one-dimensional q_T^2 endpoint
+    chart for the tested recoil functional.
+Negative controls:
+  - The half-trace conversion would fail if g^2 C_F were not invariant.
+  - The wrong angular pullback zeta=-1-q_T^2/Q^2 gives a different first
+    moment.
+  - Dropping the large-b/nonperturbative residual can make the tested bound
+    false.
+Scope boundary:
+  - These checks do not prove TMD factorization, running-coupling resummation,
+    soft/Glauber cancellation, convergence of the Fourier integral, or a
+    nonperturbative large-b model.
 """
 
 from __future__ import annotations
 
 from fractions import Fraction
+from math import comb
+
+from check_utils import assert_gt, assert_leq
 
 
 def assert_equal(name: str, actual: object, expected: object) -> None:
@@ -34,6 +64,24 @@ def poly_derivative(poly: tuple[Fraction, ...]) -> tuple[Fraction, ...]:
     if len(poly) <= 1:
         return (Fraction(0),)
     return tuple(Fraction(power) * coeff for power, coeff in enumerate(poly[1:], start=1))
+
+
+def integrate_recoil_test_pullback(
+    zeta_poly: tuple[Fraction, ...],
+    q2_max: Fraction,
+    q2_scale: Fraction,
+    *,
+    sign: int = 1,
+) -> Fraction:
+    """Integrate phi(-1 + sign*s/Q^2) ds over 0 <= s <= q2_max."""
+
+    total = Fraction(0)
+    for power, coeff in enumerate(zeta_poly):
+        for k in range(power + 1):
+            binomial_coeff = Fraction(comb(power, k))
+            zeta_coeff = coeff * binomial_coeff * Fraction(-1) ** (power - k) * Fraction(sign) ** k
+            total += zeta_coeff * q2_max ** (k + 1) / (Fraction(k + 1) * q2_scale**k)
+    return total
 
 
 def check_sudakov_log_integral() -> None:
@@ -71,10 +119,68 @@ def check_fixed_coupling_solution() -> None:
     )
 
 
+def check_back_to_back_test_pullback() -> None:
+    # In the recoil endpoint chart q_T^2 = Q^2 (1 + zeta), so detector tests
+    # pull back as phi_Q(s)=phi(-1+s/Q^2).  Check the first two moments by
+    # exact polynomial integration in s=q_T^2.
+    q2_scale = Fraction(25)
+    q2_max = Fraction(5)
+    constant_test = (Fraction(1),)
+    zeta_test = (Fraction(0), Fraction(1))
+    quadratic_test = (Fraction(3, 7), Fraction(-2, 5), Fraction(11, 13))
+
+    assert_equal(
+        "recoil constant-test pullback",
+        integrate_recoil_test_pullback(constant_test, q2_max, q2_scale),
+        q2_max,
+    )
+    assert_equal(
+        "recoil zeta-test pullback",
+        integrate_recoil_test_pullback(zeta_test, q2_max, q2_scale),
+        -q2_max + q2_max**2 / (2 * q2_scale),
+    )
+
+    correct = integrate_recoil_test_pullback(quadratic_test, q2_max, q2_scale)
+    wrong_sign = integrate_recoil_test_pullback(quadratic_test, q2_max, q2_scale, sign=-1)
+    if correct == wrong_sign:
+        raise AssertionError("wrong recoil angular pullback should not preserve a generic test")
+
+
+def check_back_to_back_residual_budget() -> None:
+    # A measured-bin recoil error is a signed sum of several distinct defects.
+    # The declared l1 budget bounds the total.  Omitting the large-b component
+    # is not a harmless convention change: for this exact finite example the
+    # remaining terms no longer bound the actual residual.
+    factorization = Fraction(1, 11)
+    rg_truncation = Fraction(-1, 13)
+    overlap_matching = Fraction(1, 17)
+    large_b = Fraction(5, 7)
+    power = Fraction(-1, 19)
+
+    residual = factorization + rg_truncation + overlap_matching + large_b + power
+    full_bound = (
+        abs(factorization)
+        + abs(rg_truncation)
+        + abs(overlap_matching)
+        + abs(large_b)
+        + abs(power)
+    )
+    assert_leq("back-to-back measured-bin residual budget", abs(residual), full_bound)
+
+    incomplete_bound = full_bound - abs(large_b)
+    assert_gt(
+        "dropping the large-b residual invalidates this budget",
+        abs(residual),
+        incomplete_bound,
+    )
+
+
 def main() -> None:
     check_sudakov_log_integral()
     check_trace_convention_cusp_invariance()
     check_fixed_coupling_solution()
+    check_back_to_back_test_pullback()
+    check_back_to_back_residual_budget()
     print("All EEC Sudakov checks passed.")
 
 

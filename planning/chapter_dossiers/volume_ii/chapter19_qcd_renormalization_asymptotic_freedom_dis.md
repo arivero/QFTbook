@@ -34,7 +34,10 @@
 - `SRC-CHECK-EEC-SUDAKOV`:
   `calculation-checks/energy_correlator_sudakov_checks.py` verifies the
   rational logarithmic integral in the back-to-back EEC Sudakov factor and
-  the trace-delta/half-trace conversion of the one-loop cusp coefficient.
+  the trace-delta/half-trace conversion of the one-loop cusp coefficient; it
+  also checks the back-to-back \(q_T^2\)-test pullback and a finite
+  measured-bin residual budget that fails if the large-\(b\) component is
+  silently omitted.
 - `SRC-CHECK-EEC-TRACK`:
   `calculation-checks/energy_correlator_track_checks.py` verifies the selected
   calorimetric measure identities, track-function collinear moment ledger,
@@ -215,6 +218,11 @@ The chapter must define and derive:
   \(\exp[-\Gamma_{\rm cusp}^q L_b^2/2]\) with
   \(\Gamma_{\rm cusp}^q=g^2C_F/(4\pi^2)+O(g^4)\), now presented as a
   scoped endpoint calculation rather than theorem form;
+- the tested back-to-back recoil chart: the pullback
+  \(\varphi_Q(q_T^2)=\varphi(-1+q_T^2/Q^2)\), the separation of the open
+  recoil integral from the endpoint atom \(K_-^\tau\), the large-\(b\)
+  nonperturbative boundary, and the measured-bin residual decomposition for
+  factorization, evolution, matching, large-\(b\), Glauber, and power errors;
 - the tree-level resolved collinear EEC coefficient, derived from the ordered
   detector weight \(2x(1-x)\) multiplying the real final-state splitting
   kernels, with exact coefficients
@@ -532,6 +540,16 @@ The chapter must define and derive:
      \(b_{\rm F}=2e^{-\gamma_E}\), and
      \(\Gamma_{\rm cusp}^q=g^2C_F/(4\pi^2)+O(g^4)\) in the trace-delta
      convention.
+19ca. A back-to-back endpoint formula contributes to a measured EEC only
+      after it is turned into a tested recoil chart.  Angular tests pull back
+      by \(\varphi_Q(q_T^2)=\varphi(-1+q_T^2/Q^2)\); the open \(q_T>0\)
+      recoil distribution is kept separate from the endpoint atom
+      \(K_-^\tau\); and the large-\(b\) region must be supplied by a
+      nonperturbative shape or fitted prescription, or counted as an
+      excluded-bin residual.  The recoil error entering the measured EEC
+      budget is therefore a sum of factorization, evolution/truncation,
+      matching/overlap, large-\(b\), Glauber, and power terms, not merely the
+      fixed-coupling cusp logarithm.
 19d. With column-vector light-ray operators
      \(\mu\,d\mathbb O_A/d\mu=-\gamma_{AB}\otimes\mathbb O_B\), the
      coefficient distributions obey
@@ -902,6 +920,16 @@ The chapter must define and derive:
   residual functional separating perturbative, endpoint, and hadronization
   errors.  Extended `calculation-checks/energy_correlator_track_checks.py`
   with selected endpoint-atom gluing and measured-residual finite checks.
+- 2026-06-04 issue #519 back-to-back recoil-budget pass: upgraded the
+  Sudakov endpoint from a scoped leading-log display to a tested recoil chart
+  feeding the measured-EEC budget.  The manuscript now states the
+  \(q_T^2\)-test pullback, separates the open recoil integral from the
+  endpoint atom \(K_-^\tau\), records the large-\(b\) nonperturbative
+  boundary, and decomposes the recoil residual into factorization,
+  evolution, matching, large-\(b\), Glauber, and power terms.  Extended
+  `calculation-checks/energy_correlator_sudakov_checks.py` with exact checks
+  of the pullback and a residual budget that fails if the large-\(b\)
+  component is omitted.
 - 2026-06-02 issue #519 track-energy pass: added selected calorimetric
   measures for track and charged-energy correlators, derived the selected EEC
   moment identities, introduced track functions as nonperturbative
