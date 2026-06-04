@@ -213,7 +213,16 @@
   the generic susceptibility-rate normalization
   \((2N_g)^2\Gamma_{\rm CS}/(\chi_XT)\).  The constrained-plasma continuation
   adds the Schur-complement computation of \(\chi_{X\mid C}\) after exact
-  conserved charges or neutrality constraints are imposed.
+  conserved charges or neutrality constraints are imposed.  The QCD
+  thermal-transport continuation adds
+  `ca:qcd-topological-diffusion-axial-relaxation`, separating the dilute
+  Euclidean instanton susceptibility from the real-time anomalous
+  axial-charge relaxation rate.  The text records the KMS distinction between
+  the static propagated spectral-area/contact convention for
+  \(\chi_{\rm top}^E\) and the zero-frequency Chern--Simons diffusion slope, derives
+  \((2N_f)^2\Gamma_{\rm CS}/(\chi_5T)\) in the massless limit, and keeps
+  massive-quark pseudoscalar and cross spectral weights as separate
+  \(\dot Q_5\) inputs.
 - The index-normalized anomaly-polynomial section is paired with
   `calculation-checks/anomaly_polynomial_descent_checks.py`, which verifies
   the closed four-dimensional Dirac-index coefficient, the local Clifford
@@ -377,6 +386,7 @@
 | \(m_{\rm scr},A,\mathcal A_{\rm scr}^{(0)}\) | physical infrared screening scale, screened size-integral power \(A=b_0+\beta_{\mathcal X}-4\), and leading screened one-instanton amplitude |
 | \(m_T,R_T,\mathcal A_T^G,\mathcal M_T^G\) | high-temperature determinant screening scale, finite-temperature determinant residual, Gaussian thermal one-instanton approximation, and absolute Gaussian majorant for non-positive/complex source channels |
 | \(\zeta_T^G,\chi_{\rm top}^{T,G}\) | Gaussian high-temperature dilute one-instanton activity and its induced topological susceptibility |
+| \(Q_5,n_5,\chi_5,\Gamma_{AB}^{(0)},\Gamma_{\dot Q_5}^{(0)}\) | singlet axial charge, homogeneous axial density, axial susceptibility, zero-frequency KMS spectral weights, and full axial-charge noise entering the QCD topological-diffusion relaxation bridge |
 | \(T,\mathcal D_{\rm zm},E_{\rm zm},\rho_{\rm zm},N_{\rm zm},\nu_{\mathcal V_4},\Delta_{\pi-\delta}^{\rm zm}\) | instanton--anti-instanton near-zero-mode overlap matrix, projected Dirac block, remainder, singular-value density, cumulative singular-value count, exact-topology density, and zero-mode-zone \(U(1)_A\)-odd susceptibility splitting used in the instanton-liquid criteria |
 | \(\Gamma_{\rm CS},\chi_X,\chi_{X\mid C},C_{\alpha i},n_X\) | Chern--Simons diffusion rate, unconstrained and constrained \(B+L\) susceptibilities, conserved-charge/neutrality constraint matrix, and homogeneous \(B+L\) density used in the electroweak sphaleron response bridge |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
@@ -1505,6 +1515,19 @@
   propagation, and rejection of negative/complex activity inputs.  This
   converts the instanton-size work into a theta-curvature observable while
   preserving the near-crossover and zero-temperature scope boundary.
+- 2026-06-04 issue #597 QCD axial-transport pass: added
+  `ca:qcd-topological-diffusion-axial-relaxation`, which keeps the Euclidean
+  instanton theta-curvature computation separate from real-time anomalous
+  axial-charge relaxation.  The block states the finite-temperature spectral
+  distinction between the Euclidean propagated area integral
+  \(2\rho_{qq}(\omega)/\omega\) plus the theta-contact convention and the KMS diffusion slope
+  \(\lim_{\omega\downarrow0}2T\rho_{qq}(\omega)/\omega\), derives the
+  massless relaxation coefficient
+  \((2N_f)^2\Gamma_{\rm CS}/(\chi_5T)\), and assigns massive-quark
+  pseudoscalar and cross spectral weights to the full \(\dot Q_5\) noise
+  matrix.  The BPST companion verifies detailed-balance drift,
+  same-\(\chi_{\rm top}^E\)/different-slope and zero-diffusion negative
+  controls, plus the massive-channel noise expansion.
 - 2026-06-04 issue #739 sign/phase repair: re-audited the thermal instanton
   residual estimates against the amplitude-versus-activity distinction.  The
   manuscript now gives every absolute-error estimate a nonnegative right-hand

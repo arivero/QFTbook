@@ -152,6 +152,12 @@ relations
     |m_u m_d| Lambda_ht^(29/3) T^(-23/3); negative and complex source
     amplitudes require a fixed-phase absolute value or an absolute-kernel
     majorant instead of a signed activity bound
+    the same Euclidean thermal topological susceptibility is distinct from a
+    real-time axial-charge relaxation rate: the former is a static
+    spectral-area/contact datum, while the latter is controlled by the KMS
+    zero-frequency Chern-Simons diffusion slope, the axial susceptibility, and,
+    for massive quarks, the full dot-Q5 noise matrix including pseudoscalar
+    mass-term and cross weights
     the renormalized mass/source instanton functional has homogeneous
     source-coordinate RG transport, with the finite fermion determinant factor
     cancelling the anomalous running of det(M^0+J^0)
@@ -214,6 +220,9 @@ cancellations rejected as fluctuation-error certificates, negative/complex
 thermal amplitude kernels rejected from signed activity bounds, finite-frame
 inverse checks, canceled reference-amplitude normalization, stale determinant
 constants under finite scheme changes, rank-one four-source zero-mode collapse,
+same Euclidean topological susceptibility paired with different Kubo slopes,
+nonzero Euclidean instanton susceptibility paired with zero real-time
+diffusion,
 vacuum determinant calibration substituted for a source-dependent fluctuation
 certificate, signed fluctuation-cumulant cancellations,
 hard-only and screening-only shell substitutions in the mixed size-majorant
@@ -4752,6 +4761,83 @@ def check_thermal_dilute_topological_susceptibility() -> None:
     )
 
 
+def check_qcd_axial_charge_relaxation_kubo_bridge() -> None:
+    n_f = 3
+    axial_step = 2 * n_f
+    gamma_cs = Fraction(7, 19)
+    chi5 = Fraction(11, 13)
+    temperature = Fraction(5, 3)
+    n5_density = Fraction(17, 23)
+    mu5 = n5_density / chi5
+
+    topological_relaxation_rate = (
+        axial_step * axial_step * gamma_cs / (chi5 * temperature)
+    )
+    drift = -topological_relaxation_rate * n5_density
+    detailed_balance_drift = -axial_step * gamma_cs * (axial_step * mu5) / temperature
+    assert_equal(
+        "massless QCD axial relaxation detailed-balance drift",
+        drift,
+        detailed_balance_drift,
+    )
+
+    # The Euclidean topological susceptibility is a spectral-area integral,
+    # while the real-time diffusion rate is the zero-frequency KMS slope.
+    # Two spectra can have the same Euclidean area but different Kubo slopes.
+    euclidean_chi = Fraction(6)
+    low_window_width = Fraction(2)
+    slope_a = Fraction(1, 5)
+    slope_b = Fraction(3, 7)
+    low_area_a = 2 * slope_a * low_window_width
+    low_area_b = 2 * slope_b * low_window_width
+    high_area_a = euclidean_chi - low_area_a
+    high_area_b = euclidean_chi - low_area_b
+    kubo_a = 2 * temperature * slope_a
+    kubo_b = 2 * temperature * slope_b
+    assert_equal("first spectral model has positive high-frequency area", high_area_a > 0, True)
+    assert_equal("second spectral model has positive high-frequency area", high_area_b > 0, True)
+    assert_equal(
+        "same Euclidean susceptibility can have different Kubo slopes",
+        low_area_a + high_area_a == low_area_b + high_area_b and kubo_a != kubo_b,
+        True,
+    )
+
+    nonzero_static_instanton_susceptibility = Fraction(2, 7)
+    zero_topological_diffusion = Fraction(0)
+    assert_equal(
+        "nonzero static instanton susceptibility is not a topological relaxation rate",
+        nonzero_static_instanton_susceptibility > 0
+        and axial_step * axial_step * zero_topological_diffusion / (chi5 * temperature) == 0,
+        True,
+    )
+
+    # Massive quarks add a pseudoscalar chirality-flip channel and cross noise.
+    gamma_qq = Fraction(3, 11)
+    gamma_qm = Fraction(1, 17)
+    gamma_mm = Fraction(5, 13)
+    assert_equal(
+        "massive anomaly zero-frequency noise matrix sample is positive",
+        gamma_qq * gamma_mm - gamma_qm * gamma_qm > 0,
+        True,
+    )
+    full_dot_q5_noise = (
+        axial_step * axial_step * gamma_qq
+        + 2 * axial_step * gamma_qm
+        + gamma_mm
+    )
+    topological_only_noise = axial_step * axial_step * gamma_qq
+    assert_equal(
+        "massive QCD axial relaxation includes pseudoscalar and cross weights",
+        full_dot_q5_noise,
+        topological_only_noise + 2 * axial_step * gamma_qm + gamma_mm,
+    )
+    assert_equal(
+        "massive anomaly relaxation differs from topological-only relaxation",
+        full_dot_q5_noise == topological_only_noise,
+        False,
+    )
+
+
 def check_electroweak_sphaleron_response_ledger() -> None:
     generations = 3
     delta_ncs = Fraction(1)
@@ -4947,6 +5033,7 @@ def main() -> None:
     check_screened_one_instanton_size_integral()
     check_thermal_instanton_determinant_screening()
     check_thermal_dilute_topological_susceptibility()
+    check_qcd_axial_charge_relaxation_kubo_bridge()
     check_electroweak_sphaleron_response_ledger()
     check_uhlenbeck_boundary_face_budget()
     check_k_one_adhm_dimension_and_cone_power()

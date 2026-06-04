@@ -8567,6 +8567,111 @@ instantons dominate the topological susceptibility near the crossover or at
 zero temperature.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Topological diffusion and axial-charge
+relaxation]
+\label{ca:qcd-topological-diffusion-axial-relaxation}
+The thermal instanton susceptibility in
+ControlledApproximation~\ref{ca:thermal-dilute-instanton-susceptibility} is a
+Euclidean theta-curvature observable.  It is not yet a real-time chirality
+relaxation rate.  Let
+\[
+  Q_5(t)=\int\dd^3x\,J_5^0(t,\mathbf x),\qquad
+  n_5=Q_5/V,\qquad
+  \mathcal Q(t)=\int\dd^3x\,q(t,\mathbf x),
+\]
+where \(q=(32\pi^2)^{-1}F^a\widetilde F^a\) in the same topological-charge
+normalization used above.  For \(N_f\) Dirac flavors with mass matrix \(M\),
+the singlet anomaly gives
+\begin{equation}
+  \dot Q_5(t)
+  =
+  2N_f\,\mathcal Q(t)
+  +
+  \Xi_m(t),
+  \qquad
+  \Xi_m(t)=2\ii\int\dd^3x\,\bar q M\gamma_5 q(t,\mathbf x).
+  \label{eq:qcd-axial-charge-anomaly-time}
+\end{equation}
+In the massless limit \(\Xi_m=0\), but for massive quarks the chirality-flip
+operator is a separate real-time datum.
+
+Let \(\rho_{AB}(\omega)\) be the zero-momentum retarded spectral matrix of the
+spatially integrated operators \(A,B\in\{\mathcal Q,\Xi_m\}\), divided by
+volume after the thermodynamic limit.  The KMS relation defines the
+zero-frequency symmetric weights
+\begin{equation}
+  \Gamma_{AB}^{(0)}
+  =
+  \lim_{\omega\downarrow0}
+  \frac{2T}{\omega}\rho_{AB}(\omega),
+  \label{eq:qcd-axial-kms-zero-frequency-weights}
+\end{equation}
+whenever the limit exists in the selected hydrodynamic window.  The topological
+entry is the Chern--Simons diffusion rate,
+\[
+  \Gamma_{\rm CS}=\Gamma_{qq}^{(0)}
+  =
+  \lim_{Vt\to\infty}
+  \frac{\left\langle
+  (N_{\rm CS}(t)-N_{\rm CS}(0))^2\right\rangle}{Vt}.
+\]
+By contrast, after the local \(\theta\)-contact convention of
+Definition~\ref{def:topological-susceptibility} has been fixed, the propagated
+part of the Euclidean static susceptibility is the integral
+\begin{equation}
+  \chi_{\rm top}^{E,{\rm prop}}
+  =
+  \int_0^\beta\dd\tau\int\dd^3x\,
+    \langle q(\tau,\mathbf x)q(0,\mathbf0)\rangle_{\rm c}
+  =
+  \int_0^\infty\frac{\dd\omega}{\pi}\,
+    \frac{2\rho_{qq}(\omega)}{\omega}.
+  \label{eq:qcd-euclidean-topological-susceptibility-spectral}
+\end{equation}
+Equations
+\eqref{eq:qcd-axial-kms-zero-frequency-weights} and
+\eqref{eq:qcd-euclidean-topological-susceptibility-spectral} therefore ask
+different questions: the static theta curvature measures a Euclidean spectral
+area, together with the declared local contact convention, while
+\(\Gamma_{\rm CS}\) measures the low-frequency slope selected by real-time
+diffusion.  A dilute instanton calculation of \(\chi_{\rm top}^{T}\) can
+certify a static theta curvature without fixing the transport coefficient.
+
+If the long-wavelength axial free energy is
+\[
+  f_5(n_5)=\frac{n_5^2}{2\chi_5},\qquad
+  \mu_5=\frac{n_5}{\chi_5},
+\]
+then linear response gives
+\begin{equation}
+  \frac{\dd n_5}{\dd t}
+  =
+  -
+  \frac{\Gamma_{\dot Q_5}^{(0)}}{\chi_5T}\,n_5,
+  \qquad
+  \Gamma_{\dot Q_5}^{(0)}
+  =
+  (2N_f)^2\Gamma_{qq}^{(0)}
+  +
+  4N_f\Gamma_{qm}^{(0)}
+  +
+  \Gamma_{mm}^{(0)} .
+  \label{eq:qcd-axial-charge-relaxation-rate}
+\end{equation}
+For massless quarks this reduces to the topological contribution
+\begin{equation}
+  \gamma_5^{\rm top}
+  =
+  \frac{(2N_f)^2\Gamma_{\rm CS}}{\chi_5T}.
+  \label{eq:qcd-massless-topological-axial-relaxation}
+\end{equation}
+Thus an instanton-induced Euclidean \(U(1)_A\) susceptibility, a theta
+curvature, and a real-time axial relaxation rate are related by the anomaly
+but are not the same observable.  The rate requires the retarded low-frequency
+spectral problem, the axial susceptibility of the thermal plasma, and, when
+the quarks are massive, the pseudoscalar mass-term and cross spectral weights.
+\end{controlledapproximation}
+
 \begin{proposition}[Zero-mode overlap determinant in an instanton ensemble]
 \label{prop:instanton-ensemble-zero-mode-overlap}
 Fix a finite-volume, finite-regulator vectorlike \(SU(N_c)\) QCD background

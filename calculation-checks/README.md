@@ -596,6 +596,12 @@ Current checks:
   \(\chi_{\rm top}^{T,{\rm dig}}=2\zeta_T\) with \(b_2=-1/12\),
   \(T^{-23/3}\) \(SU(3)\), \(N_f=2\) scaling, inherited positive-activity
   residual bound, and negative/complex activity rejections, the
+  QCD axial-charge relaxation bridge separating the Euclidean topological
+  susceptibility propagated spectral-area/contact convention from the
+  real-time KMS Chern--Simons diffusion slope, with detailed-balance drift
+  \((2N_f)^2\Gamma_{\rm CS}/(\chi_5T)\), same-static-susceptibility/different
+  Kubo-slope and zero-diffusion negative controls, and the massive-quark
+  pseudoscalar/cross-noise extension of the \(\dot Q_5\) matrix, the
   dilute instanton-gas theta cumulants \(\chi_{\rm top}=2\zeta\) and
   \(b_2=-1/12\) after a finite activity has been supplied, the first
   two-body cluster correction showing that same-charge clusters generate a
