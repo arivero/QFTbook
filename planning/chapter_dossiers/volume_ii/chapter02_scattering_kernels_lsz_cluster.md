@@ -125,6 +125,12 @@
   cross sections; hard charged QED processes to soft/inclusive
   detector-resolved rates; and QCD sources to factorized operator data,
   jet/soft/parton-density functions, and detector measures.
+- The analytic scattering route now separates continuation machinery from
+  contingent singularity data: massive amplitudes plus unitarity, boundedness,
+  and analyticity hypotheses supply partial-wave and dispersion-relation
+  tools and the sheet framework in which resonance poles can be characterized
+  if present, but a particular pole requires separate channel-specific
+  dynamical or spectral evidence.
 - The same architecture states non-maps used later: detector distributions do
   not determine unique amplitudes, resonance poles do not supply asymptotic
   particle vectors, inclusive QED rates do not restore bare charged LSZ
@@ -134,6 +140,11 @@
   chapter, retained only the kernel-use paragraph pointing to
   Theorem~\ref{thm:lsz-wave-packet}, and changed the Haag--Ruelle input to the
   Volume IV theorem layer plus the Volume I Cook-estimate model.
+- 2026-06-03 issue #734 correction pass: revised the cross-volume scattering
+  architecture so analyticity no longer implies resonance-pole existence.  The
+  monograph now states that analytic hypotheses give the continuation,
+  partial-wave, and dispersion framework, while pole existence/location
+  requires additional channel-specific dynamical or spectral evidence.
 
 ## Figure Requirements
 

@@ -134,9 +134,13 @@ In this part the following labels have fixed meanings.
   limits have been fixed.
   \item[Analytic \(S\)-matrix and resonances.]
   The primary objects are partial waves, dispersion relations, and
-  second-sheet poles.  The input is a previously constructed amplitude,
-  unitarity, crossing domain, spectral condition, and analyticity
-  assumptions.  This gives a conditional analytic continuation of amplitudes.
+  the sheet structure in which poles, cuts, and other singularities can be
+  characterized.  The input is a previously constructed amplitude, unitarity,
+  crossing domain, spectral condition, and analyticity assumptions.  This
+  gives a conditional analytic continuation of amplitudes.  A particular
+  resonance pole is additional dynamical information, for example a zero of a
+  continued inverse partial wave or a finite-volume/spectral analysis that
+  fixes the continued singularity; it is not produced by analyticity alone.
   Resonance poles encode unstable states; they are not normalizable
   asymptotic particles.
   \item[Confining gauge theory and QCD factorization.]
@@ -203,8 +207,12 @@ declared.
 The following implications are used in later chapters.
 \begin{enumerate}
   \item Haag--Ruelle plus LSZ hypotheses give massive wave-packet amplitudes.
-  \item Massive amplitudes plus analyticity hypotheses give partial waves,
-  dispersion relations, and resonance poles.
+  \item Massive amplitudes plus unitarity, boundedness, and analyticity
+  hypotheses give partial-wave and dispersion-relation machinery, together
+  with a continuation framework in which resonance poles, cuts, and other
+  singularities can be characterized if present.  The existence and location
+  of a resonance pole require separate channel-specific dynamical or spectral
+  evidence.
   \item A charged hard process plus soft or inclusive data gives
   infrared-safe charged rates.
   \item QCD operator definitions plus factorization data give detector and
