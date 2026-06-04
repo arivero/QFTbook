@@ -3,11 +3,15 @@
 
 The script verifies finite algebra used in the QCD energy-correlator
 discussion: selected calorimetric measures, track-EEC moment identities, and
-the binomial moment ledger for a collinear track-function split.
+the binomial moment ledger for a collinear track-function split.  It also
+checks the selected endpoint-atom gluing equations and the finite residual
+budget for a measured EEC prediction.
 """
 
 from fractions import Fraction
 from math import comb
+
+from check_utils import assert_leq as _assert_leq
 
 
 def assert_equal(name, actual, expected):
@@ -92,9 +96,87 @@ def check_track_function_split_moments():
     assert_equal("full calorimeter second moment", split_moment(z, full, full, 2), Fraction(1))
 
 
+def check_selected_endpoint_atom_gluing():
+    # For a selected-energy EEC, the endpoint atoms are fixed by the selected
+    # zeroth and first moments, not by the full calorimetric values unless the
+    # selector is tau=1.
+    selected_energy_square = Fraction(17, 19)
+    selected_momentum_square = Fraction(5, 23)
+    open_zeroth = Fraction(2, 7)
+    open_first = Fraction(-1, 11)
+
+    contact_atom = (
+        selected_energy_square
+        + selected_momentum_square
+        - open_zeroth
+        - open_first
+    ) / 2
+    back_to_back_atom = (
+        selected_energy_square
+        - selected_momentum_square
+        - open_zeroth
+        + open_first
+    ) / 2
+
+    assert_equal(
+        "selected EEC zeroth endpoint gluing",
+        open_zeroth + contact_atom + back_to_back_atom,
+        selected_energy_square,
+    )
+    assert_equal(
+        "selected EEC first endpoint gluing",
+        open_first + contact_atom - back_to_back_atom,
+        selected_momentum_square,
+    )
+
+    full_contact_atom = (1 - open_zeroth - open_first) / 2
+    full_back_to_back_atom = (1 - open_zeroth + open_first) / 2
+    assert_equal(
+        "full calorimeter atom solution is recovered",
+        (
+            full_contact_atom,
+            full_back_to_back_atom,
+        ),
+        (
+            Fraction(1, 2) * (1 - open_zeroth - open_first),
+            Fraction(1, 2) * (1 - open_zeroth + open_first),
+        ),
+    )
+
+
+def check_measured_eec_residual_bound():
+    # A finite detector-test residual is bounded by the sum of chart, endpoint,
+    # and power/hadronization error budgets.  The signs can cancel in the
+    # observable, but the stated accuracy claim uses absolute budgets.
+    chart_defects = [Fraction(1, 37), Fraction(-2, 41), Fraction(3, 43)]
+    endpoint_defects = {
+        "plus": Fraction(-5, 47),
+        "minus": Fraction(7, 53),
+    }
+    phi_plus = Fraction(2, 5)
+    phi_minus = Fraction(-3, 7)
+    power_defect = Fraction(-11, 59)
+
+    actual_residual = (
+        sum(chart_defects)
+        + phi_plus * endpoint_defects["plus"]
+        + phi_minus * endpoint_defects["minus"]
+        + power_defect
+    )
+    bound = (
+        sum(abs(entry) for entry in chart_defects)
+        + abs(phi_plus) * abs(endpoint_defects["plus"])
+        + abs(phi_minus) * abs(endpoint_defects["minus"])
+        + abs(power_defect)
+    )
+    _assert_leq("measured EEC residual budget", abs(actual_residual), bound)
+
+
 def main():
     check_selected_measure_moments()
     check_track_function_split_moments()
+    check_selected_endpoint_atom_gluing()
+    check_measured_eec_residual_bound()
     print("All track energy-correlator checks passed.")
 
 

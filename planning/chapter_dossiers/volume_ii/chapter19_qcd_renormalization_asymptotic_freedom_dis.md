@@ -35,6 +35,11 @@
   `calculation-checks/energy_correlator_sudakov_checks.py` verifies the
   rational logarithmic integral in the back-to-back EEC Sudakov factor and
   the trace-delta/half-trace conversion of the one-loop cusp coefficient.
+- `SRC-CHECK-EEC-TRACK`:
+  `calculation-checks/energy_correlator_track_checks.py` verifies the selected
+  calorimetric measure identities, track-function collinear moment ledger,
+  selected endpoint-atom gluing equations, and measured-EEC residual-budget
+  inequality.
 - `SRC-CHECK-QCD-CUSP-LARGE-SPIN`:
   `calculation-checks/qcd_cusp_large_spin_checks.py` verifies the Euclidean
   cusped-Wilson-line angular integral, smooth-line subtraction, Lorentzian
@@ -217,6 +222,12 @@ The chapter must define and derive:
 - track selectors and charged-energy correlators as selected hadronic
   calorimetric measures, with selected-energy moment identities and the
   binomial moment ledger for track-function collinear splitting;
+- the measured EEC prediction budget, including the exact selected hadronic
+  observable, selected-energy and selected-momentum moment constraints,
+  overlap-subtracted bulk/small-angle/back-to-back charts, endpoint atoms
+  \(K_\pm^\tau\), nonperturbative track or fragmentation inputs, and a
+  residual functional separating perturbative, endpoint, and hadronization
+  errors;
 - multipoint jet energy correlators and energy-flow polynomials as polynomial
   functionals of calorimetric data;
 - DIS kinematics, inclusive final-state sums, the leading electromagnetic
@@ -536,6 +547,19 @@ The chapter must define and derive:
      coincident-detector contact coordinate \(K_+\) is fixed independently,
      these equations become a scheme-consistency test on the endpoint
      calculation.
+19ea. The measured selected EEC is the hadronic observable
+      \(\mathcal O_\tau[\varphi;Q]=\sum_XW_X(Q)\langle E_{2,X}^\tau,\varphi\rangle\).
+      Its exact moment constraints are
+      \(\mathcal O_\tau[1]=A_\tau=\sum_XW_Xe_\tau(X)^2\) and
+      \(\mathcal O_\tau[\zeta]=B_\tau=\sum_XW_X|\mathbf p_\tau(X)|^2\).
+      A perturbative prediction must assemble overlap-subtracted bulk,
+      small-angle, and back-to-back charts, lift partonic coefficients by
+      track or fragmentation data when \(\tau\ne1\), and choose endpoint atoms
+      satisfying
+      \(I_0^\tau+K_+^\tau+K_-^\tau=A_\tau\) and
+      \(I_1^\tau+K_+^\tau-K_-^\tau=B_\tau\).  The residual budget separates
+      open-chart errors, endpoint atom errors, and hadronization or
+      shape-function effects.
 20. DIS is controlled by an inclusive Wightman current-current tensor; the
     time-ordered forward Compton amplitude supplies its discontinuity, and the
     short-distance OPE applies to the time-ordered product before analytic
@@ -871,6 +895,13 @@ The chapter must define and derive:
   The ladder records that the many finite detector and finite-chart checks are
   inputs to the modern EEC program rather than a substitute for the all-order
   light-ray OPE/mixing theorem or complete endpoint-matched prediction.
+- 2026-06-04 issue #519 measured-EEC pass: added the observable-level
+  prediction budget for full calorimetric and selected-track EECs, tying the
+  exact hadronic detector definition to overlap-subtracted bulk, small-angle,
+  and back-to-back charts, endpoint atoms, track or fragmentation inputs, and a
+  residual functional separating perturbative, endpoint, and hadronization
+  errors.  Extended `calculation-checks/energy_correlator_track_checks.py`
+  with selected endpoint-atom gluing and measured-residual finite checks.
 - 2026-06-02 issue #519 track-energy pass: added selected calorimetric
   measures for track and charged-energy correlators, derived the selected EEC
   moment identities, introduced track functions as nonperturbative

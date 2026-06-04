@@ -9318,6 +9318,171 @@ partonic factorization formula.  The selected-energy observable is defined at
 the hadron level; the partonic track functions are the bridge used for its
 short-distance expansion.
 
+\subsection{Measured EEC Prediction Budgets}
+\label{subsec:qcd-measured-eec-prediction-budgets}
+
+The preceding endpoint and track formulae become physics only after they are
+assembled into a measured final-state observable.  Let \(W_X(Q)\) denote the
+normalized inclusive weight of the hadronic final state \(X\) produced by a
+color-singlet source at center-of-mass energy \(Q\).  For a smooth angular
+test \(\varphi\) on \([-1,1]\), the exact selected EEC observable is
+\begin{equation}
+  \mathcal O_\tau[\varphi;Q]
+  =
+  \sum_X W_X(Q)\,
+  \int_{-1}^{1}
+  \varphi(\zeta)\,E_{2,X}^{\tau}(\zeta)\,\dd\zeta .
+  \label{eq:qcd-measured-selected-eec-observable}
+\end{equation}
+This is a color-singlet hadronic quantity.  The special case
+\(\tau\equiv1\) is the full calorimetric EEC; a charged-track measurement is
+obtained only after the selector and calibration entering
+\(\mu_X^\tau\) have been fixed.
+
+The exact selected moment constraints are
+\begin{equation}
+  \mathcal O_\tau[1;Q]
+  =
+  A_\tau(Q),
+  \qquad
+  \mathcal O_\tau[\zeta;Q]
+  =
+  B_\tau(Q),
+  \label{eq:qcd-selected-eec-measured-moments}
+\end{equation}
+where
+\[
+  A_\tau(Q):=\sum_XW_X(Q)\,e_\tau(X)^2,
+  \qquad
+  B_\tau(Q):=\sum_XW_X(Q)\,|\mathbf p_\tau(X)|^2 .
+\]
+For the full calorimeter in a color-singlet center-of-mass event,
+\(A_1(Q)=1\) and \(B_1(Q)=0\).  For a track selector these are
+nonperturbative selected-energy moments.  They may be measured, modeled, or
+factorized using track functions, but they are not fixed by total
+four-momentum conservation alone.
+
+Choose a smooth partition of the angular line into a bulk chart, a
+small-angle chart near \(\zeta=1\), and a back-to-back chart near
+\(\zeta=-1\).  In such a declared distributional chart, a leading-power
+perturbative prediction has the form
+\begin{equation}
+\begin{aligned}
+  \mathcal O_\tau[\varphi;Q]
+  &=
+  \mathcal P_{\tau}^{\rm bulk}[\varphi;Q,\mu]
+  +
+  \mathcal P_{\tau}^{\rm coll}[\varphi;Q,\mu,\nu]
+  +
+  \mathcal P_{\tau}^{\rm rec}[\varphi;Q,\mu,\nu]
+  \\
+  &\quad
+  +
+  K_{+}^{\tau}(Q)\,\varphi(1)
+  +
+  K_{-}^{\tau}(Q)\,\varphi(-1)
+  +
+  R_{\tau,Q}[\varphi].
+\end{aligned}
+\label{eq:qcd-measured-eec-factorization-budget}
+\end{equation}
+The three open-interval terms are understood to be overlap-subtracted in the
+declared scheme.  The bulk term is the fixed-order separated-angle
+coefficient.  The collinear term is the light-ray or jet endpoint expansion
+near \(\zeta=1\), with the operator mixing, plus-distribution convention,
+and contact coordinate discussed above.  The recoil term is the
+back-to-back factorization chart, with its hard, jet, soft, rapidity, and
+Sudakov data.  If \(\tau\ne1\), each partonic coefficient entering these
+charts must be lifted by the track functions in the same factorization
+scheme; diagonal detector slots use higher track moments as in
+\eqref{eq:qcd-track-eec-contact-separated-weights}, not just first moments.
+
+Let \(\mathcal P_{\tau}^{\rm open}\) be the sum of the three
+overlap-subtracted open-chart terms in
+\eqref{eq:qcd-measured-eec-factorization-budget}, and set
+\[
+  I_0^\tau=\mathcal P_{\tau}^{\rm open}[1],
+  \qquad
+  I_1^\tau=\mathcal P_{\tau}^{\rm open}[\zeta].
+\]
+If the endpoint atoms are retained as matching coordinates, the selected
+moment constraints require
+\begin{equation}
+  I_0^\tau+K_+^\tau+K_-^\tau=A_\tau,
+  \qquad
+  I_1^\tau+K_+^\tau-K_-^\tau=B_\tau .
+  \label{eq:qcd-selected-eec-endpoint-matching-equations}
+\end{equation}
+Thus
+\begin{equation}
+  K_+^\tau
+  =
+  \frac{A_\tau+B_\tau-I_0^\tau-I_1^\tau}{2},
+  \qquad
+  K_-^\tau
+  =
+  \frac{A_\tau-B_\tau-I_0^\tau+I_1^\tau}{2}.
+  \label{eq:qcd-selected-eec-endpoint-atom-solution}
+\end{equation}
+For \(\tau\equiv1\) this reduces to
+\eqref{eq:qcd-eec-matching-delta-solution}.  For a track measurement,
+\(K_+^\tau\) contains the coincident selected-detector contact coordinate,
+whereas \(K_-^\tau\) is a back-to-back endpoint coordinate of the matched
+prediction.  Confusing these two endpoint atoms hides the physical difference
+between selected-energy fragmentation data and recoil factorization.
+
+\begin{controlledapproximation}[Measured EEC prediction]
+\label{ca:qcd-measured-eec-prediction}
+A controlled perturbative prediction for a calorimetric or selected-track EEC
+must state:
+\begin{enumerate}
+  \item the hadronic detector observable
+  \eqref{eq:qcd-measured-selected-eec-observable}, including the event
+  normalization, selector \(\tau\), and detector calibration;
+  \item the angular test space or finite bins, together with the endpoint
+  partition and overlap-subtraction convention;
+  \item the separated-angle fixed-order coefficient, the small-angle
+  light-ray or jet endpoint chart, and the back-to-back recoil factorization
+  chart, all in compatible subtraction schemes;
+  \item the nonperturbative leading-power inputs, such as track functions or
+  fragmentation data, and their evolution when the measurement is not fully
+  calorimetric;
+  \item the endpoint atoms \(K_\pm^\tau\), fixed or tested by
+  \eqref{eq:qcd-selected-eec-endpoint-matching-equations};
+  \item a residual functional \(R_{\tau,Q}\) separating perturbative
+  truncation, omitted operator channels, endpoint matching, hadronization or
+  shape-function effects, and ordinary power corrections.
+\end{enumerate}
+If the claimed errors in the three open charts are
+\(\epsilon_{\rm bulk}(\varphi)\), \(\epsilon_{\rm coll}(\varphi)\), and
+\(\epsilon_{\rm rec}(\varphi)\), if the endpoint atoms are known up to
+\(\epsilon_+\) and \(\epsilon_-\), and if the remaining power or
+hadronization error is \(\epsilon_{\rm pow}(\varphi)\), then the detector-test
+pairing must obey a bound of the form
+\begin{equation}
+  \bigl|
+    R_{\tau,Q}[\varphi]
+  \bigr|
+  \leq
+  \epsilon_{\rm bulk}(\varphi)
+  +
+  \epsilon_{\rm coll}(\varphi)
+  +
+  \epsilon_{\rm rec}(\varphi)
+  +
+  |\varphi(1)|\epsilon_+
+  +
+  |\varphi(-1)|\epsilon_-
+  +
+  \epsilon_{\rm pow}(\varphi).
+  \label{eq:qcd-measured-eec-residual-bound}
+\end{equation}
+Endpoint bins that probe \(Q\theta\) or \(q_T\) at hadronic scales are
+outside a purely perturbative endpoint chart; the corresponding term in
+\eqref{eq:qcd-measured-eec-residual-bound} must then be supplied by an
+explicit nonperturbative shape, fragmentation, or track-function input.
+\end{controlledapproximation}
+
 \section{Current Correlators and the Hadronic Tensor}
 
 Deep inelastic scattering probes a hadron by a local current.  The process is
