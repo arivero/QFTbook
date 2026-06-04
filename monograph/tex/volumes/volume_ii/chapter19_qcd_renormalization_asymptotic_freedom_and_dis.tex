@@ -10837,6 +10837,109 @@ factorization proof must still supply the leading-region analysis, soft
 cancellation or soft factor, Glauber status, and the remainder topology; the
 algebra above only fixes the paired RG structure once those objects exist.
 
+\begin{controlledapproximation}[Integrated Drell--Yan theorem boundary]
+\label{ca:qcd-drell-yan-integrated-theorem-boundary}
+The exact object in integrated Drell--Yan is a tested distribution obtained
+from the color-singlet Wightman tensor
+\eqref{eq:qcd-drell-yan-current-product}, not the partonic coordinate
+\eqref{eq:qcd-drell-yan-integrated-factorization}.  Fix a compact
+\((Q^2,y)\)-window \(K\), away from threshold and small-\(x\) boundaries, and
+let \(\mathcal D_K\) be the corresponding test-function space.  A
+leading-power integrated factorization theorem for this window must supply:
+\begin{enumerate}
+  \item a finite-regulator definition of the exact tested functional
+  \(\mathfrak T_{\rm DY}[\varphi]\), \(\varphi\in\mathcal D_K\), from
+  \eqref{eq:qcd-drell-yan-current-product};
+  \item the renormalized light-ray PDF coordinates and the hard coefficient in
+  the same subtraction scheme;
+  \item a leading-region map from the exact current product to the two
+  incoming collinear sectors, with its error measured in
+  \(\mathcal D_K^\ast\);
+  \item a soft-cancellation or soft-factor construction in the same regulator;
+  \item a Glauber statement strong enough for the chosen measurement topology;
+  \item a power-remainder topology, including hadron-mass, threshold,
+  small-\(x\), and perturbative-truncation qualifications;
+  \item a regulator-limit statement identifying which residuals vanish and
+  which remain as declared approximation errors.
+\end{enumerate}
+Thus the formula
+\eqref{eq:qcd-drell-yan-integrated-factorization} becomes a theorem only after
+the residuals in this list are bounded for the exact tested Wightman functional.
+The paired RG equation \eqref{eq:qcd-drell-yan-coefficient-dual-rg} is one
+coordinate-transport check inside this boundary; it is not the boundary itself.
+\end{controlledapproximation}
+
+\begin{proposition}[Tested Drell--Yan factorization residual budget]
+\label{prop:qcd-drell-yan-tested-factorization-residual-budget}
+In the setting of
+Controlled Approximation~\ref{ca:qcd-drell-yan-integrated-theorem-boundary},
+suppose the subtraction analysis represents the exact tested functional as
+\begin{equation}
+  \mathfrak T_{\rm DY}[\varphi]
+  =
+  f_A^T C_\varphi f_B
+  +
+  \Delta_{\rm lead}[\varphi]
+  +
+  \Delta_{\rm soft}[\varphi]
+  +
+  \Delta_{\rm G}[\varphi]
+  +
+  \Delta_{\rm pwr}[\varphi]
+  +
+  \Delta_{\rm reg}[\varphi],
+  \label{eq:qcd-drell-yan-tested-residual-decomposition}
+\end{equation}
+where \(f_A^TC_\varphi f_B\) is the tested version of
+\eqref{eq:qcd-drell-yan-integrated-factorization}.  Assume that, on a window
+\(Q\ge Q_0\),
+\begin{equation}
+  |\Delta_a[\varphi]|
+  \leq
+  \epsilon_a(Q_0)\,\|\varphi\|_{\mathcal D_K},
+  \qquad
+  a\in\{\mathrm{lead},\mathrm{soft},\mathrm G,\mathrm{pwr},\mathrm{reg}\}.
+  \label{eq:qcd-drell-yan-residual-component-bounds}
+\end{equation}
+Then
+\begin{equation}
+  \left|
+  \mathfrak T_{\rm DY}[\varphi]-f_A^TC_\varphi f_B
+  \right|
+  \leq
+  \left(
+  \epsilon_{\rm lead}
+  +\epsilon_{\rm soft}
+  +\epsilon_{\rm G}
+  +\epsilon_{\rm pwr}
+  +\epsilon_{\rm reg}
+  \right)
+  \|\varphi\|_{\mathcal D_K}.
+  \label{eq:qcd-drell-yan-tested-residual-budget-bound}
+\end{equation}
+If the paired PDF/coefficient transport
+\eqref{eq:qcd-drell-yan-coefficient-dual-rg} is exact, then
+\(f_A^TC_\varphi f_B\) is independent of the auxiliary factorization scale, but
+the physical mismatch in
+\eqref{eq:qcd-drell-yan-tested-residual-budget-bound} is controlled only by the
+five residual norms above.  Scale covariance of the factorized coordinate does
+not make any nonzero residual disappear.
+\end{proposition}
+
+\begin{proof}
+Subtract the factorized coordinate from
+\eqref{eq:qcd-drell-yan-tested-residual-decomposition} and apply the triangle
+inequality together with
+\eqref{eq:qcd-drell-yan-residual-component-bounds}.  The final statement is the
+scale derivative calculation already displayed in
+\eqref{eq:qcd-drell-yan-coefficient-dual-rg}: the derivative of
+\(f_A^TC_\varphi f_B\) cancels between the two PDF legs and the dual hard
+coefficient.  This cancellation concerns only the retained coordinate.  The
+exact Wightman functional can agree with it in the declared topology only when
+the listed residual functionals are separately bounded, or vanish in the
+regulator and large-\(Q\) limits being claimed.
+\end{proof}
+
 \begin{hypothesis}[Drell--Yan small-\(q_\perp\) TMD factorization hypothesis]
 \label{hyp:qcd-drell-yan-tmd-factorization-hypothesis}
 A leading-power Drell--Yan TMD factorization hypothesis consists of:

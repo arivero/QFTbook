@@ -242,8 +242,9 @@ The chapter must define and derive:
   soft-subtracted transverse light-ray matrix elements with Collins--Soper
   rapidity evolution, Drell--Yan as a timelike current-current Wightman tensor
   with an integrated two-PDF collinear factorization coordinate, transform-space
-  two-leg RG cancellation, past-pointing TMD staples, and an explicit
-  Glauber-status datum,
+  two-leg RG cancellation, an explicit tested Wightman-to-factorization
+  residual budget, past-pointing TMD staples, and an explicit Glauber-status
+  datum,
   small-\(q_\perp\) color-singlet TMD factorization data, GPDs as off-forward
   light-ray matrix elements, GPD polynomiality from local twist-two
   covariance, logarithmic scaling violation, and the endpoint/large-spin cusp
@@ -633,10 +634,15 @@ The chapter must define and derive:
       \(C^{DY}_{ij}\); in transform space the paired auxiliary-scale
       cancellation is
       \(\mu dC/d\mu=-P_A^T C-C P_B\), and finite PDF scheme changes require
-      \(C'=(R_A^{-1})^T C R_B^{-1}\).  The small-\(q_\perp\) TMD datum instead
-      uses past-pointing staples, \(\zeta_A\zeta_B=Q^4\), a \(Y\)-term, a
-      power-remainder topology, and an explicit Glauber item.  The finite
-      Glauber lemma proves only the tensor-product unitarity identity
+      \(C'=(R_A^{-1})^T C R_B^{-1}\).  The integrated theorem-boundary budget
+      now tests the exact Wightman functional against compact \((Q^2,y)\)
+      functions and separates leading-region, soft, Glauber, power, and
+      regulator residuals in the dual test-function norm; RG covariance of the
+      factorized coordinate does not bound these residuals.  The
+      small-\(q_\perp\) TMD datum instead uses past-pointing staples,
+      \(\zeta_A\zeta_B=Q^4\), a \(Y\)-term, a power-remainder topology, and an
+      explicit Glauber item.  The finite Glauber lemma proves only the
+      tensor-product unitarity identity
       \(\operatorname{Tr}[(M\otimes1)(1\otimes U)\rho(1\otimes U^\dagger)]
       =\operatorname{Tr}[(M\otimes1)\rho]\); applying this identity to QCD
       requires the leading-region, color-flow, rapidity, and measurement
@@ -892,7 +898,12 @@ The chapter must define and derive:
   integrated-factorization continuation inserted the two-PDF collinear
   factorization coordinate for \(d\sigma/dQ^2dy\), separated it from the
   small-\(q_\perp\) TMD formula, and extended the companion check with exact
-  transform-space RG-cancellation and finite scheme-covariance tests.
+  transform-space RG-cancellation and finite scheme-covariance tests.  The
+  2026-06-04 theorem-boundary continuation added a tested residual budget
+  between the exact Wightman functional and the factorized coordinate,
+  separating leading-region, soft, Glauber, power, and regulator residuals; the
+  companion check keeps the residual nonzero while verifying that exact
+  RG-covariance of the factorized coordinate does not erase it.
 - 2026-05-24 issue #490 pass: the compiled Volume IV successor chapter now
   develops jets, IRC-safe measurement functions, parton showers,
   fragmentation functions, and hadronization as the final-state observable

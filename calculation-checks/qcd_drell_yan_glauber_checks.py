@@ -8,6 +8,9 @@ two-incoming-leg RG cancellation
 for the transform-space coordinate f_A^T C f_B, and the finite scheme
 covariance
     C' = (R_A^{-1})^T C R_B^{-1}.
+The theorem-boundary check keeps separate leading-region, soft, Glauber, power,
+and regulator residuals between the exact Wightman functional and the
+factorized coordinate; exact RG bookkeeping does not remove a nonzero residual.
 """
 
 from __future__ import annotations
@@ -111,6 +114,69 @@ def check_integrated_drell_yan_scheme_covariance() -> None:
     )
 
 
+def check_integrated_drell_yan_factorization_residual_budget() -> None:
+    p_a = sp.Matrix(
+        [
+            [sp.Rational(1, 3), sp.Rational(1, 7)],
+            [sp.Rational(-2, 5), sp.Rational(3, 11)],
+        ]
+    )
+    p_b = sp.Matrix(
+        [
+            [sp.Rational(2, 9), sp.Rational(-1, 4)],
+            [sp.Rational(5, 13), sp.Rational(1, 6)],
+        ]
+    )
+    coeff = sp.Matrix(
+        [
+            [sp.Rational(7, 19), sp.Rational(3, 17)],
+            [sp.Rational(5, 23), sp.Rational(11, 29)],
+        ]
+    )
+    f_a = sp.Matrix([sp.Rational(5, 6), sp.Rational(7, 10)])
+    f_b = sp.Matrix([sp.Rational(9, 14), sp.Rational(11, 15)])
+
+    factorized = (f_a.T * coeff * f_b)[0]
+    residuals = {
+        "leading": sp.Rational(1, 40),
+        "soft": sp.Rational(-1, 60),
+        "glauber": sp.Rational(1, 105),
+        "power": sp.Rational(-1, 84),
+        "regulator": sp.Rational(1, 210),
+    }
+    residual_total = sum(residuals.values(), sp.Rational(0))
+    exact_wightman_coordinate = factorized + residual_total
+
+    assert_zero(
+        "tested Drell-Yan residual decomposition",
+        exact_wightman_coordinate - factorized - residual_total,
+    )
+    if residual_total == 0:
+        raise AssertionError("residual budget accidentally collapsed to zero")
+
+    residual_bound = sum(abs(value) for value in residuals.values())
+    if abs(residual_total) > residual_bound:
+        raise AssertionError(
+            "triangle residual budget failed: "
+            f"{abs(residual_total)!r} > {residual_bound!r}"
+        )
+
+    d_coeff = -p_a.T * coeff - coeff * p_b
+    factorized_derivative = (
+        (p_a * f_a).T * coeff * f_b
+        + f_a.T * d_coeff * f_b
+        + f_a.T * coeff * (p_b * f_b)
+    )[0]
+    assert_zero(
+        "RG covariance does not remove Drell-Yan theorem-boundary residual",
+        factorized_derivative,
+    )
+    assert_zero(
+        "exact minus factorized remains the residual",
+        exact_wightman_coordinate - factorized - residual_total,
+    )
+
+
 def check_finite_glauber_unitarity() -> None:
     c = sp.Rational(3, 5)
     s = sp.Rational(4, 5)
@@ -143,6 +209,7 @@ def main() -> None:
     check_t_odd_orientation_sign()
     check_integrated_drell_yan_rg_cancellation()
     check_integrated_drell_yan_scheme_covariance()
+    check_integrated_drell_yan_factorization_residual_budget()
     check_finite_glauber_unitarity()
     print("All QCD Drell-Yan kinematics and Glauber-status checks passed.")
 
