@@ -13,23 +13,29 @@ Evidence contract.
 Target claims: the finite algebra subclaims in Volume XII Chapter 10,
 including Hadamard star-product associativity, smooth-Hadamard-change
 intertwining, scaling-degree ambiguity counts, and the lambda-phi-four
-Hadamard-coordinate/local-Wick-renormalization example.
+Hadamard-coordinate/local-Wick-renormalization example, plus the retained
+one-loop tadpole mass-response example in the retarded two-point sector.
 Independent construction: exact polynomial derivatives, contraction sums,
-Taylor-extension counts, and Wick-power transport coefficients are computed
-directly in a finite polynomial model rather than copied from the prose
-formulae.
+Taylor-extension counts, Wick-power transport coefficients, and a finite-cell
+Born-response quadrature are computed directly rather than copied from the
+prose formulae.
 Imported assumptions: the one-component polynomial model, formal hbar
 grading, smooth diagonal Hadamard coordinate difference, local finite Wick
 renormalization scalar, and the chapter's normalization of the quartic
-interaction lambda Phi^4/4! are finite inputs.
+interaction lambda Phi^4/4! are finite inputs.  The response check uses the
+chapter's retained local tadpole approximation and finite retarded/advanced
+test-function samples.
 Negative controls: wrong scaling-degree uniqueness thresholds, missing
 quartic tadpole factors, omitted vacuum bubble terms, untyped
-coordinate-transport expectation shifts, and incorrect mass/curvature
-coordinate factors are rejected by exact rational comparisons.
+coordinate-transport expectation shifts, incorrect mass/curvature coordinate
+factors, wrong tadpole self-energy combinatorics, omitted Born signs, and
+constant replacements for nonconstant local Wick-square densities are rejected
+by exact rational comparisons.
 Scope boundary: a pass checks finite pAQFT algebra and coefficient
 bookkeeping; it does not prove microlocal extension theorems, continuum
 Hadamard state existence, perturbative convergence, interacting stress-tensor
-existence, or nonperturbative curved-spacetime QFT.
+existence, the full nonlocal interacting self-energy, adiabatic-limit
+control, or nonperturbative curved-spacetime QFT.
 """
 
 from __future__ import annotations
@@ -165,6 +171,14 @@ def quasifree_expectation(poly: HPoly, wick_square: Fraction) -> Fraction:
     return total
 
 
+def weighted_pairing(
+    weights: list[Fraction],
+    left: list[Fraction],
+    right: list[Fraction],
+) -> Fraction:
+    return sum(weight * lhs * rhs for weight, lhs, rhs in zip(weights, left, right))
+
+
 def check_associativity() -> None:
     h = Fraction(3, 5)
     f = monomial(3)        # phi^3
@@ -272,12 +286,64 @@ def check_lambda_phi4_hadamard_scheme_transport() -> None:
         raise AssertionError("R^2 geometric-source coordinate is incorrect")
 
 
+def check_lambda_phi4_tadpole_mass_response() -> None:
+    coupling = Fraction(3, 11)
+    sigma = Fraction(5, 7)
+
+    tadpole_mass = coupling * sigma / 2
+    if tadpole_mass != Fraction(15, 154):
+        raise AssertionError("retained tadpole mass coordinate is incorrect")
+
+    wrong_cubic_factor = coupling * sigma / 6
+    if tadpole_mass == wrong_cubic_factor:
+        raise AssertionError("quartic tadpole response used 1/3! instead of 1/2")
+
+    weights = [Fraction(1), Fraction(2), Fraction(3)]
+    advanced_test = [Fraction(2, 5), Fraction(-1, 3), Fraction(3, 7)]
+    retarded_test = [Fraction(4, 9), Fraction(5, 8), Fraction(-2, 3)]
+    overlap = weighted_pairing(weights, advanced_test, retarded_test)
+    born_shift = -tadpole_mass * overlap
+    if overlap != Fraction(-1381, 1260):
+        raise AssertionError("retarded/advanced finite-cell overlap changed")
+    if born_shift != Fraction(1381, 12936):
+        raise AssertionError("Born response shift coefficient or sign changed")
+    if born_shift == tadpole_mass * overlap:
+        raise AssertionError("Born response must include the inverse-operator minus sign")
+
+    if coupling * (2 * sigma) / 2 != 2 * tadpole_mass:
+        raise AssertionError("tadpole response is not linear in the local Wick square")
+    if (2 * coupling) * sigma / 2 != 2 * tadpole_mass:
+        raise AssertionError("tadpole response is not linear in the coupling")
+
+    local_shift = Fraction(4, 13)
+    shifted_tadpole_mass = coupling * (sigma + local_shift) / 2
+    if shifted_tadpole_mass != tadpole_mass + coupling * local_shift / 2:
+        raise AssertionError("finite Wick-square shift did not propagate to tadpole mass")
+    if shifted_tadpole_mass != Fraction(279, 2002):
+        raise AssertionError("scheme-shifted tadpole coordinate changed")
+
+    local_sigmas = [Fraction(5, 7), Fraction(2, 3), Fraction(9, 10)]
+    local_born_shift = -sum(
+        weight * coupling * local_sigma / 2 * lhs * rhs
+        for weight, local_sigma, lhs, rhs in zip(
+            weights, local_sigmas, advanced_test, retarded_test
+        )
+    )
+    averaged_sigma = sum(local_sigmas, Fraction(0)) / len(local_sigmas)
+    averaged_born_shift = -coupling * averaged_sigma / 2 * overlap
+    if local_born_shift != Fraction(83, 660):
+        raise AssertionError("nonconstant tadpole-density response changed")
+    if averaged_born_shift == local_born_shift:
+        raise AssertionError("nonconstant Wick-square density was incorrectly averaged")
+
+
 def main() -> None:
     check_associativity()
     check_hadamard_change_intertwiner()
     check_scaling_degree_ambiguity_count()
     check_lambda_phi4_hadamard_scheme_transport()
-    print("All pAQFT algebra and scaling-degree checks passed.")
+    check_lambda_phi4_tadpole_mass_response()
+    print("All pAQFT algebra, scaling-degree, and tadpole-response checks passed.")
 
 
 if __name__ == "__main__":

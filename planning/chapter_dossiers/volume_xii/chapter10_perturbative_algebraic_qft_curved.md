@@ -24,6 +24,10 @@ Hadamard functions and causal factorization.
   `lambda phi^4` interaction in a Hadamard Wick coordinate, smooth diagonal
   Hadamard-coordinate difference, and the separate local covariant finite
   Wick-renormalization scalar with its mass/curvature components.
+- `Sigma_{omega,H}`, `M_tad`, `E_ret^0`, `E_adv^0`: state Wick square,
+  retained local tadpole mass coordinate, and free retarded/advanced Green
+  operators used in the first Born response of the interacting two-point
+  function.
 - `S_BV`, `Delta_BV`: BV action and renormalized BV second-order operator.
 
 ## Claim Ledger
@@ -58,6 +62,14 @@ Hadamard functions and causal factorization.
   stress-tensor tensors.  This gives the Volume XII interacting-example lane a
   concrete renormalization/state/output calculation without mistaking a
   Wick-square coordinate check for the full conserved interacting source.
+- Adds a second worked interacting scalar example: the retained local
+  one-loop tadpole from `lambda phi^4` is converted into a state-dependent
+  mass coordinate `lambda Sigma_{omega,H}/2` and then into the first Born
+  correction to a retarded two-point response.  The chapter keeps the local
+  Wick square inside the spacetime integral when it is nonconstant, records
+  the finite Wick-renormalization shift of the response coordinate, and
+  explicitly separates this retained tadpole term from the full nonlocal
+  interacting self-energy, cutoff-edge corrections, and higher-loop physics.
 
 ## Calculation Checks
 
@@ -67,7 +79,11 @@ Hadamard functions and causal factorization.
   the `lambda phi^4` Hadamard-coordinate/local-Wick-renormalization
   coefficients: quartic tadpole, vacuum term, transported-state expectation
   invariance, fixed-state Wick-square prescription shift, mass/curvature
-  coordinate shifts, and geometric-source coordinates.
+  coordinate shifts, geometric-source coordinates, and the retained one-loop
+  tadpole mass response, including the `lambda Sigma/2` combinatorial factor,
+  the inverse-operator Born sign, linearity in coupling/state Wick square,
+  finite Wick-square scheme shifts, and rejection of constant averaging for a
+  nonconstant local tadpole density.
 
 ## Figure Ledger
 
@@ -91,3 +107,9 @@ Hadamard star-product comparison maps.
   `lambda phi^4` passage distinguishes the restricted Wick-coordinate
   subfamily from the full finite-renormalization and conservation budget of an
   interacting stress tensor.
+- 2026-06-04: added the retained tadpole response example for issue #729.
+  The addition is a physical-output calculation, not another algebraic
+  coordinate cell: it turns the state Wick square into a local mass insertion
+  and then into a retarded two-point Born shift while marking the nonlocal
+  self-energy and adiabatic-limit pieces as outside the retained
+  approximation.

@@ -691,6 +691,101 @@ line of \eqref{eq:paqft-wick-power-scheme-transport} with
 \(w_\Delta\) replaced by \(c\) inside \(F_f\) gives
 \eqref{eq:paqft-wick-square-observable-shift}.
 
+\section{Worked Interacting Tadpole Response}
+\label{sec:paqft-worked-interacting-tadpole-response}
+
+The preceding example is still a coordinate calculation unless it is tied to
+an observable response.  A minimal physics-facing output is the one-loop local
+tadpole part of the interacting two-point response.  Let \(P\) be the free
+Klein--Gordon operator, let \(E_{\rm ret}^0\) and \(E_{\rm adv}^0\) be its
+retarded and advanced Green operators, and let \(g\) be the compact
+interaction cutoff in
+\eqref{eq:paqft-lambda-phi-four-interaction-coordinate}.  Fix a quasifree
+Hadamard state \(\omega\) and a Wick prescription \(H\).  The smooth
+state-dependent Wick square is
+\[
+  \Sigma_{\omega,H}(x)=\omega\!\left(\Phi_H^2(x)\right).
+\]
+In a stationary or ultrastatic region where \(g=1\) and
+\(\Sigma_{\omega,H}\) is slowly varying, this quantity is the local tadpole
+density seen by a propagating quantum.  The retained local one-loop
+self-energy coordinate is
+\begin{equation}
+  \mathsf M_{\rm tad}(x)
+  =
+  \frac{\lambda}{2}\,g(x)\Sigma_{\omega,H}(x).
+  \label{eq:paqft-tadpole-mass-coordinate}
+\end{equation}
+The factor \(1/2\) is the quartic vertex factor
+\(\lambda/4!\) times the \(12\) Wick contractions that choose two legs to
+form the local tadpole and two legs to attach to the external two-point
+line.  Equivalently, differentiating the interaction twice gives
+\(\lambda\Phi_H^2/2\), and the quasifree state replaces the Wick square by
+\(\Sigma_{\omega,H}\).
+
+The corresponding first Born correction to the retarded two-point response
+is not a new local functional; it is the inverse-operator identity
+\[
+  (P+\mathsf M_{\rm tad})^{-1}_{\rm ret}
+  =
+  E_{\rm ret}^0
+  -
+  E_{\rm ret}^0\mathsf M_{\rm tad}E_{\rm ret}^0
+  +O(\lambda^2)
+\]
+read in the retarded algebra.  For compact test functions \(f,h\), formal
+self-adjointness gives the smeared response shift
+\begin{equation}
+\begin{aligned}
+  \delta_\lambda G_{\rm ret}(f,h)
+  &=
+  -\int_M\dd\operatorname{vol}_g\,
+    (E_{\rm adv}^0f)(x)\,
+    \mathsf M_{\rm tad}(x)\,
+    (E_{\rm ret}^0h)(x)\\
+  &=
+  -\frac{\lambda}{2}
+  \int_M\dd\operatorname{vol}_g\,
+    g(x)\Sigma_{\omega,H}(x)
+    (E_{\rm adv}^0f)(x)(E_{\rm ret}^0h)(x).
+\end{aligned}
+  \label{eq:paqft-tadpole-born-response}
+\end{equation}
+This is a genuine response statement: the observable is the retarded
+two-point function, the state input is the renormalized local Wick square,
+and the output is the first-order shift of propagation through the region in
+which the interaction is turned on.  If \(\Sigma_{\omega,H}\) is not
+constant, it must remain inside the integral.  Pulling it out as an average
+loses the spatial overlap between the tadpole density and the two Green
+functions and is not an equivalent amplitude.
+
+The same comparison also shows where finite Wick renormalization enters a
+physical response.  Replacing the Wick-square prescription by
+\(\Phi_H^2+\hbar c\), with \(c=a_m m^2+a_R R\), changes the retained tadpole
+coordinate by
+\begin{equation}
+  \mathsf M_{\rm tad}^{(c)}(x)-\mathsf M_{\rm tad}(x)
+  =
+  \frac{\hbar\lambda}{2}\,g(x)c(x),
+  \label{eq:paqft-tadpole-scheme-response-shift}
+\end{equation}
+and hence shifts \eqref{eq:paqft-tadpole-born-response} by the same Born
+formula with \(\Sigma_{\omega,H}\) replaced by \(\hbar c\).  A
+renormalization condition on a two-point response, pole mass, or local
+curvature expansion fixes this finite coordinate.  Without that condition,
+\eqref{eq:paqft-tadpole-scheme-response-shift} is scheme bookkeeping, not a
+separate physical prediction.
+
+The restriction to \(\mathsf M_{\rm tad}\) is deliberate.  The full
+interacting two-point function also contains nonlocal self-energy terms,
+derivative and curvature contact terms, cutoff-edge corrections in the
+adiabatic limit, state corrections, and higher-loop contributions.  Those
+terms contain the subtler physical content.  Equation
+\eqref{eq:paqft-tadpole-born-response} is the retained local part for which
+the coefficient, sign, state dependence, and scheme dependence can be
+checked without pretending that the whole interacting propagator has been
+computed.
+
 \section{Gauge Theories And The BV Condition}
 
 The preceding scalar construction is not a foundation for gauge theory by

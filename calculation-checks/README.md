@@ -2008,7 +2008,10 @@ Current checks:
   the `lambda phi^4` Hadamard-coordinate and local Wick-renormalization
   example: the quartic tadpole coefficient, transported-state expectation
   invariance, the fixed-state Wick-square prescription shift,
-  mass/curvature-coordinate shifts, and geometric-source terms.
+  mass/curvature-coordinate shifts, geometric-source terms, and the retained
+  one-loop tadpole mass response in the retarded two-point sector, with
+  adversarial checks for the combinatorial factor, Born sign, finite
+  Wick-square scheme shift, and nonconstant local tadpole density.
 - `point_splitting_stress_checks.py`: finite checks for the point-split
   stress-tensor examples, including the flat Synge identities and leading
   Hadamard \(U\)-transport equation, the first logarithmic \(v_0\) transport
