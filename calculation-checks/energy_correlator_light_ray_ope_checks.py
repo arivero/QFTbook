@@ -4,8 +4,9 @@
 The script checks algebraic consequences of the endpoint conventions used in
 Volume II, Chapter 19.  It does not evaluate QCD loop integrals.  Its role is
 to guard the distributional plus-prescription convention, the contact-term
-normalization, and the sign/transpose convention in the coefficient/operator
-RG equations.
+normalization, the sign/transpose convention in the coefficient/operator RG
+equations, and the one-loop timelike quark/gluon momentum-sum mechanism behind
+the protected EEC energy-flow row.
 """
 
 from fractions import Fraction
@@ -141,6 +142,97 @@ def identity2():
 
 def zero_matrix(rows, cols):
     return [[Fraction(0) for _ in range(cols)] for _ in range(rows)]
+
+
+def harmonic(number: int) -> Fraction:
+    return sum((Fraction(1, k) for k in range(1, number + 1)), Fraction(0))
+
+
+def d0_moment(power: int) -> Fraction:
+    """Moment int_0^1 x^power [1/(1-x)]_+ dx."""
+
+    return -harmonic(power)
+
+
+def check_timelike_momentum_sum_rule() -> None:
+    # The EEC endpoint light-ray mixing chart has a protected total-energy
+    # row.  At one loop this is visible in the first moments of the timelike
+    # singlet quark/gluon kernels.  The computation below uses the trace-delta
+    # color factors and the same D0 plus prescription as the text.
+    for n_c, n_f in ((2, 1), (3, 4), (5, 6)):
+        c_f = Fraction(n_c * n_c - 1, n_c)
+        c_a = Fraction(2 * n_c)
+        t_f = Fraction(1)
+
+        k_q_from_q = c_f * (
+            2 * d0_moment(1)
+            - Fraction(1, 2)
+            - Fraction(1, 3)
+            + Fraction(3, 2)
+        )
+        k_g_from_q = c_f * (
+            Fraction(1)
+            + Fraction(1, 3)
+        )
+        k_q_from_g = 2 * n_f * t_f * Fraction(1, 3)
+        k_g_from_g = (
+            2 * c_a * (
+                d0_moment(2)
+                + Fraction(1, 2)
+                + Fraction(1, 12)
+            )
+            + Fraction(11 * c_a - 4 * t_f * n_f, 6)
+        )
+
+        assert_equal(
+            k_q_from_q,
+            -Fraction(4, 3) * c_f,
+            f"timelike q<-q first moment SU({n_c}) Nf={n_f}",
+        )
+        assert_equal(
+            k_g_from_q,
+            Fraction(4, 3) * c_f,
+            f"timelike g<-q first moment SU({n_c}) Nf={n_f}",
+        )
+        assert_equal(
+            k_q_from_g,
+            Fraction(2, 3) * n_f * t_f,
+            f"timelike q<-g singlet first moment SU({n_c}) Nf={n_f}",
+        )
+        assert_equal(
+            k_g_from_g,
+            -Fraction(2, 3) * n_f * t_f,
+            f"timelike g<-g first moment SU({n_c}) Nf={n_f}",
+        )
+        assert_equal(
+            k_q_from_q + k_g_from_q,
+            Fraction(0),
+            f"quark-parent energy column conserved SU({n_c}) Nf={n_f}",
+        )
+        assert_equal(
+            k_q_from_g + k_g_from_g,
+            Fraction(0),
+            f"gluon-parent energy column conserved SU({n_c}) Nf={n_f}",
+        )
+
+        # Negative controls: dropping the endpoint delta in P_gg, or treating
+        # the quark soft pole as an ordinary function, breaks the protected row.
+        k_g_from_g_without_delta = 2 * c_a * (
+            d0_moment(2)
+            + Fraction(1, 2)
+            + Fraction(1, 12)
+        )
+        if k_q_from_g + k_g_from_g_without_delta == 0:
+            raise AssertionError("gluon delta term should be needed for momentum conservation")
+
+        wrong_q_soft_moment = c_f * (
+            Fraction(0)  # replacing the plus-distribution moment by zero
+            - Fraction(1, 2)
+            - Fraction(1, 3)
+            + Fraction(3, 2)
+        )
+        if wrong_q_soft_moment + k_g_from_q == 0:
+            raise AssertionError("quark plus prescription should be needed for momentum conservation")
 
 
 def check_endpoint_resolution_shift():
@@ -696,6 +788,7 @@ def main():
     )
 
     check_endpoint_resolution_shift()
+    check_timelike_momentum_sum_rule()
     check_finite_light_ray_mixing_chart()
     check_finite_light_ray_transport_flatness()
     check_cusp_log_flatness_chart()

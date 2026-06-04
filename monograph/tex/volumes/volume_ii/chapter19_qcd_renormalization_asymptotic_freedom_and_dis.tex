@@ -8718,6 +8718,125 @@ term.  Without that convention, even a formally correct endpoint singularity
 does not define the same distribution as the nonperturbative observable
 \eqref{eq:qcd-eec-definition}.
 
+\begin{proposition}[Timelike one-loop momentum sum rule for the EEC endpoint]
+\label{prop:qcd-eec-timelike-momentum-sum-rule}
+The protected row in
+\eqref{eq:qcd-eec-moment-functional-rg-invariance} is visible already in the
+one-loop final-state quark--gluon splitting kernels.  Let
+\[
+  D_0(x)=\left(\frac1{1-x}\right)_+
+\]
+with
+\[
+  \int_0^1D_0(x)\varphi(x)\,\dd x
+  =
+  \int_0^1\frac{\varphi(x)-\varphi(1)}{1-x}\,\dd x .
+\]
+In the trace-delta convention of this chapter, the leading timelike singlet
+kernel for a daughter parton \(i\in\{q,g\}\) carrying energy fraction \(x\)
+inside a parent \(j\in\{q,g\}\) may be written
+\begin{align}
+  P^{T,(0)}_{q\leftarrow q}(x)
+  &=
+  C_F\bigl(2D_0(x)-1-x+\tfrac32\delta(1-x)\bigr),
+  \notag\\
+  P^{T,(0)}_{g\leftarrow q}(x)
+  &=
+  C_F\,\frac{1+(1-x)^2}{x},
+  \notag\\
+  P^{T,(0)}_{q\leftarrow g}(x)
+  &=
+  2N_fT_F\bigl(x^2+(1-x)^2\bigr),
+  \notag\\
+  P^{T,(0)}_{g\leftarrow g}(x)
+  &=
+  2C_A\left[
+    xD_0(x)+\frac{1-x}{x}+x(1-x)
+  \right]
+  +
+  \frac{11C_A-4T_FN_f}{6}\delta(1-x).
+  \label{eq:qcd-eec-timelike-one-loop-kernels}
+\end{align}
+Here \(q\) denotes the flavor-singlet quark-plus-antiquark energy-flow
+coordinate; the factor \(2N_f\) in \(P^{T,(0)}_{q\leftarrow g}\) sums over
+quarks and antiquarks.  Define the first energy-fraction moments
+\[
+  K_{i\leftarrow j}:=\int_0^1x\,P^{T,(0)}_{i\leftarrow j}(x)\,\dd x .
+\]
+Then
+\begin{equation}
+  K
+  =
+  \begin{pmatrix}
+  -\frac43C_F & \frac23N_fT_F\\[4pt]
+   \frac43C_F & -\frac23N_fT_F
+  \end{pmatrix},
+  \qquad
+  (1\ \ 1)K=(0\ \ 0).
+  \label{eq:qcd-eec-timelike-momentum-matrix}
+\end{equation}
+Thus the one-loop timelike mixing kernel redistributes energy between the
+quark-singlet and gluon light-ray coordinates without changing the total
+energy-flow row.  This is the perturbative kernel-level version of
+\eqref{eq:qcd-eec-moment-functional-rg-invariance}.
+\end{proposition}
+
+\begin{proof}
+The plus prescription gives
+\[
+  \int_0^1x^mD_0(x)\,\dd x
+  =
+  \int_0^1\frac{x^m-1}{1-x}\,\dd x
+  =
+  -H_m,
+  \qquad H_0=0,\quad H_m=\sum_{r=1}^m\frac1r .
+\]
+For a quark parent,
+\[
+  \int_0^1xP^{T,(0)}_{q\leftarrow q}(x)\,\dd x
+  =
+  C_F\left(-2-\frac12-\frac13+\frac32\right)
+  =
+  -\frac43C_F,
+\]
+while
+\[
+  \int_0^1xP^{T,(0)}_{g\leftarrow q}(x)\,\dd x
+  =
+  C_F\int_0^1\bigl(1+(1-x)^2\bigr)\,\dd x
+  =
+  \frac43C_F .
+\]
+For a gluon parent,
+\[
+  \int_0^1xP^{T,(0)}_{q\leftarrow g}(x)\,\dd x
+  =
+  2N_fT_F
+  \int_0^1x\bigl(x^2+(1-x)^2\bigr)\,\dd x
+  =
+  \frac23N_fT_F,
+\]
+and
+\[
+\begin{aligned}
+  \int_0^1xP^{T,(0)}_{g\leftarrow g}(x)\,\dd x
+  &=
+  2C_A\left(-H_2+\frac12+\frac1{12}\right)
+  +
+  \frac{11C_A-4T_FN_f}{6} \\
+  &=
+  -\frac23N_fT_F .
+\end{aligned}
+\]
+The two column sums are therefore zero.  The \(\delta(1-x)\) coefficient in
+the gluon kernel is essential: omitting it would leave an uncancelled
+\(-11C_A/6\) in the gluon-parent energy column.  Likewise, plus-prescribing
+the quark pole is what turns the soft real-emission endpoint into the
+negative quark-parent moment \(-4C_F/3\) needed to cancel the resolved gluon
+daughter.  Both endpoint subtractions are therefore part of the detector
+normalization mechanism, not optional notation.
+\end{proof}
+
 \paragraph{Finite renormalized light-ray mixing chart.}
 The preceding equations describe the continuum endpoint expansion, whose full
 operator basis is infinite and distributional.  In an actual calculation one

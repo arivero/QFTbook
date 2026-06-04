@@ -472,6 +472,14 @@ The chapter must define and derive:
       distribution plus a scheme-dependent \(\delta(\rho)\) contact term only
       after virtual terms and operator renormalization are declared in the
       same scheme.
+19bba. The protected total-energy row in the small-angle EEC light-ray chart
+       is now tied to the explicit one-loop timelike quark/gluon kernel.  With
+       the trace-delta color factors and \(D_0=(1-x)^{-1}_+\), the first
+       energy-fraction moment matrix is
+       \(\begin{psmallmatrix}-4C_F/3&2N_fT_F/3\\4C_F/3&-2N_fT_F/3\end{psmallmatrix}\),
+       so \((1\ 1)K=0\).  The plus prescription and the gluon
+       \(\delta(1-x)\) coefficient are both load-bearing endpoint/contact
+       ingredients in preserving detector normalization.
 19bc. Endpoint resolution changes are distributional identities: for
       \(0<\rho_a<\rho_b\),
       \(D_{\rho_b}=D_{\rho_a}+\mathbf 1_{\rho_a<\rho<\rho_b}/\rho
@@ -930,6 +938,17 @@ The chapter must define and derive:
   `calculation-checks/energy_correlator_sudakov_checks.py` with exact checks
   of the pullback and a residual budget that fails if the large-\(b\)
   component is omitted.
+- 2026-06-04 issue #519 timelike-momentum pass: added
+  `prop:qcd-eec-timelike-momentum-sum-rule`, making the protected
+  total-energy row in the small-angle EEC light-ray chart concrete at one
+  loop.  The text computes the first energy moments of the timelike
+  quark-singlet/gluon kernel, including the plus-prescribed quark pole and
+  the gluon \(\delta(1-x)\) coefficient, and obtains the matrix
+  \(\begin{psmallmatrix}-4C_F/3&2N_fT_F/3\\4C_F/3&-2N_fT_F/3\end{psmallmatrix}\)
+  with vanishing column sums.  The EEC light-ray companion now checks the
+  rational first moments for several \(SU(N_c)\) and \(N_f\) choices and
+  includes negative controls for omitting the gluon endpoint delta or the
+  quark plus prescription.
 - 2026-06-02 issue #519 track-energy pass: added selected calorimetric
   measures for track and charged-energy correlators, derived the selected EEC
   moment identities, introduced track functions as nonperturbative
