@@ -2011,7 +2011,10 @@ Current checks:
   mass/curvature-coordinate shifts, geometric-source terms, and the retained
   one-loop tadpole mass response in the retarded two-point sector, with
   adversarial checks for the combinatorial factor, Born sign, finite
-  Wick-square scheme shift, and nonconstant local tadpole density.
+  Wick-square scheme shift, nonconstant local tadpole density, and the
+  off-diagonal sunset self-energy response: the \(-\lambda^2/6\) kernel
+  coefficient, causal support, bilocal Born sign, and separation of local
+  diagonal counterterm freedom from the nonlocal kernel.
 - `point_splitting_stress_checks.py`: finite checks for the point-split
   stress-tensor examples, including the flat Synge identities and leading
   Hadamard \(U\)-transport equation, the first logarithmic \(v_0\) transport

@@ -14,28 +14,33 @@ Target claims: the finite algebra subclaims in Volume XII Chapter 10,
 including Hadamard star-product associativity, smooth-Hadamard-change
 intertwining, scaling-degree ambiguity counts, and the lambda-phi-four
 Hadamard-coordinate/local-Wick-renormalization example, plus the retained
-one-loop tadpole mass-response example in the retarded two-point sector.
+one-loop tadpole mass-response and nonlocal sunset-response examples in the
+retarded two-point sector.
 Independent construction: exact polynomial derivatives, contraction sums,
 Taylor-extension counts, Wick-power transport coefficients, and a finite-cell
-Born-response quadrature are computed directly rather than copied from the
-prose formulae.
+Born-response quadrature for local and bilocal kernels are computed directly
+rather than copied from the prose formulae.
 Imported assumptions: the one-component polynomial model, formal hbar
 grading, smooth diagonal Hadamard coordinate difference, local finite Wick
 renormalization scalar, and the chapter's normalization of the quartic
 interaction lambda Phi^4/4! are finite inputs.  The response check uses the
 chapter's retained local tadpole approximation and finite retarded/advanced
-test-function samples.
+test-function samples; the sunset check uses finite greater/lesser two-point
+data away from the diagonal.
 Negative controls: wrong scaling-degree uniqueness thresholds, missing
 quartic tadpole factors, omitted vacuum bubble terms, untyped
 coordinate-transport expectation shifts, incorrect mass/curvature coordinate
 factors, wrong tadpole self-energy combinatorics, omitted Born signs, and
-constant replacements for nonconstant local Wick-square densities are rejected
-by exact rational comparisons.
+constant replacements for nonconstant local Wick-square densities, wrong
+sunset symmetry factors, acausal symmetric kernels, and conflation of local
+diagonal counterterms with off-diagonal kernels are rejected by exact rational
+comparisons.
 Scope boundary: a pass checks finite pAQFT algebra and coefficient
 bookkeeping; it does not prove microlocal extension theorems, continuum
 Hadamard state existence, perturbative convergence, interacting stress-tensor
 existence, the full nonlocal interacting self-energy, adiabatic-limit
-control, or nonperturbative curved-spacetime QFT.
+control, the Epstein-Glaser extension of the sunset distribution, or
+nonperturbative curved-spacetime QFT.
 """
 
 from __future__ import annotations
@@ -177,6 +182,19 @@ def weighted_pairing(
     right: list[Fraction],
 ) -> Fraction:
     return sum(weight * lhs * rhs for weight, lhs, rhs in zip(weights, left, right))
+
+
+def bilocal_response(
+    weights: list[Fraction],
+    left: list[Fraction],
+    kernel: list[list[Fraction]],
+    right: list[Fraction],
+) -> Fraction:
+    return -sum(
+        weights[i] * weights[j] * left[i] * kernel[i][j] * right[j]
+        for i in range(len(weights))
+        for j in range(len(weights))
+    )
 
 
 def check_associativity() -> None:
@@ -337,13 +355,99 @@ def check_lambda_phi4_tadpole_mass_response() -> None:
         raise AssertionError("nonconstant Wick-square density was incorrectly averaged")
 
 
+def check_lambda_phi4_nonlocal_sunset_response() -> None:
+    coupling = Fraction(3, 11)
+    weights = [Fraction(1), Fraction(2), Fraction(3)]
+    cutoff = [Fraction(1), Fraction(4, 5), Fraction(3, 5)]
+    advanced_test = [Fraction(2, 5), Fraction(-1, 3), Fraction(3, 7)]
+    retarded_test = [Fraction(4, 9), Fraction(5, 8), Fraction(-2, 3)]
+    greater = [
+        [Fraction(0), Fraction(1, 3), Fraction(-2, 5)],
+        [Fraction(5, 7), Fraction(0), Fraction(3, 4)],
+        [Fraction(1, 6), Fraction(-4, 9), Fraction(0)],
+    ]
+
+    def causal_sunset_kernel(i: int, j: int, symmetry_factor: Fraction) -> Fraction:
+        if i <= j:
+            return Fraction(0)
+        causal_difference = greater[i][j] ** 3 - greater[j][i] ** 3
+        return (
+            -coupling * coupling * symmetry_factor
+            * cutoff[i] * cutoff[j]
+            * causal_difference
+        )
+
+    kernel = [
+        [causal_sunset_kernel(i, j, Fraction(1, 6)) for j in range(3)]
+        for i in range(3)
+    ]
+    expected = [
+        [Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(-6064, 1867635), Fraction(0), Fraction(0)],
+        [Fraction(-1853, 3630000), Fraction(23779, 7840800), Fraction(0)],
+    ]
+    if kernel != expected:
+        raise AssertionError("retarded sunset kernel coefficients changed")
+    if any(kernel[i][j] for i in range(3) for j in range(i, 3)):
+        raise AssertionError("retarded sunset kernel has acausal or diagonal support")
+
+    bilocal_action_coeff = (
+        -coupling * coupling / 12
+        * cutoff[1]
+        * cutoff[0]
+        * (greater[1][0] ** 3 - greater[0][1] ** 3)
+    )
+    if 2 * bilocal_action_coeff != kernel[1][0]:
+        raise AssertionError("quadratic-action coefficient no longer doubles to the kernel")
+
+    response = bilocal_response(weights, advanced_test, kernel, retarded_test)
+    if response != Fraction(-4473298301, 806818320000):
+        raise AssertionError("sunset Born response coefficient or sign changed")
+
+    wrong_factor_kernel = [
+        [causal_sunset_kernel(i, j, Fraction(1, 2)) for j in range(3)]
+        for i in range(3)
+    ]
+    wrong_factor_response = bilocal_response(
+        weights, advanced_test, wrong_factor_kernel, retarded_test
+    )
+    if wrong_factor_response == response:
+        raise AssertionError("wrong sunset symmetry factor was not rejected")
+
+    symmetric_kernel = [[Fraction(0) for _ in range(3)] for _ in range(3)]
+    for i in range(3):
+        for j in range(3):
+            if i == j:
+                continue
+            causal_difference = greater[i][j] ** 3 - greater[j][i] ** 3
+            symmetric_kernel[i][j] = (
+                -coupling * coupling / 6 * cutoff[i] * cutoff[j] * causal_difference
+            )
+    if not any(symmetric_kernel[i][j] for i in range(3) for j in range(i + 1, 3)):
+        raise AssertionError("symmetric negative control did not create future support")
+    if bilocal_response(weights, advanced_test, symmetric_kernel, retarded_test) == response:
+        raise AssertionError("acausal symmetric sunset kernel was not rejected")
+
+    local_counterterms = [Fraction(7, 13), Fraction(-2, 9), Fraction(5, 12)]
+    local_response = -weighted_pairing(
+        weights,
+        advanced_test,
+        [local_counterterms[i] * retarded_test[i] for i in range(3)],
+    )
+    if local_response != Fraction(2074, 12285):
+        raise AssertionError("diagonal local counterterm response changed")
+    if local_response == response:
+        raise AssertionError("local extension freedom was conflated with the sunset kernel")
+
+
 def main() -> None:
     check_associativity()
     check_hadamard_change_intertwiner()
     check_scaling_degree_ambiguity_count()
     check_lambda_phi4_hadamard_scheme_transport()
     check_lambda_phi4_tadpole_mass_response()
-    print("All pAQFT algebra, scaling-degree, and tadpole-response checks passed.")
+    check_lambda_phi4_nonlocal_sunset_response()
+    print("All pAQFT algebra, scaling-degree, and two-point response checks passed.")
 
 
 if __name__ == "__main__":
