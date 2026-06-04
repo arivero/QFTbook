@@ -6347,6 +6347,65 @@ been supplied.
 \label{ca:instanton-unitarity-cut-pairing}
 Stay in the source channel of
 ControlledApproximation~\ref{ca:instanton-euclidean-to-physical-amplitude-budget}.
+Before making a rate statement, separate the amplitude into the sectors which
+can interfere on the chosen cut:
+\begin{equation}
+  \mathcal A_{\rm phys}[\mathcal J]
+  =
+  A_0[\mathcal J]
+  +
+  \ee^{-S_I+\ii\theta}a_I[\mathcal J]
+  +
+  \ee^{-S_I-\ii\theta}a_{\bar I}[\mathcal J]
+  +
+  \cdots .
+  \label{eq:instanton-amplitude-sector-expansion}
+\end{equation}
+For a finite-regulator inclusive cut pairing \(\langle\,,\,\rangle_{\rm cut}\),
+the first terms in the corresponding rate are therefore
+\begin{equation}
+\begin{aligned}
+  \Gamma[\mathcal J]
+  &=
+  \langle A_0,A_0\rangle_{\rm cut}
+  +
+  2\operatorname{Re}\!
+  \left[
+    \ee^{-S_I+\ii\theta}
+    \langle A_0,a_I\rangle_{\rm cut}
+  \right] \\
+  &\quad
+  +
+  2\operatorname{Re}\!
+  \left[
+    \ee^{-S_I-\ii\theta}
+    \langle A_0,a_{\bar I}\rangle_{\rm cut}
+  \right]
+  +
+  \ee^{-2S_I}
+  \langle a_I,a_I\rangle_{\rm cut}
+  +
+  \cdots .
+\end{aligned}
+  \label{eq:instanton-inclusive-rate-sector-expansion}
+\end{equation}
+Thus an order-\(\ee^{-S_I}\) interference term is present unless the selected
+source and final-state projection kill it.  In the chirality-violating
+'t Hooft channel this can happen because the perturbative \(Q=0\) sector has no
+zero modes to supply the selected axial-charge violation, but this is a
+selection statement supplied by the source projection and final-state cut.
+The hypothesis needed below is
+\begin{equation}
+  \langle B,a_I\rangle_{\rm cut}
+  =
+  \langle B,a_{\bar I}\rangle_{\rm cut}
+  =
+  0
+  \quad
+  \text{for every lower-action sector }B\text{ retained by the projection}.
+  \label{eq:instanton-cut-selection-hypothesis}
+\end{equation}
+
 After the determinant, zero-mode, orientation, and source-matching factors
 have been assembled, write a finite one-instanton amplitude coordinate as
 \begin{equation}
@@ -6367,10 +6426,10 @@ anti-instanton density
   \int_{\mathcal U_{\bar I}}
   K_{\bar I}(\bar z;\mathcal J^\dagger)\,\dd\nu_{\bar I}(\bar z).
 \]
-A leading inclusive spectral weight or cut rate associated to this amplitude
-has the paired form
+The factorized diagonal instanton contribution to the selected inclusive
+spectral weight or cut rate has the paired form
 \begin{equation}
-  \Gamma^{(0)}_{I\bar I}[\mathcal J]
+  \Gamma^{(0),{\rm diag}}_{I\bar I}[\mathcal J]
   =
   \int_{\mathcal U_I\times\mathcal U_{\bar I}}
   K_I(z;\mathcal J)\,
@@ -6382,7 +6441,7 @@ has the paired form
 Here \(\mathcal C_{\rm cut}^{(0)}\) contains the chosen leading final-state
 sum, on-shell or spectral projector, relative \(I\bar I\) separation and
 orientation weight, and leading relative fluctuation determinant.  At the
-factorized level the topological phases cancel in the cut channel,
+factorized diagonal level the topological phases cancel in the cut channel,
 \[
   \ee^{\ii\theta}\ee^{-\ii\theta}=1,
   \qquad
@@ -6390,8 +6449,14 @@ factorized level the topological phases cancel in the cut channel,
 \]
 Thus a same-charge pair belongs to a charge-two amplitude sector rather than
 to the amplitude-times-conjugate contribution to a neutral inclusive rate.  The
-semiclassical exponential is correspondingly \(e^{-2S_I}\) at this
-factorized cut level.
+displayed kernel is the diagonal \(I\bar I\) contribution to the selected
+inclusive rate.  It is the leading nonperturbative contribution to the full
+selected rate, with semiclassical exponential \(e^{-2S_I}\) and no explicit
+\(\theta\) phase, only when
+\eqref{eq:instanton-cut-selection-hypothesis} has removed the lower-order
+interference terms in \eqref{eq:instanton-inclusive-rate-sector-expansion}.
+Without that hypothesis, the order-\(\ee^{-S_I}\) interference is part of the
+physical rate and can carry explicit \(\theta\)-dependence.
 
 The full cut kernel can be organized as
 \[
@@ -6418,7 +6483,7 @@ then the exact cut contribution satisfies
   \left|
   \Gamma_{I\bar I}[\mathcal J]
   -
-  \Gamma^{(0)}_{I\bar I}[\mathcal J]
+  \Gamma^{(0),{\rm diag}}_{I\bar I}[\mathcal J]
   \right|
   \le
   \varepsilon_{\rm cut} M^{(0)}_{I\bar I}.

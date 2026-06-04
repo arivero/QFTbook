@@ -69,10 +69,11 @@ relations
     after analytic continuation and pole/spectral/OPE projection; the bridge
     has independent regulator, continuation, spectral, infrared, unitarity-cut,
     matching, and size-endpoint residuals
-    inclusive spectral weights and rates pair an instanton amplitude kernel
-    with a conjugate anti-instanton kernel, so theta charge cancels,
-    semiclassical action doubles, and final-state/relative cut weights enter
-    as separate load-bearing data with their own residual bound
+    inclusive spectral weights and rates first expand by amplitude sectors:
+    a nonzero perturbative sector produces an order e^(-S_I) interference
+    term, while the diagonal IbarI contribution has doubled action and is
+    leading only after a selection rule or projection removes lower-action
+    interference
     a finite one-instanton amplitude error budget separates the leading
     determinant/zero-mode/source density from determinant remainders,
     zero-mode truncation, source matching, Schur corrections, and endpoint
@@ -2494,6 +2495,55 @@ def check_instanton_unitarity_cut_pairing() -> None:
     one_instanton_action_power = 1
     cut_pair_action_power = one_instanton_action_power + one_instanton_action_power
     assert_equal("inclusive cut doubles instanton action power", cut_pair_action_power, 2)
+
+    perturbative_amplitude = Fraction(7, 5)
+    instanton_amplitude = Fraction(11, 13)
+    cut_overlap = Fraction(17, 19)
+    theta_zero_cos = Fraction(1)
+    theta_quarter_turn_cos = Fraction(0)
+    interference_at_theta_zero = (
+        2
+        * perturbative_amplitude
+        * instanton_amplitude
+        * cut_overlap
+        * theta_zero_cos
+    )
+    interference_at_quarter_turn = (
+        2
+        * perturbative_amplitude
+        * instanton_amplitude
+        * cut_overlap
+        * theta_quarter_turn_cos
+    )
+    assert_equal(
+        "nonzero perturbative sector gives order e^-SI interference",
+        interference_at_theta_zero,
+        Fraction(2618, 1235),
+    )
+    assert_equal(
+        "instanton interference can carry theta dependence",
+        interference_at_theta_zero == interference_at_quarter_turn,
+        False,
+    )
+    assert_equal(
+        "interference precedes diagonal IbarI order",
+        one_instanton_action_power < cut_pair_action_power,
+        True,
+    )
+
+    selected_perturbative_amplitude = Fraction(0)
+    selected_interference = (
+        2
+        * selected_perturbative_amplitude
+        * instanton_amplitude
+        * cut_overlap
+        * theta_zero_cos
+    )
+    assert_equal(
+        "selection rule removes lower-action instanton interference",
+        selected_interference,
+        Fraction(0),
+    )
 
     n_flavors = 2
     amplitude_zero_mode_slots = 2 * n_flavors

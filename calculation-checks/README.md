@@ -518,7 +518,9 @@ Current checks:
   infrared, unitarity-cut, matching, and size-endpoint controls from the
   leading source kernel, the instanton--anti-instanton cut-pairing check
   which distinguishes the theta-charged one-instanton amplitude coordinate
-  from a neutral inclusive rate kernel and bounds the relative cut residual,
+  from a neutral inclusive rate kernel, verifies the order-\(e^{-S_I}\)
+  interference negative control before a selection rule is imposed, and bounds
+  the relative cut residual,
   the finite one-instanton amplitude
   error budget separating determinant, zero-mode/source, matching, Schur, and
   endpoint residuals from the leading density, the hard-momentum

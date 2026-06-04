@@ -115,10 +115,12 @@
   spectral/LSZ, infrared, unitarity-cut, matching, and size-endpoint
   residuals before any physical amplitude is claimed.  The unitarity-cut
   continuation sharpens the \(R_{\rm cut}\) coordinate by pairing the
-  instanton source kernel with the conjugate anti-instanton kernel, cancelling
-  theta charge, doubling the semiclassical action in the rate channel, and
-  putting final-state/relative \(I\bar I\) cut weights under an explicit
-  majorant bound.  The hard-amplitude
+  instanton source kernel with the conjugate anti-instanton kernel only after
+  the inclusive rate has been expanded by amplitude sectors; lower-action
+  interference is removed by an explicit selection/projection hypothesis before
+  theta-charge cancellation and doubled semiclassical action are asserted for
+  the diagonal rate channel.  Final-state/relative \(I\bar I\) cut weights then
+  sit under an explicit majorant bound.  The hard-amplitude
   continuation adds the
   \(N_f=2\) hard-momentum size window, where the same form factors give a
   \(Q^{-2}\) four-fermion coefficient at \(\mu=Q\), the RG-invariant
@@ -1320,6 +1322,15 @@
   cancellation, the same-charge negative control, the doubled action power,
   the conjugate zero-mode slot count, the necessity of final-state cut
   weights, and the residual bound.
+- 2026-06-04 issue #743 instanton cut-scoping correction: revised
+  `ca:instanton-unitarity-cut-pairing` to expand the inclusive rate by
+  amplitude sectors before introducing the paired \(I\bar I\) kernel.  The
+  displayed paired kernel is now explicitly the diagonal instanton contribution;
+  the \(e^{-2S_I}\), theta-neutral leading-rate statement requires a
+  selection/projection hypothesis killing lower-action interference.  The BPST
+  companion adds the negative control with nonzero \(A_0\), where the
+  order-\(e^{-S_I}\) interference term appears before the selection rule is
+  imposed.
 - 2026-06-03 issue #597 hard-coefficient specialization pass: added
   `ca:su3-two-flavor-hard-instanton-coefficient`, which packages the
   \(SU(3)\), \(N_f=2\) source-amputated hard coefficient with the PV
