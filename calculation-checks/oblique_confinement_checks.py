@@ -7,12 +7,16 @@ The manuscript uses the finite center-sensitive charge group
 
 with pairing ((e,m),(e',m')) -> (e m' - e' m) / N mod 1.  These checks verify
 the arithmetic behind screening quotients, orthogonal complements of
-condensates, and the dyonic unconfined direction in oblique confinement.  The
+condensates, and the dyonic unconfined direction in oblique confinement.  They
+also verify the finite bookkeeping behind the continuum line-confinement
+criterion: condensate pairing distance, local perimeter/cusp subtraction,
+positive area-rate extraction, static-potential limit order, and
+endpoint-screening negative controls.  The
 script also checks the finite algebra in the controlled three-dimensional
 Polyakov monopole-gas mechanism: dual-photon mass normalization, sine-Gordon
 wall first-order identities, and the area-law/static-potential extraction.  A
 separate finite transfer-matrix model checks the string-breaking spectral
-certificate for Wilson-loop diagnostics.  It does not simulate a gauge theory
+extraction test for Wilson-loop diagnostics.  It does not simulate a gauge theory
 or prove that a condensate forms.
 """
 
@@ -84,6 +88,13 @@ def orthogonal_complement(n: int, subgroup: set[Charge]) -> set[Charge]:
         for charge in all_charges(n)
         if all(dirac_numerator(n, charge, generator) == 0 for generator in subgroup)
     }
+
+
+def pairing_distance_numerator(n: int, charge: Charge, subgroup: set[Charge]) -> int:
+    return max(
+        min(pairing, n - pairing)
+        for pairing in (dirac_numerator(n, charge, generator) for generator in subgroup)
+    )
 
 
 def is_isotropic(n: int, subgroup: set[Charge]) -> bool:
@@ -164,6 +175,121 @@ def check_nonisotropic_pair_cannot_condense_together() -> None:
             is_isotropic(n, electric_magnetic_pair),
             False,
         )
+
+
+def check_continuum_line_confinement_criterion() -> None:
+    for n in range(2, 13):
+        for p in range(n):
+            condensate = subgroup_generated(n, [(p, 1)])
+            unconfined = orthogonal_complement(n, condensate)
+            for charge in all_charges(n):
+                distance = pairing_distance_numerator(n, charge, condensate)
+                assert_equal(
+                    f"pairing distance detects K-perp N={n} p={p} charge={charge}",
+                    distance == 0,
+                    charge in unconfined,
+                )
+                lower_string_tension = Fraction(distance * distance, n * n)
+                if charge in unconfined:
+                    assert_equal(
+                        f"K-perp charge has zero finite surface-cost signal N={n} p={p} charge={charge}",
+                        lower_string_tension,
+                        Fraction(0),
+                    )
+                else:
+                    assert_true(
+                        f"non-K-perp charge has positive finite surface-cost signal N={n} p={p} charge={charge}",
+                        lower_string_tension > 0,
+                    )
+
+    sigma = Fraction(7, 19)
+    finite_perimeter = Fraction(5, 23)
+    divergent_perimeter = Fraction(101, 3)
+    divergent_cusp = Fraction(97, 5)
+    cusps = 4
+    previous_rate_error: Fraction | None = None
+    for size in [8, 16, 32]:
+        area = Fraction(size * size)
+        perimeter = Fraction(4 * size)
+        bare_exponent = (
+            sigma * area
+            + (finite_perimeter + divergent_perimeter) * perimeter
+            + divergent_cusp * cusps
+            + Fraction(1, size)
+        )
+        renormalized_exponent = (
+            bare_exponent
+            - divergent_perimeter * perimeter
+            - divergent_cusp * cusps
+        )
+        expected_renormalized = sigma * area + finite_perimeter * perimeter + Fraction(1, size)
+        assert_equal(
+            f"local line counterterms remove cutoff pieces size={size}",
+            renormalized_exponent,
+            expected_renormalized,
+        )
+        rate_error = renormalized_exponent / area - sigma
+        assert_equal(
+            f"large-loop rate error is perimeter plus residual size={size}",
+            rate_error,
+            finite_perimeter * perimeter / area + Fraction(1, size) / area,
+        )
+        if previous_rate_error is not None:
+            assert_true(
+                f"regular large-loop topology suppresses perimeter rate size={size}",
+                rate_error < previous_rate_error,
+            )
+        previous_rate_error = rate_error
+
+        unrenormalized_rate = bare_exponent / area - sigma
+        assert_true(
+            f"large-loop rate before line renormalization keeps cutoff pollution size={size}",
+            unrenormalized_rate > rate_error,
+        )
+
+    spatial_separation = Fraction(11, 3)
+    source_self_energy = Fraction(2, 7)
+    corner_counterterm = Fraction(3, 5)
+    for euclidean_time in [20, 40, 80]:
+        area = spatial_separation * euclidean_time
+        perimeter = 2 * euclidean_time + 2 * spatial_separation
+        exponent = sigma * area + source_self_energy * perimeter + corner_counterterm * 4
+        source_subtracted_rate = exponent / euclidean_time - 2 * source_self_energy
+        finite_time_error = (
+            2 * source_self_energy * spatial_separation
+            + 4 * corner_counterterm
+        ) / euclidean_time
+        assert_equal(
+            f"rectangular static limit isolates linear coefficient T={euclidean_time}",
+            source_subtracted_rate,
+            sigma * spatial_separation + finite_time_error,
+        )
+
+    screening_mass = Fraction(13, 5)
+    large_separation = Fraction(100)
+    positive_linear_candidate = sigma * large_separation
+    assert_true(
+        "endpoint screening bound rejects positive asymptotic linear potential",
+        positive_linear_candidate > 2 * screening_mass,
+    )
+
+    q = Fraction(1, 6)
+    minimal_area = 12
+    minimal_surface = q**minimal_area
+    decorated_tail = minimal_surface * Fraction(1, 10)
+    retained_plus_tail = minimal_surface + decorated_tail
+    assert_true(
+        "strong-coupling calibration has nonzero minimal surface contribution",
+        minimal_surface > 0,
+    )
+    assert_true(
+        "decorated strong-coupling surfaces are a controlled tail",
+        decorated_tail < minimal_surface,
+    )
+    assert_true(
+        "strong-coupling surface window gives finite positive area rate",
+        retained_plus_tail < q ** (minimal_area - 1),
+    )
 
 
 def check_polyakov_monopole_gas_wall_tension() -> None:
@@ -269,7 +395,7 @@ def generalized_characteristic_value(
     return det2(matrix_sub(c_next, matrix_scale(test_eigenvalue, c_now)))
 
 
-def check_string_breaking_spectral_certificate() -> None:
+def check_string_breaking_spectral_extraction_test() -> None:
     string_eigenvalue = Fraction(1, 5)
     broken_eigenvalue = Fraction(1, 3)
     transfer_eigenvalues = (string_eigenvalue, broken_eigenvalue)
@@ -380,8 +506,9 @@ def main() -> None:
     check_oblique_unconfined_direction()
     check_magnetic_condensation_confines_electric_nality()
     check_nonisotropic_pair_cannot_condense_together()
+    check_continuum_line_confinement_criterion()
     check_polyakov_monopole_gas_wall_tension()
-    check_string_breaking_spectral_certificate()
+    check_string_breaking_spectral_extraction_test()
     print("All oblique-confinement finite charge checks passed.")
 
 

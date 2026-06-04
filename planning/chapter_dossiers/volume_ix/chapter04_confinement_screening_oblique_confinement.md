@@ -26,7 +26,7 @@
 - Records the variational endpoint-screening bound: finite-mass screened
   endpoint trial states bound the large-separation static energy and rule out
   a positive asymptotic linear potential for the screened charge.
-- Adds a Wilson-loop string-breaking spectral certificate: the single
+- Adds a Wilson-loop string-breaking spectral extraction test: the single
   Wilson-loop channel may stay flux-tube dominated over a finite Euclidean-time
   window even when the screened broken-string state is the static ground state,
   so resolving string breaking requires a full-rank correlator basis, spectral
@@ -44,6 +44,12 @@
   condensate criterion, and works out magnetic, electric, and oblique
   confinement in \(\mathbb Z_N^{\rm e}\oplus\mathbb Z_N^{\rm m}\).
 - Adds a finite charge-lattice figure for the oblique unconfined direction.
+- Adds the continuum line-confinement criterion from renormalized Wilson,
+  't Hooft, and dyonic lines: UV line renormalization, thermodynamic limit, and
+  large-loop/static limits are ordered explicitly; the surface-cost hypothesis
+  converts screening, clustering, endpoint, and condensate data into positive
+  area rates for charges outside \(K^\perp\), while isolating the remaining
+  four-dimensional Yang--Mills theorem boundary.
 
 ## Symbols
 
@@ -62,6 +68,8 @@
 | \(\varphi,\zeta_{\rm M},\kappa_{\rm d},m_\gamma,\sigma_{\rm P}\) | Polyakov dual photon, monopole fugacity, dual kinetic coefficient, dual-photon mass, and wall/string tension in the controlled 3D monopole-gas mechanism |
 | \(K\) | isotropic condensed charge subgroup |
 | \(K^\perp\) | finite charges with trivial braiding against \(K\) |
+| \(d_K(\overline\gamma)\) | maximal finite pairing distance from a line class to the condensate |
+| \(\sigma_\gamma^\pm\), \(\mu_\gamma\) | continuum surface-cost and perimeter constants in the line criterion |
 
 ## Claim Ledger
 
@@ -90,8 +98,11 @@
 9. Oblique confinement is the finite Dirac-pairing criterion for a dyonic
    condensate \(K=\langle(p,1)\rangle\), with unconfined finite charges
    obeying \(e\equiv pm\pmod N\).
-10. The continuum confinement criterion remains an open theorem-level target,
-   not a definition.
+10. The continuum line-confinement criterion is now formulated as a conditional
+    implication from renormalized-line existence, infrared clustering/static
+    spectral control, endpoint data, and surface-cost bounds to positive area
+    rates.  The remaining open theorem-level target is proving those
+    surface-cost bounds from four-dimensional continuum Yang--Mills.
 
 ## Figures
 
@@ -107,9 +118,13 @@
   condition \(e\equiv pm\pmod N\), non-mutual-locality of simultaneous
   electric/magnetic generators, and the normalization algebra of the 3D
   Polyakov monopole-gas area law.  It also checks the finite string-breaking
-  spectral model behind the Wilson-loop certificate: finite-time flux
+  spectral model behind the Wilson-loop extraction test: finite-time flux
   dominance despite a screened ground state, exact two-channel GEVP roots,
-  rank-one basis failure, and an omitted-tail entry bound.
+  rank-one basis failure, and an omitted-tail entry bound.  The same companion
+  verifies the continuum criterion's finite line-charge arithmetic, pairing
+  distance, local perimeter/cusp subtraction, positive area-rate extraction,
+  rectangular static-limit ordering, endpoint-screening negative control, and
+  strong-coupling surface-window calibration.
 
 ## Audit Notes
 
@@ -123,5 +138,10 @@
   from monopole fugacity data, while explicitly distinguishing this mechanism
   from any uncontrolled four-dimensional instanton-liquid confinement claim.
 - 2026-06-04 QCD confinement-diagnostics pass: added the string-breaking
-  spectral certificate to separate finite-time Wilson-loop area signals from
+  spectral extraction test to separate finite-time Wilson-loop area signals from
   the asymptotic screened static energy, with an exact finite companion check.
+- 2026-06-04 continuum line-criterion pass: replaced the single open-problem
+  status with a renormalized-line criterion and surface-cost theorem boundary,
+  connecting the chapter to the QCD rigor track (#630) and the generalized
+  symmetry/defect proof-debt track (#698) without treating finite charge
+  arithmetic or cochain laboratories as continuum confinement proofs.

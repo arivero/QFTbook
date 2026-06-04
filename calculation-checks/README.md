@@ -1477,8 +1477,12 @@ Current checks:
   monopole-gas mechanism: \(m_\gamma^2=2\zeta_{\rm M}/\kappa_{\rm d}\),
   the sine-Gordon wall first-order identity, \(\sigma_{\rm P}^2=
   128\kappa_{\rm d}\zeta_{\rm M}\), and the rectangular-loop extraction of
-  \(V(L)=\sigma_{\rm P}L\).  The same companion checks a finite
-  string-breaking spectral certificate: a single Wilson-loop channel can look
+  \(V(L)=\sigma_{\rm P}L\).  It verifies the continuum criterion's finite
+  line-charge arithmetic, pairing distance, local perimeter/cusp subtraction,
+  positive area-rate extraction, static-limit ordering, endpoint-screening
+  negative control, and strong-coupling surface-window calibration.  The same
+  companion checks a finite string-breaking spectral extraction test: a single
+  Wilson-loop channel can look
   flux-tube dominated at short Euclidean time even when the screened state is
   the ground state, while a full-rank flux/broken-string correlator matrix
   recovers both transfer eigenvalues and a rank-one basis fails.
