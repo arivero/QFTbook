@@ -29,6 +29,10 @@
 - Trans-Planckian precursor-frequency estimate.
 - Boulware, Hartle-Hawking, and Unruh states as state-selection properties.
 - Scalar Schwarzschild radial wave equation and greybody flux formula.
+- Interacting horizon flux package: KMS greater/lesser functions determine the
+  universal thermal ratio, while the spectral density, channel mixing,
+  stress-tensor renormalization, greybody propagation, nonstationary tails, and
+  backreaction corrections remain declared model-dependent inputs/residuals.
 - Semiclassical back-reaction boundary and adiabatic mass-loss equation.
 - Interacting Hawking theorem open problem.
 
@@ -52,6 +56,9 @@
 | `{p,u}` | Schwarzian derivative |
 | `Gamma_l(omega)` | greybody transmission probability |
 | `r_*` | Schwarzschild tortoise coordinate |
+| `G_A^>(omega)`, `G_A^<(omega)` | interacting horizon-channel Wightman boundary values |
+| `rho_A(omega)` | positive horizon spectral density `G_A^>-G_A^<` |
+| `F_I^{ret}`, `R_I` | retained interacting flux on a frequency window and its residual |
 
 ## Claim Ledger
 
@@ -74,7 +81,11 @@
    fixed-background continuum derivation.
 9. Greybody factors are exterior scattering data, separate from the universal
    horizon Planck factor.
-10. Semiclassical back-reaction requires additional hypotheses and is not a
+10. In an interacting QFT, the universal thermal factor is a KMS
+    spectral-density relation.  The flux at infinity also requires the
+    interacting spectral density, channel basis, greybody propagation,
+    stress-tensor conversion, and residual budget.
+11. Semiclassical back-reaction requires additional hypotheses and is not a
     consequence of the fixed-background Hawking calculation alone.
 
 ## Calculation Ledger
@@ -83,10 +94,20 @@
   Gamma-function norm, thermal ratio, negative-frequency coefficient,
   continuum normalization density, wave-packet Planck-bin average,
   exponential precursor blueshift, Schwarzian flux, chiral Planck flux, and
-  Schwarzschild temperature convention.
+  Schwarzschild temperature convention.  It also checks the interacting
+  horizon KMS spectral-density package, greybody-weighted retained flux,
+  residual-budget negative controls, and stress-flux mass-loss bookkeeping.
 
 ## Figures
 
 - No figure is included.  A later figure pass should add a collapse Penrose
   diagram showing `I^-`, `I^+`, the last escaping ray `v_0`, the future
   horizon, and the exponential relation between `u` and `v`.
+
+## Audit Notes
+
+- 2026-06-04 issue #729 horizon-interaction pass: added the interacting
+  horizon flux package so the chapter no longer treats the free Planck
+  particle-number formula as the interacting stress-flux statement.  The
+  companion is now an evidence-contract check with negative controls against
+  overreading KMS thermality as a full interacting Hawking theorem.

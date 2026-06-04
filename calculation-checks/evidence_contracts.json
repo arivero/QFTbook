@@ -46,6 +46,10 @@
       "risk_class": "eta/global anomaly"
     },
     {
+      "path": "hawking_bogoliubov_checks.py",
+      "risk_class": "interacting horizon flux"
+    },
+    {
       "path": "finite_volume_form_factor_checks.py",
       "risk_class": "integrable reconstruction"
     },

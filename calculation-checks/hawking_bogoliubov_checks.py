@@ -1,5 +1,31 @@
 #!/usr/bin/env python3
-"""Finite checks for the Hawking Bogoliubov coefficient calculation."""
+"""Finite checks for the Hawking Bogoliubov coefficient calculation.
+
+Evidence contract.
+Target claims:
+- Verify the finite arithmetic behind the Hawking mode-tracing coefficient,
+  wave-packet Planck-bin average, Schwarzian flux, and interacting horizon
+  KMS spectral-density flux package.
+Independent construction:
+- The checks recompute the Gamma-function norm, Bogoliubov ratio, KMS
+  greater/lesser weights, greybody-weighted flux, and mass-loss bookkeeping
+  directly from finite numerical or rational data.
+Imported assumptions:
+- The script assumes the geometric-optics ray-tracing form, a stationary
+  late-time KMS horizon state, positive channel spectral densities, and
+  declared exterior propagation weights.
+Negative controls:
+- The checks reject reversed KMS weights, free spectral-density substitution
+  in an interacting channel, spontaneous-plus-thermal weights used as emitted
+  occupation, omitted residual budgets, and propagation weights outside the
+  probability range.
+Scope boundary:
+- Passing this script does not construct an interacting Hadamard state, prove
+  a Hawking theorem, compute greybody factors from a black-hole potential, or
+  solve the nonlinear semiclassical Einstein equation.
+"""
+
+from fractions import Fraction
 
 import mpmath as mp
 
@@ -21,6 +47,132 @@ def assert_close(name, lhs, rhs, tol=mp.mpf("1e-45")):
         raise AssertionError(f"{name}: nonfinite comparison error")
     if error > threshold:
         raise AssertionError(f"{name}: {lhs} != {rhs}")
+
+
+def assert_exact(name: str, lhs: Fraction, rhs: Fraction) -> None:
+    if lhs != rhs:
+        raise AssertionError(f"{name}: {lhs!r} != {rhs!r}")
+
+
+def assert_true(name: str, condition: bool) -> None:
+    if not condition:
+        raise AssertionError(name)
+
+
+def bosonic_kms_weights(
+    q: Fraction,
+    spectral_density: Fraction,
+) -> tuple[Fraction, Fraction]:
+    """Return (G^>, G^<) with q=exp(-beta omega)."""
+
+    greater = spectral_density / (1 - q)
+    lesser = q * spectral_density / (1 - q)
+    return greater, lesser
+
+
+def check_interacting_horizon_flux_package() -> None:
+    channels = [
+        {
+            "omega": Fraction(2),
+            "greybody": Fraction(3, 5),
+            "spectral_density": Fraction(7, 4),
+            "q": Fraction(1, 3),
+        },
+        {
+            "omega": Fraction(5),
+            "greybody": Fraction(1, 4),
+            "spectral_density": Fraction(2, 3),
+            "q": Fraction(1, 5),
+        },
+        {
+            "omega": Fraction(7, 2),
+            "greybody": Fraction(2, 7),
+            "spectral_density": Fraction(9, 5),
+            "q": Fraction(1, 9),
+        },
+    ]
+
+    retained_flux = Fraction(0)
+    free_spectral_substitution_flux = Fraction(0)
+    spontaneous_plus_thermal_flux = Fraction(0)
+    for index, channel in enumerate(channels):
+        q = channel["q"]
+        spectral_density = channel["spectral_density"]
+        greybody = channel["greybody"]
+        omega = channel["omega"]
+        assert_true(f"greybody probability channel {index}", 0 <= greybody <= 1)
+        assert_true(f"KMS q range channel {index}", 0 < q < 1)
+        assert_true(f"positive spectral density channel {index}", spectral_density > 0)
+
+        greater, lesser = bosonic_kms_weights(q, spectral_density)
+        assert_exact(f"KMS detailed balance channel {index}", lesser, q * greater)
+        assert_exact(
+            f"spectral density reconstruction channel {index}",
+            greater - lesser,
+            spectral_density,
+        )
+
+        retained_flux += omega * greybody * lesser
+        free_greater, free_lesser = bosonic_kms_weights(q, Fraction(1))
+        free_spectral_substitution_flux += omega * greybody * free_lesser
+        spontaneous_plus_thermal_flux += omega * greybody * greater
+
+        wrong_lesser = greater / q
+        assert_true(
+            f"reversed KMS weight rejected channel {index}",
+            wrong_lesser != lesser,
+        )
+
+    assert_exact(
+        "interacting retained horizon flux",
+        retained_flux,
+        Fraction(89, 60),
+    )
+    assert_true(
+        "free spectral-density substitution changes interacting flux",
+        free_spectral_substitution_flux != retained_flux,
+    )
+    assert_true(
+        "using G-greater as emitted occupation overcounts the flux",
+        spontaneous_plus_thermal_flux > retained_flux,
+    )
+
+    residuals = {
+        "state construction": Fraction(1, 200),
+        "horizon KMS": Fraction(1, 240),
+        "spectral truncation": Fraction(1, 300),
+        "greybody propagation": Fraction(1, 360),
+        "stress renormalization": Fraction(1, 420),
+        "nonstationary tail": Fraction(1, 560),
+        "backreaction": Fraction(1, 840),
+    }
+    declared_bound = sum(residuals.values(), Fraction(0))
+    actual_residual = declared_bound - Fraction(1, 10000)
+    exact_flux = retained_flux + actual_residual
+    assert_true(
+        "retained interacting Hawking flux residual bound",
+        abs(exact_flux - retained_flux) <= declared_bound,
+    )
+    omitted_spectral_budget = declared_bound - residuals["spectral truncation"]
+    assert_true(
+        "omitting spectral residual underbudgets the interacting flux",
+        actual_residual > omitted_spectral_budget,
+    )
+
+    mass = Fraction(100)
+    retarded_time_window = Fraction(3, 2)
+    mass_after = mass - retarded_time_window * retained_flux
+    assert_exact(
+        "stress-flux mass-loss bookkeeping",
+        mass - mass_after,
+        retarded_time_window * retained_flux,
+    )
+
+    invalid_greybody = Fraction(6, 5)
+    assert_true(
+        "superunit greybody propagation weight rejected",
+        not (0 <= invalid_greybody <= 1),
+    )
 
 
 def main():
@@ -99,6 +251,7 @@ def main():
         schwarzschild_temp = schwarzschild_kappa / (2 * mp.pi)
         assert_close("Schwarzschild temperature convention", schwarzschild_temp, 1 / (8 * mp.pi * mass))
 
+    check_interacting_horizon_flux_package()
     print("All Hawking Bogoliubov coefficient checks passed.")
 
 

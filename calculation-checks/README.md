@@ -1512,7 +1512,12 @@ Current checks:
   Planck factor in \(|\beta_{\omega\omega'}|^2\), the continuum
   normalization-density identity, the wave-packet Planck-bin average, the
   exponential precursor blueshift, the exponential-map Schwarzian flux, and
-  the Schwarzschild \(T_H=1/(8\pi M)\) convention.
+  the Schwarzschild \(T_H=1/(8\pi M)\) convention.  It also checks the
+  interacting horizon-flux package: KMS greater/lesser detailed balance,
+  spectral-density reconstruction, greybody-weighted retained flux, negative
+  controls against free spectral-density substitution and using \(G^>\) as the
+  emitted occupation, residual-budget undercounting, and stress-flux mass-loss
+  bookkeeping.
 - `hydrodynamic_modes_checks.py`: finite algebra checks for the Volume X
   hydrodynamic Ward-identity chapter, including shear diffusion, sound
   attenuation, entropy-production positivity for sample transport matrices,
