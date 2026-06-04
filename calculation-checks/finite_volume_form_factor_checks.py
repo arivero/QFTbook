@@ -18,7 +18,7 @@ attempt to prove analytic convergence of a form-factor expansion.
 from __future__ import annotations
 
 from check_utils import assert_close as _assert_close
-
+from check_utils import assert_leq as _assert_leq
 
 from fractions import Fraction
 from itertools import combinations
@@ -168,11 +168,12 @@ def check_reconstruction_residual_budget() -> None:
         raise AssertionError("reconstruction residual budget accidentally vanished")
 
     residual_bound = sum(abs(value) for value in residuals.values())
-    if abs(residual_total) > residual_bound:
-        raise AssertionError(
-            "form-factor reconstruction triangle budget failed: "
-            f"{abs(residual_total)!r} > {residual_bound!r}"
-        )
+    _assert_leq(
+        "form-factor reconstruction triangle budget",
+        abs(residual_total),
+        residual_bound,
+        tol=Fraction(0),
+    )
 
     # A retained finite-volume/Gaudin coordinate can be exact while the
     # reconstruction claim still has a nonzero analytic/operator residual.

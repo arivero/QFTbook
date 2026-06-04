@@ -22,6 +22,13 @@ recording fluctuation data required for controlled backreaction.
   approximation.
 - `L`: gauge-fixed linearized gravitational operator including local
   response terms.
+- `D(omega)`: finite retained response matrix for a gauge-fixed or
+  gauge-invariant semiclassical sector.
+- `M_I`: certified bound on the retained retarded inverse over a frequency
+  interval.
+- `C_h`: retained metric covariance induced by stress-tensor noise.
+- `epsilon_mean`, `epsilon_fluc`: dimensionless mean-response and fluctuation
+  smallness diagnostics.
 
 ## Claim Ledger
 
@@ -45,6 +52,10 @@ recording fluctuation data required for controlled backreaction.
 - Defines the Einstein-Langevin approximation as a Gaussian generalized
   random tensor with covariance \(N\), and gives the induced metric
   covariance through a retarded inverse.
+- Adds a finite response-window diagnostic for semiclassical backreaction:
+  after gauge fixing/constraint projection and reduction of order, the
+  retained response matrix must have no unstable poles, a bounded retarded
+  inverse, controlled mean response, and controlled noise pushforward.
 - Records validity conditions and the EFT reduction-of-order treatment for
   higher-curvature terms.
 
@@ -53,7 +64,9 @@ recording fluctuation data required for controlled backreaction.
 - `calculation-checks/semiclassical_backreaction_checks.py`: verifies the
   four-dimensional traces of \(H^{(1)}\) and \(H^{(2)}\), the KMS
   fluctuation-dissipation factor, positivity of a finite noise covariance,
-  and the low-energy root selected by reduction of order in a toy
+  the Einstein-Langevin pushforward covariance identity, exact retained-sector
+  mean-response and noise trace bounds for the finite response-window
+  diagnostic, and the low-energy root selected by reduction of order in a toy
   higher-derivative equation.
 
 ## Figure Ledger
@@ -74,3 +87,8 @@ curvature, microscopic, and EFT scales.
   remain because they fix the gravitational EFT coordinates used in the
   semiclassical equation, but the theorem-level classification belongs to the
   point-splitting stress-tensor chapter.
+- 2026-06-03: added the finite response-window diagnostic for issue #729.  This
+  is a physics-control insertion rather than a formal annex: it connects the
+  semiclassical equation to bounded retarded response, absence of unstable
+  poles, stress-tensor noise amplification, and small dimensionless metric
+  fluctuation criteria.

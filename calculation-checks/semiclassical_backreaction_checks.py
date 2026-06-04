@@ -4,8 +4,9 @@
 These checks verify algebraic identities that are easy to lose by a sign or
 normalization: traces of the curvature-squared Euler tensors in four
 dimensions, the KMS fluctuation-dissipation factor, positivity of the noise
-covariance, and the low-energy root selected by reduction of order in a toy
-higher-derivative equation.
+covariance, finite response-window metric fluctuation bounds, and the
+low-energy root selected by reduction of order in a toy higher-derivative
+equation.
 """
 
 from __future__ import annotations
@@ -16,10 +17,40 @@ from check_utils import assert_gt as _assert_gt
 
 import cmath
 import math
+from fractions import Fraction
+
+
+Matrix = tuple[tuple[Fraction, ...], ...]
 
 
 def assert_close(got: complex, expected: complex, label: str, tol: float = 1e-10) -> None:
     _assert_close(label, got, expected, tol=tol)
+
+
+def transpose(matrix: Matrix) -> Matrix:
+    return tuple(tuple(matrix[row][col] for row in range(len(matrix))) for col in range(len(matrix[0])))
+
+
+def matmul(left: Matrix, right: Matrix) -> Matrix:
+    rows = len(left)
+    cols = len(right[0])
+    inner = len(right)
+    return tuple(
+        tuple(sum(left[i][k] * right[k][j] for k in range(inner)) for j in range(cols))
+        for i in range(rows)
+    )
+
+
+def det2(matrix: Matrix) -> Fraction:
+    return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+
+
+def trace(matrix: Matrix) -> Fraction:
+    return sum(matrix[i][i] for i in range(len(matrix)))
+
+
+def squared_norm(column: Matrix) -> Fraction:
+    return sum(column[i][0] * column[i][0] for i in range(len(column)))
 
 
 def check_curvature_squared_traces() -> None:
@@ -91,6 +122,57 @@ def check_einstein_langevin_pushforward_covariance() -> None:
             raise AssertionError("pushforward metric covariance should be positive semidefinite")
 
 
+def check_finite_response_window_bounds() -> None:
+    # Exact retained-sector analogue of h = D^{-1} j and C_h = D^{-1} N D^{-*}.
+    response_inverse: Matrix = (
+        (Fraction(1, 2), Fraction(1, 4)),
+        (Fraction(-1, 4), Fraction(1, 2)),
+    )
+    response_matrix: Matrix = (
+        (Fraction(8, 5), Fraction(-4, 5)),
+        (Fraction(4, 5), Fraction(8, 5)),
+    )
+    identity = matmul(response_matrix, response_inverse)
+    if identity != ((Fraction(1), Fraction(0)), (Fraction(0), Fraction(1))):
+        raise AssertionError("retained response inverse is not the exact inverse")
+
+    if det2(response_matrix) <= 0:
+        raise AssertionError("retained response matrix should be invertible in the tested window")
+
+    singular_response: Matrix = ((Fraction(1), Fraction(0)), (Fraction(0), Fraction(0)))
+    if det2(singular_response) != 0:
+        raise AssertionError("negative control should detect a singular retained response")
+
+    source: Matrix = ((Fraction(2, 7),), (Fraction(-1, 7),))
+    mean_metric = matmul(response_inverse, source)
+    source_norm_sq = squared_norm(source)
+    mean_norm_sq = squared_norm(mean_metric)
+
+    # The exact operator-norm square of response_inverse is 5/16; use a
+    # deliberately coarser bound to model a certified response-window estimate.
+    certified_norm_sq = Fraction(9, 25)
+    if mean_norm_sq > certified_norm_sq * source_norm_sq:
+        raise AssertionError("finite response mean bound failed")
+
+    noise: Matrix = (
+        (Fraction(3, 5), Fraction(1, 10)),
+        (Fraction(1, 10), Fraction(2, 5)),
+    )
+    if noise[0][0] <= 0 or det2(noise) <= 0:
+        raise AssertionError("retained noise matrix should be positive definite")
+
+    metric_covariance = matmul(matmul(response_inverse, noise), transpose(response_inverse))
+    if metric_covariance != transpose(metric_covariance):
+        raise AssertionError("retained metric covariance should be symmetric")
+    if metric_covariance[0][0] < 0 or det2(metric_covariance) < 0:
+        raise AssertionError("retained metric covariance should be positive semidefinite")
+
+    covariance_trace = trace(metric_covariance)
+    noise_trace = trace(noise)
+    if covariance_trace > certified_norm_sq * noise_trace:
+        raise AssertionError("finite response noise trace bound failed")
+
+
 def check_reduction_of_order_toy_model() -> None:
     # Toy equation: x'' + omega0^2 x + epsilon x'''' = 0.
     # For x ~ exp(lambda t), epsilon lambda^4 + lambda^2 + omega0^2 = 0.
@@ -115,6 +197,7 @@ def main() -> None:
     check_kms_fluctuation_dissipation()
     check_noise_covariance_positivity()
     check_einstein_langevin_pushforward_covariance()
+    check_finite_response_window_bounds()
     check_reduction_of_order_toy_model()
     print("All semiclassical backreaction checks passed.")
 

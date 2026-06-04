@@ -601,6 +601,120 @@ fluctuation.  The formula is therefore a covariance statement for the declared
 linearized problem, not a replacement for the gravitational constraint
 analysis.
 
+\section{Finite Response Window And Stability Diagnostics}
+
+The preceding formulae become physically useful only after one asks whether
+the retarded inverse is bounded in the sector being tested.  In a stationary
+background, after gauge fixing and after solving or projecting out the
+linearized constraints, let \(e_a\), \(a=1,\ldots,n\), be a finite set of
+real metric perturbation modes or gauge-invariant metric observables.  Let
+\(f_a\), \(a=1,\ldots,n\), be the corresponding finite set of real smeared
+stress-tensor sources.  The retained linearized equation in frequency space
+has the form
+\begin{equation}
+  \mathsf D_{ab}(\omega)h_b(\omega)=j_a(\omega),
+  \qquad
+  \mathsf D(\omega)
+  =
+  \mathsf K(\omega)-\frac12\mathsf\Pi^{\rm ret}(\omega),
+  \label{eq:semiclassical-retained-response-matrix}
+\end{equation}
+where \(\mathsf K\) is the gravitational and local-contact part of the
+linearized operator and \(\mathsf\Pi^{\rm ret}\) is the projected retarded
+stress-tensor commutator.  The source \(j\) may include a state perturbation,
+an external classical stress perturbation, or the stochastic source in the
+Einstein--Langevin approximation.  All factors of \(G_N,\alpha,\beta\) are
+included in \(\mathsf K\); equivalently one may multiply the whole equation
+by \(8\pi G_N\), in which case the same test is applied to the rescaled
+matrix.
+
+\begin{controlledapproximation}[Finite semiclassical response window]
+\label{ca:semiclassical-finite-response-window}
+Fix a frequency interval \(I\), a retained metric-source sector as above, and
+a reduced low-energy gravitational operator in which the cutoff-scale
+higher-derivative roots have been removed by the EFT prescription.  Suppose
+that the projected retarded response has no pole in the upper half of the
+complex frequency plane in the strip obtained by continuing \(I\), and that
+\begin{equation}
+  M_I
+  :=
+  \sup_{\omega\in I}
+  \left\lVert \mathsf D(\omega+\ii0)^{-1}\right\rVert_2
+  <\infty .
+  \label{eq:semiclassical-response-window-bound}
+\end{equation}
+Then, for every retained source vector \(j(\omega)\),
+\begin{equation}
+  \lVert h(\omega)\rVert_2
+  \le
+  M_I\,\lVert j(\omega)\rVert_2,
+  \qquad
+  \omega\in I.
+  \label{eq:semiclassical-mean-response-bound}
+\end{equation}
+If the retained stress-tensor noise matrix
+\[
+  \mathsf N_{ab}(\omega)
+  =
+  N(f_a(\omega),f_b(\omega))
+\]
+is positive semidefinite, then the induced retained metric covariance is
+\begin{equation}
+  \mathsf C_h(\omega)
+  =
+  \mathsf D(\omega+\ii0)^{-1}
+  \mathsf N(\omega)
+  \mathsf D(\omega+\ii0)^{-*},
+  \label{eq:semiclassical-retained-metric-covariance}
+\end{equation}
+and it obeys
+\begin{equation}
+  v^*\mathsf C_h(\omega)v\ge0,
+  \qquad
+  \operatorname{tr}\mathsf C_h(\omega)
+  \le
+  M_I^2\,\operatorname{tr}\mathsf N(\omega).
+  \label{eq:semiclassical-retained-noise-bound}
+\end{equation}
+The retained semiclassical approximation is small in this window only if the
+dimensionless quantities
+\begin{equation}
+  \varepsilon_{\rm mean}
+  =
+  \sup_{\omega\in I}
+  \frac{\lVert h_{\rm mean}(\omega)\rVert_2}{h_{\rm ref}},
+  \qquad
+  \varepsilon_{\rm fluc}^2
+  =
+  \sup_{\omega\in I}
+  \frac{\operatorname{tr}\mathsf C_h(\omega)}{h_{\rm ref}^2}
+  \label{eq:semiclassical-response-small-parameters}
+\end{equation}
+are both much smaller than one, and if omitted modes and state changes remain
+smaller than the same reference scale \(h_{\rm ref}\).  Here \(h_{\rm ref}\)
+is fixed by the curvature radius or by the amplitude at which the chosen
+linearized metric chart ceases to be valid.
+\end{controlledapproximation}
+
+The proof is finite-dimensional linear algebra, but the diagnostic is not a
+mere matrix exercise.  Upper-half-plane poles of \(\mathsf D^{-1}\) are
+linear instabilities or runaway roots of the retained semiclassical problem;
+large \(M_I\) means that a small stress-tensor perturbation is amplified into
+a large metric response.  A positive noise kernel then gives a positive
+metric covariance by pushforward, and
+\[
+  \operatorname{tr}(\mathsf D^{-1}\mathsf N\mathsf D^{-*})
+  =
+  \operatorname{tr}(\mathsf D^{-*}\mathsf D^{-1}\mathsf N)
+  \le
+  \lVert \mathsf D^{-1}\rVert_2^2\operatorname{tr}\mathsf N ,
+\]
+because \(0\le \mathsf D^{-*}\mathsf D^{-1}\le
+\lVert\mathsf D^{-1}\rVert_2^2\mathbf 1\) on the retained sector.  This is
+the bridge from the formal semiclassical equation to a physical
+backreaction statement: the mean response, the fluctuation response, and the
+absence of unstable response poles must be checked together.
+
 \section{Validity Conditions And Reduction Of Order}
 
 The semiclassical approximation requires more than small curvature.  A

@@ -17,6 +17,8 @@ from __future__ import annotations
 
 import sympy as sp
 
+from check_utils import assert_leq as _assert_leq
+
 
 def assert_zero(name: str, expr: sp.Expr) -> None:
     reduced = sp.simplify(expr)
@@ -155,11 +157,12 @@ def check_integrated_drell_yan_factorization_residual_budget() -> None:
         raise AssertionError("residual budget accidentally collapsed to zero")
 
     residual_bound = sum(abs(value) for value in residuals.values())
-    if abs(residual_total) > residual_bound:
-        raise AssertionError(
-            "triangle residual budget failed: "
-            f"{abs(residual_total)!r} > {residual_bound!r}"
-        )
+    _assert_leq(
+        "Drell-Yan residual triangle budget",
+        abs(residual_total),
+        residual_bound,
+        tol=sp.Rational(0),
+    )
 
     d_coeff = -p_a.T * coeff - coeff * p_b
     factorized_derivative = (
