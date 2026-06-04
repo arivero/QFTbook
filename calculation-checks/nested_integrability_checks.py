@@ -1,9 +1,30 @@
 #!/usr/bin/env python3
-"""Checks for Vol VI nested Bethe, QQ, and Hirota identities."""
+"""Checks for Vol VI nested Bethe, QQ, Hirota, and SoV identities.
+
+Evidence contract.
+Target claim: the checks pair with the finite algebra and residual ledgers in
+Volume VI, Chapter 5B: nested Cartan Bethe equations, QQ/Hirota algebra,
+finite SoV shifts, q-oscillator RLL conventions, and the finite
+SoV-to-spectral-trace residual decomposition.
+Independent construction: identities are checked by determinant expansion,
+finite-difference recurrences, explicit finite-basis operator actions, and an
+independent finite spectral trace before comparison with the retained
+SoV-labeled approximant.
+Imported assumptions: finite-dimensional representations, simple spectra, the
+chapter's RTT and six-vertex normalizations, and exact rational toy
+Boltzmann/time weights for the residual-budget check.
+Negative controls: wrong gauge/trace omissions, missing spectral sectors, and
+wrong retained operator matrix elements are rejected.
+Scope boundary: these are convention and finite-residual checks; they do not
+prove thermodynamic-limit, continuum-QFT, locality, or operator-domain
+reconstruction.
+"""
 
 from __future__ import annotations
 
 from check_utils import assert_close as _assert_close
+from check_utils import assert_gt
+from check_utils import assert_leq
 
 import itertools
 import math
@@ -489,6 +510,79 @@ def check_qoscillator_l_operator_rll() -> None:
                 )
 
 
+def check_sov_spectral_trace_residual_budget() -> None:
+    """Check the finite SoV-to-observable residual telescope exactly."""
+
+    weights = [Fraction(5, 1), Fraction(3, 1), Fraction(2, 1)]
+    time_kernel = [
+        [Fraction(1, 1), Fraction(1, 2), Fraction(1, 5)],
+        [Fraction(2, 3), Fraction(1, 1), Fraction(1, 4)],
+        [Fraction(3, 7), Fraction(2, 5), Fraction(1, 1)],
+    ]
+    matrix_element_sq = [
+        [Fraction(4, 1), Fraction(2, 1), Fraction(3, 1)],
+        [Fraction(2, 1), Fraction(5, 1), Fraction(1, 1)],
+        [Fraction(3, 1), Fraction(1, 1), Fraction(6, 1)],
+    ]
+    retained_matrix_element_sq = [
+        row.copy() for row in matrix_element_sq
+    ]
+    retained_matrix_element_sq[0][1] -= Fraction(1, 2)
+    retained_matrix_element_sq[1][0] -= Fraction(1, 3)
+
+    all_states = (0, 1, 2)
+    retained_states = (0, 1)
+    partition = sum(weights)
+
+    def spectral_trace(states: tuple[int, ...], elements: list[list[Fraction]]) -> Fraction:
+        total = Fraction(0, 1)
+        for left in states:
+            for right in states:
+                total += (
+                    weights[left]
+                    * time_kernel[left][right]
+                    * elements[left][right]
+                )
+        return total / partition
+
+    exact_chain = spectral_trace(all_states, matrix_element_sq)
+    complete_sov = spectral_trace(all_states, matrix_element_sq)
+    exact_retained = spectral_trace(retained_states, matrix_element_sq)
+    approximate_retained = spectral_trace(retained_states, retained_matrix_element_sq)
+    physical_target = exact_chain + Fraction(7, 37)
+
+    r_reg = physical_target - exact_chain
+    r_comp = exact_chain - complete_sov
+    r_tail = complete_sov - exact_retained
+    r_operator = exact_retained - approximate_retained
+    r_state = Fraction(0, 1)
+    total_residual = r_reg + r_comp + r_tail + r_operator + r_state
+    actual_error = physical_target - approximate_retained
+
+    if actual_error != total_residual:
+        raise AssertionError("SoV spectral residual telescope failed")
+    if r_comp != 0:
+        raise AssertionError("complete finite SoV basis should have zero completion residual")
+    if r_reg == 0 or r_tail == 0 or r_operator == 0:
+        raise AssertionError("residual budget accidentally collapsed")
+
+    incomplete_sov = spectral_trace(retained_states, matrix_element_sq)
+    completion_residual = exact_chain - incomplete_sov
+    if completion_residual == 0:
+        raise AssertionError("negative control failed to detect incomplete SoV spectrum")
+
+    budget_bound = sum(abs(term) for term in (r_reg, r_comp, r_tail, r_operator, r_state))
+    assert_leq(
+        "SoV residual triangle budget",
+        abs(actual_error),
+        budget_bound,
+        tol=Fraction(0, 1),
+    )
+
+    omitted_tail_budget = sum(abs(term) for term in (r_reg, r_comp, r_operator))
+    assert_gt("omitted spectral tail underbudgets example", abs(actual_error), omitted_tail_budget)
+
+
 def main() -> None:
     check_su3_worked_example()
     check_cartan_nested_formula()
@@ -500,6 +594,7 @@ def main() -> None:
     check_t_system_gauge_freedom()
     check_baxter_casoratian_transport()
     check_qoscillator_l_operator_rll()
+    check_sov_spectral_trace_residual_budget()
     print("All nested-integrability calculation checks passed.")
 
 

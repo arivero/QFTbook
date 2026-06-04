@@ -34,6 +34,9 @@
   components: evaluating at a zero of \(B(u)\) moves exactly one separated
   coordinate by \(\mp i\), and the covector normalization gives the
   one-variable Baxter equation.
+- Finite-chain SoV spectral trace identity for Euclidean two-point functions,
+  plus a SoV-to-observable reconstruction budget separating regulator,
+  completeness, spectral-tail, operator-matrix-element, and state residuals.
 - Interface statement separating relativistic integrable QFT from planar
   gauge-theory integrability.
 
@@ -55,6 +58,8 @@
 | \(e_\alpha\) | unit shift of the \(\alpha\)-th separated coordinate |
 | \(D,\mathsf a,\mathsf a^\dagger\) | q-oscillator Fock generators |
 | \(L_{\mathcal F}^{(+)}(x)\) | trigonometric rank-one q-oscillator auxiliary \(L\)-operator |
+| \(G_L^O(\tau,R)\) | finite-chain Euclidean spectral trace for an operator \(O_L\) |
+| \(R_{\rm reg},R_{\rm comp},R_{\rm tail},R_O,R_{\rm state}\) | residuals in the SoV-to-observable reconstruction budget |
 
 ## Claim Ledger
 
@@ -83,6 +88,10 @@
 10. \(Q\)-operator and separation-of-variables constructions require
    representation-specific completeness theorems not supplied by the RTT
    algebra alone.
+11. Under the finite ABA--\(Q\)--SoV comparison hypotheses, the SoV measure
+   gives an exact finite spectral trace for \(O_L\), while a physical local
+   QFT correlator still requires separate control of regulator, spectral
+   tail, operator matrix-element, and state residuals.
 
 ## Calculation Checks
 
@@ -93,7 +102,9 @@
   algebra, Bäcklund restricted-Q-system algebra, SoV single-zero shift
   factors, exact T-gauge
   covariance/Y-invariance, rank-one Baxter Casoratian transport, and the
-  exact finite-basis q-oscillator local RLL convention.
+  exact finite-basis q-oscillator local RLL convention.  It also verifies the
+  SoV-to-spectral-trace residual telescope with exact rational arithmetic and
+  a missing-sector negative control.
 
 ## Audit Notes
 
@@ -112,6 +123,10 @@
   component algebra at a zero of \(B(u)\), so the one-coordinate Baxter
   equation is derived from the movement of a single separated zero rather
   than asserted as a generic SoV slogan.
+- 2026-06-04 Vol VI/SoV observable reconstruction pass: added the
+  finite-chain spectral trace identity and a residual budget connecting SoV
+  data to physical correlators, separating theorem-level finite completeness
+  from regulator, tail, operator, and state assumptions.
 
 ## Figures
 

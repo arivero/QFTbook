@@ -1150,18 +1150,152 @@ one-dimensionality of the one-coordinate solution space fixes each factor up
 to a scalar; the product of those scalars is one overall normalization of
 the eigenvector.
 
+\section{From SoV Data to Spectral Traces}
+\label{sec:sov-spectral-trace-reconstruction}
+
+The preceding finite-chain results identify transfer eigenlines.  A local
+observable in a quantum field theory asks for more data: a Hamiltonian or
+charge extraction from the transfer matrix, a representative \(O_L\) of the
+local operator, matrix elements of \(O_L\), the thermal or finite-volume
+state, and the limiting map from the finite chain to the QFT.  The distinction
+is already visible before any limit is taken.
+
+\begin{proposition}[Finite-chain SoV spectral trace]
+\label{prop:finite-chain-sov-spectral-trace}
+Let \(\mathcal H_L\) be a finite-dimensional transfer-matrix representation
+for which the ABA--\(Q\)--SoV comparison hypotheses above hold.  Let
+\(H_L\) be a self-adjoint Hamiltonian obtained from the commuting transfer
+family, and let \(O_L\in\operatorname{End}(\mathcal H_L)\).  If
+\(\{\ket\lambda\}_{\lambda\in\mathcal S_L}\) is the resulting complete
+orthonormal eigenbasis of \(H_L\), then, for \(0\le\tau\le R\),
+\begin{equation}
+  G_L^{O}(\tau,R)
+  =
+  \frac{1}{Z_L}
+  \operatorname{Tr}_{\mathcal H_L}
+  \left(
+    \ee^{-(R-\tau)H_L}O_L\ee^{-\tau H_L}O_L^\dagger
+  \right)
+  =
+  \frac{1}{Z_L}
+  \sum_{\lambda,\lambda'\in\mathcal S_L}
+  \ee^{-(R-\tau)E_\lambda-\tau E_{\lambda'}}
+  \left|\bra\lambda O_L\ket{\lambda'}\right|^2,
+  \label{eq:finite-chain-sov-spectral-trace}
+\end{equation}
+where \(Z_L=\sum_{\lambda}\ee^{-R E_\lambda}\).  The SoV resolution
+\eqref{eq:sov-resolution-identity} computes the matrix elements in
+\eqref{eq:finite-chain-sov-spectral-trace} by finite sums over separated
+coordinates and their measure.
+\end{proposition}
+
+\begin{proof}
+The commuting transfer family and the comparison hypotheses identify the same
+eigenlines whether they are labeled by Bethe roots, a \(Q\)-operator
+eigenvalue, or separated wavefunctions.  Since \(H_L\) is extracted from that
+commuting family, these eigenlines diagonalize \(H_L\).  Insert the identity
+\(\sum_\lambda\ket\lambda\bra\lambda=\id_{\mathcal H_L}\) on both sides of
+\(O_L\) inside the trace.  Cyclicity of the finite trace gives the displayed
+Boltzmann factors and the squared matrix element.  Finally insert
+\eqref{eq:sov-resolution-identity} between \(O_L\) and the transfer
+eigenvectors to express each matrix element as a finite SoV sum.  In a
+non-unitary or twisted biorthogonal presentation, the same proof uses the
+left and right eigenvectors supplied by the SoV resolution, with the two
+matrix elements replacing the absolute square.
+\end{proof}
+
+\begin{controlledapproximation}[SoV-to-observable reconstruction budget]
+\label{ca:sov-observable-reconstruction-budget}
+Fix a test norm for Euclidean correlators on a compact window in
+\((\tau,R)\).  Let \(G_{\rm phys}^{\mathcal O}\) be the target local-QFT
+correlator and let \(G_{L,\mathcal S}^{\rm SoV}\) be the correlator obtained
+from a finite chain, a subset \(\mathcal S\subset\mathcal S_L\), a chosen SoV
+measure, and chosen matrix-element formulae for an operator \(O_L\).  Insert
+the intermediate exact finite-chain trace \(G_L^{O}\), the complete
+SoV-labeled finite trace \(G_{L,\rm all}^{\rm SoV,*}\), and the exact
+retained trace \(G_{L,\mathcal S}^{\rm SoV,*}\).  Let
+\(\widehat G_{L,\mathcal S}^{\rm SoV}\) be the retained SoV expression after
+the chosen operator matrix-element formulae have been used but before a TBA,
+mirror, generalized Gibbs, or hydrodynamic state replaces the finite trace.
+The difference decomposes as
+\begin{align}
+  G_{\rm phys}^{\mathcal O}-G_{L,\mathcal S}^{\rm SoV}
+  &=
+  R_{\rm reg}
+  +R_{\rm comp}
+  +R_{\rm tail}
+  +R_{O}
+  +R_{\rm state},
+  \label{eq:sov-observable-reconstruction-residual-decomposition}\\
+  R_{\rm reg}
+  &=
+  G_{\rm phys}^{\mathcal O}-G_L^{O},\nonumber\\
+  R_{\rm comp}
+  &=
+  G_L^{O}-G_{L,\rm all}^{\rm SoV,*},\nonumber\\
+  R_{\rm tail}
+  &=
+  G_{L,\rm all}^{\rm SoV,*}-G_{L,\mathcal S}^{\rm SoV,*},\nonumber\\
+  R_{O}
+  &=
+  G_{L,\mathcal S}^{\rm SoV,*}
+  -\widehat G_{L,\mathcal S}^{\rm SoV},\nonumber\\
+  R_{\rm state}
+  &=
+  \widehat G_{L,\mathcal S}^{\rm SoV}
+  -G_{L,\mathcal S}^{\rm SoV}.\nonumber
+\end{align}
+If these five residuals obey
+\[
+  \|R_{\rm reg}\|\le\varepsilon_{\rm reg},\quad
+  \|R_{\rm comp}\|\le\varepsilon_{\rm comp},\quad
+  \|R_{\rm tail}\|\le\varepsilon_{\rm tail},\quad
+  \|R_O\|\le\varepsilon_O,\quad
+  \|R_{\rm state}\|\le\varepsilon_{\rm state},
+\]
+then
+\begin{equation}
+  \left\|
+    G_{\rm phys}^{\mathcal O}-G_{L,\mathcal S}^{\rm SoV}
+  \right\|
+  \le
+  \varepsilon_{\rm reg}
+  +\varepsilon_{\rm comp}
+  +\varepsilon_{\rm tail}
+  +\varepsilon_O
+  +\varepsilon_{\rm state}.
+  \label{eq:sov-observable-reconstruction-budget-bound}
+\end{equation}
+\end{controlledapproximation}
+
+The status of the five terms is different.  Under
+Proposition~\ref{prop:finite-chain-sov-spectral-trace} and the SoV measure
+identity, \(R_{\rm comp}=0\) is a finite-dimensional theorem.  The term
+\(R_{\rm tail}\) is a spectral truncation estimate.  The term \(R_O\) is the
+operator problem: eigenvalue data from \(Q\)-functions must be supplemented by
+form factors, determinant formulae, or direct SoV matrix elements for the
+specific local field being probed.  The terms \(R_{\rm reg}\) and
+\(R_{\rm state}\) are the physical bridge from the regulated chain to the
+continuum QFT state and local operator.  Thus the nested \(TQ\), \(QQ\), and
+SoV machinery supplies a complete finite spectral coordinate system only
+after its hypotheses are proved; local QFT amplitudes additionally require
+the regulator, tail, operator, and state residuals in
+\eqref{eq:sov-observable-reconstruction-residual-decomposition}.
+
 \section{Continuum Status}
 
-The finite-chain comparison theorem does not close the continuum QFT problem.
-For a relativistic integrable QFT one must additionally prove that
+The finite-chain spectral package above isolates the remaining continuum QFT
+problem.  For a relativistic integrable QFT one must additionally prove that
 finite-volume energy levels are approximated by matrix Bethe--Yang equations
 in the large-\(L\) regime, that the nested string hypothesis used in
 Chapter~\ref{ch:integrable-nested-bethe-ansatz-matrix-bethe-yang} is valid
-for the thermodynamic states under consideration, and that the integral
-operators in the TBA equations have the required analytic and Fredholm
-properties.  These are model-dependent mathematical statements.  They are not
-part of the finite RTT algebra, and this monograph keeps them separate from
-the algebraic construction.
+for the thermodynamic states under consideration, that local operators have
+controlled finite-volume matrix elements, and that the integral operators in
+the TBA equations have the required analytic and Fredholm properties.  These
+are model-dependent mathematical statements.  They are separate from the
+finite RTT algebra, and the residual budget
+\eqref{eq:sov-observable-reconstruction-residual-decomposition} records where
+each one enters a physical correlator.
 
 \section{Interface with Planar Gauge-Theory Integrability}
 
