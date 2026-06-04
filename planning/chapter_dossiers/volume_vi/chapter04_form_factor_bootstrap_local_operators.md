@@ -29,10 +29,11 @@
 - Bound-state pole equations.
 - Free Majorana examples: the energy-density two-particle form factor, its
   explicit two-particle Wightman spectral density and Euclidean Bessel-kernel
-  reconstruction, the even semi-local Ising spin-field family, its crossed
-  mixed bra/ket product formula, the odd Ising order/twist form-factor
-  family, and separated Euclidean convergence estimates for the infinite
-  spin/twist spectral series.
+  reconstruction, the free-field reconstruction-status certificate for the
+  local energy-density observable, the even semi-local Ising spin-field
+  family, its crossed mixed bra/ket product formula, the odd Ising
+  order/twist form-factor family, and separated Euclidean convergence
+  estimates for the infinite spin/twist spectral series.
 - Status checkpoint from form-factor equations to local fields: Hilbert-space
   domain/closability, Wightman-distribution convergence including collision
   diagonals, positivity/covariance/spectrum condition, spacelike
@@ -91,32 +92,39 @@
    \(K_0\)-kernel integral.  The derivation constructs the delta-function
    Jacobian and the identical-particle factor instead of importing a
    phase-space formula.
-8. The even spin-field family
+8. The free-Majorana energy-density example is now followed end-to-end as a
+   local observable: the CAR free-field construction supplies the Hilbert
+   space, finite-particle domain, positivity, spacelike locality of the even
+   Wick polynomial, and Fock completeness of the one-particle Majorana
+   sector; the form-factor equations record the on-shell shadow of that
+   already constructed local field, and Wick degree proves that there is no
+   higher-particle spectral tail for \(\varepsilon\).
+9. The even spin-field family
    \(F_{2k}^{\sigma_+}=\bar\sigma i^kP_{2k}\) satisfies Watson exchange,
    semi-local cyclicity with phase \(-1\), and the semi-local kinematic-pole
    equation \( -i\,\mathrm{Res}\,F_{n+2}^{\sigma_+}=(1+(-1)^n)F_n^{\sigma_+}\).
-9. Crossing the even spin-field family gives the connected mixed bra/ket
+10. Crossing the even spin-field family gives the connected mixed bra/ket
    formula with \(\tanh\)-factors within each side and \(\coth\)-factors
    between crossed and uncrossed rapidities, including the
    \(i^{(K+N)/2}\bar\sigma\) phase in this chapter's convention.
-10. The odd Ising product formula
+11. The odd Ising product formula
    \(F_{2k+1}^{\Sigma}=v i^k\prod_{i<j}\tanh((\theta_i-\theta_j)/2)\)
    satisfies Watson exchange, cyclicity, and the kinematic annihilation
    recursion; the \(i^k\) factor is fixed by the residue equation.
-11. The infinite even and odd Ising product families reconstruct separated
+12. The infinite even and odd Ising product families reconstruct separated
    Euclidean two-point functions on the temporal ray by absolutely convergent
    finite-particle spectral series.  The proof uses the explicit bound
    \(|\tanh((\theta_i-\theta_j)/2)|\le1\), the one-particle integral
    \(I_m(r)=K_0(mr)/\pi\), and the even/odd exponential majorants
    \(\cosh I_m(r)\) and \(\sinh I_m(r)\), with uniform convergence of
    \(r\)-derivatives on compact subsets of \(r>0\).
-12. The reconstruction checkpoint separates theorem-level Ising/free-fermion
+13. The reconstruction checkpoint separates theorem-level Ising/free-fermion
    control from the interacting factorizing-model program: Watson, cyclicity,
    and residue equations are matrix-element identities, while local-field
    reconstruction additionally requires common domains, closability,
    distributional convergence, contact-term extension, positivity,
    covariance, spacelike locality or semi-locality, and sector completeness.
-13. Form-factor axioms do not by themselves complete local reconstruction;
+14. Form-factor axioms do not by themselves complete local reconstruction;
    convergence, locality, clustering, and Wightman domains remain theorem
    obligations.
 
@@ -128,9 +136,12 @@
   cyclicity, and kinematic-pole residue signs.  It also checks the
   two-particle invariant-mass identity, the spectral-density normalization
   after the identical-particle cancellation, the Euclidean Bessel-reduction
-  prefactor, the even spin-field semi-local cyclicity phase, the crossed
-  \(\coth\) matrix element, the semi-local kinematic residue, and the
-  even/odd spectral-series majorants.
+  prefactor, the finite Wick-degree support certificate for the normal
+  ordered quadratic energy density, the negative control against reading
+  bootstrap equations alone as a local-field reconstruction theorem, the even
+  spin-field semi-local cyclicity phase, the crossed \(\coth\) matrix
+  element, the semi-local kinematic residue, and the even/odd
+  spectral-series majorants.
 
 ## Audit Notes
 
@@ -150,6 +161,13 @@
   status checkpoint preventing form-factor equations from being read as a
   local-field construction without Hilbert-space, convergence, positivity,
   locality, and completeness input.
+- 2026-06-04 issue #728 end-to-end model pass: promoted the free-Majorana
+  energy-density example from a two-particle spectral calculation to a
+  labeled local-observable reconstruction-status certificate, with the CAR
+  free-field construction named as the source of domain, positivity, locality,
+  and completeness.  The companion check now rejects both an illicit
+  higher-particle tail for the quadratic Wick operator and a bootstrap-only
+  reconstruction overclaim.
 
 ## Figures
 

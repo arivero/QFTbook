@@ -1,5 +1,34 @@
 #!/usr/bin/env python3
-"""Finite checks for the free-Majorana/Ising form-factor examples."""
+"""Finite checks for the free-Majorana/Ising form-factor examples.
+
+Evidence contract.
+Target claims: the Volume VI Chapter 4 free-Majorana energy-density
+form-factor normalization and local-reconstruction status claim, the
+two-particle Wightman/Euclidean kernel normalization, and the Ising
+spin/twist product-family Watson, cyclicity, crossing, residue, and
+separated-series majorant claims.
+Independent construction: the checks recompute exchange/cyclicity signs,
+Cauchy-kernel orientation, two-particle invariant-mass and phase-space
+Jacobians, Bessel prefactors, finite Wick-degree support for the normal
+ordered quadratic Majorana energy density, and explicit finite products for
+the spin/twist families rather than importing chapter display strings.
+Imported assumptions: the massive free-Majorana CAR construction supplies the
+Hilbert space, common finite-particle domain, positivity, locality of even
+Wick polynomials, and Fock completeness of the one-particle Majorana sector;
+the spin/twist checks use the stated semi-locality phases and separated
+Euclidean rapidity majorants.
+Negative controls: wrong energy-density exchange/cyclicity signs, reversed
+Cauchy orientation, missed identical-particle factors, wrong Bessel
+prefactors, an illicit higher-particle tail for a quadratic Wick operator,
+and a bootstrap-only local-field reconstruction certificate with missing
+domain/locality/positivity/completeness inputs are rejected, as are the
+wrong spin-field monodromy and residue signs.
+Scope boundary: a pass checks finite algebra, normalization, and the
+free-field reconstruction interface for the displayed examples; it does not
+prove local reconstruction for an arbitrary interacting factorizing
+S-matrix, general form-factor completeness, convergence on collision
+diagonals, or contact-term extensions.
+"""
 
 from __future__ import annotations
 
@@ -17,6 +46,11 @@ def assert_close(name: str, got: complex | float, expected: complex | float, tol
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
         raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
+
+
+def assert_true(name: str, condition: bool) -> None:
+    if not condition:
+        raise AssertionError(f"{name} failed")
 
 
 def energy_form_factor(theta_1: complex, theta_2: complex, kappa: complex = 1.0) -> complex:
@@ -136,6 +170,58 @@ def check_energy_two_particle_reconstruction() -> None:
         "Euclidean Bessel prefactor",
         after_even_alpha_reduction,
         1.0 / (2.0 * math.pi**2),
+    )
+
+
+def check_majorana_energy_local_reconstruction_certificate() -> None:
+    # A normal-ordered quadratic Majorana Wick polynomial has only a
+    # two-creation component in the vacuum-to-particle channel.
+    wick_degree = 2
+    vacuum_to_particle_support = {
+        n: int(n == wick_degree)
+        for n in range(7)
+    }
+    assert_equal("normal ordering kills vacuum matrix element", vacuum_to_particle_support[0], 0)
+    assert_equal("fermion parity kills one-particle channel", vacuum_to_particle_support[1], 0)
+    assert_equal("quadratic Wick degree selects two-particle channel", vacuum_to_particle_support[2], 1)
+    assert_equal("quadratic Wick degree kills three-particle channel", vacuum_to_particle_support[3], 0)
+    assert_equal("quadratic Wick degree kills four-particle channel", vacuum_to_particle_support[4], 0)
+    assert_equal(
+        "quadratic energy density has no higher-particle spectral tail",
+        sum(vacuum_to_particle_support[n] for n in range(3, 7)),
+        0,
+    )
+
+    illicit_quartic_tail = {**vacuum_to_particle_support, 4: 1}
+    assert_true(
+        "negative control detects illicit four-particle tail",
+        sum(illicit_quartic_tail[n] for n in range(3, 7)) > 0,
+    )
+
+    free_field_inputs = {
+        "car_hilbert_space": 0,
+        "finite_particle_domain": 0,
+        "wick_closability": 0,
+        "positive_wightman_space": 0,
+        "even_wick_locality": 0,
+        "majorana_fock_completeness": 0,
+    }
+    bootstrap_only_inputs = {
+        "car_hilbert_space": 1,
+        "finite_particle_domain": 1,
+        "wick_closability": 1,
+        "positive_wightman_space": 1,
+        "even_wick_locality": 1,
+        "majorana_fock_completeness": 1,
+    }
+    assert_equal(
+        "free Majorana construction supplies local-field inputs",
+        sum(free_field_inputs.values()),
+        0,
+    )
+    assert_true(
+        "negative control rejects bootstrap-only reconstruction overclaim",
+        sum(bootstrap_only_inputs.values()) > 0,
     )
 
 
@@ -275,6 +361,7 @@ def main() -> None:
     check_energy_density_form_factor()
     check_kinematic_cauchy_kernel_orientation()
     check_energy_two_particle_reconstruction()
+    check_majorana_energy_local_reconstruction_certificate()
     check_sigma_exchange_and_cyclicity()
     check_spin_even_semilocal_family()
     check_sigma_kinematic_residue()

@@ -54,6 +54,10 @@
       "risk_class": "integrable reconstruction"
     },
     {
+      "path": "ising_form_factor_checks.py",
+      "risk_class": "integrable local-observable reconstruction"
+    },
+    {
       "path": "factorized_scattering_algebra_checks.py",
       "risk_class": "integrable local-algebra reconstruction"
     },

@@ -611,6 +611,62 @@ contact terms at \(x=0\) are not part of the finite-particle spectral
 calculation.
 \end{proof}
 
+\begin{proposition}[Free-field reconstruction status for the Majorana energy density]
+\label{prop:majorana-energy-local-reconstruction-certificate}
+In the massive Ising theory realized as the local free Majorana field, let
+\(\varepsilon(x)\) be the normal-ordered quadratic energy-density Wick
+polynomial, with the normalization of
+Example~\ref{ex:free-majorana-energy-form-factor}.  Then the finite-particle
+domain of the CAR Fock space gives a theorem-level construction of this local
+observable with the following on-shell shadow.
+\[
+  S(\theta)=-1,\qquad
+  \langle\Omega|\varepsilon(0)
+  |\theta_1,\ldots,\theta_n\rangle_{\rm in}
+  =
+  \begin{cases}
+  \kappa_\varepsilon
+  \sinh\!\left((\theta_1-\theta_2)/2\right),& n=2,\\
+  0,& n\neq2 .
+  \end{cases}
+\]
+Consequently the separated two-point function of \(\varepsilon\) is exactly
+the two-particle spectral integral computed in
+Proposition~\ref{prop:majorana-energy-two-particle-reconstruction}; there is
+no uncomputed higher-particle tail for this observable.
+
+The status statement is part of the assertion.  The local field, common
+domain, positivity, spacelike locality of the even Wick polynomial, and
+Fock completeness of the one-particle Majorana sector come from the
+free-Majorana CAR construction.  The form-factor equations in
+Example~\ref{ex:free-majorana-energy-form-factor} record the matrix elements
+of that already constructed field; by themselves they would not constitute a
+local-field reconstruction theorem.
+\end{proposition}
+
+\begin{proof}
+The free massive Majorana field is built on antisymmetric Fock space from a
+positive one-particle representation of the two-dimensional Poincare group.
+The finite-particle vectors are a common invariant core for smeared Wick
+polynomials.  The CAR anticommutator has causal support, so even Wick
+polynomials, in particular the energy density, commute at spacelike
+separation.  Positivity and Fock completeness of the one-particle Majorana
+sector are inherited from the Fock construction.
+
+In this representation the in/out creation operators differ only by the
+fermionic exchange convention, hence the scalar factorized scattering
+function is \(S=-1\).  Since \(\varepsilon\) is normal ordered and quadratic,
+its vacuum-to-\(n\)-particle matrix element vanishes for \(n=0\), for odd
+\(n\) by fermion parity, and for every \(n>2\) by Wick degree.  The only
+remaining creation part is the two-particle bilinear.  Lorentz covariance,
+antisymmetry under particle exchange, and the chosen scalar normalization fix
+it to
+\(\kappa_\varepsilon\sinh((\theta_1-\theta_2)/2)\).  Substituting this single
+nonzero channel into the finite-particle resolution of the identity is exactly
+the calculation of
+Proposition~\ref{prop:majorana-energy-two-particle-reconstruction}.
+\end{proof}
+
 The spin and disorder fields of the Ising theory are more instructive because
 their form factors form infinite families and because their locality relative
 to the Majorana particle is a branch-field structure with an explicit monodromy.
