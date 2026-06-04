@@ -5283,6 +5283,99 @@ the finite spectral determinant factor, while the Berezin determinant records
 only the zero-mode saturation algebra.
 \end{proof}
 
+\begin{controlledapproximation}[Reference-amplitude calibration of the
+light-fermion determinant]
+\label{ca:instanton-light-fermion-reference-calibration}
+The finite light-fermion determinant factor
+\(\mathcal R_{{\rm f},\Lambda}^{\mathcal S}(z;\mu)\) in
+Proposition~\ref{prop:instanton-light-fermion-source-frame-covariance} can be
+computed directly from the nonzero-mode spectrum in the chosen regulator, or it
+can be fixed by one reference amplitude and then used as a calibrated
+source-family coordinate.  This second route is predictive when the reference
+projection has a declared positive noncancellation margin.
+
+Fix one finite source frame and a collective-coordinate window
+\(\mathcal U_{\rm win}\).  Let \(H_\alpha(z)\) denote the rest of the
+one-instanton integrand for a gauge-invariant source channel
+\(\mathcal J_\alpha\): the classical action, collective density, pure-gauge and
+heavy-field determinants, zero-mode source coefficient, orientation projection,
+and any declared source-to-state overlap.  Choose a reference shape
+\(\overline R_{\rm f}(z)\) for the light-fermion nonzero-mode factor and write
+the retained coefficient integrals
+\begin{equation}
+  B_\alpha
+  =
+  \int_{\mathcal U_{\rm win}}
+    \overline R_{\rm f}(z)H_\alpha(z)\,\dd z,
+  \qquad
+  M_\alpha
+  =
+  \int_{\mathcal U_{\rm win}}
+    |\overline R_{\rm f}(z)H_\alpha(z)|\,\dd z .
+  \label{eq:instanton-reference-determinant-basis-integrals}
+\end{equation}
+If the exact one-instanton contribution in this source family has the form
+\begin{equation}
+  A_\alpha^{Q=1}
+  =
+  r_{\rm f}^{\mathcal S}B_\alpha+R_\alpha,
+  \qquad
+  |R_\alpha|\le E_\alpha ,
+  \label{eq:instanton-reference-calibrated-family}
+\end{equation}
+then a reference observable \(\alpha=0\) with
+\begin{equation}
+  A_0^{\rm phys}
+  =
+  r_{\rm f}^{\mathcal S}B_0+R_0,
+  \qquad
+  |R_0|\le E_0,\qquad B_0\ne0
+  \label{eq:instanton-reference-amplitude-input}
+\end{equation}
+fixes the calibrated prediction
+\begin{equation}
+  \widehat A_\alpha^{Q=1}
+  =
+  A_0^{\rm phys}\frac{B_\alpha}{B_0}.
+  \label{eq:instanton-reference-amplitude-prediction}
+\end{equation}
+The residual propagates by the exact identity
+\begin{equation}
+  A_\alpha^{Q=1}-\widehat A_\alpha^{Q=1}
+  =
+  R_\alpha-\frac{B_\alpha}{B_0}R_0,
+  \qquad
+  \left|A_\alpha^{Q=1}-\widehat A_\alpha^{Q=1}\right|
+  \le
+  E_\alpha+\left|\frac{B_\alpha}{B_0}\right|E_0 .
+  \label{eq:instanton-reference-calibration-error}
+\end{equation}
+Thus the reference channel must supply a noncancellation margin
+\begin{equation}
+  \kappa_0=\frac{|B_0|}{M_0}>0,
+  \qquad
+  \left|\frac{B_\alpha}{B_0}\right|
+  \le
+  \frac{M_\alpha}{\kappa_0 M_0}.
+  \label{eq:instanton-reference-noncancellation-margin}
+\end{equation}
+
+This is the finite-amplitude meaning of a light-fermion determinant
+normalization.  A finite source-frame change multiplies every \(B_\alpha\) in
+the same family by the corresponding zero-mode determinant factor and changes
+\(r_{\rm f}^{\mathcal S}\) inversely, so the calibrated ratio in
+\eqref{eq:instanton-reference-amplitude-prediction} is invariant for reference
+and target channels kept in the same frame and local counterterm
+scheme.  The certified scope of the calibration is one overall determinant
+coordinate; residual \(z\)-dependence of the determinant, the omitted size
+window, the Euclidean-to-physical bridge, and the long-distance spectral matrix
+element require separate estimates.  If the reference \(B_0\) is small because
+of source or orientation cancellations, the uncertainty is amplified by
+\eqref{eq:instanton-reference-calibration-error}; precision use for the
+remaining channels therefore requires the margin in
+\eqref{eq:instanton-reference-noncancellation-margin}.
+\end{controlledapproximation}
+
 \begin{proposition}[Mass/source RG transport of the instanton vertex]
 \label{prop:instanton-mass-source-rg-transport}
 Work in a mass-independent renormalization scheme in the same \(Q=1\)

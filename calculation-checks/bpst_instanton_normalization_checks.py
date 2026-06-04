@@ -35,6 +35,10 @@ relations
     det Z_R det Z_L and require the inverse transformation of the finite
     light-fermion nonzero-mode determinant factor; local finite determinant
     counterterms give a separate multiplicative scheme shift
+    calibrating the finite light-fermion determinant by one reference amplitude
+    predicts other channels only through same-frame ratios B_alpha/B_0; the
+    reference residual is amplified by that ratio and a noncancellation margin
+    for B_0 is required
     the proper-time fluctuation determinant combines with either an independent
     bilinear source determinant or a differentiated linear Grassmann source
     coefficient to give the finite four-fermion instanton amplitude
@@ -174,8 +178,8 @@ Independent construction: direct radial integrals, finite determinant and
 Schur-complement algebra, source differentiation, inverse-Gram construction of
 the shared SU(2) four-fundamental Haar projector, absolute logarithmic
 determinant-residual certificates, finite
-coefficient/operator transport matrices, and exact retained size-shell
-stationarity equations.
+reference-amplitude calibration ratios, coefficient/operator transport
+matrices, and exact retained size-shell stationarity equations.
 Imported assumptions: the BPST background and zero-mode formulas, one-loop
 determinant coefficients, the trace-delta convention, and finite regulator
 truncations stated in the chapter.
@@ -183,9 +187,9 @@ Negative controls: the shared-Haar 1/3 versus factorized 1/4 counterexample,
 rank-one and color-symmetric source-pair rejections, signed determinant-trace
 cancellations rejected as fluctuation-error certificates, negative/complex
 thermal amplitude kernels rejected from signed activity bounds, finite-frame
-inverse checks, hard-only and screening-only shell substitutions in the mixed
-size-majorant problem, and separation of operator RG flow from the Wilsonian
-size-boundary flux.
+inverse checks, canceled reference-amplitude normalization, hard-only and
+screening-only shell substitutions in the mixed size-majorant problem, and
+separation of operator RG flow from the Wilsonian size-boundary flux.
 Scope boundary: a pass checks finite algebra and normalization interfaces; it
 does not prove dilute-gas validity, large-size control, uniform semiclassical
 remainders, or physical hadronic matrix elements.
@@ -1517,6 +1521,97 @@ def check_light_fermion_determinant_source_frame_covariance() -> None:
         "finite determinant counterterm multiplies source functional",
         counterterm_factor * det_fraction(transformed_kernel),
         counterterm_multiplier * source_functional,
+    )
+
+
+def check_light_fermion_reference_amplitude_calibration() -> None:
+    # A reference amplitude can fix one finite light-fermion determinant
+    # normalization only through the same-frame ratio of retained source
+    # integrals.  Residuals from the reference observable are amplified by
+    # B_target/B_ref.
+    reference_cells = [Fraction(3, 5), -Fraction(1, 10), Fraction(7, 20)]
+    target_cells = [Fraction(2, 7), -Fraction(1, 8), Fraction(5, 11)]
+    b_ref = sum(reference_cells, Fraction(0))
+    m_ref = sum(abs(cell) for cell in reference_cells)
+    b_target = sum(target_cells, Fraction(0))
+    m_target = sum(abs(cell) for cell in target_cells)
+    kappa_ref = abs(b_ref) / m_ref
+
+    assert_equal("reference instanton calibration integral", b_ref, Fraction(17, 20))
+    assert_equal("reference instanton calibration absolute mass", m_ref, Fraction(21, 20))
+    assert_equal("reference instanton calibration noncancellation margin", kappa_ref, Fraction(17, 21))
+
+    determinant_normalization = Fraction(11, 17)
+    reference_residual = Fraction(1, 50)
+    target_residual = -Fraction(1, 70)
+    reference_amplitude = determinant_normalization * b_ref + reference_residual
+    target_amplitude = determinant_normalization * b_target + target_residual
+    calibrated_prediction = reference_amplitude * b_target / b_ref
+
+    assert_equal(
+        "reference-amplitude calibration residual identity",
+        target_amplitude - calibrated_prediction,
+        target_residual - reference_residual * b_target / b_ref,
+    )
+    calibration_bound = abs(target_residual) + abs(b_target / b_ref) * abs(reference_residual)
+    assert_equal(
+        "reference-amplitude calibration residual bound",
+        abs(target_amplitude - calibrated_prediction) <= calibration_bound,
+        True,
+    )
+    assert_equal(
+        "reference-amplitude calibration ratio margin bound",
+        abs(b_target / b_ref) <= m_target / (kappa_ref * m_ref),
+        True,
+    )
+
+    zero_residual_reference = determinant_normalization * b_ref
+    assert_equal(
+        "reference calibration exact when residuals vanish",
+        zero_residual_reference * b_target / b_ref,
+        determinant_normalization * b_target,
+    )
+
+    # A common finite source-frame change rescales all zero-mode source
+    # integrals and the determinant normalization inversely.  The leading
+    # amplitudes and the calibrated ratio are unchanged only because the same
+    # frame is used for both reference and target.
+    source_frame_scale = Fraction(5, 3)
+    flavor_count = 2
+    frame_factor = source_frame_scale**flavor_count
+    scaled_b_ref = frame_factor * b_ref
+    scaled_b_target = frame_factor * b_target
+    scaled_determinant_normalization = determinant_normalization / frame_factor
+    assert_equal(
+        "same-frame calibration keeps leading reference amplitude",
+        scaled_determinant_normalization * scaled_b_ref,
+        determinant_normalization * b_ref,
+    )
+    assert_equal(
+        "same-frame calibration keeps source ratio",
+        scaled_b_target / scaled_b_ref,
+        b_target / b_ref,
+    )
+
+    # A nearly cancelled reference channel is a bad normalization coordinate:
+    # the same absolute reference residual becomes a large calibrated
+    # uncertainty.
+    canceled_reference_cells = [Fraction(1), -Fraction(99, 100)]
+    b_cancel = sum(canceled_reference_cells, Fraction(0))
+    m_cancel = sum(abs(cell) for cell in canceled_reference_cells)
+    kappa_cancel = abs(b_cancel) / m_cancel
+    assert_equal("canceled reference instanton integral", b_cancel, Fraction(1, 100))
+    assert_equal("canceled reference noncancellation margin", kappa_cancel, Fraction(1, 199))
+    assert_equal(
+        "canceled reference residual is not relatively small",
+        abs(reference_residual) / abs(b_cancel) <= Fraction(1, 10),
+        False,
+    )
+    assert_equal(
+        "canceled reference amplifies calibration residual",
+        abs(reference_residual * b_target / b_cancel)
+        > 50 * abs(reference_residual * b_target / b_ref),
+        True,
     )
 
 
@@ -4263,6 +4358,7 @@ def main() -> None:
     check_two_flavor_instanton_tested_susceptibility_contact()
     check_fermion_determinant_zero_mode_nonzero_mode_factorization()
     check_light_fermion_determinant_source_frame_covariance()
+    check_light_fermion_reference_amplitude_calibration()
     check_instanton_mass_source_rg_transport()
     check_proper_time_fluctuation_four_fermion_amplitude()
     check_proper_time_determinant_residual_window()

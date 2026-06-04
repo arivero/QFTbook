@@ -159,7 +159,10 @@
   flow.  The finite light-fermion determinant frame continuation fixes the
   inverse \( \det Z_R\det Z_L \) transformation law for
   \(\mathcal R_{\rm f}^{\mathcal S}\), separating source-frame covariance from
-  local determinant counterterm shifts.  The screened-size continuation adds
+  local determinant counterterm shifts; the reference-amplitude calibration
+  continuation then states how one controlled source channel can fix the finite
+  determinant normalization for same-frame channel ratios, with explicit
+  residual amplification and noncancellation margin.  The screened-size continuation adds
   the exact \(I_A(m_{\rm scr})=\frac12m_{\rm scr}^{-A}\Gamma(A/2)\)
   amplitude integral, moment ledger, shell location, and \(SU(3)\), \(N_f=2\)
   mass-saturated \(A=23/3\) specialization when a physical infrared scale is
@@ -320,6 +323,7 @@
 | \(\mathcal W_{\Lambda,{\rm pt}}^{\rm nz}(z;\mu)\) | proper-time representative of the instanton nonzero-mode determinant density |
 | \(\mathcal R_{{\rm f},\Lambda}^{\mathcal S}(z;\mu)\) | finite light-fermion nonzero-mode determinant factor after trivial-sector normalization and scheme-\(\mathcal S\) local counterterms |
 | \(Z_R,Z_L,\Delta C_{\rm f}\) | finite right/left zero-mode source-frame changes and finite local light-fermion determinant counterterm controlling the frame law of \(\mathcal R_{\rm f}^{\mathcal S}\) |
+| \(B_\alpha,M_\alpha,\kappa_0\) | retained source-channel instanton integral, its absolute mass, and the reference-channel noncancellation margin used to calibrate the light-fermion determinant normalization |
 | \(C_N^{\rm PV}\) | orientation-integrated pure-gauge Pauli-Villars one-instanton determinant constant |
 | \(\mathcal Z_{\mathcal O,\Lambda}^{0}(z)\) | finite Berezin coefficient of the zero-mode part of insertions, masses, and sources in a \(Q=1\) instanton background |
 | \(M_{ff'},B_{ff'}\) | mass-overlap and external-source matrices whose finite Berezin determinant and minor expansion give the QCD 't Hooft amplitudes |
@@ -962,6 +966,13 @@
   \(\prod_f(m_f\rho)\) is the mass-saturated zero-mode factor, not the finite
   nonzero-mode determinant constant; the latter is a separate fluctuation
   calculation in the chosen scheme.
+- If that finite light-fermion determinant normalization is fixed by a
+  reference amplitude rather than by direct spectral computation, the manuscript
+  now requires the same finite source frame and the retained integrals
+  \(B_\alpha\).  The prediction for a target channel is
+  \(A_0^{\rm phys}B_\alpha/B_0\), with uncertainty
+  \(E_\alpha+|B_\alpha/B_0|E_0\).  A noncancellation margin
+  \(\kappa_0=|B_0|/M_0\) is therefore part of the normalization datum.
 - The renormalized mass/source instanton vertex is now stated as a source
   functional:
   \[
@@ -1493,3 +1504,14 @@
   verifies the exact finite-window inequality, the \(R^{-1/3}\) tail model, and
   a cancellation negative control.  This responds to the amplitude-control
   concern directly: endpoint convergence alone is not physical dominance.
+- 2026-06-04 issue #597 light-fermion reference-normalization pass: added
+  `ca:instanton-light-fermion-reference-calibration`, which gives a finite
+  amplitude meaning to the light-fermion determinant normalization when it is
+  fixed by one reference observable rather than direct spectral computation.
+  The block derives the same-frame prediction
+  \(A_0^{\rm phys}B_\alpha/B_0\), the residual propagation
+  \(E_\alpha+|B_\alpha/B_0|E_0\), and the reference-channel noncancellation
+  margin \(\kappa_0=|B_0|/M_0\).  The BPST companion verifies the ratio
+  identity, source-frame invariance, and a canceled-reference negative control.
+  This keeps the focus on physical amplitude normalization rather than adding
+  more instanton moduli-space infrastructure.

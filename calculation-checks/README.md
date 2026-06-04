@@ -502,7 +502,11 @@ Current checks:
   determinant/Schur-complement separation of the light-fermion nonzero-mode
   spectral factor from the zero-mode mass/source determinant, the regression
   that the displayed \(\prod_f(m_f\rho)\) factor is a zero-mode saturation
-  determinant rather than a finite spectral determinant, the homogeneous
+  determinant rather than a finite spectral determinant, the reference-amplitude
+  calibration check in which one source channel fixes the finite determinant
+  normalization only through the same-frame ratio \(B_\alpha/B_0\), with
+  reference residuals amplified by that ratio and a noncancellation margin
+  required, the homogeneous
   source-functional RG transport showing how the finite fermion determinant
   factor cancels the anomalous running of \(\det(M^0+J^0)\), the c-number
   external-wave-packet outer product has zero determinant while the
