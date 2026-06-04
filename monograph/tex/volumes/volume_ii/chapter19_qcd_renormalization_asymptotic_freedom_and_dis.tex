@@ -12537,6 +12537,133 @@ Thus continuum JIMWLK is a projective theorem about Wilson-line states and
 QCD factorization; the formal functional Hamiltonian names only the candidate
 cylinder generator.
 
+\begin{controlledapproximation}[Measured small-\(x\) observable map]
+\label{ca:qcd-small-x-measured-observable-map}
+The quantity compared with a DIS structure function, a diffractive cross
+section, or a forward-production bin is a tested color-singlet QCD functional
+rather than the Wilson-line state by itself.  Fix a compact small-\(x\)
+window, a hard scale range \(Q\ge Q_0\), and a test function
+\(\varphi\in\mathcal D_{\rm sx}\) for the measured kinematic bin.  Let
+\(\mathfrak T_{Q,Y}[\varphi]\) denote the exact tested functional built from
+the relevant current product or inclusive/diffractive cross-section operator
+in a finite regulator.  The Wilson-line coordinate associated to the same bin
+has the form
+\begin{equation}
+  \mathcal S^{\rm sx}_{Q,Y}[\varphi]
+  :=
+  \omega_Y\!\left(\Phi^\varphi_{Q,Y}\right),
+  \label{eq:qcd-small-x-wilson-line-observable-coordinate}
+\end{equation}
+where \(\Phi^\varphi_{Q,Y}\) is the gauge-invariant cylinder-limit Wilson-line
+observable produced by the chosen high-energy operator product expansion,
+impact factor, rapidity subtraction, and renormalization scheme.  For a
+virtual photon this impact factor contains the hard \(q\bar q\) and higher
+Fock-state fluctuation weights; for a hadronic final state it contains the
+corresponding jet, fragmentation, or diffractive projection.  The transverse
+Wilson-line evolution supplies only the target-side rapidity dependence in
+this coordinate.
+
+A controlled small-\(x\) prediction for the tested observable therefore
+consists of:
+\begin{enumerate}
+  \item the exact finite-regulator definition of
+  \(\mathfrak T_{Q,Y}[\varphi]\) in the measured channel;
+  \item an impact-factor matching map from the exact color-singlet operator to
+  \(\Phi^\varphi_{Q,Y}\), including virtual corrections, real-emission
+  subtractions, and scheme conventions;
+  \item a rapidity-factorization statement in which the separation scale
+  dependence cancels between the impact factor and JIMWLK evolution in the
+  declared topology;
+  \item the projective Wilson-line state limit of
+  \eqref{eq:qcd-jimwlk-projective-weak-limit-budget} on the cylinder
+  representatives entering \(\Phi^\varphi_{Q,Y}\);
+  \item an evolution and truncation estimate for the retained finite
+  JIMWLK/Balitsky subsystem, with a separate closure residual when BK or a
+  moment truncation is used;
+  \item a power-remainder estimate for finite \(Q\), finite target size,
+  finite rapidity interval, endpoint contamination, and omitted final-state
+  measurements.
+\end{enumerate}
+The finite BFKL eigenvalue, the compact Wilson-line diffusion calculation, and
+the BK closure estimate are entries in this list.  They become physics
+predictions for the measured functional through the impact-factor map and the
+residual controls above.
+\end{controlledapproximation}
+
+\begin{proposition}[Measured small-\(x\) residual budget]
+\label{prop:qcd-small-x-measured-residual-budget}
+In the setting of
+Controlled Approximation~\ref{ca:qcd-small-x-measured-observable-map}, suppose
+the chosen finite approximation
+\(\mathcal A^{(m,n)}_{Q,Y}[\varphi]\) to
+\(\mathcal S^{\rm sx}_{Q,Y}[\varphi]\) satisfies
+\begin{equation}
+\begin{aligned}
+  \mathfrak T_{Q,Y}[\varphi]
+  =
+  \mathcal A^{(m,n)}_{Q,Y}[\varphi]
+  &+\Delta_{\rm IF}[\varphi]
+  +\Delta_{\rm rap}[\varphi]
+  +\Delta_{\rm proj}[\varphi]
+\\
+  &+\Delta_{\rm evol}[\varphi]
+  +\Delta_{\rm clos}[\varphi]
+  +\Delta_{\rm pwr}[\varphi],
+\end{aligned}
+\label{eq:qcd-small-x-measured-residual-decomposition}
+\end{equation}
+where the terms denote, respectively, impact-factor matching, rapidity
+subtraction, projective regulator removal, finite evolution/truncation,
+closure, and power remainders.  If, on the chosen window,
+\begin{equation}
+  |\Delta_a[\varphi]|
+  \leq
+  \epsilon_a(Q_0,Y_*)\,\|\varphi\|_{\mathcal D_{\rm sx}},
+  \qquad
+  a\in
+  \{\mathrm{IF},\mathrm{rap},\mathrm{proj},
+    \mathrm{evol},\mathrm{clos},\mathrm{pwr}\},
+  \label{eq:qcd-small-x-measured-residual-component-bounds}
+\end{equation}
+then
+\begin{equation}
+  \left|
+    \mathfrak T_{Q,Y}[\varphi]
+    -
+    \mathcal A^{(m,n)}_{Q,Y}[\varphi]
+  \right|
+  \leq
+  \left(
+    \epsilon_{\rm IF}
+    +\epsilon_{\rm rap}
+    +\epsilon_{\rm proj}
+    +\epsilon_{\rm evol}
+    +\epsilon_{\rm clos}
+    +\epsilon_{\rm pwr}
+  \right)
+  \|\varphi\|_{\mathcal D_{\rm sx}} .
+  \label{eq:qcd-small-x-measured-residual-budget-bound}
+\end{equation}
+For full JIMWLK evolution one may set
+\(\epsilon_{\rm clos}=0\) and keep the evolution error in
+\(\epsilon_{\rm evol}\); for a BK or finite-moment projection,
+\(\epsilon_{\rm clos}\) is the measured-channel image of the connected
+Wilson-line residual such as \(E^{\rm BK}_{\mathbf x\mathbf y}\).
+\end{proposition}
+
+\begin{proof}
+Subtract the finite approximant in
+\eqref{eq:qcd-small-x-measured-residual-decomposition} and apply the triangle
+inequality with
+\eqref{eq:qcd-small-x-measured-residual-component-bounds}.  The projective
+term is controlled by the cylinder weak-equation ledger
+\eqref{eq:qcd-jimwlk-projective-weak-limit-budget} after inserting the
+cylinder representative of \(\Phi^\varphi_{Q,Y}\).  The impact-factor and
+power terms are separate QCD statements about the measured color-singlet
+operator, while the finite BFKL/Balitsky/JIMWLK calculations constrain their
+corresponding coordinates inside the displayed sum.
+\end{proof}
+
 \paragraph{Conformal covariance of the transverse kernel.}
 The measure
 \[

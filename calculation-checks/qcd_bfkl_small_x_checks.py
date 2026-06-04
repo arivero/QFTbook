@@ -13,7 +13,9 @@ Mellin-eigenvalue constants of the leading BFKL characteristic function, and
 the finite Wilson-line/Fokker-Planck algebra used as the JIMWLK theorem
 boundary, the finite BK-closure algebra/error estimate, and the projective
 cylinder-limit error budget for passing finite weak JIMWLK equations to a
-continuum Wilson-line state.
+continuum Wilson-line state.  They also check the residual telescope that
+turns the Wilson-line state and impact factor into a tested measured small-x
+observable.
 """
 
 from __future__ import annotations
@@ -21,6 +23,9 @@ from __future__ import annotations
 from fractions import Fraction
 
 import sympy as sp
+
+from check_utils import assert_gt
+from check_utils import assert_leq
 
 
 def assert_equal(name: str, got: object, expected: object) -> None:
@@ -307,6 +312,67 @@ def check_projective_jimwlk_cylinder_limit_budget() -> None:
         raise AssertionError("nonvanishing generator error should obstruct the requested tolerance")
 
 
+def check_small_x_measured_observable_residual_budget() -> None:
+    """Check the finite telescope from exact QCD observable to CGC approximant."""
+
+    exact_observable = Fraction(29, 17)
+    residuals = {
+        "impact_factor": Fraction(3, 101),
+        "rapidity": Fraction(2, 137),
+        "projective": Fraction(5, 223),
+        "evolution": Fraction(7, 257),
+        "closure": Fraction(11, 401),
+        "power": Fraction(13, 503),
+    }
+
+    wilson_coordinate = exact_observable - residuals["impact_factor"]
+    rapidity_subtracted = wilson_coordinate - residuals["rapidity"]
+    projective_coordinate = rapidity_subtracted - residuals["projective"]
+    evolved_coordinate = projective_coordinate - residuals["evolution"]
+    closed_coordinate = evolved_coordinate - residuals["closure"]
+    finite_approximant = closed_coordinate - residuals["power"]
+
+    actual_error = exact_observable - finite_approximant
+    signed_residual_sum = sum(residuals.values(), Fraction(0))
+    absolute_budget = sum(abs(value) for value in residuals.values())
+
+    assert_equal(
+        "measured small-x residual telescope",
+        actual_error,
+        signed_residual_sum,
+    )
+    assert_leq(
+        "measured small-x residual budget",
+        abs(actual_error),
+        absolute_budget,
+        tol=Fraction(0),
+    )
+
+    omitted_impact_budget = absolute_budget - abs(residuals["impact_factor"])
+    omitted_closure_budget = absolute_budget - abs(residuals["closure"])
+    assert_gt(
+        "impact-factor residual is necessary for this measured observable",
+        abs(actual_error),
+        omitted_impact_budget,
+    )
+    assert_gt(
+        "closure residual is necessary for this BK-projected observable",
+        abs(actual_error),
+        omitted_closure_budget,
+    )
+
+    full_jimwlk_residuals = dict(residuals)
+    full_jimwlk_residuals["closure"] = Fraction(0)
+    full_jimwlk_error = sum(full_jimwlk_residuals.values(), Fraction(0))
+    full_jimwlk_budget = sum(abs(value) for value in full_jimwlk_residuals.values())
+    assert_leq(
+        "full JIMWLK measured small-x residual budget",
+        abs(full_jimwlk_error),
+        full_jimwlk_budget,
+        tol=Fraction(0),
+    )
+
+
 def main() -> None:
     check_trace_delta_kernel_coefficient()
     check_transverse_inversion_covariance()
@@ -315,9 +381,10 @@ def main() -> None:
     check_finite_bk_closure_algebra()
     check_finite_bk_error_bound_lipschitz_constant()
     check_projective_jimwlk_cylinder_limit_budget()
+    check_small_x_measured_observable_residual_budget()
     print(
         "All QCD small-x/BFKL, finite Wilson-line, BK-closure, "
-        "and projective JIMWLK-limit checks passed."
+        "projective JIMWLK-limit, and measured-observable budget checks passed."
     )
 
 

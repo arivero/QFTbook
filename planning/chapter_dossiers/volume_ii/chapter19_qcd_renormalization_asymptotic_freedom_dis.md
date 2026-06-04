@@ -626,6 +626,15 @@ The chapter must define and derive:
        displayed weak-equation error budget separates this projective theorem
        from the finite BK closure estimate, which controls only one projected
        dipole subsystem.
+22ccf. The measured small-\(x\) prediction now has a separate observable-map
+       budget.  The exact tested DIS, diffractive, or forward-production
+       functional is compared with a Wilson-line coordinate only after
+       impact-factor matching, rapidity subtraction, projective regulator
+       removal, finite evolution/truncation, BK or moment-closure residuals,
+       and power remainders are supplied in the same measurement topology.
+       The companion finite check verifies the residual telescope and shows
+       that dropping the impact-factor or closure entry under-budgets the
+       example observable.
 22cd. Drell--Yan is formulated as a timelike current-current Wightman tensor
       between two hadron states.  The leading-power kinematic variables obey
       \(x_Ax_B=Q^2/s\) and \(y=\frac12\log(x_A/x_B)\).  When the lepton-pair
@@ -890,6 +899,15 @@ The chapter must define and derive:
   `calculation-checks/qcd_bfkl_small_x_checks.py` now checks the finite-step
   residual inequality, a vanishing projective error schedule, and the
   obstruction from a nonzero generator error.
+- 2026-06-04 issue #630 measured small-\(x\) observable-map pass: added the
+  impact-factor/process bridge from the projective Wilson-line state to exact
+  tested DIS, diffractive, and forward-production functionals.  The new
+  residual budget separates impact-factor matching, rapidity subtraction,
+  projective regulator removal, finite evolution/truncation, BK or
+  moment-closure residuals, and power remainders.  The paired
+  `calculation-checks/qcd_bfkl_small_x_checks.py` exact example checks the
+  telescope and includes negative controls for omitted impact-factor and
+  closure entries.
 - 2026-05-28 issue #630 Drell--Yan/Glauber pass: added the Drell--Yan
   hadronic tensor, leading-power kinematics, TMD factorization datum with
   past-pointing staples, finite tensor-product unitarity lemma for the

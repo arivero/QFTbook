@@ -332,7 +332,11 @@ Current checks:
   budget used to pass finite weak JIMWLK equations to a continuum Wilson-line
   state: representative consistency, the finite-step residual bound, a
   vanishing error schedule, and the obstruction caused by a nonvanishing
-  generator error.
+  generator error.  Finally, it checks the measured small-\(x\) observable
+  residual telescope: impact-factor matching, rapidity subtraction,
+  projective regulator removal, evolution, closure, and power remainders add
+  to the exact tested-observable mismatch, and omitting either the
+  impact-factor or BK-closure entry under-budgets the finite example.
 - `qcd_tmd_gpd_checks.py`: symbolic checks for the Volume II QCD TMD/GPD
   convention block, including Collins--Soper/UV integrability, finite TMD
   scheme-change covariance, fixed-product rapidity-scale cancellation in
