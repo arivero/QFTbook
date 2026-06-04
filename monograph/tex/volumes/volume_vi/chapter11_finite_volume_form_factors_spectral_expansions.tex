@@ -762,6 +762,120 @@ growth estimate gives a quantitative path from interacting on-shell data to a
 tested local Schwinger function.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Sinh-Gordon exponential-field two-particle
+calibration]
+\label{ca:sinh-gordon-exponential-two-particle-calibration}
+For a named interacting calibration, take the one-particle sinh-Gordon
+scattering function
+\begin{equation}
+  S_B(\theta)
+  =
+  \frac{\sinh\theta-\ii\sin(\pi B)}
+       {\sinh\theta+\ii\sin(\pi B)},
+  \qquad 0<B<1.
+  \label{eq:sinh-gordon-scattering-function}
+\end{equation}
+It is unitary on the real rapidity axis and crossing symmetric because
+\(\sinh(\ii\pi-\theta)=\sinh\theta\).  Let \(V_a\) be an exponential local
+field candidate with vacuum expectation subtracted, and suppose its retained
+real-rapidity form factors are normalized as
+\[
+  F_1^{(a)}=v_1^{(a)},\qquad
+  F_2^{(a)}(\theta_1,\theta_2)
+  =
+  v_2^{(a)}R_B(\theta_1-\theta_2),
+\]
+where Watson exchange means
+\[
+  R_B(\theta)=S_B(\theta)R_B(-\theta).
+\]
+Assume the model-specific estimate
+\begin{equation}
+  |R_B(\theta)|^2\le C_B^2 e^{2\gamma_B|\theta|},
+  \qquad 0\le \gamma_B\le\frac12 .
+  \label{eq:sinh-gordon-two-particle-growth-bound}
+\end{equation}
+The separated Euclidean connected two-point approximant through two
+particles and rapidity cutoff \(\Lambda\) is
+\begin{align}
+  C_{\le2,\Lambda}^{(a)}(r)
+  &=
+  |v_1^{(a)}|^2
+  \int_{|\theta|\le\Lambda}
+  \frac{\dd\theta}{2\pi}\,
+  e^{-mr\cosh\theta}
+  \notag\\
+  &\quad+
+  \frac{|v_2^{(a)}|^2}{2}
+  \int_{|\theta_1|,|\theta_2|\le\Lambda}
+  \frac{\dd\theta_1\dd\theta_2}{(2\pi)^2}\,
+  |R_B(\theta_1-\theta_2)|^2
+  e^{-mr(\cosh\theta_1+\cosh\theta_2)} .
+  \label{eq:sinh-gordon-two-particle-approximant}
+\end{align}
+This is the first place where the abstract growth window becomes a physical
+observable calculation: the scattering function fixes the exchange phase, but
+the constants \(v_1^{(a)},v_2^{(a)}\) and \(R_B\) are operator data, not
+consequences of \(S_B\) alone.
+
+Let \(I_{\gamma}\) and \(I_{\gamma,\Lambda}^{\rm tail}\) be the majorants
+from \eqref{eq:interacting-form-factor-one-particle-majorant} and
+\eqref{eq:interacting-form-factor-rapidity-tail-majorant}, with
+\(\gamma=\gamma_B\).  Let \(C_{\le2}^{(a)}\) denote the same two-particle
+expression with no rapidity cutoff.  On \(r_0\le r\le r_1\),
+\begin{equation}
+  \left|
+  C_{\le2}^{(a)}(r)-C_{\le2,\Lambda}^{(a)}(r)
+  \right|
+  \le
+  \left(
+    |v_1^{(a)}|^2
+    +
+    |v_2^{(a)}|^2 C_B^2 I_{\gamma_B}(mr_0)
+  \right)
+  I_{\gamma_B,\Lambda}^{\rm tail}(mr_0).
+  \label{eq:sinh-gordon-two-particle-rapidity-tail}
+\end{equation}
+For the two-particle term, the factor \(1/2\) from identical particles is
+exactly balanced by the two choices of which rapidity lies outside the
+window.  If the full exponential-field form-factor family also satisfies
+\eqref{eq:interacting-form-factor-growth-bound}, the omitted sectors
+\(n\ge3\) define a residual \(\mathcal R_{\ge3}\) bounded by
+\begin{equation}
+  |\mathcal R_{\ge3}(r)|
+  \le
+  C_{\mathcal O}^2
+  \frac{X_0^3}{3!}\,
+  \frac{1}{1-X_0/4},
+  \qquad X_0<4,
+  \label{eq:sinh-gordon-higher-particle-tail}
+\end{equation}
+using \eqref{eq:interacting-form-factor-particle-tail-bound} with \(N=2\).
+The retained prediction for the local connected Schwinger function is then
+\[
+  C_{\rm conn}^{(a)}(r)
+  =
+  C_{\le2,\Lambda}^{(a)}(r)
+  +
+  \mathcal R_{\ge3}(r)
+  +
+  \mathcal R_{\Lambda}(r)
+  +
+  \mathcal R_{\rm loc}(r)
+  +
+  \mathcal R_{\rm comp}(r),
+\]
+where \(\mathcal R_\Lambda\) is bounded by
+\eqref{eq:sinh-gordon-two-particle-rapidity-tail}.  The last two residuals
+record the separate local-field and completeness inputs: a solution of
+Watson and residue equations for \(S_B\) is not yet a proof that the
+exponential field is a closed operator affiliated with a nontrivial
+double-cone algebra, nor that its particle form factors exhaust the relevant
+local spectral measure.  This is the intended standard for interacting
+examples: on-shell exactness is converted into a tested separated correlator,
+with the remaining local-QFT assumptions displayed at the same point.
+\end{controlledapproximation}
+
 \section{Thermal Traces And Connected Diagonal Series}
 
 At finite temperature, the Gibbs trace is organized by the thermodynamic
@@ -791,9 +905,9 @@ domain.
 
 \begin{controlledapproximation}[Thermal one-point reconstruction package]
 \label{ca:thermal-lm-one-point-reconstruction-package}
-Formula~\eqref{eq:lm-connected-diagonal-series} is a local observable statement
-only after the thermal state, connected diagonal prescription, and convergence
-window are tied to the same finite-volume thermodynamic limit.  For a retained
+The displayed LM series is a local observable statement only after the thermal
+state, connected diagonal prescription, and convergence window are tied to the
+same finite-volume thermodynamic limit.  For a retained
 particle number \(N\), rapidity cutoff \(\Lambda\), approximate occupation
 \(\widehat n_a(\theta)\), and chosen connected diagonal representatives
 \(\widehat F^{\mathcal O}_{2n,c}\), define

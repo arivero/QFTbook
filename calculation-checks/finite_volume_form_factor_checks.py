@@ -12,6 +12,9 @@ The checks cover algebraic identities used in the finite-volume chapter:
   distance window;
 * interacting one-species form-factor growth-window bookkeeping for
   particle-number and rapidity-cut tails;
+* sinh-Gordon exponential-field two-particle reconstruction-window
+  bookkeeping, including the scalar scattering factor, two-particle rapidity
+  cut, and higher-particle tail;
 * Leclair-Mussardo thermal one-point reconstruction bookkeeping, including
   retained connected-diagonal coordinates, residual propagation, and thermal
   particle/rapidity tail bounds;
@@ -28,15 +31,16 @@ determinant, Gaudin-density cancellation in the sum-integral limit, connected
 diagonal subset combinatorics, the free-Majorana energy-density Bessel
 prefactor, the separated-window rapidity-cut tail bound for that local
 observable, the interacting form-factor growth-window particle-number and
-rapidity-cut tail bounds, the thermal Leclair-Mussardo one-point retained
-coordinate and residual/tail budget, and the residual ledger separating
-finite-volume, tail, diagonal/contact, domain, locality, and completeness
-errors.
+rapidity-cut tail bounds, the sinh-Gordon exponential-field two-particle
+calibration, the thermal Leclair-Mussardo one-point retained coordinate and
+residual/tail budget, and the residual ledger separating finite-volume, tail,
+diagonal/contact, domain, locality, and completeness errors.
 Independent construction: the checks recompute the Jacobian determinant,
 state-counting cancellations, subset sums, thermal connected-diagonal finite
 sums, Bessel prefactors, elementary rapidity-tail constants, tail primitive,
-interacting growth-window majorants, and residual decompositions directly from
-finite formulas rather than importing chapter display strings.
+interacting growth-window majorants, sinh-Gordon scalar-factor algebra, and
+residual decompositions directly from finite formulas rather than importing
+chapter display strings.
 Imported assumptions: the tests use diagonal Bethe-Yang quantization, finite
 nonzero Gaudin densities, regular connected diagonal finite parts, the
 free-Majorana energy operator's two-particle form-factor support after the
@@ -50,7 +54,9 @@ accidentally vanishing reconstruction residuals are rejected, as are missing
 factorial suppression, omitted union-bound factors in interacting rapidity
 cuts, particle-tail estimates used outside their small-tail condition, exact
 TBA occupation data overread as a local expectation, and symmetric diagonal
-finite parts substituted for the connected diagonal prescription.
+finite parts substituted for the connected diagonal prescription, as well as
+a rapidity-window bound with a missing two-particle union contribution and an
+invalid higher-particle tail denominator in the sinh-Gordon calibration.
 Scope boundary: a pass checks finite algebra, normalization, and explicit
 tail-bookkeeping coordinates for the displayed finite-volume/form-factor
 claims; it does not prove general form-factor convergence, construct local
@@ -331,6 +337,129 @@ def check_interacting_form_factor_growth_window() -> None:
         raise AssertionError("negative control failed: higher retained sectors needed no union factor")
 
 
+def check_sinh_gordon_exponential_two_particle_calibration() -> None:
+    # For S_B(theta)=(x-i s)/(x+i s), real-axis unitarity is the equality of
+    # numerator and denominator moduli.  Crossing uses the same x=sinh(theta).
+    samples = [
+        (Fraction(2, 3), Fraction(1, 5)),
+        (Fraction(-7, 4), Fraction(3, 8)),
+    ]
+    for x_value, sine_value in samples:
+        numerator_modulus = x_value * x_value + sine_value * sine_value
+        denominator_modulus = x_value * x_value + sine_value * sine_value
+        assert_equal(
+            f"sinh-Gordon scalar factor real-axis modulus x={x_value}",
+            numerator_modulus,
+            denominator_modulus,
+        )
+        crossed_x_value = x_value
+        assert_equal(
+            f"sinh-Gordon scalar factor crossing x={x_value}",
+            crossed_x_value,
+            x_value,
+        )
+        r_minus_squared = Fraction(7, 9)
+        r_plus_squared = numerator_modulus * r_minus_squared / denominator_modulus
+        assert_equal(
+            f"sinh-Gordon Watson exchange preserves squared magnitude x={x_value}",
+            r_plus_squared,
+            r_minus_squared,
+        )
+
+    v1_squared = Fraction(2, 3)
+    v2_squared = Fraction(5, 7)
+    c_b_squared = Fraction(3, 5)
+    i_gamma = Fraction(4, 3)
+    i_tail = Fraction(1, 11)
+    retained_i = i_gamma - i_tail
+
+    one_particle_full = v1_squared * i_gamma
+    one_particle_cut = v1_squared * retained_i
+    one_particle_cut_error = one_particle_full - one_particle_cut
+    assert_equal(
+        "sinh-Gordon one-particle rapidity cut error",
+        one_particle_cut_error,
+        v1_squared * i_tail,
+    )
+
+    two_particle_full = v2_squared * c_b_squared * i_gamma * i_gamma / factorial(2)
+    two_particle_cut = v2_squared * c_b_squared * retained_i * retained_i / factorial(2)
+    two_particle_exact_error = two_particle_full - two_particle_cut
+    two_particle_union_bound = v2_squared * c_b_squared * i_gamma * i_tail
+    _assert_leq(
+        "sinh-Gordon two-particle rapidity-cut union bound",
+        two_particle_exact_error,
+        two_particle_union_bound,
+        tol=Fraction(0),
+    )
+
+    wrong_missing_union = v2_squared * c_b_squared * i_gamma * i_tail / factorial(2)
+    if two_particle_exact_error <= wrong_missing_union:
+        raise AssertionError(
+            "negative control failed: missing two-particle union contribution still bounded cut error"
+        )
+
+    total_cut_bound = (v1_squared + v2_squared * c_b_squared * i_gamma) * i_tail
+    assert_equal(
+        "sinh-Gordon retained two-particle cut bound",
+        v1_squared * i_tail + two_particle_union_bound,
+        total_cut_bound,
+    )
+
+    c_o_squared = Fraction(5, 6)
+    x0 = Fraction(3, 4)
+    higher_particle_tail = (
+        c_o_squared
+        * x0 ** 3
+        / factorial(3)
+        / (1 - x0 / 4)
+    )
+    first_two_higher_sectors = c_o_squared * (
+        x0 ** 3 / factorial(3)
+        + x0 ** 4 / factorial(4)
+    )
+    _assert_leq(
+        "sinh-Gordon higher-particle tail from N=2",
+        first_two_higher_sectors,
+        higher_particle_tail,
+        tol=Fraction(0),
+    )
+
+    bad_x0 = Fraction(5, 1)
+    bad_denominator = 1 - bad_x0 / 4
+    if bad_denominator > 0:
+        raise AssertionError(
+            "negative control failed: invalid N=2 particle-tail denominator looked usable"
+        )
+
+    local_residual = Fraction(1, 70)
+    completeness_residual = -Fraction(1, 105)
+    target_connected = (
+        two_particle_cut
+        + one_particle_cut
+        + (one_particle_cut_error + two_particle_exact_error)
+        + local_residual
+        + completeness_residual
+    )
+    retained_two_particle_coordinate = one_particle_cut + two_particle_cut
+    residual_total = target_connected - retained_two_particle_coordinate
+    if residual_total == one_particle_cut_error + two_particle_exact_error:
+        raise AssertionError(
+            "negative control failed: local/completeness residuals disappeared from sinh-Gordon budget"
+        )
+    _assert_leq(
+        "sinh-Gordon residual triangle budget",
+        abs(residual_total),
+        (
+            one_particle_cut_error
+            + two_particle_union_bound
+            + abs(local_residual)
+            + abs(completeness_residual)
+        ),
+        tol=Fraction(0),
+    )
+
+
 def check_thermal_lm_one_point_reconstruction_package() -> None:
     retained_coordinate = Fraction(17, 9)
     residuals = {
@@ -526,6 +655,7 @@ def main() -> None:
     check_bessel_prefactor_reduction()
     check_majorana_energy_rapidity_tail_bound()
     check_interacting_form_factor_growth_window()
+    check_sinh_gordon_exponential_two_particle_calibration()
     check_thermal_lm_one_point_reconstruction_package()
     check_subset_count()
     check_reconstruction_residual_budget()

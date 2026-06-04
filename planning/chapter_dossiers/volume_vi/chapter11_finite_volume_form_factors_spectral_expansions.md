@@ -28,6 +28,15 @@ normalization and convergence obligations explicit.
   majorant used to turn a model-specific interacting form-factor growth bound
   into particle-number and rapidity-cut control on a separated Euclidean
   observable window.
+- `S_B`, `B`: sinh-Gordon scalar scattering function and coupling parameter.
+- `v_1^{(a)}`, `v_2^{(a)}`, `R_B`: retained exponential-field
+  one- and two-particle form-factor data in the sinh-Gordon calibration.
+- `C_{\le2,\Lambda}^{(a)}`: rapidity-cut sinh-Gordon connected two-point
+  approximant through the two-particle sector.
+- `\mathcal R_{\ge3}`, `\mathcal R_\Lambda`, `\mathcal R_{\rm loc}`,
+  `\mathcal R_{\rm comp}`: higher-particle, rapidity-window,
+  local-field-construction, and completeness residuals in the sinh-Gordon
+  calibration.
 - `n_a(theta)`: TBA occupation factor.
 - `epsilon_a(theta)`: TBA pseudoenergy.
 - `\mathcal L^O_{R;N,Lambda}`: retained thermal Leclair-Mussardo one-point
@@ -75,23 +84,30 @@ normalization and convergence obligations explicit.
     on-shell data to a tested local Schwinger function once the operator
     reconstruction inputs are supplied; it does not by itself prove locality,
     positivity, domains, or scattering-state completeness.
-16. States the thermal connected-diagonal Leclair-Mussardo type series with
+16. Adds a named sinh-Gordon exponential-field calibration: the scalar
+    scattering function fixes the exchange phase, while the retained
+    operator data \(v_1^{(a)},v_2^{(a)},R_B\) determine a one- plus
+    two-particle connected Euclidean approximant.  The block records the
+    rapidity-window error, the \(N=2\) higher-particle tail inherited from
+    the growth window, and the local-field/completeness residuals that remain
+    beyond exact on-shell form-factor algebra.
+17. States the thermal connected-diagonal Leclair-Mussardo type series with
     the TBA and convergence dependencies explicit.
-17. Adds a thermal one-point reconstruction package: the retained LM
+18. Adds a thermal one-point reconstruction package: the retained LM
     coordinate is separated from residuals for TBA occupation/kernel choice,
     connected diagonal finite part, particle-number tail, rapidity-cut tail,
     thermodynamic KMS limit, and local-operator reconstruction.
-18. Gives a one-species thermal convergence window with \(X_T\), an explicit
+19. Gives a one-species thermal convergence window with \(X_T\), an explicit
     particle-number tail, and a rapidity-cut union bound; the statement
     emphasizes that exact TBA data controls only the occupation coordinate.
-19. Labels the reconstruction chain arrow by arrow: on-shell scattering data,
+20. Labels the reconstruction chain arrow by arrow: on-shell scattering data,
     operator bootstrap/crossing, finite-volume Gaudin-normalized matrix
     elements, and the final analytic reconstruction of distributions.
-20. Separates finite-volume calculability from the open construction theorem
+21. Separates finite-volume calculability from the open construction theorem
     for local QFT from form-factor data, with the free Majorana chain
     identified as theorem-level only because the local free field is already
     constructed.
-21. Adds a separated-Euclidean reconstruction package and residual budget:
+22. Adds a separated-Euclidean reconstruction package and residual budget:
     finite-volume-to-rapidity error, particle-number tail, diagonal/contact
     extension, domain/positivity, locality, and sector-completeness residuals
     must all be controlled before a Gaudin-normalized finite-volume approximant
@@ -107,11 +123,15 @@ normalization and convergence obligations explicit.
   free-Majorana separated-window rapidity-tail prefactor and primitive, the
   interacting growth-window sector/tail majorants with negative controls for
   missing factorial suppression, omitted rapidity-cut union factors, and
-  invalid particle-tail ratios, the thermal LM one-point retained coordinate,
-  residual decomposition, particle-tail and rapidity-tail budgets with
-  negative controls against overreading exact TBA occupations and substituting
-  symmetric diagonal finite parts, and the finite reconstruction residual
-  budget with a deliberately nonzero analytic and operator-level defect.
+  invalid particle-tail ratios, the sinh-Gordon scalar-factor
+  modulus/crossing/Watson-exchange algebra, two-particle rapidity-cut union
+  bound, higher-particle tail, and local/completeness residual budget with
+  negative controls for a missing union contribution and invalid denominator, the
+  thermal LM one-point retained coordinate, residual decomposition,
+  particle-tail and rapidity-tail budgets with negative controls against
+  overreading exact TBA occupations and substituting symmetric diagonal finite
+  parts, and the finite reconstruction residual budget with a deliberately
+  nonzero analytic and operator-level defect.
 
 ## Figure Ledger
 
@@ -154,3 +174,8 @@ decomposition of diagonal disconnected contractions.
   verifies that exact TBA occupation data does not eliminate connected
   diagonal, thermodynamic-state, or local-operator residuals, and that
   symmetric diagonal finite parts change the retained coordinate.
+- 2026-06-04 issue #728 sinh-Gordon calibration pass: added a named
+  exponential-field two-particle reconstruction window.  The new block turns
+  sinh-Gordon exchange/form-factor data into a controlled separated
+  connected two-point approximant, while keeping higher-particle,
+  rapidity-window, local-field, and completeness residuals explicit.
