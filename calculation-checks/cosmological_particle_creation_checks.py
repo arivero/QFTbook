@@ -1,5 +1,20 @@
 #!/usr/bin/env python3
-"""Exact convention checks for cosmological particle-creation formulas."""
+"""Exact convention checks for cosmological particle-creation formulas.
+
+Evidence contract:
+  independent construction: finite mode sums for Robertson-Walker particle
+  diagnostics, stress-tensor source coordinates, pressure work, and Friedmann
+  response coefficients;
+  imported assumptions: the free scalar mode equation, adiabatic/asymptotic
+  particle basis, and renormalized-stress subtraction scheme stated in the
+  chapter;
+  negative controls: wrong scale-factor powers, missing pressure work,
+  treating ongoing production as a conserved fluid, and zero-particle source
+  checks;
+  scope boundary: these checks verify finite stress-source bookkeeping, not
+  interacting cosmological QFT, full adiabatic subtraction, or nonlinear
+  semiclassical existence.
+"""
 
 from __future__ import annotations
 
@@ -169,6 +184,87 @@ def check_out_region_produced_stress_tensor() -> None:
     )
 
 
+def check_produced_stress_continuity_certificate() -> None:
+    # In physical Robertson-Walker time,
+    # rho=a^(-d) sum Omega n and
+    # P=a^(-d) sum k^2 n/((d-1) Omega) obey
+    # dot rho +(d-1)H(rho+P)=a^(-d) sum Omega dot n.
+    d = 4
+    scale_factor = Fraction(2)
+    hubble = Fraction(1, 3)
+    modes = [
+        # degeneracy, comoving momentum k, conformal frequency Omega, n, dot n
+        (2, Fraction(3), Fraction(5), Fraction(7, 11), Fraction(1, 13)),
+        (1, Fraction(4), Fraction(6), Fraction(5, 17), -Fraction(1, 19)),
+    ]
+
+    rho_sum = sum(
+        Fraction(degeneracy) * omega * occupation
+        for degeneracy, _k, omega, occupation, _occupation_dot in modes
+    )
+    pressure_sum = sum(
+        Fraction(degeneracy) * k * k * occupation / ((d - 1) * omega)
+        for degeneracy, k, omega, occupation, _occupation_dot in modes
+    )
+    production_sum = sum(
+        Fraction(degeneracy) * omega * occupation_dot
+        for degeneracy, _k, omega, _occupation, occupation_dot in modes
+    )
+    omega_dot_sum = sum(
+        Fraction(degeneracy)
+        * hubble
+        * (omega - k * k / omega)
+        * occupation
+        for degeneracy, k, omega, occupation, _occupation_dot in modes
+    )
+
+    rho = rho_sum / (scale_factor ** d)
+    pressure = pressure_sum / (scale_factor ** d)
+    production_source = production_sum / (scale_factor ** d)
+    rho_dot = (
+        omega_dot_sum + production_sum
+    ) / (scale_factor ** d) - d * hubble * rho
+
+    assert_equal(
+        "produced stress continuity source",
+        rho_dot + (d - 1) * hubble * (rho + pressure),
+        production_source,
+    )
+
+    constant_occupations = [
+        (degeneracy, k, omega, occupation, Fraction(0))
+        for degeneracy, k, omega, occupation, _occupation_dot in modes
+    ]
+    constant_production_sum = sum(
+        Fraction(degeneracy) * omega * occupation_dot
+        for degeneracy, _k, omega, _occupation, occupation_dot in constant_occupations
+    )
+    assert_equal("constant occupation has no production source", constant_production_sum, Fraction(0))
+
+    wrong_pressure = sum(
+        Fraction(degeneracy) * k * k * occupation / omega
+        for degeneracy, k, omega, occupation, _occupation_dot in modes
+    ) / (scale_factor ** d)
+    assert_equal(
+        "wrong pressure normalization breaks continuity",
+        rho_dot + (d - 1) * hubble * (rho + wrong_pressure) == production_source,
+        False,
+    )
+
+    wrong_source_scale = production_sum / (scale_factor ** (d - 1))
+    assert_equal(
+        "wrong production source scale-factor power",
+        wrong_source_scale == production_source,
+        False,
+    )
+
+    assert_equal(
+        "ongoing production is not a conserved fluid",
+        rho_dot + (d - 1) * hubble * (rho + pressure) == 0,
+        False,
+    )
+
+
 def main() -> None:
     check_conformal_cancellation()
     check_de_sitter_nu_values()
@@ -177,6 +273,7 @@ def main() -> None:
     check_adiabatic_riccati_power_law()
     check_detector_positive_type_finite_model()
     check_out_region_produced_stress_tensor()
+    check_produced_stress_continuity_certificate()
     print("Cosmological particle-creation convention checks passed.")
 
 

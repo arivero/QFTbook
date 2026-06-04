@@ -833,7 +833,10 @@ Current checks:
   produced stress-tensor bridge from \(|\beta_k|^2\) to
   \(a_+^{-d}\int \Omega_k^+|\beta_k|^2\), the pressure formula, the
   massless equation of state, and the homogeneous Friedmann response
-  coefficient.
+  coefficient.  The same companion checks the finite continuity certificate
+  \(\dot\rho+(d-1)H(\rho+P)=a^{-d}\int\Omega_k\dot n_k\), with negative
+  controls against wrong pressure normalization, wrong scale-factor power, and
+  treating ongoing production as a conserved fluid.
 - `energy_correlator_sum_rule_checks.py`: exact finite-event checks for the
   energy-energy-correlator zeroth and first moment sum rules and the
   coincident-detector contact weight in the QCD detector-observable chapter;

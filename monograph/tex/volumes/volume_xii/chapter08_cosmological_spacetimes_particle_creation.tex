@@ -774,6 +774,81 @@ minimal bridge from Bogoliubov coefficients to semiclassical backreaction:
 give the gravitational source datum.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Continuity certificate for produced
+stress]
+\label{ca:cosmology-produced-stress-continuity}
+In a finite time-dependent window one often tracks a time-dependent
+occupation number \(n_k(t)\) in a chosen adiabatic or asymptotic particle
+basis.  This is a useful diagnostic only if the corresponding stress tensor
+is also tracked.  Let \(t\) be physical Robertson--Walker time,
+\[
+  H=\frac{\dot a}{a},\qquad
+  \Omega_k(t)=\sqrt{k^2+a(t)^2m^2}.
+\]
+In the diagonal particle approximation, after the same vacuum subtraction and
+finite curvature counterterms have been fixed, define
+\begin{align}
+  \rho_n(t)
+  &=
+  a(t)^{-d}
+  \int
+  \frac{d^{d-1}\mathbf k}{(2\pi)^{d-1}}\,
+  \Omega_k(t)n_k(t),
+  \label{eq:cosmology-produced-time-dependent-rho}
+  \\
+  P_n(t)
+  &=
+  a(t)^{-d}
+  \int
+  \frac{d^{d-1}\mathbf k}{(2\pi)^{d-1}}\,
+  \frac{k^2}{(d-1)\Omega_k(t)}n_k(t).
+  \label{eq:cosmology-produced-time-dependent-pressure}
+\end{align}
+Then the diagonal produced stress obeys the exact finite-window identity
+\begin{equation}
+  \dot\rho_n+(d-1)H(\rho_n+P_n)
+  =
+  a^{-d}
+  \int
+  \frac{d^{d-1}\mathbf k}{(2\pi)^{d-1}}\,
+  \Omega_k\,\dot n_k .
+  \label{eq:cosmology-produced-continuity-source}
+\end{equation}
+Indeed \(\dot\Omega_k=H(\Omega_k-k^2/\Omega_k)\), so the redshift of the
+physical volume, the change of the physical energy, and the pressure work
+cancel exactly when \(n_k\) is fixed.  The right-hand side of
+\eqref{eq:cosmology-produced-continuity-source} is therefore not an optional
+correction: it is the stress-energy source carried by ongoing particle
+production in the selected basis.
+
+Consequently a time-dependent \(|\beta_k(t)|^2\) curve cannot be used as a
+conserved matter component unless the residual
+\begin{equation}
+  E_{\rm cont}
+  =
+  \left|
+  \dot\rho_n+(d-1)H(\rho_n+P_n)
+  -
+  a^{-d}
+  \int
+  \frac{d^{d-1}\mathbf k}{(2\pi)^{d-1}}\,
+  \Omega_k\,\dot n_k
+  \right|
+  \label{eq:cosmology-produced-continuity-residual}
+\end{equation}
+is small after the omitted coherence terms, nonadiabatic basis-change terms,
+vacuum-polarization pieces, and geometric counterterm contributions have been
+assigned to the remainder in
+\eqref{eq:cosmology-stress-produced-decomposition}.  In an out region
+\(\dot n_k=0\), and
+\eqref{eq:cosmology-produced-continuity-source} reduces to ordinary
+redshifting of a free produced gas.  During production, the source term is the
+quantity which must enter any retained Friedmann or semiclassical response
+window.  Dropping \(P_n\), using only the number density, or replacing
+\eqref{eq:cosmology-produced-continuity-source} by \(\dot\rho_n=0\) is a
+different approximation and requires its own error bound.
+\end{controlledapproximation}
+
 \section{Backreaction Boundary}
 
 The expectation value \(\langle T_{\mu\nu}\rangle\) in a time-dependent state

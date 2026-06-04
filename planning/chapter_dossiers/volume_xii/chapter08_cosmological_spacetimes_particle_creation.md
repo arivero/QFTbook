@@ -29,6 +29,9 @@ about ambiguity.
 - `rho_beta`, `P_beta`, `Omega_k^+`, `a_+`: produced-particle energy
   density, pressure, out conformal frequency, and future static scale factor
   used in the stress-tensor/backreaction bridge.
+- `n_k(t)`, `S_n`, `E_cont`: time-dependent diagonal particle occupation,
+  production source \(a^{-d}\int\Omega_k\dot n_k\), and continuity residual
+  for using produced stress as a backreaction input.
 
 ## Claim Ledger
 
@@ -63,6 +66,11 @@ about ambiguity.
 - Records the homogeneous Friedmann response
   \(\delta H_t^2=2\kappa_d\delta\rho_\beta/((d-1)(d-2))\) as the retained
   source bridge from particle production to semiclassical backreaction.
+- Adds the finite continuity certificate
+  \(\dot\rho_n+(d-1)H(\rho_n+P_n)=a^{-d}\int\Omega_k\dot n_k\), showing that
+  a time-dependent particle diagnostic becomes a backreaction source only
+  together with pressure work and the production term; an out region with
+  \(\dot n_k=0\) is the conserved produced-gas limit.
 - States the backreaction boundary: particle production is a diagnostic of a
   state, not a closed semiclassical Einstein equation.
 
@@ -74,7 +82,9 @@ about ambiguity.
   identity, finite positive-type detector-response Gram forms, the out-region
   produced energy/pressure formulas, the required \(a_+^{-d}\) scale-factor
   power, the massless equation of state, and the Friedmann response
-  coefficient.
+  coefficient, plus the time-dependent produced-stress continuity identity
+  with negative controls against wrong pressure normalization, wrong
+  scale-factor power, and treating ongoing production as a conserved fluid.
 - Related scripts: `calculation-checks/point_splitting_stress_checks.py` for
   de Sitter stress-tensor/anomaly arithmetic and
   `calculation-checks/hawking_bogoliubov_checks.py` for the black-hole
@@ -107,3 +117,9 @@ timelike detector worldline sampling the two-point function.
   production into a renormalized-stress source coordinate and homogeneous
   Friedmann response while keeping vacuum-subtraction, curvature-counterterm,
   and tail/remainder data separate.
+- 2026-06-04 issue #729 produced-stress continuity pass: added
+  `ca:cosmology-produced-stress-continuity`, deriving the finite continuity
+  certificate for time-dependent diagonal particle occupations.  The companion
+  verifies the pressure-work cancellation, the source term
+  \(a^{-d}\int\Omega_k\dot n_k\), and negative controls against pressure,
+  scale-factor, and conserved-fluid shortcuts.
