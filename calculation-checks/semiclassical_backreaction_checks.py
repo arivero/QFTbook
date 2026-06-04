@@ -33,17 +33,19 @@ noise, the closed-time-path package tests tying Ward identities, retarded
 support, positivity, and fluctuation-dissipation compatibility together, the
 small-gain feedback inverse and noise-amplification bound for the full retained
 backreaction operator, the finite nonlinear self-map/contraction and
-mean/noise-validity budgets for a retained backreaction chart, and the
-low-energy root selected by reduction of order.
+mean/noise-validity budgets, including residual size and residual Lipschitz
+controls, for a retained backreaction chart, and the low-energy root selected
+by reduction of order.
 Independent construction: the checks recompute traces, KMS factors,
 matrix pushforwards, exact retained-sector inverses, Wick-contraction
 coefficients, cosmological-coordinate shifts, independent finite counterterm
 controls, signed/absolute norm bounds, Ward maps, kernel projectors, projected
 covariances, finite influence-functional quadratic forms, retarded-support
 tests, fluctuation-dissipation ratios, small-gain inverses, response/noise
-bounds, nonlinear fixed-point radii, residual budgets, state-transport
-Lipschitz constants, noise-validity inequalities, and toy roots directly from
-finite formulas rather than importing chapter display strings.
+bounds, nonlinear fixed-point radii, residual size and residual Lipschitz
+budgets, state-transport Lipschitz constants, noise-validity inequalities, and
+toy roots directly from finite formulas rather than importing chapter display
+strings.
 Imported assumptions: the tests use finite-dimensional retained sectors,
 centered quasifree Wick combinatorics, formal first- and second-order lambda
 coordinates, positive finite noise matrices, full-rank finite Ward maps, and the
@@ -64,8 +66,9 @@ response kernels, independent noise spectra violating the KMS factor, and
 spurious closed-time-path h_c h_c terms are rejected, as are singular feedback
 operators, overlarge small-gain feedback, unconserved sources/noise, and
 conserved-but-unstable retained data, signed nonlinear residual cancellations,
-omitted state-transport Lipschitz constants, overlarge quadratic nonlinear
-feedback, and linear-noise-only validity estimates.
+omitted state-transport Lipschitz constants, omitted residual Lipschitz
+constants, bounded non-Lipschitz residuals with multiple fixed points, overlarge
+quadratic nonlinear feedback, and linear-noise-only validity estimates.
 Scope boundary: a pass checks coefficient, positivity, and response-bound
 bookkeeping for the retained potential-insertion coordinate and the finite
 algebra of a full retained stress-tensor package; it does not construct the
@@ -1008,6 +1011,7 @@ def check_nonlinear_backreaction_fixed_point_chart() -> None:
     quadratic_bound = Fraction(1, 4)
     state_lipschitz = Fraction(1, 8)
     residual_bound = Fraction(1, 20)
+    residual_lipschitz = Fraction(1, 8)
 
     nonlinear_budget = (
         quadratic_bound * radius * radius
@@ -1020,14 +1024,16 @@ def check_nonlinear_backreaction_fixed_point_chart() -> None:
     if self_map_bound > radius:
         raise AssertionError("nonlinear retained map should stay inside the chart")
 
-    contraction = m_full * (2 * quadratic_bound * radius + state_lipschitz)
-    if contraction != Fraction(1, 4):
+    contraction = m_full * (
+        2 * quadratic_bound * radius + state_lipschitz + residual_lipschitz
+    )
+    if contraction != Fraction(1, 3):
         raise AssertionError("nonlinear contraction constant changed")
     if contraction >= 1:
         raise AssertionError("nonlinear retained map should be contractive")
 
     correction_bound = m_full * nonlinear_budget / (1 - contraction)
-    if correction_bound != Fraction(7, 45):
+    if correction_bound != Fraction(7, 40):
         raise AssertionError("nonlinear correction bound changed")
     if h_linear_norm + correction_bound > radius:
         raise AssertionError("nonlinear correction should keep the solution in the chart")
@@ -1042,20 +1048,83 @@ def check_nonlinear_backreaction_fixed_point_chart() -> None:
 
     bad_quadratic_bound = Fraction(2)
     bad_quadratic_contraction = m_full * (
-        2 * bad_quadratic_bound * radius + state_lipschitz
+        2 * bad_quadratic_bound * radius + state_lipschitz + residual_lipschitz
     )
     if bad_quadratic_contraction <= 1:
         raise AssertionError("negative control failed: overlarge nonlinear feedback accepted")
 
-    omitted_state_lipschitz_contraction = m_full * (2 * quadratic_bound * radius)
+    omitted_state_lipschitz_contraction = m_full * (
+        2 * quadratic_bound * radius + residual_lipschitz
+    )
     bad_state_lipschitz = Fraction(3, 2)
     actual_state_contraction = m_full * (
-        2 * quadratic_bound * radius + bad_state_lipschitz
+        2 * quadratic_bound * radius + bad_state_lipschitz + residual_lipschitz
     )
     if omitted_state_lipschitz_contraction >= 1:
         raise AssertionError("test omitted-state contraction should look falsely safe")
     if actual_state_contraction <= 1:
         raise AssertionError("negative control failed: omitted state transport was harmless")
+
+    omitted_residual_lipschitz_contraction = m_full * (
+        2 * quadratic_bound * radius + state_lipschitz
+    )
+    bad_residual_lipschitz = Fraction(3, 2)
+    actual_residual_contraction = m_full * (
+        2 * quadratic_bound * radius + state_lipschitz + bad_residual_lipschitz
+    )
+    if omitted_residual_lipschitz_contraction >= 1:
+        raise AssertionError("test omitted-residual contraction should look falsely safe")
+    if actual_residual_contraction <= 1:
+        raise AssertionError("negative control failed: omitted residual variation was harmless")
+
+    counterexample_radius = Fraction(1)
+    counterexample_residual_bound = Fraction(1, 2)
+    sup_only_self_map_bound = counterexample_residual_bound
+    sup_only_contraction = Fraction(0)
+    if sup_only_self_map_bound > counterexample_radius:
+        raise AssertionError("test bounded residual should be a self-map")
+    if sup_only_contraction >= 1:
+        raise AssertionError("test sup-only contraction should look falsely safe")
+
+    def sqrt_fraction(value: Fraction) -> Fraction:
+        numerator_root = math.isqrt(value.numerator)
+        denominator_root = math.isqrt(value.denominator)
+        if (
+            numerator_root * numerator_root != value.numerator
+            or denominator_root * denominator_root != value.denominator
+        ):
+            raise AssertionError("test fraction does not have an exact square root")
+        return Fraction(numerator_root, denominator_root)
+
+    def bounded_non_lipschitz_residual(h_value: Fraction) -> Fraction:
+        if h_value == 0:
+            return Fraction(0)
+        sign = 1 if h_value > 0 else -1
+        return sign * Fraction(1, 2) * sqrt_fraction(abs(h_value))
+
+    counterexample_fixed_points = (
+        Fraction(0),
+        Fraction(1, 4),
+        Fraction(-1, 4),
+    )
+    if any(
+        bounded_non_lipschitz_residual(point) != point
+        for point in counterexample_fixed_points
+    ):
+        raise AssertionError("bounded non-Lipschitz residual fixed points changed")
+    if len(set(counterexample_fixed_points)) != 3:
+        raise AssertionError("negative control failed: residual counterexample was unique")
+
+    near_zero_ratios = []
+    for denominator_root in (4, 8, 16, 32):
+        h_value = Fraction(1, denominator_root * denominator_root)
+        ratio = abs(
+            bounded_non_lipschitz_residual(h_value)
+            - bounded_non_lipschitz_residual(Fraction(0))
+        ) / h_value
+        near_zero_ratios.append(ratio)
+    if near_zero_ratios != [Fraction(2), Fraction(4), Fraction(8), Fraction(16)]:
+        raise AssertionError("negative control failed: residual ratios did not grow")
 
     signed_residual = Fraction(-1, 2)
     signed_self_map_bound = h_linear_norm + m_full * (
@@ -1082,7 +1151,7 @@ def check_nonlinear_backreaction_fixed_point_chart() -> None:
         + noise_amplification * missing_noise_trace
         + nonlinear_noise_tail
     )
-    if full_noise_validity_bound != Fraction(113, 810):
+    if full_noise_validity_bound != Fraction(3, 20):
         raise AssertionError("nonlinear noise validity budget changed")
     validity_scale = Fraction(1, 5)
     if full_noise_validity_bound >= validity_scale:

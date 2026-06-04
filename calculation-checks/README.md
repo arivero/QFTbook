@@ -2184,10 +2184,11 @@ Current checks:
   noise-amplification and missing-noise residual bounds, and negative controls
   for singular feedback, overlarge feedback, unconserved inputs, and
   conserved-but-unstable amplification, the nonlinear fixed-point chart
-  self-map, contraction, correction, missing-noise, and stochastic validity
-  budgets with negative controls for signed residual cancellation, omitted
-  state transport, overlarge quadratic feedback, and linear-noise-only
-  validity, and the
+  self-map, residual-Lipschitz contraction, correction, missing-noise, and
+  stochastic validity budgets with negative controls for signed residual
+  cancellation, omitted state transport, omitted residual variation, bounded
+  non-Lipschitz residuals with multiple fixed points, overlarge quadratic
+  feedback, and linear-noise-only validity, and the
   low-energy root selected by reduction of order in a toy higher-derivative
   equation.
 - `schwinger_keldysh_operator_checks.py`: finite two-level-system checks for

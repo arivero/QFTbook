@@ -292,7 +292,19 @@ curvature, microscopic, and EFT scales.
   for the mean solution and its fluctuations.  This is architecture work: the
   text now requires one matched chart containing the interacting
   source/noise/response package, Ward-clean constraint reduction, quadratic
-  nonlinear feedback, state transport, residual budgets, and a fluctuation
-  radius.  The companion rejects signed residual cancellations, omitted
-  state-transport Lipschitz control, overlarge nonlinear feedback, and
-  linear-noise-only validity estimates.
+  nonlinear feedback, state transport, residual size budgets, residual
+  Lipschitz budgets, and a fluctuation radius.  The companion rejects signed
+  residual cancellations, omitted state-transport Lipschitz control, omitted
+  residual variation, bounded non-Lipschitz residuals with multiple fixed
+  points, overlarge nonlinear feedback, and linear-noise-only validity
+  estimates.
+- 2026-06-04 issue #749 residual-Lipschitz repair: re-audited
+  `ca:semiclassical-nonlinear-backreaction-chart` after the bounded-residual
+  counterexample.  The controlled approximation now separates the residual
+  size needed for the self-map estimate from the residual Lipschitz constant
+  needed for Picard uniqueness, revises
+  \(\kappa_{\rm nl}=M_{\rm full}(2C_2r_h+L_{\rm st}+L_{\rm R})\), and states
+  that a purely bounded \(h\)-dependent residual cannot by itself support a
+  contraction claim.  The companion adds an omitted-residual-variation negative
+  control and the one-dimensional bounded non-Lipschitz residual with three
+  fixed points.

@@ -1626,7 +1626,13 @@ Assume that, for \(h,\tilde h\in B_h(r_h)\),
   \le
   L_{\rm st}\lVert h-\tilde h\rVert,
   \qquad
-  \sup_{B_h(r_h)}\lVert\mathcal R_{\rm nl}\rVert\le\epsilon_{\rm nl}.
+  \sup_{B_h(r_h)}\lVert\mathcal R_{\rm nl}\rVert\le\epsilon_{\rm nl},
+  \\
+  \lVert
+    \mathcal R_{\rm nl}(h)-\mathcal R_{\rm nl}(\tilde h)
+  \rVert
+  \le
+  L_{\rm R}\lVert h-\tilde h\rVert .
 \end{gathered}
   \label{eq:semiclassical-nonlinear-chart-bounds}
 \end{equation}
@@ -1640,14 +1646,21 @@ Then the retained equation is controlled on this finite window when
   \qquad
   \kappa_{\rm nl}
   =
-  M_{\rm full}(2C_2r_h+L_{\rm st})<1 .
+  M_{\rm full}(2C_2r_h+L_{\rm st}+L_{\rm R})<1 .
   \label{eq:semiclassical-nonlinear-contraction-test}
 \end{equation}
 The first inequality says that the declared source and residuals stay inside
 the metric chart; the second says that nonlinear feedback and state transport
-cannot undo the linear small-gain estimate.  In that case the Picard sequence
-defined by \(\Phi\) converges to a unique retained solution in \(B_h(r_h)\),
-and the nonlinear correction to the linear response is bounded by
+cannot undo the linear small-gain estimate once the omitted retained residual
+has also been controlled as a function of the metric perturbation.  The last
+Lipschitz line is essential: a bounded \(h\)-dependent residual certifies only a
+self-map estimate, not a contraction.  If the residual is an additive
+\(h\)-independent defect, this is the special case \(L_{\rm R}=0\); if only a
+size bound is available, the finite chart must not claim Picard uniqueness
+without replacing the argument by separate compactness and continuity
+hypotheses.  Under the displayed contraction hypothesis the Picard sequence
+defined by \(\Phi\) converges to a unique retained solution in \(B_h(r_h)\), and
+the nonlinear correction to the linear response is bounded by
 \begin{equation}
   \lVert h-h_{\rm lin}\rVert
   \le
