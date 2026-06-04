@@ -137,7 +137,11 @@
   the high-temperature determinant datum
   \(m_T^2=\pi^2T^2(2N_c+N_f)/3=\pi^2m_D^2/g_{\rm YM}^2\), with an explicit
   residual-window error bound so the Gaussian GPY/HTL coefficient is not
-  mistaken for the full finite-temperature determinant.  The 2026-06-03
+  mistaken for the full finite-temperature determinant.  The thermal-observable
+  continuation then pushes that activity into
+  \(\chi_{\rm top}^{T,{\rm dig}}=2\zeta_T\), \(b_2=-1/12\), and the
+  \(SU(3)\), \(N_f=2\) \(T^{-23/3}\) scaling law for the theta curvature,
+  with the determinant residual propagated to the susceptibility.  The 2026-06-03
   verification-contract follow-up records, in the
   calculation-check docstring rather than the TeX, the target claims,
   independent constructions, imported assumptions, negative controls, and
@@ -291,6 +295,7 @@
 | \(\zeta_m^{[\rho_-,\rho_+]}\) | mass-saturated one-instanton vacuum activity in a finite size window |
 | \(m_{\rm scr},A,\mathcal A_{\rm scr}^{(0)}\) | physical infrared screening scale, screened size-integral power \(A=b_0+\beta_{\mathcal X}-4\), and leading screened one-instanton amplitude |
 | \(m_T,R_T,\mathcal A_T^G\) | high-temperature determinant screening scale, finite-temperature determinant residual, and Gaussian thermal one-instanton approximation |
+| \(\zeta_T^G,\chi_{\rm top}^{T,G}\) | Gaussian high-temperature dilute one-instanton activity and its induced topological susceptibility |
 | \(T,\mathcal D_{\rm zm},E_{\rm zm},\rho_{\rm zm}\) | instanton--anti-instanton near-zero-mode overlap matrix, projected Dirac block, remainder, and singular-value density used in the instanton-liquid criterion |
 | \(\beta_{\mathcal X}\) | small-instanton boundary exponent of a specified scalar insertion datum \(\mathcal X\) |
 | \(A_\alpha(\mathcal X),G_\beta(\mathcal X)\) | Uhlenbeck bubbling-scale and collision-face exponents in the multi-instanton boundary budget |
@@ -727,6 +732,14 @@
   \(e^{\varepsilon_T}-1\).  For \(SU(3)\), \(N_f=2\) mass saturation,
   \(\pi^2T^2\rho_{\rm shell}^2=23/16\).  This is a finite-temperature
   determinant statement, not a zero-temperature instanton-liquid prediction.
+- Combining the thermal activity with the dilute-gas hypothesis gives the
+  leading thermal theta curvature
+  \(\chi_{\rm top}^{T,{\rm dig}}=2\zeta_T\) and \(b_2^{T,{\rm dig}}=-1/12\).
+  The residual bound on the determinant activity propagates unchanged to
+  \(\chi_{\rm top}\).  In the \(SU(3)\), \(N_f=2\) mass-saturated channel the
+  Gaussian susceptibility scales as
+  \(|m_um_d|\Lambda_{\rm ht}^{29/3}T^{-23/3}\) up to finite determinant,
+  source-frame, and running-mass coordinates.
 - The dilute instanton gas is now stated only as a controlled amplitude
   expansion after the regulated one-instanton calculation has supplied a
   finite activity \(\zeta_\Lambda\).  Under Poisson factorization it gives
@@ -1231,3 +1244,14 @@
   \(\pi^2T^2\rho_{\rm shell}^2=23/16\), the half-trace/trace-delta conversion,
   the \(T^{-23/3}\) scaling, and the finite residual ledger.  This is a
   physical fluctuation-determinant bridge, not a moduli-space addition.
+- 2026-06-04 issue #597/#630 thermal theta-observable pass: added
+  `ca:thermal-dilute-instanton-susceptibility`, carrying the screened thermal
+  activity into the dilute topological susceptibility and fourth theta
+  curvature.  The block derives \(\chi_{\rm top}^{T,{\rm dig}}=2\zeta_T\),
+  \(b_2=-1/12\), the inherited residual bound, and the \(SU(3)\), \(N_f=2\)
+  mass-saturated scaling
+  \(|m_um_d|\Lambda_{\rm ht}^{29/3}T^{-23/3}\).  The BPST companion check now
+  verifies the dimension, temperature power, Poisson curvature, and residual
+  propagation.  This converts the instanton-size work into a theta-curvature
+  observable while preserving the near-crossover and zero-temperature scope
+  boundary.

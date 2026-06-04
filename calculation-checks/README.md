@@ -515,8 +515,10 @@ Current checks:
   bookkeeping, the thermal determinant-screening coefficient
   \(m_T^2=\pi^2T^2(2N_c+N_f)/3\), its trace-delta Debye-mass conversion, the
   \(SU(3)\), \(N_f=2\) thermal shell value
-  \(\pi^2T^2\rho_{\rm shell}^2=23/16\), and the residual-window error ledger,
-  the
+  \(\pi^2T^2\rho_{\rm shell}^2=23/16\), the residual-window error ledger, and
+  the induced dilute thermal topological susceptibility
+  \(\chi_{\rm top}^{T,{\rm dig}}=2\zeta_T\) with \(b_2=-1/12\),
+  \(T^{-23/3}\) \(SU(3)\), \(N_f=2\) scaling, and inherited residual bound, the
   dilute instanton-gas theta cumulants \(\chi_{\rm top}=2\zeta\) and
   \(b_2=-1/12\) after a finite activity has been supplied, the
   finite instanton--anti-instanton zero-mode overlap matrix whose singular

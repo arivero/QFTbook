@@ -6958,6 +6958,87 @@ confinement in zero-temperature Yang--Mills.  Its output is the conditional
 theta-dependence and zero-mode-saturated amplitude data above.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Thermal dilute topological susceptibility]
+\label{ca:thermal-dilute-instanton-susceptibility}
+Combine the thermal determinant-screened one-instanton activity of
+ControlledApproximation~\ref{ca:thermal-instanton-determinant-screening} with
+the dilute-gas hypothesis in
+ControlledApproximation~\ref{ca:dilute-instanton-gas-amplitude}.  Write the
+Gaussian one-instanton activity per Euclidean four-volume as
+\begin{equation}
+  \zeta_T^{G}
+  =
+  \frac{K_{T,0}}{2}
+  \left(\pi^2T^2\,\frac{2N_c+N_f}{3}\right)^{-A/2}
+  \Gamma\!\left(\frac A2\right),
+  \qquad
+  A=b_0+\beta_{\mathcal X}-4,
+  \label{eq:thermal-dilute-gaussian-activity}
+\end{equation}
+where \(K_{T,0}\) contains the collective-coordinate normalization,
+zero-temperature nonzero-mode determinant convention, mass/source
+zero-mode-saturation coefficient, and any finite source-frame normalization in
+the selected channel.  If the finite-temperature determinant residual obeys
+\(|R_T(\rho)|\le\varepsilon_T\) on the same size window, the exact activity
+\(\zeta_T\) satisfies
+\begin{equation}
+  \left|\zeta_T-\zeta_T^{G}\right|
+  \le
+  \bigl(\ee^{\varepsilon_T}-1\bigr)\zeta_T^{G}.
+  \label{eq:thermal-dilute-activity-residual}
+\end{equation}
+Consequently the leading dilute topological susceptibility and fourth theta
+curvature are
+\begin{equation}
+  \chi_{\rm top}^{T,{\rm dig}}
+  =
+  2\zeta_T,\qquad
+  \partial_\theta^4E_T^{\rm dig}\big|_{\theta=0}
+  =
+  -2\zeta_T,\qquad
+  b_2^{T,{\rm dig}}=-\frac1{12},
+  \label{eq:thermal-dilute-topological-cumulants}
+\end{equation}
+with Gaussian approximants obtained by replacing \(\zeta_T\) by
+\(\zeta_T^G\).  The susceptibility error is bounded by
+\begin{equation}
+  \left|
+  \chi_{\rm top}^{T,{\rm dig}}-\chi_{\rm top}^{T,G}
+  \right|
+  \le
+  \bigl(\ee^{\varepsilon_T}-1\bigr)\chi_{\rm top}^{T,G},
+  \qquad
+  \chi_{\rm top}^{T,G}=2\zeta_T^{G}.
+  \label{eq:thermal-dilute-susceptibility-residual}
+\end{equation}
+
+For mass-saturated \(SU(3)\), \(N_f=2\) QCD,
+\[
+  A=\frac{23}{3},\qquad
+  \chi_{\rm top}^{T,G}
+  =
+  K_{T,0}
+  \left(\frac83\pi^2T^2\right)^{-23/6}
+  \Gamma\!\left(\frac{23}{6}\right).
+\]
+After the one-loop action has been traded for
+\(\Lambda_{\rm ht}^{29/3}\) in the hard convention used above, this is the
+dimension-four scaling
+\begin{equation}
+  \chi_{\rm top}^{T,G}
+  \propto
+  |m_u m_d|\,
+  \Lambda_{\rm ht}^{29/3}\,
+  T^{-23/3}
+  \label{eq:thermal-su3-nf2-topological-susceptibility-scaling}
+\end{equation}
+up to the displayed finite determinant, source-frame, and running-mass
+coordinates.  This is a statement about the theta curvature of a dilute,
+screened thermal instanton ensemble.  It is not a proof that isolated
+instantons dominate the topological susceptibility near the crossover or at
+zero temperature.
+\end{controlledapproximation}
+
 \begin{proposition}[Zero-mode overlap determinant in an instanton ensemble]
 \label{prop:instanton-ensemble-zero-mode-overlap}
 Fix a finite-volume, finite-regulator vectorlike \(SU(N_c)\) QCD background

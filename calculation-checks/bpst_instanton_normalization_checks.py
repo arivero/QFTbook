@@ -93,6 +93,10 @@ relations
     m_T^2=pi^2 T^2 (2 Nc+Nf)/3, matching pi^2 m_D^2/g_YM^2 in the
     trace-delta Debye convention and giving pi^2 T^2 rho_shell^2=23/16
     for the SU(3), Nf=2 mass-saturated channel
+    the corresponding dilute high-temperature topological susceptibility has
+    chi_top=2 zeta_T, b2=-1/12, the same multiplicative determinant-residual
+    bound as zeta_T, and SU(3), Nf=2 scaling
+    |m_u m_d| Lambda_ht^(29/3) T^(-23/3)
     the renormalized mass/source instanton functional has homogeneous
     source-coordinate RG transport, with the finite fermion determinant factor
     cancelling the anomalous running of det(M^0+J^0)
@@ -2981,6 +2985,45 @@ def check_thermal_instanton_determinant_screening() -> None:
     )
 
 
+def check_thermal_dilute_topological_susceptibility() -> None:
+    n_c = 3
+    n_f = 2
+    b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+    activity_power = b0 + n_f - 4
+    assert_equal("thermal dilute SU(3) Nf=2 activity power", activity_power, Fraction(23, 3))
+
+    # The Gaussian activity has a factor (T^2)^(-A/2)=T^(-A).  The
+    # susceptibility is 2*zeta_T, so it carries the same temperature power.
+    susceptibility_t_power = -activity_power
+    assert_equal("thermal dilute susceptibility T power", susceptibility_t_power, -Fraction(23, 3))
+
+    # After the one-loop action is traded for Lambda_ht^b0, the mass-saturated
+    # prefactor has dimensions Nf+b0 and the screened integral has dimension -A.
+    mass_dimension = Fraction(n_f) + b0 - activity_power
+    assert_equal("thermal dilute susceptibility mass dimension", mass_dimension, Fraction(4))
+
+    # The Poisson/Skellam dilute gas gives chi_top=2*zeta and fourth derivative
+    # -2*zeta, hence b2 = (-2*zeta)/(12*chi_top).
+    zeta_units = Fraction(13, 7)
+    chi_top = 2 * zeta_units
+    fourth_theta_curvature = -2 * zeta_units
+    b2 = fourth_theta_curvature / (12 * chi_top)
+    assert_equal("thermal dilute topological susceptibility", chi_top, Fraction(26, 7))
+    assert_equal("thermal dilute theta b2", b2, -Fraction(1, 12))
+
+    # A multiplicative determinant residual for zeta_T propagates unchanged to
+    # chi_top=2*zeta_T.
+    residual_multiplier_bound = Fraction(1, 6)
+    activity_error = residual_multiplier_bound * zeta_units
+    susceptibility_error = 2 * activity_error
+    susceptibility_error_bound = residual_multiplier_bound * chi_top
+    assert_equal(
+        "thermal dilute susceptibility residual inherits activity bound",
+        susceptibility_error,
+        susceptibility_error_bound,
+    )
+
+
 def check_uhlenbeck_boundary_face_budget() -> None:
     for n_c in range(2, 8):
         for k in range(1, 6):
@@ -3075,6 +3118,7 @@ def main() -> None:
     check_mass_saturated_vacuum_activity_size_integral()
     check_screened_one_instanton_size_integral()
     check_thermal_instanton_determinant_screening()
+    check_thermal_dilute_topological_susceptibility()
     check_uhlenbeck_boundary_face_budget()
     check_k_one_adhm_dimension_and_cone_power()
     print("All BPST instanton normalization checks passed.")
