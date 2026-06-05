@@ -2506,8 +2506,10 @@ Current checks:
   normalization and first-moment identities, the total-variation bound for a
   finite distributional factorization remainder, finite zero-bin
   inclusion--exclusion and scheme-reshuffling identities, the regulated
-  endpoint-region expansion with its fixed-order remainder bound and negative
-  controls for unsubtracted hard and unpaired split-scale terms, finite
+  endpoint-region expansion derived from the mixed-denominator off-light-cone
+  Wilson-line cut graph, its finite sliced-domain remainder bound, and
+  negative controls for additive-denominator replacement, unsubtracted hard
+  terms, and unpaired split-scale terms, finite
   multiplicative hard/jet/soft scheme covariance and anomalous-dimension
   consistency with an unpaired-scheme negative control, scalar renormalization-group transport independence under the
   hard/jet/soft anomalous-dimension consistency equation, exact soft-drop

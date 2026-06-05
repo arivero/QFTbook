@@ -539,74 +539,113 @@ soft-collinear singular graph.  In light-cone variables
   u=\frac{n\cdot k}{Q},\qquad
   v=\frac{\bar n\cdot k}{Q},
 \]
-the leading eikonal phase-space density is proportional to
-\(\dd u\,\dd v/(uv)\).  Regulate the two eikonal denominators by a positive
-off-light-cone or small-mass parameter \(\lambda\), restrict the endpoint
-window to \(0\le u,v\le\rho\) with \(0<\lambda<\rho<1/2\), and smear the
-measured event-shape variable \(e=u+v\) by
-\(\varphi\in C^2([0,2\rho])\).  Up to the common color and coupling factor
-\(\alpha_s C_F/\pi\), the regulated one-emission functional is
-\begin{equation}
-  \Sigma_{\lambda,\rho}^{(1)}[\varphi]
+tilt the two Wilson-line velocities off the light cone by
+\[
+  \beta_n=n+\delta\bar n,\qquad
+  \beta_{\bar n}=\bar n+\delta n,\qquad
+  0<\delta<1 .
+\]
+For a massless cut gluon, the on-shell phase space after the transverse
+delta function is a constant multiple of \(\dd u\,\dd v\).  The eikonal graph
+has
+\[
+  \frac{\beta_n\cdot\beta_{\bar n}}
+       {(\beta_n\cdot k)(\beta_{\bar n}\cdot k)}
   =
-  \int_0^\rho\!\!\int_0^\rho
-  \frac{\varphi(u+v)}
-       {(u+\lambda)(v+\lambda)}
+  \frac{2(1+\delta^2)}
+       {Q^2(u+\delta v)(v+\delta u)} .
+\]
+Thus the off-light-cone regulator mixes the two light-cone components in the
+denominators.  It is not the replacement \(u\mapsto u+\lambda\) and
+\(v\mapsto v+\lambda\).  To keep the real-emission functional finite before
+combining it with virtual terms, impose the endpoint slicing
+\[
+  \mathcal D_{\lambda,\rho}
+  =
+  \{(u,v):0\le u,v\le\rho,\ u+v\ge\lambda\},
+  \qquad
+  0<\lambda<\rho<\frac12 .
+\]
+The tilt \(\delta\) regulates rapidity; the lower slice \(\lambda\) regulates
+the unresolved soft point of this real graph.  Smear the measured event-shape
+variable \(e=u+v\) by \(\varphi\in C^2([0,2\rho])\).  Up to the common color,
+coupling, and phase-space constant, the regulated one-emission functional is
+\begin{equation}
+  \Sigma_{\delta,\lambda,\rho}^{(1)}[\varphi]
+  =
+  \int_{\mathcal D_{\lambda,\rho}}
+  K_\delta(u,v)\,\varphi(u+v)
   \,\dd u\,\dd v .
   \label{eq:regulated-scet-one-emission-functional}
 \end{equation}
-This is the finite-regulator version of a specified Wilson-line graph paired
-with a specified measurement; the graph, regulator, endpoint window, and
-measurement all belong to the datum.
+Here
+\[
+  K_\delta(u,v)
+  =
+  \frac{1+\delta^2}{(u+\delta v)(v+\delta u)} .
+\]
+This is the finite-regulator version of the specified Wilson-line cut graph
+paired with a specified measurement; the graph, regulator, endpoint window,
+and measurement all belong to the datum.
 
 Let
 \[
-  L_{\lambda,\rho}:=\log\frac{\rho+\lambda}{\lambda},\qquad
-  J_{\lambda,\rho}[\varphi]
+  C_n[\varphi]
   :=
-  \int_0^\rho
-  \frac{\varphi(t)}{t+\lambda}\,\dd t,\qquad
-  Z_{\lambda,\rho}[\varphi]:=\varphi(0)L_{\lambda,\rho}^2 .
+  \int_{\mathcal D_{\lambda,\rho}}
+  K_\delta(u,v)\,\varphi(u)\,\dd u\,\dd v,
+  \qquad
+  C_{\bar n}[\varphi]
+  :=
+  \int_{\mathcal D_{\lambda,\rho}}
+  K_\delta(u,v)\,\varphi(v)\,\dd u\,\dd v,
 \]
-The two leading collinear region functionals are
-\(C_n=L_{\lambda,\rho}J_{\lambda,\rho}[\varphi]\) and
-\(C_{\bar n}=L_{\lambda,\rho}J_{\lambda,\rho}[\varphi]\).  Each contains the
-same soft-collinear corner \(Z_{\lambda,\rho}\).  The overlap-subtracted
-singular coordinate is therefore
+and
+\[
+  Z_{\delta,\lambda,\rho}[\varphi]
+  :=
+  \varphi(0)
+  \int_{\mathcal D_{\lambda,\rho}}K_\delta(u,v)\,\dd u\,\dd v .
+\]
+These three terms are obtained from the same regulated graph by the region
+expansions of the measurement: \(e=u+v\mapsto u\) in the \(n\)-collinear
+region, \(e\mapsto v\) in the \(\bar n\)-collinear region, and \(e\mapsto0\)
+in the shared soft zero-bin.  The overlap-subtracted singular coordinate is
+therefore
 \begin{equation}
-  \Sigma_{\lambda,\rho}^{\rm sing}[\varphi]
+  \Sigma_{\delta,\lambda,\rho}^{\rm sing}[\varphi]
   =
-  C_n+C_{\bar n}-Z_{\lambda,\rho}[\varphi].
+  C_n[\varphi]+C_{\bar n}[\varphi]-Z_{\delta,\lambda,\rho}[\varphi].
   \label{eq:regulated-scet-one-emission-subtracted}
 \end{equation}
 Equivalently, for any zero-bin allocation parameter \(a\),
 \[
-  \bigl(C_n-aZ_{\lambda,\rho}\bigr)
+  \bigl(C_n-aZ_{\delta,\lambda,\rho}\bigr)
   +
-  \bigl(C_{\bar n}-(1-a)Z_{\lambda,\rho}\bigr)
+  \bigl(C_{\bar n}-(1-a)Z_{\delta,\lambda,\rho}\bigr)
   =
-  C_n+C_{\bar n}-Z_{\lambda,\rho},
+  C_n+C_{\bar n}-Z_{\delta,\lambda,\rho},
 \]
 so the physical singular coordinate is independent of the auxiliary
 rapidity-scheme allocation.  Omitting the subtraction changes the answer by
-the nonzero overlap \(Z_{\lambda,\rho}\).
+the nonzero overlap \(Z_{\delta,\lambda,\rho}\).
 
 The exact regulated graph decomposes as
 \begin{equation}
-  \Sigma_{\lambda,\rho}^{(1)}[\varphi]
+  \Sigma_{\delta,\lambda,\rho}^{(1)}[\varphi]
   =
-  \Sigma_{\lambda,\rho}^{\rm sing}[\varphi]
+  \Sigma_{\delta,\lambda,\rho}^{\rm sing}[\varphi]
   +
-  R_{\lambda,\rho}^{\rm hard}[\varphi],
+  R_{\delta,\lambda,\rho}^{\rm hard}[\varphi],
   \label{eq:regulated-scet-one-emission-decomposition}
 \end{equation}
 where the nonsingular hard-region remainder is
 \begin{equation}
-  R_{\lambda,\rho}^{\rm hard}[\varphi]
+  R_{\delta,\lambda,\rho}^{\rm hard}[\varphi]
   =
-  \int_0^\rho\!\!\int_0^\rho
-  \frac{\varphi(u+v)-\varphi(u)-\varphi(v)+\varphi(0)}
-       {(u+\lambda)(v+\lambda)}
+  \int_{\mathcal D_{\lambda,\rho}}
+  K_\delta(u,v)
+  \bigl[\varphi(u+v)-\varphi(u)-\varphi(v)+\varphi(0)\bigr]
   \,\dd u\,\dd v .
   \label{eq:regulated-scet-one-emission-remainder}
 \end{equation}
@@ -628,23 +667,26 @@ and the first three terms integrate to
 \]
 so
 \begin{equation}
-  |R_{\lambda,\rho}^{\rm hard}[\varphi]|
+  |R_{\delta,\lambda,\rho}^{\rm hard}[\varphi]|
   \le
   M_\varphi
-  \left(\rho-\lambda\log\frac{\rho+\lambda}{\lambda}\right)^2
+  \int_{\mathcal D_{\lambda,\rho}}K_\delta(u,v)uv\,\dd u\,\dd v
   \le
-  M_\varphi\rho^2 .
+  M_\varphi(1+\delta^2)\rho^2 .
   \label{eq:regulated-scet-one-emission-remainder-bound}
 \end{equation}
-This displays the actual operator coordinates in the simple graph: the hard
-current is local on the endpoint window and multiplies \(\varphi(0)\), the
-two collinear Wilson-line matrix elements give \(C_n\) and \(C_{\bar n}\), the
-soft zero-bin is \(Z_{\lambda,\rho}\), and the finite hard-region remainder is
+The last inequality uses
+\((u+\delta v)(v+\delta u)\ge uv\) and
+\({\rm area}(\mathcal D_{\lambda,\rho})\le\rho^2\).  This displays the
+operator coordinates in the simple graph: the endpoint-local hard current
+multiplies \(\varphi(0)\), the two collinear Wilson-line matrix elements give
+\(C_n\) and \(C_{\bar n}\), the soft zero-bin is
+\(Z_{\delta,\lambda,\rho}\), and the finite hard-region remainder is
 controlled in the same smeared-observable topology.  What has been proved is
 only this regulated one-loop endpoint statement.  The all-orders continuum QCD
 factorization theorem still requires the full operator construction, regulator
-removal, rapidity renormalization when present, Glauber analysis, and a power
-remainder for the physical cross section.
+removal, rapidity renormalization, Glauber analysis, and a power remainder for
+the physical cross section.
 
 \paragraph{Leading soft Wilson-line decoupling identity.}
 At finite regulator and at leading power in the \(n\)-collinear sector, the

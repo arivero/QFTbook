@@ -12,8 +12,10 @@ Target claims:
   through a source-derived manifest, classifies the main non-process homonyms,
   and keeps BMS non-global soft evolution separate from Glauber exchange.
 - The regulated one-emission endpoint observable has a real zero-bin-subtracted
-  region decomposition and a hard-remainder bound; unsubtracted or unpaired
-  zero-bin allocations fail as negative controls.
+  region decomposition derived from an off-light-cone Wilson-line cut graph
+  with mixed eikonal denominators, and a hard-remainder bound; unsubtracted,
+  unpaired zero-bin allocations or additive-denominator replacements fail as
+  negative controls.
 - A noncommuting finite measurement can detect a Glauber rotation, so a
   residual slot is not a proof of factorization.
 
@@ -21,8 +23,11 @@ Independent construction:
 - All checks use finite distributions, rational matrices, exact polynomial
   integrals, or symbolic identities built independently of the manuscript
   prose.
-- The smeared one-emission endpoint expansion is checked by direct symbolic
-  integration, zero-bin allocation cancellation, and the hard-remainder bound.
+- The smeared one-emission endpoint expansion is checked by deriving the
+  mixed off-light-cone eikonal kernel, verifying the pointwise region
+  identity, integrating the finite sliced endpoint observable by deterministic
+  quadrature, testing zero-bin allocation cancellation, and checking the
+  hard-remainder bound on the same regulated domain.
 - The Glauber-breaking example is checked both as a concrete rational matrix
   model and as a symbolic two-state rotation formula.
 - The spectator-model obstruction is checked by an independent finite SU(2)
@@ -40,7 +45,8 @@ Imported assumptions:
 - The checks are finite-regulator or fixed-order algebraic tests of a proposed
   SCET/factorization datum.
 - The one-emission endpoint observable is a finite-regulator Wilson-line
-  singular-coordinate check; it is not a continuum QCD theorem.
+  singular-coordinate check with an off-light-cone rapidity tilt and a finite
+  lower endpoint slice for the real graph; it is not a continuum QCD theorem.
 - The finite Glauber Hilbert space is a diagnostic model for measurement
   commutation, not a construction of the QCD Glauber region.
 - The spectator-model check verifies the color/eikonal skeleton of the
@@ -54,7 +60,9 @@ Negative controls:
 - A finite scheme change whose factors do not multiply to one changes the
   hard/jet/soft product.
 - The unsubtracted one-emission collinear sum double-counts the soft zero-bin,
-  and an unpaired zero-bin allocation retains arbitrary allocation dependence.
+  an unpaired zero-bin allocation retains arbitrary allocation dependence, and
+  replacing the mixed off-light-cone denominators by additive constants is
+  rejected.
 - A noncommuting measurement gives a nonzero Glauber remainder.
 - Separate color-traced TMD factors have zero order-g single-loop anomaly
   while the cross-hadron two-gluon color trace is nonzero; a pointwise
@@ -86,7 +94,7 @@ from typing import Mapping
 import sympy as sp
 from sympy.integrals.quadrature import gauss_legendre
 
-from check_utils import assert_leq as _assert_leq
+from check_utils import assert_close, assert_leq as _assert_leq
 
 Distribution = Mapping[Fraction, Fraction]
 
@@ -659,8 +667,9 @@ def check_zero_bin_scheme_reshuffling() -> None:
 
 
 def check_regulated_endpoint_region_expansion() -> None:
-    u, v = sp.symbols("u v", positive=True)
+    u, v, delta, lam_symbol = sp.symbols("u v delta lam_symbol", positive=True)
     allocation = sp.symbols("allocation")
+    delta_value = sp.Rational(1, 7)
     lam = sp.Rational(1, 17)
     rho = sp.Rational(1, 5)
 
@@ -668,56 +677,130 @@ def check_regulated_endpoint_region_expansion() -> None:
         return 1 + 3 * argument + 2 * argument**2
 
     phi0 = phi(0)
-    log_window = sp.log((rho + lam) / lam)
 
-    exact = sp.integrate(
-        sp.integrate(phi(u + v) / ((u + lam) * (v + lam)), (u, 0, rho)),
-        (v, 0, rho),
-    )
-    collinear = log_window * sp.integrate(phi(v) / (v + lam), (v, 0, rho))
-    zero_bin = phi0 * log_window**2
-    singular = 2 * collinear - zero_bin
+    # Off-light-cone Wilson-line directions beta_n=n+delta nbar and
+    # beta_barn=nbar+delta n give beta_n.k/Q = u+delta v,
+    # beta_barn.k/Q = v+delta u and beta_n.beta_barn = 2(1+delta^2).
+    beta_dot = 2 * (1 + delta**2)
+    beta_n_dot_k = u + delta * v
+    beta_barn_dot_k = v + delta * u
+    graph_kernel = beta_dot / (2 * beta_n_dot_k * beta_barn_dot_k)
+    mixed_kernel = (1 + delta**2) / ((u + delta * v) * (v + delta * u))
+    assert_equal("off-light-cone mixed eikonal kernel", sp.simplify(graph_kernel - mixed_kernel), 0)
 
-    remainder_integrand = phi(u + v) - phi(u) - phi(v) + phi0
-    hard_remainder = sp.integrate(
-        sp.integrate(remainder_integrand / ((u + lam) * (v + lam)), (u, 0, rho)),
-        (v, 0, rho),
+    additive_kernel = (1 + delta**2) / ((u + lam_symbol) * (v + lam_symbol))
+    additive_probe = sp.simplify(graph_kernel - additive_kernel).subs(
+        {u: sp.Rational(2, 5), v: sp.Rational(3, 7), delta: delta_value, lam_symbol: lam}
     )
+    if additive_probe == 0:
+        raise AssertionError("additive endpoint regulator should not reproduce the tilted Wilson-line kernel")
+
+    kernel = mixed_kernel.subs(delta, delta_value)
+    singular_integrand = kernel * (phi(u) + phi(v) - phi0)
+    remainder_integrand = kernel * (phi(u + v) - phi(u) - phi(v) + phi0)
     assert_equal(
-        "regulated one-emission endpoint decomposition",
-        sp.simplify(exact - singular - hard_remainder),
+        "pointwise mixed-kernel endpoint decomposition",
+        sp.simplify(kernel * phi(u + v) - singular_integrand - remainder_integrand),
         0,
     )
 
-    second_derivative_bound = sp.Rational(4)
-    remainder_bound = second_derivative_bound * (rho - lam * log_window) ** 2
+    base_nodes, base_weights = gauss_legendre(40, 40)
+    base_rule = [(float(node), float(weight)) for node, weight in zip(base_nodes, base_weights)]
+
+    def mapped_gauss_nodes(left: float, right: float) -> list[tuple[float, float]]:
+        midpoint = 0.5 * (left + right)
+        half_width = 0.5 * (right - left)
+        return [
+            (midpoint + half_width * float(node), half_width * float(weight))
+            for node, weight in base_rule
+        ]
+
+    delta_float = float(delta_value)
+    lam_float = float(lam)
+    rho_float = float(rho)
+
+    def numeric_kernel(u_value: float, v_value: float) -> float:
+        return (1.0 + delta_float**2) / (
+            (u_value + delta_float * v_value) * (v_value + delta_float * u_value)
+        )
+
+    def numeric_phi(argument: float) -> float:
+        return 1.0 + 3.0 * argument + 2.0 * argument**2
+
+    def integrate_domain(integrand) -> float:
+        total = 0.0
+        # D_{lambda,rho}: the square [0,rho]^2 with the soft triangle
+        # u+v<lambda removed.
+        for v_value, v_weight in mapped_gauss_nodes(0.0, lam_float):
+            lower_u = lam_float - v_value
+            for u_value, u_weight in mapped_gauss_nodes(lower_u, rho_float):
+                total += v_weight * u_weight * integrand(u_value, v_value)
+        for v_value, v_weight in mapped_gauss_nodes(lam_float, rho_float):
+            for u_value, u_weight in mapped_gauss_nodes(0.0, rho_float):
+                total += v_weight * u_weight * integrand(u_value, v_value)
+        return total
+
+    exact = integrate_domain(lambda uu, vv: numeric_kernel(uu, vv) * numeric_phi(uu + vv))
+    collinear_n = integrate_domain(lambda uu, vv: numeric_kernel(uu, vv) * numeric_phi(uu))
+    collinear_barn = integrate_domain(lambda uu, vv: numeric_kernel(uu, vv) * numeric_phi(vv))
+    zero_bin = integrate_domain(lambda uu, vv: numeric_kernel(uu, vv) * numeric_phi(0.0))
+    singular = collinear_n + collinear_barn - zero_bin
+    hard_remainder = integrate_domain(
+        lambda uu, vv: numeric_kernel(uu, vv)
+        * (numeric_phi(uu + vv) - numeric_phi(uu) - numeric_phi(vv) + numeric_phi(0.0))
+    )
+    assert_close(
+        "regulated one-emission endpoint decomposition",
+        exact,
+        singular + hard_remainder,
+        atol=2.0e-11,
+    )
+
+    weighted_uv = integrate_domain(lambda uu, vv: numeric_kernel(uu, vv) * uu * vv)
+    second_derivative_bound = 4.0
     _assert_leq(
-        "regulated one-emission hard-remainder bound",
-        float(abs(hard_remainder.evalf())),
-        float(remainder_bound.evalf()),
+        "mixed-kernel hard-remainder integral bound",
+        abs(hard_remainder),
+        second_derivative_bound * weighted_uv,
+        tol=2.0e-12,
+    )
+    _assert_leq(
+        "mixed-kernel hard-remainder simple rho bound",
+        second_derivative_bound * weighted_uv,
+        second_derivative_bound * (1.0 + delta_float**2) * rho_float**2,
+        tol=2.0e-12,
     )
 
-    naive_double_count = 2 * collinear
-    assert_equal(
+    naive_double_count = collinear_n + collinear_barn
+    assert_close(
         "unsubtracted one-emission zero-bin defect",
-        sp.simplify(naive_double_count - singular),
+        naive_double_count - singular,
         zero_bin,
+        atol=2.0e-11,
     )
+    if zero_bin <= 0.0:
+        raise AssertionError("chosen positive endpoint test function should give a positive zero-bin")
 
-    collinear_n = collinear - allocation * zero_bin
-    collinear_barn = collinear - (1 - allocation) * zero_bin
-    allocated_sum = collinear_n + collinear_barn
+    collinear_n_symbol, collinear_barn_symbol, zero_bin_symbol = sp.symbols(
+        "collinear_n_symbol collinear_barn_symbol zero_bin_symbol"
+    )
+    allocated_sum = (
+        collinear_n_symbol
+        - allocation * zero_bin_symbol
+        + collinear_barn_symbol
+        - (1 - allocation) * zero_bin_symbol
+    )
     assert_equal(
         "zero-bin allocation cancellation",
         sp.simplify(sp.diff(allocated_sum, allocation)),
         0,
     )
 
-    unpaired_allocation = collinear_n + collinear
+    unpaired_allocation = collinear_n_symbol - allocation * zero_bin_symbol + collinear_barn_symbol
     assert_equal(
         "unpaired zero-bin allocation dependence",
         sp.simplify(sp.diff(unpaired_allocation, allocation)),
-        -zero_bin,
+        -zero_bin_symbol,
     )
 
 

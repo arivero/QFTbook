@@ -45,12 +45,14 @@ The chapter establishes:
   regulator-dependent scaleless-zero statements do not remove the need to
   specify the subtraction datum;
 - a regulated one-emission endpoint observable for the color-singlet two-jet
-  current, with finite eikonal regulator \(\lambda\), endpoint window \(\rho\),
-  smeared measurement \(\varphi(u+v)\), two collinear terms, soft zero-bin
-  subtraction, auxiliary zero-bin allocation cancellation, a nonzero
-  \(M_\varphi(\rho-\lambda\log((\rho+\lambda)/\lambda))^2\) hard-remainder
-  bound, and negative controls for double-counting or unpaired zero-bin
-  allocation;
+  current, with off-light-cone Wilson-line velocities producing the mixed
+  denominators \((u+\delta v)(v+\delta u)\), a finite endpoint slice
+  \(u+v\ge\lambda\), smeared measurement \(\varphi(u+v)\), two collinear
+  region terms, soft zero-bin subtraction, auxiliary zero-bin allocation
+  cancellation, a hard-remainder bound
+  \(M_\varphi\int K_\delta uv\le M_\varphi(1+\delta^2)\rho^2\), and negative
+  controls for additive-denominator replacement, double-counting, or unpaired
+  zero-bin allocation;
 - controlled approximation `ca:scet-distributional-factorization-estimate`,
   stating leading-power SCET factorization as a bound on smeared physical
   cross-section functionals on a Banach endpoint test space, with the
@@ -198,14 +200,19 @@ The chapter establishes:
      collinear and soft coordinates; a scaleless integral in a particular
      regulator is not an invariant absence of overlap.
 8aaa. The regulated one-emission endpoint observable for a color-singlet
-      two-jet current supplies the positive fixed-order case: in light-cone
-      variables \(u=n\cdot k/Q\), \(v=\bar n\cdot k/Q\), the finite graph
-      \(\int_0^\rho\int_0^\rho \varphi(u+v)\dd u\dd v/
-      ((u+\lambda)(v+\lambda))\) decomposes into two collinear functionals
-      minus the soft zero-bin plus a hard-region remainder bounded by
-      \(M_\varphi(\rho-\lambda\log((\rho+\lambda)/\lambda))^2\).  The
-      unsubtracted collinear sum double-counts the zero-bin, while an unpaired
-      allocation parameter leaves arbitrary rapidity-scheme dependence.
+      two-jet current supplies the positive fixed-order case: with
+      \(\beta_n=n+\delta\bar n\), \(\beta_{\bar n}=\bar n+\delta n\), the
+      cut Wilson-line graph has kernel
+      \(K_\delta=(1+\delta^2)/((u+\delta v)(v+\delta u))\) on the sliced
+      endpoint domain \(0\le u,v\le\rho,\ u+v\ge\lambda\).  Expanding the same
+      graph's measurement to \(u\), \(v\), and \(0\) gives the two collinear
+      functionals and soft zero-bin; the exact graph differs by a mixed
+      finite-difference remainder bounded by
+      \(M_\varphi\int K_\delta uv\le M_\varphi(1+\delta^2)\rho^2\).  The
+      additive-denominator model is only an auxiliary algebraic negative
+      control, the unsubtracted collinear sum double-counts the zero-bin, and
+      an unpaired allocation parameter leaves arbitrary rapidity-scheme
+      dependence.
 8ab. Resummation is a renormalization-group transport datum on a declared
      factorized coordinate.  In transform space the hard, jet, and soft
      anomalous dimensions must sum to zero as convolution kernels, and the
@@ -586,3 +593,14 @@ The chapter establishes:
   remainder.  The companion SCET check verifies the exact symbolic
   decomposition, nonzero zero-bin defect, allocation cancellation, and
   hard-remainder estimate.
+- 2026-06-05 issue #835 endpoint-graph repair: replaced the additive
+  \((u+\lambda)(v+\lambda)\) graph identification by an actual off-light-cone
+  Wilson-line cut graph with mixed denominators \((u+\delta v)(v+\delta u)\)
+  and a separate finite endpoint slice \(u+v\ge\lambda\).  The monograph now
+  derives the eikonal kernel from \(\beta_n=n+\delta\bar n\) and
+  \(\beta_{\bar n}=\bar n+\delta n\), obtains the region approximants by
+  measurement expansion on the same regulated graph, and bounds the mixed
+  finite-difference remainder in the same sliced observable.  The companion
+  check verifies the graph kernel, rejects the old additive replacement,
+  integrates the sliced domain by deterministic quadrature, and refreshes the
+  textual factorization review anchors shifted by the new derivation.
