@@ -717,10 +717,12 @@ Current checks:
   \(\Pi_QO_3=(16-4\epsilon)Q\) in the open-spinor NDR projection, the distinct
   closed-trace Gram projection as a negative control, the Abelian
   spectator-exchange numerator and \(2g^2/(d\,16\pi^2)\) pole residue, the
-  complete projected \(Q\)-pole, the finite evanescent subtraction shift, its
-  \(O(\epsilon)\)-residue compensation, the compensating finite coefficient
-  shift under \(E_\alpha=O_3-(16+\alpha\epsilon)Q\), and the hypotheses needed
-  before EOM, BRST-exact, or boundary representatives may be removed.  The
+  complete projected \(Q\)-pole, the finite evanescent split component, its
+  \(O(\epsilon)\)-residue compensation, the explicit two-by-two evanescent
+  counterterm matrix whose insertion gives the net finite physical coefficient,
+  the compensating finite coefficient shift under
+  \(E_\alpha=O_3-(16+\alpha\epsilon)Q\), and the hypotheses needed before EOM,
+  BRST-exact, or boundary representatives may be removed.  The
   forward-positivity portion verifies the crossing-even twice-subtracted
   dispersion normalization with the factor of two from the two cuts,
   subtraction-polynomial independence of the second coefficient, explicit

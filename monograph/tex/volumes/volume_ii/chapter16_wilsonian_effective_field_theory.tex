@@ -1541,7 +1541,7 @@ Equivalently, if the pole residue is first expanded at \(d=4\),
   +
   \hbox{finite scheme-coordinate terms}.
 \]
-The evanescent part of the subtraction has a finite physical projection:
+The evanescent part of this split has a finite physical projection:
 \begin{equation}
   \Pi_Q^{\rm os}
   \left[
@@ -1549,7 +1549,7 @@ The evanescent part of the subtraction has a finite physical projection:
   \right]
   =
   -\,C_Q\,\frac{g^2}{8\pi^2}\,Q .
-  \label{eq:eft-evanescent-finite-coefficient-shift}
+  \label{eq:eft-evanescent-finite-split-component}
 \end{equation}
 The \(O(\epsilon)\) part of the graph residue \(2/d\) supplies the compensating
 finite coordinate in this particular graph, so the complete projected pole is
@@ -1562,15 +1562,75 @@ The lesson is the same one used in
 real weak-Hamiltonian calculations: evanescent counterterms and
 \(O(\epsilon)\) residues must be transported together.
 
-For a separately generated evanescent pole
-\(C_Eu\,E_{16}/\epsilon\), with \(u\) the computed graph residue, projection
-gives \(\Delta C_Q=-4C_Eu\).  If the representative is changed to
+This graph is therefore a cancellation test, not a net finite Wilson-coefficient
+shift.  A net shift appears one step later, when the renormalized EFT basis has
+an evanescent coefficient and the counterterm insertion is itself evanescent.
+Use the regulated basis
+\[
+  \vec O_R=
+  \binom{[Q]_R}{[E_{16}]_R},
+  \qquad
+  \vec C_R=(C_Q,\ C_E),
+\]
+and suppose the one-loop EFT calculation of an \(E_{16}\) insertion gives the
+minimal counterterm matrix
+\begin{equation}
+  \delta\vec O
+  =
+  \frac1{\epsilon}
+  \begin{pmatrix}
+    0&0\\
+    0&u
+  \end{pmatrix}
+  \vec O_R ,
+  \qquad
+  \delta{\cal L}_{\rm ct}^{(E)}
+  =
+  \frac{C_Eu}{\epsilon}\,E_{16}.
+  \label{eq:eft-evanescent-counterterm-matrix}
+\end{equation}
+This is a different datum from
+\eqref{eq:eft-evanescent-concrete-pole}: the residue \(u\) is the pole of the
+renormalized \(E_{16}\)-insertion graph, not the \(2/d\) residue of the
+preceding \(Q\)-insertion graph.  Projecting the renormalized amplitude gives
+\begin{equation}
+  \Pi_Q^{\rm os}
+  \left[
+    C_Q Q+\frac{C_Eu}{\epsilon}E_{16}
+  \right]
+  =
+  \left(C_Q-4C_Eu\right)Q+O(\epsilon),
+  \label{eq:eft-evanescent-renormalized-finite-shift}
+\end{equation}
+so the four-dimensional matched physical coordinate is
+\[
+  C_Q^{\rm phys}=C_Q-4C_Eu
+\]
+in this projection scheme.  After the usual EFT/full-theory subtraction has
+cancelled the common infrared part, the local matching condition for this
+evanescent sector may be written as
+\[
+  \left.\Pi_Q^{\rm os}{\cal A}_{\rm full}\right|_{\rm local}
+  =
+  \left(C_Q-4C_Eu\right)Q .
+\]
+If the representative is changed to
 \[
   E_\alpha=O_3-(16+\alpha\epsilon)Q,
 \]
-then \(\Pi_Q^{\rm os}E_\alpha=-(4+\alpha)\epsilon Q\) and the finite projected
-shift is \(-(4+\alpha)C_Eu\).  The same four-dimensional amplitude is
-obtained by the finite coefficient redefinition
+then \(E_\alpha=E_{16}-\alpha\epsilon Q\), and the same counterterm insertion
+rewritten in the new regulated basis contains the finite physical term
+\(\alpha C_Eu\,Q\).  Equivalently,
+\[
+  \Pi_Q^{\rm os}
+  \left[
+    \frac{C_Eu}{\epsilon}E_\alpha
+  \right]
+  =
+  -(4+\alpha)C_Eu\,Q+O(\epsilon).
+\]
+The same four-dimensional amplitude is obtained by the finite coefficient
+redefinition
 \[
   C_Q\longmapsto C_Q+\alpha C_Eu .
 \]

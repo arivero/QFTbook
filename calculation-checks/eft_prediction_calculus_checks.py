@@ -24,8 +24,10 @@ Target claims:
   \(E_{16}=O_3-16 Q\), the \(d=4-\epsilon\) Dirac projection gives
   \(\Pi_Q E_{16}=-4\epsilon Q\).  In the Abelian spectator-exchange graph,
   the Dirac numerator produces \(O_3\), the angular average and scalar pole
-  give the residue \(2g^2/(d\,16\pi^2)\), and evanescent poles therefore
-  produce finite physical Wilson-coordinate shifts after subtraction.
+  give the residue \(2g^2/(d\,16\pi^2)\), and the finite evanescent split is
+  exactly compensated by the \(O(\epsilon)\) graph residue.  A separate
+  renormalized \(E_{16}\)-counterterm insertion with a displayed counterterm
+  matrix produces the nonzero finite physical Wilson-coordinate shift.
 - For a crossing-even massive scalar forward amplitude, the twice-subtracted
   dispersion normalization gives
   \(a_2=(2/\pi)\int d\nu\,\operatorname{Im}F(\nu)/\nu^3\) when stable poles are
@@ -49,9 +51,11 @@ Independent construction:
   kernel on and away from the external mass shell.
 - The evanescent check computes the chiral triple-gamma projection coefficient,
   the Abelian-exchange graph residue, the complete projected pole, the finite
-  projection shift from the evanescent subtraction, the compensating
-  \(O(\epsilon)\) graph-residue term, and the finite countershift under a
-  changed evanescent representative.
+  projected split component from the evanescent split, the compensating
+  \(O(\epsilon)\) graph-residue term, then independently checks a two-by-two
+  regulated counterterm matrix for an \(E_{16}\) insertion, its net finite
+  physical coefficient, the associated local matching condition, and the finite
+  countershift under a changed evanescent representative.
 - The positivity check uses a finite positive spectral measure to verify the
   factor of two from the two cuts, stable-pole subtraction, subtraction
   polynomial independence of \(a_2\), the explicit large-contour term, and the
@@ -74,8 +78,8 @@ Imported assumptions:
   triple-gamma representative \(O_3\), \(d=4-\epsilon\), a Feynman-gauge
   Abelian spectator field coupled to the two right fermion legs, an off-shell
   Euclidean infrared separator, and the stated chiral Dirac projection
-  convention.  It fixes a convention for the finite shift rather than a
-  universal sign convention.
+  convention.  It fixes a convention for the finite evanescent-counterterm
+  shift rather than a universal sign convention.
 - The forward-positivity check is a finite spectral-model normalization test,
   not a construction of the nonperturbative scattering amplitude.  It assumes
   an already pole-subtracted crossing-even amplitude and encodes positive
@@ -92,12 +96,13 @@ Negative controls:
 - Dropping either the derivative term or the mass-coordinate shift spoils the
   field-redefinition equality of the on-shell four-point kernel; dropping the
   Jacobian, source transform, or composite transform is also detected.
-- Prematurely quotienting \(E_{16}\) misses the finite shift, using the wrong
-  triple-gamma projection coefficient or the closed-trace Gram projection
-  changes the shift, dropping the \(O(\epsilon)\) part of the exchange-graph
-  residue leaves a finite mismatch, and changing the evanescent representative
-  without the compensating physical coefficient shift changes the projected
-  amplitude.
+- Prematurely quotienting \(E_{16}\) misses the counterterm-induced finite
+  shift, using the wrong triple-gamma projection coefficient or the closed-trace
+  Gram projection changes the projection, dropping the \(O(\epsilon)\) part of
+  the exchange-graph residue falsely turns a cancelling split component into a
+  net shift, omitting the evanescent counterterm matrix removes the genuine
+  finite shift, and changing the evanescent representative without the
+  compensating physical coefficient shift changes the projected amplitude.
 - The positivity normalization check rejects the one-cut normalization, shows
   that an unsubtracted stable pole shifts the Taylor coefficient, shows that a
   nonzero high-energy contour term can flip the sign despite positive cut
@@ -127,6 +132,11 @@ def assert_zero(name: str, value: sp.Expr) -> None:
 def assert_nonzero(name: str, value: sp.Expr) -> None:
     if sp.simplify(value) == 0:
         raise AssertionError(f"{name}: expected a nonzero negative control")
+
+
+def assert_equal(name: str, got: object, expected: object) -> None:
+    if got != expected:
+        raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
 
 
 def check_heavy_kernel_expansion() -> None:
@@ -436,7 +446,7 @@ def check_evanescent_mixing_projection() -> None:
         0,
     )
     assert_zero(
-        "Q-generated E_16 subtraction gives finite physical shift",
+        "Q-generated E_16 split has finite component",
         evanescent_graph_finite_shift + C_Q * g2 / (8 * sp.pi**2),
     )
 
@@ -453,14 +463,61 @@ def check_evanescent_mixing_projection() -> None:
         "split projection plus residue compensation recovers full graph",
         complete_projected_pole - split_projected_pole - residue_compensation,
     )
+    assert_zero(
+        "complete Q-generated graph has no finite evanescent remainder",
+        complete_projected_pole - C_Q * 8 * g2 / (16 * sp.pi**2 * eps),
+    )
     assert_nonzero(
-        "dropping O(epsilon) graph residue leaves finite mismatch",
+        "dropping O(epsilon) graph residue falsely leaves finite mismatch",
         complete_projected_pole - split_projected_pole,
     )
 
-    pole_projection = C_E * u / eps * evanescent_projection
-    finite_shift = sp.limit(pole_projection, eps, 0)
-    assert_zero("separate E_16 pole projection gives finite physical shift", finite_shift + 4 * C_E * u)
+    # A genuine nonzero physical coefficient shift is a separate renormalized
+    # counterterm/matching datum.  In the regulated basis (Q, E_16), take the
+    # one-loop counterterm matrix Z^(1) with only an evanescent insertion pole:
+    # delta O = eps^{-1} [[0,0],[0,u]] O_R.  A Wilson coefficient C_E then
+    # contributes C_E u E_16 / eps to the renormalized amplitude.
+    counterterm_matrix = sp.Matrix([[0, 0], [0, u]])
+    assert_equal(
+        "evanescent counterterm matrix",
+        counterterm_matrix,
+        sp.Matrix([[0, 0], [0, u]]),
+    )
+    counterterm_coefficients = counterterm_matrix * sp.Matrix([C_Q, C_E]) / eps
+    assert_equal(
+        "evanescent counterterm insertion coefficients",
+        counterterm_coefficients,
+        sp.Matrix([0, C_E * u / eps]),
+    )
+
+    projection_row = sp.Matrix([[1, evanescent_projection]])
+    counterterm_projection = (projection_row * counterterm_coefficients)[0]
+    finite_shift = sp.limit(counterterm_projection, eps, 0)
+    assert_zero(
+        "E_16 counterterm insertion gives finite physical shift",
+        finite_shift + 4 * C_E * u,
+    )
+
+    matched_physical_coordinate = C_Q + finite_shift
+    assert_zero(
+        "renormalized projected physical coefficient",
+        matched_physical_coordinate - (C_Q - 4 * C_E * u),
+    )
+    full_theory_local_coordinate = C_Q - 4 * C_E * u
+    assert_zero(
+        "local matching condition fixes the physical coordinate",
+        full_theory_local_coordinate - matched_physical_coordinate,
+    )
+
+    without_evanescent_counterterm = C_Q + sp.limit(
+        (projection_row * sp.Matrix([0, 0]))[0],
+        eps,
+        0,
+    )
+    assert_nonzero(
+        "omitting evanescent counterterm matrix removes finite physical shift",
+        without_evanescent_counterterm - matched_physical_coordinate,
+    )
 
     premature_quotient_shift = sp.Integer(0)
     assert_nonzero(
@@ -473,7 +530,9 @@ def check_evanescent_mixing_projection() -> None:
     # by the opposite finite scheme transformation.
     changed_projection = dirac_projection_o3 - (16 + alpha * eps)
     assert_zero("changed evanescent representative projection", changed_projection + (4 + alpha) * eps)
-    changed_shift = sp.limit(C_E * u / eps * changed_projection, eps, 0)
+    changed_basis_counterterm_coefficients = sp.Matrix([0, C_E * u / eps])
+    changed_projection_row = sp.Matrix([[1, changed_projection]])
+    changed_shift = sp.limit((changed_projection_row * changed_basis_counterterm_coefficients)[0], eps, 0)
     assert_zero("changed representative finite shift", changed_shift + (4 + alpha) * C_E * u)
     assert_nonzero(
         "uncompensated evanescent representative change alters projected coefficient",

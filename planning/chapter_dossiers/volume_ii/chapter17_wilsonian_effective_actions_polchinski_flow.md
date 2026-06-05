@@ -248,8 +248,10 @@ The chapter must define and derive:
   \(\Pi_QE_{16}=-4\epsilon Q\), the closed-trace Gram projection as a distinct
   scheme check, an Abelian spectator-exchange graph whose UV numerator
   produces \(O_3\) with residue \(2g^2/(d\,16\pi^2)\), the finite evanescent
-  subtraction shift, the compensating \(O(\epsilon)\) graph-residue term, and
-  the representative-change countershift;
+  split component and its compensating \(O(\epsilon)\) graph-residue term, plus
+  a separate regulated \(E_{16}\)-counterterm matrix whose insertion produces
+  the nonzero finite physical coefficient and the representative-change
+  countershift;
 - a power-counting paragraph that treats canonical, loop, chiral, velocity,
   large-\(N\), endpoint, or multi-parameter filtrations as error organizations
   only after counterterm closure, coefficient assumptions, logarithmic mixing,
@@ -574,11 +576,13 @@ The chapter must define and derive:
     legs: the UV angular average sends the Dirac numerator to
     \((\ell^2/d)O_3\), the scalar pole gives \(2/\epsilon\), and the complete
     projected \(Q\)-pole residue is \(8g^2/(16\pi^2)\).  Splitting the pole
-    residue at \(d=4\) exposes a finite evanescent shift
+    residue at \(d=4\) exposes a finite evanescent split component
     \(-C_Qg^2/(8\pi^2)\), which is compensated by the \(O(\epsilon)\) part of
-    \(2/d\); a separately generated \(C_EuE_{16}/\epsilon\) pole shifts
-    \(C_Q\) by \(-4C_Eu\), with finite countershifts under
-    \(E_{16}\mapsto O_3-(16+\alpha\epsilon)Q\).
+    \(2/d\) and therefore is not a net Wilson-coefficient shift.  A separate
+    regulated \(E_{16}\)-counterterm matrix with \(Z^{(1)}_{EE}=u\) gives
+    \(\delta{\cal L}_{\rm ct}^{(E)}=C_EuE_{16}/\epsilon\); projecting the
+    renormalized amplitude gives \(C_Q^{\rm phys}=C_Q-4C_Eu\), with finite
+    countershifts under \(E_{16}\mapsto O_3-(16+\alpha\epsilon)Q\).
 22. Power counting is a closure and error ledger: logs and anomalous-dimension
     mixing do not lower the declared order, and new kinematic regions require
     new expansion parameters or a changed prediction datum.
@@ -794,19 +798,31 @@ The chapter must define and derive:
 - 2026-06-04 issue #825 pass: replaced the symbolic evanescent
   \(\epsilon\)-times-pole template with a concrete color-singlet left-current
   four-fermion example.  The chapter now derives
-  \(\Pi_QO_3=(16-4\epsilon)Q\), the scalar bubble pole
-  \(g^2/(16\pi^2\epsilon)\), the finite shift
-  \(-4C_Eg^2/(16\pi^2)\), and the compensating finite Wilson-coefficient
-  redefinition under \(E_\alpha=O_3-(16+\alpha\epsilon)Q\).
+  \(\Pi_QO_3=(16-4\epsilon)Q\) and a placeholder scalar-bubble pole model for
+  the finite projection mechanism.  The later issue #836/#841 passes replace
+  that placeholder graph logic by the explicit spectator-exchange cancellation
+  test plus a separate renormalized counterterm-matrix calculation.
 - 2026-06-05 issue #836 pass: upgraded the evanescent example from a scalar
   spectator-pole placeholder to an explicit Abelian spectator-exchange graph.
   The manuscript now states the renormalizable spectator interaction, the
   open-spinor projector and closed-trace-projection negative control, the
   amputated four-point numerator, the UV angular average to \(O_3/d\), the
   scalar \(2/\epsilon\) pole, the complete projected \(Q\)-pole residue, and
-  the finite evanescent subtraction plus \(O(\epsilon)\)-residue compensation.
-  The companion EFT check verifies these coefficients and keeps the
-  representative-change countershift as a separate evanescent-pole test.
+  the finite evanescent split plus \(O(\epsilon)\)-residue compensation.  The
+  later issue #841 pass below narrows this as a cancellation test, not a net
+  finite Wilson-coefficient shift.
+- 2026-06-05 issue #841 evanescent-counterterm pass: retained the Abelian
+  spectator-exchange graph as a cancellation/consistency example and added the
+  actual next-step renormalized mixing calculation.  The TeX now displays the
+  regulated basis \(([Q]_R,[E_{16}]_R)\), the counterterm matrix
+  \(Z^{(1)}=\begin{psmallmatrix}0&0\\0&u\end{psmallmatrix}\), the counterterm
+  insertion \(C_EuE_{16}/\epsilon\), the projected physical coordinate
+  \(C_Q^{\rm phys}=C_Q-4C_Eu\), and the finite representative change
+  \(C_Q\mapsto C_Q+\alpha C_Eu\) under
+  \(E_{16}\mapsto O_3-(16+\alpha\epsilon)Q\).  The companion EFT check now
+  verifies zero net finite remainder in the concrete \(Q\)-insertion graph,
+  nonzero finite shift from the counterterm matrix, omission of the matrix as a
+  negative control, and finite-scheme invariance.
 - 2026-06-05 issue #816 pass: completed the promised one-loop heavy-light
   observable matching.  The chapter now evaluates the regulated
   \(\overline{\rm MS}\) heavy bubble, derives \(c_H^{\overline{\rm MS}}=0\),
