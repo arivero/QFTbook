@@ -55,11 +55,11 @@ The chapter establishes:
   physical functional, factorized singular coordinate, endpoint parameter,
   topology, power remainder, perturbative truncation remainder, and finite
   transform-space scheme covariance all explicitly named;
-- a claim-status ledger for the factorization material, tying SCET,
-  fixed-regulator diagnostics, massive-vector Sudakov charts, soft drop,
-  non-global logarithms, QCD DIS/Drell--Yan/EEC/small-\(x\)/exclusive
-  formulae, and HQET/NRQCD/thermal matching statements to the EFT prediction
-  status categories rather than to historical theorem labels;
+- an occurrence-level claim-status ledger for the factorization material,
+  tying concrete manuscript labels in SCET, soft drop, non-global logarithms,
+  EEC, DIS, Drell--Yan, TMD, small-\(x\), exclusive-pion, track, and
+  shape-function formulae to regulator, source, proof, Glauber, and remainder
+  status rather than to historical theorem labels;
 - a transform-space SCET renormalization-group transport datum for resummed
   singular coordinates, including hard/jet/soft anomalous-dimension
   consistency, evolution kernels from natural scales to a common scale, and
@@ -73,6 +73,14 @@ The chapter establishes:
   bound, the Duhamel commutator estimate for \(U_G=\exp(\ii K_G)\), and the
   explicit two-state rotation example
   \(\Delta_G=(r_2-r_1)\sin^2\theta\);
+- controlled approximation `ca:scet-spectator-tmd-color-entanglement`, using
+  the Rogers--Mulders nonabelian spectator-model calculation to expose a
+  real generalized-TMD factorization obstruction: the one-gluon separate-loop
+  anomaly vanishes by \(\operatorname{tr}(t^a)=0\), while the cross-hadron
+  two-gluon Glauber term carries
+  \(\operatorname{tr}(t^at^b)\operatorname{tr}(t^bt^a)=T_F^2(N_c^2-1)\),
+  same/opposite cut phases add, and the fixed-\(q_\perp\) double-spin
+  transverse integral cannot be assigned to separate one-hadron TMD factors;
 - a massive-vector Sudakov boundary chart for high-energy electroweak jet
   measurements, deriving the triangular soft-collinear area
   \(A_V=\frac14\log^2(Q^2/M_V^2)\) and separating scalar one-line transport
@@ -209,13 +217,22 @@ The chapter establishes:
      soft coordinates represent the same singular distribution only when the
      product of the finite factors is one; anomalous-dimension consistency is
      then preserved by the paired logarithmic shifts.
-8aca. The SCET/factorization claim-status ledger classifies finite algebraic
-      mechanisms, operator specifications, fixed-order coefficient
-      calculations, conditional factorization hypotheses, phenomenological
-      ansatz layers, and theorem-level claims separately.  A historical
-      physics phrase such as "factorization theorem" is not a proof-status
-      certificate unless the dependency ladder and observable-topology
-      remainder are supplied.
+8aca. The SCET/factorization claim-status ledger is now occurrence-level:
+      each concrete formula label records the observable, regulator or scheme,
+      strongest source used locally, actual proof status, Glauber status, and
+      remainder status.  A historical physics phrase such as "factorization
+      theorem" is not a proof-status certificate unless the dependency ladder
+      and observable-topology remainder are supplied at that occurrence.
+8acb. Generalized TMD factorization for nearly back-to-back high-\(p_T\)
+      hadron production is explicitly narrower than "change each Wilson line
+      separately."  In the Rogers--Mulders spectator-model obstruction, the
+      separate color-traced order-\(g\) anomaly vanishes, but the two-hadron
+      color-entangled order-\(g^4\) Glauber contribution survives with the
+      same sign across same/opposite cuts.  The failure is of the
+      separate-hadron generalized TMD ansatz; it does not by itself rule out
+      inclusive collinear factorization, color-singlet Drell--Yan TMD
+      factorization with its proof obligations, or process-specific joint
+      Glauber/color-density coordinates.
 8ad. Massive electroweak vector corrections to high-energy jet observables are
      controlled by a physical mass boundary \(M_V\), while the QCD sector
      retains its own operator and regulator datum.  In the one-line
@@ -463,3 +480,13 @@ The chapter establishes:
   \((r_2-r_1)\sin^2\theta\) example; and promoted
   `calculation-checks/scet_factorization_checks.py` to a high-risk
   evidence-contract check.
+- 2026-06-04 issue #819 SCET factorization-breaking pass: added the
+  source-anchored Rogers--Mulders spectator-model color-entanglement
+  calculation, including the measured high-\(p_T\) double-spin \(q_\perp\)
+  setup, the precise separate-hadron generalized TMD ansatz ruled out,
+  one-gluon trace-zero negative control, two-gluon entangled color factor,
+  same/opposite cut eikonal sign accounting, fixed-\(q_\perp\) transverse
+  integral, and narrower surviving factorization statements; replaced the
+  broad claim-status ledger by an occurrence-level formula audit; and extended
+  `calculation-checks/scet_factorization_checks.py` with finite SU(2)
+  color/eikonal and fixed-recoil integrand checks.

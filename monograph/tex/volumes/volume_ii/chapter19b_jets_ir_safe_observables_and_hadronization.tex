@@ -747,6 +747,164 @@ the remainder in the topology of the smeared cross section.  Without these
 extra analytic steps, saying that Glauber exchanges ``cancel'' is merely a
 claim about a missing part of the factorization structure.
 
+\begin{controlledapproximation}[Spectator-model obstruction to generalized TMD factorization]
+\label{ca:scet-spectator-tmd-color-entanglement}
+The finite diagnostic above becomes a real factorization-breaking calculation
+in the nonabelian spectator model of Rogers and Mulders
+\cite{RogersMulders2010NoGeneralizedTMD}.  The measured process is
+\[
+  H_1(P_1,s_{1\perp})+H_2(P_2,s_{2\perp})
+  \longrightarrow
+  h_3(k_3)+h_4(k_4)+X ,
+  \qquad
+  q_\perp:=k_{3\perp}+k_{4\perp},\quad |q_\perp|\ll Q ,
+\]
+with the cross section kept differential in the recoil \(q_\perp\) and in
+the double transverse-spin projection.  The active partons are collinear to
+the incoming hadrons, \(k_1^+\sim P_1^+\) and \(k_2^-\sim P_2^-\), while the
+exchanged gluons that generate the obstruction are in the Glauber region
+\(|l_i^+|,|l_i^-|\ll |l_{i\perp}|\).  A color-neutral hard boson is used only
+to remove irrelevant hard color routings; the nonabelian color is carried by
+the initial and final colored lines.
+
+The generalized TMD ansatz ruled out by the calculation is the statement that
+all leading recoil dependence can be written, even with process-dependent
+Wilson lines, as a product of separate one-hadron and one-fragmentation
+matrix elements:
+\begin{equation}
+  \dd\sigma_{\rm gen}
+  \stackrel{?}{=}
+  \sum_c
+  H_c
+  \otimes
+  \Phi_{1}^{[W_1^c]}
+  \otimes
+  \Phi_{2}^{[W_2^c]}
+  \otimes
+  \Delta_{3}^{[W_3^c]}
+  \otimes
+  \Delta_{4}^{[W_4^c]}
+  +
+  O(q_\perp/Q),
+  \label{eq:scet-generalized-tmd-ansatz}
+\end{equation}
+where the Wilson-line geometry may depend on the hard color routing \(c\), but
+there is no joint \(H_1H_2\) soft or Glauber matrix element.  This ansatz is
+stronger than ordinary collinear factorization and is not the Drell--Yan
+color-singlet TMD statement.
+
+At one extra gluon, the would-be anomalous eikonal term on a separate
+color-traced loop is
+\begin{equation}
+  \mathcal E_1^a(l)
+  =
+  -2\ii\pi g\,n_1^\mu\,\delta(l^+)\,
+  \operatorname{tr}(t^a)
+  =
+  0 .
+  \label{eq:scet-spectator-single-gluon-trace-zero}
+\end{equation}
+Thus a separate TMD factor may not be given a nonzero order-\(g\) anomalous
+term without contradicting the graph sum.  At two gluons emitted from the
+same hadron, \(\operatorname{tr}(t^at^b)\) is nonzero and the anomaly can be
+represented by a color-traced Wilson loop inside that hadron's TMD.  This is
+the largest repair allowed by the separate-factor ansatz.
+
+Now attach one Glauber gluon to the \(H_1\)-collinear spectator system and
+one to the \(H_2\)-collinear spectator system.  The color factor in the graph
+sum is
+\begin{equation}
+  C_{\rm ent}
+  =
+  \operatorname{tr}(t^at^b)\operatorname{tr}(t^bt^a)
+  =
+  T_F^2(N_c^2-1),
+  \label{eq:scet-spectator-color-entanglement-factor}
+\end{equation}
+which is nonzero for \(SU(N_c)\).  The cut structure also does not cancel it.
+For the graphs with both extra gluons on the same side of the final-state
+cut, the eikonal denominators reduce to
+\begin{align}
+  &\left( \frac{1}{-l_1^+ + \ii0} \right)
+   \left( \frac{1}{-l_2^- + \ii0} \right)
+  +\left( \frac{1}{ l_1^+ + \ii0} \right)
+   \left( \frac{1}{-l_2^- + \ii0} \right)
+  \notag\\
+  &\quad
+  +\left( \frac{1}{-l_1^+ + \ii0} \right)
+   \left( \frac{1}{ l_2^- + \ii0} \right)
+  +\left( \frac{1}{ l_1^+ + \ii0} \right)
+   \left( \frac{1}{ l_2^- + \ii0} \right)
+  =
+  -4\pi^2\delta(l_1^+)\delta(l_2^-).
+  \label{eq:scet-spectator-same-cut-eikonal-sum}
+\end{align}
+The two spin-dependent spectator numerators contribute \(i^2=-1\), so the
+same-side graphs enter with
+\(+4\pi^2\delta(l_1^+)\delta(l_2^-)\).  With one gluon on each side of the
+cut the eikonal sum has the opposite sign, but the spin phases are
+\(i(-i)=+1\); hence those graphs also enter with
+\(+4\pi^2\delta(l_1^+)\delta(l_2^-)\).  The dangerous Glauber region is
+therefore not a phase that disappears in the measured double-spin cross
+section.
+
+After using the on-shell spectator delta functions and the eikonal delta
+functions, the leading entangled contribution has the transverse form
+\begin{equation}
+\begin{aligned}
+  \Delta\sigma_{\rm ent}
+  &=
+  \frac{T_F^2(N_c^2-1)g^4}{s}
+  \int
+  \frac{\dd^2 k_{1\perp}}{(2\pi)^2}
+  \frac{\dd^2 l_{1\perp}}{(2\pi)^2}
+  \frac{\dd^2 l_{2\perp}}{(2\pi)^2}\,
+  \mathcal H(k_1,k_3,k_4)
+\\
+  &\quad\times
+  \frac{
+  [\epsilon_{\perp jk}s_1^j l_1^k\,M_1(x_1)]
+  [\epsilon_{\perp j'k'}s_2^{j'}l_2^{k'}\,M_2(x_2)]
+  }{
+  l_{1\perp}^2l_{2\perp}^2
+  [k_{1\perp}^2+m_1^2]
+  [(l_{1\perp}-k_{1\perp})^2+\widetilde m_1^2]
+  [(q_\perp-k_{1\perp})^2+m_2^2]
+  [(l_{2\perp}-q_\perp+k_{1\perp})^2+\widetilde m_2^2]
+  } .
+\end{aligned}
+  \label{eq:scet-spectator-entangled-breaking-integral}
+\end{equation}
+Here \(M_i(x_i)\) abbreviates the spectator mass numerator and the displayed
+positive mass coordinates stand for the \(x_i\)- and mass-dependent
+regulator terms of the model.  The integrand is not odd at fixed measured
+\(q_\perp\), so the transverse recoil measurement does not force
+\(\Delta\sigma_{\rm ent}\) to vanish.  The exact numerical value is model
+dependent; the nonzero sign, color factor, and operator-placement obstruction
+are not.
+
+The failure of \eqref{eq:scet-generalized-tmd-ansatz} is now sharp.  The
+same-hadron two-gluon terms force any separate TMD repair to use
+color-traced Wilson loops.  But a single gluon on such a loop gives
+\(\operatorname{tr}(t^a)=0\), so the product of separate TMDs has no
+order-\(g\) factor from \(H_1\) times an order-\(g\) factor from \(H_2\) that
+could generate \eqref{eq:scet-spectator-entangled-breaking-integral}.  Adding
+such a term by hand would spoil
+\eqref{eq:scet-spectator-single-gluon-trace-zero}.  The missing object is a
+joint color/Glauber operator entangling the two incoming hadrons, not a more
+ornate Wilson line inside each separate TMD.
+
+What remains possible is correspondingly narrower.  Inclusive collinear
+factorization can still hold after the transverse recoil is integrated and
+the relevant Glauber contributions cancel in the tested topology.
+Color-singlet small-\(q_\perp\) TMD factorization, such as Drell--Yan with
+the stated regulator, soft factor, \(Y\)-term, and Glauber proof obligations,
+is not ruled out by this counterexample.  Process-specific joint Glauber
+operators or nonfactorized color-density coordinates may describe the same
+physics, but they are not the separate-hadron generalized TMD ansatz
+\eqref{eq:scet-generalized-tmd-ansatz}.
+\end{controlledapproximation}
+
 \begin{hypothesis}[Leading-power SCET factorization structure]
 \label{hyp:leading-power-scet-factorization}
 A leading-power SCET factorization statement for an observable \(F\) consists
@@ -853,52 +1011,170 @@ structure of the factorized approximation, not an optional convention added afte
 the formula has been written.
 \end{controlledapproximation}
 
-\paragraph{Claim-status ledger for factorization uses.}
-The categories below refine the EFT prediction status ledger of
-Definition~\ref{def:eft-prediction-datum} for the factorization material in
-this volume.  They apply whenever the historical term ``factorization
-theorem'' appears in the cited physics literature.
-\begin{enumerate}
-  \item The two-jet SCET operator datum in
-  Definition~\ref{def:scet-two-jet-operator-datum} is an operator
-  specification whose renormalized existence is part of the datum unless a
-  regulator construction is supplied.  The estimate in
-  Controlled Approximation~\ref{ca:scet-distributional-factorization-estimate}
-  is a conditional leading-power factorization hypothesis in a topology on
-  smeared endpoint cross sections.
-  \item The endpoint integral
-  \eqref{eq:regulated-endpoint-region-expansion}, the zero-bin
-  inclusion--exclusion identity
-  \eqref{eq:finite-scet-zero-bin-inclusion-exclusion}, the soft Wilson-line
-  algebra, and the finite Glauber diagnostic are fixed-regulator or
-  fixed-order mechanisms.  They are necessary local checks on a
-  factorization construction, not continuum QCD factorization proofs.
-  \item The massive-vector Sudakov chart in
-  Controlled Approximation~\ref{ca:massive-vector-sudakov-chart} is a
-  fixed-order strongly ordered phase-space coordinate with a declared
-  hierarchy \(Q\gg M_V\).  It is not a complete electroweak jet theorem.
-  \item The soft-drop and groomed-mass formulae below are conditional
-  factorization data for specified measurements.  The fixed-coupling
-  radiator calculations are finite perturbative mechanisms inside that data,
-  while the resummed prediction additionally assumes the listed operator and
-  remainder entries.
-  \item The non-global soft-dipole evolution is a finite large-\(N_c\),
-  strongly energy-ordered soft model.  Its nonlinear term is a concrete
-  obstruction to a single global soft function; continuum finite-\(N_c\)
-  claims require separate factorization hypotheses.
-  \item The QCD chapter's back-to-back EEC, compact-\(x\) DIS, integrated and
-  TMD Drell--Yan, small-\(x\) Wilson-line, exclusive-pion, GPD, and TMD
-  formulae are to be read through the common dependency ladder of
-  Chapter~\ref{ch:volume-ii-19}.  Their short-distance coefficient calculations
-  are fixed-order perturbative statements; the process-level formulae are
-  conditional factorization hypotheses unless the stated proof obligations
-  are supplied in the declared framework.
-  \item HQET, NRQCD, pNRQCD, and thermal dimensional-reduction formulae are
-  EFT matching statements.  They become predictions only after the observable,
-  regulator, matching, running, external-state or thermal-state prescription,
-  and remainder status are stated as in
-  Definition~\ref{def:eft-prediction-datum}.
-\end{enumerate}
+\paragraph{Occurrence-level claim-status ledger for factorization uses.}
+The table below refines the EFT prediction status ledger of
+Definition~\ref{def:eft-prediction-datum} at the level of manuscript formulae.
+It is the convention for every historical phrase such as ``factorization
+theorem'' in the surrounding QCD and jet material: a formula inherits the
+status in its own row unless a later local theorem supplies the missing
+regulator, Glauber, and remainder entries.
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.74\textwidth}@{}}
+\hline
+\textbf{Manuscript label} &
+\textbf{Observable / regulator / strongest source / proof / Glauber / remainder}
+\\ \hline
+\endfirsthead
+\hline
+\textbf{Manuscript label} &
+\textbf{Observable / regulator / strongest source / proof / Glauber / remainder}
+\\ \hline
+\endhead
+\eqref{eq:jet-event-shape-factorization};
+Definition~\ref{def:scet-two-jet-operator-datum} &
+Observable: \(e^+e^-\) two-jet endpoint event shape.  Regulator: SCET
+operator datum with overlap and possible rapidity subtraction.  Source:
+SCET construction lineage
+\cite{BauerFlemingLuke2000SCET,BauerFlemingPirjolStewart2001SCET} plus the
+local datum.  Proof: operator specification and conditional leading-singular
+coordinate.  Glauber: absent for the color-singlet final-state two-jet datum
+unless a later hadronic measurement introduces spectator exchange.  Remainder:
+\(O(e^0)\) is nonsingular-distribution status; quantitative control is
+supplied by \eqref{eq:scet-distributional-factorization-bound}.
+\\ \hline
+Controlled Approximation~\ref{ca:scet-distributional-factorization-estimate} &
+Observable: smeared endpoint cross-section functional.  Regulator: Banach
+test space and declared factorized distribution.  Source: local
+distributional estimate.  Proof: definition of what a leading-power claim must
+prove.  Glauber: explicit datum, namely cancel, include an operator, or fail.
+Remainder: bounded by \(R_Q\) in the stated dual norm, enlarged by
+perturbative truncation.
+\\ \hline
+\eqref{eq:scet-spectator-entangled-breaking-integral} &
+Observable: high-\(p_T\) nearly back-to-back hadron production, double
+transverse spin, fixed \(q_\perp\).  Regulator: nonabelian spectator model,
+eikonal Glauber approximation, transverse mass regulators.  Source:
+Rogers--Mulders \cite{RogersMulders2010NoGeneralizedTMD}.  Proof:
+counterexample to the separate-hadron generalized TMD ansatz
+\eqref{eq:scet-generalized-tmd-ansatz}.  Glauber: nonzero entangled
+Glauber/color term with \(C_{\rm ent}=T_F^2(N_c^2-1)\).  Remainder: omitted
+leading-power operator at fixed \(q_\perp\) unless the measurement is changed.
+\\ \hline
+\eqref{eq:finite-non-global-dipole-evolution} &
+Observable: angular veto or gap soft radiation.  Regulator: finite angular
+cells, large-\(N_c\), strong energy ordering.  Source: non-global logarithm
+lineage \cite{DasguptaSalam2001NonGlobal,BanfiMarchesiniSmye2002NonGlobal}
+and local finite model.  Proof: finite soft-dipole model.  Glauber: color
+correlations enter through the nonlinear dipole evolution rather than through
+the TMD Glauber question.  Remainder: model and ordering errors must be
+carried separately from global Sudakov terms.
+\\ \hline
+Definition~\ref{def:soft-drop-mass-factorization-datum};
+\eqref{eq:soft-drop-mass-factorization-datum} &
+Observable: soft-drop groomed jet mass.  Regulator: renormalized
+hard/global-soft/jet/collinear-soft datum with soft-drop scales.  Source:
+soft-drop observable source \cite{LarkoskiMarzaniSoyezThaler2014SoftDrop}
+plus local factorization datum.  Proof: conditional factorization structure
+for a specified measurement and channel.  Glauber: listed as an obstruction
+when the measurement is not inclusive enough.  Remainder: \(R_{\rm SD}\)
+records power, clustering, non-global, Glauber, and nonperturbative pieces.
+\\ \hline
+\eqref{eq:qcd-eec-back-to-back-factorization};
+Controlled Approximation~\ref{ca:qcd-eec-tested-back-to-back-recoil} &
+Observable: back-to-back EEC recoil chart.  Regulator: impact-parameter and
+rapidity-renormalized TMD-like scheme.  Source: QCD
+factorization/resummation framework \cite{CollinsSoperSterman1989Factorization}
+plus local tested recoil chart.  Proof: conditional recoil factorization
+hypothesis for a color-singlet source.  Glauber: must be absent or represented
+in the recoil datum, not inferred from the cusp calculation.  Remainder:
+\(q_T/Q\), large-\(b\), endpoint-atom, and matching residuals are separate.
+\\ \hline
+\eqref{eq:qcd-measured-eec-factorization-budget};
+Controlled Approximation~\ref{ca:qcd-measured-eec-prediction} &
+Observable: calorimetric or selected-track EEC.  Regulator: endpoint partition
+with overlap subtraction and track/fragmentation lift.  Source: local
+measured-observable budget.  Proof: prediction architecture.  Glauber:
+inherited from each open chart; track lift does not prove cancellation.
+Remainder: \(R_{\tau,Q}\), endpoint atoms, and nonperturbative
+track/fragmentation inputs.
+\\ \hline
+\eqref{eq:dis-factorization};
+Hypothesis~\ref{hyp:qcd-dis-leading-twist-factorization} &
+Observable: inclusive DIS on a compact \(x\)-window.  Regulator: renormalized
+light-ray PDFs in a collinear factorization scheme.  Source: hard-process
+factorization lineage \cite{CollinsSoperSterman1989Factorization} and local
+hypothesis.  Proof: leading-twist hypothesis with displayed distributional
+power bound.  Glauber: inclusive final-state sum is part of the standard proof
+obligation; no TMD Glauber-sensitive recoil is measured.  Remainder:
+compact-\(x\) higher-twist bound; threshold and small-\(x\) regions excluded.
+\\ \hline
+\eqref{eq:qcd-tmd-factorization};
+Hypothesis~\ref{hyp:qcd-tmd-factorization-hypothesis} &
+Observable: color-singlet small-\(q_\perp\) hadron-hadron production.
+Regulator: rapidity-regulated TMDs with soft subtraction and \(Y\)-term.
+Source: CSS/TMD lineage \cite{CollinsSoperSterman1989Factorization}.  Proof:
+hypothesis until regulator, soft factor, and power topology are supplied.
+Glauber: cancellation or operator representation is load-bearing.  Remainder:
+\(q_\perp/Q\), \(Y\)-term, large-\(b\), and hadron-mass residuals.
+\\ \hline
+\eqref{eq:qcd-drell-yan-integrated-factorization};
+Controlled Approximation~\ref{ca:qcd-drell-yan-integrated-theorem-boundary} &
+Observable: integrated Drell--Yan in a compact \((Q^2,y)\) window.  Regulator:
+integrated PDFs and tested Wightman functional.  Source: CSS hard-process
+factorization lineage \cite{CollinsSoperSterman1989Factorization} plus local
+residual budget.  Proof: theorem boundary and tested residual proposition;
+the formula alone is a coordinate.  Glauber: inclusive-projection or
+commutator bound required by the boundary list.  Remainder: the lead, soft,
+Glauber, power, and regulator residuals are separately bounded in
+Proposition~\ref{prop:qcd-drell-yan-tested-factorization-residual-budget}.
+\\ \hline
+\eqref{eq:qcd-drell-yan-tmd-factorization};
+Hypothesis~\ref{hyp:qcd-drell-yan-tmd-factorization-hypothesis} &
+Observable: Drell--Yan small-\(q_\perp\) spectrum.  Regulator: past-pointing
+TMDs, rapidity scales, \(Y\)-term.  Source: CSS/TMD lineage
+\cite{CollinsSoperSterman1989Factorization}.  Proof: conditional TMD
+factorization hypothesis.  Glauber: explicit proof or controlled hypothesis
+required.  Remainder: \(Y\)-term, \(q_\perp/Q\), hadron-mass, and
+nonperturbative transverse-distance residuals.
+\\ \hline
+Definition~\ref{def:qcd-exclusive-pion-factorization-scheme};
+\eqref{eq:qcd-pion-form-factor-factorization};
+\eqref{eq:qcd-pion-transition-factorization} &
+Observable: large-\(Q\) exclusive pion form factors.  Regulator:
+leading-twist pion LCDA and hard coefficient in a common collinear scheme.
+Source: exclusive factorization lineage
+\cite{BrodskyLepage1980Exclusive,EfremovRadyushkin1980PionFormFactor}.
+Proof: leading-power assertion with endpoint and soft qualifications.
+Glauber: endpoint/soft overlap is the relevant obstruction; inclusive Glauber
+cancellation is not automatic.  Remainder: \(O(\alpha_s,Q^{-4})_{\rm fac}\)
+is scheme-bound and not uniform without endpoint control.
+\\ \hline
+\eqref{eq:qcd-small-x-leading-dis-dipole-functional};
+Controlled Approximation~\ref{ca:qcd-small-x-leading-dis-dipole-channel} &
+Observable: leading small-\(x\) DIS dipole channel.  Regulator:
+rapidity-cutoff Wilson lines, impact factor, projective transverse regulator.
+Source: dipole/JIMWLK lineage
+\cite{NikolaevZakharov1991,Balitsky1996HighEnergy,Kovchegov1999SmallXF2}.
+Proof: measured-observable controlled approximation.  Glauber: high-energy
+eikonal Wilson lines encode the leading exchange; a separate TMD
+Glauber-cancellation theorem remains an additional proof obligation.
+Remainder: impact-factor, rapidity, projective, evolution, closure, endpoint,
+and finite-\(Q\) residuals.
+\\ \hline
+\eqref{eq:track-function-test-pairing};
+Controlled Approximation~\ref{ca:leading-endpoint-shape-function-convolution} &
+Observable: track functions and endpoint shape-function convolution.
+Regulator: renormalized lightlike operator distributions paired with tests.
+Source: local operator datum and convolution estimate.  Proof:
+nonperturbative input definitions plus conditional matching coordinates.
+Glauber: inherited from the short-distance factorization used to match them.
+Remainder: distributional pairing, matching, and moment/shape residuals must
+be stated for the observable.
+\\ \hline
+\end{longtable}
+}
 
 Renormalization of the hard, jet, and soft functions gives evolution
 equations.  The resummation structure is clearest after a Laplace transform, or

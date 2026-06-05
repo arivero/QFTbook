@@ -4,8 +4,9 @@
 Target claims:
 - Endpoint convolution, distributional pairing, zero-bin subtraction, finite
   scheme changes, RG transport, Wilson-line decoupling, Glauber diagnostics,
-  soft-drop scales, and massive-vector Sudakov areas obey the finite algebra
-  stated in the jets/SCET chapter.
+  the spectator-model color-entanglement obstruction to generalized TMD
+  factorization, soft-drop scales, and massive-vector Sudakov areas obey the
+  finite algebra stated in the jets/SCET chapter.
 - The regulated endpoint-region integral has a real fixed-order remainder
   bound, and unsubtracted or unpaired region splits fail as negative controls.
 - A noncommuting finite measurement can detect a Glauber rotation, so a
@@ -19,6 +20,9 @@ Independent construction:
   by the Lipschitz remainder bound.
 - The Glauber-breaking example is checked both as a concrete rational matrix
   model and as a symbolic two-state rotation formula.
+- The spectator-model obstruction is checked by an independent finite SU(2)
+  color-trace computation, eikonal delta-coefficient bookkeeping, and a
+  fixed-recoil transverse numerator/denominator sample.
 
 Imported assumptions:
 - The checks are finite-regulator or fixed-order algebraic tests of a proposed
@@ -27,6 +31,9 @@ Imported assumptions:
   it is not a continuum QCD theorem.
 - The finite Glauber Hilbert space is a diagnostic model for measurement
   commutation, not a construction of the QCD Glauber region.
+- The spectator-model check verifies the color/eikonal skeleton of the
+  Rogers-Mulders mechanism; it is not a numerical evaluation of the full
+  hadronic cross section.
 
 Negative controls:
 - Naively double-counting the zero-bin leaves exactly the overlap term.
@@ -35,6 +42,8 @@ Negative controls:
 - The unsubtracted hard endpoint integral diverges, and an unpaired
   intermediate split retains arbitrary split-scale dependence.
 - A noncommuting measurement gives a nonzero Glauber remainder.
+- Separate color-traced TMD factors have zero order-g single-loop anomaly
+  while the cross-hadron two-gluon color trace is nonzero.
 
 Scope boundary:
 - This script verifies finite algebra, fixed-order endpoint expansion, and
@@ -482,6 +491,121 @@ def check_symbolic_glauber_breaking_example() -> None:
         raise AssertionError("concrete Glauber-breaking negative control should be nonzero")
 
 
+def check_spectator_model_color_entanglement() -> None:
+    half = sp.Rational(1, 2)
+    generators = [
+        sp.Matrix([[0, half], [half, 0]]),
+        sp.Matrix([[0, -sp.I * half], [sp.I * half, 0]]),
+        sp.Matrix([[half, 0], [0, -half]]),
+    ]
+
+    for index, generator in enumerate(generators):
+        assert_equal(
+            f"SU(2) generator {index} trace",
+            sp.simplify(trace(generator)),
+            0,
+        )
+
+    for a, generator_a in enumerate(generators):
+        for b, generator_b in enumerate(generators):
+            expected = half if a == b else 0
+            assert_equal(
+                f"SU(2) trace normalization {a},{b}",
+                sp.simplify(trace(generator_a * generator_b)),
+                expected,
+            )
+
+    entangled_color = sp.simplify(
+        sum(
+            trace(generator_a * generator_b) * trace(generator_b * generator_a)
+            for generator_a in generators
+            for generator_b in generators
+        )
+    )
+    assert_equal(
+        "SU(2) cross-hadron entangled color factor",
+        entangled_color,
+        half * half * (2 * 2 - 1),
+    )
+
+    separate_single_loop_color = sp.simplify(
+        sum(
+            trace(generator_a) * trace(generator_b)
+            for generator_a in generators
+            for generator_b in generators
+        )
+    )
+    assert_equal("separate TMD order-g anomaly vanishes", separate_single_loop_color, 0)
+    if entangled_color == 0:
+        raise AssertionError("cross-hadron two-gluon color factor should be nonzero")
+
+    pi = sp.pi
+    same_side_eikonal_delta = (-2 * sp.I * pi) * (-2 * sp.I * pi)
+    same_side_spin_phase = -1
+    opposite_side_eikonal_delta = (2 * sp.I * pi) * (-2 * sp.I * pi)
+    opposite_side_spin_phase = 1
+    assert_equal(
+        "same-side eikonal plus spin sign",
+        sp.simplify(same_side_eikonal_delta * same_side_spin_phase),
+        4 * pi**2,
+    )
+    assert_equal(
+        "opposite-side eikonal plus spin sign",
+        sp.simplify(opposite_side_eikonal_delta * opposite_side_spin_phase),
+        4 * pi**2,
+    )
+    assert_equal(
+        "same/opposite Glauber terms add",
+        sp.simplify(
+            same_side_eikonal_delta * same_side_spin_phase
+            + opposite_side_eikonal_delta * opposite_side_spin_phase
+        ),
+        8 * pi**2,
+    )
+
+    def eps2(
+        left: tuple[sp.Rational, sp.Rational],
+        right: tuple[sp.Rational, sp.Rational],
+    ) -> sp.Rational:
+        return left[0] * right[1] - left[1] * right[0]
+
+    def norm2(vector: tuple[sp.Rational, sp.Rational]) -> sp.Rational:
+        return vector[0] * vector[0] + vector[1] * vector[1]
+
+    def minus(
+        left: tuple[sp.Rational, sp.Rational],
+        right: tuple[sp.Rational, sp.Rational],
+    ) -> tuple[sp.Rational, sp.Rational]:
+        return left[0] - right[0], left[1] - right[1]
+
+    def plus(
+        left: tuple[sp.Rational, sp.Rational],
+        right: tuple[sp.Rational, sp.Rational],
+    ) -> tuple[sp.Rational, sp.Rational]:
+        return left[0] + right[0], left[1] + right[1]
+
+    spin_1 = (sp.Rational(1), sp.Rational(0))
+    spin_2 = (sp.Rational(1), sp.Rational(0))
+    l_1 = (sp.Rational(0), sp.Rational(1))
+    l_2 = (sp.Rational(0), sp.Rational(1))
+    k_1 = (sp.Rational(0), sp.Rational(0))
+    q = (sp.Rational(1), sp.Rational(0))
+    numerator = eps2(spin_1, l_1) * eps2(spin_2, l_2)
+    denominator = (
+        norm2(l_1)
+        * norm2(l_2)
+        * (norm2(k_1) + 1)
+        * (norm2(minus(l_1, k_1)) + 2)
+        * (norm2(minus(q, k_1)) + 3)
+        * (norm2(minus(plus(l_2, k_1), q)) + 4)
+    )
+    assert_equal("fixed-recoil double-spin numerator", numerator, 1)
+    if denominator <= 0:
+        raise AssertionError("regulated transverse denominator should be positive")
+    if numerator / denominator == 0:
+        raise AssertionError("fixed-q spectator integrand sample should be nonzero")
+
+
 def massive_vector_sudakov_area(log_q2_over_m2: Fraction) -> Fraction:
     return log_q2_over_m2 * log_q2_over_m2 / 4
 
@@ -529,12 +653,13 @@ def main() -> None:
     check_soft_wilson_line_decoupling_identity()
     check_glauber_unitarity_diagnostic()
     check_symbolic_glauber_breaking_example()
+    check_spectator_model_color_entanglement()
     check_massive_vector_sudakov_area()
     print(
         "All SCET convolution, distributional-remainder, zero-bin, "
         "endpoint-expansion, scheme-covariance, RG-transport, soft-drop-scale, "
-        "soft-Wilson-line, Glauber-unitarity/breaking, and massive-vector "
-        "Sudakov checks passed."
+        "soft-Wilson-line, Glauber-unitarity/breaking, spectator-model "
+        "color-entanglement, and massive-vector Sudakov checks passed."
     )
 
 

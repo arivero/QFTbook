@@ -2498,8 +2498,10 @@ Current checks:
   covariant-derivative decoupling, a finite Glauber unitarity diagnostic
   separating inclusive cancellation from noncommuting measurement obstruction
   together with an exact finite remainder identity, Hilbert--Schmidt bound,
-  and symbolic two-state breaking example, and the triangular logarithmic
-  phase-space area behind the massive-vector Sudakov chart.
+  and symbolic two-state breaking example, a finite SU(2) color/eikonal check
+  of the spectator-model color-entanglement obstruction to separate-hadron
+  generalized TMD factorization, and the triangular logarithmic phase-space
+  area behind the massive-vector Sudakov chart.
 - `track_function_moment_checks.py`: exact rational checks for the finite-kernel
   track-function RG identities, verifying preservation of normalization, the
   first-moment evolution formula, and the full finite moment-tower formula
