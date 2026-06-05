@@ -727,8 +727,11 @@ Current checks:
   the explicit low-frequency positive spectral-slope family whose Euclidean
   transform is \(O(\epsilon)\) while its transport-channel slope remains fixed,
   together with a smooth finite-sum-rule-preserving compensator perturbation
-  around an integrable reference spectrum with a uniform positivity margin,
-  giving the reconstruction-instability negative control.
+  for the polynomial weights \(1\) and \(\omega\), around an integrable
+  reference spectrum with a uniform positivity margin.  It also checks an
+  adversarial smooth weight pair whose restrictions are dependent on the
+  allowed compensator region, giving the reconstruction-instability negative
+  control without claiming arbitrary finite-sum-rule compensators.
 - `hamiltonian_truncation_dlcq_checks.py`: finite checks for the
   Hamiltonian-truncation and DLCQ benchmark chapter, including the Ising
   energy-deformation Bogoliubov spectrum, the finite sine-Gordon zero-mode

@@ -12,7 +12,8 @@ integration, exact boundary phases, finite Berezin-sign arithmetic, and a
 low-frequency positive spectral-slope family whose Euclidean transform is
 bounded while its transport-channel slope is fixed, including a
 finite-sum-rule-preserving compensator test with a smooth integrable
-reference spectrum and a uniform positivity margin.
+reference spectrum, a restricted polynomial-weight compensator system, and a
+uniform positivity margin.
 Imported assumptions: the finite-regulator Gibbs trace, the bosonic spectral
 kernel stated in the chapter, positivity of Hermitian positive-frequency
 spectral weights, and the use of Euclidean norms as data-error topology.
@@ -20,11 +21,13 @@ Negative controls: the Euclidean zero mode is not inferred from the
 commutator spectral density, finite Matsubara values are not accepted as
 stable spectral reconstruction, small Euclidean error is not accepted as
 control of the low-frequency transport-channel slope, and a nonintegrable
-constant spectral floor is not used to preserve positivity.
+constant spectral floor is not used to preserve positivity.  An adversarial
+weight pair whose restrictions agree on the allowed compensator region is
+rejected as outside the compensator hypothesis.
 Scope boundary: these checks verify finite algebra and the explicit
 ill-conditioning construction; they do not prove a continuum reconstruction
-theorem, Carlson-class uniqueness, or the correctness of any numerical
-analytic-continuation prior.
+theorem, Carlson-class uniqueness, arbitrary finite-sum-rule compensator
+existence, or the correctness of any numerical analytic-continuation prior.
 """
 
 from __future__ import annotations
@@ -280,11 +283,15 @@ def smooth_step_01(x: float) -> float:
     return left / (left + right)
 
 
-def smooth_plateau_bump(omega: float, epsilon: float, eta_star: float) -> float:
-    if omega < 0.0 or omega >= epsilon:
+def fixed_plateau_profile(x: float) -> float:
+    if x < 0.0 or x >= 1.0:
         return 0.0
-    transition = smooth_step_01((omega - epsilon / 3.0) / (epsilon / 3.0))
-    return eta_star * (1.0 - transition)
+    transition = smooth_step_01(3.0 * x - 1.0)
+    return 1.0 - transition
+
+
+def smooth_plateau_bump(omega: float, epsilon: float, eta_star: float) -> float:
+    return eta_star * fixed_plateau_profile(omega / epsilon)
 
 
 def smooth_compensator(omega: float, center: float, radius: float) -> float:
@@ -320,54 +327,48 @@ def check_finite_sum_rule_preserving_instability() -> None:
     centers = [0.75, 1.25]
     radius = 0.08
 
-    # Preserve the two smooth sum rules int sigma and int omega*sigma.  The
-    # bump is smooth on the positive half-line, equals eta_star near omega=0,
-    # and vanishes for omega >= epsilon.  The compensators are smooth
-    # compactly supported bumps in fixed intervals away from the origin.
+    # Preserve the two polynomial smooth sum rules int sigma and
+    # int omega*sigma.  The bump is a fixed uniformly bounded profile scaled
+    # into [0, epsilon].  The compensators are smooth compactly supported bumps
+    # in fixed intervals away from the origin, where the polynomial weights
+    # remain linearly independent.
+    sum_rule_weights = [
+        ("1", lambda omega: 1.0),
+        ("omega", lambda omega: omega),
+    ]
     moment_matrix = [
         [
             integrate_midpoint(
-                lambda omega, center=center: smooth_compensator(omega, center, radius),
+                lambda omega, weight=weight, center=center: weight(omega)
+                * smooth_compensator(omega, center, radius),
                 center - radius,
                 center + radius,
             )
             for center in centers
-        ],
-        [
-            integrate_midpoint(
-                lambda omega, center=center: omega * smooth_compensator(omega, center, radius),
-                center - radius,
-                center + radius,
-            )
-            for center in centers
-        ],
+        ]
+        for _, weight in sum_rule_weights
     ]
 
     def compensated_data(trial_epsilon: float) -> tuple[list[float], list[float]]:
         bump_moments = [
             integrate_midpoint(
-                lambda omega: smooth_plateau_bump(omega, trial_epsilon, eta_star),
+                lambda omega, weight=weight: weight(omega)
+                * smooth_plateau_bump(omega, trial_epsilon, eta_star),
                 0.0,
                 trial_epsilon,
-            ),
-            integrate_midpoint(
-                lambda omega: omega * smooth_plateau_bump(omega, trial_epsilon, eta_star),
-                0.0,
-                trial_epsilon,
-            ),
+            )
+            for _, weight in sum_rule_weights
         ]
         coefficients = solve_two_by_two(moment_matrix, [-bump_moments[0], -bump_moments[1]])
         return bump_moments, coefficients
 
     bump_moments, coefficients = compensated_data(epsilon)
-    h_moment_0 = bump_moments[0] + sum(
-        coefficients[index] * moment_matrix[0][index] for index in range(2)
-    )
-    h_moment_1 = bump_moments[1] + sum(
-        coefficients[index] * moment_matrix[1][index] for index in range(2)
-    )
-    assert_close(h_moment_0, 0.0, "compensated perturbation preserves zeroth sum rule")
-    assert_close(h_moment_1, 0.0, "compensated perturbation preserves first moment sum rule")
+    h_moments = [
+        bump_moments[row] + sum(coefficients[index] * moment_matrix[row][index] for index in range(2))
+        for row in range(2)
+    ]
+    for (name, _), moment in zip(sum_rule_weights, h_moments):
+        assert_close(moment, 0.0, f"compensated perturbation preserves polynomial sum rule {name}")
 
     def h_value(omega: float, trial_epsilon: float, trial_coefficients: list[float]) -> float:
         return smooth_plateau_bump(omega, trial_epsilon, eta_star) + sum(
@@ -386,6 +387,12 @@ def check_finite_sum_rule_preserving_instability() -> None:
     h_sup = 0.0
     coefficient_samples = {}
     for trial_epsilon in trial_epsilons:
+        profile_sup = max(
+            abs(smooth_plateau_bump(trial_epsilon * index / 200.0, trial_epsilon, eta_star))
+            for index in range(201)
+        )
+        if profile_sup > eta_star * (1.0 + 1.0e-12):
+            raise AssertionError("fixed bump profile should be uniformly bounded")
         _, trial_coefficients = compensated_data(trial_epsilon)
         coefficient_samples[trial_epsilon] = trial_coefficients
         h_sup = max(
@@ -441,6 +448,42 @@ def check_finite_sum_rule_preserving_instability() -> None:
         raise AssertionError("smooth compensated perturbation should have a stable O(epsilon) scale")
 
 
+def check_adversarial_weights_need_restricted_independence() -> None:
+    epsilon0 = 1.0e-3
+    centers = [0.75, 1.25]
+    radius = 0.08
+
+    def low_frequency_weight_bump(omega: float) -> float:
+        return smooth_compensator(omega, 0.25 * epsilon0, 0.10 * epsilon0)
+
+    weights = [
+        lambda omega: 1.0,
+        lambda omega: 1.0 + low_frequency_weight_bump(omega),
+    ]
+    if abs(weights[1](0.25 * epsilon0) - weights[0](0.25 * epsilon0)) < 1.0e-6:
+        raise AssertionError("adversarial weights should be globally independent")
+
+    moment_matrix = [
+        [
+            integrate_midpoint(
+                lambda omega, weight=weight, center=center: weight(omega)
+                * smooth_compensator(omega, center, radius),
+                center - radius,
+                center + radius,
+            )
+            for center in centers
+        ]
+        for weight in weights
+    ]
+    row_gap = max(abs(moment_matrix[0][column] - moment_matrix[1][column]) for column in range(2))
+    if row_gap > 1.0e-12:
+        raise AssertionError("low-frequency-only weight difference should vanish on compensator supports")
+
+    det = moment_matrix[0][0] * moment_matrix[1][1] - moment_matrix[0][1] * moment_matrix[1][0]
+    if abs(det) > 1.0e-12:
+        raise AssertionError("dependent restricted weights must not admit this compensator matrix")
+
+
 def check_chemical_potential_twist() -> None:
     beta = 2.0
     mu = 0.37
@@ -468,8 +511,9 @@ def main() -> None:
     check_bosonic_spectral_representation()
     check_low_frequency_transport_instability()
     check_finite_sum_rule_preserving_instability()
+    check_adversarial_weights_need_restricted_independence()
     check_chemical_potential_twist()
-    print("Finite-temperature path-integral convention checks passed.")
+    print("Finite-temperature path-integral convention and compensator-scope checks passed.")
 
 
 if __name__ == "__main__":

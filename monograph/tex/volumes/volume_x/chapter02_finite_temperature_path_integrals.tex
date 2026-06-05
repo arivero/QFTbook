@@ -625,23 +625,43 @@ thermal kernel, whereas transport asks for a pointwise low-frequency slope
 after the thermodynamic and zero-frequency limits have been taken.
 
 This elementary bump is a positivity-only negative control; it changes any
-moment sum rule that sees the interval \((0,\varepsilon)\).  A fixed finite
-set of smooth sum rules does not remove the obstruction, but the positivity
-margin must be stated uniformly.  Fix \(\varepsilon_0>0\), let
-\(0<\varepsilon\le\varepsilon_0\), and let \(w_0,\ldots,w_m\) be smooth
-weights.  After discarding redundant constraints, choose smooth compensators
-\(\psi_0,\ldots,\psi_m\) supported in a fixed compact set separated from
-\([0,\varepsilon_0]\) such that
+moment sum rule that sees the interval \((0,\varepsilon)\).  For an admissible
+finite family of smooth sum rules, the same obstruction survives, but the
+admissibility must be stated rather than inferred.  The needed hypothesis is
+local on the compensator region.  Fix
+\(\varepsilon_0>0\) and a compact set
+\[
+  K\Subset(\varepsilon_0,\infty).
+\]
+Let \(w_0,\ldots,w_m\) be smooth weights whose restrictions to \(K\) are
+linearly independent.  Then one can choose
+\(\psi_0,\ldots,\psi_m\in C_c^\infty(K)\) such that
 \[
   M_{\ell j}=\int_0^\infty w_\ell(\omega)\psi_j(\omega)\,d\omega
 \]
-is invertible.  For a smooth half-line bump \(b_\varepsilon\), constant near
-the origin, vanishing for \(\omega\ge\varepsilon\), and satisfying
-\(\lim_{\omega\downarrow0}b_\varepsilon(\omega)=\eta_\ast\), set
+is invertible.  Indeed, choose points
+\(\Omega_0,\ldots,\Omega_m\in K\) for which the evaluation matrix
+\((w_\ell(\Omega_j))_{\ell j}\) is invertible; otherwise the restrictions
+would be linearly dependent.  Smooth bumps with sufficiently small disjoint
+supports around these points give moment matrices arbitrarily close to this
+invertible evaluation matrix, up to positive column masses, and hence remain
+invertible.  Global independence on the half-line is insufficient:
+two weights that differ only inside \((0,\varepsilon_0/2)\) are globally
+independent but have identical restrictions to every such \(K\).
+
+Now choose one fixed smooth half-line profile \(\chi\) with
+\(0\le\chi\le1\), \(\chi(x)=1\) for \(0\le x\le1/3\), and
+\(\chi(x)=0\) for \(x\ge1\), and set
+\[
+  b_\varepsilon(\omega)=\eta_\ast\chi(\omega/\varepsilon),
+  \qquad 0<\varepsilon\le\varepsilon_0 .
+\]
+This family is uniformly bounded, supported in \([0,\varepsilon]\), and has
+\(\lim_{\omega\downarrow0}b_\varepsilon(\omega)=\eta_\ast\).  Define
 \begin{equation}
   c_j(\varepsilon)
   =
-  -(M^{-1})_{j\ell}
+  -\sum_{\ell=0}^m(M^{-1})_{j\ell}
   \int_0^\infty w_\ell(\omega)b_\varepsilon(\omega)\,d\omega,
   \qquad
   h_\varepsilon
@@ -655,14 +675,16 @@ Then
   \qquad \ell=0,\ldots,m,
 \]
 exactly.  Since the bump has support of length \(O(\varepsilon)\), the
-coefficients \(c_j(\varepsilon)\) are \(O(\varepsilon)\).  Hence the
-Euclidean transform of \(h_\varepsilon\) is \(O(\varepsilon)\) on every
+uniform boundedness of \(b_\varepsilon\) and boundedness of each \(w_\ell\) on
+\([0,\varepsilon_0]\) imply that the bump moments are \(O(\varepsilon)\), and
+the fixed inverse \(M^{-1}\) gives \(c_j(\varepsilon)=O(\varepsilon)\).  Hence
+the Euclidean transform of \(h_\varepsilon\) is \(O(\varepsilon)\) on every
 interior Euclidean-time window, while \(h_\varepsilon\) has low-frequency
 slope \(\eta_\ast\).  Choose now a smooth positive reference slope with
 acceptable ultraviolet falloff, for instance
 \(\sigma_{\rm ref}(\omega)=C\ee^{-\omega}\), and set
 \[
-  U=[0,\varepsilon_0]\cup\bigcup_j\operatorname{supp}\psi_j,
+  U=[0,\varepsilon_0]\cup K,
   \qquad
   c=\inf_{\omega\in U}\sigma_{\rm ref}(\omega)>0 .
 \]
@@ -673,9 +695,9 @@ Also set
   \|h_\varepsilon\|_\infty
   <\infty ,
 \]
-which is finite because \(b_\varepsilon\) is uniformly bounded and
-\(c_j(\varepsilon)=O(\varepsilon)\) on the compact interval
-\((0,\varepsilon_0]\).  Any fixed amplitude
+which is finite because the fixed-profile \(b_\varepsilon\) is uniformly
+bounded, the \(\psi_j\) are fixed smooth functions on \(K\), and
+\(c_j(\varepsilon)=O(\varepsilon)\).  Any fixed amplitude
 \begin{equation}
   0<a<\frac{c}{B}
   \label{eq:thermal-finite-sum-rule-positivity-amplitude}
@@ -683,11 +705,13 @@ which is finite because \(b_\varepsilon\) is uniformly bounded and
 gives
 \(\sigma_{\rm ref}\pm a h_\varepsilon\ge c-aB>0\) on \(U\), while outside
 \(U\) the perturbation vanishes and \(\sigma_{\rm ref}>0\).  The two
-positive spectra therefore have identical values of the chosen finite sum
-rules and have low-frequency slopes differing by \(2a\eta_\ast\).  Infinite
-moment data, or a physically derived analytic class, may of course add
-information; this finite-constraint construction only says that finitely many
-smooth sum rules do not by themselves stabilize the local transport slope.
+positive spectra therefore have identical values of the chosen admissible
+finite sum rules and have low-frequency slopes differing by \(2a\eta_\ast\).
+Infinite moment data, sum rules whose weights remain independent only by their
+low-frequency support, or a physically derived analytic class may of course add
+information; this finite-constraint construction only says that admissible
+finitely many smooth sum rules do not by themselves stabilize the local
+transport slope.
 
 Several pieces of bookkeeping must also be kept separate.
 \begin{center}
@@ -708,9 +732,9 @@ Several pieces of bookkeeping must also be kept separate.
   comparing Euclidean data with real-time spectral functions.\\[0.3em]
 \textbf{finite data} &
   A finite noisy set of Euclidean samples gives finitely many smeared
-  constraints.  Positivity and any fixed finite set of smooth sum rules
-  narrow the feasible set but do not by themselves select or stabilize a
-  unique low-frequency slope.
+  constraints.  Positivity and admissible fixed finite smooth sum rules
+  admitting the compensator system above narrow the feasible set but do not by
+  themselves select or stabilize a unique low-frequency slope.
 \end{tabular}
 \end{center}
 Maximum entropy reconstructions, Bayesian priors, Backus--Gilbert estimators,

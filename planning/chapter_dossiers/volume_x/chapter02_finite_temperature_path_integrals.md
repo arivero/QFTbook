@@ -31,7 +31,9 @@ or constructive definition.
 - `sigma_epsilon`: compactly supported low-frequency spectral-slope bump used
   to show Euclidean reconstruction instability.
 - `h_epsilon`: compensated low-frequency spectral-slope perturbation with
-  vanishing values against a fixed finite set of smooth sum-rule weights.
+  vanishing values against an admissible fixed finite set of smooth sum-rule
+  weights whose restrictions remain independent on an away-from-zero compact
+  compensator region.
 - `Q`, `mu`, `q`: conserved global charge, chemical potential, and charge of
   an operator or field.
 - `P(x)`: thermal gauge holonomy/Polyakov loop.
@@ -69,9 +71,10 @@ or constructive definition.
    natural finite-band topologies, so the inverse map is not uniformly stable.
 12. Gives an explicit positive low-frequency spectral-slope family with
    Euclidean norm \(O(\epsilon)\) but fixed transport-channel slope, and a
-   compensator construction preserving any fixed finite set of smooth sum
-   rules while changing the same local slope, with a uniform positivity
-   margin supplied by a smooth integrable reference spectrum.
+   compensator construction preserving admissible fixed finite smooth sum
+   rules whose weights remain independent on a declared away-from-zero compact
+   region, with a uniform positivity margin supplied by a smooth integrable
+   reference spectrum.
 13. Separates zero modes, contact terms, finite-volume lines, thermodynamic
    limits, continuum limits, and finite-data priors in the reconstruction
    problem.
@@ -99,6 +102,11 @@ or constructive definition.
   and on the fixed compensator supports, choosing a smooth integrable
   reference spectrum, and recording the explicit amplitude bound
   \(0<a<c/B\) that preserves positivity.
+- 2026-06-04 issue #830 re-audit: replaced the overbroad "any fixed finite
+  set" quantifier with an explicit restricted-weight compensator hypothesis,
+  proved compensator existence from independence on a compact region away from
+  zero, fixed the bump family to one uniformly bounded profile, and recorded
+  the low-frequency-only adversarial weight family as outside the hypothesis.
 
 ## Calculation Checks
 
@@ -106,8 +114,9 @@ or constructive definition.
   Matsubara boundary phases, the one-mode coherent-state trace sign, the
   finite-volume spectral representation, the separate Euclidean zero mode,
   the Matsubara Cauchy transform, the low-frequency Euclidean reconstruction
-  instability example, the smooth finite-sum-rule-preserving compensator
-  perturbation with uniform positivity margin, and chemical-potential twist
+  instability example, the smooth polynomial finite-sum-rule-preserving
+  compensator perturbation with uniform positivity margin, an adversarial
+  restricted-dependence weight negative control, and chemical-potential twist
   bookkeeping.
 
 ## Figure Ledger
