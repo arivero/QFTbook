@@ -6,20 +6,26 @@ Cutkosky discontinuities to generalized cuts, scalar-integral reconstruction,
 IBP reduction, and a master-integral differential equation.  This script
 checks the exact algebraic ledger behind the worked massless phi^4 example
 and the one-loop bubble family, then adds finite helicity and regulator
-bookkeeping for the Yang-Mills MHV/all-plus control example.
+bookkeeping for the Yang-Mills MHV/all-plus control example.  It also checks
+the finite Laurent-pole ledger that turns a reconstructed virtual amplitude
+into a finite observable only after infrared subtraction, real radiation, and
+scheme transport have been assembled.
 
 Evidence contract.
 Target claims: the generalized-unitarity section of Volume II Chapter 6,
 especially the phi^4 cut reconstruction, the negative controls for incomplete
 cut sets and four-dimensional blind spots, the bubble IBP identity, and the
 bubble master differential equation, plus the gauge-theory MHV box and
-all-plus rational-term comparison.
+all-plus rational-term comparison and the virtual-to-observable finite
+remainder assembly.
 Independent construction: finite cut-signature matrices over rational
 numbers, an explicit identical-state symmetry factor, a nullspace model for
 local/rational terms invisible to four-dimensional cuts, and exact rational
 checks of the one-loop bubble IBP coefficients at several regulator values;
 spinor-bracket exponent ledgers for little-group weights and dimensions; and
-a finite four-gluon helicity enumeration for all-plus two-particle cuts.
+a finite four-gluon helicity enumeration for all-plus two-particle cuts;
+Laurent-pole arithmetic for virtual/real infrared cancellation and finite
+scheme transport.
 Imported assumptions: dimensional regularization, the standard massless
 two-particle phase-space normalization with the common factor of pi stripped
 off, the Feynman-parameter gamma-function form of the bubble master, and the
@@ -31,7 +37,8 @@ local counterterms are invisible to cuts, and constructs two amplitudes with
 identical four-dimensional cuts but different D-dimensional rational probes;
 it also verifies that the all-plus one-loop rational structure is invisible
 to strict four-dimensional two-particle cuts but visible to a nonzero
-mu_perp^2 massive-scalar probe.
+mu_perp^2 massive-scalar probe, and rejects virtual-only pole cancellation,
+omitted rational finite remainders, and untransported finite IR-scheme shifts.
 Scope boundary: a pass checks the finite reconstruction and reduction
 bookkeeping; it does not compute a nonabelian helicity amplitude from Feynman
 graphs, prove unitarity from Wightman axioms, or solve a multi-master
@@ -95,6 +102,19 @@ def rank(matrix: list[list[Fraction]]) -> int:
 CHANNELS = ("s", "t", "u")
 BASIS = ("B_s", "B_t", "B_u", "local", "four_dimensional_rational_null")
 BracketPowers = dict[tuple[int, int], int]
+Laurent = tuple[Fraction, Fraction]
+
+
+def laurent_add(left: Laurent, right: Laurent) -> Laurent:
+    return (left[0] + right[0], left[1] + right[1])
+
+
+def laurent_sub(left: Laurent, right: Laurent) -> Laurent:
+    return (left[0] - right[0], left[1] - right[1])
+
+
+def laurent_scale(scale: Fraction, value: Laurent) -> Laurent:
+    return (scale * value[0], scale * value[1])
 
 
 def four_dimensional_cut_signature(basis_name: str) -> tuple[Fraction, Fraction, Fraction]:
@@ -333,12 +353,108 @@ def check_branch_and_landau_ledger() -> None:
     )
 
 
+def check_virtual_to_observable_assembly() -> None:
+    tree = Fraction(3, 2)
+    ir_operator = (Fraction(-5, 3), Fraction(7, 11))
+    finite_remainder = Fraction(11, 13)
+    real_finite = Fraction(17, 19)
+
+    virtual = laurent_add(
+        laurent_scale(tree, ir_operator),
+        (Fraction(0), finite_remainder),
+    )
+    extracted_remainder = laurent_sub(virtual, laurent_scale(tree, ir_operator))
+    assert_equal(
+        "finite remainder after IR subtraction",
+        extracted_remainder,
+        (Fraction(0), finite_remainder),
+    )
+
+    virtual_cross_section = laurent_scale(2 * tree, virtual)
+    integrated_real = laurent_add(
+        laurent_scale(-2 * tree * tree, ir_operator),
+        (Fraction(0), real_finite),
+    )
+    assembled = laurent_add(virtual_cross_section, integrated_real)
+    expected_finite = 2 * tree * finite_remainder + real_finite
+    assert_equal(
+        "virtual-real pole cancellation",
+        assembled,
+        (Fraction(0), expected_finite),
+    )
+    assert_true(
+        "virtual-only contribution still has IR pole",
+        virtual_cross_section[0] != 0,
+    )
+
+    rational_term = Fraction(5, 17)
+    missing_rational_remainder = finite_remainder - rational_term
+    missing_rational_observable = 2 * tree * missing_rational_remainder + real_finite
+    assert_true(
+        "omitting rational term changes finite observable",
+        missing_rational_observable != expected_finite,
+    )
+
+    finite_scheme_shift = Fraction(4, 9)
+    shifted_ir_operator = laurent_add(ir_operator, (Fraction(0), finite_scheme_shift))
+    shifted_remainder = finite_remainder - finite_scheme_shift * tree
+    shifted_virtual = laurent_add(
+        laurent_scale(tree, shifted_ir_operator),
+        (Fraction(0), shifted_remainder),
+    )
+    assert_equal(
+        "finite IR-scheme transport leaves virtual amplitude unchanged",
+        shifted_virtual,
+        virtual,
+    )
+
+    shifted_real_finite = real_finite + 2 * tree * tree * finite_scheme_shift
+    shifted_observable = 2 * tree * shifted_remainder + shifted_real_finite
+    assert_equal(
+        "finite IR-scheme transport leaves observable unchanged",
+        shifted_observable,
+        expected_finite,
+    )
+    untransported_observable = 2 * tree * shifted_remainder + real_finite
+    assert_true(
+        "untransported finite IR-scheme shift changes observable",
+        untransported_observable != expected_finite,
+    )
+
+    residuals = {
+        "cut": Fraction(1, 101),
+        "rational": Fraction(1, 103),
+        "IBP": Fraction(1, 107),
+        "UV": Fraction(1, 109),
+        "IR_real": Fraction(1, 113),
+        "factorization": Fraction(1, 127),
+        "measurement": Fraction(1, 131),
+    }
+    exact_observable = expected_finite + sum(residuals.values(), Fraction(0))
+    majorant = sum(abs(value) for value in residuals.values())
+    assert_equal(
+        "one-loop observable residual telescope",
+        exact_observable - expected_finite,
+        sum(residuals.values(), Fraction(0)),
+    )
+    assert_true(
+        "one-loop observable reconstruction bound",
+        abs(exact_observable - expected_finite) <= majorant,
+    )
+    underbudget = majorant - abs(residuals["IR_real"]) - abs(residuals["measurement"])
+    assert_true(
+        "omitted observable residuals underbudget comparison",
+        abs(exact_observable - expected_finite) > underbudget,
+    )
+
+
 def main() -> None:
     check_phi4_cut_reconstruction()
     check_four_dimensional_cut_blind_spot()
     check_gauge_theory_helicity_controls()
     check_bubble_ibp_identity()
     check_branch_and_landau_ledger()
+    check_virtual_to_observable_assembly()
     print("All generalized unitarity and one-loop reduction checks passed.")
 
 

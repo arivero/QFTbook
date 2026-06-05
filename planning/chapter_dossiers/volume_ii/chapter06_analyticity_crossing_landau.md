@@ -25,7 +25,9 @@
   physical cuts versus algebraic generalized cuts, one-loop scalar-integral
   reconstruction, a complete massless \(\lambda\phi^4\) four-point cut
   reconstruction with negative controls, a Yang--Mills MHV/all-plus rational
-  term control, and the bubble IBP/differential equation master calculation.
+  term control, the bubble IBP/differential equation master calculation, and
+  a finite-remainder/observable assembly layer separating reconstructed
+  virtual amplitudes from infrared-safe physical observables.
 - Adds Steinmann sequential-discontinuity constraints as a scoped causal
   boundary-value statement, with channel-overlap definitions, sheet/order
   conventions, an overlapping versus compatible finite example, and explicit
@@ -107,6 +109,10 @@
 | \(A_4^{(0)}(1^-,2^-,3^+,4^+)\) | color-ordered tree MHV four-gluon amplitude in the spinor-helicity convention used for the gauge-theory control |
 | \(I_4^{(D)}(s,t)\) | dimensionally regulated massless scalar box in the four-point MHV control |
 | \(C_{\rm loop}\), \(C_{\rm rat}\) | loop-normalization and all-plus rational-term constants, fixed only after color, particle-content, and loop-measure conventions are declared |
+| \(\mathbf I^{(1)}_\Lambda\) | one-loop infrared subtraction operator used to define the finite remainder in a declared regulator and finite subtraction convention |
+| \(\mathcal F^{(1)}_\Lambda\) | finite one-loop hard remainder after subtracting \(\mathbf I^{(1)}_\Lambda\mathcal A^{(0)}_\Lambda\) |
+| \(\mathcal R_\Lambda^{\rm sub}[W]\), \(\mathcal C_\Lambda^{\rm fact}[W]\) | real-emission/subtraction and factorization/matching pieces needed to assemble an infrared-safe observable for measurement \(W\) |
+| \(B_{\rm cut},B_{\rm rat},B_{\rm IBP},B_{\rm UV},B_{\rm IR/real},B_{\rm fact},B_{\rm meas}\) | residual bounds in the one-loop reconstructed-observable comparison |
 | \(s_I\) | all-incoming channel invariant \(-(\sum_{i\in I}p_i)^2\), with channel class \([I]=\{I,I^c\}\) |
 | overlapping channels | channel classes \([I]\), \([J]\) for which \(I\cap J\), \(I\setminus J\), \(J\setminus I\), and \((I\cup J)^c\) are all nonempty |
 | compatible channels | channel classes with complementary representatives that are disjoint or nested |
@@ -157,6 +163,11 @@
   in \(\epsilon\), and the standard vanishing of scaleless tadpoles.  The
   bubble differential equation is solved with Euclidean boundary data at
   \(Q^2=\mu^2\) and physical branch \(Q^2\mapsto -s-\ii0\).
+- The finite-observable assembly assumes a declared one-loop infrared
+  subtraction convention, an infrared-safe measurement or matching target,
+  and a real-emission/factorization construction using the same finite
+  subtraction convention as the virtual finite remainder.  It is a comparison
+  datum for one-loop observables, not a proof of all-order factorization.
 - The Steinmann section assumes a declared boundary-value setting before the
   vanishing statement: connected time-ordered kernels or LSZ-reduced amplitudes
   with external pole/contact terms separated; selected channel boundary values
@@ -561,3 +572,11 @@
   rational term, and updates the companion script to check little-group
   weights, dimensions, four-dimensional all-plus cut vanishing, and the
   evanescent probe.
+- 2026-06-05 issue #769 virtual-to-observable pass: added the
+  finite-remainder assembly layer after the cut-equality warning.  The pass
+  separates reconstructed virtual amplitudes from infrared-safe observables by
+  requiring a common infrared subtraction convention, real-emission/subtraction
+  construction, factorization/matching terms, and residual budget.  The
+  companion script now checks exact Laurent-pole cancellation, omitted
+  rational-term failure, finite IR-scheme transport, and underbudgeted
+  observable residuals.

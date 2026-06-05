@@ -2516,10 +2516,106 @@ has been included.  The loop-amplitude workflow is therefore
   &\text{IBP masters}
     \longrightarrow
     \text{renormalized finite remainder or observable},
-  \end{aligned}
+\end{aligned}
 \]
 with a separate hypothesis or calculation at each arrow.
 \end{warning}
+
+\begin{controlledapproximation}[From reconstructed virtual amplitude to
+finite observable]
+\label{ca:one-loop-reconstruction-observable-assembly}
+Let \(\mathcal A^{(0)}_\Lambda\) be a regulated color-space tree amplitude
+for a fixed external state, and let
+\(\mathcal A^{(1),{\rm rec}}_\Lambda\) be the one-loop result obtained from
+generalized cuts, rational-term data, IBP reduction, and local UV
+subtractions in the same normalization.  In a massless gauge theory the
+renormalized virtual amplitude is still not the finite hard object.  Choose an
+infrared subtraction convention \(\mathbf I^{(1)}_\Lambda\), containing the
+soft and collinear poles and their declared finite terms, and define
+\begin{equation}
+  \mathcal F^{(1)}_\Lambda
+  =
+  \mathcal A^{(1),{\rm rec}}_\Lambda
+  -
+  \mathbf I^{(1)}_\Lambda\mathcal A^{(0)}_\Lambda .
+  \label{eq:one-loop-finite-remainder-definition}
+\end{equation}
+The quantity \(\mathcal F^{(1)}_\Lambda\) is a finite remainder in the chosen
+subtraction convention, not yet an inclusive cross section.
+
+For an infrared-safe measurement \(W\), the corresponding finite comparison
+for the first correction to the observable has the form
+\begin{equation}
+  \mathcal O_\Lambda^{(1)}[W]
+  =
+  2\,\operatorname{Re}
+    \bigl\langle
+      \mathcal A^{(0)}_\Lambda,
+      \mathcal F^{(1)}_\Lambda
+    \bigr\rangle
+  +
+  \mathcal R_\Lambda^{\rm sub}[W]
+  +
+  \mathcal C_\Lambda^{\rm fact}[W].
+  \label{eq:one-loop-observable-from-finite-remainder}
+\end{equation}
+Here \(\mathcal R_\Lambda^{\rm sub}[W]\) is the real-emission contribution
+after the local soft/collinear counterevents have been integrated and combined
+with the virtual subtraction term, and
+\(\mathcal C_\Lambda^{\rm fact}[W]\) denotes any initial-state factorization
+or operator-matching counterterm required by the observable.  The same
+\(\mathbf I^{(1)}_\Lambda\) must be used in
+\eqref{eq:one-loop-finite-remainder-definition} and in the construction of
+\(\mathcal R_\Lambda^{\rm sub}\).  If the finite part of
+\(\mathbf I^{(1)}_\Lambda\) is changed by a finite operator
+\(\Delta_{\rm fin}\), then
+\[
+  \mathcal F^{(1)}_\Lambda
+  \longmapsto
+  \mathcal F^{(1)}_\Lambda-\Delta_{\rm fin}\mathcal A^{(0)}_\Lambda,
+\]
+and the real/factorization term in
+\eqref{eq:one-loop-observable-from-finite-remainder} must transform by the
+opposite finite amount.  Thus the finite remainder is scheme dependent even
+though the assembled observable is not.
+
+A finite comparison between the reconstructed workflow and the exact
+regulated observable should therefore bound all of the following residuals:
+\[
+  \Delta_{\rm cut},\quad
+  \Delta_{\rm rat},\quad
+  \Delta_{\rm IBP},\quad
+  \Delta_{\rm UV},\quad
+  \Delta_{\rm IR/real},\quad
+  \Delta_{\rm fact},\quad
+  \Delta_{\rm meas}.
+\]
+If
+\[
+  |\Delta_j[W]|\le B_j[W]
+  \quad
+  (j={\rm cut,rat,IBP,UV,IR/real,fact,meas}),
+\]
+then the reconstructed observable satisfies
+\begin{equation}
+  \left|
+    \mathcal O_{\Lambda,{\rm exact}}^{(1)}[W]
+    -
+    \mathcal O_{\Lambda,{\rm rec}}^{(1)}[W]
+  \right|
+  \le
+  B_{\rm cut}+B_{\rm rat}+B_{\rm IBP}+B_{\rm UV}
+  +B_{\rm IR/real}+B_{\rm fact}+B_{\rm meas}.
+  \label{eq:one-loop-observable-reconstruction-bound}
+\end{equation}
+Equation~\eqref{eq:one-loop-integral-basis-reconstruction} is therefore only
+the virtual-amplitude input to a physical prediction.  Omitting an all-plus
+rational term changes \(\mathcal F^{(1)}_\Lambda\); omitting the real
+subtraction leaves the soft/collinear pole in the virtual contribution; and
+changing the finite subtraction convention without transporting the
+real/factorization term changes the finite number in
+\eqref{eq:one-loop-observable-from-finite-remainder}.
+\end{controlledapproximation}
 
 \section{Steinmann Relations and Sequential Discontinuities}
 \label{sec:steinmann-sequential-discontinuities}
