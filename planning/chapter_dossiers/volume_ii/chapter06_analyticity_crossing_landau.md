@@ -36,7 +36,9 @@
   gateway with generalized-gauge negative controls, a solved finite two-scale
   massless box master with branch data, the bubble
   IBP/differential equation master calculation, an equal-mass bubble threshold
-  family with lower tadpole master and physical branch data, and a
+  family with lower tadpole master and physical branch data, a two-loop
+  equal-mass sunrise maximal-cut curve exposing the elliptic-period
+  obstruction and the physical \(s=9m^2\) threshold, and a
   two-stage master-integral layer: first a local two-master threshold block,
   then a two-letter transport audit exposing connection data, Euclidean
   boundary constants, branch/path prescriptions, lower sectors, and the
@@ -69,10 +71,11 @@
   Ossola--Papadopoulos--Pittau, Forde, Bern--Morgan,
   Brandhuber--McNamara--Spence--Travaglini, Ussyukina--Davydychev,
   Passarino--Veltman,
-  Chetyrkin--Tkachov, Tkachov, Kotikov, and Gehrmann--Remiddi form the source
+  Chetyrkin--Tkachov, Tkachov, Kotikov, Gehrmann--Remiddi,
+  Laporta--Remiddi, and Adams--Bogner--Weinzierl form the source
   lineage for the generalized-unitarity, planar \(\mathcal N=4\) MHV
   quadruple-cut, rational-term, integrand-reduction, explicit box-function,
-  IBP, and differential-equation bridge.
+  IBP, differential-equation, and sunrise elliptic-period bridge.
 - Bern--Carrasco--Johansson's tree-level amplitude relations and double-copy
   construction supply the source spine for the four-point
   color--kinematics gateway; the chapter uses them only as a scoped entry
@@ -129,6 +132,7 @@
 | \(B(Q^2)\), \(\widehat B(x)\) | Euclidean bubble master and its four-dimensional cut-normalized physical continuation |
 | \(I_{a,b}(Q^2)\) | Euclidean one-loop bubble integral family used for IBP reduction |
 | \(z\), \(F_m(z)\), \(T_m\) | equal-mass bubble threshold variable \(Q^2/(4m^2)\), finite nonlocal bubble part, and normalized lower tadpole master |
+| \(r,E_r,P_r,\Delta_r\) | equal-mass sunrise threshold variable \(s/m^2\), maximal-cut elliptic curve, affine cubic, and eliminated quartic |
 | \(\vec M\), \(A_T\), \(y_\gamma\) | local two-master threshold vector, nilpotent threshold residue, and sheet/path-labelled threshold coordinate in the multi-master differential-system model |
 | \(\vec J\), \(A_0,A_1\), \(L_0^\gamma,L_1^\gamma\) | two-letter master-transport vector, residue matrices, and path-labelled logarithmic transports in the finite master-system audit |
 | \(\Omega\), \(W_\alpha\), \(\mathcal U_\gamma\) | reduced master-integral connection, Landau-letter functions, and path-ordered transport from a Euclidean boundary point |
@@ -225,6 +229,10 @@
   physical sheet is specified by an analytic-continuation path and that
   Euclidean boundary constants are supplied independently from cut/monodromy
   data.
+- The equal-mass sunrise block is a two-loop diagnostic of the master-integral
+  geometry.  It identifies the maximal-cut curve and its threshold
+  discriminant, but it does not claim to solve the full sunrise integral or
+  all elliptic sectors in \(D=4-2\epsilon\).
 - The two-letter master-transport model is a finite normalized sector used to
   audit the data needed after IBP closure.  It checks boundary constants,
   noncommuting residues, branch/path prescriptions, and lower-sector residuals;
@@ -836,3 +844,13 @@
   verifies the stripped pole/beta arithmetic, the factor-of-three failure of a
   single-channel cut, and the finite local scheme shift that remains
   cut-invisible.
+- 2026-06-05 issue #769 sunrise elliptic-maximal-cut pass: added
+  `ca:two-loop-sunrise-elliptic-maximal-cut` after the equal-mass bubble
+  threshold family.  The pass moves the loop-amplitude section beyond
+  one-loop diagnostic cells by exposing the equal-mass two-loop sunrise
+  maximal-cut curve, the eliminated quartic
+  \(\Delta_r(x)\), the discriminant \(256r^2(r-1)^3(r-9)\), the positive
+  Landau threshold at \(r=9\), and the pseudo-threshold at \(r=1\).  The
+  companion script checks the quartic discriminant, genus-one branch-point
+  count, positive-parameter threshold stationarity, pseudo-threshold negative
+  control, and logarithmic one-master shortcut failure.

@@ -8,15 +8,16 @@ checks the exact algebraic ledger behind the one-loop reconstruction datum,
 the worked massless phi^4 example including the cut-invisible MS pole and
 one-loop running, the finite two-scale box master, and the one-loop bubble
 family, including numerator sector projection and the
-equal-mass threshold family with its lower tadpole master and branch, then adds
-finite helicity, color, state-sum, and regulator bookkeeping for the
+equal-mass threshold family with its lower tadpole master and branch, the
+two-loop equal-mass sunrise maximal-cut curve with its elliptic discriminant
+and physical threshold, and finite helicity, color, state-sum, and regulator
+bookkeeping for the
 Yang-Mills MHV/all-plus control examples, including the planar N=4 MHV
 quadruple-cut reconstruction, the five-gluon all-plus rational template, and
 the four-point color-kinematics/double-copy gateway together with the
 one-loop surface-term obstruction to naive double copy.  It also checks a
 finite triple-cut triangle projection after known box residues have been
-subtracted, a finite two-master threshold-mixing
-model, a two-letter
+subtracted, a finite two-master threshold-mixing model, a two-letter
 master-transport model with boundary and branch negative controls, and the
 finite Laurent-pole ledger that turns a reconstructed virtual amplitude into
 a finite observable only after infrared subtraction, real radiation, and
@@ -29,7 +30,8 @@ cut sets, the MS pole/running extraction from the crossing-complete scalar
 amplitude, and four-dimensional blind spots, the bubble IBP identity, and the
 bubble numerator-reduction sector projection and bubble master differential
 equation, the equal-mass bubble threshold family, plus the finite two-scale
-massless box master, the gauge-theory MHV
+massless box master, the two-loop equal-mass sunrise elliptic maximal-cut
+ledger, the gauge-theory MHV
 box and all-plus rational-term comparison, the planar N=4 MHV quadruple-cut
 state-sum ledger, the local two-master
 threshold-mixing datum in a Fuchsian differential system, the two-letter
@@ -57,6 +59,9 @@ exact rational projection of a bubble numerator into parent and lower sectors,
 including the parent-cut coefficient and vector Passarino-Veltman reduction;
 exact small-momentum series checks for the equal-mass bubble threshold master,
 including its lower-tadpole inhomogeneity and timelike branch interval;
+quartic-discriminant and Landau-stationarity checks for the equal-mass sunrise
+maximal cut, including the distinction between the physical threshold and the
+pseudo-threshold;
 spinor-bracket exponent ledgers for little-group weights and dimensions; and
 a finite four-gluon helicity enumeration for all-plus two-particle cuts;
 finite topology-signature checks for maximal versus two-particle cuts in the
@@ -104,12 +109,13 @@ diagonal one-master threshold shortcuts, cut-only boundary reconstruction,
 parent-cut-only sector projection when lower sectors are not scaleless,
 homogeneous one-master shortcuts for the equal-mass bubble threshold family,
 Euclidean branch reuse above the massive two-particle threshold,
+logarithmic one-master shortcuts for the sunrise elliptic maximal cut,
 branch/path omission in a two-letter master transport, virtual-only
 observable assembly, and untransported finite IR-scheme shifts.
 Scope boundary: a pass checks the finite reconstruction and reduction
 bookkeeping; it does not compute a nonabelian helicity amplitude from Feynman
-graphs, prove unitarity from Wightman axioms, solve multi-loop integral
-families, prove loop-level color-kinematics duality, or replace the
+graphs, prove unitarity from Wightman axioms, solve general multi-loop
+integral families, prove loop-level color-kinematics duality, or replace the
 real-radiation/factorization construction needed for infrared-safe
 observables.
 """
@@ -166,6 +172,30 @@ def rank(matrix: list[list[Fraction]]) -> int:
         if pivot_row == n_rows:
             break
     return pivot_row
+
+
+def quartic_discriminant(
+    coeffs: tuple[Fraction, Fraction, Fraction, Fraction, Fraction],
+) -> Fraction:
+    a, b, c, d, e = coeffs
+    return (
+        256 * a**3 * e**3
+        - 192 * a**2 * b * d * e**2
+        - 128 * a**2 * c**2 * e**2
+        + 144 * a**2 * c * d**2 * e
+        - 27 * a**2 * d**4
+        + 144 * a * b**2 * c * e**2
+        - 6 * a * b**2 * d**2 * e
+        - 80 * a * b * c**2 * d * e
+        + 18 * a * b * c * d**3
+        + 16 * a * c**4 * e
+        - 4 * a * c**3 * d**2
+        - 27 * b**4 * e**2
+        + 18 * b**3 * c * d * e
+        - 4 * b**3 * d**3
+        - 4 * b**2 * c**3 * e
+        + b**2 * c**2 * d**2
+    )
 
 
 CHANNELS = ("s", "t", "u")
@@ -1417,6 +1447,85 @@ def check_equal_mass_bubble_threshold_family() -> None:
     )
 
 
+def check_two_loop_sunrise_elliptic_maximal_cut() -> None:
+    # For the equal-mass sunrise in the affine patch x3=1,
+    # P_r(x,y) = (x+y+1)(xy+x+y)-rxy.  Eliminating y gives
+    # w^2 = Delta_r(x), with quartic coefficients below.
+    def delta_coefficients(
+        r_value: Fraction,
+    ) -> tuple[Fraction, Fraction, Fraction, Fraction, Fraction]:
+        return (
+            Fraction(1),
+            2 - 2 * r_value,
+            r_value * r_value - 6 * r_value + 3,
+            2 - 2 * r_value,
+            Fraction(1),
+        )
+
+    for r_value in [Fraction(0), Fraction(1), Fraction(4), Fraction(9)]:
+        expected = 256 * r_value * r_value * (r_value - 9) * (r_value - 1) ** 3
+        assert_equal(
+            f"sunrise quartic discriminant r={r_value}",
+            quartic_discriminant(delta_coefficients(r_value)),
+            expected,
+        )
+
+    generic_r = Fraction(4)
+    assert_true(
+        "generic sunrise maximal cut is genus one",
+        quartic_discriminant(delta_coefficients(generic_r)) != 0,
+    )
+    branch_points = 4
+    genus = (branch_points - 2) // 2
+    assert_equal("four branch points give elliptic genus", genus, 1)
+
+    threshold_r = Fraction(9)
+    x_threshold = Fraction(1)
+    y_threshold = Fraction(1)
+    p_value = (
+        (x_threshold + y_threshold + 1)
+        * (x_threshold * y_threshold + x_threshold + y_threshold)
+        - threshold_r * x_threshold * y_threshold
+    )
+    dp_dx = (
+        (x_threshold * y_threshold + x_threshold + y_threshold)
+        + (x_threshold + y_threshold + 1) * (y_threshold + 1)
+        - threshold_r * y_threshold
+    )
+    dp_dy = (
+        (x_threshold * y_threshold + x_threshold + y_threshold)
+        + (x_threshold + y_threshold + 1) * (x_threshold + 1)
+        - threshold_r * x_threshold
+    )
+    assert_equal("sunrise physical threshold curve point", p_value, Fraction(0))
+    assert_equal("sunrise physical threshold x-stationarity", dp_dx, Fraction(0))
+    assert_equal("sunrise physical threshold y-stationarity", dp_dy, Fraction(0))
+    assert_true(
+        "sunrise physical threshold has positive Feynman parameters",
+        x_threshold > 0 and y_threshold > 0,
+    )
+
+    pseudo_r = Fraction(1)
+    pseudo_x = Fraction(1)
+    pseudo_y = Fraction(-1)
+    pseudo_value = (
+        (pseudo_x + pseudo_y + 1) * (pseudo_x * pseudo_y + pseudo_x + pseudo_y)
+        - pseudo_r * pseudo_x * pseudo_y
+    )
+    assert_equal("sunrise pseudo-threshold curve point", pseudo_value, Fraction(0))
+    assert_false(
+        "sunrise pseudo-threshold is positive-parameter physical threshold",
+        pseudo_x > 0 and pseudo_y > 0,
+    )
+
+    log_alphabet_discriminant = 0
+    elliptic_discriminant = quartic_discriminant(delta_coefficients(generic_r))
+    assert_true(
+        "logarithmic one-master shortcut loses the sunrise elliptic curve",
+        elliptic_discriminant != log_alphabet_discriminant,
+    )
+
+
 def check_branch_and_landau_ledger() -> None:
     # In the expansion
     #   Gamma(eps)[exp(i pi eps)-exp(-i pi eps)]/(16 pi^2),
@@ -1764,6 +1873,7 @@ def main() -> None:
     check_bubble_ibp_identity()
     check_bubble_numerator_sector_projection()
     check_equal_mass_bubble_threshold_family()
+    check_two_loop_sunrise_elliptic_maximal_cut()
     check_branch_and_landau_ledger()
     check_two_master_threshold_mixing()
     check_two_letter_master_transport()

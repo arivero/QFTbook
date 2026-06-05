@@ -2930,7 +2930,10 @@ Current checks:
   parent-cut/lower-sector negative control, the bubble master
   differential-equation branch ledger, the equal-mass bubble threshold family
   with its lower-tadpole inhomogeneity, Landau double-root check, and
-  timelike-branch imaginary-part coefficient, the two-master
+  timelike-branch imaginary-part coefficient, the two-loop equal-mass sunrise
+  maximal-cut quartic with discriminant
+  \(256r^2(r-1)^3(r-9)\), positive-parameter physical threshold, and
+  pseudo-threshold negative control, the two-master
   threshold-mixing/monodromy and regular-boundary negative controls, the
   two-letter master-transport check with noncommuting residues, branch/path
   and cut-only boundary negative controls, plus the
