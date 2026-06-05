@@ -1288,3 +1288,12 @@ The chapter must define and derive:
   ledger occurrences in Ch.~19b.  The figure is grouped as operator-coordinate
   source evidence for DIS, while the common budget is recorded as comparison
   architecture rather than a theorem for a single process.
+- 2026-06-04 issue #834 semantic factorization audit: Ch.~19 title and prose
+  candidates are now recorded in
+  `planning/factorization_textual_candidate_review.tsv` with line anchors and
+  dispositions.  The Drell--Yan integrated theorem boundary and small-\(x\)
+  leading DIS dipole channel are promoted into
+  `planning/factorization_occurrence_manifest.tsv`; GPD polynomiality,
+  exclusive scaling, PDF setup, and title-level candidates are grouped under
+  their existing ledger rows or excluded as large-\(N_c\) expectation-value
+  factorization.

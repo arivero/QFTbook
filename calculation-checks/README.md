@@ -2514,15 +2514,18 @@ Current checks:
   generalized TMD factorization, including derived spectator mass functions,
   hard-factor bounds, and sign-separated quadrature error, the triangular
   logarithmic phase-space
-  area behind the massive-vector Sudakov chart, and a source-derived manifest
-  guard for the occurrence-level factorization ledger, scanning manuscript
-  labels, factorization-titled environments, and captions for factorization
-  candidates and requiring each one to be included, grouped, or excluded in
-  `planning/factorization_occurrence_manifest.tsv`, including the
+  area behind the massive-vector Sudakov chart, and source-derived guards for
+  the occurrence-level factorization ledger, scanning manuscript labels,
+  factorization-titled environments, captions, section/paragraph titles, and
+  semantic prose windows around theorem-like environments.  Each lexical or
+  promoted semantic candidate must be included, grouped, or excluded in
+  `planning/factorization_occurrence_manifest.tsv`, while every textual
+  candidate must appear with line anchor and disposition in
+  `planning/factorization_textual_candidate_review.tsv`, including the
   triple-Regge, Abelian soft-QED, GPD/exclusive, DIS-threshold boundary,
-  generic SCET smeared-functional, soft-drop resummation, and common QCD
-  budget rows plus the separation of BMS non-global soft evolution from
-  Glauber exchange.
+  generic SCET smeared-functional, massive-vector electroweak Sudakov,
+  soft-drop resummation, and common QCD budget rows plus the separation of BMS
+  non-global soft evolution from Glauber exchange.
 - `track_function_moment_checks.py`: exact rational checks for the finite-kernel
   track-function RG identities, verifying preservation of normalization, the
   first-moment evolution formula, and the full finite moment-tower formula

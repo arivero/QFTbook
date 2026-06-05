@@ -30,9 +30,10 @@ Independent construction:
   a fixed-recoil positive-denominator transverse witness after analytic
   reduction of the two Glauber transverse integrations.
 - The factorization occurrence audit mechanically scans the manuscript source
-  for factorization labels, factorization-titled environments, and captions,
-  then checks the independent manifest rather than a Python-owned occurrence
-  list.
+  for factorization labels, factorization-titled environments, captions,
+  section/paragraph titles, and semantic prose windows around theorem-like
+  environments, then checks independent TSV artifacts rather than a
+  Python-owned occurrence list or self-attested review row.
 
 Imported assumptions:
 - The checks are finite-regulator or fixed-order algebraic tests of a proposed
@@ -58,8 +59,10 @@ Negative controls:
   while the cross-hadron two-gluon color trace is nonzero; a pointwise
   nonzero spectator integrand value is not accepted as an integrated
   nonvanishing proof.
-- A source candidate absent from the manifest, or a stale manifest row absent
-  from the source scan, fails the occurrence-ledger check.
+- A source candidate absent from the manifest or textual-review TSV, a stale
+  row absent from the corresponding source scan, or a semantic negative
+  control missed by the prose-window scanner fails the occurrence-ledger
+  check.
 
 Scope boundary:
 - This script verifies finite algebra, fixed-order endpoint expansion, and
@@ -106,9 +109,27 @@ QED_IR_CHAPTER = (
 )
 
 FACTORIZATION_MANIFEST = "planning/factorization_occurrence_manifest.tsv"
+TEXTUAL_FACTORIZATION_REVIEW = "planning/factorization_textual_candidate_review.tsv"
 FACTORIZATION_WORD = re.compile(r"factorization|factorized", re.IGNORECASE)
 LABEL_RE = re.compile(r"\\label\{([^}]+)\}")
 BEGIN_RE = re.compile(r"\\begin\{([^}]+)\}(?:\[([^\]]*)\])?")
+TITLE_RE = re.compile(r"\\(section|subsection|subsubsection|paragraph)\*?\{([^{}]+)\}")
+THEOREM_LIKE_ENVIRONMENTS = {
+    "controlledapproximation",
+    "definition",
+    "example",
+    "hypothesis",
+    "lemma",
+    "proposition",
+    "remark",
+    "theorem",
+}
+SEMANTIC_FACTORIZATION_PHRASES = (
+    "factorization coordinate",
+    "factorization statement",
+    "factorization theorem",
+    "factorized approximation",
+)
 
 
 def assert_equal(name: str, got: object, expected: object) -> None:
@@ -130,6 +151,106 @@ def find_label_line(relative_path: str, label: str) -> int:
 
 def normalized_tex_text(text: str) -> str:
     return re.sub(r"\s+", " ", text)
+
+
+def slug_text(text: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+    return slug or "candidate"
+
+
+def title_factorization_trigger(text: str) -> str | None:
+    normalized = normalized_tex_text(text).lower()
+    if FACTORIZATION_WORD.search(normalized):
+        return "factorization"
+    return semantic_factorization_trigger(text)
+
+
+def semantic_factorization_trigger(text: str) -> str | None:
+    normalized = normalized_tex_text(text).lower()
+    for phrase in SEMANTIC_FACTORIZATION_PHRASES:
+        if phrase in normalized:
+            return phrase
+    return None
+
+
+def generated_textual_factorization_candidates_from_lines(
+    relative_path: str, lines: list[str]
+) -> dict[str, dict[str, str]]:
+    candidates: dict[str, dict[str, str]] = {}
+
+    def add_candidate(
+        candidate_id: str,
+        line_number: int,
+        source_kind: str,
+        trigger: str,
+        linked_label: str = "",
+    ) -> None:
+        if candidate_id in candidates:
+            return
+        candidates[candidate_id] = {
+            "source_path": relative_path,
+            "line_anchor": f"L{line_number}",
+            "source_kind": source_kind,
+            "trigger": trigger,
+            "linked_label": linked_label,
+        }
+
+    for line_number, line in enumerate(lines, 1):
+        title_match = TITLE_RE.search(line)
+        if not title_match:
+            continue
+        title_text = title_match.group(2)
+        trigger = title_factorization_trigger(title_text)
+        if not trigger:
+            continue
+        source_kind = f"{title_match.group(1)}-title"
+        candidate_id = f"title:{relative_path}:L{line_number}:{slug_text(title_text)}"
+        add_candidate(candidate_id, line_number, source_kind, trigger)
+
+    for line_number, line in enumerate(lines, 1):
+        begin_match = BEGIN_RE.search(line)
+        if not begin_match:
+            continue
+        environment = begin_match.group(1)
+        if environment not in THEOREM_LIKE_ENVIRONMENTS:
+            continue
+        end_re = re.compile(r"\\end\{" + re.escape(environment) + r"\}")
+        end_index = min(len(lines), line_number + 220)
+        body_labels: list[str] = []
+        for index in range(line_number - 1, min(len(lines), line_number + 220)):
+            body_labels.extend(LABEL_RE.findall(lines[index]))
+            if end_re.search(lines[index]):
+                end_index = index + 1
+                break
+        window_start = max(0, line_number - 33)
+        window_end = min(len(lines), end_index + 32)
+        trigger_line = 0
+        trigger = ""
+        for index in range(window_start, window_end):
+            found_trigger = semantic_factorization_trigger(lines[index])
+            if found_trigger:
+                trigger_line = index + 1
+                trigger = found_trigger
+                break
+        if not trigger:
+            continue
+        primary_label = body_labels[0] if body_labels else ""
+        if primary_label:
+            candidate_id = f"semantic:{primary_label}:{slug_text(trigger)}"
+        else:
+            candidate_id = f"semantic:{relative_path}:L{line_number}:{slug_text(trigger)}"
+        add_candidate(candidate_id, trigger_line, "semantic-prose-window", trigger, primary_label)
+
+    return candidates
+
+
+def generated_textual_factorization_candidates() -> dict[str, dict[str, str]]:
+    candidates: dict[str, dict[str, str]] = {}
+    for path in sorted((ROOT / "monograph/tex").rglob("*.tex")):
+        relative_path = str(path.relative_to(ROOT))
+        lines = path.read_text(encoding="utf-8").splitlines()
+        candidates.update(generated_textual_factorization_candidates_from_lines(relative_path, lines))
+    return candidates
 
 
 def generated_factorization_candidates() -> dict[tuple[str, str], set[str]]:
@@ -203,6 +324,41 @@ def load_factorization_manifest() -> list[dict[str, str]]:
     return rows
 
 
+def load_textual_factorization_review() -> list[dict[str, str]]:
+    review_path = ROOT / TEXTUAL_FACTORIZATION_REVIEW
+    with review_path.open(newline="", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle, delimiter="\t"))
+    required = {
+        "candidate_id",
+        "source_path",
+        "line_anchor",
+        "source_kind",
+        "trigger",
+        "disposition",
+        "ledger_key",
+        "reason",
+    }
+    if not rows or set(rows[0]) != required:
+        raise AssertionError("factorization textual review has unexpected columns")
+    seen: set[tuple[str, str]] = set()
+    for row in rows:
+        key = (row["source_path"], row["candidate_id"])
+        if key in seen:
+            raise AssertionError(f"duplicate textual factorization review row {key!r}")
+        seen.add(key)
+        if row["disposition"] not in {"included", "grouped", "excluded"}:
+            raise AssertionError(f"bad textual factorization disposition for {key!r}")
+        if not row["line_anchor"].startswith("L") or not row["line_anchor"][1:].isdigit():
+            raise AssertionError(f"textual factorization row {key!r} needs an L-number line anchor")
+        if not row["trigger"] or not row["ledger_key"] or not row["reason"]:
+            raise AssertionError(f"textual factorization row {key!r} is incomplete")
+        line_number = int(row["line_anchor"][1:])
+        source_lines = read_repo_text(row["source_path"]).splitlines()
+        if line_number < 1 or line_number > len(source_lines):
+            raise AssertionError(f"textual factorization row {key!r} line anchor is outside the source")
+    return rows
+
+
 def factorization_ledger_block() -> str:
     text = read_repo_text(JETS_CHAPTER)
     start_marker = r"\paragraph{Occurrence-level claim-status ledger for factorization uses.}"
@@ -219,22 +375,48 @@ def check_factorization_occurrence_ledger_inventory() -> None:
     ledger = factorization_ledger_block()
     normalized_ledger = normalized_tex_text(ledger)
     manifest_rows = load_factorization_manifest()
+    textual_rows = load_textual_factorization_review()
 
     generated = generated_factorization_candidates()
+    textual_generated = generated_textual_factorization_candidates()
+    textual_manifest_candidates = {
+        (row["source_path"], row["ledger_key"])
+        for row in textual_rows
+        if row["disposition"] == "included"
+        and row["ledger_key"]
+        and not row["ledger_key"].startswith("text:")
+    }
+    for source_path, ledger_key in textual_manifest_candidates:
+        find_label_line(source_path, ledger_key)
     manifest_candidates = {
         (row["source_path"], row["candidate_id"])
         for row in manifest_rows
-        if not row["candidate_id"].startswith("review:")
     }
-    missing = sorted(set(generated) - manifest_candidates)
-    stale = sorted(manifest_candidates - set(generated))
+    generated_manifest_candidates = set(generated) | textual_manifest_candidates
+    missing = sorted(generated_manifest_candidates - manifest_candidates)
+    stale = sorted(manifest_candidates - generated_manifest_candidates)
     if missing:
         raise AssertionError(f"factorization source candidates lack manifest disposition: {missing}")
     if stale:
         raise AssertionError(f"factorization manifest rows are stale or no longer source-derived: {stale}")
 
-    if not any(row["candidate_id"] == "review:unlabeled-process-factorization-search" for row in manifest_rows):
-        raise AssertionError("manifest must record the reviewed unlabeled process-level search")
+    if any(row["candidate_id"].startswith("review:") for row in manifest_rows):
+        raise AssertionError("textual factorization review must be source-derived, not a self-attested review row")
+
+    textual_generated_keys = {
+        (info["source_path"], candidate_id)
+        for candidate_id, info in textual_generated.items()
+    }
+    textual_review_keys = {
+        (row["source_path"], row["candidate_id"])
+        for row in textual_rows
+    }
+    missing_textual = sorted(textual_generated_keys - textual_review_keys)
+    stale_textual = sorted(textual_review_keys - textual_generated_keys)
+    if missing_textual:
+        raise AssertionError(f"textual factorization candidates lack review disposition: {missing_textual}")
+    if stale_textual:
+        raise AssertionError(f"textual factorization review rows are stale: {stale_textual}")
 
     for row in manifest_rows:
         candidate_id = row["candidate_id"]
@@ -253,6 +435,39 @@ def check_factorization_occurrence_ledger_inventory() -> None:
                 raise AssertionError(
                     f"excluded factorization category {ledger_key!r} missing from boundary prose"
                 )
+
+    for row in textual_rows:
+        candidate_id = row["candidate_id"]
+        info = textual_generated[candidate_id]
+        for field in ("line_anchor", "source_kind", "trigger"):
+            if row[field] != info[field]:
+                raise AssertionError(
+                    f"textual factorization row {candidate_id!r} has stale {field}: "
+                    f"{row[field]!r} != {info[field]!r}"
+                )
+        disposition = row["disposition"]
+        ledger_key = row["ledger_key"]
+        if disposition == "included" and ledger_key not in ledger:
+            raise AssertionError(f"included textual factorization key {ledger_key!r} missing from ledger")
+        if disposition == "grouped" and ledger_key not in ledger:
+            raise AssertionError(f"grouped textual factorization key {ledger_key!r} missing from ledger")
+        if disposition == "excluded" and ledger_key not in normalized_ledger:
+            raise AssertionError(
+                f"excluded textual factorization category {ledger_key!r} missing from boundary prose"
+            )
+
+    negative_control_lines = [
+        r"Nearby prose declares a factorization coordinate for a hadronic observable.",
+        r"\begin{controlledapproximation}[Semantic trigger without lexical title]",
+        r"\label{ca:semantic-negative-control}",
+        r"This synthetic environment has no factorization word in its title.",
+        r"\end{controlledapproximation}",
+    ]
+    negative_control = generated_textual_factorization_candidates_from_lines(
+        "synthetic/negative_control.tex", negative_control_lines
+    )
+    if "semantic:ca:semantic-negative-control:factorization-coordinate" not in negative_control:
+        raise AssertionError("semantic factorization negative control was not detected")
 
     if "Glauber: color correlations enter through the nonlinear dipole evolution" in normalized_ledger:
         raise AssertionError("non-global soft evolution was conflated with Glauber exchange")

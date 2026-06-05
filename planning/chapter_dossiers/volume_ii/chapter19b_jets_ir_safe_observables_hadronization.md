@@ -233,10 +233,16 @@ The chapter establishes:
       factorization-titled environments, and captions containing
       "factorization" or "factorized" must appear in
       `planning/factorization_occurrence_manifest.tsv` as included, grouped,
-      or excluded, with integrable scattering, instanton determinant/size
-      decompositions, conformal/categorical algebra, finite-range Gaussian
-      decompositions, Monte Carlo conditional probabilities, and other
-      non-QCD meanings kept outside the hard-process ledger by name.
+      or excluded.  The 2026-06-04 issue #834 pass adds
+      `planning/factorization_textual_candidate_review.tsv` for section and
+      paragraph titles plus semantic prose-window triggers such as
+      "factorization coordinate" and "factorization theorem"; the massive-vector
+      electroweak Sudakov chart is promoted to its own ledger row, while
+      integrable scattering, instanton determinant/size decompositions,
+      conformal/categorical algebra, finite-range Gaussian decompositions,
+      Monte Carlo conditional probabilities, split-property tensor
+      factorization, and other non-QCD meanings are kept outside the
+      hard-process ledger by name.
 8acaa. The finite non-global dipole evolution row is a soft-radiation/BMS
        coordinate, not a Glauber replacement.  Its nonlinear product term
        records correlated real--virtual soft radiation under a non-global
@@ -557,3 +563,13 @@ The chapter establishes:
   datum, the common QCD factorization budget with the DIS figure grouped as
   operator-coordinate evidence, and separate Abelian rows for the
   amplitude-level Weinberg soft theorem and inclusive Bloch--Nordsieck factor.
+- 2026-06-04 issue #834 semantic occurrence pass: replaced the single
+  unlabeled-search attestation row with
+  `planning/factorization_textual_candidate_review.tsv`, a source-line review
+  of section/paragraph titles and semantic prose windows around theorem-like
+  environments.  The checker now scans those textual candidates, rejects stale
+  or missing review rows, promotes included textual labels into
+  `planning/factorization_occurrence_manifest.tsv`, and carries a synthetic
+  negative control for an in-scope semantic factorization assertion whose
+  label and environment title lack the lexical trigger.  The massive-vector
+  electroweak Sudakov chart now has its own ledger status.
