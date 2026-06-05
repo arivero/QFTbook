@@ -1863,6 +1863,15 @@
   susceptibility.  The BPST companion uses an exact finite cyclic convolution
   to verify the point-split local-contact failure, zero-momentum recovery,
   hard-source suppression, and residual budget.
+- 2026-06-05 issue #755/#597 individual-slot exposition audit: re-read the
+  individual BPST zero-mode slot proof at the point where the later hard
+  endpoint estimates depend on its large-\(t\) coefficient.  Replaced the
+  compressed appeal to standard asymptotics by the displayed large-\(t\)
+  product expansions for \(I_0K_1\), \(I_1K_0\), and \(I_1K_1\), showing
+  explicitly that the \(t^{-1}\) terms cancel and that
+  \(F_{\rm zm}(t)=3/(4t^3)+O(t^{-5})\).  This is a coherence/clarity repair:
+  the existing BPST companion already checks the same cancellation and the
+  resulting individual-slot endpoint coefficient.
 - 2026-06-05 issue #597 two-body cluster-integrability pass: added
   `ca:instanton-two-body-cluster-integrability` after the first Mayer
   correction.  The pass ties the finite dilute-gas correction to a connected

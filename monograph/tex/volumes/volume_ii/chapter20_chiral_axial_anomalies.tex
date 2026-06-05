@@ -6677,9 +6677,10 @@ bilinear density \(h_\rho\), not to a single differentiated fermion slot.
 \end{proposition}
 
 \begin{proof}
-The first formula is the standard Fourier-Bessel transform of the normalized
+The first formula is the Fourier-Bessel transform of the normalized
 singular-gauge fundamental zero mode after its hedgehog spin-color tensor has
-been extracted.  Differentiating
+been extracted; this fixes the singular-gauge momentum convention used in the
+cited one-instanton amplitude calculation.  Differentiating
 \(\Phi(t)=I_0(t)K_0(t)-I_1(t)K_1(t)\) and using
 \[
   I_0'=I_1,\qquad
@@ -6690,11 +6691,42 @@ been extracted.  Differentiating
 gives the second expression in
 \eqref{eq:instanton-individual-zero-mode-form-factor}.  The small-\(t\)
 expansions \(I_0(t)=1+O(t^2)\), \(I_1(t)=t/2+O(t^3)\), and
-\(K_1(t)=t^{-1}+O(t\log t)\) give \(F_{\rm zm}(0)=1\).  The standard large-\(t\)
-asymptotic expansions of \(I_\nu\) and \(K_\nu\) show that the constant,
-\(t^{-1}\), and \(t^{-2}\) terms cancel in
-\eqref{eq:instanton-individual-zero-mode-form-factor}; the first nonzero term
-is \(3/(4t^3)\).
+\(K_1(t)=t^{-1}+O(t\log t)\) give \(F_{\rm zm}(0)=1\).  For the endpoint
+coefficient, use the large-\(t\) products
+\[
+\begin{aligned}
+  I_0(t)K_1(t)
+  &=
+  \frac1{2t}
+  \left(1+\frac1{2t}+\frac{3}{16t^3}+O(t^{-5})\right),\\
+  I_1(t)K_0(t)
+  &=
+  \frac1{2t}
+  \left(1-\frac1{2t}-\frac{3}{16t^3}+O(t^{-5})\right),\\
+  I_1(t)K_1(t)
+  &=
+  \frac1{2t}
+  \left(1-\frac{3}{8t^2}+O(t^{-4})\right).
+\end{aligned}
+\]
+Substitution gives
+\[
+  2t(I_0K_1-I_1K_0)
+  =
+  \frac1t+\frac{3}{8t^3}+O(t^{-5}),
+  \qquad
+  2I_1K_1
+  =
+  \frac1t-\frac{3}{8t^3}+O(t^{-5}).
+\]
+The \(t^{-1}\) terms therefore cancel in
+\eqref{eq:instanton-individual-zero-mode-form-factor}, and the first nonzero
+term is
+\[
+  F_{\rm zm}(t)=\frac{3}{4t^3}+O(t^{-5}) .
+\]
+This displayed cancellation is the coefficient used later in the hard
+four-slot size-tail estimate.
 \end{proof}
 
 \begin{proposition}[Amputation and source typing of the instanton kernel]
