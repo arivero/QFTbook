@@ -2,13 +2,14 @@
 """Exact checks for anomaly-line cocycles and finite inflow identities.
 
 Evidence contract.
-Target claims: the finite cocycle, counterterm, anomaly-line, bulk-state-line
-variance, and inflow subclaims in the anomaly-inflow chapter and the Chapter
-20 descent bridge.
+Target claims: the finite cocycle, counterterm, anomaly-line, Wilsonian
+shell-pushforward, bulk-state-line variance, and inflow subclaims in the
+anomaly-inflow chapter and the Chapter 20 descent bridge.
 Independent construction: explicit cochain coboundaries, finite
 Chevalley-Eilenberg signs, polynomial counterterm representatives, one-line
-duality exponents, and finite Stokes identities are computed directly rather
-than inferred from the displayed anomaly-line slogan.
+duality exponents, finite shell integrand multisets, and finite Stokes
+identities are computed directly rather than inferred from the displayed
+anomaly-line slogan.
 Imported assumptions: the chapter's groupoid/cochain orientation convention,
 the chosen finite triangulation models, and the polynomial Lie-algebra action
 used as a local descent shadow.
@@ -16,7 +17,8 @@ Negative controls: nonclosed or noncoboundary representatives fail the
 descent/cancellation identities; counterterm frame changes are tested as
 coboundaries rather than as changes of the invariant obstruction; and a
 filling typed as either a scalar or a boundary-anomaly-line vector fails the
-bulk-boundary evaluation type test.
+bulk-boundary evaluation type test.  The shell check also verifies that
+omitting the inherited anomaly phase is detected in a nontrivial sample.
 Scope boundary: a pass checks finite cochain and descent algebra; it does not
 prove continuum locality, determinant-line existence, compactness of the
 space of fields, or Dai-Freed analytic gluing.
@@ -284,6 +286,111 @@ def check_coordinate_comparison_between_cochain_line_and_inflow() -> None:
                                 )
 
 
+def anomaly_potential(n: int, level: int, background: int) -> int:
+    """A finite local frame whose difference realizes the cocycle."""
+
+    return level * background * (background - 1) // 2 % n
+
+
+def shell_invariant_part(n: int, background: int, low: int, high: int) -> int:
+    """A diagonal-translation-invariant finite shell action."""
+
+    low_background = (low - background) % n
+    high_background = (high - background) % n
+    low_high = (low - high) % n
+    return (3 * low_background**2 + 5 * high_background**2 + 7 * low_high**2) % n
+
+
+def shell_integrand_exponent(n: int, level: int, background: int, low: int, high: int) -> int:
+    return (anomaly_potential(n, level, background) + shell_invariant_part(n, background, low, high)) % n
+
+
+def retained_local_counterterm(
+    n: int,
+    quadratic: int,
+    linear: int,
+    background_weight: int,
+    background: int,
+    low: int,
+) -> int:
+    """A local retained-field frame change used in the shell pushforward check."""
+
+    low_background = (low - background) % n
+    return (quadratic * low_background**2 + linear * low_background + background_weight * background) % n
+
+
+def check_rg_shell_pushforward_preserves_anomaly_line() -> None:
+    """A finite Wilsonian shell pushforward inherits the anomaly-line cocycle."""
+
+    missing_anomaly_negative_control_seen = False
+    for n in range(2, 13):
+        samples = sorted({0, 1, n // 3, n // 2, n - 1})
+        for level in samples:
+            for background in samples:
+                for gauge in samples:
+                    for low in samples:
+                        anomaly = anomaly_cocycle(n, level, gauge, background)
+                        target_background = background + gauge
+                        target_low = low + gauge
+
+                        original = sorted(
+                            shell_integrand_exponent(n, level, background, low, high)
+                            for high in range(n)
+                        )
+                        transformed = sorted(
+                            shell_integrand_exponent(
+                                n,
+                                level,
+                                target_background,
+                                target_low,
+                                high + gauge,
+                            )
+                            for high in range(n)
+                        )
+                        expected = sorted((value + anomaly) % n for value in original)
+                        assert_equal(
+                            transformed,
+                            expected,
+                            "RG shell pushforward preserves the anomaly-line cocycle",
+                        )
+                        if transformed != original:
+                            missing_anomaly_negative_control_seen = True
+
+                        for quadratic in samples:
+                            for linear in samples:
+                                for background_weight in samples:
+                                    before_counterterm = retained_local_counterterm(
+                                        n, quadratic, linear, background_weight, background, low
+                                    )
+                                    after_counterterm = retained_local_counterterm(
+                                        n,
+                                        quadratic,
+                                        linear,
+                                        background_weight,
+                                        target_background,
+                                        target_low,
+                                    )
+                                    shifted_original = sorted(
+                                        (value + before_counterterm) % n for value in original
+                                    )
+                                    shifted_transformed = sorted(
+                                        (value + after_counterterm) % n for value in transformed
+                                    )
+                                    coboundary = (after_counterterm - before_counterterm) % n
+                                    expected_shifted = sorted(
+                                        (value + anomaly + coboundary) % n
+                                        for value in shifted_original
+                                    )
+                                    assert_equal(
+                                        shifted_transformed,
+                                        expected_shifted,
+                                        "retained-field counterterms shift the shell cocycle by a coboundary",
+                                    )
+
+    if not missing_anomaly_negative_control_seen:
+        raise AssertionError("negative control failed: omitted shell anomaly phase was not detected")
+
+
 def check_bulk_boundary_dual_line_variance() -> None:
     """Verify the typed line algebra behind boundary/filling evaluation.
 
@@ -480,12 +587,13 @@ def main() -> None:
     check_counterterm_frame_change_preserves_cocycle()
     check_finite_regulator_scheme_change_is_coboundary()
     check_coordinate_comparison_between_cochain_line_and_inflow()
+    check_rg_shell_pushforward_preserves_anomaly_line()
     check_bulk_boundary_dual_line_variance()
     check_local_descent_zero_can_leave_global_holonomy()
     check_finite_bf_boundary_variation()
     print(
-        "Anomaly-line, descent-cocycle, coordinate-comparison, line-variance, "
-        "local/global-holonomy, and finite-inflow cochain checks passed."
+        "Anomaly-line, descent-cocycle, coordinate-comparison, RG-shell, "
+        "line-variance, local/global-holonomy, and finite-inflow cochain checks passed."
     )
 
 

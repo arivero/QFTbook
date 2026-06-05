@@ -77,6 +77,10 @@
 | \(\mathcal G_{\mathrm f}\) | background gauge transformation group |
 | \(\mathcal A_g[B]\) | finite anomaly cocycle representative |
 | \(C[B]\) | local background counterterm |
+| \(\Lambda,\Lambda'\) | finite ultraviolet and lower Wilsonian regulator scales used in the anomaly-matching shell argument |
+| \(\Phi=(\varphi,\chi)\) | background-equivariant split into retained fields and removed shell variables |
+| \(S_\Lambda,S_{\Lambda'}\) | regulated microscopic and Wilsonian effective actions in a chosen anomaly-line frame |
+| \(R_{\Lambda\to\Lambda'}\) | finite shell pushforward map over \(\chi\) at fixed \(\varphi\) and \(B\) |
 | \(\sigma_M,\sigma_g,\sigma_Y\) | chosen spin structures on the four-manifold, mapping torus, and five-dimensional inflow manifold |
 | \(X_g\) | mapping torus associated to a gauge transformation \(g\) |
 | \(Y,B_Y\) | closed or filling five-manifold and its extended background field |
@@ -168,8 +172,15 @@
   framework for invertible, symmetry-protected, short-range-entangled
   responses with specified tangential and background structures, not a
   substitute for defining the QFT determinant or Pfaffian line.
-- Anomaly matching is equality of the background anomaly cocycle class between
-  UV and IR descriptions.
+- Anomaly matching is now formulated at finite regulator as a Wilsonian
+  shell-pushforward statement: integrating out a background-equivariant shell
+  pushes a section of the same anomaly line over the same background groupoid,
+  and the change of variables in the regulated path integral transports the
+  same measure cocycle up to local retained-field or background counterterm
+  coboundaries.  The endpoint UV/IR comparison is stated separately as a
+  conditional structural principle requiring compatible continuum and
+  long-distance limits, not as a local background-only ratio of full partition
+  functions.
 - Anomaly matching is developed as an infrared constraint: after the symmetry,
   background fields, and counterterm convention are fixed, one computes the UV
   cocycle, writes the possible IR responses from massless fields, Goldstone
@@ -377,6 +388,11 @@
   Coleman logarithm coefficient and the Mermin--Wagner--Hohenberg
   \(d=1,2,3\) infrared split, with negative controls for wrong coefficients
   and wrong limiting behavior.
+- `calculation-checks/inflow_anomaly_line_checks.py` verifies the finite
+  anomaly-line algebra used by the anomaly-matching foundation: cocycle
+  composition, local counterterm coboundaries, finite shell pushforward
+  preserving the anomaly-line cocycle, and the separation of local descent
+  from flat global holonomy.
 
 ## Figure And Render Checks
 
@@ -534,3 +550,11 @@
   conjugations in the dilute-instanton chiral vertex, and added exact checks
   for axial invariance and mass-spurion alignment with the microscopic
   \(\theta+\arg\det M\) phase.
+- 2026-06-05 issue #790 regulator-level anomaly-matching pass: replaced the
+  circular RG-locality explanation by a finite shell-pushforward derivation.
+  The text now derives anomaly preservation from a regulated change of
+  variables, records measure cocycles and local counterterm coboundaries,
+  separates quasi-local shell assumptions from continuum/IR endpoint
+  assumptions, and treats Goldstone, massless, topological, and invertible
+  infrared sectors as sections or boundary conditions for the same anomaly
+  line.

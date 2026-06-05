@@ -2259,35 +2259,51 @@ alone.
 
 \begin{remark}[Anomaly matching as equality of anomaly lines]
 \label{rem:anomaly-matching-as-line-equality}
-Consider an RG flow from a ultraviolet theory \(\mathcal Q_{\rm UV}\) to an
+Consider an RG flow from an ultraviolet theory \(\mathcal Q_{\rm UV}\) to an
 infrared description \(\mathcal Q_{\rm IR}\), and suppose a background-field
 groupoid \(\mathcal B(M)\) for a global symmetry is defined along the flow.
-Assume that the regulator and the integrating-out procedure preserve this
-background coupling up to local counterterms.  Then the UV and IR partition
-functions are sections of anomaly lines whose ratio is a local counterterm
-line.  Consequently the anomaly classes of \(\mathcal Q_{\rm UV}\) and
-\(\mathcal Q_{\rm IR}\) agree in the quotient by local counterterms.
-At a finite cutoff, splitting the fields into high- and low-energy variables
-is a change of variables in the regulated path integral, together with an
-ordinary integration over the high-energy variables.  Under a background gauge
-transformation, the regulated Berezinian or bosonic density changes by a
-local phase representing the UV anomaly.  The integral over high-energy modes
-produces an effective functional of the low-energy variables and backgrounds.
-Any dependence on the arbitrary separating scale is a local functional of the
-backgrounds and the retained sources, because the modes integrated out have
-no singularities at distances larger than the cutoff scale used in the split.
-Thus changing the scale changes the anomaly representative by a gauge
-variation of a local counterterm.
+Assume first a finite regulator.  For a cutoff \(\Lambda\), the regulated
+partition vector is a section of an anomaly line over \(\mathcal B(M)\); in a
+local frame its background-gauge transport is the finite cochain
+\(C_\Lambda(g;B)\).  A Wilsonian step
+\(\Lambda\to\Lambda'\) is a pushforward over the shell variables at fixed
+retained fields and fixed background.  If the regulator split, shell domain,
+and shell measure are equivariant for the background action, the change of
+variables in the regulated integral gives
+\[
+  R_{\Lambda\to\Lambda'}\bigl(T_g Z_\Lambda\bigr)
+  =
+  T_g\,R_{\Lambda\to\Lambda'}(Z_\Lambda),
+\]
+where \(T_g\) is the anomaly-line transport.  In a chosen frame this is the
+same finite change-of-variables identity as
+\eqref{eq:finite-regulator-shell-inherits-anomaly}: the measure cocycle is
+inherited by the Wilsonian section, while a change of local regulator or
+retained-field frame adds only a coboundary counterterm.
 
-Taking the continuum and infrared limits within the assumed background-field
-chart gives two sections over the same background groupoid.  Their
-transformation laws differ only by the local counterterm accumulated during
-the flow.  Passing to the anomaly class, where local counterterm variations
-are quotiented, gives equality.  If the symmetry is spontaneously broken, the
-Goldstone fields and Wess--Zumino--Witten functional provide one possible
-infrared section of the same line; if the infrared theory is topological, its
-invertible response supplies the section.  The statement does not assert a
-unique infrared realization, only equality of the background anomaly class.
+The locality input is narrower than the matching statement.  Quasi-locality of
+the shell integration is used to ensure that differences between nearby
+regulator prescriptions, shell cuts, and subtraction frames are local
+functionals of the retained fields and backgrounds.  Their background
+variation is therefore a local counterterm coboundary.  This does not assert
+that a full one-particle-irreducible functional, or a final endpoint partition
+function after massless fields have been integrated, differs from the
+ultraviolet object by a local background-only factor.
+
+Taking the continuum and infrared limits is a further assumption: the proposed
+infrared description must define a section over the same background groupoid
+and the same anomaly line for the exact symmetry being matched.  A phase with
+spontaneous symmetry breaking realizes that section through Goldstone fields
+and a gauged Wess--Zumino--Witten term, possibly tensored with additional
+massless or topological sectors.  A purely topological infrared response is an
+invertible boundary condition for the same anomaly theory.  This is the local
+descent version of the anomaly-line and inflow language in
+Chapter~\ref{ch:global-anomaly-inflow-invertible-field-theories}, and the
+determinant/Pfaffian-line holonomy version in
+Chapter~\ref{ch:curved-eta-invariants-global-anomalies}.  The statement is
+therefore a conditional structural principle: under these finite-regulator and
+endpoint hypotheses, UV and IR anomaly classes agree modulo local
+counterterms, but the infrared realization need not be unique.
 \end{remark}
 
 \section{Anomaly Inflow for Local Anomalies}

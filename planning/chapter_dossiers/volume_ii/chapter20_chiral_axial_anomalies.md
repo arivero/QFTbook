@@ -319,6 +319,9 @@
 | \(I_4^{(1)}\) | ghost-number-one four-form anomaly representative |
 | \(X,\mathsf A_X\) | five-dimensional inflow manifold and extension of the background connection |
 | \(W_X^{\mathrm{bulk}}\) | local five-dimensional Chern--Simons response whose boundary variation cancels the consistent anomaly |
+| \(\mathcal B(M)\) | background-field groupoid used to formulate finite anomaly-line transport |
+| \(C_\Lambda(g;B)\) | finite-regulator additive coordinate of anomaly-line transport under \(B\mapsto B^g\) |
+| \(R_{\Lambda\to\Lambda'}\) | Wilsonian shell pushforward map between finite-regulator sections of the anomaly line |
 | \(d^{abc}\) | symmetric cubic gauge-anomaly tensor |
 | \(J_{\mathrm{cons}}\) | consistent current, \(\delta W/\delta A\) |
 | \(J_{\mathrm{cov}}\) | covariant current after Bardeen--Zumino improvement |
@@ -492,8 +495,16 @@
   \(A(\square)=1\), \(A(\overline\square)=-1\), and
   \(A(\operatorname{adj})=0\), so vectorlike fundamentals cancel in a
   left-handed description.
-- Anomaly matching is formulated as equality of anomaly lines under an RG flow
-  that preserves the background-field groupoid up to local counterterms.
+- Anomaly matching is formulated at finite regulator as a Wilsonian
+  shell-pushforward of sections of the anomaly line.  If the regulator split,
+  shell domain, and shell measure are equivariant for the background groupoid,
+  the regulated change of variables shows
+  \(R_{\Lambda\to\Lambda'}(T_gZ_\Lambda)
+  =T_gR_{\Lambda\to\Lambda'}(Z_\Lambda)\).  Quasi-local shell dependence is
+  used only to identify changes of shell or frame with local retained-field or
+  background counterterm coboundaries; the continuum/IR equality of UV and IR
+  anomaly classes is a separate endpoint assumption, not a local ratio of full
+  partition functions.
 - The BRST descent is displayed as
   \(\dd I_5^{(0)}=I_6\), \(sI_5^{(0)}=\dd I_4^{(1)}\), and
   \(sI_4^{(1)}=\dd I_3^{(2)}\), with the even gauge parameter obtained by
@@ -1230,6 +1241,13 @@
   The companion `calculation-checks/inflow_anomaly_line_checks.py` now also
   checks a finite model where the local/descent subgroup is trivial but a flat
   large-transformation holonomy remains nontrivial.
+- 2026-06-05 issue #790 regulator-level anomaly-matching pass: replaced the
+  residual RG-locality rationale by a finite shell-pushforward statement for
+  anomaly-line sections.  The chapter now derives shell anomaly preservation
+  by a regulated change of variables, includes measure cocycles and local
+  counterterm coboundaries, limits quasi-locality to shell/frame dependence,
+  and states continuum/IR matching as a conditional endpoint principle
+  reconciled with Vol IX inflow and Vol XII determinant/Pfaffian holonomy.
 - 2026-06-03 issue #597 physics-amplitude pass: inserted the physical
   correlator assembly proposition after the instanton density/determinant
   setup.  The pass states the finite-regulator collective-coordinate integral,

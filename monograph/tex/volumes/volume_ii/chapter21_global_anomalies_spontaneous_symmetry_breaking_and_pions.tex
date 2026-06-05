@@ -151,8 +151,9 @@ are compared as sections of the same anomaly line over background gauge fields.
 \label{rem:anomaly-matching-background-cocycle-class}
 Let a microscopic theory with exact global symmetry \(G_{\mathrm f}\) flow to
 an infrared description.  Couple both descriptions to the same background
-\(B\).  If the ultraviolet generating functional transforms as in
-\eqref{eq:finite-background-anomaly}, then the infrared functional must obey
+\(B\).  The endpoint statement called anomaly matching is that, if the
+ultraviolet generating functional transforms as in
+\eqref{eq:finite-background-anomaly}, then the infrared functional obeys
 \[
   Z_{\mathrm{IR}}[B^g]
   =
@@ -167,43 +168,81 @@ The matching object is the cocycle class
 infrared descriptions may carry the same class: massless fermions can produce
 it through their determinant or Pfaffian line, Goldstone fields can produce it
 through a Wess--Zumino--Witten functional, and a topological sector can produce
-it through an invertible response.  The assumptions are that the symmetry
-remains exact along the flow, the background-field coupling is kept fixed, and
-any modes removed between two scales contribute only local background
-counterterms to the long-distance functional.  Under these assumptions the
-cocycle class is unchanged by RG flow.
+it through an invertible response.  The noncircular statement is not that the
+full ultraviolet and infrared partition functions differ by a background-only
+local factor.  It is that, at finite regulator, Wilsonian integration is a
+pushforward of a section of the same anomaly line over the same background
+groupoid.
 
-Let \(\Lambda_{\rm UV}\) and \(\Lambda_{\rm IR}\) be two scales in the same
-theory, with the same background field \(B\) coupled to the same conserved
-current multiplet.  Integrating out modes between the two scales gives
-\[
-  Z_{\rm UV}[B]
+Fix a regulator \(\Lambda\), a lower scale \(\Lambda'\), and a
+background-equivariant split of fields
+\(\Phi=(\varphi,\chi)\), where \(\chi\) denotes the shell to be removed.  In a
+chosen local frame for the anomaly line, define the Wilsonian shell
+pushforward by
+\begin{equation}
+  \exp\{\ii S_{\Lambda'}[\varphi;B]\}
   =
-  \exp\{\ii C_{\rm mid}[B]\}\,Z_{\rm IR}[B],
-\]
-where \(C_{\rm mid}[B]\) is local in the background at the scale where the
-infrared description is defined.  Applying \(g\) and using
-Definition~\ref{def:background-anomaly-cocycle} gives
+  \int_{\chi\in\mathrm{shell}(\Lambda,\Lambda';B,\varphi)}
+  [D\chi]_{\Lambda,B,\varphi}\,
+  \exp\{\ii S_{\Lambda}[\varphi,\chi;B]\}.
+  \label{eq:finite-regulator-anomaly-shell-pushforward}
+\end{equation}
+The shell domain and measure are part of the regulator datum.  Assume they are
+mapped to the corresponding shell for \(B^g\) under the microscopic
+background-gauge transformation.  If the finite-regulator microscopic measure
+and action transform by
 \[
-  Z_{\rm UV}[B^g]
+  [D\Phi]_{\Lambda,B^g}\exp\{\ii S_\Lambda[\Phi^g;B^g]\}
   =
-  \exp\{\ii C_{\rm mid}[B^g]\}
-  \exp\{\ii\mathcal A^{\rm IR}_g[B]\}Z_{\rm IR}[B].
+  \exp\{\ii\mathcal A^\Lambda_g[B]\}\,
+  [D\Phi]_{\Lambda,B}\exp\{\ii S_\Lambda[\Phi;B]\},
 \]
-The ultraviolet transformation law gives the same quantity as
-\[
-  \exp\{\ii\mathcal A^{\rm UV}_g[B]\}
-  \exp\{\ii C_{\rm mid}[B]\}Z_{\rm IR}[B].
-\]
-Therefore
-\[
-  \mathcal A^{\rm UV}_g[B]
+then changing variables \(\chi^g\mapsto\chi\) in
+\eqref{eq:finite-regulator-anomaly-shell-pushforward} gives
+\begin{equation}
+  \exp\{\ii S_{\Lambda'}[\varphi^g;B^g]\}
   =
-  \mathcal A^{\rm IR}_g[B]
-  +C_{\rm mid}[B^g]-C_{\rm mid}[B]
-  \quad \operatorname{mod}2\pi ,
+  \exp\{\ii\mathcal A^\Lambda_g[B]\}\,
+  \exp\{\ii S_{\Lambda'}[\varphi;B]\}
+  \label{eq:finite-regulator-shell-inherits-anomaly}
+\end{equation}
+in the same line frame, up to the variation of explicitly inserted local
+counterterms.  If the retained-field measure frame is changed, the additional
+Jacobian is recorded as a local retained-field coboundary
+\(K[\varphi^g;B^g]-K[\varphi;B]\).  Thus the retained-field Wilsonian
+functional is generally not a background-only factor; it is a new section whose
+line transport cocycle is the old one.  This is the finite-cutoff content of
+anomaly preservation.
+
+The locality needed for Wilsonian physics is a separate hypothesis.  When the
+removed shell is separated from the retained momenta and no light threshold is
+integrated out, the difference between two nearby shell prescriptions is
+quasi-local in \(\varphi\) and \(B\).  Its background variation is a local
+counterterm coboundary in the anomaly-line frame.  Quasi-locality is enough for
+the anomaly class because local counterterms change
+\(\mathcal A_g[B]\) only by
+\[
+  C[B^g]-C[B]
 \]
-which is equality of the local-counterterm equivalence classes.
+or by the corresponding local retained-field counterterm before the remaining
+fields are integrated.  It is not a claim that the full one-particle-irreducible
+functional, or the final infrared partition function after massless fields have
+been integrated, is local.
+
+Passing from this finite-regulator statement to endpoint anomaly matching is a
+conditional structural principle.  One must assume that the microscopic theory
+and the proposed infrared description are obtained as compatible continuum and
+long-distance limits of sections over the same background groupoid, with the
+same exact symmetry rather than an accidentally enlarged infrared one.  One
+must also specify how massless sectors, Goldstone fields, topological order, or
+invertible responses provide the infrared section or boundary condition for
+the same anomaly line.  Under these assumptions the anomaly-line class
+transported by finite shell pushforwards is the class compared between the
+ultraviolet theory and the infrared description.  For local perturbative
+anomalies this is the descent class; for flat global anomalies it is the
+determinant/Pfaffian-line holonomy around loops in the background groupoid, as
+in Chapters~\ref{ch:global-anomaly-inflow-invertible-field-theories} and
+\ref{ch:curved-eta-invariants-global-anomalies}.
 \end{remark}
 
 \section{A Perturbative Example of a Global Anomaly}
@@ -3178,16 +3217,18 @@ whenever such a functional exists, and \([\mathcal A_{\rm extra}]\) is the
 class carried by the remaining infrared sector.
 
 Along an RG trajectory with exact \(G_{\mathrm f}\) background fields, the
-background-anomaly class is unchanged because changing scale changes the
-renormalized generating functional only by local background counterterms and
-by integrating out modes in a gauge-covariant manner.  In the broken phase,
-the infrared generating functional decomposes into a Goldstone part and the
-functional of the remaining infrared sector, together with possible local
-couplings and background counterterms.  Under a background gauge
-transformation, the phase of the product of the two nonlocal functionals is
-the sum of their cocycle representatives.  The local couplings and local
-counterterms shift representatives by coboundaries.  Passing to
-background-response classes therefore gives the displayed equality.
+finite-regulator shell pushforward in
+Remark~\ref{rem:anomaly-matching-background-cocycle-class} transports the same
+anomaly line.  This is the regulator-level statement; the continuum and
+long-distance endpoint comparison requires the compatibility assumptions
+stated there, and is not derived from a local background-only ratio of endpoint
+partition functions.  In the broken phase, the infrared section is supplied by
+the Goldstone Wess--Zumino--Witten functional, the remaining massless or
+topological sector, and possible local retained-field and background
+counterterms.  Under a background gauge transformation, their nonlocal pieces
+contribute the sum of their cocycle representatives, while local terms shift
+representatives by coboundaries.  Passing to background-response classes
+therefore gives the displayed equality.
 \end{remark}
 
 For massless QCD, restrict first to the connected nonabelian chiral symmetry
