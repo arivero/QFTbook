@@ -128,6 +128,13 @@ The chapter must define and derive:
   theta-angle total-derivative term on the phase path, quantization of
   \(-i\partial_\chi\), the dyonic tower Hamiltonian, and the Witten-effect
   shifted electric coordinate \(n_{\mathrm e}+\theta n_{\mathrm m}/2\pi\);
+- the BPS dyon mass comparison for the phase quantum: physical charges
+  \(Q_{\mathrm E}=e_\infty(n_{\mathrm e}+\theta n_{\mathrm m}/2\pi)\) and
+  \(Q_{\mathrm M}=\mathfrak g_{\mathrm m}n_{\mathrm m}\), the surface-charge
+  mass \(v\sqrt{Q_{\mathrm M}^2+Q_{\mathrm E}^2}\), the quadratic
+  phase-Hamiltonian expansion, and the warning that the collective-coordinate
+  tower is not by itself a protected spectrum without the BPS/supersymmetric
+  structure and fluctuation control;
 - the distinction between topologically stable monopoles and vortices versus
   unstable sphaleron saddle points;
 - the Abelian-Higgs Nielsen--Olesen vortex energy, BPS flux bound, and
@@ -212,6 +219,11 @@ The chapter must define and derive:
     coordinate to \(n_{\mathrm e}+\theta n_{\mathrm m}/2\pi\), with
     \(\theta\mapsto\theta+2\pi\) compensated by
     \(n_{\mathrm e}\mapsto n_{\mathrm e}-n_{\mathrm m}\).
+19a. The phase-coordinate Hamiltonian is the small-electric-charge expansion
+     of the BPS dyon surface-charge mass, not the full mass formula.  Matching
+     the quadratic term fixes the phase inertia in the primitive coordinate,
+     while the next quartic term records the relativistic/BPS correction
+     omitted by the low-velocity collective-coordinate approximation.
 20. Nielsen--Olesen vortices arise from the same finite-energy logic in
     codimension two, with flux quantization and a first-order BPS system at
     critical coupling.
@@ -238,7 +250,8 @@ The chapter must define and derive:
 
 - `calculation-checks/soliton_collective_coordinate_checks.py`: verifies the
   Bogomolny and vortex square completions, Prasad-Sommerfield profile ODEs,
-  monopole phase-coordinate Legendre transform and theta relabelling, framed
+  monopole phase-coordinate Legendre transform and theta relabelling,
+  monopole BPS dyon mass expansion and phase-inertia matching, framed
   monopole moduli dimension bookkeeping, zero-mode-density coordinate
   invariance, the one-instanton orientation dimension count, and the
   Jackiw-Rebbi kink zero-mode profile/normalization/half-charge algebra with
@@ -330,6 +343,15 @@ The chapter must define and derive:
   charge-lattice shift from a finite-dimensional \(S^1\) quantum mechanics
   with the theta-angle total derivative fixed by the Chern--Weil boundary
   pairing.
+- 2026-06-05 issue #597 dyon-mass pass: extended the monopole phase-coordinate
+  discussion from charge-lattice quantization to the physical BPS mass
+  comparison.  The new controlled approximation shows that the phase
+  Hamiltonian is the quadratic small-electric-charge expansion of
+  \(v\sqrt{Q_{\mathrm M}^2+Q_{\mathrm E}^2}\), fixes the inertia matching in
+  primitive coordinates, and warns that a dyon tower is not a protected
+  particle spectrum without the BPS/supersymmetric structure and fluctuation
+  control.  The companion rejects treating a linear electric-mass shortcut or
+  the quadratic Hamiltonian as the full dyon mass.
 - 2026-06-04 issue #597 Jackiw-Rebbi pass: added an explicit soliton
   quantization consequence rather than further moduli-space structure.  The
   chapter now solves the kink Dirac zero-mode equation, normalizes the

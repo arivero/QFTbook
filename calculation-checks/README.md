@@ -680,8 +680,10 @@ Current checks:
   gauge-Higgs soliton and collective-coordinate section, including the
   Bogomolny and vortex square completions, the Prasad-Sommerfield profile
   equations, the monopole phase-coordinate Legendre transform and
-  theta-angle charge-lattice relabelling, the framed monopole moduli
-  dimension bookkeeping and horizontal-slice sign, the Jackiw-Rebbi kink
+  theta-angle charge-lattice relabelling, the BPS dyon mass expansion and
+  phase-inertia matching with a negative control for a linear electric-mass
+  shortcut, the framed monopole moduli dimension bookkeeping and
+  horizontal-slice sign, the Jackiw-Rebbi kink
   zero-mode wavefunction, chirality flip, normalization, paired-spectrum, and
   half-charge bookkeeping with integer-charge and unpaired-spectrum negative
   controls, the coordinate transformation of \(\sqrt{\det G_{ab}}\,d^mz\),

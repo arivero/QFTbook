@@ -8,6 +8,7 @@ gauge-Higgs soliton discussion:
 * the Prasad-Sommerfield profile equations,
 * the monopole phase-coordinate Legendre transform and theta-angle
   charge-lattice relabelling,
+* the BPS dyon mass expansion matching the phase-coordinate Hamiltonian,
 * the framed monopole moduli dimension bookkeeping and horizontal-slice sign,
 * the Jackiw-Rebbi kink zero-mode profile and half-charge bookkeeping,
 * the coordinate invariance of the zero-mode density sqrt(det G) d^m z, and
@@ -72,6 +73,48 @@ def check_monopole_phase_legendre_and_theta_shift() -> None:
     shifted_charge = (ne - nm) + (theta + 2 * sp.pi) * nm / (2 * sp.pi)
     original_charge = ne + theta * nm / (2 * sp.pi)
     assert_zero("theta-periodic dyon charge relabelling", sp.together(shifted_charge - original_charge))
+
+
+def check_bps_dyon_mass_phase_expansion() -> None:
+    v, q_m, e_unit, q_e = sp.symbols("v q_m e_unit q_e", positive=True)
+    x = sp.symbols("x")
+
+    # The relativistic BPS mass is v |Q_M| sqrt(1+x^2), with
+    # x=Q_E/|Q_M|.  The phase-coordinate Hamiltonian is only the quadratic term.
+    sqrt_series = sp.series(sp.sqrt(1 + x**2), x, 0, 6).removeO()
+    expected_series = 1 + x**2 / 2 - x**4 / 8
+    assert_zero("BPS dyon small-electric expansion", sp.together(sqrt_series - expected_series))
+
+    physical_electric_charge = e_unit * q_e
+    exact_mass = v * q_m * sp.sqrt(1 + (physical_electric_charge / q_m) ** 2)
+    expanded_mass = (
+        v * q_m
+        + v * physical_electric_charge**2 / (2 * q_m)
+        - v * physical_electric_charge**4 / (8 * q_m**3)
+    )
+    exact_series = sp.series(exact_mass, q_e, 0, 6).removeO()
+    assert_zero("BPS dyon mass series in phase quantum", sp.together(exact_series - expanded_mass))
+
+    inertia = q_m / (v * e_unit**2)
+    phase_hamiltonian = q_e**2 / (2 * inertia)
+    quadratic_mass_shift = v * physical_electric_charge**2 / (2 * q_m)
+    assert_zero("phase Hamiltonian matches quadratic BPS mass shift", phase_hamiltonian - quadratic_mass_shift)
+
+    quartic_correction = -v * physical_electric_charge**4 / (8 * q_m**3)
+    if quartic_correction == 0:
+        raise AssertionError("negative control failed: exact BPS dyon mass had no quartic correction")
+
+    theta, nm, ne = sp.symbols("theta nm ne")
+    shifted_coordinate = e_unit * ((ne - nm) + (theta + 2 * sp.pi) * nm / (2 * sp.pi))
+    original_coordinate = e_unit * (ne + theta * nm / (2 * sp.pi))
+    assert_zero(
+        "BPS dyon physical electric charge theta relabelling",
+        sp.together(shifted_coordinate - original_coordinate),
+    )
+
+    odd_linear_mass = v * (q_m + physical_electric_charge)
+    if sp.simplify(odd_linear_mass.subs(q_e, -q_e) - odd_linear_mass) == 0:
+        raise AssertionError("negative control failed: linear electric mass was charge-conjugation even")
 
 
 def check_framed_monopole_moduli_bookkeeping() -> None:
@@ -169,6 +212,7 @@ def main() -> None:
     check_vortex_square_completion()
     check_prasad_sommerfield_profiles()
     check_monopole_phase_legendre_and_theta_shift()
+    check_bps_dyon_mass_phase_expansion()
     check_framed_monopole_moduli_bookkeeping()
     check_jackiw_rebbi_kink_zero_mode_and_half_charge()
     check_zero_mode_density_coordinate_change()

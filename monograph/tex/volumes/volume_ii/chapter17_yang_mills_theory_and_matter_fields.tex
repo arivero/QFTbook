@@ -2486,6 +2486,83 @@ leaves \eqref{eq:witten-effect-shifted-electric-coordinate} as the invariant
 charge-lattice statement.
 \end{proof}
 
+\begin{controlledapproximation}[Dyon mass from the phase quantum]
+\label{ca:monopole-phase-bps-dyon-mass}
+The phase Hamiltonian is the quantum mechanics of the electric collective
+coordinate.  A protected dyon mass is a stronger statement: the same charge
+coordinate must sit in a BPS surface-charge bound or in a supersymmetric
+central charge.  Let \(Q_{\mathrm M}\) and \(Q_{\mathrm E}\) denote the
+physical magnetic and electric charges appearing in the surface term of the
+BPS energy inequality.  In the primitive phase convention above,
+\begin{equation}
+  Q_{\mathrm E}
+  =
+  e_\infty
+  \left(
+    n_{\mathrm e}
+    +
+    \frac{\theta n_{\mathrm m}}{2\pi}
+  \right),
+  \qquad
+  Q_{\mathrm M}=\mathfrak g_{\mathrm m}n_{\mathrm m},
+  \label{eq:dyon-physical-charge-coordinate}
+\end{equation}
+where \(e_\infty\) and \(\mathfrak g_{\mathrm m}\) are the electric and
+magnetic charge units in the chosen trace normalization.  The BPS dyon
+surface term has the form
+\begin{equation}
+  M_{\rm dyon}^{\rm BPS}
+  =
+  v\sqrt{Q_{\mathrm M}^2+Q_{\mathrm E}^2},
+  \label{eq:classical-bps-dyon-mass}
+\end{equation}
+or, in an \(\mathcal N=2\) embedding, the same statement is the semiclassical
+limit of the central-charge formula after the electric/magnetic charge basis
+and period normalization have been fixed.  The theta angle enters
+\eqref{eq:classical-bps-dyon-mass} only through the shifted electric
+coordinate in \eqref{eq:dyon-physical-charge-coordinate}; under
+\(\theta\mapsto\theta+2\pi\), the relabeling
+\eqref{eq:witten-effect-charge-relabeling} leaves \(Q_{\mathrm E}\), and
+therefore the mass, unchanged.
+
+Expanding \eqref{eq:classical-bps-dyon-mass} at small electric charge gives
+\begin{equation}
+  M_{\rm dyon}^{\rm BPS}
+  =
+  v|Q_{\mathrm M}|
+  +
+  \frac{vQ_{\mathrm E}^2}{2|Q_{\mathrm M}|}
+  -
+  \frac{vQ_{\mathrm E}^4}{8|Q_{\mathrm M}|^3}
+  +O(vQ_{\mathrm E}^6/|Q_{\mathrm M}|^5).
+  \label{eq:bps-dyon-small-electric-expansion}
+\end{equation}
+Thus the phase-coordinate Hamiltonian
+\eqref{eq:monopole-phase-dyon-hamiltonian} is the quadratic electric-charge
+expansion of the relativistic BPS dyon mass, provided the phase inertia is
+matched by
+\begin{equation}
+  I_\chi
+  =
+  \frac{|Q_{\mathrm M}|}{v\,e_\infty^2}
+  \label{eq:dyon-phase-inertia-bps-match}
+\end{equation}
+in this primitive coordinate.  The next term in
+\eqref{eq:bps-dyon-small-electric-expansion} is already quartic in the
+electric phase quantum.  Treating
+\eqref{eq:monopole-phase-dyon-hamiltonian} as the full mass formula would
+therefore overstate the collective-coordinate approximation.
+
+This comparison is the useful physics of the \(S^1\) modulus.  The modulus is
+not interesting because it adds one more coordinate to the monopole space; it
+is interesting because quantizing it produces the electric charge lattice, and
+the BPS or supersymmetric structure decides whether those charge sectors are
+protected particles with mass \eqref{eq:classical-bps-dyon-mass}.  Without the
+BPS equations, a stable charge sector, and control of nonzero-mode and
+radiative corrections, the same phase quantum is only a semiclassical
+collective-coordinate excitation.
+\end{controlledapproximation}
+
 \subsection{Collective Coordinates and the Regularized Semiclassical Measure}
 \label{subsec:collective-coordinate-regularized-measure}
 
