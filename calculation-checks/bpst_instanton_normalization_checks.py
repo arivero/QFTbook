@@ -189,6 +189,10 @@ relations
     same-charge instanton clusters, while the neutral instanton-anti-instanton
     cluster cancels from E(theta)-E(0) at this order; the corresponding
     susceptibility and b2 ratio are checked exactly
+    a finite one-body instanton activity does not imply a finite two-body
+    cluster coefficient: the connected relative kernel must be integrable at
+    both the collision face and the large-separation tail in the same source
+    and determinant scheme
     a finite instanton--anti-instanton ensemble has a rectangular zero-mode
     overlap matrix T whose singular values give the massive determinant
     m^|n_+-n_-| prod_alpha(m^2+s_alpha^2), the unpaired zero-mode pole, and
@@ -232,7 +236,9 @@ ratios, finite-scheme transport ratios, zero-mode overlap determinant-stability
 bounds, zero-mode source-conditioning matrices, Schwinger/Beta factorization
 of the fused-source Bessel Mellin integral, finite cumulant telescopes,
 coefficient/operator transport matrices, exact retained size-shell
-stationarity equations, and finite amplitude-sector isolation telescopes.
+stationarity equations, finite amplitude-sector isolation telescopes, and
+exact radial power-counting for two-body cluster relative-coordinate
+majorants.
 Imported assumptions: the BPST background and zero-mode formulas, one-loop
 determinant coefficients, the trace-delta convention, and finite regulator
 truncations stated in the chapter.
@@ -247,6 +253,9 @@ overlap errors mistaken for determinant-relative errors,
 same Euclidean topological susceptibility paired with different Kubo slopes,
 nonzero Euclidean instanton susceptibility paired with zero real-time
 diffusion,
+finite one-body activities mistaken for a finite dilute-gas cluster
+coefficient, signed relative-kernel cancellation mistaken for an absolute
+Mayer bound,
 vacuum determinant calibration substituted for a source-dependent fluctuation
 bound, signed fluctuation-cumulant cancellations,
 hard-only and screening-only shell substitutions in the mixed size-majorant
@@ -4735,6 +4744,93 @@ def check_first_cluster_correction_to_dilute_instanton_gas() -> None:
     )
 
 
+def check_two_body_cluster_integrability_window() -> None:
+    def cluster_status(p_collision: Fraction, p_infinity: Fraction) -> str:
+        if p_collision > 4:
+            return "collision_power_divergent"
+        if p_collision == 4:
+            return "collision_log_divergent"
+        if p_infinity < 4:
+            return "tail_power_divergent"
+        if p_infinity == 4:
+            return "tail_log_divergent"
+        return "finite"
+
+    one_body_plus_mass = Fraction(2, 5)
+    one_body_minus_mass = Fraction(3, 7)
+    cluster_majorant = Fraction(11, 13)
+    p_collision = Fraction(3)
+    p_infinity = Fraction(5)
+    radial_without_sphere = (
+        Fraction(1, 4 - p_collision)
+        + Fraction(1, p_infinity - 4)
+    )
+    assert_equal("two-body cluster finite status", cluster_status(p_collision, p_infinity), "finite")
+    assert_equal("two-body cluster radial majorant", radial_without_sphere, Fraction(2))
+
+    absolute_cluster_bound_without_sphere = (
+        one_body_plus_mass
+        * one_body_minus_mass
+        * cluster_majorant
+        * radial_without_sphere
+    )
+    assert_equal(
+        "two-body cluster absolute bound without sphere volume",
+        absolute_cluster_bound_without_sphere,
+        Fraction(132, 455),
+    )
+
+    # The one-body activities can both be finite while the connected relative
+    # kernel has a nonintegrable large-distance tail.
+    assert_equal("one-body plus activity finite", one_body_plus_mass > 0, True)
+    assert_equal("one-body minus activity finite", one_body_minus_mass > 0, True)
+    assert_equal(
+        "borderline long-range cluster tail diverges logarithmically",
+        cluster_status(Fraction(3), Fraction(4)),
+        "tail_log_divergent",
+    )
+    assert_equal(
+        "slow long-range cluster tail diverges by power",
+        cluster_status(Fraction(3), Fraction(7, 2)),
+        "tail_power_divergent",
+    )
+    assert_equal(
+        "borderline core collision diverges logarithmically",
+        cluster_status(Fraction(4), Fraction(5)),
+        "collision_log_divergent",
+    )
+    assert_equal(
+        "strong core collision diverges by power",
+        cluster_status(Fraction(9, 2), Fraction(5)),
+        "collision_power_divergent",
+    )
+
+    signed_angular_average = Fraction(1) - Fraction(1)
+    absolute_angular_average = Fraction(1) + Fraction(1)
+    assert_equal("signed relative kernel can cancel angularly", signed_angular_average, Fraction(0))
+    assert_equal("absolute relative kernel still sees both angular cells", absolute_angular_average, Fraction(2))
+    if signed_angular_average == 0 and cluster_status(Fraction(3), Fraction(4)) == "finite":
+        raise AssertionError("signed cancellation incorrectly made borderline tail integrable")
+
+    zeta = Fraction(5, 17)
+    poisson_susceptibility = 2 * zeta
+    finite_same_charge_cluster = Fraction(-3, 19)
+    clustered_susceptibility = (
+        poisson_susceptibility
+        + 4 * zeta * zeta * finite_same_charge_cluster
+    )
+    assert_equal(
+        "finite cluster coefficient shifts dilute susceptibility",
+        clustered_susceptibility,
+        2 * zeta + 4 * zeta * zeta * finite_same_charge_cluster,
+    )
+    assert_equal(
+        "Poisson term alone does not supply finite cluster coefficient",
+        poisson_susceptibility == clustered_susceptibility,
+        False,
+    )
+
+
 def check_instanton_ensemble_zero_mode_overlap_spectrum() -> None:
     def zero_matrix(rows: int, cols: int) -> list[list[Fraction]]:
         return [[Fraction(0) for _ in range(cols)] for _ in range(rows)]
@@ -5693,6 +5789,7 @@ def main() -> None:
     check_short_instanton_ope_coefficient_transport()
     check_dilute_instanton_gas_theta_cumulants()
     check_first_cluster_correction_to_dilute_instanton_gas()
+    check_two_body_cluster_integrability_window()
     check_instanton_ensemble_zero_mode_overlap_spectrum()
     check_instanton_zero_mode_zone_u1a_susceptibility()
     check_u1a_mode_count_restoration_criterion()

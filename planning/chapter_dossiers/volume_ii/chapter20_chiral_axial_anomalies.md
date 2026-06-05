@@ -413,6 +413,7 @@
 | \(C_I^{<},[O_I]_\mu,\gamma_{IK}\) | short-instanton OPE coefficient, retained renormalized operator basis, and operator-mixing anomalous-dimension matrix used to distinguish composite-operator RG transport from size-factorization flow |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
 | \(\mathfrak B_{++},\mathfrak B_{+-},\mathfrak B_2,\mathfrak B_0\) | two-body instanton cluster integrals in the first Mayer correction, with same-charge and neutral CP-even combinations |
+| \(\Phi_{\sigma\tau},p_{\rm coll},p_\infty,M_\sigma,M_\tau\) | connected two-body relative Mayer kernel, collision and long-distance radial exponents, and one-body absolute activity masses used to control finite cluster coefficients |
 | \(\zeta_m^{[\rho_-,\rho_+]}\) | mass-saturated one-instanton vacuum activity in a finite size window |
 | \(m_{\rm scr},A,\mathcal A_{\rm scr}^{(0)}\) | physical infrared screening scale, screened size-integral power \(A=b_0+\beta_{\mathcal X}-4\), and leading screened one-instanton amplitude |
 | \(m_T,R_T,\mathcal A_T^G,\mathcal M_T^G\) | high-temperature determinant screening scale, finite-temperature determinant residual, Gaussian thermal one-instanton approximation, and absolute Gaussian majorant for non-positive/complex source channels |
@@ -1833,3 +1834,12 @@
   amplification, the product bound for right/left source determinants,
   rank-one hard-support failure, and the negative control against replacing
   source conditioning by BPST measure or determinant constants.
+- 2026-06-05 issue #597 two-body cluster-integrability pass: added
+  `ca:instanton-two-body-cluster-integrability` after the first Mayer
+  correction.  The pass ties the finite dilute-gas correction to a connected
+  relative-coordinate estimate, requiring \(p_{\rm coll}<4\) at core
+  collision and \(p_\infty>4\) at large separation.  The BPST companion checks
+  the exact radial power majorant, finite one-body activity with divergent
+  relative tail, collision and tail borderline failures, signed-kernel
+  cancellation failure, and the susceptibility shift only when the cluster
+  coefficient is finite.

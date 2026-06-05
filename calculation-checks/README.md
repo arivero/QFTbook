@@ -677,7 +677,10 @@ Current checks:
   two-body cluster correction showing that same-charge clusters generate a
   \(\cos 2\theta\) harmonic and shift \(\chi_{\rm top}\) and \(b_2\), while
   neutral instanton--anti-instanton molecules cancel from
-  \(E(\theta)-E(0)\) at this order, the
+  \(E(\theta)-E(0)\) at this order, the two-body cluster integrability
+  window checking the collision and large-separation radial powers of the
+  connected relative kernel and rejecting finite-one-body and signed-cancellation
+  shortcuts, the
   finite instanton--anti-instanton zero-mode overlap matrix whose singular
   values give
   \(m^{|n_+-n_-|}\prod_\alpha(m^2+s_\alpha^2)\), the leading-block unpaired

@@ -9292,6 +9292,91 @@ determinant and interaction estimates, nor do they prove that the omitted
 three-body and higher clusters are small.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Two-body cluster integrability window]
+\label{ca:instanton-two-body-cluster-integrability}
+The two-body coefficients
+\(\mathfrak B_{\sigma\tau}\) in
+ControlledApproximation~\ref{ca:first-cluster-correction-dilute-instantons}
+exist only after a relative-coordinate estimate has been supplied.  Let
+\(R=a_1-a_2\) be the relative center, let
+\(\rho_1,\rho_2\) and \(U_1,U_2\) be the two sizes and orientations, and
+normalize the already constructed one-body absolute activity measures on the
+selected window to finite masses \(M_\sigma,M_\tau\).  The connected Mayer
+kernel is represented in this finite chart by
+\[
+  \Phi_{\sigma\tau}
+  (R,\rho_1,\rho_2,U_1,U_2)
+  =
+  \frac{
+    K_{\sigma\tau}^{\rm conn}
+  }{
+    K_\sigma K_\tau
+  },
+\]
+where numerator and denominator are understood in the same finite regulator,
+source frame, determinant convention, and zero-mode pairing.  The cluster
+coefficient is controlled by the absolute integral
+\begin{equation}
+  |\mathfrak B_{\sigma\tau}|
+  \le
+  M_\sigma M_\tau
+  \int_{\mathbb R^4}
+  \left\langle
+    |\Phi_{\sigma\tau}(R,\rho_1,\rho_2,U_1,U_2)|
+  \right\rangle_{\sigma,\tau}
+  \dd^4R ,
+  \label{eq:instanton-two-body-cluster-absolute-majorant}
+\end{equation}
+where the angle brackets denote the normalized one-body absolute measures in
+the remaining variables.
+
+A finite dilute window supplies two local exponents.  In dimensionless
+relative units, suppose that, after the small-size and source windows have
+already been imposed,
+\begin{equation}
+  \left\langle|\Phi_{\sigma\tau}|\right\rangle_{\sigma,\tau}
+  \le
+  C_{\rm cl}
+  \begin{cases}
+    r^{-p_{\rm coll}},&0<r<1,\\
+    r^{-p_\infty},&r\ge1,
+  \end{cases}
+  \qquad r=|R|,
+  \label{eq:instanton-two-body-cluster-majorant}
+\end{equation}
+with \(p_{\rm coll}<4\) and \(p_\infty>4\).  Since the radial measure in
+four dimensions is \(2\pi^2r^3\dd r\), the absolute cluster coefficient obeys
+\begin{equation}
+  |\mathfrak B_{\sigma\tau}|
+  \le
+  2\pi^2\,M_\sigma M_\tau C_{\rm cl}
+  \left[
+    \frac1{4-p_{\rm coll}}
+    +
+    \frac1{p_\infty-4}
+  \right].
+  \label{eq:instanton-two-body-cluster-bound}
+\end{equation}
+The two inequalities have different physical meanings.  The condition
+\(p_{\rm coll}<4\) controls the collision face where the two instanton cores,
+or an instanton and an anti-instanton, are no longer independent objects.  The
+condition \(p_\infty>4\) controls the long-distance tail of the connected
+interaction or overlap after the disconnected one-body activities have been
+subtracted.  A borderline \(r^{-4}\) tail gives a logarithmic volume
+enhancement and therefore cannot be absorbed into a finite local
+\(\mathfrak B_{\sigma\tau}\).
+
+This is the multi-instanton analogue of the one-instanton endpoint budget.
+Finite one-body activities \(\zeta_\Lambda\) establish the Poisson term; they
+do not establish the first cluster correction.  The first correction needs a
+separate connected-kernel estimate in the same source and determinant scheme.
+At high temperature or in a Higgsed theory the relative interaction can be
+screened, making \(p_\infty>4\) easy to replace by an exponential majorant.
+In zero-temperature confining QCD, or in a massless channel with unscreened
+relative tails, the dilute-gas pressure is a hypothesis until this
+two-body relative-coordinate integral has been controlled.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Thermal dilute topological susceptibility]
 \label{ca:thermal-dilute-instanton-susceptibility}
 Combine the thermal determinant-screened one-instanton activity of
