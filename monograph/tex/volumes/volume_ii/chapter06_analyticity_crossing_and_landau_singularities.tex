@@ -2898,6 +2898,74 @@ This is a genuine reduction: the squared-propagator integral belongs to the
 same sector and is expressed in terms of the single master \(I_{1,1}\), after
 the lower scaleless sector has been set to zero.
 
+\begin{controlledapproximation}[Cut coefficients and sector projection]
+\label{ca:bubble-sector-projection}
+The reduction step carries physical information.  A generalized-cut
+computation usually produces a loop-momentum numerator in a chosen integral
+representative, and that numerator must be projected onto the sector hierarchy
+before it becomes a master-integral coefficient.  Already in the bubble family,
+with
+\[
+  D_0=\ell^2,\qquad D_1=(\ell+P)^2,\qquad P^2=Q^2 ,
+\]
+one has the exact algebraic identity
+\[
+  2\,\ell\cdot P=D_1-D_0-Q^2 .
+\]
+Thus an integrand representative of the form
+\begin{equation}
+  \frac{N(\ell)}{D_0D_1},
+  \qquad
+  N(\ell)=
+  c_0+c_P\frac{\ell\cdot P}{Q^2}
+  +c_0^{\rm low}\frac{D_0}{Q^2}
+  +c_1^{\rm low}\frac{D_1}{Q^2},
+  \label{eq:bubble-numerator-sector-ansatz}
+\end{equation}
+decomposes as
+\begin{equation}
+  \begin{aligned}
+  \frac{N(\ell)}{D_0D_1}
+  &=
+  \left(c_0-\frac{c_P}{2}\right)\frac1{D_0D_1}\\
+  &\quad
+  +\frac{c_1^{\rm low}+\frac12 c_P}{Q^2}\frac1{D_0}
+  +\frac{c_0^{\rm low}-\frac12 c_P}{Q^2}\frac1{D_1}.
+  \end{aligned}
+  \label{eq:bubble-numerator-sector-projection}
+\end{equation}
+On the parent two-particle cut \(D_0=D_1=0\), the same identity gives
+\(\ell\cdot P=-Q^2/2\), so the cut fixes only the parent-sector number
+\[
+  c_{\rm bub}=c_0-\frac{c_P}{2}.
+\]
+It does not see \(c_0^{\rm low}\) or \(c_1^{\rm low}\).  In the massless
+dimensionally regulated bubble these lower one-point sectors are scaleless and
+vanish, which is why the parent cut and the reduced integrated answer agree.
+That agreement, however, uses the regulator and the sector reduction map; it
+is not a theorem of the parent cut alone.  In a massive family, or in a
+multi-scale sector where the descendants are triangles or tadpoles with a
+scale, the same cut-equivalent numerator can change the amplitude through
+lower-sector master integrals and their boundary constants.
+
+The familiar vector reduction is the same statement in tensor language.  If
+the lower one-point sectors vanish, Lorentz covariance and the identity above
+give
+\begin{equation}
+  \mu^{2\epsilon}
+  \int\frac{\dd^D\ell}{\pi^{D/2}}\,
+  \frac{\ell_\mu}{D_0D_1}
+  =
+  -\frac12\,P_\mu I_{1,1}(Q^2).
+  \label{eq:bubble-vector-pv-reduction}
+\end{equation}
+For a physical amplitude this is the practical distinction between equality
+on a cut, equality after sector projection, and equality after integration.
+The reduction datum must state the sector ordering, the scaleless-sector
+convention, and the lower-sector cuts or boundary data before a cut
+coefficient can be promoted to an amplitude coefficient.
+\end{controlledapproximation}
+
 The master equation follows either from homogeneity or directly from
 \eqref{eq:unitarity-bubble-master-gamma-form}:
 \begin{equation}

@@ -784,3 +784,13 @@
   companion script verifies a finite Jacobi-triplet model with zero cut
   signature, gauge-null color weighting, nonzero Jacobi defect, nonzero
   double-copy shift, and representative-level repair.
+- 2026-06-05 issue #769 sector-projection pass: added
+  `ca:bubble-sector-projection` in the IBP subsection.  The pass shifts the
+  reduction discussion from a squared-propagator identity to the amplitude
+  assembly problem: a cut-generated bubble numerator is decomposed into the
+  parent master and lower one-point sectors, the parent cut is shown to fix
+  only \(c_0-c_P/2\), and the text distinguishes the valid massless
+  dimensional-regularization collapse from the failure when lower sectors
+  carry scale or boundary data.  The companion script checks the exact
+  numerator projection, the parent-cut coefficient, vector
+  Passarino--Veltman reduction, and the lower-sector negative control.

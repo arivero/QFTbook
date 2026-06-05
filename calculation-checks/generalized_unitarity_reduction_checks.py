@@ -6,7 +6,7 @@ Cutkosky discontinuities to generalized cuts, scalar-integral reconstruction,
 IBP reduction, and master-integral differential equations.  This script
 checks the exact algebraic ledger behind the one-loop reconstruction datum,
 the worked massless phi^4 example, the finite two-scale box master, and the
-one-loop bubble family, then adds
+one-loop bubble family, including numerator sector projection, then adds
 finite helicity, color, state-sum, and regulator bookkeeping for the
 Yang-Mills MHV/all-plus control examples, including the planar N=4 MHV
 quadruple-cut reconstruction, the five-gluon all-plus rational template, and
@@ -23,9 +23,10 @@ Evidence contract.
 Target claims: the generalized-unitarity section of Volume II Chapter 6,
 especially the phi^4 cut reconstruction, the negative controls for incomplete
 cut sets and four-dimensional blind spots, the bubble IBP identity, and the
-bubble master differential equation, plus the finite two-scale massless box
-master, the gauge-theory MHV box and all-plus rational-term comparison, the
-planar N=4 MHV quadruple-cut state-sum ledger, the local two-master
+bubble numerator-reduction sector projection and bubble master differential
+equation, plus the finite two-scale massless box master, the gauge-theory MHV
+box and all-plus rational-term comparison, the planar N=4 MHV quadruple-cut
+state-sum ledger, the local two-master
 threshold-mixing datum in a Fuchsian differential system, the two-letter
 transport/boundary audit for a reduced master sector, and the
 virtual-to-observable finite remainder assembly; additionally, the five-point
@@ -43,6 +44,8 @@ numbers, a finite ordered gate/incidence ledger for the reconstruction datum,
 an explicit identical-state symmetry factor, a nullspace model for
 local/rational terms invisible to four-dimensional cuts, and exact rational
 checks of the one-loop bubble IBP coefficients at several regulator values;
+exact rational projection of a bubble numerator into parent and lower sectors,
+including the parent-cut coefficient and vector Passarino-Veltman reduction;
 spinor-bracket exponent ledgers for little-group weights and dimensions; and
 a finite four-gluon helicity enumeration for all-plus two-particle cuts;
 finite topology-signature checks for maximal versus two-particle cuts in the
@@ -79,6 +82,7 @@ pairing, and rejects virtual-only pole cancellation,
 omitted rational finite
 remainders, one-cut-only finite-box deformations, branch-label omission,
 diagonal one-master threshold shortcuts, cut-only boundary reconstruction,
+parent-cut-only sector projection when lower sectors are not scaleless,
 branch/path omission in a two-letter master transport, virtual-only
 observable assembly, and untransported finite IR-scheme shifts.
 Scope boundary: a pass checks the finite reconstruction and reduction
@@ -1052,6 +1056,88 @@ def check_bubble_ibp_identity() -> None:
         )
 
 
+def check_bubble_numerator_sector_projection() -> None:
+    samples = [
+        (Fraction(3), Fraction(4), Fraction(5), Fraction(7), Fraction(11)),
+        (
+            Fraction(-2, 3),
+            Fraction(5, 6),
+            Fraction(13, 7),
+            Fraction(-3, 5),
+            Fraction(19, 4),
+        ),
+        (
+            Fraction(11, 9),
+            Fraction(-7, 3),
+            Fraction(2, 5),
+            Fraction(17, 8),
+            Fraction(23, 6),
+        ),
+    ]
+    for c_parent, c_dot_p, c_d0, c_d1, q_squared in samples:
+        parent_coefficient = c_parent - c_dot_p / 2
+        one_over_d0_coefficient = (c_d1 + c_dot_p / 2) / q_squared
+        one_over_d1_coefficient = (c_d0 - c_dot_p / 2) / q_squared
+
+        # Substitute 2 ell.P = D1 - D0 - Q^2 and compare the polynomial
+        # numerator obtained after multiplying the sector decomposition by
+        # D0 D1.  The tuple records (constant, D0 coefficient, D1 coefficient).
+        projected_polynomial = (
+            parent_coefficient,
+            one_over_d1_coefficient,
+            one_over_d0_coefficient,
+        )
+        direct_polynomial = (
+            c_parent - c_dot_p / 2,
+            (c_d0 - c_dot_p / 2) / q_squared,
+            (c_d1 + c_dot_p / 2) / q_squared,
+        )
+        assert_equal(
+            f"bubble numerator sector projection q^2={q_squared}",
+            projected_polynomial,
+            direct_polynomial,
+        )
+
+        # On the parent double cut, D0 = D1 = 0 and ell.P / Q^2 = -1/2.
+        parent_cut_value = c_parent - c_dot_p / 2
+        assert_equal(
+            f"bubble parent-cut coefficient q^2={q_squared}",
+            parent_cut_value,
+            parent_coefficient,
+        )
+
+        parent_master = Fraction(29, 31)
+        lower_sector_0 = Fraction(5, 13)
+        lower_sector_1 = Fraction(-7, 17)
+        full_integral = (
+            parent_coefficient * parent_master
+            + one_over_d0_coefficient * lower_sector_0
+            + one_over_d1_coefficient * lower_sector_1
+        )
+        cut_only_integral = parent_cut_value * parent_master
+        assert_true(
+            f"non-scaleless lower sectors are parent-cut blind q^2={q_squared}",
+            full_integral != cut_only_integral,
+        )
+
+        massless_dimreg_integral = parent_coefficient * parent_master
+        assert_equal(
+            f"scaleless lower sectors collapse q^2={q_squared}",
+            massless_dimreg_integral,
+            cut_only_integral,
+        )
+
+    q_squared = Fraction(37, 10)
+    bubble_master = Fraction(19, 23)
+    p_dot_vector_integral = -q_squared * bubble_master / 2
+    vector_coefficient = p_dot_vector_integral / q_squared
+    assert_equal(
+        "bubble vector Passarino-Veltman coefficient",
+        vector_coefficient,
+        -bubble_master / 2,
+    )
+
+
 def check_branch_and_landau_ledger() -> None:
     # In the expansion
     #   Gamma(eps)[exp(i pi eps)-exp(-i pi eps)]/(16 pi^2),
@@ -1395,6 +1481,7 @@ def main() -> None:
     check_loop_level_color_kinematics_surface_obstruction()
     check_finite_two_scale_box_master()
     check_bubble_ibp_identity()
+    check_bubble_numerator_sector_projection()
     check_branch_and_landau_ledger()
     check_two_master_threshold_mixing()
     check_two_letter_master_transport()
