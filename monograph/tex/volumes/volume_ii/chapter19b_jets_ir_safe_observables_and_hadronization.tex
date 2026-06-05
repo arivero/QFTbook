@@ -2990,6 +2990,70 @@ terms.  Hence a numerical value quoted for \(\Omega_1^e\) is meaningful only
 with its event-shape definition, Wilson-line orientation, regulator, and
 subtraction scheme.
 
+\begin{controlledapproximation}[Shape-function moment expansion for smeared endpoint tests]
+\label{ca:shape-function-smeared-moment-expansion}
+The first-moment shift is the first term in a smeared-test expansion, not a
+replacement for the full nonperturbative distribution.  Assume that the shape
+coordinate in Definition~\ref{def:leading-shape-function-operator-datum} has a
+finite second moment
+\[
+  \Omega_2^e(\mu;\mathcal R)
+  =
+  \int_0^\infty\dd\ell\,\ell^2F_e(\ell,\mu;\mathcal R)
+\]
+and let \(f\in C^2\) be supported in the declared endpoint window.  For each
+perturbative endpoint value \(e'\),
+\[
+  f\!\left(e'+\frac{\ell}{Q}\right)
+  =
+  f(e')
+  +
+  \frac{\ell}{Q}f'(e')
+  +
+  \int_0^{\ell/Q}\!
+    \left(\frac{\ell}{Q}-t\right)f''(e'+t)\,\dd t .
+\]
+Substitution into
+\eqref{eq:shape-function-distributional-convolution} gives
+\begin{equation}
+\begin{aligned}
+  \left\langle \frac{\dd\sigma}{\dd e},f\right\rangle
+  &=
+  \left\langle
+    \frac{\dd\sigma_{\rm pert}}{\dd e},
+    f+\frac{\Omega_1^e}{Q}f'
+  \right\rangle
+  +
+  \mathcal E_{2,Q}^e[f]
+  +
+  R_Q(f),
+\\
+  |\mathcal E_{2,Q}^e[f]|
+  &\le
+  \frac{\Omega_2^e}{2Q^2}
+  \left\|\frac{\dd\sigma_{\rm pert}}{\dd e}\right\|_{\rm TV}
+  \|f''\|_\infty ,
+\end{aligned}
+  \label{eq:shape-function-smeared-moment-expansion}
+\end{equation}
+where \(\|\dd\sigma_{\rm pert}/\dd e\|_{\rm TV}\) denotes the total variation
+of the perturbative endpoint distribution in the chosen chart.  For a
+positive normalized perturbative measure this factor is one.
+
+Equation~\eqref{eq:shape-function-smeared-moment-expansion} is the practical
+content of the sentence that a leading shape function shifts an event shape:
+linear tests see only \(\Omega_1^e/Q\), while curved endpoint tests also see
+\(\Omega_2^e/Q^2\) and the higher moments hidden in the residual.  Two fitted
+families with the same normalization and first moment can therefore agree on
+the total rate and the endpoint mean but disagree on a quadratic or localized
+smearing.  Conversely, using an \(\Omega_1^e\) fitted in a different
+subtraction convention changes even the linear endpoint mean unless the
+paired translation
+\eqref{eq:shape-function-scheme-translation} is applied.  The fit parameters
+are coordinates for the Wilson-line matrix element
+\eqref{eq:shape-function-test-pairing}, not new universal constants of QCD.
+\end{controlledapproximation}
+
 Track-based observables measure only charged hadrons.  They are generally not
 IRC safe as ordinary partonic measurements, because a collinear splitting can
 change the charged energy fraction observed by the detector.  The replacement

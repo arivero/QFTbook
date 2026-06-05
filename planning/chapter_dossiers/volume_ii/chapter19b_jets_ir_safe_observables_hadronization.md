@@ -159,6 +159,10 @@ The chapter establishes:
   `ca:leading-endpoint-shape-function-convolution`, stating the endpoint
   convolution as an equality of distributions on a specified test-function
   space with a stated remainder functional;
+- controlled approximation `ca:shape-function-smeared-moment-expansion`,
+  deriving the smeared-test Taylor expansion in which \(\Omega_1^e/Q\) gives
+  the leading shift and \(\Omega_2^e/Q^2\) bounds the first omitted endpoint
+  curvature term;
 - a light-ray operator definition of quark fragmentation functions with Wilson
   lines;
 - the status of Lund string and cluster hadronization models as
@@ -359,6 +363,10 @@ The chapter establishes:
      Their leading endpoint convolution preserves total weight and shifts the
      first event-shape moment by \(\Omega_1^e/Q\) only after the observable,
      Wilson-line orientation, regulator, and subtraction scheme are fixed.
+     For \(C^2\) endpoint tests the next controlled term is bounded by
+     \(\Omega_2^e\|f''\|_\infty/(2Q^2)\) times the perturbative total
+     variation, so first-moment fits do not determine curved or localized
+     endpoint smearings.
 10b. Track functions are nonperturbative operator coordinates with paired
      real--virtual evolution; the pairing, not a slogan of IRC safety, is what
      preserves normalization and gives the charged-energy moment RG.
@@ -604,3 +612,11 @@ The chapter establishes:
   check verifies the graph kernel, rejects the old additive replacement,
   integrates the sliced domain by deterministic quadrature, and refreshes the
   textual factorization review anchors shifted by the new derivation.
+- 2026-06-05 issue #526/#630 shape-function moment pass: added the smeared
+  endpoint moment expansion after the leading shape-function convolution.  The
+  pass shows precisely where \(\Omega_1^e/Q\) acts as a leading shift, where
+  \(\Omega_2^e/Q^2\) enters the endpoint-curvature remainder, and why two
+  fitted shape families with the same normalization and first moment need not
+  agree on quadratic endpoint tests.  The companion shape-function check now
+  verifies the second-order smeared expansion, same-first-moment/different-
+  second-moment control, and wrong-scheme first-moment failure.

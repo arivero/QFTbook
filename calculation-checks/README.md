@@ -2622,8 +2622,10 @@ Current checks:
 - `shape_function_convolution_checks.py`: exact rational checks for the
   jet shape-function section, including finite spectral pairing of the soft
   measurement coordinate, normalization of the endpoint convolution, the
-  first-moment shift by \(\Omega_1/Q\), and paired translation covariance
-  under finite subtraction-scheme changes.
+  first-moment shift by \(\Omega_1/Q\), paired translation covariance under
+  finite subtraction-scheme changes, and the smeared second-order endpoint
+  expansion showing where \(\Omega_2/Q^2\) enters and why first-moment fits do
+  not fix quadratic endpoint tests.
 - `n_subjettiness_continuity_checks.py`: exact rational checks for the
   minimized-\(N\)-subjettiness continuity section, using the \(N=1\),
   \(\beta_\tau=2\) weighted-variance model to verify the soft-addition bound,
