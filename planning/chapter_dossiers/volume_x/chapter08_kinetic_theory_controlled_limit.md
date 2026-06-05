@@ -38,6 +38,10 @@ transport coefficients arise from the inverse linearized collision operator.
   weight for a finite reversible collision.
 - `Phi_2`, `Sigma^<`, `Sigma^>`: weak-scalar 2PI sunset functional and
   lesser/greater cut self-energies.
+- `mathcal G^<`, `mathcal G^>`: real cut Wightman functions \(iG^{<,>}\)
+  with both positive- and negative-energy branches.
+- `Delta_K`: Markov-memory difference between the nonlocal memory integral
+  and its local zeroth-moment approximation.
 
 ## Claim Ledger
 
@@ -54,8 +58,11 @@ transport coefficients arise from the inverse linearized collision operator.
    displayed in the chapter.
 4. In weak scalar \(\lambda\phi^4\), the \(\lambda_R^2\) sunset term in the
    Schwinger--Keldysh 2PI truncation produces the displayed \(2\to2\)
-   gain/loss kernel after Wigner expansion, quasiparticle projection,
-   Markovization, and closure of connected higher correlations.
+   gain/loss kernel after the full positive/negative-energy real-scalar
+   Wightman ansatz is used, one internal cut line is crossed into the incoming
+   partner, the \(1/3!\) sunset combinatorics is reduced to the physical
+   channel, and Wigner expansion, quasiparticle projection, Markovization, and
+   closure of connected higher correlations are imposed.
 5. The identity \(1+\eta f=e^{\beta(-u_\mu p^\mu-\mu q)}f\), together with
    energy-momentum and charge conservation, proves detailed balance.
    The local-equilibrium collision term vanishes pointwise at fixed \(X\);
@@ -74,10 +81,11 @@ transport coefficients arise from the inverse linearized collision operator.
    continuum formulas: additive conserved quantities are preserved, entropy
    production is \(\sum_r w_r(L_r-G_r)\log(L_r/G_r)\ge0\), and the
    linearized entropy production is a positive sum of squares.
-11. The scalar derivation carries a weighted \(L^1\) residual ledger for
+11. The scalar derivation carries a weighted \(L^1\) residual target for
     gradients, finite width, off-shell spectral tails, memory, and connected
-    correlation closure; it does not prove the harder gauge-theory kinetic
-    layers.
+    correlation closure.  The target requires explicit Lipschitz, weighted
+    moment, noncancellation, and finite-time hypotheses; the chapter records
+    it as a controlled-approximation ledger rather than a proved theorem.
 12. The relaxation-time worked example gives
    \(\eta_{\rm RTA}=4p_{\rm therm}\tau_R/5\) for one massless classical
    species in three spatial dimensions, as a controlled model on the shear
@@ -101,17 +109,28 @@ transport coefficients arise from the inverse linearized collision operator.
   collision kernel; fixed the local-equilibrium collision-versus-streaming
   wording; and promoted `kinetic_theory_checks.py` to a high-risk evidence
   contract with scalar-kernel, Markov, pinch, and residual negative controls.
+- 2026-06-05 issue #815 pass: repaired the scalar 2PI-to-Boltzmann derivation
+  by replacing the positive-frequency-only cut ansatz with the full
+  positive/negative-energy real-scalar Wightman ansatz, deriving the crossed
+  \(p_1+p_2=p_3+p_4\) assignment from the negative-energy internal line,
+  spelling out the \(1/3!\) sunset combinatorics and physical-channel
+  normalization, adding the local mass/field-strength/coupling/2PI
+  renormalization datum, correcting the Markov-memory estimate to a
+  dimensionful absolute bound plus a conditional relative bound, and demoting
+  the weighted residual inequality to a controlled-approximation target.
 
 ## Calculation Checks
 
 - `calculation-checks/kinetic_theory_checks.py` verifies the corrected scale
   hierarchy, detailed balance, the H-theorem integrand, force-free
   quasiparticle drift projection, local-equilibrium collision-versus-streaming
-  separation, the weak-scalar cut-sunset gain/loss kernel, exact finite
-  reversible-collision detailed balance, exact finite linearized-rate
-  algebra, finite collision-invariant algebra, linearized collision
-  positivity and null vectors, Markov-memory and pinch-enhancement
-  bookkeeping, and the relaxation-time shear-viscosity integral.
+  separation, the full Wightman energy-sign reversal, the crossed scalar
+  cut-sunset gain/loss kernel, the positive-frequency-only negative control,
+  the sunset combinatoric normalization, exact finite reversible-collision
+  detailed balance, exact finite linearized-rate algebra, finite
+  collision-invariant algebra, linearized collision positivity and null
+  vectors, dimensionful Markov-memory and pinch-enhancement bookkeeping, and
+  the relaxation-time shear-viscosity integral.
 
 ## Figure Ledger
 

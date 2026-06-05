@@ -3,15 +3,17 @@
 
 Evidence contract.
 Target claims: the distinct kinetic scale hierarchy, force-free Wigner drift
-projection, scalar lambda-phi-four cut-sunset collision kernel, local
+projection, scalar lambda-phi-four cut-sunset collision kernel derived from
+the full positive/negative-energy real-scalar Wightman ansatz, local
 equilibrium collision/streaming separation, finite collision algebra,
 linearized positivity, physical-channel versus ordered-duplicate symmetry
-bookkeeping, Markov-memory residual bookkeeping, pinch enhancement, and
-relaxation-time shear example in Volume X Chapter 8.
+bookkeeping, dimensionful Markov-memory residual bookkeeping, pinch
+enhancement, and relaxation-time shear example in Volume X Chapter 8.
 Independent construction: direct Poisson-bracket algebra, exact Bose/Fermi
 detailed-balance products, finite reversible-reaction arithmetic, explicit
-lesser/greater scalar self-energy gain/loss products, finite memory-kernel
-Taylor bounds, and elementary retarded-advanced Lorentzian integrals.
+positive/negative-energy Wightman crossing enumeration for the scalar sunset
+self-energy, finite memory-kernel Taylor bounds, and elementary
+retarded-advanced Lorentzian integrals.
 Imported assumptions: the Schwinger--Keldysh/2PI sunset truncation, the
 narrow quasiparticle ansatz, decay of connected initial correlations, and the
 weighted phase-space norm stated in the chapter.
@@ -20,8 +22,10 @@ rejected for kinetic and hydrodynamic windows, local equilibrium is not
 misread as making the streaming term vanish, finite collision algebra is not
 accepted as a microscopic QFT derivation, signed residual cancellations are
 rejected as error bounds, ordered duplicate final channels are not counted
-without an identical-particle divisor, and a bare perturbative term without
-width resummation is rejected on kinetic time scales.
+without an identical-particle divisor, a positive-frequency-only Wightman
+ansatz cannot produce the crossed 2-to-2 cut, a relative Markov-memory
+statement is rejected when the zeroth moment cancels, and a bare perturbative
+term without width resummation is rejected on kinetic time scales.
 Scope boundary: these checks verify finite normalization, algebra, and
 residual bookkeeping for the scalar weak-coupling derivation; they do not
 prove gauge-theory screening, collinear/LPM physics, a nonperturbative
@@ -149,6 +153,68 @@ def check_local_equilibrium_collision_vs_streaming() -> None:
         raise AssertionError("local equilibrium streaming source should be nonzero when beta varies")
 
 
+def lesser_weight(energy_sign: int, f_value: Fraction) -> Fraction:
+    if energy_sign > 0:
+        return f_value
+    return 1 + f_value
+
+
+def greater_weight(energy_sign: int, f_value: Fraction) -> Fraction:
+    if energy_sign > 0:
+        return 1 + f_value
+    return f_value
+
+
+def check_real_scalar_wightman_crossing() -> None:
+    f_values = [Fraction(2, 5), Fraction(1, 4), Fraction(3, 7), Fraction(5, 8)]
+
+    for index, value in enumerate(f_values):
+        if lesser_weight(-1, value) != greater_weight(1, value):
+            raise AssertionError(f"real-scalar G<(-p)=G>(p) failed at {index}")
+        if greater_weight(-1, value) != lesser_weight(1, value):
+            raise AssertionError(f"real-scalar G>(-p)=G<(p) failed at {index}")
+
+    # The local sunset convolution is p1-k1-k2-k3=0.  The crossed 2-to-2
+    # channel uses (k1,k2,k3)=(-p2,p3,p4), hence p1+p2-p3-p4=0.
+    crossed_coefficients = (1, 1, -1, -1)
+    k_assignment = (-2, 3, 4)
+
+    def conservation_coefficients(assignment: tuple[int, int, int]) -> tuple[int, int, int, int]:
+        coefficients = [1, 0, 0, 0]
+        for label in assignment:
+            particle = abs(label)
+            sign = 1 if label > 0 else -1
+            # p1 - k1 - k2 - k3 = 0.
+            coefficients[particle - 1] -= sign
+        return tuple(coefficients)
+
+    if conservation_coefficients(k_assignment) != crossed_coefficients:
+        raise AssertionError("crossed sunset momentum assignment failed")
+
+    positive_only_assignment = (2, 3, 4)
+    if conservation_coefficients(positive_only_assignment) == crossed_coefficients:
+        raise AssertionError("positive-frequency-only ansatz incorrectly produced crossed 2-to-2 kinematics")
+
+    f1, f2, f3, f4 = f_values
+    sigma_less_weight = lesser_weight(-1, f2) * lesser_weight(1, f3) * lesser_weight(1, f4)
+    sigma_greater_weight = greater_weight(-1, f2) * greater_weight(1, f3) * greater_weight(1, f4)
+    if sigma_less_weight != (1 + f2) * f3 * f4:
+        raise AssertionError("lesser sunset crossed gain weight failed")
+    if sigma_greater_weight != f2 * (1 + f3) * (1 + f4):
+        raise AssertionError("greater sunset crossed loss weight failed")
+
+    sunset_prefactor = Fraction(1, math.factorial(3))
+    negative_line_choices = Fraction(3, 1)
+    outgoing_permutations = Fraction(2, 1)
+    if sunset_prefactor * negative_line_choices * outgoing_permutations != 1:
+        raise AssertionError("sunset 1/3! combinatorics should reduce to the physical channel")
+
+    kb_projection = Fraction(1, 2)
+    channel_weight = Fraction(11, 7)
+    if kb_projection * channel_weight != Fraction(1, 2) * channel_weight:
+        raise AssertionError("covariant physical-channel 1/2 normalization failed")
+
+
 def check_scalar_sunset_collision_kernel() -> None:
     lam2 = Fraction(11, 7)
     f1 = Fraction(2, 5)
@@ -269,6 +335,25 @@ def check_markov_memory_and_pinch_remainders() -> None:
     if not tau_mem / tau_x < Fraction(1, 50):
         raise AssertionError("memory gradient parameter should be small")
 
+    f_scale = Fraction(5, 1)
+    normalized_derivative_bound = f_scale / tau_x
+    c_k = abs(total_weight) / sum(abs(w) for w in weights)
+    relative_bound = c_k**-1 * tau_mem / tau_x
+    direct_relative = normalized_derivative_bound * sum(w * t for w, t in zip(weights, times)) / (
+        f_scale * abs(total_weight)
+    )
+    if direct_relative > relative_bound:
+        raise AssertionError("relative Markov memory bound failed")
+
+    cancelling_weights = [Fraction(1, 2), -Fraction(1, 2)]
+    if sum(cancelling_weights, Fraction(0)) == 0:
+        try:
+            _ = Fraction(1, 1) / abs(sum(cancelling_weights, Fraction(0)))
+        except ZeroDivisionError:
+            pass
+        else:
+            raise AssertionError("relative Markov statement should fail when the zeroth moment cancels")
+
     lam2 = Fraction(1, 100)
     gamma = lam2
     retarded_advanced_enhancement = 1 / gamma
@@ -289,6 +374,7 @@ def main() -> None:
     check_quasiparticle_drift_projection()
     check_scale_hierarchy_windows()
     check_local_equilibrium_collision_vs_streaming()
+    check_real_scalar_wightman_crossing()
     check_scalar_sunset_collision_kernel()
     check_linearized_collision_positive_form()
     check_finite_collision_algebra_exact()

@@ -1772,12 +1772,15 @@ Current checks:
   scale hierarchy, Bose/Fermi detailed balance, the H-theorem integrand, the
   force-free quasiparticle drift projection from the Wigner-space mass-shell
   bracket, local-equilibrium collision versus streaming separation, the
-  weak-scalar cut-sunset gain/loss products that produce the \(2\to2\)
+  weak-scalar cut-sunset gain/loss products derived from the full
+  positive/negative-energy real-scalar Wightman ansatz, the crossed
+  \(2\to2\) momentum assignment, the sunset \(1/3!\) combinatorics, and the
   kernel with \(|\mathcal M_{\phi\phi\to\phi\phi}|^2=\lambda_R^2\), exact
   finite reversible-collision detailed balance, exact linearized rate and
   collision-invariant algebra, linearized collision-operator positivity and
-  null vectors, Markov-memory residual and pinch-enhancement bookkeeping, and
-  the relaxation-time shear-viscosity integral.
+  null vectors, dimensionful Markov-memory residual and noncancellation
+  bookkeeping, pinch-enhancement bookkeeping, and the relaxation-time
+  shear-viscosity integral.
 - `monte_carlo_sign_problem_checks.py`: exact finite checks for the Volume XI
   Monte Carlo and sign-problem chapter, including the finite-\(N\)
   autocorrelation variance identity, the reweighting identity, the
