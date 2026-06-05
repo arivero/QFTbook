@@ -44,11 +44,13 @@ The chapter establishes:
   making explicit that an overlap region is subtracted once and that
   regulator-dependent scaleless-zero statements do not remove the need to
   specify the subtraction datum;
-- a fixed-regulator endpoint-region expansion for
-  \(I_\lambda[f]=\int_0^1 f(x)\dd x/(x+\lambda)\), displaying the endpoint
-  logarithm, overlap-subtracted hard functional, nonzero
-  \(O(\lambda\log(1/\lambda))\) remainder bound, and negative controls for an
-  unsubtracted hard integral and unpaired intermediate split;
+- a regulated one-emission endpoint observable for the color-singlet two-jet
+  current, with finite eikonal regulator \(\lambda\), endpoint window \(\rho\),
+  smeared measurement \(\varphi(u+v)\), two collinear terms, soft zero-bin
+  subtraction, auxiliary zero-bin allocation cancellation, a nonzero
+  \(M_\varphi(\rho-\lambda\log((\rho+\lambda)/\lambda))^2\) hard-remainder
+  bound, and negative controls for double-counting or unpaired zero-bin
+  allocation;
 - controlled approximation `ca:scet-distributional-factorization-estimate`,
   stating leading-power SCET factorization as a bound on smeared physical
   cross-section functionals on a Banach endpoint test space, with the
@@ -195,14 +197,15 @@ The chapter establishes:
      both counted.  A convention change is harmless only when paired between
      collinear and soft coordinates; a scaleless integral in a particular
      regulator is not an invariant absence of overlap.
-8aaa. The endpoint-region integral
-      \(I_\lambda[f]=\int_0^1f(x)\dd x/(x+\lambda)\) supplies a genuine
-      fixed-order positive case: the endpoint logarithm and hard functional
-      are separated only after overlap subtraction, and the remainder is
-      bounded by
-      \(\lambda\|f'\|_\infty\log((1+\lambda)/\lambda)\).  The unsubtracted
-      hard term diverges and an unpaired split retains arbitrary split-scale
-      dependence.
+8aaa. The regulated one-emission endpoint observable for a color-singlet
+      two-jet current supplies the positive fixed-order case: in light-cone
+      variables \(u=n\cdot k/Q\), \(v=\bar n\cdot k/Q\), the finite graph
+      \(\int_0^\rho\int_0^\rho \varphi(u+v)\dd u\dd v/
+      ((u+\lambda)(v+\lambda))\) decomposes into two collinear functionals
+      minus the soft zero-bin plus a hard-region remainder bounded by
+      \(M_\varphi(\rho-\lambda\log((\rho+\lambda)/\lambda))^2\).  The
+      unsubtracted collinear sum double-counts the zero-bin, while an unpaired
+      allocation parameter leaves arbitrary rapidity-scheme dependence.
 8ab. Resummation is a renormalization-group transport datum on a declared
      factorized coordinate.  In transform space the hard, jet, and soft
      anomalous dimensions must sum to zero as convolution kernels, and the
@@ -573,3 +576,13 @@ The chapter establishes:
   negative control for an in-scope semantic factorization assertion whose
   label and environment title lack the lexical trigger.  The massive-vector
   electroweak Sudakov chart now has its own ledger status.
+- 2026-06-05 issue #817 endpoint-positive-case pass: replaced the generic
+  one-dimensional endpoint lemma from the #783 proof-status pass with a
+  regulated color-singlet one-emission endpoint observable.  The monograph now
+  starts from the finite Wilson-line/eikonal graph paired with the smeared
+  event-shape measurement \(\varphi(u+v)\), derives the two collinear
+  functionals, subtracts the shared soft zero-bin, proves cancellation of an
+  auxiliary zero-bin allocation parameter, and bounds the finite hard-region
+  remainder.  The companion SCET check verifies the exact symbolic
+  decomposition, nonzero zero-bin defect, allocation cancellation, and
+  hard-remainder estimate.

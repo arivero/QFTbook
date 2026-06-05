@@ -11,8 +11,9 @@ Target claims:
   process-level QCD/SCET, Regge, and Abelian soft-factorization occurrences
   through a source-derived manifest, classifies the main non-process homonyms,
   and keeps BMS non-global soft evolution separate from Glauber exchange.
-- The regulated endpoint-region integral has a real fixed-order remainder
-  bound, and unsubtracted or unpaired region splits fail as negative controls.
+- The regulated one-emission endpoint observable has a real zero-bin-subtracted
+  region decomposition and a hard-remainder bound; unsubtracted or unpaired
+  zero-bin allocations fail as negative controls.
 - A noncommuting finite measurement can detect a Glauber rotation, so a
   residual slot is not a proof of factorization.
 
@@ -20,8 +21,8 @@ Independent construction:
 - All checks use finite distributions, rational matrices, exact polynomial
   integrals, or symbolic identities built independently of the manuscript
   prose.
-- The endpoint-region expansion is checked by direct symbolic integration and
-  by the Lipschitz remainder bound.
+- The smeared one-emission endpoint expansion is checked by direct symbolic
+  integration, zero-bin allocation cancellation, and the hard-remainder bound.
 - The Glauber-breaking example is checked both as a concrete rational matrix
   model and as a symbolic two-state rotation formula.
 - The spectator-model obstruction is checked by an independent finite SU(2)
@@ -38,8 +39,8 @@ Independent construction:
 Imported assumptions:
 - The checks are finite-regulator or fixed-order algebraic tests of a proposed
   SCET/factorization datum.
-- The endpoint integral is a one-dimensional Feynman-parameter endpoint model;
-  it is not a continuum QCD theorem.
+- The one-emission endpoint observable is a finite-regulator Wilson-line
+  singular-coordinate check; it is not a continuum QCD theorem.
 - The finite Glauber Hilbert space is a diagnostic model for measurement
   commutation, not a construction of the QCD Glauber region.
 - The spectator-model check verifies the color/eikonal skeleton of the
@@ -52,8 +53,8 @@ Negative controls:
 - Naively double-counting the zero-bin leaves exactly the overlap term.
 - A finite scheme change whose factors do not multiply to one changes the
   hard/jet/soft product.
-- The unsubtracted hard endpoint integral diverges, and an unpaired
-  intermediate split retains arbitrary split-scale dependence.
+- The unsubtracted one-emission collinear sum double-counts the soft zero-bin,
+  and an unpaired zero-bin allocation retains arbitrary allocation dependence.
 - A noncommuting measurement gives a nonzero Glauber remainder.
 - Separate color-traced TMD factors have zero order-g single-loop anomaly
   while the cross-hadron two-gluon color trace is nonzero; a pointwise
@@ -65,9 +66,9 @@ Negative controls:
   check.
 
 Scope boundary:
-- This script verifies finite algebra, fixed-order endpoint expansion, and
-  proof-obligation diagnostics.  It does not construct SCET, prove
-  composite-operator existence, prove regulator removal, derive mode
+- This script verifies finite algebra, fixed-order one-emission endpoint
+  expansion, and proof-obligation diagnostics.  It does not construct SCET,
+  prove composite-operator existence, prove regulator removal, derive mode
   decompositions from QCD, or establish all-order factorization for a
   physical cross section.
 """
@@ -658,37 +659,66 @@ def check_zero_bin_scheme_reshuffling() -> None:
 
 
 def check_regulated_endpoint_region_expansion() -> None:
-    x = sp.symbols("x", positive=True)
-    eps = sp.symbols("eps", positive=True)
-    eta = sp.symbols("eta", positive=True)
-    lam = sp.Rational(1, 7)
-    f = 1 + 3 * x + 2 * x**2
-    f0 = f.subs(x, 0)
+    u, v = sp.symbols("u v", positive=True)
+    allocation = sp.symbols("allocation")
+    lam = sp.Rational(1, 17)
+    rho = sp.Rational(1, 5)
 
-    exact = sp.integrate(f / (x + lam), (x, 0, 1))
-    endpoint = f0 * sp.log((1 + lam) / lam)
-    hard = sp.integrate((f - f0) / x, (x, 0, 1))
-    remainder = -lam * sp.integrate((f - f0) / (x * (x + lam)), (x, 0, 1))
+    def phi(argument):
+        return 1 + 3 * argument + 2 * argument**2
+
+    phi0 = phi(0)
+    log_window = sp.log((rho + lam) / lam)
+
+    exact = sp.integrate(
+        sp.integrate(phi(u + v) / ((u + lam) * (v + lam)), (u, 0, rho)),
+        (v, 0, rho),
+    )
+    collinear = log_window * sp.integrate(phi(v) / (v + lam), (v, 0, rho))
+    zero_bin = phi0 * log_window**2
+    singular = 2 * collinear - zero_bin
+
+    remainder_integrand = phi(u + v) - phi(u) - phi(v) + phi0
+    hard_remainder = sp.integrate(
+        sp.integrate(remainder_integrand / ((u + lam) * (v + lam)), (u, 0, rho)),
+        (v, 0, rho),
+    )
     assert_equal(
-        "regulated endpoint expansion identity",
-        sp.simplify(exact - endpoint - hard - remainder),
+        "regulated one-emission endpoint decomposition",
+        sp.simplify(exact - singular - hard_remainder),
         0,
     )
 
-    lipschitz_bound = lam * sp.Rational(7) * sp.log((1 + lam) / lam)
+    second_derivative_bound = sp.Rational(4)
+    remainder_bound = second_derivative_bound * (rho - lam * log_window) ** 2
     _assert_leq(
-        "regulated endpoint Lipschitz remainder bound",
-        float(abs(remainder.evalf())),
-        float(lipschitz_bound.evalf()),
+        "regulated one-emission hard-remainder bound",
+        float(abs(hard_remainder.evalf())),
+        float(remainder_bound.evalf()),
     )
 
-    unsubtracted_hard = sp.integrate(f / x, (x, eps, 1))
-    if sp.limit(unsubtracted_hard, eps, 0, dir="+") != sp.oo:
-        raise AssertionError("unsubtracted endpoint hard integral should diverge")
+    naive_double_count = 2 * collinear
+    assert_equal(
+        "unsubtracted one-emission zero-bin defect",
+        sp.simplify(naive_double_count - singular),
+        zero_bin,
+    )
 
-    naive_split = f0 * sp.log(eta / lam) + sp.integrate(f / x, (x, eta, 1))
-    split_derivative = sp.simplify(sp.diff(naive_split, eta))
-    assert_equal("naive split-scale dependence", split_derivative, -2 * eta - 3)
+    collinear_n = collinear - allocation * zero_bin
+    collinear_barn = collinear - (1 - allocation) * zero_bin
+    allocated_sum = collinear_n + collinear_barn
+    assert_equal(
+        "zero-bin allocation cancellation",
+        sp.simplify(sp.diff(allocated_sum, allocation)),
+        0,
+    )
+
+    unpaired_allocation = collinear_n + collinear
+    assert_equal(
+        "unpaired zero-bin allocation dependence",
+        sp.simplify(sp.diff(unpaired_allocation, allocation)),
+        -zero_bin,
+    )
 
 
 def check_multiplicative_scheme_covariance() -> None:
@@ -1186,7 +1216,8 @@ def main() -> None:
     check_factorization_occurrence_ledger_inventory()
     print(
         "All SCET convolution, distributional-remainder, zero-bin, "
-        "endpoint-expansion, scheme-covariance, RG-transport, soft-drop-scale, "
+        "one-emission endpoint-expansion, scheme-covariance, RG-transport, "
+        "soft-drop-scale, "
         "soft-Wilson-line, Glauber-unitarity/breaking, integrated "
         "spectator-model color-entanglement, massive-vector Sudakov, and "
         "occurrence-ledger checks passed."

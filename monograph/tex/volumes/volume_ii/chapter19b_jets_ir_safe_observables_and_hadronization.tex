@@ -531,60 +531,120 @@ requires estimates showing that the regulated partition, the overlap
 approximants, and the measurement remainder converge in the topology in which
 the cross section is tested.
 
-\paragraph{A fixed-regulator endpoint-region expansion.}
-The next calculation is a positive example of what the monograph can prove
-without importing a full SCET construction.  It is the endpoint subintegral
-that appears after Feynman parametrization or one-emission phase-space
-reduction in many one-loop two-scale problems.  Fix \(0<\lambda<1/2\) and a
-twice differentiable test numerator \(f\) on \([0,1]\).  Define
+\paragraph{A regulated one-emission endpoint observable.}
+The next calculation is a positive fixed-order case, not an all-orders SCET
+theorem.  Take the color-singlet two-jet current and its one-gluon
+soft-collinear singular graph.  In light-cone variables
+\[
+  u=\frac{n\cdot k}{Q},\qquad
+  v=\frac{\bar n\cdot k}{Q},
+\]
+the leading eikonal phase-space density is proportional to
+\(\dd u\,\dd v/(uv)\).  Regulate the two eikonal denominators by a positive
+off-light-cone or small-mass parameter \(\lambda\), restrict the endpoint
+window to \(0\le u,v\le\rho\) with \(0<\lambda<\rho<1/2\), and smear the
+measured event-shape variable \(e=u+v\) by
+\(\varphi\in C^2([0,2\rho])\).  Up to the common color and coupling factor
+\(\alpha_s C_F/\pi\), the regulated one-emission functional is
 \begin{equation}
-  I_\lambda[f]
+  \Sigma_{\lambda,\rho}^{(1)}[\varphi]
   =
-  \int_0^1\frac{f(x)}{x+\lambda}\,\dd x .
-  \label{eq:regulated-endpoint-region-integral}
+  \int_0^\rho\!\!\int_0^\rho
+  \frac{\varphi(u+v)}
+       {(u+\lambda)(v+\lambda)}
+  \,\dd u\,\dd v .
+  \label{eq:regulated-scet-one-emission-functional}
 \end{equation}
-The endpoint expansion is
-\begin{equation}
-  I_\lambda[f]
-  =
-  f(0)\log\frac{1+\lambda}{\lambda}
-  +
-  \int_0^1\frac{f(x)-f(0)}{x}\,\dd x
-  +
-  R_\lambda[f],
-  \label{eq:regulated-endpoint-region-expansion}
-\end{equation}
-where
-\begin{equation}
-  R_\lambda[f]
-  =
-  -\lambda\int_0^1
-  \frac{f(x)-f(0)}{x(x+\lambda)}\,\dd x .
-  \label{eq:regulated-endpoint-region-remainder}
-\end{equation}
-If \(L_f=\sup_{0\le x\le1}|f'(x)|\), then
-\begin{equation}
-  |R_\lambda[f]|
-  \le
-  \lambda L_f\log\frac{1+\lambda}{\lambda}.
-  \label{eq:regulated-endpoint-region-remainder-bound}
-\end{equation}
-The first term in
-\eqref{eq:regulated-endpoint-region-expansion} is the endpoint coordinate,
-the second is the finite hard matching functional after subtracting the
-endpoint overlap, and the third is a genuine fixed-regulator remainder.  The
-negative control is equally important: replacing the second term by
-\(\int_0^1 f(x)\dd x/x\) is divergent at the endpoint, while splitting the
-integral at an arbitrary intermediate point without subtracting the overlap
-leaves dependence on that point.  Thus even in this one-loop model the
-region expansion is a paired approximation plus subtraction plus remainder,
-not a naming convention for pieces of the exact integral.
+This is the finite-regulator version of a specified Wilson-line graph paired
+with a specified measurement; the graph, regulator, endpoint window, and
+measurement all belong to the datum.
 
-This calculation is deliberately modest.  It is a fixed-order expansion of a
-specified regulated integral.  It does not construct lightlike Wilson-line
-operators, prove rapidity renormalization, control Glauber exchange, or
-derive a QCD factorization formula.  Its role is to show the kind of
-observable-level remainder that a larger factorization argument must contain.
+Let
+\[
+  L_{\lambda,\rho}:=\log\frac{\rho+\lambda}{\lambda},\qquad
+  J_{\lambda,\rho}[\varphi]
+  :=
+  \int_0^\rho
+  \frac{\varphi(t)}{t+\lambda}\,\dd t,\qquad
+  Z_{\lambda,\rho}[\varphi]:=\varphi(0)L_{\lambda,\rho}^2 .
+\]
+The two leading collinear region functionals are
+\(C_n=L_{\lambda,\rho}J_{\lambda,\rho}[\varphi]\) and
+\(C_{\bar n}=L_{\lambda,\rho}J_{\lambda,\rho}[\varphi]\).  Each contains the
+same soft-collinear corner \(Z_{\lambda,\rho}\).  The overlap-subtracted
+singular coordinate is therefore
+\begin{equation}
+  \Sigma_{\lambda,\rho}^{\rm sing}[\varphi]
+  =
+  C_n+C_{\bar n}-Z_{\lambda,\rho}[\varphi].
+  \label{eq:regulated-scet-one-emission-subtracted}
+\end{equation}
+Equivalently, for any zero-bin allocation parameter \(a\),
+\[
+  \bigl(C_n-aZ_{\lambda,\rho}\bigr)
+  +
+  \bigl(C_{\bar n}-(1-a)Z_{\lambda,\rho}\bigr)
+  =
+  C_n+C_{\bar n}-Z_{\lambda,\rho},
+\]
+so the physical singular coordinate is independent of the auxiliary
+rapidity-scheme allocation.  Omitting the subtraction changes the answer by
+the nonzero overlap \(Z_{\lambda,\rho}\).
+
+The exact regulated graph decomposes as
+\begin{equation}
+  \Sigma_{\lambda,\rho}^{(1)}[\varphi]
+  =
+  \Sigma_{\lambda,\rho}^{\rm sing}[\varphi]
+  +
+  R_{\lambda,\rho}^{\rm hard}[\varphi],
+  \label{eq:regulated-scet-one-emission-decomposition}
+\end{equation}
+where the nonsingular hard-region remainder is
+\begin{equation}
+  R_{\lambda,\rho}^{\rm hard}[\varphi]
+  =
+  \int_0^\rho\!\!\int_0^\rho
+  \frac{\varphi(u+v)-\varphi(u)-\varphi(v)+\varphi(0)}
+       {(u+\lambda)(v+\lambda)}
+  \,\dd u\,\dd v .
+  \label{eq:regulated-scet-one-emission-remainder}
+\end{equation}
+Indeed
+\[
+  \varphi(u+v)
+  =
+  \varphi(u)+\varphi(v)-\varphi(0)
+  +
+  \bigl[\varphi(u+v)-\varphi(u)-\varphi(v)+\varphi(0)\bigr],
+\]
+and the first three terms integrate to
+\eqref{eq:regulated-scet-one-emission-subtracted}.  If
+\(M_\varphi=\sup_{0\le t\le2\rho}|\varphi''(t)|\), then
+\[
+  \varphi(u+v)-\varphi(u)-\varphi(v)+\varphi(0)
+  =
+  \int_0^u\!\!\int_0^v \varphi''(s+t)\,\dd t\,\dd s,
+\]
+so
+\begin{equation}
+  |R_{\lambda,\rho}^{\rm hard}[\varphi]|
+  \le
+  M_\varphi
+  \left(\rho-\lambda\log\frac{\rho+\lambda}{\lambda}\right)^2
+  \le
+  M_\varphi\rho^2 .
+  \label{eq:regulated-scet-one-emission-remainder-bound}
+\end{equation}
+This displays the actual operator coordinates in the simple graph: the hard
+current is local on the endpoint window and multiplies \(\varphi(0)\), the
+two collinear Wilson-line matrix elements give \(C_n\) and \(C_{\bar n}\), the
+soft zero-bin is \(Z_{\lambda,\rho}\), and the finite hard-region remainder is
+controlled in the same smeared-observable topology.  What has been proved is
+only this regulated one-loop endpoint statement.  The all-orders continuum QCD
+factorization theorem still requires the full operator construction, regulator
+removal, rapidity renormalization when present, Glauber analysis, and a power
+remainder for the physical cross section.
 
 \paragraph{Leading soft Wilson-line decoupling identity.}
 At finite regulator and at leading power in the \(n\)-collinear sector, the
