@@ -24,8 +24,8 @@
 - Adds a generalized-unitarity and one-loop-reduction bridge after Cutkosky:
   physical cuts versus algebraic generalized cuts, one-loop scalar-integral
   reconstruction, a complete massless \(\lambda\phi^4\) four-point cut
-  reconstruction with negative controls, and the bubble IBP/differential
-  equation master calculation.
+  reconstruction with negative controls, a Yang--Mills MHV/all-plus rational
+  term control, and the bubble IBP/differential equation master calculation.
 - Adds Steinmann sequential-discontinuity constraints as a scoped causal
   boundary-value statement, with channel-overlap definitions, sheet/order
   conventions, an overlapping versus compatible finite example, and explicit
@@ -50,10 +50,11 @@
   treatment are used as theorem-boundary controls for graph-level Cutkosky
   line replacement.
 - Bern--Dixon--Dunbar--Kosower, Bern--Dixon--Kosower, Britto--Cachazo--Feng,
-  Ossola--Papadopoulos--Pittau, Forde, Passarino--Veltman,
+  Ossola--Papadopoulos--Pittau, Forde, Bern--Morgan,
+  Brandhuber--McNamara--Spence--Travaglini, Passarino--Veltman,
   Chetyrkin--Tkachov, Tkachov, Kotikov, and Gehrmann--Remiddi form the source
-  lineage for the generalized-unitarity, integrand-reduction, IBP, and
-  differential-equation bridge.
+  lineage for the generalized-unitarity, rational-term, integrand-reduction,
+  IBP, and differential-equation bridge.
 - Steinmann's original Wightman/retarded-commutator papers and the
   Stapp/Cahill--Stapp scattering-amplitude refinements are used as source
   traces for the quoted conditional Steinmann relation; the chapter does not
@@ -103,6 +104,9 @@
 | \(B(Q^2)\), \(\widehat B(x)\) | Euclidean bubble master and its four-dimensional cut-normalized physical continuation |
 | \(I_{a,b}(Q^2)\) | Euclidean one-loop bubble integral family used for IBP reduction |
 | \(\mu_\perp^2\) | squared loop momentum in the \(-2\epsilon\)-dimensional complement, invisible on four-dimensional cuts |
+| \(A_4^{(0)}(1^-,2^-,3^+,4^+)\) | color-ordered tree MHV four-gluon amplitude in the spinor-helicity convention used for the gauge-theory control |
+| \(I_4^{(D)}(s,t)\) | dimensionally regulated massless scalar box in the four-point MHV control |
+| \(C_{\rm loop}\), \(C_{\rm rat}\) | loop-normalization and all-plus rational-term constants, fixed only after color, particle-content, and loop-measure conventions are declared |
 | \(s_I\) | all-incoming channel invariant \(-(\sum_{i\in I}p_i)^2\), with channel class \([I]=\{I,I^c\}\) |
 | overlapping channels | channel classes \([I]\), \([J]\) for which \(I\cap J\), \(I\setminus J\), \(J\setminus I\), and \((I\cup J)^c\) are all nonempty |
 | compatible channels | channel classes with complementary representatives that are disjoint or nested |
@@ -143,6 +147,12 @@
   \(-\lambda\phi^4/4!\), identical unordered intermediate scalar states, and
   the cut-normalized bubble \(\widehat B=B/(16\pi^2)\), for which
   \(\operatorname{Disc}\widehat B=\ii/(8\pi)+O(\epsilon)\).
+- The Yang--Mills helicity control uses color-ordered all-outgoing external
+  gluons, four-dimensional spinor-helicity little-group weights, and the
+  standard tree-level selection rule that a four-gluon tree amplitude is
+  nonzero only in the two-negative or two-positive sector.  Numerical
+  all-plus coefficients are stated only up to the declared loop, color, and
+  particle-content normalization.
 - The IBP identity assumes dimensional regularization, analytic continuation
   in \(\epsilon\), and the standard vanishing of scaleless tadpoles.  The
   bubble differential equation is solved with Euclidean boundary data at
@@ -339,6 +349,26 @@
   \(-2\epsilon\)-dimensional numerator components.  D-dimensional unitarity,
   massive continuation, or independent rational recursion is needed when such
   terms matter.
+- Planar \(\mathcal N=4\) SYM at four points gives a cut-constructible MHV
+  control:
+  \[
+    A_{4,\mathcal N=4}^{(1)}
+    =
+    C_{\rm loop} s t\, A_4^{(0)}(1^-,2^-,3^+,4^+) I_4^{(D)}(s,t),
+  \]
+  with the box coefficient fixed by the quadruple cut after the
+  supersymmetric state sum and with no triangle, bubble, or rational
+  remnant in this example.
+- Pure Yang--Mills all-plus is the rational negative control:
+  four-dimensional two-particle cuts of
+  \(A_4^{(1)}(1^+,2^+,3^+,4^+)\) vanish by the tree helicity selection rule,
+  but the one-loop rational term
+  \[
+    C_{\rm rat}\frac{[12][34]}{\langle12\rangle\langle34\rangle}
+  \]
+  is nonzero.  The missing data are \(\mu_\perp^2\) or massive-scalar
+  continuation data, whose dimension-shifted integrals leave the rational
+  term.
 - The bubble IBP family obeys
   \[
     0=(D-2a-b)I_{a,b}-bI_{a-1,b+1}+bQ^2I_{a,b+1},
@@ -415,8 +445,9 @@
   limits, anomalous-threshold sheets, or symbol-level/extended Steinmann
   statements without additional hypotheses.
 - No claim that the new generalized-unitarity section completes all of issue
-  #769: the scalar example closes the first loop-workflow bridge, while
-  nonabelian state sums, multi-master systems, finite-field technology,
+  #769: the scalar example and the MHV/all-plus helicity control close the
+  first one-loop workflow and rational-term boundary, while full nonabelian
+  state sums, multi-master systems, finite-field technology,
   color--kinematics, and higher-loop generalized cuts remain future work.
 
 ## Audit Notes
@@ -521,3 +552,12 @@
   `calculation-checks/generalized_unitarity_reduction_checks.py` checks the
   cut matrix, nullspace, IBP, differential-equation, and branch-threshold
   ledger.
+- 2026-06-05 issue #769 gauge-theory rational pass: added the
+  MHV-box/all-plus rational-term control to prevent the generalized-unitarity
+  section from remaining scalar-only.  The pass distinguishes the
+  cut-constructible planar \(\mathcal N=4\) four-point MHV box from the
+  strictly four-dimensional cut-invisible pure-Yang--Mills all-plus rational
+  amplitude, explains the \(\mu_\perp^2\)/massive-scalar route to the missing
+  rational term, and updates the companion script to check little-group
+  weights, dimensions, four-dimensional all-plus cut vanishing, and the
+  evanescent probe.

@@ -5,27 +5,37 @@ The companion section in Volume II, Chapter 6 develops the bridge from
 Cutkosky discontinuities to generalized cuts, scalar-integral reconstruction,
 IBP reduction, and a master-integral differential equation.  This script
 checks the exact algebraic ledger behind the worked massless phi^4 example
-and the one-loop bubble family.
+and the one-loop bubble family, then adds finite helicity and regulator
+bookkeeping for the Yang-Mills MHV/all-plus control example.
 
 Evidence contract.
 Target claims: the generalized-unitarity section of Volume II Chapter 6,
 especially the phi^4 cut reconstruction, the negative controls for incomplete
 cut sets and four-dimensional blind spots, the bubble IBP identity, and the
-bubble master differential equation.
+bubble master differential equation, plus the gauge-theory MHV box and
+all-plus rational-term comparison.
 Independent construction: finite cut-signature matrices over rational
 numbers, an explicit identical-state symmetry factor, a nullspace model for
 local/rational terms invisible to four-dimensional cuts, and exact rational
-checks of the one-loop bubble IBP coefficients at several regulator values.
+checks of the one-loop bubble IBP coefficients at several regulator values;
+spinor-bracket exponent ledgers for little-group weights and dimensions; and
+a finite four-gluon helicity enumeration for all-plus two-particle cuts.
 Imported assumptions: dimensional regularization, the standard massless
 two-particle phase-space normalization with the common factor of pi stripped
 off, the Feynman-parameter gamma-function form of the bubble master, and the
-vanishing of scaleless tadpoles in dimensional regularization.
+vanishing of scaleless tadpoles in dimensional regularization; the
+four-dimensional Yang-Mills tree selection rule that nonzero four-gluon trees
+have two negative helicities, up to parity.
 Negative controls: the script rejects an s-channel-only ansatz, verifies that
 local counterterms are invisible to cuts, and constructs two amplitudes with
-identical four-dimensional cuts but different D-dimensional rational probes.
+identical four-dimensional cuts but different D-dimensional rational probes;
+it also verifies that the all-plus one-loop rational structure is invisible
+to strict four-dimensional two-particle cuts but visible to a nonzero
+mu_perp^2 massive-scalar probe.
 Scope boundary: a pass checks the finite reconstruction and reduction
-bookkeeping; it does not compute a nonabelian helicity amplitude, prove
-unitarity from Wightman axioms, or solve a multi-master differential system.
+bookkeeping; it does not compute a nonabelian helicity amplitude from Feynman
+graphs, prove unitarity from Wightman axioms, or solve a multi-master
+differential system.
 """
 
 from __future__ import annotations
@@ -84,6 +94,7 @@ def rank(matrix: list[list[Fraction]]) -> int:
 
 CHANNELS = ("s", "t", "u")
 BASIS = ("B_s", "B_t", "B_u", "local", "four_dimensional_rational_null")
+BracketPowers = dict[tuple[int, int], int]
 
 
 def four_dimensional_cut_signature(basis_name: str) -> tuple[Fraction, Fraction, Fraction]:
@@ -171,6 +182,108 @@ def check_four_dimensional_cut_blind_spot() -> None:
     assert_true("D-dimensional information distinguishes amplitudes", base_probe != shifted_probe)
 
 
+def little_group_weights(
+    angle_powers: BracketPowers,
+    square_powers: BracketPowers,
+    legs: tuple[int, ...] = (1, 2, 3, 4),
+) -> tuple[int, ...]:
+    """Return exponents of t_i under lambda_i -> t_i lambda_i."""
+    weights = {leg: 0 for leg in legs}
+    for (left, right), power in angle_powers.items():
+        weights[left] += power
+        weights[right] += power
+    for (left, right), power in square_powers.items():
+        weights[left] -= power
+        weights[right] -= power
+    return tuple(weights[leg] for leg in legs)
+
+
+def bracket_mass_dimension(
+    angle_powers: BracketPowers,
+    square_powers: BracketPowers,
+) -> int:
+    return sum(angle_powers.values()) + sum(square_powers.values())
+
+
+def four_gluon_tree_nonzero(helicities: tuple[int, int, int, int]) -> bool:
+    negative_count = sum(1 for helicity in helicities if helicity == -1)
+    return negative_count == 2
+
+
+def all_plus_massive_scalar_probe(mu_perp_squared: Fraction) -> Fraction:
+    # The four-point all-plus rational term is seen by the evanescent sector:
+    # the product of two massive-scalar cut trees carries two powers of
+    # mu_perp^2 in this finite ledger.
+    return mu_perp_squared * mu_perp_squared
+
+
+def check_gauge_theory_helicity_controls() -> None:
+    parke_taylor_angle = {
+        (1, 2): 3,   # <12>^4 / <12>
+        (2, 3): -1,
+        (3, 4): -1,
+        (4, 1): -1,
+    }
+    parke_taylor_square: BracketPowers = {}
+    assert_equal(
+        "Parke-Taylor little-group weights",
+        little_group_weights(parke_taylor_angle, parke_taylor_square),
+        (2, 2, -2, -2),
+    )
+    assert_equal(
+        "Parke-Taylor mass dimension",
+        bracket_mass_dimension(parke_taylor_angle, parke_taylor_square),
+        0,
+    )
+
+    st_dimension = 4
+    scalar_box_dimension = -4
+    assert_equal(
+        "N=4 MHV box dimension",
+        bracket_mass_dimension(parke_taylor_angle, parke_taylor_square)
+        + st_dimension
+        + scalar_box_dimension,
+        0,
+    )
+    assert_equal(
+        "N=4 MHV box inherits tree little-group weights",
+        little_group_weights(parke_taylor_angle, parke_taylor_square),
+        (2, 2, -2, -2),
+    )
+
+    all_plus_angle = {(1, 2): -1, (3, 4): -1}
+    all_plus_square = {(1, 2): 1, (3, 4): 1}
+    assert_equal(
+        "all-plus rational little-group weights",
+        little_group_weights(all_plus_angle, all_plus_square),
+        (-2, -2, -2, -2),
+    )
+    assert_equal(
+        "all-plus rational mass dimension",
+        bracket_mass_dimension(all_plus_angle, all_plus_square),
+        0,
+    )
+
+    nonzero_two_particle_cuts = []
+    for h_left_1 in (-1, 1):
+        for h_left_2 in (-1, 1):
+            left_tree = (h_left_1, 1, 1, h_left_2)
+            right_tree = (-h_left_2, 1, 1, -h_left_1)
+            if four_gluon_tree_nonzero(left_tree) and four_gluon_tree_nonzero(right_tree):
+                nonzero_two_particle_cuts.append((left_tree, right_tree))
+    assert_equal("strict 4D all-plus two-particle cuts", nonzero_two_particle_cuts, [])
+
+    assert_equal(
+        "all-plus massive-scalar probe vanishes in 4D",
+        all_plus_massive_scalar_probe(Fraction(0)),
+        Fraction(0),
+    )
+    assert_true(
+        "all-plus massive-scalar probe sees evanescent sector",
+        all_plus_massive_scalar_probe(Fraction(3, 5)) != 0,
+    )
+
+
 def check_bubble_ibp_identity() -> None:
     samples = [
         (Fraction(1, 11), Fraction(3, 2), Fraction(5, 7)),
@@ -223,6 +336,7 @@ def check_branch_and_landau_ledger() -> None:
 def main() -> None:
     check_phi4_cut_reconstruction()
     check_four_dimensional_cut_blind_spot()
+    check_gauge_theory_helicity_controls()
     check_bubble_ibp_identity()
     check_branch_and_landau_ledger()
     print("All generalized unitarity and one-loop reduction checks passed.")

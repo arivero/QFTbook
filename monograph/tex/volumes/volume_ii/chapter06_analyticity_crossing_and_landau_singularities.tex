@@ -2343,6 +2343,83 @@ four-dimensional continuation that keeps \(\mu_\perp^2\) as a mass parameter,
 or an independent on-shell recursion for rational terms is needed to close
 that gap.
 
+\subsection{Gauge-Theory Check: MHV Boxes and All-Plus Rational Terms}
+\label{subsec:gauge-theory-mhv-all-plus-unitarity-check}
+
+The preceding caveat becomes concrete in the smallest helicity amplitudes of
+Yang--Mills theory.  Work with color-ordered, all-outgoing external gluons and
+four-dimensional spinor variables.  The tree MHV amplitude is
+\[
+  A_4^{(0)}(1^-,2^-,3^+,4^+)
+  =
+  \ii\,
+  \frac{\langle12\rangle^4}
+       {\langle12\rangle\langle23\rangle\langle34\rangle\langle41\rangle}
+\]
+up to the overall color-stripped coupling convention.  Its little-group
+weights are \(t_1^2t_2^2t_3^{-2}t_4^{-2}\), as required by
+\(A(\ldots,i^{h_i},\ldots)\mapsto t_i^{-2h_i}A\).  In planar
+\(\mathcal N=4\) super-Yang--Mills the one-loop four-point MHV amplitude is a
+clean cut-constructible control:
+\begin{equation}
+  A_{4,\mathcal N=4}^{(1)}(1^-,2^-,3^+,4^+)
+  =
+  C_{\rm loop}\,s t\,
+  A_4^{(0)}(1^-,2^-,3^+,4^+)\,
+  I_4^{(D)}(s,t) ,
+  \label{eq:n4-four-point-mhv-box-control}
+\end{equation}
+where \(I_4^{(D)}\) is the dimensionally regulated massless scalar box and
+\(C_{\rm loop}\) records the common loop-measure phase and normalization
+\cite{BDDK1994Unitarity,BrittoCachazoFeng2005GeneralizedUnitarity}.  The
+factor \(s t\) supplies mass dimension four, the scalar box has mass dimension
+\(-4\), and the helicity weight is entirely that of the tree amplitude.  The
+quadruple cut therefore supplies a coefficient-level reconstruction: after
+the supersymmetric internal-state sum it fixes the box coefficient, and there
+are no triangle, bubble, or rational remnants in this example.
+
+Pure Yang--Mills with all external helicities positive is the opposite test.
+Every strictly four-dimensional two-particle cut of
+\(A_4^{(1)}(1^+,2^+,3^+,4^+)\) vanishes.  Indeed, on the \(s\)-channel cut the
+left tree has helicities \((h_1,+,+,h_2)\) and the right tree has
+\((-h_2,+,+,-h_1)\).  A four-gluon tree is nonzero only in the two-negative
+or two-positive sector.  If the left tree is nonzero, both cut helicities on
+the right are positive and the right tree is all-plus; if the right tree is
+nonzero, the left tree is all-plus.  The same argument holds in the crossed
+channels.  Nevertheless the one-loop all-plus amplitude is not zero.  Its
+four-point rational part has the form
+\begin{equation}
+  A_{4,\mathrm{rat}}^{(1)}(1^+,2^+,3^+,4^+)
+  =
+  C_{\rm rat}\,
+  \frac{[12][34]}{\langle12\rangle\langle34\rangle},
+  \qquad C_{\rm rat}\ne0 ,
+  \label{eq:all-plus-four-gluon-rational-control}
+\end{equation}
+with the precise sign and numerical factor fixed only after the loop-measure,
+color, and particle-content convention is declared
+\cite{BDDK1994Unitarity,BDK1996OneLoopQCD}.  In the common leading-color
+normalization \(C_{\rm rat}\) is proportional to \(\ii/(48\pi^2)\).  The
+ratio in \eqref{eq:all-plus-four-gluon-rational-control} has little-group
+weight \(t_1^{-2}t_2^{-2}t_3^{-2}t_4^{-2}\) and dimension zero, so it is a
+perfectly admissible rational four-point amplitude even though ordinary
+four-dimensional cuts cannot see it.
+
+The missing information is regulator data discarded by strict \(D=4\) cutting.
+In a \(D=4-2\epsilon\) loop-momentum split, tree amplitudes with two external
+plus-helicity gluons and massive scalar states carrying \(\mu_\perp^2\) are
+nonzero.  Products of such cut trees generate \(\mu_\perp^4\) residues; after
+dimension shifting, those evanescent numerators can leave a finite rational
+term.  Equivalently, a massive four-dimensional continuation treats
+\(\mu_\perp^2\) as the mass of the cut scalar and reconstructs the same
+rational contribution.
+
+Thus the distinction is physical.  Strict \(D=4\) generalized cuts determine
+the cut-constructible branch-cut sector; complete non-supersymmetric gauge
+amplitudes require \(D\)-dimensional information, massive unitarity, or an
+independent rational-term construction
+\cite{BernMorgan1996MassiveUnitarity,BrandhuberEtAl2005PureYMUnitarity}.
+
 \subsection{IBP Reduction and the Bubble Master Equation}
 \label{subsec:ibp-bubble-master-equation}
 
