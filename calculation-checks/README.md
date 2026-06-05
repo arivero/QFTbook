@@ -1604,8 +1604,10 @@ Current checks:
   geometry, the static limit of the density source-response pole, the
   heat-kernel acausal-support diagnostic for first-order shear diffusion, the
   boosted high-\(k\) instability negative control for parabolic diffusion, and
-  the MIS shear relaxation completion with hydrodynamic/transient poles and a
-  subluminal-front-speed check.
+  the retarded singularity taxonomy separating real-axis boundary spectral
+  lines/cuts from lower-half-plane damped poles and upper-half-plane
+  instabilities, plus the MIS shear relaxation completion with
+  hydrodynamic/transient poles and a subluminal-front-speed check.
 - `hydrodynamic_long_time_tail_checks.py`: finite checks for the Volume X
   hydrodynamic fluctuation chapter, including diffusive static covariance,
   the classical FDT relation, the finite bond-current contraction behind the

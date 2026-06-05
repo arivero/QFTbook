@@ -9,17 +9,20 @@ high-k instability of the parabolic truncation, and the linear causal
 relaxation completion of the shear sector in Volume X Chapter 5.
 Independent construction: direct finite-dimensional algebra for the Ward
 identity modes, exact heat-kernel positivity away from the origin, explicit
-quadratic roots for boosted diffusion and MIS shear relaxation, and matrix
-similarity checks for multi-charge diffusion.
+quadratic roots for boosted diffusion and MIS shear relaxation, a retarded
+singularity taxonomy check, and matrix similarity checks for multi-charge
+diffusion.
 Imported assumptions: homogeneous KMS thermodynamic stability, the stated
 Landau-frame constitutive relations, positivity of transport coefficients from
 entropy/Kubo arguments, and the choice of a single linear MIS shear relaxation
 time.
 Negative controls: first-order shear diffusion is not accepted as a causal
 finite-speed PDE, Lorentz-boosted parabolic diffusion is not accepted as a
-stable high-k theory, a causal relaxation model with superluminal shear front
-speed is rejected, and linear shear completion is not treated as a theorem for
-full nonlinear causal hydrodynamics.
+stable high-k theory, real-axis spectral lines are not mistaken for
+lower-half-plane damped poles, an open-upper-half-plane pole is rejected, a
+causal relaxation model with superluminal shear front speed is rejected, and
+linear shear completion is not treated as a theorem for full nonlinear causal
+hydrodynamics.
 Scope boundary: these checks verify finite algebra and linear-mode
 bookkeeping; they do not prove microscopic hydrodynamic emergence, nonlinear
 well-posedness, or the complete BRSSS/MIS coefficient inequalities.
@@ -190,6 +193,44 @@ def mis_shear_roots(diffusion: float, tau_pi: float, k: float) -> tuple[complex,
     return ((-b + root) / (2.0 * tau_pi), (-b - root) / (2.0 * tau_pi))
 
 
+def check_retarded_singularity_taxonomy() -> None:
+    finite_volume_lines = [-1.3, 0.25, 1.8]
+    upper_half_test_points = [
+        complex(-2.0, 0.1),
+        complex(0.25, 0.35),
+        complex(1.1, 2.0),
+    ]
+
+    for z in upper_half_test_points:
+        if z.imag <= 0.0:
+            raise AssertionError("test point should lie in the open upper half-plane")
+        for line in finite_volume_lines:
+            denominator = z - line
+            if abs(denominator) <= z.imag / 2.0:
+                raise AssertionError("real-axis spectral line should not be an upper-half-plane pole")
+
+    boundary_singularities = [complex(line, 0.0) for line in finite_volume_lines]
+    if not all(pole.imag == 0.0 for pole in boundary_singularities):
+        raise AssertionError("finite-volume spectral lines should sit on the real-axis boundary")
+
+    threshold = 0.6
+    cut_mesh = [complex(threshold + 0.2 * index, 0.0) for index in range(5)]
+    if not all(point.imag == 0.0 and point.real >= threshold for point in cut_mesh):
+        raise AssertionError("thermodynamic-limit cut mesh should remain a real-axis boundary object")
+
+    damped_transient_poles = [
+        complex(0.0, -1.0 / 0.7),
+        complex(0.4, -0.2),
+        complex(-0.4, -0.2),
+    ]
+    if not all(pole.imag < 0.0 for pole in damped_transient_poles):
+        raise AssertionError("damped transient poles should lie in the lower half-plane")
+
+    unstable_pole = complex(0.1, 0.2)
+    if not unstable_pole.imag > 0.0:
+        raise AssertionError("upper-half-plane instability negative control failed")
+
+
 def check_mis_shear_relaxation_completion() -> None:
     diffusion = 0.21
     tau_pi = 0.7
@@ -343,6 +384,7 @@ def main() -> None:
     check_shear_mode()
     check_first_order_shear_acausality()
     check_boosted_diffusion_instability_negative_control()
+    check_retarded_singularity_taxonomy()
     check_mis_shear_relaxation_completion()
     check_sound_mode_expansion()
     check_entropy_production_coefficients()

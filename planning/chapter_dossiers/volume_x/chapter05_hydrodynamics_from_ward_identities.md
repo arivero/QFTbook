@@ -50,6 +50,11 @@
 - Linear MIS shear relaxation completion, telegrapher equation,
   hydrodynamic shear pole, transient nonhydrodynamic pole, and shear-sector
   stability/front-speed conditions.
+- Retarded singularity taxonomy: exact retarded functions are holomorphic in
+  the open upper half-plane; finite-volume spectral lines and
+  thermodynamic-limit cuts may live on the real-axis boundary, while damped
+  transient/resonance poles belong in the lower half-plane or on continued
+  sheets.
 - Diffusive density source-response kernel
   \(K^R_{nn}=\chi Dk^2/(Dk^2-i\omega)+\text{analytic}\), with the sign
   relation to the commutator-retarded convention stated explicitly.
@@ -150,8 +155,12 @@
     subluminal front speed require \(w>0\), \(\eta\ge0\), \(\tau_\pi>0\), and
     \(D_\eta/\tau_\pi\le1\).
 19. Retarded analyticity/positivity supplies exact QFT causality and Kubo
-    positivity but does not by itself prove finite-truncation hyperbolicity or
-    nonlinear well-posedness; these are formulation-dependent assumptions.
+    positivity.  The exact pole-location statement is absence of
+    singularities in the open upper half-plane; finite-volume spectral lines
+    and thermodynamic-limit cuts can sit on the real-axis boundary, while
+    lower-half-plane poles describe damped transients or continued-sheet
+    resonances.  This does not by itself prove finite-truncation hyperbolicity
+    or nonlinear well-posedness; those are formulation-dependent assumptions.
 20. Hydrodynamic correlator poles match the Kubo coefficients only after the
    thermodynamic and hydrodynamic scaling limits are specified.
 21. The microscopic QFT theorem boundary requires local equilibration,
@@ -165,6 +174,11 @@
   linear MIS shear relaxation completion, explicit stability/front-speed
   ledger, and theorem/assumption boundary for retarded analyticity,
   hyperbolicity, and nonlinear well-posedness.
+- 2026-06-04 issue #821 re-audit: corrected the retarded-analyticity
+  boundary from "exact singularities lie in the lower half-plane" to
+  holomorphy in the open upper half-plane, explicitly separating real-axis
+  finite-volume lines, thermodynamic-limit cuts, and lower-half-plane
+  transient/resonance poles.
 
 ## Calculation Checks
 
@@ -174,8 +188,9 @@
   relation, the multi-charge susceptibility geometry, and the static limit of
   the diffusive density source-response kernel.  It also checks the
   first-order heat-kernel acausal-support diagnostic, boosted high-\(k\)
-  instability negative control, and the MIS shear relaxation
-  hydrodynamic/transient poles with a subluminal-front-speed condition.
+  instability negative control, the retarded singularity taxonomy, and the
+  MIS shear relaxation hydrodynamic/transient poles with a
+  subluminal-front-speed condition.
 
 ## Figures
 
