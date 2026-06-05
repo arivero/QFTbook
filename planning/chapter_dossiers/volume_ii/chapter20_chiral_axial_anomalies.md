@@ -404,6 +404,7 @@
 | \(\mathfrak s_{\rm hard}(s),\Delta\) | hard instanton log-size shell density and its power-tail suppression exponent \(\Delta=\sigma-b_0-2\) |
 | \(\rho_*,dQ,m_{\rm scr}\) | mixed hard-source/physical-screening log-shell coordinate, hard exponential envelope, and screening mass in the retained instanton size majorant |
 | \(C_{\rm inst}^{(4)}(Q;R),\mathcal P_{\rm orient}\) | specialized \(SU(3)\), \(N_f=2\) hard four-fermion instanton coefficient and shared orientation projector, with the Pauli-Villars pure-gauge constant, light-fermion determinant factor, and explicit endpoint residual |
+| \(A_{\rm ind},B_{\rm ind},R_{\rm sub}\) | leading individual-slot endpoint-tail coefficient, first product-tail residual majorant, and accelerated hard-coefficient tail-subtraction residual |
 | \(J_R,M_R,T_R,\kappa_R\) | retained signed hard-instanton window integral, retained absolute mass, omitted absolute tail, and noncancellation margin used to bound a relative hard-coefficient error |
 | \(X_{\mathcal S},\delta_X,z_B,z_O,\epsilon_C\) | finite scheme-transport data for an instanton determinant constant: coupling-coordinate shift, zero-mode/source and operator/projection frame factors, and logarithmic constant residual |
 | \(B_R,B_L,d_R,d_L,\epsilon_{\rm rank}\) | right/left four-source zero-mode overlap matrices, determinant margins, and rank-margin residual used to control a nondegenerate \(N_f=2\) instanton four-source amplitude |
@@ -1812,3 +1813,13 @@
   Mellin convergence condition, the Schwinger/Beta factorization, a special
   Gamma-recurrence value, the \(c^{-35/3}\) scale law, the hard coefficient
   dimension, and the endpoint-channel distinction.
+- 2026-06-05 issue #597 individual-slot tail-subtraction pass: added
+  `prop:individual-slot-instanton-tail-subtraction` after the specialized
+  \(SU(3)\), \(N_f=2\) individual-slot hard coefficient.  The pass turns the
+  slow \(R^{-1/3}\) endpoint into a computable accelerated estimator
+  \(J_R+3A_{\rm ind}R^{-1/3}\) with residual
+  \(|R_{\rm sub}|\le(3/7)B_{\rm ind}R^{-7/3}\), conditional on a first
+  product-tail majorant in the same source/orientation normalization.  The
+  BPST companion checks the leading and residual powers, exact rational tail
+  coefficient, accelerated-estimator bound, raw-truncation negative control,
+  and leading-tail-cancellation case.

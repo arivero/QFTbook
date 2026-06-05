@@ -131,6 +131,10 @@ relations
     b0=29/3, size-integrand power 32/3, RG-invariant falloff
     Lambda_ht^(29/3) Q^(-35/3), and leading individual-slot endpoint tail
     3*6^4 prod_l c_l^(-3) R^(-1/3);
+    subtracting the leading individual-slot endpoint tail gives an accelerated
+    hard coefficient estimator whose residual is bounded by
+    (3/7) B_ind R^(-7/3) once the first product-tail residual majorant is
+    supplied
     quoting the hard coefficient on a finite window requires the retained
     signed integral J_R, absolute mass M_R, tail T_R, and noncancellation
     margin kappa_R=|J_R|/M_R; cancellation can defeat relative control even
@@ -4139,6 +4143,73 @@ def check_su3_two_flavor_hard_instanton_coefficient() -> None:
     assert_equal("SU3 Nf2 hard tail next exponent", next_tail_power, Fraction(-7, 3))
 
 
+def check_individual_slot_tail_subtracted_hard_coefficient() -> None:
+    n_c = 3
+    n_f = 2
+    b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+    size_integrand_power = b0 + 1
+    leading_product_power = -12
+    residual_product_power = -14
+
+    assert_equal(
+        "individual-slot leading integrand power",
+        size_integrand_power + leading_product_power,
+        -Fraction(4, 3),
+    )
+    assert_equal(
+        "individual-slot residual integrand power",
+        size_integrand_power + residual_product_power,
+        -Fraction(10, 3),
+    )
+
+    c_values = [Fraction(1), Fraction(2), Fraction(3), Fraction(4)]
+    orientation_tail = Fraction(5, 7)
+    a_ind = orientation_tail * product_fraction(
+        [Fraction(6, 1) / (c**3) for c in c_values]
+    )
+    b_ind = Fraction(13, 11)
+    x = Fraction(3)
+    r_minus_one_third = Fraction(1, 1) / x
+    r_minus_seven_thirds = Fraction(1, 1) / (x**7)
+
+    leading_tail = 3 * a_ind * r_minus_one_third
+    residual_bound = Fraction(3, 7) * b_ind * r_minus_seven_thirds
+    actual_residual = residual_bound / 2
+    finite_window_integral = Fraction(17, 19)
+    exact_tail = leading_tail + actual_residual
+    exact_integral = finite_window_integral + exact_tail
+    accelerated_estimator = finite_window_integral + leading_tail
+
+    assert_equal(
+        "individual-slot leading tail subtraction coefficient",
+        leading_tail,
+        3 * a_ind / x,
+    )
+    assert_equal(
+        "individual-slot subtracted residual bound",
+        residual_bound,
+        Fraction(3, 7) * b_ind / (x**7),
+    )
+    if not abs(exact_integral - accelerated_estimator) <= residual_bound:
+        raise AssertionError("individual-slot tail-subtracted residual bound failed")
+
+    raw_truncation_error = abs(exact_integral - finite_window_integral)
+    assert_equal(
+        "raw individual-slot truncation is not residual-level control",
+        raw_truncation_error <= residual_bound,
+        False,
+    )
+
+    # If the leading source-orientation tail coefficient cancels, the same
+    # formula correctly leaves only the residual majorant; it does not license
+    # importing the fused-source exponential tail.
+    canceled_a_ind = Fraction(0)
+    canceled_accelerated = finite_window_integral + 3 * canceled_a_ind / x
+    canceled_exact = finite_window_integral + actual_residual
+    if not abs(canceled_exact - canceled_accelerated) <= residual_bound:
+        raise AssertionError("canceled-tail individual-slot residual bound failed")
+
+
 def check_hard_instanton_finite_window_bound() -> None:
     # A finite hard coefficient needs an absolute error budget and a
     # noncancellation margin |J_R| >= kappa_R M_R.  Otherwise a small absolute
@@ -5513,6 +5584,7 @@ def main() -> None:
     check_hard_size_tail_dominance_criterion()
     check_hard_screened_instanton_size_shell()
     check_su3_two_flavor_hard_instanton_coefficient()
+    check_individual_slot_tail_subtracted_hard_coefficient()
     check_hard_instanton_finite_window_bound()
     check_four_source_instanton_amplitude_rank_bound()
     check_wilsonian_instanton_size_factorization()

@@ -641,7 +641,10 @@ Current checks:
   exact fused bilinear-density source Mellin integral
   \(\mathcal J_{b_0}^{\rm fus}(c)\) with its
   \(c^{-b_0-2}\) source-scale dependence and its separation from the
-  individual-slot four-fermion kernel, the
+  individual-slot four-fermion kernel, the individual-slot tail-subtracted
+  hard coefficient estimator with residual
+  \((3/7)B_{\rm ind}R^{-7/3}\) after the leading \(R^{-1/3}\) endpoint tail
+  is restored, the
   mass-saturated vacuum-activity size integral with its
   \(\prod_f(m_f\rho)\) zero-mode factors,
   small-\(\rho\) finiteness margin, large-\(\rho\) obstruction, and
