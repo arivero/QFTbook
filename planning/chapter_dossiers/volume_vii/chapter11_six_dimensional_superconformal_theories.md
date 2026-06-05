@@ -63,11 +63,12 @@ Reviewed source spine:
 
 - Separates six-dimensional superconformal representation data from
   branch-EFT field variables.
-- Adds Hypothesis `hyp:six-d-two-zero-ade-qft`, aggregating the defining
-  properties of the assumed ADE `(2,0)` QFT: positive-energy
-  `OSp(8^*|4)` representation, tensor-branch quotient, anomaly polynomial,
-  BPS root-lattice strings, finite defect group, circle compactification, and
-  conditional class-`S` compactification functoriality.
+- Adds Conjecture `conj:six-d-two-zero-ade-fixed-point`, aggregating the
+  protected/effective data of the conjectural ADE `(2,0)` QFT:
+  positive-energy `OSp(8^*|4)` representation, tensor-branch quotient,
+  protected anomaly polynomial, BPS root-lattice strings, finite defect group,
+  circle compactification, and conditional class-`S` compactification
+  functoriality.
 - Adds a construction/test architecture for the six-dimensional object:
   fixed-point local QFT data, tensor-branch EFT, finite defect/global-form
   polarization, protected circle and class-`S` compactification tests, and
@@ -86,6 +87,9 @@ Reviewed source spine:
 - Defines tensor-branch coordinates, the chamber structure, and
   Green-Schwarz couplings as effective data rather than a fixed-point
   construction.
+- Adds Hypothesis `hyp:six-d-two-zero-tensor-branch-eft`, giving the ADE
+  tensor-branch quotient the status of a conditional branch EFT package rather
+  than a construction of the tensionless fixed point.
 - Gives the `(2,0)` tensor-branch quotient
   `(R^5 tensor t_g)/W_g`, with the type `A_{N-1}` chart as an example.
 - States anomaly matching as an equality involving `I_8` and quadratic
@@ -93,9 +97,10 @@ Reviewed source spine:
 - Proves the quadratic Green-Schwarz descent factor
   `1/2 Omega^{IJ} X_I X_J`, including why the `1/2` disappears in the
   six-form descent representative.
-- Records the `(2,0)` anomaly polynomial as a quoted theorem, with all
-  coefficients and characteristic classes named.
-- Expands the quoted-theorem boundary by isolating the interacting excess
+- Records the `(2,0)` anomaly polynomial as protected conjectural data in
+  Conjecture `conj:six-d-two-zero-anomaly-polynomial`, with all coefficients
+  and characteristic classes named.
+- Expands the protected-anomaly boundary by isolating the interacting excess
   `I_8[g]-r_g I_8(1)`, explaining that the branch free tensors supply only
   the `r_g I_8(1)` part, and deriving the simply laced positive-root
   second-moment identity and `d_g=r_g(h_g^vee+1)` arithmetic that make the
@@ -134,11 +139,14 @@ Reviewed source spine:
   its integral charge on spatial four-cycles, the trace-delta instanton
   particle energy bound, and the protected compactification normalization
   `g_5^2 = 4 pi^2 R` from BPST instanton mass and KK momentum.
+- Adds Conjecture `conj:six-d-two-zero-circle-to-5d-msym`, separating the
+  circle compactification bridge to five-dimensional maximally supersymmetric
+  Yang-Mills from the finite instanton/KK checks that test it.
 - Derives the wrapped-string/W-boson mass matching and the scalar
   normalization `phi_5d = 2 pi R phi_6d`.
 - Records compactification on Riemann surfaces as a test requiring twist,
   defect, anomaly, and descendant data.
-- Adds Hypothesis `hyp:class-s-compactification-datum`, defining the
+- Adds Conjecture `conj:class-s-compactification-qft`, defining the
   conditional class-`S` object by the tuple
   `(C,{(p_a,D_a)},eta)` and the required four-dimensional QFT data, rather
   than using the phrase "class-S theory" as an undefined shorthand.
@@ -177,20 +185,20 @@ Reviewed source spine:
 ## Proof Obligations And Boundaries
 
 - The interacting `(2,0)` theory remains a non-Lagrangian object; the chapter
-  now states a defining-property hypothesis for the assumed QFT and gives
-  protected/effective consequences from that hypothesis, not a construction.
+  now states a central conjecture for the assumed QFT and gives
+  protected/effective consequences from that conjecture, not a construction.
 - Class-`S` theories are conditional four-dimensional local QFTs in this
   chapter.  The compactification datum and the resulting QFT assumptions are
-  aggregated in `hyp:class-s-compactification-datum`; the Hitchin base,
-  anomaly pushforward, and Seiberg-Witten curve data are protected
-  consequences or tests, not standalone definitions of the QFT.
-- The `(2,0)` anomaly polynomial is quoted theorem status because a
-  first-principles construction of the interacting six-dimensional local QFT
-  and its anomaly functional is not reproduced here.  External geometric or
-  string-theoretic arguments can motivate the formula but are not used as
-  foundations.
+  aggregated in `conj:class-s-compactification-qft`; the Hitchin base, anomaly
+  pushforward, and Seiberg-Witten curve data are protected consequences or
+  tests, not standalone definitions of the QFT.
+- The `(2,0)` anomaly polynomial is protected conjectural data in
+  `conj:six-d-two-zero-anomaly-polynomial`, not an internal theorem.  External
+  geometric or string-theoretic arguments can motivate the formula but are not
+  used as foundations.
 - Compactification to 5D maximally supersymmetric Yang-Mills is treated as a
-  protected test/effective description, not as a definition of the parent
+  compactification conjecture/effective description in
+  `conj:six-d-two-zero-circle-to-5d-msym`, not as a definition of the parent
   six-dimensional local QFT.
 - The construction/test architecture is now the governing map for the
   chapter: each derivation should be read as local representation theory,
@@ -217,7 +225,7 @@ Reviewed source spine:
   ADE discriminant groups, the finite \(H^3(Y;A_g)\) Heisenberg pairing, and
   a cyclic \(A_{N-1}\) polarization model with exact calculation checks.
 - 2026-05-30 anomaly-theorem boundary pass: expanded the local content around
-  the `(2,0)` anomaly polynomial quoted theorem by identifying the interacting
+  the then-quoted `(2,0)` anomaly polynomial by identifying the interacting
   anomaly excess, deriving the root-system second-moment and dimension-count
   arithmetic used by tensor-branch Green-Schwarz matching, and extending the
   finite convention checks accordingly.
@@ -264,6 +272,13 @@ Reviewed source spine:
   "pole-order ledger" wording as a pole-order chart/list while preserving the
   Riemann--Roch formulae and defect-scope caveats.  This was an editorial
   flow repair, not a new class-\(S\) claim.
+- 2026-06-05 issue #803 theorem-boundary repair: promoted ADE `(2,0)`
+  fixed-point existence to a central conjecture, demoted the anomaly
+  polynomial from theorem status to protected conjectural data, added separate
+  status labels for the tensor-branch EFT package, circle compactification to
+  5D MSYM, and class-`S` compactification QFTs, and kept Green-Schwarz
+  descent, ADE arithmetic, finite defect algebra, and Hitchin/Riemann--Roch
+  counts as conditional calculations rather than existence proofs.
 
 ## Figure Ledger
 

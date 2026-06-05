@@ -15,8 +15,8 @@ formalism, because these are the supersymmetric field theories that most
 sharply test the distinction between protected data and construction of a
 local QFT.
 
-\begin{hypothesis}[\((2,0)\) theory of ADE type]
-\label{hyp:six-d-two-zero-ade-qft}
+\begin{conjecture}[Central conjecture: ADE \((2,0)\) fixed-point package]
+\label{conj:six-d-two-zero-ade-fixed-point}
 Let \(\mathfrak g\) be a simply laced complex simple Lie algebra of type
 \(A\), \(D\), or \(E\), with Cartan algebra
 \(\mathfrak t_{\mathfrak g}\), Weyl group \(W_{\mathfrak g}\), root lattice
@@ -26,8 +26,8 @@ Let \(\mathfrak g\) be a simply laced complex simple Lie algebra of type
 \[
   \mathfrak T_{6d}[\mathfrak g]
 \]
-denotes an assumed six-dimensional local QFT with the following defining
-properties.
+denotes a conjectural six-dimensional local QFT with the following protected
+and effective data.
 \begin{enumerate}[label=\textup{(\roman*)}]
 \item It is a positive-energy \((2,0)\) superconformal QFT with
 superconformal algebra \(OSp(8^\ast|4)\) and \(USp(4)_R\simeq
@@ -50,8 +50,8 @@ lattice \(Q_{\mathfrak g}\) and Cartan pairing.
 where \(N_R\) is the rank-five \(SO(5)_R\) background bundle and
 \(I_8(1)\) is as in
 \eqref{eq:six-d-free-tensor-anomaly}.  This is the protected anomaly datum
-used below; the quoted-theorem boundary is stated at
-Quoted Theorem~\ref{qt:six-d-two-zero-anomaly-polynomial}.
+used below; its separate status label is
+Conjecture~\ref{conj:six-d-two-zero-anomaly-polynomial}.
 \item Its BPS string charges on a generic tensor branch are the roots
 \(\alpha\in Q_{\mathfrak g}\), with central-charge/tension normalization
 \[
@@ -72,30 +72,37 @@ On a closed six-manifold \(Y\), the corresponding finite flux sector is a
 self-dual finite Heisenberg system built from \(H^3(Y;A_{\mathfrak g})\) and
 therefore requires a polarization before it gives a numerical partition
 function.
-\item Circle compactification on a circle of radius \(R\), on a branch where
-the compactified low-energy description is valid, gives five-dimensional
+\item Circle compactification on a circle of radius \(R\), on a branch and
+choice of finite global-form data where the compactified low-energy
+description is valid, is conjecturally described by five-dimensional
 maximally supersymmetric Yang--Mills with gauge algebra \(\mathfrak g\) and
 trace-delta coupling
 \[
   g_5^2=4\pi^2R.
 \]
+This compactification bridge is stated separately in
+Conjecture~\ref{conj:six-d-two-zero-circle-to-5d-msym}.
 \item Riemann-surface compactification is used only with the partial twist
 and codimension-two defect data specified in
-Hypothesis~\ref{hyp:class-s-compactification-datum}, and only conditioned on
+Conjecture~\ref{conj:class-s-compactification-qft}, and only conditioned on
 existence of the resulting four-dimensional local QFT.
 \end{enumerate}
 All subsequent uses of \(\mathfrak T_{6d}[\mathfrak g]\) in this chapter are
-conditional on the existence of a local QFT with these properties.  The
-chapter derives consistency checks and protected consequences from the listed
-data; it does not construct the interacting six-dimensional local QFT.
-Open Problem~\ref{op:six-dimensional-construction} records the missing
+conditional on this conjecture.  The evidence ledger consists of
+superconformal representation constraints, tensor-branch
+Green--Schwarz anomaly matching, ADE root arithmetic, BPS string central
+charges, finite surface-defect pairings, circle compactification tests, and
+class-\(S\) protected reductions.  These items are evidence and consistency
+constraints; none of them is treated here as a construction of the interacting
+six-dimensional local QFT.  Open
+Problem~\ref{op:six-dimensional-construction} records the missing
 construction problem.
-\end{hypothesis}
+\end{conjecture}
 
 \section{Construction and Test Architecture}
 \label{sec:six-d-construction-test-architecture}
 
-The data in Hypothesis~\ref{hyp:six-d-two-zero-ade-qft} should be read as a
+The data in Conjecture~\ref{conj:six-d-two-zero-ade-fixed-point} should be read as a
 layered construction target.  The first layer is the local fixed-point
 object: a Hilbert space or equivalent local-QFT presentation with
 positive-energy \(OSp(8^\ast|4)\) action, stress tensor, local operator
@@ -327,9 +334,13 @@ tensionless.  The low-energy formulae on one chamber are not a construction
 of the fixed point at the chamber wall.
 \end{definition}
 
-For a \((2,0)\) theory of simply laced type \(\mathfrak g\), with Cartan
-algebra \(\mathfrak t_{\mathfrak g}\), rank \(r_{\mathfrak g}\), and Weyl
-group \(W_{\mathfrak g}\), the tensor-branch scalar space has the form
+\begin{hypothesis}[ADE tensor-branch EFT status]
+\label{hyp:six-d-two-zero-tensor-branch-eft}
+Conditioned on
+Conjecture~\ref{conj:six-d-two-zero-ade-fixed-point}, the generic
+tensor-branch effective theory of type \(\mathfrak g\), with Cartan algebra
+\(\mathfrak t_{\mathfrak g}\), rank \(r_{\mathfrak g}\), and Weyl group
+\(W_{\mathfrak g}\), has scalar space
 \[
   \mathcal C_{\mathfrak g}^{(2,0)}
   =
@@ -338,7 +349,11 @@ group \(W_{\mathfrak g}\), the tensor-branch scalar space has the form
 after removing any decoupled center-of-mass tensor multiplet.  The five
 \(\mathbb R^5\) directions are the \(\operatorname{Spin}(5)_R\) vector
 directions.  The Weyl quotient records the identification of Cartan
-coordinates that survive from the interacting nonabelian theory.
+coordinates that survive from the interacting nonabelian theory.  This is an
+effective branch package, not a construction of the tensionless fixed point;
+the anomaly and BPS-string calculations below use it only after the fixed-point
+conjecture has supplied the local QFT and its protected anomaly datum.
+\end{hypothesis}
 
 \begin{example}[Type \(A_{N-1}\) tensor branch]
 \label{ex:six-d-a-type-tensor-branch}
@@ -455,11 +470,13 @@ since \(dX_J^{(4)}=0\).  This proves
 statement that the anomaly of the branch massless fields plus the anomaly
 generated by the Green--Schwarz term equals the anomaly of the fixed point.
 
-\begin{quotedtheorem}[\((2,0)\) anomaly polynomial]
-\label{qt:six-d-two-zero-anomaly-polynomial}
+\begin{conjecture}[Protected anomaly datum for ADE \((2,0)\) theories]
+\label{conj:six-d-two-zero-anomaly-polynomial}
 Let \(\mathfrak g\) be simply laced, with rank \(r_{\mathfrak g}\), dimension
-\(d_{\mathfrak g}\), and dual Coxeter number \(h^\vee_{\mathfrak g}\).  The
-\((2,0)\) theory of type \(\mathfrak g\) has anomaly polynomial
+\(d_{\mathfrak g}\), and dual Coxeter number \(h^\vee_{\mathfrak g}\), and
+assume
+Conjecture~\ref{conj:six-d-two-zero-ade-fixed-point}.  The protected anomaly
+polynomial assigned to \(\mathfrak T_{6d}[\mathfrak g]\) is
 \begin{equation}
   I_8[\mathfrak g]
   =
@@ -481,17 +498,15 @@ where \(N_R\) is the rank-five \(SO(5)_R\) background bundle and
   \label{eq:six-d-free-tensor-anomaly}
 \end{equation}
 is the anomaly polynomial of one free \((2,0)\) tensor multiplet.
-\end{quotedtheorem}
+\end{conjecture}
 
-The theorem is quoted because the chapter does not reproduce a construction of
-the interacting six-dimensional local QFT together with a first-principles
-derivation of its anomaly functional.  In this monograph it is used only as
-protected QFT data: it fixes anomaly coefficients that any proposed
-construction of the \((2,0)\) theory must reproduce.  External geometric or
-string-theoretic derivations may motivate the formula, but they are not
-premises in the argument of this chapter.
+The monograph uses this formula as protected QFT data inside the central
+fixed-point conjecture: it fixes anomaly coefficients that any proposed
+construction of the \((2,0)\) theory must reproduce.
+External geometric or string-theoretic derivations may motivate the formula,
+but they are not premises in the argument of this chapter.
 
-\paragraph{What the quoted theorem asserts on the tensor branch.}
+\paragraph{What the protected anomaly datum asserts on the tensor branch.}
 The generic tensor branch of the type \(\mathfrak g\) theory contains
 \(r_{\mathfrak g}\) free abelian \((2,0)\) tensor multiplets.  Therefore
 \begin{equation}
@@ -555,8 +570,9 @@ These identities do not prove
 of the self-dual tensor Green--Schwarz coupling is fixed on a long-root
 string, the Weyl-invariant quadratic contribution on a chamber has no
 remaining independent symmetric tensor structure.  The nontrivial QFT datum
-in the quoted theorem is the overall coefficient with which the interacting
-fixed point realizes this rigid invariant.
+in Conjecture~\ref{conj:six-d-two-zero-anomaly-polynomial} is the overall
+coefficient with which the interacting fixed point realizes this rigid
+invariant.
 
 \begin{remark}[ADE arithmetic in the \((2,0)\) anomaly coefficient]
 \label{rem:six-d-ade-anomaly-arithmetic}
@@ -1063,12 +1079,28 @@ to the protected finite charge algebra.
 \section{Circle Compactification And Five-Dimensional Yang--Mills}
 
 Compactification on a smooth compact manifold \(Y\) gives lower-dimensional
-QFTs whose protected data test the six-dimensional proposal.  For a circle
-of radius \(R\), a \((2,0)\) theory of type \(\mathfrak g\) yields
-five-dimensional maximally supersymmetric Yang--Mills on its Coulomb branch
-with gauge algebra \(\mathfrak g\).  This statement is a compactification
-test and an effective description, not a Lagrangian definition of the
-six-dimensional fixed point.
+QFTs whose protected data test the six-dimensional proposal.
+
+\begin{conjecture}[Circle compactification bridge to \(5d\) MSYM]
+\label{conj:six-d-two-zero-circle-to-5d-msym}
+Assume Conjecture~\ref{conj:six-d-two-zero-ade-fixed-point}, choose a circle
+of radius \(R\), and choose the finite flux polarization/global-form data
+needed to make an absolute compactified theory.  On a generic tensor branch,
+the circle compactification has a five-dimensional maximally supersymmetric
+Yang--Mills low-energy description with gauge algebra \(\mathfrak g\).  In the
+trace-delta convention used here its coupling is
+\[
+  g_5^2=4\pi^2R,
+\]
+and one unit of five-dimensional instanton charge is identified with one unit
+of Kaluza--Klein momentum along the circle.
+\end{conjecture}
+
+Conjecture~\ref{conj:six-d-two-zero-circle-to-5d-msym} is a compactification
+bridge and an effective Coulomb-branch description, not a Lagrangian
+definition of the six-dimensional fixed point.  The calculations below check
+the charge normalization, instanton-particle mass, and wrapped-string
+\(W\)-boson matching conditional on the conjectural bridge.
 
 \paragraph{Five-dimensional instanton charge and coupling convention.}
 Use the monograph trace-delta convention for the five-dimensional gauge
@@ -1206,14 +1238,14 @@ For compactification on a Riemann surface \(C\), partial twists use an
 embedding of the spin connection of \(C\) into \(G_R\).  The resulting
 four-dimensional theory, when it exists, must have matching anomalies, flavor
 symmetries, defect descendants, and moduli-space dimensions.  The following
-hypothesis records the compactification structure used below and gives the
+conjecture records the compactification structure used below and gives the
 class-\(S\) notation a precise conditional meaning.
 
-\begin{hypothesis}[Class-\(S\) compactification structure]
-\label{hyp:class-s-compactification-datum}
+\begin{conjecture}[Class-\(S\) compactification QFT package]
+\label{conj:class-s-compactification-qft}
 Fix a six-dimensional theory
 \(\mathfrak T_{6d}[\mathfrak g]\) satisfying
-Hypothesis~\ref{hyp:six-d-two-zero-ade-qft}.  A class-\(S\)
+Conjecture~\ref{conj:six-d-two-zero-ade-fixed-point}.  A class-\(S\)
 compactification structure is a tuple
 \[
   \mathcal C_{\rm S}
@@ -1261,12 +1293,12 @@ appropriate Hitchin base associated with
 The notation
 \(\mathfrak T_{\mathfrak g}[C,\{(p_a,\mathfrak D_a)\};\eta]\) is therefore
 conditional: it denotes the four-dimensional QFT whose existence and
-properties are asserted in this hypothesis.  The Hitchin base, anomaly
+properties are asserted in this conjecture.  The Hitchin base, anomaly
 pushforward, or Seiberg--Witten curve is not by itself a construction of the
 QFT.  In the smooth unpunctured calculation below, \(A=\emptyset\), \(C\) is
 closed, and the only compactification input beyond \(\mathfrak g\) is the
 twist sign \(\eta\).
-\end{hypothesis}
+\end{conjecture}
 
 The compactification is a test with substantial content.  It must specify:
 \[
@@ -1381,8 +1413,8 @@ not contained in the smooth pushforward \eqref{eq:six-d-class-s-anomaly-pushforw
 \section{Hitchin-Base Coulomb Operators In Class-\texorpdfstring{\(S\)}{S} Compactification}
 \label{sec:six-d-class-s-hitchin-base}
 
-Assume Hypotheses~\ref{hyp:six-d-two-zero-ade-qft} and
-\ref{hyp:class-s-compactification-datum} in the smooth unpunctured case:
+Assume Conjectures~\ref{conj:six-d-two-zero-ade-fixed-point} and
+\ref{conj:class-s-compactification-qft} in the smooth unpunctured case:
 \(C\) is a closed Riemann surface of genus \(g_C>1\), \(A=\emptyset\), and
 the partial twist preserves four-dimensional \(\mathcal N=2\) supersymmetry.
 Let
@@ -1526,7 +1558,7 @@ formulae.
 
 \paragraph{Regular-Puncture Pole-Order Chart.}
 The preceding count has a controlled extension once the codimension-two
-defect data in Hypothesis~\ref{hyp:class-s-compactification-datum} supply
+defect data in Conjecture~\ref{conj:class-s-compactification-qft} supply
 pole orders for the Hitchin differentials.  For each invariant degree
 \(d_i\), suppose the defect \(\mathfrak D_a\) specifies an integer
 \[
@@ -1653,12 +1685,17 @@ respectively.
 
 The assumed \((2,0)\) fixed-point object used in this chapter is
 \(\mathfrak T_{6d}[\mathfrak g]\) of
-Hypothesis~\ref{hyp:six-d-two-zero-ade-qft}.  The class-\(S\)
+Conjecture~\ref{conj:six-d-two-zero-ade-fixed-point}.  The class-\(S\)
 four-dimensional object used in the compactification discussion is
 \(\mathfrak T_{\mathfrak g}[C,\{(p_a,\mathfrak D_a)\};\eta]\) of
-Hypothesis~\ref{hyp:class-s-compactification-datum}.  The substantive
+Conjecture~\ref{conj:class-s-compactification-qft}.  The protected anomaly
+datum is Conjecture~\ref{conj:six-d-two-zero-anomaly-polynomial}, the branch
+EFT status is Hypothesis~\ref{hyp:six-d-two-zero-tensor-branch-eft}, and the
+circle compactification bridge is
+Conjecture~\ref{conj:six-d-two-zero-circle-to-5d-msym}.  The substantive
 six-dimensional data are therefore not reconstructed retrospectively from
-this summary; they are the named assumptions and construction layers fixed in
+this summary; they are the named conjectures, hypotheses, and construction
+layers fixed in
 Section~\ref{sec:six-d-construction-test-architecture}.
 
 For orientation, the data invoked in this chapter are:
@@ -1691,7 +1728,7 @@ only a branch EFT is incomplete; a proposed non-Lagrangian object that
 supplies only protected indices is also incomplete.  Likewise, a phrase such
 as ``the class-\(S\) theory'' has no standing in this chapter unless the
 tuple of compactification data in
-Hypothesis~\ref{hyp:class-s-compactification-datum} has been supplied and the
+Conjecture~\ref{conj:class-s-compactification-qft} has been supplied and the
 existence of the resulting four-dimensional local QFT is being assumed or
 constructed.
 

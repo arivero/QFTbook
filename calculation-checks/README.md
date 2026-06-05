@@ -2353,7 +2353,9 @@ Current checks:
   polarization signs, the finite commutant criterion for genuine versus
   relative defects in an absolute polarization, symplectic-graph interface
   relations, ADE class-\(S\) Hitchin-base degree sums, and regular-puncture
-  pole-order shifts for full \(A_{N-1}\) punctures.
+  pole-order shifts for full \(A_{N-1}\) punctures.  These finite checks
+  support the conditional anomaly, branch-EFT, and compactification evidence
+  ledger; they do not construct the interacting six-dimensional fixed point.
 - `susy_gauge_foundation_checks.py`: exact finite checks for the Volume VII
   supersymmetric gauge-theory foundation chapter, including the auxiliary
   \(D\)-field square completion and potential sign, the absence of
