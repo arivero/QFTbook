@@ -39,8 +39,11 @@
   effective Lagrangians, anomalies, and spurions.
 - `SRC-EXTERNAL`: Coleman, Mermin--Wagner, Hohenberg, Berezinskii, and
   Kosterlitz--Thouless primary papers for the low-dimensional
-  continuous-symmetry obstruction, the separate statistical-mechanics
-  theorem, and the BKT/quasi-long-range qualification.
+  continuous-symmetry obstruction.  The monograph now uses them as
+  model-class-specific inputs: Coleman for positive-metric \(1+1\)-dimensional
+  Wightman QFT, Mermin--Wagner for nearest-neighbor isotropic Heisenberg
+  magnets, Hohenberg for continuum Bose ODLRO, and Berezinskii/Kosterlitz--
+  Thouless for the quasi-long-range \(U(1)\) alternative.
 - `SRC-INTERNAL`: Volume II Chapter 20 instanton section and
   `calculation-checks/bpst_instanton_normalization_checks.py` for the
   regulated one-instanton determinant, source-matrix saturation, color-singlet
@@ -61,8 +64,11 @@
   the chosen phase.
 - Low-dimensional continuous-symmetry claims are scoped separately:
   Coleman's theorem is a \(1+1\)-dimensional positive-metric relativistic QFT
-  statement, while Mermin--Wagner--Hohenberg is a short-range equilibrium
-  thermodynamic-limit statement.  Neither is used as a blanket ban on all
+  statement with Wightman infrared regularity rather than an imported
+  clustering assumption; Mermin--Wagner is quoted for the nearest-neighbor
+  isotropic quantum Heisenberg model with external-field/thermodynamic-limit
+  order; Hohenberg is quoted for continuum Bose ODLRO under the stated
+  equilibrium current-bound hypotheses.  None is used as a blanket ban on all
   two-dimensional phase selection.
 - Chiral effective theory is a derivative expansion for current generating
   functionals at momenta below the chiral-symmetry-breaking scale.
@@ -93,6 +99,9 @@
 | \(e^a,\omega^i\) | broken vielbein and unbroken connection in the Maurer--Cartan form |
 | \(F_{Aa}\) | Goldstone decay-constant matrix |
 | \(m_A=gv\) | Abelian Higgs vector mass used in the Goldstone-versus-gauge-direction caveat |
+| \(\Lambda_L,\operatorname{BZ}_L\) | finite periodic lattice box and Brillouin-zone momenta in the low-dimensional Heisenberg theorem |
+| \(m_{L,h}\) | finite-volume Heisenberg magnetization with selecting field \(h\) |
+| \(\widehat S_k^a,\epsilon(k)\) | normalized spin Fourier mode and nearest-neighbor lattice dispersion \(2\sum_j(1-\cos k_j)\) in the Bogoliubov bound |
 | \(\Sigma_{IJ}\), \(\Sigma_0\) | QCD chiral condensate matrix and its flavor-singlet value, used as a conjectural dynamical input for the pion EFT |
 | \(U(x)\) | pion field valued in \(SU(N_f)\) |
 | \(\widehat U(x)\) | local \(U(N_f)\) chiral field used for the singlet large-\(N_c\) theta datum |
@@ -199,14 +208,17 @@
   and the BRST doublet/quartet structure explain why the would-be Goldstone
   coordinate is absent from the positive BRST cohomology as an independent
   massless particle.
-- The low-dimensional no-go section adds separate Coleman and
-  Mermin--Wagner--Hohenberg quoted-theorem blocks.  It derives the Coleman
-  massless-scalar equal-time logarithm, the \(d=1,2,3\)
-  Mermin--Wagner--Hohenberg spin-wave integrals, and the Bogoliubov-bound
-  form showing how the divergent infrared integral forces the continuous
-  order parameter to vanish.  The worked comparison distinguishes discrete
-  Ising order, BKT/quasi-long-range order, and massive symmetric
-  \(1+1\)-dimensional internal-symmetry multiplets.
+- The low-dimensional no-go section now separates the theorem classes: Coleman
+  for \(1+1\)-dimensional positive-metric Wightman QFT, Mermin--Wagner for
+  nearest-neighbor isotropic Heisenberg magnets, and Hohenberg for continuum
+  Bose ODLRO.  It derives the Coleman massless-scalar equal-time logarithm,
+  marks the \(d=1,2,3\) spin-wave integrals as physical motivation, and gives
+  a concrete finite-volume Bogoliubov inequality derivation for the Heisenberg
+  ferromagnet with normalized Fourier modes, dispersion
+  \(\epsilon(k)=2\sum_j(1-\cos k_j)\), selecting field, thermodynamic-limit
+  order, and staggered antiferromagnetic variant.  The worked comparison
+  distinguishes discrete Ising order, BKT/quasi-long-range order, and massive
+  symmetric \(1+1\)-dimensional internal-symmetry multiplets.
 - The explicit \(U(1)\) Goldstone model is developed in polar variables, with
   \(j^\mu=2r^2\partial^\mu\theta\), \([Q,\theta]=i\), a massive radial mode,
   and a pseudo-Goldstone mass from a small \(-\epsilon\operatorname{Re}\phi\)
@@ -385,9 +397,11 @@
 ## Calculation Checks
 
 - `calculation-checks/low_dimensional_ssb_ir_checks.py` verifies the
-  Coleman logarithm coefficient and the Mermin--Wagner--Hohenberg
-  \(d=1,2,3\) infrared split, with negative controls for wrong coefficients
-  and wrong limiting behavior.
+  Coleman logarithm coefficient, the \(d=1,2,3\) spin-wave motivation
+  infrared split, and the nearest-neighbor Heisenberg lattice denominator
+  growth used in the finite-volume Bogoliubov bound, with negative controls
+  for wrong coefficients, wrong limiting behavior, and wrong lattice
+  denominator growth.
 - `calculation-checks/inflow_anomaly_line_checks.py` verifies the finite
   anomaly-line algebra used by the anomaly-matching foundation: cocycle
   composition, local counterterm coboundaries, finite shell pushforward
@@ -558,3 +572,9 @@
   assumptions, and treats Goldstone, massless, topological, and invertible
   infrared sectors as sections or boundary conditions for the same anomaly
   line.
+- 2026-06-05 issue #789 low-dimensional SSB theorem-scope pass: replaced the
+  generic Mermin--Wagner--Hohenberg block by model-class theorem statements
+  for nearest-neighbor Heisenberg magnets and Hohenberg's continuum Bose ODLRO
+  setting, removed clustering from the Coleman citation, labeled spin-wave
+  variance as motivation, and added a finite-volume Heisenberg Bogoliubov
+  derivation with a paired lattice-denominator check.

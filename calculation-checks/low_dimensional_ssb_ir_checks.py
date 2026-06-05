@@ -4,36 +4,43 @@ Evidence contract.
 
 Target claim: Section `sec:low-dimensional-continuous-ssb-no-go` uses the
 Coleman equal-time massless-scalar logarithm
-`asinh(Lambda/m)/(2*pi) ~ log(2 Lambda/m)/(2*pi)` and the
-Mermin--Wagner--Hohenberg spin-wave integrals whose infrared behavior
-diverges in spatial dimensions one and two but is finite in dimension three.
+`asinh(Lambda/m)/(2*pi) ~ log(2 Lambda/m)/(2*pi)`, the spin-wave motivation
+integrals whose infrared behavior diverges in spatial dimensions one and two
+but is finite in dimension three, and the nearest-neighbor Heisenberg
+Bogoliubov denominator with quadratic lattice dispersion.
 
 Independent construction: the script evaluates the regulated one-dimensional
 energy integral and the radial `d=1,2,3` fluctuation integrals from their
-elementary antiderivatives, then checks scale changes and limiting ratios
-rather than substituting only the displayed asymptotic statements.
+elementary antiderivatives.  It also evaluates finite periodic Brillouin-zone
+sums for `epsilon(k)=2 sum_j(1-cos k_j)`, then checks scale changes and
+limiting ratios rather than substituting only the displayed asymptotic
+statements.
 
 Imported assumptions: sharp momentum cutoff `Lambda`, positive infrared mass
 regulator `m`, rotationally invariant small-momentum dispersion proportional
-to `k^2`, and the monograph Fourier convention with `(2*pi)^d` in the
-momentum measure.
+to `k^2`, periodic nearest-neighbor lattice dispersion for the Heisenberg
+check, and the monograph Fourier convention with `(2*pi)^d` in the momentum
+measure.
 
 Negative controls: the script rejects the wrong Coleman coefficient
 `1/(4*pi)`, the wrong two-dimensional MWH logarithm coefficient, a finite
-`d=2` limit, and a logarithmically divergent `d=3` limit.
+`d=2` limit, a logarithmically divergent `d=3` limit, a nondivergent
+one-dimensional lattice denominator, and a logarithmically growing
+three-dimensional lattice denominator.
 
-Scope boundary: a pass verifies only the displayed infrared algebra.  It does
-not prove the Wightman theorem, Gibbs/KMS thermodynamic-limit hypotheses,
-positivity, clustering, locality, or existence of the regulated continuum
-models.
+Scope boundary: a pass verifies only the displayed infrared algebra and finite
+lattice denominator estimates.  It does not prove the Wightman theorem,
+Gibbs/KMS thermodynamic-limit hypotheses, Bogoliubov inequality positivity,
+clustering, locality, or existence of the regulated continuum models.
 """
 
 from __future__ import annotations
 
 import math
 from collections.abc import Callable
+from itertools import product
 
-from check_utils import assert_close, assert_lt
+from check_utils import assert_close, assert_gt, assert_lt
 
 
 def expect_failure(name: str, callback: Callable[[], None]) -> None:
@@ -66,6 +73,33 @@ def mwh_integral_3d(mass: float, cutoff: float) -> float:
     if mass <= 0.0 or cutoff <= 0.0:
         raise AssertionError("MWH regulators must be positive")
     return (cutoff - mass * math.atan(cutoff / mass)) / (2.0 * math.pi * math.pi)
+
+
+def wrapped_momentum(index: int, length: int) -> float:
+    angle = 2.0 * math.pi * index / length
+    if angle > math.pi:
+        angle -= 2.0 * math.pi
+    return angle
+
+
+def heisenberg_dispersion(mode: tuple[int, ...], length: int) -> float:
+    return sum(2.0 * (1.0 - math.cos(2.0 * math.pi * index / length)) for index in mode)
+
+
+def wrapped_momentum_square(mode: tuple[int, ...], length: int) -> float:
+    return sum(wrapped_momentum(index, length) ** 2 for index in mode)
+
+
+def heisenberg_denominator_average(dimension: int, length: int, mass: float = 0.0) -> float:
+    if dimension <= 0 or length <= 1 or mass < 0.0:
+        raise AssertionError("Heisenberg denominator regulators must be valid")
+    total = 0.0
+    for mode in product(range(length), repeat=dimension):
+        if all(index == 0 for index in mode):
+            continue
+        epsilon = heisenberg_dispersion(mode, length)
+        total += 1.0 / (mass + epsilon)
+    return total / (length**dimension)
 
 
 def check_coleman_logarithm() -> None:
@@ -139,9 +173,53 @@ def check_mwh_dimension_split() -> None:
     )
 
 
+def check_heisenberg_lattice_denominator() -> None:
+    length = 29
+    for dimension in (1, 2, 3):
+        for mode in product(range(length), repeat=dimension):
+            epsilon = heisenberg_dispersion(mode, length)
+            square = wrapped_momentum_square(mode, length)
+            assert_lt("nearest-neighbor dispersion is bounded by wrapped k^2", epsilon, square + 1.0e-14)
+
+    d1_small = heisenberg_denominator_average(1, 24)
+    d1_large = heisenberg_denominator_average(1, 96)
+    assert_gt("one-dimensional Heisenberg denominator grows strongly", d1_large / d1_small, 3.5)
+
+    d2_small = heisenberg_denominator_average(2, 32)
+    d2_large = heisenberg_denominator_average(2, 128)
+    assert_gt("two-dimensional Heisenberg denominator has logarithmic growth", d2_large - d2_small, 0.20)
+
+    d3_small = heisenberg_denominator_average(3, 12)
+    d3_large = heisenberg_denominator_average(3, 24)
+    assert_lt("three-dimensional Heisenberg denominator increment remains small", d3_large - d3_small, 0.02)
+
+    expect_failure(
+        "wrong nondivergent d=1 Heisenberg denominator",
+        lambda: assert_lt("wrong nondivergent d=1 Heisenberg denominator", d1_large / d1_small, 2.0),
+    )
+    expect_failure(
+        "wrong finite d=2 Heisenberg denominator",
+        lambda: assert_close(
+            "wrong finite d=2 Heisenberg denominator",
+            d2_large,
+            d2_small,
+            atol=1.0e-2,
+        ),
+    )
+    expect_failure(
+        "wrong logarithmic d=3 Heisenberg denominator",
+        lambda: assert_gt(
+            "wrong logarithmic d=3 Heisenberg denominator",
+            d3_large - d3_small,
+            0.5 * (d2_large - d2_small),
+        ),
+    )
+
+
 def main() -> int:
     check_coleman_logarithm()
     check_mwh_dimension_split()
+    check_heisenberg_lattice_denominator()
     print("All low-dimensional SSB infrared checks passed.")
     return 0
 

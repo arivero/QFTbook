@@ -991,11 +991,15 @@ specific hypotheses.
 Coleman's original positive-metric Wightman proof
 \cite{Coleman1973NoGoldstone}.}
 Let a relativistic \(1+1\)-dimensional quantum field theory satisfy the
-positive-metric Wightman assumptions, translation invariance, locality, the
-spectrum condition, and clustering in the chosen vacuum sector.  Let a
-continuous internal symmetry be implemented by a conserved local current
-\(j_A^\mu\) whose smeared charges generate the local field variations.  Then
-there is no local field or local observable \(\mathcal O\) for which
+positive-metric Wightman assumptions, translation invariance, locality, and the
+spectrum condition.  Let a continuous internal symmetry be implemented by a
+conserved local current \(j_A^\mu\) whose compactly supported charge
+approximants generate the local field variations.  The order field
+\(\mathcal O\) is required to be an ordinary Wightman field or local observable:
+its compactly smeared vectors have finite Hilbert norm, its correlation
+functions are tempered distributions, and the current--field commutator is a
+local distribution generating \(\delta_A\mathcal O\).  Then there is no such
+\(\mathcal O\) for which
 \[
   \langle\vac,\delta_A\mathcal O(0)\vac\rangle\ne0
 \]
@@ -1003,6 +1007,16 @@ under these hypotheses.  Equivalently, an ordinary relativistic
 \(1+1\)-dimensional positive-metric local QFT has no Goldstone boson produced
 by spontaneous breaking of a continuous internal symmetry.
 \end{quotedtheorem}
+
+Clustering is not being quoted as an original Coleman hypothesis here.  It is
+a separate phase-selection condition often imposed when one wants to distinguish
+an extremal vacuum sector from a mixture of sectors.  Coleman's contradiction
+uses the positive metric, locality, current Ward identity, spectral support,
+and the Wightman infrared regularity of the local order field.  If a later
+formulation replaces part of that infrared regularity discussion by a
+cluster-property assumption, that is a separate theorem statement with its own
+domain; the present chapter does not use it as the proof reference for
+Theorem~\ref{qthm:coleman-no-goldstone-two-dimensions}.
 
 Here is the infrared mechanism in the form needed for the present chapter.
 Suppose the order-parameter variation in
@@ -1042,31 +1056,76 @@ continuous internal orbit.  Sine-Gordon soliton sectors, Thirring currents,
 WZW currents, and compact torus CFT vertex operators therefore do not by
 themselves constitute continuous-symmetry breaking.
 
-\begin{quotedtheorem}[Mermin--Wagner--Hohenberg infrared obstruction]
-\label{qthm:mermin-wagner-hohenberg}
-\emph{Proof references.}\footnote{For the finite-temperature spin-system
-and continuum equilibrium origins see Mermin--Wagner
-\cite{MerminWagner1966} and Hohenberg \cite{Hohenberg1967}.  The
-Berezinskii and Kosterlitz--Thouless developments
-\cite{Berezinskii1971,KosterlitzThouless1973} explain the compatible
-quasi-long-range/topological alternative in two-dimensional \(U(1)\)-type
-systems.}
-Let a one- or two-dimensional equilibrium statistical-mechanics system have a
-continuous compact internal symmetry, a translation-invariant thermodynamic
-limit, finite-range or sufficiently fast decaying interactions, clustering
-compatible with an extremal Gibbs or KMS phase, and a local order parameter
-transforming nontrivially under the symmetry.  At nonzero temperature, the
-ordinary local order parameter has zero spontaneous expectation in the
-symmetry-breaking-field limit.  The theorem applies to continuous internal
-symmetries under the stated short-range equilibrium hypotheses; it does not
-apply to discrete symmetries, to finite volumes, or to systems whose
-long-range, gauge, boundary, nonunitary, or non-equilibrium structure changes
-the infrared estimate.
+\begin{quotedtheorem}[Mermin--Wagner theorem for isotropic Heisenberg magnets]
+\label{qthm:mermin-wagner-heisenberg}
+\emph{Proof reference.}\footnote{This is the nearest-neighbor quantum-spin
+model class of Mermin and Wagner \cite{MerminWagner1966}.  The statement below
+is intentionally narrower than later Mermin--Wagner-type theorems.}
+Let \(\Lambda_L\subset\mathbb Z^d\), \(d=1,2\), be a periodic box, and let the
+local algebra be
+\(\mathcal A_{\Lambda_L}=\bigotimes_{x\in\Lambda_L}M_{2S+1}(\mathbb C)\) with
+spin-\(S\) generators \(\mathbf S_x\).  The global \(SU(2)\) symmetry acts by
+the diagonal spin rotation.  For the ferromagnet take
+\[
+  H_{L,h}^{\rm F}
+  =
+  -J\sum_{\langle x,y\rangle}\mathbf S_x\cdot\mathbf S_y
+  -h\sum_x S_x^z,
+  \qquad J>0,\ h>0,
+\]
+and for the bipartite antiferromagnet replace the first sign by \(+J\) and
+the field by a staggered field
+\(-h\sum_x(-1)^{|x|}S_x^z\).  At any finite inverse temperature
+\(\beta<\infty\), form the finite-volume Gibbs state, take the thermodynamic
+limit \(L\to\infty\) along periodic boxes, and only then send the selecting
+field \(h\downarrow0\).  The ferromagnetic magnetization and the
+antiferromagnetic staggered magnetization vanish in this order of limits.
+Nearest-neighbor coupling is the declared interaction regularity; equivalently
+the exchange has a finite second moment, and the small-momentum denominator in
+the Bogoliubov estimate is quadratic.
 \end{quotedtheorem}
 
-The statistical-mechanics estimate is even more elementary in spin-wave
-language.  If a continuous order parameter of stiffness \(\rho_s\) existed at
-temperature \(T=\beta^{-1}\), its angular fluctuations would contain
+No clustering assumption appears in this quoted spin theorem.  The conclusion
+is obtained in the external-field thermodynamic-limit prescription and applies
+to any limit point reached that way.  If one later imposes extremality or
+clustering to select a pure Gibbs/KMS phase, that extra phase-selection
+condition does not replace the Bogoliubov infrared estimate.
+
+\begin{quotedtheorem}[Hohenberg theorem for low-dimensional Bose condensation]
+\label{qthm:hohenberg-bose-no-odlro}
+\emph{Proof reference.}\footnote{See Hohenberg's continuum equilibrium
+Bogoliubov-inequality argument \cite{Hohenberg1967}.}
+Consider a nonrelativistic Bose field in a box
+\(\Lambda_L\subset\mathbb R^d\), \(d=1,2\), at fixed finite density and finite
+inverse temperature \(\beta<\infty\).  The local field algebra is generated by
+smeared Bose fields \(\psi(f)\), the internal symmetry is the global
+\(U(1)\) action \(\psi\mapsto e^{i\alpha}\psi\), and the Hamiltonian has the
+standard kinetic energy plus a stable tempered two-body interaction for which
+the finite-density Gibbs thermodynamic limit, finite kinetic-energy density,
+and the \(f\)-sum/current-commutator bound used in the proof exist.  A concrete
+sufficient short-range hypothesis for the interaction part is
+\[
+  \int_{\mathbb R^d}(1+|x|^2)|V(x)|\,\dd^d x<\infty
+\]
+together with the usual stability lower bound.  Introduce a uniform
+symmetry-breaking source for \(\psi+\psi^\dagger\), take \(L\to\infty\) at
+fixed source, and then send the source to zero.  In that order of limits the
+condensate amplitude vanishes; equivalently the ordinary off-diagonal
+long-range-order parameter
+\[
+  \lim_{|x|\to\infty}\langle\psi^\dagger(x)\psi(0)\rangle
+\]
+is zero whenever this limit is the ODLRO diagnostic under consideration.
+\end{quotedtheorem}
+
+Clustering is again not an input to the quoted Hohenberg theorem.  The theorem
+removes the ODLRO order parameter itself.  In a clustering state this would
+also force the factorized condensate amplitude to vanish, but the absence of
+clustering is not an escape from the infrared bound.
+
+The spin-wave calculation is physical motivation, not a proof of either
+quoted theorem.  If a continuous order parameter of stiffness \(\rho_s\)
+existed at temperature \(T=\beta^{-1}\), its angular fluctuations would contain
 \begin{equation}
   \langle \pi^2\rangle_{\rm IR}
   \sim
@@ -1104,39 +1163,123 @@ dimension split is
   \label{eq:mwh-infrared-dimension-split}
 \end{align}
 Thus the long-wavelength variance diverges in \(d=1,2\) and is infrared-finite
-in \(d=3\).  In the Bogoliubov-inequality form used for rigorous lattice
-systems, the same mechanism appears as a bound of the form
+in \(d=3\).  This Gaussian estimate explains the mechanism but does not supply
+the Gibbs/KMS construction, positivity inequality, order of limits, or
+operator algebra needed for the theorem statements.
+
+For the nearest-neighbor Heisenberg ferromagnet the relevant rigorous
+mechanism can be seen directly.
+
+\begin{proposition}[Bogoliubov bound in the nearest-neighbor Heisenberg model]
+\label{prop:heisenberg-bogoliubov-bound}
+In the finite periodic ferromagnet of
+Theorem~\ref{qthm:mermin-wagner-heisenberg}, set
+\[
+  m_{L,h}=\frac1{|\Lambda_L|}\sum_{x\in\Lambda_L}
+  \langle S_x^z\rangle_{L,h}
+\]
+and use normalized Fourier modes
+\[
+  \widehat S_k^a
+  =
+  |\Lambda_L|^{-1/2}
+  \sum_{x\in\Lambda_L}e^{ik\cdot x}S_x^a,
+  \qquad
+  k\in\operatorname{BZ}_L .
+\]
+There is a spin-dependent constant \(c_S\) such that, for every \(h>0\),
 \begin{equation}
-  m_{\rm ord}^2
+  m_{L,h}^2
   \le
-  \frac{C}{\beta}
+  \beta S(S+1)
   \left[
-    \int_{\operatorname{BZ}}
-    \frac{\dd^d k}{(2\pi)^d}\,
-    \frac{1}{h+\epsilon(k)}
+    \frac1{|\Lambda_L|}
+    \sum_{k\in\operatorname{BZ}_L\setminus\{0\}}
+    \frac{1}{h\,m_{L,h}+c_SJ\,\epsilon(k)}
   \right]^{-1},
   \qquad
-  \epsilon(k)\le C'|k|^2
-  \quad(k\to0),
-  \label{eq:mwh-bogoliubov-bound}
+  \epsilon(k)=2\sum_{j=1}^d(1-\cos k_j).
+  \label{eq:heisenberg-bogoliubov-finite-volume-bound}
 \end{equation}
-where \(h>0\) is the symmetry-breaking field and \(\epsilon(k)\) is the
-small-momentum spin-wave energy.  Sending first the volume to infinity and
-then \(h\downarrow0\), the integral diverges for \(d\le2\), forcing
-\(m_{\rm ord}=0\).
+Consequently the field-selected spontaneous magnetization vanishes in
+\(d=1,2\).
+\end{proposition}
 
-The standard qualifications are part of the theorem, not marginal notes.
-Finite volumes have no spontaneous order parameter in the strict sense; phase
-selection is an order of limits.  Discrete symmetries are not ruled out by
-Coleman or Mermin--Wagner--Hohenberg, so a two-dimensional Ising phase and a
-\(1+1\)-dimensional model with a broken discrete chiral symmetry require
-separate analysis.  A two-dimensional \(U(1)\) system may have a
-Berezinskii--Kosterlitz--Thouless phase with power-law correlations and
-vortex unbinding, but not a nonzero local magnetization transforming under
-the \(U(1)\).  Large-\(N\) saddle points, long-range forces, gauge
-redundancies, boundary order, nonunitary theories, and non-equilibrium states
-can evade one or more hypotheses and must be declared as different
-problems.
+\begin{proof}
+Use the finite-temperature Bogoliubov inequality
+\[
+  \langle\{A,A^\dagger\}\rangle_{L,h}
+  \ge
+  \frac{2}{\beta}\,
+  \frac{|\langle[C,A]\rangle_{L,h}|^2}
+       {\langle[[C,H_{L,h}^{\rm F}],C^\dagger]\rangle_{L,h}}
+\]
+with \(A=\widehat S_{-k}^x\) and \(C=\widehat S_k^y\).  The commutator is
+\[
+  \langle[\widehat S_k^y,\widehat S_{-k}^x]\rangle_{L,h}
+  =
+  -i\,m_{L,h}.
+\]
+The external field contributes \(h\,m_{L,h}\) to the normalized double
+commutator.  A direct nearest-neighbor spin-commutator calculation gives the
+exchange bound
+\[
+  \langle[[\widehat S_k^y,-J\sum_{\langle x,y\rangle}
+  \mathbf S_x\cdot\mathbf S_y],\widehat S_{-k}^y]\rangle_{L,h}
+  \le
+  c_SJ\,\epsilon(k),
+\]
+where the local spin bound \(\|\mathbf S_x\|^2\le S(S+1)\) absorbs the harmless
+constant.  Thus
+\begin{equation}
+  \langle\{\widehat S_{-k}^x,\widehat S_k^x\}\rangle_{L,h}
+  \ge
+  \frac{2m_{L,h}^2}
+       {\beta\,[h\,m_{L,h}+c_SJ\,\epsilon(k)]}.
+  \label{eq:heisenberg-mode-bogoliubov-lower-bound}
+\end{equation}
+Summing this inequality over nonzero \(k\) and using Parseval,
+\[
+  \frac1{|\Lambda_L|}\sum_{k\in\operatorname{BZ}_L}
+  \langle\{\widehat S_{-k}^x,\widehat S_k^x\}\rangle_{L,h}
+  =
+  \frac1{|\Lambda_L|}\sum_x
+  \langle\{S_x^x,S_x^x\}\rangle_{L,h}
+  \le
+  2S(S+1),
+\]
+gives \eqref{eq:heisenberg-bogoliubov-finite-volume-bound}, after changing
+the inessential numerical constant.  Finally
+\(\epsilon(k)\le |k|^2\) for small \(k\).  If
+\(\lim_{h\downarrow0}\limsup_{L\to\infty}m_{L,h}\) were positive, then the
+thermodynamic-limit version of the denominator would dominate
+\[
+  \int_{|k|<\Lambda}\frac{\dd^dk}{(2\pi)^d}\,
+  \frac{1}{h\,m+c|k|^2},
+\]
+which diverges as \(h\downarrow0\) in \(d=1,2\).  The bound then forces
+\(m=0\), a contradiction.  The staggered antiferromagnetic estimate uses the
+same inequality with the staggered Fourier component and the ordering wave
+vector shifted by the bipartite wave vector.
+\end{proof}
+
+The model-specific qualifications are part of the statement, not marginal
+notes.  Finite volumes have no spontaneous order parameter in the strict
+sense; phase selection is an order of limits.  Discrete symmetries are not
+covered by Coleman, Mermin--Wagner, or Hohenberg, so a two-dimensional Ising
+phase and a \(1+1\)-dimensional model with a broken discrete chiral symmetry
+require separate analysis.  A two-dimensional \(U(1)\) system may have a
+Berezinskii--Kosterlitz--Thouless phase with power-law correlations and vortex
+unbinding \cite{Berezinskii1971,KosterlitzThouless1973}, but not a nonzero
+local magnetization transforming under the \(U(1)\).  Long-range exchange in a
+spin model must be tested by the actual small-\(k\) behavior of
+\(\sum_x J_x(1-\cos k\cdot x)\); if the second moment
+\(\sum_x |x|^2|J_x|\) diverges, the quadratic denominator used above is no
+longer the relevant theorem.  In the Bose theorem, gauge fields, Coulomb tails,
+non-equilibrium states, boundaries, or noncompact order variables change the
+field algebra or current bound and must be treated as different models.  A
+large-\(N\) saddle is likewise an order-of-limits question, not a loophole in
+the finite-\(N\) theorem.
 
 Three comparison cases fix the intended reading.
 \begin{enumerate}
