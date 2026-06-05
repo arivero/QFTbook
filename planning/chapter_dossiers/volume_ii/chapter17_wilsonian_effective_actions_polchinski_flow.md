@@ -192,8 +192,10 @@ The chapter must define and derive:
   kinematic regions, and remainder status have been stated;
 - a scalar heavy-light model with \(K_M=-\partial^2+M^2\), a tree-level
   nonlocal kernel \(K_M^{-1}\), its local expansion and low-momentum remainder
-  bound, one-loop hard threshold matching in a declared scheme, RG running
-  below \(M\), and cancellation of the artificial matching scale;
+  bound, an explicit \(\overline{\rm MS}\) one-loop four-light matching
+  calculation comparing the full heavy bubble, EFT light loop, matched local
+  insertions, finite scheme coordinate, and first omitted \(Q/M\) terms, plus
+  RG running below \(M\) and cancellation of the artificial matching scale;
 - a concrete massive scalar EFT retaining \(\phi^4\) and
   \(\phi^6/\mathcal M^2\), with a one-loop background-field pole calculation
   showing closure through canonical excess two and the first omitted
@@ -501,9 +503,13 @@ The chapter must define and derive:
 23. In the heavy-light scalar model, tree-level heavy exchange gives an exact
     nonlocal \(K_M^{-1}\) kernel whose derivative expansion has a concrete
     \(Q/M\) remainder away from thresholds.
-24. One-loop hard matching supplies threshold coefficients, but a low-energy
-    prediction also requires low-field loops, external-state/IR prescriptions,
-    RG transport, and cancellation of matching-scale dependence.
+24. The one-loop heavy-light matching is now an observable comparison: the
+    \(\overline{\rm MS}\) heavy bubble fixes \(c_H^{\overline{\rm MS}}=0\),
+    the full four-light kernel and EFT kernel both include the light bubble in
+    the same scheme, the local \(P_a^2/M^2\) insertion is matched, finite
+    bubble-scheme shifts are compensated by the threshold coordinate, and the
+    first omitted heavy terms are bounded by explicit \(Q^4/M^6\) and
+    \(Q^4/M^4\) estimates.
 25. In the massive scalar EFT with \(\phi^4+\phi^6/\mathcal M^2\), the
     one-loop background-field pole produces retained \(\phi^4\) and
     \(\phi^6/\mathcal M^2\) counterterms and first generates
@@ -710,3 +716,11 @@ The chapter must define and derive:
   \(g^2/(16\pi^2\epsilon)\), the finite shift
   \(-4C_Eg^2/(16\pi^2)\), and the compensating finite Wilson-coefficient
   redefinition under \(E_\alpha=O_3-(16+\alpha\epsilon)Q\).
+- 2026-06-05 issue #816 pass: completed the promised one-loop heavy-light
+  observable matching.  The chapter now evaluates the regulated
+  \(\overline{\rm MS}\) heavy bubble, derives \(c_H^{\overline{\rm MS}}=0\),
+  writes the full and EFT four-light kernels with the common light loop,
+  matches the local \(P_a^2/M^2\) insertion, displays finite scheme-coordinate
+  cancellation, and proves explicit first-omitted heavy-momentum bounds.  The
+  companion EFT check now compares the full and EFT kernels directly instead
+  of only differentiating a symbolic threshold-log coordinate.

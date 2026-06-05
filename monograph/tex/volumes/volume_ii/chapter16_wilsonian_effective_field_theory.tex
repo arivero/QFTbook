@@ -1649,57 +1649,204 @@ Thus the local tree-level EFT begins as
   \label{eq:heavy-light-tree-local-action}
 \end{equation}
 where the displayed remainder is a low-momentum kernel estimate, not a claim
-about threshold kinematics.
-
-The one-loop hard matching illustrates what is harder than writing the local
-operators.  The \(\rho H^2\phi^2/4\) term changes the heavy quadratic operator
-to \(K_M+\rho\phi^2/2\), so the heavy determinant contributes
+about threshold kinematics.  At four points, after retaining the
+\(P_a^2/M^4\) term, the first omitted tree contribution is
 \[
-  \frac12\operatorname{Tr}\log
-  \left(1+\frac{\rho}{2}K_M^{-1}\phi^2\right)
-  \supset
-  -\frac{\rho^2}{16}
-  \operatorname{Tr}(K_M^{-1}\phi^2K_M^{-1}\phi^2).
-\]
-In a mass-independent subtraction scheme this produces a local hard threshold
-correction to the light quartic coordinate.  With the convention
-\(S_{\rm EFT}\supset \lambda_{\rm EFT}\int\phi^4/4!\),
-\begin{equation}
-  \lambda_{\rm EFT}(\mu_M)
+  R_\eta(\mathcal P)
   =
-  \lambda_{\rm full}(\mu_M)
+  -\eta^2
+  \sum_{a=s,t,u}
+  \frac{P_a^4}{M^4(M^2+P_a^2)}
+  =
+  -\frac{\eta^2}{M^6}
+  \sum_{a=s,t,u}P_a^4
+  +
+  O_{\mathcal D}\!\left(\frac{|\eta|^2Q^6}{M^8}\right).
+\]
+
+The one-loop hard matching can be made into an actual four-light observable.
+Use dimensional regularization in \(d=4-\epsilon\) with the
+\(\overline{\rm MS}\) subtraction convention, and let
+\[
+  P_s=p_1+p_2,\qquad P_t=p_1+p_3,\qquad P_u=p_1+p_4,
+  \qquad 0\le P_a^2\le Q^2<M^2 .
+\]
+For a scalar of mass \(X\), define the renormalized Euclidean bubble
+\begin{equation}
+  B_X^R(P^2;\mu)
+  =
+  \bar\mu^\epsilon
+  \int\frac{\dd^{4-\epsilon}\ell}{(2\pi)^{4-\epsilon}}\,
+  \frac{1}{(\ell^2+X^2)((\ell+P)^2+X^2)}
+  \bigg|_{\overline{\rm MS}}
+  =
+  \frac1{16\pi^2}
+  \int_0^1
+  \log\frac{\mu^2}{X^2+x(1-x)P^2}\,\dd x .
+  \label{eq:heavy-light-msbar-bubble}
+\end{equation}
+The pole subtraction and the corresponding light quartic counterterms are
+therefore already absorbed into the renormalized coordinates
+\(\lambda_{\rm full}(\mu)\), \(\lambda_{\rm EFT}(\mu)\), and \(B_X^R\).
+Thus
+\begin{equation}
+  B_M^R(P^2;\mu)
+  =
+  \frac1{16\pi^2}
+  \left[
+    \log\frac{\mu^2}{M^2}
+    -
+    \frac{P^2}{6M^2}
+  \right]
+  +
+  r_B(P^2),
+  \qquad
+  |r_B(P^2)|
+  \le
+  \frac{P^4}{960\pi^2M^4}.
+  \label{eq:heavy-light-bubble-low-momentum-expansion}
+\end{equation}
+More explicitly, the first omitted term in this retained bubble expansion is
+\[
+  r_B(P^2)
+  =
+  \frac{P^4}{960\pi^2M^4}
+  +
+  O_{\mathcal D}\!\left(\frac{Q^6}{M^6}\right).
+\]
+The inequality follows from
+\(0\le a-\log(1+a)\le a^2/2\) for
+\(a=x(1-x)P^2/M^2\).
+
+With \(S_{\rm EFT}\supset\lambda\int\phi^4/4!\), the heavy determinant gives
+the full-theory one-loop heavy contribution to the amputated four-light
+1PI kernel
+\begin{equation}
+  \Gamma_{H,\rm full}^{(4)}(\mathcal P)
+  =
+  -\frac{\rho^2}{2}
+  \sum_{a=s,t,u}B_M^R(P_a^2;\mu)
+  =
+  -\frac{3\rho^2}{16\pi^2}\log\frac{\mu}{M}
+  +
+  \frac{\rho^2}{192\pi^2M^2}
+  \sum_{a=s,t,u}P_a^2
+  +
+  R_H(\mathcal P),
+  \label{eq:heavy-light-heavy-loop-amplitude}
+\end{equation}
+with
+\[
+  R_H(\mathcal P)
+  =
+  -\frac{\rho^2}{1920\pi^2M^4}
+  \sum_{a=s,t,u}P_a^4
+  +
+  \widetilde R_H(\mathcal P),
+  \qquad
+  |R_H(\mathcal P)|
+  \le
+  \frac{|\rho|^2}{640\pi^2}\frac{Q^4}{M^4}.
+\]
+The finite threshold constant in this \(\overline{\rm MS}\) convention is
+therefore \(c_H^{\overline{\rm MS}}=0\), and
+\(b_H=3\rho^2/(16\pi^2)\).  A finite bubble-scheme change
+\(B_M^R\mapsto B_M^R+\kappa_{\mathfrak s}/(16\pi^2)\) shifts the matching
+constant to
+\[
+  c_H^{\mathfrak s}
+  =
+  -\frac{3\rho^2}{32\pi^2}\kappa_{\mathfrak s},
+\]
+which is a coordinate change, not a new observable.
+
+The same four-point kernel also contains the tree heavy exchange and the
+ordinary light loop.  Through the retained orders
+\(O(\eta^2)\), \(O(\rho^2)\), and \(O(\lambda^2)\), while omitting mixed
+higher-order products such as \(\lambda\eta^2\) and \(\lambda\rho^2\), the
+full-theory result is
+\begin{equation}
+\begin{aligned}
+  \Gamma_{\rm full}^{(4)}(\mathcal P)
+  &=
+  \lambda_{\rm full}(\mu)
+  -
+  \eta^2\sum_{a=s,t,u}\frac{1}{M^2+P_a^2}
+  \\
+  &\quad
+  -
+  \frac{\lambda_{\rm full}(\mu)^2}{2}
+  \sum_{a=s,t,u}B_{m_\phi}^R(P_a^2;\mu)
+  -
+  \frac{\rho^2}{2}
+  \sum_{a=s,t,u}B_M^R(P_a^2;\mu)
+  +
+  R_{\rm mixed}.
+\end{aligned}
+  \label{eq:heavy-light-full-four-point-kernel}
+\end{equation}
+The EFT kernel in the same scheme is
+\begin{equation}
+\begin{aligned}
+  \Gamma_{\rm EFT}^{(4),[2]}(\mathcal P)
+  &=
+  \lambda_{\rm EFT}(\mu)
+  +
+  \left(
+    \frac{\eta^2}{M^4}
+    +
+    \frac{\rho^2}{192\pi^2M^2}
+  \right)
+  \sum_{a=s,t,u}P_a^2
+  \\
+  &\quad
+  -
+  \frac{\lambda_{\rm EFT}(\mu)^2}{2}
+  \sum_{a=s,t,u}B_{m_\phi}^R(P_a^2;\mu),
+  \\
+  \lambda_{\rm EFT}(\mu)
+  &=
+  \lambda_{\rm full}(\mu)
   -
   \frac{3\eta^2}{M^2}
-  +
-  \Delta\lambda_H(\mu_M)
-  +
-  O\!\left(\frac{Q^2}{M^2}\right),
-  \qquad
-  \Delta\lambda_H(\mu_M)
-  =
-  -b_H\log\frac{\mu_M}{M}
-  +
-  c_H^{\mathfrak s}.
-  \label{eq:heavy-light-one-loop-threshold}
+  -
+  \frac{3\rho^2}{16\pi^2}\log\frac{\mu}{M}.
+\end{aligned}
+  \label{eq:heavy-light-eft-four-point-kernel}
 \end{equation}
-Here \(b_H\) is the heavy-field contribution to the full-theory one-loop beta
-function for the chosen quartic coordinate, and \(c_H^{\mathfrak s}\) is the
-finite constant of the subtraction scheme \(\mathfrak s\).  For the scalar
-normalization above, the determinant term gives \(b_H=3\rho^2/(16\pi^2)\)
-up to terms involving other couplings.  The point of
-\eqref{eq:heavy-light-one-loop-threshold} is not the constant itself but the
-separation between hard matching and low-field running.
+In the light loop one may replace \(\lambda_{\rm EFT}\) by
+\(\lambda_{\rm full}\) at this retained order; the difference is one order
+higher in the matching expansion.  Combining
+\eqref{eq:heavy-kernel-local-expansion} and
+\eqref{eq:heavy-light-bubble-low-momentum-expansion} gives
+\begin{equation}
+  \Gamma_{\rm full}^{(4)}(\mathcal P)
+  -
+  \Gamma_{\rm EFT}^{(4),[2]}(\mathcal P)
+  =
+  R_\eta(\mathcal P)+R_H(\mathcal P)+R_{\rm mixed}+R_{\rm pert}^{(2)},
+  \qquad
+  |R_\eta|
+  \le
+  3|\eta|^2\frac{Q^4}{M^6},
+  \label{eq:heavy-light-explicit-amplitude-remainder}
+\end{equation}
+with the \(R_H\) bound displayed above.  This is the promised observable-level
+matching: the full graph, the EFT light loop, the local insertions, and the
+first omitted heavy-momentum terms are all part of the same comparison.
 
 Let \(\beta_{\rm full}=\beta_\ell+b_H\) at the order under discussion, and
 run the EFT from the matching scale \(\mu_M\) down to a low scale
-\(\mu_\ell\).  The quartic coordinate entering a low-energy four-point
+\(\mu_\ell\).  The quartic coordinate entering the same low-energy four-point
 observable contains
 \begin{equation}
   \lambda_{\rm full}(M)
   +
   \beta_{\rm full}\log\frac{\mu_M}{M}
+  -
+  b_H\log\frac{\mu_M}{M}
   +
-  \Delta\lambda_H(\mu_M)
+  c_H^{\mathfrak s}
   +
   \beta_\ell\log\frac{\mu_\ell}{\mu_M}
   =
@@ -1712,11 +1859,10 @@ observable contains
   O(\hbox{two-loop}),
   \label{eq:heavy-light-rg-scale-cancellation}
 \end{equation}
-so the artificial matching scale cancels at the order retained.  If the
-observable is computed to one loop in the low theory, the light bubble,
-external-state prescription, and subtraction convention must be included in
-\(\mathcal O_{\rm EFT}^{[N]}\); the threshold coefficient alone is not a
-prediction.
+so the artificial matching scale cancels at the order retained.  The finite
+constant \(c_H^{\mathfrak s}\) cancels the corresponding finite scheme
+coordinate in the full and EFT kernels; the scheme-independent object is the
+paired low-energy four-point kernel above.
 
 \begin{controlledapproximation}[Heavy-scalar decoupling for low-energy amplitudes]
 \label{ca:heavy-scalar-decoupling-low-energy}

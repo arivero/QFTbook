@@ -4,8 +4,11 @@ r"""Evidence contract.
 Target claims:
 - The heavy scalar tree kernel expands as a local derivative series with a
   controlled low-momentum remainder.
-- The one-loop hard threshold term cancels the artificial matching-scale
-  dependence against full-theory and low-theory running at the retained order.
+- The one-loop heavy-light four-point observable matches between the full
+  scalar theory and the EFT in a declared MS-bar bubble scheme, including the
+  heavy threshold constant, the light loop, local derivative insertions,
+  matching-scale cancellation, finite scheme-coordinate cancellation, and the
+  first omitted heavy-momentum remainder.
 - In a massive scalar EFT retaining \(\phi^4\) and \(\phi^6/\mathcal M^2\),
   the one-loop background-field pole closes on the retained coordinates
   through canonical excess two and generates \(\phi^8/\mathcal M^4\) as the
@@ -26,8 +29,10 @@ Target claims:
 Independent construction:
 - The heavy-kernel identity is checked as an exact rational identity and as a
   dimensionful bound on the declared low-momentum domain.
-- The matching-scale cancellation is checked by differentiating a symbolic
-  one-loop matched coordinate.
+- The one-loop heavy-light observable check compares the explicit full and EFT
+  four-point kernels, verifies the MS-bar bubble expansion and threshold
+  constant, differentiates the matched coordinate to test scale cancellation,
+  and checks the finite scheme countershift.
 - The one-loop EFT closure coefficients are extracted from
   \((V''(\phi))^2\) in a common factorial normalization, with a separate
   Wilson-coefficient/contact-scaling check for the generated \(\phi^8\)
@@ -42,7 +47,9 @@ Independent construction:
 Imported assumptions:
 - Euclidean low-energy kinematics with q^2 >= 0 and q^2 <= Q^2 << M^2.
 - The quartic coordinate is normalized so the heavy beta contribution is the
-  coefficient b_H in d lambda_full / d log(mu) = beta_light + b_H.
+  coefficient b_H in d lambda_full / d log(mu) = beta_light + b_H, and the
+  MS-bar scalar bubble is
+  B_X^R(P^2)=1/(16 pi^2) int_0^1 log(mu^2/(X^2+x(1-x)P^2)) dx.
 - The scalar one-loop pole uses dimensional regularization with minimal
   subtraction and the standard background-field local-potential pole
   Gamma_div^(1)=(32 pi^2 epsilon)^(-1) int (V'')^2.
@@ -57,7 +64,8 @@ Imported assumptions:
 
 Negative controls:
 - Reversing the heavy-kernel remainder sign fails the exact identity.
-- Omitting the hard threshold logarithm leaves matching-scale dependence.
+- Omitting the hard threshold logarithm leaves matching-scale dependence, while
+  omitting the matched derivative insertion leaves a visible Q^2/M^2 defect.
 - The script rejects wrong one-loop combinatorial coefficients and rejects
   retaining the generated \(\phi^8\) pole inside a canonical-excess-two
   truncation.  It also rejects reading the generated nonderivative contact as
@@ -129,23 +137,110 @@ def check_heavy_kernel_expansion() -> None:
     assert_zero("positive derivative operator sign", kernel_q2_coefficient - eta**2 / (8 * M**4))
 
 
-def check_matching_scale_cancellation() -> None:
-    L_M, L_low, lam_M, beta_light, b_H, c_H = sp.symbols(
-        "L_M L_low lam_M beta_light b_H c_H"
-    )
-    beta_full = beta_light + b_H
-    hard_threshold = -b_H * L_M + c_H
-    running_to_low = beta_light * (L_low - L_M)
-    matched_low_coordinate = lam_M + beta_full * L_M + hard_threshold + running_to_low
+def check_heavy_light_one_loop_observable_matching() -> None:
+    p_s, p_t, p_u, M2 = sp.symbols("p_s p_t p_u M2", positive=True)
+    eta, rho, lam, L_mu, kappa_s = sp.symbols("eta rho lam L_mu kappa_s", nonzero=True)
+    beta_light, L_M, L_low, c_H = sp.symbols("beta_light L_M L_low c_H")
+    p_channels = (p_s, p_t, p_u)
+    sum_p = sum(p_channels)
+    sum_p4 = sum(momentum**2 for momentum in p_channels)
 
-    expected = lam_M + beta_light * L_low + c_H
+    x, z = sp.symbols("x z", nonnegative=True)
+    bubble_integrand_series = sp.series(sp.log(1 + x * (1 - x) * z), z, 0, 3).removeO()
+    bubble_series = sp.integrate(bubble_integrand_series, (x, 0, 1))
+    assert_zero(
+        "MS-bar heavy bubble low-momentum coefficients",
+        bubble_series - (z / 6 - z**2 / 60),
+    )
+
+    heavy_bubble_retained = lambda p2: (2 * L_mu - p2 / (6 * M2)) / (16 * sp.pi**2)
+    heavy_bubble_through_first_omitted = (
+        lambda p2: (2 * L_mu - p2 / (6 * M2) + p2**2 / (60 * M2**2)) / (16 * sp.pi**2)
+    )
+    heavy_loop_retained = -rho**2 * sum(heavy_bubble_retained(p2) for p2 in p_channels) / 2
+    heavy_loop_through_first_omitted = (
+        -rho**2 * sum(heavy_bubble_through_first_omitted(p2) for p2 in p_channels) / 2
+    )
+    heavy_threshold = -3 * rho**2 * L_mu / (16 * sp.pi**2)
+    heavy_derivative = rho**2 * sum_p / (192 * sp.pi**2 * M2)
+    heavy_first_omitted = -rho**2 * sum_p4 / (1920 * sp.pi**2 * M2**2)
+    assert_zero(
+        "heavy determinant threshold plus derivative insertion",
+        sp.expand(heavy_loop_retained - heavy_threshold - heavy_derivative),
+    )
+    assert_zero(
+        "heavy determinant first omitted momentum coefficient",
+        sp.expand(heavy_loop_through_first_omitted - heavy_threshold - heavy_derivative - heavy_first_omitted),
+    )
+
+    eta_tree_retained = -eta**2 * sum(1 / M2 - p2 / M2**2 for p2 in p_channels)
+    eta_threshold = -3 * eta**2 / M2
+    eta_derivative = eta**2 * sum_p / M2**2
+    assert_zero("tree heavy exchange local terms", eta_tree_retained - eta_threshold - eta_derivative)
+    tree_exact = -eta**2 * sum(1 / (M2 + p2) for p2 in p_channels)
+    tree_exact_remainder = -eta**2 * sum(p2**2 / (M2**2 * (M2 + p2)) for p2 in p_channels)
+    tree_first_omitted = -eta**2 * sum_p4 / M2**3
+    tree_after_first_omitted = eta**2 * sum(p2**3 / (M2**3 * (M2 + p2)) for p2 in p_channels)
+    assert_zero(
+        "tree first omitted exact remainder identity",
+        sp.factor(tree_exact - eta_tree_retained - tree_exact_remainder),
+    )
+    assert_zero(
+        "tree first omitted low-momentum coefficient",
+        sp.factor(tree_exact_remainder - tree_first_omitted - tree_after_first_omitted),
+    )
+
+    light_loop = sp.symbols("light_loop")
+    full_retained = lam + light_loop + eta_tree_retained + heavy_loop_retained
+    lambda_eft = lam + eta_threshold + heavy_threshold
+    eft_retained = lambda_eft + light_loop + eta_derivative + heavy_derivative
+    assert_zero("full and EFT retained one-loop four-point kernels", sp.expand(full_retained - eft_retained))
+
+    eft_without_derivative = lambda_eft + light_loop
+    assert_nonzero(
+        "omitting matched derivative insertion leaves momentum defect",
+        sp.expand(full_retained - eft_without_derivative),
+    )
+
+    b_H = 3 * rho**2 / (16 * sp.pi**2)
+    beta_full = beta_light + b_H
+    running_to_low = beta_light * (L_low - L_M)
+    hard_threshold_log = -b_H * L_M + c_H
+    matched_low_coordinate = lam + beta_full * L_M + hard_threshold_log + running_to_low
+    expected = lam + beta_light * L_low + c_H
     assert_zero("one-loop matching-scale cancellation", matched_low_coordinate - expected)
     assert_zero("derivative with respect to matching log", sp.diff(matched_low_coordinate, L_M))
 
-    missing_threshold = lam_M + beta_full * L_M + running_to_low
+    missing_threshold = lam + beta_full * L_M + running_to_low
     assert_nonzero("missing hard threshold leaves scale dependence", sp.diff(missing_threshold, L_M))
-    wrong_threshold = lam_M + beta_full * L_M - hard_threshold + running_to_low
+    wrong_threshold = lam + beta_full * L_M - hard_threshold_log + running_to_low
     assert_nonzero("wrong hard threshold sign leaves scale dependence", sp.diff(wrong_threshold, L_M))
+
+    bubble_scheme_shift = kappa_s / (16 * sp.pi**2)
+    full_scheme_shift = -rho**2 * 3 * bubble_scheme_shift / 2
+    coefficient_countershift = -3 * rho**2 * kappa_s / (32 * sp.pi**2)
+    assert_zero("finite bubble-scheme threshold constant", full_scheme_shift - coefficient_countershift)
+    shifted_full = full_retained + full_scheme_shift
+    shifted_eft = eft_retained + coefficient_countershift
+    assert_zero("scheme-coordinate cancellation in observable", sp.expand(shifted_full - shifted_eft))
+
+    for ratio in (0.05, 0.2, 0.45):
+        mass_sq = 49.0
+        q2 = ratio**2 * mass_sq
+        eta_value = 1.3
+        channel_values = (q2, q2 / 2, q2 / 3)
+        exact_tree = -eta_value**2 * sum(1 / (mass_sq + channel) for channel in channel_values)
+        retained_tree = -3 * eta_value**2 / mass_sq + eta_value**2 * sum(channel_values) / mass_sq**2
+        tree_remainder = abs(exact_tree - retained_tree)
+        tree_bound = 3 * eta_value**2 * q2**2 / mass_sq**3
+        assert_leq(f"tree heavy-exchange omitted Q4 term ratio={ratio}", tree_remainder, tree_bound)
+
+        heavy_bound = (2.1**2 / (640 * sp.pi**2)) * (q2**2 / mass_sq**2)
+        assert_leq(
+            f"heavy bubble omitted Q4 term ratio={ratio}",
+            float(abs((2.1**2 / 2) * 3 * q2**2 / (960 * sp.pi**2 * mass_sq**2))),
+            float(heavy_bound),
+        )
 
 
 def check_one_loop_scalar_eft_closure() -> None:
@@ -358,7 +453,7 @@ def check_operator_redundancy_conditions() -> None:
 
 def main() -> None:
     check_heavy_kernel_expansion()
-    check_matching_scale_cancellation()
+    check_heavy_light_one_loop_observable_matching()
     check_one_loop_scalar_eft_closure()
     check_scalar_eft_field_redefinition_observable()
     check_evanescent_mixing_projection()
