@@ -60,6 +60,10 @@ recording fluctuation data required for controlled backreaction.
   `kappa_nl`, `r_N`, `Delta_N(r_h)`: the full retained inverse and nonlinear
   finite-window chart data controlling the self-map, state transport, omitted
   residuals, contraction constant, and noise-validity budget.
+- `X`, `ell_X`, `Q^X`, `R_X`, `Delta_X^{mean}`: a retained metric observable,
+  its linear and quadratic response in the same chart, its controlled
+  remainder, and the observable mean shift after Einstein-Langevin metric
+  fluctuations are included.
 
 ## Claim Ledger
 
@@ -175,6 +179,14 @@ recording fluctuation data required for controlled backreaction.
   The same chart refines the stochastic validity condition by adding missing
   connected-noise trace and nonlinear/state-transport noise budgets before
   the metric fluctuations are compared with the chart radius.
+- Adds the retained metric-observable output layer.  A backreaction statement
+  now has to pass from the controlled mean metric and Einstein-Langevin
+  covariance to a gauge-invariant retained observable `X`: the text keeps the
+  linear response, quadratic deterministic response, fluctuation bias
+  `1/2 tr(Q^X C_h)`, observable covariance, and signal-to-noise test in the
+  same Ward-clean chart.  This prevents a small coordinate perturbation or a
+  partial projected covariance from being read as a resolved physical
+  semiclassical prediction.
 - Records validity conditions and the EFT reduction-of-order treatment for
   higher-curvature terms.
 
@@ -222,7 +234,11 @@ recording fluctuation data required for controlled backreaction.
   stochastic validity budgets with negative controls for signed residual
   cancellation, omitted state transport, omitted residual variation, bounded
   non-Lipschitz residuals with multiple fixed points, overlarge quadratic
-  feedback, and linear-noise-only validity, and the low-energy root selected
+  feedback, and linear-noise-only validity, the retained metric-observable
+  output check that converts the mean metric and covariance to observable mean
+  shift, fluctuation bias, covariance, and signal-to-noise with negative
+  controls for gauge-variant coordinate probes, omitted fluctuation bias, and
+  partial-covariance undercounting, and the low-energy root selected
   by reduction of order in a toy higher-derivative equation.
 
 ## Figure Ledger
@@ -372,3 +388,11 @@ curvature, microscopic, and EFT scales.
   connected Einstein--Langevin noise.  This is still a scheme-coordinate
   consistency result; it does not construct the interacting stress tensor,
   state-transport map, or infinite-dimensional semiclassical existence theorem.
+- 2026-06-05 issue #729 observable-output pass: added
+  `ca:semiclassical-retained-metric-observable-output`, which closes the
+  finite backreaction chain at the level of retained physical observables
+  rather than metric-coordinate size.  The pass records the observable mean
+  shift, the quadratic fluctuation bias, the induced covariance, and a
+  signal-to-noise criterion.  This is architecture work aimed at physics
+  interpretation: a projected noise or a coordinate perturbation is not
+  promoted to a self-averaging semiclassical prediction.

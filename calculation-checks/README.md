@@ -2449,7 +2449,11 @@ Current checks:
   stochastic validity budgets with negative controls for signed residual
   cancellation, omitted state transport, omitted residual variation, bounded
   non-Lipschitz residuals with multiple fixed points, overlarge quadratic
-  feedback, and linear-noise-only validity, and the
+  feedback, and linear-noise-only validity, the retained metric-observable
+  output check converting the mean metric and Einstein-Langevin covariance into
+  an observable mean shift, quadratic fluctuation bias, covariance, and
+  signal-to-noise test with negative controls for gauge-variant coordinate
+  probes, omitted fluctuation bias, and partial-covariance undercounting, and the
   low-energy root selected by reduction of order in a toy higher-derivative
   equation.
 - `schwinger_keldysh_operator_checks.py`: finite two-level-system checks for

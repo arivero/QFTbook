@@ -22,6 +22,8 @@ and noise package,
 the small-gain stability and fluctuation-validity check for the linearized
 interacting backreaction operator, the finite nonlinear fixed-point chart for
 the retained semiclassical equation,
+the retained metric-observable output layer including fluctuation bias,
+observable covariance, and signal-to-noise tests,
 and the low-energy root selected by reduction of order in a toy
 higher-derivative equation.
 
@@ -48,8 +50,10 @@ support, positivity, and fluctuation-dissipation compatibility together, the
 small-gain feedback inverse and noise-amplification bound for the full retained
 backreaction operator, the finite nonlinear self-map/contraction and
 mean/noise-validity budgets, including residual size and residual Lipschitz
-controls, for a retained backreaction chart, and the low-energy root selected
-by reduction of order.
+controls, for a retained backreaction chart, the retained
+metric-observable mean shift, quadratic fluctuation bias, covariance, and
+signal-to-noise inequality, and the low-energy root selected by reduction of
+order.
 Independent construction: the checks recompute traces, KMS factors,
 matrix pushforwards, exact retained-sector inverses, Wick-contraction
 coefficients, cosmological-coordinate shifts, independent finite counterterm
@@ -63,8 +67,8 @@ fluctuation-dissipation ratios, small-gain inverses, response/noise bounds,
 species sums, 1/N_sp gravitational-coupling scaling, source-cumulant scaling,
 nonlinear fixed-point radii, residual size and residual Lipschitz
 budgets, state-transport Lipschitz constants, noise-validity inequalities, and
-toy roots directly from finite formulas rather than importing chapter display
-strings.
+metric-observable linear/quadratic forms and covariances, and toy roots
+directly from finite formulas rather than importing chapter display strings.
 Imported assumptions: the tests use finite-dimensional retained sectors,
 centered quasifree Wick combinatorics, formal first- and second-order lambda
 coordinates, positive finite noise matrices, full-rank finite Ward maps, and the
@@ -92,6 +96,9 @@ conserved-but-unstable retained data, signed nonlinear residual cancellations,
 omitted state-transport Lipschitz constants, omitted residual Lipschitz
 constants, bounded non-Lipschitz residuals with multiple fixed points, overlarge
 quadratic nonlinear feedback, linear-noise-only validity estimates,
+omitted observable fluctuation bias, coordinate probes that do not annihilate
+pure-gauge directions, and partial metric covariances that undercount
+observable variance,
 fixed-G_N large-species scaling, coherent N_sp^2 noise scaling, correlated
 species noise, and wrong higher-source-cumulant suppression estimates.
 Scope boundary: a pass checks coefficient, positivity, and response-bound
@@ -1531,6 +1538,95 @@ def check_nonlinear_backreaction_fixed_point_chart() -> None:
         raise AssertionError("negative control failed: nonlinear/missing noise budget was omitted")
 
 
+def check_retained_metric_observable_output() -> None:
+    # Finite retained metric observable
+    # X = X0 + ell_X^T h + 1/2 h^T Q_X h + R_X(h).
+    h_mean: Matrix = ((Fraction(1, 3),), (Fraction(1, 6),))
+    metric_covariance: Matrix = (
+        (Fraction(1, 20), Fraction(1, 60)),
+        (Fraction(1, 60), Fraction(1, 30)),
+    )
+    if metric_covariance != transpose(metric_covariance):
+        raise AssertionError("metric covariance should be symmetric")
+    for test_vector in (
+        ((Fraction(1),), (Fraction(0),)),
+        ((Fraction(0),), (Fraction(1),)),
+        ((Fraction(3),), (Fraction(-2),)),
+    ):
+        if quadratic_form(metric_covariance, test_vector) < 0:
+            raise AssertionError("metric covariance should be positive semidefinite")
+
+    ell_x: Matrix = ((Fraction(2),), (Fraction(1),))
+    pure_gauge_direction: Matrix = ((Fraction(1),), (Fraction(-2),))
+    if matmul(transpose(ell_x), pure_gauge_direction) != zero_matrix(1, 1):
+        raise AssertionError("test observable should annihilate the pure-gauge direction")
+    coordinate_probe: Matrix = ((Fraction(1),), (Fraction(0),))
+    if matmul(transpose(coordinate_probe), pure_gauge_direction) == zero_matrix(1, 1):
+        raise AssertionError("negative control failed: coordinate probe looked gauge invariant")
+
+    q_x: Matrix = (
+        (Fraction(1, 2), Fraction(1, 4)),
+        (Fraction(1, 4), Fraction(1, 3)),
+    )
+    linear_shift = matmul(transpose(ell_x), h_mean)[0][0]
+    quadratic_shift = Fraction(1, 2) * quadratic_form(q_x, h_mean)
+    fluctuation_bias = Fraction(1, 2) * trace(matmul(q_x, metric_covariance))
+    mean_shift = linear_shift + quadratic_shift + fluctuation_bias
+    assert_equal("observable linear shift", linear_shift, Fraction(5, 6))
+    assert_equal("observable quadratic mean shift", quadratic_shift, Fraction(5, 108))
+    assert_equal("observable fluctuation bias", fluctuation_bias, Fraction(1, 45))
+    assert_equal("observable retained mean shift", mean_shift, Fraction(487, 540))
+
+    deterministic_only_shift = linear_shift + quadratic_shift
+    if deterministic_only_shift == mean_shift:
+        raise AssertionError("negative control failed: fluctuation bias was invisible")
+    if mean_shift - deterministic_only_shift != fluctuation_bias:
+        raise AssertionError("observable fluctuation bias should be exactly the missing term")
+
+    q_norm_bound = Fraction(1)
+    omitted_metric_covariance_trace = Fraction(1, 100)
+    chart_remainder = Fraction(1, 100)
+    observable_tail = Fraction(1, 200)
+    residual_mean_bound = (
+        chart_remainder
+        + Fraction(1, 2) * q_norm_bound * omitted_metric_covariance_trace
+        + observable_tail
+    )
+    assert_equal("observable residual mean bound", residual_mean_bound, Fraction(1, 50))
+    wrong_residual_mean_bound = chart_remainder + observable_tail
+    if residual_mean_bound - wrong_residual_mean_bound != Fraction(1, 200):
+        raise AssertionError("omitted metric-covariance trace should enter the mean residual")
+    if wrong_residual_mean_bound >= residual_mean_bound:
+        raise AssertionError("negative control failed: covariance-tail residual was not needed")
+
+    variance_x = quadratic_form(metric_covariance, ell_x)
+    assert_equal("observable variance from metric covariance", variance_x, Fraction(3, 10))
+    variance_quad_residual = Fraction(1, 100)
+    variance_tail_residual = Fraction(1, 100)
+    variance_budget = variance_x + variance_quad_residual + variance_tail_residual
+    assert_equal("observable variance budget", variance_budget, Fraction(8, 25))
+    if mean_shift * mean_shift <= variance_budget:
+        raise AssertionError("test observable should be signal-dominated after noise is included")
+
+    partial_metric_covariance: Matrix = (
+        (Fraction(1, 50), Fraction(0)),
+        (Fraction(0), Fraction(1, 100)),
+    )
+    partial_variance = quadratic_form(partial_metric_covariance, ell_x)
+    if partial_variance >= variance_x:
+        raise AssertionError("negative control setup should undercount observable variance")
+    if mean_shift * mean_shift <= partial_variance:
+        raise AssertionError("test partial covariance should look falsely precise")
+    if variance_x <= partial_variance:
+        raise AssertionError("negative control failed: missing covariance was not needed")
+
+    ell_y: Matrix = ((Fraction(1),), (Fraction(-1),))
+    covariance_xy = matmul(matmul(transpose(ell_x), metric_covariance), ell_y)[0][0]
+    covariance_yx = matmul(matmul(transpose(ell_y), metric_covariance), ell_x)[0][0]
+    assert_equal("observable covariance symmetry", covariance_xy, covariance_yx)
+    assert_equal("observable cross covariance", covariance_xy, Fraction(1, 20))
+
+
 def check_reduction_of_order_toy_model() -> None:
     # Toy equation: x'' + omega0^2 x + epsilon x'''' = 0.
     # For x ~ exp(lambda t), epsilon lambda^4 + lambda^2 + omega0^2 = 0.
@@ -1566,6 +1662,7 @@ def main() -> None:
     check_interacting_influence_functional_consistency()
     check_backreaction_small_gain_stability()
     check_nonlinear_backreaction_fixed_point_chart()
+    check_retained_metric_observable_output()
     check_reduction_of_order_toy_model()
     print("All semiclassical backreaction checks passed.")
 
