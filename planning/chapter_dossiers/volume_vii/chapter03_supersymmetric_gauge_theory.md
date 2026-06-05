@@ -34,6 +34,12 @@
   \(\Phi_R=\Phi^aT_R^a\), the minimal superpotential
   \(W_{\mathcal N=2}=\sqrt2\,g_{\rm YM}\widetilde Q\Phi_RQ\), and the
   derived \(F\)-term potential and flatness equations.
+- Maximally supersymmetric `U(N)` matrix gauge quantum mechanics as an
+  intrinsic `0+1`-dimensional QFT: Hermitian matrix fields `X^I`, `A_0`,
+  sixteen adjoint fermions, Hamiltonian, Gauss-law constraint, center-of-mass
+  versus `SU(N)` split, commuting-matrix flat branch, supercharges, closure
+  modulo Gauss law, continuous spectrum, Witten-index boundary terms, and
+  threshold-bound-state status.
 - Perturbative local gauge anomaly as a consistency condition.
 - Conjugate-pair and real-representation perturbative gauge-anomaly
   cancellation.
@@ -61,6 +67,13 @@
 | \(\mu_R\) | moment map of the matter representation |
 | \(\zeta\) | FI functional, defined only on the abelian quotient |
 | \(\eta^\sharp\) | trace-dual of \(\mu_R-\zeta\) used in the D-term potential |
+| \(X^I,P_I\) | bosonic matrix coordinates and momenta in maximal matrix QM |
+| \(A_0\) | nondynamical one-dimensional gauge field |
+| \(\Psi_\alpha\) | sixteen real adjoint fermions in maximal matrix QM |
+| \(C^{IJ}\) | Hermitian commutator `-i[X^I,X^J]` |
+| \(\mathcal G^a\) | matrix-QM Gauss-law generator |
+| \(Q_\alpha\) | matrix-QM supercharges |
+| \(\mathcal M_{\rm flat}\) | commuting-matrix flat branch `(R^9)^N/S_N` |
 
 ## Claim Ledger
 
@@ -82,9 +95,28 @@
    finite-dimensional contraction; with canonical chiral metrics it gives
    \(V_F=2g_{\rm YM}^2(\|\varphi_Rq\|^2+\|\widetilde q\varphi_R\|^2+
    \sum_a|\widetilde qT_R^aq|^2)\).
-8. Vanishing of the perturbative gauge anomaly is a quantum consistency
+8. The maximal `U(N)` matrix gauge quantum mechanics is the dimensional
+   reduction of supersymmetric Yang-Mills to one time dimension, but is
+   presented intrinsically by its Hamiltonian, Gauss law, physical Hilbert
+   space, and supercharges.
+9. The supercharge algebra closes as
+   `{Q_alpha,Q_beta}=2 delta_alpha_beta H` only after imposing the Gauss law;
+   on the unconstrained coordinate Hilbert space the closure contains the
+   explicit gauge-generator term `tr(X^I G)`.
+10. The commuting-matrix locus gives flat directions and continuous spectrum;
+    a normalizable zero-energy state is a threshold-bound-state spectral
+    problem, not a consequence of the algebra or of the classical moduli
+    space alone.
+11. Witten-index computations in the matrix model require boundary terms from
+    the asymptotic flat region; the single-threshold-bound-state statement is
+    recorded as external spectral input or central conjectural ingredient
+    unless a complete proof is supplied.
+12. D0-brane, BFSS/M-theory, black-zero-brane, and matrix-string
+    interpretations are comparison frameworks layered on top of the matrix
+    quantum mechanics, not foundations for the Hamiltonian construction.
+13. Vanishing of the perturbative gauge anomaly is a quantum consistency
    condition, separate from the classical superspace construction.
-9. Vectorlike conjugate pairs and real representations have zero
+14. Vectorlike conjugate pairs and real representations have zero
    perturbative cubic gauge anomaly; the vector-multiplet adjoint gaugino is
    therefore locally gauge-anomaly free.
 
@@ -98,6 +130,28 @@
   plus gauge to covariant translation plus shifted gauge, and verifies the
   finite gauge invariance of the \(\mathcal N=2\) QCD cubic contraction and
   the exact \(2g_{\rm YM}^2\) coefficient in its \(F\)-term potential.
+- `calculation-checks/matrix_quantum_mechanics_checks.py` verifies the
+  finite `SU(2)` matrix-QM Gauss algebra, gauge invariance of the bosonic
+  Hamiltonian, and the two-matrix supercharge closure identity modulo the
+  Gauss generator.  The same script also checks the Volume I one-matrix
+  radial/Vandermonde and collective-field identities used by issue #813.
+
+## Source Intake
+
+- `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`, lines
+  `18748--19215`, supplied the D0/matrix-theory and matrix-string context.
+  The QFT repair extracts only the intrinsic maximally supersymmetric matrix
+  quantum mechanics; BFSS/M-theory and matrix-string amplitude claims remain
+  comparison or central-conjecture material.
+
+## Audit Notes
+
+- 2026-06-04 issue #813: added maximal matrix gauge quantum mechanics as an
+  intrinsic \(0+1\)-dimensional supersymmetric gauge theory.  The repair
+  explicitly separates Hamiltonian/Gauss/supercharge/flat-direction physics
+  from D0-brane and M-theory interpretations, and records threshold-bound
+  states and Witten-index boundary terms as spectral-status issues rather
+  than algebraic consequences.
 
 ## Figures
 

@@ -10,7 +10,11 @@ again on 2026-05-24 for GitHub issue #298 by adding the Wiener-measure and
 Feynman--Kac existence theorem for Euclidean Schrödinger quantum mechanics,
 with an explicit warning that Borel measures are not a general foundation for
 fermionic, gauge, theta-angle, or perturbative QFT path integrals.
-Formalization upgraded on 2026-05-27 for issue #615.
+Formalization upgraded on 2026-05-27 for issue #615.  Upgraded again on
+2026-06-04 for issue #813 by adding intrinsic Hermitian matrix quantum
+mechanics, radial/Vandermonde fermionization, non-singlet sectors, and the
+large-`N` collective-field coordinate, while keeping `c=1` string
+interpretations as comparison boundaries.
 
 ## Logical Role
 
@@ -33,6 +37,15 @@ Working framework:
 - canonical coordinate and momentum operators;
 - self-adjoint Hamiltonian \(\widehat H\);
 - unitary time-evolution group \(U(T)=\exp(-\ii T\widehat H/\hbar)\);
+- Hermitian matrix configuration spaces `Herm_N`, their flat Lebesgue measure,
+  global or gauged `U(N)` action, and singlet/Gauss-law projection;
+- eigenvalue-angle coordinates on the regular matrix locus, the
+  Vandermonde measure, collision hyperplanes, radial Laplacian, and the
+  unitary map from singlet wavefunctions to antisymmetric eigenvalue
+  wavefunctions;
+- large-`N` eigenvalue density and Fermi-surface collective-field
+  coordinates as a controlled hydrodynamic approximation to the singlet
+  fermion system;
 - generalized position and momentum eigenstates used as a distributional
   resolution of identity in
   \(\mathcal S(\mathbb R^d)\subset L^2(\mathbb R^d)\subset\mathcal S'(\mathbb R^d)\);
@@ -46,6 +59,10 @@ Working framework:
 - `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`, section
   "The path integral", subsection "Path integral formulation of quantum
   mechanics", including the trace boundary-condition check.
+- `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`,
+  lines `24414--24663`, used as source intake for one-matrix quantum
+  mechanics, Vandermonde fermionization, collective fields, and non-singlet
+  sectors; string-duality interpretations were not imported as proof.
 
 ## External Reference Needs
 
@@ -79,6 +96,13 @@ Working framework:
 | \(\mathbb W_x^\tau\) | Wiener probability measure | Feynman--Kac representation |
 | \(\mathbb W_{x,y}^\tau\) | Brownian-bridge measure | fixed endpoints |
 | \(k_s^0(x,y)\) | heat kernel with diffusion \(\hbar/m\) | Wiener distributions |
+| \(\Herm_N\) | real vector space of \(N\times N\) Hermitian matrices | matrix QM |
+| \(X,P\) | Hermitian matrix coordinate and conjugate momentum | matrix QM |
+| \(\Delta(\lambda)\) | Vandermonde determinant \(\prod_{i<j}(\lambda_i-\lambda_j)\) | eigenvalue coordinates |
+| \(\Hilb_N^{\rm sing}\) | `U(N)`-invariant/gauged singlet matrix Hilbert space | matrix QM |
+| \(\rho(x)\) | eigenvalue density \(\sum_i\delta(x-\lambda_i)\) | large-`N` matrix QM |
+| \(p_\pm(x)\) | upper/lower Fermi-surface branches | collective field |
+| \(v(x)\) | hydrodynamic velocity \((p_++p_-)/2\) | collective field |
 
 ## Definition Ledger
 
@@ -109,6 +133,13 @@ Working framework:
   Gaussian momentum integration.
 - `def:finite-slice-time-ordered-insertions-source`: source-dependent
   generating functional at finite cutoff.
+- `def:hermitian-one-matrix-qm`: matrix Hilbert space, global `U(N)` action,
+  canonical matrix commutators, invariant Hamiltonian, and self-adjointness
+  status.
+- Section `sec:hermitian-matrix-quantum-mechanics`: singlet/Gauss projection,
+  eigenvalue coordinates, Vandermonde measure, radial Laplacian,
+  free-fermion map, non-singlet angular sectors, large-`N` collective fields,
+  and inverted-oscillator comparison boundary.
 - Paragraph "Trace and periodic Euclidean boundary conditions": Euclidean
   trace boundary condition for bosonic paths.
 - Paragraph "Euclidean long-time projection to a gapped ground state": vacuum
@@ -153,6 +184,27 @@ Working framework:
   determinant measure for quadratic momentum dependence.
 - `def:finite-slice-time-ordered-insertions-source` records how source
   derivatives generate time-ordered insertions.
+- Hermitian one-matrix quantum mechanics is an intrinsic finite-dimensional
+  Hamiltonian system with Hilbert space `L^2(Herm_N,dX)`, global `U(N)`
+  conjugation action, and a gauged singlet sector obtained by Gauss-law
+  projection.
+- On the regular eigenvalue locus, `dX = C_N Delta(lambda)^2 d lambda
+  dmu(U/T)` and singlet wavefunctions see the radial Laplacian
+  `Delta^-2 sum_i partial_i Delta^2 partial_i`.
+- Multiplication by the Vandermonde maps symmetric singlet wavefunctions in
+  the radial measure to antisymmetric eigenvalue wavefunctions and conjugates
+  the radial kinetic operator to the free `N`-fermion kinetic operator away
+  from collision hyperplanes.
+- Non-singlet matrix-QM sectors contain representation-dependent angular
+  inverse-square terms; long-string language is not part of the intrinsic
+  Hamiltonian statement.
+- The large-`N` collective Hamiltonian follows from integrating the
+  one-particle energy over the filled phase-space strip between `p_-` and
+  `p_+`; finite-`N` Jacobian, gradient, and edge corrections remain part of
+  the validity regime.
+- The inverted-oscillator/double-scaling example is recorded as a matrix-QM
+  scattering and collective-field laboratory; `c=1` string, leg-factor,
+  particle-hole, and ZZ-instanton interpretations are comparison boundaries.
 - The trace-boundary-condition paragraph derives that a bosonic Euclidean trace
   identifies \(q_N=q_0\), hence periodic paths.
 - Under Feynman--Kac hypotheses, the Euclidean trace path integral is a
@@ -165,9 +217,17 @@ Working framework:
   substantive hypotheses are the ground state, overlap, and gap.
 
 The formalized version labels the time-slicing, Kato/Feynman--Kac,
-essential-self-adjointness, ordering, Gaussian momentum, and trace statements,
-while the vacuum-projection step is kept as prose because the argument is the
-spectral theorem plus a gap estimate.
+essential-self-adjointness, ordering, Gaussian momentum, matrix-QM radial
+reduction, and trace statements, while the vacuum-projection step is kept as
+prose because the argument is the spectral theorem plus a gap estimate.
+
+## Calculation Checks
+
+- `calculation-checks/matrix_quantum_mechanics_checks.py` verifies the
+  radial Laplacian, Vandermonde conjugation to the free-fermion kinetic
+  operator, collision antisymmetry, wrong-Vandermonde-power negative control,
+  and collective-field Hamiltonian identity used in
+  Section~`sec:hermitian-matrix-quantum-mechanics`.
 
 ## Audit Notes
 
@@ -195,6 +255,12 @@ spectral theorem plus a gap estimate.
   quoted wrapper to local theorem/proof form, with the comparison-Hamiltonian
   and Nelson commutator estimate kept as the proof mechanism preventing hidden
   boundary conditions at infinity.
+- 2026-06-04 issue #813: added Hermitian matrix quantum mechanics as an
+  intrinsic \(0+1\)-dimensional QFT layer.  The repair reverses the old
+  crosswalk classification that treated double-scaled matrix quantum
+  mechanics as merely contextual: the radial/Vandermonde, non-singlet, and
+  collective-field mechanisms are now incorporated, while string
+  interpretations remain boundary comparisons.
 
 ## Figure Ledger
 

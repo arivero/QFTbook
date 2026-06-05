@@ -995,6 +995,299 @@ finite-dimensional ancestor of QFT generating functionals for Green
 functions.
 \end{definition}
 
+\section{Hermitian Matrix Quantum Mechanics}
+\label{sec:hermitian-matrix-quantum-mechanics}
+
+Matrix quantum mechanics is a genuine \(0+1\)-dimensional quantum field
+theory: the field at time \(t\) is a matrix, the symmetry may be global or
+gauged, and the path integral is still a Hamiltonian time-evolution
+construction of the kind developed above.  Its importance is not exhausted by
+string interpretations.  The same system gives a controlled laboratory for
+gauge projection, nontrivial configuration-space measure, collective
+variables, and large-\(N\) limits.
+
+\begin{definition}[Hermitian one-matrix quantum mechanics]
+\label{def:hermitian-one-matrix-qm}
+Let
+\[
+  \operatorname{Herm}_N=\{X\in M_N(\mathbb C):X^\dagger=X\}
+\]
+with flat metric
+\[
+  \|\delta X\|^2=\operatorname{tr}(\delta X)^2 .
+\]
+The kinematic Hilbert space is
+\[
+  \Hilb_N=L^2(\operatorname{Herm}_N,\dd X),
+\]
+where \(\dd X\) is the Lebesgue measure induced by this metric.  The global
+\(U(N)\) action is
+\begin{equation}
+  X\longmapsto UXU^{-1},
+  \qquad
+  \Psi(X)\longmapsto \Psi(U^{-1}XU).
+  \label{eq:matrix-qm-global-un-action}
+\end{equation}
+On the algebraic core \(C_c^\infty(\operatorname{Herm}_N)\), momenta are
+\begin{equation}
+  P_{ab}=-\ii\hbar\,\frac{\partial}{\partial X_{ba}},
+  \qquad
+  [X_{ab},P_{cd}]=\ii\hbar\,\delta_{ad}\delta_{bc},
+  \label{eq:matrix-qm-canonical-commutator}
+\end{equation}
+with the Hermiticity relations understood in real coordinates on
+\(\operatorname{Herm}_N\).  For a real potential \(V\), the formal invariant Hamiltonian is
+\begin{equation}
+  H_N
+  =
+  \operatorname{tr}
+  \left(\frac12 P^2+V(X)\right)
+  =
+  -\frac{\hbar^2}{2}\Delta_{\operatorname{Herm}_N}
+  +\operatorname{tr}V(X).
+  \label{eq:hermitian-matrix-qm-hamiltonian}
+\end{equation}
+A self-adjoint Hamiltonian is the chosen closure or extension of
+\eqref{eq:hermitian-matrix-qm-hamiltonian}; for confining polynomial
+potentials with positive leading part, the Faris--Lavine mechanism above
+gives the standard closure from the compactly supported smooth core.  Inverted
+or unbounded potentials require an explicit self-adjointness and scattering
+datum rather than a formal symbol alone.
+\end{definition}
+
+The gauged version is not obtained by first quantizing a string.  It is the
+Hamiltonian system obtained by coupling the matrix coordinate to a
+\(0+1\)-dimensional gauge field \(A_0(t)\) and then imposing the Gauss law.
+For the single Hermitian matrix this amounts, at the Hilbert-space level, to
+the invariant subspace
+\[
+  \Hilb_N^{\rm sing}
+  =
+  L^2(\operatorname{Herm}_N,\dd X)^{U(N)} .
+\]
+Equivalently, if
+\[
+  (G_\xi\Psi)(X)
+  =
+  -\ii\hbar\,\frac{\dd}{\dd s}\bigg|_{s=0}
+  \Psi(\ee^{-s\xi}X\ee^{s\xi}),
+  \qquad \xi\in\mathfrak u(N),
+\]
+then physical singlet states obey \(G_\xi\Psi=0\) for all \(\xi\).  This is
+the finite-dimensional version of the gauge constraint: it removes gauge
+orbits, not energy eigenstates by hand.
+
+\paragraph{Eigenvalue coordinates and the collision set.}
+On the regular locus
+\[
+  \operatorname{Herm}_N^{\rm reg}
+  =
+  \{X:\lambda_i(X)\ne\lambda_j(X)\ \text{for}\ i\ne j\},
+\]
+write
+\[
+  X=\Omega^{-1}\Lambda\Omega,\qquad
+  \Lambda=\operatorname{diag}(\lambda_1,\ldots,\lambda_N).
+\]
+This description has a redundancy
+\[
+  (\Lambda,\Omega)
+  \sim
+  (W^{-1}\Lambda W,W^{-1}\Omega),
+  \qquad W\in S_N,
+\]
+and a \(U(1)^N\) stabilizer of \(\Lambda\).  The metric identity
+\begin{equation}
+  \operatorname{tr}(\dd X)^2
+  =
+  \sum_{i=1}^N(\dd\lambda_i)^2
+  +
+  2\sum_{i<j}
+  (\lambda_i-\lambda_j)^2
+  |\theta_{ij}|^2,
+  \qquad
+  \theta=\dd\Omega\,\Omega^{-1},
+  \label{eq:matrix-qm-eigenvalue-metric}
+\end{equation}
+gives the Jacobian
+\begin{equation}
+  \dd X
+  =
+  C_N\,\Delta(\lambda)^2
+  \prod_{i=1}^N\dd\lambda_i\,\dd\mu(\Omega/T),
+  \qquad
+  \Delta(\lambda)=\prod_{i<j}(\lambda_i-\lambda_j),
+  \label{eq:matrix-qm-vandermonde-measure}
+\end{equation}
+up to the conventional normalization of Haar measure on \(U(N)/T\).
+The collision hyperplanes \(\lambda_i=\lambda_j\) are not removable
+decorations.  They are the boundary of a Weyl chamber after quotienting by
+\(S_N\), and domain conditions at this boundary are part of the radial
+Hamiltonian.
+
+For singlet wavefunctions
+\(\Psi(X)=\widehat\Psi(\lambda_1,\ldots,\lambda_N)\), the flat Laplacian
+reduces on the regular locus to
+\begin{equation}
+  \Delta_{\rm rad}\widehat\Psi
+  =
+  \frac1{\Delta^2}
+  \sum_{i=1}^N
+  \partial_i\!\left(\Delta^2\,\partial_i\widehat\Psi\right)
+  =
+  \sum_i\partial_i^2\widehat\Psi
+  +
+  2\sum_{i<j}
+  \frac{\partial_i\widehat\Psi-\partial_j\widehat\Psi}
+       {\lambda_i-\lambda_j}.
+  \label{eq:matrix-qm-radial-laplacian}
+\end{equation}
+The singlet Hamiltonian is therefore symmetric on
+\[
+  L^2_{\rm sym}(\mathbb R^N,\Delta^2\prod_i\dd\lambda_i)
+\]
+with the potential \(\sum_i V(\lambda_i)\).  Multiplication by the
+Vandermonde determinant is the crucial unitary change of variables:
+\begin{equation}
+  \psi(\lambda)=\Delta(\lambda)\widehat\Psi(\lambda).
+  \label{eq:matrix-qm-vandermonde-wavefunction-map}
+\end{equation}
+Since \(\widehat\Psi\) is symmetric, \(\psi\) is antisymmetric.  Moreover,
+away from the collision set,
+\begin{equation}
+  \Delta\,
+  \Delta_{\rm rad}\widehat\Psi
+  =
+  \sum_{i=1}^N\partial_i^2(\Delta\widehat\Psi).
+  \label{eq:matrix-qm-vandermonde-free-fermion-identity}
+\end{equation}
+Thus the gauged singlet sector is unitarily represented by \(N\) identical
+one-dimensional fermions:
+\begin{equation}
+  H_{\rm sing}'
+  =
+  \sum_{i=1}^N
+  \left(
+    -\frac{\hbar^2}{2}\partial_{\lambda_i}^2+V(\lambda_i)
+  \right)
+  \quad
+  \text{on antisymmetric wavefunctions.}
+  \label{eq:matrix-qm-singlet-free-fermion-hamiltonian}
+\end{equation}
+Equivalently, on a single ordered Weyl chamber
+\(\lambda_1>\lambda_2>\cdots>\lambda_N\), the fermionic wavefunction obeys
+Dirichlet boundary conditions at \(\lambda_i=\lambda_j\).  This is the
+operator meaning of the familiar statement that the Vandermonde makes the
+singlet eigenvalues into free fermions.
+
+\paragraph{Non-singlet angular sectors.}
+The full matrix Hilbert space also contains non-singlet sectors.  After
+Peter--Weyl decomposition on the angular variables, the radial Hamiltonian has
+the representation-dependent form
+\begin{equation}
+  H_R'
+  =
+  \sum_i
+  \left(
+    -\frac{\hbar^2}{2}\partial_{\lambda_i}^2+V(\lambda_i)
+  \right)
+  +
+  \frac{\hbar^2}{2}
+  \sum_{i\ne j}
+  \frac{\mathcal R_{ij}\mathcal R_{ji}}
+       {(\lambda_i-\lambda_j)^2},
+  \label{eq:matrix-qm-nonsinglet-radial-hamiltonian}
+\end{equation}
+where \(\mathcal R_{ij}\) act in the chosen angular representation.  The
+inverse-square terms are not optional interpretation: they are the centrifugal
+energy of changing the angular wavefunction as two eigenvalues approach.  A
+later string or long-string comparison may attach additional language to
+these sectors, but the intrinsic quantum-mechanical statement is simply the
+representation-dependent radial problem
+\eqref{eq:matrix-qm-nonsinglet-radial-hamiltonian}.
+
+\paragraph{Large-\(N\) density and collective field.}
+In the singlet sector define the eigenvalue density
+\begin{equation}
+  \rho(x)=\sum_{i=1}^N\delta(x-\lambda_i).
+  \label{eq:matrix-qm-density-definition}
+\end{equation}
+At finite \(N\) this is an operator-valued distribution on the fermionic
+Hilbert space, so replacing it by a smooth field is a large-\(N\) and
+long-wavelength approximation.  The semiclassical phase-space description
+uses the two Fermi-surface branches \(p_+(x)\ge p_-(x)\):
+\begin{equation}
+  \rho(x)=\frac{p_+(x)-p_-(x)}{2\pi\hbar},
+  \qquad
+  v(x)=\frac{p_+(x)+p_-(x)}2 .
+  \label{eq:matrix-qm-fermi-branches-density-velocity}
+\end{equation}
+The leading hydrodynamic Hamiltonian follows by integrating the
+single-particle energy over the filled phase-space strip,
+\begin{align}
+  H_{\rm coll}
+  &=
+  \int \dd x\,
+  \left[
+    \int_{p_-(x)}^{p_+(x)}
+    \frac{\dd p}{2\pi\hbar}
+    \left(\frac{p^2}{2}+V(x)\right)
+  \right]
+  \notag\\
+  &=
+  \int\dd x\,
+  \left[
+    \frac12\rho v^2
+    +\frac{\pi^2\hbar^2}{6}\rho^3
+    +V(x)\rho
+  \right],
+  \label{eq:matrix-qm-collective-hamiltonian}
+\end{align}
+with Poisson bracket
+\[
+  \{\rho(x),v(y)\}_{\rm P}
+  =
+  \partial_x\delta(x-y)
+\]
+when \(v=\partial_x\pi_\rho\) for the canonical field
+\(\{\rho(x),\pi_\rho(y)\}_{\rm P}=\delta(x-y)\).  A more exact finite-\(N\)
+collective-field quantization includes the Jacobian of the change from
+fermion coordinates to density variables, gradient corrections, and boundary
+terms at the edge of the Fermi sea.  The hydrodynamic formula
+\eqref{eq:matrix-qm-collective-hamiltonian} is the leading controlled
+coordinate, not a replacement for the underlying fermionic Hilbert space.
+
+\begin{example}[Inverted oscillator and the \(c=1\) comparison boundary]
+\label{ex:matrix-qm-inverted-oscillator-c1-boundary}
+For
+\[
+  V(x)=-\frac12x^2
+\]
+the one-particle Hamiltonian is not confining.  A useful semiclassical state
+fills one side of the inverted oscillator up to Fermi level \(-\mu\):
+\[
+  \frac12p^2-\frac12x^2<-\mu,\qquad x>\sqrt{2\mu}.
+\]
+The ground Fermi surface is
+\begin{equation}
+  p_\pm(x)=\pm\sqrt{x^2-2\mu},
+  \qquad
+  \rho_0(x)=\frac1{\pi\hbar}\sqrt{x^2-2\mu}.
+  \label{eq:matrix-qm-inverted-density}
+\end{equation}
+Writing \(x=\sqrt{2\mu}\cosh\tau\), the asymptotic region
+\(\tau\to\infty\) turns the quadratic part of the collective Hamiltonian into
+that of a massless scalar on a half-line, while the tip
+\(\tau=0\) requires boundary and counterterm data.  This is already a
+complete quantum-mechanical scattering problem for fermions in an inverted
+potential.  The double-scaled \(c=1\) string interpretation, particle-hole
+leg factors, nonperturbative ZZ-instanton language, and JT-gravity
+matrix-model analogies are comparison statements attached to this quantum
+mechanics; they are not used here as foundations for
+\eqref{eq:matrix-qm-radial-laplacian}--
+\eqref{eq:matrix-qm-collective-hamiltonian}.
+\end{example}
+
 \section{Euclidean Traces and Periodic Boundary Conditions}
 
 \paragraph{Trace and periodic Euclidean boundary conditions.}

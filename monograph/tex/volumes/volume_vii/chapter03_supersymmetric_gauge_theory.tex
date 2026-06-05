@@ -456,6 +456,194 @@ adjoint cubic after translating \(T_R^a\) into the adjoint action.  The
 enhancement statement is a statement about the full kinetic, Yukawa, and
 auxiliary-field normalizations together with the cubic polynomial.
 
+\section{Maximally Supersymmetric Matrix Gauge Quantum Mechanics}
+\label{sec:maximal-susy-matrix-gauge-qm}
+
+Dimensionally reducing supersymmetric Yang--Mills all the way to one time
+dimension gives a quantum-mechanical gauge theory, not a string background.
+The model is important because the gauge constraint, flat directions,
+continuous spectrum, and supersymmetric threshold questions are all visible in
+one exact Hamiltonian system.
+
+\begin{definition}[Maximal \(U(N)\) matrix gauge quantum mechanics]
+\label{def:maximal-un-matrix-gauge-qm}
+Fix the Hermitian trace convention of this chapter and work first in units in
+which the one-dimensional coupling has been absorbed by rescaling the fields.
+The bosonic variables are
+\[
+  X^I(t)\in\operatorname{Herm}_N,\qquad I=1,\ldots,9,
+\]
+together with a nondynamical gauge field \(A_0(t)\).  The fermions are
+sixteen real \(SO(9)\) spinors
+\[
+  \Psi_\alpha(t)\in\operatorname{Herm}_N,\qquad \alpha=1,\ldots,16.
+\]
+Let
+\[
+  D_tX^I=\dot X^I-\ii[A_0,X^I],
+  \qquad
+  C^{IJ}:=[X^I,X^J]_{\rm H}:=-\ii[X^I,X^J].
+\]
+The Lagrangian is
+\begin{equation}
+  L
+  =
+  \operatorname{tr}\left[
+    \frac12D_tX^I D_tX^I
+    +\frac{\ii}{2}\Psi_\alpha D_t\Psi_\alpha
+    -\frac14 C^{IJ}C^{IJ}
+    -\frac12\Psi_\alpha\Gamma^I_{\alpha\beta}[X^I,\Psi_\beta]_{\rm H}
+  \right],
+  \label{eq:maximal-matrix-qm-lagrangian}
+\end{equation}
+where the real \(SO(9)\) Clifford matrices obey
+\[
+  \Gamma^I\Gamma^J+\Gamma^J\Gamma^I=2\delta^{IJ}.
+\]
+The Hamiltonian is
+\begin{equation}
+  H
+  =
+  \operatorname{tr}\left[
+    \frac12P_I P_I
+    +\frac14 C^{IJ}C^{IJ}
+    +\frac12\Psi_\alpha\Gamma^I_{\alpha\beta}
+      [X^I,\Psi_\beta]_{\rm H}
+  \right],
+  \label{eq:maximal-matrix-qm-hamiltonian}
+\end{equation}
+with the Gauss-law constraint.  In a basis \(T^a\) with
+\(\operatorname{tr}(T^aT^b)=\delta^{ab}\) and
+\([T^a,T^b]_{\rm H}=f^{abc}T^c\),
+\begin{equation}
+  \mathcal G=\mathcal G^aT^a,
+  \qquad
+  \mathcal G^a
+  =
+  f^{abc}
+  \left(
+    X_I^bP_I^c-\frac{\ii}{2}\Psi_\alpha^b\Psi_\alpha^c
+  \right),
+  \qquad
+  \mathcal G^a\ket{\mathrm{phys}}=0 .
+  \label{eq:maximal-matrix-qm-gauss-law}
+\end{equation}
+The canonical brackets on the polynomial core are
+\[
+  [X_I^a,P_J^b]=\ii\delta_{IJ}\delta^{ab},
+  \qquad
+  \{\Psi_\alpha^a,\Psi_\beta^b\}=\delta_{\alpha\beta}\delta^{ab},
+\]
+after the standard normalization of the real fermions.
+The unabsorbed coupling is restored by the inverse rescaling: it controls the
+relative size of the kinetic and commutator-potential terms, but it does not
+change the Gauss-law projection or the flat-direction locus.
+\end{definition}
+
+The potential in \eqref{eq:maximal-matrix-qm-hamiltonian} is positive because
+\(C^{IJ}\) is Hermitian.  Its zero locus is
+\[
+  C^{IJ}=0\quad\text{for all }I,J.
+\]
+Thus the matrices can be simultaneously diagonalized on the regular part of
+the classical vacuum set, giving
+\begin{equation}
+  \mathcal M_{\rm flat}
+  =
+  (\mathbb R^9)^N/S_N
+  \label{eq:maximal-matrix-qm-flat-branch}
+\end{equation}
+for the \(U(N)\) theory, before separating the center of mass.  The trace
+part
+\[
+  X^I_{\rm cm}=\frac1N\operatorname{tr}X^I,
+  \qquad
+  P^I_{\rm cm}=\operatorname{tr}P_I
+\]
+is a free supersymmetric particle degree of freedom.  The interacting
+question is the \(SU(N)\) relative theory obtained by removing this
+center-of-mass factor.
+
+\begin{proposition}[Superalgebra modulo Gauss law]
+\label{prop:maximal-matrix-qm-superalgebra-gauss}
+Let
+\[
+  \Gamma^{IJ}:=\frac12[\Gamma^I,\Gamma^J].
+\]
+The supercharges
+\begin{equation}
+  Q_\alpha
+  =
+  \operatorname{tr}\left[
+    P_I\Gamma^I_{\alpha\beta}\Psi_\beta
+    -\frac12 C^{IJ}\Gamma^{IJ}_{\alpha\beta}\Psi_\beta
+  \right]
+  \label{eq:maximal-matrix-qm-supercharge}
+\end{equation}
+obey, on the common polynomial core before quotienting,
+\begin{equation}
+  \{Q_\alpha,Q_\beta\}
+  =
+  2\delta_{\alpha\beta}H
+  -2\Gamma^I_{\alpha\beta}\operatorname{tr}(X^I\mathcal G).
+  \label{eq:maximal-matrix-qm-superalgebra-gauss}
+\end{equation}
+Consequently, on physical states satisfying the Gauss law,
+\[
+  \{Q_\alpha,Q_\beta\}=2\delta_{\alpha\beta}H .
+\]
+\end{proposition}
+
+The content of
+\eqref{eq:maximal-matrix-qm-superalgebra-gauss} is physical.  Supersymmetry
+does not close on the unconstrained coordinate Hilbert space as a pure
+time-translation algebra; it closes up to the generator of a gauge
+transformation.  The Gauss-law projection is therefore part of the definition
+of the supersymmetric quantum theory, not a later selection rule.  The finite
+\(SU(2)\) two-matrix coefficient identity behind this statement is checked in
+\texttt{matrix\_quantum\_mechanics\_checks.py}; the full \(SO(9)\) formula is the same
+mechanism with the \(SO(9)\) Clifford and Fierz identities.
+
+\paragraph{Continuum, index, and threshold status.}
+The flat branch \eqref{eq:maximal-matrix-qm-flat-branch} produces scattering
+channels in the relative \(SU(N)\) theory: clusters of eigenvalues can move
+arbitrarily far apart with vanishing commutator potential.  Hence the
+spectrum is continuous down to the threshold.  A normalizable zero-energy
+state, if it exists, is a threshold bound state, not an isolated oscillator
+ground state obtained by expanding around a single minimum.
+
+The Witten index in such a system must be formulated with boundary care.  A
+formal trace
+\[
+  \operatorname{Tr}_{\rm phys}(-1)^F\ee^{-\beta H}
+\]
+is not automatically trace class in the presence of flat directions.  Regulated
+index computations separate a bulk contribution from boundary terms associated
+with the asymptotic commuting-matrix region.  The threshold-bound-state
+question is therefore the following spectral problem:
+\[
+  \dim \ker H_{SU(N),{\rm phys}}\cap L^2
+  \quad\text{at zero energy.}
+\]
+It is not proved by the classical moduli space, by the superalgebra alone, or
+by a formal index that ignores the boundary.  Whenever this monograph uses the
+single-threshold-bound-state statement familiar from the D0-brane literature,
+it is to be recorded as an external spectral input or central conjectural
+ingredient, with the regulator, boundary contribution, and center-of-mass
+removal stated explicitly.
+
+\begin{remark}[String and M-theory comparison status]
+\label{rem:matrix-qm-string-comparison-status}
+The Hamiltonian system
+\eqref{eq:maximal-matrix-qm-hamiltonian} is the intrinsic QFT object.  D0-brane
+language, BFSS/M-theory scattering, black-zero-brane thermodynamics, and
+matrix-string perturbation theory are comparison frameworks layered on top of
+this object.  They may supply evidence, protected checks, or conjectural
+identifications, but they are not used in this chapter to derive the Hilbert
+space, Gauss law, supercharges, flat directions, continuum, or threshold
+problem.
+\end{remark}
+
 \section{Gauge Anomalies as a Consistency Condition}
 
 The classical field-variable construction is not yet a quantum gauge theory.

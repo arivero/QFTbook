@@ -1926,6 +1926,13 @@ Current checks:
   Wigner cocycle, spin-frame conjugation and inner-product invariance,
   \(SU(2)\) central signs, and the mostly-plus Dirac projector and spin-sum
   formulas.
+- `matrix_quantum_mechanics_checks.py`: exact symbolic checks for the
+  intrinsic matrix-quantum-mechanics sections, including the Hermitian
+  one-matrix radial Laplacian, Vandermonde conjugation to antisymmetric
+  eigenvalue wavefunctions, the wrong-Vandermonde-power negative control,
+  large-\(N\) Fermi-surface collective-field Hamiltonian, \(SU(2)\) Gauss-law
+  algebra and Hamiltonian invariance, and the finite two-matrix supercharge
+  closure identity modulo the Gauss generator.
 - `spinor_grassmann_checks.py`: finite exact checks for the Volume I
   spinor-field and Grassmann path-integral chapter, including the phase signs
   in the free Dirac equations, the charge ledger for \(b,d\) oscillators, the
