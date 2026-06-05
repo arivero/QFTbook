@@ -123,7 +123,8 @@ brane construction, or holographic interpretation is a premise of the chapter.
   branches, deriving `dW_eff/dm_i^j=<M^i_j>` and
   `<M^a_j> m_i^j = <S> delta_i^a`.
 - `hyp:sqcd-nsvz-coordinate-specialization`: assumptions for specializing
-  the Chapter 05 holomorphic-canonical NSVZ coordinate relation to SQCD.
+  the Chapter 05 holomorphic \(q_h^0\) closure hypothesis and
+  holomorphic-canonical NSVZ coordinate relation to SQCD.
 - SQCD NSVZ coordinate specialization: derivation of
   `X_h=X_c+N_c log g^2-N_f log Z_Q+kappa` and the specialized SQCD NSVZ
   beta function.
@@ -207,9 +208,10 @@ brane construction, or holographic interpretation is a premise of the chapter.
 - Computes the anomaly-free \(R\)-charge assignment in the stated trace
   normalization.
 - Specializes the NSVZ coordinate beta function to SQCD with the chapter's
-  trace convention, including the holomorphic-canonical coordinate relation,
-  matter Konishi-rescaling coefficients, vector-multiplet denominator, and
-  the status of the denominator pole as a coordinate-chart feature.
+  trace convention, including the Chapter 05 holomorphic \(q_h^0\) closure
+  input, holomorphic-canonical coordinate relation, matter Konishi-rescaling
+  coefficients, vector-multiplet denominator, and the status of the
+  denominator pole as a coordinate-chart feature.
 - Derives the pure-SYM discrete chiral anomaly in the chapter's adjoint-index
   convention, showing `Z_{2N_c}` and the `Z_{2N_c}->Z_2` condensate-phase
   quotient.

@@ -124,7 +124,12 @@ def perturbative_q_projection(series):
 
 
 def check_holomorphic_gauge_one_loop_projection():
-    """Check the formal q-series bookkeeping in holomorphic one-loop exactness."""
+    """Check the q-series bookkeeping and the q^0 closure boundary.
+
+    Theta periodicity separates the q^0 perturbative coefficient from instanton
+    powers.  It does not remove neutral holomorphic dependence on other running
+    chiral couplings; that exclusion is an extra regulator/scheme input.
+    """
 
     samples = [
         (Fraction(3), [Fraction(1), Fraction(2)], {1: Fraction(5), 2: Fraction(-7)}),
@@ -161,6 +166,59 @@ def check_holomorphic_gauge_one_loop_projection():
         pass
     else:
         raise AssertionError("negative q-degree should be rejected")
+
+
+def check_neutral_spurion_q0_closure_boundary():
+    # Two superpotential spurions with opposite flavor charges can form a
+    # neutral holomorphic invariant.  A q^0 beta coefficient depending on that
+    # invariant is theta-periodic and weak-coupling regular, so q-expansion
+    # bookkeeping alone does not reduce it to the one-loop determinant.
+    b0 = Fraction(11, 3)
+    y1 = Fraction(2, 5)
+    y2 = Fraction(7, 4)
+    neutral_invariant = y1 * y2
+    mixing_coefficient = Fraction(3, 8)
+    instanton_tail = {1: Fraction(-5, 9), 3: Fraction(13, 6)}
+
+    beta_q_series = {
+        0: b0 + mixing_coefficient * neutral_invariant,
+        **instanton_tail,
+    }
+    q0_projection = perturbative_q_projection(beta_q_series)
+    assert_equal(
+        q0_projection,
+        b0 + mixing_coefficient * neutral_invariant,
+        "q^0 projection preserves neutral spurion dependence",
+    )
+
+    excluded_series = {0: b0, **instanton_tail}
+    assert_equal(
+        perturbative_q_projection(excluded_series),
+        b0,
+        "q^0 closure input recovers one-loop coefficient",
+    )
+
+    # A finite holomorphic coordinate change tau' = tau + k I changes the
+    # beta component by k beta_I if the invariant I runs.
+    beta_y1 = Fraction(1, 6)
+    beta_y2 = Fraction(-2, 7)
+    beta_invariant = y2 * beta_y1 + y1 * beta_y2
+    finite_shift_derivative = Fraction(5, 3) * beta_invariant
+    beta_tau = -b0
+    beta_tau_prime = beta_tau + finite_shift_derivative
+    assert_equal(
+        beta_tau_prime - beta_tau,
+        finite_shift_derivative,
+        "running-coupling finite redefinition changes beta component",
+    )
+
+    beta_y2_locked = -y2 * beta_y1 / y1
+    locked_beta_invariant = y2 * beta_y1 + y1 * beta_y2_locked
+    assert_equal(
+        locked_beta_invariant,
+        0,
+        "scale-independent invariant gives harmless finite shift",
+    )
 
 
 def check_holomorphic_one_loop_shell_coefficient():
@@ -286,6 +344,7 @@ def main():
     check_tree_level_derivative_chain_rule()
     check_loop_supergraph_grassmann_measure_ledger()
     check_holomorphic_gauge_one_loop_projection()
+    check_neutral_spurion_q0_closure_boundary()
     check_holomorphic_one_loop_shell_coefficient()
     check_holomorphic_tau_running_sign()
     check_konishi_and_vector_coordinate_shifts()

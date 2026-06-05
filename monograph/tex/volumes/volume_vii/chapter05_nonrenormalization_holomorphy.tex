@@ -228,18 +228,22 @@ chiral gauge kinetic coordinate has the local form
 with the same trace convention as the gauge kinetic term.  The vector
 multiplet and its gauge-fixed ghost complex supply the \(3C_2(G)\) term; a
 chiral matter multiplet in \(R_i\) supplies \(-T(R_i)\).  These are local
-heat-kernel or supergraph coefficients of the finite shell determinant.  The
-holomorphy argument below uses this one-loop input to exclude further
-perturbative powers of the holomorphic weak-coupling coordinate.
+heat-kernel or supergraph coefficients of the finite shell determinant.
+Holomorphy and theta periodicity separate the weak-coupling expansion into a
+perturbative \(q_h^0\) coefficient and positive-power instanton sectors.  They
+leave neutral holomorphic dependence on other perturbative chiral couplings in
+the \(q_h^0\) coefficient to the additional closure input below.
 
 The next proposition is conditional in an essential way.  Its input is a
 weak-coupling Wilsonian patch with a chiral local gauge-kinetic coordinate and
-a spurion charge assignment in which all anomalous transformations have been accounted
-for.  Establishing such a patch for a concrete regulator is part of the
-supersymmetric Wilsonian-definition problem; the holomorphy argument below
-then determines the perturbative scale dependence of that declared coordinate.
+a spurion ledger in which all anomalous transformations and all neutral
+holomorphic invariants built from superpotential or mass couplings have been
+accounted for.  Establishing such a patch for a concrete regulator is part of
+the supersymmetric Wilsonian-definition problem.  The Wilsonian/canonical
+distinction and the role of rescaling anomalies are those emphasized in
+\cite{ArkaniHamedMurayama1997}.
 
-\begin{proposition}[Wilsonian one-loop exactness of the holomorphic gauge coordinate]
+\begin{proposition}[Holomorphic Wilsonian running with explicit \(q_h^0\) closure]
 \label{prop:holomorphic-gauge-coupling-one-loop-exact}
 Work in a weak-coupling Wilsonian patch in which:
 \begin{enumerate}[label=(\roman*)]
@@ -254,8 +258,16 @@ are single-valued holomorphic functions of
 \item the perturbative sector is the \(q_h^0\) coefficient in the expansion
 near \(q_h=0\); positive powers of \(q_h\) are instanton sectors and negative
 powers are excluded from the weak-coupling Wilsonian patch;
-\item the superpotential spurion charge assignment contains no additional anomalous
-chiral coordinate with the transformation law of the gauge kinetic term.
+\item the \(q_h^0\) closure input has been supplied: after all other chiral
+couplings \(t^A\) and their holomorphic beta-vector components have been
+declared, the only scale-dependent perturbative local
+\(\operatorname{tr}(W^\alpha W_\alpha)\) counterterm in this coordinate is the
+regulated one-loop shell determinant.  Equivalently, every neutral
+dimensionless holomorphic invariant \(I(t)\) that could multiply the \(q_h^0\)
+coefficient is either excluded by the stated regulator/symmetry construction,
+or contributes only through a function \(F(I)\) with
+\(\beta_t^A\partial_A F=0\), so that it is a scale-independent reference
+coordinate choice rather than an extra beta-function component.
 \end{enumerate}
 Then the perturbative Wilsonian running of the holomorphic coordinate is
 \begin{equation}
@@ -265,8 +277,8 @@ Then the perturbative Wilsonian running of the holomorphic coordinate is
   -\frac{b_0}{2\pi\ii}\log\frac{\Lambda}{\Lambda_0},
   \label{eq:holomorphic-gauge-coordinate-one-loop-running}
 \end{equation}
-up to a finite \(\Lambda\)-independent holomorphic redefinition of the
-reference coordinate.  Equivalently,
+up to finite reference-coordinate changes whose beta-vector derivative
+vanishes in the declared scheme.  Equivalently,
 \[
   \mu\frac{d\tau_{\rm eff}^{\rm pert}}{d\mu}
   =
@@ -292,10 +304,11 @@ after excluding negative powers by the weak-coupling regularity hypothesis.
 The \(n\geq1\) terms are nonperturbative instanton sectors.  The perturbative
 projection is the constant term \(B_0(t)\).
 
-The coefficient \(B_0(t)\) is the perturbative constant term selected by the
-holomorphic \(q_h\)-expansion.  Holomorphy and periodicity identify this term
-as the only perturbative part in the declared weak-coupling patch.  Its value
-is fixed by the one-loop shell determinant
+At this point holomorphy and periodicity have supplied sector separation.  The
+independence of \(B_0(t)\) from neutral superpotential or mass-spurion
+invariants is precisely the additional perturbative \(q_h^0\) closure input in
+Hypothesis (iv).  That input says that the scale-dependent perturbative part
+of \(B_0(t)\) is exhausted by the local one-loop shell determinant
 \eqref{eq:susy-holomorphic-one-loop-shell-coefficient}.  With the present
 convention
 \[
@@ -313,9 +326,7 @@ Equivalently, \(q_h=\exp(2\pi\ii\tau)\) has
 \]
 so for \(b_0>0\) the weak-coupling coordinate \(q_h\) decreases toward the
 ultraviolet.  This is the asymptotic-freedom sign in the holomorphic
-coordinate.  A perturbative contribution depending nontrivially on other
-chiral couplings would have to transform in the same affine way as \(\tau\).
-Hypothesis (iv) excludes such an additional coordinate.  Hence
+coordinate.  Hence the declared \(q_h^0\) closure gives
 \[
   2\pi\ii B_0=-b_0,
 \]
@@ -325,8 +336,19 @@ or
 \]
 Integrating in \(\log\Lambda\) gives
 \eqref{eq:holomorphic-gauge-coordinate-one-loop-running}.  A finite
-holomorphic change of the reference coordinate adds a
-\(\Lambda\)-independent function and does not change the derivative.
+holomorphic change of coordinate depending on running couplings contributes
+explicitly to the beta-vector field:
+\[
+  \tau'=\tau+F(t)
+  \quad\Longrightarrow\quad
+  \mu\frac{d\tau'}{d\mu}
+  =
+  \mu\frac{d\tau}{d\mu}
+  +
+  \beta_t^A\partial_A F .
+\]
+Only when the last term vanishes in the declared scheme is \(F\) a
+scale-independent reference-coordinate shift.
 
 Canonical gauge couplings are different coordinates.  Passing to them
 requires rescaling matter and gauge multiplets; the corresponding local
@@ -334,6 +356,52 @@ Berezinian is the Konishi-type anomaly derived below.  Thus the
 one-loop-exact statement here is compatible with higher-loop beta functions
 in canonical normalization.
 \end{proof}
+
+\begin{example}[Neutral spurion dependence in the \(q_h^0\) sector]
+\label{ex:neutral-spurion-q0-boundary}
+Let \(y_1\) and \(y_2\) be dimensionless chiral superpotential spurions with
+opposite charges under a nonanomalous flavor symmetry, so that
+\[
+  I=y_1y_2
+\]
+is neutral.  The perturbative beta-component ansatz
+\[
+  \mu\frac{d\tau_{\rm eff}}{d\mu}
+  =
+  -\frac{b_0}{2\pi\ii}
+  +
+  c\,I
+  +
+  O(q_h)
+\]
+is holomorphic, regular at \(q_h=0\), and invariant under
+\(\tau\mapsto\tau+1\).  It is a neutral contribution to the beta component,
+distinct from a second theta angle, so no affine transformation law is
+involved.  Thus theta periodicity alone allows it.  If
+\[
+  \beta_I
+  =
+  \mu\frac{dI}{d\mu}
+  =
+  y_2\beta_{y_1}+y_1\beta_{y_2}
+\]
+is nonzero, the term \(cI\) is a genuine perturbative coupling-mixing
+contribution.  Likewise, a finite holomorphic coordinate change
+\(\tau'=\tau+F(I)\) changes the beta component by
+\[
+  \mu\frac{d\tau'}{d\mu}
+  =
+  \mu\frac{d\tau}{d\mu}
+  +
+  F'(I)\beta_I .
+\]
+It is harmless only on loci or in schemes where \(F'(I)\beta_I=0\).  This is
+the failure mode isolated in Hypothesis (iv) of
+Proposition~\ref{prop:holomorphic-gauge-coupling-one-loop-exact}: the
+one-loop statement is valid after a regulator or spurion analysis has removed
+such \(q_h^0\) mixing; the \(q_h\)-expansion itself supplies the sector
+bookkeeping.
+\end{example}
 
 \section{Konishi-Type Rescaling Anomaly}
 
@@ -639,12 +707,15 @@ beta-function identity.
 
 \paragraph{NSVZ beta function as a coordinate identity.}
 The beta-function formula commonly called NSVZ contains no further theorem
-once the holomorphic-canonical coordinate relation and the one-loop
-holomorphic Wilsonian running have been established in the declared
-regulator.  It is the coordinate expression of the same beta-vector field in
-the canonical coupling chart.  Assume the hypotheses of
-Proposition~\ref{prop:nsvz-coordinate-relation-derived}, and assume that the
-holomorphic Wilsonian coordinate has the one-loop derivative
+beyond the boundary inputs already stated: the holomorphic-canonical coordinate
+relation, the regulated rescaling anomalies, and the explicit \(q_h^0\)
+closure input of
+Proposition~\ref{prop:holomorphic-gauge-coupling-one-loop-exact}.  It is the
+coordinate expression of the same beta-vector field in the canonical coupling
+chart.  Assume the hypotheses of
+Propositions~\ref{prop:holomorphic-gauge-coupling-one-loop-exact} and
+\ref{prop:nsvz-coordinate-relation-derived}, so that the holomorphic Wilsonian
+coordinate has the one-loop derivative
 \begin{equation}
   \mu\frac{d}{d\mu}\left(\frac{8\pi^2}{g_h^2}\right)
   =
