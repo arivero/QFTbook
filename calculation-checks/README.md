@@ -1421,7 +1421,11 @@ Current checks:
   higher-genus sewing section, including equality between one-channel basis
   sewing and the propagation inner product, torus one-point traces from
   self-sewing, the vacuum character trace, and the graph formula
-  \(g(\Gamma)=\sum_v g_v+b_1(\Gamma)\).
+  \(g(\Gamma)=\sum_v g_v+b_1(\Gamma)\).  It also checks the finite analogue of
+  the torus free-boson Green kernel: the Laplacian inverse only exists after
+  projecting out constants, non-neutral vertex sources are rejected,
+  normal-ordering removes diagonal self-contractions, and an additive Green
+  constant must be transported as a vertex-normalization convention.
 - `nonrational_cft_direct_integral_checks.py`: exact finite checks for the
   direct-integral nonrational-CFT formalism, including unitarity of a rational
   fusing kernel, preservation of the Plancherel inner product under channel

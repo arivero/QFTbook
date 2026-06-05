@@ -4,17 +4,23 @@
 Evidence contract.
 Target claims: the finite algebraic subclaims in the higher-genus sewing
 discussion: basis-sum/inner-product equality, torus self-sewing trace,
-stable-graph genus bookkeeping, and finite truncation/error-budget identities.
+stable-graph genus bookkeeping, finite truncation/error-budget identities, and
+the torus free-boson Green-kernel zero-mode projection.
 Independent construction: finite matrices, graph Betti-number arithmetic,
-trace computations, and explicit truncation bounds are computed directly from
-the finite model data rather than by substituting the final sewing formula.
+trace computations, discrete Laplacian inverses, and explicit truncation bounds
+are computed directly from the finite model data rather than by substituting
+the final sewing formula.
 Imported assumptions: the chapter's finite-level truncation model, chosen
-basis pairing, propagation weights, and stable-graph convention.
+basis pairing, propagation weights, stable-graph convention, and normal-ordered
+free-boson vertex convention.
 Negative controls: the checks include crude norm bounds and graph-genus cases
-where changing an edge or component count changes the sewn genus.
+where changing an edge or component count changes the sewn genus; they also
+reject non-neutral vertex sources, diagonal self-contraction shortcuts, and
+untransported Green-kernel constant shifts.
 Scope boundary: a pass checks finite sewing algebra and bookkeeping; it does
 not prove VOA convergence, modular functor existence, higher-genus analytic
-sewing, or positivity of the full continuum CFT Hilbert space.
+sewing, prime-form/Szego-kernel construction, or positivity of the full
+continuum CFT Hilbert space.
 """
 
 from __future__ import annotations
@@ -59,6 +65,17 @@ def diagonal(values: Vector) -> Matrix:
 def matrix_product(left: Matrix, right: Matrix) -> Matrix:
     columns = [list(column) for column in zip(*right)]
     return [[dot(row, column) for column in columns] for row in left]
+
+
+def matrix_add(left: Matrix, right: Matrix) -> Matrix:
+    return [
+        [left[row][column] + right[row][column] for column in range(len(left[row]))]
+        for row in range(len(left))
+    ]
+
+
+def scalar_matrix(scalar: Fraction, size: int) -> Matrix:
+    return [[scalar for _column in range(size)] for _row in range(size)]
 
 
 @dataclass(frozen=True)
@@ -119,6 +136,115 @@ def check_torus_trace_from_self_sewing() -> None:
     assert_equal("character from vacuum self-sewing", identity_trace, character)
 
 
+def check_torus_free_boson_green_kernel_zero_mode_projection() -> None:
+    # A four-site periodic lattice is a finite analogue of a torus scalar
+    # Laplacian.  The Green kernel inverts the Laplacian only after the constant
+    # mode has been projected out.
+    laplacian = [
+        [Fraction(2), -Fraction(1), Fraction(0), -Fraction(1)],
+        [-Fraction(1), Fraction(2), -Fraction(1), Fraction(0)],
+        [Fraction(0), -Fraction(1), Fraction(2), -Fraction(1)],
+        [-Fraction(1), Fraction(0), -Fraction(1), Fraction(2)],
+    ]
+    green = [
+        [Fraction(5, 16), -Fraction(1, 16), -Fraction(3, 16), -Fraction(1, 16)],
+        [-Fraction(1, 16), Fraction(5, 16), -Fraction(1, 16), -Fraction(3, 16)],
+        [-Fraction(3, 16), -Fraction(1, 16), Fraction(5, 16), -Fraction(1, 16)],
+        [-Fraction(1, 16), -Fraction(3, 16), -Fraction(1, 16), Fraction(5, 16)],
+    ]
+    projector = [
+        [
+            (Fraction(1) if row == column else Fraction(0)) - Fraction(1, 4)
+            for column in range(4)
+        ]
+        for row in range(4)
+    ]
+    assert_equal(
+        "torus Green zero-average rows",
+        [sum(row) for row in green],
+        [Fraction(0)] * 4,
+    )
+    assert_equal(
+        "torus Laplacian Green projects constants",
+        matrix_product(laplacian, green),
+        projector,
+    )
+
+    neutral_charges = [Fraction(1), -Fraction(1), Fraction(2), -Fraction(2)]
+    assert_equal("neutral vertex charge", sum(neutral_charges), Fraction(0))
+    potential = matrix_vector(green, neutral_charges)
+    assert_equal("neutral Green inversion", matrix_vector(laplacian, potential), neutral_charges)
+
+    nonneutral_charges = [Fraction(1), Fraction(0), Fraction(0), Fraction(0)]
+    projected_nonneutral = matrix_vector(projector, nonneutral_charges)
+    assert_equal(
+        "nonneutral source is projected",
+        projected_nonneutral == nonneutral_charges,
+        False,
+    )
+    assert_equal(
+        "Green inversion cannot solve nonneutral source",
+        matrix_vector(laplacian, matrix_vector(green, nonneutral_charges))
+        == nonneutral_charges,
+        False,
+    )
+
+    pair_exponent = -sum(
+        neutral_charges[row] * neutral_charges[column] * green[row][column]
+        for row in range(4)
+        for column in range(row + 1, 4)
+    )
+    full_gaussian_exponent = -Fraction(1, 2) * dot(
+        neutral_charges,
+        matrix_vector(green, neutral_charges),
+    )
+    self_contraction = Fraction(1, 2) * sum(
+        neutral_charges[index] * neutral_charges[index] * green[index][index]
+        for index in range(4)
+    )
+    assert_equal(
+        "normal ordering removes diagonal torus self-contractions",
+        full_gaussian_exponent,
+        pair_exponent - self_contraction,
+    )
+    assert_equal(
+        "including diagonal self-contractions changes vertex normalization",
+        full_gaussian_exponent == pair_exponent,
+        False,
+    )
+
+    constant_shift = Fraction(3, 20)
+    shifted_green = matrix_add(green, scalar_matrix(constant_shift, 4))
+    shifted_pair_exponent = -sum(
+        neutral_charges[row] * neutral_charges[column] * shifted_green[row][column]
+        for row in range(4)
+        for column in range(row + 1, 4)
+    )
+    vertex_normalization_transport = -constant_shift * sum(
+        charge * charge for charge in neutral_charges
+    ) / 2
+    assert_equal(
+        "untransported Green constant changes normal-ordered exponent",
+        shifted_pair_exponent == pair_exponent,
+        False,
+    )
+    assert_equal(
+        "transported normal-ordering constant preserves vertex exponent",
+        shifted_pair_exponent + vertex_normalization_transport,
+        pair_exponent,
+    )
+
+    charge_a = Fraction(2)
+    charge_b = Fraction(3)
+    correct_local_log_power = charge_a * charge_b
+    wrong_sign_log_power = -charge_a * charge_b
+    assert_equal(
+        "wrong Green exponent sign flips free-boson OPE power",
+        wrong_sign_log_power == correct_local_log_power,
+        False,
+    )
+
+
 def check_sewing_graph_genus_formula() -> None:
     # Two spheres joined by one edge: genus 0.
     assert_equal(
@@ -150,6 +276,7 @@ def check_sewing_graph_genus_formula() -> None:
 def main() -> None:
     check_one_channel_sewing_equals_inner_product()
     check_torus_trace_from_self_sewing()
+    check_torus_free_boson_green_kernel_zero_mode_projection()
     check_sewing_graph_genus_formula()
     print("All CFT higher-genus sewing finite checks passed.")
 

@@ -1560,6 +1560,87 @@ trace is convergent, the operator trace.  Setting \(v=\mathbf 1\) gives
 \(Y(\mathbf 1,1)=\operatorname{id}_{M_a}\).
 \end{remark}
 
+\begin{example}[Torus free-boson Green kernel and neutrality]
+\label{ex:torus-free-boson-green-kernel}
+The preceding trace formula is still abstract.  For the diagonal free boson one
+can see the first period-kernel calculation explicitly.  Let
+\[
+  E_\tau=\mathbb C/(\mathbb Z+\tau\mathbb Z),\qquad
+  \tau_2=\operatorname{Im}\tau>0,
+\]
+and use the normalization
+\(X(z,\bar z)X(0)\sim-\log |z|^2\).  The scalar zero mode is not invertible, so
+the Green kernel is defined on the orthogonal complement of constants.  A
+convenient representative is
+\begin{equation}
+  G_\tau(z)
+  =
+  -\log\left|
+    \frac{\vartheta_1(z\mid\tau)}{\eta(\tau)}
+  \right|^2
+  +\frac{2\pi(\operatorname{Im}z)^2}{\tau_2}
+  +C_\tau ,
+  \label{eq:torus-free-boson-green-kernel}
+\end{equation}
+where \(C_\tau\) fixes the normal-ordering convention, for instance by
+\(\int_{E_\tau}G_\tau\,\dd^2z=0\).  With
+\(\Delta=4\partial_z\partial_{\bar z}\) this kernel satisfies
+\begin{equation}
+  -\frac1{4\pi}\Delta_zG_\tau(z)
+  =
+  \delta_{E_\tau}(z)-\frac1{\tau_2}.
+  \label{eq:torus-green-zero-mode-subtraction}
+\end{equation}
+The constant source term on the right side is not optional: it is the projection
+away from the target-space zero mode.  Without it the Laplacian cannot be
+inverted on a compact surface.
+
+For normal-ordered vertex insertions
+\[
+  V_{a_i}(z_i,\bar z_i)=:\!\exp(\ii a_iX(z_i,\bar z_i))\!:
+\]
+the noncompact genus-one correlator, with the overall determinant and
+target-volume factor suppressed, is
+\begin{equation}
+  \left\langle\prod_{i=1}^n V_{a_i}(z_i,\bar z_i)\right\rangle_\tau
+  =
+  \mathbf 1_{\sum_i a_i=0}
+  \exp\!\left(
+    -\sum_{i<j}a_ia_j\,G_\tau(z_i-z_j)
+  \right),
+  \label{eq:torus-free-boson-vertex-correlator}
+\end{equation}
+in the same normal-ordering convention.  The factor
+\(\mathbf 1_{\sum_i a_i=0}\) is the integral over the constant target mode.  It
+is the genus-one version of charge conservation in the operator product: a
+non-neutral product is not made meaningful by adding more oscillator sewing
+data.  The diagonal self-contractions have already been subtracted into the
+definition of the normal-ordered fields; putting them back changes the
+renormalized vertex normalization rather than computing a new correlator.
+
+Formula \eqref{eq:torus-free-boson-green-kernel} is the genus-one shadow of the
+higher-genus prime-form expression.  On a compact surface with period matrix
+\(\Omega\), normalized holomorphic one-forms \(\omega_I\), and prime form
+\(E(p,q)\), the corresponding scalar kernel has the period-kernel form
+\[
+  G_\Omega(p,q)
+  =
+  -\log |E(p,q)|^2
+  +2\pi\,
+   \operatorname{Im}\!\int_q^p\omega_I\,
+   (\operatorname{Im}\Omega)^{-1}_{IJ}\,
+   \operatorname{Im}\!\int_q^p\omega_J
+  +C_\Omega .
+\]
+This displayed expression identifies the next analytic objects that sewing must
+control: the prime form, period matrix, normalization of zero modes, and
+normal-ordering constant.  For fermions one must also choose a spin structure
+and replace the scalar Green kernel by the Szego kernel.  These are not
+consequences of the finite graph-counting formula
+\eqref{eq:sewing-graph-genus}; they are the concrete worldsheet kernels that a
+higher-genus CFT calculation has to construct.
+\end{example}
+
 \begin{definition}[Sewing graph for a chiral block]
 \label{def:chiral-sewing-graph}
 A chiral sewing graph \(\Gamma\) consists of:

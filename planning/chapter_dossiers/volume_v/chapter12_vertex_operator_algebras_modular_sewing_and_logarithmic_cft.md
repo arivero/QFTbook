@@ -47,6 +47,9 @@ current QFT scope.
   \(\partial_{\mathcal L}\Gamma=0\).
 - `CB_{g,n}`: space of chiral conformal blocks.
 - `q`: sewing parameter in \(zw=q\).
+- `G_tau`, `E_tau`, `C_tau`: genus-one free-boson Green kernel, elliptic curve
+  \(\mathbb C/(\mathbb Z+\tau\mathbb Z)\), and normal-ordering constant fixed
+  after the scalar zero mode is removed.
 - `S,T`: genus-one modular matrices.
 - `N_{ij}{}^k`: fusion coefficient.
 - `d_i`: quantum dimension \(S_{i0}/S_{00}\).
@@ -157,6 +160,12 @@ current QFT scope.
   treating a screening integral as a full correlator.
 - Defines sewing of blocks through dual bases of a module and its dual, with
   the annulus propagation factor \(q^{h_a+n-c/24}\).
+- Adds a concrete torus free-boson period-kernel example: the scalar Green
+  function solves the Laplacian equation only after constant-mode subtraction,
+  neutral normal-ordered vertex correlators are built from pairwise Green
+  kernels, non-neutral products vanish by zero-mode integration, and the
+  higher-genus prime-form/Szego-kernel objects are identified as the next
+  analytic inputs rather than consequences of graph-genus bookkeeping.
 - Expands the finite sewing-graph estimate: after finite-level truncation,
   continuity of each vertex block gives a pointwise operator-norm bound,
   absolute values separate the internal edge labels, the cutoff contraction is
@@ -442,3 +451,11 @@ current QFT scope.
   covariance, and the exponential Tauberian input used in Cardy asymptotics.
   Added the missing bibliographic-guide entries for FQS, GKO,
   Kawahigashi--Longo--Muger, CKLW, and regular variation.
+- 2026-06-05 issue #625 torus free-boson kernel pass: added
+  `ex:torus-free-boson-green-kernel`, giving an explicit genus-one scalar
+  Green-function and vertex-correlator computation with zero-mode subtraction,
+  normal-ordering convention, neutrality, and prime-form/Szego higher-genus
+  boundary.  Extended `cft_higher_genus_sewing_checks.py` with a finite
+  discrete-torus Laplacian/Green-kernel check and negative controls for
+  non-neutral sources, diagonal self-contractions, and untransported Green
+  constants.
