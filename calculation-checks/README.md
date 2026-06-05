@@ -452,7 +452,13 @@ Current checks:
   rank-one screening curvature, the quartic cosine sign, and the finite
   activity singlet mass contribution \(4N_f\zeta_\chi/f_\pi^2\), keeping this
   conditional instanton input separate from the Witten--Veneziano pure
-  Yang--Mills susceptibility datum.  The same script derives the leading
+  Yang--Mills susceptibility datum.  It now checks the instanton-to-Witten--
+  Veneziano comparison window: a same-scheme curvature-distance budget bounds
+  the singlet mass and \(\eta,\eta'\) trace approximants, the massless Schur
+  complement remains zero for the instanton branch, and finite negative
+  controls reject substituting the full massless-QCD susceptibility or an
+  under-budgeted dilute activity for the pure-glue curvature.  The same script
+  derives the leading
   isospin-limit \(N_f=3\) neutral
   \((\pi^0,\eta_8,\eta_0)\) mass
   matrix from the flavor generators, then checks the \(\eta,\eta'\) trace

@@ -2315,6 +2315,108 @@ ordinary QCD.  The large-\(N_c\) Witten--Veneziano input above instead uses
 the pure Yang--Mills susceptibility as a nonperturbative datum.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Instanton-to-Witten--Veneziano comparison
+window]
+\label{ca:instanton-wv-comparison-window}
+The similarity between \eqref{eq:instanton-chiral-curvature-matrix} and
+\eqref{eq:theta-eta0-curvature-matrix} is useful only after the two
+curvatures have been placed in the same scheme and branch.  Set
+\[
+  \chi_{\rm inst}:=2\zeta_\chi,
+  \qquad
+  a=\frac{\sqrt{2N_f}}{f_\pi}.
+\]
+The dilute determinant gives the conditional finite-activity curvature
+\(\chi_{\rm inst}\) of its selected instanton branch.  The
+Witten--Veneziano formula uses the pure Yang--Mills curvature
+\(\chi_{\rm YM}\).  A comparison window therefore requires, as an extra
+physical input, a same-scheme curvature estimate
+\begin{equation}
+  |\chi_{\rm YM}-\chi_{\rm inst}|\le \epsilon_\chi
+  \label{eq:instanton-wv-curvature-distance}
+\end{equation}
+together with the kinetic and mixing residuals needed to turn a local
+curvature into a pole mass.  With singlet kinetic coefficient \(Z_0\), the
+chiral, unmixed comparison masses are
+\[
+  m_{0,{\rm WV}}^2
+  =
+  \frac{2N_f\chi_{\rm YM}}{Z_0f_\pi^2},
+  \qquad
+  m_{0,{\rm inst}}^2
+  =
+  \frac{2N_f\chi_{\rm inst}}{Z_0f_\pi^2},
+\]
+and \eqref{eq:instanton-wv-curvature-distance} gives
+\begin{equation}
+  |m_{0,{\rm WV}}^2-m_{0,{\rm inst}}^2|
+  \le
+  \frac{2N_f}{Z_0f_\pi^2}\epsilon_\chi
+  +\epsilon_{\rm br}+\epsilon_{\rm mix}.
+  \label{eq:instanton-wv-mass-comparison-bound}
+\end{equation}
+Here \(\epsilon_{\rm br}\) denotes branch, large-\(N_c\), and local
+counterterm mismatch not already included in \(\epsilon_\chi\), while
+\(\epsilon_{\rm mix}\) denotes the octet-mixing and higher-order chiral
+remainder in the chosen observable channel.
+
+The full-QCD massless susceptibility is a different operation.  For either
+\(\chi=\chi_{\rm YM}\) or \(\chi=\chi_{\rm inst}\), the local Hessian
+\[
+  H(\chi)
+  =
+  \chi
+  \begin{pmatrix}
+    1&a\\
+    a&a^2
+  \end{pmatrix}
+\]
+has the Schur complement
+\begin{equation}
+  H_{\theta\theta}
+  -
+  H_{\theta\eta}H_{\eta\eta}^{-1}H_{\eta\theta}
+  =
+  \chi-\frac{(a\chi)^2}{a^2\chi}
+  =
+  0 .
+  \label{eq:instanton-wv-massless-schur-zero}
+\end{equation}
+Thus the instanton branch curvature, like the Witten--Veneziano curvature, is
+a fixed-singlet or conditional-branch curvature before the dynamical singlet
+field is minimized.  Substituting the full massless-QCD susceptibility
+\(\chi_{\rm QCD}=0\) into the Witten--Veneziano mass formula would erase the
+fixed-\(\theta\) singlet curvature and is the wrong observable comparison.
+Conversely, substituting \(2\zeta_\chi\) for \(\chi_{\rm YM}\) in the physical
+\(\eta'\) trace relation is justified only after
+\eqref{eq:instanton-wv-curvature-distance} and the pole-mass residuals have
+been supplied.
+
+For example, in the three-flavor trace observable below, the instanton branch
+may be used as a tested approximant only in the form
+\begin{equation}
+  \left|
+    m_{\eta'}^2+m_\eta^2-2m_K^2
+    -
+    \frac{2N_f}{f_\pi^2}\chi_{\rm inst}
+  \right|
+  \le
+  \frac{2N_f}{f_\pi^2}\epsilon_\chi
+  +R_{\rm chiral}+R_{\rm kin}+R_{\rm mix}.
+  \label{eq:instanton-wv-trace-comparison-budget}
+\end{equation}
+This is the observable form of the physics distinction: the Chapter~20
+instanton calculation supplies a source-saturated semiclassical amplitude and,
+in finite-activity regimes, a conditional theta curvature.  The
+Witten--Veneziano relation supplies a large-\(N_c\) pure-glue curvature input
+and then a generalized-eigenvalue calculation in the pseudoscalar channel.
+Finite-momentum \(U(1)_A\) source kernels, such as the \(\pi\)-\(\delta\)
+diagnostics of the instanton section, are related probes of the same
+zero-mode determinant but are not themselves topological susceptibilities or
+\(\eta'\) pole masses until the corresponding spectral and LSZ matching has
+been done.
+\end{controlledapproximation}
+
 For nonzero light-quark masses the singlet field mixes with the octet
 pseudoscalars.  This mixing is part of the susceptibility argument at the
 level of observables: it is the finite mass-matrix step which turns the pure

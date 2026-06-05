@@ -20,6 +20,11 @@ Target claims:
 - The physical singlet mass at the same order is a generalized eigenvalue:
   the singlet kinetic normalization, or equivalently F_0^2/f_pi^2, is an
   independent residual from the theta-potential curvature.
+- A dilute-instanton determinant curvature may be compared with the
+  Witten-Veneziano pure-Yang-Mills curvature only after a same-scheme
+  curvature-distance estimate and the pole-mass normalization/mixing residuals
+  have been supplied; the full massless-QCD theta Schur complement remains
+  zero for either rank-one local branch.
 
 Independent construction:
 - Builds finite theta partition functions directly from weighted topological
@@ -34,6 +39,9 @@ Independent construction:
   physical pole mass.
 - Derives the eta/eta-prime mass matrix from flavor generators rather than
   importing the displayed matrix entries.
+- Compares the dilute-instanton branch curvature with the pure-Yang-Mills
+  Witten-Veneziano curvature symbolically, then checks a finite rational
+  residual budget and the massless screening Schur complement.
 
 Imported assumptions:
 - The continuum branch and pure-Yang-Mills susceptibility are external inputs
@@ -49,6 +57,10 @@ Negative controls:
   broken.
 - A nontrivial singlet kinetic residual rejects the shortcut which reads the
   physical eta_0 mass directly from the potential Hessian.
+- Substituting the full massless-QCD susceptibility into the
+  Witten-Veneziano mass relation, or replacing the pure-Yang-Mills curvature by
+  the dilute-instanton activity without a sufficient curvature budget, is
+  rejected by finite examples.
 - A branch mixture gives a nonzero cluster covariance, while a pure selected
   branch has zero covariance.
 - A fixed-topology sector has zero charge variance and therefore cannot by
@@ -688,6 +700,102 @@ def check_dilute_instanton_chiral_spurion_potential() -> None:
     assert_zero("dilute instanton cosine fourth derivative", quartic + 2 * zeta)
 
 
+def check_instanton_witten_veneziano_comparison_window() -> None:
+    chi_ym, zeta, eps_chi, f_pi, z0, nf = sp.symbols(
+        "chi_ym zeta eps_chi f_pi z0 nf",
+        positive=True,
+    )
+    r_branch, r_mix, r_chiral, r_kin = sp.symbols(
+        "r_branch r_mix r_chiral r_kin",
+        nonnegative=True,
+    )
+    theta, eta = sp.symbols("theta eta")
+
+    chi_inst = 2 * zeta
+    a = sp.sqrt(2 * nf) / f_pi
+    h_inst = chi_inst * sp.Matrix([[1, a], [a, a**2]])
+    schur_inst = sp.simplify(
+        h_inst[0, 0] - h_inst[0, 1] * h_inst[1, 0] / h_inst[1, 1]
+    )
+    assert_zero("instanton branch massless theta Schur complement", schur_inst)
+
+    m_wv = 2 * nf * chi_ym / (z0 * f_pi**2)
+    m_inst = 2 * nf * chi_inst / (z0 * f_pi**2)
+    assert_zero(
+        "instanton-WV mass difference tracks curvature difference",
+        (m_wv - m_inst)
+        - 2 * nf * (chi_ym - chi_inst) / (z0 * f_pi**2),
+    )
+
+    comparison_values = {
+        nf: sp.Rational(3),
+        f_pi: sp.Rational(11),
+        z0: sp.Rational(5, 4),
+        chi_ym: sp.Rational(17, 19),
+        zeta: sp.Rational(8, 19),
+        eps_chi: sp.Rational(1, 19),
+        r_branch: sp.Rational(0),
+        r_mix: sp.Rational(0),
+    }
+    mass_gap = abs(sp.simplify((m_wv - m_inst).subs(comparison_values)))
+    mass_budget = 2 * nf * eps_chi / (z0 * f_pi**2) + r_branch + r_mix
+    residual_budget = sp.simplify(mass_budget.subs(comparison_values))
+    curvature_only_budget = (
+        2
+        * comparison_values[nf]
+        * comparison_values[eps_chi]
+        / (comparison_values[z0] * comparison_values[f_pi] ** 2)
+    )
+    require(
+        mass_gap <= residual_budget,
+        "same-scheme curvature distance should bound instanton-WV mass gap",
+    )
+
+    too_small_budget = curvature_only_budget / 2
+    require(
+        mass_gap > too_small_budget,
+        "insufficient instanton-WV curvature budget should be rejected",
+    )
+
+    wrong_full_qcd_mass = m_wv.subs({chi_ym: 0})
+    require(
+        sp.simplify(
+            m_wv.subs(comparison_values)
+            - wrong_full_qcd_mass.subs(comparison_values)
+        )
+        != 0,
+        "full massless-QCD susceptibility must not replace pure-YM WV curvature",
+    )
+
+    trace_wv = 2 * nf * chi_ym / f_pi**2
+    trace_inst = 2 * nf * chi_inst / f_pi**2
+    trace_residual_budget = 2 * nf * eps_chi / f_pi**2 + r_chiral + r_kin + r_mix
+    trace_values = {
+        nf: sp.Rational(3),
+        f_pi: sp.Rational(13),
+        chi_ym: sp.Rational(23, 29),
+        zeta: sp.Rational(11, 29),
+        eps_chi: sp.Rational(1, 29),
+        r_chiral: sp.Rational(1, 101),
+        r_kin: sp.Rational(1, 103),
+        r_mix: sp.Rational(1, 107),
+    }
+    trace_gap = abs(sp.simplify((trace_wv - trace_inst).subs(trace_values)))
+    require(
+        trace_gap <= trace_residual_budget.subs(trace_values),
+        "eta trace instanton approximant should be controlled by curvature residual budget",
+    )
+
+    potential = sp.Rational(1, 2) * chi_inst * (theta + a * eta) ** 2
+    fixed_singlet_curvature = sp.diff(potential.subs(eta, 0), theta, 2)
+    minimized = sp.simplify(potential.subs(eta, -theta / a))
+    assert_zero("instanton branch minimized theta energy", minimized)
+    require(
+        sp.simplify(fixed_singlet_curvature.subs(comparison_values)) != 0,
+        "fixed-branch instanton theta curvature should differ from minimized full-QCD curvature",
+    )
+
+
 def check_eta_eta_prime_mass_matrix_ledger() -> None:
     m, ms, b0, m0_sq = sp.symbols("m ms B0 m0_sq", positive=True)
     m_pi_sq = 2 * b0 * m
@@ -810,6 +918,7 @@ def main() -> None:
     check_witten_veneziano_kinetic_normalization_residual()
     check_massless_quark_theta_screening()
     check_dilute_instanton_chiral_spurion_potential()
+    check_instanton_witten_veneziano_comparison_window()
     check_eta_eta_prime_mass_matrix_ledger()
     check_periodic_branch_relabeling()
     check_branch_mixture_cluster_covariance()
