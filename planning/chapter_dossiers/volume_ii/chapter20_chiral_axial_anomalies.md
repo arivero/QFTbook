@@ -586,9 +586,9 @@
   calibration, not a second anomaly class.
 - A nonzero global-symmetry anomaly is data to be matched by the infrared
   theory, while a nonzero gauge anomaly obstructs the gauge theory.
-- The Adler--Bardeen theorem is now stated as a local perturbative
+- The Adler--Bardeen result is now stated as a quoted local perturbative
   nonrenormalization theorem for the coefficient of the nontrivial anomaly
-  cohomology class.  The theorem explicitly assumes a local subtraction
+  cohomology class.  The quoted theorem explicitly assumes a local subtraction
   scheme with the quantum action principle, preserved vector/dynamical gauge
   Ward identities, composite-operator sources, and allowed same-quantum-number
   operator mixing.  In the QCD singlet normalization fixed by the
@@ -606,7 +606,7 @@
   source-coordinate changes can move terms in the displayed divergence
   equation.  Only the projection onto the nontrivial local anomaly class is
   one-loop exact.
-- For chiral gauge theories, the AB theorem supplies the coefficient
+- For chiral gauge theories, the quoted AB theorem supplies the coefficient
   statement that prevents higher-loop multiples of the same local descent
   class after the one-loop symmetric cubic tensor cancels.  Together with the
   absence of other local anomaly classes, this feeds the all-order
@@ -1745,3 +1745,12 @@
   `calculation-checks/adler_bardeen_nonrenormalization_checks.py` with
   negative controls for fake higher-loop corrections and uncancelled cubic
   anomaly data.
+- 2026-06-05 issue #696 Adler--Bardeen proof-status repair: converted the
+  local perturbative nonrenormalization statement from an internal theorem
+  with a proof into a quoted theorem boundary, and split out
+  `prop:adler-bardeen-local-coefficient-reduction` for the part actually
+  derived in monograph conventions.  The text now says explicitly that the
+  Callan--Symanzik class equation gives only an illustrative recursion when
+  the beta function has a nonzero perturbative coefficient; finite or
+  conformal cases still require the imported all-order Adler--Bardeen input.
+  The companion check now includes this finite-beta negative control.

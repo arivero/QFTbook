@@ -93,13 +93,15 @@ Current checks:
   one-generation Standard Model hypercharge sums, and
   \(SU(N)\) fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
 - `adler_bardeen_nonrenormalization_checks.py`: exact rational checks for the
-  Adler--Bardeen nonrenormalization section, including projection of local
+  Adler--Bardeen theorem-boundary section, including projection of local
   counterterm/current-improvement directions out of the anomaly class,
   singlet axial-current and topological-density source mixing, the distinction
   between removable two-loop-looking operator terms and genuine topological
   anomaly corrections, the finite Callan--Symanzik recurrence for a
-  one-coupling class coefficient, and the one-loop cubic gauge-anomaly
-  cancellation input to all-order Slavnov--Taylor restoration.
+  one-coupling class coefficient, a finite/conformal beta-function negative
+  control showing where that recurrence stops proving nonrenormalization, and
+  the one-loop cubic gauge-anomaly cancellation input to all-order
+  Slavnov--Taylor restoration.
 - `nielsen_identity_effective_potential_checks.py`: finite algebra checks for
   the Nielsen-identity and gauge-effective-potential section, including the
   Abelian-Higgs Goldstone/longitudinal-vector/ghost determinant count, the

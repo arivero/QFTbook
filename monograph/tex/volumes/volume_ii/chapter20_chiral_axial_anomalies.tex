@@ -2598,7 +2598,7 @@ It does not say that every operator appearing in an axial Ward identity has
 zero anomalous dimension, and it does not replace the local BRST
 classification or the global anomaly analysis.
 
-\begin{theorem}[Adler--Bardeen nonrenormalization in local perturbation theory]
+\begin{quotedtheorem}[Adler--Bardeen nonrenormalization in local perturbation theory]
 \label{thm:adler-bardeen-nonrenormalization}
 Consider a four-dimensional power-counting renormalizable gauge theory with
 fermions in finite-dimensional unitary representations.  Work in a local
@@ -2664,7 +2664,7 @@ Theorem~\ref{thm:all-order-slavnov-taylor-restoration} is satisfied in this
 perturbative local sector.
 \end{enumerate}
 
-The theorem is local and perturbative.  It is not an index theorem, although
+The quoted theorem is local and perturbative.  It is not an index theorem, although
 the one-loop normalization can be checked against
 \eqref{eq:dirac-index-anomaly} under the spin Dirac hypotheses stated there.
 It is not 't Hooft anomaly matching, which compares anomaly-line data
@@ -2674,9 +2674,27 @@ Section~\ref{sec:t-hooft-anomaly-matching-tool}.  It is also not a statement
 that global gauge anomalies or a nonperturbative chiral gauge regulator have
 been constructed; those are separate questions in
 Chapter~\ref{ch:volume-ii-21} and in the lattice-regulator discussion.
-\end{theorem}
+\end{quotedtheorem}
 
-\begin{proof}[Mechanism and theorem boundary]
+\begin{proposition}[Local reduction to the Adler--Bardeen coefficient]
+\label{prop:adler-bardeen-local-coefficient-reduction}
+Under the hypotheses of
+Quoted Theorem~\ref{thm:adler-bardeen-nonrenormalization}, the part proved by
+locality and cohomology before the imported Adler--Bardeen input is the
+following.  At each higher loop order \(N\), a candidate breaking reduces
+modulo local counterterms and total derivatives to a single coefficient
+\(r_N\) multiplying the nontrivial descent representative \(I_4^{(1)}\).  The
+counterterm recursion can remove the breaking if \(r_N=0\), and only if no
+other nontrivial local anomaly class is present.  The Adler--Bardeen theorem
+supplies the extra all-order statement that \(r_N=0\) for \(N>1\).  In a
+one-coupling theory whose beta function begins with a nonzero perturbative
+coefficient, the class equation also gives the familiar finite recursion for
+the coefficients of \(c_{\rm AB}(g)\); in a finite or conformal perturbative
+theory that beta-function recursion gives no such proof, so the all-order
+Adler--Bardeen input remains genuinely external.
+\end{proposition}
+
+\begin{proof}
 The one-loop triangle calculation gives a local term that obeys the
 Wess--Zumino consistency condition.  At a higher loop order \(N\), the quantum
 action principle gives the same kind of object: after all subdivergences are
@@ -2700,11 +2718,13 @@ descent class.  The exact part is removed by a local counterterm.  The only
 coefficient that cannot be removed in this way is \(r_N\), the coordinate of
 the nontrivial class.
 
-The all-order input of the Adler--Bardeen theorem is precisely the statement
+The all-order input of Quoted
+Theorem~\ref{thm:adler-bardeen-nonrenormalization} is precisely the statement
 that \(r_N=0\) for \(N>1\) once the preserved vector or gauge identities,
 locality, power counting, and the source normalization of the topological
-density are imposed.  In algebraic-renormalization language, the
-Callan--Symanzik operator acts on the integrated descent insertion by
+density are imposed.  When that input is applied in
+algebraic-renormalization language, the Callan--Symanzik operator acts on the
+integrated descent insertion by
 \begin{equation}
   \mathcal C\bigl(c_{\rm AB}(g)\int I_4^{(1)}\bigr)
   =
@@ -2724,25 +2744,28 @@ produce only the exact and total-derivative terms displayed in
   \beta^i\partial_{g^i}c_{\rm AB}=0
 \]
 with the boundary value fixed by the one-loop triangle.  In an ordinary
-one-coupling expansion this already forces the familiar recurrence
+one-coupling expansion with a beta function whose first displayed coefficient
+is nonzero, this already forces the familiar recurrence
 \[
   c_{\rm AB}(g)=c_1+c_2g^2+c_3g^4+\cdots,\qquad
   \beta(g)=\beta_0g^3+\beta_1g^5+\cdots
   \quad\Longrightarrow\quad
   c_2=c_3=\cdots=0
 \]
-when the displayed perturbative beta series supplies the recursion.  The
-algebraic theorem is stronger than this illustrative recurrence: the
+when the displayed perturbative beta series supplies the recursion.  If
+\(\beta=0\) in the tested class, the same equation imposes no recurrence on
+the \(c_n\).  The algebraic theorem is stronger than this illustrative
+recurrence: the
 order-by-order proof of anomaly cancellation can be formulated without
 assuming a nonzero beta function and therefore also covers finite or conformal
 perturbative theories.  This is the imported all-order step behind the
-present theorem; the surrounding reduction to local cocycles and removable
-counterterms is the mechanism already proved in
+quoted theorem; the surrounding reduction to local cocycles and removable
+counterterms is the mechanism supported by
 Theorem~\ref{thm:all-order-slavnov-taylor-restoration} and in the BV
-comparison of Chapter~\ref{ch:bv-master-formalism}.  The original axial statement is
-due to Adler and Bardeen, while Bardeen's current-preserving subtraction
-analysis and the later algebraic-renormalization/BV proofs give the
-all-order local form used here
+comparison of Chapter~\ref{ch:bv-master-formalism}.  The original axial
+statement is due to Adler and Bardeen, while Bardeen's current-preserving
+subtraction analysis and the later algebraic-renormalization/BV proofs give
+the all-order local form quoted here
 \cite{AdlerBardeen1969,Bardeen1969AnomalousWard,PiguetSorella1995,
 BarnichBrandtHenneaux2000,Anselmi2014AdlerBardeen}.
 
@@ -2753,8 +2776,9 @@ classified in Proposition~\ref{prop:cubic-gauge-anomaly-obstruction}.  If
 that coefficient vanishes, the remaining loop-order breakings are exact local
 cocycles, so the recursive counterterm proof of
 Theorem~\ref{thm:all-order-slavnov-taylor-restoration} applies.  This proves
-perturbative restoration of the Slavnov--Taylor identities under the theorem's
-hypotheses.  It does not by itself choose a nonperturbative integration cycle,
+perturbative restoration of the Slavnov--Taylor identities under the quoted
+theorem's coefficient input and the stated absence of other local anomaly
+classes.  It does not by itself choose a nonperturbative integration cycle,
 remove a global anomaly, or construct a lattice chiral gauge theory.
 \end{proof}
 
@@ -2783,8 +2807,8 @@ particular current basis.  Reduce that term modulo the subspace generated by
 current improvements, explicit mass breakings, and BRST-exact counterterm
 variations: if the remainder has zero projection on \(q_R\), it is absorbed
 by operator renormalization; if it has a nonzero projection, it would be a
-true Adler--Bardeen violation.  The theorem says that the latter projection
-does not occur.
+true Adler--Bardeen violation.  The quoted theorem says that the latter
+projection does not occur.
 
 This distinction is the reason for the source normalization in
 \eqref{eq:adler-bardeen-qcd-singlet-identity}.  The singlet axial current can

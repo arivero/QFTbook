@@ -14,11 +14,16 @@ Adler--Bardeen section:
 * the Callan--Symanzik class equation recursively kills higher coefficients in
   a finite beta-function model once the nontrivial descent insertion has zero
   anomalous dimension;
+* if the beta function vanishes in the tested class, the same
+  Callan--Symanzik equation supplies no recurrence, so the all-order
+  Adler--Bardeen input is still needed;
 * one-loop cancellation of the cubic gauge-anomaly coordinate leaves only
   exact higher-loop Slavnov breakings in the Adler--Bardeen local sector.
 
 Evidence contract.
-Target claims: Theorem `thm:adler-bardeen-nonrenormalization`, equation
+Target claims: Quoted theorem boundary
+`thm:adler-bardeen-nonrenormalization`, Proposition
+`prop:adler-bardeen-local-coefficient-reduction`, equation
 `eq:adler-bardeen-cs-class-equation`, and the singlet-current/operator-mixing
 paragraph in Volume II Chapter 20.
 Independent construction: finite vector-space models of local operators
@@ -158,6 +163,27 @@ def check_callan_symanzik_recurrence() -> None:
     )
 
 
+def check_finite_beta_boundary_does_not_prove_ab() -> None:
+    # In a finite/conformal perturbative model, beta(g) d c(g)/dg = 0 is
+    # identically true and therefore cannot rule out higher c_n.  The quoted
+    # Adler--Bardeen theorem is the extra all-order input in this case.
+    beta0 = Fraction(0)
+    beta1 = Fraction(0)
+    c2 = Fraction(7, 19)
+    c3 = Fraction(-5, 23)
+
+    g4 = 2 * beta0 * c2
+    g6 = 4 * beta0 * c3 + 2 * beta1 * c2
+
+    assert_equal("finite beta model has no g^4 recurrence", g4, Fraction(0))
+    assert_equal("finite beta model has no g^6 recurrence", g6, Fraction(0))
+    assert_not_equal(
+        "nonzero higher anomaly coefficient is not excluded by beta=0 recurrence",
+        c2,
+        Fraction(0),
+    )
+
+
 def check_one_loop_gauge_cancellation_to_exact_breakings() -> None:
     # In the tested one-dimensional cubic-anomaly coordinate, vectorlike or
     # otherwise cancelling matter content leaves no nontrivial local class.
@@ -189,6 +215,7 @@ def main() -> None:
     check_exact_shifts_preserve_anomaly_class()
     check_singlet_operator_mixing_filter()
     check_callan_symanzik_recurrence()
+    check_finite_beta_boundary_does_not_prove_ab()
     check_one_loop_gauge_cancellation_to_exact_breakings()
     print("All Adler-Bardeen nonrenormalization bookkeeping checks passed.")
 

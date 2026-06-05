@@ -327,9 +327,9 @@
   \(\mathcal B_{S_0}\)-cocycle, the anomaly hypothesis writes it as
   \(s_0 b_N+d r_N\), and the local counterterm \(-\int b_N\) cancels it.
   For four-dimensional chiral Yang--Mills, the text now points to
-  `thm:adler-bardeen-nonrenormalization` for the separate all-order input
-  that forbids higher-loop multiples of the same local descent class after
-  the one-loop cubic anomaly tensor cancels.
+  quoted theorem `thm:adler-bardeen-nonrenormalization` for the separate
+  all-order input that forbids higher-loop multiples of the same local descent
+  class after the one-loop cubic anomaly tensor cancels.
 - The restored Slavnov--Taylor identity is now explicitly used in the
   preceding Yang--Mills--matter chapter to derive the contracted
   vector/Goldstone source-coordinate identity behind the high-energy
