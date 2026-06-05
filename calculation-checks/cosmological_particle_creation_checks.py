@@ -4,13 +4,14 @@
 Evidence contract:
   independent construction: finite mode sums for Robertson-Walker particle
   diagnostics, stress-tensor source coordinates, pressure work, and Friedmann
-  response coefficients;
+  response coefficients, including a finite backreaction-window budget;
   imported assumptions: the free scalar mode equation, adiabatic/asymptotic
   particle basis, and renormalized-stress subtraction scheme stated in the
   chapter;
   negative controls: wrong scale-factor powers, missing pressure work,
-  treating ongoing production as a conserved fluid, and zero-particle source
-  checks;
+  treating ongoing production as a conserved fluid, untransported scheme
+  shifts, omitted tail/noise budgets, number-density-only sources, and
+  zero-particle source checks;
   scope boundary: these checks verify finite stress-source bookkeeping, not
   interacting cosmological QFT, full adiabatic subtraction, or nonlinear
   semiclassical existence.
@@ -265,6 +266,134 @@ def check_produced_stress_continuity_check() -> None:
     )
 
 
+def check_cosmological_backreaction_window() -> None:
+    d = 4
+    kappa_d = Fraction(3, 2)
+    friedmann_coefficient = 2 * kappa_d / ((d - 1) * (d - 2))
+    assert_equal(
+        "backreaction-window Friedmann coefficient",
+        friedmann_coefficient,
+        Fraction(1, 2),
+    )
+
+    produced_energy = Fraction(27, 56)
+    produced_pressure = Fraction(2, 25)
+    retained_delta_hubble_squared = friedmann_coefficient * produced_energy
+    assert_equal(
+        "retained produced Hubble-square coordinate",
+        retained_delta_hubble_squared,
+        Fraction(27, 112),
+    )
+
+    # A finite stress scheme shift is harmless only when the gravitational
+    # coordinate is transported with it.
+    finite_scheme_shift = Fraction(1, 300)
+    untransported_response = friedmann_coefficient * (
+        produced_energy + finite_scheme_shift
+    )
+    transported_gravity_shift = -friedmann_coefficient * finite_scheme_shift
+    transported_response = untransported_response + transported_gravity_shift
+    assert_equal(
+        "transported scheme coordinate",
+        transported_response,
+        retained_delta_hubble_squared,
+    )
+    assert_equal(
+        "untransported scheme shift changes response",
+        untransported_response == retained_delta_hubble_squared,
+        False,
+    )
+
+    vacuum_remainder = Fraction(1, 1000)
+    geometric_remainder = -Fraction(1, 1000)
+    tail_remainder = Fraction(1, 100)
+    gravitational_remainder = Fraction(1, 2000)
+    full_delta_hubble_squared = (
+        friedmann_coefficient
+        * (produced_energy + vacuum_remainder + geometric_remainder + tail_remainder)
+        + gravitational_remainder
+    )
+    error = abs(full_delta_hubble_squared - retained_delta_hubble_squared)
+    full_budget = (
+        friedmann_coefficient
+        * (abs(vacuum_remainder) + abs(geometric_remainder) + abs(tail_remainder))
+        + abs(gravitational_remainder)
+    )
+    missing_tail_budget = (
+        friedmann_coefficient * (abs(vacuum_remainder) + abs(geometric_remainder))
+        + abs(gravitational_remainder)
+    )
+    assert_equal("backreaction remainder budget controls response", error <= full_budget, True)
+    assert_equal("omitting tail budget undercontrols response", error <= missing_tail_budget, False)
+
+    hubble = Fraction(1, 3)
+    production_source = Fraction(7, 80)
+    continuity_residual = Fraction(1, 700)
+    produced_energy_dot = (
+        production_source
+        - (d - 1) * hubble * (produced_energy + produced_pressure)
+        + continuity_residual
+    )
+    retained_delta_hubble_squared_dot = friedmann_coefficient * produced_energy_dot
+    drift_bound = friedmann_coefficient * (
+        abs(production_source)
+        + (d - 1) * abs(hubble) * (abs(produced_energy) + abs(produced_pressure))
+        + continuity_residual
+    )
+    assert_equal(
+        "produced-source drift bound",
+        abs(retained_delta_hubble_squared_dot) <= drift_bound,
+        True,
+    )
+    missing_pressure_energy_dot = (
+        production_source
+        - (d - 1) * hubble * produced_energy
+        + continuity_residual
+    )
+    assert_equal(
+        "omitting pressure changes Hubble-square drift",
+        missing_pressure_energy_dot == produced_energy_dot,
+        False,
+    )
+
+    number_density = Fraction(19, 60)
+    number_source = Fraction(1, 30)
+    assert_equal(
+        "number density alone is not the Hubble-square source",
+        friedmann_coefficient * number_density == retained_delta_hubble_squared,
+        False,
+    )
+    assert_equal(
+        "number source alone is not the stress-energy source",
+        number_source == production_source,
+        False,
+    )
+
+    density_noise = Fraction(1, 1600)
+    omitted_noise_budget = Fraction(1, 6400)
+    metric_noise_variance = (
+        friedmann_coefficient * friedmann_coefficient * density_noise
+        + omitted_noise_budget
+    )
+    window_tolerance_squared = Fraction(1, 2500)
+    overoptimistic_tolerance_squared = Fraction(1, 10000)
+    assert_equal(
+        "stress-noise budget fits declared window",
+        metric_noise_variance <= window_tolerance_squared,
+        True,
+    )
+    assert_equal(
+        "mean-only noise estimate misses stress fluctuations",
+        Fraction(0) == metric_noise_variance,
+        False,
+    )
+    assert_equal(
+        "overoptimistic deterministic tolerance fails noise check",
+        metric_noise_variance <= overoptimistic_tolerance_squared,
+        False,
+    )
+
+
 def main() -> None:
     check_conformal_cancellation()
     check_de_sitter_nu_values()
@@ -274,6 +403,7 @@ def main() -> None:
     check_detector_positive_type_finite_model()
     check_out_region_produced_stress_tensor()
     check_produced_stress_continuity_check()
+    check_cosmological_backreaction_window()
     print("Cosmological particle-creation convention checks passed.")
 
 

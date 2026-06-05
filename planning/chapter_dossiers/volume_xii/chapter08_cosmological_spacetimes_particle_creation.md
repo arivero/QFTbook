@@ -32,6 +32,10 @@ about ambiguity.
 - `n_k(t)`, `S_n`, `E_cont`: time-dependent diagonal particle occupation,
   production source \(a^{-d}\int\Omega_k\dot n_k\), and continuity residual
   for using produced stress as a backreaction input.
+- `C_d`, `Delta H_ret^2`, `B_vac`, `B_geom`, `B_tail`, `B_H`,
+  `B_cont`, `N_rho[f]`: homogeneous FLRW response coefficient, retained
+  produced Hubble-square coordinate, stress/gravity remainder budgets,
+  continuity budget, and stress-noise window for the backreaction diagnostic.
 
 ## Claim Ledger
 
@@ -71,6 +75,10 @@ about ambiguity.
   a time-dependent particle diagnostic becomes a backreaction source only
   together with pressure work and the production term; an out region with
   \(\dot n_k=0\) is the conserved produced-gas limit.
+- Adds a finite FLRW produced-stress backreaction window:
+  \(\Delta H_{\rm ret}^2=C_d\rho_n\) is admissible only after scheme transport,
+  stress/gravity/tail remainder budgets, continuity residuals, drift control,
+  and stress-noise bounds are declared.
 - States the backreaction boundary: particle production is a diagnostic of a
   state, not a closed semiclassical Einstein equation.
 
@@ -85,6 +93,9 @@ about ambiguity.
   coefficient, plus the time-dependent produced-stress continuity identity
   with negative controls against wrong pressure normalization, wrong
   scale-factor power, and treating ongoing production as a conserved fluid.
+  The same script now checks the finite backreaction-window budget, including
+  scheme transport, tail/gravity remainders, pressure-dependent Hubble drift,
+  number-density-only failures, and stress-noise tolerances.
 - Related scripts: `calculation-checks/point_splitting_stress_checks.py` for
   de Sitter stress-tensor/anomaly arithmetic and
   `calculation-checks/hawking_bogoliubov_checks.py` for the black-hole
@@ -101,7 +112,7 @@ timelike detector worldline sampling the two-point function.
 - Add a smooth exactly solvable scale-factor example, rather than only the
   sudden-jump normalization model.
 - Develop interacting cosmological QFT and semiclassical backreaction beyond
-  the free-field and fixed-background diagnostics.
+  finite free-field produced-stress windows and fixed-background diagnostics.
 
 ## Audit Notes
 
@@ -123,3 +134,9 @@ timelike detector worldline sampling the two-point function.
   verifies the pressure-work cancellation, the source term
   \(a^{-d}\int\Omega_k\dot n_k\), and negative controls against pressure,
   scale-factor, and conserved-fluid shortcuts.
+- 2026-06-05 issue #729 cosmological backreaction-window pass: added
+  `ca:cosmology-produced-stress-backreaction-window`, turning the produced
+  stress into a controlled finite FLRW source only after scheme transport,
+  stress/gravity/tail budgets, continuity/drift control, and stress-noise
+  bounds are supplied.  The companion script verifies the same bookkeeping and
+  negative controls.

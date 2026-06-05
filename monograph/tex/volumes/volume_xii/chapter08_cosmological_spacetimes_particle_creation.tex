@@ -849,6 +849,118 @@ window.  Dropping \(P_n\), using only the number density, or replacing
 different approximation and requires its own error bound.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[FLRW produced-stress backreaction window]
+\label{ca:cosmology-produced-stress-backreaction-window}
+The preceding formulas give a source candidate, not a self-contained
+semiclassical solution.  A homogeneous flat FLRW response window is controlled
+only after the produced stress is embedded in the same renormalized
+stress-tensor scheme used for the geometric side of the semiclassical equation.
+Set
+\begin{equation}
+  C_d=\frac{2\kappa_d}{(d-1)(d-2)},\qquad
+  S_n(t)=
+  a^{-d}
+  \int
+  \frac{d^{d-1}\mathbf k}{(2\pi)^{d-1}}\,
+  \Omega_k\,\dot n_k .
+  \label{eq:cosmology-produced-source-coordinate}
+\end{equation}
+The retained produced-particle approximation is then
+\begin{equation}
+  \Delta H_{\rm ret}^2(t)=C_d\,\rho_n(t),
+  \label{eq:cosmology-retained-produced-hubble-response}
+\end{equation}
+but the physical stress coordinate has the form
+\begin{equation}
+  \Delta H^2(t)
+  =
+  C_d\bigl(\rho_n+\Delta\rho_{\rm vac}
+       +\Delta\rho_{\rm geom}+\Delta\rho_{\rm tail}\bigr)
+  +R_H .
+  \label{eq:cosmology-produced-backreaction-budget}
+\end{equation}
+Here \(\Delta\rho_{\rm vac}\) is the finite state-independent subtraction
+coordinate, \(\Delta\rho_{\rm geom}\) is the finite local curvature-counterterm
+coordinate, \(\Delta\rho_{\rm tail}\) records endpoint, coherence, and
+nonadiabatic basis remainders omitted by the diagonal produced-particle
+description, and \(R_H\) records the residual gravitational response of the
+higher-derivative and nonlinear terms in the chosen finite window.  If these
+remainders are bounded by
+\[
+  |\Delta\rho_{\rm vac}|\le B_{\rm vac},\quad
+  |\Delta\rho_{\rm geom}|\le B_{\rm geom},\quad
+  |\Delta\rho_{\rm tail}|\le B_{\rm tail},\quad
+  |R_H|\le B_H ,
+\]
+then
+\begin{equation}
+  \bigl|\Delta H^2-\Delta H_{\rm ret}^2\bigr|
+  \le
+  C_d(B_{\rm vac}+B_{\rm geom}+B_{\rm tail})+B_H .
+  \label{eq:cosmology-produced-hubble-error-bound}
+\end{equation}
+Thus changing an adiabatic subtraction convention or a finite curvature
+counterterm without transporting the gravitational couplings changes the
+backreaction coordinate; it is not a harmless relabeling inside a fixed
+semiclassical equation.
+
+The source must also pass a conservation test in the retained basis.  The
+finite-window condition is not \(\dot\rho_n=0\), but
+\begin{equation}
+  \bigl|\dot\rho_n+(d-1)H(\rho_n+P_n)-S_n\bigr|
+  \le B_{\rm cont}.
+  \label{eq:cosmology-produced-source-window-bound}
+\end{equation}
+Consequently
+\begin{equation}
+  \frac{d}{dt}\Delta H_{\rm ret}^2
+  =
+  C_d\{S_n-(d-1)H(\rho_n+P_n)+R_{\rm cont}\},
+  \qquad |R_{\rm cont}|\le B_{\rm cont}.
+  \label{eq:cosmology-produced-hubble-drift}
+\end{equation}
+The produced component is perturbative only if both the density response and
+its drift are small on the background curvature scale, for example
+\[
+  \epsilon_H=\frac{|\Delta H_{\rm ret}^2|}{H_{\rm bg}^2}\ll1,\qquad
+  \epsilon_{\rm drift}
+  =
+  \frac{|C_d|\{ |S_n|+(d-1)|H|(|\rho_n|+|P_n|)+B_{\rm cont}\}}
+       {|H_{\rm bg}|^3}
+  \ll1
+\]
+on the same time interval.  This is the place where pressure work matters:
+massive produced quanta can have small pressure after production, but the
+pressure term is still the quantity that makes the stress tensor conserve
+correctly while the energy is redshifting.
+
+Finally the deterministic semiclassical response is a mean-field statement.
+For a smooth time window \(f\), let
+\begin{equation}
+  N_\rho[f]
+  =
+  \frac12
+  \int dt\,dt'\,f(t)f(t')\,
+  \bigl\langle
+    \{\delta T_{tt}^{\rm ren}(t),\delta T_{tt}^{\rm ren}(t')\}
+  \bigr\rangle_{\!c}
+  \label{eq:cosmology-produced-stress-noise}
+\end{equation}
+denote the retained homogeneous stress fluctuation after the same subtraction
+choice.  The semiclassical produced-source window requires the induced metric
+noise \(|C_d|\sqrt{N_\rho[f]}\), together with omitted noise budgets, to be
+below the requested accuracy for \(\Delta H^2\).  Number density alone fails
+this test because it does not determine energy, pressure, subtraction
+transport, or stress fluctuations.  Ignoring the mean-field noise is a different
+approximation, valid only after its own bound.
+
+This window is deliberately finite and diagnostic.  It is a controlled route
+from particle production to a homogeneous semiclassical source in a declared
+scheme; it is not a proof of existence or stability for the full nonlinear
+semiclassical Einstein equation, and it does not replace an interacting
+cosmological QFT construction.
+\end{controlledapproximation}
+
 \section{Backreaction Boundary}
 
 The expectation value \(\langle T_{\mu\nu}\rangle\) in a time-dependent state

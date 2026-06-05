@@ -1008,7 +1008,12 @@ Current checks:
   coefficient.  The same companion checks the finite continuity identity
   \(\dot\rho+(d-1)H(\rho+P)=a^{-d}\int\Omega_k\dot n_k\), with negative
   controls against wrong pressure normalization, wrong scale-factor power, and
-  treating ongoing production as a conserved fluid.
+  treating ongoing production as a conserved fluid.  It also checks the finite
+  FLRW produced-stress backreaction window: scheme transport of finite stress
+  shifts, explicit vacuum/geometric/tail/gravitational error budgets, Hubble
+  drift with pressure work, the failure of number-density-only sources, and the
+  stress-noise budget needed before a deterministic semiclassical response is
+  trusted.
 - `energy_correlator_sum_rule_checks.py`: exact finite-event checks for the
   energy-energy-correlator zeroth and first moment sum rules and the
   coincident-detector contact weight in the QCD detector-observable chapter;
