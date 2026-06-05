@@ -674,11 +674,13 @@ Current checks:
   incomplete basis changes, and a spurious universal \(Q^4/\mathcal M^4\) law.
   Finally, it checks the concrete evanescent four-fermion example
   \(E_{16}=O_3-16Q\): the chiral triple-gamma projection
-  \(\Pi_QO_3=(16-4\epsilon)Q\), the color-singlet bubble pole
-  \(g^2/(16\pi^2\epsilon)\), the finite projected coefficient shift, the
-  compensating finite coefficient shift under
-  \(E_\alpha=O_3-(16+\alpha\epsilon)Q\), and the hypotheses needed before EOM,
-  BRST-exact, or boundary representatives may be removed.
+  \(\Pi_QO_3=(16-4\epsilon)Q\) in the open-spinor NDR projection, the distinct
+  closed-trace Gram projection as a negative control, the Abelian
+  spectator-exchange numerator and \(2g^2/(d\,16\pi^2)\) pole residue, the
+  complete projected \(Q\)-pole, the finite evanescent subtraction shift, its
+  \(O(\epsilon)\)-residue compensation, the compensating finite coefficient
+  shift under \(E_\alpha=O_3-(16+\alpha\epsilon)Q\), and the hypotheses needed
+  before EOM, BRST-exact, or boundary representatives may be removed.
 - `borel_laplace_checks.py`: exact checks for the Borel--Laplace and
   zero-dimensional quartic large-order section, including Gaussian moments,
   perturbative coefficients, the ratio

@@ -22,9 +22,10 @@ Target claims:
   one-loop mixing and projected only after subtraction.  For the concrete
   left-current four-fermion representative
   \(E_{16}=O_3-16 Q\), the \(d=4-\epsilon\) Dirac projection gives
-  \(\Pi_Q E_{16}=-4\epsilon Q\), and a one-loop color-singlet bubble pole
-  \(g^2/(16\pi^2\epsilon)\) therefore produces a finite physical
-  Wilson-coefficient shift.
+  \(\Pi_Q E_{16}=-4\epsilon Q\).  In the Abelian spectator-exchange graph,
+  the Dirac numerator produces \(O_3\), the angular average and scalar pole
+  give the residue \(2g^2/(d\,16\pi^2)\), and evanescent poles therefore
+  produce finite physical Wilson-coordinate shifts after subtraction.
 
 Independent construction:
 - The heavy-kernel identity is checked as an exact rational identity and as a
@@ -41,8 +42,10 @@ Independent construction:
   coefficients, source/composite/Jacobian terms, and the tree four-point
   kernel on and away from the external mass shell.
 - The evanescent check computes the chiral triple-gamma projection coefficient,
-  the color-singlet one-loop bubble pole coefficient, the finite projection
-  shift, and its compensation under a changed evanescent representative.
+  the Abelian-exchange graph residue, the complete projected pole, the finite
+  projection shift from the evanescent subtraction, the compensating
+  \(O(\epsilon)\) graph-residue term, and the finite countershift under a
+  changed evanescent representative.
 
 Imported assumptions:
 - Euclidean low-energy kinematics with q^2 >= 0 and q^2 <= Q^2 << M^2.
@@ -57,10 +60,11 @@ Imported assumptions:
   external pole condition p_i^2=-m^2.
 - The evanescent example uses the conventional four-fermion physical operator
   \(Q=(\bar\psi_1\gamma_\mu P_L\psi_2)(\bar\psi_3\gamma^\mu P_L\psi_4)\), the
-  triple-gamma representative \(O_3\), \(d=4-\epsilon\), a color-singlet
-  spectator bubble, and the stated chiral Dirac projection convention.  It
-  fixes a convention for the finite shift rather than a universal sign
-  convention.
+  triple-gamma representative \(O_3\), \(d=4-\epsilon\), a Feynman-gauge
+  Abelian spectator field coupled to the two right fermion legs, an off-shell
+  Euclidean infrared separator, and the stated chiral Dirac projection
+  convention.  It fixes a convention for the finite shift rather than a
+  universal sign convention.
 
 Negative controls:
 - Reversing the heavy-kernel remainder sign fails the exact identity.
@@ -74,9 +78,11 @@ Negative controls:
   field-redefinition equality of the on-shell four-point kernel; dropping the
   Jacobian, source transform, or composite transform is also detected.
 - Prematurely quotienting \(E_{16}\) misses the finite shift, using the wrong
-  triple-gamma projection coefficient changes the shift, and changing the
-  evanescent representative without the compensating physical coefficient
-  shift changes the projected amplitude.
+  triple-gamma projection coefficient or the closed-trace Gram projection
+  changes the shift, dropping the \(O(\epsilon)\) part of the exchange-graph
+  residue leaves a finite mismatch, and changing the evanescent representative
+  without the compensating physical coefficient shift changes the projected
+  amplitude.
 
 Scope boundary:
 - This script checks finite algebra and bookkeeping for the EFT prediction
@@ -348,35 +354,91 @@ def check_scalar_eft_field_redefinition_observable() -> None:
 
 def check_evanescent_mixing_projection() -> None:
     eps, g2 = sp.symbols("eps g2", nonzero=True)
-    C_Q, C_E, alpha = sp.symbols("C_Q C_E alpha", nonzero=True)
+    C_Q, C_E, alpha, u = sp.symbols("C_Q C_E alpha u", nonzero=True)
     d = 4 - eps
 
     # Four-fermion basis:
     # Q = (bar psi_1 gamma_mu P_L psi_2)(bar psi_3 gamma^mu P_L psi_4)
     # O3 = (bar psi_1 gamma_mu gamma_nu gamma_rho P_L psi_2)
     #      (bar psi_3 gamma^mu gamma^nu gamma^rho P_L psi_4).
-    # The chiral Dirac projector onto Q gives Pi_Q O3 = 4 d Q.
-    dirac_projection_o3 = 4 * d
+    # The open-spinor NDR projector keeps the left-current tensor and carries
+    # the Clifford reduction through d dimensions: 4 g_nu^nu Q = 4 d Q.
+    chiral_open_spinor_factor = sp.Integer(4)
+    lorentz_trace = d
+    dirac_projection_o3 = chiral_open_spinor_factor * lorentz_trace
     assert_zero("triple-gamma projection is 16 - 4 epsilon", dirac_projection_o3 - (16 - 4 * eps))
+
+    # A closed-spinor trace Gram projection is a different finite scheme.  The
+    # numerator contraction gives
+    #   (g_mn g_ra - g_mr g_na + g_ma g_nr)^2 = 3 d^2 - 2 d,
+    # while the Q normalization gives d, hence 3 d - 2 rather than 4 d.
+    trace_pairing_projection_o3 = (3 * d**2 - 2 * d) / d
+    assert_zero("closed trace-pairing projection coefficient", trace_pairing_projection_o3 - (3 * d - 2))
+    assert_nonzero(
+        "trace-pairing projector is a distinct evanescent scheme",
+        trace_pairing_projection_o3 - dirac_projection_o3,
+    )
 
     evanescent_projection = dirac_projection_o3 - 16
     assert_zero("E_16 projects as -4 epsilon Q", evanescent_projection + 4 * eps)
     assert_nonzero("wrong four-dimensional projection misses O(epsilon) term", evanescent_projection)
 
-    # The color-singlet spectator bubble leaves the Kronecker color tensor
-    # delta_{a b} delta_{c d} unchanged.  The scalar integral
-    # mu^epsilon int d^d l/(2 pi)^d (l^2 + Delta)^(-2) has UV pole
-    # 2/(16 pi^2 epsilon) in the d=4-epsilon convention; the graph includes a
-    # symmetry/combinatoric factor 1/2, giving u = g^2/(16 pi^2).
+    # Abelian spectator exchange between the two right fermion legs has
+    # numerator
+    #   (bar psi_1 gamma_mu P_L /l gamma_alpha psi_2)
+    #   (bar psi_3 gamma^mu P_L /l gamma^alpha psi_4).
+    # The UV angular average l_lambda l_kappa -> l^2 g_{lambda kappa}/d
+    # turns this numerator into (l^2/d) O3.  The scalar integral
+    # mu^epsilon int d^d l/(2 pi)^d l^2/(l^2 + Delta)^3 has UV pole
+    # 2/(16 pi^2 epsilon) in the d=4-epsilon convention.
     color_factor = sp.Integer(1)
-    scalar_bubble_pole_numerator = sp.Integer(2)
-    graph_factor = sp.Rational(1, 2)
-    u = color_factor * graph_factor * scalar_bubble_pole_numerator * g2 / (16 * sp.pi**2)
-    assert_zero("color-singlet bubble pole coefficient", u - g2 / (16 * sp.pi**2))
+    angular_average = 1 / d
+    scalar_pole_numerator = sp.Integer(2)
+    graph_residue_d = color_factor * angular_average * scalar_pole_numerator * g2 / (16 * sp.pi**2)
+    assert_zero("Abelian exchange pole residue", graph_residue_d - 2 * g2 / (d * 16 * sp.pi**2))
+
+    complete_projected_pole_residue = sp.simplify(graph_residue_d * dirac_projection_o3)
+    assert_zero(
+        "complete projected Q pole residue",
+        complete_projected_pole_residue - 8 * g2 / (16 * sp.pi**2),
+    )
+
+    graph_residue_at_d4 = sp.limit(graph_residue_d, eps, 0)
+    assert_zero("d=4 split residue", graph_residue_at_d4 - g2 / (32 * sp.pi**2))
+
+    split_projected_pole = C_Q * graph_residue_at_d4 / eps * (16 + evanescent_projection)
+    complete_projected_pole = C_Q * graph_residue_d / eps * dirac_projection_o3
+    evanescent_graph_finite_shift = sp.limit(
+        C_Q * graph_residue_at_d4 / eps * evanescent_projection,
+        eps,
+        0,
+    )
+    assert_zero(
+        "Q-generated E_16 subtraction gives finite physical shift",
+        evanescent_graph_finite_shift + C_Q * g2 / (8 * sp.pi**2),
+    )
+
+    residue_compensation = sp.limit(
+        C_Q * 16 * (graph_residue_d - graph_residue_at_d4) / eps,
+        eps,
+        0,
+    )
+    assert_zero(
+        "O(epsilon) graph residue compensates evanescent split",
+        evanescent_graph_finite_shift + residue_compensation,
+    )
+    assert_zero(
+        "split projection plus residue compensation recovers full graph",
+        complete_projected_pole - split_projected_pole - residue_compensation,
+    )
+    assert_nonzero(
+        "dropping O(epsilon) graph residue leaves finite mismatch",
+        complete_projected_pole - split_projected_pole,
+    )
 
     pole_projection = C_E * u / eps * evanescent_projection
     finite_shift = sp.limit(pole_projection, eps, 0)
-    assert_zero("E_16 pole projection gives finite physical shift", finite_shift + 4 * C_E * u)
+    assert_zero("separate E_16 pole projection gives finite physical shift", finite_shift + 4 * C_E * u)
 
     premature_quotient_shift = sp.Integer(0)
     assert_nonzero(

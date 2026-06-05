@@ -1445,63 +1445,139 @@ and the evanescent representative
 \[
   E_{16}=O_3-16Q .
 \]
-With the usual anticommuting \(P_L\) convention for this example, the
-\(d\)-dimensional chiral Dirac projector onto \(Q\) gives
-\begin{equation}
-  \Pi_Q O_3 = 4d\,Q=(16-4\epsilon)Q,
+The projection must be a declared part of the subtraction scheme.  In the
+open-spinor NDR convention used here, \(\Pi_Q^{\rm os}\) is the linear
+projector on this two-tensor channel that keeps the left-current tensor and
+applies the \(d\)-dimensional Clifford algebra to the open spinor word:
+\[
+  \Pi_Q^{\rm os}Q=Q,
   \qquad
-  \Pi_Q E_{16}=-4\epsilon\,Q .
+  \Pi_Q^{\rm os}O_3
+  =
+  4\,g_\nu{}^\nu Q
+  =
+  4d\,Q .
+\]
+Thus \(A_3(d)=4d\) in this projector convention; it is the
+\(d\)-dimensional extension of the four-dimensional left-current identity
+\(O_3\mapsto16Q\).  A closed-spinor trace Gram projection would be a different
+scheme: with the same chiral projectors,
+\[
+  \frac{
+    \operatorname{tr}(\gamma_\mu\gamma_\nu\gamma_\rho P_L\gamma_\alpha P_R)
+    \operatorname{tr}(\gamma^\mu\gamma^\nu\gamma^\rho P_L\gamma^\alpha P_R)
+  }{
+    \operatorname{tr}(\gamma_\lambda P_L\gamma_\alpha P_R)
+    \operatorname{tr}(\gamma^\lambda P_L\gamma^\alpha P_R)
+  }
+  =
+  3d-2 .
+\]
+The representative \(E_{16}\) and the following subtraction use
+\(\Pi_Q^{\rm os}\).  Hence, for \(d=4-\epsilon\),
+\begin{equation}
+  \Pi_Q^{\rm os} O_3 = 4d\,Q=(16-4\epsilon)Q,
+  \qquad
+  \Pi_Q^{\rm os} E_{16}=-4\epsilon\,Q .
   \label{eq:eft-evanescent-triple-gamma-projection}
 \end{equation}
 Thus the \(O(\epsilon)\) physical projection is fixed here by the Clifford
-algebra coefficient \(\kappa=-4\).
+algebra coefficient \(\kappa=-4\) in this projection scheme.
 
-Now isolate a one-loop local UV subgraph whose color and Dirac numerators leave
-the inserted four-fermion tensor unchanged.  A color-singlet spectator bubble
-with an off-shell or mass infrared scale \(\Delta\) has
+Now compute an actual one-loop subgraph.  Couple an Abelian spectator gauge
+field \(A_\alpha\) in Feynman gauge to the two right legs of the two currents,
+\[
+  \mathcal L_{\rm int}
+  =
+  g A_\alpha
+  \left(\bar\psi_2\gamma^\alpha\psi_2
+        +\bar\psi_4\gamma^\alpha\psi_4\right),
+\]
+and evaluate the amputated off-shell four-point Green function with one \(Q\)
+insertion.  A common Euclidean off-shell scale \(\Delta\) separates the UV pole
+from infrared singularities.  The graph exchanging \(A_\alpha\) between the
+\(\psi_2\) and \(\psi_4\) legs has numerator
+\[
+  N(\ell)
+  =
+  (\bar\psi_1\gamma_\mu P_L\not\ell\gamma_\alpha\psi_2)
+  (\bar\psi_3\gamma^\mu P_L\not\ell\gamma^\alpha\psi_4).
+\]
+Rotational averaging in the UV region gives
+\[
+  \ell_\lambda\ell_\kappa\mapsto
+  \frac{\ell^2}{d}g_{\lambda\kappa},
+  \qquad
+  N(\ell)\mapsto\frac{\ell^2}{d}\,O_3 .
+\]
+Thus the Dirac numerator itself generates the triple-gamma tensor; the
+physical projection is applied only after the pole has been subtracted in the
+regulated basis.
+The scalar integral entering this graph is
 \begin{equation}
   \mu^\epsilon
   \int\frac{d^d\ell}{(2\pi)^d}
-  \frac{1}{(\ell^2+\Delta)^2}
+  \frac{\ell^2}{(\ell^2+\Delta)^3}
   =
   \frac{1}{16\pi^2}\frac{2}{\epsilon}
   +\hbox{finite},
   \qquad d=4-\epsilon .
   \label{eq:eft-evanescent-bubble-pole}
 \end{equation}
-With the graph factor \(1/2\), this gives the pole
+The color factor is one because all currents are Abelian singlets.  The pole of
+the exchange graph is therefore
 \begin{equation}
-  \Gamma_{\rm pole}^{(1)}[C_EE_{16}]
+  \Gamma_{\rm pole}^{(1)}[C_QQ]
   =
-  C_E\,\frac{g^2}{16\pi^2}\frac{1}{\epsilon}\,E_{16}.
+  C_Q\,\frac{g^2}{16\pi^2}\frac{2}{d\,\epsilon}\,O_3 .
   \label{eq:eft-evanescent-concrete-pole}
 \end{equation}
-Minimal subtraction in the regulated module, followed by the projection
-\eqref{eq:eft-evanescent-triple-gamma-projection}, leaves the finite physical
-piece
-\begin{equation}
-  \Pi_Q\Gamma_{\rm pole}^{(1)}[C_EE_{16}]
+Equivalently, if the pole residue is first expanded at \(d=4\),
+\[
+  \Gamma_{\rm pole}^{(1)}[C_QQ]
   =
-  -4\,C_E\,\frac{g^2}{16\pi^2}\,Q .
+  C_Q\,\frac{g^2}{32\pi^2}\frac{1}{\epsilon}
+  \left(E_{16}+16Q\right)
+  +
+  \hbox{finite scheme-coordinate terms}.
+\]
+The evanescent part of the subtraction has a finite physical projection:
+\begin{equation}
+  \Pi_Q^{\rm os}
+  \left[
+    C_Q\,\frac{g^2}{32\pi^2}\frac{1}{\epsilon}E_{16}
+  \right]
+  =
+  -\,C_Q\,\frac{g^2}{8\pi^2}\,Q .
   \label{eq:eft-evanescent-finite-coefficient-shift}
 \end{equation}
-In this convention the projected Wilson coefficient changes by
-\(\Delta C_Q=-4C_Eg^2/(16\pi^2)\).  If the representative is changed to
+The \(O(\epsilon)\) part of the graph residue \(2/d\) supplies the compensating
+finite coordinate in this particular graph, so the complete projected pole is
+\[
+  \Pi_Q^{\rm os}\Gamma_{\rm pole}^{(1)}[C_QQ]
+  =
+  8C_Q\,\frac{g^2}{16\pi^2}\frac{1}{\epsilon}\,Q .
+\]
+The lesson is the same one used in
+real weak-Hamiltonian calculations: evanescent counterterms and
+\(O(\epsilon)\) residues must be transported together.
+
+For a separately generated evanescent pole
+\(C_Eu\,E_{16}/\epsilon\), with \(u\) the computed graph residue, projection
+gives \(\Delta C_Q=-4C_Eu\).  If the representative is changed to
 \[
   E_\alpha=O_3-(16+\alpha\epsilon)Q,
 \]
-then \(\Pi_QE_\alpha=-(4+\alpha)\epsilon Q\) and the finite projected shift is
-\(-(4+\alpha)C_Eg^2/(16\pi^2)\).  The same four-dimensional amplitude is
+then \(\Pi_Q^{\rm os}E_\alpha=-(4+\alpha)\epsilon Q\) and the finite projected
+shift is \(-(4+\alpha)C_Eu\).  The same four-dimensional amplitude is
 obtained by the finite coefficient redefinition
 \[
-  C_Q\longmapsto C_Q+\alpha C_E\frac{g^2}{16\pi^2}.
+  C_Q\longmapsto C_Q+\alpha C_Eu .
 \]
-The numbers in this pedagogical graph are deliberately simple: the color factor
-is \(1\), the pole coefficient comes from the displayed loop integral, and the
-evanescent finite part comes from the triple-gamma projection.  In realistic
-weak-Hamiltonian bases the same bookkeeping is matrix-valued and
-scheme-dependent, but the order of operations is identical: subtract in the
-regulated basis, then project and compensate finite representative changes.
+In weak-Hamiltonian bases this bookkeeping becomes matrix-valued and
+scheme-dependent.  The order of operations is identical: define the projection,
+evaluate the regulated graph, subtract in the regulated basis, then project
+and compensate finite representative changes.
 
 This datum is the Wilsonian form of the operational EFT viewpoint: the local
 operators allowed by the symmetries must be paired with a power counting,

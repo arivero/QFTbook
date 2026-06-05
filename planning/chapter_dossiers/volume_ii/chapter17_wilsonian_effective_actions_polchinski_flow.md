@@ -183,9 +183,11 @@ The chapter must define and derive:
   sum treated as a noncanonical scheme-dependent splitting;
 - a one-loop evanescent mixing/projection example with the concrete
   four-fermion representative \(E_{16}=O_3-16Q\), the projection
-  \(\Pi_QE_{16}=-4\epsilon Q\), the color-singlet bubble pole
-  \(g^2/(16\pi^2\epsilon)\), and the finite Wilson-coefficient shift plus its
-  representative-change compensation;
+  \(\Pi_QE_{16}=-4\epsilon Q\), the closed-trace Gram projection as a distinct
+  scheme check, an Abelian spectator-exchange graph whose UV numerator
+  produces \(O_3\) with residue \(2g^2/(d\,16\pi^2)\), the finite evanescent
+  subtraction shift, the compensating \(O(\epsilon)\) graph-residue term, and
+  the representative-change countershift;
 - a power-counting paragraph that treats canonical, loop, chiral, velocity,
   large-\(N\), endpoint, or multi-parameter filtrations as error organizations
   only after counterterm closure, coefficient assumptions, logarithmic mixing,
@@ -493,9 +495,17 @@ The chapter must define and derive:
     setting; and boundary terms remain physical whenever boundary, defect, edge,
     charge, or boundary-observable data are part of the datum.
 21. The concrete \(E_{16}=O_3-16Q\) example has
-    \(\Pi_QO_3=(16-4\epsilon)Q\), hence \(\Pi_QE_{16}=-4\epsilon Q\); combined
-    with the color-singlet one-loop bubble pole \(g^2/(16\pi^2\epsilon)\), it
-    shifts \(C_Q\) by \(-4C_Eg^2/(16\pi^2)\), with finite countershifts under
+    \(\Pi_QO_3=(16-4\epsilon)Q\), hence \(\Pi_QE_{16}=-4\epsilon Q\), in the
+    open-spinor NDR projection; the closed-trace Gram pairing would give
+    \(3d-2\), so it is recorded as a distinct scheme.  The repaired one-loop
+    example uses an Abelian spectator exchange between the two right fermion
+    legs: the UV angular average sends the Dirac numerator to
+    \((\ell^2/d)O_3\), the scalar pole gives \(2/\epsilon\), and the complete
+    projected \(Q\)-pole residue is \(8g^2/(16\pi^2)\).  Splitting the pole
+    residue at \(d=4\) exposes a finite evanescent shift
+    \(-C_Qg^2/(8\pi^2)\), which is compensated by the \(O(\epsilon)\) part of
+    \(2/d\); a separately generated \(C_EuE_{16}/\epsilon\) pole shifts
+    \(C_Q\) by \(-4C_Eu\), with finite countershifts under
     \(E_{16}\mapsto O_3-(16+\alpha\epsilon)Q\).
 22. Power counting is a closure and error ledger: logs and anomalous-dimension
     mixing do not lower the declared order, and new kinematic regions require
@@ -716,6 +726,15 @@ The chapter must define and derive:
   \(g^2/(16\pi^2\epsilon)\), the finite shift
   \(-4C_Eg^2/(16\pi^2)\), and the compensating finite Wilson-coefficient
   redefinition under \(E_\alpha=O_3-(16+\alpha\epsilon)Q\).
+- 2026-06-05 issue #836 pass: upgraded the evanescent example from a scalar
+  spectator-pole placeholder to an explicit Abelian spectator-exchange graph.
+  The manuscript now states the renormalizable spectator interaction, the
+  open-spinor projector and closed-trace-projection negative control, the
+  amputated four-point numerator, the UV angular average to \(O_3/d\), the
+  scalar \(2/\epsilon\) pole, the complete projected \(Q\)-pole residue, and
+  the finite evanescent subtraction plus \(O(\epsilon)\)-residue compensation.
+  The companion EFT check verifies these coefficients and keeps the
+  representative-change countershift as a separate evanescent-pole test.
 - 2026-06-05 issue #816 pass: completed the promised one-loop heavy-light
   observable matching.  The chapter now evaluates the regulated
   \(\overline{\rm MS}\) heavy bubble, derives \(c_H^{\overline{\rm MS}}=0\),
