@@ -2822,8 +2822,9 @@ Current checks:
   loop-amplitude bridge in Volume II, Chapter 6, including the massless
   \(\phi^4\) one-loop cut reconstruction, the incomplete-cut and
   four-dimensional-rational negative controls, the Yang--Mills MHV/all-plus
-  helicity and evanescent-probe ledger, the bubble IBP reduction, and the
-  bubble master differential-equation branch ledger, the two-master
+  helicity and evanescent-probe ledger including the five-gluon all-plus
+  rational template, the bubble IBP reduction, and the bubble master
+  differential-equation branch ledger, the two-master
   threshold-mixing/monodromy and regular-boundary negative controls, plus the
   Laurent-pole virtual-to-observable assembly check separating the finite hard
   remainder, real-radiation/subtraction cancellation, finite IR-scheme

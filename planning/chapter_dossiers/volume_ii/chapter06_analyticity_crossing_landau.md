@@ -25,9 +25,10 @@
   physical cuts versus algebraic generalized cuts, one-loop scalar-integral
   reconstruction, a complete massless \(\lambda\phi^4\) four-point cut
   reconstruction with negative controls, a Yang--Mills MHV/all-plus rational
-  term control, the bubble IBP/differential equation master calculation, and
-  a finite-remainder/observable assembly layer separating reconstructed
-  virtual amplitudes from infrared-safe physical observables.
+  term control including the five-point all-plus partial-amplitude template,
+  the bubble IBP/differential equation master calculation, and a
+  finite-remainder/observable assembly layer separating reconstructed virtual
+  amplitudes from infrared-safe physical observables.
 - Adds Steinmann sequential-discontinuity constraints as a scoped causal
   boundary-value statement, with channel-overlap definitions, sheet/order
   conventions, an overlapping versus compatible finite example, and explicit
@@ -110,7 +111,8 @@
 | \(\mu_\perp^2\) | squared loop momentum in the \(-2\epsilon\)-dimensional complement, invisible on four-dimensional cuts |
 | \(A_4^{(0)}(1^-,2^-,3^+,4^+)\) | color-ordered tree MHV four-gluon amplitude in the spinor-helicity convention used for the gauge-theory control |
 | \(I_4^{(D)}(s,t)\) | dimensionally regulated massless scalar box in the four-point MHV control |
-| \(C_{\rm loop}\), \(C_{\rm rat}\) | loop-normalization and all-plus rational-term constants, fixed only after color, particle-content, and loop-measure conventions are declared |
+| \(\operatorname{tr}_{-}(i j k l)\) | chiral spinor trace coordinate \(\langle i j\rangle[j k]\langle k l\rangle[l i]\) used in the five-point all-plus rational amplitude |
+| \(C_{\rm loop}\), \(C_{\rm rat}\), \(C_{5,\rm rat}\) | loop-normalization and all-plus rational-term constants, fixed only after color, particle-content, and loop-measure conventions are declared |
 | \(\mathbf I^{(1)}_\Lambda\) | one-loop infrared subtraction operator used to define the finite remainder in a declared regulator and finite subtraction convention |
 | \(\mathcal F^{(1)}_\Lambda\) | finite one-loop hard remainder after subtracting \(\mathbf I^{(1)}_\Lambda\mathcal A^{(0)}_\Lambda\) |
 | \(\mathcal R_\Lambda^{\rm sub}[W]\), \(\mathcal C_\Lambda^{\rm fact}[W]\) | real-emission/subtraction and factorization/matching pieces needed to assemble an infrared-safe observable for measurement \(W\) |
@@ -387,6 +389,19 @@
   is nonzero.  The missing data are \(\mu_\perp^2\) or massive-scalar
   continuation data, whose dimension-shifted integrals leave the rational
   term.
+- The same rational blind spot persists beyond four points.  The leading-color
+  five-gluon all-plus partial amplitude is recorded as
+  \[
+    C_{5,\rm rat}
+    \frac{\sum_{i<j<k<l}\operatorname{tr}_{-}(i j k l)}
+    {\langle12\rangle\langle23\rangle\langle34\rangle
+     \langle45\rangle\langle51\rangle}.
+  \]
+  Each trace term is little-group neutral, the cyclic denominator gives
+  all-plus weights, the total dimension is \(4-5=-1\), and strict
+  four-dimensional two-particle cuts still vanish by the tree helicity
+  selection rule.  The missing input is again \(D\)-dimensional or
+  massive-scalar unitarity data, not a local counterterm.
 - The bubble IBP family obeys
   \[
     0=(D-2a-b)I_{a,b}-bI_{a-1,b+1}+bQ^2I_{a,b+1},
@@ -474,8 +489,10 @@
   statements without additional hypotheses.
 - No claim that the new generalized-unitarity section completes all of issue
   #769: the scalar example and the MHV/all-plus helicity control close the
-  first one-loop workflow and rational-term boundary, while full nonabelian
-  state sums, multi-master systems, finite-field technology,
+  first one-loop workflow and rational-term boundary.  The five-point
+  all-plus template adds a genuine nonabelian one-loop partial amplitude
+  beyond four points, but full nonabelian cut-constructible state sums,
+  physical multi-scale integral-family solutions, finite-field technology,
   color--kinematics, and higher-loop generalized cuts remain future work.
 
 ## Audit Notes
@@ -605,3 +622,11 @@
   script checks the nilpotent residue, Fuchsian equation residual, diagonal
   shortcut failure, cut-only boundary ambiguity, and multi-master residual
   budget.
+- 2026-06-05 issue #769 five-point all-plus pass: extended the gauge-theory
+  rational-term control from the four-point warning to the leading-color
+  five-gluon all-plus partial-amplitude template.  The text records the
+  chiral trace numerator, all-plus denominator weights, strict \(D=4\)
+  two-particle-cut vanishing, and the need for \(D\)-dimensional or
+  massive-scalar unitarity data.  The companion script checks little-group
+  neutrality of each trace term, all-plus weights, mass dimension, cyclic
+  omitted-leg coverage, cut-invisibility, and the evanescent-probe power.

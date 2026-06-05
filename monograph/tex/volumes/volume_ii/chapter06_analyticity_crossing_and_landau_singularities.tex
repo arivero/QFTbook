@@ -2420,6 +2420,68 @@ amplitudes require \(D\)-dimensional information, massive unitarity, or an
 independent rational-term construction
 \cite{BernMorgan1996MassiveUnitarity,BrandhuberEtAl2005PureYMUnitarity}.
 
+\begin{controlledapproximation}[Five-point all-plus rational amplitude]
+\label{ca:five-point-all-plus-rational-amplitude}
+The four-point example is not an accident of low multiplicity.  At five
+points the leading-color pure Yang--Mills all-plus one-loop partial amplitude
+has the rational form
+\begin{equation}
+  A_{5,\mathrm{rat}}^{(1)}(1^+,2^+,3^+,4^+,5^+)
+  =
+  C_{5,\rm rat}\,
+  \frac{
+    \displaystyle
+    \sum_{1\le i<j<k<l\le5}
+    \operatorname{tr}_{-}(i j k l)}
+  {\langle12\rangle\langle23\rangle\langle34\rangle
+   \langle45\rangle\langle51\rangle},
+  \label{eq:five-point-all-plus-rational-amplitude}
+\end{equation}
+up to the common loop-measure, color, and particle-content normalization
+convention.  Here
+\begin{equation}
+  \operatorname{tr}_{-}(i j k l)
+  =
+  \langle i j\rangle[j k]\langle k l\rangle[l i]
+  \label{eq:five-point-all-plus-chiral-trace-coordinate}
+\end{equation}
+is the chiral spinor trace coordinate used in this color ordering.  Each term
+in the numerator is little-group neutral, the cyclic denominator contributes
+weight \(t_a^{-2}\) on every external leg, and the total mass dimension is
+\(4-5=-1\), the correct dimension for a five-gluon color-stripped partial
+amplitude.  The sum in
+\eqref{eq:five-point-all-plus-rational-amplitude} contains one term for each
+omitted external label and is the minimal cyclic all-plus rational structure
+in this convention \cite{BDK1996OneLoopQCD}.
+
+Every strict four-dimensional two-particle cut of
+\eqref{eq:five-point-all-plus-rational-amplitude} still vanishes.  A cut
+tree on either side has only positive-helicity external gluons besides the
+two internal cut legs.  If both internal helicities are negative on one side,
+the conjugate tree on the other side has no negative helicities.  If one
+internal helicity is negative on each side, both trees are one-minus trees.
+The three-point corner obeys the same conclusion: the side with a single
+external plus can be nonzero only for one of the two internal assignments,
+and then the opposite higher-point tree has too few negative helicities.  Thus
+the rational amplitude in
+\eqref{eq:five-point-all-plus-rational-amplitude} is invisible to the same
+strict \(D=4\) cut test which detected nothing at four points.
+
+The controlled reconstruction therefore requires an additional datum.  In
+\(D=4-2\epsilon\), the \(\mu_\perp^2\) part of the loop momentum behaves, on
+the cut, like a massive scalar circulating in the loop.  The all-plus
+amplitude is then recovered from massive-scalar cut trees or, equivalently,
+from dimension-shifted integrals whose \(\mu_\perp^4\) numerators leave a
+finite term after integration.  Formula
+\eqref{eq:five-point-all-plus-rational-amplitude} is consequently a
+five-point nonabelian amplitude, not a local counterterm and not a
+four-dimensional cut-constructible branch function.  It is also not yet an
+infrared-safe observable; after the virtual partial amplitude is reconstructed
+one still has to apply the finite-remainder and real-radiation assembly
+described in
+ControlledApproximation~\ref{ca:one-loop-reconstruction-observable-assembly}.
+\end{controlledapproximation}
+
 \subsection{IBP Reduction and the Bubble Master Equation}
 \label{subsec:ibp-bubble-master-equation}
 

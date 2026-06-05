@@ -6,11 +6,11 @@ Cutkosky discontinuities to generalized cuts, scalar-integral reconstruction,
 IBP reduction, and a master-integral differential equation.  This script
 checks the exact algebraic ledger behind the worked massless phi^4 example
 and the one-loop bubble family, then adds finite helicity and regulator
-bookkeeping for the Yang-Mills MHV/all-plus control example.  It also checks a
-finite two-master threshold-mixing model and the finite Laurent-pole ledger
-that turns a reconstructed virtual amplitude into a finite observable only
-after infrared subtraction, real radiation, and scheme transport have been
-assembled.
+bookkeeping for the Yang-Mills MHV/all-plus control examples, including the
+five-gluon all-plus rational template.  It also checks a finite two-master
+threshold-mixing model and the finite Laurent-pole ledger that turns a
+reconstructed virtual amplitude into a finite observable only after infrared
+subtraction, real radiation, and scheme transport have been assembled.
 
 Evidence contract.
 Target claims: the generalized-unitarity section of Volume II Chapter 6,
@@ -19,13 +19,17 @@ cut sets and four-dimensional blind spots, the bubble IBP identity, and the
 bubble master differential equation, plus the gauge-theory MHV box and
 all-plus rational-term comparison, the local two-master threshold-mixing
 datum in a Fuchsian differential system, and the virtual-to-observable finite
-remainder assembly.
+remainder assembly; additionally, the five-point all-plus rational amplitude
+has the correct little-group weights, mass dimension, cyclic term coverage,
+and strict four-dimensional cut invisibility.
 Independent construction: finite cut-signature matrices over rational
 numbers, an explicit identical-state symmetry factor, a nullspace model for
 local/rational terms invisible to four-dimensional cuts, and exact rational
 checks of the one-loop bubble IBP coefficients at several regulator values;
 spinor-bracket exponent ledgers for little-group weights and dimensions; and
 a finite four-gluon helicity enumeration for all-plus two-particle cuts;
+finite spinor-bracket power counting and helicity-cut enumeration for the
+five-gluon all-plus rational template;
 nilpotent rational matrix algebra for threshold monodromy and regular
 boundary constants; Laurent-pole arithmetic for virtual/real infrared
 cancellation and finite scheme transport.
@@ -40,9 +44,10 @@ local counterterms are invisible to cuts, and constructs two amplitudes with
 identical four-dimensional cuts but different D-dimensional rational probes;
 it also verifies that the all-plus one-loop rational structure is invisible
 to strict four-dimensional two-particle cuts but visible to a nonzero
-mu_perp^2 massive-scalar probe, and rejects virtual-only pole cancellation,
-omitted rational finite remainders, diagonal one-master threshold shortcuts,
-cut-only boundary reconstruction, and untransported finite IR-scheme shifts.
+mu_perp^2 massive-scalar probe, verifies the same rational blind spot at five
+points, and rejects virtual-only pole cancellation, omitted rational finite
+remainders, diagonal one-master threshold shortcuts, cut-only boundary
+reconstruction, and untransported finite IR-scheme shifts.
 Scope boundary: a pass checks the finite reconstruction and reduction
 bookkeeping; it does not compute a nonabelian helicity amplitude from Feynman
 graphs, prove unitarity from Wightman axioms, or solve a physical
@@ -264,8 +269,27 @@ def bracket_mass_dimension(
     return sum(angle_powers.values()) + sum(square_powers.values())
 
 
+def add_powers(*power_maps: BracketPowers) -> BracketPowers:
+    result: BracketPowers = {}
+    for power_map in power_maps:
+        for bracket, power in power_map.items():
+            result[bracket] = result.get(bracket, 0) + power
+    return {bracket: power for bracket, power in result.items() if power != 0}
+
+
 def four_gluon_tree_nonzero(helicities: tuple[int, int, int, int]) -> bool:
     negative_count = sum(1 for helicity in helicities if helicity == -1)
+    return negative_count == 2
+
+
+def plus_tree_possible_with_internal(
+    external_plus_count: int,
+    internal_helicities: tuple[int, int],
+) -> bool:
+    leg_count = external_plus_count + 2
+    negative_count = sum(1 for helicity in internal_helicities if helicity == -1)
+    if leg_count == 3:
+        return negative_count in {1, 2}
     return negative_count == 2
 
 
@@ -340,6 +364,78 @@ def check_gauge_theory_helicity_controls() -> None:
     assert_true(
         "all-plus massive-scalar probe sees evanescent sector",
         all_plus_massive_scalar_probe(Fraction(3, 5)) != 0,
+    )
+
+
+def check_five_gluon_all_plus_rational_template() -> None:
+    legs = (1, 2, 3, 4, 5)
+    denominator_angle: BracketPowers = {
+        (1, 2): -1,
+        (2, 3): -1,
+        (3, 4): -1,
+        (4, 5): -1,
+        (5, 1): -1,
+    }
+
+    trace_terms: list[tuple[int, BracketPowers, BracketPowers]] = []
+    for omitted in legs:
+        kept = tuple(leg for leg in legs if leg != omitted)
+        i, j, k, ell = kept
+        trace_angle = {(i, j): 1, (k, ell): 1}
+        trace_square = {(j, k): 1, (ell, i): 1}
+        trace_terms.append((omitted, trace_angle, trace_square))
+
+    assert_equal("five-point all-plus trace terms", len(trace_terms), 5)
+    assert_equal(
+        "five-point trace numerator covers each omitted leg",
+        {omitted for omitted, _, _ in trace_terms},
+        set(legs),
+    )
+
+    for omitted, trace_angle, trace_square in trace_terms:
+        assert_equal(
+            f"five-point trace term {omitted} little-group neutral",
+            little_group_weights(trace_angle, trace_square, legs),
+            (0, 0, 0, 0, 0),
+        )
+        full_angle = add_powers(denominator_angle, trace_angle)
+        assert_equal(
+            f"five-point all-plus term {omitted} little-group weights",
+            little_group_weights(full_angle, trace_square, legs),
+            (-2, -2, -2, -2, -2),
+        )
+        assert_equal(
+            f"five-point all-plus term {omitted} mass dimension",
+            bracket_mass_dimension(full_angle, trace_square),
+            -1,
+        )
+
+    nonzero_strict_cuts: list[tuple[int, int, int]] = []
+    for left_external_plus_count in range(1, 5):
+        right_external_plus_count = 5 - left_external_plus_count
+        for h1 in (-1, 1):
+            for h2 in (-1, 1):
+                left_possible = plus_tree_possible_with_internal(
+                    left_external_plus_count,
+                    (h1, h2),
+                )
+                right_possible = plus_tree_possible_with_internal(
+                    right_external_plus_count,
+                    (-h2, -h1),
+                )
+                if left_possible and right_possible:
+                    nonzero_strict_cuts.append((left_external_plus_count, h1, h2))
+    assert_equal("strict 4D five-gluon all-plus two-particle cuts", nonzero_strict_cuts, [])
+
+    assert_equal(
+        "five-point all-plus massive-scalar probe vanishes in 4D",
+        all_plus_massive_scalar_probe(Fraction(0)),
+        Fraction(0),
+    )
+    assert_equal(
+        "five-point all-plus evanescent probe power",
+        all_plus_massive_scalar_probe(Fraction(2, 3)),
+        Fraction(4, 9),
     )
 
 
@@ -580,6 +676,7 @@ def main() -> None:
     check_phi4_cut_reconstruction()
     check_four_dimensional_cut_blind_spot()
     check_gauge_theory_helicity_controls()
+    check_five_gluon_all_plus_rational_template()
     check_bubble_ibp_identity()
     check_branch_and_landau_ledger()
     check_two_master_threshold_mixing()
