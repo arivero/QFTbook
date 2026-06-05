@@ -203,7 +203,10 @@ GitHub issue #628.
   fields near the quark Fermi surface, derives the Fermi-surface measure and
   density of states, derives the tree-level patch action including the
   transverse curvature term, and computes the zero-temperature dense-quark
-  HDL Debye coefficient in the monograph trace convention.
+  HDL Debye coefficient in the monograph trace convention.  The section now
+  points back to the general finite-density Fermi-surface EFT framework in
+  Volume II, so the dense-QCD treatment is scoped as an application with
+  additional gauge-response and color-pairing input.
 - Derives the leading cold dense non-Fermi-liquid quark self-energy from
   Landau-damped magnetic exchange in HDET, including the trace-delta
   coefficient `lambda_NFL=g^2 C_F/(12 pi^2)`, the `SU(3)` specialization
@@ -398,6 +401,12 @@ GitHub issue #628.
   corrected the CFL baryon-phase compactness to remember the charge-two order
   stabilizer, and scoped the anomaly proposition to the lifted local/de Rham
   polynomial rather than a full torsion global anomaly statement.
+- 2026-06-05 issue #784 cross-reference pass: linked the HDET opening to the
+  new general Fermi-surface EFT section in Volume II.  The dossier records the
+  scope boundary: the dense-QCD material uses the general patch/RG/Luttinger
+  discipline but adds weak-coupling HDL gauge response, color factors,
+  pairing, and dense-QCD non-Fermi-liquid self-energy rather than serving as
+  the universal derivation.
 
 ## Anti-Wrapper Audit
 

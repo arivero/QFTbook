@@ -29,6 +29,12 @@
   source anchors for the operational EFT-prediction and heavy-light matching
   material.  The scalar one-loop closure example is a self-contained
   background-field pole calculation in the chapter's stated normalization.
+- `SRC-EXTERNAL-FERMI-SURFACE`: Polchinski's TASI Fermi-surface EFT notes,
+  Shankar's RG review, Luttinger--Ward/Luttinger, and Oshikawa's
+  flux-insertion argument, used as terminology and theorem-boundary anchors.
+  The chapter's finite-density section keeps the finite-regulator setup,
+  patch-RG shell calculation, Landau response status, and flux identity
+  logically separate.
 - `SRC-EXTERNAL-BOUNDS`: Polchinski's smooth-cutoff perturbative
   renormalizability argument, Salmhofer's rigorous RG framework, and
   Kopper--Muller-type perturbative cutoff estimates, together with
@@ -178,6 +184,30 @@ The chapter must define and derive:
   measure Jacobian, source term, and observable representative together, and
   the resulting warning that EOM operators may be removed from an on-shell
   matched basis only with the corresponding source/observable transformation;
+- a general finite-density Fermi-surface EFT section with a finite-volume
+  \(U(1)\)-charge datum, exact Green functions, density and Fermi-surface
+  diagnostics, and a strict separation of thermodynamic, zero-temperature, and
+  low-frequency limits;
+- a smooth patch cover of a Fermi surface with partition-of-unity fields,
+  normal/tangential coordinates, free patch propagator, the
+  Shankar--Polchinski shell scaling, a curvature-resolved scaling window, and
+  the patch density-of-states match for density/compressibility;
+- the interaction architecture for Fermi-surface EFT: generic phase-space
+  suppression, forward/Landau coordinates and response status, the Cooper
+  shell logarithm with \(O(\Lambda/E_F)\) remainder, the BCS eigenvalue flow
+  \(d\lambda/d\ell=-\lambda^2\), the attractive-channel instability scale, and
+  Pomeranchuk stability;
+- quasiparticle observable definitions through the retarded pole, including
+  residue, effective velocity, lifetime, Landau interaction, Ward-identity
+  scope, and failure zones;
+- theorem-status discipline for Luttinger counts: Luttinger--Ward functional
+  assumptions, Green-function zero caveats, exact finite-volume flux
+  momentum-shift algebra, the separate Fermi-liquid interpretation hypotheses,
+  and modified-count examples from broken translations, topological sectors,
+  Mott/zero surfaces, superconductors, and non-Fermi liquids;
+- non-Fermi-liquid boundary examples from gapless boson/gauge-field coupling,
+  with control parameters and formal scaling status separated from constructed
+  fixed-point claims, plus an explicit bridge to the dense-QCD HDET section;
 - a regulated operator-basis paragraph using a filtration by physical,
   evanescent, EOM, BRST/BV-exact, and boundary/defect sectors, with any direct
   sum treated as a noncanonical scheme-dependent splitting;
@@ -743,3 +773,14 @@ The chapter must define and derive:
   cancellation, and proves explicit first-omitted heavy-momentum bounds.  The
   companion EFT check now compares the full and EFT kernels directly instead
   of only differentiating a symbolic threshold-log coordinate.
+- 2026-06-05 issue #784 pass: added the general finite-density
+  Fermi-surface EFT section.  The new section is architecture-first: finite
+  \(U(1)\) regulator datum and exact Green functions; patch cover, no
+  double-counting, scaling, curvature window, and density/compressibility
+  matching; generic/forward/Cooper channel separation; one-loop Cooper shell
+  calculation with explicit remainder and BCS eigenvalue instability scale;
+  quasiparticle observables and Landau-response status; Luttinger--Ward and
+  flux-insertion routes kept distinct with assumptions; modified-count phases;
+  and controlled/non-controlled non-Fermi-liquid boundaries.  Added
+  `calculation-checks/fermi_surface_eft_checks.py` for density-of-states,
+  shell-log, BCS-flow, Pomeranchuk, and flux-momentum arithmetic checks.

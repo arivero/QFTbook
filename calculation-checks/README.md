@@ -300,6 +300,14 @@ Current checks:
   QCD shear, scalar and coupled diffusion, sound matching, and the
   momentum-projected baryon current which removes the convective Drude sector
   at finite density, and the CFL Goldstone count.
+- `fermi_surface_eft_checks.py`: finite checks for the general finite-density
+  Fermi-surface EFT section, including parabolic-band density-of-states
+  matching between microscopic and patch descriptions, the two-sided Cooper
+  shell logarithm with its \(O(\Lambda/E_F)\) Jacobian remainder scale, the
+  matrix BCS flow \(dU/d\ell=-U^2\) and attractive eigenchannel instability
+  scale, Landau compressibility/Pomeranchuk normalization, and exact
+  finite-volume flux-insertion momentum arithmetic with a topological-sector
+  modified-count bookkeeping example.
 - `qcd_dglap_checks.py`: exact rational checks for the Volume II DIS/DGLAP
   conventions, including the \(D_0=(1-x)^{-1}_+\) monomial moments, quark
   number conservation, quark/gluon momentum-column sum rules, the exact

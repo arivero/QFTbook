@@ -1658,6 +1658,482 @@ terms, and the chosen list of physical input quantities change unless they
 are carried through the same map.  Wilson coefficients are basis coordinates;
 matched observables are the basis-independent objects.
 
+\section{Fermi-Surface Effective Field Theory}
+\label{sec:fermi-surface-eft-patch-rg}
+
+A Fermi surface is not a small perturbation of the empty vacuum.  It is a
+finite-density state whose low-energy modes live near a codimension-one
+surface in momentum space.  The Wilsonian lesson of this chapter still applies,
+but the coordinate chart is different: normal residual momenta and frequency
+are scaled, tangential coordinates label nearby points on the Fermi surface,
+and only special four-fermion kinematics have logarithmic phase space.  This
+section records the general finite-density EFT datum behind the
+Shankar--Polchinski patch-RG analysis
+\cite{Polchinski1992FermiSurface,Shankar1994RGFermiLiquid} and used later in
+the dense QCD discussion of
+Section~\ref{sec:qcd-high-density-effective-theory}; dense QCD then adds gauge
+fields, hard-dense-loop response, color pairing, and the non-Fermi-liquid
+self-energy of Section~\ref{sec:qcd-non-fermi-liquid-self-energy}.
+
+\begin{definition}[Finite-regulator finite-density datum]
+\label{def:finite-density-fermi-regulator-datum}
+Fix a spatial dimension \(d\), a periodic box
+\(\Omega_L=\prod_i(\mathbb Z/L_i\mathbb Z)\), and a finite set of allowed
+momenta \(K_{\Lambda,L}\).  Let \(c_{k\alpha}\) be fermion modes, where
+\(\alpha\) is a finite spin, flavor, or band label.  A finite-regulator
+finite-density datum consists of:
+\begin{enumerate}
+  \item a self-adjoint Hamiltonian \(H_{\Lambda,L}\), invariant under a conserved
+  \(U(1)\) charge
+  \[
+    N=\sum_{k\in K_{\Lambda,L},\alpha}c^\dagger_{k\alpha}c_{k\alpha},
+    \qquad [H_{\Lambda,L},N]=0,
+  \]
+  together with the declared translation, rotation, lattice, spin, flavor, and
+  antiunitary symmetries;
+  \item a grand-canonical finite-volume state
+  \[
+    \langle O\rangle_{\beta,\mu,\Lambda,L}
+    =
+    \frac{\operatorname{Tr}\bigl(
+      O\,e^{-\beta(H_{\Lambda,L}-\mu N)}
+    \bigr)}
+    {\operatorname{Tr}e^{-\beta(H_{\Lambda,L}-\mu N)}}
+  \]
+  or a fixed-charge ground-state sector, with the order of limits stated;
+  \item the density
+  \[
+    n_{\beta,\mu,\Lambda,L}
+    =
+    \frac{1}{|\Omega_L|}
+    \langle N\rangle_{\beta,\mu,\Lambda,L};
+  \]
+  \item exact finite-regulator Green functions, for example
+  \[
+    G_{\alpha\beta}(\tau,k)
+    =
+    -\langle T_\tau c_{k\alpha}(\tau)c^\dagger_{k\beta}(0)
+      \rangle_{\beta,\mu,\Lambda,L}
+  \]
+  and their Matsubara values \(G_{\alpha\beta}(i\omega_n,k)\);
+  \item a finite-regulator Fermi-surface diagnostic.  At finite
+  \(L,\beta,\Lambda\) there is no theorem-level sharp surface.  One may use a
+  broadened spectral ridge
+  \(A_\eta(0,k)=-(1/\pi)\operatorname{Im}G^R(0+i\eta,k)\), or, after a
+  thermodynamic and zero-temperature limit has been constructed, a sign change
+  or zero of
+  \[
+    \det G^R(0,k)^{-1}
+    =
+    \det\bigl[-\varepsilon(k)+\mu-\Sigma^R(0,k)\bigr]
+  \]
+  in a band chart where that expression is meaningful.
+\end{enumerate}
+\end{definition}
+
+The limit order is part of the datum.  A common Fermi-liquid construction first
+keeps \(L,\beta,\Lambda\) finite, then takes the thermodynamic limit, then
+\(T=\beta^{-1}\downarrow0\), and only then asks for the low-frequency and
+low-residual-momentum asymptotics of retarded correlators.  Static
+thermodynamic limits and dynamic response limits need not commute.  Thus a
+compressibility, a zero-sound response, and an on-shell lifetime are different
+observables in the sense of Definition~\ref{def:eft-prediction-datum}, even
+when the same Landau parameter appears in their leading formulae.
+
+\begin{definition}[Patch cover of a smooth Fermi surface]
+\label{def:fermi-surface-patch-cover}
+Assume that the \(T=0\) diagnostic produces a smooth Fermi surface
+\(\mathcal F\) in a single band, with nonvanishing Fermi velocity
+\(v_F(k_F)=|\nabla_k\varepsilon_*(k_F)|\).  Choose a finite smooth partition of
+unity \(\{\rho_a\}\) on \(\mathcal F\),
+\[
+  \sum_a\rho_a(k_F)=1,\qquad 0\le \rho_a\le1,
+\]
+subordinate to coordinate charts.  In patch \(a\), write
+\[
+  k=k_F(\theta)+\ell_\perp n(\theta)+\ell_\parallel^i e_i(\theta),
+  \qquad i=1,\ldots,d-1,
+\]
+where \(n(\theta)\) is the outward normal and \(e_i(\theta)\) are tangent
+vectors.  The patch field is a regulated projection
+\[
+  \psi_a(\omega,\ell_\perp,\ell_\parallel)
+  =
+  \rho_a(\theta)^{1/2}
+  c_{\omega,k_F(\theta)+\ell_\perp n+\ell_\parallel^ie_i}.
+\]
+The square root is a bookkeeping choice: summing bilinears over patches gives
+\(\sum_a\rho_a=1\), so no Fermi-surface mode is counted twice.
+\end{definition}
+
+In a patch whose curvature radii are of order \(k_F\), the dispersion has the
+form
+\begin{equation}
+  \xi(k)
+  =
+  \varepsilon_*(k)-\mu
+  =
+  v_F(\theta)\ell_\perp
+  +
+  \frac12\,\mathcal K_{ij}(\theta)\ell_\parallel^i\ell_\parallel^j
+  +O(\ell_\perp^2,\ell_\perp|\ell_\parallel|^2/k_F,|\ell_\parallel|^3/k_F^2).
+  \label{eq:fermi-patch-dispersion-curvature}
+\end{equation}
+The free patch propagator is therefore
+\begin{equation}
+  G_{0,a}(i\omega,\ell_\perp,\ell_\parallel)
+  =
+  \frac{1}
+  {i\omega-v_F(\theta)\ell_\perp
+    -\frac12\mathcal K_{ij}(\theta)\ell_\parallel^i\ell_\parallel^j+\cdots}.
+  \label{eq:fermi-free-patch-propagator}
+\end{equation}
+For a shell of energy \(E\ll E_F\), the normal width is
+\(O(E/v_F)\).  The tangential width allowed before curvature changes the energy
+by \(O(E)\) is
+\begin{equation}
+  |\ell_\parallel|\lesssim (k_FE)^{1/2}.
+  \label{eq:fermi-patch-curvature-window}
+\end{equation}
+Two power-counting descriptions are useful.  In the Shankar--Polchinski shell
+RG, \(\omega\) and \(\ell_\perp\) scale as \(s\) while the point \(\theta\) on
+\(\mathcal F\) is a flavor-like label; patch widths are adjusted as the cutoff
+is lowered so that \eqref{eq:fermi-patch-curvature-window} remains valid.  In a
+single curvature-resolved patch, one instead assigns
+\[
+  \omega\sim s,\qquad \ell_\perp\sim s,\qquad
+  \ell_\parallel\sim s^{1/2},
+\]
+so the curvature term in \eqref{eq:fermi-patch-dispersion-curvature} is kept at
+the same order as \(v_F\ell_\perp\).  Dropping curvature is an additional
+linear-patch approximation, valid only with the patch-size remainder in
+\eqref{eq:fermi-patch-curvature-window} declared.
+
+The Fermi-surface density of states per internal species is
+\begin{equation}
+  \nu_F
+  =
+  \int_{\mathcal F}
+  \frac{\dd S_k}{(2\pi)^d\,v_F(k)}.
+  \label{eq:fermi-surface-density-of-states}
+\end{equation}
+For a free parabolic band \(\varepsilon(k)=k^2/(2m)\) with degeneracy \(g\),
+\[
+  n(\mu)
+  =
+  g\int_{\varepsilon(k)<\mu}\frac{\dd^dk}{(2\pi)^d},
+  \qquad
+  \frac{\partial n}{\partial\mu}
+  =
+  g\nu_F.
+\]
+Equivalently, for a small chemical-potential change
+\(|\delta\mu|\ll E_F\),
+\begin{equation}
+  \delta n
+  =
+  g\int_{\mathcal F}
+  \frac{\dd S_k}{(2\pi)^d v_F(k)}\,\delta\mu
+  +
+  O\!\left(\nu_F\frac{(\delta\mu)^2}{E_F}\right),
+  \label{eq:fermi-density-patch-match}
+\end{equation}
+after the thermodynamic \(T=0\) limit.  This is an asymptotic matching of a
+regulated observable between the microscopic and patch descriptions, not an
+independent many-body theorem.
+
+\paragraph{Four-fermion kinematics and channels.}
+Write the leading spin-suppressed four-fermion vertex in Fermi-surface
+coordinates as
+\[
+  \int
+  \psi^\dagger_1\psi^\dagger_2\psi_3\psi_4\,
+  V(\theta_1,\theta_2;\theta_3,\theta_4)
+  \delta(k_1+k_2-k_3-k_4).
+\]
+Tree-level shell scaling makes the smooth vertex marginal as a function on the
+Fermi surface, but the loop phase space is channel-dependent.  Four generic
+points on \(\mathcal F\) do not remain on \(\mathcal F\) after the loop momentum
+is moved through a thin normal shell while total momentum is conserved.  Their
+renormalization is therefore a smooth finite transport of the vertex coordinate,
+with no leading logarithm.  The two exceptional loci are:
+\[
+  \text{forward/Landau:}\quad
+  (\theta_3,\theta_4)=(\theta_1,\theta_2),
+  \qquad
+  \text{Cooper:}\quad
+  \theta_2=\bar\theta_1,\ \theta_4=\bar\theta_3,
+\]
+where \(\bar\theta\) denotes the antipodal point for an inversion-symmetric
+surface.  The forward channel defines the Landau interaction
+\(f_{\alpha\beta;\gamma\delta}(\theta,\theta')\).  Its leading fixed-point role
+is to change quasiparticle energies and response functions.  The Cooper channel
+has a logarithmic particle-particle shell integral and is the channel in which a
+weak attractive eigenvalue becomes an instability.
+
+\begin{controlledapproximation}[One-loop Cooper shell with remainder]
+\label{ca:cooper-shell-remainder}
+Assume a smooth Fermi surface, weak short-range interactions, external
+frequencies and residual momenta bounded by \(E\), and a shell
+\(\Lambda e^{-\delta\ell}<|\xi|<\Lambda\) with
+\(E\ll\Lambda\ll E_F\).  Let
+\[
+  \dd\widehat\mu_F(k)
+  =
+  \frac{1}{\nu_F}
+  \frac{\dd S_k}{(2\pi)^d v_F(k)}
+\]
+be the normalized Fermi-surface measure and define the dimensionless BCS kernel
+\(u(\theta,\theta')=\nu_F V_{\rm BCS}(\theta,\theta')\).  The particle-particle
+loop gives
+\begin{equation}
+  \frac{\dd u(\theta,\theta')}{\dd\ell}
+  =
+  -\int_{\mathcal F}\dd\widehat\mu_F(\theta'')\,
+  u(\theta,\theta'')u(\theta'',\theta')
+  +
+  O\!\left(u^3+\frac{\Lambda}{E_F}u^2\right).
+  \label{eq:fermi-bcs-kernel-rg}
+\end{equation}
+The displayed logarithm comes from the finite shell identity
+\begin{equation}
+\begin{aligned}
+  &\int_{\Lambda e^{-\delta\ell}<|\xi|<\Lambda}\dd\xi
+  \int\frac{\dd\omega}{2\pi}
+  \frac{1}{\omega^2+\xi^2}                                      \\
+  &\qquad =
+  \int_{\Lambda e^{-\delta\ell}<|\xi|<\Lambda}
+  \frac{\dd\xi}{2|\xi|}
+  =
+  \delta\ell+O((\delta\ell)^2).
+\end{aligned}
+  \label{eq:fermi-cooper-shell-log}
+\end{equation}
+The \(O(\Lambda/E_F)\) term records the Jacobian and curvature variation
+between the shell and the Fermi-surface measure.  Higher loops and competing
+channels are outside this one-loop perturbative statement.
+\end{controlledapproximation}
+
+Diagonalize the symmetric BCS kernel with respect to
+\(\dd\widehat\mu_F\):
+\[
+  \int\dd\widehat\mu_F(\theta')\,
+  u(\theta,\theta')\varphi_n(\theta')
+  =
+  \lambda_n\varphi_n(\theta).
+\]
+At the accuracy of \eqref{eq:fermi-bcs-kernel-rg},
+\begin{equation}
+  \frac{\dd\lambda_n}{\dd\ell}=-\lambda_n^2,
+  \qquad
+  \lambda_n(\ell)=\frac{\lambda_n(0)}{1+\lambda_n(0)\ell}.
+  \label{eq:fermi-bcs-eigenvalue-flow}
+\end{equation}
+An attractive eigenvalue is \(\lambda_n(0)<0\).  It reaches strong coupling at
+\begin{equation}
+  \ell_*=\frac{1}{|\lambda_n(0)|},
+  \qquad
+  E_*=\Lambda_0 e^{-\ell_*},
+  \label{eq:fermi-bcs-instability-scale}
+\end{equation}
+which is the Wilsonian signal of a BCS instability.  The scale
+\(E_*\) is not yet a superconducting gap calculation: the gap prefactor,
+collective modes, gauge fields, retardation, Coulomb effects, and order
+parameter are additional physics input.
+
+Forward interactions are encoded in the quasiparticle energy functional
+\[
+  \delta\varepsilon_\alpha(\theta)
+  =
+  \delta\varepsilon_\alpha^{(0)}(\theta)
+  +
+  \sum_\beta\int_{\mathcal F}\dd\widehat\mu_F(\theta')\,
+  f_{\alpha\beta}(\theta,\theta')\delta n_\beta(\theta').
+\]
+In a rotationally invariant three-dimensional spin-\(\frac12\) liquid, write
+dimensionless Landau parameters \(F_\ell^{s,a}\).  The Pomeranchuk stability
+conditions in the standard normalization are
+\begin{equation}
+  1+\frac{F_\ell^{s}}{2\ell+1}>0,
+  \qquad
+  1+\frac{F_\ell^{a}}{2\ell+1}>0.
+  \label{eq:fermi-pomeranchuk-stability}
+\end{equation}
+The compressibility and spin susceptibility then take the phenomenological
+Landau forms
+\begin{equation}
+  \kappa
+  =
+  \frac{\nu_F^*}{n^2(1+F_0^s)},
+  \qquad
+  \chi_s
+  =
+  \frac{\chi_0^*}{1+F_0^a},
+  \label{eq:fermi-landau-responses}
+\end{equation}
+where \(\nu_F^*\) is the quasiparticle density of states and \(\chi_0^*\) is
+the corresponding Pauli spin susceptibility before the \(F_0^a\) denominator,
+up to conventional degeneracy factors.  The Ward identity for the conserved
+\(U(1)\) charge constrains the density vertex and current vertex.  The use of a
+closed kinetic equation with a small number of Landau parameters is a
+phenomenological Fermi-liquid assumption unless it has been derived from a
+microscopic model in the stated response window.
+
+\paragraph{Quasiparticle observables.}
+When the retarded Green function has an isolated pole near the Fermi surface,
+write
+\begin{equation}
+  G^R(\omega,k_F+\ell_\perp n)
+  =
+  \frac{Z(\theta)}
+  {\omega-v_F^*(\theta)\ell_\perp
+    +\frac{i}{2\tau(\omega,\theta)}\operatorname{sgn}\omega}
+  +
+  G_{\rm inc}^R .
+  \label{eq:fermi-quasiparticle-pole}
+\end{equation}
+In a self-energy chart,
+\[
+  Z(\theta)
+  =
+  \left[
+    1-\partial_\omega\operatorname{Re}\Sigma^R(0,k_F(\theta))
+  \right]^{-1},
+  \qquad
+  v_F^*
+  =
+  Z\left[
+    v_F+\partial_{k_\perp}\operatorname{Re}\Sigma^R(0,k_F)
+  \right].
+\]
+A Fermi liquid has
+\(\operatorname{Im}\Sigma^R(\omega,k_F)=O(\omega^2+(\pi T)^2)\) in
+\(d\ge2\), with the familiar logarithmic qualifications in special two
+dimensional kinematics.  These formulae are conditional pole statements.  They
+fail when the residue vanishes, when the low-energy spectral weight is
+branch-cut dominated, when disorder or critical bosons destroy the lifetime
+hierarchy, or when the state is superconducting or otherwise not a normal
+\(U(1)\)-symmetric Fermi liquid.
+
+\paragraph{Luttinger counts: two routes, two status levels.}
+There is no single assumption-free formula called ``Luttinger's theorem'' in
+all finite-density QFTs.  The Luttinger--Ward route and the flux-insertion
+route share a density conclusion in ordinary Fermi liquids, but their inputs
+are different \cite{LuttingerWard1960,Luttinger1960,Oshikawa2000Luttinger}.
+
+The Luttinger--Ward route starts from a functional \(\Phi[G]\) whose functional
+derivative gives the exact self-energy and whose skeleton expansion or
+nonperturbative construction is invariant under a uniform frequency shift.  If
+the finite-temperature trace manipulations have a controlled
+thermodynamic-and-zero-temperature limit, if \(G^{-1}\) has the required
+analyticity, and if zeros or singularities away from the pole surface are
+absent or explicitly included, the density can be rewritten as a Fermi-volume
+sign count,
+\begin{equation}
+  n
+  =
+  g\int_{G(0,k)>0}\frac{\dd^dk}{(2\pi)^d}
+  \quad
+  \text{modulo filled bands and declared zero-surface terms}.
+  \label{eq:fermi-luttinger-ward-conditional-count}
+\end{equation}
+In this monograph, \eqref{eq:fermi-luttinger-ward-conditional-count} is a
+conditional Fermi-liquid consequence unless the existence, differentiability,
+frequency-shift invariance, analytic continuation, and order-of-limits
+hypotheses have been established in the model under discussion.
+
+The flux-insertion route contains an exact finite-volume algebraic identity.
+On a lattice torus, insert one \(2\pi\) unit of background \(U(1)\) flux through
+the \(x\)-cycle, and return the Hamiltonian to its original gauge by
+\[
+  U_x
+  =
+  \exp\!\left[
+    -\frac{2\pi i}{L_x}\sum_r x\,n_r
+  \right].
+\]
+With the translation convention
+\(T_xU_xT_x^{-1}=e^{2\pi iN/L_x}U_x\), a state with total charge \(N\) changes
+crystal momentum by
+\begin{equation}
+  \Delta P_x=\frac{2\pi N}{L_x}\quad (\operatorname{mod} 2\pi).
+  \label{eq:fermi-flux-momentum-shift}
+\end{equation}
+Equation~\eqref{eq:fermi-flux-momentum-shift} is exact finite-regulator
+momentum bookkeeping.  To identify it with a Fermi volume, one adds separate
+assumptions: adiabatic flux insertion within the same ground-state sector,
+unbroken \(U(1)\) and translation symmetry, absence of topological order that
+can absorb crystal momentum, a thermodynamic limit, and Fermi-liquid
+quasiparticles whose momenta are shifted across the Fermi surface.  Under those
+extra assumptions, the momentum balance gives the usual volume relation
+\[
+  n
+  =
+  g\frac{V_F}{(2\pi)^d}
+  \quad \text{modulo filled bands}.
+\]
+The finite-volume identity is the same algebraic backbone that appears in
+Lieb--Schultz--Mattis--Oshikawa--Hastings filling constraints, but the
+low-energy conclusion is different: here one assumes a compressible Fermi
+liquid; there one constrains gapped or symmetry-preserving phases.
+
+Modified counts occur when one of the interpretation hypotheses fails.  If
+translations break to a larger unit cell, the Brillouin zone folds and the
+density is counted modulo the enlarged cell.  In a fractionalized Fermi liquid,
+a topological sector may absorb part of
+\eqref{eq:fermi-flux-momentum-shift}; the visible electron Fermi volume then
+counts \(n-n_{\rm top}\), not the full microscopic charge density.  In a Mott
+regime, Green-function zeros may change the sign count in
+\eqref{eq:fermi-luttinger-ward-conditional-count} without producing a
+quasiparticle Fermi surface.  In a superconductor the \(U(1)\) symmetry whose
+flux was inserted is broken in the infrared, so the normal-state Fermi-volume
+interpretation is not the correct low-energy statement.  In a non-Fermi liquid,
+the exact flux momentum identity can remain valid while the quasiparticle
+picture used to convert it into a volume formula is unavailable.
+
+\paragraph{Non-Fermi-liquid boundaries.}
+Coupling a Fermi surface to a gapless boson or gauge field changes the scaling
+problem.  In a two-dimensional patch coupled to a Landau-damped transverse
+boson, a typical boson inverse propagator has the form
+\[
+  D^{-1}(\Omega,q_\parallel)
+  \simeq
+  q_\parallel^2+\gamma\frac{|\Omega|}{|q_\parallel|},
+\]
+and the low-energy scaling is
+\[
+  q_\parallel\sim b,\qquad q_\perp\sim b^2,\qquad \Omega\sim b^3 .
+\]
+The fermion self-energy then behaves formally as
+\[
+  \Sigma^R(\omega)\sim
+  i\,\operatorname{sgn}\omega\,|\omega|^{2/3}
+\]
+in the simplest controlled large-\(N\) or patch-scaling treatments, so
+\(\partial_\omega\Sigma\) diverges and the quasiparticle residue vanishes.  In
+cold dense QCD the analogous long-range magnetic interaction produces, in the
+weak-coupling HDL regime, the logarithmic behavior derived in
+Section~\ref{sec:qcd-non-fermi-liquid-self-energy}.  These are not generic
+proofs of constructed non-Fermi-liquid fixed points.  The control parameter
+must be named--weak gauge coupling at large chemical potential, large \(N\),
+epsilon expansion, dimensional continuation, or another regulator--and the
+text must say whether the result is a perturbative self-energy, a formal
+scaling ansatz, or a constructed fixed point.
+
+\begin{remark}[Claim statuses for finite-density EFT]
+\label{rem:fermi-claim-statuses}
+The exact statements in this section are the finite-regulator definitions and
+the flux momentum algebra \eqref{eq:fermi-flux-momentum-shift}.  The Cooper
+flow \eqref{eq:fermi-bcs-kernel-rg} is a one-loop shell calculation with the
+remainder displayed in Controlled
+Approximation~\ref{ca:cooper-shell-remainder}.  The quasiparticle pole,
+Landau response formulae, and Fermi-volume interpretations are conditional
+Fermi-liquid consequences or phenomenological relations with stated
+microscopic assumptions.  The non-Fermi-liquid scaling examples are
+controlled only in the separately declared weak-coupling, large-\(N\), epsilon,
+or dimensional regimes.
+\end{remark}
+
 \section{Heavy-Light Matching as a Prediction}
 \label{sec:heavy-light-eft-prediction}
 
