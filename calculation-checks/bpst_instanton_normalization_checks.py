@@ -182,6 +182,10 @@ relations
     the renormalized mass/source instanton functional has homogeneous
     source-coordinate RG transport, with the finite fermion determinant factor
     cancelling the anomalous running of det(M^0+J^0)
+    the one-instanton channel RG ledger combines the universal density,
+    mass/source determinant, finite fermion determinant factor, and external
+    projection normalization; finite-window residuals require a
+    noncancellation margin for relative control
     the dilute instanton gas gives the Poisson/Skellam theta cumulants
     chi_top=2 zeta and b2=-1/12 only after the one-instanton amplitude is
     promoted to a finite dilute activity
@@ -238,7 +242,8 @@ of the fused-source Bessel Mellin integral, finite cumulant telescopes,
 coefficient/operator transport matrices, exact retained size-shell
 stationarity equations, finite amplitude-sector isolation telescopes, and
 exact radial power-counting for two-body cluster relative-coordinate
-majorants.
+majorants, together with exact log-weight bookkeeping for the renormalized
+one-instanton channel ledger.
 Imported assumptions: the BPST background and zero-mode formulas, one-loop
 determinant coefficients, the trace-delta convention, and finite regulator
 truncations stated in the chapter.
@@ -256,6 +261,9 @@ diffusion,
 finite one-body activities mistaken for a finite dilute-gas cluster
 coefficient, signed relative-kernel cancellation mistaken for an absolute
 Mayer bound,
+mass/source zero-mode determinants or local operators mistaken for complete
+renormalized instanton channel coordinates, and small signed retained windows
+mistaken for good relative control without a noncancellation margin,
 vacuum determinant calibration substituted for a source-dependent fluctuation
 bound, signed fluctuation-cumulant cancellations,
 hard-only and screening-only shell substitutions in the mixed size-majorant
@@ -2036,6 +2044,99 @@ def check_instanton_mass_source_rg_transport() -> None:
         "chiral anomaly keeps theta plus arg det M invariant",
         anomalous_chiral_arg_shift + anomalous_chiral_theta_shift,
         Fraction(0),
+    )
+
+
+def check_one_instanton_channel_rg_ledger() -> None:
+    # The full channel ledger combines the universal density, the zero-mode
+    # source functional, and the external operator/projection normalization.
+    # Each component has a nonzero log transport; the assembled channel is the
+    # object with the declared Callan-Symanzik covariance.
+    b0 = Fraction(29, 3)
+    universal_density_log_weight = b0 - b0
+    assert_equal(
+        "universal instanton density one-loop RG cancellation",
+        universal_density_log_weight,
+        Fraction(0),
+    )
+    assert_equal(
+        "omitting the instanton determinant logarithm is not RG neutral",
+        -b0 == Fraction(0),
+        False,
+    )
+
+    gamma_m = Fraction(5, 13)
+    flavor_count = 3
+    source_determinant_weight = -flavor_count * gamma_m
+    finite_fermion_factor_weight = flavor_count * gamma_m
+    assert_equal(
+        "source determinant and finite fermion factor cancel in channel ledger",
+        source_determinant_weight + finite_fermion_factor_weight,
+        Fraction(0),
+    )
+    assert_equal(
+        "mass/source determinant alone is not the channel RG object",
+        source_determinant_weight == Fraction(0),
+        False,
+    )
+
+    for source_derivatives in range(flavor_count + 1):
+        mass_minor_degree = flavor_count - source_derivatives
+        differentiated_coefficient_weight = (
+            finite_fermion_factor_weight
+            - mass_minor_degree * gamma_m
+        )
+        external_projection_weight = -source_derivatives * gamma_m
+        assert_equal(
+            f"{source_derivatives}-source channel RG covariance is paired",
+            differentiated_coefficient_weight + external_projection_weight,
+            Fraction(0),
+        )
+
+    # Absolute residual control of a signed channel needs a noncancellation
+    # margin.  The same pointwise absolute logarithmic residual can be a small
+    # relative error in a healthy channel and a large relative error in a
+    # nearly cancelled channel.
+    retained_cells = [Fraction(3, 5), -Fraction(1, 10), Fraction(7, 20)]
+    retained_signed = sum(retained_cells, Fraction(0))
+    retained_mass = sum(abs(cell) for cell in retained_cells)
+    kappa = abs(retained_signed) / retained_mass
+    eta = Fraction(1, 20)
+    worst_signed_delta = eta * retained_mass
+    assert_equal("channel RG ledger retained signed window", retained_signed, Fraction(17, 20))
+    assert_equal("channel RG ledger retained absolute mass", retained_mass, Fraction(21, 20))
+    assert_equal("channel RG ledger noncancellation margin", kappa, Fraction(17, 21))
+    assert_equal(
+        "channel RG residual relative bound",
+        worst_signed_delta / abs(retained_signed),
+        eta / kappa,
+    )
+
+    canceled_cells = [Fraction(1), -Fraction(99, 100)]
+    canceled_signed = sum(canceled_cells, Fraction(0))
+    canceled_mass = sum(abs(cell) for cell in canceled_cells)
+    canceled_kappa = abs(canceled_signed) / canceled_mass
+    assert_equal("nearly canceled channel margin", canceled_kappa, Fraction(1, 199))
+    assert_equal(
+        "nearly canceled channel amplifies the same absolute RG residual",
+        eta / canceled_kappa > 100 * eta / kappa,
+        True,
+    )
+
+    # Moving the Wilsonian size split is a boundary-flux identity, not the
+    # renormalization-scale cancellation of the universal density.
+    size_boundary_flux = Fraction(3, 17)
+    short_size_flow = -size_boundary_flux
+    long_size_flow = size_boundary_flux
+    assert_equal(
+        "short and long instanton size-window RG ledger flux cancels",
+        short_size_flow + long_size_flow,
+        Fraction(0),
+    )
+    assert_equal(
+        "size-factorization flux is not the one-loop universal density RG weight",
+        size_boundary_flux == universal_density_log_weight,
+        False,
     )
 
 
@@ -5759,6 +5860,7 @@ def main() -> None:
     check_light_fermion_reference_amplitude_calibration()
     check_instanton_finite_scheme_transport_bound()
     check_instanton_mass_source_rg_transport()
+    check_one_instanton_channel_rg_ledger()
     check_proper_time_fluctuation_four_fermion_amplitude()
     check_proper_time_determinant_residual_window()
     check_instanton_source_typing_and_differentiation()

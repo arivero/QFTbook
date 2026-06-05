@@ -6055,6 +6055,92 @@ magnitude of \(M\).  The anomalous flavor-singlet chiral rotation changes
 \(\arg\det M\) and \(\theta\) in opposite directions.
 \end{proof}
 
+\begin{controlledapproximation}[Renormalized one-instanton channel ledger]
+\label{ca:one-instanton-channel-rg-ledger}
+Fix a finite one-instanton size/orientation window and a source or observable
+channel \(\mathcal X\).  After the finite-regulator determinant and zero-mode
+source functional have been paired, the retained Euclidean kernel may be
+written in the channel form
+\begin{equation}
+  K_{\mathcal X}^{\rm win}(z;\mu)
+  =
+  C_{\mathcal S}\,
+  \frac{(\mu\rho)^{b_0}}{\rho^5}\,
+  \ee^{-X_{\mathcal S}(\mu)+\ii\theta}\,
+  \mathcal V_{\rm inst}^{0}(z;M,J,\mu)\,
+  \mathcal P_{\mathcal X}(z;\mu),
+  \qquad
+  X_{\mathcal S}=\frac{8\pi^2}{g_{\mathcal S}^2},
+  \label{eq:one-instanton-channel-rg-ledger-kernel}
+\end{equation}
+up to the declared determinant, zero-mode, source-matching, endpoint, and
+projection residuals.  Here
+\(\mathcal V_{\rm inst}^{0}\) is the mass/source determinant functional in
+\eqref{eq:instanton-renormalized-source-functional}, while
+\(\mathcal P_{\mathcal X}\) denotes the external source, OPE, hadronic, or
+spectral projection coordinate in the same renormalized convention.
+
+The scale test for \eqref{eq:one-instanton-channel-rg-ledger-kernel} has two
+independent cancellations.  First,
+\[
+  \left(\mu\partial_\mu+\beta(g)\partial_g\right)
+  \log\!\left((\mu\rho)^{b_0}\ee^{-X_{\mathcal S}(\mu)}\right)
+  =
+  0+O(g^2),
+\]
+which is the one-loop determinant logarithm and the running classical action
+acting together.  Second, Proposition~\ref{prop:instanton-mass-source-rg-transport}
+gives the source-functional cancellation between the finite light-fermion
+determinant factor and \(\det(M^0+J^0)\).  After \(r\) scalar-source
+derivatives, the retained coefficient has \(r\) units of scalar-density
+Callan--Symanzik covariance; this is cancelled only after pairing with the
+correspondingly normalized \(r\)-fold external operator or projection
+coordinate.  Thus the mass-saturated vacuum activity, a differentiated
+fermion or scalar correlator, and a Wilsonian short-distance OPE coefficient
+are not the same RG object.
+
+Let
+\[
+  J_{\mathcal X}(\mu)
+  =
+  \int_{\mathcal U_{\rm win}}K_{\mathcal X}^{\rm win}(z;\mu),
+  \qquad
+  M_{\mathcal X}(\mu)
+  =
+  \int_{\mathcal U_{\rm win}}|K_{\mathcal X}^{\rm win}(z;\mu)|,
+  \qquad
+  \kappa_{\mathcal X}=\frac{|J_{\mathcal X}|}{M_{\mathcal X}} .
+\]
+If a finite scale or scheme transport leaves absolute logarithmic residuals
+\(\epsilon_{\rm univ},\epsilon_{\rm src},\epsilon_{\rm proj},\epsilon_{\rm end}\)
+in the universal density, source functional, projection coordinate, and
+window endpoint estimate, and if \(\kappa_{\mathcal X}>0\), then the retained
+signed channel obeys
+\begin{equation}
+  \frac{|\Delta J_{\mathcal X}|}{|J_{\mathcal X}|}
+  \le
+  \frac{
+    \exp(\epsilon_{\rm univ}+\epsilon_{\rm src}
+      +\epsilon_{\rm proj}+\epsilon_{\rm end})-1
+  }{\kappa_{\mathcal X}} .
+  \label{eq:one-instanton-channel-rg-residual-bound}
+\end{equation}
+The noncancellation margin is part of the amplitude statement.  A channel in
+which the retained signed integral is small can have good absolute control
+and poor relative control.
+
+This ledger also separates the renormalization scale \(\mu\) from the
+Wilsonian size-factorization scale \(\mu_I\) of
+ControlledApproximation~\ref{ca:short-instanton-ope-coefficient}.  Moving
+\(\mu\) transports coupling, determinant, source, and operator coordinates.
+Moving \(\mu_I\) transfers the boundary flux through
+\(\rho=\mu_I^{-1}\) between the short-instanton coefficient and the
+long-distance remainder.  These two cancellations are different; neither is a
+license to quote a Pauli--Villars determinant constant, a local 't Hooft
+operator, or a mass/source determinant without the rest of the channel
+transport data.
+\end{controlledapproximation}
+
 \begin{proposition}[Proper-time determinant and zero-mode source functional]
 \label{prop:instanton-proper-time-four-fermion-amplitude}
 Fix a finite-regulator \(Q=1\) chart \(z=(a,\rho,U)\), a background gauge

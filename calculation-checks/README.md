@@ -561,7 +561,11 @@ Current checks:
   reference residuals amplified by that ratio and a noncancellation margin
   required, the homogeneous
   source-functional RG transport showing how the finite fermion determinant
-  factor cancels the anomalous running of \(\det(M^0+J^0)\), the c-number
+  factor cancels the anomalous running of \(\det(M^0+J^0)\), the
+  one-instanton channel RG ledger combining the universal density,
+  mass/source determinant, finite fermion determinant, and external
+  projection normalization with an explicit noncancellation-margin requirement
+  for relative residual control, the c-number
   external-wave-packet outer product has zero determinant while the
   differentiated Grassmann source coefficient is nonzero, the connected
   four-source extraction rule in which lower two-source terms in a finite

@@ -381,6 +381,7 @@
 | \(\mathcal D_A\) | finite singlet-axial Ward vector \(4\partial_\theta+2p\partial_s-2s\partial_p\) acting on the two-flavor local instanton source coordinates |
 | \(F_\Delta,\mathsf S_A[F]\) | average diagonal value of a tested susceptibility kernel and the propagated/spectral color-singlet two-point contribution kept separate from the local instanton contact term |
 | \(J_{ff'},J^0_{ff'},\mathcal V_{\rm inst}^0\) | renormalized chiral scalar source coordinate, its zero-mode projection, and the zero-mode source functional used to state the mass/source RG transport of the instanton vertex |
+| \(K_{\mathcal X}^{\rm win},J_{\mathcal X},M_{\mathcal X},\kappa_{\mathcal X}\) | retained one-instanton channel kernel, signed window integral, absolute window mass, and noncancellation margin used to test RG/scheme residuals for a physical channel |
 | \(\bar\chi_A,\chi_B\) | odd generating coordinates for differentiated external fermion slots in the instanton zero-mode sector |
 | \(R_{Af}(z),L_{fB}(z)\) | right-slot and left-slot zero-mode overlap matrices whose differentiated coefficient is \(\det R\,\det L\) |
 | \(G^{(4)}_{\eta,\Lambda,Q=1}\) | source-differentiated finite-regulator one-instanton contribution to the smeared four-fermion amplitude |
@@ -1843,3 +1844,13 @@
   relative tail, collision and tail borderline failures, signed-kernel
   cancellation failure, and the susceptibility shift only when the cluster
   coefficient is finite.
+- 2026-06-05 issue #597 channel-RG-ledger pass: added
+  `ca:one-instanton-channel-rg-ledger` after the mass/source RG transport
+  proposition.  The pass assembles the universal one-loop density, the
+  mass/source zero-mode determinant, the finite light-fermion determinant
+  factor, and the external projection normalization into one retained channel
+  test.  The BPST companion checks exact log-weight cancellation, rejects the
+  mass/source determinant or local operator as a complete channel coordinate,
+  separates renormalization-scale transport from the Wilsonian size-boundary
+  flux, and records the noncancellation margin needed to convert absolute
+  residuals into a relative amplitude bound.
