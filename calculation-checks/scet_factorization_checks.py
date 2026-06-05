@@ -26,7 +26,8 @@ Independent construction:
   model and as a symbolic two-state rotation formula.
 - The spectator-model obstruction is checked by an independent finite SU(2)
   color-trace computation, eikonal delta-coefficient bookkeeping, and a
-  fixed-recoil transverse numerator/denominator sample.
+  fixed-recoil mass-regulated transverse integral after analytic reduction of
+  the two Glauber transverse integrations.
 
 Imported assumptions:
 - The checks are finite-regulator or fixed-order algebraic tests of a proposed
@@ -36,7 +37,8 @@ Imported assumptions:
 - The finite Glauber Hilbert space is a diagnostic model for measurement
   commutation, not a construction of the QCD Glauber region.
 - The spectator-model check verifies the color/eikonal skeleton of the
-  Rogers-Mulders mechanism; it is not a numerical evaluation of the full
+  Rogers-Mulders mechanism and a compact fixed-regulator transverse
+  nonvanishing datum; it does not prove regulator removal or an all-order
   hadronic cross section.
 
 Negative controls:
@@ -47,7 +49,9 @@ Negative controls:
   intermediate split retains arbitrary split-scale dependence.
 - A noncommuting measurement gives a nonzero Glauber remainder.
 - Separate color-traced TMD factors have zero order-g single-loop anomaly
-  while the cross-hadron two-gluon color trace is nonzero.
+  while the cross-hadron two-gluon color trace is nonzero; a pointwise
+  nonzero spectator integrand value is not accepted as an integrated
+  nonvanishing proof.
 
 Scope boundary:
 - This script verifies finite algebra, fixed-order endpoint expansion, and
@@ -66,6 +70,7 @@ from pathlib import Path
 from typing import Mapping
 
 import sympy as sp
+from sympy.integrals.quadrature import gauss_legendre
 
 from check_utils import assert_leq as _assert_leq
 
@@ -739,47 +744,90 @@ def check_spectator_model_color_entanglement() -> None:
         8 * pi**2,
     )
 
-    def eps2(
-        left: tuple[sp.Rational, sp.Rational],
-        right: tuple[sp.Rational, sp.Rational],
-    ) -> sp.Rational:
-        return left[0] * right[1] - left[1] * right[0]
+    def eps_x(vector_y: float) -> float:
+        # epsilon_perp(s, v) for s = xhat.
+        return vector_y
 
-    def norm2(vector: tuple[sp.Rational, sp.Rational]) -> sp.Rational:
-        return vector[0] * vector[0] + vector[1] * vector[1]
+    def gauss_nodes(n: int, left: float, right: float) -> list[tuple[float, float]]:
+        nodes, weights = gauss_legendre(n, 30)
+        midpoint = 0.5 * (left + right)
+        half_width = 0.5 * (right - left)
+        return [
+            (midpoint + half_width * float(node), half_width * float(weight))
+            for node, weight in zip(nodes, weights)
+        ]
 
-    def minus(
-        left: tuple[sp.Rational, sp.Rational],
-        right: tuple[sp.Rational, sp.Rational],
-    ) -> tuple[sp.Rational, sp.Rational]:
-        return left[0] - right[0], left[1] - right[1]
+    def reduced_l_scalar(
+        k_squared: float,
+        glauber_mass_squared: float,
+        spectator_mass_squared: float,
+        feynman_nodes: list[tuple[float, float]],
+    ) -> float:
+        total = 0.0
+        for z, weight in feynman_nodes:
+            denominator = (
+                z * glauber_mass_squared
+                + (1.0 - z) * spectator_mass_squared
+                + z * (1.0 - z) * k_squared
+            )
+            if denominator <= 0.0:
+                raise AssertionError("Feynman-parameter denominator should be positive")
+            total += weight * (1.0 - z) / denominator
+        if total <= 0.0:
+            raise AssertionError("mass-regulated transverse l integral should have positive scalar weight")
+        return total
 
-    def plus(
-        left: tuple[sp.Rational, sp.Rational],
-        right: tuple[sp.Rational, sp.Rational],
-    ) -> tuple[sp.Rational, sp.Rational]:
-        return left[0] + right[0], left[1] + right[1]
+    def compact_regulated_spectator_integral(k_order: int) -> float:
+        q_x = 1.0
+        q_y = 0.0
+        transverse_window = 3.0
+        mu_g_squared = 0.45**2
+        k_mass_1_squared = 0.8**2
+        k_mass_2_squared = 0.9**2
+        spectator_mass_1_squared = 1.1**2
+        spectator_mass_2_squared = 1.3**2
+        feynman_nodes = gauss_nodes(16, 0.0, 1.0)
 
-    spin_1 = (sp.Rational(1), sp.Rational(0))
-    spin_2 = (sp.Rational(1), sp.Rational(0))
-    l_1 = (sp.Rational(0), sp.Rational(1))
-    l_2 = (sp.Rational(0), sp.Rational(1))
-    k_1 = (sp.Rational(0), sp.Rational(0))
-    q = (sp.Rational(1), sp.Rational(0))
-    numerator = eps2(spin_1, l_1) * eps2(spin_2, l_2)
-    denominator = (
-        norm2(l_1)
-        * norm2(l_2)
-        * (norm2(k_1) + 1)
-        * (norm2(minus(l_1, k_1)) + 2)
-        * (norm2(minus(q, k_1)) + 3)
-        * (norm2(minus(plus(l_2, k_1), q)) + 4)
-    )
-    assert_equal("fixed-recoil double-spin numerator", numerator, 1)
-    if denominator <= 0:
-        raise AssertionError("regulated transverse denominator should be positive")
-    if numerator / denominator == 0:
-        raise AssertionError("fixed-q spectator integrand sample should be nonzero")
+        total = 0.0
+        for k_x, weight_x in gauss_nodes(k_order, -transverse_window, transverse_window):
+            for k_y, weight_y in gauss_nodes(k_order, -transverse_window, transverse_window):
+                k_squared = k_x * k_x + k_y * k_y
+                q_minus_k_squared = (q_x - k_x) ** 2 + (q_y - k_y) ** 2
+                denominator = (k_squared + k_mass_1_squared) * (
+                    q_minus_k_squared + k_mass_2_squared
+                )
+                l1_weight = reduced_l_scalar(
+                    k_squared,
+                    mu_g_squared,
+                    spectator_mass_1_squared,
+                    feynman_nodes,
+                )
+                l2_weight = reduced_l_scalar(
+                    q_minus_k_squared,
+                    mu_g_squared,
+                    spectator_mass_2_squared,
+                    feynman_nodes,
+                )
+                spin_projection = eps_x(k_y) * eps_x(q_y - k_y)
+                if spin_projection > 0.0:
+                    raise AssertionError("chosen double-spin projection should be sign-definite")
+                total += (
+                    weight_x
+                    * weight_y
+                    * spin_projection
+                    * l1_weight
+                    * l2_weight
+                    / denominator
+                )
+        return total
+
+    coarse_integral = compact_regulated_spectator_integral(12)
+    refined_integral = compact_regulated_spectator_integral(20)
+    if refined_integral >= -0.2:
+        raise AssertionError("regulated integrated spectator contribution should be manifestly nonzero")
+    relative_gap = abs(refined_integral - coarse_integral) / abs(refined_integral)
+    if relative_gap > 0.02:
+        raise AssertionError("regulated spectator integral quadrature did not converge")
 
 
 def massive_vector_sudakov_area(log_q2_over_m2: Fraction) -> Fraction:
@@ -835,9 +883,9 @@ def main() -> None:
     print(
         "All SCET convolution, distributional-remainder, zero-bin, "
         "endpoint-expansion, scheme-covariance, RG-transport, soft-drop-scale, "
-        "soft-Wilson-line, Glauber-unitarity/breaking, spectator-model "
-        "color-entanglement, massive-vector Sudakov, and occurrence-ledger "
-        "checks passed."
+        "soft-Wilson-line, Glauber-unitarity/breaking, integrated "
+        "spectator-model color-entanglement, massive-vector Sudakov, and "
+        "occurrence-ledger checks passed."
     )
 
 
