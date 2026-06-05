@@ -81,7 +81,8 @@ Gromov--Witten and B-model outputs obtained after localization.
 - Works out the projective-space relation
   `QH^*(P^m)=C[H,Q]/(H^{m+1}-Q)` from the degree-one
   line-plus-three-marked-points instanton sector and its incidence
-  normalization.
+  normalization, with the scalar `Q` coefficient recovered by pairing with
+  the Poincare-dual detector `H^m`.
 - Defines descendants through cotangent-line classes on the universal curve
   and separates them from fixed-worldsheet descent observables.
 - Defines the B-model Dolbeault polyvector complex, trace pairing through
@@ -102,7 +103,9 @@ Gromov--Witten and B-model outputs obtained after localization.
   verifies the A-model pointwise energy identity, projective-space quantum
   cohomology relation and associativity, the projective-space degree
   selection rule, the degree-one projective worldsheet-instanton dimension
-  and product ledger, primary and descendant zero-mode saturation against the
+  and product ledger, reconstruction of projective-space product
+  coefficients from Poincare-dual Gromov-Witten pairings, primary and
+  descendant zero-mode saturation against the
   virtual top degree, the virtual-dimension formula, and the B-model top-form
   degree condition plus the B-model condition lattice separating the parent,
   local complex, perturbative anomaly, trace, and all-genus gates.
@@ -115,6 +118,10 @@ Gromov--Witten and B-model outputs obtained after localization.
   anomaly-line data; removed the false equivalence between `c1(TX)=0` and
   holomorphic triviality of `K_X`; added finite examples distinguishing
   topological/de Rham Chern-class tests from volume-form existence.
+- 2026-06-05 issue #807 projective quantum-product proof pass: corrected the
+  `P^m` relation proof so the scalar `Q` term is detected by pairing with
+  `H^m`, showed the other basis coefficients vanish by the degree rule, and
+  added a finite Poincare-pairing reconstruction check.
 
 ## Figure Ledger
 

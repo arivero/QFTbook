@@ -1421,6 +1421,9 @@ Current checks:
   energy identity, \(QH^\bullet(\mathbb P^m)\) with \(H^{m+1}=Q\),
   associativity and degree selection in projective-space quantum cohomology,
   the degree-one projective worldsheet-instanton dimension/incidence ledger,
+  reconstruction of projective-space quantum-product coefficients from
+  Poincar\'e-dual Gromov--Witten pairings, including the \(H^m\) detector for
+  the scalar \(Q\) term,
   A-model primary and descendant zero-mode saturation against the virtual top
   degree, the stable-map virtual-dimension formula, and the B-model top-form
   degree condition plus the B-model parent/anomaly/trace/all-genus condition

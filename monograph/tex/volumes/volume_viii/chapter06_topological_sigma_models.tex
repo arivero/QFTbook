@@ -754,10 +754,41 @@ projective degree-one map.  If the codimensions do not sum to \(2m+1\), the
 dimension rule gives zero.  This proves the displayed degree-one invariant.
 
 For \(d=0\), the invariant is the classical intersection number and gives
-\(H^a\star H^b=H^{a+b}\) when \(a+b\le m\).  If \(a+b=m+1\), pairing
-\(H^a\star H^b\) with \(1\) receives exactly the degree-one contribution above,
-so \(H^a\star H^b=Q\).  Taking \(a=m\) and \(b=1\) gives \(H^{m+1}=Q\).
-Associativity then determines all products.
+\(H^a\star H^b=H^{a+b}\) when \(a+b\le m\).  If \(a+b=m+1\), write
+\[
+  H^a\star H^b=\sum_{r=0}^{m} C_r(Q)H^r .
+\]
+The Poincar\'e pairing on \(\mathbb P^m\) satisfies
+\((H^r,H^c)=1\) exactly when \(r+c=m\), so \(C_r(Q)\) is detected by pairing
+with \(H^{m-r}\).  The defining formula for \(\star\) gives
+\[
+  (H^a\star H^b,H^{m-r})
+  =
+  \sum_{d\ge0}Q^d
+  \left\langle H^a,H^b,H^{m-r}\right\rangle_{0,3,d}.
+\]
+For \(d=0\), the degree rule would require
+\[
+  a+b+(m-r)=m,
+\]
+which is impossible because \(a+b=m+1\).  For \(d=1\), the degree rule
+requires
+\[
+  a+b+(m-r)=2m+1,
+\]
+hence \(r=0\).  For \(d\ge2\), the required degree is larger than
+\(a+b+m=2m+1\).  Therefore
+\[
+  (H^a\star H^b,H^m)=Q,
+  \qquad
+  (H^a\star H^b,H^{m-r})=0\quad (r>0),
+\]
+and nondegeneracy of the Poincar\'e pairing gives
+\[
+  H^a\star H^b=Q\cdot 1 .
+\]
+Taking \(a=m\) and \(b=1\) gives \(H^{m+1}=Q\).  Associativity then determines
+all products.
 \end{proof}
 
 For \(m=1\), this gives

@@ -153,6 +153,61 @@ def check_projective_degree_one_instanton_ledger() -> None:
                 )
 
 
+def projective_three_point_polynomial(m: int, a: int, b: int, c: int) -> dict[int, Fraction]:
+    """Return the q-polynomial for <H^a,H^b,H^c> in CP^m for basis powers."""
+
+    out: dict[int, Fraction] = {}
+    for degree in (0, 1):
+        if a + b + c == m + (m + 1) * degree:
+            out[degree] = Fraction(1)
+    return out
+
+
+def check_projective_product_reconstruction_from_pairings() -> None:
+    """Recover CP^m product coefficients from GW pairings and the dual basis."""
+
+    for m in range(1, 7):
+        qh = QuantumProjectiveSpace(m)
+        for a, b in product(range(m + 1), repeat=2):
+            reconstructed: dict[tuple[int, int], Fraction] = {}
+            for basis_power in range(m + 1):
+                detecting_power = m - basis_power
+                pairing_polynomial = projective_three_point_polynomial(
+                    m,
+                    a,
+                    b,
+                    detecting_power,
+                )
+                for q_degree, coefficient in pairing_polynomial.items():
+                    reconstructed[(q_degree, basis_power)] = coefficient
+
+            expected = qh.multiply(qh.basis(a), qh.basis(b))
+            assert_equal(
+                reconstructed,
+                expected,
+                f"CP^{m} product reconstructed from Poincare-dual GW pairings",
+            )
+
+            if a + b == m + 1:
+                assert_equal(
+                    projective_three_point_polynomial(m, a, b, m),
+                    {1: Fraction(1)},
+                    f"CP^{m} H^m detects the scalar q term for H^{a}*H^{b}",
+                )
+                assert_equal(
+                    projective_three_point_polynomial(m, a, b, 0),
+                    {},
+                    f"CP^{m} pairing with 1 is not the scalar q detector",
+                )
+                for basis_power in range(1, m + 1):
+                    detecting_power = m - basis_power
+                    assert_equal(
+                        projective_three_point_polynomial(m, a, b, detecting_power),
+                        {},
+                        f"CP^{m} non-scalar coefficient vanishes for H^{a}*H^{b}=q",
+                    )
+
+
 def check_a_model_zero_mode_selection() -> None:
     def virtual_complex_dimension(m: int, genus: int, marks: int, c1_beta: int) -> int:
         return (1 - genus) * (m - 3) + marks + c1_beta
@@ -327,6 +382,7 @@ def main() -> None:
     check_energy_identity()
     check_quantum_projective_space()
     check_projective_degree_one_instanton_ledger()
+    check_projective_product_reconstruction_from_pairings()
     check_a_model_zero_mode_selection()
     check_virtual_dimension_formula()
     check_b_model_degree_condition()
