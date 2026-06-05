@@ -11,14 +11,16 @@ Independent construction: direct finite Gibbs sums, direct Matsubara
 integration, exact boundary phases, finite Berezin-sign arithmetic, and a
 low-frequency positive spectral-slope family whose Euclidean transform is
 bounded while its transport-channel slope is fixed, including a
-finite-sum-rule-preserving compensator test.
+finite-sum-rule-preserving compensator test with a smooth integrable
+reference spectrum and a uniform positivity margin.
 Imported assumptions: the finite-regulator Gibbs trace, the bosonic spectral
 kernel stated in the chapter, positivity of Hermitian positive-frequency
 spectral weights, and the use of Euclidean norms as data-error topology.
 Negative controls: the Euclidean zero mode is not inferred from the
 commutator spectral density, finite Matsubara values are not accepted as
-stable spectral reconstruction, and small Euclidean error is not accepted as
-control of the low-frequency transport-channel slope.
+stable spectral reconstruction, small Euclidean error is not accepted as
+control of the low-frequency transport-channel slope, and a nonintegrable
+constant spectral floor is not used to preserve positivity.
 Scope boundary: these checks verify finite algebra and the explicit
 ill-conditioning construction; they do not prove a continuum reconstruction
 theorem, Carlson-class uniqueness, or the correctness of any numerical
@@ -268,13 +270,35 @@ def check_low_frequency_transport_instability() -> None:
         raise AssertionError("Euclidean bump should scale linearly with epsilon at small epsilon")
 
 
-def normalized_box_kernel_average(beta: float, tau: float, left: float, right: float) -> float:
-    intervals = 400
+def smooth_step_01(x: float) -> float:
+    if x <= 0.0:
+        return 0.0
+    if x >= 1.0:
+        return 1.0
+    left = math.exp(-1.0 / x)
+    right = math.exp(-1.0 / (1.0 - x))
+    return left / (left + right)
+
+
+def smooth_plateau_bump(omega: float, epsilon: float, eta_star: float) -> float:
+    if omega < 0.0 or omega >= epsilon:
+        return 0.0
+    transition = smooth_step_01((omega - epsilon / 3.0) / (epsilon / 3.0))
+    return eta_star * (1.0 - transition)
+
+
+def smooth_compensator(omega: float, center: float, radius: float) -> float:
+    x = (omega - center) / radius
+    if abs(x) >= 1.0:
+        return 0.0
+    return math.exp(-1.0 / (1.0 - x * x))
+
+
+def integrate_midpoint(function, left: float, right: float, intervals: int = 900) -> float:
     step = (right - left) / intervals
     total = 0.0
     for index in range(intervals):
-        omega = left + (index + 0.5) * step
-        total += euclidean_transport_kernel(beta, tau, omega) * step / (right - left)
+        total += function(left + (index + 0.5) * step) * step
     return total
 
 
@@ -291,38 +315,98 @@ def solve_two_by_two(matrix: list[list[float]], rhs: list[float]) -> list[float]
 def check_finite_sum_rule_preserving_instability() -> None:
     beta = 2.0
     eta_star = 0.7
+    epsilon0 = 1.0e-3
     epsilon = 1.0e-4
-    amplitude = 0.4
+    centers = [0.75, 1.25]
+    radius = 0.08
 
-    # Preserve the two smooth sum rules int sigma and int omega*sigma.
-    # The low-frequency bump is eta_star on (0, epsilon).  The compensators
-    # are normalized boxes away from zero, so their zeroth moment is one and
-    # their first moment is their midpoint.
-    compensator_boxes = [(0.7, 0.8), (1.2, 1.3)]
-    midpoints = [0.5 * (left + right) for left, right in compensator_boxes]
-    bump_moments = [eta_star * epsilon, eta_star * epsilon * epsilon / 2.0]
-    moment_matrix = [[1.0, 1.0], midpoints]
-    coefficients = solve_two_by_two(moment_matrix, [-bump_moments[0], -bump_moments[1]])
+    # Preserve the two smooth sum rules int sigma and int omega*sigma.  The
+    # bump is smooth on the positive half-line, equals eta_star near omega=0,
+    # and vanishes for omega >= epsilon.  The compensators are smooth
+    # compactly supported bumps in fixed intervals away from the origin.
+    moment_matrix = [
+        [
+            integrate_midpoint(
+                lambda omega, center=center: smooth_compensator(omega, center, radius),
+                center - radius,
+                center + radius,
+            )
+            for center in centers
+        ],
+        [
+            integrate_midpoint(
+                lambda omega, center=center: omega * smooth_compensator(omega, center, radius),
+                center - radius,
+                center + radius,
+            )
+            for center in centers
+        ],
+    ]
 
-    h_moment_0 = bump_moments[0] + coefficients[0] + coefficients[1]
-    h_moment_1 = (
-        bump_moments[1]
-        + coefficients[0] * midpoints[0]
-        + coefficients[1] * midpoints[1]
+    def compensated_data(trial_epsilon: float) -> tuple[list[float], list[float]]:
+        bump_moments = [
+            integrate_midpoint(
+                lambda omega: smooth_plateau_bump(omega, trial_epsilon, eta_star),
+                0.0,
+                trial_epsilon,
+            ),
+            integrate_midpoint(
+                lambda omega: omega * smooth_plateau_bump(omega, trial_epsilon, eta_star),
+                0.0,
+                trial_epsilon,
+            ),
+        ]
+        coefficients = solve_two_by_two(moment_matrix, [-bump_moments[0], -bump_moments[1]])
+        return bump_moments, coefficients
+
+    bump_moments, coefficients = compensated_data(epsilon)
+    h_moment_0 = bump_moments[0] + sum(
+        coefficients[index] * moment_matrix[0][index] for index in range(2)
+    )
+    h_moment_1 = bump_moments[1] + sum(
+        coefficients[index] * moment_matrix[1][index] for index in range(2)
     )
     assert_close(h_moment_0, 0.0, "compensated perturbation preserves zeroth sum rule")
     assert_close(h_moment_1, 0.0, "compensated perturbation preserves first moment sum rule")
 
-    base_floor = 1.0
-    affected_values = [eta_star]
-    for coefficient, (left, right) in zip(coefficients, compensator_boxes):
-        affected_values.append(coefficient / (right - left))
-    for value in affected_values:
-        if base_floor + amplitude * value <= 0.0 or base_floor - amplitude * value <= 0.0:
-            raise AssertionError("positive reference spectrum should keep both perturbation signs positive")
+    def h_value(omega: float, trial_epsilon: float, trial_coefficients: list[float]) -> float:
+        return smooth_plateau_bump(omega, trial_epsilon, eta_star) + sum(
+            trial_coefficients[index] * smooth_compensator(omega, centers[index], radius)
+            for index in range(2)
+        )
 
-    slope_plus = base_floor + amplitude * eta_star
-    slope_minus = base_floor - amplitude * eta_star
+    support_right = max(centers) + radius
+    reference_scale = 3.0
+
+    def reference_spectrum(omega: float) -> float:
+        return reference_scale * math.exp(-omega)
+
+    grid = [support_right * index / 2000.0 for index in range(2001)]
+    trial_epsilons = [epsilon0, epsilon0 / 2.0, epsilon0 / 4.0, epsilon]
+    h_sup = 0.0
+    coefficient_samples = {}
+    for trial_epsilon in trial_epsilons:
+        _, trial_coefficients = compensated_data(trial_epsilon)
+        coefficient_samples[trial_epsilon] = trial_coefficients
+        h_sup = max(
+            h_sup,
+            max(abs(h_value(omega, trial_epsilon, trial_coefficients)) for omega in grid),
+        )
+    positivity_margin = reference_spectrum(support_right)
+    amplitude = 0.5 * positivity_margin / h_sup
+    if not 0.0 < amplitude < positivity_margin / h_sup:
+        raise AssertionError("amplitude should obey the uniform positivity margin")
+
+    for trial_epsilon, trial_coefficients in coefficient_samples.items():
+        for omega in grid:
+            perturbation = h_value(omega, trial_epsilon, trial_coefficients)
+            plus = reference_spectrum(omega) + amplitude * perturbation
+            minus = reference_spectrum(omega) - amplitude * perturbation
+            if plus <= 0.0 or minus <= 0.0:
+                raise AssertionError("smooth integrable reference spectrum should keep both perturbation signs positive")
+
+    slope_plus = reference_spectrum(0.0) + amplitude * eta_star
+    slope_minus = reference_spectrum(0.0) - amplitude * eta_star
     assert_close(
         slope_plus - slope_minus,
         2.0 * amplitude * eta_star,
@@ -330,12 +414,31 @@ def check_finite_sum_rule_preserving_instability() -> None:
     )
 
     tau_samples = [0.25, 0.8, 1.5]
-    for tau in tau_samples:
-        euclidean_change = low_frequency_transport_bump(beta, tau, epsilon, eta_star)
-        for coefficient, (left, right) in zip(coefficients, compensator_boxes):
-            euclidean_change += coefficient * normalized_box_kernel_average(beta, tau, left, right)
-        if abs(euclidean_change) > 2.0e-3:
-            raise AssertionError("finite-sum-rule-preserving perturbation should remain Euclidean-small")
+
+    scaled_changes = []
+    for trial_epsilon in [epsilon0, epsilon0 / 2.0, epsilon0 / 4.0]:
+        trial_coefficients = coefficient_samples[trial_epsilon]
+        max_scaled_change = 0.0
+        for tau in tau_samples:
+            euclidean_change = integrate_midpoint(
+                lambda omega: h_value(omega, trial_epsilon, trial_coefficients)
+                * euclidean_transport_kernel(beta, tau, omega),
+                0.0,
+                trial_epsilon,
+            )
+            for center in centers:
+                euclidean_change += integrate_midpoint(
+                    lambda omega: h_value(omega, trial_epsilon, trial_coefficients)
+                    * euclidean_transport_kernel(beta, tau, omega),
+                    center - radius,
+                    center + radius,
+                )
+            max_scaled_change = max(max_scaled_change, abs(euclidean_change) / trial_epsilon)
+        scaled_changes.append(max_scaled_change)
+        if max_scaled_change > 20.0:
+            raise AssertionError("finite-sum-rule-preserving perturbation should remain Euclidean O(epsilon)")
+    if max(scaled_changes) > 2.0 * min(scaled_changes):
+        raise AssertionError("smooth compensated perturbation should have a stable O(epsilon) scale")
 
 
 def check_chemical_potential_twist() -> None:

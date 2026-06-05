@@ -626,15 +626,17 @@ after the thermodynamic and zero-frequency limits have been taken.
 
 This elementary bump is a positivity-only negative control; it changes any
 moment sum rule that sees the interval \((0,\varepsilon)\).  A fixed finite
-set of smooth sum rules does not remove the obstruction.  Let
-\(w_0,\ldots,w_m\) be smooth weights.  After discarding redundant
-constraints, choose smooth compensators \(\psi_0,\ldots,\psi_m\) supported
-away from \(\omega=0\) such that
+set of smooth sum rules does not remove the obstruction, but the positivity
+margin must be stated uniformly.  Fix \(\varepsilon_0>0\), let
+\(0<\varepsilon\le\varepsilon_0\), and let \(w_0,\ldots,w_m\) be smooth
+weights.  After discarding redundant constraints, choose smooth compensators
+\(\psi_0,\ldots,\psi_m\) supported in a fixed compact set separated from
+\([0,\varepsilon_0]\) such that
 \[
   M_{\ell j}=\int_0^\infty w_\ell(\omega)\psi_j(\omega)\,d\omega
 \]
-is invertible.  For a smooth bump \(b_\varepsilon\) supported in
-\((0,\varepsilon)\) with
+is invertible.  For a smooth half-line bump \(b_\varepsilon\), constant near
+the origin, vanishing for \(\omega\ge\varepsilon\), and satisfying
 \(\lim_{\omega\downarrow0}b_\varepsilon(\omega)=\eta_\ast\), set
 \begin{equation}
   c_j(\varepsilon)
@@ -656,14 +658,36 @@ exactly.  Since the bump has support of length \(O(\varepsilon)\), the
 coefficients \(c_j(\varepsilon)\) are \(O(\varepsilon)\).  Hence the
 Euclidean transform of \(h_\varepsilon\) is \(O(\varepsilon)\) on every
 interior Euclidean-time window, while \(h_\varepsilon\) has low-frequency
-slope \(\eta_\ast\).  If a reference positive slope \(\sigma_{\rm ref}\) is
-strictly positive on the bump and compensator supports, then
-\(\sigma_{\rm ref}\pm a h_\varepsilon\) remain positive for sufficiently
-small fixed \(a>0\), have identical values of the chosen finite sum rules,
-and have low-frequency slopes differing by \(2a\eta_\ast\).  Infinite moment
-data, or a physically derived analytic class, may of course add information;
-this finite-constraint construction only says that finitely many smooth sum
-rules do not by themselves stabilize the local transport slope.
+slope \(\eta_\ast\).  Choose now a smooth positive reference slope with
+acceptable ultraviolet falloff, for instance
+\(\sigma_{\rm ref}(\omega)=C\ee^{-\omega}\), and set
+\[
+  U=[0,\varepsilon_0]\cup\bigcup_j\operatorname{supp}\psi_j,
+  \qquad
+  c=\inf_{\omega\in U}\sigma_{\rm ref}(\omega)>0 .
+\]
+Also set
+\[
+  B=
+  \sup_{0<\varepsilon\le\varepsilon_0}
+  \|h_\varepsilon\|_\infty
+  <\infty ,
+\]
+which is finite because \(b_\varepsilon\) is uniformly bounded and
+\(c_j(\varepsilon)=O(\varepsilon)\) on the compact interval
+\((0,\varepsilon_0]\).  Any fixed amplitude
+\begin{equation}
+  0<a<\frac{c}{B}
+  \label{eq:thermal-finite-sum-rule-positivity-amplitude}
+\end{equation}
+gives
+\(\sigma_{\rm ref}\pm a h_\varepsilon\ge c-aB>0\) on \(U\), while outside
+\(U\) the perturbation vanishes and \(\sigma_{\rm ref}>0\).  The two
+positive spectra therefore have identical values of the chosen finite sum
+rules and have low-frequency slopes differing by \(2a\eta_\ast\).  Infinite
+moment data, or a physically derived analytic class, may of course add
+information; this finite-constraint construction only says that finitely many
+smooth sum rules do not by themselves stabilize the local transport slope.
 
 Several pieces of bookkeeping must also be kept separate.
 \begin{center}

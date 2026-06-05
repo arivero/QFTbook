@@ -70,7 +70,8 @@ or constructive definition.
 12. Gives an explicit positive low-frequency spectral-slope family with
    Euclidean norm \(O(\epsilon)\) but fixed transport-channel slope, and a
    compensator construction preserving any fixed finite set of smooth sum
-   rules while changing the same local slope.
+   rules while changing the same local slope, with a uniform positivity
+   margin supplied by a smooth integrable reference spectrum.
 13. Separates zero modes, contact terms, finite-volume lines, thermodynamic
    limits, continuum limits, and finite-data priors in the reconstruction
    problem.
@@ -93,6 +94,11 @@ or constructive definition.
   theorem-datum menu, corrected the compact-inverse claim, qualified Kubo
   slopes by operator/projection/contact/order-of-limits data, and added the
   finite-sum-rule-preserving compensator instability.
+- 2026-06-04 issue #829 re-audit: strengthened the compensator instability by
+  requiring a uniform lower bound on a fixed neighborhood of all bump supports
+  and on the fixed compensator supports, choosing a smooth integrable
+  reference spectrum, and recording the explicit amplitude bound
+  \(0<a<c/B\) that preserves positivity.
 
 ## Calculation Checks
 
@@ -100,8 +106,9 @@ or constructive definition.
   Matsubara boundary phases, the one-mode coherent-state trace sign, the
   finite-volume spectral representation, the separate Euclidean zero mode,
   the Matsubara Cauchy transform, the low-frequency Euclidean reconstruction
-  instability example, the finite-sum-rule-preserving compensator
-  perturbation, and chemical-potential twist bookkeeping.
+  instability example, the smooth finite-sum-rule-preserving compensator
+  perturbation with uniform positivity margin, and chemical-potential twist
+  bookkeeping.
 
 ## Figure Ledger
 
