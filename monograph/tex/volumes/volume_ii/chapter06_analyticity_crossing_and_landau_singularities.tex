@@ -2212,6 +2212,43 @@ in the same way.  The coefficients in
 normalization of the scalar integrals, color ordering, external-state
 normalization, and regulator have been fixed.
 
+\begin{definition}[One-loop reconstruction datum]
+\label{def:one-loop-reconstruction-datum}
+A one-loop amplitude computation in this chapter is a chain of data
+\[
+  \mathfrak D_{1{\rm L}}
+  =
+  \bigl(
+    D_{\rm cut},D_{\rm rep},D_{\rm rat},D_{\rm red},
+    D_{\rm bc},D_{\rm sub},D_{\rm obs}
+  \bigr).
+\]
+Here \(D_{\rm cut}\) specifies physical and algebraic cuts, sheet choices,
+and internal state sums.  The datum \(D_{\rm rep}\) specifies an integrand
+representative: scalar basis, numerator conventions, surface terms, and
+evanescent terms modulo which two representatives are identified.  The datum
+\(D_{\rm rat}\) supplies dimensional or massive-probe information for
+rational terms invisible to strict four-dimensional cuts.  The datum
+\(D_{\rm red}\) is the IBP or integrand-reduction map to master integrals,
+including sector and boundary assumptions.  The datum \(D_{\rm bc}\) gives
+Euclidean boundary constants, path choices, and branch prescriptions for the
+masters.  The datum \(D_{\rm sub}\) specifies the UV counterterm and IR
+subtraction convention.  Finally \(D_{\rm obs}\) specifies the real-radiation,
+factorization, and measurement data needed to turn a virtual amplitude into
+a physical observable.
+\end{definition}
+
+Cuts determine residues of a chosen representative; they do not choose the
+representative modulo surface, evanescent, and local terms.  Rational or
+regulator data complete the virtual integrand in a declared scheme; they do
+not evaluate the master integrals.  IBP and differential equations reduce a
+problem to a finite master system; they do not supply Euclidean boundary
+constants or physical branches.  A renormalized virtual amplitude is still
+not an infrared-safe observable until the real-radiation, factorization, and
+measurement pieces in \(D_{\rm obs}\) have been assembled.  The examples below
+therefore test different gates in \(\mathfrak D_{1{\rm L}}\) rather than
+presenting cuts as a self-contained calculation.
+
 The reason multiple cuts determine the coefficients is local in loop momentum.
 A quadruple cut in four dimensions freezes the loop momentum to finitely many
 solutions.  After higher-point contributions have been assigned, the box

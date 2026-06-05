@@ -2853,8 +2853,9 @@ Current checks:
   irrelevant insertions, and scaling-degree ambiguity bounds for supported
   distributions.
 - `generalized_unitarity_reduction_checks.py`: exact finite checks for the
-  loop-amplitude bridge in Volume II, Chapter 6, including the massless
-  \(\phi^4\) one-loop cut reconstruction, the incomplete-cut and
+  loop-amplitude bridge in Volume II, Chapter 6, including the one-loop
+  reconstruction-datum gate ledger, the massless \(\phi^4\) one-loop cut
+  reconstruction, the incomplete-cut and
   four-dimensional-rational negative controls, the Yang--Mills MHV/all-plus
   helicity and evanescent-probe ledger, the planar \(\mathcal N=4\) MHV
   quadruple-cut reconstruction state-sum and topology-separation checks

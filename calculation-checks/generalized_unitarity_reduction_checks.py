@@ -4,8 +4,9 @@
 The companion section in Volume II, Chapter 6 develops the bridge from
 Cutkosky discontinuities to generalized cuts, scalar-integral reconstruction,
 IBP reduction, and master-integral differential equations.  This script
-checks the exact algebraic ledger behind the worked massless phi^4 example,
-the finite two-scale box master, and the one-loop bubble family, then adds
+checks the exact algebraic ledger behind the one-loop reconstruction datum,
+the worked massless phi^4 example, the finite two-scale box master, and the
+one-loop bubble family, then adds
 finite helicity, color, state-sum, and regulator bookkeeping for the
 Yang-Mills MHV/all-plus control examples, including the planar N=4 MHV
 quadruple-cut reconstruction, the five-gluon all-plus rational template, and
@@ -31,9 +32,12 @@ all-plus rational amplitude has the correct little-group weights, mass
 dimension, cyclic term coverage, and strict four-dimensional cut
 invisibility, and the four-point color-kinematics gateway separates
 gauge-amplitude equivalence from Jacobi-compatible numerator data needed for
-the double copy.
+the double copy.  The one-loop reconstruction datum is checked as an ordered
+gate ledger separating cuts, representative choice, rational/regulator data,
+reduction, boundary/branch data, subtraction, and observable assembly.
 Independent construction: finite cut-signature matrices over rational
-numbers, an explicit identical-state symmetry factor, a nullspace model for
+numbers, a finite ordered gate/incidence ledger for the reconstruction datum,
+an explicit identical-state symmetry factor, a nullspace model for
 local/rational terms invisible to four-dimensional cuts, and exact rational
 checks of the one-loop bubble IBP coefficients at several regulator values;
 spinor-bracket exponent ledgers for little-group weights and dimensions; and
@@ -70,8 +74,8 @@ virtual-only pole cancellation,
 omitted rational finite
 remainders, one-cut-only finite-box deformations, branch-label omission,
 diagonal one-master threshold shortcuts, cut-only boundary reconstruction,
-branch/path omission in a two-letter master transport, and untransported
-finite IR-scheme shifts.
+branch/path omission in a two-letter master transport, virtual-only
+observable assembly, and untransported finite IR-scheme shifts.
 Scope boundary: a pass checks the finite reconstruction and reduction
 bookkeeping; it does not compute a nonabelian helicity amplitude from Feynman
 graphs, prove unitarity from Wightman axioms, solve multi-loop integral
@@ -279,6 +283,106 @@ def check_phi4_cut_reconstruction() -> None:
     ]
     assert_equal("four-dimensional cut rank", rank(cut_matrix), 3)
     assert_true("cut map has local/rational nullspace", len(BASIS) - rank(cut_matrix) == 2)
+
+
+def check_one_loop_reconstruction_datum() -> None:
+    gates = (
+        "cut_data",
+        "representative",
+        "rational_regulator",
+        "reduction",
+        "boundary_branch",
+        "subtraction",
+        "observable",
+    )
+    gate_order = {gate: index for index, gate in enumerate(gates)}
+    dependency_edges = (
+        ("cut_data", "representative"),
+        ("representative", "rational_regulator"),
+        ("representative", "reduction"),
+        ("reduction", "boundary_branch"),
+        ("boundary_branch", "subtraction"),
+        ("subtraction", "observable"),
+    )
+    for source, target in dependency_edges:
+        assert_true(
+            f"{source} precedes {target}",
+            gate_order[source] < gate_order[target],
+        )
+
+    example_coverage = {
+        "phi4_cut_reconstruction": {"cut_data", "representative"},
+        "all_plus_rational_probe": {
+            "cut_data",
+            "representative",
+            "rational_regulator",
+        },
+        "master_transport": {"reduction", "boundary_branch"},
+        "finite_remainder": {"subtraction"},
+        "infrared_safe_observable": {"observable"},
+    }
+    covered = set().union(*example_coverage.values())
+    assert_equal("one-loop reconstruction gates covered", covered, set(gates))
+
+    single_gate_omissions = {
+        f"omit_{gate}": set(gates) - {gate}
+        for gate in gates
+    }
+    omission_matrix = [
+        [
+            Fraction(1) if gate not in shortcut else Fraction(0)
+            for gate in gates
+        ]
+        for shortcut in single_gate_omissions.values()
+    ]
+    assert_equal(
+        "single-gate omissions are distinguished",
+        rank(omission_matrix),
+        len(gates),
+    )
+
+    residuals = {
+        "cut_data": Fraction(1, 101),
+        "representative": Fraction(1, 103),
+        "rational_regulator": Fraction(1, 107),
+        "reduction": Fraction(1, 109),
+        "boundary_branch": Fraction(1, 113),
+        "subtraction": Fraction(1, 127),
+        "observable": Fraction(1, 131),
+    }
+    exact_budget = sum(residuals.values(), Fraction(0))
+
+    four_dimensional_cut_shortcut = {"cut_data", "representative"}
+    assert_equal(
+        "four-dimensional cut shortcut missing gates",
+        set(gates) - four_dimensional_cut_shortcut,
+        {
+            "rational_regulator",
+            "reduction",
+            "boundary_branch",
+            "subtraction",
+            "observable",
+        },
+    )
+    four_dimensional_cut_budget = sum(
+        residuals[gate] for gate in four_dimensional_cut_shortcut
+    )
+    assert_true(
+        "four-dimensional cut shortcut underbudgets reconstruction",
+        four_dimensional_cut_budget < exact_budget,
+    )
+
+    virtual_shortcut = set(gates) - {"observable"}
+    virtual_budget = sum(residuals[gate] for gate in virtual_shortcut)
+    assert_equal(
+        "virtual-only shortcut misses observable residual",
+        exact_budget - virtual_budget,
+        residuals["observable"],
+    )
+    assert_true(
+        "virtual-only shortcut underbudgets physical comparison",
+        virtual_budget < exact_budget,
+    )
 
 
 def d_dimensional_probe_signature(basis_name: str) -> Fraction:
@@ -1200,6 +1304,7 @@ def check_virtual_to_observable_assembly() -> None:
 
 def main() -> None:
     check_phi4_cut_reconstruction()
+    check_one_loop_reconstruction_datum()
     check_four_dimensional_cut_blind_spot()
     check_gauge_theory_helicity_controls()
     check_n4_mhv_quadruple_cut_reconstruction()

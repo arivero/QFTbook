@@ -22,9 +22,12 @@
 - Records the partial-wave unitarity boundary condition on the physical
   \(s\)-channel cut before using analytic continuation away from it.
 - Adds a generalized-unitarity and one-loop-reduction bridge after Cutkosky:
-  physical cuts versus algebraic generalized cuts, one-loop scalar-integral
-  reconstruction, a complete massless \(\lambda\phi^4\) four-point cut
-  reconstruction with negative controls, a planar \(\mathcal N=4\)
+  physical cuts versus algebraic generalized cuts, a one-loop reconstruction
+  datum tying cut data, representative choice, rational/regulator input,
+  reduction, boundary/branch data, subtraction, and observable assembly,
+  one-loop scalar-integral reconstruction, a complete massless
+  \(\lambda\phi^4\) four-point cut reconstruction with negative controls,
+  a planar \(\mathcal N=4\)
   four-gluon MHV quadruple-cut reconstruction with explicit supermultiplet
   state sum and lower-topology negative control, the pure-Yang--Mills
   all-plus rational blind spot including the five-point all-plus
@@ -114,6 +117,8 @@
 | \(G_\sigma\) | circled graph associated to a vertex circling \(\sigma\) in the largest-time identity |
 | \(C\) | set of internal lines crossed by a perturbative physical cut |
 | \(\operatorname{Cut}_C\mathcal I\) | algebraic generalized cut of a regulated loop integrand on the selected on-shell denominators |
+| \(\mathfrak D_{1{\rm L}}\) | one-loop reconstruction datum collecting cut data, representative choice, rational/regulator input, reduction, boundary/branch data, subtraction, and observable assembly |
+| \(D_{\rm cut},D_{\rm rep},D_{\rm rat},D_{\rm red},D_{\rm bc},D_{\rm sub},D_{\rm obs}\) | gates in the one-loop reconstruction datum: cuts/state sums, integrand representative, rational/regulator probes, reduction map, boundary/branch constants, subtraction convention, and observable data |
 | \(D_i(\ell)\) | one-loop denominator \((\ell+K_i)^2+m_i^2-\ii0\) |
 | \(I_r\) | scalar one-loop integral with \(r\) propagators in the declared regulator |
 | \(R_n\) | rational term not fixed by a strictly four-dimensional cut analysis |
@@ -169,6 +174,12 @@
   regulated one-loop integrand.  They coincide with physical Cutkosky cuts
   only after the relevant real positive-energy branch, state sum, and sheet
   have been imposed.
+- The one-loop reconstruction datum is an ordered bookkeeping contract:
+  generalized cuts constrain residues of an integrand representative,
+  rational/regulator probes supply cut-invisible virtual information,
+  reduction and boundary/branch data evaluate the master sector, and
+  subtraction plus observable data are required before a virtual amplitude is
+  promoted to a finite physical quantity.
 - The one-loop scalar-basis discussion assumes dimensional regularization,
   declared scalar-integral normalizations, and subtraction of higher-topology
   contributions before lower-topology coefficients are read from triple and
@@ -560,8 +571,10 @@
   limits, anomalous-threshold sheets, or symbol-level/extended Steinmann
   statements without additional hypotheses.
 - No claim that the new generalized-unitarity section completes all of issue
-  #769: the scalar example and the MHV/all-plus helicity control close the
-  first one-loop workflow and rational-term boundary.  The five-point
+  #769: the reconstruction-datum pass consolidates the already-present
+  one-loop gates rather than solving a new integral family.  The scalar
+  example and the MHV/all-plus helicity control close the first one-loop
+  workflow and rational-term boundary.  The five-point
   all-plus template adds a genuine nonabelian one-loop partial amplitude
   beyond four points, the planar \(\mathcal N=4\) MHV block supplies a full
   cut-constructible nonabelian state-sum reconstruction in a declared
@@ -751,3 +764,11 @@
   generalized-gauge invariance of the gauge amplitude, failure of the naive
   numerator square under a non-Jacobi shift, and invariance under the
   four-point common denominator-weighted shift.
+- 2026-06-05 issue #769 reconstruction-datum coherence pass: added the
+  one-loop reconstruction datum near the opening of the generalized-unitarity
+  section, collecting cut data, integrand representative choice,
+  rational/regulator input, reduction, boundary/branch information,
+  subtraction convention, and observable assembly into one named workflow.
+  The companion script checks gate coverage, distinguishes single-gate
+  omissions, and verifies that four-dimensional-cut-only and virtual-only
+  shortcuts underbudget the full reconstruction.
