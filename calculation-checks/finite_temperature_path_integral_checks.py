@@ -10,14 +10,15 @@ Chapter 2.
 Independent construction: direct finite Gibbs sums, direct Matsubara
 integration, exact boundary phases, finite Berezin-sign arithmetic, and a
 low-frequency positive spectral-slope family whose Euclidean transform is
-bounded while its Kubo slope is fixed.
+bounded while its transport-channel slope is fixed, including a
+finite-sum-rule-preserving compensator test.
 Imported assumptions: the finite-regulator Gibbs trace, the bosonic spectral
 kernel stated in the chapter, positivity of Hermitian positive-frequency
 spectral weights, and the use of Euclidean norms as data-error topology.
 Negative controls: the Euclidean zero mode is not inferred from the
 commutator spectral density, finite Matsubara values are not accepted as
 stable spectral reconstruction, and small Euclidean error is not accepted as
-control of the low-frequency Kubo slope.
+control of the low-frequency transport-channel slope.
 Scope boundary: these checks verify finite algebra and the explicit
 ill-conditioning construction; they do not prove a continuum reconstruction
 theorem, Carlson-class uniqueness, or the correctness of any numerical
@@ -246,11 +247,11 @@ def check_low_frequency_transport_instability() -> None:
     noise_floor = 1.0e-3
 
     # The positive-frequency spectral family has rho(omega)=2 eta_star omega
-    # on (0, epsilon), hence the Kubo slope rho/(2 omega) is eta_star for
+    # on (0, epsilon), hence the channel slope rho/(2 omega) is eta_star for
     # every epsilon even though its Euclidean transform is O(epsilon).
     for omega in [0.25 * epsilon, 0.5 * epsilon, 0.75 * epsilon]:
         rho = 2.0 * eta_star * omega
-        assert_close(rho / (2.0 * omega), eta_star, "fixed low-frequency Kubo slope")
+        assert_close(rho / (2.0 * omega), eta_star, "fixed low-frequency channel slope")
 
     bound = 6.0 * eta_star * epsilon / beta
     for tau in tau_samples:
@@ -265,6 +266,76 @@ def check_low_frequency_transport_instability() -> None:
     ratio = larger / smaller
     if not 3.9 < ratio < 4.1:
         raise AssertionError("Euclidean bump should scale linearly with epsilon at small epsilon")
+
+
+def normalized_box_kernel_average(beta: float, tau: float, left: float, right: float) -> float:
+    intervals = 400
+    step = (right - left) / intervals
+    total = 0.0
+    for index in range(intervals):
+        omega = left + (index + 0.5) * step
+        total += euclidean_transport_kernel(beta, tau, omega) * step / (right - left)
+    return total
+
+
+def solve_two_by_two(matrix: list[list[float]], rhs: list[float]) -> list[float]:
+    det = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+    if abs(det) < 1.0e-14:
+        raise AssertionError("compensator moment matrix must be invertible")
+    return [
+        (rhs[0] * matrix[1][1] - matrix[0][1] * rhs[1]) / det,
+        (matrix[0][0] * rhs[1] - rhs[0] * matrix[1][0]) / det,
+    ]
+
+
+def check_finite_sum_rule_preserving_instability() -> None:
+    beta = 2.0
+    eta_star = 0.7
+    epsilon = 1.0e-4
+    amplitude = 0.4
+
+    # Preserve the two smooth sum rules int sigma and int omega*sigma.
+    # The low-frequency bump is eta_star on (0, epsilon).  The compensators
+    # are normalized boxes away from zero, so their zeroth moment is one and
+    # their first moment is their midpoint.
+    compensator_boxes = [(0.7, 0.8), (1.2, 1.3)]
+    midpoints = [0.5 * (left + right) for left, right in compensator_boxes]
+    bump_moments = [eta_star * epsilon, eta_star * epsilon * epsilon / 2.0]
+    moment_matrix = [[1.0, 1.0], midpoints]
+    coefficients = solve_two_by_two(moment_matrix, [-bump_moments[0], -bump_moments[1]])
+
+    h_moment_0 = bump_moments[0] + coefficients[0] + coefficients[1]
+    h_moment_1 = (
+        bump_moments[1]
+        + coefficients[0] * midpoints[0]
+        + coefficients[1] * midpoints[1]
+    )
+    assert_close(h_moment_0, 0.0, "compensated perturbation preserves zeroth sum rule")
+    assert_close(h_moment_1, 0.0, "compensated perturbation preserves first moment sum rule")
+
+    base_floor = 1.0
+    affected_values = [eta_star]
+    for coefficient, (left, right) in zip(coefficients, compensator_boxes):
+        affected_values.append(coefficient / (right - left))
+    for value in affected_values:
+        if base_floor + amplitude * value <= 0.0 or base_floor - amplitude * value <= 0.0:
+            raise AssertionError("positive reference spectrum should keep both perturbation signs positive")
+
+    slope_plus = base_floor + amplitude * eta_star
+    slope_minus = base_floor - amplitude * eta_star
+    assert_close(
+        slope_plus - slope_minus,
+        2.0 * amplitude * eta_star,
+        "same finite sum rules can have different slopes",
+    )
+
+    tau_samples = [0.25, 0.8, 1.5]
+    for tau in tau_samples:
+        euclidean_change = low_frequency_transport_bump(beta, tau, epsilon, eta_star)
+        for coefficient, (left, right) in zip(coefficients, compensator_boxes):
+            euclidean_change += coefficient * normalized_box_kernel_average(beta, tau, left, right)
+        if abs(euclidean_change) > 2.0e-3:
+            raise AssertionError("finite-sum-rule-preserving perturbation should remain Euclidean-small")
 
 
 def check_chemical_potential_twist() -> None:
@@ -293,6 +364,7 @@ def main() -> None:
     check_one_mode_fermionic_trace_identity()
     check_bosonic_spectral_representation()
     check_low_frequency_transport_instability()
+    check_finite_sum_rule_preserving_instability()
     check_chemical_potential_twist()
     print("Finite-temperature path-integral convention checks passed.")
 

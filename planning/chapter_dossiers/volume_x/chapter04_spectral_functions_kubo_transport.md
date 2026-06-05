@@ -32,8 +32,9 @@
 - Conductivity, shear-viscosity, and bulk-viscosity Kubo formulae with
   explicit order of limits and conserved-density projections.
 - Direct warning that extracting the low-frequency Kubo slope from Euclidean
-  thermal data is more unstable than reconstructing a broad spectral feature,
-  because the Euclidean kernel smooths the spectral density.
+  thermal data is more unstable than reconstructing a broad spectral feature:
+  the Euclidean kernel smooths the spectral density, and fixed finite smooth
+  sum rules do not stabilize the local slope.
 - Once-subtracted retarded dispersion relation and its theorem boundary.
 - Open theorem boundary from Kubo formulae to hydrodynamics.
 
@@ -93,9 +94,10 @@
 10. Conductivity and viscosity are low-frequency spectral slopes after contact
    terms, Drude weights, order of limits, and conserved-density mixings are
    specified.
-11. Euclidean data constrain smeared spectral integrals; they do not stably
-   determine the transport slope without additional real-time input, priors, or
-   a controlled model class.
+11. Euclidean data and any fixed finite set of smooth sum rules constrain
+   smeared spectral integrals; they do not stably determine the transport
+   slope without additional real-time input, priors, or a controlled model
+   class.
 12. Subtracted dispersion relations require large-\(\omega\) control and an
    explicit declaration of contact terms.
 13. Hydrodynamic control requires additional analyticity, clustering,
@@ -142,5 +144,10 @@
   thermodynamic limit.
 - 2026-06-04 transport-reconstruction pass: connected the conductivity Kubo
   slope to the Chapter 2 Euclidean reconstruction instability, emphasizing that
-  positivity, sum rules, and finite Euclidean samples do not stably determine
-  \(\rho(\omega)/(2\omega)\) as \(\omega\downarrow0\).
+  positivity, fixed finite smooth sum rules, and finite Euclidean samples do
+  not stably determine \(\rho(\omega)/(2\omega)\) as
+  \(\omega\downarrow0\).
+- 2026-06-04 issue #822 re-audit: narrowed the transport-reconstruction
+  warning to positivity plus fixed finite smooth sum rules, matching the
+  Chapter 2 compensator construction and avoiding any claim about complete
+  infinite moment data.

@@ -30,6 +30,8 @@ or constructive definition.
   `cosh(omega(beta/2-tau))/sinh(beta omega/2)`.
 - `sigma_epsilon`: compactly supported low-frequency spectral-slope bump used
   to show Euclidean reconstruction instability.
+- `h_epsilon`: compensated low-frequency spectral-slope perturbation with
+  vanishing values against a fixed finite set of smooth sum-rule weights.
 - `Q`, `mu`, `q`: conserved global charge, chemical potential, and charge of
   an operator or field.
 - `P(x)`: thermal gauge holonomy/Polyakov loop.
@@ -58,14 +60,17 @@ or constructive definition.
 9. Derives the finite-volume bosonic thermal spectral representation,
    including the separate zero-frequency degenerate contribution, and the
    Matsubara Cauchy-transform formula.
-10. Separates exact continuum Euclidean data, complete Matsubara sequences,
-   and finite noisy data; uniqueness requires explicit growth/function-space
-   hypotheses and is not the same as stable inversion.
+10. Separates Fourier reconstruction of the Euclidean distribution on
+   \(S^1_\beta\) from analytic interpolation of a retarded function through
+   Matsubara values; proves circle Fourier uniqueness and treats
+   Carlson/Hardy/Nevanlinna/Stieltjes data as explicit optional hypothesis
+   classes rather than automatic consequences.
 11. Shows that the Euclidean spectral transform is smoothing/compact on
    natural finite-band topologies, so the inverse map is not uniformly stable.
 12. Gives an explicit positive low-frequency spectral-slope family with
-   Euclidean norm \(O(\epsilon)\) but fixed Kubo slope, proving that transport
-   extraction is more unstable than broad-feature reconstruction.
+   Euclidean norm \(O(\epsilon)\) but fixed transport-channel slope, and a
+   compensator construction preserving any fixed finite set of smooth sum
+   rules while changing the same local slope.
 13. Separates zero modes, contact terms, finite-volume lines, thermodynamic
    limits, continuum limits, and finite-data priors in the reconstruction
    problem.
@@ -82,6 +87,12 @@ or constructive definition.
   transform; added the low-frequency transport-slope instability example; and
   separated zero modes, contact terms, finite-volume lines, thermodynamic
   limits, continuum limits, and numerical priors.
+- 2026-06-04 issue #822 re-audit: narrowed "complete Matsubara data" to
+  Fourier data on the thermal circle, added an explicit Fourier uniqueness
+  theorem, marked analytic interpolation uniqueness as a separate
+  theorem-datum menu, corrected the compact-inverse claim, qualified Kubo
+  slopes by operator/projection/contact/order-of-limits data, and added the
+  finite-sum-rule-preserving compensator instability.
 
 ## Calculation Checks
 
@@ -89,7 +100,8 @@ or constructive definition.
   Matsubara boundary phases, the one-mode coherent-state trace sign, the
   finite-volume spectral representation, the separate Euclidean zero mode,
   the Matsubara Cauchy transform, the low-frequency Euclidean reconstruction
-  instability example, and chemical-potential twist bookkeeping.
+  instability example, the finite-sum-rule-preserving compensator
+  perturbation, and chemical-potential twist bookkeeping.
 
 ## Figure Ledger
 

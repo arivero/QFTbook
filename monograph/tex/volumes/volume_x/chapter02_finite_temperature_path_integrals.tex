@@ -490,17 +490,52 @@ continuation.
   \(G_E(\tau_j)\) or \(G_E(\ii\omega_{n_j})\) known with errors.
 \end{tabular}
 \end{center}
-The first two can imply uniqueness only after the function class is declared.
-For example, if the spectral distribution is tempered with enough
-exponential control that \eqref{eq:thermal-euclidean-spectral-representation}
-defines a distributional boundary value analytic in the KMS strip, exact
-knowledge of \(G_E(\tau)\) on any open subinterval determines the strip
-function by the identity theorem and then determines the spectral
-distribution by the corresponding boundary-value inversion.  Similarly, an
-infinite Matsubara sequence determines the same object only inside a class
-with a Carlson/Hardy/Nevanlinna-type growth bound that rules out functions
-vanishing at all Matsubara points.  These are uniqueness statements.  They
-are not stability statements.
+In this section \emph{complete Matsubara data} means Fourier data on the
+thermal circle unless an analytic interpolation class is explicitly named.
+
+\begin{theorem}[Fourier uniqueness on the thermal circle]
+\label{thm:thermal-circle-fourier-uniqueness}
+Let \(u\in\mathcal D'(S^1_\beta)\) be a periodic distribution and define
+\[
+  c_n=\langle u,\ee^{\ii\omega_n^{\rm B}\tau}\rangle,
+  \qquad
+  \omega_n^{\rm B}=\frac{2\pi n}{\beta}.
+\]
+If \(c_n=0\) for all \(n\in\mathbb Z\), then \(u=0\).  More generally, a
+sequence \(c_n\) of at most polynomial growth determines at most one
+periodic distribution by its Fourier pairing with smooth test functions.
+The fermionic statement is the same after factoring out the antiperiodic
+spin structure and using the fermionic Matsubara lattice.
+\end{theorem}
+
+\begin{proof}
+If \(\varphi(\tau)=\sum_n\varphi_n\ee^{-\ii\omega_n^{\rm B}\tau}\) is a
+smooth test function on \(S^1_\beta\), then the coefficients
+\(\varphi_n\) decay faster than every power of \(|n|\).  A distribution has
+Fourier coefficients of polynomial growth, so the pairing
+\(\sum_n\varphi_n c_n\) is absolutely convergent after choosing a sufficiently
+large power.  If all \(c_n\) vanish, then \(\langle u,\varphi\rangle=0\) for
+every smooth \(\varphi\), hence \(u=0\).
+\end{proof}
+
+This theorem reconstructs the Euclidean correlator as a distribution on
+\(S^1_\beta\).  It is not a theorem about the retarded function.  The latter
+asks for a holomorphic function \(F(z)\) with prescribed values
+\(F(\ii\omega_n^{\rm B})\); without an analytic domain and a growth class,
+one can add \(\sinh(\beta z/2)H(z)\) to any interpolation and leave all
+bosonic Matsubara values unchanged.  Exact continuum Euclidean data can give
+a different uniqueness statement: if the spectral distribution has enough
+tempered/exponential control that
+\eqref{eq:thermal-euclidean-spectral-representation} is the boundary value
+of a KMS-strip analytic function, then knowledge of \(G_E(\tau)\) on an open
+subinterval determines that strip function by the identity theorem and then
+determines the spectral boundary value under the declared inversion
+hypotheses.  Discrete analytic interpolation requires an additional theorem
+datum, for example a particular Carlson half-plane class, a Hardy or
+Nevanlinna class with specified boundary measure, or a Stieltjes/Herglotz
+class with stated ultraviolet and moment bounds.  Those names are a menu of
+possible hypotheses, not a black-box consequence of KMS and positivity.
+These are uniqueness statements.  They are not stability statements.
 
 For Hermitian bosonic \(A\), write the positive-frequency part as
 \[
@@ -527,14 +562,27 @@ Euclidean window \(\delta\le\tau\le\beta-\delta\), the kernel
 \(2\omega K_\beta(\tau,\omega)\) is continuous.  The resulting map from
 \(L^2(0,\Omega)\) spectral slopes to \(L^2(\delta,\beta-\delta)\) Euclidean
 data is Hilbert--Schmidt, hence compact.  On the full half-line, high
-frequencies are exponentially smoothed on interior Euclidean times.  A compact
-smoothing map may be one-to-one on a restricted function class, but its
-inverse cannot be uniformly continuous on infinite-dimensional sets.  Small
-Euclidean errors can therefore correspond to large changes in local spectral
-features.
+frequencies are exponentially smoothed on interior Euclidean times.  If this
+compact map is injective on an infinite-dimensional Hilbert domain and had a
+bounded inverse on its range with the induced norm, the identity on the
+domain would be compact, which is impossible.  Thus there are spectral
+directions whose Euclidean images become arbitrarily small.  This does not
+say that every infinite-dimensional subset has a nonuniform inverse: a
+finite-parameter model, a compact set with a stronger regularity norm, or a
+class with an explicit modulus of continuity may be stable in its own
+topology.  The instability below is a statement about broad positive
+spectral classes, not about every conceivable prior.
 
-The low-frequency transport limit is the sharpest version of this
-ill-conditioning.  Fix a number \(\eta_\ast>0\) and, for
+The low-frequency limit used in transport channels is the sharpest version
+of this ill-conditioning.  For a generic Hermitian bosonic operator \(A\),
+\(\lim_{\omega\downarrow0}\rho_{AA}(\omega)/(2\omega)\) is only a local
+spectral slope.  It becomes a Kubo transport coefficient only after the
+operator has been identified as the appropriate current or stress-tensor
+component, the zero-momentum projection has been fixed, contact terms and
+conserved-density singular sectors have been subtracted, and the
+thermodynamic, momentum, and zero-frequency limits have been ordered as in
+Definition~\ref{def:kubo-transport-limit-datum}.  With that qualification,
+fix a number \(\eta_\ast>0\) and, for
 \(0<\varepsilon<1/\beta\), define a positive spectral slope
 \[
   \sigma_\varepsilon(\omega)
@@ -569,12 +617,53 @@ for every \(\varepsilon\).  Yet its Euclidean contribution satisfies, for all
 The last inequality uses \(K_\beta(\tau,\omega)\le 3/(\beta\omega)\) for
 \(\beta\omega\le1\).  Thus the spectral densities \(0\) and
 \(\rho_\varepsilon\) become indistinguishable in any fixed Euclidean
-\(L^p(0,\beta)\) norm as \(\varepsilon\to0\), while their Kubo slope differs
-by \(\eta_\ast\).  The conclusion reflects the different observables:
-Euclidean data smear the spectral density over a thermal kernel, whereas
-transport asks for a pointwise
-low-frequency slope after the thermodynamic and zero-frequency limits have
-been taken.
+\(L^p(0,\beta)\) norm as \(\varepsilon\to0\), while their slope in a qualified
+Kubo channel differs by \(\eta_\ast\) once the operator, projection, contact
+subtraction, and limit order have been fixed.  The conclusion reflects the
+different observables: Euclidean data smear the spectral density over a
+thermal kernel, whereas transport asks for a pointwise low-frequency slope
+after the thermodynamic and zero-frequency limits have been taken.
+
+This elementary bump is a positivity-only negative control; it changes any
+moment sum rule that sees the interval \((0,\varepsilon)\).  A fixed finite
+set of smooth sum rules does not remove the obstruction.  Let
+\(w_0,\ldots,w_m\) be smooth weights.  After discarding redundant
+constraints, choose smooth compensators \(\psi_0,\ldots,\psi_m\) supported
+away from \(\omega=0\) such that
+\[
+  M_{\ell j}=\int_0^\infty w_\ell(\omega)\psi_j(\omega)\,d\omega
+\]
+is invertible.  For a smooth bump \(b_\varepsilon\) supported in
+\((0,\varepsilon)\) with
+\(\lim_{\omega\downarrow0}b_\varepsilon(\omega)=\eta_\ast\), set
+\begin{equation}
+  c_j(\varepsilon)
+  =
+  -(M^{-1})_{j\ell}
+  \int_0^\infty w_\ell(\omega)b_\varepsilon(\omega)\,d\omega,
+  \qquad
+  h_\varepsilon
+  =
+  b_\varepsilon+\sum_{j=0}^m c_j(\varepsilon)\psi_j .
+  \label{eq:thermal-finite-sum-rule-preserving-bump}
+\end{equation}
+Then
+\[
+  \int_0^\infty w_\ell(\omega)h_\varepsilon(\omega)\,d\omega=0,
+  \qquad \ell=0,\ldots,m,
+\]
+exactly.  Since the bump has support of length \(O(\varepsilon)\), the
+coefficients \(c_j(\varepsilon)\) are \(O(\varepsilon)\).  Hence the
+Euclidean transform of \(h_\varepsilon\) is \(O(\varepsilon)\) on every
+interior Euclidean-time window, while \(h_\varepsilon\) has low-frequency
+slope \(\eta_\ast\).  If a reference positive slope \(\sigma_{\rm ref}\) is
+strictly positive on the bump and compensator supports, then
+\(\sigma_{\rm ref}\pm a h_\varepsilon\) remain positive for sufficiently
+small fixed \(a>0\), have identical values of the chosen finite sum rules,
+and have low-frequency slopes differing by \(2a\eta_\ast\).  Infinite moment
+data, or a physically derived analytic class, may of course add information;
+this finite-constraint construction only says that finitely many smooth sum
+rules do not by themselves stabilize the local transport slope.
 
 Several pieces of bookkeeping must also be kept separate.
 \begin{center}
@@ -595,8 +684,9 @@ Several pieces of bookkeeping must also be kept separate.
   comparing Euclidean data with real-time spectral functions.\\[0.3em]
 \textbf{finite data} &
   A finite noisy set of Euclidean samples gives finitely many smeared
-  constraints.  Positivity and sum rules narrow the feasible set but do not
-  by themselves select a unique low-frequency slope.
+  constraints.  Positivity and any fixed finite set of smooth sum rules
+  narrow the feasible set but do not by themselves select or stabilize a
+  unique low-frequency slope.
 \end{tabular}
 \end{center}
 Maximum entropy reconstructions, Bayesian priors, Backus--Gilbert estimators,

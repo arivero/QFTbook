@@ -725,8 +725,9 @@ Current checks:
   zero-frequency degenerate term, the Matsubara Cauchy transform, and
   chemical-potential twist and imaginary-holonomy periodicity.  It also checks
   the explicit low-frequency positive spectral-slope family whose Euclidean
-  transform is \(O(\epsilon)\) while its Kubo transport slope remains fixed,
-  giving the reconstruction-instability negative control.
+  transform is \(O(\epsilon)\) while its transport-channel slope remains fixed,
+  together with a finite-sum-rule-preserving compensator perturbation, giving
+  the reconstruction-instability negative control.
 - `hamiltonian_truncation_dlcq_checks.py`: finite checks for the
   Hamiltonian-truncation and DLCQ benchmark chapter, including the Ising
   energy-deformation Bogoliubov spectrum, the finite sine-Gordon zero-mode
