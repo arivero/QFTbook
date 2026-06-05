@@ -47,6 +47,9 @@ relations
     the proper-time fluctuation determinant combines with either an independent
     bilinear source determinant or a differentiated linear Grassmann source
     coefficient to give the finite four-fermion instanton amplitude
+    finite connected four-source extraction in an instanton source chart uses
+    the coefficient of log Z_src, so lower two-source terms contribute the
+    determinant subtraction before the four-point kernel is quoted
     a proper-time determinant residual bound gives an absolute logarithmic
     bound and a multiplicative amplitude error bound; signed cancellations of
     ghost, boson, and fermion trace remainders are rejected as valid bounds
@@ -234,7 +237,9 @@ mistaken for sector isolation, the BPST/ADHM classical-and-moduli prefix
 mistaken for the instanton amplitude datum, the collective-coordinate measure
 alone mistaken for the observable coefficient, the Euclidean source coefficient
 mistaken for the physical observable after bridge residuals, omitted
-endpoint/sector budgets, and signed physical residual cancellation.
+endpoint/sector budgets, the top Berezin coefficient mistaken for the
+connected four-source kernel when lower source terms are present, and signed
+physical residual cancellation.
 Scope boundary: a pass checks finite algebra and normalization interfaces; it
 does not prove dilute-gas validity, large-size control, uniform semiclassical
 remainders, or physical hadronic matrix elements.
@@ -2120,6 +2125,123 @@ def check_instanton_source_typing_and_differentiation() -> None:
         differentiated_coefficient == 0,
         False,
     )
+
+
+def check_connected_four_source_instanton_extraction() -> None:
+    def scale_polynomial(
+        polynomial: GrassmannPolynomial,
+        factor: Fraction,
+    ) -> GrassmannPolynomial:
+        return {
+            monomial: coefficient * factor
+            for monomial, coefficient in polynomial.items()
+            if coefficient * factor != 0
+        }
+
+    def two_source_polynomial(matrix: list[list[Fraction]]) -> GrassmannPolynomial:
+        polynomial: GrassmannPolynomial = {}
+        for bar_slot in range(2):
+            for chi_slot in range(2):
+                polynomial = grassmann_add(
+                    polynomial,
+                    grassmann_monomial(
+                        bar_slot,
+                        2 + chi_slot,
+                        coefficient=matrix[bar_slot][chi_slot],
+                    ),
+                )
+        return polynomial
+
+    def connected_coefficient(
+        z0: Fraction,
+        z2: list[list[Fraction]],
+        z4: Fraction,
+    ) -> Fraction:
+        return z4 / z0 + det_fraction(z2) / (z0 * z0)
+
+    z0 = Fraction(5)
+    z2 = [[Fraction(2), Fraction(3)], [Fraction(5), Fraction(7)]]
+    z4 = Fraction(11)
+    x = scale_polynomial(two_source_polynomial(z2), Fraction(1, 1) / z0)
+    y = grassmann_monomial(0, 1, 2, 3, coefficient=z4 / z0)
+    log_polynomial = grassmann_add(
+        grassmann_add(x, y),
+        scale_polynomial(grassmann_mul(x, x), -Fraction(1, 2)),
+    )
+    top_from_log = berezin_top_coefficient(log_polynomial, 4)
+    expected_connected = connected_coefficient(z0, z2, z4)
+    assert_equal(
+        "connected four-source coefficient from log source functional",
+        top_from_log,
+        expected_connected,
+    )
+    assert_equal(
+        "Grassmann log square sign gives plus determinant subtraction",
+        top_from_log,
+        Fraction(54, 25),
+    )
+
+    unconnected_top = z4 / z0
+    assert_equal(
+        "top Berezin coefficient is not connected with lower source terms",
+        unconnected_top == top_from_log,
+        False,
+    )
+
+    mass_background_z0 = Fraction(6)
+    mass_background_z2 = [[Fraction(3), Fraction(0)], [Fraction(0), Fraction(2)]]
+    mass_background_z4 = Fraction(1)
+    assert_equal(
+        "mass-saturated lower source terms change connected four-source kernel",
+        connected_coefficient(
+            mass_background_z0,
+            mass_background_z2,
+            mass_background_z4,
+        ),
+        Fraction(1, 3),
+    )
+    assert_equal(
+        "mass-background top coefficient alone misses connected subtraction",
+        mass_background_z4 / mass_background_z0 == Fraction(1, 3),
+        False,
+    )
+
+    rank_one_z2 = [[Fraction(2), Fraction(4)], [Fraction(3), Fraction(6)]]
+    assert_equal(
+        "rank-one lower source matrix has zero determinant",
+        det_fraction(rank_one_z2),
+        Fraction(0),
+    )
+    assert_equal(
+        "rank-one lower source terms do not shift connected top coefficient",
+        connected_coefficient(z0, rank_one_z2, z4),
+        z4 / z0,
+    )
+
+    exact_z0 = Fraction(51, 10)
+    exact_z2 = [
+        [Fraction(41, 20), Fraction(59, 20)],
+        [Fraction(101, 20), Fraction(139, 20)],
+    ]
+    exact_z4 = Fraction(111, 10)
+    exact_connected = connected_coefficient(exact_z0, exact_z2, exact_z4)
+    actual_error = abs(exact_connected - expected_connected)
+
+    e0 = abs(exact_z0 - z0)
+    e4 = abs(exact_z4 - z4)
+    e2 = Fraction(1, 20)
+    entry_bound = max(abs(entry) for row in z2 for entry in row)
+    determinant_error_bound = 4 * entry_bound * e2 + 2 * e2 * e2
+    d0 = min(abs(z0), abs(exact_z0))
+    z4_ratio_error_bound = e4 / d0 + abs(z4) * e0 / (abs(z0) * d0)
+    determinant_ratio_error_bound = (
+        determinant_error_bound / (d0 * d0)
+        + abs(det_fraction(z2))
+        * abs(exact_z0 * exact_z0 - z0 * z0)
+        / (z0 * z0 * d0 * d0)
+    )
+    if not actual_error <= z4_ratio_error_bound + determinant_ratio_error_bound:
+        raise AssertionError("connected four-source extraction residual bound failed")
 
 
 def check_instanton_heat_kernel_beta0_logarithm() -> None:
@@ -5130,6 +5252,7 @@ def main() -> None:
     check_proper_time_fluctuation_four_fermion_amplitude()
     check_proper_time_determinant_residual_window()
     check_instanton_source_typing_and_differentiation()
+    check_connected_four_source_instanton_extraction()
     check_instanton_heat_kernel_beta0_logarithm()
     check_instanton_zero_mode_tail_local_limit()
     check_instanton_external_leg_amputation_kernel()

@@ -563,7 +563,10 @@ Current checks:
   source-functional RG transport showing how the finite fermion determinant
   factor cancels the anomalous running of \(\det(M^0+J^0)\), the c-number
   external-wave-packet outer product has zero determinant while the
-  differentiated Grassmann source coefficient is nonzero, the BPST zero-mode
+  differentiated Grassmann source coefficient is nonzero, the connected
+  four-source extraction rule in which lower two-source terms in a finite
+  instanton source polynomial shift the coefficient of \(\log Z_{\rm src}\),
+  the BPST zero-mode
   density-envelope momentum form factor \(zK_1(z)\), tail, and logarithmically
   sensitive second moment in the local-bilinear limit, the individual
   singular-gauge zero-mode slot form factor

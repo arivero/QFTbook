@@ -5481,6 +5481,73 @@ factor in \eqref{eq:instanton-source-differentiation-minor}.  The displayed
 two-flavor formula is the specialization to \(N_f=2\).
 \end{proof}
 
+\begin{proposition}[Connected four-source extraction in a finite instanton chart]
+\label{prop:instanton-connected-four-source-extraction}
+Keep the two-flavor \(Q=1\) zero-mode source convention above and suppose a
+finite regulator and a selected collective-coordinate window have already
+produced a normalized one-instanton source polynomial of the form
+\begin{equation}
+  \mathcal Z_{1,\Lambda}^{\rm src}(\bar\chi,\chi)
+  =
+  Z_0
+  +
+  \sum_{A,B=1}^{2}Z_{AB}\,\bar\chi_A\chi_B
+  +
+  Z_4\,\bar\chi_1\bar\chi_2\chi_1\chi_2 ,
+  \label{eq:instanton-four-source-finite-polynomial}
+\end{equation}
+where the odd sources are ordered as
+\((\bar\chi_1,\bar\chi_2,\chi_1,\chi_2)\).  If \(Z_0\ne0\), the connected
+source coefficient in this finite chart is the top coefficient of
+\(\log\mathcal Z_{1,\Lambda}^{\rm src}\):
+\begin{equation}
+  \Gamma^{(4),{\rm conn}}_{1,\Lambda}
+  :=
+  [\bar\chi_1\bar\chi_2\chi_1\chi_2]\,
+  \log\mathcal Z_{1,\Lambda}^{\rm src}
+  =
+  \frac{Z_4}{Z_0}
+  +
+  \frac{\det Z_2}{Z_0^2},
+  \qquad
+  Z_2=(Z_{AB})_{A,B=1}^{2}.
+  \label{eq:instanton-connected-four-source-coefficient}
+\end{equation}
+Thus the top Berezin coefficient \(Z_4\) is itself the connected four-source
+kernel only in a source selection where the lower source coefficients and the
+normalizing vacuum factor have already been removed.  With a mass background,
+bilinear source background, or reference amplitude used to normalize the
+determinant, the lower two-source terms in \(Z_2\) are physical data and their
+determinant subtraction is part of the four-point extraction.
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+  \mathcal Z_{1,\Lambda}^{\rm src}
+  =
+  Z_0(1+X+Y),
+  \qquad
+  X=\frac1{Z_0}\sum_{A,B}Z_{AB}\bar\chi_A\chi_B,\qquad
+  Y=\frac{Z_4}{Z_0}\bar\chi_1\bar\chi_2\chi_1\chi_2 .
+\]
+Since \(X\) has degree two and \(Y\) has degree four,
+\[
+  \log(1+X+Y)=X+Y-\frac12X^2
+\]
+in the four-source Grassmann algebra.  The only sign to track is the
+reordering to the declared top monomial:
+\[
+  [\bar\chi_1\bar\chi_2\chi_1\chi_2]\,X^2
+  =
+  -2\,\frac{\det Z_2}{Z_0^2}.
+\]
+The factor \(-\frac12\) in the logarithm then gives the plus sign in
+\eqref{eq:instanton-connected-four-source-coefficient}.  The final sentence is
+the usual finite-regulator distinction between differentiating a generating
+functional and differentiating its logarithm.
+\end{proof}
+
 \begin{proposition}[Fermion determinant factor versus zero-mode determinant]
 \label{prop:instanton-fermion-determinant-zero-mode-factorization}
 Fix the same finite-regulator \(Q=1\) chart \(z=(a,\rho,U)\) for vectorlike

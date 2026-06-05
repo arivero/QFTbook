@@ -384,6 +384,7 @@
 | \(\bar\chi_A,\chi_B\) | odd generating coordinates for differentiated external fermion slots in the instanton zero-mode sector |
 | \(R_{Af}(z),L_{fB}(z)\) | right-slot and left-slot zero-mode overlap matrices whose differentiated coefficient is \(\det R\,\det L\) |
 | \(G^{(4)}_{\eta,\Lambda,Q=1}\) | source-differentiated finite-regulator one-instanton contribution to the smeared four-fermion amplitude |
+| \(Z_0,Z_2,Z_4,\Gamma^{(4),{\rm conn}}_{1,\Lambda}\) | finite instanton source-polynomial coefficients and the connected four-source coefficient extracted from \(\log Z_{\rm src}\), including lower two-source determinant subtraction |
 | \(h_\rho(y),\widehat h_\rho(q),M_2(R)\) | normalized BPST zero-mode density radial envelope, momentum form factor \(zK_1(z)\), and truncated second moment in the local-vertex expansion |
 | \(F_{\rm zm}(t)\) | individual singular-gauge BPST fermion zero-mode slot form factor, \(F_{\rm zm}(t)=-t\partial_t(I_0K_0-I_1K_1)\) with \(t=\rho|p|/2\) |
 | \(\mathcal P\) | total right-minus-left external momentum carried by a plane-wave instanton four-fermion source coefficient |
@@ -1766,3 +1767,13 @@
   `check_one_instanton_amplitude_datum_gate_spine()` verifies the ordered gate
   spine and rejects BPST/ADHM-only, omitted-gate, unsaturated-zero-mode, and
   Euclidean-equals-physical shortcuts.
+- 2026-06-05 issue #597 connected four-source extraction pass: added
+  `prop:instanton-connected-four-source-extraction`, deriving the coefficient
+  of the four-source monomial in `log Z_src` for a finite instanton source
+  chart.  The new block makes explicit that a top Berezin coefficient is not
+  automatically the connected four-point kernel when mass/background or
+  reference-normalization terms produce lower two-source coefficients; the
+  lower-source determinant term must be included before a four-point amplitude
+  is quoted.  The BPST companion now checks the Grassmann sign, the
+  mass-background subtraction, the rank-one lower-source negative control, and
+  a finite residual bound for the extraction formula.
