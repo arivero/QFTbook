@@ -9,6 +9,30 @@ Feynman-parameter discussions are instead coefficientwise perturbative graph
 analyses of regulated time-ordered kernels.  This is the standing convention
 of Definition~\ref{def:scattering-time-ordered-correlator-status}.
 
+\begin{remark}[Status of the named analytic tools]
+\label{rem:chapter06-named-tool-status-ledger}
+The names in this chapter do not all have the same logical role.  The
+primitive Wightman tube theorem and the Jost-edge gluing theorem are proved
+locally from spectral support, locality, and the stated boundary-value
+regularity.  The Jost--Lehmann--Dyson representation is a theorem only after a
+causal commutator has been supplied with Dyson regularity and support-pruned
+data; verifying those hypotheses for a particular LSZ source-current kernel is
+a separate QFT problem.  The Cutkosky rule used below is a perturbative
+graph-level line-replacement theorem derived after a regulator, largest-time
+identity, channel, and physical sheet have been chosen; it is not the same
+statement as the exact Hilbert-space unitarity identity.  Generalized
+unitarity and integrand reduction are reconstruction methods for a regulated
+loop integrand or master-integral family, so equality on generalized cuts is
+weaker than equality of a renormalized amplitude or an infrared-safe
+observable.  The Steinmann relation is quoted only under the declared
+boundary-value setting, while the chapter proves the finite causal-order
+obstruction that explains the condition.  Finally, Landau equations are
+graph-by-graph necessary pinch diagnostics in perturbation theory; a positive
+Landau solution identifies a candidate classical process and sheet, not a
+nonperturbative theorem that the exact amplitude must have a singularity
+there.
+\end{remark}
+
 
 \section{Physical Region and First Sheet}
 \label{sec:physical-region-and-first-sheet}
@@ -2154,15 +2178,17 @@ that the Landau equations identify below.
 \section{Generalized Unitarity and One-Loop Reduction}
 \label{sec:generalized-unitarity-one-loop-reduction}
 
-The Cutkosky theorem computes a physical discontinuity.  Modern loop
-amplitude methods use the same on-shell replacement more aggressively, but
-with an extra distinction that must not be suppressed.  A \emph{physical cut}
-is a boundary-value statement: the cut lines carry real on-shell momenta,
-positive-energy step functions, the physical state sum, and the sheet
-specified by the channel.  A \emph{generalized cut} is an algebraic or
-contour operation on a regulated loop integrand: one selects denominators and
-takes residues, or solves the selected on-shell equations over complex loop
-momentum.  The latter operation is the calculational bridge from tree
+Under Theorem~\ref{thm:cutkosky-cut-rule-perturbative-physical-cut}, a
+physical perturbative cut computes a channel discontinuity after the regulator,
+state sum, positive-energy branch, and sheet have been fixed.  Modern loop
+amplitude methods use the same on-shell replacement as an algebraic
+reconstruction probe, but the change of status is load-bearing.  A
+\emph{physical cut} is a boundary-value statement: the cut lines carry real
+on-shell momenta, positive-energy step functions, the physical state sum, and
+the sheet specified by the channel.  A \emph{generalized cut} is an algebraic
+or contour operation on a regulated loop integrand: one selects denominators
+and takes residues, or solves the selected on-shell equations over complex
+loop momentum.  The latter operation is the calculational bridge from tree
 amplitudes to loop integrands; the former is the Hilbert-space discontinuity
 that follows from \(S^\dagger S=\mathbf 1\).
 

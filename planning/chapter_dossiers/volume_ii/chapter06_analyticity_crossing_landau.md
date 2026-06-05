@@ -44,6 +44,14 @@
   boundary constants, branch/path prescriptions, lower sectors, and the
   finite-remainder/observable assembly that separates reconstructed virtual
   amplitudes from infrared-safe physical observables.
+- Records a reader-facing status ledger for named analytic tools in the
+  chapter: Wightman/Jost tube theorems are proved locally under their stated
+  hypotheses; Jost--Lehmann--Dyson requires separate Dyson-regular and
+  support-pruned data; Cutkosky is a perturbative physical-cut theorem, not an
+  algebraic generalized-cut statement; generalized unitarity is a regulated
+  reconstruction method; Steinmann is quoted under a boundary-value setting;
+  and Landau equations are graph-level pinch diagnostics rather than
+  nonperturbative singularity theorems.
 - Adds Steinmann sequential-discontinuity constraints as a scoped causal
   boundary-value statement, with channel-overlap definitions, sheet/order
   conventions, an overlapping versus compatible finite example, and explicit
@@ -163,6 +171,9 @@
 
 - The external particles are the lightest identical stable scalars of mass
   \(m\) unless stated otherwise.
+- Named physics tools in the chapter are interpreted only with the status
+  declared in `rem:chapter06-named-tool-status-ledger`; conventional names are
+  not used as proof stand-ins.
 - Mostly-plus metric: an on-shell mass-\(m_i\) internal line satisfies
   \(q_i^2+m_i^2=0\).
 - Perturbative diagrams are considered with Feynman denominators
@@ -854,3 +865,11 @@
   companion script checks the quartic discriminant, genus-one branch-point
   count, positive-parameter threshold stationarity, pseudo-threshold negative
   control, and logarithmic one-master shortcut failure.
+- 2026-06-05 issue #755 named-tool status pass: added
+  `rem:chapter06-named-tool-status-ledger` near the chapter entrance and
+  tightened the generalized-unitarity opening.  The pass records which named
+  tools are locally proved, conditionally quoted, perturbative, or diagnostic:
+  Wightman/Jost tube theorems, Jost--Lehmann--Dyson, Cutkosky, generalized
+  unitarity/integrand reduction, Steinmann, and Landau equations.  This is an
+  editorial/coherence repair for a dense chapter, not another loop-amplitude
+  cell.
