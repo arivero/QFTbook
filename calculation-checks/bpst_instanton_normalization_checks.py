@@ -114,6 +114,10 @@ relations
     Q^(-2) coefficient; fused bilinear density sources exponentially suppress
     the large-rho endpoint, while individual fermion slots obey the power test
     b0+1-3m<-1
+    the equal-transfer fused bilinear-density hard size integral evaluates to
+    an explicit Gamma-function Mellin coefficient with c^(-b0-2) source-scale
+    dependence; this exponential-tail source channel is distinct from the
+    individual-slot four-fermion kernel
     hard-size dominance is stronger than endpoint convergence: for SU(3),
     Nf=2 differentiated fermion slots the log-size shell and the tail beyond
     rho=R/Q decay only as R^(-1/3), so tenfold suppression of the power-tail
@@ -218,7 +222,8 @@ Schur-complement algebra, source differentiation, inverse-Gram construction of
 the shared SU(2) four-fundamental Haar projector, absolute logarithmic
 determinant-residual bounds, finite reference-amplitude calibration
 ratios, finite-scheme transport ratios, zero-mode overlap determinant-stability
-bounds, finite cumulant telescopes, coefficient/operator transport matrices,
+bounds, Schwinger/Beta factorization of the fused-source Bessel Mellin
+integral, finite cumulant telescopes, coefficient/operator transport matrices,
 exact retained size-shell stationarity equations, and finite amplitude-sector
 isolation telescopes.
 Imported assumptions: the BPST background and zero-mode formulas, one-loop
@@ -236,10 +241,12 @@ diffusion,
 vacuum determinant calibration substituted for a source-dependent fluctuation
 bound, signed fluctuation-cumulant cancellations,
 hard-only and screening-only shell substitutions in the mixed size-majorant
-problem, and separation of operator RG flow from the Wilsonian size-boundary
-flux, perturbative sector leakage mistaken for an exact selection rule,
-omitted neighboring-sector leakage, and signed adjacent-sector cancellation
-mistaken for sector isolation, the BPST/ADHM classical-and-moduli prefix
+problem, fused bilinear-density endpoint control mistaken for individual-slot
+four-fermion endpoint control, and separation of operator RG flow from the
+Wilsonian size-boundary flux, perturbative sector leakage mistaken for an
+exact selection rule, omitted neighboring-sector leakage, and signed
+adjacent-sector cancellation mistaken for sector isolation, the BPST/ADHM
+classical-and-moduli prefix
 mistaken for the instanton amplitude datum, the collective-coordinate measure
 alone mistaken for the observable coefficient, the Euclidean source coefficient
 mistaken for the physical observable after bridge residuals, omitted
@@ -260,6 +267,8 @@ from check_utils import assert_close as _assert_close
 from fractions import Fraction
 import itertools
 import math
+
+import mpmath as mp
 
 
 def eps4(a: int, b: int, c: int, d: int) -> int:
@@ -3812,6 +3821,113 @@ def check_hard_momentum_instanton_size_window() -> None:
     )
 
 
+def check_fused_source_hard_size_mellin_integral() -> None:
+    n_c = 3
+    n_f = 2
+    b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+    assert_equal("fused source hard b0", b0, Fraction(29, 3))
+
+    # The fused density source has two factors cs K_1(cs).  The exact Mellin
+    # integral scales as c^(-b0-2), so it carries the same hard Q power as the
+    # general source-amputated coefficient after the Lambda_ht trade.
+    source_scale_power = -b0 - 2
+    assert_equal("fused source c-scaling power", source_scale_power, Fraction(-35, 3))
+    lambda_power = b0
+    q_power = -b0 - 2
+    assert_equal("fused source hard coefficient dimension", lambda_power + q_power, -2)
+
+    mellin_lambda = b0 + 4
+    mellin_nu = Fraction(1)
+    assert_equal("fused Mellin lambda", mellin_lambda, Fraction(41, 3))
+    assert_equal(
+        "fused Mellin convergence condition",
+        mellin_lambda > 2 * abs(mellin_nu),
+        True,
+    )
+
+    mp.mp.dps = 50
+    b0_mp = mp.mpf(b0.numerator) / b0.denominator
+    lambda_mp = mp.mpf(mellin_lambda.numerator) / mellin_lambda.denominator
+    nu_mp = mp.mpf(mellin_nu.numerator) / mellin_nu.denominator
+    c_value = mp.mpf(5) / 4
+
+    gamma_formula = (
+        c_value ** (-(b0_mp + 2))
+        * 2 ** (b0_mp + 1)
+        * mp.gamma((b0_mp + 4) / 2) ** 2
+        * mp.gamma((b0_mp + 6) / 2)
+        * mp.gamma((b0_mp + 2) / 2)
+        / mp.gamma(b0_mp + 4)
+    )
+    schwinger_factorized = (
+        c_value ** (-(b0_mp + 2))
+        * 2 ** (lambda_mp - 3)
+        * mp.gamma(lambda_mp / 2 + nu_mp)
+        * mp.gamma(lambda_mp / 2 - nu_mp)
+        * mp.beta(lambda_mp / 2, lambda_mp / 2)
+    )
+    relative_error = abs(schwinger_factorized - gamma_formula) / abs(gamma_formula)
+    if not relative_error < mp.mpf("1e-45"):
+        raise AssertionError(
+            "fused-source Schwinger/Mellin factorization failed: "
+            f"relative error {mp.nstr(relative_error, 8)}"
+        )
+
+    # The b0=0, c=1 specialization reduces to an elementary Gamma recurrence:
+    # int_0^infty s^3 K_1(s)^2 ds = 2/3.
+    special_formula = (
+        2 ** (4 - 3)
+        * mp.gamma(2) ** 2
+        * mp.gamma(3)
+        * mp.gamma(1)
+        / mp.gamma(4)
+    )
+    assert_close("fused source b0=0 special Mellin value", float(special_formula), 2 / 3)
+
+    doubled_scale_formula = gamma_formula * 2 ** (-(b0_mp + 2))
+    doubled_scale_direct = (
+        (2 * c_value) ** (-(b0_mp + 2))
+        * 2 ** (b0_mp + 1)
+        * mp.gamma((b0_mp + 4) / 2) ** 2
+        * mp.gamma((b0_mp + 6) / 2)
+        * mp.gamma((b0_mp + 2) / 2)
+        / mp.gamma(b0_mp + 4)
+    )
+    scale_error = abs(doubled_scale_formula - doubled_scale_direct) / abs(
+        doubled_scale_direct
+    )
+    if not scale_error < mp.mpf("1e-50"):
+        raise AssertionError("fused-source hard scale law failed")
+
+    small_s_power = b0 + 1
+    assert_equal("fused source small-s integrability", small_s_power > -1, True)
+
+    def endpoint_kind(exponential_scale: Fraction, power_margin: Fraction) -> str:
+        if exponential_scale > 0:
+            return "exponential"
+        if power_margin > 0:
+            return "power"
+        return "uncontrolled"
+
+    individual_margin = Fraction(1, 3)
+    assert_equal(
+        "fused source endpoint channel",
+        endpoint_kind(Fraction(2), Fraction(0)),
+        "exponential",
+    )
+    assert_equal(
+        "individual source endpoint channel remains power",
+        endpoint_kind(Fraction(0), individual_margin),
+        "power",
+    )
+    assert_equal(
+        "fused endpoint control is not individual-slot control",
+        endpoint_kind(Fraction(2), Fraction(0))
+        == endpoint_kind(Fraction(0), individual_margin),
+        False,
+    )
+
+
 def check_hard_size_tail_dominance_criterion() -> None:
     n_c = 3
     n_f = 2
@@ -5393,6 +5509,7 @@ def main() -> None:
     check_source_dependent_fluctuation_cumulant_bound()
     check_instanton_observable_assembly_ladder()
     check_hard_momentum_instanton_size_window()
+    check_fused_source_hard_size_mellin_integral()
     check_hard_size_tail_dominance_criterion()
     check_hard_screened_instanton_size_shell()
     check_su3_two_flavor_hard_instanton_coefficient()

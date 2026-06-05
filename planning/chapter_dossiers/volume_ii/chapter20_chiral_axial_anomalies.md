@@ -400,6 +400,7 @@
 | \(\Pi_{\mathcal O},J_I,M_I,\lambda_\alpha,M_\alpha,E_{\ge2},\kappa_I\) | selected source/charge/spectral projection, retained one-instanton coefficient, retained \(Q=1\) absolute mass, adjacent-sector leakage factors and majorants, higher-sector remainder, and noncancellation margin in the one-instanton isolation bound |
 | \(\mathfrak L_{\mathcal O},\kappa_{\mathcal O},R_{\rm sector},R_{\rm proj},R_{\rm scheme}\) | leading physical observable map, observable-level noncancellation margin, and the sector/projection/scheme residuals in the instanton observable assembly ladder |
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(\mathbf c;\mathcal F)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless selected-form-factor integral |
+| \(\mathcal J_{b_0}^{\rm fus}(c)\) | exact equal-transfer fused bilinear-density hard size integral, evaluating the \(zK_1(z)\) source channel by a Gamma-function Mellin coefficient |
 | \(\mathfrak s_{\rm hard}(s),\Delta\) | hard instanton log-size shell density and its power-tail suppression exponent \(\Delta=\sigma-b_0-2\) |
 | \(\rho_*,dQ,m_{\rm scr}\) | mixed hard-source/physical-screening log-shell coordinate, hard exponential envelope, and screening mass in the retained instanton size majorant |
 | \(C_{\rm inst}^{(4)}(Q;R),\mathcal P_{\rm orient}\) | specialized \(SU(3)\), \(N_f=2\) hard four-fermion instanton coefficient and shared orientation projector, with the Pauli-Villars pure-gauge constant, light-fermion determinant factor, and explicit endpoint residual |
@@ -1800,3 +1801,14 @@
   BPST companion checks the exact derivative algebra, massless-flavor vacuum
   vanishing, and the distinction between mass saturation and nonzero
   source-saturated fermion correlators.
+- 2026-06-05 issue #597 fused-source hard-integral pass: added
+  `prop:instanton-fused-source-hard-size-integral` after the general
+  hard-momentum size window.  The pass evaluates the equal-transfer fused
+  bilinear-density source integral
+  \(\int_0^\infty s^{b_0+1}[csK_1(cs)]^2\,ds\) as an exact
+  Gamma-function Mellin coefficient, specializes it to \(SU(3)\), \(N_f=2\),
+  and records why this exponential-tail source channel is not a substitute for
+  the individual-slot four-fermion kernel.  The BPST companion checks the
+  Mellin convergence condition, the Schwinger/Beta factorization, a special
+  Gamma-recurrence value, the \(c^{-35/3}\) scale law, the hard coefficient
+  dimension, and the endpoint-channel distinction.

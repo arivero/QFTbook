@@ -638,6 +638,10 @@ Current checks:
   RG-invariant rewrite
   \(\Lambda_{\rm ht}^{b_0}Q^{-b_0-2}\) of the same hard coefficient with the
   large-size endpoint controlled by the selected form-factor mechanism, the
+  exact fused bilinear-density source Mellin integral
+  \(\mathcal J_{b_0}^{\rm fus}(c)\) with its
+  \(c^{-b_0-2}\) source-scale dependence and its separation from the
+  individual-slot four-fermion kernel, the
   mass-saturated vacuum-activity size integral with its
   \(\prod_f(m_f\rho)\) zero-mode factors,
   small-\(\rho\) finiteness margin, large-\(\rho\) obstruction, and

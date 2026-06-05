@@ -7884,6 +7884,109 @@ not a cutoff on the instanton moduli space.  The approximation is controlled
 only when the dominant range also has \(1/\rho\) in the weak-coupling regime.
 \end{controlledapproximation}
 
+\begin{proposition}[Exact fused-source hard size integral]
+\label{prop:instanton-fused-source-hard-size-integral}
+The fused bilinear-density source in
+ControlledApproximation~\ref{ca:hard-momentum-instanton-size-window} gives a
+useful calibration because its endpoint suppression is strong enough that the
+dimensionless size integral can be evaluated in closed form.  Take two equal
+hard density transfers and
+\[
+  \mathcal F_1(cs)=\mathcal F_2(cs)=cs\,K_1(cs),
+  \qquad c>0,
+\]
+where \(K_1\) is the modified Bessel function.  Then, for \(b_0>-2\),
+\begin{equation}
+\begin{aligned}
+  \mathcal J_{b_0}^{\rm fus}(c)
+  &:=
+  \int_0^\infty
+    s^{\,b_0+1}\,[csK_1(cs)]^2\,\dd s  \\
+  &=
+  c^{-b_0-2}
+  \frac{2^{\,b_0+1}}{\Gamma(b_0+4)}
+  \Gamma\!\left(\frac{b_0+4}{2}\right)^2
+  \Gamma\!\left(\frac{b_0+6}{2}\right)
+  \Gamma\!\left(\frac{b_0+2}{2}\right).
+\end{aligned}
+  \label{eq:instanton-fused-source-hard-mellin-integral}
+\end{equation}
+For \(SU(3)\) with \(N_f=2\), \(b_0=29/3\), so
+\begin{equation}
+  \mathcal J_{29/3}^{\rm fus}(c)
+  =
+  c^{-35/3}
+  \frac{2^{32/3}\,
+  \Gamma(41/6)^2\Gamma(47/6)\Gamma(35/6)}
+       {\Gamma(41/3)} .
+  \label{eq:su3-nf2-fused-source-hard-mellin-integral}
+\end{equation}
+Thus the corresponding hard coefficient has the same one-loop scaling
+\(\Lambda_{\rm ht}^{b_0}Q^{-b_0-2}\) as
+\eqref{eq:hard-momentum-instanton-rg-invariant-scaling}, with the displayed
+closed source-shape constant multiplying the orientation and finite
+determinant factors.
+\end{proposition}
+
+\begin{proof}
+Near the origin, \(zK_1(z)\to1\), so the integral has small-\(s\) behavior
+\(s^{b_0+1}\), which is locally integrable for \(b_0>-2\).  At large \(s\),
+\(K_1(cs)\sim\sqrt{\pi/(2cs)}\,\ee^{-cs}\), so the fused source gives an
+exponential tail.  With \(t=cs\),
+\[
+  \mathcal J_{b_0}^{\rm fus}(c)
+  =
+  c^{-b_0-2}
+  \int_0^\infty t^{\,b_0+3}K_1(t)^2\,\dd t .
+\]
+It remains to evaluate this Bessel-square integral without hiding the
+normalization in a table.  Use the Schwinger representation
+\[
+  K_\nu(t)
+  =
+  \frac12\left(\frac t2\right)^\nu
+  \int_0^\infty
+    a^{-\nu-1}\exp\!\left[-a-\frac{t^2}{4a}\right]\,\dd a .
+\]
+Squaring this representation and carrying out the \(t\)-integral gives, for
+\(\lambda>2|\nu|\),
+\[
+  \int_0^\infty t^{\lambda-1}K_\nu(t)^2\,\dd t
+  =
+  2^{\lambda-3}
+  \Gamma\!\left(\frac{\lambda}{2}+\nu\right)
+  \int_0^\infty\!\!\int_0^\infty
+    \frac{
+      a^{\lambda/2-1}b^{\lambda/2-1}
+    }{
+      (a+b)^{\lambda/2+\nu}
+    }
+    \ee^{-a-b}\,\dd a\,\dd b .
+\]
+Now set \(a=ru\), \(b=r(1-u)\).  The \(r\)-integral gives
+\(\Gamma(\lambda/2-\nu)\), and the \(u\)-integral gives
+\(\Gamma(\lambda/2)^2/\Gamma(\lambda)\).  Hence
+\[
+  \int_0^\infty t^{\lambda-1}K_\nu(t)^2\,\dd t
+  =
+  \frac{2^{\lambda-3}}{\Gamma(\lambda)}
+  \Gamma\!\left(\frac{\lambda}{2}\right)^2
+  \Gamma\!\left(\frac{\lambda}{2}+\nu\right)
+  \Gamma\!\left(\frac{\lambda}{2}-\nu\right).
+\]
+With \(\lambda=b_0+4\) and \(\nu=1\), this gives
+\eqref{eq:instanton-fused-source-hard-mellin-integral}.
+\end{proof}
+
+This exact integral is a source-channel calculation, not a universal
+replacement for the four individual zero-mode slots.  A fused bilinear source
+has already projected two fermion slots into a density before the size
+integral is evaluated, and its \(K_1\)-kernel gives an exponential endpoint
+cutoff.  The differentiated four-fermion kernel in
+\eqref{eq:su3-nf2-hard-instanton-coefficient} keeps the individual BPST
+zero-mode form factors; its power tail and rank conditions remain separate
+amplitude data.
+
 \begin{controlledapproximation}[Hard-size dominance versus endpoint convergence]
 \label{ca:hard-size-dominance-vs-convergence}
 The convergence test in
