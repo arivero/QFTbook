@@ -1920,6 +1920,35 @@ failure of globalness is not a cosmetic complication in logarithmic counting;
 it changes the evolution problem from a linear anomalous dimension to a
 nonlinear Wilson-line measurement problem.
 
+The same calculation exposes the error made by a global-Sudakov-only ansatz.
+If one replaces the measured soft function by
+\[
+  G_{ij}^{\rm glob}(L)=\exp(-A_{ij}L),
+\]
+then the first derivative at the origin is correct, but
+\[
+  G_{ij}^{\rm glob}(L)-G_{ij}(L)
+  =
+  \frac{L^2}{2}\mathcal N_{ij}+O(L^3).
+\]
+The residual is not a convention for distributing logarithms among hard, jet,
+and soft factors.  It is the finite weight of histories in which a resolved
+gluon first enters an unmeasured cell \(u\) and then the softer radiation from
+the daughter dipoles \((i,u)\) or \((u,j)\) reaches the vetoed region.  This
+unmeasured-to-measured cascade is the physical history that the global ansatz
+has projected out.  The path decomposition
+\[
+  \mathcal N_{ij}
+  =
+  \sum_{u\in\mathcal U}
+  \underbrace{K_{ij}^u}_{\text{unmeasured first emission}}
+  \underbrace{(A_{iu}+A_{uj}-A_{ij})}_{\text{new veto rate minus virtual subtraction}}
+\]
+is therefore an observable-level obstruction to replacing the angular veto by
+a product of independent global Sudakov factors.  In the additive boundary
+case the bracket vanishes cell by cell, so the obstruction disappears for a
+physical reason rather than by a choice of scale or scheme.
+
 Equation~\eqref{eq:finite-non-global-dipole-evolution} is not a theorem about
 full QCD.  It is a finite large-\(N_c\), strongly energy-ordered,
 soft-dipole coordinate system for one obstruction to naive factorization.

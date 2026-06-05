@@ -357,8 +357,12 @@ Current checks:
 - `qcd_non_global_log_checks.py`: exact rational checks for the finite
   non-global soft-dipole datum in the jets chapter, including real--virtual
   cancellation for unmeasured angular cells, the second-order expansion
-  coefficient \(A_{ij}^2-\mathcal N_{ij}\), and the additive-measurement
-  boundary where the non-global coefficient vanishes.
+  coefficient \(A_{ij}^2-\mathcal N_{ij}\), the unmeasured-cell path
+  decomposition of \(\mathcal N_{ij}\), the residual missed by a
+  global-Sudakov-only ansatz, and the additive-measurement boundary where the
+  non-global coefficient vanishes.  The evidence contract also checks that the
+  chapter keeps this finite BMS soft-radiation coordinate separate from
+  Glauber exchange and super-leading logarithms.
 - `qcd_bfkl_small_x_checks.py`: finite checks for the Volume II small-\(x\)
   QCD block, including trace-delta versus half-trace invariance of the BFKL
   kernel coefficient, transverse inversion covariance of the dipole kernel

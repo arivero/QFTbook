@@ -78,6 +78,10 @@
       "risk_class": "SCET/factorization proof-status boundary"
     },
     {
+      "path": "qcd_non_global_log_checks.py",
+      "risk_class": "QCD non-global soft-evolution factorization obstruction"
+    },
+    {
       "path": "cft_higher_genus_sewing_checks.py",
       "risk_class": "CFT sewing"
     },

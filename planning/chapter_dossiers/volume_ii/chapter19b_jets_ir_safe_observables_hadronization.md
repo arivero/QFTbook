@@ -98,7 +98,8 @@ The chapter establishes:
   parton-shower logarithmic accuracy;
 - a finite non-global soft-dipole evolution datum for angular veto
   measurements, deriving the first non-global coefficient from the nonlinear
-  real-emission term into unmeasured cells;
+  real-emission term into unmeasured cells and comparing it with the
+  global-Sudakov-only ansatz that misses the unmeasured-to-measured cascade;
 - the soft-drop grooming definition and an IRC classification that separates
   \(\beta_{\rm SD}>0\) groomed four-momentum safety from the
   \(\beta_{\rm SD}=0\) collinear counterexample for the groomed four-vector;
@@ -308,7 +309,10 @@ The chapter establishes:
     emissions are real--virtual balanced at first order but split the original
     dipole into two dipoles; differentiating the finite evolution at \(L=0\)
     yields the first non-global coefficient
-    \(\sum_u K_{ij}^u(A_{iu}+A_{uj}-A_{ij})\).
+    \(\sum_u K_{ij}^u(A_{iu}+A_{uj}-A_{ij})\).  A global-Sudakov-only ansatz
+    has the correct first derivative but misses the second-order coefficient by
+    one half of this path-decomposed cascade term; the additive boundary where
+    each bracket vanishes is the negative control.
 9. Parton showers are controlled approximations whose logarithmic accuracy is
    observable- and scheme-dependent.
 9a. Soft drop with \(\beta_{\rm SD}>0\) has a collinear-safe groomed
@@ -523,6 +527,14 @@ The chapter establishes:
   second-order coefficient separating the global Sudakov square from the
   first non-global term, and added
   `calculation-checks/qcd_non_global_log_checks.py`.
+- 2026-06-05 issue #526/#630 non-global residual pass: upgraded the finite
+  angular-cell datum from a coefficient identity to an observable-level
+  factorization diagnostic, comparing the full soft-dipole expansion with a
+  global-Sudakov-only ansatz, decomposing the missed term into
+  unmeasured-to-measured paths, promoting
+  `calculation-checks/qcd_non_global_log_checks.py` to an evidence-contract
+  companion, and preserving the explicit boundary between BMS non-global soft
+  evolution, Glauber exchange, and super-leading logarithms.
 - 2026-06-04 issue #783 proof-status pass: replaced the remaining
   construction-overstating SCET language with conditional operator-coordinate
   language; added the fixed-regulator endpoint-region expansion with a
