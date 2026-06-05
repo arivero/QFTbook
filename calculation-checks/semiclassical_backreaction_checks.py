@@ -19,6 +19,9 @@ the full retained interacting stress-tensor/noise package with component
 cross-covariances and finite composite-operator mixing, the closed-time-path
 influence-functional consistency of the interacting mean, retarded response,
 and noise package,
+the homogeneous FLRW interacting-source closure tying a time-dependent
+potential coordinate to the pressure, Friedmann/Raychaudhuri, and
+stress-noise Ward data,
 the small-gain stability and fluctuation-validity check for the linearized
 interacting backreaction operator, the finite nonlinear fixed-point chart for
 the retained semiclassical equation,
@@ -47,6 +50,9 @@ full interacting package algebra in which component cross-covariances and
 finite operator-mixing terms are required before Ward tests are applied to the
 noise, the closed-time-path package tests tying Ward identities, retarded
 support, positivity, and fluctuation-dissipation compatibility together, the
+homogeneous FLRW source/noise closure in which the correction pressure and
+state-transport terms make a time-dependent potential density compatible with
+both Friedmann and Raychaudhuri responses and with Ward-clean Hubble noise, the
 small-gain feedback inverse and noise-amplification bound for the full retained
 backreaction operator, the finite nonlinear self-map/contraction and
 mean/noise-validity budgets, including residual size and residual Lipschitz
@@ -64,6 +70,8 @@ finite stress/gravity coordinate transports, linear local-response transports,
 c-number connected-noise cancellations,
 finite influence-functional quadratic forms, retarded-support tests,
 fluctuation-dissipation ratios, small-gain inverses, response/noise bounds,
+FLRW pressure closures, Hubble-response consistency checks, and Ward-clean
+homogeneous stress-noise covariances,
 species sums, 1/N_sp gravitational-coupling scaling, source-cumulant scaling,
 nonlinear fixed-point radii, residual size and residual Lipschitz
 budgets, state-transport Lipschitz constants, noise-validity inequalities, and
@@ -93,6 +101,10 @@ response kernels, independent noise spectra violating the KMS factor, and
 spurious closed-time-path h_c h_c terms are rejected, as are singular feedback
 operators, overlarge small-gain feedback, unconserved sources/noise, and
 conserved-but-unstable retained data, signed nonlinear residual cancellations,
+time-dependent potential energy inserted without correction pressure,
+Friedmann/Raychaudhuri inconsistency, potential-only stochastic stress noise,
+and Hubble-noise estimates that ignore the Ward-clean pressure and derivative
+fluctuations,
 omitted state-transport Lipschitz constants, omitted residual Lipschitz
 constants, bounded non-Lipschitz residuals with multiple fixed points, overlarge
 quadratic nonlinear feedback, linear-noise-only validity estimates,
@@ -923,6 +935,164 @@ def check_retained_interacting_source_ward_diagnostics() -> None:
         raise AssertionError("contractive response should bound diagnostic noise trace")
 
 
+def check_flrw_interacting_source_noise_closure() -> None:
+    # Homogeneous FLRW retained cell for a time-dependent lambda phi^4
+    # potential coordinate.  The correction pressure is what lets the same
+    # source satisfy both Friedmann and Raychaudhuri response equations.
+    hubble = Fraction(2)
+    kappa = Fraction(3, 7)
+    potential_density = Fraction(3, 5)
+    potential_density_dot = Fraction(1, 4)
+    potential_pressure = -potential_density
+
+    potential_ward_residual = potential_density_dot + 3 * hubble * (
+        potential_density + potential_pressure
+    )
+    if potential_ward_residual != potential_density_dot:
+        raise AssertionError("potential-only Ward residual should be the density drift")
+    if potential_ward_residual == 0:
+        raise AssertionError("negative control failed: time-dependent potential source conserved")
+
+    correction_density = Fraction(1, 10)
+    correction_density_dot = -Fraction(1, 20)
+    correction_pressure = -correction_density - (
+        potential_density_dot + correction_density_dot
+    ) / (3 * hubble)
+    if correction_pressure != -Fraction(2, 15):
+        raise AssertionError("FLRW correction pressure closure changed")
+
+    full_density = potential_density + correction_density
+    full_density_dot = potential_density_dot + correction_density_dot
+    full_pressure = potential_pressure + correction_pressure
+    full_ward_residual = full_density_dot + 3 * hubble * (
+        full_density + full_pressure
+    )
+    if full_ward_residual != 0:
+        raise AssertionError("Ward-closed FLRW interacting source should conserve")
+
+    naive_full_pressure = -full_density
+    naive_residual = full_density_dot + 3 * hubble * (
+        full_density + naive_full_pressure
+    )
+    if naive_residual == 0:
+        raise AssertionError("negative control failed: p=-rho shortcut conserved")
+
+    # In a de Sitter retained cell, differentiating Friedmann and using
+    # Raychaudhuri agree exactly iff the perturbing stress source conserves.
+    friedmann_hubble_shift = kappa * full_density / (6 * hubble)
+    if friedmann_hubble_shift != Fraction(1, 40):
+        raise AssertionError("FLRW Friedmann Hubble shift changed")
+    friedmann_hubble_dot = kappa * full_density_dot / (6 * hubble)
+    raychaudhuri_hubble_dot = -kappa * (full_density + full_pressure) / 2
+    if friedmann_hubble_dot != raychaudhuri_hubble_dot:
+        raise AssertionError("Ward-closed source should match Friedmann and Raychaudhuri")
+    if friedmann_hubble_dot != Fraction(1, 140):
+        raise AssertionError("FLRW Hubble-drift response changed")
+
+    potential_friedmann_hubble_dot = (
+        kappa * potential_density_dot / (6 * hubble)
+    )
+    potential_raychaudhuri_hubble_dot = -kappa * (
+        potential_density + potential_pressure
+    ) / 2
+    if potential_raychaudhuri_hubble_dot != 0:
+        raise AssertionError("potential equation of state should give zero Raychaudhuri drift")
+    if potential_friedmann_hubble_dot == potential_raychaudhuri_hubble_dot:
+        raise AssertionError("negative control failed: drifting vacuum energy was metric-compatible")
+
+    # Stochastic homogeneous source coordinates are
+    # (xi_{dot rho}, xi_rho, xi_p).  The Ward map is
+    # xi_{dot rho} + 3 H (xi_rho + xi_p).
+    ward: Matrix = ((Fraction(1), 3 * hubble, 3 * hubble),)
+    state_covariance: Matrix = (
+        (Fraction(2), Fraction(1, 3)),
+        (Fraction(1, 3), Fraction(1)),
+    )
+    if det2(state_covariance) <= 0:
+        raise AssertionError("test FLRW noise state covariance should be positive")
+
+    ward_clean_noise_map: Matrix = (
+        (Fraction(0), -3 * hubble),
+        (Fraction(1), Fraction(1)),
+        (Fraction(-1), Fraction(0)),
+    )
+    if matmul(ward, ward_clean_noise_map) != zero_matrix(1, 2):
+        raise AssertionError("FLRW stress-noise map should satisfy the Ward condition")
+    full_noise = matmul(
+        matmul(ward_clean_noise_map, state_covariance),
+        transpose(ward_clean_noise_map),
+    )
+    expected_full_noise: Matrix = (
+        (Fraction(36), Fraction(-8), Fraction(2)),
+        (Fraction(-8), Fraction(11, 3), Fraction(-7, 3)),
+        (Fraction(2), Fraction(-7, 3), Fraction(2)),
+    )
+    if full_noise != expected_full_noise:
+        raise AssertionError("Ward-clean FLRW stress-noise covariance changed")
+    if matmul(ward, full_noise) != zero_matrix(1, 3):
+        raise AssertionError("FLRW stress noise should have no Ward row")
+    if matmul(full_noise, transpose(ward)) != zero_matrix(3, 1):
+        raise AssertionError("FLRW stress noise should have no Ward column")
+
+    for test_vector in [
+        ((Fraction(1),), (Fraction(0),), (Fraction(0),)),
+        ((Fraction(0),), (Fraction(1),), (Fraction(-1),)),
+        ((Fraction(2),), (Fraction(1),), (Fraction(3),)),
+    ]:
+        if quadratic_form(full_noise, test_vector) < 0:
+            raise AssertionError("FLRW Ward-clean noise should be positive semidefinite")
+
+    potential_noise_amplitude = Fraction(5, 3)
+    potential_noise_map: Matrix = (
+        (Fraction(1),),
+        (Fraction(1),),
+        (Fraction(-1),),
+    )
+    if matmul(ward, potential_noise_map) == zero_matrix(1, 1):
+        raise AssertionError("negative control failed: potential-only noise was Ward-clean")
+    potential_noise = tuple(
+        tuple(
+            potential_noise_amplitude
+            * potential_noise_map[row][0]
+            * potential_noise_map[col][0]
+            for col in range(3)
+        )
+        for row in range(3)
+    )
+    if matmul(ward, potential_noise) == zero_matrix(1, 3):
+        raise AssertionError("negative control failed: potential-only noise passed Ward row test")
+
+    friedmann_hubble_noise: Matrix = ((kappa / (6 * hubble),), (Fraction(0),), (Fraction(0),))
+    raychaudhuri_hubble_noise: Matrix = (
+        (Fraction(0),),
+        (-kappa / 2,),
+        (-kappa / 2,),
+    )
+    route_difference = matsub(friedmann_hubble_noise, raychaudhuri_hubble_noise)
+    if transpose(route_difference) != ((Fraction(1, 28), Fraction(3, 14), Fraction(3, 14)),):
+        raise AssertionError("FLRW Hubble-noise route difference changed")
+
+    full_route_disagreement = quadratic_form(full_noise, route_difference)
+    if full_route_disagreement != 0:
+        raise AssertionError("Ward-clean noise should make Hubble-noise routes agree")
+
+    potential_route_disagreement = quadratic_form(potential_noise, route_difference)
+    if potential_route_disagreement != Fraction(5, 2352):
+        raise AssertionError("potential-only Hubble-noise mismatch changed")
+    if potential_route_disagreement == 0:
+        raise AssertionError("negative control failed: potential-only Hubble noise was consistent")
+
+    hubble_observable: Matrix = ((Fraction(0),), (kappa / (6 * hubble),), (Fraction(0),))
+    full_hubble_variance = quadratic_form(full_noise, hubble_observable)
+    potential_hubble_variance = quadratic_form(potential_noise, hubble_observable)
+    if full_hubble_variance != Fraction(11, 2352):
+        raise AssertionError("Ward-clean FLRW Hubble variance changed")
+    if potential_hubble_variance != Fraction(5, 2352):
+        raise AssertionError("potential-only FLRW Hubble variance changed")
+    if potential_hubble_variance >= full_hubble_variance:
+        raise AssertionError("negative control failed: pressure/derivative noise was not needed")
+
+
 def check_retained_ward_completion_laboratory() -> None:
     # Worked two-coordinate analogue of the retained source/noise laboratory.
     ward: Matrix = ((Fraction(1), Fraction(-1)),)
@@ -1657,6 +1827,7 @@ def main() -> None:
     check_lambda_phi4_potential_source_coordinate()
     check_lambda_phi4_potential_noise_kernel()
     check_retained_interacting_source_ward_diagnostics()
+    check_flrw_interacting_source_noise_closure()
     check_retained_ward_completion_laboratory()
     check_interacting_stress_tensor_noise_package()
     check_interacting_influence_functional_consistency()

@@ -1452,6 +1452,148 @@ of keeping the potential-sector calculation narrow: it is a computable
 coordinate inside the interacting source, while the conserved mean and noise
 that feed semiclassical gravity require the full Ward-compatible pAQFT package.
 
+\begin{controlledapproximation}[Homogeneous FLRW interacting source and noise
+closure]
+\label{ca:semiclassical-flrw-interacting-source-noise-closure}
+The conservation issue becomes physical in the simplest cosmological retained
+sector.  On a spatially flat FLRW metric
+\[
+  ds^2=-dt^2+a(t)^2d\mathbf x^2,
+  \qquad H=\frac{\dot a}{a},
+\]
+write a homogeneous stress perturbation as
+\begin{equation}
+  \delta T^\mu{}_\nu
+  =
+  \operatorname{diag}(-\delta\rho,\delta p,\delta p,\delta p).
+  \label{eq:semiclassical-flrw-homogeneous-source}
+\end{equation}
+The linearized Bianchi identity is
+\begin{equation}
+  \delta\dot\rho
+  +
+  3H(\delta\rho+\delta p)
+  +
+  3\delta H(\rho_0+p_0)
+  =
+  0 ,
+  \label{eq:semiclassical-flrw-linear-ward}
+\end{equation}
+where \((\rho_0,p_0)\) is the background matter source.  In a de Sitter or
+vacuum-energy retained cell, \(\rho_0+p_0=0\), and the last term drops.  The
+potential coordinate
+\eqref{eq:semiclassical-interacting-vacuum-source} has
+\[
+  \delta\rho_{\rm pot}=\rho_\lambda(t),
+  \qquad
+  \delta p_{\rm pot}=-\rho_\lambda(t),
+  \qquad
+  \rho_\lambda(t)=\frac{\lambda}{8}\Sigma_{\omega,H}(t)^2 .
+\]
+It is a conserved cosmological-constant coordinate only when the transported
+state and Wick chart make \(\dot\rho_\lambda=0\) on the retained window.  If
+\(\Sigma_{\omega,H}(t)\) changes because the state is being transported
+through an expanding background, the potential coordinate by itself has
+conservation residual \(\dot\rho_\lambda\).  The missing interacting pieces
+must supply a correction
+\((\delta\rho_{\rm corr},\delta p_{\rm corr})\) satisfying
+\begin{equation}
+  \dot\rho_\lambda
+  +
+  \delta\dot\rho_{\rm corr}
+  +
+  3H(\delta\rho_{\rm corr}+\delta p_{\rm corr})
+  +
+  3\delta H(\rho_0+p_0)
+  =
+  0 .
+  \label{eq:semiclassical-flrw-interacting-ward-closure}
+\end{equation}
+When \(H\ne0\), this may be written as the pressure closure
+\begin{equation}
+  \delta p_{\rm corr}
+  =
+  -\delta\rho_{\rm corr}
+  -
+  \frac{
+    \dot\rho_\lambda+\delta\dot\rho_{\rm corr}
+    +3\delta H(\rho_0+p_0)
+  }{3H}.
+  \label{eq:semiclassical-flrw-pressure-closure}
+\end{equation}
+At a bounce or at a turning point with \(H=0\), one should use the unsolved
+equation \eqref{eq:semiclassical-flrw-interacting-ward-closure}; the pressure
+formula is only a coordinate expression in an expanding or contracting chart.
+
+For a flat de Sitter retained cell, the two linear metric equations are
+\begin{equation}
+  6H\,\delta H
+  =
+  \kappa\,\delta\rho,
+  \qquad
+  -2\,\delta\dot H
+  =
+  \kappa(\delta\rho+\delta p),
+  \qquad
+  \kappa=8\pi G_N .
+  \label{eq:semiclassical-flrw-linear-friedmann-raychaudhuri}
+\end{equation}
+They are compatible only for sources obeying
+\eqref{eq:semiclassical-flrw-linear-ward}.  A time-dependent
+\(\rho_\lambda(t)\) inserted with \(p=-\rho_\lambda\) gives a changing
+Friedmann source but a vanishing Raychaudhuri source, so the two metric
+equations define incompatible responses.  After the Ward closure
+\eqref{eq:semiclassical-flrw-interacting-ward-closure}, differentiating the
+Friedmann equation gives the Raychaudhuri equation.  The pressure and
+state-transport terms are therefore not optional refinements of the potential
+energy calculation.  They are the part of the interacting stress tensor that
+lets the metric respond consistently.
+
+The same lesson applies to stochastic backreaction.  On a retained homogeneous
+time cell, collect the stress-noise coordinates as
+\[
+  \zeta
+  =
+  (\xi_{\dot\rho},\xi_\rho,\xi_p)^T,
+  \qquad
+  \mathsf B_{\rm FLRW}
+  =
+  \begin{pmatrix}
+    1&3H&3H
+  \end{pmatrix}.
+\]
+The Einstein--Langevin source covariance in this sector must satisfy
+\begin{equation}
+  \mathsf B_{\rm FLRW}\mathsf N_\zeta=0,
+  \qquad
+  \mathsf N_\zeta\mathsf B_{\rm FLRW}^*=0 .
+  \label{eq:semiclassical-flrw-noise-ward-condition}
+\end{equation}
+A covariance for the potential density alone, even if positive, does not
+determine the pressure and time-derivative noise required by
+\eqref{eq:semiclassical-flrw-noise-ward-condition}.  For Ward-clean noise, the
+Friedmann and Raychaudhuri routes to the Hubble fluctuation agree:
+\begin{equation}
+  \xi_{\dot H}^{\rm F}
+  =
+  \frac{\kappa}{6H}\xi_{\dot\rho},
+  \qquad
+  \xi_{\dot H}^{\rm R}
+  =
+  -\frac{\kappa}{2}(\xi_\rho+\xi_p),
+  \qquad
+  \xi_{\dot H}^{\rm F}-\xi_{\dot H}^{\rm R}=0
+  \quad\text{on }\ker\mathsf B_{\rm FLRW}.
+  \label{eq:semiclassical-flrw-hubble-noise-closure}
+\end{equation}
+Thus a cosmological interacting backreaction calculation must provide the
+transported state, the full renormalized stress tensor, its pressure component,
+and the Ward-clean stress-noise covariance before the retained Hubble response
+or Hubble noise is read as physics.  This is the interacting analogue of the
+produced-stress continuity test in
+Chapter~\ref{ch:curved-cosmological-spacetimes-particle-creation}.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Finite retained Ward-completion laboratory]
 \label{ca:semiclassical-retained-ward-completion-laboratory}
 The warning above is not a formal nicety; it changes the metric source.  In a

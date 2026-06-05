@@ -50,6 +50,10 @@ recording fluctuation data required for controlled backreaction.
   stress tensor, its retained retarded response kernel, and the component
   covariance/cross-covariance entries required to assemble full interacting
   stress-tensor noise.
+- `rho_lambda(t)`, `delta p_corr`, `B_FLRW`, `N_zeta`: the homogeneous FLRW
+  potential density, Ward-closing interacting pressure correction, retained
+  cosmological conservation map, and stress-noise covariance for the
+  interacting cosmological source/noise closure.
 - `Gamma_IF`, `h_c`, `h_Delta`, `R_IF`: retained closed-time-path influence
   functional, average/difference metric perturbations, and the residual outside
   the quadratic interacting backreaction package.
@@ -153,6 +157,14 @@ recording fluctuation data required for controlled backreaction.
   Thus Ward-clean retained data are accepted as physical backreaction inputs
   only after the full pAQFT stress tensor and its renormalized products, or
   controlled residuals for the missing entries, have been supplied.
+- Adds a homogeneous FLRW interacting source/noise closure.  A time-dependent
+  `lambda phi^4` potential density has equation of state `p=-rho` but is not
+  conserved when `dot rho_lambda` is nonzero; the Bogoliubov,
+  state-transport, derivative, and counterterm pieces must supply the
+  correction pressure and density terms making the linearized Bianchi identity,
+  Friedmann response, Raychaudhuri response, and stress-noise Ward identities
+  agree.  This turns the potential coordinate into a cosmological
+  backreaction datum only after the full pressure and noise package is present.
 - Adds the closed-time-path consistency layer for the interacting package.  The
   retained quadratic influence functional in `h_Delta,h_c` has one mean source,
   one retarded kernel, and one positive connected-noise covariance, with no
@@ -221,6 +233,9 @@ recording fluctuation data required for controlled backreaction.
   retained interacting stress-tensor/noise package with component
   cross-covariances, finite composite-operator-mixing cross terms, and a
   c-number connected-noise negative control that can still pass the Ward test,
+  the homogeneous FLRW interacting closure with correction pressure,
+  Friedmann/Raychaudhuri compatibility, Ward-clean stress noise, and
+  potential-only source/noise negative controls,
   the closed-time-path influence-package test tying mean source, retarded
   response, and connected noise to equal-branch normalization, retarded support,
   Ward identities, positivity, and KMS/FDT compatibility, the small-gain
@@ -396,3 +411,11 @@ curvature, microscopic, and EFT scales.
   signal-to-noise criterion.  This is architecture work aimed at physics
   interpretation: a projected noise or a coordinate perturbation is not
   promoted to a self-averaging semiclassical prediction.
+- 2026-06-05 issue #729 interacting FLRW closure pass: added
+  `ca:semiclassical-flrw-interacting-source-noise-closure`, which turns the
+  time-dependent `lambda phi^4` potential coordinate into a cosmological
+  conservation problem.  The text derives the correction-pressure Ward closure,
+  shows why potential-only `p=-rho` conflicts with simultaneous Friedmann and
+  Raychaudhuri response when `dot rho_lambda` is nonzero, and imposes the
+  corresponding Ward-clean stress-noise condition before Hubble noise is
+  interpreted.
