@@ -240,6 +240,123 @@ def check_d1_d5_positive_fi_excludes_empty_framing_boundary():
         )
 
 
+def check_large_charge_torus_lattice_and_weyl_orbit():
+    """Check the charge-sector lattice distinctions used in the text."""
+
+    su2_weight_lattice_sample = list(range(-5, 6))
+    so3_allowed_weights = [
+        weight for weight in su2_weight_lattice_sample if weight % 2 == 0
+    ]
+    assert_equal(
+        so3_allowed_weights,
+        [-4, -2, 0, 2, 4],
+        "SO(3) global form keeps only root-lattice charges",
+    )
+
+    for weight in range(0, 6):
+        weyl_orbit = sorted({weight, -weight})
+        dominant_representative = max(weyl_orbit)
+        assert_equal(
+            dominant_representative,
+            weight,
+            "SU(2) fixed-charge sector uses a Weyl-orbit representative",
+        )
+
+
+def check_large_charge_branch_noether_and_routhian():
+    """Check the fixed-charge saddle algebra for the chiral branch model."""
+
+    # A branch scalar X of charge n rotates as X=rho*exp(i n mu t).
+    # With curvature mass m on the cylinder and volume V, the fixed-charge
+    # minimum has physical phase frequency omega=n*mu=m.
+    test_data = [
+        (2, Fraction(3), Fraction(5), Fraction(60)),
+        (3, Fraction(4), Fraction(7), Fraction(168)),
+        (5, Fraction(2), Fraction(11), Fraction(220)),
+    ]
+    for charge_unit, volume, curvature_mass, charge in test_data:
+        rho_squared = charge / (2 * charge_unit * volume * curvature_mass)
+        chemical_potential = curvature_mass / charge_unit
+        phase_frequency = charge_unit * chemical_potential
+
+        noether_charge = (
+            2
+            * charge_unit
+            * phase_frequency
+            * volume
+            * rho_squared
+        )
+        energy = volume * (
+            phase_frequency * phase_frequency
+            + curvature_mass * curvature_mass
+        ) * rho_squared
+        expected_energy = curvature_mass * charge / charge_unit
+        susceptibility = 2 * charge_unit * charge_unit * volume * rho_squared
+
+        assert_equal(noether_charge, charge, "large-charge branch Noether map")
+        assert_equal(energy, expected_energy, "large-charge branch Routhian value")
+        assert_equal(
+            susceptibility > 0,
+            True,
+            "large-charge branch susceptibility positivity",
+        )
+
+
+def check_large_charge_branch_transverse_window():
+    """Check the transverse mass hierarchy in the supersymmetric branch example."""
+
+    charge_unit = 2
+    volume = Fraction(1)
+    curvature_mass = Fraction(1)
+    charge = Fraction(16)
+    yukawa = Fraction(7)
+
+    rho_squared = charge / (2 * charge_unit * volume * curvature_mass)
+    rho = Fraction(2)
+    chemical_potential = curvature_mass / charge_unit
+    transverse_gap = yukawa * rho
+
+    assert_equal(rho * rho, rho_squared, "large-charge branch radius")
+    assert_equal(transverse_gap, 14, "large-charge branch transverse mass")
+    assert_equal(
+        chemical_potential / transverse_gap,
+        Fraction(1, 28),
+        "large-charge branch mu over transverse gap",
+    )
+    assert_equal(
+        transverse_gap > curvature_mass,
+        True,
+        "large-charge branch transverse gap exceeds cylinder scale",
+    )
+
+
+def check_large_mu_window_scaling_condition():
+    """Check that superlinear transverse-gap scaling opens both small ratios."""
+
+    radius = Fraction(5)
+    coefficient = Fraction(3)
+    low_mu = Fraction(4)
+    high_mu = Fraction(40)
+
+    def ratios(mu):
+        transverse_gap = coefficient * mu * mu
+        return 1 / (mu * radius), mu / transverse_gap
+
+    low_derivative, low_transverse = ratios(low_mu)
+    high_derivative, high_transverse = ratios(high_mu)
+
+    assert_equal(
+        high_derivative < low_derivative,
+        True,
+        "large-mu derivative ratio decreases",
+    )
+    assert_equal(
+        high_transverse < low_transverse,
+        True,
+        "large-mu transverse ratio decreases",
+    )
+
+
 def su2_nf2_minors(row_1, row_2):
     """Return V^{IJ}=row_1^I row_2^J-row_1^J row_2^I for I<J."""
 
@@ -489,6 +606,10 @@ def main():
     check_rank_one_hyperkahler_cotangent_transition()
     check_d1_d5_adhm_higgs_branch_dimension()
     check_d1_d5_positive_fi_excludes_empty_framing_boundary()
+    check_large_charge_torus_lattice_and_weyl_orbit()
+    check_large_charge_branch_noether_and_routhian()
+    check_large_charge_branch_transverse_window()
+    check_large_mu_window_scaling_condition()
     check_su2_nf2_plucker_identity()
     check_su2_nf2_plucker_converse_chart()
     check_su2_nf2_dimension_ledger()

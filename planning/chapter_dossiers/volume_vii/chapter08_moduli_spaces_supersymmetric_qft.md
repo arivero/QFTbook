@@ -27,14 +27,21 @@ later lower-dimensional examples, protected sectors, and localization.
   fields, metric, Wess-Zumino terms, superselection sectors, and domain of
   validity.
 - `R_ch`, `ev_p`: chiral ring and evaluation homomorphism at a vacuum.
-- `F`, `j_A^mu`, `Q_A`, `q_A`, `Hilb_q`: compact internal global symmetry,
-  conserved currents, commuting charge operators, fixed charge vector, and
-  the corresponding joint charge sector.
+- `F`, `T`, `Lambda_QFT`, `W_F`: compact internal global symmetry, selected
+  torus, allowed charge lattice after global-form/anomaly data, and Weyl
+  group quotient used to label nonabelian fixed-charge sectors.
+- `j_A^mu`, `Q_A`, `q_A`, `Hilb_q`: conserved currents, torus charge
+  operators, fixed charge vector, and the corresponding joint charge sector.
 - `mu^A`, `H_mu`: chemical potentials and the Hamiltonian variational
   operator \(H-\mu^AQ_A\).
-- `K_A`, `M_gap(p)`, `E_EFT(q,R)`: branch isometry vector fields, transverse
-  mass scale of the branch EFT, and fixed-charge energy computed from the
-  branch effective action.
+- `K_A`, `M_gap(p)`, `L_br`, `E_EFT(q,R)`: branch isometry vector fields,
+  transverse mass scale of the branch EFT, branch Lagrangian evaluated on a
+  homogeneous charge orbit, and fixed-charge energy computed by the
+  constrained Routhian/Legendre transform.
+- `X`, `Y`, `lambda`, `n`, `rho`, `omega`: supersymmetric chiral-branch model
+  used for the fixed-charge example, with \(W=(\lambda/2)XY^2\), branch
+  coordinate \(X\), transverse field \(Y\), charge unit, branch radius, and
+  physical phase frequency.
 - `Wightman-type data`: local operator-valued distributions, Hilbert spaces,
   vacuum sectors, correlation distributions, spectrum, locality, and
   covariance.
@@ -102,8 +109,21 @@ later lower-dimensional examples, protected sectors, and localization.
 - Relates chiral rings to holomorphic functions under explicit separation and
   reducedness hypotheses.
 - Adds the fixed-charge/large-charge probe of a branch: defines charge
-  sectors, chemical potentials, homogeneous charged saddles on the cylinder,
-  and the Noether map from branch EFT data to fixed-charge energy.
+  sectors by a selected torus, global-form/anomaly-restricted charge lattice,
+  and Weyl orbit; fixes chemical-potential conventions, homogeneous charged
+  saddles on the cylinder, the Noether map, and the constrained
+  Routhian/Legendre transform from branch EFT data to fixed-charge energy.
+- States the stability and control hypotheses for branch fixed-charge EFT:
+  susceptibility positivity, transverse fluctuation positivity, gauge/Gauss
+  constraints, zero-mode quantization, multiple-saddle comparison, and a
+  demonstrated scale hierarchy.  Separates the generic non-BPS large-\(\mu\)
+  window \(R^{-1}\ll|\mu|\ll M_{\rm gap}\) from protected supersymmetric
+  branch examples where \(\mu R=O(1)\) but \(M_{\rm gap}R\to\infty\).
+- Works a supersymmetric chiral-branch example with
+  \(W=(\lambda/2)XY^2\), charge lattice \(q=nJ\), cylinder saddle
+  \(X=\rho e^{i\omega t}\), Noether map \(q=2n\omega V_R\rho^2\),
+  fixed-charge energy \(E=q/(nR)\), transverse multiplet gap
+  \(M_Y=|\lambda|\rho\), fluctuation spectrum, and explicit branch window.
 - States the conformal bridge precisely: via the state-operator theorem,
   large-charge local operators of definite scaling dimension encode
   fixed-charge energy eigenstates, so the Hellerman large-charge expansion
@@ -158,6 +178,10 @@ later lower-dimensional examples, protected sectors, and localization.
   descent, and cotangent transition algebra for \(T^\ast\mathbb P^{N-1}\),
   the two-dimensional \(\mathcal N=(4,4)\) ADHM/D1--D5 dimension ledger and
   positive-FI exclusion of the \(I=J=0\) boundary,
+  fixed-charge branch-EFT checks for global-form/Weyl charge labels, the
+  supersymmetric chiral-branch Noether map and Routhian energy, transverse
+  gap hierarchy, and the abstract large-\(\mu\) simultaneous-window scaling
+  condition,
   together with the \(SU(2)\), \(N_f=2\) Pfaffian/Plucker identity,
   converse reconstruction chart, quotient dimension ledger, nonzero
   quantum-deformation smoothness test, diagonal-mass two-vacuum algebra, and
@@ -192,3 +216,10 @@ local models.
   quotient geometry, added the smooth-stratum Wilsonian status ledger,
   developed the \(\mathcal N=(4,4)\) ADHM/D1--D5 QFT example, and added finite
   checks for the dimension/FI-boundary arithmetic.
+- 2026-06-05 issue #808 large-charge branch-EFT pass: replaced the formal
+  commuting-charge setup by a torus/global-form/Weyl charge-sector ledger,
+  derived the Noether/Routhian conventions with WZ/background/gauge
+  caveats, stated the nonempty simultaneous-window hypothesis, and added a
+  worked supersymmetric chiral-branch example showing the distinction
+  between protected fixed-charge control and a generic non-BPS large-\(\mu\)
+  expansion.

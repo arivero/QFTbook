@@ -2364,6 +2364,9 @@ Current checks:
   dimension and cotangent-transition algebra for \(T^\ast\mathbb P^{N-1}\),
   the two-dimensional \(\mathcal N=(4,4)\) ADHM/D1--D5 Higgs-branch
   dimension ledger and positive-FI exclusion of the empty-framing boundary,
+  fixed-charge branch-EFT checks for torus/global-form/Weyl charge labels,
+  the supersymmetric chiral-branch Noether map, Routhian energy, transverse
+  gap hierarchy, and large-\(\mu\) simultaneous-window scaling condition,
   plus the \(SU(2)\), \(N_f=2\) Plucker/Pfaffian quotient identity and
   dimension ledger, nonzero quantum-deformation smoothness test,
   diagonal-mass two-vacuum algebra, and holomorphic threshold scale matching.
