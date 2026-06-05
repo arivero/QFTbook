@@ -837,7 +837,8 @@ Current checks:
   together with a smooth real finite-sum-rule-preserving compensator
   perturbation for the polynomial weights \(1\) and \(\omega\), around an
   integrable reference spectrum with finite moments and a uniform positivity
-  margin.  It also checks an adversarial smooth weight pair whose restrictions
+  margin proved from support-wide analytic bounds rather than a frequency
+  sample.  It also checks an adversarial smooth weight pair whose restrictions
   are dependent on the allowed compensator region, and a
   restricted-independent pair whose moment against \(C\exp(-\omega)\) diverges,
   giving the reconstruction-instability negative controls without claiming
@@ -1766,9 +1767,10 @@ Current checks:
   geometry, the static limit of the density source-response pole, the
   heat-kernel acausal-support diagnostic for first-order shear diffusion, the
   boosted high-\(k\) instability negative control for parabolic diffusion, and
-  the retarded singularity taxonomy separating real-axis boundary spectral
-  lines/cuts from lower-half-plane damped poles and upper-half-plane
-  instabilities, plus the MIS shear relaxation completion with
+  the retarded singularity taxonomy computed from a finite Gibbs/Lehmann
+  response, separating real-axis boundary spectral lines/cuts from
+  lower-half-plane damped poles and an actual upper-half-plane denominator-root
+  negative control, plus the MIS shear relaxation completion with
   hydrodynamic/transient poles and a subluminal-front-speed check.
 - `hydrodynamic_long_time_tail_checks.py`: finite checks for the Volume X
   hydrodynamic fluctuation chapter, including diffusive static covariance,

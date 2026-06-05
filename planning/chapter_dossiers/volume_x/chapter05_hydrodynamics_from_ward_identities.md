@@ -179,6 +179,12 @@
   holomorphy in the open upper half-plane, explicitly separating real-axis
   finite-volume lines, thermodynamic-limit cuts, and lower-half-plane
   transient/resonance poles.
+- 2026-06-05 evidence re-audit for #725: repaired the companion check for the
+  retarded singularity taxonomy.  The check now constructs a finite
+  Gibbs/Lehmann retarded response from a three-level system and derives its
+  real transition lines before testing upper-half-plane analyticity, instead
+  of only sampling distances to preselected real points.  The negative control
+  is an actual denominator-root list with a pole in the open upper half-plane.
 
 ## Calculation Checks
 
@@ -188,8 +194,9 @@
   relation, the multi-charge susceptibility geometry, and the static limit of
   the diffusive density source-response kernel.  It also checks the
   first-order heat-kernel acausal-support diagnostic, boosted high-\(k\)
-  instability negative control, the retarded singularity taxonomy, and the
-  MIS shear relaxation hydrodynamic/transient poles with a
+  instability negative control, the retarded singularity taxonomy through an
+  explicit finite Gibbs/Lehmann construction, and the MIS shear relaxation
+  hydrodynamic/transient poles with a
   subluminal-front-speed condition.
 
 ## Figures

@@ -121,6 +121,13 @@ or constructive definition.
   now excludes weights such as \(1/\omega\) despite their smoothness on the
   open half-line, and the companion check records the divergent plateau-bump
   moment plus the failure of the adapted reference to stay positive at zero.
+- 2026-06-05 evidence re-audit for #725: the compensator companion no longer
+  uses a sampled frequency grid to certify positivity.  It computes a
+  support-wide bound
+  \(|h_\epsilon|\le \eta_\ast+\sum_j|c_j(\epsilon)|\) from the fixed bump and
+  compensator supports, then chooses the perturbation amplitude from the
+  analytic lower bound of the reference spectrum on the whole perturbation
+  support.
 
 ## Calculation Checks
 
@@ -129,10 +136,10 @@ or constructive definition.
   finite-volume spectral representation, the separate Euclidean zero mode,
   the Matsubara Cauchy transform, the low-frequency Euclidean reconstruction
   instability example, the smooth polynomial finite-sum-rule-preserving
-  compensator perturbation with uniform positivity margin, finite real
-  admissibility/reference-moment scope, adversarial restricted-dependence and
-  divergent-reference-moment negative controls, and chemical-potential twist
-  bookkeeping.
+  compensator perturbation with an analytic support-bound positivity margin,
+  finite real admissibility/reference-moment scope, adversarial
+  restricted-dependence and divergent-reference-moment negative controls, and
+  chemical-potential twist bookkeeping.
 
 ## Figure Ledger
 

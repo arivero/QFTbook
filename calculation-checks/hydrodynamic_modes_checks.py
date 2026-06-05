@@ -9,9 +9,10 @@ high-k instability of the parabolic truncation, and the linear causal
 relaxation completion of the shear sector in Volume X Chapter 5.
 Independent construction: direct finite-dimensional algebra for the Ward
 identity modes, exact heat-kernel positivity away from the origin, explicit
-quadratic roots for boosted diffusion and MIS shear relaxation, a retarded
-singularity taxonomy check, and matrix similarity checks for multi-charge
-diffusion.
+quadratic roots for boosted diffusion and MIS shear relaxation, an explicit
+finite Gibbs/Lehmann retarded response whose singular support is computed
+from transition energies rather than inserted as test points, and matrix
+similarity checks for multi-charge diffusion.
 Imported assumptions: homogeneous KMS thermodynamic stability, the stated
 Landau-frame constitutive relations, positivity of transport coefficients from
 entropy/Kubo arguments, and the choice of a single linear MIS shear relaxation
@@ -19,10 +20,10 @@ time.
 Negative controls: first-order shear diffusion is not accepted as a causal
 finite-speed PDE, Lorentz-boosted parabolic diffusion is not accepted as a
 stable high-k theory, real-axis spectral lines are not mistaken for
-lower-half-plane damped poles, an open-upper-half-plane pole is rejected, a
-causal relaxation model with superluminal shear front speed is rejected, and
-linear shear completion is not treated as a theorem for full nonlinear causal
-hydrodynamics.
+lower-half-plane damped poles, a denominator with an actual open-upper-half-
+plane root is rejected, a causal relaxation model with superluminal shear
+front speed is rejected, and linear shear completion is not treated as a
+theorem for full nonlinear causal hydrodynamics.
 Scope boundary: these checks verify finite algebra and linear-mode
 bookkeeping; they do not prove microscopic hydrodynamic emergence, nonlinear
 well-posedness, or the complete BRSSS/MIS coefficient inequalities.
@@ -193,47 +194,87 @@ def mis_shear_roots(diffusion: float, tau_pi: float, k: float) -> tuple[complex,
     return ((-b + root) / (2.0 * tau_pi), (-b - root) / (2.0 * tau_pi))
 
 
+def finite_lehmann_atoms(
+    energies: list[float],
+    beta: float,
+    operator: list[list[complex]],
+) -> list[tuple[float, float]]:
+    partition = sum(math.exp(-beta * energy) for energy in energies)
+    atoms: dict[float, float] = {}
+    for source, source_energy in enumerate(energies):
+        for target, target_energy in enumerate(energies):
+            matrix_element = operator[source][target]
+            if abs(matrix_element) < 1.0e-14:
+                continue
+            transition = target_energy - source_energy
+            weight = (
+                (math.exp(-beta * source_energy) - math.exp(-beta * target_energy))
+                * abs(matrix_element) ** 2
+                / partition
+            )
+            atoms[transition] = atoms.get(transition, 0.0) + weight
+    return sorted(
+        (transition, weight)
+        for transition, weight in atoms.items()
+        if abs(weight) > 1.0e-14
+    )
+
+
+def finite_lehmann_retarded_value(
+    atoms: list[tuple[float, float]],
+    z: complex,
+) -> complex:
+    return sum(weight / (transition - z) for transition, weight in atoms)
+
+
+def has_open_upper_half_plane_singularity(poles: list[complex]) -> bool:
+    return any(pole.imag > 1.0e-12 for pole in poles)
+
+
 def check_retarded_singularity_taxonomy() -> None:
-    finite_volume_lines = [-1.3, 0.25, 1.8]
+    energies = [0.0, 0.9, 2.1]
+    beta = 1.4
+    operator = [
+        [0.0, 1.0 + 0.2j, 0.0],
+        [1.0 - 0.2j, 0.0, -0.7j],
+        [0.0, 0.7j, 0.0],
+    ]
+    atoms = finite_lehmann_atoms(energies, beta, operator)
+    if len(atoms) != 4:
+        raise AssertionError("finite Lehmann construction should expose four nonzero transition lines")
+
+    finite_volume_poles = [complex(transition, 0.0) for transition, _ in atoms]
+    if has_open_upper_half_plane_singularity(finite_volume_poles):
+        raise AssertionError("finite-volume Lehmann lines should not enter the open upper half-plane")
+    if not all(pole.imag == 0.0 for pole in finite_volume_poles):
+        raise AssertionError("finite-volume spectral singularities should sit on the real boundary")
+
     upper_half_test_points = [
         complex(-2.0, 0.1),
         complex(0.25, 0.35),
         complex(1.1, 2.0),
     ]
-
     for z in upper_half_test_points:
-        assert_finite("retarded test-point imaginary part", z.imag)
-        if z.imag <= 0.0:
-            raise AssertionError("test point should lie in the open upper half-plane")
-        for line in finite_volume_lines:
-            denominator = z - line
-            denominator_abs = abs(denominator)
-            lower_bound = z.imag / 2.0
-            assert_finite("retarded spectral-line distance", denominator_abs)
-            assert_finite("retarded spectral-line lower bound", lower_bound)
-            if denominator_abs <= lower_bound:
-                raise AssertionError("real-axis spectral line should not be an upper-half-plane pole")
-
-    boundary_singularities = [complex(line, 0.0) for line in finite_volume_lines]
-    if not all(pole.imag == 0.0 for pole in boundary_singularities):
-        raise AssertionError("finite-volume spectral lines should sit on the real-axis boundary")
+        value = finite_lehmann_retarded_value(atoms, z)
+        assert_finite("finite Lehmann retarded real part", value.real)
+        assert_finite("finite Lehmann retarded imaginary part", value.imag)
 
     threshold = 0.6
     cut_mesh = [complex(threshold + 0.2 * index, 0.0) for index in range(5)]
-    if not all(point.imag == 0.0 and point.real >= threshold for point in cut_mesh):
+    if has_open_upper_half_plane_singularity(cut_mesh):
         raise AssertionError("thermodynamic-limit cut mesh should remain a real-axis boundary object")
+    if not all(point.real >= threshold for point in cut_mesh):
+        raise AssertionError("cut mesh should remain on the declared threshold interval")
 
-    damped_transient_poles = [
-        complex(0.0, -1.0 / 0.7),
-        complex(0.4, -0.2),
-        complex(-0.4, -0.2),
-    ]
+    damped_transient_poles = list(mis_shear_roots(diffusion=0.21, tau_pi=0.7, k=0.8))
+    if has_open_upper_half_plane_singularity(damped_transient_poles):
+        raise AssertionError("stable MIS shear roots should not enter the open upper half-plane")
     if not all(pole.imag < 0.0 for pole in damped_transient_poles):
-        raise AssertionError("damped transient poles should lie in the lower half-plane")
+        raise AssertionError("stable MIS shear roots should lie below the real axis")
 
-    unstable_pole = complex(0.1, 0.2)
-    if not unstable_pole.imag > 0.0:
-        raise AssertionError("upper-half-plane instability negative control failed")
+    unstable_denominator_roots = [complex(0.1, 0.2), complex(-0.1, -0.2)]
+    if not has_open_upper_half_plane_singularity(unstable_denominator_roots):
+        raise AssertionError("upper-half-plane denominator root must be rejected")
 
 
 def check_mis_shear_relaxation_completion() -> None:

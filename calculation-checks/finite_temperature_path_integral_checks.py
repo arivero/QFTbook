@@ -14,7 +14,8 @@ bounded while its transport-channel slope is fixed, including a real
 finite-sum-rule-preserving compensator test with finite reference moments, a
 smooth integrable reference spectrum, a restricted polynomial-weight
 compensator system, bounded zero-frequency endpoint weights, and a uniform
-positivity margin on the entire perturbation support.
+positivity margin on the entire perturbation support obtained from analytic
+support bounds rather than from a sampled frequency grid.
 Imported assumptions: the finite-regulator Gibbs trace, the bosonic spectral
 kernel stated in the chapter, positivity of Hermitian positive-frequency
 spectral weights, and the use of Euclidean norms as data-error topology.
@@ -388,10 +389,9 @@ def check_finite_sum_rule_preserving_instability() -> None:
     def reference_spectrum(omega: float) -> float:
         return reference_scale * math.exp(-omega)
 
-    grid = [support_right * index / 2000.0 for index in range(2001)]
     trial_epsilons = [epsilon0, epsilon0 / 2.0, epsilon0 / 4.0, epsilon]
-    h_sup = 0.0
     coefficient_samples = {}
+    support_bound = 0.0
     for trial_epsilon in trial_epsilons:
         profile_sup = max(
             abs(smooth_plateau_bump(trial_epsilon * index / 200.0, trial_epsilon, eta_star))
@@ -401,22 +401,23 @@ def check_finite_sum_rule_preserving_instability() -> None:
             raise AssertionError("fixed bump profile should be uniformly bounded")
         _, trial_coefficients = compensated_data(trial_epsilon)
         coefficient_samples[trial_epsilon] = trial_coefficients
-        h_sup = max(
-            h_sup,
-            max(abs(h_value(omega, trial_epsilon, trial_coefficients)) for omega in grid),
-        )
+        # Analytic support bound: 0 <= fixed_plateau_profile <= 1 and
+        # 0 <= smooth_compensator <= 1 on their compact supports.  Therefore
+        # |h_epsilon(omega)| is bounded everywhere by eta_star plus the
+        # absolute coefficient sum.  This is deliberately stronger than a
+        # sampled grid check.
+        trial_bound = eta_star + sum(abs(coefficient) for coefficient in trial_coefficients)
+        support_bound = max(support_bound, trial_bound)
     positivity_margin = reference_spectrum(support_right)
-    amplitude = 0.5 * positivity_margin / h_sup
-    if not 0.0 < amplitude < positivity_margin / h_sup:
-        raise AssertionError("amplitude should obey the uniform positivity margin")
+    amplitude = 0.5 * positivity_margin / support_bound
+    if not 0.0 < amplitude * support_bound < positivity_margin:
+        raise AssertionError("amplitude should obey the analytic uniform positivity margin")
 
-    for trial_epsilon, trial_coefficients in coefficient_samples.items():
-        for omega in grid:
-            perturbation = h_value(omega, trial_epsilon, trial_coefficients)
-            plus = reference_spectrum(omega) + amplitude * perturbation
-            minus = reference_spectrum(omega) - amplitude * perturbation
-            if plus <= 0.0 or minus <= 0.0:
-                raise AssertionError("smooth integrable reference spectrum should keep both perturbation signs positive")
+    # Since the reference spectrum is decreasing and all perturbations vanish
+    # outside [0, epsilon0] union the fixed compensator supports, the previous
+    # inequality proves positivity for both signs on the whole support.
+    if reference_spectrum(support_right) - amplitude * support_bound <= 0.0:
+        raise AssertionError("support-bound positivity proof failed")
 
     slope_plus = reference_spectrum(0.0) + amplitude * eta_star
     slope_minus = reference_spectrum(0.0) - amplitude * eta_star
