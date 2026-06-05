@@ -8,10 +8,12 @@ The detailed per-script narrative ledger lives in
 tools/run_calculation_checks.sh --list
 ```
 
-As of the 2026-06-04 EFT prediction-calculus pass the
-directory contains 236 active check scripts: 234 Python checks and 2 Wolfram
-Language companion checks.  The runner selects all `calculation-checks/*.py` and
-`calculation-checks/*.wl` files unless a filter is supplied.
+As of the 2026-06-05 calculation-inventory audit the directory contains 239
+active check scripts: 237 Python checks and 2 Wolfram Language companion checks.
+The runner selects all `calculation-checks/*.py` and
+`calculation-checks/*.wl` files unless a filter is supplied.  The exact counts
+above are checked against the runner by
+`python3 tools/audit_calculation_check_inventory.py`.
 
 ## Runner Policy
 
@@ -29,6 +31,7 @@ tools/run_calculation_checks.sh --only qcd_dglap --skip-wolfram
 tools/run_calculation_checks.sh --python-only --only liouville
 tools/run_calculation_checks.sh --wolfram-only
 python3 tools/audit_calculation_evidence_contracts.py
+python3 tools/audit_calculation_check_inventory.py
 ```
 
 `--only` matches substrings of either the path or basename, and may be supplied
@@ -63,9 +66,10 @@ When adding or renaming a script:
 1. give the script a success marker that identifies the checked family;
 2. add or update the corresponding `README.md` ledger entry;
 3. verify that `tools/run_calculation_checks.sh --list` sees the script;
-4. run the new or edited script, including its Wolfram backend if it is a
+4. run `python3 tools/audit_calculation_check_inventory.py`;
+5. run the new or edited script, including its Wolfram backend if it is a
    `.wl` file;
-5. record the command and result in the relevant build-audit note.
+6. record the command and result in the relevant build-audit note.
 
 When editing a chapter formula or convention, run the relevant scripts by
 pattern.  When editing the runner or this inventory machinery, run at least

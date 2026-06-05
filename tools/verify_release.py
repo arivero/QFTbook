@@ -267,6 +267,11 @@ def release_steps(args: argparse.Namespace) -> list[tuple[str, list[str], bool]]
             ["python3", "tools/audit_calculation_evidence_contracts.py"],
             True,
         ),
+        (
+            "calculation_check_inventory_audit",
+            ["python3", "tools/audit_calculation_check_inventory.py"],
+            True,
+        ),
         ("calculation_checks", ["tools/run_calculation_checks.sh"], True),
         ("monograph_build", ["tools/build_monograph.sh"], True),
         ("pdf_integrity", ["qpdf", "--check", str(PDF_PATH)], True),

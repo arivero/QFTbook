@@ -34,7 +34,7 @@ existence, or the correctness of any numerical analytic-continuation prior.
 
 from __future__ import annotations
 
-from check_utils import assert_close as _assert_close
+from check_utils import assert_close as _assert_close, assert_finite
 
 import cmath
 import math
@@ -462,7 +462,9 @@ def check_adversarial_weights_need_restricted_independence() -> None:
         lambda omega: 1.0,
         lambda omega: 1.0 + low_frequency_weight_bump(omega),
     ]
-    if abs(weights[1](0.25 * epsilon0) - weights[0](0.25 * epsilon0)) < 1.0e-6:
+    independence_gap = abs(weights[1](0.25 * epsilon0) - weights[0](0.25 * epsilon0))
+    assert_finite("adversarial weight independence gap", independence_gap)
+    if independence_gap < 1.0e-6:
         raise AssertionError("adversarial weights should be globally independent")
 
     moment_matrix = [
@@ -478,11 +480,14 @@ def check_adversarial_weights_need_restricted_independence() -> None:
         for weight in weights
     ]
     row_gap = max(abs(moment_matrix[0][column] - moment_matrix[1][column]) for column in range(2))
+    assert_finite("adversarial restricted row gap", row_gap)
     if row_gap > 1.0e-12:
         raise AssertionError("low-frequency-only weight difference should vanish on compensator supports")
 
     det = moment_matrix[0][0] * moment_matrix[1][1] - moment_matrix[0][1] * moment_matrix[1][0]
-    if abs(det) > 1.0e-12:
+    det_abs = abs(det)
+    assert_finite("adversarial restricted determinant", det_abs)
+    if det_abs > 1.0e-12:
         raise AssertionError("dependent restricted weights must not admit this compensator matrix")
 
 
@@ -492,7 +497,9 @@ def check_restricted_independence_does_not_imply_reference_moments() -> None:
     omega0 = 0.75
     omega1 = 1.25
     evaluation_det = math.exp(2.0 * omega1) - math.exp(2.0 * omega0)
-    if abs(evaluation_det) < 1.0e-6:
+    evaluation_det_abs = abs(evaluation_det)
+    assert_finite("restricted-independence evaluation determinant", evaluation_det_abs)
+    if evaluation_det_abs < 1.0e-6:
         raise AssertionError("1 and exp(2 omega) should be independent on the compensator compact")
 
     # Against C exp(-omega), the exp(2 omega) moment has partial integrals
@@ -508,9 +515,15 @@ def check_restricted_independence_does_not_imply_reference_moments() -> None:
     for index in range(81):
         omega = index / 10.0
         denominator = 2.0 + math.exp(4.0 * omega)
-        if 1.0 / denominator > 0.5 + 1.0e-12:
+        constant_ratio = 1.0 / denominator
+        exponential_ratio = math.exp(2.0 * omega) / denominator
+        assert_finite("adapted reference sample omega", omega)
+        assert_finite("adapted reference denominator", denominator)
+        assert_finite("adapted reference constant ratio", constant_ratio)
+        assert_finite("adapted reference exponential ratio", exponential_ratio)
+        if constant_ratio > 0.5 + 1.0e-12:
             raise AssertionError("adapted reference should bound the constant-weight moment")
-        if math.exp(2.0 * omega) / denominator > 0.5 + 1.0e-12:
+        if exponential_ratio > 0.5 + 1.0e-12:
             raise AssertionError("adapted reference should bound the exponential-weight moment")
 
 

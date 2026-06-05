@@ -30,7 +30,7 @@ well-posedness, or the complete BRSSS/MIS coefficient inequalities.
 
 from __future__ import annotations
 
-from check_utils import assert_close as _assert_close
+from check_utils import assert_close as _assert_close, assert_finite
 
 import cmath
 import math
@@ -202,11 +202,16 @@ def check_retarded_singularity_taxonomy() -> None:
     ]
 
     for z in upper_half_test_points:
+        assert_finite("retarded test-point imaginary part", z.imag)
         if z.imag <= 0.0:
             raise AssertionError("test point should lie in the open upper half-plane")
         for line in finite_volume_lines:
             denominator = z - line
-            if abs(denominator) <= z.imag / 2.0:
+            denominator_abs = abs(denominator)
+            lower_bound = z.imag / 2.0
+            assert_finite("retarded spectral-line distance", denominator_abs)
+            assert_finite("retarded spectral-line lower bound", lower_bound)
+            if denominator_abs <= lower_bound:
                 raise AssertionError("real-axis spectral line should not be an upper-half-plane pole")
 
     boundary_singularities = [complex(line, 0.0) for line in finite_volume_lines]
