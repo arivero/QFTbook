@@ -3,26 +3,34 @@
 
 Evidence contract.
 Target claims: the Volume VI GHD dressing/current identity, hard-rod
-effective-velocity calibration, and the observable-level residual bound
+effective-velocity calibration, the observable-level residual bound
 separating Euler root-density closure from microscopic density/current
-reconstruction.
+reconstruction, and the Drude-weight reconstruction residual bound.
 Independent construction: exact finite-grid linear solves, hard-rod collision
-shift algebra, signed residual telescopes, and negative controls are computed
-directly from finite rational data.
+shift algebra, finite Mazur-projection matrix identities, signed residual
+telescopes, and negative controls are computed directly from finite rational
+data.
 Imported assumptions: the diagonal TBA local-cell variables, the finite
 kernel/filling chart, the existence of the dressed inverse, and the chapter's
-Euler-scale residual names are assumed as finite input.
+Euler-scale and Kubo residual names are assumed as finite input.
 Negative controls: bare velocities are rejected in interacting cells, exact
 root-density continuity is rejected as a microscopic observable proof, and
-omitting the operator-current residual underbudgets the observable error.
+omitting the operator-current or Kubo residual underbudgets the observable
+error.
 Scope boundary: these checks verify finite algebra and bookkeeping
 interfaces; they do not prove local equilibration, finite-volume convergence,
-diffusive corrections, or a microscopic GHD theorem for a local QFT.
+diffusive corrections, real-time Kubo limits, or a microscopic GHD theorem
+for a local QFT.
 """
 
 from __future__ import annotations
 
 from fractions import Fraction
+
+from check_utils import assert_geq as assert_geq_bound
+from check_utils import assert_gt as assert_gt_bound
+from check_utils import assert_leq as assert_leq_bound
+from check_utils import assert_lt as assert_lt_bound
 
 
 def assert_close(name: str, got: Fraction, expected: Fraction) -> None:
@@ -37,6 +45,47 @@ def solve_2x2(matrix: list[list[Fraction]], rhs: list[Fraction]) -> list[Fractio
     return [
         (rhs[0] * matrix[1][1] - matrix[0][1] * rhs[1]) / det,
         (matrix[0][0] * rhs[1] - rhs[0] * matrix[1][0]) / det,
+    ]
+
+
+def inverse_2x2(matrix: list[list[Fraction]]) -> list[list[Fraction]]:
+    det = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+    if det == 0:
+        raise AssertionError("singular two-by-two matrix")
+    return [
+        [matrix[1][1] / det, -matrix[0][1] / det],
+        [-matrix[1][0] / det, matrix[0][0] / det],
+    ]
+
+
+def transpose(matrix: list[list[Fraction]]) -> list[list[Fraction]]:
+    return [list(row) for row in zip(*matrix, strict=True)]
+
+
+def matmul(left: list[list[Fraction]], right: list[list[Fraction]]) -> list[list[Fraction]]:
+    return [
+        [
+            sum(left[i][k] * right[k][j] for k in range(len(right)))
+            for j in range(len(right[0]))
+        ]
+        for i in range(len(left))
+    ]
+
+
+def weighted_charge_matrix(
+    charges: list[list[Fraction]],
+    weights: list[Fraction],
+    velocity_powers: list[Fraction],
+) -> list[list[Fraction]]:
+    return [
+        [
+            sum(
+                weights[a] * velocity_powers[a] * charges[i][a] * charges[j][a]
+                for a in range(len(weights))
+            )
+            for j in range(len(charges))
+        ]
+        for i in range(len(charges))
     ]
 
 
@@ -171,10 +220,103 @@ def check_ghd_observable_residual_bound() -> None:
         raise AssertionError("omitting operator-current residual should underbudget the observable bound")
 
 
+def check_ghd_drude_weight_reconstruction_residual_bound() -> None:
+    # Finite retained Bethe-cell tangent space.  The direct Euler Drude matrix
+    # is H W V^2 H^T.  When the retained charges span the tangent space, the
+    # Mazur/Suzuki projection B C^{-1} B^T agrees with it exactly.
+    charges = [
+        [Fraction(1), Fraction(2)],
+        [Fraction(3), Fraction(-1)],
+    ]
+    weights = [Fraction(1, 6), Fraction(1, 10)]
+    velocities = [Fraction(2, 3), Fraction(-5, 4)]
+    velocity_squared = [velocity * velocity for velocity in velocities]
+
+    covariance = weighted_charge_matrix(charges, weights, [Fraction(1), Fraction(1)])
+    current_charge = weighted_charge_matrix(charges, weights, velocities)
+    drude_direct = weighted_charge_matrix(charges, weights, velocity_squared)
+    drude_projected = matmul(matmul(current_charge, inverse_2x2(covariance)), transpose(current_charge))
+    for i in range(2):
+        for j in range(2):
+            assert_close(
+                f"complete-charge Drude projection {i}{j}",
+                drude_projected[i][j],
+                drude_direct[i][j],
+            )
+
+    for i in range(2):
+        assert_geq_bound(
+            f"Drude diagonal {i} nonnegative",
+            drude_direct[i][i],
+            Fraction(0),
+            tol=Fraction(0),
+        )
+    determinant = drude_direct[0][0] * drude_direct[1][1] - drude_direct[0][1] * drude_direct[1][0]
+    assert_geq_bound(
+        "finite Drude matrix determinant",
+        determinant,
+        Fraction(0),
+        tol=Fraction(0),
+    )
+
+    bare_velocities = [Fraction(1, 2), Fraction(-1)]
+    bare_drude = weighted_charge_matrix(
+        charges,
+        weights,
+        [velocity * velocity for velocity in bare_velocities],
+    )
+    if bare_drude == drude_direct:
+        raise AssertionError("bare velocities should not reproduce the interacting Drude coordinate")
+
+    # Scalar contraction of the Drude matrix with a test charge vector, followed
+    # by the chapter's absolute Kubo/residual bound.
+    probe = [Fraction(2), Fraction(-1)]
+    ghd_drude = sum(
+        probe[i] * drude_direct[i][j] * probe[j] for i in range(2) for j in range(2)
+    )
+    assert_gt_bound("chosen Drude probe positive", ghd_drude, Fraction(0))
+
+    residuals = {
+        "KMS": Fraction(1, 40),
+        "finite-volume": Fraction(1, 55),
+        "operator": Fraction(1, 35),
+        "projection": Fraction(1, 70),
+        "Euler": Fraction(1, 84),
+        "diffusive": Fraction(1, 90),
+        "breaking": Fraction(1, 126),
+        "normalization": Fraction(1, 63),
+    }
+    microscopic_drude = ghd_drude + sum(residuals.values(), Fraction(0))
+    absolute_budget = sum(abs(value) for value in residuals.values())
+    assert_leq_bound(
+        "Drude reconstruction residual bound",
+        abs(microscopic_drude - ghd_drude),
+        absolute_budget,
+        tol=Fraction(0),
+    )
+
+    omitted_kubo_budget = absolute_budget - residuals["KMS"]
+    assert_gt_bound(
+        "omitted real-time Kubo residual underbudgets Drude extraction",
+        abs(microscopic_drude - ghd_drude),
+        omitted_kubo_budget,
+    )
+
+    signed_pair = [Fraction(1, 5), Fraction(-1, 5)]
+    signed_pseudo_budget = abs(sum(signed_pair, Fraction(0)))
+    absolute_pair_budget = sum(abs(value) for value in signed_pair)
+    assert_lt_bound(
+        "signed residual cancellation is too small for a Drude bound",
+        signed_pseudo_budget,
+        absolute_pair_budget,
+    )
+
+
 def main() -> None:
     check_two_species_dressing_current_identity()
     check_hard_rod_effective_velocity_solution()
     check_ghd_observable_residual_bound()
+    check_ghd_drude_weight_reconstruction_residual_bound()
     print("All generalized-hydrodynamics finite algebra checks passed.")
 
 

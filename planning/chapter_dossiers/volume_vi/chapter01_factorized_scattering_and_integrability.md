@@ -62,7 +62,7 @@
   cells.  The ledger names the on-shell, Hilbert-space, wedge, local-algebra,
   form-factor/domain, thermodynamic/state, microscopic-operator, and physical
   projection gates that must close before an exact formula is quoted as a
-  local, thermodynamic, or hydrodynamic QFT observable.
+  local, thermodynamic, hydrodynamic, or real-time transport QFT observable.
 
 ## Symbols
 
@@ -124,8 +124,9 @@
     supplies the Hilbert space, local net, domains, positivity, and completeness;
     the sinh-Gordon route remains conditional until nuclearity, local
     intersections, point-field domains, and completeness are supplied; Lee--Yang
-    TBA and GHD certify thermodynamic or Euler-scale coordinates only under
-    their own finite-volume/state-limit/microscopic-observable hypotheses.
+    TBA and GHD certify thermodynamic, Euler-scale, or Drude coordinates only
+    under their own finite-volume, state-limit, microscopic-observable, Kubo,
+    and projection hypotheses.
 
 ## Figures
 
@@ -160,3 +161,6 @@
   gate logic and negative controls against treating exact scattering, exact TBA
   endpoints, or exact GHD dressing as local-observable or microscopic-current
   reconstruction.
+- 2026-06-05 GHD transport coherence hook: clarified in the route ledger that
+  Drude/transport claims require a real-time KMS/Kubo gate in addition to the
+  Euler GHD current coordinate.

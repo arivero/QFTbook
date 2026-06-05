@@ -32,6 +32,10 @@
   filling functions, dressing equation, effective velocity, conditional
   root-density continuity equation, charge-current conservation check, and a
   hard-rod calibration of collision-shift kinematics.
+- GHD transport reconstruction layer: Drude-weight coordinate from dressed
+  charges and effective velocities, finite-charge Mazur projection, positive
+  semidefinite ballistic matrix, and a residual bound separating the
+  Euler Drude coordinate from the microscopic Kubo transport coefficient.
 - Weak-integrability-breaking kinetic-cell layer: finite Markov collision
   datum with detailed balance, exact preserved charges, projected occupation
   collision functional, entropy production identity, and the controlled
@@ -54,6 +58,8 @@
 | \(n_a,\rho_a^t,h^{\rm dr},v_a^{\rm eff}\) | GHD filling, total state density, dressed one-particle function, and effective velocity |
 | \(Q_h^{\rm GHD},J_h^{\rm GHD},\mathcal E_{h,L}^{\rm GHD}\) | Euler-cell charge/current predictions and microscopic observable error |
 | \(\epsilon_{\rm cell},\epsilon_{\rm BY},\epsilon_{\rm dress},\epsilon_{\rm grad},\epsilon_{\rm op},\epsilon_{\rm diss},\epsilon_{\rm break}\) | residuals in the GHD observable bound |
+| \(D_{hk}^{\rm GHD},D_{hk}^{\rm mic},C_{ij},B_{ij}\) | Euler Drude coordinate, microscopic Kubo Drude coefficient, static covariance, and current-charge matrix |
+| \(R_{\rm KMS},R_{\rm FV},R_{\rm op},R_{\rm proj},R_{\rm Euler},R_{\rm diff},R_{\rm break},R_{\rm norm}\) | residuals in the Drude/Kubo reconstruction bound |
 | \(\Omega,\pi_\omega,k_{\omega\omega'},P_\omega,C_i\) | finite collision-cell states, stationary weights, transition rates, cell probabilities, and projected collision functional |
 
 ## Claim Ledger
@@ -80,15 +86,22 @@
    The observable bound now separates that Euler-cell formula from the
    microscopic density/current claim through local-cell, Bethe-Yang, dressing,
    gradient, operator-projection, dissipative, and breaking residuals.
-9. The hard-rod calibration solves the finite collision-shift equations
+9. The Drude-weight reconstruction residual bound turns the same GHD cell data
+   into a ballistic transport coordinate only after the real-time Kubo limit,
+   finite-volume recurrence control, microscopic current identification,
+   conserved-charge projection, Euler limit, diffusive corrections,
+   integrability-breaking channels, and normalization convention are all
+   budgeted.  The finite-charge projection \(B C^{-1}B^{\mathsf T}\) is exact
+   only on the retained complete charge subspace.
+10. The hard-rod calibration solves the finite collision-shift equations
    exactly, showing how a state-dependent effective velocity arises before
    the quantum kernel is introduced.
-10. The weak-breaking kinetic section separates finite collision-cell
+11. The weak-breaking kinetic section separates finite collision-cell
     identities from the unproved local-QFT kinetic limit: detailed balance
     gives relative-entropy decay, exact charges are preserved by the
     transition graph, and higher Bethe charges decay precisely when the
     perturbation permits transitions that change them.
-11. The TBA status checkpoint prevents the Lee--Yang and free-Majorana
+12. The TBA status checkpoint prevents the Lee--Yang and free-Majorana
     computations from being overclaimed: they verify specific TBA kernels,
     plateau equations, and ultraviolet asymptotics, but do not by themselves
     derive the finite-volume spectrum of an arbitrary local Hamiltonian with
@@ -103,7 +116,10 @@
   \(j_h=\int h\rho v^{\rm eff}\), and the hard-rod effective-velocity
   solution.  It also carries an evidence contract and verifies the observable
   residual bound, rejecting bare-velocity currents, exact-root-continuity
-  overclaims, and omitted operator-current residuals.
+  overclaims, and omitted operator-current residuals.  The same companion now
+  checks the Drude-weight residual bound: finite-charge Mazur projection,
+  positive semidefinite Drude matrix, bare-velocity negative control,
+  Kubo-residual underbudgeting, and signed-cancellation rejection.
 - `calculation-checks/weak_breaking_collision_cell_checks.py` verifies the
   finite detailed-balance algebra, projected conservation of energy, decay of
   a higher Bethe-type charge, and the symmetrized entropy-production formula.
@@ -134,6 +150,10 @@
   `ca:ghd-observable-reconstruction-residual-bound`, making microscopic
   density/current reconstruction the load-bearing hydrodynamic claim beyond
   root-density continuity and dressing algebra.
+- 2026-06-05 GHD transport pass: added
+  `ca:ghd-drude-weight-reconstruction-residual-bound`, tying dressed GHD currents
+  to a physical Drude/Kubo transport coefficient only through an explicit
+  residual bound and finite-charge projection gate.
 
 ## Figures
 

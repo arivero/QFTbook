@@ -722,6 +722,120 @@ operator, remove finite-volume recurrences, control gradients, or exclude
 diffusive and inelastic corrections.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[GHD Drude-weight reconstruction residual bound]
+\label{ca:ghd-drude-weight-reconstruction-residual-bound}
+In a homogeneous thermal Bethe state the Euler GHD data predict the ballistic
+part of current transport.  Let \(h\) and \(k\) be one-particle charge
+functions, and write \(n_a(\theta)\), \(\rho_a(\theta)\), and
+\(v_a^{\rm eff}(\theta)\) for the filling, particle density, and effective
+velocity of the cell.  In the charge-normalized convention used here, the
+Euler Drude coordinate is
+\begin{equation}
+  D_{hk}^{\rm GHD}
+  =
+  \sum_a\int d\theta\,
+  \rho_a(\theta)\bigl(1-n_a(\theta)\bigr)
+  \bigl(v_a^{\rm eff}(\theta)\bigr)^2
+  h_a^{\rm dr}(\theta)\,k_a^{\rm dr}(\theta).
+  \label{eq:ghd-drude-coordinate}
+\end{equation}
+Electrical-conductivity conventions often multiply this expression by a
+factor such as \(\beta/2\); the present normalization fixes only the
+charge-current covariance coordinate.  The point of
+\eqref{eq:ghd-drude-coordinate} is that the same dressed charge which appears
+in static thermodynamics is propagated by the dressed velocity squared.  For
+any finite linear combination \(u=\sum_i c_i h_i\),
+\[
+  \sum_{i,j}c_iD_{h_i h_j}^{\rm GHD}c_j
+  =
+  \sum_a\int d\theta\,
+  \rho_a(1-n_a)(v_a^{\rm eff})^2
+  \bigl(u_a^{\rm dr}(\theta)\bigr)^2
+  \ge0 ,
+\]
+so the Euler Drude matrix is positive semidefinite in this convention.
+
+Equivalently, if a finite family of charges is complete on the retained
+Bethe-cell tangent space, define the static covariance and current-charge
+matrices
+\[
+  C_{ij}
+  =
+  \sum_a\int d\theta\,
+  \rho_a(1-n_a)h_{i,a}^{\rm dr}h_{j,a}^{\rm dr},
+  \qquad
+  B_{ij}
+  =
+  \sum_a\int d\theta\,
+  \rho_a(1-n_a)v_a^{\rm eff}
+  h_{i,a}^{\rm dr}h_{j,a}^{\rm dr}.
+\]
+Then the Euler projection formula gives
+\begin{equation}
+  D^{\rm GHD}=B\,C^{-1}\,B^{\mathsf T}
+  \label{eq:ghd-drude-projection-formula}
+\end{equation}
+on that retained space.  With an incomplete set of charges the right-hand
+side is instead the Mazur projection onto the retained conserved subspace,
+and the missing conserved directions are a residual rather than a
+normalization convention.
+
+The microscopic transport coefficient is a real-time Kubo object, for
+example the long-time, large-volume ballistic coefficient extracted from the
+connected current correlator of the local QFT.  A theorem-level comparison
+therefore has to bind the GHD coordinate to the microscopic target:
+\begin{equation}
+\begin{aligned}
+  D_{hk}^{\rm mic}-D_{hk}^{\rm GHD}
+  &=
+  R_{\rm KMS}
+  +R_{\rm FV}
+  +R_{\rm op}
+  +R_{\rm proj}
+  +R_{\rm Euler}  \\
+  &\qquad
+  +R_{\rm diff}
+  +R_{\rm break}
+  +R_{\rm norm}.
+\end{aligned}
+  \label{eq:ghd-drude-residual-decomposition}
+\end{equation}
+Here \(R_{\rm KMS}\) controls the real-time KMS/Kubo limiting operation,
+\(R_{\rm FV}\) finite-volume and recurrence effects, \(R_{\rm op}\) the
+identification of the microscopic current with the one-particle current
+coordinate, \(R_{\rm proj}\) missing conserved directions in a finite charge
+projection, \(R_{\rm Euler}\) the Euler scaling limit, \(R_{\rm diff}\)
+diffusive and noise corrections, \(R_{\rm break}\) inelastic or
+integrability-breaking channels, and \(R_{\rm norm}\) convention changes such
+as the \(\beta/2\) factor.  If these terms obey
+\[
+  |R_\alpha|\le \varepsilon_\alpha
+  \qquad
+  \alpha\in
+  \{\mathrm{KMS},\mathrm{FV},\mathrm{op},\mathrm{proj},
+    \mathrm{Euler},\mathrm{diff},\mathrm{break},\mathrm{norm}\},
+\]
+then
+\begin{equation}
+  |D_{hk}^{\rm mic}-D_{hk}^{\rm GHD}|
+  \le
+  \varepsilon_{\rm KMS}
+  +\varepsilon_{\rm FV}
+  +\varepsilon_{\rm op}
+  +\varepsilon_{\rm proj}
+  +\varepsilon_{\rm Euler}
+  +\varepsilon_{\rm diff}
+  +\varepsilon_{\rm break}
+  +\varepsilon_{\rm norm}.
+  \label{eq:ghd-drude-residual-bound}
+\end{equation}
+Thus exact dressing algebra is not yet a measured Drude weight.  The measured
+ballistic response is obtained only after the local current, real-time limit,
+conserved projection, and non-ballistic channels are controlled in the same
+state family.  This is the transport analogue of the local-observable
+residual bound above.
+\end{controlledapproximation}
+
 The formula for \(v^{\rm eff}\) is also the linearized counting formula for
 a dressed wave packet.  Insert a single quasiparticle into a thermodynamic
 cell and perturb the Bethe counting function.  The shift of available

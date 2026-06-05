@@ -2129,9 +2129,13 @@ Current checks:
   dressing equation, the equality of \(\sum h\rho v^{\rm eff}\) with the
   dressed-energy current expression, and the exact hard-rod
   effective-velocity solution.  It also checks the observable-level residual
-  residual bound separating Euler root-density closure from microscopic
+  bound separating Euler root-density closure from microscopic
   density/current reconstruction, with negative controls against bare
-  velocities and omitted operator-current residuals.
+  velocities and omitted operator-current residuals.  It also checks the
+  Drude/Kubo reconstruction bound: complete-charge Mazur projection,
+  positive semidefinite ballistic matrix, bare-velocity rejection,
+  real-time-Kubo residual underbudgeting, and signed residual-cancellation
+  rejection.
 - `weak_breaking_collision_cell_checks.py`: finite collision-cell checks for
   the Volume VI weak-integrability-breaking kinetic layer, including
   detailed balance, exact conservation of projected energy, nonconservation
