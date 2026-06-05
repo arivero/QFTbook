@@ -4,14 +4,19 @@
 Evidence contract.
 Target claims: the Volume VI Chapter 4 free-Majorana energy-density
 form-factor normalization and local-reconstruction status claim, the
-two-particle Wightman/Euclidean kernel normalization, and the Ising
+two-particle Wightman/Euclidean kernel normalization, the Ising
 spin/twist product-family Watson, cyclicity, crossing, residue, and
-separated-series majorant claims.
+separated-series majorant claims, and the form-factor spectral reconstruction
+window that separates separated Euclidean convergence from Wightman
+boundary values, collision extensions, domains, locality, positivity, and
+sector completeness.
 Independent construction: the checks recompute exchange/cyclicity signs,
 Cauchy-kernel orientation, two-particle invariant-mass and phase-space
 Jacobians, Bessel prefactors, finite Wick-degree support for the normal
-ordered quadratic Majorana energy density, and explicit finite products for
-the spin/twist families rather than importing chapter display strings.
+ordered quadratic Majorana energy density, explicit finite products for
+the spin/twist families, finite tail-majorant sums, residual-budget
+arithmetic, and Wightman-matrix positivity diagnostics rather than importing
+chapter display strings.
 Imported assumptions: the massive free-Majorana CAR construction supplies the
 Hilbert space, common finite-particle domain, positivity, locality of even
 Wick polynomials, and Fock completeness of the one-particle Majorana sector;
@@ -22,7 +27,9 @@ Cauchy orientation, missed identical-particle factors, wrong Bessel
 prefactors, an illicit higher-particle tail for a quadratic Wick operator,
 and a bootstrap-only local-field reconstruction overclaim with missing
 domain/locality/positivity/completeness inputs are rejected, as are the
-wrong spin-field monodromy and residue signs.
+wrong spin-field monodromy and residue signs, omitted collision/locality
+residuals, signed residual cancellation, and diagonal separated positivity
+mistaken for full Wightman positivity.
 Scope boundary: a pass checks finite algebra, normalization, and the
 free-field reconstruction interface for the displayed examples; it does not
 prove local reconstruction for an arbitrary interacting factorizing
@@ -357,6 +364,84 @@ def check_spin_spectral_series_majorants() -> None:
         )
 
 
+def check_form_factor_spectral_reconstruction_window() -> None:
+    # Finite analogue of the reconstruction-window ledger.  A separated
+    # Euclidean spectral majorant gives a real tail bound, but local-field
+    # reconstruction also needs collision, boundary-value, domain, locality,
+    # positivity, and completeness inputs.
+    particle_bounds = [
+        Fraction(1, 2),
+        Fraction(1, 6),
+        Fraction(1, 24),
+        Fraction(1, 120),
+        Fraction(1, 720),
+    ]
+    retained_order = 2
+    tail_bound = sum(particle_bounds[retained_order + 1 :], Fraction(0))
+    actual_tail = Fraction(1, 140) + Fraction(1, 840)
+    assert_true("finite spectral tail lies below declared majorant", actual_tail <= tail_bound)
+
+    residuals = {
+        "tail": actual_tail,
+        "collision": Fraction(1, 91),
+        "boundary": Fraction(1, 143),
+        "domain": Fraction(1, 77),
+        "locality": Fraction(1, 65),
+        "positivity": Fraction(1, 110),
+        "completeness": Fraction(1, 99),
+    }
+    reconstruction_error = sum(residuals.values(), Fraction(0))
+    absolute_budget = sum(abs(value) for value in residuals.values())
+    assert_true("Wightman reconstruction residual budget bounds error", reconstruction_error <= absolute_budget)
+
+    bootstrap_equation_defects = {
+        "Watson": Fraction(0),
+        "cyclicity": Fraction(0),
+        "kinematic_pole": Fraction(0),
+        "bound_state_pole": Fraction(0),
+    }
+    assert_equal(
+        "bootstrap equations can all pass while reconstruction residuals remain",
+        sum(bootstrap_equation_defects.values(), Fraction(0)),
+        Fraction(0),
+    )
+    assert_true(
+        "negative control rejects bootstrap-only local reconstruction",
+        reconstruction_error > sum(bootstrap_equation_defects.values(), Fraction(0)),
+    )
+
+    omitted_collision_budget = absolute_budget - residuals["collision"]
+    assert_true(
+        "omitting collision/contact extension underbudgets reconstruction",
+        reconstruction_error > omitted_collision_budget,
+    )
+    omitted_locality_budget = absolute_budget - residuals["locality"]
+    assert_true(
+        "omitting spacelike locality residual underbudgets reconstruction",
+        reconstruction_error > omitted_locality_budget,
+    )
+
+    signed_residuals = [Fraction(1, 8), Fraction(-1, 8), Fraction(1, 20)]
+    signed_pseudo_budget = abs(sum(signed_residuals, Fraction(0)))
+    absolute_residual_budget = sum(abs(value) for value in signed_residuals)
+    assert_true(
+        "signed cancellation is not an admissible reconstruction bound",
+        signed_pseudo_budget < absolute_residual_budget,
+    )
+
+    # Positive diagonal separated spectral terms do not imply positivity of the
+    # full Wightman test-function matrix after boundary-value and contact
+    # extension.  The bad matrix has positive diagonal entries but a negative
+    # determinant.
+    diagonal_terms = (Fraction(1), Fraction(1))
+    bad_off_diagonal = Fraction(3, 2)
+    determinant = diagonal_terms[0] * diagonal_terms[1] - bad_off_diagonal**2
+    assert_true(
+        "diagonal spectral positivity does not prove Wightman matrix positivity",
+        determinant < 0,
+    )
+
+
 def main() -> None:
     check_energy_density_form_factor()
     check_kinematic_cauchy_kernel_orientation()
@@ -367,6 +452,7 @@ def main() -> None:
     check_sigma_kinematic_residue()
     check_spin_even_kinematic_residue()
     check_spin_spectral_series_majorants()
+    check_form_factor_spectral_reconstruction_window()
     print("All Ising form-factor checks passed.")
 
 

@@ -1071,6 +1071,120 @@ separated-point estimate and belong to the extension problem on the
 collision diagonal.
 \end{proof}
 
+\begin{controlledapproximation}[Form-factor spectral reconstruction window]
+\label{ca:form-factor-spectral-reconstruction-window}
+Let \(\mathfrak F_{\mathcal O}\) be a form-factor structure over a regular
+factorizing scattering datum, and fix a separated Euclidean window
+\[
+  \mathcal U_{r_0,r_1}
+  =
+  \{x_E:\ r_0\le |x_E|\le r_1\},
+  \qquad 0<r_0<r_1<\infty .
+\]
+For a scalar channel, write the \(n\)-particle separated Euclidean term as
+\begin{equation}
+  G_n^{\mathcal O}(x_E)
+  =
+  \frac1{n!}
+  \sum_{a_1,\ldots,a_n}
+  \int_{\R^n}\prod_{j=1}^n\frac{\dd\theta_j}{2\pi}\,
+  \left|F^{\mathcal O}_{a_1\ldots a_n}(\theta)\right|^2
+  e^{-x_E\cdot_E\sum_j p_{a_j}^{E}(\theta_j)} .
+  \label{eq:form-factor-separated-euclidean-term}
+\end{equation}
+Here \(p^E(\theta)=(m\cosh\theta,m\sinh\theta)\) after choosing the
+Euclidean temporal ray and then rotating covariantly.  A separated Euclidean
+two-point function is controlled on \(\mathcal U_{r_0,r_1}\) if there are
+majorants \(B_{n,q}(r_0,r_1)\) such that, for each retained derivative order
+\(q\),
+\begin{equation}
+  \sup_{x_E\in\mathcal U_{r_0,r_1}}
+  \left|\nabla_{x_E}^qG_n^{\mathcal O}(x_E)\right|
+  \le B_{n,q}(r_0,r_1),
+  \qquad
+  \sum_{n\ge0}B_{n,q}(r_0,r_1)<\infty .
+  \label{eq:form-factor-separated-majorant-condition}
+\end{equation}
+Then the Euclidean series defines a smooth separated function on that window,
+and its \(N\)-particle truncation has the explicit tail bound
+\begin{equation}
+  \left\|
+    G_{\mathcal O}^{E}-\sum_{n=0}^{N}G_n^{\mathcal O}
+  \right\|_{C^q(\mathcal U_{r_0,r_1})}
+  \le
+  \sum_{n>N}B_{n,q}(r_0,r_1).
+  \label{eq:form-factor-separated-tail-bound}
+\end{equation}
+This separated estimate is the first gate illustrated by the Ising product
+families above.  Promoting the same data to a Wightman two-point distribution
+and a local operator also requires the boundary value back to Lorentzian
+signature, the extension across collision diagonals, operator domains and
+closability, positivity on all finite test-function matrices, spacelike
+commutators or semi-locality phases, and completeness of the finite-particle
+sector.
+
+A useful way to keep the logical dependencies visible is to test smeared
+two-point coordinates.  For compactly supported test functions \(f,k\), let
+\(\mathcal W_{\mathcal O}[f,k]\) denote the target Wightman pairing and let
+\(\mathcal W_{\mathcal O}^{(N,\delta)}[f,k]\) be the pairing obtained by
+truncating the form-factor series at \(N\) particles and by excluding a
+collision tube of width \(\delta\) before applying the chosen extension map.
+The reconstruction claim carries the residual split
+\begin{equation}
+\begin{aligned}
+  \mathcal W_{\mathcal O}[f,k]
+  -
+  \mathcal W_{\mathcal O}^{(N,\delta)}[f,k]
+  &=
+  R_{\rm tail}
+  +R_{\rm coll}
+  +R_{\rm bv}
+  +R_{\rm dom}
+  +R_{\rm loc}
+  +R_{\rm pos}
+  +R_{\rm comp}.
+\end{aligned}
+  \label{eq:form-factor-wightman-reconstruction-residual-split}
+\end{equation}
+Here \(R_{\rm tail}\) is the high-particle tail,
+\(R_{\rm coll}\) is the collision-diagonal/contact extension,
+\(R_{\rm bv}\) is the Euclidean-to-Lorentzian boundary-value and \(i0\)
+choice, \(R_{\rm dom}\) is the common-domain and closability error,
+\(R_{\rm loc}\) is the spacelike commutator or semi-locality defect,
+\(R_{\rm pos}\) is positivity beyond the diagonal two-point spectral measure,
+and \(R_{\rm comp}\) is the missing-sector completeness error.  If all seven
+terms are bounded on the declared test-function norm by
+\(|R_\kappa[f,k]|\le \varepsilon_\kappa\|f\|_{\mathcal T}\|k\|_{\mathcal T}\),
+then
+\begin{equation}
+  \left|
+    \mathcal W_{\mathcal O}[f,k]
+    -
+    \mathcal W_{\mathcal O}^{(N,\delta)}[f,k]
+  \right|
+  \le
+  \left(
+    \varepsilon_{\rm tail}
+    +\varepsilon_{\rm coll}
+    +\varepsilon_{\rm bv}
+    +\varepsilon_{\rm dom}
+    +\varepsilon_{\rm loc}
+    +\varepsilon_{\rm pos}
+    +\varepsilon_{\rm comp}
+  \right)
+  \|f\|_{\mathcal T}\|k\|_{\mathcal T}.
+  \label{eq:form-factor-wightman-reconstruction-bound}
+\end{equation}
+The diagonal positivity of the Euclidean spectral integrand in
+\eqref{eq:form-factor-separated-euclidean-term} controls the two-point
+diagonal in a separated window.  Spacelike locality, contact-term extension,
+and sector completeness require their own estimates.  A bootstrap solution
+that passes Watson, cyclicity, and residue equations but has no bounds of the form
+\eqref{eq:form-factor-separated-majorant-condition}, no collision extension,
+or no commutator estimate remains an algebraic form-factor candidate rather
+than a reconstructed local observable.
+\end{controlledapproximation}
+
 \section{Bound-State Poles and Operator Couplings}
 
 Suppose species \(a\) and \(b\) have a bound state \(c\).  If the

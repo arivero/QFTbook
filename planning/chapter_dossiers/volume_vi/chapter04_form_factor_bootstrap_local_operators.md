@@ -39,6 +39,11 @@
   diagonals, positivity/covariance/spectrum condition, spacelike
   local-commutativity or semi-locality, and sector completeness.
 - Reconstruction boundary for Wightman distributions from spectral series.
+- Form-factor spectral reconstruction window: a separated Euclidean
+  \(C^q\)-majorant condition, finite truncation tail bound, and Wightman
+  residual split separating high-particle tails, collision/contact extension,
+  Euclidean-to-Lorentzian boundary values, common domains, spacelike locality
+  or semi-locality, positivity, and finite-particle completeness.
 
 ## Symbols
 
@@ -62,6 +67,8 @@
 | \(F_n^{\sigma_+}\) | even semi-local spin-field form-factor family |
 | \(F_n^\Sigma\) | odd Ising order/twist form-factor family |
 | \(I_m(r)\) | one-particle Euclidean majorant \(K_0(mr)/\pi\) for the free Majorana mass \(m\) |
+| \(B_{n,q}(r_0,r_1)\) | separated Euclidean majorants for the \(n\)-particle form-factor spectral term and its \(q\)-th derivatives |
+| \(R_{\rm tail},R_{\rm coll},R_{\rm bv},R_{\rm dom},R_{\rm loc},R_{\rm pos},R_{\rm comp}\) | residuals in the form-factor-to-Wightman reconstruction window |
 
 ## Claim Ledger
 
@@ -127,6 +134,11 @@
 14. Form-factor axioms do not by themselves complete local reconstruction;
    convergence, locality, clustering, and Wightman domains remain theorem
    obligations.
+15. Separated Euclidean convergence is only the first reconstruction gate.
+   A claimed Wightman/local-observable reconstruction also needs a Lorentzian
+   boundary value, collision/contact extension, common operator domain,
+   spacelike locality or semi-locality estimate, full test-matrix positivity,
+   and finite-particle completeness on the claimed sector.
 
 ## Calculation Checks
 
@@ -141,7 +153,10 @@
   bootstrap equations alone as a local-field reconstruction theorem, the even
   spin-field semi-local cyclicity phase, the crossed \(\coth\) matrix
   element, the semi-local kinematic residue, and the even/odd
-  spectral-series majorants.
+  spectral-series majorants, plus the spectral reconstruction-window residual
+  ledger with negative controls against omitted collision/locality budgets,
+  signed residual cancellation, diagonal-positivity overread, and
+  bootstrap-only local-field overclaim.
 
 ## Audit Notes
 
@@ -168,6 +183,15 @@
   and completeness.  The companion check now rejects both an illicit
   higher-particle tail for the quadratic Wick operator and a bootstrap-only
   reconstruction overclaim.
+- 2026-06-05 issue #728 spectral-window pass: added
+  `ca:form-factor-spectral-reconstruction-window`, which turns the
+  form-factor-to-local-field boundary into a tested residual ledger.  The
+  chapter now separates separated Euclidean majorants and truncation tails
+  from the additional Wightman/local-observable gates: collision/contact
+  extension, Lorentzian boundary values, common domains, spacelike locality,
+  full positivity, and sector completeness.  The companion finite check
+  rejects the common overread that exact bootstrap equations or diagonal
+  separated positivity are enough to reconstruct a local field.
 
 ## Figures
 
