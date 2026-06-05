@@ -2144,7 +2144,12 @@ Current checks:
   Watson-exchange coefficient bookkeeping, and the wedge-local to
   double-cone-local reconstruction residual ledger which keeps exact S-Fock/ZF
   algebra, modular nuclearity, local intersections, form-factor convergence,
-  operator domains, and completeness as separate load-bearing inputs.
+  operator domains, and completeness as separate load-bearing inputs.  It also
+  checks the end-to-end route ledger for the Ising, sinh-Gordon, Lee--Yang TBA,
+  and GHD routes: exact scattering/TBA/dressing data do not certify local or
+  microscopic observables unless the local-algebra, domain/completeness,
+  state-limit, microscopic-operator, and physical-projection gates assigned to
+  that route are supplied.
 - `yang_baxter_internal_symmetry_checks.py`: exact checks for the Volume VI
   Yang--Baxter/internal-symmetry chapter, including the additive
   fixed-tensor-product rational Yang--Baxter identity, the spectral classical

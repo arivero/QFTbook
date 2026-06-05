@@ -5,22 +5,32 @@ These checks accompany Volume VI, Chapter 1.  They verify finite algebraic
 identities behind the rapidity invariant, Newton separation of rapidity
 multisets, chamber braid relations, the rational Yang--Baxter identity,
 scalar Watson-exchange bookkeeping, and the finite residual ledger separating
-S-Fock/ZF algebra from wedge-local and local-algebra reconstruction.
+S-Fock/ZF algebra from wedge-local and local-algebra reconstruction.  They
+also check the finite route-gate logic behind the end-to-end reconstruction
+ledger: exact scattering, exact TBA, or exact dressing data do not by
+themselves certify a local observable without the corresponding local-algebra,
+domain/completeness, state-limit, and projection gates.
 
 Evidence contract.
 Target claims: rapidity convention, factorized chamber algebra, Watson
 exchange, and the Chapter 1 reconstruction-budget claim that exact on-shell
-algebra does not by itself construct double-cone local observables.
+algebra does not by itself construct double-cone local observables or complete
+the route from exact data to a physical local, thermodynamic, or hydrodynamic
+observable.
 Independent construction: rational arithmetic for rapidity invariants, Newton
 identities, finite braid/Yang--Baxter matrices, scalar exchange coefficients,
 finite local-intersection dimension proxies, nuclearity-norm proxies, and a
-residual telescope for wedge-to-local reconstruction.
+residual telescope for wedge-to-local reconstruction, plus Boolean route gates
+and exact residual budgets for representative Ising, sinh-Gordon, TBA, and GHD
+routes.
 Imported assumptions: the analytic S-matrix regularity, modular nuclearity,
 operator-domain, form-factor convergence, and completeness hypotheses stated
 in the chapter.
 Negative controls: exact Yang--Baxter algebra with a nonzero local
 reconstruction residual, positive S-Fock dimension with empty local
-intersection, and a finite nuclearity proxy that fails the declared bound.
+intersection, a finite nuclearity proxy that fails the declared bound, exact
+TBA endpoint data overread as a local trace operator, and exact GHD dressing
+overread as a microscopic current.
 Scope boundary: these checks verify finite algebra and reconstruction
 interfaces only; they do not prove modular nuclearity, nontrivial local
 intersections, form-factor convergence, or local-QFT completeness.
@@ -254,6 +264,153 @@ def check_wedge_local_reconstruction_residual_budget():
     )
 
 
+def route_certifies_local_observable(gates: dict[str, bool]) -> bool:
+    required = (
+        "on_shell",
+        "hilbert",
+        "wedge",
+        "local_algebra",
+        "operator_domain",
+        "completeness",
+        "projection",
+    )
+    return all(gates.get(gate, False) for gate in required)
+
+
+def route_certifies_thermodynamic_observable(gates: dict[str, bool]) -> bool:
+    required = (
+        "bethe_yang",
+        "tba",
+        "state_limit",
+        "normalization",
+        "projection",
+    )
+    return all(gates.get(gate, False) for gate in required)
+
+
+def check_end_to_end_reconstruction_route_ledger():
+    ising_energy_route = {
+        "on_shell": True,
+        "hilbert": True,
+        "wedge": True,
+        "local_algebra": True,
+        "operator_domain": True,
+        "completeness": True,
+        "projection": True,
+    }
+    assert_equal(
+        route_certifies_local_observable(ising_energy_route),
+        True,
+        "Ising energy route certifies local observable",
+    )
+
+    sinh_gordon_before_nuclearity = {
+        "on_shell": True,
+        "hilbert": True,
+        "wedge": True,
+        "local_algebra": False,
+        "operator_domain": False,
+        "completeness": False,
+        "projection": True,
+    }
+    assert_equal(
+        route_certifies_local_observable(sinh_gordon_before_nuclearity),
+        False,
+        "sinh-Gordon S-Fock/wedge route still needs local gates",
+    )
+
+    sinh_gordon_net_but_not_point_field = dict(sinh_gordon_before_nuclearity)
+    sinh_gordon_net_but_not_point_field["local_algebra"] = True
+    assert_equal(
+        route_certifies_local_observable(sinh_gordon_net_but_not_point_field),
+        False,
+        "sinh-Gordon local net alone does not certify point-field completeness",
+    )
+
+    exact_yang_baxter_defect = Fraction(0)
+    exact_tba_endpoint_defect = Fraction(0)
+    local_trace_residual = Fraction(1, 19)
+    assert_gt(
+        local_trace_residual,
+        exact_yang_baxter_defect + exact_tba_endpoint_defect,
+        "exact algebra and TBA endpoint leave local trace route residual",
+    )
+
+    lee_yang_tba_route = {
+        "bethe_yang": True,
+        "tba": True,
+        "state_limit": True,
+        "normalization": True,
+        "projection": True,
+    }
+    assert_equal(
+        route_certifies_thermodynamic_observable(lee_yang_tba_route),
+        True,
+        "Lee-Yang route certifies thermodynamic coordinate",
+    )
+    assert_equal(
+        route_certifies_local_observable(
+            {
+                "on_shell": True,
+                "hilbert": False,
+                "wedge": False,
+                "local_algebra": False,
+                "operator_domain": False,
+                "completeness": False,
+                "projection": True,
+            }
+        ),
+        False,
+        "Lee-Yang TBA endpoint is not local trace reconstruction",
+    )
+
+    ghd_route = {
+        "bethe_yang": True,
+        "tba": True,
+        "dressing": True,
+        "state_limit": True,
+        "microscopic_operator": False,
+        "projection": True,
+    }
+    microscopic_current_certified = (
+        ghd_route["bethe_yang"]
+        and ghd_route["tba"]
+        and ghd_route["dressing"]
+        and ghd_route["state_limit"]
+        and ghd_route["microscopic_operator"]
+        and ghd_route["projection"]
+    )
+    assert_equal(
+        microscopic_current_certified,
+        False,
+        "GHD route needs microscopic current gate",
+    )
+
+    route_residuals = {
+        "scattering": Fraction(0),
+        "hilbert": Fraction(0),
+        "wedge": Fraction(1, 80),
+        "local_algebra": Fraction(1, 120),
+        "operator_domain": Fraction(1, 150),
+        "thermodynamic_state": Fraction(1, 200),
+        "projection": Fraction(1, 240),
+    }
+    exact_observable = Fraction(7, 5) + sum(route_residuals.values(), Fraction(0))
+    retained_coordinate = Fraction(7, 5)
+    route_budget = sum(abs(value) for value in route_residuals.values())
+    assert_equal(
+        abs(exact_observable - retained_coordinate) <= route_budget,
+        True,
+        "integrable route residual budget",
+    )
+    omitted_projection_budget = route_budget - route_residuals["projection"]
+    assert_gt(
+        abs(exact_observable - retained_coordinate),
+        omitted_projection_budget,
+        "omitting physical projection underbudgets route residual",
+    )
+
+
 def main():
     check_rapidity_invariant()
     check_newton_two_root_separation()
@@ -261,6 +418,7 @@ def main():
     check_rational_yang_baxter_identity()
     check_scalar_unitarity_and_watson_bookkeeping()
     check_wedge_local_reconstruction_residual_budget()
+    check_end_to_end_reconstruction_route_ledger()
     print("All factorized-scattering algebra checks passed.")
 
 

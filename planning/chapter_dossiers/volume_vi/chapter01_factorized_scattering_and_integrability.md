@@ -57,6 +57,12 @@
   and the residual split separating wedge-generator, nuclearity,
   local-intersection, form-factor, domain/positivity, and completeness
   inputs before a local observable is claimed.
+- End-to-end route ledger for Volume VI reference paths: Ising energy,
+  sinh-Gordon wedge/local-net reconstruction, Lee--Yang TBA, and GHD Euler
+  cells.  The ledger names the on-shell, Hilbert-space, wedge, local-algebra,
+  form-factor/domain, thermodynamic/state, microscopic-operator, and physical
+  projection gates that must close before an exact formula is quoted as a
+  local, thermodynamic, or hydrodynamic QFT observable.
 
 ## Symbols
 
@@ -80,6 +86,8 @@
 | \(\mathfrak A_S(\mathcal O)\) | double-cone local-algebra candidate, defined as an opposite-wedge intersection |
 | \(\Xi_{x,y}\) | modular nuclearity map used to test local-intersection phase space |
 | \(R_{\rm pfg},R_{\rm nuc},R_{\rm int},R_{\rm ff},R_{\rm dom},R_{\rm comp}\) | reconstruction residuals from wedge data to local observables |
+| \(\mathsf R=(\mathsf S,\mathsf H,\mathsf W,\mathsf O,\mathsf F,\mathsf T,\mathsf P)\) | end-to-end reconstruction route gates: scattering/Bethe datum, Hilbert space, wedge locality, local algebra, form-factor/domain package, thermodynamic or mirror state, and physical projection |
+| \(\varepsilon_{\mathsf S},\ldots,\varepsilon_{\mathsf P}\) | route-level residuals in the end-to-end reconstruction ledger |
 
 ## Claim Ledger
 
@@ -111,6 +119,13 @@
    Yang--Baxter/ZF algebra controls the \(S\)-Fock coordinate, but modular
    nuclearity, nontrivial local intersections, form-factor convergence,
    domains/positivity, and completeness remain separate inputs.
+10. End-to-end reconstruction has route-dependent gates.  The Ising energy
+    route is theorem-level because the free Majorana CAR construction already
+    supplies the Hilbert space, local net, domains, positivity, and completeness;
+    the sinh-Gordon route remains conditional until nuclearity, local
+    intersections, point-field domains, and completeness are supplied; Lee--Yang
+    TBA and GHD certify thermodynamic or Euler-scale coordinates only under
+    their own finite-volume/state-limit/microscopic-observable hypotheses.
 
 ## Figures
 
@@ -138,3 +153,10 @@
   erase modular-nuclearity or local-intersection residuals, and includes
   negative controls for empty local intersections and failed nuclearity
   proxies.
+- 2026-06-05 issue #728 route-ledger pass: added
+  `ca:integrable-end-to-end-reconstruction-route-ledger`, turning the
+  Volume VI reconstruction spine into explicit model routes for Ising,
+  sinh-Gordon, Lee--Yang TBA, and GHD.  The companion check verifies the route
+  gate logic and negative controls against treating exact scattering, exact TBA
+  endpoints, or exact GHD dressing as local-observable or microscopic-current
+  reconstruction.

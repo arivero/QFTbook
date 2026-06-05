@@ -323,6 +323,90 @@ have produced local observables or only a beautifully consistent scattering
 calculus.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[End-to-end reconstruction route ledger]
+\label{ca:integrable-end-to-end-reconstruction-route-ledger}
+For a concrete integrable model, an ``exact solution'' in this volume means a
+route through specified gates, not a single formula.  The route datum is the
+ordered list
+\[
+  \mathsf R
+  =
+  \bigl(
+  \mathsf S,\mathsf H,\mathsf W,\mathsf O,
+  \mathsf F,\mathsf T,\mathsf P
+  \bigr),
+\]
+where \(\mathsf S\) is the on-shell scattering or Bethe datum,
+\(\mathsf H\) is the Hilbert-space representation, \(\mathsf W\) is the
+wedge-local construction, \(\mathsf O\) is the nontrivial double-cone local
+observable algebra, \(\mathsf F\) is the pointlike or smeared form-factor
+operator package with domains and convergence, \(\mathsf T\) is the
+thermodynamic or mirror-state limit, and \(\mathsf P\) is the physical
+projection to the observable being quoted.  A local-observable claim requires
+all gates on the path actually used by the observable.  A thermodynamic claim
+may bypass point fields only if its own finite-volume, Bethe--Yang, mirror,
+and state-limit hypotheses replace them.
+
+The following four routes fix how later chapters should be read.
+\begin{enumerate}[label=\textnormal{(\alph*)}]
+\item \emph{Ising energy.}  The controlled output is the local Euclidean
+two-point function.  The free Majorana CAR construction supplies
+\(\mathsf H,\mathsf W,\mathsf O\), domains, positivity, and completeness; the
+two-particle form-factor formula is then a matrix-element calculation inside an
+already constructed local QFT.
+\item \emph{Sinh-Gordon wedge.}  The controlled output is a conditional local
+net.  A regular scalar \(S(\theta)\) supplies \(S\)-Fock and wedge-local fields
+under analyticity and crossing bounds, but \(\mathsf O\) requires modular
+nuclearity and point-field claims still require \(\mathsf F\) and completeness
+estimates.
+\item \emph{Lee--Yang TBA.}  The controlled output is a thermodynamic scaling
+function.  The TBA equation gives a controlled thermodynamic coordinate only
+after finite-volume Bethe--Yang errors, contour and branch data, and state-limit
+hypotheses are supplied; equality of endpoint central charges is not a local
+trace-operator reconstruction.
+\item \emph{GHD cell.}  The controlled output is an Euler-scale density or
+current.  Root-density continuity and dressing give the Euler candidate, but
+microscopic density and current operators, local-equilibrium formation,
+gradients, diffusion, and integrability-breaking residuals remain part of
+\(\mathsf P\).
+\end{enumerate}
+
+Thus the four reference routes have different proof statuses for physical
+reasons, not because some have more formulas.  The Ising energy-density route is
+theorem-level because locality and domains are inherited before the form-factor
+sum is evaluated.  The Sinh-Gordon route is a conditional local-net
+construction until the phase-space and local-intersection estimates are in
+place, and it is still not a point-field completeness theorem without the
+separate form-factor growth and domain input.  The Lee--Yang and GHD routes are
+thermodynamic/hydrodynamic routes: they can be excellent QFT predictions, but
+their missing gates are finite-volume state limits, microscopic observable
+identification, and local-equilibrium control rather than Yang--Baxter
+algebra.
+
+If \(E_{\mathsf R}^{\rm obs}\) denotes the error in the target local or
+thermodynamic observable along a chosen route, the route ledger is used through
+the absolute budget
+\begin{equation}
+  |E_{\mathsf R}^{\rm obs}|
+  \le
+  \varepsilon_{\mathsf S}
+  +\varepsilon_{\mathsf H}
+  +\varepsilon_{\mathsf W}
+  +\varepsilon_{\mathsf O}
+  +\varepsilon_{\mathsf F}
+  +\varepsilon_{\mathsf T}
+  +\varepsilon_{\mathsf P},
+  \label{eq:integrable-route-ledger-budget}
+\end{equation}
+with omitted gates assigned zero only when they are genuinely irrelevant to the
+observable's route, not when their analysis has merely been skipped.  Exact
+Yang--Baxter algebra sets \(\varepsilon_{\mathsf S}\) to zero; it says nothing
+about \(\varepsilon_{\mathsf O}\), \(\varepsilon_{\mathsf F}\), or
+\(\varepsilon_{\mathsf P}\).  Likewise an exact numerical TBA solution may set
+the retained \(\mathsf T\)-coordinate error to zero while leaving the local
+trace-operator or microscopic-current projection errors untouched.
+\end{controlledapproximation}
+
 \section{Factorized Scattering Datum}
 
 \begin{definition}[Elastic factorized scattering system]
