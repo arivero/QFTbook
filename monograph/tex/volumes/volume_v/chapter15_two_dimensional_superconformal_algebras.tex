@@ -59,6 +59,334 @@ superconformal algebra, \(h_a=3/2\), \(\nu_a=1/2\) in the NS sector, and
 supercharge zero modes.  This is the operator form of the difference between
 antiperiodic and periodic spin structures on the cylinder.
 
+\section{Flat Superspace, Superconformal Maps, and Superfields}
+\label{sec:n1-local-supergeometry-superfields}
+
+The mode algebra below is only one coordinate on the local symmetry.  The
+field-theoretic coordinate is superspace: it shows which transformations are
+genuine local reparametrizations of the odd direction, which component fields
+belong to one multiplet, and why the first superfield correlators have fewer
+independent functions than ordinary component correlators.
+
+\begin{definition}[Flat \((1,1)\) superspace multiplet]
+\label{def:flat-one-one-superspace-multiplet}
+On a flat Euclidean patch let
+\[
+  Z=(z,\theta),\qquad \bar Z=(\bar z,\bar\theta),
+\]
+where \(\theta,\bar\theta\) are odd coordinates.  The flat superderivatives
+and supercharges are
+\begin{equation}
+  D_\theta=\partial_\theta+\theta\partial_z,
+  \qquad
+  D_{\bar\theta}=\partial_{\bar\theta}+\bar\theta\partial_{\bar z},
+  \qquad
+  Q_\theta=\partial_\theta-\theta\partial_z,
+  \qquad
+  Q_{\bar\theta}=\partial_{\bar\theta}-\bar\theta\partial_{\bar z}.
+  \label{eq:flat-one-one-superderivatives}
+\end{equation}
+They obey
+\[
+  D_\theta^2=\partial_z,\qquad
+  D_{\bar\theta}^2=\partial_{\bar z},\qquad
+  \{D_\theta,D_{\bar\theta}\}=0,
+  \qquad
+  \{Q_\theta,D_\theta\}=\{Q_{\bar\theta},D_{\bar\theta}\}=0.
+\]
+A real scalar multiplet is a superfield
+\begin{equation}
+  \mathbf X
+  =
+  X+\theta\psi+\bar\theta\widetilde\psi+\theta\bar\theta F ,
+  \label{eq:flat-one-one-real-superfield}
+\end{equation}
+where \(F\) is auxiliary.  With the displayed Berezin-order convention, the
+free local action
+\begin{equation}
+  S_0[\mathbf X]
+  =
+  \frac{1}{2\pi}\int \dd^2z\,\dd\theta\,\dd\bar\theta\,
+  D_{\bar\theta}\mathbf X\,D_\theta\mathbf X
+  \label{eq:flat-one-one-superspace-action}
+\end{equation}
+has component form
+\begin{equation}
+  S_0
+  =
+  \frac{1}{2\pi}\int \dd^2z\,
+  \left(
+    \partial_{\bar z}X\,\partial_zX
+    +\psi\,\partial_{\bar z}\psi
+    +\widetilde\psi\,\partial_z\widetilde\psi
+    +F^2
+  \right),
+  \label{eq:flat-one-one-component-action}
+\end{equation}
+up to the harmless overall sign changes produced by reversing all Berezin
+derivative conventions.  The supersymmetry variation is
+\[
+  \delta_{\varepsilon,\bar\varepsilon}\mathbf X
+  =
+  (\varepsilon Q_\theta+\bar\varepsilon Q_{\bar\theta})\mathbf X .
+\]
+Thus the invariance of \eqref{eq:flat-one-one-superspace-action} is not a
+component accident: \(Q_\theta,Q_{\bar\theta}\) anticommute with the
+derivatives in the integrand, so the variation is a sum of total superspace
+derivatives.
+\end{definition}
+
+Definition~\ref{def:flat-one-one-superspace-multiplet} is a local QFT
+construction, not a claim that every spin CFT is a free superspace model.
+Curved sigma-model metrics, torsion couplings, and dilaton improvements
+belong to the sigma-model chapter.  Here the flat multiplet is used as the
+minimal laboratory for the chiral \(\mathcal N=1\) superconformal geometry.
+
+\begin{definition}[\(\mathcal N=1\) local superconformal map]
+\label{def:n1-local-superconformal-map}
+Let \(D=D_\theta=\partial_\theta+\theta\partial_z\).  A holomorphic change of
+supercoordinates
+\[
+  (z,\theta)\longmapsto (z',\theta')
+\]
+is locally superconformal when it preserves the rank-\(0|1\) distribution
+spanned by \(D\):
+\begin{equation}
+  D z'=\theta'\,D\theta',
+  \qquad
+  D\theta'\ \text{is invertible}.
+  \label{eq:n1-superconformal-map-condition}
+\end{equation}
+Equivalently,
+\begin{equation}
+  D=(D\theta')D_{\theta'},
+  \qquad
+  D_{\theta'}=\partial_{\theta'}+\theta'\partial_{z'}.
+  \label{eq:n1-superderivative-covariance}
+\end{equation}
+\end{definition}
+
+The chain rule gives
+\[
+  D=(Dz')\partial_{z'}+(D\theta')\partial_{\theta'} .
+\]
+If \eqref{eq:n1-superconformal-map-condition} holds, then
+\[
+  D=(D\theta')(\partial_{\theta'}+\theta'\partial_{z'})
+  =(D\theta')D_{\theta'}.
+\]
+Conversely, comparing the \(\partial_{z'}\) and \(\partial_{\theta'}\)
+coefficients in \eqref{eq:n1-superderivative-covariance} gives
+\eqref{eq:n1-superconformal-map-condition}.
+
+Write
+\[
+  z'=f(z)+\theta\,\zeta(z),
+  \qquad
+  \theta'=g(z)+\theta h(z),
+\]
+where \(g,\zeta\) are odd and \(f,h\) are even.  Then
+\[
+  Dz'=\zeta+\theta\partial f,
+  \qquad
+  D\theta'=h+\theta\partial g.
+\]
+The condition \(Dz'=\theta'D\theta'\) is equivalent to
+\begin{equation}
+  \zeta=gh,
+  \qquad
+  \partial f=(\partial g)g+h^2.
+  \label{eq:n1-finite-superconformal-components}
+\end{equation}
+Thus locally
+\begin{equation}
+  z'=f+\theta gh,
+  \qquad
+  \theta'=g+\theta h,
+  \qquad
+  h=\pm\sqrt{\partial f+g\,\partial g}.
+  \label{eq:n1-finite-superconformal-map}
+\end{equation}
+The square-root branch is already the local shadow of spin data: changing it
+on overlaps changes how odd fields are glued.  A full spin or super Riemann
+surface requires compatible choices of these local square roots together with
+the ordinary CFT sewing data; the distribution calculation alone does not
+construct that global object.
+
+\begin{lemma}[Infinitesimal superconformal vector fields]
+\label{lem:n1-infinitesimal-superconformal-vector-fields}
+Let
+\[
+  \mathbb V(z,\theta)=v(z)+\theta\eta(z)
+\]
+with \(v\) even and \(\eta\) odd.  The infinitesimal transformation
+\begin{equation}
+  \delta z
+  =
+  \mathbb V-\frac12\theta D\mathbb V,
+  \qquad
+  \delta\theta
+  =
+  \frac12D\mathbb V
+  \label{eq:n1-infinitesimal-superconformal-law}
+\end{equation}
+preserves the distribution.  The associated vector field
+\[
+  V_{\mathbb V}
+  =
+  \left(\mathbb V-\frac12\theta D\mathbb V\right)\partial_z
+  +\frac12(D\mathbb V)\partial_\theta
+\]
+obeys
+\begin{equation}
+  [V_{\mathbb V},D]
+  =
+  -\frac12(\partial_z\mathbb V)D,
+  \label{eq:n1-contact-vector-preserves-D}
+\end{equation}
+with the supercommutator and with the odd transformation parameters kept in
+the coefficients.  The even modes are
+\[
+  \ell_n
+  =
+  -z^{n+1}\partial_z
+  -\frac{n+1}{2}z^n\theta\partial_\theta,
+  \qquad n\in\mathbb Z,
+\]
+and the odd modes are obtained from the odd-parameter part
+\(\mathbb V\propto \theta z^{r+1/2}\), with
+\(r\in\mathbb Z+1/2\) locally in the NS coordinate and \(r\in\mathbb Z\) in a
+Ramond coordinate.
+\end{lemma}
+
+\begin{proof}
+Let \(B=\frac12D\mathbb V\) and \(A=\mathbb V-\theta B\), so
+\(V_{\mathbb V}=A\partial_z+B\partial_\theta\).  Since
+\(D(\theta B)=B-\theta DB\),
+\[
+  DA=D\mathbb V-B+\theta DB=B+\theta DB.
+\]
+For an even infinitesimal transformation the commutator with
+\(D=\theta\partial_z+\partial_\theta\) has \(\partial_z\)-coefficient
+\[
+  B-DA=-\theta DB
+\]
+and \(\partial_\theta\)-coefficient \(-DB\).  Since
+\[
+  DB=\frac12D^2\mathbb V=\frac12\partial_z\mathbb V,
+\]
+the commutator is \(-\frac12(\partial_z\mathbb V)D\).
+\end{proof}
+
+The super stress tensor packages the ordinary stress tensor and supercurrent:
+\begin{equation}
+  \mathbb T(z,\theta)=\frac12G(z)+\theta T(z).
+  \label{eq:n1-super-stress-tensor}
+\end{equation}
+For a local superconformal vector field \(\mathbb V\), the holomorphic Ward
+charge is
+\begin{equation}
+  \mathcal L_{\mathbb V}\cdot\mathcal O(0)
+  =
+  \oint_0\frac{\dd z\,\dd\theta}{2\pi\ii}\,
+  \mathbb V(z,\theta)\mathbb T(z,\theta)\mathcal O(0)
+  =
+  \oint_0\frac{\dd z}{2\pi\ii}
+  \left(v(z)T(z)+\frac12\eta(z)G(z)\right)\mathcal O(0).
+  \label{eq:n1-superconformal-ward-charge}
+\end{equation}
+Equation~\eqref{eq:n1-superconformal-ward-charge} is the bridge between the
+distribution-preserving vector fields and the mode algebra in the next
+section.
+
+\begin{definition}[Primary superfields and superdistances]
+\label{def:n1-primary-superfield-superdistance}
+A holomorphic \(\mathcal N=1\) primary superfield of weight \(h\) and parity
+\(|\Phi|\) is a superfield
+\[
+  \Phi(Z)=\phi(z)+\theta\chi(z)
+\]
+whose finite transformation law is
+\begin{equation}
+  \Phi'(Z')=(D\theta')^{-2h}\Phi(Z).
+  \label{eq:n1-primary-superfield-transformation}
+\end{equation}
+Its infinitesimal Ward action is
+\begin{equation}
+  -\mathcal L_{\mathbb V}\Phi
+  =
+  -\left(
+    \mathbb V\partial_z
+    +\frac12(D\mathbb V)D
+    +h\,\partial_z\mathbb V
+  \right)\Phi .
+  \label{eq:n1-primary-superfield-infinitesimal}
+\end{equation}
+The basic two-point superdistance is
+\begin{equation}
+  Z_{ij}=z_i-z_j-\theta_i\theta_j,
+  \qquad
+  Z_{ji}=-Z_{ij}.
+  \label{eq:n1-superdistance}
+\end{equation}
+\end{definition}
+
+The first component \(\phi\) has ordinary conformal weight \(h\), while
+\(\chi=G_{-1/2}\phi\) has weight \(h+1/2\) in the NS highest-weight module.
+The primary condition is therefore stronger than assigning two unrelated
+ordinary primaries to the same symbol.
+
+Global \(\operatorname{OSp}(1|2)\) transformations fix the two- and
+three-point functions of primary superfields up to constants.  With the sign
+convention of \eqref{eq:n1-superdistance},
+\begin{equation}
+  \left\langle \Phi_1(Z_1)\Phi_2(Z_2)\right\rangle
+  =
+  C_{12}\,\delta_{h_1,h_2}\,Z_{12}^{-2h_1}.
+  \label{eq:n1-superfield-two-point}
+\end{equation}
+For three points define the odd invariant
+\begin{equation}
+  \Theta_{123}
+  =
+  \frac{
+    \theta_1 Z_{23}+\theta_2 Z_{31}+\theta_3 Z_{12}
+    +\theta_1\theta_2\theta_3
+  }{
+    (Z_{12}Z_{23}Z_{31})^{1/2}
+  },
+  \label{eq:n1-three-point-odd-invariant}
+\end{equation}
+where changing the square-root branches changes the sign convention for
+\(\Theta_{123}\).  Then
+\begin{equation}
+  \left\langle
+    \Phi_1(Z_1)\Phi_2(Z_2)\Phi_3(Z_3)
+  \right\rangle
+  =
+  \frac{
+    C_{123}+\widetilde C_{123}\Theta_{123}
+  }{
+    Z_{12}^{h_1+h_2-h_3}
+    Z_{13}^{h_1+h_3-h_2}
+    Z_{23}^{h_2+h_3-h_1}
+  }.
+  \label{eq:n1-superfield-three-point}
+\end{equation}
+The parity bookkeeping is part of the datum: exchanging two superfields
+introduces the sign \((-1)^{|\Phi_i||\Phi_j|}\), the \(C_{123}\) structure is
+even only when the total field parity is even, and the
+\(\widetilde C_{123}\Theta_{123}\) structure is even only when the total
+field parity is odd.  In a full left-right spin CFT, products such as
+\(\Theta_{123}\bar\Theta_{123}\) give additional even component structures.
+At four points and beyond, the Ward identities leave functions of
+superconformal cross-ratios, for example the even ratio
+\[
+  x=\frac{Z_{12}Z_{34}}{Z_{13}Z_{24}},
+\]
+together with odd invariants.  This is where dynamics, not local
+supergeometry alone, enters the correlator problem.
+
 \section{\texorpdfstring{\(\mathcal N=1\)}{N=1} Superconformal Algebra}
 
 \begin{definition}[\(\mathcal N=1\) chiral superconformal algebra]
@@ -1514,39 +1842,257 @@ as a target theorem for the supersymmetric-QFT development: the present
 section supplies the exact coset side, including the \(R\)-charges and
 spectral-flow labels that any such theorem must match.
 
-\section{Small \texorpdfstring{\(\mathcal N=4\)}{N=4} Boundary}
+\section{Small \texorpdfstring{\(\mathcal N=4\)}{N=4} Algebra and BPS Multiplets}
+\label{sec:small-n4-algebra-bps-multiplets}
 
-For completeness, we record the boundary between what is used in this
-monograph and the full small \(\mathcal N=4\) representation theory.  The
-small \(\mathcal N=4\) algebra contains an affine \(\mathfrak{su}(2)\) current
-algebra and four supercurrents.  It includes \(\mathcal N=2\) subalgebras
-after choosing a Cartan \(U(1)\subset SU(2)_R\), but the representation
-theory involves the full \(SU(2)_R\) spin.
+The small \(\mathcal N=4\) algebra is the chiral algebra behind many
+\(\mathcal N=(4,4)\) two-dimensional CFTs, including compact sigma-model and
+symmetric-product examples.  The point needed in this volume is the full
+short-multiplet test: physical marginal operators in a \((4,4)\) theory are
+top components of short multiplets, so their construction must pass the
+\(SU(2)_R\) highest-weight and BPS-bound conditions.
 
-\begin{definition}[Small \(\mathcal N=4\) chiral algebra]
-\label{def:small-n4-chiral-algebra}
-A small \(\mathcal N=4\) chiral algebra at level \(k\in\mathbb Z_{\ge0}\)
-consists of:
-\begin{enumerate}
-\item a stress tensor \(T(z)\) of central charge \(c=6k\);
-\item affine \(\mathfrak{su}(2)\) currents \(J^a(z)\), \(a=1,2,3\), with
-level \(k\);
-\item four weight-\(3/2\) supercurrents transforming as two doublets under
-\(\mathfrak{su}(2)\);
-\item OPEs such that the anticommutator of opposite supercurrents closes on
-\(T\), \(J^a\), and the central term, while the current OPEs act on the
-supercurrents by the doublet representation.
-\end{enumerate}
+\begin{definition}[Small \(\mathcal N=4\) OPE convention]
+\label{def:small-n4-auxiliary-y-ope}
+Fix a holomorphic level \(k\) and set \(c=6k\).  Let \(T(z)\) be the stress
+tensor, let \(J^{IJ}(z)=J^{JI}(z)\), \(I,J=1,2\), be affine
+\(\mathfrak{sl}_2\) currents, and let \(G^I(z)\), \(\widetilde G^I(z)\) be
+two doublets of weight \(3/2\).  Introduce an auxiliary variable
+\[
+  y_I=(1,y),
+  \qquad
+  J(z,y)=J^{IJ}(z)y_Iy_J,
+  \qquad
+  G(z,y)=G^I(z)y_I,
+  \qquad
+  \widetilde G(z,y)=\widetilde G^I(z)y_I .
+\]
+With \(z_{12}=z_1-z_2\) and \(y_{12}=y_1-y_2\), the singular OPEs are
+\begin{align}
+  J(z_1,y_1)J(z_2,y_2)
+  &\sim
+  -\frac{k\,y_{12}^2}{z_{12}^2}
+  +
+  \frac{
+    2y_{12}\left(1+\frac12y_{12}\partial_{y_2}\right)J(z_2,y_2)
+  }{z_{12}},
+  \label{eq:small-n4-jj-aux-ope}\\
+  T(z_1)J(z_2,y_2)
+  &\sim
+  \frac{J(z_2,y_2)}{z_{12}^2}
+  +\frac{\partial_{z_2}J(z_2,y_2)}{z_{12}},
+  \label{eq:small-n4-tj-aux-ope}\\
+  T(z_1)G(z_2,y_2)
+  &\sim
+  \frac{(3/2)G(z_2,y_2)}{z_{12}^2}
+  +\frac{\partial_{z_2}G(z_2,y_2)}{z_{12}},
+  \label{eq:small-n4-tg-aux-ope}\\
+  T(z_1)\widetilde G(z_2,y_2)
+  &\sim
+  \frac{(3/2)\widetilde G(z_2,y_2)}{z_{12}^2}
+  +\frac{\partial_{z_2}\widetilde G(z_2,y_2)}{z_{12}},
+  \label{eq:small-n4-tgt-aux-ope}\\
+  J(z_1,y_1)G(z_2,y_2)
+  &\sim
+  \frac{
+    y_{12}(1+y_{12}\partial_{y_2})G(z_2,y_2)
+  }{z_{12}},
+  \label{eq:small-n4-jg-aux-ope}\\
+  J(z_1,y_1)\widetilde G(z_2,y_2)
+  &\sim
+  \frac{
+    y_{12}(1+y_{12}\partial_{y_2})\widetilde G(z_2,y_2)
+  }{z_{12}},
+  \label{eq:small-n4-jgt-aux-ope}\\
+  G(z_1,y_1)G(z_2,y_2)
+  &\sim 0,
+  \qquad
+  \widetilde G(z_1,y_1)\widetilde G(z_2,y_2)\sim0,
+  \label{eq:small-n4-same-supercurrent-aux-ope}\\
+  G(z_1,y_1)\widetilde G(z_2,y_2)
+  &\sim
+  -\frac{2k\,y_{12}}{z_{12}^3}
+  +
+  \frac{
+    2\left(1+\frac12y_{12}\partial_{y_2}\right)J(z_2,y_2)
+  }{z_{12}^2}
+  \notag\\
+  &\qquad
+  +
+  \frac{
+    \left(1+\frac12y_{12}\partial_{y_2}\right)
+    \partial_{z_2}J(z_2,y_2)
+    -y_{12}T(z_2)
+  }{z_{12}} .
+  \label{eq:small-n4-ggt-aux-ope}
+\end{align}
+Together with the Virasoro OPE for \(T\), these equations are the full small
+\(\mathcal N=4\) OPE tensor in this convention.
 \end{definition}
 
-Definition~\ref{def:small-n4-chiral-algebra} records only the part of the
-small-\(\mathcal N=4\) algebra used in this volume.  The present monograph
-uses two consequences: the central charge is tied to the affine level by
-\(c=6k\), and every Cartan choice supplies an \(\mathcal N=2\) subalgebra
-whose spectral-flow operation is inherited from the affine \(SU(2)_R\)
-structure.  A later chapter that needs small-\(\mathcal N=4\) multiplet
-classification must state the full OPE tensor and derive the corresponding
-unitarity bounds.
+Choosing the compact real form rewrites the same algebra with currents
+\(J^i\), \(i=1,2,3\), and Pauli matrices \(\sigma^i\).  The component
+current algebra is
+\begin{equation}
+  J^i(z)J^j(w)
+  \sim
+  \frac{k\delta^{ij}/2}{(z-w)^2}
+  +\frac{\ii\epsilon^{ijk}J^k(w)}{z-w},
+  \label{eq:small-n4-su2-current-ope}
+\end{equation}
+and the supercurrents \(G^{\alpha A}\) carry a doublet index
+\(\alpha=\pm\) of \(SU(2)_R\) and a doublet index \(A\) of the outer
+\(SU(2)\).  The symbols \(G^{\pm A}\) below denote the \(J^3_0\)-charge
+\(\pm1/2\) eigenspaces.  In modes,
+\begin{align}
+  [J^i_m,J^j_n]
+  &=
+  \ii\epsilon^{ijk}J^k_{m+n}
+  +\frac{k}{2}m\delta^{ij}\delta_{m+n,0},
+  \label{eq:small-n4-jj-mode}\\
+  [J^i_m,G^{\alpha A}_r]
+  &=
+  \frac12(\sigma^i)^\alpha{}_\beta G^{\beta A}_{m+r},
+  \label{eq:small-n4-jg-mode}\\
+  \{G^{\alpha A}_r,G^{\beta B}_s\}
+  &=
+  2\epsilon^{\alpha\beta}\epsilon^{AB}L_{r+s}
+  -2\epsilon^{AB}\sigma_i^{\alpha\beta}(r-s)J^i_{r+s}
+  \notag\\
+  &\qquad
+  +2k\epsilon^{\alpha\beta}\epsilon^{AB}
+  \left(r^2-\frac14\right)\delta_{r+s,0}.
+  \label{eq:small-n4-gg-mode}
+\end{align}
+Here
+\(\sigma_i^{\alpha\beta}=(\sigma_i)^\alpha{}_\gamma\epsilon^{\beta\gamma}\).
+The \(L_m\) brackets are the usual primary-field brackets of weights \(1\) and
+\(3/2\).
+
+\begin{lemma}[Small \(\mathcal N=4\) spectral flow]
+\label{lem:small-n4-spectral-flow}
+For \(\eta\in\frac12\mathbb Z\), the following assignment is an automorphism
+between the corresponding mode lattices:
+\begin{align}
+  J^3_n&\longmapsto J^3_n+k\eta\,\delta_{n,0},
+  &
+  J^\pm_n&\longmapsto J^\pm_{n\pm2\eta},
+  \label{eq:small-n4-spectral-flow-currents}\\
+  L_n&\longmapsto L_n+2\eta J^3_n+k\eta^2\delta_{n,0},
+  &
+  G^{\pm A}_r&\longmapsto G^{\pm A}_{r\pm\eta}.
+  \label{eq:small-n4-spectral-flow-stress-supercurrents}
+\end{align}
+Half-integer \(\eta\) exchanges NS and Ramond moding.  The Cartan
+\(\mathcal N=2\) subalgebra is obtained by \(J_{\mathcal N=2}=2J^3\); its
+spectral-flow formulas are exactly
+\eqref{eq:n2-spectral-flow-l}--\eqref{eq:n2-spectral-flow-g}.
+\end{lemma}
+
+\begin{proof}
+The affine \(SU(2)_k\) spectral flow shifts the Cartan zero mode and reindexes
+the charged currents as in
+\eqref{eq:small-n4-spectral-flow-currents}.  A supercurrent with \(J^3_0\)
+charge \(\pm1/2\) must therefore have its mode index shifted by
+\(\pm\eta\).  The stress tensor shift in
+\eqref{eq:small-n4-spectral-flow-stress-supercurrents} is the Sugawara
+completion required for the flowed currents to have weight one.  With
+\(J_{\mathcal N=2}=2J^3\) and \(c=6k\), the zero-mode shifts on a state are
+\[
+  h\mapsto h+2\eta m+k\eta^2,
+  \qquad
+  q=2m\mapsto q+2k\eta=q+\eta\frac c3,
+\]
+which is the \(\mathcal N=2\) formula
+\[
+  h\mapsto h+\eta q+\eta^2\frac c6.
+\]
+The brackets \eqref{eq:small-n4-jj-mode}--\eqref{eq:small-n4-gg-mode} are
+then preserved by the same coefficient identities checked for the
+\(\mathcal N=2\) subalgebra, together with the charged-current reindexing.
+\end{proof}
+
+\begin{proposition}[Unitary NS BPS bound]
+\label{prop:small-n4-unitary-bps-bound}
+Let \(v\) be a unitary NS highest-weight state for the small
+\(\mathcal N=4\) algebra, with conformal weight \(h\) and \(SU(2)_R\) spin
+\(j\).  Then
+\begin{equation}
+  h\ge j,
+  \qquad
+  0\le j\le \frac k2.
+  \label{eq:small-n4-ns-bps-bound}
+\end{equation}
+States saturating \(h=j\) are short or BPS.  Under spectral flow by
+\(\eta=-1/2\), every NS BPS highest-weight state maps to a Ramond ground state
+of weight
+\begin{equation}
+  h_{\mathrm R}=\frac{k}{4}=\frac c{24}.
+  \label{eq:small-n4-ramond-ground-weight}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Choose the Cartan \(J_{\mathcal N=2}=2J^3\).  For the highest-weight vector in
+the \(SU(2)_R\) multiplet, \(J^3_0v=jv\), so its \(\mathcal N=2\) charge is
+\(q=2j\).  The \(\mathcal N=2\) unitary bound
+\eqref{eq:n2-ns-unitarity-bound} gives
+\[
+  h\ge\frac{|q|}{2}=j .
+\]
+The affine \(SU(2)_k\) current algebra in a positive-energy unitary
+representation has integrable highest weights \(0\le j\le k/2\).  If
+\(h=j\), then the half-unit spectral-flow formula gives
+\[
+  h_{\mathrm R}=h-\frac12(2j)+\frac{k}{4}=\frac{k}{4}.
+\]
+Conversely, equality in the positive norm identities is precisely the
+shortening condition that removes the corresponding supercurrent descendants.
+\end{proof}
+
+\begin{example}[\(c=6\) short multiplet character]
+\label{ex:small-n4-c6-short-character}
+For \(c=6\), \(k=1\).  The allowed NS BPS spins are \(j=0\) and
+\(j=1/2\).  The nontrivial short primary has
+\[
+  h=j=\frac12,
+  \qquad
+  h_{\mathrm R}=\frac14
+\]
+after half-unit spectral flow.  If \(\chi_{2j}(a)\) denotes the
+\(\mathfrak{sl}_2\) character
+\[
+  \chi_{2j}(a)=a^{-2j}+a^{-2j+2}+\cdots+a^{2j},
+\]
+and \(x\) records the outer \(SU(2)\) doublet, the global short-multiplet
+character is
+\begin{equation}
+  \mathfrak S_j(q,a,x)
+  =
+  \frac{
+    q^j\chi_{2j}(a)
+    +q^{j+1/2}\chi_{2j-1}(a)\chi_1(x)
+    +q^{j+1}\chi_{2j-2}(a)
+  }{1-q},
+  \label{eq:small-n4-global-short-character}
+\end{equation}
+where \(\chi_n=0\) for \(n<0\).  Hence at \(k=1,j=1/2\),
+\begin{equation}
+  \mathfrak S_{1/2}(q,a,x)
+  =
+  \frac{
+    q^{1/2}(a+a^{-1})+q(x+x^{-1})
+  }{1-q}.
+  \label{eq:small-n4-c6-jhalf-character}
+\end{equation}
+The numerator displays the physical shortening used in
+Chapter~\ref{ch:volume-v-sigma-models-orbifolds-twist-fields}: a
+spin-\(1/2\) chiral primary has two top components after the two independent
+downward supercharges, not a freely chosen spin-field dressing.  Full affine
+characters require the usual null-state quotient and modular completion; the
+finite character above is the local multiplet test needed for marginal
+operator construction.
+\end{example}
 
 \begin{openproblem}[Intrinsic two-dimensional supersymmetric RG construction]
 \label{op:intrinsic-2d-supersymmetric-rg-construction}

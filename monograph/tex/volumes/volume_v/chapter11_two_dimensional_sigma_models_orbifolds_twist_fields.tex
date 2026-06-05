@@ -4440,7 +4440,12 @@ Section~\ref{sec:symmetric-product-orbifolds}.  For a transposition
 \end{equation}
 Assume that the transposition sector contains an
 \(S_N\)-covariant spin-field dressing \(S_{(ij)}^A\widetilde S_{(ij)}^B\)
-of weights \((1/8,1/8)\) and R-symmetry quantum numbers such that
+of weights \((1/8,1/8)\) whose left and right \(SU(2)_R\) quantum numbers
+make the dressed operator a highest-weight state of spin
+\(j=\bar j=1/2\).  Equivalently, the dressing must pass the small
+\(\mathcal N=4\) BPS test of
+Proposition~\ref{prop:small-n4-unitary-bps-bound}, not only the scalar
+weight count.  Thus
 \begin{equation}
   \chi_{(ij)}^{AB}
   =
@@ -4449,7 +4454,9 @@ of weights \((1/8,1/8)\) and R-symmetry quantum numbers such that
 \end{equation}
 is an \(\mathcal N=(4,4)\) chiral primary with
 \[
-  h_\chi=\bar h_\chi=\frac12 .
+  h_\chi=\bar h_\chi=\frac12,
+  \qquad
+  h_\chi=j,\quad \bar h_\chi=\bar j .
 \]
 Let \(G_{-1/2}^{a}\) and \(\widetilde G_{-1/2}^{\dot a}\) be left and right
 supercharge modes in a convention where each mode raises \(h\) or \(\bar h\)
@@ -4482,14 +4489,17 @@ strongly, when the surrounding local conformal-family datum is constructed.
 \end{construction}
 
 The construction separates three different facts that are often compressed
-together.  First, the equality \((h,\bar h)=(1,1)\) is a representation
-theory statement:
+together.  First, the equality \((h,\bar h)=(1,1)\) is a short-multiplet
+representation theory statement:
 \[
   \frac38+\frac18+\frac12=1
 \]
-on the left and similarly on the right.  Second, the \(S_N\)-invariant class
-sum is a finite-orbifold projection, not a geometric quotient operation on
-operators.  Third, exact marginality is an integrability statement in
+on the left and similarly on the right, but the middle summand is acceptable
+only when the dressed twist field is an \(SU(2)_R\) highest-weight state
+saturating the small-\(\mathcal N=4\) bound \(h=j=1/2\).  Second, the
+\(S_N\)-invariant class sum is a finite-orbifold projection, not a geometric
+quotient operation on operators.  Third, exact marginality is an
+integrability statement in
 renormalized conformal perturbation theory.  It requires absence of
 nonredundant dimension-two obstructions in the OPE of the top components and
 compatibility with the \(\mathcal N=(4,4)\) Ward identities.

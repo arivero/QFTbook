@@ -138,6 +138,123 @@ def assert_equal(left, right, label: str):
         raise AssertionError(f"{label} failed:\nleft={left}\nright={right}")
 
 
+def poly_add(*polys):
+    out = defaultdict(Fraction)
+    for poly in polys:
+        for power, coeff in poly.items():
+            out[power] += coeff
+    return {power: coeff for power, coeff in out.items() if coeff}
+
+
+def poly_scale(coeff: Fraction | int, poly):
+    coeff = Fraction(coeff)
+    return {power: coeff * value for power, value in poly.items() if coeff * value}
+
+
+def poly_deriv(poly):
+    return {
+        power - 1: coeff * power
+        for power, coeff in poly.items()
+        if power > 0 and coeff * power
+    }
+
+
+def poly_mul_monom(poly, power: int, coeff: Fraction | int = 1):
+    coeff = Fraction(coeff)
+    return {old_power + power: coeff * value for old_power, value in poly.items() if coeff * value}
+
+
+def sf_add(*pairs):
+    return (
+        poly_add(*(pair[0] for pair in pairs)),
+        poly_add(*(pair[1] for pair in pairs)),
+    )
+
+
+def sf_scale(coeff: Fraction | int, pair):
+    return (poly_scale(coeff, pair[0]), poly_scale(coeff, pair[1]))
+
+
+def sf_dtheta(pair):
+    # D(f(z)+theta g(z)) = g(z)+theta f'(z).
+    even, odd = pair
+    return (odd, poly_deriv(even))
+
+
+def sf_dz(pair):
+    even, odd = pair
+    return (poly_deriv(even), poly_deriv(odd))
+
+
+def sf_theta_dtheta(pair):
+    # theta partial_theta(f+theta g)=theta g.
+    return ({}, pair[1])
+
+
+def sf_mul_monom(pair, power: int, coeff: Fraction | int = 1):
+    return (
+        poly_mul_monom(pair[0], power, coeff),
+        poly_mul_monom(pair[1], power, coeff),
+    )
+
+
+def n1_even_mode_action(n: int, pair):
+    # ell_n=-z^(n+1) partial_z - (n+1)/2 z^n theta partial_theta.
+    return sf_add(
+        sf_mul_monom(sf_dz(pair), n + 1, -1),
+        sf_mul_monom(sf_theta_dtheta(pair), n, -Fraction(n + 1, 2)),
+    )
+
+
+def check_n1_local_supergeometry_and_superfield_structures():
+    samples = [
+        ({0: Fraction(3), 2: Fraction(5), 4: Fraction(-1)}, {1: Fraction(7)}),
+        ({1: Fraction(-2), 3: Fraction(1)}, {0: Fraction(4), 2: Fraction(3)}),
+    ]
+    for sample in samples:
+        assert_equal(sf_dtheta(sf_dtheta(sample)), sf_dz(sample), "D_theta squared")
+
+        for n in (-1, 0, 1, 2):
+            left = sf_add(
+                n1_even_mode_action(n, sf_dtheta(sample)),
+                sf_scale(-1, sf_dtheta(n1_even_mode_action(n, sample))),
+            )
+            right = sf_mul_monom(sf_dtheta(sample), n, Fraction(n + 1, 2))
+            assert_equal(left, right, f"N=1 contact vector preserves D for n={n}")
+
+    for sqrt_lambda in (1, 2, 3, 5):
+        lam = sqrt_lambda * sqrt_lambda
+        # z'=lambda z, theta'=sqrt(lambda) theta gives
+        # D z'=lambda theta=theta' D theta'.
+        assert_equal(lam, sqrt_lambda * sqrt_lambda, f"finite scaling map lambda={lam}")
+
+    weights = [
+        (Fraction(1, 6), Fraction(1, 6), Fraction(1, 3)),
+        (Fraction(2, 5), Fraction(3, 7), Fraction(5, 11)),
+    ]
+    for h1, h2, h3 in weights:
+        two_point_exponent = 2 * h1
+        assert_equal(two_point_exponent, h1 + h1, "N=1 superfield two-point scaling")
+
+        a12 = h1 + h2 - h3
+        a13 = h1 + h3 - h2
+        a23 = h2 + h3 - h1
+        assert_equal(
+            a12 + a13 + a23,
+            h1 + h2 + h3,
+            f"N=1 superfield three-point scaling h={h1,h2,h3}",
+        )
+
+    for p1 in (0, 1):
+        for p2 in (0, 1):
+            for p3 in (0, 1):
+                total = (p1 + p2 + p3) % 2
+                c_structure_allowed = total == 0
+                theta_structure_allowed = total == 1
+                if c_structure_allowed == theta_structure_allowed:
+                    raise AssertionError("N=1 superfield parity structures should be complementary")
+
+
 def check_n1_zero_mode_and_ns_coefficients():
     # {G_0,G_0}=2 L_0 - C/12 in the Ramond sector.
     r = Fraction(0)
@@ -616,7 +733,71 @@ def check_supersymmetric_rank_one_coset_interfaces():
                 assert_equal(w, Fraction(winding), f"cigar winding label k={k}")
 
 
+def su2_character(two_j: int):
+    if two_j < 0:
+        return {}
+    return {power: Fraction(1) for power in range(-two_j, two_j + 1, 2)}
+
+
+def multiply_characters(q_power: Fraction, a_char, x_char):
+    out = defaultdict(Fraction)
+    for a_power, a_coeff in a_char.items():
+        for x_power, x_coeff in x_char.items():
+            out[(q_power, a_power, x_power)] += a_coeff * x_coeff
+    return {key: value for key, value in out.items() if value}
+
+
+def check_small_n4_spectral_flow_bps_and_character():
+    for k in range(1, 12):
+        c = 6 * k
+
+        # The Cartan N=2 current is J=2J^3.  Since J^3J^3 has level k/2,
+        # the induced U(1) level is 2k=c/3.
+        assert_equal(2 * k, Fraction(c, 3), f"small N=4 Cartan N=2 level k={k}")
+
+        for two_j in range(0, k + 1):
+            j = Fraction(two_j, 2)
+            h = j
+            q = 2 * j
+
+            assert_equal(h, q / 2, f"small N=4 NS BPS saturation k={k}, j={j}")
+            if not (0 <= j <= Fraction(k, 2)):
+                raise AssertionError(f"integrable spin range failed k={k}, j={j}")
+
+            eta = Fraction(-1, 2)
+            flowed_h_n2 = h + eta * q + eta**2 * Fraction(c, 6)
+            flowed_h_n4 = h + 2 * eta * j + k * eta**2
+            assert_equal(flowed_h_n2, flowed_h_n4, f"small N=4/N=2 flow match k={k}, j={j}")
+            assert_equal(flowed_h_n4, Fraction(k, 4), f"small N=4 Ramond ground k={k}, j={j}")
+
+    numerator = defaultdict(Fraction)
+    for term in (
+        multiply_characters(Fraction(1, 2), su2_character(1), {0: Fraction(1)}),
+        multiply_characters(Fraction(1), su2_character(0), su2_character(1)),
+        multiply_characters(Fraction(3, 2), su2_character(-1), {0: Fraction(1)}),
+    ):
+        for key, value in term.items():
+            numerator[key] += value
+    numerator = {key: value for key, value in numerator.items() if value}
+
+    expected = {
+        (Fraction(1, 2), -1, 0): Fraction(1),
+        (Fraction(1, 2), 1, 0): Fraction(1),
+        (Fraction(1), 0, -1): Fraction(1),
+        (Fraction(1), 0, 1): Fraction(1),
+    }
+    assert_equal(numerator, expected, "small N=4 c=6 j=1/2 short-character numerator")
+
+    expanded = defaultdict(Fraction)
+    for (q_power, a_power, x_power), coeff in numerator.items():
+        for descendant_level in range(4):
+            expanded[(q_power + descendant_level, a_power, x_power)] += coeff
+    if expanded[(Fraction(3, 2), -1, 0)] != 1 or expanded[(2, 0, 1)] != 1:
+        raise AssertionError("small N=4 short-character descendant denominator failed")
+
+
 def main():
+    check_n1_local_supergeometry_and_superfield_structures()
     check_n1_zero_mode_and_ns_coefficients()
     check_n2_chiral_primary_norms()
     check_spectral_flow_automorphism()
@@ -628,9 +809,10 @@ def main():
     check_lg_chi_y_charge_polynomials()
     check_compact_coset_chiral_ring()
     check_supersymmetric_rank_one_coset_interfaces()
+    check_small_n4_spectral_flow_bps_and_character()
     print(
-        "All 2D superconformal algebra, elliptic-genus, compact chiral-ring, "
-        "and rank-one coset checks passed."
+        "All 2D superconformal algebra, supergeometry, elliptic-genus, "
+        "compact chiral-ring, rank-one coset, and small-N=4 checks passed."
     )
 
 

@@ -183,10 +183,11 @@
   contact-term scheme law.
 - Defines the local \(\mathcal N=(4,4)\), \(c_0=6\), symmetric-product
   two-cycle marginal tangent used in the D1--D5-style compact examples:
-  the bare transposition twist has weight \(3/8\), spin-field dressing gives
-  a \((1/2,1/2)\) chiral primary, supercharge descendants give a spinless
-  \((1,1)\) top component, and the \(S_N\)-invariant class sum uses the
-  transposition normalization \([N(N-1)/2]^{-1/2}\).
+  the bare transposition twist has weight \(3/8\), spin-field dressing must
+  give an \(SU(2)_R\) highest-weight state saturating the small-`N=4`
+  \(h=j=1/2\) BPS bound, supercharge descendants give a spinless \((1,1)\)
+  top component, and the \(S_N\)-invariant class sum uses the transposition
+  normalization \([N(N-1)/2]^{-1/2}\).
 - Separates seed exactly marginal sums from transposition blow-up
   directions and records the local protected tangent counts
   \(16+4=20\) for a toroidal seed and \(80+4=84\) for a K3 seed, with
@@ -384,8 +385,10 @@ coordinates define one full CFT in a common normalization.
     of cycle types of `S_N`.
 50. For a compact \(\mathcal N=(4,4)\) seed with \(c_0=6\), the length-two
     bare twist has \(h=\bar h=3/8\); adding a spin-field dressing of weight
-    \(1/8\) gives a \((1/2,1/2)\) chiral primary, and applying one left and
-    one right supercharge mode gives a spinless \((1,1)\) top component.
+    \(1/8\) gives a \((1/2,1/2)\) chiral primary only when the dressed twist
+    is a left and right \(SU(2)_R\) highest-weight state saturating the
+    small-`N=4` BPS bound \(h=j=1/2\), and applying one left and one right
+    supercharge mode gives a spinless \((1,1)\) top component.
 51. The local protected tangent count for the standard compact
     symmetric-product examples is \(d_{\rm seed}+4\): \(SO(4,4)\) seed
     directions give \(16+4=20=\dim SO(5,4)/(SO(5)SO(4))\), and the K3 seed
@@ -484,6 +487,11 @@ coordinates define one full CFT in a common normalization.
 
 ## Anti-Wrapper Audit
 
+- 2026-06-04 issue #814 small-`N=4` coordination pass: tightened the
+  symmetric-product two-cycle marginal tangent so the spin-field dressing is
+  required to produce a left and right \(SU(2)_R\) highest-weight state
+  saturating the Chapter 15 small-`N=4` BPS bound \(h=j=1/2\), rather than
+  functioning as a standalone weight-adjustment assumption.
 - 2026-06-03 issue #697 CFT block-architecture pass: added the opening
   proof-status map for the two-dimensional construction block.  The new text
   coordinates sigma-model/orbifold finite laboratories, VOA sewing,

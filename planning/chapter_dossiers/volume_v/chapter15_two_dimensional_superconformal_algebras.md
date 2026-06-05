@@ -18,6 +18,13 @@ superconformal-algebra infrastructure that such constructions must satisfy.
 - `J(z)`: holomorphic `U(1)_R` current.
 - `L_n,J_n,G_r,G_r^pm`: modes in the NS or R sector.
 - `c`: holomorphic central charge.
+- `Z=(z,theta)`: local holomorphic superspace coordinate.
+- `D_theta`: flat odd derivative `partial_theta+theta partial_z`.
+- `Q_theta`: flat supercharge `partial_theta-theta partial_z`.
+- `V`: local `N=1` contact supervector encoded by a superfunction
+  `mathbb V=v+theta eta`.
+- `Z_ij`: `N=1` superdistance `z_i-z_j-theta_i theta_j`.
+- `Theta_123`: odd three-point `OSp(1|2)` invariant.
 - `kappa`: `c/3`, the level of the `U(1)_R` current algebra.
 - `eta`: `N=2` spectral-flow parameter.
 - `h,q`: simultaneous `L_0,J_0` eigenvalues.
@@ -45,11 +52,34 @@ superconformal-algebra infrastructure that such constructions must satisfy.
   `Psi^{su}_{ell/2,-ell/2}`.
 - `R_ch`: protected NS chiral-primary fusion ring.
 - `n,w`: asymptotic cigar momentum and winding labels after spectral flow.
+- `J(z,y),G(z,y),Gtilde(z,y)`: auxiliary-variable packaging of the small
+  `N=4` `sl_2` current triplet and two supercurrent doublets.
+- `k`: small-`N=4` affine `SU(2)_R` level, with `c=6k` in that section.
+- `j`: `SU(2)_R` highest weight/spin for small-`N=4` representations.
+- `mathfrak S_j(q,a,x)`: global short-multiplet character used for the
+  local `c=6` example.
 
 ## Claim Ledger
 
 - Defines spin two-dimensional CFT sector data, including NS/R chiral state
   spaces and the monodromy-dependent mode expansion.
+- Defines flat `(1,1)` superspace, the real scalar multiplet, the
+  superspace action, its component action with auxiliary field, and the
+  supercharge variation as a local QFT laboratory rather than a string
+  background construction.
+- Defines local `N=1` superconformal maps intrinsically as automorphisms of
+  the rank-`0|1` distribution spanned by `D_theta`, derives the finite
+  component conditions `z'=f+theta g h`, `theta'=g+theta h`,
+  `h^2=partial f+g partial g`, and identifies the square-root branch as the
+  local spin-structure shadow.
+- Derives the infinitesimal `N=1` contact vector field, verifies that its
+  supercommutator with `D_theta` is proportional to `D_theta`, packages
+  `T` and `G` into the super stress tensor, and writes the superspace Ward
+  charge.
+- Defines primary superfields, their finite and infinitesimal
+  transformation laws, the superdistance `Z_ij`, the odd three-point
+  invariant `Theta_123`, and the two-/three-point superfield correlator
+  structures with Grassmann parity bookkeeping.
 - Defines the `N=1` chiral superconformal datum by the `T T`, `T G`, and
   `G G` singular OPEs.
 - Derives the `N=1` mode algebra from contour residues.
@@ -112,8 +142,19 @@ superconformal-algebra infrastructure that such constructions must satisfy.
   field-identification rule.
 - Separates the `N=2` cigar/Liouville mirror relation as a Volume VII GLSM
   and duality theorem target from the exact coset chiral data proved here.
-- Records a small `N=4` boundary and states the need for a full OPE tensor
-  before using small-`N=4` multiplet classification.
+- Defines the small `N=4` algebra in a complete auxiliary-`y` OPE
+  convention with stress tensor, `sl_2` currents, and two supercurrent
+  doublets, and records the equivalent compact `SU(2)_R` component mode
+  algebra.
+- Derives the small-`N=4` inner spectral-flow formulas and checks that the
+  Cartan `J_N2=2J^3` subalgebra reproduces the `N=2` spectral-flow
+  shifts.
+- Derives the unitary NS BPS bound `h>=j` from the embedded `N=2` bound and
+  affine `SU(2)_k` integrability, then shows half-unit flow sends
+  `h=j` states to Ramond ground states of weight `k/4=c/24`.
+- Works out the `c=6`, `k=1`, `j=1/2` global short-multiplet character and
+  explains how it supplies the local multiplet test for `N=(4,4)`
+  symmetric-product marginal operators in Chapter 11.
 - Adds an open problem requiring coordination with Volume VII for intrinsic
   `N=(2,2)` LG/GLSM RG construction.
 
@@ -175,6 +216,20 @@ superconformal-algebra infrastructure that such constructions must satisfy.
 22. The compact and noncompact endpoint field-identification formulas
     preserve the displayed `h,q` values, and the cigar momentum/winding
     labels satisfy `n=M-Mbar`, `w=(M+Mbar)/k` for flowed Cartan labels.
+23. The local `N=1` contact vector fields preserve the odd distribution:
+    `[V_mathbbV,D_theta]=-(partial mathbbV/2)D_theta`.
+24. The finite superconformal-map component equations imply
+    `D z'=theta' D theta'` and hence covariance of `D_theta`.
+25. The `N=1` superfield two- and three-point exponents have the correct
+    scaling weight, while the `Theta_123` structure carries the opposite
+    Grassmann parity.
+26. The small-`N=4` auxiliary-`y` OPE convention has central charge
+    `c=6k` and induces an `N=2` Cartan current of level `c/3`.
+27. Small-`N=4` half-unit spectral flow sends every NS BPS highest-weight
+    state with `h=j` to `h_R=k/4=c/24`.
+28. For `c=6`, the `j=1/2` short-character numerator is
+    `q^(1/2)(a+a^-1)+q(x+x^-1)`, with the denominator supplying ordinary
+    `L_-1` descendants.
 
 ## Figures
 
@@ -185,6 +240,8 @@ map without turning into a supersymmetric dynamics chapter.
 ## Checks
 
 - `calculation-checks/superconformal_algebra_checks.py` verifies the
+  `N=1` local superderivative algebra, contact-vector preservation of the
+  odd distribution, primary-superfield scaling and parity ledgers, the
   `N=1` Ramond zero-mode shift, `N=2` chiral-primary norm identities,
   spectral-flow automorphism, NS-to-R ground-state shift, extended `N=2`
   spectral-flow vertex weights, charges, Heisenberg OPE exponents,
@@ -195,22 +252,53 @@ map without turning into a supersymmetric dynamics chapter.
   multiplication, associativity, nilpotence, and Ramond charge matching, and
   the compact/noncompact supersymmetric rank-one coset central charges,
   chiral-primary identities, field-identification identities, spectral-flow
-  formulas, and cigar momentum/winding bookkeeping in exact rational
-  arithmetic.
+  formulas, cigar momentum/winding bookkeeping, the small-`N=4`
+  Cartan-`N=2` level relation, BPS spectral-flow shift to `c/24`, and the
+  `c=6`, `j=1/2` short-character numerator/denominator ledger in exact
+  rational arithmetic.
+
+## Reference Intake
+
+- Local stringbook source consulted:
+  `/Users/xiyin/ResearchIdeas/stringbook/texsource/string notes.tex`, lines
+  `22157--22461`, for the missing Appendix-J superconformal topics.  The
+  monograph repair rebuilds the relevant local QFT and chiral-algebra
+  mechanisms rather than importing the string-context exposition.
+- External small-`N=4` convention cross-check: Bonetti--Meneghelli,
+  `arXiv:2506.15678`, Appendix A.1.1, for the compact auxiliary-`y` OPE
+  packaging of the small `N=4` super Virasoro algebra.  The chapter uses the
+  convention as a normalization check and derives the Cartan `N=2`,
+  spectral-flow, BPS-bound, and `c=6` short-character consequences locally.
+- External representation-status cross-check: Eguchi--Taormina character and
+  unitary-representation records, used only to confirm the standard
+  distinction between massless/BPS and massive/non-BPS small-`N=4`
+  representations.  Full affine character formulas and modular completions
+  remain outside the local character example.
 
 ## Remaining Obligations
 
 - Coordinate with the Volume VII supersymmetric-QFT lane before developing
   `N=(2,2)` Landau--Ginzburg or GLSM dynamics, Witten phase structure,
   topological twists, cigar/Liouville mirror duality, or any IR-flow theorem.
-- Develop the full small-`N=4` OPE tensor and representation theory only if
-  a later QFT chapter needs it.
+- Full affine small-`N=4` character formulas, null-state resolutions, and
+  modular completions remain representation-theoretic boundary material
+  unless a later QFT argument uses them directly.  The chapter now contains
+  the local OPE tensor, BPS bound, spectral flow, and global short-character
+  test needed by the current symmetric-product construction.
 - Broader spin-SCFT sewing/modular statements beyond the elliptic-genus
   theorem boundary require the corresponding spin-surface and modular-functor
   hypotheses to be stated first.
 
 ## Audit Notes
 
+- 2026-06-04 issue #814 supergeometry/small-`N=4` pass: added the flat
+  `(1,1)` superspace QFT laboratory, local `N=1` superconformal map
+  derivation, primary-superfield two-/three-point structures with parity
+  bookkeeping, and the small-`N=4` auxiliary-`y` OPE tensor, component mode
+  algebra, inner spectral flow, BPS bound, and `c=6` short-character
+  example.  Chapter 11's symmetric-product marginal tangent now explicitly
+  uses the small-`N=4` `h=j=1/2` BPS test rather than treating spin-field
+  dressing as a standalone weight adjustment.
 - 2026-05-26 Appendix-J coordination pass: added a dedicated Volume V chapter
   for two-dimensional superconformal algebra, with explicit coordination
   boundaries to Volume VII and a calculation-check companion.

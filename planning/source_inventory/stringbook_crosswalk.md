@@ -168,7 +168,7 @@ or boundary-linked to a live focused issue.
 | `21100--21460`: free bosons and fermions on Riemann surfaces | Incorporated | Volumes III/V rebuild the free-field examples, lattice locality, cocycles, spin structures, and modular checks; string-worldsheet uses are not treated as proof sources. |
 | `21460--21764`: symmetries, defects, orbifolds, Ising CFT, and Narain lattices | Incorporated with boundary | Volume V develops the generalized-symmetry/defect/orbifold/Narain material with arithmetic checks.  Full categorical/sewing depth remains coordinated with #625/#697. |
 | `21764--22157`: Lagrangian descriptions of \(2D\) CFTs, NLSM Weyl anomaly, Buscher rules, gauged WZW/cosets, and Liouville | Incorporated with boundary | Volume V Chapter 11 includes the covariant NLSM renormalization, torsion/dilaton representative, Buscher/coset geometry checks, and Liouville boundary links.  Exact conformality and completeness inputs remain theorem boundaries under #625/#697. |
-| `22157--22461`: \(2D\) superconformal symmetry | Incorporated | Volume V Chapter 15 rebuilds the \(N=1\), \(N=2\), and extended spectral-flow algebra, with checks in `superconformal_algebra_checks.py`; no string-context proof is imported. |
+| `22157--22461`: \(2D\) superconformal symmetry | Incorporated with boundary | Volume V Chapter 15 now rebuilds the flat \((1,1)\) superspace laboratory, local \(N=1\) distribution-preserving superconformal maps, primary-superfield two-/three-point structures with parity bookkeeping, the \(N=1\), \(N=2\), extended spectral-flow, and small \(N=4\) OPE/BPS layers.  The finite algebra, supergeometry, and \(c=6\) short-character checks live in `superconformal_algebra_checks.py`.  Full spin-CFT sewing, global super-Riemann-surface existence, affine \(N=4\) character modular completion, and supersymmetric RG/model construction remain boundary material coordinated with #625/#697 and the Volume VII supersymmetric-QFT lane. |
 | `22461--22749`: \(2D\) RG flows, LG models, GLSMs, Calabi--Yau/LG phases, abelian duality, and cigar/Liouville mirror | Incorporated with boundary | Volume VII Chapter 9 develops LG/GLSM data, Coulomb one-loop determinants, vortex-normalized mirror terms, \(P^{N-1}\) protected observables, and Hori--Vafa scrutiny with `susy_2d_lg_glsm_checks.py`.  Full continuum mirror equivalence, vortex compactness, determinant nonvanishing, and operator-map/gluing are routed to #626 and kept out of the monograph as derived claims until proved. |
 | `22750--22972`: spinor conventions | Incorporated | Volume I/II/VII convention material and `gamma_trace_checks.py`/`spinor_convention_checks.py` cover the QFT-side spinor and gamma-matrix conventions. |
 | `22972--23299`: super-Poincare symmetry, \(4D\) superspace, nonrenormalization, \(4D\) \(N=2\), and \(3D\) supersymmetric gauge theories | Incorporated with boundary | Volume VII develops supersymmetry, superspace, protected quantities, and Seiberg--Witten-style examples; deeper HLS, localization, Wilson-loop, \(F\)-theorem, duality, and \(6D\) material remains routed to #626. |
@@ -421,22 +421,30 @@ Current absorption:
   boundaries, and the nonrational Liouville FZZT/ZZ bridge.  The finite
   Cardy, Ising, compact-boson, Chan--Paton, and Liouville-boundary algebra is
   checked by `calculation-checks/bcft_cardy_checks.py`.
-- Volume V, Chapter 15 now absorbs the chiral-algebra part of Appendix J:
-  spin-sector data, NS/R mode conventions, \(\mathcal N=1\) and
-  \(\mathcal N=2\) superconformal OPEs and mode algebras, the Ramond
-  zero-mode shift, \(\mathcal N=2\) spectral flow, chiral-primary bounds,
-  the extended \(\mathcal N=2\) spectral-flow operator layer with the
-  charge-lattice/locality hypothesis, \(U(1)_R\) bosonization, integer and
-  half-integer flow fields, and \(X^\pm/Y^\pm\) charge bookkeeping,
-  elliptic-genus Ramond trace hypotheses, right-moving ground-state
-  localization, spectral-flow/Jacobi covariance, protected
+- Volume V, Chapter 15 now absorbs the chiral-algebra and local superspace
+  part of Appendix J: spin-sector data, NS/R mode conventions, the flat
+  \((1,1)\) superspace multiplet and component action, local \(N=1\)
+  superconformal coordinate changes preserving the odd distribution,
+  infinitesimal contact vector fields, primary superfields, invariant
+  superdistances, two-/three-point superfield structures with parity
+  bookkeeping, \(\mathcal N=1\) and \(\mathcal N=2\) superconformal OPEs and
+  mode algebras, the Ramond zero-mode shift, \(\mathcal N=2\) spectral flow,
+  chiral-primary bounds, the extended \(\mathcal N=2\) spectral-flow
+  operator layer with the charge-lattice/locality hypothesis, \(U(1)_R\)
+  bosonization, integer and half-integer flow fields, and \(X^\pm/Y^\pm\)
+  charge bookkeeping, elliptic-genus Ramond trace hypotheses, right-moving
+  ground-state localization, spectral-flow/Jacobi covariance, protected
   Landau--Ginzburg central-charge and \(\chi_y\) charge-polynomial tests,
   and the supersymmetric rank-one coset interfaces for
   \(SU(2)_k/U(1)\) minimal models and the
   \(SL(2,\mathbb R)_k/U(1)\) cigar, including central charges, weights,
   \(R\)-charges, the compact \(A\)-series chiral ring, spectral-flowed
   labels, field identifications, compact \(\mathbb Z_k\) action, and cigar
-  momentum/winding bookkeeping.
+  momentum/winding bookkeeping.  The small \(N=4\) repair gives the complete
+  auxiliary-\(y\) OPE convention, component mode algebra, inner spectral
+  flow, unitary \(h\ge j\) BPS bound, and a \(c=6\) global short-character
+  example that coordinates with the symmetric-product marginal operators in
+  Chapter 11.
   It explicitly coordinates with the Volume VII supersymmetric-QFT lane for
   the actual LG/GLSM RG-flow, elliptic-genus realization theorem, and
   cigar/Liouville mirror-duality
