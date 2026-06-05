@@ -1511,6 +1511,100 @@ anti-instantons.  The two factors are complex conjugates only when the
 integration cycle and masses are chosen so that reflection positivity gives
 the corresponding conjugation property.
 
+\begin{controlledapproximation}[Finite-order Nekrasov--Pestun comparison bound]
+\label{ca:s4-nekrasov-pestun-normalization-bound}
+Fix a regulated \(S^4_r\) theory, a compact Cartan contour window
+\(\Gamma_A\subset\mathfrak t_{\mathbb C}\), an instanton cutoff \(K\), and a
+protected insertion \(O\).  Write the north and south pole equivariant
+coefficients as
+\[
+  Z_{\rm inst}^{N,\le K}(a)
+  =
+  \sum_{k=0}^{K}q^k Z_{k}^{G,N}(a),
+  \qquad
+  Z_{\rm inst}^{S,\le K}(a)
+  =
+  \sum_{\ell=0}^{K}\bar q^\ell Z_{\ell}^{G,S}(a),
+  \qquad q=\ee^{2\pi\ii\tau},
+\]
+where \(Z_0^{G,N}=Z_0^{G,S}=1\), and where each \(Z_k^{G,\bullet}\) is the
+Gieseker equivariant integral with the determinant-line orientation and matter
+Euler class already fixed.  The finite-order localized integrand is
+\begin{equation}
+  I_{K,O}^{\rm loc}(a)
+  =
+  Z_{\rm cl}(a)\,
+  Z_{1{\rm -loop}}^{S^4}(a)\,
+  \sum_{k,\ell=0}^{K}
+  q^k\bar q^\ell\,
+  Z_{k}^{G,N}(a)\,
+  Z_{\ell}^{G,S}(a)\,
+  O_{k,\ell}^{\rm loc}(a).
+  \label{eq:s4-nekrasov-pestun-finite-integrand}
+\end{equation}
+Here \(O_{k,\ell}^{\rm loc}\) is the restriction of the insertion to the
+Cartan variable and the two pole instanton sectors.  For the unit insertion it
+is \(1\); for a Wilson loop it contains the fixed-locus trace and any declared
+instanton-sector insertion dependence.
+
+Let \(I_{\Lambda,K,O}^{\rm qft}(a)\) be the finite-regulator integrand after
+the \(Q\)-exact deformation, normal Gaussian integration, and pole-local
+fixed-locus reduction, but before the Cartan integral over \(\Gamma_A\).  A
+Nekrasov--Pestun comparison datum on \((\Gamma_A,K,O)\) is a
+decomposition
+\[
+\begin{aligned}
+  I_{\Lambda,K,O}^{\rm qft}
+  -I_{K,O}^{\rm loc}
+  &=
+  \Delta_{\rm det}
+  +\Delta_{\rm pole,N}
+  +\Delta_{\rm pole,S}
+  +\Delta_{\rm glue}
+  +\Delta_{\rm Cartan}.
+\end{aligned}
+\]
+The terms respectively record: perturbative determinant and local-counterterm
+normalization; north-pole Gieseker selection and tangent-Euler comparison;
+south-pole anti-instanton selection and orientation comparison; gluing of the
+two pole factors to the same \(S^4\) integration cycle, including the
+conjugation claim when it is used; and residual Weyl, contour, and insertion
+restriction errors.  If the same regulator supplies absolute bounds
+\[
+  \int_{\Gamma_A}|\Delta_j(a)|\,|da|\le B_j,
+  \qquad
+  j\in\{{\rm det},{\rm pole,N},{\rm pole,S},{\rm glue},{\rm Cartan}\},
+\]
+and if \(\mathcal T_A\) and \(\mathcal T_K\) bound the omitted Cartan-window
+and instanton-order tails, then
+\begin{equation}
+  \left|
+  \mathcal Z_{\Lambda,O}
+  -
+  \int_{\Gamma_A}I_{K,O}^{\rm loc}(a)\,da
+  \right|
+  \le
+  B_{\rm det}+B_{\rm pole,N}+B_{\rm pole,S}
+  +B_{\rm glue}+B_{\rm Cartan}
+  +\mathcal T_A+\mathcal T_K .
+  \label{eq:s4-nekrasov-pestun-comparison-bound}
+\end{equation}
+
+This comparison datum is stronger than a fixed-point computation and weaker than a
+full continuum theorem.  The Young-diagram Euler-class calculation proves a
+coefficient \(Z_k^{G,N}\) or \(Z_\ell^{G,S}\) after the resolved moduli space
+has been selected; it does not prove \(\Delta_{\rm pole,\bullet}=0\).
+Similarly, the perturbative \(H\)-function determinant, the classical
+Gaussian, and the finite coupling/source convention must be transported in the
+same normalization as \(q\) and \(\bar q\).  Finally, replacing the south pole
+factor by the complex conjugate of the north pole factor is a reflection and
+cycle statement, not a formal property of the Gieseker fixed-point sum.  Thus
+\eqref{eq:pestun-s4-localization} is a field-theoretic equality only after the
+determinant, two pole-selection, gluing, Cartan, and tail entries in
+\eqref{eq:s4-nekrasov-pestun-comparison-bound} have been supplied or declared
+as part of a nonperturbative definition of the theory.
+\end{controlledapproximation}
+
 \paragraph{Protected-insertion proof-obligation ledger.}
 Equation~\eqref{eq:pestun-s4-localization} is the scalar partition-function
 case of a functional statement on protected insertions.  Fix a finite

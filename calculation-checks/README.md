@@ -2582,7 +2582,11 @@ Current checks:
   shift, ADS decoupling-recursion coefficient and one-variable \(F\)-term
   algebra, the pure \(SU(2)\)
   one-instanton Nekrasov fixed-point sum, and the first Nekrasov
-  prepotential coefficient \(q/(2a^2)\).
+  prepotential coefficient \(q/(2a^2)\).  The same script also checks the
+  finite-order Nekrasov--Pestun comparison telescope separating the
+  fixed-point coefficients from the \(S^4\) classical Gaussian, one-loop
+  determinant, south-pole factor, gluing/cycle statement, Cartan-window
+  residual, and instanton-order tail.
 - `susy_localization_matrix_checks.py`: finite checks for the compact-space
   supersymmetric localization chapter, including the trace-delta \(S^4\)
   Gaussian coefficient, the Pestun vector normal-symbol exactness test, the

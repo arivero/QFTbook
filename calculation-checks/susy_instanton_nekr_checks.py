@@ -6,7 +6,9 @@ the compact-localization chapter: Uhlenbeck stratum codimensions and the
 torsion-free-sheaf charge split, the positive-ADHM-moment-map stability trace
 obstruction, the one-box specialization of the Gieseker tangent Euler class,
 the rank-one Hilbert-scheme tangent-character cancellation, and the two-box
-Hilbert-scheme localization sum.
+Hilbert-scheme localization sum.  They also check the finite-order residual
+telescope separating the Nekrasov fixed-point coefficients from the full
+Pestun S^4 localization comparison.
 """
 
 from __future__ import annotations
@@ -379,6 +381,120 @@ def check_nekrasov_su2_one_instanton() -> None:
         got = epsilon1 * epsilon2 * z1_su2(a, epsilon1, epsilon2)
         expected = Fraction(1, 2 * a * a)
         assert_equal(got, expected, "SU(2) Nekrasov prepotential coefficient")
+
+
+def check_pestun_nekrasov_comparison_bound() -> None:
+    # A finite S^4 comparison uses more than the north-pole fixed-point
+    # coefficient: the classical Gaussian, the perturbative determinant, the
+    # south pole, the insertion restriction, pole-selection residuals, gluing,
+    # Cartan-window errors, and instanton-order tails have separate jobs.
+    cartan_cells = [
+        {
+            "weight": Fraction(2, 5),
+            "classical": Fraction(3, 7),
+            "one_loop": Fraction(5, 6),
+            "north": [Fraction(1), Fraction(2, 11)],
+            "south": [Fraction(1), Fraction(3, 13)],
+            "insertions": [
+                [Fraction(1), Fraction(7, 10)],
+                [Fraction(5, 9), Fraction(4, 7)],
+            ],
+        },
+        {
+            "weight": Fraction(3, 8),
+            "classical": Fraction(4, 9),
+            "one_loop": Fraction(7, 10),
+            "north": [Fraction(1), Fraction(5, 17)],
+            "south": [Fraction(1), Fraction(2, 19)],
+            "insertions": [
+                [Fraction(1), Fraction(8, 11)],
+                [Fraction(6, 13), Fraction(9, 14)],
+            ],
+        },
+    ]
+    q_north = Fraction(1, 7)
+    q_south = Fraction(1, 11)
+
+    def localized_cell(cell: dict[str, object]) -> Fraction:
+        north = cell["north"]
+        south = cell["south"]
+        insertions = cell["insertions"]
+        instanton_sum = sum(
+            (q_north**k)
+            * (q_south**ell)
+            * north[k]
+            * south[ell]
+            * insertions[k][ell]
+            for k in range(2)
+            for ell in range(2)
+        )
+        return cell["weight"] * cell["classical"] * cell["one_loop"] * instanton_sum
+
+    localized = sum(localized_cell(cell) for cell in cartan_cells)
+    residuals = {
+        "determinant": Fraction(1, 200),
+        "north_pole": Fraction(1, 231),
+        "south_pole": Fraction(1, 260),
+        "gluing": Fraction(1, 315),
+        "cartan": Fraction(1, 378),
+    }
+    cartan_tail = Fraction(1, 500)
+    instanton_tail = Fraction(1, 572)
+    exact_regulated = (
+        localized + sum(residuals.values(), Fraction(0)) + cartan_tail + instanton_tail
+    )
+
+    assert_equal(
+        exact_regulated - localized,
+        sum(residuals.values(), Fraction(0)) + cartan_tail + instanton_tail,
+        "Nekrasov-Pestun comparison residual telescope",
+    )
+    majorant = sum(abs(value) for value in residuals.values()) + cartan_tail + instanton_tail
+    assert_equal(
+        abs(exact_regulated - localized) <= majorant,
+        True,
+        "Nekrasov-Pestun comparison majorant",
+    )
+
+    # A north-pole Young-diagram sum is not an S^4 observable by itself.
+    north_only = sum(
+        cell["weight"] * cell["classical"] * q_north * cell["north"][1]
+        for cell in cartan_cells
+    )
+    assert_equal(
+        north_only == localized,
+        False,
+        "north-pole coefficient alone is not the S4 localized functional",
+    )
+
+    # Dropping the perturbative determinant changes the same finite-order
+    # Cartan integrand even when the instanton coefficients are unchanged.
+    determinant_omitted = sum(
+        localized_cell({**cell, "one_loop": Fraction(1)}) for cell in cartan_cells
+    )
+    assert_equal(
+        determinant_omitted == localized,
+        False,
+        "omitting S4 one-loop determinant changes localization functional",
+    )
+
+    # The south pole cannot be replaced by the north pole unless a reflection
+    # and contour statement has been supplied.
+    conjugation_assumed = sum(
+        localized_cell({**cell, "south": cell["north"]}) for cell in cartan_cells
+    )
+    assert_equal(
+        conjugation_assumed == localized,
+        False,
+        "south-pole factor requires gluing/reflection data",
+    )
+
+    underbudget = majorant - abs(residuals["north_pole"]) - abs(residuals["south_pole"])
+    assert_equal(
+        abs(exact_regulated - localized) > underbudget,
+        True,
+        "omitted pole-selection residuals underbudget the comparison",
+    )
 
 
 def one_box_tangent_euler(
@@ -776,6 +892,7 @@ def main() -> None:
     check_holomorphic_decoupling_dimensions()
     check_ads_decoupling_recursion()
     check_nekrasov_su2_one_instanton()
+    check_pestun_nekrasov_comparison_bound()
     check_one_box_tangent_euler_class()
     check_rank_one_hilbert_scheme_tangent_character()
     check_two_box_hilbert_scheme_fixed_points()

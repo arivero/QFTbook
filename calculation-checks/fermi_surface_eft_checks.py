@@ -18,6 +18,8 @@ Matrix2 = tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]
 
 
 def assert_close(actual: float, expected: float, *, tol: float = 1e-12) -> None:
+    if not math.isfinite(actual) or not math.isfinite(expected) or not math.isfinite(tol):
+        raise AssertionError(f"nonfinite comparison: {actual!r}, {expected!r}, tol={tol!r}")
     if abs(actual - expected) > tol:
         raise AssertionError(f"{actual!r} != {expected!r}")
 

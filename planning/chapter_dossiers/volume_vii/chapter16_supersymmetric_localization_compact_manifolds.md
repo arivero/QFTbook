@@ -73,6 +73,11 @@
   instanton-sector definition.
 - Open problem recording the missing continuum regulator theorem for
   Gieseker/Nekrasov selection in four-dimensional \(S^4\) localization.
+- Finite-order Nekrasov--Pestun comparison bound: the localized
+  \(S^4\) integrand with classical Gaussian, perturbative determinant,
+  north/south Gieseker coefficients, insertion restrictions, Cartan window,
+  and instanton cutoff is compared to the finite-regulator QFT integrand by
+  determinant, north-pole, south-pole, gluing, Cartan, and tail residuals.
 - Protected-insertion proof-obligation ledger for Pestun localization: on a
   finite \(Q\)-closed insertion test space, the regulated QFT functional and
   the localized Cartan/Nekrasov functional are connected by five named residuals
@@ -141,6 +146,9 @@
 | \(H(x)\) | Pestun one-loop determinant function |
 | \(G_B\) | Barnes \(G\)-function in the chapter normalization |
 | \(Z_{\rm inst}\) | Nekrasov equivariant instanton factor |
+| \(Z_k^{G,N},Z_\ell^{G,S}\) | north/south Gieseker fixed-charge equivariant instanton coefficients in the \(S^4\) comparison |
+| \(\Gamma_A,K,I_{K,O}^{\rm loc}\) | Cartan contour window, instanton-order cutoff, and finite-order localized \(S^4\) integrand for insertion \(O\) |
+| \(B_{\rm det},B_{\rm pole,N},B_{\rm pole,S},B_{\rm glue},B_{\rm Cartan},\mathcal T_A,\mathcal T_K\) | determinant, pole-selection, gluing, Cartan, Cartan-tail, and instanton-tail bounds in the Nekrasov--Pestun comparison datum |
 | \(\mathcal P_N\) | finite protected-insertion test space for the \(S^4\) localization comparison |
 | \(\mathcal Z_{\rm reg},\mathcal Z_{\rm loc}\) | regulated QFT and localized functionals on protected insertions |
 | \(E_{\rm Stokes},E_{\rm normal},E_{\rm res},E_{\rm inst},E_{\rm cont}\) | residual functionals in the protected-insertion localization telescope |
@@ -259,7 +267,13 @@
     equivariant limiting theorem for insertions.  The positive-ADHM
     moment-map proposition proves only the finite-dimensional stability
     component after the pole-local reduction has been obtained.
-20. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
+20. The finite-order Nekrasov--Pestun comparison bound prevents a
+    Young-diagram fixed-point calculation from being overread as the full
+    \(S^4\) localization theorem.  The \(S^4\) observable still needs the
+    classical Gaussian, one-loop determinant, south-pole anti-instanton
+    factor, reflection/gluing data, Cartan contour control, and instanton-tail
+    estimates in the same regulator convention.
+21. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
    Gaussian matrix model with the Weyl/Vandermonde factor.  The chapter now
    defines the circular-loop Gaussian coupling, derives the exact finite-\(N\)
    Laguerre-polynomial Wilson-loop formula from the Hermite kernel, inserts
@@ -327,7 +341,10 @@
   the charge-one
   minimal-nilpotent-cone resolution arithmetic, and the \(SU(2)\)
   one-instanton Nekrasov fixed-point sum used by the cross-referenced
-  Seiberg-Witten chapter.
+  Seiberg-Witten chapter, plus the finite-order Nekrasov--Pestun comparison
+  residual telescope and negative controls against north-pole-only,
+  determinant-omitted, south-pole-conjugation, and pole-residual-omission
+  shortcuts.
 
 ## Source Notes
 
@@ -405,3 +422,8 @@
   hypothesis, conditional smooth fixed-locus derivation, pole-concentration
   mechanism for instanton sectors, transversally elliptic normal-complex index
   ledger, and proof-obligation status of the protected-insertion telescope.
+- 2026-06-05: added the finite-order Nekrasov--Pestun comparison bound,
+  separating the north/south Gieseker coefficients from the \(S^4\) classical
+  Gaussian, perturbative determinant, gluing/reflection data, Cartan contour,
+  and instanton-tail residuals.  This is a QFT-observable comparison layer,
+  not another moduli-space fixed-point computation.
