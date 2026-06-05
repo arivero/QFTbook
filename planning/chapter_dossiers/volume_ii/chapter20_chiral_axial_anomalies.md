@@ -1754,3 +1754,15 @@
   the beta function has a nonzero perturbative coefficient; finite or
   conformal cases still require the imported all-order Adler--Bardeen input.
   The companion check now includes this finite-beta negative control.
+- 2026-06-05 issue #597 one-instanton amplitude-datum audit: added
+  `def:one-instanton-amplitude-datum` near the opening BPST discussion, so the
+  section now declares the full finite-regulator datum
+  `D_cl, D_coll, D_nz, D_zm, D_src, D_rho, D_phys` before entering the ADHM and
+  collective-coordinate details.  This front-loads the physics architecture:
+  BPST/ADHM data supply the classical and moduli gates only, while the
+  amplitude requires the nonzero-mode determinant, Berezin zero-mode
+  saturation, source/state matching, size-boundary control, and physical
+  projection in the same regulator.  The companion check
+  `check_one_instanton_amplitude_datum_gate_spine()` verifies the ordered gate
+  spine and rejects BPST/ADHM-only, omitted-gate, unsaturated-zero-mode, and
+  Euclidean-equals-physical shortcuts.

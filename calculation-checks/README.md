@@ -529,10 +529,11 @@ Current checks:
   boundary-exponent threshold \(b_0+\beta_{\mathcal X}>4\), the general
   charge-\(k\) framed ADHM quotient dimension \(4kN_c\), the
   coarea/orbit-volume scaling of the ADHM quotient density, the
-  finite-regulator nonzero-mode determinant bookkeeping, the finite
-  amplitude-pipeline stage product separating the classical weight,
-  collective density, nonzero-mode determinant, zero-mode/source coefficient,
-  source matching, endpoint residuals, and physical projection, the zero-mode
+  finite-regulator nonzero-mode determinant bookkeeping, the ordered
+  one-instanton amplitude datum/gate spine, and the finite amplitude-pipeline
+  stage product separating the classical weight, collective density,
+  nonzero-mode determinant, zero-mode/source coefficient, source matching,
+  endpoint residuals, and physical projection, the zero-mode
   saturation coefficient that turns an instanton chart into a physical
   correlator contribution, including the two- and three-flavor 't Hooft
   determinants, the two-flavor scalar/pseudoscalar channel decomposition,

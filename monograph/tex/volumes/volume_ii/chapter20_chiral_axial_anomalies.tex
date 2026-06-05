@@ -3702,6 +3702,42 @@ Lemma~\ref{lem:bpst-one-instanton-data} before the limit
   \label{fig:bpst-instanton-data}
 \end{figure}
 
+\begin{definition}[One-instanton amplitude datum]
+\label{def:one-instanton-amplitude-datum}
+Fix a finite regulator, a gauge-fixing slice, and a source or observable
+family.  A one-instanton contribution to a QFT observable is specified by the
+ordered datum
+\begin{equation}
+  \mathfrak I_{1,\Lambda}(\mathcal O)
+  =
+  (D_{\rm cl},D_{\rm coll},D_{\rm nz},D_{\rm zm},
+   D_{\rm src},D_\rho,D_{\rm phys}) .
+  \label{eq:one-instanton-amplitude-datum}
+\end{equation}
+Here \(D_{\rm cl}\) is the topological sector, classical saddle, theta phase,
+and coupling normalization; \(D_{\rm coll}\) is the collective-coordinate chart
+and Gram-density/Jacobian data; \(D_{\rm nz}\) is the zero-mode-deleted
+bosonic, ghost, and fermionic nonzero-mode determinant with its counterterm and
+determinant-line convention; \(D_{\rm zm}\) is the Berezin coefficient by which
+masses, sources, or insertions saturate the fermion zero modes;
+\(D_{\rm src}\) is the finite source typing, color-singlet, OPE, LSZ, or
+hadronic matching data; \(D_\rho\) is the size-window and Uhlenbeck-boundary
+control; and \(D_{\rm phys}\) is the sector selection, analytic continuation,
+infrared, unitarity-cut, thermal, or transport projection needed for the
+observable under discussion.
+\end{definition}
+
+The BPST connection in Lemma~\ref{lem:bpst-one-instanton-data} supplies
+\(D_{\rm cl}\), not the amplitude.  Its moduli and ADHM refinement supply
+\(D_{\rm coll}\), not the determinant, not the zero-mode source coefficient,
+and not the physical observable map.  The physics calculation starts when the
+fluctuation determinant, the zero-mode Berezin saturation, the source or
+state matching, and the size-boundary estimates are assembled in the same
+finite regulator before the result is continued or projected.  The subsections
+below are organized around the datum
+\eqref{eq:one-instanton-amplitude-datum}; the moduli-space analysis is one
+input to that datum.
+
 The bosonic zero modes are tangent vectors to the moduli of solutions modulo
 gauge transformations.  For \(SU(2)\), \(k=1\), the smooth moduli are
 \[
@@ -4808,8 +4844,9 @@ counterterm scheme define \(\mathcal W_{\Lambda}^{\rm nz}\), and whether the
 resulting \(a,\rho,U\) integral is finite at its boundary faces.
 
 \paragraph{From collective coordinates to an amplitude.}
-For later use, it is helpful to compress the \(Q=1\) calculation into the
-ordered finite-regulator pipeline
+Definition~\ref{def:one-instanton-amplitude-datum} is implemented, for later
+use, by compressing the \(Q=1\) calculation into the ordered finite-regulator
+pipeline
 \begin{equation}
   K_{\Lambda,\mathcal J}^{E}(z)
   =

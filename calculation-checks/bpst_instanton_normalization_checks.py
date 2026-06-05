@@ -25,10 +25,11 @@ relations
     correct orbit-volume and homogeneous-cone scaling
     the finite-regulator nonzero-mode determinant datum has the correct
     boson/ghost/fermion determinant powers and counterterm shifts
-    the finite-regulator instanton amplitude pipeline keeps the classical
-    weight, collective density, nonzero-mode determinant, zero-mode/source
-    coefficient, source matching, endpoint, and physical projection as
-    distinct load-bearing stages
+    the ordered one-instanton amplitude datum keeps the classical weight,
+    collective density, nonzero-mode determinant, zero-mode/source coefficient,
+    source matching, endpoint control, and physical projection as distinct
+    load-bearing stages, and the finite-regulator amplitude pipeline realizes
+    the same ordering
     the finite fermion block determinant separates the nonzero-mode spectral
     determinant from the zero-mode Schur/Berezin determinant
     finite source-frame changes multiply the zero-mode determinant by
@@ -229,8 +230,9 @@ hard-only and screening-only shell substitutions in the mixed size-majorant
 problem, and separation of operator RG flow from the Wilsonian size-boundary
 flux, perturbative sector leakage mistaken for an exact selection rule,
 omitted neighboring-sector leakage, and signed adjacent-sector cancellation
-mistaken for sector isolation, the collective-coordinate measure alone
-mistaken for the observable coefficient, the Euclidean source coefficient
+mistaken for sector isolation, the BPST/ADHM classical-and-moduli prefix
+mistaken for the instanton amplitude datum, the collective-coordinate measure
+alone mistaken for the observable coefficient, the Euclidean source coefficient
 mistaken for the physical observable after bridge residuals, omitted
 endpoint/sector budgets, and signed physical residual cancellation.
 Scope boundary: a pass checks finite algebra and normalization interfaces; it
@@ -853,6 +855,98 @@ def check_finite_regulator_determinant_datum() -> None:
     c1 = Fraction(2, 5)
     new_power = old_power - c1
     assert_equal("counterterm logarithmic power shift", new_power, Fraction(49, 15))
+
+
+def check_one_instanton_amplitude_datum_gate_spine() -> None:
+    gates = (
+        "classical_saddle",
+        "collective_density",
+        "nonzero_mode_determinant",
+        "zero_mode_saturation",
+        "source_matching",
+        "size_boundary",
+        "physical_projection",
+    )
+    gate_index = {gate: index for index, gate in enumerate(gates)}
+    required_edges = (
+        ("classical_saddle", "collective_density"),
+        ("collective_density", "nonzero_mode_determinant"),
+        ("nonzero_mode_determinant", "zero_mode_saturation"),
+        ("zero_mode_saturation", "source_matching"),
+        ("source_matching", "size_boundary"),
+        ("size_boundary", "physical_projection"),
+    )
+    for before, after in required_edges:
+        assert_equal(
+            f"one-instanton datum order {before} before {after}",
+            gate_index[before] < gate_index[after],
+            True,
+        )
+
+    gate_weights = {
+        "classical_saddle": Fraction(2, 5),
+        "collective_density": Fraction(3, 7),
+        "nonzero_mode_determinant": Fraction(5, 11),
+        "zero_mode_saturation": Fraction(7, 13),
+        "source_matching": Fraction(11, 17),
+        "size_boundary": Fraction(13, 19),
+        "physical_projection": Fraction(17, 23),
+    }
+    full_datum = product_fraction([gate_weights[gate] for gate in gates])
+
+    prefixes: dict[str, Fraction] = {}
+    running_prefix = Fraction(1)
+    for gate in gates:
+        running_prefix *= gate_weights[gate]
+        prefixes[gate] = running_prefix
+
+    assert_equal(
+        "BPST/ADHM moduli prefix is not the amplitude datum",
+        prefixes["collective_density"] == full_datum,
+        False,
+    )
+    for gate in gates[2:]:
+        omitted_gate_product = product_fraction(
+            [gate_weights[other] for other in gates if other != gate]
+        )
+        assert_equal(
+            f"omitting {gate} changes the one-instanton amplitude datum",
+            omitted_gate_product == full_datum,
+            False,
+        )
+
+    unsaturated_weights = dict(gate_weights)
+    unsaturated_weights["zero_mode_saturation"] = Fraction(0)
+    unsaturated_euclidean_source = product_fraction(
+        [unsaturated_weights[gate] for gate in gates[:-1]]
+    )
+    assert_equal(
+        "unsaturated zero-mode datum gives zero Euclidean source coefficient",
+        unsaturated_euclidean_source,
+        Fraction(0),
+    )
+
+    residuals_by_gate = {
+        "nonzero_mode_determinant": Fraction(1, 101),
+        "zero_mode_saturation": Fraction(1, 103),
+        "source_matching": Fraction(1, 107),
+        "size_boundary": Fraction(1, 109),
+        "physical_projection": Fraction(1, 113),
+    }
+    assert_equal(
+        "post-moduli gates carry independent residual controls",
+        set(residuals_by_gate),
+        set(gates[2:]),
+    )
+    controlled_physical = full_datum + sum(residuals_by_gate.values())
+    euclidean_source_shortcut = product_fraction(
+        [gate_weights[gate] for gate in gates[:-1]]
+    )
+    assert_equal(
+        "Euclidean source coefficient is not the physical amplitude datum",
+        euclidean_source_shortcut == controlled_physical,
+        False,
+    )
 
 
 def check_instanton_amplitude_pipeline_stage_bookkeeping() -> None:
@@ -5021,6 +5115,7 @@ def main() -> None:
     check_general_adhm_quotient_dimension()
     check_adhm_quotient_density_coarea_scaling()
     check_finite_regulator_determinant_datum()
+    check_one_instanton_amplitude_datum_gate_spine()
     check_instanton_amplitude_pipeline_stage_bookkeeping()
     check_physical_instanton_correlator_zero_mode_saturation()
     check_two_flavor_thooft_channel_decomposition()
