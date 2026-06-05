@@ -140,6 +140,10 @@
     {
       "path": "susy_2d_lg_glsm_checks.py",
       "risk_class": "GLSM mirror/vortex amplitudes"
+    },
+    {
+      "path": "nielsen_identity_effective_potential_checks.py",
+      "risk_class": "gauge-effective-action Nielsen identity"
     }
   ]
 }

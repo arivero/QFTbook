@@ -218,8 +218,9 @@
    metastability claim must additionally route through the false-vacuum
    state/contour construction: constrained branch versus exact convex 1PI
    action, negative-mode cycle, collective-coordinate determinant, dilute
-   exponentiation, real-time survival interpretation, gauge/Nielsen control,
-   and EFT field-range remainder.
+   exponentiation, real-time survival interpretation, gauge/Nielsen control
+   via `sec:nielsen-identity-gauge-effective-potential`, and EFT field-range
+   remainder.
 14. The Standard Model is used through a hybrid definition, not as an
    assumed complete constructive four-dimensional continuum theorem; the
    electroweak part is all-orders renormalized perturbation theory, not a
@@ -333,6 +334,11 @@
   1PI action from a constrained false branch, lists the gauge/Nielsen and EFT
   field-range obligations, and treats finite-temperature or gravitational
   vacuum decay as separate state-and-contour problems.
+- 2026-06-05 issue #773 cross-reference pass: the metastability proof-status
+  ledger now points its gauge/Nielsen obligation to
+  `sec:nielsen-identity-gauge-effective-potential`, where the BV gauge-flow
+  identity, derivative-expansion caveat, and Abelian-Higgs determinant check
+  are developed.
 - 2026-06-05 issue #798 cross-reference pass: the hybrid-definition paragraph
   now points the QCD lattice-continuum comparison to the separated pure
   Yang--Mills central conjecture instead of the old continuum-limit label.

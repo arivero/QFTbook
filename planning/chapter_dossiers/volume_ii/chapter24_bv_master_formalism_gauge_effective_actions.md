@@ -27,6 +27,10 @@
     and Schwarz's geometric BV quantization for the finite-dimensional
     theorem boundary behind the canonical half-density operator, restriction
     to Lagrangian submanifolds, and BV Stokes theorem.
+  - Nielsen 1975, Fukuda--Kugo 1976, Aitchison--Fraser 1984, and
+    Metaxas--Weinberg 1996 for the theorem-boundary lineage of the
+    gauge-parameter identity for 1PI actions, effective potentials, and
+    false-vacuum derivative expansions.
 - These references are used as boundary checks.  The chapter itself gives the
   definitions, master-equation nilpotency proof, gauge-fixing construction,
   and finite-dimensional BV pushforward argument.
@@ -99,6 +103,11 @@
 | \(\operatorname{Obs}_\Lambda(U)\) | regulated BV cochain complex of quantum observables supported in \(U\) |
 | \(Q_\Lambda\) | quantum BV observable differential \((S_\Lambda,\cdot)-\ii\hbar\Delta_\Lambda\) |
 | \(W_{\Lambda\Lambda'}\) | homotopy-RG cochain map between observable complexes at two cutoffs |
+| \(\vartheta\) | odd BRST partner of the gauge parameter, \(s\xi=\vartheta\) |
+| \(\Xi_\xi\) | renormalized odd generator of the 1PI BV gauge-parameter flow |
+| \(C_\xi^A[\varphi]\) | field-space Nielsen vector field induced by the linear-antifield part of \(\Xi_\xi\) |
+| \(V(\phi;\xi)\) | gauge-fixed local branch effective potential in a specified gauge chart |
+| \(Z(\phi;\xi)\) | two-derivative coefficient in the same local 1PI derivative expansion |
 
 ## Claims Established
 
@@ -150,6 +159,33 @@
 - The 1PI effective action satisfies \(\frac12(\Gamma,\Gamma)=0\) when the
   regularized half-density integrand and action obey the quantum master
   equation.
+- Under the extended-BRST hypotheses \(s\xi=\vartheta\), restored extended
+  Slavnov--Taylor identity, vanishing local anomaly class, BV Stokes boundary
+  condition, and local Legendre invertibility, the renormalized 1PI action
+  satisfies the Nielsen canonical-flow equation
+  \(\partial_\xi\Gamma+(\Gamma,\Xi_\xi)=0\).
+- Setting antifields to zero gives the field-space identity
+  \(\partial_\xi\Gamma+\int C_\xi^A\delta\Gamma/\delta\varphi^A=0\), and for a
+  single constant background
+  \(\partial_\xi V+C_\xi V'=0\).
+- The chapter now separates off-shell gauge dependence from gauge-independent
+  stationary values: \(V(\phi;\xi)\), \(\Gamma[\varphi;\xi]\), and the field
+  coordinate of a minimum are gauge dependent, while the exact stationary
+  value is independent under the Nielsen hypotheses.
+- Loop-order consistency is explicit: \(\partial_\xi V_1+C_{\xi,1}V_0'=0\)
+  and \(\partial_\xi V_2+C_{\xi,1}V_1'+C_{\xi,2}V_0'=0\), so mixing a
+  one-loop potential with an inconsistently truncated extremum leaves spurious
+  higher-order gauge dependence.
+- The derivative expansion obeys its own transport identity
+  \(\partial_\xi Z+C_\xi Z'+2ZC_\xi'=\cdots\), making potential-only bounce
+  arguments insufficient for gauge independence of a decay exponent.
+- The Abelian-Higgs one-loop branch check records
+  \(m_A^2=e^2\phi^2\), \(m_\chi^2=V_0'/\phi+\xi m_A^2\),
+  \(m_c^2=\xi m_A^2\), and
+  \(V_1=F_s(m_h^2)+3F_A(m_A^2)+F_s(m_\chi^2)-F_s(m_c^2)\), so the
+  Goldstone/longitudinal/complex-ghost sector verifies the one-loop Nielsen
+  identity with
+  \(C_{\xi,1}=-e^2\phi[F_s'(m_\chi^2)-F_s'(m_c^2)]/(m_\chi^2-m_c^2)\).
 - The chapter now points back to
   `thm:all-order-slavnov-taylor-restoration`, identifying it as the
   gauge-fixed Yang--Mills form of the perturbative BV master-equation
@@ -258,3 +294,11 @@
   cubic anomaly cancellation plus AB nonrenormalization supplies the local
   anomaly hypothesis used by all-order Slavnov--Taylor restoration, without
   asserting a nonperturbative chiral gauge measure.
+- 2026-06-05 issue #773 pass: added
+  `sec:nielsen-identity-gauge-effective-potential`, deriving the
+  Nielsen--Fukuda--Kugo identity from extended BV/Slavnov gauge flow, recording
+  hypotheses and anomaly/boundary qualifications, separating off-shell
+  gauge-chart data from stationary/on-shell data, treating finite-order and
+  derivative-expansion caveats, and giving an Abelian-Higgs one-loop
+  Goldstone/vector/ghost determinant check.  The companion ledger is
+  `calculation-checks/nielsen_identity_effective_potential_checks.py`.

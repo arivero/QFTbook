@@ -240,6 +240,12 @@ The chapter must define the following objects before using them:
     RG trajectory.  The sign and physical interpretation depend on the beta
     function; pure scalar \(\phi^4\) has a positive one-loop beta function,
     unlike asymptotically free gauge theory.
+22. Gauge-theory perturbative effective potentials require the Nielsen
+    identity of `sec:nielsen-identity-gauge-effective-potential`: off-shell
+    potentials and stationary field coordinates are gauge-chart data, while
+    exact stationary values are gauge independent only under the stated
+    BRST/BV hypotheses.  Derivative-expanded saddles require the full
+    functional identity, not only the zero-derivative potential.
 
 ## Figure Requirements
 
@@ -331,3 +337,7 @@ The chapter must define the following objects before using them:
   potential with the \(-25/6\) constant, solves for the formal generated
   scale, states the pure-scalar perturbative-control limitation, and gives the
   general RG definition of dimensional transmutation.
+- 2026-06-05 issue #773 cross-reference pass: added the gauge-theory caveat
+  after the Coleman--Weinberg branch discussion, pointing to the BV Nielsen
+  identity section and recording that gauge-fixed effective potentials are
+  chart coordinates rather than off-shell observables.
