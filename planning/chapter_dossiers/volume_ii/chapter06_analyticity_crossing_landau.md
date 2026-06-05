@@ -21,6 +21,11 @@
   satisfy Dyson regularity and support-pruning.
 - Records the partial-wave unitarity boundary condition on the physical
   \(s\)-channel cut before using analytic continuation away from it.
+- Adds a generalized-unitarity and one-loop-reduction bridge after Cutkosky:
+  physical cuts versus algebraic generalized cuts, one-loop scalar-integral
+  reconstruction, a complete massless \(\lambda\phi^4\) four-point cut
+  reconstruction with negative controls, and the bubble IBP/differential
+  equation master calculation.
 - Adds Steinmann sequential-discontinuity constraints as a scoped causal
   boundary-value statement, with channel-overlap definitions, sheet/order
   conventions, an overlapping versus compatible finite example, and explicit
@@ -44,6 +49,11 @@
 - Veltman's largest-time equation and the 't Hooft--Veltman Diagrammar
   treatment are used as theorem-boundary controls for graph-level Cutkosky
   line replacement.
+- Bern--Dixon--Dunbar--Kosower, Bern--Dixon--Kosower, Britto--Cachazo--Feng,
+  Ossola--Papadopoulos--Pittau, Forde, Passarino--Veltman,
+  Chetyrkin--Tkachov, Tkachov, Kotikov, and Gehrmann--Remiddi form the source
+  lineage for the generalized-unitarity, integrand-reduction, IBP, and
+  differential-equation bridge.
 - Steinmann's original Wightman/retarded-commutator papers and the
   Stapp/Cahill--Stapp scattering-amplitude refinements are used as source
   traces for the quoted conditional Steinmann relation; the chapter does not
@@ -85,6 +95,14 @@
 | \(\Delta_m^\pm(x)\) | positive/negative-frequency on-shell Wightman distributions for mass \(m\) |
 | \(G_\sigma\) | circled graph associated to a vertex circling \(\sigma\) in the largest-time identity |
 | \(C\) | set of internal lines crossed by a perturbative physical cut |
+| \(\operatorname{Cut}_C\mathcal I\) | algebraic generalized cut of a regulated loop integrand on the selected on-shell denominators |
+| \(D_i(\ell)\) | one-loop denominator \((\ell+K_i)^2+m_i^2-\ii0\) |
+| \(I_r\) | scalar one-loop integral with \(r\) propagators in the declared regulator |
+| \(R_n\) | rational term not fixed by a strictly four-dimensional cut analysis |
+| \(\mathcal P_n\) | local subtraction polynomial or scheme-dependent counterterm |
+| \(B(Q^2)\), \(\widehat B(x)\) | Euclidean bubble master and its four-dimensional cut-normalized physical continuation |
+| \(I_{a,b}(Q^2)\) | Euclidean one-loop bubble integral family used for IBP reduction |
+| \(\mu_\perp^2\) | squared loop momentum in the \(-2\epsilon\)-dimensional complement, invisible on four-dimensional cuts |
 | \(s_I\) | all-incoming channel invariant \(-(\sum_{i\in I}p_i)^2\), with channel class \([I]=\{I,I^c\}\) |
 | overlapping channels | channel classes \([I]\), \([J]\) for which \(I\cap J\), \(I\setminus J\), \(J\setminus I\), and \((I\cup J)^c\) are all nonempty |
 | compatible channels | channel classes with complementary representatives that are disjoint or nested |
@@ -113,6 +131,22 @@
   on-shell Wightman distributions, and the \(s\)-channel physical cut is the
   subsum whose mixed lines separate the external labels into the chosen
   subprocesses.
+- Generalized cuts in the new section are algebraic or contour probes of a
+  regulated one-loop integrand.  They coincide with physical Cutkosky cuts
+  only after the relevant real positive-energy branch, state sum, and sheet
+  have been imposed.
+- The one-loop scalar-basis discussion assumes dimensional regularization,
+  declared scalar-integral normalizations, and subtraction of higher-topology
+  contributions before lower-topology coefficients are read from triple and
+  double cuts.
+- The massless \(\lambda\phi^4\) example uses the interaction
+  \(-\lambda\phi^4/4!\), identical unordered intermediate scalar states, and
+  the cut-normalized bubble \(\widehat B=B/(16\pi^2)\), for which
+  \(\operatorname{Disc}\widehat B=\ii/(8\pi)+O(\epsilon)\).
+- The IBP identity assumes dimensional regularization, analytic continuation
+  in \(\epsilon\), and the standard vanishing of scaleless tadpoles.  The
+  bubble differential equation is solved with Euclidean boundary data at
+  \(Q^2=\mu^2\) and physical branch \(Q^2\mapsto -s-\ii0\).
 - The Steinmann section assumes a declared boundary-value setting before the
   vanishing statement: connected time-ordered kernels or LSZ-reduced amplitudes
   with external pole/contact terms separated; selected channel boundary values
@@ -268,6 +302,58 @@
 - The Cutkosky theorem must contain both pieces: the Hilbert-space
   discontinuity from \(S^\dagger S=1\) and the largest-time/circling argument
   that identifies a graph cut with on-shell line replacements.
+- A generalized cut
+  \[
+    \operatorname{Cut}_C\mathcal I
+    =
+    \left.\mathcal I\prod_{i\in C}D_i\right|_{D_i=0}
+  \]
+  is an algebraic reconstruction probe until positive-energy support, state
+  sums, and sheet data turn it into a physical cut.
+- At one loop, the cut-visible scalar-integral expansion has the form
+  \[
+    \mathcal A_n^{(1)}
+    =
+    \sum c_4I_4+\sum c_3I_3+\sum c_2I_2+R_n+\mathcal P_n,
+  \]
+  with \(R_n\) and \(\mathcal P_n\) requiring information beyond strictly
+  four-dimensional branch cuts.
+- In massless \(\lambda\phi^4\), the \(s\)-channel cut of the one-loop
+  four-point amplitude is
+  \[
+    \operatorname{Disc}_s\mathcal M_4^{(1)}
+    =
+    \ii\frac{1}{2!}\lambda^2\int d\Phi_2
+    =
+    \frac{\ii\lambda^2}{16\pi}+O(\epsilon),
+  \]
+  and the crossing-complete cut-constructible amplitude is
+  \[
+    \mathcal M_{4,\mathrm{cut}}^{(1)}
+    =
+    \frac{\lambda^2}{2}\{\widehat B(s)+\widehat B(t)+\widehat B(u)\}.
+  \]
+  An \(s\)-only ansatz matches one cut but misses the crossed cuts; local
+  counterterms have no channel discontinuity.
+- Four-dimensional generalized cuts can miss rational terms from
+  \(-2\epsilon\)-dimensional numerator components.  D-dimensional unitarity,
+  massive continuation, or independent rational recursion is needed when such
+  terms matter.
+- The bubble IBP family obeys
+  \[
+    0=(D-2a-b)I_{a,b}-bI_{a-1,b+1}+bQ^2I_{a,b+1},
+  \]
+  and hence
+  \[
+    Q^2I_{1,2}=-(D-3)I_{1,1}=-(1-2\epsilon)I_{1,1}
+  \]
+  after the scaleless \(I_{0,2}\) sector is dropped.
+- The bubble master satisfies
+  \[
+    Q^2\frac{d}{dQ^2}I_{1,1}(Q^2)=-\epsilon I_{1,1}(Q^2),
+  \]
+  with singular point \(Q^2=0\) matching the massless two-particle Landau
+  threshold.
 - Steinmann definitions: for all-incoming momenta, a channel is the partition
   \([I]=\{I,I^c\}\) with \(s_I=-(\sum_{i\in I}p_i)^2\).  Two channels overlap
   exactly when no complementary representatives make them disjoint or nested.
@@ -328,6 +414,10 @@
 - No extension of Steinmann relations to massless amplitudes, regulator
   limits, anomalous-threshold sheets, or symbol-level/extended Steinmann
   statements without additional hypotheses.
+- No claim that the new generalized-unitarity section completes all of issue
+  #769: the scalar example closes the first loop-workflow bridge, while
+  nonabelian state sums, multi-master systems, finite-field technology,
+  color--kinematics, and higher-loop generalized cuts remain future work.
 
 ## Audit Notes
 
@@ -420,3 +510,14 @@
   links the result to Cutkosky, Landau, and fixed-\(t\) dispersion.  The
   companion script `calculation-checks/steinmann_channel_checks.py` checks the
   finite channel and causal-order algebra.
+- 2026-06-05 issue #769 first architecture pass: inserted the
+  generalized-unitarity and one-loop-reduction bridge immediately after
+  Cutkosky.  The pass separates physical discontinuities from algebraic cuts,
+  gives the one-loop scalar-integral coefficient workflow, reconstructs the
+  complete massless \(\lambda\phi^4\) four-point cut-constructible amplitude
+  with explicit state-sum normalization and negative controls, explains the
+  four-dimensional rational blind spot, and reduces/solves the bubble master
+  through IBP and a differential equation.  The companion script
+  `calculation-checks/generalized_unitarity_reduction_checks.py` checks the
+  cut matrix, nullspace, IBP, differential-equation, and branch-threshold
+  ledger.

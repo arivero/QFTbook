@@ -2151,6 +2151,299 @@ subamplitudes times \eqref{eq:two-body-phase-space-four-d}, with this symmetry
 factor when appropriate.  The square-root branch point is the same threshold
 that the Landau equations identify below.
 
+\section{Generalized Unitarity and One-Loop Reduction}
+\label{sec:generalized-unitarity-one-loop-reduction}
+
+The Cutkosky theorem computes a physical discontinuity.  Modern loop
+amplitude methods use the same on-shell replacement more aggressively, but
+with an extra distinction that must not be suppressed.  A \emph{physical cut}
+is a boundary-value statement: the cut lines carry real on-shell momenta,
+positive-energy step functions, the physical state sum, and the sheet
+specified by the channel.  A \emph{generalized cut} is an algebraic or
+contour operation on a regulated loop integrand: one selects denominators and
+takes residues, or solves the selected on-shell equations over complex loop
+momentum.  The latter operation is the calculational bridge from tree
+amplitudes to loop integrands; the former is the Hilbert-space discontinuity
+that follows from \(S^\dagger S=\mathbf 1\).
+
+Fix a one-loop integrand in dimensional regularization, \(D=4-2\epsilon\),
+with denominators
+\[
+  D_i(\ell)=(\ell+K_i)^2+m_i^2-\ii0 .
+\]
+For a selected set \(C=\{i_1,\ldots,i_k\}\), write the algebraic cut as
+\begin{equation}
+  \operatorname{Cut}_C\mathcal I(\ell)
+  =
+  \left.
+    \mathcal I(\ell)\prod_{i\in C}D_i(\ell)
+  \right|_{D_i(\ell)=0,\ i\in C}.
+  \label{eq:generalized-cut-algebraic-definition}
+\end{equation}
+This definition omits the positive-energy theta functions and therefore has
+no stand-alone interpretation as a probability sum.  Its value is a rational
+function or residue on the cut solution space.  When the chosen cut separates
+a physical channel and the cut solutions are restricted to the real
+positive-energy branch, \eqref{eq:generalized-cut-algebraic-definition}
+reduces to the graph-level replacement used in
+Theorem~\ref{thm:cutkosky-cut-rule-perturbative-physical-cut}.  Away from that
+case it is a reconstruction probe.
+
+In a massless one-loop four-dimensional amplitude, after tensor reduction or
+integrand reduction, the cut-visible part is expanded in the declared basis as
+\begin{equation}
+  \mathcal A_n^{(1)}
+  =
+  \sum_{\rm boxes} c_4 I_4
+  +
+  \sum_{\rm triangles} c_3 I_3
+  +
+  \sum_{\rm bubbles} c_2 I_2
+  +
+  R_n+\mathcal P_n .
+  \label{eq:one-loop-integral-basis-reconstruction}
+\end{equation}
+Here \(I_r\) are scalar integrals in the declared regulator, \(R_n\) denotes
+rational terms not fixed by a purely four-dimensional cut analysis, and
+\(\mathcal P_n\) denotes local subtraction polynomials or scheme-dependent
+counterterms.  In massive theories tadpoles and massive bubbles are included
+in the same way.  The coefficients in
+\eqref{eq:one-loop-integral-basis-reconstruction} are physical only after the
+normalization of the scalar integrals, color ordering, external-state
+normalization, and regulator have been fixed.
+
+The reason multiple cuts determine the coefficients is local in loop momentum.
+A quadruple cut in four dimensions freezes the loop momentum to finitely many
+solutions.  After higher-point contributions have been assigned, the box
+coefficient is obtained by matching
+\begin{equation}
+  \left.\mathcal A_n^{(1)}\right|_{D_a=D_b=D_c=D_d=0}
+  =
+  \sum_{\ell_*}
+  \sum_{\rm internal\ states}
+  \prod_{v=1}^4
+  \mathcal A^{(0)}_v(\ell_*)
+  =
+  c_{abcd}
+  \left.I_{abcd}\right|_{D_a=D_b=D_c=D_d=0}.
+  \label{eq:quadruple-cut-box-coefficient}
+\end{equation}
+Triple and double cuts leave one or two cut parameters.  Their large-parameter
+or polynomial parts determine triangle and bubble coefficients after the box
+and triangle contributions already visible on the same cut are subtracted.
+This is the common logic behind generalized unitarity and integrand reduction:
+tree amplitudes determine the residues on enough on-shell surfaces, and the
+remaining work is to identify which part of the integrand basis those residues
+select \cite{BDDK1994Unitarity,BDK1996OneLoopQCD,
+BrittoCachazoFeng2005GeneralizedUnitarity,OPP2007IntegrandReduction,
+Forde2007OneLoopCoefficients}.
+
+\subsection{A Complete Scalar Four-Point Reconstruction}
+\label{subsec:scalar-four-point-generalized-unitarity}
+
+Consider massless real \(\lambda\phi^4\) theory, with interaction
+\(-\lambda\phi^4/4!\), in \(D=4-2\epsilon\).  The tree invariant amplitude
+for identical scalars is
+\[
+  \mathcal M_4^{(0)}=-\lambda .
+\]
+Use all-incoming momenta with \(p_i^2=0\),
+\[
+  s=-(p_1+p_2)^2,\qquad
+  t=-(p_1+p_3)^2,\qquad
+  u=-(p_1+p_4)^2,\qquad
+  s+t+u=0 .
+\]
+Let \(B(Q^2)\) be the Euclidean bubble master
+\begin{equation}
+  B(Q^2)
+  =
+  \mu^{2\epsilon}
+  \int
+  \frac{\dd^D\ell}{\ii\pi^{D/2}}\,
+  \frac{1}
+       {(\ell^2+\ii0)((\ell+P)^2+\ii0)},
+  \qquad
+  Q^2=-P^2>0 .
+  \label{eq:unitarity-bubble-master-definition}
+\end{equation}
+The Feynman-parameter evaluation gives
+\begin{equation}
+  B(Q^2)
+  =
+  \Gamma(\epsilon)
+  \frac{\Gamma(1-\epsilon)^2}{\Gamma(2-2\epsilon)}
+  \left(\frac{\mu^2}{Q^2}\right)^\epsilon .
+  \label{eq:unitarity-bubble-master-gamma-form}
+\end{equation}
+Define the four-dimensional cut-normalized bubble by continuing
+\(Q^2\mapsto -x-\ii0\) and setting
+\[
+  \widehat B(x)=\frac1{16\pi^2}B(-x-\ii0).
+\]
+Then, for \(x>0\),
+\begin{equation}
+  \operatorname{Disc}_x\widehat B(x)
+  =
+  \frac{\ii}{8\pi}+O(\epsilon),
+  \label{eq:unitarity-cut-normalized-bubble-disc}
+\end{equation}
+which is the massless two-particle phase-space factor in the conventions of
+\eqref{eq:two-body-phase-space-four-d}.
+
+The \(s\)-channel physical cut of the one-loop four-point amplitude is
+therefore
+\begin{equation}
+  \operatorname{Disc}_s\mathcal M_4^{(1)}
+  =
+  \ii\,
+  \frac1{2!}
+  (\mathcal M_4^{(0)})^2
+  \int\dd\Phi_2(P_s)
+  =
+  \frac{\ii\lambda^2}{16\pi}+O(\epsilon),
+  \label{eq:phi4-one-loop-s-channel-cut}
+\end{equation}
+where the factor \(1/2!\) is the unordered identical-particle state-sum
+factor.  Matching \eqref{eq:phi4-one-loop-s-channel-cut} to
+\eqref{eq:unitarity-cut-normalized-bubble-disc} fixes the \(s\)-bubble
+coefficient to \(\lambda^2/2\).  The same argument in the crossed channels
+fixes the complete cut-constructible one-loop amplitude,
+\begin{equation}
+  \mathcal M_{4,\mathrm{cut}}^{(1)}(s,t,u)
+  =
+  \frac{\lambda^2}{2}
+  \bigl(\widehat B(s)+\widehat B(t)+\widehat B(u)\bigr).
+  \label{eq:phi4-one-loop-reconstructed-from-cuts}
+\end{equation}
+The renormalized amplitude also contains a local coupling counterterm
+\(\delta\lambda\).  Since a local constant has zero discontinuity in every
+Mandelstam variable, unitarity cuts determine
+\eqref{eq:phi4-one-loop-reconstructed-from-cuts} but leave
+\(\delta\lambda\) to the renormalization condition.  This is already the
+simplest negative control: an ansatz with only \(\widehat B(s)\) matches the
+\(s\)-channel cut, but has zero \(t\)- and \(u\)-channel cuts and breaks
+crossing; adding a local counterterm cannot repair those missing
+discontinuities.
+
+Four-dimensional cuts have a second blind spot.  In gauge theories the loop
+momentum decomposes as
+\[
+  \ell^\mu=\bar\ell^\mu+\ell_\perp^\mu,\qquad
+  \ell_\perp^2=-\mu_\perp^2 ,
+\]
+where \(\bar\ell\) is four-dimensional and \(\ell_\perp\) lies in the
+\(-2\epsilon\)-dimensional complement.  Numerators containing
+\(\mu_\perp^2\) vanish on strictly four-dimensional cut solutions, but their
+dimension-shifted integrals can multiply \(1/\epsilon\) ultraviolet or
+infrared poles and leave finite rational terms.  Hence the equality of all
+four-dimensional generalized cuts proves equality only modulo rational,
+evanescent, and local pieces.  D-dimensional unitarity, a massive
+four-dimensional continuation that keeps \(\mu_\perp^2\) as a mass parameter,
+or an independent on-shell recursion for rational terms is needed to close
+that gap.
+
+\subsection{IBP Reduction and the Bubble Master Equation}
+\label{subsec:ibp-bubble-master-equation}
+
+After the cut coefficients are known, the scalar integrals must still be
+reduced and evaluated.  The basic integration-by-parts identity is a regulated
+total derivative.  For the Euclidean one-loop family
+\begin{equation}
+  I_{a,b}(Q^2)
+  =
+  \mu^{2\epsilon}
+  \int\frac{\dd^D\ell}{\pi^{D/2}}\,
+  \frac1{(\ell^2)^a((\ell+P)^2)^b},
+  \qquad P^2=Q^2>0 ,
+  \label{eq:bubble-ibp-family}
+\end{equation}
+dimensional regularization gives
+\begin{equation}
+  0=
+  \int\dd^D\ell\,
+  \frac{\partial}{\partial\ell^\mu}
+  \left(
+    \frac{\ell^\mu}{(\ell^2)^a((\ell+P)^2)^b}
+  \right),
+  \label{eq:bubble-total-derivative-ibp}
+\end{equation}
+provided the integral family is understood by analytic continuation in
+\(\epsilon\).  Expanding the derivative yields
+\begin{equation}
+  0
+  =
+  (D-2a-b)I_{a,b}
+  -bI_{a-1,b+1}
+  +bQ^2I_{a,b+1}.
+  \label{eq:bubble-ibp-general-identity}
+\end{equation}
+For \(a=b=1\), the integral \(I_{0,2}\) is a scaleless tadpole and vanishes in
+dimensional regularization.  Thus
+\begin{equation}
+  Q^2 I_{1,2}
+  =
+  -(D-3)I_{1,1}
+  =
+  -(1-2\epsilon)I_{1,1}.
+  \label{eq:bubble-ibp-square-propagator-reduction}
+\end{equation}
+This is a genuine reduction: the squared-propagator integral belongs to the
+same sector and is expressed in terms of the single master \(I_{1,1}\), after
+the lower scaleless sector has been set to zero.
+
+The master equation follows either from homogeneity or directly from
+\eqref{eq:unitarity-bubble-master-gamma-form}:
+\begin{equation}
+  Q^2\frac{\dd}{\dd Q^2}I_{1,1}(Q^2)
+  =
+  -\epsilon I_{1,1}(Q^2).
+  \label{eq:bubble-master-differential-equation}
+\end{equation}
+The boundary value at \(Q^2=\mu^2\) is the gamma-function prefactor in
+\eqref{eq:unitarity-bubble-master-gamma-form}; the physical branch is obtained
+by \(Q^2\mapsto -s-\ii0\).  The pole of
+\eqref{eq:bubble-master-differential-equation} at \(Q^2=0\) is the same
+massless two-particle threshold that appears as the cut in
+\eqref{eq:unitarity-cut-normalized-bubble-disc} and as the corresponding
+Landau solution below.  In larger families the same pattern remains: IBP
+identities reduce integrals to masters, derivatives with respect to external
+invariants close on those masters, and the singular points of the differential
+system are constrained by the Landau loci and the chosen boundary data
+\cite{PassarinoVeltman1979,ChetyrkinTkachov1981IBP,
+Tkachov1981AnalyticalCalculability,Kotikov1991DifferentialEquations,
+GehrmannRemiddi2000DifferentialEquations}.
+
+\begin{warning}[What equality on cuts does and does not mean]
+\label{warn:cut-equality-integrand-reduction-boundary}
+Cut equality, integrand equality, equality modulo surface terms, equality
+after integration, equality after renormalization, and equality of an
+infrared-safe observable are different statements.  A surface term generated
+by an IBP vector field may change a loop integrand while integrating to zero
+in the chosen regulator.  Evanescent numerator components may vanish on
+four-dimensional cuts while leaving finite rational terms after integration.
+Local counterterms have no channel discontinuity but are fixed by the
+renormalization scheme.  In massless gauge theories, the reconstructed virtual
+amplitude still contains soft and collinear poles; the physical quantity is
+obtained only after the real-radiation, factorization, or inclusive observable
+specified in Chapter~\ref{ch:volume-ii-infrared-inclusive-qed}
+has been included.  The loop-amplitude workflow is therefore
+\[
+  \begin{aligned}
+  &\text{tree data on cuts}
+    \longrightarrow
+    \text{integrand or scalar-integral coefficients},\\
+  &\text{integrand or scalar-integral coefficients}
+    \longrightarrow
+    \text{IBP masters},\\
+  &\text{IBP masters}
+    \longrightarrow
+    \text{renormalized finite remainder or observable},
+  \end{aligned}
+\]
+with a separate hypothesis or calculation at each arrow.
+\end{warning}
+
 \section{Steinmann Relations and Sequential Discontinuities}
 \label{sec:steinmann-sequential-discontinuities}
 

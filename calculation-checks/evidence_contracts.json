@@ -142,6 +142,10 @@
       "risk_class": "GLSM mirror/vortex amplitudes"
     },
     {
+      "path": "generalized_unitarity_reduction_checks.py",
+      "risk_class": "loop-amplitude reconstruction and integral reduction"
+    },
+    {
       "path": "weinberg_witten_helicity_checks.py",
       "risk_class": "Weinberg-Witten helicity obstruction"
     },

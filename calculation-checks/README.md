@@ -2812,6 +2812,11 @@ Current checks:
   interactions of dimension at most \(D\), proliferation from repeated
   irrelevant insertions, and scaling-degree ambiguity bounds for supported
   distributions.
+- `generalized_unitarity_reduction_checks.py`: exact finite checks for the
+  loop-amplitude bridge in Volume II, Chapter 6, including the massless
+  \(\phi^4\) one-loop cut reconstruction, the incomplete-cut and
+  four-dimensional-rational negative controls, the bubble IBP reduction, and
+  the bubble master differential-equation branch ledger.
 - `tomita_standard_form_checks.py`: finite matrix checks for the
   Tomita--Takesaki and Connes-standard-form conventions, including the
   Tomita polar data on matrix units, commutant and modular-automorphism
