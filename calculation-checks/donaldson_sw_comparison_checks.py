@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Finite checks for Donaldson-Witten and Seiberg-Witten comparison formulas."""
+"""Finite checks for Donaldson-Witten and Seiberg-Witten comparison formulas.
+
+Includes a theorem-boundary status gate for the Bauer-Furuta stable
+cohomotopy target data: unparameterized classes, Picard-torus families,
+chamber-fixed cases, and invalid missing orientation/properness/reducible-wall
+inputs.
+"""
 
 from __future__ import annotations
 
@@ -123,6 +129,30 @@ def feehan_leness_many_manifolds_status(
 
 def has_metric_chamber_dependence(b2_plus: int) -> bool:
     return b2_plus == 1
+
+
+def bauer_furuta_target_status(
+    *,
+    b1: int,
+    b2_plus: int,
+    homology_orientation: bool,
+    proper_monopole_map: bool,
+    chamber_fixed: bool,
+    avoids_reducible_wall: bool,
+) -> str:
+    """Finite gate for the theorem-boundary data in the Bauer-Furuta statement."""
+
+    if not homology_orientation or not proper_monopole_map:
+        return "invalid-missing-orientation-or-properness"
+    if has_metric_chamber_dependence(b2_plus) and not chamber_fixed:
+        return "invalid-missing-chamber"
+    if not avoids_reducible_wall:
+        return "invalid-reducible-wall"
+    if b1 > 0:
+        return "parameterized-picard-torus-family"
+    if has_metric_chamber_dependence(b2_plus):
+        return "unparameterized-chamber-class"
+    return "unparameterized-chamber-stable-class"
 
 
 def spinc_tensor_c1(c1_value: int, line_c1: int) -> int:
@@ -389,6 +419,81 @@ def check_furuta_examples() -> None:
             Fraction(n),
             "E(2m) spin Dirac quaternionic index",
         )
+
+
+def check_bauer_furuta_theorem_boundary_gate() -> None:
+    assert_equal(
+        bauer_furuta_target_status(
+            b1=0,
+            b2_plus=3,
+            homology_orientation=True,
+            proper_monopole_map=True,
+            chamber_fixed=True,
+            avoids_reducible_wall=True,
+        ),
+        "unparameterized-chamber-stable-class",
+        "b1=0, b2+>1 Bauer-Furuta status",
+    )
+    assert_equal(
+        bauer_furuta_target_status(
+            b1=2,
+            b2_plus=3,
+            homology_orientation=True,
+            proper_monopole_map=True,
+            chamber_fixed=True,
+            avoids_reducible_wall=True,
+        ),
+        "parameterized-picard-torus-family",
+        "b1>0 Bauer-Furuta Picard-torus family status",
+    )
+    assert_equal(
+        bauer_furuta_target_status(
+            b1=0,
+            b2_plus=1,
+            homology_orientation=True,
+            proper_monopole_map=True,
+            chamber_fixed=False,
+            avoids_reducible_wall=True,
+        ),
+        "invalid-missing-chamber",
+        "b2+=1 needs chamber data",
+    )
+    assert_equal(
+        bauer_furuta_target_status(
+            b1=0,
+            b2_plus=1,
+            homology_orientation=True,
+            proper_monopole_map=True,
+            chamber_fixed=True,
+            avoids_reducible_wall=True,
+        ),
+        "unparameterized-chamber-class",
+        "b2+=1 chamber-fixed Bauer-Furuta status",
+    )
+    assert_equal(
+        bauer_furuta_target_status(
+            b1=0,
+            b2_plus=3,
+            homology_orientation=False,
+            proper_monopole_map=True,
+            chamber_fixed=True,
+            avoids_reducible_wall=True,
+        ),
+        "invalid-missing-orientation-or-properness",
+        "Bauer-Furuta needs orientation data",
+    )
+    assert_equal(
+        bauer_furuta_target_status(
+            b1=0,
+            b2_plus=3,
+            homology_orientation=True,
+            proper_monopole_map=True,
+            chamber_fixed=True,
+            avoids_reducible_wall=False,
+        ),
+        "invalid-reducible-wall",
+        "Bauer-Furuta gate rejects reducible-wall paths",
+    )
 
 
 def moore_witten_constant_exponent(chi_value: int, sigma_value: int) -> Fraction:
@@ -703,6 +808,7 @@ def main() -> None:
     check_blowup_simple_type_square_shift()
     check_elliptic_surface_binomial_coefficients()
     check_furuta_examples()
+    check_bauer_furuta_theorem_boundary_gate()
     check_moore_witten_constants_for_tables()
     check_kotschick_morgan_degree_bookkeeping()
     check_donaldson_blowup_cosh_bookkeeping()

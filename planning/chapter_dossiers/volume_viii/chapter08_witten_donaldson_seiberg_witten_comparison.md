@@ -32,8 +32,9 @@ gauge theory.
 - `s`, `S^pm_s`, `L_s`, `B`, `q`, `sigma(q)`: Spin^c structure, spinor
   bundles, determinant line, Abelian connection, monopole spinor, and
   quadratic self-dual two-form.
-- `SW_X(s)`, `B_SW(X)`, `BF_X(s)`: Seiberg-Witten invariant,
-  Seiberg-Witten basic classes, and Bauer-Furuta stable cohomotopy class.
+- `SW_X(s)`, `B_SW(X)`, `BF_{X,s,c}`: Seiberg-Witten invariant,
+  Seiberg-Witten basic classes, and Bauer-Furuta stable cohomotopy class with
+  chamber/perturbation datum when needed.
 - `omega_g`, `lambda`, `L_lambda`, `WC_lambda^X`: period ray, reducible wall
   class, reducible link, and Kotschick-Morgan wall-crossing functional.
 - `x_lambda(omega)`: wall-normal component `lambda` paired with the period
@@ -76,8 +77,10 @@ gauge theory.
 - Defines Seiberg-Witten basic classes and simple type, adds K3, `E(n)`, and
   blow-up arithmetic examples, and records the Bauer-Furuta refinement and
   Furuta \(10/8+2\) inequality with the monopole-map Fredholm-plus-compact
-  construction and the spin \(\operatorname{Pin}(2)\)-equivariant obstruction
-  mechanism exposed at the point of use.
+  construction, the parameterized Picard-torus target when \(b_1>0\),
+  chamber data when \(b_2^+=1\), and the spin
+  \(\operatorname{Pin}(2)\)-equivariant obstruction mechanism exposed at the
+  point of use.
 - States the Coulomb-branch RG comparison datum, including the `u`-plane,
   singular fibers, observable map, contact term `T(u)`, chamber dependence,
   and determinant-line phases.
@@ -135,6 +138,9 @@ gauge theory.
   characteristic-lift parity, K3 and elliptic-surface simple-type arithmetic,
   blow-up square shifts, elliptic-surface binomial coefficients, Furuta
   examples, spin Dirac quaternionic-index arithmetic in the Furuta examples,
+  the Bauer--Furuta target-status gate distinguishing unparameterized,
+  Picard-torus-parameterized, chamber-fixed, and invalid orientation/
+  properness/reducible-wall cases,
   Donaldson blow-up cosh/sinh parity coefficients after the contact Gaussian,
   Donaldson finite-exponential moment reconstruction, and the trace-delta
   instanton action coefficient, as well as the wall-normal sign jump and
@@ -159,6 +165,14 @@ the Abelian monopole theory.
   approximation by low spectral modes, and separating the pure
   \(\operatorname{Pin}(2)\)-equivariant stable-homotopy input behind Furuta's
   inequality from the QFT comparison problem.
+- 2026-06-05 issue #698 Bauer--Furuta theorem-boundary repair: corrected the
+  quoted theorem so it no longer presents a single unparameterized
+  \({\rm BF}_X(\mathfrak s)\) for all closed oriented four-manifolds.  The
+  statement now names the homology orientation, perturbation/chamber datum,
+  properness/no-boundary-zero condition, Picard-torus family target for
+  \(b_1>0\), and chamber-fixed status for \(b_2^+=1\).  The companion check
+  rejects missing orientation/properness, missing chamber data, and reducible
+  wall paths as invalid theorem-boundary inputs.
 - 2026-05-30 wall-crossing proof-boundary pass: expanded the link-form theorem
   boundary by displaying the parameterized ASD moduli space and its truncated
   boundary, deriving the chamber jump by Stokes' theorem, and identifying the

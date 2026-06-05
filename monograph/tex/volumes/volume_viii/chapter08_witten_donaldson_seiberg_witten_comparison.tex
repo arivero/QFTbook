@@ -1052,24 +1052,49 @@ therefore a shadow, not the primary object.
 
 \begin{quotedtheorem}[Bauer-Furuta]
 \label{qt:bauer-furuta-refinement}
-For a closed oriented smooth four-manifold with a fixed
-\(\operatorname{Spin}^c\) structure, the finite-dimensional approximation
-of the Seiberg-Witten monopole map defines a stable cohomotopy invariant
+Let \(X\) be a closed oriented smooth four-manifold with a fixed
+\(\operatorname{Spin}^c\) structure \(\mathfrak s\), a homology orientation
+of \(H^1(X;\mathbb R)\oplus H^+(X;\mathbb R)\), and perturbation/chamber data
+\(\mathfrak c\) whenever reducibles or \(b_2^+(X)=1\) make the invariant
+chamber-dependent.  Let
+\[
+  \operatorname{Pic}^0(X)=H^1(X;\mathbb R)/H^1(X;\mathbb Z),
+\]
+let \(\operatorname{Ind}_{\mathbb C}(D_{\mathfrak s})\) be the family index of
+the spin\(^c\) Dirac operator over \(\operatorname{Pic}^0(X)\), and let
+\(H_X^+\) denote the oriented bundle of self-dual harmonic forms.  Under the
+properness/no-zero-on-the-boundary hypotheses supplied by the monopole-map
+estimate and after choosing perturbations away from reducible walls, the
+finite-dimensional approximation of the Seiberg-Witten monopole map defines a
+\(U(1)\)-equivariant stable cohomotopy class
 \begin{equation}
-  {\rm BF}_X(\mathfrak s).
+  {\rm BF}_{X,\mathfrak s,\mathfrak c}
+  \in
+  \pi^0_{U(1),{\rm st}}
+  \!\left(
+    \operatorname{Pic}^0(X);
+    \operatorname{Ind}_{\mathbb C}(D_{\mathfrak s})-H_X^+
+  \right).
   \label{eq:bauer-furuta-class}
 \end{equation}
-The ordinary Seiberg-Witten invariant is the image of
-\({\rm BF}_X(\mathfrak s)\) under the corresponding stable cohomotopy to
-cohomology map, with the usual orientation conventions.
+When \(b_1(X)=0\) this is the unparameterized stable cohomotopy group
+determined by the complex Dirac index and \(b_2^+(X)\); when \(b_1(X)>0\) it
+is naturally parameterized over the Picard torus.  The ordinary
+Seiberg-Witten invariant is the image of
+\({\rm BF}_{X,\mathfrak s,\mathfrak c}\) under the corresponding stable
+cohomotopy-to-cohomology map and the same orientation/chamber conventions.
 \end{quotedtheorem}
 
-The theorem packages the independence of all auxiliary choices in the
-construction above: Sobolev index, background connection, radius of the
-isolating ball, spectral cutoff, and generic perturbation inside a chamber.
-The proof is not a formal consequence of the integer Seiberg-Witten invariant.
-It uses properness on the chosen bounded region, homotopy invariance of
-finite-dimensional approximations, and compatibility of the suspension
+The theorem packages the independence of auxiliary choices only after these
+data have been fixed: Sobolev index, background connection, radius of the
+isolating ball, spectral cutoff, and generic perturbation inside the selected
+chamber.  Thus the shorthand \({\rm BF}_X(\mathfrak s)\) is legitimate only in
+the unparameterized, chamber-stable context.  For \(b_1>0\) the invariant is a
+family over \(\operatorname{Pic}^0(X)\), and for \(b_2^+=1\) the chamber is
+part of the datum.  The proof is not a formal consequence of the integer
+Seiberg-Witten invariant.  It uses properness on the chosen bounded region,
+homotopy invariance of finite-dimensional approximations, absence of reducible
+wall crossing along the chosen path, and compatibility of the suspension
 coordinates with the Fredholm index.  The monograph uses this theorem as a
 pure four-manifold input adjacent to QFT, while the displayed monopole-map
 construction records exactly what additional structure an eventual

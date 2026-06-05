@@ -1508,7 +1508,10 @@ Current checks:
   \(2\chi+3\sigma\) identity, Donaldson descent degrees,
   \(\operatorname{Spin}^c\) characteristic-lift bookkeeping, K3 and
   elliptic-surface simple-type arithmetic, blow-up square shifts, Furuta
-  inequality examples, Donaldson blow-up cosh/sinh parity coefficients after
+  inequality examples, the Bauer--Furuta theorem-boundary status gate
+  distinguishing unparameterized, Picard-torus-parameterized, chamber-fixed,
+  and invalid reducible/properness cases, Donaldson blow-up cosh/sinh parity
+  coefficients after
   the contact Gaussian, the finite comparison residual budget from UV
   localization through RG, \(u\)-plane splitting, singular-fiber replacement,
   and normalization, and the trace-delta instanton-action coefficient.
