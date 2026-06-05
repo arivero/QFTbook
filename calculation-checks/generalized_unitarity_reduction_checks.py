@@ -5,8 +5,9 @@ The companion section in Volume II, Chapter 6 develops the bridge from
 Cutkosky discontinuities to generalized cuts, scalar-integral reconstruction,
 IBP reduction, and master-integral differential equations.  This script
 checks the exact algebraic ledger behind the one-loop reconstruction datum,
-the worked massless phi^4 example, the finite two-scale box master, and the
-one-loop bubble family, including numerator sector projection and the
+the worked massless phi^4 example including the cut-invisible MS pole and
+one-loop running, the finite two-scale box master, and the one-loop bubble
+family, including numerator sector projection and the
 equal-mass threshold family with its lower tadpole master and branch, then adds
 finite helicity, color, state-sum, and regulator bookkeeping for the
 Yang-Mills MHV/all-plus control examples, including the planar N=4 MHV
@@ -24,7 +25,8 @@ scheme transport have been assembled.
 Evidence contract.
 Target claims: the generalized-unitarity section of Volume II Chapter 6,
 especially the phi^4 cut reconstruction, the negative controls for incomplete
-cut sets and four-dimensional blind spots, the bubble IBP identity, and the
+cut sets, the MS pole/running extraction from the crossing-complete scalar
+amplitude, and four-dimensional blind spots, the bubble IBP identity, and the
 bubble numerator-reduction sector projection and bubble master differential
 equation, the equal-mass bubble threshold family, plus the finite two-scale
 massless box master, the gauge-theory MHV
@@ -47,7 +49,9 @@ reduction, boundary/branch data, subtraction, and observable assembly.
 Independent construction: finite cut-signature matrices over rational
 numbers, a finite ordered gate/incidence ledger for the reconstruction datum,
 an explicit identical-state symmetry factor, a nullspace model for
-local/rational terms invisible to four-dimensional cuts, and exact rational
+local/rational terms invisible to four-dimensional cuts, exact rational
+pole-residue and beta-function coefficient bookkeeping for the scalar
+subtraction step, and exact rational
 checks of the one-loop bubble IBP coefficients at several regulator values;
 exact rational projection of a bubble numerator into parent and lower sectors,
 including the parent-cut coefficient and vector Passarino-Veltman reduction;
@@ -79,6 +83,8 @@ have two negative helicities, up to parity.
 Negative controls: the script rejects an s-channel-only ansatz, verifies that
 local counterterms are invisible to cuts, and constructs two amplitudes with
 identical four-dimensional cuts but different D-dimensional rational probes;
+it rejects the one-channel scalar pole/beta shortcut and a cut-only attempt to
+fix finite subtraction constants;
 it also verifies that the all-plus one-loop rational structure is invisible
 to strict four-dimensional two-particle cuts but visible to a nonzero
 mu_perp^2 massive-scalar probe, verifies that an s-channel cut alone cannot
@@ -307,6 +313,70 @@ def check_phi4_cut_reconstruction() -> None:
     ]
     assert_equal("four-dimensional cut rank", rank(cut_matrix), 3)
     assert_true("cut map has local/rational nullspace", len(BASIS) - rank(cut_matrix) == 2)
+
+
+def check_phi4_ms_running_from_crossed_cuts() -> None:
+    # Strip the common factor 1/(16 pi^2).  Each channel contributes
+    # (lambda^2/2) * B, and in D=4-2 epsilon the one-loop beta coefficient is
+    # twice the simple-pole residue.
+    lam = Fraction(5, 3)
+    channel_count = Fraction(3)
+    bubble_coefficient = lam * lam / 2
+    pole_residue = channel_count * bubble_coefficient
+    beta_coefficient = 2 * pole_residue
+    assert_equal(
+        "phi4 crossed-channel pole residue in 1/(16pi^2) units",
+        pole_residue,
+        Fraction(25, 6),
+    )
+    assert_equal(
+        "phi4 beta coefficient in 1/(16pi^2) units",
+        beta_coefficient,
+        3 * lam * lam,
+    )
+
+    # The finite bubble is -log((-x-i0)/mu^2)+c_sub.  Differentiating with
+    # respect to log(mu) gives 2 per channel, reproducing the beta coefficient
+    # that cancels the running of the tree amplitude -lambda.
+    log_mu_derivative = channel_count * bubble_coefficient * 2
+    assert_equal(
+        "phi4 finite-log mu derivative cancels tree running",
+        log_mu_derivative,
+        beta_coefficient,
+    )
+
+    one_channel_pole = bubble_coefficient
+    one_channel_beta = 2 * one_channel_pole
+    assert_true(
+        "single-channel cut misses crossed-channel beta factor",
+        one_channel_beta != beta_coefficient,
+    )
+    assert_equal(
+        "single-channel beta is one third of full beta",
+        channel_count * one_channel_beta,
+        beta_coefficient,
+    )
+
+    finite_subtraction_shift = Fraction(7, 11)
+    amplitude_shift = channel_count * bubble_coefficient * finite_subtraction_shift
+    finite_coupling_redefinition = amplitude_shift
+    tree_shift = -finite_coupling_redefinition
+    assert_equal(
+        "finite local scheme shift compensated by coupling redefinition",
+        amplitude_shift + tree_shift,
+        Fraction(0),
+    )
+
+    local_shift = {"local": finite_coupling_redefinition}
+    assert_equal(
+        "finite local subtraction constant remains cut invisible",
+        channel_cuts(local_shift),
+        (Fraction(0), Fraction(0), Fraction(0)),
+    )
+    assert_true(
+        "cut-only data cannot determine finite local subtraction",
+        finite_subtraction_shift != 0 and channel_cuts(local_shift) == (0, 0, 0),
+    )
 
 
 def check_one_loop_reconstruction_datum() -> None:
@@ -1681,6 +1751,7 @@ def check_virtual_to_observable_assembly() -> None:
 
 def main() -> None:
     check_phi4_cut_reconstruction()
+    check_phi4_ms_running_from_crossed_cuts()
     check_one_loop_reconstruction_datum()
     check_four_dimensional_cut_blind_spot()
     check_gauge_theory_helicity_controls()

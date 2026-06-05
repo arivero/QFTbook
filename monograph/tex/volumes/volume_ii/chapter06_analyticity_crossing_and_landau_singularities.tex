@@ -2423,6 +2423,75 @@ simplest negative control: an ansatz with only \(\widehat B(s)\) matches the
 crossing; adding a local counterterm cannot repair those missing
 discontinuities.
 
+\begin{controlledapproximation}[Cut-invisible ultraviolet pole and scalar
+running]
+\label{ca:phi4-cut-invisible-uv-running}
+The same example shows where a cut reconstruction becomes a renormalized
+amplitude.  In an MS-like subtraction convention write the finite part of the
+cut-normalized bubble as
+\begin{equation}
+  \widehat B_{\rm sub}(x;\mu,c_{\rm sub})
+  =
+  \frac1{16\pi^2}
+  \left(
+    -\log\frac{-x-\ii0}{\mu^2}+c_{\rm sub}
+  \right),
+  \label{eq:phi4-subtracted-bubble-finite-part}
+\end{equation}
+after removing the common \(1/\epsilon\) pole and convention-dependent
+constants.  Before the subtraction, the three crossed bubbles in
+\eqref{eq:phi4-one-loop-reconstructed-from-cuts} have pole part
+\begin{equation}
+  \mathcal M_{4,\rm pole}^{(1)}
+  =
+  \frac{3\lambda^2}{32\pi^2}\,\frac1\epsilon .
+  \label{eq:phi4-one-loop-cut-pole-residue}
+\end{equation}
+The local counterterm enters the invariant amplitude as \(-\delta\lambda\), so
+minimal pole cancellation requires
+\begin{equation}
+  \delta\lambda_{\rm pole}
+  =
+  \frac{3\lambda^2}{32\pi^2}\,\frac1\epsilon .
+  \label{eq:phi4-ms-pole-counterterm-from-cuts}
+\end{equation}
+Because \(D=4-2\epsilon\), the bare coordinate
+\(\lambda_B=\mu^{2\epsilon}(\lambda+\delta\lambda)\) then gives
+\begin{equation}
+  \mu\frac{\dd\lambda}{\dd\mu}
+  =
+  \frac{3\lambda^2}{16\pi^2}+O(\lambda^3).
+  \label{eq:phi4-one-loop-beta-from-cut-reconstruction}
+\end{equation}
+Equivalently, the subtracted four-point amplitude is
+\begin{equation}
+  \mathcal M_{4,\rm sub}(s,t,u;\mu)
+  =
+  -\lambda(\mu)
+  +
+  \frac{\lambda(\mu)^2}{32\pi^2}
+  \sum_{\chi=s,t,u}
+  \left(
+    -\log\frac{-\chi-\ii0}{\mu^2}+c_{\rm sub}
+  \right)
+  +O(\lambda^3),
+  \label{eq:phi4-renormalized-one-loop-amplitude-from-cuts}
+\end{equation}
+whose \(\mu\)-derivative cancels
+\eqref{eq:phi4-one-loop-beta-from-cut-reconstruction} at this order.
+
+The important point is not the beta function by itself; that belongs to the
+renormalization chapters.  The point is the division of labor.  The three
+physical cuts fix the nonlocal logarithms and the crossed-channel pole
+residue.  They do not fix the finite local constant \(c_{\rm sub}\), and a
+single-channel cut would give only one third of the pole and the wrong
+running.  Conversely, changing \(c_{\rm sub}\) shifts the finite amplitude by a
+local constant and is compensated by a finite redefinition of \(\lambda\).  Cut
+data, UV subtraction, finite scheme choice, and the running coupling are
+therefore distinct entries of the one-loop reconstruction datum, even in this
+small scalar amplitude.
+\end{controlledapproximation}
+
 Four-dimensional cuts have a second blind spot.  In gauge theories the loop
 momentum decomposes as
 \[

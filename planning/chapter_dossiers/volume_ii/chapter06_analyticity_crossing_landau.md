@@ -423,6 +423,15 @@
   \]
   An \(s\)-only ansatz matches one cut but misses the crossed cuts; local
   counterterms have no channel discontinuity.
+- The same scalar example is carried through the UV-subtraction gate.  With
+  \(\widehat B_{\rm sub}(x)=
+  (16\pi^2)^{-1}[-\log((-x-\ii0)/\mu^2)+c_{\rm sub}]\), the crossed-channel
+  pole is \(3\lambda^2/(32\pi^2\epsilon)\), the local counterterm enters the
+  invariant amplitude as \(-\delta\lambda\), and
+  \(D=4-2\epsilon\) gives
+  \(\mu\,d\lambda/d\mu=3\lambda^2/(16\pi^2)+O(\lambda^3)\).  A single-channel
+  cut misses the factor of three; \(c_{\rm sub}\) is a cut-invisible finite
+  local scheme choice.
 - Four-dimensional generalized cuts can miss rational terms from
   \(-2\epsilon\)-dimensional numerator components.  D-dimensional unitarity,
   massive continuation, or independent rational recursion is needed when such
@@ -818,3 +827,12 @@
   script checks the Laurent constant projection, raw-constant contamination,
   post-box subtraction, omitted-box negative control, wrong-box-normalization
   negative control, and spurious nonzero-Laurent-power cancellation.
+- 2026-06-05 issue #769 scalar-renormalization closure pass: extended the
+  massless \(\lambda\phi^4\) cut reconstruction through the local
+  UV-subtraction gate.  The manuscript now displays the crossed-channel
+  \(3\lambda^2/(32\pi^2\epsilon)\) pole, the local counterterm convention,
+  the resulting \(3\lambda^2/(16\pi^2)\) one-loop beta coefficient, and the
+  subtracted amplitude with branch-labelled logarithms.  The companion check
+  verifies the stripped pole/beta arithmetic, the factor-of-three failure of a
+  single-channel cut, and the finite local scheme shift that remains
+  cut-invisible.
