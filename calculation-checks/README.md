@@ -2922,6 +2922,12 @@ The full runner is an explicit batch tool.  It is intentionally not invoked by
 `tools/build_monograph.sh`: the default build verifies manuscript structure
 and TeX consistency, while calculation checks are rerun when the formulae,
 normalizations, or conventions they verify have been touched.
+The aggregate release verifier uses
+`tools/run_calculation_checks.sh --python-only` as the mandatory canonical
+calculation lane, because every unique committed check has Python coverage.
+Pass `tools/verify_release.sh --wolfram-checks` only when the optional Wolfram
+Language companion lane should also be selected and recorded in the release
+manifest.
 
 For Wolfram Language checks, the runner requires a working batch backend when
 any `.wl` files are present.  On the author's macOS installation the preferred

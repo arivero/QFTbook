@@ -406,6 +406,9 @@ Wolfram Language checks are reserved for lightweight, reader-readable symbolic
 convention checks.  Set `QFT_SKIP_WOLFRAM=1` only for an explicitly
 Python-only pass, and set `WOLFRAMKERNEL=/absolute/path/to/WolframKernel` or
 `WOLFRAMSCRIPT=/absolute/path/to/wolframscript` to override executable paths.
+The aggregate release gate below treats the Python calculation checks as the
+canonical mandatory evidence lane.  Wolfram Language companions are optional
+there because the committed `.wl` files duplicate Python coverage.
 
 Reader-facing companion scripts can be smoke-tested with:
 
@@ -451,6 +454,11 @@ when the release pass should also regenerate rendered figure-page artifacts and
 run the rendered-page QA audit plus the public numerical smoke suite.  A clean
 release signoff should not use `--allow-dirty`; that flag is only for
 diagnosing the gate while local edits are present.
+
+Add `--wolfram-checks` only when the optional Wolfram Language companion lane
+should be selected.  When selected, the verifier records the lane separately in
+the manifest and fails if the Wolfram backend probe or any `.wl` success marker
+fails; when not selected, the manifest records an explicit optional skip.
 
 The planning layer records additional writing standards and audit procedures.
 

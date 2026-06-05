@@ -272,10 +272,18 @@ def release_steps(args: argparse.Namespace) -> list[tuple[str, list[str], bool]]
             ["python3", "tools/audit_calculation_check_inventory.py"],
             True,
         ),
-        ("calculation_checks", ["tools/run_calculation_checks.sh"], True),
+        ("calculation_checks", ["tools/run_calculation_checks.sh", "--python-only"], True),
         ("monograph_build", ["tools/build_monograph.sh"], True),
         ("pdf_integrity", ["qpdf", "--check", str(PDF_PATH)], True),
     ]
+    if args.wolfram_checks:
+        steps.append(
+            (
+                "wolfram_calculation_checks",
+                ["tools/run_calculation_checks.sh", "--wolfram-only"],
+                False,
+            )
+        )
     if args.rendered_figures:
         steps.extend(
             [
@@ -401,6 +409,14 @@ def main() -> int:
         action="store_true",
         help="run the public qft_scripts smoke suite",
     )
+    parser.add_argument(
+        "--wolfram-checks",
+        action="store_true",
+        help=(
+            "run optional Wolfram Language companion checks; the mandatory "
+            "release gate uses the canonical Python calculation checks"
+        ),
+    )
     args = parser.parse_args()
 
     out_dir = args.out_dir if args.out_dir.is_absolute() else ROOT / args.out_dir
@@ -472,6 +488,15 @@ def main() -> int:
                 reason="optional numerical smoke pass not requested; pass --qft-scripts-smoke",
             )
         )
+    if not args.wolfram_checks:
+        steps.append(
+            synthetic_step(
+                "wolfram_calculation_checks",
+                "skipped",
+                mandatory=False,
+                reason="optional Wolfram companion checks not requested; pass --wolfram-checks",
+            )
+        )
 
     finished_at = utc_now()
     manifest: dict[str, Any] = {
@@ -487,6 +512,7 @@ def main() -> int:
             "rendered_figures": args.rendered_figures,
             "rendered_figure_dpi": args.rendered_figure_dpi,
             "qft_scripts_smoke": args.qft_scripts_smoke,
+            "wolfram_checks": args.wolfram_checks,
         },
         "platform": {
             "system": platform.system(),
