@@ -1744,11 +1744,87 @@ coefficient formula for \(L_{N-1}^{(1)}\).  Setting \(s=1\) and
 \(\alpha=2N/\lambda_{\rm circ}\) gives
 \eqref{eq:finite-n-circular-wilson-laguerre}.
 
+\begin{quotedtheorem}[Gaussian log-gas convergence and exponential insertion]
+\label{qt:gaussian-log-gas-exponential-insertion}
+Use the standard Gaussian \(\beta=2\) log-gas large-deviation and edge-tail
+theory, in the form recorded for example in
+\cite{BenArousGuionnet1997,AndersonGuionnetZeitouni2010}.
+Fix \(\lambda>0\), and let
+\[
+  L_N=\frac1N\sum_{i=1}^N\delta_{x_i}
+\]
+be the empirical measure of the eigenvalue density
+\eqref{eq:circular-wilson-eigenvalue-measure}.  The sequence \(L_N\) obeys a
+large-deviation principle on probability measures on \(\mathbb R\), at speed
+\(N^2\), with good rate function
+\[
+  \mathcal I_\lambda(\nu)-\inf_\eta\mathcal I_\lambda(\eta),
+  \qquad
+  \mathcal I_\lambda(\nu)
+  =
+  \frac{2}{\lambda}\int x^2\,d\nu(x)
+  -
+  \iint\log|x-y|\,d\nu(x)d\nu(y),
+\]
+on the domain where the quadratic moment and logarithmic energy are finite,
+and \(+\infty\) otherwise.  The minimizer \(\mu_\lambda\) is unique.
+Consequently \(L_N\to\mu_\lambda\) in probability, and almost surely if the
+finite-\(N\) ensembles are realized independently on a product probability
+space.  For every bounded continuous function \(f\),
+\[
+  \lim_{N\to\infty}
+  \mathbb E_{\lambda,N}\!\left[\int f\,dL_N\right]
+  =
+  \int f\,d\mu_\lambda .
+\]
+For the Gaussian potential the right edge has an exponential tail strong
+enough to control the circular Wilson insertion:
+\begin{equation}
+  \lim_{R\to\infty}\limsup_{N\to\infty}
+  \mathbb E_{\lambda,N}\!\left[
+    \int_{|x|>R}\ee^x\,dL_N(x)
+  \right]
+  =
+  0.
+  \label{eq:gaussian-log-gas-exponential-ui}
+\end{equation}
+Hence the same convergence of expectations holds for \(f(x)=\ee^x\).
+\end{quotedtheorem}
+
+The last assertion is the point that a saddle calculation usually hides.  A
+standard form of the Gaussian edge estimate gives, for \(u\) beyond the
+limiting right edge,
+\[
+  \mathbb P_{\lambda,N}(\lambda_{\max}\ge u)
+  \le
+  A_\lambda\exp[-N c_\lambda u^2].
+\]
+Then
+\[
+  \int_R^\infty \ee^x\,dL_N(x)
+  \le
+  \ee^{\lambda_{\max}}\mathbf 1_{\lambda_{\max}>R}
+\]
+and integration by parts bounds the expectation by
+\[
+  \ee^R\mathbb P(\lambda_{\max}>R)
+  +
+  \int_R^\infty \ee^u\mathbb P(\lambda_{\max}>u)\,du ,
+\]
+whose \(N\to\infty\) upper limit vanishes and then remains zero as
+\(R\to\infty\).  The left tail is harmless because \(\ee^x\le \ee^{-R}\) on
+\((-\infty,-R]\).  Thus one first applies weak convergence to a bounded
+truncation of \(\ee^x\), and only then removes the cutoff by
+\eqref{eq:gaussian-log-gas-exponential-ui}.  This is the finite-\(N\) bridge
+between the matrix integral and the planar Wilson-loop expectation.
+
 \begin{theorem}[Planar circular Wilson loop from the Gaussian model]
 \label{thm:planar-circular-wilson-bessel}
-In the large-\(N\) limit of
+Let \(L_N=N^{-1}\sum_i\delta_{x_i}\) for the Gaussian model
 \eqref{eq:circular-wilson-eigenvalue-measure}, with
-\(\lambda_{\rm circ}>0\) fixed, the normalized eigenvalue density is
+\(\lambda_{\rm circ}>0\) fixed.  Then \(L_N\) converges in probability to
+\(\rho_{\lambda_{\rm circ}}(x)\,dx\), and almost surely for an independent
+product realization of the finite-\(N\) ensembles, where
 \begin{equation}
   \rho_{\lambda_{\rm circ}}(x)
   =
@@ -1757,7 +1833,11 @@ In the large-\(N\) limit of
   \mathbf 1_{[-\sqrt{\lambda_{\rm circ}},\sqrt{\lambda_{\rm circ}}]}(x).
   \label{eq:circular-wilson-semicircle-density}
 \end{equation}
-Consequently the planar fundamental circular Wilson loop is
+For bounded continuous test functions the expectations of
+\(\int f\,dL_N\) converge to the corresponding semicircle integral, and the
+unbounded Wilson insertion is controlled by
+\eqref{eq:gaussian-log-gas-exponential-ui}.  Therefore the planar
+fundamental circular Wilson loop is
 \begin{equation}
   \lim_{N\to\infty}
   \left\langle
@@ -1774,9 +1854,12 @@ where \(I_1\) is the modified Bessel function.
 \end{theorem}
 
 \begin{proof}
-For an empirical density \(\rho\) with \(\int\rho(x)dx=1\), the large-\(N\)
-functional obtained from \eqref{eq:circular-wilson-eigenvalue-measure} is,
-up to an additive constant,
+The quoted Gaussian log-gas theorem gives tightness, concentration at the
+unique minimizer, and the expectation statement, including the unbounded
+exponential insertion.  It remains to identify the minimizer and evaluate its
+exponential moment.  For an empirical density \(\rho\) with
+\(\int\rho(x)dx=1\), the rate functional obtained from
+\eqref{eq:circular-wilson-eigenvalue-measure} is, up to an additive constant,
 \begin{equation}
   \mathcal F[\rho]
   =
@@ -1840,9 +1923,19 @@ between the left side of
 \]
 and the corresponding negative derivative on the left component
 \(x<-\sqrt{\lambda_{\rm circ}}\).  Hence the effective potential is larger
-off the support, so the candidate density is the equilibrium density.
+off the support, so the candidate density is the unique equilibrium density
+\(\mu_{\lambda_{\rm circ}}\) in
+Quoted Theorem~\ref{qt:gaussian-log-gas-exponential-insertion}.
 
-It remains to evaluate the loop insertion.  Put
+By the exponential-insertion part of
+Quoted Theorem~\ref{qt:gaussian-log-gas-exponential-insertion},
+\[
+  \lim_{N\to\infty}
+  \mathbb E_{\lambda_{\rm circ},N}\!\left[\int\ee^x\,dL_N(x)\right]
+  =
+  \int\ee^x\,\rho_{\lambda_{\rm circ}}(x)\,dx .
+\]
+Put
 \(z=\sqrt{\lambda_{\rm circ}}\) and \(x=zt\).  Then
 \begin{equation}
   \int dx\,\rho_{\lambda_{\rm circ}}(x)\ee^x
@@ -1878,6 +1971,28 @@ gives the same series
   I_1\!\left(\sqrt{\lambda_{\rm circ}}\right).
   \label{eq:circular-wilson-bessel-series}
 \end{equation}
+
+The exact Laguerre formula
+\eqref{eq:finite-n-circular-wilson-laguerre} gives the same expectation limit
+without referring to the equilibrium measure.  Indeed,
+\[
+  \frac1N L_{N-1}^{(1)}
+  \!\left(-\frac{\lambda_{\rm circ}}{4N}\right)
+  =
+  \sum_{k=0}^{N-1}
+  \frac{\binom{N}{k+1}}{N^{k+1}}
+  \frac1{k!}
+  \left(\frac{\lambda_{\rm circ}}4\right)^k ,
+\]
+the coefficient is bounded by
+\(\bigl(k!(k+1)!\bigr)^{-1}(\lambda_{\rm circ}/4)^k\), and for each fixed
+\(k\) it converges to that bound as \(N\to\infty\).  Dominated convergence of
+this positive series, together with
+\(\exp(\lambda_{\rm circ}/8N)\to1\), reproduces
+\eqref{eq:circular-wilson-bessel-series}.  This direct finite-\(N\) check is
+consistent with, but logically weaker than, the log-gas statement because it
+proves only this protected exponential moment rather than convergence of the
+matrix-model empirical measure.
 \end{proof}
 
 \begin{remark}[Bremsstrahlung derivative algebra]

@@ -85,6 +85,12 @@
   model,
   `N^{-1} exp(lambda/(8N)) L_{N-1}^{(1)}(-lambda/(4N))`, derived from the
   Hermite kernel before taking the planar limit.
+- Gaussian log-gas finite-\(N\)-to-planar bridge for the same matrix model:
+  empirical-measure large-deviation/concentration at speed \(N^2\), convergence
+  in probability (and product-space almost surely), bounded-test expectation
+  convergence, a separate exponential-tail/uniform-integrability input for the
+  unbounded \(\ee^x\) Wilson insertion, and a dominated finite-\(N\) Laguerre
+  coefficient check reproducing the Bessel series.
 - \(S^3\) \(\mathcal N=2\) Chern-Simons-matter localization datum
   \(\mathfrak D_{S^3}\), with global gauge form, cocharacter lattice,
   spin/non-spin Chern-Simons choice, framing, bare/effective contact-level
@@ -256,11 +262,14 @@
 20. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
    Gaussian matrix model with the Weyl/Vandermonde factor.  The chapter now
    defines the circular-loop Gaussian coupling, derives the exact finite-\(N\)
-   Laguerre-polynomial Wilson-loop formula from the Hermite kernel, derives
-   the planar semicircle density, evaluates the half-BPS circular Wilson loop
-   as \(2I_1(\sqrt{\lambda_{\rm circ}})/\sqrt{\lambda_{\rm circ}}\), and
-   derives the Bessel algebra behind the Bremsstrahlung function from the
-   protected circular-loop Ward identity.
+   Laguerre-polynomial Wilson-loop formula from the Hermite kernel, inserts
+   the Gaussian log-gas large-deviation/concentration bridge from finite
+   eigenvalue measures to the semicircle law, separately controls the
+   unbounded \(\ee^x\) Wilson insertion by an exponential edge-tail truncation,
+   evaluates the half-BPS circular Wilson loop as
+   \(2I_1(\sqrt{\lambda_{\rm circ}})/\sqrt{\lambda_{\rm circ}}\), and derives
+   the Bessel algebra behind the Bremsstrahlung function from the protected
+   circular-loop Ward identity.
 21. The \(S^3\) \(\mathcal N=2\) partition function is attached to a full
     globally quantized Chern-Simons-matter datum \(\mathfrak D_{S^3}\), not to
     an arbitrary scalar \(k\) for an arbitrary compact group.
@@ -292,6 +301,10 @@
   the finite normal Gaussian Pfaffian/determinant convention and
   zero-mode detection, the protected-insertion residual telescope for the
   \(S^4\) localization functional and normalized Wilson-loop ratio, the
+  dominated finite-\(N\) Laguerre coefficient limit behind the planar
+  circular Wilson-loop Bessel series, the exponential-tail truncation
+  inequality template needed before the unbounded \(\ee^x\) insertion can be
+  passed through a weak empirical-measure limit, the
   \(S^4\) \(H\)-function finite-product logarithmic derivative, the
   finite-part mode determinant ledger behind the \(H\)-powers, finite
   double-sine reflection and chiral pole conventions, \(S^3\) global
@@ -341,6 +354,13 @@
   before the planar saddle derivation, deriving the Laguerre formula from the
   Hermite orthogonal-polynomial kernel and adding finite-\(N\) rational
   coefficient checks.
+- 2026-06-05 issue #796 pass: completed the finite Gaussian matrix-model
+  proof behind the planar circular Wilson-loop theorem.  The chapter now
+  states the log-gas large-deviation/concentration theorem with convergence
+  mode, proves the semicircle as the unique minimizer, controls the unbounded
+  Wilson insertion by an exponential edge-tail truncation before removing the
+  cutoff, and records the exact Laguerre dominated-convergence route as a
+  finite-\(N\) check rather than a continuum-QFT localization proof.
 - 2026-05-30: added the upfront compact supersymmetric localization datum so
   the chapter no longer relies on scattered prose for the regulator,
   supercharge-square, fixed-locus, determinant, contour, singular-stratum, and

@@ -13,6 +13,8 @@ S^4 and S^3 matrix models:
 * the finite-product logarithmic derivative of the S^4 H-function;
 * the finite-part determinant ledger behind the S^4 H-powers;
 * the elementary U(1) S^4 Gaussian integral;
+* the dominated finite-N Laguerre coefficient limit for the planar circular
+  Wilson loop and the separate exponential-tail truncation template;
 * the finite double-sine reflection identity and chiral pole convention;
 * global Chern-Simons level-lattice, FI-center, contact-block, and
   parity-anomaly half-shift bookkeeping for the S^3 formula;
@@ -424,6 +426,81 @@ def check_s4_protected_insertion_residual_budget() -> None:
     assert_equal("S4 protected-insertion zero-residual closure", zero_residual, zero_vector)
 
 
+def check_circular_wilson_laguerre_dominated_limit() -> None:
+    # From
+    # N^{-1} L_{N-1}^{(1)}(-lambda/(4N))
+    # = sum_k binom(N,k+1) N^{-(k+1)} (lambda/4)^k/k!,
+    # each fixed coefficient is bounded by the planar Bessel coefficient and
+    # converges to it as N grows.
+    max_power = 8
+    ranks = [12, 24, 48, 96]
+    for power in range(max_power + 1):
+        planar_coefficient_without_lambda = Fraction(
+            1,
+            (4**power) * math.factorial(power) * math.factorial(power + 1),
+        )
+        previous_error: Fraction | None = None
+        for rank in ranks:
+            finite_coefficient = Fraction(
+                math.comb(rank, power + 1),
+                (rank ** (power + 1)) * (4**power) * math.factorial(power),
+            )
+            _assert_leq(
+                f"finite Laguerre coefficient dominated k={power} N={rank}",
+                finite_coefficient,
+                planar_coefficient_without_lambda,
+            )
+            error = planar_coefficient_without_lambda - finite_coefficient
+            _assert_leq(f"finite Laguerre coefficient has nonnegative gap k={power} N={rank}", 0, error)
+            if previous_error is not None:
+                _assert_leq(
+                    f"finite Laguerre coefficient convergence improves k={power} N={rank}",
+                    error,
+                    previous_error,
+                )
+            previous_error = error
+
+    lambda_value = mp.mpf("1.7")
+    partial_bound = mp.fsum(
+        (lambda_value / 4) ** power
+        / (mp.factorial(power) * mp.factorial(power + 1))
+        for power in range(25)
+    )
+    bessel_value = 2 * mp.besseli(1, mp.sqrt(lambda_value)) / mp.sqrt(lambda_value)
+    assert_close(
+        "planar Bessel dominated series partial sum",
+        partial_bound,
+        bessel_value,
+        mp.mpf("2e-49"),
+    )
+
+
+def check_circular_wilson_exponential_tail_truncation() -> None:
+    # If the maximum eigenvalue has a Gaussian edge tail
+    # P(M_N>u) <= exp(-a N u^2), the unbounded insertion is controlled by
+    # E[e^M 1_{M>R}] <= e^R P(M>R)+int_R^infty e^u P(M>u) du.
+    tail_strength = mp.mpf("0.18")
+
+    def tail_bound(rank: int, cutoff: mp.mpf) -> mp.mpf:
+        return mp.e ** (cutoff - tail_strength * rank * cutoff * cutoff) + mp.quad(
+            lambda u: mp.e ** (u - tail_strength * rank * u * u),
+            [cutoff, mp.inf],
+        )
+
+    rank = 20
+    previous = tail_bound(rank, mp.mpf("4.0"))
+    for cutoff in (mp.mpf("5.0"), mp.mpf("6.0"), mp.mpf("7.0")):
+        current = tail_bound(rank, cutoff)
+        _assert_leq(f"Wilson exponential tail decreases R={cutoff}", current, previous)
+        previous = current
+
+    cutoff = mp.mpf("5.5")
+    rank_tail = tail_bound(40, cutoff)
+    stronger_rank_tail = tail_bound(80, cutoff)
+    _assert_leq("Wilson exponential tail decreases with N", stronger_rank_tail, rank_tail)
+    _assert_leq("negative tail is bounded by exp(-R)", mp.e ** (-cutoff), mp.mpf("0.005"))
+
+
 def pestun_H_trunc(x: mp.mpf | mp.mpc, cutoff: int) -> mp.mpf | mp.mpc:
     product = mp.mpf(1)
     for n in range(1, cutoff + 1):
@@ -657,6 +734,8 @@ def main() -> None:
     check_finite_normal_gaussian_factor()
     check_s4_u1_gaussian_integral()
     check_s4_protected_insertion_residual_budget()
+    check_circular_wilson_laguerre_dominated_limit()
+    check_circular_wilson_exponential_tail_truncation()
     check_s4_H_log_derivative()
     check_s4_finite_part_determinant_ledger()
     check_s3_double_sine_conventions()
