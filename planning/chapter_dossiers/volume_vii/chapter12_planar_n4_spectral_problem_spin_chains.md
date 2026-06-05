@@ -18,10 +18,19 @@ replacement for the QFT.
   `theta/(2 pi)+4 pi i/g_YM^2`.
 - `mathfrak H`: upper-half-plane coupling chart for the local
   \(\mathcal N=4\) conformal family.
-- `Gamma`: duality subgroup of `PSL(2,Z)` acting on the chosen global-form
-  and line-operator datum.
+- `mathfrak T`: extended \(\mathcal N=4\) theory label consisting of local
+  Lie algebra, global gauge form, allowed bundle groupoid, discrete theta
+  weight, genuine Wilson--'t Hooft line lattice, spacetime/spin class, and
+  background counterterm conventions.
+- `Gamma_T`: stabilizer subgroup of the modular duality orbit that acts as
+  self-equivalences of a fixed extended theory label.
+- `Gamma_loc`: possible larger local-operator-only identification group after
+  global bundle and line data have been deliberately forgotten.
+- `L_{N,k,p}`: finite center-sensitive genuine line lattice for
+  `SU(N)/Z_k` with discrete theta coordinate `p`.
 - `T`, `S`: fractional-linear transformations
-  `tau -> tau+1` and `tau -> -1/tau`.
+  `tau -> tau+1` and `tau -> -1/tau`, together with their line-lattice actions
+  `(e,m)->(e+m,m)` and `(e,m)->(m,-e)`.
 - `C_2(g)`: adjoint quadratic Casimir.
 - `a,c`: four-dimensional conformal anomaly coefficients.
 - `O_C^(k)`: half-BPS single-trace representative in `[0,k,0]`.
@@ -58,9 +67,26 @@ replacement for the QFT.
 - Defines the upper-half-plane coupling chart, proves the local
   one-complex-dimensional conformal-manifold statement, and separates this
   local exact marginality from any global electric-magnetic quotient.
-- States the \(PSL(2,Z)\) duality quotient as a separate QFT-status
-  hypothesis depending on global form and line-operator lattice; no string
-  construction is used as an input.
+- Replaces the generic duality-group input with the named central
+  Montonen--Olive \(S\)-duality conjecture.  The conjecture acts on the full
+  pair `(tau, mathfrak T)`, where `mathfrak T` includes global form, bundle
+  groupoids, discrete theta weights, genuine Wilson--'t Hooft line lattices,
+  spacetime/spin data, and background counterterm conventions.  It states the
+  conjectural equivalence of local operator algebras/correlators, protected
+  observables, background partition functions with modular/contact/anomaly
+  data, line/surface defects, boundaries, and duality interfaces.  The
+  partition-function clause is written as a background-sector transformation
+  with weights `w_+`, `w_-`, anomaly phase `Phi_gamma`, transported background
+  sector `gamma B`, and counterterm dependence, so the chapter does not infer a
+  full QFT equivalence from the fractional-linear action on `tau`.
+- Separates the modular orbit of extended theories from the fixed-theory
+  stabilizer: `Gamma_T={gamma | gamma mathfrak T ~= mathfrak T}` is the group
+  used in the full extended-QFT quotient `mathfrak H/Gamma_T`, while a larger
+  `PSL(2,Z)` quotient belongs only to a local-adjoint-sector truncation after
+  global form, bundle, discrete-theta, and line data have been forgotten.
+- Cross-references the Volume IX line-operator, discrete-theta, and
+  duality-defect chapters as the global language in which the \(S,T\) action
+  on genuine lines and duality walls is formulated.
 - Computes the free-field anomaly coefficients to get
   `a=c=dim(g)/4`, with `SU(N)` and `U(N)` specializations.
 - Defines the half-BPS `[0,k,0]` representatives, separates them from the
@@ -116,8 +142,11 @@ single-trace word and the adjacent exchange interaction.
 - `calculation-checks/susy_n4_scft_checks.py` verifies one-loop and
   holomorphic beta-function cancellation, the one-dimensional local
   exact-marginal coupling-chart count, theta-periodicity, `SL(2,Z)` generator
-  relations and upper-half-plane preservation, `a=c=dim(g)/4`, idempotence
-  and dimension of the `SO(6)` symmetric-traceless projector, the
+  relations and upper-half-plane preservation, the Montonen--Olive
+  orbit/stabilizer line-lattice ledger distinguishing `SU(N)` electric lines,
+  `PSU(N)` magnetic lines, discrete-theta tilts, and fixed-label stabilizers,
+  `a=c=dim(g)/4`, idempotence and dimension of the
+  `SO(6)` symmetric-traceless projector, the
   stress-tensor-multiplet two-point normalization factor, and the planar
   chiral two-point/OPE coefficient arithmetic including the pair-of-pants
   cyclic factor.
@@ -164,3 +193,9 @@ single-trace word and the adjacent exchange interaction.
   statement to a worked convention calculation.  It fixes two-point and
   extremal three-point normalizations by planar Wick counting, but the proof is
   not a substantive theorem about the interacting theory.
+- 2026-06-05 issue #805 pass: promoted Montonen--Olive \(S\)-duality from a
+  generic duality-group hypothesis to a central conjecture about extended
+  \(\mathcal N=4\) QFT labels.  The pass distinguishes the modular orbit of
+  theories from the stabilizer of one fixed extended theory and records that
+  local-operator-only \(PSL(2,Z)\) identifications arise only after global
+  form, bundle, discrete-theta, and genuine-line data are forgotten.

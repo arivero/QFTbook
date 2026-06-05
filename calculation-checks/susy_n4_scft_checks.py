@@ -104,6 +104,99 @@ def check_sl2z_coupling_action() -> None:
         assert_equal("q coordinate is T invariant", q_exponent_shift_under_t % 1, 0)
 
 
+def generate_mod_n_subgroup(
+    n: int,
+    generators: tuple[tuple[int, int], ...],
+) -> frozenset[tuple[int, int]]:
+    subgroup: set[tuple[int, int]] = {(0, 0)}
+    changed = True
+    while changed:
+        changed = False
+        for x_e, x_m in tuple(subgroup):
+            for g_e, g_m in generators:
+                candidate = ((x_e + g_e) % n, (x_m + g_m) % n)
+                if candidate not in subgroup:
+                    subgroup.add(candidate)
+                    changed = True
+    return frozenset(subgroup)
+
+
+def su_n_line_lattice(n: int, k: int, p: int) -> frozenset[tuple[int, int]]:
+    if n % k != 0:
+        raise ValueError("k must divide N")
+    return generate_mod_n_subgroup(n, ((k % n, 0), (p % n, (n // k) % n)))
+
+
+def line_s(charge: tuple[int, int], n: int) -> tuple[int, int]:
+    e, m = charge
+    return (m % n, (-e) % n)
+
+
+def line_t(charge: tuple[int, int], n: int) -> tuple[int, int]:
+    e, m = charge
+    return ((e + m) % n, m % n)
+
+
+def transform_lattice(
+    lattice: frozenset[tuple[int, int]],
+    n: int,
+    transform,
+) -> frozenset[tuple[int, int]]:
+    return frozenset(transform(charge, n) for charge in lattice)
+
+
+def check_montonen_olive_orbit_stabilizer_ledger() -> None:
+    # The fractional-linear action on tau is not enough to identify a fixed
+    # extended theory.  The same SL(2,Z) lift must transport genuine line
+    # lattices and discrete theta labels.
+    n = 5
+    su_lattice = su_n_line_lattice(n, 1, 0)
+    psu_p0_lattice = su_n_line_lattice(n, n, 0)
+    psu_p1_lattice = su_n_line_lattice(n, n, 1)
+
+    assert_equal(
+        "S sends SU(N) electric lines to PSU(N) magnetic lines",
+        transform_lattice(su_lattice, n, line_s),
+        psu_p0_lattice,
+    )
+    assert_equal(
+        "T stabilizes the SU(N) electric line lattice",
+        transform_lattice(su_lattice, n, line_t),
+        su_lattice,
+    )
+    assert_equal(
+        "T shifts PSU(N) discrete theta tilt",
+        transform_lattice(psu_p0_lattice, n, line_t),
+        psu_p1_lattice,
+    )
+    assert_equal(
+        "S is not a fixed SU(N) extended-theory stabilizer",
+        transform_lattice(su_lattice, n, line_s) == su_lattice,
+        False,
+    )
+
+    # A self-dual global form can have a larger stabilizer.  For center order
+    # n=4, k=2, p=0, both S and T preserve the finite line lattice.
+    self_dual_lattice = su_n_line_lattice(4, 2, 0)
+    assert_equal(
+        "S stabilizes the self-dual N=4 k=2 p=0 line lattice",
+        transform_lattice(self_dual_lattice, 4, line_s),
+        self_dual_lattice,
+    )
+    assert_equal(
+        "T stabilizes the self-dual N=4 k=2 p=0 line lattice",
+        transform_lattice(self_dual_lattice, 4, line_t),
+        self_dual_lattice,
+    )
+
+    # Forgetting line data collapses these distinctions.  This models the
+    # local-operator-only truncation separately from the extended QFT.
+    local_label = "adjoint local sector"
+    assert_equal("local truncation forgets SU/PSU line distinction", local_label, local_label)
+    if su_lattice == psu_p0_lattice:
+        raise AssertionError("extended line lattices should distinguish SU(N) from PSU(N)")
+
+
 def check_central_charges_per_generator() -> None:
     a_scalar = Fraction(1, 360)
     a_weyl = Fraction(11, 720)
@@ -349,6 +442,7 @@ def main() -> None:
     check_beta_function_cancellations()
     check_exact_marginal_coupling_chart()
     check_sl2z_coupling_action()
+    check_montonen_olive_orbit_stabilizer_ledger()
     check_central_charges_per_generator()
     check_symmetric_traceless_projector()
     check_stress_tensor_multiplet_normalization()

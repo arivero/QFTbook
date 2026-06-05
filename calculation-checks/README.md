@@ -1847,7 +1847,10 @@ Current checks:
   \(\mathcal N=4\) SYM SCFT foundation material, including one-loop and
   holomorphic beta-function cancellation, the one-complex-dimensional
   exact-marginal coupling chart, theta-periodicity and \(SL(2,\mathbb Z)\)
-  generator arithmetic, \(a=c=\dim\mathfrak g/4\), the \(SO(6)\)
+  generator arithmetic, the Montonen--Olive orbit/stabilizer line-lattice
+  ledger showing that \(S\) can move \(SU(N)\) electric lines to a \(PSU(N)\)
+  magnetic lattice while only the fixed-label stabilizer acts on one extended
+  QFT, \(a=c=\dim\mathfrak g/4\), the \(SO(6)\)
   symmetric-traceless projector, stress-tensor-multiplet two-point
   normalization, planar half-BPS chiral OPE coefficients, the finite-\(N\)
   Laguerre-polynomial circular Wilson-loop formula, the semicircle moments
