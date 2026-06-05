@@ -641,7 +641,9 @@ Current checks:
   mass-saturated vacuum-activity size integral with its
   \(\prod_f(m_f\rho)\) zero-mode factors,
   small-\(\rho\) finiteness margin, large-\(\rho\) obstruction, and
-  massless-flavor vanishing, the screened one-instanton size integral
+  massless-flavor vanishing, plus the finite-window mass/phase derivative
+  Ward relations tying the instanton theta curvature to the saturated
+  zero-mode mass determinant, the screened one-instanton size integral
   \(I_A(m_{\rm scr})=\frac12m_{\rm scr}^{-A}\Gamma(A/2)\), including exact
   moment, shell-location, and \(SU(3)\), \(N_f=2\) mass-saturated dimension
   bookkeeping, the thermal determinant-screening coefficient

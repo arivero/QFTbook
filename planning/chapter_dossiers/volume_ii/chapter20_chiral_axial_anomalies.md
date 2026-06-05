@@ -1788,3 +1788,15 @@
   finite Schur construction, determinant expansion, zero-coupling limit, and
   negative control against replacing this source-dependent effect by a
   universal determinant constant.
+- 2026-06-05 issue #597 mass-saturation Ward-derivative pass: added
+  `ca:mass-saturated-instanton-ward-derivatives` after the mass-saturated
+  vacuum activity.  The pass reads the finite-window instanton activity as a
+  source functional \(E_I=-2\zeta_m\cos(\theta+\arg\det M)\), then derives
+  the local topological curvature, mass derivatives, and phase derivatives.
+  It records the finite-window identities
+  \(|m_f|\Sigma_f^I+\chi_{\rm top}^I=0\) and
+  \(\partial_{\arg m_f}E_I=\partial_\theta E_I\), while keeping the full QCD
+  susceptibility/condensate outside the isolated-instanton coordinate.  The
+  BPST companion checks the exact derivative algebra, massless-flavor vacuum
+  vanishing, and the distinction between mass saturation and nonzero
+  source-saturated fermion correlators.

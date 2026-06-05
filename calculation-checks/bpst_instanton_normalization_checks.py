@@ -146,6 +146,9 @@ relations
     theta+arg det M, is locally small-rho finite when b0+Nf>4, and is
     infrared-uncontrolled in zero-temperature QCD if the same one-loop power
     is extended to large rho
+    mass derivatives of the finite-window vacuum activity obey the local
+    anomalous Ward relations m_f Sigma_f^I + chi_top^I=0 and
+    d_{arg m_f} E_I=d_theta E_I
     a physical Gaussian screening scale turns the one-instanton size integral
     into 1/2 m_scr^(-A) Gamma(A/2), with exact moment and shell-location
     bookkeeping; for SU(3), Nf=2 mass saturation A=23/3
@@ -4873,6 +4876,55 @@ def check_mass_saturated_vacuum_activity_size_integral() -> None:
     )
 
 
+def check_mass_saturated_instanton_ward_derivatives() -> None:
+    masses = [Fraction(2, 3), Fraction(5, 7), Fraction(11, 13)]
+    determinant_prefactor = Fraction(17, 19)
+    size_integral = Fraction(23, 29)
+    zeta = determinant_prefactor * size_integral * product_fraction(masses)
+    cos_bar_theta = Fraction(7, 11)
+    sin_bar_theta = Fraction(5, 13)
+
+    energy = -2 * zeta * cos_bar_theta
+    topological_curvature = 2 * zeta * cos_bar_theta
+    theta_derivative = 2 * zeta * sin_bar_theta
+    assert_equal(
+        "mass-saturated instanton energy and theta curvature",
+        -energy,
+        topological_curvature,
+    )
+
+    for flavor, mass in enumerate(masses):
+        mass_derivative = -2 * zeta * cos_bar_theta / mass
+        phase_derivative = 2 * zeta * sin_bar_theta
+        assert_equal(
+            f"mass-saturated instanton mass Ward flavor {flavor}",
+            mass * mass_derivative + topological_curvature,
+            Fraction(0),
+        )
+        assert_equal(
+            f"mass-saturated instanton phase Ward flavor {flavor}",
+            phase_derivative,
+            theta_derivative,
+        )
+
+    masses_with_zero = [masses[0], Fraction(0), masses[2]]
+    zero_activity = (
+        determinant_prefactor * size_integral * product_fraction(masses_with_zero)
+    )
+    assert_equal("massless flavor kills vacuum instanton activity", zero_activity, Fraction(0))
+
+    # Source saturation remains a different coordinate: a four-source
+    # determinant can be nonzero even when the mass determinant vanishes.
+    right_source = [[Fraction(1), Fraction(2)], [Fraction(3), Fraction(5)]]
+    left_source = [[Fraction(7), Fraction(11)], [Fraction(13), Fraction(17)]]
+    source_saturated = det_fraction(right_source) * det_fraction(left_source)
+    assert_equal(
+        "source-saturated instanton correlator can survive zero mass",
+        source_saturated != 0 and zero_activity == 0,
+        True,
+    )
+
+
 def check_screened_one_instanton_size_integral() -> None:
     n_c = 3
     n_f = 2
@@ -5354,6 +5406,7 @@ def main() -> None:
     check_instanton_zero_mode_zone_u1a_susceptibility()
     check_u1a_mode_count_restoration_criterion()
     check_mass_saturated_vacuum_activity_size_integral()
+    check_mass_saturated_instanton_ward_derivatives()
     check_screened_one_instanton_size_integral()
     check_thermal_instanton_determinant_screening()
     check_thermal_dilute_topological_susceptibility()

@@ -8613,6 +8613,70 @@ those correlators use the source-differentiated zero-mode coefficient in
 determinant in \eqref{eq:mass-saturated-instanton-window-activity}.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Mass derivatives of the instanton vacuum
+activity]
+\label{ca:mass-saturated-instanton-ward-derivatives}
+The mass-saturated activity becomes a physical diagnostic when it is read as a
+source functional.  In the finite window of
+ControlledApproximation~\ref{ca:mass-saturated-instanton-vacuum-activity},
+take the diagonal masses to be nonzero and write
+\[
+  \bar\theta=\theta+\arg\det M,\qquad
+  \zeta_m=\mathcal K_{\mathcal S}
+  \prod_{f=1}^{N_f}|m_f|
+  \int_{\rho_-}^{\rho_+}\rho^{\,b_0+N_f-5}\,\dd\rho ,
+\]
+where \(\mathcal K_{\mathcal S}\) contains the common determinant,
+orientation, running-coupling, and finite source-frame factors from
+\eqref{eq:mass-saturated-instanton-window-activity}.  The paired
+instanton--anti-instanton contribution to the vacuum energy density coordinate
+is then
+\begin{equation}
+  \mathcal E_I(\bar\theta)
+  =
+  -2\zeta_m\cos\bar\theta .
+  \label{eq:mass-saturated-instanton-energy-coordinate}
+\end{equation}
+Consequently the finite-window topological curvature and mass derivatives are
+\begin{equation}
+  \chi_{\rm top}^{I}
+  =
+  \partial_\theta^2\mathcal E_I
+  =
+  2\zeta_m\cos\bar\theta,
+  \qquad
+  \Sigma_f^{I}
+  =
+  \frac{\partial\mathcal E_I}{\partial |m_f|}
+  =
+  -\frac{2\zeta_m}{|m_f|}\cos\bar\theta ,
+  \label{eq:mass-saturated-instanton-mass-derivatives}
+\end{equation}
+and the phase derivative of any mass eigenvalue obeys
+\begin{equation}
+  \partial_{\arg m_f}\mathcal E_I
+  =
+  \partial_\theta\mathcal E_I
+  =
+  2\zeta_m\sin\bar\theta .
+  \label{eq:mass-saturated-instanton-phase-derivative}
+\end{equation}
+Thus, in this source convention,
+\begin{equation}
+  |m_f|\Sigma_f^{I}+\chi_{\rm top}^{I}=0,
+  \qquad
+  \partial_{\arg m_f}\mathcal E_I-\partial_\theta\mathcal E_I=0 .
+  \label{eq:mass-saturated-instanton-local-ward-relations}
+\end{equation}
+These identities are the local finite-window shadow of the anomalous axial
+Ward identity: the same zero-mode mass determinant which makes the vacuum
+term vanish when a quark is massless also fixes how the theta curvature is
+related to mass and phase derivatives.  Full zero-temperature QCD
+susceptibilities and condensates require the long-distance propagation,
+Goldstone dynamics, large-size instantons, and ordinary gauge-field
+fluctuations which lie outside this finite-window source coordinate.
+\end{controlledapproximation}
+
 \begin{proposition}[Screened one-instanton size integral]
 \label{prop:screened-one-instanton-size-integral}
 Let a selected one-instanton amplitude channel have the one-loop small-size
