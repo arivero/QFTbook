@@ -118,7 +118,7 @@ def check_abjm_superpotential_r_charge() -> None:
     assert_equal("ABJM quartic superpotential R-charge", quartic_r, 2)
 
 
-def check_abjm_standard_conformal_locus_dimension() -> None:
+def check_abjm_manifest_conformal_tangent_ledger() -> None:
     # In 3D N=2 conventions, a chiral primary has Delta=R at the ABJM point
     # and the d^2 theta measure has dimension 1.  The quartic ABJM
     # superpotential is therefore power-counting marginal, but the standard
@@ -148,10 +148,10 @@ def check_abjm_standard_conformal_locus_dimension() -> None:
             superpotential_tangent_dimension,
             0,
         )
-        standard_conformal_locus_dimension = level_lattice_tangent_dimension
+        manifest_standard_tangent_dimension = level_lattice_tangent_dimension
         assert_equal(
-            f"standard ABJM conformal-locus dimension k={k}",
-            standard_conformal_locus_dimension,
+            f"standard ABJM manifest tangent dimension k={k}",
+            manifest_standard_tangent_dimension,
             0,
         )
 
@@ -730,7 +730,7 @@ def check_class_s_anomaly_pushforward_coefficients() -> None:
 
 def main() -> None:
     check_abjm_superpotential_r_charge()
-    check_abjm_standard_conformal_locus_dimension()
+    check_abjm_manifest_conformal_tangent_ledger()
     check_abjm_parity_level_pair()
     check_abjm_abelian_bf_normalization()
     check_abjm_orbifold_order_and_dimension()

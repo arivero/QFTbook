@@ -2335,7 +2335,7 @@ Current checks:
 - `susy_abjm_6d_checks.py`: exact finite checks for the ABJM and
   six-dimensional supersymmetric field-theory chapters, including the ABJM
   superpotential \(R\)-charge, opposite-level parity bookkeeping, abelian
-  BF normalization, standard ABJM conformal-locus tangent count,
+  BF normalization, standard ABJM manifest tangent ledger,
   \(\mathbb Z_k\) orbifold order, \(S^3\) matrix-model denominator powers,
   free-chiral \(S^3\) determinant normalization, rank-one ABJM sphere-integral
   factors, ABJM Fermi-gas first trace, leading Weyl coefficient, and Airy
@@ -2355,7 +2355,8 @@ Current checks:
   relations, ADE class-\(S\) Hitchin-base degree sums, and regular-puncture
   pole-order shifts for full \(A_{N-1}\) punctures.  These finite checks
   support the conditional anomaly, branch-EFT, and compactification evidence
-  ledger; they do not construct the interacting six-dimensional fixed point.
+  ledger; they do not construct the interacting three-dimensional ABJM SCFT
+  or the interacting six-dimensional fixed point.
 - `susy_gauge_foundation_checks.py`: exact finite checks for the Volume VII
   supersymmetric gauge-theory foundation chapter, including the auxiliary
   \(D\)-field square completion and potential sign, the absence of

@@ -36,6 +36,10 @@ Reviewed source spine:
 - `mu`, `zeta`, `m_i`: moment map, FI coordinate, and real masses.
 - `T(R)`, `m`: representation index and monopole magnetic charge.
 - `G_{N,k}`, `A`, `Ahat`: ABJM gauge group and the two gauge connections.
+- `mathfrak A^{std}_{N,k}`: standard ABJM global datum, including gauge group,
+  matter, superpotential, line lattice, framing, parity-anomaly regulator, and
+  contact-term scheme.
+- `mathcal T_{ABJM}^{std}(N,k)`: conjectural interacting standard ABJM SCFT.
 - `A_a`, `B_dot a`: bifundamental and antibifundamental ABJM chiral
   multiplets.
 - `C_I`: the four complex scalar variables in the `SU(4)` presentation.
@@ -119,20 +123,36 @@ Reviewed source spine:
   monopole operators.
 - Defines ABJM as `U(N)_k x U(N)_{-k}` Chern-Simons-matter theory with four
   bifundamental chirals and quartic superpotential.
+- Adds Definition `def:standard-abjm-global-datum`, naming the standard global
+  gauge/line/contact datum, including the unquotiented `U(N) x U(N)` choice,
+  diagonal `U(1)_+`, anti-diagonal `U(1)_-`, line lattice, and determinant
+  abelian quotient
+  `Z^2/<(1,-1),(k,0),(0,-k)> ~= Z_k` whose Pontryagin dual is the finite
+  determinant one-form symmetry used by the quotient and localization formulae.
+- Adds Conjecture `conj:standard-abjm-scft-existence`, treating the
+  interacting standard ABJM SCFT as the central continuum-QFT input rather than
+  as a consequence of the classical quotient or matrix integral.
 - Proves the opposite-level parity bookkeeping under orientation reversal and
   exchange of the two gauge factors.
 - Defines a fixed-datum local conformal manifold and applies it to standard
   ABJM, distinguishing quantized levels and contact-term data from continuous
   scalar-primary deformations.
-- Proves that the standard `N=6`, `SU(4)`-symmetric ABJM conformal locus at
-  fixed `(N,k)` is zero-dimensional: `k` is integral, `h_ABJM=2 pi/k` is then
-  fixed, real masses/FI coordinates are dimension-one deformations, and
-  Yang-Mills kinetic terms are dimensionful regulator/UV-completion data.
+- Records the manifest standard ABJM tangent ledger: `k` is integral,
+  `h_ABJM=2 pi/k` is then fixed, real masses/FI coordinates are dimension-one
+  deformations, Yang-Mills kinetic terms are dimensionful
+  regulator/UV-completion data, and contact terms are quantized scheme data.
+- Adds Open Problem `op:abjm-conformal-germ-completeness` for the missing
+  protected-operator/multiplet/monopole classification needed to promote the
+  manifest tangent ledger to a full zero-dimensional conformal-germ theorem.
 - Derives the rank-one abelian ABJM branch quotient `C^4/Z_k` from the abelian BF
   reduction and residual finite gauge transformation.
-- States the general commuting-branch moduli space
-  `((C^4/Z_k)^N)/S_N` and `N=8` enhancement for `k=1,2` as a quoted theorem,
-  because monopole sectors and global-form data enter.
+- Proves the general classical commuting-branch quotient
+  `((C^4/Z_k)^N)/S_N` as Proposition
+  `prop:abjm-classical-commuting-branch-quotient`, conditional on the standard
+  global datum.
+- Adds Conjecture `conj:abjm-monopole-n8-enhancement`, separating the quantum
+  `N=8` enhancement for `|k|=1,2` from the classical quotient and recording the
+  monopole-algebra/stress-tensor-multiplet closure debt.
 - Specializes the `S^3` localization formula to ABJM and derives the
   denominator `prod_{i,j} 4 cosh^2(pi(lambda_i-mu_j))` from two conjugate
   bifundamental chiral pairs.
@@ -154,7 +174,7 @@ Reviewed source spine:
 
 - `calculation-checks/susy_abjm_6d_checks.py` verifies the ABJM
   superpotential `R`-charge, parity action on levels `(k,-k)`, abelian
-  BF K-matrix normalization, standard conformal-locus tangent count, `Z_k`
+  BF K-matrix normalization, manifest standard tangent ledger, `Z_k`
   orbifold order, commuting-branch dimension, and the `S^3` matrix-model
   denominator powers.  It also checks the free-chiral determinant
   normalization and the rank-one ABJM `S^3` integral factors.
@@ -190,19 +210,20 @@ Reviewed source spine:
   and which pieces still require continuum construction, contact-term
   matching, finite-`N` status, line/monopole operator matching, and an
   isomorphism of gauge-invariant observable algebras or Kontsevich-Segal data.
-- The general ABJM moduli and supersymmetry-enhancement statements are kept
-  as quoted theorem status because they use quantum monopole sectors and
-  global-form data beyond the polynomial `N=2` Lagrangian.
+- The standard ABJM SCFT is now central-conjecture status.  The classical
+  commuting-branch quotient is a derived classical proposition from the
+  standard global datum; the `N=8` enhancement for `|k|=1,2` is a separate
+  monopole-sector conjecture.
 - Future depth passes should add line-operator lattices, one-form symmetries,
   explicit monopole charge formulae, and background Chern-Simons contact-term
   matching for ABJM dualities.
 - A future spinor-convention pass should choose one global `3D` Hermiticity
   convention for all component Yukawa signs and then upgrade the current
   coefficient-magnitude ledger to a signed formula.
-- The zero-dimensional conformal-locus result is intentionally restricted to
-  the standard `N=6`, `SU(4)` ABJM datum.  Less-symmetric `N=2`
-  Chern-Simons-matter marginal candidates require their own beta-function,
-  current-moment-map, and monopole-sector analysis.
+- The zero-dimensional statement is now only a manifest tangent ledger for the
+  standard `N=6`, `SU(4)` ABJM datum.  The full conformal-germ completeness
+  theorem is open pending protected scalar-primary, current-moment-map,
+  multiplet-recombination, and monopole-sector analysis.
 - The `F`-monotonicity discussion is not theorem status in the current
   foundation: a future pass must construct an AQFT-compatible replacement for
   sharp disk entropy and prove the fixed-point identification with
@@ -218,9 +239,9 @@ quotient, and the two-matrix `S^3` localization contour.
 
 - 2026-05-29 anti-wrapper pass: demoted the rank-one abelian quotient from
   proposition form to derivation prose.  The result fixes the classical
-  \(k\)-dependent orbifold convention; the full commuting-branch and
-  enhancement statements remain quoted theorem status because monopole and
-  global-form data enter.
+  \(k\)-dependent orbifold convention; later issue #802 split the full
+  commuting-branch and enhancement statements into separate classical and
+  quantum status labels.
 - 2026-06-01 planar bosonization pass: added a large-\(N\)
   Chern-Simons vector-model Bose--Fermi matching datum with exact
   rank/level algebra, higher-spin parameter matching, and scalar-singlet
@@ -236,3 +257,9 @@ quotient, and the two-matrix `S^3` localization contour.
   parts of the Bose--Fermi duality problem are exact checks here and which
   remain contact-term, line/monopole, finite-`N`, global-form, and observable
   algebra obligations.
+- 2026-06-05 issue #802 ABJM foundation split: added the standard global datum
+  and central ABJM SCFT conjecture, weakened the conformal-locus claim to a
+  manifest tangent ledger plus open completeness problem, promoted the
+  commuting branch to a classical quotient proposition, and separated
+  monopole-sector `N=8` enhancement from the quotient and finite localization
+  identities.
