@@ -16,9 +16,12 @@ Target claims:
   four-point observable only when the action, Jacobian, source transform,
   composite transform, and Wilson-coordinate shifts are carried together.
 - Evanescent operators in dimensional regularization must be retained through
-  one-loop mixing and projected only after subtraction, because an
-  \(O(\epsilon)\) evanescent matrix element multiplying a UV pole produces a
-  finite physical Wilson-coefficient shift.
+  one-loop mixing and projected only after subtraction.  For the concrete
+  left-current four-fermion representative
+  \(E_{16}=O_3-16 Q\), the \(d=4-\epsilon\) Dirac projection gives
+  \(\Pi_Q E_{16}=-4\epsilon Q\), and a one-loop color-singlet bubble pole
+  \(g^2/(16\pi^2\epsilon)\) therefore produces a finite physical
+  Wilson-coefficient shift.
 
 Independent construction:
 - The heavy-kernel identity is checked as an exact rational identity and as a
@@ -32,9 +35,9 @@ Independent construction:
 - The field-redefinition check computes the transformed scalar EFT
   coefficients, source/composite/Jacobian terms, and the tree four-point
   kernel on and away from the external mass shell.
-- The evanescent check computes the finite \(epsilon \times 1/epsilon\)
-  projection shift and its compensation under a changed evanescent
-  representative.
+- The evanescent check computes the chiral triple-gamma projection coefficient,
+  the color-singlet one-loop bubble pole coefficient, the finite projection
+  shift, and its compensation under a changed evanescent representative.
 
 Imported assumptions:
 - Euclidean low-energy kinematics with q^2 >= 0 and q^2 <= Q^2 << M^2.
@@ -45,9 +48,12 @@ Imported assumptions:
   Gamma_div^(1)=(32 pi^2 epsilon)^(-1) int (V'')^2.
 - The field-redefinition observable check uses the analytically continued
   external pole condition p_i^2=-m^2.
-- The evanescent example is an algebraic one-loop renormalization model for a
-  physical operator Q and an evanescent representative E; it fixes a
-  convention for the finite shift rather than a universal sign convention.
+- The evanescent example uses the conventional four-fermion physical operator
+  \(Q=(\bar\psi_1\gamma_\mu P_L\psi_2)(\bar\psi_3\gamma^\mu P_L\psi_4)\), the
+  triple-gamma representative \(O_3\), \(d=4-\epsilon\), a color-singlet
+  spectator bubble, and the stated chiral Dirac projection convention.  It
+  fixes a convention for the finite shift rather than a universal sign
+  convention.
 
 Negative controls:
 - Reversing the heavy-kernel remainder sign fails the exact identity.
@@ -59,9 +65,10 @@ Negative controls:
 - Dropping either the derivative term or the mass-coordinate shift spoils the
   field-redefinition equality of the on-shell four-point kernel; dropping the
   Jacobian, source transform, or composite transform is also detected.
-- Prematurely quotienting the evanescent operator misses the finite shift, and
-  changing the evanescent representative without the compensating physical
-  coefficient shift changes the projected amplitude.
+- Prematurely quotienting \(E_{16}\) misses the finite shift, using the wrong
+  triple-gamma projection coefficient changes the shift, and changing the
+  evanescent representative without the compensating physical coefficient
+  shift changes the projected amplitude.
 
 Scope boundary:
 - This script checks finite algebra and bookkeeping for the EFT prediction
@@ -245,16 +252,36 @@ def check_scalar_eft_field_redefinition_observable() -> None:
 
 
 def check_evanescent_mixing_projection() -> None:
-    eps = sp.symbols("eps")
-    C_Q, C_E, u, kappa, alpha = sp.symbols("C_Q C_E u kappa alpha", nonzero=True)
+    eps, g2 = sp.symbols("eps g2", nonzero=True)
+    C_Q, C_E, alpha = sp.symbols("C_Q C_E alpha", nonzero=True)
+    d = 4 - eps
 
-    # A regulated evanescent matrix element can be O(epsilon) in the physical
-    # direction before four-dimensional projection.  A one-loop UV pole then
-    # leaves a finite physical shift.
-    evanescent_matrix_element = eps * kappa
-    one_loop_pole_from_evanescent = C_E * u / eps * evanescent_matrix_element
-    finite_shift = sp.limit(one_loop_pole_from_evanescent, eps, 0)
-    assert_zero("evanescent pole projection gives finite physical shift", finite_shift - C_E * u * kappa)
+    # Four-fermion basis:
+    # Q = (bar psi_1 gamma_mu P_L psi_2)(bar psi_3 gamma^mu P_L psi_4)
+    # O3 = (bar psi_1 gamma_mu gamma_nu gamma_rho P_L psi_2)
+    #      (bar psi_3 gamma^mu gamma^nu gamma^rho P_L psi_4).
+    # The chiral Dirac projector onto Q gives Pi_Q O3 = 4 d Q.
+    dirac_projection_o3 = 4 * d
+    assert_zero("triple-gamma projection is 16 - 4 epsilon", dirac_projection_o3 - (16 - 4 * eps))
+
+    evanescent_projection = dirac_projection_o3 - 16
+    assert_zero("E_16 projects as -4 epsilon Q", evanescent_projection + 4 * eps)
+    assert_nonzero("wrong four-dimensional projection misses O(epsilon) term", evanescent_projection)
+
+    # The color-singlet spectator bubble leaves the Kronecker color tensor
+    # delta_{a b} delta_{c d} unchanged.  The scalar integral
+    # mu^epsilon int d^d l/(2 pi)^d (l^2 + Delta)^(-2) has UV pole
+    # 2/(16 pi^2 epsilon) in the d=4-epsilon convention; the graph includes a
+    # symmetry/combinatoric factor 1/2, giving u = g^2/(16 pi^2).
+    color_factor = sp.Integer(1)
+    scalar_bubble_pole_numerator = sp.Integer(2)
+    graph_factor = sp.Rational(1, 2)
+    u = color_factor * graph_factor * scalar_bubble_pole_numerator * g2 / (16 * sp.pi**2)
+    assert_zero("color-singlet bubble pole coefficient", u - g2 / (16 * sp.pi**2))
+
+    pole_projection = C_E * u / eps * evanescent_projection
+    finite_shift = sp.limit(pole_projection, eps, 0)
+    assert_zero("E_16 pole projection gives finite physical shift", finite_shift + 4 * C_E * u)
 
     premature_quotient_shift = sp.Integer(0)
     assert_nonzero(
@@ -262,18 +289,20 @@ def check_evanescent_mixing_projection() -> None:
         finite_shift - premature_quotient_shift,
     )
 
-    # Changing the evanescent representative by epsilon*alpha*Q is a finite
-    # scheme change in the projected physical coefficient.
-    changed_representative_matrix_element = eps * (kappa + alpha)
-    changed_shift = sp.limit(C_E * u / eps * changed_representative_matrix_element, eps, 0)
-    assert_zero("changed evanescent representative finite shift", changed_shift - C_E * u * (kappa + alpha))
+    # Changing E_16 to E_alpha = O3 - (16 + alpha epsilon) Q changes the finite
+    # projected coefficient, and the physical Wilson coefficient must be shifted
+    # by the opposite finite scheme transformation.
+    changed_projection = dirac_projection_o3 - (16 + alpha * eps)
+    assert_zero("changed evanescent representative projection", changed_projection + (4 + alpha) * eps)
+    changed_shift = sp.limit(C_E * u / eps * changed_projection, eps, 0)
+    assert_zero("changed representative finite shift", changed_shift + (4 + alpha) * C_E * u)
     assert_nonzero(
         "uncompensated evanescent representative change alters projected coefficient",
         changed_shift - finite_shift,
     )
 
     projected_old = C_Q + finite_shift
-    physical_countershift = -C_E * u * alpha
+    physical_countershift = alpha * C_E * u
     projected_new = C_Q + physical_countershift + changed_shift
     assert_zero("finite coefficient countershift preserves projected observable", projected_new - projected_old)
 

@@ -178,13 +178,14 @@ The chapter must define and derive:
   measure Jacobian, source term, and observable representative together, and
   the resulting warning that EOM operators may be removed from an on-shell
   matched basis only with the corresponding source/observable transformation;
-- a regulated operator-basis paragraph separating physical, evanescent, EOM,
-  BRST/BV-exact, and boundary/defect sectors, with evanescent representatives
-  retained through mixing and matching before scheme-dependent projection;
-- a one-loop evanescent mixing/projection example showing that an
-  \(O(\epsilon)\) evanescent matrix element multiplied by a \(1/\epsilon\)
-  UV pole shifts a physical Wilson coefficient, and that evanescent
-  representative changes require finite coefficient countershifts;
+- a regulated operator-basis paragraph using a filtration by physical,
+  evanescent, EOM, BRST/BV-exact, and boundary/defect sectors, with any direct
+  sum treated as a noncanonical scheme-dependent splitting;
+- a one-loop evanescent mixing/projection example with the concrete
+  four-fermion representative \(E_{16}=O_3-16Q\), the projection
+  \(\Pi_QE_{16}=-4\epsilon Q\), the color-singlet bubble pole
+  \(g^2/(16\pi^2\epsilon)\), and the finite Wilson-coefficient shift plus its
+  representative-change compensation;
 - a power-counting paragraph that treats canonical, loop, chiral, velocity,
   large-\(N\), endpoint, or multi-parameter filtrations as error organizations
   only after counterterm closure, coefficient assumptions, logarithmic mixing,
@@ -483,14 +484,17 @@ The chapter must define and derive:
     only when the Jacobian, source coupling, and observable representative are
     transformed together.  EOM removal changes off-shell Green functions and
     basis coefficients unless the observable map is also carried along.
-20. Operator reduction is regulator- and observable-dependent: evanescent
-    representatives remain in the regulated basis through mixing/matching
-    before projection; BRST-exact terms require an anomaly-free physical
-    cohomology setting; and boundary terms remain physical whenever boundary,
-    defect, edge, charge, or boundary-observable data are part of the datum.
-21. A one-loop evanescent insertion with an \(O(\epsilon)\) physical projection
-    and a \(1/\epsilon\) UV pole gives a finite physical Wilson-coefficient
-    shift.  Premature four-dimensional quotienting loses that finite term.
+20. Operator reduction is regulator- and observable-dependent: the regulated
+    local module is filtered by physical, evanescent, EOM, BRST/BV-exact, and
+    boundary/defect sectors; a direct-sum coordinate split is a noncanonical
+    scheme choice; BRST-exact terms require an anomaly-free physical cohomology
+    setting; and boundary terms remain physical whenever boundary, defect, edge,
+    charge, or boundary-observable data are part of the datum.
+21. The concrete \(E_{16}=O_3-16Q\) example has
+    \(\Pi_QO_3=(16-4\epsilon)Q\), hence \(\Pi_QE_{16}=-4\epsilon Q\); combined
+    with the color-singlet one-loop bubble pole \(g^2/(16\pi^2\epsilon)\), it
+    shifts \(C_Q\) by \(-4C_Eg^2/(16\pi^2)\), with finite countershifts under
+    \(E_{16}\mapsto O_3-(16+\alpha\epsilon)Q\).
 22. Power counting is a closure and error ledger: logs and anomalous-dimension
     mixing do not lower the declared order, and new kinematic regions require
     new expansion parameters or a changed prediction datum.
@@ -699,3 +703,10 @@ The chapter must define and derive:
   hypotheses for EOM and BRST-exact removal, retains boundary/defect/edge
   sectors when they are physical input, and gives the finite
   \(O(\epsilon)\times1/\epsilon\) evanescent Wilson-coefficient shift example.
+- 2026-06-04 issue #825 pass: replaced the symbolic evanescent
+  \(\epsilon\)-times-pole template with a concrete color-singlet left-current
+  four-fermion example.  The chapter now derives
+  \(\Pi_QO_3=(16-4\epsilon)Q\), the scalar bubble pole
+  \(g^2/(16\pi^2\epsilon)\), the finite shift
+  \(-4C_Eg^2/(16\pi^2)\), and the compensating finite Wilson-coefficient
+  redefinition under \(E_\alpha=O_3-(16+\alpha\epsilon)Q\).

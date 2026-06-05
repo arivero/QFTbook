@@ -672,10 +672,13 @@ Current checks:
   shifts, Jacobian/source/composite transforms, and on-shell four-point
   observable equality with negative controls for wrong graph combinatorics,
   incomplete basis changes, and a spurious universal \(Q^4/\mathcal M^4\) law.
-  Finally, it checks the evanescent-operator \(O(\epsilon)\times1/\epsilon\) finite
-  shift under one-loop projection, the compensating finite coefficient shift
-  under evanescent representative changes, and the hypotheses needed before
-  EOM, BRST-exact, or boundary representatives may be removed.
+  Finally, it checks the concrete evanescent four-fermion example
+  \(E_{16}=O_3-16Q\): the chiral triple-gamma projection
+  \(\Pi_QO_3=(16-4\epsilon)Q\), the color-singlet bubble pole
+  \(g^2/(16\pi^2\epsilon)\), the finite projected coefficient shift, the
+  compensating finite coefficient shift under
+  \(E_\alpha=O_3-(16+\alpha\epsilon)Q\), and the hypotheses needed before EOM,
+  BRST-exact, or boundary representatives may be removed.
 - `borel_laplace_checks.py`: exact checks for the Borel--Laplace and
   zero-dimensional quartic large-order section, including Gaussian moments,
   perturbative coefficients, the ratio
