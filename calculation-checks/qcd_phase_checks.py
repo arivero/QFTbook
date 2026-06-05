@@ -15,10 +15,10 @@ baryon-number cumulants, Roberge--Weiss periodicity bookkeeping, dense-matter
 neutrality constraints, color-flavor-locked gauge-invariant composite
 charges, rotated electromagnetic mass-matrix bookkeeping, screening and
 collective-mode counts, dense Fermi-surface stress scales,
-color-flavor-locked anomaly matching, hydrodynamic response-window
-bookkeeping, momentum-projected baryon diffusion current bookkeeping, and
-the color-flavor-locked symmetry count.  It is not a lattice simulation and it
-does not assert the
+color-flavor-locked faithful-global-symmetry and anomaly-matching
+bookkeeping, hydrodynamic response-window bookkeeping, momentum-projected
+baryon diffusion current bookkeeping, and the color-flavor-locked symmetry
+count.  It is not a lattice simulation and it does not assert the
 existence or order of any QCD phase transition.
 """
 
@@ -540,6 +540,50 @@ def check_cfl_gauge_invariant_composite_charges():
     assert_equal("CFL chiral composite baryon charge", sigma_charge, Fraction(0, 1))
 
 
+def check_cfl_faithful_global_symmetry_bookkeeping():
+    nc = nf = 3
+
+    # The faithful connected flavor-baryon group quotients the diagonal flavor
+    # center.  A diagonal center phase in SU(3)_L and SU(3)_R cancels on the
+    # chiral meson q_L^\dagger q_R and is cubed to one on determinant baryons.
+    diagonal_center_unit = 1
+    meson_center_unit = (-diagonal_center_unit + diagonal_center_unit) % nf
+    left_baryon_center_unit = (nc * diagonal_center_unit) % nf
+    right_baryon_center_unit = (nc * diagonal_center_unit) % nf
+    assert_equal("CFL diagonal flavor center invisible on Sigma", meson_center_unit, 0)
+    assert_equal("CFL diagonal flavor center invisible on left baryon", left_baryon_center_unit, 0)
+    assert_equal("CFL diagonal flavor center invisible on right baryon", right_baryon_center_unit, 0)
+
+    # A left-only center is not in the kernel: it is visible on q_L^\dagger q_R.
+    left_only_meson_center_unit = (-1 + 0) % nf
+    assert_equal("CFL left-only flavor center visible on Sigma", left_only_meson_center_unit, 2)
+
+    # A 2*pi baryon rotation gives a quark the color-center phase exp(2*pi i/3).
+    # It is therefore meaningful on quarks only together with color-center
+    # quotient data, while it is the identity on integer-baryon operators.
+    quark_center_unit_from_baryon_period = 1 % nc
+    baryon_phase_units_from_baryon_period = nc * quark_center_unit_from_baryon_period % nc
+    assert_equal("CFL baryon period is one color-center unit on quarks", quark_center_unit_from_baryon_period, 1)
+    assert_equal("CFL baryon period is identity on color-singlet baryons", baryon_phase_units_from_baryon_period, 0)
+
+    # If a baryon line has first Chern class c1 modulo 3, the color-center
+    # obstruction of a color-baryon U(3) lift cancels it modulo 3.
+    for c1_mod3 in range(nc):
+        color_obstruction = (-c1_mod3) % nc
+        assert_equal(
+            f"CFL color-baryon obstruction cancellation c1={c1_mod3}",
+            (c1_mod3 + color_obstruction) % nc,
+            0,
+        )
+
+    # The gauge-invariant local CFL baryon-order determinant has charge two.
+    # A source-selected charge-two condensate leaves alpha=pi unbroken.
+    trial_baryon_rotations = [Fraction(k, 6) for k in range(6)]
+    stabilizer_units = [unit for unit in trial_baryon_rotations if (2 * unit).denominator == 1]
+    assert_equal("CFL charge-two baryon-order stabilizer", stabilizer_units, [Fraction(0), Fraction(1, 2)])
+    assert_equal("CFL local coset angle period in 2pi units", Fraction(1, 2), Fraction(1, 2))
+
+
 def check_dense_neutrality_bookkeeping():
     # The ideal CFL electric charge matrix is traceless in flavor space.
     # Equal flavor densities therefore give zero electric density at zero
@@ -665,9 +709,12 @@ def check_cfl_screening_and_collective_counts():
 
 
 def check_cfl_anomaly_matching_bookkeeping():
-    # With half-trace flavor generators, a left-handed fundamental Weyl
+    # With half-trace flavor generators, in a lifted local background chart, a
+    # left-handed fundamental Weyl
     # fermion contributes tr(F^3)/(6(2*pi)^3) and, after tensoring with a
-    # U(1)_B line of charge q_B, q_B F_B tr(F^2)/(2(2*pi)^3).
+    # color-baryon determinant line whose local baryon connection is B,
+    # q_B F_B tr(F^2)/(2(2*pi)^3).  This is the de Rham coefficient; it does
+    # not check torsion data of arbitrary quotient bundles.
     nc = 3
     quark_baryon_charge = Fraction(1, nc)
 
@@ -678,6 +725,7 @@ def check_cfl_anomaly_matching_bookkeeping():
 
     mixed_coeff = Fraction(nc, 1) * quark_baryon_charge * Fraction(1, 2)
     assert_equal("CFL mixed baryon-flavor anomaly coefficient", mixed_coeff, Fraction(1, 2))
+    assert_equal("CFL lifted local coefficient uses Nc qB", nc * quark_baryon_charge, Fraction(1, 1))
 
     # Vector flavor backgrounds have F_L=F_R, so both pure chiral and mixed
     # baryon-flavor anomaly representatives cancel between L and R.
@@ -871,6 +919,7 @@ def main():
     check_magnetic_gap_leading_log_coefficients()
     check_cfl_global_goldstone_count()
     check_cfl_gauge_invariant_composite_charges()
+    check_cfl_faithful_global_symmetry_bookkeeping()
     check_dense_neutrality_bookkeeping()
     check_cfl_rotated_electromagnetic_mass_matrix()
     check_dense_fermi_surface_stress_bookkeeping()

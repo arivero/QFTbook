@@ -83,11 +83,16 @@ GitHub issue #628.
   chiral composites used to diagnose the physical CFL symmetry realization.
 - `C_E`, `C_M`, `F_H`, `v_H`, `m_E`, `m_M`: gauge-invariant static
   screening correlators and the low-energy CFL Higgs-screening coefficients.
-- `F_pi`, `F_B`, `v_pi`, `v_B`, `phi_B`: CFL chiral and baryon-superfluid
-  collective-mode coefficients and baryon phase.
-- `A_L`, `A_R`, `B`, `F_L`, `F_R`, `F_B`, `D_B phi_B`: chiral flavor and
-  baryon background fields used in CFL anomaly matching, their curvatures,
-  and the baryon-Goldstone covariant one-form.
+- `F_pi`, `F_B`, `v_pi`, `v_B`, `phi_B`, `vartheta_B`: CFL chiral and
+  baryon-superfluid collective-mode coefficients, local baryon coset angle,
+  and the equivalent `2 phi_B` charge-two order-coordinate phase.
+- `G_QCD^0`, `Z_3^V`, `n_ijk`, `E_cB`: faithful connected QCD
+  flavor-baryon symmetry, its diagonal flavor-center quotient, the quotient
+  background center cocycle, and the color-baryon `U(3)` lift used to
+  globalize quark baryon charge `1/3`.
+- `A_L`, `A_R`, `B`, `F_L`, `F_R`, `F_B`, `D_B phi_B`: lifted local chiral
+  flavor and baryon background fields used in the de Rham CFL anomaly
+  calculation, their curvatures, and the baryon-Goldstone covariant one-form.
 - `mathcal T_QCD`, `chi_ab`, `Sigma_ab`, `J_inc^i`, `D_eta`, `D_B`,
   `Gamma_s`: QCD hydrodynamic transport datum, conserved-charge
   susceptibility and conductivity matrices, momentum-orthogonal baryon
@@ -239,13 +244,24 @@ GitHub issue #628.
   low-energy action, and identifies the rotated unbroken electromagnetic
   \(U(1)\) in the same transformation convention as the CFL orientation
   field.
-- Computes the UV six-form anomaly polynomial for
-  \(SU(3)_L\times SU(3)_R\times U(1)_B\) backgrounds in half-trace flavor
-  normalization, derives the pure chiral coefficient \(N_c\), derives the
-  mixed baryon-flavor coefficient \(N_cq_B/2=1/2\), and matches these in CFL
-  by the level-\(N_c\) gauged WZW functional of \(\Sigma\) plus the baryon
-  Goldstone inflow representative
+- Derives the faithful connected global symmetry used in the CFL anomaly
+  discussion as
+  `(SU(3)_L x SU(3)_R x U(1)_B)/Z_3^V`, explains why quark baryon charge
+  `1/3` is globally defined through color-baryon quotient/lift data rather
+  than an independent cube root of an ordinary baryon line, and records that
+  the section works on spin four-manifolds without imposing an additional
+  spin-charge quotient.
+- Scopes the CFL anomaly calculation to a lifted local/de Rham background
+  chart with vanishing center cocycles: computes the UV six-form polynomial in
+  half-trace flavor normalization, derives the pure chiral coefficient \(N_c\),
+  derives the mixed baryon-flavor coefficient \(N_cq_B/2=1/2\), and matches
+  these local coefficients in CFL by the level-\(N_c\) gauged WZW functional
+  of \(\Sigma\) plus the baryon Goldstone inflow representative
   `-(D_B phi_B/2pi) wedge (tr F_L^2-tr F_R^2)/(2(2pi)^2)`.
+- States the residual `Z_2` stabilizer of the source-selected charge-two CFL
+  baryon order parameter and separates this compact Goldstone normalization
+  from the stronger, not-claimed global torsion/large-gauge anomaly matching
+  problem on arbitrary quotient bundles.
 - Separates Wilson-loop, Polyakov-loop, 't Hooft-loop, center-vortex, and
   dual-superconductor criteria for confinement.
 
@@ -273,11 +289,14 @@ GitHub issue #628.
   magnetic leading-log gap coefficient bookkeeping,
   baryon-number cumulants and radius estimators, dense neutrality
   bookkeeping, CFL gauge-invariant composite charge bookkeeping, CFL
-  rotated electromagnetic mass-matrix bookkeeping, CFL screening-sector and
+  faithful-global-symmetry center quotients, color-baryon lift obstruction
+  cancellation, charge-two order-parameter stabilizer bookkeeping, CFL rotated
+  electromagnetic mass-matrix bookkeeping, CFL screening-sector and
   collective-mode count bookkeeping, dense
-  Fermi-surface stress bookkeeping, CFL anomaly-matching coefficient
-  bookkeeping, QCD hydrodynamic response-window, coupled-diffusion, and
-  momentum-projected baryon-current bookkeeping, and CFL Goldstone count.
+  Fermi-surface stress bookkeeping, lifted local CFL anomaly-matching
+  coefficient bookkeeping, QCD hydrodynamic response-window,
+  coupled-diffusion, and momentum-projected baryon-current bookkeeping, and
+  CFL Goldstone count.
 
 ## Open Issues
 
@@ -374,6 +393,11 @@ GitHub issue #628.
   for chiral flavor plus baryon backgrounds, the level-\(N_c\) WZW matching
   statement for the CFL chiral field, and the baryon-Goldstone mixed-anomaly
   inflow representative.
+- 2026-06-05 issue #791 pass: replaced the direct-product background wording
+  by the faithful connected symmetry and quotient/lift background data,
+  corrected the CFL baryon-phase compactness to remember the charge-two order
+  stabilizer, and scoped the anomaly proposition to the lifted local/de Rham
+  polynomial rather than a full torsion global anomaly statement.
 
 ## Anti-Wrapper Audit
 
