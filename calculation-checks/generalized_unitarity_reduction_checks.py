@@ -4,26 +4,27 @@
 The companion section in Volume II, Chapter 6 develops the bridge from
 Cutkosky discontinuities to generalized cuts, scalar-integral reconstruction,
 IBP reduction, and master-integral differential equations.  This script
-checks the exact algebraic ledger behind the worked massless phi^4 example
-and the one-loop bubble family, then adds finite helicity and regulator
-bookkeeping for the Yang-Mills MHV/all-plus control examples, including the
-five-gluon all-plus rational template.  It also checks a finite two-master
-threshold-mixing model, a two-letter master-transport model with boundary and
-branch negative controls, and the finite Laurent-pole ledger that turns a
-reconstructed virtual amplitude into a finite observable only after infrared
-subtraction, real radiation, and scheme transport have been assembled.
+checks the exact algebraic ledger behind the worked massless phi^4 example,
+the finite two-scale box master, and the one-loop bubble family, then adds
+finite helicity and regulator bookkeeping for the Yang-Mills MHV/all-plus
+control examples, including the five-gluon all-plus rational template.  It
+also checks a finite two-master threshold-mixing model, a two-letter
+master-transport model with boundary and branch negative controls, and the
+finite Laurent-pole ledger that turns a reconstructed virtual amplitude into
+a finite observable only after infrared subtraction, real radiation, and
+scheme transport have been assembled.
 
 Evidence contract.
 Target claims: the generalized-unitarity section of Volume II Chapter 6,
 especially the phi^4 cut reconstruction, the negative controls for incomplete
 cut sets and four-dimensional blind spots, the bubble IBP identity, and the
-bubble master differential equation, plus the gauge-theory MHV box and
-all-plus rational-term comparison, the local two-master threshold-mixing
-datum in a Fuchsian differential system, the two-letter transport/boundary
-audit for a reduced master sector, and the virtual-to-observable finite
-remainder assembly; additionally, the five-point all-plus rational amplitude
-has the correct little-group weights, mass dimension, cyclic term coverage,
-and strict four-dimensional cut invisibility.
+bubble master differential equation, plus the finite two-scale massless box
+master, the gauge-theory MHV box and all-plus rational-term comparison, the
+local two-master threshold-mixing datum in a Fuchsian differential system, the
+two-letter transport/boundary audit for a reduced master sector, and the
+virtual-to-observable finite remainder assembly; additionally, the five-point
+all-plus rational amplitude has the correct little-group weights, mass
+dimension, cyclic term coverage, and strict four-dimensional cut invisibility.
 Independent construction: finite cut-signature matrices over rational
 numbers, an explicit identical-state symmetry factor, a nullspace model for
 local/rational terms invisible to four-dimensional cuts, and exact rational
@@ -35,6 +36,7 @@ five-gluon all-plus rational template;
 nilpotent rational matrix algebra for threshold monodromy and regular
 boundary constants; noncommuting two-letter residue algebra for first-order
 transport, path-order sensitivity, and cut-invisible boundary shifts;
+polynomial log algebra for the finite box master and its branch continuation;
 Laurent-pole arithmetic for virtual/real infrared cancellation and finite
 scheme transport.
 Imported assumptions: dimensional regularization, the standard massless
@@ -50,13 +52,15 @@ it also verifies that the all-plus one-loop rational structure is invisible
 to strict four-dimensional two-particle cuts but visible to a nonzero
 mu_perp^2 massive-scalar probe, verifies the same rational blind spot at five
 points, and rejects virtual-only pole cancellation, omitted rational finite
-remainders, diagonal one-master threshold shortcuts, cut-only boundary
-reconstruction, branch/path omission in a two-letter master transport, and
-untransported finite IR-scheme shifts.
+remainders, one-cut-only finite-box deformations, branch-label omission,
+diagonal one-master threshold shortcuts, cut-only boundary reconstruction,
+branch/path omission in a two-letter master transport, and untransported
+finite IR-scheme shifts.
 Scope boundary: a pass checks the finite reconstruction and reduction
 bookkeeping; it does not compute a nonabelian helicity amplitude from Feynman
-graphs, prove unitarity from Wightman axioms, or solve a physical
-multi-scale integral family.
+graphs, prove unitarity from Wightman axioms, solve multi-loop integral
+families, or replace the real-radiation/factorization construction needed for
+infrared-safe observables.
 """
 
 from __future__ import annotations
@@ -119,6 +123,35 @@ BracketPowers = dict[tuple[int, int], int]
 Laurent = tuple[Fraction, Fraction]
 Matrix = list[list[Fraction]]
 Vector = list[Fraction]
+LogPolynomial = dict[tuple[int, int], Fraction]
+
+
+def clean_poly(poly: LogPolynomial) -> LogPolynomial:
+    return {powers: coeff for powers, coeff in poly.items() if coeff}
+
+
+def poly_add(left: LogPolynomial, right: LogPolynomial) -> LogPolynomial:
+    result = dict(left)
+    for powers, coeff in right.items():
+        result[powers] = result.get(powers, Fraction(0)) + coeff
+    return clean_poly(result)
+
+
+def poly_scale(scale: Fraction, poly: LogPolynomial) -> LogPolynomial:
+    return clean_poly({powers: scale * coeff for powers, coeff in poly.items()})
+
+
+def poly_derivative(poly: LogPolynomial, variable: int) -> LogPolynomial:
+    result: LogPolynomial = {}
+    for powers, coeff in poly.items():
+        power = powers[variable]
+        if power == 0:
+            continue
+        new_powers = list(powers)
+        new_powers[variable] -= 1
+        new_key = (new_powers[0], new_powers[1])
+        result[new_key] = result.get(new_key, Fraction(0)) + coeff * power
+    return clean_poly(result)
 
 
 def laurent_add(left: Laurent, right: Laurent) -> Laurent:
@@ -448,6 +481,102 @@ def check_five_gluon_all_plus_rational_template() -> None:
         "five-point all-plus evanescent probe power",
         all_plus_massive_scalar_probe(Fraction(2, 3)),
         Fraction(4, 9),
+    )
+
+
+def check_finite_two_scale_box_master() -> None:
+    # Variables are Ls=log S and Lt=log T.  The finite reduced box in the
+    # chosen normalization is 1/2 (Ls-Lt)^2 + kappa.
+    kappa = Fraction(7, 13)
+    finite_box: LogPolynomial = {
+        (2, 0): Fraction(1, 2),
+        (1, 1): Fraction(-1),
+        (0, 2): Fraction(1, 2),
+        (0, 0): kappa,
+    }
+    log_ratio: LogPolynomial = {
+        (1, 0): Fraction(1),
+        (0, 1): Fraction(-1),
+    }
+    assert_equal(
+        "finite box S differential equation",
+        poly_derivative(finite_box, 0),
+        log_ratio,
+    )
+    assert_equal(
+        "finite box T differential equation",
+        poly_derivative(finite_box, 1),
+        poly_scale(Fraction(-1), log_ratio),
+    )
+    assert_equal(
+        "finite box scale invariance",
+        poly_add(poly_derivative(finite_box, 0), poly_derivative(finite_box, 1)),
+        {},
+    )
+
+    second_derivative_matrix = [
+        [
+            poly_derivative(poly_derivative(finite_box, row), col).get((0, 0), Fraction(0))
+            for col in (0, 1)
+        ]
+        for row in (0, 1)
+    ]
+    assert_equal(
+        "finite box Hessian in log variables",
+        second_derivative_matrix,
+        [[Fraction(1), Fraction(-1)], [Fraction(-1), Fraction(1)]],
+    )
+    assert_equal("finite box Hessian rank", rank(second_derivative_matrix), 1)
+
+    diagonal_boundary_terms: dict[int, Fraction] = {}
+    for (ls_power, lt_power), coeff in finite_box.items():
+        diagonal_power = ls_power + lt_power
+        diagonal_boundary_terms[diagonal_power] = (
+            diagonal_boundary_terms.get(diagonal_power, Fraction(0)) + coeff
+        )
+    assert_equal(
+        "finite box Euclidean equal-scale boundary",
+        clean_poly({(power, 0): coeff for power, coeff in diagonal_boundary_terms.items()}),
+        {(0, 0): kappa},
+    )
+
+    one_cut_deformation = poly_add(finite_box, {(0, 1): Fraction(5, 17)})
+    assert_equal(
+        "one-cut deformation preserves S derivative",
+        poly_derivative(one_cut_deformation, 0),
+        poly_derivative(finite_box, 0),
+    )
+    assert_true(
+        "one-cut deformation changes T derivative",
+        poly_derivative(one_cut_deformation, 1) != poly_derivative(finite_box, 1),
+    )
+    assert_true(
+        "one-cut deformation breaks scale invariance",
+        poly_add(
+            poly_derivative(one_cut_deformation, 0),
+            poly_derivative(one_cut_deformation, 1),
+        )
+        != {},
+    )
+
+    # On the physical s-channel branch, Ls -> R - i*pi and Lt -> 0.
+    # The finite box has imaginary part -pi R in this normalization.
+    ls_squared_coeff = finite_box[(2, 0)]
+    imaginary_pi_log_coeff = -2 * ls_squared_coeff
+    real_pi_squared_coeff = -ls_squared_coeff
+    assert_equal(
+        "finite box physical branch imaginary coefficient",
+        imaginary_pi_log_coeff,
+        Fraction(-1),
+    )
+    assert_equal(
+        "finite box physical branch pi-squared coefficient",
+        real_pi_squared_coeff,
+        Fraction(-1, 2),
+    )
+    assert_true(
+        "branch-labelled box differs from Euclidean continuation",
+        imaginary_pi_log_coeff != 0,
     )
 
 
@@ -814,6 +943,7 @@ def main() -> None:
     check_four_dimensional_cut_blind_spot()
     check_gauge_theory_helicity_controls()
     check_five_gluon_all_plus_rational_template()
+    check_finite_two_scale_box_master()
     check_bubble_ibp_identity()
     check_branch_and_landau_ledger()
     check_two_master_threshold_mixing()

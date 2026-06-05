@@ -2841,8 +2841,10 @@ Current checks:
   \(\phi^4\) one-loop cut reconstruction, the incomplete-cut and
   four-dimensional-rational negative controls, the Yang--Mills MHV/all-plus
   helicity and evanescent-probe ledger including the five-gluon all-plus
-  rational template, the bubble IBP reduction, and the bubble master
-  differential-equation branch ledger, the two-master
+  rational template, the finite two-scale box master with its differential
+  equations, branch prescription, and one-cut-only negative control, the
+  bubble IBP reduction, and the bubble master differential-equation branch
+  ledger, the two-master
   threshold-mixing/monodromy and regular-boundary negative controls, the
   two-letter master-transport check with noncommuting residues, branch/path
   and cut-only boundary negative controls, plus the

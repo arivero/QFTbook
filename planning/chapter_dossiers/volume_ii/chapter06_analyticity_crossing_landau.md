@@ -26,7 +26,8 @@
   reconstruction, a complete massless \(\lambda\phi^4\) four-point cut
   reconstruction with negative controls, a Yang--Mills MHV/all-plus rational
   term control including the five-point all-plus partial-amplitude template,
-  the bubble IBP/differential equation master calculation, and a
+  a solved finite two-scale massless box master with branch data, the bubble
+  IBP/differential equation master calculation, and a
   two-stage master-integral layer: first a local two-master threshold block,
   then a two-letter transport audit exposing connection data, Euclidean
   boundary constants, branch/path prescriptions, lower sectors, and the
@@ -57,10 +58,11 @@
   line replacement.
 - Bern--Dixon--Dunbar--Kosower, Bern--Dixon--Kosower, Britto--Cachazo--Feng,
   Ossola--Papadopoulos--Pittau, Forde, Bern--Morgan,
-  Brandhuber--McNamara--Spence--Travaglini, Passarino--Veltman,
+  Brandhuber--McNamara--Spence--Travaglini, Ussyukina--Davydychev,
+  Passarino--Veltman,
   Chetyrkin--Tkachov, Tkachov, Kotikov, and Gehrmann--Remiddi form the source
   lineage for the generalized-unitarity, rational-term, integrand-reduction,
-  IBP, and differential-equation bridge.
+  explicit box-function, IBP, and differential-equation bridge.
 - Steinmann's original Wightman/retarded-commutator papers and the
   Stapp/Cahill--Stapp scattering-amplitude refinements are used as source
   traces for the quoted conditional Steinmann relation; the chapter does not
@@ -115,6 +117,7 @@
 | \(\mu_\perp^2\) | squared loop momentum in the \(-2\epsilon\)-dimensional complement, invisible on four-dimensional cuts |
 | \(A_4^{(0)}(1^-,2^-,3^+,4^+)\) | color-ordered tree MHV four-gluon amplitude in the spinor-helicity convention used for the gauge-theory control |
 | \(I_4^{(D)}(s,t)\) | dimensionally regulated massless scalar box in the four-point MHV control |
+| \(S,T\), \(\mathcal F_{\Box}(S,T)\), \(\kappa_{\Box}\) | Euclidean box invariants \(S=-s>0,T=-t>0\), finite reduced two-scale box master after IR-pole subtraction, and its Euclidean boundary/subtraction constant |
 | \(\operatorname{tr}_{-}(i j k l)\) | chiral spinor trace coordinate \(\langle i j\rangle[j k]\langle k l\rangle[l i]\) used in the five-point all-plus rational amplitude |
 | \(C_{\rm loop}\), \(C_{\rm rat}\), \(C_{5,\rm rat}\) | loop-normalization and all-plus rational-term constants, fixed only after color, particle-content, and loop-measure conventions are declared |
 | \(\mathbf I^{(1)}_\Lambda\) | one-loop infrared subtraction operator used to define the finite remainder in a declared regulator and finite subtraction convention |
@@ -167,6 +170,13 @@
   nonzero only in the two-negative or two-positive sector.  Numerical
   all-plus coefficients are stated only up to the declared loop, color, and
   particle-content normalization.
+- The finite box master is a reduced four-point massless scalar box after the
+  universal soft/collinear pole part has been subtracted in a declared
+  convention.  The displayed normalization fixes
+  \(S\partial_S\mathcal F_{\Box}=\log(S/T)\); changing the scalar-integral or
+  finite IR-subtraction convention rescales the finite function and shifts
+  \(\kappa_{\Box}\) but does not remove the need for both \(S\)- and
+  \(T\)-channel data plus branch prescription.
 - The IBP identity assumes dimensional regularization, analytic continuation
   in \(\epsilon\), and the standard vanishing of scaleless tadpoles.  The
   bubble differential equation is solved with Euclidean boundary data at
@@ -179,7 +189,8 @@
 - The two-letter master-transport model is a finite normalized sector used to
   audit the data needed after IBP closure.  It checks boundary constants,
   noncommuting residues, branch/path prescriptions, and lower-sector residuals;
-  it is not claimed to be a solved physical multi-scale integral family.
+  it is not claimed to be an additional solved physical integral family beyond
+  the explicit finite box master.
 - The finite-observable assembly assumes a declared one-loop infrared
   subtraction convention, an infrared-safe measurement or matching target,
   and a real-emission/factorization construction using the same finite
@@ -499,11 +510,12 @@
   #769: the scalar example and the MHV/all-plus helicity control close the
   first one-loop workflow and rational-term boundary.  The five-point
   all-plus template adds a genuine nonabelian one-loop partial amplitude
-  beyond four points, and the two-letter transport model now makes the
-  multi-master boundary/path contract explicit, but full nonabelian
-  cut-constructible state sums, solved physical multi-scale integral families,
-  finite-field technology, color--kinematics, and higher-loop generalized cuts
-  remain future work.
+  beyond four points, the finite box block supplies one solved physical
+  two-scale master, and the two-letter transport model makes the multi-master
+  boundary/path contract explicit.  Full nonabelian cut-constructible state
+  sums, nontrivial coupled physical multi-master families, finite-field
+  technology, color--kinematics, and higher-loop generalized cuts remain
+  future work.
 
 ## Audit Notes
 
@@ -640,6 +652,18 @@
   massive-scalar unitarity data.  The companion script checks little-group
   neutrality of each trace term, all-plus weights, mass dimension, cyclic
   omitted-leg coverage, cut-invisibility, and the evanescent-probe power.
+- 2026-06-05 issue #769 finite box master pass: added a physical two-scale
+  massless box master between the all-plus rational controls and the IBP
+  subsection.  The text defines the finite reduced box after soft/collinear
+  pole subtraction, solves
+  \(S\partial_S\mathcal F_{\Box}=\log(S/T)\),
+  \(T\partial_T\mathcal F_{\Box}=-\log(S/T)\), fixes the Euclidean boundary
+  constant \(\kappa_{\Box}\), records the \(s\)-channel branch
+  \(\log(S/T)\mapsto \log(s/(-t))-\ii\pi\), and gives one-cut-only and
+  branch-omission negative controls.  The companion script checks the
+  polynomial log differential equations, scale invariance, Hessian rank,
+  equal-scale boundary, one-cut deformation, and physical-branch imaginary
+  coefficient.
 - 2026-06-05 issue #769 master-transport pass: extended the multi-master
   discussion beyond a local threshold block by adding a two-letter transport
   audit.  The pass records a reduced Fuchsian system with noncommuting
