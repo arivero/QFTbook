@@ -2275,6 +2275,66 @@ select \cite{BDDK1994Unitarity,BDK1996OneLoopQCD,
 BrittoCachazoFeng2005GeneralizedUnitarity,OPP2007IntegrandReduction,
 Forde2007OneLoopCoefficients}.
 
+\begin{controlledapproximation}[Triangle coefficient after box subtraction]
+\label{ca:triple-cut-triangle-projection}
+The triple-cut step is not the instruction ``read the constant term of the
+raw triple cut.''  Fix a triangle sector with denominators
+\(D_0,D_1,D_2\), and suppose that the triple-cut solution is parametrized by a
+complex coordinate \(t\) on the residual cut curve.  In the scalar-integral
+normalization used in \eqref{eq:one-loop-integral-basis-reconstruction}, let
+\[
+  C_{012}(t)
+\]
+be the algebraic triple cut of the full one-loop integrand, including the
+tree state sum and numerator representative.  Box integrals whose denominator
+sets contain \(\{0,1,2\}\) have already been fixed by their quadruple cuts;
+write their known triple-cut residues as \(R_b(t)\) and their coefficients as
+\(c_b\).  Let
+\begin{equation}
+  \Pi_0 f
+  =
+  \frac{1}{2\pi\ii}\oint_{|t|=r}\frac{\dd t}{t}\,f(t)
+  \label{eq:triple-cut-constant-projection}
+\end{equation}
+be the local Laurent constant projection around a contour avoiding the
+remaining box poles and any external singular point.  If the chosen triangle
+master has unit constant triple-cut residue and the remaining spurious
+surface terms have zero \(\Pi_0\)-projection, then the triangle coefficient is
+\begin{equation}
+  c_{012}
+  =
+  \Pi_0\!\left[
+    C_{012}(t)-\sum_{b\supset\{0,1,2\}}c_bR_b(t)
+  \right].
+  \label{eq:triple-cut-triangle-after-box-subtraction}
+\end{equation}
+The order of operations matters.  In general
+\[
+  \Pi_0 C_{012}
+  =
+  c_{012}
+  +
+  \sum_{b\supset\{0,1,2\}}c_b\,\Pi_0 R_b ,
+\]
+so the raw triple-cut constant mixes the triangle coefficient with the
+constant parts of the already-known box residues.  Only after the box
+subtraction has been performed does the contour average isolate the triangle
+sector.
+
+The hypotheses in
+\eqref{eq:triple-cut-triangle-after-box-subtraction} are part of the
+integrand-representative datum \(D_{\rm rep}\) and reduction datum
+\(D_{\rm red}\).  A different parametrization of the residual cut curve, a
+different scalar-integral normalization, or a regulator with evanescent
+numerator components changes the precise projection formula.  What is
+invariant is the hierarchy: maximal cuts fix boxes; triangle cuts are read
+only from the post-box-subtraction residue; bubble cuts are read only after
+both box and triangle sectors visible on the same cut have been removed.
+Thus a triple cut is a sector-projection operation in the amplitude workflow,
+not an independent physical discontinuity and not a complete one-loop
+amplitude by itself.
+\end{controlledapproximation}
+
 \subsection{A Complete Scalar Four-Point Reconstruction}
 \label{subsec:scalar-four-point-generalized-unitarity}
 

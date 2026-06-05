@@ -12,7 +12,8 @@ Yang-Mills MHV/all-plus control examples, including the planar N=4 MHV
 quadruple-cut reconstruction, the five-gluon all-plus rational template, and
 the four-point color-kinematics/double-copy gateway together with the
 one-loop surface-term obstruction to naive double copy.  It also checks a
-finite two-master threshold-mixing
+finite triple-cut triangle projection after known box residues have been
+subtracted, a finite two-master threshold-mixing
 model, a two-letter
 master-transport model with boundary and branch negative controls, and the
 finite Laurent-pole ledger that turns a reconstructed virtual amplitude into
@@ -36,7 +37,9 @@ invisibility, and the four-point color-kinematics gateway separates
 gauge-amplitude equivalence from Jacobi-compatible numerator data needed for
 the double copy, and a one-loop Jacobi triplet surface term can be invisible
 to cuts and color-weighted gauge integration while changing a naive
-double-copy pairing.  The one-loop reconstruction datum is checked as an ordered
+double-copy pairing, and the triple-cut triangle projection isolates the
+triangle coefficient only after known box residues have been subtracted.  The
+one-loop reconstruction datum is checked as an ordered
 gate ledger separating cuts, representative choice, rational/regulator data,
 reduction, boundary/branch data, subtraction, and observable assembly.
 Independent construction: finite cut-signature matrices over rational
@@ -50,6 +53,9 @@ spinor-bracket exponent ledgers for little-group weights and dimensions; and
 a finite four-gluon helicity enumeration for all-plus two-particle cuts;
 finite topology-signature checks for maximal versus two-particle cuts in the
 N=4 MHV box reconstruction and a finite on-shell-supermultiplet state count;
+Laurent-polynomial arithmetic for triple-cut triangle projection after
+known box subtraction, including contour-average and partial-subtraction
+negative controls;
 finite spinor-bracket power counting and helicity-cut enumeration for the
 five-gluon all-plus rational template;
 finite cubic-channel color/numerator algebra for the four-point
@@ -78,7 +84,10 @@ rational blind spot at five points, verifies that a gauge-equivalent
 non-Jacobi numerator shift changes the naive numerator square, verifies that a
 cut-invisible surface/contact shift can leave the gauge amplitude unchanged
 while breaking loop-level numerator Jacobi and changing the naive double-copy
-pairing, and rejects virtual-only pole cancellation,
+pairing, verifies that the raw triple-cut constant can mix a triangle
+coefficient with constant parts of known box residues and that omitting one
+box subtraction leaves a wrong triangle coefficient, and rejects virtual-only
+pole cancellation,
 omitted rational finite
 remainders, one-cut-only finite-box deformations, branch-label omission,
 diagonal one-master threshold shortcuts, cut-only boundary reconstruction,
@@ -687,6 +696,127 @@ def check_n4_mhv_quadruple_cut_reconstruction() -> None:
         gluon_only_internal_states != fermionic_states,
     )
     assert_equal("four-point leading-color cyclic trace terms", factorial(4) // 4, 6)
+
+
+def check_triple_cut_triangle_projection_after_box_subtraction() -> None:
+    def poly_add_int(
+        left: dict[int, Fraction],
+        right: dict[int, Fraction],
+    ) -> dict[int, Fraction]:
+        result = dict(left)
+        for power, coeff in right.items():
+            result[power] = result.get(power, Fraction(0)) + coeff
+            if result[power] == 0:
+                del result[power]
+        return result
+
+    def poly_scale_int(scale: Fraction, poly: dict[int, Fraction]) -> dict[int, Fraction]:
+        return {
+            power: scale * coeff
+            for power, coeff in poly.items()
+            if scale * coeff
+        }
+
+    def constant_projection(poly: dict[int, Fraction]) -> Fraction:
+        return poly.get(0, Fraction(0))
+
+    triangle_coefficient = Fraction(7, 5)
+    triangle_cut_residue = {0: Fraction(1)}
+    spurious_surface_terms = {
+        -2: Fraction(11, 13),
+        -1: Fraction(-3, 7),
+        1: Fraction(5, 9),
+        3: Fraction(-17, 19),
+    }
+    box_data = [
+        (
+            Fraction(2, 3),
+            {-1: Fraction(5), 0: Fraction(-7, 4), 1: Fraction(11, 6)},
+        ),
+        (
+            Fraction(-4, 9),
+            {-2: Fraction(13, 5), 0: Fraction(3, 2), 2: Fraction(-19, 7)},
+        ),
+    ]
+
+    raw_triple_cut = poly_add_int(
+        poly_scale_int(triangle_coefficient, triangle_cut_residue),
+        spurious_surface_terms,
+    )
+    known_box_contamination: dict[int, Fraction] = {}
+    for box_coefficient, box_residue in box_data:
+        raw_triple_cut = poly_add_int(
+            raw_triple_cut,
+            poly_scale_int(box_coefficient, box_residue),
+        )
+        known_box_contamination = poly_add_int(
+            known_box_contamination,
+            poly_scale_int(box_coefficient, box_residue),
+        )
+
+    raw_constant = constant_projection(raw_triple_cut)
+    expected_box_constant = sum(
+        box_coefficient * constant_projection(box_residue)
+        for box_coefficient, box_residue in box_data
+    )
+    assert_equal(
+        "triple-cut raw constant contains box residue",
+        raw_constant,
+        triangle_coefficient + expected_box_constant,
+    )
+    assert_true(
+        "raw triple-cut constant is not triangle coefficient",
+        raw_constant != triangle_coefficient,
+    )
+
+    post_box_triple_cut = poly_add_int(
+        raw_triple_cut,
+        poly_scale_int(Fraction(-1), known_box_contamination),
+    )
+    assert_equal(
+        "post-box triple-cut constant projection",
+        constant_projection(post_box_triple_cut),
+        triangle_coefficient,
+    )
+    assert_equal(
+        "spurious triple-cut terms have zero contour average",
+        constant_projection(spurious_surface_terms),
+        Fraction(0),
+    )
+
+    partial_subtraction = poly_add_int(
+        raw_triple_cut,
+        poly_scale_int(-box_data[0][0], box_data[0][1]),
+    )
+    assert_true(
+        "omitting a known box subtraction leaves wrong triangle coefficient",
+        constant_projection(partial_subtraction) != triangle_coefficient,
+    )
+
+    shifted_box_residue = poly_add_int(box_data[0][1], {0: Fraction(5, 8)})
+    shifted_box_contamination = poly_add_int(
+        poly_scale_int(box_data[0][0], shifted_box_residue),
+        poly_scale_int(box_data[1][0], box_data[1][1]),
+    )
+    wrong_post_box = poly_add_int(
+        raw_triple_cut,
+        poly_scale_int(Fraction(-1), shifted_box_contamination),
+    )
+    assert_true(
+        "wrong box normalization spoils triangle projection",
+        constant_projection(wrong_post_box) != triangle_coefficient,
+    )
+
+    reparametrization_scale = Fraction(3, 5)
+    reparametrized_spurious = {
+        power: coeff * (reparametrization_scale ** power)
+        for power, coeff in spurious_surface_terms.items()
+    }
+    assert_equal(
+        "nonzero Laurent powers remain invisible to constant projection",
+        constant_projection(reparametrized_spurious),
+        Fraction(0),
+    )
 
 
 def check_five_gluon_all_plus_rational_template() -> None:
@@ -1476,6 +1606,7 @@ def main() -> None:
     check_four_dimensional_cut_blind_spot()
     check_gauge_theory_helicity_controls()
     check_n4_mhv_quadruple_cut_reconstruction()
+    check_triple_cut_triangle_projection_after_box_subtraction()
     check_five_gluon_all_plus_rational_template()
     check_four_point_color_kinematics_gateway()
     check_loop_level_color_kinematics_surface_obstruction()

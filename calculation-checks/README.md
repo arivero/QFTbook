@@ -2881,8 +2881,10 @@ Current checks:
   four-dimensional-rational negative controls, the Yang--Mills MHV/all-plus
   helicity and evanescent-probe ledger, the planar \(\mathcal N=4\) MHV
   quadruple-cut reconstruction state-sum and topology-separation checks
-  including the single-cut lower-topology negative control, the five-gluon
-  all-plus rational template, the four-point color--kinematics/double-copy
+  including the single-cut lower-topology negative control, the triple-cut
+  triangle projection after known box-residue subtraction with raw and
+  partial-subtraction negative controls, the five-gluon all-plus rational
+  template, the four-point color--kinematics/double-copy
   gateway with the generalized-gauge non-Jacobi negative control, the one-loop
   color--kinematics surface-term obstruction showing that a cut-invisible
   gauge-null shift need not be double-copy null, the finite two-scale box

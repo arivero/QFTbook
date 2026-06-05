@@ -29,7 +29,8 @@
   \(\lambda\phi^4\) four-point cut reconstruction with negative controls,
   a planar \(\mathcal N=4\)
   four-gluon MHV quadruple-cut reconstruction with explicit supermultiplet
-  state sum and lower-topology negative control, the pure-Yang--Mills
+  state sum and lower-topology negative control, a triple-cut triangle
+  projection rule after known box-residue subtraction, the pure-Yang--Mills
   all-plus rational blind spot including the five-point all-plus
   partial-amplitude template, a four-point color--kinematics/double-copy
   gateway with generalized-gauge negative controls, a solved finite two-scale
@@ -121,6 +122,7 @@
 | \(D_{\rm cut},D_{\rm rep},D_{\rm rat},D_{\rm red},D_{\rm bc},D_{\rm sub},D_{\rm obs}\) | gates in the one-loop reconstruction datum: cuts/state sums, integrand representative, rational/regulator probes, reduction map, boundary/branch constants, subtraction convention, and observable data |
 | \(D_i(\ell)\) | one-loop denominator \((\ell+K_i)^2+m_i^2-\ii0\) |
 | \(I_r\) | scalar one-loop integral with \(r\) propagators in the declared regulator |
+| \(C_{012}(t),R_b(t),\Pi_0\) | triple-cut residue on a residual cut parameter, known box residues visible on the same triple cut, and the Laurent constant projection used after box subtraction |
 | \(R_n\) | rational term not fixed by a strictly four-dimensional cut analysis |
 | \(\mathcal P_n\) | local subtraction polynomial or scheme-dependent counterterm |
 | \(B(Q^2)\), \(\widehat B(x)\) | Euclidean bubble master and its four-dimensional cut-normalized physical continuation |
@@ -794,3 +796,11 @@
   carry scale or boundary data.  The companion script checks the exact
   numerator projection, the parent-cut coefficient, vector
   Passarino--Veltman reduction, and the lower-sector negative control.
+- 2026-06-05 issue #769 triple-cut projection pass: added
+  `ca:triple-cut-triangle-projection` near the opening one-loop
+  reconstruction bridge.  The pass makes the triangle step explicit:
+  \(\Pi_0 C_{012}(t)\) is not the triangle coefficient until the known box
+  residues sharing the same triple cut have been subtracted.  The companion
+  script checks the Laurent constant projection, raw-constant contamination,
+  post-box subtraction, omitted-box negative control, wrong-box-normalization
+  negative control, and spurious nonzero-Laurent-power cancellation.
