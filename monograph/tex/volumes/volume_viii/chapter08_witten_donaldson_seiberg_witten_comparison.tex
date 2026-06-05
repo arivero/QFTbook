@@ -436,9 +436,11 @@ following data have been declared.
 \]
 Changing any one of these data changes the numerical coefficients by a
 controlled convention: reversing the homology orientation reverses all
-oriented counts, changing \(w\) changes the chamber and phase convention of
-the \(SO(3)\) or \(U(2)\) invariant, and rescaling the point observable changes
-the constant \(4\) in \eqref{eq:donaldson-simple-type-relation}.
+oriented counts, changing \(w\) changes the \(SO(3)\) or \(U(2)\) lift and
+the determinant-line phase convention, and rescaling the point observable
+changes the constant \(4\) in \eqref{eq:donaldson-simple-type-relation}.  For
+\(b_2^+(X)>1\), changing \(w\) is not a metric-chamber move; chamber
+dependence is the separate \(b_2^+=1\) phenomenon treated below.
 \end{definition}
 
 \begin{remark}[Coefficient extraction from the reduced series]
@@ -1418,14 +1420,21 @@ the rigorous QFT problem is to derive every term from a constructed twisted
 continuum theory and its Wilsonian flow, rather than to declare the formula
 from moduli-space geometry alone.
 
-\begin{hypothesis}[Witten simple-type comparison statement]
+\begin{conjecture}[Central conjecture: Witten Donaldson--Seiberg--Witten comparison]
 \label{hyp:witten-simple-type-comparison-datum}
 Let \(X\) be a closed connected oriented smooth four-manifold with
-\(b_1(X)=0\), \(b_2^+(X)>1\), and Seiberg-Witten simple type.  Fix the lift
-\(w\), homology orientation, point-observable convention
-\eqref{eq:donaldson-simple-type-relation}, and the trace-delta gauge
-normalization used in this chapter.  The Donaldson-Seiberg-Witten comparison
-predicts that the reduced Donaldson series has the form
+\(b_1(X)=0\), odd \(b_2^+(X)\ge3\), and Seiberg-Witten simple type.  Fix the
+Donaldson invariant package: an \(SO(3)\) or \(U(2)\) theory with integral lift
+\(w\in H^2(X;\mathbb Z)\), \(w\equiv w_2(\operatorname{ad}P)\pmod2\), a
+homology orientation, the point-observable convention
+\eqref{eq:donaldson-simple-type-relation}, the compactification extension of
+the \(\mu\)-classes, and the trace-delta gauge normalization used in this
+chapter.  Assume \(w\) is admissible for the displayed phase, so that
+\(w^2+\langle w,K\rangle\) is even for the Seiberg-Witten basic classes that
+occur.  The central comparison conjecture, originating in Witten's physical
+argument for twisted \(\mathcal N=2\) Yang--Mills theory
+\cite{Witten1994MonopolesFourManifolds}, predicts that the reduced Donaldson
+series has the form
 \begin{equation}
   \mathbb D_X^w(h)
   =
@@ -1453,13 +1462,55 @@ normalization it is written as
   C_X=2^{\,2+(7\chi(X)+11\sigma(X))/4}.
   \label{eq:moore-witten-common-constant}
 \end{equation}
-Equation \eqref{eq:witten-simple-type-comparison} is a theorem in the
-mathematical Donaldson/SW comparison under the hypotheses of the relevant
-comparison theorems, but in this monograph it is also a QFT target: a
-non-perturbative construction of the twisted four-dimensional gauge theory
-should derive the same coefficient, phase, contact, and boundary data from
-Wilsonian flow.
-\end{hypothesis}
+The conjecture is a statement about a fully normalized Donaldson series, not
+only about the set of basic classes.  Variants with \(b_2^+=1\), nonstandard
+parity, non-simple-type insertions, or different point normalizations require
+separate chamber and normalization data; they are not silently included in
+\eqref{eq:witten-simple-type-comparison}.
+\end{conjecture}
+
+\paragraph{Mathematical status ledger for the central conjecture.}
+The label ``central conjecture'' in
+Conjecture~\ref{hyp:witten-simple-type-comparison-datum} refers to the broad
+Donaldson/SW identification as used by the QFT.  It does not erase the
+mathematical theorems that prove large parts of the statement.  The status used
+in this chapter is the following.
+\begin{enumerate}
+\item The \(SO(3)\)-monopole cobordism formula is a mathematical cobordism
+theorem in the \(SO(3)\)-monopole program.  Its hypotheses are the stated
+manifold, characteristic class, transversality, compactification, and gluing
+data.  Its output relates Donaldson link pairings to topological data and
+Seiberg-Witten invariants \cite{FeehanLeness2002SO3MonopoleCobordism}.
+\item Feehan--Leness prove Witten's formula for many simple-type manifolds
+from the \(SO(3)\)-monopole cobordism formula.  The theorem class used here is
+\[
+  b_1(X)=0,\qquad b_2^+(X)\text{ odd and }\ge3,\qquad
+  X\text{ of Seiberg-Witten simple type},
+\]
+together with either \(c_1^2(X)\ge\chi_h(X)-3\) or abundance
+\cite{FeehanLeness2015WittenConjecture}.
+\item Complex-projective surface computations give algebro-geometric
+evidence and proved subclasses under their algebraic-surface hypotheses.  In
+those settings, sheaf moduli formulas and instanton-counting formulas compute
+the corresponding Donaldson series.  Their theorem force is limited to the
+algebraic-surface hypotheses of the invoked formula.
+\item The full smooth simple-type comparison as a QFT statement is stronger:
+it requires the datum of
+Conjecture~\ref{hyp:witten-simple-type-comparison-datum} together with a
+constructed twisted continuum theory and a controlled Wilsonian flow.  This is
+the central conjecture/open QFT construction problem.
+\end{enumerate}
+Here
+\[
+  c_1^2(X)=2\chi(X)+3\sigma(X),\qquad
+  \chi_h(X)=\frac{\chi(X)+\sigma(X)}{4},
+\]
+and ``abundant'' means that the orthogonal complement to the span of the
+Seiberg-Witten basic classes in \(H^2(X;\mathbb Z)\) contains a hyperbolic
+plane.  Thus the chapter may use the Feehan--Leness theorem for manifolds in
+the stated theorem class, but it must not call
+\eqref{eq:witten-simple-type-comparison} a theorem for every manifold
+satisfying only \(b_1=0\), \(b_2^+>1\), and SW simple type.
 
 The distinction between
 \eqref{eq:donaldson-simple-type-exponential-form} and
@@ -1513,7 +1564,8 @@ which all six entries arise from the same regulator, anomaly line,
 Wilsonian flow, and compactification boundary convention.
 
 \paragraph{Proof obligations hidden by the comparison formula.}
-A derivation of Hypothesis~\ref{hyp:witten-simple-type-comparison-datum} from
+A derivation of
+Conjecture~\ref{hyp:witten-simple-type-comparison-datum} from
 QFT would have to prove the following chain of constructions and
 identifications.  First, one needs a non-perturbative construction of the
 twisted pure \(\mathcal N=2\) gauge theory on \(X\), including a regulator or
@@ -1648,7 +1700,7 @@ black-box identity.
 \label{ex:donaldson-side-k3-elliptic-blowup-tables}
 The following table is not an independent derivation of the
 Donaldson--Seiberg-Witten comparison.  It is the explicit Donaldson-side output
-of Hypothesis~\ref{hyp:witten-simple-type-comparison-datum} in examples where
+of Conjecture~\ref{hyp:witten-simple-type-comparison-datum} in examples where
 the Seiberg-Witten basic classes were fixed in
 Example~\ref{ex:sw-basic-classes-k3-elliptic-blowup}.  We take \(w=0\) when
 this is compatible with the displayed parity and choose the common

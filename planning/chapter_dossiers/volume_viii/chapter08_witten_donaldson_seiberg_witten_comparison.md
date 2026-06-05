@@ -92,12 +92,13 @@ gauge theory.
   from proposition form to conditional explanatory prose, since the
   mathematical work is carried by the compactified parameterized moduli problem
   and Stokes theorem.
-- States the Witten simple-type comparison datum and separates the
-  Donaldson structure theorem from the SW-identification/QFT RG problem; the
-  chapter now decomposes that RG problem into proof obligations involving
-  nonperturbative twisted-theory construction, \(Q\)-compatible Wilsonian flow,
-  \(u\)-plane boundary control, singular-fiber monopole replacement, and
-  determinant/contact normalization.
+- States the Witten simple-type comparison as a named central conjecture,
+  with standard \(b_1=0\), odd \(b_2^+\ge3\), SW-simple-type, lift,
+  orientation, point-normalization, compactification, and phase-admissibility
+  data.  The theorem-status ledger now separates the Feehan--Leness
+  \(SO(3)\)-monopole theorem class (`c1^2 >= chi_h - 3` or abundance) from
+  algebro-geometric projective-surface subclasses and from the stronger QFT
+  Wilsonian/RG construction problem.
 - Adds an explicit comparison-architecture guide: the Donaldson
   moduli-space layer, cohomological localization layer, Coulomb-branch layer,
   and final Wilsonian gluing claim are now separated as a dependency ladder.
@@ -127,7 +128,10 @@ gauge theory.
 
 - `calculation-checks/donaldson_sw_comparison_checks.py` verifies the ASD
   index formula, the Seiberg-Witten expected dimension formula, the
-  `2 chi + 3 sigma` identity, Donaldson descent degrees, Spin^c
+  `2 chi + 3 sigma` identity, the visible Feehan--Leness theorem-status gate
+  (`b1=0`, odd `b2+ >= 3`, SW simple type, and `c1^2 >= chi_h - 3` or
+  abundance) versus broader conjectural scope, Donaldson descent degrees,
+  Spin^c
   characteristic-lift parity, K3 and elliptic-surface simple-type arithmetic,
   blow-up square shifts, elliptic-surface binomial coefficients, Furuta
   examples, spin Dirac quaternionic-index arithmetic in the Furuta examples,
@@ -197,3 +201,10 @@ the Abelian monopole theory.
   \(R_Q,R_{\rm RG},R_u,R_{\rm sing},R_{\rm norm}\), instead of treating the
   comparison formula as a monolithic black-box target; the companion script
   verifies the exact telescoping and norm estimate.
+- 2026-06-04 issue #812 status-architecture pass: changed the Witten
+  simple-type formula from a vague theorem/hypothesis block into a central
+  conjecture with explicit Donaldson package data, standard parity
+  hypotheses, Feehan--Leness proven-subclass ledger, algebro-geometric
+  subclass boundary, and a separate QFT Wilsonian/RG open problem.  Also fixed
+  the \(w\)-lift sentence so it no longer calls a lift/phase change a chamber
+  change when \(b_2^+>1\).

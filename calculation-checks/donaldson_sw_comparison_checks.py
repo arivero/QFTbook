@@ -84,6 +84,47 @@ def sw_expected_dimension(c1_square: int, chi_value: int, sigma_value: int) -> F
     return Fraction(c1_square - (2 * chi_value + 3 * sigma_value), 4)
 
 
+def four_manifold_c1_square(chi_value: int, sigma_value: int) -> int:
+    return 2 * chi_value + 3 * sigma_value
+
+
+def holomorphic_euler_characteristic(chi_value: int, sigma_value: int) -> Fraction:
+    return Fraction(chi_value + sigma_value, 4)
+
+
+def feehan_leness_many_manifolds_status(
+    *,
+    b1: int,
+    b2_plus: int,
+    chi_value: int,
+    sigma_value: int,
+    sw_simple_type: bool,
+    abundant: bool,
+) -> bool:
+    """Predicate for the theorem class quoted in the chapter.
+
+    This is not the Witten comparison conjecture itself.  It is the visible
+    theorem-subclass gate: b1=0, odd b2+ at least three, SW simple type, and
+    either c1^2 >= chi_h - 3 or abundance.
+    """
+
+    topological_bound = (
+        Fraction(four_manifold_c1_square(chi_value, sigma_value))
+        >= holomorphic_euler_characteristic(chi_value, sigma_value) - 3
+    )
+    return (
+        b1 == 0
+        and b2_plus >= 3
+        and b2_plus % 2 == 1
+        and sw_simple_type
+        and (topological_bound or abundant)
+    )
+
+
+def has_metric_chamber_dependence(b2_plus: int) -> bool:
+    return b2_plus == 1
+
+
 def spinc_tensor_c1(c1_value: int, line_c1: int) -> int:
     return c1_value + 2 * line_c1
 
@@ -145,6 +186,87 @@ def check_topological_identity_in_sw_dimension() -> None:
                 lhs = 2 * chi_value + 3 * sigma_value
                 rhs = 4 * (1 - b1 + b2_plus) + sigma_value
                 assert_equal(lhs, rhs, "2 chi plus 3 sigma identity")
+
+
+def check_feehan_leness_theorem_status_gate() -> None:
+    # K3 lies in the theorem gate: b1=0, b2+=3, SW simple type, and
+    # c1^2=0 >= chi_h-3=-1.
+    assert_equal(
+        feehan_leness_many_manifolds_status(
+            b1=0,
+            b2_plus=3,
+            chi_value=24,
+            sigma_value=-16,
+            sw_simple_type=True,
+            abundant=False,
+        ),
+        True,
+        "K3 Feehan-Leness theorem gate",
+    )
+
+    # E(n) has chi=12n, sigma=-8n, b2+=2n-1.  For n >= 4 the
+    # c1^2 >= chi_h-3 inequality fails, so abundance is a genuinely separate
+    # theorem hypothesis rather than a decoration.
+    for n in range(4, 8):
+        chi_en = 12 * n
+        sigma_en = -8 * n
+        assert_equal(
+            Fraction(four_manifold_c1_square(chi_en, sigma_en)),
+            Fraction(0),
+            "E(n) topological c1 square",
+        )
+        assert_equal(
+            holomorphic_euler_characteristic(chi_en, sigma_en),
+            Fraction(n),
+            "E(n) holomorphic Euler characteristic",
+        )
+        assert_equal(
+            feehan_leness_many_manifolds_status(
+                b1=0,
+                b2_plus=2 * n - 1,
+                chi_value=chi_en,
+                sigma_value=sigma_en,
+                sw_simple_type=True,
+                abundant=False,
+            ),
+            False,
+            "non-abundant E(n>=4) fails the c1-square gate",
+        )
+        assert_equal(
+            feehan_leness_many_manifolds_status(
+                b1=0,
+                b2_plus=2 * n - 1,
+                chi_value=chi_en,
+                sigma_value=sigma_en,
+                sw_simple_type=True,
+                abundant=True,
+            ),
+            True,
+            "abundant E(n>=4) passes the theorem gate",
+        )
+
+    # The chapter's central conjecture is broader than this theorem gate.  In
+    # particular b2+>1 alone is not the standard Feehan-Leness theorem
+    # hypothesis: odd b2+ >= 3 is part of the visible theorem ledger.
+    assert_equal(
+        feehan_leness_many_manifolds_status(
+            b1=0,
+            b2_plus=2,
+            chi_value=7,
+            sigma_value=-1,
+            sw_simple_type=True,
+            abundant=True,
+        ),
+        False,
+        "even b2+ is outside the theorem gate",
+    )
+
+    assert_equal(has_metric_chamber_dependence(1), True, "b2+=1 has chambers")
+    assert_equal(
+        has_metric_chamber_dependence(3),
+        False,
+        "changing w at b2+>1 is not chamber dependence",
+    )
 
 
 def check_donaldson_degree_bookkeeping() -> None:
@@ -574,6 +696,7 @@ def main() -> None:
     check_asd_index_formula()
     check_sw_index_formula()
     check_topological_identity_in_sw_dimension()
+    check_feehan_leness_theorem_status_gate()
     check_donaldson_degree_bookkeeping()
     check_spinc_characteristic_lift_bookkeeping()
     check_sw_simple_type_examples()
