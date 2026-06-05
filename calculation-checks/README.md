@@ -1033,7 +1033,11 @@ Current checks:
   detector products, diagonal contact contributions, ensemble-connected
   cumulants versus detector-contact strata, and the endpoint delta-coordinate
   ledger that glues an open-interval EEC distribution to the two exact
-  detector moment constraints.
+  detector moment constraints.  It now also checks the finite-resolution
+  detector assembly estimate: a Lipschitz smeared EEC changes by at most the
+  declared bin-diameter budget after replacing event directions by detector
+  representatives, and omitting that binning term undercounts a measured
+  observable residual.
 - `energy_correlator_collinear_checks.py`: exact rational checks for the
   tree-level small-angle EEC coefficient, including local detector-weight
   conservation, cancellation of real splitting-kernel endpoint poles by the

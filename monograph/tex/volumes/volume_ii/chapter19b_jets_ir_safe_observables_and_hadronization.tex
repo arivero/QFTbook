@@ -2901,6 +2901,84 @@ being used.  The object-level reason for their robustness is the theorem
 above: energy correlators are coordinates on the positive energy measure
 itself, not on a partonic history.
 
+\begin{controlledapproximation}[Finite-resolution energy-correlator observable assembly]
+\label{ca:finite-resolution-eec-observable-assembly}
+Fix an angular metric \(d\) on \(S^2\), a finite detector partition
+\(\mathcal P_\delta=\{U_a\}\), representatives \(\mathbf n_a\in U_a\),
+and a diameter bound \(\operatorname{diam}(U_a)\leq\delta\).  For a positive
+finite-energy event measure \(\mu\), set
+\begin{equation}
+  \pi_\delta\mu
+  =
+  \sum_a \mu(U_a)\,\delta_{\mathbf n_a}.
+  \label{eq:finite-resolution-eec-binned-measure}
+\end{equation}
+Let \(K\in C((S^2)^k)\) be Lipschitz with constant \(L_K\) for the product
+metric \(d_k((\mathbf n_i),(\mathbf m_i))=\sum_{i=1}^k d(\mathbf n_i,\mathbf
+m_i)\), and assume \(\mu(S^2)\leq E\).  Then
+\begin{equation}
+  \left|
+  \mathcal C_K^{(k)}(\mu)
+  -
+  \mathcal C_K^{(k)}(\pi_\delta\mu)
+  \right|
+  \leq
+  k L_K E^k\delta .
+  \label{eq:finite-resolution-eec-lipschitz-bound}
+\end{equation}
+Indeed, couple each \(\mathbf n\in U_a\) to its representative
+\(\mathbf n_a\) and replace the \(k\) detector slots one at a time.  Each
+replacement changes the kernel by at most \(L_K\delta\), while the remaining
+energy integrations contribute at most \(E^k\).
+
+A physical prediction for an energy-correlator bin therefore requires more
+data than the coordinate theorem.  It consists of:
+\begin{enumerate}
+  \item the binned detector measure \(\pi_\delta\mu\), including the chosen
+  convention for diagonal detector contacts and endpoint atoms when a sharp
+  EEC distribution is represented by limits of smooth kernels;
+  \item a short-distance light-ray or hard/jet/soft coefficient chart in a
+  specified ultraviolet, rapidity, and endpoint subtraction scheme;
+  \item the nonperturbative lift required by the measurement, such as a shape,
+  fragmentation, track, or hadronization coordinate rather than an implicit
+  partonic final state;
+  \item an error ledger
+  \[
+    B_{\rm bin}+B_{\rm contact}+B_{\rm pert}
+    +B_{\rm FG}+B_{\rm np}+B_{\rm track}+B_{\rm cont}
+  \]
+  for detector binning, contact and endpoint conventions, perturbative
+  truncation, factorization or Glauber assumptions \(B_{\rm FG}\),
+  nonperturbative power
+  corrections, track or selected-energy lifts, and continuum/regulator
+  reconstruction.
+\end{enumerate}
+The assembled claim is a tested functional inequality: for every detector
+test \(\varphi\) in the declared test space,
+\begin{equation}
+  \begin{aligned}
+    \left|
+    \left\langle O_{\rm phys}-O_{\rm pred},\varphi\right\rangle
+    \right|
+    &\leq
+    B_{\rm bin}(\varphi)+B_{\rm contact}(\varphi)+B_{\rm pert}(\varphi)\\
+    &\quad
+    +B_{\rm FG}(\varphi)+B_{\rm np}(\varphi)
+    +B_{\rm track}(\varphi)+B_{\rm cont}(\varphi).
+  \end{aligned}
+  \label{eq:finite-resolution-eec-observable-budget}
+\end{equation}
+The contact and endpoint terms are coordinates of the measured distribution,
+with operational consequences: moving a small-angle annulus into an endpoint
+atom, or replacing a track-selected diagonal by an average charged fraction,
+changes the tested functional unless the compensating coordinate is
+transported with it.  The role of
+Theorem~\ref{thm:energy-correlator-polynomial-density} is to identify complete
+finite-resolution calorimetric coordinates; the role of the short-distance and
+nonperturbative entries above is to make a QCD prediction for those
+coordinates.
+\end{controlledapproximation}
+
 \section{Shape Functions and Track Functions}
 
 When a measured event shape is of order \(\Lambda_{\rm QCD}/Q\), the soft

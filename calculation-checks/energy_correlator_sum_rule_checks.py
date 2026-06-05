@@ -9,6 +9,10 @@ finite distinction between detector contact strata and ensemble-connected
 cumulants.  The Legendre-multipole check verifies that contact-inclusive
 EEC moments are positive quadratic forms of the calorimetric measure, while
 separated-angle data alone need not preserve those positivity constraints.
+Finally, it tests a finite-resolution detector map and residual ledger: a
+Lipschitz smeared correlator changes by at most the declared bin diameter
+times the total energy power, and an observable-level budget must include that
+detector binning term rather than relying on signed residual cancellation.
 """
 
 from __future__ import annotations
@@ -288,6 +292,23 @@ def endpoint_delta_solution(open_zeroth: Fraction, open_first: Fraction) -> tupl
     return contact_at_plus, back_to_back_atom
 
 
+def finite_resolution_kernel(x: Fraction, y: Fraction) -> Fraction:
+    return Fraction(3) + x / 2 - y / 7 + x * y / 5
+
+
+def smeared_pair_coordinate(
+    energies: list[Fraction],
+    coordinates: list[Fraction],
+) -> Fraction:
+    if len(energies) != len(coordinates):
+        raise ValueError("one detector coordinate is required for each energy")
+    return sum(
+        z_i * z_j * finite_resolution_kernel(coordinates[i], coordinates[j])
+        for i, z_i in enumerate(energies)
+        for j, z_j in enumerate(energies)
+    )
+
+
 def sup_norm(values: list[Fraction]) -> Fraction:
     return max(abs(value) for value in values)
 
@@ -459,6 +480,56 @@ def check_endpoint_matching_delta_ledger() -> None:
     )
 
 
+def check_finite_resolution_detector_assembly_budget() -> None:
+    energies = [Fraction(1, 4), Fraction(1, 3), Fraction(5, 12)]
+    true_coordinates = [Fraction(1, 10), Fraction(9, 20), Fraction(4, 5)]
+    binned_representatives = [Fraction(0), Fraction(1, 2), Fraction(3, 4)]
+
+    total_energy = sum(energies, Fraction(0))
+    assert_equal("finite-resolution total energy", total_energy, Fraction(1))
+
+    full_coordinate = smeared_pair_coordinate(energies, true_coordinates)
+    binned_coordinate = smeared_pair_coordinate(energies, binned_representatives)
+    binning_error = abs(full_coordinate - binned_coordinate)
+
+    # On 0 <= x,y <= 1, this kernel has slotwise Lipschitz constant at most
+    # 7/10 for the l1 product metric.  Moving each detector atom by at most
+    # delta in each slot gives the k L E^k delta estimate with k=2.
+    kernel_lipschitz = Fraction(7, 10)
+    detector_diameter = Fraction(1, 10)
+    binning_bound = 2 * kernel_lipschitz * total_energy**2 * detector_diameter
+    assert_equal("finite-resolution exact binned difference", binning_error, Fraction(1553, 96000))
+    _assert_leq("finite-resolution Lipschitz detector bound", binning_error, binning_bound)
+
+    perturbative_defect = Fraction(1, 120)
+    contact_defect = -Fraction(1, 140)
+    hadronization_defect = Fraction(1, 150)
+    actual_residual = (
+        full_coordinate
+        - binned_coordinate
+        + perturbative_defect
+        + contact_defect
+        + hadronization_defect
+    )
+    declared_budget = (
+        binning_bound
+        + abs(perturbative_defect)
+        + abs(contact_defect)
+        + abs(hadronization_defect)
+    )
+    _assert_leq("finite-resolution observable assembly residual", abs(actual_residual), declared_budget)
+
+    omitted_binning_budget = (
+        abs(perturbative_defect)
+        + abs(contact_defect)
+        + abs(hadronization_defect)
+    )
+    assert_true(
+        "omitting the detector-binning budget undercounts the measured residual",
+        abs(actual_residual) > omitted_binning_budget,
+    )
+
+
 def check_connected_cumulants_do_not_remove_detector_contacts() -> None:
     event_a: list[Particle] = [
         (Fraction(1, 2), (Fraction(1), Fraction(0), Fraction(0))),
@@ -535,6 +606,7 @@ def main() -> None:
     check_eec_legendre_multipole_positivity()
     check_three_detector_moment_and_contact_ledger()
     check_endpoint_matching_delta_ledger()
+    check_finite_resolution_detector_assembly_budget()
     check_connected_cumulants_do_not_remove_detector_contacts()
     print("All finite-event energy-correlator detector-algebra checks passed.")
 
