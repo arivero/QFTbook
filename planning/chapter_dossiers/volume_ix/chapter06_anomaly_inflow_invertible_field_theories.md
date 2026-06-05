@@ -53,6 +53,10 @@ boundary condition for an invertible bulk theory.
   `C_Lambda(g;A)`, the exponentiated line cocycle `alpha_Lambda(A,g)`, the
   inverse inflow bulk phase, and the determinant/Pfaffian holonomy coordinate
   of Volume XII into one anomaly-line datum.
+- Adds the LSMOH cautionary bridge: lattice filling/projective-cell
+  constraints can be represented as anomaly-line data for translation defects
+  and background holonomy only after the finite lattice commutator and the
+  scaling/topological-sector map have been supplied.
 - Proves the functorial cocycle condition for scalar anomaly representatives
   and the frame-change law under local counterterms.
 - Constructs the boundary anomaly line from an invertible bulk by comparing
@@ -133,3 +137,6 @@ boundary condition for an invertible bulk theory.
   scalar language for nonempty-boundary fillings by the evaluation pairing
   between the boundary vector and the bulk filling state.  The companion check
   now includes line-variance and negative-control tests.
+- 2026-06-05 issue #777 cross-reference pass: added the LSMOH anomaly-language
+  boundary, emphasizing that anomaly matching does not replace the
+  finite-regulator flux-insertion theorem or prove a continuum limit.

@@ -40,7 +40,8 @@
   flux-insertion argument, used as terminology and theorem-boundary anchors.
   The chapter's finite-density section keeps the finite-regulator setup,
   patch-RG shell calculation, Landau response status, and flux identity
-  logically separate.
+  logically separate, and now points LSMOH phase constraints to their
+  theorem-level home in Volume IX Chapter 7.
 - `SRC-EXTERNAL-BOUNDS`: Polchinski's smooth-cutoff perturbative
   renormalizability argument, Salmhofer's rigorous RG framework, and
   Kopper--Muller-type perturbative cutoff estimates, together with
@@ -825,6 +826,10 @@ The chapter must define and derive:
   and controlled/non-controlled non-Fermi-liquid boundaries.  Added
   `calculation-checks/fermi_surface_eft_checks.py` for density-of-states,
   shell-log, BCS-flow, Pomeranchuk, and flux-momentum arithmetic checks.
+- 2026-06-05 issue #777 cross-reference pass: pointed the finite-density
+  flux-insertion paragraph to the new LSMOH theorem-boundary section in Volume
+  IX Chapter 7, preserving the distinction between Fermi-volume counting and
+  gapped-phase constraints.
 - 2026-06-05 issue #779 pass: added the conditional forward scalar positivity
   section after the EFT prediction datum and field-redefinition discussion.
   The new section starts from an observable amplitude, states the assumption

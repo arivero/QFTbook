@@ -149,6 +149,9 @@ Useful content:
   circuits as finite-regulator locality tools;
 - interacting Hall-conductance quantization, flux insertion, strip currents,
   and local adiabatic control;
+- Lieb--Schultz--Mattis--Oshikawa--Hastings filling and projective-cell
+  constraints as finite-regulator bridges from microscopic lattice data to
+  infrared phase alternatives;
 - toric-code local indistinguishability, degeneracy, logical Wilson loops, and
   anyonic excitation algebra;
 - the distinction between topological defects and topological order;
@@ -173,7 +176,11 @@ many-body flux-torus Hall response datum: trace Berry curvature of an
 isolated band, integer Chern number, exact finite Kubo-curvature identity for
 an exactly degenerate band, and explicit locality/gap/thermodynamic
 hypotheses needed before the finite curvature average becomes a Hall
-conductance theorem.  Volume VIII, Chapter 11 now also contains an exact
+conductance theorem.  The same finite-flux machinery now supports the LSMOH
+constraint section: exact large-gauge/translation momentum bookkeeping,
+spin-\(1/2\) and fractional-filling examples, theorem-boundary locality/gap
+control, and the anomaly-interpretation caveat.  Volume VIII, Chapter 11 now
+also contains an exact
 finite Abelian boundary laboratory: line-label group \(A\oplus\widehat A\),
 braiding, spin, bosonic Lagrangian subgroups, endpoint absorption, and the
 cylinder-sector count
@@ -513,9 +520,10 @@ nonrelativistic/statistical-physics volume:
    autocorrelation/error analysis, Hamiltonian truncation, transfer-matrix/ED,
    tensor-network, and neural-variational QFT sections.
 4. **Volume IX finite-locality proof laboratories.**  Use toric code,
-   interacting Hall conductance, Lieb--Robinson/quasi-adiabatic continuation,
-   and finite gauge theories as laboratories for generalized symmetry,
-   topological defects, and TQFT boundary claims.
+   interacting Hall conductance, LSMOH constraints,
+   Lieb--Robinson/quasi-adiabatic continuation, and finite gauge theories as
+   laboratories for generalized symmetry, topological defects, anomaly matching,
+   and TQFT boundary claims.
 5. **Volume XI constructive cluster-expansion machinery.**  Develop polymer
    gases, Pirogov--Sinai, phase-sum scaling, and cluster expansion estimates
    as proof machinery rather than quoted background.

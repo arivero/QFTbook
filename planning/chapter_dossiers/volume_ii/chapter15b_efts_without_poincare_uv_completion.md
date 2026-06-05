@@ -19,7 +19,8 @@
   local QFT, with the OS linear-growth caveat stated.
 - Defines validation maps for borrowing relativistic QFT technology.
 - Gives a transfer table for Wilsonian integration, power counting,
-  analyticity, LSZ, spin-statistics/CPT, modular theory, and anomalies.
+  analyticity, LSZ, spin-statistics/CPT, modular theory, anomalies, and LSMOH
+  constraints.
 - Develops examples: Fermi liquids, Lifshitz fixed points, and quantum Hall
   Chern--Simons response theory.
 - States a controlled approximation for emergent relativistic EFT with an
@@ -44,6 +45,9 @@
 4. LSZ, spin-statistics, CPT, Wightman/OS analyticity, and
    Bisognano--Wichmann modular statements require separate hypotheses or
    replacement theorems outside relativistic local QFT.
+5. LSMOH/anomaly language transfers to finite-cutoff EFTs only after the
+   microscopic translation, filling or projective-cell datum, and background
+   twist action have been mapped into the claimed infrared observables.
 
 ## Audit Notes
 
@@ -51,3 +55,5 @@
   or proves/constructs a validation statement.
 - Keep the positive formulation: define the two regimes and their data before
   warning about non-transfer of relativistic theorems.
+- 2026-06-05 issue #777 cross-reference pass: added LSMOH constraints to the
+  validation table and stated the required microscopic-to-IR map.

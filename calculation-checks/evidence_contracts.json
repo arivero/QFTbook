@@ -38,6 +38,10 @@
       "risk_class": "finite lattice BRST topology"
     },
     {
+      "path": "lsmoh_flux_anomaly_checks.py",
+      "risk_class": "lattice filling and anomaly constraints"
+    },
+    {
       "path": "kinetic_theory_checks.py",
       "risk_class": "Schwinger-Keldysh kinetic collision kernel"
     },

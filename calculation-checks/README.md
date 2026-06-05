@@ -1557,6 +1557,12 @@ Current checks:
   flux-torus Hall-response section, including the equality between projector
   curvature and the finite Kubo resolvent formula, plus the Chern-number
   normalization of the two-band lattice benchmark.
+- `lsmoh_flux_anomaly_checks.py`: finite rational checks for the
+  Lieb--Schultz--Mattis--Oshikawa--Hastings flux-insertion bookkeeping,
+  including the large-gauge/translation commutator, the spin-\(1/2\) chain as
+  half filling, fractional filling momentum shifts, and negative controls for
+  integer filling, enlarged unit cells, gapless exits, and topological-sector
+  momentum absorption.
 - `lattice_locality_flow_checks.py`: finite-regulator locality checks for the
   gauge-theory phases chapter, including overlap-chain counting for the
   path-count Lieb--Robinson estimate, the factorial-to-exponential tail bound,

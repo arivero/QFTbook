@@ -24,6 +24,9 @@ and local-algebra comparison layer.
   positive-time test algebra, and reflection.
 - `A_a(O_a)`, `A(O)`: lattice and continuum local algebras.
 - `P_a(x)`: plaquette representative of action-density-type operators.
+- `Q`, `T_a`, and background twists: microscopic charge, translation, and
+  boundary/background-holonomy data that must be mapped before LSMOH-type
+  lattice constraints can be interpreted in a continuum limit.
 
 ## Claim Ledger
 
@@ -32,6 +35,9 @@ and local-algebra comparison layer.
   fix the normalization of lattice smearing maps.
 - Defines the scaling-limit datum: regulator states, trajectory, test spaces,
   operator maps, normalizations, and convergence topology.
+- Records that LSMOH constraints require scaling maps for microscopic charge,
+  translation, background holonomy/twist, and low-energy sectors before they
+  become continuum anomaly or phase constraints.
 - Defines distributional convergence of Schwinger functions.
 - Proves a dense-test convergence criterion under a uniform seminorm bound,
   making explicit which part is functional analysis and which part is the
@@ -67,3 +73,6 @@ the OS reconstruction pipeline.
 - 2026-05-29 seventh anti-wrapper pass: demoted the cell-average approximation
   estimate from proposition form to worked prose.  It is a normalization and
   Riemann-sum estimate, not a theorem-level continuum-limit result.
+- 2026-06-05 issue #777 cross-reference pass: added the lattice-to-continuum
+  data needed to carry LSMOH filling/projective-cell constraints into an
+  infrared QFT or anomaly statement.

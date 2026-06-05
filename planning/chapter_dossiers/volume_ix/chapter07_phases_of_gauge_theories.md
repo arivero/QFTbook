@@ -9,6 +9,17 @@ infinite-volume definition of gauge-theory phase data and explains how local
 analyticity, static potentials, higher-form symmetry, screening, condensates,
 and topological sectors fit together.
 
+## Source And Reference Controls
+
+- `SRC-EXTERNAL-LSMOH`: Lieb--Schultz--Mattis, Oshikawa, and Hastings are used
+  for the theorem-boundary LSMOH obstruction.  The chapter derives the exact
+  finite momentum-shift algebra locally and identifies the higher-dimensional
+  thermodynamic/quasi-adiabatic step as imported theorem machinery.
+- `SRC-EXTERNAL-LSM-ANOMALY`: Metlitski--Thorngren,
+  Else--Thorngren, and Cheng--Seiberg are used for the anomaly interpretation
+  of LSM-type constraints.  The chapter treats this as a reformulation and
+  matching language, not as a substitute for the finite-regulator proof.
+
 ## Notation Inventory
 
 - `A_Lambda`: finite-region gauge-invariant observable algebra.
@@ -25,6 +36,11 @@ and topological sectors fit together.
   a gapped local Hamiltonian path.
 - `F_gamma`: real odd quasi-adiabatic filter with
   `hat F_gamma(omega)=i/omega` outside the spectral gap.
+- `nu=p/q`: rational filling per microscopic unit cell in the LSMOH section.
+- `G_1`: large gauge transformation returning a \(2\pi\) flux insertion to
+  zero-flux gauge.
+- `L_perp`: transverse volume entering the finite LSMOH momentum shift
+  `Delta P_1=2*pi*nu*L_perp`.
 - `phi=(phi_x,phi_y)`: dimensionless flux coordinates on the finite flux
   torus `T^2`.
 - `H_Lambda(phi)`, `I_a=partial_{phi_a}H_Lambda`: finite many-body flux
@@ -76,6 +92,14 @@ and topological sectors fit together.
   locality mechanism: the spectral gap fixes the filter, the filter tail
   controls long times, and the Lieb--Robinson estimate controls spatial
   leakage of evolved local terms.
+- Adds the LSMOH constraint layer: derives the exact finite large-gauge and
+  translation commutator, obtains the flux-insertion momentum shift, states the
+  thermodynamic theorem boundary with uniform locality/gap/quasi-adiabatic
+  hypotheses, and separates the three infrared exits: symmetry breaking,
+  gaplessness, or intrinsic topological order.
+- Works the spin-\(1/2\) chain as half filling and a fractional
+  \(U(1)\)-filling lattice example, while distinguishing the anomaly
+  interpretation from the microscopic proof and from continuum-QFT existence.
 - Defines the finite many-body flux-torus Hall datum and proves that the
   flux-averaged curvature is `C_Lambda/(2*pi*r_Lambda)` with integer
   `C_Lambda`.
@@ -127,6 +151,11 @@ and topological sectors fit together.
   flux-torus Hall conventions: projector curvature equals the Kubo resolvent
   formula for a two-level isolated band, and the standard two-band lattice
   benchmark has Chern numbers \(0,+1,-1,0\) in the four mass chambers.
+- `calculation-checks/lsmoh_flux_anomaly_checks.py` verifies exact rational
+  momentum-shift bookkeeping for LSMOH flux insertion, the spin-\(1/2\) chain
+  as half filling, fractional-filling obstruction arithmetic, and negative
+  controls for integer filling, enlarged cells, gapless exits, and
+  topological-sector absorption.
 - `calculation-checks/lattice_locality_flow_checks.py` verifies overlap-chain
   counting for the finite path-count Lieb--Robinson estimate, the
   factorial-to-exponential tail bound, two-level spectral-flow transport, and
@@ -168,3 +197,7 @@ screening quotient, condensate subgroup, and topological sector.
   Chern-number formula and the exact finite Kubo-curvature identity, then
   states the extra locality/gap/thermodynamic hypotheses needed before the
   finite curvature average can be called a phase-stable Hall conductance.
+- 2026-06-05 issue #777 LSMOH pass: added the finite flux-insertion
+  momentum-shift derivation, theorem-boundary statement, spin-\(1/2\) and
+  fractional-filling examples, anomaly interpretation boundary, cross-volume
+  links, and `lsmoh_flux_anomaly_checks.py`.

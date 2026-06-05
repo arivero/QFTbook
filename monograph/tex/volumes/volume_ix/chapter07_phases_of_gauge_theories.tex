@@ -388,6 +388,197 @@ mathematical object that transports local phase data.  It is distinct from
 both physical time evolution and from an arbitrary finite-dimensional unitary
 interpolation of ground spaces.
 
+\section{Lieb--Schultz--Mattis--Oshikawa--Hastings Constraints}
+\label{sec:lsmoh-lattice-qft-constraints}
+
+The locality machinery above has a sharper use than phase stability along a
+chosen path: it can obstruct the existence of the path's endpoint.  The
+Lieb--Schultz--Mattis--Oshikawa--Hastings family of results
+\cite{LiebSchultzMattis1961,Oshikawa2000Commensurability,Hastings2004LSMHigher}
+connects microscopic translation and charge data to infrared phase
+alternatives.  The physics statement is not ``fractional filling implies
+gapless.''  It is that a symmetric, unique, gapped, short-range-entangled
+infrared phase is incompatible with certain unit-cell data.  The allowed
+outcomes are symmetry breaking, gapless excitations, or intrinsic topological
+order.
+
+Start with the \(U(1)\)-filling form.  Let
+\[
+  \Lambda_L=\prod_{a=1}^d\mathbb Z/L_a\mathbb Z
+\]
+be a finite spatial torus with finite-dimensional on-site Hilbert spaces, a
+finite-range translation-invariant Hamiltonian \(H_L\), translations \(T_a\),
+and an integer-valued conserved charge
+\[
+  Q=\sum_{x\in\Lambda_L} q_x,\qquad [H_L,Q]=0 .
+\]
+The filling along a thermodynamic sequence is
+\[
+  \nu=\lim_{L\to\infty}\frac{N_L}{|\Lambda_L|},
+  \qquad N_L=\langle Q\rangle
+\]
+when the finite states have a fixed charge sector or charge density.  A
+rational filling will be written
+\[
+  \nu=\frac pq,\qquad (p,q)=1.
+\]
+The theorem is a statement about a sequence of finite tori and boundary twists;
+the order of limits is part of the datum.  One first works at finite \(L\),
+then takes a thermodynamic sequence with the filling and the transverse-volume
+arithmetic specified.  A continuum effective action with no map from these
+finite charge and translation operators is not enough data.
+
+Insert \(2\pi\) units of background \(U(1)\) flux through the first cycle.  In a
+lattice gauge where the flux is spread uniformly along that cycle, returning
+the Hamiltonian to the original zero-flux gauge uses the large gauge
+transformation
+\begin{equation}
+  G_1
+  =
+  \exp\!\left[
+    -\frac{2\pi i}{L_1}
+    \sum_{x\in\Lambda_L}x_1 q_x
+  \right],
+  \qquad x_1\in\{0,\ldots,L_1-1\}.
+  \label{eq:lsmoh-large-gauge-transformation}
+\end{equation}
+For the translation convention \(T_1q_xT_1^{-1}=q_{x+\widehat 1}\), integer
+charge eigenvalues give
+\begin{equation}
+  T_1G_1T_1^{-1}
+  =
+  \exp\!\left(\frac{2\pi iQ}{L_1}\right)G_1 .
+  \label{eq:lsmoh-translation-large-gauge-commutator}
+\end{equation}
+Indeed, translating the coordinate \(x_1\) to \(x_1-1\) shifts
+\(\sum x_1q_x\) by \(-Q\), while the boundary site contributes
+\(\exp(-2\pi i q_{(0,x_\perp)})=1\).  Hence if an eigenstate transported around
+the flux cycle has charge \(N_L\) and initial crystal momentum \(P_1\), the
+large-gauge-returned state has
+\begin{equation}
+  \Delta P_1
+  =
+  \frac{2\pi N_L}{L_1}
+  =
+  2\pi\nu\,L_\perp
+  \quad(\operatorname{mod}2\pi),
+  \qquad
+  L_\perp=\prod_{a=2}^d L_a .
+  \label{eq:lsmoh-flux-momentum-shift}
+\end{equation}
+Equation~\eqref{eq:lsmoh-flux-momentum-shift} is exact finite-regulator
+bookkeeping.  The theorem begins only when one asks whether the flux insertion
+can be implemented inside a single uniformly gapped, symmetry-preserving,
+short-range-entangled ground-state sector.
+
+\begin{theorem}[LSMOH obstruction, theorem-boundary form]
+\label{thm:lsmoh-obstruction-theorem-boundary}
+Consider an exhausting sequence of finite \(d\)-dimensional tori with uniformly
+finite-range interactions, bounded local Hilbert spaces, uniformly bounded
+interaction norms and degrees, translation symmetry, and a conserved integer
+\(U(1)\) charge.  Suppose the filling tends to \(p/q\notin\mathbb Z\).  Choose a
+subsequence for which \(pL_\perp/q\notin\mathbb Z\).  Then the sequence cannot
+have all of the following properties simultaneously:
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item a unique symmetric ground sector: one translation- and
+  \(U(1)\)-invariant ground state on the torus;
+\item a uniform flux gap: a nonzero gap above that sector for all
+  \(\phi\in[0,2\pi]\);
+\item a short-range-entangled return: quasi-adiabatic flux insertion returns the
+  same local phase sector.
+\end{enumerate}
+Thus the infrared must realize at least one of the following alternatives:
+translation or internal-symmetry breaking, gapless states in the thermodynamic
+limit, or intrinsic topological order/long-range entanglement whose sectors can
+absorb the momentum shift.
+\end{theorem}
+
+The finite calculation above supplies the obstruction visible in
+\eqref{eq:lsmoh-flux-momentum-shift}.  The nontrivial analytic input is the
+controlled adiabatic statement.  In one dimension this is the
+Lieb--Schultz--Mattis/Oshikawa low-energy-state argument.  In higher dimensions
+the Hastings proof uses Lieb--Robinson bounds and quasi-adiabatic continuation:
+the flux derivative is supported near the cut, the filter is fixed by the
+assumed gap, and the tails are controlled by estimates of the kind displayed in
+Section~\ref{sec:finite-regulator-locality-machinery-phase-stability}.  The
+finite-size errors are not the slogan ``there is a finite-volume level
+crossing.''  They are the quasi-local leakage and filter-tail errors, together
+with the thermodynamic choice of transverse volumes.  This is why
+Theorem~\ref{thm:lsmoh-obstruction-theorem-boundary} is stated as a
+theorem-boundary result rather than as a proof extracted only from
+\eqref{eq:lsmoh-translation-large-gauge-commutator}.
+
+The spin formulation replaces fractional \(U(1)\) filling by a projective
+representation per unit cell.  If each unit cell carries a nontrivial projective
+class for an internal symmetry \(G_0\), for example the spin-\(1/2\) class of
+\(SO(3)\), then translation ties that projective class to the whole infrared
+Hilbert space.  A symmetric short-range-entangled state would trivialize the
+projective class in every large cell, but a one-cell translation shifts the
+cell decomposition by one nontrivial projective factor.  Equivalently, after
+coupling to flat \(G_0\) backgrounds, translation and background-defect motion
+act projectively on the twisted Hilbert spaces.  This is the mixed-anomaly
+interpretation developed in modern treatments
+\cite{MetlitskiThorngren2018Anomalies,ElseThorngren2020LSMTopological,
+ChengSeiberg2023LSMLuttingerAnomaly}; it is a reformulation of the microscopic
+constraint, while the finite-regulator proof remains the source of the
+microscopic obstruction.
+
+For a spin-\(1/2\) chain with \(U(1)\) spin rotations and zero magnetization,
+set
+\[
+  n_x=S_x^z+\frac12 .
+\]
+Then \(n_x\) has eigenvalues \(0,1\), and the filling is
+\[
+  \nu=\frac{1}{L}\sum_x\langle n_x\rangle=\frac12 .
+\]
+Equation~\eqref{eq:lsmoh-flux-momentum-shift} gives
+\[
+  \Delta P=\pi\quad(\operatorname{mod}2\pi).
+\]
+A unique symmetric gapped short-range-entangled ground state would have to
+return to itself after \(2\pi\) spin flux, but the returned state has opposite
+crystal momentum.  The familiar physical resolutions fit the theorem precisely:
+the Heisenberg spin-\(1/2\) chain is gapless; a dimerized chain is gapped but
+breaks one-site translation; in higher dimensions a symmetric gapped spin
+liquid may instead carry intrinsic topological order.
+
+For a lattice boson or fermion system at filling \(p/q\), take a one-dimensional
+sequence with \(L\) a multiple of \(q\) and \(N=pL/q\).  The same finite
+calculation gives
+\[
+  \Delta P=\frac{2\pi p}{q}\quad(\operatorname{mod}2\pi).
+\]
+An ordinary band or Mott insulator with one symmetric short-range-entangled
+ground state is therefore impossible at fractional filling under the stated
+hypotheses.  A charge-density wave can evade the conclusion by enlarging the
+unit cell by \(q\); a Luttinger liquid evades it by being gapless; a fractional
+quantum Hall or other fractionalized phase evades it by having topological
+sectors whose symmetry fractionalization carries the missing momentum.
+
+The anomaly language is useful only after its input map is explicit.  The
+finite operator identity
+\[
+  T_1G_1T_1^{-1}G_1^{-1}
+  =
+  \exp(2\pi i Q/L_1)
+\]
+is a projective commutation relation between translation and a large
+background-gauge transformation.  In an infrared topological description it can
+be encoded as an anomaly line or symmetry-TQFT datum involving translation
+defects and \(U(1)\) background holonomy, in the sense of
+Chapter~\ref{ch:global-anomaly-inflow-invertible-field-theories} and
+Chapter~\ref{ch:global-higher-group-symmetry-tft}.  What is gained is a
+matching principle: every candidate continuum or topological infrared theory
+must reproduce the twisted-sector momentum and defect algebra.  What is not
+proved is the existence of a continuum QFT, the size of the gap, or the
+emergence of a particular topological order.  Those require the scaling maps of
+Chapter~\ref{ch:constructive-lattice-continuum-local-qft}, the finite-cutoff
+validation discipline of
+Chapter~\ref{ch:efts-without-poincare-uv-completion}, and the topological-sector
+embedding data described below in
+Section~\ref{sec:finite-one-form-laboratory-z2-code}.
+
 \section{Finite Flux-Torus Hall Response}
 \label{sec:finite-flux-torus-hall-response}
 
