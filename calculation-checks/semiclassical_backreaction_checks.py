@@ -10,6 +10,8 @@ large-species scaling of retained stress-source cumulants, the
 first-order lambda-phi-four potential-insertion source coordinate, the retained
 lambda-phi-four potential-noise coordinate using the full separated two-point
 function, retained Ward diagnostics for interacting source/noise coordinates,
+the finite retained Ward-completion laboratory connecting those diagnostics to
+metric response and missing-noise budgets,
 the full retained interacting stress-tensor/noise package with component
 cross-covariances and finite composite-operator mixing, the closed-time-path
 influence-functional consistency of the interacting mean, retarded response,
@@ -30,7 +32,10 @@ the lambda-phi-four potential-insertion source coordinate, the retained
 potential-noise Wick contraction with full separated two-point cross covariance
 and metric pushforward, the restricted
 finite-renormalization ledger for that coordinate, the finite retained
-Ward-diagnostic/projected-noise algebra for interacting sources, and the
+Ward-diagnostic/projected-noise algebra for interacting sources, the worked
+two-coordinate Ward-completion laboratory relating conserved source projection
+and retained metric/noise pushforward to the missing interacting covariance,
+and the
 full interacting package algebra in which component cross-covariances and
 finite operator-mixing terms are required before Ward tests are applied to the
 noise, the closed-time-path package tests tying Ward identities, retarded
@@ -44,10 +49,12 @@ Independent construction: the checks recompute traces, KMS factors,
 matrix pushforwards, exact retained-sector inverses, Wick-contraction
 coefficients, cosmological-coordinate shifts, independent finite counterterm
 controls, signed/absolute norm bounds, Ward maps, kernel projectors, projected
-covariances, finite influence-functional quadratic forms, retarded-support
-tests, fluctuation-dissipation ratios, small-gain inverses, response/noise
-bounds, species sums, 1/N_sp gravitational-coupling scaling, source-cumulant
-scaling, nonlinear fixed-point radii, residual size and residual Lipschitz
+covariances, explicit finite Ward repairs, Ward-reduced source responses,
+projected diagnostic covariances, missing Ward-clean fluctuation budgets,
+finite influence-functional quadratic forms, retarded-support tests,
+fluctuation-dissipation ratios, small-gain inverses, response/noise bounds,
+species sums, 1/N_sp gravitational-coupling scaling, source-cumulant scaling,
+nonlinear fixed-point radii, residual size and residual Lipschitz
 budgets, state-transport Lipschitz constants, noise-validity inequalities, and
 toy roots directly from finite formulas rather than importing chapter display
 strings.
@@ -64,7 +71,9 @@ separated two-point function, premature real-part projection, retained
 disconnected noise pieces, pretending a transverse counterterm cancels a Ward
 violation, wrong-sign Ward repairs, identifying the least-norm projection with
 the physical completion, identifying projected partial noise with full physical
-noise, unprojected longitudinal noise, cutoff-scale higher-derivative roots,
+noise, unprojected longitudinal noise, feeding a nonconserved retained source
+to the metric response, and undercounting a Ward-clean missing-noise
+fluctuation budget, cutoff-scale higher-derivative roots,
 component-variance-only noise packages, missing finite-renormalization cross
 terms, c-number counterterms incorrectly added to connected noise, advanced
 response kernels, independent noise spectra violating the KMS factor, and
@@ -751,6 +760,117 @@ def check_retained_interacting_source_ward_diagnostics() -> None:
         raise AssertionError("contractive response should bound diagnostic noise trace")
 
 
+def check_retained_ward_completion_laboratory() -> None:
+    # Worked two-coordinate analogue of the retained source/noise laboratory.
+    ward: Matrix = ((Fraction(1), Fraction(-1)),)
+    raw_source: Matrix = ((Fraction(3),), (Fraction(1),))
+    ward_violation = matmul(ward, raw_source)
+    if ward_violation != ((Fraction(2),),):
+        raise AssertionError("test raw source should have the declared Ward violation")
+
+    ward_gram = matmul(ward, transpose(ward))
+    ward_gram_inverse: Matrix = ((Fraction(1, 2),),)
+    if ward_gram != ((Fraction(2),),):
+        raise AssertionError("one-constraint Ward Gram changed")
+    projector = matsub(
+        identity(2),
+        matmul(matmul(transpose(ward), ward_gram_inverse), ward),
+    )
+    expected_projector: Matrix = (
+        (Fraction(1, 2), Fraction(1, 2)),
+        (Fraction(1, 2), Fraction(1, 2)),
+    )
+    if projector != expected_projector:
+        raise AssertionError("two-coordinate Ward projector changed")
+    if matmul(projector, projector) != projector:
+        raise AssertionError("two-coordinate Ward projector should be idempotent")
+
+    diagnostic_source = matmul(projector, raw_source)
+    expected_diagnostic_source: Matrix = ((Fraction(2),), (Fraction(2),))
+    if diagnostic_source != expected_diagnostic_source:
+        raise AssertionError("least-norm retained source changed")
+    if matmul(ward, diagnostic_source) != zero_matrix(1, 1):
+        raise AssertionError("least-norm retained source should be Ward-clean")
+
+    least_norm_repair = matsub(diagnostic_source, raw_source)
+    if least_norm_repair != ((Fraction(-1),), (Fraction(1),)):
+        raise AssertionError("least-norm retained repair changed")
+    wrong_sign_source = matsub(raw_source, least_norm_repair)
+    if matmul(ward, wrong_sign_source) == zero_matrix(1, 1):
+        raise AssertionError("negative control failed: wrong-sign repair was conserved")
+
+    transverse_completion: Matrix = ((Fraction(5, 3),), (Fraction(5, 3),))
+    if matmul(ward, transverse_completion) != zero_matrix(1, 1):
+        raise AssertionError("test transverse completion should be Ward-clean")
+    if matmul(ward, matadd(raw_source, transverse_completion)) == zero_matrix(1, 1):
+        raise AssertionError("negative control failed: transverse completion fixed longitudinal source")
+
+    response_inverse: Matrix = (
+        (Fraction(1, 3), Fraction(1, 3)),
+        (Fraction(1, 3), Fraction(1, 3)),
+    )
+    diagnostic_response = matmul(response_inverse, diagnostic_source)
+    if diagnostic_response != ((Fraction(4, 3),), (Fraction(4, 3),)):
+        raise AssertionError("Ward-reduced retained response changed")
+    if matmul(ward, raw_source) == zero_matrix(1, 1):
+        raise AssertionError("negative control failed: nonconserved raw source entered response sector")
+
+    raw_noise: Matrix = (
+        (Fraction(5), Fraction(1)),
+        (Fraction(1), Fraction(2)),
+    )
+    if raw_noise[0][0] <= 0 or det2(raw_noise) <= 0:
+        raise AssertionError("test raw partial noise should be positive definite")
+    if matmul(ward, raw_noise) == zero_matrix(1, 2):
+        raise AssertionError("negative control failed: raw partial noise was Ward-clean")
+
+    diagnostic_noise = matmul(matmul(projector, raw_noise), transpose(projector))
+    expected_diagnostic_noise: Matrix = (
+        (Fraction(9, 4), Fraction(9, 4)),
+        (Fraction(9, 4), Fraction(9, 4)),
+    )
+    if diagnostic_noise != expected_diagnostic_noise:
+        raise AssertionError("projected retained diagnostic noise changed")
+    if matmul(ward, diagnostic_noise) != zero_matrix(1, 2):
+        raise AssertionError("diagnostic noise should have no longitudinal row")
+    if matmul(diagnostic_noise, transpose(ward)) != zero_matrix(2, 1):
+        raise AssertionError("diagnostic noise should have no longitudinal column")
+    for test_vector in [
+        ((Fraction(1),), (Fraction(1),)),
+        ((Fraction(1),), (Fraction(-1),)),
+        ((Fraction(2),), (Fraction(3),)),
+    ]:
+        if quadratic_form(diagnostic_noise, test_vector) < 0:
+            raise AssertionError("diagnostic retained noise should be positive semidefinite")
+
+    missing_ward_clean_noise: Matrix = (
+        (Fraction(1, 3), Fraction(1, 3)),
+        (Fraction(1, 3), Fraction(1, 3)),
+    )
+    if matmul(ward, missing_ward_clean_noise) != zero_matrix(1, 2):
+        raise AssertionError("missing physical noise should be Ward-clean")
+    if matmul(missing_ward_clean_noise, transpose(ward)) != zero_matrix(2, 1):
+        raise AssertionError("missing physical noise should have no longitudinal column")
+
+    full_noise = matadd(diagnostic_noise, missing_ward_clean_noise)
+    if trace(full_noise) != Fraction(31, 6):
+        raise AssertionError("full Ward-clean noise budget changed")
+    diagnostic_metric_covariance = matmul(
+        matmul(response_inverse, diagnostic_noise),
+        transpose(response_inverse),
+    )
+    full_metric_covariance = matmul(
+        matmul(response_inverse, full_noise),
+        transpose(response_inverse),
+    )
+    if trace(diagnostic_metric_covariance) != Fraction(2):
+        raise AssertionError("diagnostic metric covariance trace changed")
+    if trace(full_metric_covariance) != Fraction(62, 27):
+        raise AssertionError("full metric covariance trace changed")
+    if trace(diagnostic_metric_covariance) >= trace(full_metric_covariance):
+        raise AssertionError("negative control failed: missing noise did not enlarge fluctuation budget")
+
+
 def check_interacting_stress_tensor_noise_package() -> None:
     # A finite retained analogue of T_int = sum_i T_i.  The total operator
     # map is Ward-clean, while individual pieces are not.
@@ -1284,6 +1404,7 @@ def main() -> None:
     check_lambda_phi4_potential_source_coordinate()
     check_lambda_phi4_potential_noise_kernel()
     check_retained_interacting_source_ward_diagnostics()
+    check_retained_ward_completion_laboratory()
     check_interacting_stress_tensor_noise_package()
     check_interacting_influence_functional_consistency()
     check_backreaction_small_gain_stability()

@@ -41,9 +41,11 @@ recording fluctuation data required for controlled backreaction.
   Wick-coordinate remainder, full separated state two-point function, and
   finite retained potential-noise matrix for the second-order `lambda phi^4`
   stress-noise coordinate.
-- `B`, `P_{ker B}`, `j_min`, `k`, `N^{full}`: finite retained Ward map, its
-  least-norm diagnostic projector, the unresolved conserved source component,
-  and the full interacting noise covariance tested by the Ward identities.
+- `B`, `P_{ker B}`, `j_min`, `k`, `N_diag`, `N_miss`, `N^{full}`: finite
+  retained Ward map, its least-norm diagnostic projector, the unresolved
+  conserved source component, the projected diagnostic covariance, the missing
+  Ward-clean interacting covariance budget, and the full interacting noise
+  covariance tested by the Ward identities.
 - `T_int^{S,V}`, `K^{ret}`, `N(T^i,T^j)`: the scheme-fixed interacting
   stress tensor, its retained retarded response kernel, and the component
   covariance/cross-covariance entries required to assemble full interacting
@@ -126,6 +128,16 @@ recording fluctuation data required for controlled backreaction.
   `j^{full}=P_{ker B}j^{raw}+k`, `k in ker B`.  The physical source/noise are
   the objects constructed by the full pAQFT ledger; projecting a partial source
   or partial covariance is recorded only as a diagnostic/model choice.
+- Adds a finite retained Ward-completion laboratory.  A two-coordinate retained
+  model with `B=(1,-1)` turns a nonconserved potential-only source
+  `(3,1) rho_*` into the least-norm conserved diagnostic source
+  `(2,2) rho_*`, but leaves the transverse conserved component to the full
+  interacting stress-tensor construction.  The same example projects a
+  positive partial noise matrix to a Ward-clean diagnostic covariance while
+  recording that a positive missing Ward-clean covariance changes the metric
+  fluctuation budget.  This makes the physics rule concrete: the metric
+  response is fed by the scheme-fixed conserved source and full connected
+  stress noise, not by a potential-sector coordinate alone.
 - Adds the full retained interacting stress-tensor/noise package for
   backreaction.  A scheme-fixed `T_int^{S,V}` supplies the mean source,
   connected symmetrized noise, and retarded response in one prescription.  If
@@ -189,7 +201,11 @@ recording fluctuation data required for controlled backreaction.
   metric-covariance trace bound, the retained Ward-diagnostic projector for
   interacting source/noise coordinates with wrong-sign, transverse-ambiguity,
   projection-versus-physical-completion, projected-partial-noise versus
-  full-noise, and unprojected-longitudinal-noise negative controls, the full
+  full-noise, and unprojected-longitudinal-noise negative controls, the finite
+  retained Ward-completion laboratory with explicit source repair,
+  Ward-reduced metric response, projected partial covariance, missing
+  Ward-clean covariance, and fluctuation-undercounting negative controls, the
+  full
   retained interacting stress-tensor/noise package with component
   cross-covariances, finite composite-operator-mixing cross terms, and a
   c-number connected-noise negative control that can still pass the Ward test,
@@ -335,3 +351,11 @@ curvature, microscopic, and EFT scales.
   growing response bounds/cumulants, and species-cutoff violations.  The
   companion checks the finite mean, `1/N_sp` covariance, `1/N_sp^2` third
   cumulant, and negative controls for each false large-`N_sp` shortcut.
+- 2026-06-05 issue #729 Ward-completion laboratory: added
+  `ca:semiclassical-retained-ward-completion-laboratory`, a concrete
+  two-coordinate retained source/noise model showing that a potential-only
+  source can be repaired as a least-norm diagnostic but cannot be treated as
+  the physical conserved stress source.  The paired finite check verifies the
+  explicit projector algebra, Ward-reduced response, positive projected
+  covariance, and the missing Ward-clean noise contribution that must remain in
+  the Einstein--Langevin fluctuation budget.

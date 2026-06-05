@@ -1317,6 +1317,127 @@ of keeping the potential-sector calculation narrow: it is a computable
 coordinate inside the interacting source, while the conserved mean and noise
 that feed semiclassical gravity require the full Ward-compatible pAQFT package.
 
+\begin{controlledapproximation}[Finite retained Ward-completion laboratory]
+\label{ca:semiclassical-retained-ward-completion-laboratory}
+The warning above is not a formal nicety; it changes the metric source.  In a
+two-coordinate retained sector, take the single Ward test
+\[
+  \mathsf B=(1,-1),
+  \qquad
+  \mathsf P_{\ker\mathsf B}
+  =
+  \frac12
+  \begin{pmatrix}
+    1&1\\
+    1&1
+  \end{pmatrix}.
+\]
+The coordinate \(j_1-j_2\) represents the tested longitudinal divergence of a
+candidate stress source, for instance the retained image of
+\(-\partial_\nu\rho_\lambda\) in
+\eqref{eq:semiclassical-potential-source-divergence}.  If the potential-only
+calculation gives
+\[
+  j^{\rm raw}
+  =
+  \rho_*
+  \binom{3}{1},
+  \qquad
+  \mathsf B j^{\rm raw}=2\rho_*,
+\]
+then the least-norm Ward repair and the projected retained source are
+\begin{equation}
+  c_{\rm min}
+  =
+  \rho_*
+  \binom{-1}{1},
+  \qquad
+  j_{\rm min}
+  =
+  \mathsf P_{\ker\mathsf B}j^{\rm raw}
+  =
+  \rho_*
+  \binom{2}{2}.
+  \label{eq:semiclassical-finite-ward-laboratory-source}
+\end{equation}
+This vector is conserved in the retained test, but it is not the physical
+interacting stress source by itself.  The most general Ward-clean retained
+source has the form
+\[
+  j^{\rm full}
+  =
+  j_{\rm min}
+  +
+  k\rho_*
+  \binom{1}{1},
+\]
+where the coefficient \(k\) is fixed by the interacting stress-tensor
+construction and its renormalization conditions.  A transverse finite
+counterterm changes \(k\); it cannot cancel the longitudinal violation
+\(\mathsf B j^{\rm raw}=2\rho_*\).  With a Ward-reduced inverse acting on the
+conserved line, for example
+\[
+  \mathsf D^{-1}_{\rm red}
+  =
+  M_*
+  \mathsf P_{\ker\mathsf B},
+\]
+the diagnostic retained response is
+\[
+  h_{\rm min}
+  =
+  2M_*\rho_*
+  \binom{1}{1}.
+\]
+Feeding \(j^{\rm raw}\) to an unconstrained inverse would instead ask the
+gravitational equation to respond to a nonconserved source.
+
+The same laboratory exposes the fluctuation issue.  A partial potential-noise
+matrix such as
+\[
+  \mathsf N^{\rm raw}
+  =
+  \rho_*^2
+  \begin{pmatrix}
+    5&1\\
+    1&2
+  \end{pmatrix}
+\]
+does not obey the retained Ward identities.  The projected diagnostic
+covariance is
+\begin{equation}
+  \mathsf N_{\rm diag}
+  =
+  \mathsf P_{\ker\mathsf B}\mathsf N^{\rm raw}
+  \mathsf P_{\ker\mathsf B}^*
+  =
+  \frac94\rho_*^2
+  \begin{pmatrix}
+    1&1\\
+    1&1
+  \end{pmatrix}.
+  \label{eq:semiclassical-finite-ward-laboratory-noise}
+\end{equation}
+It is positive and Ward-clean, so it is a valid covariance for the explicit
+least-norm retained model.  It is still not the full noise of the interacting
+stress tensor.  Missing Bogoliubov, derivative, contact, and finite-mixing
+terms can contribute an additional positive Ward-clean covariance
+\(\mathsf N_{\rm miss}\) with
+\(\mathsf B\mathsf N_{\rm miss}=0=\mathsf N_{\rm miss}\mathsf B^*\).  The
+metric fluctuation budget must therefore use
+\[
+  \mathsf C_h^{\rm full}
+  =
+  \mathsf D^{-1}_{\rm red}
+  \left(\mathsf N_{\rm diag}+\mathsf N_{\rm miss}\right)
+  \mathsf D_{\rm red}^{-*},
+\]
+not only the projected partial covariance.  This is the finite retained
+version of the physical rule used below: only the scheme-fixed interacting
+stress tensor, its connected square, and its retarded response constitute a
+backreaction input.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Interacting stress-tensor and noise package]
 \label{ca:semiclassical-interacting-stress-noise-package}
 The retained Ward projector diagnoses admissible conserved coordinates; the
