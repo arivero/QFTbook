@@ -6,17 +6,19 @@ Cutkosky discontinuities to generalized cuts, scalar-integral reconstruction,
 IBP reduction, and a master-integral differential equation.  This script
 checks the exact algebraic ledger behind the worked massless phi^4 example
 and the one-loop bubble family, then adds finite helicity and regulator
-bookkeeping for the Yang-Mills MHV/all-plus control example.  It also checks
-the finite Laurent-pole ledger that turns a reconstructed virtual amplitude
-into a finite observable only after infrared subtraction, real radiation, and
-scheme transport have been assembled.
+bookkeeping for the Yang-Mills MHV/all-plus control example.  It also checks a
+finite two-master threshold-mixing model and the finite Laurent-pole ledger
+that turns a reconstructed virtual amplitude into a finite observable only
+after infrared subtraction, real radiation, and scheme transport have been
+assembled.
 
 Evidence contract.
 Target claims: the generalized-unitarity section of Volume II Chapter 6,
 especially the phi^4 cut reconstruction, the negative controls for incomplete
 cut sets and four-dimensional blind spots, the bubble IBP identity, and the
 bubble master differential equation, plus the gauge-theory MHV box and
-all-plus rational-term comparison and the virtual-to-observable finite
+all-plus rational-term comparison, the local two-master threshold-mixing
+datum in a Fuchsian differential system, and the virtual-to-observable finite
 remainder assembly.
 Independent construction: finite cut-signature matrices over rational
 numbers, an explicit identical-state symmetry factor, a nullspace model for
@@ -24,8 +26,9 @@ local/rational terms invisible to four-dimensional cuts, and exact rational
 checks of the one-loop bubble IBP coefficients at several regulator values;
 spinor-bracket exponent ledgers for little-group weights and dimensions; and
 a finite four-gluon helicity enumeration for all-plus two-particle cuts;
-Laurent-pole arithmetic for virtual/real infrared cancellation and finite
-scheme transport.
+nilpotent rational matrix algebra for threshold monodromy and regular
+boundary constants; Laurent-pole arithmetic for virtual/real infrared
+cancellation and finite scheme transport.
 Imported assumptions: dimensional regularization, the standard massless
 two-particle phase-space normalization with the common factor of pi stripped
 off, the Feynman-parameter gamma-function form of the bubble master, and the
@@ -38,11 +41,12 @@ identical four-dimensional cuts but different D-dimensional rational probes;
 it also verifies that the all-plus one-loop rational structure is invisible
 to strict four-dimensional two-particle cuts but visible to a nonzero
 mu_perp^2 massive-scalar probe, and rejects virtual-only pole cancellation,
-omitted rational finite remainders, and untransported finite IR-scheme shifts.
+omitted rational finite remainders, diagonal one-master threshold shortcuts,
+cut-only boundary reconstruction, and untransported finite IR-scheme shifts.
 Scope boundary: a pass checks the finite reconstruction and reduction
 bookkeeping; it does not compute a nonabelian helicity amplitude from Feynman
-graphs, prove unitarity from Wightman axioms, or solve a multi-master
-differential system.
+graphs, prove unitarity from Wightman axioms, or solve a physical
+multi-scale integral family.
 """
 
 from __future__ import annotations
@@ -103,6 +107,8 @@ CHANNELS = ("s", "t", "u")
 BASIS = ("B_s", "B_t", "B_u", "local", "four_dimensional_rational_null")
 BracketPowers = dict[tuple[int, int], int]
 Laurent = tuple[Fraction, Fraction]
+Matrix = list[list[Fraction]]
+Vector = list[Fraction]
 
 
 def laurent_add(left: Laurent, right: Laurent) -> Laurent:
@@ -115,6 +121,39 @@ def laurent_sub(left: Laurent, right: Laurent) -> Laurent:
 
 def laurent_scale(scale: Fraction, value: Laurent) -> Laurent:
     return (scale * value[0], scale * value[1])
+
+
+def matrix_mul(left: Matrix, right: Matrix) -> Matrix:
+    return [
+        [
+            sum(left[row][k] * right[k][col] for k in range(len(right)))
+            for col in range(len(right[0]))
+        ]
+        for row in range(len(left))
+    ]
+
+
+def matrix_vector_mul(matrix: Matrix, vector: Vector) -> Vector:
+    return [
+        sum(row[col] * vector[col] for col in range(len(vector)))
+        for row in matrix
+    ]
+
+
+def vector_add(left: Vector, right: Vector) -> Vector:
+    return [left[index] + right[index] for index in range(len(left))]
+
+
+def vector_sub(left: Vector, right: Vector) -> Vector:
+    return [left[index] - right[index] for index in range(len(left))]
+
+
+def vector_scale(scale: Fraction, vector: Vector) -> Vector:
+    return [scale * entry for entry in vector]
+
+
+def dot(left: Vector, right: Vector) -> Fraction:
+    return sum(left[index] * right[index] for index in range(len(left)))
 
 
 def four_dimensional_cut_signature(basis_name: str) -> tuple[Fraction, Fraction, Fraction]:
@@ -353,6 +392,95 @@ def check_branch_and_landau_ledger() -> None:
     )
 
 
+def check_two_master_threshold_mixing() -> None:
+    threshold_residue: Matrix = [
+        [Fraction(0), Fraction(0)],
+        [Fraction(1), Fraction(0)],
+    ]
+    zero_matrix: Matrix = [
+        [Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0)],
+    ]
+    assert_equal(
+        "nilpotent threshold residue",
+        matrix_mul(threshold_residue, threshold_residue),
+        zero_matrix,
+    )
+
+    log_constants = [Fraction(5, 7), Fraction(11, 13)]
+    stripped_monodromy = matrix_vector_mul(threshold_residue, log_constants)
+    assert_equal(
+        "threshold monodromy feeds second master",
+        stripped_monodromy,
+        [Fraction(0), Fraction(5, 7)],
+    )
+
+    log_coordinate = Fraction(3, 5)
+    singular_solution = vector_add(
+        log_constants,
+        vector_scale(log_coordinate, stripped_monodromy),
+    )
+    log_derivative = stripped_monodromy
+    fuchsian_rhs = matrix_vector_mul(threshold_residue, singular_solution)
+    assert_equal(
+        "two-master Fuchsian equation residual",
+        vector_sub(log_derivative, fuchsian_rhs),
+        [Fraction(0), Fraction(0)],
+    )
+
+    diagonal_shortcut: Matrix = [
+        [threshold_residue[0][0], Fraction(0)],
+        [Fraction(0), threshold_residue[1][1]],
+    ]
+    shortcut_monodromy = matrix_vector_mul(diagonal_shortcut, log_constants)
+    assert_true(
+        "diagonal one-master shortcut misses threshold mixing",
+        shortcut_monodromy != stripped_monodromy,
+    )
+
+    amplitude_weights = [Fraction(2, 3), Fraction(-5, 4)]
+    exact_discontinuity = dot(amplitude_weights, stripped_monodromy)
+    shortcut_discontinuity = dot(amplitude_weights, shortcut_monodromy)
+    assert_true(
+        "dropping threshold mixing changes amplitude discontinuity",
+        exact_discontinuity != shortcut_discontinuity,
+    )
+
+    regular_boundary_a = [Fraction(2, 5), Fraction(3, 7)]
+    regular_boundary_b = [
+        Fraction(2, 5) - Fraction(1, 17),
+        Fraction(3, 7) + Fraction(1, 19),
+    ]
+    value_a = vector_add(regular_boundary_a, singular_solution)
+    value_b = vector_add(regular_boundary_b, singular_solution)
+    assert_equal(
+        "same threshold monodromy under regular boundary shift",
+        matrix_vector_mul(threshold_residue, log_constants),
+        stripped_monodromy,
+    )
+    assert_true(
+        "cut data do not fix regular boundary constants",
+        dot(amplitude_weights, value_a) != dot(amplitude_weights, value_b),
+    )
+
+    residuals = {
+        "threshold_mixing": abs(exact_discontinuity - shortcut_discontinuity),
+        "regular_boundary": abs(dot(amplitude_weights, vector_sub(value_b, value_a))),
+    }
+    total_difference = (
+        exact_discontinuity
+        - shortcut_discontinuity
+        + dot(amplitude_weights, vector_sub(value_b, value_a))
+    )
+    majorant = sum(residuals.values(), Fraction(0))
+    assert_true("two-master reconstruction residual bound", abs(total_difference) <= majorant)
+    underbudget = majorant - residuals["regular_boundary"]
+    assert_true(
+        "omitting boundary residual underbudgets multi-master comparison",
+        abs(total_difference) > underbudget,
+    )
+
+
 def check_virtual_to_observable_assembly() -> None:
     tree = Fraction(3, 2)
     ir_operator = (Fraction(-5, 3), Fraction(7, 11))
@@ -454,6 +582,7 @@ def main() -> None:
     check_gauge_theory_helicity_controls()
     check_bubble_ibp_identity()
     check_branch_and_landau_ledger()
+    check_two_master_threshold_mixing()
     check_virtual_to_observable_assembly()
     print("All generalized unitarity and one-loop reduction checks passed.")
 

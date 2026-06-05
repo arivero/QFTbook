@@ -2821,10 +2821,11 @@ Current checks:
   \(\phi^4\) one-loop cut reconstruction, the incomplete-cut and
   four-dimensional-rational negative controls, the Yang--Mills MHV/all-plus
   helicity and evanescent-probe ledger, the bubble IBP reduction, and the
-  bubble master differential-equation branch ledger, plus the Laurent-pole
-  virtual-to-observable assembly check separating the finite hard remainder,
-  real-radiation/subtraction cancellation, finite IR-scheme transport, and
-  residual comparison budget.
+  bubble master differential-equation branch ledger, the two-master
+  threshold-mixing/monodromy and regular-boundary negative controls, plus the
+  Laurent-pole virtual-to-observable assembly check separating the finite hard
+  remainder, real-radiation/subtraction cancellation, finite IR-scheme
+  transport, and residual comparison budget.
 - `tomita_standard_form_checks.py`: finite matrix checks for the
   Tomita--Takesaki and Connes-standard-form conventions, including the
   Tomita polar data on matrix units, commutant and modular-automorphism

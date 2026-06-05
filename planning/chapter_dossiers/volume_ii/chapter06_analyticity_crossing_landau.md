@@ -105,6 +105,8 @@
 | \(\mathcal P_n\) | local subtraction polynomial or scheme-dependent counterterm |
 | \(B(Q^2)\), \(\widehat B(x)\) | Euclidean bubble master and its four-dimensional cut-normalized physical continuation |
 | \(I_{a,b}(Q^2)\) | Euclidean one-loop bubble integral family used for IBP reduction |
+| \(\vec M\), \(A_T\), \(y_\gamma\) | local two-master threshold vector, nilpotent threshold residue, and sheet/path-labelled threshold coordinate in the multi-master differential-system model |
+| \(\Omega\), \(W_\alpha\), \(\mathcal U_\gamma\) | reduced master-integral connection, Landau-letter functions, and path-ordered transport from a Euclidean boundary point |
 | \(\mu_\perp^2\) | squared loop momentum in the \(-2\epsilon\)-dimensional complement, invisible on four-dimensional cuts |
 | \(A_4^{(0)}(1^-,2^-,3^+,4^+)\) | color-ordered tree MHV four-gluon amplitude in the spinor-helicity convention used for the gauge-theory control |
 | \(I_4^{(D)}(s,t)\) | dimensionally regulated massless scalar box in the four-point MHV control |
@@ -163,6 +165,11 @@
   in \(\epsilon\), and the standard vanishing of scaleless tadpoles.  The
   bubble differential equation is solved with Euclidean boundary data at
   \(Q^2=\mu^2\) and physical branch \(Q^2\mapsto -s-\ii0\).
+- The multi-master threshold model is a local Fuchsian block after
+  lower-sector inhomogeneous terms have been separated.  It assumes that the
+  physical sheet is specified by an analytic-continuation path and that
+  Euclidean boundary constants are supplied independently from cut/monodromy
+  data.
 - The finite-observable assembly assumes a declared one-loop infrared
   subtraction convention, an infrared-safe measurement or matching target,
   and a real-emission/factorization construction using the same finite
@@ -395,6 +402,16 @@
   \]
   with singular point \(Q^2=0\) matching the massless two-particle Landau
   threshold.
+- The two-master threshold block uses
+  \[
+    A_T=\begin{pmatrix}0&0\\1&0\end{pmatrix},\qquad
+    \vec M_{\rm sing}=(1+A_T\log y_\gamma)\vec C,
+  \]
+  so \(\operatorname{Mon}_{y=0}\vec M_{\rm sing}=2\pi i A_T\vec C\).  The
+  branch of \(M_2\) is fed by \(C_1\), while regular constants
+  \(\vec R_0\) change finite amplitudes without changing the threshold
+  monodromy.  Hence cuts and IBP equations must be supplemented by boundary
+  data, path/sheet data, and subtraction conventions.
 - Steinmann definitions: for all-incoming momenta, a channel is the partition
   \([I]=\{I,I^c\}\) with \(s_I=-(\sum_{i\in I}p_i)^2\).  Two channels overlap
   exactly when no complementary representatives make them disjoint or nested.
@@ -580,3 +597,11 @@
   companion script now checks exact Laurent-pole cancellation, omitted
   rational-term failure, finite IR-scheme transport, and underbudgeted
   observable residuals.
+- 2026-06-05 issue #769 multi-master threshold pass: added a local
+  two-master differential-system block after the bubble master equation.  The
+  pass exposes nilpotent threshold mixing, path/sheet-labelled monodromy,
+  Euclidean regular constants, and the global connection/transport data
+  needed to evaluate master integrals in physical amplitudes.  The companion
+  script checks the nilpotent residue, Fuchsian equation residual, diagonal
+  shortcut failure, cut-only boundary ambiguity, and multi-master residual
+  budget.
