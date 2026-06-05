@@ -101,11 +101,13 @@ The chapter must define and derive:
   identities controlling counterterms, while unitary gauge is kept as a
   classical spectrum coordinate chart rather than the manifest proof gauge;
 - the longitudinal-vector/Goldstone equivalence relation as a perturbative
-  amplitude statement: broken-gauge datum, contracted Slavnov--Taylor identity,
-  vector/Goldstone pole-residue conversion matrix, \(O(m/E)\) longitudinal
-  polarization expansion, Abelian Higgs tree convention, electroweak
-  \(W_LW_L\) scalar representative, Higgs cancellation of \(s/v^2\) growth,
-  and the unstable-\(W/Z\) pole-scheme or narrow-width caveat;
+  external-state statement: broken-gauge datum, amputated Goldstone source
+  coordinate evaluated at vector-shell kinematics, contracted
+  Slavnov--Taylor identity, vector/Goldstone mixing conversion matrix,
+  explicit one-leg and multi-leg hard-remainder bounds, Abelian Higgs tree
+  convention, electroweak \(W_LW_L\) scalar representative, Higgs cancellation
+  of \(s/v^2\) growth, and the unstable-\(W/Z\) resonance-pole/stable-decay
+  product boundary;
 - finite-energy gauge-Higgs sectors for adjoint scalar fields, including the
   vacuum orbit \(\mathcal O_v\), stabilizer \(H\), and the boundary map
   \(S^2_\infty\to G/H\);
@@ -183,11 +185,12 @@ The chapter must define and derive:
     gauge-dependent fields paired with ghosts by BRST, while the physical
     spectrum contains massive vector particles and gauge-invariant scalar
     excitations.  The high-energy equivalence between external longitudinal
-    massive vectors and would-be Goldstone amplitudes is a separate
-    perturbative external-pole statement controlled by Slavnov--Taylor
-    identities, residue/mixing conventions, and the \(m/E\) expansion; it is
-    not a nonperturbative theorem and it does not make gauge-dependent
-    Goldstone fields physical asymptotic particles.
+    massive vectors and the gauge-fixed Goldstone source coordinate is a
+    separate perturbative pole or resonance-residue statement controlled by
+    Slavnov--Taylor identities, residue/mixing conventions, vector-shell
+    source amputation, and explicit \(m/E\) hard-remainder bounds; it is not a
+    nonperturbative theorem and it does not make gauge-dependent Goldstone
+    fields physical asymptotic particles.
 15. In a nonabelian scalar vacuum \(v\), the gauge-boson mass matrix is
     determined by \(K_{ab}=\operatorname{Re}(t_R^a v,t_R^b v)_R\); its kernel
     is the stabilizer Lie algebra \(\mathfrak h\), so the massive-vector count
@@ -241,10 +244,12 @@ The chapter must define and derive:
   Jackiw-Rebbi kink zero-mode profile/normalization/half-charge algebra with
   integer-charge and unpaired-spectrum negative controls.
 - `calculation-checks/longitudinal_goldstone_equivalence_checks.py`: verifies
-  the longitudinal-polarization \(O(m/E)\) remainder, the external-pole
-  residue/analytic-term separation, the electroweak Higgs-sector cancellation,
-  and the ordered \(16\pi\) partial-wave normalization used by the new
-  equivalence-relation section.
+  the longitudinal-polarization \(O(m/E)\) remainder, the vector-shell versus
+  \(R_\xi\) Goldstone-pole mismatch, the external-pole residue/analytic-term
+  separation, the multi-leg bounded-remainder combinatorics and its
+  compensating-growth negative control, the electroweak Higgs-sector
+  cancellation, and the ordered \(16\pi\) partial-wave normalization used by
+  the equivalence-relation section.
 
 ## Figure Requirements
 
@@ -342,10 +347,16 @@ The chapter must define and derive:
 - 2026-06-04 issue #780 pass: added a longitudinal-vector/Goldstone
   equivalence section after the BEH construction.  The pass keeps hypotheses
   before conclusions: \(R_\xi\) datum, restored Slavnov--Taylor identity,
-  vector/Goldstone pole residues, high-energy \(m/E\) expansion, stable-pole
-  LSZ versus unstable \(W/Z\) caveat, Abelian Higgs tree convention,
-  electroweak \(W_LW_L\) scalar representative, and Higgs cancellation of the
-  apparent \(s/v^2\) growth.
+  vector/Goldstone pole residues, high-energy \(m/E\) expansion, stable-vector
+  LSZ versus unstable \(W/Z\) resonance-coordinate scope, Abelian Higgs tree
+  convention, electroweak \(W_LW_L\) scalar representative, and Higgs
+  cancellation of the apparent \(s/v^2\) growth.
+- 2026-06-05 issue #797 pass: sharpened the equivalence section so the
+  Goldstone side is an amputated \(R_\xi\) source coordinate at vector-shell
+  kinematics, not a generic Goldstone LSZ object; separated stable-vector,
+  stable-deformation, and physical electroweak resonance-pole settings; and
+  replaced bare \(O(m/E)\) notation by explicit hard tensor bounds, including
+  the multi-longitudinal-leg expansion.
 - 2026-06-05 issue #798 downstream-reference pass: the chapter status remark
   now points pure \(SU(N)\) mass-gap, glueball-spectrum, and confinement uses
   to `conj:pure-yang-mills-central` rather than leaving them as a generic

@@ -304,10 +304,11 @@
   \(s_0 b_N+d r_N\), and the local counterterm \(-\int b_N\) cancels it.
 - The restored Slavnov--Taylor identity is now explicitly used in the
   preceding Yang--Mills--matter chapter to derive the contracted
-  vector/Goldstone amplitude identity behind the high-energy longitudinal
-  equivalence relation.  The BRST input is the antighost/\(B\)-field insertion
-  identity plus the mixed vector/Goldstone pole-residue bookkeeping, not a
-  nonperturbative external-state theorem.
+  vector/Goldstone source-coordinate identity behind the high-energy
+  longitudinal equivalence relation.  The BRST input is the
+  antighost/\(B\)-field insertion identity plus the mixed vector/Goldstone
+  pole or resonance-residue bookkeeping, not a nonperturbative external-state
+  theorem.
 - The chapter explicitly separates regularization, renormalization, and
   operator-insertion regularization/source-coordinate choices for composite
   operators.
@@ -444,5 +445,6 @@
 - 2026-06-04 issue #780 cross-reference pass: recorded that the
   Slavnov--Taylor restoration theorem supplies the perturbative identity used
   by the longitudinal-vector/Goldstone equivalence section, with its scope
-  limited to restored BRST/ST perturbation theory and external-pole residue
-  conventions.
+  limited to restored BRST/ST perturbation theory, vector-shell Goldstone
+  source coordinates, hard-remainder bounds, and external-pole or
+  resonance-pole residue conventions.

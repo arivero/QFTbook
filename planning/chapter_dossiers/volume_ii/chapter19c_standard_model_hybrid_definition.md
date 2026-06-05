@@ -322,8 +322,9 @@
   Hermiticity, and an off-diagonal flavor pair.
 - 2026-06-04 issue #780 cross-reference pass: added the electroweak warning
   that longitudinal \(W,Z\) amplitudes require the perturbative
-  vector/Goldstone equivalence relation and a pole convention for unstable
-  vectors; the high-energy \(W_LW_L\) Higgs-cancellation algebra is checked in
+  vector/Goldstone source-coordinate relation and a resonance-pole convention
+  inside stable-particle amplitudes for unstable vectors; the high-energy
+  \(W_LW_L\) Higgs-cancellation algebra is checked in
   `longitudinal_goldstone_equivalence_checks.py`.
 - 2026-06-04 issue #788 metastability pass: strengthened the
   quartic-positivity/metastability block so Higgs lifetime claims import the

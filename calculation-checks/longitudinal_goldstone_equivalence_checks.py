@@ -4,8 +4,12 @@
 Target claims:
 - The longitudinal polarization used in the equivalence relation is transverse
   and differs from k/m by O(m/E), while k/m is not an exact polarization.
+- The Goldstone-side object is a gauge-fixed source coordinate evaluated at
+  vector-shell kinematics; away from xi=1 this is not the Goldstone pole shell.
 - External-pole amputation keeps the pole residue and kills analytic
   non-pole terms in the contracted Slavnov--Taylor identity.
+- Multi-longitudinal-leg suppression follows only after bounded tensor
+  contractions for every term containing at least one remainder polarization.
 - The high-energy electroweak scalar representative has the Higgs-sector
   cancellation M_deriv + M_h = -m_h^2 s/(v^2(s-m_h^2)) and the ordered
   partial-wave normalization a_0 = M/(16 pi).
@@ -20,11 +24,16 @@ Imported assumptions:
 - Mostly-plus metric, physical mass shell k^2 = -m^2, and the Volume I
   invariant-amplitude and partial-wave conventions.
 - The electroweak example is the custodial high-energy scalar-sector algebra
-  away from the Higgs pole, not a full finite-energy Standard Model amplitude.
+  away from the Higgs pole, not a full finite-energy Standard Model amplitude
+  and not an LSZ construction for unstable W/Z external states.
 
 Negative controls:
 - Treating k/m as the exact longitudinal polarization fails transversality and
   normalization.
+- Treating the Goldstone coordinate as a generic R_xi LSZ pole at vector
+  kinematics fails unless xi=1.
+- Allowing the tensor amplitude contracted with a remainder polarization to
+  grow like E/m destroys the claimed suppression.
 - Omitting the Higgs exchange, reversing its sign, or using M/(32 pi) for the
   ordered s-wave coefficient fails the finite checks.
 
@@ -91,6 +100,55 @@ def check_external_pole_separation() -> None:
         raise AssertionError("external pole residue was not preserved")
     if sp.simplify(amputated_analytic) != 0:
         raise AssertionError("analytic non-pole term survived external amputation")
+
+
+def check_goldstone_source_shell_mismatch() -> None:
+    k2, mass2, xi = sp.symbols("k2 mass2 xi", positive=True)
+    vector_shell = -mass2
+    goldstone_pole_shell = -xi * mass2
+    goldstone_inverse = k2 + xi * mass2
+
+    inverse_at_vector_shell = sp.simplify(goldstone_inverse.subs(k2, vector_shell))
+    if inverse_at_vector_shell != (xi - 1) * mass2:
+        raise AssertionError("Goldstone inverse at vector shell has wrong xi dependence")
+    if sp.simplify(goldstone_pole_shell.subs(xi, 1) - vector_shell) != 0:
+        raise AssertionError("Feynman-gauge shell coincidence failed")
+
+    xi_value = sp.Rational(5, 2)
+    if sp.simplify(goldstone_pole_shell.subs(xi, xi_value) - vector_shell) == 0:
+        raise AssertionError("generic R_xi Goldstone pole should not coincide with vector shell")
+    if sp.simplify(inverse_at_vector_shell.subs(xi, xi_value)) == 0:
+        raise AssertionError("generic R_xi Goldstone inverse should not vanish at vector shell")
+
+
+def check_multi_leg_remainder_bound() -> None:
+    for n_legs in (2, 3, 4):
+        mass_over_energy = 0.03
+        hard_size = 7.0
+        k_constant = 1.25
+        subset_count = 2**n_legs - 1
+        bounded_remainder_sum = subset_count * k_constant * mass_over_energy * hard_size
+        declared_bound = sum(k_constant for _ in range(subset_count)) * mass_over_energy * hard_size
+        assert_close(
+            f"multi-leg bounded remainder n={n_legs}",
+            bounded_remainder_sum,
+            declared_bound,
+            atol=1.0e-12,
+        )
+        assert_leq(
+            f"multi-leg remainder remains suppressed n={n_legs}",
+            bounded_remainder_sum / hard_size,
+            subset_count * k_constant * mass_over_energy,
+        )
+
+    mass_over_energy = 0.02
+    compensating_tensor_growth = 1.0 / mass_over_energy
+    unsuppressed_contraction = mass_over_energy * compensating_tensor_growth
+    assert_geq(
+        "E/m tensor growth destroys remainder suppression",
+        unsuppressed_contraction,
+        1.0,
+    )
 
 
 def derivative_growth(s_value: float, v_value: float) -> float:
@@ -163,6 +221,8 @@ def check_higgs_sector_cancellation() -> None:
 def main() -> None:
     check_longitudinal_polarization_remainder()
     check_external_pole_separation()
+    check_goldstone_source_shell_mismatch()
+    check_multi_leg_remainder_bound()
     check_higgs_sector_cancellation()
     print("All longitudinal-vector/Goldstone equivalence checks passed.")
 

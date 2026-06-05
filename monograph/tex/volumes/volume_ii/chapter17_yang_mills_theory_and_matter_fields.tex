@@ -1423,68 +1423,116 @@ Chapter~\ref{ch:volume-ii-18}.  Unitary gauge is a useful reduced coordinate
 description of the classical spectrum, but it is not the gauge in which the
 renormalizability proof is manifest.
 
-\section{Longitudinal Vectors and Would-Be Goldstone Amplitudes}
+\section{Longitudinal Vectors and Goldstone Source Coordinates}
 \label{sec:longitudinal-goldstone-equivalence}
 
 The BEH construction identifies which local scalar coordinates become
 longitudinal polarizations of massive vectors.  It does not by itself say what
 is computed when a high-energy experiment prepares an external longitudinal
 massive gauge boson.  That statement is an amplitude statement, and it uses
-BRST control, external-pole residues, and a high-energy expansion.  The
-conventional slogan that a longitudinal vector is a Goldstone boson at high
-energy is therefore useful only after the following data have been fixed.  The
-perturbative lineage includes
+BRST control, pole residues or resonance coordinates, and a high-energy
+expansion.  The conventional slogan that a longitudinal vector is a Goldstone
+boson at high energy is therefore useful only after the following data have
+been fixed.  The perturbative lineage includes
 \cite{CornwallLevinTiktopoulos1974,LeeQuiggThacker1977,
 ChanowitzGaillard1985,Veltman1990EquivalenceTheorem,BaggerSchmidt1990}.
 
-\begin{definition}[Broken-gauge amplitude datum]
+\begin{definition}[Broken-gauge external-state datum]
 \label{def:broken-gauge-amplitude-datum}
-A broken-gauge amplitude datum consists of:
+A broken-gauge external-state datum consists of:
 \begin{enumerate}
 \item a perturbative gauge theory expanded around a scalar background \(v\)
   in an \(R_\xi\) chart of the form
-  \eqref{eq:nonabelian-beh-rxi-functional};
+  \eqref{eq:nonabelian-beh-rxi-functional}, with gauge parameters
+  \(\xi_a\) and sources for \(V_\mu^a\), \(\varphi^a\), ghosts, and any
+  stable external fields;
 \item an anomaly-free BRST/Slavnov--Taylor identity, either exact in the
   finite regulator or restored order by order by the cohomological mechanism of
   Theorem~\ref{thm:all-order-slavnov-taylor-restoration};
 \item a renormalization scheme and field-coordinate choice for the mixed
-  vector/Goldstone two-point functions;
-\item isolated massive-vector poles with nonzero residues, so that the
-  external-pole extraction of Chapter~\ref{ch:lsz-reduction} is meaningful;
-  and
+  vector/Goldstone two-point matrix
+  \[
+    \Gamma_2^{ab}(k)=
+    \begin{pmatrix}
+      \Gamma_{VV,\mu\nu}^{ab}(k) & \Gamma_{V\varphi,\mu}^{ab}(k)\\
+      \Gamma_{\varphi V,\nu}^{ab}(k) & \Gamma_{\varphi\varphi}^{ab}(k)
+    \end{pmatrix}_{\xi};
+  \]
+\item an operational external-state setting, one of the following:
+  stable massive vectors with isolated real poles and nonzero residues, a
+  stable deformation used as a perturbative model, or the physical electroweak
+  theory described by stable external particles with \(W,Z\) resonance-pole
+  residues extracted inside a pole expansion; and
 \item an energy range \(E\gg m_a\) separated from thresholds, resonant pole
   regions, forward singularities, and soft or collinear regions that would
   require a separate infrared construction.
 \end{enumerate}
-For the physical Standard Model the \(W\) and \(Z\) are unstable.  Literal LSZ
-external states then require a stable deformation of the model, a complex-pole
-scheme, or a narrow-width idealization.  The perturbative relation below is not
-a nonperturbative theorem about the full electroweak theory.
+For stable massive vectors, the external vector slot is an LSZ pole-residue
+slot in the sense of Chapter~\ref{ch:lsz-reduction}.  For the physical
+Standard Model the \(W\) and \(Z\) are unstable.  A complex-pole prescription
+does not create normalizable external \(W,Z\) Hilbert-space vectors; it defines
+resonance-pole coordinates in amplitudes whose external states are stable
+decay products, as in
+Chapter~\ref{ch:volume-ii-resonances-dressed-propagators}.  A narrow-width
+idealization is therefore an approximation to those stable-particle
+amplitudes, not a literal LSZ construction.  The perturbative relation below
+is not a nonperturbative theorem about the full electroweak theory.
+\end{definition}
+
+\begin{definition}[Goldstone source coordinate at vector kinematics]
+\label{def:goldstone-source-coordinate-vector-shell}
+Fix Definition~\ref{def:broken-gauge-amplitude-datum}.  Let \(X\) denote the
+remaining external stable fields or already extracted pole/resonance slots.
+The Goldstone-side object in the equivalence relation is the amputated
+renormalized source coordinate
+\begin{equation}
+  \mathcal G_\xi^{b|a}(k;X)
+  :=
+  \left[
+    \mathsf A_\xi^{bI|a}(k)\,
+    G_{R,I}(k;X)
+  \right]_{k^2=-m_a^2},
+  \qquad I\in\{V_\mu^c,\varphi^c\},
+  \label{eq:goldstone-source-coordinate-vector-shell}
+\end{equation}
+where \(G_{R,I}(k;X)\) is the connected source derivative with one
+vector/Goldstone slot, and \(\mathsf A_\xi(k)\) is the inverse-propagator and
+mixing amputation row fixed by the renormalized two-point matrix
+\(\Gamma_2(k)\) and by the same external-vector pole convention used on the
+left-hand side.  The superscript \(a\) records that the coordinate is evaluated
+at the physical vector shell \(k^2=-m_a^2\).  It is not, in a general
+\(R_\xi\) chart, an LSZ amplitude for a Goldstone particle: the unphysical
+Goldstone propagator has its gauge-dependent pole at
+\(k^2=-\xi_a m_a^2\), while
+\eqref{eq:goldstone-source-coordinate-vector-shell} is evaluated at vector
+kinematics.  Only in a special convention such as \(\xi_a=1\), and only as a
+gauge-fixed coordinate, do the two shells coincide.
 \end{definition}
 
 \begin{controlledapproximation}[Longitudinal-vector/Goldstone equivalence relation]
 \label{ca:longitudinal-goldstone-equivalence}
-Fix the datum of Definition~\ref{def:broken-gauge-amplitude-datum}.  Let
-\(\mathcal A_R^{\mu,a}(k;X)\) denote a renormalized amputated connected
-amplitude with one external broken vector field before contraction with its
-polarization, and let \(\mathcal A_R^{\varphi_b}(k;X)\) denote the corresponding
-amplitude with the would-be Goldstone coordinate in the broken direction \(b\).
-Then the Slavnov--Taylor identity and the mixed two-point residue
-diagonalization give a contracted-amplitude identity of the form
+Fix Definitions~\ref{def:broken-gauge-amplitude-datum} and
+\ref{def:goldstone-source-coordinate-vector-shell}.  Let
+\(\mathcal V_R^{\mu,a}(k;X)\) denote the renormalized amputated vector-source
+coordinate before contraction with an external polarization.  The
+Slavnov--Taylor identity and the mixed two-point residue diagonalization give
+a contracted-source identity, at the vector shell \(k^2=-m_a^2\), of the form
 \begin{equation}
-  k_\mu \mathcal A_R^{\mu,a}(k;X)
+  k_\mu \mathcal V_R^{\mu,a}(k;X)
   =
-  m_a C^a{}_{b}\,\mathcal A_R^{\varphi_b}(k;X)
+  m_a C^a{}_{b}\,\mathcal G_\xi^{b|a}(k;X)
   +
   \mathcal N^a(k;X).
   \label{eq:contracted-vector-goldstone-amplitude}
 \end{equation}
 Here \(C^a{}_{b}\) is a finite conversion matrix determined by the
-renormalized pole residues and vector/Goldstone mixing convention, while
-\(\mathcal N^a\) contains terms with no external massive-vector pole or
-BRST-exact insertions between physical external states.  After external-pole
-extraction these \(\mathcal N^a\) terms do not contribute to the physical
-one-vector amplitude.
+renormalized vector pole or resonance residue and by the vector/Goldstone
+mixing convention.  The term \(\mathcal N^a\) contains either no selected
+massive-vector pole or a BRST-exact insertion between physical external
+states.  In a stable-vector theory it drops out after the vector external-pole
+extraction.  In the physical electroweak theory the corresponding statement is
+made for the selected \(W,Z\) resonance-pole residue inside stable-particle
+amplitudes, not for an external \(W,Z\) Hilbert-space vector.
 
 For a momentum \(k^\mu=(E,0,0,|\vec k|)\), \(E^2=|\vec k|^2+m_a^2\), a
 longitudinal polarization may be chosen as
@@ -1508,19 +1556,94 @@ It differs from \(k^\mu/m_a\) by
   \label{eq:longitudinal-polarization-remainder}
 \end{equation}
 Combining \eqref{eq:contracted-vector-goldstone-amplitude} with
-\eqref{eq:longitudinal-polarization-remainder} gives, for one hard external
-longitudinal leg,
+\eqref{eq:longitudinal-polarization-remainder} gives the leading
+Goldstone-source representative only under a hard-tensor bound.  On a compact
+hard region \(\mathcal H_E\) with all invariants \(O(E^2)\), assume that the
+remainder contraction is bounded by a reference hard size \(B(E;X)\):
+\begin{equation}
+  \bigl|r_\mu(k)\mathcal V_R^{\mu,a}(k;X)\bigr|
+  \le
+  K\,\frac{m_a}{E}\,B(E;X),
+  \qquad k\in\mathcal H_E .
+  \label{eq:goldstone-equivalence-one-leg-bound}
+\end{equation}
+Then, in a stable-vector setting,
 \begin{equation}
   \mathcal M\bigl(V_L^a(k),X\bigr)
   =
-  C^a{}_{b}\,\mathcal M\bigl(\varphi^b(k),X\bigr)
+  C^a{}_{b}\,\mathcal G_\xi^{b|a}(k;X)
   +
-  O(m_a/E)\,\mathcal M_{\rm hard}(k,X).
+  \mathcal R_1(k;X),
+  \qquad
+  |\mathcal R_1(k;X)|
+  \le
+  K\,\frac{m_a}{E}\,B(E;X).
   \label{eq:longitudinal-goldstone-equivalence-one-leg}
 \end{equation}
-With several longitudinal legs the same statement is applied to each hard leg,
-with a product of the corresponding conversion matrices and remainders
-suppressed by at least one factor \(m/E\).
+The estimate is absolute.  It becomes a relative \(O(m_a/E)\) statement only
+when \(B(E;X)\) is comparable to the leading Goldstone-source term in the same
+kinematic region.  The kinematic identity
+\eqref{eq:longitudinal-polarization-remainder} alone is therefore not an error
+estimate; it must be paired with a bound excluding compensating \(E/m_a\)
+growth in \(r_\mu\mathcal V_R^{\mu,a}\).
+
+For \(n\) hard longitudinal vector slots define
+\(\mathcal T_{\mu_1\cdots\mu_n}^{a_1\cdots a_n}(k_1,\ldots,k_n;Y)\) before
+polarization contraction and write
+\[
+  \epsilon_{L,i}^{\mu_i}
+  =
+  \frac{k_i^{\mu_i}}{m_{a_i}}+r_i^{\mu_i}.
+\]
+The exact polarization expansion is
+\begin{equation}
+  \prod_{i=1}^n\epsilon_{L,i}^{\mu_i}\,
+  \mathcal T_{\mu_1\cdots\mu_n}
+  =
+  \prod_{i=1}^n\frac{k_i^{\mu_i}}{m_{a_i}}\,
+  \mathcal T_{\mu_1\cdots\mu_n}
+  +
+  \sum_{\emptyset\ne S\subset\{1,\ldots,n\}}
+  \left(\prod_{i\in S}r_i^{\mu_i}\right)
+  \left(\prod_{j\notin S}\frac{k_j^{\mu_j}}{m_{a_j}}\right)
+  \mathcal T_{\mu_1\cdots\mu_n}.
+  \label{eq:multi-longitudinal-remainder-expansion}
+\end{equation}
+Apply the Slavnov--Taylor identity and pole/resonance extraction to the first
+term, and assume for every nonempty \(S\) the bound
+\begin{equation}
+  \left|
+  \left(\prod_{i\in S}r_i^{\mu_i}\right)
+  \left(\prod_{j\notin S}\frac{k_j^{\mu_j}}{m_{a_j}}\right)
+  \mathcal T_{\mu_1\cdots\mu_n}
+  \right|
+  \le
+  K_S\,\frac{m_\ast}{E}\,B_n(E;Y),
+  \qquad m_\ast=\max_i m_{a_i}.
+  \label{eq:multi-longitudinal-remainder-bound}
+\end{equation}
+Then
+\begin{equation}
+  \mathcal M(V_L^{a_1}\cdots V_L^{a_n};Y)
+  =
+  \left(\prod_{i=1}^n C^{a_i}{}_{b_i}\right)
+  \mathcal G_\xi^{b_1|a_1,\ldots,b_n|a_n}(Y)
+  +
+  \mathcal R_n,
+  \qquad
+  |\mathcal R_n|
+  \le
+  \left(\sum_{\emptyset\ne S}K_S\right)
+  \frac{m_\ast}{E}\,B_n(E;Y).
+  \label{eq:multi-longitudinal-goldstone-equivalence}
+\end{equation}
+Equation~\eqref{eq:multi-longitudinal-goldstone-equivalence} is again an
+absolute estimate unless a separate lower or comparison bound relates the
+Goldstone-source representative to \(B_n(E;Y)\).  The multi-slot coordinate
+\(\mathcal G_\xi^{b_1|a_1,\ldots,b_n|a_n}\) means that the same
+inverse-propagator/mixing amputation rows are applied to each selected
+Goldstone source slot and that all slots are evaluated at their corresponding
+vector shells.
 \end{controlledapproximation}
 
 The proof mechanism is local in perturbation theory.  In an \(R_\xi\) gauge one
@@ -1544,10 +1667,13 @@ the Slavnov--Taylor identity with respect to the antighost and the remaining
 sources turns this statement into a relation among connected Green functions.
 Passing to 1PI functions and then to amputated connected amplitudes requires
 diagonalizing the mixed \((V_\mu,\varphi)\) two-point matrix at the physical
-massive-vector pole.  The vector residue, the Goldstone residue, and the finite
-mixing counterterms are exactly what appear in \(C^a{}_{b}\).  This is why the
+massive-vector pole.  The vector residue, the gauge-fixed Goldstone source
+normalization, and the finite mixing counterterms are exactly what appear in
+\(C^a{}_{b}\) and in the amputation row \(\mathsf A_\xi\).  This is why the
 identity is not just the classical sentence ``replace \(V_L\) by
-\(\varphi\)'': the external-pole convention is part of the statement.
+\(\varphi\)'': the external-pole or resonance-pole convention is part of the
+statement, while the Goldstone side remains a source coordinate at vector
+kinematics.
 
 In the Abelian Higgs model of
 \eqref{eq:abelian-higgs-lagrangian-beh}--\eqref{eq:abelian-higgs-rxi-functional},
@@ -1556,7 +1682,7 @@ with canonical vector \(\mathcal A_\mu=A_\mu/e\), the tree-level diagonal
 \begin{equation}
   k_\mu\,\mathcal A_R^\mu(k;X)
   =
-  m_{\mathcal A}\,\mathcal A_R^\pi(k;X)
+  m_{\mathcal A}\,\mathcal G_\xi^{\pi|\mathcal A}(k;X)
   +
   \hbox{terms without the external massive-vector pole}.
   \label{eq:abelian-higgs-tree-equivalence}
@@ -1571,13 +1697,17 @@ the Higgs pole,
 \begin{equation}
   \mathcal M(W_L^+W_L^-\to Z_LZ_L)
   =
-  \mathcal M(\varphi^+\varphi^-\to\chi_3\chi_3)
+  \mathcal G_\xi(\varphi^+\varphi^-\to\chi_3\chi_3)
   +
-  O(m_W/E,m_Z/E),
+  \mathcal R_{\rm EW},
   \label{eq:wlwl-goldstone-scattering-equivalence}
 \end{equation}
-after the chosen external-pole conversion factors are applied.  The leading
-custodial scalar-sector algebra may be written as
+with \(|\mathcal R_{\rm EW}|\le K(m_W/E+m_Z/E)B_{\rm EW}(E)\) after the chosen
+pole conversion factors and hard-remainder bounds are applied.  In the
+physical Standard Model this formula abbreviates the resonant part of
+stable-particle amplitudes such as four-fermion production near the \(W,Z\)
+pole regions; it does not introduce external \(W,Z\) Hilbert vectors.  The
+leading custodial scalar-sector representative may be written as
 \begin{align}
   \mathcal M_{\rm deriv}(s) &= \frac{s}{v^2}, \nonumber\\
   \mathcal M_h(s) &= -\frac{s^2}{v^2(s-m_h^2)}, \nonumber\\
@@ -1596,15 +1726,22 @@ Chapter~\ref{ch:cross-sections-unitarity}, a constant amplitude gives
   \label{eq:ww-higgs-cancellation-a0}
 \end{equation}
 This calculation illustrates the point of the equivalence relation: the
-Goldstone amplitude is a controlled high-energy representative of a physical
-longitudinal-vector amplitude, while the gauge-dependent Goldstone fields are
-not themselves asymptotic particles in the physical electroweak spectrum.
+Goldstone source coordinate is a controlled high-energy representative of a
+longitudinal-vector pole or resonance residue, while the gauge-dependent
+Goldstone fields are not themselves asymptotic particles in the physical
+electroweak spectrum.
 
 The claim status should be kept explicit.  The antighost/\(B\)-field identity
 is an exact finite-regulator identity only in a BRST-preserving regulator.  In
 dimensional or other perturbative schemes it is an all-orders consequence after
 Slavnov--Taylor restoration.  The step from the contracted identity to
 external longitudinal vectors is a high-energy asymptotic expansion in \(m/E\).
+Its remainder is controlled only under bounds such as
+\eqref{eq:goldstone-equivalence-one-leg-bound} and
+\eqref{eq:multi-longitudinal-remainder-bound}; finite polarization algebra does
+not prove those bounds.  In the physical electroweak theory the observable
+statement is made for stable external decay products with resonance-pole
+coordinates.
 Gauge-parameter and scheme dependence may appear in \(C^a{}_{b}\), but it
 cancels from the matched physical observable once the same pole convention is
 used on both sides.

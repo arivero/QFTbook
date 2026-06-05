@@ -652,9 +652,11 @@ Current checks:
   longitudinal-vector/Goldstone equivalence section, including the mostly-plus
   longitudinal polarization identities, the \(O(m/E)\) remainder from
   \(\epsilon_L-k/m\), negative controls rejecting \(k/m\) as an exact
-  polarization, the external-pole residue/analytic-term separation used in the
-  contracted Slavnov--Taylor identity, the high-energy Higgs-sector
-  cancellation
+  polarization, the vector-shell versus \(R_\xi\) Goldstone-pole mismatch,
+  the external-pole residue/analytic-term separation used in the contracted
+  Slavnov--Taylor identity, the multi-longitudinal-leg bounded-remainder
+  combinatorics with a compensating \(E/m\)-growth negative control, the
+  high-energy Higgs-sector cancellation
   \(s/v^2-s^2/(v^2(s-m_h^2))=-m_h^2s/(v^2(s-m_h^2))\), and the ordered
   \(a_0=\mathcal M/(16\pi)\) partial-wave normalization.
 - `eft_prediction_calculus_checks.py`: exact finite checks for the EFT

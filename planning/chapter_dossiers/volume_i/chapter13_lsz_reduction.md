@@ -164,8 +164,10 @@
 - The longitudinal-vector/Goldstone equivalence relation in the broken
   Yang--Mills chapter may use this LSZ machinery only after supplying an
   isolated massive-vector pole and residue convention.  For physical \(W,Z\)
-  bosons, literal stable-particle LSZ is replaced by a stable deformation,
-  complex-pole scheme, or narrow-width idealization.
+  bosons, a complex-pole scheme defines resonance coordinates inside
+  amplitudes with stable external particles; it does not create literal
+  external Hilbert-space vectors.  Narrow-width language is an idealization of
+  that stable-particle pole expansion.
 - 2026-05-24 issue #393 pass: standardized the one-particle residue in the
   LSZ chapter as \(Z_\phi\).  The unsubscripted source-functional notation
   \(Z[J]\), \(Z_-[J]\), and \(Z_E[J_E]\) remains separate.
