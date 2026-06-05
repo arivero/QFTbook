@@ -326,6 +326,10 @@
   \(\Delta_N\) is local, the Slavnov consistency identity makes it a
   \(\mathcal B_{S_0}\)-cocycle, the anomaly hypothesis writes it as
   \(s_0 b_N+d r_N\), and the local counterterm \(-\int b_N\) cancels it.
+  For four-dimensional chiral Yang--Mills, the text now points to
+  `thm:adler-bardeen-nonrenormalization` for the separate all-order input
+  that forbids higher-loop multiples of the same local descent class after
+  the one-loop cubic anomaly tensor cancels.
 - The restored Slavnov--Taylor identity is now explicitly used in the
   preceding Yang--Mills--matter chapter to derive the contracted
   vector/Goldstone source-coordinate identity behind the high-energy
@@ -487,3 +491,8 @@
   gauge-invariant expectations, a comparison table for Singer/Gribov/Neuberger/
   Gribov--Zwanziger, and scoped escape routes.  Added
   `calculation-checks/lattice_brst_neuberger_checks.py`.
+- 2026-06-05 issue #774 cross-link pass: strengthened the paragraph after the
+  all-order Slavnov--Taylor restoration theorem to state how
+  Adler--Bardeen nonrenormalization feeds its local anomaly hypothesis for
+  four-dimensional chiral Yang--Mills theories, while leaving global gauge
+  anomalies and nonperturbative regulator construction outside the theorem.

@@ -187,6 +187,13 @@
   by descent from \(\frac{\ii}{24\pi^2}\operatorname{Tr}_R\mathsf F^3\), and
   vanishes exactly when the total symmetric tensor \(d_R^{abc}\) vanishes in
   the chiral matter content.
+- The BV ghost-number-one anomaly calculation now explicitly depends on the
+  Adler--Bardeen theorem for the all-order coefficient statement: the
+  proposition classifies the possible local class and its one-loop
+  group-theory coordinate, while
+  `thm:adler-bardeen-nonrenormalization` prevents higher loops from
+  regenerating a new multiple of the same descent class after the one-loop
+  tensor cancels.
 - 2026-05-30 quoted-theorem expansion: the ghost-number-one anomaly theorem
   boundary now displays the QME-to-relative-cohomology mechanism: first
   nonzero QME defect, Jacobi/consistency step, counterterm shift, BV--BRST
@@ -245,3 +252,9 @@
   commutation of the low BV Laplacian with the convergent high integral, and
   the no-boundary hypothesis as the condition that removes the high BV
   divergence.
+- 2026-06-05 issue #774 cross-link pass: added the BV-side bridge from
+  `prop:bv-ghost-one-anomaly-calculation` to
+  `thm:adler-bardeen-nonrenormalization`, clarifying that one-loop local
+  cubic anomaly cancellation plus AB nonrenormalization supplies the local
+  anomaly hypothesis used by all-order Slavnov--Taylor restoration, without
+  asserting a nonperturbative chiral gauge measure.

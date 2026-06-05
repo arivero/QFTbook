@@ -2586,6 +2586,213 @@ identity is preserved and the axial current carries the anomaly.  For a
 purely global symmetry, by contrast, the anomaly is allowed and becomes an
 RG-invariant background response to be matched by the infrared theory.
 
+\section{Adler--Bardeen Nonrenormalization and Operator Mixing}
+\label{sec:adler-bardeen-nonrenormalization}
+
+The preceding sections fixed the one-loop triangle coefficient and the local
+BRST class represented by descent.  The Adler--Bardeen theorem answers a
+different question: after the theory is renormalized, can radiative
+corrections change the coefficient of that nontrivial anomaly class?  The
+answer is no, but this statement is narrower than the slogan often suggests.
+It does not say that every operator appearing in an axial Ward identity has
+zero anomalous dimension, and it does not replace the local BRST
+classification or the global anomaly analysis.
+
+\begin{theorem}[Adler--Bardeen nonrenormalization in local perturbation theory]
+\label{thm:adler-bardeen-nonrenormalization}
+Consider a four-dimensional power-counting renormalizable gauge theory with
+fermions in finite-dimensional unitary representations.  Work in a local
+subtraction scheme with the quantum action principle, with sources for the
+composite operators that occur in current divergences, and with finite local
+counterterms chosen so that the vector or dynamical gauge Ward identities are
+the preserved identities.  Allow the usual local operator mixing among
+operators of the same dimension, ghost number, Lorentz type, gauge quantum
+numbers, and explicit-breaking quantum numbers.
+
+Then the following coefficient statements hold as formal perturbation series.
+
+\begin{enumerate}
+\item For an Abelian axial current coupled to two preserved vector currents,
+there is a renormalized axial current representative \(J_{5,R}^\mu\) and a
+renormalized pseudoscalar mass operator \(P_R\) such that the projection of
+\[
+  \partial_\mu J_{5,R}^\mu-2\ii m_R P_R
+\]
+onto the nontrivial topological-density coordinate is exactly its one-loop
+value.  In the electromagnetic specialization this is the coefficient in
+\eqref{eq:abelian-axial-anomaly}; in the nonabelian flavor notation it is the
+coefficient in \eqref{eq:nonabelian-flavor-anomaly}.  For \(N_f\) QCD Dirac
+flavors in the chapter's topological-charge normalization,
+\[
+  q_R
+  =
+  \frac1{32\pi^2}
+  \epsilon^{\mu\nu\rho\sigma}
+  \operatorname{tr}(F_{\mu\nu}F_{\rho\sigma})
+  \quad
+  \text{up to local contact-term convention,}
+\]
+the singlet identity may be represented as
+\begin{equation}
+  \partial_\mu J_{5,R}^\mu
+  =
+  2\ii\,\bar q_R M_R\gamma_5 q_R
+  +
+  2N_f\,q_R ,
+  \label{eq:adler-bardeen-qcd-singlet-identity}
+\end{equation}
+after the source convention for \(q_R\) has been fixed by the \(\theta\)-term.
+The coefficient \(2N_f\) is one-loop exact in this convention.
+
+\item For a chiral gauge theory, let \(\Delta_\Gamma\) be the possible
+Slavnov--Taylor or BV master-equation breaking after subdivergences have been
+subtracted.  Its nontrivial local gauge-anomaly projection has the form
+\begin{equation}
+  [\Delta_\Gamma]_{H^{1,4}(s\mid d)}
+  =
+  \hbar\,
+  c^{(1)}[I_4^{(1)}],
+  \label{eq:adler-bardeen-gauge-anomaly-class}
+\end{equation}
+where \(I_4^{(1)}\) is the consistent descent representative of
+\(\operatorname{Tr}_R(\mathsf F^3)\).  There are no independent
+\(\hbar^{n>1}\) corrections to the coefficient of this nontrivial class.
+Therefore, if the one-loop symmetric cubic tensor in
+\eqref{eq:gauge-anomaly-cancellation} vanishes and no other local
+ghost-number-one anomaly class is present, the hypothesis of
+Theorem~\ref{thm:all-order-slavnov-taylor-restoration} is satisfied in this
+perturbative local sector.
+\end{enumerate}
+
+The theorem is local and perturbative.  It is not an index theorem, although
+the one-loop normalization can be checked against
+\eqref{eq:dirac-index-anomaly} under the spin Dirac hypotheses stated there.
+It is not 't Hooft anomaly matching, which compares anomaly-line data
+between UV and IR descriptions as in
+Remark~\ref{rem:anomaly-matching-as-line-equality} and
+Section~\ref{sec:t-hooft-anomaly-matching-tool}.  It is also not a statement
+that global gauge anomalies or a nonperturbative chiral gauge regulator have
+been constructed; those are separate questions in
+Chapter~\ref{ch:volume-ii-21} and in the lattice-regulator discussion.
+\end{theorem}
+
+\begin{proof}[Mechanism and theorem boundary]
+The one-loop triangle calculation gives a local term that obeys the
+Wess--Zumino consistency condition.  At a higher loop order \(N\), the quantum
+action principle gives the same kind of object: after all subdivergences are
+removed, any breaking of a preserved vector Ward identity, Slavnov--Taylor
+identity, or BV master equation is an integrated local functional with the
+quantum numbers of that identity.  The consistency identity for the linearized
+Ward or Slavnov operator makes this breaking a local cocycle.  Thus, in the
+notation of \eqref{eq:relative-anomaly-cocycle} and
+\eqref{eq:relative-anomaly-coboundary},
+\[
+  a_{4,N}^{(1)}
+  =
+  r_N I_4^{(1)}
+  +
+  s b_{4,N}^{(0)}
+  +
+  d b_{3,N}^{(1)}
+\]
+in a coordinate chart where \(I_4^{(1)}\) spans the relevant nontrivial
+descent class.  The exact part is removed by a local counterterm.  The only
+coefficient that cannot be removed in this way is \(r_N\), the coordinate of
+the nontrivial class.
+
+The all-order input of the Adler--Bardeen theorem is precisely the statement
+that \(r_N=0\) for \(N>1\) once the preserved vector or gauge identities,
+locality, power counting, and the source normalization of the topological
+density are imposed.  In algebraic-renormalization language, the
+Callan--Symanzik operator acts on the integrated descent insertion by
+\begin{equation}
+  \mathcal C\bigl(c_{\rm AB}(g)\int I_4^{(1)}\bigr)
+  =
+  \bigl(\beta^i\partial_{g^i}c_{\rm AB}\bigr)\int I_4^{(1)}
+  +
+  \mathcal B_{\Gamma_0}(\text{local functional})
+  +
+  \text{total derivative}.
+  \label{eq:adler-bardeen-cs-class-equation}
+\end{equation}
+The descent insertion has no independent anomalous dimension in the
+nontrivial cohomology coordinate: local changes of subtraction convention
+produce only the exact and total-derivative terms displayed in
+\eqref{eq:adler-bardeen-cs-class-equation}.  Projecting to
+\(H^{1,4}(s\mid d)\) gives
+\[
+  \beta^i\partial_{g^i}c_{\rm AB}=0
+\]
+with the boundary value fixed by the one-loop triangle.  In an ordinary
+one-coupling expansion this already forces the familiar recurrence
+\[
+  c_{\rm AB}(g)=c_1+c_2g^2+c_3g^4+\cdots,\qquad
+  \beta(g)=\beta_0g^3+\beta_1g^5+\cdots
+  \quad\Longrightarrow\quad
+  c_2=c_3=\cdots=0
+\]
+when the displayed perturbative beta series supplies the recursion.  The
+algebraic theorem is stronger than this illustrative recurrence: the
+order-by-order proof of anomaly cancellation can be formulated without
+assuming a nonzero beta function and therefore also covers finite or conformal
+perturbative theories.  This is the imported all-order step behind the
+present theorem; the surrounding reduction to local cocycles and removable
+counterterms is the mechanism already proved in
+Theorem~\ref{thm:all-order-slavnov-taylor-restoration} and in the BV
+comparison of Chapter~\ref{ch:bv-master-formalism}.  The original axial statement is
+due to Adler and Bardeen, while Bardeen's current-preserving subtraction
+analysis and the later algebraic-renormalization/BV proofs give the
+all-order local form used here
+\cite{AdlerBardeen1969,Bardeen1969AnomalousWard,PiguetSorella1995,
+BarnichBrandtHenneaux2000,Anselmi2014AdlerBardeen}.
+
+For a gauge anomaly, equation
+\eqref{eq:adler-bardeen-gauge-anomaly-class} says that the only possible
+nontrivial coefficient is the one-loop coefficient of the same descent class
+classified in Proposition~\ref{prop:cubic-gauge-anomaly-obstruction}.  If
+that coefficient vanishes, the remaining loop-order breakings are exact local
+cocycles, so the recursive counterterm proof of
+Theorem~\ref{thm:all-order-slavnov-taylor-restoration} applies.  This proves
+perturbative restoration of the Slavnov--Taylor identities under the theorem's
+hypotheses.  It does not by itself choose a nonperturbative integration cycle,
+remove a global anomaly, or construct a lattice chiral gauge theory.
+\end{proof}
+
+\paragraph{What is not nonrenormalized.}
+The axial divergence equation is an identity among renormalized composite
+operators.  In the singlet channel the operators
+\[
+  \partial_\mu J_{5}^{\mu},\qquad
+  2\ii\,\bar q M\gamma_5q,\qquad
+  q=\frac1{32\pi^2}\epsilon^{\mu\nu\rho\sigma}
+  \operatorname{tr}(F_{\mu\nu}F_{\rho\sigma})
+\]
+have the same pseudoscalar quantum numbers up to explicit mass breaking and
+total derivatives.  Finite source-coordinate changes may therefore replace
+\[
+  q_R\longmapsto q_R+\alpha\,\partial_\mu J_{5,R}^{\mu}
+  +\beta\,2\ii\,\bar q_R M_R\gamma_5q_R
+\]
+and may rescale or improve \(J_{5,R}^\mu\).  In gauges where
+\(q=\partial_\mu K^\mu_{\rm CS}\), one may also trade a gauge-invariant
+current for a conserved but gauge-dependent current by adding a multiple of
+the Chern--Simons current.  These are operator-basis statements, not changes
+of the anomaly class.  A higher-loop graph can therefore generate a local term
+that looks like a correction to a displayed divergence equation in a
+particular current basis.  Reduce that term modulo the subspace generated by
+current improvements, explicit mass breakings, and BRST-exact counterterm
+variations: if the remainder has zero projection on \(q_R\), it is absorbed
+by operator renormalization; if it has a nonzero projection, it would be a
+true Adler--Bardeen violation.  The theorem says that the latter projection
+does not occur.
+
+This distinction is the reason for the source normalization in
+\eqref{eq:adler-bardeen-qcd-singlet-identity}.  The singlet axial current can
+have an anomalous dimension, and \(q_R\) can mix with the divergence of that
+current as a local composite operator.  What remains one-loop exact is the
+cohomology coordinate of the topological density in the anomaly equation, not
+the renormalization matrix of every operator used to write that equation.
+
 \section{The Strong CP Parameter}
 
 In QCD with \(N_f\) quark flavors, the Euclidean gauge action may include the

@@ -18,6 +18,10 @@
       "risk_class": "anomaly descent"
     },
     {
+      "path": "adler_bardeen_nonrenormalization_checks.py",
+      "risk_class": "anomaly nonrenormalization"
+    },
+    {
       "path": "bcft_cardy_checks.py",
       "risk_class": "CFT sewing"
     },

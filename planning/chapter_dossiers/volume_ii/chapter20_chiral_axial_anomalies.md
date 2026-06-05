@@ -32,6 +32,14 @@
   and sidecar, especially Sections 3.7, 4.2, 8.3, 9.1--9.4, and 10, for
   measure/index derivations, consistent anomalies, descent equations, and
   anomaly-polynomial normalization.
+- Reader-facing bibliographic controls now include Adler--Bardeen 1969 for
+  all-order axial anomaly nonrenormalization, Bardeen 1969 for preserved
+  vector-current subtraction and anomalous Ward identities, Piguet--Sorella
+  for algebraic renormalization, Barnich--Brandt--Henneaux for local BRST
+  cohomology, and Anselmi 2014 for a modern BV/order-by-order gauge-anomaly
+  Adler--Bardeen proof.  The monograph text uses these as theorem-boundary
+  controls while deriving the local cocycle/counterterm mechanism in its own
+  notation.
 - Reader-facing bibliographic footnote added for the theorem-level analytic
   inputs: Atiyah--Singer, "The index of elliptic operators. I" for the closed
   spin Dirac index theorem, and Atiyah--Patodi--Singer, "Spectral asymmetry
@@ -245,6 +253,15 @@
   coordinate \(C_{abc}\lambda^aF^bF^c\) and verifies that the homogeneous cubic
   polynomial on commuting backgrounds recovers the symmetric tensor by
   polarization.
+- `calculation-checks/adler_bardeen_nonrenormalization_checks.py` checks the
+  finite algebra supporting the Adler--Bardeen section: exact local
+  counterterm/current-improvement directions project out of the anomaly
+  class, singlet axial-current and topological-density source redefinitions
+  do not change the cohomology coordinate, a two-loop-looking term is
+  removable exactly when its topological-class projection vanishes, the
+  Callan--Symanzik class equation kills higher coefficients in a finite
+  one-coupling recurrence, and one-loop cubic gauge-anomaly cancellation
+  leaves only exact higher-loop Slavnov breakings in the AB local sector.
 
 ## Framework
 
@@ -326,6 +343,10 @@
 | \(J_{\mathrm{cons}}\) | consistent current, \(\delta W/\delta A\) |
 | \(J_{\mathrm{cov}}\) | covariant current after Bardeen--Zumino improvement |
 | \(J_{\mathrm{BZ}}\) | Bardeen--Zumino local polynomial current |
+| \(J_{5,R}^\mu\) | renormalized axial or singlet axial current representative used in the Adler--Bardeen operator identity |
+| \(q_R\) | renormalized topological-charge density source coordinate normalized by the \(\theta\)-term |
+| \(c_{\rm AB}(g)\) | cohomology-coordinate coefficient of the Adler--Bardeen anomaly class before projection to its one-loop value |
+| \(\Delta_\Gamma\) | possible higher-loop Slavnov--Taylor or BV master-equation breaking whose nontrivial local anomaly projection is tested |
 | \(T_R^a\) | anti-Hermitian generator in representation \(R\) used in the Bardeen--Zumino and descent formulas |
 | \(\bar\theta\) | anomaly-invariant QCD CP-odd parameter |
 | \(Q[A]\) | instanton/topological charge |
@@ -565,6 +586,34 @@
   calibration, not a second anomaly class.
 - A nonzero global-symmetry anomaly is data to be matched by the infrared
   theory, while a nonzero gauge anomaly obstructs the gauge theory.
+- The Adler--Bardeen theorem is now stated as a local perturbative
+  nonrenormalization theorem for the coefficient of the nontrivial anomaly
+  cohomology class.  The theorem explicitly assumes a local subtraction
+  scheme with the quantum action principle, preserved vector/dynamical gauge
+  Ward identities, composite-operator sources, and allowed same-quantum-number
+  operator mixing.  In the QCD singlet normalization fixed by the
+  \(\theta\)-term,
+  \[
+    \partial_\mu J_{5,R}^\mu
+    =
+    2i\bar q_RM_R\gamma_5q_R+2N_fq_R
+  \]
+  has one-loop exact coefficient \(2N_f\) in the topological-density
+  coordinate.
+- The Adler--Bardeen statement is separated from stronger false claims:
+  \(J_{5,R}^\mu\) may have an anomalous dimension, \(q_R\) may mix with
+  \(\partial_\mu J_{5,R}^\mu\) as a composite operator, and finite
+  source-coordinate changes can move terms in the displayed divergence
+  equation.  Only the projection onto the nontrivial local anomaly class is
+  one-loop exact.
+- For chiral gauge theories, the AB theorem supplies the coefficient
+  statement that prevents higher-loop multiples of the same local descent
+  class after the one-loop symmetric cubic tensor cancels.  Together with the
+  absence of other local anomaly classes, this feeds the all-order
+  Slavnov--Taylor restoration theorem in the BRST chapter and the BV
+  master-equation anomaly calculation.  The scope is perturbative and local;
+  global anomalies and nonperturbative chiral gauge regulator existence remain
+  separate.
 - The strong CP parameter is the anomaly-invariant combination of the
   topological angle and the quark mass phase.
 - The topological susceptibility is defined as a thermodynamic and continuum
@@ -1682,3 +1731,17 @@
   negative controls against moduli-only, Euclidean-equals-physical,
   endpoint/sector omission, lower-action leakage, and signed-cancellation
   shortcuts.
+- 2026-06-05 issue #774 Adler--Bardeen pass: inserted
+  `sec:adler-bardeen-nonrenormalization`, giving a theorem-boundary statement
+  for Abelian axial and nonabelian gauge-anomaly versions with assumptions on
+  QAP locality, preserved vector/gauge Ward identities, source normalization,
+  and allowed operator mixing.  The text now derives the local
+  cocycle/counterterm reduction, sharply delimits the imported all-order AB
+  coefficient step, distinguishes singlet-current/topological-density mixing
+  from anomaly-coefficient renormalization, and links one-loop cubic
+  cancellation to the all-order Slavnov--Taylor restoration theorem without
+  claiming global-anomaly cancellation or nonperturbative chiral-gauge
+  existence.  Added
+  `calculation-checks/adler_bardeen_nonrenormalization_checks.py` with
+  negative controls for fake higher-loop corrections and uncancelled cubic
+  anomaly data.
