@@ -2573,6 +2573,92 @@ described in
 ControlledApproximation~\ref{ca:one-loop-reconstruction-observable-assembly}.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Four-point color--kinematics gateway]
+\label{ca:four-point-color-kinematics-gateway}
+Generalized unitarity reconstructs amplitudes from on-shell factorization
+data, but it does not by itself organize the nonabelian numerator algebra.
+The first clean place where the extra structure can be stated without hiding
+loop-level difficulties is the four-point tree amplitude of adjoint gauge
+particles.  After rewriting the contact term into generalized cubic
+numerators, one may express a color-dressed amplitude as
+\begin{equation}
+  \mathcal A_4^{\rm YM}
+  =
+  g^2\left(
+    \frac{c_s n_s}{s}
+    +\frac{c_t n_t}{t}
+    +\frac{c_u n_u}{u}
+  \right),
+  \qquad s+t+u=0,
+  \label{eq:four-point-cubic-color-numerator-form}
+\end{equation}
+where the three color factors obey the Lie-algebra Jacobi identity
+\begin{equation}
+  c_s+c_t+c_u=0 .
+  \label{eq:four-point-color-jacobi}
+\end{equation}
+The color--kinematics statement is not that every numerator representation
+has a mysterious automatic property.  It is the existence, after allowed
+contact-term reshufflings, of a representative in which the kinematic
+numerators obey the parallel Jacobi relation
+\begin{equation}
+  n_s+n_t+n_u=0 .
+  \label{eq:four-point-kinematic-jacobi}
+\end{equation}
+This is a choice of numerator coordinates with physical content: it exposes
+the same antisymmetry/Jacobi bookkeeping that cut factorization and
+gauge-invariance Ward identities otherwise leave dispersed among diagrams.
+
+The residual freedom is equally important.  A generalized-gauge shift
+\begin{equation}
+  n_i\longmapsto n_i+D_i\Delta_i,\qquad
+  (D_s,D_t,D_u)=(s,t,u),
+  \label{eq:four-point-generalized-gauge-shift}
+\end{equation}
+leaves \eqref{eq:four-point-cubic-color-numerator-form} unchanged whenever
+\begin{equation}
+  c_s\Delta_s+c_t\Delta_t+c_u\Delta_u=0 .
+  \label{eq:four-point-generalized-gauge-null}
+\end{equation}
+But such a shift need not preserve
+\eqref{eq:four-point-kinematic-jacobi}.  Cut equivalence of the gauge
+amplitude is therefore weaker than color--kinematics duality.  One has to
+control numerator representatives, not only scalar-integral coefficients.
+
+In a Jacobi-satisfying representation the four-point gravity double copy
+takes the local form
+\begin{equation}
+  \mathcal M_4^{\rm grav}
+  =
+  \left(\frac{\kappa}{2}\right)^2
+  \left(
+    \frac{n_s\widetilde n_s}{s}
+    +\frac{n_t\widetilde n_t}{t}
+    +\frac{n_u\widetilde n_u}{u}
+  \right),
+  \label{eq:four-point-double-copy-gateway}
+\end{equation}
+with the second numerator set supplied by another gauge theory, possibly the
+same one \cite{BernCarrascoJohansson2008NewRelations}.  The representation
+independence of \eqref{eq:four-point-double-copy-gateway} uses null
+directions tied to the same Jacobi constraints.  For example, the
+four-point shift \(n_i\mapsto n_i+\alpha D_i\) preserves
+\eqref{eq:four-point-kinematic-jacobi}, and shifting only the second
+numerator copy changes \eqref{eq:four-point-double-copy-gateway} by
+\(\alpha(n_s+n_t+n_u)=0\).  Blindly squaring arbitrary gauge-equivalent
+numerators is not a valid operation.  It can change the right-hand side of
+\eqref{eq:four-point-double-copy-gateway} even though
+\eqref{eq:four-point-cubic-color-numerator-form} was unchanged.
+
+At loop level the same idea becomes a much stronger integrand statement:
+Jacobi-related cubic graphs must carry Jacobi-related numerators, and
+generalized cuts plus IBP reduction do not automatically construct such a
+representation.  This paragraph is therefore only the four-point tree
+gateway.  It records the mechanism needed before one can responsibly discuss
+loop-level color--kinematics representations and gravity double copies
+\cite{BernCarrascoJohansson2010PerturbativeQuantumGravity}.
+\end{controlledapproximation}
+
 \subsection{A Physical Two-Scale Box Master}
 \label{subsec:physical-two-scale-box-master}
 

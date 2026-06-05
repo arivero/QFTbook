@@ -28,8 +28,9 @@
   four-gluon MHV quadruple-cut reconstruction with explicit supermultiplet
   state sum and lower-topology negative control, the pure-Yang--Mills
   all-plus rational blind spot including the five-point all-plus
-  partial-amplitude template, a solved finite two-scale massless box master
-  with branch data, the bubble
+  partial-amplitude template, a four-point color--kinematics/double-copy
+  gateway with generalized-gauge negative controls, a solved finite two-scale
+  massless box master with branch data, the bubble
   IBP/differential equation master calculation, and a
   two-stage master-integral layer: first a local two-master threshold block,
   then a two-letter transport audit exposing connection data, Euclidean
@@ -67,6 +68,10 @@
   lineage for the generalized-unitarity, planar \(\mathcal N=4\) MHV
   quadruple-cut, rational-term, integrand-reduction, explicit box-function,
   IBP, and differential-equation bridge.
+- Bern--Carrasco--Johansson's tree-level amplitude relations and double-copy
+  construction supply the source spine for the four-point
+  color--kinematics gateway; the chapter uses them only as a scoped entry
+  point, not as a proof of loop-level numerator representations.
 - Steinmann's original Wightman/retarded-commutator papers and the
   Stapp/Cahill--Stapp scattering-amplitude refinements are used as source
   traces for the quoted conditional Steinmann relation; the chapter does not
@@ -126,6 +131,8 @@
 | \(S,T\), \(\mathcal F_{\Box}(S,T)\), \(\kappa_{\Box}\) | Euclidean box invariants \(S=-s>0,T=-t>0\), finite reduced two-scale box master after IR-pole subtraction, and its Euclidean boundary/subtraction constant |
 | \(\operatorname{tr}_{-}(i j k l)\) | chiral spinor trace coordinate \(\langle i j\rangle[j k]\langle k l\rangle[l i]\) used in the five-point all-plus rational amplitude |
 | \(C_{\rm loop}\), \(C_{\rm rat}\), \(C_{5,\rm rat}\) | loop-normalization and all-plus rational-term constants, fixed only after color, particle-content, and loop-measure conventions are declared |
+| \(c_s,c_t,c_u\) | four-point cubic color factors satisfying the Lie-algebra Jacobi relation \(c_s+c_t+c_u=0\) |
+| \(n_s,n_t,n_u\), \(\widetilde n_i\) | four-point generalized kinematic numerators and the second numerator copy used in the color--kinematics/double-copy gateway |
 | \(\mathbf I^{(1)}_\Lambda\) | one-loop infrared subtraction operator used to define the finite remainder in a declared regulator and finite subtraction convention |
 | \(\mathcal F^{(1)}_\Lambda\) | finite one-loop hard remainder after subtracting \(\mathbf I^{(1)}_\Lambda\mathcal A^{(0)}_\Lambda\) |
 | \(\mathcal R_\Lambda^{\rm sub}[W]\), \(\mathcal C_\Lambda^{\rm fact}[W]\) | real-emission/subtraction and factorization/matching pieces needed to assemble an infrared-safe observable for measurement \(W\) |
@@ -180,6 +187,12 @@
   uses the complete sixteen-state on-shell supermultiplet, not a gluon-only
   state sum.  Numerical all-plus coefficients are stated only up to the
   declared loop, color, and particle-content normalization.
+- The color--kinematics gateway is restricted to four massless adjoint
+  external particles at tree level, after contact terms have been absorbed
+  into generalized cubic numerators.  It assumes \(s+t+u=0\), the color
+  Jacobi relation, and a Jacobi-satisfying numerator representative.  The
+  paragraph explicitly does not construct loop-level color--kinematics
+  numerators.
 - The finite box master is a reduced four-point massless scalar box after the
   universal soft/collinear pole part has been subtracted in a declared
   convention.  The displayed normalization fixes
@@ -437,6 +450,30 @@
   four-dimensional two-particle cuts still vanish by the tree helicity
   selection rule.  The missing input is again \(D\)-dimensional or
   massive-scalar unitarity data, not a local counterterm.
+- Four-point color--kinematics gateway: after the tree amplitude is written in
+  cubic form,
+  \[
+    \mathcal A_4^{\rm YM}
+    =
+    g^2\left(\frac{c_s n_s}{s}
+             +\frac{c_t n_t}{t}
+             +\frac{c_u n_u}{u}\right),
+    \qquad c_s+c_t+c_u=0,
+  \]
+  a color--kinematics representative also obeys
+  \(n_s+n_t+n_u=0\).  Generalized-gauge shifts preserving the gauge amplitude
+  need not preserve this kinematic Jacobi relation, so a naive numerator
+  square is not representation-independent.  The double-copy formula
+  \[
+    \mathcal M_4^{\rm grav}
+    =
+    \left(\frac{\kappa}{2}\right)^2
+    \left(\frac{n_s\widetilde n_s}{s}
+          +\frac{n_t\widetilde n_t}{t}
+          +\frac{n_u\widetilde n_u}{u}\right)
+  \]
+  is asserted only for Jacobi-compatible numerator data and null shifts, such
+  as the four-point common shift \(n_i\mapsto n_i+\alpha D_i\).
 - The bubble IBP family obeys
   \[
     0=(D-2a-b)I_{a,b}-bI_{a-1,b+1}+bQ^2I_{a,b+1},
@@ -528,11 +565,13 @@
   all-plus template adds a genuine nonabelian one-loop partial amplitude
   beyond four points, the planar \(\mathcal N=4\) MHV block supplies a full
   cut-constructible nonabelian state-sum reconstruction in a declared
-  supersymmetric theory, the finite box block supplies one solved physical
-  two-scale master, and the two-letter transport model makes the
-  multi-master boundary/path contract explicit.  Nontrivial coupled physical
-  multi-master families, finite-field technology, color--kinematics, and
-  higher-loop generalized cuts remain future work.
+  supersymmetric theory, the four-point color--kinematics gateway supplies a
+  tree-level numerator-representation and double-copy boundary, the finite
+  box block supplies one solved physical two-scale master, and the two-letter
+  transport model makes the multi-master boundary/path contract explicit.
+  Nontrivial coupled physical multi-master families, finite-field technology,
+  loop-level color--kinematics representations, and higher-loop generalized
+  cuts remain future work.
 
 ## Audit Notes
 
@@ -703,3 +742,12 @@
   Parke--Taylor component extraction, maximal-cut normalization, lower
   topology ambiguity, vanishing lower-topology remainder, and cyclic trace
   count.
+- 2026-06-05 issue #769 color--kinematics gateway pass: added a four-point
+  tree-level bridge from cubic color factors to Jacobi-satisfying kinematic
+  numerators and the gravity double-copy numerator square.  The text separates
+  gauge-amplitude equivalence from Jacobi-compatible numerator data and states
+  that loop-level color--kinematics representations remain future work.  The
+  companion script checks exact color and kinematic Jacobi identities,
+  generalized-gauge invariance of the gauge amplitude, failure of the naive
+  numerator square under a non-Jacobi shift, and invariance under the
+  four-point common denominator-weighted shift.

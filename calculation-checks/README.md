@@ -2859,7 +2859,9 @@ Current checks:
   helicity and evanescent-probe ledger, the planar \(\mathcal N=4\) MHV
   quadruple-cut reconstruction state-sum and topology-separation checks
   including the single-cut lower-topology negative control, the five-gluon
-  all-plus rational template, the finite two-scale box master with its differential
+  all-plus rational template, the four-point color--kinematics/double-copy
+  gateway with the generalized-gauge non-Jacobi negative control, the finite
+  two-scale box master with its differential
   equations, branch prescription, and one-cut-only negative control, the
   bubble IBP reduction, and the bubble master differential-equation branch
   ledger, the two-master

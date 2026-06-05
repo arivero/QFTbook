@@ -8,8 +8,10 @@ checks the exact algebraic ledger behind the worked massless phi^4 example,
 the finite two-scale box master, and the one-loop bubble family, then adds
 finite helicity, color, state-sum, and regulator bookkeeping for the
 Yang-Mills MHV/all-plus control examples, including the planar N=4 MHV
-quadruple-cut reconstruction and the five-gluon all-plus rational template.
-It also checks a finite two-master threshold-mixing model, a two-letter
+quadruple-cut reconstruction, the five-gluon all-plus rational template, and
+the four-point color-kinematics/double-copy gateway with generalized-gauge
+negative controls.  It also checks a finite two-master threshold-mixing
+model, a two-letter
 master-transport model with boundary and branch negative controls, and the
 finite Laurent-pole ledger that turns a reconstructed virtual amplitude into
 a finite observable only after infrared subtraction, real radiation, and
@@ -26,7 +28,10 @@ threshold-mixing datum in a Fuchsian differential system, the two-letter
 transport/boundary audit for a reduced master sector, and the
 virtual-to-observable finite remainder assembly; additionally, the five-point
 all-plus rational amplitude has the correct little-group weights, mass
-dimension, cyclic term coverage, and strict four-dimensional cut invisibility.
+dimension, cyclic term coverage, and strict four-dimensional cut
+invisibility, and the four-point color-kinematics gateway separates
+gauge-amplitude equivalence from Jacobi-compatible numerator data needed for
+the double copy.
 Independent construction: finite cut-signature matrices over rational
 numbers, an explicit identical-state symmetry factor, a nullspace model for
 local/rational terms invisible to four-dimensional cuts, and exact rational
@@ -37,6 +42,8 @@ finite topology-signature checks for maximal versus two-particle cuts in the
 N=4 MHV box reconstruction and a finite on-shell-supermultiplet state count;
 finite spinor-bracket power counting and helicity-cut enumeration for the
 five-gluon all-plus rational template;
+finite cubic-channel color/numerator algebra for the four-point
+color-kinematics gateway;
 nilpotent rational matrix algebra for threshold monodromy and regular
 boundary constants; noncommuting two-letter residue algebra for first-order
 transport, path-order sensitivity, and cut-invisible boundary shifts;
@@ -57,7 +64,9 @@ to strict four-dimensional two-particle cuts but visible to a nonzero
 mu_perp^2 massive-scalar probe, verifies that an s-channel cut alone cannot
 separate the N=4 MHV box from lower-topology contamination and that a
 gluon-only state sum is not the N=4 supermultiplet, verifies the same
-rational blind spot at five points, and rejects virtual-only pole cancellation,
+rational blind spot at five points, verifies that a gauge-equivalent
+non-Jacobi numerator shift changes the naive numerator square, and rejects
+virtual-only pole cancellation,
 omitted rational finite
 remainders, one-cut-only finite-box deformations, branch-label omission,
 diagonal one-master threshold shortcuts, cut-only boundary reconstruction,
@@ -66,8 +75,9 @@ finite IR-scheme shifts.
 Scope boundary: a pass checks the finite reconstruction and reduction
 bookkeeping; it does not compute a nonabelian helicity amplitude from Feynman
 graphs, prove unitarity from Wightman axioms, solve multi-loop integral
-families, or replace the real-radiation/factorization construction needed for
-infrared-safe observables.
+families, prove loop-level color-kinematics duality, or replace the
+real-radiation/factorization construction needed for infrared-safe
+observables.
 """
 
 from __future__ import annotations
@@ -638,6 +648,102 @@ def check_five_gluon_all_plus_rational_template() -> None:
     )
 
 
+def check_four_point_color_kinematics_gateway() -> None:
+    s = Fraction(2)
+    t = Fraction(3)
+    u = Fraction(-5)
+    denominators = [s, t, u]
+    assert_equal("four-point massless Mandelstam sum", s + t + u, Fraction(0))
+
+    colors = [Fraction(1), Fraction(2), Fraction(-3)]
+    assert_equal("four-point color Jacobi", sum(colors, Fraction(0)), Fraction(0))
+
+    numerators = [
+        s * (t - u),
+        t * (u - s),
+        u * (s - t),
+    ]
+    assert_equal(
+        "four-point kinematic Jacobi",
+        sum(numerators, Fraction(0)),
+        Fraction(0),
+    )
+
+    gauge_amplitude = sum(
+        colors[index] * numerators[index] / denominators[index]
+        for index in range(3)
+    )
+    gravity_amplitude = sum(
+        numerators[index] * numerators[index] / denominators[index]
+        for index in range(3)
+    )
+    assert_equal("four-point gauge amplitude value", gauge_amplitude, Fraction(-3))
+    assert_equal("four-point numerator-square value", gravity_amplitude, Fraction(270))
+
+    gauge_equivalent_deltas = [Fraction(2), Fraction(-1), Fraction(0)]
+    assert_equal(
+        "generalized-gauge color null shift",
+        dot(colors, gauge_equivalent_deltas),
+        Fraction(0),
+    )
+    shifted_numerators = [
+        numerators[index] + denominators[index] * gauge_equivalent_deltas[index]
+        for index in range(3)
+    ]
+    shifted_gauge_amplitude = sum(
+        colors[index] * shifted_numerators[index] / denominators[index]
+        for index in range(3)
+    )
+    assert_equal(
+        "generalized-gauge shift leaves gauge amplitude",
+        shifted_gauge_amplitude,
+        gauge_amplitude,
+    )
+    assert_true(
+        "gauge-equivalent numerator can break kinematic Jacobi",
+        sum(shifted_numerators, Fraction(0)) != 0,
+    )
+    shifted_naive_square = sum(
+        shifted_numerators[index] * shifted_numerators[index] / denominators[index]
+        for index in range(3)
+    )
+    assert_true(
+        "naive double copy changes under non-Jacobi gauge shift",
+        shifted_naive_square != gravity_amplitude,
+    )
+
+    jacobi_preserving_delta = Fraction(7)
+    jacobi_shifted_numerators = [
+        numerators[index] + jacobi_preserving_delta * denominators[index]
+        for index in range(3)
+    ]
+    assert_equal(
+        "common denominator-weighted shift preserves Jacobi",
+        sum(jacobi_shifted_numerators, Fraction(0)),
+        Fraction(0),
+    )
+    mixed_double_copy = sum(
+        jacobi_shifted_numerators[index] * numerators[index] / denominators[index]
+        for index in range(3)
+    )
+    assert_equal(
+        "Jacobi-compatible one-copy shift leaves double copy",
+        mixed_double_copy,
+        gravity_amplitude,
+    )
+    both_copy_shift = sum(
+        jacobi_shifted_numerators[index]
+        * jacobi_shifted_numerators[index]
+        / denominators[index]
+        for index in range(3)
+    )
+    assert_equal(
+        "Jacobi-compatible two-copy shift leaves four-point square",
+        both_copy_shift,
+        gravity_amplitude,
+    )
+
+
 def check_finite_two_scale_box_master() -> None:
     # Variables are Ls=log S and Lt=log T.  The finite reduced box in the
     # chosen normalization is 1/2 (Ls-Lt)^2 + kappa.
@@ -1098,6 +1204,7 @@ def main() -> None:
     check_gauge_theory_helicity_controls()
     check_n4_mhv_quadruple_cut_reconstruction()
     check_five_gluon_all_plus_rational_template()
+    check_four_point_color_kinematics_gateway()
     check_finite_two_scale_box_master()
     check_bubble_ibp_identity()
     check_branch_and_landau_ledger()
