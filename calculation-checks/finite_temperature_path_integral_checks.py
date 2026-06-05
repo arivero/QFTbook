@@ -10,10 +10,10 @@ Chapter 2.
 Independent construction: direct finite Gibbs sums, direct Matsubara
 integration, exact boundary phases, finite Berezin-sign arithmetic, and a
 low-frequency positive spectral-slope family whose Euclidean transform is
-bounded while its transport-channel slope is fixed, including a
-finite-sum-rule-preserving compensator test with a smooth integrable
-reference spectrum, a restricted polynomial-weight compensator system, and a
-uniform positivity margin.
+bounded while its transport-channel slope is fixed, including a real
+finite-sum-rule-preserving compensator test with finite reference moments, a
+smooth integrable reference spectrum, a restricted polynomial-weight
+compensator system, and a uniform positivity margin.
 Imported assumptions: the finite-regulator Gibbs trace, the bosonic spectral
 kernel stated in the chapter, positivity of Hermitian positive-frequency
 spectral weights, and the use of Euclidean norms as data-error topology.
@@ -23,7 +23,9 @@ stable spectral reconstruction, small Euclidean error is not accepted as
 control of the low-frequency transport-channel slope, and a nonintegrable
 constant spectral floor is not used to preserve positivity.  An adversarial
 weight pair whose restrictions agree on the allowed compensator region is
-rejected as outside the compensator hypothesis.
+rejected as outside the compensator hypothesis, and a restricted-independent
+pair with a divergent moment against C exp(-omega) is rejected as outside the
+finite-reference-moment hypothesis.
 Scope boundary: these checks verify finite algebra and the explicit
 ill-conditioning construction; they do not prove a continuum reconstruction
 theorem, Carlson-class uniqueness, arbitrary finite-sum-rule compensator
@@ -484,6 +486,34 @@ def check_adversarial_weights_need_restricted_independence() -> None:
         raise AssertionError("dependent restricted weights must not admit this compensator matrix")
 
 
+def check_restricted_independence_does_not_imply_reference_moments() -> None:
+    """Restricted independence is not enough for finite reference sum rules."""
+
+    omega0 = 0.75
+    omega1 = 1.25
+    evaluation_det = math.exp(2.0 * omega1) - math.exp(2.0 * omega0)
+    if abs(evaluation_det) < 1.0e-6:
+        raise AssertionError("1 and exp(2 omega) should be independent on the compensator compact")
+
+    # Against C exp(-omega), the exp(2 omega) moment has partial integrals
+    # integral_0^R exp(omega) d omega = exp(R)-1, hence no finite limit.
+    partial_short = math.exp(2.0) - 1.0
+    partial_long = math.exp(8.0) - 1.0
+    if partial_long <= 100.0 * partial_short:
+        raise AssertionError("restricted independence should not certify a finite C exp(-omega) moment")
+
+    # An adapted positive reference C exp(-omega)/(1+sum w_l^2) restores
+    # finite moments for this fixed real family while staying positive on
+    # compact perturbation supports.
+    for index in range(81):
+        omega = index / 10.0
+        denominator = 2.0 + math.exp(4.0 * omega)
+        if 1.0 / denominator > 0.5 + 1.0e-12:
+            raise AssertionError("adapted reference should bound the constant-weight moment")
+        if math.exp(2.0 * omega) / denominator > 0.5 + 1.0e-12:
+            raise AssertionError("adapted reference should bound the exponential-weight moment")
+
+
 def check_chemical_potential_twist() -> None:
     beta = 2.0
     mu = 0.37
@@ -512,6 +542,7 @@ def main() -> None:
     check_low_frequency_transport_instability()
     check_finite_sum_rule_preserving_instability()
     check_adversarial_weights_need_restricted_independence()
+    check_restricted_independence_does_not_imply_reference_moments()
     check_chemical_potential_twist()
     print("Finite-temperature path-integral convention and compensator-scope checks passed.")
 

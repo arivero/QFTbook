@@ -729,12 +729,15 @@ Current checks:
   chemical-potential twist and imaginary-holonomy periodicity.  It also checks
   the explicit low-frequency positive spectral-slope family whose Euclidean
   transform is \(O(\epsilon)\) while its transport-channel slope remains fixed,
-  together with a smooth finite-sum-rule-preserving compensator perturbation
-  for the polynomial weights \(1\) and \(\omega\), around an integrable
-  reference spectrum with a uniform positivity margin.  It also checks an
-  adversarial smooth weight pair whose restrictions are dependent on the
-  allowed compensator region, giving the reconstruction-instability negative
-  control without claiming arbitrary finite-sum-rule compensators.
+  together with a smooth real finite-sum-rule-preserving compensator
+  perturbation for the polynomial weights \(1\) and \(\omega\), around an
+  integrable reference spectrum with finite moments and a uniform positivity
+  margin.  It also checks an adversarial smooth weight pair whose restrictions
+  are dependent on the allowed compensator region, and a
+  restricted-independent pair whose moment against \(C\exp(-\omega)\) diverges,
+  giving the reconstruction-instability negative controls without claiming
+  arbitrary finite-sum-rule compensators or letting undefined admissibility
+  carry ultraviolet moment assumptions.
 - `hamiltonian_truncation_dlcq_checks.py`: finite checks for the
   Hamiltonian-truncation and DLCQ benchmark chapter, including the Ising
   energy-deformation Bogoliubov spectrum, the finite sine-Gordon zero-mode

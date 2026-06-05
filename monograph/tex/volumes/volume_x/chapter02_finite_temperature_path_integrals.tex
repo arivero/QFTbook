@@ -626,15 +626,48 @@ after the thermodynamic and zero-frequency limits have been taken.
 
 This elementary bump is a positivity-only negative control; it changes any
 moment sum rule that sees the interval \((0,\varepsilon)\).  For an admissible
-finite family of smooth sum rules, the same obstruction survives, but the
-admissibility must be stated rather than inferred.  The needed hypothesis is
-local on the compensator region.  Fix
-\(\varepsilon_0>0\) and a compact set
+finite family of smooth sum rules, the same obstruction survives, but
+admissibility requires real finite moments in addition to local linear
+independence.  In this paragraph an admissible finite sum-rule family
+means the following data.  First, after any complex-valued constraints have been
+split into their real and imaginary parts, the weights
+\(w_0,\ldots,w_m\) are real-valued \(C^\infty(0,\infty)\) functions.  Second,
+there are \(\varepsilon_0>0\) and a compact set
 \[
   K\Subset(\varepsilon_0,\infty).
 \]
-Let \(w_0,\ldots,w_m\) be smooth weights whose restrictions to \(K\) are
-linearly independent.  Then one can choose
+such that the restrictions of the \(w_\ell\) to \(K\) are linearly independent.
+Third, the chosen positive reference slope \(\sigma_{\rm ref}\) has finite
+absolute moments,
+\begin{equation}
+  \int_0^\infty |w_\ell(\omega)|\,\sigma_{\rm ref}(\omega)\,d\omega<\infty,
+  \qquad \ell=0,\ldots,m .
+  \label{eq:thermal-admissible-reference-moments}
+\end{equation}
+The perturbation moments are then finite automatically because all perturbing
+functions below are supported in the compact set \([0,\varepsilon_0]\cup K\).
+Without the real-valued reduction, the ordered comparison
+\(\sigma_{\rm ref}\pm a h_\varepsilon\ge0\) is not a real positivity statement;
+without \eqref{eq:thermal-admissible-reference-moments}, the phrase
+``identical sum-rule values'' need not name finite numbers.  For example,
+\(w_0(\omega)=1\) and \(w_1(\omega)=\ee^{2\omega}\) are smooth and independent
+on every interval, but the \(w_1\)-moment of \(C\ee^{-\omega}\) diverges.
+Thus restricted independence supplies only the compensator matrix, not
+ultraviolet moment finiteness.  If a fixed reference such as
+\(C\ee^{-\omega}\) is used, \eqref{eq:thermal-admissible-reference-moments}
+is part of the admissibility hypothesis.  Equivalently, for an arbitrary fixed
+finite real smooth family one may adapt the reference, for instance
+\[
+  \sigma_{\rm ref}(\omega)
+  =
+  \frac{C\ee^{-\omega}}
+       {1+\sum_{\ell=0}^m w_\ell(\omega)^2},
+\]
+which is positive and smooth, has finite moments because
+\(|w_\ell|/(1+\sum_j w_j^2)\le 1/2\), and remains bounded below on each compact
+support used by the perturbation.
+
+With this admissible datum, one can choose
 \(\psi_0,\ldots,\psi_m\in C_c^\infty(K)\) such that
 \[
   M_{\ell j}=\int_0^\infty w_\ell(\omega)\psi_j(\omega)\,d\omega
@@ -674,15 +707,14 @@ Then
   \int_0^\infty w_\ell(\omega)h_\varepsilon(\omega)\,d\omega=0,
   \qquad \ell=0,\ldots,m,
 \]
-exactly.  Since the bump has support of length \(O(\varepsilon)\), the
-uniform boundedness of \(b_\varepsilon\) and boundedness of each \(w_\ell\) on
-\([0,\varepsilon_0]\) imply that the bump moments are \(O(\varepsilon)\), and
-the fixed inverse \(M^{-1}\) gives \(c_j(\varepsilon)=O(\varepsilon)\).  Hence
-the Euclidean transform of \(h_\varepsilon\) is \(O(\varepsilon)\) on every
-interior Euclidean-time window, while \(h_\varepsilon\) has low-frequency
-slope \(\eta_\ast\).  Choose now a smooth positive reference slope with
-acceptable ultraviolet falloff, for instance
-\(\sigma_{\rm ref}(\omega)=C\ee^{-\omega}\), and set
+exactly, as finite real equalities.  Since the bump has support of length
+\(O(\varepsilon)\), the uniform boundedness of \(b_\varepsilon\) and boundedness
+of each \(w_\ell\) on \([0,\varepsilon_0]\) imply that the bump moments are
+\(O(\varepsilon)\), and the fixed inverse \(M^{-1}\) gives
+\(c_j(\varepsilon)=O(\varepsilon)\).  Hence the Euclidean transform of
+\(h_\varepsilon\) is \(O(\varepsilon)\) on every interior Euclidean-time
+window, while \(h_\varepsilon\) has low-frequency slope \(\eta_\ast\).  For the
+chosen admissible reference slope set
 \[
   U=[0,\varepsilon_0]\cup K,
   \qquad
@@ -707,11 +739,11 @@ gives
 \(U\) the perturbation vanishes and \(\sigma_{\rm ref}>0\).  The two
 positive spectra therefore have identical values of the chosen admissible
 finite sum rules and have low-frequency slopes differing by \(2a\eta_\ast\).
-Infinite moment data, sum rules whose weights remain independent only by their
-low-frequency support, or a physically derived analytic class may of course add
-information; this finite-constraint construction only says that admissible
-finitely many smooth sum rules do not by themselves stabilize the local
-transport slope.
+Infinite moment data, sum rules whose reference moments are not finite, weights
+whose independence comes only from their low-frequency support, or a physically
+derived analytic class may of course change the problem; this finite-constraint
+construction only says that admissible finitely many smooth sum rules do not by
+themselves stabilize the local transport slope.
 
 Several pieces of bookkeeping must also be kept separate.
 \begin{center}
@@ -732,9 +764,10 @@ Several pieces of bookkeeping must also be kept separate.
   comparing Euclidean data with real-time spectral functions.\\[0.3em]
 \textbf{finite data} &
   A finite noisy set of Euclidean samples gives finitely many smeared
-  constraints.  Positivity and admissible fixed finite smooth sum rules
-  admitting the compensator system above narrow the feasible set but do not by
-  themselves select or stabilize a unique low-frequency slope.
+  constraints.  Positivity and admissible fixed finite real smooth sum rules
+  with finite reference moments and the compensator system above narrow the
+  feasible set but do not by themselves select or stabilize a unique
+  low-frequency slope.
 \end{tabular}
 \end{center}
 Maximum entropy reconstructions, Bayesian priors, Backus--Gilbert estimators,

@@ -31,9 +31,11 @@ or constructive definition.
 - `sigma_epsilon`: compactly supported low-frequency spectral-slope bump used
   to show Euclidean reconstruction instability.
 - `h_epsilon`: compensated low-frequency spectral-slope perturbation with
-  vanishing values against an admissible fixed finite set of smooth sum-rule
-  weights whose restrictions remain independent on an away-from-zero compact
-  compensator region.
+  vanishing finite real values against an admissible fixed finite set of smooth
+  sum-rule weights: after splitting complex constraints into real and imaginary
+  parts, the weights are real-valued, have finite absolute moments against the
+  declared reference spectrum, and remain independent on an away-from-zero
+  compact compensator region.
 - `Q`, `mu`, `q`: conserved global charge, chemical potential, and charge of
   an operator or field.
 - `P(x)`: thermal gauge holonomy/Polyakov loop.
@@ -72,9 +74,9 @@ or constructive definition.
 12. Gives an explicit positive low-frequency spectral-slope family with
    Euclidean norm \(O(\epsilon)\) but fixed transport-channel slope, and a
    compensator construction preserving admissible fixed finite smooth sum
-   rules whose weights remain independent on a declared away-from-zero compact
-   region, with a uniform positivity margin supplied by a smooth integrable
-   reference spectrum.
+   rules whose real weights have finite absolute reference moments and remain
+   independent on a declared away-from-zero compact region, with a uniform
+   positivity margin supplied by a smooth integrable reference spectrum.
 13. Separates zero modes, contact terms, finite-volume lines, thermodynamic
    limits, continuum limits, and finite-data priors in the reconstruction
    problem.
@@ -107,6 +109,12 @@ or constructive definition.
   proved compensator existence from independence on a compact region away from
   zero, fixed the bump family to one uniformly bounded profile, and recorded
   the low-frequency-only adversarial weight family as outside the hypothesis.
+- 2026-06-04 issue #831 re-audit: defined admissible finite sum-rule families
+  to include real-valued constraints, finite absolute moments against the
+  chosen reference slope, compact perturbation moment finiteness, and the
+  restricted compensator-independence condition; added the \(1,\exp(2\omega)\)
+  negative control showing that restricted independence alone does not make
+  \(C\exp(-\omega)\) reference moments finite.
 
 ## Calculation Checks
 
@@ -115,8 +123,9 @@ or constructive definition.
   finite-volume spectral representation, the separate Euclidean zero mode,
   the Matsubara Cauchy transform, the low-frequency Euclidean reconstruction
   instability example, the smooth polynomial finite-sum-rule-preserving
-  compensator perturbation with uniform positivity margin, an adversarial
-  restricted-dependence weight negative control, and chemical-potential twist
+  compensator perturbation with uniform positivity margin, finite real
+  admissibility/reference-moment scope, adversarial restricted-dependence and
+  divergent-reference-moment negative controls, and chemical-potential twist
   bookkeeping.
 
 ## Figure Ledger
