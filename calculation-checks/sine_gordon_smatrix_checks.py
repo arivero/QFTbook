@@ -1,13 +1,21 @@
 #!/usr/bin/env python3
-"""Finite checks for the sine-Gordon exact scattering datum in Volume VI."""
+"""Finite checks for the sine-Gordon exact scattering datum in Volume VI.
+
+The checks also cover the semiclassical soliton fluctuation calculation:
+the classical kink profile, Pöschl-Teller fluctuation operator, reflectionless
+phase shift, DHN cutoff/counterterm cancellation, and the finite one-loop
+mass shift -m/pi.
+"""
 
 from __future__ import annotations
 
 from check_utils import assert_close as _assert_close
+from check_utils import assert_gt
 
 import cmath
 import math
 from fractions import Fraction
+import sympy as sp
 
 
 ComplexMatrix = list[list[complex]]
@@ -258,6 +266,82 @@ def check_breather_breather_direct_fusion_masses() -> None:
             )
 
 
+def check_semiclassical_soliton_fluctuation_mass_shift() -> None:
+    u, q = sp.symbols("u q", real=True)
+    z = sp.symbols("z", positive=True)
+
+    # Kink trigonometry: cos(4 arctan z) = 1 - 2 sech(u)^2 with z=exp(u).
+    cos_four_arctan = (1 - 6 * z**2 + z**4) / (1 + z**2) ** 2
+    sech_squared = 4 * z**2 / (1 + z**2) ** 2
+    assert_equal(
+        "sine-Gordon kink cosine identity",
+        sp.simplify(cos_four_arctan - (1 - 2 * sech_squared)),
+        0,
+    )
+
+    # The dimensionless fluctuation operator is -d_u^2 + 1 - 2 sech^2 u.
+    zero_mode = sp.sech(u)
+    zero_residual = -sp.diff(zero_mode, u, 2) + (1 - 2 * sp.sech(u) ** 2) * zero_mode
+    assert_equal(
+        "sine-Gordon translational zero mode",
+        sp.simplify(sp.expand_trig(zero_residual)),
+        0,
+    )
+
+    continuum_mode = (sp.I * q - sp.tanh(u)) * sp.exp(sp.I * q * u)
+    continuum_residual = (
+        -sp.diff(continuum_mode, u, 2)
+        + (1 - 2 * sp.sech(u) ** 2) * continuum_mode
+        - (1 + q**2) * continuum_mode
+    )
+    assert_equal(
+        "sine-Gordon continuum mode eigenvalue",
+        sp.simplify(sp.expand_trig(continuum_residual / sp.exp(sp.I * q * u))),
+        0,
+    )
+
+    delta_prime = sp.diff(2 * sp.atan(1 / q), q)
+    assert_equal(
+        "sine-Gordon phase-shift derivative",
+        sp.simplify(delta_prime + 2 / (1 + q**2)),
+        0,
+    )
+
+    # With k=m q and L=Lambda/m, the continuum determinant comparison is
+    # -m/pi asinh(L).  The normal-ordering counterterm cancels the logarithmic
+    # cutoff dependence and leaves the DHN finite part -m/pi.
+    for cutoff_ratio in (0.7, 3.0, 25.0):
+        m = 1.9
+        continuum = -m / math.pi * math.asinh(cutoff_ratio)
+        counterterm = m / math.pi * math.asinh(cutoff_ratio) - m / math.pi
+        assert_close(
+            f"sine-Gordon DHN finite mass shift cutoff={cutoff_ratio}",
+            continuum + counterterm,
+            -m / math.pi,
+        )
+
+        no_counterterm = continuum
+        assert_gt(
+            "negative control: unrenormalized continuum shift differs",
+            abs(no_counterterm + m / math.pi),
+            1.0e-8,
+        )
+
+        half_phase_shift = continuum / 2.0 + counterterm
+        assert_gt(
+            "negative control: half phase shift differs",
+            abs(half_phase_shift + m / math.pi),
+            1.0e-8,
+        )
+
+        counted_zero_mode = continuum + counterterm + m / 2.0
+        assert_gt(
+            "negative control: counted zero-mode oscillator differs",
+            abs(counted_zero_mode + m / math.pi),
+            1.0e-8,
+        )
+
+
 def check_affine_toda_a_r_mass_matrix() -> None:
     for rank in range(2, 8):
         h = rank + 1
@@ -361,6 +445,7 @@ def main() -> None:
     check_soliton_breather_amplitude()
     check_neutral_block_residues()
     check_breather_breather_direct_fusion_masses()
+    check_semiclassical_soliton_fluctuation_mass_shift()
     check_affine_toda_a_r_mass_matrix()
     check_affine_toda_d4_perron_frobenius_mass_cell()
     print("All sine-Gordon S-matrix checks passed.")

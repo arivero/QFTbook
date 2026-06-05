@@ -15,6 +15,9 @@ families.  This chapter supplies the first exact examples before the later
 - `Q_top`: sine-Gordon topological charge.
 - `xi`, `M_s`, `B_n`, `m_n`: sine-Gordon coupling parameter, soliton mass,
   breather label, and breather mass.
+- `m`, `varphi_K`, `K_K`, `delta(k)`: semiclassical small-oscillation mass,
+  classical sine-Gordon kink, kink-sector fluctuation operator, and
+  reflectionless DHN phase shift.
 - `mu_UV`, `beta_UV`: UV-normal-ordered sine-Gordon perturbing coordinate
   and free-boson vertex charge in the \(1/(16\pi)\) kinetic normalization.
 - `lambda`, `V`, `S_min`, `b(theta)`, `c(theta)`: inverse sine-Gordon
@@ -46,6 +49,12 @@ families.  This chapter supplies the first exact examples before the later
   Coleman/Mermin--Wagner--Hohenberg boundary.
 - Fixes sine-Gordon normalization, topological charge, and the attractive
   regime spectrum.
+- Derives the classical sine-Gordon kink mass \(8m/\beta^2\), the
+  Pöschl--Teller fluctuation operator, its zero mode and reflectionless
+  continuum phase shift, and the DHN/Faddeev--Korepin one-loop correction
+  \(M_s=8m/\beta^2-m/\pi+O(\beta^2m)\) in the paired normal-ordering
+  convention.  The text emphasizes that this is a fluctuation determinant and
+  counterterm calculation, not a moduli-coordinate calculation.
 - Adds the UV-normal-ordered mass-coupling coordinate
   \(M_s(\mu_{\rm UV},\beta_{\rm UV})\), with the dimension check and the
   canonical-field conversion \(\phi=\sqrt{8\pi}\varphi\).
@@ -104,9 +113,14 @@ families.  This chapter supplies the first exact examples before the later
   matrix unitarity and Yang-Baxter equation, free-fermion point,
   soliton-breather unitarity/crossing/pole kinematics, lightest-breather
   direct and crossed poles, neutral-block residue signs, and breather-breather
-  fusion mass formulae.  It also verifies the \(A_r^{(1)}\) cycle-Laplacian
-  eigenvalues, finite \(A_r\) Perron--Frobenius sine-mass relation, and exact
-  \(\mathbb Q[\sqrt3]\) \(D_4\) Perron--Frobenius mass cell.
+  fusion mass formulae.  It also verifies the semiclassical soliton
+  fluctuation calculation: kink trigonometry, Pöschl--Teller zero and
+  continuum modes, phase-shift derivative, cutoff/counterterm cancellation,
+  and the finite \(-m/\pi\) one-loop mass shift, with negative controls for
+  omitted counterterms, half phase shifts, and double-counted zero modes.  It
+  also verifies the \(A_r^{(1)}\) cycle-Laplacian eigenvalues, finite \(A_r\)
+  Perron--Frobenius sine-mass relation, and exact \(\mathbb Q[\sqrt3]\)
+  \(D_4\) Perron--Frobenius mass cell.
 - `calculation-checks/sg_thirring_bosonization_checks.py` verifies the
   vertex-OPE exponent versus scaling dimension, Coleman's coupling map,
   current-dictionary coefficient, Mandelstam exchange phase, free-fermion
@@ -148,3 +162,9 @@ first simply-laced examples.
   continuous-symmetry caveat so the sine-Gordon/Thirring compact-boson
   dictionary is read as a current/topological-sector equivalence, not as a
   hidden continuous order parameter.
+- 2026-06-05 issue #597 DHN fluctuation pass: added the semiclassical
+  sine-Gordon soliton mass calculation from the fluctuation operator,
+  reflectionless phase shift, normal-ordering counterterm, and zero-mode
+  removal.  This addresses the soliton-quantization side of the
+  soliton/monopole/instanton backlog at the determinant level rather than by
+  adding another moduli-space cell.

@@ -85,6 +85,137 @@ two-particle channel of equal masses \(M_s\) produces a bound state of mass
 \]
 For the breather poles \(u=\pi(1-n\xi)\), this gives the displayed value.
 
+\section{Semiclassical Soliton Mass From Fluctuations}
+\label{sec:sine-gordon-dhn-soliton-mass}
+
+The symbol \(M_s\) in the exact spectrum is a physical mass coordinate.  Its
+weak-coupling relation to the Lagrangian parameters is not fixed by the
+classical kink alone; it also knows about the fluctuation determinant and the
+finite normalization of the perturbing operator.  Set \(m=\sqrt{\mu}\) in the
+classical action above.  The charge-one static solution is
+\begin{equation}
+  \varphi_K(x;X)
+  =
+  \frac4\beta\arctan\!\left(\ee^{m(x-X)}\right),
+  \qquad
+  \partial_x\varphi_K
+  =
+  \frac{2m}{\beta}\operatorname{sech}(m(x-X)).
+  \label{eq:sine-gordon-classical-kink-profile}
+\end{equation}
+Using
+\[
+  1-\cos(\beta\varphi_K)=2\operatorname{sech}^2(m(x-X)),
+\]
+the classical energy is
+\begin{equation}
+  M_{\rm cl}
+  =
+  \int_{-\infty}^{\infty}\dd x\,
+  \left[
+    \frac12(\partial_x\varphi_K)^2
+    +\frac{m^2}{\beta^2}
+      \bigl(1-\cos(\beta\varphi_K)\bigr)
+  \right]
+  =
+  \frac{8m}{\beta^2}.
+  \label{eq:sine-gordon-classical-kink-mass}
+\end{equation}
+
+The one-loop correction is a determinant comparison, not a correction to the
+moduli space of centers.  Expanding
+\(\varphi=\varphi_K+\eta\), the normal fluctuation operator is the
+Pöschl--Teller operator
+\begin{equation}
+  \mathcal K_K
+  =
+  -\frac{\dd^2}{\dd x^2}
+  +m^2\left[1-2\operatorname{sech}^2(m(x-X))\right],
+  \qquad
+  \mathcal K_0=-\frac{\dd^2}{\dd x^2}+m^2 .
+  \label{eq:sine-gordon-kink-fluctuation-operator}
+\end{equation}
+It has one zero mode, proportional to \(\partial_x\varphi_K\), and no positive
+discrete shape mode.  With \(u=m(x-X)\) and \(q=k/m\), its continuum
+eigenfunctions may be chosen as
+\[
+  \eta_q(u)=\bigl(\ii q-\tanh u\bigr)\ee^{\ii q u},
+  \qquad
+  \left[-\partial_u^2+1-2\operatorname{sech}^2u\right]\eta_q
+  =
+  (1+q^2)\eta_q .
+\]
+The transmission amplitude is
+\begin{equation}
+  T(q)=\frac{q+\ii}{q-\ii}=\ee^{\ii\delta(q)},
+  \qquad
+  \delta(q)=2\arctan(1/q),
+  \qquad
+  \frac{\dd\delta}{\dd k}
+  =
+  -\frac{2m}{k^2+m^2}.
+  \label{eq:sine-gordon-kink-phase-shift}
+\end{equation}
+
+In the Dashen--Hasslacher--Neveu/Faddeev--Korepin mode-number
+normal-ordering convention \cite{DashenHasslacherNeveu1975,FaddeevKorepin1978},
+the renormalized one-loop energy is the finite part of the phase-shift
+sum paired with the same tadpole subtraction that defines the UV
+normal-ordered cosine:
+\begin{equation}
+\begin{aligned}
+  \Delta M_{\rm cont}(\Lambda)
+  &=
+  \frac12
+  \int_{-\Lambda}^{\Lambda}
+  \frac{\dd k}{2\pi}\,
+  \sqrt{k^2+m^2}\,
+  \frac{\dd\delta}{\dd k}
+  =
+  -\frac{m}{\pi}
+  \operatorname{arsinh}\!\left(\frac{\Lambda}{m}\right),
+    \\
+  \Delta M_{\rm ct}(\Lambda)
+  &=
+  \frac{m}{\pi}
+  \operatorname{arsinh}\!\left(\frac{\Lambda}{m}\right)
+  -\frac{m}{\pi}.
+\end{aligned}
+  \label{eq:sine-gordon-dhn-cutoff-and-counterterm}
+\end{equation}
+The zero mode is removed from the determinant and integrated as the collective
+coordinate \(X\); counting it as an oscillator would be double-counting the
+soliton center.  The finite one-loop shift is therefore
+\begin{equation}
+  \Delta M_{\rm SG}^{(1)}
+  =
+  \lim_{\Lambda\to\infty}
+  \bigl[
+    \Delta M_{\rm cont}(\Lambda)
+    +\Delta M_{\rm ct}(\Lambda)
+  \bigr]
+  =
+  -\frac{m}{\pi},
+  \qquad
+  M_s
+  =
+  \frac{8m}{\beta^2}-\frac{m}{\pi}+O(\beta^2 m).
+  \label{eq:sine-gordon-dhn-one-loop-mass}
+\end{equation}
+
+The displayed counterterm is not an optional cosmetic subtraction.  Without it
+the zero-point energy comparison is logarithmically cutoff dependent; with a
+different finite subtraction, the coordinate called \(m\) in the Lagrangian
+would be transported by a finite scheme change.  Thus the physical content of
+\eqref{eq:sine-gordon-dhn-one-loop-mass} is the paired statement: the
+reflectionless fluctuation spectrum supplies the phase-shift term, the
+normal-ordering convention supplies the tadpole subtraction, and the
+collective coordinate is removed before the determinant is formed.  This is
+the soliton analogue of the instanton lesson: the classical lump and its
+moduli are only the first line of the quantum calculation; the fluctuation
+determinant and the renormalization convention decide the mass that appears
+in scattering and bound-state formulae.
+
 \section{Mass Scale And The UV Perturbing Coordinate}
 
 The symbol \(M_s\) denotes the physical soliton mass, defined by the isolated
