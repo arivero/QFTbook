@@ -5637,6 +5637,65 @@ Gaussian integral produces the displayed Schur correction.  Since
 can determine its finite value.
 \end{proof}
 
+\begin{controlledapproximation}[Source-dependent Schur correction to the
+zero-mode determinant]
+\label{ca:instanton-source-schur-zero-mode-correction}
+The Schur term in
+\eqref{eq:instanton-fermion-schur-factorization} is the first place where
+fermion nonzero modes affect the source tensor itself, not only its overall
+determinant normalization.  On a selected finite-regulator chart write
+\begin{equation}
+  K_{00}^{\rm eff}
+  =
+  B^{0}+\Delta_{\rm Schur},
+  \qquad
+  \Delta_{\rm Schur}
+  =
+  -K_{0{\rm n}}K_{{\rm nn}}^{-1}K_{{\rm n}0},
+  \label{eq:instanton-source-schur-effective-matrix}
+\end{equation}
+after any mass term has been set to zero or absorbed into the declared
+background.  For the two-flavor four-source coefficient, abbreviating
+\(\Delta_{ij}:=(\Delta_{\rm Schur})_{ij}\), this gives the finite identity
+\begin{equation}
+\begin{aligned}
+  \det(B^{0}+\Delta_{\rm Schur})
+  &=
+  \det B^{0}
+  +
+  B^{0}_{22}\Delta_{11}
+  +
+  B^{0}_{11}\Delta_{22}
+  -
+  B^{0}_{21}\Delta_{12}
+  -
+  B^{0}_{12}\Delta_{21}
+  +
+  \det\Delta_{\rm Schur}.
+\end{aligned}
+  \label{eq:instanton-source-schur-determinant-expansion}
+\end{equation}
+Thus a source-independent determinant constant cannot calibrate this effect.
+The correction depends on the selected external source through the
+zero-to-nonzero and nonzero-to-zero couplings and on the same nonzero-mode
+propagator that appears in the fluctuation determinant.
+
+If, on the retained window, \(|B^{0}_{ij}|\le L\) and
+\(|(\Delta_{\rm Schur})_{ij}|\le\eta\), then
+\begin{equation}
+  \bigl|
+  \det(B^{0}+\Delta_{\rm Schur})-\det B^{0}
+  \bigr|
+  \le
+  4L\eta+2\eta^2 .
+  \label{eq:instanton-source-schur-determinant-bound}
+\end{equation}
+The bound is part of the same finite-window amplitude budget as the determinant
+and zero-mode rank bounds.  Dropping it is equivalent to assuming that the
+chosen source couples only to the zero-mode subspace.  That assumption is a
+source-window hypothesis, not a property of the BPST moduli space.
+\end{controlledapproximation}
+
 \begin{proposition}[Finite source-frame covariance of the light-fermion determinant]
 \label{prop:instanton-light-fermion-source-frame-covariance}
 In the setting of

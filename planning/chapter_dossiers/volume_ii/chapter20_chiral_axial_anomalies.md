@@ -385,6 +385,7 @@
 | \(R_{Af}(z),L_{fB}(z)\) | right-slot and left-slot zero-mode overlap matrices whose differentiated coefficient is \(\det R\,\det L\) |
 | \(G^{(4)}_{\eta,\Lambda,Q=1}\) | source-differentiated finite-regulator one-instanton contribution to the smeared four-fermion amplitude |
 | \(Z_0,Z_2,Z_4,\Gamma^{(4),{\rm conn}}_{1,\Lambda}\) | finite instanton source-polynomial coefficients and the connected four-source coefficient extracted from \(\log Z_{\rm src}\), including lower two-source determinant subtraction |
+| \(\Delta_{\rm Schur},K_{0{\rm n}},K_{{\rm nn}},K_{{\rm n}0}\) | source-dependent zero/nonzero-mode Schur correction to the effective zero-mode source matrix, controlled by the same finite nonzero-mode propagator as the fluctuation determinant |
 | \(h_\rho(y),\widehat h_\rho(q),M_2(R)\) | normalized BPST zero-mode density radial envelope, momentum form factor \(zK_1(z)\), and truncated second moment in the local-vertex expansion |
 | \(F_{\rm zm}(t)\) | individual singular-gauge BPST fermion zero-mode slot form factor, \(F_{\rm zm}(t)=-t\partial_t(I_0K_0-I_1K_1)\) with \(t=\rho|p|/2\) |
 | \(\mathcal P\) | total right-minus-left external momentum carried by a plane-wave instanton four-fermion source coefficient |
@@ -1777,3 +1778,13 @@
   is quoted.  The BPST companion now checks the Grassmann sign, the
   mass-background subtraction, the rank-one lower-source negative control, and
   a finite residual bound for the extraction formula.
+- 2026-06-05 issue #597 source-dependent Schur correction pass: added
+  `ca:instanton-source-schur-zero-mode-correction`, which isolates the
+  nonzero-mode propagator correction to the effective zero-mode source matrix
+  before the four-source determinant is quoted.  The block records the finite
+  \(2\times2\) determinant expansion, the \(4L\eta+2\eta^2\) stability bound,
+  and the fact that dropping the correction is a source-window hypothesis
+  rather than a BPST moduli-space property.  The BPST companion verifies the
+  finite Schur construction, determinant expansion, zero-coupling limit, and
+  negative control against replacing this source-dependent effect by a
+  universal determinant constant.

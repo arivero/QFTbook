@@ -50,6 +50,9 @@ relations
     finite connected four-source extraction in an instanton source chart uses
     the coefficient of log Z_src, so lower two-source terms contribute the
     determinant subtraction before the four-point kernel is quoted
+    source-dependent Schur corrections deform the zero-mode source determinant
+    through the nonzero-mode propagator and cannot be replaced by a universal
+    determinant constant
     a proper-time determinant residual bound gives an absolute logarithmic
     bound and a multiplicative amplitude error bound; signed cancellations of
     ghost, boson, and fermion trace remainders are rejected as valid bounds
@@ -239,7 +242,8 @@ alone mistaken for the observable coefficient, the Euclidean source coefficient
 mistaken for the physical observable after bridge residuals, omitted
 endpoint/sector budgets, the top Berezin coefficient mistaken for the
 connected four-source kernel when lower source terms are present, and signed
-physical residual cancellation.
+physical residual cancellation, and a source-dependent Schur correction
+mistaken for source-independent determinant normalization.
 Scope boundary: a pass checks finite algebra and normalization interfaces; it
 does not prove dilute-gas validity, large-size control, uniform semiclassical
 remainders, or physical hadronic matrix elements.
@@ -1618,6 +1622,76 @@ def check_fermion_determinant_zero_mode_nonzero_mode_factorization() -> None:
         "zero-mode minor independent of nonzero-mode scheme factor B",
         scheme_b * complementary_mass_cofactor / scheme_b,
         complementary_mass_cofactor,
+    )
+
+    leading_source = [
+        [Fraction(2, 5), Fraction(3, 7)],
+        [Fraction(5, 11), Fraction(7, 13)],
+    ]
+    zero_to_nonzero = [
+        [Fraction(1, 5), Fraction(1, 7)],
+        [Fraction(1, 11), Fraction(1, 13)],
+    ]
+    nonzero_operator = [[Fraction(2), Fraction(0)], [Fraction(0), Fraction(3)]]
+    nonzero_to_zero = [
+        [Fraction(1, 17), Fraction(1, 19)],
+        [Fraction(1, 23), Fraction(1, 29)],
+    ]
+    source_schur = [
+        [-entry for entry in row]
+        for row in matmul_fraction(
+            zero_to_nonzero,
+            matmul_fraction(inverse_2x2_fraction(nonzero_operator), nonzero_to_zero),
+        )
+    ]
+    exact_source_matrix = matrix_add_fraction(leading_source, source_schur)
+    determinant_shift = (
+        leading_source[1][1] * source_schur[0][0]
+        + leading_source[0][0] * source_schur[1][1]
+        - leading_source[1][0] * source_schur[0][1]
+        - leading_source[0][1] * source_schur[1][0]
+        + det_fraction(source_schur)
+    )
+    assert_equal(
+        "source Schur determinant expansion",
+        det_fraction(exact_source_matrix),
+        det_fraction(leading_source) + determinant_shift,
+    )
+    assert_equal(
+        "dropping source Schur correction changes four-source coefficient",
+        det_fraction(exact_source_matrix) == det_fraction(leading_source),
+        False,
+    )
+
+    l_bound = max(abs(entry) for row in leading_source for entry in row)
+    eta_bound = max(abs(entry) for row in source_schur for entry in row)
+    schur_error_bound = 4 * l_bound * eta_bound + 2 * eta_bound * eta_bound
+    assert_equal(
+        "source Schur determinant stability bound",
+        abs(det_fraction(exact_source_matrix) - det_fraction(leading_source))
+        <= schur_error_bound,
+        True,
+    )
+
+    second_source = [
+        [Fraction(11, 17), Fraction(13, 19)],
+        [Fraction(17, 23), Fraction(19, 29)],
+    ]
+    calibrated_constant = det_fraction(exact_source_matrix) / det_fraction(
+        leading_source
+    )
+    second_exact = matrix_add_fraction(second_source, source_schur)
+    assert_equal(
+        "source Schur correction is not a universal determinant constant",
+        calibrated_constant * det_fraction(second_source) == det_fraction(second_exact),
+        False,
+    )
+
+    zero_source_schur = [[Fraction(0), Fraction(0)], [Fraction(0), Fraction(0)]]
+    assert_equal(
+        "zero-to-nonzero source coupling hypothesis removes Schur correction",
+        det_fraction(matrix_add_fraction(leading_source, zero_source_schur)),
+        det_fraction(leading_source),
     )
 
 

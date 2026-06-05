@@ -566,7 +566,9 @@ Current checks:
   differentiated Grassmann source coefficient is nonzero, the connected
   four-source extraction rule in which lower two-source terms in a finite
   instanton source polynomial shift the coefficient of \(\log Z_{\rm src}\),
-  the BPST zero-mode
+  the source-dependent Schur correction which deforms the zero-mode source
+  determinant through the nonzero-mode propagator and cannot be replaced by a
+  universal determinant constant, the BPST zero-mode
   density-envelope momentum form factor \(zK_1(z)\), tail, and logarithmically
   sensitive second moment in the local-bilinear limit, the individual
   singular-gauge zero-mode slot form factor
