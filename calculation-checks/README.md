@@ -2835,7 +2835,9 @@ Current checks:
   helicity and evanescent-probe ledger including the five-gluon all-plus
   rational template, the bubble IBP reduction, and the bubble master
   differential-equation branch ledger, the two-master
-  threshold-mixing/monodromy and regular-boundary negative controls, plus the
+  threshold-mixing/monodromy and regular-boundary negative controls, the
+  two-letter master-transport check with noncommuting residues, branch/path
+  and cut-only boundary negative controls, plus the
   Laurent-pole virtual-to-observable assembly check separating the finite hard
   remainder, real-radiation/subtraction cancellation, finite IR-scheme
   transport, and residual comparison budget.

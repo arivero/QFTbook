@@ -27,7 +27,10 @@
   reconstruction with negative controls, a Yang--Mills MHV/all-plus rational
   term control including the five-point all-plus partial-amplitude template,
   the bubble IBP/differential equation master calculation, and a
-  finite-remainder/observable assembly layer separating reconstructed virtual
+  two-stage master-integral layer: first a local two-master threshold block,
+  then a two-letter transport audit exposing connection data, Euclidean
+  boundary constants, branch/path prescriptions, lower sectors, and the
+  finite-remainder/observable assembly that separates reconstructed virtual
   amplitudes from infrared-safe physical observables.
 - Adds Steinmann sequential-discontinuity constraints as a scoped causal
   boundary-value statement, with channel-overlap definitions, sheet/order
@@ -107,6 +110,7 @@
 | \(B(Q^2)\), \(\widehat B(x)\) | Euclidean bubble master and its four-dimensional cut-normalized physical continuation |
 | \(I_{a,b}(Q^2)\) | Euclidean one-loop bubble integral family used for IBP reduction |
 | \(\vec M\), \(A_T\), \(y_\gamma\) | local two-master threshold vector, nilpotent threshold residue, and sheet/path-labelled threshold coordinate in the multi-master differential-system model |
+| \(\vec J\), \(A_0,A_1\), \(L_0^\gamma,L_1^\gamma\) | two-letter master-transport vector, residue matrices, and path-labelled logarithmic transports in the finite master-system audit |
 | \(\Omega\), \(W_\alpha\), \(\mathcal U_\gamma\) | reduced master-integral connection, Landau-letter functions, and path-ordered transport from a Euclidean boundary point |
 | \(\mu_\perp^2\) | squared loop momentum in the \(-2\epsilon\)-dimensional complement, invisible on four-dimensional cuts |
 | \(A_4^{(0)}(1^-,2^-,3^+,4^+)\) | color-ordered tree MHV four-gluon amplitude in the spinor-helicity convention used for the gauge-theory control |
@@ -116,7 +120,7 @@
 | \(\mathbf I^{(1)}_\Lambda\) | one-loop infrared subtraction operator used to define the finite remainder in a declared regulator and finite subtraction convention |
 | \(\mathcal F^{(1)}_\Lambda\) | finite one-loop hard remainder after subtracting \(\mathbf I^{(1)}_\Lambda\mathcal A^{(0)}_\Lambda\) |
 | \(\mathcal R_\Lambda^{\rm sub}[W]\), \(\mathcal C_\Lambda^{\rm fact}[W]\) | real-emission/subtraction and factorization/matching pieces needed to assemble an infrared-safe observable for measurement \(W\) |
-| \(B_{\rm cut},B_{\rm rat},B_{\rm IBP},B_{\rm UV},B_{\rm IR/real},B_{\rm fact},B_{\rm meas}\) | residual bounds in the one-loop reconstructed-observable comparison |
+| \(B_{\rm cut},B_{\rm rat},B_{\rm IBP},B_{\rm conn},B_{\rm bc},B_{\rm branch},B_{\rm lower},B_{\rm UV},B_{\rm IR/real},B_{\rm fact},B_{\rm meas}\) | residual bounds in the one-loop reconstructed-observable comparison and master-transport audit |
 | \(s_I\) | all-incoming channel invariant \(-(\sum_{i\in I}p_i)^2\), with channel class \([I]=\{I,I^c\}\) |
 | overlapping channels | channel classes \([I]\), \([J]\) for which \(I\cap J\), \(I\setminus J\), \(J\setminus I\), and \((I\cup J)^c\) are all nonempty |
 | compatible channels | channel classes with complementary representatives that are disjoint or nested |
@@ -172,6 +176,10 @@
   physical sheet is specified by an analytic-continuation path and that
   Euclidean boundary constants are supplied independently from cut/monodromy
   data.
+- The two-letter master-transport model is a finite normalized sector used to
+  audit the data needed after IBP closure.  It checks boundary constants,
+  noncommuting residues, branch/path prescriptions, and lower-sector residuals;
+  it is not claimed to be a solved physical multi-scale integral family.
 - The finite-observable assembly assumes a declared one-loop infrared
   subtraction convention, an infrared-safe measurement or matching target,
   and a real-emission/factorization construction using the same finite
@@ -491,9 +499,11 @@
   #769: the scalar example and the MHV/all-plus helicity control close the
   first one-loop workflow and rational-term boundary.  The five-point
   all-plus template adds a genuine nonabelian one-loop partial amplitude
-  beyond four points, but full nonabelian cut-constructible state sums,
-  physical multi-scale integral-family solutions, finite-field technology,
-  color--kinematics, and higher-loop generalized cuts remain future work.
+  beyond four points, and the two-letter transport model now makes the
+  multi-master boundary/path contract explicit, but full nonabelian
+  cut-constructible state sums, solved physical multi-scale integral families,
+  finite-field technology, color--kinematics, and higher-loop generalized cuts
+  remain future work.
 
 ## Audit Notes
 
@@ -630,3 +640,13 @@
   massive-scalar unitarity data.  The companion script checks little-group
   neutrality of each trace term, all-plus weights, mass dimension, cyclic
   omitted-leg coverage, cut-invisibility, and the evanescent-probe power.
+- 2026-06-05 issue #769 master-transport pass: extended the multi-master
+  discussion beyond a local threshold block by adding a two-letter transport
+  audit.  The pass records a reduced Fuchsian system with noncommuting
+  nilpotent residues, Euclidean boundary constants, separate \(x=0\) and
+  \(x=1\) discontinuities, a cut-invisible boundary direction, path-order
+  sensitivity, and a physical-observable residual budget with connection,
+  boundary, branch, and lower-sector terms.  The companion script checks the
+  exact rational transport, the boundary ambiguity, the second-order
+  commutator contribution, and underbudgeting when branch/path or boundary
+  residuals are omitted.

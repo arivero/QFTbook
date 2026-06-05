@@ -3,12 +3,13 @@
 
 The companion section in Volume II, Chapter 6 develops the bridge from
 Cutkosky discontinuities to generalized cuts, scalar-integral reconstruction,
-IBP reduction, and a master-integral differential equation.  This script
+IBP reduction, and master-integral differential equations.  This script
 checks the exact algebraic ledger behind the worked massless phi^4 example
 and the one-loop bubble family, then adds finite helicity and regulator
 bookkeeping for the Yang-Mills MHV/all-plus control examples, including the
 five-gluon all-plus rational template.  It also checks a finite two-master
-threshold-mixing model and the finite Laurent-pole ledger that turns a
+threshold-mixing model, a two-letter master-transport model with boundary and
+branch negative controls, and the finite Laurent-pole ledger that turns a
 reconstructed virtual amplitude into a finite observable only after infrared
 subtraction, real radiation, and scheme transport have been assembled.
 
@@ -18,7 +19,8 @@ especially the phi^4 cut reconstruction, the negative controls for incomplete
 cut sets and four-dimensional blind spots, the bubble IBP identity, and the
 bubble master differential equation, plus the gauge-theory MHV box and
 all-plus rational-term comparison, the local two-master threshold-mixing
-datum in a Fuchsian differential system, and the virtual-to-observable finite
+datum in a Fuchsian differential system, the two-letter transport/boundary
+audit for a reduced master sector, and the virtual-to-observable finite
 remainder assembly; additionally, the five-point all-plus rational amplitude
 has the correct little-group weights, mass dimension, cyclic term coverage,
 and strict four-dimensional cut invisibility.
@@ -31,8 +33,10 @@ a finite four-gluon helicity enumeration for all-plus two-particle cuts;
 finite spinor-bracket power counting and helicity-cut enumeration for the
 five-gluon all-plus rational template;
 nilpotent rational matrix algebra for threshold monodromy and regular
-boundary constants; Laurent-pole arithmetic for virtual/real infrared
-cancellation and finite scheme transport.
+boundary constants; noncommuting two-letter residue algebra for first-order
+transport, path-order sensitivity, and cut-invisible boundary shifts;
+Laurent-pole arithmetic for virtual/real infrared cancellation and finite
+scheme transport.
 Imported assumptions: dimensional regularization, the standard massless
 two-particle phase-space normalization with the common factor of pi stripped
 off, the Feynman-parameter gamma-function form of the bubble master, and the
@@ -47,7 +51,8 @@ to strict four-dimensional two-particle cuts but visible to a nonzero
 mu_perp^2 massive-scalar probe, verifies the same rational blind spot at five
 points, and rejects virtual-only pole cancellation, omitted rational finite
 remainders, diagonal one-master threshold shortcuts, cut-only boundary
-reconstruction, and untransported finite IR-scheme shifts.
+reconstruction, branch/path omission in a two-letter master transport, and
+untransported finite IR-scheme shifts.
 Scope boundary: a pass checks the finite reconstruction and reduction
 bookkeeping; it does not compute a nonabelian helicity amplitude from Feynman
 graphs, prove unitarity from Wightman axioms, or solve a physical
@@ -134,6 +139,13 @@ def matrix_mul(left: Matrix, right: Matrix) -> Matrix:
             sum(left[row][k] * right[k][col] for k in range(len(right)))
             for col in range(len(right[0]))
         ]
+        for row in range(len(left))
+    ]
+
+
+def matrix_sub(left: Matrix, right: Matrix) -> Matrix:
+    return [
+        [left[row][col] - right[row][col] for col in range(len(left[0]))]
         for row in range(len(left))
     ]
 
@@ -577,6 +589,131 @@ def check_two_master_threshold_mixing() -> None:
     )
 
 
+def check_two_letter_master_transport() -> None:
+    a0: Matrix = [
+        [Fraction(0), Fraction(1)],
+        [Fraction(0), Fraction(0)],
+    ]
+    a1: Matrix = [
+        [Fraction(0), Fraction(0)],
+        [Fraction(1), Fraction(0)],
+    ]
+    zero_matrix: Matrix = [
+        [Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0)],
+    ]
+    assert_equal(
+        "x-letter residue is nilpotent",
+        matrix_mul(a0, a0),
+        zero_matrix,
+    )
+    assert_equal(
+        "one-minus-x residue is nilpotent",
+        matrix_mul(a1, a1),
+        zero_matrix,
+    )
+
+    commutator = matrix_sub(matrix_mul(a0, a1), matrix_mul(a1, a0))
+    assert_equal(
+        "two-letter residue commutator",
+        commutator,
+        [
+            [Fraction(1), Fraction(0)],
+            [Fraction(0), Fraction(-1)],
+        ],
+    )
+
+    epsilon = Fraction(1, 11)
+    l0 = Fraction(3, 5)
+    l1 = Fraction(-4, 9)
+    boundary = [Fraction(2, 3), Fraction(5, 7)]
+    x_disc_stripped = matrix_vector_mul(a0, boundary)
+    one_minus_x_disc_stripped = matrix_vector_mul(a1, boundary)
+    assert_equal(
+        "x-letter stripped discontinuity",
+        x_disc_stripped,
+        [Fraction(5, 7), Fraction(0)],
+    )
+    assert_equal(
+        "one-minus-x stripped discontinuity",
+        one_minus_x_disc_stripped,
+        [Fraction(0), Fraction(2, 3)],
+    )
+
+    first_order_action = vector_add(
+        vector_scale(l0, x_disc_stripped),
+        vector_scale(l1, one_minus_x_disc_stripped),
+    )
+    transported = vector_add(boundary, vector_scale(epsilon, first_order_action))
+    assert_equal(
+        "first-order two-letter transport",
+        transported,
+        [Fraction(163, 231), Fraction(1429, 2079)],
+    )
+    assert_equal(
+        "dlog-x differential equation at first order",
+        vector_scale(epsilon, x_disc_stripped),
+        matrix_vector_mul(a0, vector_scale(epsilon, boundary)),
+    )
+    assert_equal(
+        "dlog-one-minus-x differential equation at first order",
+        vector_scale(epsilon, one_minus_x_disc_stripped),
+        matrix_vector_mul(a1, vector_scale(epsilon, boundary)),
+    )
+
+    kernel_shift = [Fraction(0), Fraction(1, 5)]
+    shifted_boundary = vector_add(boundary, kernel_shift)
+    assert_equal(
+        "same one-minus-x cut after kernel boundary shift",
+        matrix_vector_mul(a1, shifted_boundary),
+        one_minus_x_disc_stripped,
+    )
+    amplitude_weights = [Fraction(7, 13), Fraction(-5, 11)]
+    assert_true(
+        "cut-only boundary reconstruction misses finite master value",
+        dot(amplitude_weights, shifted_boundary) != dot(amplitude_weights, boundary),
+    )
+
+    path_order_difference = vector_scale(
+        l0 * l1,
+        matrix_vector_mul(commutator, boundary),
+    )
+    assert_equal(
+        "second-order path-order commutator contribution",
+        path_order_difference,
+        [Fraction(-8, 45), Fraction(4, 21)],
+    )
+    assert_true(
+        "forgetting path ordering loses a nonzero master contribution",
+        path_order_difference != [Fraction(0), Fraction(0)],
+    )
+
+    branch_path_residual = abs(
+        dot(amplitude_weights, vector_scale(epsilon * l0, x_disc_stripped))
+    )
+    boundary_residual = abs(dot(amplitude_weights, kernel_shift))
+    residuals = {
+        "connection": Fraction(1, 89),
+        "boundary": boundary_residual,
+        "branch_path": branch_path_residual,
+        "lower_sector": Fraction(1, 97),
+        "UV_IR": Fraction(1, 101),
+        "observable": Fraction(1, 103),
+    }
+    exact_difference = sum(residuals.values(), Fraction(0))
+    majorant = sum(abs(value) for value in residuals.values())
+    assert_equal(
+        "two-letter transport residual telescope",
+        exact_difference,
+        majorant,
+    )
+    underbudget = majorant - residuals["boundary"] - residuals["branch_path"]
+    assert_true(
+        "omitting boundary and branch residuals underbudgets transport comparison",
+        exact_difference > underbudget,
+    )
+
+
 def check_virtual_to_observable_assembly() -> None:
     tree = Fraction(3, 2)
     ir_operator = (Fraction(-5, 3), Fraction(7, 11))
@@ -680,6 +817,7 @@ def main() -> None:
     check_bubble_ibp_identity()
     check_branch_and_landau_ledger()
     check_two_master_threshold_mixing()
+    check_two_letter_master_transport()
     check_virtual_to_observable_assembly()
     print("All generalized unitarity and one-loop reduction checks passed.")
 

@@ -2648,6 +2648,126 @@ physical sheet, or the ultraviolet and infrared subtractions needed to turn
 the master vector into a physical amplitude or observable.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Two-letter master transport and cut
+incompleteness]
+\label{ca:two-letter-master-transport}
+The local threshold block is only the first diagnostic.  A master integral used
+in a physical amplitude is a boundary-value problem on a punctured kinematic
+space, not just a discontinuity at one puncture.  A minimal finite model already
+shows the extra data.  After lower sectors have been separated, suppose that a
+two-master vector \(\vec J=(J_1,J_2)^{\mathsf T}\) is normalized so that, to
+first order in the dimensional regulator,
+\begin{equation}
+  \dd\vec J
+  =
+  \epsilon\bigl(A_0\,\dd\log x+A_1\,\dd\log(1-x)\bigr)\vec J
+  +O(\epsilon^2),
+  \qquad
+  A_0=
+  \begin{pmatrix}
+    0&1\\
+    0&0
+  \end{pmatrix},
+  \quad
+  A_1=
+  \begin{pmatrix}
+    0&0\\
+    1&0
+  \end{pmatrix}.
+  \label{eq:two-letter-master-transport-system}
+\end{equation}
+The letters \(x\) and \(1-x\) stand for two Landau divisors of the reduced
+family.  The model is not meant to identify a unique graph family; it isolates
+the information that any such family must provide after the IBP reduction has
+closed.  The residues are separately nilpotent, but they do not commute:
+\[
+  A_0^2=A_1^2=0,
+  \qquad
+  [A_0,A_1]=
+  \begin{pmatrix}
+    1&0\\
+    0&-1
+  \end{pmatrix}.
+\]
+Let \(\vec C\) be the Euclidean boundary vector at a base point, and let
+\(L_0^\gamma,L_1^\gamma\) denote the branch-labelled logarithmic changes along
+the continuation path \(\gamma\).  The transported master vector is
+\begin{equation}
+  \vec J_\gamma(x)
+  =
+  \Bigl[
+    \mathbf 1+\epsilon\bigl(A_0L_0^\gamma+A_1L_1^\gamma\bigr)
+  \Bigr]\vec C
+  +O(\epsilon^2).
+  \label{eq:two-letter-master-first-order-solution}
+\end{equation}
+Thus the two elementary discontinuities, with \(2\pi\ii\) stripped, are
+\begin{equation}
+  \frac{1}{2\pi\ii}\operatorname{Disc}_{x=0}\vec J_\gamma
+  =
+  \epsilon A_0\vec C+O(\epsilon^2),
+  \qquad
+  \frac{1}{2\pi\ii}\operatorname{Disc}_{x=1}\vec J_\gamma
+  =
+  \epsilon A_1\vec C+O(\epsilon^2).
+  \label{eq:two-letter-master-stripped-discontinuities}
+\end{equation}
+The second equation does not determine \(\vec C\).  For example
+\(\delta\vec C=(0,\delta)^{\mathsf T}\) lies in \(\ker A_1\), so
+\(A_1(\vec C+\delta\vec C)=A_1\vec C\), while a reduced amplitude
+\[
+  \mathcal A_{\rm sec}(x)
+  =
+  \vec h(x)^{\mathsf T}\vec J_\gamma(x)+\mathcal P_{\rm UV}(x)
+\]
+changes by \(\vec h(x)^{\mathsf T}\delta\vec C+O(\epsilon)\) unless the
+coefficient vector happens to annihilate that boundary direction.  A
+single-channel cut is therefore a constraint on the master solution, not a
+replacement for Euclidean boundary data.
+
+The branch path is also part of the answer.  At the next order, even this
+two-letter system remembers the order in which the letters are crossed:
+\[
+  \bigl(\vec J_{\gamma_{0\to1}}-\vec J_{\gamma_{1\to0}}\bigr)_{\epsilon^2}
+  =
+  \pm\,\epsilon^2 L_0^\gamma L_1^\gamma[A_0,A_1]\vec C,
+\]
+with the sign fixed by the convention for composing the two elementary
+transports.  Hence a master-integral solution suitable for a physical amplitude
+must expose the alphabet, residue matrices, Euclidean constants, branch
+prescription, path-ordered transport, lower-sector inhomogeneous terms, and the
+UV/IR subtractions that sit outside the homogeneous master system.
+
+Combining the sector with an infrared-safe measurement \(W\) gives a useful
+comparison form:
+\begin{equation}
+  \begin{aligned}
+  \mathcal Q^{(1)}[W]
+  &=
+  2\,\Re\,
+  \bigl\langle
+    \mathcal A^{(0)},
+    \vec h^{\mathsf T}\vec J_\gamma+\mathcal P_{\rm UV}
+    -\mathbf I^{(1)}\mathcal A^{(0)}
+  \bigr\rangle_W
+  +\mathcal R^{\rm sub}[W]+\mathcal C^{\rm fact}[W],\\
+  |\Delta\mathcal Q|
+  &\le
+  B_{\rm cut}+B_{\rm rat}+B_{\rm IBP}+B_{\rm conn}+B_{\rm bc}\\
+  &\quad
+  +B_{\rm branch}+B_{\rm lower}+B_{\rm UV}+B_{\rm IR/real}\\
+  &\quad
+  +B_{\rm fact}+B_{\rm meas}.
+  \end{aligned}
+  \label{eq:two-letter-master-observable-bound}
+\end{equation}
+The new terms \(B_{\rm conn},B_{\rm bc},B_{\rm branch},B_{\rm lower}\) are not
+decorations: they measure errors in the reduced connection, Euclidean boundary
+constants, analytic continuation, and inhomogeneous lower sectors.  Omitting
+them silently turns a cut reconstruction into a stronger statement than the cut
+calculation has established.
+\end{controlledapproximation}
+
 \begin{warning}[What equality on cuts does and does not mean]
 \label{warn:cut-equality-integrand-reduction-boundary}
 Cut equality, integrand equality, equality modulo surface terms, equality
