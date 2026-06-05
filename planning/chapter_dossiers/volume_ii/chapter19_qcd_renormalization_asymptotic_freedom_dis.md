@@ -266,11 +266,12 @@ The chapter must define and derive:
   the Mellin eigenvalue
   \(\chi(\gamma)=2\psi(1)-\psi(\gamma)-\psi(1-\gamma)\), TMDs as
   soft-subtracted transverse light-ray matrix elements with Collins--Soper
-  rapidity evolution, Drell--Yan as a timelike current-current Wightman tensor
-  with an integrated two-PDF collinear factorization coordinate, transform-space
-  two-leg RG cancellation, an explicit tested Wightman-to-factorization
-  residual budget, past-pointing TMD staples, and an explicit Glauber-status
-  datum,
+  rapidity evolution, a matched small-\(q_T\) tested spectrum with the \(Y\)-term
+  defined as fixed order minus the expanded TMD singular coordinate, Drell--Yan
+  as a timelike current-current Wightman tensor with an integrated two-PDF
+  collinear factorization coordinate, transform-space two-leg RG cancellation,
+  an explicit tested Wightman-to-factorization residual budget, past-pointing
+  TMD staples, and an explicit Glauber-status datum,
   small-\(q_\perp\) color-singlet TMD factorization data, GPDs as off-forward
   light-ray matrix elements, GPD polynomiality from local twist-two
   covariance, logarithmic scaling violation, and the endpoint/large-spin cusp
@@ -1304,3 +1305,12 @@ The chapter must define and derive:
   exclusive scaling, PDF setup, and title-level candidates are grouped under
   their existing ledger rows or excluded as large-\(N_c\) expectation-value
   factorization.
+- 2026-06-05 issue #630 TMD matching pass: added the matched small-\(q_T\)
+  tested-spectrum window.  The new block separates the resummed singular TMD
+  coordinate from the fixed-order \(Y\)-term
+  `fixed order - expanded singular`, records rapidity-split cancellation under
+  `zeta_A zeta_B=Q^4`, and budgets TMD construction, \(Y\)-term matching,
+  Glauber, power, regulator, and large-\(b_T\) residuals.  The companion
+  `qcd_tmd_gpd_checks.py` now rejects unsubtracted fixed-order double counting,
+  mismatched singular-subtraction schemes, and one-sided Collins--Soper
+  cancellation shortcuts.

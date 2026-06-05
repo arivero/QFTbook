@@ -11101,6 +11101,101 @@ operator representation of Glauber exchange, and the topology of the
 power-remainder estimate have all been supplied.
 \end{hypothesis}
 
+\begin{controlledapproximation}[Matched small-\(q_\perp\) TMD spectrum]
+\label{ca:qcd-tmd-y-term-matching-window}
+The TMD formula in
+Hypothesis~\ref{hyp:qcd-tmd-factorization-hypothesis} controls only the
+singular small-\(q_\perp\) coordinate.  A physical prediction on a tested
+transverse-momentum spectrum also needs the fixed-order large-\(q_\perp\)
+remainder.  Let \(\varphi(q_\perp)\) be a smooth compactly supported test
+function in a color-singlet Drell--Yan or vector-boson window, and write
+\[
+  \mathfrak T_Q[\varphi]
+  =
+  \left\langle
+    \frac{\dd\sigma}{\dd Q^2\dd^2q_\perp},
+    \varphi
+  \right\rangle
+\]
+for the exact tested spectrum in a finite regulator.  At fixed perturbative
+order \(N\), let \(\sigma_{\rm FO}^{(N)}\) denote the ordinary fixed-order
+coordinate and let
+\((\sigma_{\rm sing}^{\rm TMD})_{[N]}\) be the expansion of the TMD singular
+coordinate through the same order, in the same ultraviolet, rapidity, and
+finite-subtraction scheme.  The \(Y\)-term is the tested distribution
+\begin{equation}
+  Y^{(N)}[\varphi]
+  :=
+  \left\langle
+    \sigma_{\rm FO}^{(N)}
+    -
+    (\sigma_{\rm sing}^{\rm TMD})_{[N]},
+    \varphi
+  \right\rangle .
+  \label{eq:qcd-tmd-y-term-tested-definition}
+\end{equation}
+The matched coordinate is therefore
+\begin{equation}
+  \mathcal M_{\rm TMD}^{(N)}[\varphi]
+  :=
+  \left\langle
+    \sigma_{\rm sing}^{\rm TMD,resum},
+    \varphi
+  \right\rangle
+  +
+  Y^{(N)}[\varphi].
+  \label{eq:qcd-tmd-matched-tested-spectrum}
+\end{equation}
+This subtraction is load-bearing: omitting
+\((\sigma_{\rm sing}^{\rm TMD})_{[N]}\) counts the singular fixed-order terms
+once in the resummed TMD coordinate and again inside \(\sigma_{\rm FO}^{(N)}\).
+
+Rapidity scale cancellation is part of the same tested statement.  Parametrize
+\(\zeta_A=Q^2\ee^{2\eta}\), \(\zeta_B=Q^2\ee^{-2\eta}\).  If the two incoming
+TMDs use the same Collins--Soper kernel in the color-singlet channel and the
+hard factor has no residual \(\eta\)-dependence, then
+\begin{equation}
+  \partial_\eta
+  \log\!\left[
+    H(Q,\mu)\,
+    F_{i/A}(b_\perp;\mu,\zeta_A)\,
+    F_{j/B}(b_\perp;\mu,\zeta_B)
+  \right]
+  =
+  2\mathcal D_i(b_\perp;\mu)-2\mathcal D_j(b_\perp;\mu).
+  \label{eq:qcd-tmd-rapidity-split-derivative}
+\end{equation}
+For the diagonal channel this vanishes.  In a mixing problem the corresponding
+statement is a cancellation of rapidity anomalous-dimension matrices in the
+paired hard/beam/soft coordinate.  If the kernels are mismatched, if the product
+\(\zeta_A\zeta_B=Q^4\) is not held fixed, or if the \(Y\)-term is evaluated in a
+different subtraction scheme, the residual rapidity dependence is a matching
+error, not a new physical dependence of the color-singlet spectrum.
+
+A theorem-level matched TMD prediction is the assertion that
+\begin{equation}
+  \left|
+  \mathfrak T_Q[\varphi]
+  -
+  \mathcal M_{\rm TMD}^{(N)}[\varphi]
+  \right|
+  \le
+  \epsilon_{\rm TMD}[\varphi]
+  +\epsilon_Y[\varphi]
+  +\epsilon_{\rm G}[\varphi]
+  +\epsilon_{\rm pwr}[\varphi]
+  +\epsilon_{\rm reg}[\varphi],
+  \label{eq:qcd-tmd-matched-spectrum-residual-bound}
+\end{equation}
+where the terms respectively record the singular-coordinate construction,
+fixed-order \(Y\)-term truncation and matching, Glauber status, power
+corrections such as \(q_\perp/Q\) and hadron masses, and regulator or
+large-\(b_\perp\) residuals.  The finite Collins--Soper checks above verify only
+the scale-coordinate algebra inside this statement; they do not prove the
+existence of the exact QCD decomposition or the smallness of the residuals in
+\eqref{eq:qcd-tmd-matched-spectrum-residual-bound}.
+\end{controlledapproximation}
+
 \section{Drell--Yan Factorization and Glauber Status}
 \label{sec:qcd-drell-yan-glauber-status}
 

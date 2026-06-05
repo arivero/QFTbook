@@ -8,7 +8,11 @@ The checks verify algebraic facts used in the monograph text:
 2. Finite TMD scheme changes preserve that relation.
 3. Holding zeta_A zeta_B fixed cancels the rapidity evolution of a product of
    two TMDs with the same Collins-Soper kernel.
-4. Contracting a spin-N local twist-two matrix element with a lightlike vector
+4. A tested small-q_T matched spectrum uses
+   Y = fixed order - expanded TMD singular coordinate; adding fixed order
+   without this subtraction double counts the singular terms, and evaluating
+   the subtraction in a mismatched scheme leaves a finite residual.
+5. Contracting a spin-N local twist-two matrix element with a lightlike vector
    produces a polynomial of degree at most N in the skewness xi.
 """
 
@@ -68,6 +72,61 @@ def check_two_hadron_rapidity_cancellation() -> None:
     assert_zero("fixed-product rapidity cancellation", log_product_derivative)
 
 
+def check_tmd_y_term_matching_window() -> None:
+    s0, s1, regular, resummed, residual, delta = sp.symbols(
+        "s0 s1 regular resummed residual delta"
+    )
+    singular_expansion = s0 + s1
+    fixed_order = singular_expansion + regular
+    y_term = fixed_order - singular_expansion
+    matched = resummed + y_term
+    exact_tested_spectrum = resummed + regular + residual
+
+    assert_zero(
+        "TMD Y-term removes fixed-order singular double count",
+        y_term - regular,
+    )
+    assert_zero(
+        "TMD matched tested spectrum residual",
+        exact_tested_spectrum - matched - residual,
+    )
+
+    naive_no_subtraction = resummed + fixed_order
+    assert_zero(
+        "TMD naive matching double counts singular expansion",
+        naive_no_subtraction - matched - singular_expansion,
+    )
+    if sp.simplify(naive_no_subtraction - matched) == 0:
+        raise AssertionError("unsubtracted fixed-order matching should not equal matched TMD coordinate")
+
+    mismatched_singular_scheme = singular_expansion + delta
+    mismatched_y = fixed_order - mismatched_singular_scheme
+    mismatched_matched = resummed + mismatched_y
+    assert_zero(
+        "TMD mismatched singular subtraction leaves finite scheme residual",
+        matched - mismatched_matched - delta,
+    )
+
+    eta = sp.symbols("eta")
+    kernel_a, kernel_b = sp.symbols("kernel_a kernel_b")
+    ell_zeta_a = sp.symbols("ell_zeta_a_0") + 2 * eta
+    ell_zeta_b = sp.symbols("ell_zeta_b_0") - 2 * eta
+    rapidity_derivative = (
+        kernel_a * sp.diff(ell_zeta_a, eta)
+        + kernel_b * sp.diff(ell_zeta_b, eta)
+    )
+    assert_zero(
+        "TMD diagonal rapidity split cancellation",
+        rapidity_derivative.subs(kernel_b, kernel_a),
+    )
+    assert_zero(
+        "TMD rapidity split mismatch residual",
+        rapidity_derivative - 2 * (kernel_a - kernel_b),
+    )
+    if sp.simplify(rapidity_derivative.subs(kernel_b, 0)) == 0:
+        raise AssertionError("dropping one Collins-Soper kernel should leave rapidity dependence")
+
+
 def check_gpd_polynomiality_degree() -> None:
     xi = sp.symbols("xi")
     for spin in range(1, 8):
@@ -86,6 +145,7 @@ def check_gpd_polynomiality_degree() -> None:
 def main() -> None:
     check_collins_soper_integrability()
     check_two_hadron_rapidity_cancellation()
+    check_tmd_y_term_matching_window()
     check_gpd_polynomiality_degree()
     print("All QCD TMD rapidity and GPD polynomiality checks passed.")
 
