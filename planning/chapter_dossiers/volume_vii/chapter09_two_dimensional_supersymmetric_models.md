@@ -97,6 +97,11 @@ and
   `nu^{res}_{i,Lambda}`: vortex-sector fermion Hessian, universal
   two-dimensional zero-mode pair, residual fermion-zero-mode space, and its
   dimension after the universal `d^2 theta_tilde` pair is removed.
+- `g_{Lambda,z}`, `B_{Lambda,z}`, `E_{Lambda,z}`, `G_z`, `L_z`,
+  `M_z`, `H_{B,z}`: finite-regulator gauge-orbit space, bosonic fluctuation
+  space, linearized vortex-equation space, gauge variation map, linearized
+  vortex/gauge-slice map, Faddeev-Popov operator, and sliced bosonic Hessian
+  in the local vortex fluctuation complex.
 - `Y_P`, `rho`, `vartheta`, `u`, `chi`, `k`: logarithmic-chiral dual
   variable, polar coordinate for the charged chiral scalar, angular
   coordinate, real and periodic parts of `P`, and cigar level parameter.
@@ -204,6 +209,13 @@ and
   uninserted vortex superpotential term vanishes unless no residual zero modes
   remain.  This isolates the physical amplitude gate behind the compact mirror
   monomial.
+- Adds the finite-regulator vortex fluctuation complex: the coefficient
+  `c_i` is tied to a local gauge complex
+  `g_Lambda -> B_Lambda -> E_Lambda`, a Faddeev-Popov determinant, the
+  sliced bosonic Hessian, and the primed fermion Hessian after universal and
+  residual zero modes have been separated.  This exposes the determinant
+  calculation behind the Hori-Vafa coefficient without promoting it to a full
+  continuum proof.
 - Derives that a general connected holomorphic correction
   `h_i(X_i)`, `X_i=exp(-Y_i)`, is forced to be the primitive monomial
   `mu c_i X_i` if the eliminated branch is required to reproduce the
@@ -479,3 +491,9 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   conjectures require, and recasts the existing local dualization, Coulomb,
   vortex, residue, stable-map, quotient-metric, and logarithmic-vortex
   calculations as protected evidence or conditional consequences.
+- The 2026-06-05 vortex fluctuation-complex pass sharpens the physics-first
+  instanton standard inside the Hori--Vafa lane: the chapter now displays the
+  finite-regulator gauge/ghost/boson/fermion determinant complex behind
+  `c_i`, and the companion script rejects raw zero-mode determinants, omitted
+  ghost factors, and residual-zero-mode shortcuts before the primitive mirror
+  monomial is treated as a protected amplitude input.

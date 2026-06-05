@@ -2515,6 +2515,9 @@ Current checks:
   invariant Coulomb scale while bare-FI and uncompensated-\(\mu\) shortcuts
   fail, the
   primitive-monomial selection forced by exact Coulomb matching, the
+  finite-regulator vortex fluctuation-complex gate checking
+  gauge-complex ranks, zero-mode removal before determinants, the ghost
+  factor in the gauge-slice density, and residual-zero-mode rejection, the
   single-vortex amplitude assembly with zero-mode removal, determinant-power
   bookkeeping, saturated twisted-\(F\)-term zero modes, unsaturated-zero-mode
   vanishing, and FI-coordinate normalization shifts, the retained-window

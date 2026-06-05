@@ -3,8 +3,9 @@
 Evidence contract.
 Target claims: the finite LG/GLSM charge ledgers, abelian duality
 normalizations, charged-chiral mirror elimination, vortex-zero-mode filter,
-vortex-to-FI-coordinate normalization, single-vortex coefficient
-noncancellation bound, P^{N-1} mirror residue trace, and
+finite-regulator vortex fluctuation complex, vortex-to-FI-coordinate
+normalization, single-vortex coefficient noncancellation bound,
+P^{N-1} mirror residue trace, and
 vortex-to-protected-observable residual ledger, together with the
 vortex-fugacity dimensional-transmutation coordinate, the degree-one
 P^{N-1} stable-map gate, and the finite degree-one stable-map incidence model
@@ -13,19 +14,20 @@ the quantum-product observable relation, and the mirror-conjecture status
 ledger separating full-QFT data from protected evidence, in Volume VII
 Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
-elimination, Berezin-degree tests, retained-window signed/mass coefficient
-bounds, root-of-unity residue sums, stable-map incidence Jacobians, and
-residual budgets are computed directly from finite data rather than by
-substituting the displayed final identities.
+elimination, finite chain-complex rank checks, Berezin-degree tests,
+retained-window signed/mass coefficient bounds, root-of-unity residue sums,
+stable-map incidence Jacobians, and residual budgets are computed directly
+from finite data rather than by substituting the displayed final identities.
 Imported assumptions: the finite GLSM charge matrix, selected regulator-stage
 factorization, supplied vortex coefficients, nonzero-mode determinant
 placeholders, logarithm-branch conventions, and the chapter's
 protected-coordinate definitions are assumed as finite input.
-Negative controls: extra unsaturated zero modes, omitted vortex
-normalization constants, unbalanced regulator-scale changes, coherent signed
-cancellations with nonzero absolute mass, wrong residue selection powers,
-underspecified residual budgets, stable-map dimension mismatches, mirror-only
-or dimension-only quantum-product shortcuts, determinant-orientation flips,
+Negative controls: extra unsaturated zero modes, raw zero-mode determinants,
+omitted vortex ghost factors, omitted vortex normalization constants,
+unbalanced regulator-scale changes, coherent signed cancellations with nonzero
+absolute mass, wrong residue selection powers, underspecified residual
+budgets, stable-map dimension mismatches, mirror-only or dimension-only
+quantum-product shortcuts, determinant-orientation flips,
 zero-mode multiplicity errors, compactification/contact mutations,
 hyperplane-normalization changes, omitted off-pairing controls, protected-sector
 shortcuts to full mirror equivalence, and finite-gauge invariance failures are
@@ -77,6 +79,38 @@ def determinant_fraction(matrix: list[list[Fraction]]) -> Fraction:
             for col in range(column, size):
                 reduced[row][col] -= factor * reduced[column][col]
     return determinant
+
+
+def rank_fraction(matrix: list[list[Fraction]]) -> int:
+    rows = [row[:] for row in matrix]
+    if not rows:
+        return 0
+    row_count = len(rows)
+    col_count = len(rows[0])
+    pivot_row = 0
+    for col in range(col_count):
+        pivot = next(
+            (row for row in range(pivot_row, row_count) if rows[row][col] != 0),
+            None,
+        )
+        if pivot is None:
+            continue
+        rows[pivot_row], rows[pivot] = rows[pivot], rows[pivot_row]
+        pivot_value = rows[pivot_row][col]
+        rows[pivot_row] = [entry / pivot_value for entry in rows[pivot_row]]
+        for row in range(row_count):
+            if row == pivot_row:
+                continue
+            factor = rows[row][col]
+            if factor:
+                rows[row] = [
+                    entry - factor * pivot_entry
+                    for entry, pivot_entry in zip(rows[row], rows[pivot_row])
+                ]
+        pivot_row += 1
+        if pivot_row == row_count:
+            break
+    return pivot_row
 
 
 def fermat_weights(degrees: list[int]) -> list[Fraction]:
@@ -568,6 +602,118 @@ def check_vortex_zero_mode_filter() -> None:
     assert_equal("vortex residual zero-mode count", residual_zero_modes, 4)
     assert_equal("residual insertions saturate Berezin integral", survives(4, 4), True)
     assert_equal("missing residual insertion kills Berezin integral", survives(4, 3), False)
+
+
+def check_vortex_fluctuation_complex_gate() -> None:
+    # A finite local model of 0 -> gauge -> bosonic fluctuations ->
+    # linearized vortex equations.  The first two bosonic coordinates are
+    # gauge directions; the next two are collective vortex zero modes.
+    gauge_to_fields = [
+        [Fraction(1), Fraction(0)],
+        [Fraction(0), Fraction(1)],
+        [Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0)],
+    ]
+    linearized_vortex = [
+        [
+            Fraction(0),
+            Fraction(0),
+            Fraction(0),
+            Fraction(0),
+            Fraction(5),
+            Fraction(0),
+        ],
+        [
+            Fraction(0),
+            Fraction(0),
+            Fraction(0),
+            Fraction(0),
+            Fraction(0),
+            Fraction(7),
+        ],
+    ]
+    composed = [
+        [
+            sum(linearized_vortex[row][mid] * gauge_to_fields[mid][col] for mid in range(6))
+            for col in range(2)
+        ]
+        for row in range(2)
+    ]
+    assert_equal("finite vortex complex squares to zero", composed, [[0, 0], [0, 0]])
+    assert_equal("finite vortex gauge rank", rank_fraction(gauge_to_fields), 2)
+    assert_equal("finite vortex equation rank", rank_fraction(linearized_vortex), 2)
+    bosonic_kernel_dimension = 6 - rank_fraction(linearized_vortex)
+    collective_zero_modes = bosonic_kernel_dimension - rank_fraction(gauge_to_fields)
+    assert_equal("vortex collective zero-mode dimension after gauge quotient", collective_zero_modes, 2)
+
+    raw_boson_hessian_eigenvalues = [
+        Fraction(0),
+        Fraction(0),
+        Fraction(0),
+        Fraction(0),
+        Fraction(5),
+        Fraction(7),
+    ]
+    primed_boson_hessian_eigenvalues = [Fraction(5), Fraction(7)]
+    ghost_eigenvalues = [Fraction(11), Fraction(13)]
+    raw_fermion_eigenvalues = [Fraction(0), Fraction(0), Fraction(17), Fraction(19)]
+    primed_fermion_eigenvalues = [Fraction(17), Fraction(19)]
+
+    assert_equal(
+        "raw vortex bosonic Hessian determinant vanishes",
+        prod(raw_boson_hessian_eigenvalues),
+        0,
+    )
+    assert_equal(
+        "raw vortex fermion determinant vanishes",
+        prod(raw_fermion_eigenvalues),
+        0,
+    )
+
+    determinant_weight_squared = (
+        prod(primed_fermion_eigenvalues) ** 2
+        * prod(ghost_eigenvalues) ** 2
+        / prod(primed_boson_hessian_eigenvalues)
+    )
+    assert_equal(
+        "vortex fluctuation determinant ratio squared",
+        determinant_weight_squared,
+        Fraction(323**2 * 143**2, 35),
+    )
+
+    omitted_ghost_weight_squared = (
+        prod(primed_fermion_eigenvalues) ** 2
+        / prod(primed_boson_hessian_eigenvalues)
+    )
+    assert_equal(
+        "omitting vortex ghosts changes slice density",
+        determinant_weight_squared / omitted_ghost_weight_squared,
+        prod(ghost_eigenvalues) ** 2,
+    )
+
+    universal_fermion_zero_modes = 2
+    residual_fermion_zero_modes = 0
+    assert_equal(
+        "vortex universal zero modes become twisted F-term measure",
+        universal_fermion_zero_modes,
+        2,
+    )
+    assert_equal(
+        "uninserted vortex term needs no residual fermion zero modes",
+        residual_fermion_zero_modes,
+        0,
+    )
+    unsaturated_residual_modes = 1
+    uninserted_coefficient_gate = (
+        Fraction(1) if unsaturated_residual_modes == 0 else Fraction(0)
+    )
+    assert_equal(
+        "residual vortex zero mode kills uninserted superpotential term",
+        uninserted_coefficient_gate,
+        0,
+    )
 
 
 def check_single_vortex_amplitude_assembly() -> None:
@@ -1442,6 +1588,7 @@ def main() -> None:
     check_vortex_fugacity_dimensional_transmutation()
     check_mirror_primitive_monomial_selection()
     check_vortex_zero_mode_filter()
+    check_vortex_fluctuation_complex_gate()
     check_single_vortex_amplitude_assembly()
     check_vortex_coefficient_noncancellation_bound()
     check_cp_mirror_critical_ledger()

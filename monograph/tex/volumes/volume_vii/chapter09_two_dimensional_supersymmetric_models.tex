@@ -1143,6 +1143,74 @@ step proves that the regulated vortex sector has exactly the two universal
 fermion zero modes or that its determinant line has been oriented
 consistently.
 
+\begin{proposition}[Finite-regulator vortex fluctuation complex]
+\label{prop:glsm-vortex-fluctuation-complex}
+At a charge-one vortex saddle \(z\), the coefficient \(c_i\) is controlled by
+a gauge-fixed fluctuation complex, not by the vortex collective coordinates
+alone.  In a finite supersymmetric regulator, write
+\[
+  0\longrightarrow
+  \mathfrak g_{\Lambda,z}
+  \xrightarrow{\ G_z\ }
+  \mathcal B_{\Lambda,z}
+  \xrightarrow{\ L_z\ }
+  \mathcal E_{\Lambda,z}
+  \longrightarrow 0,
+  \qquad L_zG_z=0,
+\]
+where \(\mathfrak g_{\Lambda,z}\) is the infinitesimal gauge-orbit space,
+\(\mathcal B_{\Lambda,z}\) is the bosonic fluctuation space
+\((\delta A,\delta\phi)\), and \(L_z\) is the linearized vortex equation plus
+gauge-slice operator.  Let \(\mathcal M_z=G_z^\dagger G_z\) be the
+Faddeev--Popov operator on the orbit directions, let \(H_{B,z}\) be the
+bosonic Hessian on the orthogonal slice with the vortex collective zero modes
+removed, and let \(\mathcal D_{F,z}\) be the fermion Hessian with
+\(\Pi_{\rm univ}(z)\oplus K^{\rm res}_{i,\Lambda}(z)\) removed from its
+kernel.  Then the nonzero-mode factor entering
+\eqref{eq:glsm-single-vortex-coefficient-integral} is a determinant-line
+element of the form
+\begin{equation}
+  \mathcal W_{i,1,\Lambda}^{\rm nz}(z)
+  =
+  \frac{
+    \det{}' \mathcal D_{F,z}\,
+    \det{}'\mathcal M_z
+  }{
+    \bigl(\det{}'H_{B,z}\bigr)^{1/2}
+  }
+  \quad
+  \hbox{after pairing with the chosen zero-mode orientations.}
+  \label{eq:glsm-vortex-nonzero-mode-determinant-complex}
+\end{equation}
+A raw determinant over \(\mathcal B_{\Lambda,z}\) or over the full fermion
+space vanishes because it includes zero modes.  Omitting
+\(\det{}'\mathcal M_z\) changes the gauge-slice density.  Omitting the
+orientation of \(\Pi_{\rm univ}\) and \(K^{\rm res}_{i,\Lambda}\) leaves a
+line element rather than a scalar coefficient.  Thus the primitive
+Hori--Vafa monomial can be used as a protected term only after the
+finite-regulator complex, zero-mode removal, determinant-line orientation,
+and residual zero-mode saturation have been fixed.
+\end{proposition}
+
+\begin{proof}
+In finite dimensions the stationary-phase expansion first quotients the gauge
+orbit and separates the tangent directions to the vortex moduli.  Gauge
+fixing replaces the orbit volume by the Faddeev--Popov determinant
+\(\det{}'\mathcal M_z\).  The Gaussian integral over nonzero bosonic normal
+directions gives \((\det{}'H_{B,z})^{-1/2}\).  The fermion Gaussian gives
+\(\det{}'\mathcal D_{F,z}\) only after its zero modes have been removed from
+the determinant and treated as Grassmann collective coordinates.  The two
+universal fermion zero modes are identified with the
+\(d^2\widetilde\theta\) measure; any residual zero modes are paired with the
+Berezin coefficient in
+\eqref{eq:glsm-vortex-berezin-zero-mode-filter}.  Multiplying these finite
+factors gives
+\eqref{eq:glsm-vortex-nonzero-mode-determinant-complex}.  Each prime is
+load-bearing: if the bosonic collective modes or fermion zero modes are left
+inside the determinant, the determinant is zero rather than a vortex
+coefficient.
+\end{proof}
+
 \begin{proposition}[Single-vortex coefficient as a protected amplitude]
 \label{prop:glsm-single-vortex-exponential-amplitude}
 Fix one charged chiral multiplet \(\Phi_i\) in the abelian GLSM and choose a
