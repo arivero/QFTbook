@@ -25,9 +25,10 @@ Independent construction:
 - The Glauber-breaking example is checked both as a concrete rational matrix
   model and as a symbolic two-state rotation formula.
 - The spectator-model obstruction is checked by an independent finite SU(2)
-  color-trace computation, eikonal delta-coefficient bookkeeping, and a
-  fixed-recoil mass-regulated transverse integral after analytic reduction of
-  the two Glauber transverse integrations.
+  color-trace computation, eikonal delta-coefficient bookkeeping, a
+  source-derived Rogers-Mulders model point, explicit hard-factor bounds, and
+  a fixed-recoil positive-denominator transverse witness after analytic
+  reduction of the two Glauber transverse integrations.
 - The factorization occurrence audit mechanically scans the manuscript source
   for factorization labels, factorization-titled environments, and captions,
   then checks the independent manifest rather than a Python-owned occurrence
@@ -41,8 +42,9 @@ Imported assumptions:
 - The finite Glauber Hilbert space is a diagnostic model for measurement
   commutation, not a construction of the QCD Glauber region.
 - The spectator-model check verifies the color/eikonal skeleton of the
-  Rogers-Mulders mechanism and a compact fixed-regulator transverse
-  nonvanishing datum; it does not prove regulator removal or an all-order
+  Rogers-Mulders mechanism and a compact auxiliary positive-denominator
+  transverse nonvanishing datum; it does not treat the deformation as a
+  gauge-theory regulator, prove regulator removal, or normalize an all-order
   hadronic cross section.
 
 Negative controls:
@@ -70,6 +72,7 @@ Scope boundary:
 from __future__ import annotations
 
 import csv
+import math
 import re
 from collections import defaultdict
 from fractions import Fraction
@@ -148,7 +151,7 @@ def generated_factorization_candidates() -> dict[tuple[str, str], set[str]]:
             if not title or not FACTORIZATION_WORD.search(title):
                 continue
             end_re = re.compile(r"\\end\{" + re.escape(environment) + r"\}")
-            for candidate_line in lines[line_number - 1 : min(len(lines), line_number + 160)]:
+            for candidate_line in lines[line_number - 1 :]:
                 for label in LABEL_RE.findall(candidate_line):
                     candidates.setdefault((relative_path, label), set()).add("environment-title")
                 if end_re.search(candidate_line):
@@ -768,6 +771,70 @@ def check_spectator_model_color_entanglement() -> None:
         # epsilon_perp(s, v) for s = xhat.
         return vector_y
 
+    def rogers_mulders_mass_function(
+        x: Fraction, hadron_mass: Fraction, quark_mass: Fraction, spectator_mass: Fraction
+    ) -> Fraction:
+        return (
+            (1 - x) * quark_mass**2
+            + x * spectator_mass**2
+            - x * (1 - x) * hadron_mass**2
+        )
+
+    x1 = Fraction(1, 2)
+    x2 = Fraction(1, 2)
+    hadron_mass_1 = Fraction(1, 1)
+    hadron_mass_2 = Fraction(6, 5)
+    quark_mass_1 = Fraction(3, 4)
+    quark_mass_2 = Fraction(4, 5)
+    spectator_mass_1 = Fraction(7, 5)
+    spectator_mass_2 = Fraction(3, 2)
+    source_mass_1_squared = rogers_mulders_mass_function(
+        x1, hadron_mass_1, quark_mass_1, spectator_mass_1
+    )
+    source_mass_2_squared = rogers_mulders_mass_function(
+        x2, hadron_mass_2, quark_mass_2, spectator_mass_2
+    )
+    numerator_1 = hadron_mass_1 * (1 - x1) + spectator_mass_1
+    numerator_2 = hadron_mass_2 * (1 - x2) + spectator_mass_2
+    assert_equal("Rogers-Mulders L1^2 source mass", source_mass_1_squared, Fraction(809, 800))
+    assert_equal("Rogers-Mulders L2^2 source mass", source_mass_2_squared, Fraction(217, 200))
+    assert_equal("Rogers-Mulders spin numerator M1", numerator_1, Fraction(19, 10))
+    assert_equal("Rogers-Mulders spin numerator M2", numerator_2, Fraction(21, 10))
+
+    def lc_dot(a: tuple[float, float, float, float], b: tuple[float, float, float, float]) -> float:
+        return a[0] * b[1] + a[1] * b[0] - a[2] * b[2] - a[3] * b[3]
+
+    def vector_add(
+        a: tuple[float, float, float, float], b: tuple[float, float, float, float]
+    ) -> tuple[float, float, float, float]:
+        return tuple(left + right for left, right in zip(a, b))
+
+    def vector_subtract(
+        a: tuple[float, float, float, float], b: tuple[float, float, float, float]
+    ) -> tuple[float, float, float, float]:
+        return tuple(left - right for left, right in zip(a, b))
+
+    hard_x1 = float(x1)
+    hard_x2 = float(x2)
+    hadronic_s = 148.0
+    hard_boson_mass_squared = 2.0**2
+    k3 = (2.5, 49.0 / 20.0, 3.5, 0.0)
+    k4 = (2.5, 1.25, -2.5, 0.0)
+    hard_lower_bound = (42.25**2) / (74.0 * 67.5**2)
+    hard_upper_bound = (81.5**2) / (74.0 * 16.5**2)
+
+    def rogers_mulders_hard_factor(k_x: float, k_y: float) -> float:
+        k1 = (5.0, 0.0, k_x, k_y)
+        k2 = (0.0, 37.0 / 10.0, 1.0 - k_x, -k_y)
+        numerator = lc_dot(vector_add(k1, k3), vector_add(k2, k4))
+        denominator = lc_dot(vector_subtract(k1, k3), vector_subtract(k1, k3)) - hard_boson_mass_squared
+        if numerator <= 0.0 or denominator >= 0.0:
+            raise AssertionError("chosen hard window should keep the Rogers-Mulders hard factor nonsingular")
+        hard_factor = (numerator / denominator) ** 2 / (2.0 * hard_x1 * hard_x2 * hadronic_s)
+        if not hard_lower_bound <= hard_factor <= hard_upper_bound:
+            raise AssertionError("Rogers-Mulders hard factor escaped the declared compact-window bound")
+        return hard_factor
+
     def gauss_nodes(n: int, left: float, right: float) -> list[tuple[float, float]]:
         nodes, weights = gauss_legendre(n, 30)
         midpoint = 0.5 * (left + right)
@@ -779,53 +846,52 @@ def check_spectator_model_color_entanglement() -> None:
 
     def reduced_l_scalar(
         k_squared: float,
-        glauber_mass_squared: float,
-        spectator_mass_squared: float,
+        deformation_mass_squared: float,
+        source_mass_squared: float,
         feynman_nodes: list[tuple[float, float]],
     ) -> float:
         total = 0.0
         for z, weight in feynman_nodes:
             denominator = (
-                z * glauber_mass_squared
-                + (1.0 - z) * spectator_mass_squared
+                z * deformation_mass_squared
+                + (1.0 - z) * source_mass_squared
                 + z * (1.0 - z) * k_squared
             )
             if denominator <= 0.0:
                 raise AssertionError("Feynman-parameter denominator should be positive")
             total += weight * (1.0 - z) / denominator
         if total <= 0.0:
-            raise AssertionError("mass-regulated transverse l integral should have positive scalar weight")
+            raise AssertionError("positive-deformation transverse l integral should have positive scalar weight")
         return total
 
-    def compact_regulated_spectator_integral(k_order: int) -> float:
+    def compact_positive_deformation_spectator_integral(k_order: int) -> float:
         q_x = 1.0
         q_y = 0.0
         transverse_window = 3.0
-        mu_g_squared = 0.45**2
-        k_mass_1_squared = 0.8**2
-        k_mass_2_squared = 0.9**2
-        spectator_mass_1_squared = 1.1**2
-        spectator_mass_2_squared = 1.3**2
-        feynman_nodes = gauss_nodes(16, 0.0, 1.0)
+        deformation_mass_squared = float(Fraction(1, 9))
+        mass_1_squared = float(source_mass_1_squared)
+        mass_2_squared = float(source_mass_2_squared)
+        source_numerator_product = float(numerator_1 * numerator_2)
+        feynman_nodes = gauss_nodes(18, 0.0, 1.0)
 
         total = 0.0
         for k_x, weight_x in gauss_nodes(k_order, -transverse_window, transverse_window):
             for k_y, weight_y in gauss_nodes(k_order, -transverse_window, transverse_window):
                 k_squared = k_x * k_x + k_y * k_y
                 q_minus_k_squared = (q_x - k_x) ** 2 + (q_y - k_y) ** 2
-                denominator = (k_squared + k_mass_1_squared) * (
-                    q_minus_k_squared + k_mass_2_squared
+                denominator = (k_squared + mass_1_squared) * (
+                    q_minus_k_squared + mass_2_squared
                 )
                 l1_weight = reduced_l_scalar(
                     k_squared,
-                    mu_g_squared,
-                    spectator_mass_1_squared,
+                    deformation_mass_squared,
+                    mass_1_squared,
                     feynman_nodes,
                 )
                 l2_weight = reduced_l_scalar(
                     q_minus_k_squared,
-                    mu_g_squared,
-                    spectator_mass_2_squared,
+                    deformation_mass_squared,
+                    mass_2_squared,
                     feynman_nodes,
                 )
                 spin_projection = eps_x(k_y) * eps_x(q_y - k_y)
@@ -834,20 +900,23 @@ def check_spectator_model_color_entanglement() -> None:
                 total += (
                     weight_x
                     * weight_y
+                    * rogers_mulders_hard_factor(k_x, k_y)
+                    * source_numerator_product
                     * spin_projection
                     * l1_weight
                     * l2_weight
-                    / denominator
+                    / (16.0 * math.pi**2 * denominator)
                 )
         return total
 
-    coarse_integral = compact_regulated_spectator_integral(12)
-    refined_integral = compact_regulated_spectator_integral(20)
-    if refined_integral >= -0.2:
-        raise AssertionError("regulated integrated spectator contribution should be manifestly nonzero")
-    relative_gap = abs(refined_integral - coarse_integral) / abs(refined_integral)
-    if relative_gap > 0.02:
-        raise AssertionError("regulated spectator integral quadrature did not converge")
+    coarse_integral = compact_positive_deformation_spectator_integral(18)
+    refined_integral = compact_positive_deformation_spectator_integral(26)
+    quadrature_error_bound = 4.0 * abs(refined_integral - coarse_integral)
+    if refined_integral + quadrature_error_bound >= 0.0:
+        raise AssertionError("positive-deformation spectator witness is not sign-separated from zero")
+    relative_gap = quadrature_error_bound / abs(refined_integral)
+    if relative_gap > 0.01:
+        raise AssertionError("positive-deformation spectator quadrature did not converge")
 
 
 def massive_vector_sudakov_area(log_q2_over_m2: Fraction) -> Fraction:

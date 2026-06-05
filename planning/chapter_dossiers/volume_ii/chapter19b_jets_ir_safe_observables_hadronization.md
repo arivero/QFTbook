@@ -79,9 +79,9 @@ The chapter establishes:
   anomaly vanishes by \(\operatorname{tr}(t^a)=0\), while the cross-hadron
   two-gluon Glauber term carries
   \(\operatorname{tr}(t^at^b)\operatorname{tr}(t^bt^a)=T_F^2(N_c^2-1)\),
-  same/opposite cut phases add, and a fixed-regulator integrated
-  \(q_\perp\)-differential double-spin transverse contribution cannot be
-  assigned to separate one-hadron TMD factors;
+  same/opposite cut phases add, and a source-derived positive-denominator
+  finite witness for the \(q_\perp\)-differential double-spin transverse
+  skeleton cannot be assigned to separate one-hadron TMD factors;
 - a massive-vector Sudakov boundary chart for high-energy electroweak jet
   measurements, deriving the triangular soft-collinear area
   \(A_V=\frac14\log^2(Q^2/M_V^2)\) and separating scalar one-line transport
@@ -248,9 +248,13 @@ The chapter establishes:
       separately."  In the Rogers--Mulders spectator-model obstruction, the
       separate color-traced order-\(g\) anomaly vanishes, but the two-hadron
       color-entangled order-\(g^4\) Glauber contribution survives with the
-      same sign across same/opposite cuts.  With transverse Glauber and
-      spectator masses, the \(l_{1\perp}\) and \(l_{2\perp}\) integrations
-      reduce to positive scalar weights multiplying
+      same sign across same/opposite cuts.  The gauge-theory graph is kept
+      massless and regulated upstream by dimensional regularization plus
+      off-lightcone Wilson-line rapidity directions; the finite numerical
+      check is only a positive-denominator deformation of the reduced
+      transverse skeleton.  With source-derived spectator mass functions, the
+      \(l_{1\perp}\) and \(l_{2\perp}\) integrations reduce to positive scalar
+      weights multiplying
       \(\epsilon_\perp(s_1,k_{1\perp})\epsilon_\perp(s_2,q_\perp-k_{1\perp})\);
       for \(s_1=s_2=\hat x\) and \(q_\perp=Q_T\hat x\) this gives a strictly
       negative integrated finite-window contribution.  The failure is of the
@@ -516,14 +520,26 @@ The chapter establishes:
   `calculation-checks/scet_factorization_checks.py` with finite SU(2)
   color/eikonal checks.  The integrated transverse check was added in the
   issue #826 pass below.
-- 2026-06-04 issue #826 pass: replaced the fixed-recoil point sample by a
-  regulated integrated transverse obstruction.  The monograph now states the
-  transverse Glauber-mass regulator, spectator masses, and compact numerical
-  window; derives the positive Feynman-parameter reduction of the
-  \(l_{1\perp},l_{2\perp}\) integrations; and records the sign-definite
-  double-spin \(k_y^2\) contribution for a declared recoil/spin projection.
-  The companion check now verifies quadrature convergence and nonvanishing of
-  the integrated finite-window datum.
+- 2026-06-04 issue #826 pass: replaced the fixed-recoil point sample by an
+  integrated transverse obstruction witness.  The monograph introduced the
+  compact finite window, positive Feynman-parameter reduction of the
+  \(l_{1\perp},l_{2\perp}\) integrations, and sign-definite double-spin
+  \(k_y^2\) contribution for a declared recoil/spin projection.  The #833
+  pass below narrows the regulator interpretation and source-derives the
+  model parameters.
+- 2026-06-04 issue #833 spectator-regulator pass: re-audited the #826
+  integrated witness and separated the massless Rogers--Mulders graph
+  calculation from the finite positive-denominator deformation.  The monograph
+  now uses dimensional regularization plus off-lightcone Wilson-line rapidity
+  directions as the gauge-compatible graph regulator, displays the
+  separate-hadron subtraction terms that vanish in the double-spin channel,
+  derives \(L_i^2(x_i)\) and \(M_i(x_i)\) from one explicit spectator-model
+  parameter point, bounds the Rogers--Mulders hard factor on the selected
+  transverse window, and states that the compact integral is a nonzero witness
+  for the reduced entangled skeleton, not a normalized gauge-theory observable.
+  The companion check consumes the same source parameters and uses a
+  conservative quadrature-error sign separation instead of an absolute
+  numerical threshold.
 - 2026-06-04 issue #828 occurrence-ledger completion: expanded the ledger to
   include the omitted triple-Regge, soft-QED, GPD/exclusive, and threshold
   rows; added explicit source locations and non-process homonym exclusions;

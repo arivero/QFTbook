@@ -848,11 +848,47 @@ cut the eikonal sum has the opposite sign, but the spin phases are
 therefore not a phase that disappears in the measured double-spin cross
 section.
 
-After using the on-shell spectator delta functions and the eikonal delta
-functions, the leading entangled contribution has the transverse form.  To make
-the local formula a finite datum, keep a transverse Glauber mass regulator
-\(\mu_{G,i}>0\); the Rogers--Mulders expression is the corresponding structural
-skeleton before asking whether such a regulator can be removed.
+The source calculation is the massless nonabelian spectator theory.  A
+gauge-compatible way to regulate it before the leading-region reduction is to
+work in \(d=4-2\epsilon\) and replace the lightlike eikonal directions by
+Wilson lines along \(v_1(\rho)\) and \(v_2(\rho)\), with \(v_i^2<0\), taking
+the lightlike limit only after the graph sum and subtractions have been
+specified.  This off-lightcone regulator is a deformation of the Wilson-line
+paths, not a gluon mass; it is a color scalar and therefore leaves the color
+traces \(\operatorname{tr}(t^a)\) and
+\(\operatorname{tr}(t^at^b)\operatorname{tr}(t^bt^a)\) unchanged.  It also
+does not change the eikonal \(i0\) algebra above: the finite-\(\rho\)
+denominators are \(v_i(\rho)\cdot l\pm\ii0\), and their leading Glauber
+limit gives the same delta functions and the same same-side/opposite-side
+relative signs.
+
+In the double-spin channel, the separate-hadron leading-region subtraction is
+explicitly
+\[
+\begin{aligned}
+  \Delta\sigma_{\rm sep}^{(1,1)}
+  &=
+  H^{(0)}
+  \bigl[\operatorname{tr}(t^a)\mathcal E_{1}^{a}\bigr]
+  \bigl[\operatorname{tr}(t^b)\mathcal E_{2}^{b}\bigr]
+  =0,\\
+  \Delta\sigma_{\rm sep}^{(2,0)}+\Delta\sigma_{\rm sep}^{(0,2)}
+  &=
+  H^{(0)}
+  \bigl[\Delta\Phi_1^{(2,ab)}\Phi_2^{(0)}
+  +\Phi_1^{(0)}\Delta\Phi_2^{(2,ab)}\bigr]_{\rm double\ spin}
+  =0 .
+\end{aligned}
+\]
+The first term vanishes by
+\eqref{eq:scet-spectator-single-gluon-trace-zero}; the second vanishes in the
+double Sivers projection because the zeroth-order spectator trace has no
+single-hadron transverse-spin asymmetry.  The cross-hadron graph sum is thus
+not removable by a product of separate one-hadron objects.
+
+After the on-shell spectator delta functions, the eikonal delta functions,
+and these separate-hadron subtractions, the leading entangled source
+contribution has the transverse skeleton
 \begin{equation}
 \begin{aligned}
   \Delta\sigma_{\rm ent}
@@ -877,55 +913,102 @@ where
 \begin{aligned}
   \mathcal D_{\rm spec}
   &=
-  [l_{1\perp}^2+\mu_{G,1}^2]\,
-  [l_{2\perp}^2+\mu_{G,2}^2]\,
-  [k_{1\perp}^2+m_1^2]
+  l_{1\perp}^2\,
+  l_{2\perp}^2\,
+  [k_{1\perp}^2+L_1^2(x_1)]
 \\
   &\quad\times
-  [(q_\perp-k_{1\perp})^2+m_2^2]\,
-  [(l_{1\perp}-k_{1\perp})^2+\widetilde m_1^2]
+  [(q_\perp-k_{1\perp})^2+L_2^2(x_2)]\,
+  [(l_{1\perp}-k_{1\perp})^2+L_1^2(x_1)]
 \\
   &\quad\times
-  [(l_{2\perp}-q_\perp+k_{1\perp})^2+\widetilde m_2^2] .
+  [(l_{2\perp}-q_\perp+k_{1\perp})^2+L_2^2(x_2)] ,
 \end{aligned}
 \]
 Here
 \[
-  M_i(x_i)=m_{H_i}(1-x_i)+m_{\psi_i}
+  M_i(x_i)=m_{H_i}(1-x_i)+m_{\psi_i},\qquad
+  L_i^2(x_i)
+  =
+  (1-x_i)m_{q_i}^2+x_i m_{\psi_i}^2
+  -x_i(1-x_i)m_{H_i}^2
 \]
-is the spin-dependent spectator numerator of the model, and the remaining
-positive mass coordinates stand for the \(x_i\)- and mass-dependent spectator
-denominators.  Rapidity has already been fixed at this leading-Glauber stage:
-the eikonal graph sum supplies
-\(\delta(l_1^+)\delta(l_2^-)\), while the transverse expression is regulated
-by \(\mu_{G,i}\), the spectator masses, and, for a finite numerical datum
-below, a compact transverse window.  This is a fixed-regulator obstruction,
-prior to regulator removal or an all-order TMD theorem.  After the graph sum
-and the separate-hadron leading-region subtractions, no rapidity integral
-remains in this local datum; on the compact transverse window the positive
-mass parameters bound every denominator away from zero, so the displayed
-entangled remainder is finite at fixed regulator.
+are the spin-dependent spectator numerator and the transverse mass function
+of the Rogers--Mulders model.  The ellipses in the original displayed source
+formula are therefore not arbitrary positive constants: for a chosen model
+point they are fixed by \(x_i,m_{H_i},m_{q_i},m_{\psi_i}\).
+
+The next finite integral is a sign witness for this reduced transverse
+skeleton.  It is deliberately relabeled as an auxiliary positive-denominator
+deformation, not as a regulated nonabelian gauge-theory calculation: replace
+only the two reduced source factors \(l_{i\perp}^{-2}\) by
+\((l_{i\perp}^2+\rho_i^2)^{-1}\) with \(\rho_i>0\), restrict
+\(|k_{1x}|,|k_{1y}|\le3\), and keep the source-derived \(L_i^2\) and
+\(M_i\).  This deformation is used only to obtain a finite, independently
+checked, nonzero value of the already-identified entangled kernel.  Regulator
+removal in the massless gauge theory and a normalized hadronic observable are
+separate problems.
 
 Integrated nonvanishing requires a sign or value statement over the whole
-regulated domain.  For a declared finite check, set the hard factor and the
-spectator numerators positive on the tested patch, take
-\(s_{1\perp}=s_{2\perp}=\hat x\), and fix \(q_\perp=Q_T\hat x\),
-\(Q_T\neq0\).  The mass-regulated transverse integral over \(l\) obeys
+deformed domain.  The check uses the concrete source point
+\[
+\begin{gathered}
+  x_1=x_2=\frac12,\quad
+  m_{H_1}=1,\quad m_{H_2}=\frac65,\quad
+  m_{q_1}=\frac34,\quad m_{q_2}=\frac45,\\
+  m_{\psi_1}=\frac75,\quad m_{\psi_2}=\frac32,\quad
+  M_X=2,\quad
+  \rho_1=\rho_2=\frac13 ,
+\end{gathered}
+\]
+so that
+\[
+  L_1^2=\frac{809}{800},\qquad
+  L_2^2=\frac{217}{200},\qquad
+  M_1=\frac{19}{10},\qquad
+  M_2=\frac{21}{10}.
+\]
+For the hard scattering choose
+\[
+\begin{gathered}
+  p_1^+=10,\quad p_2^-=\frac{37}{5},\quad
+  k_3=\left(\frac52,\frac{49}{20},\frac72,0\right),\quad
+  k_4=\left(\frac52,\frac54,-\frac52,0\right),\\
+  q_\perp=k_{3\perp}+k_{4\perp}=(1,0),
+  \qquad
+  k_1=(5,0,k_x,k_y),\quad
+  k_2=\left(0,\frac{37}{10},1-k_x,-k_y\right),
+\end{gathered}
+\]
+where the ordered entries are \((+,-,x,y)\).  On the square
+\(|k_x|,|k_y|\le3\), the Rogers--Mulders hard factor
+\[
+  \mathcal H_{\rm RM}(k_x,k_y)
+  =
+  \frac{1}{2x_1x_2s}
+  \left[
+    \frac{(k_1+k_3)\cdot(k_2+k_4)}
+         {(k_1-k_3)^2-M_X^2}
+  \right]^2
+\]
+obeys the explicit positive bound \(5.2\times10^{-3}\le
+\mathcal H_{\rm RM}\le 3.3\times10^{-1}\).  The deformed transverse integral
+over \(l\) obeys
 \[
   \int\frac{\dd^2l}{(2\pi)^2}\,
   \frac{\epsilon_{\perp jk}s^j l^k}
-       {[l_\perp^2+\mu_G^2][(l_\perp-K_\perp)^2+\widetilde m^2]}
+       {[l_\perp^2+\rho^2][(l_\perp-K_\perp)^2+L^2]}
   =
   \frac{\epsilon_{\perp jk}s^jK^k}{4\pi}\,
-  A(K_\perp^2;\mu_G^2,\widetilde m^2),
+  A_\rho(K_\perp^2;\rho^2,L^2),
 \]
 where
 \[
-  A(K^2;\mu^2,\widetilde m^2)
+  A_\rho(K^2;\rho^2,L^2)
   =
   \int_0^1
   \frac{(1-z)\,\dd z}
-       {z\mu^2+(1-z)\widetilde m^2+z(1-z)K^2}
+       {z\rho^2+(1-z)L^2+z(1-z)K^2}
   >0 .
 \]
 Thus the reduced integrand contains
@@ -935,12 +1018,13 @@ Thus the reduced integrand contains
   =
   -k_{1y}^2 .
 \]
-All other factors in this regulated patch are positive.  The contribution is
+All other factors in this deformed patch are positive.  The contribution is
 therefore nonpositive pointwise and strictly negative on any transverse window
 with nonzero \(k_{1y}\)-measure.  The local calculation establishes a nonzero
-regulated integrated obstruction for the displayed double-spin projection; the
-fully physical statement is inherited from the Rogers--Mulders graph sum and
-its specified spectator model.
+integrated obstruction in the positive-deformation witness for the displayed
+double-spin projection; the physical factorization-breaking statement is the
+source Rogers--Mulders graph-sum obstruction, not the auxiliary deformation by
+itself.
 
 The failure of \eqref{eq:scet-generalized-tmd-ansatz} is now sharp.  The
 same-hadron two-gluon terms force any separate TMD repair to use
@@ -1157,13 +1241,16 @@ Controlled Approximation~\ref{ca:scet-spectator-tmd-color-entanglement};
 \eqref{eq:scet-spectator-entangled-breaking-integral};
 Vol.~II Ch.~19b &
 Observable: high-\(p_T\) nearly back-to-back hadron production, double
-transverse spin, fixed \(q_\perp\).  Regulator: nonabelian spectator model,
-eikonal Glauber approximation, eikonal delta functions, transverse Glauber
-masses, spectator masses, and fixed transverse numerical window.  Source:
-Rogers--Mulders \cite{RogersMulders2010NoGeneralizedTMD}.  Proof:
-counterexample to the separate-hadron generalized TMD ansatz
+transverse spin, fixed \(q_\perp\).  Regulator/status: massless nonabelian
+spectator model regulated at graph level by dimensional regularization and
+off-lightcone Wilson-line rapidity directions; the finite numerical witness is
+an auxiliary positive-denominator deformation of the reduced transverse
+skeleton, with source-derived spectator masses and a fixed transverse window,
+not a gluon-mass regulator for the gauge theory.  Source: Rogers--Mulders
+\cite{RogersMulders2010NoGeneralizedTMD}.  Proof: counterexample to the
+separate-hadron generalized TMD ansatz
 \eqref{eq:scet-generalized-tmd-ansatz}; locally strengthened by a
-mass-regulated integrated sign check for the displayed double-spin projection.
+source-derived integrated sign check for the displayed double-spin projection.
 Glauber: nonzero entangled Glauber/color term with
 \(C_{\rm ent}=T_F^2(N_c^2-1)\).  Remainder: regulator-removal, full hard
 model, and all-order operator-completion questions remain outside this

@@ -2509,9 +2509,11 @@ Current checks:
   separating inclusive cancellation from noncommuting measurement obstruction
   together with an exact finite remainder identity, Hilbert--Schmidt bound,
   and symbolic two-state breaking example, a finite SU(2) color/eikonal check
-  plus a compact mass-regulated integrated transverse check of the
-  spectator-model color-entanglement obstruction to separate-hadron
-  generalized TMD factorization, the triangular logarithmic phase-space
+  plus a compact source-derived positive-denominator transverse witness for
+  the spectator-model color-entanglement obstruction to separate-hadron
+  generalized TMD factorization, including derived spectator mass functions,
+  hard-factor bounds, and sign-separated quadrature error, the triangular
+  logarithmic phase-space
   area behind the massive-vector Sudakov chart, and a source-derived manifest
   guard for the occurrence-level factorization ledger, scanning manuscript
   labels, factorization-titled environments, and captions for factorization
