@@ -11,11 +11,12 @@ Target claims:
   process-level QCD/SCET, Regge, and Abelian soft-factorization occurrences
   through a source-derived manifest, classifies the main non-process homonyms,
   and keeps BMS non-global soft evolution separate from Glauber exchange.
-- The regulated one-emission endpoint observable has a real zero-bin-subtracted
-  region decomposition derived from an off-light-cone Wilson-line cut graph
-  with mixed eikonal denominators, and a hard-remainder bound; unsubtracted,
-  unpaired zero-bin allocations or additive-denominator replacements fail as
-  negative controls.
+- The regulated one-emission endpoint observable has a real soft-endpoint
+  projection identity derived from an off-light-cone Wilson-line cut graph
+  with mixed eikonal denominators, and a mixed-remainder bound; unsubtracted,
+  unpaired constant projections or additive-denominator replacements fail as
+  negative controls.  The same finite domain is also checked not to contain the
+  energetic hard or collinear scalings needed for a full region derivation.
 - A noncommuting finite measurement can detect a Glauber rotation, so a
   residual slot is not a proof of factorization.
 
@@ -24,10 +25,11 @@ Independent construction:
   integrals, or symbolic identities built independently of the manuscript
   prose.
 - The smeared one-emission endpoint expansion is checked by deriving the
-  mixed off-light-cone eikonal kernel, verifying the pointwise region
+  mixed off-light-cone eikonal kernel, verifying the pointwise soft-projection
   identity, integrating the finite sliced endpoint observable by deterministic
-  quadrature, testing zero-bin allocation cancellation, and checking the
-  hard-remainder bound on the same regulated domain.
+  quadrature, testing constant-projection allocation cancellation, checking the
+  mixed-remainder bound on the same regulated domain, and independently
+  testing the hard/collinear/soft mode scalings.
 - The Glauber-breaking example is checked both as a concrete rational matrix
   model and as a symbolic two-state rotation formula.
 - The spectator-model obstruction is checked by an independent finite SU(2)
@@ -59,10 +61,11 @@ Negative controls:
 - Naively double-counting the zero-bin leaves exactly the overlap term.
 - A finite scheme change whose factors do not multiply to one changes the
   hard/jet/soft product.
-- The unsubtracted one-emission collinear sum double-counts the soft zero-bin,
-  an unpaired zero-bin allocation retains arbitrary allocation dependence, and
-  replacing the mixed off-light-cone denominators by additive constants is
-  rejected.
+- The unsubtracted one-emission soft Taylor projections double-count the
+  constant endpoint projection, an unpaired allocation retains arbitrary
+  allocation dependence, replacing the mixed off-light-cone denominators by
+  additive constants is rejected, and treating a soft-only endpoint square as a
+  source of energetic hard or collinear regions is rejected.
 - A noncommuting measurement gives a nonzero Glauber remainder.
 - Separate color-traced TMD factors have zero order-g single-loop anomaly
   while the cross-hadron two-gluon color trace is nonzero; a pointwise
@@ -74,8 +77,8 @@ Negative controls:
   check.
 
 Scope boundary:
-- This script verifies finite algebra, fixed-order one-emission endpoint
-  expansion, and proof-obligation diagnostics.  It does not construct SCET,
+- This script verifies finite algebra, fixed-order one-emission soft endpoint
+  projection, and proof-obligation diagnostics.  It does not construct SCET,
   prove composite-operator existence, prove regulator removal, derive mode
   decompositions from QCD, or establish all-order factorization for a
   physical cross section.
@@ -666,7 +669,7 @@ def check_zero_bin_scheme_reshuffling() -> None:
     assert_equal("paired zero-bin scheme reshuffling", shifted, base)
 
 
-def check_regulated_endpoint_region_expansion() -> None:
+def check_regulated_soft_endpoint_projection() -> None:
     u, v, delta, lam_symbol = sp.symbols("u v delta lam_symbol", positive=True)
     allocation = sp.symbols("allocation")
     delta_value = sp.Rational(1, 7)
@@ -695,12 +698,69 @@ def check_regulated_endpoint_region_expansion() -> None:
     if additive_probe == 0:
         raise AssertionError("additive endpoint regulator should not reproduce the tilted Wilson-line kernel")
 
-    kernel = mixed_kernel.subs(delta, delta_value)
-    singular_integrand = kernel * (phi(u) + phi(v) - phi0)
-    remainder_integrand = kernel * (phi(u + v) - phi(u) - phi(v) + phi0)
+    # Exponents of (u=n.k/Q, v=nbar.k/Q) in powers of a generic SCET
+    # expansion parameter eta.  Exponent zero means an energetic O(1)
+    # component.  The finite domain used below has both u and v endpoint-small,
+    # so it can represent a soft Wilson-line slice but not hard or energetic
+    # collinear regions.
+    soft_endpoint = (2, 2)
+    n_collinear = (2, 0)
+    barn_collinear = (0, 2)
+    hard = (0, 0)
+
+    def is_inside_soft_endpoint_square(exponents: tuple[int, int]) -> bool:
+        return exponents[0] > 0 and exponents[1] > 0
+
+    def leading_component_of_sum(exponents: tuple[int, int]) -> str:
+        u_power, v_power = exponents
+        if u_power < v_power:
+            return "u"
+        if v_power < u_power:
+            return "v"
+        return "u+v"
+
     assert_equal(
-        "pointwise mixed-kernel endpoint decomposition",
-        sp.simplify(kernel * phi(u + v) - singular_integrand - remainder_integrand),
+        "soft endpoint square contains soft scaling",
+        is_inside_soft_endpoint_square(soft_endpoint),
+        True,
+    )
+    assert_equal(
+        "soft endpoint square excludes n-collinear energetic v",
+        is_inside_soft_endpoint_square(n_collinear),
+        False,
+    )
+    assert_equal(
+        "soft endpoint square excludes barn-collinear energetic u",
+        is_inside_soft_endpoint_square(barn_collinear),
+        False,
+    )
+    assert_equal(
+        "soft endpoint square excludes hard scaling",
+        is_inside_soft_endpoint_square(hard),
+        False,
+    )
+    assert_equal(
+        "n-collinear leading measurement component",
+        leading_component_of_sum(n_collinear),
+        "v",
+    )
+    assert_equal(
+        "barn-collinear leading measurement component",
+        leading_component_of_sum(barn_collinear),
+        "u",
+    )
+    assert_equal(
+        "soft endpoint has no single energetic light-cone component",
+        leading_component_of_sum(soft_endpoint),
+        "u+v",
+    )
+
+    kernel = mixed_kernel.subs(delta, delta_value)
+    soft_projection_integrand = kernel * (phi(u) + phi(v) - phi0)
+    mixed_remainder_integrand = kernel * (phi(u + v) - phi(u) - phi(v) + phi0)
+    assert_equal(
+        "pointwise mixed-kernel soft endpoint projection",
+        sp.simplify(kernel * phi(u + v) - soft_projection_integrand - mixed_remainder_integrand),
         0,
     )
 
@@ -741,66 +801,66 @@ def check_regulated_endpoint_region_expansion() -> None:
         return total
 
     exact = integrate_domain(lambda uu, vv: numeric_kernel(uu, vv) * numeric_phi(uu + vv))
-    collinear_n = integrate_domain(lambda uu, vv: numeric_kernel(uu, vv) * numeric_phi(uu))
-    collinear_barn = integrate_domain(lambda uu, vv: numeric_kernel(uu, vv) * numeric_phi(vv))
-    zero_bin = integrate_domain(lambda uu, vv: numeric_kernel(uu, vv) * numeric_phi(0.0))
-    singular = collinear_n + collinear_barn - zero_bin
-    hard_remainder = integrate_domain(
+    soft_u_projection = integrate_domain(lambda uu, vv: numeric_kernel(uu, vv) * numeric_phi(uu))
+    soft_v_projection = integrate_domain(lambda uu, vv: numeric_kernel(uu, vv) * numeric_phi(vv))
+    constant_projection = integrate_domain(lambda uu, vv: numeric_kernel(uu, vv) * numeric_phi(0.0))
+    soft_projection = soft_u_projection + soft_v_projection - constant_projection
+    mixed_remainder = integrate_domain(
         lambda uu, vv: numeric_kernel(uu, vv)
         * (numeric_phi(uu + vv) - numeric_phi(uu) - numeric_phi(vv) + numeric_phi(0.0))
     )
     assert_close(
-        "regulated one-emission endpoint decomposition",
+        "regulated one-emission soft endpoint projection",
         exact,
-        singular + hard_remainder,
+        soft_projection + mixed_remainder,
         atol=2.0e-11,
     )
 
     weighted_uv = integrate_domain(lambda uu, vv: numeric_kernel(uu, vv) * uu * vv)
     second_derivative_bound = 4.0
     _assert_leq(
-        "mixed-kernel hard-remainder integral bound",
-        abs(hard_remainder),
+        "mixed-kernel endpoint-remainder integral bound",
+        abs(mixed_remainder),
         second_derivative_bound * weighted_uv,
         tol=2.0e-12,
     )
     _assert_leq(
-        "mixed-kernel hard-remainder simple rho bound",
+        "mixed-kernel endpoint-remainder simple rho bound",
         second_derivative_bound * weighted_uv,
         second_derivative_bound * (1.0 + delta_float**2) * rho_float**2,
         tol=2.0e-12,
     )
 
-    naive_double_count = collinear_n + collinear_barn
+    naive_double_count = soft_u_projection + soft_v_projection
     assert_close(
-        "unsubtracted one-emission zero-bin defect",
-        naive_double_count - singular,
-        zero_bin,
+        "unsubtracted one-emission constant-projection defect",
+        naive_double_count - soft_projection,
+        constant_projection,
         atol=2.0e-11,
     )
-    if zero_bin <= 0.0:
-        raise AssertionError("chosen positive endpoint test function should give a positive zero-bin")
+    if constant_projection <= 0.0:
+        raise AssertionError("chosen positive endpoint test function should give a positive constant projection")
 
-    collinear_n_symbol, collinear_barn_symbol, zero_bin_symbol = sp.symbols(
-        "collinear_n_symbol collinear_barn_symbol zero_bin_symbol"
+    soft_u_symbol, soft_v_symbol, constant_symbol = sp.symbols(
+        "soft_u_symbol soft_v_symbol constant_symbol"
     )
     allocated_sum = (
-        collinear_n_symbol
-        - allocation * zero_bin_symbol
-        + collinear_barn_symbol
-        - (1 - allocation) * zero_bin_symbol
+        soft_u_symbol
+        - allocation * constant_symbol
+        + soft_v_symbol
+        - (1 - allocation) * constant_symbol
     )
     assert_equal(
-        "zero-bin allocation cancellation",
+        "constant-projection allocation cancellation",
         sp.simplify(sp.diff(allocated_sum, allocation)),
         0,
     )
 
-    unpaired_allocation = collinear_n_symbol - allocation * zero_bin_symbol + collinear_barn_symbol
+    unpaired_allocation = soft_u_symbol - allocation * constant_symbol + soft_v_symbol
     assert_equal(
-        "unpaired zero-bin allocation dependence",
+        "unpaired constant-projection allocation dependence",
         sp.simplify(sp.diff(unpaired_allocation, allocation)),
-        -zero_bin_symbol,
+        -constant_symbol,
     )
 
 
@@ -1287,7 +1347,7 @@ def main() -> None:
     check_distributional_factorization_remainder_bound()
     check_zero_bin_inclusion_exclusion()
     check_zero_bin_scheme_reshuffling()
-    check_regulated_endpoint_region_expansion()
+    check_regulated_soft_endpoint_projection()
     check_multiplicative_scheme_covariance()
     check_rg_transport_common_scale_independence()
     check_soft_drop_boundary_scales_and_rg_consistency()
@@ -1299,7 +1359,7 @@ def main() -> None:
     check_factorization_occurrence_ledger_inventory()
     print(
         "All SCET convolution, distributional-remainder, zero-bin, "
-        "one-emission endpoint-expansion, scheme-covariance, RG-transport, "
+        "one-emission soft-endpoint projection, scheme-covariance, RG-transport, "
         "soft-drop-scale, "
         "soft-Wilson-line, Glauber-unitarity/breaking, integrated "
         "spectator-model color-entanglement, massive-vector Sudakov, and "

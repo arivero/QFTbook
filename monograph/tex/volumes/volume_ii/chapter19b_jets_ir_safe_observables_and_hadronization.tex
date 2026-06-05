@@ -584,64 +584,90 @@ Here
   =
   \frac{1+\delta^2}{(u+\delta v)(v+\delta u)} .
 \]
-This is the finite-regulator version of the specified Wilson-line cut graph
-paired with a specified measurement; the graph, regulator, endpoint window,
-and measurement all belong to the datum.
+This is the finite-regulator version of the specified soft Wilson-line cut
+graph paired with a specified measurement; the graph, regulator, endpoint
+window, and measurement all belong to the datum.  The domain
+\(\mathcal D_{\lambda,\rho}\) is a soft endpoint domain: both light-cone
+components are small.  In the SCET convention above,
+\[
+  p_n\sim Q(\lambda_{\rm SCET}^2,1,\lambda_{\rm SCET}),
+  \qquad
+  p_{\bar n}\sim Q(1,\lambda_{\rm SCET}^2,\lambda_{\rm SCET}),
+  \qquad
+  p_s\sim Q(\lambda_{\rm SCET}^2,\lambda_{\rm SCET}^2,
+  \lambda_{\rm SCET}^2),
+\]
+so a genuine energetic \(n\)-collinear region has
+\(\bar n\cdot k/Q=O(1)\), a genuine energetic \(\bar n\)-collinear region has
+\(n\cdot k/Q=O(1)\), and neither is contained in
+\(\mathcal D_{\lambda,\rho}\).  For the simple measurement \(e=u+v\), the
+leading energetic-collinear term would be \(v\) in the \(n\)-collinear scaling
+and \(u\) in the \(\bar n\)-collinear scaling; the endpoint Taylor projections
+below do not establish those terms as jet matrix elements.  The symbol
+\(\lambda\) in
+\(\mathcal D_{\lambda,\rho}\) is only the lower endpoint slice of this finite
+real graph, not the SCET expansion parameter.
 
 Let
 \[
-  C_n[\varphi]
+  S_u[\varphi]
   :=
   \int_{\mathcal D_{\lambda,\rho}}
   K_\delta(u,v)\,\varphi(u)\,\dd u\,\dd v,
   \qquad
-  C_{\bar n}[\varphi]
+  S_v[\varphi]
   :=
   \int_{\mathcal D_{\lambda,\rho}}
   K_\delta(u,v)\,\varphi(v)\,\dd u\,\dd v,
 \]
 and
 \[
-  Z_{\delta,\lambda,\rho}[\varphi]
+  S_0[\varphi]
   :=
   \varphi(0)
   \int_{\mathcal D_{\lambda,\rho}}K_\delta(u,v)\,\dd u\,\dd v .
 \]
-These three terms are obtained from the same regulated graph by the region
-expansions of the measurement: \(e=u+v\mapsto u\) in the \(n\)-collinear
-region, \(e\mapsto v\) in the \(\bar n\)-collinear region, and \(e\mapsto0\)
-in the shared soft zero-bin.  The overlap-subtracted singular coordinate is
-therefore
+These three terms are obtained from the same regulated soft graph by
+Taylor-projection of the measurement on the endpoint square.  They are useful
+finite coordinates on the soft endpoint singularity, but they are not the
+\(n\)-jet, \(\bar n\)-jet, and method-of-regions zero-bin matrix elements of a
+full SCET factorization theorem.  In a genuine region derivation the
+\(n\)-collinear, \(\bar n\)-collinear, hard, and soft graphs live on domains
+with the scalings just displayed, and the overlap subtraction is derived by
+expanding those distinct approximants on their common limit.  The
+constant-subtracted soft endpoint coordinate is
 \begin{equation}
-  \Sigma_{\delta,\lambda,\rho}^{\rm sing}[\varphi]
+  \Sigma_{\delta,\lambda,\rho}^{\rm soft\,proj}[\varphi]
   =
-  C_n[\varphi]+C_{\bar n}[\varphi]-Z_{\delta,\lambda,\rho}[\varphi].
+  S_u[\varphi]+S_v[\varphi]-S_0[\varphi].
   \label{eq:regulated-scet-one-emission-subtracted}
 \end{equation}
-Equivalently, for any zero-bin allocation parameter \(a\),
+Equivalently, for any auxiliary allocation parameter \(a\),
 \[
-  \bigl(C_n-aZ_{\delta,\lambda,\rho}\bigr)
+  \bigl(S_u-aS_0\bigr)
   +
-  \bigl(C_{\bar n}-(1-a)Z_{\delta,\lambda,\rho}\bigr)
+  \bigl(S_v-(1-a)S_0\bigr)
   =
-  C_n+C_{\bar n}-Z_{\delta,\lambda,\rho},
+  S_u+S_v-S_0,
 \]
-so the physical singular coordinate is independent of the auxiliary
-rapidity-scheme allocation.  Omitting the subtraction changes the answer by
-the nonzero overlap \(Z_{\delta,\lambda,\rho}\).
+so this algebraic soft projection is independent of how the constant endpoint
+term is split between the two Taylor projections.  Omitting the subtraction
+changes the answer by the nonzero constant endpoint term \(S_0\).  This
+identity is the finite shadow of zero-bin inclusion--exclusion, not a
+stand-alone derivation of the collinear operators.
 
 The exact regulated graph decomposes as
 \begin{equation}
   \Sigma_{\delta,\lambda,\rho}^{(1)}[\varphi]
   =
-  \Sigma_{\delta,\lambda,\rho}^{\rm sing}[\varphi]
+  \Sigma_{\delta,\lambda,\rho}^{\rm soft\,proj}[\varphi]
   +
-  R_{\delta,\lambda,\rho}^{\rm hard}[\varphi],
+  R_{\delta,\lambda,\rho}^{\rm mix}[\varphi],
   \label{eq:regulated-scet-one-emission-decomposition}
 \end{equation}
-where the nonsingular hard-region remainder is
+where the mixed endpoint remainder is
 \begin{equation}
-  R_{\delta,\lambda,\rho}^{\rm hard}[\varphi]
+  R_{\delta,\lambda,\rho}^{\rm mix}[\varphi]
   =
   \int_{\mathcal D_{\lambda,\rho}}
   K_\delta(u,v)
@@ -667,7 +693,7 @@ and the first three terms integrate to
 \]
 so
 \begin{equation}
-  |R_{\delta,\lambda,\rho}^{\rm hard}[\varphi]|
+  |R_{\delta,\lambda,\rho}^{\rm mix}[\varphi]|
   \le
   M_\varphi
   \int_{\mathcal D_{\lambda,\rho}}K_\delta(u,v)uv\,\dd u\,\dd v
@@ -678,15 +704,16 @@ so
 The last inequality uses
 \((u+\delta v)(v+\delta u)\ge uv\) and
 \({\rm area}(\mathcal D_{\lambda,\rho})\le\rho^2\).  This displays the
-operator coordinates in the simple graph: the endpoint-local hard current
-multiplies \(\varphi(0)\), the two collinear Wilson-line matrix elements give
-\(C_n\) and \(C_{\bar n}\), the soft zero-bin is
-\(Z_{\delta,\lambda,\rho}\), and the finite hard-region remainder is
-controlled in the same smeared-observable topology.  What has been proved is
-only this regulated one-loop endpoint statement.  The all-orders continuum QCD
-factorization theorem still requires the full operator construction, regulator
-removal, rapidity renormalization, Glauber analysis, and a power remainder for
-the physical cross section.
+soft Wilson-line endpoint mechanism actually proved by the simple graph: the
+constant endpoint projection multiplies \(\varphi(0)\), the two first
+projections test the \(u\)- and \(v\)-dependence of the same soft graph, and
+the mixed finite-difference remainder is controlled in the same
+smeared-observable topology.  What has not been proved here is equally
+important: the graph does not contain the energetic collinear domains and does
+not produce the hard coefficient.  The all-orders continuum QCD factorization
+theorem still requires the full operator construction, separate hard and
+collinear region expansions, regulator removal, rapidity renormalization,
+Glauber analysis, and a power remainder for the physical cross section.
 
 \paragraph{Leading soft Wilson-line decoupling identity.}
 At finite regulator and at leading power in the \(n\)-collinear sector, the

@@ -47,12 +47,13 @@ The chapter establishes:
 - a regulated one-emission endpoint observable for the color-singlet two-jet
   current, with off-light-cone Wilson-line velocities producing the mixed
   denominators \((u+\delta v)(v+\delta u)\), a finite endpoint slice
-  \(u+v\ge\lambda\), smeared measurement \(\varphi(u+v)\), two collinear
-  region terms, soft zero-bin subtraction, auxiliary zero-bin allocation
-  cancellation, a hard-remainder bound
+  \(u+v\ge\lambda\), smeared measurement \(\varphi(u+v)\), three soft
+  endpoint Taylor projections \(S_u,S_v,S_0\), auxiliary constant-projection
+  allocation cancellation, a mixed-remainder bound
   \(M_\varphi\int K_\delta uv\le M_\varphi(1+\delta^2)\rho^2\), and negative
-  controls for additive-denominator replacement, double-counting, or unpaired
-  zero-bin allocation;
+  controls for additive-denominator replacement, double-counting, unpaired
+  projection allocation, and treating the soft square as a hard or collinear
+  region;
 - controlled approximation `ca:scet-distributional-factorization-estimate`,
   stating leading-power SCET factorization as a bound on smeared physical
   cross-section functionals on a Banach endpoint test space, with the
@@ -205,19 +206,21 @@ The chapter establishes:
      collinear and soft coordinates; a scaleless integral in a particular
      regulator is not an invariant absence of overlap.
 8aaa. The regulated one-emission endpoint observable for a color-singlet
-      two-jet current supplies the positive fixed-order case: with
+      two-jet current supplies a positive fixed-order soft endpoint case: with
       \(\beta_n=n+\delta\bar n\), \(\beta_{\bar n}=\bar n+\delta n\), the
       cut Wilson-line graph has kernel
       \(K_\delta=(1+\delta^2)/((u+\delta v)(v+\delta u))\) on the sliced
-      endpoint domain \(0\le u,v\le\rho,\ u+v\ge\lambda\).  Expanding the same
-      graph's measurement to \(u\), \(v\), and \(0\) gives the two collinear
-      functionals and soft zero-bin; the exact graph differs by a mixed
-      finite-difference remainder bounded by
+      endpoint domain \(0\le u,v\le\rho,\ u+v\ge\lambda\).  That domain has
+      both light-cone components small, so it is not a hard, \(n\)-collinear,
+      or \(\bar n\)-collinear region.  Taylor-projecting the same soft graph's
+      measurement to \(u\), \(v\), and \(0\) gives finite soft endpoint
+      coordinates; the exact graph differs by a mixed finite-difference
+      remainder bounded by
       \(M_\varphi\int K_\delta uv\le M_\varphi(1+\delta^2)\rho^2\).  The
       additive-denominator model is only an auxiliary algebraic negative
-      control, the unsubtracted collinear sum double-counts the zero-bin, and
-      an unpaired allocation parameter leaves arbitrary rapidity-scheme
-      dependence.
+      control, the unsubtracted Taylor projections double-count the constant
+      endpoint projection, and an unpaired allocation parameter leaves
+      arbitrary split dependence.
 8ab. Resummation is a renormalization-group transport datum on a declared
      factorized coordinate.  In transform space the hard, jet, and soft
      anomalous dimensions must sum to zero as convolution kernels, and the
@@ -537,8 +540,8 @@ The chapter establishes:
   evolution, Glauber exchange, and super-leading logarithms.
 - 2026-06-04 issue #783 proof-status pass: replaced the remaining
   construction-overstating SCET language with conditional operator-coordinate
-  language; added the fixed-regulator endpoint-region expansion with a
-  nonzero remainder and negative controls; added the factorization
+  language; added the fixed-regulator endpoint projection with a nonzero
+  remainder and negative controls; added the factorization
   claim-status ledger tying SCET, QCD factorization, soft-drop, non-global,
   massive-vector, HQET/NRQCD, and thermal matching uses to explicit status
   categories; strengthened the finite Glauber obstruction with the two-state
@@ -607,23 +610,34 @@ The chapter establishes:
   one-dimensional endpoint lemma from the #783 proof-status pass with a
   regulated color-singlet one-emission endpoint observable.  The monograph now
   starts from the finite Wilson-line/eikonal graph paired with the smeared
-  event-shape measurement \(\varphi(u+v)\), derives the two collinear
-  functionals, subtracts the shared soft zero-bin, proves cancellation of an
-  auxiliary zero-bin allocation parameter, and bounds the finite hard-region
-  remainder.  The companion SCET check verifies the exact symbolic
-  decomposition, nonzero zero-bin defect, allocation cancellation, and
-  hard-remainder estimate.
+  event-shape measurement \(\varphi(u+v)\), derives finite endpoint
+  projections, subtracts the constant endpoint projection, proves cancellation
+  of an auxiliary allocation parameter, and bounds the finite mixed remainder.
+  The later issue #840 pass below narrows the interpretation: these are soft
+  endpoint projections, not collinear matrix elements or a hard-region
+  derivation.
 - 2026-06-05 issue #835 endpoint-graph repair: replaced the additive
   \((u+\lambda)(v+\lambda)\) graph identification by an actual off-light-cone
   Wilson-line cut graph with mixed denominators \((u+\delta v)(v+\delta u)\)
   and a separate finite endpoint slice \(u+v\ge\lambda\).  The monograph now
   derives the eikonal kernel from \(\beta_n=n+\delta\bar n\) and
-  \(\beta_{\bar n}=\bar n+\delta n\), obtains the region approximants by
-  measurement expansion on the same regulated graph, and bounds the mixed
+  \(\beta_{\bar n}=\bar n+\delta n\), obtains soft endpoint Taylor projections
+  by measurement expansion on the same regulated graph, and bounds the mixed
   finite-difference remainder in the same sliced observable.  The companion
   check verifies the graph kernel, rejects the old additive replacement,
   integrates the sliced domain by deterministic quadrature, and refreshes the
   textual factorization review anchors shifted by the new derivation.
+- 2026-06-05 issue #840 soft-endpoint scope repair: corrected the
+  one-emission endpoint block so the sliced domain
+  \(0\le u,v\le\rho,\ u+v\ge\lambda\) is identified as a soft Wilson-line
+  endpoint square rather than a domain containing energetic collinear regions.
+  The TeX now states the SCET scalings explicitly, renames the local
+  projections to \(S_u,S_v,S_0\), replaces the hard-region remainder by a mixed
+  endpoint remainder, and leaves the full hard/collinear operator derivation as
+  a separate factorization-theorem input.  The companion check now tests the
+  mode scalings exactly: \(n\)-collinear has energetic \(\bar n\cdot k\),
+  \(\bar n\)-collinear has energetic \(n\cdot k\), and hard has both
+  components energetic, so none lies in the soft endpoint square.
 - 2026-06-05 issue #526/#630 shape-function moment pass: added the smeared
   endpoint moment expansion after the leading shape-function convolution.  The
   pass shows precisely where \(\Omega_1^e/Q\) acts as a leading shift, where
