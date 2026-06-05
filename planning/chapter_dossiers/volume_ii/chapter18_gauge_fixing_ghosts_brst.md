@@ -27,6 +27,11 @@
   Gribov's original 1978 analysis, used to state the global obstruction to a
   smooth gauge slice and to define the first Gribov region/fundamental modular
   domain.
+- `SRC-EXTERNAL-NEUBERGER`: Neuberger's 1986--1987 lattice BRS papers, used
+  only for the finite lattice BRST zero-over-zero obstruction.  The chapter
+  supplies the finite-dimensional proof locally: based gauge group, BRST-exact
+  gauge-fixing factor, \(t\)-independence, Euler characteristic, and the
+  orbitwise zero numerator/denominator.
 - `SRC-EXTERNAL-KUGO-OJIMA`: Kugo--Ojima's 1979 covariant operator formalism,
   lattice Landau-gauge tests by Nakajima--Furui, Kondo's Gribov--Zwanziger
   infrared analysis, and the 2023 lattice computation of the Kugo--Ojima
@@ -81,6 +86,11 @@
 - Off-shell nilpotent BRST differential using the Nakanishi--Lautrup field.
   The nilpotency proof assumes the Yang--Mills gauge generators close as vector
   fields on field space before imposing the Euler--Lagrange equations.
+- A finite lattice BRST subsection treating the Neuberger obstruction as an
+  exact finite-regulator theorem for compact connected gauge groups and
+  conventional BRST-exact compact-orbit gauge fixing.  The residual global
+  gauge mode is removed by the based lattice gauge group before the Euler
+  characteristic calculation.
 - Local cohomology is formulated in the algebra of finite jets of fields and
   ghosts.
 - The canonical state space before BRST quotient is a Krein space
@@ -110,6 +120,8 @@
 | \(\Omega_{\rm G}\) | first Gribov region in Landau gauge, \(\partial^\mu A_\mu=0\) and \(\mathcal M_L(A)\ge0\) after zero modes are removed |
 | \(\Omega_{\rm G}^{\circ}\) | interior of the first Gribov region, where \(\mathcal M_L(A)\) is strictly positive on nonzero gauge directions |
 | \(\mathfrak F\) | fundamental modular domain of absolute minima of \(\|A^g\|^2\) along gauge orbits |
+| \(\mathcal G_{\Lambda,\ast}\) | based finite lattice gauge group with one site fixed, used to remove the residual global zero mode in the Neuberger argument |
+| \(Z_{\rm gf}(U;t,\xi)\) | conventional BRST-exact finite lattice gauge-fixing factor on the compact orbit |
 | \(b_A\) | condensed-index antighost paired with \(F^A\), related to the conventional \(\bar c_A\) by \(b_A=\bar c_A\) in this chapter |
 | \(c,\bar c\) | odd adjoint-valued ghost and independent antighost fields |
 | \(B\) | Nakanishi--Lautrup auxiliary integration variable; Gaussian elimination removes it from the remaining gauge-fixed path integral |
@@ -214,6 +226,18 @@
 - The gauge-fixing and ghost action is \(s\)-exact after introducing the
   Nakanishi--Lautrup field, equivalently
   \(S_{\rm GF}=-iQ_B\cdot(b_AF^A)\) in the \(Q_B\) convention.
+- The Neuberger obstruction is proved at finite lattice spacing and finite
+  volume for compact connected positive-dimensional \(G\), after the residual
+  global mode is removed.  The conventional BRST-exact gauge-fixing factor is
+  \(t\)-independent by finite-dimensional BRST integration by parts, equals the
+  Euler characteristic
+  \(\chi(\mathcal G_{\Lambda,\ast})=\chi(G)^{|\Lambda|-1}=0\), and therefore
+  turns gauge-invariant BRST-gauge-fixed expectations into \(0/0\).
+- The manuscript separates this exact theorem from nearby statements: Singer is
+  a continuum global-section obstruction, Gribov copies/FMD are coordinate
+  statements about Landau slices, Neuberger is the compact finite-lattice
+  BRST-exact cancellation, and Gribov--Zwanziger is a gauge-fixed infrared
+  ansatz with a separate comparison problem.
 - The Nakanishi--Lautrup field is now declared to be an integrated auxiliary
   variable, not an external source.  The manuscript writes the fixed-regulator
   Gaussian \(B\)-integral explicitly and shows that it produces the usual
@@ -369,6 +393,11 @@
 - The Kugo--Ojima criterion is treated as a conditional covariant-gauge
   confinement scenario, not as a proved nonperturbative theorem for
   four-dimensional Yang--Mills theory.
+- Neuberger's theorem does not rule out gauge-invariant lattice observables,
+  minimal Landau prescriptions, equivariant BRST, modified potentials,
+  stereographic/noncompact constructions, or Curci--Ferrari mass regulators; it
+  states exactly which assumption each route changes and does not identify any
+  route with the nonperturbative Yang--Mills continuum limit.
 - Dimensional regularization is used only as an order-by-order perturbative
   regulator of graph distributions.  The chapter does not claim a positive
   nonperturbative Hilbert space, a probability measure, or a continuum
@@ -448,3 +477,13 @@
   limited to restored BRST/ST perturbation theory, vector-shell Goldstone
   source coordinates, hard-remainder bounds, and external-pole or
   resonance-pole residue conventions.
+- 2026-06-05 issue #778 pass: added the finite lattice BRST/Neuberger
+  zero-over-zero section.  The text now fixes a connected finite lattice,
+  compact connected gauge group, based gauge group for residual global modes,
+  conventional BRST-exact compact-orbit gauge-fixing factor, exact
+  \(t\)-independence proof, two evaluations of the factor
+  (ghost unsaturation at \(t=0\) and the signed Gribov-copy/Euler
+  characteristic in the sharp Morse limit), the orbitwise \(0/0\) for
+  gauge-invariant expectations, a comparison table for Singer/Gribov/Neuberger/
+  Gribov--Zwanziger, and scoped escape routes.  Added
+  `calculation-checks/lattice_brst_neuberger_checks.py`.

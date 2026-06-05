@@ -1540,6 +1540,14 @@ Current checks:
   the local Gaussian representation, the tree-level transverse propagator as
   the inverse of the horizon-modified kernel, and the complex \(p^2\)-plane
   pole locations.
+- `lattice_brst_neuberger_checks.py`: finite topology and bookkeeping checks for
+  the Neuberger zero-over-zero obstruction, including signed Morse counts on
+  \(S^1\) and \(S^3\), compact Lie-group Euler characteristics from odd
+  cohomology generators, the based lattice gauge-group product formula,
+  residual-global-zero-mode separation, the orbitwise \(0/0\) insertion in
+  gauge-invariant expectations, and negative controls for absolute determinants,
+  equivariant cosets, noncompact coordinates, and Curci--Ferrari-type ghost
+  saturation.
 - `gauge_phase_diagnostics_checks.py`: finite checks for the gauge-theory
   phases chapter, including electric, magnetic, and dyonic condensate
   orthogonality in \(\mathbb Z_N^{\rm e}\oplus\mathbb Z_N^{\rm m}\), the finite

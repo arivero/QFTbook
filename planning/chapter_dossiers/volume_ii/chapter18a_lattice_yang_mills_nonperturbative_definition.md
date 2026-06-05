@@ -32,6 +32,10 @@
   Ba{\l}aban's multiscale construction program.  These references are
   guardrails; finite-cutoff definitions and status distinctions are written
   explicitly in the manuscript.
+- `SRC-CROSS-NEUBERGER`: The following BRST chapter now contains the finite
+  lattice Neuberger zero-over-zero obstruction.  This lattice chapter only uses
+  it to clarify that the gauge-invariant Haar integral does not insert a
+  conventional BRST-exact gauge-fixing factor.
 
 ## Construction Task
 
@@ -49,6 +53,9 @@ The chapter must define and derive:
   \(\operatorname{tr}(t^a t^b)=\delta^{ab}\);
 - the finite compact Haar integral for \(Z_\Lambda(\beta)\) and expectation
   values of gauge-invariant observables;
+- the explicit cross-reference that a conventional compact-orbit BRST-exact
+  lattice gauge-fixing insertion is a different construction and vanishes by
+  the Neuberger theorem under its stated hypotheses;
 - the smooth-field expansion of the plaquette and the recovery of
   \((4g_0^2)^{-1}\int\operatorname{tr}F_{\mu\nu}F_{\mu\nu}\);
 - Wilson-loop observables, character expansion, Haar orthogonality, and the
@@ -78,6 +85,11 @@ The chapter must define and derive:
 
 1. A finite Wilson lattice gauge theory is a finite-dimensional compact
    integral with exact gauge invariance and normalized Haar measure.
+1a. The gauge-invariant finite Haar integral is not repaired or completed by
+    inserting a conventional BRST-exact lattice gauge-fixing factor.  Under the
+    compact connected finite-lattice hypotheses of the following BRST chapter,
+    that factor is the Neuberger Euler-characteristic factor and vanishes
+    orbitwise.
 2. The plaquette is the lattice curvature: it transforms by conjugation at its
    basepoint and has classical expansion
    \(U_{\mu\nu}=\exp(i a^2F_{\mu\nu}+O(a^3))\).
@@ -160,3 +172,8 @@ The chapter must define and derive:
   glueball/flux-tube spectra.  The dossier now records explicitly that
   mass gap does not imply confinement and that the strong-coupling area law is
   evidence at finite cutoff rather than a continuum proof.
+- 2026-06-05 issue #778 cross-reference pass: added the local warning after
+  the finite Haar expectation formula that conventional BRST-exact compact
+  lattice gauge fixing triggers the Neuberger zero-over-zero obstruction.  The
+  gauge-invariant lattice formulation remains the finite-cutoff definition
+  because it does not insert the oriented BRST sum over Gribov copies.

@@ -34,6 +34,10 @@
       "risk_class": "broken gauge-theory external-state amplitudes"
     },
     {
+      "path": "lattice_brst_neuberger_checks.py",
+      "risk_class": "finite lattice BRST topology"
+    },
+    {
       "path": "kinetic_theory_checks.py",
       "risk_class": "Schwinger-Keldysh kinetic collision kernel"
     },
