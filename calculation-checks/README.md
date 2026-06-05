@@ -2449,10 +2449,12 @@ Current checks:
   including the KW \(R\)-anomaly, \(\gamma=2\mathcal C\) NSVZ convention,
   KW beta-function rank count for the two gauge numerators and quartic
   marginality defect, the KW two-dimensional local conformal-locus count,
-  \(a\)-maximization quadratic term, central charges, rank-one conifold
-  relation, KS beta-function numerator signs, unequal-rank \(R\)-anomaly
-  coefficients, Seiberg-dual magnetic rank, magnetic meson quadratic-form
-  integration, Euclidean cascade step count, and
+  \(a\)-maximization stationarity and Hessian/current-two-point sign for the
+  baryonic mixing direction, the SQCD meson unitarity-bound accidental-current
+  correction template, central charges, rank-one conifold relation, KS
+  beta-function numerator signs, unequal-rank \(R\)-anomaly coefficients,
+  Seiberg-dual magnetic rank, magnetic meson quadratic-form integration,
+  Euclidean cascade step count, and
   \(\mathbb Z_{2M}\to\mathbb Z_2\) vacuum count.
 - `susy_n1_pure_sym_checks.py`: exact finite checks for pure
   four-dimensional \(\mathcal N=1\) supersymmetric Yang--Mills, including

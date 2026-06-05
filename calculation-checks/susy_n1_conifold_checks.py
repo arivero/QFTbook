@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Exact convention checks for the N=1 conifold SCFT and cascade chapter."""
+"""Exact convention checks for the N=1 conifold SCFT and cascade chapter.
+
+The a-maximization checks are finite anomaly arithmetic only.  They verify the
+stationarity and Hessian formulas used after the monograph states the imported
+SCFT current-multiplet theorem and its no-accidental-current assumptions.
+"""
 
 from fractions import Fraction
 
@@ -103,7 +108,21 @@ def check_kw_exact_marginal_dimension_count():
 
 
 def check_kw_a_maximization_and_central_charges():
-    # The trial baryonic mixing parameter is s.  The exact trace is
+    # The trial baryonic mixing parameter is s.  In the SU(2)_A x SU(2)_B
+    # preserving sector, gauge-anomaly and superpotential constraints leave
+    # only R_A + R_B = 1, so the remaining one-parameter mixing is baryonic.
+    for r_a in (Fraction(1, 3), Fraction(1, 2), Fraction(7, 10)):
+        r_b = 1 - r_a
+        for n in range(2, 8):
+            gauge_anomaly = n + n * (r_a - 1) + n * (r_b - 1)
+            superpotential_r = 2 * r_a + 2 * r_b
+            baryonic_parameter = (r_a - r_b) / 2
+            assert_equal(gauge_anomaly, 0, "KW preserved-sector gauge anomaly")
+            assert_equal(superpotential_r, 2, "KW preserved-sector superpotential R")
+            assert_equal(r_a, Fraction(1, 2) + baryonic_parameter, "KW A charge is baryonic mixing")
+            assert_equal(r_b, Fraction(1, 2) - baryonic_parameter, "KW B charge is baryonic mixing")
+
+    # The exact trace is
     # Tr R_s^3 = 3 N^2/2 - 2 - 6 N^2 s^2, so the quadratic coefficient in
     # a(s) is negative.
     for n in range(2, 11):
@@ -118,6 +137,54 @@ def check_kw_a_maximization_and_central_charges():
         assert_equal(a, Fraction(27 * n * n, 64) - Fraction(3, 8), f"KW a for N={n}")
         assert_equal(c, Fraction(27 * n * n, 64) - Fraction(1, 4), f"KW c for N={n}")
         assert_equal(a - c, Fraction(-1, 8), f"KW a-c for N={n}")
+
+        # Stationarity: d a/ds = (3/32)(9 Tr R^2 B - Tr B) vanishes at s=0.
+        tr_b = 2 * n * n - 2 * n * n
+        tr_r_squared_b = (
+            2 * n * n * Fraction(1, 4)
+            - 2 * n * n * Fraction(1, 4)
+        )
+        stationarity = Fraction(3, 32) * (9 * tr_r_squared_b - tr_b)
+        assert_equal(stationarity, 0, "KW a-max stationarity")
+
+        # Hessian/current two-point relation in the chapter normalization:
+        # tau_BB=-3 Tr R B^2 and a''(0)=-(9/16) tau_BB.
+        tr_r_b_squared = 4 * n * n * Fraction(-1, 2)
+        tau_bb = -3 * tr_r_b_squared
+        hessian = Fraction(3, 32) * (-36 * n * n)
+        assert_equal(tau_bb, 6 * n * n, "KW baryon current two-point coefficient")
+        assert_equal(hessian, Fraction(-9, 16) * tau_bb, "KW a-max Hessian vs current two-point")
+
+
+def chiral_a_contribution(r_charge: Fraction) -> Fraction:
+    fermion_r = r_charge - 1
+    return Fraction(3, 32) * (3 * fermion_r**3 - fermion_r)
+
+
+def check_accidental_symmetry_unitarity_correction():
+    free_chiral_a = chiral_a_contribution(Fraction(2, 3))
+    assert_equal(free_chiral_a, Fraction(1, 48), "free chiral a contribution")
+
+    # SQCD's naive electric meson charge crosses the chiral unitarity bound at
+    # N_f=3 N_c/2.  Below that, the anomaly functional must be corrected by a
+    # decoupled meson contribution rather than maximized as-is.
+    n_c = 5
+    below_nf = 7
+    below_meson_r = 2 * (1 - Fraction(n_c, below_nf))
+    assert_equal(below_meson_r < Fraction(2, 3), True, "SQCD meson below unitarity bound")
+    correction = free_chiral_a - chiral_a_contribution(below_meson_r)
+    assert_equal(correction > 0, True, "accidental meson correction is nonzero")
+
+    boundary_nf = 15
+    boundary_nc = 10
+    boundary_meson_r = 2 * (1 - Fraction(boundary_nc, boundary_nf))
+    boundary_correction = free_chiral_a - chiral_a_contribution(boundary_meson_r)
+    assert_equal(boundary_meson_r, Fraction(2, 3), "SQCD meson at unitarity boundary")
+    assert_equal(boundary_correction, 0, "unitarity-bound correction vanishes at boundary")
+
+    above_nf = 8
+    above_meson_r = 2 * (1 - Fraction(n_c, above_nf))
+    assert_equal(above_meson_r > Fraction(2, 3), True, "SQCD meson above unitarity bound")
 
 
 def check_conifold_rank_one_relation():
@@ -249,6 +316,7 @@ def main():
     check_kw_beta_rank_count()
     check_kw_exact_marginal_dimension_count()
     check_kw_a_maximization_and_central_charges()
+    check_accidental_symmetry_unitarity_correction()
     check_conifold_rank_one_relation()
     check_ks_nsvz_and_rank_steps()
     check_ks_r_anomaly_remnant()

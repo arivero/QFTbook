@@ -131,6 +131,16 @@ brane construction, or holographic interpretation is a premise of the chapter.
   `Tr R`, `Tr R^3`, \(a\), \(c\), and conditional free-field
   \(a_{\mathrm{UV}}-a_{\mathrm{IR}}\) comparison under the SCFT-input
   hypothesis.
+- `qt:n1-a-maximization-boundary`: quoted \(a\)-maximization theorem boundary
+  for unitary four-dimensional \(\mathcal N=1\) SCFTs with a stress-tensor
+  multiplet, complete conserved flavor-current basis, anomaly-free trial
+  \(R\)-currents, no omitted accidental symmetries, stationarity equations,
+  and Hessian/current-two-point positivity relation
+  \(a''_{IJ}=-(9/16)\tau_{IJ}\).
+- `ex:n1-accidental-symmetry-a-correction`: unitarity-bound/accidental-current
+  correction showing that a chiral operator with \(R<2/3\) must be replaced
+  by a free chiral contribution \(a_\chi(2/3)\) and an enlarged current
+  space before maximization.
 - `hyp:sqcd-quantum-modified-confining-input`: assumptions for comparing
   the `N_f=N_c` quantum-modified chiral ring with the `N_f=N_c+1`
   confining chiral-sector description.
@@ -424,8 +434,15 @@ brane construction, or holographic interpretation is a premise of the chapter.
   assumptions the holomorphic implicit-function theorem gives the
   two-complex-dimensional KW local conformal locus from the three sources
   `(tau_1,tau_2,h)` and one equation `E=0`.
-- Performs the KW `a`-maximization calculation for baryonic mixing and
-  derives the exact finite-N central charges
+- Applies the quoted \(a\)-maximization theorem to KW only after stating the
+  complete preserved-symmetry mixing space: in the
+  `SU(2)_A x SU(2)_B`-preserving sector, Cartan mixing would break the
+  non-Abelian flavor symmetry, a common axial shift violates the
+  gauge/superpotential constraints, and the remaining Abelian direction is
+  \(U(1)_B\).  The baryonic trial polynomial has stationarity at \(s=0\) and
+  Hessian \(-27N^2/8=-(9/16)\tau_{BB}\), so under the no-accidental-current
+  assumption the theorem selects the symmetric R-current.
+- Derives the exact finite-N KW central charges
   `a=27N^2/64-3/8`, `c=27N^2/64-1/4`.
 - Proves the rank-one abelian conifold quotient
   `C[W_ij]/(W_11 W_22 - W_12 W_21)` and records the general commuting
@@ -449,7 +466,9 @@ brane construction, or holographic interpretation is a premise of the chapter.
   `gamma=2 mathcal C` conversion, superpotential R-charge, NSVZ numerator,
   KW beta-function rank count for gauge numerators and quartic marginality,
   the KW exact-marginality dimension count and tangent-kernel arithmetic,
-  `a`-maximization sign, central charges, conifold determinant relation, KS
+  `a`-maximization stationarity and Hessian/current-two-point sign for
+  baryonic mixing, the SQCD meson unitarity-bound accidental-current
+  correction template, central charges, conifold determinant relation, KS
   numerator signs, unequal-rank R-anomaly coefficients, Seiberg-dual magnetic
   rank, magnetic meson quadratic-form integration, cascade step count, and
   the `Z_{2M}->Z_2` vacuum count.
@@ -513,3 +532,8 @@ chiral-coordinate spaces with their assumptions and anomaly data.
   index, affine-Toda, VY/source, and instanton-selection arguments remain
   evidence ledgers, not proofs of the four-dimensional gap, confinement,
   phase-purity, or cluster claims.
+- 2026-06-05 issue #795 pass: inserted the \(a\)-maximization theorem boundary
+  and rewrote the KW baryonic-mixing conclusion as conditional on a complete
+  preserved-symmetry current basis and absence of accidental currents.  Added
+  the SQCD meson unitarity-bound correction as the worked failure mode for
+  naive trial-polynomial maximization.

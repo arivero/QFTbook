@@ -2476,10 +2476,115 @@ anomaly and NSVZ calculations below test these assumptions; they do not by
 themselves construct the fixed point.
 \end{hypothesis}
 
+\begin{quotedtheorem}[\(a\)-maximization status boundary]
+\label{qt:n1-a-maximization-boundary}
+Use the four-dimensional \(\mathcal N=1\) \(a\)-maximization theorem of
+\cite{IntriligatorWecht2003}, together with the anomaly/current two-point
+normalizations of \cite{AnselmiFreedmanGrisaruJohansen1998}.  Assume a
+unitary four-dimensional \(\mathcal N=1\) SCFT with a stress-tensor
+supermultiplet, a finite declared basis of conserved non-\(R\) flavor currents
+\(F_I\), and anomaly coefficients computed by matching to any ultraviolet
+description or dual description with the same global-current background
+fields.  Let
+\[
+  R_t=R_0+\sum_I s^I F_I
+\]
+range over gauge-anomaly-free and superpotential-compatible trial
+\(R\)-currents in this basis.  The trial anomaly functional is
+\begin{equation}
+  a_{\rm trial}(s)
+  =
+  \frac3{32}
+  \left(3\operatorname{Tr}R_t^3-\operatorname{Tr}R_t\right),
+  \label{eq:n1-a-trial-functional}
+\end{equation}
+where the traces are over Weyl fermions.  If the exact superconformal
+\(R\)-current lies in the declared trial space and no accidental symmetry has
+been omitted, it is a local maximum of
+\eqref{eq:n1-a-trial-functional}.  Its stationarity equations are
+\begin{equation}
+  0=
+  \frac{\partial a_{\rm trial}}{\partial s^I}
+  =
+  \frac3{32}
+  \left(9\operatorname{Tr}R_\ast^2F_I-\operatorname{Tr}F_I\right),
+  \label{eq:n1-a-max-stationarity}
+\end{equation}
+and the Hessian at the solution is
+\begin{equation}
+  \frac{\partial^2 a_{\rm trial}}{\partial s^I\partial s^J}
+  =
+  \frac{27}{16}\operatorname{Tr}R_\ast F_I F_J
+  =
+  -\frac9{16}\tau_{IJ}.
+  \label{eq:n1-a-max-hessian-current-two-point}
+\end{equation}
+Here \(\tau_{IJ}=-3\operatorname{Tr}R_\ast F_I F_J\) is the positive
+flavor-current two-point matrix in the present normalization.  Positivity of
+\(\tau\) is the physical input that turns stationarity into a local maximum.
+\end{quotedtheorem}
+
+The theorem applies after the SCFT and the trial-current space have been
+specified.  Before applying it one must identify all conserved Abelian flavor
+currents that are allowed to mix with \(R\) in the symmetry sector being
+studied.  Cartan generators of a non-Abelian flavor group may be included only
+if the proposed fixed point or deformation has broken the non-Abelian symmetry
+to that Abelian subgroup; otherwise mixing with such a Cartan would choose a
+direction in the multiplet and is not in the preserved-symmetry trial space.
+If a gauge-invariant chiral operator reaches the scalar unitarity bound
+\[
+  \Delta\ge1,\qquad R\ge\frac23,
+\]
+it becomes a free chiral multiplet and brings an accidental current.  Then
+the trial space and the anomaly functional must be enlarged before
+maximization.
+
+\begin{example}[Unitarity-bound correction for an accidental chiral field]
+\label{ex:n1-accidental-symmetry-a-correction}
+For one chiral multiplet of trial superfield charge \(r\), the contribution to
+\eqref{eq:n1-a-trial-functional} is
+\begin{equation}
+  a_\chi(r)
+  =
+  \frac3{32}\left(3(r-1)^3-(r-1)\right),
+  \qquad
+  a_\chi\!\left(\frac23\right)=\frac1{48}.
+  \label{eq:chiral-multiplet-a-contribution}
+\end{equation}
+If a gauge-invariant chiral operator \(M\), with multiplicity \(d_M\), would
+have naive trial charge \(R_M(s)<2/3\), the old anomaly polynomial is no
+longer the object to maximize.  The minimal decoupled-field correction is
+\begin{equation}
+  a_{\rm corrected}(s)
+  =
+  a_{\rm naive}(s)
+  +
+  d_M\left[
+    a_\chi\!\left(\frac23\right)-a_\chi(R_M(s))
+  \right],
+  \label{eq:a-max-accidental-correction}
+\end{equation}
+with an additional accidental \(U(1)_M\) acting on the free field.  In SQCD,
+the naive electric meson has
+\[
+  R(M)=2\left(1-\frac{N_c}{N_f}\right).
+\]
+For \(N_f<\frac32N_c\) this is below \(2/3\).  The failure is not a small
+arithmetic defect in \(a_{\rm naive}\); it is evidence that the assumed
+interacting chiral-primary spectrum and current basis are incomplete.  This is
+why the conformal-window bookkeeping above stops at the meson unitarity test
+unless the magnetic/free-field description and accidental currents are made
+part of the infrared datum.
+\end{example}
+
 \paragraph{SQCD central charges and free-field comparison.}
 Assume Hypothesis~\ref{hyp:n1-scft-bookkeeping-input} and suppose
-\(\frac32N_c<N_f<3N_c\).  For the candidate SQCD superconformal
-\(R\)-current displayed above,
+\(\frac32N_c<N_f<3N_c\).  The current-identification boundary is the same as
+in Quoted Theorem~\ref{qt:n1-a-maximization-boundary}: possible mixing with
+conserved flavor currents must already have been fixed in the declared
+flavor-symmetric sector, and the meson unitarity-bound failure mode is absent
+in this range.  For the candidate SQCD superconformal \(R\)-current displayed
+above,
 \begin{equation}
   \operatorname{Tr}R=-N_c^2-1,
   \qquad
@@ -3320,9 +3425,16 @@ common zero by an RG trajectory, and nonsingularity of the local zero locus are
 the additional inputs isolated in
 Hypothesis~\ref{hyp:kw-exact-marginality-input}.
 
-The anomaly and NSVZ calculations above fix the exchange-symmetric point.  To
-see that the same value is selected by \(a\)-maximization, allow mixing with
-the baryonic current:
+The anomaly and NSVZ calculations fix the symmetric point.  The trial-charge
+check uses Quoted Theorem~\ref{qt:n1-a-maximization-boundary} and is
+conditional on completeness of the trial-current basis for the preserved
+symmetry.  In the sector preserving
+\(SU(2)_A\times SU(2)_B\), mixing with Cartans of the two non-Abelian flavor
+groups is not allowed because it would choose directions in the doublets.  A
+common axial shift of \(R(A)\) and \(R(B)\) violates the gauge-anomaly and
+quartic-superpotential constraints.  Thus the only Abelian mixing direction in
+this sector is the baryonic current, normalized by \(q_B(A)=+1\),
+\(q_B(B)=-1\):
 \[
   R_s(A_i)=\frac12+s,\qquad
   R_s(B_j)=\frac12-s .
@@ -3359,8 +3471,20 @@ Thus
   \frac{3}{32}
   \left(\frac92N^2-4-18N^2s^2\right),
 \]
-which is maximized at \(s=0\).  The superconformal \(R\)-charge is the
-symmetric one:
+which has stationary point \(s=0\) and Hessian
+\[
+  a''(0)=-\frac{27}{8}N^2 .
+\]
+The current two-point relation
+\eqref{eq:n1-a-max-hessian-current-two-point} gives the same sign:
+\[
+  \operatorname{Tr}R_\ast B^2=-2N^2,\qquad
+  \tau_{BB}=6N^2,\qquad
+  -\frac9{16}\tau_{BB}=-\frac{27}{8}N^2 .
+\]
+Assuming no accidental current is present in this sector, the
+\(a\)-maximization theorem therefore selects \(s=0\).  Under these hypotheses
+the superconformal \(R\)-charge is the symmetric one:
 \[
   R(A_i)=R(B_j)=\frac12 .
 \]
@@ -3441,8 +3565,11 @@ permutes the \(N\) eigenvalue quadruples.  The corresponding branch is
 This statement concerns the commuting mesonic branch; baryonic branches and
 noncommuting chiral-ring strata require additional invariant-theory data.
 
-The protected operator dimensions follow immediately from the
-superconformal \(R\)-charges.  The mesons \(W_{ij}\) transform as
+Under Hypothesis~\ref{hyp:n1-scft-bookkeeping-input} and the
+\(a\)-maximization boundary
+Quoted Theorem~\ref{qt:n1-a-maximization-boundary}, the protected operator
+dimensions follow from the selected superconformal \(R\)-charges.  The mesons
+\(W_{ij}\) transform as
 \((\mathbf2,\mathbf2)\) under \(SU(2)_A\times SU(2)_B\) and have
 \[
   R(W_{ij})=1,\qquad \Delta(W_{ij})=\frac32 .
@@ -3548,9 +3675,10 @@ current or contact-term obstructions in the preserved-symmetry sector.
 
 The result is a conditional field-theoretic reconstruction of the
 Leigh--Strassler rank count for this example.  The chapter has proved the
-anomaly, NSVZ, \(a\)-maximization, chiral-ring, and rank-one beta-function
-arithmetic.  It has not constructed the nonperturbative continuum SCFT from
-a regulator.
+anomaly, NSVZ, chiral-ring, and rank-one beta-function arithmetic, and it has
+applied the \(a\)-maximization theorem under the stated current-basis and
+no-accidental-symmetry hypotheses.  It has not constructed the
+nonperturbative continuum SCFT from a regulator.
 
 \section{Klebanov--Strassler Cascade}
 \label{sec:n1-klebanov-strassler-cascade}
