@@ -6,11 +6,38 @@ Volume II, Chapter 19.  It does not evaluate QCD loop integrals.  Its role is
 to guard the distributional plus-prescription convention, the contact-term
 normalization, the sign/transpose convention in the coefficient/operator RG
 equations, and the one-loop timelike quark/gluon momentum-sum mechanism behind
-the protected EEC energy-flow row.
+the protected EEC energy-flow row.  It also checks the finite measured-bin
+bridge between a small-angle light-ray coefficient and the one-variable EEC
+endpoint distribution, including the angular pushforward Jacobian.
+
+Evidence contract.
+Target claims:
+  - Eq. (measured-small-angle-eec-pushforward): pushing a two-detector
+    small-angle distribution to rho=1-n1.n2 contributes
+    J_d(rho)=(2 rho-rho^2)^((d-2)/2).
+  - Controlled approximation (measured-small-angle-eec-endpoint-chart): a
+    measured small-angle bin must retain angular pushforward, endpoint
+    contact, retained-operator/mixing, and nonperturbative residuals as
+    separate budget entries.
+Independent construction:
+  - Polynomial integration over a finite rho-bin checks the pushforward
+    factor and residual inequality with exact rational arithmetic.
+Imported assumptions:
+  - Smooth endpoint tests, a finite retained light-ray chart, and rational
+    polynomial detector-sphere dimensions d=2 and d=4 for the sample
+    Jacobians.
+Negative controls:
+  - Omitting the angular pushforward Jacobian changes a generic bin in the
+    d=4 detector-sphere control, and the measured-bin residual is
+    underbudgeted if the Jacobian defect is removed from the ledger.
+Scope boundary:
+  - These checks do not compute QCD loop coefficients, prove the all-order
+    light-ray OPE, or establish nonperturbative detector-limit existence.
 """
 
 from fractions import Fraction
 
+from check_utils import assert_gt as _assert_gt
 from check_utils import assert_leq as _assert_leq
 
 
@@ -43,6 +70,32 @@ def ordinary_annulus_action(poly, rho_a, rho_b):
             continue
         total += coeff * (rho_b**power - rho_a**power) / power
     return total
+
+
+def poly_mul(left, right):
+    product = [Fraction(0) for _ in range(len(left) + len(right) - 1)]
+    for i, left_coeff in enumerate(left):
+        for j, right_coeff in enumerate(right):
+            product[i + j] += left_coeff * right_coeff
+    return product
+
+
+def poly_integral_interval(poly, lower, upper):
+    total = Fraction(0)
+    for power, coeff in enumerate(poly):
+        total += coeff * (upper ** (power + 1) - lower ** (power + 1)) / Fraction(power + 1)
+    return total
+
+
+def eec_pushforward_jacobian_poly(detector_sphere_dimension: int):
+    # J_d(rho)=(2 rho-rho^2)^((d-2)/2).  The dimensions used here keep this
+    # polynomial over the rationals: d=2 is four-dimensional spacetime and d=4
+    # is a higher-dimensional negative control for accidentally omitting J_d.
+    if detector_sphere_dimension == 2:
+        return [Fraction(1)]
+    if detector_sphere_dimension == 4:
+        return [Fraction(0), Fraction(2), Fraction(-1)]
+    raise ValueError("only rational polynomial jacobians d=2 and d=4 are used")
 
 
 def symbolic_log_term(log_rho0=0, log_eps=0, finite=0):
@@ -262,6 +315,73 @@ def check_endpoint_resolution_shift():
         add_log_terms(annulus_constant_log, contact_shift),
         symbolic_log_term(),
         "endpoint resolution shift constant test",
+    )
+
+
+def check_small_angle_pushforward_and_measured_bin_budget():
+    # Pushing a two-detector light-ray coefficient to the one-variable EEC
+    # endpoint rho=1-n1.n2 contributes J_d(rho)=(2rho-rho^2)^((d-2)/2).
+    # In physical D=4 spacetime the detector sphere has d=2, so J=1.  In
+    # higher dimensions omitting this Jacobian changes measured-bin tests.
+    rho_a = Fraction(1, 5)
+    rho_b = Fraction(2, 5)
+    coefficient = [Fraction(3, 7), Fraction(-2, 11)]
+    detector_test = [Fraction(5, 13), Fraction(7, 17), Fraction(-1, 19)]
+
+    four_dimensional_value = poly_integral_interval(
+        poly_mul(
+            poly_mul(coefficient, eec_pushforward_jacobian_poly(2)),
+            detector_test,
+        ),
+        rho_a,
+        rho_b,
+    )
+    no_jacobian_value = poly_integral_interval(
+        poly_mul(coefficient, detector_test),
+        rho_a,
+        rho_b,
+    )
+    assert_equal(
+        four_dimensional_value,
+        no_jacobian_value,
+        "four-dimensional EEC pushforward has unit rho-Jacobian",
+    )
+
+    higher_dimensional_value = poly_integral_interval(
+        poly_mul(
+            poly_mul(coefficient, eec_pushforward_jacobian_poly(4)),
+            detector_test,
+        ),
+        rho_a,
+        rho_b,
+    )
+    if higher_dimensional_value == no_jacobian_value:
+        raise AssertionError("omitting the angular pushforward Jacobian should change a generic bin")
+
+    jacobian_defect = higher_dimensional_value - no_jacobian_value
+    endpoint_contact = Fraction(-1, 23)
+    retained_mixing = Fraction(-1, 29)
+    nonperturbative_lift = Fraction(-1, 31)
+    measured_bin_value = (
+        higher_dimensional_value
+        + endpoint_contact
+        + retained_mixing
+        + nonperturbative_lift
+    )
+    residual = measured_bin_value - no_jacobian_value
+    full_budget = (
+        abs(jacobian_defect)
+        + abs(endpoint_contact)
+        + abs(retained_mixing)
+        + abs(nonperturbative_lift)
+    )
+    _assert_leq("measured small-angle bin residual budget", abs(residual), full_budget)
+
+    underbudget = full_budget - abs(jacobian_defect)
+    _assert_gt(
+        "dropping the pushforward-Jacobian residual underbudgets this bin",
+        abs(residual),
+        underbudget,
     )
 
 
@@ -788,6 +908,7 @@ def main():
     )
 
     check_endpoint_resolution_shift()
+    check_small_angle_pushforward_and_measured_bin_budget()
     check_timelike_momentum_sum_rule()
     check_finite_light_ray_mixing_chart()
     check_finite_light_ray_transport_flatness()

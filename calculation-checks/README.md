@@ -1058,7 +1058,10 @@ Current checks:
   matrix whose columns vanish by plus-prescription and gluon-delta
   compensation, plus the endpoint observable transport budget in which
   coefficient, operator, and contact evolution leave only declared residuals
-  in detector tests.
+  in detector tests.  It also checks the measured small-angle EEC
+  pushforward bridge: in four spacetime dimensions the \(\rho\)-Jacobian is
+  one, while in a higher-dimensional rational control omitting the angular
+  Jacobian underbudgets a measured bin.
 - `energy_correlator_track_checks.py`: exact rational checks for the
   selected calorimetric measure and track-energy-correlator bookkeeping,
   including the selected EEC zeroth and first moment identities, selected

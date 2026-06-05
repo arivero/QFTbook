@@ -2979,6 +2979,118 @@ nonperturbative entries above is to make a QCD prediction for those
 coordinates.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Measured small-angle EEC endpoint chart]
+\label{ca:measured-small-angle-eec-endpoint-chart}
+The small-angle endpoint of a measured EEC bin is the place where the
+calorimetric coordinate theorem meets the light-ray OPE data of
+Chapter~\ref{ch:volume-ii-19} and
+Chapter~\ref{ch:cft-light-ray-energy-correlators}.  It is useful to state the
+interface explicitly because two mistakes are otherwise easy: treating a
+separated-angle light-ray density as a detector distribution at the endpoint,
+and forgetting the geometric pushforward from two detector directions to one
+angular variable.
+
+Let
+\[
+  \rho=1-\mathbf n_1\cdot\mathbf n_2,\qquad 0<\rho<2,
+\]
+and let \(d_\perp=D-2\) be the dimension of the detector sphere.  For a fixed
+second direction and a smooth test function \(F\) of the first direction,
+geodesic polar coordinates give the exact pushforward identity
+\begin{equation}
+  \begin{aligned}
+    &\int_{S^{d_\perp}}\dd\Omega_1\,
+    \delta\!\left(\rho-(1-\mathbf n_1\cdot\mathbf n_2)\right)
+    F(\mathbf n_1)\\
+    &\quad =
+    \mathcal J_{d_\perp}(\rho)
+    \int_{S^{d_\perp-1}}\dd\omega\,
+    F(\mathbf n(\rho,\omega)),\\
+    &\mathcal J_{d_\perp}(\rho)
+    =
+    (2\rho-\rho^2)^{(d_\perp-2)/2}.
+  \end{aligned}
+  \label{eq:measured-small-angle-eec-pushforward}
+\end{equation}
+In four spacetime dimensions \(d_\perp=2\), so
+\(\mathcal J_{2}=1\).  Thus the familiar \(1/\rho\) small-angle EEC
+singularity is not produced by the area of a small detector annulus; it is a
+short-distance light-ray or collinear singularity.  In other dimensions, or
+in a detector patch with a nontrivial angular coordinate, the Jacobian is a
+load-bearing part of the prediction.
+
+Fix an endpoint interval \(0\le\rho\le\rho_0\), a finite retained
+light-ray label set \(L\), and a smooth endpoint detector test \(\varphi\).
+A small-angle contribution to the measured EEC is a distributional functional
+of the form
+\begin{equation}
+  \left\langle
+    O_{{\rm small},L}^{\rm pred},
+    \varphi
+  \right\rangle
+  =
+  \sum_{A\in L}
+  \left\langle
+    \mathcal J_{d_\perp} C_A^{\rm end}(\rho;Q,\mu,\nu),
+    \varphi(\rho)
+  \right\rangle
+  \langle X|\mathbb O_A(\mu,\nu)|X\rangle
+  +
+  K_{+,L}(\varphi;X)
+  +
+  R_{{\rm small},L}(\varphi;X).
+  \label{eq:measured-small-angle-eec-chart}
+\end{equation}
+Here \(C_A^{\rm end}\) is not an ordinary function at \(\rho=0\): it includes
+the separated-angle density, endpoint plus-subtractions, and contact
+coordinates such as the ones in
+\eqref{eq:qcd-eec-renormalized-endpoint-coefficient}.  The term
+\(K_{+,L}\) records explicit coincident-detector contact and endpoint-atom
+coordinates after the detector convention has been chosen.  The remainder
+\(R_{{\rm small},L}\) contains omitted light-ray labels, mixing curvature or
+path-ordering defects, endpoint matching, and any regulator or rapidity
+residuals not represented by the retained chart.
+
+The endpoint-resolution identity
+\eqref{eq:qcd-eec-plus-resolution-shift} is the operational sign check.  If
+an annulus \(\rho_a<\rho<\rho_b\) is moved from the separated-angle bulk into
+the endpoint plus-chart, the ordinary annulus integral is added and the
+\(\delta(\rho)\) contact coordinate shifts by the compensating logarithmic
+amount.  A finite detector bin touching \(\rho=0\) is therefore not predicted
+by integrating only the displayed separated-angle density over the bin.  It is
+predicted by pairing the full endpoint distribution with the detector test.
+
+Combining \eqref{eq:finite-resolution-eec-observable-budget} with the
+small-angle chart gives the local measured-bin requirement
+\begin{equation}
+  \left|
+  \left\langle
+    O_{\rm phys}-O_{{\rm small},L}^{\rm pred},
+    \varphi
+  \right\rangle
+  \right|
+  \le
+  B_{\rm bin}
+  +B_{\rm jac}
+  +B_{\rm contact}
+  +B_{\rm mix}
+  +B_{\rm match}
+  +B_{\rm np}
+  +B_{\rm cont}.
+  \label{eq:measured-small-angle-eec-budget}
+\end{equation}
+The new entries here are not decorative.  \(B_{\rm jac}\) records angular
+pushforward and detector-coordinate errors; \(B_{\rm contact}\) records the
+endpoint plus/contact convention; \(B_{\rm mix}\) records omitted light-ray
+operators or non-flat retained transport; \(B_{\rm match}\) records matching
+to the separated-angle and back-to-back charts; and \(B_{\rm np}\) records
+hadronization, track, or fragmentation data.  Thus the physics prediction is a
+statement about a measured detector functional.  A list of small-angle powers
+or anomalous dimensions becomes such a prediction only after the pushforward,
+endpoint contact transport, retained-operator residual, and finite-resolution
+binning have been supplied in the same convention.
+\end{controlledapproximation}
+
 \section{Shape Functions and Track Functions}
 
 When a measured event shape is of order \(\Lambda_{\rm QCD}/Q\), the soft

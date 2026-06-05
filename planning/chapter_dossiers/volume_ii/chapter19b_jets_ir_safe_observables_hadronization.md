@@ -160,6 +160,14 @@ The chapter establishes:
   short-distance coefficient chart, nonperturbative lift, and an explicit
   residual ledger for binning, contact, perturbative, factorization/Glauber,
   nonperturbative, track, and continuum/regulator errors;
+- controlled approximation
+  `ca:measured-small-angle-eec-endpoint-chart`, spelling out the measured-bin
+  interface between small-angle light-ray OPE coefficients and detector EEC
+  bins: the pushforward Jacobian
+  \((2\rho-\rho^2)^{(d_\perp-2)/2}\), endpoint plus/contact transport,
+  retained light-ray operator residuals, matching residuals, and
+  nonperturbative lift must be supplied before small-angle powers or anomalous
+  dimensions become a physical EEC prediction;
 - Definition `def:leading-shape-function-operator-datum`, defining the
   endpoint shape function as a renormalized Wilson-line measurement
   distribution paired with test functions, together with its normalization and
@@ -381,6 +389,13 @@ The chapter establishes:
       nonperturbative lifts, and a residual ledger that includes detector
       binning, contact, perturbative, factorization/Glauber,
       nonperturbative, track, and continuum/regulator errors.
+10ab. A small-angle EEC endpoint prediction is not just a list of powers.
+      The two-detector light-ray distribution must be pushed forward to
+      \(\rho=1-\mathbf n_1\cdot\mathbf n_2\) with the angular Jacobian,
+      extended across \(\rho=0\) with the declared plus/contact convention,
+      and paired with detector tests.  Omitted light-ray labels, non-flat
+      mixing transport, endpoint matching, nonperturbative lifts, and binning
+      errors remain explicit residuals.
 10a. Shape functions are renormalized Wilson-line measurement coordinates.
      Their leading endpoint convolution preserves total weight and shifts the
      first event-shape moment by \(\Omega_1^e/Q\) only after the observable,
@@ -445,6 +460,14 @@ The chapter establishes:
   The companion `energy_correlator_sum_rule_checks.py` now verifies the
   finite-resolution bound and a negative control where omitting the binning
   budget undercounts the measured residual.
+- 2026-06-05 issue #519 measured-small-angle endpoint pass: added
+  `ca:measured-small-angle-eec-endpoint-chart` so the jet/detector chapter now
+  connects small-angle light-ray OPE data to measured EEC bins through the
+  angular pushforward Jacobian, endpoint plus/contact convention, retained
+  operator residuals, matching residuals, and nonperturbative lift.  The
+  companion `energy_correlator_light_ray_ope_checks.py` now verifies the
+  pushforward Jacobian and a negative control where omitting it underbudgets a
+  measured bin.
 - 2026-05-26 issue #526 pass: corrected the soft-drop IRC classification by
   separating the \(\beta_{\rm SD}>0\) groomed-four-vector statement from the
   \(\beta_{\rm SD}=0\) collinear counterexample, and added
