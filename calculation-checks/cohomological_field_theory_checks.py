@@ -12,8 +12,9 @@ algebra in several places:
 * the finite normal super-Gaussian factor is Pf(C)/sqrt(det(A)), equivalently
   its square is Pf(C)^2/det(A), for a two-even/two-odd diagonal model.
 * the S^2 Cartan fixed-point formula has the same coefficient expansion as
-  the direct integral, and zero normal weights are not invertible Euler
-  denominators.
+  the direct integral, zero normal weights are not invertible Euler
+  denominators, and a nonzero T^2 weight can vanish after evaluation at a
+  nongeneric one-parameter generator.
 
 All checks use exact rational arithmetic.  They are convention checks, not a
 replacement for the derivations in the text.
@@ -32,6 +33,11 @@ N = 2
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+
+
+def assert_not_equal(name: str, got: object, forbidden: object) -> None:
+    if got == forbidden:
+        raise AssertionError(f"{name}: unexpectedly got {got!r}")
 
 
 @dataclass(frozen=True)
@@ -327,6 +333,77 @@ def check_zero_weight_obstruction() -> None:
     )
 
 
+def dot_weight(weight: tuple[int, int], xi: tuple[int, int]) -> int:
+    return weight[0] * xi[0] + weight[1] * xi[1]
+
+
+def evaluated_rank_two_euler_product(
+    weights: tuple[tuple[int, int], ...],
+    xi: tuple[int, int],
+) -> Fraction | None:
+    product = Fraction(1)
+    for weight in weights:
+        value = dot_weight(weight, xi)
+        if value == 0:
+            return None
+        product *= value
+    return product
+
+
+def check_rank_two_weight_hyperplane_evaluation() -> None:
+    # T^2 acting on S^2 x S^2 has four T^2-fixed points with symbolic normal
+    # weights (+/-e1, +/-e2).  The characters e1 and e2 are nonzero in the
+    # coefficient ring, but evaluating at xi=(1,0) kills every e2-weight.  The
+    # correct xi-fixed set is then {N,S} x S^2, not four isolated points.
+    e1 = (1, 0)
+    e2 = (0, 1)
+    minus_e1 = (-1, 0)
+    minus_e2 = (0, -1)
+    regular_xi = (1, 2)
+    hyperplane_xi = (1, 0)
+
+    assert_equal(
+        "regular T2 denominator evaluates",
+        evaluated_rank_two_euler_product((e1, e2), regular_xi),
+        Fraction(2),
+    )
+    assert_equal(
+        "nonzero symbolic e2 vanishes on hyperplane generator",
+        evaluated_rank_two_euler_product((e1, e2), hyperplane_xi),
+        None,
+    )
+
+    point_denominators = (
+        evaluated_rank_two_euler_product((e1, e2), hyperplane_xi),
+        evaluated_rank_two_euler_product((e1, minus_e2), hyperplane_xi),
+        evaluated_rank_two_euler_product((minus_e1, e2), hyperplane_xi),
+        evaluated_rank_two_euler_product((minus_e1, minus_e2), hyperplane_xi),
+    )
+    assert_equal(
+        "all four isolated T2 denominators fail at xi=(1,0)",
+        point_denominators,
+        (None, None, None, None),
+    )
+
+    t2_fixed_points = 4
+    xi_fixed_components = 2
+    assert_not_equal(
+        "nongeneric xi-fixed set is larger than T2 fixed-point set",
+        xi_fixed_components,
+        t2_fixed_points,
+    )
+    assert_equal(
+        "north component residual normal weight is invertible",
+        evaluated_rank_two_euler_product((e1,), hyperplane_xi),
+        Fraction(1),
+    )
+    assert_equal(
+        "south component residual normal weight is invertible with sign",
+        evaluated_rank_two_euler_product((minus_e1,), hyperplane_xi),
+        Fraction(-1),
+    )
+
+
 def main() -> None:
     check_cartan_square()
     check_hamiltonian_equivariant_closure()
@@ -335,6 +412,7 @@ def main() -> None:
     check_normal_euler_factor_square()
     check_s2_cartan_localization_coefficients()
     check_zero_weight_obstruction()
+    check_rank_two_weight_hyperplane_evaluation()
     print("All cohomological field-theory algebra checks passed.")
 
 
