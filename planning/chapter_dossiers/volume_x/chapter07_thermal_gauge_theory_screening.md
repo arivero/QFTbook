@@ -24,6 +24,13 @@ theories before kinetic theory and anomalous transport.
   Polyakov loop, one-line expectation, neutral pair correlator, static
   external-charge free energy, and line-renormalization-independent pair
   excess free energy in sectors where the one-line expectations are nonzero.
+- `F_avg`, `F_1`, `F_adj`: color-averaged traced Polyakov-pair free energy
+  and singlet/adjoint channel coordinates, with the latter requiring a
+  gauge-fixed or cyclic-Wilson-loop definition rather than separately traced
+  loops.
+- `M_hard`: hard gap for modes integrated out in the local EQCD expansion,
+  normally of order `2 pi T` only under the declared weak-coupling and
+  holonomy assumptions.
 
 ## Claim Ledger
 
@@ -38,9 +45,11 @@ theories before kinetic theory and anomalous transport.
 - Derives the one-loop Debye mass in the monograph trace and coupling
   convention, including gauge, Dirac, complex-scalar, and real-scalar
   coefficients and the `SU(N)` fundamental-trace conversion.
-- Proves the origin of the Debye term from the static current-current
-  correlator, then computes the coefficient through thermal susceptibility
-  integrals and background-field vector-minus-ghost determinant counting.
+- Proves the origin of the Debye term from the second variation of the
+  background-field effective action, including contact/seagull terms
+  `<S''>` in addition to the connected product of first variations; the
+  determinant calculation then computes the coefficient through thermal
+  susceptibility integrals and background-field vector-minus-ghost counting.
 - Records the convention distinction that a complex scalar in representation
   `R` contributes `g^2 T^2 T_R/3`, while one real scalar degree in a real
   representation contributes `g^2 T^2 T_R/6`.
@@ -50,12 +59,20 @@ theories before kinetic theory and anomalous transport.
   and the zero-frequency static electric limit.
 - Separates electric matching from nonperturbative magnetic screening in the
   dimensionally reduced theory.
-- Defines Polyakov-loop free energies and proves that the connected pair
-  excess free energy cancels local line self-energies only in a fixed
-  state/center sector or source-selected limit with nonzero one-line
-  expectations.  Separately proves that the static source-pair force cancels
-  local line self-energies without dividing by one-point functions.
-- Defines the EQCD matching problem.
+- Defines the separately traced Polyakov-pair observable as color averaged,
+  distinguishes it from gauge-fixed singlet coordinates and gauge-invariant
+  cyclic Wilson loops, and records their different gauge-dependence and
+  line/cusp/intersection/mixing renormalization data.
+- Proves that the connected color-averaged pair excess free energy cancels
+  local line self-energies only in a fixed state/center sector or
+  source-selected limit with nonzero one-line expectations.  Separately proves
+  that the static source-pair force cancels local line self-energies without
+  dividing by one-point functions.
+- Defines local EQCD as a controlled approximation: a weak-coupling hierarchy
+  `p,m_E,g_3^2 << M_hard ~ 2 pi T`, a regulator and matching prescription, a
+  static operator basis, a truncation/remainder status, and explicit failure
+  modes from holonomy-shifted light modes, strong coupling near transitions,
+  imaginary chemical potentials, or additional light scalars.
 
 ## Figure Ledger
 
@@ -67,11 +84,14 @@ circle, a Polyakov loop pair, and the hierarchy of static scales
 
 - `calculation-checks/thermal_screening_checks.py` verifies the static
   Yukawa/Bessel asymptotic powers, the transverse-projected pole residue, and
-  the trace-convention conversion of the Debye coefficient; the HTL angular
-  kernel's transversality and static-limit algebra; and the exact finite
-  algebra by which Polyakov-loop pair ratios and static forces cancel line
-  self-energies, including the zero-one-point center-symmetric domain
-  distinction.
+  the trace-convention conversion of the Debye coefficient; the
+  second-background-variation contact/seagull ledger; the HTL angular kernel's
+  transversality and static-limit algebra; color-averaged versus singlet
+  Polyakov-channel weights and cyclic-loop renormalization extras; the exact
+  finite algebra by which Polyakov-loop pair ratios and static forces cancel
+  line self-energies, including the zero-one-point center-symmetric domain
+  distinction; and the finite hierarchy/exceptions logic behind local EQCD
+  matching.
 
 ## Audit Notes
 
@@ -94,3 +114,9 @@ circle, a Polyakov loop pair, and the hierarchy of static scales
   mechanism behind the static Debye coefficient, with the retarded angular
   kernel, covariant current-conservation derivation, static electric limit,
   and companion finite algebra check.
+- 2026-06-05 issue #792 pass: corrected Polyakov-pair channel language from
+  singlet to color-averaged, separated gauge-fixed singlet and cyclic Wilson
+  loop definitions, rewrote the Debye origin lemma as a full background-field
+  second variation including contact/seagull terms, and upgraded EQCD from a
+  distance-only statement to a controlled local matching approximation with
+  hard-gap, weak-coupling, holonomy, operator-basis, and remainder hypotheses.

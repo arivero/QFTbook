@@ -177,33 +177,66 @@ Substitution gives
 \eqref{eq:thermal-boson-susceptibility-integral} and
 \eqref{eq:thermal-fermion-susceptibility-integral}.
 
-\begin{lemma}[One-loop origin and coefficient of the Debye mass term]
+\begin{lemma}[Background-field origin and coefficient of the Debye mass term]
 \label{lem:debye-mass-origin}
 At one loop, the static quadratic term for \(A_0\) in the dimensionally
-reduced action is the zero-frequency, zero-momentum limit of the Euclidean
-current-current correlator coupled to \(A_0\), and its value is
-\eqref{eq:one-loop-debye-mass-general}.
+reduced action is the zero-frequency, zero-momentum second variation of the
+background-field effective action.  If \(S[A_0]\) is the Euclidean action in
+a fixed regulator and background-field gauge, then for a constant temporal
+background
+\begin{equation}
+  \left.
+  \frac{\partial^2\Gamma[A_0]}{\partial A_0^a\partial A_0^b}
+  \right|_{A_0=0}
+  =
+  \left\langle
+  \left.
+  \frac{\partial^2S[A_0]}{\partial A_0^a\partial A_0^b}
+  \right|_{A_0=0}
+  \right\rangle
+  -
+  \left\langle
+  \left.
+  \frac{\partial S[A_0]}{\partial A_0^a}
+  \right|_{A_0=0}
+  \left.
+  \frac{\partial S[A_0]}{\partial A_0^b}
+  \right|_{A_0=0}
+  \right\rangle_c .
+  \label{eq:debye-background-second-variation}
+\end{equation}
+The first term is the contact or seagull contribution.  It vanishes for a
+strictly linear fermion coupling, but it is present for scalar and gauge
+fields and for the ghost/background-gauge operators.  Evaluating this full
+second variation gives \eqref{eq:one-loop-debye-mass-general}.
 \end{lemma}
 
 \begin{proof}
-Introduce a background temporal field \(A_0^a\) that is independent of
-Euclidean time and space.  Expanding the finite-temperature generating
-functional to second order gives
-\begin{equation}
-  \Delta W^{(2)}
-  =
-  \frac12 A_0^a A_0^b
-  \int_0^\beta d\tau\int d^{d-1}x\,
-  \left\langle J_0^a(\tau,\mathbf x)J_0^b(0,0)\right\rangle_c .
-\label{eq:debye-current-current-origin}
-\end{equation}
-Translation invariance identifies the integral with the static polarization
-\(\Pi_{00}^{ab}(0,\mathbf0)\).  Gauge symmetry in the unbroken thermal state
-sets this tensor proportional to \(\delta^{ab}\).  The coefficient is the
-mass matrix of the adjoint scalar \(A_0\) in the static effective action,
-which is \(m_D^2\delta^{ab}\).
+Let \(Z[A_0]=\int D\Phi\,\exp(-S[\Phi;A_0])\) and
+\(\Gamma[A_0]=-\log Z[A_0]\).  Differentiating \(\Gamma\) twice gives
+\eqref{eq:debye-background-second-variation}.  This is the precise object
+whose zero-momentum limit is matched to the \(A_0^2\) coefficient in the
+static effective theory.  Writing only a connected product of first
+variations is correct only for fields whose action is linear in the
+background being varied.  A complex scalar, for example, contains
+\[
+  (D_0\phi)^\dagger D_0\phi
+  \supset
+  A_0^aA_0^b\,\phi^\dagger T^aT^b\phi ,
+\]
+and the displayed term contributes to
+\(\partial^2S/\partial A_0^a\partial A_0^b\).  In the gauge sector the
+background-field vector operator, the gauge-fixing term, and the ghost
+operator contribute the analogous contact pieces.  The determinant
+calculation below keeps all of them.
 
-It remains to compute the coefficient.  A constant \(A_0=A_0^at^a\) shifts
+For a translation-invariant unbroken thermal state,
+\eqref{eq:debye-background-second-variation} is diagonal in color and equals
+\(\beta V\,\chi\,\delta^{ab}\).  The coefficient \(\chi\) is the adjoint
+electric susceptibility.  The three-dimensional matching convention used
+below then sets \(m_D^2=g^2\chi\).
+
+A constant \(A_0=A_0^at^a\) shifts
 the Matsubara frequencies exactly as an imaginary color chemical potential.
 For a weight \(w\) of a representation \(R\), the quadratic operator depends
 on
@@ -214,7 +247,10 @@ for bosons, with the analogous anti-periodic frequencies for fermions.  This
 statement can be checked directly from the covariant derivative
 \(D_0=\partial_\tau+\operatorname{ad}_{A_0}\), and then extended from a
 Cartan-valued \(A_0\) to arbitrary \(A_0\) by \(G\)-invariance of the
-quadratic form.
+quadratic form.  Expanding the shifted determinant is equivalent to
+\eqref{eq:debye-background-second-variation}: the second derivative of the
+operator is the seagull term, and the product of two first derivatives is the
+ordinary insertion term.
 
 For one complex bosonic oscillator of energy \(E=|p|\) and charge \(q\), the
 thermal part of the free-energy density is
@@ -482,9 +518,51 @@ The free energy of an external static charge is defined by
 \[
   e^{-\beta F_Q}=\left\langle \operatorname{tr}_R P(\mathbf x)\right\rangle
 \]
-after renormalizing the line.  Correlators of two Polyakov loops define
-static color-singlet free energies; their large-distance decay belongs to the
-screening spectrum rather than to a zero-temperature particle spectrum.
+after renormalizing the line and after specifying the state or center-sector
+limit.  The separately traced pair
+\[
+  \left\langle
+  \operatorname{tr}_R P_R(\mathbf x)\,
+  \operatorname{tr}_{\bar R}P_{\bar R}(\mathbf y)
+  \right\rangle
+\]
+is a gauge-invariant color-averaged static source-pair observable.  It is not
+a projection onto a pure singlet channel.  A singlet coordinate requires extra
+structure, for example a gauge-fixed definition such as
+\[
+  d_R^{-1}\left\langle
+  \operatorname{tr}_R(P_R(\mathbf x)P_R^\dagger(\mathbf y))
+  \right\rangle_{\rm gf},
+\]
+whose gauge dependence is part of the datum, or a gauge-invariant cyclic
+Wilson loop
+\[
+  d_R^{-1}\left\langle
+  \operatorname{tr}_R\!\left(
+    P_R(\mathbf x)U_R(\mathbf x,\mathbf y)
+    P_R^\dagger(\mathbf y)U_R(\mathbf y,\mathbf x)
+  \right)\right\rangle ,
+\]
+whose spatial transporters introduce line, cusp/intersection, and mixing
+renormalizations.  The color-averaged correlator, the gauge-fixed singlet
+coordinate, and the cyclic Wilson loop therefore have different
+renormalization data and should not be given the same free-energy label.
+Their large-distance decays belong to the static screening spectrum rather
+than to a zero-temperature particle spectrum.
+
+In a perturbative channel decomposition for a fundamental
+\(SU(N)\) source pair, after a singlet/adjoint channel convention has been
+supplied, the color-averaged object has the representation
+\[
+  e^{-\beta F_{\rm avg}(r)}
+  =
+  \frac1{N^2}e^{-\beta F_1(r)}
+  +
+  \frac{N^2-1}{N^2}e^{-\beta F_{\rm adj}(r)}.
+\]
+The weights are only the finite color multiplicities in
+\(\mathbf N\otimes\overline{\mathbf N}=\mathbf 1\oplus\mathrm{adj}\); they do
+not turn the traced pair itself into a singlet observable.
 
 \begin{definition}[Renormalized static-source free-energy datum]
 \label{def:thermal-static-source-free-energy-datum}
@@ -512,6 +590,9 @@ For a conjugate pair at separation \(r=|\mathbf x-\mathbf y|\), define
   \right\rangle .
 \end{aligned}
 \]
+The second line is the color-averaged traced-pair free energy in the declared
+line scheme.  It is not the cyclic Wilson-loop free energy and not a
+gauge-fixed singlet channel unless those additional definitions are supplied.
 Changing the finite part of \(\delta m_R\) shifts \(F_R^{\rm ren}\) by an
 additive constant.  The datum therefore includes the line scheme whenever an
 absolute one-source free energy is quoted.
@@ -604,9 +685,31 @@ without assigning finite one-source free energies.
 
 \section{Dimensional Reduction}
 
-At distances much larger than \(\beta\), nonzero Matsubara modes can be
-integrated out into a three-dimensional effective theory.  In four spacetime
-dimensions the bosonic part begins as
+\begin{controlledapproximation}[Local EQCD matching]
+\label{ca:thermal-eqcd-local-matching}
+Local electrostatic QCD is a high-temperature weak-coupling expansion, not a
+formal consequence of taking \(|\mathbf x|\gg\beta\).  Work in a fixed
+gauge-invariant ultraviolet regulator and match static correlation functions
+or a background-field effective action in a specified scheme.  Assume a
+scale hierarchy
+\begin{equation}
+  |\mathbf p|,\ m_E,\ g_3^2 \ll M_{\rm hard},
+  \qquad
+  M_{\rm hard}\sim 2\pi T,
+  \qquad
+  g(2\pi T)\ll1,
+  \label{eq:thermal-eqcd-scale-hierarchy}
+\end{equation}
+where \(M_{\rm hard}\) is a lower bound on the modes removed from the
+effective theory.  In the ordinary deconfined weak-coupling expansion those
+removed modes are the nonzero bosonic Matsubara modes and all thermal
+fermion modes; the retained light fields are the static spatial gauge field
+and the adjoint scalar \(A_0\).  The exact static functional obtained by
+integrating out the removed modes can be nonlocal.  The local EQCD action is
+the Taylor expansion of that functional in external static momenta and light
+fields, with a declared operator basis and a truncation order.
+
+In four spacetime dimensions the leading bosonic action begins as
 \[
   S_{\mathrm{EQCD}}
   =
@@ -618,10 +721,48 @@ dimensions the bosonic part begins as
   +\lambda_E\,\operatorname{tr}(A_0^4)+\cdots
   \right].
 \]
-The ellipsis denotes higher local operators ordered by the static derivative
-and field expansion.  A quantitative use of this action requires matching
-the coefficients \(g_3^2,m_E^2,\lambda_E,\ldots\) in the same regulator and
-operator scheme as the original thermal theory.
+The coefficients \(g_3^2,m_E^2,\lambda_E,\ldots\) are fixed by matching in
+the same regulator and operator scheme as the original thermal theory, as in
+the dimensional-reduction matching programs of
+\cite{BraatenNieto1995EFTThermo,KajantieEtAl1996DimensionalReduction}.  If the
+operator basis is kept through order \(D_\ast\), the omitted terms are
+controlled only in the matching domain.  Their contribution to a static
+amplitude at momentum \(p\) is bounded, in the declared matching expansion, by
+powers of
+\begin{equation}
+  \frac{p}{M_{\rm hard}},\qquad
+  \frac{m_E}{M_{\rm hard}},\qquad
+  \frac{g_3^2}{M_{\rm hard}},
+  \label{eq:thermal-eqcd-expansion-parameters}
+\end{equation}
+with scheme-dependent coefficients.  The magnetic sector of the
+three-dimensional theory still contains nonperturbative physics at the
+\(g_3^2\) scale.  EQCD locality does not remove that infrared problem.
+\end{controlledapproximation}
+
+The hypothesis \(M_{\rm hard}\sim2\pi T\) includes a holonomy condition.  In
+a static diagonal background with eigenvalue differences \(\alpha(A_0)\), an
+adjoint mode has covariant Matsubara frequency
+\[
+  2\pi nT+\alpha(A_0).
+\]
+If this quantity is small for some mode that was going to be integrated out,
+that mode is not hard and must either be retained or treated by a different
+effective description.  The same warning applies near thermal transitions or
+strong-coupling regimes where \(g(2\pi T)\) is not a small matching parameter,
+to backgrounds with imaginary chemical potentials that shift fermionic
+thermal gaps, and to theories with additional light scalars.  In those cases
+the exact static functional may still exist, but the local EQCD truncation
+above has lost the scale separation that justified it.
+
+This separates three objects that often appear in the same sentence.  The
+perturbative Debye parameter \(m_E\) is a matched coefficient in
+Controlled Approximation~\ref{ca:thermal-eqcd-local-matching}.  The
+gauge-invariant screening spectrum is extracted from static transfer-matrix
+correlators.  Static-source free energies are Polyakov-line observables with
+their own line, channel, and center-sector data.  Agreement among their
+leading weak-coupling scales is useful physics, but it is not an identity of
+definitions.
 
 \begin{openproblem}[Gauge-invariant screening spectrum]
 \label{op:gauge-invariant-screening-spectrum}

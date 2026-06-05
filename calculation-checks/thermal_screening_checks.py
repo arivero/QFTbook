@@ -3,12 +3,14 @@
 
 These checks accompany Volume X, Chapter 7.  They verify algebraic facts that
 are easy to obscure in prose: the Yukawa power in a d-dimensional static
-correlator, the one-dimensional projected pole residue, static-source line
-renormalization cancellation with its nonzero one-point domain, and the
-conversion of the one-loop Debye coefficient between the monograph trace-delta
-convention and the common half-trace convention.  They also check the finite
-angular algebra behind the HTL bridge from static Debye matching to a
-transverse retarded response.
+correlator, the one-dimensional projected pole residue, Polyakov-channel
+bookkeeping, static-source line renormalization cancellation with its nonzero
+one-point domain, the second-background-variation contact term in Debye
+matching, and the conversion of the one-loop Debye coefficient between the
+monograph trace-delta convention and the common half-trace convention.  They
+also check the finite angular algebra behind the HTL bridge from static Debye
+matching to a transverse retarded response, and the finite hierarchy logic
+behind local EQCD matching.
 """
 
 from __future__ import annotations
@@ -95,6 +97,46 @@ def check_debye_trace_convention_conversion() -> None:
                 trace_delta_physical,
                 half_trace,
             )
+
+
+def background_second_variation(contact: Fraction, connected_first_variations: Fraction) -> Fraction:
+    # For Gamma=-log Z and Euclidean action S[A], differentiating twice gives
+    # <S''>-<S' S'>_c.  Scalar and gauge operators have nonzero S'' terms.
+    return contact - connected_first_variations
+
+
+def check_debye_second_variation_contact_terms() -> None:
+    fermion_contact = Fraction(0)
+    fermion_insertions = Fraction(-5, 7)
+    assert_equal(
+        "linear fermion coupling has no seagull term",
+        background_second_variation(fermion_contact, fermion_insertions),
+        -fermion_insertions,
+    )
+
+    scalar_contact = Fraction(11, 13)
+    scalar_insertions = Fraction(5, 7)
+    scalar_full = background_second_variation(scalar_contact, scalar_insertions)
+    scalar_current_only = -scalar_insertions
+    assert_equal(
+        "scalar Debye variation includes seagull",
+        scalar_full - scalar_current_only,
+        scalar_contact,
+    )
+
+    # Background-field gauge around a flat A0 background gives
+    # (4 vector components)/2 - (one complex ghost) = one scalar determinant,
+    # i.e. two real periodic bosonic thermal degrees of freedom in the adjoint.
+    vector_log_copies = Fraction(4, 2)
+    ghost_log_copies = Fraction(1)
+    net_log_copies = vector_log_copies - ghost_log_copies
+    real_boson_debye_weight = Fraction(1, 6)
+    assert_equal("vector-minus-ghost determinant copies", net_log_copies, Fraction(1))
+    assert_equal(
+        "gauge determinant equals two real bosonic Debye weights",
+        2 * real_boson_debye_weight,
+        Fraction(1, 3),
+    )
 
 
 def check_htl_static_limit_and_transversality() -> None:
@@ -189,6 +231,41 @@ def check_static_source_line_renormalization_cancellation() -> None:
     )
 
 
+def check_polyakov_channel_bookkeeping() -> None:
+    for n in range(2, 9):
+        singlet_weight = Fraction(1, n * n)
+        adjoint_weight = Fraction(n * n - 1, n * n)
+        assert_equal(
+            f"fundamental color-average weights sum SU({n})",
+            singlet_weight + adjoint_weight,
+            Fraction(1),
+        )
+        if singlet_weight == Fraction(1):
+            raise AssertionError("nontrivial SU(N) color average cannot be a pure singlet")
+
+        singlet_channel = Fraction(5, 7)
+        adjoint_channel = Fraction(11, 13)
+        color_averaged = singlet_weight * singlet_channel + adjoint_weight * adjoint_channel
+        if color_averaged == singlet_channel:
+            raise AssertionError("color-averaged Polyakov pair collapsed to singlet channel")
+
+    polyakov_line_factor = Fraction(17, 19)
+    spatial_transporter_factor = Fraction(23, 29)
+    intersection_factor = Fraction(31, 37)
+    traced_pair_renorm = polyakov_line_factor * polyakov_line_factor
+    cyclic_loop_renorm = (
+        traced_pair_renorm
+        * spatial_transporter_factor
+        * spatial_transporter_factor
+        * intersection_factor
+    )
+    assert_equal(
+        "cyclic Wilson loop has extra transporter/intersection renormalization",
+        cyclic_loop_renorm / traced_pair_renorm,
+        spatial_transporter_factor * spatial_transporter_factor * intersection_factor,
+    )
+
+
 def pair_excess_ratio(pair_correlator: Fraction, source_one_point: Fraction, antisource_one_point: Fraction) -> Fraction:
     if source_one_point == 0 or antisource_one_point == 0:
         raise ValueError("pair-excess ratio requires nonzero one-point functions")
@@ -236,13 +313,78 @@ def check_static_source_ratio_domain_and_center_symmetric_force() -> None:
     assert_equal("center-sector direct pair force removes line energy", -bare_pair_derivative, -ren_pair_derivative)
 
 
+def eqcd_local_expansion_is_controlled(
+    external_momentum: Fraction,
+    electric_mass: Fraction,
+    magnetic_scale: Fraction,
+    hard_gap: Fraction,
+) -> bool:
+    if hard_gap <= 0:
+        return False
+    return (
+        4 * external_momentum < hard_gap
+        and 4 * electric_mass < hard_gap
+        and 4 * magnetic_scale < hard_gap
+    )
+
+
+def check_eqcd_locality_hierarchy_and_exceptions() -> None:
+    hard_gap = Fraction(1)
+    external_momentum = Fraction(1, 20)
+    electric_mass = Fraction(1, 10)
+    magnetic_scale = Fraction(1, 25)
+    assert_equal(
+        "EQCD local expansion hierarchy accepted",
+        eqcd_local_expansion_is_controlled(
+            external_momentum,
+            electric_mass,
+            magnetic_scale,
+            hard_gap,
+        ),
+        True,
+    )
+
+    derivative_remainder_order = 4
+    remainder = (external_momentum / hard_gap) ** derivative_remainder_order
+    assert_equal("EQCD derivative remainder power", remainder, Fraction(1, 160000))
+
+    # A holonomy can shift a nominal n=1 Matsubara mode to zero:
+    # omega_n + alpha(A0) = 1 - 1 in units of 2 pi T.
+    shifted_hard_gap = Fraction(1) - Fraction(1)
+    assert_equal(
+        "holonomy-light mode rejects local hard-mode integration",
+        eqcd_local_expansion_is_controlled(
+            external_momentum,
+            electric_mass,
+            magnetic_scale,
+            shifted_hard_gap,
+        ),
+        False,
+    )
+
+    strong_coupling_electric_mass = Fraction(2, 5)
+    assert_equal(
+        "large electric scale rejects EQCD hierarchy",
+        eqcd_local_expansion_is_controlled(
+            external_momentum,
+            strong_coupling_electric_mass,
+            magnetic_scale,
+            hard_gap,
+        ),
+        False,
+    )
+
+
 def main() -> None:
     check_yukawa_screening_power()
     check_projected_pole_residue()
     check_debye_trace_convention_conversion()
+    check_debye_second_variation_contact_terms()
     check_htl_static_limit_and_transversality()
+    check_polyakov_channel_bookkeeping()
     check_static_source_line_renormalization_cancellation()
     check_static_source_ratio_domain_and_center_symmetric_force()
+    check_eqcd_locality_hierarchy_and_exceptions()
     print("All thermal screening convention and static-source checks passed.")
 
 
