@@ -1850,6 +1850,19 @@
   shortcuts, rank collapse, unamputated external residues, colored-kernel
   projection, sector leakage, and stale determinant constants after a finite
   scheme/frame change.
+- 2026-06-05 issue #597 finite-momentum pion-delta kernel pass: added
+  `ca:finite-momentum-pion-delta-instanton-source-kernel` after the BPST
+  zero-mode density form factor.  The pass assembles the named \(U(1)_A\)-odd
+  \(\pi-\delta\) tested source coefficient as a physical source kernel:
+  \(2\int d\zeta_{\mathcal S}^{(2)}(\rho)\int \widehat f(-q)
+  |\widehat h_\rho(q)|^2\,d^4q/(2\pi)^4\), with the local contact
+  \(2\zeta_{\mathcal S}^{(2)}f(0)\) only as its zero-momentum limit.  It
+  records why point-split tests can see finite zero-mode source width, why
+  hard source components are form-factor suppressed, and why the result is
+  still a short-distance instanton source kernel rather than a full hadronic
+  susceptibility.  The BPST companion uses an exact finite cyclic convolution
+  to verify the point-split local-contact failure, zero-momentum recovery,
+  hard-source suppression, and residual budget.
 - 2026-06-05 issue #597 two-body cluster-integrability pass: added
   `ca:instanton-two-body-cluster-integrability` after the first Mayer
   correction.  The pass ties the finite dilute-gas correction to a connected

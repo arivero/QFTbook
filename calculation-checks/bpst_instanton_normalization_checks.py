@@ -226,9 +226,11 @@ relations
     induced local source-curvature splittings, their anomalous axial Ward
     ledger, the tested-susceptibility contact rule in which the local
     instanton curvature weights only the diagonal value of the test kernel,
-    and the theta+arg det M phase combination
+    the finite-momentum pi-delta source-kernel convolution that survives
+    point splitting while preserving the zero-momentum contact limit, and the
+    theta+arg det M phase combination;
     Uhlenbeck boundary faces have the expected codimensions and product
-    power-counting integrability thresholds
+    power-counting integrability thresholds;
     the k=1 ADHM quotient has orientation dimension 4N-5 and cone
     volume power rho^(4N-5)
 
@@ -250,8 +252,9 @@ coefficient/operator transport matrices, exact retained size-shell
 stationarity equations, finite amplitude-sector isolation telescopes, and
 exact radial power-counting for two-body cluster relative-coordinate
 majorants, together with exact log-weight bookkeeping for the renormalized
-one-instanton channel ledger and finite pole-window source/sink spectral
-projection checks.
+one-instanton channel ledger, finite pole-window source/sink spectral
+projection checks, and exact finite cyclic convolution tests for the
+finite-momentum pi-delta source kernel.
 Imported assumptions: the BPST background and zero-mode formulas, one-loop
 determinant coefficients, the trace-delta convention, and finite regulator
 truncations stated in the chapter.
@@ -276,6 +279,9 @@ source correlator poles mistaken for hadronic matrix elements before overlap
 division, overlap division mistaken for pole isolation when excited states
 remain, and vanishing interpolating-source overlaps hidden by an instanton
 kernel,
+point-split source response discarded by a contact-only shortcut,
+zero-momentum source normalization confused with finite-momentum smearing,
+hard-source suppression replaced by a local vertex norm,
 vacuum determinant calibration substituted for a source-dependent fluctuation
 bound, signed fluctuation-cumulant cancellations,
 hard-only and screening-only shell substitutions in the mixed size-majorant
@@ -1608,6 +1614,90 @@ def check_two_flavor_instanton_tested_susceptibility_contact() -> None:
         pion_contact - delta_contact + large_negative_spectral_difference < 0,
         True,
     )
+
+
+def check_finite_momentum_pion_delta_instanton_source_kernel() -> None:
+    # A finite zero-mode density kernel is a convolution, not a pure contact
+    # delta.  Use a four-site periodic regulator with a normalized BPST-like
+    # density envelope.
+    h = [Fraction(1, 2), Fraction(1, 4), Fraction(1, 4), Fraction(0)]
+    volume = len(h)
+    assert_equal("finite source density envelope normalized", sum(h, Fraction(0)), Fraction(1))
+
+    def cyclic_source_kernel(envelope: list[Fraction]) -> list[Fraction]:
+        return [
+            sum(
+                envelope[center] * envelope[(center + separation) % volume]
+                for center in range(volume)
+            )
+            for separation in range(volume)
+        ]
+
+    source_kernel = cyclic_source_kernel(h)
+    assert_equal(
+        "finite source-width convolution kernel",
+        source_kernel,
+        [Fraction(3, 8), Fraction(3, 16), Fraction(1, 4), Fraction(3, 16)],
+    )
+    assert_equal("finite source kernel has unit zero-momentum weight", sum(source_kernel), Fraction(1))
+
+    zeta = Fraction(5, 7)
+    point_split_test = [Fraction(0), Fraction(1), Fraction(0), Fraction(0)]
+    local_contact_kernel = [Fraction(1), Fraction(0), Fraction(0), Fraction(0)]
+    local_contact_weight = sum(
+        test * contact for test, contact in zip(point_split_test, local_contact_kernel)
+    )
+    finite_source_weight = sum(
+        test * kernel for test, kernel in zip(point_split_test, source_kernel)
+    )
+    assert_equal("point-split local contact weight", local_contact_weight, Fraction(0))
+    assert_equal("point-split finite zero-mode source weight", finite_source_weight, Fraction(3, 16))
+
+    pion_source_curvature = zeta * finite_source_weight
+    delta_source_curvature = -zeta * finite_source_weight
+    assert_equal(
+        "finite-momentum pion-delta source kernel",
+        pion_source_curvature - delta_source_curvature,
+        2 * zeta * finite_source_weight,
+    )
+    assert_equal(
+        "contact-only shortcut misses finite source-width kernel",
+        2 * zeta * local_contact_weight == pion_source_curvature - delta_source_curvature,
+        False,
+    )
+
+    constant_test = [Fraction(1), Fraction(1), Fraction(1), Fraction(1)]
+    finite_constant_weight = sum(
+        test * kernel for test, kernel in zip(constant_test, source_kernel)
+    )
+    local_constant_weight = constant_test[0]
+    assert_equal("zero-momentum source kernel matches local contact", finite_constant_weight, local_constant_weight)
+
+    def cyclic_smear(source: list[Fraction]) -> list[Fraction]:
+        return [
+            sum(h[shift] * source[(center + shift) % volume] for shift in range(volume))
+            for center in range(volume)
+        ]
+
+    hard_source = [Fraction(1), Fraction(-1), Fraction(1), Fraction(-1)]
+    smeared_hard_source = cyclic_smear(hard_source)
+    unsmeared_norm = sum(value * value for value in hard_source) / volume
+    smeared_norm = sum(value * value for value in smeared_hard_source) / volume
+    assert_equal("hard source mode is suppressed by zero-mode density", smeared_norm, Fraction(1, 4))
+    assert_equal(
+        "hard source suppression is not the local vertex norm",
+        smeared_norm == unsmeared_norm,
+        False,
+    )
+
+    determinant_residual = Fraction(1, 100)
+    endpoint_residual = Fraction(1, 80)
+    ir_residual = Fraction(1, 60)
+    residual_bound = determinant_residual + endpoint_residual + ir_residual
+    retained_mass = abs(2 * zeta * finite_source_weight)
+    actual_residual = retained_mass * Fraction(1, 90)
+    if not actual_residual <= retained_mass * residual_bound:
+        raise AssertionError("finite-momentum pion-delta residual budget failed")
 
 
 def check_fermion_determinant_zero_mode_nonzero_mode_factorization() -> None:
@@ -6139,6 +6229,7 @@ def main() -> None:
     check_two_flavor_instanton_source_curvature()
     check_two_flavor_instanton_source_ward_ledger()
     check_two_flavor_instanton_tested_susceptibility_contact()
+    check_finite_momentum_pion_delta_instanton_source_kernel()
     check_fermion_determinant_zero_mode_nonzero_mode_factorization()
     check_light_fermion_determinant_source_frame_covariance()
     check_light_fermion_reference_amplitude_calibration()

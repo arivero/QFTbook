@@ -6521,6 +6521,104 @@ times the appropriate supremum norm of the source.  Since
 logarithmically infrared sensitive.
 \end{proof}
 
+\begin{controlledapproximation}[Finite-momentum \(\pi-\delta\) source kernel]
+\label{ca:finite-momentum-pion-delta-instanton-source-kernel}
+The local contact term in
+ControlledApproximation~\ref{ca:instanton-tested-chiral-susceptibility-contact}
+is the zero-momentum limit of a definite zero-mode source kernel.  Work in
+the two-flavor, color-singlet bilinear-source channel at \(\theta=0\), and
+retain a finite one-instanton plus anti-instanton size window with CP-even
+source density \(d\zeta_{\mathcal S}^{(2)}(\rho)\).  This signed finite
+measure contains the classical factor, collective-coordinate Jacobian,
+orientation projection, determinant convention, and the source normalization
+already declared in the same scheme.  For a source \(J\), define the BPST
+zero-mode smearing
+\begin{equation}
+  (\mathsf H_\rho J)(x_0)
+  =
+  \int_{\mathbb R^4}h_\rho(y)J(x_0+y)\,\dd^4y,
+  \qquad
+  \widehat{\mathsf H_\rho J}(q)
+  =
+  \widehat h_\rho(q)\widehat J(q),
+  \label{eq:instanton-smeared-chiral-source}
+\end{equation}
+where \(h_\rho\) is the density envelope of
+Proposition~\ref{prop:instanton-zero-mode-tail-local-limit}.  For one fixed
+isovector component \(A=1,2,3\), the retained quadratic zero-mode source
+functional has the form
+\begin{equation}
+  W_{I+\bar I,\pi\delta}^{(2)}[p_A,s_A]
+  =
+  \frac12
+  \int d\zeta_{\mathcal S}^{(2)}(\rho)
+  \int\dd^4x_0\,
+  \left[
+    (\mathsf H_\rho p_A)(x_0)^2
+    -
+    (\mathsf H_\rho s_A)(x_0)^2
+  \right]
+  +R_{\rm src}+R_{\rm det}+R_{\rm end}.
+  \label{eq:finite-momentum-pion-delta-source-functional}
+\end{equation}
+Thus the named \(U(1)_A\)-odd source kernel is not an abstract local vertex:
+it is the bilinear-density form factor inserted twice and then integrated
+over the instanton size with the same determinant and endpoint window as the
+amplitude.
+
+For a translation-invariant tested susceptibility with
+\[
+  F(x,y)=f(x-y),\qquad
+  f(0)=\int\frac{\dd^4q}{(2\pi)^4}\widehat f(q),
+\]
+the instanton contribution to the isovector difference is
+\begin{equation}
+  \Delta_{\pi-\delta}^{I+\bar I}[f]
+  =
+  2
+  \int d\zeta_{\mathcal S}^{(2)}(\rho)
+  \int\frac{\dd^4q}{(2\pi)^4}
+  \widehat f(-q)\,
+  |\widehat h_\rho(q)|^2
+  +R_{\rm src}+R_{\rm det}+R_{\rm end}+R_{\rm IR}.
+  \label{eq:finite-momentum-pion-delta-tested-kernel}
+\end{equation}
+In the local source window \(q\rho\ll1\),
+\(\widehat h_\rho(q)=\rho|q|K_1(\rho|q|)\) gives
+\begin{equation}
+\begin{aligned}
+  \Delta_{\pi-\delta}^{I+\bar I}[f]
+  &=
+  2\zeta_{\mathcal S}^{(2)} f(0)
+  +
+  O\!\left(
+    \int d|\zeta_{\mathcal S}^{(2)}|(\rho)
+    \int\frac{\dd^4q}{(2\pi)^4}
+      |\widehat f(q)|\,(\rho|q|)^2
+      \bigl(1+|\log(\rho|q|)|\bigr)
+  \right)
+  \\
+  &\quad
+  +R_{\rm src}+R_{\rm det}+R_{\rm end}+R_{\rm IR}.
+\end{aligned}
+  \label{eq:finite-momentum-pion-delta-local-limit}
+\end{equation}
+where
+\(\zeta_{\mathcal S}^{(2)}=\int d\zeta_{\mathcal S}^{(2)}(\rho)\).
+Equation~\eqref{eq:finite-momentum-pion-delta-local-limit} recovers the
+contact coefficient in
+\eqref{eq:instanton-tested-u1a-contact-splitting}.  Equation
+\eqref{eq:finite-momentum-pion-delta-tested-kernel} is stronger: a
+point-split test with \(f(0)=0\) can still see a finite source-width
+contribution from \(|\widehat h_\rho(q)|^2-1\), while hard source components
+are exponentially suppressed by the density form factor.  This is a
+short-distance instanton source kernel, not a full hadronic susceptibility.
+The spectral weights, Goldstone or screening poles, contact convention, and
+long-distance propagated terms remain in \(R_{\rm IR}\) and in the
+color-singlet spectral analysis of
+\eqref{eq:instanton-tested-susceptibility-full-decomposition}.
+\end{controlledapproximation}
+
 \begin{proposition}[Individual BPST zero-mode slot form factor]
 \label{prop:instanton-individual-zero-mode-form-factor}
 For an ordinary external fermion slot one must use the Fourier transform of a
