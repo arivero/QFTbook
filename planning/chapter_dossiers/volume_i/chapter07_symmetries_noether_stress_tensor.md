@@ -116,6 +116,7 @@ Working framework:
 | Lorentz-current conservation follows from stress-tensor conservation and symmetry. | Worked algebra | Antisymmetry of Lorentz parameter; demoted from proposition wrapper on 2026-05-29 |
 | In quantum theory, local currents and stress tensors must be defined as renormalized operator-valued distributions in the chosen framework. | Framework statement | Local operator construction, not an automatic consequence of Poincare invariance alone |
 | Quantum Noether identities in correlation functions include insertion contact terms and possible local terms from the regulated integration density and source-coordinate counterterms. | Framework statement | Equation `eq:quantum-noether-ward-regulated`; cross-reference to CFT source-functional Ward identities |
+| A local gauge-invariant Lorentz-covariant stress tensor with finite forward one-particle matrix elements is an extra hypothesis used by the Weinberg--Witten theorem, not automatic structure in gauge or gravitational descriptions. | Cross-reference/framework statement | Cross-reference to Volume I Chapter 17 Weinberg--Witten boundary |
 
 ## Figure Ledger
 
@@ -148,3 +149,7 @@ Rendered check:
   localized-parameter identity to source-functional Ward identities with
   insertion contact terms and possible local density/counterterm variation;
   cross-referenced the CFT source-functional contact-term chart in Volume V.
+- 2026-06-05 issue #772 pass: cross-referenced the Weinberg--Witten
+  stress-tensor hypothesis from the quantum stress-tensor charge discussion,
+  emphasizing that gauge-fixed representatives, asymptotic charges, and
+  nonlocal/emergent constructions are different data.

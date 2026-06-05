@@ -841,6 +841,184 @@ If the representative basis is changed, the projector changes only by terms
 with at least one factor \(k_\mu\) or \(k_\nu\).  Such terms vanish in
 \(M^\mu\Pi_{\mu\nu}M^{\nu *}\) when \(M^\mu k_\mu=0\).
 
+\section{Weinberg--Witten Boundaries for Massless Charges}
+\label{sec:weinberg-witten-boundaries-massless-charges}
+
+The preceding sections explain why helicity-one and helicity-two
+representatives require gauge redundancy.  There is a complementary
+obstruction, due to Weinberg and Witten
+\cite{WeinbergWitten1980,Loebbert2008WeinbergWitten,
+BenedettiCasiniMagan2022Noether}, that controls what a massless
+finite-helicity particle can carry if the charge or stress tensor is itself a
+local, gauge-invariant, Lorentz-covariant operator.  The theorem is often
+misquoted as a ban on emergent gauge bosons or gravitons.  Its actual content
+is sharper and more useful: it identifies a list of hypotheses, and real
+gauge theories or emergent systems avoid the conclusion by failing one of
+those hypotheses in a visible physical way.
+
+\begin{theorem}[Weinberg--Witten obstruction in four-dimensional helicity form]
+\label{thm:weinberg-witten-four-dimensional-helicity}
+Work in four-dimensional Minkowski spacetime with positive energy and
+finite-helicity massless one-particle states \(\ket{k,h}\), normalized as in
+this chapter.  Assume that the relevant local operators are defined as
+renormalized operator-valued distributions on a common domain and that their
+non-forward one-particle matrix elements have finite Lorentz-covariant
+boundary values whose forward limits give the corresponding charges.
+
+\begin{enumerate}
+\item Let \(J^\mu\) be a conserved, gauge-invariant physical local operator
+which transforms as a Lorentz vector,
+\[
+  U(\Lambda)J^\mu(x)U(\Lambda)^{-1}
+  =
+  \Lambda^\mu{}_\nu J^\nu(\Lambda x).
+\]
+If its charge has a nonzero diagonal value \(q_J\) on a massless
+finite-helicity particle, so that
+\begin{equation}
+  \lim_{k'\to k}
+  \bra{k',h'}J^\mu(0)\ket{k,h}
+  =
+  2k^\mu q_J\,\delta_{h'h},
+  \label{eq:ww-current-forward-matrix-element}
+\end{equation}
+then \(q_J=0\) for \(|h|>\frac12\).
+
+\item Let \(T^{\mu\nu}\) be a conserved, gauge-invariant physical local
+operator which transforms as a Lorentz tensor and whose spatial integral
+generates translations.  If its forward matrix element has the standard
+momentum normalization
+\begin{equation}
+  \lim_{k'\to k}
+  \bra{k',h'}T^{\mu\nu}(0)\ket{k,h}
+  =
+  2k^\mu k^\nu\,\delta_{h'h},
+  \label{eq:ww-stress-forward-matrix-element}
+\end{equation}
+then no massless particle with \(|h|>1\) can satisfy these hypotheses.
+\end{enumerate}
+\end{theorem}
+
+The hypotheses are doing as much work as the conclusion.  A local operator
+means a point-local physical observable in the Hilbert space, not a gauge-fixed
+representative.  Lorentz covariance means tensor covariance without an
+additional gauge transformation.  The forward limit in
+\eqref{eq:ww-current-forward-matrix-element} or
+\eqref{eq:ww-stress-forward-matrix-element} is a physical charge or momentum
+matrix element after quotienting null states and imposing the relevant
+Gauss-law constraints.
+
+\paragraph{Load-bearing helicity mechanism.}
+The finite part of the argument is a little-group weight selection rule.  Let
+\(\mathcal O_{\mu_1\cdots\mu_r}\) be a Lorentz tensor of rank \(r\), with
+\(r=1\) for a current and \(r=2\) for a stress tensor.  In the frame used in
+the Weinberg--Witten proof, the non-forward matrix element approaches a
+forward charge matrix element while a transverse rotation by \(\theta\)
+contributes opposite helicity-frame rotations to the two one-particle legs.
+The diagonal helicity-\(h\) matrix element therefore contains the phase
+\[
+  \ee^{2\ii h\theta}.
+\]
+On the other hand, a rank-\(r\) Lorentz tensor restricted to the transverse
+\(SO(2)\) rotation decomposes into weights obtained by adding \(r\) vector
+weights
+\[
+  m_a\in\{-1,0,+1\}.
+\]
+A nonzero finite forward limit can survive only if
+\begin{equation}
+  2h\in
+  \{m_1+\cdots+m_r\mid m_a\in\{-1,0,+1\}\}.
+  \label{eq:ww-helicity-weight-selection}
+\end{equation}
+For \(r=1\) this gives \(|h|\le \frac12\).  For \(r=2\) it gives
+\(|h|\le1\).  The analytic step imported from
+\cite{WeinbergWitten1980} is the controlled passage from non-forward
+Lorentz-covariant conserved matrix elements to the forward charge
+normalization.  Without that continuity and charge-normalization assumption
+there is no theorem to apply.
+
+This is why the theorem is not a statement about potentials or metric
+perturbations.  The vector potential \(A_\mu\) transforms covariantly only up
+to the \(k_\mu\)-shift displayed in
+the preceding sections;
+the physical local photon operator is \(F_{\mu\nu}\), and the photon is not
+charged under the ordinary electromagnetic current.  In nonabelian Yang--Mills
+the perturbative gluon carries a color label, but the corresponding color
+current is not a gauge-invariant physical local Lorentz vector acting on the
+physical Hilbert space.  Color charges are tied to Gauss-law generators and
+boundary data, not to a gauge-invariant point-local current whose forward
+matrix element satisfies
+\eqref{eq:ww-current-forward-matrix-element}.
+
+For gravity the stress-tensor hypothesis is the crucial one.  The graviton has
+\(|h|=2\), and general relativity does not provide a gauge-invariant
+point-local Lorentz-covariant stress tensor for the gravitational field.
+Coordinate-dependent gravitational pseudotensors and ADM/Bondi charges at
+infinity are useful representatives of energy bookkeeping, but they are not
+the operator \(T^{\mu\nu}\) assumed in
+\eqref{eq:ww-stress-forward-matrix-element}.  This is an evasion of a
+hypothesis, not a contradiction of the theorem.
+
+The common evasion routes can be read hypothesis by hypothesis.
+\begin{itemize}[leftmargin=2.0em]
+\item \emph{Ordinary photon.}  The photon is neutral under the
+  electromagnetic current, while the stress-tensor version permits
+  \(|h|=1\).
+\item \emph{Nonabelian gluon color.}  The perturbative color label is
+  described in a gauge-fixed or BRST chart; Gauss-law color generators are not
+  gauge-invariant point-local physical currents.
+\item \emph{Dynamical gravity.}  Gravitational energy is encoded in
+  gauge-dependent pseudotensors or asymptotic charges, not in a physical local
+  Lorentz-covariant stress tensor for the graviton.
+\item \emph{Condensed-matter emergent gauge field.}  Exact microscopic
+  Poincare covariance is usually absent; low-energy Lorentz invariance is a
+  controlled approximation on selected observables, with a cutoff and a
+  preferred microscopic frame.
+\item \emph{Topological or line-operator charge sector.}  The charged object
+  may be an endpoint, defect, or superselection sector rather than a standard
+  massless particle pole created by a local covariant operator.
+\item \emph{Holographic or other nonlocal construction.}  A boundary stress
+  tensor or nonlocal encoding is not a bulk point-local Lorentz-covariant
+  stress tensor carrying a bulk graviton forward matrix element.
+\end{itemize}
+
+Finally, compare the stress-tensor obstruction with the soft-graviton theorem
+in Chapter~\ref{ch:volume-ii-infrared-inclusive-qed}.  Weinberg's leading
+soft argument says that a massless spin-two gauge particle, if it appears in a
+factorizing \(S\)-matrix, couples universally at leading infrared order:
+\[
+  S_{\rm grav}^{(0)}
+  =
+  \frac{\kappa}{2}
+  \sum_n\eta_n
+  \frac{p_n^\mu p_n^\nu\varepsilon_{\mu\nu}^*(k)}
+       {p_n\cdot k}.
+\]
+Its linearized-diffeomorphism variation is proportional to
+\begin{equation}
+  \kappa\,\xi_\nu^*\sum_n\eta_n p_n^\nu,
+  \label{eq:ww-soft-graviton-ward-check}
+\end{equation}
+and vanishes by hard momentum conservation.  This infrared universality is
+not the missing local stress tensor for the graviton.  The soft theorem
+controls the coupling of a representative spin-two external state to hard
+matter momenta; the Weinberg--Witten theorem asks whether the spin-two
+particle itself carries a nonzero forward matrix element of a
+gauge-invariant local Lorentz-covariant stress tensor.  These are different
+questions, and treating them as the same question is the common overreading of
+the theorem.
+
+The statement above is the four-dimensional helicity form used in this
+volume.  In other spacetime dimensions the little group is \(SO(D-2)\), and
+the precise condition is representation-theoretic: the relevant one-particle
+little-group representation must be able to appear in the vector or
+rank-two-tensor channel of the forward matrix element.  The slogan
+``Weinberg--Witten forbids emergence'' is therefore both too broad and too
+imprecise; the theorem forbids only the simultaneous satisfaction of its
+locality, covariance, gauge-invariance, particle-pole, and forward-matrix
+element hypotheses.
+
 \section{Four-Dimensional Spinor-Helicity Variables}
 \label{sec:spinor-helicity-variables}
 

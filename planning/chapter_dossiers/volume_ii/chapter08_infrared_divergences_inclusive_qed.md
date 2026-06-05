@@ -145,6 +145,10 @@ Additional symbols introduced in the charged-sector discussion:
     \(\varepsilon_{\mu\nu}\) gives \(\kappa\xi_\nu^*\sum_n\eta_np_n^\nu\),
     which vanishes by hard momentum conservation; species-dependent spin-two
     couplings would violate this identity for generic hard processes.
+    This universal leading soft coupling is explicitly separated from the
+    Weinberg--Witten stress-tensor hypothesis: the soft theorem does not
+    construct a gauge-invariant local Lorentz-covariant stress tensor for the
+    graviton.
 4. Multiple real soft photons factorize into the product of the one-photon
    factors at leading order.
    The two-soft-photon identity on one external line should be displayed,
@@ -315,6 +319,9 @@ Additional symbols introduced in the charged-sector discussion:
   p_n^\mu p_n^\nu\varepsilon_{\mu\nu}^*/(p_n\cdot k)\), derives the
   linearized-diffeomorphism check, and states the universal-coupling
   consequence.
+- 2026-06-05 issue #772 pass: cross-referenced the Weinberg--Witten
+  theorem-boundary from the soft-graviton theorem, clarifying that infrared
+  universality and a local graviton stress tensor are distinct questions.
 - 2026-05-30 quoted-theorem debt pass: expanded the mechanism under
   Buchholz's infraparticle quoted theorem, deriving the boosted Coulomb flux
   normalization, the velocity-extraction ratio, and the logarithmic

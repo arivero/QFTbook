@@ -142,6 +142,10 @@
       "risk_class": "GLSM mirror/vortex amplitudes"
     },
     {
+      "path": "weinberg_witten_helicity_checks.py",
+      "risk_class": "Weinberg-Witten helicity obstruction"
+    },
+    {
       "path": "nielsen_identity_effective_potential_checks.py",
       "risk_class": "gauge-effective-action Nielsen identity"
     }

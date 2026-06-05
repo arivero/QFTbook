@@ -18,6 +18,11 @@
 
 - Straumann is used for the Wigner classification of massless helicity
   representations and the role of the little group \(E(2)\).
+- Weinberg--Witten, Loebbert, and Benedetti--Casini--Magan are used for the
+  theorem-boundary statement on massless finite-helicity charges and
+  stress-tensor matrix elements; the chapter displays the four-dimensional
+  helicity-weight mechanism and marks the analytic forward-limit step as
+  imported.
 - The chapter treats helicity representations with trivial little-group
   translation subgroup.
 - Continuous-spin representations are recorded only as a separate
@@ -65,6 +70,10 @@
 | \(A_n(1^{h_1},\ldots,n^{h_n})\) | color-ordered tree partial amplitude |
 | \(z\) | BCFW complex deformation parameter |
 | \(B_\infty\) | possible boundary contribution at \(z=\infty\) in BCFW recursion |
+| \(J^\mu\) | local Lorentz-covariant conserved current tested in the Weinberg--Witten boundary |
+| \(T^{\mu\nu}\) | local Lorentz-covariant conserved stress tensor tested in the Weinberg--Witten boundary |
+| \(q_J\) | forward current-charge eigenvalue in the Weinberg--Witten current version |
+| \(m_a\) | transverse \(SO(2)\) weight of a vector factor in the helicity-weight check |
 
 ## Claims Established
 
@@ -115,6 +124,26 @@
 - The auxiliary-vector projector formula is proven to annihilate \(k\) and
   \(n\), and its representative dependence is shown to vanish against
   conserved data.
+- The Weinberg--Witten theorem is stated in four-dimensional helicity form:
+  massless particles of \(|h|>\frac12\) cannot carry nonzero charge under a
+  conserved gauge-invariant local Lorentz-vector current, and massless
+  particles of \(|h|>1\) cannot carry nonzero momentum under a
+  gauge-invariant local Lorentz-covariant stress tensor with the standard
+  forward matrix element.
+- The load-bearing helicity mechanism is displayed as the finite
+  \(SO(2)\)-weight selection rule
+  \(2h\in\{m_1+\cdots+m_r:m_a\in\{-1,0,+1\}\}\), with \(r=1\) for currents
+  and \(r=2\) for stress tensors; the non-forward-to-forward analytic step is
+  explicitly attributed to the theorem's hypotheses.
+- The chapter distinguishes Lorentz-covariant local operators from
+  gauge-fixed or representative fields: photon potentials, nonabelian color
+  labels, gravitational pseudotensors, condensed-matter emergent gauge
+  fields, topological line-charge sectors, and holographic/nonlocal
+  constructions evade by failing different hypotheses.
+- The leading soft-graviton theorem is separated from the Weinberg--Witten
+  stress-tensor hypothesis: momentum conservation makes the soft Ward identity
+  gauge invariant, but does not construct a local stress tensor for the
+  graviton.
 - In four dimensions a complex null momentum is represented by
   \(p_{a\dot a}=\lambda_a\widetilde\lambda_{\dot a}\), modulo
   \((\lambda,\widetilde\lambda)\mapsto(t\lambda,t^{-1}\widetilde\lambda)\).
@@ -197,3 +226,7 @@
   polarization representative shift, field-strength descent, polarization
   projector, spinor-helicity determinant convention, Parke--Taylor theorem,
   and BCFW recursion.  Added `calculation-checks/massless_helicity_checks.py`.
+- 2026-06-05 issue #772 pass: added the Weinberg--Witten theorem-boundary
+  section with current/stress-tensor variants, the finite helicity-weight
+  mechanism, hypothesis-by-hypothesis evasion table, soft-graviton separation,
+  and `calculation-checks/weinberg_witten_helicity_checks.py`.

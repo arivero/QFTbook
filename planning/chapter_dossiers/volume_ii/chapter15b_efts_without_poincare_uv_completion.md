@@ -53,6 +53,11 @@
    stiffness, susceptibility, and spectrum checks; it does not import
    Lorentz-invariant one-mode-per-generator counting or broken-spacetime
    inverse-Higgs bookkeeping.
+7. Weinberg--Witten is a validation-map diagnostic for emergent gauge fields,
+   not a categorical ban: exact Poincare covariance, a gauge-invariant local
+   Lorentz-covariant current or stress tensor, standard particle poles, and
+   the corresponding nonzero forward matrix element must all be supplied
+   before the theorem applies.
 
 ## Audit Notes
 
@@ -65,3 +70,6 @@
 - 2026-06-05 issue #775 cross-reference pass: added the nonrelativistic
   Goldstone-counting validation map, pointing finite-density and Hamiltonian
   systems to the internal commutator-density theorem in Volume II Chapter 21.
+- 2026-06-05 issue #772 pass: added the Weinberg--Witten diagnostic paragraph
+  for emergent gauge fields, separating exact theorem hypotheses from
+  finite-cutoff or topological condensed-matter validation maps.

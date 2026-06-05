@@ -2005,6 +2005,10 @@ Current checks:
   polarization shifts under the little-group translation subgroup,
   auxiliary-vector polarization-projector transversality, spinor-helicity
   determinant conventions, and BCFW on-shell momentum conservation.
+- `weinberg_witten_helicity_checks.py`: finite checks for the
+  Weinberg--Witten theorem-boundary section, including vector and rank-two
+  transverse-helicity weights, current and stress-tensor spin thresholds, a
+  soft-graviton Ward-identity control, and hypothesis-ledger evasion cases.
 - `massive_spin_checks.py`: exact symbolic checks for the Volume I
   massive-particle spin chapter, including the mass-shell boost Jacobian,
   Wigner cocycle, spin-frame conjugation and inner-product invariance,
