@@ -196,7 +196,9 @@ The chapter must define and derive:
 - a concrete massive scalar EFT retaining \(\phi^4\) and
   \(\phi^6/\mathcal M^2\), with a one-loop background-field pole calculation
   showing closure through canonical excess two and the first omitted
-  \(\phi^8/\mathcal M^4\) operator assigned to the remainder;
+  \(\phi^8/\mathcal M^4\) operator identified as the counterterm needed to
+  extend the renormalized datum to canonical excess four, with its
+  Wilson-coefficient dimension kept separate from external-momentum powers;
 - a same-EFT local field redefinition
   \(\phi=\psi+a\psi^3/\mathcal M^2\), carrying the action, regulator
   Jacobian, source term, composite representatives, Wilson coefficients, and
@@ -501,8 +503,10 @@ The chapter must define and derive:
 25. In the massive scalar EFT with \(\phi^4+\phi^6/\mathcal M^2\), the
     one-loop background-field pole produces retained \(\phi^4\) and
     \(\phi^6/\mathcal M^2\) counterterms and first generates
-    \(\phi^8/\mathcal M^4\) outside the target canonical excess.  This is the
-    chapter's concrete counterterm-closure example.
+    \(\phi^8/\mathcal M^4\) outside the target canonical excess.  The
+    generated pole is not a finite remainder; it marks the \(c_8\) counterterm
+    required for a \(k=4\) extension, and its eight-point contact scaling is
+    distinct from lower-point loop or mass-suppressed effects.
 26. The local redefinition \(\phi=\psi+a\psi^3/\mathcal M^2\) shifts
     \(\lambda\), the derivative operator coefficient, and \(c_6\), carries a
     regulator Jacobian and transformed sources/composites, and leaves the
@@ -677,10 +681,17 @@ The chapter must define and derive:
   field-redefinition evidence with a concrete scalar EFT calculation.  The
   chapter now derives the one-loop poles from \((V''(\phi))^2\), shows
   retained \(\phi^4\)/\(\phi^6\) closure and the generated
-  \(\phi^8/\mathcal M^4\) residual, and carries the same EFT through a local
-  \(\phi=\psi+a\psi^3/\mathcal M^2\) basis change with Jacobian, sources,
-  composites, Wilson-coordinate shifts, and an on-shell four-point observable
-  check.
+  \(\phi^8/\mathcal M^4\) truncation boundary, and carries the same EFT through
+  a local \(\phi=\psi+a\psi^3/\mathcal M^2\) basis change with Jacobian,
+  sources, composites, Wilson-coordinate shifts, and an on-shell four-point
+  observable check.
+- 2026-06-04 issue #827 pass: corrected the scalar-EFT closure interpretation
+  so canonical excess four no longer becomes a universal \(Q^4/\mathcal M^4\)
+  momentum law.  The generated \(\phi^8\) pole is now a truncation-boundary
+  counterterm signal; an explicit \(c_8\) minimal-subtraction extension is
+  stated, and eight-point contact scaling is separated from lower-point
+  contractions controlled by loops, light masses, and scheme-dependent
+  counterterms.
 - 2026-06-04 issue #824 pass: replaced the unconditional operator quotient in
   the EFT prediction datum with a regulated operator module plus
   observable-dependent equivalence/projection maps.  The chapter now keeps

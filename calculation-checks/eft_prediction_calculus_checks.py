@@ -9,7 +9,9 @@ Target claims:
 - In a massive scalar EFT retaining \(\phi^4\) and \(\phi^6/\mathcal M^2\),
   the one-loop background-field pole closes on the retained coordinates
   through canonical excess two and generates \(\phi^8/\mathcal M^4\) as the
-  first omitted local operator.
+  first omitted local operator; extending the datum to canonical excess four
+  requires a \(c_8\) counterterm, and canonical excess alone does not impose a
+  universal \(Q^4\) momentum law.
 - In the same scalar EFT, a local field redefinition preserves the on-shell
   four-point observable only when the action, Jacobian, source transform,
   composite transform, and Wilson-coordinate shifts are carried together.
@@ -24,7 +26,9 @@ Independent construction:
 - The matching-scale cancellation is checked by differentiating a symbolic
   one-loop matched coordinate.
 - The one-loop EFT closure coefficients are extracted from
-  \((V''(\phi))^2\) in a common factorial normalization.
+  \((V''(\phi))^2\) in a common factorial normalization, with a separate
+  Wilson-coefficient/contact-scaling check for the generated \(\phi^8\)
+  operator.
 - The field-redefinition check computes the transformed scalar EFT
   coefficients, source/composite/Jacobian terms, and the tree four-point
   kernel on and away from the external mass shell.
@@ -50,7 +54,8 @@ Negative controls:
 - Omitting the hard threshold logarithm leaves matching-scale dependence.
 - The script rejects wrong one-loop combinatorial coefficients and rejects
   retaining the generated \(\phi^8\) pole inside a canonical-excess-two
-  truncation.
+  truncation.  It also rejects reading the generated nonderivative contact as
+  a universal \(Q^4/\mathcal M^4\) law.
 - Dropping either the derivative term or the mass-coordinate shift spoils the
   field-redefinition equality of the on-shell four-point kernel; dropping the
   Jacobian, source transform, or composite transform is also detected.
@@ -137,7 +142,9 @@ def check_matching_scale_cancellation() -> None:
 
 
 def check_one_loop_scalar_eft_closure() -> None:
-    phi, lam, c6, m2, M2 = sp.symbols("phi lam c6 m2 M2", nonzero=True)
+    phi, lam, c6, c8_r, m2, M2, q2, tadpole, eps = sp.symbols(
+        "phi lam c6 c8_r m2 M2 q2 tadpole eps", nonzero=True
+    )
 
     # In the common normalization
     # Gamma_div^(1) = (32 pi^2 eps)^(-1) int (V''(phi))^2,
@@ -166,14 +173,34 @@ def check_one_loop_scalar_eft_closure() -> None:
     assert_leq("phi4 pole remains in retained excess", retained_canonical_excess["phi4"], target_excess)
     assert_leq("phi6 pole remains in retained excess", retained_canonical_excess["phi6"], target_excess)
     assert_gt(
-        "phi8 pole is assigned to the residual sector",
+        "phi8 pole is assigned to the first omitted counterterm sector",
         first_omitted_canonical_excess["phi8"],
         target_excess,
     )
 
-    q_over_M = sp.symbols("q_over_M", positive=True)
-    residual_scaling = c8_pole * q_over_M**4
-    assert_zero("first omitted operator has canonical-excess-four scaling", sp.diff(residual_scaling, q_over_M, 4) - 24 * c8_pole)
+    delta_c8_ms = -c8_pole / (16 * sp.pi**2 * eps)
+    bare_phi8_pole = c8_pole / (16 * sp.pi**2 * eps)
+    assert_zero("minimal phi8 counterterm cancels the generated pole", bare_phi8_pole + delta_c8_ms)
+
+    M4 = M2**2
+    eight_point_contact = c8_r / M4
+    assert_zero("nonderivative phi8 eight-point contact has no automatic q2 dependence", sp.diff(eight_point_contact, q2))
+
+    wrong_universal_momentum_law = c8_r * q2**2 / M4
+    assert_nonzero(
+        "canonical excess alone does not imply a universal Q4 law",
+        eight_point_contact - wrong_universal_momentum_law,
+    )
+
+    lower_point_tadpole_contribution = c8_r * tadpole**2 / M4
+    assert_zero(
+        "lower-point phi8 contribution is controlled by contracted light-scale loops",
+        sp.diff(lower_point_tadpole_contribution, q2),
+    )
+    assert_nonzero(
+        "lower-point contractions are not fixed by external momentum powers",
+        lower_point_tadpole_contribution - wrong_universal_momentum_law,
+    )
 
 
 def check_scalar_eft_field_redefinition_observable() -> None:
