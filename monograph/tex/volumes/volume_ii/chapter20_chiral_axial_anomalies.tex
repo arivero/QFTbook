@@ -7780,6 +7780,124 @@ one-instanton calculation is deep precisely because it performs this whole
 assembly, rather than because it merely parametrizes the BPST collective
 coordinates.
 
+\begin{controlledapproximation}[Instanton benchmark gates]
+\label{ca:thooft-four-fermion-benchmark-gate-ledger}
+The source-amputated four-slot construction above gives a precise way to
+compare a finite-regulator calculation with the original one-instanton
+four-fermion benchmark of 't Hooft.  Fix a hard source family
+\(\mathfrak h\), a source and determinant scheme \(\mathcal S\), a retained
+size window \(0<\rho<R/Q\), and a physical projection
+\(\mathfrak P_{\rm phys}\).  The benchmark Euclidean coefficient is not a
+single determinant constant or a local operator.  It is the window integral
+\begin{equation}
+\begin{aligned}
+  B_{\rm bench}^{(4)}[\mathfrak h;R]
+  &=
+  \ee^{\ii\theta}(2\pi)^4\delta^{(4)}(\mathcal P)
+  \int_{0}^{R/Q}\!\!\dd\rho\int\dd\Omega(U)\,
+  \mathcal D_{\rm cl/coll}^{\mathcal S}(\rho,U)\,
+  \mathcal W_{\rm lead}^{\rm nz,\mathcal S}(\rho,U;\mu)        \\
+  &\qquad{}\times
+  \mathcal P_{\rm Haar}(U;\mathfrak h)\,
+  \det R_{\mathfrak h}^{\rm amp}(\rho,U)\,
+  \det L_{\mathfrak h}^{\rm amp}(\rho,U),
+\end{aligned}
+  \label{eq:thooft-four-fermion-benchmark-coefficient}
+\end{equation}
+with the center delta, classical/collective density, nonzero-mode
+fluctuation determinant, shared orientation projector, amputated zero-mode
+overlap determinants, and size window all kept in the same normalization.
+The comparison package is the ordered list
+\begin{equation}
+  \mathfrak G_{\rm bench}
+  =
+  (G_{\rm cent},G_{\rm cl/coll},G_{\rm det},G_{\rm zm},
+   G_{\rm Haar},G_{\rm amp},G_{\rm cond},G_{\rho},G_{\rm sec},
+   G_{\rm phys},G_{\rm scheme}) .
+  \label{eq:thooft-benchmark-gate-list}
+\end{equation}
+Here \(G_{\rm cent}\) is the instanton-center integration and momentum
+conservation; \(G_{\rm cl/coll}\) is the classical weight and collective
+Jacobian; \(G_{\rm det}\) is the finite nonzero-mode determinant in the
+declared scheme; \(G_{\rm zm}\) is the Berezin zero-mode saturation by the
+selected source; \(G_{\rm Haar}\) is the shared color-orientation projection;
+\(G_{\rm amp}\) is external-leg amputation without deleting zero-mode form
+factors; \(G_{\rm cond}\) is the rank and conditioning margin for the right
+and left overlap matrices; \(G_\rho\) is the size-window and endpoint
+estimate; \(G_{\rm sec}\) isolates the \(Q=1\) sector from neighboring
+amplitude sectors; \(G_{\rm phys}\) is the LSZ, OPE, hadronic, or inclusive
+projection; and \(G_{\rm scheme}\) transports determinant, source, and
+operator normalizations together.
+
+Suppose the exact selected contribution admits the decomposition
+\begin{equation}
+  \mathcal M_{\rm phys}^{Q=1}[\mathfrak h]
+  =
+  \mathfrak P_{\rm phys}\Pi_{Q=1}
+  B_{\rm bench}^{(4)}[\mathfrak h;R]
+  +
+  \sum_{\gamma\in\mathfrak G_{\rm bench}}R_\gamma,
+  \label{eq:thooft-benchmark-residual-decomposition}
+\end{equation}
+where \(\Pi_{Q=1}\) denotes the finite sector-isolation projection used in
+the chosen observable, all residuals are measured in the same source
+normalization, and let
+\[
+  M_{\rm bench}
+  =
+  \int_{0}^{R/Q}\!\!\dd\rho\int\dd\Omega(U)\,
+  \left|
+  \mathcal D_{\rm cl/coll}^{\mathcal S}
+  \mathcal W_{\rm lead}^{\rm nz,\mathcal S}
+  \mathcal P_{\rm Haar}
+  \det R_{\mathfrak h}^{\rm amp}
+  \det L_{\mathfrak h}^{\rm amp}
+  \right|.
+\]
+If \(|R_\gamma|\le\epsilon_\gamma M_{\rm bench}\) for every gate and
+\[
+  \left|
+  \mathfrak P_{\rm phys}\Pi_{Q=1}
+  B_{\rm bench}^{(4)}[\mathfrak h;R]
+  \right|
+  \ge\kappa_{\rm bench}M_{\rm bench},
+  \qquad \kappa_{\rm bench}>0,
+\]
+then
+\begin{equation}
+  \frac{
+  \left|
+    \mathcal M_{\rm phys}^{Q=1}[\mathfrak h]
+    -
+    \mathfrak P_{\rm phys}\Pi_{Q=1}
+    B_{\rm bench}^{(4)}[\mathfrak h;R]
+  \right|}
+  {
+  \left|
+    \mathfrak P_{\rm phys}\Pi_{Q=1}
+    B_{\rm bench}^{(4)}[\mathfrak h;R]
+  \right|}
+  \le
+  \frac{\sum_{\gamma}\epsilon_\gamma}{\kappa_{\rm bench}} .
+  \label{eq:thooft-benchmark-relative-bound}
+\end{equation}
+
+This ledger is a comparison protocol, not an additional assumption.  It says
+which equalities must be rechecked before a displayed local 't Hooft vertex,
+a Pauli--Villars determinant constant, or an ADHM measure formula is promoted
+to a benchmark four-fermion amplitude.  Keeping only
+\(G_{\rm cl/coll}\) and \(G_{\rm det}\) gives an instanton density, not a
+source amplitude.  Keeping the zero-mode determinant without
+\(G_{\rm cond}\) can leave a rank-one or ill-conditioned four-source
+projection.  Applying \(G_{\rm amp}\) removes external pole residues but not
+the individual zero-mode form factors or the size integral.  Finally,
+\(G_{\rm sec}\) and \(G_{\rm phys}\) are what turn the colored or
+gauge-invariant Euclidean source coefficient into a physical amplitude, OPE
+coefficient, spectral matrix element, or inclusive rate.  The depth of the
+instanton calculation lies in the successful simultaneous closure of these
+gates.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Instanton observable assembly ladder]
 \label{ca:instanton-observable-assembly-ladder}
 The preceding bounds address different layers of the same physical

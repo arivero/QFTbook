@@ -635,7 +635,12 @@ Current checks:
   zero-mode overlap determinants and propagating entrywise overlap errors
   through a rank-margin residual, the source-conditioning check using
   \(B^{-1}\Delta B\) to reject hard-support-only and unconditioned-overlap
-  shortcuts for near-rank-one four-source projections, the
+  shortcuts for near-rank-one four-source projections, the four-fermion
+  instanton benchmark gate ledger which keeps center momentum conservation,
+  classical/collective data, determinant normalization, zero-mode saturation,
+  Haar projection, amputation, source conditioning, size-window control,
+  sector isolation, physical projection, and finite-scheme transport in one
+  adversarial comparison with a 't Hooft-style amplitude, the
   mixed hard-source plus physical-screening log-shell equation
   \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\) with negative controls against
   hard-only and screening-only saddle substitutions, the

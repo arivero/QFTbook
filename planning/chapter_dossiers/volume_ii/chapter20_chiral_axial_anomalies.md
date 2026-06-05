@@ -1836,6 +1836,20 @@
   amplification, the product bound for right/left source determinants,
   rank-one hard-support failure, and the negative control against replacing
   source conditioning by BPST measure or determinant constants.
+- 2026-06-05 issue #597 four-fermion benchmark-gate pass: added
+  `ca:thooft-four-fermion-benchmark-gate-ledger` before the observable
+  assembly ladder.  The pass is an architecture-level synthesis rather than a
+  new moduli-space cell: it packages center momentum conservation,
+  classical/collective data, determinant normalization, zero-mode saturation,
+  shared Haar projection, amputation, source conditioning, size-window
+  control, sector isolation, physical projection, and scheme transport as the
+  gates that must close before a local 't Hooft vertex or determinant constant
+  is compared with a four-fermion amplitude.  The BPST companion checks the
+  finite gate list, the residual-to-relative bound with a noncancellation
+  margin, and negative controls for off-shell center momentum, moduli/density
+  shortcuts, rank collapse, unamputated external residues, colored-kernel
+  projection, sector leakage, and stale determinant constants after a finite
+  scheme/frame change.
 - 2026-06-05 issue #597 two-body cluster-integrability pass: added
   `ca:instanton-two-body-cluster-integrability` after the first Mayer
   correction.  The pass ties the finite dilute-gas correction to a connected

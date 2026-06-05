@@ -147,6 +147,11 @@ relations
     source-conditioning matrices B^(-1) Delta B expose how a nearly rank-one
     hard source can amplify tiny overlap leakage into a determinant-relative
     error, separately from the BPST measure and determinant constant
+    the four-fermion instanton benchmark gate ledger keeps center momentum
+    conservation, classical/collective data, determinant normalization,
+    zero-mode saturation, Haar projection, amputation, source conditioning,
+    size-window control, sector isolation, physical projection, and scheme
+    transport together before comparing with a 't Hooft-style amplitude
     a Wilsonian split of the instanton size integral has exact cancellation
     of the artificial factorization-scale boundary flux between the short
     instanton coefficient and the long-distance remainder
@@ -4678,6 +4683,187 @@ def check_four_source_instanton_source_conditioning() -> None:
         )
 
 
+def check_thooft_four_fermion_benchmark_gate_ledger() -> None:
+    required_gates = {
+        "center",
+        "classical_collective",
+        "determinant",
+        "zero_mode_source",
+        "haar_projection",
+        "amputation",
+        "source_conditioning",
+        "size_window",
+        "sector_projection",
+        "physical_projection",
+        "scheme_transport",
+    }
+    supplied_gates = set(required_gates)
+    assert_equal("four-fermion benchmark supplies every gate", supplied_gates, required_gates)
+    for omitted_gate in sorted(required_gates):
+        assert_equal(
+            f"omitting benchmark gate {omitted_gate} is detected",
+            required_gates.issubset(supplied_gates - {omitted_gate}),
+            False,
+        )
+
+    # A finite arithmetic model of the benchmark coefficient:
+    # center delta (on shell), classical/collective weight, determinant,
+    # shared Haar projection, conditioned right/left zero-mode determinants,
+    # amputation convention, and the signed size window all multiply before
+    # the physical projection is applied.
+    center_delta_on_shell = Fraction(1)
+    center_delta_off_shell = Fraction(0)
+    classical_collective = Fraction(2, 5)
+    determinant_constant = Fraction(11, 13)
+    haar_projection = Fraction(3, 7)
+    amputation_factor = Fraction(1)
+    scheme_factor = Fraction(1)
+    physical_projection = Fraction(7, 11)
+    sector_projection = Fraction(1)
+
+    right_overlap = [[Fraction(2), Fraction(1)], [Fraction(1), Fraction(2)]]
+    left_overlap = [[Fraction(3), Fraction(1)], [Fraction(2), Fraction(2)]]
+    zero_mode_source = det_fraction(right_overlap) * det_fraction(left_overlap)
+    assert_equal("benchmark right source determinant", det_fraction(right_overlap), Fraction(3))
+    assert_equal("benchmark left source determinant", det_fraction(left_overlap), Fraction(4))
+    assert_equal("benchmark zero-mode source factor", zero_mode_source, Fraction(12))
+
+    size_cells = [Fraction(1, 2), -Fraction(1, 8), Fraction(3, 10)]
+    signed_size_window = sum(size_cells, Fraction(0))
+    absolute_size_mass = sum(abs(cell) for cell in size_cells)
+    assert_equal("benchmark signed size window", signed_size_window, Fraction(27, 40))
+    assert_equal("benchmark absolute size mass", absolute_size_mass, Fraction(37, 40))
+
+    euclidean_benchmark = (
+        center_delta_on_shell
+        * classical_collective
+        * determinant_constant
+        * haar_projection
+        * amputation_factor
+        * scheme_factor
+        * zero_mode_source
+        * signed_size_window
+    )
+    benchmark_mass = (
+        abs(classical_collective)
+        * abs(determinant_constant)
+        * abs(haar_projection)
+        * abs(zero_mode_source)
+        * absolute_size_mass
+    )
+    physical_benchmark = physical_projection * sector_projection * euclidean_benchmark
+    kappa_benchmark = abs(physical_benchmark) / benchmark_mass
+    assert_equal("benchmark noncancellation margin", kappa_benchmark, Fraction(189, 407))
+
+    epsilons = {
+        "determinant": Fraction(1, 100),
+        "zero_mode_source": Fraction(1, 120),
+        "haar_projection": Fraction(1, 140),
+        "source_conditioning": Fraction(1, 160),
+        "size_window": Fraction(1, 90),
+        "sector_projection": Fraction(1, 150),
+        "physical_projection": Fraction(1, 110),
+        "scheme_transport": Fraction(1, 130),
+    }
+    residual_sum = (
+        benchmark_mass * Fraction(1, 500)
+        - benchmark_mass * Fraction(1, 700)
+        + benchmark_mass * Fraction(1, 900)
+    )
+    epsilon_sum = sum(epsilons.values(), Fraction(0))
+    if not abs(residual_sum) <= benchmark_mass * epsilon_sum:
+        raise AssertionError("benchmark absolute residual ledger failed")
+    relative_residual = abs(residual_sum) / abs(physical_benchmark)
+    relative_bound = epsilon_sum / kappa_benchmark
+    if not relative_residual <= relative_bound:
+        raise AssertionError("benchmark relative residual bound failed")
+
+    # Off-shell center momentum conservation kills the benchmark coefficient
+    # even when all local instanton factors are nonzero.
+    off_shell_benchmark = (
+        center_delta_off_shell
+        * classical_collective
+        * determinant_constant
+        * haar_projection
+        * zero_mode_source
+        * signed_size_window
+    )
+    assert_equal("off-shell center gate kills four-fermion benchmark", off_shell_benchmark, Fraction(0))
+
+    density_only = classical_collective * determinant_constant * signed_size_window
+    assert_equal(
+        "moduli plus determinant density is not the four-fermion benchmark",
+        density_only == euclidean_benchmark,
+        False,
+    )
+
+    rank_one_right = [[Fraction(1), Fraction(2)], [Fraction(2), Fraction(4)]]
+    collapsed_source = det_fraction(rank_one_right) * det_fraction(left_overlap)
+    assert_equal("rank-collapsed benchmark source factor", collapsed_source, Fraction(0))
+    collapsed_benchmark = (
+        classical_collective
+        * determinant_constant
+        * haar_projection
+        * collapsed_source
+        * signed_size_window
+    )
+    assert_equal("rank collapse kills the benchmark despite hard gates", collapsed_benchmark, Fraction(0))
+
+    external_residue_product = Fraction(5, 3)
+    unamputated_benchmark = external_residue_product * euclidean_benchmark
+    assert_equal(
+        "unamputated external residues change the benchmark coordinate",
+        unamputated_benchmark == euclidean_benchmark,
+        False,
+    )
+    assert_equal(
+        "amputation recovers the benchmark coordinate",
+        unamputated_benchmark / external_residue_product,
+        euclidean_benchmark,
+    )
+
+    assert_equal(
+        "colored Euclidean kernel is not yet the physical benchmark",
+        euclidean_benchmark == physical_benchmark,
+        False,
+    )
+
+    lower_action_leakage = benchmark_mass * Fraction(1, 20)
+    without_sector_projection = physical_benchmark + lower_action_leakage
+    assert_equal(
+        "sector leakage changes the selected benchmark amplitude",
+        without_sector_projection == physical_benchmark,
+        False,
+    )
+    if not abs(without_sector_projection - physical_benchmark) <= benchmark_mass:
+        raise AssertionError("sector leakage was not measured in the benchmark source norm")
+
+    source_frame = Fraction(7, 5)
+    operator_frame = Fraction(13, 17)
+    coupling_constant_shift = Fraction(19, 23)
+    transported_determinant = (
+        coupling_constant_shift * determinant_constant / (source_frame * operator_frame)
+    )
+    old_scheme_coordinate = determinant_constant * zero_mode_source * physical_projection
+    transported_coordinate = (
+        transported_determinant
+        * (source_frame * zero_mode_source)
+        * (operator_frame * physical_projection)
+        / coupling_constant_shift
+    )
+    reused_old_constant_coordinate = (
+        determinant_constant
+        * (source_frame * zero_mode_source)
+        * (operator_frame * physical_projection)
+    )
+    assert_equal("scheme-transported determinant preserves benchmark coordinate", transported_coordinate, old_scheme_coordinate)
+    assert_equal(
+        "reusing old determinant constant after frame changes fails",
+        reused_old_constant_coordinate == old_scheme_coordinate,
+        False,
+    )
+
+
 def check_wilsonian_instanton_size_factorization() -> None:
     # Model the fully paired finite-regulator size integrand by
     # K(rho)=rho^(p-1) on 0<rho<rho_max.  The artificial Wilsonian split at
@@ -5986,6 +6172,7 @@ def main() -> None:
     check_hard_instanton_finite_window_bound()
     check_four_source_instanton_amplitude_rank_bound()
     check_four_source_instanton_source_conditioning()
+    check_thooft_four_fermion_benchmark_gate_ledger()
     check_wilsonian_instanton_size_factorization()
     check_short_instanton_ope_coefficient_transport()
     check_dilute_instanton_gas_theta_cumulants()
