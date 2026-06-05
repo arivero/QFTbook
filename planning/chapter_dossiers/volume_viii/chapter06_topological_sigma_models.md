@@ -14,12 +14,13 @@ Gromov--Witten and B-model outputs obtained after localization.
   `Q_A`, localization section, virtual integration package, Novikov
   completion, and contact-term prescription.
 - `mathfrak B_X`: closed B-model cohomological sigma-model datum, including
-  Calabi-Yau target, holomorphic volume form, polyvector complex, trace
-  pairing, anomaly-free twist, regulated integration cycle, and contact-term
-  prescription.
+  Kahler parent target, closed `B`-field, axial-anomaly trivialization,
+  holomorphic canonical trivialization, chosen holomorphic volume form,
+  polyvector complex, trace pairing, regulated integration cycle, and
+  contact-term prescription.
 - `Sigma`, `j_Sigma`: compact Riemann surface and its complex structure.
-- `X`: compact target manifold; almost Kahler for the A-model, Calabi-Yau
-  complex manifold for the closed B-model.
+- `X`: compact target manifold; almost Kahler for the A-model, Kahler as the
+  ordinary parent target for the closed B-model.
 - `phi`: bosonic map from `Sigma` to `X`.
 - `Q_A`, `Q_B`: A-model and B-model cohomological differentials.
 - `psi`, `eta`, `theta`: fermionic local variables in the A- and B-model
@@ -39,6 +40,9 @@ Gromov--Witten and B-model outputs obtained after localization.
 - `eta_ab`: Poincare pairing on `H^*(X)`.
 - `star`: genus-zero small quantum product.
 - `PV^{p,q}(X)`: Dolbeault polyvector complex for the B-model.
+- `a_B`: axial/global anomaly-line trivialization for the B-twist.
+- `tau_K`, `Omega_X`: holomorphic canonical trivialization and chosen volume
+  form used by the closed B-model trace.
 - `c_A`, `c_B`: A- and B-model source/collision/contact-term prescriptions.
 
 ## Claim Ledger
@@ -83,6 +87,11 @@ Gromov--Witten and B-model outputs obtained after localization.
 - Defines the B-model Dolbeault polyvector complex, trace pairing through
   the holomorphic volume form, and the complex-structure Maurer-Cartan
   equation.
+- Separates the B-model target/anomaly layers: Kahler parent sigma-model
+  data, local Dolbeault-polyvector complex, perturbative axial anomaly
+  cancellation, holomorphic triviality of `K_X`, chosen `Omega_X`, and
+  all-genus/global determinant-line data.  Includes examples separating
+  topological or de Rham `c1` tests from holomorphic volume-form existence.
 - States the continuum construction problem for topological sigma models as
   an explicit open problem rather than treating finite-dimensional
   enumerative formulas as a complete QFT definition.
@@ -95,7 +104,17 @@ Gromov--Witten and B-model outputs obtained after localization.
   selection rule, the degree-one projective worldsheet-instanton dimension
   and product ledger, primary and descendant zero-mode saturation against the
   virtual top degree, the virtual-dimension formula, and the B-model top-form
-  degree condition.
+  degree condition plus the B-model condition lattice separating the parent,
+  local complex, perturbative anomaly, trace, and all-genus gates.
+
+## Audit Notes
+
+- 2026-06-05 issue #809 B-model foundations pass: split the closed B-model
+  datum into Kahler parent, closed `B`-field, axial-anomaly trivialization,
+  holomorphic canonical trivialization, chosen volume form, trace, and global
+  anomaly-line data; removed the false equivalence between `c1(TX)=0` and
+  holomorphic triviality of `K_X`; added finite examples distinguishing
+  topological/de Rham Chern-class tests from volume-form existence.
 
 ## Figure Ledger
 

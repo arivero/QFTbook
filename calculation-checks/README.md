@@ -1423,7 +1423,8 @@ Current checks:
   the degree-one projective worldsheet-instanton dimension/incidence ledger,
   A-model primary and descendant zero-mode saturation against the virtual top
   degree, the stable-map virtual-dimension formula, and the B-model top-form
-  degree condition.
+  degree condition plus the B-model parent/anomaly/trace/all-genus condition
+  lattice.
 - `twisting_representation_checks.py`: exact finite checks for the Volume
   VIII supersymmetric-twists chapter, including the \(SU(2)\) tensor-product
   decomposition of the Donaldson twist, the dimensions of the twisted

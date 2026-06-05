@@ -69,31 +69,67 @@ A closed B-model cohomological structure is a tuple
   \mathfrak B_X
   =
   \bigl(
-    \Sigma,j_\Sigma; X,J_X,\Omega_X;
+    \Sigma,j_\Sigma; X,J_X,g_X,\omega_X,B_X;
     \mathcal F_{\Sigma,X},Q_B,{\rm PV}^{\bullet,\bullet}(X),
-    {\rm Tr}_{\Omega_X},\mathfrak c_B
+    \mathfrak a_B,\tau_K,\Omega_X,{\rm Tr}_{\Omega_X},\mathfrak c_B
   \bigr)
 \]
-where \(X\) is a compact complex \(m\)-fold with trivial canonical bundle,
-\(\Omega_X\) is a nowhere-vanishing holomorphic volume form,
-\({\rm PV}^{p,q}(X)=\Omega^{0,q}(X,\wedge^pT^{1,0}X)\), \(Q_B=\bar\partial\)
-on scalar local observables, and
+with the following entries.  The parent two-dimensional
+\(\mathcal N=(2,2)\) sigma model has compact K\"ahler target
+\((X,J_X,g_X,\omega_X)\) and a closed \(B\)-field \(B_X\).  Torsionful or
+generalized-K\"ahler parents are separate models and are not included in this
+datum.  The local scalar complex is
+\({\rm PV}^{p,q}(X)=\Omega^{0,q}(X,\wedge^pT^{1,0}X)\), with
+\(Q_B=\bar\partial\).  The entry \(\mathfrak a_B\) is the chosen
+axial-anomaly trivialization for the \(B\)-twist, including possible torsion
+and higher-genus determinant-line data.  The entry
+\(\tau_K:\mathcal O_X\simeq K_X\) is a holomorphic trivialization of the
+canonical bundle, and
+\(\Omega_X=\tau_K(1)\) is the chosen nowhere-vanishing holomorphic volume
+form.  The trace
 \[
   {\rm Tr}_{\Omega_X}(\mu)
   =
   \int_X \Omega_X\wedge\iota_\mu\Omega_X
 \]
 is the trace pairing when the total polyvector and Dolbeault degrees make the
-integrand top degree.  The structure also includes the anomaly-free axial twist,
-the regulated \(Q_B\)-invariant integration cycle, and the contact-term
-prescription \(\mathfrak c_B\).  Its first-order deformation complex is the
-Dolbeault polyvector differential graded Lie algebra
+integrand top degree.  The structure also includes the regulated
+\(Q_B\)-invariant integration cycle and the contact-term prescription
+\(\mathfrak c_B\).  Its first-order deformation complex is the Dolbeault
+polyvector differential graded Lie algebra
 \[
   \bigl({\rm PV}^{1,\bullet}(X),\bar\partial,[\cdot,\cdot]\bigr),
 \]
 with Maurer--Cartan equation
 \(\bar\partial\mu+\frac12[\mu,\mu]=0\).
 \end{hypothesis}
+
+\begin{definition}[B-model target and anomaly layers]
+\label{def:b-model-target-anomaly-layers}
+The entries in Hypothesis~\ref{hyp:b-model-cohomological-sigma-datum} live at
+different layers.
+\begin{enumerate}[label=\textnormal{(\roman*)}]
+\item The ordinary Lagrangian \(\mathcal N=(2,2)\) parent uses a K\"ahler
+  target and a closed \(B\)-field.  This is the kinetic and supersymmetry
+  datum, not the holomorphic trace datum.
+\item The scalar local \(B\)-model complex
+  \(({\rm PV}^{\bullet,\bullet}(X),\bar\partial)\) uses the complex structure
+  of \(X\).  It can be written before a holomorphic volume form is chosen.
+\item The perturbative axial \(U(1)\) anomaly is represented by the first
+  Chern class of \(T^{1,0}X\), equivalently by the Ricci-form class in de
+  Rham cohomology.  Vanishing of this class cancels the local continuous
+  anomaly; torsion and global determinant-line phases are separate data in
+  \(\mathfrak a_B\).
+\item The trace in the displayed formula requires a holomorphic
+  trivialization \(K_X\simeq\mathcal O_X\) and a chosen volume form
+  \(\Omega_X\).  This is stronger than the de Rham statement that the Ricci
+  class vanishes and is not supplied by the local BRST complex.
+\item All-genus closed strings, BCOV theory, and open \(B\)-models require
+  the relevant determinant or anomaly line to be trivialized over the family
+  of worldsheets and backgrounds.  Those global choices are part of
+  \(\mathfrak a_B\) and are not consequences of the genus-zero trace alone.
+\end{enumerate}
+\end{definition}
 
 \section{The Mapping Field Space}
 
@@ -138,10 +174,12 @@ where \(J^2=-1\),
 \]
 and \(J\) is compatible with \(\omega\).  For the B-model structure of
 Hypothesis~\ref{hyp:b-model-cohomological-sigma-datum}, the target is a
-compact complex manifold \(X\) with trivial canonical bundle and a choice of
-nowhere-vanishing holomorphic volume form \(\Omega_X\); a K\"ahler metric is
-used to write a Lagrangian representative, but the cohomological observables
-depend on complex-structure data.
+compact K\"ahler manifold \(X\) for the ordinary \(\mathcal N=(2,2)\)
+Lagrangian parent.  The scalar \(B\)-model observables depend on the complex
+structure; the trace-level closed model additionally uses the holomorphic
+canonical trivialization \(\tau_K\) and volume form \(\Omega_X\).  Thus the
+K\"ahler metric, the axial-anomaly condition, and the holomorphic volume form
+are related inputs in one QFT, but they are not interchangeable hypotheses.
 
 \section{The A-Model Complex}
 
@@ -666,7 +704,7 @@ cohomology is
 \]
 where \(Q\) is the Novikov variable for the positive line class.
 
-\begin{proposition}[Degree-one projective instanton and the quantum relation]
+\begin{proposition}[Degree-one projective instanton]
 \label{prop:projective-degree-one-instanton-relation}
 In the Gromov--Witten normalization used above,
 \[
@@ -772,8 +810,9 @@ integration over the moduli of domains.
 
 \section{The B-Model Complex}
 
-Let \(X\) be a compact complex \(m\)-fold with \(K_X\simeq\mathcal O_X\), and
-choose a holomorphic volume form \(\Omega_X\).  Define the polyvector
+Let \(X\) be the compact K\"ahler target in
+Hypothesis~\ref{hyp:b-model-cohomological-sigma-datum}.  The local scalar
+complex is defined from the complex structure alone.  Define the polyvector
 Dolbeault complex
 \[
   {\rm PV}^{p,q}(X)
@@ -806,7 +845,9 @@ where \(\eta^{\bar j}\) is the odd variable corresponding to
   H^q(X,\wedge^pT^{1,0}X).
 \]
 
-The holomorphic volume form converts polyvectors into forms by contraction,
+After the trace-level datum \(\tau_K\) has been chosen, the holomorphic
+volume form \(\Omega_X=\tau_K(1)\) converts polyvectors into forms by
+contraction,
 \[
   \iota_\mu\Omega_X\in \Omega^{m-p,q}(X).
 \]
@@ -820,6 +861,28 @@ Dolbeault degree \(m\), the genus-zero classical B-model pairing is
   \iota_{\mu_1\wedge\cdots\wedge\mu_k}\Omega_X .
 \]
 If either total degree condition fails, the integral is zero by form degree.
+Rescaling \(\Omega_X\mapsto\lambda\Omega_X\) rescales this trace by
+\(\lambda^2\).  Thus the trace is part of the normalization data of the
+closed \(B\)-model and is fixed by the chosen holomorphic volume form, whereas
+the cohomology class \(c_1(T^{1,0}X)\) records the anomaly class.
+
+\begin{example}[\(c_1\) and holomorphic triviality are different tests]
+\label{ex:bmodel-c1-volume-form-separation}
+On an elliptic curve \(E\), a nontrivial flat holomorphic line bundle
+\(L\in{\rm Pic}^0(E)\) has \(c_1(L)=0\) as a topological Chern class, but
+\(L\not\simeq\mathcal O_E\) holomorphically and it has no nowhere-vanishing
+holomorphic section.  This is the basic line-bundle reason why a Chern-class
+statement does not choose a holomorphic trivialization.
+
+For a canonical-bundle example closer to the \(B\)-model, an Enriques surface
+is compact K\"ahler and has \(K_X^{\otimes2}\simeq\mathcal O_X\) while
+\(K_X\not\simeq\mathcal O_X\).  Its canonical class is torsion, hence
+invisible in real de Rham \(c_1\), but \(H^0(X,K_X)=0\).  Therefore there is
+no holomorphic two-form \(\Omega_X\) and the trace
+\({\rm Tr}_{\Omega_X}\) above is unavailable.  A K3 surface passes the
+trace-level test: \(K_X\simeq\mathcal O_X\) and a nonzero holomorphic
+two-form can be chosen.
+\end{example}
 
 \begin{remark}[B-model dependence on complex structure]
 Infinitesimal deformations of the complex structure are represented by
@@ -853,11 +916,14 @@ displayed Maurer--Cartan equation.
 \end{remark}
 
 The B-twist uses the axial \(U(1)\) R-symmetry of the parent
-\(\mathcal N=(2,2)\) sigma model.  The anomaly of this symmetry is measured
-by \(c_1(TX)\), so the closed B-model requires \(c_1(TX)=0\), equivalently
-triviality of \(K_X\) after choosing the holomorphic volume form needed for
-the trace pairing.  Boundary conditions and open B-models require additional
-Chan--Paton and anomaly data.
+\(\mathcal N=(2,2)\) sigma model.  The perturbative anomaly of this symmetry
+is measured by \(c_1(T^{1,0}X)\).  Cancellation of the local continuous
+anomaly is the condition that the corresponding de Rham class vanish, while
+integral torsion and families of worldsheets can still define global
+determinant-line data.  The holomorphic trace used in the closed genus-zero
+\(B\)-model is a further condition: \(K_X\) must be holomorphically trivial
+and a volume form \(\Omega_X\) must be chosen.  Boundary conditions and open
+\(B\)-models require additional Chan--Paton and anomaly data.
 
 \section{A-Model and B-Model Parameter Dependence}
 

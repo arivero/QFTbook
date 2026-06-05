@@ -239,6 +239,90 @@ def check_b_model_degree_condition() -> None:
     assert sum(bad_dolbeault_degrees) != m
 
 
+def b_model_layer_status(
+    *,
+    complex_target: bool,
+    kahler_parent: bool,
+    closed_b_field: bool,
+    de_rham_c1_zero: bool,
+    holomorphic_canonical_trivial: bool,
+    chosen_volume_form: bool,
+    global_anomaly_line_trivialized: bool,
+) -> dict[str, bool]:
+    parent_lagrangian = complex_target and kahler_parent and closed_b_field
+    local_complex = complex_target
+    perturbative_axial = complex_target and de_rham_c1_zero
+    trace_pairing = complex_target and holomorphic_canonical_trivial and chosen_volume_form
+    all_genus = parent_lagrangian and perturbative_axial and trace_pairing and global_anomaly_line_trivialized
+    return {
+        "parent_lagrangian": parent_lagrangian,
+        "local_complex": local_complex,
+        "perturbative_axial": perturbative_axial,
+        "trace_pairing": trace_pairing,
+        "all_genus": all_genus,
+    }
+
+
+def check_b_model_foundation_condition_lattice() -> None:
+    # The local Dolbeault-polyvector complex only needs a complex target.  It
+    # does not by itself supply the Kahler parent sigma model or the trace.
+    complex_without_trace = b_model_layer_status(
+        complex_target=True,
+        kahler_parent=False,
+        closed_b_field=True,
+        de_rham_c1_zero=False,
+        holomorphic_canonical_trivial=False,
+        chosen_volume_form=False,
+        global_anomaly_line_trivialized=False,
+    )
+    assert_equal(complex_without_trace["local_complex"], True, "B-model local complex gate")
+    assert_equal(complex_without_trace["parent_lagrangian"], False, "non-Kahler parent gate")
+    assert_equal(complex_without_trace["trace_pairing"], False, "volume form is a separate trace gate")
+
+    # Enriques-like input: compact Kahler and de Rham c1=0 because the canonical
+    # class is torsion, but K is not holomorphically trivial and no holomorphic
+    # volume form exists.
+    enriques_like = b_model_layer_status(
+        complex_target=True,
+        kahler_parent=True,
+        closed_b_field=True,
+        de_rham_c1_zero=True,
+        holomorphic_canonical_trivial=False,
+        chosen_volume_form=False,
+        global_anomaly_line_trivialized=False,
+    )
+    assert_equal(enriques_like["perturbative_axial"], True, "torsion c1 is invisible to de Rham anomaly")
+    assert_equal(enriques_like["trace_pairing"], False, "torsion canonical is not a holomorphic volume form")
+    assert_equal(enriques_like["all_genus"], False, "all-genus gate needs trace and anomaly line")
+
+    # K3-like input: the conditions needed for the closed trace-level model are
+    # present, and the all-genus gate still records the determinant-line choice.
+    k3_like = b_model_layer_status(
+        complex_target=True,
+        kahler_parent=True,
+        closed_b_field=True,
+        de_rham_c1_zero=True,
+        holomorphic_canonical_trivial=True,
+        chosen_volume_form=True,
+        global_anomaly_line_trivialized=True,
+    )
+    assert_equal(k3_like["parent_lagrangian"], True, "Kahler parent sigma-model gate")
+    assert_equal(k3_like["trace_pairing"], True, "holomorphic volume trace gate")
+    assert_equal(k3_like["all_genus"], True, "all-genus anomaly-line gate")
+
+    # A topologically trivial holomorphic line bundle need not be holomorphically
+    # trivial; the Chern-class test and the existence of a nowhere-zero section
+    # are logically different tests.
+    flat_line_topological_c1_zero = True
+    flat_line_holomorphically_trivial = False
+    assert_equal(flat_line_topological_c1_zero, True, "flat line topological c1 can vanish")
+    assert_equal(
+        flat_line_topological_c1_zero and flat_line_holomorphically_trivial,
+        False,
+        "topological c1 zero does not choose a holomorphic trivialization",
+    )
+
+
 def main() -> None:
     check_energy_identity()
     check_quantum_projective_space()
@@ -246,6 +330,7 @@ def main() -> None:
     check_a_model_zero_mode_selection()
     check_virtual_dimension_formula()
     check_b_model_degree_condition()
+    check_b_model_foundation_condition_lattice()
     print("All topological sigma-model checks passed.")
 
 
