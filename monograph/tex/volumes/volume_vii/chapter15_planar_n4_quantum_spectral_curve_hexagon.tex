@@ -3,11 +3,67 @@
 
 \ConventionsLorentzian
 
-The mirror TBA is exact but highly redundant.  The quantum spectral curve
-compresses the same spectral information into a finite system of analytic
-functions.  This chapter states the \(P\mu\)-system, explains its weak-coupling
-reduction to Baxter equations, and records the separate hexagon framework for
-three-point functions.
+The mirror TBA is the finite-size spectral completion inside the planar
+integrability framework.  The quantum spectral curve compresses that
+integrability data into a finite system of analytic functions.  This chapter
+states the \(P\mu\)-system, explains its weak-coupling reduction to Baxter
+equations, and records the separate hexagon framework for three-point
+functions.  The identification of these analytic systems with the complete
+four-dimensional planar gauge-theory spectrum is a central conjectural bridge,
+not a theorem derived in this monograph.
+
+\begin{conjecture}[Central conjecture: exact planar \(\mathcal N=4\) integrability]
+\label{conj:planar-n4-exact-integrability}
+Assume the finite \(\mathcal N=4\) conformal-family input of
+Hypothesis~\ref{hyp:n4-finite-conformal-family} and the planar large-\(N\)
+single-trace limit.  The exact planar-integrability conjecture asserts that
+the planar single-trace dilatation spectrum of four-dimensional
+\(\mathcal N=4\) Yang--Mills is identified with the following nested
+integrability package.
+\[
+  \mathcal D_{\rm planar}^{\rm QFT}
+  \longleftrightarrow
+  \mathcal S_{\rm ABA}
+  \longleftrightarrow
+  \mathcal S_{\rm TBA/Y}
+  \longleftrightarrow
+  \mathcal S_{\rm QSC}.
+\]
+Here \(\mathcal D_{\rm planar}^{\rm QFT}\) is the planar local-operator
+dilatation problem; \(\mathcal S_{\rm ABA}\) is the asymptotic long-chain
+Bethe--Yang system built from centrally extended
+\(\mathfrak{su}(2|2)^2\) symmetry, factorized magnon scattering, crossing,
+the BES dressing phase, and suppressed wrapping; \(\mathcal S_{\rm TBA/Y}\)
+is the finite-size mirror-TBA/analytic-Y-system completion with its contours,
+source factors, string hypotheses, sheet choices, and exact-root regularity
+conditions; and \(\mathcal S_{\rm QSC}\) is the physical solution space of the
+QSC Riemann--Hilbert problem with gluing, charge asymptotics, cyclicity, and
+gauge identifications.
+
+The conjecture includes four completeness obligations.  Every planar
+single-trace state should give an admissible QSC solution; every admissible
+physical QSC solution should correspond to a state rather than a spurious
+analytic solution; degeneracies, shortening limits, exceptional roots, and
+operator mixing should be represented without losing states; and the QSC,
+mirror TBA, analytic Y-system, and asymptotic Bethe ansatz should agree on
+their common domains.  The word ``exact'' below therefore means exact inside
+one of these supplied integrability systems, or exact for gauge theory only
+conditional on this conjecture.
+\end{conjecture}
+
+The evidence ledger for Conjecture~\ref{conj:planar-n4-exact-integrability}
+has separate entries:
+\[
+  \begin{array}{rcl}
+    E_{\rm pert} &:& \hbox{weak-coupling dilatation-operator and ABA checks},\\
+    E_{\rm wrap} &:& \hbox{finite-length wrapping calculations such as Konishi},\\
+    E_{\rm strong} &:& \hbox{semiclassical strong-coupling and cusp tests},\\
+    E_{\rm prot} &:& \hbox{protected/localization comparisons},\\
+    E_{\rm num} &:& \hbox{numerical TBA/QSC agreement and high-loop data}.
+  \end{array}
+\]
+These entries are evidence for the physical bridge.  They are not a derivation
+of the bridge from four-dimensional local QFT.
 
 \section{Analytic T-Hook Gauge}
 
@@ -1014,24 +1070,30 @@ short cuts.  The recursion is algebraic; it does not by itself prove that the
 regularity, gluing, and large-\(u\) conditions select a unique physical
 solution.
 
-\begin{quotedtheorem}[Quantum spectral curve spectral problem]
-\label{qthm:planar-n4-qsc-status}
-Within the planar \(\mathcal N=4\) integrability framework, a physical
-single-trace state is specified by QSC analyticity, gluing, asymptotic, and
-regularity data.  Solving the resulting \(P\mu\)-system determines the exact
-planar scaling dimension of the state as a function of \(\lambda\).
-\end{quotedtheorem}
+\begin{conjecture}[QSC/gauge-theory spectral bridge]
+\label{conj:planar-n4-qsc-spectrum-bridge}
+Assume Conjecture~\ref{conj:planar-n4-exact-integrability}.  For each physical
+planar single-trace state, the QSC analyticity, gluing, asymptotic, regularity,
+and cyclicity data determine a \(P\mu\)-system solution whose charge
+asymptotics give the planar scaling dimension \(\Delta(\lambda)\).  Conversely,
+each admissible physical solution of this Riemann--Hilbert problem corresponds
+to a planar gauge-theory state after quotienting QSC gauge redundancies and
+accounting for shortening, degeneracies, and exceptional root configurations.
+On overlapping domains, this assignment agrees with the asymptotic Bethe
+ansatz before wrapping and with the mirror-TBA/analytic-Y-system finite-size
+completion after wrapping is restored.
+\end{conjecture}
 
-The theorem is quoted with its framework stated.  The QSC is a powerful exact
-solution of the planar integrability system; it is not presently a
-constructive definition of four-dimensional \(\mathcal N=4\) SYM.  In this
-chapter, the algebraic consequences of the \(P\mu\) equations are derived
-when feasible: Pfaffian preservation, monodromy recursion, the weak-coupling
-Baxter degeneration, and the one-loop dimension extraction below.  The
-existence of the single-short-cut \(P\)-functions, the normalization of the
-discontinuity coefficient in \eqref{eq:planar-n4-pmu-two}, the physical
-gluing conditions, and the equivalence to the exact planar gauge-theory
-spectrum remain QSC framework inputs.
+The QSC is a powerful exact solution of the planar integrability system; its
+identification with the gauge-theory spectrum is the conjectural bridge just
+stated.  In this chapter, the algebraic consequences of the \(P\mu\) equations
+are derived when feasible: Pfaffian preservation, monodromy recursion, the
+weak-coupling Baxter degeneration, and the one-loop dimension extraction
+below.  The existence of the single-short-cut \(P\)-functions, the
+normalization of the discontinuity coefficient in
+\eqref{eq:planar-n4-pmu-two}, the physical gluing conditions, completeness of
+the solution space, absence of spurious analytic solutions, and equivalence to
+the planar gauge-theory spectrum remain QSC framework inputs.
 
 \subsection{TBA-to-QSC Compression Record}
 
@@ -1957,9 +2019,9 @@ spin twist operators:
   f(\lambda)\log S+O(S^0),
   \qquad S\to\infty.
 \]
-The QSC reproduces the same function obtained from the BES equation.  At weak
-coupling it has a perturbative series in \(g^2\); at strong coupling the QSC
-asymptotics begin with
+Within the integrability system, the QSC reproduces the same function obtained
+from the BES equation.  At weak coupling it has a perturbative series in
+\(g^2\); at strong coupling the QSC asymptotics begin with
 \[
   f(\lambda)=\frac{\sqrt\lambda}{\pi}+O(\lambda^0)
 \]
@@ -2173,6 +2235,22 @@ nonnegative integer arcs on the three cyclic words satisfying the displayed
 length-balance equations, which is the required pair-of-pants skeleton.
 \end{remark}
 
+\begin{conjecture}[Hexagon/gauge-theory three-point bridge]
+\label{conj:planar-n4-hexagon-three-point-bridge}
+For planar single-trace operators whose spectral data are supplied by the
+asymptotic Bethe ansatz or by the QSC through
+Conjecture~\ref{conj:planar-n4-exact-integrability}, the hexagon construction
+computes the corresponding planar three-point structure constants after the
+following data are fixed: the pair-of-pants bridge lengths, the partition of
+Bethe/QSC excitations between hexagons, the scalar and matrix hexagon form
+factors with their crossing paths, the Gaudin norm and finite-volume
+normalizations, mirror-particle corrections on the bridges, and the operator
+mixing prescription at finite length.  Algebraic Watson and crossing identities
+for the scalar factor are internal consistency conditions of this proposed
+form-factor system; the equality with gauge-theory three-point functions is the
+conjectural bridge stated here.
+\end{conjecture}
+
 Asymptotically, the structure constant is a sum over partitions of magnons
 between the two hexagons:
 \[
@@ -2299,12 +2377,13 @@ same convention.
 
 \begin{openproblem}[Derivation of the hexagon expansion]
 \label{op:planar-n4-hexagon-derivation}
-Give a derivation of the hexagon expansion from a nonperturbatively defined
-planar gauge-theory path integral, including the emergence of the hexagon
-form factor, the measure for mirror corrections, and the treatment of
-operator mixing at finite length.  Existing evidence is strong inside the
-integrability framework.  A derivation at the level of a theorem in
-four-dimensional QFT remains open.
+Derive the hexagon/gauge-theory three-point bridge from a nonperturbatively
+defined planar gauge-theory path integral.  In the notation of
+Conjecture~\ref{conj:planar-n4-hexagon-three-point-bridge}, this includes the
+emergence of the hexagon form factor, the measure for mirror corrections, and
+the treatment of operator mixing at finite length.  Existing evidence is
+strong inside the integrability framework.  A derivation at the level of a
+theorem in four-dimensional QFT remains open.
 \end{openproblem}
 
 \section{Maldacena--Wilson Line, Cusp, and Bremsstrahlung}
@@ -2865,11 +2944,13 @@ proof boundary below.
 
 \section{Proof Boundary}
 
-Planar integrability gives a highly constrained exact spectral structure for
-four-dimensional interacting QFT.  Symmetry fixes matrix scattering, crossing
-fixes the scalar factor, Bethe equations organize asymptotic spectra, mirror
-TBA incorporates finite size, and the QSC compresses the exact spectral
-problem into analytic functional equations.  The remaining mathematical task
-is to derive this structure from a precise nonperturbative formulation of
-planar \(\mathcal N=4\) SYM, including the topology in which local operators,
+Conditional on
+Conjecture~\ref{conj:planar-n4-exact-integrability}, planar integrability
+gives a highly constrained exact spectral structure for four-dimensional
+interacting QFT.  Symmetry fixes matrix scattering, crossing fixes the scalar
+factor, Bethe equations organize asymptotic spectra, mirror TBA incorporates
+finite size, and the QSC compresses the integrability spectral problem into
+analytic functional equations.  The remaining mathematical task is to derive
+this structure from a precise nonperturbative formulation of planar
+\(\mathcal N=4\) SYM, including the topology in which local operators,
 large-\(N\) limits, and analytic continuation in \(\lambda\) are controlled.

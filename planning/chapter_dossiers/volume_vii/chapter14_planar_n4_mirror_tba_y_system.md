@@ -101,8 +101,8 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   equation uses source-derivative kernels; diagonal unitarity accounts for the
   resulting minus sign.
 - Records the one-species excited-state defect source and the zero condition
-  `zeta(u_j)=-2 pi i(n_j+1/2)` before specializing to exact physical Bethe
-  roots in planar N=4.
+  `zeta(u_j)=-2 pi i(n_j+1/2)` before specializing to the finite-size
+  Bethe-root regularity equations of the planar N=4 integrability framework.
 - Proves the one-species excited-state contour-deformation signs by residues:
   a crossed zero of `1+Y` contributes `-log S(u,u_j)` to the TBA driving
   term and `+ i tilde p(u_j)` to the energy; inverse mirror continuation
@@ -145,7 +145,8 @@ mirror-TBA and Y-system framework needed for wrapping interactions.
   stringbook-to-T-hook node map, strip assumptions, first Zhukovsky
   branch-point lattice, central fermionic cut inversion
   `Y_{2,pm2,+}=1/Y_{1,pm1,-}`, source-factor recording rule, and exact-root
-  regularity conditions.  The text states that global analytic continuation is
+  regularity conditions inside the mirror-TBA framework.  The text states that
+  global analytic continuation is
   an independent datum to be checked against the mirror sheet and dressing
   branch, not a consequence of local Hirota algebra or of literature authority.
 - Adds a forward status pointer to the Chapter 15 TBA-to-QSC charge record:

@@ -2,9 +2,11 @@
 
 ## Source Position
 
-This chapter follows mirror TBA and records the compressed QSC formulation of
-the spectral problem, together with the separate hexagon framework for
-three-point functions.
+This chapter follows mirror TBA, records the compressed QSC formulation of the
+spectral problem, and states the physical planar-integrability/QFT bridge as a
+central conjecture rather than as a theorem derived from four-dimensional QFT.
+It also gives the separate hexagon framework for three-point functions its own
+conjectural bridge status.
 
 ## Notation Inventory
 
@@ -47,9 +49,29 @@ three-point functions.
 - `W_MW(C,theta)`: Maldacena-Wilson line.
 - `B(lambda)`: planar Bremsstrahlung function.
 - `D(t)`: displacement operator on the line defect.
+- `D_planar^QFT`: planar four-dimensional local-operator dilatation problem.
+- `S_ABA`, `S_TBA/Y`, `S_QSC`: asymptotic Bethe ansatz,
+  mirror-TBA/analytic-Y-system, and QSC solution spaces in the central
+  integrability conjecture.
+- `E_pert`, `E_wrap`, `E_strong`, `E_prot`, `E_num`: evidence-ledger entries
+  for perturbative checks, wrapping tests, strong-coupling/cusp tests,
+  protected/localization comparisons, and numerical TBA/QSC agreement.
 
 ## Claim Ledger
 
+- Adds the named central conjecture of exact planar \(\mathcal N=4\)
+  integrability.  The conjecture separates the four-dimensional planar QFT
+  dilatation problem, asymptotic long-chain Bethe-Yang system, finite-size
+  mirror-TBA/analytic-Y-system completion, and QSC Riemann-Hilbert solution
+  space.  It records completeness obligations: state-to-QSC existence,
+  admissible-QSC-to-state surjectivity, absence of spurious analytic solutions,
+  degeneracy/shortening/exceptional-root handling, and agreement among ABA,
+  TBA/Y-system, and QSC on overlapping domains.
+- Adds an evidence ledger for the central conjecture: perturbative
+  dilatation-operator checks, wrapping tests such as Konishi, strong-coupling
+  and cusp tests, protected/localization comparisons, and numerical TBA/QSC
+  agreement.  These entries are explicitly evidence, not proof of the physical
+  bridge.
 - Defines the Pmu system, periodicity, cuts, and charge-carrying asymptotics.
 - Adds the analytic one-row T-gauge before the `Pmu` system: strip
   analyticity, `T_{0,m}=1`, large-`u` normalization `T_{1,m}->m`, Cauchy
@@ -126,12 +148,16 @@ three-point functions.
   physical existence/uniqueness.
 - Adds explicit `SL(2)` QSC large-`u` asymptotics and algebraic coefficient
   constraints.
-- States the QSC spectral claim as a quoted theorem inside the planar
-  integrability framework.
-- Adds a status boundary after the quoted theorem separating local derivations
+- States the QSC/gauge-theory spectral bridge as a conjecture, not a quoted
+  theorem.  It asserts the physical state/QSC solution correspondence,
+  dimension extraction from charge asymptotics, agreement with ABA before
+  wrapping, agreement with mirror TBA/Y-system after wrapping, and quotienting
+  by QSC gauge redundancies.
+- Adds a status boundary after the QSC conjecture separating local derivations
   in the chapter from QSC framework inputs: existence of single-short-cut
-  functions, the normalized discontinuity coefficient, physical gluing, and
-  equivalence to the exact planar gauge-theory spectrum.
+  functions, the normalized discontinuity coefficient, physical gluing,
+  completeness of the solution space, absence of spurious analytic solutions,
+  and equivalence to the planar gauge-theory spectrum.
 - Adds a TBA-to-QSC compression record proposition: after analytic Y-system
   data, the T-gauge chain, and the local two-row `Pmu` bridge are fixed, the
   charge triple is reconstructed from the fermionic large-`u` coefficient
@@ -196,8 +222,11 @@ three-point functions.
   `(Delta-J-S)/S = 4 pi g I_{J+1}(4 pi g)/(J I_J(4 pi g))+O(S)`.
   The analytic continuation from small spin to integer-spin Konishi remains
   explicitly marked as a QSC input.
-- Defines the hexagon partition of planar three-point functions and states the
-  proof boundary for deriving it from the gauge-theory path integral.
+- Defines the hexagon partition of planar three-point functions, states the
+  hexagon/gauge-theory three-point bridge as a separate conjecture, and records
+  the proof boundary for deriving it from the gauge-theory path integral.
+  Scalar Watson identities are treated as internal form-factor algebra rather
+  than as a derivation of the gauge-theory three-point function.
 - Proves the planar pair-of-pants bridge-length formula
   `ell_12=(L_1+L_2-L_3)/2`, etc., from the three length-balance equations, and
   records the parity/triangle-inequality criterion for a nonnegative integer
@@ -337,3 +366,10 @@ structure and the pair-of-pants-to-hexagons cut.
   It was used to check the original compact `Pmu` weak-coupling argument and
   regularity assumptions.  The monograph text expands the argument rather
   than citing it as authority.
+
+## Anti-Wrapper Audit
+
+- 2026-06-05 issue #804 pass: demoted the physical QSC/gauge-theory spectral
+  bridge from quoted-theorem status to conjecture status, added the central
+  exact-planar-integrability conjecture, and kept theorem-like language only
+  for algebra internal to the stated ABA/TBA/Y/QSC/hexagon systems.

@@ -1838,7 +1838,9 @@ Current checks:
   one-loop Konishi Bethe roots, one-magnon XXX spectra, exact two-magnon BMN
   finite-chain quantization, central-extension magnon dispersion, its
   weak-coupling expansion, pentagon-OPE spectral resolution bookkeeping, and
-  a local Hirota-to-Y-system algebra identity.
+  a local Hirota-to-Y-system algebra identity.  These checks support the
+  integrability evidence ledger; they do not prove the physical
+  gauge-theory/QSC bridge.
 - `planar_n4_reader_companion_checks.py`: compact reader-facing checks for
   the planar \(\mathcal N=4\) integrability spine: the length-four Konishi
   spin-chain eigenvector, one-loop Bethe-Yang equations, local Y-system source

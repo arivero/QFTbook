@@ -186,8 +186,11 @@ motivational checks, not foundations.
   scalar crossing multiplier and unitarity.  The text records the induced
   zero/pole propagation and makes explicit that the BES CDD-free branch is a
   minimality/analyticity choice, not a finite algebra consequence.
-- States the BES/crossing scalar-factor input as a quoted theorem with its
-  framework assumptions.
+- States the BES/crossing scalar-factor input as an asymptotic magnon S-matrix
+  bridge conjecture with its framework assumptions.  Matrix-intertwiner
+  uniqueness and the minimal crossing solution remain internal analytic
+  statements, while the identification with the planar gauge-theory dilatation
+  operator is conjectural.
 - Adds an explicit asymptotic Bethe-Yang regime assumption: the ABA is a
   long-chain quantization rule for fixed-magnon or controlled high-density
   root configurations as `L -> infinity`, with wrapping/mirror winding
