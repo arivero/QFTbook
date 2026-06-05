@@ -115,6 +115,12 @@ or constructive definition.
   restricted compensator-independence condition; added the \(1,\exp(2\omega)\)
   negative control showing that restricted independence alone does not make
   \(C\exp(-\omega)\) reference moments finite.
+- 2026-06-05 issue #838 pass: separated ultraviolet finite-reference moments,
+  compact compensator independence, zero-frequency endpoint regularity, and
+  strict reference positivity on the full perturbation support.  The chapter
+  now excludes weights such as \(1/\omega\) despite their smoothness on the
+  open half-line, and the companion check records the divergent plateau-bump
+  moment plus the failure of the adapted reference to stay positive at zero.
 
 ## Calculation Checks
 

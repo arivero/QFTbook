@@ -631,8 +631,10 @@ admissibility requires real finite moments in addition to local linear
 independence.  In this paragraph an admissible finite sum-rule family
 means the following data.  First, after any complex-valued constraints have been
 split into their real and imaginary parts, the weights
-\(w_0,\ldots,w_m\) are real-valued \(C^\infty(0,\infty)\) functions.  Second,
-there are \(\varepsilon_0>0\) and a compact set
+\(w_0,\ldots,w_m\) are real-valued \(C^\infty(0,\infty)\) functions which
+extend continuously and boundedly to \([0,\varepsilon_0]\).  This is an
+infrared endpoint hypothesis, independent of smoothness on the open half-line.
+Second, there are \(\varepsilon_0>0\) and a compact set
 \[
   K\Subset(\varepsilon_0,\infty).
 \]
@@ -644,8 +646,27 @@ absolute moments,
   \qquad \ell=0,\ldots,m .
   \label{eq:thermal-admissible-reference-moments}
 \end{equation}
+Fourth, the same reference has a strictly positive lower bound on the entire
+support on which perturbations will live:
+\[
+  c_{\rm ref}
+  =
+  \inf_{\omega\in[0,\varepsilon_0]\cup K}\sigma_{\rm ref}(\omega)
+  >
+  0 .
+\]
 The perturbation moments are then finite automatically because all perturbing
-functions below are supported in the compact set \([0,\varepsilon_0]\cup K\).
+functions below are supported in \([0,\varepsilon_0]\cup K\), the weights are
+bounded on the zero-frequency interval, and they are smooth on the compact
+set \(K\).  The bump moments are moreover \(O(\varepsilon)\) because
+\[
+  \left|
+  \int_0^\varepsilon w_\ell(\omega)b_\varepsilon(\omega)\,d\omega
+  \right|
+  \le
+  \|w_\ell\|_{L^\infty[0,\varepsilon_0]}\,
+  \|b_\varepsilon\|_\infty\,\varepsilon .
+\]
 Without the real-valued reduction, the ordered comparison
 \(\sigma_{\rm ref}\pm a h_\varepsilon\ge0\) is not a real positivity statement;
 without \eqref{eq:thermal-admissible-reference-moments}, the phrase
@@ -656,7 +677,8 @@ Thus restricted independence supplies only the compensator matrix, not
 ultraviolet moment finiteness.  If a fixed reference such as
 \(C\ee^{-\omega}\) is used, \eqref{eq:thermal-admissible-reference-moments}
 is part of the admissibility hypothesis.  Equivalently, for an arbitrary fixed
-finite real smooth family one may adapt the reference, for instance
+finite real smooth family satisfying the endpoint bound above one may adapt
+the reference, for instance
 \[
   \sigma_{\rm ref}(\omega)
   =
@@ -665,7 +687,13 @@ finite real smooth family one may adapt the reference, for instance
 \]
 which is positive and smooth, has finite moments because
 \(|w_\ell|/(1+\sum_j w_j^2)\le 1/2\), and remains bounded below on each compact
-support used by the perturbation.
+support used by the perturbation, including \([0,\varepsilon_0]\).  The
+endpoint condition is independent of this ultraviolet device:
+\(w_0(\omega)=1/\omega\) is smooth on \((0,\infty)\) and can be independent on
+\(K\), but its constant low-frequency bump moment diverges like
+\(\int_0^\varepsilon d\omega/\omega\).  The adapted reference for that
+singular weight behaves as \(O(\omega^2)\) at zero, so it also fails the
+strict positivity condition on \([0,\varepsilon_0]\).
 
 With this admissible datum, one can choose
 \(\psi_0,\ldots,\psi_m\in C_c^\infty(K)\) such that
@@ -718,7 +746,7 @@ chosen admissible reference slope set
 \[
   U=[0,\varepsilon_0]\cup K,
   \qquad
-  c=\inf_{\omega\in U}\sigma_{\rm ref}(\omega)>0 .
+  c=c_{\rm ref}>0 .
 \]
 Also set
 \[

@@ -13,7 +13,8 @@ low-frequency positive spectral-slope family whose Euclidean transform is
 bounded while its transport-channel slope is fixed, including a real
 finite-sum-rule-preserving compensator test with finite reference moments, a
 smooth integrable reference spectrum, a restricted polynomial-weight
-compensator system, and a uniform positivity margin.
+compensator system, bounded zero-frequency endpoint weights, and a uniform
+positivity margin on the entire perturbation support.
 Imported assumptions: the finite-regulator Gibbs trace, the bosonic spectral
 kernel stated in the chapter, positivity of Hermitian positive-frequency
 spectral weights, and the use of Euclidean norms as data-error topology.
@@ -26,6 +27,9 @@ weight pair whose restrictions agree on the allowed compensator region is
 rejected as outside the compensator hypothesis, and a restricted-independent
 pair with a divergent moment against C exp(-omega) is rejected as outside the
 finite-reference-moment hypothesis.
+The singular endpoint weight 1/omega is rejected even though it is smooth on
+(0,infinity): its low-frequency bump moment diverges and the natural adapted
+reference loses the required positive lower bound at zero.
 Scope boundary: these checks verify finite algebra and the explicit
 ill-conditioning construction; they do not prove a continuum reconstruction
 theorem, Carlson-class uniqueness, arbitrary finite-sum-rule compensator
@@ -527,6 +531,49 @@ def check_restricted_independence_does_not_imply_reference_moments() -> None:
             raise AssertionError("adapted reference should bound the exponential-weight moment")
 
 
+def check_zero_endpoint_weight_and_reference_hypotheses() -> None:
+    """Smoothness on (0,infinity) does not control the zero endpoint."""
+
+    epsilon = 1.0e-3
+    eta_star = 0.7
+    regular_sup = 0.0
+    regular_moment = integrate_midpoint(
+        lambda omega: (1.0 + omega) * smooth_plateau_bump(omega, epsilon, eta_star),
+        0.0,
+        epsilon,
+    )
+    for index in range(101):
+        omega = epsilon * index / 100.0
+        regular_sup = max(regular_sup, abs(1.0 + omega))
+    assert_finite("endpoint-regular weight sup", regular_sup)
+    assert_finite("endpoint-regular bump moment", regular_moment)
+    if regular_moment > regular_sup * eta_star * epsilon * (1.0 + 1.0e-12):
+        raise AssertionError("bounded endpoint weights should give O(epsilon) bump moments")
+
+    # For w(omega)=1/omega, the plateau part of the low-frequency bump gives
+    # eta_star int_delta^(epsilon/3) d omega / omega, which diverges as
+    # delta -> 0.  The growing partial integrals are the negative control.
+    def singular_partial(delta: float) -> float:
+        return eta_star * (math.log(epsilon / 3.0) - math.log(delta))
+
+    partial_coarse = singular_partial(epsilon * 1.0e-3)
+    partial_fine = singular_partial(epsilon * 1.0e-9)
+    assert_finite("singular endpoint partial moment coarse", partial_coarse)
+    assert_finite("singular endpoint partial moment fine", partial_fine)
+    if partial_fine <= 2.0 * partial_coarse:
+        raise AssertionError("1/omega endpoint weight should not have a finite plateau-bump moment")
+
+    # The standard adapted-reference trick for the singular family behaves
+    # like omega^2 near zero and therefore has no positive lower bound on the
+    # perturbation support [0, epsilon0].
+    def singular_adapted_reference(omega: float) -> float:
+        return math.exp(-omega) * omega**2 / (1.0 + omega**2)
+
+    grid_min = min(singular_adapted_reference(epsilon * index / 100.0) for index in range(101))
+    if grid_min != 0.0:
+        raise AssertionError("singular adapted reference must lose strict positivity at the zero endpoint")
+
+
 def check_chemical_potential_twist() -> None:
     beta = 2.0
     mu = 0.37
@@ -556,6 +603,7 @@ def main() -> None:
     check_finite_sum_rule_preserving_instability()
     check_adversarial_weights_need_restricted_independence()
     check_restricted_independence_does_not_imply_reference_moments()
+    check_zero_endpoint_weight_and_reference_hypotheses()
     check_chemical_potential_twist()
     print("Finite-temperature path-integral convention and compensator-scope checks passed.")
 
