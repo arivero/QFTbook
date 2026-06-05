@@ -12,6 +12,8 @@ S^4 and S^3 matrix models:
 * the finite-part determinant ledger behind the S^4 H-powers;
 * the elementary U(1) S^4 Gaussian integral;
 * the finite double-sine reflection identity and chiral pole convention;
+* global Chern-Simons level-lattice, FI-center, contact-block, and
+  parity-anomaly half-shift bookkeeping for the S^3 formula;
 * completion of the square in the U(1)_k S^3 Chern-Simons Fresnel integral;
 * the round-sphere chiral-pair determinant integral
   int d sigma /(2 cosh(pi sigma)) = 1/2.
@@ -48,6 +50,7 @@ def assert_equal(name: str, got, expected) -> None:
 
 
 Vector = list[Fraction]
+Matrix = list[list[Fraction]]
 
 
 def vector_add(*vectors: Vector) -> Vector:
@@ -75,6 +78,63 @@ def vector_linf_norm(vector: Vector) -> Fraction:
 def dot_exact(left: Vector, right: Vector) -> Fraction:
     assert_equal("vector length agreement", len(left), len(right))
     return sum(left[index] * right[index] for index in range(len(left)))
+
+
+def matrix_bilinear(matrix: Matrix, left: Vector, right: Vector) -> Fraction:
+    assert_equal("matrix row count", len(matrix), len(left))
+    assert_equal("bilinear vector length", len(left), len(right))
+    total = Fraction(0)
+    for row, row_entries in enumerate(matrix):
+        assert_equal("matrix column count", len(row_entries), len(right))
+        total += sum(row_entries[col] * left[row] * right[col] for col in range(len(right)))
+    return total
+
+
+def matrix_add(left: Matrix, right: Matrix) -> Matrix:
+    assert_equal("matrix row count", len(left), len(right))
+    result: Matrix = []
+    for left_row, right_row in zip(left, right, strict=True):
+        assert_equal("matrix column count", len(left_row), len(right_row))
+        result.append([left_row[col] + right_row[col] for col in range(len(left_row))])
+    return result
+
+
+def zero_matrix(size: int) -> Matrix:
+    return [[Fraction(0) for _ in range(size)] for _ in range(size)]
+
+
+def outer_product(weight: Vector) -> Matrix:
+    return [[weight[row] * weight[col] for col in range(len(weight))] for row in range(len(weight))]
+
+
+def parity_shift(weights: list[Vector], signs: list[int]) -> Matrix:
+    assert_equal("parity-shift weight/sign count", len(weights), len(signs))
+    size = len(weights[0]) if weights else 0
+    shift = zero_matrix(size)
+    for weight, sign in zip(weights, signs, strict=True):
+        assert_equal("parity-shift weight size", len(weight), size)
+        contribution = outer_product(weight)
+        shift = matrix_add(
+            shift,
+            [[Fraction(sign, 2) * entry for entry in row] for row in contribution],
+        )
+    return shift
+
+
+def matrix_entries_integral(matrix: Matrix) -> bool:
+    return all(entry.denominator == 1 for row in matrix for entry in row)
+
+
+def diagonal_even(matrix: Matrix) -> bool:
+    return all(
+        matrix[index][index].denominator == 1
+        and matrix[index][index].numerator % 2 == 0
+        for index in range(len(matrix))
+    )
+
+
+def permute_vector(vector: Vector, permutation: tuple[int, ...]) -> Vector:
+    return [vector[index] for index in permutation]
 
 
 def determinant_exact(matrix: list[list[int | Fraction]]) -> Fraction:
@@ -369,6 +429,122 @@ def check_s3_double_sine_conventions() -> None:
     assert_close("round double-sine chiral pole", denominator, 0, mp.mpf("1e-14"))
 
 
+def check_s3_cs_level_lattice_data() -> None:
+    spin_u1_odd = [[Fraction(3)]]
+    nonspin_u1_even = [[Fraction(4)]]
+    mixed_nonspin = [
+        [Fraction(2), Fraction(1)],
+        [Fraction(1), Fraction(-2)],
+    ]
+    mixed_bad = [
+        [Fraction(1), Fraction(1)],
+        [Fraction(1), Fraction(2)],
+    ]
+
+    assert_equal("spin U(1) odd level is integral", matrix_entries_integral(spin_u1_odd), True)
+    assert_equal("odd U(1) level is not non-spin even", diagonal_even(spin_u1_odd), False)
+    assert_equal("even U(1) level is non-spin allowed", diagonal_even(nonspin_u1_even), True)
+    assert_equal("mixed non-spin diagonal parity", diagonal_even(mixed_nonspin), True)
+    assert_equal("mixed bad diagonal parity", diagonal_even(mixed_bad), False)
+
+    samples = [
+        [Fraction(1), Fraction(0)],
+        [Fraction(0), Fraction(1)],
+        [Fraction(2), Fraction(-3)],
+    ]
+    for sample in samples:
+        value = matrix_bilinear(mixed_nonspin, sample, sample)
+        assert_equal("non-spin even quadratic self-pairing", value.denominator, 1)
+        assert_equal("non-spin even quadratic parity", value.numerator % 2, 0)
+
+
+def check_s3_un_weyl_and_fi_data() -> None:
+    n = 3
+    k = Fraction(5)
+    level = [[k if row == col else Fraction(0) for col in range(n)] for row in range(n)]
+    vectors = [
+        [Fraction(1), Fraction(-2), Fraction(0)],
+        [Fraction(3), Fraction(1), Fraction(-1)],
+    ]
+    permutations = [(0, 1, 2), (1, 2, 0), (2, 0, 1), (2, 1, 0)]
+
+    for vector in vectors:
+        original = matrix_bilinear(level, vector, vector)
+        for permutation in permutations:
+            permuted = permute_vector(vector, permutation)
+            assert_equal("standard U(N) level is Weyl invariant", matrix_bilinear(level, permuted, permuted), original)
+
+    central_fi = [Fraction(7, 3), Fraction(7, 3), Fraction(7, 3)]
+    roots = [
+        [Fraction(1), Fraction(-1), Fraction(0)],
+        [Fraction(0), Fraction(1), Fraction(-1)],
+        [Fraction(1), Fraction(0), Fraction(-1)],
+    ]
+    for root in roots:
+        assert_equal("U(N) FI coordinate annihilates SU(N) roots", dot_exact(central_fi, root), Fraction(0))
+
+    noncentral_candidate = [Fraction(1), Fraction(0), Fraction(0)]
+    assert_equal("noncentral FI candidate detects a semisimple root", dot_exact(noncentral_candidate, roots[0]), Fraction(1))
+
+
+def check_s3_parity_anomaly_shift_ledger() -> None:
+    single_charge_shift = parity_shift([[Fraction(1)]], [1])
+    assert_equal("single charge parity half-shift", single_charge_shift, [[Fraction(1, 2)]])
+    assert_equal("uncompensated single charge is nonintegral", matrix_entries_integral(single_charge_shift), False)
+
+    compensated = matrix_add([[-Fraction(1, 2)]], single_charge_shift)
+    assert_equal("bare half-level can compensate one charge", compensated, [[Fraction(0)]])
+    assert_equal("compensated single charge level is integral", matrix_entries_integral(compensated), True)
+
+    vectorlike_same_regulator = parity_shift([[Fraction(1)], [Fraction(-1)]], [1, 1])
+    assert_equal("same-regulator vectorlike pair shifts by one", vectorlike_same_regulator, [[Fraction(1)]])
+
+    vectorlike_opposite_regulator = parity_shift([[Fraction(1)], [Fraction(-1)]], [1, -1])
+    assert_equal("opposite-regulator vectorlike pair cancels shift", vectorlike_opposite_regulator, [[Fraction(0)]])
+
+    bifundamental = [Fraction(1), Fraction(-1)]
+    conjugate = [Fraction(-1), Fraction(1)]
+    bifund_shift = parity_shift([bifundamental], [1])
+    assert_equal(
+        "single bifundamental half-shift",
+        bifund_shift,
+        [[Fraction(1, 2), -Fraction(1, 2)], [-Fraction(1, 2), Fraction(1, 2)]],
+    )
+    paired_bifund_shift = parity_shift([bifundamental, conjugate], [1, 1])
+    assert_equal(
+        "paired bifundamentals give integral mixed shift",
+        paired_bifund_shift,
+        [[Fraction(1), -Fraction(1)], [-Fraction(1), Fraction(1)]],
+    )
+
+
+def check_s3_contact_phase_block_bookkeeping() -> None:
+    # The localization exponent splits a single extended quadratic form into
+    # gauge-gauge, gauge-background, and background-background blocks.
+    extended_level = [
+        [Fraction(2), Fraction(3)],
+        [Fraction(3), Fraction(5)],
+    ]
+    gauge_value = Fraction(2, 3)
+    background_value = -Fraction(5, 4)
+    full = matrix_bilinear(extended_level, [gauge_value, background_value], [gauge_value, background_value])
+    split = (
+        Fraction(2) * gauge_value * gauge_value
+        + 2 * Fraction(3) * gauge_value * background_value
+        + Fraction(5) * background_value * background_value
+    )
+    assert_equal("S3 contact phase block split", full, split)
+
+    product_level = [
+        [Fraction(4), Fraction(2)],
+        [Fraction(2), -Fraction(4)],
+    ]
+    sigma = [Fraction(3, 5), -Fraction(7, 6)]
+    standard_opposite = Fraction(4) * sigma[0] * sigma[0] - Fraction(4) * sigma[1] * sigma[1]
+    mixed = 2 * Fraction(2) * sigma[0] * sigma[1]
+    assert_equal("product group mixed determinant level", matrix_bilinear(product_level, sigma, sigma), standard_opposite + mixed)
+
+
 def check_s3_u1_fresnel_completion() -> None:
     for k in (3, -5):
         zeta = 0.37
@@ -400,6 +576,10 @@ def main() -> None:
     check_s4_H_log_derivative()
     check_s4_finite_part_determinant_ledger()
     check_s3_double_sine_conventions()
+    check_s3_cs_level_lattice_data()
+    check_s3_un_weyl_and_fi_data()
+    check_s3_parity_anomaly_shift_ledger()
+    check_s3_contact_phase_block_bookkeeping()
     check_s3_u1_fresnel_completion()
     check_s3_chiral_pair_integral()
     print("All supersymmetric localization matrix-model checks passed.")

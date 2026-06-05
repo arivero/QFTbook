@@ -1693,31 +1693,124 @@ Substitution into \eqref{eq:bremsstrahlung-circular-loop-ward} proves
 
 Let \(G\), \(T\), \(\mathfrak t\), \(W_G\), and \(\Delta\) be as above.  On
 the round \(S^3_r\), the Coulomb-branch localization variable is the constant
-real scalar \(\sigma\in\mathfrak t\) in the vector multiplet.  With
-Chern--Simons level \(k\), FI parameter \(\zeta\in\mathfrak t^\ast\), chiral
-multiplets \(\Phi\) in representations \(R_\Phi\), real masses \(m_\Phi\),
-and \(R\)-charges \(\Delta_\Phi\), the Kapustin--Willett--Yaakov matrix
-integral is
-\begin{equation}
-  Z_{S^3}
+real scalar \(\sigma\in\mathfrak t\) in the vector multiplet.  For a general
+compact connected gauge group, however, the Chern--Simons input is not a scalar
+attached to the Lie algebra.  It is part of the global gauge-theory datum.
+
+\begin{definition}[Round-\(S^3\) Chern--Simons--matter localization datum]
+\label{def:s3-cs-matter-localization-datum}
+A round-\(S^3_r\) \(\mathcal N=2\) Chern--Simons--matter localization datum is
+a package
+\[
+  \mathfrak D_{S^3}
   =
+  \bigl(
+    G,\Lambda_{\rm cochar},s,\varphi,\mathcal K_{\rm bare},
+    \mathcal R_{\rm PV},\mathcal K_{\rm eff},
+    \zeta,\{R_\Phi,m_\Phi,\Delta_\Phi\},C,\mathcal A_\infty
+  \bigr).
+\]
+Here \(G\) is the compact global form of the gauge group,
+\(\Lambda_{\rm cochar}=\operatorname{Hom}(U(1),T)\) is its cocharacter
+lattice, \(s\) is the spin or non-spin Chern--Simons choice, and \(\varphi\)
+is the framing convention.  The bare Chern--Simons coordinate
+\(\mathcal K_{\rm bare}\) is an allowed integral symmetric bilinear form on the
+gauge and background cocharacter lattice, with gauge-gauge, gauge-flavor,
+flavor-flavor, gauge-\(R\), flavor-\(R\), \(R\)-\(R\), and gravitational/framing
+contact components.  On a non-spin theory the self-pairings are restricted by
+the corresponding bosonic level lattice; on a spin theory odd diagonal
+components are allowed only after the spin structure has been made part of the
+theory.
+
+The regulator \(\mathcal R_{\rm PV}\) fixes the parity-anomaly convention.  If
+\(\psi\) ranges over the dynamical fermions, with Pauli--Villars signs
+\(\epsilon_\psi=\pm1\), then the effective contact form that enters the
+localized answer is
+\begin{equation}
+  \mathcal K_{\rm eff}
+  =
+  \mathcal K_{\rm bare}
+  +
+  \frac12
+  \sum_{\psi}\epsilon_\psi\,\mathcal K_\psi,
+  \label{eq:s3-parity-anomaly-effective-level}
+\end{equation}
+where, on cocharacters \(\lambda,\lambda'\) and background cocharacters
+\(\nu,\nu'\),
+\[
+  \mathcal K_\psi((\lambda,\nu),(\lambda',\nu'))
+  =
+  \sum_{\rho\in{\rm wt}(R_\psi)}
+  \bigl(\rho(\lambda)+q_\psi(\nu)\bigr)
+  \bigl(\rho(\lambda')+q_\psi(\nu')\bigr).
+\]
+The parity-anomaly condition is that
+\(\mathcal K_{\rm eff}\) belongs to the allowed spin or non-spin level lattice.
+Changing \(\mathcal R_{\rm PV}\) shifts \(\mathcal K_{\rm bare}\) and the
+background contact terms by integral counterterms; it does not leave a
+regulator-independent scalar level.  The FI parameter is restricted to
+\begin{equation}
+  \zeta\in\operatorname{Hom}(G,U(1))\otimes_\mathbb Z\mathbb R
+  \simeq
+  (\mathfrak t/[\mathfrak g,\mathfrak g])^\ast,
+  \label{eq:s3-fi-abelian-center}
+\end{equation}
+so it vanishes on semisimple coroot directions.  Finally \(C\) is the Cartan
+integration cycle and \(\mathcal A_\infty\) is the large-\(|\sigma|\) and pole
+prescription used to make the oscillatory integral a regulated localization
+functional.
+\end{definition}
+
+Let \(m_B\) collect all background real masses and \(R\)-background coordinates
+that enter the contact terms, and write the gauge-background block of
+\(\mathcal K_{\rm eff}\) as \(\mathcal K_{\rm eff}^{gB}\).  The
+Kapustin--Willett--Yaakov Cartan integral attached to
+\(\mathfrak D_{S^3}\) is
+\begin{equation}
+\begin{aligned}
+  Z_{S^3}(\mathfrak D_{S^3})
+  &=
   \frac1{|W_G|}
-  \int_{\mathfrak t}d\sigma\,
-  \ee^{\ii\pi k r^2(\sigma,\sigma)+2\pi\ii r(\zeta,\sigma)}
+  \int_C d\sigma\,
+  \exp\!\bigl[\mathcal I_{\rm CS}(\sigma;m_B)\bigr]\\
+  &\quad\times
   \prod_{\alpha\in\Delta_+}
   4\sinh^2\!\bigl(\pi r\,\alpha(\sigma)\bigr)
-  \prod_{\Phi}Z_{\Phi}^{S^3}(\sigma),
+  \prod_{\Phi}Z_{\Phi}^{S^3}(\sigma;m_B),
+\end{aligned}
   \label{eq:kwy-s3-localization}
 \end{equation}
-where
+where the contact phase is
+\begin{equation}
+  \begin{aligned}
+  \mathcal I_{\rm CS}(\sigma;m_B)
+  &=
+  \ii\pi\mathcal K_{\rm eff}^{gg}(r\sigma,r\sigma)
+  +2\pi\ii\mathcal K_{\rm eff}^{gB}(r\sigma,m_B)\\
+  &\quad
+  +\ii\pi\mathcal K_{\rm eff}^{BB}(m_B,m_B)
+  +2\pi\ii r\langle\zeta,\sigma\rangle .
+  \end{aligned}
+  \label{eq:s3-localization-contact-phase}
+\end{equation}
+The chiral factor is
 \[
-  Z_{\Phi}^{S^3}(\sigma)
+  Z_{\Phi}^{S^3}(\sigma;m_B)
   =
   \prod_{\rho\in{\rm wt}(R_\Phi)}
   \exp\!\left[
-    \ell\!\left(1-\Delta_\Phi+\ii r\,\rho(\sigma)+\ii r\,m_\Phi\right)
+    \ell\!\left(
+      1-\Delta_\Phi
+      +\ii r\,\rho(\sigma)
+      +\ii\,q_\Phi(m_B)
+    \right)
   \right].
 \]
+Thus the displayed integral is a function of the full contact-level datum.  The
+single symbol \(k\) is recovered only in specializations where the global form,
+spin choice, trace normalization, regulator, and background contact scheme have
+collapsed \(\mathcal K_{\rm eff}^{gg}\) to one integral multiple of a basic
+quadratic form.
 The function \(\ell\) is fixed, up to an additive constant that changes the
 overall normalization of \(Z_{S^3}\), by
 \begin{equation}
@@ -1761,11 +1854,23 @@ reflection identity used for a conjugate \(R\)-charge \(1/2\) pair is
 \end{equation}
 
 The integration contour is the real Cartan in the displayed unitary
-normalization.  This statement includes a convergence hypothesis.  If the
-large-\(|\sigma|\) behavior is not damping in every Weyl chamber, then a real
-mass, FI chamber, analytic continuation, or residue prescription must be
-declared as part of the theory being evaluated.  In abelianized descriptions
-the possible poles lie on complexified hyperplanes
+normalization only after \(\mathcal K_{\rm eff}\), the FI coordinate, and the
+matter determinants have been fixed.  Along a ray \(\sigma=t v\), the large
+\(t\) test uses the full exponent
+\[
+  \ii\pi t^2\mathcal K_{\rm eff}^{gg}(rv,rv)
+  +2\pi\ii t\,
+  \bigl(\mathcal K_{\rm eff}^{gB}(rv,m_B)
+        +r\langle\zeta,v\rangle\bigr)
+  +
+  \sum_{\Phi,\rho}
+  \log Z_{\ell,\Phi}\!\left(t\,\rho(v)\right)
+\]
+together with the vector-multiplet hyperbolic-sine growth.  If this asymptotic
+behavior is not damping in every Weyl chamber, then a real mass, FI chamber,
+analytic continuation, or residue prescription must be declared as part of the
+theory being evaluated.  In abelianized descriptions the possible poles lie on
+complexified hyperplanes
 \[
   \rho(\sigma)+m_\Phi
   +\ii\bigl(n+\Delta_\Phi\bigr)/r=0,
@@ -1775,10 +1880,91 @@ up to the convention used for \(\ell\) or \(s_b\).  A Jeffrey--Kirwan-type
 residue prescription is therefore not a decorative evaluation trick: it is a
 choice of chamber and integration cycle for the regulated localization structure.
 
+\begin{example}[Simply connected simple specialization]
+\label{ex:s3-simple-simply-connected-cs-level}
+If \(G\) is simple and simply connected, and no background contact terms are
+turned on, the gauge-gauge block can be written
+\[
+  \mathcal K_{\rm eff}^{gg}(\sigma,\sigma)
+  =
+  k_{\rm eff}(\sigma,\sigma)_{\rm basic},
+  \qquad k_{\rm eff}\in\mathbb Z,
+\]
+in the basic integral normalization.  There is no FI parameter for a semisimple
+group.  This is the common setting in which the formula looks as if it had one
+integer \(k_{\rm eff}\).  For a quotient global form or a non-spin theory the
+allowed values are instead the corresponding sublattice of integral
+Chern--Simons forms.
+\end{example}
+
+\begin{example}[Standard \(U(N)\) factor]
+\label{ex:s3-un-standard-level-data}
+For the standard \(U(N)\) factor used in many localization formulae, choose
+\(\Lambda_{\rm cochar}\simeq\mathbb Z^N\) with Weyl group \(S_N\).  The diagonal
+level \(U(N)_k\) has
+\[
+  \mathcal K_{\rm eff}^{gg}(\sigma,\sigma)
+  =
+  k\sum_{i=1}^N\sigma_i^2,
+  \qquad k\in\mathbb Z
+\]
+on spin \(S^3\).  A non-spin oriented theory imposes the corresponding even
+self-pairing condition.  The FI coordinate is necessarily central:
+\[
+  \langle\zeta,\sigma\rangle
+  =
+  \zeta\sum_{i=1}^N\sigma_i .
+\]
+With chiral fermions present, the integer \(k\) in this display is the
+effective level after the parity-anomaly shift
+\[
+  \mathcal K_{\rm eff}^{gg}(\lambda,\lambda')
+  =
+  k_{\rm bare}\sum_i\lambda_i\lambda_i'
+  +
+  \frac12
+  \sum_\psi\epsilon_\psi
+  \sum_{\rho\in{\rm wt}(R_\psi)}
+  \rho(\lambda)\rho(\lambda')
+\]
+has landed in the allowed \(U(N)\) level lattice.
+\end{example}
+
+\begin{example}[Product group and mixed determinant levels]
+\label{ex:s3-product-group-mixed-levels}
+For \(U(N)\times U(M)\), with Cartan variables
+\((\sigma_i,\widehat\sigma_j)\), the standard opposite-level gauge block is
+\[
+  \mathcal K_{\rm eff}^{gg}
+  =
+  k\sum_{i=1}^N\sigma_i^2
+  -
+  k\sum_{j=1}^M\widehat\sigma_j^2 .
+\]
+The most general Abelian determinant-sector contact datum may also include
+mixed integral terms such as
+\[
+  2h
+  \left(\sum_i\sigma_i\right)
+  \left(\sum_j\widehat\sigma_j\right),
+  \qquad h\in\mathbb Z,
+\]
+subject again to the spin or non-spin level lattice.  A bifundamental chiral
+fermion has weights \(e_i-\widehat e_j\), so its parity-anomaly contribution is
+added to the two diagonal blocks and to the mixed block before the matrix model
+is declared.  The ABJM specialization of
+Chapter~\ref{ch:susy-three-dimensional-chern-simons-matter} sets the standard
+unquotiented global form, opposite levels, bifundamental matter,
+spin/framing convention, line lattice, and background contact scheme first; only
+then does the familiar two-matrix \(S^3\) integral have a QFT meaning.
+\end{example}
+
 \begin{example}[Abelian Chern--Simons Gaussian]
 \label{ex:s3-u1-cs-fresnel}
-For pure \(U(1)_k\) Chern--Simons theory on \(S^3\) with FI parameter
-\(\zeta\), the localized integral is the oscillatory Fresnel integral
+For spin pure \(U(1)_k\) Chern--Simons theory on \(S^3\), \(k\in\mathbb Z\);
+for the non-spin oriented version in this normalization, the diagonal
+self-level is even.  With FI parameter \(\zeta\), which is allowed because
+\(U(1)\) is Abelian, the localized integral is the oscillatory Fresnel integral
 \[
   Z_{U(1)_k}(\zeta)
   =
@@ -1841,8 +2027,8 @@ regularization,}\\
 &\text{and an instanton compactification or contour for singular point
 instantons;}\\[3pt]
 S^3:&
-\text{a parity-anomaly regulator, framing convention, real contour or
-analytic continuation,}\\
+\text{a global Chern--Simons/contact level, parity-anomaly regulator,}\\
+&\text{framing convention, real contour or analytic continuation,}\\
 &\text{and a treatment of noncompact Coulomb directions and singular
 hyperplanes.}
 \end{array}

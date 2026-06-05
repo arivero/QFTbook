@@ -79,10 +79,20 @@
   model,
   `N^{-1} exp(lambda/(8N)) L_{N-1}^{(1)}(-lambda/(4N))`, derived from the
   Hermite kernel before taking the planar limit.
-- \(S^3\) \(\mathcal N=2\) Kapustin-Willett-Yaakov matrix integral, including
-  Chern-Simons, FI, vector, and chiral multiplet contributions.
+- \(S^3\) \(\mathcal N=2\) Chern-Simons-matter localization datum
+  \(\mathfrak D_{S^3}\), with global gauge form, cocharacter lattice,
+  spin/non-spin Chern-Simons choice, framing, bare/effective contact-level
+  bilinear forms, parity-anomaly regulator, Abelian-center FI coordinate,
+  matter/mass/\(R\)-charge data, contour, and large-\(|\sigma|\) prescription.
+- Kapustin-Willett-Yaakov matrix integral attached to \(\mathfrak D_{S^3}\),
+  including gauge-gauge, gauge-background, and background-background
+  Chern-Simons/contact terms before the vector and chiral determinants are
+  multiplied in.
 - Double-sine definition, round-sphere relation to \(\ell\), conjugate-pair
   reflection identity, chiral pole hyperplanes, and JK-type contour status.
+- Specializations of the \(S^3\) formula to a simply connected simple group, a
+  standard \(U(N)\) factor, and a \(U(N)\times U(M)\) product with mixed
+  determinant levels and bifundamental parity-anomaly shifts.
 - \(U(1)_k\) Chern-Simons Fresnel integral and conjugate-chiral-pair
   determinant integral.
 - Theorem boundary for singular instanton strata, parity anomaly, framing,
@@ -127,8 +137,13 @@
 | \({\rm Hilb}^2(\mathbb C^2)\) | rank-one length-two Gieseker laboratory resolving the Uhlenbeck double-point sector |
 | \(\ell(z)\) | round-\(S^3\) chiral determinant function |
 | \(s_b(x)\) | double sine function |
-| \(\zeta\) | \(3D\) FI parameter |
-| \(k\) | Chern-Simons level |
+| \(\mathfrak D_{S^3}\) | full round-\(S^3\) Chern-Simons-matter localization datum |
+| \(\Lambda_{\rm cochar}\) | cocharacter lattice of the compact gauge group |
+| \(\mathcal K_{\rm bare},\mathcal K_{\rm eff}\) | bare and parity-anomaly-shifted Chern-Simons/contact bilinear forms |
+| \(\mathcal R_{\rm PV}\) | parity-anomaly regulator choice |
+| \(\zeta\) | \(3D\) FI parameter, restricted to Abelian center directions |
+| \(C,\mathcal A_\infty\) | \(S^3\) Cartan contour and large-\(|\sigma|\)/pole prescription |
+| \(k\) | scalar Chern-Simons level only in special one-factor examples |
 
 ## Claim Ledger
 
@@ -223,16 +238,26 @@
    as \(2I_1(\sqrt{\lambda_{\rm circ}})/\sqrt{\lambda_{\rm circ}}\), and
    derives the Bessel algebra behind the Bremsstrahlung function from the
    protected circular-loop Ward identity.
-19. The \(S^3\) \(\mathcal N=2\) partition function is the Cartan integral with
-   Chern-Simons, FI, vector, and chiral determinant factors.
-20. The round-\(S^3\) determinant can be written in \(\ell\)-function or
+19. The \(S^3\) \(\mathcal N=2\) partition function is attached to a full
+    globally quantized Chern-Simons-matter datum \(\mathfrak D_{S^3}\), not to
+    an arbitrary scalar \(k\) for an arbitrary compact group.
+20. Parity-anomaly cancellation is imposed before the localized formula is
+    declared: \(\mathcal K_{\rm eff}=\mathcal K_{\rm bare}
+    +\frac12\sum_\psi\epsilon_\psi\mathcal K_\psi\) must lie in the allowed
+    spin or non-spin level lattice, with background contact terms included.
+21. FI terms are defined only on \(\operatorname{Hom}(G,U(1))\), equivalently
+    on Abelian center directions, and vanish on semisimple coroots.
+22. Gauge-gauge, gauge-flavor, flavor-flavor, \(R\)-background, gravitational,
+    framing, and mixed determinant-sector Chern-Simons/contact coordinates are
+    part of the localized answer rather than disposable phases.
+23. The round-\(S^3\) determinant can be written in \(\ell\)-function or
     double-sine variables; the pole hyperplanes and JK chamber are part of the
     integration-cycle datum.
-21. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
+24. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
    once the oscillatory contour is declared.
-22. The conjugate-chiral determinant identity gives
+25. The conjugate-chiral determinant identity gives
    \(1/(2\cosh\pi\sigma)\), whose integral over \(\mathbb R\) is \(1/2\).
-23. Contact terms and local curvature counterterms are QFT coordinates, not
+26. Contact terms and local curvature counterterms are QFT coordinates, not
     disposable normalizations.
 
 ## Calculation Checks
@@ -244,7 +269,9 @@
   \(S^4\) localization functional and normalized Wilson-loop ratio, the
   \(S^4\) \(H\)-function finite-product logarithmic derivative, the
   finite-part mode determinant ledger behind the \(H\)-powers, finite
-  double-sine reflection and chiral pole conventions, the
+  double-sine reflection and chiral pole conventions, \(S^3\) global
+  Chern-Simons level-lattice, \(U(N)\) Weyl/FI-center, parity-anomaly
+  half-shift, and contact-block bookkeeping, the
   \(U(1)_k\) \(S^3\) Fresnel completing-square identity, and the
   round-\(S^3\) conjugate-chiral-pair integral.
 - `calculation-checks/susy_n4_scft_checks.py` verifies the exact rational
@@ -324,3 +351,7 @@
   Pestun formula, making the Wilson-loop matrix-model evaluation depend on a
   five-residual telescope rather than silently identifying the localized
   finite-dimensional calculation with the continuum \(S^4\) QFT observable.
+- 2026-06-05: repaired the \(S^3\) localization foundation by replacing the
+  scalar-level shorthand for general compact \(G\) with the full globally
+  quantized Chern-Simons/contact datum, regulator-level parity-anomaly
+  condition, Abelian-center FI restriction, and contour/asymptotic prescription.

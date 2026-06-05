@@ -2512,7 +2512,9 @@ Current checks:
   loop, the \(S^4\) \(H\)-function finite-product logarithmic derivative, the
   finite-part mode-determinant ledger behind the \(H\)-powers, the \(U(1)\)
   \(S^4\) Gaussian matrix integral, finite double-sine reflection and
-  pole-convention checks, the
+  pole-convention checks, \(S^3\) global Chern-Simons level-lattice,
+  \(U(N)\) Weyl/FI-center, parity-anomaly half-shift, and contact-block
+  bookkeeping, the
   \(U(1)_k\) \(S^3\) Chern--Simons Fresnel completion of the square, and the
   round-\(S^3\) conjugate-chiral-pair integral
   \(\int d\sigma/(2\cosh\pi\sigma)=1/2\).
