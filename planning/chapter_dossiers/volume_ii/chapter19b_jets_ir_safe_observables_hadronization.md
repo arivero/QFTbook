@@ -222,7 +222,18 @@ The chapter establishes:
       strongest source used locally, actual proof status, Glauber status, and
       remainder status.  A historical physics phrase such as "factorization
       theorem" is not a proof-status certificate unless the dependency ladder
-      and observable-topology remainder are supplied at that occurrence.
+      and observable-topology remainder are supplied at that occurrence.  The
+      2026-06-04 issue #828 pass expands the audit to the omitted
+      triple-Regge, Abelian soft-QED, GPD/exclusive, and DIS-threshold
+      boundary occurrences; it also classifies pole/residue, large-\(N_c\),
+      spinor-helicity, pAQFT causal-factorization, and BV prefactorization
+      homonyms outside the QCD/SCET hard-process ledger.
+8acaa. The finite non-global dipole evolution row is a soft-radiation/BMS
+       coordinate, not a Glauber replacement.  Its nonlinear product term
+       records correlated real--virtual soft radiation under a non-global
+       measurement; hadron-hadron Glauber exchange, super-leading logarithms,
+       and spectator entanglement remain separate proof coordinates in the
+       relevant hard-process factorization statement.
 8acb. Generalized TMD factorization for nearly back-to-back high-\(p_T\)
       hadron production is explicitly narrower than "change each Wilson line
       separately."  In the Rogers--Mulders spectator-model obstruction, the
@@ -490,3 +501,10 @@ The chapter establishes:
   broad claim-status ledger by an occurrence-level formula audit; and extended
   `calculation-checks/scet_factorization_checks.py` with finite SU(2)
   color/eikonal and fixed-recoil integrand checks.
+- 2026-06-04 issue #828 occurrence-ledger completion: expanded the ledger to
+  include the omitted triple-Regge, soft-QED, GPD/exclusive, and threshold
+  rows; added explicit source locations and non-process homonym exclusions;
+  corrected the finite non-global row so BMS soft evolution and Glauber
+  exchange are separate coordinates; and extended
+  `calculation-checks/scet_factorization_checks.py` with a source-label
+  inventory guard for the ledger.

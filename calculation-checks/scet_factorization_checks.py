@@ -7,6 +7,10 @@ Target claims:
   the spectator-model color-entanglement obstruction to generalized TMD
   factorization, soft-drop scales, and massive-vector Sudakov areas obey the
   finite algebra stated in the jets/SCET chapter.
+- The occurrence-level factorization ledger covers the declared
+  process-level QCD/SCET, Regge, and Abelian soft-factorization occurrences,
+  classifies the main non-process homonyms, and keeps BMS non-global soft
+  evolution separate from Glauber exchange.
 - The regulated endpoint-region integral has a real fixed-order remainder
   bound, and unsubtracted or unpaired region splits fail as negative controls.
 - A noncommuting finite measurement can detect a Glauber rotation, so a
@@ -55,8 +59,10 @@ Scope boundary:
 
 from __future__ import annotations
 
+import re
 from collections import defaultdict
 from fractions import Fraction
+from pathlib import Path
 from typing import Mapping
 
 import sympy as sp
@@ -65,10 +71,180 @@ from check_utils import assert_leq as _assert_leq
 
 Distribution = Mapping[Fraction, Fraction]
 
+ROOT = Path(__file__).resolve().parents[1]
+
+JETS_CHAPTER = (
+    "monograph/tex/volumes/volume_ii/"
+    "chapter19b_jets_ir_safe_observables_and_hadronization.tex"
+)
+QCD_CHAPTER = (
+    "monograph/tex/volumes/volume_ii/"
+    "chapter19_qcd_renormalization_asymptotic_freedom_and_dis.tex"
+)
+REGGE_CHAPTER = (
+    "monograph/tex/volumes/volume_ii/"
+    "chapter07_partial_waves_dispersion_relations_and_high_energy_bounds.tex"
+)
+QED_IR_CHAPTER = (
+    "monograph/tex/volumes/volume_ii/"
+    "chapter22_infrared_divergences_and_inclusive_qed.tex"
+)
+
+PROCESS_FACTORIZATION_OCCURRENCES = {
+    "eq:jet-event-shape-factorization": JETS_CHAPTER,
+    "def:scet-two-jet-operator-datum": JETS_CHAPTER,
+    "hyp:leading-power-scet-factorization": JETS_CHAPTER,
+    "ca:scet-distributional-factorization-estimate": JETS_CHAPTER,
+    "eq:scet-distributional-factorization-bound": JETS_CHAPTER,
+    "eq:scet-generalized-tmd-ansatz": JETS_CHAPTER,
+    "ca:scet-spectator-tmd-color-entanglement": JETS_CHAPTER,
+    "eq:scet-spectator-entangled-breaking-integral": JETS_CHAPTER,
+    "eq:finite-non-global-dipole-evolution": JETS_CHAPTER,
+    "def:soft-drop-mass-factorization-datum": JETS_CHAPTER,
+    "eq:soft-drop-mass-factorization-datum": JETS_CHAPTER,
+    "eq:qcd-eec-back-to-back-factorization": QCD_CHAPTER,
+    "ca:qcd-eec-tested-back-to-back-recoil": QCD_CHAPTER,
+    "eq:qcd-measured-eec-factorization-budget": QCD_CHAPTER,
+    "ca:qcd-measured-eec-prediction": QCD_CHAPTER,
+    "eq:dis-factorization": QCD_CHAPTER,
+    "hyp:qcd-dis-leading-twist-factorization": QCD_CHAPTER,
+    "eq:qcd-endpoint-kernel-cusp-coefficient": QCD_CHAPTER,
+    "eq:qcd-large-spin-dglap-cusp": QCD_CHAPTER,
+    "eq:qcd-tmd-factorization": QCD_CHAPTER,
+    "hyp:qcd-tmd-factorization-hypothesis": QCD_CHAPTER,
+    "eq:qcd-drell-yan-integrated-factorization": QCD_CHAPTER,
+    "ca:qcd-drell-yan-integrated-theorem-boundary": QCD_CHAPTER,
+    "prop:qcd-drell-yan-tested-factorization-residual-budget": QCD_CHAPTER,
+    "eq:qcd-drell-yan-tmd-factorization": QCD_CHAPTER,
+    "hyp:qcd-drell-yan-tmd-factorization-hypothesis": QCD_CHAPTER,
+    "eq:qcd-gpd-definition": QCD_CHAPTER,
+    "sec:qcd-gpd-light-ray-matrix-elements": QCD_CHAPTER,
+    "def:qcd-exclusive-pion-factorization-scheme": QCD_CHAPTER,
+    "eq:qcd-pion-form-factor-factorization": QCD_CHAPTER,
+    "eq:qcd-pion-transition-factorization": QCD_CHAPTER,
+    "eq:qcd-small-x-leading-dis-dipole-functional": QCD_CHAPTER,
+    "ca:qcd-small-x-leading-dis-dipole-channel": QCD_CHAPTER,
+    "eq:track-function-test-pairing": JETS_CHAPTER,
+    "ca:leading-endpoint-shape-function-convolution": JETS_CHAPTER,
+    "hyp:triple-regge-factorization-system": REGGE_CHAPTER,
+    "eq:triple-regge-factorization-formula": REGGE_CHAPTER,
+    "thm:weinberg-leading-soft-photon": QED_IR_CHAPTER,
+    "eq:weinberg-leading-soft-photon": QED_IR_CHAPTER,
+    "fig:volume-ii-soft-factorization": QED_IR_CHAPTER,
+}
+
+EXCLUDED_FACTORIZATION_HOMONYMS = {
+    "thm:bethe-salpeter-pole-factorization": "pole-factorization statements",
+    "eq:qcd-large-n-factorization": "expectation-value factorization",
+    "eq:null-momentum-spinor-factorization": "Spinor-helicity rank-one factorization",
+    "eq:tree-factorization-bcfw": "tree pole residues",
+    "eq:paqft-causal-factorization": "Causal factorization in perturbative algebraic QFT",
+    "def:bv-prefactorization-algebra": "BV prefactorization algebras",
+}
+
+EXCLUDED_HOMONYM_SOURCES = {
+    "thm:bethe-salpeter-pole-factorization": (
+        "monograph/tex/volumes/volume_ii/"
+        "chapter05_composite_bound_states_and_bethe_salpeter_amplitudes.tex"
+    ),
+    "eq:qcd-large-n-factorization": QCD_CHAPTER,
+    "eq:null-momentum-spinor-factorization": (
+        "monograph/tex/volumes/volume_i/"
+        "chapter17_massless_particles_helicity_and_gauge_redundancy.tex"
+    ),
+    "eq:tree-factorization-bcfw": (
+        "monograph/tex/volumes/volume_i/"
+        "chapter17_massless_particles_helicity_and_gauge_redundancy.tex"
+    ),
+    "eq:paqft-causal-factorization": (
+        "monograph/tex/volumes/volume_iv/"
+        "chapter03_algebraic_qft_local_nets_and_states.tex"
+    ),
+    "def:bv-prefactorization-algebra": (
+        "monograph/tex/volumes/volume_ii/"
+        "chapter24_bv_master_formalism_gauge_effective_actions.tex"
+    ),
+}
+
 
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+
+
+def read_repo_text(relative_path: str) -> str:
+    return (ROOT / relative_path).read_text(encoding="utf-8")
+
+
+def find_label_line(relative_path: str, label: str) -> int:
+    pattern = re.compile(r"\\label\{" + re.escape(label) + r"\}")
+    for line_number, line in enumerate(read_repo_text(relative_path).splitlines(), 1):
+        if pattern.search(line):
+            return line_number
+    raise AssertionError(f"ledger inventory label {label!r} missing from {relative_path}")
+
+
+def normalized_tex_text(text: str) -> str:
+    return re.sub(r"\s+", " ", text)
+
+
+def factorization_ledger_block() -> str:
+    text = read_repo_text(JETS_CHAPTER)
+    start_marker = r"\paragraph{Occurrence-level claim-status ledger for factorization uses.}"
+    end_marker = "Renormalization of the hard, jet, and soft functions gives evolution"
+    try:
+        start = text.index(start_marker)
+        end = text.index(end_marker, start)
+    except ValueError as exc:
+        raise AssertionError("factorization occurrence ledger block was not found") from exc
+    return text[start:end]
+
+
+def check_factorization_occurrence_ledger_inventory() -> None:
+    ledger = factorization_ledger_block()
+    normalized_ledger = normalized_tex_text(ledger)
+
+    # The line lookup is the source-location part of the inventory: every
+    # declared occurrence is keyed both by label and by its source file.
+    locations = {
+        label: find_label_line(relative_path, label)
+        for label, relative_path in PROCESS_FACTORIZATION_OCCURRENCES.items()
+    }
+    for label, line_number in locations.items():
+        if line_number <= 0:
+            raise AssertionError(f"source location for {label!r} should be positive")
+        if label not in ledger:
+            raise AssertionError(f"process-level factorization occurrence {label!r} missing from ledger")
+
+    for label, relative_path in EXCLUDED_HOMONYM_SOURCES.items():
+        find_label_line(relative_path, label)
+        if label not in ledger:
+            raise AssertionError(
+                f"factorization homonym {label!r} missing from the explicit exclusion paragraph"
+            )
+    for description in EXCLUDED_FACTORIZATION_HOMONYMS.values():
+        if description not in normalized_ledger:
+            raise AssertionError(f"factorization homonym class {description!r} missing from exclusions")
+
+    if "Glauber: color correlations enter through the nonlinear dipole evolution" in normalized_ledger:
+        raise AssertionError("non-global soft evolution was conflated with Glauber exchange")
+    if "Glauber: no Glauber exchange is represented by this row" not in normalized_ledger:
+        raise AssertionError("non-global row must explicitly separate BMS soft evolution from Glauber exchange")
+    if "super-leading or hadron-hadron Glauber questions are separate coordinates" not in normalized_ledger:
+        raise AssertionError("non-global row must keep super-leading/Glauber questions separate")
+
+    issue_828_required = {
+        "hyp:triple-regge-factorization-system",
+        "eq:triple-regge-factorization-formula",
+        "thm:weinberg-leading-soft-photon",
+        "fig:volume-ii-soft-factorization",
+        "eq:qcd-gpd-definition",
+        "eq:qcd-endpoint-kernel-cusp-coefficient",
+        "eq:qcd-large-spin-dglap-cusp",
+    }
+    missing_required = sorted(label for label in issue_828_required if label not in ledger)
+    if missing_required:
+        raise AssertionError(f"issue #828 required labels missing from ledger: {missing_required}")
 
 
 def normalize(dist: Distribution) -> Fraction:
@@ -655,11 +831,13 @@ def main() -> None:
     check_symbolic_glauber_breaking_example()
     check_spectator_model_color_entanglement()
     check_massive_vector_sudakov_area()
+    check_factorization_occurrence_ledger_inventory()
     print(
         "All SCET convolution, distributional-remainder, zero-bin, "
         "endpoint-expansion, scheme-covariance, RG-transport, soft-drop-scale, "
         "soft-Wilson-line, Glauber-unitarity/breaking, spectator-model "
-        "color-entanglement, and massive-vector Sudakov checks passed."
+        "color-entanglement, massive-vector Sudakov, and occurrence-ledger "
+        "checks passed."
     )
 
 

@@ -1018,22 +1018,30 @@ It is the convention for every historical phrase such as ``factorization
 theorem'' in the surrounding QCD and jet material: a formula inherits the
 status in its own row unless a later local theorem supplies the missing
 regulator, Glauber, and remainder entries.
+A row is included when the manuscript makes a process-level hard, collinear,
+soft, rapidity, Regge, or Abelian soft-factorization assertion for an
+observable.  The table deliberately distinguishes those statements from other
+homonyms: pole or residue factorization, large-\(N\) expectation-value
+factorization, rank-one spinor factorization, causal factorization in
+perturbative algebraic QFT, and prefactorization-algebra terminology do not
+carry the same Glauber or power-remainder coordinates.
 
 {\footnotesize
 \setlength{\tabcolsep}{4pt}
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.74\textwidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.25\textwidth}>{\raggedright\arraybackslash}p{0.71\textwidth}@{}}
 \hline
-\textbf{Manuscript label} &
+\textbf{Manuscript label / source} &
 \textbf{Observable / regulator / strongest source / proof / Glauber / remainder}
 \\ \hline
 \endfirsthead
 \hline
-\textbf{Manuscript label} &
+\textbf{Manuscript label / source} &
 \textbf{Observable / regulator / strongest source / proof / Glauber / remainder}
 \\ \hline
 \endhead
 \eqref{eq:jet-event-shape-factorization};
-Definition~\ref{def:scet-two-jet-operator-datum} &
+Definition~\ref{def:scet-two-jet-operator-datum};
+Vol.~II Ch.~19b &
 Observable: \(e^+e^-\) two-jet endpoint event shape.  Regulator: SCET
 operator datum with overlap and possible rapidity subtraction.  Source:
 SCET construction lineage
@@ -1044,7 +1052,20 @@ unless a later hadronic measurement introduces spectator exchange.  Remainder:
 \(O(e^0)\) is nonsingular-distribution status; quantitative control is
 supplied by \eqref{eq:scet-distributional-factorization-bound}.
 \\ \hline
-Controlled Approximation~\ref{ca:scet-distributional-factorization-estimate} &
+Hypothesis~\ref{hyp:leading-power-scet-factorization};
+Controlled Approximation~\ref{ca:scet-distributional-factorization-estimate};
+Vol.~II Ch.~19b &
+Observable: generic leading-power SCET observable, specialized below by
+channel.  Regulator: declared modes, operator definitions, measurement
+factorization, overlap subtraction, and test-function topology.  Source: local
+claim architecture.  Proof: this row is the proof obligation itself, not an
+external theorem.  Glauber: a required coordinate, namely cancel, include a
+Glauber operator, or fail.  Remainder: bounded by \(R_Q\) in the stated dual
+norm, enlarged by perturbative truncation.
+\\ \hline
+Controlled Approximation~\ref{ca:scet-distributional-factorization-estimate};
+\eqref{eq:scet-distributional-factorization-bound};
+Vol.~II Ch.~19b &
 Observable: smeared endpoint cross-section functional.  Regulator: Banach
 test space and declared factorized distribution.  Source: local
 distributional estimate.  Proof: definition of what a leading-power claim must
@@ -1052,7 +1073,10 @@ prove.  Glauber: explicit datum, namely cancel, include an operator, or fail.
 Remainder: bounded by \(R_Q\) in the stated dual norm, enlarged by
 perturbative truncation.
 \\ \hline
-\eqref{eq:scet-spectator-entangled-breaking-integral} &
+\eqref{eq:scet-generalized-tmd-ansatz};
+Controlled Approximation~\ref{ca:scet-spectator-tmd-color-entanglement};
+\eqref{eq:scet-spectator-entangled-breaking-integral};
+Vol.~II Ch.~19b &
 Observable: high-\(p_T\) nearly back-to-back hadron production, double
 transverse spin, fixed \(q_\perp\).  Regulator: nonabelian spectator model,
 eikonal Glauber approximation, transverse mass regulators.  Source:
@@ -1062,17 +1086,21 @@ counterexample to the separate-hadron generalized TMD ansatz
 Glauber/color term with \(C_{\rm ent}=T_F^2(N_c^2-1)\).  Remainder: omitted
 leading-power operator at fixed \(q_\perp\) unless the measurement is changed.
 \\ \hline
-\eqref{eq:finite-non-global-dipole-evolution} &
+\eqref{eq:finite-non-global-dipole-evolution};
+Vol.~II Ch.~19b &
 Observable: angular veto or gap soft radiation.  Regulator: finite angular
 cells, large-\(N_c\), strong energy ordering.  Source: non-global logarithm
 lineage \cite{DasguptaSalam2001NonGlobal,BanfiMarchesiniSmye2002NonGlobal}
-and local finite model.  Proof: finite soft-dipole model.  Glauber: color
-correlations enter through the nonlinear dipole evolution rather than through
-the TMD Glauber question.  Remainder: model and ordering errors must be
-carried separately from global Sudakov terms.
+and local finite model.  Proof: finite soft-dipole model for BMS-type
+real--virtual soft radiation under a non-global measurement.  Glauber: no
+Glauber exchange is represented by this row; super-leading or hadron-hadron
+Glauber questions are separate coordinates of the relevant hard-process
+factorization statement.  Remainder: finite-cell, large-\(N_c\), strong-ordering,
+and matching errors must be carried separately from global Sudakov terms.
 \\ \hline
 Definition~\ref{def:soft-drop-mass-factorization-datum};
-\eqref{eq:soft-drop-mass-factorization-datum} &
+\eqref{eq:soft-drop-mass-factorization-datum};
+Vol.~II Ch.~19b &
 Observable: soft-drop groomed jet mass.  Regulator: renormalized
 hard/global-soft/jet/collinear-soft datum with soft-drop scales.  Source:
 soft-drop observable source \cite{LarkoskiMarzaniSoyezThaler2014SoftDrop}
@@ -1082,7 +1110,8 @@ when the measurement is not inclusive enough.  Remainder: \(R_{\rm SD}\)
 records power, clustering, non-global, Glauber, and nonperturbative pieces.
 \\ \hline
 \eqref{eq:qcd-eec-back-to-back-factorization};
-Controlled Approximation~\ref{ca:qcd-eec-tested-back-to-back-recoil} &
+Controlled Approximation~\ref{ca:qcd-eec-tested-back-to-back-recoil};
+Vol.~II Ch.~19 &
 Observable: back-to-back EEC recoil chart.  Regulator: impact-parameter and
 rapidity-renormalized TMD-like scheme.  Source: QCD
 factorization/resummation framework \cite{CollinsSoperSterman1989Factorization}
@@ -1092,7 +1121,8 @@ in the recoil datum, not inferred from the cusp calculation.  Remainder:
 \(q_T/Q\), large-\(b\), endpoint-atom, and matching residuals are separate.
 \\ \hline
 \eqref{eq:qcd-measured-eec-factorization-budget};
-Controlled Approximation~\ref{ca:qcd-measured-eec-prediction} &
+Controlled Approximation~\ref{ca:qcd-measured-eec-prediction};
+Vol.~II Ch.~19 &
 Observable: calorimetric or selected-track EEC.  Regulator: endpoint partition
 with overlap subtraction and track/fragmentation lift.  Source: local
 measured-observable budget.  Proof: prediction architecture.  Glauber:
@@ -1101,7 +1131,8 @@ Remainder: \(R_{\tau,Q}\), endpoint atoms, and nonperturbative
 track/fragmentation inputs.
 \\ \hline
 \eqref{eq:dis-factorization};
-Hypothesis~\ref{hyp:qcd-dis-leading-twist-factorization} &
+Hypothesis~\ref{hyp:qcd-dis-leading-twist-factorization};
+Vol.~II Ch.~19 &
 Observable: inclusive DIS on a compact \(x\)-window.  Regulator: renormalized
 light-ray PDFs in a collinear factorization scheme.  Source: hard-process
 factorization lineage \cite{CollinsSoperSterman1989Factorization} and local
@@ -1110,8 +1141,20 @@ power bound.  Glauber: inclusive final-state sum is part of the standard proof
 obligation; no TMD Glauber-sensitive recoil is measured.  Remainder:
 compact-\(x\) higher-twist bound; threshold and small-\(x\) regions excluded.
 \\ \hline
+\eqref{eq:qcd-endpoint-kernel-cusp-coefficient};
+\eqref{eq:qcd-large-spin-dglap-cusp};
+Vol.~II Ch.~19 &
+Observable: DIS threshold boundary \(x_B\to1\) or large Mellin spin.  Regulator:
+renormalized light-ray cusp/eikonal operator and plus-distribution scheme.
+Source: local cusp and DGLAP derivation.  Proof: perturbative
+operator-renormalization coordinate, not a full threshold factorization theorem.
+Glauber: not tested by the cusp anomalous dimension alone.  Remainder: a
+threshold theorem still needs hard, jet, soft, Mellin/Laplace inversion data,
+and a joint \(Q,N\) power estimate.
+\\ \hline
 \eqref{eq:qcd-tmd-factorization};
-Hypothesis~\ref{hyp:qcd-tmd-factorization-hypothesis} &
+Hypothesis~\ref{hyp:qcd-tmd-factorization-hypothesis};
+Vol.~II Ch.~19 &
 Observable: color-singlet small-\(q_\perp\) hadron-hadron production.
 Regulator: rapidity-regulated TMDs with soft subtraction and \(Y\)-term.
 Source: CSS/TMD lineage \cite{CollinsSoperSterman1989Factorization}.  Proof:
@@ -1120,7 +1163,8 @@ Glauber: cancellation or operator representation is load-bearing.  Remainder:
 \(q_\perp/Q\), \(Y\)-term, large-\(b\), and hadron-mass residuals.
 \\ \hline
 \eqref{eq:qcd-drell-yan-integrated-factorization};
-Controlled Approximation~\ref{ca:qcd-drell-yan-integrated-theorem-boundary} &
+Controlled Approximation~\ref{ca:qcd-drell-yan-integrated-theorem-boundary};
+Vol.~II Ch.~19 &
 Observable: integrated Drell--Yan in a compact \((Q^2,y)\) window.  Regulator:
 integrated PDFs and tested Wightman functional.  Source: CSS hard-process
 factorization lineage \cite{CollinsSoperSterman1989Factorization} plus local
@@ -1131,7 +1175,8 @@ Glauber, power, and regulator residuals are separately bounded in
 Proposition~\ref{prop:qcd-drell-yan-tested-factorization-residual-budget}.
 \\ \hline
 \eqref{eq:qcd-drell-yan-tmd-factorization};
-Hypothesis~\ref{hyp:qcd-drell-yan-tmd-factorization-hypothesis} &
+Hypothesis~\ref{hyp:qcd-drell-yan-tmd-factorization-hypothesis};
+Vol.~II Ch.~19 &
 Observable: Drell--Yan small-\(q_\perp\) spectrum.  Regulator: past-pointing
 TMDs, rapidity scales, \(Y\)-term.  Source: CSS/TMD lineage
 \cite{CollinsSoperSterman1989Factorization}.  Proof: conditional TMD
@@ -1139,9 +1184,22 @@ factorization hypothesis.  Glauber: explicit proof or controlled hypothesis
 required.  Remainder: \(Y\)-term, \(q_\perp/Q\), hadron-mass, and
 nonperturbative transverse-distance residuals.
 \\ \hline
+\eqref{eq:qcd-gpd-definition};
+Section~\ref{sec:qcd-gpd-light-ray-matrix-elements};
+Vol.~II Ch.~19 &
+Observable: DVCS or related exclusive amplitudes using GPD coefficient
+convolutions.  Regulator: renormalized off-forward light-ray matrix element in
+a collinear scheme.  Source: local GPD definition and polynomiality.  Proof:
+only the GPD matrix element and moment polynomiality are supplied here; the
+exclusive-process factorization theorem is an additional leading-power
+assertion.  Glauber: endpoint, soft-overlap, and spectator-exchange status must
+be supplied by the process theorem.  Remainder: power, endpoint, skewness, and
+subtraction residuals are outside the GPD definition.
+\\ \hline
 Definition~\ref{def:qcd-exclusive-pion-factorization-scheme};
 \eqref{eq:qcd-pion-form-factor-factorization};
-\eqref{eq:qcd-pion-transition-factorization} &
+\eqref{eq:qcd-pion-transition-factorization};
+Vol.~II Ch.~19 &
 Observable: large-\(Q\) exclusive pion form factors.  Regulator:
 leading-twist pion LCDA and hard coefficient in a common collinear scheme.
 Source: exclusive factorization lineage
@@ -1152,7 +1210,8 @@ cancellation is not automatic.  Remainder: \(O(\alpha_s,Q^{-4})_{\rm fac}\)
 is scheme-bound and not uniform without endpoint control.
 \\ \hline
 \eqref{eq:qcd-small-x-leading-dis-dipole-functional};
-Controlled Approximation~\ref{ca:qcd-small-x-leading-dis-dipole-channel} &
+Controlled Approximation~\ref{ca:qcd-small-x-leading-dis-dipole-channel};
+Vol.~II Ch.~19 &
 Observable: leading small-\(x\) DIS dipole channel.  Regulator:
 rapidity-cutoff Wilson lines, impact factor, projective transverse regulator.
 Source: dipole/JIMWLK lineage
@@ -1164,7 +1223,8 @@ Remainder: impact-factor, rapidity, projective, evolution, closure, endpoint,
 and finite-\(Q\) residuals.
 \\ \hline
 \eqref{eq:track-function-test-pairing};
-Controlled Approximation~\ref{ca:leading-endpoint-shape-function-convolution} &
+Controlled Approximation~\ref{ca:leading-endpoint-shape-function-convolution};
+Vol.~II Ch.~19b &
 Observable: track functions and endpoint shape-function convolution.
 Regulator: renormalized lightlike operator distributions paired with tests.
 Source: local operator datum and convolution estimate.  Proof:
@@ -1173,8 +1233,49 @@ Glauber: inherited from the short-distance factorization used to match them.
 Remainder: distributional pairing, matching, and moment/shape residuals must
 be stated for the observable.
 \\ \hline
+Hypothesis~\ref{hyp:triple-regge-factorization-system};
+\eqref{eq:triple-regge-factorization-formula};
+Vol.~II Ch.~7 &
+Observable: inclusive high-energy \(a b\to c X\) density in the triple-Regge
+limit.  Regulator: complex angular-momentum continuation, signature convention,
+six-point discontinuity, and background-growth bound.  Source: Regge
+phenomenology organized locally as a hypothesis.  Proof: hypothesis, not a
+derivation from local QFT.  Glauber: not a SCET Glauber-cancellation claim;
+the exchanged high-energy Regge singularities are part of the assumed
+discontinuity representation.  Remainder: background term bounded below the
+retained trajectories on the stated domain.
+\\ \hline
+Theorem~\ref{thm:weinberg-leading-soft-photon};
+\eqref{eq:weinberg-leading-soft-photon};
+Figure~\ref{fig:volume-ii-soft-factorization};
+Vol.~II Ch.~22 &
+Observable: unresolved soft-photon emission in an Abelian inclusive rate.
+Regulator: photon mass or energy resolution with massive charged external
+states.  Source: Weinberg leading soft theorem and the local
+Bloch--Nordsieck calculation.  Proof: leading eikonal external-line
+factorization and independent-emission combinatorics.  Glauber: no nonabelian
+Glauber coordinate; Coulomb phases and KLN degeneracy are separate Abelian
+infrared data.  Remainder: subleading soft, collinear, finite-resolution, and
+state-dressing terms.
+\\ \hline
 \end{longtable}
 }
+
+The most common excluded homonyms are fixed as follows.  The bound-state and
+resonance pole-factorization statements, such as
+Theorem~\ref{thm:bethe-salpeter-pole-factorization}, are residue statements at
+isolated analytic singularities, not hard-region cross-section factorizations.
+Large-\(N_c\) expectation-value factorization, such as
+\eqref{eq:qcd-large-n-factorization}, is a connected-correlator suppression
+statement.  Spinor-helicity rank-one factorization and tree pole residues, such
+as \eqref{eq:null-momentum-spinor-factorization} and
+\eqref{eq:tree-factorization-bcfw}, are on-shell analytic properties.  Causal
+factorization in perturbative algebraic QFT and BV prefactorization algebras,
+such as \eqref{eq:paqft-causal-factorization} and
+Definition~\ref{def:bv-prefactorization-algebra}, are locality and
+functoriality structures.  None of these rows is assigned a QCD
+Glauber-cancellation or power-remainder coordinate merely because it contains
+the word ``factorization''.
 
 Renormalization of the hard, jet, and soft functions gives evolution
 equations.  The resummation structure is clearest after a Laplace transform, or
