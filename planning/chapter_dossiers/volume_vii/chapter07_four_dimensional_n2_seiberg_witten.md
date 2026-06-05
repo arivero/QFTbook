@@ -14,8 +14,12 @@ Wilsonian dynamics are available for later use.
 - `T`, `B`, `Delta`, `B^circ`: assumed four-dimensional `N=2` QFT,
   Coulomb branch, discriminant locus, and smooth Abelian locus in the
   Seiberg-Witten Coulomb-branch datum.
+- `S_l`, `L_l`: pure `su(2)` microscopic global/line datum and its absolute
+  Wilson-'t Hooft line lattice, with `l in {SU(2), SO(3)+, SO(3)-}`.
 - `Gamma`, `<-,->`: electromagnetic charge local system and integral Dirac
   pairing in the defining datum.
+- `Gamma_part`: root-normalized local BPS-particle lattice with W-boson charge
+  `(0,1)` and monopole charge `(1,0)`.
 - `phi`, `u_k`: vector-multiplet scalar and gauge-invariant Coulomb
   coordinates.
 - `a^I`, `a_{D,I}`, `F(a)`, `tau_IJ`: special coordinates, dual periods,
@@ -28,10 +32,11 @@ Wilsonian dynamics are available for later use.
   and symplectic cycle basis.
 - `QFT-hypothesis`, `symmetry-derived`, `holomorphy-derived`,
   `special-geometry theorem`, `constraint-derived`, `consistency check`,
-  `status boundary`: argument-status labels used in the Seiberg-Witten
-  ledger.
+  `central conjecture`, `status boundary`: argument-status labels used in the
+  Seiberg-Witten ledger.
 - `<delta,gamma>`: rank-one specialization of the antisymmetric Dirac
   pairing.
+- `Omega_C(gamma)`: protected one-particle BPS index in chamber `C`.
 - `M_{Lambda^2}`, `M_{-Lambda^2}`, `M_infty`: monodromy matrices in the
   pure gauge-algebra `su(2)` example.
 - `M_gamma`: Picard-Lefschetz monodromy associated to a massless
@@ -63,6 +68,17 @@ Wilsonian dynamics are available for later use.
   charge local system with Dirac pairing, period section, local prepotential,
   Abelian Wilsonian action, singularity data, BPS convention, and optional
   curve realization.
+- Defines the pure `su(2)` microscopic global/line datum
+  `def:pure-su2-sw-global-line-datum`, separating the local particle lattice
+  from the absolute `SU(2)`, `SO(3)+`, and `SO(3)-` Wilson-'t Hooft line
+  choices.  Records `theta ~ theta+2pi` for `SU(2)` and `theta ~ theta+4pi`
+  for fixed `SO(3)_pm`, with `theta -> theta+2pi` exchanging the two `SO(3)`
+  variants.
+- Adds central conjecture `conj:pure-su2-sw-low-energy-solution`: for a fixed
+  global/line datum, the pure `su(2)` continuum theory has Coulomb branch
+  `C_u`, discriminant `{Lambda^2,-Lambda^2}`, two-derivative Abelian
+  Wilsonian action encoded by the displayed SW curve and differential, and
+  protected prepotential data matching after scheme choice.
 - Defines Coulomb-branch coordinates and repeats the monograph gauge-coupling
   convention at the first use of `N=2` gauge dynamics.
 - Defines special coordinates, the prepotential, electric-magnetic duality,
@@ -78,8 +94,12 @@ Wilsonian dynamics are available for later use.
   classifies the pure `su(2)` construction by QFT hypotheses,
   symmetry-derived input, holomorphy-derived input, special-geometry
   theorems, constraint-derived ansatz choices, consistency checks, and status
-  boundaries.
-- Defines the rank-one electromagnetic pairing and proves the
+  boundaries, with the exact SW-to-QFT identification now labeled as the
+  central conjecture.
+- Defines the rank-one local BPS-particle electromagnetic pairing in the
+  root-normalized W-boson convention and distinguishes it from the absolute
+  `SU(2)`/`SO(3)` line lattice.
+- Proves the
   Picard-Lefschetz hypermultiplet monodromy formula from the local
   \(\mathcal N=2\) hypermultiplet threshold
   `tau_sing=-(i/pi) log z`, including the origin of the factor two, its
@@ -127,9 +147,17 @@ Wilsonian dynamics are available for later use.
 - Records the instanton action/transseries ledger: the same `k`, action, and
   theta phase grade ADHM integrals, the \(\Omega\)-background partition
   function, and instanton sectors in a weak-coupling transseries.
-- States the weak-coupling BPS tower `(1,n)`, the vector multiplet `(0,1)`,
-  the strong-coupling chamber with only `(1,0)` and `(1,-1)` hypermultiplets,
-  and the marginal-stability wall condition.
+- Defines the protected one-particle BPS index as a second helicity
+  supertrace, with hypermultiplet index `+1` and vector index `-2`.
+- Records the weak-chamber BPS-index seed as conjectural/semiclassical input:
+  `Omega_wk(+/-(0,1))=-2`, `Omega_wk(+/-(1,n))=+1`, and no other primitive
+  charges.  Monodromy transport is explicitly not used as a proof of
+  existence or completeness.
+- Records the strong-chamber BPS-index seed as conjectural input:
+  only `+/-(1,0)` and `+/-(1,-1)` have primitive hypermultiplet index `+1`.
+- States the rank-one KS wall-crossing automorphism and the elementary
+  pentagon identity, while leaving the complete weak/strong spectrum-generator
+  equality as a theorem-level obligation rather than inferred from monodromy.
 - Defines a local rank-one Argyres-Douglas cusp model
   `y^2=x^3+v x+u` with `lambda_AD=u dx/y`, proves the scaling dimensions
   `[x]=2/5`, `[y]=3/5`, `[u]=6/5`, `[v]=4/5`, and records the status boundary
@@ -144,7 +172,10 @@ Wilsonian dynamics are available for later use.
 - `calculation-checks/sw_su2_periods.py` verifies the monodromy matrices, the
   finite-monodromy product, Picard-Lefschetz central-charge action and
   symplecticity, the local hypermultiplet threshold shift that produces the
-  factor two, the rigid special-Kahler metric identity and real
+  factor two, the pure `su(2)` global-form line-lattice choices and
+  Witten-effect theta shift, the root-normalized particle-charge convention,
+  chamber BPS-index seed bookkeeping, the rigid special-Kahler metric identity
+  and real
   theta-shift invariance, the one-instanton \(R\)-anomaly zero-mode count,
   the residual \(R\)-symmetry quotient action \(u\mapsto -u\), the
   two-singularity scale ledger, the exclusion of a single nodal finite
@@ -193,3 +224,8 @@ the elliptic curve cycle degeneration.
   \(M_\infty\) by one nodal hypermultiplet monodromy, and the dimension-two
   scale normalization \(s=\Lambda^2\).  Added the corresponding finite
   arithmetic to `sw_su2_periods.py`.
+- 2026-06-05 issue #801 SW foundation split: added the pure `su(2)`
+  global/line datum and central low-energy SW conjecture, separated the local
+  BPS-particle lattice from `SU(2)`/`SO(3)` absolute line choices, replaced the
+  monodromy-derived spectrum phrasing by protected-index weak/strong chamber
+  conjectural seeds, and recorded the KS wall-crossing product obligation.

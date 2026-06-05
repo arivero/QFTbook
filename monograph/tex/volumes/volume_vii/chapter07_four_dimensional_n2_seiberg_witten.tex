@@ -63,6 +63,79 @@ All dynamical conclusions in this chapter are conditional on the existence of
 is recorded in Open Problem~\ref{op:theorem-level-seiberg-witten-construction}.
 \end{hypothesis}
 
+\begin{definition}[Pure \(\mathfrak{su}(2)\) global and line datum]
+\label{def:pure-su2-sw-global-line-datum}
+A pure \(\mathfrak{su}(2)\) Seiberg--Witten microscopic datum is
+\[
+  \mathfrak S_\ell
+  =
+  \bigl(
+    \mathfrak{su}(2),\ \ell,\ \theta\hbox{-periodicity},\
+    \mathcal L_\ell,\ u=\langle\operatorname{tr}\phi^2\rangle
+  \bigr),
+\]
+where the local fields are the \(\mathcal N=2\) vector multiplet in the adjoint
+representation, and \(\ell\) is one of the absolute line choices
+\[
+  \ell\in\{SU(2),SO(3)_+,SO(3)_-\}.
+\]
+Modulo screening by adjoint local particles, the center-valued Wilson--'t Hooft
+line classes form \(\mathbb Z_2^{\rm e}\oplus\mathbb Z_2^{\rm m}\) with the
+mod-two Dirac pairing.  The three standard maximal isotropic choices are
+\[
+  \mathcal L_{SU(2)}=\langle e\rangle,\qquad
+  \mathcal L_{SO(3)_+}=\langle m\rangle,\qquad
+  \mathcal L_{SO(3)_-}=\langle e+m\rangle .
+\]
+For the simply connected \(SU(2)\) theory, \(\theta\sim\theta+2\pi\).  For a
+fixed \(SO(3)_\pm\) absolute theory, \(\theta\sim\theta+4\pi\), while
+\(\theta\mapsto\theta+2\pi\) exchanges \(SO(3)_+\) and \(SO(3)_-\) by the
+Witten effect.  The period and BPS-particle formulas below use the
+root-normalized local particle lattice
+\[
+  \Gamma_{\rm part}=\mathbb Z\gamma_m\oplus\mathbb Z\gamma_W,\qquad
+  \gamma_m=(1,0),\quad \gamma_W=(0,1),
+\]
+so the massive \(W\)-boson has charge \(\gamma_W\).  This lattice records
+local particle charges and central charges.  The full absolute Wilson--'t Hooft
+line lattice is the separate datum \(\mathcal L_\ell\) above.
+\end{definition}
+
+\begin{conjecture}[Central conjecture: pure \(\mathfrak{su}(2)\) Seiberg--Witten solution]
+\label{conj:pure-su2-sw-low-energy-solution}
+Fix a datum \(\mathfrak S_\ell\) from
+Definition~\ref{def:pure-su2-sw-global-line-datum}.  There exists a
+four-dimensional \(\mathcal N=2\) local QFT with that microscopic gauge algebra,
+global line datum, theta periodicity, and local chiral coordinate \(u\), whose
+Coulomb branch is
+\[
+  \mathcal B=\mathbb C_u,\qquad
+  \Delta=\{\Lambda^2,-\Lambda^2\},
+\]
+and whose two-derivative Abelian Wilsonian theory over compact subsets of
+\(\mathcal B^\circ=\mathcal B\setminus\Delta\) is encoded by the curve
+\[
+  y^2=(x^2-\Lambda^4)(x-u)
+\]
+and a Seiberg--Witten differential with periods
+\(\Pi=(a_D,a)^T\).  In the root-normalized local particle lattice
+\(\Gamma_{\rm part}\), the central charge is
+\[
+  Z_{(n_m,n_e)}=n_m a_D+n_e a,
+\]
+the singularities at \(u=\Lambda^2\) and \(u=-\Lambda^2\) contain light
+hypermultiplets of charges \((1,0)\) and \((1,-1)\), respectively, and the
+protected observables in the two-derivative sector, including the instanton
+prepotential coefficients after scheme matching, agree with this period
+datum.
+\end{conjecture}
+
+The conjecture is the QFT identification.  The special-geometry calculations
+below are exact once the curve, differential, periods, and charge lattice have
+been supplied; the finite monodromy products and instanton-coefficient matches
+are consistency checks of Conjecture~\ref{conj:pure-su2-sw-low-energy-solution},
+not a construction of the four-dimensional continuum QFT.
+
 \section{Coulomb-Branch Coordinates}
 
 Let \(G\) be a compact connected gauge group with Lie algebra \(\mathfrak g\).
@@ -314,6 +387,9 @@ labels.
 A statement in the rank-one Seiberg-Witten construction has one of these
 statuses.
 \begin{enumerate}[label=\textnormal{(\roman*)}]
+\item \emph{Central conjecture}: the exact identification of a supplied
+  period datum with the low-energy Wilsonian physics of a specified
+  four-dimensional continuum QFT and absolute line datum.
 \item \emph{QFT-hypothesis}: an assumption about the existence of the
   four-dimensional continuum theory, its Coulomb-branch vacua, or its
   Wilsonian effective action.
@@ -335,8 +411,9 @@ statuses.
 \end{definition}
 
 For the pure \(\mathfrak{su}(2)\) theory below, the input that the Coulomb
-branch exists and is described at generic points by a two-derivative Abelian
-Wilsonian action is a QFT-hypothesis.  The one-loop logarithm and the
+branch exists and is exactly described at generic points by the displayed
+two-derivative Abelian Wilsonian action is
+Conjecture~\ref{conj:pure-su2-sw-low-energy-solution}.  The one-loop logarithm and the
 resulting monodromy at infinity are holomorphy-derived after the perturbative
 Wilsonian scheme is fixed.  The residual \(u\mapsto -u\) action is
 symmetry-derived.  The Picard-Lefschetz transformation at a nodal fiber is a
@@ -344,16 +421,27 @@ special-geometry theorem.  The curve
 \(y^2=(x^2-\Lambda^4)(x-u)\) is constraint-derived inside the minimal
 genus-one ansatz.  The hypergeometric periods, Picard-Fuchs equation,
 finite-monodromy product, BPS mass vanishings, and Nekrasov coefficient are
-consistency checks.  The statement that these data are the exact
-nonperturbative low-energy dynamics of the four-dimensional continuum QFT
-remains at the status boundary recorded at the end of the chapter.
+consistency checks.  The exact nonperturbative identification of these data
+with the low-energy dynamics of the four-dimensional continuum QFT is the
+central conjecture; the curve algebra supplies part of its evidence ledger.
 
-In rank one the electromagnetic charge lattice is
+In rank one the local electromagnetic particle lattice used for central charges
+is
 \[
   \Gamma\simeq\mathbb Z^2,\qquad
   \gamma=(n_m,n_e),
 \]
-with central charge \(Z_\gamma=n_m a_D+n_e a\).  For two charges
+with central charge \(Z_\gamma=n_m a_D+n_e a\).  This is the lattice
+\(\Gamma_{\rm part}\) of
+Definition~\ref{def:pure-su2-sw-global-line-datum}: \(n_e=1\) is the electric
+charge of the adjoint \(W\)-boson in the root normalization, and \(n_m=1\) is
+the smooth monopole charge that becomes light at the monopole point.  The
+choice of genuine Wilson--'t Hooft lines is not fixed by the Lie algebra
+\(\mathfrak{su}(2)\); it is the additional datum
+\(\mathcal L_\ell\).  Thus the same local period curve can be paired with the
+\(SU(2)\), \(SO(3)_+\), or \(SO(3)_-\) absolute line lattice, with the theta
+periodicity stated in
+Definition~\ref{def:pure-su2-sw-global-line-datum}.  For two charges
 \(\delta=(m_m,m_e)\) and \(\gamma=(n_m,n_e)\), use the antisymmetric pairing
 \begin{equation}
   \langle \delta,\gamma\rangle
@@ -641,8 +729,10 @@ discriminant is proportional to
   4\Lambda^4(u^2-\Lambda^4)^2,
 \]
 so the only finite singular values are exactly \(u=\pm\Lambda^2\).  This
-gives uniqueness only within the stated ansatz; the QFT assertion that this
-ansatz captures the exact pure theory is the Seiberg-Witten status boundary.
+gives uniqueness only within the stated ansatz.  The QFT assertion that this
+ansatz captures the exact pure theory is
+Conjecture~\ref{conj:pure-su2-sw-low-energy-solution}, not a theorem of the
+hyperelliptic calculation alone.
 
 Its branch points are
 \[
@@ -998,36 +1088,90 @@ sectors.
 \section{Monodromy And Light Charges}
 
 The weak-coupling region is the exterior of the curve of marginal stability
-on which \(a_D/a\) is real.  In the charge convention fixed above, the
-semiclassical BPS spectrum contains the vector multiplet with charge
-\((0,1)\) and a tower of hypermultiplets with charges
-\begin{equation}
-  (n_m,n_e)=(1,n),
-  \qquad
-  n\in\mathbb Z,
-  \label{eq:sw-weak-coupling-bps-tower}
-\end{equation}
-together with antiparticles.  The tower is generated by monodromy at infinity
-from either finite singular charge.  The central charges are
+on which \(a_D/a\) is real.  The periods and monodromies above identify
+vanishing charges and transport charges of already-known states.  They do not,
+by themselves, prove existence, stability, protected degeneracy, or
+completeness of a BPS spectrum.
+
+\begin{definition}[Protected rank-one BPS index]
+\label{def:rank-one-sw-bps-index}
+For a chamber \(\mathcal C\subset\mathcal B^\circ\) and charge
+\(\gamma\in\Gamma_{\rm part}\), the one-particle protected BPS index used here
+is the second helicity supertrace
 \[
-  Z_{(0,1)}=a,
-  \qquad
+  \Omega_{\mathcal C}(\gamma)
+  =
+  -\frac12
+  \operatorname{Tr}_{\mathcal H^{\mathrm{1p,BPS}}_{\gamma,u}}
+  \bigl((2J_3)^2(-1)^{2J_3}\bigr),
+  \qquad u\in\mathcal C .
+\]
+It is locally constant inside \(\mathcal C\) and may jump only when central
+charge rays align.  With this normalization an isolated hypermultiplet has
+\(\Omega=+1\), and a vector multiplet has \(\Omega=-2\).
+\end{definition}
+
+\begin{conjecture}[Weak BPS-index seed]
+\label{conj:sw-weak-chamber-bps-seed}
+In the weak-coupling chamber of
+Conjecture~\ref{conj:pure-su2-sw-low-energy-solution}, the protected
+one-particle indices are
+\[
+  \Omega_{\rm wk}(\pm(0,1))=-2,\qquad
+  \Omega_{\rm wk}(\pm(1,n))=+1\quad(n\in\mathbb Z),
+\]
+and vanish for the other primitive charges.  The central charges of the
+displayed states are
+\[
+  Z_{(0,1)}=a,\qquad
   Z_{(1,n)}=a_D+na .
 \]
-Inside the strong-coupling chamber bounded by the marginal-stability curve,
-the stable hypermultiplets are the two light states associated with the two
-singularities, with charges
+This is the semiclassical seed expected from \(W\)-bosons and from quantizing
+the monopole/dyon collective coordinates.  In this chapter it is an input, not
+a consequence of the monodromy matrices.
+\end{conjecture}
+
+\begin{conjecture}[Strong BPS-index seed]
+\label{conj:sw-strong-chamber-bps-seed}
+Inside the strong-coupling chamber bounded by the marginal-stability curve, the
+only nonzero primitive one-particle indices are
 \[
-  (1,0),\qquad (1,-1),
+  \Omega_{\rm st}(\pm(1,0))=+1,\qquad
+  \Omega_{\rm st}(\pm(1,-1))=+1 .
 \]
-and their antiparticles.  The change in the BPS index occurs when
+Thus the only stable primitive hypermultiplets in this chamber are the two
+light states associated with the two singularities and their antiparticles.
+This completeness statement is a BPS-index input unless a wall-crossing
+calculation is supplied.
+\end{conjecture}
+
+The change in the BPS index can occur only when
 \[
   \arg Z_{\gamma_1}=\arg Z_{\gamma_2}
 \]
-for charges that can form or decay as a BPS bound state.  This is the
-wall-crossing mechanism in its rank-one Seiberg-Witten form: the central
-charge function is continuous, while the protected index of one-particle BPS
-states is locally constant only away from marginal-stability walls.
+for charges that can form or decay as a BPS bound state.  The rank-one
+Kontsevich--Soibelman wall-crossing automorphism associated to a charge
+\(\gamma\) acts on formal torus coordinates by
+\[
+  \mathcal K_\gamma(X_\delta)
+  =
+  X_\delta(1-X_\gamma)^{\langle\gamma,\delta\rangle\Omega(\gamma)} .
+\]
+For two hypermultiplet charges \(\alpha,\beta\) with
+\(\langle\alpha,\beta\rangle=1\), the elementary pentagon identity has the
+form
+\[
+  \mathcal K_\alpha\,\mathcal K_\beta
+  =
+  \mathcal K_\beta\,\mathcal K_{\alpha+\beta}\,\mathcal K_\alpha ,
+\]
+with the product ordered by the phases of the central charges.  A theorem-level
+derivation of the pure \(\mathfrak{su}(2)\) weak and strong lists would require
+choosing the BPS-ray ordering and proving equality of the complete
+spectrum-generator products built from the indices in
+Conjectures~\ref{conj:sw-weak-chamber-bps-seed} and
+\ref{conj:sw-strong-chamber-bps-seed}.  The chapter does not replace that
+calculation by monodromy consistency.
 
 \section{Argyres-Douglas Scaling As A Rank-One Singularity}
 \label{sec:argyres-douglas-rank-one-singularity}
@@ -1314,18 +1458,22 @@ precisely when \eqref{eq:sw-local-vortex-equations} holds.
 
 \section{Status Boundary}
 
-The period construction determines an Abelian Wilsonian effective action under
-explicit hypotheses: existence of the \(\mathcal N=2\) continuum theory,
-existence of the Coulomb-branch vacuum family, validity of the two-derivative
-Abelian description away from singular loci, and BPS saturation for the
-states assigned to vanishing cycles.  The missing nonperturbative regulator
-for four-dimensional supersymmetric gauge theory remains part of the
-Wilsonian-scheme problem recorded in Chapter~\ref{ch:susy-four-dimensional-n1-gauge-dynamics}.
+The period construction determines an Abelian Wilsonian effective action only
+after the central QFT identification in
+Conjecture~\ref{conj:pure-su2-sw-low-energy-solution} is supplied.  The curve,
+Picard--Fuchs equation, Picard--Lefschetz monodromies, and Nekrasov coefficient
+matches are exact or finite checks of the supplied datum; they do not construct
+the four-dimensional continuum theory, fix an absolute line lattice by
+themselves, or prove the complete BPS-index spectrum.  The missing
+nonperturbative regulator for four-dimensional supersymmetric gauge theory
+remains part of the Wilsonian-scheme problem recorded in
+Chapter~\ref{ch:susy-four-dimensional-n1-gauge-dynamics}.
 
 \begin{openproblem}[Theorem-level SW construction]
 \label{op:theorem-level-seiberg-witten-construction}
 Construct the four-dimensional \(\mathcal N=2\) gauge theory with a regulator
 and continuum limit sufficient to derive the Coulomb-branch special geometry,
-period data, BPS spectrum near singular fibers, and low-energy Abelian
-Wilsonian action as theorems of QFT.
+period data, absolute line-lattice dependence, protected BPS indices in each
+chamber, wall-crossing products, and low-energy Abelian Wilsonian action as
+theorems of QFT.
 \end{openproblem}

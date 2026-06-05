@@ -1592,8 +1592,11 @@ Current checks:
   charge fusion.
 - `sw_su2_periods.py`: numerical and exact checks for the pure \(SU(2)\)
   Seiberg--Witten period section, including Picard--Lefschetz monodromy
-  matrices, central-charge action and symplecticity, the rigid
-  special-K\"ahler metric identity \(g=(2\pi)^{-1}\operatorname{Im}\tau\),
+  matrices, central-charge action and symplecticity, the pure
+  \(\mathfrak{su}(2)\) global-form line choices and Witten-effect theta shift,
+  the root-normalized particle-charge convention, chamber BPS-index seed
+  bookkeeping, the rigid special-K\"ahler metric identity
+  \(g=(2\pi)^{-1}\operatorname{Im}\tau\),
   the one-instanton \(R\)-anomaly zero-mode count, the residual
   \(R\)-symmetry action \(u\mapsto -u\), the two-singularity scale ledger, the
   single-nodal-monodromy exclusion, the minimal-curve discriminant, the

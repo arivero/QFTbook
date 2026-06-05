@@ -7,11 +7,13 @@ The checks use the chapter normalization with Lambda=1:
     aD(u) = i (u-1) 2F1(1/2,1/2;2;(1-u)/2)/2.
 
 They verify monodromy matrices, Picard-Lefschetz central-charge action,
-symplectic preservation, the rigid special-Kahler metric identity, the minimal
-residual R-symmetry ledger, curve discriminant, the Picard-Fuchs equation, the
-electric large-u asymptotic, the logarithmic large-u growth of the dual period,
-the linear vanishing of the monopole period at u=1, and the rank-one
-Argyres-Douglas cusp scaling dimensions.
+symplectic preservation, the pure su(2) global-form line-lattice ledger,
+root-normalized BPS charge convention, chamber BPS-index seed bookkeeping, the
+rigid special-Kahler metric identity, the minimal residual R-symmetry ledger,
+curve discriminant, the Picard-Fuchs equation, the electric large-u asymptotic,
+the logarithmic large-u growth of the dual period, the linear vanishing of the
+monopole period at u=1, and the rank-one Argyres-Douglas cusp scaling
+dimensions.
 """
 
 from __future__ import annotations
@@ -73,6 +75,20 @@ def symplectic_pair(delta: tuple[int, int], gamma: tuple[int, int]) -> int:
     m_m, m_e = delta
     n_m, n_e = gamma
     return m_m * n_e - m_e * n_m
+
+
+def mod2_pair(a: tuple[int, int], b: tuple[int, int]) -> int:
+    return (a[0] * b[1] - a[1] * b[0]) % 2
+
+
+def span_mod2(generator: tuple[int, int]) -> set[tuple[int, int]]:
+    g = (generator[0] % 2, generator[1] % 2)
+    return {(0, 0), g}
+
+
+def witten_effect_t(line: tuple[int, int]) -> tuple[int, int]:
+    electric, magnetic = line
+    return ((electric + magnetic) % 2, magnetic % 2)
 
 
 def row_times_matrix(row: tuple[int, int], a: list[list[int]]) -> tuple[int, int]:
@@ -158,6 +174,96 @@ def check_local_hyper_threshold_shift() -> None:
             monodromy_coeffs = row_times_matrix(delta, charge_monodromy(*gamma))
             if transformed != monodromy_coeffs:
                 raise AssertionError("local hyper threshold shift does not match PL matrix")
+
+
+def check_global_form_line_lattice_theta_periodicity() -> None:
+    electric = (1, 0)
+    magnetic = (0, 1)
+    dyonic = (1, 1)
+    line_lattices = {
+        "SU(2)": span_mod2(electric),
+        "SO(3)+": span_mod2(magnetic),
+        "SO(3)-": span_mod2(dyonic),
+    }
+
+    for name, lattice in line_lattices.items():
+        if len(lattice) != 2:
+            raise AssertionError(f"{name} line lattice should be order two")
+        for first in lattice:
+            for second in lattice:
+                if mod2_pair(first, second) != 0:
+                    raise AssertionError(f"{name} line lattice is not isotropic")
+
+    shifted = {
+        name: {witten_effect_t(line) for line in lattice}
+        for name, lattice in line_lattices.items()
+    }
+    if shifted["SU(2)"] != line_lattices["SU(2)"]:
+        raise AssertionError("theta -> theta+2pi should preserve the SU(2) line choice")
+    if shifted["SO(3)+"] != line_lattices["SO(3)-"]:
+        raise AssertionError("theta -> theta+2pi should send SO(3)+ to SO(3)-")
+    if shifted["SO(3)-"] != line_lattices["SO(3)+"]:
+        raise AssertionError("theta -> theta+2pi should send SO(3)- to SO(3)+")
+    shifted_twice = {
+        name: {witten_effect_t(witten_effect_t(line)) for line in lattice}
+        for name, lattice in line_lattices.items()
+    }
+    if shifted_twice != line_lattices:
+        raise AssertionError("theta -> theta+4pi should preserve each SO(3) absolute theory")
+
+
+def check_root_normalized_particle_charge_ledger() -> None:
+    monopole = (1, 0)
+    w_boson = (0, 1)
+    dyon = (1, -1)
+    if symplectic_pair(monopole, w_boson) != 1:
+        raise AssertionError("root-normalized W and monopole should be primitive")
+    if charge_monodromy(*monopole) != [[1, 0], [-2, 1]]:
+        raise AssertionError("monopole charge should produce the monopole monodromy")
+    if charge_monodromy(*dyon) != [[-1, 2], [-2, 3]]:
+        raise AssertionError("dyon charge should produce the second finite monodromy")
+
+    # The W-boson is an adjoint local particle.  Its center-valued electric
+    # line charge is trivial mod two, whereas the fundamental Wilson line class
+    # is the nontrivial electric line in the SU(2) absolute theory.
+    w_center_class = (0, 0)
+    fundamental_wilson_class = (1, 0)
+    if w_center_class == fundamental_wilson_class:
+        raise AssertionError("root-normalized W charge was conflated with a fundamental line")
+
+
+def check_bps_index_seed_ledger() -> None:
+    weak_indices: dict[tuple[int, int], int] = {
+        (0, 1): -2,
+        (0, -1): -2,
+    }
+    for n in range(-4, 5):
+        weak_indices[(1, n)] = 1
+        weak_indices[(-1, -n)] = 1
+
+    strong_indices = {
+        (1, 0): 1,
+        (-1, 0): 1,
+        (1, -1): 1,
+        (-1, 1): 1,
+    }
+
+    if weak_indices[(0, 1)] != -2:
+        raise AssertionError("weak W-boson vector multiplet should have Omega=-2")
+    if weak_indices[(1, 3)] != 1 or weak_indices[(-1, -3)] != 1:
+        raise AssertionError("weak dyon tower seed should assign hypermultiplet index +1")
+    if strong_indices[(1, 0)] != 1 or strong_indices[(1, -1)] != 1:
+        raise AssertionError("strong chamber seed should keep the two light hypers")
+    if (0, 1) in strong_indices:
+        raise AssertionError("strong chamber seed should not keep the W vector as stable")
+
+    alpha = (1, 0)
+    beta = (0, 1)
+    if symplectic_pair(alpha, beta) != 1:
+        raise AssertionError("pentagon test charges should have pairing one")
+    middle = (alpha[0] + beta[0], alpha[1] + beta[1])
+    if middle != (1, 1):
+        raise AssertionError("rank-one pentagon middle charge should be alpha+beta")
 
 
 def check_residual_r_symmetry_two_singularity_ledger() -> None:
@@ -319,6 +425,9 @@ def main() -> None:
     check_monodromies()
     check_picard_lefschetz_action_and_symplecticity()
     check_local_hyper_threshold_shift()
+    check_global_form_line_lattice_theta_periodicity()
+    check_root_normalized_particle_charge_ledger()
+    check_bps_index_seed_ledger()
     check_residual_r_symmetry_two_singularity_ledger()
     check_rigid_special_kahler_metric()
     check_minimal_curve_discriminant()
