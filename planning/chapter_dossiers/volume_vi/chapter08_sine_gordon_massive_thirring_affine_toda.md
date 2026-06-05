@@ -55,6 +55,11 @@ families.  This chapter supplies the first exact examples before the later
   \(M_s=8m/\beta^2-m/\pi+O(\beta^2m)\) in the paired normal-ordering
   convention.  The text emphasizes that this is a fluctuation determinant and
   counterterm calculation, not a moduli-coordinate calculation.
+- Checks the same finite DHN mass shift against the exact breather spectrum:
+  inserting \(M_s=8m/\beta^2-m/\pi+O(\beta^2m)\) into
+  \(m_1=2M_s\sin(\pi\xi/2)\) cancels the \(O(\beta^2m)\) correction and gives
+  the perturbative elementary boson mass \(m+O(\beta^4m)\), while omitting or
+  halving the finite shift leaves a spurious weak-coupling mass correction.
 - Adds the UV-normal-ordered mass-coupling coordinate
   \(M_s(\mu_{\rm UV},\beta_{\rm UV})\), with the dimension check and the
   canonical-field conversion \(\phi=\sqrt{8\pi}\varphi\).
@@ -118,7 +123,10 @@ families.  This chapter supplies the first exact examples before the later
   continuum modes, phase-shift derivative, cutoff/counterterm cancellation,
   and the finite \(-m/\pi\) one-loop mass shift, with negative controls for
   omitted counterterms, half phase shifts, and double-counted zero modes.  It
-  also verifies the \(A_r^{(1)}\) cycle-Laplacian eigenvalues, finite \(A_r\)
+  also verifies the weak-coupling breather-mass consistency check: the DHN
+  finite shift cancels the \(O(\beta^2)\) term in \(m_{B_1}/m\), while the
+  classical or half-shift choices fail.  It also verifies the \(A_r^{(1)}\)
+  cycle-Laplacian eigenvalues, finite \(A_r\)
   Perron--Frobenius sine-mass relation, and exact \(\mathbb Q[\sqrt3]\)
   \(D_4\) Perron--Frobenius mass cell.
 - `calculation-checks/sg_thirring_bosonization_checks.py` verifies the
@@ -168,3 +176,9 @@ first simply-laced examples.
   removal.  This addresses the soliton-quantization side of the
   soliton/monopole/instanton backlog at the determinant level rather than by
   adding another moduli-space cell.
+- 2026-06-05 issue #728/#597 DHN-to-spectrum pass: added the weak-coupling
+  breather-mass consistency proposition showing that the finite DHN shift is
+  required for the exact \(B_1\) pole mass to match the perturbative boson
+  mass through \(O(\beta^2m)\).  This ties the fluctuation determinant to the
+  physical on-shell spectrum rather than treating it as an isolated soliton
+  correction.

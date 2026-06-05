@@ -4,7 +4,8 @@
 The checks also cover the semiclassical soliton fluctuation calculation:
 the classical kink profile, Pöschl-Teller fluctuation operator, reflectionless
 phase shift, DHN cutoff/counterterm cancellation, and the finite one-loop
-mass shift -m/pi.
+mass shift -m/pi.  The same finite shift is checked against the exact
+lightest-breather pole mass in the weak-coupling expansion.
 """
 
 from __future__ import annotations
@@ -342,6 +343,56 @@ def check_semiclassical_soliton_fluctuation_mass_shift() -> None:
         )
 
 
+def check_dhn_breather_mass_weak_coupling_consistency() -> None:
+    """Check that the DHN finite shift cancels the B1 mass O(beta^2) term."""
+
+    b, c = sp.symbols("b c")
+    xi = b / (8 * sp.pi - b)
+    pole_argument = sp.pi * xi / 2
+    pole_argument_series = sp.series(pole_argument, b, 0, 3).removeO()
+    assert_equal(
+        "sine-Gordon breather pole argument weak-coupling series",
+        sp.simplify(pole_argument_series - (b / 16 + b**2 / (128 * sp.pi))),
+        0,
+    )
+
+    # Work with the dimensionless ratio m_1/m and a generic finite shift
+    # M_s = 8m/b - c m/pi.  The DHN convention has c=1.
+    ratio = 2 * (8 / b - c / sp.pi) * sp.sin(pole_argument)
+    ratio_series = sp.series(ratio, b, 0, 3).removeO()
+    beta_squared_coefficient = sp.expand(ratio_series).coeff(b, 1)
+    assert_equal(
+        "generic finite shift controls B1 beta^2 coefficient",
+        sp.simplify(beta_squared_coefficient - (1 - c) / (8 * sp.pi)),
+        0,
+    )
+
+    dhn_ratio = sp.series(ratio.subs(c, 1), b, 0, 3).removeO()
+    assert_equal(
+        "DHN shift cancels B1 beta^2 mass correction",
+        sp.simplify(sp.expand(dhn_ratio).coeff(b, 1)),
+        0,
+    )
+    assert_equal(
+        "DHN ratio starts at the elementary boson mass",
+        sp.simplify(dhn_ratio.subs(b, 0) - 1),
+        0,
+    )
+
+    classical_ratio = sp.series(ratio.subs(c, 0), b, 0, 3).removeO()
+    assert_equal(
+        "classical soliton mass leaves spurious B1 beta^2 correction",
+        sp.simplify(sp.expand(classical_ratio).coeff(b, 1) - 1 / (8 * sp.pi)),
+        0,
+    )
+    half_shift_ratio = sp.series(ratio.subs(c, sp.Rational(1, 2)), b, 0, 3).removeO()
+    assert_equal(
+        "half DHN shift leaves half the spurious B1 correction",
+        sp.simplify(sp.expand(half_shift_ratio).coeff(b, 1) - 1 / (16 * sp.pi)),
+        0,
+    )
+
+
 def check_affine_toda_a_r_mass_matrix() -> None:
     for rank in range(2, 8):
         h = rank + 1
@@ -446,6 +497,7 @@ def main() -> None:
     check_neutral_block_residues()
     check_breather_breather_direct_fusion_masses()
     check_semiclassical_soliton_fluctuation_mass_shift()
+    check_dhn_breather_mass_weak_coupling_consistency()
     check_affine_toda_a_r_mass_matrix()
     check_affine_toda_d4_perron_frobenius_mass_cell()
     print("All sine-Gordon S-matrix checks passed.")

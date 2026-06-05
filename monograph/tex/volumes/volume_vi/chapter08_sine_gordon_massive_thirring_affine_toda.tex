@@ -216,6 +216,68 @@ moduli are only the first line of the quantum calculation; the fluctuation
 determinant and the renormalization convention decide the mass that appears
 in scattering and bound-state formulae.
 
+\begin{proposition}[Weak-coupling breather mass consistency]
+\label{prop:sine-gordon-dhn-breather-mass-consistency}
+The finite part of the DHN soliton mass shift is required by the exact
+breather spectrum.  Let \(b=\beta^2\).  In the weak-coupling attractive
+regime,
+\[
+  \xi=\frac{b}{8\pi-b},
+  \qquad
+  m_1=2M_s\sin\!\left(\frac{\pi\xi}{2}\right),
+\]
+where \(m_1\) is the lightest-breather pole mass.  If
+\[
+  M_s=\frac{8m}{b}-\frac{m}{\pi}+O(bm)
+\]
+is the DHN mass in the normal-ordering convention of
+\eqref{eq:sine-gordon-dhn-one-loop-mass}, then
+\[
+  m_1=m+O(\beta^4m).
+\]
+If the finite determinant shift \(-m/\pi\) is omitted, the same pole formula
+instead gives
+\[
+  m_1^{\rm cl}
+  =
+  m\left(1+\frac{\beta^2}{8\pi}+O(\beta^4)\right).
+\]
+More generally, replacing the finite term by \(-c\,m/\pi\) leaves the
+spurious first correction
+\[
+  m_1
+  =
+  m\left(1+\frac{1-c}{8\pi}\beta^2+O(\beta^4)\right).
+\]
+Thus the reflectionless fluctuation determinant and its finite counterterm are
+part of the physical mass normalization: they make the exact on-shell
+bound-state mass coordinate agree with the perturbative elementary boson mass
+to the first nontrivial order.
+\end{proposition}
+
+\begin{proof}
+Since
+\[
+  \frac{\pi\xi}{2}
+  =
+  \frac{b}{16}+\frac{b^2}{128\pi}+O(b^3),
+\]
+and \(\sin(\pi\xi/2)=\pi\xi/2+O(b^3)\), the exact pole formula gives
+\[
+\begin{aligned}
+  m_1
+  &=
+  2\left(\frac{8m}{b}-\frac{cm}{\pi}+O(bm)\right)
+  \left(\frac{b}{16}+\frac{b^2}{128\pi}+O(b^3)\right)  \\
+  &=
+  m\left(1+\frac{1-c}{8\pi}b+O(b^2)\right).
+\end{aligned}
+\]
+The DHN value is \(c=1\), so the \(O(\beta^2m)\) correction cancels.  The
+classical soliton mass alone corresponds to \(c=0\) and leaves the displayed
+spurious term.
+\end{proof}
+
 \section{Mass Scale And The UV Perturbing Coordinate}
 
 The symbol \(M_s\) denotes the physical soliton mass, defined by the isolated

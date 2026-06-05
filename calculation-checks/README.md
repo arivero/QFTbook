@@ -2465,7 +2465,10 @@ Current checks:
   trigonometric identity, Pöschl--Teller zero and continuum modes, phase-shift
   derivative, DHN cutoff/counterterm cancellation, the finite one-loop mass
   shift \(-m/\pi\), and negative controls for omitted counterterms, half phase
-  shifts, and double-counted zero modes.  It also checks the
+  shifts, and double-counted zero modes.  It also checks that this DHN finite
+  shift cancels the \(O(\beta^2)\) term in the exact lightest-breather pole
+  mass, while the classical soliton mass or a half finite shift leaves the
+  wrong weak-coupling mass coordinate.  It also checks the
   \(A_r^{(1)}\) affine Toda cycle-Laplacian eigenvalues and the finite
   \(A_r\) Perron--Frobenius sine-mass relation, plus the exact
   \(\mathbb Q[\sqrt3]\) \(D_4\) Perron--Frobenius mass cell.
