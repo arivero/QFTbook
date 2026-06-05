@@ -2596,7 +2596,10 @@ Current checks:
   the quantum-product relation \(H^N=q\), the finite degree-one vortex
   observable assembly residual ledger tying the vortex-normalized fugacity to the
   three-point product coefficient with residual, off-pairing, mirror-only,
-  dimension-only, and zero-mode-gate negative controls, and the
+  dimension-only, and zero-mode-gate negative controls, the A-model
+  degree-one zero-mode measure bridge checking Berezin top-degree saturation,
+  determinant-line orientation, obstruction-factor omission, nonzero-mode
+  determinant cancellation, and residual underbudgeting, and the
   classical cigar quotient metric obtained by eliminating the gauge field,
   the logarithmic-chiral vortex obstruction, the mirror-conjecture status
   ledger separating full GLSM/Hori--Vafa and cigar/Liouville QFT equivalence

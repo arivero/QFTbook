@@ -1906,6 +1906,70 @@ With \(0\le a\le N-1\), it is satisfied only for \(d=1\) and
 Nondegeneracy of the classical pairing gives the product relation.
 \end{proof}
 
+\begin{controlledapproximation}[Degree-one A-model zero-mode measure bridge]
+\label{ca:cpn-degree-one-amodel-zero-mode-measure-bridge}
+The line count in Proposition~\ref{prop:cpn-stable-map-quantum-product-gate}
+is the geometric part of the A-twisted path integral, not the whole
+instanton calculation.  In a finite supersymmetric regulator for the
+positive-chamber \(\mathbb P^{N-1}\) GLSM, write the degree-one contribution
+to a three-point A-twisted correlator in the stage form
+\begin{equation}
+  \mathcal C_{\Lambda,1}^{A}(\mathcal O_1,\mathcal O_2,\mathcal O_3)
+  =
+  q_\Lambda
+  \int_{\mathcal U_{\Lambda,1}}
+    \mathcal W_{\Lambda,1}^{\rm nz}(z)\,
+    \mathcal Z_{\Lambda,1}^{0}(z;\mathcal O_1,\mathcal O_2,\mathcal O_3)\,
+    \dd\nu_{\Lambda,1}(z)
+  +R_{\rm cpt}+R_{\rm cont}.
+  \label{eq:cpn-degree-one-amodel-zero-mode-integral}
+\end{equation}
+Here \(q_\Lambda=\exp(t)\prod_i c_{i,\Lambda}\) is the supplied
+vortex-normalized fugacity, \(\dd\nu_{\Lambda,1}\) is the bosonic
+collective-coordinate density after gauge quotient, \(\mathcal W_{\Lambda,1}^{\rm nz}\)
+is the nonzero-mode determinant-line element after the tangent zero modes have
+been removed, and \(\mathcal Z_{\Lambda,1}^{0}\) is the Berezin coefficient
+from the A-twisted fermion zero modes and the three operator insertions.
+
+For a convex target such as \(\mathbb P^{N-1}\), the degree-one obstruction
+space \(H^1(\mathbb P^1,\phi^\ast T\mathbb P^{N-1})\) vanishes.  Thus, after
+the virtual orientation and the finite GLSM determinant-line comparison have
+been fixed, the fermion zero modes identify with the tangent directions of
+\(\overline{\mathcal M}_{0,3}(\mathbb P^{N-1},1)\).  The Berezin coefficient
+then extracts the top exterior degree:
+\begin{equation}
+  \mathcal Z_{\Lambda,1}^{0}
+  \quad\leadsto\quad
+  {\rm ev}_1^\ast\alpha_1\,
+  {\rm ev}_2^\ast\alpha_2\,
+  {\rm ev}_3^\ast\alpha_3
+  \quad
+  \hbox{only if }
+  \sum_j\operatorname{codim}_{\mathbb C}\alpha_j=2N-1 .
+  \label{eq:cpn-degree-one-amodel-berezin-degree}
+\end{equation}
+For
+\((\alpha_1,\alpha_2,\alpha_3)=(H,H^{N-1},H^{N-1})\), this degree is
+\(2N-1\), the same as the affine incidence chart in
+ControlledApproximation~\ref{ca:cpn-degree-one-vortex-observable-assembly}.
+If the finite determinant-line comparison gives orientation sign \(+1\) and
+no extra zero modes or obstruction Euler classes are missing, the retained
+zero-mode integral reduces to the incidence count \(1\), and the retained
+coefficient is \(q_\Lambda\).  If the determinant-line orientation is reversed,
+the coefficient changes sign; if an extra residual fermion zero mode is
+present without an insertion, or if an obstruction factor is omitted, the
+Berezin coefficient vanishes even though the geometric line count still
+exists.
+
+This is the path-integral bridge between the vortex calculation and the
+stable-map gate.  The mirror residue computes a protected finite trace, and
+the stable-map incidence chart computes a geometric count.  The A-twisted QFT
+correlator is obtained only after the same regulator supplies the
+vortex-normalized fugacity, the zero-mode Berezin measure, the nonzero-mode
+determinant-line orientation, the compactification/contact prescription, and
+the operator map to \(H\).
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Degree-one stable-map incidence residual template]
 \label{ca:cpn-degree-one-vortex-observable-assembly}
 The degree-one product coefficient is a physical A-twisted observable only after

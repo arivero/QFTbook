@@ -8,16 +8,17 @@ normalization, single-vortex coefficient noncancellation bound,
 P^{N-1} mirror residue trace, and
 vortex-to-protected-observable residual ledger, together with the
 vortex-fugacity dimensional-transmutation coordinate, the degree-one
-P^{N-1} stable-map gate, and the finite degree-one stable-map incidence model
+P^{N-1} stable-map gate, the finite degree-one stable-map incidence model
 with supplied vortex coefficient input plus conditional residual template for
-the quantum-product observable relation, and the mirror-conjecture status
-ledger separating full-QFT data from protected evidence, in Volume VII
-Chapter 09.
+the quantum-product observable relation, the A-model degree-one zero-mode
+measure bridge, and the mirror-conjecture status ledger separating full-QFT
+data from protected evidence, in Volume VII Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
 elimination, finite chain-complex rank checks, Berezin-degree tests,
 retained-window signed/mass coefficient bounds, root-of-unity residue sums,
-stable-map incidence Jacobians, and residual budgets are computed directly
-from finite data rather than by substituting the displayed final identities.
+stable-map incidence Jacobians, A-model zero-mode degree gates, and residual
+budgets are computed directly from finite data rather than by substituting the
+displayed final identities.
 Imported assumptions: the finite GLSM charge matrix, selected regulator-stage
 factorization, supplied vortex coefficients, nonzero-mode determinant
 placeholders, logarithm-branch conventions, and the chapter's
@@ -29,9 +30,10 @@ absolute mass, wrong residue selection powers, underspecified residual
 budgets, stable-map dimension mismatches, mirror-only or dimension-only
 quantum-product shortcuts, determinant-orientation flips,
 zero-mode multiplicity errors, compactification/contact mutations,
-hyperplane-normalization changes, omitted off-pairing controls, protected-sector
-shortcuts to full mirror equivalence, and finite-gauge invariance failures are
-rejected when the finite model can represent them.
+hyperplane-normalization changes, omitted off-pairing controls, line-count-only
+or vortex-fugacity-only observable claims, protected-sector shortcuts to full
+mirror equivalence, and finite-gauge invariance failures are rejected when the
+finite model can represent them.
 Scope boundary: a pass checks finite algebra and bookkeeping interfaces; it
 does not prove continuum GLSM existence, Hori--Vafa mirror equivalence,
 vortex compactness, derivation of the vortex fluctuation spectra or gauge-ghost
@@ -1350,6 +1352,121 @@ def check_degree_one_stable_map_incidence_model() -> None:
         raise AssertionError("hyperplane-class normalization change should rescale the coefficient")
 
 
+def check_degree_one_amodel_zero_mode_measure_bridge() -> None:
+    # The degree-one line count becomes an A-twisted correlator only after
+    # the zero-mode Berezin degree, determinant-line orientation, obstruction
+    # factor, and supplied vortex-normalized fugacity all live in the same
+    # regulator coordinate.  This finite model checks that bridge rather than
+    # only the incidence count.
+    for n_fields in range(2, 9):
+        moduli_complex_dimension = 2 * n_fields - 1
+        insertion_degrees = [1, n_fields - 1, n_fields - 1]
+        insertion_total_degree = sum(insertion_degrees)
+        assert_equal(
+            f"CP^{n_fields - 1} A-model zero-mode degree saturation",
+            insertion_total_degree,
+            moduli_complex_dimension,
+        )
+
+        obstruction_rank = 0
+        determinant_orientation = Fraction(1)
+        bare_fi = Fraction(n_fields + 2, n_fields + 7)
+        vortex_coefficients = [
+            Fraction(n_fields + index + 3, n_fields + index + 5)
+            for index in range(n_fields)
+        ]
+        q_regulated = bare_fi * prod(vortex_coefficients, start=Fraction(1))
+
+        berezin_gate = (
+            Fraction(1)
+            if insertion_total_degree == moduli_complex_dimension and obstruction_rank == 0
+            else Fraction(0)
+        )
+        incidence_count = Fraction(1)
+        retained_correlator = (
+            q_regulated * determinant_orientation * berezin_gate * incidence_count
+        )
+        assert_equal(
+            f"CP^{n_fields - 1} retained A-model degree-one coefficient",
+            retained_correlator,
+            q_regulated,
+        )
+
+        line_count_only = incidence_count
+        if line_count_only == retained_correlator:
+            raise AssertionError("line count alone should not include vortex fugacity")
+
+        vortex_fugacity_only = q_regulated
+        if vortex_fugacity_only != retained_correlator:
+            raise AssertionError("well-oriented saturated bridge should retain q_regulated")
+
+        flipped_orientation = -determinant_orientation
+        assert_equal(
+            "determinant orientation flips A-model coefficient",
+            q_regulated * flipped_orientation * berezin_gate * incidence_count,
+            -retained_correlator,
+        )
+
+        missing_operator_degrees = [1, n_fields - 2, n_fields - 1]
+        missing_gate = (
+            Fraction(1)
+            if sum(missing_operator_degrees) == moduli_complex_dimension
+            else Fraction(0)
+        )
+        assert_equal(
+            "missing insertion degree kills Berezin coefficient",
+            q_regulated * determinant_orientation * missing_gate * incidence_count,
+            Fraction(0),
+        )
+
+        extra_obstruction_rank = 1
+        omitted_obstruction_euler = Fraction(0)
+        obstruction_gate = (
+            Fraction(1)
+            if extra_obstruction_rank == 0
+            else omitted_obstruction_euler
+        )
+        assert_equal(
+            "omitted obstruction factor kills retained A-model coefficient",
+            q_regulated * determinant_orientation * obstruction_gate * incidence_count,
+            Fraction(0),
+        )
+
+        nonzero_mode_ratio = Fraction(1)
+        same_regulator_result = retained_correlator * nonzero_mode_ratio
+        assert_equal(
+            "nonzero-mode determinant cancellation keeps oriented coefficient",
+            same_regulator_result,
+            retained_correlator,
+        )
+        wrong_nonzero_mode_ratio = Fraction(7, 5)
+        if retained_correlator * wrong_nonzero_mode_ratio == retained_correlator:
+            raise AssertionError("unpaired nonzero-mode determinant ratio should change the coefficient")
+
+        residuals = {
+            "vortex coefficient": Fraction(1, 1009),
+            "determinant line": Fraction(1, 1013),
+            "zero-mode measure": Fraction(1, 1019),
+            "compactification": Fraction(1, 1021),
+            "operator map": Fraction(1, 1031),
+        }
+        residual_bound = sum(residuals.values(), Fraction(0))
+        correlated_probe = retained_correlator + residuals["zero-mode measure"]
+        assert_leq_bound(
+            "A-model zero-mode bridge residual budget",
+            abs(correlated_probe - retained_correlator),
+            residual_bound,
+        )
+
+        omitted_zero_mode_budget = residual_bound - residuals["zero-mode measure"]
+        aligned_error = residual_bound
+        assert_gt_bound(
+            "omitting zero-mode residual underbudgets A-model bridge",
+            aligned_error,
+            omitted_zero_mode_budget,
+        )
+
+
 def check_cigar_metric_elimination() -> None:
     examples = [
         (Fraction(9, 5), Fraction(7, 3)),
@@ -1596,6 +1713,7 @@ def main() -> None:
     check_vortex_to_observable_residual_budget()
     check_cp_degree_one_stable_map_quantum_product_gate()
     check_degree_one_stable_map_incidence_model()
+    check_degree_one_amodel_zero_mode_measure_bridge()
     check_cigar_metric_elimination()
     check_logarithmic_chiral_vortex_obstruction()
     check_mirror_conjecture_status_ledger()

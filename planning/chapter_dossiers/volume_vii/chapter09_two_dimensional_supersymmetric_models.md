@@ -270,6 +270,14 @@ and
   and continuum residuals.  This prevents both mirror-residue-only and
   dimension-count-only arguments from being treated as the physical A-twisted
   correlator.
+- Adds a degree-one A-model zero-mode measure bridge before the residual
+  template: the retained path-integral coefficient is written as a
+  vortex-normalized fugacity times a bosonic collective-coordinate density,
+  nonzero-mode determinant-line element, and A-twisted Berezin zero-mode
+  coefficient.  For convex `P^{N-1}` the obstruction space vanishes, so the
+  insertions `(H,H^{N-1},H^{N-1})` saturate the top zero-mode degree
+  `2N-1`; orientation reversal, extra zero modes, or omitted obstruction data
+  change or kill the coefficient.
 - Derives the classical cigar quotient metric by solving the auxiliary
   constraint, gauge fixing the logarithmic chiral scalar, and eliminating the
   gauge field.
@@ -396,6 +404,14 @@ and
     rejecting mirror-only, dimension-only, determinant-orientation,
     zero-mode-multiplicity, compactification, and hyperplane-normalization
     shortcuts;
+  - the degree-one A-model zero-mode measure bridge: the line count for
+    `I_1(H,H^{N-1},H^{N-1})` is connected back to the finite-regulator
+    A-twisted path integral through the vortex-normalized fugacity, the
+    nonzero-mode determinant-line element, the Berezin top-degree gate, the
+    vanishing obstruction space for convex `P^{N-1}`, and the orientation
+    comparison.  This makes clear that the stable-map incidence count and the
+    Hori--Vafa residue are protected evidence only after the same regulator
+    supplies the instanton measure and fermion-zero-mode saturation.
   - the cigar quotient metric coefficients after algebraic elimination of the
     gauge field.
   - the logarithmic-chiral vortex obstruction: a unit-norm charged section
