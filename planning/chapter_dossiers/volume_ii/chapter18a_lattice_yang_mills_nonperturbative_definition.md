@@ -9,7 +9,9 @@
   theory.
 - Role in the monograph: provide the finite-dimensional compact Haar integral
   formulation of pure Yang--Mills theory, state exactly what is rigorous at
-  finite lattice spacing, identify the continuum-limit hypothesis, and frame
+  finite lattice spacing, state the central pure Yang--Mills conjecture by
+  separating continuum existence, vacuum structure, mass gap, line-sector
+  confinement, and spectral sectors, and frame
   covariant BRST/BV material as perturbative and cohomological machinery to be
   matched to gauge-invariant lattice observables.
 
@@ -68,8 +70,9 @@ The chapter must define and derive:
   gradient-flow, and Ginsparg--Wilson definitions;
 - naive fermion doubling, the Nielsen--Ninomiya obstruction, Wilson,
   staggered, domain-wall, and overlap/Ginsparg--Wilson responses;
-- the precise hypothesis needed for the four-dimensional continuum limit and
-  mass gap.
+- the precise central conjecture needed for the four-dimensional continuum
+  limit, theta-dependent vacuum structure, positive local mass gap,
+  line-sector confinement, and glueball/flux-tube spectra.
 
 ## Claim Ledger
 
@@ -96,24 +99,29 @@ The chapter must define and derive:
    be an exact order parameter in QCD with fundamental quarks.
 8. The strong-coupling character expansion yields a rigorous area-law bound
    for sufficiently small \(\beta\) in the finite-cutoff lattice theory.
-9. The continuum confinement and mass-gap statements require control of the
-   \(\beta\to\infty\) scaling trajectory; the strong-coupling theorem alone is
-   not a continuum proof.
-10. Pure CP-even \(SU(N)\) Yang--Mills on an isotropic Wilson lattice has one
+9. The central pure Yang--Mills conjecture separates continuum local-QFT
+   existence, theta-dependent vacuum structure, a positive local mass gap,
+   confinement for nonzero \(N\)-ality line sectors, and glueball/flux-tube
+   spectral sectors.
+10. A mass gap in the gauge-invariant local Hilbert space does not by itself
+   prove line-operator confinement, and the small-\(\beta\) strong-coupling
+   area-law theorem does not prove the weak-coupling continuum conjecture.
+11. Pure CP-even \(SU(N)\) Yang--Mills on an isotropic Wilson lattice has one
    running parameter, \(g_0(a)\), after vacuum-energy normalization; \(\theta\)
    is a separate topological parameter when included.
-11. Different gauge-invariant lattice actions with the same symmetries differ
+12. Different gauge-invariant lattice actions with the same symmetries differ
    by irrelevant operators and by scale matching, with Symanzik improvement
    organizing the power of \(a\) at which artifacts enter.
-12. Lattice definitions of the \(\theta\)-term require regulator choices beyond
+13. Lattice definitions of the \(\theta\)-term require regulator choices beyond
    the plaquette action because naive topological charge is not integer-valued
    at finite cutoff.
-13. Chiral fermions require care on the lattice because locality,
+14. Chiral fermions require care on the lattice because locality,
     translational invariance, Hermiticity, and exact naive chiral symmetry
     imply species doubling.
-14. BRST and BV chapters are perturbative/cohomological frameworks whose
+15. BRST and BV chapters are perturbative/cohomological frameworks whose
     relation to the nonperturbative Yang--Mills theory is through
-    gauge-invariant observable matching and the continuum-limit hypothesis.
+    gauge-invariant observable matching and the central pure Yang--Mills
+    conjecture.
 
 ## Figure Requirements
 
@@ -125,7 +133,8 @@ The chapter must define and derive:
 - Fermion-doubling figure showing Brillouin-zone zeros of the naive lattice
   derivative.
 - Future expansion target: scaling-trajectory figure relating strong coupling,
-  weak coupling, lattice artifacts, and the continuum-limit hypothesis.
+  weak coupling, lattice artifacts, and the central pure Yang--Mills
+  conjecture.
 - Future expansion target: table or flow diagram for lattice fermion
   formulations and their symmetry/tuning tradeoffs.
 
@@ -134,7 +143,7 @@ The chapter must define and derive:
 - 2026-05-24 issue #263 pass: added the chapter as the foundational
   finite-cutoff Yang--Mills formulation in Volume IV's current assembly.
 - The chapter deliberately separates finite-lattice theorems from the
-  four-dimensional continuum-limit and mass-gap hypothesis.
+  four-dimensional continuum-limit, mass-gap, and confinement conjecture.
 - The phase-structure paragraph avoids upgrading numerical or action-dependent
   evidence into a theorem and flags bulk lattice-artifact transitions.
 - The BRST and QCD chapters now cross-reference this chapter for the
@@ -145,3 +154,9 @@ The chapter must define and derive:
   infinite-volume order parameter, static-source free-energy interpretation,
   center-breaking by nonzero \(N\)-ality matter, and a calculation check for
   center phases.
+- 2026-06-05 issue #798 pass: replaced the old continuum-limit hypothesis
+  with the named central pure Yang--Mills conjecture, separating continuum
+  existence, theta-vacuum data, local mass gap, line-sector confinement, and
+  glueball/flux-tube spectra.  The dossier now records explicitly that
+  mass gap does not imply confinement and that the strong-coupling area law is
+  evidence at finite cutoff rather than a continuum proof.

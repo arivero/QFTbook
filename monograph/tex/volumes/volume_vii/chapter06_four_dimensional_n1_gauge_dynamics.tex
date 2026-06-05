@@ -230,6 +230,69 @@ Wilsonian description produces the chiral condensate equation.  A constructive
 mass-gap theorem would additionally require a regulator, a Hilbert-space
 limit, and spectral estimates for the gauge-invariant local algebra.
 
+\begin{conjecture}[Central Conjecture (Pure \(\mathcal N=1\) supersymmetric Yang--Mills)]
+\label{conj:pure-n1-sym-central}
+Fix \(N_c\ge2\), gauge group \(SU(N_c)\), theta angle
+\(\theta\in\mathbb R/2\pi\mathbb Z\), periodic spin structure in finite-volume
+regulators, and the simply connected line-operator lattice with adjoint
+dynamical matter.  Pure \(\mathcal N=1\) \(SU(N_c)\) Yang--Mills is conjectured
+to have the following continuum infrared structure.
+\begin{enumerate}[label=(\roman*)]
+\item A four-dimensional supersymmetric continuum gauge theory exists as a
+  regulator limit, with a local gauge-invariant superfield algebra, conserved
+  supercharges, the expected anomalous \(U(1)_R\) remnant
+  \(\mathbb Z_{2N_c}\), and renormalized center-charged line sectors.
+\item The infinite-volume theory has \(N_c\) pure supersymmetric phases
+  \(\omega_k\), \(k\in\mathbb Z/N_c\mathbb Z\), permuted by
+  \(\theta\mapsto\theta+2\pi\) and by the quotient
+  \(\mathbb Z_{2N_c}/\mathbb Z_2\).  Each selected phase satisfies cluster
+  decomposition.
+\item In every pure phase the physical gauge-invariant Hilbert space has a
+  strictly positive mass gap, no additional massless chiral coordinates, and
+  unbroken supersymmetry.
+\item The theory is confining for nonzero \(N_c\)-ality external electric probes
+  in the line-sector sense of
+  Chapter~\ref{ch:global-confinement-screening-oblique}: the electric one-form
+  center symmetry is unbroken and the corresponding renormalized string
+  tensions are positive.
+\item The discrete chiral symmetry is spontaneously broken as
+  \(\mathbb Z_{2N_c}\to\mathbb Z_2\), with a nonzero gaugino condensate
+  \begin{equation}
+    \langle S\rangle_k
+    =
+    C\,\Lambda_h^3\exp\!\left(\frac{2\pi\ii k}{N_c}\right),
+    \qquad k\in\mathbb Z/N_c\mathbb Z,
+    \label{eq:pure-sym-central-condensate-orbit}
+  \end{equation}
+  for a scheme-dependent nonzero constant \(C\).
+\item Domain-wall sectors, BPS wall tensions, confining strings, and massive
+  glueball/gluinoball supermultiplets exist as spectral data only after the
+  corresponding wall, line, or local-source Hilbert-space sector has been
+  constructed.
+\end{enumerate}
+The gap, confinement, phase purity, cluster decomposition, and nonzero
+condensate are separate dynamical claims.  The Witten index, discrete anomaly,
+semiclassical small-circle calculation, holomorphic source identity,
+Veneziano--Yankielowicz coordinate analysis, and instanton selection rules are
+evidence for this package, not individual proofs of it.
+\end{conjecture}
+
+\paragraph{Pure \(\mathcal N=1\) SYM evidence ledger.}
+The discrete anomaly proves the possible \(\mathbb Z_{2N_c}\) phase orbit but
+does not produce a condensate.  The finite-volume Witten index counts protected
+zero-energy states in a specified Hilbert-space sector but does not by itself
+select cluster vacua, prove a gap, or give a nonzero one-point function.  The
+small-circle affine-Toda calculation supplies a controlled semiclassical
+\(N_c\)-critical-point model in a compactified chamber, with a spectral
+continuation hypothesis needed before it speaks about the four-dimensional
+infinite-volume theory.  The VY/source-normalization calculation gives the
+allowed chiral root equation once a massive glueball \(F\)-term coordinate is
+assumed.  The zero-mode-saturated instanton correlator can test the
+\(N_c\)-point chiral selection rule only after regulator, determinant,
+instanton-size, collision, and clustering assumptions have been supplied.  All
+of these entries support Conjecture~\ref{conj:pure-n1-sym-central}; none
+replaces its continuum spectral and phase-purity content.
+
 \paragraph{Pure SYM discrete chiral anomaly.}
 In pure \(SU(N_c)\) supersymmetric Yang--Mills, the classical gaugino phase
 rotation
@@ -381,8 +444,10 @@ of \(\Lambda_h\).  In the standard representative of
 \]
 so the glueball critical points are isolated whenever \(S\neq0\).  The
 statement with invariant content is the existence of a nonzero chiral
-condensate with these relative phases in a scheme where the low-energy
-theory has a mass gap and isolated vacua.
+condensate with these relative phases.  Its realization in isolated gapped
+pure phases is the corresponding condensate and phase-purity part of
+Conjecture~\ref{conj:pure-n1-sym-central}; the finite-dimensional
+critical-point calculation records the chiral-coordinate branch equation.
 
 \paragraph{Condensate branches and source normalization.}
 Assume Hypothesis~\ref{hyp:pure-sym-glueball-f-term-description}, and assume
@@ -1240,8 +1305,10 @@ zero-energy state leaks through a continuum and the spin structure, global
 form, and flux sector are unchanged.  The infinite-volume limit is assumed
 to have \(N_c\) massive pure phases, related by the anomalous
 \(\mathbb Z_{2N_c}\) chiral symmetry and satisfying cluster decomposition.
-Confinement and a mass gap require the separate spectral construction
-described in Section~\ref{sec:pure-sym-protected-spectral-data}.
+These are precisely the phase-purity and cluster parts of
+Conjecture~\ref{conj:pure-n1-sym-central} when used as four-dimensional
+infrared input.  Confinement and a mass gap require the separate spectral
+construction described in Section~\ref{sec:pure-sym-protected-spectral-data}.
 \end{hypothesis}
 
 \paragraph{Pure \(SU(N_c)\) index and condensate relation.}
@@ -1279,6 +1346,11 @@ the VY/source-normalization branch analysis gives precisely
 the displayed \(N_c\)-fold orbit of \(\langle S\rangle\).  Since \(S\) has
 gaugino-phase charge \(2\), a nonzero value of \(\langle S\rangle_k\) leaves
 only the \(\alpha=\pi\) subgroup unbroken, namely \(\mathbb Z_2\).
+This paragraph is an evidence ledger for
+Conjecture~\ref{conj:pure-n1-sym-central}: it assembles the protected count,
+small-circle critical points, and chiral-source orbit, while the infinite-volume
+gap, confinement, and phase-purity claims remain part of the central
+conjecture.
 
 For a simple simply connected gauge group \(G\), the expected index is the
 dual Coxeter number \(h^\vee_G\).  The monograph does not use that general

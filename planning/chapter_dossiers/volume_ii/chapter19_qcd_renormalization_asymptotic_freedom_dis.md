@@ -90,7 +90,9 @@ The chapter must define and derive:
   running coupling;
 - the explicit status of the four-dimensional pure Yang--Mills continuum
   existence and positive mass-gap problem as an open Clay Millennium problem,
-  with spectral/confinement uses marked as nonperturbative inputs;
+  with the pure-theory continuum, vacuum, gap, confinement, and spectral
+  package anchored to `conj:pure-yang-mills-central` and with QCD
+  spectral/confinement uses marked as separate nonperturbative inputs;
 - the two-loop Banks--Zaks alternative as a perturbative infrared fixed-point
   diagnostic, with \(a=g^2/(16\pi^2)\),
   \(\beta_a=-2B_0a^2-2B_1a^3+O(a^4)\), the universal two-loop coefficient
@@ -325,9 +327,10 @@ The chapter must define and derive:
    neighborhood are separate inputs.
 9. The one-loop running coupling and dimensional transmutation do not prove
    four-dimensional continuum Yang--Mills existence, mass gap, or confinement.
-   The pure Yang--Mills existence and mass-gap problem is the Clay Millennium
-   problem; QCD spectral confinement and flux-tube statements require separate
-   nonperturbative input or a regulated/lattice context.
+   The pure Yang--Mills continuum, vacuum, mass-gap, confinement, and spectral
+   package is `conj:pure-yang-mills-central`; QCD spectral confinement and
+   flux-tube statements require separate nonperturbative input or a
+   regulated/lattice context.
 10. A rectangular Euclidean Wilson loop extracts the static potential between
    external color sources; an area law in pure Yang--Mills is a confinement
    diagnostic, while dynamical fundamental matter can break the flux tube.
@@ -1075,6 +1078,10 @@ The chapter must define and derive:
   the strong-coupling theorem in the new lattice Yang--Mills chapter and
   separated that finite-cutoff result from the continuum four-dimensional
   confinement problem.
+- 2026-06-05 issue #798 downstream-reference pass: the QCD mass-gap/status
+  remark and Wilson-loop area-law discussion now point pure-theory uses back
+  to `conj:pure-yang-mills-central`, while QCD with dynamical quarks remains a
+  separate nonperturbative spectral input.
 - 2026-05-24 issue #332 pass: added a labeled open problem for asymptotic
   completeness of physical QCD, explicitly distinguishing the hadronic
   Hilbert-space wave-operator theorem from asymptotic freedom, factorization,

@@ -1221,28 +1221,71 @@ with the relevant mass and chiral-symmetry tunings.
 
 \section{Status of the Four-Dimensional Continuum Construction}
 
-\begin{hypothesis}[Four-dimensional lattice Yang--Mills continuum limit]
-\label{hyp:lattice-yang-mills-continuum-limit}
-Let \(G=SU(N)\) and let the Wilson lattice measures
-\(\dd\mu_{\Lambda,\beta}\) be defined by
-\eqref{eq:lattice-partition-function}.  There exists a scaling trajectory
-\(\beta(a)\to\infty\) and an infinite-volume limit such that the
-gauge-invariant Schwinger functions of local and loop observables converge,
-after the required field and operator normalizations, to Schwinger functions
-satisfying the continuum Osterwalder--Schrader hypotheses.  The reconstructed
-Hilbert-space theory has a unique vacuum and a positive mass gap.
-\end{hypothesis}
+\begin{conjecture}[Central Conjecture (Four-dimensional pure Yang--Mills)]
+\label{conj:pure-yang-mills-central}
+Fix \(N\ge2\), gauge group \(SU(N)\), theta angle
+\(\theta\in\mathbb R/2\pi\mathbb Z\), and the Wilson lattice regulator
+\(\dd\mu_{\Lambda,\beta,\theta}\) with the trace convention of this volume.
+The observable category consists of gauge-invariant local Schwinger functions
+and renormalized Wilson/'t Hooft line sectors whose genuine line lattice is that
+of the simply connected global form.  The central pure-Yang--Mills conjecture
+is the following package.
+\begin{enumerate}[label=(\roman*)]
+\item There is a scaling trajectory \(\beta(a)\to\infty\).  Along it,
+  infinite-volume limits and local-operator normalizations exist, and the
+  gauge-invariant local Schwinger functions satisfy the continuum OS
+  hypotheses and reconstruct a four-dimensional local quantum theory.
+\item For each fixed \(\theta\) the reconstructed theory has a finite set of
+  translation-invariant vacuum states \(\mathcal V_\theta\).  At
+  \(\theta=0\) the expected statement is uniqueness; possible finite
+  degeneracies at special theta angles are part of the vacuum datum rather than
+  consequences of the mass-gap statement.
+\item In every selected vacuum \(\Omega\in\mathcal V_\theta\), the physical
+  gauge-invariant Hilbert space has a strictly positive spectral gap above the
+  vacuum in the local-operator sector.
+\item The zero-temperature theory is confining for nonzero \(N\)-ality
+  external electric probes: equivalently, the electric one-form center symmetry
+  is unbroken in the vacuum sector and the renormalized asymptotic string
+  tension \(\sigma_q\) is strictly positive for every nonzero
+  \(q\in\mathbb Z_N\).  For a different global form this clause must be
+  restated with that theory's genuine line lattice and one-form symmetry.
+\item The spectrum has glueball sectors created by gauge-invariant local
+  operators and flux-tube sectors created by center-charged external lines.
+  A glueball mass is an atom or isolated threshold structure in a local
+  spectral measure; a flux tube is a state in an external-line sector with
+  energy growing as \(\sigma_q L+o(L)\) at large separation.
+\end{enumerate}
+These subclaims are logically separate.  A positive mass gap in the local
+operator Hilbert space does not by itself imply the line-operator confinement
+clause, and a finite-cutoff strong-coupling area law does not establish the
+weak-coupling continuum conjecture.
+\end{conjecture}
 
-This hypothesis is the constructive content of four-dimensional pure
-Yang--Mills theory.  The finite lattice theory is rigorous; the hypothesis is
-the assertion that the rigorous finite-cutoff objects have the required
-continuum limit and spectral gap.  Renormalization-group analyses of lattice
-gauge theory, including Ba{\l}aban's multiscale program, prove substantial
-estimates toward such a construction.  Other constructive results in related
-models and dimensions give additional control of particular mechanisms.  A
-complete proof of Hypothesis~\ref{hyp:lattice-yang-mills-continuum-limit} for
-four-dimensional nonabelian Yang--Mills theory remains the Yang--Mills
-existence and mass-gap problem.
+Conjecture~\ref{conj:pure-yang-mills-central} is the constructive content of
+four-dimensional pure Yang--Mills theory as used in this monograph.  The finite
+lattice theory is rigorous; the conjecture is the assertion that those
+finite-cutoff objects have the required continuum local-QFT limit, vacuum
+structure, gap, and line-sector confinement.  Renormalization-group analyses of
+lattice gauge theory, including Ba{\l}aban's multiscale program, prove
+substantial estimates toward such a construction.  Other constructive results
+in related models and dimensions give additional control of particular
+mechanisms.  A complete proof of
+Conjecture~\ref{conj:pure-yang-mills-central} remains the Yang--Mills existence,
+mass-gap, and confinement problem.
+
+\paragraph{Pure Yang--Mills evidence ledger.}
+The evidence for Conjecture~\ref{conj:pure-yang-mills-central} is status
+stratified.  Reflection positivity of the Wilson action supplies a finite-cutoff
+Hilbert-space interpretation.  The strong-coupling character expansion proves an
+area-law regime at small \(\beta\), but this is a theorem about the wrong end of
+the lattice coupling axis for the asymptotically free continuum limit.
+Perturbative asymptotic scaling and Symanzik effective theory identify the
+candidate weak-coupling scaling trajectory and the allowed local counterterms.
+Numerical simulations of pure \(SU(2)\), \(SU(3)\), and larger-\(N\) gauge
+theories strongly support nonzero glueball masses and string tensions after
+continuum extrapolation.  None of these inputs by itself constructs the
+continuum OS-positive theory, proves the positive gap, or proves the
+renormalized line-sector area law in the continuum theory.
 
 The strong-coupling area law is a theorem inside the small-\(\beta\) lattice
 regime.  The weak-coupling continuum regime lies at \(\beta\to\infty\).  For
@@ -1260,7 +1303,7 @@ formalism developed in the following chapters are indispensable perturbative
 and cohomological tools.  Their nonperturbative identification with the
 continuum theory constructed from the lattice rests on two further inputs:
 first, the lattice continuum limit in
-Hypothesis~\ref{hyp:lattice-yang-mills-continuum-limit}; second, agreement of
+Conjecture~\ref{conj:pure-yang-mills-central}; second, agreement of
 short-distance gauge-invariant observables with the covariant perturbative
 expansion order by order after matching the renormalized coupling and local
 operator normalizations.

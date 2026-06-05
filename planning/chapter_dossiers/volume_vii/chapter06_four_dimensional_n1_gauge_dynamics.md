@@ -28,6 +28,10 @@ brane construction, or holographic interpretation is a premise of the chapter.
 - `Lambda_+`, `Lambda_-`: holomorphic scales above and below the
   `N_f=N_c+1` to `N_f=N_c` mass threshold.
 - `S`: chiral glueball coordinate.
+- `conj:pure-n1-sym-central`: central pure `N=1` `SU(N_c)` supersymmetric
+  Yang--Mills conjecture, separating continuum existence, `N_c` pure phases
+  with theta monodromy and cluster decomposition, positive gap, line-sector
+  confinement, `Z_{2N_c}->Z_2` condensate data, and domain-wall/line spectra.
 - `W_VY`: pure-SYM Veneziano-Yankielowicz glueball superpotential
   `S(log(Lambda_h^(3N_c)/S^N_c)+N_c)` in the standard finite
   normalization.
@@ -199,6 +203,14 @@ brane construction, or holographic interpretation is a premise of the chapter.
 - Derives the pure-SYM discrete chiral anomaly in the chapter's adjoint-index
   convention, showing `Z_{2N_c}` and the `Z_{2N_c}->Z_2` condensate-phase
   quotient.
+- States the central pure `N=1` `SU(N_c)` SYM conjecture explicitly:
+  regulator-level continuum existence, `N_c` pure infinite-volume phases with
+  theta monodromy and cluster decomposition, positive gap in every pure phase,
+  confinement for nonzero `N_c`-ality line sectors, nonzero gaugino-condensate
+  orbit, and domain-wall/line/glueball-gluinoball spectral sectors.  The
+  Witten index, anomaly, semiclassical compactification, VY/source identities,
+  and instanton selection rules are recorded as evidence ledgers rather than
+  proofs of this package.
 - States the pure-SYM glueball \(F\)-term assumptions explicitly:
   Wilsonian holomorphic scheme, one glueball coordinate on massive chiral
   branches, source normalization
@@ -270,8 +282,10 @@ brane construction, or holographic interpretation is a premise of the chapter.
 - Assembles the conditional pure `SU(N_c)` index and condensate ledger:
   `I_SU(Nc)=N_c` under finite-volume/continuation hypotheses, and the
   glueball `F`-term hypothesis gives the `N_c` nonzero condensate phases and
-  `Z_{2N_c}->Z_2`; the text explicitly states that the index alone does not
-  prove confinement, a mass gap, or the condensate.
+  `Z_{2N_c}->Z_2`; the text explicitly states that these inputs are evidence
+  for the central conjecture and that the index alone does not prove
+  confinement, a mass gap, phase purity, cluster decomposition, or the
+  condensate.
 - Derives the allowed ADS superpotential form from dimension and \(R\)-charge
   constraints.
 - Adds an explicit logic-of-argument paragraph for \(N=1\) SQCD: the
@@ -494,3 +508,8 @@ chiral-coordinate spaces with their assumptions and anomaly data.
   `susy_n1_sqcd_duality_checks.py`, but the dossier now records explicitly
   that these checks do not prove Seiberg duality or construct the infrared
   fixed points.
+- 2026-06-05 issue #798 pass: added the named central pure `N=1` SYM
+  conjecture and re-audited the pure-SYM chiral material so anomaly, Witten
+  index, affine-Toda, VY/source, and instanton-selection arguments remain
+  evidence ledgers, not proofs of the four-dimensional gap, confinement,
+  phase-purity, or cluster claims.

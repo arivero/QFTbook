@@ -332,3 +332,6 @@
   1PI action from a constrained false branch, lists the gauge/Nielsen and EFT
   field-range obligations, and treats finite-temperature or gravitational
   vacuum decay as separate state-and-contour problems.
+- 2026-06-05 issue #798 cross-reference pass: the hybrid-definition paragraph
+  now points the QCD lattice-continuum comparison to the separated pure
+  Yang--Mills central conjecture instead of the old continuum-limit label.

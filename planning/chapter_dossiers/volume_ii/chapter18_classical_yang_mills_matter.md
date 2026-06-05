@@ -158,10 +158,11 @@ The chapter must define and derive:
    invariant tensors on \(\mathfrak g\).
 7. A positive invariant quadratic form gives the kinetic energy sign needed
    for unitary Lorentzian gauge fields.
-8. The four-dimensional pure Yang--Mills continuum existence and positive
-   mass-gap problem is the Clay Millennium problem; the local classical action,
-   perturbative gauge-fixed expansions, and finite-cutoff lattice systems are
-   not by themselves a completed continuum quantum Yang--Mills construction.
+8. The four-dimensional pure Yang--Mills continuum existence, positive
+   mass-gap, confinement, and spectral package used downstream is isolated as
+   `conj:pure-yang-mills-central`; the local classical action, perturbative
+   gauge-fixed expansions, and finite-cutoff lattice systems are not by
+   themselves a completed continuum quantum Yang--Mills construction.
 9. In \(D=4\), the \(\theta\)-density is local and gauge invariant; as a total
    derivative it enters perturbatively only through global/topological sectors.
 10. Matter fields carry representations of \(G\), and their covariant
@@ -297,7 +298,7 @@ The chapter must define and derive:
   lattice regularizations.
 - 2026-05-24 issue #263 pass: linked the status remark to the new lattice
   Yang--Mills chapter, where the finite-cutoff compact Haar formulation and
-  continuum-limit hypothesis are developed before covariant gauge fixing.
+  central continuum conjecture are developed before covariant gauge fixing.
 - 2026-05-25 issue #471 pass: added finite-energy gauge-Higgs solitons to the
   classical Yang--Mills chapter rather than the current axiomatic Volume IV,
   because the repository's volume map has moved since the issue was opened.
@@ -345,3 +346,7 @@ The chapter must define and derive:
   LSZ versus unstable \(W/Z\) caveat, Abelian Higgs tree convention,
   electroweak \(W_LW_L\) scalar representative, and Higgs cancellation of the
   apparent \(s/v^2\) growth.
+- 2026-06-05 issue #798 downstream-reference pass: the chapter status remark
+  now points pure \(SU(N)\) mass-gap, glueball-spectrum, and confinement uses
+  to `conj:pure-yang-mills-central` rather than leaving them as a generic
+  continuum-limit assumption.
