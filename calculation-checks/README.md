@@ -1411,9 +1411,11 @@ Current checks:
   VIII cohomological-field-theory chapter, including the Cartan identity
   \(d_C^2=-u\mathcal L_v\), equivariant closure of
   \(\omega+u\mu\) for the Hamiltonian rotation model, the
-  Mathai--Quillen auxiliary Gaussian square-completion sign, rank-one
-  zero-locus orientation, and the squared normal inverse-Euler factor
-  \(\operatorname{Pf}(C)^2/\det(A)\) for a two-even/two-odd local model.
+	  Mathai--Quillen auxiliary Gaussian square-completion sign, rank-one
+	  zero-locus orientation, and the squared normal inverse-Euler factor
+	  \(\operatorname{Pf}(C)^2/\det(A)\) for a two-even/two-odd local model,
+	  plus the \(S^2\) direct-integral/fixed-point coefficient identity and the
+	  zero-normal-weight obstruction.
 - `topological_sigma_model_checks.py`: exact finite checks for the Volume
   VIII topological sigma-model chapter, including the A-model pointwise
   energy identity, \(QH^\bullet(\mathbb P^m)\) with \(H^{m+1}=Q\),

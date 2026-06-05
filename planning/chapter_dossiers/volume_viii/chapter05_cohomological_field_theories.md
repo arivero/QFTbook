@@ -20,10 +20,15 @@
   metric-response insertion that is \(Q\)-exact.
 - Proposition: \(Q\)-exact deformation independence for normalized
   expectation values.
-- Theorem: compact nondegenerate finite-dimensional localization, with the
-  action included in the datum and the inverse equivariant Euler factor
-  defined by the normal super-Gaussian \(\operatorname{Pf}(C)/\det(A)^{1/2}\)
-  after the required Berezinian degree balance.
+- Theorem: compact Cartan localization in the Atiyah--Bott--Berline--Vergne
+  form, with fixed components \(F_a\), normal bundles \(N_a\), nonzero
+  equivariant normal weights, and a genuine inverse equivariant Euler
+  denominator \(e_T(N_a)^{-1}\).
+- Lemma: local super-Gaussian normal form showing when
+  \(\operatorname{Pf}(C)/\det(A)^{1/2}\) represents that inverse Euler density,
+  and when it is only a one-loop Gaussian factor.
+- Explicit \(S^2\) fixed-point denominator example and zero-normal-weight
+  obstruction example.
 - Mathai-Quillen finite-dimensional model with auxiliary field, oscillatory
   Gaussian sign, Thom form, Euler class, and zero-locus localization.
 - Descent package:
@@ -48,8 +53,9 @@
 | \(\Gamma_\Lambda\) | integration cycle, contour, BV Lagrangian, or trace datum |
 | \(S_\Lambda\) | regulated action or weight |
 | \(V\) | odd \(Q\)-exact deformation functional |
-| \(F\) | compact fixed locus of the localization deformation |
-| \(e_{Q^2}(N_F)\) | equivariant Euler factor of the normal quadratic complex |
+| \(F_a\) | fixed components of the compact torus action |
+| \(N_a\) | normal bundle of a fixed component |
+| \(e_T(N_a)\) | genuine equivariant Euler class of the normal bundle |
 | \(E\to X\) | finite-dimensional vector bundle in the Mathai-Quillen model |
 | \(s\) | section whose zero locus is localized onto |
 | \(\chi,H\) | odd antighost and even auxiliary field in Mathai-Quillen form |
@@ -68,8 +74,10 @@
    \(Q\)-exact, including contact terms and moving representatives.
 4. \(Q\)-exact deformations do not change normalized correlators when the
    Ward identity holds for the deformed measure.
-5. Localization is a theorem in finite dimension under compactness,
-   positivity/contour, and nondegenerate normal-complex hypotheses.
+5. Localization is a theorem in finite dimension in the compact Cartan model
+   after localizing nonzero normal weights; a super-Gaussian denominator is an
+   Euler denominator only when it represents that normal equivariant Euler
+   class.
 6. Mathai-Quillen localization gives the finite-dimensional model for
    cohomological equations \(s=0\).
 7. Integrated descendants are \(Q\)-closed on closed cycles and depend only on
@@ -93,7 +101,8 @@
   finite Cartan-model algebra, Hamiltonian equivariant closure,
   Mathai-Quillen Gaussian square completion, rank-one zero-locus orientation,
   and the squared normal inverse-Euler factor in a two-even/two-odd local
-  Gaussian model.
+  Gaussian model, plus the \(S^2\) direct-integral/fixed-point coefficient
+  identity and the noninvertibility of a zero normal weight.
 
 ## Anti-Wrapper Audit
 
@@ -106,3 +115,8 @@
   \(S\) is part of the theorem datum, \(QS=0\) is a stated hypothesis, the
   fixed-locus formula follows from a displayed normal quadratic model, and the
   determinant/Pfaffian inverse-Euler factor is no longer an undefined slogan.
+- 2026-06-05 issue #811 status pass: replaced the broad superfunction
+  localization theorem with the compact Cartan localization theorem, defined
+  the fixed components, normal bundle, orientation/Euler denominator, separated
+  the local super-Gaussian lemma from the theorem-level Euler class, and added
+  positive and negative finite examples.

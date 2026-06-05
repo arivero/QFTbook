@@ -215,133 +215,200 @@ Those require positivity or contour information for the bosonic part of
 
 \section{Finite-Dimensional Localization Theorem}
 
-The following theorem is the precise finite-dimensional model used by
-cohomological path integrals.  It is intentionally stated with hypotheses
-that are checkable in finite dimension.
+The theorem used by cohomological path integrals is not the assertion that the
+zero set of the bosonic body of an arbitrary superfunction automatically
+carries an Euler denominator.  The safe finite-dimensional statement is the
+Atiyah--Bott--Berline--Vergne localization theorem in the Cartan model
+\cite{AtiyahBott1984MomentMap,BerlineVergne1982Localization}.  In that model
+the residual supermanifold over a fixed component \(F\) is \(\Pi TF\): its odd
+directions are the de Rham variables on \(F\).  The normal odd directions are
+\(\Pi N_F\), and the denominator is the equivariant Euler class of the
+\(Q^2\)-normal bundle, not a formal symbol attached to a zero set.
 
-\begin{theorem}[Compact nondegenerate localization]
+\begin{theorem}[Compact Cartan localization]
 \label{thm:compact-nondegenerate-cohomological-localization}
-Let \(\mathcal X\) be an oriented finite-dimensional supermanifold with
-compact even integration cycle \(\Gamma\), Berezinian density \(\mu\), and an
-odd vector field \(Q\).  Let \(S\in C^\infty(\mathcal X)_{\bar 0}\) be an
-even action, \(X\in C^\infty(\mathcal X)\) an insertion, and
-\(V\in C^\infty(\mathcal X)_{\bar 1}\) an odd deformation functional.
-Suppose:
-\begin{enumerate}[label=(\roman*)]
-\item \(Q^2\) generates a compact even symmetry whose invariant subalgebra is
-  used for observables;
-\item \(L_Q\mu=0\) and \(Q\) has no boundary flux through \(\partial\Gamma\);
-\item \(QS=0\), \(QX=0\), and \(S\) and \(X\) are invariant under \(Q^2\);
-\item \(V\) is invariant under \(Q^2\);
-\item the even part \(h=(QV)_{\rm bos}\) satisfies \(h\ge0\), and
-  \(F=h^{-1}(0)\subset\Gamma_{\rm red}\) is a compact smooth submanifold;
-\item in a tubular neighborhood of \(F\), the normal expansion of \(QV\)
-  has a nondegenerate quadratic normal super-Gaussian whose local inverse
-  Euler factors patch to a smooth density-valued section
-  \(e_{Q^2}(N_F)^{-1}\) on \(F\).
-\end{enumerate}
-More explicitly, the last condition means the following.  For each
-\(y\in F\), after choosing even normal coordinates \(u\in N_{\bar 0,y}\) and
-odd normal coordinates \(\eta\in N_{\bar 1,y}\), the quadratic normal part is
-\begin{equation}
-  (QV)_2(y;u,\eta)
-  =
-  \frac12 u^iA_{ij}(y)u^j
-  +
-  \frac12 \eta^\alpha C_{\alpha\beta}(y)\eta^\beta ,
-  \label{eq:cohomological-normal-quadratic-model}
-\end{equation}
-where \(A_y\) is positive definite on the chosen real normal contour and
-\(C_y\) is nondegenerate on the odd normal variables.  The leading
-Berezinian degree is assumed to be balanced: after the normal rescaling
-\(u=t^{-1/2}\xi\), \(\eta=t^{-1/2}\zeta\), the product of the even Jacobian,
-the odd Berezinian, and the degree of the normal Berezin polynomial has a
-finite \(t^0\) limit.  If this balance fails, the right large-\(t\) statement
-is a different asymptotic expansion rather than the simple fixed-locus
-formula below.  Under this balance condition, the normal Gaussian
-\begin{equation}
-  \mathcal G(y)
-  =
-  \int_{N_y}
-  \exp\!\left[-(QV)_2(y;u,\eta)\right]\,D u\,D\eta
-  =
-  (2\pi)^{\dim N_{\bar0}/2}
-  \frac{\operatorname{Pf}(C_y)}{\det(A_y)^{1/2}}
-  \label{eq:cohomological-normal-gaussian-euler-factor}
-\end{equation}
-with the chosen orientation and square-root convention is the local value of
-\(e_{Q^2}(N_F)^{-1}\).  Changes of normal coordinates act on the numerator,
-denominator, and Berezinian in the compensating way, so the patched object is
-a density on \(F\).  Then
+Let \(T\) be a compact torus acting smoothly on a compact oriented manifold
+\(M\), and let
 \[
-  I_t(X)=\int_{\Gamma}X\exp(-S-tQV)\,\mu
+  d_T=d-\iota_{\xi_M}
 \]
-is independent of \(t\ge0\), and its large-\(t\) value is
+be the Cartan differential at \(\xi\in\mathfrak t\).  Let
+\(\alpha(\xi)\in\Omega_T^\bullet(M)\) be \(d_T\)-closed and \(T\)-invariant.
+Write
+\[
+  M^T=\bigsqcup_a F_a
+\]
+for the fixed components, \(i_a:F_a\hookrightarrow M\) for the inclusions, and
+\(N_a\) for their oriented normal bundles.  Assume every \(T\)-weight on
+\(N_a\) is nonzero, so that the equivariant Euler class \(e_T(N_a)(\xi)\) is
+invertible after localizing the coefficient ring at the nonzero weights.  Then
 \begin{equation}
-  \int_F
-  \frac{X|_F\,\exp(-S|_F)}
-       {e_{Q^2}(N_F)}
-  \label{eq:cohomological-localization-fixed-locus-formula}
+  \int_M\alpha(\xi)
+  =
+  \sum_a
+  \int_{F_a}
+  \frac{i_a^*\alpha(\xi)}{e_T(N_a)(\xi)} .
+  \label{eq:cartan-localization-fixed-component-formula}
 \end{equation}
-with the orientation line and equivariant Euler class determined by the
-normal Gaussian datum \eqref{eq:cohomological-normal-quadratic-model}.
+For a nonisolated component the integral on \(F_a\) means ordinary
+integration of the top de Rham degree on \(F_a\).  If a zero-weight normal
+direction is present, \(F_a\) was not the full fixed component, or the Euler
+class is not invertible; formula
+\eqref{eq:cartan-localization-fixed-component-formula} is then not a theorem
+without first replacing the fixed locus or adding extra data.
 \end{theorem}
 
 \begin{proof}
-The \(t\)-independence is the \(Q\)-exact deformation calculation above in
-finite dimension, with \(\langle QY\rangle=0\) following from Stokes'
-theorem for the divergence-free odd vector field \(Q\).  In detail,
+Choose a \(T\)-invariant tubular neighborhood of each \(F_a\).  The normal
+bundle splits, after complexification and passage to the splitting principle,
+into weight summands whose equivariant Euler roots have the form
 \[
-  \frac{\dd I_t(X)}{\dd t}
-  =
-  -\int_\Gamma X(QV)e^{-S-tQV}\,\mu
-  =
-  -\int_\Gamma Q\!\left(VXe^{-S-tQV}\right)\mu
-  =
-  0,
+  x_j+w_j(\xi),\qquad w_j(\xi)\ne0 .
 \]
-because \(QS=0\), \(QX=0\), \(Q^2V=0\) on the invariant subalgebra, and the
-boundary flux of \(Q\) through \(\partial\Gamma\) vanishes.
-
-It remains to identify the common value by the limit \(t\to+\infty\).  Since
-\(\Gamma_{\rm red}\) is compact and \(h^{-1}(0)=F\), for every sufficiently
-small tubular neighborhood \(U\) of \(F\) there is a constant \(c_U>0\) with
-\(h\ge c_U\) on \(\Gamma_{\rm red}\setminus U\).  The even body of
-the integrand outside \(U\) is therefore bounded by
-\(\exp(-tc_U)\) times a fixed smooth density, and the odd part is a finite
-polynomial.  Hence the complement of \(U\) does not contribute to the limit.
-
-Work in one coordinate patch of the tubular neighborhood and write a point as
-\((y,u,\eta)\), with \(y\in F\), even normal coordinate \(u\), and odd normal
-coordinate \(\eta\).  Taylor expansion gives
+Thus \(e_T(N_a)(\xi)=\prod_j(x_j+w_j(\xi))\) becomes invertible in the
+localized Cartan coefficient ring.  The equivariant Thom class
+\(\tau_a\) of \(N_a\) satisfies the self-intersection identity
 \[
-  QV=(QV)_2+R_3,
+  i_a^*\,i_{a*}\beta=e_T(N_a)\,\beta .
 \]
-where \((QV)_2\) is the quadratic expression
-\eqref{eq:cohomological-normal-quadratic-model} and \(R_3\) has total normal
-degree at least three.  Put \(u=t^{-1/2}\xi\) and
-\(\eta=t^{-1/2}\zeta\).  In Berezin integration the odd change of variables
-contributes the inverse determinant of the odd scaling, while the even
-change of variables contributes the ordinary Jacobian; these are exactly the
-factors included in the super-Gaussian density
-\eqref{eq:cohomological-normal-gaussian-euler-factor}.  The remainder
-satisfies
+Consequently \(i_{a*}(i_a^*\alpha/e_T(N_a))\) has the same restriction to
+\(F_a\) as \(\alpha\).  The Borel localization lemma says that restriction
+to \(M^T\) is injective after the same coefficient localization;
+equivalently, outside the fixed set the equivariant contraction with
+\(\xi_M\) supplies a homotopy inverse for \(d_T\).  Hence
 \[
-  t\,R_3(y,t^{-1/2}\xi,t^{-1/2}\zeta)=O(t^{-1/2})
+  \alpha
+  =
+  \sum_a i_{a*}\!\left(\frac{i_a^*\alpha}{e_T(N_a)}\right)
+  +d_T\gamma
 \]
-on every bounded normal set, and the positive quadratic form \(A_y\) gives a
-uniform Gaussian majorant after shrinking the tubular neighborhood and using
-a finite cover of \(F\).  Dominated convergence therefore replaces the
-normal integral by the fiberwise Gaussian \(\mathcal G(y)\).
-
-The local Gaussian factors transform by the Berezinian of changes of normal
-coordinates, so they glue to the inverse Euler density
-\(e_{Q^2}(N_F)^{-1}\).  Summing the finite partition of unity on \(F\)
-gives \eqref{eq:cohomological-localization-fixed-locus-formula}.  The
-orientation line and the square root of \(\det A_y\) are not decoration:
-without these choices the local Gaussian factors do not define a global
-integrand on \(F\).
+in localized equivariant cohomology.  Integrating over compact \(M\) kills the
+\(d_T\gamma\) term by Stokes and gives
+\eqref{eq:cartan-localization-fixed-component-formula}.
 \end{proof}
+
+\begin{lemma}[Local super-Gaussian form of the inverse Euler factor]
+\label{lem:cohomological-normal-gaussian-euler-factor}
+Let \(F\subset M\) be one fixed component in
+Theorem~\ref{thm:compact-nondegenerate-cohomological-localization}.  Suppose a
+\(Q\)-exact deformation gives, in a \(T\)-equivariant tubular neighborhood,
+normal even coordinates \(u\in N_{F,y}\), odd normal coordinates
+\(\eta\in\Pi N_{F,y}\), and
+\begin{equation}
+  QV
+  =
+  \frac12 u^iA_{ij}(y)u^j
+  +
+  \frac12 \eta^\alpha C_{\alpha\beta}(y)\eta^\beta
+  +
+  R_3(y;u,\eta),
+  \label{eq:cohomological-normal-quadratic-model}
+\end{equation}
+where \(A_y\) is positive on the chosen real normal contour, \(C_y\) is
+skew-nondegenerate on the odd normal variables, \(R_3\) has normal degree at
+least three, and \((QV)|_F=0\).  Assume also that the insertion
+\(\mathcal I=X\exp(-S)\mu\) has a well-defined restriction
+\(\mathcal I|_F\), that all terms with positive normal degree are killed in
+the rescaled limit, and that the even normal Gaussian gives a uniform
+coefficientwise majorant for the Berezin coefficients.  Then
+\[
+  \lim_{t\to+\infty}
+  \int_{\text{normal fiber}}
+  \mathcal I\,\exp(-tQV)
+  =
+  \mathcal I|_F\,
+  (2\pi)^{\dim N_F/2}
+  \frac{\operatorname{Pf}(C_y)}{\det(A_y)^{1/2}} .
+\]
+This local factor represents \(e_T(N_F)^{-1}\) only when the quadratic normal
+complex is the Cartan normal complex of the \(T\)-action, with the declared
+orientation and square-root convention.  Otherwise it is merely a one-loop
+Gaussian density and must not be called an Euler denominator.
+\end{lemma}
+
+\begin{proof}
+Set \(u=t^{-1/2}\xi\) and \(\eta=t^{-1/2}\zeta\).  The even Jacobian gives
+\(t^{-\dim N_F/2}\), while the Berezin change of odd variables gives the
+inverse scaling power.  In the balanced normal complex these powers cancel
+against the normal Berezin degree of the leading odd polynomial.  The
+remainder satisfies
+\[
+  t\,R_3(y;t^{-1/2}\xi,t^{-1/2}\zeta)=O(t^{-1/2})
+\]
+coefficient by coefficient on bounded normal sets.  The positive form \(A_y\)
+gives a Gaussian majorant for each ordinary coefficient, so the limit can be
+taken coefficientwise before Berezin integration.  The remaining normal
+integral is
+\begin{equation}
+  (2\pi)^{\dim N_F/2}
+  \frac{\operatorname{Pf}(C_y)}{\det(A_y)^{1/2}} .
+  \label{eq:cohomological-normal-gaussian-euler-factor}
+\end{equation}
+Under changes of oriented normal coordinates, the ordinary determinant, the
+Pfaffian, and the Berezinian transform in the compensating way.  Thus the
+factor glues to a density on \(F\).  It is identified with the inverse
+equivariant Euler class precisely when \(C\) and \(A\) are the odd and even
+representatives of the equivariant normal complex in the Cartan model.
+\end{proof}
+
+\begin{example}[The \(S^2\) fixed-point denominator]
+\label{ex:cohomological-s2-fixed-point-denominator}
+Let \(S^1\) rotate \(S^2\), use coordinates \(x\in[-1,1]\) and
+\(\varphi\in\mathbb R/2\pi\mathbb Z\), and orient by
+\(\omega=d\varphi\wedge dx\).  With generator \(\partial_\varphi\), parameter
+\(\lambda\), and Hamiltonian \(H=x\), the Cartan-closed form is
+\[
+  \Omega_\lambda=\omega+\lambda H .
+\]
+Direct integration gives
+\[
+  \int_{S^2}e^{\Omega_\lambda}
+  =
+  2\pi\int_{-1}^{1}e^{\lambda x}\,dx
+  =
+  2\pi\frac{e^\lambda-e^{-\lambda}}{\lambda}.
+\]
+The two fixed points have \(H(N)=1\), \(H(S)=-1\), and tangent weights
+\(w_N=1\), \(w_S=-1\), so the fixed-point side is
+\[
+  2\pi
+  \left(
+    \frac{e^{\lambda H(N)}}{\lambda w_N}
+    +
+    \frac{e^{\lambda H(S)}}{\lambda w_S}
+  \right)
+  =
+  2\pi\frac{e^\lambda-e^{-\lambda}}{\lambda}.
+\]
+Here the denominator is the actual equivariant Euler class of the normal
+tangent line at a fixed point.
+\end{example}
+
+\begin{example}[Zero normal weight obstruction]
+\label{ex:cohomological-zero-weight-localization-failure}
+Let \(S^1\) rotate the \(S^2\) factor of \(S^2\times S^1\) and act trivially on
+the second factor.  The fixed locus is not the two points of the sphere; it is
+\[
+  (N\times S^1)\sqcup(S\times S^1).
+\]
+If one incorrectly tries to localize to \(N\times\{\theta_0\}\), the
+\(\theta\)-direction is a weight-zero normal direction.  The equivariant Euler
+class contains a zero factor and is not invertible.  Analytically, a Gaussian
+localizer has no quadratic confinement in the \(\theta\)-direction, so the
+large-\(t\) limit still integrates over the whole residual \(S^1\).  This is
+the finite-dimensional shadow of the field-theory warning: collective
+coordinates, gauge zero modes, and moduli must be integrated over, not hidden
+inside a one-loop denominator.
+\end{example}
+
+If the integration cycle has boundary or noncompact ends, the
+\(t\)-independence step acquires the corresponding boundary flux.  If the
+fixed set is noncompact, one needs either compact support, a relative cycle,
+or an independent convergence theorem.  If the insertion has normal Taylor
+terms that survive the rescaling in
+Lemma~\ref{lem:cohomological-normal-gaussian-euler-factor}, the answer is a
+stationary-phase expansion with descendant normal contractions rather than the
+single leading term \(X|_F/e_T(N_F)\).
 
 \section{Mathai--Quillen Form of a Cohomological Theory}
 

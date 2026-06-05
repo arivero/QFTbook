@@ -2,15 +2,18 @@
 """Exact finite checks for cohomological field theory algebra.
 
 The Volume VIII cohomological-field-theory chapter uses finite-dimensional
-algebra in three places:
+algebra in several places:
 
 * the Cartan differential satisfies d_C^2 = -u L_v on invariant forms;
 * the Hamiltonian S^1 combination omega + u mu is Cartan-closed when
   d mu = i_v omega;
 * the Mathai-Quillen auxiliary Gaussian has the displayed sign, and the
   rank-one zero-locus orientation is sign(ds);
-* the finite normal localization factor is Pf(C)/sqrt(det(A)), equivalently
+* the finite normal super-Gaussian factor is Pf(C)/sqrt(det(A)), equivalently
   its square is Pf(C)^2/det(A), for a two-even/two-odd diagonal model.
+* the S^2 Cartan fixed-point formula has the same coefficient expansion as
+  the direct integral, and zero normal weights are not invertible Euler
+  denominators.
 
 All checks use exact rational arithmetic.  They are convention checks, not a
 replacement for the derivations in the text.
@@ -20,6 +23,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from fractions import Fraction
+from math import factorial
 
 
 N = 2
@@ -272,12 +276,65 @@ def check_normal_euler_factor_square() -> None:
         )
 
 
+def s2_direct_coefficient(power: int) -> Fraction:
+    # Divide by the common angular factor 2*pi.  Direct integration gives
+    # int_{-1}^{1} exp(lambda x) dx, whose coefficient is
+    # int_{-1}^{1} x^power dx / power!.
+    if power % 2 == 1:
+        return Fraction(0)
+    return Fraction(2, factorial(power) * (power + 1))
+
+
+def s2_fixed_point_coefficient(power: int) -> Fraction:
+    # The fixed-point side is exp(lambda)/(lambda * 1)
+    # + exp(-lambda)/(lambda * -1) = (exp(lambda)-exp(-lambda))/lambda.
+    if power % 2 == 1:
+        return Fraction(0)
+    return Fraction(2, factorial(power + 1))
+
+
+def check_s2_cartan_localization_coefficients() -> None:
+    for power in range(14):
+        assert_equal(
+            f"S2 Cartan fixed-point coefficient lambda^{power}",
+            s2_fixed_point_coefficient(power),
+            s2_direct_coefficient(power),
+        )
+
+
+def equivariant_euler_weight_product(weights: tuple[int, ...]) -> Fraction | None:
+    product = Fraction(1)
+    for weight in weights:
+        if weight == 0:
+            return None
+        product *= weight
+    return product
+
+
+def check_zero_weight_obstruction() -> None:
+    # If a putative fixed component still has a normal direction of weight 0,
+    # the equivariant Euler denominator is not invertible.  The correct fixed
+    # locus must include that residual collective coordinate.
+    assert_equal(
+        "zero-weight Euler denominator is not invertible",
+        equivariant_euler_weight_product((1, 0)),
+        None,
+    )
+    assert_equal(
+        "after enlarging the fixed component, remaining normal weight inverts",
+        equivariant_euler_weight_product((1,)),
+        Fraction(1),
+    )
+
+
 def main() -> None:
     check_cartan_square()
     check_hamiltonian_equivariant_closure()
     check_mathai_quillen_auxiliary_gaussian_sign()
     check_rank_one_zero_orientation()
     check_normal_euler_factor_square()
+    check_s2_cartan_localization_coefficients()
+    check_zero_weight_obstruction()
     print("All cohomological field-theory algebra checks passed.")
 
 
