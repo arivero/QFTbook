@@ -719,6 +719,13 @@ Current checks:
   factorization, mostly-plus denominator conversion \(P^2+M^2=M^2-s\),
   Legendre orthogonality, partial-wave selection of a spin-\(J\) pole, and
   the scalar-QED \(P_1(\cos\theta)\) numerator check.
+- `steinmann_channel_checks.py`: finite set-theoretic and algebraic checks for
+  the Volume II analyticity chapter's Steinmann section, including
+  complement-invariant overlapping-channel definitions, compatibility by
+  disjoint/nested representatives, the causal two-cycle obstruction for all
+  overlapping sheet-orientation pairs, an acyclic compatible disjoint sheet
+  choice, and the double-spectral coefficient contrast between compatible
+  surviving density and overlapping Steinmann-forced zero.
 - `cft_fixed_point_checks.py`: exact finite checks for the opening CFT
   fixed-point chapter, including the \(-(D-1)\partial^2L\) trace of the
   scalar stress-tensor improvement, the special conformal Killing equation in

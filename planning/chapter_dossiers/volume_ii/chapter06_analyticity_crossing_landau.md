@@ -21,6 +21,11 @@
   satisfy Dyson regularity and support-pruning.
 - Records the partial-wave unitarity boundary condition on the physical
   \(s\)-channel cut before using analytic continuation away from it.
+- Adds Steinmann sequential-discontinuity constraints as a scoped causal
+  boundary-value statement, with channel-overlap definitions, sheet/order
+  conventions, an overlapping versus compatible finite example, and explicit
+  status separation between quoted theorem input and locally checked causal
+  algebra.
 - Derives the Landau equations from Feynman-parameter pinches.
 - Works out the two-particle threshold and triangle/anomalous-threshold
   examples.
@@ -39,6 +44,10 @@
 - Veltman's largest-time equation and the 't Hooft--Veltman Diagrammar
   treatment are used as theorem-boundary controls for graph-level Cutkosky
   line replacement.
+- Steinmann's original Wightman/retarded-commutator papers and the
+  Stapp/Cahill--Stapp scattering-amplitude refinements are used as source
+  traces for the quoted conditional Steinmann relation; the chapter does not
+  treat the name "Steinmann relations" as a proof certificate.
 
 ## Definitions and Symbols
 
@@ -76,6 +85,11 @@
 | \(\Delta_m^\pm(x)\) | positive/negative-frequency on-shell Wightman distributions for mass \(m\) |
 | \(G_\sigma\) | circled graph associated to a vertex circling \(\sigma\) in the largest-time identity |
 | \(C\) | set of internal lines crossed by a perturbative physical cut |
+| \(s_I\) | all-incoming channel invariant \(-(\sum_{i\in I}p_i)^2\), with channel class \([I]=\{I,I^c\}\) |
+| overlapping channels | channel classes \([I]\), \([J]\) for which \(I\cap J\), \(I\setminus J\), \(J\setminus I\), and \((I\cup J)^c\) are all nonempty |
+| compatible channels | channel classes with complementary representatives that are disjoint or nested |
+| \(\eta_I\) | sheet label specifying upper or lower boundary value in the \(s_I\) channel variable |
+| \(\operatorname{Disc}_{I;\eta}\) | ordered channel discontinuity with the remaining sheet choices fixed by \(\eta\) |
 | Landau equations | on-shell and stationary conditions for a contour pinch |
 | anomalous threshold | first-sheet singularity from a compatible positive-parameter Landau pinch |
 
@@ -99,6 +113,17 @@
   on-shell Wightman distributions, and the \(s\)-channel physical cut is the
   subsum whose mixed lines separate the external labels into the chosen
   subprocesses.
+- The Steinmann section assumes a declared boundary-value setting before the
+  vanishing statement: connected time-ordered kernels or LSZ-reduced amplitudes
+  with external pole/contact terms separated; selected channel boundary values
+  as tempered distributions; perturbative causal factorization/largest-time or
+  axiomatic Bros--Epstein--Glaser/Steinmann hypotheses; and exclusions of
+  threshold endpoints, coincident configurations, and unseparated bound-state
+  poles.
+- The chapter proves only the finite causal-order obstruction and the
+  double-Cauchy discontinuity algebra for the Steinmann discussion.  The full
+  distributional existence and vanishing theorem is quoted conditionally from
+  the Steinmann/Stapp/Cahill--Stapp framework.
 - The analytic amplitudes are exact Hilbert-space boundary values when
   spectral/locality/LSZ hypotheses are being used; Landau and
   Feynman-parameter discussions are coefficientwise perturbative graph
@@ -243,6 +268,28 @@
 - The Cutkosky theorem must contain both pieces: the Hilbert-space
   discontinuity from \(S^\dagger S=1\) and the largest-time/circling argument
   that identifies a graph cut with on-shell line replacements.
+- Steinmann definitions: for all-incoming momenta, a channel is the partition
+  \([I]=\{I,I^c\}\) with \(s_I=-(\sum_{i\in I}p_i)^2\).  Two channels overlap
+  exactly when no complementary representatives make them disjoint or nested.
+  Ordered discontinuities are boundary-value differences with the remaining
+  sheet labels held fixed; order and sheet are part of the notation.
+- Quoted Steinmann relation: under the declared boundary-value hypotheses,
+  \(\operatorname{Disc}_J\operatorname{Disc}_I F=0\) and
+  \(\operatorname{Disc}_I\operatorname{Disc}_J F=0\) for overlapping channels,
+  as distributions on the common real edge.  This is not asserted for arbitrary
+  functions called amplitudes.
+- Causal mechanism: for overlapping \(I,J\), the four nonempty sectors
+  \(X=I\cap J\), \(Y=I\setminus J\), \(Z=J\setminus I\), \(W=(I\cup J)^c\)
+  force a strict time-order two-cycle for every pair of cut orientations.  At
+  five points, \(I=\{1,2\}\), \(J=\{2,3\}\) gives the explicit cycle between
+  legs \(1\) and \(3\).  The compatible disjoint pair
+  \(I=\{1,2\}\), \(K=\{3,4\}\) admits an acyclic order
+  \(\{1,2\}\succ\{5\}\succ\{3,4\}\).
+- Double spectral comparison: a compatible pair may have a local double Cauchy
+  term whose ordered double discontinuity is
+  \((2\pi i)^2\rho_{I,K}(s_I,s_K)\); the analogous overlapping double density
+  is absent/zero under Steinmann.  This separates Cutkosky single cuts,
+  Landau candidate singular surfaces, and Steinmann sequential-cut support.
 - 2026-05-24 issue #391 pass: corrected the exact discontinuity identity to
   use \(\mathcal M_{X\alpha}\mathcal M_{X\beta}^*\), where
   \(\mathcal M_{\gamma\delta}\) denotes \(\delta\to\gamma\).  The conjugated
@@ -278,6 +325,9 @@
   fixed-\(t\) cut plane or the Jin--Martin polynomial bound.
 - No attempt to make an axiomatic foundation out of perturbative Landau
   analysis.
+- No extension of Steinmann relations to massless amplitudes, regulator
+  limits, anomalous-threshold sheets, or symbol-level/extended Steinmann
+  statements without additional hypotheses.
 
 ## Audit Notes
 
@@ -361,3 +411,12 @@
   differential step from the list of hidden assumptions; the remaining theorem
   is the genuine extension/Cauchy-data and support-pruning construction for
   the source-current kernels.
+- 2026-06-05 issue #781 pass: added the Steinmann sequential-discontinuity
+  section after Cutkosky and before crossing/edge-of-wedge.  The pass defines
+  all-incoming channel variables, overlap versus compatible channels,
+  sheet-labelled ordered discontinuities, states the vanishing only under a
+  declared boundary-value hypothesis as a quoted theorem, proves the finite
+  causal-order obstruction and double-spectral coefficient comparison, and
+  links the result to Cutkosky, Landau, and fixed-\(t\) dispersion.  The
+  companion script `calculation-checks/steinmann_channel_checks.py` checks the
+  finite channel and causal-order algebra.

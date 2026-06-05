@@ -2049,6 +2049,7 @@ belongs to another channel contribute to the corresponding channel
 discontinuity instead.
 
 \begin{theorem}[Cutkosky cut rule for a perturbative physical cut]
+\label{thm:cutkosky-cut-rule-perturbative-physical-cut}
 Consider a perturbative contribution to a connected amplitude whose
 \(s\)-channel discontinuity is produced by putting a set \(C\) of internal
 lines on shell so that the graph separates into a left subamplitude and a right
@@ -2149,6 +2150,259 @@ has discontinuity equal to \(\ii\) times the product of the two tree
 subamplitudes times \eqref{eq:two-body-phase-space-four-d}, with this symmetry
 factor when appropriate.  The square-root branch point is the same threshold
 that the Landau equations identify below.
+
+\section{Steinmann Relations and Sequential Discontinuities}
+\label{sec:steinmann-sequential-discontinuities}
+
+The preceding section computes a single channel discontinuity.  Multiparticle
+analyticity has an additional causal restriction: two discontinuities cannot be
+taken independently when the two channels overlap.  This is the content of the
+Steinmann relations.  The point is not another location of a singular surface;
+it is a restriction on which boundary values and cuts may coexist.  Since this
+restriction is sensitive to the analytic setting, the definitions and
+hypotheses are part of the statement.
+
+\begin{definition}[Channels, overlap, sheets, and ordered discontinuities]
+\label{def:steinmann-channels-overlap-and-discontinuities}
+Use all-incoming external momenta
+\[
+  p_1+\cdots+p_n=0
+\]
+and let \(N=\{1,\ldots,n\}\).  For a nontrivial subset
+\[
+  2\le |I|\le n-2
+\]
+define the channel invariant
+\begin{equation}
+  s_I
+  =
+  -\left(\sum_{i\in I}p_i\right)^2 .
+  \label{eq:steinmann-channel-invariant}
+\end{equation}
+The channel is the unordered partition \([I]=\{I,I^c\}\); momentum
+conservation gives \(s_I=s_{I^c}\).  Two channels \([I]\) and \([J]\) are
+\emph{overlapping} if, for one and hence every complementary choice of
+representatives, the four sets
+\[
+  I\cap J,\qquad I\setminus J,\qquad J\setminus I,\qquad (I\cup J)^c
+\]
+are all nonempty.  They are \emph{compatible} if complementary representatives
+can be chosen so that they are disjoint or nested.  Thus \([I]\) and \([J]\)
+overlap exactly when no complementary choice makes them compatible.  For
+example, at five points \(I=\{1,2\}\) and \(J=\{2,3\}\) overlap, whereas
+\(\{1,2\}\) and \(\{3,4\}\) are disjoint and hence compatible.
+
+Let \(\mathcal C\) be a finite set of channels whose cuts are being resolved
+locally, and suppose a holomorphic germ \(F\) has boundary values on the
+corresponding sides.  A sheet label is a map
+\[
+  \eta:\mathcal C\to\{+,-\},
+\]
+where \(+\) means the upper boundary value in the corresponding real channel
+variable and \(-\) means the lower boundary value.  For fixed remaining sheet
+choices \(\eta_{\mathcal C\setminus\{I\}}\), set
+\begin{equation}
+  F_{\eta_I,\eta_{\mathcal C\setminus\{I\}}}
+  =
+  \operatorname{bv}_{\eta_I,\eta_{\mathcal C\setminus\{I\}}}F,
+  \qquad
+  \operatorname{Disc}_{I;\eta_{\mathcal C\setminus\{I\}}}F
+  =
+  F_{+,\eta_{\mathcal C\setminus\{I\}}}
+  -
+  F_{-,\eta_{\mathcal C\setminus\{I\}}}.
+  \label{eq:steinmann-sheeted-boundary-value}
+\end{equation}
+An ordered double discontinuity is then
+\begin{equation}
+  \operatorname{Disc}_{J;\eta'}
+  \operatorname{Disc}_{I;\eta}F ,
+  \label{eq:steinmann-ordered-discontinuity}
+\end{equation}
+where the first operator is applied to the boundary-value family produced by
+the second, with the displayed remaining sheet choices.  The order and sheet
+data are part of the notation.  When the invariant variables are constrained by
+Gram relations, this definition is local in any coordinate chart where the two
+channel variables are transverse cut coordinates.
+\end{definition}
+
+\begin{hypothesis}[Steinmann boundary-value setting]
+\label{hyp:steinmann-boundary-value-setting}
+The object \(F\) is either a connected time-ordered \(n\)-point momentum-space
+kernel or an LSZ-reduced amplitude after stable external-pole residues,
+overall momentum conservation, and local contact terms have been separated.
+The selected channel boundary values exist as tempered distributions on the
+real edge under consideration.  In the perturbative reading, \(F\) is a
+renormalized coefficient of a local QFT with a causal factorization or
+largest-time formulation, and masses or an infrared regulator are sufficient to
+make the channel cuts and their boundary values well defined before the
+regulator is removed.  In the axiomatic reading, the needed retarded products
+and boundary values satisfy the Bros--Epstein--Glaser/Steinmann hypotheses
+relating Wightman functions, retarded commutators, and momentum-space analytic
+functions.  Threshold endpoints, coincident external configurations, and
+unseparated bound-state poles are excluded from the local real edge.
+\end{hypothesis}
+
+\begin{quotedtheorem}[Steinmann relation in the declared setting]
+\label{qthm:steinmann-overlapping-channel-relation}
+Under Hypothesis~\ref{hyp:steinmann-boundary-value-setting}, for overlapping
+channels \([I]\) and \([J]\) and for every sheet choice for which the displayed
+ordered boundary values exist,
+\begin{equation}
+  \operatorname{Disc}_{J;\eta'}
+  \operatorname{Disc}_{I;\eta}F
+  =
+  0,
+  \qquad
+  \operatorname{Disc}_{I;\tilde\eta'}
+  \operatorname{Disc}_{J;\tilde\eta}F
+  =
+  0
+  \label{eq:steinmann-quoted-relation}
+\end{equation}
+as distributions on the common real edge.  This is the Steinmann relation in
+the restricted form used here, quoted from the causal analytic framework of
+Steinmann and its scattering-amplitude refinements
+\cite{Steinmann1960I,Steinmann1960II,Stapp1971,CahillStapp1973,CahillStapp1975}.
+\end{quotedtheorem}
+
+The proof of the quoted theorem is not reproduced in this chapter.  What we
+can prove locally is the finite causal-order obstruction that explains why the
+relation is a causal support statement rather than a purely algebraic property
+of the Landau equations.  For overlapping channels write
+\begin{equation}
+  X=I\cap J,\qquad
+  Y=I\setminus J,\qquad
+  Z=J\setminus I,\qquad
+  W=(I\cup J)^c .
+  \label{eq:steinmann-overlap-four-sector-decomposition}
+\end{equation}
+All four sectors are nonempty.  A single cut in channel \(I\) is represented in
+the largest-time picture by a causal separation between \(I\) and \(I^c\): one
+side is later than the other, and mixed Wightman lines carry positive energy
+across the cut.  If the \(I\)-cut is oriented with \(I\) later than \(I^c\),
+then
+\[
+  X,Y \succ Z,W .
+\]
+If the \(J\)-cut is also oriented with \(J\) later than \(J^c\), then
+\[
+  X,Z \succ Y,W .
+\]
+Together these imply \(Y\succ Z\) and \(Z\succ Y\), an impossible strict
+time-order cycle.  Reversing either boundary edge only moves the cycle:
+\[
+\begin{array}{c|c}
+  \text{cut orientations} & \text{forced two-cycle}\\ \hline
+  I\succ I^c,\; J\succ J^c & Y\succ Z\succ Y\\
+  I\succ I^c,\; J^c\succ J & X\succ W\succ X\\
+  I^c\succ I,\; J\succ J^c & W\succ X\succ W\\
+  I^c\succ I,\; J^c\succ J & Z\succ Y\succ Z .
+\end{array}
+\]
+This finite calculation is the causal mechanism behind
+\eqref{eq:steinmann-quoted-relation}; it does not by itself prove the existence
+of the required analytic boundary values.
+
+At five points the forbidden example \(I=\{1,2\}\), \(J=\{2,3\}\) has
+\[
+  X=\{2\},\qquad Y=\{1\},\qquad Z=\{3\},\qquad W=\{4,5\}.
+\]
+The two upper-edge cut orientations would require legs \(1,2\) to be later
+than \(3,4,5\), and legs \(2,3\) to be later than \(1,4,5\).  In particular,
+leg \(1\) must be later than leg \(3\) and leg \(3\) later than leg \(1\).
+Thus a nonzero \(\operatorname{Disc}_{23}\operatorname{Disc}_{12}F\) would
+come from an inconsistent causal support sector.
+
+The compatible case is different.  For \(I=\{1,2\}\) and \(K=\{3,4\}\) at five
+points, one may choose the \(I\)-cut with \(\{1,2\}\) later than
+\(\{3,4,5\}\) and the \(K\)-cut with \(K^c=\{1,2,5\}\) later than \(K\).
+The combined partial order is acyclic:
+\[
+  \{1,2\}\succ\{5\}\succ\{3,4\}.
+\]
+No Steinmann theorem forces this compatible sequential discontinuity to vanish.
+
+The same distinction appears in a bare double-spectral calculation.  Suppose
+two compatible channels \(I\) and \(K\) admit, in a local product of cut
+planes, a double Cauchy representation
+\begin{equation}
+  F_{I,K}(s_I,s_K)
+  =
+  \int_{a_I}^{\infty}\!\dd\sigma
+  \int_{a_K}^{\infty}\!\dd\tau\,
+  \frac{\rho_{I,K}(\sigma,\tau)}
+       {(\sigma-s_I)(\tau-s_K)}
+  +\text{single-cut and holomorphic terms}.
+  \label{eq:steinmann-double-spectral-compatible}
+\end{equation}
+Here \(\rho_{I,K}\) is a tempered double spectral density and the boundary
+values are taken by \(s_I\to s_I\pm\ii0\),
+\(s_K\to s_K\pm\ii0\).  Since
+\[
+  \operatorname{Disc}_{x}\frac1{\sigma-x}
+  =
+  \frac1{\sigma-x-\ii0}-\frac1{\sigma-x+\ii0}
+  =
+  2\pi\ii\,\delta(\sigma-x),
+\]
+the ordered double discontinuity is
+\begin{equation}
+  \operatorname{Disc}_K\operatorname{Disc}_I F_{I,K}
+  =
+  (2\pi\ii)^2\rho_{I,K}(s_I,s_K)
+  \label{eq:steinmann-compatible-double-disc}
+\end{equation}
+in the distributional sense, and is nonzero when the double density is nonzero.
+For the overlapping pair \(I=\{1,2\}\), \(J=\{2,3\}\), the same algebraic ansatz
+would give
+\begin{equation}
+  \operatorname{Disc}_J\operatorname{Disc}_I F_{I,J}^{\mathrm{naive}}
+  =
+  (2\pi\ii)^2\rho_{I,J}^{\mathrm{naive}}(s_I,s_J).
+  \label{eq:steinmann-overlap-naive-density}
+\end{equation}
+The Steinmann relation says that such an overlapping double spectral density
+is absent, or equivalently zero on the declared edge, under
+Hypothesis~\ref{hyp:steinmann-boundary-value-setting}.  This is the calculated
+allowed-versus-forbidden comparison: compatible channels may carry genuine
+double spectral weight; overlapping channels may have single cuts in each
+variable, but not an iterated discontinuity supported in both.
+
+This also fixes the relation to the neighboring tools.  The Cutkosky rule of
+Theorem~\ref{thm:cutkosky-cut-rule-perturbative-physical-cut} computes each
+single physical cut after the relevant channel and sheet have been chosen.  It
+does not license applying independent cut replacements in two overlapping
+channels.  Landau equations, derived below, locate candidate pinch surfaces for
+a graph and a sheet; they do not by themselves decide whether the two
+sequential boundary values are causally compatible.  A Landau surface can be a
+candidate singular surface for a single channel, or for a compatible double
+pinch, while Steinmann removes the overlapping double-discontinuity sector.
+Finally, the fixed-\(t\) Cauchy formula of
+Theorem~\ref{thm:fixed-t-finite-subtraction-cauchy} in the next chapter uses
+single-variable cut distributions.  Any multiparticle Mandelstam-type
+representation with several channel variables must add the Steinmann support
+restriction before it treats all double spectral densities as independent.
+
+\begin{warning}[Status, limitations, and variants]
+\label{warn:steinmann-status-limitations-variants}
+Equation~\eqref{eq:steinmann-quoted-relation} is not a blanket theorem for an
+arbitrary function called an amplitude.  In this chapter it is a quoted
+conditional result under Hypothesis~\ref{hyp:steinmann-boundary-value-setting},
+with the finite causal-order obstruction and the double-spectral algebra proved
+locally.  Perturbative graph statements require a regulator and renormalization
+prescription compatible with causal factorization.  In massless theories,
+soft and collinear singularities can obstruct ordinary channel boundary values;
+one must specify an infrared regulator, an inclusive observable, or an
+infrared-finite remainder before applying the relation.  Anomalous thresholds
+are not exceptions to Steinmann: they are Landau-pinch candidates whose sheet
+and causal orientation still have to be checked.  Symbol-level Steinmann
+conditions for polylogarithmic amplitudes are useful shadows of the
+discontinuity statement, but they are not a proof for the full amplitude with
+rational prefactors, boundary distributions, regulator limits, and possible
+non-polylogarithmic terms.  Extended Steinmann properties seen in special
+planar theories are additional structure, not assumed here.
+\end{warning}
 
 \section{Crossing From Locality and Tube Analyticity}
 
@@ -2684,6 +2938,10 @@ subtle first-sheet singularities arise in perturbation theory. In an exact
 massive theory, the singularities of amplitudes are expected to be governed by
 the same spectral and locality principles, with internal on-shell lines
 replaced by actual stable particles or by spectral continua of the theory.
+They do not, however, supply the causal compatibility of sequential
+discontinuities.  Section~\ref{sec:steinmann-sequential-discontinuities}
+separates this Steinmann input from the Landau task of finding candidate pinch
+surfaces.
 
 Within existing axiomatic frameworks, only parts of this analytic picture are
 presently theorems.  The terminology used here is precise, but its logical
