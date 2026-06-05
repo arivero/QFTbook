@@ -1481,6 +1481,122 @@ compactification without a compensating boundary functional would not give
 the Nekrasov factor appearing in \eqref{eq:pestun-s4-localization}; it would
 define a different localized problem.
 
+\begin{controlledapproximation}[Uhlenbeck-collar boundary flux selection test]
+\label{ca:uhlenbeck-collar-boundary-flux-selection}
+Fix one pole of the \(S^4\) localization problem, instanton charge \(k\), and
+an equivariantly regular insertion \(O\).  Let \(S_\alpha\) be the Uhlenbeck
+small-instanton strata in the pole-local compactification, and choose collars
+\[
+  (0,\epsilon_0)_\rho\times L_\alpha \longrightarrow
+  \overline{\mathcal M}^{\,U}_{k,N}
+\]
+around the boundary faces of the smooth stratum.  Removing
+\(\rho<\epsilon\) gives a truncated smooth integration cycle
+\(\mathcal C_{\delta,\epsilon}^{\rm sm}\).  The finite-regulator \(Q_\delta\)
+Stokes identity has the form
+\begin{equation}
+  E_{\rm Stokes}^{\rm inst}(\delta,\epsilon;O)
+  =
+  \sum_\alpha
+  B_{\alpha,\delta}(\epsilon;O)
+  + A_{\delta,\epsilon}(O),
+  \qquad
+  B_{\alpha,\delta}(\epsilon;O)
+  =
+  \int_{\rho=\epsilon}
+  V_{\alpha,\delta}^{\rm bdry}(O),
+  \label{eq:uhlenbeck-collar-boundary-flux}
+\end{equation}
+where \(A_{\delta,\epsilon}\) records any regulated anomaly, failure of the
+local coordinate reduction, or undeclared noncompact end.  Thus the
+small-instanton question is not only which compactification has nicer fixed
+points.  It is whether the QFT regulator proves an absolute estimate on the
+boundary flux in \eqref{eq:uhlenbeck-collar-boundary-flux}, or replaces it by
+a resolved exceptional-cycle integral in the same BV pushforward.
+
+The collar asymptotics give a finite diagnostic for the proof obligation.
+Suppose that after integrating along \(L_\alpha\) the boundary density has an
+expansion
+\[
+  B_{\alpha,\delta}(\epsilon;O)
+  =
+  \sum_{\eta\in E_\alpha}
+  c_{\alpha,\eta,\delta}(O)\,\epsilon^\eta
+  +\sum_{\eta,m}
+  c_{\alpha,\eta,m,\delta}(O)\,\epsilon^\eta(\log\epsilon)^m
+  +o(1).
+\]
+Positive powers vanish and can support an honest Uhlenbeck smooth-stratum
+Stokes theorem.  The \(\eta=0\) coefficient is finite boundary data, not a
+normalization convention.  Negative powers mean that the proposed localization
+cycle has an uncancelled singular contribution.  Therefore a claim that
+``the singular instantons are resolved by Nekrasov's space'' has QFT content
+only after it supplies one of the following alternatives:
+\[
+\begin{array}{ll}
+{\rm vanishing:}
+&
+  \displaystyle
+  \lim_{\delta\to0}\lim_{\epsilon\to0}
+  \sum_\alpha |B_{\alpha,\delta}(\epsilon;O)|=0,
+\\[1.2em]
+{\rm cancellation:}
+&
+  \displaystyle
+  \lim_{\delta,\epsilon}
+  \left(
+    \sum_\alpha B_{\alpha,\delta}(\epsilon;O)
+    +B_{\rm rel,\delta}(O)
+  \right)=0
+  \quad\hbox{with an absolute bound,}
+\\[1.2em]
+{\rm resolution:}
+&
+  \displaystyle
+  Z_{k,\delta}^{\rm pole}(O)-Z_{k}^{G}(O)
+  =
+  B_{\partial U,\delta}(O)
+  +D_{\delta}(O)+L_{\delta}(O)+R_{\delta}(O).
+\end{array}
+\]
+Here \(Z_k^G(O)\) is the Gieseker/Nekrasov equivariant integral,
+\(B_{\partial U,\delta}\) is the Uhlenbeck collar flux or its resolved
+exceptional-cycle replacement, \(D_\delta\) is the determinant-line
+comparison error, \(L_\delta\) is the finite-regulator limiting error, and
+\(R_\delta\) is the pole-local coordinate-reduction residual.  A usable
+finite comparison therefore proves
+\begin{equation}
+  |Z_{k,\delta}^{\rm pole}(O)-Z_k^G(O)|
+  \le
+  B_{\rm bdry}+B_{\rm det}+B_{\rm lim}+B_{\rm red},
+  \label{eq:uhlenbeck-gieseker-selection-bound}
+\end{equation}
+with \(B_{\rm bdry}\) an absolute boundary or exceptional-cycle estimate.
+Signed cancellation of two boundary faces is insufficient unless the same
+argument controls the absolute remainder and its orientation convention.
+
+The rank-one length-two example is the minimal laboratory for this issue.
+The Uhlenbeck record over the support cycle \(2[0]\) is a single collapsed
+point, while the Gieseker resolution has the exceptional
+\(\mathbb P^1\) with two torus fixed points.  The fixed-point calculation
+\[
+  \frac1{e_T(T_{(2)}{\rm Hilb}^2)}
+  +
+  \frac1{e_T(T_{(1,1)}{\rm Hilb}^2)}
+  =
+  \frac1{2\epsilon_1^2\epsilon_2^2}
+\]
+computes the resolved equivariant integral after the resolved integration
+cycle has been selected.  It does not, by itself, prove that the original
+four-dimensional pole-local path integral has that coefficient.  What must be
+shown is that the collar flux of the collapsed Uhlenbeck double point either
+vanishes in the regulated QFT or is exactly replaced by the exceptional
+\(\mathbb P^1\) contribution with the same determinant-line orientation and
+same order of limits.  This is the finite local form of the
+BV/Uhlenbeck-boundary problem hidden behind the usual shorthand
+``insert the Nekrasov partition function''.
+\end{controlledapproximation}
+
 \begin{openproblem}[Continuum regulator theorem for Gieseker selection]
 \label{op:susy-localization-gieseker-selection-theorem}
 Construct, for four-dimensional \(\mathcal N=2\) gauge theory on \(S^4\), a

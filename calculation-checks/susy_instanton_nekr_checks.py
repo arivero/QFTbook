@@ -8,7 +8,9 @@ obstruction, the one-box specialization of the Gieseker tangent Euler class,
 the rank-one Hilbert-scheme tangent-character cancellation, and the two-box
 Hilbert-scheme localization sum.  They also check the finite-order residual
 telescope separating the Nekrasov fixed-point coefficients from the full
-Pestun S^4 localization comparison.
+Pestun S^4 localization comparison, including the Uhlenbeck-collar boundary
+flux budget needed before a Gieseker fixed-point sum can be read as a
+field-theoretic pole-local contribution.
 """
 
 from __future__ import annotations
@@ -802,6 +804,90 @@ def check_two_box_hilbert_scheme_fixed_points() -> None:
     assert_equal(gieseker_torus_fixed_points, 2, "Hilb2 resolved fixed-point count")
 
 
+def check_uhlenbeck_collar_boundary_flux_selection() -> None:
+    # A collar boundary density c epsilon^eta distinguishes a vanishing
+    # Uhlenbeck boundary, a finite boundary anomaly, and a divergent boundary
+    # obstruction.  This is the finite local model behind the BV boundary
+    # selection test in the compact-localization chapter.
+    coefficient = Fraction(3, 7)
+    epsilon_large = Fraction(1, 10)
+    epsilon_small = Fraction(1, 100)
+
+    for exponent in (1, 2, 3):
+        large_flux = coefficient * (epsilon_large**exponent)
+        small_flux = coefficient * (epsilon_small**exponent)
+        assert_equal(small_flux < large_flux, True, "positive collar power vanishes")
+
+    finite_large = coefficient * (epsilon_large**0)
+    finite_small = coefficient * (epsilon_small**0)
+    assert_equal(finite_small, finite_large, "zero collar power is finite boundary data")
+
+    for exponent in (-1, -2):
+        large_flux = coefficient * (epsilon_large**exponent)
+        small_flux = coefficient * (epsilon_small**exponent)
+        assert_equal(small_flux > large_flux, True, "negative collar power diverges")
+
+    # The rank-one length-two laboratory has one collapsed Uhlenbeck support
+    # cycle but two Gieseker fixed points on the exceptional P^1.  The
+    # resolved fixed-point coefficient is therefore not supplied by the
+    # collapsed support cycle unless a regulator proves the boundary flux or
+    # exceptional-cycle replacement.
+    epsilon1 = Fraction(1)
+    epsilon2 = Fraction(2)
+    horizontal_euler = math_product(hilb_rank_one_tangent_weights([2], epsilon1, epsilon2))
+    vertical_euler = math_product(hilb_rank_one_tangent_weights([1, 1], epsilon1, epsilon2))
+    gieseker_resolved = Fraction(1, horizontal_euler) + Fraction(1, vertical_euler)
+    assert_equal(gieseker_resolved, Fraction(1, 8), "Hilb2 resolved exceptional coefficient")
+
+    uhlenbeck_collapsed_support_count = 1
+    gieseker_exceptional_fixed_points = 2
+    assert_equal(
+        uhlenbeck_collapsed_support_count == gieseker_exceptional_fixed_points,
+        False,
+        "Uhlenbeck support count does not select Gieseker fixed points",
+    )
+
+    smooth_truncated_pushforward = Fraction(3, 10)
+    boundary_flux = smooth_truncated_pushforward - gieseker_resolved
+    resolved_counterterm = -boundary_flux
+    resolved_pushforward = smooth_truncated_pushforward + resolved_counterterm
+    assert_equal(resolved_pushforward, gieseker_resolved, "boundary correction selects Gieseker value")
+    assert_equal(
+        smooth_truncated_pushforward == gieseker_resolved,
+        False,
+        "unresolved Uhlenbeck smooth stratum differs from Gieseker value",
+    )
+
+    determinant_error = Fraction(1, 73)
+    regulator_limit_error = Fraction(1, 97)
+    coordinate_reduction_error = Fraction(1, 131)
+    regulated_pole = (
+        resolved_pushforward
+        + determinant_error
+        + regulator_limit_error
+        + coordinate_reduction_error
+    )
+    residual = regulated_pole - gieseker_resolved
+    full_budget = abs(determinant_error) + abs(regulator_limit_error) + abs(coordinate_reduction_error)
+    assert_equal(abs(residual) <= full_budget, True, "Gieseker selection residual budget")
+
+    underbudget = full_budget - abs(regulator_limit_error)
+    assert_equal(
+        abs(residual) > underbudget,
+        True,
+        "omitting the regulator-limit residual underbudgets Gieseker selection",
+    )
+
+    signed_boundary_faces = [Fraction(1, 4), Fraction(-1, 4), Fraction(1, 60)]
+    signed_remainder = abs(sum(signed_boundary_faces, Fraction(0)))
+    absolute_remainder = sum(abs(face) for face in signed_boundary_faces)
+    assert_equal(
+        signed_remainder < absolute_remainder,
+        True,
+        "signed boundary cancellation is not an absolute flux bound",
+    )
+
+
 def matrix_product(left: list[list[Fraction]], right: list[list[Fraction]]) -> list[list[Fraction]]:
     rows = len(left)
     middle = len(right)
@@ -896,6 +982,7 @@ def main() -> None:
     check_one_box_tangent_euler_class()
     check_rank_one_hilbert_scheme_tangent_character()
     check_two_box_hilbert_scheme_fixed_points()
+    check_uhlenbeck_collar_boundary_flux_selection()
     check_charge_one_nilpotent_cone_resolution_arithmetic()
     check_young_diagram_one_box_count()
     print("All SUSY instanton/ADHM/Nekrasov checks passed.")

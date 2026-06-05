@@ -71,6 +71,12 @@
   This states what would have to be proven before the Nekrasov factor can be
   claimed as a continuum field-theoretic consequence rather than a chosen
   instanton-sector definition.
+- Uhlenbeck-collar boundary flux selection test: the pole-local small
+  instanton collar is organized as a BV boundary integral
+  \(B_{\alpha,\delta}(\epsilon;O)\), with positive, zero, and negative collar
+  powers distinguished as vanishing, finite boundary data, and divergent
+  obstruction.  The test records the finite bound needed to compare a
+  regulated QFT pole contribution to a Gieseker/Nekrasov coefficient.
 - Open problem recording the missing continuum regulator theorem for
   Gieseker/Nekrasov selection in four-dimensional \(S^4\) localization.
 - Finite-order Nekrasov--Pestun comparison bound: the localized
@@ -273,7 +279,15 @@
     classical Gaussian, one-loop determinant, south-pole anti-instanton
     factor, reflection/gluing data, Cartan contour control, and instanton-tail
     estimates in the same regulator convention.
-21. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
+21. The Uhlenbeck-collar boundary flux selection test turns singular
+    instanton selection into a finite QFT regulator problem: a collar
+    boundary integral must vanish absolutely, be cancelled by a relative
+    cycle, or be replaced by a resolved exceptional-cycle contribution with
+    determinant-line and limiting residuals in the same budget.  In the
+    Hilb\(^2(\mathbb C^2)\) laboratory, the two Gieseker fixed points over
+    the single Uhlenbeck support cycle \(2[0]\) compute the resolved
+    coefficient only after that boundary-flux statement has been supplied.
+22. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
    Gaussian matrix model with the Weyl/Vandermonde factor.  The chapter now
    defines the circular-loop Gaussian coupling, derives the exact finite-\(N\)
    Laguerre-polynomial Wilson-loop formula from the Hermite kernel, inserts
@@ -284,26 +298,26 @@
    \(2I_1(\sqrt{\lambda_{\rm circ}})/\sqrt{\lambda_{\rm circ}}\), and derives
    the Bessel algebra behind the Bremsstrahlung function from the protected
    circular-loop Ward identity.
-21. The \(S^3\) \(\mathcal N=2\) partition function is attached to a full
+23. The \(S^3\) \(\mathcal N=2\) partition function is attached to a full
     globally quantized Chern-Simons-matter datum \(\mathfrak D_{S^3}\), not to
     an arbitrary scalar \(k\) for an arbitrary compact group.
-22. Parity-anomaly cancellation is imposed before the localized formula is
+24. Parity-anomaly cancellation is imposed before the localized formula is
     declared: \(\mathcal K_{\rm eff}=\mathcal K_{\rm bare}
     +\frac12\sum_\psi\epsilon_\psi\mathcal K_\psi\) must lie in the allowed
     spin or non-spin level lattice, with background contact terms included.
-23. FI terms are defined only on \(\operatorname{Hom}(G,U(1))\), equivalently
+25. FI terms are defined only on \(\operatorname{Hom}(G,U(1))\), equivalently
     on Abelian center directions, and vanish on semisimple coroots.
-24. Gauge-gauge, gauge-flavor, flavor-flavor, \(R\)-background, gravitational,
+26. Gauge-gauge, gauge-flavor, flavor-flavor, \(R\)-background, gravitational,
     framing, and mixed determinant-sector Chern-Simons/contact coordinates are
     part of the localized answer rather than disposable phases.
-25. The round-\(S^3\) determinant can be written in \(\ell\)-function or
+27. The round-\(S^3\) determinant can be written in \(\ell\)-function or
     double-sine variables; the pole hyperplanes and JK chamber are part of the
     integration-cycle datum.
-26. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
+28. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
    once the oscillatory contour is declared.
-27. The conjugate-chiral determinant identity gives
+29. The conjugate-chiral determinant identity gives
    \(1/(2\cosh\pi\sigma)\), whose integral over \(\mathbb R\) is \(1/2\).
-28. Contact terms and local curvature counterterms are QFT coordinates, not
+30. Contact terms and local curvature counterterms are QFT coordinates, not
     disposable normalizations.
 
 ## Calculation Checks
@@ -343,8 +357,8 @@
   one-instanton Nekrasov fixed-point sum used by the cross-referenced
   Seiberg-Witten chapter, plus the finite-order Nekrasov--Pestun comparison
   residual telescope and negative controls against north-pole-only,
-  determinant-omitted, south-pole-conjugation, and pole-residual-omission
-  shortcuts.
+  determinant-omitted, south-pole-conjugation, pole-residual-omission, and
+  unresolved-Uhlenbeck-boundary shortcuts.
 
 ## Source Notes
 
@@ -427,3 +441,10 @@
   Gaussian, perturbative determinant, gluing/reflection data, Cartan contour,
   and instanton-tail residuals.  This is a QFT-observable comparison layer,
   not another moduli-space fixed-point computation.
+- 2026-06-05 issue #629 pass: added the Uhlenbeck-collar boundary flux
+  selection test, making the singular-instanton problem a finite
+  BV/regulator estimate.  The new layer distinguishes vanishing, finite, and
+  divergent collar flux, requires absolute boundary or exceptional-cycle
+  bounds in the Gieseker comparison, and uses the Hilb\(^2\) laboratory to
+  reject treating a resolved fixed-point sum as a continuum QFT result by
+  itself.
