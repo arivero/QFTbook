@@ -42,6 +42,10 @@
       "risk_class": "lattice filling and anomaly constraints"
     },
     {
+      "path": "gauge_higgs_fradkin_shenker_checks.py",
+      "risk_class": "gauge-Higgs analytic corridor theorem boundary"
+    },
+    {
       "path": "kinetic_theory_checks.py",
       "risk_class": "Schwinger-Keldysh kinetic collision kernel"
     },

@@ -19,6 +19,15 @@ and topological sectors fit together.
   Else--Thorngren, and Cheng--Seiberg are used for the anomaly interpretation
   of LSM-type constraints.  The chapter treats this as a reformulation and
   matching language, not as a substitute for the finite-regulator proof.
+- `SRC-EXTERNAL-FRADKIN-SHENKER`: Osterwalder--Seiler and
+  Fradkin--Shenker are used for the uniform thermodynamic analytic-corridor
+  theorem in fixed-length gauge--Higgs models.  The chapter owns the concrete
+  finite \(\mathbb Z_2\) model, gauge-invariant observable algebra, expansion
+  variables, and diagnostic limitations; the constants, polymer convergence,
+  and infinite-volume analyticity are marked as imported theorem input.
+- `SRC-EXTERNAL-GAUGE-HIGGS-DIAGNOSTICS`: Fredenhagen--Marcu and
+  Caudy--Greensite are used for charged-state/remnant-symmetry diagnostic
+  context around the local analytic theorem.
 
 ## Notation Inventory
 
@@ -63,6 +72,14 @@ and topological sectors fit together.
   charge group `S_perp/S` when the screened subgroup is isotropic.
 - `K`, `K_perp`: condensed isotropic charge subgroup and its orthogonal
   complement.
+- `sigma_e`, `varphi_x`: \(\mathbb Z_2\) gauge--Higgs link and fixed-length
+  site variables in the Fradkin--Shenker theorem-boundary model.
+- `B_p`, `H_e`, `M_gamma`: plaquette term, Higgs hopping term, and
+  Higgs-ended open Wilson line in the gauge--Higgs model.
+- `u=tanh beta`, `v=tanh kappa`, `r=e^{-2 kappa}`: expansion variables for
+  the strong, bridge, and Higgs polymer-domain discussion.
+- `||zeta||_a`: Kotecky--Preiss style polymer norm used to state the imported
+  corridor mechanism.
 - `G_R(gamma_xy)`, `rho_R(gamma)`: open gauge-invariant transporter
   correlator and Fredenhagen--Marcu type ratio.
 - `Phi_IR`: map from microscopic topological extended operators to the
@@ -124,8 +141,14 @@ and topological sectors fit together.
   long-distance condensate hypothesis.
 - Formulates electric, magnetic, and oblique confinement as applications of
   the finite Dirac pairing.
-- States and proves the gauge-Higgs analytic-corridor proposition for local
-  gauge-invariant observables from uniform cluster expansion.
+- Replaces the conditional gauge-Higgs corridor paragraph with a concrete
+  fixed-length \(\mathbb Z_2\) gauge--Higgs model, a quoted
+  Fradkin--Shenker/Osterwalder--Seiler theorem-boundary statement, the
+  strong/bridge/Higgs polymer-domain anatomy, and the observable limitations:
+  local gauge-invariant correlators are analytically connected in the theorem
+  corridor, while extended probes, boundary sectors, Fredenhagen--Marcu ratios,
+  exact center one-form diagnostics, and continuum limits remain separately
+  declared data.
 - Defines Fredenhagen--Marcu type ratios and proves their leading exponential
   scaling under assumed open-line and closed-loop asymptotics.
 - Defines topological order/deconfined gauge theory data as an IR TQFT plus
@@ -147,6 +170,10 @@ and topological sectors fit together.
   condensate orthogonality, electric/magnetic/dyonic confinement by the
   \(\mathbb Z_N\) Dirac pairing, tropical static-energy extraction, and
   Fredenhagen--Marcu exponent bookkeeping.
+- `calculation-checks/gauge_higgs_fradkin_shenker_checks.py` verifies finite
+  gauge invariance, high-temperature parity selection, charge-one screening,
+  center-neutral negative controls, and the connected-domain bookkeeping behind
+  the Fradkin--Shenker/Osterwalder--Seiler theorem-boundary discussion.
 - `calculation-checks/hall_flux_curvature_checks.py` verifies the finite
   flux-torus Hall conventions: projector curvature equals the Kubo resolvent
   formula for a two-level isolated band, and the standard two-band lattice
@@ -201,3 +228,8 @@ screening quotient, condensate subgroup, and topological sector.
   momentum-shift derivation, theorem-boundary statement, spin-\(1/2\) and
   fractional-filling examples, anomaly interpretation boundary, cross-volume
   links, and `lsmoh_flux_anomaly_checks.py`.
+- 2026-06-05 issue #776 Fradkin--Shenker pass: replaced the assumed common
+  gauge--Higgs corridor with a concrete fixed-length \(\mathbb Z_2\) model,
+  theorem-boundary quotation, polymer-domain mechanism map, representation and
+  observable limitations, primary references, and
+  `gauge_higgs_fradkin_shenker_checks.py`.

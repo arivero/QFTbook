@@ -1553,6 +1553,13 @@ Current checks:
   orthogonality in \(\mathbb Z_N^{\rm e}\oplus\mathbb Z_N^{\rm m}\), the finite
   Dirac-pairing confinement criterion, tropical spectral extraction of static
   potentials, and exponent bookkeeping for Fredenhagen--Marcu type ratios.
+- `gauge_higgs_fradkin_shenker_checks.py`: finite bookkeeping checks for the
+  Fradkin--Shenker/Osterwalder--Seiler gauge--Higgs theorem-boundary section,
+  including exact \(\mathbb Z_2\) gauge invariance of plaquettes, hopping terms,
+  and Higgs-ended open Wilson lines, high-temperature parity selection in the
+  finite spin sum, fundamental-versus-center-neutral screening and one-form
+  symmetry controls, and a toy connected-domain check for strong, bridge, and
+  Higgs polymer regions.
 - `hall_flux_curvature_checks.py`: finite checks for the many-body
   flux-torus Hall-response section, including the equality between projector
   curvature and the finite Kubo resolvent formula, plus the Chern-number

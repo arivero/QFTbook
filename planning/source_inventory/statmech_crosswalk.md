@@ -130,7 +130,12 @@ QFT action: the QFT monograph already has much of this substance, but the
 statmech chapter suggests a useful audit: every confinement/deconfinement or
 Higgs/confinement phase statement should name the finite-regulator observable,
 the limit order, and whether it is a theorem, a lattice diagnostic, or a
-physical hypothesis.
+physical hypothesis.  The Fradkin--Shenker/Osterwalder--Seiler
+gauge--Higgs analytic-corridor theorem is the model case: its local
+gauge-invariant thermodynamic analyticity, polymer-domain constants, and
+representation hypotheses must stay distinct from heavy-probe diagnostics,
+exact one-form symmetry diagnostics, topological sectors, and continuum-limit
+claims.
 
 ### Topological Phases As Finite Locality Laboratories
 
