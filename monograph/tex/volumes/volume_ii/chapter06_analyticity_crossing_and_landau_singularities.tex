@@ -3048,6 +3048,95 @@ system are constrained by the Landau loci and the chosen boundary data
 Tkachov1981AnalyticalCalculability,Kotikov1991DifferentialEquations,
 GehrmannRemiddi2000DifferentialEquations}.
 
+\begin{controlledapproximation}[Equal-mass bubble threshold family]
+\label{ca:equal-mass-bubble-threshold-family}
+The first physical threshold family with a lower master already occurs in the
+equal-mass two-point function.  After the ultraviolet local constant and the
+equal-mass tadpole normalization have been separated, the nonlocal finite
+part of the Euclidean bubble may be written in the dimensionless variable
+\[
+  z=\frac{Q^2}{4m^2}>0
+\]
+as
+\begin{equation}
+  F_m(z)
+  =
+  \int_0^1
+  \log\!\left(1+4z\,x(1-x)\right)\,\dd x .
+  \label{eq:equal-mass-bubble-finite-part}
+\end{equation}
+With \(x=(1+t)/2\), this integral is
+\begin{equation}
+  F_m(z)
+  =
+  -2
+  +2\sqrt{\frac{1+z}{z}}\,
+    \operatorname{artanh}\sqrt{\frac{z}{1+z}},
+  \label{eq:equal-mass-bubble-euclidean-solution}
+\end{equation}
+where the branch is fixed by \(F_m(0)=0\).  Equivalently,
+\begin{equation}
+  F_m(z)
+  =
+  \sum_{n\ge1}
+  (-1)^{n+1}
+  \frac{4^n}{n}
+  \frac{(n!)^2}{(2n+1)!}\,z^n
+  =
+  \frac23z-\frac4{15}z^2+\frac{16}{105}z^3+\cdots .
+  \label{eq:equal-mass-bubble-small-z-series}
+\end{equation}
+
+The differential equation is not a homogeneous one-master equation.  If
+\(T_m=1\) denotes the normalized lower tadpole master carried by the same
+renormalization convention, then
+\begin{equation}
+  \frac{\dd}{\dd z}
+  \begin{pmatrix}T_m\\ F_m\end{pmatrix}
+  =
+  \begin{pmatrix}
+    0&0\\[2pt]
+    (1+z)^{-1}&-\bigl(2z(1+z)\bigr)^{-1}
+  \end{pmatrix}
+  \begin{pmatrix}T_m\\ F_m\end{pmatrix},
+  \label{eq:equal-mass-bubble-master-system}
+\end{equation}
+or, in scalar form,
+\begin{equation}
+  2z(1+z)\frac{\dd F_m}{\dd z}+F_m=2zT_m .
+  \label{eq:equal-mass-bubble-inhomogeneous-equation}
+\end{equation}
+The right side is the lower-sector datum.  Dropping it gives the wrong
+small-\(z\) coefficient and confuses equality on the parent two-particle cut
+with equality after the sector reduction and boundary normalization.
+
+The Landau threshold is the singular point \(z=-1\).  In the Feynman-parameter
+denominator \(1+4z\,x(1-x)\), the two roots coalesce at
+\(x=1/2\) when \(z=-1\).  For the physical timelike continuation
+\[
+  Q^2\mapsto -s-\ii0,\qquad
+  r=\frac{s}{4m^2}>1,\qquad
+  \beta=\sqrt{1-\frac1r},
+\]
+the logarithm in
+\eqref{eq:equal-mass-bubble-finite-part} crosses the negative real axis on
+the interval
+\[
+  x\in\left(\frac{1-\beta}{2},\frac{1+\beta}{2}\right).
+\]
+Hence this branch has
+\begin{equation}
+  \operatorname{Im}F_m(-r-\ii0)=-\pi\beta .
+  \label{eq:equal-mass-bubble-threshold-imaginary-part}
+\end{equation}
+This is the same two-particle phase-space square root that the Cutkosky rule
+and the Landau equations see.  The master system therefore carries three
+pieces of physical data: the lower tadpole master, the Euclidean boundary
+constant, and the threshold branch.  A parent-cut-only reconstruction sees
+the square-root discontinuity but does not by itself fix the lower-sector
+normalization or the physical sheet.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Two-master threshold mixing and boundary data]
 \label{ca:two-master-threshold-mixing}
 The one-master bubble can make the evaluation step look scalar, but physical

@@ -2914,8 +2914,10 @@ Current checks:
   master with its differential
   equations, branch prescription, and one-cut-only negative control, the
   bubble IBP reduction, bubble numerator sector projection with the
-  parent-cut/lower-sector negative control, and the bubble master
-  differential-equation branch ledger, the two-master
+  parent-cut/lower-sector negative control, the bubble master
+  differential-equation branch ledger, the equal-mass bubble threshold family
+  with its lower-tadpole inhomogeneity, Landau double-root check, and
+  timelike-branch imaginary-part coefficient, the two-master
   threshold-mixing/monodromy and regular-boundary negative controls, the
   two-letter master-transport check with noncommuting residues, branch/path
   and cut-only boundary negative controls, plus the

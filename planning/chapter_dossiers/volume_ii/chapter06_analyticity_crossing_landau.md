@@ -35,7 +35,8 @@
   partial-amplitude template, a four-point color--kinematics/double-copy
   gateway with generalized-gauge negative controls, a solved finite two-scale
   massless box master with branch data, the bubble
-  IBP/differential equation master calculation, and a
+  IBP/differential equation master calculation, an equal-mass bubble threshold
+  family with lower tadpole master and physical branch data, and a
   two-stage master-integral layer: first a local two-master threshold block,
   then a two-letter transport audit exposing connection data, Euclidean
   boundary constants, branch/path prescriptions, lower sectors, and the
@@ -127,6 +128,7 @@
 | \(\mathcal P_n\) | local subtraction polynomial or scheme-dependent counterterm |
 | \(B(Q^2)\), \(\widehat B(x)\) | Euclidean bubble master and its four-dimensional cut-normalized physical continuation |
 | \(I_{a,b}(Q^2)\) | Euclidean one-loop bubble integral family used for IBP reduction |
+| \(z\), \(F_m(z)\), \(T_m\) | equal-mass bubble threshold variable \(Q^2/(4m^2)\), finite nonlocal bubble part, and normalized lower tadpole master |
 | \(\vec M\), \(A_T\), \(y_\gamma\) | local two-master threshold vector, nilpotent threshold residue, and sheet/path-labelled threshold coordinate in the multi-master differential-system model |
 | \(\vec J\), \(A_0,A_1\), \(L_0^\gamma,L_1^\gamma\) | two-letter master-transport vector, residue matrices, and path-labelled logarithmic transports in the finite master-system audit |
 | \(\Omega\), \(W_\alpha\), \(\mathcal U_\gamma\) | reduced master-integral connection, Landau-letter functions, and path-ordered transport from a Euclidean boundary point |
@@ -796,6 +798,18 @@
   carry scale or boundary data.  The companion script checks the exact
   numerator projection, the parent-cut coefficient, vector
   Passarino--Veltman reduction, and the lower-sector negative control.
+- 2026-06-05 issue #769 equal-mass threshold-family pass: added
+  `ca:equal-mass-bubble-threshold-family` between the massless bubble master
+  equation and the abstract two-master threshold block.  The pass turns the
+  master-equation discussion into a physical threshold example: the finite
+  equal-mass bubble part \(F_m(z)\) solves
+  \(2z(1+z)F_m'(z)+F_m=2zT_m\), so the lower tadpole master cannot be dropped
+  without changing the small-momentum expansion.  It records the Landau double
+  root at \(z=-1\), the Euclidean boundary \(F_m(0)=0\), and the timelike
+  branch \(\operatorname{Im}F_m(-r-\ii0)=-\pi\sqrt{1-1/r}\).  The companion
+  script checks the exact series coefficients, inhomogeneous master equation,
+  homogeneous-shortcut failure, Landau stationary denominator, and branch
+  interval.
 - 2026-06-05 issue #769 triple-cut projection pass: added
   `ca:triple-cut-triangle-projection` near the opening one-loop
   reconstruction bridge.  The pass makes the triangle step explicit:

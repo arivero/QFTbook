@@ -6,7 +6,8 @@ Cutkosky discontinuities to generalized cuts, scalar-integral reconstruction,
 IBP reduction, and master-integral differential equations.  This script
 checks the exact algebraic ledger behind the one-loop reconstruction datum,
 the worked massless phi^4 example, the finite two-scale box master, and the
-one-loop bubble family, including numerator sector projection, then adds
+one-loop bubble family, including numerator sector projection and the
+equal-mass threshold family with its lower tadpole master and branch, then adds
 finite helicity, color, state-sum, and regulator bookkeeping for the
 Yang-Mills MHV/all-plus control examples, including the planar N=4 MHV
 quadruple-cut reconstruction, the five-gluon all-plus rational template, and
@@ -25,7 +26,8 @@ Target claims: the generalized-unitarity section of Volume II Chapter 6,
 especially the phi^4 cut reconstruction, the negative controls for incomplete
 cut sets and four-dimensional blind spots, the bubble IBP identity, and the
 bubble numerator-reduction sector projection and bubble master differential
-equation, plus the finite two-scale massless box master, the gauge-theory MHV
+equation, the equal-mass bubble threshold family, plus the finite two-scale
+massless box master, the gauge-theory MHV
 box and all-plus rational-term comparison, the planar N=4 MHV quadruple-cut
 state-sum ledger, the local two-master
 threshold-mixing datum in a Fuchsian differential system, the two-letter
@@ -49,6 +51,8 @@ local/rational terms invisible to four-dimensional cuts, and exact rational
 checks of the one-loop bubble IBP coefficients at several regulator values;
 exact rational projection of a bubble numerator into parent and lower sectors,
 including the parent-cut coefficient and vector Passarino-Veltman reduction;
+exact small-momentum series checks for the equal-mass bubble threshold master,
+including its lower-tadpole inhomogeneity and timelike branch interval;
 spinor-bracket exponent ledgers for little-group weights and dimensions; and
 a finite four-gluon helicity enumeration for all-plus two-particle cuts;
 finite topology-signature checks for maximal versus two-particle cuts in the
@@ -92,6 +96,8 @@ omitted rational finite
 remainders, one-cut-only finite-box deformations, branch-label omission,
 diagonal one-master threshold shortcuts, cut-only boundary reconstruction,
 parent-cut-only sector projection when lower sectors are not scaleless,
+homogeneous one-master shortcuts for the equal-mass bubble threshold family,
+Euclidean branch reuse above the massive two-particle threshold,
 branch/path omission in a two-letter master transport, virtual-only
 observable assembly, and untransported finite IR-scheme shifts.
 Scope boundary: a pass checks the finite reconstruction and reduction
@@ -1268,6 +1274,79 @@ def check_bubble_numerator_sector_projection() -> None:
     )
 
 
+def check_equal_mass_bubble_threshold_family() -> None:
+    # F_m(z) = int_0^1 log(1 + 4 z x(1-x)) dx has exact coefficients
+    # (-1)^(n+1) 4^n/n * (n!)^2/(2n+1)! near z=0.
+    max_order = 7
+    coefficients = {
+        n: (
+            Fraction((-1) ** (n + 1) * (4 ** n), n)
+            * Fraction(factorial(n) * factorial(n), factorial(2 * n + 1))
+        )
+        for n in range(1, max_order + 1)
+    }
+    assert_equal("equal-mass bubble finite part has zero boundary", coefficients.get(0), None)
+    assert_equal(
+        "equal-mass bubble small-z coefficients",
+        [coefficients[n] for n in range(1, 4)],
+        [Fraction(2, 3), Fraction(-4, 15), Fraction(16, 105)],
+    )
+
+    # The master equation is 2 z (1+z) F'(z) + F(z) = 2 z T_m with T_m=1.
+    coefficients_with_zero = {0: Fraction(0), **coefficients}
+    for power in range(1, max_order + 1):
+        lhs_coefficient = (
+            2 * power * coefficients_with_zero[power]
+            + 2 * (power - 1) * coefficients_with_zero[power - 1]
+            + coefficients_with_zero[power]
+        )
+        rhs_coefficient = Fraction(2) if power == 1 else Fraction(0)
+        assert_equal(
+            f"equal-mass bubble inhomogeneous DE coefficient z^{power}",
+            lhs_coefficient,
+            rhs_coefficient,
+        )
+
+    homogeneous_shortcut_residual = (
+        2 * coefficients_with_zero[1] + coefficients_with_zero[1]
+    )
+    assert_equal(
+        "equal-mass bubble lower-tadpole inhomogeneity",
+        homogeneous_shortcut_residual,
+        Fraction(2),
+    )
+    assert_true(
+        "homogeneous one-master shortcut misses threshold family",
+        homogeneous_shortcut_residual != 0,
+    )
+
+    z_threshold = Fraction(-1)
+    x_stationary = Fraction(1, 2)
+    denominator = 1 + 4 * z_threshold * x_stationary * (1 - x_stationary)
+    derivative = 4 * z_threshold * (1 - 2 * x_stationary)
+    assert_equal("equal-mass bubble Landau denominator", denominator, Fraction(0))
+    assert_equal("equal-mass bubble Landau stationary point", derivative, Fraction(0))
+
+    beta = Fraction(3, 5)
+    r = 1 / (1 - beta * beta)
+    x_minus = (1 - beta) / 2
+    x_plus = (1 + beta) / 2
+    assert_equal("equal-mass bubble branch sample r", r, Fraction(25, 16))
+    assert_equal("massive threshold negative interval length", x_plus - x_minus, beta)
+    midpoint_denominator = 1 - 4 * r * x_stationary * (1 - x_stationary)
+    assert_true("timelike branch crosses logarithm cut", midpoint_denominator < 0)
+    imaginary_part_in_units_of_pi = -(x_plus - x_minus)
+    assert_equal(
+        "equal-mass bubble imaginary part coefficient",
+        imaginary_part_in_units_of_pi,
+        -beta,
+    )
+    assert_true(
+        "Euclidean branch reuse misses threshold imaginary part",
+        Fraction(0) != imaginary_part_in_units_of_pi,
+    )
+
+
 def check_branch_and_landau_ledger() -> None:
     # In the expansion
     #   Gamma(eps)[exp(i pi eps)-exp(-i pi eps)]/(16 pi^2),
@@ -1613,6 +1692,7 @@ def main() -> None:
     check_finite_two_scale_box_master()
     check_bubble_ibp_identity()
     check_bubble_numerator_sector_projection()
+    check_equal_mass_bubble_threshold_family()
     check_branch_and_landau_ledger()
     check_two_master_threshold_mixing()
     check_two_letter_master_transport()
