@@ -1582,7 +1582,8 @@ and compensate finite representative changes.
 This datum is the Wilsonian form of the operational EFT viewpoint: the local
 operators allowed by the symmetries must be paired with a power counting,
 matching or coefficient input, and an observable range
-\cite{Weinberg1979PhenomenologicalLagrangians,Georgi1993EffectiveFieldTheory}.
+\cite{Weinberg1979PhenomenologicalLagrangians,Georgi1993EffectiveFieldTheory,
+AdamsEtAl2006IRObstruction}.
 This definition separates several claims that are often conflated.
 Top-down matching supplies coefficients from a higher-scale model, but the
 low-energy EFT prediction is still the statement
@@ -1657,6 +1658,256 @@ source and observable transformation.  Off-shell Green functions, boundary
 terms, and the chosen list of physical input quantities change unless they
 are carried through the same map.  Wilson coefficients are basis coordinates;
 matched observables are the basis-independent objects.
+
+\section{Conditional Positivity Bounds for EFT Amplitudes}
+\label{sec:eft-conditional-positivity-bounds}
+
+Positivity bounds are most useful when they are attached to a concrete
+low-energy scattering prediction.  They are not a new foundation for EFT and
+not evidence, by themselves, that a UV completion exists.  The EFT prediction
+datum of Definition~\ref{def:eft-prediction-datum} first chooses the observable:
+here an on-shell forward \(2\to2\) amplitude of an identical stable scalar of
+mass \(m\), with a specified infrared prescription and a low-energy expansion
+domain.  Only after that datum is fixed do analyticity, unitarity, and crossing
+become extra assumptions that can restrict the observable amplitude coefficient.
+
+\begin{hypothesis}[Forward scalar positivity ledger]
+\label{hyp:forward-scalar-positivity-ledger}
+The following assumptions are part of the claim, not background decoration.
+\begin{enumerate}
+  \item The scattering theory is Lorentz invariant, unitary, and crossing
+  symmetric for the external scalar species, or comes with a stated
+  macrocausal substitute strong enough to give the same forward analyticity and
+  discontinuity identities.
+  \item The external particle is stable, isolated by a mass gap, and has an LSZ
+  pole with positive residue.  The forward amplitude
+  \(\mathcal M(s,t)\) is the connected amputated on-shell amplitude in the
+  normalization of Chapter~\ref{ch:volume-ii-07}.
+  \item At \(t=0\), all first-sheet stable-particle poles and any known
+  long-distance singular terms have been subtracted explicitly.  The resulting
+  amplitude is denoted
+  \(\mathcal M_{\rm sub}\).  In particular, a massless \(t\)-channel pole,
+  Coulomb phase, graviton pole, or unresolved soft/collinear singularity is not
+  silently included in the forward Taylor coefficient.
+  \item With
+  \[
+    \nu=s-2m^2,
+    \qquad
+    u=4m^2-s=2m^2-\nu
+    \quad (t=0),
+  \]
+  \(\mathcal M_{\rm sub}(\nu)\) is first-sheet analytic in the complex
+  \(\nu\)-plane cut along
+  \((-\infty,-\nu_{\rm th}]\cup[\nu_{\rm th},\infty)\), after the explicit pole
+  subtractions.  For the two-particle threshold of the same scalar,
+  \(\nu_{\rm th}=2m^2\); if lighter stable channels are present, the nearest
+  retained cut and the subtracted pole list must be stated instead.
+  \item Real analyticity holds on the cut edges, and identical-scalar crossing
+  gives
+  \[
+    \mathcal M_{\rm sub}(\nu)=\mathcal M_{\rm sub}(-\nu).
+  \]
+  \item A polynomial bound strong enough for the twice-subtracted forward
+  contour is available.  Equivalently, the large-circle term in the Cauchy
+  representation below either vanishes or is retained as an explicit
+  \(C_\infty\) contribution.
+  \item The absorptive part on the physical cut is nonnegative by the optical
+  theorem:
+  \[
+    \operatorname{Im}\mathcal M(s+\ii0,0)
+    =
+    \sqrt{s(s-4m^2)}\,\sigma_{\rm tot}(s)
+    \ge0 ,
+    \qquad s\ge4m^2 ,
+  \]
+  after the same pole and infrared subtractions have been accounted for.  The
+  equality is the forward normalization derived in
+  Chapter~\ref{ch:volume-ii-07}.
+\end{enumerate}
+\end{hypothesis}
+
+Let \(F(\nu)=\mathcal M_{\rm sub}(\nu)\).  For a large radius \(R\), apply
+Cauchy's theorem to
+\[
+  \frac{F(\zeta)}{\zeta^2(\zeta-\nu)}
+\]
+on the first sheet, with the point \(\nu\) and the subtraction point
+\(\zeta=0\) inside the contour and the two cuts excluded.  The finite-\(R\)
+formula has the form
+\begin{equation}
+\begin{aligned}
+  F(\nu)
+  &=
+  c_0+c_1\nu
+  +
+  \frac{\nu^2}{\pi}
+  \int_{\nu_{\rm th}}^R
+  \dd\nu'\,
+  \frac{\operatorname{Im}F(\nu'+\ii0)}
+       {(\nu')^2(\nu'-\nu)}
+\\
+  &\quad
+  +
+  \frac{\nu^2}{\pi}
+  \int_{\nu_{\rm th}}^R
+  \dd\nu'\,
+  \frac{\operatorname{Im}F_u(\nu'+\ii0)}
+       {(\nu')^2(\nu'+\nu)}
+  +
+  C_R^{[2]}(\nu).
+\end{aligned}
+\label{eq:forward-twice-subtracted-both-cuts}
+\end{equation}
+Here \(c_0=F(0)\) and \(c_1=F'(0)\) are subtraction constants,
+\(F_u\) is the crossed-channel boundary value, and \(C_R^{[2]}\) is the
+large-circle contribution.  If stable poles had not been subtracted, the right
+side would also contain their Cauchy residues, exactly as in the fixed-\(t\)
+dispersion relation of Chapter~\ref{ch:volume-ii-07}; the present notation puts
+those residues into the known pole term removed from \(F\).
+
+For identical scalar scattering, crossing gives \(F_u=F\) and \(c_1=0\).  Taking
+\(R\to\infty\) when the contour term has a limit,
+\begin{equation}
+  F(\nu)
+  =
+  F(0)
+  +
+  \frac{2\nu^2}{\pi}
+  \int_{\nu_{\rm th}}^\infty
+  \dd\nu'\,
+  \frac{\operatorname{Im}F(\nu'+\ii0)}
+       {\nu'\bigl((\nu')^2-\nu^2\bigr)}
+  +
+  C_\infty^{[2]}(\nu).
+\label{eq:forward-crossing-even-dispersion}
+\end{equation}
+Equivalently, extracting the coefficient of the crossing-symmetric Taylor
+expansion at \(\nu=0\),
+\begin{equation}
+  a_2
+  :=
+  \frac12\left.
+  \frac{\partial^2 F}{\partial\nu^2}
+  \right|_{\nu=0}
+  =
+  \frac{2}{\pi}
+  \int_{\nu_{\rm th}}^\infty
+  \frac{\dd\nu'}{(\nu')^3}\,
+  \operatorname{Im}F(\nu'+\ii0)
+  +
+  \frac12\left.
+  \frac{\partial^2 C_\infty^{[2]}}{\partial\nu^2}
+  \right|_{\nu=0}.
+\label{eq:forward-positivity-a2-sum-rule}
+\end{equation}
+Under the boundedness assumption that removes \(C_\infty^{[2]}\), the optical
+theorem in Hypothesis~\ref{hyp:forward-scalar-positivity-ledger} gives
+\begin{equation}
+  a_2
+  =
+  \frac{2}{\pi}
+  \int_{\nu_{\rm th}}^\infty
+  \frac{\dd\nu'}{(\nu')^3}\,
+  \operatorname{Im}\mathcal M_{\rm sub}(\nu'+\ii0,0)
+  \ge0 .
+\label{eq:forward-scalar-positivity-bound}
+\end{equation}
+The inequality is strict only if the subtracted amplitude has nonzero positive
+spectral weight in the relevant channel.  A free or specially decoupled sector
+can saturate it.
+
+The EFT side must be matched to the same observable coefficient.  Write the
+pole-subtracted forward prediction through the first four-derivative scalar
+amplitude coordinate as
+\begin{equation}
+  \mathcal M_{\rm sub,EFT}^{[4]}(\nu,0)
+  =
+  A_0
+  +
+  \frac{\kappa_{\rm amp}}{\Lambda^4}\,\nu^2
+  +
+  O(\nu^4/\Lambda^8)
+\label{eq:eft-forward-amplitude-coordinate}
+\end{equation}
+inside the declared low-energy domain.  The positivity inference is the
+conditional statement
+\begin{equation}
+  \frac{\kappa_{\rm amp}}{\Lambda^4}
+  =
+  \frac12\left.
+  \partial_\nu^2\mathcal M_{\rm sub,EFT}(\nu,0)
+  \right|_{\nu=0}
+  \ge0 ,
+\label{eq:eft-forward-kappa-positivity}
+\end{equation}
+up to the named EFT remainder and the named high-energy contour status.  The
+coefficient \(\kappa_{\rm amp}\) is an amplitude coordinate, not an arbitrary
+Wilson coefficient.  If a Lagrangian basis contains
+\[
+  \Delta\mathcal L
+  =
+  \frac{c_4}{\Lambda^4}O_4
+  +
+  \sum_A \frac{r_A}{\Lambda^4}E_A ,
+\]
+where \(E_A\) are equations-of-motion, source-exact, or field-redefinition
+representatives that vanish for the chosen on-shell observable only after the
+source and observable maps have been carried along, then
+\[
+  \kappa_{\rm amp}
+  =
+  \mathcal P_{\rm fwd}
+  \left(c_4O_4+\sum_A r_AE_A\right),
+  \qquad
+  \mathcal P_{\rm fwd}(E_A)=0
+\]
+for this observable projection.  Field redefinitions change \(c_4\) and
+\(r_A\), and may move strength among derivative, mass, source, and Jacobian
+coordinates, but they do not change \(\kappa_{\rm amp}\).  Thus a sign bound on
+a basis coefficient is meaningful only after the map from that basis to the
+on-shell forward amplitude coefficient has been specified.
+
+\begin{remark}[Failure modes of the naive bound]
+\label{rem:eft-positivity-failure-modes}
+Each missing entry in
+Hypothesis~\ref{hyp:forward-scalar-positivity-ledger} has a physical failure
+mode.
+\begin{enumerate}
+  \item A massless \(t\)-channel exchange, photon or graviton pole, Coulomb
+  phase, or unresolved soft/collinear logarithm destroys the forward Taylor
+  coefficient unless an infrared-regulated or inclusive observable and explicit
+  subtraction prescription replace the naive amplitude.
+  \item An unstable external particle does not supply the isolated positive LSZ
+  pole used in the optical-theorem normalization; a resonance amplitude can be a
+  useful EFT object without being the object bounded by
+  \eqref{eq:forward-scalar-positivity-bound}.
+  \item If the high-energy contour term does not vanish, its second derivative
+  shifts \(a_2\).  Positive absorptive weight on the cut then constrains only
+  the cut part, not the full low-energy coefficient.  This is the place where
+  insufficient boundedness, nonlocal UV behavior, or an EFT with no local
+  Poincare-invariant UV completion invalidates the naive sign inference.
+  \item Non-forward, spinning, gauge, or matrix-valued positivity bounds require
+  their own external-state projectors, crossing matrices, subtraction choices,
+  and infrared prescriptions.  They should be treated as new prediction data,
+  not as automatic corollaries of the scalar forward formula.
+\end{enumerate}
+Consequently, a finite list of positive low-energy coefficients is necessary
+only within the stated UV-completion class and is never sufficient evidence
+that such a completion exists.
+\end{remark}
+
+\begin{remark}[Status of the scalar positivity statement]
+\label{rem:eft-positivity-status-ledger}
+The complex-analysis step from the cut contour to
+\eqref{eq:forward-positivity-a2-sum-rule} is exact once the analytic function,
+subtractions, pole removals, and contour limit have been supplied.  The
+nonnegative sign of the absorptive part is a Hilbert-space unitarity input via
+the optical theorem.  The use of the result as an EFT constraint is a
+conditional nonperturbative inference about a specified class of UV completions,
+while the projection from a Lagrangian basis to \(\kappa_{\rm amp}\) is a
+finite on-shell matching calculation.  None of these statements says that the
+EFT itself is defined by positivity bounds.
+\end{remark}
 
 \section{Fermi-Surface Effective Field Theory}
 \label{sec:fermi-surface-eft-patch-rg}

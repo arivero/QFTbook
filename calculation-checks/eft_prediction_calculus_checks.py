@@ -26,6 +26,12 @@ Target claims:
   the Dirac numerator produces \(O_3\), the angular average and scalar pole
   give the residue \(2g^2/(d\,16\pi^2)\), and evanescent poles therefore
   produce finite physical Wilson-coordinate shifts after subtraction.
+- For a crossing-even massive scalar forward amplitude, the twice-subtracted
+  dispersion normalization gives
+  \(a_2=(2/\pi)\int d\nu\,\operatorname{Im}F(\nu)/\nu^3\) when stable poles are
+  subtracted and the high-energy contour term vanishes.  The coefficient bounded
+  by positivity is the on-shell amplitude coordinate, not a redundant-basis
+  Wilson coordinate.
 
 Independent construction:
 - The heavy-kernel identity is checked as an exact rational identity and as a
@@ -46,6 +52,11 @@ Independent construction:
   projection shift from the evanescent subtraction, the compensating
   \(O(\epsilon)\) graph-residue term, and the finite countershift under a
   changed evanescent representative.
+- The positivity check uses a finite positive spectral measure to verify the
+  factor of two from the two cuts, stable-pole subtraction, subtraction
+  polynomial independence of \(a_2\), the explicit large-contour term, and the
+  projection that kills EOM representatives only after imposing the on-shell
+  external-state datum.
 
 Imported assumptions:
 - Euclidean low-energy kinematics with q^2 >= 0 and q^2 <= Q^2 << M^2.
@@ -65,6 +76,10 @@ Imported assumptions:
   Euclidean infrared separator, and the stated chiral Dirac projection
   convention.  It fixes a convention for the finite shift rather than a
   universal sign convention.
+- The forward-positivity check is a finite spectral-model normalization test,
+  not a construction of the nonperturbative scattering amplitude.  It assumes
+  an already pole-subtracted crossing-even amplitude and encodes positive
+  absorptive weights by finite atoms.
 
 Negative controls:
 - Reversing the heavy-kernel remainder sign fails the exact identity.
@@ -83,11 +98,18 @@ Negative controls:
   residue leaves a finite mismatch, and changing the evanescent representative
   without the compensating physical coefficient shift changes the projected
   amplitude.
+- The positivity normalization check rejects the one-cut normalization, shows
+  that an unsubtracted stable pole shifts the Taylor coefficient, shows that a
+  nonzero high-energy contour term can flip the sign despite positive cut
+  weights, flags a massless forward pole as nonanalytic at the expansion point,
+  and verifies that an off-shell coefficient can depend on a redundant
+  representative even though the on-shell amplitude coefficient does not.
 
 Scope boundary:
 - This script checks finite algebra and bookkeeping for the EFT prediction
   calculus.  It does not prove nonperturbative decoupling, regulator removal,
-  asymptotic convergence, or a continuum scattering construction.
+  asymptotic convergence, a continuum scattering construction, first-sheet
+  analyticity, crossing, macrocausality, or high-energy polynomial boundedness.
 """
 
 from __future__ import annotations
@@ -470,6 +492,111 @@ def check_evanescent_mixing_projection() -> None:
     )
 
 
+def check_forward_positivity_dispersion_normalization() -> None:
+    nu = sp.symbols("nu")
+    spectral_points = (sp.Integer(3), sp.Integer(5), sp.Integer(7))
+    spectral_weights = (sp.Integer(2), sp.Integer(3), sp.Integer(5))
+
+    finite_spectral_amplitude = sum(
+        2 * weight * point / (point**2 - nu**2)
+        for point, weight in zip(spectral_points, spectral_weights)
+    )
+    assert_zero(
+        "finite spectral model is crossing even",
+        finite_spectral_amplitude - finite_spectral_amplitude.subs(nu, -nu),
+    )
+
+    a2 = sp.diff(finite_spectral_amplitude, nu, 2).subs(nu, 0) / 2
+    dispersive_a2 = sum(
+        2 * weight / point**3
+        for point, weight in zip(spectral_points, spectral_weights)
+    )
+    assert_zero("forward positivity dispersion normalization", a2 - dispersive_a2)
+    assert_gt("positive spectral weights give nonnegative a2", float(dispersive_a2), 0.0)
+
+    one_cut_normalization = sum(
+        weight / point**3
+        for point, weight in zip(spectral_points, spectral_weights)
+    )
+    assert_nonzero(
+        "omitting the crossed cut loses the factor of two",
+        a2 - one_cut_normalization,
+    )
+
+    c0, c1 = sp.symbols("c0 c1")
+    subtraction_polynomial = c0 + c1 * nu
+    assert_zero(
+        "subtraction constants do not alter the second forward coefficient",
+        sp.diff(finite_spectral_amplitude + subtraction_polynomial, nu, 2).subs(nu, 0) / 2 - a2,
+    )
+
+    pole_location, pole_residue = sp.symbols("pole_location pole_residue", positive=True)
+    stable_pole_pair = pole_residue / (pole_location - nu) + pole_residue / (pole_location + nu)
+    unsubtracted_a2 = sp.diff(finite_spectral_amplitude + stable_pole_pair, nu, 2).subs(nu, 0) / 2
+    pole_a2 = sp.simplify(unsubtracted_a2 - a2)
+    assert_zero("stable pole pair shifts a2 by its Cauchy residue", pole_a2 - 2 * pole_residue / pole_location**3)
+    assert_zero(
+        "explicit stable pole subtraction restores cut normalization",
+        sp.diff(finite_spectral_amplitude + stable_pole_pair - stable_pole_pair, nu, 2).subs(nu, 0) / 2
+        - dispersive_a2,
+    )
+    assert_nonzero("unsubtracted pole would contaminate the positivity coefficient", pole_a2)
+
+    contour_a2 = sp.symbols("contour_a2", nonzero=True)
+    amplitude_with_contour = finite_spectral_amplitude + contour_a2 * nu**2
+    actual_a2_with_contour = sp.diff(amplitude_with_contour, nu, 2).subs(nu, 0) / 2
+    assert_zero(
+        "large-contour second derivative must be included",
+        actual_a2_with_contour - (dispersive_a2 + contour_a2),
+    )
+    assert_nonzero(
+        "omitting a nonzero large-contour term breaks the sum rule",
+        actual_a2_with_contour - dispersive_a2,
+    )
+    negative_contour_value = -2 * dispersive_a2
+    assert_gt(
+        "large-contour term can flip the low-energy sign",
+        0.0,
+        float(dispersive_a2 + negative_contour_value),
+    )
+
+    g_massless = sp.symbols("g_massless", nonzero=True)
+    massless_forward_singularity = g_massless / nu**2
+    assert_zero(
+        "massless forward pole has a nonzero Laurent residue marker",
+        sp.limit(nu**2 * massless_forward_singularity, nu, 0) - g_massless,
+    )
+    assert_nonzero(
+        "massless forward pole is not an analytic Taylor coefficient",
+        sp.limit(nu**2 * massless_forward_singularity, nu, 0),
+    )
+
+    kappa_amp, redundant, Lambda4, m2 = sp.symbols("kappa_amp redundant Lambda4 m2", nonzero=True)
+    p1sq, p2sq, p3sq, p4sq = sp.symbols("p1sq p2sq p3sq p4sq")
+    external_eom = p1sq + p2sq + p3sq + p4sq + 4 * m2
+    forward_eft_kernel = kappa_amp * nu**2 / Lambda4 + redundant * nu**2 * external_eom / Lambda4
+    on_shell = {p1sq: -m2, p2sq: -m2, p3sq: -m2, p4sq: -m2}
+    on_shell_a2 = sp.diff(forward_eft_kernel.subs(on_shell), nu, 2).subs(nu, 0) / 2
+    assert_zero("on-shell amplitude coefficient kills EOM representatives", on_shell_a2 - kappa_amp / Lambda4)
+
+    off_shell_a2 = sp.diff(forward_eft_kernel, nu, 2).subs(nu, 0) / 2
+    assert_nonzero(
+        "off-shell coefficient remains basis-coordinate dependent",
+        off_shell_a2 - kappa_amp / Lambda4,
+    )
+
+    negative_weight_amplitude = sum(
+        2 * weight * point / (point**2 - nu**2)
+        for point, weight in zip(spectral_points, (sp.Integer(2), sp.Integer(-30), sp.Integer(5)))
+    )
+    negative_weight_a2 = sp.diff(negative_weight_amplitude, nu, 2).subs(nu, 0) / 2
+    assert_gt(
+        "negative absorptive weight invalidates the positivity inference",
+        0.0,
+        float(negative_weight_a2),
+    )
+
+
 def check_operator_redundancy_conditions() -> None:
     def can_remove_eom(*, on_shell: bool, sources_transformed: bool, contacts_carried: bool) -> bool:
         return on_shell and sources_transformed and contacts_carried
@@ -519,6 +646,7 @@ def main() -> None:
     check_one_loop_scalar_eft_closure()
     check_scalar_eft_field_redefinition_observable()
     check_evanescent_mixing_projection()
+    check_forward_positivity_dispersion_normalization()
     check_operator_redundancy_conditions()
     print("All EFT prediction-calculus checks passed.")
 

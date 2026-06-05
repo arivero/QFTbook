@@ -47,7 +47,7 @@
     },
     {
       "path": "eft_prediction_calculus_checks.py",
-      "risk_class": "EFT prediction and decoupling"
+      "risk_class": "EFT prediction, decoupling, and positivity"
     },
     {
       "path": "qcd_theta_witten_veneziano_checks.py",

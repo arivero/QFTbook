@@ -29,6 +29,12 @@
   source anchors for the operational EFT-prediction and heavy-light matching
   material.  The scalar one-loop closure example is a self-contained
   background-field pole calculation in the chapter's stated normalization.
+- `SRC-EXTERNAL-EFT-POSITIVITY`: Adams--Arkani-Hamed--Dubovsky--Nicolis--
+  Rattazzi's analyticity/causality positivity paper and the local dispersion
+  machinery of Volume II Chapter 7, used as theorem-boundary anchors for the
+  conditional forward scalar positivity bound.  The chapter derives the
+  contour, subtraction, pole-subtraction, optical-theorem, and basis-projection
+  steps locally.
 - `SRC-EXTERNAL-FERMI-SURFACE`: Polchinski's TASI Fermi-surface EFT notes,
   Shankar's RG review, Luttinger--Ward/Luttinger, and Oshikawa's
   flux-insertion argument, used as terminology and theorem-boundary anchors.
@@ -184,6 +190,31 @@ The chapter must define and derive:
   measure Jacobian, source term, and observable representative together, and
   the resulting warning that EOM operators may be removed from an on-shell
   matched basis only with the corresponding source/observable transformation;
+- a conditional forward scalar positivity section, built after the EFT
+  prediction datum rather than before it, including:
+  - an assumption ledger for Lorentz invariance or an equivalent macrocausal
+    substitute, unitarity, crossing, locality, mass gap, stable external
+    particles, first-sheet analyticity, real analyticity, polynomial
+    boundedness/subtractions, and explicit subtraction or regulation of
+    first-sheet poles and massless forward singularities;
+  - the crossing-symmetric variable \(\nu=s-2m^2\) at \(t=0\), the
+    pole-subtracted amplitude \(\mathcal M_{\rm sub}\), and the threshold/cut
+    domain in the \(\nu\)-plane;
+  - the twice-subtracted forward dispersion formula with both right and crossed
+    cuts, subtraction constants, stable-pole terms treated by prior explicit
+    subtraction, and a named large-contour term;
+  - the folded identical-scalar formula and coefficient sum rule
+    \(a_2=(2/\pi)\int d\nu\,\operatorname{Im}\mathcal M_{\rm sub}/\nu^3\) when
+    the large contour vanishes;
+  - the optical-theorem normalization that makes the absorptive part
+    nonnegative;
+  - the map from the EFT low-energy coefficient to the on-shell forward
+    amplitude coordinate \(\kappa_{\rm amp}\), with EOM and field-redefinition
+    representatives killed only by the declared observable projection;
+  - failure modes from massless \(t\)-channel exchange, IR logs,
+    photons/gravitons, unstable external particles, non-forward/spinning/gauge
+    extensions, insufficient high-energy boundedness, nonlocal UV behavior, and
+    EFTs without a local Poincare-invariant UV-completion map.
 - a general finite-density Fermi-surface EFT section with a finite-volume
   \(U(1)\)-charge datum, exact Green functions, density and Fermi-surface
   diagnostics, and a strict separation of thermodynamic, zero-temperature, and
@@ -514,6 +545,16 @@ The chapter must define and derive:
     need not have a local Lorentz-invariant UV completion.  Analyticity and
     positivity bounds are conditional UV constraints, not the definition of
     the EFT.
+18a. The forward scalar positivity bound is a conditional statement about an
+     already-defined on-shell amplitude observable.  After first-sheet stable
+     poles and known infrared singularities are subtracted, crossing about
+     \(\nu=s-2m^2=0\), the twice-subtracted contour formula, the vanishing
+     large-circle term, and the optical theorem imply
+     \(a_2=(2/\pi)\int_{\nu_{\rm th}}^\infty
+     d\nu\,\operatorname{Im}\mathcal M_{\rm sub}/\nu^3\ge0\).  The bounded
+     coefficient is the projected amplitude coordinate
+     \(\kappa_{\rm amp}\), not an arbitrary Wilson coefficient in a redundant
+     operator basis.
 19. Local field redefinitions are exact finite-regulator changes of variables
     only when the Jacobian, source coupling, and observable representative are
     transformed together.  EOM removal changes off-shell Green functions and
@@ -784,3 +825,14 @@ The chapter must define and derive:
   and controlled/non-controlled non-Fermi-liquid boundaries.  Added
   `calculation-checks/fermi_surface_eft_checks.py` for density-of-states,
   shell-log, BCS-flow, Pomeranchuk, and flux-momentum arithmetic checks.
+- 2026-06-05 issue #779 pass: added the conditional forward scalar positivity
+  section after the EFT prediction datum and field-redefinition discussion.
+  The new section starts from an observable amplitude, states the assumption
+  ledger, derives the twice-subtracted forward dispersion relation with both
+  cuts, subtraction constants, pole subtraction, and a large-contour term,
+  folds the identical-scalar cuts to obtain the \(2/\pi\) coefficient sum rule,
+  uses the optical theorem for positivity, projects the EFT coefficient modulo
+  EOM/field-redefinition representatives, and records failure modes.  The
+  companion `calculation-checks/eft_prediction_calculus_checks.py` now verifies
+  the finite normalization, pole-subtraction, contour, massless-pole, and
+  basis-projection algebra.
