@@ -8576,6 +8576,71 @@ zero-mode source overlaps, the size-window tail, and the final observable
 projection.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Conditioning of the four-source zero-mode
+projection]
+\label{ca:four-source-instanton-source-conditioning}
+The determinant margins in
+ControlledApproximation~\ref{ca:four-source-instanton-amplitude-rank-bound}
+are not a cosmetic finite-dimensional detail.  They measure whether the
+chosen external source actually resolves the two instanton zero-mode
+directions in each chirality sector.  Let \(B_R^0\) and \(B_L^0\) be the
+retained leading \(2\times2\) right- and left-handed zero-mode overlap
+matrices on a fixed source and orientation cell, and suppose they are
+invertible.  Write the exact overlaps as
+\[
+  B_R=B_R^0+\Delta B_R,\qquad B_L=B_L^0+\Delta B_L
+\]
+and introduce the dimensionless conditioning matrices
+\begin{equation}
+  X_R=(B_R^0)^{-1}\Delta B_R,\qquad
+  X_L=(B_L^0)^{-1}\Delta B_L .
+  \label{eq:four-source-conditioning-matrices}
+\end{equation}
+Then, for either chirality block,
+\begin{equation}
+  \frac{\det(B^0+\Delta B)-\det B^0}{\det B^0}
+  =
+  \operatorname{tr}X+\det X,
+  \qquad
+  X=(B^0)^{-1}\Delta B .
+  \label{eq:four-source-conditioning-determinant-ratio}
+\end{equation}
+Consequently, if \(|X_{ij}|\le\delta\), then
+\begin{equation}
+  \left|
+  \frac{\det(B^0+\Delta B)-\det B^0}{\det B^0}
+  \right|
+  \le
+  2\delta+2\delta^2 .
+  \label{eq:four-source-conditioning-relative-bound}
+\end{equation}
+For the full four-source zero-mode factor this gives
+\begin{equation}
+  \epsilon_{\rm cond}
+  =
+  \epsilon_R+\epsilon_L+\epsilon_R\epsilon_L,
+  \qquad
+  \epsilon_\chi=2\delta_\chi+2\delta_\chi^2,
+  \quad \chi=R,L,
+  \label{eq:four-source-conditioning-product-bound}
+\end{equation}
+provided the same normalization is used for the two chirality blocks.
+
+This is the source-side analogue of a fluctuation determinant bound.  The
+decisive quantity is the overlap error after multiplication by the inverse
+overlap matrix, together with the hard support of the external wave packets.
+If \(B_R^0\) or \(B_L^0\) is nearly rank one, a tiny leakage of a slot into the
+wrong spin-color or flavor direction can produce an order-one change in the
+four-source determinant.
+Equivalently, using singular values,
+\(\|X_\chi\|\le \|\Delta B_\chi\|/\sigma_{\min}(B_\chi^0)\): the small
+singular value of the projected source is a physical source-selection
+problem, not a property of the BPST moduli space or of the one-loop
+determinant constant.  Thus a hard four-momentum assignment controls only the
+large-\(\rho\) form-factor tail.  It does not by itself prove that the
+external source spans the instanton zero-mode plane.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Instanton size-factor split]
 \label{ca:instanton-wilsonian-size-factorization}
 Let \(K_{\Lambda}(\rho;\mu,\mathcal J)\) denote the fully paired

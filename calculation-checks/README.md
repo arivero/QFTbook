@@ -625,7 +625,9 @@ Current checks:
   normalizations, the
   four-source amplitude rank-and-error bound requiring nondegenerate right/left
   zero-mode overlap determinants and propagating entrywise overlap errors
-  through a rank-margin residual, the
+  through a rank-margin residual, the source-conditioning check using
+  \(B^{-1}\Delta B\) to reject hard-support-only and unconditioned-overlap
+  shortcuts for near-rank-one four-source projections, the
   mixed hard-source plus physical-screening log-shell equation
   \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\) with negative controls against
   hard-only and screening-only saddle substitutions, the

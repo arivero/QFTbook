@@ -408,6 +408,7 @@
 | \(J_R,M_R,T_R,\kappa_R\) | retained signed hard-instanton window integral, retained absolute mass, omitted absolute tail, and noncancellation margin used to bound a relative hard-coefficient error |
 | \(X_{\mathcal S},\delta_X,z_B,z_O,\epsilon_C\) | finite scheme-transport data for an instanton determinant constant: coupling-coordinate shift, zero-mode/source and operator/projection frame factors, and logarithmic constant residual |
 | \(B_R,B_L,d_R,d_L,\epsilon_{\rm rank}\) | right/left four-source zero-mode overlap matrices, determinant margins, and rank-margin residual used to control a nondegenerate \(N_f=2\) instanton four-source amplitude |
+| \(X_R,X_L,\delta_R,\delta_L,\epsilon_{\rm cond}\) | conditioned source-leakage matrices \((B_\chi^0)^{-1}\Delta B_\chi\), their entrywise bounds, and the resulting determinant-relative four-source residual |
 | \(\mu_I,\rho_I,K_\Lambda(\rho)\) | Wilsonian instanton factorization scale, cutoff \(\rho_I=\mu_I^{-1}\), and fully paired finite-regulator size integrand whose boundary flux transfers between the short coefficient and long-distance remainder |
 | \(C_I^{<},[O_I]_\mu,\gamma_{IK}\) | short-instanton OPE coefficient, retained renormalized operator basis, and operator-mixing anomalous-dimension matrix used to distinguish composite-operator RG transport from size-factorization flow |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
@@ -1823,3 +1824,12 @@
   BPST companion checks the leading and residual powers, exact rational tail
   coefficient, accelerated-estimator bound, raw-truncation negative control,
   and leading-tail-cancellation case.
+- 2026-06-05 issue #597 four-source conditioning pass: added
+  `ca:four-source-instanton-source-conditioning` after the rank/error bound.
+  The pass states the determinant-relative identity
+  \(\det(B^0+\Delta B)/\det B^0-1=\operatorname{tr}X+\det X\) with
+  \(X=(B^0)^{-1}\Delta B\), so hard external momenta are not confused with a
+  nondegenerate source projection.  The BPST companion checks near-rank-one
+  amplification, the product bound for right/left source determinants,
+  rank-one hard-support failure, and the negative control against replacing
+  source conditioning by BPST measure or determinant constants.

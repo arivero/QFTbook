@@ -142,6 +142,9 @@ relations
     a four-source instanton amplitude bound requires nondegenerate
     right/left zero-mode overlap determinants; entrywise overlap errors give
     an explicit 2x2 determinant-stability bound and rank-margin residual
+    source-conditioning matrices B^(-1) Delta B expose how a nearly rank-one
+    hard source can amplify tiny overlap leakage into a determinant-relative
+    error, separately from the BPST measure and determinant constant
     a Wilsonian split of the instanton size integral has exact cancellation
     of the artificial factorization-scale boundary flux between the short
     instanton coefficient and the long-distance remainder
@@ -226,10 +229,10 @@ Schur-complement algebra, source differentiation, inverse-Gram construction of
 the shared SU(2) four-fundamental Haar projector, absolute logarithmic
 determinant-residual bounds, finite reference-amplitude calibration
 ratios, finite-scheme transport ratios, zero-mode overlap determinant-stability
-bounds, Schwinger/Beta factorization of the fused-source Bessel Mellin
-integral, finite cumulant telescopes, coefficient/operator transport matrices,
-exact retained size-shell stationarity equations, and finite amplitude-sector
-isolation telescopes.
+bounds, zero-mode source-conditioning matrices, Schwinger/Beta factorization
+of the fused-source Bessel Mellin integral, finite cumulant telescopes,
+coefficient/operator transport matrices, exact retained size-shell
+stationarity equations, and finite amplitude-sector isolation telescopes.
 Imported assumptions: the BPST background and zero-mode formulas, one-loop
 determinant coefficients, the trace-delta convention, and finite regulator
 truncations stated in the chapter.
@@ -239,6 +242,8 @@ cancellations rejected as fluctuation-error bounds, negative/complex
 thermal amplitude kernels rejected from signed activity bounds, finite-frame
 inverse checks, canceled reference-amplitude normalization, stale determinant
 constants under finite scheme changes, rank-one four-source zero-mode collapse,
+hard support mistaken for a nondegenerate source projection, unconditioned
+overlap errors mistaken for determinant-relative errors,
 same Euclidean topological susceptibility paired with different Kubo slopes,
 nonzero Euclidean instanton susceptibility paired with zero real-time
 diffusion,
@@ -4369,6 +4374,102 @@ def check_four_source_instanton_amplitude_rank_bound() -> None:
         )
 
 
+def check_four_source_instanton_source_conditioning() -> None:
+    def max_abs_entry(matrix: list[list[Fraction]]) -> Fraction:
+        return max(abs(entry) for row in matrix for entry in row)
+
+    def conditioning_matrix(
+        base: list[list[Fraction]],
+        perturbation: list[list[Fraction]],
+    ) -> list[list[Fraction]]:
+        return matmul_fraction(inverse_2x2_fraction(base), perturbation)
+
+    def determinant_relative_error(
+        base: list[list[Fraction]],
+        perturbation: list[list[Fraction]],
+    ) -> Fraction:
+        base_det = det_fraction(base)
+        exact_det = det_fraction(matrix_add_fraction(base, perturbation))
+        return abs(exact_det - base_det) / abs(base_det)
+
+    def conditioning_relative_bound(
+        base: list[list[Fraction]],
+        perturbation: list[list[Fraction]],
+    ) -> Fraction:
+        delta = max_abs_entry(conditioning_matrix(base, perturbation))
+        return 2 * delta + 2 * delta * delta
+
+    right_base = [[Fraction(1), Fraction(1)], [Fraction(1), Fraction(21, 20)]]
+    right_perturbation = [
+        [Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(1, 1000)],
+    ]
+    right_conditioning = conditioning_matrix(right_base, right_perturbation)
+    right_delta = max_abs_entry(right_conditioning)
+    right_relative_error = determinant_relative_error(right_base, right_perturbation)
+    assert_equal("near-rank source determinant margin", det_fraction(right_base), Fraction(1, 20))
+    assert_equal("near-rank source conditioning delta", right_delta, Fraction(1, 50))
+    assert_equal("near-rank source determinant relative error", right_relative_error, Fraction(1, 50))
+    if not right_relative_error <= conditioning_relative_bound(right_base, right_perturbation):
+        raise AssertionError("right source conditioning determinant bound failed")
+
+    unconditioned_overlap_error = max_abs_entry(right_perturbation)
+    assert_equal(
+        "unconditioned overlap error underestimates determinant-relative error",
+        right_relative_error > 10 * unconditioned_overlap_error,
+        True,
+    )
+
+    left_base = [[Fraction(2), Fraction(0)], [Fraction(0), Fraction(3)]]
+    left_perturbation = [
+        [Fraction(1, 100), Fraction(0)],
+        [Fraction(0), Fraction(-1, 200)],
+    ]
+    left_relative_error = determinant_relative_error(left_base, left_perturbation)
+    assert_equal("well-conditioned left determinant", det_fraction(left_base), Fraction(6))
+    assert_equal("left source conditioning delta", max_abs_entry(conditioning_matrix(left_base, left_perturbation)), Fraction(1, 200))
+    if not left_relative_error <= conditioning_relative_bound(left_base, left_perturbation):
+        raise AssertionError("left source conditioning determinant bound failed")
+
+    leading_source_factor = det_fraction(right_base) * det_fraction(left_base)
+    exact_source_factor = (
+        det_fraction(matrix_add_fraction(right_base, right_perturbation))
+        * det_fraction(matrix_add_fraction(left_base, left_perturbation))
+    )
+    actual_source_relative_error = abs(exact_source_factor - leading_source_factor) / abs(
+        leading_source_factor
+    )
+    right_bound = conditioning_relative_bound(right_base, right_perturbation)
+    left_bound = conditioning_relative_bound(left_base, left_perturbation)
+    product_bound = right_bound + left_bound + right_bound * left_bound
+    if not actual_source_relative_error <= product_bound:
+        raise AssertionError("four-source conditioning product bound failed")
+
+    window_mass = Fraction(17, 19)
+    conditioned_amplitude_bound = window_mass * product_bound
+    actual_amplitude_error = window_mass * actual_source_relative_error
+    if not actual_amplitude_error <= conditioned_amplitude_bound:
+        raise AssertionError("conditioned source residual did not bound amplitude error")
+
+    rank_one_hard_source = [[Fraction(1), Fraction(1)], [Fraction(2), Fraction(2)]]
+    hard_support_margin = Fraction(3, 5)
+    assert_equal("rank-one hard source determinant", det_fraction(rank_one_hard_source), Fraction(0))
+    assert_equal("hard support margin can be positive with rank collapse", hard_support_margin > 0, True)
+    try:
+        inverse_2x2_fraction(rank_one_hard_source)
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError("rank-one hard source incorrectly admitted a conditioning matrix")
+
+    moduli_measure_weight = Fraction(5, 7)
+    determinant_constant = Fraction(11, 13)
+    if moduli_measure_weight * determinant_constant == leading_source_factor:
+        raise AssertionError(
+            "negative control failed: moduli/determinant constants fixed source conditioning"
+        )
+
+
 def check_wilsonian_instanton_size_factorization() -> None:
     # Model the fully paired finite-regulator size integrand by
     # K(rho)=rho^(p-1) on 0<rho<rho_max.  The artificial Wilsonian split at
@@ -5587,6 +5688,7 @@ def main() -> None:
     check_individual_slot_tail_subtracted_hard_coefficient()
     check_hard_instanton_finite_window_bound()
     check_four_source_instanton_amplitude_rank_bound()
+    check_four_source_instanton_source_conditioning()
     check_wilsonian_instanton_size_factorization()
     check_short_instanton_ope_coefficient_transport()
     check_dilute_instanton_gas_theta_cumulants()
