@@ -7,9 +7,12 @@ dimensions, the KMS fluctuation-dissipation factor, positivity of the noise
 covariance, finite response-window metric fluctuation bounds, the first-order
 large-species scaling of mean backreaction versus metric fluctuations, the
 large-species scaling of retained stress-source cumulants, the
-first-order lambda-phi-four potential-insertion source coordinate, the retained
-lambda-phi-four potential-noise coordinate using the full separated two-point
-function, retained Ward diagnostics for interacting source/noise coordinates,
+finite scheme-transport identity linking local stress-tensor curvature
+ambiguities to gravitational EFT coordinates, local linear response, and
+connected noise, the first-order lambda-phi-four potential-insertion source
+coordinate, the retained lambda-phi-four potential-noise coordinate using the
+full separated two-point function, retained Ward diagnostics for interacting
+source/noise coordinates,
 the finite retained Ward-completion laboratory connecting those diagnostics to
 metric response and missing-noise budgets,
 the full retained interacting stress-tensor/noise package with component
@@ -28,6 +31,8 @@ XII Chapter 11, including curvature-squared trace normalizations,
 fluctuation-dissipation factors, noise-covariance positivity, retained
 metric-response bounds, the large-N_sp species scaling of the rescaled mean
 source, source-noise covariance, and higher connected stress-source cumulants,
+the finite scheme-transport invariance of the semiclassical residual and its
+linearized/contact/noise consequences,
 the lambda-phi-four potential-insertion source coordinate, the retained
 potential-noise Wick contraction with full separated two-point cross covariance
 and metric pushforward, the restricted
@@ -51,6 +56,8 @@ coefficients, cosmological-coordinate shifts, independent finite counterterm
 controls, signed/absolute norm bounds, Ward maps, kernel projectors, projected
 covariances, explicit finite Ward repairs, Ward-reduced source responses,
 projected diagnostic covariances, missing Ward-clean fluctuation budgets,
+finite stress/gravity coordinate transports, linear local-response transports,
+c-number connected-noise cancellations,
 finite influence-functional quadratic forms, retarded-support tests,
 fluctuation-dissipation ratios, small-gain inverses, response/noise bounds,
 species sums, 1/N_sp gravitational-coupling scaling, source-cumulant scaling,
@@ -71,8 +78,10 @@ separated two-point function, premature real-part projection, retained
 disconnected noise pieces, pretending a transverse counterterm cancels a Ward
 violation, wrong-sign Ward repairs, identifying the least-norm projection with
 the physical completion, identifying projected partial noise with full physical
-noise, unprojected longitudinal noise, feeding a nonconserved retained source
-to the metric response, and undercounting a Ward-clean missing-noise
+noise, unprojected longitudinal noise, stress-only or gravity-only finite
+scheme transport, local-response transport on only one side, deterministic
+curvature shifts added to connected noise, feeding a nonconserved retained
+source to the metric response, and undercounting a Ward-clean missing-noise
 fluctuation budget, cutoff-scale higher-derivative roots,
 component-variance-only noise packages, missing finite-renormalization cross
 terms, c-number counterterms incorrectly added to connected noise, advanced
@@ -412,6 +421,153 @@ def check_finite_response_window_bounds() -> None:
     noise_trace = trace(noise)
     if covariance_trace > certified_norm_sq * noise_trace:
         raise AssertionError("finite response noise trace bound failed")
+
+
+def check_finite_scheme_transport_consistency() -> None:
+    # Conserved local basis coordinates for (g, G, H1, H2).  A finite
+    # stress-tensor ambiguity is only a coordinate change when the same local
+    # tensor is transported into the gravitational EFT coordinates.
+    gravity_coordinates: Matrix = (
+        (Fraction(5, 3),),
+        (Fraction(7, 5),),
+        (Fraction(-2, 9),),
+        (Fraction(4, 11),),
+    )
+    stress_mean: Matrix = (
+        (Fraction(1, 6),),
+        (Fraction(-3, 10),),
+        (Fraction(5, 12),),
+        (Fraction(-7, 8),),
+    )
+    residual = matsub(gravity_coordinates, stress_mean)
+
+    m_squared = Fraction(3, 2)
+    m_fourth = m_squared * m_squared
+    finite_coefficients = (
+        Fraction(1, 9),
+        Fraction(-2, 21),
+        Fraction(2, 5),
+        Fraction(3, 13),
+    )
+    finite_shift: Matrix = (
+        (finite_coefficients[0] * m_fourth,),
+        (finite_coefficients[1] * m_squared,),
+        (finite_coefficients[2],),
+        (finite_coefficients[3],),
+    )
+    expected_shift: Matrix = (
+        (Fraction(1, 4),),
+        (Fraction(-1, 7),),
+        (Fraction(2, 5),),
+        (Fraction(3, 13),),
+    )
+    if finite_shift != expected_shift:
+        raise AssertionError("local curvature finite-shift coordinates changed")
+
+    transported_gravity = matadd(gravity_coordinates, finite_shift)
+    transported_stress = matadd(stress_mean, finite_shift)
+    transported_residual = matsub(transported_gravity, transported_stress)
+    if transported_residual != residual:
+        raise AssertionError("finite scheme transport should leave E_grav - <T> invariant")
+
+    stress_only_residual = matsub(gravity_coordinates, transported_stress)
+    if stress_only_residual == residual:
+        raise AssertionError("negative control failed: stress-only scheme shift looked invariant")
+    if stress_only_residual != matsub(residual, finite_shift):
+        raise AssertionError("stress-only scheme shift should move the residual by -A")
+
+    gravity_only_residual = matsub(transported_gravity, stress_mean)
+    if gravity_only_residual == residual:
+        raise AssertionError("negative control failed: gravity-only coordinate shift looked invariant")
+    if gravity_only_residual != matadd(residual, finite_shift):
+        raise AssertionError("gravity-only coordinate shift should move the residual by +A")
+
+    # The same cancellation must occur after linearization: the variation of the
+    # c-number local stress shift is a local contact term and must be matched by
+    # the variation of the transported gravitational coordinate.
+    gravitational_derivative: Matrix = (
+        (Fraction(3), Fraction(1, 2)),
+        (Fraction(1, 3), Fraction(5, 2)),
+    )
+    stress_local_derivative: Matrix = (
+        (Fraction(1, 4), Fraction(-1, 5)),
+        (Fraction(2, 7), Fraction(1, 3)),
+    )
+    local_derivative_shift: Matrix = (
+        (Fraction(1, 6), Fraction(1, 10)),
+        (Fraction(-1, 9), Fraction(2, 15)),
+    )
+    linear_residual = matsub(gravitational_derivative, stress_local_derivative)
+    transported_linear_residual = matsub(
+        matadd(gravitational_derivative, local_derivative_shift),
+        matadd(stress_local_derivative, local_derivative_shift),
+    )
+    if transported_linear_residual != linear_residual:
+        raise AssertionError("linearized local scheme transport should cancel in the response operator")
+
+    omitted_gravity_contact = matsub(
+        gravitational_derivative,
+        matadd(stress_local_derivative, local_derivative_shift),
+    )
+    if omitted_gravity_contact == linear_residual:
+        raise AssertionError("negative control failed: omitted gravity-side contact shift was invisible")
+
+    omitted_stress_contact = matsub(
+        matadd(gravitational_derivative, local_derivative_shift),
+        stress_local_derivative,
+    )
+    if omitted_stress_contact == linear_residual:
+        raise AssertionError("negative control failed: omitted stress-side contact shift was invisible")
+
+    retarded_commutator: Matrix = (
+        (Fraction(2, 5), Fraction(1, 7)),
+        (Fraction(0), Fraction(1, 3)),
+    )
+    wrong_commutator_shift = matadd(retarded_commutator, local_derivative_shift)
+    if wrong_commutator_shift == retarded_commutator:
+        raise AssertionError("test c-number shift should make a wrong commutator change visible")
+
+    # A deterministic c-number curvature shift changes the mean and the raw
+    # second moment, but it cancels from the connected covariance.
+    mean: Matrix = (
+        (Fraction(2, 3),),
+        (Fraction(-1, 5),),
+    )
+    connected_noise: Matrix = (
+        (Fraction(3, 4), Fraction(1, 6)),
+        (Fraction(1, 6), Fraction(2, 5)),
+    )
+    if connected_noise[0][0] <= 0 or det2(connected_noise) <= 0:
+        raise AssertionError("test connected noise should be positive definite")
+
+    second_moment = matadd(connected_noise, matmul(mean, transpose(mean)))
+    c_number_shift: Matrix = (
+        (Fraction(5, 7),),
+        (Fraction(-3, 8),),
+    )
+    shifted_mean = matadd(mean, c_number_shift)
+    shifted_second_moment = matadd(
+        second_moment,
+        matadd(
+            matadd(
+                matmul(mean, transpose(c_number_shift)),
+                matmul(c_number_shift, transpose(mean)),
+            ),
+            matmul(c_number_shift, transpose(c_number_shift)),
+        ),
+    )
+    shifted_connected_noise = matsub(
+        shifted_second_moment,
+        matmul(shifted_mean, transpose(shifted_mean)),
+    )
+    if shifted_connected_noise != connected_noise:
+        raise AssertionError("c-number curvature shift should cancel from connected noise")
+
+    wrong_noise = matadd(connected_noise, matmul(c_number_shift, transpose(c_number_shift)))
+    if wrong_noise == connected_noise:
+        raise AssertionError("negative control failed: deterministic shift did not alter wrong noise")
+    if trace(wrong_noise) <= trace(connected_noise):
+        raise AssertionError("negative control failed: wrong c-number noise did not enlarge trace")
 
 
 def check_lambda_phi4_potential_source_coordinate() -> None:
@@ -1401,6 +1557,7 @@ def main() -> None:
     check_einstein_langevin_pushforward_covariance()
     check_large_species_semiclassical_scaling()
     check_finite_response_window_bounds()
+    check_finite_scheme_transport_consistency()
     check_lambda_phi4_potential_source_coordinate()
     check_lambda_phi4_potential_noise_kernel()
     check_retained_interacting_source_ward_diagnostics()

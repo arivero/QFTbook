@@ -2363,9 +2363,13 @@ Current checks:
   positivity of a finite noise covariance, the Einstein--Langevin
   pushforward covariance identity \(GNG^T\), exact retained-sector
   mean-response and noise trace bounds for the finite response-window
-  diagnostic, the first-order `lambda phi^4` potential-insertion source
-  coordinate, its restricted local Wick-renormalization and
-  cosmological-coordinate shifts, negative controls for independent
+  diagnostic, the finite stress/gravity scheme-transport identity for
+  conserved curvature ambiguities, including linear local-response transport
+  and c-number connected-noise cancellation with stress-only, gravity-only,
+  one-sided-contact, and deterministic-noise negative controls, the first-order
+  `lambda phi^4` potential-insertion source coordinate, its restricted local
+  Wick-renormalization and cosmological-coordinate shifts, negative controls for
+  independent
   quartic/stress-tensor finite counterterms and signed negative-density norm
   bounds, its retained metric-response bound, the retained `lambda phi^4`
   potential-noise kernel with the

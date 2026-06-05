@@ -287,6 +287,141 @@ scheme.  A change of stress-tensor scheme of the form
 change of \(G_N,\Lambda,\alpha,\beta\).  It is not a physical change until a
 renormalization condition has fixed these coordinates.
 
+\begin{proposition}[Finite scheme transport of the semiclassical equation]
+\label{prop:semiclassical-finite-scheme-transport}
+Let \(\mathcal S\) be a stress-tensor prescription and write
+\[
+  \mathcal R_{\mathcal S,\theta}(g,\omega)
+  =
+  E^{\rm grav}_\theta[g]
+  -
+  \langle T_{\mu\nu}^{\mathcal S}\rangle_{\omega,g}
+\]
+for the semiclassical residual, where
+\[
+  E^{\rm grav}_\theta
+  =
+  M_{\rm P}^2G_{\mu\nu}
+  +
+  \lambda_{\rm grav}g_{\mu\nu}
+  +
+  \alpha H^{(1)}_{\mu\nu}
+  +
+  \beta H^{(2)}_{\mu\nu},
+  \qquad
+  M_{\rm P}^2=(8\pi G_N)^{-1},
+  \quad
+  \lambda_{\rm grav}=M_{\rm P}^2\Lambda .
+\]
+Suppose \(\mathcal S'\) differs from \(\mathcal S\) by the finite local
+curvature tensor
+\begin{equation}
+  A_{\mu\nu}[g]
+  =
+  a_0m^4g_{\mu\nu}
+  +
+  a_1m^2G_{\mu\nu}
+  +
+  a_2H^{(1)}_{\mu\nu}
+  +
+  a_3H^{(2)}_{\mu\nu},
+  \qquad
+  \langle T_{\mu\nu}^{\mathcal S'}\rangle
+  =
+  \langle T_{\mu\nu}^{\mathcal S}\rangle
+  +
+  A_{\mu\nu}.
+  \label{eq:semiclassical-finite-scheme-shift-A}
+\end{equation}
+Then the same semiclassical equation is represented in the primed scheme by
+\begin{equation}
+\begin{aligned}
+  M_{\rm P}^{\prime\,2}
+  &=
+  M_{\rm P}^{2}+a_1m^2,
+  &
+  \lambda_{\rm grav}'
+  &=
+  \lambda_{\rm grav}+a_0m^4,
+  \\
+  \alpha'&=\alpha+a_2,
+  &
+  \beta'&=\beta+a_3 ,
+\end{aligned}
+  \label{eq:semiclassical-finite-gravity-coordinate-transport}
+\end{equation}
+or, equivalently,
+\begin{equation}
+  E^{\rm grav}_{\theta'}[g]
+  =
+  E^{\rm grav}_{\theta}[g]+A_{\mu\nu}[g],
+  \qquad
+  \mathcal R_{\mathcal S',\theta'}(g,\omega)
+  =
+  \mathcal R_{\mathcal S,\theta}(g,\omega).
+  \label{eq:semiclassical-residual-scheme-invariance}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The four tensors in
+\eqref{eq:semiclassical-finite-scheme-shift-A} are exactly the local conserved
+basis appearing in
+Proposition~\ref{prop:finite-local-freedom-scalar-stress-tensor}, with the
+normalization of
+\eqref{eq:semiclassical-gravitational-euler-tensor}.  The coordinate
+replacement
+\eqref{eq:semiclassical-finite-gravity-coordinate-transport} adds the same
+tensor \(A_{\mu\nu}\) to the gravitational Euler tensor.  Substituting
+\(E_\theta+A\) and \(T_{\mathcal S}+A\) into
+\(\mathcal R=E-T\) gives
+\eqref{eq:semiclassical-residual-scheme-invariance}.
+\end{proof}
+
+The proposition is a coordinate statement, not a license to move only one side
+of the equation.  If
+\(\langle T_{\mu\nu}\rangle\) is shifted by \(A_{\mu\nu}\) while
+\((M_{\rm P}^2,\lambda_{\rm grav},\alpha,\beta)\) are held fixed, the
+semiclassical residual changes by \(-A_{\mu\nu}\).  If the gravitational
+coordinates are shifted without changing the stress-tensor prescription, the
+residual changes by \(+A_{\mu\nu}\).  The same bookkeeping is required after
+linearization:
+\begin{equation}
+  \delta E_{\theta'}^{\rm grav}[h]
+  -
+  \delta\langle T^{\mathcal S'}\rangle[h]
+  =
+  \delta E_{\theta}^{\rm grav}[h]
+  -
+  \delta\langle T^{\mathcal S}\rangle[h],
+  \qquad
+  \delta\langle T^{\mathcal S'}\rangle[h]
+  =
+  \delta\langle T^{\mathcal S}\rangle[h]
+  +
+  \delta A[h].
+  \label{eq:semiclassical-linear-scheme-transport}
+\end{equation}
+Thus the local contact part of the stress response and the local
+curvature-squared part of the gravitational operator must be transported
+together.  A c-number curvature shift has no separated commutator and does not
+change connected stress fluctuations:
+\begin{equation}
+  N_{\mathcal S'}(f,k)
+  =
+  N_{\mathcal S}(f,k)
+  \label{eq:semiclassical-cnumber-noise-scheme-invariance}
+\end{equation}
+for the deterministic shift
+\eqref{eq:semiclassical-finite-scheme-shift-A}.  This statement does not apply
+to finite mixing with nontrivial composite operators; those changes modify the
+connected noise by the cross terms described in
+\eqref{eq:semiclassical-noise-finite-renormalization}.  The physical lesson is
+that the mean equation, the local linear response, and the connected
+Einstein--Langevin noise are different derivatives of one renormalized
+stress-tensor coordinate system.  Mixing coordinates across them is a change of
+the model, not a harmless relabeling.
+
 \begin{definition}[Backreaction datum]
 \label{def:semiclassical-backreaction-datum}
 A fixed-order semiclassical backreaction datum consists of

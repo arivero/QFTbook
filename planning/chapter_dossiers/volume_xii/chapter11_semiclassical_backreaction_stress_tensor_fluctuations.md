@@ -359,3 +359,16 @@ curvature, microscopic, and EFT scales.
   explicit projector algebra, Ward-reduced response, positive projected
   covariance, and the missing Ward-clean noise contribution that must remain in
   the Einstein--Langevin fluctuation budget.
+- 2026-06-05 issue #729 finite scheme-transport pass: added
+  `prop:semiclassical-finite-scheme-transport`, which turns the chapter's
+  statement that stress-tensor finite ambiguities are gravitational-coordinate
+  changes into an explicit invariant residual identity.  The pass uses
+  \(M_{\rm P}^2\) and \(\lambda_{\rm grav}=M_{\rm P}^2\Lambda\) as the clean
+  coordinates, transports the local linear-response/contact term with the
+  curvature-squared gravitational operator, and states that deterministic
+  c-number curvature shifts cancel from connected noise.  The paired finite
+  check rejects stress-only transport, gravity-only transport, one-sided
+  local-response transport, and adding deterministic curvature shifts to
+  connected Einstein--Langevin noise.  This is still a scheme-coordinate
+  consistency result; it does not construct the interacting stress tensor,
+  state-transport map, or infinite-dimensional semiclassical existence theorem.
