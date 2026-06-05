@@ -10,8 +10,9 @@ one-loop bubble family, then adds
 finite helicity, color, state-sum, and regulator bookkeeping for the
 Yang-Mills MHV/all-plus control examples, including the planar N=4 MHV
 quadruple-cut reconstruction, the five-gluon all-plus rational template, and
-the four-point color-kinematics/double-copy gateway with generalized-gauge
-negative controls.  It also checks a finite two-master threshold-mixing
+the four-point color-kinematics/double-copy gateway together with the
+one-loop surface-term obstruction to naive double copy.  It also checks a
+finite two-master threshold-mixing
 model, a two-letter
 master-transport model with boundary and branch negative controls, and the
 finite Laurent-pole ledger that turns a reconstructed virtual amplitude into
@@ -32,7 +33,9 @@ all-plus rational amplitude has the correct little-group weights, mass
 dimension, cyclic term coverage, and strict four-dimensional cut
 invisibility, and the four-point color-kinematics gateway separates
 gauge-amplitude equivalence from Jacobi-compatible numerator data needed for
-the double copy.  The one-loop reconstruction datum is checked as an ordered
+the double copy, and a one-loop Jacobi triplet surface term can be invisible
+to cuts and color-weighted gauge integration while changing a naive
+double-copy pairing.  The one-loop reconstruction datum is checked as an ordered
 gate ledger separating cuts, representative choice, rational/regulator data,
 reduction, boundary/branch data, subtraction, and observable assembly.
 Independent construction: finite cut-signature matrices over rational
@@ -47,7 +50,7 @@ N=4 MHV box reconstruction and a finite on-shell-supermultiplet state count;
 finite spinor-bracket power counting and helicity-cut enumeration for the
 five-gluon all-plus rational template;
 finite cubic-channel color/numerator algebra for the four-point
-color-kinematics gateway;
+color-kinematics gateway and a finite loop-Jacobi triplet surface-term model;
 nilpotent rational matrix algebra for threshold monodromy and regular
 boundary constants; noncommuting two-letter residue algebra for first-order
 transport, path-order sensitivity, and cut-invisible boundary shifts;
@@ -69,8 +72,10 @@ mu_perp^2 massive-scalar probe, verifies that an s-channel cut alone cannot
 separate the N=4 MHV box from lower-topology contamination and that a
 gluon-only state sum is not the N=4 supermultiplet, verifies the same
 rational blind spot at five points, verifies that a gauge-equivalent
-non-Jacobi numerator shift changes the naive numerator square, and rejects
-virtual-only pole cancellation,
+non-Jacobi numerator shift changes the naive numerator square, verifies that a
+cut-invisible surface/contact shift can leave the gauge amplitude unchanged
+while breaking loop-level numerator Jacobi and changing the naive double-copy
+pairing, and rejects virtual-only pole cancellation,
 omitted rational finite
 remainders, one-cut-only finite-box deformations, branch-label omission,
 diagonal one-master threshold shortcuts, cut-only boundary reconstruction,
@@ -848,6 +853,83 @@ def check_four_point_color_kinematics_gateway() -> None:
     )
 
 
+def check_loop_level_color_kinematics_surface_obstruction() -> None:
+    colors = [Fraction(1), Fraction(2), Fraction(-3)]
+    assert_equal("loop Jacobi triplet color sum", sum(colors, Fraction(0)), Fraction(0))
+
+    numerators = [Fraction(2), Fraction(3), Fraction(-5)]
+    second_copy = [Fraction(4), Fraction(1), Fraction(-5)]
+    assert_equal(
+        "loop numerator Jacobi representative",
+        sum(numerators, Fraction(0)),
+        Fraction(0),
+    )
+    assert_equal(
+        "second numerator copy Jacobi representative",
+        sum(second_copy, Fraction(0)),
+        Fraction(0),
+    )
+
+    cut_signature = [Fraction(11), Fraction(13), Fraction(17)]
+    surface_cut_signature = [Fraction(0), Fraction(0), Fraction(0)]
+    shifted_cut_signature = vector_add(cut_signature, surface_cut_signature)
+    assert_equal(
+        "surface/contact shift invisible to selected cuts",
+        shifted_cut_signature,
+        cut_signature,
+    )
+
+    surface_shift = [Fraction(2), Fraction(-1), Fraction(0)]
+    assert_equal(
+        "surface shift color-weighted gauge null",
+        dot(colors, surface_shift),
+        Fraction(0),
+    )
+    gauge_amplitude = dot(colors, numerators)
+    shifted_numerators = vector_add(numerators, surface_shift)
+    shifted_gauge_amplitude = dot(colors, shifted_numerators)
+    assert_equal(
+        "surface shift leaves gauge amplitude integral",
+        shifted_gauge_amplitude,
+        gauge_amplitude,
+    )
+
+    assert_equal(
+        "surface shift creates loop Jacobi defect",
+        sum(shifted_numerators, Fraction(0)),
+        Fraction(1),
+    )
+    assert_true(
+        "shifted loop representative is not color-kinematics",
+        sum(shifted_numerators, Fraction(0)) != 0,
+    )
+
+    double_copy = dot(numerators, second_copy)
+    shifted_double_copy = dot(shifted_numerators, second_copy)
+    assert_equal(
+        "surface shift changes naive double-copy pairing by defect",
+        shifted_double_copy - double_copy,
+        dot(surface_shift, second_copy),
+    )
+    assert_true(
+        "integrated gauge null is not a double-copy null",
+        shifted_double_copy != double_copy,
+    )
+
+    jacobi_restoring_compensation = vector_scale(Fraction(-1), surface_shift)
+    repaired_numerators = vector_add(shifted_numerators, jacobi_restoring_compensation)
+    assert_equal(
+        "compensated surface shift restores numerator Jacobi",
+        sum(repaired_numerators, Fraction(0)),
+        Fraction(0),
+    )
+    assert_equal(
+        "Jacobi repair cancels double-copy surface shift",
+        dot(jacobi_restoring_compensation, second_copy),
+        -dot(surface_shift, second_copy),
+    )
+
+
 def check_finite_two_scale_box_master() -> None:
     # Variables are Ls=log S and Lt=log T.  The finite reduced box in the
     # chosen normalization is 1/2 (Ls-Lt)^2 + kappa.
@@ -1310,6 +1392,7 @@ def main() -> None:
     check_n4_mhv_quadruple_cut_reconstruction()
     check_five_gluon_all_plus_rational_template()
     check_four_point_color_kinematics_gateway()
+    check_loop_level_color_kinematics_surface_obstruction()
     check_finite_two_scale_box_master()
     check_bubble_ibp_identity()
     check_branch_and_landau_ledger()

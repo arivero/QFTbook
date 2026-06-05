@@ -2870,8 +2870,10 @@ Current checks:
   quadruple-cut reconstruction state-sum and topology-separation checks
   including the single-cut lower-topology negative control, the five-gluon
   all-plus rational template, the four-point color--kinematics/double-copy
-  gateway with the generalized-gauge non-Jacobi negative control, the finite
-  two-scale box master with its differential
+  gateway with the generalized-gauge non-Jacobi negative control, the one-loop
+  color--kinematics surface-term obstruction showing that a cut-invisible
+  gauge-null shift need not be double-copy null, the finite two-scale box
+  master with its differential
   equations, branch prescription, and one-cut-only negative control, the
   bubble IBP reduction, and the bubble master differential-equation branch
   ledger, the two-master

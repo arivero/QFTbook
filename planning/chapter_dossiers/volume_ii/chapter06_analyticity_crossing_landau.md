@@ -138,6 +138,7 @@
 | \(C_{\rm loop}\), \(C_{\rm rat}\), \(C_{5,\rm rat}\) | loop-normalization and all-plus rational-term constants, fixed only after color, particle-content, and loop-measure conventions are declared |
 | \(c_s,c_t,c_u\) | four-point cubic color factors satisfying the Lie-algebra Jacobi relation \(c_s+c_t+c_u=0\) |
 | \(n_s,n_t,n_u\), \(\widetilde n_i\) | four-point generalized kinematic numerators and the second numerator copy used in the color--kinematics/double-copy gateway |
+| \(S_\alpha,\mathcal J\) | one-loop contact/IBP/evanescent surface numerator shift in a Jacobi graph triplet and its induced kinematic Jacobi defect |
 | \(\mathbf I^{(1)}_\Lambda\) | one-loop infrared subtraction operator used to define the finite remainder in a declared regulator and finite subtraction convention |
 | \(\mathcal F^{(1)}_\Lambda\) | finite one-loop hard remainder after subtracting \(\mathbf I^{(1)}_\Lambda\mathcal A^{(0)}_\Lambda\) |
 | \(\mathcal R_\Lambda^{\rm sub}[W]\), \(\mathcal C_\Lambda^{\rm fact}[W]\) | real-emission/subtraction and factorization/matching pieces needed to assemble an infrared-safe observable for measurement \(W\) |
@@ -579,12 +580,14 @@
   beyond four points, the planar \(\mathcal N=4\) MHV block supplies a full
   cut-constructible nonabelian state-sum reconstruction in a declared
   supersymmetric theory, the four-point color--kinematics gateway supplies a
-  tree-level numerator-representation and double-copy boundary, the finite
-  box block supplies one solved physical two-scale master, and the two-letter
-  transport model makes the multi-master boundary/path contract explicit.
-  Nontrivial coupled physical multi-master families, finite-field technology,
-  loop-level color--kinematics representations, and higher-loop generalized
-  cuts remain future work.
+  tree-level numerator-representation and double-copy boundary, the one-loop
+  surface-obstruction block explains why integrated gauge-null surface terms
+  are not automatically double-copy nulls, the finite box block supplies one
+  solved physical two-scale master, and the two-letter transport model makes
+  the multi-master boundary/path contract explicit.  Nontrivial coupled
+  physical multi-master families, finite-field technology, constructive
+  loop-level color--kinematics numerator solutions, and higher-loop
+  generalized cuts remain future work.
 
 ## Audit Notes
 
@@ -772,3 +775,12 @@
   The companion script checks gate coverage, distinguishes single-gate
   omissions, and verifies that four-dimensional-cut-only and virtual-only
   shortcuts underbudget the full reconstruction.
+- 2026-06-05 issue #769 loop-level color--kinematics obstruction pass: added
+  `ca:loop-level-color-kinematics-surface-obstruction`, which promotes the
+  tree gateway into a one-loop representative-level warning.  The block shows
+  that contact, evanescent, or IBP-surface numerator shifts can be invisible to
+  selected cuts and color-weighted gauge integration while breaking the local
+  numerator Jacobi identity and changing a naive double-copy pairing.  The
+  companion script verifies a finite Jacobi-triplet model with zero cut
+  signature, gauge-null color weighting, nonzero Jacobi defect, nonzero
+  double-copy shift, and representative-level repair.

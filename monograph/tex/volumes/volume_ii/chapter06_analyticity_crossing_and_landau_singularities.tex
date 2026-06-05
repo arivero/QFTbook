@@ -2696,6 +2696,71 @@ loop-level color--kinematics representations and gravity double copies
 \cite{BernCarrascoJohansson2010PerturbativeQuantumGravity}.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Loop-level color--kinematics surface-term
+obstruction]
+\label{ca:loop-level-color-kinematics-surface-obstruction}
+At one loop the numerator question is not settled by the integrated amplitude.
+Let \(\Gamma_a,\Gamma_b,\Gamma_c\) be three oriented cubic graphs related by an
+internal-edge Jacobi move, with color factors
+\begin{equation}
+  c_a+c_b+c_c=0 .
+  \label{eq:one-loop-color-jacobi-triplet}
+\end{equation}
+A loop-level color--kinematics representative requires numerator functions
+\(N_\alpha(\ell)\) satisfying the local integrand identity
+\begin{equation}
+  N_a(\ell)+N_b(\ell)+N_c(\ell)=0
+  \label{eq:one-loop-kinematic-jacobi-triplet}
+\end{equation}
+after a common routing and orientation convention has been declared.  Equality
+of generalized cuts is weaker.  If \(S_\alpha(\ell)\) are contact, evanescent,
+or IBP-surface numerators whose selected cuts vanish and whose color-weighted
+gauge integral is zero,
+\begin{equation}
+  \sum_{\alpha=a,b,c}
+  c_\alpha
+  \int
+  \frac{\dd^D\ell}{\mathcal D_\alpha(\ell)}
+  S_\alpha(\ell)
+  =
+  0,
+  \label{eq:one-loop-color-weighted-surface-null}
+\end{equation}
+then \(N_\alpha\mapsto N_\alpha+S_\alpha\) leaves the checked gauge amplitude
+unchanged.  It need not preserve
+\eqref{eq:one-loop-kinematic-jacobi-triplet}.  The Jacobi defect
+\begin{equation}
+  \mathcal J(\ell)
+  =
+  S_a(\ell)+S_b(\ell)+S_c(\ell)
+  \label{eq:one-loop-surface-jacobi-defect}
+\end{equation}
+can be invisible to the cut and to the color-weighted gauge integral while
+remaining visible to a double-copy pairing:
+\begin{equation}
+  \Delta\mathcal M^{(1)}
+  =
+  \sum_{\alpha=a,b,c}
+  \int
+  \frac{\dd^D\ell}{\mathcal D_\alpha(\ell)}
+  S_\alpha(\ell)\,\widetilde N_\alpha(\ell).
+  \label{eq:one-loop-surface-double-copy-shift}
+\end{equation}
+There is no reason for
+\eqref{eq:one-loop-surface-double-copy-shift} to vanish merely because
+\eqref{eq:one-loop-color-weighted-surface-null} vanishes.
+
+A loop-level double-copy claim therefore needs more data than the scalar
+integral coefficients of \(\mathcal A^{(1)}\).  It must give a cubic graph
+basis, a routing convention, a numerator representative, the module of
+allowed contact/IBP/evanescent surface terms, the Jacobi defects on every
+internal edge, and an argument that the defects can be removed or paired into
+terms that integrate to zero in the gravity integrand.  This is a
+representative-level locality statement, not an after-the-fact identity between
+integrated gauge amplitudes
+\cite{BernCarrascoJohansson2010PerturbativeQuantumGravity}.
+\end{controlledapproximation}
+
 \subsection{A Physical Two-Scale Box Master}
 \label{subsec:physical-two-scale-box-master}
 
