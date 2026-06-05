@@ -44,6 +44,12 @@
   Wightman QFT, Mermin--Wagner for nearest-neighbor isotropic Heisenberg
   magnets, Hohenberg for continuum Bose ODLRO, and Berezinskii/Kosterlitz--
   Thouless for the quasi-long-range \(U(1)\) alternative.
+- `SRC-EXTERNAL`: Nielsen--Chadha, Watanabe--Brauner,
+  Watanabe--Murayama, and Leutwyler for non-Lorentz
+  Nambu--Goldstone counting, the commutator-density rank formula, and the
+  first-order effective Lagrangian term in magnets.  These are used as
+  theorem-boundary sources; the chapter also gives the local finite
+  symplectic mechanism and worked spectra.
 - `SRC-INTERNAL`: Volume II Chapter 20 instanton section and
   `calculation-checks/bpst_instanton_normalization_checks.py` for the
   regulated one-instanton determinant, source-matrix saturation, color-singlet
@@ -62,6 +68,12 @@
 - Goldstone claims use locality, current conservation, an order parameter,
   Lorentz invariance, the spectrum condition, and uniqueness of the vacuum in
   the chosen phase.
+- Non-Lorentz Goldstone counting is scoped separately: it is an internal
+  symmetry theorem for a translation-invariant thermodynamic phase with local
+  current densities, finite charge densities, a well-defined commutator-density
+  matrix, and regular low-energy spectral branches.  Broken spacetime
+  symmetries and inverse-Higgs constraints are not included in the internal
+  count.
 - Low-dimensional continuous-symmetry claims are scoped separately:
   Coleman's theorem is a \(1+1\)-dimensional positive-metric relativistic QFT
   statement with Wightman infrared regularity rather than an imported
@@ -98,6 +110,11 @@
 | \(\xi(\pi)\) | coset representative for Goldstone coordinates |
 | \(e^a,\omega^i\) | broken vielbein and unbroken connection in the Maurer--Cartan form |
 | \(F_{Aa}\) | Goldstone decay-constant matrix |
+| \(\rho_{ab}\) | thermodynamic commutator-density matrix \(-iV^{-1}\langle[Q_a,Q_b]\rangle\) on broken internal directions |
+| \(n_{\rm BS}\), \(n_{\rm NG}\) | numbers of broken internal generators and Nambu--Goldstone branches in a non-Lorentz phase |
+| \(n_{\rm type\text{-}A}\), \(n_{\rm type\text{-}B}\) | unpaired and commutator-paired Goldstone branch counts in the Watanabe--Brauner/Watanabe--Murayama formula |
+| \(\chi,\rho_s\) | superfluid compressibility/susceptibility and stiffness entering the type-A phonon dispersion |
+| \(m,A\) | ferromagnetic spin density and stiffness entering the type-B magnon dispersion |
 | \(m_A=gv\) | Abelian Higgs vector mass used in the Goldstone-versus-gauge-direction caveat |
 | \(\Lambda_L,\operatorname{BZ}_L\) | finite periodic lattice box and Brillouin-zone momenta in the low-dimensional Heisenberg theorem |
 | \(m_{L,h}\) | finite-volume Heisenberg magnetization with selecting field \(h\) |
@@ -202,6 +219,22 @@
   decomposition.
 - The Goldstone theorem is derived as a massless spectral contribution forced
   by the Ward identity and a nonzero order parameter.
+- The relativistic one-particle-per-broken-generator statement is now marked
+  as the \(\rho=0\) special case of the non-Lorentz internal counting theorem.
+  The chapter defines the thermodynamic commutator-density matrix, states the
+  hypotheses of the Watanabe--Brauner/Watanabe--Murayama rank formula,
+  derives the finite Darboux-block mechanism by which two broken coordinates
+  become one canonical type-B branch, and separates counting from dispersion
+  assumptions.
+- The non-Lorentz section works through spectra rather than only dimension
+  counting: a finite-density \(U(1)\) superfluid has one type-A phonon because
+  there is one broken internal charge and \(\rho=0\); a ferromagnet with
+  \(SU(2)\to U(1)\) has \(\rho_{12}=m\), hence two broken spin rotations give
+  one quadratically dispersing magnon; and an antiferromagnet with the same
+  coset but zero uniform spin density has two linear type-A spin waves.  The
+  same section explicitly excludes broken boosts/translations/rotations and
+  inverse-Higgs redundancies from the internal charge count and cross-links
+  the low-dimensional no-go section as an existence constraint.
 - The Goldstone theorem is explicitly scoped to global charges acting on a
   positive physical Hilbert space.  For gauged directions, the Abelian Higgs
   quadratic term \((\partial_\mu\pi-m_AA_\mu)^2/2\), \(R_\xi\) gauge fixing,
@@ -402,6 +435,12 @@
   growth used in the finite-volume Bogoliubov bound, with negative controls
   for wrong coefficients, wrong limiting behavior, and wrong lattice
   denominator growth.
+- `calculation-checks/nonrelativistic_ng_counting_checks.py` verifies the
+  finite commutator-density rank bookkeeping, the type-A/type-B count, the
+  superfluid/ferromagnet/antiferromagnet spectra, and negative controls for
+  one-mode-per-broken-generator in a ferromagnet, a spurious superfluid type-B
+  assignment, linear type-B dispersion, and adding broken spacetime generators
+  to the internal count.
 - `calculation-checks/inflow_anomaly_line_checks.py` verifies the finite
   anomaly-line algebra used by the anomaly-matching foundation: cocycle
   composition, local counterterm coboundaries, finite shell pushforward
@@ -578,3 +617,10 @@
   setting, removed clustering from the Coleman citation, labeled spin-wave
   variance as motivation, and added a finite-volume Heisenberg Bogoliubov
   derivation with a paired lattice-denominator check.
+- 2026-06-05 issue #775 non-Lorentz Goldstone counting pass: inserted the
+  commutator-density matrix definition, Watanabe--Brauner/Watanabe--Murayama
+  count, finite Darboux-block mechanism, type-A/type-B dispersion derivations,
+  and superfluid/ferromagnet/antiferromagnet spectra.  The pass cross-links
+  the non-Poincare EFT chapter, keeps spacetime inverse-Higgs constraints out
+  of the internal formula, and adds
+  `calculation-checks/nonrelativistic_ng_counting_checks.py`.

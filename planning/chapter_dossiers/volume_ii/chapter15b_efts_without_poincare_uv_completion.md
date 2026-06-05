@@ -21,8 +21,8 @@
 - Gives a transfer table for Wilsonian integration, power counting,
   analyticity, LSZ, spin-statistics/CPT, modular theory, anomalies, and LSMOH
   constraints.
-- Develops examples: Fermi liquids, Lifshitz fixed points, and quantum Hall
-  Chern--Simons response theory.
+- Develops examples: Fermi liquids, Lifshitz fixed points, nonrelativistic
+  Goldstone counting, and quantum Hall Chern--Simons response theory.
 - States a controlled approximation for emergent relativistic EFT with an
   explicit error exponent and operator class.
 
@@ -48,6 +48,11 @@
 5. LSMOH/anomaly language transfers to finite-cutoff EFTs only after the
    microscopic translation, filling or projective-cell datum, and background
    twist action have been mapped into the claimed infrared observables.
+6. Nonrelativistic Goldstone counting transfers as an internal-symmetry,
+   thermodynamic-phase statement using the commutator-density matrix,
+   stiffness, susceptibility, and spectrum checks; it does not import
+   Lorentz-invariant one-mode-per-generator counting or broken-spacetime
+   inverse-Higgs bookkeeping.
 
 ## Audit Notes
 
@@ -57,3 +62,6 @@
   warning about non-transfer of relativistic theorems.
 - 2026-06-05 issue #777 cross-reference pass: added LSMOH constraints to the
   validation table and stated the required microscopic-to-IR map.
+- 2026-06-05 issue #775 cross-reference pass: added the nonrelativistic
+  Goldstone-counting validation map, pointing finite-density and Hamiltonian
+  systems to the internal commutator-density theorem in Volume II Chapter 21.

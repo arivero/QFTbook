@@ -300,6 +300,14 @@ Current checks:
   QCD shear, scalar and coupled diffusion, sound matching, and the
   momentum-projected baryon current which removes the convective Drude sector
   at finite density, and the CFL Goldstone count.
+- `nonrelativistic_ng_counting_checks.py`: exact finite checks for the
+  non-Lorentz Nambu--Goldstone counting section, including antisymmetric
+  commutator-density ranks, the Watanabe--Brauner/Watanabe--Murayama
+  type-A/type-B count, the finite-density \(U(1)\) superfluid type-A branch,
+  the \(SU(2)\) ferromagnet type-B magnon, the antiferromagnet zero-density
+  contrast, and negative controls for one-mode-per-broken-generator,
+  spurious type-B superfluid assignment, linear type-B dispersion, and adding
+  broken spacetime generators to the internal count.
 - `fermi_surface_eft_checks.py`: finite checks for the general finite-density
   Fermi-surface EFT section, including parabolic-band density-of-states
   matching between microscopic and patch descriptions, the two-sided Cooper

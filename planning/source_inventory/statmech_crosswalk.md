@@ -103,6 +103,32 @@ large-field/phase-cell polymer activities and their scale-decay bounds for
 the constructive scalar models rather than treating the abstract convergence
 criterion as the whole proof.
 
+### Quantum Phases And Nonrelativistic Goldstone Modes
+
+Statmech source: Volume II Chapter 22 and adjacent spin-system discussions.
+
+QFT target:
+
+- Volume II Chapter 21, spontaneous symmetry breaking and Goldstone counting;
+- Volume II Chapter 15b, EFTs without Poincare-invariant UV completion;
+- Volume X finite-density and hydrodynamic chapters where many-body phases
+  supply the microscopic Hamiltonian data.
+
+Useful content:
+
+- finite-density order parameters and current algebra as thermodynamic phase
+  data;
+- ferromagnet versus antiferromagnet spin-wave spectra as a clean test of
+  commutator-density Goldstone counting;
+- low-dimensional infrared obstructions as existence constraints, not as
+  mode-counting formulae.
+
+QFT action: import these examples only after translating them into internal
+symmetry charges, charge-density matrices, stiffness/susceptibility data, and
+regulated thermodynamic limits.  Do not fold broken spacetime generators or
+inverse-Higgs constraints into the internal Watanabe--Brauner/Watanabe--
+Murayama count.
+
 ### Lattice Gauge Theory, Center Order, And Elitzur Discipline
 
 Statmech source: Volume II Chapter 21, especially lattice gauge theory,

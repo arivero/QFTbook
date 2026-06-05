@@ -915,7 +915,9 @@ If the translation generators have spectrum contained in the closed forward
 light cone and the vacuum is the unique translation-invariant vector in the
 chosen phase, the matrix \(F_{Aa}\) has rank equal to the number of broken
 generators.  These massless states are the quanta described by the Goldstone
-coordinates \(\pi^a(x)\).
+coordinates \(\pi^a(x)\).  This one-particle-per-broken-generator conclusion
+is the zero commutator-density special case of the non-Lorentz counting
+theorem in Section~\ref{sec:nonlorentz-goldstone-counting}.
 
 \begin{remark}[Goldstone theorem and gauged directions]
 \label{rem:goldstone-gauge-brst-higgs}
@@ -972,6 +974,256 @@ with three polarizations and the gauge-invariant scalar excitation \(h\), plus
 any Goldstone particles associated with broken global symmetries that remain
 after the gauge redundancy has been quotiented.
 \end{remark}
+
+\section{Non-Lorentz Goldstone Counting and Type-B Modes}
+\label{sec:nonlorentz-goldstone-counting}
+
+Lorentz invariance was load-bearing in the preceding spectral rank statement.
+At finite density, in a magnet, or in a microscopic Hamiltonian system with no
+boost symmetry, a broken internal generator still produces low-energy
+spectral weight, but several broken generators can supply only one canonical
+degree of freedom.  The missing datum is the density of charge commutators in
+the selected thermodynamic phase.
+
+\begin{definition}[Commutator-density matrix]
+\label{def:thermodynamic-commutator-density-matrix}
+Let \(\omega\) be a translation-invariant pure or extremal phase of a local
+Hamiltonian system in infinite spatial volume, and let
+\(j_a^\mu=(j_a^0,\mathbf j_a)\) be conserved currents for an exact internal
+symmetry algebra.  Choose smooth charge cutoffs \(f_R(x)\) which equal one on
+a ball of radius \(R\), vanish outside a slightly larger ball, and have
+boundary gradients supported only in the collar.  Write
+\[
+  Q_a(R)=\int\dd^d x\,f_R(x)j_a^0(t,x),
+  \qquad
+  |B_R|=\int\dd^d x\,\mathbf 1_{|x|<R}.
+\]
+The commutator-density matrix of the broken charges is
+\begin{equation}
+  \rho_{ab}
+  =
+  -\ii\lim_{R\to\infty}
+  \frac{1}{|B_R|}
+  \omega\!\left([Q_a(R),Q_b(R)]\right),
+  \label{eq:goldstone-commutator-density-matrix}
+\end{equation}
+when the limit exists and is independent of the admissible cutoff family.
+If the regulated local algebra has no central extension and the charges obey
+\[
+  [Q_a,Q_b]=\ii f_{ab}{}^c Q_c,
+\]
+and if the charge densities
+\[
+  n_c=\lim_{R\to\infty}|B_R|^{-1}\omega(Q_c(R))
+\]
+exist, then
+\[
+  \rho_{ab}=f_{ab}{}^c n_c .
+\]
+The definition is thermodynamic: it assumes locality good enough to remove
+the smearing collar, finite charge densities, and a phase in which the
+large-volume current commutators have a stable limit.
+\end{definition}
+
+\begin{quotedtheorem}[Internal Nambu--Goldstone counting without Lorentz invariance]
+\label{qthm:nonlorentz-ng-counting}
+\emph{Proof reference.}\footnote{The inequality in this language goes back to
+Nielsen and Chadha \cite{NielsenChadha1976GoldstoneCounting}.  The
+charge-density rank formula and its effective-action interpretation are due
+to Watanabe--Brauner \cite{WatanabeBrauner2011NGBChargeDensity} and
+Watanabe--Murayama
+\cite{WatanabeMurayama2012UnifiedNGB,WatanabeMurayama2014NonrelativisticEL};
+Leutwyler's nonrelativistic effective Lagrangian analysis is the earlier EFT
+source for the same first-order term in magnets
+\cite{Leutwyler1994NonrelativisticEL}.}
+Let an internal continuous symmetry be spontaneously broken from \(G\) to
+\(H\) in a translation-invariant thermodynamic phase.  Assume local conserved
+current densities, a well-defined infinite-volume broken-charge action on
+local operators, finite charge densities, clustering or regularity sufficient
+to define the matrix \(\rho_{ab}\) in
+\eqref{eq:goldstone-commutator-density-matrix}, and no additional gapless
+singularities that invalidate the low-energy derivative expansion.  Let
+\[
+  n_{\rm BS}=\dim(G/H)
+\]
+be the number of broken internal generators and let the antisymmetric matrix
+\(\rho\) be restricted to those broken directions.  Then
+\begin{equation}
+  n_{\rm type\text{-}B}
+  =
+  \frac12\operatorname{rank}\rho,
+  \qquad
+  n_{\rm type\text{-}A}
+  =
+  n_{\rm BS}-\operatorname{rank}\rho,
+  \qquad
+  n_{\rm NG}
+  =
+  n_{\rm BS}-\frac12\operatorname{rank}\rho .
+  \label{eq:watanabe-murayama-counting}
+\end{equation}
+Here type-B modes are the modes paired by the nonzero commutator-density
+blocks, while type-A modes are the unpaired broken directions.  The
+Nielsen--Chadha count \(n_{\rm type\text{-}A}+2n_{\rm type\text{-}B}\ge
+n_{\rm BS}\) is saturated under the stated regularity hypotheses.  In a
+Lorentz-invariant vacuum, or more generally whenever all broken charge
+commutator densities vanish, \(\rho=0\) and the formula reduces to one
+Nambu--Goldstone mode for each broken internal generator.
+\end{quotedtheorem}
+
+The mechanism behind the rank formula is finite-dimensional before it is a
+many-body theorem.  Let \(\pi^a\) be local coordinates on the broken orbit.
+The most general leading real-time effective Lagrangian may contain a term
+first order in time derivatives,
+\begin{equation}
+  L_{\rm time}
+  =
+  c_a(\pi)\dot\pi^a
+  +
+  \frac12 g_{ab}(\pi)\dot\pi^a\dot\pi^b+\cdots ,
+  \qquad
+  \partial_a c_b-\partial_b c_a
+  =
+  \rho_{ab}+O(\pi).
+  \label{eq:nonlorentz-goldstone-first-order-form}
+\end{equation}
+By a linear change of broken generators, the constant antisymmetric matrix
+\(\rho\) is brought to Darboux blocks
+\[
+  \rho
+  =
+  \bigoplus_{\alpha=1}^{r}
+  \begin{pmatrix}0&\lambda_\alpha\\-\lambda_\alpha&0\end{pmatrix}
+  \oplus 0,
+  \qquad
+  r=\frac12\operatorname{rank}\rho .
+\]
+Each block supplies a canonical pair.  In a block with coordinates
+\((q_\alpha,p_\alpha)\), the term
+\(\frac{\lambda_\alpha}{2}(q_\alpha\dot p_\alpha-p_\alpha\dot q_\alpha)\)
+already gives the symplectic form.  The two broken coordinates are therefore
+one phase-space degree of freedom, not two independent configuration-space
+waves.  Directions in the kernel of \(\rho\) have no such first-order
+symplectic pairing and require the ordinary second-order kinetic term in
+\eqref{eq:nonlorentz-goldstone-first-order-form}; they count one mode per
+coordinate.
+
+The common dispersion laws come from adding the leading spatial stiffness,
+not from the rank formula alone.  For a type-A coordinate,
+\[
+  L_A=\frac12 G\dot\varphi^2-\frac12 K(\nabla\varphi)^2
+  \quad\Longrightarrow\quad
+  \omega^2=\frac{K}{G}|\mathbf k|^2 .
+\]
+For one type-B block,
+\[
+  L_B=
+  \frac{\lambda}{2}(q\dot p-p\dot q)
+  -\frac{K}{2}\bigl((\nabla q)^2+(\nabla p)^2\bigr),
+\]
+the equations of motion give
+\begin{equation}
+  \lambda\dot q=K\nabla^2p,
+  \qquad
+  \lambda\dot p=-K\nabla^2q,
+  \qquad
+  \omega=\frac{K}{|\lambda|}|\mathbf k|^2 .
+  \label{eq:type-b-quadratic-dispersion}
+\end{equation}
+Thus type-A modes are commonly linear and type-B modes commonly quadratic.
+The word ``commonly'' matters: long-range interactions, dissipative open-system
+terms, Lifshitz scaling, or a vanishing stiffness can change the power law.
+The counting theorem counts gapless branches once a broken internal-symmetry
+phase and its regular low-energy expansion exist; it is not by itself a
+dispersion theorem.
+
+Two physical laboratories keep the theorem honest.  First consider a
+finite-density relativistic complex scalar or superfluid.  In a grand
+canonical description one fixes the unbroken time evolution
+\(H_\mu=H-\mu Q\), and the \(U(1)\) symmetry is broken by the condensate.  The
+phase field has an effective action
+\[
+  L_{\rm sf}^{(2)}
+  =
+  \frac12\chi\,\dot\theta^2
+  -
+  \frac12\rho_s(\nabla\theta)^2+\cdots ,
+  \qquad
+  \chi=\frac{\partial n}{\partial\mu}>0,\quad \rho_s>0 .
+\]
+There is one broken internal generator, hence \(\rho=0\), and
+\[
+  \omega_{\rm sf}(\mathbf k)
+  =
+  \sqrt{\rho_s/\chi}\,|\mathbf k|+O(|\mathbf k|^3).
+\]
+The chemical potential has broken boost invariance and selected a rest frame,
+but it has not created a nonzero commutator density among two broken internal
+charges, so the phonon remains type-A.
+
+Now compare a Heisenberg ferromagnet in \(d\ge3\) at zero temperature, where
+the low-dimensional obstruction below does not remove the ordered phase.  The
+microscopic symmetry is \(SU(2)\), the magnetization density
+\[
+  m=\lim_{V\to\infty}\frac{1}{V}\omega(Q_3)
+\]
+selects the unbroken \(U(1)\) generated by \(Q_3\), and the broken charges are
+\(Q_1,Q_2\).  Since
+\([Q_1,Q_2]=\ii Q_3\),
+\[
+  \rho_{12}=m,\qquad
+  \rho=
+  \begin{pmatrix}0&m\\-m&0\end{pmatrix}.
+\]
+The rank is two, so \(n_{\rm BS}=2\) gives
+\[
+  n_{\rm type\text{-}B}=1,\qquad
+  n_{\rm type\text{-}A}=0,\qquad
+  n_{\rm NG}=1 .
+\]
+The spin-coherent effective action for a unit vector
+\(\mathbf n=(\pi_1,\pi_2,\sqrt{1-\pi^2})\) has, to quadratic order,
+\[
+  L_{\rm F}^{(2)}
+  =
+  \frac{m}{2}(\pi_1\dot\pi_2-\pi_2\dot\pi_1)
+  -
+  \frac{A}{2}\bigl((\nabla\pi_1)^2+(\nabla\pi_2)^2\bigr),
+\]
+and therefore
+\[
+  \omega_{\rm F}(\mathbf k)=\frac{A}{|m|}|\mathbf k|^2+O(|\mathbf k|^4).
+\]
+Two broken spin rotations have become one quadratically dispersing magnon
+because the background magnetization is the expectation value of their
+commutator.
+
+The antiferromagnet is the useful contrast.  It can have the same internal
+breaking pattern \(SU(2)\to U(1)\) but zero uniform spin density, hence
+\(\rho=0\).  Its leading staggered-order action is second order in time,
+\[
+  L_{\rm AF}^{(2)}
+  =
+  \frac12\chi_\perp(\dot\pi_1^2+\dot\pi_2^2)
+  -
+  \frac12\rho_s\bigl((\nabla\pi_1)^2+(\nabla\pi_2)^2\bigr),
+\]
+so the two broken generators give two linear spin waves rather than one
+quadratic magnon.  The difference is not the coset \(SU(2)/U(1)\), which is
+the same in the two examples; it is the phase's charge-density matrix.
+
+Finally, the count above is only for internal symmetries.  At finite density
+one normally works with the unbroken Hamiltonian \(H_\mu\), and boosts may be
+broken by the state; in solids, translations and rotations can also be broken.
+Broken spacetime generators act on local fields with explicit coordinate or
+derivative pieces, and inverse-Higgs constraints can make their putative
+Goldstone coordinates redundant.  Those spacetime-redundancy questions are
+not entries of \(n_{\rm BS}\) in
+\eqref{eq:watanabe-murayama-counting}.  Likewise,
+Section~\ref{sec:low-dimensional-continuous-ssb-no-go} constrains whether the
+ordered thermodynamic phase exists in the first place.  Once the no-go theorem
+has removed the order parameter, there is no broken phase for
+\eqref{eq:watanabe-murayama-counting} to count.
 
 \section{Low-Dimensional Continuous-Symmetry No-Go Theorems}
 \label{sec:low-dimensional-continuous-ssb-no-go}
