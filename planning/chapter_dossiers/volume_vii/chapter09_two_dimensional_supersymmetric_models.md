@@ -14,6 +14,10 @@ Hori--Vafa is treated as a protected-data benchmark and source lead rather
 than as an authority to quote through; every imported formula must be
 rechecked against the chapter's regulator, determinant, zero-mode, boundary,
 and normalization conventions.
+The full abelian GLSM/Hori--Vafa mirror claim and the cigar/Liouville claim
+are now named as central QFT conjectures in the chapter, with protected
+calculations recorded as evidence or conditional consequences rather than as
+the full equivalences themselves.
 Primary reference sidecars currently used for scrutiny, not authority, are
 `references/susy_glsm_mirror/hori_vafa_mirror_symmetry_hep-th_0002222.txt`
 and
@@ -56,6 +60,11 @@ and
   twisted variables, first-order real superfields, real dual coordinates,
   charge-linear Coulomb masses, vortex-normalization constants, and
   exponential torus coordinates in the abelian mirror presentation.
+- `conj:abelian-glsm-hori-vafa-mirror-qft`, `D_loc`, `D_pert`, `D_vort`,
+  `D_obs`, `E_cont`, `E_op`, `E_top`, `E_bg`, `E_sing`: named full-QFT
+  GLSM/Hori--Vafa mirror conjecture, its protected evidence lanes, and the
+  separate continuum/operator/topological/background/singular-locus proof
+  debts.
 - `hat X_i`, `q_phys`, `R_{P^{N-1}}`, `H`: vortex-normalized mirror-torus
   coordinate, physical exponentiated FI coordinate after finite determinant
   normalization, normalized projective-space mirror residue trace, and
@@ -91,6 +100,10 @@ and
 - `Y_P`, `rho`, `vartheta`, `u`, `chi`, `k`: logarithmic-chiral dual
   variable, polar coordinate for the charged chiral scalar, angular
   coordinate, real and periodic parts of `P`, and cigar level parameter.
+- `conj:cigar-liouville-mirror-qft`, `C_cl`, `C_dual`, `C_vort`,
+  `C_spec`, `C_bdry`: named full-QFT cigar/Liouville mirror conjecture and
+  the protected-data/proof-debt lanes separating quotient/dualization/vortex
+  checks from spectral-flow, continuous-spectrum, defect, and boundary data.
 - `X_i`, `P`, `G_d`, `d`, `mu_d`: hypersurface GLSM fields, homogeneous
   polynomial, degree, and residual finite gauge group.
 - `H`, `Y_G`, `C_branch`, `T`: hyperplane Chern class on projective space,
@@ -157,6 +170,14 @@ and
 - Records the GLSM charged-chiral dualization ledger and marks
   nonperturbative exponential twisted-superpotential terms as requiring a
   separate vortex-instanton compactness/zero-mode/determinant proof.
+- States the named abelian GLSM/Hori--Vafa mirror QFT conjecture with charge
+  matrix, FI-theta coordinate, global gauge form, spin/background data,
+  regulator, phase chamber, singular-locus exclusions, continuum Hilbert
+  spaces/Hamiltonians, local OPEs, A/B sectors and pairings, defects,
+  boundaries, topological sectors, contact terms, and RG endpoints.  The
+  chapter now separates this full-QFT statement from the protected evidence
+  lanes `D_loc`, `D_pert`, `D_vort`, and `D_obs`, and from the proof-debt
+  lanes `E_cont`, `E_op`, `E_top`, `E_bg`, and `E_sing`.
 - Derives the first-order charged-chiral dualization with real superfield
   `B_i`, twisted-linear constraint, Legendre elimination, and the
   superspace integration-by-parts identity producing the linear
@@ -247,6 +268,15 @@ and
   the `Y+Y_P=0` vector constraint, the resulting `N=2` Liouville
   superpotential, and the theorem-status boundary for full equality with the
   cigar coset QFT.
+- States the named cigar/Liouville mirror QFT conjecture with level and
+  background-charge conventions, spin structures, spectral-flow sectors,
+  normalizable states, nonnormalizable sources, continuous-spectrum measure,
+  local operator map, reflection amplitudes, Hilbert space, superconformal
+  generators, defects, boundaries, and contact terms.  The quotient metric,
+  asymptotic dualization, ordinary chiral exponential, and logarithmic-vortex
+  obstruction are recorded as `C_cl`, `C_dual`, and `C_vort` evidence, while
+  spectral/completeness and defect/boundary matching remain `C_spec` and
+  `C_bdry` obligations.
 - Defines abelian GLSM data with fields, integer charges, invariant
   superpotential, complexified FI-theta coordinate, gauge coupling, and
   regulator.
@@ -359,6 +389,12 @@ and
   - the logarithmic-chiral vortex obstruction: a unit-norm charged section
     can exist smoothly only in zero flux, whereas an ordinary charged scalar
     can absorb flux through zeros.
+  - the mirror-conjecture status ledger: the named GLSM/Hori--Vafa and
+    cigar/Liouville full-QFT conjectures list continuum, operator, spectral,
+    defect, boundary, global, and contact-term data, while local dualization,
+    Coulomb logarithms, vortex coefficients, mirror residues, stable-map
+    incidence, quotient metrics, asymptotic dual variables, and vortex
+    obstructions remain proper protected-evidence subsets.
   - hypersurface adjunction signs, LG/sigma-model central-charge matching,
     residual finite-gauge invariant Jacobi monomial counting, and the
     Coulomb-coordinate singular-signal ledger.
@@ -436,3 +472,10 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   observable comparison.  This keeps the reader-facing argument architecture
   ahead of the many finite checks and makes the physics-first instanton
   standard explicit without putting process directives in the TeX.
+- The 2026-06-05 issue #806 conjecture-status pass names the abelian
+  GLSM/Hori--Vafa mirror and cigar/Liouville mirror statements as central
+  full-QFT conjectures.  It lists the global, spectral, operator, defect,
+  boundary, continuum, background/contact-term, and singular-locus data those
+  conjectures require, and recasts the existing local dualization, Coulomb,
+  vortex, residue, stable-map, quotient-metric, and logarithmic-vortex
+  calculations as protected evidence or conditional consequences.

@@ -2411,7 +2411,10 @@ Current checks:
   three-point product coefficient with residual, off-pairing, mirror-only,
   dimension-only, and zero-mode-gate negative controls, and the
   classical cigar quotient metric obtained by eliminating the gauge field,
-  the logarithmic-chiral vortex obstruction, plus the hypersurface GLSM
+  the logarithmic-chiral vortex obstruction, the mirror-conjecture status
+  ledger separating full GLSM/Hori--Vafa and cigar/Liouville QFT equivalence
+  data from protected-sector evidence and rejecting protected-calculation
+  shortcuts to full duality, plus the hypersurface GLSM
   adjunction sign,
   Landau--Ginzburg/sigma-model central-charge matching condition, residual
   finite-gauge invariant Jacobi monomial count, and Coulomb-coordinate

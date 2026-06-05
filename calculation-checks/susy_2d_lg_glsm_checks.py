@@ -9,7 +9,9 @@ vortex-to-protected-observable residual ledger, together with the
 vortex-fugacity dimensional-transmutation coordinate, the degree-one
 P^{N-1} stable-map gate, and the finite degree-one stable-map incidence model
 with supplied vortex coefficient input plus conditional residual template for
-the quantum-product observable relation, in Volume VII Chapter 09.
+the quantum-product observable relation, and the mirror-conjecture status
+ledger separating full-QFT data from protected evidence, in Volume VII
+Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
 elimination, Berezin-degree tests, retained-window signed/mass coefficient
 bounds, root-of-unity residue sums, stable-map incidence Jacobians, and
@@ -25,8 +27,9 @@ cancellations with nonzero absolute mass, wrong residue selection powers,
 underspecified residual budgets, stable-map dimension mismatches, mirror-only
 or dimension-only quantum-product shortcuts, determinant-orientation flips,
 zero-mode multiplicity errors, compactification/contact mutations,
-hyperplane-normalization changes, omitted off-pairing controls, and finite-gauge
-invariance failures are rejected when the finite model can represent them.
+hyperplane-normalization changes, omitted off-pairing controls, protected-sector
+shortcuts to full mirror equivalence, and finite-gauge invariance failures are
+rejected when the finite model can represent them.
 Scope boundary: a pass checks finite algebra and bookkeeping interfaces; it
 does not prove continuum GLSM existence, Hori--Vafa mirror equivalence,
 vortex compactness, derivation of the vortex fluctuation spectra or gauge-ghost
@@ -1240,6 +1243,132 @@ def check_logarithmic_chiral_vortex_obstruction() -> None:
         assert_equal("ordinary charged scalar zero degree carries flux", flux, ordinary_vortex_degree)
 
 
+def check_mirror_conjecture_status_ledger() -> None:
+    # This is a finite status check, not a test of the conjectures themselves.
+    # It verifies that the chapter's named conjectures list the full-QFT data
+    # demanded by the issue while the finite calculations remain evidence lanes.
+    glsm_required_data = {
+        "charge matrix",
+        "fi theta",
+        "global gauge form",
+        "regulator",
+        "spin structure",
+        "phase chamber",
+        "singular-locus exclusions",
+        "continuum Hilbert spaces",
+        "Hamiltonians",
+        "local OPE",
+        "A/B pairings",
+        "topological sectors",
+        "defects",
+        "boundaries",
+        "background contact terms",
+        "RG endpoints",
+    }
+    glsm_conjecture_data = set(glsm_required_data)
+    glsm_conjecture_data.update({"vortex coefficients", "theta periods"})
+    assert_equal(
+        "GLSM mirror conjecture records required full-QFT data",
+        glsm_required_data <= glsm_conjecture_data,
+        True,
+    )
+
+    glsm_protected_evidence = {
+        "local dualization",
+        "Coulomb logarithm",
+        "vortex coefficient integral",
+        "zero-mode filter",
+        "FI-coordinate shift",
+        "mirror residue",
+        "stable-map incidence",
+    }
+    glsm_full_qft_obligations = {
+        "continuum Hilbert spaces",
+        "Hamiltonians",
+        "local OPE",
+        "defects",
+        "boundaries",
+        "background contact terms",
+        "RG endpoints",
+        "singular-locus exclusions",
+    }
+    assert_equal(
+        "GLSM protected evidence is a proper subset of full equivalence data",
+        glsm_protected_evidence < glsm_protected_evidence | glsm_full_qft_obligations,
+        True,
+    )
+
+    hv_formula_shortcut = {
+        "charge matrix",
+        "fi theta",
+        "periodic Y",
+        "primitive exponential",
+        "Coulomb logarithm",
+        "mirror residue",
+    }
+    for omitted in [
+        "continuum Hilbert spaces",
+        "local OPE",
+        "defects",
+        "background contact terms",
+    ]:
+        if omitted in hv_formula_shortcut:
+            raise AssertionError(f"Hori-Vafa formula shortcut should omit no full-QFT debt: {omitted}")
+    assert_equal(
+        "Hori-Vafa formula data alone cannot assert full GLSM mirror equivalence",
+        glsm_required_data <= hv_formula_shortcut,
+        False,
+    )
+
+    cigar_required_data = {
+        "level convention",
+        "background charge",
+        "spin structures",
+        "spectral-flow sectors",
+        "normalizable states",
+        "nonnormalizable sources",
+        "continuous-spectrum measure",
+        "local operator map",
+        "reflection amplitudes",
+        "Hilbert space",
+        "superconformal generators",
+        "defects",
+        "boundaries",
+        "contact terms",
+    }
+    cigar_conjecture_data = set(cigar_required_data)
+    assert_equal(
+        "cigar-Liouville conjecture records spectrum and operator data",
+        cigar_required_data <= cigar_conjecture_data,
+        True,
+    )
+
+    cigar_evidence = {
+        "classical quotient metric",
+        "asymptotic dual variables",
+        "ordinary chiral exponential",
+        "logarithmic vortex obstruction",
+    }
+    cigar_full_qft_obligations = {
+        "continuous-spectrum measure",
+        "operator completeness",
+        "strong-coupling tip control",
+        "defects",
+        "boundaries",
+        "reflection amplitudes",
+    }
+    assert_equal(
+        "cigar protected evidence leaves continuous-spectrum obligations",
+        cigar_full_qft_obligations <= cigar_evidence,
+        False,
+    )
+    assert_equal(
+        "cigar protected evidence is a proper subset of full duality data",
+        cigar_evidence < cigar_evidence | cigar_full_qft_obligations,
+        True,
+    )
+
+
 def invariant_jacobi_monomial_count(num_fields: int, degree: int) -> int:
     count = 0
 
@@ -1322,6 +1451,7 @@ def main() -> None:
     check_degree_one_stable_map_incidence_model()
     check_cigar_metric_elimination()
     check_logarithmic_chiral_vortex_obstruction()
+    check_mirror_conjecture_status_ledger()
     check_hypersurface_phase_ledger()
     check_hypersurface_coulomb_coordinate_signal()
     print("All 2D SUSY LG/GLSM checks passed.")

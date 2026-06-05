@@ -826,19 +826,46 @@ statement.
 \section{Charged-Chiral Dual Variables and Abelian Mirror Presentations}
 \label{sec:charged-chiral-dual-mirror-presentations}
 
-The preceding Legendre transform is the local part of the abelian
-GLSM mirror construction.  The full statement contains one additional
-ingredient: a holomorphic exponential term in the twisted superpotential.
-The Gaussian Legendre transform supplies the dual variables and their linear
-couplings to field strengths.  The exponential term is a nonperturbative
-datum, attributed in the semiclassical presentation to finite-action vortex
-sectors, and any regulator-level equality of QFTs must derive it from a
-compactness, zero-mode, determinant-line, and boundary analysis of those
-sectors.  The algebraic consequences of this datum are completely explicit
-and will be used below.
+The preceding Legendre transform is the local part of the abelian GLSM mirror
+construction.  The full mirror statement is a statement about two continuum
+quantum field theories, not only about a formal twisted superpotential.  We
+therefore name it before using its protected consequences.
 
-The comparison is therefore organized as four separate statements rather than
-as a single appeal to the mirror formula:
+\begin{conjecture}[Abelian GLSM/Hori--Vafa mirror QFT equivalence]
+\label{conj:abelian-glsm-hori-vafa-mirror-qft}
+Fix a two-dimensional \(\mathcal N=(2,2)\) abelian GLSM on a spin worldsheet
+with gauge group \(G=U(1)^s/\Gamma\), integral charge matrix \(Q_i{}^a\),
+ordinary chiral multiplets \(\Phi_i\), a declared gauge-invariant chiral
+superpotential if present, complexified FI-theta coordinates \(t_a\), flavor
+and \(R\)-symmetry backgrounds, allowed local counterterms, topological
+gauge-bundle sectors, a supersymmetric regulator, and a phase chamber avoiding
+the singular FI locus, runaways, and unresolved mixed Coulomb--Higgs branches.
+Let the proposed mirror be the periodic twisted-chiral Landau--Ginzburg
+presentation with variables
+\[
+  Y_i\sim Y_i+2\pi\ii,\qquad \Sigma_a,
+\]
+global identifications induced by \(G\), vortex-normalization constants
+\(c_i\), and twisted superpotential of the form
+\eqref{eq:glsm-hv-dual-twisted-superpotential}, with the same spin structures
+and background fields.
+
+The conjecture asserts an equivalence of the continuum theories in that
+chamber after compatible regulator limits: their Hilbert spaces on circles
+and Hamiltonians agree, their local operator algebras and OPEs are identified,
+their A- and B-twisted sectors, pairings, partition functions, and correlation
+functions agree including background-field contact terms, and the equivalence
+respects line defects, boundary conditions, topological sectors, theta
+periods, RG endpoints, and global gauge data.  Equalities of twisted chiral
+rings, Coulomb-branch critical equations, mirror residues, and protected
+A-twisted correlators are consequences or evidence for this statement only
+after their regulator, operator-map, determinant, and compactification data
+have been supplied.
+\end{conjecture}
+
+The detailed comparison below is organized as an evidence ledger for
+Conjecture~\ref{conj:abelian-glsm-hori-vafa-mirror-qft}, rather than as a
+single appeal to the mirror formula:
 \[
   \begin{array}{rcl}
     D_{\rm loc} &:& Y_i\sim Y_i+2\pi\ii,\quad -Q_i{}^a\Sigma_aY_i,\\
@@ -854,7 +881,18 @@ Berezin saturation, determinant-line orientation, and compactification or
 continuum remainder determine whether the coefficient is present and in which
 scheme.  The fourth layer compares that coefficient with A-twisted observables.
 In this chapter a Hori--Vafa expression is used only after it has been placed
-on this spine.
+on this spine.  The remaining full-QFT proof debts are separate:
+\[
+  \begin{array}{rcl}
+    E_{\rm cont} &:& \hbox{shared continuum construction and Hilbert spaces},\\
+    E_{\rm op} &:& \hbox{local operators, OPEs, and source normalizations},\\
+    E_{\rm top} &:& \hbox{defects, boundaries, twists, and topological sectors},\\
+    E_{\rm bg} &:& \hbox{background fields, contact terms, and theta periods},\\
+    E_{\rm sing} &:& \hbox{phase chamber, singular-locus, and RG-endpoint control}.
+  \end{array}
+\]
+A protected-sector equality is recorded with its evidence label rather than
+promoted silently to the full conjectural QFT equivalence.
 
 Consider an abelian GLSM with gauge group \(U(1)^s\), twisted chiral field
 strengths \(\Sigma_a\), complexified FI-theta coordinates \(t_a\), and
@@ -1034,6 +1072,13 @@ the single-vortex sector in the chosen regulator, prove that its fermion zero
 modes leave precisely the twisted \(F\)-term measure, prove
 \(c_i\neq0\), and justify that possible higher connected harmonics do not
 contribute in the protected coordinate being matched.
+
+The next two propositions and the retained-window bound are the
+\(D_{\rm vort}\) evidence lane for
+Conjecture~\ref{conj:abelian-glsm-hori-vafa-mirror-qft}.  They analyze the
+coefficient of the primitive mirror monomial as a regulated instanton
+amplitude; they supply neither the full continuum operator map nor the
+Hilbert-space equivalence by themselves.
 
 \begin{proposition}[Vortex zero-mode filter for twisted \(F\)-terms]
 \label{prop:glsm-vortex-zero-mode-filter}
@@ -1240,6 +1285,13 @@ amplitude-side statement that the regulated determinant line, zero-mode
 saturation, and boundary tail have not made the one-vortex coefficient
 cancel to zero.
 \end{controlledapproximation}
+
+We now move from the \(D_{\rm vort}\) amplitude input to the \(D_{\rm pert}\)
+and protected twisted-sector consequences of
+Conjecture~\ref{conj:abelian-glsm-hori-vafa-mirror-qft}.  The following
+critical-equation and FI-coordinate identities are algebraic consequences of
+the mirror presentation once the vortex coefficients and branches have been
+supplied.
 
 The \(Y_i\)-critical equation is
 \begin{equation}
@@ -1452,6 +1504,12 @@ identification of the local and extended operator algebras, control of the
 singular loci and topological sectors, and convergence of the two continuum
 limits.
 
+The projective-space calculations below form the \(D_{\rm obs}\) protected
+observable lane.  They provide evidence for
+Conjecture~\ref{conj:abelian-glsm-hori-vafa-mirror-qft} by testing the
+vortex-normalized mirror against A-twisted residue and stable-map data after
+the operator coordinate and degree-one instanton coefficient have been fixed.
+
 \begin{example}[\(\mathbb P^{N-1}\) dual critical points]
 \label{ex:cpn-hv-dual-critical-points}
 Take one \(U(1)\) gauge factor and \(N\) chiral multiplets of charge \(1\).
@@ -1585,7 +1643,8 @@ classes.
 
 The status of Proposition~\ref{prop:cpn-hv-residue-quantum-product} is a
 protected observable test of the vortex-normalized mirror, not a standalone
-proof of mirror equivalence.  Once a compactified A-twisted GLSM or
+proof of Conjecture~\ref{conj:abelian-glsm-hori-vafa-mirror-qft}.  Once a
+compactified A-twisted GLSM or
 sigma-model construction identifies \(H\) with the hyperplane class and
 \(q_{\rm phys}\) with the degree-one vortex amplitude, the formula becomes the
 primary selection rule
@@ -1599,6 +1658,11 @@ The mirror residue supplies the finite Hessian and root-sum side of that
 statement.  The physical identification still depends on the same determinant,
 orientation, zero-mode, compactification, and contact-term data isolated in
 \eqref{eq:glsm-single-vortex-coefficient-integral}.
+
+Proposition~\ref{prop:glsm-vortex-to-observable-residual-ledger} is the
+same \(D_{\rm obs}\) comparison written at finite regulator.  Its residual
+terms are the local proof-debt coordinates that must vanish before the mirror
+residue is a protected A-twisted QFT correlator.
 
 \begin{proposition}[From vortex coefficient to protected observable]
 \label{prop:glsm-vortex-to-observable-residual-ledger}
@@ -1686,6 +1750,13 @@ about whether the regulated vortex coefficient is nonzero or whether the
 comparison residuals vanish.  That information is precisely the physical
 amplitude input isolated above.
 \end{proof}
+
+The next two statements give the direct stable-map side of the same protected
+observable lane for
+Conjecture~\ref{conj:abelian-glsm-hori-vafa-mirror-qft}.  They compute the
+incidence and degree constraints that the GLSM vortex comparison must match,
+while keeping determinant, zero-mode, compactification, and local-operator
+input separate.
 
 \begin{proposition}[Stable-map gate for the \(\mathbb P^{N-1}\) quantum product]
 \label{prop:cpn-stable-map-quantum-product-gate}
@@ -1945,6 +2016,45 @@ description of the relation between the \(\mathcal N=2\) cigar coset and
 as a QFT comparison problem.  The names ``cigar'' and ``Liouville'' refer to
 two-dimensional field theories and their semiclassical target descriptions.
 
+\begin{conjecture}[Cigar--Liouville mirror QFT equivalence]
+\label{conj:cigar-liouville-mirror-qft}
+Fix a level \(k>0\) in the conventions used below, a spin structure, \(R\)-
+and flavor-background fields, contact-term conventions, and a continuum
+definition of the axial \(\mathcal N=2\) cigar coset
+\(SL(2,\mathbb R)_k/U(1)\) or of the logarithmic-chiral GLSM flowing to it.
+Fix also the \(\mathcal N=2\) Liouville theory with the corresponding
+linear-dilaton/background-charge convention, periodic twisted chiral
+coordinate, exponential twisted superpotential, and the same background data.
+
+The conjecture asserts an equivalence of the two continuum QFTs: the
+Hamiltonians and \(\mathcal N=2\) superconformal generators agree under a
+unitary map of Hilbert spaces; spectral-flow sectors, spin structures, and
+discrete and continuous representations are matched; normalizable states,
+nonnormalizable source operators, reflection amplitudes, local OPEs,
+partition functions, and correlation functions are identified with their
+contact terms; and the equivalence respects topological twists, defects,
+branes, and boundary states.  The semiclassical quotient metric, the
+asymptotic dualization, the single exponential from the ordinary charged
+chiral multiplet, and the absence of a smooth logarithmic-chiral vortex
+exponential are evidence for this statement.  They leave separate continuum
+obligations: the continuous-spectrum measure, operator completeness,
+strong-coupling control at the cigar tip or Liouville wall, and the
+defect/boundary matching.
+\end{conjecture}
+
+For Conjecture~\ref{conj:cigar-liouville-mirror-qft}, the checks in this
+section form the following protected-data and proof-debt ledger:
+\[
+  \begin{array}{rcl}
+    C_{\rm cl} &:& \hbox{classical quotient metric and asymptotic cylinder},\\
+    C_{\rm dual} &:& \hbox{periodic dual variables and vector constraint},\\
+    C_{\rm vort} &:& \hbox{ordinary vortex exponential and logarithmic-vortex obstruction},\\
+    C_{\rm spec} &:& \hbox{spectral flow, continuous measure, and reflection data},\\
+    C_{\rm bdry} &:& \hbox{defect, brane, boundary-state, and contact-term matching}.
+  \end{array}
+\]
+Only the first three entries are calculated in this chapter.
+
 Start with a \(U(1)\) vector multiplet \(V\), an ordinary chiral multiplet
 \(\Phi\) of charge \(1\), and a logarithmic chiral multiplet
 \[
@@ -2113,13 +2223,15 @@ The construction supplies a precise protected-data bridge:
   \mathcal N=2\ \text{Liouville data}.
   \end{aligned}
 \]
-A theorem identifying this with the cigar coset QFT requires construction of
-both continuum theories, equality of their Hilbert spaces and local algebras,
-matching of the \(\mathcal N=2\) superconformal generators, matching of
-defects and spectral-flow sectors, and control of the strong-coupling region
-where the semiclassical quotient metric
-\eqref{eq:cigar-glsm-classical-quotient-metric} is only a coordinate on the
-asymptotic target geometry.
+This is the \(C_{\rm cl}\), \(C_{\rm dual}\), and \(C_{\rm vort}\) evidence
+lane for Conjecture~\ref{conj:cigar-liouville-mirror-qft}.  It identifies
+the asymptotic variables and the protected Liouville superpotential, while
+the equality of continuum Hilbert spaces, local algebras,
+\(\mathcal N=2\) generators, defect categories, spectral-flow sectors, and
+continuous-spectrum measures remains in the \(C_{\rm spec}\) and
+\(C_{\rm bdry}\) obligations.  The semiclassical quotient metric
+\eqref{eq:cigar-glsm-classical-quotient-metric} is a coordinate on the
+asymptotic target geometry rather than a construction of the full cigar QFT.
 
 \section{Abelian GLSM Coulomb-Branch One-Loop Calculation}
 \label{sec:abelian-glsm-coulomb-one-loop-calculation}
