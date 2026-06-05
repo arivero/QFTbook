@@ -2473,14 +2473,15 @@ Current checks:
 - `susy_n1_sqcd_duality_checks.py`: exact rational checks for the
   four-dimensional \(\mathcal N=1\) SQCD duality and phase-ledger section,
   including Seiberg-dual rank involution, baryon-charge matching, SQCD
+  faithful flavor-baryon center-quotient arithmetic, magnetic descent of
+  fractional baryon charges to the same compact background group, SQCD
   holomorphic-canonical NSVZ coordinate-relation algebra, electric and
   magnetic NSVZ numerator cancellation in the monograph \(\gamma\)
   convention, magnetic gauge-\(R\) anomaly cancellation, magnetic
   superpotential dimension and \(R\)-charge, SQCD conformal-window
   central-charge and free-field \(a_{\mathrm{UV}}-a_{\mathrm{IR}}\)
-  comparison factorization,
-  full electric-magnetic
-  't Hooft anomaly matching, mass and Higgs deformation rank/dimension/
+  comparison factorization, electric-magnetic local perturbative
+  anomaly-polynomial matching, mass and Higgs deformation rank/dimension/
   \(R\)-charge tests, \(N_f=N_c+1\) confining-superpotential
   dimension/\(R\)-charge checks, mass decoupling to the \(N_f=N_c\)
   quantum-modified constraint, massive-SQCD elimination to pure-SYM branch

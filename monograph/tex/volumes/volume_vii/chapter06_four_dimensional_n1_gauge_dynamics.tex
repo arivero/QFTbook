@@ -2716,10 +2716,86 @@ whenever the chapter talks about the full SQCD phase diagram.  This is a
 field-theoretic statement about four-dimensional \(\mathcal N=1\) gauge
 dynamics; no string construction is part of the definition or the argument.
 
-Write the flavor symmetry as
+For charge tables it is useful to display the current algebra as
 \[
   SU(N_f)_L\times SU(N_f)_R\times U(1)_B\times U(1)_R .
 \]
+That line is not yet the compact group that can be coupled to background
+bundles.  With the normalization used in this chapter, \(q_B(Q)=+1\) and
+\(q_B(\widetilde Q)=-1\), let
+\[
+  \zeta_f=e^{2\pi i/N_f},
+  \qquad
+  \omega_c=e^{2\pi i/N_c}.
+\]
+The transformations
+\[
+  (\zeta_f\mathbf 1_L,\zeta_f\mathbf 1_R,e^{-2\pi i/N_f})
+  \quad\text{and}\quad
+  (\mathbf 1_L,\mathbf 1_R,e^{2\pi i/N_c})
+\]
+act trivially on electric gauge-invariant local operators: the first acts
+trivially already on \(Q,\widetilde Q\), while the second acts as the
+\(SU(N_c)\) gauge-center element \(\omega_c\) on \(Q\) and \(\omega_c^{-1}\)
+on \(\widetilde Q\).  Conversely, if
+\((\zeta_f^a\mathbf 1_L,\zeta_f^b\mathbf 1_R,e^{i\beta})\) is invisible on
+local gauge-invariant operators, then on the elementary quarks it can differ
+only by a color-center transformation.  Thus for some \(s\in\mathbb Z/N_c\),
+\begin{equation}
+  \zeta_f^a e^{i\beta}=\omega_c^s,
+  \qquad
+  \zeta_f^{-b} e^{-i\beta}=\omega_c^{-s}.
+  \label{eq:sqcd-faithful-kernel-equations}
+\end{equation}
+Multiplying the two equations gives \(a=b\) modulo \(N_f\), and then
+\(e^{i\beta}=\omega_c^s\zeta_f^{-a}\).  Hence the faithful compact
+flavor-baryon group acting on local gauge-invariant operators is
+\begin{equation}
+  G_{FB}^{\rm SQCD}
+  =
+  \frac{SU(N_f)_L\times SU(N_f)_R\times U(1)_B}
+  {\mathbb Z_{N_f}^{\rm diag}\times\mathbb Z_{N_c}^{B/{\rm gauge}}}.
+  \label{eq:sqcd-faithful-flavor-baryon-group}
+\end{equation}
+The anomaly-free \(R\)-current below is used first as a Lie-algebra current.
+Since \(R(Q)=R(\widetilde Q)=1-N_c/N_f\) is fractional in the conventional
+normalization, a compact \(U(1)_R\) background requires an integral
+normalization, for example \(\widehat R=N_fR\), together with the appropriate
+spin/\(R\)-structure data.  The local anomaly-polynomial calculation below
+does not by itself compare those torsion choices.
+
+An admissible flavor-baryon background on a spacetime \(X\) is therefore a
+principal \(G_{FB}^{\rm SQCD}\)-bundle, not necessarily a product of separate
+\(SU(N_f)_L\), \(SU(N_f)_R\), and \(U(1)_B\) bundles.  On a good cover it may
+be represented by local lifts
+\((g^L_{\alpha\beta},g^R_{\alpha\beta},e^{i\beta_{\alpha\beta}})\) whose
+triple-overlap products are
+\[
+  g^L_{\alpha\beta}g^L_{\beta\gamma}g^L_{\gamma\alpha}
+  =
+  \zeta_f^{a_{\alpha\beta\gamma}}\mathbf 1,
+  \qquad
+  g^R_{\alpha\beta}g^R_{\beta\gamma}g^R_{\gamma\alpha}
+  =
+  \zeta_f^{a_{\alpha\beta\gamma}}\mathbf 1,
+\]
+\begin{equation}
+  e^{i(\beta_{\alpha\beta}+\beta_{\beta\gamma}
+  +\beta_{\gamma\alpha})}
+  =
+  \zeta_f^{-a_{\alpha\beta\gamma}}\,
+  \omega_c^{s_{\alpha\beta\gamma}},
+  \label{eq:sqcd-admissible-background-cocycles}
+\end{equation}
+with \(a_{\alpha\beta\gamma}\in\mathbb Z/N_f\) and
+\(s_{\alpha\beta\gamma}\in\mathbb Z/N_c\).  Electric quarks are then sections
+of the combined color--flavor--baryon bundle; the color center cocycle cancels
+the \(s_{\alpha\beta\gamma}\) obstruction.  The ordinary direct-product
+background used in the triangle calculation is the special case
+\(a=s=0\).  On general \(G_{FB}^{\rm SQCD}\)-bundles there can be additional
+discrete inflow classes and quotient-dependent contact terms, so equality of
+the full background anomaly is a separate part of the duality conjecture.
+
 The electric fields transform as
 \[
 \begin{array}{c|c|c|c|c|c}
@@ -2734,8 +2810,9 @@ The electric fields transform as
 and the meson \(M^i{}_j=\widetilde Q_jQ^i\) transforms as
 \((\mathbf N_f,\overline{\mathbf N}_f)\).  The normalization of
 \(U(1)_B\) is chosen so that an electric baryon \(Q^{N_c}\) has charge
-\(N_c\).  This differs by a harmless overall factor from conventions in
-which \(Q\) has baryon charge \(1/N_c\).
+\(N_c\).  This normalization is convenient for local charge arithmetic, but
+\eqref{eq:sqcd-faithful-flavor-baryon-group} shows that it is not globally
+harmless when compact background fluxes are present.
 
 For \(N_f\geq N_c+2\), set
 \[
@@ -2770,6 +2847,18 @@ dimension one.  Equivalently one may use the canonically normalized magnetic
 singlet \(M_{\mathrm{can}}=M/\mu_*\) and absorb \(\mu_*\) into the Yukawa
 coupling.  The displayed form keeps the operator map visible.
 
+The fractional magnetic baryon charges are also shorthand for a representation
+of the same faithful group \eqref{eq:sqcd-faithful-flavor-baryon-group}, not
+for an independent baryon circle.  Under
+\((\mathbf 1_L,\mathbf 1_R,e^{2\pi i/N_c})\), \(q\) transforms by
+\(e^{2\pi i/\widetilde N_c}\), the magnetic color-center phase.  Under
+\((\zeta_f\mathbf 1_L,\zeta_f\mathbf 1_R,e^{-2\pi i/N_f})\), the left
+antifundamental charge of \(q\) and its baryon charge combine to
+\(e^{-2\pi i/\widetilde N_c}\), again a magnetic color-center phase; the
+\(\widetilde q\) phase is the inverse, and \(M\) is invariant.  Thus the
+magnetic fields are well-defined on the same admissible background after the
+magnetic color bundle supplies the corresponding center cocycle.
+
 \begin{hypothesis}[SQCD infrared-comparison hypotheses]
 \label{hyp:sqcd-ir-comparison-hypotheses}
 Whenever this section compares the electric and magnetic SQCD descriptions,
@@ -2780,9 +2869,14 @@ the following hypotheses are part of the statement.
   symmetries, and enough supersymmetry for the Wilsonian chiral-coordinate
   arguments of Chapters~\ref{ch:susy-wilsonian-schemes-exact-dynamics} and
   \ref{ch:susy-nonrenormalization-holomorphy}.
-\item The unbroken global currents are represented by the same operators in
-  the two infrared limits.  Consequently their 't Hooft anomalies are
-  invariant data of the infrared theory and must match.
+\item The unbroken global currents and faithful compact flavor-baryon
+  background group \eqref{eq:sqcd-faithful-flavor-baryon-group} are
+  represented by the same infrared operators.  On liftable product
+  backgrounds the local anomaly-polynomial coefficients must match.  On
+  nonliftable \(G_{FB}^{\rm SQCD}\)-bundles and on compact \(R\)-backgrounds,
+  the full inflow class, torsion terms, and allowed local counterterms must be
+  specified separately before one can claim compact-background anomaly
+  agreement.
 \item The displayed \(U(1)_R\) current is the superconformal current in the
   interacting range after all allowed flavor-current mixing has been fixed.
   At free endpoints one must include the accidental symmetries of the free
@@ -2791,6 +2885,13 @@ the following hypotheses are part of the statement.
   generate the protected chiral sector being compared, after imposing
   \(F\)-term equations and after excluding extra accidental chiral generators
   not present in the stated phase.
+\item The observable sector compared in this chapter consists of
+  gauge-invariant local operators and their correlation functions in the
+  declared background class, the protected chiral ring, and holomorphic mass
+  and Higgs deformations.  Equality of line/defect categories or of all
+  compact-manifold partition functions is not asserted unless the relevant
+  extended operators, background counterterms, and global-form data are added
+  explicitly.
 \item Relevant deformations by holomorphic quark masses and by generic
   Higgs-branch expectation values commute with the comparison: after
   integrating out massive fields and matching holomorphic scales, the
@@ -2805,34 +2906,39 @@ the meson singlet is forced because \(Q\widetilde Q\) is an independent
 electric chiral coordinate; the superpotential is the unique cubic chiral
 coupling with the displayed flavor charges and \(R\)-charge \(2\); the
 magnetic gauge anomaly cancellation is a necessary consistency test; and the
-global anomaly matching below is a regulator-independent test of the common
-infrared current algebra.  These checks do not construct the continuum
-infrared fixed point, but they make every algebraic burden of the duality
-statement explicit.
+local anomaly-polynomial matching below tests the common infrared current
+algebra near the identity component of the background group.  These checks do
+not construct the continuum infrared fixed point, but they make every
+algebraic burden of the duality statement explicit.
 
-\begin{quotedtheorem}[Seiberg-duality input for SQCD]
-\label{qt:sqcd-seiberg-duality-input}
+\begin{conjecture}[Central conjecture: Seiberg duality for SQCD]
+\label{conj:sqcd-seiberg-duality-central}
 For four-dimensional \(\mathcal N=1\) SQCD with gauge group \(SU(N_c)\),
 \(N_f\geq N_c+2\) flavors, zero tree superpotential, and the Wilsonian
-coordinate conventions of this chapter, and under
-Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses}, the infrared theory at
-the origin of the quantum moduli space has an equivalent magnetic description
-with gauge group \(SU(N_f-N_c)\), fields and charges as displayed above, and
-superpotential \eqref{eq:sqcd-magnetic-superpotential}.  The equivalence
-identifies the common global currents, chiral ring after imposing
-superpotential equations, deformations by masses and Higgs expectation
-values, and all 't Hooft anomalies.  In the interval
-\(\frac32N_c<N_f<3N_c\) this is an equivalence of interacting infrared
-SCFTs; in the free electric and free magnetic ranges it is understood after
+coordinate conventions of this chapter, the electric theory at the origin of
+the quantum moduli space is conjectured to have the same infrared QFT as the
+magnetic \(SU(N_f-N_c)\) theory with fields, faithful-background action, and
+superpotential displayed above.  The conjecture is made under
+Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses} and is a statement about
+the observable sector declared there: local gauge-invariant operators and
+correlators, the protected chiral ring after imposing \(F\)-term equations,
+holomorphic mass and Higgs deformation families, and partition functions on
+admissible backgrounds only after the relevant contact-term convention has
+been declared.  It predicts equality of the full anomaly inflow class for the
+faithful background data, but the calculation below checks only the local
+perturbative anomaly-polynomial component.  In the interval
+\(\frac32N_c<N_f<3N_c\) the conjecture asserts a common interacting infrared
+SCFT; in the free electric and free magnetic ranges it is interpreted after
 including the appropriate free variables and accidental symmetries at the
-endpoint.
-\end{quotedtheorem}
+endpoint.  The historical proposal is Seiberg's electric--magnetic duality
+\cite{Seiberg1994}; the status in this chapter is central conjecture, with
+the following calculations serving as evidence rather than proof.
+\end{conjecture}
 
-This quoted theorem is not a theorem proved from the preceding Wilsonian
-holomorphy alone.  The monograph uses it as an exact nonperturbative input
-and then exposes the checks that make the statement sharp: charge
-assignments, anomaly matching, deformation matching, and consistency with
-NSVZ fixed-point arithmetic.
+The monograph uses this central conjecture as the nonperturbative input for
+the SQCD phase diagram and then exposes the checks that make the statement
+sharp: faithful charge assignments, local anomaly-polynomial matching,
+deformation matching, and consistency with NSVZ fixed-point arithmetic.
 
 \paragraph{Magnetic \(R\)-charge and NSVZ consistency.}
 With the magnetic charges displayed above, \(U(1)_R\) is free of
@@ -2884,13 +2990,17 @@ The electric numerator was checked in
 Section~\ref{sec:n1-superconformal-sqcd-bookkeeping}; both descriptions
 therefore pass the same fixed-point arithmetic.
 
-\paragraph{Electric-magnetic anomaly matching.}
+\paragraph{Local perturbative anomaly-polynomial matching.}
 \label{par:sqcd-seiberg-anomaly-matching}
 Normalize cubic nonabelian anomalies so that a left-handed Weyl fermion in
 the fundamental of \(SU(N_f)\) contributes \(+1\) and an antifundamental
 contributes \(-1\).  Normalize mixed \(SU(N_f)^2U(1)\) anomalies so that a
-fundamental or antifundamental contributes the same quadratic index.  Then
-the electric and magnetic descriptions have the common anomaly coefficients
+fundamental or antifundamental contributes the same quadratic index.  The
+calculation is performed on liftable product backgrounds for the Lie algebra
+of \(G_{FB}^{\rm SQCD}\) and the chosen \(R\)-current.  It checks the free
+local part of the anomaly inflow polynomial, not the torsion/global anomaly
+classes or contact terms on all quotient bundles.  In this scope, the
+electric and magnetic descriptions have the common anomaly coefficients
 \[
 \begin{array}{c|c}
   \text{anomaly} & \text{coefficient} \\ \hline
@@ -3008,7 +3118,12 @@ and
   =
   N_c^2-1-\frac{2N_c^4}{N_f^2}.
 \]
-This completes the displayed anomaly-matching calculation.
+This completes the displayed local anomaly-polynomial matching calculation,
+a necessary check on the central conjecture.  The comparison of all global
+anomalies on the nonliftable \(G_{FB}^{\rm SQCD}\)-backgrounds described in
+\eqref{eq:sqcd-admissible-background-cocycles} and the choice of
+scheme-dependent local background counterterms remain separate compact
+background data.
 
 \paragraph{Mass and Higgs deformation tests for SQCD duality.}
 Let \(N_f\geq N_c+2\) and set \(\widetilde N_c=N_f-N_c\).  The magnetic
@@ -3110,7 +3225,7 @@ is not Higgsed by this operation, so its rank remains
 of the low-energy electric \(SU(N_c-r)\) theory with \(N_f-r\) flavors.
 
 These deformation tests are necessary consequences of the proposed duality,
-not a replacement for the quoted nonperturbative input.  Their value in this
+not a replacement for the central conjecture.  Their value in this
 chapter is that the mass, Higgs, and rank bookkeeping is completely visible:
 one can see which fields are eliminated, which gauge group remains, and where
 the boundary \(N_f=N_c+1\) description enters.
@@ -3136,7 +3251,7 @@ displayed finite-dimensional elimination arguments.  The \(N_f=N_c\) and
 \(N_f=N_c+1\) entries use the quantum-modified and confining chiral-coordinate
 inputs stated earlier in the section.  The magnetic ranges
 \(N_f\geq N_c+2\) use the nonperturbative Seiberg-duality input of
-Quoted Theorem~\ref{qt:sqcd-seiberg-duality-input} under
+Conjecture~\ref{conj:sqcd-seiberg-duality-central} under
 Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses}.  The one-loop signs below
 are Wilsonian coordinate checks on the proposed infrared variables; by
 themselves they do not construct the continuum infrared fixed points or prove
@@ -3728,8 +3843,9 @@ unique trajectory.  Each rank-reducing step additionally assumes Seiberg
 duality for the strongly coupled node with the other node treated during the
 matching as a weakly gauged flavor symmetry, and assumes that integrating out
 the mesons in the magnetic description is legitimate in the Wilsonian
-neighborhood being used.  These duality assumptions are recorded again in
-Quoted Theorem~\ref{qt:ks-seiberg-duality-input}.
+neighborhood being used.  These duality assumptions are the SQCD central
+conjecture of Conjecture~\ref{conj:sqcd-seiberg-duality-central}, applied
+with the neighboring gauge factor included in the declared background data.
 \end{hypothesis}
 
 \paragraph{Cascade rank step.}
@@ -3844,21 +3960,25 @@ fixed theta angles exactly when
 Modulo the \(2\pi\)-periodicity of the \(R\)-rotation parameter, this leaves
 \(2M\) elements, namely \(\mathbb Z_{2M}\).
 
-\begin{quotedtheorem}[Seiberg-duality input for the cascade]
-\label{qt:ks-seiberg-duality-input}
-The cascade rank step describes the infrared chiral data and anomalies of the
-successive Wilsonian theories provided Seiberg duality holds for the strongly
-coupled node with the neighboring gauge group treated as a weakly gauged
-flavor symmetry during the matching.  The matching includes the flavor
-symmetries, baryonic symmetry, \(R\)-symmetry, holomorphic scale coordinates,
-and the quartic superpotential after the massive mesons are eliminated.
-\end{quotedtheorem}
+\begin{conjecture}[Cascade use of the SQCD central conjecture]
+\label{conj:ks-seiberg-duality-cascade}
+The cascade rank step describes the infrared chiral data, local
+anomaly-polynomial data, and holomorphic deformations of the successive
+Wilsonian theories provided Conjecture~\ref{conj:sqcd-seiberg-duality-central}
+applies to the strongly coupled node with the neighboring gauge group treated
+as a weakly gauged flavor symmetry during the matching.  The matching includes
+the faithful flavor-baryon background data inherited from the node, the
+declared \(R\)-current background convention, holomorphic scale coordinates,
+and the quartic superpotential after the massive mesons are eliminated.  It
+does not assert equality of all line/defect sectors or all quotient-background
+torsion anomalies unless those data are added to the SQCD conjecture.
+\end{conjecture}
 
-This is a status boundary, not a new proof of Seiberg duality.  The
-monograph uses the duality as an exact field-theoretic input with visible
-checks: the magnetic rank is \(N_f-N_c\), the rank difference is preserved,
-the alternating quartic superpotential is regenerated, and the global anomaly
-assignment is unchanged after the duality map.
+This is a conditional use of the SQCD central conjecture, not an independent
+derivation.  The monograph keeps the visible checks: the magnetic rank is
+\(N_f-N_c\), the rank difference is preserved, the alternating quartic
+superpotential is regenerated, and the local anomaly-polynomial assignment is
+unchanged after the duality map.
 
 For \(r=0\), the cascade ends at pure \(SU(M)\) supersymmetric Yang--Mills.
 The anomalous chiral symmetry leaves a \(\mathbb Z_{2M}\) gaugino phase

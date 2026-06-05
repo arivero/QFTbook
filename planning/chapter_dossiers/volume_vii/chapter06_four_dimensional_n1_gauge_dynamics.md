@@ -160,11 +160,19 @@ brane construction, or holographic interpretation is a premise of the chapter.
 - `mu_*`: dimension-one matching scale used when the magnetic singlet
   `M` is normalized as the electric composite `tilde Q Q`.
 - `W_mag=(1/mu_*) M q tilde q`: magnetic SQCD superpotential.
+- `G_FB^SQCD`: faithful compact SQCD flavor-baryon group
+  `(SU(N_f)_L x SU(N_f)_R x U(1)_B)/(Z_Nf^diag x Z_Nc^(B/gauge))`
+  acting on gauge-invariant local operators, with admissible backgrounds
+  represented by quotient cocycles rather than by arbitrary product bundles.
 - `hyp:sqcd-ir-comparison-hypotheses`: explicit continuum, current,
-  superconformal-R, chiral-coordinate, and deformation-matching assumptions
+  faithful-background, compact-background anomaly, superconformal-R,
+  observable-sector, chiral-coordinate, and deformation-matching assumptions
   needed before comparing electric and magnetic SQCD infrared limits.
-- `qt:sqcd-seiberg-duality-input`: quoted nonperturbative status boundary
-  for SQCD Seiberg duality.
+- `conj:sqcd-seiberg-duality-central`: central conjecture for SQCD Seiberg
+  duality, including electric/magnetic theories, faithful compact background
+  action, observable-sector scope, conformal/free-range qualifications, and
+  the distinction between predicted full inflow agreement and the local
+  perturbative anomaly-polynomial check actually displayed.
 - `par:sqcd-infrared-range-synthesis`: status-stratified SQCD infrared range
   synthesis; the magnetic ranges use Seiberg-duality input, while the lower
   ranges use the separately stated ADS, quantum-modified, or confining
@@ -201,6 +209,9 @@ brane construction, or holographic interpretation is a premise of the chapter.
   conformal-manifold assumptions.
 - `hyp:ks-cascade-input-assumptions`: Wilsonian, NSVZ, Seiberg-duality, and
   meson-integration assumptions for the cascade.
+- `conj:ks-seiberg-duality-cascade`: conditional cascade use of the SQCD
+  central conjecture with the neighboring gauge factor treated as weakly
+  gauged flavor/background data.
 
 ## Claim Ledger
 
@@ -388,19 +399,29 @@ brane construction, or holographic interpretation is a premise of the chapter.
   and the exact free-field comparison factorization
   `a_UV-a_IR=N_c^2(3-y)^2(2y+3)/(48y^2)` with `y=N_f/N_c`, explicitly not
   used as a proof of a general \(a\)-theorem or of flow existence.
-- Adds the general SQCD Seiberg-duality ledger as a status-bounded
-  nonperturbative input rather than a citation-as-proof: electric/magnetic
-  field content, magnetic rank `N_f-N_c`, baryon normalization, magnetic
-  meson normalization, and the `M q tilde q / mu_*` superpotential.
+- Adds the general SQCD Seiberg-duality ledger as a central conjecture rather
+  than a citation-as-proof or theorem-shaped input: electric/magnetic field
+  content, magnetic rank `N_f-N_c`, baryon normalization, faithful compact
+  flavor-baryon quotient, magnetic meson normalization, observable-sector
+  scope, and the `M q tilde q / mu_*` superpotential.
 - States `hyp:sqcd-ir-comparison-hypotheses`, separating continuum-limit,
-  current-identification, R-current, chiral-sector, and deformation-matching
+  current-identification, faithful-background, R-current, observable-sector,
+  chiral-sector, compact-background anomaly, and deformation-matching
   assumptions before any electric/magnetic equivalence is used.
 - Proves the magnetic gauge-`R` anomaly cancellation, magnetic
   superpotential \(R=2\), and magnetic NSVZ numerator cancellation in the
   monograph `gamma=d log Z/d log mu` convention.
-- Proves electric/magnetic matching for the displayed global anomalies:
+- Derives the faithful compact SQCD flavor-baryon group by showing that
+  `(zeta_f 1_L,zeta_f 1_R,e^{-2 pi i/N_f})` and
+  `(1_L,1_R,e^{2 pi i/N_c})` are exactly the finite kernel up to color
+  center, and checks that the magnetic fractional baryon charges descend to
+  the same quotient with the magnetic color center.
+- Proves electric/magnetic matching for the displayed local perturbative
+  anomaly-polynomial coefficients:
   `SU(N_f)_L^3`, `SU(N_f)_R^3`, mixed flavor-`R`, mixed flavor-baryon,
-  `U(1)_B^2 U(1)_R`, `Tr R`, and `Tr R^3`.
+  `U(1)_B^2 U(1)_R`, `Tr R`, and `Tr R^3`; the dossier records that torsion
+  and quotient-background global anomalies are not checked by this triangle
+  calculation.
 - Adds explicit deformation tests for the Seiberg-duality field content:
   an electric mass for one flavor maps to a rank-one magnetic Higgs branch
   `SU(N_f-N_c)->SU(N_f-N_c-1)` with the correct light-flavor rank, while a
@@ -411,8 +432,9 @@ brane construction, or holographic interpretation is a premise of the chapter.
   with explicit logical status: ADS runaway from the direct `N_f=N_c-1`
   instanton calculation plus holomorphic decoupling, quantum-modified
   `N_f=N_c`, confining `N_f=N_c+1`, Seiberg-duality input for the free
-  magnetic range and interacting conformal window, and perturbative electric
-  infrared freedom in the free electric range.
+  magnetic range and interacting conformal window under the central
+  conjecture, and perturbative electric infrared freedom in the free electric
+  range.
 - Checks the `N_f=N_c+1` confining superpotential
   `(B M tilde B - det M)/Lambda_h^(2N_c-1)` by dimension and \(R\)-charge.
 - Defines the KW gauge theory field content, global symmetries, baryon-charge
@@ -488,13 +510,15 @@ brane construction, or holographic interpretation is a premise of the chapter.
   affine-Toda/Witten-index count matching.
 - `calculation-checks/susy_n1_sqcd_duality_checks.py` verifies exact
   rational arithmetic for the general SQCD duality and phase ledger:
-  dual-rank involution, baryon-charge map, SQCD holomorphic-canonical NSVZ
-  coordinate-relation algebra, electric/magnetic NSVZ numerator
+  dual-rank involution, baryon-charge map, faithful flavor-baryon
+  center-quotient arithmetic, magnetic descent of fractional baryon charges,
+  SQCD holomorphic-canonical NSVZ coordinate-relation algebra,
+  electric/magnetic NSVZ numerator
   cancellation, magnetic gauge-`R` anomaly cancellation, magnetic
   superpotential dimension and \(R\)-charge, SQCD conformal-window
   central-charge and conditional free-field
   \(a_{\mathrm{UV}}-a_{\mathrm{IR}}\) comparison factorization,
-  full global anomaly matching,
+  local perturbative anomaly-polynomial matching,
   mass and Higgs deformation rank/dimension/`R`-charge tests,
   `N_f=N_c+1` confining-superpotential checks, mass decoupling to the
   `N_f=N_c` quantum-modified constraint, massive-SQCD-to-pure-SYM branch
@@ -539,3 +563,9 @@ chiral-coordinate spaces with their assumptions and anomaly data.
   preserved-symmetry current basis and absence of accidental currents.  Added
   the SQCD meson unitarity-bound correction as the worked failure mode for
   naive trial-polynomial maximization.
+- 2026-06-05 issue #793 pass: replaced the SQCD and cascade Seiberg-duality
+  `quotedtheorem` blocks by central/conditional conjecture blocks, derived
+  the faithful compact SQCD flavor-baryon quotient, formulated admissible
+  quotient backgrounds, limited the displayed anomaly evidence to local
+  perturbative anomaly-polynomial matching, and made the observable-sector
+  scope visible for downstream phase and cascade uses.
