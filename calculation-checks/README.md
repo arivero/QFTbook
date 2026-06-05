@@ -2505,7 +2505,9 @@ Current checks:
   prepotential coefficient \(q/(2a^2)\).
 - `susy_localization_matrix_checks.py`: finite checks for the compact-space
   supersymmetric localization chapter, including the trace-delta \(S^4\)
-  Gaussian coefficient, the \(S^4\) \(\mathcal N=4\) adjoint-hyper
+  Gaussian coefficient, the Pestun vector normal-symbol exactness test, the
+  equivariant-index multiplicity ledger behind the \(S^4\) \(H\)-exponents,
+  the \(S^4\) \(\mathcal N=4\) adjoint-hyper
   root-pair cancellation of \(H\)-factors, the finite normal Gaussian
   Pfaffian/determinant convention, the protected-insertion residual
   telescope for the \(S^4\) localization functional and normalized Wilson

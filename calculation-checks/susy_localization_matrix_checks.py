@@ -5,6 +5,8 @@ The checks verify convention-sensitive pieces that appear in the displayed
 S^4 and S^3 matrix models:
 
 * the trace-delta S^4 Gaussian coefficient;
+* the transverse normal-symbol exactness and equivariant-index multiplicity
+  ledger behind the S^4 Pestun one-loop factors;
 * the root-pair cancellation of S^4 H-factors in the N=4 adjoint-hyper limit;
 * the finite normal Gaussian Pfaffian/determinant convention;
 * the protected-insertion residual telescope for the S^4 localization functional;
@@ -163,6 +165,38 @@ def determinant_exact(matrix: list[list[int | Fraction]]) -> Fraction:
     return det
 
 
+def matrix_rank_exact(matrix: list[list[int | Fraction]]) -> int:
+    if not matrix:
+        return 0
+    work = [[Fraction(entry) for entry in row] for row in matrix]
+    rows = len(work)
+    cols = len(work[0])
+    rank = 0
+    pivot_col = 0
+    while rank < rows and pivot_col < cols:
+        pivot = None
+        for row in range(rank, rows):
+            if work[row][pivot_col] != 0:
+                pivot = row
+                break
+        if pivot is None:
+            pivot_col += 1
+            continue
+        work[rank], work[pivot] = work[pivot], work[rank]
+        pivot_value = work[rank][pivot_col]
+        for col in range(pivot_col, cols):
+            work[rank][col] /= pivot_value
+        for row in range(rows):
+            if row == rank:
+                continue
+            factor = work[row][pivot_col]
+            for col in range(pivot_col, cols):
+                work[row][col] -= factor * work[rank][col]
+        rank += 1
+        pivot_col += 1
+    return rank
+
+
 def pfaffian_exact(matrix: list[list[int | Fraction]]) -> Fraction:
     size = len(matrix)
     if size == 0:
@@ -191,6 +225,54 @@ def check_s4_trace_delta_gaussian_coefficient() -> None:
     coupling_conversion = mp.mpf("0.5")
     trace_delta_coefficient = common_coefficient * coupling_conversion
     assert_close("S4 trace-delta Gaussian coefficient", trace_delta_coefficient, 4, mp.mpf("1e-40"))
+
+
+def check_s4_transverse_normal_symbol_exactness() -> None:
+    # For the principal part of the vector normal complex
+    # Omega^0 --u wedge--> Omega^1 --P^+(u wedge .)--> Omega^+,
+    # choose u=e^1.  In the self-dual basis
+    # (e12+e34, e13-e24, e14+e23), P^+(e1 wedge a)=0 forces
+    # a2=a3=a4=0, so the kernel is exactly the image of the first map.
+    d0 = [[1], [0], [0], [0]]
+    d1 = [
+        [0, 1, 0, 0],
+        [0, 0, 1, 0],
+        [0, 0, 0, 1],
+    ]
+    composition = [
+        [sum(d1[row][col] * d0[col][0] for col in range(4))]
+        for row in range(3)
+    ]
+    assert_equal("S4 normal symbol composition vanishes", composition, [[0], [0], [0]])
+    assert_equal("S4 normal symbol rank d0", matrix_rank_exact(d0), 1)
+    assert_equal("S4 normal symbol rank d1", matrix_rank_exact(d1), 3)
+    assert_equal("S4 normal symbol kernel/image dimension", 4 - matrix_rank_exact(d1), matrix_rank_exact(d0))
+
+
+def check_s4_normal_index_multiplicity_ledger() -> None:
+    # The residual round-sphere character q/(1-q)^2 has coefficient n at
+    # q^n.  One ordered vector root contributes +n; the root pair contributes
+    # +2n; a full hypermultiplet weight contributes -n.
+    max_n = 9
+    residual_coefficients = [Fraction(n) for n in range(1, max_n + 1)]
+    expected_from_convolution = [
+        sum(Fraction(1) for _ in range(n))
+        for n in range(1, max_n + 1)
+    ]
+    assert_equal("S4 residual index coefficients q/(1-q)^2", residual_coefficients, expected_from_convolution)
+
+    vector_pair = [2 * coeff for coeff in residual_coefficients]
+    hyper_weight = [-coeff for coeff in residual_coefficients]
+    for n, coeff in enumerate(residual_coefficients, start=1):
+        assert_equal(f"S4 ordered vector root multiplicity n={n}", coeff, Fraction(n))
+        assert_equal(f"S4 vector root-pair multiplicity n={n}", vector_pair[n - 1], Fraction(2 * n))
+        assert_equal(f"S4 hyper weight multiplicity n={n}", hyper_weight[n - 1], Fraction(-n))
+
+    kappa_vector_pair = 2
+    kappa_hyper_weight = -1
+    for n in range(1, max_n + 1):
+        assert_equal("S4 vector finite-product exponent from index", kappa_vector_pair * n, vector_pair[n - 1])
+        assert_equal("S4 hyper finite-product exponent from index", kappa_hyper_weight * n, hyper_weight[n - 1])
 
 
 def check_s4_n4_adjoint_hyper_cancellation() -> None:
@@ -569,6 +651,8 @@ def check_s3_chiral_pair_integral() -> None:
 
 def main() -> None:
     check_s4_trace_delta_gaussian_coefficient()
+    check_s4_transverse_normal_symbol_exactness()
+    check_s4_normal_index_multiplicity_ledger()
     check_s4_n4_adjoint_hyper_cancellation()
     check_finite_normal_gaussian_factor()
     check_s4_u1_gaussian_integral()

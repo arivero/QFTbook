@@ -342,43 +342,223 @@ The coefficient equals the familiar half-trace coefficient because
 The localization structure contains more than the Cartan variable.  An off-shell
 \(4D\) \(\mathcal N=2\) vector multiplet on the round sphere consists of a
 connection \(A_\mu\), complex adjoint scalars \(\phi,\bar\phi\), gaugini
-\(\lambda_{A},\bar\lambda_{A}\) with \(A=1,2\) an \(SU(2)_R\) index, and
-auxiliary fields \(D_{AB}=D_{BA}\).  The chosen supercharge is specified by a
-pair of conformal Killing spinors \((\xi_A,\bar\xi_A)\).  Its square has the
-form
+\(\lambda_A,\bar\lambda_A\), \(A=1,2\), and auxiliary fields
+\(D_{AB}=D_{BA}\).  The supercharge is specified by conformal Killing spinors
+\((\xi_A,\bar\xi_A)\) and their conformal partners
+\((\xi'_A,\bar\xi'_A)\) satisfying
+\begin{equation}
+  \nabla_\mu\xi_A=\sigma_\mu\bar\xi'_A,\qquad
+  \nabla_\mu\bar\xi_A=\bar\sigma_\mu\xi'_A,\qquad
+  \nabla_\mu\xi'_A=-\frac1{4r^2}\sigma_\mu\bar\xi_A,\qquad
+  \nabla_\mu\bar\xi'_A=-\frac1{4r^2}\bar\sigma_\mu\xi_A .
+  \label{eq:s4-conformal-killing-spinor-system}
+\end{equation}
+In stereographic coordinates \(x^\mu\) from the north pole, with
+\(\Omega=(1+|x|^2/(4r^2))^{-1}\), a representative is
+\begin{equation}
+  \xi_A(x)=\Omega^{1/2}\bigl(\epsilon_A+x^\mu\sigma_\mu\bar\eta_A\bigr),
+  \qquad
+  \bar\xi_A(x)=\Omega^{1/2}\bigl(\bar\epsilon_A+x^\mu\bar\sigma_\mu\eta_A\bigr),
+  \label{eq:s4-cks-stereographic-representative}
+\end{equation}
+with constant spinors chosen so that the bilinear vector
+\[
+  v^\mu=\xi^A\sigma^\mu\bar\xi_A
+\]
+vanishes at the north and south poles and generates the two tangent-plane
+rotations used in the \(\Omega\)-background limits.  The exact normalization of
+the constant spinors fixes only the scale of the equivariant parameters; the
+zero set of \(v\) and the closure of the algebra below are the invariant data.
+
+For the vector multiplet, the fermion variations may be written in the usual
+spinor variables as
+\begin{align}
+  QA_\mu
+  &=
+  \ii\xi^A\sigma_\mu\bar\lambda_A
+  -\ii\bar\xi^A\bar\sigma_\mu\lambda_A,
+  \label{eq:s4-vector-susy-A}\\
+  Q\phi&=-\ii\xi^A\lambda_A,\qquad
+  Q\bar\phi=\ii\bar\xi^A\bar\lambda_A,
+  \label{eq:s4-vector-susy-scalars}\\
+  Q\lambda_A
+  &=
+  \frac12\sigma^{\mu\nu}\xi_A F_{\mu\nu}
+  +2\sigma^\mu\bar\xi_A D_\mu\phi
+  +2\ii\xi_A[\phi,\bar\phi]
+  +D_{AB}\xi^B
+  +2\phi\,\sigma^\mu\nabla_\mu\bar\xi_A,
+  \label{eq:s4-vector-susy-lambda}\\
+  Q\bar\lambda_A
+  &=
+  \frac12\bar\sigma^{\mu\nu}\bar\xi_A F_{\mu\nu}
+  -2\bar\sigma^\mu\xi_A D_\mu\bar\phi
+  -2\ii\bar\xi_A[\phi,\bar\phi]
+  +D_{AB}\bar\xi^B
+  -2\bar\phi\,\bar\sigma^\mu\nabla_\mu\xi_A .
+  \label{eq:s4-vector-susy-lambdabar}
+\end{align}
+The variation of \(D_{AB}\) is the covariant fermion derivative fixed by
+\(Q^2\)-closure.  It is usually cleaner to pass to the cohomological variables
+obtained by contracting the gaugini with the chosen spinors:
+\[
+  (A,\Phi,\bar\Phi;\Psi,\eta,\chi;H).
+\]
+Here \(\Psi\) is a one-form, \(\eta\) is a scalar, and \(\chi,H\) are sections
+of the self-dual two-form bundle rotated by the \(SU(2)_R\) background.  In
+these variables the off-shell transformations are
+\begin{equation}
+\begin{aligned}
+  QA &= \Psi,&
+  Q\Psi &= \iota_v F+D_A\Phi,\\
+  Q\Phi &= \iota_v\Psi,&
+  Q\bar\Phi &= \eta,\\
+  Q\eta &= \mathcal L_v^A\bar\Phi+[\Phi,\bar\Phi],&
+  Q\chi &= H,\\
+  QH &= \mathcal L_v^A\chi+[\Phi,\chi]+\Theta\cdot\chi .
+\end{aligned}
+  \label{eq:s4-cohomological-q-transformations}
+\end{equation}
+Thus
 \begin{equation}
   Q^2
   =
-  \mathcal L_v+\delta_{\rm gauge}(\Lambda)
+  \mathcal L_v+\delta_{\rm gauge}(\Phi+\iota_v A)
   +\delta_{SU(2)_R}(\Theta)+\delta_{\rm flavor}(m),
   \label{eq:s4-q-square-data}
 \end{equation}
-where \(v^\mu=\xi^A\sigma^\mu\bar\xi_A\) is a Killing vector on \(S^4_r\),
-\(\Lambda\) is an adjoint-valued gauge parameter, \(\Theta\) is an
-\(SU(2)_R\) rotation, and \(m\) denotes background flavor masses when present.
-For the standard round-sphere choice, \(v\) vanishes at the north and south
-poles and generates rotations in the two tangent planes near each pole.
+on gauge-covariant fields, with flavor masses included when hypermultiplets are
+present.
 
-The bosonic fixed-locus statement used in the matrix model is the following
-field-theoretic reduction.  After choosing the real integration cycle for
-which the localizing term is nonnegative, all smooth bulk fields on the
-trivial bundle are gauge-equivalent to
+\begin{hypothesis}[Pestun localizing cycle and square identity]
+\label{hyp:s4-pestun-localizing-cycle}
+The round-sphere vector-multiplet localizing functional is
+\begin{equation}
+  V_{\rm vec}
+  =
+  \int_{S^4}\sqrt g\,\operatorname{tr}
+  \left(
+    \Psi^\dagger Q\Psi+\eta^\dagger Q\eta+\chi^\dagger Q\chi
+  \right),
+  \label{eq:s4-vector-localizing-functional}
+\end{equation}
+with the real cycle chosen so that \(A\) is a unitary connection, the scalar
+\(\Phi\) in \(Q^2\) is the real Coulomb coordinate, the remaining real scalar
+direction is denoted by \(Y\), and the auxiliary fields are integrated along
+the contour making the Gaussian convergent.  After eliminating \(H\), the
+spinor bilinears determine nonnegative coefficient functions on \(S^4\).
+The required bosonic square identity is
+\begin{equation}
+\begin{aligned}
+  (QV_{\rm vec})_{\rm bos}
+  =
+  \int_{S^4}\sqrt g\,\operatorname{tr}\Big(
+  &|\iota_vF+D_A\Phi|^2
+  +|D_A\bar\Phi|^2
+  +|[\Phi,\bar\Phi]|^2
+  +|D_A Y|^2+\frac1{r^2}|Y|^2\\
+  &+c_+(x)|F^+ + \mathcal T^+(x)Y|^2
+  +c_-(x)|F^- + \mathcal T^-(x)Y|^2\\
+  &+|D_{AB}-D_{AB}(\Phi,\bar\Phi,Y)|^2
+  \Big),
+\end{aligned}
+  \label{eq:s4-localizing-square-decomposition}
+\end{equation}
+where \(c_\pm(x)\ge0\), \(c_+\) vanishes only at one pole, and \(c_-\) vanishes
+only at the other pole.  In polar angle \(\theta\) from the north pole one may
+normalize them as positive multiples of
+\((1-\cos\theta)/2\) and \((1+\cos\theta)/2\).  The two-forms
+\(\mathcal T^\pm\) are the self-dual and anti-self-dual curvature-coupling
+bilinears made from the spinors in
+\eqref{eq:s4-conformal-killing-spinor-system}; on the patches where the
+corresponding spinor norm is nonzero they can be represented by
+\(\xi^A\sigma_{\mu\nu}\xi_A\) and
+\(\bar\xi^A\bar\sigma_{\mu\nu}\bar\xi_A\), multiplied by the round-sphere
+curvature scale.  The weighted products in
+\eqref{eq:s4-localizing-square-decomposition} are smooth at the poles.  The
+last term records all auxiliary-field curvature couplings as the algebraic
+square of \(D_{AB}\) around the value fixed by
+\eqref{eq:s4-vector-susy-lambda}--\eqref{eq:s4-vector-susy-lambdabar}.  The
+hypermultiplet localizing term is the corresponding positive sum of the
+Dirac-type \(Q\)-variation squares.  Formula
+\eqref{eq:s4-localizing-square-decomposition} is a field-theoretic hypothesis
+inside the localization structure: without this off-shell square identity and
+cycle, the Cartan matrix integral is only an ansatz.
+\end{hypothesis}
+
+\paragraph{Smooth bulk \(S^4\) fixed-locus consequence.}
+\label{par:s4-smooth-bulk-fixed-locus}
+Assume the localizing cycle and square identity of
+Hypothesis~\ref{hyp:s4-pestun-localizing-cycle}, and restrict to smooth fields
+on the trivial \(G\)-bundle.  The zero locus of \(QV_{\rm vec}\), modulo
+ordinary gauge transformations, is
 \begin{equation}
   A_\mu=0,\qquad
-  \phi,\bar\phi\hbox{ constant with real-cycle coordinate }a,\qquad
-  D_{AB}=D_{AB}(a),
-  \qquad a\in\mathfrak t ,
+  \Phi=a\in\mathfrak t,\qquad
+  Y=0,\qquad
+  \bar\Phi=\bar a,\qquad
+  D_{AB}=D_{AB}(a,\bar a,0),
   \label{eq:s4-bulk-fixed-locus}
 \end{equation}
-with the auxiliary field determined algebraically by the Killing-spinor
-background.  Nonzero instanton number is not represented by a smooth global
-bulk deformation of \eqref{eq:s4-bulk-fixed-locus}; in the large-localizing
-parameter limit it is concentrated in the two tangent-space models at the
-poles.  The north-pole tangent space contributes an equivariant instanton
-integral on \(\mathbb C^2\), and the south pole contributes the anti-instanton
-factor.  This is why the compactification or contour defining
-\(Z_{\rm inst}\) is part of Definition~\ref{def:s4-nekrasov-factor}, rather
-than an optional interpretation added after the formula.
+with quotient by the Weyl group and with hypermultiplet fields set to zero
+unless the mass and Coulomb parameters leave additional zero modes.
+
+Indeed, every square in \eqref{eq:s4-localizing-square-decomposition} must
+vanish.  The
+\(|Y|^2/r^2\) square gives \(Y=0\), so the shifted curvature equations reduce
+to \(F^+=0\) on the open set where \(c_+>0\) and \(F^-=0\) on the open set
+where \(c_->0\).  These open sets cover the complements of opposite poles, so
+both chiralities of \(F\) vanish on a dense open subset of \(S^4\).  Smoothness
+and the smooth weighted pole behavior in
+Hypothesis~\ref{hyp:s4-pestun-localizing-cycle} extend the vanishing through
+the poles, giving \(F=0\) everywhere.  On the trivial bundle a smooth flat
+connection on \(S^4\) is globally gauge-equivalent to \(A=0\).  The scalar
+equations give \(d\Phi=d\bar\Phi=0\) in that gauge and
+\([\Phi,\bar\Phi]=0\), hence the constant scalar may be conjugated into
+\(\mathfrak t\).  Reducible points are not extra saddles; they are points where
+the stabilizer of \(a\) is larger than the maximal torus, and their gauge zero
+modes are accounted for by the Faddeev--Popov determinant and the Weyl quotient.
+The auxiliary equation is algebraic and gives \(D_{AB}(a,\bar a,0)\).  The
+positive hypermultiplet squares force the hyper fields to vanish away from the
+usual mass/Coulomb zero-mode walls, where the determinant must be interpreted
+with the zero modes separated.
+
+Nonzero instanton number is a different sector, not an extra smooth bulk
+deformation of the smooth bulk locus \eqref{eq:s4-bulk-fixed-locus}.  If the
+second Chern number is nonzero, \(F\) cannot vanish globally.  In the
+large-localizing-parameter limit the positive curvature terms suppress
+curvature on compact subsets away from the zeros of \(v\), while the topological
+charge remains fixed.  Uhlenbeck compactness then leaves only pointlike
+curvature concentration at the north and south poles.  After rescaling a small
+ball around a pole to its tangent \(\mathbb C^2\), the equations reduce to the
+ordinary equivariant instanton equation at one pole and anti-instanton equation
+at the other.  The choice of Gieseker, Uhlenbeck, or another compactification
+of these tangent-space moduli problems is therefore the separate input recorded
+in Definition~\ref{def:s4-nekrasov-factor}; it is not derived by the smooth bulk
+fixed-locus argument.
+
+The reduction has three logically different physics layers.  The first layer is
+the off-shell \(QV\) square identity and the real cycle; it controls the smooth
+bulk equations and identifies the Coulomb saddle.  The second layer is the
+topological charge sector; it explains why nonzero instanton number survives as
+pole-local tunneling data rather than as a smooth deformation of the Coulomb
+configuration.  The third layer is the perturbative normal-mode calculation
+around the Coulomb saddle.  Only this third layer produces the spectrum whose
+finite part is written with \(H\).  Thus the one-loop product below is placed
+after the fixed-equation analysis: its Barnes algebra regularizes a determinant
+whose normal complex has already been supplied by the gauge theory.  This
+ordering is part of the QFT content.  A finite product identity can verify
+counterterm conventions, root-pair cancellations, and hypermultiplet signs, but
+the matrix integral obtains field-theoretic meaning from the preceding
+localization structure and from the continuum comparison datum in
+Definition~\ref{def:compact-supersymmetric-localization-datum}.
+For that reason the next lemma is intentionally modest.  It fixes the analytic
+normalization of one entire function after the equivariant index has produced
+the mode multiplicities.  It does not choose the integration cycle, select the
+instanton compactification, or justify the continuum limit; those pieces remain
+the localization data just described.  This keeps the analytic determinant
+calculation in its proper physical role, as a consequence of the normal
+complex rather than the source of the localization argument.
 
 Define the even entire function
 \begin{equation}
@@ -480,10 +660,70 @@ The remaining exponential is \(\exp((1+\gamma_{\rm E})x^2)\), which gives
 \(\exp(c x^2)\) changes only this local quadratic prefactor.
 \end{proof}
 
-The one-loop determinant formula below uses the following finite-part
-operation.  Suppose that, after pairing all acyclic \(Q\)-doublets in a
-fixed root or weight sector, the unpaired finite-cutoff determinant has the
-form
+The one-loop determinant formula below comes from the gauge-fixed normal
+complex around the Coulomb locus, not from a free choice of exponents.  At
+\(A=0,\Phi=a\), decompose every field into Cartan directions and
+root/weight sectors.  Cartan scalar zero modes are tangent to the fixed locus;
+Cartan gauge rotations are divided by the gauge volume.  For an ordered
+nonzero root \(\alpha\), the vector-multiplet normal complex has principal
+part
+\begin{equation}
+  \Omega^0_\alpha(S^4)
+  \xrightarrow{\,d\,}
+  \Omega^1_\alpha(S^4)
+  \xrightarrow{\,P_v^+d\,}
+  E^+_{v,\alpha}(S^4),
+  \label{eq:s4-vector-normal-symbol-complex}
+\end{equation}
+where the first arrow is the infinitesimal gauge action, \(E_v^+\) is the
+self-dual two-form bundle rotated by the chosen spinor bilinears, and the
+lower-order terms are the \(Q^2\)-weights
+\(\mathcal L_v+\ii\alpha(a)+\Theta\).  For a hypermultiplet weight \(\rho\),
+the normal complex is the corresponding \(Q\)-Dirac complex with equivariant
+mass \(\ii\rho(a)+\ii m\).  These complexes are transversally elliptic for the
+\(U(1)^2\) action generated by \(v\): for every nonzero covector \(u\) normal
+to the orbit direction, the symbol sequence of
+\eqref{eq:s4-vector-normal-symbol-complex} is exact.  In a frame
+\(u=e^1\), this is the elementary exact sequence
+\[
+  \mathbb C
+  \xrightarrow{\lambda\mapsto\lambda e^1}
+  \mathbb C^4
+  \xrightarrow{a\mapsto P^+(e^1\wedge a)}
+  \mathbb C^3,
+\]
+whose second kernel is precisely the first image.
+
+The equivariant index of this normal complex gives the residual unpaired
+cohomology after acyclic \(Q\)-doublets have cancelled.  In the round
+specialization \(\epsilon_1=\epsilon_2=1/r\), the one-variable character of one
+ordered vector root sector and one full hypermultiplet weight sector is
+\begin{equation}
+\begin{aligned}
+  \chi_{\alpha}^{\rm vec}(q)
+  &=
+  \frac{q}{(1-q)^2}\,e^{\ii r\alpha(a)}
+  =
+  \sum_{n\ge1}n\,q^n e^{\ii r\alpha(a)},\\
+  \chi_{\rho}^{\rm hyp}(q)
+  &=
+  -\frac{q}{(1-q)^2}\,e^{\ii(r\rho(a)+rm)}
+  =
+  -\sum_{n\ge1}n\,q^n e^{\ii(r\rho(a)+rm)} .
+\end{aligned}
+  \label{eq:s4-normal-complex-index-multiplicities}
+\end{equation}
+The sign distinguishes numerator and denominator contributions to the
+superdeterminant.  Combining the ordered roots \(\alpha\) and \(-\alpha\)
+turns the two linear factors at each level into \(n^2+r^2\alpha(a)^2\) with
+multiplicity \(2n\) for each positive root.  Thus the mode multiplicity \(n\)
+is the coefficient of the transversally elliptic index, while the finite
+product below is only the finite-part regularization of the determinant after
+that index has been supplied.
+
+The finite-part operation is as follows.  After pairing all acyclic
+\(Q\)-doublets in a fixed root or weight sector, the unpaired finite-cutoff
+determinant has the form
 \begin{equation}
   D_{\kappa,N}^{\rm raw}(x)
   =
@@ -493,9 +733,8 @@ form
 \end{equation}
 Here \(x\) is the dimensionless equivariant mass in that sector:
 \(x=r\,\alpha(a)\) for a vector root, or \(x=r\rho(a)+rm\) for a hypermultiplet
-weight.  The exponent \(n\) is the residual cohomological multiplicity of
-the transversally elliptic complex after the paired boson--fermion modes
-have cancelled.  The constant factor
+weight.  The exponent \(n\) is the residual cohomological multiplicity in
+\eqref{eq:s4-normal-complex-index-multiplicities}.  The constant factor
 \(\prod_{n=1}^{N}n^{2\kappa n}\) is independent of the Coulomb variable and
 is removed by the normalization of the partition function.  The remaining
 Coulomb-dependent finite part is
@@ -521,15 +760,19 @@ Lemma~\ref{lem:s4-H-function-convention}.
 
 With this convention the perturbative \(S^4\) determinant is obtained from a
 short sector calculation.  A vector root pair \(\{\alpha,-\alpha\}\) contributes
-the Cartan gauge-fixing factor \(\alpha(a)^2\) and the finite part with
-\(\kappa=2\), hence \(H(r\alpha(a))^2\) for each positive root.  A full
+the Cartan gauge-fixing factor \(\alpha(a)^2\), the orientation of the real
+determinant line fixed by pairing conjugate root sectors, and the finite part
+with \(\kappa=2\), hence \(H(r\alpha(a))^2\) for each positive root.  A full
 hypermultiplet weight \(\rho\) contributes the inverse finite part with
-\(\kappa=-1\), hence \(H(r\rho(a)+rm)^{-1}\).  The formula below is exactly
-this sector calculation multiplied over the root and weight multisets.  A derivation from
-the infinite-dimensional field theory has to supply the regulated normal
-complex, the pairing of acyclic modes, the cohomological multiplicity \(n\),
-and the absence of boundary contributions in the chosen field-variable cycle;
-those structures are part of
+\(\kappa=-1\), hence \(H(r\rho(a)+rm)^{-1}\).  Zero modes at walls such as
+\(\alpha(a)=0\) are not included in the determinant; they are separated before
+the Weyl quotient and the Cartan contour are defined.  Remaining determinant
+phases and shifts by \(\exp(c x^2)\) are local gauge/flavor/gravitational
+counterterm choices.  The formula below is this normal-complex sector
+calculation multiplied over the root and weight multisets.  The continuum QFT
+still has to provide the regulated field space, the \(Q\)-Stokes theorem, and
+the absence or control of boundary contributions in the chosen integration
+cycle; those structures are part of
 Definition~\ref{def:compact-supersymmetric-localization-datum}.
 
 For a vector multiplet and hypermultiplets of masses \(m_\ell\) in
@@ -1268,7 +1511,7 @@ anti-instantons.  The two factors are complex conjugates only when the
 integration cycle and masses are chosen so that reflection positivity gives
 the corresponding conjugation property.
 
-\paragraph{Protected-insertion comparison budget.}
+\paragraph{Protected-insertion proof-obligation ledger.}
 Equation~\eqref{eq:pestun-s4-localization} is the scalar partition-function
 case of a functional statement on protected insertions.  Fix a finite
 test space \(\mathcal P_N\) of \(Q\)-closed regulated insertions containing
@@ -1297,30 +1540,34 @@ ADHM--Nekrasov functional, and the final localized expression.  Define
 \end{aligned}
 \]
 Then the comparison to the displayed localization formula is the exact
-telescope
+bookkeeping telescope
 \begin{equation}
   \mathcal Z_{\rm reg}-\mathcal Z_{\rm loc}
   =
   E_{\rm Stokes}+E_{\rm normal}+E_{\rm res}+E_{\rm inst}+E_{\rm cont}.
   \label{eq:s4-protected-insertion-localization-budget}
 \end{equation}
-Here \(E_{\rm Stokes}\) records finite-regulator \(Q\)-Stokes, anomaly, and
+This identity is not, by itself, evidence for localization.  It is a ledger of
+the maps that a proof must construct and estimate.  Here \(E_{\rm Stokes}\)
+records finite-regulator \(Q\)-Stokes, anomaly, and
 boundary defects; \(E_{\rm normal}\) records normal-complex, zero-mode, and
 determinant-line defects; \(E_{\rm res}\) records the residual Cartan
 contour, Weyl quotient, and fixed-locus restriction of the insertion;
 \(E_{\rm inst}\) records the choice of Gieseker/Nekrasov instanton
 compactification at the poles; and \(E_{\rm cont}\) records the continuum
-limit and contact-term comparison.  For any norm on the finite-dimensional
-dual space,
+limit and contact-term comparison.  Only after a regulator theorem gives
+bounds or vanishing statements for these five entries does the ordinary
+localized expression become a field-theoretic equality.  For any norm on the
+finite-dimensional dual space,
 \[
   \left\|\mathcal Z_{\rm reg}-\mathcal Z_{\rm loc}\right\|
   \le
   \|E_{\rm Stokes}\|+\|E_{\rm normal}\|+\|E_{\rm res}\|
   +\|E_{\rm inst}\|+\|E_{\rm cont}\|.
 \]
-Thus the usual formula is recovered for this test space only after these
-five residuals have been killed or bounded.  For the half-BPS circular Wilson
-loop, the fixed-locus restriction is
+This triangle inequality is a way of recording the remaining burden, not a
+bound with content until the individual residuals have been estimated.  For
+the half-BPS circular Wilson loop, the fixed-locus restriction is
 \(W_{\square}|_{\rm fix}=N^{-1}\operatorname{Tr}_{\square}\ee^X\); the
 Laguerre and Bessel computations below evaluate
 \(\mathcal Z_{\rm loc}(W_{\square})/\mathcal Z_{\rm loc}(1)\).  They do not

@@ -30,10 +30,16 @@
 - Regulated QFT localization datum:
   \((\mathfrak F_\Lambda,C_\Lambda,\mu_\Lambda,S_\Lambda,Q_\Lambda,V_\Lambda)\)
   as the minimal shorthand for the full compact datum \(\mathfrak L_M\).
-- \(S^4\) \(\mathcal N=2\) localization variables, \(Q^2\) datum, bulk
-  fixed-locus statement, trace-delta Gaussian convention, vector and
-  hypermultiplet one-loop determinants, and Nekrasov north/south pole
-  factors.
+- \(S^4\) \(\mathcal N=2\) localization variables, conformal Killing-spinor
+  system, cohomological \(Q\)-transformations, \(Q^2\) datum, localizing
+  functional, explicit positive-square hypothesis, smooth bulk fixed-locus
+  consequence, trace-delta Gaussian convention, vector and hypermultiplet
+  one-loop determinants, and
+  Nekrasov north/south pole factors.
+- Gauge-fixed Pestun normal complex around the Coulomb locus, including the
+  transverse symbol exactness argument, the round-sphere equivariant-index
+  character \(q/(1-q)^2\), and the derivation of the residual multiplicity
+  \(n\) used in the \(H\)-products.
 - Singular-instanton compactification choices: Uhlenbeck stratification,
   Gieseker/framed torsion-free-sheaf resolution, and Donaldson--Uhlenbeck
   compactification on a compact four-manifold.
@@ -67,9 +73,9 @@
   instanton-sector definition.
 - Open problem recording the missing continuum regulator theorem for
   Gieseker/Nekrasov selection in four-dimensional \(S^4\) localization.
-- Protected-insertion comparison budget for Pestun localization: on a finite
-  \(Q\)-closed insertion test space, the regulated QFT functional and the
-  localized Cartan/Nekrasov functional are connected by five named residuals
+- Protected-insertion proof-obligation ledger for Pestun localization: on a
+  finite \(Q\)-closed insertion test space, the regulated QFT functional and
+  the localized Cartan/Nekrasov functional are connected by five named residuals
   for \(Q\)-Stokes, normal-complex, residual Cartan/insertion restriction,
   instanton compactification, and continuum/contact-term comparison.
 - \(H\)-function convergence, logarithmic derivative, and Barnes-\(G\)
@@ -120,7 +126,11 @@
 | \(W_G\) | Weyl group |
 | \(\Delta,\Delta_+\) | root system and positive roots |
 | \(a\) | \(S^4\) Coulomb localization variable |
+| \(Y\) | real scalar direction orthogonal to the \(S^4\) Coulomb localization scalar |
 | \(v,\Lambda,\Theta,m\) | isometry, gauge, \(R\)-symmetry, and flavor terms in \(Q^2\) |
+| \(\xi_A,\bar\xi_A\) | conformal Killing spinors selecting the \(S^4\) supercharge |
+| \(\Psi,\eta,\chi,H\) | cohomological vector-multiplet variables for Pestun localization |
+| \(E_v^+\) | spinor-bilinear-rotated self-dual two-form bundle in the normal complex |
 | \(\sigma\) | \(S^3\) Coulomb localization variable |
 | \(H(x)\) | Pestun one-loop determinant function |
 | \(G_B\) | Barnes \(G\)-function in the chapter normalization |
@@ -163,22 +173,35 @@
    that datum.
 5. In the monograph trace-delta convention, the \(S^4\) classical Gaussian is
    \(\exp[-4\pi^2r^2(a,a)/g_{\rm YM}^2]\).
-6. The \(S^4\) localization supercharge squares to an isometry plus gauge,
-   \(R\)-symmetry, and flavor transformations; the bulk fixed locus is the
-   constant Cartan scalar locus, while instanton sectors sit in the north and
-   south tangent-space models.
-7. The chapter \(H\)-function is an even entire product whose Barnes-\(G\)
+6. The \(S^4\) localization supercharge is specified by the round conformal
+   Killing-spinor system and cohomological \(Q\)-transformations.  With the
+   declared real cycle and positive \(QV\) square hypothesis, the smooth
+   trivial-bundle bulk fixed locus is derived as a conditional consequence:
+   \(A=0\), constant Cartan scalar \(a\), vanishing orthogonal scalar \(Y\),
+   algebraic auxiliary field, and hypermultiplets zero away from zero-mode
+   walls.
+7. Nonzero instanton number is not a smooth bulk deformation of the Coulomb
+   saddle.  In the large-localizing-parameter limit curvature is forced to
+   concentrate at the poles, where tangent-space instanton/anti-instanton
+   problems enter; the Gieseker/Nekrasov selection remains a separate
+   conditional input.
+8. The gauge-fixed vector normal complex is transversally elliptic under
+   \(Q^2\); after acyclic \(Q\)-doublets cancel, the residual round-sphere
+   character \(q/(1-q)^2\) gives multiplicity \(n\) for one ordered vector
+   root and \(-n\) for one full hypermultiplet weight.  This is the source of
+   the \(H\)-product exponents.
+9. The chapter \(H\)-function is an even entire product whose Barnes-\(G\)
    comparison includes a declared quadratic counterterm convention.
-8. The \(S^4\) one-loop determinant is tied to a finite-part mode-product
+10. The \(S^4\) one-loop determinant is tied to a finite-part mode-product
    ledger: after removing the \(a\)-independent normalization, the
    logarithmically divergent \(x^2\sum_{n\le N}1/n\) term is subtracted as a
    quadratic local background counterterm, leaving \(H(x)^\kappa\).  Vector
    root pairs carry \(\kappa=2\), while full hypermultiplet weights carry
    \(\kappa=-1\).
-9. The \(S^4\) \(\mathcal N=2\) partition function is the Cartan integral with
+11. The \(S^4\) \(\mathcal N=2\) partition function is the Cartan integral with
    vector/hyper one-loop determinants and north/south Nekrasov factors.
-10. Pestun localization for protected insertions is now organized as a
-    functional telescope:
+12. Pestun localization for protected insertions is now organized as a
+    proof-obligation telescope:
     `Z_reg - Z_loc = E_Stokes + E_normal + E_res + E_inst + E_cont`.
     The five residuals separate finite-regulator \(Q\)-Stokes defects,
     normal-complex and determinant-line defects, residual Cartan-contour and
@@ -187,19 +210,19 @@
     and planar Bessel computations evaluate the localized circular-loop
     functional after this comparison data has been supplied; they do not
     prove the vanishing of the five field-theoretic residuals.
-11. Uhlenbeck strata have codimension
+13. Uhlenbeck strata have codimension
    \(2\ell(N-1)\) in complex dimension, so the familiar real codimension-four
    one-point boundary is the \(N=2,\ell=1\) case rather than a universal
    statement for all \(U(N)\).
-12. The Gieseker-to-Uhlenbeck morphism has an exact sheaf-theoretic charge
+14. The Gieseker-to-Uhlenbeck morphism has an exact sheaf-theoretic charge
     ledger: for `0 -> E -> E** -> Q -> 0` with `length(Q)=ell`,
     additivity of the Chern character gives `k(E)=k(E**)+ell`.  Uhlenbeck
     keeps the lower-charge smooth instanton and the support cycle; Gieseker
     keeps the punctual quotient data resolving that boundary.
-13. ADHM stability failure is the finite-dimensional small-instanton
+15. ADHM stability failure is the finite-dimensional small-instanton
    mechanism; the Gieseker quotient resolves it while the Uhlenbeck quotient
    records the lost charge as points of \(\mathbb C^2\).
-14. The displayed tangent Euler class at a Young-diagram fixed point now has
+16. The displayed tangent Euler class at a Young-diagram fixed point now has
     a rank-one monomial-ideal derivation: the finite character
     `V^* + t1 t2 V - (1-t1)(1-t2) V V^*` cancels to the two arm/leg weights
     per box on \({\rm Hilb}^n(\mathbb C^2)\).  Its one-box specialization
@@ -211,26 +234,26 @@
     sum is \(1/(2\epsilon_1^2\epsilon_2^2)\).  This is resolved punctual
     data over the single Uhlenbeck support cycle \(2[0]\), not an ordinary
     smooth commutative \(U(1)\) instanton sector.
-15. In charge one, the Gieseker resolution is explicitly
+17. In charge one, the Gieseker resolution is explicitly
     \(T^\ast\mathbb{CP}^{N-1}\to\overline{\mathcal O}_{\rm min}\),
     \(([I],J)\mapsto J\otimes I\).  The equations
     \(I(J)=0\), \(\operatorname{Tr}(J\otimes I)=0\), and
     \((J\otimes I)^2=0\) identify the Uhlenbeck boundary as the cone apex.
-16. The equality between the Gieseker-resolved equivariant integral and the
+18. The equality between the Gieseker-resolved equivariant integral and the
     \(S^4\) field-theoretic localized path integral is recorded as a
     field-theoretic matching hypothesis unless a regulator proves it.  The
     chapter now cross-references the finite BV boundary-obstruction formula:
     a smooth-stratum pushforward fails the residual QME by the
     small-instanton boundary functional unless a resolution, relative cycle,
     residue datum, or vanishing theorem cancels it.
-17. The new Gieseker-sector regulator selection datum separates the five
+19. The new Gieseker-sector regulator selection datum separates the five
     proof obligations hidden in the usual shorthand: finite-regulator BV
     \(Q\)-Stokes data, local ADHM/resolution reduction, determinant-line and
     orientation comparison, Uhlenbeck-collar boundary cancellation, and the
     equivariant limiting theorem for insertions.  The positive-ADHM
     moment-map proposition proves only the finite-dimensional stability
     component after the pole-local reduction has been obtained.
-18. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
+20. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
    Gaussian matrix model with the Weyl/Vandermonde factor.  The chapter now
    defines the circular-loop Gaussian coupling, derives the exact finite-\(N\)
    Laguerre-polynomial Wilson-loop formula from the Hermite kernel, derives
@@ -238,33 +261,35 @@
    as \(2I_1(\sqrt{\lambda_{\rm circ}})/\sqrt{\lambda_{\rm circ}}\), and
    derives the Bessel algebra behind the Bremsstrahlung function from the
    protected circular-loop Ward identity.
-19. The \(S^3\) \(\mathcal N=2\) partition function is attached to a full
+21. The \(S^3\) \(\mathcal N=2\) partition function is attached to a full
     globally quantized Chern-Simons-matter datum \(\mathfrak D_{S^3}\), not to
     an arbitrary scalar \(k\) for an arbitrary compact group.
-20. Parity-anomaly cancellation is imposed before the localized formula is
+22. Parity-anomaly cancellation is imposed before the localized formula is
     declared: \(\mathcal K_{\rm eff}=\mathcal K_{\rm bare}
     +\frac12\sum_\psi\epsilon_\psi\mathcal K_\psi\) must lie in the allowed
     spin or non-spin level lattice, with background contact terms included.
-21. FI terms are defined only on \(\operatorname{Hom}(G,U(1))\), equivalently
+23. FI terms are defined only on \(\operatorname{Hom}(G,U(1))\), equivalently
     on Abelian center directions, and vanish on semisimple coroots.
-22. Gauge-gauge, gauge-flavor, flavor-flavor, \(R\)-background, gravitational,
+24. Gauge-gauge, gauge-flavor, flavor-flavor, \(R\)-background, gravitational,
     framing, and mixed determinant-sector Chern-Simons/contact coordinates are
     part of the localized answer rather than disposable phases.
-23. The round-\(S^3\) determinant can be written in \(\ell\)-function or
+25. The round-\(S^3\) determinant can be written in \(\ell\)-function or
     double-sine variables; the pole hyperplanes and JK chamber are part of the
     integration-cycle datum.
-24. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
+26. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
    once the oscillatory contour is declared.
-25. The conjugate-chiral determinant identity gives
+27. The conjugate-chiral determinant identity gives
    \(1/(2\cosh\pi\sigma)\), whose integral over \(\mathbb R\) is \(1/2\).
-26. Contact terms and local curvature counterterms are QFT coordinates, not
+28. Contact terms and local curvature counterterms are QFT coordinates, not
     disposable normalizations.
 
 ## Calculation Checks
 
 - `calculation-checks/susy_localization_matrix_checks.py` verifies the
   trace-delta \(S^4\) Gaussian coefficient, the \(U(1)\) \(S^4\) Gaussian
-  integral, the finite normal Gaussian Pfaffian/determinant convention and
+  integral, the Pestun vector normal-symbol exactness test, the
+  equivariant-index multiplicity ledger behind the \(S^4\) \(H\)-exponents,
+  the finite normal Gaussian Pfaffian/determinant convention and
   zero-mode detection, the protected-insertion residual telescope for the
   \(S^4\) localization functional and normalized Wilson-loop ratio, the
   \(S^4\) \(H\)-function finite-product logarithmic derivative, the
@@ -347,7 +372,7 @@
   finite mechanism by deriving the rank-one monomial-ideal character
   `V^* + t1 t2 V - (1-t1)(1-t2) V V^*` and its cancellation to the arm/leg
   formula for \({\rm Hilb}^n(\mathbb C^2)\).
-- 2026-06-03: inserted a protected-insertion comparison budget after the
+- 2026-06-03: inserted a protected-insertion proof-obligation ledger after the
   Pestun formula, making the Wilson-loop matrix-model evaluation depend on a
   five-residual telescope rather than silently identifying the localized
   finite-dimensional calculation with the continuum \(S^4\) QFT observable.
@@ -355,3 +380,8 @@
   scalar-level shorthand for general compact \(G\) with the full globally
   quantized Chern-Simons/contact datum, regulator-level parity-anomaly
   condition, Abelian-center FI restriction, and contour/asymptotic prescription.
+- 2026-06-05: repaired the Pestun \(S^4\) foundation by adding the explicit
+  round-sphere supercharge data, localizing functional, positive-square
+  hypothesis, conditional smooth fixed-locus derivation, pole-concentration
+  mechanism for instanton sectors, transversally elliptic normal-complex index
+  ledger, and proof-obligation status of the protected-insertion telescope.
