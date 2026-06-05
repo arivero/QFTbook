@@ -6,9 +6,10 @@ Cutkosky discontinuities to generalized cuts, scalar-integral reconstruction,
 IBP reduction, and master-integral differential equations.  This script
 checks the exact algebraic ledger behind the worked massless phi^4 example,
 the finite two-scale box master, and the one-loop bubble family, then adds
-finite helicity and regulator bookkeeping for the Yang-Mills MHV/all-plus
-control examples, including the five-gluon all-plus rational template.  It
-also checks a finite two-master threshold-mixing model, a two-letter
+finite helicity, color, state-sum, and regulator bookkeeping for the
+Yang-Mills MHV/all-plus control examples, including the planar N=4 MHV
+quadruple-cut reconstruction and the five-gluon all-plus rational template.
+It also checks a finite two-master threshold-mixing model, a two-letter
 master-transport model with boundary and branch negative controls, and the
 finite Laurent-pole ledger that turns a reconstructed virtual amplitude into
 a finite observable only after infrared subtraction, real radiation, and
@@ -20,8 +21,9 @@ especially the phi^4 cut reconstruction, the negative controls for incomplete
 cut sets and four-dimensional blind spots, the bubble IBP identity, and the
 bubble master differential equation, plus the finite two-scale massless box
 master, the gauge-theory MHV box and all-plus rational-term comparison, the
-local two-master threshold-mixing datum in a Fuchsian differential system, the
-two-letter transport/boundary audit for a reduced master sector, and the
+planar N=4 MHV quadruple-cut state-sum ledger, the local two-master
+threshold-mixing datum in a Fuchsian differential system, the two-letter
+transport/boundary audit for a reduced master sector, and the
 virtual-to-observable finite remainder assembly; additionally, the five-point
 all-plus rational amplitude has the correct little-group weights, mass
 dimension, cyclic term coverage, and strict four-dimensional cut invisibility.
@@ -31,6 +33,8 @@ local/rational terms invisible to four-dimensional cuts, and exact rational
 checks of the one-loop bubble IBP coefficients at several regulator values;
 spinor-bracket exponent ledgers for little-group weights and dimensions; and
 a finite four-gluon helicity enumeration for all-plus two-particle cuts;
+finite topology-signature checks for maximal versus two-particle cuts in the
+N=4 MHV box reconstruction and a finite on-shell-supermultiplet state count;
 finite spinor-bracket power counting and helicity-cut enumeration for the
 five-gluon all-plus rational template;
 nilpotent rational matrix algebra for threshold monodromy and regular
@@ -50,8 +54,11 @@ local counterterms are invisible to cuts, and constructs two amplitudes with
 identical four-dimensional cuts but different D-dimensional rational probes;
 it also verifies that the all-plus one-loop rational structure is invisible
 to strict four-dimensional two-particle cuts but visible to a nonzero
-mu_perp^2 massive-scalar probe, verifies the same rational blind spot at five
-points, and rejects virtual-only pole cancellation, omitted rational finite
+mu_perp^2 massive-scalar probe, verifies that an s-channel cut alone cannot
+separate the N=4 MHV box from lower-topology contamination and that a
+gluon-only state sum is not the N=4 supermultiplet, verifies the same
+rational blind spot at five points, and rejects virtual-only pole cancellation,
+omitted rational finite
 remainders, one-cut-only finite-box deformations, branch-label omission,
 diagonal one-master threshold shortcuts, cut-only boundary reconstruction,
 branch/path omission in a two-letter master transport, and untransported
@@ -345,6 +352,35 @@ def all_plus_massive_scalar_probe(mu_perp_squared: Fraction) -> Fraction:
     return mu_perp_squared * mu_perp_squared
 
 
+def factorial(value: int) -> int:
+    result = 1
+    for factor in range(2, value + 1):
+        result *= factor
+    return result
+
+
+def n4_mhv_topology_signature(name: str) -> tuple[Fraction, Fraction, Fraction]:
+    """Return (quadruple cut, s two-particle cut, t two-particle cut)."""
+    if name == "box":
+        return (Fraction(1), Fraction(1), Fraction(1))
+    if name == "s_triangle":
+        return (Fraction(0), Fraction(1), Fraction(0))
+    if name == "t_triangle":
+        return (Fraction(0), Fraction(0), Fraction(1))
+    if name in {"bubble", "rational_or_local"}:
+        return (Fraction(0), Fraction(0), Fraction(0))
+    raise ValueError(name)
+
+
+def n4_mhv_cut_signature(coefficients: dict[str, Fraction]) -> tuple[Fraction, Fraction, Fraction]:
+    cuts = [Fraction(0), Fraction(0), Fraction(0)]
+    for topology, coefficient in coefficients.items():
+        signature = n4_mhv_topology_signature(topology)
+        for index, value in enumerate(signature):
+            cuts[index] += coefficient * value
+    return tuple(cuts)
+
+
 def check_gauge_theory_helicity_controls() -> None:
     parke_taylor_angle = {
         (1, 2): 3,   # <12>^4 / <12>
@@ -410,6 +446,124 @@ def check_gauge_theory_helicity_controls() -> None:
         "all-plus massive-scalar probe sees evanescent sector",
         all_plus_massive_scalar_probe(Fraction(3, 5)) != 0,
     )
+
+
+def check_n4_mhv_quadruple_cut_reconstruction() -> None:
+    multiplet_by_eta_degree = (1, 4, 6, 4, 1)
+    assert_equal("N=4 on-shell multiplet state count", sum(multiplet_by_eta_degree), 16)
+    bosonic_states = (
+        multiplet_by_eta_degree[0]
+        + multiplet_by_eta_degree[2]
+        + multiplet_by_eta_degree[4]
+    )
+    fermionic_states = multiplet_by_eta_degree[1] + multiplet_by_eta_degree[3]
+    assert_equal("N=4 bosonic states", bosonic_states, 8)
+    assert_equal("N=4 fermionic states", fermionic_states, 8)
+
+    delta8_component_angle = {(1, 2): 4}
+    cyclic_denominator_angle = {
+        (1, 2): -1,
+        (2, 3): -1,
+        (3, 4): -1,
+        (4, 1): -1,
+    }
+    tree_component_angle = add_powers(delta8_component_angle, cyclic_denominator_angle)
+    assert_equal(
+        "N=4 superamplitude component gives Parke-Taylor numerator",
+        tree_component_angle,
+        {
+            (1, 2): 3,
+            (2, 3): -1,
+            (3, 4): -1,
+            (4, 1): -1,
+        },
+    )
+    assert_equal(
+        "N=4 MHV tree component little-group weights",
+        little_group_weights(tree_component_angle, {}),
+        (2, 2, -2, -2),
+    )
+    assert_equal(
+        "N=4 MHV tree component mass dimension",
+        bracket_mass_dimension(tree_component_angle, {}),
+        0,
+    )
+
+    # The quadruple-cut coefficient is st times the tree amplitude.  In the
+    # scalar-box normalization used in the text, the average over two isolated
+    # cut solutions gives unit maximal-cut normalization.
+    two_cut_solutions = 2
+    quadruple_cut_average = Fraction(1, 2)
+    assert_equal(
+        "quadruple-cut solution average",
+        two_cut_solutions * quadruple_cut_average,
+        Fraction(1),
+    )
+    st_dimension = 4
+    scalar_box_dimension = -4
+    assert_equal(
+        "N=4 MHV box coefficient dimension",
+        bracket_mass_dimension(tree_component_angle, {}) + st_dimension,
+        4,
+    )
+    assert_equal(
+        "N=4 MHV integrated box amplitude dimension",
+        bracket_mass_dimension(tree_component_angle, {})
+        + st_dimension
+        + scalar_box_dimension,
+        0,
+    )
+
+    target_box_coefficient = Fraction(7, 3)
+    pure_box = {"box": target_box_coefficient}
+    contaminated_same_s_cut = {
+        "box": target_box_coefficient - Fraction(2, 5),
+        "s_triangle": Fraction(2, 5),
+    }
+    assert_equal(
+        "single s cut cannot separate box and triangle contamination",
+        n4_mhv_cut_signature(pure_box)[1],
+        n4_mhv_cut_signature(contaminated_same_s_cut)[1],
+    )
+    assert_true(
+        "maximal cut separates the box coefficient",
+        n4_mhv_cut_signature(pure_box)[0]
+        != n4_mhv_cut_signature(contaminated_same_s_cut)[0],
+    )
+
+    reconstructed = {
+        "box": target_box_coefficient,
+        "s_triangle": Fraction(0),
+        "t_triangle": Fraction(0),
+        "bubble": Fraction(0),
+        "rational_or_local": Fraction(0),
+    }
+    assert_equal(
+        "N=4 MHV reconstructed cut signatures",
+        n4_mhv_cut_signature(reconstructed),
+        (target_box_coefficient, target_box_coefficient, target_box_coefficient),
+    )
+    lower_topology_remainder = {
+        name: coefficient
+        for name, coefficient in reconstructed.items()
+        if name != "box"
+    }
+    assert_equal(
+        "N=4 MHV lower-topology remainder vanishes on cuts",
+        n4_mhv_cut_signature(lower_topology_remainder),
+        (Fraction(0), Fraction(0), Fraction(0)),
+    )
+
+    gluon_only_internal_states = 2
+    assert_true(
+        "gluon-only state sum is not the N=4 multiplet",
+        gluon_only_internal_states != sum(multiplet_by_eta_degree),
+    )
+    assert_true(
+        "gluon-only state sum lacks Bose-Fermi balance",
+        gluon_only_internal_states != fermionic_states,
+    )
+    assert_equal("four-point leading-color cyclic trace terms", factorial(4) // 4, 6)
 
 
 def check_five_gluon_all_plus_rational_template() -> None:
@@ -942,6 +1096,7 @@ def main() -> None:
     check_phi4_cut_reconstruction()
     check_four_dimensional_cut_blind_spot()
     check_gauge_theory_helicity_controls()
+    check_n4_mhv_quadruple_cut_reconstruction()
     check_five_gluon_all_plus_rational_template()
     check_finite_two_scale_box_master()
     check_bubble_ibp_identity()

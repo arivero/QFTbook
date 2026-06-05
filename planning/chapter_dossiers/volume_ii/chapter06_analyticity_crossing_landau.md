@@ -24,9 +24,12 @@
 - Adds a generalized-unitarity and one-loop-reduction bridge after Cutkosky:
   physical cuts versus algebraic generalized cuts, one-loop scalar-integral
   reconstruction, a complete massless \(\lambda\phi^4\) four-point cut
-  reconstruction with negative controls, a Yang--Mills MHV/all-plus rational
-  term control including the five-point all-plus partial-amplitude template,
-  a solved finite two-scale massless box master with branch data, the bubble
+  reconstruction with negative controls, a planar \(\mathcal N=4\)
+  four-gluon MHV quadruple-cut reconstruction with explicit supermultiplet
+  state sum and lower-topology negative control, the pure-Yang--Mills
+  all-plus rational blind spot including the five-point all-plus
+  partial-amplitude template, a solved finite two-scale massless box master
+  with branch data, the bubble
   IBP/differential equation master calculation, and a
   two-stage master-integral layer: first a local two-master threshold block,
   then a two-letter transport audit exposing connection data, Euclidean
@@ -61,8 +64,9 @@
   Brandhuber--McNamara--Spence--Travaglini, Ussyukina--Davydychev,
   Passarino--Veltman,
   Chetyrkin--Tkachov, Tkachov, Kotikov, and Gehrmann--Remiddi form the source
-  lineage for the generalized-unitarity, rational-term, integrand-reduction,
-  explicit box-function, IBP, and differential-equation bridge.
+  lineage for the generalized-unitarity, planar \(\mathcal N=4\) MHV
+  quadruple-cut, rational-term, integrand-reduction, explicit box-function,
+  IBP, and differential-equation bridge.
 - Steinmann's original Wightman/retarded-commutator papers and the
   Stapp/Cahill--Stapp scattering-amplitude refinements are used as source
   traces for the quoted conditional Steinmann relation; the chapter does not
@@ -115,6 +119,8 @@
 | \(\vec J\), \(A_0,A_1\), \(L_0^\gamma,L_1^\gamma\) | two-letter master-transport vector, residue matrices, and path-labelled logarithmic transports in the finite master-system audit |
 | \(\Omega\), \(W_\alpha\), \(\mathcal U_\gamma\) | reduced master-integral connection, Landau-letter functions, and path-ordered transport from a Euclidean boundary point |
 | \(\mu_\perp^2\) | squared loop momentum in the \(-2\epsilon\)-dimensional complement, invisible on four-dimensional cuts |
+| \(\eta_i^A,Q^{A\alpha}\) | \(\mathcal N=4\) on-shell superspace variables and supermomentum used in the MHV quadruple-cut state sum |
+| \(C_{\Box}^{\mathcal N=4}\) | planar four-gluon MHV scalar-box coefficient obtained from the maximal cut after integrating over the four internal on-shell multiplets |
 | \(A_4^{(0)}(1^-,2^-,3^+,4^+)\) | color-ordered tree MHV four-gluon amplitude in the spinor-helicity convention used for the gauge-theory control |
 | \(I_4^{(D)}(s,t)\) | dimensionally regulated massless scalar box in the four-point MHV control |
 | \(S,T\), \(\mathcal F_{\Box}(S,T)\), \(\kappa_{\Box}\) | Euclidean box invariants \(S=-s>0,T=-t>0\), finite reduced two-scale box master after IR-pole subtraction, and its Euclidean boundary/subtraction constant |
@@ -167,9 +173,13 @@
 - The Yang--Mills helicity control uses color-ordered all-outgoing external
   gluons, four-dimensional spinor-helicity little-group weights, and the
   standard tree-level selection rule that a four-gluon tree amplitude is
-  nonzero only in the two-negative or two-positive sector.  Numerical
-  all-plus coefficients are stated only up to the declared loop, color, and
-  particle-content normalization.
+  nonzero only in the two-negative or two-positive sector.  The planar
+  \(\mathcal N=4\) MHV box example is a leading-color primitive partial
+  amplitude; the full leading-color amplitude is recovered by the cyclic
+  trace sum in the chosen generator convention.  Its maximal-cut coefficient
+  uses the complete sixteen-state on-shell supermultiplet, not a gluon-only
+  state sum.  Numerical all-plus coefficients are stated only up to the
+  declared loop, color, and particle-content normalization.
 - The finite box master is a reduced four-point massless scalar box after the
   universal soft/collinear pole part has been subtracted in a declared
   convention.  The displayed normalization fixes
@@ -396,8 +406,14 @@
     C_{\rm loop} s t\, A_4^{(0)}(1^-,2^-,3^+,4^+) I_4^{(D)}(s,t),
   \]
   with the box coefficient fixed by the quadruple cut after the
-  supersymmetric state sum and with no triangle, bubble, or rational
-  remnant in this example.
+  supersymmetric state sum.  The state sum is represented by Berezin
+  integration over the four internal on-shell multiplets; the integrations
+  collapse the internal supermomentum constraints to the external
+  \(\delta^{(8)}(Q)\) and leave the \(s t\) Jacobian.  One two-particle cut
+  alone cannot distinguish the box from lower-topology contamination; after
+  the box subtraction the triple and double cuts have no polynomial
+  remainder and no rational remnant in this declared \(\mathcal N=4\)
+  theory.
 - Pure Yang--Mills all-plus is the rational negative control:
   four-dimensional two-particle cuts of
   \(A_4^{(1)}(1^+,2^+,3^+,4^+)\) vanish by the tree helicity selection rule,
@@ -510,12 +526,13 @@
   #769: the scalar example and the MHV/all-plus helicity control close the
   first one-loop workflow and rational-term boundary.  The five-point
   all-plus template adds a genuine nonabelian one-loop partial amplitude
-  beyond four points, the finite box block supplies one solved physical
-  two-scale master, and the two-letter transport model makes the multi-master
-  boundary/path contract explicit.  Full nonabelian cut-constructible state
-  sums, nontrivial coupled physical multi-master families, finite-field
-  technology, color--kinematics, and higher-loop generalized cuts remain
-  future work.
+  beyond four points, the planar \(\mathcal N=4\) MHV block supplies a full
+  cut-constructible nonabelian state-sum reconstruction in a declared
+  supersymmetric theory, the finite box block supplies one solved physical
+  two-scale master, and the two-letter transport model makes the
+  multi-master boundary/path contract explicit.  Nontrivial coupled physical
+  multi-master families, finite-field technology, color--kinematics, and
+  higher-loop generalized cuts remain future work.
 
 ## Audit Notes
 
@@ -674,3 +691,15 @@
   exact rational transport, the boundary ambiguity, the second-order
   commutator contribution, and underbudgeting when branch/path or boundary
   residuals are omitted.
+- 2026-06-05 issue #769 planar \(\mathcal N=4\) MHV supercut pass: expanded
+  the previous MHV box control into an explicit four-gluon leading-color
+  partial-amplitude reconstruction.  The text now displays the trace-sum
+  convention, the MHV tree superamplitude, the box quadruple-cut Berezin
+  state sum over the four internal on-shell multiplets, the resulting
+  \(s t\,\mathcal A_4^{(0),\mathrm{MHV}}\) coefficient, and the negative
+  controls showing that a single two-particle cut can hide lower-topology
+  contamination and that a gluon-only state sum is not the \(\mathcal N=4\)
+  theory.  The companion script checks the sixteen-state multiplet ledger,
+  Parke--Taylor component extraction, maximal-cut normalization, lower
+  topology ambiguity, vanishing lower-topology remainder, and cyclic trace
+  count.

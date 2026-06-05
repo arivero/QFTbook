@@ -2371,12 +2371,103 @@ clean cut-constructible control:
 \end{equation}
 where \(I_4^{(D)}\) is the dimensionally regulated massless scalar box and
 \(C_{\rm loop}\) records the common loop-measure phase and normalization
-\cite{BDDK1994Unitarity,BrittoCachazoFeng2005GeneralizedUnitarity}.  The
-factor \(s t\) supplies mass dimension four, the scalar box has mass dimension
-\(-4\), and the helicity weight is entirely that of the tree amplitude.  The
-quadruple cut therefore supplies a coefficient-level reconstruction: after
-the supersymmetric internal-state sum it fixes the box coefficient, and there
-are no triangle, bubble, or rational remnants in this example.
+\cite{BDDK1994Unitarity,BrittoCachazoFeng2005GeneralizedUnitarity}.  This is
+a statement about the planar primitive partial amplitude.  With a declared
+fundamental-generator trace convention, the leading-color contribution to the
+full one-loop amplitude is obtained by the corresponding trace sum
+\begin{equation}
+  \mathcal A_{4,\mathrm{lead}}^{(1)}
+  =
+  g^4N_c
+  \sum_{\sigma\in S_4/Z_4}
+  \operatorname{tr}\!\bigl(
+    T^{a_{\sigma(1)}}T^{a_{\sigma(2)}}
+    T^{a_{\sigma(3)}}T^{a_{\sigma(4)}}
+  \bigr)\,
+  A_{4;1}^{(1)}(\sigma(1),\sigma(2),\sigma(3),\sigma(4)),
+  \label{eq:n4-leading-color-trace-partial}
+\end{equation}
+up to the same trace and coupling normalization absorbed into
+\(C_{\rm loop}\).  The color-ordered object in
+\eqref{eq:n4-four-point-mhv-box-control} is the primitive reconstructed from
+cuts.
+
+The coefficient \(s t A_4^{(0)}\) is not inferred from dimension counting
+alone.  Introduce \(\mathcal N=4\) on-shell superspace variables
+\(\eta_i^A\), \(A=1,\ldots,4\), and
+\[
+  Q^{A\alpha}=\sum_{i=1}^4\lambda_i^\alpha\eta_i^A .
+\]
+The four-point MHV tree superamplitude is
+\begin{equation}
+  \mathcal A_{4,\mathrm{super}}^{(0),\mathrm{MHV}}
+  =
+  \ii\,
+  \frac{\delta^{(8)}(Q)}
+       {\langle12\rangle\langle23\rangle
+        \langle34\rangle\langle41\rangle},
+  \qquad
+  \delta^{(8)}(Q)
+  =
+  \prod_{A=1}^4
+  \sum_{1\le i<j\le4}
+  \langle i j\rangle\eta_i^A\eta_j^A .
+  \label{eq:n4-four-point-tree-superamplitude}
+\end{equation}
+The component coefficient of
+\(\prod_A\eta_1^A\eta_2^A\) in
+\eqref{eq:n4-four-point-tree-superamplitude} is precisely the
+Parke--Taylor amplitude displayed above.  On the one-massless-leg box
+quadruple cut, the four corners are complex three-point trees and the
+internal state sum is the Berezin integral over the four cut multiplets:
+\begin{equation}
+  \begin{aligned}
+  C_{\Box}^{\mathcal N=4}
+  &=
+  \frac12
+  \sum_{\ell_*=\ell_\pm}
+  \int\prod_{r=1}^4\dd^4\eta_{\ell_r}\,
+  \mathcal A_3^{(0)}(-\ell_1,1,\ell_2)\,
+  \mathcal A_3^{(0)}(-\ell_2,2,\ell_3)\\
+  &\qquad\qquad\qquad\qquad\qquad
+  \times
+  \mathcal A_3^{(0)}(-\ell_3,3,\ell_4)\,
+  \mathcal A_3^{(0)}(-\ell_4,4,\ell_1)\\
+  &=
+  s t\,\mathcal A_{4,\mathrm{super}}^{(0),\mathrm{MHV}} .
+  \end{aligned}
+  \label{eq:n4-four-point-mhv-quadruple-supercut}
+\end{equation}
+The factor \(1/2\) averages the two isolated complex solutions of the maximal
+cut in the scalar-box normalization whose maximal cut is one.  The
+Grassmann integrations in
+\eqref{eq:n4-four-point-mhv-quadruple-supercut} perform the physical
+supermultiplet state sum: gluon, four gluinos, six scalars, four antigluinos,
+and antigluon.  They collapse the four internal supermomentum constraints to
+the external \(\delta^{(8)}(Q)\); the remaining spinor Jacobian is the
+kinematic factor \(s t\).  Taking the same
+\(\prod_A\eta_1^A\eta_2^A\) component gives the coefficient
+\[
+  C_{\Box}(1^-,2^-,3^+,4^+)
+  =
+  s t\,A_4^{(0)}(1^-,2^-,3^+,4^+).
+\]
+
+Lower topologies are ruled out by additional cut information, not by the
+maximal cut alone.  A triangle or bubble has no residue on all four selected
+denominators, so it cannot change
+\eqref{eq:n4-four-point-mhv-quadruple-supercut}; conversely a single
+two-particle cut can be matched by a box coefficient plus compensating
+lower-topology contamination.  After the box term in
+\eqref{eq:n4-four-point-mhv-box-control} is subtracted, the triple and double
+cuts of this \(\mathcal N=4\) amplitude have no polynomial remainder, and
+the \(D\)-dimensional state sum leaves no rational remnant.  Replacing the
+supermultiplet by only the two gluon helicities would be a different theory,
+not a shortcut to the same answer: the cancellations that remove triangles,
+bubbles, and rational terms use the full sixteen-state multiplet.  This is
+why \eqref{eq:n4-four-point-mhv-box-control} is a complete one-loop
+nonabelian cut reconstruction in its declared theory and normalization, while
+not licensing the same conclusion for pure Yang--Mills.
 
 Pure Yang--Mills with all external helicities positive is the opposite test.
 Every strictly four-dimensional two-particle cut of
