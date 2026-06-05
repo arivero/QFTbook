@@ -2512,11 +2512,15 @@ Current checks:
   plus a compact mass-regulated integrated transverse check of the
   spectator-model color-entanglement obstruction to separate-hadron
   generalized TMD factorization, the triangular logarithmic phase-space
-  area behind the massive-vector Sudakov chart, and a source-label inventory
-  guard for the occurrence-level factorization ledger, including the
-  triple-Regge, Abelian soft-QED, GPD/exclusive, and DIS-threshold boundary
-  rows plus the separation of BMS non-global soft evolution from Glauber
-  exchange.
+  area behind the massive-vector Sudakov chart, and a source-derived manifest
+  guard for the occurrence-level factorization ledger, scanning manuscript
+  labels, factorization-titled environments, and captions for factorization
+  candidates and requiring each one to be included, grouped, or excluded in
+  `planning/factorization_occurrence_manifest.tsv`, including the
+  triple-Regge, Abelian soft-QED, GPD/exclusive, DIS-threshold boundary,
+  generic SCET smeared-functional, soft-drop resummation, and common QCD
+  budget rows plus the separation of BMS non-global soft evolution from
+  Glauber exchange.
 - `track_function_moment_checks.py`: exact rational checks for the finite-kernel
   track-function RG identities, verifying preservation of normalization, the
   first-moment evolution formula, and the full finite moment-tower formula

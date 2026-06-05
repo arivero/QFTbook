@@ -228,7 +228,15 @@ The chapter establishes:
       triple-Regge, Abelian soft-QED, GPD/exclusive, and DIS-threshold
       boundary occurrences; it also classifies pole/residue, large-\(N_c\),
       spinor-helicity, pAQFT causal-factorization, and BV prefactorization
-      homonyms outside the QCD/SCET hard-process ledger.
+      homonyms outside the QCD/SCET hard-process ledger.  The 2026-06-04
+      issue #832 pass makes the audit source-derived: manuscript labels,
+      factorization-titled environments, and captions containing
+      "factorization" or "factorized" must appear in
+      `planning/factorization_occurrence_manifest.tsv` as included, grouped,
+      or excluded, with integrable scattering, instanton determinant/size
+      decompositions, conformal/categorical algebra, finite-range Gaussian
+      decompositions, Monte Carlo conditional probabilities, and other
+      non-QCD meanings kept outside the hard-process ledger by name.
 8acaa. The finite non-global dipole evolution row is a soft-radiation/BMS
        coordinate, not a Glauber replacement.  Its nonlinear product term
        records correlated real--virtual soft radiation under a non-global
@@ -523,3 +531,13 @@ The chapter establishes:
   exchange are separate coordinates; and extended
   `calculation-checks/scet_factorization_checks.py` with a source-label
   inventory guard for the ledger.
+- 2026-06-04 issue #832 source-derived ledger pass: moved the occurrence audit
+  classification out of the checker and into
+  `planning/factorization_occurrence_manifest.tsv`; the companion check now
+  mechanically scans manuscript labels, factorization-titled environments, and
+  captions, failing if a candidate lacks a manifest disposition.  The ledger
+  now has separate rows for the generic smeared SCET coordinate, perturbative
+  soft-drop resummation with RG-consistency grouped as the same observable
+  datum, the common QCD factorization budget with the DIS figure grouped as
+  operator-coordinate evidence, and separate Abelian rows for the
+  amplitude-level Weinberg soft theorem and inclusive Bloch--Nordsieck factor.

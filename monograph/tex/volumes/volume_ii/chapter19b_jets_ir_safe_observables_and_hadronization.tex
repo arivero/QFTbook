@@ -1079,11 +1079,19 @@ status in its own row unless a later local theorem supplies the missing
 regulator, Glauber, and remainder entries.
 A row is included when the manuscript makes a process-level hard, collinear,
 soft, rapidity, Regge, or Abelian soft-factorization assertion for an
-observable.  The table deliberately distinguishes those statements from other
-homonyms: pole or residue factorization, large-\(N\) expectation-value
-factorization, rank-one spinor factorization, causal factorization in
-perturbative algebraic QFT, and prefactorization-algebra terminology do not
-carry the same Glauber or power-remainder coordinates.
+observable.  Closely adjacent identities are grouped only when they are
+operator coordinates, consistency conditions, or local algebra inside the same
+observable-level row.  The table deliberately distinguishes those statements
+from other homonyms: pole or residue factorization, large-\(N\)
+expectation-value factorization, rank-one spinor or BCFW pole factorization,
+causal factorization in perturbative algebraic QFT, BV
+prefactorization-algebra terminology, instanton determinant or
+coefficient-decomposition factorizations, finite-range Gaussian
+decompositions, Monte Carlo conditional-probability factorizations,
+conformal or categorical algebraic decompositions, supersymmetric coset or
+Chern--Simons vector identities, quantum-spectral-curve gauge identities, and
+integrable factorized scattering do not carry the same Glauber or
+power-remainder coordinates.
 
 {\footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -1121,6 +1129,18 @@ claim architecture.  Proof: this row is the proof obligation itself, not an
 external theorem.  Glauber: a required coordinate, namely cancel, include a
 Glauber operator, or fail.  Remainder: bounded by \(R_Q\) in the stated dual
 norm, enlarged by perturbative truncation.
+\\ \hline
+\eqref{eq:scet-factorized-smeared-functional};
+Vol.~II Ch.~19b &
+Observable: the generic smeared SCET factorized coordinate for a physical
+functional \(W_Q\).  Regulator: declared endpoint test space, mode
+operators, overlap subtraction, and scheme choices inherited from the
+surrounding controlled approximation.  Source: local distributional SCET
+architecture.  Proof: definition of the candidate coordinate, not yet a
+theorem about \(W_Q\).  Glauber: whatever the declared coordinate includes or
+cancels; omission is a proof defect for any channel that needs it.  Remainder:
+no bound is supplied by the coordinate alone; the next row supplies the dual
+norm estimate and perturbative truncation slot.
 \\ \hline
 Controlled Approximation~\ref{ca:scet-distributional-factorization-estimate};
 \eqref{eq:scet-distributional-factorization-bound};
@@ -1172,6 +1192,21 @@ for a specified measurement and channel.  Glauber: listed as an obstruction
 when the measurement is not inclusive enough.  Remainder: \(R_{\rm SD}\)
 records power, clustering, non-global, Glauber, and nonperturbative pieces.
 \\ \hline
+Controlled Approximation~\ref{ca:soft-drop-mass-factorized-resummation};
+\eqref{eq:soft-drop-factorization-rg-consistency};
+Vol.~II Ch.~19b &
+Observable: perturbative resummation of the soft-drop groomed-mass singular
+coordinate.  Regulator: the same hard/global-soft/jet/collinear-soft scheme
+plus perturbative scale profiles.  Source: local soft-drop factorization
+datum and the soft-drop observable lineage
+\cite{LarkoskiMarzaniSoyezThaler2014SoftDrop}.  Proof: controlled only when
+all natural scales remain perturbative, the boundary functions and anomalous
+dimensions are specified, and \(R_{\rm SD}\) is bounded.  The RG-consistency
+condition is grouped here because it is the common-scale invariance test for
+this same resummation datum, not a separate measured observable.  Glauber:
+unchanged from the datum row.  Remainder: nonperturbative collinear-soft,
+profile, matching, non-global, clustering, and power residuals.
+\\ \hline
 \eqref{eq:qcd-eec-back-to-back-factorization};
 Controlled Approximation~\ref{ca:qcd-eec-tested-back-to-back-recoil};
 Vol.~II Ch.~19 &
@@ -1192,6 +1227,22 @@ measured-observable budget.  Proof: prediction architecture.  Glauber:
 inherited from each open chart; track lift does not prove cancellation.
 Remainder: \(R_{\tau,Q}\), endpoint atoms, and nonperturbative
 track/fragmentation inputs.
+\\ \hline
+Figure~\ref{fig:qcd-dis-ope-light-ray-factorization};
+\eqref{eq:qcd-common-factorization-budget};
+Vol.~II Ch.~19 &
+Observable: common dependency ladder used to audit QCD factorization
+statements against an exact color-singlet observable.  Regulator: the
+process-specific finite regulator, Wilson-line geometry, subtraction,
+rapidity, and continuum-limit data named by each later row.  Source: local
+comparison architecture.  Proof: checklist and error budget, not a theorem
+for any one process.  The DIS figure is grouped with this row and the DIS row
+below because it records the operator-coordinate source of the inclusive DIS
+factorization statement; it is not an independent proof of a power bound.
+Glauber: appears in the boundary term whenever the process probes it.
+Remainder: all rows must place their residuals inside
+\(\mathcal E_{\mathfrak P,Q}^{\rm fact}\) or state why the coordinate is only
+structural.
 \\ \hline
 \eqref{eq:dis-factorization};
 Hypothesis~\ref{hyp:qcd-dis-leading-twist-factorization};
@@ -1312,13 +1363,27 @@ Theorem~\ref{thm:weinberg-leading-soft-photon};
 \eqref{eq:weinberg-leading-soft-photon};
 Figure~\ref{fig:volume-ii-soft-factorization};
 Vol.~II Ch.~22 &
-Observable: unresolved soft-photon emission in an Abelian inclusive rate.
-Regulator: photon mass or energy resolution with massive charged external
-states.  Source: Weinberg leading soft theorem and the local
-Bloch--Nordsieck calculation.  Proof: leading eikonal external-line
-factorization and independent-emission combinatorics.  Glauber: no nonabelian
-Glauber coordinate; Coulomb phases and KLN degeneracy are separate Abelian
-infrared data.  Remainder: subleading soft, collinear, finite-resolution, and
+Observable: one added soft photon in the infrared-regulated hard kernel.
+Regulator: fixed infrared regulator, physical polarization, and nonexceptional
+massive charged hard data.  Source: Weinberg leading soft theorem plus the
+local scalar/spinor external-line derivation.  Proof: leading eikonal
+external-line poles and Ward-identity decoupling of a pure-gauge
+polarization.  Glauber: no nonabelian Glauber coordinate.  Remainder:
+amplitude-level \(O(\omega^0)\), not an inclusive-rate cancellation.
+\\ \hline
+\eqref{eq:qed-bloch-nordsieck-inclusive-factorization};
+Figure~\ref{fig:volume-ii-bloch-nordsieck-cancellation};
+Remark~\ref{rem:abelian-scope-bloch-nordsieck};
+Vol.~II Ch.~22 &
+Observable: Abelian inclusive transition probability with unresolved photons
+below detector threshold \(E_T\).  Regulator: photon mass or soft energy
+cutoff \(\mu\), with the degenerate final-state sum performed before removing
+\(\mu\).  Source: local Bloch--Nordsieck calculation.  Proof: real
+independent-emission exponent multiplied by the virtual soft factor at fixed
+regulator, giving \eqref{eq:qed-bloch-nordsieck-inclusive-factorization}.
+Glauber: no nonabelian Glauber coordinate; Coulomb phases, collinear
+degeneracy, and dressed charged states are separate Abelian infrared data.
+Remainder: subleading soft, collinear, finite-resolution, hard-matching, and
 state-dressing terms.
 \\ \hline
 \end{longtable}
@@ -1336,9 +1401,14 @@ as \eqref{eq:null-momentum-spinor-factorization} and
 factorization in perturbative algebraic QFT and BV prefactorization algebras,
 such as \eqref{eq:paqft-causal-factorization} and
 Definition~\ref{def:bv-prefactorization-algebra}, are locality and
-functoriality structures.  None of these rows is assigned a QCD
-Glauber-cancellation or power-remainder coordinate merely because it contains
-the word ``factorization''.
+functoriality structures.  Instanton determinant and coefficient
+factorizations, finite-range Gaussian decompositions, Monte Carlo
+conditional-probability factorizations, conformal and categorical algebraic
+decompositions, supersymmetric coset or Chern--Simons vector identities,
+quantum-spectral-curve gauge identities, and integrable factorized scattering
+are likewise outside this hard-process ledger.  None of these rows is
+assigned a QCD Glauber-cancellation or power-remainder coordinate merely
+because it contains the word ``factorization''.
 
 Renormalization of the hard, jet, and soft functions gives evolution
 equations.  The resummation structure is clearest after a Laplace transform, or

@@ -8,9 +8,9 @@ Target claims:
   factorization, soft-drop scales, and massive-vector Sudakov areas obey the
   finite algebra stated in the jets/SCET chapter.
 - The occurrence-level factorization ledger covers the declared
-  process-level QCD/SCET, Regge, and Abelian soft-factorization occurrences,
-  classifies the main non-process homonyms, and keeps BMS non-global soft
-  evolution separate from Glauber exchange.
+  process-level QCD/SCET, Regge, and Abelian soft-factorization occurrences
+  through a source-derived manifest, classifies the main non-process homonyms,
+  and keeps BMS non-global soft evolution separate from Glauber exchange.
 - The regulated endpoint-region integral has a real fixed-order remainder
   bound, and unsubtracted or unpaired region splits fail as negative controls.
 - A noncommuting finite measurement can detect a Glauber rotation, so a
@@ -28,6 +28,10 @@ Independent construction:
   color-trace computation, eikonal delta-coefficient bookkeeping, and a
   fixed-recoil mass-regulated transverse integral after analytic reduction of
   the two Glauber transverse integrations.
+- The factorization occurrence audit mechanically scans the manuscript source
+  for factorization labels, factorization-titled environments, and captions,
+  then checks the independent manifest rather than a Python-owned occurrence
+  list.
 
 Imported assumptions:
 - The checks are finite-regulator or fixed-order algebraic tests of a proposed
@@ -52,6 +56,8 @@ Negative controls:
   while the cross-hadron two-gluon color trace is nonzero; a pointwise
   nonzero spectator integrand value is not accepted as an integrated
   nonvanishing proof.
+- A source candidate absent from the manifest, or a stale manifest row absent
+  from the source scan, fails the occurrence-ledger check.
 
 Scope boundary:
 - This script verifies finite algebra, fixed-order endpoint expansion, and
@@ -63,6 +69,7 @@ Scope boundary:
 
 from __future__ import annotations
 
+import csv
 import re
 from collections import defaultdict
 from fractions import Fraction
@@ -95,81 +102,10 @@ QED_IR_CHAPTER = (
     "chapter22_infrared_divergences_and_inclusive_qed.tex"
 )
 
-PROCESS_FACTORIZATION_OCCURRENCES = {
-    "eq:jet-event-shape-factorization": JETS_CHAPTER,
-    "def:scet-two-jet-operator-datum": JETS_CHAPTER,
-    "hyp:leading-power-scet-factorization": JETS_CHAPTER,
-    "ca:scet-distributional-factorization-estimate": JETS_CHAPTER,
-    "eq:scet-distributional-factorization-bound": JETS_CHAPTER,
-    "eq:scet-generalized-tmd-ansatz": JETS_CHAPTER,
-    "ca:scet-spectator-tmd-color-entanglement": JETS_CHAPTER,
-    "eq:scet-spectator-entangled-breaking-integral": JETS_CHAPTER,
-    "eq:finite-non-global-dipole-evolution": JETS_CHAPTER,
-    "def:soft-drop-mass-factorization-datum": JETS_CHAPTER,
-    "eq:soft-drop-mass-factorization-datum": JETS_CHAPTER,
-    "eq:qcd-eec-back-to-back-factorization": QCD_CHAPTER,
-    "ca:qcd-eec-tested-back-to-back-recoil": QCD_CHAPTER,
-    "eq:qcd-measured-eec-factorization-budget": QCD_CHAPTER,
-    "ca:qcd-measured-eec-prediction": QCD_CHAPTER,
-    "eq:dis-factorization": QCD_CHAPTER,
-    "hyp:qcd-dis-leading-twist-factorization": QCD_CHAPTER,
-    "eq:qcd-endpoint-kernel-cusp-coefficient": QCD_CHAPTER,
-    "eq:qcd-large-spin-dglap-cusp": QCD_CHAPTER,
-    "eq:qcd-tmd-factorization": QCD_CHAPTER,
-    "hyp:qcd-tmd-factorization-hypothesis": QCD_CHAPTER,
-    "eq:qcd-drell-yan-integrated-factorization": QCD_CHAPTER,
-    "ca:qcd-drell-yan-integrated-theorem-boundary": QCD_CHAPTER,
-    "prop:qcd-drell-yan-tested-factorization-residual-budget": QCD_CHAPTER,
-    "eq:qcd-drell-yan-tmd-factorization": QCD_CHAPTER,
-    "hyp:qcd-drell-yan-tmd-factorization-hypothesis": QCD_CHAPTER,
-    "eq:qcd-gpd-definition": QCD_CHAPTER,
-    "sec:qcd-gpd-light-ray-matrix-elements": QCD_CHAPTER,
-    "def:qcd-exclusive-pion-factorization-scheme": QCD_CHAPTER,
-    "eq:qcd-pion-form-factor-factorization": QCD_CHAPTER,
-    "eq:qcd-pion-transition-factorization": QCD_CHAPTER,
-    "eq:qcd-small-x-leading-dis-dipole-functional": QCD_CHAPTER,
-    "ca:qcd-small-x-leading-dis-dipole-channel": QCD_CHAPTER,
-    "eq:track-function-test-pairing": JETS_CHAPTER,
-    "ca:leading-endpoint-shape-function-convolution": JETS_CHAPTER,
-    "hyp:triple-regge-factorization-system": REGGE_CHAPTER,
-    "eq:triple-regge-factorization-formula": REGGE_CHAPTER,
-    "thm:weinberg-leading-soft-photon": QED_IR_CHAPTER,
-    "eq:weinberg-leading-soft-photon": QED_IR_CHAPTER,
-    "fig:volume-ii-soft-factorization": QED_IR_CHAPTER,
-}
-
-EXCLUDED_FACTORIZATION_HOMONYMS = {
-    "thm:bethe-salpeter-pole-factorization": "pole-factorization statements",
-    "eq:qcd-large-n-factorization": "expectation-value factorization",
-    "eq:null-momentum-spinor-factorization": "Spinor-helicity rank-one factorization",
-    "eq:tree-factorization-bcfw": "tree pole residues",
-    "eq:paqft-causal-factorization": "Causal factorization in perturbative algebraic QFT",
-    "def:bv-prefactorization-algebra": "BV prefactorization algebras",
-}
-
-EXCLUDED_HOMONYM_SOURCES = {
-    "thm:bethe-salpeter-pole-factorization": (
-        "monograph/tex/volumes/volume_ii/"
-        "chapter05_composite_bound_states_and_bethe_salpeter_amplitudes.tex"
-    ),
-    "eq:qcd-large-n-factorization": QCD_CHAPTER,
-    "eq:null-momentum-spinor-factorization": (
-        "monograph/tex/volumes/volume_i/"
-        "chapter17_massless_particles_helicity_and_gauge_redundancy.tex"
-    ),
-    "eq:tree-factorization-bcfw": (
-        "monograph/tex/volumes/volume_i/"
-        "chapter17_massless_particles_helicity_and_gauge_redundancy.tex"
-    ),
-    "eq:paqft-causal-factorization": (
-        "monograph/tex/volumes/volume_iv/"
-        "chapter03_algebraic_qft_local_nets_and_states.tex"
-    ),
-    "def:bv-prefactorization-algebra": (
-        "monograph/tex/volumes/volume_ii/"
-        "chapter24_bv_master_formalism_gauge_effective_actions.tex"
-    ),
-}
+FACTORIZATION_MANIFEST = "planning/factorization_occurrence_manifest.tsv"
+FACTORIZATION_WORD = re.compile(r"factorization|factorized", re.IGNORECASE)
+LABEL_RE = re.compile(r"\\label\{([^}]+)\}")
+BEGIN_RE = re.compile(r"\\begin\{([^}]+)\}(?:\[([^\]]*)\])?")
 
 
 def assert_equal(name: str, got: object, expected: object) -> None:
@@ -193,6 +129,77 @@ def normalized_tex_text(text: str) -> str:
     return re.sub(r"\s+", " ", text)
 
 
+def generated_factorization_candidates() -> dict[tuple[str, str], set[str]]:
+    candidates: dict[tuple[str, str], set[str]] = {}
+    for path in sorted((ROOT / "monograph/tex").rglob("*.tex")):
+        relative_path = str(path.relative_to(ROOT))
+        lines = path.read_text(encoding="utf-8").splitlines()
+
+        for line in lines:
+            for label in LABEL_RE.findall(line):
+                if FACTORIZATION_WORD.search(label):
+                    candidates.setdefault((relative_path, label), set()).add("label")
+
+        for line_number, line in enumerate(lines, 1):
+            begin_match = BEGIN_RE.search(line)
+            if not begin_match:
+                continue
+            environment, title = begin_match.groups()
+            if not title or not FACTORIZATION_WORD.search(title):
+                continue
+            end_re = re.compile(r"\\end\{" + re.escape(environment) + r"\}")
+            for candidate_line in lines[line_number - 1 : min(len(lines), line_number + 160)]:
+                for label in LABEL_RE.findall(candidate_line):
+                    candidates.setdefault((relative_path, label), set()).add("environment-title")
+                if end_re.search(candidate_line):
+                    break
+
+        for line_number, line in enumerate(lines, 1):
+            begin_match = BEGIN_RE.search(line)
+            if not begin_match:
+                continue
+            environment = begin_match.group(1)
+            if environment not in {"figure", "table"}:
+                continue
+            end_re = re.compile(r"\\end\{" + re.escape(environment) + r"\}")
+            body_lines: list[str] = []
+            labels: list[str] = []
+            for candidate_line in lines[line_number - 1 : min(len(lines), line_number + 220)]:
+                body_lines.append(candidate_line)
+                labels.extend(LABEL_RE.findall(candidate_line))
+                if end_re.search(candidate_line):
+                    break
+            body = "\n".join(body_lines)
+            if "\\caption" in body and FACTORIZATION_WORD.search(body):
+                for label in labels:
+                    candidates.setdefault((relative_path, label), set()).add("caption")
+
+    return candidates
+
+
+def load_factorization_manifest() -> list[dict[str, str]]:
+    manifest_path = ROOT / FACTORIZATION_MANIFEST
+    with manifest_path.open(newline="", encoding="utf-8") as handle:
+        rows = list(csv.DictReader(handle, delimiter="\t"))
+    required = {"candidate_id", "source_path", "disposition", "ledger_key", "reason"}
+    if not rows or set(rows[0]) != required:
+        raise AssertionError("factorization occurrence manifest has unexpected columns")
+
+    seen: set[tuple[str, str]] = set()
+    for row in rows:
+        key = (row["source_path"], row["candidate_id"])
+        if key in seen:
+            raise AssertionError(f"duplicate factorization manifest row {key!r}")
+        seen.add(key)
+        if row["disposition"] not in {"included", "grouped", "excluded"}:
+            raise AssertionError(f"bad factorization disposition for {key!r}")
+        if not row["ledger_key"] or not row["reason"]:
+            raise AssertionError(f"manifest row {key!r} needs ledger_key and reason")
+        if not row["candidate_id"].startswith("review:"):
+            find_label_line(row["source_path"], row["candidate_id"])
+    return rows
+
+
 def factorization_ledger_block() -> str:
     text = read_repo_text(JETS_CHAPTER)
     start_marker = r"\paragraph{Occurrence-level claim-status ledger for factorization uses.}"
@@ -208,28 +215,41 @@ def factorization_ledger_block() -> str:
 def check_factorization_occurrence_ledger_inventory() -> None:
     ledger = factorization_ledger_block()
     normalized_ledger = normalized_tex_text(ledger)
+    manifest_rows = load_factorization_manifest()
 
-    # The line lookup is the source-location part of the inventory: every
-    # declared occurrence is keyed both by label and by its source file.
-    locations = {
-        label: find_label_line(relative_path, label)
-        for label, relative_path in PROCESS_FACTORIZATION_OCCURRENCES.items()
+    generated = generated_factorization_candidates()
+    manifest_candidates = {
+        (row["source_path"], row["candidate_id"])
+        for row in manifest_rows
+        if not row["candidate_id"].startswith("review:")
     }
-    for label, line_number in locations.items():
-        if line_number <= 0:
-            raise AssertionError(f"source location for {label!r} should be positive")
-        if label not in ledger:
-            raise AssertionError(f"process-level factorization occurrence {label!r} missing from ledger")
+    missing = sorted(set(generated) - manifest_candidates)
+    stale = sorted(manifest_candidates - set(generated))
+    if missing:
+        raise AssertionError(f"factorization source candidates lack manifest disposition: {missing}")
+    if stale:
+        raise AssertionError(f"factorization manifest rows are stale or no longer source-derived: {stale}")
 
-    for label, relative_path in EXCLUDED_HOMONYM_SOURCES.items():
-        find_label_line(relative_path, label)
-        if label not in ledger:
-            raise AssertionError(
-                f"factorization homonym {label!r} missing from the explicit exclusion paragraph"
-            )
-    for description in EXCLUDED_FACTORIZATION_HOMONYMS.values():
-        if description not in normalized_ledger:
-            raise AssertionError(f"factorization homonym class {description!r} missing from exclusions")
+    if not any(row["candidate_id"] == "review:unlabeled-process-factorization-search" for row in manifest_rows):
+        raise AssertionError("manifest must record the reviewed unlabeled process-level search")
+
+    for row in manifest_rows:
+        candidate_id = row["candidate_id"]
+        disposition = row["disposition"]
+        ledger_key = row["ledger_key"]
+        if disposition == "included":
+            if candidate_id not in ledger:
+                raise AssertionError(f"included factorization occurrence {candidate_id!r} missing from ledger")
+            if ledger_key not in ledger:
+                raise AssertionError(f"included factorization ledger key {ledger_key!r} missing from ledger")
+        elif disposition == "grouped":
+            if ledger_key not in ledger:
+                raise AssertionError(f"grouped factorization ledger key {ledger_key!r} missing from ledger")
+        elif disposition == "excluded":
+            if ledger_key not in normalized_ledger:
+                raise AssertionError(
+                    f"excluded factorization category {ledger_key!r} missing from boundary prose"
+                )
 
     if "Glauber: color correlations enter through the nonlinear dipole evolution" in normalized_ledger:
         raise AssertionError("non-global soft evolution was conflated with Glauber exchange")

@@ -1283,3 +1283,8 @@ The chapter must define and derive:
   scaling, or QCD-string language is treated as a nonperturbative statement.
   `large_n_topology_checks.py` now verifies a finite genus-truncation
   bound and an order-of-limits negative control.
+- 2026-06-04 issue #832 factorization-ledger source pass: the Ch.~19 DIS
+  light-ray figure and `eq:qcd-common-factorization-budget` are now explicit
+  ledger occurrences in Ch.~19b.  The figure is grouped as operator-coordinate
+  source evidence for DIS, while the common budget is recorded as comparison
+  architecture rather than a theorem for a single process.
