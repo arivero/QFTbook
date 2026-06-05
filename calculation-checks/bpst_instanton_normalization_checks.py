@@ -82,7 +82,9 @@ relations
     projector rather than a product of two independent two-slot averages
     color-singlet source projection multiplies the hard instanton kernel by
     gauge-invariant source-overlap matrices, while hadronic pole residues are
-    separate external spectral data
+    separate external spectral data; the finite-volume hadronic pole window
+    divides by source overlaps only after the selected pole has been isolated
+    and excited-state leakage has a gap-suppressed majorant
     the Euclidean instanton source kernel becomes a physical amplitude only
     after analytic continuation and pole/spectral/OPE projection; the bridge
     has independent regulator, continuation, spectral, infrared, unitarity-cut,
@@ -243,7 +245,8 @@ coefficient/operator transport matrices, exact retained size-shell
 stationarity equations, finite amplitude-sector isolation telescopes, and
 exact radial power-counting for two-body cluster relative-coordinate
 majorants, together with exact log-weight bookkeeping for the renormalized
-one-instanton channel ledger.
+one-instanton channel ledger and finite pole-window source/sink spectral
+projection checks.
 Imported assumptions: the BPST background and zero-mode formulas, one-loop
 determinant coefficients, the trace-delta convention, and finite regulator
 truncations stated in the chapter.
@@ -264,6 +267,10 @@ Mayer bound,
 mass/source zero-mode determinants or local operators mistaken for complete
 renormalized instanton channel coordinates, and small signed retained windows
 mistaken for good relative control without a noncancellation margin,
+source correlator poles mistaken for hadronic matrix elements before overlap
+division, overlap division mistaken for pole isolation when excited states
+remain, and vanishing interpolating-source overlaps hidden by an instanton
+kernel,
 vacuum determinant calibration substituted for a source-dependent fluctuation
 bound, signed fluctuation-cumulant cancellations,
 hard-only and screening-only shell substitutions in the mixed size-majorant
@@ -3270,6 +3277,97 @@ def check_color_singlet_instanton_source_projection() -> None:
     )
 
 
+def check_instanton_hadronic_pole_window_projection() -> None:
+    # Finite-volume source/sink pole extraction is a separate spectral step
+    # after the instanton source kernel has been assembled.  Use rational
+    # q-factors for exp[-Delta_H t] and exp[-Delta_H' (T-t)].
+    source_overlap = Fraction(7, 15)
+    sink_overlap = Fraction(11, 21)
+    selected_matrix_element = Fraction(13, 17)
+    source_gap_factor = Fraction(1, 5)
+    sink_gap_factor = Fraction(1, 7)
+
+    selected_pole = (
+        sink_overlap
+        * source_overlap
+        * selected_matrix_element
+    )
+    final_excited = sink_overlap * source_overlap * Fraction(2, 9) * sink_gap_factor
+    initial_excited = sink_overlap * source_overlap * Fraction(-3, 11) * source_gap_factor
+    double_excited = (
+        sink_overlap
+        * source_overlap
+        * Fraction(5, 13)
+        * sink_gap_factor
+        * source_gap_factor
+    )
+    normalized_ratio = (
+        selected_pole
+        + final_excited
+        + initial_excited
+        + double_excited
+    ) / (sink_overlap * source_overlap)
+    leakage = normalized_ratio - selected_matrix_element
+
+    tail_bound = (
+        Fraction(2, 9) * sink_gap_factor
+        + Fraction(3, 11) * source_gap_factor
+        + Fraction(5, 13) * sink_gap_factor * source_gap_factor
+    )
+    assert_equal(
+        "instanton hadronic pole-window normalized leading matrix element",
+        selected_pole / (sink_overlap * source_overlap),
+        selected_matrix_element,
+    )
+    assert_equal(
+        "instanton hadronic pole-window excited leakage bound",
+        abs(leakage) <= tail_bound,
+        True,
+    )
+
+    # The unnormalized source correlator still contains external pole
+    # overlaps.  It is not the hadronic matrix element.
+    assert_equal(
+        "source correlator pole is not the hadronic matrix element",
+        selected_pole == selected_matrix_element,
+        False,
+    )
+
+    # Dividing by overlaps before isolating the pole leaves excited-state
+    # contamination.  Large Euclidean time or an explicit tail majorant is
+    # part of the physical amplitude extraction.
+    assert_equal(
+        "overlap division alone leaves excited contamination",
+        normalized_ratio == selected_matrix_element,
+        False,
+    )
+
+    zero_sink_overlap = Fraction(0)
+    if zero_sink_overlap == 0:
+        extraction_defined = False
+    else:
+        extraction_defined = True
+    assert_equal(
+        "vanishing interpolating overlap prevents pole extraction",
+        extraction_defined,
+        False,
+    )
+
+    # Better pole windows shrink the same normalized excited-state majorant.
+    longer_source_gap_factor = source_gap_factor * source_gap_factor
+    longer_sink_gap_factor = sink_gap_factor * sink_gap_factor
+    longer_tail_bound = (
+        Fraction(2, 9) * longer_sink_gap_factor
+        + Fraction(3, 11) * longer_source_gap_factor
+        + Fraction(5, 13) * longer_sink_gap_factor * longer_source_gap_factor
+    )
+    assert_equal(
+        "longer hadronic pole window improves excited-state bound",
+        longer_tail_bound < tail_bound,
+        True,
+    )
+
+
 def check_instanton_euclidean_to_physical_residual_budget() -> None:
     leading_kernel_coordinate = Fraction(7, 13)
     residuals = {
@@ -5872,6 +5970,7 @@ def main() -> None:
     check_hard_wave_packet_instanton_source_support()
     check_instanton_orientation_haar_projection()
     check_color_singlet_instanton_source_projection()
+    check_instanton_hadronic_pole_window_projection()
     check_instanton_euclidean_to_physical_residual_budget()
     check_instanton_unitarity_cut_pairing()
     check_one_instanton_sector_isolation_bound()

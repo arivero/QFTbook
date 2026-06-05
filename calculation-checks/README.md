@@ -591,7 +591,10 @@ Current checks:
   Haar projector with its \(1/3\) counterexample to the factorized shortcut, the
   color-singlet source-projection
   algebra which keeps source-to-zero-mode overlaps and hadronic pole residues
-  separate from the hard instanton kernel, the Euclidean-to-physical
+  separate from the hard instanton kernel, the finite hadronic pole-window
+  extraction which divides by source overlaps only after the selected pole has
+  been isolated and bounds excited-state leakage by gap factors, the
+  Euclidean-to-physical
   instanton amplitude residual budget separating continuation, spectral/LSZ,
   infrared, unitarity-cut, matching, and size-endpoint controls from the
   leading source kernel, the instanton--anti-instanton cut-pairing check

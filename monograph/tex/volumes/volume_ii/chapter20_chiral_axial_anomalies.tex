@@ -7218,6 +7218,107 @@ that operation termwise in a controlled semiclassical expansion gives
 \eqref{eq:instanton-hadronic-residue-extraction}; it never produces an
 ordinary colored-quark \(S\)-matrix element.
 
+\begin{controlledapproximation}[Hadronic pole window for an instanton source
+coefficient]
+\label{ca:instanton-hadronic-pole-window}
+The residue operation in
+\eqref{eq:instanton-hadronic-residue-extraction} is itself a limit with a
+residual budget.  Work at finite spatial volume, or in an infrared
+deformation with isolated color-singlet states, and choose source and sink
+interpolating operators \(\mathcal I_H,\mathcal I_{H'}\).  Let
+\(\mathcal X_I\) denote the gauge-invariant source insertion obtained after
+the one-instanton determinant, zero-mode source coefficient, orientation
+projection, and size window have been assembled.  The Euclidean three-point
+function at \(0<t<T\) has the spectral decomposition
+\begin{equation}
+  G_I(T,t)
+  =
+  \sum_{m,n}
+  \overline Z^{\,\prime}_{m}\,
+  Z_n\,
+  \ee^{-E_m'(T-t)}\ee^{-E_n t}\,
+  \langle m'|\mathcal X_I|n\rangle ,
+  \label{eq:instanton-hadronic-pole-window-spectral-sum}
+\end{equation}
+where \(Z_n=\langle n|\mathcal I_H^\dagger|0\rangle\) and
+\(\overline Z_m^{\,\prime}=\langle0|\mathcal I_{H'}|m'\rangle\) in the chosen
+normalization.  Suppose the selected initial and final poles are \(n=H\) and
+\(m=H'\), with nonzero overlaps \(Z_H,Z_{H'}'\), and with gap bounds
+\[
+  E_n-E_H\ge\Delta_H>0,\qquad
+  E_m'-E_{H'}'\ge\Delta_{H'}>0
+\]
+for all retained excited states in the two source channels.  The pole
+projector is the normalized large-time coordinate
+\begin{equation}
+  A_{H'\leftarrow H}^{I}(T,t)
+  =
+  \frac{
+    \ee^{E_{H'}'(T-t)}\ee^{E_Ht}\,
+    G_I(T,t)
+  }{
+    \overline Z_{H'}^{\,\prime}Z_H
+  } .
+  \label{eq:instanton-hadronic-pole-window-normalized-ratio}
+\end{equation}
+It equals the desired instanton contribution
+\[
+  A_{H'\leftarrow H}^{I}
+  =
+  \langle H'|\mathcal X_I|H\rangle
+\]
+only after the excited-state leakage is controlled.  If the normalized
+spectral tail satisfies
+\begin{equation}
+  \begin{aligned}
+  &\sum_{(m,n)\ne(H',H)}
+  \left|
+  \frac{\overline Z_m^{\,\prime}Z_n}
+       {\overline Z_{H'}^{\,\prime}Z_H}
+  \langle m'|\mathcal X_I|n\rangle
+  \right|
+  \ee^{-(E_m'-E_{H'}')(T-t)}
+  \ee^{-(E_n-E_H)t}
+  \\
+  &\qquad\le
+  M_f \ee^{-\Delta_{H'}(T-t)}
+  +M_i \ee^{-\Delta_Ht}
+  \\
+  &\qquad\quad
+  +M_{fi}\ee^{-\Delta_{H'}(T-t)-\Delta_Ht},
+  \end{aligned}
+  \label{eq:instanton-hadronic-pole-window-tail-bound}
+\end{equation}
+then
+\begin{equation}
+  \begin{aligned}
+  \left|
+  A_{H'\leftarrow H}^{I}(T,t)
+  -
+  A_{H'\leftarrow H}^{I}
+  \right|
+  &\le
+  M_f \ee^{-\Delta_{H'}(T-t)}
+  +M_i \ee^{-\Delta_Ht}
+  \\
+  &\quad
+  +M_{fi}\ee^{-\Delta_{H'}(T-t)-\Delta_Ht}.
+  \end{aligned}
+  \label{eq:instanton-hadronic-pole-window-error}
+\end{equation}
+
+This pole-window estimate is separate from the instanton size and determinant
+estimate.  The BPST calculation supplies the short-distance source insertion
+\(\mathcal X_I\), with its fluctuation determinant, zero-mode determinant,
+source-rank, and endpoint residuals.  The finite-volume pole projection
+supplies the overlaps \(Z_H,Z_{H'}'\), the gaps, and the excited-state
+majorants.  Dividing a colored or gauge-invariant source kernel by external
+overlaps before the pole window has been isolated does not produce a physical
+amplitude.  Likewise, if one overlap vanishes, the selected interpolating
+operator simply does not extract that hadron in this channel; the instanton
+kernel cannot repair the source choice.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Euclidean instanton kernel to physical
 amplitude]
 \label{ca:instanton-euclidean-to-physical-amplitude-budget}

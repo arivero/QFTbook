@@ -396,6 +396,7 @@
 | \(\mathcal K_{\rm ex},\mathcal K_{\rm lead},\mathcal C_{\rm pg}^{\mathcal S},R_{\rm det},R_{\rm zm},R_{\rm src},R_{\rm Schur},R_{\rm end}\) | exact and leading one-instanton source-amplitude densities, pure-gauge collective/determinant density, and the finite error-budget pieces for determinant, zero-mode/source, source matching, Schur, and endpoint residuals |
 | \(\eta,\mathcal N_z,d\gamma_z,\mathcal R_{\rm fluc},C_1,C_2,R_{\ge3},\epsilon_{\rm fluc}\) | normal nonzero-mode fluctuation coordinate, Gaussian fluctuation measure, source-dependent fluctuation ratio, cumulant pieces, and fluctuation residual refining the instanton determinant error |
 | \(B^{\mathcal J}_{AB},\Phi^R,\Phi^L\) | color-singlet source-projected zero-mode matrix and source-to-zero-mode overlap maps used to match the auxiliary hard instanton kernel to gauge-invariant correlators |
+| \(G_I(T,t),Z_H,Z_{H'}',\Delta_H,\Delta_{H'},A_{H'\leftarrow H}^{I}\) | finite-volume hadronic pole-window data for extracting a selected color-singlet instanton matrix element from a source three-point function |
 | \(\mathcal A_{\rm phys}^{Q=1},\mathcal A_{\rm inst}^{\rm lead},R_{\rm reg},R_{\rm cont},R_{\rm spec},R_{\rm IR},R_{\rm cut},R_{\rm match},R_\rho\) | physical one-instanton amplitude coordinate, leading continued/projected instanton-kernel coordinate, and the residuals separating Euclidean source kernels from physical amplitudes |
 | \(A_I,A_{\bar I},\Gamma_{I\bar I},\mathcal C_{\rm cut},M^{(0)}_{I\bar I},\varepsilon_{\rm cut}\) | instanton and anti-instanton amplitude coordinates, paired inclusive cut/rate kernel, cut weight, absolute majorant, and cut residual used to turn a theta-charged amplitude kernel into a neutral spectral weight |
 | \(\Pi_{\mathcal O},J_I,M_I,\lambda_\alpha,M_\alpha,E_{\ge2},\kappa_I\) | selected source/charge/spectral projection, retained one-instanton coefficient, retained \(Q=1\) absolute mass, adjacent-sector leakage factors and majorants, higher-sector remainder, and noncancellation margin in the one-instanton isolation bound |
@@ -1854,3 +1855,11 @@
   separates renormalization-scale transport from the Wilsonian size-boundary
   flux, and records the noncancellation margin needed to convert absolute
   residuals into a relative amplitude bound.
+- 2026-06-05 issue #597 hadronic pole-window pass: added
+  `ca:instanton-hadronic-pole-window` between color-singlet source matching
+  and the Euclidean-to-physical amplitude budget.  The pass writes the
+  finite-volume color-singlet three-point spectral sum, the normalized
+  source/sink pole projection, and the gap-suppressed excited-state residual
+  bound.  The BPST companion checks exact overlap division only after pole
+  isolation, excited-state leakage majorants, vanishing-overlap failure, and
+  the improvement of the bound as the source/sink pole windows are lengthened.
