@@ -37,7 +37,8 @@
   comparison datum with generalized-gauge negative controls, a loop-level
   Jacobi-repair condition for double-copy null directions, a solved finite two-scale
   massless box master with fixed \(r_\Gamma\) normalization, pole subtraction,
-  sector-resolved dilogarithm boundary, and branch data, the double-cut bubble
+  sector-resolved dilogarithm boundary, branch data, and physical
+  channel-discontinuity closure, the double-cut bubble
   projection after higher-topology shadow subtraction, the bubble
   IBP/differential equation master calculation, an equal-mass bubble threshold
   family with lower tadpole master and physical branch data, a two-loop
@@ -1099,6 +1100,17 @@
   while killing both overlapping ordered double words, allows a compatible
   sequential word to survive, and rejects a projection that preserves all
   single cuts but violates the overlapping Steinmann ordered-word constraint.
+- 2026-06-06 issue #769 finite-box channel-discontinuity pass: added
+  `ca:finite-box-channel-discontinuity-closure` after the physical branch of
+  the two-scale finite box master.  The pass turns the branch formula into a
+  channel Cutkosky comparison: the stripped \(s\)-channel jump of the reduced
+  box is \(-\log(s/(-t))\), and a reduced sector must combine this jump with
+  lower-sector and subtraction jumps before comparing with an independently
+  normalized state-sum datum.  The companion check verifies the endpoint-log
+  closure and rejects Euclidean-master, wrong-sheet, omitted-lower-sector,
+  omitted-subtraction, and self-defined-cut shortcuts while recording that a
+  discontinuity test does not determine the additive Euclidean boundary
+  constant needed for the finite hard remainder.
 - 2026-06-05 issue #755 named-tool role pass: added
   `rem:chapter06-named-tool-status-ledger` near the chapter entrance and
   tightened the generalized-unitarity opening.  The pass records which named

@@ -3255,6 +3255,58 @@ only the \(S\)-channel equation in
 break scale invariance, and shift the finite hard remainder in
 \eqref{eq:one-loop-finite-remainder-definition}.
 
+\begin{controlledapproximation}[Finite box channel-discontinuity closure]
+\label{ca:finite-box-channel-discontinuity-closure}
+The branch in \eqref{eq:finite-box-physical-log-branch} is not a cosmetic
+choice.  With the stripped discontinuity convention
+\[
+  \widehat{\operatorname{Disc}}_s f
+  =
+  \frac{1}{2\pi\ii}
+  \left[
+    f(S=-s-\ii0,T=-t)-f(S=-s+\ii0,T=-t)
+  \right],
+\]
+the reduced finite box obeys
+\begin{equation}
+  \widehat{\operatorname{Disc}}_s
+  \mathcal F_{\Box}(s,t)
+  =
+  -\log\frac{s}{-t}.
+  \label{eq:finite-box-channel-discontinuity}
+\end{equation}
+This is the master-integral side of a physical cut comparison: for a reduced
+sector
+\[
+  H_{\Box}(s,t)
+  =
+  C_{\Box}(s,t)\mathcal F_{\Box}(s,t)
+  +H_{\rm lower/sub}(s,t)
+  +R_{\rm rat}(s,t),
+\]
+the \(s\)-channel closure condition is
+\begin{equation}
+  \mathcal U_s^{\Box}
+  =
+  -C_{\Box}(s,t)\log\frac{s}{-t}
+  +
+  \widehat{\operatorname{Disc}}_s H_{\rm lower/sub}
+  +
+  \widehat{\operatorname{Disc}}_s R_{\rm rat},
+  \label{eq:finite-box-channel-cut-closure}
+\end{equation}
+where \(\mathcal U_s^{\Box}\) is computed from the independently normalized
+two-particle state sum in the same external-state, regulator, subtraction,
+and sheet convention.  The comparison is not meaningful if the right-hand
+side is used to define \(\mathcal U_s^{\Box}\).  The Euclidean boundary
+constant remains separate: discontinuities see the logarithmic branch but
+not the additive constant that contributes to the finite hard remainder.
+Conversely, an entirely real Euclidean master, a wrong sheet choice, or a
+lower-sector/subtraction jump omitted from
+\eqref{eq:finite-box-channel-cut-closure} can pass local differential
+equations while failing the physical channel cut.
+\end{controlledapproximation}
+
 \subsection{IBP Reduction and the Bubble Master Equation}
 \label{subsec:ibp-bubble-master-equation}
 

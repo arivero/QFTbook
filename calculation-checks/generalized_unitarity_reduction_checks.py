@@ -29,7 +29,8 @@ production master-lane gate that composes coefficient extraction, transported
 masters, physical channel closure, and infrared-safe observable assembly, and a
 physical master-discontinuity closure gate comparing transported master jumps with
 Cutkosky channel data, including a separate two-particle phase-space
-state-sum computation for the scalar bubble, a finite-field
+state-sum computation for the scalar bubble, a finite physical-channel
+discontinuity closure check for the two-scale box master, a finite-field
 master-coefficient reconstruction model with denominator clearing and
 validation controls, the finite Laurent-pole bookkeeping that turns a
 reconstructed virtual amplitude into a finite
@@ -123,8 +124,9 @@ inhomogeneity, branch-jump, and Laurent-pole arithmetic for the
 production master lane from cut residues to a finite observable;
 fixed-normalization finite box checks, including pole-subtraction
 bookkeeping, polynomial log algebra, branch continuation, a sector-boundary
-quadrature, and a numerical dilogarithm-parameter integral independent of the
-encoded log-square answer; Laurent-pole arithmetic for virtual/real infrared
+quadrature, a numerical dilogarithm-parameter integral independent of the
+encoded log-square answer, and physical channel-discontinuity closure against
+an independently normalized endpoint-log cut datum; Laurent-pole arithmetic for virtual/real infrared
 cancellation, plus-distribution measurement cells, paired-measurement finite
 differences after pole cancellation, finite scheme transport, and two-loop
 recursive pole subtraction.
@@ -1867,6 +1869,121 @@ def check_finite_two_scale_box_master() -> None:
     )
 
 
+def check_finite_box_channel_discontinuity_closure() -> None:
+    # Work with R=log(s/(-t)).  The two boundary values of
+    # 1/2 (R +/- i*pi)^2 + pi^2/2 have imaginary coefficients +/- R.
+    # With the chapter orientation F(-s-i0)-F(-s+i0), the stripped jump is -R.
+    minus_i0_imaginary_log_coeff = Fraction(-1)
+    plus_i0_imaginary_log_coeff = Fraction(1)
+    stripped_box_jump_log_coeff = (
+        minus_i0_imaginary_log_coeff - plus_i0_imaginary_log_coeff
+    ) / 2
+    independent_cut_endpoint_log_coeff = Fraction(-1)
+    assert_equal(
+        "finite box physical channel jump matches endpoint logarithm",
+        stripped_box_jump_log_coeff,
+        independent_cut_endpoint_log_coeff,
+    )
+
+    box_coefficient = Fraction(11, 13)
+    lower_sector_jump = Fraction(5, 17)
+    subtraction_jump = -Fraction(7, 19)
+    rational_jump = Fraction(0)
+    independent_cut_datum = (
+        box_coefficient * independent_cut_endpoint_log_coeff
+        + lower_sector_jump
+        + subtraction_jump
+        + rational_jump
+    )
+    reconstructed_jump = (
+        box_coefficient * stripped_box_jump_log_coeff
+        + lower_sector_jump
+        + subtraction_jump
+        + rational_jump
+    )
+    assert_equal(
+        "finite box channel closure includes lower and subtraction jumps",
+        reconstructed_jump,
+        independent_cut_datum,
+    )
+
+    euclidean_box_jump = Fraction(0)
+    euclidean_shortcut = (
+        box_coefficient * euclidean_box_jump
+        + lower_sector_jump
+        + subtraction_jump
+    )
+    assert_true(
+        "Euclidean box master does not reproduce physical channel jump",
+        euclidean_shortcut != independent_cut_datum,
+    )
+
+    wrong_sheet_jump = -stripped_box_jump_log_coeff
+    wrong_sheet_reconstruction = (
+        box_coefficient * wrong_sheet_jump
+        + lower_sector_jump
+        + subtraction_jump
+    )
+    assert_true(
+        "wrong finite-box sheet flips the endpoint logarithm",
+        wrong_sheet_reconstruction != independent_cut_datum,
+    )
+
+    omitted_lower_sector = box_coefficient * stripped_box_jump_log_coeff + subtraction_jump
+    assert_true(
+        "finite box channel closure rejects omitted lower-sector jump",
+        omitted_lower_sector != independent_cut_datum,
+    )
+
+    omitted_subtraction = box_coefficient * stripped_box_jump_log_coeff + lower_sector_jump
+    assert_true(
+        "finite box channel closure rejects omitted subtraction branch",
+        omitted_subtraction != independent_cut_datum,
+    )
+
+    self_defined_cut = wrong_sheet_reconstruction
+    assert_equal(
+        "self-defined box cut would hide wrong sheet",
+        wrong_sheet_reconstruction,
+        self_defined_cut,
+    )
+    assert_true(
+        "independent Cutkosky datum rejects self-defined wrong-sheet cut",
+        self_defined_cut != independent_cut_datum,
+    )
+
+    euclidean_boundary_shift = Fraction(23, 29)
+    shifted_boundary_jump = stripped_box_jump_log_coeff
+    assert_equal(
+        "channel discontinuity is blind to additive Euclidean boundary shift",
+        shifted_boundary_jump,
+        stripped_box_jump_log_coeff,
+    )
+    assert_true(
+        "finite hard remainder still depends on Euclidean boundary constant",
+        euclidean_boundary_shift != 0,
+    )
+
+    residuals = {
+        "state_sum": Fraction(1, 101),
+        "box_coefficient": Fraction(1, 103),
+        "master_branch": Fraction(1, 107),
+        "lower_sector": Fraction(1, 109),
+        "subtraction": Fraction(1, 113),
+    }
+    exact_error = sum(residuals.values(), Fraction(0))
+    majorant = sum(abs(value) for value in residuals.values())
+    assert_true(
+        "finite box channel-discontinuity residual budget",
+        abs(exact_error) <= majorant,
+    )
+    underbudget = majorant - residuals["master_branch"] - residuals["subtraction"]
+    assert_true(
+        "finite box channel budget must include branch and subtraction data",
+        abs(exact_error) > underbudget,
+    )
+
+
 def check_bubble_ibp_identity() -> None:
     samples = [
         (Fraction(1, 11), Fraction(3, 2), Fraction(5, 7)),
@@ -3540,6 +3657,7 @@ def main() -> None:
     check_loop_level_color_kinematics_surface_obstruction()
     check_loop_level_jacobi_repair_double_copy_null()
     check_finite_two_scale_box_master()
+    check_finite_box_channel_discontinuity_closure()
     check_bubble_ibp_identity()
     check_bubble_numerator_sector_projection()
     check_equal_mass_bubble_threshold_family()

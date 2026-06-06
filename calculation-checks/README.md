@@ -3256,7 +3256,9 @@ Current checks:
   second copy, the finite two-scale box
   master with its fixed pole subtraction, sector-boundary quadrature,
   dilogarithm parameter-integral check, differential equations, branch
-  prescription, and one-cut-only/boundary negative controls, the
+  prescription, physical channel-discontinuity closure against an
+  independently normalized endpoint-log cut datum, and
+  one-cut-only/boundary negative controls, the
   bubble IBP reduction, bubble numerator sector projection with the
   parent-cut/lower-sector negative control, the bubble master
   differential-equation branch ledger, the equal-mass bubble threshold family
