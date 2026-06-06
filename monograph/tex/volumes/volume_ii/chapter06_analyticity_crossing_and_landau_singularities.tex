@@ -3600,6 +3600,65 @@ kernel, and the conditioning or residual bound before its coefficients can be
 transported into the master differential system.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Finite-field reconstruction of master coefficients]
+\label{ca:finite-field-master-coefficient-reconstruction}
+Modern multi-loop reductions often compute the coefficient functions
+themselves by exact arithmetic at finite kinematic points.  This is useful
+only when the sampling problem is tied to the same reduced master sector as
+above.  Let \(x=t/s\) be a dimensionless kinematic coordinate in a fixed
+four-point sector, and suppose that the cut and IBP analysis has reduced the
+amplitude to masters \(M_1,\ldots,M_m\) with coefficient functions
+\(c_j(x)\in\mathbb Q(x)\).  A finite-field reconstruction datum consists of
+a declared common denominator \(D_{\rm ff}(x)\), a numerator degree bound
+\(d_j\), a set of sample points \(X_p\subset\mathbb F_p\), and a list of bad
+primes and bad points at which a contour-pairing determinant, IBP pivot,
+Landau denominator, or \(D_{\rm ff}\) itself vanishes.  For every good prime
+and every \(a\in X_p\), the modular cut/IBP solve gives
+\[
+  \bar y_j(a)
+  =
+  D_{\rm ff}(a)\,\bar c_j(a)\in\mathbb F_p .
+\]
+The numerator is then fixed by the finite interpolation problem
+\begin{equation}
+  \bar N_j(x)=\sum_{r=0}^{d_j}\bar n_{jr}x^r,
+  \qquad
+  \bar N_j(a)=\bar y_j(a)\quad (a\in X_p),
+  \label{eq:finite-field-master-coefficient-interpolation}
+\end{equation}
+provided the Vandermonde determinant for the chosen points is nonzero in
+\(\mathbb F_p\).  Chinese-remainder and rational reconstruction, or an
+equivalent multi-prime lift with a stated coefficient bound, then gives the
+candidate rational function
+\begin{equation}
+  c_j(x)=\frac{N_j(x)}{D_{\rm ff}(x)} .
+  \label{eq:finite-field-master-coefficient-lift}
+\end{equation}
+
+The denominator declaration is part of the physics calculation, not an
+implementation detail.  If \(D_{\rm ff}\) omits a physical threshold factor,
+an IBP Gram determinant, or a spurious pole that cancels only after summing
+sectors, a low-degree polynomial fit can agree on the sampled cuts and still
+fail on a validation point.  Conversely, if a prime divides a normalization or
+if a sample point lies on \(D_{\rm ff}=0\), the modular solve can lose rank or
+hide a pole.  A finite-field coefficient claim should therefore publish a
+validation point outside the interpolation set and a residual test
+\[
+  \left|
+    D_{\rm ff}(x_\ast)c_j^{\rm test}(x_\ast)-N_j(x_\ast)
+  \right|
+  \le B_{\rm ff}
+\]
+in the exact or reconstructed number field, with \(B_{\rm ff}=0\) for an
+exact symbolic reconstruction.
+
+This step is still not an observable.  It determines the rational
+coefficient functions multiplying the chosen master vector.  The branch of
+the masters, subtraction convention, lower-sector constants, and real-radiation
+or measurement data remain the objects that turn those exact coefficients
+into a physical amplitude or cross section.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Master discontinuity closure]
 \label{ca:master-discontinuity-closure-gate}
 Coefficient extraction and master transport still have one more physical

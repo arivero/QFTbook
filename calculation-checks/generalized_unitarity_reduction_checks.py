@@ -25,8 +25,10 @@ subtracted, a finite two-master threshold-mixing model, a two-letter
 master-transport model with boundary and branch negative controls, a physical
 master-discontinuity closure gate comparing transported master jumps with
 Cutkosky channel data, including a separate two-particle phase-space
-state-sum computation for the scalar bubble, the finite
-Laurent-pole bookkeeping that turns a reconstructed virtual amplitude into a finite
+state-sum computation for the scalar bubble, a finite-field
+master-coefficient reconstruction model with denominator clearing and
+validation controls, the finite Laurent-pole bookkeeping that turns a
+reconstructed virtual amplitude into a finite
 observable only after infrared subtraction, real radiation, scheme transport,
 and the unresolved measurement cell have been assembled, and the two-loop
 infrared-pole consistency gate relating
@@ -79,6 +81,8 @@ exact rational projection of parent-topology contact terms into lower sectors
 after propagator cancellation and before IBP master projection;
 exact finite inversion of a contour/master pairing matrix, with surface and
 lower-sector pollution subtracted before coefficient extraction;
+finite-field interpolation of cleared master-coefficient numerators from exact
+modular samples, with a small-integer lift and a withheld validation point;
 exact finite matching of a physical Cutkosky channel datum computed from the
 state sum and phase-space normalization against extracted coefficients times
 transported master discontinuities, plus lower-sector and subtraction jumps;
@@ -140,6 +144,10 @@ data, branch-label omission,
 diagonal one-master threshold shortcuts, cut-only boundary reconstruction,
 parent-cut-only sector projection when lower sectors are not scaleless,
 non-dual or surface-polluted contour coefficient extraction,
+finite-field polynomial fits that omit the declared denominator, bad primes
+that zero a normalization denominator, singular interpolation samples, and
+using exact rational coefficients with Euclidean rather than physical master
+branches,
 raw-contour, Euclidean-value, wrong-sheet, and omitted-lower-sector shortcuts
 in physical master-discontinuity closure,
 and rejects defining the physical cut by the reconstructed discontinuity
@@ -380,6 +388,68 @@ def vector_scale(scale: Fraction, vector: Vector) -> Vector:
 
 def dot(left: Vector, right: Vector) -> Fraction:
     return sum(left[index] * right[index] for index in range(len(left)))
+
+
+def mod_inverse(value: int, prime: int) -> int:
+    residue = value % prime
+    if residue == 0:
+        raise ZeroDivisionError(f"zero divisor modulo {prime}")
+    return pow(residue, -1, prime)
+
+
+def mod_poly_eval(coefficients: list[int], x_value: int, prime: int) -> int:
+    result = 0
+    power = 1
+    x_value %= prime
+    for coefficient in coefficients:
+        result = (result + coefficient * power) % prime
+        power = (power * x_value) % prime
+    return result
+
+
+def poly_eval_fraction(coefficients: list[int], x_value: Fraction) -> Fraction:
+    result = Fraction(0)
+    power = Fraction(1)
+    for coefficient in coefficients:
+        result += coefficient * power
+        power *= x_value
+    return result
+
+
+def interpolate_mod(points: list[tuple[int, int]], degree: int, prime: int) -> list[int]:
+    if len(points) != degree + 1:
+        raise ValueError("interpolation requires degree+1 points")
+    rows = [
+        [pow(x_value % prime, power, prime) for power in range(degree + 1)]
+        + [y_value % prime]
+        for x_value, y_value in points
+    ]
+    width = degree + 2
+    for column in range(degree + 1):
+        pivot = next(
+            (
+                row_index
+                for row_index in range(column, degree + 1)
+                if rows[row_index][column] % prime != 0
+            ),
+            None,
+        )
+        if pivot is None:
+            raise ZeroDivisionError("singular interpolation matrix")
+        rows[column], rows[pivot] = rows[pivot], rows[column]
+        inverse_pivot = mod_inverse(rows[column][column], prime)
+        rows[column] = [(entry * inverse_pivot) % prime for entry in rows[column]]
+        for row_index in range(degree + 1):
+            if row_index == column:
+                continue
+            factor = rows[row_index][column] % prime
+            if factor == 0:
+                continue
+            rows[row_index] = [
+                (rows[row_index][entry] - factor * rows[column][entry]) % prime
+                for entry in range(width)
+            ]
+    return [rows[row_index][-1] % prime for row_index in range(degree + 1)]
 
 
 def four_dimensional_cut_signature(basis_name: str) -> tuple[Fraction, Fraction, Fraction]:
@@ -1995,6 +2065,116 @@ def check_dual_contour_master_coefficient_extraction() -> None:
     )
 
 
+def check_finite_field_master_coefficient_reconstruction() -> None:
+    prime = 101
+    sample_points = [2, 3, 4]
+    validation_point = 5
+    numerator_vectors = [
+        [5, -3, 2],
+        [4, 1, -1],
+    ]
+
+    def common_denominator_mod(x_value: int, modulus: int) -> int:
+        return (3 * x_value * (1 - x_value)) % modulus
+
+    def modular_coefficient(numerator: list[int], x_value: int, modulus: int) -> int:
+        denominator = common_denominator_mod(x_value, modulus)
+        return mod_poly_eval(numerator, x_value, modulus) * mod_inverse(
+            denominator, modulus
+        ) % modulus
+
+    assert_true(
+        "finite-field samples avoid declared denominator zeros",
+        all(common_denominator_mod(point, prime) != 0 for point in sample_points),
+    )
+
+    lifted_numerators: list[list[int]] = []
+    for numerator in numerator_vectors:
+        cleared_samples = [
+            (
+                point,
+                common_denominator_mod(point, prime)
+                * modular_coefficient(numerator, point, prime)
+                % prime,
+            )
+            for point in sample_points
+        ]
+        reconstructed = interpolate_mod(cleared_samples, degree=2, prime=prime)
+        assert_equal(
+            "finite-field cleared numerator interpolation",
+            reconstructed,
+            [coefficient % prime for coefficient in numerator],
+        )
+        assert_equal(
+            "finite-field withheld validation point",
+            mod_poly_eval(reconstructed, validation_point, prime),
+            common_denominator_mod(validation_point, prime)
+            * modular_coefficient(numerator, validation_point, prime)
+            % prime,
+        )
+        lifted = [
+            coefficient if coefficient <= prime // 2 else coefficient - prime
+            for coefficient in reconstructed
+        ]
+        assert_equal("finite-field small-integer lift", lifted, numerator)
+        lifted_numerators.append(lifted)
+
+    x_physical = Fraction(2, 5)
+    common_denominator = 3 * x_physical * (1 - x_physical)
+    rational_coefficients = [
+        poly_eval_fraction(numerator, x_physical) / common_denominator
+        for numerator in lifted_numerators
+    ]
+    assert_equal(
+        "finite-field rational coefficient lift at physical point",
+        rational_coefficients,
+        [Fraction(103, 18), Fraction(53, 9)],
+    )
+
+    raw_polynomial_samples = [
+        (point, modular_coefficient(numerator_vectors[0], point, prime))
+        for point in sample_points
+    ]
+    denominator_omitted_fit = interpolate_mod(
+        raw_polynomial_samples, degree=2, prime=prime
+    )
+    assert_true(
+        "withheld point rejects denominator-omitted polynomial fit",
+        mod_poly_eval(denominator_omitted_fit, validation_point, prime)
+        != modular_coefficient(numerator_vectors[0], validation_point, prime),
+    )
+
+    assert_true(
+        "bad prime zeros normalization denominator",
+        all(common_denominator_mod(point, 3) == 0 for point in sample_points),
+    )
+    assert_equal(
+        "threshold sample point rejected by declared denominator",
+        common_denominator_mod(1, prime),
+        0,
+    )
+    singular_sample_detected = False
+    try:
+        interpolate_mod([(2, 1), (2, 1), (4, 7)], degree=2, prime=prime)
+    except ZeroDivisionError:
+        singular_sample_detected = True
+    assert_true(
+        "singular finite-field interpolation sample detected",
+        singular_sample_detected,
+    )
+
+    euclidean_masters = [Fraction(3, 7), Fraction(5, 11)]
+    physical_branch_masters = [
+        euclidean_masters[0] + Fraction(1, 8),
+        euclidean_masters[1] - Fraction(1, 10),
+    ]
+    assert_true(
+        "finite-field coefficients still require physical master branch",
+        dot(rational_coefficients, euclidean_masters)
+        != dot(rational_coefficients, physical_branch_masters),
+    )
+
+
 def check_master_discontinuity_closure_gate() -> None:
     lam = Fraction(7, 5)
     tree_amplitude = -lam
@@ -2715,6 +2895,7 @@ def main() -> None:
     check_two_loop_sunrise_elliptic_maximal_cut()
     check_multi_loop_maximal_cut_sector_projection()
     check_dual_contour_master_coefficient_extraction()
+    check_finite_field_master_coefficient_reconstruction()
     check_master_discontinuity_closure_gate()
     check_branch_and_landau_ledger()
     check_two_master_threshold_mixing()

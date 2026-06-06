@@ -153,6 +153,7 @@
 | \(I_{a,b}(Q^2)\) | Euclidean one-loop bubble integral family used for IBP reduction |
 | \(z\), \(F_m(z)\), \(T_m\) | equal-mass bubble threshold variable \(Q^2/(4m^2)\), finite nonlocal bubble part, and normalized lower tadpole master |
 | \(r,E_r,P_r,\Delta_r\) | equal-mass sunrise threshold variable \(s/m^2\), maximal-cut elliptic curve, affine cubic, and eliminated quartic |
+| \(D_{\rm ff}(x),N_j(x),X_p\) | finite-field master-coefficient reconstruction denominator, cleared numerator, and good modular sample set for the dimensionless kinematic coordinate \(x=t/s\) |
 | \(\Delta_{\chi;\eta}\vec J\), \(\mathcal U_{\chi;\eta}\), \(E_{\chi;\eta}\) | stripped physical-channel master jump, Cutkosky channel datum, and residual in the master-discontinuity closure comparison |
 | \(\vec M\), \(A_T\), \(y_\gamma\) | local two-master threshold vector, nilpotent threshold residue, and sheet/path-labelled threshold coordinate in the multi-master differential-system model |
 | \(\vec J\), \(A_0,A_1\), \(L_0^\gamma,L_1^\gamma\) | two-letter master-transport vector, residue matrices, and path-labelled logarithmic transports in the finite master-system audit |
@@ -218,6 +219,11 @@
   reduction and boundary/branch data evaluate the master sector, and
   subtraction plus observable data are required before a virtual amplitude is
   promoted to a finite physical quantity.
+- Finite-field coefficient reconstruction is used only after a master basis,
+  common denominator, numerator degree bound, good-prime/sample set, and
+  validation point have been declared.  It reconstructs rational coefficient
+  functions for the reduced master vector; it does not choose the physical
+  branch of the masters or assemble an infrared-safe observable.
 - The one-loop scalar-basis discussion assumes dimensional regularization,
   declared scalar-integral normalizations, and subtraction of higher-topology
   contributions before lower-topology coefficients are read from triple and
@@ -964,9 +970,23 @@
   coefficient extraction, rejects raw-contour and contact-omission shortcuts,
   detects surface pollution, bounds propagated cut/contact errors, and confirms
   that a rank-one contour pairing cannot distinguish two masters.
+- 2026-06-06 issue #769 finite-field coefficient-reconstruction pass: added
+  `ca:finite-field-master-coefficient-reconstruction` after the dual-contour
+  layer.  The new block develops finite-field sampling as an exact
+  master-coefficient reconstruction method rather than a black-box algebra
+  trick: it declares the common denominator \(D_{\rm ff}\), numerator degree
+  bounds, good-prime/sample exclusions, Vandermonde interpolation, rational
+  lift, and withheld validation point before the coefficients are transported
+  into master branches.  The companion check reconstructs two rational
+  coefficient functions from modular samples after denominator clearing,
+  verifies the small-integer numerator lift at a physical point, rejects a
+  denominator-omitted polynomial fit, bad primes, singular sample points, and
+  Euclidean-master shortcuts.  This advances finite-field technology inside
+  #769 while keeping the physical amplitude obligations--master branch,
+  lower-sector constants, subtraction, and observable assembly--separate.
 - 2026-06-06 issue #769 master-discontinuity closure pass: added
-  `ca:master-discontinuity-closure-gate` after the dual-contour coefficient
-  layer.  The new comparison block compares the transported master boundary-value jump
+  `ca:master-discontinuity-closure-gate` after the coefficient-reconstruction
+  layers.  The new comparison block compares the transported master boundary-value jump
   \(\Delta_{\chi;\eta}\vec J\), lower-sector discontinuities, and subtraction
   branch data with the physical Cutkosky channel datum
   \(\mathcal U_{\chi;\eta}\).  The companion check verifies exact finite
