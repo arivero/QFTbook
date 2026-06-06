@@ -1,0 +1,259 @@
+\chapter{Instantons as Physical Amplitudes}
+\label{ch:instantons-physical-amplitudes}
+
+Chapter~\ref{ch:volume-ii-20} developed the BPST solution, the
+finite-regulator instanton density, the anomaly selection rules, and several
+QCD amplitude benchmarks.  This chapter reorganizes those ingredients around
+the physical object they are meant to compute.  The object is not the
+instanton moduli space and not the universal density by itself.  It is a
+regulated source or state amplitude, with zero modes saturated, nonzero
+fluctuations divided by the chosen counterterms, endpoint faces controlled,
+and a Lorentzian or Euclidean observable projection specified.
+
+The distinction is operational.  Two channels may use exactly the same BPST
+collective-coordinate space and the same one-loop density, while one channel
+vanishes because its sources have rank one in the zero-mode space and the
+other gives a nonzero four-fermion coefficient.  Or two Euclidean source
+coefficients may agree after integrating over the collective variables, while
+their spectral projections differ.  These are not refinements of moduli-space
+geometry; they are the steps which turn a saddle contribution into a QFT
+amplitude.
+
+\section{The Channel Is Part of the Calculation}
+\label{sec:instanton-physical-amplitude-channel}
+
+The finite-regulator datum
+of Definition~\ref{def:one-instanton-amplitude-datum} is the local input for
+the present chapter.  We now package it as an observable channel.  This is a
+change of emphasis, not a new convention: the BPST/ADHM data select the
+domain of integration, while the channel records the determinant, zero-mode,
+source, endpoint, and physical-projection data which decide the amplitude.
+
+\begin{definition}[Instanton physical-amplitude channel]
+\label{def:instanton-physical-amplitude-channel}
+A one-instanton physical-amplitude channel at regulator \(\Lambda\) is a
+tuple
+\begin{equation}
+  \mathcal C_{\Lambda}
+  =
+  \bigl(
+  \mathcal U_{\rm win},
+  \dd\nu_{\Lambda,\mathcal M},
+  \mathcal W_{\Lambda}^{\rm nz},
+  \mathcal Z_{\Lambda}^{0},
+  \mathcal M_{\Lambda}^{\rm src},
+  \mathcal B_{\Lambda}^{\rho},
+  \mathfrak L_{\rm phys}
+  \bigr).
+  \label{eq:instanton-physical-amplitude-channel}
+\end{equation}
+Here \(\mathcal U_{\rm win}\) is the retained chart/window in center, size,
+and orientation variables; \(\dd\nu_{\Lambda,\mathcal M}\) is the
+collective-coordinate density; \(\mathcal W_{\Lambda}^{\rm nz}\) is the
+zero-mode-deleted fluctuation determinant with its counterterm convention;
+\(\mathcal Z_{\Lambda}^{0}\) is the Berezin coefficient which saturates the
+fermion zero modes; \(\mathcal M_{\Lambda}^{\rm src}\) is the finite source,
+amputation, OPE, color-singlet, or hadron-overlap map;
+\(\mathcal B_{\Lambda}^{\rho}\) is the endpoint, size-window, or screening
+factor; and \(\mathfrak L_{\rm phys}\) is the final observable projection,
+such as an LSZ residue, spectral-bin functional, Euclidean susceptibility,
+OPE coefficient, or inclusive cut.
+\end{definition}
+
+The channel coefficient is
+\begin{equation}
+  \mathcal A_{\Lambda}(\mathcal C)
+  =
+  \mathfrak L_{\rm phys}
+  \left[
+  \int_{\mathcal U_{\rm win}}
+  \ee^{-S_{\Lambda}(A_z)+\ii\theta}\,
+  \mathcal W_{\Lambda}^{\rm nz}(z)\,
+  \mathcal Z_{\Lambda}^{0}(z)\,
+  \mathcal M_{\Lambda}^{\rm src}(z)\,
+  \mathcal B_{\Lambda}^{\rho}(z)\,
+  \dd\nu_{\Lambda,\mathcal M}(z)
+  \right].
+  \label{eq:instanton-physical-channel-functional}
+\end{equation}
+The physical statement is obtained only with a residual budget:
+\begin{equation}
+\begin{aligned}
+  \mathcal A_{\rm phys}(\mathcal C)
+  &=
+  \mathcal A_{\Lambda}(\mathcal C)
+  +R_{\rm det}+R_{\rm fluc}+R_{\rm zm}+R_{\rm src}+R_{\rm Schur}
+   +R_{\rho}                                      \\
+  &\qquad
+  +R_{\rm sec}+R_{\rm cont}+R_{\rm spec}
+   +R_{\rm IR}+R_{\rm cut}+R_{\rm scheme}.
+\end{aligned}
+  \label{eq:instanton-physical-channel-residual-budget}
+\end{equation}
+The names match the reusable slots in
+Proposition~\ref{prop:instanton-amplitude-assembly-error-budget}.  A
+calculation may set some of them to zero only by giving the corresponding
+argument; a local BPST density does not set any of the source, endpoint, or
+physical-projection terms to zero.
+
+\begin{proposition}[Moduli-equivalent channels need not have the same amplitude]
+\label{prop:instanton-moduli-equivalent-channel-separation}
+Consider two channels with the same finite instanton chart, the same
+collective-coordinate density, and the same nonzero-mode determinant
+convention.  In a two-flavor zero-mode sector suppose that the only
+channel-dependent local source input is a \(2\times2\) zero-mode source
+matrix \(B(z)\), so that
+\begin{equation}
+  \mathcal Z_{\Lambda}^{0}(z)=
+  \det B(z)
+  =
+  B_{uu}(z)B_{dd}(z)-B_{ud}(z)B_{du}(z).
+  \label{eq:instanton-two-flavor-source-determinant}
+\end{equation}
+Then the common moduli measure and determinant convention do not determine
+the amplitude.  If \(B(z)\) has rank one on the retained window, the
+two-flavor source contribution vanishes identically, even when the
+collective-coordinate density and nonzero-mode determinant are nonzero.  If
+another channel has a full-rank \(B'(z)\) on a set of positive retained
+weight, its coefficient in
+\eqref{eq:instanton-physical-channel-functional} can be nonzero with the same
+moduli data.
+\end{proposition}
+
+\begin{proof}
+At finite regulator, the fermion zero modes are ordinary Grassmann variables.
+For two flavors the Berezin integral over the four source variables extracts
+the determinant coefficient in
+\eqref{eq:instanton-two-flavor-source-determinant}.  A rank-one source matrix
+has zero determinant pointwise, so the whole zero-mode coefficient is zero
+before the collective-coordinate integral is performed.  A full-rank source
+matrix has nonzero determinant at the point under consideration.  Multiplying
+by the same bosonic density and the same nonzero-mode determinant therefore
+changes the channel coefficient only through the source determinant and the
+subsequent observable projection.  The common moduli space has not changed.
+\end{proof}
+
+This proposition is the shortest way to state the physics lesson.  The
+instanton solution supplies a saddle and a measure factor.  The physical
+amplitude asks which external states or sources can see the zero-mode
+directions, whether that source information survives projection, and whether
+the remaining integral is controlled at its boundaries.
+
+\section{Mass Saturation Versus Source Differentiation}
+\label{sec:instanton-mass-source-differentiation}
+
+The local 't Hooft determinant is useful precisely because it keeps the
+zero-mode source algebra visible.  It becomes misleading when the determinant
+is read as a single undifferentiated number, independent of how the physical
+observable is selected.
+
+\begin{proposition}[Two-flavor mass/source determinant coordinate]
+\label{prop:two-flavor-source-mass-determinant-coordinate}
+Let
+\[
+  M=\begin{pmatrix}m_u&0\\0&m_d\end{pmatrix},
+  \qquad
+  B=\begin{pmatrix}B_{uu}&B_{ud}\\B_{du}&B_{dd}\end{pmatrix}
+\]
+be the mass and source restrictions to the instanton zero-mode space.  The
+finite zero-mode Berezin coefficient is
+\begin{equation}
+  \det(M+B)
+  =
+  m_um_d
+  +m_uB_{dd}+m_dB_{uu}
+  +B_{uu}B_{dd}-B_{ud}B_{du}.
+  \label{eq:two-flavor-mass-source-determinant-polynomial}
+\end{equation}
+Thus the mass-saturated vacuum activity, the two-source mass-assisted
+coefficients, and the four-source differentiated coefficient are different
+coordinates of the same zero-mode determinant.  They are not the same
+physical observable.
+\end{proposition}
+
+\begin{proof}
+This is the determinant of a \(2\times2\) matrix:
+\[
+  \det(M+B)
+  =(m_u+B_{uu})(m_d+B_{dd})-B_{ud}B_{du}.
+\]
+Expanding gives
+\eqref{eq:two-flavor-mass-source-determinant-polynomial}.  Berezin
+integration then selects the term with the required number of source
+variables or mass insertions.  Setting \(B=0\) leaves the vacuum coordinate
+\(m_um_d\); setting \(M=0\) leaves the four-source coefficient
+\(\det B\).  Mixed mass/source observables select the linear-in-\(B\)
+terms.
+\end{proof}
+
+This separation is what the original instanton amplitude calculation uses.
+The four-fermion coefficient is obtained by differentiating the source
+functional and retaining the zero-mode form factors, not by quoting the
+mass-saturated vacuum activity and changing its interpretation.  The
+coefficient must then be paired with the nonzero-mode determinant, the color
+orientation tensor, external source residues or LSZ data, and a size-window
+or infrared mechanism.
+
+\section{Finite-Cell Control Model}
+\label{sec:finite-cell-instanton-channel-control}
+
+A continuum proof of an instanton amplitude is analytic.  Nevertheless, the
+logic which prevents a moduli-only shortcut is already visible in a finite
+cell model.  Let the retained instanton window be decomposed into finitely
+many cells \(i\).  Let
+\[
+  c_i
+  =
+  w_i\,d_i\,\det B_i\,p_i
+\]
+denote the leading cell contribution after the positive collective weight
+\(w_i\), determinant factor \(d_i\), zero-mode source determinant
+\(\det B_i\), and physical projection weight \(p_i\) have all been inserted.
+
+\begin{controlledapproximation}[Finite-cell instanton channel control]
+\label{ca:finite-cell-instanton-channel-control}
+In a finite retained-cell channel, suppose each leading cell contribution
+\(c_i\) is replaced by \(c_i(1+\delta_i)\), with
+\(|\delta_i|\le\epsilon_i\), and suppose the omitted projection, sector,
+infrared, cut, and scheme remainders have absolute majorant \(R_{\rm ext}\).
+Then
+\begin{equation}
+  \left|
+  \mathcal A_{\rm phys}
+  -\sum_i c_i
+  \right|
+  \le
+  \sum_i |c_i|\,\epsilon_i+R_{\rm ext}.
+  \label{eq:finite-cell-instanton-channel-bound}
+\end{equation}
+If the source matrix on a cell is perturbed by
+\(B_i\mapsto B_i+E_i\), with \(B_i\) invertible and
+\(\eta_i=\|B_i^{-1}E_i\|\) in an operator norm for which
+\(|\operatorname{tr}X|\le2\|X\|\) and \(|\det X|\le\|X\|^2\) on
+\(2\times2\) matrices, then
+\begin{equation}
+  \frac{|\det(B_i+E_i)-\det B_i|}{|\det B_i|}
+  \le
+  2\eta_i+\eta_i^2 .
+  \label{eq:finite-cell-source-determinant-stability}
+\end{equation}
+The first estimate is the triangle inequality applied after the channel has
+already been projected to the same observable coordinate.  It would be false
+as a relative statement without a noncancellation margin for
+\(\sum_i c_i\).  For the determinant estimate, write
+\[
+  \det(B_i+E_i)=\det B_i\,
+  \det(1+B_i^{-1}E_i).
+\]
+For a \(2\times2\) matrix \(X\),
+\(\det(1+X)-1=\operatorname{tr}X+\det X\).  The stated norm bounds give
+\eqref{eq:finite-cell-source-determinant-stability}.
+\end{controlledapproximation}
+
+The finite-cell model has two uses.  First, it gives a transparent negative
+control: deleting \(\det B_i\), \(p_i\), or \(R_{\rm ext}\) changes the
+physical statement, even if the collective-coordinate weights are unchanged.
+Second, it records why the continuum estimates in
+Chapter~\ref{ch:volume-ii-20} carry so many named residuals.  They
+are not decorative error terms.  They are the places where a Euclidean saddle
+coefficient becomes, or fails to become, a physical amplitude.

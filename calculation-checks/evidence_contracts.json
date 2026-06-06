@@ -30,6 +30,10 @@
       "risk_class": "instanton amplitudes"
     },
     {
+      "path": "instanton_physical_amplitude_architecture_checks.py",
+      "risk_class": "instanton physical-amplitude architecture"
+    },
+    {
       "path": "false_vacuum_decay_checks.py",
       "risk_class": "false-vacuum contour and metastability"
     },

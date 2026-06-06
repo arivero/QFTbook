@@ -765,6 +765,17 @@ Current checks:
   projected out, Uhlenbeck boundary face codimensions and product
   power-counting thresholds, and the \(k=1\) ADHM orientation dimension and
   cone-volume power.
+- `instanton_physical_amplitude_architecture_checks.py`: exact rational
+  checks for the dedicated instanton physical-amplitude chapter, including
+  the two-flavor \(\det(M+B)\) source/mass polynomial, the distinction between
+  mass-saturated vacuum activity and the four-source coefficient,
+  moduli-equivalent channels with different or zero amplitudes because of
+  zero-mode source rank, finite-cell spectral/projection ambiguity after a
+  single Euclidean source sum, the retained-cell residual bound, and the
+  \(2\times2\) source-determinant stability estimate, with negative controls
+  for an off-diagonal determinant sign flip, moduli-only prediction, rank-one
+  source shortcut, one-number spectral projection, and omitted external
+  residual.
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
   gauge-Higgs soliton and collective-coordinate section, including the
   Bogomolny and vortex square completions, the Prasad-Sommerfield profile
