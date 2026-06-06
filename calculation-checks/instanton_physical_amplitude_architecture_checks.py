@@ -16,12 +16,16 @@ Target claims:
   distinct coordinates of det(M+B).
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell residuals
   and source-determinant perturbations obey the displayed absolute bounds.
+- `prop:su3-nf2-hard-source-power-slow-tail` and
+  `ca:instanton-hard-benchmark-gate-ledger`: the SU(3), Nf=2 hard
+  four-source benchmark has the stated rho power, Q power, slow endpoint tail,
+  gate dependence, and same-theory hard-scale ratio bound.
 
 Independent construction:
 - The checks build small exact rational cell models from scratch.  They compute
   two-by-two determinants, mass/source polynomials, physical projection bins,
-  and residual sums directly, rather than importing BPST radial integrals or
-  copying a monograph coefficient.
+  residual sums, and hard-window power ledgers directly, rather than importing
+  BPST radial integrals or copying a monograph coefficient.
 
 Imported assumptions:
 - The finite model assumes that the continuum instanton window has already been
@@ -33,8 +37,9 @@ Negative controls:
 - The script rejects a plus sign in the off-diagonal determinant term, a
   moduli-only prediction that ignores zero-mode rank, a rank-one source matrix
   treated as a nonzero four-source channel, a single Euclidean cell sum used as
-  a spectral-bin observable, and a residual bound that omits the external
-  projection/sector remainder.
+  a spectral-bin observable, a determinant-only hard-scale ratio, a hard
+  benchmark with a missing hard slot, and a residual bound that omits the
+  external projection/sector remainder.
 
 Scope boundary:
 - Passing these checks proves only finite algebra and channel bookkeeping.  It
@@ -98,6 +103,18 @@ def max_abs_entry(matrix: Matrix2) -> Fraction:
 def assert_not_equal(name: str, actual: Fraction, bad: Fraction) -> None:
     if actual == bad:
         raise AssertionError(f"{name}: wrong shortcut unexpectedly matched {actual!r}")
+
+
+def assert_equal(name: str, actual, expected) -> None:
+    if actual != expected:
+        raise AssertionError(f"{name}: got {actual!r}, expected {expected!r}")
+
+
+def product(values: list[Fraction]) -> Fraction:
+    result = Fraction(1)
+    for value in values:
+        result *= value
+    return result
 
 
 def check_two_flavor_mass_source_determinant_coordinate() -> None:
@@ -210,12 +227,128 @@ def check_source_determinant_stability_bound() -> None:
     assert_geq("positive determinant margin", float(abs(det2(base))), 1.0)
 
 
+def check_su3_two_flavor_hard_source_power_and_tail() -> None:
+    n_c = 3
+    n_f = 2
+    b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+    zero_mode_power = Fraction(6)
+    measure_power = Fraction(-5)
+    rho_power = b0 + zero_mode_power + measure_power
+
+    assert_equal("SU3 Nf2 hard b0", b0, Fraction(29, 3))
+    assert_equal("hard four-source rho power", rho_power, Fraction(32, 3))
+
+    q_power = -(rho_power + 1)
+    lambda_power = b0
+    assert_equal("hard four-source Q power", q_power, -Fraction(35, 3))
+    assert_equal("hard four-source coefficient mass dimension", lambda_power + q_power, Fraction(-2))
+
+    c_values = [Fraction(1), Fraction(2), Fraction(3), Fraction(4)]
+    leading_slot_coefficient = product([Fraction(6) / (c**3) for c in c_values])
+    tail_integrand_power = rho_power - 12
+    tail_antiderivative_power = tail_integrand_power + 1
+    leading_tail_coefficient = -leading_slot_coefficient / tail_antiderivative_power
+
+    assert_equal("hard four-source tail integrand power", tail_integrand_power, -Fraction(4, 3))
+    assert_equal("hard four-source tail antiderivative power", tail_antiderivative_power, -Fraction(1, 3))
+    assert_equal("hard four-source leading tail coefficient", leading_tail_coefficient, 3 * leading_slot_coefficient)
+    assert_equal(
+        "hard four-source sample tail coefficient",
+        leading_tail_coefficient,
+        Fraction(3 * 6**4, (1 * 2 * 3 * 4) ** 3),
+    )
+
+    one_soft_slot_power = rho_power - 9
+    assert_equal("one missing hard slot endpoint power", one_soft_slot_power, Fraction(5, 3))
+    assert_equal("one missing hard slot is not endpoint controlled", one_soft_slot_power < -1, False)
+
+
+def check_hard_benchmark_gate_ledger_and_ratio() -> None:
+    center_delta_on_shell = Fraction(1)
+    center_delta_off_shell = Fraction(0)
+    determinant_constant = Fraction(11, 13)
+    haar_projection = Fraction(3, 7)
+    amputation = Fraction(1)
+    source_frame = Fraction(1)
+    physical_projection = Fraction(7, 11)
+
+    right_overlap: Matrix2 = ((Fraction(2), Fraction(1)), (Fraction(1), Fraction(2)))
+    left_overlap: Matrix2 = ((Fraction(3), Fraction(1)), (Fraction(2), Fraction(2)))
+    source_factor = det2(right_overlap) * det2(left_overlap)
+    assert_equal("hard benchmark right source determinant", det2(right_overlap), Fraction(3))
+    assert_equal("hard benchmark left source determinant", det2(left_overlap), Fraction(4))
+    assert_equal("hard benchmark zero-mode source factor", source_factor, Fraction(12))
+
+    window_cells = [Fraction(1, 2), -Fraction(1, 8), Fraction(3, 10)]
+    hard_window = sum(window_cells, Fraction(0))
+    euclidean_benchmark = (
+        center_delta_on_shell
+        * determinant_constant
+        * haar_projection
+        * amputation
+        * source_frame
+        * source_factor
+        * hard_window
+    )
+    physical_benchmark = physical_projection * euclidean_benchmark
+    density_only = determinant_constant * hard_window
+
+    assert_equal("hard benchmark signed window", hard_window, Fraction(27, 40))
+    assert_not_equal("density-only hard shortcut misses gate data", density_only, euclidean_benchmark)
+    assert_not_equal("Euclidean colored kernel is not physical projection", euclidean_benchmark, physical_benchmark)
+
+    off_shell = (
+        center_delta_off_shell
+        * determinant_constant
+        * haar_projection
+        * source_factor
+        * hard_window
+    )
+    assert_equal("off-shell center gate kills hard benchmark", off_shell, Fraction(0))
+
+    rank_one_right: Matrix2 = ((Fraction(1), Fraction(2)), (Fraction(2), Fraction(4)))
+    collapsed_source_factor = det2(rank_one_right) * det2(left_overlap)
+    assert_equal("rank-one zero-mode source kills hard benchmark", collapsed_source_factor, Fraction(0))
+
+    unamputated_residue_product = Fraction(5, 3)
+    unamputated = unamputated_residue_product * euclidean_benchmark
+    assert_not_equal("unamputated external residues change coordinate", unamputated, euclidean_benchmark)
+    assert_equal("amputation restores benchmark coordinate", unamputated / unamputated_residue_product, euclidean_benchmark)
+
+    q_power = -Fraction(35, 3)
+    ratio_powers = {
+        "determinant_constant": Fraction(0),
+        "Lambda_ht": Fraction(0),
+        "Q2_over_Q1": q_power,
+        "source_window_ratio": Fraction(1),
+    }
+    assert_equal("same-theory determinant constant cancels in ratio", ratio_powers["determinant_constant"], Fraction(0))
+    assert_equal("same-theory Lambda power cancels in ratio", ratio_powers["Lambda_ht"], Fraction(0))
+    assert_equal("hard scale ratio keeps Q power", ratio_powers["Q2_over_Q1"], q_power)
+
+    e1 = -Fraction(1, 20)
+    e2 = Fraction(1, 30)
+    eps1 = Fraction(1, 10)
+    eps2 = Fraction(1, 12)
+    ratio_residual = (1 + e2) / (1 + e1) - 1
+    ratio_bound = (eps1 + eps2) / (1 - eps1)
+    assert_equal("hard ratio residual sample", ratio_residual, Fraction(5, 57))
+    assert_leq("hard ratio residual bound", float(abs(ratio_residual)), float(ratio_bound))
+
+    determinant_only_q_power = Fraction(0)
+    assert_equal("determinant-only ratio misses hard Q power", determinant_only_q_power == q_power, False)
+    stale_source_window_ratio = Fraction(15, 14)
+    assert_equal("changed source window is a real ratio input", stale_source_window_ratio == Fraction(1), False)
+
+
 def main() -> None:
     check_two_flavor_mass_source_determinant_coordinate()
     check_moduli_equivalent_channel_separation()
     check_projection_not_recoverable_from_one_euclidean_sum()
     check_finite_cell_residual_bound()
     check_source_determinant_stability_bound()
+    check_su3_two_flavor_hard_source_power_and_tail()
+    check_hard_benchmark_gate_ledger_and_ratio()
     print("instanton physical amplitude architecture checks passed")
 
 

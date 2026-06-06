@@ -194,6 +194,177 @@ coefficient must then be paired with the nonzero-mode determinant, the color
 orientation tensor, external source residues or LSZ data, and a size-window
 or infrared mechanism.
 
+\section{A Hard Four-Fermion Benchmark}
+\label{sec:instanton-hard-four-fermion-benchmark}
+
+The cleanest test of the preceding distinction is the hard two-flavor
+four-fermion channel.  Work in \(SU(3)\) with two light Dirac fundamentals,
+choose a \(Q=1\) BPST sector, and insert four amputated external fermion
+sources with momenta of size \(Q\).  The center integral first imposes the
+momentum-conservation gate.  The color orientation integral then projects the
+four source slots through a shared Haar tensor.  The fermion zero modes
+produce two rank conditions, one for the right-handed overlap matrix and one
+for the left-handed overlap matrix.  Only after these gates have been passed
+does the size integral define the hard coefficient.
+
+Let \(Q_\ell=c_\ell Q\), \(c_\ell>0\), be the four hard source scales, and let
+\(F_\ell(c_\ell Q\rho)\) denote the individual zero-mode form factor in the
+declared source normalization.  After the center delta, common determinant
+constant, Haar contraction, amputation convention, and source-overlap
+determinants have been pulled into a prefactor \(\mathcal K_{\rm gate}\), the
+stripped one-instanton hard coefficient has the form
+\begin{equation}
+  \mathcal A_{4}^{\rm hard}(Q)
+  =
+  \mathcal K_{\rm gate}\,
+  \Lambda_{\rm ht}^{29/3}\,
+  Q^{-35/3}\,
+  H(c_1,c_2,c_3,c_4)
+  +R_{4}^{\rm hard}(Q),
+  \label{eq:instanton-hard-four-source-coefficient}
+\end{equation}
+where
+\begin{equation}
+  H(c_1,c_2,c_3,c_4)
+  =
+  \int_0^\infty
+  s^{32/3}\prod_{\ell=1}^{4}F_\ell(c_\ell s)\,\dd s .
+  \label{eq:instanton-hard-four-source-window-integral}
+\end{equation}
+The residual \(R_{4}^{\rm hard}\) contains the determinant, source-frame,
+amputation, endpoint, sector-isolation, continuation, and physical-projection
+remainders from \eqref{eq:instanton-physical-channel-residual-budget}.  The
+formula is a benchmark channel, not a universal local vertex: changing the
+source wave packets, the orientation contraction, or the physical projection
+changes \(\mathcal K_{\rm gate}\), \(H\), or \(R_{4}^{\rm hard}\).
+
+\begin{proposition}[\(SU(3)\), \(N_f=2\) hard-source power and slow tail]
+\label{prop:su3-nf2-hard-source-power-slow-tail}
+In the preceding hard channel, \(b_0=29/3\).  The four differentiated
+zero-mode slots contribute the local source power \(\rho^6\), so the size
+integrand before hard form factors is
+\begin{equation}
+  \rho^{\,b_0+6-5}\,\dd\rho
+  =
+  \rho^{32/3}\,\dd\rho .
+  \label{eq:instanton-hard-four-source-rho-power}
+\end{equation}
+After \(s=Q\rho\), the hard coefficient carries the scale power
+\begin{equation}
+  \Lambda_{\rm ht}^{29/3}Q^{-35/3},
+  \qquad
+  29/3-35/3=-2 ,
+  \label{eq:instanton-hard-four-source-scale-power}
+\end{equation}
+which is the mass dimension of a four-fermion coefficient.  If all four
+individual zero-mode form factors have the large-\(s\) tail
+\[
+  F_\ell(c_\ell s)=6c_\ell^{-3}s^{-3}+O(s^{-5}),
+\]
+then the large-\(s\) endpoint of \eqref{eq:instanton-hard-four-source-window-integral}
+has leading tail
+\begin{equation}
+  \int_R^\infty
+  s^{32/3}\prod_{\ell=1}^{4}F_\ell(c_\ell s)\,\dd s
+  =
+  3\,6^4\!\left(\prod_{\ell=1}^{4}c_\ell^{-3}\right)R^{-1/3}
+  +O(R^{-7/3}).
+  \label{eq:instanton-hard-four-source-slow-tail}
+\end{equation}
+If one of the four slots is not hard, this power test no longer controls the
+large-size endpoint by the same source profile.
+\end{proposition}
+
+\begin{proof}
+For \(SU(3)\) with two Dirac fundamentals,
+\[
+  b_0=\frac{11}{3}3-\frac{2}{3}2=\frac{29}{3}.
+\]
+The universal one-loop size density contributes \(\rho^{b_0-5}\dd\rho\), and
+the four differentiated zero-mode slots contribute \(\rho^6\).  This gives
+\eqref{eq:instanton-hard-four-source-rho-power}.  The change of variables
+\(s=Q\rho\) gives
+\[
+  \dd\rho\,\rho^{32/3}
+  =
+  Q^{-35/3}s^{32/3}\,\dd s .
+\]
+At the hard subtraction point \(\mu=Q\), the one-loop density prefactor
+\(\mu^{b_0}\) contributes \(Q^{29/3}\), so before rewriting the classical
+exponential the coefficient scales as
+\(\exp[-8\pi^2/g_{\rm ht}^2(Q)]Q^{-2}\).  The one-loop RG-invariant trade
+\[
+  \exp[-8\pi^2/g_{\rm ht}^2(Q)]
+  =
+  \Lambda_{\rm ht}^{29/3}Q^{-29/3}
+\]
+then gives the final power
+\(\Lambda_{\rm ht}^{29/3}Q^{-35/3}\).  The total mass dimension is
+\(29/3-35/3=-2\), as required for a coefficient multiplying a dimension-six
+four-fermion source.
+
+For the endpoint, multiply the four large-\(s\) tails.  The product contributes
+\[
+  6^4\left(\prod_\ell c_\ell^{-3}\right)s^{-12}+O(s^{-14}).
+\]
+Multiplication by \(s^{32/3}\) gives
+\[
+  6^4\left(\prod_\ell c_\ell^{-3}\right)s^{-4/3}+O(s^{-10/3}).
+\]
+Integrating from \(R\) to infinity gives
+\eqref{eq:instanton-hard-four-source-slow-tail}.  With only three hard slots
+the leading endpoint power is \(s^{32/3-9}=s^{5/3}\), which is not integrable
+at infinity.
+\end{proof}
+
+\begin{controlledapproximation}[Hard benchmark gate ledger]
+\label{ca:instanton-hard-benchmark-gate-ledger}
+A controlled comparison of two hard four-source instanton coefficients at
+scales \(Q_1,Q_2\) may use the power in
+\eqref{eq:instanton-hard-four-source-scale-power} only after the gate data are
+held fixed:
+\[
+  \Delta_{\rm cen}\ne0,\qquad
+  \mathcal P_{\rm Haar}\ne0,\qquad
+  \det B_R\ne0,\qquad
+  \det B_L\ne0,
+\]
+with the same amputation convention, source-frame normalization, determinant
+scheme, sector projection, and dimensionless source-window shape.  If the
+retained coefficients have the form
+\[
+  \mathcal A_j
+  =
+  \mathcal A_j^{(0)}(1+\varepsilon_j),
+  \qquad
+  |\varepsilon_j|\le e_j<1,
+  \qquad j=1,2,
+\]
+and the leading gate data are the same at the two scales, then
+\begin{equation}
+  \frac{\mathcal A_2}{\mathcal A_1}
+  =
+  \left(\frac{Q_2}{Q_1}\right)^{-35/3}
+  \frac{1+\varepsilon_2}{1+\varepsilon_1},
+  \label{eq:instanton-hard-four-source-ratio}
+\end{equation}
+with residual multiplier bounded by
+\begin{equation}
+  \left|
+  \frac{1+\varepsilon_2}{1+\varepsilon_1}-1
+  \right|
+  \le
+  \frac{e_1+e_2}{1-e_1}.
+  \label{eq:instanton-hard-four-source-ratio-bound}
+\end{equation}
+Thus the determinant constant and \(\Lambda_{\rm ht}\) cancel in a same-theory
+hard-scale ratio, while the dimensionless source-window and rank-conditioning
+data do not cancel unless they have actually been transported.  An off-shell
+center gate, a rank-one zero-mode overlap, an omitted Haar projection, or
+unamputated external residues change the amplitude coordinate before the power
+law \((Q_2/Q_1)^{-35/3}\) can be tested.
+\end{controlledapproximation}
+
 \section{Finite-Cell Control Model}
 \label{sec:finite-cell-instanton-channel-control}
 

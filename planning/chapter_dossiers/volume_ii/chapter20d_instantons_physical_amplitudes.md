@@ -34,6 +34,15 @@
   zero-mode source determinant may vanish or differ.
 - `prop:two-flavor-source-mass-determinant-coordinate`: exact expansion of
   `det(M+B)` into vacuum, mass-assisted source, and four-source coordinates.
+- `sec:instanton-hard-four-fermion-benchmark`: hard two-flavor four-source
+  benchmark, organized as center, Haar, zero-mode-rank, amputation,
+  size-window, and physical-projection gates.
+- `prop:su3-nf2-hard-source-power-slow-tail`: derives the SU(3), `N_f=2`
+  hard four-source powers `rho^(32/3) d rho`,
+  `Lambda_ht^(29/3) Q^(-35/3)`, and the slow `R^(-1/3)` large-size tail.
+- `ca:instanton-hard-benchmark-gate-ledger`: same-theory hard-scale ratio and
+  residual multiplier bound after the gate data and source-window shape have
+  been transported.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell model
   proving the absolute residual bound and the two-by-two determinant stability
   estimate.
@@ -50,6 +59,14 @@
 - The two-flavor determinant calculation is the local algebra behind the
   distinction between a mass-saturated vacuum activity and a differentiated
   four-source 't Hooft amplitude.
+- The hard benchmark section moves beyond the local determinant to a physical
+  four-source channel: center conservation, shared Haar projection, two
+  zero-mode source determinants, amputation, hard form factors, and endpoint
+  tails must all be part of the coefficient before a scale law is quoted.
+- The `Q^(-35/3)` hard-scale behavior is tied to `b0=29/3` and four individual
+  hard zero-mode form factors.  The large-size endpoint is convergent but slow,
+  with a retained-tail majorant of order `R^(-1/3)`, so a window/stability
+  budget is load-bearing.
 - The finite-cell control model records why residuals such as source rank,
   endpoint, spectral projection, cut, infrared, and scheme transport are
   load-bearing.  Dropping them changes the physical claim.
@@ -69,7 +86,12 @@
   off-diagonal sign, separates mass-saturated and four-source coordinates,
   builds moduli-equivalent finite cell channels with different or vanishing
   amplitudes, constructs a same-Euclidean-sum/different-projection ambiguity,
-  and checks the finite residual and determinant-stability bounds.
+  checks the SU(3), `N_f=2` hard four-source scale and tail powers, validates
+  the hard gate ledger and same-theory ratio residual bound, and checks the
+  finite residual and determinant-stability bounds.
+- `calculation-checks/bpst_instanton_normalization_checks.py` remains the
+  larger companion for the full BPST normalization, determinant, hard-window,
+  tail-subtraction, Wilsonian, dilute-gas, and thermal instanton machinery.
 
 ## Audit Notes
 
@@ -80,3 +102,8 @@
   after the new compiled chapter.
 - No directives, GitHub issue text, or process-monitoring language was inserted
   into monograph TeX.
+- 2026-06-06 hard four-fermion benchmark pass: lifted the hard-source
+  amplitude gate ledger, `Q^(-35/3)` scale law, slow `R^(-1/3)` tail, and
+  same-theory ratio bound into the chapter so the reader sees a concrete
+  `t Hooft-style amplitude mechanism rather than only the abstract channel
+  package.
