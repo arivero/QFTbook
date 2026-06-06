@@ -1409,26 +1409,124 @@ def check_bcft_observable_dependency_separation() -> None:
     if standard_e_plus_pairing == deformed_e_plus_pairing:
         raise AssertionError("multiplication-only data fixed a disk pairing")
 
+    semisimple_observable_vector = (
+        Fraction(1),  # vacuum annulus entry
+        Fraction(1),  # stabilizer annulus entry
+        semisimple_boundary_two_point,
+        standard_e_plus_pairing,
+        standard_e_minus_pairing,
+        Fraction(1),  # normalized closed-loop sewing transport
+    )
+    nilpotent_observable_vector = (
+        Fraction(1),
+        Fraction(1),
+        nilpotent_boundary_two_point,
+        Fraction(0),
+        Fraction(0),
+        Fraction(1),
+    )
+    deformed_pairing_vector = (
+        Fraction(1),
+        Fraction(1),
+        semisimple_boundary_two_point,
+        deformed_e_plus_pairing,
+        deformed_e_minus_pairing,
+        Fraction(1),
+    )
+    annulus_only_vector = (
+        Fraction(1),
+        Fraction(1),
+        Fraction(0),
+        Fraction(0),
+        Fraction(0),
+        Fraction(1),
+    )
+    assert_equal(
+        "semisimple and nilpotent samples agree on annulus entries",
+        semisimple_observable_vector[:2],
+        nilpotent_observable_vector[:2],
+    )
+    if semisimple_observable_vector == nilpotent_observable_vector:
+        raise AssertionError("annulus-equivalent samples gave the same observable vector")
+    if semisimple_observable_vector == deformed_pairing_vector:
+        raise AssertionError("two-point convention did not change the observable vector")
+    if semisimple_observable_vector == annulus_only_vector:
+        raise AssertionError("annulus-only data reconstructed the boundary observable vector")
+
+    def vector_add(
+        left: tuple[Fraction, ...],
+        right: tuple[Fraction, ...],
+    ) -> tuple[Fraction, ...]:
+        return tuple(
+            left_value + right_value
+            for left_value, right_value in zip(left, right)
+        )
+
+    def vector_sub(
+        left: tuple[Fraction, ...],
+        right: tuple[Fraction, ...],
+    ) -> tuple[Fraction, ...]:
+        return tuple(
+            left_value - right_value
+            for left_value, right_value in zip(left, right)
+        )
+
+    def vector_l1(vector: tuple[Fraction, ...]) -> Fraction:
+        return sum(abs(entry) for entry in vector)
+
     # The finite move budget records the same dependency in residual form: a
-    # scalar all-surface claim is under-controlled if any observable layer is
+    # boundary-observable claim is under-controlled if any observable layer is
     # omitted from the common construction schedule.
     residuals = {
-        "annulus": Fraction(1, 101),
-        "boundary_ope": Fraction(1, 103),
-        "classifying": Fraction(1, 107),
-        "two_point": Fraction(1, 109),
-        "generated_sewing": Fraction(1, 113),
+        "chiral": (
+            Fraction(1, 101), Fraction(0), Fraction(0),
+            Fraction(0), Fraction(0), Fraction(0),
+        ),
+        "open": (
+            Fraction(0), Fraction(1, 103), Fraction(0),
+            Fraction(0), Fraction(0), Fraction(0),
+        ),
+        "local": (
+            Fraction(0), Fraction(0), Fraction(1, 107),
+            Fraction(0), Fraction(0), Fraction(0),
+        ),
+        "pairing": (
+            Fraction(0), Fraction(0), Fraction(0),
+            Fraction(1, 109), Fraction(1, 109), Fraction(0),
+        ),
+        "move": (
+            Fraction(0), Fraction(0), Fraction(0),
+            Fraction(0), Fraction(0), Fraction(1, 113),
+        ),
+        "anomaly": (
+            Fraction(0), Fraction(0), Fraction(0),
+            Fraction(0), Fraction(0), Fraction(1, 127),
+        ),
     }
-    complete_budget = sum(residuals.values(), Fraction(0))
+    residual_sum = tuple(Fraction(0) for _ in semisimple_observable_vector)
+    for residual_vector in residuals.values():
+        residual_sum = vector_add(residual_sum, residual_vector)
+    exact_vector = vector_add(semisimple_observable_vector, residual_sum)
+    complete_budget = sum(vector_l1(residual) for residual in residuals.values())
+    actual_error = vector_l1(vector_sub(exact_vector, semisimple_observable_vector))
+    _assert_leq(
+        "BCFT boundary-observable vector residual bound",
+        actual_error,
+        complete_budget,
+    )
+    assert_equal(
+        "BCFT boundary-observable residual telescope",
+        vector_sub(exact_vector, semisimple_observable_vector),
+        residual_sum,
+    )
     for omitted_component, omitted_residual in residuals.items():
-        underbudget = complete_budget - omitted_residual
+        underbudget = complete_budget - vector_l1(omitted_residual)
         if underbudget >= complete_budget:
             raise AssertionError(f"omitting {omitted_component} did not reduce the budget")
-        _assert_leq(
-            f"BCFT dependency underbudget is smaller when omitting {omitted_component}",
-            underbudget,
-            complete_budget,
-        )
+        if actual_error <= underbudget:
+            raise AssertionError(
+                f"omitting {omitted_component} still controlled the observable vector"
+            )
     assert_equal(
         "identity element remains fixed by both semisimple multiplication samples",
         two_dimensional_stabilizer_product(one, one, semisimple_square),
@@ -2203,6 +2301,7 @@ def main() -> None:
         "pointed-annulus-Fourier, pointed-boundary-OPE, "
         "pointed-stabilizer-slide, pointed-laboratory-unified, "
         "annulus-shadow-nonreconstruction, observable-dependency-separation, "
+        "boundary-observable-vector residual, "
         "compact-boson, "
         "Liouville-boundary, continuous-annulus Plancherel, "
         "nonrational-pole-residue, bordered-sewing-budget, and "

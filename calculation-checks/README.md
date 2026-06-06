@@ -1723,9 +1723,11 @@ Current checks:
   comparing semisimple and nilpotent endpoint-preserving algebras with the same
   annulus matrices, the observable-dependency separation diagnostic showing
   that annulus spectra, multiplication, pairings, and generated sewing are
-  distinct required layers, the boundary/chiral multiplicity-axis diagnostic
-  separating boundary-field labels from chiral fusion-intertwiner labels, boundary
-  entropy squares, Chan--Paton direct sums, the positive spectral
+  distinct required layers, including an assembled boundary-observable vector
+  residual budget with chiral, open, local, pairing, move, and anomaly terms,
+  the boundary/chiral multiplicity-axis diagnostic separating boundary-field
+  labels from chiral fusion-intertwiner labels, boundary entropy squares,
+  Chan--Paton direct sums, the positive spectral
   weight and finite monotonicity contraction in the boundary-entropy gradient
   metric, compact-boson T-duality zero modes,
   Ising boundary-changing fusing constants and OPE powers, the finite

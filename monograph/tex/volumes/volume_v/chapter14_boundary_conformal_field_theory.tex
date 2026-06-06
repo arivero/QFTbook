@@ -2121,6 +2121,89 @@ identities, while positivity supplies the corresponding two-point
 nondegeneracy.  The example shows why these inputs are not recoverable from
 annulus spectra alone.
 
+\begin{controlledapproximation}[Boundary observable vector from one sewing datum]
+\label{ca:bcft-boundary-observable-vector}
+A BCFT construction claim is an assertion about a vector of boundary
+observables, not only about an annulus spectrum.  For fixed chiral input and
+boundary labels, assemble the comparison vector
+\[
+  \mathcal V_{\partial}
+  =
+  \bigl(
+    Z_{ab},
+    U^a_i,
+    R^a_{i\beta},
+    C^{abc}_{ij;k},
+    G^{ab}_{i;\mu\nu},
+    E_D,
+    \Phi_{\rm sew}
+  \bigr),
+\]
+where the entries denote, respectively, annulus amplitudes, disk one-point
+coefficients, bulk-boundary maps, boundary OPE tensors, boundary two-point
+pairings, defect-endpoint data, and the closed-loop sewing transport.  A
+single boundary datum \(\mathcal D_\partial\) determines
+\(\mathcal V_{\partial}(\mathcal D_\partial)\) only after the open Hilbert
+spaces or spectral measures, operator domains, two-point metrics, classifying
+coordinates, local move maps, and anomaly-line trivializations have been
+chosen in the same normalization.
+
+The finite pointed laboratory above is a small exact model of this dependence.
+The annulus shadow
+\[
+  n_{(0,0)}=n_{(1,0)}=\mathbf 1
+\]
+does not determine the stabilizer product or pairing.  In the semisimple
+choice \(\tau^2=1\), the stabilizer field has an inverse channel and
+idempotents \(e_\pm=(1\pm\tau)/2\) with nondegenerate two-point pairing.  In
+the nilpotent choice \(\epsilon^2=0\), the same endpoint annulus shadow has no
+nontrivial idempotent split and the stabilizer field has zero identity-channel
+two-point partner.  These two choices give different
+\(\mathcal V_{\partial}\) even though they agree on the annulus component.
+
+For a controlled construction, the comparison with the exact boundary theory
+therefore has the form
+\begin{equation}
+  \mathcal V_{\partial}^{\rm exact}
+  -
+  \mathcal V_{\partial}(\mathcal D_\partial)
+  =
+  E_{\rm ch}
+  +E_{\rm open}
+  +E_{\rm loc}
+  +E_{\rm pair}
+  +E_{\rm move}
+  +E_{\rm anom},
+  \label{eq:bcft-boundary-observable-vector-residual}
+\end{equation}
+with corresponding bound
+\begin{equation}
+  \left\|
+    \mathcal V_{\partial}^{\rm exact}
+    -
+    \mathcal V_{\partial}(\mathcal D_\partial)
+  \right\|
+  \le
+  B_{\rm ch}
+  +B_{\rm open}
+  +B_{\rm loc}
+  +B_{\rm pair}
+  +B_{\rm move}
+  +B_{\rm anom}.
+  \label{eq:bcft-boundary-observable-vector-bound}
+\end{equation}
+Here \(E_{\rm ch}\) records errors in the chiral modular/fusing input,
+\(E_{\rm open}\) errors in open Hilbert spaces or spectral measures,
+\(E_{\rm loc}\) local annulus, disk, bulk-boundary, and OPE mismatches,
+\(E_{\rm pair}\) two-point and Frobenius-pairing mismatches,
+\(E_{\rm move}\) generated sewing-move defects, and \(E_{\rm anom}\)
+determinant-line or projective-transport errors.  Omitting the pair or move
+terms turns the construction into a statement about selected shadows, not a
+BCFT observable claim.  This is why the diagonal Cardy annulus, the pointed
+\(G/H\) cell, and the Liouville contour identities are useful local tests but
+not interchangeable proofs of all bordered-surface amplitudes.
+\end{controlledapproximation}
+
 The disk partition function defines the Affleck--Ludwig boundary entropy.
 For a Cardy boundary state in a diagonal rational CFT,
 \begin{equation}

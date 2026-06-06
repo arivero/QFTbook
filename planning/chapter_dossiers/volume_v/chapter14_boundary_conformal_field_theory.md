@@ -300,19 +300,25 @@
     semisimple stabilizer algebra and a nilpotent two-dimensional algebra have
     the same endpoint annulus shadow but different multiplication, idempotent
     decomposition, and two-point pairing behavior.
-25. Local BCFT sewing cells imply all-surface decomposition independence only
+25. Boundary construction claims are organized as a boundary-observable vector
+    with annulus, disk, bulk-boundary, boundary-OPE, two-point, defect-endpoint,
+    and closed-loop sewing components.  The comparison with an exact BCFT
+    carries separate chiral, open-sector, local-coordinate, pairing,
+    generated-move, and anomaly-line residuals; annulus-only agreement is a
+    selected shadow, not an observable-level construction.
+26. Local BCFT sewing cells imply all-surface decomposition independence only
     through a generated move graph: along a finite path, the total amplitude
     defect is bounded by the telescoping sum of local move defects propagated by
     later sewing transports.  Zero local defects plus closed-loop compatibility
     gives path independence on a connected move graph; analytic construction of
     the actual infinite-dimensional move graph remains a theorem boundary.
-26. Projective determinant-line factors in sewing are a separate obstruction
+27. Projective determinant-line factors in sewing are a separate obstruction
     from vector-valued local move defects.  On a finite move graph they can be
     removed by choosing vertex trivializations exactly when the edge scalars
     form a coboundary.  Scalar sewing independence after forgetting the line is
     governed by the total closed-loop transport \(\lambda_\ell T_\ell\), not by
     the scalar line phase alone.
-27. A full BCFT construction has a strict dependency order: closed/chiral
+28. A full BCFT construction has a strict dependency order: closed/chiral
     input, boundary Hilbert or spectral data, compatible physical observable
     coordinates (annulus spectra, disk one-point functions, bulk-boundary
     coefficients, boundary OPE tensors, classifying projectors, defect
@@ -348,7 +354,8 @@
   endpoint-preserving algebras with the same annulus shadow,
   the observable-dependency separation check showing that annulus spectra,
   OPE multiplication, classifying idempotents, two-point pairings, and
-  generated sewing are distinct required layers,
+  generated sewing are distinct required layers, including an assembled
+  boundary-observable vector and residual budget,
   the boundary/chiral multiplicity-axis diagnostic separating boundary-field
   labels from chiral fusion-intertwiner labels, boundary entropy squares, Ising
   boundary-changing fusing constants and OPE powers, the finite Ising
@@ -556,6 +563,15 @@
   finite ambiguity test: the same annulus shadow admits different boundary
   two-point observables, and the same multiplication can carry different disk
   pairing normalizations unless the Frobenius/two-point datum is fixed.
+- 2026-06-06 issue #625 BCFT observable-vector pass: added
+  `ca:bcft-boundary-observable-vector` after the annulus-shadow
+  nonreconstruction diagnostic.  The pass packages annulus, disk,
+  bulk-boundary, boundary-OPE, two-point, defect-endpoint, and closed-loop
+  sewing outputs into one boundary-observable vector with separate chiral,
+  open-sector, local-coordinate, pairing, generated-move, and anomaly-line
+  residuals.  This is an argument-architecture repair: it prevents local
+  annulus or finite stabilizer cells from being read as an all-surface BCFT
+  construction.
 - 2026-06-03 oriented Cardy annulus pass: replaced the real/self-conjugate
   annulus shorthand by the oriented coefficient
   `n_ab^k = sum_i conjugate(B_b^i) B_a^i S_ik = N_{k a}^b` and added a
