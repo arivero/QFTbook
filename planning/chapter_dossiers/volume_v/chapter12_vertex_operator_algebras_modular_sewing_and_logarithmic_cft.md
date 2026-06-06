@@ -153,11 +153,13 @@ current QFT scope.
   \(n=2\) gamma-function formula, the ordered-chamber finite polynomial
   expansion, and the screening--screening Vandermonde exponent as the first
   genuinely multi-screening datum.
-- Adds a screening-to-BPZ construction budget that separates raw
+- Adds a screening-to-BPZ comparison datum that separates raw
   Dotsenko--Fateev integrals, Virasoro Ward/intertwiner checks, closed
   twisted-cycle projection, BPZ solution-basis comparison, analytic
   continuation, and nonchiral sewing pairing into five residuals rather than
-  treating a screening integral as a full correlator.
+  treating a screening integral as a full correlator.  The datum records
+  required maps and supplied-bound propagation; it is not itself a
+  construction theorem.
 - Defines sewing of blocks through dual bases of a module and its dual, with
   the annulus propagation factor \(q^{h_a+n-c/24}\).
 - Adds a concrete torus free-boson period-kernel example: the scalar Green
@@ -292,8 +294,8 @@ current QFT scope.
   Gram determinant/null vector, the level-two Kac determinant roots
   \(h_{1,2}\) and \(h_{2,1}\), the one-screening beta integral and
   two-screening Selberg finite-sum/factorial identity, the finite
-  screening-to-BPZ residual telescope and norm bound, Ising BPZ block
-  differential equation, and the crossing matrix fixing
+  screening-to-BPZ comparison template and supplied-bound propagation, Ising
+  BPZ block differential equation, and the crossing matrix fixing
   \(C_{\sigma\sigma\varepsilon}=1/2\).
 
 ## Reference Intake
@@ -421,11 +423,15 @@ current QFT scope.
   the \(n=2\) Selberg chamber, its finite ordered-chamber polynomial
   expansion, and exact rational checks comparing that expansion with the
   factorial Selberg formula.
-- 2026-06-03 screening-to-BPZ budget pass: added a finite construction
-  budget from Dotsenko--Fateev screening coordinates through twisted cycles,
+- 2026-06-03 screening-to-BPZ comparison pass: added a finite comparison
+  datum from Dotsenko--Fateev screening coordinates through twisted cycles,
   BPZ basis comparison, analytic continuation, and nonchiral sewing pairing;
-  the paired calculation check verifies the residual telescope and norm
-  bound.
+  the paired calculation check verifies the comparison decomposition and
+  supplied-bound propagation.
+- 2026-06-06: demoted the screening-to-BPZ surface from construction-budget
+  wording to comparison-datum wording.  The retained inequality now has
+  content only after the five screening, twisted-cycle, BPZ, continuation,
+  and nonchiral-pairing estimates are separately supplied.
 - 2026-05-31 Cardy Tauberian mechanism pass: expanded the quoted
   exponential-Tauberian boundary by proving the elementary positive-measure
   Laplace upper bound, isolating the nontrivial Tauberian lower-bound input,

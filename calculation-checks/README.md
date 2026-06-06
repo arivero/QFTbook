@@ -1706,8 +1706,9 @@ Current checks:
   convention, screening dimensions, Kac weights, charge reflection modulo the
   unitary null charge relation, the Euler beta integral used in the
   one-screening Dotsenko--Fateev block, the two-screening
-  Selberg/Vandermonde finite chamber, the finite screening-to-BPZ residual
-  telescope and norm budget, the level-two Gram determinant and null vector,
+  Selberg/Vandermonde finite chamber, the finite screening-to-BPZ comparison
+  template with supplied-bound propagation and a boundless-slot negative
+  control, the level-two Gram determinant and null vector,
   the level-two Kac determinant roots \(h_{1,2}\) and \(h_{2,1}\), the Ising
   spin-field BPZ differential equation, and the crossing matrix fixing
   \(C_{\sigma\sigma\varepsilon}=1/2\).

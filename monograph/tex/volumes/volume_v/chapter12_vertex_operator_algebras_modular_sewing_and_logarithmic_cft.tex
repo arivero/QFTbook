@@ -1138,11 +1138,13 @@ screening--screening exponent \(2C\), which is \(\alpha_\pm^2\) in the
 Coulomb-gas block and is the source of the Selberg/Vandermonde factors in
 multi-screening Dotsenko--Fateev formulas.
 
-\paragraph{Screening-to-BPZ construction budget.}
+\paragraph{Screening-to-BPZ comparison datum.}
 The preceding formulas are coordinates on a block space; they are not yet a
 proof that a chosen contour family is the correct minimal-model correlator.
-On a finite jet test space in the cross-ratio, one should separate the
-following finite vectors:
+The comparison datum below is a bookkeeping device for the required maps and
+residual estimates, not a construction theorem by itself.  On a finite jet
+test space in the cross-ratio, one should separate the following finite
+vectors:
 \[
   \mathcal C_{\rm DF},\quad
   \mathcal C_{\rm Ward},\quad
@@ -1190,9 +1192,10 @@ Then the finite comparison identity is
 \end{equation}
 Indeed, add and subtract the intermediate coordinates before applying the
 connection matrix.  If the norm of \(\mathsf M_{\rm cont}\) on this finite test
-space is at most \(\kappa\), and if the five residuals are bounded by
+space is at most \(\kappa\), and if the five residuals are actually bounded by
 \(\varepsilon_{\rm scr},\varepsilon_{\rm tw},\varepsilon_{\rm BPZ},
-\varepsilon_{\rm cont},\varepsilon_{\rm pair}\), then
+\varepsilon_{\rm cont},\varepsilon_{\rm pair}\) in that same coordinate norm,
+then the elementary consequence is
 \begin{equation}
   \|\mathcal C_{\rm full}-\mathsf M_{\rm cont}\mathcal C_{\rm DF}\|
   \leq
@@ -1215,8 +1218,10 @@ error between the two chosen channel bases.
 sewing residual.
 \end{itemize}
 Thus a Dotsenko--Fateev formula becomes a theorem-level minimal-model block
-construction only when these five residuals vanish compatibly as the finite jet
-space is enlarged.
+construction only when these five residuals are constructed and controlled
+compatibly as the finite jet space is enlarged.  Without those separate
+estimates, \eqref{eq:coulomb-gas-bpz-budget-telescope} is only a comparison
+identity between named coordinates.
 
 \begin{remark}[What the Dotsenko--Fateev formulas do and do not prove]
 \label{rem:dotsenko-fateev-status}

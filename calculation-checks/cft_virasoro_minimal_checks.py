@@ -486,10 +486,11 @@ def check_two_screening_selberg_integer_chamber() -> None:
     )
 
 
-def check_coulomb_gas_bpz_construction_budget() -> None:
+def check_coulomb_gas_bpz_comparison_template() -> None:
     # A finite jet test space should see Dotsenko-Fateev screening coordinates
     # pass through five separate comparisons before they are used as full
-    # minimal-model correlator coordinates.
+    # minimal-model correlator coordinates.  The arithmetic below propagates
+    # supplied residuals; named slots without bounds are not estimates.
     dotsenko_fateev = [Fraction(2, 5), Fraction(-3, 7)]
     screening_residual = [Fraction(1, 11), Fraction(-1, 13)]
     twisted_cycle_residual = [Fraction(-2, 17), Fraction(1, 19)]
@@ -518,7 +519,7 @@ def check_coulomb_gas_bpz_construction_budget() -> None:
         pairing_residual,
     )
     assert_equal(
-        "Coulomb-gas screening-to-BPZ residuals telescope",
+        "Coulomb-gas screening-to-BPZ comparison decomposition",
         discrepancy,
         telescoped,
     )
@@ -535,9 +536,22 @@ def check_coulomb_gas_bpz_construction_budget() -> None:
     )
     if vector_linf_norm(discrepancy) > bound:
         raise AssertionError(
-            "Coulomb-gas screening-to-BPZ residual budget failed: "
+            "Coulomb-gas screening-to-BPZ supplied-bound propagation failed: "
             f"{vector_linf_norm(discrepancy)!r} > {bound!r}"
         )
+
+    named_slots_without_bounds = {
+        "screening": None,
+        "twisted_cycle": None,
+        "bpz_basis": None,
+        "analytic_continuation": None,
+        "nonchiral_pairing": None,
+    }
+    assert_equal(
+        "boundless Coulomb-gas comparison slots are not estimates",
+        all(value is not None for value in named_slots_without_bounds.values()),
+        False,
+    )
 
     exact_full = matrix_vector(connection, dotsenko_fateev)
     assert_equal(
@@ -688,7 +702,7 @@ def main() -> None:
     check_unitary_minimal_modular_data_and_fusion()
     check_coulomb_gas_minimal_model_conventions()
     check_two_screening_selberg_integer_chamber()
-    check_coulomb_gas_bpz_construction_budget()
+    check_coulomb_gas_bpz_comparison_template()
     check_level_two_ising_sigma_null_vector()
     check_level_two_kac_determinant_roots()
     check_ising_sigma_bpz_block_solutions()
