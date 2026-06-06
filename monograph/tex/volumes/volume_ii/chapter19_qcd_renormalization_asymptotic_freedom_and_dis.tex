@@ -10943,6 +10943,80 @@ The remaining \(y\)-integral is exactly \(N(f)\).  The assumed preservation of
 \(N\) by \(R\) says that the same value is obtained in the primed light-ray
 coordinates.
 
+\begin{controlledapproximation}[Finite-momentum inverse matching for PDF bins]
+\label{ca:qcd-quasi-pdf-finite-momentum-inverse-matching}
+The distributional matching formula
+\eqref{eq:qcd-quasi-pdf-matching-distributional} is usually used in the
+opposite direction from the one in which it is written.  A lattice calculation
+supplies finitely many smeared spatial-bilocal coordinates, and one wants
+light-ray PDF bins.  Fix light-ray test functions
+\(\phi_\ell\), quasi-PDF test functions \(h_i\), and the same operator
+scheme \(\mathcal R\).  The matching kernel defines the finite matrix
+\[
+  A_{i\ell}(P_3,\mu)
+  =
+  \int_0^1\dd y\,\phi_\ell(y)
+  \int_{\mathbb R}\dd x\,h_i(x)\,
+  \frac1y
+  C^{\mathcal R}\!\left(\frac{x}{y},\frac{\mu}{P_3}\right).
+\]
+If
+\[
+  Q_i(P_3)
+  :=
+  \left\langle
+    \widetilde f_{\Gamma/H}^{\mathcal R}(\,\cdot\,,P_3),h_i
+  \right\rangle,
+  \qquad
+  F_\ell:=\langle f_{\Gamma/H}(\,\cdot\,,\mu),\phi_\ell\rangle,
+\]
+then a finite extraction has the form
+\begin{equation}
+  Q_i(P_3)
+  =
+  A_{i\ell}(P_3,\mu)F_\ell
+  +B_i^{\perp}
+  +R_i^{\rm pow}
+  +R_i^{\rm reg}
+  +R_i^{z{\rm -win}}
+  +R_i^{\rm stat}.
+  \label{eq:qcd-quasi-pdf-finite-inverse-data}
+\end{equation}
+Here \(B^\perp\) is the projection of omitted light-ray test directions or
+endpoint components, \(R^{\rm pow}\) contains hadron-mass and higher-twist
+large-\(P_3\) terms, \(R^{\rm reg}\) contains continuum and finite-volume
+regulator errors, \(R^{z{\rm -win}}\) is the finite Wilson-line-length and
+Fourier-window residual, and \(R^{\rm stat}\) is the numerical or ensemble
+error of the Euclidean matrix element.
+
+Thus a PDF-bin extraction requires a declared left inverse \(L\) for the
+tested matrix \(A\), with the plotted quasi-PDF treated as an intermediate
+spatial coordinate.  If
+\(\widehat F=LQ\), then
+\begin{equation}
+  \|\widehat F-F\|
+  \le
+  \|LA-I\|\,\|F\|
+  +
+  \|L\|\,
+  \bigl(
+    \|B^\perp\|+\|R^{\rm pow}\|+\|R^{\rm reg}\|
+    +\|R^{z{\rm -win}}\|+\|R^{\rm stat}\|
+  \bigr)
+  \label{eq:qcd-quasi-pdf-inverse-matching-bound}
+\end{equation}
+in the declared finite test norm.  The condition number of \(A\), the
+truncation of the light-ray test space, and the endpoint/window convention
+are therefore part of the physics claim.  Reading a raw quasi-PDF bin as a
+light-ray PDF bin, inverting a nearly singular matching matrix without an
+error budget, or discarding the finite-\(P_3\) and finite-\(z\) residuals
+produces a coordinate estimate, not a QCD PDF determination.  Negative values
+or support outside \(0<x<1\) in a quasi-PDF coordinate are likewise not, by
+themselves, violations of PDF positivity; they are features of the spatial
+matching coordinate until the inverse map and its residuals have been
+controlled.
+\end{controlledapproximation}
+
 \subsection{DIS Factorization and DGLAP Evolution}
 \label{subsec:qcd-dis-factorization-dglap}
 

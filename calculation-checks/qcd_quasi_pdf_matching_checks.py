@@ -10,6 +10,30 @@ The checks verify algebraic facts used in Volume II, Chapter 19:
 3. Finite light-ray scheme changes are absorbed by the inverse change of the
    matching kernel.
 4. Column-sum normalization of the matching kernel preserves quark number.
+5. Finite-momentum inverse matching of tested PDF bins requires a stable left
+   inverse and a residual budget; raw quasi-PDF bins are not PDF bins.
+
+Evidence contract.
+Target claims: the Volume II QCD quasi-/pseudo-PDF section's Fourier
+normalization, reduced Ioffe-time cancellation, finite scheme covariance,
+charge-preserving matching, and finite-momentum inverse-matching residual
+bound for tested PDF bins.
+Independent construction: exact finite Fourier characters, rational
+renormalization factors, rational matching matrices, explicit left inverses,
+and finite residual vectors independent of the continuum LaMET derivation.
+Imported assumptions: existence of the renormalized spatial Wilson-line
+bilocal, existence of light-ray PDF matrix elements in a declared scheme, and
+the perturbative short-distance matching kernel are taken from the manuscript
+development and are not proved by this finite script.
+Negative controls: missing Fourier prefactor, uncancelled nonmultiplicative
+Wilson-line factors, wrong finite scheme transport, charge-nonpreserving
+column sums, raw quasi-bin reading, singular inverse matching, omitted
+finite-momentum residuals, and quasi-coordinate negativity overread as PDF
+negativity.
+Scope boundary: these are finite normalization and stability checks for the
+matching algebra.  They are not independent evidence for the continuum QCD
+large-momentum theorem, lattice continuum limit, infinite-volume limit, or
+nonperturbative light-ray PDF existence.
 """
 
 from __future__ import annotations
@@ -38,6 +62,33 @@ def matmul(left: Matrix, right: Matrix) -> Matrix:
 
 def matvec(matrix: Matrix, vector: Vector) -> Vector:
     return [sum(row[j] * vector[j] for j in range(len(vector))) for row in matrix]
+
+
+def vec_add(left: Vector, right: Vector) -> Vector:
+    return [left[index] + right[index] for index in range(len(left))]
+
+
+def vec_sub(left: Vector, right: Vector) -> Vector:
+    return [left[index] - right[index] for index in range(len(left))]
+
+
+def max_norm(vector: Vector) -> Fraction:
+    return max(abs(entry) for entry in vector)
+
+
+def matrix_infty_norm(matrix: Matrix) -> Fraction:
+    return max(sum(abs(entry) for entry in row) for row in matrix)
+
+
+def identity_2x2() -> Matrix:
+    return [[Fraction(1), Fraction(0)], [Fraction(0), Fraction(1)]]
+
+
+def matrix_sub(left: Matrix, right: Matrix) -> Matrix:
+    return [
+        [left[row][col] - right[row][col] for col in range(len(left[0]))]
+        for row in range(len(left))
+    ]
 
 
 def inverse_2x2(matrix: Matrix) -> Matrix:
@@ -151,11 +202,72 @@ def check_number_preserving_matching() -> None:
     assert_equal("quark number from quasi-PDF matching", sum(quasi), Fraction(1))
 
 
+def check_finite_momentum_inverse_matching_extraction() -> None:
+    matching = [
+        [Fraction(5, 4), Fraction(1, 2)],
+        [Fraction(-1, 4), Fraction(1, 2)],
+    ]
+    left_inverse = inverse_2x2(matching)
+    identity = identity_2x2()
+    assert_equal(
+        "exact finite matching left inverse",
+        matmul(left_inverse, matching),
+        identity,
+    )
+
+    pdf_bins = [Fraction(1, 3), Fraction(2, 3)]
+    projected_quasi = matvec(matching, pdf_bins)
+    residual = [Fraction(1, 101), -Fraction(1, 103)]
+    measured_quasi = vec_add(projected_quasi, residual)
+    extracted_pdf = matvec(left_inverse, measured_quasi)
+    extraction_error = vec_sub(extracted_pdf, pdf_bins)
+    propagated_error = matvec(left_inverse, residual)
+    assert_equal(
+        "inverse matching propagates finite-momentum residual",
+        extraction_error,
+        propagated_error,
+    )
+
+    residual_bound = max_norm(residual)
+    inverse_norm = matrix_infty_norm(left_inverse)
+    error_bound = inverse_norm * residual_bound
+    assert max_norm(extraction_error) <= error_bound
+
+    assert projected_quasi != pdf_bins
+
+    naive_pdf = matvec(left_inverse, projected_quasi)
+    assert_equal("zero-residual inverse matching recovers PDF bins", naive_pdf, pdf_bins)
+    assert extracted_pdf != naive_pdf
+
+    matching_defect = matrix_sub(matmul(left_inverse, matching), identity)
+    defect_bound = matrix_infty_norm(matching_defect) * max_norm(pdf_bins)
+    assert_equal("exact left-inverse defect vanishes", defect_bound, Fraction(0))
+
+    underbudget = error_bound - inverse_norm * abs(residual[1])
+    assert max_norm(extraction_error) > underbudget
+
+    singular_matching = [
+        [Fraction(1), Fraction(2)],
+        [Fraction(2), Fraction(4)],
+    ]
+    try:
+        inverse_2x2(singular_matching)
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError("singular matching matrix should not be invertible")
+
+    positive_pdf = [Fraction(1), Fraction(0)]
+    quasi_coordinate = matvec(matching, positive_pdf)
+    assert quasi_coordinate[1] < 0
+
+
 def main() -> None:
     check_fourier_prefactor_inverse()
     check_reduced_pseudo_itd_cancellation()
     check_scheme_covariance()
     check_number_preserving_matching()
+    check_finite_momentum_inverse_matching_extraction()
     print("All QCD quasi-/pseudo-PDF matching checks passed.")
 
 

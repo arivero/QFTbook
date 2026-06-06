@@ -111,6 +111,10 @@
       ]
     },
     {
+      "path": "qcd_quasi_pdf_matching_checks.py",
+      "risk_class": "QCD Euclidean-to-lightcone PDF matching"
+    },
+    {
       "path": "scet_factorization_checks.py",
       "risk_class": "SCET/factorization proof-status boundary"
     },
