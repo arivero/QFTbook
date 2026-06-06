@@ -1906,6 +1906,88 @@ define transport coefficients, but they do not by themselves derive
 hydrodynamics from QCD.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Euclidean-to-retarded transport extraction]
+\label{ca:qcd-euclidean-retarded-transport-extraction}
+The preceding window is a real-time statement.  A lattice calculation, by
+contrast, usually supplies Euclidean thermal correlators.  For a
+gauge-invariant channel \(X\), after removing declared zero-mode and contact
+terms, the positive-frequency spectral representation has the form
+\begin{equation}
+  G_{E,X}(\tau,\mathbf k)-G_{0,X}-C_{E,X}(\tau,\mathbf k)
+  =
+  \int_0^\infty d\omega\,
+  \rho_X(\omega,\mathbf k)K_\beta(\tau,\omega),
+  \qquad
+  K_\beta(\tau,\omega)
+  =
+  \frac{\cosh[\omega(\beta/2-\tau)]}{\sinh(\beta\omega/2)} .
+  \label{eq:qcd-euclidean-spectral-kernel}
+\end{equation}
+The transport coordinate in this channel is a low-frequency real-time slope,
+for example
+\[
+  \lambda_X
+  =
+  \lim_{\omega\downarrow0}
+  \frac{\rho_X(\omega,\mathbf0)}{2\omega}
+\]
+with the appropriate stress-tensor, bulk, or current source normalization.
+Therefore a number extracted from \(G_{E,X}(\tau)\) is not yet a QCD
+viscosity or conductivity.  The extraction datum must include the Euclidean
+linear functionals being used, the contact and zero-mode subtraction, the
+ultraviolet tail or OPE input, the low-frequency spectral class, and a
+controlled inverse map to the slope \(\lambda_X\).
+
+One convenient finite-window notation is the following.  Let \(L_i\) be the
+time smearing or Matsubara functionals retained from the Euclidean
+calculation and let \(a_\alpha\) be the low-frequency spectral coordinates
+of a declared ansatz or variational class.  After contact and tail
+subtraction,
+\begin{equation}
+  g_i
+  =
+  L_i(G_{E,X})-L_i(C_{E,X})-L_i(G_{E,X}^{\rm tail})
+  =
+  \sum_\alpha M_{i\alpha}a_\alpha+r_i,
+  \qquad
+  \lambda_X=\ell_X(a).
+  \label{eq:qcd-euclidean-inverse-transport-map}
+\end{equation}
+An accepted transport extraction supplies a reconstruction map
+\(\widehat a=\mathcal I_X(g)\), a stability norm, and a residual estimate
+\begin{equation}
+  |\widehat\lambda_X-\lambda_X|
+  \le
+  \|\ell_X D\mathcal I_X\|\,
+  \bigl(
+    \|R_E\|+\|R_{\rm contact}\|+\|R_{\rm tail}\|
+  \bigr)
+  +
+  R_{\rm ansatz}+R_{\rm FV}+R_{\rm cont}+R_{\rm AC}.
+  \label{eq:qcd-euclidean-retarded-transport-budget}
+\end{equation}
+Here \(R_{\rm AC}\) records the analytic-continuation or spectral-inference
+instability, \(R_{\rm FV}\) the finite-volume distortion of small
+frequencies, and \(R_{\rm cont}\) the continuum and operator-renormalization
+limit.  The ansatz residual is physical: it is the assertion that the
+hydrodynamic peak, nearby nonhydrodynamic modes, and continuum tail have been
+separated in the chosen channel.  Positivity, oddness of the commutator
+spectral density, and KMS are constraints on this inverse problem; they are
+not an inverse problem by themselves.
+
+This distinction is especially important for QCD transport.  A Euclidean
+midpoint value, a small collection of Matsubara points, or a finite-\(k\)
+Euclidean pole fit can be compatible with several low-frequency spectral
+slopes unless the spectral class and stability estimate are stated.
+Conversely, local metric or current counterterms can change Euclidean
+moments without changing the commutator spectral slope.  The shear, bulk,
+and charge windows below are therefore real-time spectral gates.  A
+Euclidean computation enters them only after it has passed
+\eqref{eq:qcd-euclidean-inverse-transport-map} and
+\eqref{eq:qcd-euclidean-retarded-transport-budget}; otherwise it is evidence
+about an imaginary-time correlator, not yet a transport coefficient of QCD.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Finite shear spectral window]
 \label{ca:qcd-finite-shear-spectral-window}
 The response-window statement can be tested more directly in a finite

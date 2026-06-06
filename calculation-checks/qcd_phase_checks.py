@@ -12,6 +12,10 @@ Target claims:
   convention rho=-2 Im G^R, separates the finite-k pole width from the enthalpy
   residue, and treats regular and near-critical spectral weight as separate
   extraction data.
+- The Euclidean-to-retarded transport-extraction subsection requires
+  Euclidean samples to be contact-subtracted, tail-subtracted, and passed
+  through a declared spectral inverse with a stability budget before they are
+  accepted as QCD viscosities or conductivities.
 - The finite bulk/sound spectral-window subsection separates the dissipative
   bulk-pressure source from raw trace and energy-density slopes, reconstructs
   zeta from the sound attenuation only after the shear and finite-density
@@ -34,6 +38,10 @@ Independent construction:
 - For the shear window, constructs the contact-subtracted retarded pole
   kernel, generates spectral samples, solves for width and amplitude, and only
   then reconstructs eta.
+- For the Euclidean-to-retarded extraction window, constructs finite
+  Euclidean linear functionals from low-frequency spectral coordinates,
+  contact moments, and UV-tail moments, then reconstructs the transport
+  coordinate only after the declared subtractions and inverse map are applied.
 - For the bulk/sound window, constructs a finite scalar slope matrix, forms
   the thermodynamically subtracted bulk source, derives the charged
   longitudinal determinant from exact thermodynamic derivatives, and
@@ -52,7 +60,8 @@ Primary derivation route:
   written in a declared frame, spectral densities are extracted in the
   \(\rho=-2\operatorname{Im}G^R\) convention, and viscosity or conductivity
   coordinates are read from pole widths only after residues and subtraction
-  data are supplied.
+  data are supplied.  Euclidean QCD correlators enter only through a separate
+  spectral-reconstruction datum with contact, tail, and stability controls.
 
 Independent verification route:
 - The companion constructs rational retarded kernels and longitudinal
@@ -60,7 +69,9 @@ Independent verification route:
   spectral functions, solves for width/residue data, subtracts regular,
   critical, shear, conductive, and Drude pieces, and reconstructs transport
   coefficients from those generated response functions rather than assigning
-  the final transport formula as input.
+  the final transport formula as input.  The Euclidean check constructs the
+  imaginary-time data with independent contact and UV-tail moments before
+  applying the declared inverse.
 
 Convention dependencies:
 - The checks use the monograph mostly-plus real-time convention, the retarded
@@ -68,14 +79,18 @@ Convention dependencies:
   one-charge hydrodynamics, baryon chemical-potential normalization
   \(\mu_q=\mu_B/N_c\), finite thermodynamic derivatives
   \(\beta_{1,2}\) and \(\alpha_{1,2}\), and the intrinsic conductivity
-  convention after convective current subtraction.
+  convention after convective current subtraction.  Euclidean spectral
+  reconstruction uses the positive-frequency thermal kernel
+  \(K_\beta(\tau,\omega)\) and does not identify raw Euclidean moments with
+  real-time slopes.
 
 Domain and remainder assumptions:
 - The response-window checks assume an isolated finite-\(k\) hydrodynamic pole
   or coupled sound/diffusion eigenmode, finite susceptibility and enthalpy
   residues, a contact-subtracted spectral window, and explicit majorants for
-  regular backgrounds, near-critical weight, finite-volume/continuation
-  errors, frame transport, and continuum remainders.
+  Euclidean inversion, contact and UV-tail subtraction, regular backgrounds,
+  near-critical weight, finite-volume/continuation errors, frame transport,
+  and continuum remainders.
 
 Remaining unproved or conditional:
 - The companion does not prove that continuum QCD has the assumed isolated
@@ -92,6 +107,9 @@ Imported assumptions:
 Negative controls:
 - Rejects wrong retarded spectral sign, width-only shear extraction, missing
   enthalpy-residue uncertainty, uncorrected regular-background contamination,
+  raw Euclidean midpoint transport extraction, one-sample Euclidean spectral
+  inversion, missing Euclidean contact subtraction, missing UV-tail
+  subtraction, missing analytic-continuation residual,
   raw trace-slope bulk extraction, sound-width-only bulk extraction, missing
   shear or conductive subtraction, hidden near-critical scalar weight,
   charge-diffusion width-only extraction, missing susceptibility uncertainty, raw-current
@@ -120,7 +138,9 @@ neutrality constraints, color-flavor-locked gauge-invariant composite
 charges, rotated electromagnetic mass-matrix bookkeeping, screening and
 collective-mode counts, dense Fermi-surface stress scales,
 color-flavor-locked faithful-global-symmetry and anomaly-matching
-bookkeeping, hydrodynamic response-window bookkeeping, finite shear
+bookkeeping, hydrodynamic response-window bookkeeping,
+Euclidean-to-retarded transport-extraction bookkeeping with contact, UV-tail,
+one-sample, and stability-budget negative controls, finite shear
 spectral-window extraction from a retarded hydrodynamic kernel,
 finite bulk/sound spectral-window extraction with thermodynamic, shear, and
 finite-density conductive subtractions,
@@ -1068,6 +1088,162 @@ def check_hydrodynamic_response_window_bookkeeping():
     )
 
 
+def check_euclidean_to_retarded_transport_extraction():
+    # Finite Euclidean data are linear functionals of the spectral density.
+    # This toy channel has two low-frequency spectral coordinates.  The first
+    # coordinate is the transport slope; contact and UV-tail moments are
+    # independent Euclidean data, not retarded transport coefficients.
+    def matvec_2(matrix, vector):
+        return (
+            matrix[0][0] * vector[0] + matrix[0][1] * vector[1],
+            matrix[1][0] * vector[0] + matrix[1][1] * vector[1],
+        )
+
+    def matinv_2(matrix):
+        det = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+        return (
+            (matrix[1][1] / det, -matrix[0][1] / det),
+            (-matrix[1][0] / det, matrix[0][0] / det),
+        )
+
+    def vec_add(*vectors):
+        first = sum(vector[0] for vector in vectors)
+        second = sum(vector[1] for vector in vectors)
+        return first, second
+
+    def vec_sub(left, right):
+        return left[0] - right[0], left[1] - right[1]
+
+    def row_abs_bound(row, vector):
+        return abs(row[0]) * abs(vector[0]) + abs(row[1]) * abs(vector[1])
+
+    euclidean_kernel = ((Fraction(2), Fraction(1)), (Fraction(1), Fraction(3)))
+    spectral_coords = (Fraction(3, 5), Fraction(2, 7))
+    contact_moments = (Fraction(5), -Fraction(2))
+    uv_tail_moments = (Fraction(1, 11), -Fraction(1, 13))
+
+    low_frequency_moments = matvec_2(euclidean_kernel, spectral_coords)
+    euclidean_moments = vec_add(
+        low_frequency_moments,
+        contact_moments,
+        uv_tail_moments,
+    )
+    inverse_kernel = matinv_2(euclidean_kernel)
+    assert_equal(
+        "QCD Euclidean inverse kernel determinant bookkeeping",
+        inverse_kernel,
+        (
+            (Fraction(3, 5), -Fraction(1, 5)),
+            (-Fraction(1, 5), Fraction(2, 5)),
+        ),
+    )
+
+    contact_subtracted_moments = vec_sub(euclidean_moments, contact_moments)
+    subtracted_moments = vec_sub(contact_subtracted_moments, uv_tail_moments)
+    reconstructed_coords = matvec_2(inverse_kernel, subtracted_moments)
+    assert_equal(
+        "QCD Euclidean-to-retarded inverse recovers low spectral coordinates",
+        reconstructed_coords,
+        spectral_coords,
+    )
+    assert_equal(
+        "QCD Euclidean-to-retarded transport slope",
+        reconstructed_coords[0],
+        Fraction(3, 5),
+    )
+
+    raw_midpoint_shortcut = euclidean_moments[0] / euclidean_kernel[0][0]
+    assert_true(
+        "QCD raw Euclidean midpoint is not a transport slope",
+        raw_midpoint_shortcut != spectral_coords[0],
+    )
+    contact_unsubtracted_slope = matvec_2(
+        inverse_kernel,
+        vec_sub(euclidean_moments, uv_tail_moments),
+    )[0]
+    tail_unsubtracted_slope = matvec_2(
+        inverse_kernel,
+        vec_sub(euclidean_moments, contact_moments),
+    )[0]
+    assert_true(
+        "QCD Euclidean contact moments must be subtracted before inversion",
+        contact_unsubtracted_slope != spectral_coords[0],
+    )
+    assert_true(
+        "QCD Euclidean UV tail must be subtracted before transport inversion",
+        tail_unsubtracted_slope != spectral_coords[0],
+    )
+
+    # A single Euclidean functional cannot identify the low-frequency slope
+    # without an additional spectral class: these two spectra give the same
+    # finite Euclidean value and different transport slopes.
+    one_sample_row = (Fraction(2), Fraction(1))
+    one_sample_spectrum_a = (Fraction(1), Fraction(0))
+    one_sample_spectrum_b = (Fraction(0), Fraction(2))
+    one_sample_a = (
+        one_sample_row[0] * one_sample_spectrum_a[0]
+        + one_sample_row[1] * one_sample_spectrum_a[1]
+    )
+    one_sample_b = (
+        one_sample_row[0] * one_sample_spectrum_b[0]
+        + one_sample_row[1] * one_sample_spectrum_b[1]
+    )
+    assert_equal(
+        "QCD one Euclidean sample has degenerate spectral preimages",
+        one_sample_a,
+        one_sample_b,
+    )
+    assert_true(
+        "QCD one Euclidean sample does not fix transport slope",
+        one_sample_spectrum_a[0] != one_sample_spectrum_b[0],
+    )
+
+    euclidean_error = (Fraction(1, 100), Fraction(1, 120))
+    contact_error = (Fraction(1, 40), Fraction(1, 50))
+    tail_error = (Fraction(1, 60), Fraction(1, 70))
+    total_moment_error = vec_add(euclidean_error, contact_error, tail_error)
+    transport_error = matvec_2(inverse_kernel, total_moment_error)[0]
+    full_linear_bound = row_abs_bound(inverse_kernel[0], total_moment_error)
+    missing_contact_bound = row_abs_bound(
+        inverse_kernel[0],
+        vec_add(euclidean_error, tail_error),
+    )
+    missing_tail_bound = row_abs_bound(
+        inverse_kernel[0],
+        vec_add(euclidean_error, contact_error),
+    )
+    assert_true(
+        "QCD Euclidean inverse stability bounds propagated transport error",
+        abs(transport_error) <= full_linear_bound,
+    )
+    assert_true(
+        "QCD Euclidean stability budget must include contact uncertainty",
+        full_linear_bound > missing_contact_bound,
+    )
+    assert_true(
+        "QCD Euclidean stability budget must include UV-tail uncertainty",
+        full_linear_bound > missing_tail_bound,
+    )
+
+    ansatz_residual = Fraction(1, 90)
+    finite_volume_residual = Fraction(1, 100)
+    continuum_residual = Fraction(1, 110)
+    analytic_continuation_residual = Fraction(1, 30)
+    accepted_budget = (
+        full_linear_bound
+        + ansatz_residual
+        + finite_volume_residual
+        + continuum_residual
+        + analytic_continuation_residual
+    )
+    manufactured_continuation_error = accepted_budget
+    missing_continuation_budget = accepted_budget - analytic_continuation_residual
+    assert_true(
+        "QCD Euclidean transport budget must include analytic-continuation residual",
+        manufactured_continuation_error > missing_continuation_budget,
+    )
+
+
 def check_finite_shear_spectral_window_from_retarded_kernel():
     # Build the contact-subtracted shear pole from a one-variable retarded
     # hydrodynamic kernel,
@@ -1803,6 +1979,7 @@ def main():
     check_cfl_screening_and_collective_counts()
     check_cfl_anomaly_matching_bookkeeping()
     check_hydrodynamic_response_window_bookkeeping()
+    check_euclidean_to_retarded_transport_extraction()
     check_finite_shear_spectral_window_from_retarded_kernel()
     check_finite_bulk_sound_spectral_window()
     check_finite_charge_diffusion_spectral_window_from_density_kernel()

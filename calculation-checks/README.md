@@ -338,7 +338,10 @@ Current checks:
   electromagnetic mass-matrix bookkeeping, CFL screening-sector and
   collective-mode counts, dense Fermi-surface stress scales, lifted local CFL
   anomaly-matching coefficients, hydrodynamic response-window bookkeeping for
-  QCD shear, scalar and coupled diffusion, sound matching, the finite shear
+  QCD shear, scalar and coupled diffusion, sound matching,
+  Euclidean-to-retarded transport-extraction bookkeeping with contact
+  subtraction, UV-tail subtraction, one-sample degeneracy, and stability
+  budget negative controls, the finite shear
   spectral-window extraction from a retarded pole kernel, including two-sample
   width/amplitude reconstruction, regular-background bias/subtraction, and
   near-critical-mode negative controls, the finite bulk/sound spectral-window

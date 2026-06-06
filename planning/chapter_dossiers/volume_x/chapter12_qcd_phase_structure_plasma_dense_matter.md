@@ -99,6 +99,12 @@ GitHub issue #628.
   current, shear diffusion constant, projected baryon diffusion eigenvalue,
   and sound attenuation coefficient used in the microscopic response-window
   comparison.
+- `G_E,X`, `K_beta`, `C_E,X`, `L_i`, `a_alpha`, `M_i_alpha`,
+  `lambda_X`, `R_AC`: Euclidean channel correlator, thermal spectral kernel,
+  contact subtraction, Euclidean smearing/Matsubara functionals,
+  low-frequency spectral coordinates, finite inverse matrix, transport
+  spectral slope, and analytic-continuation residual used to distinguish
+  imaginary-time QCD data from real-time transport extraction.
 - `pi_x`, `gamma_k`, `Omega`, `tau_micro`, `A_Omega(k)`: transverse momentum
   density, finite-momentum shear-pole width, finite spectral-window cutoff,
   microscopic relaxation scale, and peak-area estimator used to test whether a
@@ -209,6 +215,14 @@ GitHub issue #628.
   the finite-density momentum projection
   `J_inc^i=J_B^i-(n_B/w)T^{0i}` needed to remove the convective Drude sector
   before identifying the intrinsic baryon-diffusion conductivity.
+- Adds a Euclidean-to-retarded transport-extraction gate: finite Euclidean
+  correlator samples must be contact-subtracted, zero-mode-subtracted,
+  tail/OPE-subtracted, assigned to a declared low-frequency spectral class,
+  and passed through a stable inverse map with finite-volume, continuum,
+  ansatz, and analytic-continuation residuals before being accepted as a QCD
+  viscosity or conductivity.  This explicitly prevents midpoint correlators,
+  sparse Matsubara data, or Euclidean pole fits from being mistaken for
+  real-time transport coefficients.
 - Adds a finite shear spectral-window gate: the isolated hydrodynamic momentum
   peak has width `gamma_k=D_eta k^2` and residue `w`, the finite-window area
   misses the static residue by a controlled `gamma_k/Omega` tail plus regular,
@@ -348,8 +362,10 @@ GitHub issue #628.
   collective-mode count bookkeeping, dense
   Fermi-surface stress bookkeeping, lifted local CFL anomaly-matching
   coefficient bookkeeping, QCD hydrodynamic response-window,
-  coupled-diffusion, finite shear spectral-window width/residue and
-  background-error bookkeeping, finite bulk/sound spectral-window
+  coupled-diffusion, Euclidean-to-retarded transport-extraction contact,
+  UV-tail, one-sample, and stability-budget negative controls, finite shear
+  spectral-window width/residue and background-error bookkeeping,
+  finite bulk/sound spectral-window
   thermodynamic-source subtraction, charged longitudinal determinant,
   shear/conductive subtraction, residual-budget, and scalar critical-mode
   negative controls, finite charge-diffusion
@@ -481,6 +497,16 @@ GitHub issue #628.
   estimator.  The companion check derives `Gamma_cond` and the diffusion
   eigenvalue from the determinant coefficients and rejects the old neutral
   estimator as a finite-density bulk-viscosity extraction.
+- 2026-06-06 issue #630 Euclidean-to-retarded extraction pass: inserted
+  `ca:qcd-euclidean-retarded-transport-extraction` between the real-time
+  hydrodynamic response statement and the channel-specific spectral windows.
+  The pass makes lattice/Euclidean QCD data a spectral inverse problem rather
+  than a direct transport readout: it records the thermal kernel, contact and
+  zero-mode subtraction, UV-tail/OPE input, low-frequency spectral class,
+  inverse map, and residual budget including analytic continuation.  The
+  companion check reconstructs a transport slope only after declared
+  subtractions and rejects raw midpoint, one-sample, missing-contact,
+  missing-tail, and missing-continuation shortcuts.
 - 2026-05-27 Roberge--Weiss pass: added the finite-regulator imaginary
   chemical-potential theorem, positivity statement for vectorlike pairs,
   Roberge--Weiss transition status remark, and exact angle-periodicity
