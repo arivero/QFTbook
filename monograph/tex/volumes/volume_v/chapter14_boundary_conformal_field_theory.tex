@@ -2342,10 +2342,30 @@ by a given unitary boundary RG flow.  It does not determine which conformal
 boundary condition is reached, nor does it supply the annulus or
 Cardy--Lewellen sewing data.
 
-\paragraph{Chapter-scale proof-status ledger.}
-The examples in this chapter should now be read as a dependency chain, not as
-a collection of unrelated BCFT cells.  A genuine construction of a boundary
-conformal field theory has to pass through the following layers.
+\paragraph{Boundary observables and construction dependencies.}
+A boundary condition becomes physical through the observables it assigns to
+intervals, disks, annuli, and boundary operator insertions.  For boundary
+conditions \(a,b\), the open-channel annulus
+\[
+  Z_{ab}(q)
+  =
+  \operatorname{Tr}_{\Hilb_{ab}}
+  q^{L_0-c/24}
+\]
+records the spectrum seen by a cylinder, but it is only one projection of the
+boundary theory.  The disk one-point coefficients \(U^a_i\), the
+bulk-boundary coefficients \(R^a_{i\beta}\), the boundary OPE tensors
+\[
+  C\!\begin{bmatrix} a&b&c\\ i&j&k \end{bmatrix},
+\]
+the boundary two-point pairing, the endpoint data for defect lines, and the
+renormalized entropy \(s(\lambda,L)\) are different physical outputs.  They
+are tied together only when they are produced from the same boundary Hilbert
+spaces, operator domains, normalizations, and sewing maps.  Thus the chapter's
+finite computations should be read as a dependency chain, not as a collection
+of unrelated BCFT cells and not as interchangeable tests of the same claim.
+A genuine construction of a boundary conformal field theory has to pass
+through the following layers.
 \begin{enumerate}
   \item The closed chiral input must be fixed first: either a rational
   semisimple chiral theory with modular functor and fusing data, or a
@@ -2354,10 +2374,11 @@ conformal field theory has to pass through the following layers.
   \item Boundary labels must then be promoted to open-channel Hilbert spaces
   or spectral measures, with common domains for boundary-condition-changing
   fields and a reflection-positive two-point pairing.
-  \item Local coordinates must be compatible: annulus multiplicities or
-  spectral measures, disk classifying coordinates, boundary OPE products,
-  bulk-boundary maps, and two-point pairings must be projections of the same
-  boundary structure.
+  \item Local observable coordinates must be compatible: annulus
+  multiplicities or spectral measures, disk one-point and bulk-boundary
+  coefficients, boundary OPE products, classifying coordinates, defect
+  endpoints, and two-point pairings must be projections of the same boundary
+  structure.
   \item Local moves must be checked in the same normalization.  In the
   rational case these include open/closed annulus exchange, boundary OPE
   associativity, disk classifying multiplication, and Frobenius/module
@@ -2372,18 +2393,26 @@ conformal field theory has to pass through the following layers.
   Proposition~\ref{prop:bcft-finite-sewing-anomaly-trivialization} or kept as
   honest anomaly-line transports.
 \end{enumerate}
-The diagonal Ising example closes the first few rational finite checks for a
-specific modular tensor category and boundary basis.  The pointed \(G/H\)
-laboratory goes further by showing that annulus matrices, quotient Fourier
-data, stabilizer idempotents, boundary OPEs, and two-point pairings are
-compatible shadows of one module-category mechanism.  The Liouville block
-closes only local nonrational coordinates: hyperbolic FZZT/ZZ identities,
-the even-parameter Plancherel quotient, and pole-crossing residue
-bookkeeping.  None of these examples proves the final generated all-surface
-sewing theorem.  Conversely, the boundary-entropy gradient result uses
+This order prevents several common overreadings.  The diagonal Ising example
+closes the first few rational finite checks for a specific modular tensor
+category and boundary basis; it does not determine the general
+Cardy--Lewellen construction.  The pointed \(G/H\) laboratory goes further by
+showing that annulus matrices, quotient Fourier data, stabilizer
+idempotents, boundary OPEs, and two-point pairings are compatible shadows of
+one module-category mechanism.  It also shows why the annulus shadow alone is
+too small: a boundary sector can have the same endpoint spectrum but a
+different multiplication, idempotent decomposition, or two-point pairing, and
+therefore different disk and boundary-correlator observables.  The Liouville
+block closes only local nonrational coordinates: hyperbolic FZZT/ZZ
+identities, the even-parameter Plancherel quotient, and pole-crossing residue
+bookkeeping.  These are indispensable coordinates for boundary amplitudes,
+but they still require common test spaces, positive open spectral measures,
+and channel-independent contour prescriptions before they define a
+nonrational BCFT.  Conversely, the boundary-entropy gradient result uses
 renormalized boundary RG and positivity data once a unitary boundary QFT
-exists; it is not a replacement for constructing the BCFT sewing maps or for
-identifying the infrared boundary condition.
+exists; it orders possible endpoints but does not construct the sewing maps,
+identify the infrared boundary condition, or supply the missing boundary OPE
+and bulk-boundary coefficients.
 
 Finally, two-dimensional BCFT fits into the broader boundary/defect language
 of Chapter~\ref{ch:global-boundaries-and-defects}.  A topological line

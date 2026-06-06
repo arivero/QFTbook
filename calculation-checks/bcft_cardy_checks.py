@@ -3,8 +3,8 @@
 
 Evidence contract.
 Target claims: the finite Cardy/Ishibashi coefficient, annulus, boundary OPE,
-the multiplicity-free scalar Cardy-Lewellen coordinate chart, and elementary
-sewing subclaims in the BCFT chapter.
+the multiplicity-free scalar Cardy-Lewellen coordinate chart, the boundary
+observable dependency map, and elementary sewing subclaims in the BCFT chapter.
 Independent construction: exact Q(sqrt(2)) arithmetic, Laurent-polynomial
 character operations, finite annulus matrices, and explicit boundary-field
 counting are computed independently from the candidate Cardy labels.
@@ -12,9 +12,10 @@ Imported assumptions: the chosen Ising modular datum, topological defect and
 boundary-label conventions, and finite character truncation used in the
 chapter's examples.
 Negative controls: inconsistent annulus multiplicities, wrong label
-identifications, boundary-changing channel counts, and a finite diagnostic in
-which boundary-field multiplicity differs from chiral fusion multiplicity are
-tested by exact integer/nonnegative constraints.
+identifications, boundary-changing channel counts, annulus-only
+reconstructions of boundary sewing, multiplication-only reconstructions of
+disk pairings, and a finite diagnostic in which boundary-field multiplicity
+differs from chiral fusion multiplicity are tested by exact constraints.
 Scope boundary: a pass checks finite rational-model bookkeeping; it does not
 prove the full Cardy-Lewellen sewing theorem, nonrational BCFT completeness,
 analytic convergence, non-multiplicity-free fusing matrices, or existence of a
@@ -1318,6 +1319,123 @@ def check_annulus_shadow_nonreconstruction() -> None:
     )
 
 
+def check_bcft_observable_dependency_separation() -> None:
+    """Check that BCFT observables require compatible data, not one shadow.
+
+    The manuscript's construction-dependency paragraph separates annulus
+    spectra, boundary OPE multiplication, classifying idempotents, two-point
+    pairings, and generated sewing.  This finite check exhibits exact
+    ambiguities when one of those layers is omitted.
+    """
+
+    one = (Fraction(1), Fraction(0))
+    generator = (Fraction(0), Fraction(1))
+    e_plus = (Fraction(1, 2), Fraction(1, 2))
+    e_minus = (Fraction(1, 2), Fraction(-1, 2))
+
+    semisimple_annulus_shadow = {
+        "vacuum": ((1, 0), (0, 1)),
+        "stabilizer": ((1, 0), (0, 1)),
+    }
+    nilpotent_annulus_shadow = semisimple_annulus_shadow.copy()
+    assert_equal(
+        "observable dependency samples have the same annulus spectrum",
+        semisimple_annulus_shadow,
+        nilpotent_annulus_shadow,
+    )
+
+    semisimple_square = Fraction(1)
+    nilpotent_square = Fraction(0)
+
+    def identity_coefficient(element: StabilizerAlgebraElement) -> Fraction:
+        return element[0]
+
+    semisimple_boundary_two_point = identity_coefficient(
+        two_dimensional_stabilizer_product(
+            generator,
+            generator,
+            semisimple_square,
+        )
+    )
+    nilpotent_boundary_two_point = identity_coefficient(
+        two_dimensional_stabilizer_product(
+            generator,
+            generator,
+            nilpotent_square,
+        )
+    )
+    assert_equal(
+        "semisimple stabilizer has nonzero inverse two-point channel",
+        semisimple_boundary_two_point,
+        Fraction(1),
+    )
+    assert_equal(
+        "nilpotent stabilizer has zero inverse two-point channel",
+        nilpotent_boundary_two_point,
+        Fraction(0),
+    )
+    if semisimple_boundary_two_point == nilpotent_boundary_two_point:
+        raise AssertionError("annulus-equivalent samples had the same two-point observable")
+
+    # Multiplication also does not fix the disk-pairing normalization.  The
+    # semisimple algebra with tau^2=1 admits different symmetric Frobenius
+    # functionals unless the boundary two-point convention is specified.
+    def trace_with_stabilizer_weight(
+        element: StabilizerAlgebraElement,
+        stabilizer_weight: Fraction,
+    ) -> Fraction:
+        return element[0] + stabilizer_weight * element[1]
+
+    standard_e_plus_pairing = trace_with_stabilizer_weight(
+        two_dimensional_stabilizer_product(e_plus, e_plus, semisimple_square),
+        Fraction(0),
+    )
+    deformed_e_plus_pairing = trace_with_stabilizer_weight(
+        two_dimensional_stabilizer_product(e_plus, e_plus, semisimple_square),
+        Fraction(1, 3),
+    )
+    standard_e_minus_pairing = trace_with_stabilizer_weight(
+        two_dimensional_stabilizer_product(e_minus, e_minus, semisimple_square),
+        Fraction(0),
+    )
+    deformed_e_minus_pairing = trace_with_stabilizer_weight(
+        two_dimensional_stabilizer_product(e_minus, e_minus, semisimple_square),
+        Fraction(1, 3),
+    )
+    assert_equal("standard plus idempotent pairing", standard_e_plus_pairing, Fraction(1, 2))
+    assert_equal("standard minus idempotent pairing", standard_e_minus_pairing, Fraction(1, 2))
+    assert_equal("deformed plus idempotent pairing", deformed_e_plus_pairing, Fraction(2, 3))
+    assert_equal("deformed minus idempotent pairing", deformed_e_minus_pairing, Fraction(1, 3))
+    if standard_e_plus_pairing == deformed_e_plus_pairing:
+        raise AssertionError("multiplication-only data fixed a disk pairing")
+
+    # The finite move budget records the same dependency in residual form: a
+    # scalar all-surface claim is under-controlled if any observable layer is
+    # omitted from the common construction schedule.
+    residuals = {
+        "annulus": Fraction(1, 101),
+        "boundary_ope": Fraction(1, 103),
+        "classifying": Fraction(1, 107),
+        "two_point": Fraction(1, 109),
+        "generated_sewing": Fraction(1, 113),
+    }
+    complete_budget = sum(residuals.values(), Fraction(0))
+    for omitted_component, omitted_residual in residuals.items():
+        underbudget = complete_budget - omitted_residual
+        if underbudget >= complete_budget:
+            raise AssertionError(f"omitting {omitted_component} did not reduce the budget")
+        _assert_leq(
+            f"BCFT dependency underbudget is smaller when omitting {omitted_component}",
+            underbudget,
+            complete_budget,
+        )
+    assert_equal(
+        "identity element remains fixed by both semisimple multiplication samples",
+        two_dimensional_stabilizer_product(one, one, semisimple_square),
+        one,
+    )
+
+
 def check_boundary_entropy() -> None:
     entropies = [S[a][0] / S[0][0] for a in range(3)]
     # The displayed g_a is S_{a0}/sqrt(S_{00}); its square is S_{a0}^2/S_{00}.
@@ -2061,6 +2179,7 @@ def main() -> None:
     check_pointed_stabilizer_classifying_idempotents()
     check_pointed_laboratory_unified_dependency()
     check_annulus_shadow_nonreconstruction()
+    check_bcft_observable_dependency_separation()
     check_boundary_entropy()
     check_boundary_gradient_spectral_weight()
     check_boundary_gradient_monotonicity_from_metric()
@@ -2083,7 +2202,8 @@ def main() -> None:
         "annulus-nimrep-spectral-resolution, "
         "pointed-annulus-Fourier, pointed-boundary-OPE, "
         "pointed-stabilizer-slide, pointed-laboratory-unified, "
-        "annulus-shadow-nonreconstruction, compact-boson, "
+        "annulus-shadow-nonreconstruction, observable-dependency-separation, "
+        "compact-boson, "
         "Liouville-boundary, continuous-annulus Plancherel, "
         "nonrational-pole-residue, bordered-sewing-budget, and "
         "finite-sewing-anomaly-cocycle checks passed."

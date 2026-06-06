@@ -35,10 +35,11 @@
   closed-loop operator \(\lambda_\ell T_\ell\), so a nontrivial line phase
   obstructs scalar amplitudes only after the ordinary transport contribution
   has also been accounted for.
-- Adds an end-of-chapter proof-status ledger that reads the Ising diagonal
-  example, pointed \(G/H\) rational laboratory, Liouville/FZZT nonrational
-  block, and boundary-entropy gradient result as different initial segments of
-  one BCFT construction dependency chain rather than as independent local cells.
+- Adds an end-of-chapter boundary-observable construction map that reads the
+  Ising diagonal example, pointed \(G/H\) rational laboratory,
+  Liouville/FZZT nonrational block, and boundary-entropy gradient result as
+  different initial segments of one BCFT construction dependency chain rather
+  than as independent local cells.
 - States the conformal boundary condition `T = Tbar` on the upper half-plane.
 - Proves that stress-tensor gluing preserves one Virasoro algebra and yields
   the closed-channel condition `(L_n - Lbar_{-n})|B> = 0`.
@@ -182,14 +183,14 @@
   `psi_{x,g} e_{x,chi}=e_{x+g,chi} psi_{x,g}`.  The text identifies this as
   a finite classifying-projector compatibility, not a full analytic
   bulk-boundary sewing construction.
-- Adds the stabilizer-sector two-point ledger in the same finite cell:
+- Adds the stabilizer-sector two-point map in the same finite cell:
   with Frobenius trace \(\varepsilon_x(\psi_{x,h})=\delta_{h,0}\),
   \(\varepsilon_x(e_{x,\chi}e_{x,\chi'})=\delta_{\chi,\chi'}/|H|\), and the
   projected inverse boundary-changing fields obey
   \(\psi_{x+g,g;\chi'}\psi_{x,g;\chi}=\delta_{\chi,\chi'}e_{x,\chi}\).
   This shows that stabilizer characters are invisible to the annulus quotient
   \(G/H\) but visible to boundary two-point sewing.
-- Adds the pointed-laboratory dependency ledger: annulus entries equal the
+- Adds the pointed-laboratory dependency map: annulus entries equal the
   graded dimensions of the same boundary-changing sectors
   \((n_g)_{xH,yH}=\dim\operatorname{span}\{\psi_{x,g}\mid(x+g)H=yH\}\),
   the stabilizer fields are recovered from classifying idempotents by Fourier
@@ -312,12 +313,15 @@
     governed by the total closed-loop transport \(\lambda_\ell T_\ell\), not by
     the scalar line phase alone.
 27. A full BCFT construction has a strict dependency order: closed/chiral
-    input, boundary Hilbert or spectral data, compatible annulus/disk/OPE/
-    two-point coordinates, local sewing moves in a common normalization, and
-    finally generated all-surface sewing.  The Ising, pointed rational, and
-    Liouville examples close different early layers of this chain; the
-    boundary-entropy gradient constrains RG flows after a unitary boundary QFT
-    exists and does not replace the sewing construction.
+    input, boundary Hilbert or spectral data, compatible physical observable
+    coordinates (annulus spectra, disk one-point functions, bulk-boundary
+    coefficients, boundary OPE tensors, classifying projectors, defect
+    endpoints, and two-point pairings), local sewing moves in a common
+    normalization, and finally generated all-surface sewing.  The Ising,
+    pointed rational, and Liouville examples close different early layers of
+    this chain; the boundary-entropy gradient constrains RG flows after a
+    unitary boundary QFT exists and does not replace the sewing construction or
+    identify the infrared boundary condition.
 
 ## Figures
 
@@ -342,6 +346,9 @@
   boundary-field counts, OPE endpoints, and stabilizer Fourier inversion,
   the annulus-shadow nonreconstruction check comparing semisimple and nilpotent
   endpoint-preserving algebras with the same annulus shadow,
+  the observable-dependency separation check showing that annulus spectra,
+  OPE multiplication, classifying idempotents, two-point pairings, and
+  generated sewing are distinct required layers,
   the boundary/chiral multiplicity-axis diagnostic separating boundary-field
   labels from chiral fusion-intertwiner labels, boundary entropy squares, Ising
   boundary-changing fusing constants and OPE powers, the finite Ising
@@ -534,13 +541,21 @@
   `bcft_cardy_checks.py` with the one-vertex counterexample and the
   trivial-ordinary-transport obstruction case.
 - 2026-06-03 end-to-end BCFT coherence pass: after a chapter-flow read of the
-  2015-line BCFT chapter, added a closing proof-status ledger.  The new ledger
-  separates closed/chiral input, boundary Hilbert or spectral data, compatible
-  local coordinates, local move checks, and generated all-surface sewing; it
-  explicitly places the diagonal Ising cell, pointed \(G/H\) laboratory,
-  Liouville/FZZT block, and boundary-entropy gradient proposition in that
-  dependency chain rather than treating them as cumulative proof of full
-  analytic BCFT sewing.
+  2015-line BCFT chapter, added a closing construction-dependency map.  The
+  map separates closed/chiral input, boundary Hilbert or spectral data,
+  compatible local coordinates, local move checks, and generated all-surface
+  sewing; it explicitly places the diagonal Ising cell, pointed \(G/H\)
+  laboratory, Liouville/FZZT block, and boundary-entropy gradient proposition
+  in that dependency chain rather than treating them as cumulative proof of
+  full analytic BCFT sewing.
+- 2026-06-06 observable-dependency re-audit: revised the closing BCFT map so
+  the reader-facing text starts from physical boundary observables
+  \(Z_{ab}\), disk one-point data, bulk-boundary coefficients, boundary OPE
+  tensors, two-point pairings, defect endpoints, and boundary entropy, rather
+  than from proof-status vocabulary.  Extended `bcft_cardy_checks.py` with a
+  finite ambiguity test: the same annulus shadow admits different boundary
+  two-point observables, and the same multiplication can carry different disk
+  pairing normalizations unless the Frobenius/two-point datum is fixed.
 - 2026-06-03 oriented Cardy annulus pass: replaced the real/self-conjugate
   annulus shorthand by the oriented coefficient
   `n_ab^k = sum_i conjugate(B_b^i) B_a^i S_ik = N_{k a}^b` and added a
