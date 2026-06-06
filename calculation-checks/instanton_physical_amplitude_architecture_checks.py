@@ -83,6 +83,11 @@ Target claims:
   valley contribution is a lateral prescription in the same source/projection
   coordinate as its perturbative ambiguity partner; pair-only, principal-value
   only, or wrong-frame cancellations change the physical assertion.
+- `prop:instanton-chirality-source-selection-gate`: the hard zero-mode
+  vertex is supported only on the anomalous chirality source coordinate for
+  the chosen topological sector; a nonzero determinant in the conjugate block,
+  a chirality-balanced four-source selection, or a mass-assisted coordinate
+  is not the same physical amplitude.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell residuals
   and source-determinant perturbations obey the displayed absolute bounds.
 - `prop:su3-nf2-hard-source-power-slow-tail` and
@@ -118,6 +123,7 @@ Independent construction:
   polynomial separation, and bridge residual telescopes,
   first connected instanton-pair source corrections,
   neutral-pair lateral-prescription cancellation ledgers,
+  chirality-source selection gates for the instanton zero-mode determinant,
   physical projection bins, residual sums, two-term hard-window endpoint
   tail subtraction, and hard-window power checks
   directly, rather than importing BPST radial integrals or copying a monograph
@@ -211,6 +217,8 @@ Negative controls:
   neutral valley principal value treated as the full lateral contribution,
   pair-only lateral ambiguity treated as physical, a vacuum-residue
   cancellation transported to a different source coordinate,
+  wrong-chirality determinants, chirality-balanced four-source selections, or
+  mass-assisted source coordinates treated as the Q=1 hard 't Hooft vertex,
   single Euclidean cell sum used as a spectral-bin observable, a
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
   slot, a leading-tail-only hard-window approximation, a fused-density
@@ -2165,6 +2173,85 @@ def check_two_flavor_mass_source_determinant_coordinate() -> None:
     assert_gt("four-source coefficient nonzero", abs(float(four_source_coordinate)), 0.0)
 
 
+def check_chirality_source_selection_gate() -> None:
+    n_flavors = 2
+    q_plus_slots = (n_flavors, 0, 0, n_flavors)
+    q_minus_slots = (0, n_flavors, n_flavors, 0)
+    chirality_balanced_slots = (1, 1, 1, 1)
+    mass_assisted_slots = (1, 0, 0, 1)
+
+    def axial_weight(slots: tuple[int, int, int, int]) -> int:
+        n_left, n_right, n_bar_left, n_bar_right = slots
+        return n_right + n_bar_left - n_left - n_bar_right
+
+    def q_plus_supported(slots: tuple[int, int, int, int], mass_pairs: int = 0) -> bool:
+        retained_pairs = n_flavors - mass_pairs
+        return slots == (retained_pairs, 0, 0, retained_pairs)
+
+    q_plus_source: Matrix2 = (
+        (Fraction(2), Fraction(1)),
+        (Fraction(3), Fraction(5)),
+    )
+    q_minus_source: Matrix2 = (
+        (Fraction(1), Fraction(4)),
+        (Fraction(2), Fraction(7)),
+    )
+    common_density_window = Fraction(5, 13) * Fraction(11, 17) * Fraction(19, 23)
+
+    def q_plus_amplitude(slots: tuple[int, int, int, int], source: Matrix2) -> Fraction:
+        if not q_plus_supported(slots):
+            return Fraction(0)
+        return common_density_window * det2(source)
+
+    assert_equal("Q=1 chirality source determinant", det2(q_plus_source), Fraction(7))
+    assert_equal("Q=-1 conjugate chirality source determinant", det2(q_minus_source), -Fraction(1))
+    assert_equal("Q=1 hard vertex axial weight", axial_weight(q_plus_slots), -2 * n_flavors)
+    assert_equal("Q=-1 hard vertex axial weight", axial_weight(q_minus_slots), 2 * n_flavors)
+    assert_equal("chirality-balanced source has zero axial weight", axial_weight(chirality_balanced_slots), 0)
+
+    q_plus_vertex = q_plus_amplitude(q_plus_slots, q_plus_source)
+    assert_equal(
+        "Q=1 chirality gate keeps the anomalous hard source coordinate",
+        q_plus_vertex,
+        common_density_window * det2(q_plus_source),
+    )
+    assert_equal(
+        "Q=1 gate rejects the conjugate chirality coordinate",
+        q_plus_amplitude(q_minus_slots, q_minus_source),
+        Fraction(0),
+    )
+    assert_equal(
+        "Q=1 gate rejects chirality-balanced four-source data",
+        q_plus_amplitude(chirality_balanced_slots, q_plus_source),
+        Fraction(0),
+    )
+
+    wrong_chirality_determinant_shortcut = common_density_window * det2(q_minus_source)
+    assert_not_equal(
+        "nonzero wrong-chirality determinant is not the Q=1 vertex",
+        wrong_chirality_determinant_shortcut,
+        q_plus_amplitude(q_minus_slots, q_minus_source),
+    )
+    unlabeled_four_source_sum = common_density_window * (
+        det2(q_plus_source) + det2(q_minus_source)
+    )
+    assert_not_equal(
+        "unlabeled four-source determinant mixes instanton chirality sectors",
+        unlabeled_four_source_sum,
+        q_plus_vertex,
+    )
+    assert_equal(
+        "one mass insertion can replace one matched zero-mode source pair",
+        q_plus_supported(mass_assisted_slots, mass_pairs=1),
+        True,
+    )
+    assert_equal(
+        "mass-assisted source coordinate is not the massless hard four-source vertex",
+        q_plus_supported(mass_assisted_slots, mass_pairs=0),
+        False,
+    )
+
+
 def check_moduli_equivalent_channel_separation() -> None:
     weights = [Fraction(1, 3), Fraction(2, 5), Fraction(7, 11)]
     determinants = [Fraction(13, 17), Fraction(19, 23), Fraction(29, 31)]
@@ -2562,6 +2649,7 @@ def main() -> None:
     check_first_cluster_amplitude_correction()
     check_neutral_pair_valley_prescription()
     check_two_flavor_mass_source_determinant_coordinate()
+    check_chirality_source_selection_gate()
     check_moduli_equivalent_channel_separation()
     check_projection_not_recoverable_from_one_euclidean_sum()
     check_finite_cell_residual_bound()

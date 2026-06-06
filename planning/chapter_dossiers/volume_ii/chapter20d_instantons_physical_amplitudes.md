@@ -77,6 +77,11 @@
   zero-mode source determinant may vanish or differ.
 - `prop:two-flavor-source-mass-determinant-coordinate`: exact expansion of
   `det(M+B)` into vacuum, mass-assisted source, and four-source coordinates.
+- `prop:instanton-chirality-source-selection-gate`: finite zero-mode Berezin
+  selection rule for the hard instanton vertex; in the \(Q=1\) convention the
+  massless hard coefficient is supported on the anomalous
+  \((n_L,n_R,\bar n_L,\bar n_R)=(N_f,0,0,N_f)\) source coordinate, with the
+  \(Q=-1\) sector carrying the conjugate chirality coordinate.
 - `sec:instanton-hard-four-fermion-benchmark`: hard two-flavor four-source
   benchmark, organized as center, Haar, zero-mode-rank, amputation,
   size-window, and physical-projection data.
@@ -197,6 +202,12 @@
 - The two-flavor determinant calculation is the local algebra behind the
   distinction between a mass-saturated vacuum activity and a differentiated
   four-source 't Hooft amplitude.
+- The chirality-source gate turns that determinant into an anomalous
+  amplitude selection rule.  A nonzero determinant in the conjugate source
+  block, a chirality-balanced four-source selection, or a mass-assisted
+  coordinate cannot be relabelled as the \(Q=1\) hard 't Hooft vertex before
+  the size integral.  This keeps axial charge flow, source differentiation,
+  and topological sector in the same finite zero-mode calculation.
 - The hard benchmark section moves beyond the local determinant to a physical
   four-source channel: center conservation, shared Haar projection, two
   zero-mode source determinants, amputation, hard form factors, and endpoint
@@ -352,6 +363,10 @@
   residual-bound propagation, and negative controls for pair-only,
   principal-value-only, wrong-frame, and source-projection-omitted
   cancellations,
+  verifies the chirality-source selection gate with exact two-by-two
+  determinant blocks, axial-weight counts, wrong-chirality and
+  chirality-balanced negative controls, sector-mixing rejection, and a
+  mass-assisted coordinate check,
   builds moduli-equivalent finite cell channels with different or vanishing
   amplitudes, constructs a same-Euclidean-sum/different-projection ambiguity,
   checks the SU(3), `N_f=2` hard four-source scale and tail powers, verifies
@@ -441,6 +456,13 @@
   as a same-source-coordinate lateral-prescription issue and rejects
   pair-only, principal-value-only, wrong-frame, and source-projection-omitted
   ambiguity cancellations.
+- 2026-06-06 chirality-source gate pass: added
+  `prop:instanton-chirality-source-selection-gate` after the two-flavor
+  mass/source determinant coordinate.  The pass makes the hard \(Q=1\)
+  't Hooft vertex an anomalous zero-mode source-selection statement, rejecting
+  wrong-chirality determinants, chirality-balanced four-source selections,
+  sector-mixed unlabeled determinants, and mass-assisted coordinates as
+  substitutes for the massless hard vertex.
 - 2026-06-06 hard Wilsonian OPE pass: added
   `sec:instanton-hard-wilsonian-ope-datum`, which turns the hard four-source
   benchmark into a short-distance operator coefficient only after the

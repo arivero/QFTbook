@@ -570,6 +570,62 @@ coefficient must then be paired with the nonzero-mode determinant, the color
 orientation tensor, external source residues or LSZ data, and a size-window
 or infrared mechanism.
 
+\begin{proposition}[Chirality-source gate for the instanton vertex]
+\label{prop:instanton-chirality-source-selection-gate}
+Fix the \(Q=1\) convention in which the fermion zero-mode source block is
+\(B^{(+)}\), coupling one left-handed quark source slot to one right-handed
+antiquark source slot for each flavor.  If \(\alpha_f,\bar\alpha_f\) are the
+zero-mode Grassmann coefficients, then
+\begin{equation}
+  Z_{\rm zm}^{(+)}[B]
+  =
+  \int
+  \prod_{f=1}^{N_f}\dd\bar\alpha_f\,\dd\alpha_f\,
+  \exp\!\left(
+    \sum_{f,g=1}^{N_f}\bar\alpha_f B^{(+)}_{fg}\alpha_g
+  \right)
+  =
+  \det B^{(+)} .
+  \label{eq:instanton-chirality-source-gate-determinant}
+\end{equation}
+The differentiated hard vertex in this sector is therefore supported only on
+the source coordinate with \(N_f\) left-handed quark slots and \(N_f\)
+right-handed antiquark slots, up to replacements of matched pairs by mass
+insertions.  In source-slot notation,
+\[
+  (n_L,n_R,\bar n_L,\bar n_R)=(N_f,0,0,N_f)
+\]
+for the massless \(Q=1\) hard coefficient, while the \(Q=-1\) coefficient uses
+the conjugate coordinate \((0,N_f,N_f,0)\).  The \(Q=1\) zero-mode vertex has
+axial weight \(-2N_f\) in this convention, and the anti-instanton vertex has
+the opposite weight.
+\end{proposition}
+
+\begin{proof}
+At finite regulator the zero-mode variables are a finite Grassmann algebra.
+The Berezin integral is nonzero only when the expansion of the exponential
+contains every \(\alpha_f\) and every \(\bar\alpha_f\) exactly once.  Expanding
+the exponential in \eqref{eq:instanton-chirality-source-gate-determinant}
+therefore gives the determinant of the source matrix \(B^{(+)}\).  A source
+derivative in the conjugate chirality block has no \(Q=1\) zero-mode variable
+to saturate, and a chirality-balanced four-source derivative leaves at least
+one of the \(Q=1\) zero-mode coefficients unsaturated.  Such a channel may
+exist perturbatively or in the anti-instanton sector, but it is not the
+\(Q=1\) 't Hooft zero-mode vertex.  The axial weight follows from
+\(q_L\mapsto e^{-\ii a}q_L\), \(\bar q_R\mapsto e^{-\ii a}\bar q_R\), so each
+matched \(Q=1\) zero-mode source pair carries weight \(-2\).
+\end{proof}
+
+For \(N_f=2\), this proposition is the chirality-flow version of
+\eqref{eq:two-flavor-mass-source-determinant-polynomial}.  A nonzero
+determinant in the wrong chirality block, or a chirality-balanced external
+four-fermion source, cannot be moved into the one-instanton hard coefficient
+by multiplying by the BPST density.  The leading instanton amplitude first
+violates the anomalous axial charge in the zero-mode Berezin integral, then
+receives the determinant, color-orientation, normal-fluctuation, endpoint, and
+physical-projection factors.  Reversing that order is a different physical
+calculation.
+
 \section{A Hard Four-Fermion Benchmark}
 \label{sec:instanton-hard-four-fermion-benchmark}
 
