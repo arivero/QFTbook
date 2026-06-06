@@ -12,6 +12,31 @@ variation is equated to the stress-tensor expectation value.  This chapter
 develops that statement, the associated linear response theory, and the
 stress-tensor fluctuation data needed for stochastic backreaction.
 
+The physical question is not simply whether the formal equation
+\(E^{\rm grav}=\langle T^{\rm ren}\rangle\) can be written.  It is whether a
+specified quantum state, stress tensor, and stress-tensor fluctuation law
+produce a controlled metric observable.  The finite chain used in this chapter
+is
+\begin{equation}
+  (\mathcal A_g,\omega,T_{\mathcal S}^{\rm ren})
+  \longrightarrow
+  (E_\theta^{\rm grav},\mathsf T_{g\to g+h})
+  \longrightarrow
+  (j,N,K^{\rm ret})
+  \longrightarrow
+  (h_*,\mathsf C_h)
+  \longrightarrow
+  X[g_0+h].
+  \label{eq:semiclassical-observable-chain}
+\end{equation}
+The entries mean, respectively, the locally covariant algebra/state/stress
+tensor in a fixed renormalization scheme, the gravitational EFT coordinates
+and state-transport rule, the Ward-clean source/noise/retarded response data,
+the mean metric shift and Einstein--Langevin covariance, and the retained
+metric observable.  A formal mean equation, a small coordinate perturbation, or
+a projected noise covariance is therefore not yet a physical semiclassical
+prediction; the observable and its uncertainty are part of the output.
+
 \section{Metric Variation And Curvature Convention}
 
 The curvature convention in this chapter is
@@ -253,12 +278,13 @@ the curvature-squared actions in four dimensions.
 
 \section{Semiclassical Einstein Equation}
 
-In the status spine of
-Section~\ref{sec:curved-qft-control-levels}, everything in this chapter is
-conditional semiclassical control.  The metric equation becomes a physical
-claim only after the locally covariant algebra, admissible state class,
-renormalized stress tensor, gravitational EFT coordinates, state-transport
-rule, and response window have been fixed together.
+In the control-level classification of
+Section~\ref{sec:curved-qft-control-levels}, the equation below is a
+conditional semiclassical statement, not a theorem of interacting quantum
+gravity.  It becomes a physical backreaction claim only as the first stage of
+\eqref{eq:semiclassical-observable-chain}: the locally covariant algebra,
+admissible state class, renormalized stress tensor, gravitational EFT
+coordinates, state-transport rule, and response window must be fixed together.
 
 A semiclassical solution is not only a metric.  It is a pair \((g,\omega)\)
 such that \(\omega\) is an admissible Hadamard state of the QFT constructed
@@ -1011,8 +1037,7 @@ Equivalently, the local retained potential source coordinate is
 \end{equation}
 Equation~\eqref{eq:semiclassical-interacting-vacuum-source} is not, by
 itself, the full order-\(\lambda\) expectation value of the renormalized
-interacting stress tensor.  A full first-order source has the bookkeeping
-ledger
+interacting stress tensor.  A full first-order source has the decomposition
 \begin{equation}
 \begin{aligned}
   \delta_\lambda
@@ -1381,7 +1406,7 @@ extensions, composite-operator finite renormalizations, local covariance, action
 Ward identities, and physical renormalization conditions.  The Euclidean
 least-norm retained vector \(j_{\rm min}\) is therefore a diagnostic or an
 explicit model choice inside the retained source space; the physical source is
-the \(j^{\rm full}\) obtained from the pAQFT ledger and then tested by
+the \(j^{\rm full}\) obtained from the pAQFT construction and then tested by
 \(\mathsf B j^{\rm full}=0\).
 In the homogeneous special case \(\partial_\nu\rho_\lambda=0\), the retained
 potential coordinate is already in \(\ker\mathsf B\), which is why the

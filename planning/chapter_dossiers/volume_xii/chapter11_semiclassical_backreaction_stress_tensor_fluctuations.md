@@ -80,11 +80,12 @@ recording fluctuation data required for controlled backreaction.
   earlier in Volume XII, and gives the local variational calculation and trace
   checks in four dimensions without presenting the duplicated formula block as
   a new theorem.
-- Links the semiclassical Einstein equation back to the Volume XII
-  theorem-status spine: all backreaction statements in this chapter are
-  conditional semiclassical control until the locally covariant algebra,
-  admissible state class, renormalized stress tensor, gravitational EFT
-  coordinates, state transport, and response window are fixed together.
+- Links the semiclassical Einstein equation to the Volume XII control-level
+  classification and to the chapter's observable-output chain: all
+  backreaction statements here are conditional semiclassical control until the
+  locally covariant algebra, admissible state class, renormalized stress
+  tensor, gravitational EFT coordinates, state transport, response/noise
+  window, and retained metric observable are fixed together.
 - Defines a semiclassical solution as a pair \((g,\omega)\), not merely a
   metric, and formalizes the backreaction datum.
 - Derives the linear-response kernel from the retarded stress-tensor
@@ -134,8 +135,9 @@ recording fluctuation data required for controlled backreaction.
   condition `B j^{full}=0`, the least-norm diagnostic projector
   `P_{ker B}=I-B^*(B B^*)^{-1}B`, and the general conserved source
   `j^{full}=P_{ker B}j^{raw}+k`, `k in ker B`.  The physical source/noise are
-  the objects constructed by the full pAQFT ledger; projecting a partial source
-  or partial covariance is recorded only as a diagnostic/model choice.
+  the objects constructed by the full pAQFT renormalization procedure;
+  projecting a partial source or partial covariance is recorded only as a
+  diagnostic/model choice.
 - Adds a finite retained Ward-completion laboratory.  A two-coordinate retained
   model with `B=(1,-1)` turns a nonconserved potential-only source
   `(3,1) rho_*` into the least-norm conserved diagnostic source
@@ -291,9 +293,9 @@ curvature, microscopic, and EFT scales.
   fixed-state comparison of local Wick-renormalization prescriptions.
 - 2026-06-04: repaired issue #741 by relabeling the example as a retained
   potential-insertion coordinate, adding the full interacting stress-tensor
-  source ledger and Hollands--Wald conservation requirements, separating the
-  restricted Wick-square shift from independent `Phi^4`/stress-tensor finite
-  renormalizations, and replacing the signed response estimate by an
+  source decomposition and Hollands--Wald conservation requirements, separating
+  the restricted Wick-square shift from independent `Phi^4`/stress-tensor
+  finite renormalizations, and replacing the signed response estimate by an
   absolute-value norm bound.
 - 2026-06-04 issue #729 retained-noise pass: added the potential-sector
   stress-noise coordinate for the same `lambda phi^4` example.  This extends
@@ -313,7 +315,7 @@ curvature, microscopic, and EFT scales.
   now checks that a same-state Wick coordinate still has nonzero separated
   fourth-power noise, while smooth-remainder-only and premature-real-part
   formulas fail.
-- 2026-06-04 issue #729 status-spine linkage: added an explicit backlink from
+- 2026-06-04 issue #729 control-level linkage: added an explicit backlink from
   the semiclassical Einstein equation to the Volume XII control-level matrix.
   This keeps the chapter's mean-response and noise calculations inside their
   conditional backreaction status rather than letting them read as a general
@@ -419,3 +421,10 @@ curvature, microscopic, and EFT scales.
   Raychaudhuri response when `dot rho_lambda` is nonzero, and imposes the
   corresponding Ward-clean stress-noise condition before Hubble noise is
   interpreted.
+- 2026-06-06 issue #844 semiclassical observable-map pass: replaced the
+  reader-facing status-machinery wording by a physics observable chain from
+  locally covariant algebra/state/stress tensor through gravity coordinates,
+  state transport, source/noise/response, mean metric/covariance, and retained
+  observable output.  The paired finite check rejects the formal-equation-only,
+  mean-only, noise-without-metric-covariance, wrong-order, and no-signal-to-noise
+  shortcuts.

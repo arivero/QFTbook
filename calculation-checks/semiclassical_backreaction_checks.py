@@ -26,7 +26,8 @@ the small-gain stability and fluctuation-validity check for the linearized
 interacting backreaction operator, the finite nonlinear fixed-point chart for
 the retained semiclassical equation,
 the retained metric-observable output layer including fluctuation bias,
-observable covariance, and signal-to-noise tests,
+observable covariance, and signal-to-noise tests, the observable-chain boundary
+separating a formal mean equation from a physical retained metric prediction,
 and the low-energy root selected by reduction of order in a toy
 higher-derivative equation.
 
@@ -41,7 +42,7 @@ linearized/contact/noise consequences,
 the lambda-phi-four potential-insertion source coordinate, the retained
 potential-noise Wick contraction with full separated two-point cross covariance
 and metric pushforward, the restricted
-finite-renormalization ledger for that coordinate, the finite retained
+finite-renormalization decomposition for that coordinate, the finite retained
 Ward-diagnostic/projected-noise algebra for interacting sources, the worked
 two-coordinate Ward-completion laboratory relating conserved source projection
 and retained metric/noise pushforward to the missing interacting covariance,
@@ -58,8 +59,9 @@ backreaction operator, the finite nonlinear self-map/contraction and
 mean/noise-validity budgets, including residual size and residual Lipschitz
 controls, for a retained backreaction chart, the retained
 metric-observable mean shift, quadratic fluctuation bias, covariance, and
-signal-to-noise inequality, and the low-energy root selected by reduction of
-order.
+signal-to-noise inequality, the observable-chain boundary data that must be
+present before a retained metric observable is claimed, and the low-energy root
+selected by reduction of order.
 Independent construction: the checks recompute traces, KMS factors,
 matrix pushforwards, exact retained-sector inverses, Wick-contraction
 coefficients, cosmological-coordinate shifts, independent finite counterterm
@@ -75,7 +77,8 @@ homogeneous stress-noise covariances,
 species sums, 1/N_sp gravitational-coupling scaling, source-cumulant scaling,
 nonlinear fixed-point radii, residual size and residual Lipschitz
 budgets, state-transport Lipschitz constants, noise-validity inequalities, and
-metric-observable linear/quadratic forms and covariances, and toy roots
+metric-observable linear/quadratic forms and covariances, ordered
+observable-chain stages with their required side data, and toy roots
 directly from finite formulas rather than importing chapter display strings.
 Imported assumptions: the tests use finite-dimensional retained sectors,
 centered quasifree Wick combinatorics, formal first- and second-order lambda
@@ -110,7 +113,8 @@ constants, bounded non-Lipschitz residuals with multiple fixed points, overlarge
 quadratic nonlinear feedback, linear-noise-only validity estimates,
 omitted observable fluctuation bias, coordinate probes that do not annihilate
 pure-gauge directions, and partial metric covariances that undercount
-observable variance,
+observable variance, formal-equation-only chains, mean-only chains, noise-only
+chains, wrong-order observable chains, and missing signal-to-noise data,
 fixed-G_N large-species scaling, coherent N_sp^2 noise scaling, correlated
 species noise, and wrong higher-source-cumulant suppression estimates.
 Scope boundary: a pass checks coefficient, positivity, and response-bound
@@ -119,7 +123,9 @@ algebra of a full retained stress-tensor package; it does not construct the
 pAQFT interacting stress tensor, prove existence of interacting Hadamard
 states, construct renormalized stress-tensor products, build a non-Gaussian
 stochastic hierarchy or higher-metric-cumulant response map, solve stochastic
-semiclassical equations, or address nonperturbative quantum gravity dynamics.
+semiclassical equations, prove that a retained observable exists in the
+infinite-dimensional theory, or address nonperturbative quantum gravity
+dynamics.
 """
 
 from __future__ import annotations
@@ -1797,6 +1803,80 @@ def check_retained_metric_observable_output() -> None:
     assert_equal("observable cross covariance", covariance_xy, Fraction(1, 20))
 
 
+def check_semiclassical_observable_chain_boundary() -> None:
+    stages = (
+        "qft_state_stress",
+        "gravity_coordinates",
+        "state_transport",
+        "source_noise_response",
+        "mean_metric_covariance",
+        "metric_observable",
+    )
+    required_stages = frozenset(stages)
+    required_side_data = frozenset(
+        {
+            "renormalization_scheme",
+            "response_window",
+            "gauge_constraint_reduction",
+            "signal_to_noise",
+        }
+    )
+    ordering_edges = (
+        ("qft_state_stress", "source_noise_response"),
+        ("gravity_coordinates", "source_noise_response"),
+        ("state_transport", "source_noise_response"),
+        ("source_noise_response", "mean_metric_covariance"),
+        ("mean_metric_covariance", "metric_observable"),
+    )
+
+    def chain_passes(chain: tuple[str, ...], side_data: frozenset[str]) -> bool:
+        position = {stage: index for index, stage in enumerate(chain)}
+        if not required_stages.issubset(position):
+            return False
+        if not required_side_data.issubset(side_data):
+            return False
+        return all(position[left] < position[right] for left, right in ordering_edges)
+
+    full_side_data = required_side_data | frozenset({"finite_residual_budgets"})
+    if not chain_passes(stages, full_side_data):
+        raise AssertionError("complete observable chain should pass")
+    assert_equal("observable-chain terminal stage", stages[-1], "metric_observable")
+    assert_equal("observable-chain stage count", len(stages), 6)
+
+    formal_equation_only = ("qft_state_stress", "gravity_coordinates")
+    if chain_passes(formal_equation_only, full_side_data):
+        raise AssertionError("negative control failed: formal equation became prediction")
+
+    mean_only_chain = stages[:-1]
+    if chain_passes(mean_only_chain, full_side_data):
+        raise AssertionError("negative control failed: mean metric lacked observable output")
+
+    noise_without_metric_chain = (
+        "qft_state_stress",
+        "gravity_coordinates",
+        "state_transport",
+        "source_noise_response",
+        "metric_observable",
+    )
+    if chain_passes(noise_without_metric_chain, full_side_data):
+        raise AssertionError("negative control failed: noise skipped metric covariance")
+
+    wrong_order_chain = (
+        "metric_observable",
+        "qft_state_stress",
+        "gravity_coordinates",
+        "state_transport",
+        "source_noise_response",
+        "mean_metric_covariance",
+    )
+    if chain_passes(wrong_order_chain, full_side_data):
+        raise AssertionError("negative control failed: wrong-order observable chain passed")
+
+    missing_signal_to_noise = full_side_data - frozenset({"signal_to_noise"})
+    if chain_passes(stages, missing_signal_to_noise):
+        raise AssertionError("negative control failed: observable omitted signal-to-noise")
+
+
 def check_reduction_of_order_toy_model() -> None:
     # Toy equation: x'' + omega0^2 x + epsilon x'''' = 0.
     # For x ~ exp(lambda t), epsilon lambda^4 + lambda^2 + omega0^2 = 0.
@@ -1834,6 +1914,7 @@ def main() -> None:
     check_backreaction_small_gain_stability()
     check_nonlinear_backreaction_fixed_point_chart()
     check_retained_metric_observable_output()
+    check_semiclassical_observable_chain_boundary()
     check_reduction_of_order_toy_model()
     print("All semiclassical backreaction checks passed.")
 

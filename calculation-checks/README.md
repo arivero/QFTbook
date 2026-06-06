@@ -2508,9 +2508,11 @@ Current checks:
   output check converting the mean metric and Einstein-Langevin covariance into
   an observable mean shift, quadratic fluctuation bias, covariance, and
   signal-to-noise test with negative controls for gauge-variant coordinate
-  probes, omitted fluctuation bias, and partial-covariance undercounting, and the
-  low-energy root selected by reduction of order in a toy higher-derivative
-  equation.
+  probes, omitted fluctuation bias, and partial-covariance undercounting, the
+  observable-chain boundary check rejecting formal-equation-only, mean-only,
+  noise-without-metric-covariance, wrong-order, and no-signal-to-noise
+  shortcuts, and the low-energy root selected by reduction of order in a toy
+  higher-derivative equation.
 - `schwinger_keldysh_operator_checks.py`: finite two-level-system checks for
   the real-time Schwinger--Keldysh operator chapter, including diagonal
   unitarity, branch-exchange reality, the \(|Z|\le1\) positivity bound,
