@@ -777,6 +777,9 @@ Current checks:
   control,
   the observable-handoff distinction among hard source coefficients, theta
   curvatures, \(U(1)_A\)-odd kernels, and real-time axial relaxation rates,
+  the physical projection bridge from Euclidean source kernels to pole-window,
+  spectral-bin, OPE, or inclusive coordinates, including contact-polynomial
+  separation and bridge residual budgets,
   the first connected instanton-pair source correction with disconnected
   subtraction, neutral-pair source visibility, same-charge second-harmonic
   data, zero-mode overlap survival, and pair residual control,
@@ -796,7 +799,9 @@ Current checks:
   noncancellation margin, hard source coefficients used as theta
   susceptibilities, dilute curvatures used as real-time rates, dilute
   instanton curvature substituted for Witten--Veneziano input without a
-  comparison budget, theta-curvature-only control of a neutral pair, connected
+  comparison budget, Euclidean source values used as physical pole or spectral
+  data, colored auxiliary kernels treated as standalone LSZ amplitudes,
+  underbudgeted projection bridges, theta-curvature-only control of a neutral pair, connected
   pair correction without disconnected subtraction, one-body sector budgets
   that omit pair leakage, determinant-only hard ratio, missing hard slot,
   one-number spectral projection, and omitted external residual.

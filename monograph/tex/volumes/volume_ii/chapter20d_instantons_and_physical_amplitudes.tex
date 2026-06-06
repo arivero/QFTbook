@@ -803,6 +803,119 @@ the same Haar-projected, amputated, windowed, and physically projected kernel.
 Changing any of those data changes the amplitude coordinate, even though the
 underlying instanton saddle is unchanged.
 
+\section{A Source Kernel Still Needs a Physical Projection}
+\label{sec:instanton-source-kernel-physical-projection}
+
+The word ``amplitude'' should not hide the last map.  A finite Euclidean
+instanton source kernel
+\(\mathcal K_{E,\Lambda}[\mathcal J]\) is a source-functional coefficient in a
+regulated path integral.  It becomes a scattering amplitude, an OPE
+coefficient, a hadronic matrix element, or a spectral-bin contribution only
+after the corresponding projection has been declared.  In a confining gauge
+theory this point is especially important: a colored partonic instanton kernel
+can be a useful auxiliary object, but it is not by itself an LSZ amplitude
+unless a gauge-invariant external source, an infrared deformation, or a
+separate partonic matching convention has been supplied.
+
+For a stable gauge-invariant external channel the projection is a pole-window
+operation.  If \(O_i,O_f\) are interpolating sources with nonzero overlap with
+states \(|i\rangle,|f\rangle\), the large Euclidean-time window has the form
+\begin{equation}
+  G_{fi}^{I}(T,t)
+  =
+  Z_f Z_i\,
+  \ee^{-E_f(T-t)}\ee^{-E_i t}\,
+  \mathcal M_{fi}^{I}
+  +R_{\rm exc}^{I}(T,t),
+  \label{eq:instanton-hadronic-pole-window}
+\end{equation}
+after the instanton kernel has been assembled in the source channel.  The
+matrix element \(\mathcal M_{fi}^{I}\) is obtained by isolating this pole and
+then dividing by \(Z_fZ_i\).  Dividing a raw source correlator by guessed
+overlaps before the pole has been isolated leaves excited-state leakage in the
+answer, and a vanishing source overlap makes the extraction undefined.
+
+For an inclusive or Euclidean spectral observable the projection is different.
+A Euclidean source value has a Stieltjes form
+\begin{equation}
+  G_E^I(Q^2)
+  =
+  P_{\rm ct}(Q^2)
+  +
+  \int_0^\infty \frac{\dd\rho_I(\sigma)}{\sigma+Q^2},
+  \qquad
+  \mathfrak B_{\Delta}^I
+  =
+  \int_{\Delta}\dd\rho_I(\sigma),
+  \label{eq:instanton-spectral-projection-window}
+\end{equation}
+where \(P_{\rm ct}\) is a local contact polynomial.  The bin
+\(\mathfrak B_{\Delta}^I\) is a discontinuity or spectral functional; it is
+not a single spacelike Euclidean value.  Contact polynomials can change
+\(G_E^I(Q^2)\) while carrying no separated spectral weight in \(\Delta\), and
+two positive spectral measures can agree at one Euclidean point while giving
+different bin weights.  A physical spectral claim therefore needs an inversion
+or window-stability datum, not just a source-kernel number.
+
+\begin{controlledapproximation}[Physical projection bridge for instanton
+source kernels]
+\label{ca:instanton-source-kernel-physical-projection}
+Let \(\Pi_{\rm phys}\) be one declared physical projection: a stable-particle
+pole residue, a spectral-bin functional, a discontinuity functional, an OPE
+matching map, or an infrared-safe inclusive measurement.  Applying it to the
+assembled source
+kernel gives a leading physical coordinate
+\[
+  \mathcal A_{\rm phys}^{0}
+  =
+  \Pi_{\rm phys}^{0}[\mathcal K_{E,\Lambda}^{0}].
+\]
+The comparison with the actual physical quantity must budget the bridge
+residuals
+\[
+  \Delta_{\rm phys}
+  =
+  \Delta_{\rm reg}
+  +\Delta_{\rm cont}
+  +\Delta_{\rm pole/bin}
+  +\Delta_{\rm IR}
+  +\Delta_{\rm cut}
+  +\Delta_{\rm match}
+  +\Delta_{\rm end},
+\]
+where the entries denote, respectively, regulator transport, analytic
+continuation, pole or spectral-bin isolation, infrared completion, unitarity
+cut or discontinuity normalization, operator/source matching, and retained
+size-window endpoint error.  If
+\[
+  |\Delta_x|\le B_x
+  \qquad
+  x\in\{{\rm reg,cont,pole/bin,IR,cut,match,end}\},
+\]
+then
+\begin{equation}
+  \left|
+    \mathcal A_{\rm phys}
+    -
+    \Pi_{\rm phys}^{0}[\mathcal K_{E,\Lambda}^{0}]
+  \right|
+  \le
+  B_{\rm reg}+B_{\rm cont}+B_{\rm pole/bin}+B_{\rm IR}
+  +B_{\rm cut}+B_{\rm match}+B_{\rm end}.
+  \label{eq:instanton-physical-bridge-residual-bound}
+\end{equation}
+
+The negative controls are immediate.  A color-nonsinglet auxiliary kernel has
+no standalone physical LSZ map in a confining theory.  A pole residue cannot
+be read before the source overlap and excited-state window are controlled.  A
+spectral bin cannot be inferred from one Euclidean Stieltjes value.  An OPE
+coefficient changes when the operator basis or matching scheme is changed.  A
+real-time rate requires a retarded/KMS continuation rather than a Euclidean
+static source value.  Thus the projection bridge is a separate physical
+calculation, not a relabelling of the instanton density or the hard source
+kernel.
+\end{controlledapproximation}
+
 \section{First Cluster Corrections Are Amplitude Data}
 \label{sec:instanton-first-cluster-amplitude-correction}
 

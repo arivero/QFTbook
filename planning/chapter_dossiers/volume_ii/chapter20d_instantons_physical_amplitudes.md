@@ -69,6 +69,13 @@
 - `ca:instanton-hard-amplitude-assembly-ledger`: assembled hard-amplitude
   absolute error bound, with noncancellation margin required before relative
   scale-law claims are allowed.
+- `sec:instanton-source-kernel-physical-projection`: projection bridge from an
+  assembled Euclidean instanton source kernel to a physical pole, spectral,
+  OPE, or inclusive observable coordinate.
+- `ca:instanton-source-kernel-physical-projection`: physical bridge residual
+  bound separating regulator transport, analytic continuation, pole/bin
+  isolation, infrared completion, unitarity-cut normalization, matching, and
+  endpoint control.
 - `sec:instanton-first-cluster-amplitude-correction`: source-amplitude bridge
   from the assembled one-instanton coefficient to the first connected
   instanton-pair correction.
@@ -122,6 +129,12 @@
   projection mismatch in a single amplitude formula, with absolute
   signed-window control and an explicit noncancellation hypothesis for
   relative statements.
+- The physical projection bridge opens the last compressed step between a
+  Euclidean instanton source coefficient and a physical claim.  It separates
+  stable-particle pole extraction, spectral-bin/discontinuity functionals,
+  OPE matching, colored auxiliary kernels, and bridge residuals, so a
+  Euclidean source number cannot be relabelled as a scattering amplitude or
+  spectral observable.
 - The observable-handoff block connects the dedicated instanton-amplitude
   chapter back to the QCD theta and \(U(1)_A\) material without duplicating it:
   a hard four-source coefficient, a dilute theta curvature, a zero-mode-zone
@@ -168,6 +181,10 @@
   verifies the observable-handoff distinction between hard source coefficients,
   dilute theta curvature, \(U(1)_A\)-odd zero-mode-zone kernels, real-time
   axial rates, and Witten--Veneziano curvature comparison budgets,
+  verifies the physical projection bridge from Euclidean source kernels to
+  pole-window and spectral-bin coordinates, including contact-polynomial
+  separation, one-Euclidean-value inversion failure, bridge residual control,
+  and colored-kernel LSZ rejection,
   verifies the first connected instanton-pair source correction, including
   disconnected subtraction, neutral-pair source visibility despite zero theta
   curvature, same-charge second-harmonic data, zero-mode overlap survival, and
@@ -216,6 +233,13 @@
   instanton amplitude to QCD observables, explicitly separating hard source
   coefficients, theta curvature, \(U(1)_A\)-odd susceptibility kernels, and
   real-time axial relaxation rates.
+- 2026-06-06 physical-projection bridge pass: added
+  `sec:instanton-source-kernel-physical-projection` after the hard amplitude
+  assembly.  The pass promotes the old residual entry "physical projection"
+  into an explicit pole/spectral/OPE/inclusive projection bridge with finite
+  checks for pole-window extraction, contact-free spectral bins, one-value
+  inversion failure, bridge budgets, and colored-kernel LSZ rejection.  This
+  targets physical amplitude extraction, not moduli-space structure.
 - 2026-06-06 first cluster amplitude pass: added the connected instanton-pair
   correction ledger to the dedicated physical-amplitude chapter.  This is a
   sector-isolation and source-observable improvement, not a moduli-space

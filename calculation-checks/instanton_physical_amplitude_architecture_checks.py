@@ -35,6 +35,11 @@ Target claims:
   must still be mapped to a named physical observable; hard source
   coefficients, theta curvatures, U(1)_A susceptibility kernels, and real-time
   axial relaxation rates are not interchangeable.
+- `ca:instanton-source-kernel-physical-projection`: a finite Euclidean
+  instanton source kernel becomes a physical amplitude only after a declared
+  pole, spectral-bin, OPE, or inclusive projection, with bridge residuals for
+  regulator transport, continuation, pole/bin isolation, infrared completion,
+  unitarity-cut normalization, matching, and endpoint control.
 - `ca:instanton-first-cluster-amplitude-correction`: a first connected
   two-body correction to a source amplitude requires the disconnected one-body
   product subtraction, a source/projection-specific pair kernel, absolute pair
@@ -54,6 +59,8 @@ Independent construction:
   multiplicative hard-amplitude assembly bounds on signed windows,
   finite observable-handoff comparisons for theta, U(1)_A, and real-time
   axial channels,
+  pole-window extraction, spectral-bin/Stieltjes comparisons, contact
+  polynomial separation, and bridge residual telescopes,
   first connected instanton-pair source corrections,
   physical projection bins, residual sums, and hard-window power ledgers
   directly, rather than importing BPST radial integrals or copying a monograph
@@ -79,7 +86,10 @@ Negative controls:
   hard source coefficient used as a theta susceptibility, a dilute
   topological susceptibility used as a real-time rate, a dilute instanton
   curvature substituted for Witten-Veneziano curvature without a comparison
-  budget, a neutral pair controlled only by theta curvature, a disconnected
+  budget, a Euclidean source value used as a physical pole or spectral bin,
+  a colored auxiliary instanton kernel treated as a standalone LSZ amplitude,
+  a bridge budget omitting the inverse-problem residual, a neutral pair
+  controlled only by theta curvature, a disconnected
   pair product counted as a connected source correction, a one-body
   sector-isolation budget that omits pair leakage, a
   single Euclidean cell sum used as a spectral-bin observable, a
@@ -596,6 +606,176 @@ def check_observable_handoff_ledger() -> None:
     )
 
 
+def check_source_kernel_physical_projection_bridge() -> None:
+    source_overlap = Fraction(7, 15)
+    sink_overlap = Fraction(11, 21)
+    selected_matrix_element = Fraction(13, 17)
+    source_gap_factor = Fraction(1, 5)
+    sink_gap_factor = Fraction(1, 7)
+
+    selected_pole = sink_overlap * source_overlap * selected_matrix_element
+    final_excited = sink_overlap * source_overlap * Fraction(2, 9) * sink_gap_factor
+    initial_excited = sink_overlap * source_overlap * Fraction(-3, 11) * source_gap_factor
+    double_excited = (
+        sink_overlap
+        * source_overlap
+        * Fraction(5, 13)
+        * sink_gap_factor
+        * source_gap_factor
+    )
+    normalized_window = (
+        selected_pole
+        + final_excited
+        + initial_excited
+        + double_excited
+    ) / (sink_overlap * source_overlap)
+    leakage = normalized_window - selected_matrix_element
+    tail_bound = (
+        Fraction(2, 9) * sink_gap_factor
+        + Fraction(3, 11) * source_gap_factor
+        + Fraction(5, 13) * sink_gap_factor * source_gap_factor
+    )
+    assert_equal(
+        "instanton pole-window leading residue",
+        selected_pole / (sink_overlap * source_overlap),
+        selected_matrix_element,
+    )
+    assert_equal(
+        "instanton pole-window excited leakage bound",
+        abs(leakage) <= tail_bound,
+        True,
+    )
+    assert_not_equal(
+        "raw Euclidean source pole is not the matrix element",
+        selected_pole,
+        selected_matrix_element,
+    )
+    assert_not_equal(
+        "overlap division alone does not isolate the pole",
+        normalized_window,
+        selected_matrix_element,
+    )
+
+    zero_sink_overlap = Fraction(0)
+    extraction_defined = zero_sink_overlap != 0
+    assert_equal(
+        "zero source overlap prevents pole extraction",
+        extraction_defined,
+        False,
+    )
+
+    longer_tail_bound = (
+        Fraction(2, 9) * sink_gap_factor * sink_gap_factor
+        + Fraction(3, 11) * source_gap_factor * source_gap_factor
+        + Fraction(5, 13)
+        * sink_gap_factor
+        * sink_gap_factor
+        * source_gap_factor
+        * source_gap_factor
+    )
+    assert_equal(
+        "longer pole window improves excited-state majorant",
+        longer_tail_bound < tail_bound,
+        True,
+    )
+
+    def stieltjes_value(
+        atoms: list[tuple[Fraction, Fraction]],
+        q2: Fraction,
+    ) -> Fraction:
+        return sum(weight / (mass2 + q2) for mass2, weight in atoms)
+
+    def spectral_bin(
+        atoms: list[tuple[Fraction, Fraction]],
+        lower: Fraction,
+        upper: Fraction,
+    ) -> Fraction:
+        return sum(weight for mass2, weight in atoms if lower <= mass2 <= upper)
+
+    atoms = [
+        (Fraction(1), Fraction(5, 6)),
+        (Fraction(4), Fraction(3, 5)),
+        (Fraction(9), Fraction(7, 10)),
+    ]
+    q2 = Fraction(2)
+    euclidean_value = stieltjes_value(atoms, q2)
+    selected_bin = spectral_bin(atoms, Fraction(3), Fraction(6))
+    assert_equal("instanton spectral bin weight", selected_bin, Fraction(3, 5))
+    assert_not_equal(
+        "Euclidean Stieltjes value is not the spectral bin",
+        euclidean_value,
+        selected_bin,
+    )
+
+    contact_polynomial = Fraction(11, 7) + Fraction(2, 9) * q2
+    assert_not_equal(
+        "contact polynomial changes spacelike source value",
+        euclidean_value + contact_polynomial,
+        euclidean_value,
+    )
+    assert_equal(
+        "contact polynomial has no separated bin weight",
+        spectral_bin(atoms, Fraction(3), Fraction(6)),
+        selected_bin,
+    )
+
+    spectral_a = [(Fraction(1), Fraction(1)), (Fraction(4), Fraction(1))]
+    spectral_b = [(Fraction(1), Fraction(13, 10)), (Fraction(4), Fraction(2, 5))]
+    assert_equal(
+        "distinct spectra share one Euclidean source value",
+        stieltjes_value(spectral_a, q2),
+        stieltjes_value(spectral_b, q2),
+    )
+    assert_not_equal(
+        "shared Euclidean source value hides different physical bin",
+        spectral_bin(spectral_a, Fraction(0), Fraction(2)),
+        spectral_bin(spectral_b, Fraction(0), Fraction(2)),
+    )
+    assert_not_equal(
+        "second Euclidean point detects the spectral ambiguity",
+        stieltjes_value(spectral_a, Fraction(5)),
+        stieltjes_value(spectral_b, Fraction(5)),
+    )
+
+    leading_kernel_coordinate = Fraction(7, 13)
+    residuals = {
+        "regulator": Fraction(1, 17),
+        "continuation": Fraction(2, 19),
+        "pole_bin": Fraction(3, 23),
+        "infrared": Fraction(5, 29),
+        "unitarity_cut": Fraction(7, 31),
+        "matching": Fraction(11, 37),
+        "size_endpoint": Fraction(13, 41),
+    }
+    total_residual = sum(residuals.values(), Fraction(0))
+    physical_amplitude = leading_kernel_coordinate + total_residual
+    bridge_majorant = sum(abs(value) for value in residuals.values())
+    assert_equal(
+        "instanton physical bridge residual telescope",
+        physical_amplitude - leading_kernel_coordinate,
+        total_residual,
+    )
+    assert_equal(
+        "instanton physical bridge absolute bound",
+        abs(physical_amplitude - leading_kernel_coordinate) <= bridge_majorant,
+        True,
+    )
+    underbudget = bridge_majorant - abs(residuals["pole_bin"])
+    assert_equal(
+        "omitting pole/bin residual underbudgets physical bridge",
+        abs(physical_amplitude - leading_kernel_coordinate) <= underbudget,
+        False,
+    )
+
+    has_color_singlet_source = False
+    has_declared_infrared_deformation = False
+    assert_equal(
+        "colored instanton kernel has no standalone physical LSZ map",
+        has_color_singlet_source or has_declared_infrared_deformation,
+        False,
+    )
+
+
 def check_first_cluster_amplitude_correction_ledger() -> None:
     one_body_plus = Fraction(5, 11)
     one_body_minus = Fraction(7, 13)
@@ -945,6 +1125,7 @@ def main() -> None:
     check_nonzero_mode_source_fluctuation_quotient()
     check_hard_amplitude_assembly_ledger()
     check_observable_handoff_ledger()
+    check_source_kernel_physical_projection_bridge()
     check_first_cluster_amplitude_correction_ledger()
     check_two_flavor_mass_source_determinant_coordinate()
     check_moduli_equivalent_channel_separation()
