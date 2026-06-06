@@ -1887,6 +1887,75 @@ Dollard bookkeeping that the nonperturbative estimate must reproduce:
 all \(t^{-1}\) tails must be exhausted by oriented pair fluxes, and only the
 residual derivative is allowed to enter the Cook \(L^1\) remainder.
 
+\paragraph{From pair extraction to a Cook budget.}
+The preceding equations become a theorem only if the many-body derivative is
+controlled after every long-range pair has been removed in the same
+normalization.  A useful way to state the target is the following finite
+budget.  For a velocity-separated list \(I\), suppose the derivative of the
+unphased dressed product has been decomposed on the scattering domain as
+\begin{equation}
+  \frac{\dd}{\dd t}
+  \Psi_{\Gamma_1,t}^{\sigma}(h_1)\cdots
+  \Psi_{\Gamma_n,t}^{\sigma}(h_n)\vac
+  =
+  \ii\sum_{i<j}K_{ij}(t)\,
+  \mathcal P_{ij}(t)\xi_I(t)
+  +
+  \mathcal R_I^{\mathrm{core}}(t),
+  \label{eq:charged-many-body-pair-extracted-derivative}
+\end{equation}
+where \(\xi_I(t)\) denotes the ordered product vector and
+\(\mathcal P_{ij}(t)\) records the bounded finite-coordinate replacement
+needed to compare the \(ij\)-ordered pair with \(\xi_I(t)\).  Let
+\(R_I^{\mathrm{core}}(t)\) bound
+\(\|\mathcal R_I^{\mathrm{core}}(t)\|\) on the selected finite-energy
+domain.  If
+\[
+  K_{ij}(t)
+  =
+  \eta_i\eta_j
+  \frac{\kappa_{ij}}{\sqrt{a_{ij}^2+|b_{ij}+u_{ij}t|^2}}
+  +
+  k_{ij}^{\rm rem}(t)
+\]
+and if the comparison phase uses exactly the same leading kernels, then
+\begin{equation}
+  \left\|
+  \frac{\dd}{\dd t}\mathcal C_I^\sigma(t)
+  \right\|
+  \le
+  R_I^{\mathrm{core}}(t)
+  +
+  M_I\sum_{i<j}|k_{ij}^{\rm rem}(t)|
+  +
+  \sum_{i<j}B_{ij}(t),
+  \label{eq:charged-many-body-cook-budget}
+\end{equation}
+where \(M_I\) bounds the finite pair reorderings and \(B_{ij}\) records the
+small difference between the exact square-root kernel and its leading
+\(|u_{ij}|^{-1}t^{-1}\) logarithmic representative, plus finite
+same-flux schedule errors.  The required charged estimate is that every term
+on the right is in \(L^1\), uniformly over the admissible truncation
+schedules.
+
+The formula is also a negative test.  If the phase uses
+\(\kappa_{ij}+\delta\kappa_{ij}\) with
+\(\delta\kappa_{ij}\to\delta\kappa\neq0\), then
+\[
+  \frac{\delta\kappa}{|u_{ij}|\,t}
+\]
+appears on the right side of
+\eqref{eq:charged-many-body-cook-budget}; its dyadic integrals do not tend to
+zero.  If instead \(\delta\kappa_{ij}(t)\to0\) fast enough that
+\(\delta\kappa_{ij}(t)/t\in L^1\), the error is a finite same-flux coordinate
+change.  Thus the theorem target is the complete matched extraction of the
+logarithmic phase and its \(L^1\) remainder.
+It must show, in one regulator and one angular-flux convention, that the
+extracted pair kernels, the comparison phase, the dressed-correlator residue
+normalization, and the detector flux sector all use the same
+\(\kappa_{ij}\).  Otherwise the remaining \(1/t\) term survives as physical
+long-range exchange, not as notation.
+
 \paragraph{Scalar-product Cauchy criterion.}
 The comparison phase is useful only after it produces limits of scalar
 products in the charged asymptotic representation.  Suppose that two

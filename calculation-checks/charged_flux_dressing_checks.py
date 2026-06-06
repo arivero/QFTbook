@@ -406,6 +406,83 @@ def check_pair_coefficient_residual_budget() -> None:
     )
 
 
+def check_many_body_pair_tail_cook_budget() -> None:
+    """Check that all oriented pair tails must be subtracted in one Cook budget."""
+
+    def dyadic_sum(start: int, term) -> Fraction:
+        return sum((term(n) for n in range(start, 2 * start)), Fraction(0))
+
+    charges = (Fraction(2), Fraction(-3), Fraction(5))
+    orientations = (1, -1, 1)
+    velocities = (Fraction(0), Fraction(3), Fraction(7))
+    pair_residuals = {
+        (0, 1): Fraction(2),
+        (0, 2): Fraction(3),
+        (1, 2): Fraction(5),
+    }
+    core_residual = Fraction(7)
+
+    pair_log_coefficients: dict[tuple[int, int], Fraction] = {}
+    for i in range(len(charges)):
+        for j in range(i + 1, len(charges)):
+            relative_velocity = abs(velocities[i] - velocities[j])
+            pair_log_coefficients[(i, j)] = (
+                Fraction(orientations[i])
+                * Fraction(orientations[j])
+                * charges[i]
+                * charges[j]
+                / relative_velocity
+            )
+
+    total_log_coefficient = sum(pair_log_coefficients.values(), Fraction(0))
+    assert_equal(
+        "many-body Cook budget uses the oriented pair log coefficient",
+        total_log_coefficient,
+        many_body_dollard_log_coefficient_1d(charges, orientations, velocities),
+    )
+
+    def unphased_derivative(n: int) -> Fraction:
+        pair_tails = total_log_coefficient / n
+        pair_l1_remainders = sum(pair_residuals[pair] / (n * n) for pair in pair_residuals)
+        return pair_tails + pair_l1_remainders + core_residual / (n * n * n)
+
+    def comparison_derivative(n: int) -> Fraction:
+        return total_log_coefficient / n
+
+    previous_tail: Fraction | None = None
+    for start in (32, 128, 512):
+        residual_tail = dyadic_sum(start, lambda n: abs(unphased_derivative(n) - comparison_derivative(n)))
+        declared_budget = dyadic_sum(
+            start,
+            lambda n: sum(pair_residuals[pair] / (n * n) for pair in pair_residuals)
+            + core_residual / (n * n * n),
+        )
+        assert_equal("pair-extracted Cook residual equals declared budget", residual_tail, declared_budget)
+        if declared_budget >= Fraction(sum(pair_residuals.values()), start - 1) + Fraction(
+            core_residual, 2 * (start - 1) * (start - 1)
+        ):
+            raise AssertionError("many-body Cook budget should obey the integral-test tail")
+        if previous_tail is not None and residual_tail >= previous_tail:
+            raise AssertionError("many-body Cook residual tails should decrease")
+        previous_tail = residual_tail
+
+    omitted_pair = (1, 2)
+    wrong_log_coefficient = total_log_coefficient - pair_log_coefficients[omitted_pair]
+    for start in (32, 128, 512):
+        wrong_tail = dyadic_sum(start, lambda n: abs(unphased_derivative(n) - wrong_log_coefficient / n))
+        if wrong_tail <= Fraction(1):
+            raise AssertionError("omitting one charged pair tail should leave a dyadic 1/t obstruction")
+
+    previous_schedule_tail: Fraction | None = None
+    for start in (32, 128, 512):
+        decaying_coefficient_error_tail = dyadic_sum(start, lambda n: Fraction(1, n * n))
+        if decaying_coefficient_error_tail >= Fraction(1, start - 1):
+            raise AssertionError("decaying same-flux coefficient errors should be summable")
+        if previous_schedule_tail is not None and decaying_coefficient_error_tail >= previous_schedule_tail:
+            raise AssertionError("same-flux coefficient-error tails should decrease")
+        previous_schedule_tail = decaying_coefficient_error_tail
+
+
 def check_flux_pairing_dollard_coefficient_stability() -> None:
     """Check extraction and stability of a finite angular-flux pairing coefficient."""
 
@@ -1538,6 +1615,7 @@ def main() -> None:
     check_many_body_dollard_phase_bookkeeping()
     check_modified_cook_integrability_bookkeeping()
     check_pair_coefficient_residual_budget()
+    check_many_body_pair_tail_cook_budget()
     check_flux_pairing_dollard_coefficient_stability()
     check_dollard_scalar_product_cauchy_criterion()
     check_asymptotic_null_quotient_wave_map_cell()

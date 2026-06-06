@@ -175,6 +175,12 @@ resonances.
   only through an \(L^1\) remainder.  Equal-velocity charged pairs are
   explicitly excluded from this datum and must be treated as charged clusters
   or separate infraparticle/bound-state sectors.
+- Adds the many-body pair-extraction Cook budget that the charged theorem
+  must prove after the pair kernels have been identified: subtracting the
+  same leading kernels in one comparison phase leaves only the core residual,
+  the pair \(L^1\) remainders, and finite same-flux schedule errors, while
+  any nonzero limiting coefficient mismatch leaves a surviving dyadic
+  \(1/t\) obstruction.
 - Refines the pair coefficient itself into an angular-flux extraction
   problem: on finite angular partitions the candidate coefficient has the
   form \(F_i^a\mathsf B_{ij}^{ab}F_j^b\), not merely a function of total
@@ -311,6 +317,10 @@ resonances.
   comparison: the bilinear perturbation identity, the failure of total charge
   to determine the coefficient, the dyadic \(1/t\) error left by a charge-only
   shortcut, and the summability of admissible same-flux coefficient tails.  It
+  now also verifies the many-body pair-extraction Cook budget: the
+  log-subtracted derivative equals the declared core-plus-pair residual
+  budget, an omitted charged pair leaves a nonintegrable dyadic tail, and
+  decaying same-flux coefficient errors are \(L^1\).  It
   now also verifies
   the finite abelian Stokes bookkeeping for compact Wilson-line path
   deformations: the change of line integral is a curvature surface flux, and
@@ -538,6 +548,14 @@ resonances.
   exact perturbation arithmetic, a same-total-charge negative control, and
   dyadic tests separating nonzero coefficient mismatch from summable
   same-flux tails.
+- 2026-06-06 #527 many-body Cook-budget pass: added a non-theorem bridge from
+  extracted pair kernels to the actual modified-Cook estimate.  The new
+  paragraph states the full many-body residual bound after one comparison
+  phase subtracts the same pair kernels used by the angular-flux extraction,
+  and records the negative test that a nonzero limiting coefficient mismatch
+  survives as physical \(1/t\) exchange.  This is argument architecture for
+  the open charged theorem, not a claim that the Wilson-line large-time
+  estimate has been proved.
 - 2026-06-02 #527 scalar-product Cauchy pass: added the functional-analytic
   estimate that turns uniform bounds plus \(L^1\) modified-Cook derivative
   tails into Cauchy scalar products of charged comparison vectors.  The

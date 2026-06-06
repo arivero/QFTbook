@@ -1007,6 +1007,11 @@ Current checks:
   \(L^1\) residual, a wrong coefficient leaves a nonintegrable dyadic
   \(1/t\) tail, compact same-flux deformations alter only finite phases, and
   equal velocities lie outside the separated-pair estimate.  It also checks
+  the many-body pair-extraction Cook budget: after all oriented pair tails
+  are subtracted in one comparison phase the residual equals the declared
+  pair/core \(L^1\) budget, while omitting one charged pair leaves a dyadic
+  \(1/t\) obstruction and decaying same-flux coefficient errors remain
+  summable.  It also checks
   the finite angular-flux pairing coefficient: the perturbation expansion is
   bilinear in the cell fluxes, same total charge need not determine the
   Dollard coefficient, a charge-only shortcut leaves a dyadic \(1/t\) tail,
