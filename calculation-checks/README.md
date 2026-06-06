@@ -772,6 +772,7 @@ Current checks:
   constant cancellation only in transported same-channel ratios,
   the individual BPST zero-mode slot tail from the Bessel-product cancellation
   \(F_{\rm zm}(cs/2)=6c^{-3}s^{-3}+O(s^{-5})\),
+  the finite Gaussian nonzero-mode source quotient and its covariance identity,
   the two-flavor \(\det(M+B)\) source/mass polynomial, the distinction between
   mass-saturated vacuum activity and the four-source coefficient,
   moduli-equivalent channels with different or zero amplitudes because of
@@ -782,8 +783,10 @@ Current checks:
   source-determinant stability estimate, with negative controls for an
   off-diagonal determinant sign flip, moduli-only prediction, rank-one source
   shortcut, fused-density endpoint substitution, unamputated residue
-  absorption, determinant-only hard ratio, missing hard slot, one-number
-  spectral projection, and omitted external residual.
+  absorption, vacuum determinant calibration used as a source-fluctuation
+  quotient, relative fluctuation division after rank loss, determinant-only
+  hard ratio, missing hard slot, one-number spectral projection, and omitted
+  external residual.
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
   gauge-Higgs soliton and collective-coordinate section, including the
   Bogomolny and vortex square completions, the Prasad-Sommerfield profile

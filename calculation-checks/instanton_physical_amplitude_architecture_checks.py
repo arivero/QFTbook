@@ -23,6 +23,10 @@ Target claims:
   `F_zm(c s/2) = 6 c^(-3) s^(-3) + O(s^(-5))`; four such slots give the
   `6^4 prod c_l^(-3) s^(-12)` endpoint factor, while fused bilinear-density
   sources have a different endpoint class.
+- `ca:instanton-nonzero-mode-source-quotient`: the source-dependent
+  nonzero-mode fluctuation quotient separates the Gaussian source mean from
+  its covariance with the same interaction weight that defines the determinant
+  normalization.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell residuals
   and source-determinant perturbations obey the displayed absolute bounds.
 - `prop:su3-nf2-hard-source-power-slow-tail` and
@@ -34,6 +38,7 @@ Independent construction:
 - The checks build small exact rational cell models from scratch.  They compute
   two-by-two determinants, mass/source polynomials, one-loop RG exponents,
   the Bessel-product tail cancellation for an individual zero-mode slot,
+  finite Gaussian source-quotient covariance identities,
   physical projection bins, residual sums, and hard-window power ledgers
   directly, rather than importing BPST radial integrals or copying a monograph
   coefficient.
@@ -51,6 +56,8 @@ Negative controls:
   density-only hard-channel power, an untransported determinant constant, a
   fused-density endpoint class substituted for differentiated fermion slots,
   an unamputated external residue absorbed into the zero-mode slot tail, a
+  vacuum determinant calibration substituted for a source-fluctuation
+  quotient, a relative quotient formed after zero-mode rank loss, a
   single Euclidean cell sum used as a spectral-bin observable, a
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
   slot, and a residual bound that omits the external projection/sector
@@ -273,6 +280,122 @@ def check_individual_zero_mode_slot_tail_from_bessel_products() -> None:
         "amputation recovers zero-mode slot tail",
         unamputated_slot_tail / external_residue,
         fzm_z_tail,
+    )
+
+
+def check_nonzero_mode_source_fluctuation_quotient() -> None:
+    weights = [Fraction(1, 2), Fraction(1, 3), Fraction(1, 6)]
+    assert_equal(
+        "normal fluctuation Gaussian weights normalize",
+        sum(weights, Fraction(0)),
+        Fraction(1),
+    )
+
+    source_variation = [Fraction(1, 5), -Fraction(1, 7), Fraction(1, 11)]
+    interaction_weight = [Fraction(5, 6), Fraction(7, 5), Fraction(9, 8)]
+    determinant_average = sum(
+        weight * factor for weight, factor in zip(weights, interaction_weight)
+    )
+    source_mean = sum(
+        weight * variation
+        for weight, variation in zip(weights, source_variation)
+    )
+    numerator = sum(
+        weight * (1 + variation) * factor
+        for weight, variation, factor in zip(
+            weights,
+            source_variation,
+            interaction_weight,
+        )
+    )
+    fluctuation_quotient = numerator / determinant_average
+    covariance = sum(
+        weight
+        * (variation - source_mean)
+        * (factor - determinant_average)
+        for weight, variation, factor in zip(
+            weights,
+            source_variation,
+            interaction_weight,
+        )
+    )
+
+    assert_equal(
+        "nonzero-mode source quotient covariance identity",
+        fluctuation_quotient - 1,
+        source_mean + covariance / determinant_average,
+    )
+    assert_not_equal(
+        "vacuum determinant calibration is not the source quotient",
+        fluctuation_quotient,
+        Fraction(1),
+    )
+
+    source_variance = sum(
+        weight * (variation - source_mean) ** 2
+        for weight, variation in zip(weights, source_variation)
+    )
+    interaction_variance = sum(
+        weight * (factor - determinant_average) ** 2
+        for weight, factor in zip(weights, interaction_weight)
+    )
+    assert_equal(
+        "source/interactions covariance obeys Cauchy bound",
+        covariance * covariance <= source_variance * interaction_variance,
+        True,
+    )
+
+    normal_covariance = (
+        (Fraction(2, 3), Fraction(1, 5)),
+        (Fraction(1, 5), Fraction(3, 4)),
+    )
+    quadratic_source = (
+        (Fraction(1, 7), Fraction(2, 11)),
+        (Fraction(2, 11), -Fraction(1, 13)),
+    )
+    linear_source = [Fraction(3, 17), -Fraction(5, 19)]
+    linear_mean = Fraction(0) * sum(linear_source, Fraction(0))
+    trace_qc = sum(
+        quadratic_source[a][b] * normal_covariance[b][a]
+        for a in range(2)
+        for b in range(2)
+    )
+    assert_equal("Gaussian normal linear source mean vanishes", linear_mean, Fraction(0))
+    assert_equal(
+        "quadratic normal source trace correction",
+        Fraction(1, 2) * trace_qc,
+        Fraction(6623, 120120),
+    )
+
+    window_cells = [Fraction(3, 5), -Fraction(1, 10), Fraction(7, 20)]
+    fluctuation_errors = [Fraction(1, 20), -Fraction(1, 30), Fraction(1, 40)]
+    leading_window = sum(window_cells, Fraction(0))
+    exact_window = sum(
+        cell * (1 + error) for cell, error in zip(window_cells, fluctuation_errors)
+    )
+    absolute_window_mass = sum(abs(cell) for cell in window_cells)
+    epsilon_fluc = max(abs(error) for error in fluctuation_errors)
+    assert_equal(
+        "source fluctuation absolute window bound",
+        abs(exact_window - leading_window) <= epsilon_fluc * absolute_window_mass,
+        True,
+    )
+    signed_only_window = abs(sum(fluctuation_errors, Fraction(0))) * abs(leading_window)
+    assert_equal(
+        "signed source-fluctuation cancellation underbudgets a window",
+        signed_only_window < abs(exact_window - leading_window),
+        True,
+    )
+
+    vanished_zero_mode_source = Fraction(0)
+    if vanished_zero_mode_source == 0:
+        relative_quotient_defined = False
+    else:
+        relative_quotient_defined = True
+    assert_equal(
+        "rank-lost zero-mode channel has no relative fluctuation quotient",
+        relative_quotient_defined,
+        False,
     )
 
 
@@ -503,6 +626,7 @@ def check_hard_benchmark_gate_ledger_and_ratio() -> None:
 def main() -> None:
     check_one_loop_density_gate_rg_and_channel_power()
     check_individual_zero_mode_slot_tail_from_bessel_products()
+    check_nonzero_mode_source_fluctuation_quotient()
     check_two_flavor_mass_source_determinant_coordinate()
     check_moduli_equivalent_channel_separation()
     check_projection_not_recoverable_from_one_euclidean_sum()

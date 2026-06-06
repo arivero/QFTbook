@@ -547,6 +547,129 @@ unamputated external residues change the amplitude coordinate before the power
 law \((Q_2/Q_1)^{-35/3}\) can be tested.
 \end{controlledapproximation}
 
+\section{Normal Fluctuations Are Source Data}
+\label{sec:instanton-normal-fluctuation-source-data}
+
+The one-loop determinant normalizes the Gaussian integral over nonzero modes.
+A selected source amplitude also asks how its insertion changes under those
+same normal fluctuations.  This is one of the places where the original
+instanton amplitude calculation is harder than a moduli-space calculation:
+the determinant of the Hessian and the fluctuation average of the source
+insertion are coupled through the same measure but are not the same number.
+
+\begin{controlledapproximation}[Nonzero-mode source quotient]
+\label{ca:instanton-nonzero-mode-source-quotient}
+Fix a retained instanton chart point \(z\), project out collective and gauge
+zero modes, and let \(\eta\in\mathcal N_z\) denote the normal fluctuation
+coordinate.  Let \(d\gamma_z(\eta)\) be the normalized Gaussian measure
+defined by the zero-mode-deleted Hessian, and let
+\(V_z(\eta)\) be the cubic-and-higher action together with finite counterterm
+remainders in the same normal coordinates.  Write the selected source
+insertion, after the explicit zero-mode coefficient has been separated, as
+\[
+  \mathcal Z_z(\eta;\mathcal J)
+  =
+  \mathcal Z_z(0;\mathcal J)
+  \bigl(1+U_z(\eta;\mathcal J)\bigr),
+  \qquad U_z(0;\mathcal J)=0 .
+\]
+On a chart where the leading zero-mode/source coefficient is nonzero, the
+fluctuation factor multiplying the hard channel is
+\begin{equation}
+  \mathcal R_{\rm fluc}(z;\mathcal J)
+  =
+  \frac{
+    \left\langle
+      \bigl(1+U_z(\eta;\mathcal J)\bigr)
+      \ee^{-V_z(\eta)}
+    \right\rangle_{\gamma_z}
+  }{
+    D_z
+  },
+  \qquad
+  D_z=\left\langle\ee^{-V_z(\eta)}\right\rangle_{\gamma_z}.
+  \label{eq:instanton-physical-source-fluctuation-quotient}
+\end{equation}
+The exact identity
+\begin{equation}
+  \mathcal R_{\rm fluc}-1
+  =
+  \langle U_z\rangle_{\gamma_z}
+  +
+  \frac{
+    \left\langle
+    \bigl(U_z-\langle U_z\rangle_{\gamma_z}\bigr)
+    \bigl(\ee^{-V_z}-D_z\bigr)
+    \right\rangle_{\gamma_z}
+  }{D_z}
+  \label{eq:instanton-physical-source-fluctuation-covariance}
+\end{equation}
+separates the Gaussian mean of the selected source from its covariance with
+the same nonzero-mode interaction weight that produced the determinant
+normalization.  A source-independent determinant calibration fixes \(D_z\).
+It does not fix either term in
+\eqref{eq:instanton-physical-source-fluctuation-covariance}.
+
+If the retained source variation begins as
+\begin{equation}
+  U_z(\eta;\mathcal J)
+  =
+  \ell_a(z;\mathcal J)\eta_a
+  +\frac12Q_{ab}(z;\mathcal J)\eta_a\eta_b
+  +U_{\ge3,z}(\eta;\mathcal J),
+  \qquad
+  C_{ab}(z)=\langle\eta_a\eta_b\rangle_{\gamma_z},
+  \label{eq:instanton-physical-gaussian-source-expansion}
+\end{equation}
+then the Gaussian source mean is
+\[
+  \langle U_z\rangle_{\gamma_z}
+  =
+  \frac12\operatorname{Tr}(Q_zC_z)
+  +\langle U_{\ge3,z}\rangle_{\gamma_z},
+\]
+because the linear normal-fluctuation term has zero Gaussian mean.  Suppose
+on the retained source and size window
+\[
+  |D_z|\ge d_0,\qquad
+  |\langle U_{\ge3,z}\rangle_{\gamma_z}|\le\epsilon_U,\qquad
+  \|U_z-\langle U_z\rangle_{\gamma_z}\|_{L^2(\gamma_z)}\le M_U,
+  \qquad
+  \|\ee^{-V_z}-D_z\|_{L^2(\gamma_z)}\le M_V .
+\]
+Then
+\begin{equation}
+  \left|
+    \mathcal R_{\rm fluc}(z;\mathcal J)
+    -
+    1
+    -
+    \frac12\operatorname{Tr}(Q_zC_z)
+  \right|
+  \le
+  \epsilon_U+\frac{M_UM_V}{d_0}.
+  \label{eq:instanton-physical-source-fluctuation-bound}
+\end{equation}
+After multiplying the hard kernel in
+\eqref{eq:instanton-hard-four-source-coefficient}, the contribution of this
+normal-fluctuation slot to the absolute window budget is bounded by the
+absolute leading kernel mass times the right side of
+\eqref{eq:instanton-physical-source-fluctuation-bound}.  If
+\(\mathcal Z_z(0;\mathcal J)\) loses rank, the relative quotient
+\eqref{eq:instanton-physical-source-fluctuation-quotient} is the wrong
+coordinate; the fluctuation contribution must be kept as an absolute source
+residual in \eqref{eq:instanton-physical-channel-residual-budget}.
+\end{controlledapproximation}
+
+Thus a hard instanton amplitude has three separate fluctuation entries.  The
+universal logarithmic determinant supplies the \((\mu\rho)^{b_0}\) density
+gate.  The finite determinant constant fixes a scheme-dependent Gaussian
+normalization.  The quotient
+\eqref{eq:instanton-physical-source-fluctuation-quotient} tests the selected
+source under that Gaussian and its interaction remainders.  Collapsing these
+three entries into a single ``measure prefactor'' loses the amplitude
+calculation.
+
 \section{Finite-Cell Control Model}
 \label{sec:finite-cell-instanton-channel-control}
 

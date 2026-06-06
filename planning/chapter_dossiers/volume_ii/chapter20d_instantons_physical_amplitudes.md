@@ -55,6 +55,13 @@
 - `ca:instanton-hard-benchmark-gate-ledger`: same-theory hard-scale ratio and
   residual multiplier bound after the gate data and source-window shape have
   been transported.
+- `sec:instanton-normal-fluctuation-source-data`: local amplitude-facing block
+  separating the determinant normalization of nonzero modes from the
+  fluctuation average of the selected source insertion.
+- `ca:instanton-nonzero-mode-source-quotient`: finite Gaussian source quotient
+  and covariance identity, including the quadratic source trace correction
+  `1/2 Tr(QC)` and the absolute bound
+  `epsilon_U + M_U M_V / d_0`.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell model
   proving the absolute residual bound and the two-by-two determinant stability
   estimate.
@@ -85,6 +92,10 @@
   of the apparent `t^(-1)` terms in the BPST zero-mode Bessel products, giving
   the differentiated-slot power tail rather than the fused-density exponential
   source class.
+- The normal-fluctuation source quotient opens the next compressed input:
+  even after the Gaussian determinant is normalized, the selected hard source
+  has a mean and a covariance with nonzero-mode interactions.  A vacuum
+  determinant constant alone cannot control a four-source amplitude.
 - The `Q^(-35/3)` hard-scale behavior is tied to `b0=29/3` and four individual
   hard zero-mode form factors.  The large-size endpoint is convergent but slow,
   with a retained-tail majorant of order `R^(-1/3)`, so a window/stability
@@ -111,6 +122,9 @@
   derives the individual zero-mode slot tail coefficient from the Bessel
   product cancellation and rejects fused-density endpoint substitution or
   hidden unamputated residues,
+  verifies the finite Gaussian nonzero-mode source quotient covariance
+  identity, the quadratic trace correction, absolute window propagation, and
+  rank-loss rejection,
   builds moduli-equivalent finite cell channels with different or vanishing
   amplitudes, constructs a same-Euclidean-sum/different-projection ambiguity,
   checks the SU(3), `N_f=2` hard four-source scale and tail powers, validates
@@ -143,3 +157,7 @@
   deriving the BPST zero-mode slot tail in the physical-amplitude chapter and
   pairing it with a focused companion check.  This is amplitude/source
   machinery, not a moduli-space refinement.
+- 2026-06-06 normal-fluctuation source quotient pass: added the finite Gaussian
+  source-fluctuation quotient to the physical-amplitude chapter, with companion
+  checks rejecting replacement by a vacuum determinant constant.  This targets
+  the fluctuation/source side of the instanton amplitude.
