@@ -1,0 +1,250 @@
+\chapter{Solitons and Collective Quantization}
+\label{ch:solitons-collective-quantization}
+\ConventionsLorentzian
+
+The finite-energy solitons of
+Chapter~\ref{ch:vol2-classical-yang-mills-matter} are classical saddles in
+topological sectors.  Quantization adds three pieces which are invisible in
+the static solution itself: collective coordinates for exact zero modes,
+determinants on the orthogonal fluctuation space, and the definition of the
+physical observable or Hilbert-sector coordinate.  This chapter starts the
+dedicated soliton quantization lane by keeping those three ingredients in one
+calculation.
+
+The guiding example is deliberately elementary.  A kink on the line has a
+one-dimensional moduli space of centers.  The center is easy; the mass of the
+soliton particle is not fixed by that moduli space.  It is fixed by removing
+the translation zero mode, computing the fluctuation determinant in the
+chosen renormalization convention, and then identifying the isolated pole or
+sector energy.  This is the same physics lesson as for instantons, now in a
+Lorentzian sector with a soliton particle instead of a Euclidean tunneling
+event.
+
+\section{Kink Sector and the Translation Collective Coordinate}
+\label{sec:kink-sector-translation-collective-coordinate}
+
+Consider the dimensionless scalar theory in \(1+1\) dimensions with static
+energy
+\begin{equation}
+  E[\phi]
+  =
+  \int_{\mathbb R}\dd x\,
+  \left[
+    \frac12(\partial_x\phi)^2
+    +\frac12(1-\phi^2)^2
+  \right].
+  \label{eq:phi4-kink-static-energy}
+\end{equation}
+The two vacua are \(\phi=\pm1\).  Finite-energy configurations are separated
+by the boundary coordinate
+\[
+  Q_{\rm kink}
+  =
+  \frac12\bigl(\phi(+\infty)-\phi(-\infty)\bigr)\in\mathbb Z
+\]
+for smooth fields approaching the vacua at infinity.  The charge-one kink is
+\begin{equation}
+  \phi_K(x;X)=\tanh(x-X),
+  \qquad
+  \partial_x\phi_K=\operatorname{sech}^2(x-X).
+  \label{eq:phi4-kink-profile}
+\end{equation}
+
+\begin{proposition}[Kink center as a collective coordinate]
+\label{prop:kink-center-collective-coordinate}
+For the kink \eqref{eq:phi4-kink-profile}, the translation zero-mode norm is
+equal to the classical kink mass:
+\begin{equation}
+  G_{XX}
+  =
+  \int_{\mathbb R}\dd x\,(\partial_X\phi_K)^2
+  =
+  \int_{\mathbb R}\dd x\,(\partial_x\phi_K)^2
+  =
+  M_{\rm cl}
+  =
+  \frac43 .
+  \label{eq:kink-center-collective-metric}
+\end{equation}
+If
+\[
+  \phi(t,x)=\phi_K(x-X(t))+\eta(t,x),
+  \qquad
+  \int_{\mathbb R}\dd x\,\eta(t,x)\,\partial_x\phi_K(x-X(t))=0 ,
+\]
+then the leading small-velocity kinetic term is
+\begin{equation}
+  \frac12\int_{\mathbb R}\dd x\,\dot\phi^2
+  =
+  \frac12M_{\rm cl}\dot X^2
+  +
+  \frac12\int_{\mathbb R}\dd x\,\dot\eta^2
+  +\hbox{higher terms in }\eta,\dot X .
+  \label{eq:kink-collective-coordinate-kinetic-split}
+\end{equation}
+Thus the center coordinate has the inertial mass \(M_{\rm cl}\), and the
+Gaussian determinant for normal modes must be taken on the subspace
+orthogonal to \(\partial_x\phi_K\).
+\end{proposition}
+
+\begin{proof}
+The kink satisfies the first-order equation
+\[
+  \partial_x\phi_K=1-\phi_K^2.
+\]
+Therefore the static energy density is
+\[
+  \frac12(\partial_x\phi_K)^2+\frac12(1-\phi_K^2)^2
+  =
+  (\partial_x\phi_K)^2
+  =
+  \operatorname{sech}^4(x-X).
+\]
+The integral
+\[
+  \int_{-\infty}^{\infty}\operatorname{sech}^4 u\,\dd u
+  =
+  \int_{-1}^{1}(1-y^2)\,\dd y
+  =
+  \frac43,
+  \qquad y=\tanh u ,
+\]
+gives both \(M_{\rm cl}\) and the zero-mode norm.  Since
+\(\partial_X\phi_K=-\partial_x\phi_K\), the term linear in
+\(\dot X\dot\eta\) is proportional to
+\(\int\dot\eta\,\partial_x\phi_K\), which is zero after differentiating the
+orthogonality condition at leading order.  This gives
+\eqref{eq:kink-collective-coordinate-kinetic-split}.
+\end{proof}
+
+The formula \(\sqrt{G_{XX}}\,\dd X\) is the collective-coordinate measure for
+the center.  It is not the quantum mass shift.  The latter comes from the
+determinant of the normal fluctuation operator after the zero mode has been
+removed.
+
+\section{Fluctuation Determinants and the Soliton Mass}
+\label{sec:soliton-fluctuation-determinants-mass}
+
+The sine-Gordon model gives the cleanest benchmark because the exact
+soliton-breather spectrum is independently known in
+Chapter~\ref{ch:integrable-sine-gordon-thirring-affine-toda}.  In the
+normalization of Section~\ref{sec:sine-gordon-dhn-soliton-mass}, the kink
+has classical mass \(8m/\beta^2\).  Its normal fluctuation operator has a
+translation zero mode and continuum phase shift
+\begin{equation}
+  \delta(k)=2\arctan(m/k),
+  \qquad
+  \frac{\dd\delta}{\dd k}
+  =
+  -\frac{2m}{k^2+m^2}.
+  \label{eq:soliton-chapter-sg-phase-shift}
+\end{equation}
+
+\begin{proposition}[DHN mass shift as a determinant statement]
+\label{prop:soliton-chapter-dhn-mass-shift}
+In the Dashen--Hasslacher--Neveu/Faddeev--Korepin normal-ordering convention,
+the sine-Gordon one-loop soliton mass shift is
+\begin{equation}
+  \Delta M_{\rm SG}^{(1)}
+  =
+  \frac12
+  \int_{-\Lambda}^{\Lambda}
+  \frac{\dd k}{2\pi}\,
+  \sqrt{k^2+m^2}\,
+  \frac{\dd\delta}{\dd k}
+  +
+  \Delta M_{\rm ct}(\Lambda)
+  =
+  -\frac{m}{\pi},
+  \label{eq:soliton-chapter-dhn-mass-shift}
+\end{equation}
+where
+\[
+  \Delta M_{\rm ct}(\Lambda)
+  =
+  \frac{m}{\pi}\operatorname{arsinh}(\Lambda/m)-\frac{m}{\pi}.
+\]
+Consequently
+\begin{equation}
+  M_s
+  =
+  \frac{8m}{\beta^2}-\frac{m}{\pi}+O(\beta^2m).
+  \label{eq:soliton-chapter-sg-physical-mass}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Substituting \eqref{eq:soliton-chapter-sg-phase-shift} into the continuum
+determinant comparison gives
+\[
+  \frac12
+  \int_{-\Lambda}^{\Lambda}
+  \frac{\dd k}{2\pi}
+  \sqrt{k^2+m^2}
+  \left(-\frac{2m}{k^2+m^2}\right)
+  =
+  -\frac{m}{\pi}\operatorname{arsinh}(\Lambda/m).
+\]
+The counterterm displayed above is the same tadpole subtraction which defines
+the normal-ordered cosine.  The logarithmic cutoff term cancels, leaving the
+finite value \(-m/\pi\).  The translation zero mode is absent from the
+determinant because it was converted into the center coordinate in
+Proposition~\ref{prop:kink-center-collective-coordinate}.
+\end{proof}
+
+The finite term in \eqref{eq:soliton-chapter-dhn-mass-shift} is not a
+decoration of the classical kink.  It is the difference between the mass
+parameter entering the exact soliton scattering theory and the mass obtained
+by quantizing only the moduli-space center.  The exact lightest-breather
+check in Proposition~\ref{prop:sine-gordon-dhn-breather-mass-consistency}
+uses precisely this finite determinant term.
+
+\section{Fermion Zero Modes and Fractional Sector Charge}
+\label{sec:soliton-fermion-zero-modes-fractional-charge}
+
+Soliton quantization can also change the charge carried by a sector.  In the
+Jackiw--Rebbi kink model, the one-particle Dirac Hamiltonian may be written
+as
+\begin{equation}
+  H_{\rm JR}
+  =
+  \begin{pmatrix}
+    0 & -\partial_x+M(x)\\
+    \partial_x+M(x) & 0
+  \end{pmatrix},
+  \qquad
+  M(x)=m\tanh(mx).
+  \label{eq:soliton-chapter-jackiw-rebbi-kink-hamiltonian}
+\end{equation}
+The kink mass profile changes sign between the two vacua.  The normalized
+zero mode is
+\begin{equation}
+  \psi_0(x)
+  =
+  \sqrt{\frac m2}
+  \begin{pmatrix}
+    \operatorname{sech}(mx)\\
+    0
+  \end{pmatrix},
+  \qquad
+  H_{\rm JR}\psi_0=0 .
+  \label{eq:soliton-chapter-jackiw-rebbi-kink-zero-mode}
+\end{equation}
+All nonzero modes are paired by charge conjugation.  The soliton-sector
+fermion number therefore differs by one unit depending on whether this single
+zero mode is empty or filled:
+\begin{equation}
+  F_{\rm kink}
+  =
+  N_0-\frac12,
+  \qquad
+  N_0\in\{0,1\}.
+  \label{eq:soliton-chapter-jackiw-rebbi-kink-half-charge}
+\end{equation}
+
+This is a physical sector statement, not a statement about the location of
+the kink center.  The center coordinate organizes translations of the soliton
+particle.  The fermion zero mode organizes an internal two-state sector whose
+charges are \(-1/2\) and \(+1/2\).  A semiclassical soliton calculation is
+complete only after both sorts of zero modes have been separated and the
+nonzero fluctuation determinant is paired with the observable being measured.

@@ -788,6 +788,14 @@ Current checks:
   half-charge bookkeeping with integer-charge and unpaired-spectrum negative
   controls, the coordinate transformation of \(\sqrt{\det G_{ab}}\,d^mz\),
   and the \(4N_c\) local dimension count of the embedded one-instanton moduli.
+- `soliton_quantization_channel_checks.py`: symbolic checks for the dedicated
+  soliton collective-quantization chapter, including the dimensionless kink
+  mass and translation-zero-mode norm \(4/3\), finite zero-mode projection and
+  idempotence, sine-Gordon phase-shift derivative, DHN cutoff/counterterm
+  cancellation leaving \(-m/\pi\), and Jackiw-Rebbi zero-mode normalization
+  and half-charge bookkeeping, with negative controls for the wrong zero-mode
+  norm, unprojected fluctuations, missing or half DHN counterterms,
+  nonnormalizable zero-mode component, and integer kink-sector charges.
 - `longitudinal_goldstone_equivalence_checks.py`: finite checks for the
   longitudinal-vector/Goldstone equivalence section, including the mostly-plus
   longitudinal polarization identities, the \(O(m/E)\) remainder from

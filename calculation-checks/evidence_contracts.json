@@ -34,6 +34,10 @@
       "risk_class": "instanton physical-amplitude architecture"
     },
     {
+      "path": "soliton_quantization_channel_checks.py",
+      "risk_class": "soliton collective quantization"
+    },
+    {
       "path": "false_vacuum_decay_checks.py",
       "risk_class": "false-vacuum contour and metastability"
     },

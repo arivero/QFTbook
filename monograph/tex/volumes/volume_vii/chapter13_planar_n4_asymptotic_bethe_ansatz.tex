@@ -304,7 +304,7 @@ sheet.  Applying the path twice generally lands on a different sheet of the
 scalar factor even though the projected \(x^\pm\)-values have returned.
 \end{warning}
 
-\begin{definition}[Crossing path for the Zhukovsky variables]
+\begin{definition}[Zhukovsky crossing path]
 \label{def:planar-n4-crossing-path}
 Let \(x(u)\) be the physical Zhukovsky branch, \(x(u)\sim u/g\) at infinity,
 and set \(x^\pm(u)=x(u\pm\ii/2)\).  A crossing path for the first magnon is
@@ -2515,7 +2515,7 @@ Chapter~\ref{ch:planar-n4-quantum-spectral-curve-hexagon} is the quantum
 finite-difference/Riemann-Hilbert replacement for this classical curve
 record, with additional gluing and asymptotic data.
 
-\paragraph{Jump data from the Cauchy transform.}
+\paragraph{Cauchy jump data.}
 Let \(G\) be the Cauchy transform in
 Definition~\ref{def:finite-density-bethe-root-curve}, and assume that
 \(\rho\) is Hölder continuous on the interior of a cut \(\mathcal C_a\).
@@ -3051,8 +3051,11 @@ The explicit \(L\)-dependent terms in the logarithmic Bethe equation are
 smaller than this driving term in the scaling regime \(\log S\gg L\), so they
 affect the \(O(S^0)\) part rather than \(f(g)\).
 
-Applying \((2\pi)^{-1}\ee^{-t/2}\int\dd u\,\ee^{-\ii t u}\) to the inner
-equation gives \eqref{eq:planar-n4-bes-equation}.  The Bessel transform
+Applying the transform
+\[
+  (2\pi)^{-1}\ee^{-t/2}\int\dd u\,\ee^{-\ii t u}
+\]
+to the inner equation gives \eqref{eq:planar-n4-bes-equation}.  The Bessel transform
 \eqref{eq:planar-n4-bes-fourier-xpm} turns the all-loop rational factors into
 \(K_0\), and turns the charge expansion of the dressing phase into
 \(K_{\rm dr}\).  The factor \(t/(\ee^t-1)\) is the inverse of the rational
