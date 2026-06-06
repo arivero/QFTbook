@@ -60,8 +60,9 @@ invisibility, and the four-point color-kinematics gateway separates
 gauge-amplitude equivalence from Jacobi-compatible numerator data needed for
 the double copy, and a one-loop Jacobi triplet surface term can be invisible
 to cuts and color-weighted gauge integration while changing a naive
-double-copy pairing, while a common Jacobi-repair direction is double-copy
-null only when the second numerator copy is Jacobi-satisfying, and the
+double-copy pairing, while a denominator-weighted Jacobi-repair direction is
+gauge-null only after the graph denominators are included and is
+double-copy-null only when the second numerator copy is Jacobi-satisfying, and the
 triple-cut triangle projection isolates the triangle coefficient only after
 known box residues have been subtracted, and the double-cut bubble projection
 isolates the bubble coefficient only after higher-topology shadows have been
@@ -145,9 +146,11 @@ dimension-shifted mu_perp^4 numerator is missed by strict four-dimensional cuts
 but leaves the finite rational residue read by massive unitarity, verifies that a
 cut-invisible surface/contact shift can leave the gauge amplitude unchanged
 while breaking loop-level numerator Jacobi and changing the naive double-copy
-pairing, verifies that a common Jacobi repair is not double-copy null against
-a defective second copy and that sampled cuts do not prove the full Jacobi
-defect is absent, verifies that the raw triple-cut constant can mix a triangle
+pairing, verifies that a common denominator-free Jacobi repair fails gauge
+nullity with unequal graph denominators, verifies that a denominator-weighted
+repair is not double-copy null against a defective second copy and that
+sampled cuts do not prove the full Jacobi defect is absent, verifies that the
+raw triple-cut constant can mix a triangle
 coefficient with constant parts of known box residues and that omitting one
 box subtraction leaves a wrong triangle coefficient, verifies that the raw
 double-cut average can mix a bubble coefficient with higher-topology shadows
@@ -1546,21 +1549,78 @@ def check_loop_level_jacobi_repair_double_copy_null() -> None:
     colors = [Fraction(1), Fraction(2), Fraction(-3)]
     assert_equal("Jacobi repair color null direction", sum(colors, Fraction(0)), Fraction(0))
 
-    numerators = [Fraction(5), Fraction(7), Fraction(-10)]
+    denominators = [Fraction(2), Fraction(3), Fraction(5)]
+    common_denominator = denominators[0] * denominators[1] * denominators[2]
+    assert_true("Jacobi triplet denominators are unequal", len(set(denominators)) == 3)
+
+    numerators = [Fraction(5), Fraction(7), Fraction(-2)]
     jacobi_defect = sum(numerators, Fraction(0))
-    assert_equal("unrepaired loop numerator Jacobi defect", jacobi_defect, Fraction(2))
+    assert_equal("unrepaired loop numerator Jacobi defect", jacobi_defect, Fraction(10))
 
     common_repair = [-(jacobi_defect / 3)] * 3
-    repaired_numerators = vector_add(numerators, common_repair)
+    common_repaired_numerators = vector_add(numerators, common_repair)
     assert_equal(
         "common surface repair restores loop numerator Jacobi",
+        sum(common_repaired_numerators, Fraction(0)),
+        Fraction(0),
+    )
+    common_shift_gauge_variation = sum(
+        colors[index] * common_repair[index] / denominators[index]
+        for index in range(3)
+    )
+    assert_true(
+        "common Jacobi repair is not gauge null with unequal denominators",
+        common_shift_gauge_variation != 0,
+    )
+    common_shift_cleared_variation = sum(
+        colors[index]
+        * common_repair[index]
+        * common_denominator
+        / denominators[index]
+        for index in range(3)
+    )
+    assert_true(
+        "clearing denominators does not rescue the common repair",
+        common_shift_cleared_variation != 0,
+    )
+
+    denominator_sum = sum(denominators, Fraction(0))
+    alpha = -jacobi_defect / denominator_sum
+    assert_equal("local denominator-weighted repair coefficient", alpha, Fraction(-1))
+    denominator_weighted_repair = [alpha * denominator for denominator in denominators]
+    repaired_numerators = vector_add(numerators, denominator_weighted_repair)
+    assert_equal(
+        "denominator-weighted repair restores loop numerator Jacobi",
         sum(repaired_numerators, Fraction(0)),
         Fraction(0),
     )
+    denominator_weighted_gauge_variation = sum(
+        colors[index] * denominator_weighted_repair[index] / denominators[index]
+        for index in range(3)
+    )
     assert_equal(
-        "common Jacobi repair is color-weighted gauge null",
-        dot(colors, common_repair),
+        "denominator-weighted repair is graph-level gauge null",
+        denominator_weighted_gauge_variation,
         Fraction(0),
+    )
+    denominator_weighted_cleared_variation = sum(
+        colors[index]
+        * denominator_weighted_repair[index]
+        * common_denominator
+        / denominators[index]
+        for index in range(3)
+    )
+    assert_equal(
+        "denominator-weighted repair remains null after denominator clearing",
+        denominator_weighted_cleared_variation,
+        Fraction(0),
+    )
+
+    bad_defect = Fraction(3)
+    nonlocal_alpha = -bad_defect / denominator_sum
+    assert_true(
+        "local quotient rejects nondivisible Jacobi defect",
+        nonlocal_alpha.denominator != 1,
     )
 
     second_copy = [Fraction(4), Fraction(1), Fraction(-5)]
@@ -1569,10 +1629,16 @@ def check_loop_level_jacobi_repair_double_copy_null() -> None:
         sum(second_copy, Fraction(0)),
         Fraction(0),
     )
-    double_copy_before = dot(numerators, second_copy)
-    double_copy_after = dot(repaired_numerators, second_copy)
+    double_copy_before = sum(
+        numerators[index] * second_copy[index] / denominators[index]
+        for index in range(3)
+    )
+    double_copy_after = sum(
+        repaired_numerators[index] * second_copy[index] / denominators[index]
+        for index in range(3)
+    )
     assert_equal(
-        "common Jacobi repair is double-copy null against Jacobi second copy",
+        "denominator-weighted repair is double-copy null against Jacobi second copy",
         double_copy_after,
         double_copy_before,
     )
@@ -1582,31 +1648,46 @@ def check_loop_level_jacobi_repair_double_copy_null() -> None:
         "defective second copy has Jacobi defect",
         sum(defective_second_copy, Fraction(0)) != 0,
     )
-    defective_double_copy_after = dot(repaired_numerators, defective_second_copy)
-    defective_double_copy_before = dot(numerators, defective_second_copy)
+    defective_double_copy_after = sum(
+        repaired_numerators[index] * defective_second_copy[index] / denominators[index]
+        for index in range(3)
+    )
+    defective_double_copy_before = sum(
+        numerators[index] * defective_second_copy[index] / denominators[index]
+        for index in range(3)
+    )
     assert_equal(
-        "common repair shift pairs with defective second-copy Jacobi sum",
+        "denominator-weighted repair pairs with defective second-copy Jacobi sum",
         defective_double_copy_after - defective_double_copy_before,
-        common_repair[0] * sum(defective_second_copy, Fraction(0)),
+        alpha * sum(defective_second_copy, Fraction(0)),
     )
     assert_true(
-        "common repair is not double-copy null against defective second copy",
+        "denominator-weighted repair is not double-copy null against defective second copy",
         defective_double_copy_after != defective_double_copy_before,
     )
 
-    graph_dependent_color_null_shift = [Fraction(2), Fraction(-1), Fraction(0)]
+    graph_dependent_color_null_weights = [Fraction(2), Fraction(-1), Fraction(0)]
+    graph_dependent_color_null_shift = [
+        denominators[index] * graph_dependent_color_null_weights[index]
+        for index in range(3)
+    ]
     assert_equal(
         "graph-dependent shift can be color null",
-        dot(colors, graph_dependent_color_null_shift),
+        sum(
+            colors[index] * graph_dependent_color_null_shift[index] / denominators[index]
+            for index in range(3)
+        ),
         Fraction(0),
     )
     assert_true(
-        "graph-dependent color-null shift is not common Jacobi repair",
-        graph_dependent_color_null_shift != common_repair,
+        "graph-dependent color-null shift need not repair Jacobi",
+        sum(graph_dependent_color_null_shift, Fraction(0)) != -jacobi_defect,
     )
-    graph_shifted_double_copy = dot(
-        vector_add(numerators, graph_dependent_color_null_shift),
-        second_copy,
+    graph_shifted_double_copy = sum(
+        (numerators[index] + graph_dependent_color_null_shift[index])
+        * second_copy[index]
+        / denominators[index]
+        for index in range(3)
     )
     assert_true(
         "graph-dependent color-null shift can change double copy",

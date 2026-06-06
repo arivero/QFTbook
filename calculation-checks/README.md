@@ -3170,9 +3170,11 @@ Current checks:
   spot, the four-point color--kinematics/double-copy
   gateway with the generalized-gauge non-Jacobi negative control, the one-loop
   color--kinematics surface-term obstruction showing that a cut-invisible
-  gauge-null shift need not be double-copy null, the common Jacobi-repair
-  condition showing when a color-null surface direction is also double-copy
-  null against a Jacobi-satisfying second copy, the finite two-scale box
+  gauge-null shift need not be double-copy null, the denominator-aware
+  Jacobi-repair condition showing that a common denominator-free shift fails
+  with unequal graph denominators while a local denominator-weighted
+  color-null direction can be double-copy null against a Jacobi-satisfying
+  second copy, the finite two-scale box
   master with its fixed pole subtraction, sector-boundary quadrature,
   dilogarithm parameter-integral check, differential equations, branch
   prescription, and one-cut-only/boundary negative controls, the

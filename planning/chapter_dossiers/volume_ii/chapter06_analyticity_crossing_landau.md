@@ -918,13 +918,17 @@
   double-copy shift, and representative-level repair.
 - 2026-06-06 issue #769 loop-level Jacobi-repair pass: added
   `ca:loop-level-jacobi-repair-double-copy-null` immediately after the
-  obstruction block.  The text gives the positive local criterion: when a
-  triplet Jacobi defect lies in an allowed common contact/IBP/evanescent
-  surface direction, subtracting one third of the defect from each numerator
-  restores the kinematic Jacobi identity and is color-null before integration.
-  The same repair is double-copy null only against a Jacobi-satisfying second
-  numerator copy, or after a separate gravity-null surface proof.  The
-  companion check verifies the common repair, rejects a defective second copy,
+  obstruction block.  The text now gives the denominator-aware criterion:
+  local shifts must both repair the numerator Jacobi defect and obey the
+  graph-level gauge-null condition
+  `sum c_i Delta_i / D_i = 0` modulo declared surface terms.  The repaired
+  sufficient case is denominator-weighted, `Delta_i = D_i alpha`, with a
+  locality/divisibility condition on the defect; otherwise the defect remains
+  an obstruction rather than a constructed repair.  The same repair is
+  double-copy null only against a Jacobi-satisfying second numerator copy, or
+  after a separate gravity-null surface proof.  The companion check rejects
+  the old common denominator-free repair with unequal graph denominators,
+  verifies the denominator-weighted repair, rejects a defective second copy,
   rejects graph-dependent color-null shifts as double-copy shortcuts, and
   records that sampled-cut Jacobi vanishing does not prove the full numerator
   defect vanishes.  This remains a local numerator-representative criterion,

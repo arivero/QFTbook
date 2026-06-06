@@ -3027,57 +3027,85 @@ integrated gauge amplitudes
 \begin{controlledapproximation}[Loop-level Jacobi repair and double-copy null
 directions]
 \label{ca:loop-level-jacobi-repair-double-copy-null}
-The previous obstruction also indicates the constructive condition.  Work in
-one routed Jacobi triplet and pull the three graph numerators to a common
-local quotient in which the color relation
+The previous obstruction also indicates the constructive condition, but it
+must include the graph denominators.  Work in one routed Jacobi triplet with
+cubic graph denominators \(\mathcal D_a,\mathcal D_b,\mathcal D_c\), color factors
 \[
-  c_a+c_b+c_c=0
+  c_a+c_b+c_c=0,
 \]
-is represented before integration.  Suppose the kinematic Jacobi defect
+and local numerator functions \(N_\alpha(\ell)\).  The kinematic Jacobi
+defect is
 \begin{equation}
   \mathcal J(\ell)=N_a(\ell)+N_b(\ell)+N_c(\ell)
   \label{eq:loop-level-jacobi-defect-to-repair}
 \end{equation}
-belongs to the declared contact/IBP/evanescent surface module, and that the
-common shift
+and a repair is a triple of local shifts \(\Delta_\alpha(\ell)\) in the
+declared surface module such that
 \begin{equation}
-  N_\alpha'(\ell)
-  =
-  N_\alpha(\ell)-\frac13\mathcal J(\ell),
-  \qquad \alpha=a,b,c,
-  \label{eq:loop-level-common-jacobi-repair}
+  \Delta_a+\Delta_b+\Delta_c=-\mathcal J,
+  \qquad
+  \sum_{\alpha=a,b,c}
+  \frac{c_\alpha\Delta_\alpha}{\mathcal D_\alpha}=0
+  \quad
+  \hbox{modulo declared surface terms}.
+  \label{eq:loop-level-denominator-aware-jacobi-repair}
 \end{equation}
-is allowed in that module.  Then
+The first condition repairs the numerator Jacobi identity; the second is the
+actual color-dressed gauge-null condition for the graph integrand.  A common
+shift \(\Delta_\alpha=-\mathcal J/3\) repairs the first equation, but it
+changes the gauge integrand by
 \[
-  N_a'+N_b'+N_c'=0 .
+  -\frac13\mathcal J
+  \sum_{\alpha=a,b,c}\frac{c_\alpha}{\mathcal D_\alpha},
 \]
-The gauge integrand changes in this triplet by
-\begin{equation}
-  -\frac13\mathcal J(\ell)\,(c_a+c_b+c_c),
-  \label{eq:loop-level-jacobi-repair-gauge-null}
-\end{equation}
-before the common denominator and surface reduction are applied.  Thus the
-repair is invisible to the color-dressed gauge amplitude precisely because it
-uses the same local color-null direction which carries the Jacobi identity.
+which is not zero for a generic routed loop triplet.  Clearing denominators
+does not remove this distinction: after multiplying by a common denominator,
+the graph numerators entering the color sum are
+\((D_{\rm com}/\mathcal D_\alpha)N_\alpha\), not the original
+\(N_\alpha\).
 
-For a double-copy pairing the same repair changes the local gravity integrand
-by
+A useful sufficient form is a denominator-weighted color-null direction.  If a
+local \(\alpha(\ell)\) exists such that
+\begin{equation}
+  \Delta_\alpha(\ell)=\mathcal D_\alpha(\ell)\alpha(\ell),
+  \qquad
+  \alpha(\mathcal D_a+\mathcal D_b+\mathcal D_c)=-\mathcal J,
+  \label{eq:loop-level-denominator-weighted-repair}
+\end{equation}
+then \eqref{eq:loop-level-denominator-aware-jacobi-repair} holds, because
+\[
+  \sum_\alpha\frac{c_\alpha\Delta_\alpha}{\mathcal D_\alpha}
+  =
+  \alpha(c_a+c_b+c_c)=0 .
+\]
+The existence of such an \(\alpha\) is a locality and divisibility statement:
+\(\mathcal J\) must be divisible by
+\(\mathcal D_a+\mathcal D_b+\mathcal D_c\) in the allowed local quotient, or
+the missing part must be supplied by explicitly declared contact, IBP, or
+evanescent surface generators.  If that divisibility fails, the defect is an
+obstruction rather than a constructed repair.
+
+For a double-copy pairing, a denominator-weighted repair changes the local
+gravity integrand by
 \begin{equation}
   \Delta\mathcal M_{\rm triplet}^{(1)}
   =
-  -\frac13\mathcal J(\ell)\,
+  \alpha(\ell)\,
   \bigl(\widetilde N_a(\ell)
         +\widetilde N_b(\ell)
-        +\widetilde N_c(\ell)\bigr).
+        +\widetilde N_c(\ell)\bigr)
+  \quad
+  \hbox{modulo gravity surface terms}.
   \label{eq:loop-level-jacobi-repair-double-copy-null}
 \end{equation}
 It therefore vanishes locally only when the second copy is also in a
 Jacobi-satisfying representation, or when the displayed product lies in a
 gravity-null surface module with its own proof.  An integrated gauge null
 statement is not enough: if the second copy has a Jacobi defect, or if the
-repair is made by graph-dependent shifts rather than the common color-null
-direction, \eqref{eq:loop-level-jacobi-repair-double-copy-null} is a real
-change of the candidate gravity integrand.
+repair solves only sampled cuts rather than
+\eqref{eq:loop-level-denominator-aware-jacobi-repair},
+\eqref{eq:loop-level-jacobi-repair-double-copy-null} is a real change of the
+candidate gravity integrand.
 
 This is the minimal local condition needed before the slogan ``replace color by
 kinematics'' becomes a loop-level calculation.  One must repeat the repair
