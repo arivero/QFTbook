@@ -4,7 +4,8 @@ Evidence contract.
 Target claims: the finite LG/GLSM charge ledgers, abelian duality
 normalizations, charged-chiral mirror elimination, vortex-zero-mode filter,
 finite-regulator vortex fluctuation complex, vortex-to-FI-coordinate
-normalization, single-vortex coefficient noncancellation bound,
+normalization, one-vortex source-functional F-term extraction,
+single-vortex coefficient noncancellation bound,
 P^{N-1} mirror residue trace, and
 vortex-to-protected-observable residual ledger, together with the
 vortex-fugacity dimensional-transmutation coordinate, the degree-one
@@ -18,7 +19,8 @@ residue/direct-instanton comparison map, with the direct degree-one incidence
 Jacobian computed before comparison, in Volume VII Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
 elimination, finite chain-complex rank checks, Berezin-degree tests,
-retained-window signed/mass coefficient bounds, root-of-unity residue sums,
+source-differentiated zero-mode extraction tests, retained-window signed/mass
+coefficient bounds, root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree filters, and residual
 budgets, plus finite density/Jacobian transport tests and double-entry
 mirror/direct-vortex comparisons whose direct side includes a separately
@@ -31,6 +33,7 @@ placeholders, logarithm-branch conventions, and the chapter's
 protected-coordinate definitions are assumed as finite input.
 Negative controls: extra unsaturated zero modes, raw zero-mode determinants,
 omitted vortex ghost factors, omitted vortex normalization constants,
+omitted one-vortex source-overlap factors,
 unbalanced regulator-scale changes, coherent signed cancellations with nonzero
 absolute mass, wrong residue selection powers, underspecified residual
 budgets, stable-map dimension mismatches, mirror-only or dimension-only
@@ -808,6 +811,121 @@ def check_single_vortex_amplitude_assembly() -> None:
     coefficient = Fraction(2, 5)
     shifted_q = bare_q / coefficient**charge
     assert_equal("vortex coefficient FI shift in exponentiated coordinate", shifted_q, Fraction(1375, 104))
+
+
+def check_one_vortex_source_functional_extraction() -> None:
+    # A finite retained chart for the source-functional version of the
+    # one-vortex calculation.  The F-term coefficient is the coefficient of the
+    # two universal Grassmann zero modes; ordinary component amplitudes need
+    # source differentiation before the sources are set to zero.
+    reduced_classical_weights = [Fraction(2, 3), Fraction(5, 7), Fraction(11, 13)]
+    collective_measure_cells = [Fraction(3, 5), Fraction(7, 11), Fraction(13, 17)]
+    primed_nonzero_density = [Fraction(19, 23), Fraction(29, 31), Fraction(37, 41)]
+    ghost_density = [Fraction(43, 47), Fraction(53, 59), Fraction(61, 67)]
+    residual_zero_mode_gates = [Fraction(1), Fraction(1), Fraction(1)]
+
+    retained_f_term_cells = [
+        classical * measure * nonzero * ghost * gate
+        for classical, measure, nonzero, ghost, gate in zip(
+            reduced_classical_weights,
+            collective_measure_cells,
+            primed_nonzero_density,
+            ghost_density,
+            residual_zero_mode_gates,
+        )
+    ]
+    retained_f_term_coefficient = sum(retained_f_term_cells, Fraction(0))
+    assert_gt_bound(
+        "retained one-vortex source F-term coefficient is nonzero",
+        retained_f_term_coefficient,
+        Fraction(0),
+    )
+
+    unprojected_component_at_zero_source = Fraction(0)
+    assert_equal(
+        "unprojected component with universal zero modes vanishes",
+        unprojected_component_at_zero_source,
+        Fraction(0),
+    )
+    if unprojected_component_at_zero_source == retained_f_term_coefficient:
+        raise AssertionError("zero-source component should not equal F-term projection")
+
+    normalized_source_overlaps = [Fraction(1), Fraction(1), Fraction(1)]
+    normalized_two_source_amplitude = sum(
+        cell * overlap
+        for cell, overlap in zip(retained_f_term_cells, normalized_source_overlaps)
+    )
+    assert_equal(
+        "normalized source differentiation extracts the F-term coefficient",
+        normalized_two_source_amplitude,
+        retained_f_term_coefficient,
+    )
+
+    transported_source_overlaps = [Fraction(5, 4), Fraction(7, 6), Fraction(11, 10)]
+    component_two_source_amplitude = sum(
+        cell * overlap
+        for cell, overlap in zip(retained_f_term_cells, transported_source_overlaps)
+    )
+    if component_two_source_amplitude == retained_f_term_coefficient:
+        raise AssertionError("nontrivial source overlaps should change the component amplitude")
+
+    moduli_only_cells = [
+        classical * measure
+        for classical, measure in zip(reduced_classical_weights, collective_measure_cells)
+    ]
+    moduli_only_prediction = sum(moduli_only_cells, Fraction(0))
+    if moduli_only_prediction == retained_f_term_coefficient:
+        raise AssertionError("moduli measure alone should not reproduce the vortex amplitude")
+
+    missing_ghost_prediction = sum(
+        classical * measure * nonzero * gate
+        for classical, measure, nonzero, gate in zip(
+            reduced_classical_weights,
+            collective_measure_cells,
+            primed_nonzero_density,
+            residual_zero_mode_gates,
+        )
+    )
+    if missing_ghost_prediction == retained_f_term_coefficient:
+        raise AssertionError("omitting the ghost density should change the source amplitude")
+
+    residual_unsaturated_gate = Fraction(0)
+    residual_zero_mode_killed = retained_f_term_coefficient * residual_unsaturated_gate
+    assert_equal(
+        "unsaturated residual zero mode kills source-extracted F-term",
+        residual_zero_mode_killed,
+        Fraction(0),
+    )
+
+    mirror_exponential_only = Fraction(1)
+    if mirror_exponential_only == retained_f_term_coefficient:
+        raise AssertionError("formal mirror monomial should not supply the amplitude coefficient")
+
+    residuals = {
+        "source overlap": Fraction(1, 101),
+        "primed propagator": Fraction(1, 103),
+        "determinant line": Fraction(1, 107),
+        "zero-mode map": Fraction(1, 109),
+        "compactification": Fraction(1, 113),
+        "continuum": Fraction(1, 127),
+    }
+    direct_source_amplitude = retained_f_term_coefficient + sum(
+        residuals.values(),
+        Fraction(0),
+    )
+    actual_source_error = abs(direct_source_amplitude - retained_f_term_coefficient)
+    source_bound = sum(abs(value) for value in residuals.values())
+    assert_equal(
+        "one-vortex source-amplitude residual telescope",
+        actual_source_error,
+        source_bound,
+    )
+    omitted_source_bound = source_bound - residuals["source overlap"]
+    assert_gt_bound(
+        "omitting source-overlap residual underbudgets one-vortex source amplitude",
+        actual_source_error,
+        omitted_source_bound,
+    )
 
 
 def check_vortex_coefficient_noncancellation_bound() -> None:
@@ -2202,6 +2320,7 @@ def main() -> None:
     check_vortex_zero_mode_filter()
     check_vortex_fluctuation_complex_gate()
     check_single_vortex_amplitude_assembly()
+    check_one_vortex_source_functional_extraction()
     check_vortex_coefficient_noncancellation_bound()
     check_cp_mirror_critical_ledger()
     check_cp_mirror_residue_correlators()

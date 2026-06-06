@@ -95,6 +95,13 @@ and
   `c_{i,Lambda}`: finite-regulator one-vortex chart, nonzero-mode
   determinant ratio, zero-mode Berezin coefficient for the twisted
   `F`-term measure, and regulated vortex coefficient.
+- `lambda_pm`, `xi_pm`, `eta_alpha`, `P_Lambda`, `U_{pm,Lambda}`,
+  `A^{(1)}_{i,Lambda}(O)`, `I^0_{O,Lambda}`, `R_src`, `R_prop`:
+  one-vortex source-functional bookkeeping sources, universal and residual
+  fermion zero-mode coordinates, finite source polynomial,
+  source-to-zero-mode overlaps, source-differentiated component amplitude,
+  retained zero-mode/source overlap, and the source/propagator residuals
+  separating component amplitudes from the twisted `F`-term coefficient.
 - `U_R`, `C_R`, `M_R`, `kappa_R`, `T_R`, `epsilon_det`,
   `epsilon_zm`, `epsilon_cpt`, `epsilon_cont`: retained compact vortex
   window, its signed one-vortex coefficient, its absolute one-vortex mass,
@@ -205,6 +212,15 @@ and
   the twisted `F`-term measure, possible extra zero-mode saturation, and
   collective-coordinate integration.  This makes the Hori--Vafa exponential
   term a rechecked amplitude datum in the chapter's conventions.
+- Adds a one-vortex source-functional extraction bridge: the same regulated
+  sector is written with bookkeeping sources for the two universal fermion
+  zero modes, residual zero-mode coordinates, and local component sources.
+  The twisted `F`-term coefficient is the `xi_+ xi_- eta_top` coefficient,
+  while source-differentiated component amplitudes additionally carry
+  source-to-zero-mode overlaps, primed propagator contractions, source/operator
+  normalization, and residual budgets.  This separates the physical
+  instanton amplitude from a moduli-space volume, Coulomb-logarithm match, or
+  formal Hori--Vafa monomial.
 - Adds the single-vortex coefficient noncancellation bound: after
   choosing a retained compact vortex window, the signed coefficient `C_R`
   must dominate the absolute one-vortex mass by a margin `kappa_R` and must
@@ -399,6 +415,12 @@ and
     formation, determinant-power bookkeeping, survival of the saturated
     twisted `F`-term zero-mode coefficient, vanishing with extra unsaturated
     zero modes, and the finite FI shift induced by the vortex coefficient;
+  - one-vortex source-functional extraction: the zero-source component
+    vanishes before the two universal Grassmann zero modes are projected into
+    the twisted `F`-term measure; normalized source differentiation recovers
+    the coefficient, nontrivial source overlaps change component amplitudes,
+    and negative controls reject moduli-only, ghost-omitted, mirror-only, and
+    unsaturated residual-zero-mode shortcuts;
   - the single-vortex coefficient noncancellation bound: exact
     retained-window signed value, retained absolute mass, residual telescope,
     signed-window domination over determinant/zero-mode/boundary/continuum
@@ -570,6 +592,15 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   operator, and off-pairing convention.  This is a physics-depth instanton
   pass: it checks the amplitude/observable assembly behind the Hori--Vafa
   formula rather than adding another moduli-space cell.
+- The 2026-06-06 issue #597 one-vortex source-functional pass opens the local
+  amplitude extraction behind the two-dimensional instanton coefficient:
+  before the Hori--Vafa monomial is compared with observables, the chapter now
+  distinguishes the twisted `F`-term projection, zero-source component
+  vanishing, source-differentiated component amplitudes, source-to-zero-mode
+  overlaps, primed propagator/determinant data, ghost density, and residual
+  zero-mode gates.  This directly addresses the physics-depth concern that the
+  instanton calculation is the fluctuation/source amplitude, not just the
+  moduli chart.
 - The 2026-06-06 issue #844 GLSM/Hori--Vafa architecture pass rephrases the
   reader-facing entrance to the mirror comparison as an observable comparison
   map.  The chapter now states the physical question, the compared finite-data

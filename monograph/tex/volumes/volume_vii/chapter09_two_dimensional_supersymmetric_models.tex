@@ -1288,6 +1288,111 @@ Coulomb logarithm is then a protected consistency test: it fixes the
 primitive harmonic and exposes any finite FI-coordinate shift caused by
 determinant normalization.
 
+\begin{controlledapproximation}[One-vortex source functional and
+\(F\)-term extraction]
+\label{ca:glsm-one-vortex-source-functional-extraction}
+The coefficient
+\eqref{eq:glsm-single-vortex-coefficient-integral} should be read as an
+amplitude extraction from a source functional, not as a volume of the vortex
+moduli chart.  In the same finite regulator, introduce bookkeeping
+Grassmann sources \(\lambda_\pm\) for the two universal fermion zero modes
+\(\xi_\pm\), residual Grassmann coordinates \(\eta_\alpha\) for
+\(K^{\rm res}_{i,\Lambda}(z)\), and local sources \(J_A\) for the component
+operators whose instanton contribution is to be differentiated.  On a
+retained charge-one chart the source polynomial is written in finite stage form
+\begin{equation}
+  \mathcal Z^{(1)}_{i,\Lambda}[\lambda,J]
+  =
+  e^{-Y_i}
+  \int_{\mathcal U_{i,1,\Lambda}}
+  e^{-S^{\rm red}_{i,1,\Lambda}(z)}
+  \mathcal W^{\rm nz}_{i,1,\Lambda}(z)
+  \dd\nu_{i,1,\Lambda}(z)
+  \int d\xi_+\,d\xi_-\,d\eta\,
+  \mathcal P_{\Lambda}(z;\xi,\eta,\lambda,J).
+  \label{eq:glsm-one-vortex-source-functional}
+\end{equation}
+The polynomial \(\mathcal P_\Lambda\) contains the zero-mode wavefunctions
+and the primed nonzero-mode propagators in the chosen source coordinates.
+The Wilsonian twisted \(F\)-term projection is the coefficient of
+\(\xi_+\xi_-\) and of the top residual \(\eta\)-degree, with the
+\(\xi_\pm\) line normalized as the \(d^2\widetilde\theta\) measure:
+\begin{equation}
+  c_{i,\Lambda}
+  =
+  \mu^{-1}
+  \int_{\mathcal U_{i,1,\Lambda}}
+  e^{-S^{\rm red}_{i,1,\Lambda}(z)}
+  \mathcal W^{\rm nz}_{i,1,\Lambda}(z)
+  \Bigl[
+    \mathcal P_\Lambda(z;\xi,\eta,0,0)
+  \Bigr]_{\xi_+\xi_-\,\eta_{\rm top}}\,
+  \dd\nu_{i,1,\Lambda}(z).
+  \label{eq:glsm-one-vortex-fterm-projection}
+\end{equation}
+The ordinary component functional at \(J=0\) is different: if the universal
+zero modes are not extracted into \(d^2\widetilde\theta\), the
+\(d\xi_+d\xi_-\) integral kills the uninserted component contribution.
+Conversely, a two-source component amplitude is obtained by differentiating
+\eqref{eq:glsm-one-vortex-source-functional} before setting sources to zero:
+\begin{equation}
+  \left.
+  \frac{\partial^2\mathcal Z^{(1)}_{i,\Lambda}}
+       {\partial\lambda_+\partial\lambda_-}
+  \right|_{\lambda=J=0}
+  =
+  e^{-Y_i}
+  \int_{\mathcal U_{i,1,\Lambda}}
+  e^{-S^{\rm red}_{i,1,\Lambda}(z)}
+  \mathcal W^{\rm nz}_{i,1,\Lambda}(z)
+  U_{+,\Lambda}(z)U_{-,\Lambda}(z)
+  \mathcal Z^{0,{\rm res}}_{i,F,\Lambda}(z)
+  \dd\nu_{i,1,\Lambda}(z),
+  \label{eq:glsm-one-vortex-source-derivative}
+\end{equation}
+after residual zero modes are saturated.  The functions \(U_{\pm,\Lambda}\)
+are source-to-zero-mode overlaps.  They are part of the physical component
+amplitude and cannot be replaced by one unless the source normalization has
+been transported to the same determinant-line convention as
+\eqref{eq:glsm-one-vortex-fterm-projection}.
+
+Thus a direct instanton/source comparison has the residual form
+\begin{equation}
+  A^{(1)}_{i,\Lambda}(\mathcal O)
+  -
+  e^{-Y_i}c_{i,\Lambda}I^{0}_{\mathcal O,\Lambda}
+  =
+  R_{\rm src}+R_{\rm prop}+R_{\rm det}
+  +R_{\rm zm}+R_{\rm cpt}+R_{\rm cont},
+  \label{eq:glsm-one-vortex-source-amplitude-telescope}
+\end{equation}
+where \(I^{0}_{\mathcal O,\Lambda}\) is the retained zero-mode/source
+overlap in the normalized convention, \(R_{\rm src}\) records source
+wavefunction and operator-coordinate transport, \(R_{\rm prop}\) records
+primed nonzero-mode propagator contractions beyond the determinant factor,
+and the remaining terms have the same determinant, zero-mode,
+compactification, and continuum meanings as above.  If the residuals are
+bounded by \(B_\alpha\), then
+\begin{equation}
+  \left|
+  A^{(1)}_{i,\Lambda}(\mathcal O)
+  -
+  e^{-Y_i}c_{i,\Lambda}I^{0}_{\mathcal O,\Lambda}
+  \right|
+  \le
+  B_{\rm src}+B_{\rm prop}+B_{\rm det}
+  +B_{\rm zm}+B_{\rm cpt}+B_{\rm cont}.
+  \label{eq:glsm-one-vortex-source-amplitude-bound}
+\end{equation}
+The compact mirror monomial supplies the factor \(e^{-Y_i}\), and the
+collective-coordinate chart supplies only the bosonic integration variables.
+The source-differentiated amplitude additionally requires the primed
+fluctuation determinant, the ghost density, the zero-mode wavefunctions, the
+source/operator normalization, and the residual Berezin gate.  This is why a
+moduli-space count, a Coulomb logarithm, or a formal Hori--Vafa exponential
+cannot by itself replace the regulated instanton amplitude.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Single-vortex coefficient noncancellation bound]
 \label{ca:glsm-vortex-coefficient-noncancellation}
 Fix a compact retained window
