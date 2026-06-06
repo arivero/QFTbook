@@ -803,6 +803,131 @@ the same Haar-projected, amputated, windowed, and physically projected kernel.
 Changing any of those data changes the amplitude coordinate, even though the
 underlying instanton saddle is unchanged.
 
+\section{First Cluster Corrections Are Amplitude Data}
+\label{sec:instanton-first-cluster-amplitude-correction}
+
+Equation~\eqref{eq:instanton-hard-assembled-channel} is a \(Q=1\) source
+coefficient.  Taken alone, it leaves sector isolation from neighboring
+topological sectors unproved.  The next obstruction lies in the connected
+two-body amplitude in the same regulator, source frame, and physical
+projection.
+
+Let \(\sigma,\tau\in\{+,-\}\) denote instanton and anti-instanton charges,
+and write \(z_1,z_2\) for their collective coordinates after the common
+center has been separated.  In a retained two-body chart, the source-channel
+cluster coefficient has the form
+\begin{equation}
+  \mathcal A_{\sigma\tau}^{\rm conn}(\mathcal J)
+  =
+  \ee^{\ii(\sigma+\tau)\bar\theta}
+  \int_{\mathcal W_{\sigma\tau}}
+  \left[
+    K_{\sigma\tau}^{\rm full}(z_1,z_2;\mathcal J)
+    -
+    K_{\sigma}^{(1)}(z_1;\mathcal J)
+    K_{\tau}^{(1)}(z_2;\mathcal J)
+  \right]\,
+  \dd\nu_{\sigma\tau}(z_1,z_2).
+  \label{eq:instanton-pair-connected-source-coefficient}
+\end{equation}
+The full two-body kernel includes the relative quasi-zero-mode interaction,
+the zero-mode overlap matrix, the nonzero-mode determinant in the pair
+background, the source insertion, and the final projection.  The second term
+is the disconnected product of the two already-counted one-body channels.
+Removing it is part of the amplitude calculation, not an aesthetic
+normalization choice.  Without this subtraction the cluster coefficient
+double counts the Poisson term.
+
+For \(\sigma+\tau=0\), the pair is theta-neutral.  That does not make it
+irrelevant.  An instanton--anti-instanton molecule may change a source
+correlator through zero-mode overlap singular values or through the
+source-dependent nonzero-mode quotient even though it contributes no
+\(\bar\theta\)-curvature at this order.  For \(\sigma+\tau=\pm2\), the
+same-charge pair carries a second theta harmonic; in a vacuum handoff it is
+the source of the first \(\cos(2\bar\theta)\) correction described in
+ControlledApproximation~\ref{ca:first-cluster-correction-dilute-instantons}.
+Thus theta curvature, hard source coefficients, and neutral-pair source
+correlators again read different pieces of the same finite-regulator
+instanton ensemble.
+
+\begin{controlledapproximation}[First cluster correction to a source amplitude]
+\label{ca:instanton-first-cluster-amplitude-correction}
+Fix a one-instanton source channel \(\mathcal C\) and its anti-instanton
+conjugate in the same scheme.  A first cluster approximation to the selected
+source amplitude has the ordered form
+\begin{equation}
+  \mathcal A_{\rm cl}^{(2)}(\mathcal J)
+  =
+  \mathcal A_+^{(1)}(\mathcal J)
+  +\mathcal A_-^{(1)}(\mathcal J)
+  +\sum_{\sigma,\tau\in\{+,-\}}
+    \mathcal A_{\sigma\tau}^{\rm conn}(\mathcal J)
+  +R_{\ge3}^{\rm cl}(\mathcal J).
+  \label{eq:instanton-source-first-cluster-assembly}
+\end{equation}
+Let \(C_{\sigma\tau}^{0}(z_1,z_2;\mathcal J)\) be the retained leading
+connected pair kernel after the disconnected one-body product in
+\eqref{eq:instanton-pair-connected-source-coefficient} has been subtracted,
+and set
+\[
+  H_{\sigma\tau}^{0}(\mathcal J)
+  =
+  \int_{\mathcal W_{\sigma\tau}}
+  C_{\sigma\tau}^{0}(z_1,z_2;\mathcal J)\,\dd\nu_{\sigma\tau},
+  \qquad
+  M_{\sigma\tau}^{0}(\mathcal J)
+  =
+  \int_{\mathcal W_{\sigma\tau}}
+  |C_{\sigma\tau}^{0}(z_1,z_2;\mathcal J)|\,\dd|\nu_{\sigma\tau}|.
+\]
+Assume the retained pair kernel differs from \(C_{\sigma\tau}^{0}\) by
+multiplicative corrections
+\[
+  \mathcal R_y=1+\delta_y,\qquad |\delta_y|\le e_y,
+  \qquad
+  y\in\{{\rm qzm},{\rm ov},{\rm nz},{\rm src},{\rm phys}\},
+\]
+where the entries are, respectively, the relative quasi-zero-mode
+interaction, zero-mode overlap determinant, nonzero-mode determinant mismatch,
+source-kernel correction, and physical-projection mismatch.  Let
+\[
+  \epsilon_{\sigma\tau}^{\rm pair}
+  =
+  \prod_y(1+e_y)-1,
+\]
+and let \(R_{\sigma\tau}^{\rm tail}\) denote the absolute remainder from
+relative-coordinate tails, collision faces, and the boundary of the two-body
+window.  Then
+\begin{equation}
+  \left|
+  \mathcal A_{\sigma\tau}^{\rm conn}(\mathcal J)
+  -
+  \ee^{\ii(\sigma+\tau)\bar\theta}
+  H_{\sigma\tau}^{0}(\mathcal J)
+  \right|
+  \le
+  \epsilon_{\sigma\tau}^{\rm pair}
+  M_{\sigma\tau}^{0}(\mathcal J)
+  +R_{\sigma\tau}^{\rm tail}.
+  \label{eq:instanton-source-first-cluster-bound}
+\end{equation}
+The relative-coordinate finiteness needed to make
+\(R_{\sigma\tau}^{\rm tail}\) small is the integrability condition of
+ControlledApproximation~\ref{ca:instanton-two-body-cluster-integrability},
+transported to the present source and projection data.
+
+This ledger has three immediate negative controls.  First, replacing
+\(K_{\sigma\tau}^{\rm full}\) by the product
+\(K_{\sigma}^{(1)}K_{\tau}^{(1)}\) gives zero connected cluster data and only
+recovers the Poisson approximation.  Second, using theta curvature to bound a
+neutral \(I\bar I\) source coefficient misses the case
+\(\sigma+\tau=0\), where the theta phase is trivial but the source kernel or
+zero-mode overlap can be nonzero.  Third, a one-instanton sector-isolation
+claim must budget the absolute size of the retained pair terms in
+\eqref{eq:instanton-source-first-cluster-assembly}; finite one-body density,
+by itself, does not control \(R_{\rm sec}\).
+\end{controlledapproximation}
+
 \section{Observable Handoffs Are Not Interchangeable}
 \label{sec:instanton-observable-handoffs}
 

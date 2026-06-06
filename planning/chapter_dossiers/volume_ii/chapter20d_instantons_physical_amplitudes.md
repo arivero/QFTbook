@@ -69,6 +69,13 @@
 - `ca:instanton-hard-amplitude-assembly-ledger`: assembled hard-amplitude
   absolute error bound, with noncancellation margin required before relative
   scale-law claims are allowed.
+- `sec:instanton-first-cluster-amplitude-correction`: source-amplitude bridge
+  from the assembled one-instanton coefficient to the first connected
+  instanton-pair correction.
+- `ca:instanton-first-cluster-amplitude-correction`: first cluster correction
+  ledger for a source amplitude, including disconnected one-body subtraction,
+  neutral-pair source visibility, same-charge theta harmonic data, pair-kernel
+  residual control, and the sector-isolation consequence.
 - `sec:instanton-observable-handoffs`: physics handoff block distinguishing a
   hard source coefficient, theta curvature, \(U(1)_A\)-odd susceptibility
   kernel, and real-time axial relaxation rate.
@@ -120,6 +127,12 @@
   a hard four-source coefficient, a dilute theta curvature, a zero-mode-zone
   \(U(1)_A\)-odd kernel, and a real-time Chern--Simons diffusion rate are
   separate final maps from the instanton-side data.
+- The first cluster correction block addresses the next amplitude obstruction
+  after the one-instanton hard coefficient.  It treats the neutral
+  instanton--anti-instanton and same-charge pair sectors as source/projection
+  data: the disconnected product must be subtracted, the neutral pair can
+  affect source correlators without theta curvature, and the same-charge pair
+  carries the first second-harmonic theta correction.
 - The `Q^(-35/3)` hard-scale behavior is tied to `b0=29/3` and four individual
   hard zero-mode form factors.  The large-size endpoint is convergent but slow,
   with a retained-tail majorant of order `R^(-1/3)`, so a window/stability
@@ -155,6 +168,10 @@
   verifies the observable-handoff distinction between hard source coefficients,
   dilute theta curvature, \(U(1)_A\)-odd zero-mode-zone kernels, real-time
   axial rates, and Witten--Veneziano curvature comparison budgets,
+  verifies the first connected instanton-pair source correction, including
+  disconnected subtraction, neutral-pair source visibility despite zero theta
+  curvature, same-charge second-harmonic data, zero-mode overlap survival, and
+  pair residual control,
   builds moduli-equivalent finite cell channels with different or vanishing
   amplitudes, constructs a same-Euclidean-sum/different-projection ambiguity,
   checks the SU(3), `N_f=2` hard four-source scale and tail powers, validates
@@ -199,3 +216,7 @@
   instanton amplitude to QCD observables, explicitly separating hard source
   coefficients, theta curvature, \(U(1)_A\)-odd susceptibility kernels, and
   real-time axial relaxation rates.
+- 2026-06-06 first cluster amplitude pass: added the connected instanton-pair
+  correction ledger to the dedicated physical-amplitude chapter.  This is a
+  sector-isolation and source-observable improvement, not a moduli-space
+  expansion.

@@ -35,6 +35,10 @@ Target claims:
   must still be mapped to a named physical observable; hard source
   coefficients, theta curvatures, U(1)_A susceptibility kernels, and real-time
   axial relaxation rates are not interchangeable.
+- `ca:instanton-first-cluster-amplitude-correction`: a first connected
+  two-body correction to a source amplitude requires the disconnected one-body
+  product subtraction, a source/projection-specific pair kernel, absolute pair
+  residual control, and a separate reading of neutral and same-charge pairs.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell residuals
   and source-determinant perturbations obey the displayed absolute bounds.
 - `prop:su3-nf2-hard-source-power-slow-tail` and
@@ -50,6 +54,7 @@ Independent construction:
   multiplicative hard-amplitude assembly bounds on signed windows,
   finite observable-handoff comparisons for theta, U(1)_A, and real-time
   axial channels,
+  first connected instanton-pair source corrections,
   physical projection bins, residual sums, and hard-window power ledgers
   directly, rather than importing BPST radial integrals or copying a monograph
   coefficient.
@@ -74,7 +79,9 @@ Negative controls:
   hard source coefficient used as a theta susceptibility, a dilute
   topological susceptibility used as a real-time rate, a dilute instanton
   curvature substituted for Witten-Veneziano curvature without a comparison
-  budget, a
+  budget, a neutral pair controlled only by theta curvature, a disconnected
+  pair product counted as a connected source correction, a one-body
+  sector-isolation budget that omits pair leakage, a
   single Euclidean cell sum used as a spectral-bin observable, a
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
   slot, and a residual bound that omits the external projection/sector
@@ -589,6 +596,125 @@ def check_observable_handoff_ledger() -> None:
     )
 
 
+def check_first_cluster_amplitude_correction_ledger() -> None:
+    one_body_plus = Fraction(5, 11)
+    one_body_minus = Fraction(7, 13)
+    disconnected_product = one_body_plus * one_body_minus
+    neutral_connected = Fraction(3, 17)
+    full_neutral_pair_kernel = disconnected_product + neutral_connected
+
+    cluster_assembled = one_body_plus + one_body_minus + neutral_connected
+    unsubtracted_assembled = (
+        one_body_plus + one_body_minus + full_neutral_pair_kernel
+    )
+    assert_equal(
+        "pair disconnected subtraction removes one-body product",
+        unsubtracted_assembled - cluster_assembled,
+        disconnected_product,
+    )
+    assert_not_equal(
+        "full pair kernel is not a connected source correction",
+        full_neutral_pair_kernel,
+        neutral_connected,
+    )
+
+    source_projection = Fraction(19, 23)
+    neutral_source_coefficient = source_projection * neutral_connected
+    neutral_topological_charge = 0
+    neutral_theta_curvature = (
+        neutral_topological_charge * neutral_topological_charge * neutral_connected
+    )
+    assert_equal(
+        "neutral pair has zero theta curvature charge",
+        neutral_theta_curvature,
+        Fraction(0),
+    )
+    assert_gt(
+        "neutral pair source coefficient can be nonzero",
+        float(abs(neutral_source_coefficient)),
+        0.0,
+    )
+    assert_not_equal(
+        "theta curvature cannot bound a neutral source pair",
+        abs(neutral_source_coefficient),
+        neutral_theta_curvature,
+    )
+
+    same_charge_connected = Fraction(2, 19)
+    same_charge_topological_charge = 2
+    same_charge_theta_curvature = (
+        same_charge_topological_charge
+        * same_charge_topological_charge
+        * same_charge_connected
+    )
+    assert_equal(
+        "same-charge pair carries second harmonic curvature weight",
+        same_charge_theta_curvature,
+        Fraction(8, 19),
+    )
+    assert_not_equal(
+        "neutral and same-charge pairs are different handoff data",
+        same_charge_theta_curvature,
+        neutral_theta_curvature,
+    )
+
+    singular_values = [Fraction(1, 5), Fraction(2, 7)]
+    mass = Fraction(1, 11)
+    overlap_weight = product(
+        [mass * mass + singular * singular for singular in singular_values]
+    )
+    independent_mass_weight = mass ** (2 * len(singular_values))
+    massless_overlap_weight = product(
+        [singular * singular for singular in singular_values]
+    )
+    assert_not_equal(
+        "IbarI overlap is not independent mass saturation",
+        overlap_weight,
+        independent_mass_weight,
+    )
+    assert_gt(
+        "massless neutral overlap channel can survive",
+        float(massless_overlap_weight),
+        0.0,
+    )
+
+    connected_cells = [Fraction(1), -Fraction(97, 100), Fraction(3, 100)]
+    leading_connected_window = sum(connected_cells, Fraction(0))
+    absolute_connected_mass = sum(abs(cell) for cell in connected_cells)
+    pair_corrections = [
+        Fraction(1, 20),
+        -Fraction(1, 25),
+        Fraction(1, 30),
+        -Fraction(1, 40),
+        Fraction(1, 50),
+    ]
+    correction_multiplier = product([1 + error for error in pair_corrections])
+    epsilon_pair = product([1 + abs(error) for error in pair_corrections]) - 1
+    exact_connected_window = sum(
+        cell * correction_multiplier for cell in connected_cells
+    )
+    tail_actual = Fraction(1, 149)
+    tail_bound = Fraction(1, 97)
+    assert_leq(
+        "connected pair absolute product-plus-tail bound",
+        float(abs(exact_connected_window + tail_actual - leading_connected_window)),
+        float(epsilon_pair * absolute_connected_mass + tail_bound),
+    )
+    assert_equal(
+        "connected pair leading signed window",
+        leading_connected_window,
+        Fraction(3, 50),
+    )
+
+    one_body_sector_bound = Fraction(1, 31)
+    pair_sector_leakage = abs(neutral_source_coefficient)
+    assert_gt(
+        "one-body sector budget omits neutral pair leakage",
+        float(one_body_sector_bound + pair_sector_leakage),
+        float(one_body_sector_bound),
+    )
+
+
 def check_two_flavor_mass_source_determinant_coordinate() -> None:
     m_u = Fraction(2, 5)
     m_d = Fraction(3, 7)
@@ -819,6 +945,7 @@ def main() -> None:
     check_nonzero_mode_source_fluctuation_quotient()
     check_hard_amplitude_assembly_ledger()
     check_observable_handoff_ledger()
+    check_first_cluster_amplitude_correction_ledger()
     check_two_flavor_mass_source_determinant_coordinate()
     check_moduli_equivalent_channel_separation()
     check_projection_not_recoverable_from_one_euclidean_sum()

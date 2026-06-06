@@ -777,6 +777,9 @@ Current checks:
   control,
   the observable-handoff distinction among hard source coefficients, theta
   curvatures, \(U(1)_A\)-odd kernels, and real-time axial relaxation rates,
+  the first connected instanton-pair source correction with disconnected
+  subtraction, neutral-pair source visibility, same-charge second-harmonic
+  data, zero-mode overlap survival, and pair residual control,
   the two-flavor \(\det(M+B)\) source/mass polynomial, the distinction between
   mass-saturated vacuum activity and the four-source coefficient,
   moduli-equivalent channels with different or zero amplitudes because of
@@ -793,8 +796,10 @@ Current checks:
   noncancellation margin, hard source coefficients used as theta
   susceptibilities, dilute curvatures used as real-time rates, dilute
   instanton curvature substituted for Witten--Veneziano input without a
-  comparison budget, determinant-only hard ratio, missing hard slot, one-number
-  spectral projection, and omitted external residual.
+  comparison budget, theta-curvature-only control of a neutral pair, connected
+  pair correction without disconnected subtraction, one-body sector budgets
+  that omit pair leakage, determinant-only hard ratio, missing hard slot,
+  one-number spectral projection, and omitted external residual.
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
   gauge-Higgs soliton and collective-coordinate section, including the
   Bogomolny and vortex square completions, the Prasad-Sommerfield profile
