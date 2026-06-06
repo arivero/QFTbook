@@ -146,7 +146,11 @@ Current checks:
   templates and an off-diagonal flavor pair, the local and
   finite determinant-line obstruction checks used in the chiral-lattice
   regulator discussion, including small-cell local holonomy exponents and
-  the weak-\(SU(2)\) Pfaffian parity sign,
+  the weak-\(SU(2)\) Pfaffian parity sign, plus the extended evidence-contract
+  route comparing rational \(Y\) and rescaled \(y=6Y\) anomaly coordinates
+  and rejecting missing spectator multiplicities, right-handed particle-charge
+  signs, and total inter-generation cancellation as substitutes for the
+  one-generation determinant-line condition,
   strong-CP phase invariance, one-loop gauge beta-function coefficients, GUT
   hypercharge-rescaling conversion, the top-Higgs one-loop subsystem
   coefficients and rank-one matrix-beta specialization, the Higgs

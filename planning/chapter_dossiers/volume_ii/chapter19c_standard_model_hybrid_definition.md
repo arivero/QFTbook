@@ -342,3 +342,15 @@
 - 2026-06-05 issue #798 cross-reference pass: the hybrid-definition paragraph
   now points the QCD lattice-continuum comparison to the separated pure
   Yang--Mills central conjecture instead of the old continuum-limit label.
+- 2026-06-06 issue #725 evidence-contract pass: promoted
+  `standard_model_anomaly_checks.py` to the extended evidence tier for the
+  Standard Model anomaly and hybrid-definition companion.  The chapter now
+  includes a reader-facing remark clarifying that the anomaly sums certify the
+  declared one-generation left-handed Weyl representation with spectator
+  multiplicities and \(Q=T^3+Y\) normalization; cancellations produced by
+  dropping multiplicities, using right-handed particle charges, or summing
+  unlike generations are different chiral gauge data.  The companion now
+  independently rebuilds the anomaly vector in \(Y\) and \(y=6Y\) coordinates,
+  tests generationwise cancellation, and adds adversarial failures for those
+  shortcuts while leaving full chiral-gauge regulator construction and
+  continuum Standard Model existence outside scope.

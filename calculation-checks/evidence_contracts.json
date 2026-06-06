@@ -244,6 +244,17 @@
     {
       "path": "nielsen_identity_effective_potential_checks.py",
       "risk_class": "gauge-effective-action Nielsen identity"
+    },
+    {
+      "path": "standard_model_anomaly_checks.py",
+      "risk_class": "Standard Model anomaly and hybrid-definition consistency",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "left-handed Weyl conjugate-field convention",
+        "Q=T3+Y hypercharge normalization and y=6Y global-form coordinate",
+        "spectator multiplicities in local anomaly polynomial coefficients",
+        "determinant-line small-cell holonomy and weak-SU2 Pfaffian parity"
+      ]
     }
   ]
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Finite checks for the Standard Model hybrid-definition chapter.
+r"""Finite checks for the Standard Model hybrid-definition chapter.
 
 The chapter uses left-handed Weyl fields:
 
@@ -12,15 +12,93 @@ The chapter uses left-handed Weyl fields:
 The script checks the hypercharge anomaly sums, global-form arithmetic,
 flavor counting, electroweak identities, and one-loop RG coefficients used in
 the chapter.
+
+Evidence contract.
+
+Target claims:
+  Volume II, Chapter 19c uses one-generation Standard Model anomaly
+  cancellation, the weak global-anomaly parity condition, the Z6 global-form
+  kernel, the determinant-line obstruction boundary for chiral lattice
+  regulators, and selected hybrid-definition identities for electroweak,
+  flavor, SMEFT, RG, and low-energy observable coordinates.
+
+Independent construction:
+  The checks recompute the anomaly coefficients from primitive left-handed
+  Weyl representation data, repeat the local anomaly calculation in both
+  rational Y and rescaled y=6Y coordinates, test generation-by-generation
+  cancellation instead of only a total sum, construct the determinant-line
+  small-cell and SU(2) Pfaffian sign tests as finite models, and separately
+  verify electroweak/flavor/SMEFT/RG identities from rational inputs.  They
+  do not import a final manuscript table as a black-box answer.
+
+Imported assumptions:
+  The local anomaly polynomial/descent normalization, the interpretation of
+  the weak SU(2) mod-two obstruction, the perturbative one-loop RG
+  calculation, the effective-field-theory operator basis, and the hybrid
+  Standard Model separation between nonperturbative QCD matrix elements and
+  perturbative electroweak matching are imported physics inputs.
+
+Negative controls:
+  The suite rejects missing spectator multiplicities, right-handed
+  particle-charge signs in place of left-handed conjugate fields, total
+  inter-generation anomaly cancellation used as a substitute for the
+  one-generation claim, nonzero determinant-line small-cell holonomy, an odd
+  weak-doublet Pfaffian sign, raw mostly-plus vector currents without the
+  monograph factor i, and several SMEFT/RG/observable normalization shortcuts.
+
+Scope boundary:
+  These are exact finite representation, convention, determinant-line
+  obstruction, and hybrid-coordinate checks.  They are not a construction of a
+  four-dimensional chiral-gauge lattice regulator, a proof of continuum
+  Standard Model existence, or a nonperturbative derivation of electroweak
+  amplitudes.
+
+Primary derivation route:
+  The manuscript route starts from the declared left-handed Weyl field
+  content, forms the local cubic anomaly tensor and mixed gravitational
+  coefficient with spectator multiplicities, checks the SU(2) mod-two parity,
+  then uses those coefficients as necessary determinant-line data for the
+  finite chiral-gauge regulator discussion.
+
+Independent verification route:
+  The executable route starts from primitive tuples of color dimension, weak
+  dimension, conjugation sign, and hypercharge.  It rebuilds the anomaly
+  vector, tests the y=6Y basis conversion on a nonvanishing toy deformation,
+  checks each physical generation separately, and uses finite holonomy/sign
+  models for the local and global determinant-line obstructions.
+
+Convention dependencies:
+  Left-handed Weyl fields including u^c,d^c,e^c, Q=T^3+Y hypercharge
+  normalization, integer y=6Y for the global-form kernel, common quadratic
+  indices factored out of mixed G^2U(1) sums, cubic color index changing sign
+  under conjugation, mostly-plus spinor adjoint signs, and monograph Warsaw
+  vector-current coordinates with an explicit factor i.
+
+Domain and remainder assumptions:
+  The anomaly checks apply to the exact finite representation content and to
+  local determinant-line obstruction models before continuum scaling.  Physical
+  Standard Model predictions still require gauge fixing or BV restoration,
+  regulator locality/reconstruction, renormalized matching, nonperturbative
+  QCD matrix elements, and truncation/error control in the relevant EFT or
+  perturbative expansion.
+
+Remaining unproved or conditional:
+  A fully nonperturbative chiral-gauge regulator for the electroweak theory,
+  continuum reconstruction of the complete hybrid Standard Model, all-order
+  matching beyond stated perturbative inputs, and precision observable error
+  budgets remain outside this finite companion.
 """
 
 from __future__ import annotations
 
 from fractions import Fraction
 from math import comb
+from typing import Callable
 
 
 FlavorIndex = tuple[int, int]
+FieldData = tuple[str, int, int, Fraction, bool]
+AnomalyVector = dict[str, Fraction]
 
 
 FIELDS = [
@@ -30,6 +108,22 @@ FIELDS = [
     ("L_L", 1, 2, Fraction(-1, 2), True),
     ("e^c", 1, 1, Fraction(1, 1), False),
 ]
+
+COLOR_CUBIC_SIGN = {
+    "Q_L": 1,
+    "u^c": -1,
+    "d^c": -1,
+    "L_L": 0,
+    "e^c": 0,
+}
+
+ANOMALY_KEYS = (
+    "SU(3)^3",
+    "SU(3)^2 U(1)",
+    "SU(2)^2 U(1)",
+    "U(1)^3",
+    "grav^2 U(1)",
+)
 
 INTEGER_HYPERCHARGES = {
     "Q_L": 1,
@@ -61,6 +155,67 @@ def assert_zero(name: str, value: Fraction) -> None:
 def assert_equal(name: str, value, expected) -> None:
     if value != expected:
         raise AssertionError(f"{name} = {value}, expected {expected}")
+
+
+def assert_nonzero(name: str, value: Fraction) -> None:
+    if value == 0:
+        raise AssertionError(f"{name} unexpectedly vanished")
+
+
+def assert_raises(name: str, callback: Callable[[], None]) -> None:
+    try:
+        callback()
+    except AssertionError:
+        return
+    raise AssertionError(f"{name} did not reject the bad input")
+
+
+def anomaly_vector(fields: list[FieldData]) -> AnomalyVector:
+    return {
+        "SU(3)^3": sum(
+            Fraction(su2_dim * COLOR_CUBIC_SIGN[name])
+            for name, _, su2_dim, _, _ in fields
+        ),
+        "SU(3)^2 U(1)": sum(
+            su2_dim * hypercharge
+            for _, su3_dim, su2_dim, hypercharge, _ in fields
+            if su3_dim == 3
+        ),
+        "SU(2)^2 U(1)": sum(
+            su3_dim * hypercharge
+            for _, su3_dim, su2_dim, hypercharge, _ in fields
+            if su2_dim == 2
+        ),
+        "U(1)^3": sum(
+            su3_dim * su2_dim * hypercharge**3
+            for _, su3_dim, su2_dim, hypercharge, _ in fields
+        ),
+        "grav^2 U(1)": sum(
+            su3_dim * su2_dim * hypercharge
+            for _, su3_dim, su2_dim, hypercharge, _ in fields
+        ),
+    }
+
+
+def assert_anomaly_vector_zero(name: str, vector: AnomalyVector) -> None:
+    for key in ANOMALY_KEYS:
+        assert_zero(f"{name} {key}", vector[key])
+
+
+def vector_add(left: AnomalyVector, right: AnomalyVector) -> AnomalyVector:
+    return {key: left[key] + right[key] for key in ANOMALY_KEYS}
+
+
+def require_generationwise_anomaly_cancellation(vectors: list[AnomalyVector]) -> None:
+    for index, vector in enumerate(vectors, start=1):
+        assert_anomaly_vector_zero(f"generation {index}", vector)
+
+
+def rescale_hypercharge(fields: list[FieldData], scale: Fraction) -> list[FieldData]:
+    return [
+        (name, su3_dim, su2_dim, scale * hypercharge, is_weak_doublet)
+        for name, su3_dim, su2_dim, hypercharge, is_weak_doublet in fields
+    ]
 
 
 def adjoint_flavor_pair(pair: FlavorIndex) -> FlavorIndex:
@@ -134,6 +289,78 @@ def check_witten_su2_anomaly() -> None:
         raise AssertionError(f"weak SU(2) doublets per generation = {doublets}, expected even")
     if 3 * doublets % 2 != 0:
         raise AssertionError("three-generation weak-doublet count should remain even")
+
+
+def check_generationwise_anomaly_contract() -> None:
+    physical_vector = anomaly_vector(FIELDS)
+    assert_anomaly_vector_zero("one-generation SM anomaly vector", physical_vector)
+    require_generationwise_anomaly_cancellation([physical_vector, physical_vector, physical_vector])
+
+    integer_hypercharge_fields = [
+        (
+            name,
+            su3_dim,
+            su2_dim,
+            Fraction(INTEGER_HYPERCHARGES[name]),
+            is_weak_doublet,
+        )
+        for name, su3_dim, su2_dim, _, is_weak_doublet in FIELDS
+    ]
+    assert_anomaly_vector_zero(
+        "one-generation SM integer-y anomaly vector",
+        anomaly_vector(integer_hypercharge_fields),
+    )
+
+    toy_deformation = [
+        (
+            name,
+            su3_dim,
+            su2_dim,
+            hypercharge + (Fraction(1, 5) if name == "Q_L" else Fraction(0)),
+            is_weak_doublet,
+        )
+        for name, su3_dim, su2_dim, hypercharge, is_weak_doublet in FIELDS
+    ]
+    toy_y = anomaly_vector(rescale_hypercharge(toy_deformation, Fraction(6)))
+    toy_y_over_6 = anomaly_vector(toy_deformation)
+    assert_nonzero("toy deformation has a nonzero mixed anomaly", toy_y_over_6["SU(2)^2 U(1)"])
+    assert_equal(
+        "linear anomaly coordinate rescales by 6",
+        toy_y["SU(2)^2 U(1)"],
+        6 * toy_y_over_6["SU(2)^2 U(1)"],
+    )
+    assert_equal(
+        "cubic anomaly coordinate rescales by 6^3",
+        toy_y["U(1)^3"],
+        6**3 * toy_y_over_6["U(1)^3"],
+    )
+
+    without_spectator_multiplicity = sum(hypercharge**3 for _, _, _, hypercharge, _ in FIELDS)
+    assert_nonzero("U(1)^3 anomaly without spectator multiplicities", without_spectator_multiplicity)
+
+    right_handed_particle_charge_signs = [
+        (
+            name,
+            su3_dim,
+            su2_dim,
+            -hypercharge if name in {"u^c", "d^c", "e^c"} else hypercharge,
+            is_weak_doublet,
+        )
+        for name, su3_dim, su2_dim, hypercharge, is_weak_doublet in FIELDS
+    ]
+    wrong_sign_vector = anomaly_vector(right_handed_particle_charge_signs)
+    assert_nonzero("wrong-sign SU(3)^2 U(1) anomaly", wrong_sign_vector["SU(3)^2 U(1)"])
+    assert_nonzero("wrong-sign U(1)^3 anomaly", wrong_sign_vector["U(1)^3"])
+
+    fake_plus = dict.fromkeys(ANOMALY_KEYS, Fraction(0))
+    fake_minus = dict.fromkeys(ANOMALY_KEYS, Fraction(0))
+    fake_plus["U(1)^3"] = Fraction(1, 7)
+    fake_minus["U(1)^3"] = Fraction(-1, 7)
+    assert_anomaly_vector_zero("summed fake two-generation vector", vector_add(fake_plus, fake_minus))
+    assert_raises(
+        "inter-generation cancellation is not the one-generation SM claim",
+        lambda: require_generationwise_anomaly_cancellation([fake_plus, fake_minus]),
+    )
 
 
 def check_electric_charges() -> None:
@@ -658,6 +885,7 @@ def main() -> None:
     check_u1_cubic()
     check_mixed_gravitational_u1()
     check_witten_su2_anomaly()
+    check_generationwise_anomaly_contract()
     check_electric_charges()
     check_z6_global_form_generator()
     check_ckm_parameter_counting()
