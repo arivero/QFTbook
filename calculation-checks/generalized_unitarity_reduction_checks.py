@@ -18,10 +18,12 @@ the four-point color-kinematics/double-copy gateway together with the
 one-loop surface-term obstruction to naive double copy.  It also checks a
 finite triple-cut triangle projection after known box residues have been
 subtracted, a finite two-master threshold-mixing model, a two-letter
-master-transport model with boundary and branch negative controls, and the
-finite Laurent-pole ledger that turns a reconstructed virtual amplitude into
-a finite observable only after infrared subtraction, real radiation, and
-scheme transport have been assembled.
+master-transport model with boundary and branch negative controls, the finite
+Laurent-pole ledger that turns a reconstructed virtual amplitude into a finite
+observable only after infrared subtraction, real radiation, and scheme transport
+have been assembled, and the two-loop infrared-pole consistency gate relating
+`A^(2)`, `I^(1) A^(1)`, `I^(2) A^(0)`, and the NNLO finite
+observable.
 
 Evidence contract.
 Target claims: the generalized-unitarity section of Volume II Chapter 6,
@@ -85,7 +87,7 @@ fixed-normalization finite box checks, including pole-subtraction
 bookkeeping, polynomial log algebra, branch continuation, a sector-boundary
 quadrature, and a numerical dilogarithm-parameter integral independent of the
 encoded log-square answer; Laurent-pole arithmetic for virtual/real infrared
-cancellation and finite scheme transport.
+cancellation, finite scheme transport, and two-loop recursive pole subtraction.
 Imported assumptions: dimensional regularization, the standard massless
 two-particle phase-space normalization with the common factor of pi stripped
 off, the Feynman-parameter gamma-function form of the bubble master, and the
@@ -122,7 +124,9 @@ Euclidean branch reuse above the massive two-particle threshold,
 logarithmic one-master shortcuts for the sunrise elliptic maximal cut,
 maximal-cut-only multi-loop reconstruction when lower sectors carry scale,
 branch/path omission in a two-letter master transport, virtual-only
-observable assembly, and untransported finite IR-scheme shifts.
+observable assembly, untransported finite IR-scheme shifts, two-loop remainder
+extraction that drops `I^(1) A^(1)`, and NNLO observable assembly that omits
+the `|F^(1)|^2` hard term.
 Scope boundary: a pass checks the finite reconstruction and reduction
 bookkeeping; it does not compute a nonabelian helicity amplitude from Feynman
 graphs, prove unitarity from Wightman axioms, solve general multi-loop
@@ -241,6 +245,7 @@ CHANNELS = ("s", "t", "u")
 BASIS = ("B_s", "B_t", "B_u", "local", "four_dimensional_rational_null")
 BracketPowers = dict[tuple[int, int], int]
 Laurent = tuple[Fraction, Fraction]
+Laurent3 = tuple[Fraction, Fraction, Fraction]
 Matrix = list[list[Fraction]]
 Vector = list[Fraction]
 LogPolynomial = dict[tuple[int, int], Fraction]
@@ -284,6 +289,30 @@ def laurent_sub(left: Laurent, right: Laurent) -> Laurent:
 
 def laurent_scale(scale: Fraction, value: Laurent) -> Laurent:
     return (scale * value[0], scale * value[1])
+
+
+def laurent3_add(left: Laurent3, right: Laurent3) -> Laurent3:
+    return (left[0] + right[0], left[1] + right[1], left[2] + right[2])
+
+
+def laurent3_sub(left: Laurent3, right: Laurent3) -> Laurent3:
+    return (left[0] - right[0], left[1] - right[1], left[2] - right[2])
+
+
+def laurent3_scale(scale: Fraction, value: Laurent3) -> Laurent3:
+    return (scale * value[0], scale * value[1], scale * value[2])
+
+
+def laurent_to_laurent3(value: Laurent) -> Laurent3:
+    return (Fraction(0), value[0], value[1])
+
+
+def laurent_product_to_laurent3(left: Laurent, right: Laurent) -> Laurent3:
+    return (
+        left[0] * right[0],
+        left[0] * right[1] + left[1] * right[0],
+        left[1] * right[1],
+    )
 
 
 def matrix_mul(left: Matrix, right: Matrix) -> Matrix:
@@ -2087,6 +2116,142 @@ def check_virtual_to_observable_assembly() -> None:
     )
 
 
+def check_two_loop_ir_pole_consistency_gate() -> None:
+    tree = Fraction(3, 5)
+    ir_one_loop = (Fraction(-7, 3), Fraction(5, 11))
+    finite_one_loop = Fraction(13, 17)
+    ir_two_loop = (Fraction(11, 7), Fraction(-2, 5), Fraction(19, 23))
+    finite_two_loop = Fraction(-29, 31)
+
+    one_loop_amplitude = laurent_add(
+        laurent_scale(tree, ir_one_loop),
+        (Fraction(0), finite_one_loop),
+    )
+    one_loop_subtraction_on_one_loop = laurent_product_to_laurent3(
+        ir_one_loop,
+        one_loop_amplitude,
+    )
+    two_loop_subtraction_on_tree = laurent3_scale(tree, ir_two_loop)
+    two_loop_amplitude = laurent3_add(
+        laurent3_add(one_loop_subtraction_on_one_loop, two_loop_subtraction_on_tree),
+        (Fraction(0), Fraction(0), finite_two_loop),
+    )
+
+    extracted_two_loop_remainder = laurent3_sub(
+        laurent3_sub(two_loop_amplitude, one_loop_subtraction_on_one_loop),
+        two_loop_subtraction_on_tree,
+    )
+    assert_equal(
+        "two-loop finite remainder after recursive IR subtraction",
+        extracted_two_loop_remainder,
+        (Fraction(0), Fraction(0), finite_two_loop),
+    )
+
+    expanded_lower_loop_ledger = laurent3_add(
+        laurent3_add(
+            laurent3_scale(tree, laurent_product_to_laurent3(ir_one_loop, ir_one_loop)),
+            two_loop_subtraction_on_tree,
+        ),
+        laurent_to_laurent3(laurent_scale(finite_one_loop, ir_one_loop)),
+    )
+    expanded_two_loop_amplitude = laurent3_add(
+        expanded_lower_loop_ledger,
+        (Fraction(0), Fraction(0), finite_two_loop),
+    )
+    assert_equal(
+        "two-loop pole ledger expanded through lower-loop data",
+        expanded_two_loop_amplitude,
+        two_loop_amplitude,
+    )
+
+    missing_i1_a1 = laurent3_sub(two_loop_amplitude, two_loop_subtraction_on_tree)
+    assert_true(
+        "dropping I1 times A1 leaves two-loop poles",
+        missing_i1_a1[0] != 0 or missing_i1_a1[1] != 0,
+    )
+
+    i1_finite_only = laurent_to_laurent3(
+        laurent_scale(finite_one_loop, ir_one_loop)
+    )
+    missing_i1_squared_tree = laurent3_sub(
+        laurent3_sub(two_loop_amplitude, i1_finite_only),
+        two_loop_subtraction_on_tree,
+    )
+    assert_true(
+        "using only I1 times F1 misses the squared one-loop pole",
+        missing_i1_squared_tree[0] != 0,
+    )
+
+    virtual_virtual = laurent3_add(
+        laurent3_scale(2 * tree, two_loop_amplitude),
+        laurent_product_to_laurent3(one_loop_amplitude, one_loop_amplitude),
+    )
+    hard_finite = 2 * tree * finite_two_loop + finite_one_loop * finite_one_loop
+    real_virtual_double_real_finite = Fraction(37, 41)
+    factorization_finite = Fraction(-5, 37)
+    finite_hard_laurent = (
+        Fraction(0),
+        Fraction(0),
+        hard_finite,
+    )
+    unresolved_subtractions = laurent3_add(
+        laurent3_scale(-1, laurent3_sub(virtual_virtual, finite_hard_laurent)),
+        (
+            Fraction(0),
+            Fraction(0),
+            real_virtual_double_real_finite + factorization_finite,
+        ),
+    )
+    assembled_observable = laurent3_add(virtual_virtual, unresolved_subtractions)
+    expected_observable = (
+        hard_finite
+        + real_virtual_double_real_finite
+        + factorization_finite
+    )
+    assert_equal(
+        "NNLO virtual-real-real pole cancellation",
+        assembled_observable,
+        (Fraction(0), Fraction(0), expected_observable),
+    )
+    assert_true(
+        "NNLO virtual-only contribution still has IR poles",
+        virtual_virtual[0] != 0 or virtual_virtual[1] != 0,
+    )
+
+    omitted_lower_loop_hard_square = (
+        2 * tree * finite_two_loop
+        + real_virtual_double_real_finite
+        + factorization_finite
+    )
+    assert_true(
+        "omitting the one-loop hard square changes the NNLO observable",
+        omitted_lower_loop_hard_square != expected_observable,
+    )
+
+    residuals = {
+        "cut2": Fraction(1, 137),
+        "rational2": Fraction(1, 139),
+        "IBP2": Fraction(1, 149),
+        "master2": Fraction(1, 151),
+        "lower1": Fraction(1, 157),
+        "UV2": Fraction(1, 163),
+        "IR_RV_RR2": Fraction(1, 167),
+        "factorization2": Fraction(1, 173),
+        "measurement2": Fraction(1, 179),
+    }
+    exact_observable = expected_observable + sum(residuals.values(), Fraction(0))
+    majorant = sum(abs(value) for value in residuals.values())
+    assert_true(
+        "two-loop observable reconstruction bound",
+        abs(exact_observable - expected_observable) <= majorant,
+    )
+    underbudget = majorant - abs(residuals["lower1"]) - abs(residuals["IR_RV_RR2"])
+    assert_true(
+        "two-loop residual budget must include lower-loop and IR real sectors",
+        abs(exact_observable - expected_observable) > underbudget,
+    )
+
+
 def main() -> None:
     check_phi4_cut_reconstruction()
     check_phi4_ms_running_from_crossed_cuts()
@@ -2109,6 +2274,7 @@ def main() -> None:
     check_two_master_threshold_mixing()
     check_two_letter_master_transport()
     check_virtual_to_observable_assembly()
+    check_two_loop_ir_pole_consistency_gate()
     print("All generalized unitarity and loop-reduction checks passed.")
 
 

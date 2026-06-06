@@ -47,7 +47,9 @@
   audit exposing connection data, Euclidean boundary constants, branch/path
   prescriptions, lower sectors, and the finite-remainder/observable assembly
   that separates reconstructed virtual amplitudes from infrared-safe physical
-  observables.
+  observables, including a two-loop infrared-pole consistency gate linking
+  \(A^{(2)}\), \(I^{(1)}A^{(1)}\), \(I^{(2)}A^{(0)}\), the lower-loop hard
+  square, and the NNLO observable budget.
 - Records a reader-facing status ledger for named analytic tools in the
   chapter: Wightman/Jost tube theorems are proved locally under their stated
   hypotheses; Jost--Lehmann--Dyson requires separate Dyson-regular and
@@ -81,7 +83,8 @@
   line replacement.
 - Bern--Dixon--Dunbar--Kosower, Bern--Dixon--Kosower, Britto--Cachazo--Feng,
   Ossola--Papadopoulos--Pittau, Forde, Bern--Morgan,
-  Brandhuber--McNamara--Spence--Travaglini, Ussyukina--Davydychev,
+  Brandhuber--McNamara--Spence--Travaglini, Catani,
+  Ussyukina--Davydychev,
   Passarino--Veltman,
   Chetyrkin--Tkachov, Tkachov, Kotikov, Gehrmann--Remiddi,
   Laporta--Remiddi, and Adams--Bogner--Weinzierl form the source
@@ -162,7 +165,9 @@
 | \(S_\alpha,\mathcal J\) | one-loop contact/IBP/evanescent surface numerator shift in a Jacobi graph triplet and its induced kinematic Jacobi defect |
 | \(\mathbf I^{(1)}_\Lambda\) | one-loop infrared subtraction operator used to define the finite remainder in a declared regulator and finite subtraction convention |
 | \(\mathcal F^{(1)}_\Lambda\) | finite one-loop hard remainder after subtracting \(\mathbf I^{(1)}_\Lambda\mathcal A^{(0)}_\Lambda\) |
+| \(\mathbf I^{(2)}_\Lambda\), \(\mathcal F^{(2)}_\Lambda\) | two-loop infrared subtraction operator and hard remainder defined recursively from \(\mathcal A^{(2)}-\mathbf I^{(1)}\mathcal A^{(1)}-\mathbf I^{(2)}\mathcal A^{(0)}\) |
 | \(\mathcal R_\Lambda^{\rm sub}[W]\), \(\mathcal C_\Lambda^{\rm fact}[W]\) | real-emission/subtraction and factorization/matching pieces needed to assemble an infrared-safe observable for measurement \(W\) |
+| \(\mathcal R_\Lambda^{{\rm RV,sub}}[W]\), \(\mathcal R_\Lambda^{{\rm RR,sub}}[W]\) | NNLO real--virtual and double-real subtraction pieces paired with the same infrared subtraction convention |
 | \(B_{\rm cut},B_{\rm rat},B_{\rm IBP},B_{\rm conn},B_{\rm bc},B_{\rm branch},B_{\rm lower},B_{\rm UV},B_{\rm IR/real},B_{\rm fact},B_{\rm meas}\) | residual bounds in the one-loop reconstructed-observable comparison and master-transport audit |
 | \(s_I\) | all-incoming channel invariant \(-(\sum_{i\in I}p_i)^2\), with channel class \([I]=\{I,I^c\}\) |
 | overlapping channels | channel classes \([I]\), \([J]\) for which \(I\cap J\), \(I\setminus J\), \(J\setminus I\), and \((I\cup J)^c\) are all nonempty |
@@ -261,11 +266,11 @@
   noncommuting residues, branch/path prescriptions, and lower-sector residuals;
   it is not claimed to be an additional solved physical integral family beyond
   the explicit finite box master.
-- The finite-observable assembly assumes a declared one-loop infrared
-  subtraction convention, an infrared-safe measurement or matching target,
-  and a real-emission/factorization construction using the same finite
-  subtraction convention as the virtual finite remainder.  It is a comparison
-  datum for one-loop observables, not a proof of all-order factorization.
+- The finite-observable assembly assumes declared one- and two-loop infrared
+  subtraction conventions, an infrared-safe measurement or matching target,
+  and real-emission/factorization constructions using the same finite
+  subtraction convention as the virtual finite remainders.  It is a comparison
+  datum for fixed-order observables, not a proof of all-order factorization.
 - The Steinmann section assumes a declared boundary-value setting before the
   vanishing statement: connected time-ordered kernels or LSZ-reduced amplitudes
   with external pole/contact terms separated; selected channel boundary values
@@ -913,6 +918,18 @@
   the same parent maximal cut but different lower-sector master projections,
   and rejects the shortcut that all lower sectors vanish when only some are
   scaleless.
+- 2026-06-06 issue #769 two-loop IR-pole gate pass: added
+  `ca:two-loop-ir-pole-consistency-gate` after the one-loop
+  virtual-to-observable assembly block.  The new gate records the recursive
+  fixed-order subtraction
+  \(\mathcal F^{(2)}=\mathcal A^{(2)}-\mathbf I^{(1)}\mathcal A^{(1)}
+  -\mathbf I^{(2)}\mathcal A^{(0)}\), expands the equivalent pole ledger through
+  lower-loop data, and adds the NNLO observable assembly term
+  \(\langle \mathcal F^{(1)},\mathcal F^{(1)}\rangle\) plus real--virtual,
+  double-real, and factorization pieces.  The companion check now verifies the
+  two-loop Laurent pole extraction, rejects dropping
+  \(\mathbf I^{(1)}\mathcal A^{(1)}\) or the \(|\mathcal F^{(1)}|^2\) hard term,
+  and tests a two-loop residual budget.
 - 2026-06-05 issue #755 named-tool status pass: added
   `rem:chapter06-named-tool-status-ledger` near the chapter entrance and
   tightened the generalized-unitarity opening.  The pass records which named

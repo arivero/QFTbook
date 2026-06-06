@@ -3810,6 +3810,107 @@ real/factorization term changes the finite number in
 \eqref{eq:one-loop-observable-from-finite-remainder}.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Two-loop infrared-pole consistency gate]
+\label{ca:two-loop-ir-pole-consistency-gate}
+At two loops the virtual reconstruction has a recursive infrared consistency
+test before it can be used as a hard function.  Let
+\(\mathcal A_\Lambda^{(L),{\rm rec}}\) be the UV-renormalized \(L\)-loop
+color-space amplitude obtained from cuts, rational data, sector projection, and
+master integrals in the same regulator and external-state normalization.
+Choose a massless infrared subtraction convention with color-space operators
+\(\mathbf I_\Lambda^{(1)}(\epsilon)\) and
+\(\mathbf I_\Lambda^{(2)}(\epsilon)\)
+\cite{Catani1998TwoLoopIR}.  The hard remainders are defined by
+\begin{align}
+  \mathcal F_\Lambda^{(1)}
+  &:=
+  \mathcal A_\Lambda^{(1),{\rm rec}}
+  -
+  \mathbf I_\Lambda^{(1)}\mathcal A_\Lambda^{(0)},\\
+  \mathcal F_\Lambda^{(2)}
+  &:=
+  \mathcal A_\Lambda^{(2),{\rm rec}}
+  -
+  \mathbf I_\Lambda^{(1)}\mathcal A_\Lambda^{(1),{\rm rec}}
+  -
+  \mathbf I_\Lambda^{(2)}\mathcal A_\Lambda^{(0)} .
+  \label{eq:two-loop-finite-remainder-recursive-definition}
+\end{align}
+The order of the factors is part of the convention, because the infrared
+operators are matrices in color space.  Substituting the one-loop definition
+gives the equivalent pole ledger
+\begin{equation}
+  \mathcal A_\Lambda^{(2),{\rm rec}}
+  =
+  \bigl[(\mathbf I_\Lambda^{(1)})^2+\mathbf I_\Lambda^{(2)}\bigr]
+  \mathcal A_\Lambda^{(0)}
+  +
+  \mathbf I_\Lambda^{(1)}\mathcal F_\Lambda^{(1)}
+  +
+  \mathcal F_\Lambda^{(2)} .
+  \label{eq:two-loop-ir-pole-ledger}
+\end{equation}
+Thus the \(\epsilon^{-4},\ldots,\epsilon^{-1}\) coefficients of the reconstructed
+two-loop amplitude are checked against lower-loop data in the same subtraction
+scheme.  A mismatch is a diagnostic for missing evanescent rational information,
+an omitted lower sector, a UV counterterm mismatch, or an inconsistent infrared
+convention; it is not repaired by changing only the finite hard remainder.
+
+For an infrared-safe measurement \(W\), the NNLO finite comparison uses the
+subtraction bookkeeping form
+\begin{equation}
+  \mathcal O_\Lambda^{(2)}[W]
+  =
+  2\,\operatorname{Re}
+  \bigl\langle
+    \mathcal A_\Lambda^{(0)},\mathcal F_\Lambda^{(2)}
+  \bigr\rangle_W
+  +
+  \bigl\langle
+    \mathcal F_\Lambda^{(1)},\mathcal F_\Lambda^{(1)}
+  \bigr\rangle_W
+  +
+  \mathcal R_\Lambda^{{\rm RV,sub}}[W]
+  +
+  \mathcal R_\Lambda^{{\rm RR,sub}}[W]
+  +
+  \mathcal C_\Lambda^{{\rm fact},(2)}[W].
+  \label{eq:two-loop-observable-from-finite-remainders}
+\end{equation}
+The \(\mathcal F^{(1)}\)-square term is a lower-loop hard contribution, while
+the real--virtual, double-real, and factorization terms use the same
+\(\mathbf I^{(1)},\mathbf I^{(2)}\) convention as
+\eqref{eq:two-loop-finite-remainder-recursive-definition}.  Consequently a
+two-loop amplitude calculation must publish a finite comparison budget with
+\[
+  \Delta_{\rm cut}^{(2)},\quad
+  \Delta_{\rm rat}^{(2)},\quad
+  \Delta_{\rm IBP}^{(2)},\quad
+  \Delta_{\rm master}^{(2)},\quad
+  \Delta_{\rm lower}^{(1)},\quad
+  \Delta_{\rm UV}^{(2)},\quad
+  \Delta_{\rm IR/RV/RR}^{(2)},\quad
+  \Delta_{\rm fact}^{(2)},\quad
+  \Delta_{\rm meas}^{(2)} .
+\]
+If these residuals are bounded by \(B_j[W]\), then the reconstructed NNLO
+observable is controlled by
+\begin{equation}
+  \left|
+    \mathcal O_{\Lambda,{\rm exact}}^{(2)}[W]
+    -
+    \mathcal O_{\Lambda,{\rm rec}}^{(2)}[W]
+  \right|
+  \le
+  \sum_j B_j[W] .
+  \label{eq:two-loop-observable-reconstruction-bound}
+\end{equation}
+This gate is the two-loop version of the warning above: equality of generalized
+cuts and equality of a finite physical prediction are connected only after the
+infrared pole ledger, lower-loop finite remainder, real-radiation subtraction,
+factorization, and measurement data are transported together.
+\end{controlledapproximation}
+
 \section{Steinmann Relations and Sequential Discontinuities}
 \label{sec:steinmann-sequential-discontinuities}
 

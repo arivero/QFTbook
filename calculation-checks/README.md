@@ -2995,7 +2995,10 @@ Current checks:
   and cut-only boundary negative controls, plus the
   Laurent-pole virtual-to-observable assembly check separating the finite hard
   remainder, real-radiation/subtraction cancellation, finite IR-scheme
-  transport, and residual comparison budget.
+  transport, and residual comparison budget, and the two-loop infrared-pole
+  consistency gate relating \(A^{(2)}\), \(I^{(1)}A^{(1)}\),
+  \(I^{(2)}A^{(0)}\), the \(|F^{(1)}|^2\) hard contribution, and the NNLO
+  observable residual budget.
 - `tomita_standard_form_checks.py`: finite matrix checks for the
   Tomita--Takesaki and Connes-standard-form conventions, including the
   Tomita polar data on matrix units, commutant and modular-automorphism
