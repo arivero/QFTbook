@@ -298,9 +298,12 @@ and
   against the direct A-twisted coefficient only through the transported vortex
   fugacity `q_Lambda`, the retained instanton-measure integral
   `I_{Lambda,1}`, FI-coordinate transport, operator/continuum residuals, and
-  off-pairing bounds.  This prevents the protected root sum, the stable-map
-  line count, or the Coulomb normalization check from standing in for the
-  regulated vortex measure and zero-mode calculation.
+  off-pairing bounds.  The direct side now also exposes the finite
+  degree-one incidence determinant `+1`, insertion-degree gate, and
+  compactification exclusion before the residual `I_{Lambda,1}-1` is
+  budgeted.  This prevents the protected root sum, the stable-map line count,
+  or the Coulomb normalization check from standing in for the regulated vortex
+  measure and zero-mode calculation.
 - Derives the classical cigar quotient metric by solving the auxiliary
   constraint, gauge fixing the logarithmic chiral scalar, and eliminating the
   gauge field.
@@ -568,3 +571,11 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   and the remaining full-QFT proof debts before using a Hori--Vafa expression.
   The companion boundary check now rejects a mirror-residue-only comparison
   that bypasses the direct vortex data.
+- The 2026-06-06 issue #626/#597 Hori--Vafa incidence re-audit strengthens
+  the residue/direct-instanton comparison itself.  The companion no longer
+  treats the retained direct measure integral as a chosen near-unit scalar:
+  it computes the degree-one projective-space incidence orientation, selection
+  degree, compactification gate, and operator normalization before adding the
+  determinant-line/measure residual and comparing with the mirror residue.
+  The TeX records the same direct determinant and gate data in the protected
+  comparison block, while process notes remain in planning.

@@ -14,14 +14,17 @@ the quantum-product observable relation, the A-model degree-one zero-mode
 measure bridge, the finite measure-scheme covariance test for that
 degree-one coefficient, and the mirror-conjecture observable boundary separating
 full-QFT data from protected evidence, plus the Hori--Vafa
-residue/direct-instanton comparison map, in Volume VII Chapter 09.
+residue/direct-instanton comparison map, with the direct degree-one incidence
+Jacobian computed before comparison, in Volume VII Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
 elimination, finite chain-complex rank checks, Berezin-degree tests,
 retained-window signed/mass coefficient bounds, root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree filters, and residual
 budgets, plus finite density/Jacobian transport tests and double-entry
-mirror/direct-vortex comparisons, are computed directly from finite data
-rather than by substituting the displayed final identities.
+mirror/direct-vortex comparisons whose direct side includes a separately
+computed incidence orientation, degree gate, and compactification gate, are
+computed directly from finite data rather than by substituting the displayed
+final identities.
 Imported assumptions: the finite GLSM charge matrix, selected regulator-stage
 factorization, supplied vortex coefficients, nonzero-mode determinant
 placeholders, logarithm-branch conventions, and the chapter's
@@ -38,7 +41,7 @@ or vortex-fugacity-only observable claims, stale FI-coordinate changes,
 missing measure Jacobians, untransported orientation signs, protected-sector
 shortcuts to full mirror equivalence, and finite-gauge invariance failures are
 rejected when the finite model can represent them; the Hori--Vafa residue alone
-is also rejected as a substitute for the direct vortex measure package,
+is also rejected as a substitute for the direct incidence/vortex measure package,
 operator map, and off-pairing controls.
 Scope boundary: a pass checks finite algebra and bookkeeping interfaces; it
 does not prove continuum GLSM existence, Hori--Vafa mirror equivalence,
@@ -1043,6 +1046,70 @@ def quantum_product_power(n_fields: int, left_power: int, right_power: int) -> t
     return total_power % n_fields, total_power // n_fields
 
 
+def degree_one_cpn_incidence_factors(n_fields: int) -> dict[str, Fraction]:
+    """Return the finite factors in the CP^{N-1} degree-one incidence chart."""
+
+    variables = (
+        [("A", index) for index in range(1, n_fields)]
+        + [("B", index) for index in range(n_fields)]
+    )
+    constraints = (
+        [("A", index, Fraction(0)) for index in range(1, n_fields)]
+        + [("B", 0, Fraction(0)), ("B", 1, Fraction(1))]
+        + [("B", index, Fraction(0)) for index in range(2, n_fields)]
+    )
+    incidence_matrix = [
+        [
+            Fraction(1) if variable == (kind, index) else Fraction(0)
+            for variable in variables
+        ]
+        for kind, index, _value in constraints
+    ]
+    orientation = determinant_fraction(incidence_matrix)
+
+    solution = {("A", 0): Fraction(1)}
+    solution.update({(kind, index): value for kind, index, value in constraints})
+    first_mark = [solution.get(("A", index), Fraction(0)) for index in range(n_fields)]
+    second_mark = [solution.get(("B", index), Fraction(0)) for index in range(n_fields)]
+    point_zero = [Fraction(1)] + [Fraction(0)] * (n_fields - 1)
+    point_one = [Fraction(0), Fraction(1)] + [Fraction(0)] * (n_fields - 2)
+    hyperplane = [Fraction(-1), Fraction(1)] + [Fraction(0)] * (n_fields - 2)
+
+    def linear_value(linear_form: list[Fraction], point: list[Fraction]) -> Fraction:
+        return sum(
+            (coefficient * coordinate for coefficient, coordinate in zip(linear_form, point)),
+            Fraction(0),
+        )
+
+    boundary_excluded = (
+        first_mark == point_zero
+        and second_mark == point_one
+        and point_zero != point_one
+        and linear_value(hyperplane, point_zero) != 0
+        and linear_value(hyperplane, point_one) != 0
+    )
+    insertion_complex_degree = 1 + (n_fields - 1) + (n_fields - 1)
+    selection_gate = (
+        Fraction(1)
+        if insertion_complex_degree == len(variables)
+        else Fraction(0)
+    )
+    compactification_gate = Fraction(1) if boundary_excluded else Fraction(0)
+    operator_normalization = Fraction(1)
+    return {
+        "orientation": orientation,
+        "selection_gate": selection_gate,
+        "compactification_gate": compactification_gate,
+        "operator_normalization": operator_normalization,
+        "incidence_integral": (
+            orientation
+            * selection_gate
+            * compactification_gate
+            * operator_normalization
+        ),
+    }
+
+
 def check_cp_degree_one_stable_map_quantum_product_gate() -> None:
     for n_fields in range(2, 9):
         degree = 1
@@ -1585,14 +1652,30 @@ def check_degree_one_measure_scheme_covariance() -> None:
 def check_hori_vafa_residue_instanton_comparison_map() -> None:
     # The mirror residue gives S_1(q_mir)=q_mir for the degree-one
     # P^{N-1} product test.  The direct A-model/vortex coefficient uses the
-    # transported vortex fugacity q_lambda, the retained measure integral, and
-    # separate operator/continuum residuals.
+    # transported vortex fugacity q_lambda, the directly computed incidence
+    # integral with its determinant-line measure residual, and separate
+    # operator/continuum residuals.
     n_fields = 5
     degree_one_power = n_fields - 1 + n_fields
     q_mir = Fraction(5, 7)
     q_transport_error = Fraction(1, 101)
     q_lambda = q_mir + q_transport_error
-    retained_measure_integral = Fraction(1) + Fraction(1, 103)
+    incidence = degree_one_cpn_incidence_factors(n_fields)
+    assert_equal("direct degree-one incidence orientation", incidence["orientation"], Fraction(1))
+    assert_equal("direct degree-one incidence degree gate", incidence["selection_gate"], Fraction(1))
+    assert_equal(
+        "direct degree-one compactification gate",
+        incidence["compactification_gate"],
+        Fraction(1),
+    )
+    assert_equal(
+        "direct degree-one incidence integral",
+        incidence["incidence_integral"],
+        Fraction(1),
+    )
+
+    determinant_measure_residual = Fraction(1, 103)
+    retained_measure_integral = incidence["incidence_integral"] + determinant_measure_residual
     vortex_residual = -Fraction(1, 107)
     operator_residual = Fraction(1, 109)
     continuum_residual = -Fraction(1, 113)
@@ -1613,7 +1696,8 @@ def check_hori_vafa_residue_instanton_comparison_map() -> None:
     crosscheck_residual = direct_amodel_coefficient - mirror_residue
     expected_residual = (
         vortex_residual
-        + q_lambda * (retained_measure_integral - 1)
+        + q_lambda * (retained_measure_integral - incidence["incidence_integral"])
+        + q_lambda * (incidence["incidence_integral"] - 1)
         + (q_lambda - q_mir)
         + operator_residual
         + continuum_residual
@@ -1626,13 +1710,15 @@ def check_hori_vafa_residue_instanton_comparison_map() -> None:
 
     bounds = {
         "vortex": abs(vortex_residual),
-        "measure": abs(retained_measure_integral - 1),
+        "incidence": abs(incidence["incidence_integral"] - 1),
+        "measure": abs(determinant_measure_residual),
         "q transport": abs(q_lambda - q_mir),
         "operator": abs(operator_residual),
         "continuum": abs(continuum_residual),
     }
     crosscheck_bound = (
         bounds["vortex"]
+        + abs(q_lambda) * bounds["incidence"]
         + abs(q_lambda) * bounds["measure"]
         + bounds["q transport"]
         + bounds["operator"]
@@ -1665,6 +1751,35 @@ def check_hori_vafa_residue_instanton_comparison_map() -> None:
     stable_map_line_count = Fraction(1)
     if stable_map_line_count == q_lambda:
         raise AssertionError("line count alone should not supply vortex fugacity")
+
+    wrong_incidence_orientation = -incidence["orientation"]
+    wrong_direct_incidence = (
+        q_lambda
+        * wrong_incidence_orientation
+        * incidence["selection_gate"]
+        * incidence["compactification_gate"]
+        * incidence["operator_normalization"]
+    )
+    if wrong_direct_incidence == q_lambda * incidence["incidence_integral"]:
+        raise AssertionError("direct incidence orientation should affect the A-model package")
+    if cp_mirror_residue_trace(n_fields, degree_one_power, q_lambda) == wrong_direct_incidence:
+        raise AssertionError("mirror residue should not hide direct incidence orientation")
+
+    missing_compactification_gate = Fraction(0)
+    boundary_killed_direct = (
+        q_lambda
+        * incidence["orientation"]
+        * incidence["selection_gate"]
+        * missing_compactification_gate
+        * incidence["operator_normalization"]
+    )
+    assert_equal(
+        "failed compactification gate kills direct degree-one package",
+        boundary_killed_direct,
+        Fraction(0),
+    )
+    if cp_mirror_residue_trace(n_fields, degree_one_power, q_lambda) == boundary_killed_direct:
+        raise AssertionError("mirror residue should not bypass compactification gate")
 
     coefficient_rescaling = Fraction(11, 13)
     stale_q = q_lambda * coefficient_rescaling
