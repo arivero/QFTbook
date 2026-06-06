@@ -2323,6 +2323,85 @@ stable-map dimension count gives the geometric line count; neither replaces the
 determinant and fluctuation comparison in the A-twisted path integral.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Degree-\(d\) projective instanton iteration]
+\label{ca:cpn-degree-d-vortex-observable-iteration}
+For \(X=\mathbb P^{N-1}\), the mirror residue calculation predicts
+\[
+  \mathcal R_\Lambda(H^{N-1+dN})=q_\Lambda^d,\qquad d\ge0,
+\]
+in the same coordinate in which the degree-one product reads
+\(H^N=q_\Lambda\).  The exponent \(d\) carries the topological sector
+weight: the K\"ahler area and flat \(B\)-field phase enter through
+\(q_\Lambda^d\).  This compact formula should be read as a sharp protected
+prediction, not as a substitute for the degree-\(d\) instanton computation.
+A direct A-twisted path integral must still isolate the degree-\(d\) sector,
+construct its collective-coordinate measure, remove the universal fermion
+zero modes, saturate the residual Berezin measure by the chosen observable,
+transport the nonzero-mode determinant line and orientation, control boundary
+strata in the stable-map compactification, and compare the operator
+representative with the GLSM observable.
+
+Let
+\[
+  T_{\Lambda,d}
+  =
+  \eta_\Lambda\!\left(
+    H^{N-1}\star_\Lambda (H^N)^{\star d},1
+  \right),
+  \qquad T_{\Lambda,0}=1,
+\]
+where \(\eta_\Lambda\) is the A-twisted topological metric and the
+normalization of \(H\) is the one used in
+ControlledApproximation~\ref{ca:cpn-degree-one-vortex-observable-assembly}.
+Equivalently, one may distribute the same total hyperplane power among marked
+local operators before using the chosen contact-term convention for the
+quantum product.  If the degree-one product is used as the elementary gluing
+step, the degree-\(d\) comparison has the conditional telescope
+\begin{equation}
+  T_{\Lambda,d}-q_\Lambda^d
+  =
+  \sum_{j=1}^{d} q_\Lambda^{d-j}
+    \big(R_{{\rm gl},j}+R_{{\rm off},j}\big)
+  +R_{{\rm det},d}
+  +R_{{\rm zm},d}
+  +R_{{\rm cpt},d}
+  +R_{{\rm op},d}
+  +R_{{\rm cont},d}.
+  \label{eq:cpn-degree-d-vortex-observable-telescope}
+\end{equation}
+Here \(R_{{\rm gl},j}\) is the error in replacing the \(j\)-th sector
+assembly by a glued degree-one block, \(R_{{\rm off},j}\) measures leakage
+into lower pairings during the iteration, \(R_{{\rm det},d}\) and
+\(R_{{\rm zm},d}\) are the determinant-line and fermion-measure comparisons
+in the degree-\(d\) sector, \(R_{{\rm cpt},d}\) records boundary and
+obstruction corrections, \(R_{{\rm op},d}\) records the local representative
+of \(H^{N-1+dN}\), and \(R_{{\rm cont},d}\) is the continuum-regulator
+remainder.  Thus the usable bound is
+\begin{equation}
+  |T_{\Lambda,d}-q_\Lambda^d|
+  \le
+  \sum_{j=1}^{d}|q_\Lambda|^{d-j}
+    \big(\epsilon_{{\rm gl},j}+\epsilon_{{\rm off},j}\big)
+  +\epsilon_{{\rm det},d}
+  +\epsilon_{{\rm zm},d}
+  +\epsilon_{{\rm cpt},d}
+  +\epsilon_{{\rm op},d}
+  +\epsilon_{{\rm cont},d}.
+  \label{eq:cpn-degree-d-vortex-observable-bound}
+\end{equation}
+For \(d=1\) this specializes to the residual budget above.  For
+\(d>1\), a product of degree-one incidence counts supplies only the expected
+enumerative skeleton.  It does not fix the determinant line on the
+multi-instanton boundary, the contact terms when marked points collide, the
+orientation of glued obstruction factors, or the zero-mode pairing that kills
+off-channel contributions.  Conversely, the mirror root sum is a stringent
+test of the direct construction: once the sector measure, gluing, operator
+normalization, and contact terms are transported to the same coordinate, every
+term on the right side of
+\eqref{eq:cpn-degree-d-vortex-observable-telescope} must vanish or be bounded
+well enough to recover \(q_\Lambda^d\).
+\end{controlledapproximation}
+
 \section{The Cigar--Liouville Mirror Chain as a QFT Duality Problem}
 \label{sec:cigar-liouville-mirror-qft-problem}
 

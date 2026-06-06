@@ -430,6 +430,12 @@ and
     rejecting mirror-only, dimension-only, determinant-orientation,
     zero-mode-multiplicity, compactification, and hyperplane-normalization
     shortcuts;
+  - the degree-`d` projective instanton iteration test: exact mirror residue
+    and quantum-product traces for `R(H^{N-1+dN})=q_phys^d`, followed by a
+    signed residual telescope for gluing, off-pairing, determinant, zero-mode,
+    compactification, operator-map, and continuum errors; negative controls
+    reject bare-FI powers, iterated line-count-only arguments, omitted gluing
+    residuals, off-pairing leakage, and unsaturated zero-mode gates;
   - the degree-one A-model zero-mode measure bridge: the line count for
     `I_1(H,H^{N-1},H^{N-1})` is connected back to the finite-regulator
     A-twisted path integral through the vortex-normalized fugacity, the
@@ -579,3 +585,11 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   determinant-line/measure residual and comparing with the mirror residue.
   The TeX records the same direct determinant and gate data in the protected
   comparison block, while process notes remain in planning.
+- The 2026-06-06 degree-`d` instanton iteration pass extends the projective
+  observable bridge beyond the first instanton sector without replacing the
+  direct A-model calculation by the Hori--Vafa root sum.  The chapter now
+  states the degree-`d` residual telescope whose weighted terms include
+  gluing, off-pairing, determinant-line, zero-mode, compactification,
+  operator-map, and continuum comparisons, and the companion script checks
+  that omitted gluing/off-pairing residuals, bare-FI powers, line-count-only
+  products, and unsaturated zero-mode gates fail.

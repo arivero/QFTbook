@@ -2711,7 +2711,11 @@ Current checks:
   the quantum-product relation \(H^N=q\), the finite degree-one vortex
   observable assembly residual ledger tying the vortex-normalized fugacity to the
   three-point product coefficient with residual, off-pairing, mirror-only,
-  dimension-only, and zero-mode-gate negative controls, the A-model
+  dimension-only, and zero-mode-gate negative controls, the degree-\(d\)
+  projective instanton iteration test checking
+  \(R(H^{N-1+dN})=q_{\rm phys}^d\) against the quantum-product trace
+  recurrence with gluing, off-pairing, determinant, zero-mode,
+  compactification, operator-map, and continuum residual budgets, the A-model
   degree-one zero-mode measure bridge checking Berezin top-degree saturation,
   determinant-line orientation, obstruction-factor omission, nonzero-mode
   determinant cancellation, and residual underbudgeting, the finite

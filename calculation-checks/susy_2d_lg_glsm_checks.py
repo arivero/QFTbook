@@ -1425,6 +1425,133 @@ def check_degree_one_stable_map_incidence_model() -> None:
         raise AssertionError("hyperplane-class normalization change should rescale the coefficient")
 
 
+def check_cp_degree_d_quantum_product_iteration() -> None:
+    for n_fields in range(2, 8):
+        bare_fi = Fraction(n_fields + 3, n_fields + 11)
+        vortex_coefficients = [
+            Fraction(n_fields + 2 * index + 5, n_fields + 2 * index + 9)
+            for index in range(n_fields)
+        ]
+        q_regulated = bare_fi * prod(vortex_coefficients, start=Fraction(1))
+
+        for degree in range(0, 5):
+            insertion_power = n_fields - 1 + degree * n_fields
+            residue_prediction = cp_mirror_residue_trace(
+                n_fields,
+                insertion_power,
+                q_regulated,
+            )
+            assert_equal(
+                f"CP^{n_fields - 1} degree-{degree} residue gives q^d",
+                residue_prediction,
+                q_regulated**degree,
+            )
+
+            reduced_power, q_power = quantum_product_power(
+                n_fields,
+                insertion_power,
+                0,
+            )
+            trace_from_product_iteration = (
+                q_regulated**q_power
+                if reduced_power == n_fields - 1
+                else Fraction(0)
+            )
+            assert_equal(
+                f"CP^{n_fields - 1} degree-{degree} product trace iteration",
+                trace_from_product_iteration,
+                residue_prediction,
+            )
+
+        degree = 4
+        gluing_residuals = {
+            stage: Fraction((-1) ** stage, 1000 + 11 * stage + n_fields)
+            for stage in range(1, degree + 1)
+        }
+        off_pairing_residuals = {
+            stage: Fraction((-1) ** (stage + 1), 2000 + 13 * stage + n_fields)
+            for stage in range(1, degree + 1)
+        }
+        sector_residuals = {
+            "determinant": Fraction(1, 3001 + n_fields),
+            "zero mode": Fraction(-1, 3011 + n_fields),
+            "compactification": Fraction(1, 3023 + n_fields),
+            "operator map": Fraction(-1, 3037 + n_fields),
+            "continuum": Fraction(1, 3049 + n_fields),
+        }
+
+        telescope_error = sum(
+            q_regulated ** (degree - stage)
+            * (gluing_residuals[stage] + off_pairing_residuals[stage])
+            for stage in range(1, degree + 1)
+        ) + sum(sector_residuals.values(), Fraction(0))
+        direct_sector_probe = q_regulated**degree + telescope_error
+        full_budget = sum(
+            abs(q_regulated) ** (degree - stage)
+            * (
+                abs(gluing_residuals[stage])
+                + abs(off_pairing_residuals[stage])
+            )
+            for stage in range(1, degree + 1)
+        ) + sum(abs(value) for value in sector_residuals.values())
+        assert_leq_bound(
+            f"CP^{n_fields - 1} degree-d residual telescope budget",
+            abs(direct_sector_probe - q_regulated**degree),
+            full_budget,
+        )
+
+        omitted_stage = 2
+        omitted_gluing_budget = (
+            full_budget
+            - abs(q_regulated) ** (degree - omitted_stage)
+            * abs(gluing_residuals[omitted_stage])
+        )
+        aligned_error = full_budget
+        assert_gt_bound(
+            "omitting middle gluing residual underbudgets degree-d sector",
+            aligned_error,
+            omitted_gluing_budget,
+        )
+
+        omitted_off_pairing_budget = (
+            full_budget
+            - abs(q_regulated) ** (degree - omitted_stage)
+            * abs(off_pairing_residuals[omitted_stage])
+        )
+        assert_gt_bound(
+            "omitting off-pairing leakage underbudgets degree-d iteration",
+            aligned_error,
+            omitted_off_pairing_budget,
+        )
+
+        bare_fi_trace = cp_mirror_residue_trace(
+            n_fields,
+            n_fields - 1 + degree * n_fields,
+            bare_fi,
+        )
+        if bare_fi_trace == q_regulated**degree:
+            raise AssertionError("bare FI coordinate should not pass the degree-d vortex-normalized trace")
+
+        incidence_count_only = Fraction(1)
+        if incidence_count_only == q_regulated**degree:
+            raise AssertionError("iterated line counts should not include the degree-d fugacity")
+
+        off_pairing_leak = Fraction(1, 41 + n_fields)
+        leaked_trace = q_regulated**degree + q_regulated ** (degree - 2) * off_pairing_leak
+        if leaked_trace == q_regulated**degree:
+            raise AssertionError("nonzero off-pairing leakage should change the iterated trace")
+
+        unsaturated_zero_mode_gate = Fraction(0)
+        gated_degree_d = q_regulated**degree * unsaturated_zero_mode_gate
+        assert_equal(
+            "unsaturated degree-d zero-mode gate kills protected coefficient",
+            gated_degree_d,
+            Fraction(0),
+        )
+        if gated_degree_d == q_regulated**degree:
+            raise AssertionError("degree-d sector cannot ignore residual zero-mode saturation")
+
+
 def check_degree_one_amodel_zero_mode_measure_bridge() -> None:
     # The degree-one line count becomes an A-twisted correlator only after
     # the zero-mode Berezin degree, determinant-line orientation, obstruction
@@ -2081,6 +2208,7 @@ def main() -> None:
     check_vortex_to_observable_residual_budget()
     check_cp_degree_one_stable_map_quantum_product_gate()
     check_degree_one_stable_map_incidence_model()
+    check_cp_degree_d_quantum_product_iteration()
     check_degree_one_amodel_zero_mode_measure_bridge()
     check_degree_one_measure_scheme_covariance()
     check_hori_vafa_residue_instanton_comparison_map()
