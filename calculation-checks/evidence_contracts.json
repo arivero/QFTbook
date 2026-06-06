@@ -38,6 +38,10 @@
       "risk_class": "soliton collective quantization"
     },
     {
+      "path": "monopole_dyon_sector_checks.py",
+      "risk_class": "monopole and dyon quantum sectors"
+    },
+    {
       "path": "false_vacuum_decay_checks.py",
       "risk_class": "false-vacuum contour and metastability"
     },

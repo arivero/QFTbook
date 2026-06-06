@@ -796,6 +796,14 @@ Current checks:
   and half-charge bookkeeping, with negative controls for the wrong zero-mode
   norm, unprojected fluctuations, missing or half DHN counterterms,
   nonnormalizable zero-mode component, and integer kink-sector charges.
+- `monopole_dyon_sector_checks.py`: finite charge-sector checks for the
+  dedicated monopole/dyon chapter, including Witten-effect cancellation in the
+  DSZ pairing, half-DSZ field angular momentum, monopole-harmonic angular
+  momentum lower bounds and radial barrier, and same-ray BPS no-force tail
+  cancellation, with negative controls for one-body electric-magnetic
+  shortcuts, missing field-angular-momentum factors, ordinary spherical
+  harmonics in nonzero DSZ sectors, vector-Coulomb-only no-force, and
+  anti-aligned BPS charge vectors.
 - `longitudinal_goldstone_equivalence_checks.py`: finite checks for the
   longitudinal-vector/Goldstone equivalence section, including the mostly-plus
   longitudinal polarization identities, the \(O(m/E)\) remainder from
