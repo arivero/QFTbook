@@ -481,7 +481,9 @@ The chapter must define and derive:
      distribution has unit zeroth moment and vanishing first \(\cos\chi\)
      moment in a color-singlet center-of-mass frame; removing the contact term
      removes the weight \(\sum_r z_r^2\) from the separated-angle
-     distribution.
+     distribution.  The projected \(\zeta=1\) contact atom fixes the total
+     diagonal mass in the one-variable EEC ledger, while finite detector-bin
+     products retain the finer diagonal measure before angular pushforward.
 19aa. The ordered three-detector distribution has unit total moment and three
       vanishing pairwise angular moments in the same center-of-mass
       convention.  Its separated support omits the all-same contact
@@ -995,6 +997,13 @@ The chapter must define and derive:
   full detector measure has nonnegative \(M_0,M_1,M_2\), while deleting the
   coincident detector atom makes the first separated Legendre moment negative
   in a center-of-mass event.
+- 2026-06-06 issue #725/#519 QCD EEC detector-contact contract pass: promoted
+  `energy_correlator_sum_rule_checks.py` to an extended evidence contract and
+  added an adversarial finite-event check separating the scalar projected
+  \(\zeta=1\) contact atom from the bin-resolved diagonal detector measure.
+  The prose now records why same-cell products and response covariances must
+  transport contact atoms with detector-cell coordinates before the
+  opening-angle pushforward.
 - 2026-06-03 issue #519 architecture pass: added a proof-status ladder at the
   start of the light-ray endpoint subsection, separating detector
   measure/contact identities, CFT light-ray charts, QCD renormalized endpoint

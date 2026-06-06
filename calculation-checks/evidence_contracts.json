@@ -148,6 +148,17 @@
       ]
     },
     {
+      "path": "energy_correlator_sum_rule_checks.py",
+      "risk_class": "QCD finite-event energy-correlator detector algebra",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "contact-inclusive EEC moments in zeta=cos chi",
+        "center-of-mass normalized energy fractions",
+        "finite event product-measure diagonal contact convention",
+        "one-variable endpoint atoms separated from bin-resolved detector contacts"
+      ]
+    },
+    {
       "path": "scet_factorization_checks.py",
       "risk_class": "SCET/factorization proof-status boundary"
     },

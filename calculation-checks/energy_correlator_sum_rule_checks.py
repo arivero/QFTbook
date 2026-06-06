@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact finite-event checks for energy-correlator detector algebra.
+r"""Exact finite-event checks for energy-correlator detector algebra.
 
 The script verifies the eventwise algebra behind the nonperturbative
 energy-energy-correlator sum rules and the asymptotic multiplication-operator
@@ -9,10 +9,85 @@ finite distinction between detector contact strata and ensemble-connected
 cumulants.  The Legendre-multipole check verifies that contact-inclusive
 EEC moments are positive quadratic forms of the calorimetric measure, while
 separated-angle data alone need not preserve those positivity constraints.
+The bin-resolved contact check verifies that a one-variable EEC contact atom
+at \(\zeta=1\) fixes only the projected total diagonal mass: same-bin
+detector products require the pre-pushforward diagonal measure.
 Finally, it tests a finite-resolution detector map and residual ledger: a
 Lipschitz smeared correlator changes by at most the declared bin diameter
 times the total energy power, and an observable-level budget must include that
 detector binning term rather than relying on signed residual cancellation.
+
+Evidence contract.
+
+Target claims:
+  Volume II, Chapter 19 and the jet-observable continuation formulate the EEC
+  as a positive calorimetric product measure, keep the coincident-detector
+  contact coordinate in the zeroth and first moment ledger, distinguish
+  projected one-variable EEC endpoint atoms from bin-resolved detector
+  contacts, and separate ensemble-connected cumulants from same-event
+  diagonal strata.
+
+Independent construction:
+  The checks build finite final states from rational energy fractions and
+  rational unit vectors, expand detector products directly as finite sums over
+  hadron labels, compute Legendre multipoles from the calorimetric measure,
+  solve endpoint-atom moment equations, and compare bin-resolved diagonal
+  contact pairings with their one-variable projected masses.  They do not use
+  displayed manuscript formulas as assumed expected answers.
+
+Imported assumptions:
+  The existence of energy-flow detectors on scattering states, positivity of
+  physical event weights, the passage from finite detector sums to continuum
+  calorimetric distributions, perturbative factorization/OPE inputs for
+  endpoint charts, and detector-response modelling are imported QFT inputs.
+
+Negative controls:
+  The suite rejects separated-angle EEC data as a contact-inclusive moment
+  ledger, treating total diagonal contact mass as bin-resolved detector
+  contact data, deleting same-event contacts by taking ensemble cumulants,
+  omitting endpoint atoms in global moment closure, and dropping the
+  finite-resolution binning term from a measured-observable residual budget.
+
+Scope boundary:
+  These are exact finite-event algebra, moment, contact, endpoint, and
+  detector-resolution checks.  They are not a proof of perturbative QCD
+  factorization, a construction of the energy-flow operator, a continuum
+  calorimeter limit, a cross-section calculation, or an experimental detector
+  simulation.
+
+Primary derivation route:
+  The manuscript route starts with the calorimetric measure of a hadronic
+  final state, forms product measures and their diagonal contact strata,
+  projects to the one-variable EEC, closes the zeroth and first moment ledger
+  by endpoint/contact atoms, and then transports the resulting coordinates
+  through finite detector bins and response covariances.
+
+Independent verification route:
+  The executable route uses rational two- and three-body events.  It checks
+  total energy, center-of-mass momentum, EEC moments, Legendre positivity,
+  three-detector contact partitions, endpoint-atom solving, finite-resolution
+  Lipschitz budgets, ensemble cumulant partition formulae, and a negative
+  control where the projected \(\zeta=1\) contact atom is held fixed while a
+  same-bin detector product changes.
+
+Convention dependencies:
+  Energy fractions are normalized to total event or selected energy, angular
+  coordinates use \(\zeta=\cos\chi=\mathbf n_i\cdot\mathbf n_j\), ordered
+  detector products use the product measure \(\mu_X^{\otimes k}\), diagonal
+  contacts include all same-hadron label coincidences, and endpoint atoms sit
+  at \(\zeta=1\) and \(\zeta=-1\) in the normalized EEC ledger.
+
+Domain and remainder assumptions:
+  The finite identities apply to finite positive final states before continuum
+  limits.  Physical predictions still require event-weight averaging,
+  perturbative and nonperturbative remainder estimates, endpoint subtraction
+  conventions, detector-bin diameters, and response/noise budgets.
+
+Remaining unproved or conditional:
+  The checks leave open the QCD factorization theorem for the chosen measured
+  EEC, the light-ray OPE convergence domain, the continuum detector-response
+  limit, and the size of omitted perturbative, power, endpoint, and
+  hadronization corrections in any phenomenological application.
 """
 
 from __future__ import annotations
@@ -207,6 +282,16 @@ def diagonal_pairing(
     if len(event) != len(left_values) or len(event) != len(right_values):
         raise ValueError("one detector-test value is required for each particle")
     return sum(z * z * f * g for (z, _), f, g in zip(event, left_values, right_values))
+
+
+def contact_weight_pairing(
+    contact_weights: list[Fraction],
+    left_values: list[Fraction],
+    right_values: list[Fraction],
+) -> Fraction:
+    if len(contact_weights) != len(left_values) or len(contact_weights) != len(right_values):
+        raise ValueError("one detector-test value is required for each contact weight")
+    return sum(weight * f * g for weight, f, g in zip(contact_weights, left_values, right_values))
 
 
 def triple_contact_partition(
@@ -419,6 +504,66 @@ def check_eec_legendre_multipole_positivity() -> None:
     )
 
 
+def check_projected_contact_mass_does_not_fix_detector_bins() -> None:
+    event: list[Particle] = [
+        (Fraction(1, 2), (Fraction(1), Fraction(0), Fraction(0))),
+        (Fraction(1, 3), (Fraction(0), Fraction(1), Fraction(0))),
+        (Fraction(1, 6), (Fraction(0), Fraction(0), Fraction(1))),
+    ]
+    actual_contact_weights = [z * z for z, _ in event]
+    shifted_contact_weights = [
+        Fraction(0),
+        actual_contact_weights[0] + actual_contact_weights[1],
+        actual_contact_weights[2],
+    ]
+    assert_equal(
+        "same projected contact mass",
+        sum(actual_contact_weights, Fraction(0)),
+        sum(shifted_contact_weights, Fraction(0)),
+    )
+    for ell in range(3):
+        assert_equal(
+            f"projected contact Legendre atom ell={ell}",
+            sum(actual_contact_weights, Fraction(0)) * legendre_value(ell, Fraction(1)),
+            sum(shifted_contact_weights, Fraction(0)) * legendre_value(ell, Fraction(1)),
+        )
+
+    constant_cell = [Fraction(1), Fraction(1), Fraction(1)]
+    assert_equal(
+        "constant detector sees only total contact mass",
+        contact_weight_pairing(actual_contact_weights, constant_cell, constant_cell),
+        contact_weight_pairing(shifted_contact_weights, constant_cell, constant_cell),
+    )
+
+    first_cell = [Fraction(1), Fraction(0), Fraction(0)]
+    second_cell = [Fraction(0), Fraction(1), Fraction(0)]
+    assert_equal(
+        "actual first-cell diagonal contact",
+        contact_weight_pairing(actual_contact_weights, first_cell, first_cell),
+        Fraction(1, 4),
+    )
+    assert_equal(
+        "shifted first-cell diagonal contact",
+        contact_weight_pairing(shifted_contact_weights, first_cell, first_cell),
+        Fraction(0),
+    )
+    assert_equal(
+        "actual second-cell diagonal contact",
+        contact_weight_pairing(actual_contact_weights, second_cell, second_cell),
+        Fraction(1, 9),
+    )
+    assert_equal(
+        "shifted second-cell diagonal contact",
+        contact_weight_pairing(shifted_contact_weights, second_cell, second_cell),
+        Fraction(13, 36),
+    )
+    assert_true(
+        "projected contact atom cannot be used as bin-resolved contact data",
+        contact_weight_pairing(actual_contact_weights, first_cell, first_cell)
+        != contact_weight_pairing(shifted_contact_weights, first_cell, first_cell),
+    )
+
+
 def check_three_detector_moment_and_contact_ledger() -> None:
     event: list[Particle] = [
         (Fraction(1, 4), (Fraction(1), Fraction(0), Fraction(0))),
@@ -604,6 +749,7 @@ def main() -> None:
     check_two_body_back_to_back_event()
     check_three_body_orthogonal_rational_event()
     check_eec_legendre_multipole_positivity()
+    check_projected_contact_mass_does_not_fix_detector_bins()
     check_three_detector_moment_and_contact_ledger()
     check_endpoint_matching_delta_ledger()
     check_finite_resolution_detector_assembly_budget()

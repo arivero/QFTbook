@@ -1297,7 +1297,8 @@ Current checks:
   drift with pressure work, the failure of number-density-only sources, and the
   stress-noise budget needed before a deterministic semiclassical response is
   trusted.
-- `energy_correlator_sum_rule_checks.py`: exact finite-event checks for the
+- `energy_correlator_sum_rule_checks.py`: extended evidence-contract exact
+  finite-event checks for the
   energy-energy-correlator zeroth and first moment sum rules and the
   coincident-detector contact weight in the QCD detector-observable chapter;
   Legendre-multipole positivity, including the momentum-square and quadrupole
@@ -1306,7 +1307,9 @@ Current checks:
   the ordered three-detector unit moment, pairwise angular moments, and
   all-same and pair-contact diagonal weights;
   it also checks the finite-event multiplication-operator algebra for smeared
-  detector products, diagonal contact contributions, ensemble-connected
+  detector products, diagonal contact contributions, a bin-resolved contact
+  negative control showing that the same projected \(\zeta=1\) contact atom
+  need not fix same-cell detector products, ensemble-connected
   cumulants versus detector-contact strata, and the endpoint delta-coordinate
   ledger that glues an open-interval EEC distribution to the two exact
   detector moment constraints.  It now also checks the finite-resolution

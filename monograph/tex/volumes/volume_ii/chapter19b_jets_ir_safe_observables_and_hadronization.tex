@@ -2761,6 +2761,21 @@ hadron.  Both are part of the detector observable; removing a contact term is
 a different distributional convention.
 \end{definition}
 
+The diagonal convention carries more information before angular projection
+than after it.  Pushing the two-detector product forward by
+\(\zeta=\mathbf n_1\cdot\mathbf n_2\) sends every same-hadron diagonal point
+to the endpoint atom at \(\zeta=1\), with total mass
+\(\sum_{r\in X}E_r^2\).  A finite calorimeter product instead retains the
+diagonal measure \(\sum_{r\in X}E_r^2\,
+\delta_{(\mathbf n_r,\mathbf n_r)}\) on \((S^2)^2\).  Moving the same total
+diagonal mass from one detector cell to another leaves the projected
+\(\zeta=1\) atom, the zeroth EEC moment, and the first EEC moment unchanged,
+while it changes a same-cell product
+\(\mathcal C^{(2)}_{\mathbf 1_B\otimes \mathbf 1_B}(\mu_X)\).  Comparisons
+with binned response or covariance data therefore transport contact atoms
+with their detector-cell coordinates before the final opening-angle
+pushforward.
+
 The usual EEC is obtained by choosing a sequence of kernels
 \[
   K_\Delta(\mathbf n_1,\mathbf n_2;\chi)
@@ -3232,6 +3247,13 @@ coordinates.  Solving \eqref{eq:measured-eec-moment-closure-correction} only
 after ensemble averaging repairs the first two mean moments, but it does not
 repair bin covariances whenever the selected energy, recoil, or endpoint
 defect fluctuates across events.
+For a response matrix built from calorimeter cells rather than from a
+one-variable \(\zeta\) histogram, \(X_\alpha(e)\) is formed before the
+opening-angle pushforward: the same-hadron part is the diagonal detector-cell
+measure, and the scalar \(K_+^\omega(e)\delta(1-\zeta)\) is its final
+projection.  This ordering fixes the covariance of same-cell products and
+keeps a scalar endpoint repair from being reused across incompatible detector
+coordinates.
 
 Let \(\mathbb E\) denote the physical event ensemble.  Write
 \begin{equation}

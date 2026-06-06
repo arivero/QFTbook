@@ -509,6 +509,13 @@ The chapter establishes:
   `energy_correlator_track_checks.py` now verifies eventwise endpoint
   covariance repair, linear response covariance transport, detector-noise
   budgeting, and negative controls against mean-only endpoint repair.
+- 2026-06-06 issue #725/#519 QCD EEC contact-coordinate pass: clarified that
+  the one-variable \(\zeta=1\) EEC endpoint atom records only the projected
+  total diagonal mass, while finite calorimeter-cell products retain the
+  pre-pushforward diagonal detector measure.  Promoted
+  `energy_correlator_sum_rule_checks.py` to an extended evidence contract with
+  a negative control where the projected contact atom is unchanged but
+  same-cell detector products and their response/covariance inputs change.
 - 2026-05-26 issue #526 pass: corrected the soft-drop IRC classification by
   separating the \(\beta_{\rm SD}>0\) groomed-four-vector statement from the
   \(\beta_{\rm SD}=0\) collinear counterexample, and added
