@@ -1,9 +1,81 @@
 #!/usr/bin/env python3
-"""Finite checks for the ANEC and conformal-collider bounds section.
+r"""Finite checks for the ANEC and conformal-collider bounds section.
 
 The checks include the four-dimensional stress-tensor collider diagonalization
 and the N=1 supersymmetric specialization that converts the detector
 positivity inequalities into the central-charge bound 1/2 <= a/c <= 3/2.
+
+Evidence contract.
+
+Target claims:
+  Volume III, Chapter 10 uses the modular ANEC sign convention, the
+  ANEC-to-detector positivity bridge, the Hofman--Maldacena stress-tensor
+  one-point normal form, the helicity-sector collider inequalities, the
+  four-dimensional N=1 superconformal a/c bound, and the light-transform
+  homogeneity map.
+
+Independent construction:
+  The checks rebuild the S^2 tensor averages from rotational moments,
+  evaluate the detector quadratic form on explicit symmetric-traceless
+  polarizations, decompose a generic polarization into SO(2) helicity sectors,
+  recompute the N=1 endpoint eigenvalues from a/c data, and model the
+  null-cut entropy squeeze by finite signed atoms.  They do not import the
+  displayed inequalities as an assumed answer.
+
+Imported assumptions:
+  The Lorentzian CFT hypotheses behind ANEC, the conformal map from a complete
+  null generator to null infinity, the bounded extension from smooth angular
+  tests to detector measures, the Wightman/ward-identity calculation of the
+  stress-tensor one-point normal form, and the N=1 supercurrent Ward identity
+  are imported physics inputs.
+
+Negative controls:
+  The suite rejects total-energy normalization as a substitute for pointwise
+  detector positivity, omitting any one of the three helicity-sector
+  inequalities, a wrong N=1 t2 normalization, a nonzero t4 at the N=1 identity
+  point, and a one-sided modular-ANEC sign argument without the complementary
+  cut.
+
+Scope boundary:
+  These are exact finite checks of angular averages, polarization linear
+  algebra, convention maps, and modular sign bookkeeping.  They are not a
+  proof of ANEC, a construction of Lorentzian light-ray operators, a
+  derivation of the detector measure, or a calculation of the full
+  stress-tensor Wightman distribution.
+
+Primary derivation route:
+  The manuscript route first states ANEC as a Lorentzian CFT theorem boundary,
+  displays the region/complement modular squeeze, passes through the
+  ANEC-to-detector bounded-extension bridge, derives the t2,t4 normal form for
+  a stress-tensor collider state, and then diagonalizes the resulting
+  quadratic form in helicity sectors.
+
+Independent verification route:
+  The executable route starts from primitive rational matrices and finite
+  signed atoms.  It reconstructs the S^2 averages, obtains the helicity
+  eigenvalues by direct evaluation and by spectral recomposition of a generic
+  polarization, tests the collider positivity polytope against adversarial
+  shortcuts, and checks the N=1 a/c map at interior and endpoint samples.
+
+Convention dependencies:
+  Four-dimensional parity-even stress-tensor collider coordinates t2,t4,
+  total-energy normalization Q/(4*pi), SO(2) helicity sectors relative to a
+  detector direction, S^2 moment normalizations 1/3 and 2/15, the null-cut
+  modular sign convention for x^+=f(y), and the N=1 convention
+  t4=0, t2=6(1-a/c).
+
+Domain and remainder assumptions:
+  The finite checks apply after wavepacket regularization, detector smearing,
+  null-infinity limiting, and bounded positive extension have been supplied.
+  The Lorentzian analytic/growth hypotheses, contact terms in detector
+  products, and separated-angle Wightman distribution calculation remain
+  external to this finite arithmetic.
+
+Remaining unproved or conditional:
+  ANEC itself, the existence and domain of light-ray operators in the stated
+  CFT class, the ANEC-to-detector limiting theorem, the full TTT Wightman
+  integration, and any nonconformal or QCD use of the collider formula remain
+  conditional inputs outside this companion.
 """
 
 from __future__ import annotations
@@ -48,6 +120,26 @@ def energy_flux_polynomial(first_ratio: Fraction, second_ratio: Fraction) -> tup
     coeff_t2 = first_ratio - Fraction(1, 3)
     coeff_t4 = second_ratio - Fraction(2, 15)
     return (Fraction(1, 1), coeff_t2, coeff_t4)
+
+
+def helicity_eigenvalues(t2: Fraction, t4: Fraction) -> tuple[Fraction, Fraction, Fraction]:
+    """Return the helicity 2, 1, 0 detector eigenvalues."""
+
+    return (
+        1 - t2 / 3 - 2 * t4 / 15,
+        1 + t2 / 6 - 2 * t4 / 15,
+        1 + t2 / 3 + 8 * t4 / 15,
+    )
+
+
+def angular_average_profile(t2: Fraction, t4: Fraction) -> Fraction:
+    """Average of the normalized one-detector profile over S^2."""
+
+    return (
+        1
+        + t2 * (Fraction(1, 3) - Fraction(1, 3))
+        + t4 * (Fraction(2, 15) - Fraction(2, 15))
+    )
 
 
 def mat_inner(left: Matrix, right: Matrix) -> Fraction:
@@ -168,13 +260,6 @@ def check_helicity_projector_spectral_diagonalization() -> None:
 def check_n1_susy_collider_central_charge_bound() -> None:
     """Check the N=1 SCFT map from collider coordinates to a/c."""
 
-    def helicity_eigenvalues(t2: Fraction, t4: Fraction) -> tuple[Fraction, Fraction, Fraction]:
-        return (
-            1 - t2 / 3 - 2 * t4 / 15,
-            1 + t2 / 6 - 2 * t4 / 15,
-            1 + t2 / 3 + 8 * t4 / 15,
-        )
-
     def susy_eigenvalues(a_over_c: Fraction) -> tuple[Fraction, Fraction, Fraction]:
         t2 = 6 * (1 - a_over_c)
         t4 = Fraction(0)
@@ -219,6 +304,45 @@ def check_normalization_integrates_to_total_energy() -> None:
 
     assert_equal("t2 average subtraction", Fraction(1, 3) - Fraction(1, 3), Fraction(0, 1))
     assert_equal("t4 average subtraction", Fraction(2, 15) - Fraction(2, 15), Fraction(0, 1))
+
+
+def check_collider_positivity_requires_all_helicity_sectors() -> None:
+    """Check that fixed total energy and partial sector tests are insufficient."""
+
+    positive_samples = (
+        (Fraction(0), Fraction(0)),
+        (Fraction(3), Fraction(0)),
+        (Fraction(-3), Fraction(0)),
+        (Fraction(1, 2), Fraction(3, 5)),
+    )
+    for t2, t4 in positive_samples:
+        eigenvalues = helicity_eigenvalues(t2, t4)
+        if not all(value >= 0 for value in eigenvalues):
+            raise AssertionError(f"positive collider sample failed: {(t2, t4, eigenvalues)!r}")
+
+    average_only_t2 = Fraction(4)
+    average_only_t4 = Fraction(0)
+    assert_equal(
+        "average normalization with negative helicity profile",
+        angular_average_profile(average_only_t2, average_only_t4),
+        Fraction(1),
+    )
+    if all(value >= 0 for value in helicity_eigenvalues(average_only_t2, average_only_t4)):
+        raise AssertionError("total-energy normalization should not imply collider positivity")
+
+    shortcuts = (
+        ("missing helicity-two inequality", Fraction(4), Fraction(0), (1, 2), 0),
+        ("missing helicity-one inequality", Fraction(-1), Fraction(8), (0, 2), 1),
+        ("missing helicity-zero inequality", Fraction(-4), Fraction(0), (0, 1), 2),
+    )
+    for name, t2, t4, retained_indices, omitted_index in shortcuts:
+        eigenvalues = helicity_eigenvalues(t2, t4)
+        if not all(eigenvalues[index] >= 0 for index in retained_indices):
+            raise AssertionError(f"{name} should pass its retained-sector shortcut")
+        if eigenvalues[omitted_index] >= 0:
+            raise AssertionError(f"{name} should violate the omitted helicity sector")
+        if all(value >= 0 for value in eigenvalues):
+            raise AssertionError(f"{name} should fail the full collider positivity test")
 
 
 def check_light_transform_homogeneity_map() -> None:
@@ -292,6 +416,16 @@ def check_null_cut_modular_anec_sign_bookkeeping() -> None:
     if lower_entropy_bound <= upper_entropy_bound:
         raise AssertionError("negative full null integral should make the entropy squeeze incompatible")
 
+    right_only_integral = Fraction(1, 3)
+    right_only_left_integral = Fraction(-2, 3)
+    right_only_entropy_derivative = -right_only_integral
+    if right_only_entropy_derivative < -right_only_integral:
+        raise AssertionError("right-cut monotonicity should give only the lower entropy bound")
+    if right_only_integral + right_only_left_integral >= 0:
+        raise AssertionError("one-sided example should still have negative full null integral")
+    if -right_only_integral <= right_only_left_integral:
+        raise AssertionError("complementary cut should reject the one-sided shortcut")
+
 
 def check_light_ray_ope_transverse_scaling_bookkeeping() -> None:
     """Check the transverse homogeneity ledger for the light-ray OPE.
@@ -324,6 +458,7 @@ def main() -> None:
     check_helicity_projector_spectral_diagonalization()
     check_n1_susy_collider_central_charge_bound()
     check_normalization_integrates_to_total_energy()
+    check_collider_positivity_requires_all_helicity_sectors()
     check_light_transform_homogeneity_map()
     check_null_cut_modular_anec_sign_bookkeeping()
     check_light_ray_ope_transverse_scaling_bookkeeping()

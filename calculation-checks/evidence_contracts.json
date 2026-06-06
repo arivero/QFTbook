@@ -175,6 +175,17 @@
       "risk_class": "CFT modularity"
     },
     {
+      "path": "conformal_collider_checks.py",
+      "risk_class": "ANEC and conformal-collider positivity",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "four-dimensional parity-even stress-tensor collider t2,t4 coordinates",
+        "SO(2) helicity-sector polarization decomposition",
+        "ANEC-to-detector bounded positive angular functional",
+        "N=1 supercurrent Ward identity t4=0 and t2=6(1-a/c)"
+      ]
+    },
+    {
       "path": "constructive_scalar_spde_checks.py",
       "risk_class": "constructive/SPDE reconstruction"
     },

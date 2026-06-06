@@ -1004,13 +1004,20 @@ subspaces are orthogonal and because the numerators
 \end{proof}
 
 \paragraph{Four-dimensional conformal-collider inequalities.}
-The theorem-level content in this finite step is
+The finite collider step begins after two analytic ingredients have already
+been supplied: the ANEC-to-detector bridge that makes
+\(\mathcal E(f)\) a positive angular functional for \(f\geq0\), and the
+Wightman/Ward calculation that puts the stress-tensor one-point function in
+the normal form \eqref{eq:hm-energy-one-point}.  The theorem-level content
+inside the remaining finite step is
 Lemma~\ref{lem:hm-helicity-spectral-diagonalization}: it identifies the three
 irreducible \(SO(2)\) polarization sectors and computes the corresponding
-eigenvalues of the detector quadratic form.  Once that diagonalization is in
-hand, positivity has no further hidden analytic content.  The normal form
-\eqref{eq:hm-energy-one-point} is positive for every stress-tensor
-polarization and every detector direction \(\mathbf n\) exactly when
+eigenvalues of the detector quadratic form.  The fixed-total-energy identity
+controls only the zeroth spherical moment.  Positivity is the sharper
+statement that every allowed polarization gives a nonnegative detector density
+in every direction, so the normal form \eqref{eq:hm-energy-one-point} is
+positive for every stress-tensor polarization and every detector direction
+\(\mathbf n\) exactly when
 \[
   1-\frac13t_2-\frac{2}{15}t_4\geq0,
   \qquad
@@ -1022,7 +1029,10 @@ Indeed, by rotational covariance one may put \(\mathbf n=e_3\); the lemma
 then writes the form as
 \(\lambda_2\|\varepsilon_2\|^2+\lambda_1\|\varepsilon_1\|^2+
 \lambda_0\|\varepsilon_0\|^2\), and rotation transports the same three
-eigenvalues to any direction.
+eigenvalues to any direction.  Each of the three helicity sectors is
+independent in this test: fixing the average energy and checking only two
+sectors still leaves normalized stress-tensor profiles whose omitted sector
+has negative flux.
 
 The derivation of the normal form
 \eqref{eq:hm-energy-one-point} is a calculation of a Wightman

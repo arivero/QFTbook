@@ -75,7 +75,9 @@ The chapter establishes:
   parameters \(t_2,t_4\);
 - the helicity \(2,1,0\) spectral decomposition of the stress-tensor
   detector quadratic form, and the conformal-collider inequalities as the
-  nonnegativity of the three spectral eigenvalues;
+  nonnegativity of the three spectral eigenvalues, with the fixed-total-energy
+  normalization recorded as only the zeroth spherical moment rather than the
+  positivity condition;
 - the four-dimensional \(\mathcal N=1\) supersymmetric specialization
   \(t_4=0\), \(t_2=6(1-a/c)\), converting the helicity inequalities into
   \(1/2\le a/c\le 3/2\) with the free chiral and vector multiplets saturating
@@ -196,7 +198,9 @@ The chapter establishes:
    equivalent to nonnegativity of the three helicity-sector eigenvalues of
    the detector quadratic form; these are precisely the displayed
    Hofman--Maldacena inequalities once the one-point function is put in
-   \(t_2,t_4\) normal form.
+   \(t_2,t_4\) normal form.  The total-energy normalization fixes the average
+   angular flux, while the positivity claim requires all three sector
+   inequalities.
 10a. In four-dimensional \(\mathcal N=1\) SCFTs, the supercurrent Ward
      identity gives \(t_4=0\), \(t_2=6(1-a/c)\).  The same helicity
      eigenvalues therefore become
@@ -285,9 +289,11 @@ The chapter establishes:
   checked by `calculation-checks/conformal_collider_checks.py`, together with
   the full helicity-projector spectral decomposition of a generic polarization,
   the \(\mathcal N=1\) supersymmetric \(a/c\) specialization and endpoint
-  multiplet checks, the finite arithmetic for the light-transform homogeneity
-  map, the null-cut modular ANEC sign bookkeeping, and the transverse
-  homogeneity ledger for light-ray OPE coefficient distributions.
+  multiplet checks, adversarial controls showing that average-energy
+  normalization and any two-helicity shortcut miss negative-flux polarizations,
+  the finite arithmetic for the light-transform homogeneity map, the null-cut
+  modular ANEC sign bookkeeping with a one-sided-cut counterexample, and the
+  transverse homogeneity ledger for light-ray OPE coefficient distributions.
 - The conformal-algebra sign convention behind the light transform is checked
   by `calculation-checks/conformal_light_transform_algebra_checks.py`, which
   verifies the Euclidean conformal Killing vector bracket table, the
@@ -307,6 +313,14 @@ The chapter establishes:
   saturations.  The companion check verifies the rational map, the two endpoint
   multiplets, and normalization mistakes that would hide the endpoint
   saturations.
+- 2026-06-06 issue #725 conformal-collider evidence-contract pass: promoted
+  `conformal_collider_checks.py` to an extended evidence contract and added
+  adversarial finite controls for the two common shortcuts in this section:
+  treating the fixed total energy as positivity, and checking only two of the
+  three helicity sectors.  The pass also records the companion's imported
+  physics inputs: ANEC, the null-infinity/bounded-extension detector bridge,
+  the Wightman/Ward derivation of the \(t_2,t_4\) normal form, and the
+  \(\mathcal N=1\) supercurrent Ward identity.
 - 2026-06-02 anti-wrapper follow-up: demoted the separate
   Hofman--Maldacena-inequalities proposition/proof shell.  The substantive
   result is the preceding spectral diagonalization; the inequalities are now
