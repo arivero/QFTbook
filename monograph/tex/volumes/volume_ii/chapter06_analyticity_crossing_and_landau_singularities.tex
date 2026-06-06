@@ -9,7 +9,7 @@ Feynman-parameter discussions are instead coefficientwise perturbative graph
 analyses of regulated time-ordered kernels.  This is the standing convention
 of Definition~\ref{def:scattering-time-ordered-correlator-status}.
 
-\begin{remark}[Status of the named analytic tools]
+\begin{remark}[Role of the named analytic tools]
 \label{rem:chapter06-named-tool-status-ledger}
 The names in this chapter do not all have the same logical role.  The
 primitive Wightman tube theorem and the Jost-edge gluing theorem are proved
@@ -2182,7 +2182,7 @@ Under Theorem~\ref{thm:cutkosky-cut-rule-perturbative-physical-cut}, a
 physical perturbative cut computes a channel discontinuity after the regulator,
 state sum, positive-energy branch, and sheet have been fixed.  Modern loop
 amplitude methods use the same on-shell replacement as an algebraic
-reconstruction probe, but the change of status is load-bearing.  A
+reconstruction probe, but the change of meaning is load-bearing.  A
 \emph{physical cut} is a boundary-value statement: the cut lines carry real
 on-shell momenta, positive-energy step functions, the physical state sum, and
 the sheet specified by the channel.  A \emph{generalized cut} is an algebraic
@@ -2272,7 +2272,7 @@ problem to a finite master system; they do not supply Euclidean boundary
 constants or physical branches.  A renormalized virtual amplitude is still
 not an infrared-safe observable until the real-radiation, factorization, and
 measurement pieces in \(D_{\rm obs}\) have been assembled.  The examples below
-therefore test different gates in \(\mathfrak D_{1{\rm L}}\) rather than
+therefore test different entries in \(\mathfrak D_{1{\rm L}}\) rather than
 presenting cuts as a self-contained calculation.
 
 The reason multiple cuts determine the coefficients is local in loop momentum.
@@ -2826,7 +2826,7 @@ described in
 ControlledApproximation~\ref{ca:one-loop-reconstruction-observable-assembly}.
 \end{controlledapproximation}
 
-\begin{controlledapproximation}[Four-point color--kinematics gateway]
+\begin{controlledapproximation}[Four-point color--kinematics comparison datum]
 \label{ca:four-point-color-kinematics-gateway}
 Generalized unitarity reconstructs amplitudes from on-shell factorization
 data, but it does not by itself organize the nonabelian numerator algebra.
@@ -2907,8 +2907,8 @@ At loop level the same idea becomes a much stronger integrand statement:
 Jacobi-related cubic graphs must carry Jacobi-related numerators, and
 generalized cuts plus IBP reduction do not automatically construct such a
 representation.  This paragraph is therefore only the four-point tree
-gateway.  It records the mechanism needed before one can responsibly discuss
-loop-level color--kinematics representations and gravity double copies
+comparison datum.  It records the mechanism needed before one can responsibly
+discuss loop-level color--kinematics representations and gravity double copies
 \cite{BernCarrascoJohansson2010PerturbativeQuantumGravity}.
 \end{controlledapproximation}
 
@@ -3611,7 +3611,7 @@ branch mismatch.  Replacing \(\Delta_{\chi;\eta}\vec J\) by raw contour values
 opposite sheet can preserve the coefficient algebra while giving the wrong
 physical discontinuity.  Passing this closure test also does not fix
 cut-invisible rational or local finite terms; those still enter through the
-rational/regulator and subtraction gates above.
+rational/regulator data and subtraction convention above.
 \end{controlledapproximation}
 
 \begin{controlledapproximation}[Two-master threshold mixing and boundary data]
@@ -4023,7 +4023,7 @@ cell over the soft, collinear, and overlap regions, with the factorization and
 rapidity-subtraction data required by the chosen observable.
 \end{controlledapproximation}
 
-\begin{controlledapproximation}[Two-loop infrared-pole consistency gate]
+\begin{controlledapproximation}[Two-loop infrared-pole consistency test]
 \label{ca:two-loop-ir-pole-consistency-gate}
 At two loops the virtual reconstruction has a recursive infrared consistency
 test before it can be used as a hard function.  Let
@@ -4051,7 +4051,7 @@ Choose a massless infrared subtraction convention with color-space operators
 \end{align}
 The order of the factors is part of the convention, because the infrared
 operators are matrices in color space.  Substituting the one-loop definition
-gives the equivalent pole ledger
+gives the equivalent pole decomposition
 \begin{equation}
   \mathcal A_\Lambda^{(2),{\rm rec}}
   =
@@ -4118,10 +4118,11 @@ observable is controlled by
   \sum_j B_j[W] .
   \label{eq:two-loop-observable-reconstruction-bound}
 \end{equation}
-This gate is the two-loop version of the warning above: equality of generalized
-cuts and equality of a finite physical prediction are connected only after the
-infrared pole ledger, lower-loop finite remainder, real-radiation subtraction,
-factorization, and measurement data are transported together.
+This consistency test is the two-loop version of the warning above: equality
+of generalized cuts and equality of a finite physical prediction are connected
+only after the infrared pole decomposition, lower-loop finite remainder,
+real-radiation subtraction, factorization, and measurement data are transported
+together.
 \end{controlledapproximation}
 
 \section{Steinmann Relations and Sequential Discontinuities}

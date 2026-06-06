@@ -34,27 +34,27 @@
   all-plus rational blind spot with the dimension-shifted
   \(\mu_\perp^4\) box residue and including the five-point all-plus
   partial-amplitude template, a four-point color--kinematics/double-copy
-  gateway with generalized-gauge negative controls, a solved finite two-scale
+  comparison datum with generalized-gauge negative controls, a solved finite two-scale
   massless box master with fixed \(r_\Gamma\) normalization, pole subtraction,
   sector-resolved dilogarithm boundary, and branch data, the bubble
   IBP/differential equation master calculation, an equal-mass bubble threshold
   family with lower tadpole master and physical branch data, a two-loop
   equal-mass sunrise maximal-cut curve exposing the elliptic-period
   obstruction and the physical \(s=9m^2\) threshold, a multi-loop
-  maximal-cut sector-projection gate showing that contact terms cancel
+  maximal-cut sector-projection test showing that contact terms cancel
   propagators into lower sectors before IBP, a dual-contour coefficient
-  extraction gate turning cuts into master coefficients only after an invertible
+  extraction layer turning cuts into master coefficients only after an invertible
   contour/master pairing and contact subtraction, a master-discontinuity
-  closure gate comparing transported master jumps with physical Cutkosky
+  closure comparison between transported master jumps and physical Cutkosky
   channel data, and a two-stage master-integral layer: first a local two-master
   threshold block, then a two-letter transport audit exposing connection data,
   Euclidean boundary constants, branch/path prescriptions, lower sectors, the
   finite-remainder/observable assembly, an unresolved one-emission measurement
   cell with plus-distribution cancellation, and a two-loop infrared-pole
-  consistency gate linking
+  consistency test linking
   \(A^{(2)}\), \(I^{(1)}A^{(1)}\), \(I^{(2)}A^{(0)}\), the lower-loop hard
   square, and the NNLO observable budget.
-- Records a reader-facing status ledger for named analytic tools in the
+- Records a reader-facing role statement for named analytic tools in the
   chapter: Wightman/Jost tube theorems are proved locally under their stated
   hypotheses; Jost--Lehmann--Dyson requires separate Dyson-regular and
   support-pruned data; Cutkosky is a perturbative physical-cut theorem, not an
@@ -96,8 +96,8 @@
   quadruple-cut, rational-term, integrand-reduction, explicit box-function,
   IBP, differential-equation, and sunrise elliptic-period bridge.
 - Bern--Carrasco--Johansson's tree-level amplitude relations and double-copy
-  construction supply the source spine for the four-point
-  color--kinematics gateway; the chapter uses them only as a scoped entry
+  construction supply the source trace for the four-point
+  color--kinematics comparison datum; the chapter uses them only as a scoped entry
   point, not as a proof of loop-level numerator representations.
 - Steinmann's original Wightman/retarded-commutator papers and the
   Stapp/Cahill--Stapp scattering-amplitude refinements are used as source
@@ -142,7 +142,7 @@
 | \(C\) | set of internal lines crossed by a perturbative physical cut |
 | \(\operatorname{Cut}_C\mathcal I\) | algebraic generalized cut of a regulated loop integrand on the selected on-shell denominators |
 | \(\mathfrak D_{1{\rm L}}\) | one-loop reconstruction data package collecting cut data, representative choice, rational/regulator input, reduction, boundary/branch data, subtraction, and observable assembly |
-| \(D_{\rm cut},D_{\rm rep},D_{\rm rat},D_{\rm red},D_{\rm bc},D_{\rm sub},D_{\rm obs}\) | gates in the one-loop reconstruction package: cuts/state sums, integrand representative, rational/regulator probes, reduction map, boundary/branch constants, subtraction convention, and observable data |
+| \(D_{\rm cut},D_{\rm rep},D_{\rm rat},D_{\rm red},D_{\rm bc},D_{\rm sub},D_{\rm obs}\) | entries in the one-loop reconstruction package: cuts/state sums, integrand representative, rational/regulator probes, reduction map, boundary/branch constants, subtraction convention, and observable data |
 | \(D_i(\ell)\) | one-loop denominator \((\ell+K_i)^2+m_i^2-\ii0\) |
 | \(I_r\) | scalar one-loop integral with \(r\) propagators in the declared regulator |
 | \(C_{012}(t),R_b(t),\Pi_0\) | triple-cut residue on a residual cut parameter, known box residues visible on the same triple cut, and the Laurent constant projection used after box subtraction |
@@ -152,7 +152,7 @@
 | \(I_{a,b}(Q^2)\) | Euclidean one-loop bubble integral family used for IBP reduction |
 | \(z\), \(F_m(z)\), \(T_m\) | equal-mass bubble threshold variable \(Q^2/(4m^2)\), finite nonlocal bubble part, and normalized lower tadpole master |
 | \(r,E_r,P_r,\Delta_r\) | equal-mass sunrise threshold variable \(s/m^2\), maximal-cut elliptic curve, affine cubic, and eliminated quartic |
-| \(\Delta_{\chi;\eta}\vec J\), \(\mathcal U_{\chi;\eta}\), \(E_{\chi;\eta}\) | stripped physical-channel master jump, Cutkosky channel datum, and residual in the master-discontinuity closure gate |
+| \(\Delta_{\chi;\eta}\vec J\), \(\mathcal U_{\chi;\eta}\), \(E_{\chi;\eta}\) | stripped physical-channel master jump, Cutkosky channel datum, and residual in the master-discontinuity closure comparison |
 | \(\vec M\), \(A_T\), \(y_\gamma\) | local two-master threshold vector, nilpotent threshold residue, and sheet/path-labelled threshold coordinate in the multi-master differential-system model |
 | \(\vec J\), \(A_0,A_1\), \(L_0^\gamma,L_1^\gamma\) | two-letter master-transport vector, residue matrices, and path-labelled logarithmic transports in the finite master-system audit |
 | \(\Omega\), \(W_\alpha\), \(\mathcal U_\gamma\) | reduced master-integral connection, Landau-letter functions, and path-ordered transport from a Euclidean boundary point |
@@ -166,7 +166,7 @@
 | \(\operatorname{tr}_{-}(i j k l)\) | chiral spinor trace coordinate \(\langle i j\rangle[j k]\langle k l\rangle[l i]\) used in the five-point all-plus rational amplitude |
 | \(C_{\rm loop}\), \(C_{\rm rat}\), \(C_{5,\rm rat}\) | loop-normalization and all-plus rational-term constants, fixed only after color, particle-content, and loop-measure conventions are declared |
 | \(c_s,c_t,c_u\) | four-point cubic color factors satisfying the Lie-algebra Jacobi relation \(c_s+c_t+c_u=0\) |
-| \(n_s,n_t,n_u\), \(\widetilde n_i\) | four-point generalized kinematic numerators and the second numerator copy used in the color--kinematics/double-copy gateway |
+| \(n_s,n_t,n_u\), \(\widetilde n_i\) | four-point generalized kinematic numerators and the second numerator copy used in the color--kinematics/double-copy comparison datum |
 | \(S_\alpha,\mathcal J\) | one-loop contact/IBP/evanescent surface numerator shift in a Jacobi graph triplet and its induced kinematic Jacobi defect |
 | \(\mathbf I^{(1)}_\Lambda\) | one-loop infrared subtraction operator used to define the finite remainder in a declared regulator and finite subtraction convention |
 | \(\mathcal F^{(1)}_\Lambda\) | finite one-loop hard remainder after subtracting \(\mathbf I^{(1)}_\Lambda\mathcal A^{(0)}_\Lambda\) |
@@ -188,7 +188,7 @@
 
 - The external particles are the lightest identical stable scalars of mass
   \(m\) unless stated otherwise.
-- Named physics tools in the chapter are interpreted only with the status
+- Named physics tools in the chapter are interpreted only with the role
   declared in `rem:chapter06-named-tool-status-ledger`; conventional names are
   not used as proof stand-ins.
 - Mostly-plus metric: an on-shell mass-\(m_i\) internal line satisfies
@@ -235,7 +235,7 @@
   uses the complete sixteen-state on-shell supermultiplet, not a gluon-only
   state sum.  Numerical all-plus coefficients are stated only up to the
   declared loop, color, and particle-content normalization.
-- The color--kinematics gateway is restricted to four massless adjoint
+- The color--kinematics comparison datum is restricted to four massless adjoint
   external particles at tree level, after contact terms have been absorbed
   into generalized cubic numerators.  It assumes \(s+t+u=0\), the color
   Jacobi relation, and a Jacobi-satisfying numerator representative.  The
@@ -264,12 +264,12 @@
   discriminant, but it does not claim to solve the full sunrise integral or
   all elliptic sectors in \(D=4-2\epsilon\).
 - The multi-loop maximal-cut sector-projection block is a local reconstruction
-  gate.  It assumes a declared numerator representative and shows that terms
+  test.  It assumes a declared numerator representative and shows that terms
   proportional to parent denominators cancel into lower topologies; it does
   not claim that those lower sectors vanish unless the reduced family and
   boundary convention prove them scaleless or absent.
 - The dual-contour master-coefficient extraction block is a finite
-  reduced-sector gate.  It assumes a declared master basis, enough contour or
+  reduced-sector layer.  It assumes a declared master basis, enough contour or
   cut functionals to make the pairing matrix invertible, and an independently
   known subtraction vector for contact, surface, lower-sector, and regulator
   residues; it does not identify raw leading singularities with physical master
@@ -477,7 +477,7 @@
   \]
   An \(s\)-only ansatz matches one cut but misses the crossed cuts; local
   counterterms have no channel discontinuity.
-- The same scalar example is carried through the UV-subtraction gate.  With
+- The same scalar example is carried through the UV-subtraction stage.  With
   \(\widehat B_{\rm sub}(x)=
   (16\pi^2)^{-1}[-\log((-x-\ii0)/\mu^2)+c_{\rm sub}]\), the crossed-channel
   pole is \(3\lambda^2/(32\pi^2\epsilon)\), the local counterterm enters the
@@ -533,7 +533,7 @@
   four-dimensional two-particle cuts still vanish by the tree helicity
   selection rule.  The missing input is again \(D\)-dimensional or
   massive-scalar unitarity data, not a local counterterm.
-- Four-point color--kinematics gateway: after the tree amplitude is written in
+- Four-point color--kinematics comparison datum: after the tree amplitude is written in
   cubic form,
   \[
     \mathcal A_4^{\rm YM}
@@ -644,13 +644,13 @@
   statements without additional hypotheses.
 - No claim that the new generalized-unitarity section completes all of issue
   #769: the reconstruction-datum pass consolidates the already-present
-  one-loop gates rather than solving a new integral family.  The scalar
+  one-loop entries rather than solving a new integral family.  The scalar
   example and the MHV/all-plus helicity control close the first one-loop
   workflow and rational-term boundary.  The five-point
   all-plus template adds a genuine nonabelian one-loop partial amplitude
   beyond four points, the planar \(\mathcal N=4\) MHV block supplies a full
   cut-constructible nonabelian state-sum reconstruction in a declared
-  supersymmetric theory, the four-point color--kinematics gateway supplies a
+  supersymmetric theory, the four-point color--kinematics comparison supplies a
   tree-level numerator-representation and double-copy boundary, the one-loop
   surface-obstruction block explains why integrated gauge-null surface terms
   are not automatically double-copy nulls, the finite box block supplies one
@@ -751,7 +751,7 @@
   links the result to Cutkosky, Landau, and fixed-\(t\) dispersion.  The
   companion script `calculation-checks/steinmann_channel_checks.py` checks the
   finite channel and causal-order algebra.
-- 2026-06-05 issue #769 first architecture pass: inserted the
+- 2026-06-05 issue #769 first workflow pass: inserted the
   generalized-unitarity and one-loop-reduction bridge immediately after
   Cutkosky.  The pass separates physical discontinuities from algebraic cuts,
   gives the one-loop scalar-integral coefficient workflow, reconstructs the
@@ -761,7 +761,7 @@
   through IBP and a differential equation.  The companion script
   `calculation-checks/generalized_unitarity_reduction_checks.py` checks the
   cut matrix, nullspace, IBP, differential-equation, and branch-threshold
-  ledger.
+  data.
 - 2026-06-05 issue #769 gauge-theory rational pass: added the
   MHV-box/all-plus rational-term control to prevent the generalized-unitarity
   section from remaining scalar-only.  The pass distinguishes the
@@ -847,11 +847,11 @@
   \(s t\,\mathcal A_4^{(0),\mathrm{MHV}}\) coefficient, and the negative
   controls showing that a single two-particle cut can hide lower-topology
   contamination and that a gluon-only state sum is not the \(\mathcal N=4\)
-  theory.  The companion script checks the sixteen-state multiplet ledger,
+  theory.  The companion script checks the sixteen-state multiplet enumeration,
   Parke--Taylor component extraction, maximal-cut normalization, lower
   topology ambiguity, vanishing lower-topology remainder, and cyclic trace
   count.
-- 2026-06-05 issue #769 color--kinematics gateway pass: added a four-point
+- 2026-06-05 issue #769 color--kinematics comparison pass: added a four-point
   tree-level bridge from cubic color factors to Jacobi-satisfying kinematic
   numerators and the gravity double-copy numerator square.  The text separates
   gauge-amplitude equivalence from Jacobi-compatible numerator data and states
@@ -865,12 +865,12 @@
   section, collecting cut data, integrand representative choice,
   rational/regulator input, reduction, boundary/branch information,
   subtraction convention, and observable assembly into one named workflow.
-  The companion script checks gate coverage, distinguishes single-gate
+  The companion script checks stage coverage, distinguishes single-stage
   omissions, and verifies that four-dimensional-cut-only and virtual-only
   shortcuts underbudget the full reconstruction.
 - 2026-06-05 issue #769 loop-level color--kinematics obstruction pass: added
   `ca:loop-level-color-kinematics-surface-obstruction`, which promotes the
-  tree gateway into a one-loop representative-level warning.  The block shows
+  tree comparison datum into a one-loop representative-level warning.  The block shows
   that contact, evanescent, or IBP-surface numerator shifts can be invisible to
   selected cuts and color-weighted gauge integration while breaking the local
   numerator Jacobi identity and changing a naive double-copy pairing.  The
@@ -909,7 +909,7 @@
   negative control, and spurious nonzero-Laurent-power cancellation.
 - 2026-06-05 issue #769 scalar-renormalization closure pass: extended the
   massless \(\lambda\phi^4\) cut reconstruction through the local
-  UV-subtraction gate.  The manuscript now displays the crossed-channel
+  UV-subtraction stage.  The manuscript now displays the crossed-channel
   \(3\lambda^2/(32\pi^2\epsilon)\) pole, the local counterterm convention,
   the resulting \(3\lambda^2/(16\pi^2)\) one-loop beta coefficient, and the
   subtracted amplitude with branch-labelled logarithms.  The companion check
@@ -928,7 +928,7 @@
   control, and logarithmic one-master shortcut failure.
 - 2026-06-06 issue #769 multi-loop sector-projection pass: added
   `ca:multi-loop-maximal-cut-sector-projection` after the sunrise maximal-cut
-  block.  The new gate separates the parent leading singularity from contact
+  block.  The new test separates the parent leading singularity from contact
   terms proportional to propagators, shows how those contact terms cancel into
   lower topologies before IBP, and states that lower-sector disappearance is a
   reduced-family/boundary fact rather than a consequence of the parent maximal
@@ -938,7 +938,7 @@
   scaleless.
 - 2026-06-06 issue #769 dual-contour coefficient-extraction pass: added
   `ca:dual-contour-master-coefficient-extraction` after the sector-projection
-  gate.  The new architecture layer states the finite pairing matrix
+  test.  The new coefficient layer states the finite pairing matrix
   \(P_{ij}=\mathcal C_i[M_j]\), the subtraction vector for surface, contact,
   lower-sector, and regulator residues, the coefficient formula
   \(c_j=\sum_i(P^{-1})_{ji}(\mathcal C_i[\mathcal I_{\rm red}]-b_i)\), and an
@@ -948,19 +948,19 @@
   that a rank-one contour pairing cannot distinguish two masters.
 - 2026-06-06 issue #769 master-discontinuity closure pass: added
   `ca:master-discontinuity-closure-gate` after the dual-contour coefficient
-  layer.  The new block compares the transported master boundary-value jump
+  layer.  The new comparison block compares the transported master boundary-value jump
   \(\Delta_{\chi;\eta}\vec J\), lower-sector discontinuities, and subtraction
   branch data with the physical Cutkosky channel datum
   \(\mathcal U_{\chi;\eta}\).  The companion check verifies exact finite
   closure and rejects raw-contour values, Euclidean master values, wrong sheet,
   omitted lower sectors, and untransported subtraction branches as physical
   discontinuity shortcuts.
-- 2026-06-06 issue #769 two-loop IR-pole gate pass: added
+- 2026-06-06 issue #769 two-loop IR-pole consistency pass: added
   `ca:two-loop-ir-pole-consistency-gate` after the one-loop
-  virtual-to-observable assembly block.  The new gate records the recursive
+  virtual-to-observable assembly block.  The new test records the recursive
   fixed-order subtraction
   \(\mathcal F^{(2)}=\mathcal A^{(2)}-\mathbf I^{(1)}\mathcal A^{(1)}
-  -\mathbf I^{(2)}\mathcal A^{(0)}\), expands the equivalent pole ledger through
+  -\mathbf I^{(2)}\mathcal A^{(0)}\), expands the equivalent pole decomposition through
   lower-loop data, and adds the NNLO observable assembly term
   \(\langle \mathcal F^{(1)},\mathcal F^{(1)}\rangle\) plus real--virtual,
   double-real, and factorization pieces.  The companion check now verifies the
@@ -969,7 +969,7 @@
   and tests a two-loop residual budget.
 - 2026-06-06 issue #769 unresolved measurement-cell pass: added
   `ca:one-loop-unresolved-measurement-cell` between the symbolic one-loop
-  observable assembly and the two-loop IR-pole gate.  The pass expands the
+  observable assembly and the two-loop IR-pole consistency test.  The pass expands the
   real-emission/subtraction symbol into a local unresolved chart with
   \(x^{-1+\epsilon_{\rm ir}}\), the plus-distribution identity, the reduced
   measurement \(W_0\), and the finite \(\int (W-W_0)/x\) measurement term.
@@ -977,7 +977,7 @@
   measurement in the counterevent, freezing the measurement to its locally
   inclusive value, dropping the real cell, and using a non-infrared-safe
   logarithmic weight.
-- 2026-06-05 issue #755 named-tool status pass: added
+- 2026-06-05 issue #755 named-tool role pass: added
   `rem:chapter06-named-tool-status-ledger` near the chapter entrance and
   tightened the generalized-unitarity opening.  The pass records which named
   tools are locally proved, conditionally quoted, perturbative, or diagnostic:
@@ -985,3 +985,10 @@
   unitarity/integrand reduction, Steinmann, and Landau equations.  This is an
   editorial/coherence repair for a dense chapter, not another loop-amplitude
   cell.
+- 2026-06-06 issue #769/#755 reader-surface cleanup: re-audited the
+  generalized-unitarity reader surface after the recent amplitude passes.
+  The TeX now speaks of named-tool roles, reconstruction-package entries,
+  color--kinematics comparison data, master-discontinuity closure comparison,
+  and two-loop infrared-pole consistency tests.  Reader-facing gate/ledger
+  vocabulary was removed from the affected loop-amplitude prose while labels
+  and equations were kept stable.
