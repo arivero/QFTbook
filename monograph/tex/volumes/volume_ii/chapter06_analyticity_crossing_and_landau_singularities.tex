@@ -3537,6 +3537,83 @@ kernel, and the conditioning or residual bound before its coefficients can be
 transported into the master differential system.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Master discontinuity closure]
+\label{ca:master-discontinuity-closure-gate}
+Coefficient extraction and master transport still have one more physical
+test.  They must reproduce the Cutkosky discontinuity on the declared
+boundary value, not just a collection of algebraic generalized cuts.  Fix a
+channel \(\chi\) and a sheet prescription \(\eta\).  Let hats strip the common
+factor \(2\pi\ii\), and let
+\[
+  \Delta_{\chi;\eta}\vec J
+  :=
+  \frac{1}{2\pi\ii}
+  \left(
+    \vec J_{\eta,+}-\vec J_{\eta,-}
+  \right)
+\]
+be the stripped boundary-value jump of the transported master vector.  If the
+reduced virtual sector is
+\[
+  \mathcal A_{\rm rec}
+  =
+  \vec c^{\mathsf T}\vec J_\eta
+  +\mathcal A_{\rm lower}
+  +\mathcal A_{\rm sub},
+\]
+then its channel jump is the comparison datum
+\begin{equation}
+  \widehat{\operatorname{Disc}}_{\chi;\eta}\mathcal A_{\rm rec}
+  =
+  \vec c^{\mathsf T}\Delta_{\chi;\eta}\vec J
+  +
+  \widehat{\operatorname{Disc}}_{\chi;\eta}\mathcal A_{\rm lower}
+  +
+  \widehat{\operatorname{Disc}}_{\chi;\eta}\mathcal A_{\rm sub}.
+  \label{eq:master-discontinuity-closure-reconstruction}
+\end{equation}
+Here \(\mathcal A_{\rm lower}\) contains lower-sector masters produced by
+contact reductions, and \(\mathcal A_{\rm sub}\) contains subtraction pieces
+whose branch convention has to be the same as the one used to define the
+renormalized amplitude.  A purely local ultraviolet counterterm contributes
+zero to this discontinuity, but that zero is a convention-level statement, not
+something read from the generalized cut.
+
+Let \(\mathcal U_{\chi;\eta}\) denote the corresponding physical Cutkosky
+datum: the positive-energy phase-space integral with the declared state sum,
+orientation, regulator, and remaining sheet labels.  The reconstructed sector
+has passed the physical channel test only when
+\begin{equation}
+  \begin{aligned}
+  E_{\chi;\eta}
+  &:=
+  \mathcal U_{\chi;\eta}
+  -
+  \vec c^{\mathsf T}\Delta_{\chi;\eta}\vec J\\
+  &\quad
+  -
+  \widehat{\operatorname{Disc}}_{\chi;\eta}\mathcal A_{\rm lower}
+  -
+  \widehat{\operatorname{Disc}}_{\chi;\eta}\mathcal A_{\rm sub},\\
+  |E_{\chi;\eta}|
+  &\le
+  B_{\rm state}+B_{\rm coeff}+B_{\rm master}\\
+  &\quad
+  +B_{\rm lower}+B_{\rm sheet}+B_{\rm sub}.
+  \end{aligned}
+  \label{eq:master-discontinuity-closure-bound}
+\end{equation}
+The terms in the bound have distinct jobs: state-sum and orientation errors in
+the physical cut, inverse-pairing error in \(\vec c\), boundary-value error in
+the master jump, omitted lower sectors, wrong \(+\ii0\) sheet, and subtraction
+branch mismatch.  Replacing \(\Delta_{\chi;\eta}\vec J\) by raw contour values
+\(\mathcal C_i[\mathcal I]\), by Euclidean master values, or by the jump on the
+opposite sheet can preserve the coefficient algebra while giving the wrong
+physical discontinuity.  Passing this closure test also does not fix
+cut-invisible rational or local finite terms; those still enter through the
+rational/regulator and subtraction gates above.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Two-master threshold mixing and boundary data]
 \label{ca:two-master-threshold-mixing}
 The one-master bubble can make the evaluation step look scalar, but physical

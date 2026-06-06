@@ -44,10 +44,11 @@
   maximal-cut sector-projection gate showing that contact terms cancel
   propagators into lower sectors before IBP, a dual-contour coefficient
   extraction gate turning cuts into master coefficients only after an invertible
-  contour/master pairing and contact subtraction, and a two-stage
-  master-integral layer: first a local two-master threshold block, then a
-  two-letter transport audit exposing connection data, Euclidean boundary
-  constants, branch/path prescriptions, lower sectors, and the
+  contour/master pairing and contact subtraction, a master-discontinuity
+  closure gate comparing transported master jumps with physical Cutkosky
+  channel data, and a two-stage master-integral layer: first a local two-master
+  threshold block, then a two-letter transport audit exposing connection data,
+  Euclidean boundary constants, branch/path prescriptions, lower sectors, and the
   finite-remainder/observable assembly
   that separates reconstructed virtual amplitudes from infrared-safe physical
   observables, including a two-loop infrared-pole consistency gate linking
@@ -151,6 +152,7 @@
 | \(I_{a,b}(Q^2)\) | Euclidean one-loop bubble integral family used for IBP reduction |
 | \(z\), \(F_m(z)\), \(T_m\) | equal-mass bubble threshold variable \(Q^2/(4m^2)\), finite nonlocal bubble part, and normalized lower tadpole master |
 | \(r,E_r,P_r,\Delta_r\) | equal-mass sunrise threshold variable \(s/m^2\), maximal-cut elliptic curve, affine cubic, and eliminated quartic |
+| \(\Delta_{\chi;\eta}\vec J\), \(\mathcal U_{\chi;\eta}\), \(E_{\chi;\eta}\) | stripped physical-channel master jump, Cutkosky channel datum, and residual in the master-discontinuity closure gate |
 | \(\vec M\), \(A_T\), \(y_\gamma\) | local two-master threshold vector, nilpotent threshold residue, and sheet/path-labelled threshold coordinate in the multi-master differential-system model |
 | \(\vec J\), \(A_0,A_1\), \(L_0^\gamma,L_1^\gamma\) | two-letter master-transport vector, residue matrices, and path-labelled logarithmic transports in the finite master-system audit |
 | \(\Omega\), \(W_\alpha\), \(\mathcal U_\gamma\) | reduced master-integral connection, Landau-letter functions, and path-ordered transport from a Euclidean boundary point |
@@ -171,6 +173,7 @@
 | \(\mathbf I^{(2)}_\Lambda\), \(\mathcal F^{(2)}_\Lambda\) | two-loop infrared subtraction operator and hard remainder defined recursively from \(\mathcal A^{(2)}-\mathbf I^{(1)}\mathcal A^{(1)}-\mathbf I^{(2)}\mathcal A^{(0)}\) |
 | \(\mathcal R_\Lambda^{\rm sub}[W]\), \(\mathcal C_\Lambda^{\rm fact}[W]\) | real-emission/subtraction and factorization/matching pieces needed to assemble an infrared-safe observable for measurement \(W\) |
 | \(\mathcal R_\Lambda^{{\rm RV,sub}}[W]\), \(\mathcal R_\Lambda^{{\rm RR,sub}}[W]\) | NNLO real--virtual and double-real subtraction pieces paired with the same infrared subtraction convention |
+| \(B_{\rm state},B_{\rm coeff},B_{\rm master},B_{\rm sheet},B_{\rm sub}\) | state-sum/orientation, inverse-pairing, master-jump, sheet, and subtraction residuals in the physical channel-discontinuity closure |
 | \(B_{\rm cut},B_{\rm rat},B_{\rm IBP},B_{\rm conn},B_{\rm bc},B_{\rm branch},B_{\rm lower},B_{\rm UV},B_{\rm IR/real},B_{\rm fact},B_{\rm meas}\) | residual bounds in the one-loop reconstructed-observable comparison and master-transport audit |
 | \(s_I\) | all-incoming channel invariant \(-(\sum_{i\in I}p_i)^2\), with channel class \([I]=\{I,I^c\}\) |
 | overlapping channels | channel classes \([I]\), \([J]\) for which \(I\cap J\), \(I\setminus J\), \(J\setminus I\), and \((I\cup J)^c\) are all nonempty |
@@ -270,6 +273,11 @@
   known subtraction vector for contact, surface, lower-sector, and regulator
   residues; it does not identify raw leading singularities with physical master
   coefficients without those hypotheses.
+- The master-discontinuity closure block is a physical channel comparison after
+  coefficient extraction and master transport.  It assumes the same sheet,
+  regulator, state sum, and subtraction convention on both sides of the
+  comparison; it does not let algebraic contour values, Euclidean master values,
+  or local finite terms replace the Cutkosky boundary-value jump.
 - The two-letter master-transport model is a finite normalized sector used to
   audit the data needed after IBP closure.  It checks boundary constants,
   noncommuting residues, branch/path prescriptions, and lower-sector residuals;
@@ -937,6 +945,15 @@
   coefficient extraction, rejects raw-contour and contact-omission shortcuts,
   detects surface pollution, bounds propagated cut/contact errors, and confirms
   that a rank-one contour pairing cannot distinguish two masters.
+- 2026-06-06 issue #769 master-discontinuity closure pass: added
+  `ca:master-discontinuity-closure-gate` after the dual-contour coefficient
+  layer.  The new block compares the transported master boundary-value jump
+  \(\Delta_{\chi;\eta}\vec J\), lower-sector discontinuities, and subtraction
+  branch data with the physical Cutkosky channel datum
+  \(\mathcal U_{\chi;\eta}\).  The companion check verifies exact finite
+  closure and rejects raw-contour values, Euclidean master values, wrong sheet,
+  omitted lower sectors, and untransported subtraction branches as physical
+  discontinuity shortcuts.
 - 2026-06-06 issue #769 two-loop IR-pole gate pass: added
   `ca:two-loop-ir-pole-consistency-gate` after the one-loop
   virtual-to-observable assembly block.  The new gate records the recursive

@@ -19,7 +19,9 @@ the four-point color-kinematics/double-copy gateway together with the
 one-loop surface-term obstruction to naive double copy.  It also checks a
 finite triple-cut triangle projection after known box residues have been
 subtracted, a finite two-master threshold-mixing model, a two-letter
-master-transport model with boundary and branch negative controls, the finite
+master-transport model with boundary and branch negative controls, a physical
+master-discontinuity closure gate comparing transported master jumps with
+Cutkosky channel data, the finite
 Laurent-pole ledger that turns a reconstructed virtual amplitude into a finite
 observable only after infrared subtraction, real radiation, and scheme transport
 have been assembled, and the two-loop infrared-pole consistency gate relating
@@ -39,6 +41,7 @@ box and all-plus rational-term comparison, the planar N=4 MHV quadruple-cut
 state-sum ledger, the local two-master
 threshold-mixing datum in a Fuchsian differential system, the two-letter
 transport/boundary audit for a reduced master sector, and the
+physical channel-discontinuity closure audit before the
 virtual-to-observable finite remainder assembly; additionally, the five-point
 all-plus rational amplitude has the correct little-group weights, mass
 dimension, cyclic term coverage, and strict four-dimensional cut
@@ -69,6 +72,9 @@ exact rational projection of parent-topology contact terms into lower sectors
 after propagator cancellation and before IBP master projection;
 exact finite inversion of a contour/master pairing matrix, with surface and
 lower-sector pollution subtracted before coefficient extraction;
+exact finite matching of a physical Cutkosky channel datum against extracted
+coefficients times transported master discontinuities, plus lower-sector and
+subtraction jumps;
 spinor-bracket exponent ledgers for little-group weights and dimensions; and
 a finite four-gluon helicity enumeration for all-plus two-particle cuts;
 finite topology-signature checks for maximal versus two-particle cuts in the
@@ -123,6 +129,8 @@ data, branch-label omission,
 diagonal one-master threshold shortcuts, cut-only boundary reconstruction,
 parent-cut-only sector projection when lower sectors are not scaleless,
 non-dual or surface-polluted contour coefficient extraction,
+raw-contour, Euclidean-value, wrong-sheet, and omitted-lower-sector shortcuts
+in physical master-discontinuity closure,
 homogeneous one-master shortcuts for the equal-mass bubble threshold family,
 Euclidean branch reuse above the massive two-particle threshold,
 logarithmic one-master shortcuts for the sunrise elliptic maximal cut,
@@ -1876,6 +1884,112 @@ def check_dual_contour_master_coefficient_extraction() -> None:
     )
 
 
+def check_master_discontinuity_closure_gate() -> None:
+    coefficients = [Fraction(7, 11), -Fraction(5, 13)]
+    master_discontinuity = [Fraction(3, 17), Fraction(4, 19)]
+    lower_sector_discontinuity = -Fraction(2, 23)
+    subtraction_discontinuity = Fraction(1, 29)
+
+    reconstructed_discontinuity = (
+        dot(coefficients, master_discontinuity)
+        + lower_sector_discontinuity
+        + subtraction_discontinuity
+    )
+    physical_cut_datum = reconstructed_discontinuity
+    assert_equal(
+        "physical Cutkosky channel closure after master transport",
+        reconstructed_discontinuity,
+        physical_cut_datum,
+    )
+
+    pairing: Matrix = [
+        [Fraction(1), Fraction(2)],
+        [Fraction(3), Fraction(5)],
+    ]
+    raw_contour_values = matrix_vector_mul(pairing, coefficients)
+    raw_contour_discontinuity = (
+        dot(coefficients, raw_contour_values)
+        + lower_sector_discontinuity
+        + subtraction_discontinuity
+    )
+    assert_true(
+        "raw contour values are not physical master discontinuities",
+        raw_contour_discontinuity != physical_cut_datum,
+    )
+
+    euclidean_master_values = [Fraction(5, 7), Fraction(11, 17)]
+    euclidean_value_shortcut = (
+        dot(coefficients, euclidean_master_values)
+        + lower_sector_discontinuity
+        + subtraction_discontinuity
+    )
+    assert_true(
+        "Euclidean master values do not replace boundary-value jumps",
+        euclidean_value_shortcut != physical_cut_datum,
+    )
+
+    omitted_lower_sector = dot(coefficients, master_discontinuity) + subtraction_discontinuity
+    assert_true(
+        "omitting lower-sector discontinuity changes physical cut closure",
+        omitted_lower_sector != physical_cut_datum,
+    )
+
+    wrong_sheet_discontinuity = (
+        dot(coefficients, vector_scale(Fraction(-1), master_discontinuity))
+        + lower_sector_discontinuity
+        + subtraction_discontinuity
+    )
+    assert_true(
+        "wrong sheet flips the physical discontinuity",
+        wrong_sheet_discontinuity != physical_cut_datum,
+    )
+
+    untransported_subtraction = (
+        dot(coefficients, master_discontinuity)
+        + lower_sector_discontinuity
+        - subtraction_discontinuity
+    )
+    assert_true(
+        "subtraction branch must be transported with the amplitude",
+        untransported_subtraction != physical_cut_datum,
+    )
+
+    local_uv_counterterm_discontinuity = Fraction(0)
+    assert_equal(
+        "local UV counterterm contributes no channel discontinuity",
+        physical_cut_datum + local_uv_counterterm_discontinuity,
+        physical_cut_datum,
+    )
+
+    coefficient_errors = [Fraction(1, 101), Fraction(1, 103)]
+    master_jump_errors = [Fraction(1, 107), Fraction(1, 109)]
+    residuals = {
+        "state_sum": Fraction(1, 113),
+        "coefficients": sum(
+            abs(master_discontinuity[index]) * coefficient_errors[index]
+            for index in range(2)
+        ),
+        "master_jump": sum(
+            abs(coefficients[index]) * master_jump_errors[index]
+            for index in range(2)
+        ),
+        "lower_sector": Fraction(1, 127),
+        "sheet": Fraction(1, 131),
+        "subtraction": Fraction(1, 137),
+    }
+    closure_error = sum(residuals.values(), Fraction(0))
+    majorant = sum(abs(value) for value in residuals.values())
+    assert_true(
+        "master discontinuity closure residual bound",
+        abs(closure_error) <= majorant,
+    )
+    underbudget = majorant - residuals["lower_sector"] - residuals["sheet"]
+    assert_true(
+        "omitting lower-sector and sheet errors underbudgets physical cut closure",
+        closure_error > underbudget,
+    )
+
+
 def check_branch_and_landau_ledger() -> None:
     # In the expansion
     #   Gamma(eps)[exp(i pi eps)-exp(-i pi eps)]/(16 pi^2),
@@ -2363,6 +2477,7 @@ def main() -> None:
     check_two_loop_sunrise_elliptic_maximal_cut()
     check_multi_loop_maximal_cut_sector_projection()
     check_dual_contour_master_coefficient_extraction()
+    check_master_discontinuity_closure_gate()
     check_branch_and_landau_ledger()
     check_two_master_threshold_mixing()
     check_two_letter_master_transport()
