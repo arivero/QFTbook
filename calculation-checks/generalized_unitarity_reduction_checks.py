@@ -16,7 +16,10 @@ color, state-sum, and regulator bookkeeping for the
 Yang-Mills MHV/all-plus control examples, including the planar N=4 MHV
 quadruple-cut reconstruction, the five-gluon all-plus rational template, and
 the four-point color-kinematics/double-copy gateway together with the
-one-loop surface-term obstruction to naive double copy.  It also checks a
+one-loop surface-term obstruction to naive double copy and the local
+Jacobi-repair condition under which a common color-null surface direction is
+also a double-copy null direction against a Jacobi-satisfying second copy.
+It also checks a
 finite triple-cut triangle projection after known box residues have been
 subtracted, a finite two-master threshold-mixing model, a two-letter
 master-transport model with boundary and branch negative controls, a physical
@@ -51,8 +54,10 @@ invisibility, and the four-point color-kinematics gateway separates
 gauge-amplitude equivalence from Jacobi-compatible numerator data needed for
 the double copy, and a one-loop Jacobi triplet surface term can be invisible
 to cuts and color-weighted gauge integration while changing a naive
-double-copy pairing, and the triple-cut triangle projection isolates the
-triangle coefficient only after known box residues have been subtracted.  The
+double-copy pairing, while a common Jacobi-repair direction is double-copy
+null only when the second numerator copy is Jacobi-satisfying, and the
+triple-cut triangle projection isolates the triangle coefficient only after
+known box residues have been subtracted.  The
 one-loop reconstruction package is checked as an ordered
 data package separating cuts, representative choice, rational/regulator data,
 reduction, boundary/branch data, subtraction, and observable assembly.
@@ -90,7 +95,8 @@ exact Laurent bookkeeping for the dimension-shifted mu_perp^4 box residue,
 including the three-simplex pole, strict four-dimensional cut blindness, and
 massive-scalar coefficient extraction;
 finite cubic-channel color/numerator algebra for the four-point
-color-kinematics gateway and a finite loop-Jacobi triplet surface-term model;
+color-kinematics gateway, a finite loop-Jacobi triplet surface-term model, and
+a finite common-repair model for loop-level double-copy null directions;
 nilpotent rational matrix algebra for threshold monodromy and regular
 boundary constants; noncommuting two-letter residue algebra for first-order
 transport, path-order sensitivity, and cut-invisible boundary shifts;
@@ -122,7 +128,9 @@ dimension-shifted mu_perp^4 numerator is missed by strict four-dimensional cuts
 but leaves the finite rational residue read by massive unitarity, verifies that a
 cut-invisible surface/contact shift can leave the gauge amplitude unchanged
 while breaking loop-level numerator Jacobi and changing the naive double-copy
-pairing, verifies that the raw triple-cut constant can mix a triangle
+pairing, verifies that a common Jacobi repair is not double-copy null against
+a defective second copy and that sampled cuts do not prove the full Jacobi
+defect is absent, verifies that the raw triple-cut constant can mix a triangle
 coefficient with constant parts of known box residues and that omitting one
 box subtraction leaves a wrong triangle coefficient, and rejects virtual-only
 pole cancellation,
@@ -1325,6 +1333,84 @@ def check_loop_level_color_kinematics_surface_obstruction() -> None:
         "Jacobi repair cancels double-copy surface shift",
         dot(jacobi_restoring_compensation, second_copy),
         -dot(surface_shift, second_copy),
+    )
+
+
+def check_loop_level_jacobi_repair_double_copy_null() -> None:
+    colors = [Fraction(1), Fraction(2), Fraction(-3)]
+    assert_equal("Jacobi repair color null direction", sum(colors, Fraction(0)), Fraction(0))
+
+    numerators = [Fraction(5), Fraction(7), Fraction(-10)]
+    jacobi_defect = sum(numerators, Fraction(0))
+    assert_equal("unrepaired loop numerator Jacobi defect", jacobi_defect, Fraction(2))
+
+    common_repair = [-(jacobi_defect / 3)] * 3
+    repaired_numerators = vector_add(numerators, common_repair)
+    assert_equal(
+        "common surface repair restores loop numerator Jacobi",
+        sum(repaired_numerators, Fraction(0)),
+        Fraction(0),
+    )
+    assert_equal(
+        "common Jacobi repair is color-weighted gauge null",
+        dot(colors, common_repair),
+        Fraction(0),
+    )
+
+    second_copy = [Fraction(4), Fraction(1), Fraction(-5)]
+    assert_equal(
+        "second copy satisfies loop numerator Jacobi",
+        sum(second_copy, Fraction(0)),
+        Fraction(0),
+    )
+    double_copy_before = dot(numerators, second_copy)
+    double_copy_after = dot(repaired_numerators, second_copy)
+    assert_equal(
+        "common Jacobi repair is double-copy null against Jacobi second copy",
+        double_copy_after,
+        double_copy_before,
+    )
+
+    defective_second_copy = [Fraction(4), Fraction(1), Fraction(-4)]
+    assert_true(
+        "defective second copy has Jacobi defect",
+        sum(defective_second_copy, Fraction(0)) != 0,
+    )
+    defective_double_copy_after = dot(repaired_numerators, defective_second_copy)
+    defective_double_copy_before = dot(numerators, defective_second_copy)
+    assert_equal(
+        "common repair shift pairs with defective second-copy Jacobi sum",
+        defective_double_copy_after - defective_double_copy_before,
+        common_repair[0] * sum(defective_second_copy, Fraction(0)),
+    )
+    assert_true(
+        "common repair is not double-copy null against defective second copy",
+        defective_double_copy_after != defective_double_copy_before,
+    )
+
+    graph_dependent_color_null_shift = [Fraction(2), Fraction(-1), Fraction(0)]
+    assert_equal(
+        "graph-dependent shift can be color null",
+        dot(colors, graph_dependent_color_null_shift),
+        Fraction(0),
+    )
+    assert_true(
+        "graph-dependent color-null shift is not common Jacobi repair",
+        graph_dependent_color_null_shift != common_repair,
+    )
+    graph_shifted_double_copy = dot(
+        vector_add(numerators, graph_dependent_color_null_shift),
+        second_copy,
+    )
+    assert_true(
+        "graph-dependent color-null shift can change double copy",
+        graph_shifted_double_copy != double_copy_before,
+    )
+
+    sampled_cut_defect = Fraction(0)
+    assert_true(
+        "cut-sampled Jacobi vanishing does not prove full defect",
+        sampled_cut_defect == 0 and jacobi_defect != 0,
     )
 
 
@@ -2621,6 +2707,7 @@ def main() -> None:
     check_five_gluon_all_plus_rational_template()
     check_four_point_color_kinematics_gateway()
     check_loop_level_color_kinematics_surface_obstruction()
+    check_loop_level_jacobi_repair_double_copy_null()
     check_finite_two_scale_box_master()
     check_bubble_ibp_identity()
     check_bubble_numerator_sector_projection()

@@ -34,7 +34,8 @@
   all-plus rational blind spot with the dimension-shifted
   \(\mu_\perp^4\) box residue and including the five-point all-plus
   partial-amplitude template, a four-point color--kinematics/double-copy
-  comparison datum with generalized-gauge negative controls, a solved finite two-scale
+  comparison datum with generalized-gauge negative controls, a loop-level
+  Jacobi-repair condition for double-copy null directions, a solved finite two-scale
   massless box master with fixed \(r_\Gamma\) normalization, pole subtraction,
   sector-resolved dilogarithm boundary, and branch data, the bubble
   IBP/differential equation master calculation, an equal-mass bubble threshold
@@ -167,7 +168,7 @@
 | \(C_{\rm loop}\), \(C_{\rm rat}\), \(C_{5,\rm rat}\) | loop-normalization and all-plus rational-term constants, fixed only after color, particle-content, and loop-measure conventions are declared |
 | \(c_s,c_t,c_u\) | four-point cubic color factors satisfying the Lie-algebra Jacobi relation \(c_s+c_t+c_u=0\) |
 | \(n_s,n_t,n_u\), \(\widetilde n_i\) | four-point generalized kinematic numerators and the second numerator copy used in the color--kinematics/double-copy comparison datum |
-| \(S_\alpha,\mathcal J\) | one-loop contact/IBP/evanescent surface numerator shift in a Jacobi graph triplet and its induced kinematic Jacobi defect |
+| \(S_\alpha,\mathcal J\) | one-loop contact/IBP/evanescent surface numerator shift in a Jacobi graph triplet, its induced kinematic Jacobi defect, and the defect repaired by a common color-null surface direction when allowed |
 | \(\mathbf I^{(1)}_\Lambda\) | one-loop infrared subtraction operator used to define the finite remainder in a declared regulator and finite subtraction convention |
 | \(\mathcal F^{(1)}_\Lambda\) | finite one-loop hard remainder after subtracting \(\mathbf I^{(1)}_\Lambda\mathcal A^{(0)}_\Lambda\) |
 | \(\mathbf I^{(2)}_\Lambda\), \(\mathcal F^{(2)}_\Lambda\) | two-loop infrared subtraction operator and hard remainder defined recursively from \(\mathcal A^{(2)}-\mathbf I^{(1)}\mathcal A^{(1)}-\mathbf I^{(2)}\mathcal A^{(0)}\) |
@@ -881,6 +882,19 @@
   companion script verifies a finite Jacobi-triplet model with zero cut
   signature, gauge-null color weighting, nonzero Jacobi defect, nonzero
   double-copy shift, and representative-level repair.
+- 2026-06-06 issue #769 loop-level Jacobi-repair pass: added
+  `ca:loop-level-jacobi-repair-double-copy-null` immediately after the
+  obstruction block.  The text gives the positive local criterion: when a
+  triplet Jacobi defect lies in an allowed common contact/IBP/evanescent
+  surface direction, subtracting one third of the defect from each numerator
+  restores the kinematic Jacobi identity and is color-null before integration.
+  The same repair is double-copy null only against a Jacobi-satisfying second
+  numerator copy, or after a separate gravity-null surface proof.  The
+  companion check verifies the common repair, rejects a defective second copy,
+  rejects graph-dependent color-null shifts as double-copy shortcuts, and
+  records that sampled-cut Jacobi vanishing does not prove the full numerator
+  defect vanishes.  This remains a local numerator-representative criterion,
+  not a proof of loop-level color--kinematics duality.
 - 2026-06-05 issue #769 sector-projection pass: added
   `ca:bubble-sector-projection` in the IBP subsection.  The pass shifts the
   reduction discussion from a squared-propagator identity to the amplitude

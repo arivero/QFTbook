@@ -3000,7 +3000,7 @@ Current checks:
   distributions.
 - `generalized_unitarity_reduction_checks.py`: exact finite checks for the
   loop-amplitude bridge in Volume II, Chapter 6, including the one-loop
-  reconstruction data-package gate model, the massless \(\phi^4\) one-loop cut
+  ordered reconstruction data-package model, the massless \(\phi^4\) one-loop cut
   reconstruction, the crossed-channel MS pole and one-loop running
   coefficient, the incomplete-cut, local-subtraction, and
   four-dimensional-rational negative controls, the Yang--Mills MHV/all-plus
@@ -3014,7 +3014,9 @@ Current checks:
   spot, the four-point color--kinematics/double-copy
   gateway with the generalized-gauge non-Jacobi negative control, the one-loop
   color--kinematics surface-term obstruction showing that a cut-invisible
-  gauge-null shift need not be double-copy null, the finite two-scale box
+  gauge-null shift need not be double-copy null, the common Jacobi-repair
+  condition showing when a color-null surface direction is also double-copy
+  null against a Jacobi-satisfying second copy, the finite two-scale box
   master with its fixed pole subtraction, sector-boundary quadrature,
   dilogarithm parameter-integral check, differential equations, branch
   prescription, and one-cut-only/boundary negative controls, the
