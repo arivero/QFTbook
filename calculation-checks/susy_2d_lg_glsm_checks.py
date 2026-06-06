@@ -8,19 +8,19 @@ normalization, single-vortex coefficient noncancellation bound,
 P^{N-1} mirror residue trace, and
 vortex-to-protected-observable residual ledger, together with the
 vortex-fugacity dimensional-transmutation coordinate, the degree-one
-P^{N-1} stable-map gate, the finite degree-one stable-map incidence model
+P^{N-1} stable-map computation, the finite degree-one stable-map incidence model
 with supplied vortex coefficient input plus conditional residual template for
 the quantum-product observable relation, the A-model degree-one zero-mode
-measure bridge, the finite measure-scheme covariance gate for that
-degree-one coefficient, and the mirror-conjecture status ledger separating
+measure bridge, the finite measure-scheme covariance test for that
+degree-one coefficient, and the mirror-conjecture observable boundary separating
 full-QFT data from protected evidence, plus the Hori--Vafa
-residue/direct-instanton cross-check gate, in Volume VII Chapter 09.
+residue/direct-instanton comparison map, in Volume VII Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
 elimination, finite chain-complex rank checks, Berezin-degree tests,
 retained-window signed/mass coefficient bounds, root-of-unity residue sums,
-stable-map incidence Jacobians, A-model zero-mode degree gates, and residual
+stable-map incidence Jacobians, A-model zero-mode degree filters, and residual
 budgets, plus finite density/Jacobian transport tests and double-entry
-mirror/direct-vortex comparison ledgers, are computed directly from finite data
+mirror/direct-vortex comparisons, are computed directly from finite data
 rather than by substituting the displayed final identities.
 Imported assumptions: the finite GLSM charge matrix, selected regulator-stage
 factorization, supplied vortex coefficients, nonzero-mode determinant
@@ -1582,7 +1582,7 @@ def check_degree_one_measure_scheme_covariance() -> None:
     )
 
 
-def check_hori_vafa_residue_instanton_crosscheck_gate() -> None:
+def check_hori_vafa_residue_instanton_comparison_map() -> None:
     # The mirror residue gives S_1(q_mir)=q_mir for the degree-one
     # P^{N-1} product test.  The direct A-model/vortex coefficient uses the
     # transported vortex fugacity q_lambda, the retained measure integral, and
@@ -1746,10 +1746,10 @@ def check_logarithmic_chiral_vortex_obstruction() -> None:
         assert_equal("ordinary charged scalar zero degree carries flux", flux, ordinary_vortex_degree)
 
 
-def check_mirror_conjecture_status_ledger() -> None:
-    # This is a finite status check, not a test of the conjectures themselves.
+def check_mirror_conjecture_observable_boundary() -> None:
+    # This is a finite boundary check, not a test of the conjectures themselves.
     # It verifies that the chapter's named conjectures list the full-QFT data
-    # demanded by the issue while the finite calculations remain evidence lanes.
+    # while protected calculations remain observable-comparison inputs.
     glsm_required_data = {
         "charge matrix",
         "fi theta",
@@ -1799,6 +1799,19 @@ def check_mirror_conjecture_status_ledger() -> None:
         "GLSM protected evidence is a proper subset of full equivalence data",
         glsm_protected_evidence < glsm_protected_evidence | glsm_full_qft_obligations,
         True,
+    )
+
+    observable_map = ["D_loc", "D_pert", "D_vort", "D_obs"]
+    assert_equal(
+        "GLSM mirror observable map puts vortex data before observable comparison",
+        observable_map.index("D_vort") < observable_map.index("D_obs"),
+        True,
+    )
+    mirror_residue_only = {"D_obs"}
+    assert_equal(
+        "mirror residue alone cannot bypass direct vortex data",
+        {"D_vort", "D_obs"} <= mirror_residue_only,
+        False,
     )
 
     hv_formula_shortcut = {
@@ -1955,10 +1968,10 @@ def main() -> None:
     check_degree_one_stable_map_incidence_model()
     check_degree_one_amodel_zero_mode_measure_bridge()
     check_degree_one_measure_scheme_covariance()
-    check_hori_vafa_residue_instanton_crosscheck_gate()
+    check_hori_vafa_residue_instanton_comparison_map()
     check_cigar_metric_elimination()
     check_logarithmic_chiral_vortex_obstruction()
-    check_mirror_conjecture_status_ledger()
+    check_mirror_conjecture_observable_boundary()
     check_hypersurface_phase_ledger()
     check_hypersurface_coulomb_coordinate_signal()
     print("All 2D SUSY LG/GLSM checks passed.")

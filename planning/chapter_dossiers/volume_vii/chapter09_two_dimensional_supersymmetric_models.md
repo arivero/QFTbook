@@ -62,7 +62,7 @@ and
   exponential torus coordinates in the abelian mirror presentation.
 - `conj:abelian-glsm-hori-vafa-mirror-qft`, `D_loc`, `D_pert`, `D_vort`,
   `D_obs`, `E_cont`, `E_op`, `E_top`, `E_bg`, `E_sing`: named full-QFT
-  GLSM/Hori--Vafa mirror conjecture, its protected evidence lanes, and the
+  GLSM/Hori--Vafa mirror conjecture, its observable comparison layers, and the
   separate continuum/operator/topological/background/singular-locus proof
   debts.
 - `hat X_i`, `q_phys`, `R_{P^{N-1}}`, `H`: vortex-normalized mirror-torus
@@ -87,10 +87,10 @@ and
 - `q_mir`, `I_{Lambda,1}`, `B_vort`, `B_I`, `B_q`, `B_off,a`:
   mirror-residue FI coordinate, retained finite degree-one instanton-measure
   integral, and residual majorants in the Hori--Vafa residue/direct-instanton
-  cross-check gate.
+  comparison map.
 - `overline M_{0,3}(P^{N-1},d)`, `ev_j`, `I_d`: compactified genus-zero
   stable-map moduli space, evaluation maps, and A-model three-point invariant
-  used in the direct `P^{N-1}` quantum-product gate.
+  used in the direct `P^{N-1}` quantum-product computation.
 - `U_{i,1,Lambda}`, `W_{i,1,Lambda}^{nz}`, `Z_{i,F,Lambda}^0`,
   `c_{i,Lambda}`: finite-regulator one-vortex chart, nonzero-mode
   determinant ratio, zero-mode Berezin coefficient for the twisted
@@ -215,7 +215,7 @@ and
   universal fermion zero modes are identified with `d^2 theta_tilde`, the
   residual Berezin integral extracts the top residual Grassmann degree, so the
   uninserted vortex superpotential term vanishes unless no residual zero modes
-  remain.  This isolates the physical amplitude gate behind the compact mirror
+  remain.  This isolates the physical amplitude question behind the compact mirror
   monomial.
 - Adds the finite-regulator vortex fluctuation complex: the coefficient
   `c_i` is tied to a local gauge complex
@@ -255,14 +255,14 @@ and
   recovers the protected quantum-product relation `H^N=q_phys` only after the
   vortex coefficient, determinant-line orientation, and A-twisted
   compactification/contact data are fixed.
-- Adds the vortex-to-observable residual ledger: the regulated
+- Adds the vortex-to-observable residual comparison: the regulated
   `P^{N-1}` A-twisted correlator is compared to the mirror residue through
   separate coefficient, determinant, zero-mode, compactification/contact,
   gluing, operator-map, and continuum residuals.  The chapter now makes the
   nonzero vortex coefficient and the vanishing of those residuals the
   load-bearing physics inputs before the finite Hori--Vafa residue identity is
   promoted to the quantum-product statement.
-- Adds the direct A-model stable-map gate for the `P^{N-1}` quantum product:
+- Adds the direct A-model stable-map computation for the `P^{N-1}` quantum product:
   the virtual dimension of `overline M_{0,3}(P^{N-1},d)` is `(N-1)+Nd`,
   the degree-one insertions `(H,H^{N-1},H^{N-1})` have the matching
   codimension `2N-1`, and the geometric line count is one.  This supplies the
@@ -286,14 +286,14 @@ and
   insertions `(H,H^{N-1},H^{N-1})` saturate the top zero-mode degree
   `2N-1`; orientation reversal, extra zero modes, or omitted obstruction data
   change or kill the coefficient.
-- Adds the finite measure-scheme covariance gate for that same degree-one
+- Adds the finite measure-scheme covariance test for that same degree-one
   observable: rescaling the supplied vortex coefficients must be accompanied by
   the inverse FI-coordinate shift, and changing the zero-mode chart density
   must transport the inverse Jacobian through the nonzero-mode/Berezin density.
   The retained coefficient is invariant only for the full package
   `q_Lambda * int Omega_{Lambda,1}`; stale FI coordinates, missing Jacobians, or
   untransported orientation signs are treated as real coefficient changes.
-- Adds the Hori--Vafa residue/direct-instanton cross-check gate for the
+- Adds the Hori--Vafa residue/direct-instanton comparison map for the
   degree-one `P^{N-1}` product: the mirror residue `S_1(q_mir)` is compared
   against the direct A-twisted coefficient only through the transported vortex
   fugacity `q_Lambda`, the retained instanton-measure integral
@@ -430,17 +430,17 @@ and
   - the degree-one A-model zero-mode measure bridge: the line count for
     `I_1(H,H^{N-1},H^{N-1})` is connected back to the finite-regulator
     A-twisted path integral through the vortex-normalized fugacity, the
-    nonzero-mode determinant-line element, the Berezin top-degree gate, the
+    nonzero-mode determinant-line element, the Berezin top-degree filter, the
     vanishing obstruction space for convex `P^{N-1}`, and the orientation
     comparison.  This makes clear that the stable-map incidence count and the
     Hori--Vafa residue are protected evidence only after the same regulator
     supplies the instanton measure and fermion-zero-mode saturation.
-  - the degree-one finite measure-scheme covariance gate: exact transport of
+  - the degree-one finite measure-scheme covariance test: exact transport of
     finite vortex-coefficient rescalings into the FI coordinate, retained-chart
     Jacobian cancellation between the collective-coordinate measure and the
     determinant/Berezin density, and negative controls for stale FI coordinates,
     missing inverse Jacobians, and untransported orientation signs.
-  - the Hori--Vafa residue/direct-instanton cross-check gate: exact telescope
+  - the Hori--Vafa residue/direct-instanton comparison map: exact telescope
     comparing the mirror degree-one residue with the direct A-model/vortex
     coefficient, including transported FI coordinate, retained measure
     integral, vortex, operator, continuum, and off-pairing residuals; negative
@@ -451,7 +451,7 @@ and
   - the logarithmic-chiral vortex obstruction: a unit-norm charged section
     can exist smoothly only in zero flux, whereas an ordinary charged scalar
     can absorb flux through zeros.
-  - the mirror-conjecture status ledger: the named GLSM/Hori--Vafa and
+  - the mirror-conjecture observable-boundary check: the named GLSM/Hori--Vafa and
     cigar/Liouville full-QFT conjectures list continuum, operator, spectral,
     defect, boundary, global, and contact-term data, while local dualization,
     Coulomb logarithms, vortex coefficients, mirror residues, stable-map
@@ -483,7 +483,7 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   holomorphic-coordinate selection argument with calculation-check coverage.
 - The 2026-06-03 Hori--Vafa scrutiny pass adds the finite-regulator
   one-vortex amplitude formula for the exponential term and records the
-  recheck gate for every Hori--Vafa-derived formula: vortex-number coupling,
+  recheck protocol for every Hori--Vafa-derived formula: vortex-number coupling,
   determinant ratio, universal and extra fermion zero modes, boundary
   behavior, and FI-coordinate normalization.  The follow-on all-rank
   normalization pass makes the shifted FI-theta coordinate explicit in both
@@ -508,7 +508,7 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
 - The 2026-06-04 stable-map quantum-product pass adds the direct A-model side
   of the same comparison: the degree-one stable-map dimension and line-count
   calculation for `I_1(H,H^{N-1},H^{N-1})=1`, the resulting `H^N=q_phys`
-  product gate, and finite checks rejecting mirror-only or dimension-mismatched
+  product computation, and finite checks rejecting mirror-only or dimension-mismatched
   shortcuts.
 - The 2026-06-04 degree-one vortex observable repair pass replaces the circular
   assembly check with a finite zero-mode/intersection calculation: it derives
@@ -528,7 +528,7 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   control, and continuum comparison errors to be smaller than the signed
   one-vortex coefficient before the Hori--Vafa primitive term is used as a
   nonzero physical input.
-- The 2026-06-04 comparison-spine pass is an issue #755/#626 coherence repair:
+- The 2026-06-04 comparison-map pass is an issue #755/#626 coherence repair:
   before the detailed Hori--Vafa formulas, the chapter now separates local
   dualization, Coulomb matching, vortex-amplitude construction, and protected
   observable comparison.  This keeps the reader-facing argument architecture
@@ -555,9 +555,16 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   as one package.  This keeps the Appendix K/Hori--Vafa formula from hiding a
   stale instanton-measure convention.
 - The 2026-06-06 issue #597 Hori--Vafa cross-check pass adds a double-entry
-  protected-observable gate: the projective-space mirror residue can be used
+  protected-observable comparison map: the projective-space mirror residue can be used
   only after it agrees, within explicit residual majorants, with the direct
   vortex/A-model coefficient in the same FI, determinant-line, zero-mode,
   operator, and off-pairing convention.  This is a physics-depth instanton
   pass: it checks the amplitude/observable assembly behind the Hori--Vafa
   formula rather than adding another moduli-space cell.
+- The 2026-06-06 issue #844 GLSM/Hori--Vafa architecture pass rephrases the
+  reader-facing entrance to the mirror comparison as an observable comparison
+  map.  The chapter now states the physical question, the compared finite-data
+  package, the direct vortex amplitude layer, the protected observable layer,
+  and the remaining full-QFT proof debts before using a Hori--Vafa expression.
+  The companion boundary check now rejects a mirror-residue-only comparison
+  that bypasses the direct vortex data.

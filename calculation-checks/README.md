@@ -2641,7 +2641,7 @@ Current checks:
   residue/quantum-product selection rule, the vortex-to-protected-observable
   residual telescope with negative controls for omitted vortex coefficients,
   unsaturated zero modes, and underbudgeted comparison residuals, the
-  degree-one \(\mathbb P^{N-1}\) stable-map dimension and line-count gate for
+  degree-one \(\mathbb P^{N-1}\) stable-map dimension and line-count computation for
   the quantum-product relation \(H^N=q\), the finite degree-one vortex
   observable assembly residual ledger tying the vortex-normalized fugacity to the
   three-point product coefficient with residual, off-pairing, mirror-only,
@@ -2649,17 +2649,17 @@ Current checks:
   degree-one zero-mode measure bridge checking Berezin top-degree saturation,
   determinant-line orientation, obstruction-factor omission, nonzero-mode
   determinant cancellation, and residual underbudgeting, the finite
-  measure-scheme covariance gate checking the simultaneous transport of
+  measure-scheme covariance test checking the simultaneous transport of
   vortex coefficient normalizations, the FI coordinate, chart Jacobians,
   determinant densities, and orientation/operator signs, the Hori--Vafa
-  residue/direct-instanton cross-check gate comparing the mirror root sum with
+  residue/direct-instanton comparison map comparing the mirror root sum with
   the transported vortex fugacity, retained A-model measure integral,
   operator/continuum residuals, and off-pairing contacts while rejecting
   mirror-only, line-count-only, stale-FI, orientation-flip, and zero-mode
   shortcuts, and the
   classical cigar quotient metric obtained by eliminating the gauge field,
-  the logarithmic-chiral vortex obstruction, the mirror-conjecture status
-  ledger separating full GLSM/Hori--Vafa and cigar/Liouville QFT equivalence
+  the logarithmic-chiral vortex obstruction, the mirror-conjecture
+  observable-boundary check separating full GLSM/Hori--Vafa and cigar/Liouville QFT equivalence
   data from protected-sector evidence and rejecting protected-calculation
   shortcuts to full duality, plus the hypersurface GLSM
   adjunction sign,
