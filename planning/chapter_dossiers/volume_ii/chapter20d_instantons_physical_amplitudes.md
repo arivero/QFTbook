@@ -16,14 +16,34 @@
   fluctuation determinants, zero-mode saturation, source typing, size windows,
   observable projection, and residual budgets.
 - Opening order-of-calculation paragraph: the chapter flow now moves from
-  one-loop density and determinant normalization, through channel/source data,
-  the hard \(SU(3)\), \(N_f=2\) benchmark and Wilsonian size split, to
-  normal-fluctuation response, cluster corrections, and observable maps.
+  the finite-regulator source functional, through one-loop density and
+  determinant normalization, channel/source data, the hard \(SU(3)\),
+  \(N_f=2\) benchmark and Wilsonian size split, to normal-fluctuation
+  response, cluster corrections, and observable maps.
 
 ## Definitions And Results
 
 - `ch:instantons-physical-amplitudes`: dedicated chapter for instantons as
   physical amplitudes.
+- `sec:instanton-source-functional-route`: front-loaded finite-regulator
+  source-functional route, making the order from zero-mode source
+  differentiation through normal-fluctuation source response, collective
+  integration, and final physical projection explicit before the density or
+  hard benchmark is interpreted.
+- `eq:instanton-source-functional-route`: retained one-instanton source
+  functional with collective density, zero-mode-deleted determinant
+  normalization, size-window factor, zero-mode Grassmann determinant,
+  normal-fluctuation source insertion, and non-Gaussian fluctuation remainder
+  in one formula.
+- `eq:instanton-source-functional-observable-extraction`: physical observable
+  extraction by applying a declared source differential and projection to the
+  finite source functional, with regulator, continuation, sector, endpoint,
+  and matching residuals kept outside the source functional itself.
+- `ca:instanton-source-functional-route`: route-discipline block rejecting
+  the three main shortcut reorderings: source differentiation replaced by mass
+  saturation, determinant normalization substituted for source response, and
+  a raw Euclidean source kernel read as a physical observable before
+  projection.
 - `sec:instanton-density-gate`: one-loop density normalization separating the
   collective-coordinate Jacobian, bosonic zero-mode normalization, running
   BPST action, zero-mode-deleted fluctuation determinant logarithm, and finite
@@ -125,6 +145,11 @@
 - The new chapter advances issue #597 at the architecture level: it starts a
   dedicated instanton chapter and makes the physical channel, rather than the
   moduli space, the organizing object.
+- The source-functional route block repairs the chapter-level flow after many
+  local insertions.  It tells the reader what is computed first at finite
+  regulator and why the later density, zero-mode, normal-fluctuation,
+  size-window, and projection blocks are parts of one amplitude extraction
+  rather than adjacent facts about the BPST saddle.
 - The first substantive result is not an ADHM refinement.  It proves that the
   same collective-coordinate measure and nonzero-mode determinant convention
   can give different physical amplitudes once zero-mode source rank and
@@ -215,8 +240,12 @@
 
 - `calculation-checks/instanton_physical_amplitude_architecture_checks.py`
   carries the companion evidence contract.
-- The check verifies the exact `det(M+B)` polynomial, rejects the wrong
-  off-diagonal sign, separates mass-saturated and four-source coordinates,
+- The check verifies the source-functional route order by separating source
+  differentiation, normal-fluctuation response, and physical projection before
+  any hard benchmark is interpreted; it rejects the corresponding mass
+  saturation, determinant-only source-response, and raw Euclidean-kernel
+  shortcuts.  It also verifies the exact `det(M+B)` polynomial, rejects the
+  wrong off-diagonal sign, separates mass-saturated and four-source coordinates,
   verifies the one-loop density RG cancellation and the distinction between
   density-only, mass-saturated, and hard four-source size powers,
   verifies the proper-time determinant-log channel window, including the
@@ -359,3 +388,10 @@
   The edit keeps the hard instanton chapter oriented toward the physical
   calculation from fluctuation density through source channels to measured
   QFT observables, without adding another local instanton cell.
+- 2026-06-06 source-functional route pass: inserted
+  `sec:instanton-source-functional-route` at the chapter entrance.  The pass
+  makes the finite-regulator source functional the first object and derives the
+  observable only after source differentiation, source-dependent normal
+  fluctuation averaging, collective integration, and physical projection.  The
+  companion check rejects the corresponding shortcut routes in finite
+  arithmetic.

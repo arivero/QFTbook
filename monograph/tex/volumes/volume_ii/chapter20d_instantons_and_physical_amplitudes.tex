@@ -29,6 +29,135 @@ enter one concrete coefficient.  Finally, normal-fluctuation source response,
 cluster corrections, and observable maps decide which part of the instanton
 ensemble is being measured.
 
+\section{The Source Functional Before the Amplitude}
+\label{sec:instanton-source-functional-route}
+
+At finite regulator the one-instanton sector first produces a source
+functional.  A physical amplitude is a later extraction from that functional.
+This order is the main guard against confusing an instanton measure with an
+observable.  In a retained one-instanton chart \(z\), after collective and
+gauge zero modes have been separated, write the fermion zero-mode
+coordinates as \(\alpha,\bar\alpha\) and the nonzero-mode fluctuation as
+\(\eta\).  A typical retained contribution has the order-sensitive finite
+form
+\begin{equation}
+\begin{aligned}
+  Z_{\Lambda}^{I}[J]
+  &=
+  \ee^{\ii\theta}
+  \int_{\mathcal U_{\rm win}}
+  \ee^{-S_{\Lambda}(A_z)}
+  \mathcal W_{\Lambda}^{\rm nz}(z)\,
+  \mathcal B_{\Lambda}^{\rho}(z)                         \\
+  &\qquad{}\times
+  \left\langle
+    \int
+    \dd\bar\alpha\,\dd\alpha\,
+    \exp\!\left[
+      \bar\alpha
+      \bigl(M_z+\mathcal S_z[J,\eta]\bigr)
+      \alpha
+    \right]\,
+    \mathcal I_z[J,\eta]
+    \ee^{-V_z(\eta)}
+  \right\rangle_{\gamma_z}
+  \dd\nu_{\Lambda,\mathcal M}(z).
+\end{aligned}
+  \label{eq:instanton-source-functional-route}
+\end{equation}
+Here \(\dd\nu_{\Lambda,\mathcal M}\) is the collective-coordinate density,
+\(\mathcal W_{\Lambda}^{\rm nz}\) is the zero-mode-deleted determinant
+normalization, \(\mathcal B_{\Lambda}^{\rho}\) records the size-window or
+endpoint factor, \(M_z+\mathcal S_z[J,\eta]\) is the restriction of masses and
+sources to the fermion zero-mode space, \(\mathcal I_z[J,\eta]\) is the
+remaining source insertion, and \(V_z\) is the non-Gaussian fluctuation
+remainder.  The displayed brackets are the Gaussian normal-mode average; the
+source dependence inside the same average is not fixed by the determinant
+constant alone.
+
+A selected observable is obtained only after applying the appropriate source
+differential and physical projection:
+\begin{equation}
+  \mathcal A_{\mathcal O,\Lambda}^{I}
+  =
+  \Pi_{\rm phys}^{\mathcal O}
+  \left[
+    \mathsf D_{\mathcal O,J}
+    Z_{\Lambda}^{I}[J]\big|_{J=0}
+  \right]
+  +R_{\mathcal O,\Lambda}.
+  \label{eq:instanton-source-functional-observable-extraction}
+\end{equation}
+The operator \(\mathsf D_{\mathcal O,J}\) may be a Grassmann source
+differentiation, a gauge-invariant source matching map, or an OPE
+coefficient extraction.  The projection
+\(\Pi_{\rm phys}^{\mathcal O}\) may be a pole residue, a spectral bin, an
+inclusive cut, or a Euclidean susceptibility functional.  The residual
+\(R_{\mathcal O,\Lambda}\) contains precisely the regulator, continuation,
+sector, endpoint, and matching errors that are invisible in the moduli
+measure.
+
+\begin{controlledapproximation}[Source-functional route discipline]
+\label{ca:instanton-source-functional-route}
+The route
+\[
+\begin{aligned}
+  &\hbox{saddle}
+  \longrightarrow
+  \hbox{zero-mode source functional}                         \\
+  &\longrightarrow
+  \hbox{normal-fluctuation source average}
+  \longrightarrow
+  \hbox{collective-coordinate integral}                       \\
+  &\longrightarrow
+  \hbox{physical projection}
+\end{aligned}
+\]
+cannot in general be reordered.  Three finite checks already show where the
+shortcuts fail.
+
+First, source differentiation is not mass saturation.  For two flavors,
+\[
+  \det(M+B)
+  =
+  m_um_d+m_uB_{dd}+m_dB_{uu}+B_{uu}B_{dd}-B_{ud}B_{du},
+\]
+so
+\[
+  \partial_{B_{uu}}\partial_{B_{dd}}\det(M+B)\big|_{B=0}=1,
+  \qquad
+  \partial_{B_{ud}}\partial_{B_{du}}\det(M+B)\big|_{B=0}=-1,
+\]
+whereas the vacuum activity is \(m_um_d\).  The differentiated
+four-source coefficient is therefore a different coordinate of the
+zero-mode determinant, not a reinterpretation of the mass-saturated term.
+
+Second, determinant normalization is not source response.  Even after
+\(\mathcal W_{\Lambda}^{\rm nz}\) has fixed the Gaussian determinant,
+\[
+  \frac{\langle\mathcal I_J(\eta)\ee^{-V(\eta)}\rangle_\gamma}
+       {\langle\ee^{-V(\eta)}\rangle_\gamma}
+  =
+  \langle\mathcal I_J\rangle_\gamma
+  +
+  \frac{
+    \operatorname{Cov}_\gamma(\mathcal I_J,\ee^{-V})
+  }{
+    \langle\ee^{-V}\rangle_\gamma
+  } .
+\]
+The covariance term is source-dependent amplitude data.  It vanishes only by
+a separate fluctuation argument, not by quoting the determinant constant.
+
+Third, Euclidean source kernels are not physical observables before
+projection.  A contact polynomial can change a spacelike Euclidean source
+value while contributing no separated spectral-bin weight, and a colored
+partonic kernel in a confining theory has no standalone LSZ residue.  Thus
+the object in \eqref{eq:instanton-source-functional-route} is the input to
+an observable map; \eqref{eq:instanton-source-functional-observable-extraction}
+is the physical claim.
+\end{controlledapproximation}
+
 \section{The Density Normalization: Fluctuations Before Channels}
 \label{sec:instanton-density-gate}
 

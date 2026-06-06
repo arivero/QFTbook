@@ -3,6 +3,12 @@ r"""Finite checks for the instanton physical-amplitude architecture chapter.
 Evidence contract.
 
 Target claims:
+- `eq:instanton-source-functional-route`,
+  `eq:instanton-source-functional-observable-extraction`, and
+  `ca:instanton-source-functional-route`: the one-instanton sector first
+  defines a finite-regulator source functional, and a physical amplitude is
+  obtained only after source differentiation, source-dependent fluctuation
+  averaging, collective integration, and the named physical projection.
 - `def:instanton-physical-amplitude-channel` and
   `eq:instanton-physical-channel-functional`: the physical channel depends on
   the collective density, nonzero-mode determinant, zero-mode source
@@ -74,6 +80,7 @@ Target claims:
 
 Independent construction:
 - The checks build small exact rational cell models from scratch.  They compute
+  source-functional route orderings,
   two-by-two determinants, mass/source polynomials, one-loop RG exponents,
   running collective zero-mode Jacobian ratios,
   weighted proper-time determinant logarithms,
@@ -133,7 +140,11 @@ Imported assumptions:
   determinant constant, ADHM volume, or spectral-continuation theorem.
 
 Negative controls:
-- The script rejects a plus sign in the off-diagonal determinant term, a
+- The script rejects source-functional shortcuts that replace source
+  differentiation by mass saturation, replace source-dependent normal
+  fluctuation response by a determinant-only Gaussian mean, or replace a
+  physical projection by a raw Euclidean source sum.  It also rejects a plus
+  sign in the off-diagonal determinant term, a
   moduli-only prediction that ignores zero-mode rank, a rank-one source matrix
   treated as a nonzero four-source channel, a wrong one-loop density power, a
   density-only hard-channel power, a missing running collective-coordinate
@@ -249,6 +260,126 @@ def product(values: list[Fraction]) -> Fraction:
 
 def beta0(n_colors: int, n_flavors: int) -> Fraction:
     return Fraction(11, 3) * n_colors - Fraction(2, 3) * n_flavors
+
+
+def check_source_functional_route_order() -> None:
+    # The two-flavor zero-mode determinant is a source functional.  Its
+    # differentiated four-source coordinates are not the mass-saturated vacuum
+    # activity.
+    m_u = Fraction(2)
+    m_d = Fraction(3)
+    vacuum_activity = m_u * m_d
+    diagonal_four_source = Fraction(1)
+    offdiagonal_four_source = -Fraction(1)
+
+    assert_not_equal(
+        "diagonal four-source derivative is not mass-saturated activity",
+        diagonal_four_source,
+        vacuum_activity,
+    )
+    assert_not_equal(
+        "off-diagonal four-source derivative is not mass-saturated activity",
+        offdiagonal_four_source,
+        vacuum_activity,
+    )
+    assert_equal(
+        "opposite source order reads the determinant sign",
+        diagonal_four_source + offdiagonal_four_source,
+        Fraction(0),
+    )
+
+    def average(values: list[Fraction]) -> Fraction:
+        return sum(values, Fraction(0)) / len(values)
+
+    # A finite two-cell normal-fluctuation model.  The determinant normalizes
+    # the interaction weight, but the selected source insertion still has a
+    # covariance with that same weight.
+    source_insertion = [Fraction(6, 5), Fraction(9, 10)]
+    interaction_weight = [Fraction(3, 5), Fraction(5, 4)]
+    determinant_normalization = average(interaction_weight)
+    gaussian_source_mean = average(source_insertion)
+    interacting_source_response = (
+        average([src * weight for src, weight in zip(source_insertion, interaction_weight)])
+        / determinant_normalization
+    )
+    covariance = average(
+        [
+            (src - gaussian_source_mean) * (weight - determinant_normalization)
+            for src, weight in zip(source_insertion, interaction_weight)
+        ]
+    )
+    assert_equal(
+        "finite source-fluctuation covariance identity",
+        interacting_source_response - gaussian_source_mean,
+        covariance / determinant_normalization,
+    )
+    assert_not_equal(
+        "determinant normalization alone does not fix source response",
+        interacting_source_response,
+        gaussian_source_mean,
+    )
+
+    # A physical projection is a map on the Euclidean kernel, not the raw cell
+    # sum.  The different value below is the finite analogue of pole/spectral
+    # or OPE projection data.
+    euclidean_kernel_cells = [Fraction(7), Fraction(-2), Fraction(5)]
+    projection_weights = [Fraction(1), Fraction(0), Fraction(1, 2)]
+    raw_euclidean_sum = sum(euclidean_kernel_cells, Fraction(0))
+    projected_kernel = sum(
+        weight * cell for weight, cell in zip(projection_weights, euclidean_kernel_cells)
+    )
+    assert_not_equal(
+        "raw Euclidean source sum is not the physical projection",
+        raw_euclidean_sum,
+        projected_kernel,
+    )
+
+    determinant_constant = Fraction(11, 13)
+    density_weight = Fraction(5, 7)
+    routed_coordinate = (
+        determinant_constant
+        * density_weight
+        * diagonal_four_source
+        * interacting_source_response
+        * projected_kernel
+    )
+    mass_saturation_shortcut = (
+        determinant_constant
+        * density_weight
+        * vacuum_activity
+        * interacting_source_response
+        * projected_kernel
+    )
+    determinant_only_source_shortcut = (
+        determinant_constant
+        * density_weight
+        * diagonal_four_source
+        * gaussian_source_mean
+        * projected_kernel
+    )
+    euclidean_kernel_shortcut = (
+        determinant_constant
+        * density_weight
+        * diagonal_four_source
+        * interacting_source_response
+        * raw_euclidean_sum
+    )
+
+    assert_not_equal(
+        "mass saturation is not the differentiated source amplitude",
+        mass_saturation_shortcut,
+        routed_coordinate,
+    )
+    assert_not_equal(
+        "Gaussian determinant-only shortcut misses source covariance",
+        determinant_only_source_shortcut,
+        routed_coordinate,
+    )
+    assert_not_equal(
+        "raw Euclidean kernel shortcut misses physical projection",
+        euclidean_kernel_shortcut,
+        routed_coordinate,
+    )
 
 
 def check_one_loop_density_rg_and_channel_power() -> None:
@@ -1763,6 +1894,7 @@ def check_hard_benchmark_channel_comparison_and_ratio() -> None:
 
 
 def main() -> None:
+    check_source_functional_route_order()
     check_one_loop_density_rg_and_channel_power()
     check_running_collective_jacobian_in_hard_coefficient()
     check_proper_time_determinant_log_channel_window()
