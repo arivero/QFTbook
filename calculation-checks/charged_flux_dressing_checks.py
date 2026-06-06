@@ -861,6 +861,74 @@ def check_hilbert_soft_change_inner_equivalence() -> None:
         raise AssertionError(f"Weyl implementers should be strongly continuous, got {distances!r}")
 
 
+def bn_coefficient_after_unresolved_sum(unresolved_log: Fraction, resolved_log: Fraction, order: int) -> Fraction:
+    """Coefficient of A^order after summing unresolved soft photons."""
+
+    total_log = unresolved_log + resolved_log
+    return sum(
+        (-total_log) ** (order - n) * unresolved_log**n / (math.factorial(order - n) * math.factorial(n))
+        for n in range(order + 1)
+    )
+
+
+def flux_cell_probability(amplitudes: tuple[complex, ...]) -> float:
+    """Probability for orthogonal flux alternatives in one detector cell."""
+
+    return sum(abs(amplitude) ** 2 for amplitude in amplitudes)
+
+
+def check_detector_inclusive_soft_projection() -> None:
+    """Check the coherent soft sum behind detector-inclusive probabilities."""
+
+    unresolved_log = Fraction(7, 5)
+    resolved_log = Fraction(3, 4)
+    for order in range(7):
+        expected = (-resolved_log) ** order / math.factorial(order)
+        assert_equal(
+            f"coefficientwise unresolved soft cancellation order {order}",
+            bn_coefficient_after_unresolved_sum(unresolved_log, resolved_log, order),
+            expected,
+        )
+
+    unresolved_profile = (0.5 + 0.25j, -0.2 + 0.4j)
+    resolved_profile = (0.3 - 0.1j, -0.15 + 0.05j, 0.4 + 0.2j)
+    unresolved_norm = norm_sq_complex(unresolved_profile)
+    resolved_norm = norm_sq_complex(resolved_profile)
+    total_norm = unresolved_norm + resolved_norm
+    inclusive_soft_factor = math.exp(-total_norm) * math.exp(unresolved_norm)
+    assert_close("inclusive unresolved Poisson sum leaves resolved veto", inclusive_soft_factor, math.exp(-resolved_norm))
+
+    fixed_two_photon_terms = []
+    for unresolved_mean in (6.0, 12.0, 24.0):
+        fixed_two_photon_terms.append(math.exp(-(unresolved_mean + resolved_norm)) * unresolved_mean**2 / 2.0)
+    _assert_gt(
+        "fixed unresolved photon number first infrared gap",
+        fixed_two_photon_terms[0] - fixed_two_photon_terms[1],
+        0.0,
+    )
+    _assert_gt(
+        "fixed unresolved photon number second infrared gap",
+        fixed_two_photon_terms[1] - fixed_two_photon_terms[2],
+        0.0,
+    )
+
+    hard_amplitude = 1.25 - 0.5j
+    dressed_rate = abs(hard_amplitude) ** 2 * inclusive_soft_factor
+    expected_rate = abs(hard_amplitude) ** 2 * math.exp(-resolved_norm)
+    assert_close("flux-resolved dressed coefficient times inclusive soft factor", dressed_rate, expected_rate)
+
+    sector_amplitudes = (2.0 + 1.0j, -1.0 + 0.5j, 0.25 - 0.75j)
+    incoherent_cell_rate = flux_cell_probability(sector_amplitudes)
+    coherent_wrong_rate = abs(sum(sector_amplitudes)) ** 2
+    expected_incoherent_rate = sum(abs(amplitude) ** 2 for amplitude in sector_amplitudes)
+    assert_close("flux-cell probabilities add incoherently", incoherent_cell_rate, expected_incoherent_rate)
+    _assert_gt(
+        "coherent flux-sector amplitude sum differs from projector probability",
+        abs(coherent_wrong_rate - incoherent_cell_rate),
+        1.0e-12,
+    )
+
+
 def check_dressed_lsz_residue_coordinates() -> None:
     """Check the finite coordinate algebra behind dressed charged LSZ residues."""
 
@@ -1187,6 +1255,7 @@ def main() -> None:
     check_soft_profile_velocity_separation()
     check_weyl_characteristic_and_overlap_decay()
     check_hilbert_soft_change_inner_equivalence()
+    check_detector_inclusive_soft_projection()
     check_dressed_lsz_residue_coordinates()
     check_dressed_correlator_reduction_interface()
     check_flux_sector_projection_in_dressed_lsz()

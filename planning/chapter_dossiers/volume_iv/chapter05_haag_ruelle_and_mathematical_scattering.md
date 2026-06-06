@@ -43,6 +43,13 @@ resonances.
   the charged velocity.
 - `A(v,w)`: positive angular coefficient controlling the infrared logarithm
   in the norm difference between two charged soft profiles.
+- `M^{mathfrak F',mathfrak F}_{beta alpha}`: flux-resolved charged
+  coefficient extracted by the dressed LSZ interface for hard data
+  `alpha -> beta`.
+- `F_{beta alpha}`, `P_{lambda,E_T}`, `P_{E_T,M}`, `A_{beta alpha}`:
+  leading soft mismatch profile, unresolved and resolved detector-energy
+  projectors, and the Bloch--Nordsieck angular coefficient used to pass from
+  a flux-resolved coefficient to a detector-inclusive probability.
 - `h_{0,Lambda}`, `W(f)`, `sigma(f,g)`: fixed infrared-sensitive photon
   one-particle space, Weyl operator, and real symplectic form.
 - `D_{lambda,Lambda}`: difference between two finite-cutoff charged soft
@@ -220,6 +227,14 @@ resonances.
   Weyl tests and proves that the soft photon Weyl algebra preserves velocity
   fibers, so momentum-changing charged scattering dynamics cannot be an
   operator of the soft photon algebra alone.
+- Proves the finite-cutoff detector-inclusive bridge from a flux-resolved
+  dressed LSZ coefficient to an inclusive charged probability: the coherent
+  soft profile splits into unresolved and resolved energy windows, summing all
+  unresolved photons cancels only the unresolved part of the virtual soft
+  norm, the remaining factor is the resolved-window veto
+  \((E_T/M)^{A_{\beta\alpha}}\) at leading logarithmic order, and coarse
+  angular-flux detector cells add probabilities over orthogonal flux sectors
+  rather than amplitudes.
 - Restricts the dressed charged Haag--Ruelle/LSZ open problem explicitly to
   nonconfining charged sectors with finite-energy physical charged asymptotic
   data; in a confining phase the relevant asymptotic particles are neutral
@@ -276,7 +291,13 @@ resonances.
   It now also checks same-flux schedule invariance for charged wave maps and
   residues: rational schedule tails shrink to a common Hilbert limit and a
   cutoff-dependent finite coordinate transform leaves the left-inverse LSZ
-  extraction exact.
+  extraction exact.  It now also checks the detector-inclusive soft projection
+  associated with a flux-resolved dressed LSZ coefficient: coefficientwise
+  Bloch--Nordsieck cancellation after summing unresolved photons, the finite
+  coherent-vector identity leaving only the resolved-window no-emission
+  factor, fixed photon-number decay along an infrared sequence, and
+  incoherent addition of orthogonal flux-sector alternatives inside one
+  detector cell.
 - The direct-integral velocity-fiber proposition is purely algebraic and has
   no numerical companion: it is a decomposability statement for the
   representation of the Weyl algebra.
@@ -379,6 +400,15 @@ resonances.
   overlap maps.  The companion check includes a negative control where a
   charge-only selector would accept a flux-nonzero neutral pair in the
   vacuum block.
+- 2026-06-06 #527 detector-inclusive probability pass: inserted a
+  physics-facing bridge after the velocity-fibered soft representation.  The
+  new proposition keeps separate the flux-resolved dressed LSZ coefficient,
+  the Bloch--Nordsieck unresolved-photon sum, and detector coarse-graining
+  over angular-flux cells; it proves that inclusive summation leaves the
+  resolved-window factor \((E_T/M)^{A_{\beta\alpha}}\) and that distinct flux
+  sectors contribute as orthogonal alternatives rather than coherently summed
+  amplitudes.  The companion check verifies the finite coherent and
+  coefficientwise identities.
 - 2026-06-01 #527 continuation: added finite many-body Dollard bookkeeping
   after the one-pair Coulomb-tail calculation.  The new paragraph defines the
   creator/adjoint signs, the pairwise derivative of the comparison phase, the

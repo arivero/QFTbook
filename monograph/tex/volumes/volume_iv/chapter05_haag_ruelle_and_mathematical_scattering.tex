@@ -3287,6 +3287,189 @@ and whose hard charged part supplies the off-diagonal momentum-changing
 dynamics.  Treating the charged soft cloud as a removable unitary dressing on
 one Fock space would erase exactly the sector information proved above.
 
+\subsection{Flux-Resolved Amplitudes and Detector-Inclusive Probabilities}
+
+The preceding construction identifies the Hilbert-space target of a charged
+LSZ theorem.  The detector observable is a further inclusive probability
+built from that target.  A dressed LSZ residue in a fixed angular-flux sector
+gives a hard charged coefficient; a finite-resolution experiment measures a
+probability after unresolved soft photons and detector-indistinguishable flux
+cells have been treated inclusively.  These are different operations, and
+confusing them erases the physics of charged sectors.
+
+Let
+\[
+  \mathcal M^{\mathfrak F',\mathfrak F}_{\beta\alpha}
+\]
+denote the flux-resolved charged coefficient extracted from the dressed LSZ
+interface, with incoming and outgoing hard charged data \(\alpha,\beta\) and
+initial and final angular-flux characters \(\mathfrak F,\mathfrak F'\).  The
+coefficient is defined only when the flux-selection rule
+\eqref{eq:dressed-lsz-flux-sector-selection} is satisfied.  For fixed hard
+data, write the leading soft mismatch profile in the energy window
+\(\lambda<\omega<M\) as
+\[
+  F_{\beta\alpha}^{h}(k)
+  =
+  \sum_{a\in\alpha\cup\beta}
+  \eta_a q_a\,
+  \frac{p_a\cdot e_h(k)}{p_a\cdot k},
+  \qquad
+  \eta_a=
+  \begin{cases}
+    +1,& a\text{ outgoing},\\
+    -1,& a\text{ incoming}.
+  \end{cases}
+\]
+The Ward identity for a physical hard transition is the statement that this
+soft factor is transverse under \(e_h(k)\mapsto e_h(k)+c\,k\).  Thus it is the
+same eikonal datum that appears in the inclusive calculation of
+Chapter~\ref{ch:volume-ii-infrared-inclusive-qed}, but here it is attached to
+a flux-resolved dressed coefficient rather than to a bare charged
+Fock-space amplitude.
+
+Let \(P_{\lambda,E_T}\) project the soft one-photon space to
+\(\lambda<\omega<E_T\), and let \(P_{E_T,M}\) project it to
+\(E_T<\omega<M\).  At leading homogeneous soft order,
+\[
+  \|P_{\lambda,E_T}F_{\beta\alpha}\|^2
+  =
+  A_{\beta\alpha}\log\frac{E_T}{\lambda},
+  \qquad
+  \|P_{E_T,M}F_{\beta\alpha}\|^2
+  =
+  A_{\beta\alpha}\log\frac{M}{E_T},
+\]
+with the same nonnegative angular coefficient \(A_{\beta\alpha}\) as in the
+Bloch--Nordsieck factor
+\eqref{eq:qed-bloch-nordsieck-inclusive-factorization}.  Finite soft
+matching terms are part of the hard factor and detector function; the
+displayed logarithms are the universal part.
+
+\begin{proposition}[Detector-inclusive soft factor from a flux-resolved LSZ coefficient]
+\label{prop:dressed-lsz-detector-inclusive-soft-factor}
+At positive infrared cutoff \(\lambda\), the leading-soft probability for
+the flux-resolved charged coefficient
+\(\mathcal M^{\mathfrak F',\mathfrak F}_{\beta\alpha}\), with no photons
+resolved above \(E_T\) inside the soft window \(E_T<\omega<M\), is
+\begin{equation}
+\begin{aligned}
+  P_{\beta\alpha}^{(\lambda)}
+  (\mathfrak F',\mathfrak F;E_T,M)
+  &=
+  \left|
+    \mathcal M^{\mathfrak F',\mathfrak F}_{\beta\alpha}
+  \right|^2
+  \exp\!\left\{
+    -\|F_{\beta\alpha}\|_{\lambda,M}^2
+  \right\}
+  \sum_{N=0}^{\infty}
+  \frac{
+    \|P_{\lambda,E_T}F_{\beta\alpha}\|^{2N}
+  }{N!}
+\\
+  &=
+  \left|
+    \mathcal M^{\mathfrak F',\mathfrak F}_{\beta\alpha}
+  \right|^2
+  \exp\!\left\{
+    -\|P_{E_T,M}F_{\beta\alpha}\|^2
+  \right\}.
+\end{aligned}
+\label{eq:dressed-lsz-inclusive-soft-projection}
+\end{equation}
+Consequently, in the leading logarithmic approximation,
+\begin{equation}
+  P_{\beta\alpha}
+  (\mathfrak F',\mathfrak F;E_T,M)
+  =
+  \left|
+    \mathcal M^{\mathfrak F',\mathfrak F}_{\beta\alpha}
+  \right|^2
+  \left(\frac{E_T}{M}\right)^{A_{\beta\alpha}}
+  \times
+  F_{\beta\alpha}^{\rm finite}(E_T/M),
+  \label{eq:dressed-lsz-flux-resolved-inclusive-rate}
+\end{equation}
+where \(F_{\beta\alpha}^{\rm finite}\) has a finite infrared limit and equals
+\(1\) at leading logarithmic order.
+\end{proposition}
+
+\begin{proof}
+At fixed \(\lambda>0\), the soft one-photon space decomposes orthogonally as
+\[
+  \mathfrak h_{\lambda,M}
+  =
+  \mathfrak h_{\lambda,E_T}
+  \oplus
+  \mathfrak h_{E_T,M}.
+\]
+The coherent soft vector therefore factorizes as the tensor product of a
+coherent vector in the unresolved window and a coherent vector in the
+resolved window.  The probability of exactly \(N\) unresolved photons and no
+resolved photons is
+\[
+  \exp\{-\|P_{\lambda,E_T}F\|^2\}
+  \frac{\|P_{\lambda,E_T}F\|^{2N}}{N!}
+  \exp\{-\|P_{E_T,M}F\|^2\}.
+\]
+Summing over \(N\) gives the exponential series
+\[
+  \sum_{N=0}^{\infty}
+  \exp\{-\|P_{\lambda,E_T}F\|^2\}
+  \frac{\|P_{\lambda,E_T}F\|^{2N}}{N!}
+  =
+  1,
+\]
+and leaves only the resolved-window no-emission factor
+\(\exp\{-\|P_{E_T,M}F\|^2\}\).  Equivalently, writing
+\(\|F\|_{\lambda,M}^2=
+\|P_{\lambda,E_T}F\|^2+\|P_{E_T,M}F\|^2\) gives the first line of
+\eqref{eq:dressed-lsz-inclusive-soft-projection} directly.  The leading
+radial integral then gives
+\(\exp[-A_{\beta\alpha}\log(M/E_T)]=(E_T/M)^{A_{\beta\alpha}}\), while
+nonlogarithmic soft and detector terms are finite matching factors.
+\end{proof}
+
+If the sum over \(N\) in
+\eqref{eq:dressed-lsz-inclusive-soft-projection} is replaced by one fixed
+photon number, the factor
+\[
+  \exp\{-\|F_{\beta\alpha}\|_{\lambda,M}^2\}
+  \frac{\|P_{\lambda,E_T}F_{\beta\alpha}\|^{2N}}{N!}
+\]
+has no nonzero \(\lambda\downarrow0\) limit when
+\(A_{\beta\alpha}>0\).  Fixed photon number is therefore not the physical
+charged \(S\)-matrix observable.  The regulator-free object is obtained only
+after the detector-degenerate soft states have been summed, precisely as in
+Section~\ref{sec:volume-ii-inclusive-probabilities}.
+
+Finally suppose that the detector does not resolve the exact angular-flux
+character, but only a finite or measurable cell
+\(\mathcal C\) in the spectrum of \(\Phi_\infty\).  Since distinct sharp
+flux sectors are orthogonal superselection sectors, the coarse-grained
+probability is an incoherent sum or direct integral of
+\eqref{eq:dressed-lsz-flux-resolved-inclusive-rate}, not the modulus square
+of a sum of amplitudes over different \(\mathfrak F\)'s.  For a finite
+cell decomposition the leading-soft formula is
+\[
+  P_{\beta\alpha}(\mathcal C_{\rm out},\mathcal C_{\rm in};E_T,M)
+  =
+  \sum_{\mathfrak F\in\mathcal C_{\rm in}}
+  \sum_{\mathfrak F'\in\mathcal C_{\rm out}}
+  \left|
+    \mathcal M^{\mathfrak F',\mathfrak F}_{\beta\alpha}
+  \right|^2
+  \left(\frac{E_T}{M}\right)^{A_{\beta\alpha}}
+  F_{\beta\alpha}^{\rm finite}
+\]
+with the terms restricted by
+\eqref{eq:dressed-lsz-flux-sector-selection}.  Thus detector inclusiveness
+does not license replacing angular flux by total charge.  It says instead
+that unresolved photons are summed inside the detector resolution, while
+different sharp flux sectors contribute as orthogonal alternatives unless the
+apparatus prepares and measures a coherent sector-changing observable.
+
 \begin{openproblem}[Haag--Ruelle and LSZ for nonconfining dressed charged sectors]
 \label{op:haag-ruelle-lsz-dressed-charged-sectors}
 Construct a large-time scattering theory for nonconfining gauge-theory
@@ -3295,6 +3478,9 @@ construction should prove the analogue of Haag--Ruelle limits for the chosen
 dressing class, identify the asymptotic flux labels, and prove a
 dressed-correlator reduction formula whose external factors are the residues
 or threshold coefficients of the corresponding dressed two-point functions.
+It should also identify the detector-inclusive probabilities obtained from
+those flux-resolved coefficients after unresolved soft photons and
+detector-coarse flux cells have been summed.
 The hypothesis ``nonconfining'' means that the charged sector is a genuine
 finite-energy physical sector with asymptotic charged data; it excludes
 colored charges in a confining phase, for which the physical scattering

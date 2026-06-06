@@ -960,7 +960,13 @@ Current checks:
   vacuum flux block, a charge-neutral pair with distinct velocities is
   rejected from the vacuum residue because its angular flux profile is
   nonzero, and the same finite residue is allowed only as a sector-changing
-  flux matrix element.
+  flux matrix element.  It also checks the detector-inclusive soft
+  projection behind a flux-resolved dressed LSZ coefficient: the exact
+  coefficientwise cancellation after summing unresolved photons, the finite
+  coherent-vector identity that leaves only the resolved-window no-emission
+  factor, the vanishing of fixed photon-number terms along an infrared
+  sequence, and the incoherent addition of orthogonal flux-sector
+  alternatives inside one detector cell.
   It also verifies the
   finite boundary-charge Ward bookkeeping for dressed correlators: abelian
   signed charges must sum to zero in vacuum matrix elements, and elementary
