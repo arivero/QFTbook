@@ -178,7 +178,8 @@ The chapter must define and derive:
   NRQCD operator datum, gauge-invariant singlet and octet quarkonium bilocals
   with equal-time Wilson transporters, the pNRQCD singlet action, the
   tree-level attractive singlet Coulomb potential in the trace-delta
-  convention, and the hard/soft/ultrasoft scale-separation hypothesis;
+  convention, the weak-coupling singlet-octet ultrasoft chromoelectric dipole
+  sector, and the hard/soft/ultrasoft scale-separation hypothesis;
 - heavy-quark mass coordinates and static energies, including the
   gauge-invariant Wilson-loop definition of the renormalized static energy,
   finite mass/potential scheme transformations, potential-subtracted mass
@@ -420,7 +421,11 @@ The chapter must define and derive:
      factor is \(-C_F\) and
      \(V_S^{(0)}(r)=-g^2C_F/(4\pi r)\), with
      \(g_{\rm ht}^2=2g^2\) and \(C_F^{\rm ht}=C_F/2\) leaving the product
-     invariant.
+     invariant.  The weak-coupling pNRQCD datum now also includes the
+     singlet-octet chromoelectric dipole coupling, the tree octet gap
+     \(V_O^{(0)}-V_S^{(0)}=g^2N_c/(4\pi r)\), the adjoint-Wilson-line
+     chromoelectric correlator, and the residual data required to turn a
+     potential coordinate into an energy shift or transition width.
 15c. Heavy-quark masses in HQET/NRQCD/pNRQCD are scheme coordinates, not
      physical colored-particle spectral masses in confining QCD.  The
      gauge-invariant static energy is extracted from a renormalized
@@ -1199,6 +1204,14 @@ The chapter must define and derive:
   gauge-invariant singlet/octet bilocals, pNRQCD singlet action, tree-level
   singlet color-factor proof, scale-separation status, and
   `calculation-checks/qcd_nrqcd_checks.py`.
+- 2026-06-06 issue #630 pNRQCD ultrasoft-fluctuation pass: inserted a
+  weak-coupling pNRQCD chromoelectric dipole window after the singlet/octet
+  bilocal and Coulomb-potential setup, including the tree octet gap, the
+  adjoint-Wilson-line chromoelectric correlator, the second-order ultrasoft
+  energy-shift/width interpretation, and the residual data needed before a
+  potential-model spectrum is read as a QCD prediction.  Extended
+  `calculation-checks/qcd_nrqcd_checks.py` with octet-gap, multipole-parameter,
+  and finite two-level singlet-octet shift checks.
 - 2026-05-27 QCD heavy-mass/static-energy pass: added the Wilson-loop static
   energy as the gauge-invariant anchor for heavy-quark mass coordinates,
   proved constant mass/potential scheme invariance, derived the leading

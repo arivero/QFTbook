@@ -498,7 +498,10 @@ Current checks:
   convention block, including endpoint cancellation in gauge-invariant
   quarkonium bilocals, the Schrödinger kinetic-sign convention, the singlet
   color factor, the trace-delta to half-trace Coulomb-product conversion, and
-  the hard/soft/ultrasoft scale hierarchy.
+  the hard/soft/ultrasoft scale hierarchy.  It also checks the trace-delta
+  octet Coulomb gap, the \(r\partial_{\rm us}\) multipole parameter, and the
+  finite two-level singlet-octet energy-shift series for the ultrasoft dipole
+  channel.
 - `qcd_heavy_mass_static_energy_checks.py`: finite checks for the Volume II
   heavy-mass/static-energy section, including invariance under constant
   mass/potential scheme shifts, quarkonium eigenvalue shifts, the leading

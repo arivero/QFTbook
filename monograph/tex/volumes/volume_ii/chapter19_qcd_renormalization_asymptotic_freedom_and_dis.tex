@@ -3956,7 +3956,6 @@ by the convention \(D_i\ee^{\ii\mathbf p\cdot\mathbf x}=\ii p_i
 \label{def:nrqcd-regulator-operator-specification}
 An NRQCD regulator and operator specification for a heavy flavor of mass
 \(m_Q\) consists of:
-items.
 \begin{enumerate}
   \item A gauge-covariant regulator for QCD and a matching scale below
   \(m_Q\), together with a class of states whose heavy-quark three-momenta
@@ -4119,6 +4118,96 @@ The spatial Fourier transform of the Coulomb kernel is
 \]
 so the product of the exchange kernel \(g^2/|\mathbf q|^2\) with the singlet
 color eigenvalue gives \eqref{eq:pnrqcd-tree-coulomb-potential}.
+
+\begin{controlledapproximation}[Ultrasoft dipole sector in weak-coupling pNRQCD]
+\label{ca:qcd-pnrqcd-ultrasoft-dipole-window}
+A weak-coupling pNRQCD prediction is not specified by the static singlet
+potential alone.  After the soft scale \(m_Qv_{\rm rel}\) has been integrated
+out, the lower-energy gauge field still fluctuates on the ultrasoft scale
+\(m_Qv_{\rm rel}^2\).  The multipole expansion around the center coordinate
+\(\mathbf R\) is a separate expansion in
+\[
+  r\,\partial_{\rm us}\sim v_{\rm rel},
+  \qquad r\sim (m_Qv_{\rm rel})^{-1}.
+\]
+To leading dipole order the singlet and adjoint-octet bilocals are coupled by
+the chromoelectric field at \(\mathbf R\),
+\begin{equation}
+  S_{\rm us}^{SO}
+  =
+  \int \dd t\,\dd^3\mathbf R\,\dd^3\mathbf r\,
+  V_A(r;\mu)\,
+  r^i E_i^a(t,\mathbf R)
+  \left[O^{a\dagger}(t,\mathbf R,\mathbf r)S(t,\mathbf R,\mathbf r)
+  +S^\dagger(t,\mathbf R,\mathbf r)O^a(t,\mathbf R,\mathbf r)\right],
+  \label{eq:qcd-pnrqcd-ultrasoft-dipole-coupling}
+\end{equation}
+where \(V_A\) includes the normalization convention for the gauge field and
+for the octet basis used in \eqref{eq:pnrqcd-octet-bilocal}.  In a canonical
+half-trace field normalization the same term is usually written with an
+explicit gauge coupling; here the normalization is fixed by matching
+renormalized QCD matrix elements in the same trace-delta convention as
+\eqref{eq:pnrqcd-tree-coulomb-potential}.
+
+The octet is not an optional decoration.  At tree level its color factor is
+\(+1/N_c\) in the trace-delta convention, so
+\begin{equation}
+  V_O^{(0)}(r)=+\frac{g^2}{4\pi N_c r},
+  \qquad
+  V_O^{(0)}(r)-V_S^{(0)}(r)
+  =
+  \frac{g^2N_c}{4\pi r}.
+  \label{eq:qcd-pnrqcd-tree-octet-gap}
+\end{equation}
+Thus an ultrasoft chromoelectric fluctuation can virtually promote a singlet
+quarkonium state to an octet-heavy-pair state, propagate with the octet
+Hamiltonian, and return to the singlet.  For an isolated singlet level
+\(|n\rangle\) with singlet Hamiltonian \(H_S|n\rangle=E_n|n\rangle\), the
+leading dipole contribution has the renormalized coordinate form
+\begin{equation}
+  \Delta E_{n,{\rm us}}
+  =
+  -\ii
+  \int_0^\infty \dd t\,
+  \langle n|
+    r^i\,
+    \ee^{-\ii(H_O-E_n)t}\,
+    r^j
+  |n\rangle\,
+  V_A^2\,
+  K_{EE}^{ij}(t;\mu)
+  +\Delta E_{n,{\rm ct}}(\mu),
+  \label{eq:qcd-pnrqcd-ultrasoft-energy-shift}
+\end{equation}
+with
+\[
+  K_{EE}^{ij}(t;\mu)
+  =
+  \left\langle
+  E_i^a(t,\mathbf R)\,
+  \Phi_{\rm adj}^{ab}(t,0;\mathbf R)\,
+  E_j^b(0,\mathbf R)
+  \right\rangle_{\rm us,R,\mu}.
+\]
+The adjoint Wilson transporter \(\Phi_{\rm adj}\) is required for gauge
+covariance of the chromoelectric correlator.  The counterterm
+\(\Delta E_{n,{\rm ct}}\) subtracts the ultraviolet part already assigned to
+the matched potentials and fixes the \(\mu\)-dependence of \(V_S\).  If the
+octet-ultrasoft intermediate channel crosses a physical cut, the same
+resolvent gives an imaginary part and hence a transition width; below such
+cuts it gives a Lamb-shift-like real contribution.  Either way, the physical
+object is an energy or width extracted after integrating over ultrasoft
+fluctuations, not the static source geometry alone.
+
+A controlled use of \eqref{eq:qcd-pnrqcd-ultrasoft-energy-shift} must state:
+the singlet and octet Hamiltonians and mass scheme; the matching scale and
+coefficient \(V_A\); the renormalized chromoelectric correlator and its
+counterterm convention; the spectral window separating the chosen singlet
+level from nearby thresholds; and residual estimates for omitted multipoles,
+higher potentials, relativistic corrections, and nonperturbative ultrasoft
+input.  Without this data, a potential-model spectrum is only the leading
+coordinate of the pNRQCD expansion.
+\end{controlledapproximation}
 
 \paragraph{Leading Coulombic \(1S\) quarkonium level.}
 Assume a weak-coupling pNRQCD chart in which the spin-independent singlet
