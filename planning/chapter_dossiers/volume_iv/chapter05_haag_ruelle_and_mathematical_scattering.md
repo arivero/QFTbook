@@ -232,10 +232,13 @@ resonances.
   value, the amplitude soft factor and the Dollard comparison phase must be
   removed before the hard flux-resolved charged coefficient is read off.  The
   residual budget separates shell-window, endpoint/contact,
-  soft-threshold, and same-flux schedule errors; the negative tests reject
-  omitting the soft factor, using a wrong logarithmic Dollard coefficient,
-  treating an endpoint simple-pole contact as a new amplitude, or reading a
-  soft-threshold branch as an isolated shell residue.
+  soft-threshold, and same-flux schedule errors.  The extraction now states
+  the fixed-threshold order of limits and the relative residual condition
+  needed if the detector soft factor tends to zero; the negative tests reject
+  omitting the soft factor, absolute-only residual convergence, using a wrong
+  logarithmic Dollard coefficient, treating an endpoint simple-pole contact as
+  a new amplitude, or reading a soft-threshold branch as an isolated shell
+  residue.
 - Shows that compact abelian Wilson-line dressing changes with fixed
   asymptotic flux are field-strength surface insertions:
   \(\int_{\gamma'_R}A-\int_{\gamma_R}A=\int_{S_{\gamma',\gamma}}F\).
@@ -607,3 +610,11 @@ resonances.
   the asymptotic Gram form, and the finite-coordinate LSZ extraction; the
   nonperturbative exchange and modified-Cook estimates remain the open analytic
   burden.
+- 2026-06-06 #527 soft-factor conditioning repair: tightened the
+  soft-subtracted boundary-value extraction by stating the fixed
+  detector-threshold order of limits and the relative \(o(S_{\rm amp})\)
+  residual condition required for any simultaneous threshold limit.  The
+  companion check now includes a vanishing-soft-factor family where
+  \(o(S_{\rm amp})\) residuals pass and absolute-only residual convergence
+  fails.  This is a physical extraction-condition repair, not an additional
+  Wilson-line geometry cell.

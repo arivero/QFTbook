@@ -2559,9 +2559,33 @@ satisfies
   \right).
   \label{eq:dressed-boundary-value-hard-estimator-bound}
 \end{equation}
-Thus the pole residue by itself is not yet the charged scattering amplitude:
-one first removes the long-range comparison phase and the finite soft factor,
-and only then takes the shell, endpoint, threshold, and schedule limits.
+This is a fixed-soft-window estimate unless an additional relative
+uniformity statement is supplied.  At fixed detector resolution and infrared
+regulator, with
+\(|\mathcal S_{\lambda,E_T}^{\rm amp}|\ge s_*>0\), one first removes the
+long-range comparison phase and finite soft factor, then takes the shell,
+endpoint/contact, threshold-window, and schedule limits in a way that makes
+the numerator on the right of
+\eqref{eq:dressed-boundary-value-hard-estimator-bound} vanish.  Only after
+that hard coefficient has been extracted at fixed resolution may one compare
+the family as \(E_T\downarrow0\).  If a simultaneous detector-threshold limit
+\((\lambda_\eta,E_{T,\eta},\delta_\eta,\varepsilon_\eta,L_\eta,T_\eta)\) is
+intended, the required hypothesis is instead the relative estimate
+\[
+  C_{\rm sh}\delta_\eta
+  +C_{\rm ct}\rho_{\rm ct,\eta}
+  +C_{\rm th}\rho_{\rm th,\eta}
+  +C_{\rm sch}\rho_{\rm sch,\eta}
+  \le
+  \omega(\eta)\,
+  \left|\mathcal S_{\lambda_\eta,E_{T,\eta}}^{\rm amp}\right|,
+  \qquad \omega(\eta)\to0.
+\]
+Absolute smallness of the pre-divided residual is not enough when
+\(|\mathcal S_{\lambda,E_T}^{\rm amp}|\) itself tends to zero.  Thus the pole
+residue by itself is not yet the charged scattering amplitude; the soft
+factor division is a conditioned extraction step, not a harmless
+normalization after all infrared limits have already been taken.
 
 This controlled approximation also gives the relevant negative tests.  If
 \(\mathcal S_{\lambda,E_T}^{\rm amp}\) is not divided out, the extracted
@@ -2573,7 +2597,11 @@ limit along large dyadic times.  If an endpoint or collision contact term has
 the same simultaneous simple-pole rank as the external residue and is neither
 absorbed into the renormalized dressed coordinate nor assigned to a
 lower-channel coordinate, it shifts
-\(\mathcal M_{\beta\alpha}^{\mathfrak F',\mathfrak F}\).  Finally, a
+\(\mathcal M_{\beta\alpha}^{\mathfrak F',\mathfrak F}\).  If
+\(|\mathcal S_{\lambda,E_T}^{\rm amp}|\to0\) while the pre-divided residual is
+only \(O(|\mathcal S_{\lambda,E_T}^{\rm amp}|)\), the extracted hard
+coefficient retains an \(O(1)\) ambiguity even though the boundary-value
+residual tends to zero.  Finally, a
 soft-threshold branch term which is not less singular in the shell topology
 means the isolated-shell formula has failed; in massless QED the target must
 then be the flux-resolved threshold functional rather than

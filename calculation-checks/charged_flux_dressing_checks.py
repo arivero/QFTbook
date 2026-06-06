@@ -1584,6 +1584,49 @@ def check_soft_subtracted_boundary_value_extraction() -> None:
         tol=Fraction(0),
     )
 
+    passing_relative_errors: list[Fraction] = []
+    failing_relative_errors: list[Fraction] = []
+    failing_absolute_residuals: list[Fraction] = []
+    for denominator in (4, 8, 16, 32):
+        shrinking_soft_factor = Fraction(1, denominator)
+        relative_residual = shrinking_soft_factor**2 / 3
+        absolute_only_residual = shrinking_soft_factor / 5
+
+        passing_boundary_value = (
+            shrinking_soft_factor * hard_coefficient + relative_residual
+        )
+        failing_boundary_value = (
+            shrinking_soft_factor * hard_coefficient + absolute_only_residual
+        )
+        passing_relative_errors.append(
+            abs(passing_boundary_value / shrinking_soft_factor - hard_coefficient)
+        )
+        failing_relative_errors.append(
+            abs(failing_boundary_value / shrinking_soft_factor - hard_coefficient)
+        )
+        failing_absolute_residuals.append(absolute_only_residual)
+
+    assert_equal(
+        "relative residual scaling improves as soft factor vanishes",
+        passing_relative_errors[-1] < passing_relative_errors[0],
+        True,
+    )
+    assert_equal(
+        "absolute residuals can shrink while divided errors do not",
+        failing_absolute_residuals[-1] < failing_absolute_residuals[0],
+        True,
+    )
+    assert_equal(
+        "O(soft factor) residual leaves fixed hard-coefficient ambiguity",
+        set(failing_relative_errors),
+        {Fraction(1, 5)},
+    )
+    assert_not_equal(
+        "absolute residual convergence alone is not hard-coefficient convergence",
+        failing_relative_errors[-1],
+        Fraction(0),
+    )
+
     endpoint_simple_pole_shift = Fraction(2, 13)
     shifted_boundary_value = soft_dressed_boundary_value + endpoint_simple_pole_shift
     wrong_contact_extraction = shifted_boundary_value / amplitude_soft_factor
