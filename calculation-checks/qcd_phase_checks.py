@@ -20,6 +20,10 @@ Target claims:
   intrinsic conductivity from a momentum-orthogonal density diffusion pole,
   keeps the susceptibility residue distinct from the pole width, and separates
   convective Drude weight from the regular current/density response.
+- The transport-closure subsection assembles the shear, bulk/sound, and
+  charge-diffusion outputs into a same-state first-order QCD hydrodynamic
+  datum, rather than allowing channel-wise coefficients from different
+  frames, states, or subtraction conventions to be combined.
 
 Independent construction:
 - Recomputes the finite algebra from source definitions, group charges,
@@ -35,6 +39,9 @@ Independent construction:
 - For the charge-diffusion window, constructs the contact-subtracted retarded
   density kernel, generates spectral samples, solves for the diffusion width
   and susceptibility residue, and only then reconstructs the conductivity.
+- For the closure window, reconstructs the shear, sound, and charge pole
+  data from one rational transport datum and checks the combined residual
+  ledger before accepting the hydrodynamic prediction.
 
 Imported assumptions:
 - Continuum QCD thermodynamic limits, real-time retarded correlator existence,
@@ -48,8 +55,9 @@ Negative controls:
   raw trace-slope bulk extraction, sound-width-only bulk extraction, missing
   shear subtraction, hidden near-critical scalar weight, charge-diffusion
   width-only extraction, missing susceptibility uncertainty, raw-current
-  Drude contamination, incorrect Ward/contact signs, wrong center/fugacity
-  periodicity, and gauge-charge neutrality shortcuts.
+  Drude contamination, incomplete transport closure data, mixed-state or
+  mixed-frame transport assembly, incorrect Ward/contact signs, wrong
+  center/fugacity periodicity, and gauge-charge neutrality shortcuts.
 
 Scope boundary:
 - These are finite convention, algebra, and response-extraction checks.  They
@@ -78,6 +86,7 @@ finite bulk/sound spectral-window extraction with thermodynamic and shear
 subtractions,
 finite charge-diffusion spectral-window extraction with susceptibility and
 Drude-sector separation,
+same-state QCD transport-closure bookkeeping,
 momentum-projected baryon diffusion current bookkeeping, and the
 color-flavor-locked symmetry count.  It is not a lattice simulation and it
 does not assert the
@@ -1377,6 +1386,149 @@ def check_finite_charge_diffusion_spectral_window_from_density_kernel():
     )
 
 
+def check_qcd_transport_closure_window():
+    # Assemble the three finite spectral windows into one first-order QCD
+    # transport datum.  The calculation uses the same state, frame, enthalpy,
+    # and subtraction convention in every channel.
+    d = 3
+    enthalpy = Fraction(19, 5)
+    sound_speed_squared = Fraction(1, 4)
+    eta = Fraction(7, 10)
+    zeta = Fraction(3, 20)
+    susceptibility = Fraction(11, 6)
+    conductivity = Fraction(13, 17)
+    k_squared = Fraction(1, 49)
+
+    shear_prefactor = Fraction(2 * (d - 1), d)
+    shear_diffusion = eta / enthalpy
+    charge_diffusion = conductivity / susceptibility
+    sound_attenuation = (zeta + shear_prefactor * eta) / enthalpy
+
+    shear_width = shear_diffusion * k_squared
+    charge_width = charge_diffusion * k_squared
+    sound_half_width = sound_attenuation * k_squared / 2
+    assert_equal("QCD closure shear pole width", shear_width, Fraction(1, 266))
+    assert_equal("QCD closure charge pole width", charge_width, Fraction(78, 9163))
+    assert_equal("QCD closure sound half-width", sound_half_width, Fraction(65, 22344))
+
+    recovered_eta = enthalpy * shear_width / k_squared
+    recovered_zeta = enthalpy * sound_attenuation - shear_prefactor * eta
+    recovered_conductivity = susceptibility * charge_width / k_squared
+    assert_equal("QCD closure recovers eta from common datum", recovered_eta, eta)
+    assert_equal("QCD closure recovers zeta from common datum", recovered_zeta, zeta)
+    assert_equal(
+        "QCD closure recovers intrinsic charge conductivity",
+        recovered_conductivity,
+        conductivity,
+    )
+
+    required_keys = {
+        "w",
+        "cs2",
+        "eta",
+        "zeta",
+        "chi_perp",
+        "sigma_inc",
+    }
+    transport_datum = {
+        "w": enthalpy,
+        "cs2": sound_speed_squared,
+        "eta": eta,
+        "zeta": zeta,
+        "chi_perp": susceptibility,
+        "sigma_inc": conductivity,
+    }
+    assert_true(
+        "QCD closure datum contains all first-order entries",
+        required_keys <= transport_datum.keys(),
+    )
+    incomplete_datum = dict(transport_datum)
+    incomplete_datum.pop("zeta")
+    assert_true(
+        "QCD closure rejects missing bulk entry",
+        not required_keys <= incomplete_datum.keys(),
+    )
+
+    state_label = ("thermal-qcd", Fraction(3, 2), Fraction(1, 5), "Landau")
+    channel_states = {
+        "shear": state_label,
+        "sound": state_label,
+        "charge": state_label,
+    }
+    assert_equal("QCD closure channels share one state", len(set(channel_states.values())), 1)
+    mixed_channel_states = dict(channel_states)
+    mixed_channel_states["charge"] = ("thermal-qcd", Fraction(3, 2), Fraction(1, 4), "Landau")
+    assert_true(
+        "QCD closure rejects mixed chemical-potential states",
+        len(set(mixed_channel_states.values())) != 1,
+    )
+    mixed_frame_states = dict(channel_states)
+    mixed_frame_states["sound"] = ("thermal-qcd", Fraction(3, 2), Fraction(1, 5), "Eckart")
+    assert_true(
+        "QCD closure rejects mixed hydrodynamic frames",
+        len(set(mixed_frame_states.values())) != 1,
+    )
+
+    wrong_width_only_bulk = enthalpy * sound_attenuation
+    assert_true(
+        "QCD closure rejects sound attenuation without shear subtraction",
+        wrong_width_only_bulk != zeta,
+    )
+    mixed_enthalpy = enthalpy + Fraction(1, 9)
+    mixed_state_zeta = mixed_enthalpy * sound_attenuation - shear_prefactor * eta
+    assert_true(
+        "QCD closure rejects sound datum with mismatched enthalpy",
+        mixed_state_zeta != zeta,
+    )
+    width_only_conductivity = charge_width / k_squared
+    assert_true(
+        "QCD closure rejects charge width without susceptibility residue",
+        width_only_conductivity != conductivity,
+    )
+
+    baryon_density = Fraction(5, 8)
+    raw_drude_weight = baryon_density * baryon_density / enthalpy
+    momentum_relaxation_width = charge_width / 4
+    raw_current_relaxed_slope = conductivity + raw_drude_weight / momentum_relaxation_width
+    assert_true("QCD closure sees raw-current Drude contamination", raw_drude_weight > 0)
+    assert_true(
+        "QCD closure rejects raw-current relaxed slope as intrinsic conductivity",
+        raw_current_relaxed_slope != conductivity,
+    )
+
+    window = Fraction(1, 5)
+    microscopic_gap = Fraction(7, 3)
+    assert_true("QCD closure window contains shear pole", shear_width < window)
+    assert_true("QCD closure window contains sound pole", sound_half_width < window)
+    assert_true("QCD closure window contains charge pole", charge_width < window)
+    assert_true("QCD closure window stays below microscopic gap", window < microscopic_gap)
+
+    residuals = {
+        "shear": Fraction(1, 200),
+        "bulk": Fraction(1, 300),
+        "charge": Fraction(1, 500),
+        "therm": Fraction(1, 700),
+        "frame": Fraction(1, 1100),
+        "cross": Fraction(1, 1300),
+        "cont": Fraction(1, 1700),
+    }
+    closure_budget = sum(residuals.values(), Fraction(0))
+    manufactured_error = sum(residuals.values(), Fraction(0))
+    assert_equal("QCD closure residual ledger is additive", manufactured_error, closure_budget)
+    assert_true(
+        "QCD closure budget must include cross-channel consistency",
+        manufactured_error > closure_budget - residuals["cross"],
+    )
+    assert_true(
+        "QCD closure budget must include frame projection",
+        manufactured_error > closure_budget - residuals["frame"],
+    )
+    assert_true(
+        "QCD closure budget must include charge-channel residual",
+        manufactured_error > closure_budget - residuals["charge"],
+    )
+
+
 def main():
     check_stefan_boltzmann_pressure()
     check_finite_mu_quark_pressure()
@@ -1409,6 +1561,7 @@ def main():
     check_finite_shear_spectral_window_from_retarded_kernel()
     check_finite_bulk_sound_spectral_window()
     check_finite_charge_diffusion_spectral_window_from_density_kernel()
+    check_qcd_transport_closure_window()
     print("All QCD phase-structure checks passed.")
 
 

@@ -2275,6 +2275,88 @@ Drude contribution of the conserved momentum.  Neither effect is an intrinsic
 QCD charge-conductivity datum.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[QCD transport closure from finite windows]
+\label{ca:qcd-transport-closure-window}
+The three preceding finite-window statements become a hydrodynamic
+description of QCD only after their outputs are assembled into one
+same-state transport datum.  Fix the phase, regulator trajectory,
+renormalized stress tensor and currents, thermodynamic constraint, and
+hydrodynamic frame.  The first-order datum is
+\begin{equation}
+  \mathfrak T_{\rm QCD}^{(1)}
+  =
+  \bigl(
+    w,\ c_s^2,\ \eta,\ \zeta,\ \chi^{\perp}_{ab},\
+    \Sigma_{ab}^{\rm inc}
+  \bigr)_{(T,\mu_B)},
+  \qquad
+  w=\epsilon+p ,
+  \label{eq:qcd-first-order-transport-datum}
+\end{equation}
+where \(\chi^{\perp}\) and \(\Sigma^{\rm inc}\) are evaluated after the
+momentum and sound variables have been projected out of the charge sector.
+This datum is not the disjoint list of best available numbers in several
+channels.  The same \(w\), \(c_s^2\), contact convention, and frame must be
+used in the shear peak, the scalar sound reconstruction, and the projected
+charge diffusion problem.
+
+For a retained charge eigenmode \(q\), the closure conditions are
+\begin{equation}
+  D_\eta=\frac{\eta}{w},
+  \qquad
+  \Gamma_s=\frac{\zeta+2(d-1)\eta/d}{w},
+  \qquad
+  D_q=\text{eigenvalue of }\Sigma^{\rm inc}\chi^{-1},
+  \label{eq:qcd-transport-closure-diffusivities}
+\end{equation}
+and the pole statements in a common low-energy window are
+\begin{align}
+  \omega_{\rm shear}
+  &=
+  -\ii D_\eta k^2+O(k^4),
+  \nonumber\\
+  \omega_{\rm sound,\pm}
+  &=
+  \pm c_s k-\frac{\ii}{2}\Gamma_s k^2+O(k^3),
+  \nonumber\\
+  \omega_{\rm diff,q}
+  &=
+  -\ii D_q k^2+O(k^4).
+  \label{eq:qcd-transport-closure-poles}
+\end{align}
+The finite-window comparison must therefore carry a combined residual
+\begin{equation}
+  R_{\rm hydro}
+  =
+  R_{\rm shear}
+  +R_{\rm bulk}
+  +R_{\rm charge}
+  +R_{\rm therm}
+  +R_{\rm frame}
+  +R_{\rm cross}
+  +R_{\rm cont}.
+  \label{eq:qcd-transport-closure-residual}
+\end{equation}
+Here \(R_{\rm cross}\) records the agreement of the thermodynamic state and
+subtractions across channels, while \(R_{\rm frame}\) records the change from
+the microscopic current basis to the chosen Landau-frame or equivalent
+hydrodynamic variables.  A shear extraction plus a pressure curve does not
+determine bulk viscosity; a sound attenuation width gives \(\zeta\) only
+after the shear subtraction in
+\eqref{eq:qcd-bulk-from-sound-estimator}; and a charge diffusion width gives
+\(\Sigma_q^{\rm inc}\) only after the susceptibility residue and
+momentum-projected current have been supplied.  Likewise, transport
+coefficients extracted at nearby but distinct \((T,\mu_B)\), with different
+renormalized stress tensors, or with different frame conventions do not form
+\(\mathfrak T_{\rm QCD}^{(1)}\).
+
+This closure statement is still conditional on the microscopic response
+window of \eqref{eq:qcd-hydro-response-comparison}.  Its role is to turn the
+separate spectral extractions into a physical hydrodynamic amplitude
+prediction for QCD correlators in the specified window, and to make explicit
+which extra information is required beyond the individual Kubo limits.
+\end{controlledapproximation}
+
 \begin{remark}[The \(\eta/s\) lower-bound claim]
 The value \(1/(4\pi)\) is an important result in a class of strongly coupled
 large-\(N\) theories with classical gravity duals.  It is not a theorem of

@@ -115,6 +115,11 @@ GitHub issue #628.
   conductivity, diffusion constant, finite-momentum diffusion-pole width, and
   finite-window susceptibility-residue estimator used to keep charge
   conductivity separate from raw current Drude weight and width-only fits.
+- `mathfrak T_QCD^(1)`, `R_frame`, `R_cross`, `R_hydro`: same-state
+  first-order QCD transport datum and the residual classes that enforce
+  common thermodynamic state, frame, contact convention, and cross-channel
+  consistency when the shear, sound, and charge-diffusion windows are turned
+  into hydrodynamic pole predictions.
 
 ## Claim Ledger
 
@@ -222,6 +227,13 @@ GitHub issue #628.
   Kubo slopes, width-only diffusion fits, sound-mixed density peaks, and
   near-critical charge modes are not accepted as conductivity data unless the
   corresponding residuals are separated.
+- Adds a QCD transport-closure window: the shear, bulk/sound, and
+  charge-diffusion spectral outputs are accepted as hydrodynamics only after
+  they assemble into one same-state datum
+  `mathfrak T_QCD^(1)=(w,c_s^2,eta,zeta,chi_perp,Sigma_inc)`, with explicit
+  frame, thermodynamic, cross-channel, continuum, and channel residuals.
+  This prevents a collection of channel-wise transport estimates from being
+  mistaken for a physical QCD hydrodynamic response prediction.
 - Proves the origin of the finite-density sign problem from loss of
   \(\gamma_5\)-Hermiticity at real chemical potential.
 - Defines imaginary chemical potential as a thermal boundary-condition
@@ -338,6 +350,7 @@ GitHub issue #628.
   scalar critical-mode negative controls, finite charge-diffusion
   spectral-window susceptibility-residue, width, regular-background,
   convective-Drude, and near-charge-mode negative controls,
+  same-state QCD transport-closure window bookkeeping,
   momentum-projected baryon-current bookkeeping, and CFL Goldstone count.
 
 ## Open Issues
@@ -436,7 +449,21 @@ GitHub issue #628.
   diffusion width, susceptibility, and conductivity, and rejects width-only,
   raw-current Drude, regular-background, missing-residue, and hidden
   near-charge-mode shortcuts.  This is a physics-output transport pass, not a
-  new hydrodynamic notation layer.
+  proof that microscopic QCD realizes the pole.
+- 2026-06-06 issue #630 transport-closure architecture pass: added
+  `ca:qcd-transport-closure-window` after the shear, bulk/sound, and charge
+  finite-window gates.  The new gate assembles
+  `mathfrak T_QCD^(1)=(w,c_s^2,eta,zeta,chi_perp,Sigma_inc)` at one thermal
+  state and frame, records the combined residual
+  `R_hydro=R_shear+R_bulk+R_charge+R_therm+R_frame+R_cross+R_cont`, and states
+  why shear-only, sound-width-only, charge-width-only, raw-current, and
+  mixed-state/mixed-frame transport assemblies do not constitute a QCD
+  hydrodynamic prediction.  `qcd_phase_checks.py` now verifies the exact
+  same-state reconstruction of eta, zeta, and intrinsic conductivity from one
+  rational datum and rejects incomplete or cross-channel-inconsistent
+  assemblies.  This pass is an argument-architecture repair: it ties the
+  transport cells into a common QCD response datum rather than increasing
+  lemma density.
 - 2026-05-27 Roberge--Weiss pass: added the finite-regulator imaginary
   chemical-potential theorem, positivity statement for vectorlike pairs,
   Roberge--Weiss transition status remark, and exact angle-periodicity

@@ -326,7 +326,9 @@ Current checks:
   residual budgeting, and scalar critical-mode negative controls, the finite
   charge-diffusion spectral-window extraction with susceptibility-residue,
   width, regular-background, convective-Drude, and near-charge-mode negative
-  controls, and the
+  controls, the same-state QCD transport-closure window rejecting incomplete
+  data, mixed phase/frame assembly, missing sound-shear subtraction, and raw
+  current conductivity shortcuts, the
   momentum-projected baryon current which removes the convective Drude sector
   at finite density, and the CFL Goldstone count.
 - `nonrelativistic_ng_counting_checks.py`: exact finite checks for the
