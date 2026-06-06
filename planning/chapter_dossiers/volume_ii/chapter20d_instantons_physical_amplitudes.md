@@ -147,6 +147,11 @@
   for a source amplitude, including disconnected one-body subtraction,
   neutral-pair source visibility, same-charge theta harmonic data, pair-kernel
   residual control, and the sector-isolation consequence.
+- `ca:instanton-neutral-pair-valley-prescription`: neutral
+  instanton--anti-instanton valley prescription block; it separates the
+  attractive quasi-zero-mode lateral ambiguity from an ordinary positive
+  molecule integral and cancels it against the perturbative lateral ambiguity
+  only in the same source/projection coordinate.
 - `sec:instanton-observable-handoffs`: physical observable-map block distinguishing a
   hard source coefficient, theta curvature, \(U(1)_A\)-odd susceptibility
   kernel, and real-time axial relaxation rate.
@@ -256,6 +261,14 @@
   data: the disconnected product must be subtracted, the neutral pair can
   affect source correlators without theta curvature, and the same-charge pair
   carries the first second-harmonic theta correction.
+- The neutral-pair valley prescription block opens the attractive
+  instanton--anti-instanton quasi-zero-mode direction as a lateral
+  prescription problem rather than a positive molecule count.  The ambiguous
+  valley residue must carry zero-mode overlap, nonzero-mode determinant,
+  source insertion, endpoint window, and physical projection data before it can
+  cancel the perturbative lateral ambiguity.  This prevents transporting a
+  vacuum-residue cancellation into a hard, pole, spectral, or inclusive
+  amplitude without the source/projection maps.
 - The `Q^(-35/3)` hard-scale behavior is the power-counting part tied to
   `b0=29/3` and four individual hard zero-mode form factors; the full
   one-loop hard coefficient also retains the running collective-coordinate
@@ -333,6 +346,12 @@
   disconnected subtraction, neutral-pair source visibility despite zero theta
   curvature, same-charge second-harmonic data, zero-mode overlap survival, and
   pair residual control,
+  verifies the neutral-pair valley prescription with exact rational
+  `(PV, ambiguity)` lateral ledgers, a source-projected residue, its
+  perturbative lateral partner, same-coordinate ambiguity cancellation,
+  residual-bound propagation, and negative controls for pair-only,
+  principal-value-only, wrong-frame, and source-projection-omitted
+  cancellations,
   builds moduli-equivalent finite cell channels with different or vanishing
   amplitudes, constructs a same-Euclidean-sum/different-projection ambiguity,
   checks the SU(3), `N_f=2` hard four-source scale and tail powers, verifies
@@ -416,6 +435,12 @@
   correction to the dedicated physical-amplitude chapter.  This is a
   sector-isolation and source-observable improvement, not a moduli-space
   expansion.
+- 2026-06-06 neutral-pair valley prescription pass: added
+  `ca:instanton-neutral-pair-valley-prescription` after the connected
+  first-cluster block.  The pass treats the attractive neutral pair direction
+  as a same-source-coordinate lateral-prescription issue and rejects
+  pair-only, principal-value-only, wrong-frame, and source-projection-omitted
+  ambiguity cancellations.
 - 2026-06-06 hard Wilsonian OPE pass: added
   `sec:instanton-hard-wilsonian-ope-datum`, which turns the hard four-source
   benchmark into a short-distance operator coefficient only after the

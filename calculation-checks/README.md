@@ -840,6 +840,10 @@ Current checks:
   the first connected instanton-pair source correction with disconnected
   subtraction, neutral-pair source visibility, same-charge second-harmonic
   data, zero-mode overlap survival, and pair residual control,
+  the neutral instanton--anti-instanton valley lateral prescription with
+  same-source-coordinate cancellation against the perturbative ambiguity and
+  negative controls for pair-only, principal-value-only, wrong-frame, and
+  source-projection-omitted cancellations,
   the two-flavor \(\det(M+B)\) source/mass polynomial, the distinction between
   mass-saturated vacuum activity and the four-source coefficient,
   moduli-equivalent channels with different or zero amplitudes because of

@@ -79,6 +79,10 @@ Target claims:
   two-body correction to a source amplitude requires the disconnected one-body
   product subtraction, a source/projection-specific pair kernel, absolute pair
   residual control, and a separate reading of neutral and same-charge pairs.
+- `ca:instanton-neutral-pair-valley-prescription`: a neutral instanton-pair
+  valley contribution is a lateral prescription in the same source/projection
+  coordinate as its perturbative ambiguity partner; pair-only, principal-value
+  only, or wrong-frame cancellations change the physical assertion.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell residuals
   and source-determinant perturbations obey the displayed absolute bounds.
 - `prop:su3-nf2-hard-source-power-slow-tail` and
@@ -113,6 +117,7 @@ Independent construction:
   spectral-bin/Stieltjes comparisons, contact
   polynomial separation, and bridge residual telescopes,
   first connected instanton-pair source corrections,
+  neutral-pair lateral-prescription cancellation ledgers,
   physical projection bins, residual sums, two-term hard-window endpoint
   tail subtraction, and hard-window power checks
   directly, rather than importing BPST radial integrals or copying a monograph
@@ -203,6 +208,9 @@ Negative controls:
   controlled only by theta curvature, a disconnected
   pair product counted as a connected source correction, a one-body
   sector-isolation budget that omits pair leakage, a
+  neutral valley principal value treated as the full lateral contribution,
+  pair-only lateral ambiguity treated as physical, a vacuum-residue
+  cancellation transported to a different source coordinate,
   single Euclidean cell sum used as a spectral-bin observable, a
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
   slot, a leading-tail-only hard-window approximation, a fused-density
@@ -2026,6 +2034,104 @@ def check_first_cluster_amplitude_correction() -> None:
     )
 
 
+def check_neutral_pair_valley_prescription() -> None:
+    ComplexPair = tuple[Fraction, Fraction]
+
+    def addz(left: ComplexPair, right: ComplexPair) -> ComplexPair:
+        return (left[0] + right[0], left[1] + right[1])
+
+    def subz(left: ComplexPair, right: ComplexPair) -> ComplexPair:
+        return (left[0] - right[0], left[1] - right[1])
+
+    def norm1(value: ComplexPair) -> Fraction:
+        return abs(value[0]) + abs(value[1])
+
+    pair_principal_value = Fraction(13, 19)
+    perturbative_principal_value = Fraction(23, 29)
+    vacuum_residue = Fraction(5, 17)
+    source_projection = Fraction(7, 11)
+    source_residue = source_projection * vacuum_residue
+
+    pair_plus: ComplexPair = (pair_principal_value, source_residue)
+    pair_minus: ComplexPair = (pair_principal_value, -source_residue)
+    perturbative_plus: ComplexPair = (perturbative_principal_value, -source_residue)
+    perturbative_minus: ComplexPair = (perturbative_principal_value, source_residue)
+
+    combined_plus = addz(pair_plus, perturbative_plus)
+    combined_minus = addz(pair_minus, perturbative_minus)
+    assert_equal(
+        "neutral valley lateral ambiguity cancels in the same source coordinate",
+        combined_plus,
+        combined_minus,
+    )
+    assert_not_equal(
+        "neutral pair lateral value alone is prescription dependent",
+        pair_plus,
+        pair_minus,
+    )
+
+    principal_value_only: ComplexPair = (pair_principal_value, Fraction(0))
+    assert_not_equal(
+        "neutral valley principal value omits the lateral residue",
+        principal_value_only,
+        pair_plus,
+    )
+
+    wrong_frame_perturbative_plus: ComplexPair = (
+        perturbative_principal_value,
+        -vacuum_residue,
+    )
+    wrong_frame_perturbative_minus: ComplexPair = (
+        perturbative_principal_value,
+        vacuum_residue,
+    )
+    wrong_frame_plus = addz(pair_plus, wrong_frame_perturbative_plus)
+    wrong_frame_minus = addz(pair_minus, wrong_frame_perturbative_minus)
+    assert_not_equal(
+        "vacuum valley residue does not cancel a projected source residue",
+        wrong_frame_plus,
+        wrong_frame_minus,
+    )
+
+    dropped_projection_pair_plus: ComplexPair = (pair_principal_value, vacuum_residue)
+    assert_not_equal(
+        "source projection is part of the neutral valley residue",
+        dropped_projection_pair_plus,
+        pair_plus,
+    )
+
+    pair_residual_plus: ComplexPair = (Fraction(1, 150), -Fraction(1, 500))
+    pair_residual_minus: ComplexPair = (-Fraction(1, 180), Fraction(1, 600))
+    borel_residual_plus: ComplexPair = (Fraction(1, 100), Fraction(1, 300))
+    borel_residual_minus: ComplexPair = (-Fraction(1, 120), -Fraction(1, 400))
+    exact_plus = addz(
+        addz(pair_plus, pair_residual_plus),
+        addz(perturbative_plus, borel_residual_plus),
+    )
+    exact_minus = addz(
+        addz(pair_minus, pair_residual_minus),
+        addz(perturbative_minus, borel_residual_minus),
+    )
+    residual_difference = addz(
+        subz(pair_residual_plus, pair_residual_minus),
+        subz(borel_residual_plus, borel_residual_minus),
+    )
+    assert_equal(
+        "neutral valley residual prescription difference",
+        subz(exact_plus, exact_minus),
+        residual_difference,
+    )
+    residual_bound = (
+        norm1(subz(pair_residual_plus, pair_residual_minus))
+        + norm1(subz(borel_residual_plus, borel_residual_minus))
+    )
+    assert_leq(
+        "neutral valley residual prescription bound",
+        norm1(subz(exact_plus, exact_minus)),
+        residual_bound,
+    )
+
+
 def check_two_flavor_mass_source_determinant_coordinate() -> None:
     m_u = Fraction(2, 5)
     m_d = Fraction(3, 7)
@@ -2454,6 +2560,7 @@ def main() -> None:
     check_pole_normalized_four_source_matrix_extraction()
     check_instanton_inclusive_cut_quadratic_projection()
     check_first_cluster_amplitude_correction()
+    check_neutral_pair_valley_prescription()
     check_two_flavor_mass_source_determinant_coordinate()
     check_moduli_equivalent_channel_separation()
     check_projection_not_recoverable_from_one_euclidean_sum()

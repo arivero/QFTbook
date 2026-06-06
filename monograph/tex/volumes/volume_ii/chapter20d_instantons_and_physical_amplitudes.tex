@@ -1919,6 +1919,68 @@ claim must budget the absolute size of the retained pair terms in
 by itself, does not control \(R_{\rm sec}\).
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Neutral-pair valley prescription]
+\label{ca:instanton-neutral-pair-valley-prescription}
+The neutral \(I\bar I\) channel has an additional prescription datum.  In the
+attractive relative quasi-zero-mode direction, a regulated valley coordinate
+\(r\) can produce a lateral value rather than an ordinary positive molecule
+integral.  For a selected source and projection coordinate, write the retained
+neutral-pair functional in the form
+\begin{equation}
+  \mathcal V_{\pm}[\mathcal J]
+  =
+  \operatorname{PV}
+  \int_{\mathcal W_{+-}}
+  C_{+-}^{0}(r,u;\mathcal J)\,\dd r\,\dd u
+  \ \pm\ \ii\pi\,\mathfrak r_{+-}(\mathcal J)
+  +R_{\rm val,\pm}(\mathcal J),
+  \label{eq:instanton-neutral-valley-lateral}
+\end{equation}
+where \(u\) denotes the remaining relative orientation, size, and source
+variables, and \(\mathfrak r_{+-}(\mathcal J)\) is the residue or thimble
+jump in that same channel.  The symbol \(\pm\) records the lateral
+continuation used to define the attractive quasi-zero-mode integral.
+
+The cancellation statement is meaningful only in the same observable
+coordinate.  Suppose the perturbative sector for the same source and
+projection has the lateral ambiguity
+\begin{equation}
+  \mathcal B_{\pm}[\mathcal J]
+  =
+  \mathcal B_{\rm PV}[\mathcal J]
+  \mp\ii\pi\,\mathfrak r_{+-}(\mathcal J)
+  +R_{\rm Bor,\pm}(\mathcal J).
+  \label{eq:instanton-neutral-valley-borel-partner}
+\end{equation}
+Then the combined neutral contribution satisfies the exact identity
+\begin{equation}
+\begin{aligned}
+  &\bigl(\mathcal B_{+}[\mathcal J]+\mathcal V_{+}[\mathcal J]\bigr)
+  -
+  \bigl(\mathcal B_{-}[\mathcal J]+\mathcal V_{-}[\mathcal J]\bigr) \\
+  &\qquad =
+  R_{\rm Bor,+}-R_{\rm Bor,-}+R_{\rm val,+}-R_{\rm val,-}.
+\end{aligned}
+  \label{eq:instanton-neutral-valley-ambiguity-cancellation}
+\end{equation}
+Thus the residue \(\mathfrak r_{+-}\) must carry the zero-mode overlap,
+nonzero-mode determinant, source insertion, endpoint window, and physical
+projection of the channel being claimed.  A vacuum valley residue transports
+to a hard source, pole, or inclusive observable only after those maps have
+been included.
+
+If
+\[
+  |R_{\rm Bor,+}-R_{\rm Bor,-}|\le B_{\rm Bor},
+  \qquad
+  |R_{\rm val,+}-R_{\rm val,-}|\le B_{\rm val},
+\]
+then the residual prescription dependence of the combined neutral coordinate
+is bounded by \(B_{\rm Bor}+B_{\rm val}\).  A pair-only lateral value, a
+principal-value valley integral with the residue discarded, or a cancellation
+checked in a different source frame gives a different physical assertion.
+\end{controlledapproximation}
+
 \section{Observable Maps Are Not Interchangeable}
 \label{sec:instanton-observable-handoffs}
 
