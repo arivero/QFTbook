@@ -2733,15 +2733,18 @@ the claim.  Beta functions in a gauge-fixed coordinate chart are useful
 local coordinates only after this gauge-compatible RG structure has been
 declared.
 
-\paragraph{Model-by-model status synthesis.}
-The examples above should be compared by the stage at which a theorem has
-actually been proved.  The stages are: construction of the RG map in its
-declared norm; construction of a fixed point or stable critical trajectory;
-source extension and operator-coordinate control; reconstruction of Schwinger,
-Wightman, or observable-algebra data; and identification of the constructed
-object with a specified physical target.  These stages are logically ordered.
-A proof at an earlier stage supplies important mathematics, but it does not
-automatically supply the later stages.
+\paragraph{Model-by-model observable-output synthesis.}
+The examples above should be compared by the physical output whose
+observable topology is actually controlled.  The ordered questions are:
+which microscopic or auxiliary target is being studied; which RG map is
+constructed in a declared norm; whether a fixed point or stable critical
+trajectory is proved for that map; which source windows and operator
+coordinates are controlled; which Schwinger, Wightman, tensor-network, or
+observable-algebra data are reconstructed; and which comparison map identifies
+the constructed object with the physical target named in the claim.  A proof
+at an earlier layer supplies important mathematics for the later layers.
+Each later layer needs its own estimates in the topology in which the
+observable is quoted.
 
 For massive scalar models with superrenormalizable interactions, constructive
 methods can supply Euclidean Schwinger functions and, after the OS
@@ -3177,7 +3180,7 @@ source-window RG estimate must therefore specify the transporter geometry
 and its renormalized path class, or else prove a reconstruction estimate that
 controls the difference between the chosen paths.
 
-\paragraph{Path-deformation ledger for transported sources.}
+\paragraph{Path-deformation identity for transported sources.}
 The preceding path dependence has an exact finite-regulator algebra.  Let
 \(P,P':x\to y\) be two oriented paths and let \(\bar P:y\to x\) be the
 reverse of \(P\).  Put
@@ -4778,7 +4781,7 @@ candidate fixed point in an epsilon expansion, in a hierarchical model, or
 in a finite projection truncation.
 \end{remark}
 
-\paragraph{Proof dependency ledger for the ordinary short-range target.}
+\paragraph{Proof dependency order for the ordinary short-range target.}
 The assembly package below is reconstruction-facing; it is not the whole
 ordinary short-range scalar fixed-point theorem.  The missing theorem has to
 close the following dependency chain in this order.
@@ -6425,7 +6428,7 @@ The coefficients \(c_{i,a}\) are microscopic coordinates.  The exponents
 data in the declared Wilsonian chart and observable topology.
 
 \paragraph{Second-order reconstruction corrections.}
-The linear correction ledger above is sufficient only when the quadratic
+The linear correction analysis above is sufficient only when the quadratic
 reconstruction term is truly below the retained accuracy.  Suppose, in the
 same stable chart, that the normalized reconstruction map has a second
 Frechet derivative and a cubic seminorm remainder,

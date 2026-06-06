@@ -162,7 +162,7 @@ constructive RG developments.
   for gauge-invariant Wilson-loop, small-loop, or Wilson-line-connected
   observables.
 - RG object / map theorem / source and observable theorem / target
-  identification: the four-layer status ledger used to classify
+  identification: the ordered observable-output map used to classify
   nonperturbative fixed-point claims without transferring theorem status
   between inequivalent RG systems.
 
@@ -230,7 +230,7 @@ constructive RG developments.
   the omitted vector-field component \(Q_N\mathcal F_t(\gamma_N(t))\) is
   integrated with the RG amplification factor and then transported through
   observable seminorms.
-- Adds the functional-RG projected fixed-point residual gate: a zero of the
+- Adds the functional-RG projected fixed-point residual test: a zero of the
   retained beta functions in a derivative expansion is only a controlled
   finite-window approximation after the omitted beta-function component,
   Newton--Kantorovich lift radius, ansatz chart error, and reconstruction
@@ -240,7 +240,7 @@ constructive RG developments.
   \(\|\mathcal T_j(\widehat T_j)-\widehat{\mathcal T}_j(\widehat T_j)\|\),
   amplified by the exact tensor-map Lipschitz constants and then transported
   through normalized finite observable windows.
-- Adds a model-by-model status synthesis for rigorous Wilsonian RG: massive
+- Adds a model-by-model observable-output synthesis for rigorous Wilsonian RG: massive
   constructive scalar models, auxiliary hierarchical scalar systems,
   long-range fermionic fixed points, tensor RG, functional RG truncations,
   ordinary short-range critical scalar targets, and gauge targets are compared
@@ -399,9 +399,9 @@ constructive RG developments.
   scalar fixed points with controlled unstable/stable directions, and
   infinite-dimensional tensor-RG fixed points with explicit contraction
   neighborhoods.
-- Adds a fixed-point status ledger separating theorem status for
+- Adds a fixed-point observable-output map separating theorem status for
   hierarchical scalar systems, long-range fermionic systems, tensor RG maps,
-  ordinary short-range scalar targets, and gauge targets.  The ledger records
+  ordinary short-range scalar targets, and gauge targets.  The map records
   which layers have actually been constructed: RG object, map theorem, source
   and observable theorem, and target identification.
 - Adds a finite gauge-compatible blocking construction: coarse links are path
@@ -529,7 +529,10 @@ remainder contraction.
   lift calculation, the residual-lift plus finite-window observable-error
   budget, the finite-step projected functional-RG residual-amplification
   bound, the tensor-RG truncation-window recursion, and the finite
-  irrelevant-tail graph equation.
+  irrelevant-tail graph equation.  It also checks the ordered
+  observable-output stage map that rejects auxiliary fixed-point or projected
+  beta-zero data as short-range physical observables until source control,
+  reconstruction, and target identification have been supplied.
 - `calculation-checks/rg_fermionic_fixed_point_checks.py`: exact rational
   checks for the fermionic benchmark kernel scaling ledger, pinned \(L^1\)
   exponent relation, trimmed local-coordinate list, and finite irrelevant-tail
@@ -1078,7 +1081,7 @@ remainder contraction.
   This is a proof-architecture pass for #505, not another correction-to-scaling
   cell and not a closure of the model-specific Wilson-Fisher construction.
 - 2026-06-03 functional-RG projected fixed-point pass: added the
-  derivative-expansion fixed-point residual gate.  The new controlled
+  derivative-expansion fixed-point residual test.  The new controlled
   approximation requires the omitted beta-function component, the
   Newton--Kantorovich lift radius, the ansatz chart error, and the
   reconstruction Lipschitz constants before a projected functional-RG fixed
@@ -1092,3 +1095,14 @@ remainder contraction.
   gauge-QFT reconstruction claim.  The \(S_3\) lattice gauge companion check
   now verifies the exact finite arithmetic of this schedule and its failure
   mode when estimates are controlled only on unrelated finite windows.
+- 2026-06-06 issue #844 rigorous-RG observable-map pass: reframed the
+  model-by-model synthesis as an observable-output map rather than a status
+  classifier.  The reader-facing text now orders the physical target, RG map,
+  fixed point or trajectory, source windows, observable reconstruction, target
+  identification, and verification boundary before any theorem status is
+  transferred across RG systems.  Local "ledger" headings in this hotspot were
+  renamed to identity/order/analysis language where they denoted ordinary
+  algebra or proof dependency.  The RG projection companion now checks the
+  finite stage map and rejects auxiliary fixed-point or projected beta-zero
+  data as short-range physical observables without source control,
+  reconstruction, and target identification.

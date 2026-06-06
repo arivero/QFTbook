@@ -46,6 +46,24 @@ def product(values):
     return result
 
 
+RG_CLAIM_STAGES = (
+    "map_in_declared_norm",
+    "fixed_point_or_trajectory",
+    "source_window_control",
+    "observable_reconstruction",
+    "target_identification",
+)
+
+
+def completed_prefix_length(stage_record):
+    count = 0
+    for stage in RG_CLAIM_STAGES:
+        if not stage_record.get(stage, False):
+            break
+        count += 1
+    return count
+
+
 def check_spurious_projected_zero():
     def residual(point):
         _x, _y = point
@@ -307,6 +325,74 @@ def check_tensor_rg_truncation_window_budget():
     assert_true("tensor RG bad truncation residual detected", bad_bound > Fraction(1, 16))
 
 
+def check_rg_claim_observable_output_stage_map():
+    # The model-by-model synthesis in the chapter orders claims by the physical
+    # observable layer they actually control.  A later flag cannot be used when
+    # an earlier layer is missing.
+    auxiliary_hierarchical = {
+        "map_in_declared_norm": True,
+        "fixed_point_or_trajectory": True,
+        "source_window_control": True,
+        "observable_reconstruction": True,
+        "target_identification": False,
+    }
+    frg_projected_fixed_point = {
+        "map_in_declared_norm": True,
+        "fixed_point_or_trajectory": False,
+        "source_window_control": False,
+        "observable_reconstruction": False,
+        "target_identification": False,
+    }
+    ordinary_short_range_complete = {
+        stage: True for stage in RG_CLAIM_STAGES
+    }
+    skipped_reconstruction_claim = {
+        "map_in_declared_norm": True,
+        "fixed_point_or_trajectory": True,
+        "source_window_control": False,
+        "observable_reconstruction": True,
+        "target_identification": True,
+    }
+
+    assert_equal(
+        "hierarchical observable stages stop before target identification",
+        completed_prefix_length(auxiliary_hierarchical),
+        4,
+    )
+    assert_equal(
+        "projected FRG beta zero lacks fixed-point lift stage",
+        completed_prefix_length(frg_projected_fixed_point),
+        1,
+    )
+    assert_equal(
+        "ordinary short-range complete observable stages",
+        completed_prefix_length(ordinary_short_range_complete),
+        len(RG_CLAIM_STAGES),
+    )
+    assert_equal(
+        "skipped reconstruction does not count later target labels",
+        completed_prefix_length(skipped_reconstruction_claim),
+        2,
+    )
+
+    # A physical short-range Wilson-Fisher claim requires every stage in the
+    # ordered prefix.  Auxiliary fixed-point data and a projected beta zero both
+    # fail this finite claim test for different reasons.
+    required_physical_prefix = len(RG_CLAIM_STAGES)
+    assert_true(
+        "auxiliary fixed point is not a short-range observable reconstruction",
+        completed_prefix_length(auxiliary_hierarchical) < required_physical_prefix,
+    )
+    assert_true(
+        "projected FRG fixed point is not an observable reconstruction",
+        completed_prefix_length(frg_projected_fixed_point) < required_physical_prefix,
+    )
+    assert_true(
+        "complete short-range package reaches the physical observable layer",
+        completed_prefix_length(ordinary_short_range_complete) == required_physical_prefix,
+    )
+
+
 def main():
     check_spurious_projected_zero()
     check_projected_zero_lift_condition()
@@ -315,6 +401,7 @@ def main():
     check_frg_projected_flow_residual_budget()
     check_frg_projected_fixed_point_residual_gate()
     check_tensor_rg_truncation_window_budget()
+    check_rg_claim_observable_output_stage_map()
     print("All RG projection checks passed.")
 
 
