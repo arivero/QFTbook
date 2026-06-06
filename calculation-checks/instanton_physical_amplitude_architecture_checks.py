@@ -18,6 +18,10 @@ Target claims:
   is fixed by the RG cancellation between the determinant logarithm and the
   running BPST action, while the physical channel power also depends on
   zero-mode/source data.
+- `ca:instanton-proper-time-determinant-channel`: the proper-time fluctuation
+  log contributes to a source channel through weighted zero-mode-deleted
+  boson, ghost, fermion, and counterterm coefficients; the resulting
+  determinant residual must be bounded on the absolute source window.
 - `prop:instanton-hard-individual-zero-mode-slot`: the differentiated hard
   fermion slot has the singular-gauge BPST zero-mode form-factor tail
   `F_zm(c s/2) = 6 c^(-3) s^(-3) + O(s^(-5))`; four such slots give the
@@ -61,6 +65,7 @@ Target claims:
 Independent construction:
 - The checks build small exact rational cell models from scratch.  They compute
   two-by-two determinants, mass/source polynomials, one-loop RG exponents,
+  weighted proper-time determinant logarithms,
   the Bessel-product tail cancellation for an individual zero-mode slot,
   finite Gaussian source-quotient covariance identities,
   multiplicative hard-amplitude assembly bounds on signed windows,
@@ -84,7 +89,9 @@ Negative controls:
 - The script rejects a plus sign in the off-diagonal determinant term, a
   moduli-only prediction that ignores zero-mode rank, a rank-one source matrix
   treated as a nonzero four-source channel, a wrong one-loop density power, a
-  density-only hard-channel power, an untransported determinant constant, a
+  density-only hard-channel power, a wrong proper-time determinant sign, a
+  signed heat-kernel residual cancellation used as an absolute window bound,
+  an untransported determinant constant, a
   fused-density endpoint class substituted for differentiated fermion slots,
   an unamputated external residue absorbed into the zero-mode slot tail, a
   vacuum determinant calibration substituted for a source-fluctuation
@@ -118,6 +125,7 @@ Scope boundary:
 
 from __future__ import annotations
 
+import math
 from fractions import Fraction
 
 from check_utils import assert_close, assert_geq, assert_gt, assert_leq
@@ -265,6 +273,111 @@ def check_one_loop_density_rg_and_channel_power() -> None:
         "absolute density coefficient depends on finite determinant convention",
         scheme_constant_dropped,
         absolute_prefactor_1,
+    )
+
+
+def check_proper_time_determinant_log_channel_window() -> None:
+    # The density logarithm comes from weighted zero-mode-deleted spectra plus
+    # the local counterterm/coupling conversion in the same convention.
+    heat_coefficients = {
+        "boson": Fraction(20, 3),
+        "ghost": Fraction(4, 3),
+        "fermion": Fraction(13, 3),
+    }
+    determinant_weights = {
+        "boson": -Fraction(1, 2),
+        "ghost": Fraction(1),
+        "fermion": Fraction(1),
+    }
+    spectral_log_power = sum(
+        determinant_weights[name] * heat_coefficients[name]
+        for name in heat_coefficients
+    )
+    counterterm_power = Fraction(22, 3)
+    b0_su3_nf2 = beta0(3, 2)
+    assert_equal("proper-time spectral determinant log power", spectral_log_power, Fraction(7, 3))
+    assert_equal(
+        "proper-time determinant plus counterterm gives SU3 Nf2 beta0",
+        spectral_log_power + counterterm_power,
+        b0_su3_nf2,
+    )
+
+    wrong_boson_sign_power = (
+        Fraction(1, 2) * heat_coefficients["boson"]
+        + determinant_weights["ghost"] * heat_coefficients["ghost"]
+        + determinant_weights["fermion"] * heat_coefficients["fermion"]
+        + counterterm_power
+    )
+    assert_not_equal(
+        "bosonic determinant sign is fixed by the inverse square root",
+        wrong_boson_sign_power,
+        b0_su3_nf2,
+    )
+
+    omitted_ghost_power = (
+        determinant_weights["boson"] * heat_coefficients["boson"]
+        + determinant_weights["fermion"] * heat_coefficients["fermion"]
+        + counterterm_power
+    )
+    assert_not_equal(
+        "ghost determinant is not optional in the log power",
+        omitted_ghost_power,
+        b0_su3_nf2,
+    )
+
+    leading_cells = [Fraction(3, 5), -Fraction(1, 10), Fraction(7, 20)]
+    log_residuals = [Fraction(1, 50), -Fraction(1, 45), Fraction(1, 60)]
+    epsilon_det = Fraction(1, 40)
+    leading_channel = sum(leading_cells, Fraction(0))
+    exact_channel = sum(
+        float(cell) * math.exp(float(delta))
+        for cell, delta in zip(leading_cells, log_residuals)
+    )
+    absolute_window_mass = sum(abs(cell) for cell in leading_cells)
+    determinant_window_bound = float(absolute_window_mass) * (
+        math.exp(float(epsilon_det)) - 1.0
+    )
+    assert_equal(
+        "proper-time log residuals stay inside declared window",
+        all(abs(delta) <= epsilon_det for delta in log_residuals),
+        True,
+    )
+    assert_leq(
+        "proper-time determinant absolute source-window bound",
+        abs(exact_channel - float(leading_channel)),
+        determinant_window_bound,
+    )
+
+    canceling_trace_bounds = {
+        "ghost": Fraction(1, 12),
+        "boson": Fraction(1, 3),
+        "fermion": Fraction(1, 12),
+    }
+    signed_fake_bound = sum(
+        determinant_weights[name] * canceling_trace_bounds[name]
+        for name in canceling_trace_bounds
+    )
+    absolute_trace_bound = sum(
+        abs(determinant_weights[name]) * canceling_trace_bounds[name]
+        for name in canceling_trace_bounds
+    )
+    assert_equal("signed heat-kernel residuals can cancel spuriously", signed_fake_bound, Fraction(0))
+    assert_gt(
+        "absolute heat-kernel residual window remains positive",
+        float(absolute_trace_bound),
+        0.0,
+    )
+
+    determinant_density = Fraction(5, 7)
+    zero_mode_source_rank_lost = Fraction(0)
+    physical_projection = Fraction(3, 11)
+    actual_channel = determinant_density * zero_mode_source_rank_lost * physical_projection
+    determinant_only_shortcut = determinant_density * physical_projection
+    assert_equal("rank-lost source channel vanishes after determinant", actual_channel, Fraction(0))
+    assert_not_equal(
+        "nonzero determinant density does not revive a killed source channel",
+        determinant_only_shortcut,
+        actual_channel,
     )
 
 
@@ -1305,6 +1418,7 @@ def check_hard_benchmark_channel_comparison_and_ratio() -> None:
 
 def main() -> None:
     check_one_loop_density_rg_and_channel_power()
+    check_proper_time_determinant_log_channel_window()
     check_individual_zero_mode_slot_tail_from_bessel_products()
     check_nonzero_mode_source_fluctuation_quotient()
     check_hard_amplitude_assembly_bound()

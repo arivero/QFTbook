@@ -105,6 +105,80 @@ projection have been transported.  A computation which keeps
 \(\mathcal B_{\mathcal C}^{\rho}\) has not computed the channel amplitude.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Proper-time determinant log inside a source
+channel]
+\label{ca:instanton-proper-time-determinant-channel}
+The determinant power in
+\eqref{eq:instanton-physical-density-gate-universal} is obtained before any
+particular source is differentiated.  At a retained chart point \(z\), after
+collective and gauge zero modes have been projected out, write the
+zero-mode-deleted one-loop factor as
+\begin{equation}
+\begin{aligned}
+  \log\mathcal W^{\rm nz}_{\Lambda}(z)
+  &=
+  -\frac12\operatorname{Tr}'\log
+  \frac{\Delta_{B,z}}{\Delta_{B,0}}
+  +\operatorname{Tr}'\log
+  \frac{M_{{\rm gh},z}}{M_{{\rm gh},0}}                  \\
+  &\qquad
+  +\sum_f\log\operatorname{Pf}'
+  \frac{\mathcal D_{f,z}}{\mathcal D_{f,0}}
+  -S^{\rm ct}_{\Lambda}(z).
+\end{aligned}
+  \label{eq:instanton-proper-time-log-determinant-channel}
+\end{equation}
+Each logarithm is defined by a proper-time difference, for example
+\[
+  \operatorname{Tr}'\log\frac{A_z}{A_0}
+  =
+  -\int_{\varepsilon}^{T}
+  \frac{\dd t}{t}\,
+  \operatorname{Tr}'\!\left(\ee^{-tA_z}-\ee^{-tA_0}\right)
+  +\hbox{finite subtraction}.
+\]
+If the logarithmic small-\(t\) coefficients in the boson, ghost, and fermion
+blocks are \(h_B,h_{\rm gh},h_F\), and the local counterterm/coupling
+conversion contributes \(h_{\rm ct}\) in the same half-trace convention, then
+the retained logarithmic power is
+\begin{equation}
+  \alpha_{\rm det}
+  =
+  -\frac12 h_B+h_{\rm gh}+h_F+h_{\rm ct}.
+  \label{eq:instanton-proper-time-channel-log-power}
+\end{equation}
+For a one-instanton density this number must equal \(b_0\), so that the
+proper-time determinant logarithm cancels the one-loop running of the BPST
+action.  In the \(SU(3)\), \(N_f=2\) hard benchmark below, one convenient
+split has nonzero-mode spectral contribution \(7/3\) and local
+counterterm/coupling contribution \(22/3\), giving \(29/3=b_0\).
+
+This determinant calculation still does not define a four-source amplitude.
+Let \(K_{\mathcal C,\Lambda}^{(0)}(z)\) denote the channel kernel obtained
+from the leading determinant power, the collective density, the zero-mode
+Berezin coefficient, the source/amputation map, and the endpoint factor.  If
+the remaining determinant logarithm satisfies
+\(|\delta_{\rm det}(z)|\le\epsilon_{\rm det}(z)\) on the retained window, then
+\begin{equation}
+  \left|
+  \mathcal A_{\mathcal C,\Lambda}^{\rm exact}
+  -
+  \mathcal A_{\mathcal C,\Lambda}^{(0)}
+  \right|
+  \le
+  \int_{\mathcal U_{\rm win}}
+  |K_{\mathcal C,\Lambda}^{(0)}(z)|
+  \bigl(\ee^{\epsilon_{\rm det}(z)}-1\bigr)
+  \dd\nu_{\Lambda,\mathcal M}(z).
+  \label{eq:instanton-proper-time-channel-window-bound}
+\end{equation}
+The absolute value is essential: signed cancellations among heat-kernel
+remainders do not control a physical source window.  Also, if the
+zero-mode/source determinant or the physical projection vanishes, a nonzero
+\(\mathcal W^{\rm nz}_{\Lambda}\) only proves that the fluctuation density is
+nonzero; it does not revive the channel amplitude.
+\end{controlledapproximation}
+
 \section{The Channel Is Part of the Calculation}
 \label{sec:instanton-physical-amplitude-channel}
 

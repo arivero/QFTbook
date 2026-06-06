@@ -775,6 +775,9 @@ Current checks:
   the one-loop density RG cancellation, the distinction between density-only,
   mass-saturated, and hard four-source size powers, finite determinant
   constant cancellation only in transported same-channel ratios,
+  the proper-time determinant-log channel window with boson/ghost/fermion
+  weights, counterterm conversion, absolute residual control, and rank-killed
+  source negative control,
   the individual BPST zero-mode slot tail from the Bessel-product cancellation
   \(F_{\rm zm}(cs/2)=6c^{-3}s^{-3}+45c^{-5}s^{-5}+O(s^{-7})\),
   the two-term hard-window tail subtraction with leading \(R^{-1/3}\) and

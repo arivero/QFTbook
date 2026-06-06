@@ -28,6 +28,11 @@
   density power is fixed by the one-loop RG cancellation, while the channel
   size power also depends on zero-mode/source data such as mass saturation or
   hard external source differentiation.
+- `ca:instanton-proper-time-determinant-channel`: derives the
+  zero-mode-deleted proper-time determinant logarithm inside a source channel,
+  with boson inverse-square-root, ghost, fermion Pfaffian, and local
+  counterterm weights, then turns the determinant remainder into an absolute
+  source-window bound.
 - `def:instanton-physical-amplitude-channel`: finite-regulator channel datum
   consisting of a retained window, collective density, nonzero-mode determinant,
   zero-mode Berezin coefficient, source/matching map, endpoint factor, and
@@ -114,6 +119,12 @@
   of `(mu rho)^b0`, the finite determinant constant, and the added
   zero-mode/source power `beta_C` that turns a density into a channel
   integrand.
+- The proper-time determinant-channel block opens the compressed fluctuation
+  step behind that density: the zero-mode-deleted boson, ghost, fermion, and
+  counterterm logarithms must assemble to `b0`, and the leftover determinant
+  error is a pointwise multiplicative source-window residual.  A signed
+  heat-kernel cancellation or a nonzero determinant density cannot replace a
+  vanished zero-mode source determinant or physical projection.
 - The two-flavor determinant calculation is the local algebra behind the
   distinction between a mass-saturated vacuum activity and a differentiated
   four-source 't Hooft amplitude.
@@ -181,6 +192,9 @@
   off-diagonal sign, separates mass-saturated and four-source coordinates,
   verifies the one-loop density RG cancellation and the distinction between
   density-only, mass-saturated, and hard four-source size powers,
+  verifies the proper-time determinant-log channel window, including the
+  boson/ghost/fermion weights, counterterm conversion to `b0`, absolute
+  determinant residual bound, and rank-killed source negative control,
   derives the individual zero-mode slot tail coefficient from the Bessel
   product cancellation and rejects fused-density endpoint substitution or
   hidden unamputated residues,
@@ -231,6 +245,12 @@
   explains why the density contains fluctuation data and why the hard
   four-source channel still needs zero-mode/source powers, endpoint windows,
   and scheme transport before the amplitude is defined.
+- 2026-06-06 proper-time determinant-channel pass: inserted the
+  zero-mode-deleted determinant-log calculation between density normalization
+  and channel packaging, with the companion exact check guarding the
+  boson/ghost/fermion signs, counterterm conversion, absolute residual
+  window, and the failure of determinant density alone to produce an
+  amplitude.
 - 2026-06-06 individual-slot form-factor pass: expanded the hard benchmark by
   deriving the BPST zero-mode slot tail in the physical-amplitude chapter and
   pairing it with a focused companion check.  This is amplitude/source
