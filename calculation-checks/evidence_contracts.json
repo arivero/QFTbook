@@ -175,6 +175,17 @@
       "risk_class": "CFT modularity"
     },
     {
+      "path": "cft_energy_detector_contact_checks.py",
+      "risk_class": "CFT detector products and contact measures",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "positive statewise detector measure on the celestial sphere",
+        "diagonal contact weight Ea^2 for finite calorimeter atoms",
+        "set-partition indexing of k-detector contact strata",
+        "finite light-ray OPE chart coordinates with explicit contacts"
+      ]
+    },
+    {
       "path": "conformal_collider_checks.py",
       "risk_class": "ANEC and conformal-collider positivity",
       "contract_tier": "extended",

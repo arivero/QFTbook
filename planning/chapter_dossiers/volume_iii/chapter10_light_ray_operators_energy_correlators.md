@@ -50,7 +50,9 @@ The chapter establishes:
 - finite positive-measure detector products, their off-diagonal and diagonal
   contact decomposition, the partition stratification of \(k\)-detector
   contacts, and the Ward identity
-  \(\mathcal G_2(1,1;\Psi)=\langle\Psi|(P^0)^2|\Psi\rangle\);
+  \(\mathcal G_2(1,1;\Psi)=\langle\Psi|(P^0)^2|\Psi\rangle\), with
+  bin-resolved diagonal contact measures rather than only a scalar total
+  contact mass;
 - the averaged null energy light-ray operator
   \(\mathcal A_n(x_\perp)\);
 - the relation between calorimeter detectors and null-integrated stress-tensor
@@ -172,7 +174,9 @@ The chapter establishes:
 5. Energy correlators are distributions; coincident detector directions carry
    contact terms whose finite positive-measure model is the diagonal
    decomposition of detector product measures, indexed for \(k\) insertions by
-   partitions of detector labels.
+   partitions of detector labels.  The constant-detector Ward identity fixes
+   only the total diagonal mass; localized calorimeter bins require the
+   measure-valued contact distribution along the diagonal.
 6. The averaged null energy operator is the null-line version of the
    calorimetric energy detector after conformal compactification.
 7. The light-transform weight map is derived from embedding-space
@@ -270,9 +274,12 @@ The chapter establishes:
   that precede detector products, together with finite-grid compact moment
   reconstruction, a truncated-moment ambiguity example, and finite-resolution
   Lipschitz partition estimates for one-detector and detector-product
-  measures.  It also checks the finite light-ray OPE chart bound from
-  coefficient-map norms, light-ray form bounds, and a declared remainder, and
-  detects the separated-angle-only loss of the diagonal contact coordinate;
+  measures.  It also checks the bin-resolved diagonal contact distribution:
+  a shifted contact measure can preserve \(\mathcal G_2(1,1)\) while changing
+  a localized same-bin detector product.  It also checks the finite light-ray
+  OPE chart bound from coefficient-map norms, light-ray form bounds, and a
+  declared remainder, and detects the separated-angle-only loss of the
+  diagonal contact coordinate;
   the same script checks retained-basis covariance and the compensating
   contact-coordinate shift under diagonal-distribution reshuffling, together
   with the one-parameter finite-chart transport equation and its wrong-sign
@@ -281,6 +288,14 @@ The chapter establishes:
   small-angle annulus from the bulk representative into the endpoint plus
   chart requires a positive contact-coordinate shift by the annulus constant,
   while the opposite sign changes the constant-detector moment.
+- 2026-06-06 issue #725 detector-contact evidence-contract pass: promoted
+  `cft_energy_detector_contact_checks.py` to an extended evidence contract and
+  added the bin-resolved contact-distribution control.  The pass records that
+  the finite companion imports detector existence, one-detector positivity,
+  detector-product domains, diagonal distributional extensions, and the
+  Lorentzian light-ray OPE theorem boundary; the exact rational checks only
+  guard the finite partition/contact/chart algebra after those QFT inputs have
+  been supplied.
 - 2026-06-03 #519 finite-chart transport pass: added the
   one-parameter CFT light-ray chart transport equations and paired exact
   rational checks for row/column covariance, moving diagonal-extension rows,

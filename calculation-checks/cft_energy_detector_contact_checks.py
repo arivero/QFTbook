@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact finite checks for CFT energy-detector contact bookkeeping.
+r"""Exact finite checks for CFT energy-detector contact bookkeeping.
 
 The checks model a finite positive calorimetric measure on the detector
 sphere.  They verify the algebra behind the diagonal contact terms used in
@@ -23,6 +23,77 @@ small-angle annulus is moved between the ordinary bulk representative and
 the endpoint plus distribution.
 The finite chart-transport check verifies the one-parameter row/column
 transport and the matching contact-coordinate derivative.
+
+Evidence contract.
+
+Target claims:
+  Volume III, Chapter 10 uses statewise detector positivity to build a finite
+  positive angular measure, uses finite angular partitions as calorimeter
+  readouts, decomposes detector products into separated and diagonal contact
+  strata, and treats finite light-ray OPE/contact charts as coordinates of a
+  detector distribution rather than as separated-angle data alone.
+
+Independent construction:
+  The checks build finite positive measures directly from atom weights,
+  compute detector products by expanding sums over atom labels, reconstruct
+  compact moment data on a fixed grid, transport finite light-ray coefficient
+  rows and light-ray columns by explicit matrices, and push small-angle
+  kernels through elementary Jacobians.  They do not read a manuscript
+  contact formula as the expected answer.
+
+Imported assumptions:
+  The existence of CFT energy detectors as quadratic forms, the ANEC-derived
+  positivity input for one detector, the distributional extension of detector
+  products across angular diagonals, the Lorentzian light-ray OPE theorem
+  boundary, and the continuum finite-resolution limit are imported QFT inputs.
+
+Negative controls:
+  The suite rejects treating separated-angle data as the full detector moment,
+  using only the total contact mass instead of the bin-resolved diagonal
+  contact distribution, shifting diagonal distributions into retained
+  light-ray coefficients without compensating the explicit contact coordinate,
+  wrong signs in one-parameter chart transport, and the wrong sign in endpoint
+  annulus/contact gluing.
+
+Scope boundary:
+  These are exact finite positive-measure, partition, moment, contact-chart,
+  and kernel-Jacobian checks.  They are not a construction of the CFT
+  operator-valued detector measure, a proof of Lorentzian light-ray OPE
+  convergence, a continuum limit of calorimeters, or a proof of detector
+  product domains.
+
+Primary derivation route:
+  The manuscript route starts with the one-detector Riesz measure, passes to
+  finite calorimeter partitions, decomposes products by diagonal strata,
+  records the total-energy Ward identity, and then supplies finite light-ray
+  OPE/contact charts and endpoint coordinates for small-angle EEC tests.
+
+Independent verification route:
+  The executable route starts from finite atom weights and finite matrices.
+  It recomputes Riesz bounds, Cauchy--Schwarz determinants, partition
+  Lipschitz errors, compact moment reconstructions, product/contact
+  decompositions, contact reshufflings, chart transport derivatives, and
+  endpoint gluing defects using rational arithmetic.
+
+Convention dependencies:
+  Detector tests pair with positive finite measures on \(S^{D-2}\), the
+  diagonal two-detector contact at an atom of energy \(E_a\) has weight
+  \(E_a^2\), \(k\)-detector contacts are indexed by set partitions, finite
+  chart values use row coefficients times light-ray columns plus an explicit
+  contact coordinate, and the EEC variable is \(z=(1-\cos\chi)/2\).
+
+Domain and remainder assumptions:
+  The finite checks apply after the detector quadratic forms, product-domain
+  extension, diagonal contact distribution, retained light-ray form bounds,
+  coefficient-map bounds, and chart remainder have been supplied.  Continuum
+  convergence, state-uniform bounds, and operator-valued extensions remain
+  outside the finite model.
+
+Remaining unproved or conditional:
+  Existence of the detector product measure in an interacting CFT, uniqueness
+  of the chosen diagonal extension beyond declared Ward/contact data,
+  Lorentzian light-ray OPE convergence with controlled remainders, and QCD
+  transfer away from fixed-point CFT kinematics remain conditional inputs.
 """
 
 from __future__ import annotations
@@ -140,6 +211,16 @@ def two_detector_off_diagonal(atoms: list[Atom], f: list[Fraction], g: list[Frac
 
 def two_detector_diagonal(atoms: list[Atom], f: list[Fraction], g: list[Fraction]) -> Fraction:
     return sum(energy * energy * fi * gi for (energy, _), fi, gi in zip(atoms, f, g))
+
+
+def contact_weight_pairing(
+    contact_weights: list[Fraction],
+    f: list[Fraction],
+    g: list[Fraction],
+) -> Fraction:
+    if len(contact_weights) != len(f) or len(contact_weights) != len(g):
+        raise ValueError("contact weights and test vectors must have equal length")
+    return sum(contact * fi * gi for contact, fi, gi in zip(contact_weights, f, g))
 
 
 def set_partitions(items: tuple[int, ...]) -> list[tuple[tuple[int, ...], ...]]:
@@ -334,6 +415,53 @@ def check_total_energy_ward_identity() -> None:
     separated_only = two_detector_off_diagonal(atoms, ones, ones)
     contact = two_detector_diagonal(atoms, ones, ones)
     assert_equal("separated-only observable needs displayed contact", separated_only + contact, Fraction(1))
+
+
+def check_bin_resolved_contact_distribution() -> None:
+    atoms: list[Atom] = [
+        (Fraction(1, 2), "north"),
+        (Fraction(1, 3), "east"),
+        (Fraction(1, 6), "south"),
+    ]
+    ones = [Fraction(1)] * len(atoms)
+    actual_contact = [energy * energy for energy, _ in atoms]
+    shifted_contact = [
+        Fraction(0),
+        actual_contact[0] + actual_contact[1],
+        actual_contact[2],
+    ]
+
+    total_energy = detector_value(atoms, ones)
+    off_diagonal_constant = two_detector_off_diagonal(atoms, ones, ones)
+    assert_equal("bin-resolved total energy", total_energy, Fraction(1))
+    assert_equal("same total contact mass", sum(shifted_contact), sum(actual_contact))
+    assert_equal(
+        "wrong diagonal distribution can pass constant Ward identity",
+        off_diagonal_constant + contact_weight_pairing(shifted_contact, ones, ones),
+        total_energy**2,
+    )
+
+    north_bin = [Fraction(1), Fraction(0), Fraction(0)]
+    actual_local_full = (
+        two_detector_off_diagonal(atoms, north_bin, north_bin)
+        + contact_weight_pairing(actual_contact, north_bin, north_bin)
+    )
+    shifted_local_full = (
+        two_detector_off_diagonal(atoms, north_bin, north_bin)
+        + contact_weight_pairing(shifted_contact, north_bin, north_bin)
+    )
+    assert_equal(
+        "localized bin product from detector values",
+        actual_local_full,
+        Fraction(1, 4),
+    )
+    assert_equal(
+        "shifted contact misses localized bin product",
+        shifted_local_full,
+        Fraction(0),
+    )
+    if shifted_local_full == detector_value(atoms, north_bin) ** 2:
+        raise AssertionError("global contact mass should not determine bin-resolved detector products")
 
 
 def check_three_detector_partition_decomposition() -> None:
@@ -576,6 +704,7 @@ def main() -> None:
     check_two_detector_diagonal_split()
     check_disjoint_support_removes_diagonal()
     check_total_energy_ward_identity()
+    check_bin_resolved_contact_distribution()
     check_three_detector_partition_decomposition()
     check_finite_light_ray_ope_chart_bound()
     check_finite_light_ray_chart_covariance()

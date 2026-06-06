@@ -1258,12 +1258,15 @@ Current checks:
   truncated-moment ambiguity,
   off-diagonal plus diagonal split of two detector products, the vanishing of
   diagonal terms for disjoint detector supports, the total-energy Ward
-  identity \(\mathcal G_2(1,1)=\langle(P^0)^2\rangle\), the
+  identity \(\mathcal G_2(1,1)=\langle(P^0)^2\rangle\), a bin-resolved
+  contact-distribution negative control showing that the same total contact
+  mass can still give the wrong localized calorimeter product, the
   partition-of-diagonals decomposition for three detector insertions, and the
   finite CFT light-ray OPE chart bound obtained from retained coefficient-map
   norms, light-ray form bounds, and the declared remainder, with a separate
   check that separated-angle data alone do not determine the diagonal contact
-  coordinate.  It also checks retained-basis covariance of the finite
+  coordinate.  The companion is an extended evidence contract.  It also checks
+  retained-basis covariance of the finite
   light-ray chart and the compensating contact-coordinate shift required when
   diagonal distributions are reshuffled between retained coefficient maps and
   explicit contact terms, together with the one-parameter finite-chart
