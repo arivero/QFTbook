@@ -1393,6 +1393,68 @@ moduli-space count, a Coulomb logarithm, or a formal Hori--Vafa exponential
 cannot by itself replace the regulated instanton amplitude.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Finite cell component amplitude from a
+one-vortex sector]
+\label{ca:glsm-one-vortex-component-amplitude-cell}
+The previous source-functional formula becomes a concrete component amplitude
+only after the operator sources are projected onto the universal fermion
+zero-mode line.  Let a retained finite regulator replace
+\(\mathcal U_{i,1,\Lambda}\) by cells \(p\in P\) with positive weights
+\[
+  K_p
+  =
+  e^{-S^{\rm red}_{i,1,\Lambda}(p)}
+  \mathcal W^{\rm nz}_{i,1,\Lambda}(p)
+  \mathcal Z^{0,{\rm res}}_{i,F,\Lambda}(p)
+  \nu_p .
+\]
+For two local component sources \(A,B\), write
+\[
+  u_A(p)=(u_{A,+}(p),u_{A,-}(p)),\qquad
+  u_B(p)=(u_{B,+}(p),u_{B,-}(p))
+\]
+for their overlaps with the two universal zero modes.  The Berezin extraction
+of \(d\xi_+d\xi_-\) gives the oriented minor
+\begin{equation}
+  \Delta_{AB}(p)
+  =
+  u_{A,+}(p)u_{B,-}(p)
+  -
+  u_{A,-}(p)u_{B,+}(p),
+  \label{eq:glsm-one-vortex-component-source-minor}
+\end{equation}
+not the product of norms and not the protected coefficient \(c_i\).  At this
+finite regulator the retained component amplitude is
+\begin{equation}
+  A^{(1)}_{AB,\Lambda}
+  =
+  e^{-Y_i}
+  \sum_{p\in P}
+  K_p\,
+  \bigl(\Delta_{AB}(p)+C_{AB}^{\prime}(p)\bigr)
+  +
+  R_{AB,\Lambda},
+  \label{eq:glsm-one-vortex-component-cell-amplitude}
+\end{equation}
+where \(C'_{AB}\) is the primed nonzero-mode contact correction in the same
+determinant-line convention.  The absolute residual is bounded by
+\begin{equation}
+  |R_{AB,\Lambda}|
+  \le
+  B_{\rm src}+B_{\rm prop}+B_{\rm det}+B_{\rm zm}
+  +B_{\rm cpt}+B_{\rm op}+B_{\rm cont}.
+  \label{eq:glsm-one-vortex-component-cell-bound}
+\end{equation}
+Several shortcuts are now visibly wrong.  If \(u_A(p)\) and \(u_B(p)\) are
+parallel on every retained cell and \(C'_{AB}=0\), the component amplitude
+vanishes even when the protected vortex coefficient is nonzero.  If
+\(C'_{AB}\) is nonzero, it is a source-specific primed-propagator contribution
+and cannot be absorbed into the scalar coefficient \(c_i\).  Finally, changing
+the normalization of \(u_A,u_B\), the orientation of the zero-mode line, or
+the operator coordinate changes \(\Delta_{AB}\); the mirror monomial fixes the
+topological factor but does not supply these component-source data.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Single-vortex coefficient noncancellation bound]
 \label{ca:glsm-vortex-coefficient-noncancellation}
 Fix a compact retained window

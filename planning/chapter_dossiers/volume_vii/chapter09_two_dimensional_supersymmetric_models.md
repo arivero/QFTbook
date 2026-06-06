@@ -102,6 +102,10 @@ and
   source-to-zero-mode overlaps, source-differentiated component amplitude,
   retained zero-mode/source overlap, and the source/propagator residuals
   separating component amplitudes from the twisted `F`-term coefficient.
+- `K_p`, `u_A`, `u_B`, `Delta_AB`, `C'_{AB}`, `R_{AB,Lambda}`:
+  finite one-vortex component-amplitude cell weight, source-overlap vectors on
+  the universal zero-mode line, their oriented Berezin minor, primed
+  nonzero-mode contact term, and residual in the worked component cell.
 - `U_R`, `C_R`, `M_R`, `kappa_R`, `T_R`, `epsilon_det`,
   `epsilon_zm`, `epsilon_cpt`, `epsilon_cont`: retained compact vortex
   window, its signed one-vortex coefficient, its absolute one-vortex mass,
@@ -221,6 +225,13 @@ and
   normalization, and residual budgets.  This separates the physical
   instanton amplitude from a moduli-space volume, Coulomb-logarithm match, or
   formal Hori--Vafa monomial.
+- Adds a worked finite one-vortex component-amplitude cell: two component
+  sources are projected to overlap vectors on the universal fermion zero-mode
+  line, the Berezin integral extracts the oriented minor
+  `u_{A,+}u_{B,-}-u_{A,-}u_{B,+}`, and a primed nonzero-mode contact term plus
+  residual bound are kept outside the protected coefficient `c_i`.  Parallel
+  source overlaps, source orientation changes, and omitted contact terms now
+  have explicit physical consequences.
 - Adds the single-vortex coefficient noncancellation bound: after
   choosing a retained compact vortex window, the signed coefficient `C_R`
   must dominate the absolute one-vortex mass by a margin `kappa_R` and must
@@ -421,6 +432,12 @@ and
     the coefficient, nontrivial source overlaps change component amplitudes,
     and negative controls reject moduli-only, ghost-omitted, mirror-only, and
     unsaturated residual-zero-mode shortcuts;
+  - the finite one-vortex component-amplitude cell: exact retained-cell
+    assembly with the oriented universal-zero-mode source minor, a
+    primed-propagator contact term, a residual telescope, and negative controls
+    rejecting norm-product pairing, orientation flips, contact omission,
+    parallel-source saturation, mirror-coefficient bypass, and underbudgeted
+    propagator residuals;
   - the single-vortex coefficient noncancellation bound: exact
     retained-window signed value, retained absolute mass, residual telescope,
     signed-window domination over determinant/zero-mode/boundary/continuum
@@ -601,6 +618,14 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   zero-mode gates.  This directly addresses the physics-depth concern that the
   instanton calculation is the fluctuation/source amplitude, not just the
   moduli chart.
+- The 2026-06-06 issue #597 one-vortex component-amplitude pass turns the
+  previous source-functional bridge into a finite worked component cell.  The
+  chapter now displays the oriented zero-mode source minor, keeps the
+  primed-propagator contact contribution separate from the protected vortex
+  coefficient, and bounds the component residual.  The companion check rejects
+  norm-product, orientation, contact-omission, parallel-source, mirror-only, and
+  underbudgeted-propagator shortcuts.  This is amplitude/source physics, not a
+  moduli-space or Hori--Vafa-authority pass.
 - The 2026-06-06 issue #844 GLSM/Hori--Vafa architecture pass rephrases the
   reader-facing entrance to the mirror comparison as an observable comparison
   map.  The chapter now states the physical question, the compared finite-data

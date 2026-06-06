@@ -2762,11 +2762,15 @@ Current checks:
   bookkeeping, saturated twisted-\(F\)-term zero modes, unsaturated-zero-mode
   vanishing, and FI-coordinate normalization shifts, the retained-window
   one-vortex source-functional extraction distinguishing the twisted
-  \(F\)-term projection from zero-source component amplitudes and
-  source-differentiated component amplitudes, with negative controls for
-  moduli-only, ghost-omitted, mirror-only, source-overlap, and
-  unsaturated-zero-mode shortcuts, the retained-window
-  one-vortex coefficient noncancellation bound with signed/mass
+	  \(F\)-term projection from zero-source component amplitudes and
+	  source-differentiated component amplitudes, with negative controls for
+	  moduli-only, ghost-omitted, mirror-only, source-overlap, and
+	  unsaturated-zero-mode shortcuts, the finite one-vortex component-amplitude
+	  cell checking the oriented zero-mode source minor, primed-propagator contact
+	  contribution, residual telescope, and negative controls for norm-product,
+	  orientation-flip, contact-omitted, parallel-source, mirror-coefficient, and
+	  underbudgeted-propagator shortcuts, the retained-window
+	  one-vortex coefficient noncancellation bound with signed/mass
   margin, residual telescope, relative-error bound, and negative controls for
   omitted determinant residuals and symmetry-only nonzero claims, the
   \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger and protected

@@ -5,6 +5,7 @@ Target claims: the finite LG/GLSM charge ledgers, abelian duality
 normalizations, charged-chiral mirror elimination, vortex-zero-mode filter,
 finite-regulator vortex fluctuation complex, vortex-to-FI-coordinate
 normalization, one-vortex source-functional F-term extraction,
+one-vortex component-amplitude source-minor extraction,
 single-vortex coefficient noncancellation bound,
 P^{N-1} mirror residue trace, and
 vortex-to-protected-observable residual ledger, together with the
@@ -20,7 +21,8 @@ Jacobian computed before comparison, in Volume VII Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
 elimination, finite chain-complex rank checks, Berezin-degree tests,
 source-differentiated zero-mode extraction tests, retained-window signed/mass
-coefficient bounds, root-of-unity residue sums,
+coefficient bounds, oriented source-minor component-amplitude cells,
+root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree filters, and residual
 budgets, plus finite density/Jacobian transport tests and double-entry
 mirror/direct-vortex comparisons whose direct side includes a separately
@@ -34,6 +36,7 @@ protected-coordinate definitions are assumed as finite input.
 Negative controls: extra unsaturated zero modes, raw zero-mode determinants,
 omitted vortex ghost factors, omitted vortex normalization constants,
 omitted one-vortex source-overlap factors,
+parallel source-overlap component shortcuts,
 unbalanced regulator-scale changes, coherent signed cancellations with nonzero
 absolute mass, wrong residue selection powers, underspecified residual
 budgets, stable-map dimension mismatches, mirror-only or dimension-only
@@ -925,6 +928,88 @@ def check_one_vortex_source_functional_extraction() -> None:
         "omitting source-overlap residual underbudgets one-vortex source amplitude",
         actual_source_error,
         omitted_source_bound,
+    )
+
+
+def check_one_vortex_component_amplitude_cell() -> None:
+    # A finite retained one-vortex component amplitude needs the oriented minor
+    # of two source overlaps with the universal zero-mode line, plus any primed
+    # nonzero-mode contact term in the same determinant convention.
+    retained_cells = [Fraction(3, 5), Fraction(7, 11), Fraction(11, 13)]
+    source_a = [
+        (Fraction(2, 3), Fraction(1, 5)),
+        (Fraction(3, 7), Fraction(2, 9)),
+        (Fraction(5, 11), Fraction(1, 4)),
+    ]
+    source_b = [
+        (Fraction(1, 2), Fraction(4, 7)),
+        (Fraction(5, 8), Fraction(7, 10)),
+        (Fraction(3, 5), Fraction(6, 13)),
+    ]
+    primed_contacts = [Fraction(1, 17), -Fraction(1, 19), Fraction(1, 23)]
+
+    def source_minor(left: tuple[Fraction, Fraction], right: tuple[Fraction, Fraction]) -> Fraction:
+        return left[0] * right[1] - left[1] * right[0]
+
+    oriented_minors = [source_minor(left, right) for left, right in zip(source_a, source_b)]
+    component_amplitude = sum(
+        cell * (minor + contact)
+        for cell, minor, contact in zip(retained_cells, oriented_minors, primed_contacts)
+    )
+    protected_vortex_coefficient = sum(retained_cells, Fraction(0))
+    assert_gt_bound("worked one-vortex component amplitude is nonzero", abs(component_amplitude), Fraction(0))
+    if component_amplitude == protected_vortex_coefficient:
+        raise AssertionError("component amplitude should not collapse to the protected vortex coefficient")
+
+    norm_product_shortcut = sum(
+        cell * (left[0] * right[0] + left[1] * right[1])
+        for cell, left, right in zip(retained_cells, source_a, source_b)
+    )
+    if norm_product_shortcut == component_amplitude:
+        raise AssertionError("zero-mode source pairing should use the oriented minor, not a norm product")
+
+    wrong_orientation = sum(
+        cell * (-minor + contact)
+        for cell, minor, contact in zip(retained_cells, oriented_minors, primed_contacts)
+    )
+    if wrong_orientation == component_amplitude:
+        raise AssertionError("zero-mode orientation flip should change the component amplitude")
+
+    contact_omitted = sum(cell * minor for cell, minor in zip(retained_cells, oriented_minors))
+    if contact_omitted == component_amplitude:
+        raise AssertionError("primed-propagator contact should be source-specific data")
+
+    parallel_source_b = [(2 * left[0], 2 * left[1]) for left in source_a]
+    parallel_minors = [source_minor(left, right) for left, right in zip(source_a, parallel_source_b)]
+    parallel_component_without_contact = sum(
+        cell * minor for cell, minor in zip(retained_cells, parallel_minors)
+    )
+    assert_equal(
+        "parallel source overlaps do not saturate the two universal zero modes",
+        parallel_component_without_contact,
+        Fraction(0),
+    )
+    if protected_vortex_coefficient == parallel_component_without_contact:
+        raise AssertionError("mirror coefficient alone should not bypass parallel source-zero-mode failure")
+
+    residuals = {
+        "source": Fraction(1, 101),
+        "propagator": Fraction(1, 103),
+        "determinant": Fraction(1, 107),
+        "zero mode": Fraction(1, 109),
+        "compactification": Fraction(1, 113),
+        "operator": Fraction(1, 127),
+        "continuum": Fraction(1, 131),
+    }
+    direct_component = component_amplitude + sum(residuals.values(), Fraction(0))
+    actual_error = abs(direct_component - component_amplitude)
+    residual_bound = sum(abs(value) for value in residuals.values())
+    assert_equal("one-vortex component residual telescope", actual_error, residual_bound)
+    underbudgeted_bound = residual_bound - residuals["propagator"]
+    assert_gt_bound(
+        "omitting primed-propagator residual underbudgets component amplitude",
+        actual_error,
+        underbudgeted_bound,
     )
 
 
@@ -2321,6 +2406,7 @@ def main() -> None:
     check_vortex_fluctuation_complex_gate()
     check_single_vortex_amplitude_assembly()
     check_one_vortex_source_functional_extraction()
+    check_one_vortex_component_amplitude_cell()
     check_vortex_coefficient_noncancellation_bound()
     check_cp_mirror_critical_ledger()
     check_cp_mirror_residue_correlators()
