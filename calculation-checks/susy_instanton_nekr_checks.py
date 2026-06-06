@@ -385,11 +385,13 @@ def check_nekrasov_su2_one_instanton() -> None:
         assert_equal(got, expected, "SU(2) Nekrasov prepotential coefficient")
 
 
-def check_pestun_nekrasov_comparison_bound() -> None:
-    # A finite S^4 comparison uses more than the north-pole fixed-point
-    # coefficient: the classical Gaussian, the perturbative determinant, the
-    # south pole, the insertion restriction, pole-selection residuals, gluing,
-    # Cartan-window errors, and instanton-order tails have separate jobs.
+def check_pestun_nekrasov_comparison_template() -> None:
+    # A finite S^4 comparison template uses more than the north-pole
+    # fixed-point coefficient: the classical Gaussian, the perturbative
+    # determinant, the south pole, the insertion restriction, pole-selection
+    # residuals, gluing, Cartan-window errors, and instanton-order tails have
+    # separate jobs.  The arithmetic below only propagates values that have
+    # already been supplied in the toy finite model.
     cartan_cells = [
         {
             "weight": Fraction(2, 5),
@@ -449,13 +451,26 @@ def check_pestun_nekrasov_comparison_bound() -> None:
     assert_equal(
         exact_regulated - localized,
         sum(residuals.values(), Fraction(0)) + cartan_tail + instanton_tail,
-        "Nekrasov-Pestun comparison residual telescope",
+        "Nekrasov-Pestun comparison decomposition",
     )
     majorant = sum(abs(value) for value in residuals.values()) + cartan_tail + instanton_tail
     assert_equal(
         abs(exact_regulated - localized) <= majorant,
         True,
-        "Nekrasov-Pestun comparison majorant",
+        "Nekrasov-Pestun supplied-bound propagation",
+    )
+
+    named_slots_without_bounds = {
+        "determinant": None,
+        "north_pole": None,
+        "south_pole": None,
+        "gluing": None,
+        "cartan": None,
+    }
+    assert_equal(
+        all(value is not None for value in named_slots_without_bounds.values()),
+        False,
+        "named comparison slots without bounds are not an estimate",
     )
 
     # A north-pole Young-diagram sum is not an S^4 observable by itself.
@@ -1097,7 +1112,7 @@ def main() -> None:
     check_holomorphic_decoupling_dimensions()
     check_ads_decoupling_recursion()
     check_nekrasov_su2_one_instanton()
-    check_pestun_nekrasov_comparison_bound()
+    check_pestun_nekrasov_comparison_template()
     check_one_box_tangent_euler_class()
     check_rank_one_hilbert_scheme_tangent_character()
     check_two_box_hilbert_scheme_fixed_points()

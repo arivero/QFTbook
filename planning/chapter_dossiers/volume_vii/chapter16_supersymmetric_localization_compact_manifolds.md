@@ -85,11 +85,13 @@
   residuals.
 - Open problem recording the missing continuum regulator theorem for
   Gieseker/Nekrasov selection in four-dimensional \(S^4\) localization.
-- Finite-order Nekrasov--Pestun comparison bound: the localized
+- Finite-order Nekrasov--Pestun comparison datum: the localized
   \(S^4\) integrand with classical Gaussian, perturbative determinant,
   north/south Gieseker coefficients, insertion restrictions, Cartan window,
   and instanton cutoff is compared to the finite-regulator QFT integrand by
   determinant, north-pole, south-pole, gluing, Cartan, and tail residuals.
+  The datum is now explicitly a requirement list and supplied-bound
+  propagation statement, not a controlled approximation by itself.
 - Protected-insertion QFT-to-matrix-model comparison for Pestun localization:
   on a finite \(Q\)-closed insertion test space, the regulated QFT functional
   and the localized Cartan/Nekrasov functional are connected by five named
@@ -282,12 +284,13 @@
     equivariant limiting theorem for insertions.  The positive-ADHM
     moment-map proposition proves only the finite-dimensional stability
     component after the pole-local reduction has been obtained.
-20. The finite-order Nekrasov--Pestun comparison bound prevents a
+20. The finite-order Nekrasov--Pestun comparison datum prevents a
     Young-diagram fixed-point calculation from being overread as the full
     \(S^4\) localization theorem.  The \(S^4\) observable still needs the
     classical Gaussian, one-loop determinant, south-pole anti-instanton
     factor, reflection/gluing data, Cartan contour control, and instanton-tail
-    estimates in the same regulator convention.
+    estimates in the same regulator convention.  The displayed inequality is
+    only propagation of supplied bounds; it is not itself the estimate.
 21. The Uhlenbeck-collar boundary flux selection test turns singular
     instanton selection into a finite QFT regulator problem: a collar
     boundary integral must vanish absolutely, be cancelled by a relative
@@ -372,7 +375,8 @@
   minimal-nilpotent-cone resolution arithmetic, and the \(SU(2)\)
   one-instanton Nekrasov fixed-point sum used by the cross-referenced
   Seiberg-Witten chapter, plus the finite-order Nekrasov--Pestun comparison
-  residual telescope and negative controls against north-pole-only,
+  template and negative controls against boundless named slots,
+  north-pole-only,
   determinant-omitted, south-pole-conjugation, pole-residual-omission,
   unresolved-Uhlenbeck-boundary shortcuts, and determinant-line transport
   failures from stale orientation, missing ghost/slice factors, zero modes,
@@ -460,11 +464,16 @@
   physical boundary of the Bremsstrahlung result: the Bessel derivative is a
   radiation/cusp observable only after the localization residuals and the
   protected circular-loop Ward identity have been supplied.
-- 2026-06-05: added the finite-order Nekrasov--Pestun comparison bound,
+- 2026-06-05: added the finite-order Nekrasov--Pestun comparison datum,
   separating the north/south Gieseker coefficients from the \(S^4\) classical
   Gaussian, perturbative determinant, gluing/reflection data, Cartan contour,
   and instanton-tail residuals.  This is a QFT-observable comparison layer,
   not another moduli-space fixed-point computation.
+- 2026-06-06: demoted that finite-order Nekrasov--Pestun comparison surface
+  from a controlled-approximation presentation to an ordinary requirement
+  datum.  The retained inequality now says only that already supplied
+  determinant, pole, gluing, Cartan, and tail estimates propagate to the
+  protected \(S^4\) observable.
 - 2026-06-05 issue #629 pass: added the Uhlenbeck-collar boundary flux
   selection test, making the singular-instanton problem a finite
   BV/regulator estimate.  The new layer distinguishes vanishing, finite, and

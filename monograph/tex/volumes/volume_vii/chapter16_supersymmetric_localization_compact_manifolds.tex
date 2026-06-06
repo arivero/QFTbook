@@ -1714,9 +1714,13 @@ anti-instantons.  The two factors are complex conjugates only when the
 integration cycle and masses are chosen so that reflection positivity gives
 the corresponding conjugation property.
 
-\begin{controlledapproximation}[Finite-order Nekrasov--Pestun comparison bound]
+\paragraph{Finite-order Nekrasov--Pestun comparison datum.}
 \label{ca:s4-nekrasov-pestun-normalization-bound}
-Fix a regulated \(S^4_r\) theory, a compact Cartan contour window
+The finite-order comparison below records what a field-theoretic regulator
+must supply before the Nekrasov fixed-point coefficients become an
+\(S^4\) protected observable.  It is a requirement list and supplied-bound
+propagation statement, not by itself a controlled approximation.  Fix a
+regulated \(S^4_r\) theory, a compact Cartan contour window
 \(\Gamma_A\subset\mathfrak t_{\mathbb C}\), an instanton cutoff \(K\), and a
 protected insertion \(O\).  Write the north and south pole equivariant
 coefficients as
@@ -1779,7 +1783,7 @@ restriction errors.  If the same regulator supplies absolute bounds
   j\in\{{\rm det},{\rm pole,N},{\rm pole,S},{\rm glue},{\rm Cartan}\},
 \]
 and if \(\mathcal T_A\) and \(\mathcal T_K\) bound the omitted Cartan-window
-and instanton-order tails, then
+and instanton-order tails, then the elementary consequence is
 \begin{equation}
   \left|
   \mathcal Z_{\Lambda,O}
@@ -1806,7 +1810,6 @@ cycle statement, not a formal property of the Gieseker fixed-point sum.  Thus
 determinant, two pole-selection, gluing, Cartan, and tail entries in
 \eqref{eq:s4-nekrasov-pestun-comparison-bound} have been supplied or declared
 as part of a nonperturbative definition of the theory.
-\end{controlledapproximation}
 
 \paragraph{Protected insertions as a QFT-to-matrix-model comparison.}
 Equation~\eqref{eq:pestun-s4-localization} is the scalar partition-function
@@ -1863,9 +1866,10 @@ finite-dimensional dual space,
   \|E_{\rm Stokes}\|+\|E_{\rm normal}\|+\|E_{\rm res}\|
   +\|E_{\rm inst}\|+\|E_{\rm cont}\|.
 \]
-This triangle inequality records how residual estimates propagate to protected
-observables.  Its numerical content comes from estimates of the individual
-residuals.  For the half-BPS circular Wilson loop, the fixed-locus restriction is
+This triangle inequality is only the propagation of supplied residual
+estimates to protected observables; it is not a new localization estimate.
+Its numerical content comes from estimates of the individual residuals.  For
+the half-BPS circular Wilson loop, the fixed-locus restriction is
 \(W_{\square}|_{\rm fix}=N^{-1}\operatorname{Tr}_{\square}\ee^X\); the
 Laguerre and Bessel computations below evaluate
 \(\mathcal Z_{\rm loc}(W_{\square})/\mathcal Z_{\rm loc}(1)\).  Under a

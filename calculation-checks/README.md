@@ -3019,13 +3019,15 @@ Current checks:
   algebra, the pure \(SU(2)\)
   one-instanton Nekrasov fixed-point sum, and the first Nekrasov
   prepotential coefficient \(q/(2a^2)\).  The same script also checks the
-  finite-order Nekrasov--Pestun comparison telescope separating the
+  finite-order Nekrasov--Pestun comparison template separating the
   fixed-point coefficients from the \(S^4\) classical Gaussian, one-loop
   determinant, south-pole factor, gluing/cycle statement, Cartan-window
-  residual, and instanton-order tail, plus the Uhlenbeck-collar boundary
-  flux selection budget and negative controls against reading a Gieseker
-  fixed-point sum as a pole-local QFT contribution without boundary,
-  determinant, regulator-limit, and coordinate-reduction residuals.  It also
+  residual, and instanton-order tail, with a negative control for named
+  comparison slots that lack supplied bounds.  It also checks the
+  Uhlenbeck-collar boundary flux selection budget and negative controls
+  against reading a Gieseker fixed-point sum as a pole-local QFT contribution
+  without boundary, determinant, regulator-limit, and coordinate-reduction
+  residuals.  It also
   checks the pole-local determinant-line transport budget, including stale
   orientation, missing ghost/slice factors, zero-mode leakage, and untransported
   south-pole coordinate reflection.
