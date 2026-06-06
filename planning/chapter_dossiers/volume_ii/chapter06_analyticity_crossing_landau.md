@@ -40,12 +40,14 @@
   IBP/differential equation master calculation, an equal-mass bubble threshold
   family with lower tadpole master and physical branch data, a two-loop
   equal-mass sunrise maximal-cut curve exposing the elliptic-period
-  obstruction and the physical \(s=9m^2\) threshold, and a
-  two-stage master-integral layer: first a local two-master threshold block,
-  then a two-letter transport audit exposing connection data, Euclidean
-  boundary constants, branch/path prescriptions, lower sectors, and the
-  finite-remainder/observable assembly that separates reconstructed virtual
-  amplitudes from infrared-safe physical observables.
+  obstruction and the physical \(s=9m^2\) threshold, a multi-loop
+  maximal-cut sector-projection gate showing that contact terms cancel
+  propagators into lower sectors before IBP, and a two-stage master-integral
+  layer: first a local two-master threshold block, then a two-letter transport
+  audit exposing connection data, Euclidean boundary constants, branch/path
+  prescriptions, lower sectors, and the finite-remainder/observable assembly
+  that separates reconstructed virtual amplitudes from infrared-safe physical
+  observables.
 - Records a reader-facing status ledger for named analytic tools in the
   chapter: Wightman/Jost tube theorems are proved locally under their stated
   hypotheses; Jost--Lehmann--Dyson requires separate Dyson-regular and
@@ -249,6 +251,11 @@
   geometry.  It identifies the maximal-cut curve and its threshold
   discriminant, but it does not claim to solve the full sunrise integral or
   all elliptic sectors in \(D=4-2\epsilon\).
+- The multi-loop maximal-cut sector-projection block is a local reconstruction
+  gate.  It assumes a declared numerator representative and shows that terms
+  proportional to parent denominators cancel into lower topologies; it does
+  not claim that those lower sectors vanish unless the reduced family and
+  boundary convention prove them scaleless or absent.
 - The two-letter master-transport model is a finite normalized sector used to
   audit the data needed after IBP closure.  It checks boundary constants,
   noncommuting residues, branch/path prescriptions, and lower-sector residuals;
@@ -896,6 +903,16 @@
   companion script checks the quartic discriminant, genus-one branch-point
   count, positive-parameter threshold stationarity, pseudo-threshold negative
   control, and logarithmic one-master shortcut failure.
+- 2026-06-06 issue #769 multi-loop sector-projection pass: added
+  `ca:multi-loop-maximal-cut-sector-projection` after the sunrise maximal-cut
+  block.  The new gate separates the parent leading singularity from contact
+  terms proportional to propagators, shows how those contact terms cancel into
+  lower topologies before IBP, and states that lower-sector disappearance is a
+  reduced-family/boundary fact rather than a consequence of the parent maximal
+  cut.  The companion check now constructs two numerator representatives with
+  the same parent maximal cut but different lower-sector master projections,
+  and rejects the shortcut that all lower sectors vanish when only some are
+  scaleless.
 - 2026-06-05 issue #755 named-tool status pass: added
   `rem:chapter06-named-tool-status-ledger` near the chapter entrance and
   tightened the generalized-unitarity opening.  The pass records which named

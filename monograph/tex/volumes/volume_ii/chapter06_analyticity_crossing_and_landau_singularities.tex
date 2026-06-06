@@ -3407,6 +3407,68 @@ depends on \cite{LaportaRemiddi2005Sunrise,
 AdamsBognerWeinzierl2013Sunrise}.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Multi-loop maximal-cut sector projection]
+\label{ca:multi-loop-maximal-cut-sector-projection}
+At more than one loop a maximal cut is a leading-singularity probe of a top
+sector, not a complete reconstruction of the amplitude sector.  Fix a parent
+topology \(\Gamma\) with inverse propagators \(D_1,D_2,D_3\), and write a local
+numerator representative near that topology as
+\[
+  N_\Gamma
+  =
+  c_\Gamma
+  +a_1D_1+a_2D_2+a_3D_3
+  +b_{12}D_1D_2+\cdots .
+\]
+The algebraic maximal cut \(D_1=D_2=D_3=0\) sees only
+\[
+  \operatorname{Cut}_{123}
+  \frac{N_\Gamma}{D_1D_2D_3}
+  =
+  c_\Gamma\,
+  \operatorname{Cut}_{123}
+  \frac{1}{D_1D_2D_3}.
+\]
+The remaining terms are not zero in the amplitude.  Before integration they
+cancel propagators and move to lower sectors:
+\begin{equation}
+  \frac{N_\Gamma}{D_1D_2D_3}
+  =
+  \frac{c_\Gamma}{D_1D_2D_3}
+  +\frac{a_1}{D_2D_3}
+  +\frac{a_2}{D_1D_3}
+  +\frac{a_3}{D_1D_2}
+  +\frac{b_{12}}{D_3}
+  +\cdots .
+  \label{eq:multi-loop-contact-sector-cancellation}
+\end{equation}
+After IBP reduction the same statement becomes a master-vector projection
+\begin{equation}
+  \bigl[\mathcal I_\Gamma[N_\Gamma]\bigr]_{\rm red}
+  =
+  c_\Gamma M_{123}
+  +a_1\,\mathcal R_{23}
+  +a_2\,\mathcal R_{13}
+  +a_3\,\mathcal R_{12}
+  +b_{12}\,\mathcal R_{3}
+  +\cdots ,
+  \label{eq:multi-loop-cut-to-master-sector-projection}
+\end{equation}
+where \(\mathcal R_S\) denotes the reduced master combination in the lower
+sector with denominators \(S\).  In a special massless dimensional-regularized
+problem a lower sector may be scaleless and vanish.  The reduced family and
+boundary convention must establish that collapse sector by sector.
+
+Thus a multi-loop generalized-unitarity calculation has three separate
+projections.  The parent maximal cut fixes \(c_\Gamma\) after the contour and
+representative have been declared.  Subtopology cuts and numerator algebra
+determine which contact terms survive as lower sectors.  IBP reduction and
+boundary data decide how those sectors enter the master vector on the physical
+sheet.  Collapsing all three steps into ``the maximal cut fixes the
+coefficient'' is valid only after the lower-sector projections have been
+proved absent or have been included.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Two-master threshold mixing and boundary data]
 \label{ca:two-master-threshold-mixing}
 The one-master bubble can make the evaluation step look scalar, but physical

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Finite checks for generalized unitarity and one-loop reduction.
+"""Finite checks for generalized unitarity and loop reduction.
 
 The companion section in Volume II, Chapter 6 develops the bridge from
 Cutkosky discontinuities to generalized cuts, scalar-integral reconstruction,
@@ -10,8 +10,8 @@ one-loop running, the finite two-scale box master, and the one-loop bubble
 family, including numerator sector projection and the
 equal-mass threshold family with its lower tadpole master and branch, the
 two-loop equal-mass sunrise maximal-cut curve with its elliptic discriminant
-and physical threshold, and finite helicity, color, state-sum, and regulator
-bookkeeping for the
+and physical threshold, a multi-loop maximal-cut/contact-sector projection
+gate, and finite helicity, color, state-sum, and regulator bookkeeping for the
 Yang-Mills MHV/all-plus control examples, including the planar N=4 MHV
 quadruple-cut reconstruction, the five-gluon all-plus rational template, and
 the four-point color-kinematics/double-copy gateway together with the
@@ -62,6 +62,8 @@ including its lower-tadpole inhomogeneity and timelike branch interval;
 quartic-discriminant and Landau-stationarity checks for the equal-mass sunrise
 maximal cut, including the distinction between the physical threshold and the
 pseudo-threshold;
+exact rational projection of parent-topology contact terms into lower sectors
+after propagator cancellation and before IBP master projection;
 spinor-bracket exponent ledgers for little-group weights and dimensions; and
 a finite four-gluon helicity enumeration for all-plus two-particle cuts;
 finite topology-signature checks for maximal versus two-particle cuts in the
@@ -118,6 +120,7 @@ parent-cut-only sector projection when lower sectors are not scaleless,
 homogeneous one-master shortcuts for the equal-mass bubble threshold family,
 Euclidean branch reuse above the massive two-particle threshold,
 logarithmic one-master shortcuts for the sunrise elliptic maximal cut,
+maximal-cut-only multi-loop reconstruction when lower sectors carry scale,
 branch/path omission in a two-letter master transport, virtual-only
 observable assembly, and untransported finite IR-scheme shifts.
 Scope boundary: a pass checks the finite reconstruction and reduction
@@ -1651,6 +1654,107 @@ def check_two_loop_sunrise_elliptic_maximal_cut() -> None:
     )
 
 
+def check_multi_loop_maximal_cut_sector_projection() -> None:
+    denominators = frozenset({"D1", "D2", "D3"})
+    parent_sector = ("D1", "D2", "D3")
+    numerator_terms = {
+        frozenset(): Fraction(5, 7),
+        frozenset({"D1"}): Fraction(2, 3),
+        frozenset({"D2"}): -Fraction(3, 5),
+        frozenset({"D3"}): Fraction(7, 11),
+        frozenset({"D1", "D2"}): Fraction(13, 17),
+    }
+
+    def maximal_cut_residue(terms: dict[frozenset[str], Fraction]) -> Fraction:
+        return terms.get(frozenset(), Fraction(0))
+
+    def cancelled_sector(support: frozenset[str]) -> tuple[str, ...]:
+        return tuple(sorted(denominators - support))
+
+    sector_projection: dict[tuple[str, ...], Fraction] = {}
+    for support, coefficient in numerator_terms.items():
+        sector = cancelled_sector(support)
+        sector_projection[sector] = sector_projection.get(sector, Fraction(0)) + coefficient
+
+    expected_projection = {
+        parent_sector: Fraction(5, 7),
+        ("D2", "D3"): Fraction(2, 3),
+        ("D1", "D3"): -Fraction(3, 5),
+        ("D1", "D2"): Fraction(7, 11),
+        ("D3",): Fraction(13, 17),
+    }
+    assert_equal("multi-loop contact terms cancel into lower sectors", sector_projection, expected_projection)
+    assert_equal("parent maximal cut sees only top residue", maximal_cut_residue(numerator_terms), Fraction(5, 7))
+
+    shifted_terms = {
+        **numerator_terms,
+        frozenset({"D1"}): numerator_terms[frozenset({"D1"})] + Fraction(1, 19),
+        frozenset({"D3"}): numerator_terms[frozenset({"D3"})] - Fraction(1, 23),
+    }
+    assert_equal(
+        "same parent maximal cut after contact-sector shift",
+        maximal_cut_residue(shifted_terms),
+        maximal_cut_residue(numerator_terms),
+    )
+
+    shifted_projection: dict[tuple[str, ...], Fraction] = {}
+    for support, coefficient in shifted_terms.items():
+        sector = cancelled_sector(support)
+        shifted_projection[sector] = shifted_projection.get(sector, Fraction(0)) + coefficient
+    assert_true(
+        "same maximal cut can have different lower-sector projection",
+        shifted_projection != sector_projection,
+    )
+
+    master_weights = {
+        parent_sector: Fraction(3, 2),
+        ("D2", "D3"): -Fraction(5, 4),
+        ("D1", "D3"): Fraction(7, 6),
+        ("D1", "D2"): Fraction(11, 10),
+        ("D3",): -Fraction(13, 9),
+    }
+    full_reduced_value = sum(
+        coefficient * master_weights[sector]
+        for sector, coefficient in sector_projection.items()
+    )
+    parent_cut_only_value = sector_projection[parent_sector] * master_weights[parent_sector]
+    assert_true(
+        "parent maximal cut alone misses reduced lower-sector masters",
+        full_reduced_value != parent_cut_only_value,
+    )
+
+    scaleless_sectors = {
+        ("D2", "D3"): False,
+        ("D1", "D3"): True,
+        ("D1", "D2"): False,
+        ("D3",): False,
+    }
+    reduced_with_scaleless_collapse = (
+        sector_projection[parent_sector] * master_weights[parent_sector]
+        + sum(
+            sector_projection[sector] * master_weights[sector]
+            for sector, is_scaleless in scaleless_sectors.items()
+            if not is_scaleless
+        )
+    )
+    all_lower_scaleless_shortcut = parent_cut_only_value
+    assert_true(
+        "scaleless-collapse shortcut valid only sector by sector",
+        reduced_with_scaleless_collapse != all_lower_scaleless_shortcut,
+    )
+
+    omitted_lower_majorant = sum(
+        abs(sector_projection[sector] * master_weights[sector])
+        for sector in scaleless_sectors
+        if not scaleless_sectors[sector]
+    )
+    assert_true(
+        "lower-sector master omission bounded by absolute projection budget",
+        abs(reduced_with_scaleless_collapse - all_lower_scaleless_shortcut)
+        <= omitted_lower_majorant,
+    )
+
+
 def check_branch_and_landau_ledger() -> None:
     # In the expansion
     #   Gamma(eps)[exp(i pi eps)-exp(-i pi eps)]/(16 pi^2),
@@ -2000,11 +2104,12 @@ def main() -> None:
     check_bubble_numerator_sector_projection()
     check_equal_mass_bubble_threshold_family()
     check_two_loop_sunrise_elliptic_maximal_cut()
+    check_multi_loop_maximal_cut_sector_projection()
     check_branch_and_landau_ledger()
     check_two_master_threshold_mixing()
     check_two_letter_master_transport()
     check_virtual_to_observable_assembly()
-    print("All generalized unitarity and one-loop reduction checks passed.")
+    print("All generalized unitarity and loop-reduction checks passed.")
 
 
 if __name__ == "__main__":
