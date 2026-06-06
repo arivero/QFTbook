@@ -3,9 +3,9 @@
 
 Evidence contract.
 Target claims: the Volume VI GHD dressing/current identity, hard-rod
-effective-velocity calibration, the observable-level residual bound
+effective-velocity calibration, the observable-level proof-obligation map
 separating Euler root-density closure from microscopic density/current
-reconstruction, and the Drude-weight reconstruction residual bound.
+reconstruction, and the Drude-weight reconstruction proof-obligation map.
 Independent construction: exact finite-grid linear solves, hard-rod collision
 shift algebra, finite Mazur-projection matrix identities, signed residual
 telescopes, and negative controls are computed directly from finite rational
@@ -156,8 +156,8 @@ def check_hard_rod_effective_velocity_solution() -> None:
 
 
 def check_ghd_observable_residual_bound() -> None:
-    # Finite analogue of the observable residual bound in
-    # ca:ghd-observable-reconstruction-residual-bound.  The Euler-cell density and
+    # Finite analogue of the observable proof-obligation map in
+    # rem:ghd-observable-reconstruction-proof-obligation-map.  The Euler-cell density and
     # current are not microscopic observables until local-cell replacement,
     # Bethe-Yang counting, dressing stability, gradients, operator projection,
     # diffusion, and integrability-breaking residuals are controlled.
@@ -191,7 +191,7 @@ def check_ghd_observable_residual_bound() -> None:
         for value in list(density_residuals.values()) + list(current_residuals.values())
     )
     if not actual_error <= residual_bound:
-        raise AssertionError("GHD observable residual bound failed")
+        raise AssertionError("GHD observable conditional propagation failed")
 
     # Exact root-density continuity only removes the Euler closure residual.  It
     # does not remove the operator/current projection residual.
@@ -269,7 +269,7 @@ def check_ghd_drude_weight_reconstruction_residual_bound() -> None:
         raise AssertionError("bare velocities should not reproduce the interacting Drude coordinate")
 
     # Scalar contraction of the Drude matrix with a test charge vector, followed
-    # by the chapter's absolute Kubo/residual bound.
+    # by the chapter's absolute Kubo/proof-obligation propagation.
     probe = [Fraction(2), Fraction(-1)]
     ghd_drude = sum(
         probe[i] * drude_direct[i][j] * probe[j] for i in range(2) for j in range(2)
@@ -289,7 +289,7 @@ def check_ghd_drude_weight_reconstruction_residual_bound() -> None:
     microscopic_drude = ghd_drude + sum(residuals.values(), Fraction(0))
     absolute_budget = sum(abs(value) for value in residuals.values())
     assert_leq_bound(
-        "Drude reconstruction residual bound",
+        "Drude reconstruction conditional propagation",
         abs(microscopic_drude - ghd_drude),
         absolute_budget,
         tol=Fraction(0),

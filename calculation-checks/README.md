@@ -424,10 +424,11 @@ Current checks:
   state: representative consistency, the finite-step residual bound, a
   vanishing error schedule, and the obstruction caused by a nonvanishing
   generator error.  Finally, it checks the measured small-\(x\) observable
-  residual telescope: impact-factor matching, rapidity subtraction,
-  projective regulator removal, evolution, closure, and power remainders add
-  to the exact tested-observable mismatch, and omitting either the
-  impact-factor or BK-closure entry under-budgets the finite example.  It
+  proof-obligation propagation map: impact-factor matching, rapidity
+  subtraction, projective regulator removal, evolution, closure, and power
+  remainders add to the exact tested-observable mismatch once those component
+  estimates are supplied, and omitting either the impact-factor or BK-closure
+  entry under-budgets the finite example.  It
   now also checks a leading inclusive-DIS dipole channel: the transverse and
   longitudinal photon-kernel spin factors are symmetric under
   \(z\leftrightarrow 1-z\), the BK dipole error is propagated through the
@@ -2089,7 +2090,8 @@ Current checks:
   particle-number and rapidity-cut tail bounds, the sinh-Gordon
   exponential-field two-particle calibration with scalar-factor,
   rapidity-cut, higher-particle, and local/completeness residual controls,
-  the thermal Leclair-Mussardo one-point residual and tail budget, and
+  the thermal Leclair-Mussardo one-point residual and tail budget, the
+  conditional reconstruction proof-obligation propagation map, and
   negative controls for missing factorial suppression, omitted union-bound
   factors, use outside the particle-tail smallness condition, a missing
   two-particle rapidity-window union contribution, an invalid higher-particle
@@ -2534,7 +2536,7 @@ Current checks:
   right/left massless dispersion identities, plus the
   Zamolodchikov trace-sum-rule coefficient \(9/E^4\) and the
   \(\phi_{1,3}\) minimal-flow central-charge targets.  It also checks the
-  retained trace-form-factor \(c\)-sum reconstruction bound, including
+  retained trace-form-factor \(c\)-sum proof-obligation map, including
   monotone positive approximants, observable and TBA-comparison residual
   telescopes, and negative controls against exact endpoint overread, omitted
   trace/local reconstruction residuals, and signed-cancellation
@@ -2545,7 +2547,7 @@ Current checks:
   coefficients, the vacuum Luescher \(K_1\) normalization and exponential
   remainder threshold, the \(K_1\) large-\(r\) asymptotic coefficients,
   F-term product subtraction, and the orientation sign in the \(\mu\)-term
-  residue ledger, plus the excited-state continuation residual budget from
+  residue ledger, plus the excited-state continuation proof-obligation map from
   the direct spectral trace to the Bethe--Yang plus one-winding
   F-/\(\mu\)-term coordinate.
 - `nonintegrable_bridge_checks.py`: exact arithmetic checks for the Volume VI
@@ -2553,7 +2555,7 @@ Current checks:
   broken-charge commutator ledger, first-order form-factor mass shift,
   semi-local kinematic residue, Ising false-vacuum string tension,
   two-body phase-space Jacobian for \(1+1\)-dimensional decay widths,
-  the decay-rate reconstruction residual bound separating weak-kernel,
+  the decay-rate reconstruction proof-obligation map separating weak-kernel,
   finite-volume, Bethe--Yang normalization, form-factor-boundary,
   channel-tail, threshold-window, and higher-order residuals from the retained
   connected-form-factor width, with negative controls against finite-box
@@ -2892,12 +2894,12 @@ Current checks:
   omitted determinant residuals and symmetry-only nonzero claims, the
   \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger and protected
   residue/quantum-product selection rule, the vortex-to-protected-observable
-  residual telescope with negative controls for omitted vortex coefficients,
-  unsaturated zero modes, and underbudgeted comparison residuals, the
+  proof-obligation telescope with negative controls for omitted vortex
+  coefficients, unsaturated zero modes, and underbudgeted comparison residuals, the
   degree-one \(\mathbb P^{N-1}\) stable-map dimension and line-count computation for
   the quantum-product relation \(H^N=q\), the finite degree-one vortex
-  observable assembly residual ledger tying the vortex-normalized fugacity to the
-  three-point product coefficient with residual, off-pairing, mirror-only,
+  observable assembly conditional map tying the vortex-normalized fugacity to
+  the three-point product coefficient with residual, off-pairing, mirror-only,
   dimension-only, and zero-mode-gate negative controls, the degree-\(d\)
   projective instanton iteration test checking
   \(R(H^{N-1+dN})=q_{\rm phys}^d\) against the quantum-product trace

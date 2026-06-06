@@ -57,11 +57,11 @@ language.
   singularities, source terms, omitted-pole control, and comparison with the
   direct-channel spectral trace are theorem obligations beyond the
   one-winding formula.
-- Adds a finite excited-state continuation residual budget: the difference
+- Adds a finite excited-state continuation proof-obligation map: the difference
   between the direct-channel excitation energy and the Bethe--Yang plus
   one-winding F-/mu-term coordinate is decomposed into trace, contour, branch,
   missed-pole, multi-mirror, density, and normalization residuals, with a
-  triangle bound on the controlled approximation window.
+  conditional triangle propagation once component estimates are supplied.
 - Defines wrapping effects as finite-cycle mirror propagation and records the
   distinction from later planar spectral wrapping.
 
@@ -73,7 +73,7 @@ language.
   large-\(R\) asymptotic coefficients and exponential-remainder threshold,
   the F-term product subtraction, and the orientation sign in the
   \(\mu\)-term residue ledger.  It also checks the excited-state
-  continuation residual telescope and keeps the residual nonzero unless the
+  continuation proof-obligation telescope and keeps the residual nonzero unless the
   theorem-level trace, contour, pole, multi-mirror, density, and normalization
   controls are supplied.
 
@@ -87,10 +87,13 @@ language.
   as the first entries of a contour/singularity ledger rather than as a
   theorem-level excited-state TBA construction.
 - 2026-06-04 issue #728 excited-state TBA residual pass: added the
-  continuation residual budget from the direct spectral trace to the
+  continuation proof-obligation map from the direct spectral trace to the
   one-winding coordinate.  The companion check verifies the telescope,
-  triangle bound, and nonzero residual so finite F-/mu-term formulae are not
-  overclaimed as exact excited-state reconstruction.
+  conditional triangle propagation, and nonzero residual so finite F-/mu-term
+  formulae are not overclaimed as exact excited-state reconstruction.
+- 2026-06-06 issue #844 residual-status audit: demoted the continuation
+  display to `rem:excited-state-continuation-proof-obligation-map`, since its
+  proof content is identity plus declared component estimates.
 
 ## Figure Ledger
 

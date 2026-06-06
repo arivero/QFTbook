@@ -645,8 +645,8 @@ not this algebraic conservation check, but the scaling theorem that the
 microscopic inhomogeneous QFT actually converges to
 \eqref{eq:ghd-root-density-continuity}.
 
-\begin{controlledapproximation}[Observable residual bound for Euler GHD]
-\label{ca:ghd-observable-reconstruction-residual-bound}
+\begin{remark}[Observable proof-obligation map for Euler GHD]
+\label{rem:ghd-observable-reconstruction-proof-obligation-map}
 The formulas
 \eqref{eq:ghd-root-density-continuity}--\eqref{eq:ghd-charge-current} are
 hydrodynamic observables only after microscopic local densities and currents
@@ -687,7 +687,8 @@ system.  A theorem-level GHD derivation must control the discrepancy
 \end{aligned}
   \label{eq:ghd-observable-error}
 \end{equation}
-The useful statement is not a new conserved charge; it is a residual ledger:
+The useful status checkpoint is not a new conserved charge; it is a
+proof-obligation map:
 \begin{equation}
   \mathcal E_{h,L}^{\rm GHD}[\chi;t]
   \le
@@ -720,10 +721,10 @@ of \eqref{eq:ghd-root-density-continuity} controls only the quasiparticle
 density coordinate.  It does not by itself identify the microscopic current
 operator, remove finite-volume recurrences, control gradients, or exclude
 diffusive and inelastic corrections.
-\end{controlledapproximation}
+\end{remark}
 
-\begin{controlledapproximation}[GHD Drude-weight reconstruction residual bound]
-\label{ca:ghd-drude-weight-reconstruction-residual-bound}
+\begin{remark}[GHD Drude-weight reconstruction proof-obligation map]
+\label{rem:ghd-drude-weight-reconstruction-proof-obligation-map}
 In a homogeneous thermal Bethe state the Euler GHD data predict the ballistic
 part of current transport.  Let \(h\) and \(k\) be one-particle charge
 functions, and write \(n_a(\theta)\), \(\rho_a(\theta)\), and
@@ -834,7 +835,7 @@ ballistic response is obtained only after the local current, real-time limit,
 conserved projection, and non-ballistic channels are controlled in the same
 state family.  This is the transport analogue of the local-observable
 residual bound above.
-\end{controlledapproximation}
+\end{remark}
 
 The formula for \(v^{\rm eff}\) is also the linearized counting formula for
 a dressed wave packet.  Insert a single quasiparticle into a thermodynamic

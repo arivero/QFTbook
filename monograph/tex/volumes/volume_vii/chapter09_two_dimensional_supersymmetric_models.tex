@@ -1898,13 +1898,13 @@ statement.  The physical identification still depends on the same determinant,
 orientation, zero-mode, compactification, and contact-term data isolated in
 \eqref{eq:glsm-single-vortex-coefficient-integral}.
 
-Proposition~\ref{prop:glsm-vortex-to-observable-residual-ledger} is the
-same \(D_{\rm obs}\) comparison written at finite regulator.  Its residual
-terms are the local proof-debt coordinates that must vanish before the mirror
-residue is a protected A-twisted QFT correlator.
+The following finite map is the same \(D_{\rm obs}\) comparison written at
+finite regulator.  Its residual terms are proof obligations, not evidence by
+themselves: they must be constructed and controlled before the mirror residue
+is a protected A-twisted QFT correlator.
 
-\begin{proposition}[From vortex coefficient to protected observable]
-\label{prop:glsm-vortex-to-observable-residual-ledger}
+\begin{remark}[From vortex coefficient to protected observable]
+\label{rem:glsm-vortex-to-observable-proof-obligation-map}
 In the charge-one \(\mathbb P^{N-1}\) GLSM, fix a finite supersymmetric
 regulator and let \(c_{i,\Lambda}\) be the regulated coefficients in
 \eqref{eq:glsm-single-vortex-coefficient-integral}.  Put
@@ -1946,7 +1946,11 @@ source-insertion error, \(R_{\rm cpt}\) the compactification, obstruction,
 boundary, and contact-term error, \(R_{\rm gl}\) the multi-vortex or
 degree-\(d\) gluing error when \(d>1\), \(R_{\rm op}\) the map from the GLSM
 operator to the hyperplane/Coulomb class, and \(R_{\rm cont}\) the continuum
-limit remainder.  If
+limit remainder.  These names do not by themselves supply estimates: the
+degree-one incidence calculation controls only the finite retained
+coefficient, while the determinant, zero-mode, compactification, gluing,
+operator-map, and continuum terms remain imported or model-specific
+obligations unless constructed separately.  If
 \[
   |R_\alpha|\le \epsilon_\alpha
   \quad
@@ -1972,9 +1976,9 @@ seven residuals vanish in the protected comparison.  If some
 fermion zero mode is unsaturated, or the compactified vortex integral
 vanishes, then \(q_\Lambda=0\); the nonzero degree-one quantum product cannot
 be recovered by holomorphy or charge matching alone.
-\end{proposition}
+\end{remark}
 
-\begin{proof}
+\paragraph{Status of the telescope.}
 The identity
 \eqref{eq:glsm-vortex-to-observable-residual-telescope} is obtained by
 adding and subtracting the successive finite approximants: the regulated
@@ -1988,7 +1992,6 @@ the finite residue value \(S_k(q_\Lambda)\), but it contains no information
 about whether the regulated vortex coefficient is nonzero or whether the
 comparison residuals vanish.  That information is precisely the physical
 amplitude input isolated above.
-\end{proof}
 
 The next two statements give the direct stable-map side of the same protected
 observable comparison for
@@ -2122,7 +2125,7 @@ then extracts the top exterior degree:
 For
 \((\alpha_1,\alpha_2,\alpha_3)=(H,H^{N-1},H^{N-1})\), this degree is
 \(2N-1\), the same as the affine incidence chart in
-ControlledApproximation~\ref{ca:cpn-degree-one-vortex-observable-assembly}.
+Remark~\ref{rem:cpn-degree-one-vortex-observable-proof-obligation-template}.
 If the finite determinant-line comparison gives orientation sign \(+1\) and
 no extra zero modes or obstruction Euler classes are missing, the retained
 zero-mode integral reduces to the incidence count \(1\), and the retained
@@ -2321,8 +2324,8 @@ Only the agreement of the residue, vortex-measure package, operator map, and
 off-pairing bounds in one regulator gives a protected QFT comparison.
 \end{controlledapproximation}
 
-\begin{controlledapproximation}[Degree-one stable-map incidence residual template]
-\label{ca:cpn-degree-one-vortex-observable-assembly}
+\begin{remark}[Degree-one stable-map incidence proof-obligation template]
+\label{rem:cpn-degree-one-vortex-observable-proof-obligation-template}
 The degree-one product coefficient is a physical A-twisted observable only after
 the vortex normalization, determinant orientation, zero-mode integral,
 compactification contribution, and local-operator map have been tied to the
@@ -2478,7 +2481,7 @@ separate bounds
 \end{equation}
 Equations
 \eqref{eq:cpn-degree-one-vortex-observable-bound}--\eqref{eq:cpn-degree-one-off-pairing-bound}
-are a residual-budget template for the product
+are a proof-obligation template for the product
 \[
   H\star H^{N-1}=q_{\rm phys}\,1.
 \]
@@ -2488,7 +2491,7 @@ continuum residuals are supplied by independent estimates in the shared
 regulator.  The mirror residue gives the same algebraic root sum, and the
 stable-map dimension count gives the geometric line count; neither replaces the
 determinant and fluctuation comparison in the A-twisted path integral.
-\end{controlledapproximation}
+\end{remark}
 
 \begin{controlledapproximation}[Degree-\(d\) projective instanton iteration]
 \label{ca:cpn-degree-d-vortex-observable-iteration}
@@ -2519,7 +2522,7 @@ Let
 \]
 where \(\eta_\Lambda\) is the A-twisted topological metric and the
 normalization of \(H\) is the one used in
-ControlledApproximation~\ref{ca:cpn-degree-one-vortex-observable-assembly}.
+Remark~\ref{rem:cpn-degree-one-vortex-observable-proof-obligation-template}.
 Equivalently, one may distribute the same total hyperplane power among marked
 local operators before using the chosen contact-term convention for the
 quantum product.  If the degree-one product is used as the elementary gluing
@@ -2556,7 +2559,7 @@ remainder.  Thus the usable bound is
   +\epsilon_{{\rm cont},d}.
   \label{eq:cpn-degree-d-vortex-observable-bound}
 \end{equation}
-For \(d=1\) this specializes to the residual budget above.  For
+For \(d=1\) this specializes to the proof-obligation map above.  For
 \(d>1\), a product of degree-one incidence counts supplies only the expected
 enumerative skeleton.  It does not fix the determinant line on the
 multi-instanton boundary, the contact terms when marked points collide, the

@@ -8,10 +8,10 @@ normalization, one-vortex source-functional F-term extraction,
 one-vortex component-amplitude source-minor extraction,
 single-vortex coefficient noncancellation bound,
 P^{N-1} mirror residue trace, and
-vortex-to-protected-observable residual ledger, together with the
+vortex-to-protected-observable proof-obligation map, together with the
 vortex-fugacity dimensional-transmutation coordinate, the degree-one
 P^{N-1} stable-map computation, the finite degree-one stable-map incidence model
-with supplied vortex coefficient input plus conditional residual template for
+with supplied vortex coefficient input plus conditional proof-obligation template for
 the quantum-product observable relation, the A-model degree-one zero-mode
 measure bridge, the finite measure-scheme covariance test for that
 degree-one coefficient, and the mirror-conjecture observable boundary separating
@@ -23,8 +23,9 @@ elimination, finite chain-complex rank checks, Berezin-degree tests,
 source-differentiated zero-mode extraction tests, retained-window signed/mass
 coefficient bounds, oriented source-minor component-amplitude cells,
 root-of-unity residue sums,
-stable-map incidence Jacobians, A-model zero-mode degree filters, and residual
-budgets, plus finite density/Jacobian transport tests and double-entry
+stable-map incidence Jacobians, A-model zero-mode degree filters, and
+conditional residual-propagation maps, plus finite density/Jacobian transport
+tests and double-entry
 mirror/direct-vortex comparisons whose direct side includes a separately
 computed incidence orientation, degree gate, and compactification gate, are
 computed directly from finite data rather than by substituting the displayed
@@ -53,7 +54,8 @@ Scope boundary: a pass checks finite algebra and bookkeeping interfaces; it
 does not prove continuum GLSM existence, Hori--Vafa mirror equivalence,
 vortex compactness, derivation of the vortex fluctuation spectra or gauge-ghost
 complex, determinant nonvanishing beyond the supplied finite input,
-virtual-cycle construction, or uniform remainder estimates.
+virtual-cycle construction, uniform remainder estimates, or the component
+estimates in the vortex-to-observable proof-obligation map.
 """
 
 from __future__ import annotations
@@ -1177,7 +1179,7 @@ def check_cp_mirror_residue_correlators() -> None:
             )
 
 
-def check_vortex_to_observable_residual_budget() -> None:
+def check_vortex_to_observable_proof_obligation_map() -> None:
     n_fields = 4
     q_regulated = Fraction(5, 7)
     insertion_power = n_fields - 1 + 2 * n_fields
@@ -1204,7 +1206,11 @@ def check_vortex_to_observable_residual_budget() -> None:
     protected_amplitude = residue_prediction + sum(residuals.values(), Fraction(0))
     actual_error = abs(protected_amplitude - residue_prediction)
     full_budget = sum(abs(value) for value in residuals.values())
-    assert_equal("vortex-to-observable residual telescope", actual_error, full_budget)
+    assert_equal(
+        "vortex-to-observable proof-obligation telescope",
+        actual_error,
+        full_budget,
+    )
 
     omitted_operator_budget = full_budget - abs(residuals["operator map"])
     if actual_error <= omitted_operator_budget:
@@ -1368,7 +1374,7 @@ def check_degree_one_stable_map_incidence_model() -> None:
     # residue root sum or a dimension count.  This finite model treats the
     # vortex coefficients as supplied input and checks the stable-map incidence
     # Jacobian, selection degree, boundary exclusion, operator normalization,
-    # and residual budget before any continuum comparison residuals are invoked.
+    # and proof-obligation map before any continuum comparison residuals are invoked.
     n_fields = 5
     bare_fi = Fraction(3, 17)
 
@@ -1507,12 +1513,12 @@ def check_degree_one_stable_map_incidence_model() -> None:
         comparison_residual,
     )
     assert_leq_bound(
-        "degree-one observable residual budget",
+        "degree-one observable proof-obligation propagation",
         actual_error,
         total_bound,
     )
     assert_leq_bound(
-        "degree-one observable conditional relative budget",
+        "degree-one observable conditional relative propagation",
         total_bound / abs(q_regulated),
         Fraction(1, 4),
     )
@@ -1856,7 +1862,7 @@ def check_degree_one_amodel_zero_mode_measure_bridge() -> None:
         residual_bound = sum(residuals.values(), Fraction(0))
         correlated_probe = retained_correlator + residuals["zero-mode measure"]
         assert_leq_bound(
-            "A-model zero-mode bridge residual budget",
+            "A-model zero-mode bridge conditional propagation",
             abs(correlated_probe - retained_correlator),
             residual_bound,
         )
@@ -1973,7 +1979,7 @@ def check_degree_one_measure_scheme_covariance() -> None:
     residual_probe = retained_coefficient + sum(residuals.values(), Fraction(0))
     residual_bound = sum(abs(value) for value in residuals.values())
     assert_leq_bound(
-        "measure-scheme covariance residual budget",
+        "measure-scheme covariance conditional propagation",
         abs(residual_probe - retained_coefficient),
         residual_bound,
     )
@@ -2135,7 +2141,7 @@ def check_hori_vafa_residue_instanton_comparison_map() -> None:
     off_pairing_bound = sum(abs(value) for value in off_pairing_residuals.values())
     actual_off_pairing_error = abs(sum(off_pairing_residuals.values(), Fraction(0)))
     assert_leq_bound(
-        "off-pairing contact residual budget",
+        "off-pairing contact conditional propagation",
         actual_off_pairing_error,
         off_pairing_bound,
     )
@@ -2410,7 +2416,7 @@ def main() -> None:
     check_vortex_coefficient_noncancellation_bound()
     check_cp_mirror_critical_ledger()
     check_cp_mirror_residue_correlators()
-    check_vortex_to_observable_residual_budget()
+    check_vortex_to_observable_proof_obligation_map()
     check_cp_degree_one_stable_map_quantum_product_gate()
     check_degree_one_stable_map_incidence_model()
     check_cp_degree_d_quantum_product_iteration()

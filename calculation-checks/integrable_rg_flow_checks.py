@@ -7,10 +7,10 @@ VI Chapter 6, including the \(\phi_{1,3}\) Kac data, minimal-model
 central-charge drops, polynomial scalar Landau-Ginzburg multicritical ledger,
 source-scaling and massless-dispersion signs, the Zamolodchikov trace
 sum-rule coefficient \(9/E^4\), the minimal-flow central-charge targets, and
-the retained trace-form-factor \(c\)-sum residual bound.
+the retained trace-form-factor \(c\)-sum proof-obligation map.
 Independent construction: the checks recompute Kac weights, source exponents,
 central charges, radial-integral coefficients, toy spectral atoms, and
-residual decompositions directly with exact rational arithmetic rather than
+conditional residual decompositions directly with exact rational arithmetic rather than
 reading chapter display strings.
 Imported assumptions: the tests use the unitary minimal-model central-charge
 formula, the chapter's stress-tensor normalization, positivity of retained
@@ -21,7 +21,7 @@ identification.
 Negative controls: wrong signs or coefficients, missing residual terms,
 exact TBA endpoint matching overread as a local observable reconstruction, and
 signed-cancellation pseudo-bounds are rejected.
-Scope boundary: a pass checks finite arithmetic and reconstruction-budget
+Scope boundary: a pass checks finite arithmetic and proof-obligation
 bookkeeping; it does not prove existence of a local QFT, analytic convergence
 of a form-factor expansion, trace-operator normalization in a concrete model,
 or the TBA/vacuum-energy identification theorem.
@@ -228,7 +228,7 @@ def check_phi13_trace_sum_rule_targets() -> None:
 def check_trace_c_sum_rule_reconstruction_bound() -> None:
     # Tricritical Ising to Ising supplies a concrete positive target
     # Delta c = 1/5.  The retained coordinate below is intentionally
-    # incomplete; the residual bound must keep the omitted observable and
+    # incomplete; the proof-obligation map must keep the omitted observable and
     # endpoint/normalization residuals visible.
     delta_c_loc = minimal_c(4) - minimal_c(3)
     retained_sequence = [
@@ -237,7 +237,7 @@ def check_trace_c_sum_rule_reconstruction_bound() -> None:
         Fraction(7, 40),
     ]
     retained = retained_sequence[-1]
-    assert_equal("tricritical-to-Ising target for residual bound", delta_c_loc, Fraction(1, 5))
+    assert_equal("tricritical-to-Ising target for proof-obligation map", delta_c_loc, Fraction(1, 5))
 
     for earlier, later in zip(retained_sequence, retained_sequence[1:]):
         assert_leq_bound(
@@ -264,7 +264,7 @@ def check_trace_c_sum_rule_reconstruction_bound() -> None:
     observable_error = abs(delta_c_loc - retained)
     assert_equal("trace c-sum observable residual telescope", observable_error, observable_budget)
     assert_leq_bound(
-        "trace c-sum observable residual bound",
+        "trace c-sum observable conditional propagation",
         observable_error,
         observable_budget,
         tol=Fraction(0, 1),
@@ -277,7 +277,7 @@ def check_trace_c_sum_rule_reconstruction_bound() -> None:
     comparison_budget = observable_budget + trace_normalization_residual + tba_endpoint_residual
     assert_equal("trace c-sum TBA comparison residual telescope", comparison_error, comparison_budget)
     assert_leq_bound(
-        "trace c-sum TBA comparison residual bound",
+        "trace c-sum TBA comparison conditional propagation",
         comparison_error,
         comparison_budget,
         tol=Fraction(0, 1),

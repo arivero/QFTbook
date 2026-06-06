@@ -34,7 +34,7 @@
   hard-rod calibration of collision-shift kinematics.
 - GHD transport reconstruction layer: Drude-weight coordinate from dressed
   charges and effective velocities, finite-charge Mazur projection, positive
-  semidefinite ballistic matrix, and a residual bound separating the
+  semidefinite ballistic matrix, and a proof-obligation map separating the
   Euler Drude coordinate from the microscopic Kubo transport coefficient.
 - Weak-integrability-breaking kinetic-cell layer: finite Markov collision
   datum with detailed balance, exact preserved charges, projected occupation
@@ -83,10 +83,10 @@
    equation with velocity \(v^{\rm eff}=(E')^{\rm dr}/(p')^{\rm dr}\), and
    charge currents \(j_h=\int h\rho v^{\rm eff}\) conserve every declared
    Bethe charge whenever the closure holds.
-   The observable bound now separates that Euler-cell formula from the
+   The observable proof-obligation map now separates that Euler-cell formula from the
    microscopic density/current claim through local-cell, Bethe-Yang, dressing,
    gradient, operator-projection, dissipative, and breaking residuals.
-9. The Drude-weight reconstruction residual bound turns the same GHD cell data
+9. The Drude-weight reconstruction proof-obligation map turns the same GHD cell data
    into a ballistic transport coordinate only after the real-time Kubo limit,
    finite-volume recurrence control, microscopic current identification,
    conserved-charge projection, Euler limit, diffusive corrections,
@@ -115,9 +115,9 @@
   finite-grid dressing equation, the current identity behind
   \(j_h=\int h\rho v^{\rm eff}\), and the hard-rod effective-velocity
   solution.  It also carries an evidence contract and verifies the observable
-  residual bound, rejecting bare-velocity currents, exact-root-continuity
+  proof-obligation map, rejecting bare-velocity currents, exact-root-continuity
   overclaims, and omitted operator-current residuals.  The same companion now
-  checks the Drude-weight residual bound: finite-charge Mazur projection,
+  checks the Drude-weight proof-obligation map: finite-charge Mazur projection,
   positive semidefinite Drude matrix, bare-velocity negative control,
   Kubo-residual underbudgeting, and signed-cancellation rejection.
 - `calculation-checks/weak_breaking_collision_cell_checks.py` verifies the
@@ -146,14 +146,19 @@
   checkpoint separating the on-shell scattering kernel from the finite-volume,
   thermodynamic-limit, entropy, variational, and mirror-identification inputs
   needed for theorem-level TBA.
-- 2026-06-04 issue #728 GHD observable pass: added
-  `ca:ghd-observable-reconstruction-residual-bound`, making microscopic
-  density/current reconstruction the load-bearing hydrodynamic claim beyond
-  root-density continuity and dressing algebra.
-- 2026-06-05 GHD transport pass: added
-  `ca:ghd-drude-weight-reconstruction-residual-bound`, tying dressed GHD currents
-  to a physical Drude/Kubo transport coefficient only through an explicit
-  residual bound and finite-charge projection gate.
+- 2026-06-04 issue #728 GHD observable pass: added the conditional
+  microscopic-density/current reconstruction map, making microscopic
+  reconstruction the load-bearing hydrodynamic claim beyond root-density
+  continuity and dressing algebra.
+- 2026-06-05 GHD transport pass: added the conditional Drude/Kubo transport
+  reconstruction map, tying dressed GHD currents to a physical transport
+  coefficient only through current-operator, Kubo-limit, projection, Euler,
+  diffusive, breaking, and normalization controls.
+- 2026-06-06 issue #844 residual-status audit: demoted both GHD residual
+  displays to
+  `rem:ghd-observable-reconstruction-proof-obligation-map` and
+  `rem:ghd-drude-weight-reconstruction-proof-obligation-map`, since they are
+  proof-obligation maps rather than constructed microscopic estimates.
 
 ## Figures
 

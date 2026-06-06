@@ -1101,12 +1101,15 @@ completeness obligations.  Those are additional reconstruction inputs, not
 consequences of Bethe--Yang normalization.
 \end{controlledapproximation}
 
-\begin{proposition}[Finite form-factor reconstruction residual budget]
-\label{prop:finite-form-factor-reconstruction-residual-budget}
+\begin{remark}[Finite form-factor reconstruction proof-obligation map]
+\label{rem:finite-form-factor-reconstruction-proof-obligation-map}
 In the setting of
 Controlled Approximation~\ref{ca:finite-volume-form-factor-separated-reconstruction-package},
 let \(G_{\rm loc}^{\mathcal O}[\psi]\) denote the target separated Euclidean
-functional of a local QFT, and suppose that, for a fixed \(L,N\),
+functional of a local QFT.  The following display is a comparison template,
+not a reconstruction theorem.  It becomes a numerical estimate only after each
+component has been constructed in the same test topology.  Suppose that, for a
+fixed \(L,N\),
 \begin{equation}
   G_{\rm loc}^{\mathcal O}[\psi]
   =
@@ -1119,7 +1122,14 @@ functional of a local QFT, and suppose that, for a fixed \(L,N\),
   +\Delta_{\rm comp}[\psi].
   \label{eq:finite-form-factor-reconstruction-residual-decomposition}
 \end{equation}
-Assume each residual is bounded in the dual test norm,
+Here \(\Delta_{\rm FV},\Delta_{\rm tail}\), and \(\Delta_{\rm diag}\) are the
+finite-volume, omitted-sector, and diagonal/contact terms that can be
+estimated in concrete form-factor windows.  The terms
+\(\Delta_{\rm dom},\Delta_{\rm loc}\), and \(\Delta_{\rm comp}\) are stronger
+operator-theoretic obligations: domain/positivity, locality, and
+scattering-sector completeness.  They are imported hypotheses or open
+construction problems unless a model-specific reconstruction supplies them.
+If each residual is bounded in the dual test norm,
 \begin{equation}
   |\Delta_a[\psi]|
   \le
@@ -1145,23 +1155,15 @@ Then
   \right)\|\psi\|_{\mathcal T}.
   \label{eq:finite-form-factor-reconstruction-budget-bound}
 \end{equation}
-In particular, exact Gaudin-density cancellation and exact finite-volume
-matrix-element normalization control only the retained pre-limit coordinate
-\(G_{L,N}^{\mathcal O}\).  They do not prove local-QFT reconstruction unless
-the six residual budgets are driven to zero, or are retained as declared
-approximation errors, in the stated test topology.
-\end{proposition}
-
-\begin{proof}
-Subtract \(G_{L,N}^{\mathcal O}[\psi]\) from
-\eqref{eq:finite-form-factor-reconstruction-residual-decomposition} and apply
-the triangle inequality together with
-\eqref{eq:finite-form-factor-reconstruction-component-bounds}.  The final
-statement follows because the Gaudin cancellation and finite-volume
-normalization enter only in the definition of the retained approximant
-\(G_{L,N}^{\mathcal O}\).  The other terms measure analytic and operator
-properties that are invisible to finite state-counting algebra.
-\end{proof}
+The last implication is only the triangle inequality applied to
+\eqref{eq:finite-form-factor-reconstruction-residual-decomposition}; it is not
+independent evidence for the component estimates.  Exact Gaudin-density
+cancellation and exact finite-volume matrix-element normalization control only
+the retained pre-limit coordinate \(G_{L,N}^{\mathcal O}\).  They do not prove
+local-QFT reconstruction unless the six residual maps are constructed and
+driven to zero, or are retained as declared approximation errors, in the stated
+test topology.
+\end{remark}
 
 \begin{openproblem}[Form-factor construction]
 \label{op:form-factor-construction}

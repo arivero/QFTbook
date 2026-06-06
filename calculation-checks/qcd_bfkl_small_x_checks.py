@@ -13,9 +13,10 @@ Mellin-eigenvalue constants of the leading BFKL characteristic function, and
 the finite Wilson-line/Fokker-Planck algebra used as the JIMWLK theorem
 boundary, the finite BK-closure algebra/error estimate, and the projective
 cylinder-limit error budget for passing finite weak JIMWLK equations to a
-continuum Wilson-line state.  They also check the residual telescope that
-turns the Wilson-line state and impact factor into a tested measured small-x
-observable, and a finite leading-DIS dipole channel in which photon
+continuum Wilson-line state.  They also check the conditional residual
+propagation map that turns the Wilson-line state and impact factor into a
+tested measured small-x observable once component estimates have been supplied,
+and a finite leading-DIS dipole channel in which photon
 wave-function weights propagate rapidity, BK-closure, and endpoint errors to
 the measured bin.
 """
@@ -314,8 +315,8 @@ def check_projective_jimwlk_cylinder_limit_budget() -> None:
         raise AssertionError("nonvanishing generator error should obstruct the requested tolerance")
 
 
-def check_small_x_measured_observable_residual_budget() -> None:
-    """Check the finite telescope from exact QCD observable to CGC approximant."""
+def check_small_x_measured_observable_proof_obligation_map() -> None:
+    """Check the finite proof-obligation map from QCD observable to CGC approximant."""
 
     exact_observable = Fraction(29, 17)
     residuals = {
@@ -339,12 +340,12 @@ def check_small_x_measured_observable_residual_budget() -> None:
     absolute_budget = sum(abs(value) for value in residuals.values())
 
     assert_equal(
-        "measured small-x residual telescope",
+        "measured small-x residual propagation map",
         actual_error,
         signed_residual_sum,
     )
     assert_leq(
-        "measured small-x residual budget",
+        "measured small-x conditional residual propagation",
         abs(actual_error),
         absolute_budget,
         tol=Fraction(0),
@@ -368,7 +369,7 @@ def check_small_x_measured_observable_residual_budget() -> None:
     full_jimwlk_error = sum(full_jimwlk_residuals.values(), Fraction(0))
     full_jimwlk_budget = sum(abs(value) for value in full_jimwlk_residuals.values())
     assert_leq(
-        "full JIMWLK measured small-x residual budget",
+        "full JIMWLK measured small-x conditional residual propagation",
         abs(full_jimwlk_error),
         full_jimwlk_budget,
         tol=Fraction(0),
@@ -593,12 +594,12 @@ def main() -> None:
     check_finite_bk_closure_algebra()
     check_finite_bk_error_bound_lipschitz_constant()
     check_projective_jimwlk_cylinder_limit_budget()
-    check_small_x_measured_observable_residual_budget()
+    check_small_x_measured_observable_proof_obligation_map()
     check_leading_dis_dipole_observable_channel()
     print(
         "All QCD small-x/BFKL, finite Wilson-line, BK-closure, "
-        "projective JIMWLK-limit, measured-observable budget, and leading DIS "
-        "dipole-channel checks passed."
+        "projective JIMWLK-limit, measured-observable proof-obligation map, "
+        "and leading DIS dipole-channel checks passed."
     )
 
 

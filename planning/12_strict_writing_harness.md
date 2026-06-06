@@ -588,6 +588,17 @@ Do not call a decomposition or named slot an error estimate.  When a formal
 map has no presently controlled observable consequence, state that boundary
 plainly and present it as a construction program or hypothesis.
 
+A residual telescope whose proof is only "subtract the approximant and apply
+the triangle inequality" must not be presented as a proposition, theorem, or
+controlled approximation unless at least one nontrivial component estimate is
+constructed in the surrounding argument and every remaining term is explicitly
+classified as constructed, estimated, imported, conjectural, or open.  Pure
+telescoping displays belong in a proof-obligation map, conditional propagation
+template, remark, definition, or planning/dossier record.  The sum of named
+residual slots inherits the status of its weakest load-bearing component; it
+does not become a controlled error bound merely by being written as a normed
+sum.
+
 ## Positive Formulation Rule
 
 The main text explains objects by their data, definitions, assumptions, and

@@ -136,11 +136,11 @@ def check_excited_state_continuation_residual_budget() -> None:
         Fraction(0),
     )
     if total_residual == 0:
-        raise AssertionError("excited-state residual budget accidentally collapsed")
+        raise AssertionError("excited-state proof-obligation map accidentally collapsed")
 
     residual_bound = sum(abs(value) for value in residuals.values())
     _assert_leq(
-        "excited-state residual triangle budget",
+        "excited-state residual conditional triangle propagation",
         abs(direct_energy - one_winding_coordinate),
         residual_bound,
         tol=Fraction(0),

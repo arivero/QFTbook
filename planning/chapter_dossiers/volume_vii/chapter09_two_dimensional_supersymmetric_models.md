@@ -296,7 +296,7 @@ and
   physical stable-map side of `H^N=q_phys` after the virtual class,
   determinant orientation, compactification, and operator map have been fixed.
 - Replaces the degree-one vortex observable assembly claim with a retained
-  finite zero-mode/intersection model plus a conditional residual template: the
+  finite zero-mode/intersection model plus a conditional proof-obligation template: the
   check computes the determinant-normalized fugacity, incidence orientation,
   Berezin saturation, compactification exclusion, and unit hyperplane
   normalization before comparing
@@ -305,8 +305,8 @@ and
   and continuum residuals.  This prevents both mirror-residue-only and
   dimension-count-only arguments from being treated as the physical A-twisted
   correlator.
-- Adds a degree-one A-model zero-mode measure bridge before the residual
-  template: the retained path-integral coefficient is written as a
+- Adds a degree-one A-model zero-mode measure bridge before the
+  proof-obligation template: the retained path-integral coefficient is written as a
   vortex-normalized fugacity times a bosonic collective-coordinate density,
   nonzero-mode determinant-line element, and A-twisted Berezin zero-mode
   coefficient.  For convex `P^{N-1}` the obstruction space vanishes, so the
@@ -449,7 +449,7 @@ and
     determinant, root-of-unity selection rule, `R(H^{N-1+dN})=q_phys^d`,
     off-selection vanishing, and the trace recurrence equivalent to
     `H^N=q_phys`;
-  - the vortex-to-protected-observable residual budget: exact residual
+  - the vortex-to-protected-observable proof-obligation map: exact residual
     telescope, underbudget negative control, rejection of bare-FI shortcuts
     that ignore finite vortex coefficients, and vanishing when the zero-mode
     gate is unsaturated;
@@ -461,11 +461,11 @@ and
     `I_1(H,H^{N-1},H^{N-1})`, wrong-degree and lower-insertion negative
     controls, the unique-line/hyperplane-intersection count, and the finite
     quantum-product pairing check for `H * H^{N-1}=q`;
-  - the degree-one vortex zero-mode/intersection model and residual template:
+  - the degree-one vortex zero-mode/intersection model and proof-obligation template:
     exact determinant-line fugacity from finite spectra, incidence-orientation
     determinant, Berezin saturation, compactification-boundary exclusion,
     unit-hyperplane normalization, independently signed conditional residual
-    budget, off-pairing vanishing by zero-mode degree, and negative controls
+    propagation, off-pairing vanishing by zero-mode degree, and negative controls
     rejecting mirror-only, dimension-only, determinant-orientation,
     zero-mode-multiplicity, compactification, and hyperplane-normalization
     shortcuts;
@@ -562,7 +562,7 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   assembly check with a finite zero-mode/intersection calculation: it derives
   the determinant-normalized fugacity, incidence orientation, Berezin
   saturation, compactification exclusion, and hyperplane normalization before
-  leaving the full continuum comparison in a conditional residual budget with
+  leaving the full continuum comparison in a conditional proof-obligation map with
   adversarial controls.
 - The 2026-06-04 vortex-fugacity pass scrutinizes the Hori--Vafa scale
   statement itself: the chapter now derives the RG-invariant rank-one

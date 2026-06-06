@@ -18,8 +18,8 @@ The checks cover algebraic identities used in the finite-volume chapter:
 * Leclair-Mussardo thermal one-point reconstruction bookkeeping, including
   retained connected-diagonal coordinates, residual propagation, and thermal
   particle/rapidity tail bounds;
-* finite reconstruction residual budget separating finite-volume, tail,
-  diagonal/contact, domain, locality, and completeness errors.
+* finite reconstruction proof-obligation propagation separating finite-volume,
+  tail, diagonal/contact, domain, locality, and completeness errors.
 
 The script checks finite algebra and normalization bookkeeping; it does not
 attempt to prove analytic convergence of a form-factor expansion.
@@ -33,14 +33,15 @@ prefactor, the separated-window rapidity-cut tail bound for that local
 observable, the interacting form-factor growth-window particle-number and
 rapidity-cut tail bounds, the sinh-Gordon exponential-field two-particle
 calibration, the thermal Leclair-Mussardo one-point retained coordinate and
-residual/tail budget, and the residual ledger separating finite-volume, tail,
-diagonal/contact, domain, locality, and completeness errors.
+residual/tail budget, and the conditional residual map separating
+finite-volume, tail, diagonal/contact, domain, locality, and completeness
+errors.
 Independent construction: the checks recompute the Jacobian determinant,
 state-counting cancellations, subset sums, thermal connected-diagonal finite
 sums, Bessel prefactors, elementary rapidity-tail constants, tail primitive,
 interacting growth-window majorants, sinh-Gordon scalar-factor algebra, and
-residual decompositions directly from finite formulas rather than importing
-chapter display strings.
+conditional residual-propagation examples directly from finite formulas rather
+than importing chapter display strings.
 Imported assumptions: the tests use diagonal Bethe-Yang quantization, finite
 nonzero Gaudin densities, regular connected diagonal finite parts, the
 free-Majorana energy operator's two-particle form-factor support after the
@@ -61,7 +62,8 @@ Scope boundary: a pass checks finite algebra, normalization, and explicit
 tail-bookkeeping coordinates for the displayed finite-volume/form-factor
 claims; it does not prove general form-factor convergence, construct local
 operators from arbitrary factorizing S-matrices, establish Osterwalder-Schrader
-positivity, prove locality, or prove scattering-state completeness.
+positivity, prove locality, prove scattering-state completeness, or supply the
+component estimates in the reconstruction proof-obligation map.
 """
 
 from __future__ import annotations
@@ -609,7 +611,7 @@ def check_subset_count() -> None:
         assert_equal(f"number of diagonal subsets n={n}", count, 2**n)
 
 
-def check_reconstruction_residual_budget() -> None:
+def check_reconstruction_residual_propagation_map() -> None:
     retained_coordinate = Fraction(19, 7)
     residuals = {
         "finite volume": Fraction(1, 90),
@@ -623,16 +625,16 @@ def check_reconstruction_residual_budget() -> None:
     target_local_functional = retained_coordinate + residual_total
 
     assert_equal(
-        "form-factor reconstruction residual decomposition",
+        "form-factor reconstruction residual propagation map",
         target_local_functional - retained_coordinate,
         residual_total,
     )
     if residual_total == 0:
-        raise AssertionError("reconstruction residual budget accidentally vanished")
+        raise AssertionError("reconstruction proof-obligation map accidentally vanished")
 
     residual_bound = sum(abs(value) for value in residuals.values())
     _assert_leq(
-        "form-factor reconstruction triangle budget",
+        "form-factor reconstruction conditional triangle propagation",
         abs(residual_total),
         residual_bound,
         tol=Fraction(0),
@@ -642,7 +644,7 @@ def check_reconstruction_residual_budget() -> None:
     # reconstruction claim still has a nonzero analytic/operator residual.
     exact_gaudin_coordinate_shift = Fraction(0)
     assert_equal(
-        "exact Gaudin bookkeeping does not remove reconstruction residual",
+        "exact Gaudin bookkeeping does not remove reconstruction obligations",
         (target_local_functional + exact_gaudin_coordinate_shift) - retained_coordinate,
         residual_total,
     )
@@ -658,7 +660,7 @@ def main() -> None:
     check_sinh_gordon_exponential_two_particle_calibration()
     check_thermal_lm_one_point_reconstruction_package()
     check_subset_count()
-    check_reconstruction_residual_budget()
+    check_reconstruction_residual_propagation_map()
     print("All finite-volume form-factor checks passed.")
 
 

@@ -11974,7 +11974,7 @@ because
 therefore evaluates the two PDFs at \(x_A\) and \(x_B\), giving
 \eqref{eq:qcd-drell-yan-born-tested-bin}.  This proposition instantiates the
 factorized coordinate in one measured channel; the residuals of
-Proposition~\ref{prop:qcd-drell-yan-tested-factorization-residual-budget}
+Remark~\ref{rem:qcd-drell-yan-tested-factorization-proof-obligation-map}
 remain the additional all-order QCD factorization data.
 \end{proof}
 
@@ -12063,8 +12063,8 @@ The paired RG equation \eqref{eq:qcd-drell-yan-coefficient-dual-rg} is one
 coordinate-transport check inside this boundary; it is not the boundary itself.
 \end{controlledapproximation}
 
-\begin{proposition}[Tested Drell--Yan factorization residual budget]
-\label{prop:qcd-drell-yan-tested-factorization-residual-budget}
+\begin{remark}[Tested Drell--Yan factorization proof-obligation map]
+\label{rem:qcd-drell-yan-tested-factorization-proof-obligation-map}
 In the setting of
 Controlled Approximation~\ref{ca:qcd-drell-yan-integrated-theorem-boundary},
 suppose the subtraction analysis represents the exact tested functional as
@@ -12118,9 +12118,8 @@ the physical mismatch in
 \eqref{eq:qcd-drell-yan-tested-residual-budget-bound} is controlled only by the
 five residual norms above.  Scale covariance of the factorized coordinate does
 not make any nonzero residual disappear.
-\end{proposition}
+\paragraph{Status of the telescope.}
 
-\begin{proof}
 Subtract the factorized coordinate from
 \eqref{eq:qcd-drell-yan-tested-residual-decomposition} and apply the triangle
 inequality together with
@@ -12132,7 +12131,7 @@ coefficient.  This cancellation concerns only the retained coordinate.  The
 exact Wightman functional can agree with it in the declared topology only when
 the listed residual functionals are separately bounded, or vanish in the
 regulator and large-\(Q\) limits being claimed.
-\end{proof}
+\end{remark}
 
 \begin{hypothesis}[Drell--Yan small-\(q_\perp\) TMD factorization hypothesis]
 \label{hyp:qcd-drell-yan-tmd-factorization-hypothesis}
@@ -14041,13 +14040,15 @@ rapidity, BK/JIMWLK, and finite-\(Q\) remainders, not just a statement about
 Wilson-line geometry in transverse coordinate space.
 \end{controlledapproximation}
 
-\begin{proposition}[Measured small-\(x\) residual budget]
-\label{prop:qcd-small-x-measured-residual-budget}
+\begin{remark}[Measured small-\(x\) proof-obligation map]
+\label{rem:qcd-small-x-measured-proof-obligation-map}
 In the setting of
 Controlled Approximation~\ref{ca:qcd-small-x-measured-observable-map}, suppose
 the chosen finite approximation
 \(\mathcal A^{(m,n)}_{Q,Y}[\varphi]\) to
-\(\mathcal S^{\rm sx}_{Q,Y}[\varphi]\) satisfies
+\(\mathcal S^{\rm sx}_{Q,Y}[\varphi]\) satisfies the following residual
+decomposition.  This is a proof-obligation map for a measured small-\(x\)
+observable, not a further theorem about small-\(x\) factorization:
 \begin{equation}
 \begin{aligned}
   \mathfrak T_{Q,Y}[\varphi]
@@ -14065,7 +14066,11 @@ the chosen finite approximation
 \end{equation}
 where the terms denote, respectively, impact-factor matching, rapidity
 subtraction, projective regulator removal, finite evolution/truncation,
-closure, and power remainders.  If, on the chosen window,
+closure, and power remainders.  The projective and retained-bin endpoint
+pieces are estimated by the finite constructions above.  The impact-factor,
+rapidity, evolution, closure, and power terms are only as strong as the
+process-specific QCD estimates or imported small-\(x\) evolution statements
+supplied for the chosen measurement.  If, on the chosen window,
 \begin{equation}
   |\Delta_a[\varphi]|
   \leq
@@ -14100,20 +14105,16 @@ For full JIMWLK evolution one may set
 \(\epsilon_{\rm evol}\); for a BK or finite-moment projection,
 \(\epsilon_{\rm clos}\) is the measured-channel image of the connected
 Wilson-line residual such as \(E^{\rm BK}_{\mathbf x\mathbf y}\).
-\end{proposition}
-
-\begin{proof}
-Subtract the finite approximant in
-\eqref{eq:qcd-small-x-measured-residual-decomposition} and apply the triangle
-inequality with
-\eqref{eq:qcd-small-x-measured-residual-component-bounds}.  The projective
-term is controlled by the cylinder weak-equation ledger
-\eqref{eq:qcd-jimwlk-projective-weak-limit-budget} after inserting the
-cylinder representative of \(\Phi^\varphi_{Q,Y}\).  The impact-factor and
+The bound \eqref{eq:qcd-small-x-measured-residual-budget-bound} is the
+triangle inequality applied to
+\eqref{eq:qcd-small-x-measured-residual-decomposition}; it does not upgrade
+named residual slots into estimates.  The projective term is controlled only
+after inserting the cylinder representative of \(\Phi^\varphi_{Q,Y}\) into
+\eqref{eq:qcd-jimwlk-projective-weak-limit-budget}.  The impact-factor and
 power terms are separate QCD statements about the measured color-singlet
-operator, while the finite BFKL/Balitsky/JIMWLK calculations constrain their
-corresponding coordinates inside the displayed sum.
-\end{proof}
+operator, while the finite BFKL/Balitsky/JIMWLK calculations constrain only
+their corresponding coordinates inside the displayed sum.
+\end{remark}
 
 \paragraph{Conformal covariance of the transverse kernel.}
 The measure

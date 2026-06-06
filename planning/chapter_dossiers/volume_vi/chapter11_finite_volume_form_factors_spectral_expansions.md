@@ -107,11 +107,12 @@ normalization and convergence obligations explicit.
     for local QFT from form-factor data, with the free Majorana chain
     identified as theorem-level only because the local free field is already
     constructed.
-22. Adds a separated-Euclidean reconstruction package and residual budget:
-    finite-volume-to-rapidity error, particle-number tail, diagonal/contact
-    extension, domain/positivity, locality, and sector-completeness residuals
-    must all be controlled before a Gaudin-normalized finite-volume approximant
-    becomes a local-QFT reconstruction statement.
+22. Adds a separated-Euclidean reconstruction package and proof-obligation
+    map: finite-volume-to-rapidity error, particle-number tail,
+    diagonal/contact extension, domain/positivity, locality, and
+    sector-completeness residuals must all be constructed and controlled before
+    a Gaudin-normalized finite-volume approximant becomes a local-QFT
+    reconstruction statement.
 
 ## Calculation Checks
 
@@ -130,8 +131,8 @@ normalization and convergence obligations explicit.
   thermal LM one-point retained coordinate, residual decomposition,
   particle-tail and rapidity-tail budgets with negative controls against
   overreading exact TBA occupations and substituting symmetric diagonal finite
-  parts, and the finite reconstruction residual budget with a deliberately
-  nonzero analytic and operator-level defect.
+  parts, and the finite reconstruction proof-obligation propagation map with a
+  deliberately nonzero analytic and operator-level defect.
 
 ## Figure Ledger
 
@@ -154,10 +155,15 @@ decomposition of diagonal disconnected contractions.
   clustering, domain control, and scattering compatibility of the continuum
   QFT.
 - 2026-06-04 issue #728 reconstruction-budget pass: added the separated
-  Euclidean reconstruction package and finite residual budget, with companion
+  Euclidean reconstruction package and finite residual map, with companion
   arithmetic verifying that exact Gaudin bookkeeping does not remove
   finite-volume, tail, diagonal/contact, domain, locality, or completeness
   residuals.
+- 2026-06-06 issue #844 residual-status pass: demoted the finite
+  reconstruction residual proposition surface to a proof-obligation map.  The
+  chapter now states that the displayed triangle bound is conditional
+  propagation, not evidence for the domain, locality, positivity, or
+  completeness estimates.
 - 2026-06-04 issue #728 local-observable pass: upgraded the free-Majorana
   energy-density example from a Bessel reduction to a separated-window
   approximation with an explicit rapidity-tail bound, while keeping the

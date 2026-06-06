@@ -4,11 +4,11 @@
 Evidence contract.
 Target claims: the broken-charge ledger, first-order FFPT mass shift,
 semi-local confinement diagnostic, finite-volume golden-rule/phase-space
-normalization, and decay-rate reconstruction residual bound in Volume VI
+normalization, and the decay-rate reconstruction proof-obligation map in Volume VI
 Chapter 10.
 Independent construction: direct commutator eigenvalue arithmetic,
 finite-volume diagonal matrix-element normalization, Kallen/Jacobian algebra,
-finite residual telescopes, and absolute majorants for rate reconstruction.
+finite residual telescopes, and conditional absolute majorants for rate reconstruction.
 Imported assumptions: integrable asymptotic states, connected crossed form
 factors, weak convergence of the finite-time kernel, Bethe--Yang
 finite-volume normalization, and the regulated local perturbation chart stated
@@ -16,7 +16,7 @@ in the chapter.
 Negative controls: fixed finite-volume/time sums are rejected as continuum
 rates, exact form-factor data are rejected as full decay-width evidence,
 omitted threshold/channel residuals underbudget the width, and signed residual
-cancellations are rejected as valid residual bounds.
+cancellations are rejected as valid residual controls.
 Scope boundary: these are exact finite checks of normalization and residual
 bookkeeping; they do not prove existence of the nonintegrable continuum limit,
 uniform threshold control, or convergence of all form-factor/channel tails.
@@ -167,7 +167,7 @@ def check_decay_rate_reconstruction_residual_bound() -> None:
     )
     relative_bound = absolute_majorant / leading_rate
     assert_equal(
-        "nonintegrable decay-rate relative residual bound",
+        "nonintegrable decay-rate conditional relative propagation",
         abs(physical_rate - leading_rate) / leading_rate <= relative_bound,
         True,
     )
@@ -203,7 +203,7 @@ def check_decay_rate_reconstruction_residual_bound() -> None:
     absolute_sum = sum(abs(value) for value in signed_canceling_residuals)
     assert_equal("signed decay residuals can cancel", signed_sum, Fraction(0))
     assert_equal(
-        "signed cancellation is not a decay-rate residual bound",
+        "signed cancellation is not a decay-rate residual control",
         absolute_sum > abs(signed_sum),
         True,
     )

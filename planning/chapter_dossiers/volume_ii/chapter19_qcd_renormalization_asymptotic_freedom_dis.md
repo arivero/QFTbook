@@ -1075,12 +1075,18 @@ The chapter must define and derive:
 - 2026-06-04 issue #630 measured small-\(x\) observable-map pass: added the
   impact-factor/process bridge from the projective Wilson-line state to exact
   tested DIS, diffractive, and forward-production functionals.  The new
-  residual budget separates impact-factor matching, rapidity subtraction,
+  proof-obligation map separates impact-factor matching, rapidity subtraction,
   projective regulator removal, finite evolution/truncation, BK or
   moment-closure residuals, and power remainders.  The paired
   `calculation-checks/qcd_bfkl_small_x_checks.py` exact example checks the
-  telescope and includes negative controls for omitted impact-factor and
-  closure entries.
+  conditional propagation telescope and includes negative controls for omitted
+  impact-factor and closure entries.
+- 2026-06-06 issue #844 residual-status pass: demoted the measured small-\(x\)
+  residual proposition surface to a proof-obligation map.  The projective and
+  retained-bin endpoint pieces remain finite estimates; the impact-factor,
+  rapidity, evolution, closure, and power terms remain process-specific QCD
+  estimates or imported small-\(x\) inputs rather than estimates supplied by the
+  triangle inequality.
 - 2026-06-04 issue #630 leading inclusive-DIS dipole continuation: instantiated
   the measured small-\(x\) bridge for the virtual-photon channel, including
   transverse and longitudinal \(q\bar q\) wave-function weights, the

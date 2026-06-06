@@ -38,7 +38,7 @@ and near two-dimensional CFT perturbations.
   finite-volume spectral sums converge to an absolutely continuous
   infinite-volume rapidity measure, avoiding the false pointwise
   \(T\to\infty\) limit at fixed \(L\).
-- Adds a decay-rate reconstruction residual bound: the retained connected
+- Adds a decay-rate reconstruction proof-obligation map: the retained connected
   form-factor width is separated from weak-kernel, finite-volume,
   Bethe--Yang normalization, form-factor-boundary, channel-tail,
   threshold/window, and higher-order/counterterm residuals before it is
@@ -59,7 +59,7 @@ and near two-dimensional CFT perturbations.
   semi-local kinematic residue, Ising false-vacuum string tension,
   two-particle \(1+1\)-dimensional phase-space Jacobian, TCSA coupling and
   counterterm powers, the finite residual telescope for the decay-rate
-  reconstruction residual bound, negative controls against finite-box and exact
+  reconstruction proof-obligation map, negative controls against finite-box and exact
   form-factor overread, omitted threshold residuals, and signed cancellations,
   and the Airy scaling of confined kink--antikink bound states.
 
@@ -79,11 +79,16 @@ deformation diagrams.
 - 2026-06-02 issue #561 dossier-link pass: recorded the already-existing
   nonintegrable-bridge calculation check explicitly in the chapter dossier.
   No new formula was changed in the manuscript.
-- 2026-06-04 issue #728 decay-rate reconstruction pass: added
-  `ca:nonintegrable-decay-rate-reconstruction-residual-bound`, making the
-  transition from integrable form-factor data to a physical nonintegrable rate
-  depend on weak-kernel, finite-volume, Bethe--Yang, form-factor-boundary,
-  channel-tail, threshold, and higher-order residual control.  The companion
-  check now carries an evidence contract and exact negative controls for
-  finite-box overread, exact-form-factor overread, omitted threshold budgets,
-  and signed cancellation.
+- 2026-06-04 issue #728 decay-rate reconstruction pass: added the conditional
+  decay-rate reconstruction map, making the transition from integrable
+  form-factor data to a physical nonintegrable rate depend on weak-kernel,
+  finite-volume, Bethe--Yang, form-factor-boundary, channel-tail, threshold,
+  and higher-order residual control.  The companion check now carries an
+  evidence contract and exact negative controls for finite-box overread,
+  exact-form-factor overread, omitted threshold budgets, and signed
+  cancellation.
+- 2026-06-06 issue #844 residual-status audit: demoted the decay-rate
+  reconstruction entry to
+  `rem:nonintegrable-decay-rate-reconstruction-proof-obligation-map`, because
+  the section supplies a physically useful conditional telescope but not the
+  component estimates needed for a controlled approximation.
