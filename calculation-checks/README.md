@@ -817,6 +817,10 @@ Current checks:
   killing symmetric color-pair sources before the size integral,
   the individual BPST zero-mode slot tail from the Bessel-product cancellation
   \(F_{\rm zm}(cs/2)=6c^{-3}s^{-3}+45c^{-5}s^{-5}+O(s^{-7})\),
+  the amputated 't Hooft four-point assembly as a common-regulator product of
+  density, Haar projection, chiral source determinants, individual zero-mode
+  slots, nonzero-mode source quotient, amputation, physical projection, and
+  residual budget,
   the two-term hard-window tail subtraction with leading \(R^{-1/3}\) and
   subleading \(R^{-7/3}\) endpoint pieces,
   the finite Gaussian nonzero-mode source quotient and its covariance identity,
@@ -865,6 +869,9 @@ Current checks:
   substitution, unamputated residue
   absorption, vacuum determinant calibration used as a source-fluctuation
   quotient, relative fluctuation division after rank loss, determinant-only
+  four-point assembly, omitted nonzero-mode source quotient, symmetric Haar
+  source shortcut, underbudgeted four-point projection residual,
+  determinant-only
   assembled amplitudes, signed-window relative control without a
   noncancellation margin, reference calibration with omitted
   source-fluctuation or physical-projection transport, rank-lost or nearly

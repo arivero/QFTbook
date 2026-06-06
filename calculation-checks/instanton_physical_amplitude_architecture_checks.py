@@ -95,6 +95,11 @@ Target claims:
   four-source benchmark has the stated rho power, Q power, slow endpoint tail,
   running collective-coordinate Jacobian, channel-data dependence, and
   same-theory hard-scale ratio bound.
+- `ca:instanton-thooft-four-point-amputated-assembly`: an amputated
+  four-source instanton Green-function contribution is a common-regulator
+  product of density, Haar projection, chiral source determinants, individual
+  zero-mode slots, nonzero-mode source response, amputation, physical
+  projection, and an absolute residual budget.
 - `ca:instanton-hard-window-tail-subtraction`: the hard four-source window is
   controlled as a core integral plus leading and subleading analytic endpoint
   tails, rather than as a formal size integral.
@@ -124,6 +129,7 @@ Independent construction:
   first connected instanton-pair source corrections,
   neutral-pair lateral-prescription cancellation coordinates,
   chirality-source selection rules for the instanton zero-mode determinant,
+  an amputated 't Hooft four-point assembly ledger,
   physical projection bins, residual sums, two-term hard-window endpoint
   tail subtraction, and hard-window power checks
   directly, rather than importing BPST radial integrals or copying a monograph
@@ -219,6 +225,10 @@ Negative controls:
   cancellation transported to a different source coordinate,
   wrong-chirality determinants, chirality-balanced four-source selections, or
   mass-assisted source coordinates treated as the Q=1 hard 't Hooft vertex,
+  an amputated four-point coefficient reduced to density-only data, a
+  symmetric Haar source treated as nonzero, an omitted nonzero-mode source
+  quotient, unamputated source overlaps read as a physical coefficient, or an
+  assembly residual budget with the projection term removed,
   single Euclidean cell sum used as a spectral-bin observable, a
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
   slot, a leading-tail-only hard-window approximation, a fused-density
@@ -2630,6 +2640,120 @@ def check_hard_benchmark_channel_comparison_and_ratio() -> None:
     assert_equal("changed source window is a real ratio input", stale_source_window_ratio == Fraction(1), False)
 
 
+def check_thooft_four_point_amputated_assembly_gate() -> None:
+    momentum_slots = [3, -5, 7, -5]
+    off_shell_slots = [3, -5, 7, -4]
+    center_delta = Fraction(1) if sum(momentum_slots) == 0 else Fraction(0)
+    off_shell_delta = Fraction(1) if sum(off_shell_slots) == 0 else Fraction(0)
+    assert_equal("amputated four-point center projection", center_delta, Fraction(1))
+    assert_equal("off-shell four-point center projection", off_shell_delta, Fraction(0))
+
+    density = Fraction(11, 13)
+    haar_projection = Fraction(2, 7)
+    right_source_det = Fraction(3)
+    left_source_det = Fraction(4)
+    zero_mode_slot_product = Fraction(5, 9)
+    nonzero_mode_source_quotient = Fraction(21, 20)
+    amputation_transport = Fraction(9, 10)
+    physical_projection = Fraction(7, 8)
+
+    leading_amputated = product(
+        [
+            center_delta,
+            density,
+            haar_projection,
+            right_source_det,
+            left_source_det,
+            zero_mode_slot_product,
+            nonzero_mode_source_quotient,
+            amputation_transport,
+            physical_projection,
+        ]
+    )
+    assert_equal("amputated four-point assembled coefficient", leading_amputated, Fraction(693, 520))
+
+    density_only = density
+    determinant_and_slots_only = density * zero_mode_slot_product
+    omitted_nonzero_source = leading_amputated / nonzero_mode_source_quotient
+    unamputated_source_overlap = Fraction(5, 3)
+    unamputated = leading_amputated * unamputated_source_overlap
+    assert_not_equal("density-only four-point shortcut misses channel assembly", density_only, leading_amputated)
+    assert_not_equal(
+        "zero-mode slots without source/projection data miss four-point assembly",
+        determinant_and_slots_only,
+        leading_amputated,
+    )
+    assert_not_equal(
+        "omitted nonzero-mode source quotient changes four-point coefficient",
+        omitted_nonzero_source,
+        leading_amputated,
+    )
+    assert_not_equal("unamputated source overlaps change four-point coefficient", unamputated, leading_amputated)
+    assert_equal("amputation removes external overlap factor", unamputated / unamputated_source_overlap, leading_amputated)
+
+    rank_lost_right_det = Fraction(0)
+    rank_lost_channel = (
+        density
+        * haar_projection
+        * rank_lost_right_det
+        * left_source_det
+        * zero_mode_slot_product
+        * nonzero_mode_source_quotient
+        * amputation_transport
+        * physical_projection
+    )
+    assert_equal("rank-lost right source determinant kills four-point channel", rank_lost_channel, Fraction(0))
+    assert_not_equal(
+        "nonzero density does not revive rank-lost four-point source",
+        density,
+        rank_lost_channel,
+    )
+
+    symmetric_haar_projection = Fraction(0)
+    symmetric_color_channel = (
+        density
+        * symmetric_haar_projection
+        * right_source_det
+        * left_source_det
+        * zero_mode_slot_product
+        * nonzero_mode_source_quotient
+        * amputation_transport
+        * physical_projection
+    )
+    assert_equal("symmetric Haar source kills amputated four-point channel", symmetric_color_channel, Fraction(0))
+
+    residuals = {
+        "density": Fraction(1, 100),
+        "slot": Fraction(1, 120),
+        "haar": Fraction(1, 150),
+        "source": Fraction(1, 175),
+        "nonzero_source": Fraction(1, 210),
+        "amputation": Fraction(1, 240),
+        "tail": Fraction(1, 260),
+        "projection": Fraction(1, 280),
+        "sector": Fraction(1, 315),
+    }
+    residual_sum = sum(residuals.values(), Fraction(0))
+    physical_amplitude = leading_amputated + residual_sum
+    residual_budget = sum(abs(value) for value in residuals.values())
+    assert_equal(
+        "amputated four-point residual telescope",
+        physical_amplitude - leading_amputated,
+        residual_sum,
+    )
+    assert_equal(
+        "amputated four-point absolute residual bound",
+        abs(physical_amplitude - leading_amputated) <= residual_budget,
+        True,
+    )
+    underbudget_without_projection = residual_budget - abs(residuals["projection"])
+    assert_equal(
+        "omitting projection residual underbudgets four-point assembly",
+        abs(physical_amplitude - leading_amputated) <= underbudget_without_projection,
+        False,
+    )
+
+
 def main() -> None:
     check_source_functional_route_order()
     check_collective_coordinate_zero_mode_jacobian()
@@ -2658,6 +2782,7 @@ def main() -> None:
     check_hard_window_tail_subtraction()
     check_hard_wilsonian_ope_boundary_flow()
     check_hard_benchmark_channel_comparison_and_ratio()
+    check_thooft_four_point_amputated_assembly_gate()
     print("instanton physical amplitude architecture checks passed")
 
 

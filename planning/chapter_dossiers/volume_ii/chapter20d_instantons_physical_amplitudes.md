@@ -94,6 +94,12 @@
   singular-gauge BPST zero-mode slot profile used by the hard four-source
   amplitude, including `F_zm(0)=1`, the `6 (rho |p|)^(-3)` tail, and the
   four-slot product `6^4 prod c_l^(-3) s^(-12)`.
+- `ca:instanton-thooft-four-point-amputated-assembly`: packages the
+  't Hooft-style hard four-source calculation as an amputated Green-function
+  assembly: density, Haar tensor, chiral source determinants, individual
+  zero-mode slots, nonzero-mode source quotient, external-leg amputation,
+  physical projection, endpoint tail, and sector isolation all sit in one
+  residual budget.
 - `prop:su3-nf2-hard-source-power-slow-tail`: derives the SU(3), `N_f=2`
   hard four-source powers `rho^(32/3) d rho`,
   `(8 pi^2/g_ht^2(Q))^6 Lambda_ht^(29/3) Q^(-35/3)`, and the slow
@@ -326,6 +332,10 @@
   derives the individual zero-mode slot tail coefficient from the Bessel
   product cancellation and rejects fused-density endpoint substitution or
   hidden unamputated residues,
+  verifies the amputated 't Hooft four-point assembly and rejects density-only
+  shortcuts, rank-lost chiral source determinants, symmetric Haar sources,
+  omitted nonzero-mode source quotients, unamputated source overlaps, and
+  underbudgeted physical-projection residuals,
   verifies the finite Gaussian nonzero-mode source quotient covariance
   identity, the quadratic trace correction, absolute window propagation, and
   rank-loss rejection,
@@ -477,6 +487,14 @@
   evaluation \(H(R)+3A_0R^{-1/3}+(3/7)A_1R^{-7/3}+E_{\rm tail}\).  The
   companion check verifies the exact rational tail coefficients and rejects
   leading-tail-only and fused-density endpoint shortcuts.
+- 2026-06-06 issue #597 amputated four-point assembly pass: added
+  `ca:instanton-thooft-four-point-amputated-assembly` inside the hard
+  benchmark.  This pass explicitly treats the original-style hard instanton
+  calculation as an amputated Green-function assembly, with the density,
+  color-orientation tensor, chiral source determinants, individual zero-mode
+  slots, nonzero-mode source quotient, amputation, projection, endpoint, and
+  sector terms normalized in one regulator and one residual budget.  It is a
+  physics-amplitude consolidation, not an ADHM or moduli-space expansion.
 - 2026-06-06 issue #844 instanton amplitude surface pass: re-audited the
   dedicated physical-amplitude chapter for architecture vocabulary.  The
   reader-facing text now presents density normalization, channel data, hard

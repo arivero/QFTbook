@@ -859,6 +859,102 @@ formula is a benchmark channel, not a universal local vertex: changing the
 source wave packets, the orientation contraction, or the physical projection
 changes \(\mathcal K_{\rm ch}\), \(H\), or \(R_{4}^{\rm hard}\).
 
+\begin{controlledapproximation}[Amputated 't Hooft four-point assembly]
+\label{ca:instanton-thooft-four-point-amputated-assembly}
+The hard four-source coefficient is the finite-regulator remnant of an
+amputated Green-function calculation.  Before the center integral is
+evaluated, a retained \(Q=1\) contribution has the ordered form
+\begin{equation}
+\begin{aligned}
+  \mathcal G_{4,\Lambda}^{I}(p_1,\ldots,p_4)
+  &=
+  \ee^{\ii\theta}
+  \int
+  \dd^4a\,\ee^{\ii a\cdot(p_1+\cdots+p_4)}
+  \int_{\mathcal W_\rho}
+  \dd\rho\int\dd\Omega_{3}\,
+  D_{\Lambda}^{I}(\rho,\Omega)                         \\
+  &\quad{}\times
+  \mathcal H_{\Omega}(\mathcal J_R,\mathcal J_L)\,
+  \det B_R(\rho,\Omega;\mathcal J)\,
+  \det B_L(\rho,\Omega;\mathcal J)
+  \prod_{\ell=1}^{4}
+    \Psi_{\ell}^{\rm amp}(\rho p_\ell)                  \\
+  &\quad{}\times
+  \mathcal R_{\rm nz-src}(\rho,\Omega;\mathcal J)\,
+  \mathcal R_{\rm amp}(\rho,\Omega;\mathcal J)\,
+  \mathcal R_{\rm proj}(\rho,\Omega;\mathcal J).
+\end{aligned}
+  \label{eq:instanton-thooft-four-point-amputated-assembly}
+\end{equation}
+Here \(D_{\Lambda}^{I}\) contains the classical action, collective-coordinate
+Jacobian, and zero-mode-deleted determinant in one regulator convention;
+\(\mathcal H_{\Omega}\) is the shared color-orientation tensor; \(B_R\) and
+\(B_L\) are the right- and left-handed zero-mode source matrices; the
+\(\Psi_{\ell}^{\rm amp}\) are the individual amputated zero-mode slots; and
+the last three factors record, respectively, the source-dependent nonzero-mode
+quotient, external-leg amputation transport, and the chosen physical
+projection.  The \(a\)-integral gives
+\((2\pi)^4\delta^{(4)}(\sum_\ell p_\ell)\); only after this projection has
+been applied does the remaining size/orientation integral define the hard
+coefficient in \eqref{eq:instanton-hard-four-source-coefficient}.
+
+The difficult part of the original calculation is that all entries in
+\eqref{eq:instanton-thooft-four-point-amputated-assembly} must be normalized
+in the same regulator.  The one-loop density fixes \(D_{\Lambda}^{I}\), but
+it does not fix the chiral source determinants, the antisymmetric Haar
+projection, the amputated zero-mode form factors, or the normal-fluctuation
+source quotient.  Conversely, the zero-mode determinant fixes the anomalous
+source selection but not the heat-kernel determinant, the finite orientation
+normalization, or the endpoint tail.
+
+For a controlled channel write the comparison with the physical four-point
+coordinate as
+\begin{equation}
+\begin{aligned}
+  \mathcal A_{4}^{\rm phys}
+  -
+  \mathcal A_{4,\Lambda}^{\rm amp}
+  &=
+  E_{\rm dens}
+  +E_{\rm slot}
+  +E_{\rm Haar}
+  +E_{\rm src}
+  +E_{\rm nz-src}                                      \\
+  &\qquad
+  +E_{\rm amp}
+  +E_{\rm tail}
+  +E_{\rm proj}
+  +E_{\rm sec},
+\end{aligned}
+  \label{eq:instanton-thooft-four-point-residual}
+\end{equation}
+with absolute bound
+\begin{equation}
+  \left|
+  \mathcal A_{4}^{\rm phys}
+  -
+  \mathcal A_{4,\Lambda}^{\rm amp}
+  \right|
+  \le
+  B_{\rm dens}+B_{\rm slot}+B_{\rm Haar}+B_{\rm src}
+  +B_{\rm nz-src}+B_{\rm amp}+B_{\rm tail}+B_{\rm proj}+B_{\rm sec}.
+  \label{eq:instanton-thooft-four-point-bound}
+\end{equation}
+The terms are not interchangeable.  \(E_{\rm dens}\) controls the density and
+determinant normalization; \(E_{\rm slot}\) the individual zero-mode
+wavefunctions; \(E_{\rm Haar}\) the color orientation projection;
+\(E_{\rm src}\) the chiral source-rank and flavor determinant;
+\(E_{\rm nz-src}\) the nonzero-mode source quotient; \(E_{\rm amp}\) external-leg
+amputation and source-overlap transport; \(E_{\rm tail}\) the size-window
+endpoint; \(E_{\rm proj}\) the pole, OPE, spectral, or inclusive projection;
+and \(E_{\rm sec}\) sector isolation from neighboring instanton number.  A
+density-only result sets none of these later terms to zero.  A
+zero-mode-only result sets neither the determinant nor projection terms to
+zero.  The physical four-point claim is the assembled amplitude together with
+the residual bound.
+\end{controlledapproximation}
+
 \begin{proposition}[\(SU(3)\), \(N_f=2\) hard-source power and slow tail]
 \label{prop:su3-nf2-hard-source-power-slow-tail}
 In the preceding hard channel, \(b_0=29/3\).  The four differentiated
