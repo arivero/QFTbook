@@ -192,7 +192,9 @@ The chapter establishes:
 - controlled approximation `ca:shape-function-smeared-moment-expansion`,
   deriving the smeared-test Taylor expansion in which \(\Omega_1^e/Q\) gives
   the leading shift and \(\Omega_2^e/Q^2\) bounds the first omitted endpoint
-  curvature term;
+  curvature term, together with the observable-level
+  \(B_{\rm shape}^{(m)}\) residual for moment-truncated fits on a finite test
+  family;
 - a light-ray operator definition of quark fragmentation functions with Wilson
   lines;
 - the status of Lund string and cluster hadronization models as
@@ -430,7 +432,9 @@ The chapter establishes:
      For \(C^2\) endpoint tests the next controlled term is bounded by
      \(\Omega_2^e\|f''\|_\infty/(2Q^2)\) times the perturbative total
      variation, so first-moment fits do not determine curved or localized
-     endpoint smearings.
+     endpoint smearings.  A fit that retains only finitely many shape moments
+     carries the residual \(B_{\rm shape}^{(m)}(\mathcal F)\) on the actual
+     endpoint bins or detector-response tests being compared to data.
 10b. Track functions are nonperturbative operator coordinates with paired
      real--virtual evolution; the pairing, not a slogan of IRC safety, is what
      preserves normalization and gives the charged-energy moment RG.
@@ -747,3 +751,10 @@ The chapter establishes:
   agree on quadratic endpoint tests.  The companion shape-function check now
   verifies the second-order smeared expansion, same-first-moment/different-
   second-moment control, and wrong-scheme first-moment failure.
+- 2026-06-06 issue #725/#630 shape-function contract pass: promoted
+  `shape_function_convolution_checks.py` to an extended evidence contract and
+  added the moment-truncation residual \(B_{\rm shape}^{(m)}(\mathcal F)\) to
+  the prose.  The companion now verifies that two finite shape distributions
+  can match normalization, \(\Omega_1\), and \(\Omega_2\) and therefore agree
+  on quadratic endpoint tests, while still giving different local endpoint-bin
+  occupancies.

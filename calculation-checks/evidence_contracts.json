@@ -163,6 +163,17 @@
       "risk_class": "SCET/factorization proof-status boundary"
     },
     {
+      "path": "shape_function_convolution_checks.py",
+      "risk_class": "jet endpoint shape-function convolution and moment truncation",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "dimensionless event shape shifted by ell/Q",
+        "renormalized Wilson-line soft measurement coordinate",
+        "endpoint tests paired in a declared Banach space",
+        "subtraction-scheme translations paired between coefficient and shape coordinate"
+      ]
+    },
+    {
       "path": "qcd_non_global_log_checks.py",
       "risk_class": "QCD non-global soft-evolution factorization obstruction"
     },
