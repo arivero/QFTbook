@@ -3210,6 +3210,113 @@ bulk are physical detector predictions only after their endpoint atoms glue to
 the same measured \(A_\omega\) and \(B_\omega\).
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Measured EEC response and covariance contract]
+\label{ca:measured-eec-response-covariance-contract}
+Moment closure is still a one-event statement.  A collider measurement reports
+finite detector bins and their ensemble covariance after a detector response,
+so the physical prediction needs one more layer before it is comparable with
+data.  Fix detector tests \(\varphi_\alpha\) on \([-1,1]\).  For an event
+\(e\), define the contact-inclusive vector
+\begin{equation}
+  X_\alpha(e)
+  =
+  \left\langle O_{\omega,e}^{\rm open},\varphi_\alpha\right\rangle
+  +
+  K^\omega_+(e)\varphi_\alpha(1)
+  +
+  K^\omega_-(e)\varphi_\alpha(-1) .
+  \label{eq:measured-eec-event-vector}
+\end{equation}
+The endpoint atoms in \eqref{eq:measured-eec-event-vector} are eventwise
+coordinates.  Solving \eqref{eq:measured-eec-moment-closure-correction} only
+after ensemble averaging repairs the first two mean moments, but it does not
+repair bin covariances whenever the selected energy, recoil, or endpoint
+defect fluctuates across events.
+
+Let \(\mathbb E\) denote the physical event ensemble.  Write
+\begin{equation}
+  \bar X_\alpha=\mathbb E[X_\alpha],
+  \qquad
+  \Sigma^X_{\alpha\beta}
+  =
+  \mathbb E[(X_\alpha-\bar X_\alpha)(X_\beta-\bar X_\beta)] .
+  \label{eq:measured-eec-event-covariance}
+\end{equation}
+If a finite detector response maps the ideal vector to observed bins by
+\begin{equation}
+  Y_a
+  =
+  \sum_\alpha R_{a\alpha}X_\alpha+\epsilon_a,
+  \qquad
+  \mathbb E[\epsilon_a|X]=0,\qquad
+  \mathbb E[\epsilon_a\epsilon_b|X]=N_{ab}(X),
+  \label{eq:measured-eec-linear-response-model}
+\end{equation}
+then the measured mean and covariance are
+\begin{equation}
+  \bar Y=R\bar X,
+  \qquad
+  \Sigma^Y=R\Sigma^X R^{T}+\mathbb E[N(X)] .
+  \label{eq:measured-eec-response-covariance}
+\end{equation}
+The covariance layer is part of the observable datum.  The response matrix,
+detector-noise coordinate, selected-energy normalization, and endpoint
+convention must be transported together.  A theory curve for binned EEC data
+should therefore state a paired mean-and-covariance contract: for all finite
+bin covectors \(v\),
+\begin{equation}
+  \begin{aligned}
+  \left|v\cdot(\bar Y_{\rm phys}-R\bar X_{\rm pred})\right|
+  &\le B_{\rm mean}(v),\\
+  \left|
+  v^T\!
+  \left(
+    \Sigma^Y_{\rm phys}
+    -R\Sigma^{X}_{\rm pred}R^T
+    -\overline N
+  \right)v
+  \right|
+  &\le B_{\rm cov}(v).
+  \end{aligned}
+  \label{eq:measured-eec-mean-covariance-contract}
+\end{equation}
+Here \(B_{\rm mean}\) contains the same binning, endpoint, perturbative,
+Glauber, nonperturbative, track, and continuum terms as
+\eqref{eq:finite-resolution-eec-observable-budget}, while \(B_{\rm cov}\)
+contains their covariance counterparts and the uncertainty in the response
+calibration \(\overline N=\mathbb E[N(X)]\).
+
+The eventwise endpoint repair has a finite covariance identity.  Let
+\(\widehat X(e)\) be a proposed open-plus-endpoint vector and let
+\[
+  C_\alpha(e)
+  =
+  \Delta K^\omega_+(e)\varphi_\alpha(1)
+  +
+  \Delta K^\omega_-(e)\varphi_\alpha(-1)
+\]
+be the moment-closure correction from
+\eqref{eq:measured-eec-moment-closure-correction}.  Then
+\begin{equation}
+  \Sigma^{\widehat X+C}
+  =
+  \Sigma^{\widehat X}
+  +\Sigma^{\widehat X,C}
+  +\Sigma^{C,\widehat X}
+  +\Sigma^C .
+  \label{eq:measured-eec-endpoint-covariance-repair}
+\end{equation}
+Discarding the three correction terms in
+\eqref{eq:measured-eec-endpoint-covariance-repair} is the covariance analogue
+of using \(A_\omega=1,B_\omega=0\) for a selected-energy observable.  It may
+leave the mean curve visually plausible while mis-normalizing the uncertainty,
+bin-to-bin correlations, and any correlated \(\chi^2\) comparison.  The
+observable-level claim is therefore not ``the light-ray chart has the right
+endpoint powers.''  It is that the eventwise chart, endpoint atoms,
+nonperturbative lift, and detector response together satisfy
+\eqref{eq:measured-eec-mean-covariance-contract}.
+\end{controlledapproximation}
+
 \section{Shape Functions and Track Functions}
 
 When a measured event shape is of order \(\Lambda_{\rm QCD}/Q\), the soft

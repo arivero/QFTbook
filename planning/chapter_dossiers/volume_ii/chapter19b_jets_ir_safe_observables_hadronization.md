@@ -174,6 +174,13 @@ The chapter establishes:
   solves the coincident and back-to-back endpoint atoms from \(A_\omega\),
   \(B_\omega\), and the open moments, and gives the finite endpoint-test bound
   for repairing residual moment defects;
+- controlled approximation
+  `ca:measured-eec-response-covariance-contract`, extending measured EEC
+  closure from eventwise endpoint moments to detector-response means and
+  covariances.  The block defines finite detector-test vectors, eventwise
+  contact-inclusive coordinates, response and noise matrices, and the
+  covariance repair terms required when endpoint atoms fluctuate across the
+  event ensemble;
 - Definition `def:leading-shape-function-operator-datum`, defining the
   endpoint shape function as a renormalized Wilson-line measurement
   distribution paired with test functions, together with its normalization and
@@ -411,6 +418,11 @@ The chapter establishes:
       \(B_\omega=|\sum_r\omega_r z_r\mathbf n_r|^2\), and the open-chart
       moments; full-calorimeter atoms or zeroth-moment-only repairs generally
       give the wrong measured observable.
+10ad. A measured binned EEC prediction must also specify the response and
+      covariance contract.  Eventwise endpoint corrections contribute
+      cross-covariance and endpoint-covariance terms before the detector
+      response is applied; repairing only mean moments can leave the
+      correlated uncertainty and any \(\chi^2\) comparison mis-normalized.
 10a. Shape functions are renormalized Wilson-line measurement coordinates.
      Their leading endpoint convolution preserves total weight and shifts the
      first event-shape moment by \(\Omega_1^e/Q\) only after the observable,
@@ -490,6 +502,13 @@ The chapter establishes:
   companion `energy_correlator_track_checks.py` now verifies the endpoint-only
   correction, its detector-test bound, and negative controls against
   full-calorimeter atoms and zeroth-only repair.
+- 2026-06-06 issue #519 measured EEC response/covariance pass: added
+  `ca:measured-eec-response-covariance-contract`, which promotes the measured
+  EEC prediction from a mean curve to a finite detector-response contract for
+  means and covariances.  The companion
+  `energy_correlator_track_checks.py` now verifies eventwise endpoint
+  covariance repair, linear response covariance transport, detector-noise
+  budgeting, and negative controls against mean-only endpoint repair.
 - 2026-05-26 issue #526 pass: corrected the soft-drop IRC classification by
   separating the \(\beta_{\rm SD}>0\) groomed-four-vector statement from the
   \(\beta_{\rm SD}=0\) collinear counterexample, and added

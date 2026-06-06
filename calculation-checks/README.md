@@ -1121,7 +1121,11 @@ Current checks:
   equations for a measured EEC, the global moment-closure correction and its
   endpoint-test bound, negative controls against full-calorimeter atoms and
   zeroth-only repair, and the finite residual-budget inequality that separates
-  open-chart, endpoint-atom, and power/hadronization defects.
+  open-chart, endpoint-atom, and power/hadronization defects.  The same
+  companion now verifies the measured EEC response/covariance contract:
+  eventwise endpoint covariance repair, linear detector-response covariance
+  transport, detector-noise budgeting, and negative controls against
+  mean-only endpoint repair.
 - `energy_correlator_sudakov_checks.py`: exact rational checks for the
   back-to-back EEC leading Sudakov factor, including
   \(\int_0^{L_b}u\,du=L_b^2/2\), the fixed-coupling differential equation for
