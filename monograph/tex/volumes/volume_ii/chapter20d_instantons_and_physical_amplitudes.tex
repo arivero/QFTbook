@@ -2047,7 +2047,10 @@ projection.
 
 Let \(\sigma,\tau\in\{+,-\}\) denote instanton and anti-instanton charges,
 and write \(z_1,z_2\) for their collective coordinates after the common
-center has been separated.  In a retained two-body chart, the source-channel
+center has been separated.  In a retained two-body chart, let
+\(\dd\nu_{\sigma\tau}^{\rm ord}(z_1,z_2)\) denote the ordered measure: the
+first labelled entry has charge \(\sigma\), the second has charge \(\tau\),
+and no pair symmetry factor is hidden in the measure.  The source-channel
 cluster coefficient has the form
 \begin{equation}
   \mathcal A_{\sigma\tau}^{\rm conn}(\mathcal J)
@@ -2060,7 +2063,7 @@ cluster coefficient has the form
     K_{\sigma}^{(1)}(z_1;\mathcal J)
     K_{\tau}^{(1)}(z_2;\mathcal J)
   \right]\,
-  \dd\nu_{\sigma\tau}(z_1,z_2).
+  \dd\nu_{\sigma\tau}^{\rm ord}(z_1,z_2).
   \label{eq:instanton-pair-connected-source-coefficient}
 \end{equation}
 The full two-body kernel includes the relative quasi-zero-mode interaction,
@@ -2093,11 +2096,19 @@ source amplitude has the ordered form
   =
   \mathcal A_+^{(1)}(\mathcal J)
   +\mathcal A_-^{(1)}(\mathcal J)
-  +\sum_{\sigma,\tau\in\{+,-\}}
+  +\frac12\sum_{\sigma,\tau\in\{+,-\}}
     \mathcal A_{\sigma\tau}^{\rm conn}(\mathcal J)
   +R_{\ge3}^{\rm cl}(\mathcal J).
   \label{eq:instanton-source-first-cluster-assembly}
 \end{equation}
+The displayed factor \(1/2\) is the Mayer pair symmetry factor for the
+ordered species sum.  For \(\sigma=\tau\) it is the identical-pair \(1/2!\).
+For \(\sigma\ne\tau\), the two ordered terms \(+-\) and \(-+\) together give
+one unordered mixed pair when charge conjugation or the chosen source frame
+identifies their coefficients.  Equivalently one may use unordered pair
+measures and absorb these factors into the definitions of
+\(\mathcal A_{\sigma\tau}^{\rm conn}\); that is a different convention and
+must be stated before comparing amplitudes.
 Let \(C_{\sigma\tau}^{0}(z_1,z_2;\mathcal J)\) be the retained leading
 connected pair kernel after the disconnected one-body product in
 \eqref{eq:instanton-pair-connected-source-coefficient} has been subtracted,
@@ -2106,12 +2117,14 @@ and set
   H_{\sigma\tau}^{0}(\mathcal J)
   =
   \int_{\mathcal W_{\sigma\tau}}
-  C_{\sigma\tau}^{0}(z_1,z_2;\mathcal J)\,\dd\nu_{\sigma\tau},
+  C_{\sigma\tau}^{0}(z_1,z_2;\mathcal J)\,
+  \dd\nu_{\sigma\tau}^{\rm ord},
   \qquad
   M_{\sigma\tau}^{0}(\mathcal J)
   =
   \int_{\mathcal W_{\sigma\tau}}
-  |C_{\sigma\tau}^{0}(z_1,z_2;\mathcal J)|\,\dd|\nu_{\sigma\tau}|.
+  |C_{\sigma\tau}^{0}(z_1,z_2;\mathcal J)|\,
+  \dd|\nu_{\sigma\tau}^{\rm ord}|.
 \]
 Assume the retained pair kernel differs from \(C_{\sigma\tau}^{0}\) by
 multiplicative corrections
@@ -2157,8 +2170,11 @@ neutral \(I\bar I\) source coefficient misses the case
 \(\sigma+\tau=0\), where the theta phase is trivial but the source kernel or
 zero-mode overlap can be nonzero.  Third, a one-instanton sector-isolation
 claim must budget the absolute size of the retained pair terms in
-\eqref{eq:instanton-source-first-cluster-assembly}; finite one-body density,
-by itself, does not control \(R_{\rm sec}\).
+\eqref{eq:instanton-source-first-cluster-assembly}, including the displayed
+symmetry factor; finite one-body density, by itself, does not control
+\(R_{\rm sec}\).  Using the ordered pair sum without the \(1/2\) would double
+count both identical pairs and the two ordered representatives of a mixed pair
+whenever they describe one unordered physical molecule.
 \end{controlledapproximation}
 
 \begin{controlledapproximation}[Neutral-pair valley prescription]

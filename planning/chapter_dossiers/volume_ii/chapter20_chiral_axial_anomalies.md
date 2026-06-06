@@ -439,7 +439,7 @@
 | \(X_{\mathcal S},\delta_X,z_B,z_O,\epsilon_C\) | finite scheme-transport data for an instanton determinant constant: coupling-coordinate shift, zero-mode/source and operator/projection frame factors, and logarithmic constant residual |
 | \(B_R,B_L,d_R,d_L,\epsilon_{\rm rank}\) | right/left four-source zero-mode overlap matrices, determinant margins, and rank-margin residual used to control a nondegenerate \(N_f=2\) instanton four-source amplitude |
 | \(X_R,X_L,\delta_R,\delta_L,\epsilon_{\rm cond}\) | conditioned source-leakage matrices \((B_\chi^0)^{-1}\Delta B_\chi\), their entrywise bounds, and the resulting determinant-relative four-source residual |
-| \(\widehat B_{\rm bench}^{(4)},\mathcal H_{\mathfrak h},\delta_{21}\) | center-stripped hard four-fermion benchmark coefficient, its dimensionless source/orientation/window integral, and the residual in the two-hard-scale instanton ratio test |
+| \(\widehat B_{\rm bench}^{(4)},\Gamma_{\rm coll},\mathcal H_{\mathfrak h},\delta_{21}\) | center-stripped hard four-fermion benchmark coefficient, the running bosonic collective-coordinate factor, its dimensionless source/orientation/window integral, and the residual in the two-hard-scale instanton ratio test |
 | \(\mu_I,\rho_I,K_\Lambda(\rho)\) | Wilsonian instanton factorization scale, cutoff \(\rho_I=\mu_I^{-1}\), and fully paired finite-regulator size integrand whose boundary flux transfers between the short coefficient and long-distance remainder |
 | \(C_I^{<},[O_I]_\mu,\gamma_{IK}\) | short-instanton OPE coefficient, retained renormalized operator basis, and operator-mixing anomalous-dimension matrix used to distinguish composite-operator RG transport from size-factorization flow |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
@@ -2082,3 +2082,11 @@
   spectral bins, that contact polynomials have no separated spectral weight, and
   that one spacelike value cannot determine a physical bin without a separate
   inversion/stability datum.
+- 2026-06-06 issue #597 cross-chapter normalization repair: propagated the
+  running collective-coordinate factor
+  \(\Gamma_{\rm coll}(Q)=(8\pi^2/g_{\rm ht}^2(Q))^6\) into the parent hard
+  four-source benchmark decomposition, same-theory ratio, and slope statement
+  so Ch20 and Ch20D use the same physical amplitude coordinate.  The BPST
+  companion now rejects a pure-power-only ratio, and the Ch20D architecture
+  companion scans both chapters for the shared collective factor.  This is a
+  coherence and normalization repair, not a tangential moduli-space expansion.

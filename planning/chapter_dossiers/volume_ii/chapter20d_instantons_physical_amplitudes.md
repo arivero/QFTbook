@@ -376,9 +376,9 @@
   source vectors, measurement omission, and unbudgeted quadratic residual
   propagation,
   verifies the first connected instanton-pair source correction, including
-  disconnected subtraction, neutral-pair source visibility despite zero theta
-  curvature, same-charge second-harmonic data, zero-mode overlap survival, and
-  pair residual control,
+  disconnected subtraction, ordered-pair/Mayer symmetry-factor counting,
+  neutral-pair source visibility despite zero theta curvature, same-charge
+  second-harmonic data, zero-mode overlap survival, and pair residual control,
   verifies the neutral-pair valley prescription with exact rational
   `(PV, ambiguity)` lateral coordinates, a source-projected residue, its
   perturbative lateral partner, same-coordinate ambiguity cancellation,
@@ -431,6 +431,13 @@
   coefficient, OPE split, assembled amplitude, same-theory ratio, and
   logarithmic slope statement.  The companion check now rejects coefficients
   or ratios that retain only the pure `Q^(-35/3)` power.
+- 2026-06-06 cross-chapter normalization and pair-counting repair: propagated
+  the same running collective factor into the parent Ch20 hard-scale benchmark,
+  added a cross-file regression comparing the duplicate benchmark equations,
+  and made the first cluster correction use an ordered two-body measure with a
+  displayed Mayer \(1/2\).  The companion check now rejects both the old
+  pure-power-only duplicate and an ordered pair sum that omits the symmetry
+  factor.
 - 2026-06-06 hard color-orientation projection pass: added
   `prop:instanton-hard-haar-orientation-tensor` before the individual
   zero-mode-slot calculation.  The pass derives the two-frame Haar projector

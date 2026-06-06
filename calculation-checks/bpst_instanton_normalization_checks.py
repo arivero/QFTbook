@@ -5592,21 +5592,27 @@ def check_thooft_hard_scale_benchmark_ratio() -> None:
     n_f = 2
     b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
     hard_power = -(b0 + 2)
+    collective_power = 2 * n_c
     assert_equal("benchmark ratio SU3 Nf2 b0", b0, Fraction(29, 3))
     assert_equal("benchmark ratio hard Q power", hard_power, -Fraction(35, 3))
+    assert_equal("benchmark running collective power", collective_power, 6)
 
     # Store monomial powers rather than evaluating fractional powers of a
     # numerical Q.  The stripped benchmark has
-    # C_S Lambda^b0 Q^(-b0-2) H_h(R), after the center delta and fixed source
-    # dimensions have been removed.
+    # C_S Gamma_coll(Q) Lambda^b0 Q^(-b0-2) H_h(R), after the center delta and
+    # fixed source dimensions have been removed.
     stripped_benchmark_powers = {
         "determinant_constant": Fraction(1),
+        "collective_log_action": Fraction(collective_power),
         "Lambda_ht": b0,
         "Q": hard_power,
         "dimensionless_source_window": Fraction(1),
     }
     ratio_powers = {
         "determinant_constant": Fraction(0),
+        "collective_log_action_Q2_over_Q1": stripped_benchmark_powers[
+            "collective_log_action"
+        ],
         "Lambda_ht": Fraction(0),
         "Q2_over_Q1": stripped_benchmark_powers["Q"],
         "source_window_ratio": Fraction(1),
@@ -5615,6 +5621,11 @@ def check_thooft_hard_scale_benchmark_ratio() -> None:
         "determinant constant cancels in hard-scale benchmark ratio",
         ratio_powers["determinant_constant"],
         Fraction(0),
+    )
+    assert_equal(
+        "running collective factor survives in hard-scale benchmark ratio",
+        ratio_powers["collective_log_action_Q2_over_Q1"],
+        Fraction(6),
     )
     assert_equal(
         "Lambda power cancels in same-theory hard-scale ratio",
@@ -5628,12 +5639,20 @@ def check_thooft_hard_scale_benchmark_ratio() -> None:
     )
 
     # Same dimensionless source shape and window: the source-window ratio is
-    # one, so the logarithmic slope is exactly b0+2.
+    # one, but the retained one-loop coefficient still contains the running
+    # collective-coordinate logarithm.
     source_window_q1 = Fraction(5, 7)
     source_window_q2 = Fraction(5, 7)
     assert_equal("transported source-window ratio", source_window_q2 / source_window_q1, Fraction(1))
-    effective_slope_same_source = -hard_power
-    assert_equal("same-source benchmark logarithmic slope", effective_slope_same_source, Fraction(35, 3))
+    collective_log_derivative = Fraction(6, 37)
+    power_counting_slope = -hard_power
+    effective_slope_same_source = power_counting_slope - collective_log_derivative
+    assert_equal("pure hard-source power-counting slope", power_counting_slope, Fraction(35, 3))
+    assert_equal(
+        "same-source benchmark slope includes collective logarithm",
+        effective_slope_same_source == Fraction(35, 3),
+        False,
+    )
 
     # Residual propagation for the two-scale ratio:
     # ((1+e2)/(1+e1))-1 is bounded by (eps1+eps2)/(1-eps1).
@@ -5662,6 +5681,13 @@ def check_thooft_hard_scale_benchmark_ratio() -> None:
     assert_equal(
         "changed source conditioning changes the benchmark ratio",
         q2_rank_margin / q1_rank_margin == Fraction(1),
+        False,
+    )
+    pure_power_only_ratio_has_collective = Fraction(0)
+    assert_equal(
+        "pure-power ratio misses running collective factor",
+        pure_power_only_ratio_has_collective
+        == ratio_powers["collective_log_action_Q2_over_Q1"],
         False,
     )
     determinant_only_q_power = Fraction(0)

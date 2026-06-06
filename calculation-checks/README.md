@@ -728,7 +728,7 @@ Current checks:
   \((8\pi^2/g_{\rm ht}^2(Q))^6\) collective-coordinate factor and the
   \(SU(3)\), \(N_f=2\) \(\Lambda_{\rm ht}^{29/3}Q^{-35/3}\) power only when
   source shape, conditioning, orientation, and size-window data are transported
-  together, the
+  together, with a negative control for pure-power-only ratios, the
   mixed hard-source plus physical-screening log-shell equation
   \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\) with negative controls against
   hard-only and screening-only saddle substitutions, the
@@ -832,6 +832,8 @@ Current checks:
   control, the hard reference-channel calibration which fixes only a
   same-frame finite determinant constant and propagates reference residuals by
   the target/reference integral ratio,
+  the cross-chapter hard-scale benchmark regression that keeps
+  \(\Gamma_{\rm coll}(Q)\) in both Ch20 and Ch20D,
   the observable-map distinction among hard source coefficients, theta
   curvatures, \(U(1)_A\)-odd kernels, and real-time axial relaxation rates,
   the physical projection bridge from Euclidean source kernels to pole-window,
@@ -844,8 +846,9 @@ Current checks:
   the physical measurement matrix, source amputation, and quadratic residual
   propagation,
   the first connected instanton-pair source correction with disconnected
-  subtraction, neutral-pair source visibility, same-charge second-harmonic
-  data, zero-mode overlap survival, and pair residual control,
+  subtraction, ordered-pair/Mayer symmetry-factor counting, neutral-pair
+  source visibility, same-charge second-harmonic data, zero-mode overlap
+  survival, and pair residual control,
   the neutral instanton--anti-instanton valley lateral prescription with
   same-source-coordinate cancellation against the perturbative ambiguity and
   negative controls for pair-only, principal-value-only, wrong-frame, and
@@ -888,8 +891,10 @@ Current checks:
   data, diagonal-overlap division in a mixed source basis, colored auxiliary
   kernels treated as standalone LSZ amplitudes,
   underbudgeted projection bridges, theta-curvature-only control of a neutral pair, connected
-  pair correction without disconnected subtraction, one-body sector budgets
-  that omit pair leakage, determinant-only hard ratio, missing hard slot,
+  pair correction without disconnected subtraction, ordered pair sums without
+  the Mayer half, one-body sector budgets
+  that omit pair leakage, determinant-only hard ratio, pure-power hard ratios
+  with the running collective factor stripped, missing hard slot,
   fixed short-instanton vertices under moving size splits, short coefficients
   used as physical amplitudes, coefficient-only scheme changes, omitted
   long-size-shell flow, one-number spectral projection, and omitted external

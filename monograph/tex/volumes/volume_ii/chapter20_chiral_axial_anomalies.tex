@@ -8502,6 +8502,7 @@ dimensionless window \(0<s=Q\rho<R\) are held fixed.  In the \(SU(3)\),
   \widehat B_{\rm bench}^{(4)}(Q;R)
   =
   C_{\mathcal S}\,
+  \Gamma_{\rm coll}(Q)\,
   \Lambda_{\rm ht}^{\,b_0}\,
   Q^{-(b_0+2)}\,
   \mathcal H_{\mathfrak h}(R)\,
@@ -8509,20 +8510,30 @@ dimensionless window \(0<s=Q\rho<R\) are held fixed.  In the \(SU(3)\),
   \qquad b_0=\frac{29}{3}.
   \label{eq:thooft-hard-scale-benchmark-decomposition}
 \end{equation}
-Here \(C_{\mathcal S}\) contains the finite determinant and source-frame
-normalization in scheme \(\mathcal S\), while
+where
+\[
+  \Gamma_{\rm coll}(Q)
+  =
+  \left(\frac{8\pi^2}{g_{\rm ht}^2(Q)}\right)^6
+\]
+is the running bosonic collective-coordinate normalization in the half-trace
+coupling convention used for the BPST density.  Here \(C_{\mathcal S}\)
+contains the finite determinant and source-frame normalization in scheme
+\(\mathcal S\) but not this running collective factor, while
 \(\mathcal H_{\mathfrak h}(R)\) is the dimensionless source, orientation,
 zero-mode, and size-window integral after the change of variables
 \(\rho=s/Q\).  The power \(Q^{-(b_0+2)}=Q^{-35/3}\) is therefore not the
 BPST measure by itself.  It is the result of combining the one-loop running
-density, the four zero-mode hard-source factors, the shared orientation
-projection, amputation, and the retained size window.
+density, the running collective-coordinate Jacobian, the four zero-mode
+hard-source factors, the shared orientation projection, amputation, and the
+retained size window.
 
 For two hard scales \(Q_1,Q_2\) in the same source and determinant scheme,
 \begin{equation}
   \frac{\widehat B_{\rm bench}^{(4)}(Q_2;R)}
        {\widehat B_{\rm bench}^{(4)}(Q_1;R)}
   =
+  \frac{\Gamma_{\rm coll}(Q_2)}{\Gamma_{\rm coll}(Q_1)}
   \left(\frac{Q_2}{Q_1}\right)^{-(b_0+2)}
   \frac{\mathcal H_{\mathfrak h_{Q_2}}(R)}
        {\mathcal H_{\mathfrak h_{Q_1}}(R)}
@@ -8547,12 +8558,27 @@ Thus a hard instanton calculation should quote not only a local vertex
 coefficient but also the scale-ratio datum
 \eqref{eq:thooft-hard-scale-benchmark-ratio}.  If
 \(\mathcal H_{\mathfrak h_{Q_2}}=\mathcal H_{\mathfrak h_{Q_1}}\) up to the
-same controlled window residuals, the logarithmic slope is \(35/3\) in this
-channel.  If the dimensionless source or conditioning changes, the slope test
-has measured that change rather than the universal instanton power.  A fixed
-Wilsonian short-distance vertex, a determinant-only ratio, or a
-mass-saturated vacuum activity is therefore a different source coordinate from
-the hard four-fermion benchmark ratio.
+same controlled window residuals, the pure hard-source power contributes
+\(35/3\) to the logarithmic slope in this channel, but the retained
+one-loop benchmark slope is
+\[
+  -\frac{\dd}{\dd\log Q}
+  \log\!\left[
+    \Gamma_{\rm coll}(Q)Q^{-35/3}
+  \right]
+  =
+  \frac{35}{3}
+  -
+  6\,
+  \frac{\dd}{\dd\log Q}
+  \log\!\left(\frac{8\pi^2}{g_{\rm ht}^2(Q)}\right).
+\]
+If the dimensionless source or conditioning changes, the slope test has
+measured that change rather than the universal instanton power.  A fixed
+Wilsonian short-distance vertex, a determinant-only ratio, a formula with the
+collective factor stripped from the amplitude coordinate, or a mass-saturated
+vacuum activity is therefore a different source coordinate from the hard
+four-fermion benchmark ratio.
 \end{controlledapproximation}
 
 \begin{controlledapproximation}[Instanton observable assembly map]

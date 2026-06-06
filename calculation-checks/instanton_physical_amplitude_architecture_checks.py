@@ -77,8 +77,10 @@ Target claims:
   amputation, and quadratic residual propagation have been supplied.
 - `ca:instanton-first-cluster-amplitude-correction`: a first connected
   two-body correction to a source amplitude requires the disconnected one-body
-  product subtraction, a source/projection-specific pair kernel, absolute pair
-  residual control, and a separate reading of neutral and same-charge pairs.
+  product subtraction, a declared ordered/unordered pair convention with the
+  correct symmetry factor, a source/projection-specific pair kernel, absolute
+  pair residual control, and a separate reading of neutral and same-charge
+  pairs.
 - `ca:instanton-neutral-pair-valley-prescription`: a neutral instanton-pair
   valley contribution is a lateral prescription in the same source/projection
   coordinate as its perturbative ambiguity partner; pair-only, principal-value
@@ -127,7 +129,8 @@ Independent construction:
   quadratic inclusive-cut projections from physical amplitude vectors,
   spectral-bin/Stieltjes comparisons, contact
   polynomial separation, and bridge residual telescopes,
-  first connected instanton-pair source corrections,
+  first connected instanton-pair source corrections with explicit
+  ordered-pair versus unordered-pair combinatorics,
   neutral-pair lateral-prescription cancellation coordinates,
   chirality-source selection rules for the instanton zero-mode determinant,
   an amputated 't Hooft four-point assembly ledger,
@@ -220,8 +223,9 @@ Negative controls:
   omitted from the physical bin,
   a bridge budget omitting the inverse-problem residual, a neutral pair
   controlled only by theta curvature, a disconnected
-  pair product counted as a connected source correction, a one-body
-  sector-isolation budget that omits pair leakage, a
+  pair product counted as a connected source correction, an ordered pair sum
+  used without its Mayer symmetry factor, a one-body sector-isolation budget
+  that omits pair leakage, a
   neutral valley principal value treated as the full lateral contribution,
   pair-only lateral ambiguity treated as physical, a vacuum-residue
   cancellation transported to a different source coordinate,
@@ -253,6 +257,7 @@ from __future__ import annotations
 
 import math
 from fractions import Fraction
+from pathlib import Path
 
 from check_utils import assert_close, assert_geq, assert_gt, assert_leq
 
@@ -331,6 +336,17 @@ def product(values: list[Fraction]) -> Fraction:
     for value in values:
         result *= value
     return result
+
+
+def label_context(path: str, label: str, before: int = 900, after: int = 1300) -> str:
+    text = Path(path).read_text()
+    index = text.index(label)
+    return text[max(0, index - before) : index + after]
+
+
+def assert_contains(name: str, haystack: str, needle: str) -> None:
+    if needle not in haystack:
+        raise AssertionError(f"{name}: missing {needle!r}")
 
 
 def beta0(n_colors: int, n_flavors: int) -> Fraction:
@@ -720,6 +736,85 @@ def check_running_collective_jacobian_in_hard_coefficient() -> None:
         slope_with_collective_log,
         power_only_slope,
     )
+
+
+def check_cross_chapter_hard_scale_collective_factor_regression() -> None:
+    parent_path = "monograph/tex/volumes/volume_ii/chapter20_chiral_axial_anomalies.tex"
+    physical_path = (
+        "monograph/tex/volumes/volume_ii/"
+        "chapter20d_instantons_and_physical_amplitudes.tex"
+    )
+
+    parent_decomposition = label_context(
+        parent_path,
+        "eq:thooft-hard-scale-benchmark-decomposition",
+        before=1000,
+        after=700,
+    )
+    parent_ratio = label_context(
+        parent_path,
+        "eq:thooft-hard-scale-benchmark-ratio",
+        before=900,
+        after=700,
+    )
+    physical_coefficient = label_context(
+        physical_path,
+        "eq:instanton-hard-four-source-coefficient",
+        before=900,
+        after=500,
+    )
+    physical_ratio = label_context(
+        physical_path,
+        "eq:instanton-hard-four-source-ratio",
+        before=800,
+        after=450,
+    )
+
+    for name, context in [
+        ("parent hard-scale benchmark coefficient", parent_decomposition),
+        ("parent hard-scale benchmark ratio", parent_ratio),
+        ("physical chapter hard coefficient", physical_coefficient),
+        ("physical chapter hard ratio", physical_ratio),
+    ]:
+        assert_contains(name, context, "\\Gamma_{\\rm coll}")
+
+    assert_contains(
+        "parent hard-scale benchmark keeps pure hard power",
+        parent_decomposition,
+        "Q^{-(b_0+2)}",
+    )
+    assert_contains(
+        "physical hard coefficient keeps SU3 Nf2 hard power",
+        physical_coefficient,
+        "Q^{-35/3}",
+    )
+    assert_contains(
+        "parent ratio keeps collective ratio",
+        parent_ratio,
+        "\\frac{\\Gamma_{\\rm coll}(Q_2)}{\\Gamma_{\\rm coll}(Q_1)}",
+    )
+    assert_contains(
+        "physical ratio keeps collective ratio",
+        physical_ratio,
+        "\\frac{\\Gamma_{\\rm coll}(Q_2)}{\\Gamma_{\\rm coll}(Q_1)}",
+    )
+
+    gamma_index = parent_decomposition.index("\\Gamma_{\\rm coll}(Q)")
+    lambda_index = parent_decomposition.index("\\Lambda_{\\rm ht}")
+    q_index = parent_decomposition.index("Q^{-(b_0+2)}")
+    if not gamma_index < lambda_index < q_index:
+        raise AssertionError("parent hard benchmark no longer matches Ch20D factor order")
+
+    old_ratio_without_collective = (
+        "\\left(\\frac{Q_2}{Q_1}\\right)^{-(b_0+2)}\n"
+        "  \\frac{\\mathcal H_{\\mathfrak h_{Q_2}}(R)}"
+    )
+    pure_power_pos = parent_ratio.index(old_ratio_without_collective)
+    collective_ratio_pos = parent_ratio.index(
+        "\\frac{\\Gamma_{\\rm coll}(Q_2)}{\\Gamma_{\\rm coll}(Q_1)}"
+    )
+    if not collective_ratio_pos < pure_power_pos:
+        raise AssertionError("parent hard benchmark ratio dropped the collective prefactor")
 
 
 def check_proper_time_determinant_log_channel_window() -> None:
@@ -1941,12 +2036,60 @@ def check_first_cluster_amplitude_correction() -> None:
     one_body_plus = Fraction(5, 11)
     one_body_minus = Fraction(7, 13)
     disconnected_product = one_body_plus * one_body_minus
-    neutral_connected = Fraction(3, 17)
-    full_neutral_pair_kernel = disconnected_product + neutral_connected
+    neutral_connected_pm = Fraction(3, 17)
+    neutral_connected_mp = Fraction(3, 17)
+    same_charge_connected_pp = Fraction(2, 19)
+    same_charge_connected_mm = -Fraction(5, 23)
+    full_neutral_pair_kernel_pm = disconnected_product + neutral_connected_pm
+    full_neutral_pair_kernel_mp = disconnected_product + neutral_connected_mp
 
-    cluster_assembled = one_body_plus + one_body_minus + neutral_connected
+    ordered_pair_sum = (
+        same_charge_connected_pp
+        + neutral_connected_pm
+        + neutral_connected_mp
+        + same_charge_connected_mm
+    )
+    cluster_assembled = (
+        one_body_plus + one_body_minus + Fraction(1, 2) * ordered_pair_sum
+    )
+    unordered_equivalent = (
+        one_body_plus
+        + one_body_minus
+        + neutral_connected_pm
+        + Fraction(1, 2) * same_charge_connected_pp
+        + Fraction(1, 2) * same_charge_connected_mm
+    )
+    assert_equal(
+        "ordered pair sum with Mayer half equals unordered pair assembly",
+        cluster_assembled,
+        unordered_equivalent,
+    )
+    assert_equal(
+        "mixed distinguishable pair is counted once",
+        Fraction(1, 2) * (neutral_connected_pm + neutral_connected_mp),
+        neutral_connected_pm,
+    )
+    assert_equal(
+        "identical ++ pair carries one half",
+        Fraction(1, 2) * same_charge_connected_pp,
+        Fraction(1, 19),
+    )
+    assert_equal(
+        "identical -- pair carries one half",
+        Fraction(1, 2) * same_charge_connected_mm,
+        -Fraction(5, 46),
+    )
+    assert_not_equal(
+        "ordered pair sum without one half double counts pair data",
+        one_body_plus + one_body_minus + ordered_pair_sum,
+        cluster_assembled,
+    )
+
     unsubtracted_assembled = (
-        one_body_plus + one_body_minus + full_neutral_pair_kernel
+        one_body_plus
+        + one_body_minus
+        + Fraction(1, 2) * (full_neutral_pair_kernel_pm + full_neutral_pair_kernel_mp)
+        + Fraction(1, 2) * (same_charge_connected_pp + same_charge_connected_mm)
     )
     assert_equal(
         "pair disconnected subtraction removes one-body product",
@@ -1955,15 +2098,15 @@ def check_first_cluster_amplitude_correction() -> None:
     )
     assert_not_equal(
         "full pair kernel is not a connected source correction",
-        full_neutral_pair_kernel,
-        neutral_connected,
+        full_neutral_pair_kernel_pm,
+        neutral_connected_pm,
     )
 
     source_projection = Fraction(19, 23)
-    neutral_source_coefficient = source_projection * neutral_connected
+    neutral_source_coefficient = source_projection * neutral_connected_pm
     neutral_topological_charge = 0
     neutral_theta_curvature = (
-        neutral_topological_charge * neutral_topological_charge * neutral_connected
+        neutral_topological_charge * neutral_topological_charge * neutral_connected_pm
     )
     assert_equal(
         "neutral pair has zero theta curvature charge",
@@ -1981,12 +2124,11 @@ def check_first_cluster_amplitude_correction() -> None:
         neutral_theta_curvature,
     )
 
-    same_charge_connected = Fraction(2, 19)
     same_charge_topological_charge = 2
     same_charge_theta_curvature = (
         same_charge_topological_charge
         * same_charge_topological_charge
-        * same_charge_connected
+        * same_charge_connected_pp
     )
     assert_equal(
         "same-charge pair carries second harmonic curvature weight",
@@ -2877,6 +3019,7 @@ def main() -> None:
     check_collective_coordinate_zero_mode_jacobian()
     check_one_loop_density_rg_and_channel_power()
     check_running_collective_jacobian_in_hard_coefficient()
+    check_cross_chapter_hard_scale_collective_factor_regression()
     check_proper_time_determinant_log_channel_window()
     check_hard_color_orientation_haar_tensor()
     check_individual_zero_mode_slot_tail_from_bessel_products()
