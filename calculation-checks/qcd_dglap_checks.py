@@ -1,16 +1,71 @@
 #!/usr/bin/env python3
-"""Exact checks for the DIS/DGLAP convention block in Volume II.
+r"""Exact checks for the DIS/DGLAP convention block in Volume II.
 
-The manuscript uses trace-delta color generators,
-tr_fund(t^a t^b)=delta^{ab}, and writes the leading DGLAP equation as
-P=(g^2/(8*pi^2)) P^(0)+O(g^4).  These finite rational checks verify the
-plus-distribution convention, one-loop number and momentum sum rules, the
-trace-normalization conversion of the cusp coefficient, and the sign
-normalization of the local moment tower obtained from the Wilson-line light-ray
-operator, the RG cancellation between coefficient functions and PDFs in a
-factorized DIS convolution, the finite dependency-budget arithmetic behind the
-common QCD factorization ladder, and the endpoint test-function window used to
-separate the cusp plus-distribution from a full DIS threshold theorem.
+Evidence contract.
+
+Target claims:
+  Volume II, Chapter 19 fixes the trace-delta color convention for the leading
+  DGLAP kernels, the plus-distribution convention, quark-number and momentum
+  sum rules, light-ray moment signs, coefficient/PDF RG cancellation,
+  scheme-covariant DGLAP moment transport, the common QCD factorization
+  dependency budget, and the endpoint test-function boundary for DIS threshold
+  claims.
+
+Independent construction:
+  The checks compute plus-distribution moments from the defining test-function
+  action, evaluate the one-loop splitting-kernel moments from rational
+  integrals, derive light-ray phases from finite complex powers, and build
+  finite matrix models for coefficient/PDF RG cancellation and scheme
+  covariance.  They do not reuse a manuscript-expanded final observable as an
+  input datum.
+
+Imported assumptions:
+  Leading-twist factorization for compact-x DIS, existence and renormalization
+  of the light-ray operator coordinates, the perturbative one-loop kernel
+  calculation, and the continuum/power-remainder control of physical QCD
+  structure functions are imported physics inputs.
+
+Negative controls:
+  The suite rejects replacing the plus distribution by an unsubtracted
+  endpoint pole, dropping jet/soft/boundary entries from a threshold or
+  factorization budget, transforming PDFs without the dual coefficient row,
+  using the wrong coefficient-side scheme map, and omitting the Sdot S^{-1}
+  term in a scale-dependent finite scheme change.
+
+Scope boundary:
+  These are exact finite convention, conservation, and factorized-coordinate
+  transport checks.  They are not a proof of all-order DIS factorization,
+  endpoint resummation, small-x factorization, or nonperturbative PDF
+  existence in continuum QCD.
+
+Primary derivation route:
+  The manuscript route starts from the current-product OPE, packages
+  leading-twist local operators into light-ray operators, derives DGLAP as the
+  operator-coordinate RG equation, and pairs it with coefficient functions in
+  a color-singlet structure function.
+
+Independent verification route:
+  The executable route starts from finite rational test functions, splitting
+  moments, matrix rows/vectors, and finite scheme maps; it independently checks
+  conservation laws, observable RG cancellation, and scheme covariance in that
+  primitive finite algebra.
+
+Convention dependencies:
+  Trace-delta Yang-Mills generators, P=(g^2/(8*pi^2))P^(0), D0=(1/(1-x))_+,
+  convolution indices P_ab acting on parent b to child a, Mellin/test-function
+  coordinates away from separately treated endpoints, and coefficient rows
+  dual to PDF columns.
+
+Domain and remainder assumptions:
+  The finite checks apply to retained leading-twist compact-x coordinates or
+  moments whose endpoint/small-x terms are separately controlled.  Physical
+  comparisons require coefficient/kernel truncation, power corrections,
+  factorization remainders, and regulator/continuum limits to be included.
+
+Remaining unproved or conditional:
+  Full QCD factorization, all-order anomalous dimensions, endpoint and small-x
+  resummation, and the existence/positivity/continuum control of physical PDFs
+  remain outside this finite companion.
 """
 
 from __future__ import annotations
@@ -67,6 +122,33 @@ def row_times_matrix(row: Vector, matrix: Matrix) -> Vector:
 
 def dot(left: Vector, right: Vector) -> Fraction:
     return sum(left[i] * right[i] for i in range(len(left)))
+
+
+def matmul(left: Matrix, right: Matrix) -> Matrix:
+    return [
+        [
+            sum(left[i][k] * right[k][j] for k in range(len(right)))
+            for j in range(len(right[0]))
+        ]
+        for i in range(len(left))
+    ]
+
+
+def matadd(left: Matrix, right: Matrix) -> Matrix:
+    return [
+        [left[i][j] + right[i][j] for j in range(len(left[0]))]
+        for i in range(len(left))
+    ]
+
+
+def mat2_inverse(matrix: Matrix) -> Matrix:
+    det = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+    if det == 0:
+        raise ValueError("singular 2x2 matrix")
+    return [
+        [matrix[1][1] / det, -matrix[0][1] / det],
+        [-matrix[1][0] / det, matrix[0][0] / det],
+    ]
 
 
 def dependency_budget(terms: Mapping[str, Fraction]) -> Fraction:
@@ -311,6 +393,76 @@ def check_factorized_rg_cancellation() -> None:
     assert_equal("factorized DIS RG cancellation", observable_derivative, Fraction(0))
 
 
+def check_scheme_covariant_dglap_moment_transport() -> None:
+    splitting_kernel = [
+        [Fraction(1, 3), Fraction(-2, 5)],
+        [Fraction(7, 11), Fraction(1, 13)],
+    ]
+    pdf = [Fraction(5, 7), Fraction(2, 7)]
+    coefficient = [Fraction(3, 2), Fraction(-4, 9)]
+    scheme = [
+        [Fraction(2), Fraction(1, 3)],
+        [Fraction(1, 5), Fraction(3, 2)],
+    ]
+    scheme_derivative = [
+        [Fraction(1, 7), Fraction(-1, 11)],
+        [Fraction(2, 13), Fraction(1, 17)],
+    ]
+    scheme_inverse = mat2_inverse(scheme)
+
+    transformed_pdf = matvec(scheme, pdf)
+    transformed_coefficient = row_times_matrix(coefficient, scheme_inverse)
+    assert_equal(
+        "scheme-covariant DIS moment is invariant",
+        dot(transformed_coefficient, transformed_pdf),
+        dot(coefficient, pdf),
+    )
+
+    transformed_kernel = matadd(
+        matmul(matmul(scheme, splitting_kernel), scheme_inverse),
+        matmul(scheme_derivative, scheme_inverse),
+    )
+    transformed_pdf_derivative = matvec(transformed_kernel, transformed_pdf)
+    transformed_coefficient_derivative = [
+        -entry for entry in row_times_matrix(transformed_coefficient, transformed_kernel)
+    ]
+    transformed_observable_derivative = dot(
+        transformed_coefficient_derivative,
+        transformed_pdf,
+    ) + dot(transformed_coefficient, transformed_pdf_derivative)
+    assert_equal(
+        "scheme-covariant DGLAP moment transport",
+        transformed_observable_derivative,
+        Fraction(0),
+    )
+
+    similarity_only_kernel = matmul(matmul(scheme, splitting_kernel), scheme_inverse)
+    wrong_pdf_derivative = matvec(transformed_kernel, transformed_pdf)
+    wrong_coefficient_derivative = [
+        -entry
+        for entry in row_times_matrix(transformed_coefficient, similarity_only_kernel)
+    ]
+    wrong_observable_derivative = dot(
+        wrong_coefficient_derivative,
+        transformed_pdf,
+    ) + dot(transformed_coefficient, wrong_pdf_derivative)
+    assert_true(
+        "scale-dependent scheme change needs Sdot Sinv",
+        wrong_observable_derivative != 0,
+    )
+
+    coefficient_not_transformed = dot(coefficient, transformed_pdf)
+    assert_true(
+        "PDF scheme change without coefficient row changes observable coordinate",
+        coefficient_not_transformed != dot(coefficient, pdf),
+    )
+    wrong_side_coefficient = row_times_matrix(coefficient, scheme)
+    assert_true(
+        "coefficient row must transform by Sinv",
+        dot(wrong_side_coefficient, transformed_pdf) != dot(coefficient, pdf),
+    )
+
+
 def check_common_factorization_dependency_budget() -> None:
     # Finite rational model of the triangle-inequality budget in
     # eq. (qcd-common-factorization-budget).  The labels are process
@@ -383,11 +535,12 @@ def main() -> None:
     check_large_spin_and_trace_conversion()
     check_light_ray_moment_normalization()
     check_factorized_rg_cancellation()
+    check_scheme_covariant_dglap_moment_transport()
     check_common_factorization_dependency_budget()
     print(
         "All QCD DGLAP plus-distribution, sum-rule, "
         "cusp-normalization, light-ray moment, RG-cancellation, "
-        "factorization-budget, and DIS threshold-window checks passed."
+        "scheme-transport, factorization-budget, and DIS threshold-window checks passed."
     )
 
 

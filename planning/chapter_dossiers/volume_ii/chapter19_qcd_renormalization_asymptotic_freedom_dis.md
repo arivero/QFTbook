@@ -1371,6 +1371,15 @@ The chapter must define and derive:
   dual cancellation condition.  `calculation-checks/qcd_dglap_checks.py`
   now includes a rational finite-channel check of \(df=P f\), \(dC=-CP\),
   and \(d(Cf)=0\).
+- 2026-06-06 issue #630/#725 DGLAP evidence-contract pass: added
+  `ca:qcd-dglap-scheme-covariant-moment-transport` so scaling violations are
+  stated as color-singlet structure-function moment transport with a dual
+  coefficient/PDF scheme map, not as evolution of independently measured
+  colored parton probabilities.  The companion is promoted to an extended
+  evidence contract and now checks the finite scheme transformation
+  \(f'=Sf\), \(C'=CS^{-1}\), and
+  \(P'=SPS^{-1}+(\mu\partial_\mu S)S^{-1}\), with negative controls for
+  PDF-only, wrong-side coefficient, and similarity-only shortcuts.
 - 2026-06-03 issue #630 factorization-architecture pass: inserted the common
   QCD factorization dependency ladder before the DIS hypothesis, organizing
   compact DIS, TMD/Drell--Yan, and small-\(x\)/JIMWLK claims as process

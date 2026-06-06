@@ -378,6 +378,12 @@ Current checks:
   coefficient conversion, plus the left-endpoint light-ray moment sign
   convention for quark and gluon PDF moment towers and the finite-channel
   RG cancellation \(df=P f\), \(dC=-CP\) in a factorized DIS convolution.
+  The companion is an extended evidence contract and includes a finite
+  scheme-covariant moment-transport regression: under \(f'=Sf\),
+  \(C'=CS^{-1}\), the transformed kernel must include
+  \((\mu\partial_\mu S)S^{-1}\), and the check rejects PDF-only transforms,
+  wrong-side coefficient transforms, and similarity-only kernels for
+  scale-dependent scheme changes.
   It also checks the additive dependency-budget arithmetic behind the common
   QCD factorization ladder, including the load-bearing boundary, Glauber, and
   projective-state terms for compact DIS, Drell--Yan/TMD, and small-\(x\)

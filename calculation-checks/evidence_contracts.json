@@ -126,6 +126,17 @@
       ]
     },
     {
+      "path": "qcd_dglap_checks.py",
+      "risk_class": "QCD DIS/DGLAP factorization-scale transport",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "trace-delta Yang-Mills color normalization",
+        "D0 plus-distribution endpoint convention",
+        "P=(g^2/(8*pi^2)) P0 DGLAP normalization",
+        "coefficient row and PDF column factorization scheme"
+      ]
+    },
+    {
       "path": "scet_factorization_checks.py",
       "risk_class": "SCET/factorization proof-status boundary"
     },

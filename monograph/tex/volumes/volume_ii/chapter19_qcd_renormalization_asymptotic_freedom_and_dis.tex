@@ -11306,6 +11306,53 @@ inside the declared convolution algebra.  Any residual scale dependence in a
 finite-order calculation is therefore a truncation or power-remainder effect,
 not a change in the nonperturbative definition of the PDF.
 
+\begin{controlledapproximation}[Scheme-covariant DGLAP moment transport]
+\label{ca:qcd-dglap-scheme-covariant-moment-transport}
+After pairing \eqref{eq:dis-factorization} with a compact-\(x\) test function
+or taking a Mellin moment in a range where the endpoint contributions are
+separately controlled, the leading-twist coordinate has the finite vector
+form
+\begin{equation}
+  F_i^{(N)}(Q)
+  =
+  C_i^{(N)}(Q,\mu)\,f_H^{(N)}(\mu)
+  +R_i^{(N)}(Q,\mu),
+  \label{eq:qcd-dglap-tested-moment-coordinate}
+\end{equation}
+where \(f_H^{(N)}\) is the vector of renormalized light-ray matrix elements
+and \(C_i^{(N)}\) is the dual coefficient row.  Suppose
+\[
+  \mu\partial_\mu f=P f,
+  \qquad
+  \mu\partial_\mu C=-CP .
+\]
+For a finite factorization-scheme change
+\(f'=S(\mu)f\), \(C'=CS^{-1}(\mu)\), the kernel must transform as
+\begin{equation}
+  P'
+  =
+  S P S^{-1}
+  +
+  (\mu\partial_\mu S)S^{-1}.
+  \label{eq:qcd-dglap-scheme-kernel-transform}
+\end{equation}
+Then \(F_i^{(N)}-R_i^{(N)}=C f=C'f'\) and
+\(\mu\partial_\mu(C'f')=0\) in the retained leading-twist coordinate.  The
+second term in \eqref{eq:qcd-dglap-scheme-kernel-transform} is not optional:
+it is the finite anomalous-dimension shift produced by a scale-dependent
+operator-coordinate change.  Applying \(S\) to the PDF without the dual
+coefficient transformation changes the observable coordinate, and using only
+\(SPS^{-1}\) when \(S\) depends on \(\mu\) leaves a spurious scale derivative.
+
+Thus an observed scaling violation is attached to the color-singlet
+structure-function moment and its error budget, not to an independently
+measured colored parton probability.  Between two scales \(Q_1,Q_2\), a quoted
+DGLAP comparison must include the two factorization remainders
+\(R_i^{(N)}(Q_1,\mu_1)\), \(R_i^{(N)}(Q_2,\mu_2)\), the truncation error in
+the coefficient and kernel transport, and the endpoint or small-\(x\) residual
+if the chosen moment/test function approaches those regions.
+\end{controlledapproximation}
+
 \subsection{One-Loop Splitting Kernels and Sum-Rule Checks}
 \label{subsec:qcd-one-loop-splitting-kernels-sum-rules}
 
