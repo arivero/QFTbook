@@ -415,7 +415,10 @@ Current checks:
   checks the finite compact Wilson-line diffusion algebra used as the
   JIMWLK theorem boundary: constant preservation, zero integral of the
   divergence-form generator, dissipative Fourier spectrum, and weak/strong
-  duality in a finite torus model.  The same script now checks the finite
+  duality in a finite torus model.  Its extended evidence contract now also
+  checks the Wilson-line Dirichlet form independently, rejecting the
+  wrong-sign generator as a violation of dissipativity.  The same script now
+  checks the finite
   BK-closure ledger: exact \(S\)-to-\(N\) conversion, inward pointing of the
   closed unit-cube vector field, transparent and black-disk fixed points, and
   the \(3L\) finite Gronwall coefficient controlling the connected

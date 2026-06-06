@@ -1099,6 +1099,14 @@ The chapter must define and derive:
   instantiation rather than another abstract residual ledger.  The same pass
   added point-of-use primary references for BFKL, virtual-photon dipole DIS,
   Balitsky/BK evolution, and the JIMWLK Wilson renormalization group.
+- 2026-06-06 issue #725 evidence-contract hardening: promoted
+  `calculation-checks/qcd_bfkl_small_x_checks.py` to an extended evidence
+  contract with explicit primary/independent derivation routes, convention
+  dependencies, domain/remainder assumptions, and remaining conditional QCD
+  inputs.  The companion now also checks the finite Wilson-line Dirichlet
+  form and rejects the wrong generator sign, so the finite JIMWLK boundary is
+  tested by a dissipativity route independent of the weak/strong-duality
+  bookkeeping.
 - 2026-05-28 issue #630 Drell--Yan/Glauber pass: added the Drell--Yan
   hadronic tensor, leading-power kinematics, TMD factorization datum with
   past-pointing staples, finite tensor-product unitarity lemma for the

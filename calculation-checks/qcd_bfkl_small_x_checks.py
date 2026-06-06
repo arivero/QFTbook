@@ -1,6 +1,55 @@
 #!/usr/bin/env python3
 """Finite checks for the small-x/BFKL convention block in Volume II.
 
+Evidence contract.
+Target claims: the Volume II small-x section's trace-delta color convention,
+leading dipole/BFKL kernel normalization, finite Wilson-line/JIMWLK weak
+generator boundary, BK closure estimate, projective JIMWLK cylinder limit,
+measured small-x proof-obligation map, and leading inclusive DIS dipole
+observable channel.
+Independent construction: the checks rebuild the color-convention invariant
+from both trace-delta and half-trace coordinates, test transverse inversion
+covariance directly on rational points, recompute BFKL saddle constants from
+the Mellin characteristic function, construct an independent compact
+two-torus Fokker-Planck model for Wilson-line diffusion, propagate finite
+BK and measured-observable residuals through exact rational ledgers, and
+assemble a separate finite DIS bin from photon wave-function weights rather
+than reading chapter display strings.
+Imported assumptions: the tests use the leading-log dipole kernel form, the
+Mellin characteristic function, compact finite Wilson-line configuration
+space for the toy generator, positive photon wave-function weights, and the
+chapter's separation of exact measured observables from impact-factor,
+rapidity, projective, evolution, closure, and power residuals.
+Negative controls: wrong trace-normalization transport, loss of inversion
+covariance, nondissipative Wilson-line modes, nonvanishing generator errors in
+the projective limit, omitted impact-factor or BK-closure residuals, missing
+photon-kernel weights, and the wrong rapidity-subtraction sign are rejected.
+Scope boundary: a pass verifies finite convention closure and independent
+finite-observable propagation; it does not prove continuum JIMWLK existence,
+derive small-x factorization for QCD, prove BK closure, or bound physical
+impact factors and power corrections.
+
+Primary derivation route: trace-delta Yang-Mills conventions feed the dipole
+kernel, BFKL Mellin characteristic function, finite JIMWLK weak generator,
+BK closure estimate, and tested DIS dipole observable in the same rapidity
+scheme.
+Independent verification route: compact Fourier-mode diffusion, rational
+coordinate inversion tests, exact Gronwall arithmetic, photon-kernel bin
+assembly, and sign/adversarial omissions independently probe the same
+coefficient, generator, and measured-observable boundaries.
+Convention dependencies: trace-delta fundamental generators
+``tr(t^a t^b)=delta^{ab}``, ``C_A=2 N_c``, ``S_YM=-1/(4g^2) int tr F^2``,
+positive rapidity evolution convention, and the chapter's dipole
+normalization for the virtual-photon wave functions.
+Domain and remainder assumptions: finite transverse lattices, compact
+Wilson-line coordinates, bounded test bins, positive photon kernels, and
+declared residual budgets for impact-factor matching, rapidity transport,
+projective limits, evolution, closure, and power corrections.
+Remaining unproved or conditional: continuum Wilson-line state construction,
+full QCD factorization at measured small x, nonperturbative impact factors,
+rapidity-scheme matching beyond the finite model, and physical endpoint/power
+estimates remain chapter-level hypotheses or proof obligations.
+
 The manuscript writes the leading dipole/BFKL kernel in the trace-delta
 Yang-Mills convention
 
@@ -179,6 +228,41 @@ def check_finite_wilson_line_diffusion_algebra() -> None:
     lhs = torus_inner(test_modes, apply_constant_diffusion_generator(other_modes, matrix))
     rhs = torus_inner(apply_constant_diffusion_generator(test_modes, matrix), other_modes)
     assert_equal("finite diffusion weak-strong duality", lhs, rhs)
+
+
+def check_wilson_line_dirichlet_form_sign() -> None:
+    """Check the dissipative sign of the finite Wilson-line generator."""
+
+    matrix = (
+        (Fraction(4), Fraction(1)),
+        (Fraction(1), Fraction(2)),
+    )
+    real_modes = {
+        (1, 0): Fraction(3),
+        (-1, 0): Fraction(3),
+        (0, 1): Fraction(-2),
+        (0, -1): Fraction(-2),
+        (1, 1): Fraction(5),
+        (-1, -1): Fraction(5),
+    }
+    generator_modes = apply_constant_diffusion_generator(real_modes, matrix)
+    dirichlet = -torus_inner(real_modes, generator_modes)
+
+    expected = Fraction(0)
+    for (k1, k2), coeff in real_modes.items():
+        quadratic = (
+            matrix[0][0] * k1 * k1
+            + (matrix[0][1] + matrix[1][0]) * k1 * k2
+            + matrix[1][1] * k2 * k2
+        )
+        expected += Fraction(1, 2) * quadratic * coeff * real_modes.get((-k1, -k2), Fraction(0))
+
+    assert_equal("finite Wilson-line Dirichlet form", dirichlet, expected)
+    assert_gt("finite Wilson-line generator is dissipative", dirichlet, Fraction(0))
+
+    wrong_sign_dirichlet = torus_inner(real_modes, generator_modes)
+    if wrong_sign_dirichlet >= 0:
+        raise AssertionError("wrong-sign Wilson-line generator should fail dissipativity")
 
 
 def check_finite_bk_closure_algebra() -> None:
@@ -591,6 +675,7 @@ def main() -> None:
     check_transverse_inversion_covariance()
     check_bfkl_characteristic_values()
     check_finite_wilson_line_diffusion_algebra()
+    check_wilson_line_dirichlet_form_sign()
     check_finite_bk_closure_algebra()
     check_finite_bk_error_bound_lipschitz_constant()
     check_projective_jimwlk_cylinder_limit_budget()

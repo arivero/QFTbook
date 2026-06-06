@@ -123,6 +123,17 @@
       "risk_class": "QCD non-global soft-evolution factorization obstruction"
     },
     {
+      "path": "qcd_bfkl_small_x_checks.py",
+      "risk_class": "QCD small-x/BFKL and measured DIS dipole channel",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "trace-delta Yang-Mills color normalization",
+        "leading-log dipole/BFKL kernel convention",
+        "finite Wilson-line JIMWLK weak generator",
+        "measured DIS dipole impact-factor coordinates"
+      ]
+    },
+    {
       "path": "cft_higher_genus_sewing_checks.py",
       "risk_class": "CFT sewing"
     },
