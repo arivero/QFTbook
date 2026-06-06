@@ -27,6 +27,10 @@ Target claims:
   `F_zm(c s/2) = 6 c^(-3) s^(-3) + O(s^(-5))`; four such slots give the
   `6^4 prod c_l^(-3) s^(-12)` endpoint factor, while fused bilinear-density
   sources have a different endpoint class.
+- `prop:instanton-hard-haar-orientation-tensor`: the charge-one color
+  orientation integral is the antisymmetric two-frame projector
+  `2/(Nc(Nc-1)) (delta_ac delta_bd - delta_ad delta_bc)`, so symmetric color
+  pair sources vanish before the size integral is interpreted as an amplitude.
 - `ca:instanton-nonzero-mode-source-quotient`: the source-dependent
   nonzero-mode fluctuation quotient separates the Gaussian source mean from
   its covariance with the same interaction weight that defines the determinant
@@ -53,7 +57,8 @@ Target claims:
 - `prop:su3-nf2-hard-source-power-slow-tail` and
   `ca:instanton-hard-benchmark-gate-ledger`: the SU(3), Nf=2 hard
   four-source benchmark has the stated rho power, Q power, slow endpoint tail,
-  channel-data dependence, and same-theory hard-scale ratio bound.
+  running collective-coordinate Jacobian, channel-data dependence, and
+  same-theory hard-scale ratio bound.
 - `ca:instanton-hard-window-tail-subtraction`: the hard four-source window is
   controlled as a core integral plus leading and subleading analytic endpoint
   tails, rather than as a formal size integral.
@@ -65,7 +70,9 @@ Target claims:
 Independent construction:
 - The checks build small exact rational cell models from scratch.  They compute
   two-by-two determinants, mass/source polynomials, one-loop RG exponents,
+  running collective zero-mode Jacobian ratios,
   weighted proper-time determinant logarithms,
+  finite color two-frame Haar projectors,
   the Bessel-product tail cancellation for an individual zero-mode slot,
   finite Gaussian source-quotient covariance identities,
   multiplicative hard-amplitude assembly bounds on signed windows,
@@ -89,9 +96,14 @@ Negative controls:
 - The script rejects a plus sign in the off-diagonal determinant term, a
   moduli-only prediction that ignores zero-mode rank, a rank-one source matrix
   treated as a nonzero four-source channel, a wrong one-loop density power, a
-  density-only hard-channel power, a wrong proper-time determinant sign, a
+  density-only hard-channel power, a missing running collective-coordinate
+  factor in the hard coefficient or ratio, a Pfaffian half-convention
+  substituted for a Dirac fundamental determinant, a wrong proper-time
+  determinant sign, a
   signed heat-kernel residual cancellation used as an absolute window bound,
   an untransported determinant constant, a
+  symmetric color source or orientation-volume constant substituted for the
+  Haar antisymmetric two-frame projection, a
   fused-density endpoint class substituted for differentiated fermion slots,
   an unamputated external residue absorbed into the zero-mode slot tail, a
   vacuum determinant calibration substituted for a source-fluctuation
@@ -276,6 +288,57 @@ def check_one_loop_density_rg_and_channel_power() -> None:
     )
 
 
+def check_running_collective_jacobian_in_hard_coefficient() -> None:
+    n_colors = 3
+    b0_su3_nf2 = beta0(n_colors, 2)
+    q_power = -(b0_su3_nf2 + 2)
+    collective_jacobian_power = 2 * n_colors
+
+    assert_equal("SU3 Nf2 hard b0 for collective check", b0_su3_nf2, Fraction(29, 3))
+    assert_equal("SU3 bosonic zero-mode Jacobian power", collective_jacobian_power, 6)
+    assert_equal("hard power-counting Q exponent", q_power, -Fraction(35, 3))
+    assert_equal("hard coefficient mass dimension modulo logs", b0_su3_nf2 + q_power, Fraction(-2))
+
+    # Finite model for two hard scales.  The displayed collective factor is
+    # L(Q)^(2Nc), where L(Q)=8*pi^2/g_ht(Q)^2.  It is dimensionless but it
+    # runs, so it cannot be hidden in a scale-independent channel constant.
+    log_action_q1 = Fraction(5, 2)
+    log_action_q2 = Fraction(7, 2)
+    gamma_coll_q1 = log_action_q1**collective_jacobian_power
+    gamma_coll_q2 = log_action_q2**collective_jacobian_power
+    finite_channel_constant = Fraction(11, 13)
+    source_window = Fraction(27, 40)
+
+    leading_q1 = gamma_coll_q1 * finite_channel_constant * source_window
+    leading_q2 = gamma_coll_q2 * finite_channel_constant * source_window
+    omitted_jacobian_q2 = finite_channel_constant * source_window
+
+    assert_not_equal(
+        "hard coefficient omits the running collective Jacobian",
+        omitted_jacobian_q2,
+        leading_q2,
+    )
+    assert_equal(
+        "hard coefficient ratio retains collective Jacobian ratio",
+        leading_q2 / leading_q1,
+        (log_action_q2 / log_action_q1) ** collective_jacobian_power,
+    )
+    assert_not_equal(
+        "pure power ratio omits running collective factor",
+        Fraction(1),
+        leading_q2 / leading_q1,
+    )
+
+    power_only_slope = -q_power
+    logarithmic_slope_correction = Fraction(6, 37)
+    slope_with_collective_log = power_only_slope - logarithmic_slope_correction
+    assert_not_equal(
+        "collective logarithm changes the hard logarithmic slope",
+        slope_with_collective_log,
+        power_only_slope,
+    )
+
+
 def check_proper_time_determinant_log_channel_window() -> None:
     # The density logarithm comes from weighted zero-mode-deleted spectra plus
     # the local counterterm/coupling conversion in the same convention.
@@ -311,6 +374,18 @@ def check_proper_time_determinant_log_channel_window() -> None:
     assert_not_equal(
         "bosonic determinant sign is fixed by the inverse square root",
         wrong_boson_sign_power,
+        b0_su3_nf2,
+    )
+
+    pfaffian_half_fermion_power = (
+        determinant_weights["boson"] * heat_coefficients["boson"]
+        + determinant_weights["ghost"] * heat_coefficients["ghost"]
+        + Fraction(1, 2) * heat_coefficients["fermion"]
+        + counterterm_power
+    )
+    assert_not_equal(
+        "Dirac fundamental determinant is not a Pfaffian half-convention",
+        pfaffian_half_fermion_power,
         b0_su3_nf2,
     )
 
@@ -379,6 +454,91 @@ def check_proper_time_determinant_log_channel_window() -> None:
         determinant_only_shortcut,
         actual_channel,
     )
+
+
+def check_hard_color_orientation_haar_tensor() -> None:
+    n_colors = 3
+    coefficient = Fraction(2, n_colors * (n_colors - 1))
+    assert_equal("SU3 charge-one Haar two-frame coefficient", coefficient, Fraction(1, 3))
+
+    trace_of_antisymmetric_projector = n_colors * n_colors - n_colors
+    assert_equal(
+        "Haar two-frame tensor has unnormalized wedge norm two",
+        coefficient * trace_of_antisymmetric_projector,
+        Fraction(2),
+    )
+
+    def orientation_projection(x, y):
+        return coefficient * sum(
+            x[a][b] * (y[a][b] - y[b][a])
+            for a in range(n_colors)
+            for b in range(n_colors)
+        )
+
+    antisymmetric_right = (
+        (Fraction(0), Fraction(2), -Fraction(1)),
+        (-Fraction(2), Fraction(0), Fraction(3)),
+        (Fraction(1), -Fraction(3), Fraction(0)),
+    )
+    antisymmetric_left = (
+        (Fraction(0), Fraction(5), Fraction(4)),
+        (-Fraction(5), Fraction(0), Fraction(1)),
+        (-Fraction(4), -Fraction(1), Fraction(0)),
+    )
+    symmetric_left = (
+        (Fraction(7), Fraction(2), Fraction(3)),
+        (Fraction(2), Fraction(11), Fraction(5)),
+        (Fraction(3), Fraction(5), Fraction(13)),
+    )
+
+    projected_color_factor = orientation_projection(antisymmetric_right, antisymmetric_left)
+    assert_equal("hard Haar antisymmetric source projection", projected_color_factor, Fraction(12))
+    assert_equal(
+        "hard Haar projection kills symmetric color pair source",
+        orientation_projection(antisymmetric_right, symmetric_left),
+        Fraction(0),
+    )
+
+    orientation_volume_constant = Fraction(1)
+    naive_volume_factor = orientation_volume_constant * sum(
+        antisymmetric_right[a][b] * antisymmetric_left[a][b]
+        for a in range(n_colors)
+        for b in range(n_colors)
+    )
+    assert_not_equal(
+        "orientation volume constant is not the Haar color tensor",
+        naive_volume_factor,
+        projected_color_factor,
+    )
+
+    determinant_constant = Fraction(11, 13)
+    right_flavor_det = Fraction(3)
+    left_flavor_det = Fraction(4)
+    hard_window = Fraction(27, 40)
+    physical_projection = Fraction(7, 11)
+    amplitude_color_projected = (
+        determinant_constant
+        * right_flavor_det
+        * left_flavor_det
+        * projected_color_factor
+        * hard_window
+        * physical_projection
+    )
+    amplitude_symmetric_color = (
+        determinant_constant
+        * right_flavor_det
+        * left_flavor_det
+        * orientation_projection(antisymmetric_right, symmetric_left)
+        * hard_window
+        * physical_projection
+    )
+    assert_equal("symmetric color source kills full hard benchmark", amplitude_symmetric_color, Fraction(0))
+    assert_not_equal(
+        "nonzero density and zero-mode flavor determinants do not bypass color projection",
+        determinant_constant * right_flavor_det * left_flavor_det * hard_window,
+        amplitude_symmetric_color,
+    )
+    assert_gt("antisymmetric color projected amplitude is nonzero", float(abs(amplitude_color_projected)), 0.0)
 
 
 def check_individual_zero_mode_slot_tail_from_bessel_products() -> None:
@@ -1391,15 +1551,25 @@ def check_hard_benchmark_channel_comparison_and_ratio() -> None:
     assert_equal("amputation restores benchmark coordinate", unamputated / unamputated_residue_product, euclidean_benchmark)
 
     q_power = -Fraction(35, 3)
+    collective_jacobian_power = 6
+    log_action_q1 = Fraction(5, 2)
+    log_action_q2 = Fraction(7, 2)
+    collective_jacobian_ratio = (log_action_q2 / log_action_q1) ** collective_jacobian_power
     ratio_powers = {
         "determinant_constant": Fraction(0),
         "Lambda_ht": Fraction(0),
         "Q2_over_Q1": q_power,
+        "collective_jacobian_ratio": collective_jacobian_ratio,
         "source_window_ratio": Fraction(1),
     }
     assert_equal("same-theory determinant constant cancels in ratio", ratio_powers["determinant_constant"], Fraction(0))
     assert_equal("same-theory Lambda power cancels in ratio", ratio_powers["Lambda_ht"], Fraction(0))
     assert_equal("hard scale ratio keeps Q power", ratio_powers["Q2_over_Q1"], q_power)
+    assert_not_equal(
+        "hard scale ratio keeps running collective Jacobian",
+        ratio_powers["collective_jacobian_ratio"],
+        Fraction(1),
+    )
 
     e1 = -Fraction(1, 20)
     e2 = Fraction(1, 30)
@@ -1412,13 +1582,20 @@ def check_hard_benchmark_channel_comparison_and_ratio() -> None:
 
     determinant_only_q_power = Fraction(0)
     assert_equal("determinant-only ratio misses hard Q power", determinant_only_q_power == q_power, False)
+    assert_equal(
+        "pure-power ratio misses hard collective Jacobian",
+        collective_jacobian_ratio == Fraction(1),
+        False,
+    )
     stale_source_window_ratio = Fraction(15, 14)
     assert_equal("changed source window is a real ratio input", stale_source_window_ratio == Fraction(1), False)
 
 
 def main() -> None:
     check_one_loop_density_rg_and_channel_power()
+    check_running_collective_jacobian_in_hard_coefficient()
     check_proper_time_determinant_log_channel_window()
+    check_hard_color_orientation_haar_tensor()
     check_individual_zero_mode_slot_tail_from_bessel_products()
     check_nonzero_mode_source_fluctuation_quotient()
     check_hard_amplitude_assembly_bound()

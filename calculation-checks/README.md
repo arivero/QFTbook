@@ -698,9 +698,11 @@ Current checks:
   shared Haar projection, amputation, source conditioning, and size-window
   control attached to the canonical amplitude datum in an adversarial comparison
   with a 't Hooft-style amplitude, the hard-scale benchmark ratio which cancels
-  the finite determinant constant and keeps the \(SU(3)\), \(N_f=2\)
-  \(\Lambda_{\rm ht}^{29/3}Q^{-35/3}\) power visible only when source shape,
-  conditioning, orientation, and size-window data are transported together, the
+  the finite determinant constant while retaining the running
+  \((8\pi^2/g_{\rm ht}^2(Q))^6\) collective-coordinate factor and the
+  \(SU(3)\), \(N_f=2\) \(\Lambda_{\rm ht}^{29/3}Q^{-35/3}\) power only when
+  source shape, conditioning, orientation, and size-window data are transported
+  together, the
   mixed hard-source plus physical-screening log-shell equation
   \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\) with negative controls against
   hard-only and screening-only saddle substitutions, the
@@ -780,6 +782,9 @@ Current checks:
   the proper-time determinant-log channel window with boson/ghost/fermion
   weights, counterterm conversion, absolute residual control, and rank-killed
   source negative control,
+  the charge-one hard-channel color-orientation Haar tensor projecting two
+  colored zero-mode slots onto the antisymmetric two-frame invariant and
+  killing symmetric color-pair sources before the size integral,
   the individual BPST zero-mode slot tail from the Bessel-product cancellation
   \(F_{\rm zm}(cs/2)=6c^{-3}s^{-3}+45c^{-5}s^{-5}+O(s^{-7})\),
   the two-term hard-window tail subtraction with leading \(R^{-1/3}\) and
@@ -800,9 +805,10 @@ Current checks:
   moduli-equivalent channels with different or zero amplitudes because of
   zero-mode source rank, finite-cell spectral/projection ambiguity after a
   single Euclidean source sum, the SU(3), \(N_f=2\) hard four-source
-  \(Q^{-35/3}\) scale check and slow endpoint tail, hard benchmark channel
-  comparison and ratio controls, the hard-kernel Wilsonian OPE boundary flow
-  and long-size tail budget, the retained-cell residual bound, and the \(2\times2\)
+  \(Q^{-35/3}\) power-counting check with its running collective-coordinate
+  factor and slow endpoint tail, hard benchmark channel comparison and ratio
+  controls, the hard-kernel Wilsonian OPE boundary flow and long-size tail
+  budget, the retained-cell residual bound, and the \(2\times2\)
   source-determinant stability estimate, with negative controls for an
   off-diagonal determinant sign flip, moduli-only prediction, rank-one source
   shortcut, leading-tail-only hard-window approximation, fused-density endpoint
@@ -810,7 +816,8 @@ Current checks:
   absorption, vacuum determinant calibration used as a source-fluctuation
   quotient, relative fluctuation division after rank loss, determinant-only
   assembled amplitudes, signed-window relative control without a
-  noncancellation margin, hard source coefficients used as theta
+  noncancellation margin, orientation-volume shortcuts, symmetric color
+  sources treated as hard-channel amplitudes, hard source coefficients used as theta
   susceptibilities, dilute curvatures used as real-time rates, dilute
   instanton curvature substituted for Witten--Veneziano input without a
   comparison budget, Euclidean source values used as physical pole or spectral

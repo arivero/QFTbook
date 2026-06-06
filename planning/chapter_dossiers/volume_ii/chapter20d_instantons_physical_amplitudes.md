@@ -34,7 +34,8 @@
   hard external source differentiation.
 - `ca:instanton-proper-time-determinant-channel`: derives the
   zero-mode-deleted proper-time determinant logarithm inside a source channel,
-  with boson inverse-square-root, ghost, fermion Pfaffian, and local
+  with boson inverse-square-root, ghost determinant, Dirac fermion determinant,
+  and local
   counterterm weights, then turns the determinant remainder into an absolute
   source-window bound.
 - `def:instanton-physical-amplitude-channel`: finite-regulator channel datum
@@ -54,13 +55,19 @@
 - `sec:instanton-hard-four-fermion-benchmark`: hard two-flavor four-source
   benchmark, organized as center, Haar, zero-mode-rank, amputation,
   size-window, and physical-projection data.
+- `prop:instanton-hard-haar-orientation-tensor`: derives the charge-one
+  color-orientation average as the antisymmetric two-frame projector
+  `2/(N_c(N_c-1)) (delta_ac delta_bd - delta_ad delta_bc)` and turns the
+  hard-channel Haar factor into a source projection rather than an
+  orientation-volume constant.
 - `prop:instanton-hard-individual-zero-mode-slot`: derives the individual
   singular-gauge BPST zero-mode slot profile used by the hard four-source
   amplitude, including `F_zm(0)=1`, the `6 (rho |p|)^(-3)` tail, and the
   four-slot product `6^4 prod c_l^(-3) s^(-12)`.
 - `prop:su3-nf2-hard-source-power-slow-tail`: derives the SU(3), `N_f=2`
   hard four-source powers `rho^(32/3) d rho`,
-  `Lambda_ht^(29/3) Q^(-35/3)`, and the slow `R^(-1/3)` large-size tail.
+  `(8 pi^2/g_ht^2(Q))^6 Lambda_ht^(29/3) Q^(-35/3)`, and the slow
+  `R^(-1/3)` large-size tail.
 - `ca:instanton-hard-window-tail-subtraction`: evaluates the hard size window
   as a finite core plus leading `R^(-1/3)` and subleading `R^(-7/3)` analytic
   endpoint tails from the two-term zero-mode-slot expansion.
@@ -136,6 +143,10 @@
   four-source channel: center conservation, shared Haar projection, two
   zero-mode source determinants, amputation, hard form factors, and endpoint
   tails must all be part of the coefficient before a scale law is quoted.
+- The hard-channel Haar tensor exposes the color-orientation part of the
+  amplitude.  A symmetric color-pair source is killed by the antisymmetric
+  two-frame projector even when the density, determinant, zero-mode flavor
+  determinants, and size window are all nonzero.
 - The individual-slot form-factor block opens one of the hard channel's
   previously compressed inputs: the endpoint tail comes from the cancellation
   of the apparent `t^(-1)` terms in the BPST zero-mode Bessel products, giving
@@ -168,10 +179,12 @@
   data: the disconnected product must be subtracted, the neutral pair can
   affect source correlators without theta curvature, and the same-charge pair
   carries the first second-harmonic theta correction.
-- The `Q^(-35/3)` hard-scale behavior is tied to `b0=29/3` and four individual
-  hard zero-mode form factors.  The large-size endpoint is convergent but slow,
-  with a retained-tail majorant of order `R^(-1/3)`, so a window/stability
-  budget is load-bearing.
+- The `Q^(-35/3)` hard-scale behavior is the power-counting part tied to
+  `b0=29/3` and four individual hard zero-mode form factors; the full
+  one-loop hard coefficient also retains the running collective-coordinate
+  factor `(8 pi^2/g_ht^2(Q))^6`.  The large-size endpoint is convergent but
+  slow, with a retained-tail majorant of order `R^(-1/3)`, so a
+  window/stability budget is load-bearing.
 - The Wilsonian OPE bridge makes the hard benchmark usable as a local QFT
   input only after a size split.  The short coefficient has a nonzero boundary
   flow, the long-size tail cancels that flow in the completed split, and the
@@ -199,6 +212,9 @@
   verifies the proper-time determinant-log channel window, including the
   boson/ghost/fermion weights, counterterm conversion to `b0`, absolute
   determinant residual bound, and rank-killed source negative control,
+  verifies the hard-channel color-orientation Haar tensor and rejects
+  symmetric color-pair sources or orientation-volume constants as substitutes
+  for the antisymmetric two-frame source projection,
   derives the individual zero-mode slot tail coefficient from the Bessel
   product cancellation and rejects fused-density endpoint substitution or
   hidden unamputated residues,
@@ -240,10 +256,10 @@
 - No directives, GitHub issue text, or process-monitoring language was inserted
   into monograph TeX.
 - 2026-06-06 hard four-fermion benchmark pass: lifted the hard-source
-  amplitude comparison, `Q^(-35/3)` scale law, slow `R^(-1/3)` tail, and
-  same-theory ratio bound into the chapter so the reader sees a concrete
-  `t Hooft-style amplitude mechanism rather than only the abstract channel
-  package.
+  amplitude comparison, the `(8 pi^2/g_ht^2(Q))^6 Lambda_ht^(29/3)
+  Q^(-35/3)` one-loop hard scaling, slow `R^(-1/3)` tail, and same-theory
+  ratio bound into the chapter so the reader sees a concrete `t Hooft-style
+  amplitude mechanism rather than only the abstract channel package.
 - 2026-06-06 one-loop density-normalization pass: inserted the determinant/RG
   checkpoint before the channel definition, so the dedicated chapter now
   explains why the density contains fluctuation data and why the hard
@@ -252,9 +268,22 @@
 - 2026-06-06 proper-time determinant-channel pass: inserted the
   zero-mode-deleted determinant-log calculation between density normalization
   and channel packaging, with the companion exact check guarding the
-  boson/ghost/fermion signs, counterterm conversion, absolute residual
-  window, and the failure of determinant density alone to produce an
-  amplitude.
+  boson/ghost/Dirac-fermion determinant signs, counterterm conversion,
+  absolute residual window, and the failure of determinant density alone to
+  produce an amplitude.
+- 2026-06-06 running collective-factor repair: restored the
+  `(8 pi^2/g_ht^2(Q))^6` bosonic zero-mode normalization in the Ch20D hard
+  coefficient, OPE split, assembled amplitude, same-theory ratio, and
+  logarithmic slope statement.  The companion check now rejects coefficients
+  or ratios that retain only the pure `Q^(-35/3)` power.
+- 2026-06-06 hard color-orientation projection pass: added
+  `prop:instanton-hard-haar-orientation-tensor` before the individual
+  zero-mode-slot calculation.  The pass derives the two-frame Haar projector
+  in the embedded color plane and makes the antisymmetric color source
+  projection part of the hard amplitude.  The companion finite check rejects
+  replacing this tensor by an orientation-volume constant and verifies that a
+  symmetric color-pair source kills the hard benchmark even with nonzero
+  determinant, flavor-zero-mode, and size-window factors.
 - 2026-06-06 individual-slot form-factor pass: expanded the hard benchmark by
   deriving the BPST zero-mode slot tail in the physical-amplitude chapter and
   pairing it with a focused companion check.  This is amplitude/source

@@ -132,12 +132,16 @@ zero-mode-deleted one-loop factor as
   +\operatorname{Tr}'\log
   \frac{M_{{\rm gh},z}}{M_{{\rm gh},0}}                  \\
   &\qquad
-  +\sum_f\log\operatorname{Pf}'
+  +\sum_f\log\det'
   \frac{\mathcal D_{f,z}}{\mathcal D_{f,0}}
   -S^{\rm ct}_{\Lambda}(z).
 \end{aligned}
   \label{eq:instanton-proper-time-log-determinant-channel}
 \end{equation}
+For Dirac fundamental fermions this is a determinant.  A Pfaffian notation
+would require an explicitly antisymmetric Majorana, or doubled-field,
+coordinate with the corresponding one-half bookkeeping; it is not the
+benchmark convention used here.
 Each logarithm is defined by a proper-time difference, for example
 \[
   \operatorname{Tr}'\log\frac{A_z}{A_0}
@@ -378,6 +382,89 @@ for the left-handed overlap matrix.  Only after the conservation, Haar,
 zero-mode-rank, and amputation data are fixed does the size integral define
 the hard coefficient.
 
+\begin{proposition}[Color-orientation tensor in the hard channel]
+\label{prop:instanton-hard-haar-orientation-tensor}
+For a charge-one \(SU(N_c)\) instanton, choose an oriented color two-frame
+\((u,v)\) describing the embedded \(SU(2)\) color plane, normalized by
+\[
+  u^\dagger u=v^\dagger v=1,\qquad u^\dagger v=0 .
+\]
+Let
+\[
+  W_{ab}=u_av_b-u_bv_a .
+\]
+With the invariant orientation measure normalized to total mass one, the
+two-frame average is
+\begin{equation}
+  \int \dd\Omega_{N_c}\,
+  W_{ab}\,\overline{W_{cd}}
+  =
+  \frac{2}{N_c(N_c-1)}
+  \bigl(
+    \delta_{ac}\delta_{bd}
+    -
+    \delta_{ad}\delta_{bc}
+  \bigr).
+  \label{eq:instanton-hard-haar-two-frame-tensor}
+\end{equation}
+Consequently, if \(X_{ab}\) and \(Y_{ab}\) are the two color-pair source
+tensors entering a retained hard channel, the color-orientation part of the
+amplitude is the antisymmetric projection
+\begin{equation}
+  \mathcal P_{\rm Haar}(X,Y)
+  =
+  \frac{2}{N_c(N_c-1)}
+  \sum_{a,b}
+  X_{ab}\,
+  \bigl(\overline{Y_{ab}}-\overline{Y_{ba}}\bigr).
+  \label{eq:instanton-hard-haar-source-projection}
+\end{equation}
+A color-symmetric pair source therefore gives zero in this channel even if
+the BPST density, nonzero-mode determinant, zero-mode flavor determinants,
+and hard size window are all nonzero.
+\end{proposition}
+
+\begin{proof}
+The average
+\[
+  T_{ab,cd}
+  =
+  \int \dd\Omega_{N_c}\,W_{ab}\overline{W_{cd}}
+\]
+is invariant under the global color group and is antisymmetric in
+\((a,b)\) and in \((c,d)\).  On
+\(\wedge^2\mathbb C^{N_c}\) the only invariant tensor with these symmetries
+is a scalar multiple of
+\(\delta_{ac}\delta_{bd}-\delta_{ad}\delta_{bc}\).  Thus
+\[
+  T_{ab,cd}
+  =
+  C_{N_c}
+  \bigl(
+    \delta_{ac}\delta_{bd}
+    -
+    \delta_{ad}\delta_{bc}
+  \bigr).
+\]
+Contracting \(a=c\) and \(b=d\) fixes the coefficient.  The left side gives
+\[
+  \int\dd\Omega_{N_c}\sum_{a,b}|W_{ab}|^2
+  =
+  2,
+\]
+because \(u\) and \(v\) are an orthonormal two-frame.  The right side gives
+\[
+  C_{N_c}(N_c^2-N_c).
+\]
+Therefore \(C_{N_c}=2/[N_c(N_c-1)]\), which proves
+\eqref{eq:instanton-hard-haar-two-frame-tensor}.  Contracting this tensor
+with \(X_{ab}\overline{Y_{cd}}\) gives
+\eqref{eq:instanton-hard-haar-source-projection}.  If \(Y_{ab}=Y_{ba}\),
+the parenthesis in \eqref{eq:instanton-hard-haar-source-projection} vanishes
+pointwise.  The vanishing is a color-projection statement, not a statement
+about the collective-coordinate density.
+\end{proof}
+
 \begin{proposition}[Individual zero-mode slot in the hard channel]
 \label{prop:instanton-hard-individual-zero-mode-slot}
 The hard four-source channel uses the Fourier transform of individual BPST
@@ -477,12 +564,22 @@ Let \(Q_\ell=c_\ell Q\), \(c_\ell>0\), be the four hard source scales, and let
 form factor, including any bounded source-window factor in the declared
 source normalization.  After the center delta, common determinant
 constant, Haar contraction, amputation convention, and source-overlap
-determinants have been pulled into a channel prefactor \(\mathcal K_{\rm ch}\), the
-stripped one-instanton hard coefficient has the form
+determinants have been pulled into a channel prefactor
+\(\mathcal K_{\rm ch}\), the \(SU(3)\) bosonic zero-mode normalizations still
+leave the running collective factor
+\[
+  \Gamma_{\rm coll}(Q)
+  :=
+  \left(\frac{8\pi^2}{g_{\rm ht}^2(Q)}\right)^6 .
+\]
+This factor is not part of the finite determinant constant and cannot be
+absorbed into a scale-independent \(\mathcal K_{\rm ch}\).  The stripped
+one-instanton hard coefficient has the form
 \begin{equation}
   \mathcal A_{4}^{\rm hard}(Q)
   =
   \mathcal K_{\rm ch}\,
+  \Gamma_{\rm coll}(Q)\,
   \Lambda_{\rm ht}^{29/3}\,
   Q^{-35/3}\,
   H(c_1,c_2,c_3,c_4)
@@ -517,13 +614,16 @@ integrand before hard form factors is
 \end{equation}
 After \(s=Q\rho\), the hard coefficient carries the scale power
 \begin{equation}
+  \Gamma_{\rm coll}(Q)\,
   \Lambda_{\rm ht}^{29/3}Q^{-35/3},
   \qquad
   29/3-35/3=-2 ,
   \label{eq:instanton-hard-four-source-scale-power}
 \end{equation}
-which is the mass dimension of a four-fermion coefficient.  If all four
-individual zero-mode form factors are the singular-gauge hard slots in
+where the displayed \(Q^{-35/3}\) is the power-counting part and
+\(\Gamma_{\rm coll}(Q)\) is a logarithmically running collective-coordinate
+Jacobian.  The mass dimension is that of a four-fermion coefficient.  If all
+four individual zero-mode form factors are the singular-gauge hard slots in
 Proposition~\ref{prop:instanton-hard-individual-zero-mode-slot}, so that
 \[
   F_\ell(c_\ell s)=6c_\ell^{-3}s^{-3}+O(s^{-5}),
@@ -557,18 +657,31 @@ the four differentiated zero-mode slots contribute \(\rho^6\).  This gives
   Q^{-35/3}s^{32/3}\,\dd s .
 \]
 At the hard subtraction point \(\mu=Q\), the one-loop density prefactor
-\(\mu^{b_0}\) contributes \(Q^{29/3}\), so before rewriting the classical
-exponential the coefficient scales as
+\(\mu^{b_0}\) contributes \(Q^{29/3}\), while the bosonic zero-mode
+normalizations contribute
+\(\Gamma_{\rm coll}(Q)=(8\pi^2/g_{\rm ht}^2(Q))^6\).  Therefore before
+rewriting the classical exponential the coefficient scales as
 \(\exp[-8\pi^2/g_{\rm ht}^2(Q)]Q^{-2}\).  The one-loop RG-invariant trade
 \[
   \exp[-8\pi^2/g_{\rm ht}^2(Q)]
   =
   \Lambda_{\rm ht}^{29/3}Q^{-29/3}
 \]
-then gives the final power
-\(\Lambda_{\rm ht}^{29/3}Q^{-35/3}\).  The total mass dimension is
-\(29/3-35/3=-2\), as required for a coefficient multiplying a dimension-six
-four-fermion source.
+then gives the full leading scale dependence
+\(\Gamma_{\rm coll}(Q)\Lambda_{\rm ht}^{29/3}Q^{-35/3}\).  The logarithmic
+factor is dimensionless; the total mass dimension is \(29/3-35/3=-2\), as
+required for a coefficient multiplying a dimension-six four-fermion source.
+At one-loop order
+\[
+  -\frac{\dd}{\dd\log Q}
+  \log\!\left[\Gamma_{\rm coll}(Q)Q^{-35/3}\right]
+  =
+  \frac{35}{3}
+  -6\,\frac{\dd}{\dd\log Q}
+  \log\!\left(\frac{8\pi^2}{g_{\rm ht}^2(Q)}\right),
+\]
+so the pure \(35/3\) logarithmic slope is a power-counting statement modulo
+the collective-mode logarithm.
 
 For the endpoint, multiply the four large-\(s\) tails.  The product contributes
 \[
@@ -675,6 +788,7 @@ and the leading channel data are the same at the two scales, then
 \begin{equation}
   \frac{\mathcal A_2}{\mathcal A_1}
   =
+  \frac{\Gamma_{\rm coll}(Q_2)}{\Gamma_{\rm coll}(Q_1)}
   \left(\frac{Q_2}{Q_1}\right)^{-35/3}
   \frac{1+\varepsilon_2}{1+\varepsilon_1},
   \label{eq:instanton-hard-four-source-ratio}
@@ -689,11 +803,12 @@ with residual multiplier bounded by
   \label{eq:instanton-hard-four-source-ratio-bound}
 \end{equation}
 Thus the determinant constant and \(\Lambda_{\rm ht}\) cancel in a same-theory
-hard-scale ratio, while the dimensionless source-window and rank-conditioning
-data do not cancel unless they have actually been transported.  An off-shell
-center projection, a rank-one zero-mode overlap, an omitted Haar projection, or
-unamputated external residues change the amplitude coordinate before the power
-law \((Q_2/Q_1)^{-35/3}\) can be tested.
+hard-scale ratio, while the running collective factor, the dimensionless
+source-window, and the rank-conditioning data do not cancel unless they have
+actually been transported.  An off-shell center projection, a rank-one
+zero-mode overlap, an omitted Haar projection, an omitted collective-mode
+Jacobian, or unamputated external residues change the amplitude coordinate
+before the power law \((Q_2/Q_1)^{-35/3}\) can be tested modulo logarithms.
 \end{controlledapproximation}
 
 \section{The Hard Kernel as a Wilsonian OPE Datum}
@@ -722,6 +837,7 @@ source channel.  The short-instanton coefficient is
   =
   \ee^{\ii\theta}
   \mathcal K_{\rm ch}\,
+  \Gamma_{\rm coll}(Q)\,
   \Lambda_{\rm ht}^{29/3}\,
   Q^{-35/3}
   Z_{4}(R,\mu)
@@ -757,6 +873,7 @@ The factorization-scale flow is a boundary flux of the same size integral:
   =
   -\ee^{\ii\theta}
   \mathcal K_{\rm ch}
+  \Gamma_{\rm coll}(Q)
   \Lambda_{\rm ht}^{29/3}
   Q^{-35/3}
   Z_{4}(R,\mu)\,
@@ -779,6 +896,7 @@ tail has the leading form
   =
   \ee^{\ii\theta}
   \mathcal K_{\rm ch}
+  \Gamma_{\rm coll}(Q)
   \Lambda_{\rm ht}^{29/3}
   Q^{-35/3}
   \left[
@@ -937,6 +1055,7 @@ the form
   &=
   \ee^{\ii\theta}
   C_{\mathcal S}\,
+  \Gamma_{\rm coll}(Q)\,
   \Lambda_{\rm ht}^{29/3}Q^{-35/3}
   \int_{\mathcal W}
   K_0(s,\Omega;\mathcal J)\,
@@ -966,9 +1085,10 @@ where
 \]
 The constant \(C_{\mathcal S}\) is the finite determinant and orientation
 normalization in the chosen scheme.  The logarithmic determinant and running
-action have already been traded for
-\(\Lambda_{\rm ht}^{29/3}Q^{-35/3}\).  The remaining factors have distinct
-jobs: \(\mathcal R_{\rm det}\) is the finite determinant-shape mismatch after
+action have been traded for \(\Lambda_{\rm ht}^{29/3}Q^{-35/3}\), while the
+bosonic collective-coordinate normalization remains as the running
+\(\Gamma_{\rm coll}(Q)\) factor.  The remaining factors have distinct jobs:
+\(\mathcal R_{\rm det}\) is the finite determinant-shape mismatch after
 scheme matching, \(\mathcal R_{\rm fluc}\) is the source-dependent quotient in
 \eqref{eq:instanton-physical-source-fluctuation-quotient},
 \(\mathcal R_{\rm zm}\) is the zero-mode/source-frame stability factor, and
@@ -1001,6 +1121,7 @@ Then the leading assembled coefficient
   =
   \ee^{\ii\theta}
   C_{\mathcal S}
+  \Gamma_{\rm coll}(Q)
   \Lambda_{\rm ht}^{29/3}Q^{-35/3}
   H_{\mathcal C}^{0}(\mathcal J)
 \]
@@ -1013,7 +1134,8 @@ has the absolute bound
     \mathcal A_4^0(Q;\mathcal J)
   \right|
   &\le
-  |C_{\mathcal S}|\Lambda_{\rm ht}^{29/3}Q^{-35/3}
+  |C_{\mathcal S}|\Gamma_{\rm coll}(Q)
+  \Lambda_{\rm ht}^{29/3}Q^{-35/3}
   \epsilon_{\rm asm}\,
   M_{\mathcal C}^{0}(\mathcal J)
   +|R_{\rm ext}(Q;\mathcal J)|,                         \\
@@ -1035,7 +1157,8 @@ relative correction of size at most
   \frac{\epsilon_{\rm asm}}{h_0}
   +
   \frac{|R_{\rm ext}(Q;\mathcal J)|}{
-    |C_{\mathcal S}|\Lambda_{\rm ht}^{29/3}Q^{-35/3}
+    |C_{\mathcal S}|\Gamma_{\rm coll}(Q)
+    \Lambda_{\rm ht}^{29/3}Q^{-35/3}
     |H_{\mathcal C}^{0}(\mathcal J)|
   } .
 \]
