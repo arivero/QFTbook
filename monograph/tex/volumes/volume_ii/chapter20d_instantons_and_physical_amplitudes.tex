@@ -19,6 +19,16 @@ their spectral projections differ.  These are not refinements of moduli-space
 geometry; they are the steps which turn a saddle contribution into a QFT
 amplitude.
 
+The chapter follows the order of that calculation.  First the one-loop
+density is separated into collective coordinates, zero-mode normalizations,
+nonzero-mode determinants, running-coupling conversion, and scheme constants.
+Next the channel supplies source ranks, amputation, endpoint windows, and a
+declared physical projection.  The hard \(SU(3)\), \(N_f=2\) benchmark then
+shows how zero-mode form factors, tail subtraction, and a Wilsonian size split
+enter one concrete coefficient.  Finally, normal-fluctuation source response,
+cluster corrections, and observable maps decide which part of the instanton
+ensemble is being measured.
+
 \section{The Density Normalization: Fluctuations Before Channels}
 \label{sec:instanton-density-gate}
 
@@ -1197,8 +1207,8 @@ irrelevant.  An instanton--anti-instanton molecule may change a source
 correlator through zero-mode overlap singular values or through the
 source-dependent nonzero-mode quotient even though it contributes no
 \(\bar\theta\)-curvature at this order.  For \(\sigma+\tau=\pm2\), the
-same-charge pair carries a second theta harmonic; in a vacuum handoff it is
-the source of the first \(\cos(2\bar\theta)\) correction described in
+same-charge pair carries a second theta harmonic; in a vacuum observable map
+it is the source of the first \(\cos(2\bar\theta)\) correction described in
 ControlledApproximation~\ref{ca:first-cluster-correction-dilute-instantons}.
 Thus theta curvature, hard source coefficients, and neutral-pair source
 correlators again read different pieces of the same finite-regulator
@@ -1282,7 +1292,7 @@ claim must budget the absolute size of the retained pair terms in
 by itself, does not control \(R_{\rm sec}\).
 \end{controlledapproximation}
 
-\section{Observable Handoffs Are Not Interchangeable}
+\section{Observable Maps Are Not Interchangeable}
 \label{sec:instanton-observable-handoffs}
 
 The assembled coefficient in
@@ -1293,13 +1303,13 @@ different QFT observables only after different final maps have been applied.
 Those maps have different dimensions, positivity properties, and limiting
 procedures.
 
-\begin{controlledapproximation}[Observable handoff map]
+\begin{controlledapproximation}[Observable maps from instanton channels]
 \label{ca:instanton-observable-handoff-ledger}
 Let \(\mathcal X_{+}\) be the finite-regulator \(Q=1\) one-instanton
 amplitude density after the collective density, nonzero-mode determinant,
 zero-mode saturation, source matching, and endpoint window have all been
 assembled.  Let \(\mathcal X_{-}\) be the corresponding anti-instanton
-density.  Four common handoffs are these.
+density.  Four common observable maps are these.
 \begin{enumerate}[label=(\roman*)]
 \item A hard source coefficient extracts
 \(\mathfrak L_{\rm hard}[\mathcal X_+]\) and still needs the Haar projector,
@@ -1326,12 +1336,12 @@ In a CP-symmetric dilute vacuum window, \(\zeta_+=\zeta_-=\zeta\) gives
 \]
 as in
 \eqref{eq:dilute-instanton-gas-partition}--\eqref{eq:dilute-instanton-gas-cumulants}.
-This handoff is a vacuum partition-function statement.  If one light Dirac
+This map is a vacuum partition-function statement.  If one light Dirac
 flavor has an unsaturated zero mode, the corresponding mass-saturated vacuum
 activity is zero, even though a differentiated fermionic source coefficient
 such as \eqref{eq:instanton-hard-assembled-channel} can be nonzero.
 
-The \(U(1)_A\)-odd susceptibility handoff is different.  In an
+The \(U(1)_A\)-odd susceptibility map is different.  In an
 instanton--anti-instanton ensemble with zero-mode overlap singular values
 \(s_\alpha\), the zero-mode-zone contribution is governed by
 \[
@@ -1344,7 +1354,7 @@ after the exact-topology density has been removed in the thermodynamic
 order of limits; see
 \eqref{eq:instanton-zero-mode-zone-u1a-kernel}.  It is controlled by the
 near-zero singular-value law, not by the one-body Poisson activity alone.
-Likewise the real-time axial relaxation handoff is
+Likewise the real-time axial relaxation map is
 \[
   \gamma_5^{\rm top}
   =
@@ -1354,7 +1364,7 @@ as in \eqref{eq:qcd-massless-topological-axial-relaxation}; it needs the
 retarded Chern--Simons diffusion slope, not only the Euclidean theta
 curvature.
 
-Consequently a valid instanton calculation must name the handoff functional.
+Consequently a valid instanton calculation must name the observable functional.
 A hard four-source coefficient is not a topological susceptibility; a
 Euclidean topological susceptibility is not a real-time sphaleron or axial
 relaxation rate; and a dilute instanton curvature is not the

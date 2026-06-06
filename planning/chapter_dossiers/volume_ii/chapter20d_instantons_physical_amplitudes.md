@@ -15,6 +15,10 @@
   chapter reorganizes the instanton material around physical channels:
   fluctuation determinants, zero-mode saturation, source typing, size windows,
   observable projection, and residual budgets.
+- Opening order-of-calculation paragraph: the chapter flow now moves from
+  one-loop density and determinant normalization, through channel/source data,
+  the hard \(SU(3)\), \(N_f=2\) benchmark and Wilsonian size split, to
+  normal-fluctuation response, cluster corrections, and observable maps.
 
 ## Definitions And Results
 
@@ -95,10 +99,10 @@
   for a source amplitude, including disconnected one-body subtraction,
   neutral-pair source visibility, same-charge theta harmonic data, pair-kernel
   residual control, and the sector-isolation consequence.
-- `sec:instanton-observable-handoffs`: physics handoff block distinguishing a
+- `sec:instanton-observable-handoffs`: physical observable-map block distinguishing a
   hard source coefficient, theta curvature, \(U(1)_A\)-odd susceptibility
   kernel, and real-time axial relaxation rate.
-- `ca:instanton-observable-handoff-ledger`: finite-regulator observable map
+- `ca:instanton-observable-handoff-ledger`: finite-regulator observable-map
   discipline: the one-instanton amplitude density must be projected to a named
   observable before its physical meaning is fixed.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell model
@@ -153,7 +157,7 @@
   OPE matching, colored auxiliary kernels, and bridge residuals, so a
   Euclidean source number cannot be relabelled as a scattering amplitude or
   spectral observable.
-- The observable-handoff block connects the dedicated instanton-amplitude
+- The observable-map block connects the dedicated instanton-amplitude
   chapter back to the QCD theta and \(U(1)_A\) material without duplicating it:
   a hard four-source coefficient, a dilute theta curvature, a zero-mode-zone
   \(U(1)_A\)-odd kernel, and a real-time Chern--Simons diffusion rate are
@@ -204,7 +208,7 @@
   verifies the assembled hard-amplitude product bound and rejects
   determinant-only assembly or signed-window relative control without a
   noncancellation margin,
-  verifies the observable-handoff distinction between hard source coefficients,
+  verifies the observable-map distinction between hard source coefficients,
   dilute theta curvature, \(U(1)_A\)-odd zero-mode-zone kernels, real-time
   axial rates, and Witten--Veneziano curvature comparison budgets,
   verifies the physical projection bridge from Euclidean source kernels to
@@ -263,7 +267,7 @@
   formula and absolute error bound, so the chapter now recombines the
   determinant, zero-mode/source, nonzero-mode source quotient, and physical
   projection data before quoting the hard coefficient.
-- 2026-06-06 observable-handoff pass: added a physics bridge from the assembled
+- 2026-06-06 observable-map pass: added a physics bridge from the assembled
   instanton amplitude to QCD observables, explicitly separating hard source
   coefficients, theta curvature, \(U(1)_A\)-odd susceptibility kernels, and
   real-time axial relaxation rates.
@@ -295,7 +299,13 @@
 - 2026-06-06 issue #844 instanton amplitude surface pass: re-audited the
   dedicated physical-amplitude chapter for architecture vocabulary.  The
   reader-facing text now presents density normalization, channel data, hard
-  channel comparison, hard amplitude assembly, and observable handoff maps
+  channel comparison, hard amplitude assembly, and observable maps
   rather than gate/ledger language.  Cross-reference labels were kept stable;
   the physics equations and companion checks are unchanged in substance.  This
   is a coherence and physical-output pass, not another instanton cell.
+- 2026-06-06 issue #597 chapter-flow pass: added a front-loaded
+  order-of-calculation paragraph and replaced the remaining reader-facing
+  observable-handoff wording in the monograph with observable-map language.
+  The edit keeps the hard instanton chapter oriented toward the physical
+  calculation from fluctuation density through source channels to measured
+  QFT observables, without adding another local instanton cell.
