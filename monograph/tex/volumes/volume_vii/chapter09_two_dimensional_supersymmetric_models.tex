@@ -2028,6 +2028,104 @@ finite instanton-measure package
 telescope below.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Mirror residue cross-check for degree-one
+instantons]
+\label{ca:cpn-hv-residue-instanton-cross-check}
+The residue formula
+\eqref{eq:cpn-hv-residue-selection-rule} is a powerful protected calculation,
+but it is not the same object as the regulated A-twisted path integral.  In a
+shared finite regulator, write
+\[
+  q_\Lambda=\exp(t_\Lambda)\prod_i c_{i,\Lambda},
+  \qquad
+  S_1(q)=\mathcal R_{\mathbb P^{N-1}}(H^{2N-1})=q ,
+\]
+and let \(C_{\Lambda,1}^{A}\) denote the direct degree-one coefficient for
+\(\langle H,H^{N-1},H^{N-1}\rangle\) in the same operator coordinate.  The
+mirror residue may be used as a check only through the double-entry
+comparison
+\begin{equation}
+  C_{\Lambda,1}^{A}
+  -
+  S_1(q_{\rm mir})
+  =
+  R_{\rm vort}
+  +
+  q_\Lambda\bigl(I_{\Lambda,1}-1\bigr)
+  +
+  (q_\Lambda-q_{\rm mir})
+  +
+  R_{\rm op}
+  +
+  R_{\rm cont},
+  \label{eq:cpn-hv-residue-instanton-cross-check}
+\end{equation}
+where
+\[
+  I_{\Lambda,1}
+  =
+  \int_{\mathcal U_{\Lambda,1}}\Omega_{\Lambda,1}
+\]
+is the retained finite instanton-measure integral in
+\eqref{eq:cpn-degree-one-retained-measure-package}.  The term \(R_{\rm vort}\)
+compares the true regulated vortex coefficient with the supplied
+\(q_\Lambda I_{\Lambda,1}\) package; \(q_\Lambda(I_{\Lambda,1}-1)\) records
+the zero-mode, determinant-line, orientation, compactification, and incidence
+normalization that make the direct degree-one integral equal to the unit line
+count; \(q_\Lambda-q_{\rm mir}\) is the finite FI-coordinate and branch
+transport error between the mirror torus and the vortex measure; and
+\(R_{\rm op},R_{\rm cont}\) are the local-operator and continuum comparison
+remainders.
+
+If
+\[
+  |R_{\rm vort}|\le B_{\rm vort},\quad
+  |I_{\Lambda,1}-1|\le B_I,\quad
+  |q_\Lambda-q_{\rm mir}|\le B_q,\quad
+  |R_{\rm op}|\le B_{\rm op},\quad
+  |R_{\rm cont}|\le B_{\rm cont},
+\]
+then
+\begin{equation}
+  \left|
+    C_{\Lambda,1}^{A}
+    -
+    S_1(q_{\rm mir})
+  \right|
+  \le
+  B_{\rm vort}
+  +
+  |q_\Lambda|B_I
+  +
+  B_q
+  +
+  B_{\rm op}
+  +
+  B_{\rm cont}.
+  \label{eq:cpn-hv-residue-instanton-cross-check-bound}
+\end{equation}
+The off-pairing components must be checked at the same time:
+\[
+  \left|
+    \eta_\Lambda(H\star_\Lambda H^{N-1},H^a)
+  \right|
+  \le B_{{\rm off},a},
+  \qquad 0\le a<N-1,
+\]
+because the mirror root sum vanishes off the residue selection rule while the
+direct GLSM can still receive operator-map or compactification contact
+remainders.
+
+This cross-check prevents three common substitutions.  A formal Hori--Vafa
+root sum with \(q_{\rm mir}\) does not prove that the vortex determinant line
+is oriented or that the residual fermion zero modes are saturated.  A
+stable-map line count equal to one does not supply the vortex fugacity
+\(q_\Lambda\).  A Coulomb-branch normalization check does not prove that the
+same finite FI coordinate has been transported to the A-twisted observable.
+Only the agreement of the residue, vortex-measure package, operator map, and
+off-pairing bounds in one regulator gives a protected QFT comparison.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Degree-one stable-map incidence residual template]
 \label{ca:cpn-degree-one-vortex-observable-assembly}
 The degree-one product coefficient is a physical A-twisted observable only after

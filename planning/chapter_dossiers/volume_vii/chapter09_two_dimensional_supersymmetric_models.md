@@ -84,6 +84,10 @@ and
   degree-one instanton-measure density, retained-chart Jacobian, and finite
   vortex-coefficient rescaling used to test scheme covariance of the
   `P^{N-1}` degree-one observable.
+- `q_mir`, `I_{Lambda,1}`, `B_vort`, `B_I`, `B_q`, `B_off,a`:
+  mirror-residue FI coordinate, retained finite degree-one instanton-measure
+  integral, and residual majorants in the Hori--Vafa residue/direct-instanton
+  cross-check gate.
 - `overline M_{0,3}(P^{N-1},d)`, `ev_j`, `I_d`: compactified genus-zero
   stable-map moduli space, evaluation maps, and A-model three-point invariant
   used in the direct `P^{N-1}` quantum-product gate.
@@ -289,6 +293,14 @@ and
   The retained coefficient is invariant only for the full package
   `q_Lambda * int Omega_{Lambda,1}`; stale FI coordinates, missing Jacobians, or
   untransported orientation signs are treated as real coefficient changes.
+- Adds the Hori--Vafa residue/direct-instanton cross-check gate for the
+  degree-one `P^{N-1}` product: the mirror residue `S_1(q_mir)` is compared
+  against the direct A-twisted coefficient only through the transported vortex
+  fugacity `q_Lambda`, the retained instanton-measure integral
+  `I_{Lambda,1}`, FI-coordinate transport, operator/continuum residuals, and
+  off-pairing bounds.  This prevents the protected root sum, the stable-map
+  line count, or the Coulomb normalization check from standing in for the
+  regulated vortex measure and zero-mode calculation.
 - Derives the classical cigar quotient metric by solving the auxiliary
   constraint, gauge fixing the logarithmic chiral scalar, and eliminating the
   gauge field.
@@ -428,6 +440,12 @@ and
     Jacobian cancellation between the collective-coordinate measure and the
     determinant/Berezin density, and negative controls for stale FI coordinates,
     missing inverse Jacobians, and untransported orientation signs.
+  - the Hori--Vafa residue/direct-instanton cross-check gate: exact telescope
+    comparing the mirror degree-one residue with the direct A-model/vortex
+    coefficient, including transported FI coordinate, retained measure
+    integral, vortex, operator, continuum, and off-pairing residuals; negative
+    controls reject mirror-only zero-mode bypass, line-count-only fugacity,
+    stale FI transport, and hidden determinant-orientation flips.
   - the cigar quotient metric coefficients after algebraic elimination of the
     gauge field.
   - the logarithmic-chiral vortex obstruction: a unit-norm charged section
@@ -536,3 +554,10 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   determinant/Berezin densities, and orientation/operator signs are transported
   as one package.  This keeps the Appendix K/Hori--Vafa formula from hiding a
   stale instanton-measure convention.
+- The 2026-06-06 issue #597 Hori--Vafa cross-check pass adds a double-entry
+  protected-observable gate: the projective-space mirror residue can be used
+  only after it agrees, within explicit residual majorants, with the direct
+  vortex/A-model coefficient in the same FI, determinant-line, zero-mode,
+  operator, and off-pairing convention.  This is a physics-depth instanton
+  pass: it checks the amplitude/observable assembly behind the Hori--Vafa
+  formula rather than adding another moduli-space cell.

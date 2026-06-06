@@ -13,13 +13,15 @@ with supplied vortex coefficient input plus conditional residual template for
 the quantum-product observable relation, the A-model degree-one zero-mode
 measure bridge, the finite measure-scheme covariance gate for that
 degree-one coefficient, and the mirror-conjecture status ledger separating
-full-QFT data from protected evidence, in Volume VII Chapter 09.
+full-QFT data from protected evidence, plus the Hori--Vafa
+residue/direct-instanton cross-check gate, in Volume VII Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
 elimination, finite chain-complex rank checks, Berezin-degree tests,
 retained-window signed/mass coefficient bounds, root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree gates, and residual
-budgets, plus finite density/Jacobian transport tests, are computed directly
-from finite data rather than by substituting the displayed final identities.
+budgets, plus finite density/Jacobian transport tests and double-entry
+mirror/direct-vortex comparison ledgers, are computed directly from finite data
+rather than by substituting the displayed final identities.
 Imported assumptions: the finite GLSM charge matrix, selected regulator-stage
 factorization, supplied vortex coefficients, nonzero-mode determinant
 placeholders, logarithm-branch conventions, and the chapter's
@@ -35,7 +37,9 @@ hyperplane-normalization changes, omitted off-pairing controls, line-count-only
 or vortex-fugacity-only observable claims, stale FI-coordinate changes,
 missing measure Jacobians, untransported orientation signs, protected-sector
 shortcuts to full mirror equivalence, and finite-gauge invariance failures are
-rejected when the finite model can represent them.
+rejected when the finite model can represent them; the Hori--Vafa residue alone
+is also rejected as a substitute for the direct vortex measure package,
+operator map, and off-pairing controls.
 Scope boundary: a pass checks finite algebra and bookkeeping interfaces; it
 does not prove continuum GLSM existence, Hori--Vafa mirror equivalence,
 vortex compactness, derivation of the vortex fluctuation spectra or gauge-ghost
@@ -1578,6 +1582,131 @@ def check_degree_one_measure_scheme_covariance() -> None:
     )
 
 
+def check_hori_vafa_residue_instanton_crosscheck_gate() -> None:
+    # The mirror residue gives S_1(q_mir)=q_mir for the degree-one
+    # P^{N-1} product test.  The direct A-model/vortex coefficient uses the
+    # transported vortex fugacity q_lambda, the retained measure integral, and
+    # separate operator/continuum residuals.
+    n_fields = 5
+    degree_one_power = n_fields - 1 + n_fields
+    q_mir = Fraction(5, 7)
+    q_transport_error = Fraction(1, 101)
+    q_lambda = q_mir + q_transport_error
+    retained_measure_integral = Fraction(1) + Fraction(1, 103)
+    vortex_residual = -Fraction(1, 107)
+    operator_residual = Fraction(1, 109)
+    continuum_residual = -Fraction(1, 113)
+
+    mirror_residue = cp_mirror_residue_trace(
+        n_fields,
+        degree_one_power,
+        q_mir,
+    )
+    assert_equal("Hori-Vafa degree-one mirror residue", mirror_residue, q_mir)
+
+    direct_amodel_coefficient = (
+        q_lambda * retained_measure_integral
+        + vortex_residual
+        + operator_residual
+        + continuum_residual
+    )
+    crosscheck_residual = direct_amodel_coefficient - mirror_residue
+    expected_residual = (
+        vortex_residual
+        + q_lambda * (retained_measure_integral - 1)
+        + (q_lambda - q_mir)
+        + operator_residual
+        + continuum_residual
+    )
+    assert_equal(
+        "Hori-Vafa residue/direct-instanton cross-check telescope",
+        crosscheck_residual,
+        expected_residual,
+    )
+
+    bounds = {
+        "vortex": abs(vortex_residual),
+        "measure": abs(retained_measure_integral - 1),
+        "q transport": abs(q_lambda - q_mir),
+        "operator": abs(operator_residual),
+        "continuum": abs(continuum_residual),
+    }
+    crosscheck_bound = (
+        bounds["vortex"]
+        + abs(q_lambda) * bounds["measure"]
+        + bounds["q transport"]
+        + bounds["operator"]
+        + bounds["continuum"]
+    )
+    assert_leq_bound(
+        "Hori-Vafa residue/direct-instanton cross-check bound",
+        abs(crosscheck_residual),
+        crosscheck_bound,
+    )
+
+    omitted_q_transport_bound = crosscheck_bound - bounds["q transport"]
+    adversarial_q_transport_error = crosscheck_bound
+    assert_gt_bound(
+        "omitting FI-coordinate transport underbudgets Hori-Vafa comparison",
+        adversarial_q_transport_error,
+        omitted_q_transport_bound,
+    )
+
+    zero_mode_gate = Fraction(0)
+    direct_zero_mode_killed = q_lambda * zero_mode_gate
+    assert_equal(
+        "unsaturated direct vortex zero modes kill A-model coefficient",
+        direct_zero_mode_killed,
+        Fraction(0),
+    )
+    if mirror_residue == direct_zero_mode_killed:
+        raise AssertionError("mirror residue alone should not bypass zero-mode saturation")
+
+    stable_map_line_count = Fraction(1)
+    if stable_map_line_count == q_lambda:
+        raise AssertionError("line count alone should not supply vortex fugacity")
+
+    coefficient_rescaling = Fraction(11, 13)
+    stale_q = q_lambda * coefficient_rescaling
+    transported_fi = q_lambda / coefficient_rescaling
+    transported_q = transported_fi * coefficient_rescaling
+    assert_equal("transported FI coordinate preserves q", transported_q, q_lambda)
+    if cp_mirror_residue_trace(n_fields, degree_one_power, stale_q) == mirror_residue:
+        raise AssertionError("stale FI coordinate should move the mirror residue")
+
+    orientation_flip_integral = -retained_measure_integral
+    flipped_direct = q_lambda * orientation_flip_integral
+    if flipped_direct == q_lambda * retained_measure_integral:
+        raise AssertionError("orientation flip should change the direct vortex package")
+    if cp_mirror_residue_trace(n_fields, degree_one_power, q_lambda) == flipped_direct:
+        raise AssertionError("formal root sum should not hide determinant orientation")
+
+    off_pairing_residuals = {
+        0: Fraction(1, 1009),
+        1: -Fraction(1, 1013),
+        2: Fraction(1, 1019),
+        3: -Fraction(1, 1021),
+    }
+    off_pairing_bound = sum(abs(value) for value in off_pairing_residuals.values())
+    actual_off_pairing_error = abs(sum(off_pairing_residuals.values(), Fraction(0)))
+    assert_leq_bound(
+        "off-pairing contact residual budget",
+        actual_off_pairing_error,
+        off_pairing_bound,
+    )
+    for pairing_power in range(n_fields - 1):
+        mirror_off_pairing = cp_mirror_residue_trace(
+            n_fields,
+            pairing_power,
+            q_mir,
+        )
+        assert_equal(
+            f"mirror residue off-pairing vanishes a={pairing_power}",
+            mirror_off_pairing,
+            Fraction(0),
+        )
+
+
 def check_cigar_metric_elimination() -> None:
     examples = [
         (Fraction(9, 5), Fraction(7, 3)),
@@ -1826,6 +1955,7 @@ def main() -> None:
     check_degree_one_stable_map_incidence_model()
     check_degree_one_amodel_zero_mode_measure_bridge()
     check_degree_one_measure_scheme_covariance()
+    check_hori_vafa_residue_instanton_crosscheck_gate()
     check_cigar_metric_elimination()
     check_logarithmic_chiral_vortex_obstruction()
     check_mirror_conjecture_status_ledger()

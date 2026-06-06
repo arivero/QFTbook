@@ -2630,7 +2630,12 @@ Current checks:
   determinant cancellation, and residual underbudgeting, the finite
   measure-scheme covariance gate checking the simultaneous transport of
   vortex coefficient normalizations, the FI coordinate, chart Jacobians,
-  determinant densities, and orientation/operator signs, and the
+  determinant densities, and orientation/operator signs, the Hori--Vafa
+  residue/direct-instanton cross-check gate comparing the mirror root sum with
+  the transported vortex fugacity, retained A-model measure integral,
+  operator/continuum residuals, and off-pairing contacts while rejecting
+  mirror-only, line-count-only, stale-FI, orientation-flip, and zero-mode
+  shortcuts, and the
   classical cigar quotient metric obtained by eliminating the gauge field,
   the logarithmic-chiral vortex obstruction, the mirror-conjecture status
   ledger separating full GLSM/Hori--Vafa and cigar/Liouville QFT equivalence
