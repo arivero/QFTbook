@@ -461,10 +461,11 @@ Current checks:
   annihilation of subtraction polynomials, inverse-power OPE terms, and the
   logarithmic Borel mass estimator as a spectral weighted average, together
   with the plateau-variance diagnostic, continuum-threshold sensitivity, and
-  pole-remainder mass-estimator bound.  It also checks the two-scale SVZ
-  extraction window by propagating aggregate zeroth- and first-moment
-  residuals through the mass quotient and rejecting a false plateau obtained by
-  retuning the continuum threshold.
+  pole-remainder mass-estimator bound.  The companion is an extended evidence
+  contract: it also checks the two-scale SVZ extraction window by propagating
+  aggregate zeroth- and first-moment residuals through the mass quotient,
+  propagates mass-window uncertainty into the extracted pole residue, and
+  rejects a false plateau obtained by retuning the continuum threshold.
 - `qcd_exclusive_pion_checks.py`: exact rational checks for the Volume II
   exclusive-pion asymptotic-freedom section, including the asymptotic LCDA
   normalization, Gegenbauer normalization moments, the plus-prescribed

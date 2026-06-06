@@ -59,7 +59,13 @@
   the subtracted dispersion kernel, subtraction-polynomial annihilation,
   inverse-power OPE terms, the logarithmic mass estimator, the
   plateau-variance identity, continuum-threshold sensitivity, and the
-  pole-remainder mass-estimator bound.
+  pole-remainder mass-estimator bound.  The 2026-06-06 #630/#725 pass promotes
+  it to an extended evidence contract and adds the finite pole-residue
+  conditioning check: mass-window uncertainty and the zeroth-moment remainder
+  must both propagate into a quoted current coupling or decay constant.  This
+  remains finite Borel-window algebra and residual propagation, not a proof
+  that a physical QCD channel satisfies the required OPE-tail, continuum-duality,
+  positivity, or regulator-matching assumptions.
 
 ## Construction Task
 

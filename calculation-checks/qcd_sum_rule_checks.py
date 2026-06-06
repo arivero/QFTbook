@@ -1,25 +1,69 @@
 #!/usr/bin/env python3
-"""Symbolic checks for the QCD Borel/Laplace current-sum-rule block.
+r"""Symbolic checks for the QCD Borel/Laplace current-sum-rule block.
 
-These checks verify the algebra used in Volume II, Chapter 19:
+Evidence contract.
 
-1. The Borel transform of the subtracted dispersion kernel is
-   exp(-s/M2)/M2.
-2. Subtraction polynomials are annihilated once the derivative order is
-   larger than the degree.
-3. Inverse powers (Q2)^(-m) map to 1/((m-1)! (M2)^m).
-4. The logarithmic Borel mass estimator is the spectral weighted average of
-   the retained squared masses.
-5. The plateau slope for a positive retained spectral measure is the weighted
-   variance of s.
-6. The continuum-threshold derivative contains the boundary spectral weight and
-   the factor (s0 - m_eff^2).
-7. A pole plus finite low-energy remainder obeys the stated mass-estimator
-   error bound, and the bound fails if the R0 remainder is silently dropped.
-8. The aggregate window residual in the zeroth moment must be propagated
-   through the logarithmic mass quotient.
-9. A flat mass curve obtained by retuning the continuum threshold is a
-   two-scale cancellation, not an independent plateau.
+Target claims:
+  Volume II, Chapter 19 uses the Borel/Laplace transform of a subtracted
+  current-current dispersion relation, the logarithmic mass quotient, the
+  plateau-variance identity, threshold sensitivity, pole-remainder mass bounds,
+  residue-conditioning bounds, and the two-scale SVZ window warning that a
+  moving continuum threshold can fake a plateau.
+
+Independent construction:
+  The checks derive the Borel kernel by the defining large-order limit, derive
+  inverse-power transforms from Gamma-function ratios, evaluate spectral
+  moment quotients from finite positive measures, differentiate the finite
+  threshold integral directly, and build exact finite pole-plus-remainder and
+  threshold-retuning models instead of copying the displayed prose.
+
+Imported assumptions:
+  Reflection positivity in the chosen current channel, the existence of a
+  subtracted current dispersion relation, the spacelike OPE as an asymptotic
+  expansion in a declared scheme, and the physical adequacy of any
+  pole-plus-continuum ansatz are external QCD inputs.  The finite checks do not
+  prove continuum QCD, spectral completeness, OPE convergence, or duality.
+
+Negative controls:
+  The suite rejects threshold derivatives without the (s0 - m_eff^2) factor,
+  mass-error bounds that drop the zeroth-moment residual, window estimates that
+  ignore denominator residuals, residue estimates that ignore mass uncertainty,
+  and flat curves obtained only by retuning the continuum threshold.
+
+Scope boundary:
+  These are symbolic and exact finite checks of the Borel-transform,
+  moment-quotient, and residual-propagation algebra.  They are not independent
+  phenomenological evidence for a hadron mass or pole residue in any QCD
+  channel.
+
+Primary derivation route:
+  The manuscript route starts from the Euclidean current correlator, applies a
+  subtracted spectral representation and the Borel functional, then interprets
+  continuum-subtracted OPE moments through logarithmic mass and residue
+  coordinates.
+
+Independent verification route:
+  The executable route starts from the primitive limiting Borel definition,
+  finite spectral atoms, and finite moment perturbations; it differentiates and
+  propagates those finite objects directly, then compares them with the
+  manuscript formulas.
+
+Convention dependencies:
+  Euclidean Q^2 > 0 momentum convention, positive spectral density for
+  J^\dagger J channels, Borel scale tau=1/M^2, continuum threshold s0 in the
+  same current normalization as rho_J, and renormalized OPE coordinates in the
+  chapter's QCD scheme.
+
+Domain and remainder assumptions:
+  The bounds require positive retained zeroth moment after residual subtraction,
+  fixed Borel/threshold rectangles, declared OPE-tail and continuum-duality
+  remainders, and mass/residue extraction inside a window where denominator
+  and exponential-conditioning factors are finite.
+
+Remaining unproved or conditional:
+  The actual QCD spectral measure, current overlap, continuum-duality accuracy,
+  OPE-tail control, regulator matching, and the existence of a phenomenological
+  window with small residuals remain channel-dependent physics inputs.
 """
 
 from __future__ import annotations
@@ -190,6 +234,37 @@ def check_window_residual_mass_bound() -> None:
     )
 
 
+def check_residue_extraction_mass_uncertainty_bound() -> None:
+    tau = sp.Rational(2, 5)
+    pole_residue = sp.Rational(7, 3)
+    mass_sq = sp.Rational(5, 2)
+    residual_l0 = sp.Rational(1, 20)
+    delta_mass = sp.Rational(1, 10)
+
+    exact_l0 = pole_residue * sp.exp(-tau * mass_sq) + residual_l0
+    fitted_mass_sq = mass_sq + delta_mass
+    residue_estimator = sp.exp(tau * fitted_mass_sq) * exact_l0
+    deviation = sp.simplify(residue_estimator - pole_residue)
+    bound = (
+        pole_residue * (sp.exp(tau * delta_mass) - 1)
+        + sp.exp(tau * (mass_sq + delta_mass)) * residual_l0
+    )
+    assert_zero("residue extraction mass-window bound", deviation - bound)
+
+    residual_only_bound = sp.exp(tau * (mass_sq + delta_mass)) * residual_l0
+    assert_true(
+        "residue extraction must propagate mass uncertainty",
+        sp.simplify(deviation - residual_only_bound) > 0,
+    )
+
+    no_mass_error_estimator = sp.exp(tau * mass_sq) * exact_l0
+    no_mass_error_deviation = sp.simplify(no_mass_error_estimator - pole_residue)
+    assert_zero(
+        "residue extraction with exact mass only sees L0 remainder",
+        no_mass_error_deviation - sp.exp(tau * mass_sq) * residual_l0,
+    )
+
+
 def check_retuned_threshold_plateau_degeneracy() -> None:
     l0 = sp.Rational(5, 2)
     l1 = sp.Rational(7, 3)
@@ -229,6 +304,7 @@ def main() -> None:
     check_continuum_threshold_sensitivity()
     check_pole_remainder_mass_bound()
     check_window_residual_mass_bound()
+    check_residue_extraction_mass_uncertainty_bound()
     check_retuned_threshold_plateau_degeneracy()
     print("All QCD Borel/Laplace sum-rule checks passed.")
 

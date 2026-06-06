@@ -7684,6 +7684,36 @@ Equation~\eqref{eq:qcd-svz-pole-remainder-bound} is the finite version of the
 usual ``ground-state dominance'' sentence.  Without such a remainder bound, a
 small visual slope in \(M^2\) is only a property of the chosen ansatz and
 threshold, not a controlled QCD statement about the hadron spectrum.
+
+The same warning applies to the current--hadron coupling.  Once a mass
+coordinate has been chosen, the pole residue inferred from the zeroth moment is
+\begin{equation}
+  F_{\rm ret}(\tau,s_0;m_*^2)
+  :=
+  \ee^{\tau m_*^2}\mathcal L_0^{(D_{\max})}(\tau,s_0).
+  \label{eq:qcd-svz-retained-residue-coordinate}
+\end{equation}
+If the exact low-energy moment has the decomposition
+\eqref{eq:qcd-svz-pole-remainder-moments} and
+\(|m_*^2-m_H^2|\le\delta_m\), then
+\begin{equation}
+  \left|
+  \ee^{\tau m_*^2}\mathcal L_0^{\rm exact}
+  -
+  F_H
+  \right|
+  \le
+  F_H\!\left(\ee^{\tau\delta_m}-1\right)
+  +
+  \ee^{\tau(m_H^2+\delta_m)}|R_0| .
+  \label{eq:qcd-svz-residue-mass-window-bound}
+\end{equation}
+Thus the residue is not controlled by a flat mass curve: it also needs the
+zeroth-moment remainder and the mass uncertainty propagated through the
+exponential Borel weight.  A quoted decay constant, current coupling, or pole
+residue is therefore a mass-plus-normalization extraction in the same
+two-scale window, not an independent number read from the graph after the mass
+has been fitted.
 \end{controlledapproximation}
 
 \begin{controlledapproximation}[Two-scale SVZ extraction window]

@@ -115,6 +115,17 @@
       "risk_class": "QCD Euclidean-to-lightcone PDF matching"
     },
     {
+      "path": "qcd_sum_rule_checks.py",
+      "risk_class": "QCD Borel/Laplace current sum-rule extraction",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "Euclidean Q^2 positive momentum convention",
+        "Borel scale tau=1/M^2",
+        "positive current spectral measure",
+        "continuum threshold and OPE scheme coordinates"
+      ]
+    },
+    {
       "path": "scet_factorization_checks.py",
       "risk_class": "SCET/factorization proof-status boundary"
     },
