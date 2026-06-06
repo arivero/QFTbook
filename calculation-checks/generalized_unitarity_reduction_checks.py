@@ -4,7 +4,7 @@
 The companion section in Volume II, Chapter 6 develops the bridge from
 Cutkosky discontinuities to generalized cuts, scalar-integral reconstruction,
 IBP reduction, and master-integral differential equations.  This script
-checks the exact algebraic ledger behind the one-loop reconstruction datum,
+checks the exact algebraic structure behind the one-loop reconstruction package,
 the worked massless phi^4 example including the cut-invisible MS pole and
 one-loop running, the finite two-scale box master, and the one-loop bubble
 family, including numerator sector projection and the
@@ -22,9 +22,10 @@ subtracted, a finite two-master threshold-mixing model, a two-letter
 master-transport model with boundary and branch negative controls, a physical
 master-discontinuity closure gate comparing transported master jumps with
 Cutkosky channel data, the finite
-Laurent-pole ledger that turns a reconstructed virtual amplitude into a finite
-observable only after infrared subtraction, real radiation, and scheme transport
-have been assembled, and the two-loop infrared-pole consistency gate relating
+Laurent-pole bookkeeping that turns a reconstructed virtual amplitude into a finite
+observable only after infrared subtraction, real radiation, scheme transport,
+and the unresolved measurement cell have been assembled, and the two-loop
+infrared-pole consistency gate relating
 `A^(2)`, `I^(1) A^(1)`, `I^(2) A^(0)`, and the NNLO finite
 observable.
 
@@ -36,9 +37,9 @@ amplitude, and four-dimensional blind spots, the bubble IBP identity, and the
 bubble numerator-reduction sector projection and bubble master differential
 equation, the equal-mass bubble threshold family, plus the finite two-scale
 massless box master, the two-loop equal-mass sunrise elliptic maximal-cut
-ledger, the gauge-theory MHV
+data, the gauge-theory MHV
 box and all-plus rational-term comparison, the planar N=4 MHV quadruple-cut
-state-sum ledger, the local two-master
+state-sum accounting, the local two-master
 threshold-mixing datum in a Fuchsian differential system, the two-letter
 transport/boundary audit for a reduced master sector, and the
 physical channel-discontinuity closure audit before the
@@ -51,11 +52,11 @@ the double copy, and a one-loop Jacobi triplet surface term can be invisible
 to cuts and color-weighted gauge integration while changing a naive
 double-copy pairing, and the triple-cut triangle projection isolates the
 triangle coefficient only after known box residues have been subtracted.  The
-one-loop reconstruction datum is checked as an ordered
-gate ledger separating cuts, representative choice, rational/regulator data,
+one-loop reconstruction package is checked as an ordered
+data package separating cuts, representative choice, rational/regulator data,
 reduction, boundary/branch data, subtraction, and observable assembly.
 Independent construction: finite cut-signature matrices over rational
-numbers, a finite ordered gate/incidence ledger for the reconstruction datum,
+numbers, a finite ordered gate/incidence model for the reconstruction package,
 an explicit identical-state symmetry factor, a nullspace model for
 local/rational terms invisible to four-dimensional cuts, exact rational
 pole-residue and beta-function coefficient bookkeeping for the scalar
@@ -96,7 +97,8 @@ fixed-normalization finite box checks, including pole-subtraction
 bookkeeping, polynomial log algebra, branch continuation, a sector-boundary
 quadrature, and a numerical dilogarithm-parameter integral independent of the
 encoded log-square answer; Laurent-pole arithmetic for virtual/real infrared
-cancellation, finite scheme transport, and two-loop recursive pole subtraction.
+cancellation, plus-distribution measurement cells, finite scheme transport, and
+two-loop recursive pole subtraction.
 Imported assumptions: dimensional regularization, the standard massless
 two-particle phase-space normalization with the common factor of pi stripped
 off, the Feynman-parameter gamma-function form of the bubble master, and the
@@ -136,9 +138,11 @@ Euclidean branch reuse above the massive two-particle threshold,
 logarithmic one-master shortcuts for the sunrise elliptic maximal cut,
 maximal-cut-only multi-loop reconstruction when lower sectors carry scale,
 branch/path omission in a two-letter master transport, virtual-only
-observable assembly, untransported finite IR-scheme shifts, two-loop remainder
-extraction that drops `I^(1) A^(1)`, and NNLO observable assembly that omits
-the `|F^(1)|^2` hard term.
+observable assembly, untransported finite IR-scheme shifts, wrong unresolved
+subtraction measurements, frozen locally inclusive measurement shortcuts,
+non-infrared-safe logarithmic weights, two-loop remainder extraction that drops
+`I^(1) A^(1)`, and NNLO observable assembly that omits the `|F^(1)|^2` hard
+term.
 Scope boundary: a pass checks the finite reconstruction and reduction
 bookkeeping; it does not compute a nonabelian helicity amplitude from Feynman
 graphs, prove unitarity from Wightman axioms, solve general multi-loop
@@ -2322,6 +2326,85 @@ def check_virtual_to_observable_assembly() -> None:
     )
 
 
+def check_unresolved_measurement_cell_assembly() -> None:
+    born_weight = Fraction(3, 2)
+    w0 = Fraction(5, 7)
+    w1 = -Fraction(2, 9)
+    w2 = Fraction(4, 11)
+    virtual_finite = Fraction(13, 17)
+    nonsingular_real = Fraction(19, 23)
+
+    # W(x) = w0 + w1 x + w2 x^2, so int_0^1 (W(x)-W(0))/x dx = w1 + w2/2.
+    plus_measurement = w1 + Fraction(1, 2) * w2
+    assert_equal("unresolved plus-measurement integral", plus_measurement, Fraction(-4, 99))
+
+    virtual_cell = (
+        -born_weight * w0,
+        born_weight * virtual_finite * w0,
+    )
+    real_cell = (
+        born_weight * w0,
+        born_weight * plus_measurement + nonsingular_real,
+    )
+    assembled_cell = laurent_add(virtual_cell, real_cell)
+    expected_finite = (
+        born_weight * virtual_finite * w0
+        + born_weight * plus_measurement
+        + nonsingular_real
+    )
+    assert_equal(
+        "unresolved measurement-cell pole cancellation",
+        assembled_cell,
+        (Fraction(0), expected_finite),
+    )
+
+    resolved_value = w0 + w1 + w2
+    wrong_subtraction_real = (
+        born_weight * resolved_value,
+        born_weight * plus_measurement + nonsingular_real,
+    )
+    wrong_subtraction_cell = laurent_add(virtual_cell, wrong_subtraction_real)
+    assert_true(
+        "wrong resolved-event subtraction measurement leaves pole",
+        wrong_subtraction_cell[0] != 0,
+    )
+    assert_equal(
+        "wrong subtraction pole coefficient",
+        wrong_subtraction_cell[0],
+        born_weight * (resolved_value - w0),
+    )
+
+    frozen_measurement_real = (
+        born_weight * w0,
+        nonsingular_real,
+    )
+    frozen_cell = laurent_add(virtual_cell, frozen_measurement_real)
+    assert_true(
+        "freezing measurement to reduced event erases finite unresolved term",
+        frozen_cell[1] != expected_finite,
+    )
+    assert_equal(
+        "frozen-measurement finite defect",
+        expected_finite - frozen_cell[1],
+        born_weight * plus_measurement,
+    )
+
+    virtual_only_cell = virtual_cell
+    assert_true(
+        "virtual-only measurement cell keeps unresolved pole",
+        virtual_only_cell[0] != 0,
+    )
+
+    cutoff_l = Fraction(4)
+    larger_cutoff_l = Fraction(8)
+    log_weight_integral = -Fraction(1, 2) * cutoff_l * cutoff_l
+    larger_log_weight_integral = -Fraction(1, 2) * larger_cutoff_l * larger_cutoff_l
+    assert_true(
+        "non-infrared-safe log weight grows with unresolved cutoff",
+        abs(larger_log_weight_integral) > 3 * abs(log_weight_integral),
+    )
+
+
 def check_two_loop_ir_pole_consistency_gate() -> None:
     tree = Fraction(3, 5)
     ir_one_loop = (Fraction(-7, 3), Fraction(5, 11))
@@ -2482,6 +2565,7 @@ def main() -> None:
     check_two_master_threshold_mixing()
     check_two_letter_master_transport()
     check_virtual_to_observable_assembly()
+    check_unresolved_measurement_cell_assembly()
     check_two_loop_ir_pole_consistency_gate()
     print("All generalized unitarity and loop-reduction checks passed.")
 

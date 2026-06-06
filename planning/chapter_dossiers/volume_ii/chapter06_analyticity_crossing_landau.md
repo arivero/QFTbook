@@ -48,10 +48,10 @@
   closure gate comparing transported master jumps with physical Cutkosky
   channel data, and a two-stage master-integral layer: first a local two-master
   threshold block, then a two-letter transport audit exposing connection data,
-  Euclidean boundary constants, branch/path prescriptions, lower sectors, and the
-  finite-remainder/observable assembly
-  that separates reconstructed virtual amplitudes from infrared-safe physical
-  observables, including a two-loop infrared-pole consistency gate linking
+  Euclidean boundary constants, branch/path prescriptions, lower sectors, the
+  finite-remainder/observable assembly, an unresolved one-emission measurement
+  cell with plus-distribution cancellation, and a two-loop infrared-pole
+  consistency gate linking
   \(A^{(2)}\), \(I^{(1)}A^{(1)}\), \(I^{(2)}A^{(0)}\), the lower-loop hard
   square, and the NNLO observable budget.
 - Records a reader-facing status ledger for named analytic tools in the
@@ -141,8 +141,8 @@
 | \(G_\sigma\) | circled graph associated to a vertex circling \(\sigma\) in the largest-time identity |
 | \(C\) | set of internal lines crossed by a perturbative physical cut |
 | \(\operatorname{Cut}_C\mathcal I\) | algebraic generalized cut of a regulated loop integrand on the selected on-shell denominators |
-| \(\mathfrak D_{1{\rm L}}\) | one-loop reconstruction datum collecting cut data, representative choice, rational/regulator input, reduction, boundary/branch data, subtraction, and observable assembly |
-| \(D_{\rm cut},D_{\rm rep},D_{\rm rat},D_{\rm red},D_{\rm bc},D_{\rm sub},D_{\rm obs}\) | gates in the one-loop reconstruction datum: cuts/state sums, integrand representative, rational/regulator probes, reduction map, boundary/branch constants, subtraction convention, and observable data |
+| \(\mathfrak D_{1{\rm L}}\) | one-loop reconstruction data package collecting cut data, representative choice, rational/regulator input, reduction, boundary/branch data, subtraction, and observable assembly |
+| \(D_{\rm cut},D_{\rm rep},D_{\rm rat},D_{\rm red},D_{\rm bc},D_{\rm sub},D_{\rm obs}\) | gates in the one-loop reconstruction package: cuts/state sums, integrand representative, rational/regulator probes, reduction map, boundary/branch constants, subtraction convention, and observable data |
 | \(D_i(\ell)\) | one-loop denominator \((\ell+K_i)^2+m_i^2-\ii0\) |
 | \(I_r\) | scalar one-loop integral with \(r\) propagators in the declared regulator |
 | \(C_{012}(t),R_b(t),\Pi_0\) | triple-cut residue on a residual cut parameter, known box residues visible on the same triple cut, and the Laurent constant projection used after box subtraction |
@@ -171,6 +171,7 @@
 | \(\mathbf I^{(1)}_\Lambda\) | one-loop infrared subtraction operator used to define the finite remainder in a declared regulator and finite subtraction convention |
 | \(\mathcal F^{(1)}_\Lambda\) | finite one-loop hard remainder after subtracting \(\mathbf I^{(1)}_\Lambda\mathcal A^{(0)}_\Lambda\) |
 | \(\mathbf I^{(2)}_\Lambda\), \(\mathcal F^{(2)}_\Lambda\) | two-loop infrared subtraction operator and hard remainder defined recursively from \(\mathcal A^{(2)}-\mathbf I^{(1)}\mathcal A^{(1)}-\mathbf I^{(2)}\mathcal A^{(0)}\) |
+| \(x,\epsilon_{\rm ir},W(x,\zeta),W_0(\zeta)\) | unresolved one-emission coordinate, local analytic infrared regulator, measurement in the unresolved chart, and its reduced-event infrared-safe limit |
 | \(\mathcal R_\Lambda^{\rm sub}[W]\), \(\mathcal C_\Lambda^{\rm fact}[W]\) | real-emission/subtraction and factorization/matching pieces needed to assemble an infrared-safe observable for measurement \(W\) |
 | \(\mathcal R_\Lambda^{{\rm RV,sub}}[W]\), \(\mathcal R_\Lambda^{{\rm RR,sub}}[W]\) | NNLO real--virtual and double-real subtraction pieces paired with the same infrared subtraction convention |
 | \(B_{\rm state},B_{\rm coeff},B_{\rm master},B_{\rm sheet},B_{\rm sub}\) | state-sum/orientation, inverse-pairing, master-jump, sheet, and subtraction residuals in the physical channel-discontinuity closure |
@@ -210,7 +211,7 @@
   regulated one-loop integrand.  They coincide with physical Cutkosky cuts
   only after the relevant real positive-energy branch, state sum, and sheet
   have been imposed.
-- The one-loop reconstruction datum is an ordered bookkeeping contract:
+- The one-loop reconstruction package is an ordered workflow:
   generalized cuts constrain residues of an integrand representative,
   rational/regulator probes supply cut-invisible virtual information,
   reduction and boundary/branch data evaluate the master sector, and
@@ -859,8 +860,8 @@
   generalized-gauge invariance of the gauge amplitude, failure of the naive
   numerator square under a non-Jacobi shift, and invariance under the
   four-point common denominator-weighted shift.
-- 2026-06-05 issue #769 reconstruction-datum coherence pass: added the
-  one-loop reconstruction datum near the opening of the generalized-unitarity
+- 2026-06-05 issue #769 reconstruction-package coherence pass: added the
+  one-loop reconstruction package near the opening of the generalized-unitarity
   section, collecting cut data, integrand representative choice,
   rational/regulator input, reduction, boundary/branch information,
   subtraction convention, and observable assembly into one named workflow.
@@ -966,6 +967,16 @@
   two-loop Laurent pole extraction, rejects dropping
   \(\mathbf I^{(1)}\mathcal A^{(1)}\) or the \(|\mathcal F^{(1)}|^2\) hard term,
   and tests a two-loop residual budget.
+- 2026-06-06 issue #769 unresolved measurement-cell pass: added
+  `ca:one-loop-unresolved-measurement-cell` between the symbolic one-loop
+  observable assembly and the two-loop IR-pole gate.  The pass expands the
+  real-emission/subtraction symbol into a local unresolved chart with
+  \(x^{-1+\epsilon_{\rm ir}}\), the plus-distribution identity, the reduced
+  measurement \(W_0\), and the finite \(\int (W-W_0)/x\) measurement term.
+  The companion check verifies pole cancellation and rejects using a resolved
+  measurement in the counterevent, freezing the measurement to its locally
+  inclusive value, dropping the real cell, and using a non-infrared-safe
+  logarithmic weight.
 - 2026-06-05 issue #755 named-tool status pass: added
   `rem:chapter06-named-tool-status-ledger` near the chapter entrance and
   tightened the generalized-unitarity opening.  The pass records which named

@@ -2989,7 +2989,7 @@ Current checks:
   distributions.
 - `generalized_unitarity_reduction_checks.py`: exact finite checks for the
   loop-amplitude bridge in Volume II, Chapter 6, including the one-loop
-  reconstruction-datum gate ledger, the massless \(\phi^4\) one-loop cut
+  reconstruction data-package gate model, the massless \(\phi^4\) one-loop cut
   reconstruction, the crossed-channel MS pole and one-loop running
   coefficient, the incomplete-cut, local-subtraction, and
   four-dimensional-rational negative controls, the Yang--Mills MHV/all-plus
@@ -3028,8 +3028,11 @@ Current checks:
   and cut-only boundary negative controls, plus the
   Laurent-pole virtual-to-observable assembly check separating the finite hard
   remainder, real-radiation/subtraction cancellation, finite IR-scheme
-  transport, and residual comparison budget, and the two-loop infrared-pole
-  consistency gate relating \(A^{(2)}\), \(I^{(1)}A^{(1)}\),
+  transport, and residual comparison budget, the unresolved one-emission
+  measurement-cell check with plus-distribution cancellation and negative
+  controls for wrong subtraction measurements, frozen locally inclusive
+  measurements, and non-infrared-safe logarithmic weights, and the two-loop
+  infrared-pole consistency gate relating \(A^{(2)}\), \(I^{(1)}A^{(1)}\),
   \(I^{(2)}A^{(0)}\), the \(|F^{(1)}|^2\) hard contribution, and the NNLO
   observable residual budget.
 - `tomita_standard_form_checks.py`: finite matrix checks for the

@@ -2238,7 +2238,7 @@ in the same way.  The coefficients in
 normalization of the scalar integrals, color ordering, external-state
 normalization, and regulator have been fixed.
 
-\begin{definition}[One-loop reconstruction datum]
+\begin{definition}[One-loop reconstruction data package]
 \label{def:one-loop-reconstruction-datum}
 A one-loop amplitude computation in this chapter is a chain of data
 \[
@@ -2250,15 +2250,15 @@ A one-loop amplitude computation in this chapter is a chain of data
   \bigr).
 \]
 Here \(D_{\rm cut}\) specifies physical and algebraic cuts, sheet choices,
-and internal state sums.  The datum \(D_{\rm rep}\) specifies an integrand
+and internal state sums.  The component \(D_{\rm rep}\) specifies an integrand
 representative: scalar basis, numerator conventions, surface terms, and
-evanescent terms modulo which two representatives are identified.  The datum
+evanescent terms modulo which two representatives are identified.  The component
 \(D_{\rm rat}\) supplies dimensional or massive-probe information for
-rational terms invisible to strict four-dimensional cuts.  The datum
+rational terms invisible to strict four-dimensional cuts.  The component
 \(D_{\rm red}\) is the IBP or integrand-reduction map to master integrals,
-including sector and boundary assumptions.  The datum \(D_{\rm bc}\) gives
+including sector and boundary assumptions.  The component \(D_{\rm bc}\) gives
 Euclidean boundary constants, path choices, and branch prescriptions for the
-masters.  The datum \(D_{\rm sub}\) specifies the UV counterterm and IR
+masters.  The component \(D_{\rm sub}\) specifies the UV counterterm and IR
 subtraction convention.  Finally \(D_{\rm obs}\) specifies the real-radiation,
 factorization, and measurement data needed to turn a virtual amplitude into
 a physical observable.
@@ -2514,7 +2514,7 @@ single-channel cut would give only one third of the pole and the wrong
 running.  Conversely, changing \(c_{\rm sub}\) shifts the finite amplitude by a
 local constant and is compensated by a finite redefinition of \(\lambda\).  Cut
 data, UV subtraction, finite scheme choice, and the running coupling are
-therefore distinct entries of the one-loop reconstruction datum, even in this
+therefore distinct entries of the one-loop reconstruction package, even in this
 small scalar amplitude.
 \end{controlledapproximation}
 
@@ -3953,6 +3953,74 @@ subtraction leaves the soft/collinear pole in the virtual contribution; and
 changing the finite subtraction convention without transporting the
 real/factorization term changes the finite number in
 \eqref{eq:one-loop-observable-from-finite-remainder}.
+\end{controlledapproximation}
+
+\begin{controlledapproximation}[Unresolved one-emission measurement cell]
+\label{ca:one-loop-unresolved-measurement-cell}
+The symbol \(\mathcal R_\Lambda^{\rm sub}[W]\) in
+\eqref{eq:one-loop-observable-from-finite-remainder} abbreviates the physical
+step that makes a massless observable finite: the real phase space must be
+combined with the same Born measurement that appears in the virtual subtraction.  In a
+single unresolved soft or collinear chart, let \(x\in(0,1]\) be the unresolved
+energy fraction or angular variable, and regulate the singular measure by
+\[
+  \dd x\,x^{-1+\epsilon_{\rm ir}} .
+\]
+If the measurement is infrared safe in this chart, then
+\[
+  W(x,\zeta)
+  =
+  W_0(\zeta)+x\,W_1(x,\zeta)
+  \qquad (x\to0),
+\]
+where \(\zeta\) denotes the nonsingular variables of the reduced event.  The
+distributional expansion is
+\begin{equation}
+  \int_0^1\dd x\,x^{-1+\epsilon_{\rm ir}}W(x,\zeta)
+  =
+  \frac{W_0(\zeta)}{\epsilon_{\rm ir}}
+  +
+  \int_0^1\dd x\,\frac{W(x,\zeta)-W_0(\zeta)}{x}
+  +O(\epsilon_{\rm ir}).
+  \label{eq:one-loop-unresolved-plus-cell}
+\end{equation}
+Thus the pole is not cancelled by an abstract real-emission symbol.  It is
+cancelled by a local counterevent carrying exactly the reduced-event
+measurement \(W_0\).  If \(S_0(\zeta)\) is the Born color/spin weight in this
+chart and \(V_{\rm fin}(\zeta)\) is the finite virtual hard coefficient, then
+the local NLO cell has the finite form
+\begin{equation}
+\begin{aligned}
+  \mathcal O_{\rm cell}^{(1)}[W]
+  &=
+  \int\dd\zeta\,S_0(\zeta)
+  \biggl[
+    V_{\rm fin}(\zeta)W_0(\zeta)
+    +
+    \int_0^1\dd x\,
+      \frac{W(x,\zeta)-W_0(\zeta)}{x}
+  \biggr]
+  +
+  \mathcal R_{\rm fin}^{\rm nonsing}[W].
+\end{aligned}
+  \label{eq:one-loop-unresolved-measurement-cell}
+\end{equation}
+The second term is the measurement dependence of the unresolved radiation
+inside the singular chart.  It vanishes only for a locally inclusive
+measurement \(W(x,\zeta)=W_0(\zeta)\); for jet masses, energy correlators,
+track weights, or veto observables it is part of the physical finite answer.
+
+Three shortcuts fail in different ways.  First, using \(W(1,\zeta)\) or any
+other resolved-event value as the subtraction measurement leaves a pole
+proportional to \(W(1,\zeta)-W_0(\zeta)\).  Second, replacing \(W(x,\zeta)\) by
+\(W_0(\zeta)\) cancels the pole but erases the finite measurement term in
+\eqref{eq:one-loop-unresolved-measurement-cell}.  Third, if \(W\) has no
+unique reduced-event limit as \(x\to0\), then the plus prescription in
+\eqref{eq:one-loop-unresolved-plus-cell} does not define a finite observable in
+this chart.  The full subtraction construction in
+Chapter~\ref{ch:jets-ir-safe-observables-hadronization} repeats this local
+cell over the soft, collinear, and overlap regions, with the factorization and
+rapidity-subtraction data required by the chosen observable.
 \end{controlledapproximation}
 
 \begin{controlledapproximation}[Two-loop infrared-pole consistency gate]
