@@ -3406,20 +3406,65 @@ def check_instanton_orientation_haar_projection() -> None:
     ) -> Fraction:
         return epsilon2(first, third) * epsilon2(second, fourth)
 
+    invariant_pairings = [pairing_a, pairing_b]
+    invariant_basis_indices = list(itertools.product(range(2), repeat=4))
+    gram_matrix = [
+        [
+            sum(
+                left(*indices) * right(*indices)
+                for indices in invariant_basis_indices
+            )
+            for right in invariant_pairings
+        ]
+        for left in invariant_pairings
+    ]
+    derived_projector_coefficients = inverse_2x2_fraction(gram_matrix)
+    assert_equal(
+        "SU2 four-slot invariant Gram matrix",
+        gram_matrix,
+        [[Fraction(4), Fraction(2)], [Fraction(2), Fraction(4)]],
+    )
+    assert_equal(
+        "SU2 four-slot projector coefficients from Gram inverse",
+        derived_projector_coefficients,
+        [[Fraction(1, 3), -Fraction(1, 6)], [-Fraction(1, 6), Fraction(1, 3)]],
+    )
+
     def haar_four_same(
         colors: tuple[int, int, int, int],
         cores: tuple[int, int, int, int],
     ) -> Fraction:
-        color_a = pairing_a(*colors)
-        color_b = pairing_b(*colors)
-        core_a = pairing_a(*cores)
-        core_b = pairing_b(*cores)
-        return (
-            Fraction(1, 3) * color_a * core_a
-            - Fraction(1, 6) * color_a * core_b
-            - Fraction(1, 6) * color_b * core_a
-            + Fraction(1, 3) * color_b * core_b
+        color_invariants = [pairing(*colors) for pairing in invariant_pairings]
+        core_invariants = [pairing(*cores) for pairing in invariant_pairings]
+        return sum(
+            color_invariants[row]
+            * derived_projector_coefficients[row][col]
+            * core_invariants[col]
+            for row in range(2)
+            for col in range(2)
         )
+
+    def derived_projection_matrix(
+        colors: tuple[int, int, int, int],
+        cores: tuple[int, int, int, int],
+    ) -> Fraction:
+        return haar_four_same(colors, cores)
+
+    # The coefficients are not imported from the manuscript formula: applying
+    # the projector twice gives the same kernel because the Gram inverse was
+    # computed from the invariant tensors themselves.
+    for colors in invariant_basis_indices:
+        for cores in invariant_basis_indices:
+            composed_value = sum(
+                derived_projection_matrix(colors, middle)
+                * derived_projection_matrix(middle, cores)
+                for middle in invariant_basis_indices
+            )
+            assert_equal(
+                "SU2 four-slot projector idempotence from Gram inverse",
+                composed_value,
+                derived_projection_matrix(colors, cores),
+            )
 
     # This is the counterexample to the factorized two-slot shortcut:
     # for U=[[a,b],[-conj(b),conj(a)]], the integral is int |a|^4 dU=1/3,

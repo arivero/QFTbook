@@ -2048,3 +2048,11 @@
   Chapter 21 WZW matching, pion pole normalization, tensor amplitude, and
   two-photon phase-space calculation that turn the anomaly coefficient into
   the leading \(\pi^0\to2\gamma\) width.
+- 2026-06-06 issue #725/#597 orientation-projector evidence repair: the BPST
+  companion now derives the shared \(SU(2)\) four-slot Haar projector from the
+  invariant-tensor Gram matrix and its inverse, then checks projector
+  idempotence over all finite core/color components before using the
+  coefficients in the four-source instanton tensor.  This aligns the
+  executable evidence with the Gram-inversion proof already present in the
+  TeX and removes the copied-coefficient weakness noted for the instanton
+  amplitude companion.

@@ -627,7 +627,9 @@ Current checks:
   \(R^{-1/3}\) tail bound, the \(SU(2)\)
   instanton-orientation Haar projection of two colored zero-mode slots onto
   the antisymmetric invariant tensor, the genuine shared-orientation four-slot
-  Haar projector with its \(1/3\) counterexample to the factorized shortcut, the
+  Haar projector derived from the invariant-tensor Gram inverse, with
+  projector idempotence and its \(1/3\) counterexample to the factorized
+  shortcut, the
   color-singlet source-projection
   algebra which keeps source-to-zero-mode overlaps and hadronic pole residues
   separate from the hard instanton kernel, the finite hadronic pole-window
