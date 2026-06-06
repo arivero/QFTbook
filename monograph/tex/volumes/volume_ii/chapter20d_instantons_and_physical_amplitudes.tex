@@ -1582,6 +1582,92 @@ after matrix pole isolation, amputation, and the corresponding residual
 bound have been supplied.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Inclusive cut from an instanton amplitude]
+\label{ca:instanton-inclusive-cut-quadratic-projection}
+The pole-extracted \(Q=1\) coefficient is an amplitude coordinate.  A positive
+inclusive cut or rate is a later quadratic projection, with the conjugate
+sector and the measurement included.  Let a retained one-instanton channel,
+after source differentiation, pole or OPE projection, and amputation, give a
+finite vector of physical amplitudes
+\[
+  a_X^{I}
+  =
+  \ee^{\ii\theta}
+  \mathcal N_I\,\mathfrak a_X ,
+  \qquad X\in\Delta ,
+\]
+where \(\Delta\) labels the selected final-state bin or finite spectral
+resolution.  Let \(W_{XY}\) be the positive measurement or bin metric in the
+same physical basis.  The corresponding contribution to an inclusive
+probability, or to the cut of a neutral forward correlator in this retained
+bin, is built by pairing the one-instanton amplitude with its conjugate:
+\begin{equation}
+  \mathcal Q_{\Delta}^{I\bar I}[W]
+  =
+  \sum_{X,Y\in\Delta}
+  \overline{a_X^{I}}\,
+  W_{XY}\,
+  a_Y^{I}
+  +R_{\rm cut}
+  =
+  |\mathcal N_I|^2\,
+  \mathfrak a^\dagger W\mathfrak a
+  +R_{\rm cut}.
+  \label{eq:instanton-inclusive-quadratic-cut}
+\end{equation}
+The \(\theta\)-phase cancels in this positive \(I\bar I\) cut.  The same
+one-instanton saddle can still contribute linearly to a chirality-violating
+source correlator or to an interference term
+\[
+  2\Re\,
+  \bigl(
+    b^\dagger W a^I
+  \bigr)
+\]
+only when the reference amplitude \(b\) lives in the same external-state,
+source, and selection-rule coordinate.  Otherwise the relevant interference
+matrix element is zero or undefined, not a rate obtained by summing
+\(\ee^{\ii\theta}\mathfrak a_X\).
+
+This distinction is part of unitarity normalization.  The optical-theorem
+side is a discontinuity or cut of a forward physical object, so it uses the
+same external residues, the same final-state measure, and the same
+infrared/completeness convention on both sides.  A Euclidean four-source
+coefficient, a color-auxiliary kernel, or a pole-amputated vector in the
+wrong source basis is not yet the vector \(\mathfrak a\) appearing in
+\eqref{eq:instanton-inclusive-quadratic-cut}.
+
+The finite error propagation is also quadratic.  Suppose the retained
+amplitude vector is \(\mathfrak a^0+\delta\mathfrak a\), with
+\[
+  \|\mathfrak a^0\|_{\max}\le M,\qquad
+  \|\delta\mathfrak a\|_{\max}\le\epsilon,\qquad
+  \max_X\sum_Y |W_{XY}|\le L,\qquad |\Delta|=n .
+\]
+Then
+\begin{equation}
+\begin{aligned}
+  &\left|
+  (\mathfrak a^0+\delta\mathfrak a)^\dagger
+  W
+  (\mathfrak a^0+\delta\mathfrak a)
+  -
+  (\mathfrak a^0)^\dagger W\mathfrak a^0
+  \right|                                      \\
+  &\qquad\le
+  2nML\epsilon+nL\epsilon^2 .
+\end{aligned}
+  \label{eq:instanton-inclusive-quadratic-error-bound}
+\end{equation}
+Thus the source-amplitude residuals from determinant shape, zero-mode rank,
+pole leakage, endpoint tails, and physical projection must be transported
+before squaring.  The negative controls are sharp: a signed linear sum of
+instanton amplitudes can vanish while
+\(\mathfrak a^\dagger W\mathfrak a\) is positive; using unamputated source
+coordinates computes \(a^\dagger Z^\dagger WZa\), not the physical cut; and
+dropping \(W\) replaces the declared observable by a locally inclusive one.
+\end{controlledapproximation}
+
 \section{First Cluster Corrections Are Amplitude Data}
 \label{sec:instanton-first-cluster-amplitude-correction}
 

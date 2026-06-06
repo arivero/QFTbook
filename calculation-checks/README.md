@@ -828,6 +828,10 @@ Current checks:
   separation and bridge residual budgets, the mixed-source pole amputation
   test showing that a four-source instanton window must be divided by the full
   overlap matrices rather than by diagonal residues,
+  the inclusive-cut quadratic projection check showing that a one-instanton
+  amplitude vector feeds a positive cut only through conjugate-sector pairing,
+  the physical measurement matrix, source amputation, and quadratic residual
+  propagation,
   the first connected instanton-pair source correction with disconnected
   subtraction, neutral-pair source visibility, same-charge second-harmonic
   data, zero-mode overlap survival, and pair residual control,

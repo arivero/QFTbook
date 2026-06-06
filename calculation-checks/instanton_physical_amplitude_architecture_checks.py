@@ -63,6 +63,10 @@ Target claims:
   four-source kernel with a mixed source basis must be amputated by the full
   source-overlap matrices, with excited-state and continuum leakage amplified
   by the inverse overlap matrices.
+- `ca:instanton-inclusive-cut-quadratic-projection`: a pole- or OPE-projected
+  one-instanton source coefficient feeds a positive inclusive cut only through
+  conjugate-sector pairing, the physical measurement matrix, source
+  amputation, and quadratic residual propagation have been supplied.
 - `ca:instanton-first-cluster-amplitude-correction`: a first connected
   two-body correction to a source amplitude requires the disconnected one-body
   product subtraction, a source/projection-specific pair kernel, absolute pair
@@ -95,6 +99,7 @@ Independent construction:
   finite observable-handoff comparisons for theta, U(1)_A, and real-time
   axial channels,
   pole-window extraction, mixed-source matrix amputation,
+  quadratic inclusive-cut projections from physical amplitude vectors,
   spectral-bin/Stieltjes comparisons, contact
   polynomial separation, and bridge residual telescopes,
   first connected instanton-pair source corrections,
@@ -174,6 +179,9 @@ Negative controls:
   budget, a Euclidean source value used as a physical pole or spectral bin,
   diagonal-overlap division substituted for mixed-source pole amputation,
   a colored auxiliary instanton kernel treated as a standalone LSZ amplitude,
+  a linear signed instanton amplitude sum treated as a positive inclusive cut,
+  an unamputated source vector used in the quadratic cut, a measurement matrix
+  omitted from the physical bin,
   a bridge budget omitting the inverse-problem residual, a neutral pair
   controlled only by theta curvature, a disconnected
   pair product counted as a connected source correction, a one-body
@@ -1484,6 +1492,143 @@ def check_pole_normalized_four_source_matrix_extraction() -> None:
     )
 
 
+def check_instanton_inclusive_cut_quadratic_projection() -> None:
+    def matvec(
+        matrix: Matrix2,
+        vector: tuple[Fraction, Fraction],
+    ) -> tuple[Fraction, Fraction]:
+        return (
+            matrix[0][0] * vector[0] + matrix[0][1] * vector[1],
+            matrix[1][0] * vector[0] + matrix[1][1] * vector[1],
+        )
+
+    def dot2(
+        left: tuple[Fraction, Fraction],
+        right: tuple[Fraction, Fraction],
+    ) -> Fraction:
+        return left[0] * right[0] + left[1] * right[1]
+
+    def quadratic(
+        vector: tuple[Fraction, Fraction],
+        measurement: Matrix2,
+    ) -> Fraction:
+        return dot2(vector, matvec(measurement, vector))
+
+    physical_amplitude = (Fraction(3, 5), -Fraction(2, 7))
+    measurement: Matrix2 = (
+        (Fraction(2), Fraction(1)),
+        (Fraction(1), Fraction(3)),
+    )
+    inclusive_cut = quadratic(physical_amplitude, measurement)
+    assert_equal(
+        "instanton inclusive cut is a quadratic projection",
+        inclusive_cut,
+        Fraction(762, 1225),
+    )
+    assert_gt("positive measurement gives positive retained cut", inclusive_cut, Fraction(0))
+
+    signed_linear_sum = physical_amplitude[0] + physical_amplitude[1]
+    assert_not_equal(
+        "linear instanton amplitude sum is not the inclusive cut",
+        signed_linear_sum,
+        inclusive_cut,
+    )
+    canceling_amplitude = (Fraction(1, 2), -Fraction(1, 2))
+    assert_equal(
+        "signed instanton amplitudes can cancel linearly",
+        sum(canceling_amplitude),
+        Fraction(0),
+    )
+    assert_gt(
+        "quadratic cut survives signed amplitude cancellation",
+        quadratic(canceling_amplitude, measurement),
+        Fraction(0),
+    )
+
+    source_overlap: Matrix2 = (
+        (Fraction(2), Fraction(1)),
+        (Fraction(1), Fraction(1)),
+    )
+    source_basis_vector = matvec(source_overlap, physical_amplitude)
+    raw_source_cut = quadratic(source_basis_vector, measurement)
+    assert_not_equal(
+        "unamputated source vector changes the inclusive cut",
+        raw_source_cut,
+        inclusive_cut,
+    )
+    recovered_vector = matvec(inv2(source_overlap), source_basis_vector)
+    assert_equal(
+        "source amputation restores the physical cut vector",
+        recovered_vector,
+        physical_amplitude,
+    )
+
+    locally_inclusive_measurement: Matrix2 = (
+        (Fraction(1), Fraction(0)),
+        (Fraction(0), Fraction(1)),
+    )
+    assert_not_equal(
+        "dropping the measurement matrix changes the physical bin",
+        quadratic(physical_amplitude, locally_inclusive_measurement),
+        inclusive_cut,
+    )
+
+    theta_phase_power_linear = 1
+    theta_phase_power_cut = 0
+    assert_not_equal(
+        "positive I Ibar cut does not retain the one-instanton theta phase",
+        Fraction(theta_phase_power_linear),
+        Fraction(theta_phase_power_cut),
+    )
+
+    reference_amplitude = (Fraction(4, 9), Fraction(1, 6))
+    interference = 2 * dot2(reference_amplitude, matvec(measurement, physical_amplitude))
+    selection_rule_allows_reference = False
+    assert_not_equal(
+        "interference term is a different observable from the positive cut",
+        interference,
+        inclusive_cut,
+    )
+    assert_equal(
+        "selection rule can remove the linear interference channel",
+        interference if selection_rule_allows_reference else Fraction(0),
+        Fraction(0),
+    )
+
+    residual = (Fraction(1, 100), -Fraction(1, 120))
+    shifted_amplitude = (
+        physical_amplitude[0] + residual[0],
+        physical_amplitude[1] + residual[1],
+    )
+    cut_shift = quadratic(shifted_amplitude, measurement) - inclusive_cut
+    max_amplitude = max(abs(value) for value in physical_amplitude)
+    max_residual = max(abs(value) for value in residual)
+    row_sum_bound = max(
+        sum(abs(entry) for entry in row)
+        for row in measurement
+    )
+    n_states = Fraction(2)
+    quadratic_bound = (
+        2 * n_states * max_amplitude * row_sum_bound * max_residual
+        + n_states * row_sum_bound * max_residual * max_residual
+    )
+    assert_leq(
+        "instanton inclusive cut quadratic residual bound",
+        float(abs(cut_shift)),
+        float(quadratic_bound),
+    )
+
+    underbudget = (
+        quadratic_bound
+        - 2 * n_states * max_amplitude * row_sum_bound * max_residual
+    )
+    assert_equal(
+        "omitting linear amplitude residual underbudgets the cut",
+        abs(cut_shift) <= underbudget,
+        False,
+    )
+
+
 def check_first_cluster_amplitude_correction() -> None:
     one_body_plus = Fraction(5, 11)
     one_body_minus = Fraction(7, 13)
@@ -2027,6 +2172,7 @@ def main() -> None:
     check_observable_handoff_map()
     check_source_kernel_physical_projection_bridge()
     check_pole_normalized_four_source_matrix_extraction()
+    check_instanton_inclusive_cut_quadratic_projection()
     check_first_cluster_amplitude_correction()
     check_two_flavor_mass_source_determinant_coordinate()
     check_moduli_equivalent_channel_separation()

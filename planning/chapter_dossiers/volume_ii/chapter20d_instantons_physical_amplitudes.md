@@ -127,6 +127,10 @@
   extraction block showing that a Euclidean four-source instanton window
   becomes a matrix element only after full overlap-matrix amputation and a
   pole-leakage residual bound.
+- `ca:instanton-inclusive-cut-quadratic-projection`: inclusive-cut block
+  showing that a pole- or OPE-projected one-instanton amplitude feeds a
+  positive cut/rate only through conjugate-sector pairing, the physical
+  measurement matrix, source amputation, and quadratic residual propagation.
 - `sec:instanton-first-cluster-amplitude-correction`: source-amplitude bridge
   from the assembled one-instanton coefficient to the first connected
   instanton-pair correction.
@@ -213,6 +217,12 @@
   Euclidean kernel or a diagonal residue division.  Excited-state and
   continuum leakage are amplified by the inverse overlap matrices, so pole
   isolation is a physical part of the amplitude calculation.
+- The inclusive-cut quadratic-projection block prevents the \(Q=1\)
+  source-amplitude coefficient from being overread as a positive rate.  A
+  physical cut uses the conjugate sector, the final-state measurement matrix,
+  and the same amputated physical amplitude basis; signed linear sums,
+  unamputated source vectors, and locally inclusive replacement of the
+  declared measurement are rejected.
 - The observable-map block connects the dedicated instanton-amplitude
   chapter back to the QCD theta and \(U(1)_A\) material without duplicating it:
   a hard four-source coefficient, a dilute theta curvature, a zero-mode-zone
@@ -287,6 +297,10 @@
   verifies the mixed-source pole amputation formula and rejects raw-kernel
   and diagonal-overlap shortcuts, rank-lost source bases, and determinant
   constants used to absorb pole leakage,
+  verifies the inclusive-cut quadratic projection from physical instanton
+  amplitude vectors and rejects linear signed amplitude sums, unamputated
+  source vectors, measurement omission, and unbudgeted quadratic residual
+  propagation,
   verifies the first connected instanton-pair source correction, including
   disconnected subtraction, neutral-pair source visibility despite zero theta
   curvature, same-charge second-harmonic data, zero-mode overlap survival, and
