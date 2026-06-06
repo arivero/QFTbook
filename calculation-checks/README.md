@@ -769,7 +769,7 @@ Current checks:
   cone-volume power.
 - `instanton_physical_amplitude_architecture_checks.py`: exact rational
   checks for the dedicated instanton physical-amplitude chapter, including
-  the one-loop density RG gate, the distinction between density-only,
+  the one-loop density RG cancellation, the distinction between density-only,
   mass-saturated, and hard four-source size powers, finite determinant
   constant cancellation only in transported same-channel ratios,
   the individual BPST zero-mode slot tail from the Bessel-product cancellation
@@ -777,9 +777,9 @@ Current checks:
   the two-term hard-window tail subtraction with leading \(R^{-1/3}\) and
   subleading \(R^{-7/3}\) endpoint pieces,
   the finite Gaussian nonzero-mode source quotient and its covariance identity,
-  the assembled hard-amplitude product ledger with absolute signed-window
+  the assembled hard-amplitude product bound with absolute signed-window
   control,
-  the observable-handoff distinction among hard source coefficients, theta
+  the observable-map distinction among hard source coefficients, theta
   curvatures, \(U(1)_A\)-odd kernels, and real-time axial relaxation rates,
   the physical projection bridge from Euclidean source kernels to pole-window,
   spectral-bin, OPE, or inclusive coordinates, including contact-polynomial
@@ -792,9 +792,9 @@ Current checks:
   moduli-equivalent channels with different or zero amplitudes because of
   zero-mode source rank, finite-cell spectral/projection ambiguity after a
   single Euclidean source sum, the SU(3), \(N_f=2\) hard four-source
-  \(Q^{-35/3}\) scale ledger and slow endpoint tail, hard benchmark gate and
-  ratio controls, the hard-kernel Wilsonian OPE boundary flow and long-size
-  tail budget, the retained-cell residual bound, and the \(2\times2\)
+  \(Q^{-35/3}\) scale check and slow endpoint tail, hard benchmark channel
+  comparison and ratio controls, the hard-kernel Wilsonian OPE boundary flow
+  and long-size tail budget, the retained-cell residual bound, and the \(2\times2\)
   source-determinant stability estimate, with negative controls for an
   off-diagonal determinant sign flip, moduli-only prediction, rank-one source
   shortcut, leading-tail-only hard-window approximation, fused-density endpoint

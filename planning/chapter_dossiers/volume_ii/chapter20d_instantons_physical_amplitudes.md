@@ -20,7 +20,7 @@
 
 - `ch:instantons-physical-amplitudes`: dedicated chapter for instantons as
   physical amplitudes.
-- `sec:instanton-density-gate`: one-loop density gate separating the
+- `sec:instanton-density-gate`: one-loop density normalization separating the
   collective-coordinate Jacobian, bosonic zero-mode normalization, running
   BPST action, zero-mode-deleted fluctuation determinant logarithm, and finite
   scheme constant before the density is inserted into a physical channel.
@@ -44,7 +44,7 @@
   `det(M+B)` into vacuum, mass-assisted source, and four-source coordinates.
 - `sec:instanton-hard-four-fermion-benchmark`: hard two-flavor four-source
   benchmark, organized as center, Haar, zero-mode-rank, amputation,
-  size-window, and physical-projection gates.
+  size-window, and physical-projection data.
 - `prop:instanton-hard-individual-zero-mode-slot`: derives the individual
   singular-gauge BPST zero-mode slot profile used by the hard four-source
   amplitude, including `F_zm(0)=1`, the `6 (rho |p|)^(-3)` tail, and the
@@ -56,7 +56,7 @@
   as a finite core plus leading `R^(-1/3)` and subleading `R^(-7/3)` analytic
   endpoint tails from the two-term zero-mode-slot expansion.
 - `ca:instanton-hard-benchmark-gate-ledger`: same-theory hard-scale ratio and
-  residual multiplier bound after the gate data and source-window shape have
+  residual multiplier bound after the channel data and source-window shape have
   been transported.
 - `sec:instanton-hard-wilsonian-ope-datum`: Wilsonian interpretation of the
   hard four-source kernel as a short-distance local four-fermion coefficient,
@@ -87,7 +87,7 @@
   from the assembled one-instanton coefficient to the first connected
   instanton-pair correction.
 - `ca:instanton-first-cluster-amplitude-correction`: first cluster correction
-  ledger for a source amplitude, including disconnected one-body subtraction,
+  for a source amplitude, including disconnected one-body subtraction,
   neutral-pair source visibility, same-charge theta harmonic data, pair-kernel
   residual control, and the sector-isolation consequence.
 - `sec:instanton-observable-handoffs`: physics handoff block distinguishing a
@@ -109,7 +109,7 @@
   same collective-coordinate measure and nonzero-mode determinant convention
   can give different physical amplitudes once zero-mode source rank and
   projection are changed.
-- The density-gate block prevents the hard benchmark from treating
+- The density-normalization block prevents the hard benchmark from treating
   `rho^(b0-5)` as a moduli-space fact.  It records the fluctuation/RG origin
   of `(mu rho)^b0`, the finite determinant constant, and the added
   zero-mode/source power `beta_C` that turns a density into a channel
@@ -130,8 +130,8 @@
   even after the Gaussian determinant is normalized, the selected hard source
   has a mean and a covariance with nonzero-mode interactions.  A vacuum
   determinant constant alone cannot control a four-source amplitude.
-- The assembled hard-channel ledger prevents the chapter from becoming a list
-  of adjacent gates.  It places the determinant scheme constant, hard
+- The assembled hard-channel formula prevents the chapter from becoming a list
+  of adjacent checkpoints.  It places the determinant scheme constant, hard
   zero-mode slots, nonzero-mode source quotient, source-frame stability, and
   projection mismatch in a single amplitude formula, with absolute
   signed-window control and an explicit noncancellation hypothesis for
@@ -179,7 +179,7 @@
   carries the companion evidence contract.
 - The check verifies the exact `det(M+B)` polynomial, rejects the wrong
   off-diagonal sign, separates mass-saturated and four-source coordinates,
-  verifies the one-loop density RG gate and the distinction between
+  verifies the one-loop density RG cancellation and the distinction between
   density-only, mass-saturated, and hard four-source size powers,
   derives the individual zero-mode slot tail coefficient from the Bessel
   product cancellation and rejects fused-density endpoint substitution or
@@ -204,8 +204,8 @@
   builds moduli-equivalent finite cell channels with different or vanishing
   amplitudes, constructs a same-Euclidean-sum/different-projection ambiguity,
   checks the SU(3), `N_f=2` hard four-source scale and tail powers, verifies
-  the two-term hard-window endpoint subtraction, validates the hard gate
-  ledger and same-theory ratio residual bound, verifies the
+  the two-term hard-window endpoint subtraction, validates the hard channel
+  comparison and same-theory ratio residual bound, verifies the
   hard-kernel Wilsonian OPE boundary flow and long-size tail budget, and checks
   the finite residual and determinant-stability bounds.
 - `calculation-checks/bpst_instanton_normalization_checks.py` remains the
@@ -222,11 +222,11 @@
 - No directives, GitHub issue text, or process-monitoring language was inserted
   into monograph TeX.
 - 2026-06-06 hard four-fermion benchmark pass: lifted the hard-source
-  amplitude gate ledger, `Q^(-35/3)` scale law, slow `R^(-1/3)` tail, and
+  amplitude comparison, `Q^(-35/3)` scale law, slow `R^(-1/3)` tail, and
   same-theory ratio bound into the chapter so the reader sees a concrete
   `t Hooft-style amplitude mechanism rather than only the abstract channel
   package.
-- 2026-06-06 one-loop density-gate pass: inserted the determinant/RG
+- 2026-06-06 one-loop density-normalization pass: inserted the determinant/RG
   checkpoint before the channel definition, so the dedicated chapter now
   explains why the density contains fluctuation data and why the hard
   four-source channel still needs zero-mode/source powers, endpoint windows,
@@ -240,7 +240,7 @@
   checks rejecting replacement by a vacuum determinant constant.  This targets
   the fluctuation/source side of the instanton amplitude.
 - 2026-06-06 hard amplitude assembly pass: added the assembled hard-channel
-  formula and absolute error ledger, so the chapter now recombines the
+  formula and absolute error bound, so the chapter now recombines the
   determinant, zero-mode/source, nonzero-mode source quotient, and physical
   projection data before quoting the hard coefficient.
 - 2026-06-06 observable-handoff pass: added a physics bridge from the assembled
@@ -255,7 +255,7 @@
   inversion failure, bridge budgets, and colored-kernel LSZ rejection.  This
   targets physical amplitude extraction, not moduli-space structure.
 - 2026-06-06 first cluster amplitude pass: added the connected instanton-pair
-  correction ledger to the dedicated physical-amplitude chapter.  This is a
+  correction to the dedicated physical-amplitude chapter.  This is a
   sector-isolation and source-observable improvement, not a moduli-space
   expansion.
 - 2026-06-06 hard Wilsonian OPE pass: added
@@ -272,3 +272,10 @@
   evaluation \(H(R)+3A_0R^{-1/3}+(3/7)A_1R^{-7/3}+E_{\rm tail}\).  The
   companion check verifies the exact rational tail coefficients and rejects
   leading-tail-only and fused-density endpoint shortcuts.
+- 2026-06-06 issue #844 instanton amplitude surface pass: re-audited the
+  dedicated physical-amplitude chapter for architecture vocabulary.  The
+  reader-facing text now presents density normalization, channel data, hard
+  channel comparison, hard amplitude assembly, and observable handoff maps
+  rather than gate/ledger language.  Cross-reference labels were kept stable;
+  the physics equations and companion checks are unchanged in substance.  This
+  is a coherence and physical-output pass, not another instanton cell.

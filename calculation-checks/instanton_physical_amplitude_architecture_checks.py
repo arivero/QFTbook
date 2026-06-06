@@ -49,7 +49,7 @@ Target claims:
 - `prop:su3-nf2-hard-source-power-slow-tail` and
   `ca:instanton-hard-benchmark-gate-ledger`: the SU(3), Nf=2 hard
   four-source benchmark has the stated rho power, Q power, slow endpoint tail,
-  gate dependence, and same-theory hard-scale ratio bound.
+  channel-data dependence, and same-theory hard-scale ratio bound.
 - `ca:instanton-hard-window-tail-subtraction`: the hard four-source window is
   controlled as a core integral plus leading and subleading analytic endpoint
   tails, rather than as a formal size integral.
@@ -70,7 +70,7 @@ Independent construction:
   polynomial separation, and bridge residual telescopes,
   first connected instanton-pair source corrections,
   physical projection bins, residual sums, two-term hard-window endpoint
-  tail subtraction, and hard-window power ledgers
+  tail subtraction, and hard-window power checks
   directly, rather than importing BPST radial integrals or copying a monograph
   coefficient.
 
@@ -189,7 +189,7 @@ def beta0(n_colors: int, n_flavors: int) -> Fraction:
     return Fraction(11, 3) * n_colors - Fraction(2, 3) * n_flavors
 
 
-def check_one_loop_density_gate_rg_and_channel_power() -> None:
+def check_one_loop_density_rg_and_channel_power() -> None:
     for n_colors, n_flavors in [(2, 0), (3, 2), (4, 3), (5, 6)]:
         b0 = beta0(n_colors, n_flavors)
         correct_density_power = b0
@@ -198,12 +198,12 @@ def check_one_loop_density_gate_rg_and_channel_power() -> None:
         rg_derivative = correct_density_power - b0
         wrong_rg_derivative = wrong_density_power - b0
         assert_equal(
-            f"SU({n_colors}) Nf={n_flavors} one-loop density RG gate",
+            f"SU({n_colors}) Nf={n_flavors} one-loop density RG cancellation",
             rg_derivative,
             Fraction(0),
         )
         assert_not_equal(
-            "wrong determinant logarithm power fails the RG gate",
+            "wrong determinant logarithm power fails the RG cancellation",
             wrong_rg_derivative,
             Fraction(0),
         )
@@ -235,32 +235,32 @@ def check_one_loop_density_gate_rg_and_channel_power() -> None:
     )
 
     determinant_constant = Fraction(7, 11)
-    transported_gate = Fraction(5, 13)
+    transported_channel_factor = Fraction(5, 13)
     source_window_1 = Fraction(17, 19)
     source_window_2 = Fraction(23, 29)
     q_power = -Fraction(35, 3)
-    absolute_prefactor_1 = determinant_constant * transported_gate * source_window_1
-    absolute_prefactor_2 = determinant_constant * transported_gate * source_window_2
+    absolute_prefactor_1 = determinant_constant * transported_channel_factor * source_window_1
+    absolute_prefactor_2 = determinant_constant * transported_channel_factor * source_window_2
     same_channel_ratio_prefactor = absolute_prefactor_2 / absolute_prefactor_1
     assert_equal(
-        "same-channel determinant constant cancels in density-gate ratio",
+        "same-channel determinant constant cancels in density-normalization ratio",
         same_channel_ratio_prefactor,
         source_window_2 / source_window_1,
     )
     if q_power == 0:
         raise AssertionError("hard ratio should retain the physical source-scale power")
 
-    untransported_gate = Fraction(3, 17)
+    untransported_channel_factor = Fraction(3, 17)
     untransported_ratio_prefactor = (
-        determinant_constant * untransported_gate * source_window_2
+        determinant_constant * untransported_channel_factor * source_window_2
     ) / absolute_prefactor_1
     assert_not_equal(
-        "changed gate data is not a same-channel determinant cancellation",
+        "changed channel data is not a same-channel determinant cancellation",
         untransported_ratio_prefactor,
         source_window_2 / source_window_1,
     )
 
-    scheme_constant_dropped = transported_gate * source_window_1
+    scheme_constant_dropped = transported_channel_factor * source_window_1
     assert_not_equal(
         "absolute density coefficient depends on finite determinant convention",
         scheme_constant_dropped,
@@ -445,7 +445,7 @@ def check_nonzero_mode_source_fluctuation_quotient() -> None:
     )
 
 
-def check_hard_amplitude_assembly_ledger() -> None:
+def check_hard_amplitude_assembly_bound() -> None:
     b0_su3_nf2 = beta0(3, 2)
     zero_mode_power = Fraction(6)
     size_power = b0_su3_nf2 + zero_mode_power - 5
@@ -532,7 +532,7 @@ def check_hard_amplitude_assembly_ledger() -> None:
     )
 
 
-def check_observable_handoff_ledger() -> None:
+def check_observable_handoff_map() -> None:
     hard_four_source_coefficient = Fraction(5, 7)
     one_instanton_activity = Fraction(7, 13)
     mass_factors = [Fraction(2, 3), Fraction(0), Fraction(11, 17)]
@@ -788,7 +788,7 @@ def check_source_kernel_physical_projection_bridge() -> None:
     )
 
 
-def check_first_cluster_amplitude_correction_ledger() -> None:
+def check_first_cluster_amplitude_correction() -> None:
     one_body_plus = Fraction(5, 11)
     one_body_minus = Fraction(7, 13)
     disconnected_product = one_body_plus * one_body_minus
@@ -1225,7 +1225,7 @@ def check_hard_wilsonian_ope_boundary_flow() -> None:
     )
 
 
-def check_hard_benchmark_gate_ledger_and_ratio() -> None:
+def check_hard_benchmark_channel_comparison_and_ratio() -> None:
     center_delta_on_shell = Fraction(1)
     center_delta_off_shell = Fraction(0)
     determinant_constant = Fraction(11, 13)
@@ -1256,7 +1256,7 @@ def check_hard_benchmark_gate_ledger_and_ratio() -> None:
     density_only = determinant_constant * hard_window
 
     assert_equal("hard benchmark signed window", hard_window, Fraction(27, 40))
-    assert_not_equal("density-only hard shortcut misses gate data", density_only, euclidean_benchmark)
+    assert_not_equal("density-only hard shortcut misses channel data", density_only, euclidean_benchmark)
     assert_not_equal("Euclidean colored kernel is not physical projection", euclidean_benchmark, physical_benchmark)
 
     off_shell = (
@@ -1266,7 +1266,7 @@ def check_hard_benchmark_gate_ledger_and_ratio() -> None:
         * source_factor
         * hard_window
     )
-    assert_equal("off-shell center gate kills hard benchmark", off_shell, Fraction(0))
+    assert_equal("off-shell center projection kills hard benchmark", off_shell, Fraction(0))
 
     rank_one_right: Matrix2 = ((Fraction(1), Fraction(2)), (Fraction(2), Fraction(4)))
     collapsed_source_factor = det2(rank_one_right) * det2(left_overlap)
@@ -1304,13 +1304,13 @@ def check_hard_benchmark_gate_ledger_and_ratio() -> None:
 
 
 def main() -> None:
-    check_one_loop_density_gate_rg_and_channel_power()
+    check_one_loop_density_rg_and_channel_power()
     check_individual_zero_mode_slot_tail_from_bessel_products()
     check_nonzero_mode_source_fluctuation_quotient()
-    check_hard_amplitude_assembly_ledger()
-    check_observable_handoff_ledger()
+    check_hard_amplitude_assembly_bound()
+    check_observable_handoff_map()
     check_source_kernel_physical_projection_bridge()
-    check_first_cluster_amplitude_correction_ledger()
+    check_first_cluster_amplitude_correction()
     check_two_flavor_mass_source_determinant_coordinate()
     check_moduli_equivalent_channel_separation()
     check_projection_not_recoverable_from_one_euclidean_sum()
@@ -1319,7 +1319,7 @@ def main() -> None:
     check_su3_two_flavor_hard_source_power_and_tail()
     check_hard_window_tail_subtraction()
     check_hard_wilsonian_ope_boundary_flow()
-    check_hard_benchmark_gate_ledger_and_ratio()
+    check_hard_benchmark_channel_comparison_and_ratio()
     print("instanton physical amplitude architecture checks passed")
 
 

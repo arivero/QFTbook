@@ -19,7 +19,7 @@ their spectral projections differ.  These are not refinements of moduli-space
 geometry; they are the steps which turn a saddle contribution into a QFT
 amplitude.
 
-\section{The Density Gate: Fluctuations Before Channels}
+\section{The Density Normalization: Fluctuations Before Channels}
 \label{sec:instanton-density-gate}
 
 The density in \eqref{eq:one-instanton-universal-density} is already a
@@ -50,7 +50,7 @@ subtraction.  The finite constant \(C_{\mathcal S,N_c,N_f}\) is not fixed by
 dimensional analysis; it is part of the chosen determinant and orientation
 normalization scheme.
 
-\begin{controlledapproximation}[One-loop density gate for a channel]
+\begin{controlledapproximation}[One-loop density normalization for a channel]
 \label{ca:instanton-one-loop-density-gate-channel}
 The one-loop scale test which fixes the logarithmic density power is local:
 \[
@@ -62,10 +62,10 @@ The one-loop scale test which fixes the logarithmic density power is local:
   =
   \alpha-b_0+O(g_{\rm ht}^2).
 \]
-Thus the density gate passes only for \(\alpha=b_0\).  This test determines
-the logarithmic fluctuation power, not the full physical amplitude.  Once the
-density is inserted into a channel, the retained integrand can be organized in
-the bookkeeping form
+Thus the density is RG consistent only for \(\alpha=b_0\).  This test
+determines the logarithmic fluctuation power, not the full physical
+amplitude.  Once the density is inserted into a channel, the retained
+integrand has the channel form
 \begin{equation}
   \dd\mathcal A_{\mathcal C}^{\rm win}
   =
@@ -286,12 +286,13 @@ or infrared mechanism.
 The cleanest test of the preceding distinction is the hard two-flavor
 four-fermion channel.  Work in \(SU(3)\) with two light Dirac fundamentals,
 choose a \(Q=1\) BPST sector, and insert four amputated external fermion
-sources with momenta of size \(Q\).  The center integral first imposes the
-momentum-conservation gate.  The color orientation integral then projects the
+sources with momenta of size \(Q\).  The center integral first imposes
+momentum conservation.  The color orientation integral then projects the
 four source slots through a shared Haar tensor.  The fermion zero modes
 produce two rank conditions, one for the right-handed overlap matrix and one
-for the left-handed overlap matrix.  Only after these gates have been passed
-does the size integral define the hard coefficient.
+for the left-handed overlap matrix.  Only after the conservation, Haar,
+zero-mode-rank, and amputation data are fixed does the size integral define
+the hard coefficient.
 
 \begin{proposition}[Individual zero-mode slot in the hard channel]
 \label{prop:instanton-hard-individual-zero-mode-slot}
@@ -392,12 +393,12 @@ Let \(Q_\ell=c_\ell Q\), \(c_\ell>0\), be the four hard source scales, and let
 form factor, including any bounded source-window factor in the declared
 source normalization.  After the center delta, common determinant
 constant, Haar contraction, amputation convention, and source-overlap
-determinants have been pulled into a prefactor \(\mathcal K_{\rm gate}\), the
+determinants have been pulled into a channel prefactor \(\mathcal K_{\rm ch}\), the
 stripped one-instanton hard coefficient has the form
 \begin{equation}
   \mathcal A_{4}^{\rm hard}(Q)
   =
-  \mathcal K_{\rm gate}\,
+  \mathcal K_{\rm ch}\,
   \Lambda_{\rm ht}^{29/3}\,
   Q^{-35/3}\,
   H(c_1,c_2,c_3,c_4)
@@ -417,7 +418,7 @@ amputation, endpoint, sector-isolation, continuation, and physical-projection
 remainders from \eqref{eq:instanton-physical-channel-residual-budget}.  The
 formula is a benchmark channel, not a universal local vertex: changing the
 source wave packets, the orientation contraction, or the physical projection
-changes \(\mathcal K_{\rm gate}\), \(H\), or \(R_{4}^{\rm hard}\).
+changes \(\mathcal K_{\rm ch}\), \(H\), or \(R_{4}^{\rm hard}\).
 
 \begin{proposition}[\(SU(3)\), \(N_f=2\) hard-source power and slow tail]
 \label{prop:su3-nf2-hard-source-power-slow-tail}
@@ -563,11 +564,11 @@ into the assembled channel and then into the Wilsonian, pole, spectral, or
 inclusive projection described below.
 \end{controlledapproximation}
 
-\begin{controlledapproximation}[Hard benchmark gate ledger]
+\begin{controlledapproximation}[Hard benchmark channel comparison]
 \label{ca:instanton-hard-benchmark-gate-ledger}
 A controlled comparison of two hard four-source instanton coefficients at
 scales \(Q_1,Q_2\) may use the power in
-\eqref{eq:instanton-hard-four-source-scale-power} only after the gate data are
+\eqref{eq:instanton-hard-four-source-scale-power} only after the channel data are
 held fixed:
 \[
   \Delta_{\rm cen}\ne0,\qquad
@@ -586,7 +587,7 @@ retained coefficients have the form
   |\varepsilon_j|\le e_j<1,
   \qquad j=1,2,
 \]
-and the leading gate data are the same at the two scales, then
+and the leading channel data are the same at the two scales, then
 \begin{equation}
   \frac{\mathcal A_2}{\mathcal A_1}
   =
@@ -606,7 +607,7 @@ with residual multiplier bounded by
 Thus the determinant constant and \(\Lambda_{\rm ht}\) cancel in a same-theory
 hard-scale ratio, while the dimensionless source-window and rank-conditioning
 data do not cancel unless they have actually been transported.  An off-shell
-center gate, a rank-one zero-mode overlap, an omitted Haar projection, or
+center projection, a rank-one zero-mode overlap, an omitted Haar projection, or
 unamputated external residues change the amplitude coordinate before the power
 law \((Q_2/Q_1)^{-35/3}\) can be tested.
 \end{controlledapproximation}
@@ -636,7 +637,7 @@ source channel.  The short-instanton coefficient is
   C_{4}^{<}(Q,R;\mu)
   =
   \ee^{\ii\theta}
-  \mathcal K_{\rm gate}\,
+  \mathcal K_{\rm ch}\,
   \Lambda_{\rm ht}^{29/3}\,
   Q^{-35/3}
   Z_{4}(R,\mu)
@@ -671,7 +672,7 @@ The factorization-scale flow is a boundary flux of the same size integral:
   \partial_{\log\mu_I}C_4^{<}
   =
   -\ee^{\ii\theta}
-  \mathcal K_{\rm gate}
+  \mathcal K_{\rm ch}
   \Lambda_{\rm ht}^{29/3}
   Q^{-35/3}
   Z_{4}(R,\mu)\,
@@ -693,7 +694,7 @@ tail has the leading form
   \mathcal A_{4}^{>}(Q,R)
   =
   \ee^{\ii\theta}
-  \mathcal K_{\rm gate}
+  \mathcal K_{\rm ch}
   \Lambda_{\rm ht}^{29/3}
   Q^{-35/3}
   \left[
@@ -829,7 +830,7 @@ residual in \eqref{eq:instanton-physical-channel-residual-budget}.
 
 Thus a hard instanton amplitude has three separate fluctuation entries.  The
 universal logarithmic determinant supplies the \((\mu\rho)^{b_0}\) density
-gate.  The finite determinant constant fixes a scheme-dependent Gaussian
+factor.  The finite determinant constant fixes a scheme-dependent Gaussian
 normalization.  The quotient
 \eqref{eq:instanton-physical-source-fluctuation-quotient} tests the selected
 source under that Gaussian and its interaction remainders.  Collapsing these
@@ -839,12 +840,12 @@ calculation.
 \section{The Hard Channel As An Assembled Amplitude}
 \label{sec:instanton-hard-amplitude-assembly}
 
-The preceding gates are useful only when they are recombined in the same
+The preceding ingredients are useful only when they are recombined in the same
 observable coordinate.  For the \(SU(3)\), \(N_f=2\), hard four-source channel,
 let \(s=Q\rho\), let \(\Omega\) denote the retained color-orientation
 coordinate, and let \(\chi_{\rm phys}\) record the declared source window,
 amputation convention, and physical projection after the center
-momentum-conservation gate has been applied.  A finite-regulator assembly has
+momentum-conservation projection has been applied.  A finite-regulator assembly has
 the form
 \begin{equation}
 \begin{aligned}
@@ -891,7 +892,7 @@ scheme matching, \(\mathcal R_{\rm fluc}\) is the source-dependent quotient in
 The term \(R_{\rm ext}\) contains sector isolation, infrared, cut, endpoint,
 and continuum errors not represented by the retained window.
 
-\begin{controlledapproximation}[Hard amplitude assembly ledger]
+\begin{controlledapproximation}[Hard amplitude assembly bound]
 \label{ca:instanton-hard-amplitude-assembly-ledger}
 Let
 \begin{equation}
@@ -961,7 +962,7 @@ determinant, and projection errors are individually small.
 
 This assembly formula is the point at which the calculation becomes a
 physical amplitude.  Quoting the BPST density tests only the logarithmic
-fluctuation gate.  Quoting the zero-mode determinant tests only chirality and
+fluctuation normalization.  Quoting the zero-mode determinant tests only chirality and
 source rank.  Quoting
 \(\mathcal R_{\rm fluc}\) tests only the selected source under the normal
 Gaussian.  The hard coefficient is obtained only after these pieces multiply
@@ -1195,7 +1196,7 @@ The relative-coordinate finiteness needed to make
 ControlledApproximation~\ref{ca:instanton-two-body-cluster-integrability},
 transported to the present source and projection data.
 
-This ledger has three immediate negative controls.  First, replacing
+This assembly has three immediate negative controls.  First, replacing
 \(K_{\sigma\tau}^{\rm full}\) by the product
 \(K_{\sigma}^{(1)}K_{\tau}^{(1)}\) gives zero connected cluster data and only
 recovers the Poisson approximation.  Second, using theta curvature to bound a
@@ -1218,7 +1219,7 @@ different QFT observables only after different final maps have been applied.
 Those maps have different dimensions, positivity properties, and limiting
 procedures.
 
-\begin{controlledapproximation}[Observable handoff ledger]
+\begin{controlledapproximation}[Observable handoff map]
 \label{ca:instanton-observable-handoff-ledger}
 Let \(\mathcal X_{+}\) be the finite-regulator \(Q=1\) one-instanton
 amplitude density after the collective density, nonzero-mode determinant,
