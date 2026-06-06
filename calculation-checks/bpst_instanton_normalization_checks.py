@@ -140,6 +140,10 @@ relations
     hard coefficient estimator whose residual is bounded by
     (3/7) B_ind R^(-7/3) once the first product-tail residual majorant is
     supplied
+    comparing two tail-subtracted hard windows gives a plateau diagnostic:
+    the correct leading coefficient cancels the R^(-1/3) drift, while a wrong
+    coefficient or raw truncation leaves a leading drift before the finite
+    determinant/source/fluctuation window budget is quoted
     quoting the hard coefficient on a finite window requires the retained
     signed integral J_R, absolute mass M_R, tail T_R, and noncancellation
     margin kappa_R=|J_R|/M_R; cancellation can defeat relative control even
@@ -269,6 +273,8 @@ inverse checks, canceled reference-amplitude normalization, stale determinant
 constants under finite scheme changes, rank-one four-source zero-mode collapse,
 hard support mistaken for a nondegenerate source projection, unconditioned
 overlap errors mistaken for determinant-relative errors,
+wrong leading tail coefficients or raw hard-window truncations mistaken for a
+tail-subtracted plateau,
 same Euclidean topological susceptibility paired with different Kubo slopes,
 nonzero Euclidean instanton susceptibility paired with zero real-time
 diffusion,
@@ -4778,6 +4784,89 @@ def check_individual_slot_tail_subtracted_hard_coefficient() -> None:
         raise AssertionError("canceled-tail individual-slot residual bound failed")
 
 
+def check_tail_subtracted_hard_window_plateau() -> None:
+    # Use u=R^(-1/3), so the SU(3), Nf=2 endpoint model
+    # J_R=J_infty-3 A_ind u-(3/7) B_ind u^7 is exact over rationals.
+    a_ind = Fraction(5, 7)
+    b_ind = Fraction(3, 11)
+    j_infty = Fraction(13, 17)
+
+    def raw_window(u: Fraction) -> Fraction:
+        return j_infty - 3 * a_ind * u - Fraction(3, 7) * b_ind * u**7
+
+    def accelerated_window(u: Fraction, a_hat: Fraction = a_ind) -> Fraction:
+        return raw_window(u) + 3 * a_hat * u
+
+    for u in [Fraction(1, 2), Fraction(1, 3), Fraction(1, 4)]:
+        residual = j_infty - accelerated_window(u)
+        assert_equal(
+            f"tail-subtracted hard-window residual u={u}",
+            residual,
+            Fraction(3, 7) * b_ind * u**7,
+        )
+
+    u1 = Fraction(1, 2)
+    u2 = Fraction(1, 3)
+    plateau_drift = accelerated_window(u2) - accelerated_window(u1)
+    plateau_bound = Fraction(3, 7) * b_ind * (u1**7 - u2**7)
+    assert_equal(
+        "tail-subtracted two-window plateau drift",
+        plateau_drift,
+        plateau_bound,
+    )
+
+    raw_drift = raw_window(u2) - raw_window(u1)
+    assert_equal(
+        "raw hard-window drift remains leading-tail sized",
+        raw_drift > plateau_drift,
+        True,
+    )
+
+    wrong_a = a_ind + Fraction(1, 19)
+    wrong_plateau_drift = accelerated_window(u2, wrong_a) - accelerated_window(u1, wrong_a)
+    assert_equal(
+        "wrong leading tail coefficient fails plateau bound",
+        abs(wrong_plateau_drift) <= plateau_bound,
+        False,
+    )
+
+    window_mass = Fraction(9, 10)
+    epsilon_window = Fraction(1, 30)
+    retained_accelerated = accelerated_window(u2)
+    kappa_accelerated = abs(retained_accelerated) / window_mass
+    endpoint_bound = Fraction(3, 7) * b_ind * u2**7
+    actual_internal_residual = (
+        window_mass * Fraction(1, 120)
+        - window_mass * Fraction(1, 150)
+        + window_mass * Fraction(1, 180)
+    )
+    exact_coefficient = j_infty + actual_internal_residual
+    absolute_bound = window_mass * epsilon_window + endpoint_bound
+    if not abs(exact_coefficient - retained_accelerated) <= absolute_bound:
+        raise AssertionError("tail-subtracted hard-window absolute bound failed")
+
+    relative_bound = (
+        epsilon_window + endpoint_bound / window_mass
+    ) / kappa_accelerated
+    actual_relative_error = (
+        abs(exact_coefficient - retained_accelerated) / abs(retained_accelerated)
+    )
+    if not actual_relative_error <= relative_bound:
+        raise AssertionError("tail-subtracted hard-window relative bound failed")
+
+    # A plateau in absolute units still cannot support a relative coefficient
+    # when the accelerated signed window is nearly canceled.
+    canceled_accelerated = Fraction(1, 100)
+    canceled_mass = Fraction(199, 100)
+    canceled_kappa = abs(canceled_accelerated) / canceled_mass
+    nominal_absolute_ratio = Fraction(1, 100)
+    assert_equal(
+        "tail-subtracted cancellation margin controls relative plateau",
+        nominal_absolute_ratio / canceled_kappa <= Fraction(1, 10),
+        False,
+    )
+
+
 def check_hard_instanton_finite_window_bound() -> None:
     # A finite hard coefficient needs an absolute error budget and a
     # noncancellation margin |J_R| >= kappa_R M_R.  Otherwise a small absolute
@@ -6521,6 +6610,7 @@ def main() -> None:
     check_hard_screened_instanton_size_shell()
     check_su3_two_flavor_hard_instanton_coefficient()
     check_individual_slot_tail_subtracted_hard_coefficient()
+    check_tail_subtracted_hard_window_plateau()
     check_hard_instanton_finite_window_bound()
     check_four_source_instanton_amplitude_rank_bound()
     check_four_source_instanton_source_conditioning()

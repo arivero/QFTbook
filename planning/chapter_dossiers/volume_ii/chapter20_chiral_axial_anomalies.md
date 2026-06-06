@@ -160,7 +160,11 @@
   log-shell continuation restates the same fact per \(\dd\log\rho\): the
   individual-slot shell also decays only as \(R^{-1/3}\), so tenfold
   suppression of the normalized power-tail majorant costs three decades in
-  the size cutoff.  The finite-window bound continuation turns this
+  the size cutoff.  The tail-subtracted plateau continuation turns the
+  computable leading endpoint coefficient into a two-window stability test:
+  \(J_R^{\rm acc}=J_R+3A_{\rm ind}R^{-1/3}\) is checked against the
+  \(R^{-7/3}\) residual, and wrong-tail or raw-truncation shortcuts leave an
+  \(R^{-1/3}\) drift.  The finite-window bound continuation turns this
   into an operational hard-coefficient test: the retained signed window
   \(J_R\), absolute mass \(M_R\), tail \(T_R\), and noncancellation margin
   \(\kappa_R=|J_R|/M_R\) must be supplied before a relative hard instanton
@@ -410,6 +414,7 @@
 | \(C_{\rm inst}^{(4)}(Q;R),\mathcal P_{\rm orient}\) | specialized \(SU(3)\), \(N_f=2\) hard four-fermion instanton coefficient and shared orientation projector, with the Pauli-Villars pure-gauge constant, light-fermion determinant factor, and explicit endpoint residual |
 | \(A_{\rm ind},B_{\rm ind},R_{\rm sub}\) | leading individual-slot endpoint-tail coefficient, first product-tail residual majorant, and accelerated hard-coefficient tail-subtraction residual |
 | \(J_R,M_R,T_R,\kappa_R\) | retained signed hard-instanton window integral, retained absolute mass, omitted absolute tail, and noncancellation margin used to bound a relative hard-coefficient error |
+| \(A_{\rm ind},B_{\rm ind},J_R^{\rm acc},\kappa_R^{\rm acc}\) | individual-slot endpoint coefficient, first residual-tail majorant, accelerated hard-window estimator, and accelerated-window noncancellation margin used in the two-cutoff plateau test |
 | \(X_{\mathcal S},\delta_X,z_B,z_O,\epsilon_C\) | finite scheme-transport data for an instanton determinant constant: coupling-coordinate shift, zero-mode/source and operator/projection frame factors, and logarithmic constant residual |
 | \(B_R,B_L,d_R,d_L,\epsilon_{\rm rank}\) | right/left four-source zero-mode overlap matrices, determinant margins, and rank-margin residual used to control a nondegenerate \(N_f=2\) instanton four-source amplitude |
 | \(X_R,X_L,\delta_R,\delta_L,\epsilon_{\rm cond}\) | conditioned source-leakage matrices \((B_\chi^0)^{-1}\Delta B_\chi\), their entrywise bounds, and the resulting determinant-relative four-source residual |
@@ -1150,6 +1155,15 @@
   the light-fermion determinant factor, shared orientation projector, and five
   residuals explicit, so this is a declared hard-source coefficient rather than
   a claim of a complete hadronic amplitude.
+- The hard-window plateau test now turns the known individual-slot endpoint
+  coefficient into an operational estimator
+  \(J_R^{\rm acc}=J_R+3A_{\rm ind}R^{-1/3}\).  Two accelerated windows must
+  differ only by the \(R^{-7/3}\) residual integral, and the determinant,
+  zero-mode/source, source-fluctuation, Schur, matching, projection, and endpoint
+  budgets are propagated to the same accelerated coefficient.  Raw truncation and
+  wrong leading-tail subtraction are recorded as negative controls, so this pass
+  develops the physical amplitude extraction rather than more instanton
+  moduli-space geometry.
 - The hard-size endpoint diagnostic now includes the log-shell density
   \(s^{b_0+2}|\mathcal F_{\rm hard}(s)|\).  For the \(SU(3)\), \(N_f=2\)
   differentiated four-slot kernel the shell/tail exponent is only
@@ -1839,6 +1853,16 @@
   BPST companion checks the leading and residual powers, exact rational tail
   coefficient, accelerated-estimator bound, raw-truncation negative control,
   and leading-tail-cancellation case.
+- 2026-06-06 issue #597 hard-window plateau pass: added
+  `ca:instanton-tail-subtracted-hard-window-plateau` after
+  `prop:individual-slot-instanton-tail-subtraction`.  The pass converts the
+  leading endpoint subtraction into a two-cutoff plateau criterion for the hard
+  four-source amplitude, propagates the accelerated estimator through the
+  finite determinant/source/fluctuation window budget, and keeps the
+  noncancellation margin attached to the quoted coefficient.  The BPST companion
+  checks the exact \(u=R^{-1/3}\) model, the \(R^{-7/3}\) residual, raw-window
+  drift, wrong-tail-coefficient failure, and relative-control failure when the
+  accelerated signed window is nearly canceled.
 - 2026-06-05 issue #597 four-source conditioning pass: added
   `ca:four-source-instanton-source-conditioning` after the rank/error bound.
   The pass states the determinant-relative identity

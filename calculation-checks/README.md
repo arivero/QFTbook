@@ -641,9 +641,12 @@ Current checks:
   fused-density suppression and the individual-slot power test
   \(b_0+1-3m<-1\), the stronger hard-size dominance criterion showing the
   \(SU(3)\), \(N_f=2\) differentiated-source tail beyond \(\rho=R/Q\) falls
-  only as \(R^{-1/3}\), the finite-window hard-coefficient bound
-  requiring an absolute error budget, a tail majorant, and a noncancellation
-  margin \(|J_R|/M_R\) before a relative instanton coefficient is quoted, the
+  only as \(R^{-1/3}\), the tail-subtracted hard-window plateau check which
+  cancels the leading drift between two cutoffs only for the correct
+  \(A_{\rm ind}\) and propagates the residual through the determinant/source
+  window budget, the finite-window hard-coefficient bound requiring an
+  absolute error budget, a tail majorant, and a noncancellation margin
+  \(|J_R|/M_R\) before a relative instanton coefficient is quoted, the
   finite-scheme transport bound showing how instanton determinant
   constants compensate coupling-coordinate shifts and source/operator frame
   normalizations, the
@@ -674,7 +677,8 @@ Current checks:
   individual-slot four-fermion kernel, the individual-slot tail-subtracted
   hard coefficient estimator with residual
   \((3/7)B_{\rm ind}R^{-7/3}\) after the leading \(R^{-1/3}\) endpoint tail
-  is restored, the
+  is restored, together with the wrong-tail-coefficient and raw-truncation
+  negative controls for the accelerated plateau, the
   mass-saturated vacuum-activity size integral with its
   \(\prod_f(m_f\rho)\) zero-mode factors,
   small-\(\rho\) finiteness margin, large-\(\rho\) obstruction, and

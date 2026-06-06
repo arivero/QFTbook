@@ -8907,6 +8907,96 @@ large-\(s\) slot coefficients in
 \eqref{eq:instanton-individual-zero-mode-form-factor-large}.
 \end{proof}
 
+\begin{controlledapproximation}[Tail-subtracted hard-window plateau]
+\label{ca:instanton-tail-subtracted-hard-window-plateau}
+The tail subtraction in
+Proposition~\ref{prop:individual-slot-instanton-tail-subtraction} is useful
+only if it can be turned into a window-stability test for the actual hard
+four-source coefficient.  Keep the hypotheses and notation of that proposition,
+and write
+\[
+  J_R=\int_0^R H_{\rm ind}(s)\,\dd s,
+  \qquad
+  J_R^{\rm acc}=J_R+3A_{\rm ind}R^{-1/3}.
+\]
+For two cutoffs \(R_0\le R_1<R_2\), the leading tail cancels exactly in the
+difference of accelerated windows:
+\begin{equation}
+\begin{aligned}
+  J_{R_2}^{\rm acc}-J_{R_1}^{\rm acc}
+  &=
+  \int_{R_1}^{R_2}E_{\rm ind}(s)\,\dd s,\\
+  \left|J_{R_2}^{\rm acc}-J_{R_1}^{\rm acc}\right|
+  &\le
+  \frac{3}{7}B_{\rm ind}
+  \left(R_1^{-7/3}-R_2^{-7/3}\right).
+\end{aligned}
+  \label{eq:tail-subtracted-hard-window-plateau}
+\end{equation}
+Moreover
+\begin{equation}
+  \left|J_\infty-J_R^{\rm acc}\right|
+  \le
+  \frac{3}{7}B_{\rm ind}R^{-7/3}.
+  \label{eq:tail-subtracted-hard-window-infinity}
+\end{equation}
+Thus the plateau is a statement about the physical four-source kernel, not
+about the moduli-space measure in isolation: the same source projection,
+orientation tensor, individual zero-mode form factors, and determinant scheme
+must be used in \(A_{\rm ind}\), \(B_{\rm ind}\), \(J_R\), and \(M_R\).
+
+Let \(\mathcal N(Q)\) denote the common hard prefactor in
+\eqref{eq:su3-nf2-hard-instanton-coefficient}, and let
+\(\epsilon_{\rm win}\) be the sum of the determinant, zero-mode/source,
+source-fluctuation, Schur, matching, and projection relative bounds on the
+retained window, measured against \(M_R\).  Then the accelerated coefficient
+obeys the absolute bound
+\begin{equation}
+  \left|
+    C_{\rm inst}^{(4),{\rm ex}}(Q)
+    -
+    \mathcal N(Q)J_R^{\rm acc}
+  \right|
+  \le
+  |\mathcal N(Q)|
+  \left(
+    M_R\epsilon_{\rm win}
+    +
+    \frac{3}{7}B_{\rm ind}R^{-7/3}
+  \right).
+  \label{eq:tail-subtracted-hard-window-absolute-bound}
+\end{equation}
+If the accelerated window is nondegenerate,
+\[
+  |J_R^{\rm acc}|\ge \kappa_R^{\rm acc}M_R,\qquad
+  \kappa_R^{\rm acc}>0,
+\]
+then
+\begin{equation}
+  \frac{
+  \left|
+    C_{\rm inst}^{(4),{\rm ex}}(Q)
+    -
+    \mathcal N(Q)J_R^{\rm acc}
+  \right|}
+  {|\mathcal N(Q)J_R^{\rm acc}|}
+  \le
+  \frac{
+    \epsilon_{\rm win}
+    +
+    \frac{3}{7}B_{\rm ind}R^{-7/3}/M_R}
+  {\kappa_R^{\rm acc}} .
+  \label{eq:tail-subtracted-hard-window-relative-bound}
+\end{equation}
+The two-window check
+\eqref{eq:tail-subtracted-hard-window-plateau} is the practical diagnostic:
+raw \(J_R\) values drift by the order \(R^{-1/3}\) tail, and subtracting a
+coefficient different from \(A_{\rm ind}\) leaves an order \(R^{-1/3}\) drift.
+Agreement after subtraction is therefore evidence about the assembled
+instanton amplitude channel, while a small signed \(J_R^{\rm acc}\) still
+prevents a relative claim until the noncancellation margin is supplied.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Finite-window bound for a hard
 instanton coefficient]
 \label{ca:hard-instanton-finite-window-bound}
