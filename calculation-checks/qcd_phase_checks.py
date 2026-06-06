@@ -52,7 +52,7 @@ Independent construction:
   and susceptibility residue, and only then reconstructs the conductivity.
 - For the closure window, reconstructs the shear, sound, and charge pole
   data from one rational transport datum and checks the combined residual
-  ledger before accepting the hydrodynamic prediction.
+  budget before accepting the hydrodynamic prediction.
 
 Primary derivation route:
 - The manuscript derives the transport windows from linearized real-time
@@ -1931,7 +1931,7 @@ def check_qcd_transport_closure_window():
     }
     closure_budget = sum(residuals.values(), Fraction(0))
     manufactured_error = sum(residuals.values(), Fraction(0))
-    assert_equal("QCD closure residual ledger is additive", manufactured_error, closure_budget)
+    assert_equal("QCD closure residual budget is additive", manufactured_error, closure_budget)
     assert_true(
         "QCD closure budget must include cross-channel consistency",
         manufactured_error > closure_budget - residuals["cross"],

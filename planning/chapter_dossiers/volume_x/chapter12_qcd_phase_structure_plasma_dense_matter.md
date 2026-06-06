@@ -131,10 +131,10 @@ GitHub issue #628.
 
 - Defines a QCD phase datum requiring pressure, exact symmetries, order
   parameters, limit prescriptions, and status labels.
-- Adds an explicit operational spine tying the chapter's finite-regulator,
+- Adds an explicit physical-output map tying the chapter's finite-regulator,
   order-parameter, response-function, baryon-density, high-density, and CFL
-  subsections back to that phase datum rather than leaving them as parallel
-  technical modules.
+  subsections back to pressure, symmetry, source, response, and limiting data
+  rather than leaving them as parallel technical modules.
 - Adds a finite-lattice thermal gauge datum and proves finite-regulator
   analyticity: finite lattice partition functions are entire in finite
   couplings and masses and Laurent-polynomial in fugacity.
@@ -215,7 +215,7 @@ GitHub issue #628.
   the finite-density momentum projection
   `J_inc^i=J_B^i-(n_B/w)T^{0i}` needed to remove the convective Drude sector
   before identifying the intrinsic baryon-diffusion conductivity.
-- Adds a Euclidean-to-retarded transport-extraction gate: finite Euclidean
+- Adds a Euclidean-to-retarded transport-extraction map: finite Euclidean
   correlator samples must be contact-subtracted, zero-mode-subtracted,
   tail/OPE-subtracted, assigned to a declared low-frequency spectral class,
   and passed through a stable inverse map with finite-volume, continuum,
@@ -223,12 +223,12 @@ GitHub issue #628.
   viscosity or conductivity.  This explicitly prevents midpoint correlators,
   sparse Matsubara data, or Euclidean pole fits from being mistaken for
   real-time transport coefficients.
-- Adds a finite shear spectral-window gate: the isolated hydrodynamic momentum
+- Adds a finite shear spectral extraction window: the isolated hydrodynamic momentum
   peak has width `gamma_k=D_eta k^2` and residue `w`, the finite-window area
   misses the static residue by a controlled `gamma_k/Omega` tail plus regular,
   near-critical, and continuum-window errors, and the viscosity estimator
   `w gamma_k/k^2` must propagate both width and residue uncertainties.
-- Adds a finite bulk/sound spectral-window gate: the dissipative bulk source
+- Adds a finite bulk/sound spectral extraction window: the dissipative bulk source
   is `mathcal B=delta P_tr-c_s^2 delta T00`, the scalar slope is built from
   the pressure-energy matrix rather than the raw trace-trace slope, and the
   finite-density sound-pole estimate subtracts both viscous shear attenuation
@@ -474,7 +474,7 @@ GitHub issue #628.
   proof that microscopic QCD realizes the pole.
 - 2026-06-06 issue #630 transport-closure architecture pass: added
   `ca:qcd-transport-closure-window` after the shear, bulk/sound, and charge
-  finite-window gates.  The new gate assembles
+  finite-window extraction maps.  The new window assembles
   `mathfrak T_QCD^(1)=(w,n_B,c_s^2,beta,alpha,eta,zeta,chi_perp,Sigma_inc)`
   at one thermal state and frame, records the combined residual
   `R_hydro=R_shear+R_bulk+R_charge+R_cond+R_therm+R_frame+R_cross+R_cont`, and
@@ -548,6 +548,13 @@ GitHub issue #628.
   phase specification and a closing bridge in the confinement-comparison
   section, so the chapter explicitly relates phase labels to pressure,
   symmetry, source, response, and limiting data.
+- 2026-06-06 issue #844 architecture pass: converted the reader-facing chapter
+  entrance from an operational spine into a physical-output map and renamed the
+  transport gates in the dossier/prose as extraction maps or extraction
+  windows.  This preserves the residual formulas and labels while making the
+  physical endpoints -- pressure nonanalyticities, source responses, real-time
+  spectral observables, screening diagnostics, and CFL order diagnostics --
+  carry the chapter architecture.
 - 2026-05-27 CFL anomaly-matching pass: added the local UV anomaly polynomial
   for chiral flavor plus baryon backgrounds, the level-\(N_c\) WZW matching
   statement for the CFL chiral field, and the baryon-Goldstone mixed-anomaly
