@@ -2956,8 +2956,9 @@ Current checks:
   gateway with the generalized-gauge non-Jacobi negative control, the one-loop
   color--kinematics surface-term obstruction showing that a cut-invisible
   gauge-null shift need not be double-copy null, the finite two-scale box
-  master with its differential
-  equations, branch prescription, and one-cut-only negative control, the
+  master with its fixed pole subtraction, sector-boundary quadrature,
+  dilogarithm parameter-integral check, differential equations, branch
+  prescription, and one-cut-only/boundary negative controls, the
   bubble IBP reduction, bubble numerator sector projection with the
   parent-cut/lower-sector negative control, the bubble master
   differential-equation branch ledger, the equal-mass bubble threshold family

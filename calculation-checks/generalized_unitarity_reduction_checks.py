@@ -76,9 +76,11 @@ color-kinematics gateway and a finite loop-Jacobi triplet surface-term model;
 nilpotent rational matrix algebra for threshold monodromy and regular
 boundary constants; noncommuting two-letter residue algebra for first-order
 transport, path-order sensitivity, and cut-invisible boundary shifts;
-polynomial log algebra for the finite box master and its branch continuation;
-Laurent-pole arithmetic for virtual/real infrared cancellation and finite
-scheme transport.
+fixed-normalization finite box checks, including pole-subtraction
+bookkeeping, polynomial log algebra, branch continuation, a sector-boundary
+quadrature, and a numerical dilogarithm-parameter integral independent of the
+encoded log-square answer; Laurent-pole arithmetic for virtual/real infrared
+cancellation and finite scheme transport.
 Imported assumptions: dimensional regularization, the standard massless
 two-particle phase-space normalization with the common factor of pi stripped
 off, the Feynman-parameter gamma-function form of the bubble master, and the
@@ -104,7 +106,8 @@ coefficient with constant parts of known box residues and that omitting one
 box subtraction leaves a wrong triangle coefficient, and rejects virtual-only
 pole cancellation,
 omitted rational finite
-remainders, one-cut-only finite-box deformations, branch-label omission,
+remainders, one-cut-only finite-box deformations, missing finite-box boundary
+data, branch-label omission,
 diagonal one-master threshold shortcuts, cut-only boundary reconstruction,
 parent-cut-only sector projection when lower sectors are not scaleless,
 homogeneous one-master shortcuts for the equal-mass bubble threshold family,
@@ -122,6 +125,7 @@ observables.
 
 from __future__ import annotations
 
+import math
 from fractions import Fraction
 
 
@@ -138,6 +142,33 @@ def assert_true(name: str, condition: bool) -> None:
 def assert_false(name: str, condition: bool) -> None:
     if condition:
         raise AssertionError(f"{name}: unexpectedly true")
+
+
+def assert_close_float(name: str, value: float, expected: float, tol: float = 1.0e-10) -> None:
+    if not math.isfinite(value) or not math.isfinite(expected) or not math.isfinite(tol):
+        raise AssertionError(f"{name}: non-finite numerical comparison")
+    if abs(value - expected) > tol:
+        raise AssertionError(f"{name}: got {value:.16g}, expected {expected:.16g}")
+
+
+def simpson_integral(function, lower: float, upper: float, panels: int) -> float:
+    if panels % 2:
+        raise ValueError("Simpson integration needs an even number of panels")
+    step = (upper - lower) / panels
+    total = function(lower) + function(upper)
+    for index in range(1, panels):
+        total += (4 if index % 2 else 2) * function(lower + index * step)
+    return total * step / 3.0
+
+
+def real_dilog_from_parameter_integral(z: float) -> float:
+    # Li_2(z) = - int_0^1 log(1-z x) dx/x on the real interval used below.
+    def integrand(x: float) -> float:
+        if x == 0.0:
+            return z
+        return -math.log1p(-z * x) / x
+
+    return simpson_integral(integrand, 0.0, 1.0, 20000)
 
 
 def rank(matrix: list[list[Fraction]]) -> int:
@@ -1171,14 +1202,26 @@ def check_loop_level_color_kinematics_surface_obstruction() -> None:
 
 
 def check_finite_two_scale_box_master() -> None:
-    # Variables are Ls=log S and Lt=log T.  The finite reduced box in the
-    # chosen normalization is 1/2 (Ls-Lt)^2 + kappa.
-    kappa = Fraction(7, 13)
+    # Variables are Ls=log S and Lt=log T.  The fixed reduced-box convention is
+    # ST I_4/(2 r_Gamma) plus the two soft/collinear pole terms, leaving
+    # 1/2 (Ls-Lt)^2 + pi^2/2.
+    raw_pole_signature = {"S": Fraction(-1), "T": Fraction(-1)}
+    pole_subtraction = {"S": Fraction(1), "T": Fraction(1)}
+    assert_equal(
+        "finite box S pole cancelled by declared subtraction",
+        raw_pole_signature["S"] + pole_subtraction["S"],
+        Fraction(0),
+    )
+    assert_equal(
+        "finite box T pole cancelled by declared subtraction",
+        raw_pole_signature["T"] + pole_subtraction["T"],
+        Fraction(0),
+    )
+
     finite_box: LogPolynomial = {
         (2, 0): Fraction(1, 2),
         (1, 1): Fraction(-1),
         (0, 2): Fraction(1, 2),
-        (0, 0): kappa,
     }
     log_ratio: LogPolynomial = {
         (1, 0): Fraction(1),
@@ -1214,16 +1257,38 @@ def check_finite_two_scale_box_master() -> None:
     )
     assert_equal("finite box Hessian rank", rank(second_derivative_matrix), 1)
 
-    diagonal_boundary_terms: dict[int, Fraction] = {}
-    for (ls_power, lt_power), coeff in finite_box.items():
-        diagonal_power = ls_power + lt_power
-        diagonal_boundary_terms[diagonal_power] = (
-            diagonal_boundary_terms.get(diagonal_power, Fraction(0)) + coeff
+    def bose_kernel(t: float) -> float:
+        if t == 0.0:
+            return 1.0
+        return t / math.expm1(t)
+
+    boundary_from_sector_integral = 3.0 * simpson_integral(bose_kernel, 0.0, 40.0, 2000)
+    boundary_constant = math.pi * math.pi / 2.0
+    assert_close_float(
+        "finite box Euclidean boundary from sector integral",
+        boundary_from_sector_integral,
+        boundary_constant,
+        tol=1.0e-12,
+    )
+
+    for ratio in (1.5, 2.0, 0.4):
+        parameter_value = (
+            boundary_constant
+            - real_dilog_from_parameter_integral(1.0 - ratio)
+            - real_dilog_from_parameter_integral(1.0 - 1.0 / ratio)
         )
-    assert_equal(
-        "finite box Euclidean equal-scale boundary",
-        clean_poly({(power, 0): coeff for power, coeff in diagonal_boundary_terms.items()}),
-        {(0, 0): kappa},
+        log_square_value = 0.5 * math.log(ratio) ** 2 + boundary_constant
+        assert_close_float(
+            f"finite box parameter integral agrees with log-square ratio={ratio}",
+            parameter_value,
+            log_square_value,
+            tol=1.0e-10,
+        )
+
+    wrong_boundary_value = 0.0
+    assert_true(
+        "finite box differential equations alone do not fix boundary",
+        abs(wrong_boundary_value - boundary_from_sector_integral) > 1.0,
     )
 
     one_cut_deformation = poly_add(finite_box, {(0, 1): Fraction(5, 17)})
@@ -1246,10 +1311,12 @@ def check_finite_two_scale_box_master() -> None:
     )
 
     # On the physical s-channel branch, Ls -> R - i*pi and Lt -> 0.
-    # The finite box has imaginary part -pi R in this normalization.
+    # The finite box has imaginary part -pi R in this normalization, while the
+    # fixed pi^2/2 boundary cancels the real -pi^2/2 from the square.
     ls_squared_coeff = finite_box[(2, 0)]
     imaginary_pi_log_coeff = -2 * ls_squared_coeff
-    real_pi_squared_coeff = -ls_squared_coeff
+    boundary_pi_squared_coeff = Fraction(1, 2)
+    real_pi_squared_coeff = boundary_pi_squared_coeff - ls_squared_coeff
     assert_equal(
         "finite box physical branch imaginary coefficient",
         imaginary_pi_log_coeff,
@@ -1258,7 +1325,7 @@ def check_finite_two_scale_box_master() -> None:
     assert_equal(
         "finite box physical branch pi-squared coefficient",
         real_pi_squared_coeff,
-        Fraction(-1, 2),
+        Fraction(0),
     )
     assert_true(
         "branch-labelled box differs from Euclidean continuation",

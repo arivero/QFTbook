@@ -2922,27 +2922,90 @@ integrated gauge amplitudes
 The box integral in \eqref{eq:n4-four-point-mhv-box-control} is the first
 place where the master-integral step is genuinely multi-scale.  The bubble
 master has one threshold variable; the massless four-point box depends on the
-ratio of the two adjacent invariants.  Work first in the Euclidean region
+ratio of the two adjacent invariants.  Fix the all-outgoing massless scalar box
+normalization by
+\begin{equation}
+  I_4^{(D)}(s,t)
+  =
+  \mu^{2\epsilon}
+  \int\frac{\dd^D\ell}{\ii\pi^{D/2}}\,
+  \frac1{
+    \ell^2
+    (\ell+p_1)^2
+    (\ell+p_1+p_2)^2
+    (\ell-p_4)^2
+  },
+  \qquad D=4-2\epsilon ,
+  \label{eq:massless-scalar-box-normalization}
+\end{equation}
+with the Feynman \(i0\) prescription suppressed in the denominator notation.
+Let
 \[
-  S=-s>0,\qquad T=-t>0,
+  r_\Gamma
+  =
+  \frac{\Gamma(1+\epsilon)\Gamma(1-\epsilon)^2}{\Gamma(1-2\epsilon)} .
 \]
-and define a reduced finite box master by subtracting the universal soft and
-collinear pole part from \(S T I_4^{(D)}(-S,-T)\):
+Work first in the Euclidean region
+\[
+  S=-s>0,\qquad T=-t>0 .
+\]
+The Feynman-parameter form has denominator
+\(S\alpha_1\alpha_3+T\alpha_2\alpha_4\).  Resolving the two soft-collinear
+endpoint pairs gives the fixed expansion
+\begin{equation}
+  \frac{S T}{2r_\Gamma}I_4^{(4-2\epsilon)}(-S,-T)
+  =
+  -\frac1{\epsilon^2}
+  \left[
+    \left(\frac{\mu^2}{S}\right)^\epsilon
+    +
+    \left(\frac{\mu^2}{T}\right)^\epsilon
+  \right]
+  +
+  \frac12\log^2\frac{S}{T}
+  +
+  \frac{\pi^2}{2}
+  +O(\epsilon).
+  \label{eq:massless-scalar-box-euclidean-expansion}
+\end{equation}
+Thus, in this declared convention, the reduced finite box is
 \begin{equation}
   \mathcal F_{\Box}(S,T)
   =
   \lim_{\epsilon\to0}
   \left[
-    \mathcal N_{\Box}\,S T I_4^{(4-2\epsilon)}(-S,-T)
-    -
-    \mathcal P_{\rm IR}(S,T;\epsilon)
+    \frac{S T}{2r_\Gamma}I_4^{(4-2\epsilon)}(-S,-T)
+    +
+    \frac1{\epsilon^2}
+    \left[
+      \left(\frac{\mu^2}{S}\right)^\epsilon
+      +
+      \left(\frac{\mu^2}{T}\right)^\epsilon
+    \right]
   \right].
   \label{eq:finite-reduced-box-definition}
 \end{equation}
-The normalization \(\mathcal N_{\Box}\) and the finite part of
-\(\mathcal P_{\rm IR}\) are part of the amplitude convention.  In the
-normalization used in this paragraph, the finite master obeys the two
-first-order equations
+Equivalently, the finite part of the resolved parameter integral is, for
+\(u=S/T>0\),
+\begin{equation}
+  \mathcal F_{\Box}(S,T)
+  =
+  \frac{\pi^2}{2}
+  -\operatorname{Li}_2(1-u)
+  -\operatorname{Li}_2(1-u^{-1}) .
+  \label{eq:finite-box-dilog-parameter-output}
+\end{equation}
+Euler's dilogarithm identity then gives
+\begin{equation}
+  \mathcal F_{\Box}(S,T)
+  =
+  \frac12\log^2\frac{S}{T}
+  +
+  \frac{\pi^2}{2}.
+  \label{eq:finite-box-solution}
+\end{equation}
+In particular the Euclidean boundary is fixed,
+\(\mathcal F_{\Box}(S,S)=\pi^2/2\).  The two first-order equations
 \begin{equation}
   S\frac{\partial}{\partial S}\mathcal F_{\Box}(S,T)
   =
@@ -2953,28 +3016,18 @@ first-order equations
   -\log\frac{S}{T}.
   \label{eq:finite-box-first-order-system}
 \end{equation}
-The right sides are the stripped logarithms produced by the adjacent
-two-particle cuts of the box.  Their compatibility is not automatic from a
-single cut.  It uses the fact that the reduced finite box is scale invariant,
-so \((S\partial_S+T\partial_T)\mathcal F_{\Box}=0\), and that both \(S=0\) and
-\(T=0\) are Landau divisors of the same master.
-
-Integrating \eqref{eq:finite-box-first-order-system} gives
-\begin{equation}
-  \mathcal F_{\Box}(S,T)
-  =
-  \frac12\log^2\frac{S}{T}
-  +
-  \kappa_{\Box},
-  \label{eq:finite-box-solution}
-\end{equation}
-where \(\kappa_{\Box}\) is a finite subtraction constant fixed by the chosen
-box normalization and Euclidean boundary value, for instance by
-\(\mathcal F_{\Box}(S,S)=\kappa_{\Box}\).  Equation
-\eqref{eq:finite-box-solution} is the simplest example of a solved
-multi-scale master in the loop-amplitude workflow: the cut equations fix
-derivatives, the boundary fixes the additive constant, and the Landau letters
-\(S\) and \(T\) fix the analytic-continuation data
+are therefore consequences of the fixed integral convention.  They should be
+read after the normalization, subtraction, and Euclidean boundary data have
+been supplied.  The right sides are the stripped logarithms produced by the
+adjacent two-particle cuts of the box.  Their compatibility is not automatic
+from a single cut.  It uses the scale invariance of the reduced finite box and
+the fact that both \(S=0\) and \(T=0\) are Landau divisors of the same master.
+Equations \eqref{eq:finite-box-dilog-parameter-output} and
+\eqref{eq:finite-box-solution} are the simplest example of a solved
+multi-scale master in the loop-amplitude workflow: the parameter integral fixes
+the normalization and Euclidean boundary, the differential equations encode
+the cut-visible variation, and the Landau letters \(S\) and \(T\) fix the
+analytic-continuation data
 \cite{BDDK1994Unitarity,UssyukinaDavydychev1993Ladders}.
 
 The physical \(s\)-channel boundary value is obtained by
@@ -2995,8 +3048,7 @@ and the finite box develops the imaginary part
   =
   -\pi\log\frac{s}{-t}
 \]
-in this branch convention, up to the overall sign contained in
-\(\mathcal N_{\Box}\).  Dropping the branch label would give the correct
+in this branch convention.  Dropping the branch label would give the correct
 Euclidean real function but the wrong scattering amplitude.  Likewise, knowing
 only the \(S\)-channel equation in
 \eqref{eq:finite-box-first-order-system} would allow additions depending on

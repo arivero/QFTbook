@@ -34,7 +34,8 @@
   all-plus rational blind spot including the five-point all-plus
   partial-amplitude template, a four-point color--kinematics/double-copy
   gateway with generalized-gauge negative controls, a solved finite two-scale
-  massless box master with branch data, the bubble
+  massless box master with fixed \(r_\Gamma\) normalization, pole subtraction,
+  sector-resolved dilogarithm boundary, and branch data, the bubble
   IBP/differential equation master calculation, an equal-mass bubble threshold
   family with lower tadpole master and physical branch data, a two-loop
   equal-mass sunrise maximal-cut curve exposing the elliptic-period
@@ -149,7 +150,7 @@
 | \(C_{\Box}^{\mathcal N=4}\) | planar four-gluon MHV scalar-box coefficient obtained from the maximal cut after integrating over the four internal on-shell multiplets |
 | \(A_4^{(0)}(1^-,2^-,3^+,4^+)\) | color-ordered tree MHV four-gluon amplitude in the spinor-helicity convention used for the gauge-theory control |
 | \(I_4^{(D)}(s,t)\) | dimensionally regulated massless scalar box in the four-point MHV control |
-| \(S,T\), \(\mathcal F_{\Box}(S,T)\), \(\kappa_{\Box}\) | Euclidean box invariants \(S=-s>0,T=-t>0\), finite reduced two-scale box master after IR-pole subtraction, and its Euclidean boundary/subtraction constant |
+| \(S,T\), \(\mathcal F_{\Box}(S,T)\), \(r_\Gamma\) | Euclidean box invariants \(S=-s>0,T=-t>0\), the finite reduced two-scale box master after the declared soft/collinear pole subtraction, and the standard gamma-function loop-normalization factor |
 | \(\operatorname{tr}_{-}(i j k l)\) | chiral spinor trace coordinate \(\langle i j\rangle[j k]\langle k l\rangle[l i]\) used in the five-point all-plus rational amplitude |
 | \(C_{\rm loop}\), \(C_{\rm rat}\), \(C_{5,\rm rat}\) | loop-normalization and all-plus rational-term constants, fixed only after color, particle-content, and loop-measure conventions are declared |
 | \(c_s,c_t,c_u\) | four-point cubic color factors satisfying the Lie-algebra Jacobi relation \(c_s+c_t+c_u=0\) |
@@ -224,13 +225,15 @@
   Jacobi relation, and a Jacobi-satisfying numerator representative.  The
   paragraph explicitly does not construct loop-level color--kinematics
   numerators.
-- The finite box master is a reduced four-point massless scalar box after the
-  universal soft/collinear pole part has been subtracted in a declared
-  convention.  The displayed normalization fixes
-  \(S\partial_S\mathcal F_{\Box}=\log(S/T)\); changing the scalar-integral or
-  finite IR-subtraction convention rescales the finite function and shifts
-  \(\kappa_{\Box}\) but does not remove the need for both \(S\)- and
-  \(T\)-channel data plus branch prescription.
+- The finite box master is the reduced four-point massless scalar box in the
+  declared \(I_4^{(D)}\) and \(r_\Gamma\) convention.  The subtraction removes
+  the two universal soft/collinear pole terms, the sector-resolved
+  Feynman-parameter output fixes
+  \(\mathcal F_{\Box}(S,S)=\pi^2/2\), and the displayed differential equations
+  are consequences of that integral convention rather than definitions of an
+  arbitrary finite function.  Changing the scalar-integral or finite
+  IR-subtraction convention changes the finite function but does not remove the
+  need for both \(S\)- and \(T\)-channel data plus branch prescription.
 - The IBP identity assumes dimensional regularization, analytic continuation
   in \(\epsilon\), and the standard vanishing of scaleless tadpoles.  The
   bubble differential equation is solved with Euclidean boundary data at
@@ -768,6 +771,19 @@
   polynomial log differential equations, scale invariance, Hessian rank,
   equal-scale boundary, one-cut deformation, and physical-branch imaginary
   coefficient.
+- 2026-06-05 issue #769 finite box evidence repair: reviewer feedback noted
+  that the first finite-box pass asserted the differential system and checked
+  the encoded log-square solution rather than independently fixing the scalar
+  box normalization, subtraction, and boundary.  The manuscript now declares
+  the \(I_4^{(D)}\) loop-measure convention and \(r_\Gamma\), displays the
+  pole-subtracted Euclidean expansion, records the sector-resolved
+  dilogarithm parameter output
+  \(\pi^2/2-\operatorname{Li}_2(1-S/T)-\operatorname{Li}_2(1-T/S)\), and fixes the boundary
+  \(\mathcal F_{\Box}(S,S)=\pi^2/2\).  The companion check now verifies pole
+  cancellation, numerically integrates the equal-scale sector boundary and the
+  dilogarithm parameter representation at several Euclidean ratios, and keeps
+  a negative control showing that the differential equations alone leave the
+  finite boundary undetermined.
 - 2026-06-05 issue #769 master-transport pass: extended the multi-master
   discussion beyond a local threshold block by adding a two-letter transport
   audit.  The pass records a reduced Fuchsian system with noncommuting
