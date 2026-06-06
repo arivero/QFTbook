@@ -691,6 +691,132 @@ line of \eqref{eq:paqft-wick-power-scheme-transport} with
 \(w_\Delta\) replaced by \(c\) inside \(F_f\) gives
 \eqref{eq:paqft-wick-square-observable-shift}.
 
+\section{Worked Local-Coupling Ward Ledger}
+\label{sec:paqft-local-coupling-ward-ledger}
+
+The compact spacetime cutoff in
+\eqref{eq:paqft-lambda-phi-four-interaction-coordinate} is a construction
+device, not a harmless decoration on a stress source.  To keep the metric
+notation separate in this paragraph, write the switching function as
+\(\chi\) and define the local interaction-density insertion by
+\begin{equation}
+  \mathcal O_{\lambda,H}(x)
+  :=
+  \frac{\delta V_{\lambda,H}(\chi)}{\delta\chi(x)}
+  =
+  \frac{\lambda}{4!}\Phi_H^4(x)
+  \label{eq:paqft-local-coupling-density}
+\end{equation}
+before the additional finite composite-field counterterms are chosen.  Let
+\(\mathcal W[g_{\mu\nu},\chi]\) be the renormalized source functional in a
+fixed state and prescription, with variations
+\[
+  \delta\mathcal W
+  =
+  -\frac12
+  \int_M\dd\operatorname{vol}_g\,
+  \langle T_{\mu\nu}^{(\chi)}\rangle\delta g^{\mu\nu}
+  +
+  \int_M\dd\operatorname{vol}_g\,
+  \langle \mathcal O_\lambda^{(\chi)}\rangle\delta\chi .
+\]
+If the renormalized time-ordered products and composite fields are chosen
+covariantly and there is no diffeomorphism anomaly, simultaneous pullback of
+the metric, state data, and background coupling by a compactly supported flow
+gives
+\begin{equation}
+  \nabla^\mu\langle T_{\mu\nu}^{(\chi)}\rangle
+  =
+  \langle \mathcal O_\lambda^{(\chi)}\rangle\,\nabla_\nu\chi
+  \quad
+  \text{modulo field-equation ideals and contact terms.}
+  \label{eq:paqft-local-coupling-ward-identity}
+\end{equation}
+The sign is fixed by the displayed variation convention for
+\(\mathcal W\).  Indeed, for a vector field \(X\),
+\[
+  0
+  =
+  \delta_X\mathcal W
+  =
+  \int_M\dd\operatorname{vol}_g\,
+  \langle T_{\mu\nu}^{(\chi)}\rangle\nabla^\mu X^\nu
+  +
+  \int_M\dd\operatorname{vol}_g\,
+  \langle\mathcal O_\lambda^{(\chi)}\rangle X^\nu\nabla_\nu\chi ,
+\]
+and integration by parts gives
+\eqref{eq:paqft-local-coupling-ward-identity}.  Thus a compactly supported
+interaction has a controlled Ward balance, not a conserved stress tensor by
+itself.  The switching edge is an external background that injects or removes
+four-momentum from the quantum system.  On an observation region where
+\(\nabla\chi=0\), the right side vanishes and the algebraic adiabatic
+isomorphism can compare different cutoffs outside the causal domain.  On the
+edge region, however, one may not feed the partial interaction stress into a
+semiclassical Einstein equation as though it were conserved.
+
+The identity also organizes finite renormalization.  A change of the
+renormalized density
+\[
+  \mathcal O_\lambda^{(\chi)}
+  \longmapsto
+  \mathcal O_\lambda^{(\chi)}+\delta\mathcal O_{\rm loc}
+\]
+changes the right side of
+\eqref{eq:paqft-local-coupling-ward-identity} by
+\(\langle\delta\mathcal O_{\rm loc}\rangle\nabla_\nu\chi\).  The stress tensor
+counterterms and contact extensions must change in the same prescription so
+that the Ward balance remains true.  Shifting the composite operator while
+leaving the stress tensor source fixed, or shifting the potential stress while
+forgetting the coupling-source insertion, is not a new physical prediction;
+it is an inconsistent comparison of schemes.
+
+For the \(\lambda\Phi^4\) example in a centered quasifree reference state,
+the first displayed expectation of
+\eqref{eq:paqft-local-coupling-density} is
+\[
+  \left\langle\mathcal O_{\lambda,H}(x)\right\rangle_\omega
+  =
+  \frac{\lambda}{8}\Sigma_{\omega,H}(x)^2 .
+\]
+Therefore the finite-switching Ward source sampled by a compact vector field
+is
+\begin{equation}
+  \int_M\dd\operatorname{vol}_g\,
+  X^\nu
+  \frac{\lambda}{8}\Sigma_{\omega,H}^2\nabla_\nu\chi
+  \label{eq:paqft-local-coupling-finite-switch-source}
+\end{equation}
+inside this retained state coordinate.  A constant replacement of
+\(\Sigma_{\omega,H}\) or an averaged replacement of \(\nabla\chi\) is not an
+equivalent source unless the corresponding residual is shown to be small in
+the tested response norm.  This is the pAQFT origin of the Ward-clean source
+requirement used in
+Chapter~\ref{ch:curved-semiclassical-backreaction}: the physical
+backreaction input is the full scheme-fixed interacting stress tensor, or a
+retained source with an explicit Ward residual and error budget, not the
+potential insertion alone.
+
+\paragraph{Finite check.}
+The companion calculation represents \(\chi\), the Wick-square coordinate,
+and compact vector tests on four finite cells.  It verifies the discrete
+version of the balance
+\[
+  \delta_X\mathcal W_{\rm metric}
+  +
+  \delta_X\mathcal W_{\rm coupling}=0,
+  \qquad
+  \delta_X\mathcal W_{\rm coupling}
+  =
+  \sum_i w_iX_i
+  \frac{\lambda}{8}\Sigma_i^2(\nabla\chi)_i ,
+\]
+checks that a constant switching function gives no coupling Ward source, and
+rejects three common shortcuts: declaring a compactly switched interaction
+conserved, replacing a nonconstant density by its average, and applying a
+finite Wick-density shift without transporting the Ward source in the same
+scheme.
+
 \section{Worked Interacting Tadpole Response}
 \label{sec:paqft-worked-interacting-tadpole-response}
 

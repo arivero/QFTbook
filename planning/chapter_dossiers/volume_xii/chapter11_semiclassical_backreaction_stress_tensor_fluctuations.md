@@ -137,7 +137,10 @@ recording fluctuation data required for controlled backreaction.
   `j^{full}=P_{ker B}j^{raw}+k`, `k in ker B`.  The physical source/noise are
   the objects constructed by the full pAQFT renormalization procedure;
   projecting a partial source or partial covariance is recorded only as a
-  diagnostic/model choice.
+  diagnostic/model choice.  The section now cross-links this retained
+  diagnostic to the upstream local-coupling Ward ledger in Chapter 10, where a
+  nonconstant switching function is treated as an external coupling source
+  rather than as a conserved stress tensor.
 - Adds a finite retained Ward-completion laboratory.  A two-coordinate retained
   model with `B=(1,-1)` turns a nonconserved potential-only source
   `(3,1) rho_*` into the least-norm conserved diagnostic source

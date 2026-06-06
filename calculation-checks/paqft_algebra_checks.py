@@ -13,13 +13,15 @@ Evidence contract.
 Target claims: the finite algebra subclaims in Volume XII Chapter 10,
 including Hadamard star-product associativity, smooth-Hadamard-change
 intertwining, scaling-degree ambiguity counts, and the lambda-phi-four
-Hadamard-coordinate/local-Wick-renormalization example, plus the retained
-one-loop tadpole mass-response and nonlocal sunset-response examples in the
-retarded two-point sector.
+Hadamard-coordinate/local-Wick-renormalization example, the finite
+local-coupling Ward balance for a compact switching function, plus the
+retained one-loop tadpole mass-response and nonlocal sunset-response examples
+in the retarded two-point sector.
 Independent construction: exact polynomial derivatives, contraction sums,
-Taylor-extension counts, Wick-power transport coefficients, and a finite-cell
-Born-response quadrature for local and bilocal kernels are computed directly
-rather than copied from the prose formulae.
+Taylor-extension counts, Wick-power transport coefficients, discrete
+local-coupling Ward variations, and a finite-cell Born-response quadrature for
+local and bilocal kernels are computed directly rather than copied from the
+prose formulae.
 Imported assumptions: the one-component polynomial model, formal hbar
 grading, smooth diagonal Hadamard coordinate difference, local finite Wick
 renormalization scalar, and the chapter's normalization of the quartic
@@ -30,11 +32,14 @@ complex greater/lesser two-point data away from the diagonal.
 Negative controls: wrong scaling-degree uniqueness thresholds, missing
 quartic tadpole factors, omitted vacuum bubble terms, untyped
 coordinate-transport expectation shifts, incorrect mass/curvature coordinate
-factors, wrong tadpole self-energy combinatorics, omitted Born signs, and
-constant replacements for nonconstant local Wick-square densities, wrong
-sunset symmetry factors, omitted retarded i-factors, acausal symmetric kernels,
-and conflation of local diagonal counterterms with off-diagonal kernels are
-rejected by exact rational comparisons.
+factors, compact switching functions incorrectly treated as conserved sources,
+constant replacements for nonconstant local coupling-density Ward sources,
+finite Wick-density shifts not transported through the Ward source, wrong
+tadpole self-energy combinatorics, omitted Born signs, constant replacements
+for nonconstant local Wick-square densities, wrong sunset symmetry factors,
+omitted retarded i-factors, acausal symmetric kernels, and conflation of local
+diagonal counterterms with off-diagonal kernels are rejected by exact rational
+comparisons.
 Scope boundary: a pass checks finite pAQFT algebra and coefficient
 bookkeeping; it does not prove microlocal extension theorems, continuum
 Hadamard state existence, perturbative convergence, interacting stress-tensor
@@ -185,6 +190,20 @@ def weighted_pairing(
     return sum(weight * lhs * rhs for weight, lhs, rhs in zip(weights, left, right))
 
 
+def weighted_vector_sum(
+    weights: list[Fraction],
+    vector: list[Fraction],
+    density: list[Fraction],
+    gradient: list[Fraction],
+) -> Fraction:
+    return sum(
+        weight * component * local_density * local_gradient
+        for weight, component, local_density, local_gradient in zip(
+            weights, vector, density, gradient
+        )
+    )
+
+
 def bilocal_response(
     weights: list[Fraction],
     left: list[Fraction],
@@ -303,6 +322,80 @@ def check_lambda_phi4_hadamard_scheme_transport() -> None:
         raise AssertionError("m^2 R geometric-source coordinate is incorrect")
     if vacuum_r2 != Fraction(45, 4312):
         raise AssertionError("R^2 geometric-source coordinate is incorrect")
+
+
+def check_lambda_phi4_local_coupling_ward_balance() -> None:
+    coupling = Fraction(3, 11)
+    weights = [Fraction(1), Fraction(2), Fraction(3), Fraction(5)]
+    vector_test = [Fraction(2, 5), Fraction(-1, 3), Fraction(3, 7), Fraction(4, 9)]
+    switching = [Fraction(0), Fraction(1, 3), Fraction(1), Fraction(1, 4)]
+    sigmas = [Fraction(5, 7), Fraction(2, 3), Fraction(9, 10), Fraction(4, 5)]
+
+    def periodic_gradient(samples: list[Fraction]) -> list[Fraction]:
+        return [
+            (samples[(i + 1) % len(samples)] - samples[(i - 1) % len(samples)]) / 2
+            for i in range(len(samples))
+        ]
+
+    switching_gradient = periodic_gradient(switching)
+    density = [coupling * sigma * sigma / 8 for sigma in sigmas]
+    coupling_ward_source = weighted_vector_sum(
+        weights,
+        vector_test,
+        density,
+        switching_gradient,
+    )
+    if coupling_ward_source != Fraction(-946367, 31046400):
+        raise AssertionError("finite local-coupling Ward source changed")
+
+    metric_variation = -coupling_ward_source
+    if metric_variation + coupling_ward_source != 0:
+        raise AssertionError("metric and coupling variations should obey the Ward balance")
+    if metric_variation == 0:
+        raise AssertionError("negative control failed: compact switching source vanished")
+
+    constant_switching_gradient = periodic_gradient([Fraction(2, 5)] * 4)
+    if weighted_vector_sum(weights, vector_test, density, constant_switching_gradient) != 0:
+        raise AssertionError("constant local coupling should have no Ward source")
+
+    averaged_density = sum(density, Fraction(0)) / len(density)
+    averaged_ward_source = weighted_vector_sum(
+        weights,
+        vector_test,
+        [averaged_density] * 4,
+        switching_gradient,
+    )
+    if averaged_ward_source == coupling_ward_source:
+        raise AssertionError("nonconstant local coupling density was incorrectly averaged")
+
+    local_wick_shifts = [
+        Fraction(1, 13),
+        Fraction(2, 13),
+        Fraction(1, 26),
+        Fraction(3, 26),
+    ]
+    shifted_density = [
+        coupling * (sigma + shift) * (sigma + shift) / 8
+        for sigma, shift in zip(sigmas, local_wick_shifts)
+    ]
+    density_shift = [
+        shifted - original
+        for shifted, original in zip(shifted_density, density)
+    ]
+    ward_source_shift = weighted_vector_sum(
+        weights,
+        vector_test,
+        density_shift,
+        switching_gradient,
+    )
+    if ward_source_shift != Fraction(-101545, 9993984):
+        raise AssertionError("finite Wick-density Ward-source shift changed")
+    shifted_metric_variation = -(coupling_ward_source + ward_source_shift)
+    stale_coupling_variation = coupling_ward_source
+    if shifted_metric_variation + stale_coupling_variation == 0:
+        raise AssertionError("negative control failed: density shift was hidden from Ward source")
+    if -coupling_ward_source - coupling_ward_source == 0:
+        raise AssertionError("wrong-sign local-coupling Ward identity was not rejected")
 
 
 def check_lambda_phi4_tadpole_mass_response() -> None:
@@ -500,6 +593,7 @@ def main() -> None:
     check_hadamard_change_intertwiner()
     check_scaling_degree_ambiguity_count()
     check_lambda_phi4_hadamard_scheme_transport()
+    check_lambda_phi4_local_coupling_ward_balance()
     check_lambda_phi4_tadpole_mass_response()
     check_lambda_phi4_nonlocal_sunset_response()
     print("All pAQFT algebra, scaling-degree, and two-point response checks passed.")

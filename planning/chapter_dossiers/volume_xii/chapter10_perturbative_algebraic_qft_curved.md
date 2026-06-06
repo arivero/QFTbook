@@ -24,6 +24,9 @@ Hadamard functions and causal factorization.
   `lambda phi^4` interaction in a Hadamard Wick coordinate, smooth diagonal
   Hadamard-coordinate difference, and the separate local covariant finite
   Wick-renormalization scalar with its mass/curvature components.
+- `chi`, `O_{lambda,H}`, `T^{(chi)}_{mu nu}`: local coupling/switching
+  function, the corresponding renormalized interaction-density insertion, and
+  the stress tensor satisfying the local-coupling Ward balance.
 - `Sigma_{omega,H}`, `M_tad`, `E_ret^0`, `E_adv^0`: state Wick square,
   retained local tadpole mass coordinate, and free retarded/advanced Green
   operators used in the first Born response of the interacting two-point
@@ -66,6 +69,18 @@ Hadamard functions and causal factorization.
   stress-tensor tensors.  This gives the Volume XII interacting-example lane a
   concrete renormalization/state/output calculation without mistaking a
   Wick-square coordinate check for the full conserved interacting source.
+- Adds a worked local-coupling Ward ledger for the same interacting scalar
+  model.  The chapter treats the compact switching function as a background
+  coupling with density insertion `O_lambda=delta V_lambda(chi)/delta chi` and
+  derives the balance
+  `nabla^mu T^{(chi)}_{mu nu}=<O_lambda^{(chi)}> nabla_nu chi` in the fixed
+  variation convention.  It separates constant-coupling/adiabatic regions
+  where the Ward source vanishes, compact switching edges where the external
+  coupling injects four-momentum, and semiclassical backreaction where the
+  full scheme-fixed interacting stress tensor or an explicit Ward
+  residual/error budget is required.  The passage also records that finite
+  density renormalizations must be transported through the Ward source
+  together with stress-tensor counterterms.
 - Adds a second worked interacting scalar example: the retained local
   one-loop tadpole from `lambda phi^4` is converted into a state-dependent
   mass coordinate `lambda Sigma_{omega,H}/2` and then into the first Born
@@ -92,15 +107,20 @@ Hadamard functions and causal factorization.
   the `lambda phi^4` Hadamard-coordinate/local-Wick-renormalization
   coefficients: quartic tadpole, vacuum term, transported-state expectation
   invariance, fixed-state Wick-square prescription shift, mass/curvature
-  coordinate shifts, geometric-source coordinates, and the retained one-loop
+  coordinate shifts, geometric-source coordinates, and the local-coupling Ward
+  balance for a compact switching function, including exact cancellation
+  between metric and coupling variations, zero source for a constant switching
+  function, finite Wick-density transport through the Ward source, and
+  negative controls for treating a compact switching edge as conserved or
+  averaging a nonconstant density.  It also checks the retained one-loop
   tadpole mass response, including the `lambda Sigma/2` combinatorial factor,
   the inverse-operator Born sign, linearity in coupling/state Wick square,
   finite Wick-square scheme shifts, and rejection of constant averaging for a
-  nonconstant local tadpole density.  It also verifies the off-diagonal
-  sunset response: the quadratic-action-to-kernel factor, retarded support,
-  the `-i` retardedization on Hermitian-compatible complex Wightman samples,
-  bilocal Born sign, rejection of the wrong symmetry factor, omitted `i` factor,
-  and acausal symmetric kernel, and separation of diagonal local counterterm
+  nonconstant local tadpole density.  It verifies the off-diagonal sunset
+  response: the quadratic-action-to-kernel factor, retarded support, the `-i`
+  retardedization on Hermitian-compatible complex Wightman samples, bilocal
+  Born sign, rejection of the wrong symmetry factor, omitted `i` factor, and
+  acausal symmetric kernel, and separation of diagonal local counterterm
   response from the nonlocal sunset kernel.
 
 ## Figure Ledger
@@ -141,3 +161,9 @@ Hadamard star-product comparison maps.
   Wightman samples, verifies that the retarded kernel is real on real test
   data, and rejects the old omitted-`i` convention as an imaginary
   inverse-kernel insertion.
+- 2026-06-06 issue #729: added the local-coupling Ward ledger upstream of the
+  semiclassical Ward diagnostics.  This is architecture rather than another
+  diagram cell: it explains why compact switching functions are construction
+  devices with edge Ward sources, why finite density renormalizations must
+  move with the stress prescription, and why backreaction needs a full
+  conserved interacting stress tensor or a declared residual budget.
