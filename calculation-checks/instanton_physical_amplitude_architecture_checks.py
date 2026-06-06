@@ -27,6 +27,10 @@ Target claims:
   nonzero-mode fluctuation quotient separates the Gaussian source mean from
   its covariance with the same interaction weight that defines the determinant
   normalization.
+- `ca:instanton-hard-amplitude-assembly-ledger`: the hard channel must assemble
+  the determinant, source-fluctuation, zero-mode/source, and physical-projection
+  factors in the same kernel, with absolute control unless a noncancellation
+  margin is supplied.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell residuals
   and source-determinant perturbations obey the displayed absolute bounds.
 - `prop:su3-nf2-hard-source-power-slow-tail` and
@@ -39,6 +43,7 @@ Independent construction:
   two-by-two determinants, mass/source polynomials, one-loop RG exponents,
   the Bessel-product tail cancellation for an individual zero-mode slot,
   finite Gaussian source-quotient covariance identities,
+  multiplicative hard-amplitude assembly bounds on signed windows,
   physical projection bins, residual sums, and hard-window power ledgers
   directly, rather than importing BPST radial integrals or copying a monograph
   coefficient.
@@ -58,6 +63,8 @@ Negative controls:
   an unamputated external residue absorbed into the zero-mode slot tail, a
   vacuum determinant calibration substituted for a source-fluctuation
   quotient, a relative quotient formed after zero-mode rank loss, a
+  determinant-only assembled amplitude, signed-window relative error control
+  without a noncancellation margin, a
   single Euclidean cell sum used as a spectral-bin observable, a
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
   slot, and a residual bound that omits the external projection/sector
@@ -399,6 +406,93 @@ def check_nonzero_mode_source_fluctuation_quotient() -> None:
     )
 
 
+def check_hard_amplitude_assembly_ledger() -> None:
+    b0_su3_nf2 = beta0(3, 2)
+    zero_mode_power = Fraction(6)
+    size_power = b0_su3_nf2 + zero_mode_power - 5
+    q_power = -(size_power + 1)
+
+    assert_equal("assembled hard-channel Lambda power", b0_su3_nf2, Fraction(29, 3))
+    assert_equal("assembled hard-channel Q power", q_power, -Fraction(35, 3))
+    assert_equal(
+        "assembled hard-channel four-fermion mass dimension",
+        b0_su3_nf2 + q_power,
+        Fraction(-2),
+    )
+
+    leading_kernel_cells = [Fraction(1), -Fraction(97, 100), Fraction(3, 100)]
+    determinant_errors = [Fraction(1, 20), -Fraction(1, 30), Fraction(1, 40)]
+    fluctuation_errors = [Fraction(1, 25), Fraction(1, 50), -Fraction(1, 60)]
+    zero_mode_errors = [-Fraction(1, 30), Fraction(1, 45), Fraction(1, 35)]
+    physical_projection_errors = [
+        Fraction(1, 50),
+        -Fraction(1, 40),
+        Fraction(1, 55),
+    ]
+
+    leading_window = sum(leading_kernel_cells, Fraction(0))
+    exact_window = sum(
+        cell * (1 + det) * (1 + fluc) * (1 + zm) * (1 + phys)
+        for cell, det, fluc, zm, phys in zip(
+            leading_kernel_cells,
+            determinant_errors,
+            fluctuation_errors,
+            zero_mode_errors,
+            physical_projection_errors,
+        )
+    )
+    determinant_only_window = sum(
+        cell * (1 + det)
+        for cell, det in zip(leading_kernel_cells, determinant_errors)
+    )
+
+    e_det = max(abs(error) for error in determinant_errors)
+    e_fluc = max(abs(error) for error in fluctuation_errors)
+    e_zm = max(abs(error) for error in zero_mode_errors)
+    e_phys = max(abs(error) for error in physical_projection_errors)
+    epsilon_assembly = product([1 + e_det, 1 + e_fluc, 1 + e_zm, 1 + e_phys]) - 1
+    absolute_window_mass = sum(abs(cell) for cell in leading_kernel_cells)
+
+    assert_equal("assembled hard leading signed window", leading_window, Fraction(3, 50))
+    assert_equal(
+        "hard assembly absolute product bound",
+        abs(exact_window - leading_window)
+        <= epsilon_assembly * absolute_window_mass,
+        True,
+    )
+    assert_not_equal(
+        "determinant-only assembled amplitude misses source and projection data",
+        determinant_only_window,
+        exact_window,
+    )
+
+    signed_relative_budget = epsilon_assembly * abs(leading_window)
+    assert_equal(
+        "signed-window relative budget fails without noncancellation margin",
+        signed_relative_budget < abs(exact_window - leading_window),
+        True,
+    )
+
+    determinant_constant = Fraction(13, 17)
+    common_source_window = Fraction(19, 23)
+    source_quotient_q1 = Fraction(21, 20)
+    source_quotient_q2 = Fraction(24, 25)
+    prefactor_q1 = determinant_constant * common_source_window * source_quotient_q1
+    prefactor_q2 = determinant_constant * common_source_window * source_quotient_q2
+    transported_ratio_prefactor = prefactor_q2 / prefactor_q1
+
+    assert_equal(
+        "same-scheme determinant constant cancels in assembled ratio",
+        transported_ratio_prefactor,
+        source_quotient_q2 / source_quotient_q1,
+    )
+    assert_not_equal(
+        "untransported source quotient changes assembled hard ratio",
+        transported_ratio_prefactor,
+        Fraction(1),
+    )
+
+
 def check_two_flavor_mass_source_determinant_coordinate() -> None:
     m_u = Fraction(2, 5)
     m_d = Fraction(3, 7)
@@ -627,6 +721,7 @@ def main() -> None:
     check_one_loop_density_gate_rg_and_channel_power()
     check_individual_zero_mode_slot_tail_from_bessel_products()
     check_nonzero_mode_source_fluctuation_quotient()
+    check_hard_amplitude_assembly_ledger()
     check_two_flavor_mass_source_determinant_coordinate()
     check_moduli_equivalent_channel_separation()
     check_projection_not_recoverable_from_one_euclidean_sum()

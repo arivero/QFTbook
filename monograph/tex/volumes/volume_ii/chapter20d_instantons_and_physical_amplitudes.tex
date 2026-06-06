@@ -670,6 +670,139 @@ source under that Gaussian and its interaction remainders.  Collapsing these
 three entries into a single ``measure prefactor'' loses the amplitude
 calculation.
 
+\section{The Hard Channel As An Assembled Amplitude}
+\label{sec:instanton-hard-amplitude-assembly}
+
+The preceding gates are useful only when they are recombined in the same
+observable coordinate.  For the \(SU(3)\), \(N_f=2\), hard four-source channel,
+let \(s=Q\rho\), let \(\Omega\) denote the retained color-orientation
+coordinate, and let \(\chi_{\rm phys}\) record the declared source window,
+amputation convention, and physical projection after the center
+momentum-conservation gate has been applied.  A finite-regulator assembly has
+the form
+\begin{equation}
+\begin{aligned}
+  \mathcal A_{4,\Lambda}^{\rm hard}(Q;\mathcal J)
+  &=
+  \ee^{\ii\theta}
+  C_{\mathcal S}\,
+  \Lambda_{\rm ht}^{29/3}Q^{-35/3}
+  \int_{\mathcal W}
+  K_0(s,\Omega;\mathcal J)\,
+  \mathcal R_{\rm det}(s,\Omega)\,                       \\
+  &\qquad\qquad{}\times
+  \mathcal R_{\rm fluc}(s,\Omega;\mathcal J)\,
+  \mathcal R_{\rm zm}(s,\Omega;\mathcal J)\,
+  \mathcal R_{\rm phys}(s,\Omega;\mathcal J)\,
+  \dd s\,\dd\Omega
+  +R_{\rm ext}(Q;\mathcal J),
+\end{aligned}
+  \label{eq:instanton-hard-assembled-channel}
+\end{equation}
+where
+\[
+\begin{aligned}
+  K_0(s,\Omega;\mathcal J)
+  &=
+  s^{32/3}
+  \mathcal P_{\rm Haar}(\Omega)\,
+  \det B_R^0(s,\Omega;\mathcal J)\,
+  \det B_L^0(s,\Omega;\mathcal J)              \\
+  &\qquad{}\times
+  \prod_{\ell=1}^4F_\ell(c_\ell s)\,
+  \chi_{\rm phys}^{0}(s,\Omega;\mathcal J).
+\end{aligned}
+\]
+The constant \(C_{\mathcal S}\) is the finite determinant and orientation
+normalization in the chosen scheme.  The logarithmic determinant and running
+action have already been traded for
+\(\Lambda_{\rm ht}^{29/3}Q^{-35/3}\).  The remaining factors have distinct
+jobs: \(\mathcal R_{\rm det}\) is the finite determinant-shape mismatch after
+scheme matching, \(\mathcal R_{\rm fluc}\) is the source-dependent quotient in
+\eqref{eq:instanton-physical-source-fluctuation-quotient},
+\(\mathcal R_{\rm zm}\) is the zero-mode/source-frame stability factor, and
+\(\mathcal R_{\rm phys}\) is the finite projection or continuation mismatch.
+The term \(R_{\rm ext}\) contains sector isolation, infrared, cut, endpoint,
+and continuum errors not represented by the retained window.
+
+\begin{controlledapproximation}[Hard amplitude assembly ledger]
+\label{ca:instanton-hard-amplitude-assembly-ledger}
+Let
+\begin{equation}
+  H_{\mathcal C}^{0}(\mathcal J)
+  =
+  \int_{\mathcal W}K_0(s,\Omega;\mathcal J)\,\dd s\,\dd\Omega,
+  \qquad
+  M_{\mathcal C}^{0}(\mathcal J)
+  =
+  \int_{\mathcal W}|K_0(s,\Omega;\mathcal J)|\,\dd s\,\dd\Omega .
+  \label{eq:instanton-hard-assembly-leading-window}
+\end{equation}
+Assume on the retained window that
+\[
+  \mathcal R_x=1+\delta_x,\qquad
+  |\delta_x|\le e_x,
+  \qquad x\in\{\det,{\rm fluc},{\rm zm},{\rm phys}\}.
+\]
+Then the leading assembled coefficient
+\[
+  \mathcal A_{4}^{0}(Q;\mathcal J)
+  =
+  \ee^{\ii\theta}
+  C_{\mathcal S}
+  \Lambda_{\rm ht}^{29/3}Q^{-35/3}
+  H_{\mathcal C}^{0}(\mathcal J)
+\]
+has the absolute bound
+\begin{equation}
+\begin{aligned}
+  \left|
+    \mathcal A_{4,\Lambda}^{\rm hard}(Q;\mathcal J)
+    -
+    \mathcal A_4^0(Q;\mathcal J)
+  \right|
+  &\le
+  |C_{\mathcal S}|\Lambda_{\rm ht}^{29/3}Q^{-35/3}
+  \epsilon_{\rm asm}\,
+  M_{\mathcal C}^{0}(\mathcal J)
+  +|R_{\rm ext}(Q;\mathcal J)|,                         \\
+  \epsilon_{\rm asm}
+  &=
+  (1+e_{\det})(1+e_{\rm fluc})(1+e_{\rm zm})(1+e_{\rm phys})-1 .
+\end{aligned}
+  \label{eq:instanton-hard-assembly-error-bound}
+\end{equation}
+If a relative statement is wanted, a noncancellation margin must be supplied:
+\[
+  |H_{\mathcal C}^{0}(\mathcal J)|
+  \ge h_0 M_{\mathcal C}^{0}(\mathcal J),
+  \qquad h_0>0 .
+\]
+Only then does \eqref{eq:instanton-hard-assembly-error-bound} imply a
+relative correction of size at most
+\[
+  \frac{\epsilon_{\rm asm}}{h_0}
+  +
+  \frac{|R_{\rm ext}(Q;\mathcal J)|}{
+    |C_{\mathcal S}|\Lambda_{\rm ht}^{29/3}Q^{-35/3}
+    |H_{\mathcal C}^{0}(\mathcal J)|
+  } .
+\]
+Without this margin the correct control is absolute, not relative; a signed
+window cancellation can make a tiny leading number even when the source,
+determinant, and projection errors are individually small.
+\end{controlledapproximation}
+
+This assembly formula is the point at which the calculation becomes a
+physical amplitude.  Quoting the BPST density tests only the logarithmic
+fluctuation gate.  Quoting the zero-mode determinant tests only chirality and
+source rank.  Quoting
+\(\mathcal R_{\rm fluc}\) tests only the selected source under the normal
+Gaussian.  The hard coefficient is obtained only after these pieces multiply
+the same Haar-projected, amputated, windowed, and physically projected kernel.
+Changing any of those data changes the amplitude coordinate, even though the
+underlying instanton saddle is unchanged.
+
 \section{Finite-Cell Control Model}
 \label{sec:finite-cell-instanton-channel-control}
 

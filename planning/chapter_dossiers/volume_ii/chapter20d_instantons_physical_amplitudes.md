@@ -62,6 +62,13 @@
   and covariance identity, including the quadratic source trace correction
   `1/2 Tr(QC)` and the absolute bound
   `epsilon_U + M_U M_V / d_0`.
+- `sec:instanton-hard-amplitude-assembly`: recombines the hard source kernel,
+  finite determinant normalization, nonzero-mode source quotient,
+  zero-mode/source stability, and physical projection into one regulated
+  amplitude coordinate.
+- `ca:instanton-hard-amplitude-assembly-ledger`: assembled hard-amplitude
+  absolute error bound, with noncancellation margin required before relative
+  scale-law claims are allowed.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell model
   proving the absolute residual bound and the two-by-two determinant stability
   estimate.
@@ -96,6 +103,12 @@
   even after the Gaussian determinant is normalized, the selected hard source
   has a mean and a covariance with nonzero-mode interactions.  A vacuum
   determinant constant alone cannot control a four-source amplitude.
+- The assembled hard-channel ledger prevents the chapter from becoming a list
+  of adjacent gates.  It places the determinant scheme constant, hard
+  zero-mode slots, nonzero-mode source quotient, source-frame stability, and
+  projection mismatch in a single amplitude formula, with absolute
+  signed-window control and an explicit noncancellation hypothesis for
+  relative statements.
 - The `Q^(-35/3)` hard-scale behavior is tied to `b0=29/3` and four individual
   hard zero-mode form factors.  The large-size endpoint is convergent but slow,
   with a retained-tail majorant of order `R^(-1/3)`, so a window/stability
@@ -125,6 +138,9 @@
   verifies the finite Gaussian nonzero-mode source quotient covariance
   identity, the quadratic trace correction, absolute window propagation, and
   rank-loss rejection,
+  verifies the assembled hard-amplitude product bound and rejects
+  determinant-only assembly or signed-window relative control without a
+  noncancellation margin,
   builds moduli-equivalent finite cell channels with different or vanishing
   amplitudes, constructs a same-Euclidean-sum/different-projection ambiguity,
   checks the SU(3), `N_f=2` hard four-source scale and tail powers, validates
@@ -161,3 +177,7 @@
   source-fluctuation quotient to the physical-amplitude chapter, with companion
   checks rejecting replacement by a vacuum determinant constant.  This targets
   the fluctuation/source side of the instanton amplitude.
+- 2026-06-06 hard amplitude assembly pass: added the assembled hard-channel
+  formula and absolute error ledger, so the chapter now recombines the
+  determinant, zero-mode/source, nonzero-mode source quotient, and physical
+  projection data before quoting the hard coefficient.
