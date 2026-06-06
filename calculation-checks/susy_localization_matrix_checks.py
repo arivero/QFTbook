@@ -15,6 +15,9 @@ S^4 and S^3 matrix models:
 * the elementary U(1) S^4 Gaussian integral;
 * the dominated finite-N Laguerre coefficient limit for the planar circular
   Wilson loop and the separate exponential-tail truncation template;
+* the Bessel derivative identity that turns the localized circular Wilson
+  loop into the planar Bremsstrahlung function once the protected Ward identity
+  is supplied;
 * the finite double-sine reflection identity and chiral pole convention;
 * global Chern-Simons level-lattice, FI-center, contact-block, and
   parity-anomaly half-shift bookkeeping for the S^3 formula;
@@ -30,6 +33,7 @@ import math
 from fractions import Fraction
 import mpmath as mp
 
+from check_utils import assert_geq as _assert_geq
 from check_utils import assert_leq as _assert_leq
 
 
@@ -501,6 +505,64 @@ def check_circular_wilson_exponential_tail_truncation() -> None:
     _assert_leq("negative tail is bounded by exp(-R)", mp.e ** (-cutoff), mp.mpf("0.005"))
 
 
+def check_bremsstrahlung_bessel_derivative() -> None:
+    # The localization computation supplies W_0(lambda)=2 I_1(sqrt(lambda))/sqrt(lambda).
+    # The physical Bremsstrahlung function also needs the protected circular-loop
+    # Ward identity; this check isolates the convention-sensitive derivative.
+    def planar_circular_wilson(lambda_value: mp.mpf) -> mp.mpf:
+        z = mp.sqrt(lambda_value)
+        return 2 * mp.besseli(1, z) / z
+
+    def bremsstrahlung_bessel(lambda_value: mp.mpf) -> mp.mpf:
+        z = mp.sqrt(lambda_value)
+        return z * mp.besseli(2, z) / (4 * mp.pi**2 * mp.besseli(1, z))
+
+    for lambda_value in (mp.mpf("0.05"), mp.mpf("0.7"), mp.mpf("3.0"), mp.mpf("19.0")):
+        ward_derivative = (
+            lambda_value
+            * mp.diff(lambda mu: mp.log(planar_circular_wilson(mu)), lambda_value)
+            / (2 * mp.pi**2)
+        )
+        bessel_ratio = bremsstrahlung_bessel(lambda_value)
+        assert_close(
+            f"Bremsstrahlung Bessel derivative lambda={lambda_value}",
+            ward_derivative,
+            bessel_ratio,
+            mp.mpf("2e-48"),
+        )
+
+        # Negative control: differentiating log(I_1(sqrt(lambda))) alone drops
+        # the -log(sqrt(lambda)) prefactor in W_0 and shifts B by 1/(4*pi^2).
+        missing_prefactor = (
+            lambda_value
+            * mp.diff(lambda mu: mp.log(mp.besseli(1, mp.sqrt(mu))), lambda_value)
+            / (2 * mp.pi**2)
+        )
+        assert_close(
+            f"Bremsstrahlung missing-prefactor gap lambda={lambda_value}",
+            missing_prefactor - bessel_ratio,
+            1 / (4 * mp.pi**2),
+            mp.mpf("2e-48"),
+        )
+        _assert_geq(
+            f"Bremsstrahlung missing-prefactor negative control lambda={lambda_value}",
+            abs(missing_prefactor - bessel_ratio),
+            mp.mpf("0.02"),
+        )
+
+    lambda_small = mp.mpf("0.0007")
+    weak_series = (
+        lambda_small / (16 * mp.pi**2)
+        - lambda_small**2 / (384 * mp.pi**2)
+        + lambda_small**3 / (6144 * mp.pi**2)
+    )
+    _assert_leq(
+        "Bremsstrahlung weak-series cubic truncation",
+        abs(bremsstrahlung_bessel(lambda_small) - weak_series),
+        mp.mpf("1e-18"),
+    )
+
+
 def pestun_H_trunc(x: mp.mpf | mp.mpc, cutoff: int) -> mp.mpf | mp.mpc:
     product = mp.mpf(1)
     for n in range(1, cutoff + 1):
@@ -736,6 +798,7 @@ def main() -> None:
     check_s4_protected_insertion_residual_budget()
     check_circular_wilson_laguerre_dominated_limit()
     check_circular_wilson_exponential_tail_truncation()
+    check_bremsstrahlung_bessel_derivative()
     check_s4_H_log_derivative()
     check_s4_finite_part_determinant_ledger()
     check_s3_double_sine_conventions()

@@ -1808,7 +1808,7 @@ determinant, two pole-selection, gluing, Cartan, and tail entries in
 as part of a nonperturbative definition of the theory.
 \end{controlledapproximation}
 
-\paragraph{Protected-insertion proof-obligation ledger.}
+\paragraph{Protected insertions as a QFT-to-matrix-model comparison.}
 Equation~\eqref{eq:pestun-s4-localization} is the scalar partition-function
 case of a functional statement on protected insertions.  Fix a finite
 test space \(\mathcal P_N\) of \(Q\)-closed regulated insertions containing
@@ -1837,16 +1837,17 @@ ADHM--Nekrasov functional, and the final localized expression.  Define
 \end{aligned}
 \]
 Then the comparison to the displayed localization formula is the exact
-bookkeeping telescope
+finite-dimensional identity
 \begin{equation}
   \mathcal Z_{\rm reg}-\mathcal Z_{\rm loc}
   =
   E_{\rm Stokes}+E_{\rm normal}+E_{\rm res}+E_{\rm inst}+E_{\rm cont}.
   \label{eq:s4-protected-insertion-localization-budget}
 \end{equation}
-This identity is not, by itself, evidence for localization.  It is a ledger of
-the maps that a proof must construct and estimate.  Here \(E_{\rm Stokes}\)
-records finite-regulator \(Q\)-Stokes, anomaly, and
+This identity decomposes the mismatch between the regulated QFT functional
+and the localized functional.  It identifies the maps and estimates required
+for a localization theorem.  Here \(E_{\rm Stokes}\) records
+finite-regulator \(Q\)-Stokes, anomaly, and
 boundary defects; \(E_{\rm normal}\) records normal-complex, zero-mode, and
 determinant-line defects; \(E_{\rm res}\) records the residual Cartan
 contour, Weyl quotient, and fixed-locus restriction of the insertion;
@@ -1862,14 +1863,15 @@ finite-dimensional dual space,
   \|E_{\rm Stokes}\|+\|E_{\rm normal}\|+\|E_{\rm res}\|
   +\|E_{\rm inst}\|+\|E_{\rm cont}\|.
 \]
-This triangle inequality is a way of recording the remaining burden, not a
-bound with content until the individual residuals have been estimated.  For
-the half-BPS circular Wilson loop, the fixed-locus restriction is
+This triangle inequality records how residual estimates propagate to protected
+observables.  Its numerical content comes from estimates of the individual
+residuals.  For the half-BPS circular Wilson loop, the fixed-locus restriction is
 \(W_{\square}|_{\rm fix}=N^{-1}\operatorname{Tr}_{\square}\ee^X\); the
 Laguerre and Bessel computations below evaluate
-\(\mathcal Z_{\rm loc}(W_{\square})/\mathcal Z_{\rm loc}(1)\).  They do not
-by themselves prove the continuum field-theoretic vanishing of the five
-residuals above.
+\(\mathcal Z_{\rm loc}(W_{\square})/\mathcal Z_{\rm loc}(1)\).  Under a
+localization theorem controlling the five residuals above, that matrix-model
+ratio is the field-theory Wilson-loop expectation entering the Bremsstrahlung
+Ward identity in Remark~\ref{rem:bremsstrahlung-derivative-algebra}.
 
 \begin{example}[\(\mathcal N=4\) Yang--Mills degeneration]
 \label{ex:s4-n4-gaussian-matrix-model}
@@ -2315,6 +2317,13 @@ Then Theorem~\ref{thm:planar-circular-wilson-bessel} gives
        {I_1(\sqrt{\lambda_{\rm circ}})} .
   \label{eq:bremsstrahlung-bessel-from-loop}
 \end{equation}
+Thus the Bessel ratio is the small-angle cusp/Bremsstrahlung coefficient only
+after two field-theory inputs have been supplied: the protected Ward identity
+\eqref{eq:bremsstrahlung-circular-loop-ward} and the QFT-to-localized
+comparison controlling the residuals in
+\eqref{eq:s4-protected-insertion-localization-budget}.  A different defect
+normalization supplies a different Ward factor, while the matrix-model
+derivative algebra below remains unchanged.
 
 Let \(z=\sqrt{\lambda_{\rm circ}}\) and
 \[

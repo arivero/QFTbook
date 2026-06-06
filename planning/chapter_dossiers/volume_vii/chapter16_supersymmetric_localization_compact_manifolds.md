@@ -90,11 +90,12 @@
   north/south Gieseker coefficients, insertion restrictions, Cartan window,
   and instanton cutoff is compared to the finite-regulator QFT integrand by
   determinant, north-pole, south-pole, gluing, Cartan, and tail residuals.
-- Protected-insertion proof-obligation ledger for Pestun localization: on a
-  finite \(Q\)-closed insertion test space, the regulated QFT functional and
-  the localized Cartan/Nekrasov functional are connected by five named residuals
-  for \(Q\)-Stokes, normal-complex, residual Cartan/insertion restriction,
-  instanton compactification, and continuum/contact-term comparison.
+- Protected-insertion QFT-to-matrix-model comparison for Pestun localization:
+  on a finite \(Q\)-closed insertion test space, the regulated QFT functional
+  and the localized Cartan/Nekrasov functional are connected by five named
+  residuals for \(Q\)-Stokes, normal-complex, residual Cartan/insertion
+  restriction, instanton compactification, and continuum/contact-term
+  comparison.
 - \(H\)-function convergence, logarithmic derivative, and Barnes-\(G\)
   counterterm convention.
 - \(\mathcal N=4\) Yang-Mills degeneration to a Gaussian matrix model.
@@ -228,15 +229,16 @@
 11. The \(S^4\) \(\mathcal N=2\) partition function is the Cartan integral with
    vector/hyper one-loop determinants and north/south Nekrasov factors.
 12. Pestun localization for protected insertions is now organized as a
-    proof-obligation telescope:
+    QFT-to-matrix-model comparison identity:
     `Z_reg - Z_loc = E_Stokes + E_normal + E_res + E_inst + E_cont`.
     The five residuals separate finite-regulator \(Q\)-Stokes defects,
     normal-complex and determinant-line defects, residual Cartan-contour and
     insertion-restriction defects, Gieseker/Nekrasov instanton-selection
     defects, and continuum/contact-term defects.  The finite-\(N\) Laguerre
     and planar Bessel computations evaluate the localized circular-loop
-    functional after this comparison data has been supplied; they do not
-    prove the vanishing of the five field-theoretic residuals.
+    functional after this comparison data has been supplied.  The
+    Bremsstrahlung function then also depends on the protected circular-loop
+    Ward identity and the chosen defect normalization.
 13. Uhlenbeck strata have codimension
    \(2\ell(N-1)\) in complex dimension, so the familiar real codimension-four
    one-point boundary is the \(N=2,\ell=1\) case rather than a universal
@@ -344,7 +346,9 @@
   dominated finite-\(N\) Laguerre coefficient limit behind the planar
   circular Wilson-loop Bessel series, the exponential-tail truncation
   inequality template needed before the unbounded \(\ee^x\) insertion can be
-  passed through a weak empirical-measure limit, the
+  passed through a weak empirical-measure limit, the Bessel derivative identity
+  for the planar Bremsstrahlung function with a missing-prefactor negative
+  control, the
   \(S^4\) \(H\)-function finite-product logarithmic derivative, the
   finite-part mode determinant ledger behind the \(H\)-powers, finite
   double-sine reflection and chiral pole conventions, \(S^3\) global
@@ -437,10 +441,11 @@
   finite mechanism by deriving the rank-one monomial-ideal character
   `V^* + t1 t2 V - (1-t1)(1-t2) V V^*` and its cancellation to the arm/leg
   formula for \({\rm Hilb}^n(\mathbb C^2)\).
-- 2026-06-03: inserted a protected-insertion proof-obligation ledger after the
+- 2026-06-03: inserted a protected-insertion comparison identity after the
   Pestun formula, making the Wilson-loop matrix-model evaluation depend on a
-  five-residual telescope rather than silently identifying the localized
-  finite-dimensional calculation with the continuum \(S^4\) QFT observable.
+  five-residual QFT-to-localized comparison rather than silently identifying
+  the localized finite-dimensional calculation with the continuum \(S^4\) QFT
+  observable.
 - 2026-06-05: repaired the \(S^3\) localization foundation by replacing the
   scalar-level shorthand for general compact \(G\) with the full globally
   quantized Chern-Simons/contact datum, regulator-level parity-anomaly
@@ -449,7 +454,12 @@
   round-sphere supercharge data, localizing functional, positive-square
   hypothesis, conditional smooth fixed-locus derivation, pole-concentration
   mechanism for instanton sectors, transversally elliptic normal-complex index
-  ledger, and proof-obligation status of the protected-insertion telescope.
+  ledger, and QFT-observable status of the protected-insertion comparison.
+- 2026-06-06: rewrote the protected-insertion comparison in the chapter to
+  remove process-facing terminology from the TeX surface and to state the
+  physical boundary of the Bremsstrahlung result: the Bessel derivative is a
+  radiation/cusp observable only after the localization residuals and the
+  protected circular-loop Ward identity have been supplied.
 - 2026-06-05: added the finite-order Nekrasov--Pestun comparison bound,
   separating the north/south Gieseker coefficients from the \(S^4\) classical
   Gaussian, perturbative determinant, gluing/reflection data, Cartan contour,

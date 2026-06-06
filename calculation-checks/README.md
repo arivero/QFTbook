@@ -2914,8 +2914,9 @@ Current checks:
   telescope for the \(S^4\) localization functional and normalized Wilson
   loop, the dominated finite-\(N\) Laguerre coefficient limit for the planar
   circular Wilson loop, the exponential-tail truncation template needed for
-  the unbounded \(\ee^x\) insertion, the \(S^4\) \(H\)-function
-  finite-product logarithmic derivative, the
+  the unbounded \(\ee^x\) insertion, the Bremsstrahlung Bessel-derivative
+  identity with a missing-prefactor negative control, the \(S^4\)
+  \(H\)-function finite-product logarithmic derivative, the
   finite-part mode-determinant ledger behind the \(H\)-powers, the \(U(1)\)
   \(S^4\) Gaussian matrix integral, finite double-sine reflection and
   pole-convention checks, \(S^3\) global Chern-Simons level-lattice,
