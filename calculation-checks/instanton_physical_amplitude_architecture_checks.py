@@ -14,6 +14,10 @@ Target claims:
 - `prop:two-flavor-source-mass-determinant-coordinate`: the mass-saturated
   activity, mass-assisted source terms, and four-source coefficient are
   distinct coordinates of det(M+B).
+- `ca:instanton-one-loop-density-gate-channel`: the one-loop density power
+  is fixed by the RG cancellation between the determinant logarithm and the
+  running BPST action, while the physical channel power also depends on
+  zero-mode/source data.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell residuals
   and source-determinant perturbations obey the displayed absolute bounds.
 - `prop:su3-nf2-hard-source-power-slow-tail` and
@@ -23,9 +27,10 @@ Target claims:
 
 Independent construction:
 - The checks build small exact rational cell models from scratch.  They compute
-  two-by-two determinants, mass/source polynomials, physical projection bins,
-  residual sums, and hard-window power ledgers directly, rather than importing
-  BPST radial integrals or copying a monograph coefficient.
+  two-by-two determinants, mass/source polynomials, one-loop RG exponents,
+  physical projection bins, residual sums, and hard-window power ledgers
+  directly, rather than importing BPST radial integrals or copying a monograph
+  coefficient.
 
 Imported assumptions:
 - The finite model assumes that the continuum instanton window has already been
@@ -36,10 +41,12 @@ Imported assumptions:
 Negative controls:
 - The script rejects a plus sign in the off-diagonal determinant term, a
   moduli-only prediction that ignores zero-mode rank, a rank-one source matrix
-  treated as a nonzero four-source channel, a single Euclidean cell sum used as
-  a spectral-bin observable, a determinant-only hard-scale ratio, a hard
-  benchmark with a missing hard slot, and a residual bound that omits the
-  external projection/sector remainder.
+  treated as a nonzero four-source channel, a wrong one-loop density power, a
+  density-only hard-channel power, an untransported determinant constant, a
+  single Euclidean cell sum used as a spectral-bin observable, a
+  determinant-only hard-scale ratio, a hard benchmark with a missing hard
+  slot, and a residual bound that omits the external projection/sector
+  remainder.
 
 Scope boundary:
 - Passing these checks proves only finite algebra and channel bookkeeping.  It
@@ -115,6 +122,89 @@ def product(values: list[Fraction]) -> Fraction:
     for value in values:
         result *= value
     return result
+
+
+def beta0(n_colors: int, n_flavors: int) -> Fraction:
+    return Fraction(11, 3) * n_colors - Fraction(2, 3) * n_flavors
+
+
+def check_one_loop_density_gate_rg_and_channel_power() -> None:
+    for n_colors, n_flavors in [(2, 0), (3, 2), (4, 3), (5, 6)]:
+        b0 = beta0(n_colors, n_flavors)
+        correct_density_power = b0
+        wrong_density_power = b0 + Fraction(1)
+
+        rg_derivative = correct_density_power - b0
+        wrong_rg_derivative = wrong_density_power - b0
+        assert_equal(
+            f"SU({n_colors}) Nf={n_flavors} one-loop density RG gate",
+            rg_derivative,
+            Fraction(0),
+        )
+        assert_not_equal(
+            "wrong determinant logarithm power fails the RG gate",
+            wrong_rg_derivative,
+            Fraction(0),
+        )
+
+        density_only_size_power = b0 - 5
+        mass_saturated_power = density_only_size_power + n_flavors
+        assert_equal(
+            "mass-saturated channel adds zero-mode mass powers",
+            mass_saturated_power,
+            b0 + n_flavors - 5,
+        )
+        if n_flavors:
+            assert_not_equal(
+                "mass-saturated channel is not the density-only integrand",
+                mass_saturated_power,
+                density_only_size_power,
+            )
+
+    b0_su3_nf2 = beta0(3, 2)
+    density_only_size_power = b0_su3_nf2 - 5
+    four_source_zero_mode_power = Fraction(6)
+    hard_four_source_power = density_only_size_power + four_source_zero_mode_power
+    assert_equal("SU3 Nf2 density-only rho power", density_only_size_power, Fraction(14, 3))
+    assert_equal("SU3 Nf2 hard four-source channel rho power", hard_four_source_power, Fraction(32, 3))
+    assert_not_equal(
+        "density-only power misses hard four-source zero modes",
+        density_only_size_power,
+        hard_four_source_power,
+    )
+
+    determinant_constant = Fraction(7, 11)
+    transported_gate = Fraction(5, 13)
+    source_window_1 = Fraction(17, 19)
+    source_window_2 = Fraction(23, 29)
+    q_power = -Fraction(35, 3)
+    absolute_prefactor_1 = determinant_constant * transported_gate * source_window_1
+    absolute_prefactor_2 = determinant_constant * transported_gate * source_window_2
+    same_channel_ratio_prefactor = absolute_prefactor_2 / absolute_prefactor_1
+    assert_equal(
+        "same-channel determinant constant cancels in density-gate ratio",
+        same_channel_ratio_prefactor,
+        source_window_2 / source_window_1,
+    )
+    if q_power == 0:
+        raise AssertionError("hard ratio should retain the physical source-scale power")
+
+    untransported_gate = Fraction(3, 17)
+    untransported_ratio_prefactor = (
+        determinant_constant * untransported_gate * source_window_2
+    ) / absolute_prefactor_1
+    assert_not_equal(
+        "changed gate data is not a same-channel determinant cancellation",
+        untransported_ratio_prefactor,
+        source_window_2 / source_window_1,
+    )
+
+    scheme_constant_dropped = transported_gate * source_window_1
+    assert_not_equal(
+        "absolute density coefficient depends on finite determinant convention",
+        scheme_constant_dropped,
+        absolute_prefactor_1,
+    )
 
 
 def check_two_flavor_mass_source_determinant_coordinate() -> None:
@@ -342,6 +432,7 @@ def check_hard_benchmark_gate_ledger_and_ratio() -> None:
 
 
 def main() -> None:
+    check_one_loop_density_gate_rg_and_channel_power()
     check_two_flavor_mass_source_determinant_coordinate()
     check_moduli_equivalent_channel_separation()
     check_projection_not_recoverable_from_one_euclidean_sum()

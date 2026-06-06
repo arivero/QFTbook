@@ -767,6 +767,9 @@ Current checks:
   cone-volume power.
 - `instanton_physical_amplitude_architecture_checks.py`: exact rational
   checks for the dedicated instanton physical-amplitude chapter, including
+  the one-loop density RG gate, the distinction between density-only,
+  mass-saturated, and hard four-source size powers, finite determinant
+  constant cancellation only in transported same-channel ratios,
   the two-flavor \(\det(M+B)\) source/mass polynomial, the distinction between
   mass-saturated vacuum activity and the four-source coefficient,
   moduli-equivalent channels with different or zero amplitudes because of

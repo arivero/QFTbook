@@ -19,6 +19,92 @@ their spectral projections differ.  These are not refinements of moduli-space
 geometry; they are the steps which turn a saddle contribution into a QFT
 amplitude.
 
+\section{The Density Gate: Fluctuations Before Channels}
+\label{sec:instanton-density-gate}
+
+The density in \eqref{eq:one-instanton-universal-density} is already a
+fluctuation calculation.  The BPST collective-coordinate volume form supplies
+one of its factors.  In the half-trace convention of
+Chapter~\ref{ch:volume-ii-20}, its universal one-loop part is
+\begin{equation}
+  \dd\mu_1^{\rm univ}
+  =
+  C_{\mathcal S,N_c,N_f}\,
+  \frac{\dd^4a\,\dd\rho}{\rho^5}\,
+  \dd\Omega_{N_c}\,
+  \left(\frac{8\pi^2}{g_{\rm ht}^2(\mu)}\right)^{2N_c}
+  (\mu\rho)^{b_0}
+  \exp\!\left[-\frac{8\pi^2}{g_{\rm ht}^2(\mu)}+\ii\theta\right]
+  \left(1+O(g_{\rm ht}^2)\right),
+  \label{eq:instanton-physical-density-gate-universal}
+\end{equation}
+with \(b_0\) defined in
+\eqref{eq:instanton-density-beta0-definition}.  The factors have different
+origins.  The \(\dd^4a\,\dd\rho\,\rho^{-5}\dd\Omega_{N_c}\) part is the
+collective-coordinate Jacobian and orientation convention.  The power
+\((8\pi^2/g_{\rm ht}^2)^{2N_c}\) comes from the \(4N_c\) bosonic zero-mode
+normalizations.  The exponential is the classical BPST action.  The factor
+\((\mu\rho)^{b_0}\) is the logarithmic remnant of the zero-mode-deleted
+gauge, ghost, and matter fluctuation determinants after counterterm
+subtraction.  The finite constant \(C_{\mathcal S,N_c,N_f}\) is not fixed by
+dimensional analysis; it is part of the chosen determinant and orientation
+normalization scheme.
+
+\begin{controlledapproximation}[One-loop density gate for a channel]
+\label{ca:instanton-one-loop-density-gate-channel}
+The one-loop scale test which fixes the logarithmic density power is local:
+\[
+  \left(\mu\partial_\mu+\beta(g_{\rm ht})\partial_{g_{\rm ht}}\right)
+  \log\!\left[
+    (\mu\rho)^\alpha
+    \exp\!\left(-\frac{8\pi^2}{g_{\rm ht}^2(\mu)}\right)
+  \right]
+  =
+  \alpha-b_0+O(g_{\rm ht}^2).
+\]
+Thus the density gate passes only for \(\alpha=b_0\).  This test determines
+the logarithmic fluctuation power, not the full physical amplitude.  Once the
+density is inserted into a channel, the retained integrand can be organized in
+the bookkeeping form
+\begin{equation}
+  \dd\mathcal A_{\mathcal C}^{\rm win}
+  =
+  \dd\rho\,
+  \rho^{b_0-5}\,
+  \mathcal W_{\rm fin}^{\rm nz}(\rho,U)\,
+  \mathcal Z_{\mathcal C}^{0}(\rho,U)\,
+  \mathcal M_{\mathcal C}^{\rm src}(\rho,U)\,
+  \mathcal B_{\mathcal C}^{\rho}(\rho)\,
+  \dd^4a\,\dd\Omega_{N_c}
+  \times(\hbox{scheme and action factors}).
+  \label{eq:instanton-density-gate-channel-integrand}
+\end{equation}
+If the zero-mode/source part starts as
+\[
+  \mathcal Z_{\mathcal C}^{0}\mathcal M_{\mathcal C}^{\rm src}
+  =
+  \rho^{\beta_{\mathcal C}}
+  \bigl(Z_{\mathcal C}^{(0)}+O(\rho^\delta)\bigr),
+\]
+then the channel size power is
+\(\rho^{b_0+\beta_{\mathcal C}-5}\dd\rho\).  The number
+\(\beta_{\mathcal C}\) is physical source data.  It changes when masses
+saturate zero modes, when external source derivatives are taken, when
+amputation conventions are changed, or when the observable projection kills a
+zero-mode component.  For the hard \(SU(3)\), \(N_f=2\), four-source channel
+below, \(\beta_{\mathcal C}=6\), so the integrand begins as
+\(\rho^{32/3}\dd\rho\), not as the density-only power
+\(\rho^{14/3}\dd\rho\).
+
+Consequently a same-theory ratio may cancel the finite determinant constant
+and \(\Lambda_{\rm ht}^{b_0}\) only after the source frame, zero-mode
+determinants, orientation projection, endpoint window, and physical
+projection have been transported.  A computation which keeps
+\eqref{eq:instanton-physical-density-gate-universal} but drops
+\(\mathcal Z_{\mathcal C}^{0}\), \(\mathcal M_{\mathcal C}^{\rm src}\), or
+\(\mathcal B_{\mathcal C}^{\rho}\) has not computed the channel amplitude.
+\end{controlledapproximation}
+
 \section{The Channel Is Part of the Calculation}
 \label{sec:instanton-physical-amplitude-channel}
 

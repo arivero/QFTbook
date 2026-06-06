@@ -20,6 +20,14 @@
 
 - `ch:instantons-physical-amplitudes`: dedicated chapter for instantons as
   physical amplitudes.
+- `sec:instanton-density-gate`: one-loop density gate separating the
+  collective-coordinate Jacobian, bosonic zero-mode normalization, running
+  BPST action, zero-mode-deleted fluctuation determinant logarithm, and finite
+  scheme constant before the density is inserted into a physical channel.
+- `ca:instanton-one-loop-density-gate-channel`: checks that the universal
+  density power is fixed by the one-loop RG cancellation, while the channel
+  size power also depends on zero-mode/source data such as mass saturation or
+  hard external source differentiation.
 - `def:instanton-physical-amplitude-channel`: finite-regulator channel datum
   consisting of a retained window, collective density, nonzero-mode determinant,
   zero-mode Berezin coefficient, source/matching map, endpoint factor, and
@@ -56,6 +64,11 @@
   same collective-coordinate measure and nonzero-mode determinant convention
   can give different physical amplitudes once zero-mode source rank and
   projection are changed.
+- The density-gate block prevents the hard benchmark from treating
+  `rho^(b0-5)` as a moduli-space fact.  It records the fluctuation/RG origin
+  of `(mu rho)^b0`, the finite determinant constant, and the added
+  zero-mode/source power `beta_C` that turns a density into a channel
+  integrand.
 - The two-flavor determinant calculation is the local algebra behind the
   distinction between a mass-saturated vacuum activity and a differentiated
   four-source 't Hooft amplitude.
@@ -84,6 +97,8 @@
   carries the companion evidence contract.
 - The check verifies the exact `det(M+B)` polynomial, rejects the wrong
   off-diagonal sign, separates mass-saturated and four-source coordinates,
+  verifies the one-loop density RG gate and the distinction between
+  density-only, mass-saturated, and hard four-source size powers,
   builds moduli-equivalent finite cell channels with different or vanishing
   amplitudes, constructs a same-Euclidean-sum/different-projection ambiguity,
   checks the SU(3), `N_f=2` hard four-source scale and tail powers, validates
@@ -107,3 +122,8 @@
   same-theory ratio bound into the chapter so the reader sees a concrete
   `t Hooft-style amplitude mechanism rather than only the abstract channel
   package.
+- 2026-06-06 one-loop density-gate pass: inserted the determinant/RG
+  checkpoint before the channel definition, so the dedicated chapter now
+  explains why the density contains fluctuation data and why the hard
+  four-source channel still needs zero-mode/source powers, endpoint windows,
+  and scheme transport before the amplitude is defined.
