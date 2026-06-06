@@ -933,6 +933,12 @@ Current checks:
   missing external poles and contact terms are less singular, higher poles
   are outside the declared interface, and finite same-flux coordinate changes
   on each external leg leave the extracted wave-map coefficient invariant.
+  It also checks the flux-sector projection required before dressed LSZ
+  extraction: a pointwise-neutral opposite-charge pair is allowed in the
+  vacuum flux block, a charge-neutral pair with distinct velocities is
+  rejected from the vacuum residue because its angular flux profile is
+  nonzero, and the same finite residue is allowed only as a sector-changing
+  flux matrix element.
   It also verifies the
   finite boundary-charge Ward bookkeeping for dressed correlators: abelian
   signed charges must sum to zero in vacuum matrix elements, and elementary

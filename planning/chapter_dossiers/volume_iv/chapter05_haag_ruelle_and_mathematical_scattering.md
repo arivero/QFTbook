@@ -37,6 +37,8 @@ resonances.
 - `J_{q,u,epsilon}`: regulated asymptotic worldline current for velocity
   `u=p/m`.
 - `E_{q,v}(n)`: boosted Coulomb angular flux density on the celestial sphere.
+- `mathfrak F`, `mathfrak F'`: angular Gauss-law flux characters used to
+  project dressed LSZ residues onto matching charged superselection blocks.
 - `F_{q,v,lambda,Lambda}`: finite-cutoff soft coherent profile determined by
   the charged velocity.
 - `A(v,w)`: positive angular coefficient controlling the infrared logarithm
@@ -113,6 +115,13 @@ resonances.
   be projected to invariant tensors in the boundary representation tensor
   product.  The text separates this exact algebraic constraint from the
   dynamical existence of finite-energy charged asymptotic particles.
+- Adds the flux-sector projection that refines boundary-charge selection
+  before dressed LSZ residues are extracted: the simultaneous external-shell
+  residue is block diagonal in angular Gauss-law flux characters, so a
+  vacuum-to-vacuum residue requires equality of the full angular flux profile
+  rather than only the charge zero mode.  Finite same-flux coordinate changes
+  act inside a single block; matrices mixing different angular flux characters
+  are sector changes, not harmless dressing-coordinate changes.
 - Gives the finite-ray abelian calculation that a Wilson-line dressed charged
   coordinate is the ordinary charged coordinate on the axial gauge slice
   \(u^\mu A_\mu=0\), under explicit endpoint and decay assumptions, and
@@ -361,6 +370,15 @@ resonances.
   Gauss-law flux profile.  The passage prevents a false path-independence
   inference: vanishing total charge is a necessary zero-mode Ward identity,
   not a statement that the charged asymptotic flux sector is trivial.
+- 2026-06-06 #527 flux-sector LSZ projection pass: connected the angular
+  flux distinction back to the dressed-correlator residue algebra.  The new
+  prose block states the flux-character selection rule
+  \(P_{\mathfrak F'}{\rm Res}^{\rm LSZ}_I(G)P_{\mathfrak F}=0\) unless the
+  sector difference equals the full signed angular flux profile of the
+  external list, and records the corresponding block form of the left-inverse
+  overlap maps.  The companion check includes a negative control where a
+  charge-only selector would accept a flux-nonzero neutral pair in the
+  vacuum block.
 - 2026-06-01 #527 continuation: added finite many-body Dollard bookkeeping
   after the one-pair Coulomb-tail calculation.  The new paragraph defines the
   creator/adjoint signs, the pairwise derivative of the comparison phase, the

@@ -991,6 +991,103 @@ def check_dressed_correlator_reduction_interface() -> None:
     )
 
 
+def sampled_signed_flux_profile(entries: tuple[tuple[Fraction, Fraction], ...]) -> tuple[Fraction, ...]:
+    """Sample the signed angular flux profile at three axial test points."""
+
+    samples = (Fraction(-1), Fraction(0), Fraction(1))
+    return tuple(
+        sum(rational_flux_shape_without_four_pi(charge, beta, z) for charge, beta in entries)
+        for z in samples
+    )
+
+
+def sampled_signed_flux_zero_mode(entries: tuple[tuple[Fraction, Fraction], ...]) -> Fraction:
+    return sum(rational_flux_zero_mode_without_two_pi(charge, beta) for charge, beta in entries)
+
+
+def flux_transition_selected(
+    initial_flux: tuple[Fraction, ...],
+    final_flux: tuple[Fraction, ...],
+    operator_flux: tuple[Fraction, ...],
+) -> bool:
+    return tuple(final_flux[i] - initial_flux[i] for i in range(len(initial_flux))) == operator_flux
+
+
+def check_flux_sector_projection_in_dressed_lsz() -> None:
+    """Check that dressed LSZ residues are selected by full angular flux."""
+
+    zero_flux = (Fraction(0), Fraction(0), Fraction(0))
+    same_velocity_pair = ((Fraction(1), Fraction(1, 3)), (Fraction(-1), Fraction(1, 3)))
+    different_velocity_pair = ((Fraction(1), Fraction(1, 3)), (Fraction(-1), Fraction(-1, 3)))
+
+    same_velocity_flux = sampled_signed_flux_profile(same_velocity_pair)
+    different_velocity_flux = sampled_signed_flux_profile(different_velocity_pair)
+
+    assert_equal("same-velocity opposite charges have zero sampled angular flux", same_velocity_flux, zero_flux)
+    assert_equal(
+        "different-velocity opposite charges have zero signed flux zero-mode",
+        sampled_signed_flux_zero_mode(different_velocity_pair),
+        Fraction(0),
+    )
+    assert_equal(
+        "different-velocity opposite charges have nonzero sampled angular flux",
+        different_velocity_flux,
+        (Fraction(-3, 2), Fraction(0), Fraction(3, 2)),
+    )
+
+    z_left = (Fraction(2), Fraction(-1))
+    z_right = (Fraction(3), Fraction(4), Fraction(-2))
+    left_inverse_left = (Fraction(1, 2), Fraction(0))
+    left_inverse_right = (Fraction(0), Fraction(0), Fraction(-1, 2))
+    amplitude = Fraction(13, 5)
+    full_residue = tensor_outer_2(z_left, z_right, amplitude)
+
+    def extracted_residue(
+        initial_flux: tuple[Fraction, ...],
+        final_flux: tuple[Fraction, ...],
+        operator_flux: tuple[Fraction, ...],
+    ) -> Fraction:
+        if not flux_transition_selected(initial_flux, final_flux, operator_flux):
+            return Fraction(0)
+        return sum(
+            left_inverse_left[a] * left_inverse_right[b] * full_residue[a][b]
+            for a in range(len(z_left))
+            for b in range(len(z_right))
+        )
+
+    assert_equal(
+        "flux-selected vacuum LSZ residue keeps a pointwise-neutral pair",
+        extracted_residue(zero_flux, zero_flux, same_velocity_flux),
+        amplitude,
+    )
+    assert_equal(
+        "flux-sector projection rejects a neutral but flux-nonzero vacuum residue",
+        extracted_residue(zero_flux, zero_flux, different_velocity_flux),
+        Fraction(0),
+    )
+    assert_equal(
+        "charge-only selector would overaccept the flux-nonzero neutral pair",
+        sampled_signed_flux_zero_mode(different_velocity_pair) == 0,
+        True,
+    )
+    assert_equal(
+        "same residue is allowed as a sector-changing flux matrix element",
+        extracted_residue(zero_flux, different_velocity_flux, different_velocity_flux),
+        amplitude,
+    )
+
+    coordinate_change = ((Fraction(1), Fraction(1)), (Fraction(0), Fraction(1)))
+    transformed_left_inverse = row_mat(left_inverse_left, inverse_2x2(coordinate_change))
+    transformed_z_left = mat_vec(coordinate_change, z_left)
+    transformed_residue = tensor_outer_2(transformed_z_left, z_right, amplitude)
+    transformed_extracted = sum(
+        transformed_left_inverse[a] * left_inverse_right[b] * transformed_residue[a][b]
+        for a in range(len(transformed_z_left))
+        for b in range(len(z_right))
+    )
+    assert_equal("same-flux block coordinate change preserves the selected residue", transformed_extracted, amplitude)
+
+
 def u1_boundary_phase_exponent(signed_charges: tuple[Fraction, ...]) -> Fraction:
     return sum(signed_charges, Fraction(0))
 
@@ -1092,6 +1189,7 @@ def main() -> None:
     check_hilbert_soft_change_inner_equivalence()
     check_dressed_lsz_residue_coordinates()
     check_dressed_correlator_reduction_interface()
+    check_flux_sector_projection_in_dressed_lsz()
     check_boundary_charge_selection_rules()
     check_compact_wilson_line_path_deformation()
     print("All charged flux, Wilson-line dressing, and dressed LSZ coordinate checks passed.")
