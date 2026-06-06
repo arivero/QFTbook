@@ -16,9 +16,10 @@ neutrality constraints, color-flavor-locked gauge-invariant composite
 charges, rotated electromagnetic mass-matrix bookkeeping, screening and
 collective-mode counts, dense Fermi-surface stress scales,
 color-flavor-locked faithful-global-symmetry and anomaly-matching
-bookkeeping, hydrodynamic response-window bookkeeping, momentum-projected
-baryon diffusion current bookkeeping, and the color-flavor-locked symmetry
-count.  It is not a lattice simulation and it does not assert the
+bookkeeping, hydrodynamic response-window bookkeeping, finite shear
+spectral-window extraction budgets, momentum-projected baryon diffusion
+current bookkeeping, and the color-flavor-locked symmetry count.  It is not a
+lattice simulation and it does not assert the
 existence or order of any QCD phase transition.
 """
 
@@ -897,6 +898,82 @@ def check_hydrodynamic_response_window_bookkeeping():
     )
 
 
+def check_finite_shear_spectral_window_bookkeeping():
+    # A finite-k shear peak gives the diffusion constant through its width
+    # gamma_k=D_eta k^2 and the viscosity through eta=w gamma_k/k^2.
+    enthalpy = Fraction(13, 5)
+    eta = Fraction(5, 7)
+    k_squared = Fraction(3, 11)
+    diffusion = eta / enthalpy
+    gamma = diffusion * k_squared
+    assert_equal("QCD shear spectral peak width", gamma, Fraction(75, 1001))
+    assert_equal("QCD shear width-residue estimator", enthalpy * gamma / k_squared, eta)
+
+    # The peak width alone is the diffusion constant, not the viscosity, unless
+    # the enthalpy normalization has accidentally been set to one.
+    assert_true(
+        "QCD shear width shortcut misses enthalpy residue",
+        gamma / k_squared != eta,
+    )
+
+    # Propagate independent width and residue errors through eta=w gamma/k^2.
+    delta_w = Fraction(1, 101)
+    delta_gamma = gamma / 23
+    estimated_eta = (enthalpy + delta_w) * (gamma + delta_gamma) / k_squared
+    exact_error = estimated_eta - eta
+    residual_budget = (
+        enthalpy * delta_gamma
+        + gamma * delta_w
+        + delta_w * delta_gamma
+    ) / k_squared
+    assert_equal("QCD shear window eta residual budget", exact_error, residual_budget)
+
+    missing_residue_budget = enthalpy * delta_gamma / k_squared
+    assert_true(
+        "QCD shear window must include residue uncertainty",
+        exact_error > missing_residue_budget,
+    )
+
+    # A finite spectral window must be wide compared with the hydrodynamic
+    # width but narrow compared with a microscopic gap.  Regular analytic
+    # spectral backgrounds and near-critical weight are separate errors in the
+    # peak-residue estimate.
+    window = Fraction(2, 5)
+    microscopic_gap = Fraction(7, 3)
+    assert_true("QCD shear window contains hydrodynamic peak", gamma < window)
+    assert_true("QCD shear window lies below microscopic gap", window < microscopic_gap)
+
+    peak_tail_bound = enthalpy * gamma / window
+    regular_background_bound = Fraction(2, 17) * window
+    near_critical_bound = Fraction(1, 211)
+    area_error_budget = (
+        peak_tail_bound
+        + regular_background_bound
+        + near_critical_bound
+    )
+    manufactured_area_error = (
+        peak_tail_bound
+        - regular_background_bound
+        + near_critical_bound
+    )
+    assert_true(
+        "QCD shear finite-window area budget dominates errors",
+        abs(manufactured_area_error) <= area_error_budget,
+    )
+    assert_true(
+        "QCD shear finite-window area needs regular-background budget",
+        abs(manufactured_area_error) > peak_tail_bound - regular_background_bound,
+    )
+
+    # If an additional nonhydrodynamic mode is as narrow as the shear peak, it
+    # cannot be hidden in the analytic background.
+    near_mode_width = gamma / 2
+    assert_true(
+        "QCD near-critical spectral mode must be retained explicitly",
+        near_mode_width < gamma,
+    )
+
+
 def main():
     check_stefan_boltzmann_pressure()
     check_finite_mu_quark_pressure()
@@ -926,6 +1003,7 @@ def main():
     check_cfl_screening_and_collective_counts()
     check_cfl_anomaly_matching_bookkeeping()
     check_hydrodynamic_response_window_bookkeeping()
+    check_finite_shear_spectral_window_bookkeeping()
     print("All QCD phase-structure checks passed.")
 
 

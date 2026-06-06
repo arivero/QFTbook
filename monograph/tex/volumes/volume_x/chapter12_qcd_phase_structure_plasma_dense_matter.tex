@@ -1871,6 +1871,97 @@ define transport coefficients, but they do not by themselves derive
 hydrodynamics from QCD.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Finite shear spectral window]
+\label{ca:qcd-finite-shear-spectral-window}
+The response-window statement can be tested more directly in a finite
+frequency interval.  Let
+\(\pi_x=T^{0x}\) be a transverse momentum density and take momentum
+\(\mathbf k=k\hat y\).  If the shear pole is isolated in the QCD retarded
+kernel, the positive-frequency spectral density has the hydrodynamic peak
+\begin{equation}
+  \rho^{\rm hyd}_{\pi_x\pi_x}(\omega,k)
+  =
+  \frac{2w\,\gamma_k\,\omega}{\omega^2+\gamma_k^2},
+  \qquad
+  \gamma_k=D_\eta k^2=\frac{\eta}{w}k^2,
+  \label{eq:qcd-shear-hydro-spectral-peak}
+\end{equation}
+up to the contact subtraction and the same frame choice used in
+\eqref{eq:qcd-hydro-response-comparison}.  A finite spectral extraction is
+therefore not the statement ``read off \(\eta\) from a plotted peak.''  It
+requires scales
+\begin{equation}
+  \gamma_k\ll\Omega\ll \tau_{\rm micro}^{-1},
+  \label{eq:qcd-shear-spectral-window-scale-separation}
+\end{equation}
+a subtracted spectral density \(\rho^{\rm sub}\), and a bound
+\begin{equation}
+  \rho^{\rm sub}_{\pi_x\pi_x}(\omega,k)
+  =
+  \rho^{\rm hyd}_{\pi_x\pi_x}(\omega,k)
+  +
+  \rho^{\rm reg}_{\pi_x\pi_x}(\omega,k)
+  +
+  \rho^{\rm near}_{\pi_x\pi_x}(\omega,k)
+  +
+  R_{\Omega,k}(\omega).
+  \label{eq:qcd-shear-spectral-window-decomposition}
+\end{equation}
+Here \(\rho^{\rm reg}\) is the analytic low-frequency background from gapped
+nonhydrodynamic QCD excitations, \(\rho^{\rm near}\) is any additional
+near-critical or long-time-tail contribution that is singular in the same
+window, and \(R_{\Omega,k}\) is the finite-regulator and continuum-window
+remainder.  The peak residue is checked by
+\begin{equation}
+  \mathcal A_\Omega(k)
+  =
+  \frac1\pi\int_0^\Omega
+  \frac{\rho^{\rm sub}_{\pi_x\pi_x}(\omega,k)}{\omega}\,d\omega
+  =
+  \frac{2w}{\pi}\arctan\!\left(\frac{\Omega}{\gamma_k}\right)
+  +
+  R_A(\Omega,k),
+  \label{eq:qcd-shear-spectral-window-area}
+\end{equation}
+so that
+\begin{equation}
+  \left|\mathcal A_\Omega(k)-w\right|
+  \le
+  \frac{2w}{\pi}\frac{\gamma_k}{\Omega}
+  +
+  \frac1\pi\int_0^\Omega
+  \frac{|\rho^{\rm reg}|+|\rho^{\rm near}|+|R_{\Omega,k}|}{\omega}\,d\omega .
+  \label{eq:qcd-shear-window-residue-bound}
+\end{equation}
+If the width \(\widehat\gamma_k\) and residue \(\widehat w\) have been
+isolated with errors \(\delta\gamma_k\) and \(\delta w\), the corresponding
+transport estimate obeys
+\begin{equation}
+  \left|
+  \frac{\widehat w\,\widehat\gamma_k}{k^2}-\eta
+  \right|
+  \le
+  \frac{
+    w|\delta\gamma_k|
+    +
+    \gamma_k|\delta w|
+    +
+    |\delta w|\,|\delta\gamma_k|
+  }{k^2}
+  +
+  R_{\rm model}.
+  \label{eq:qcd-shear-window-eta-error-budget}
+\end{equation}
+This is the finite-window content behind a QCD shear-viscosity extraction.  The
+Kubo slope at \(k=0\), the finite-\(k\) hydrodynamic peak width, the enthalpy
+residue \(w=\epsilon+p\), the entropy density \(s=\partial_Tp\), and any
+kinetic or holographic relaxation scale are different pieces of data.  A
+comparison such as \(\eta/s\) is meaningful only after these data have been
+defined in the same QCD phase specification and after the regular background,
+near-critical modes, long-time tails, Euclidean reconstruction prior, and
+continuum/finite-volume errors have been included in the window budget.
+\end{controlledapproximation}
+
 \begin{proposition}[Momentum-projected baryon diffusion current]
 \label{prop:qcd-incoherent-baryon-current}
 In a translationally invariant QCD phase at nonzero baryon density, the raw

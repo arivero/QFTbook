@@ -313,9 +313,11 @@ Current checks:
   electromagnetic mass-matrix bookkeeping, CFL screening-sector and
   collective-mode counts, dense Fermi-surface stress scales, lifted local CFL
   anomaly-matching coefficients, hydrodynamic response-window bookkeeping for
-  QCD shear, scalar and coupled diffusion, sound matching, and the
-  momentum-projected baryon current which removes the convective Drude sector
-  at finite density, and the CFL Goldstone count.
+  QCD shear, scalar and coupled diffusion, sound matching, the finite shear
+  spectral-window width/residue estimator with regular-background and
+  near-critical-mode negative controls, and the momentum-projected baryon
+  current which removes the convective Drude sector at finite density, and the
+  CFL Goldstone count.
 - `nonrelativistic_ng_counting_checks.py`: exact finite checks for the
   non-Lorentz Nambu--Goldstone counting section, including antisymmetric
   commutator-density ranks, the Watanabe--Brauner/Watanabe--Murayama

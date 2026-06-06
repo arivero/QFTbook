@@ -99,6 +99,11 @@ GitHub issue #628.
   current, shear diffusion constant, projected baryon diffusion eigenvalue,
   and sound attenuation coefficient used in the microscopic response-window
   comparison.
+- `pi_x`, `gamma_k`, `Omega`, `tau_micro`, `A_Omega(k)`: transverse momentum
+  density, finite-momentum shear-pole width, finite spectral-window cutoff,
+  microscopic relaxation scale, and peak-area estimator used to test whether a
+  QCD shear spectral function actually isolates the hydrodynamic transport
+  datum.
 
 ## Claim Ledger
 
@@ -188,6 +193,11 @@ GitHub issue #628.
   the finite-density momentum projection
   `J_inc^i=J_B^i-(n_B/w)T^{0i}` needed to remove the convective Drude sector
   before identifying the intrinsic baryon-diffusion conductivity.
+- Adds a finite shear spectral-window gate: the isolated hydrodynamic momentum
+  peak has width `gamma_k=D_eta k^2` and residue `w`, the finite-window area
+  misses the static residue by a controlled `gamma_k/Omega` tail plus regular,
+  near-critical, and continuum-window errors, and the viscosity estimator
+  `w gamma_k/k^2` must propagate both width and residue uncertainties.
 - Proves the origin of the finite-density sign problem from loss of
   \(\gamma_5\)-Hermiticity at real chemical potential.
 - Defines imaginary chemical potential as a thermal boundary-condition
@@ -298,8 +308,9 @@ GitHub issue #628.
   collective-mode count bookkeeping, dense
   Fermi-surface stress bookkeeping, lifted local CFL anomaly-matching
   coefficient bookkeeping, QCD hydrodynamic response-window,
-  coupled-diffusion, and momentum-projected baryon-current bookkeeping, and
-  CFL Goldstone count.
+  coupled-diffusion, finite shear spectral-window width/residue and
+  background-error bookkeeping, momentum-projected baryon-current bookkeeping,
+  and CFL Goldstone count.
 
 ## Open Issues
 
@@ -351,6 +362,16 @@ GitHub issue #628.
   decoupled baryon channel, and aligns the displayed shear Kubo example with
   the chapter's
   \(\rho=-2\operatorname{Im}G^R\) convention by using \(1/(2\omega)\).
+- 2026-06-06 issue #630 finite shear spectral-window pass: added
+  `ca:qcd-finite-shear-spectral-window` after the hydrodynamic response-window
+  datum.  The pass writes the finite-\(k\) transverse-momentum Lorentzian peak,
+  separates the Kubo slope from the peak width and enthalpy residue, gives the
+  finite-window area bound with regular-background, near-critical, long-time
+  tail, and continuum-window errors, and propagates residue/width errors into
+  the viscosity estimator.  `qcd_phase_checks.py` now verifies the exact
+  width-residue identity, rejects the width-only shortcut, checks the residual
+  budget, and records negative controls for missing residue uncertainty and
+  hidden near-critical spectral weight.
 - 2026-05-27 Roberge--Weiss pass: added the finite-regulator imaginary
   chemical-potential theorem, positivity statement for vectorlike pairs,
   Roberge--Weiss transition status remark, and exact angle-periodicity
