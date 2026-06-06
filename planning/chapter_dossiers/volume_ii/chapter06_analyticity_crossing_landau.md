@@ -277,8 +277,12 @@
 - The master-discontinuity closure block is a physical channel comparison after
   coefficient extraction and master transport.  It assumes the same sheet,
   regulator, state sum, and subtraction convention on both sides of the
-  comparison; it does not let algebraic contour values, Euclidean master values,
-  or local finite terms replace the Cutkosky boundary-value jump.
+  comparison.  In the scalar bubble normalization check, the physical datum is
+  computed from the unordered two-particle state sum and the four-dimensional
+  phase-space factor before being compared with the transported bubble-master
+  jump; it does not let algebraic contour values, Euclidean master values,
+  self-defined physical data, or local finite terms replace the Cutkosky
+  boundary-value jump.
 - The two-letter master-transport model is a finite normalized sector used to
   audit the data needed after IBP closure.  It checks boundary constants,
   noncommuting residues, branch/path prescriptions, and lower-sector residuals;
@@ -955,6 +959,14 @@
   closure and rejects raw-contour values, Euclidean master values, wrong sheet,
   omitted lower sectors, and untransported subtraction branches as physical
   discontinuity shortcuts.
+- 2026-06-06 issue #725/#769 independence repair: upgraded the
+  master-discontinuity closure example and companion check so the scalar
+  bubble physical Cutkosky datum is computed independently from the
+  \(1/2!\) state-sum factor, \(\mathcal M_4^{(0)}=-\lambda\), and
+  \(\int d\Phi_2=1/(8\pi)\), then compared with
+  \(c_s\operatorname{Disc}\widehat B=(\lambda^2/2)i/(8\pi)\).  The companion
+  now rejects a deliberately wrong master jump that would pass only if the
+  physical datum were defined from the reconstructed value itself.
 - 2026-06-06 issue #769 two-loop IR-pole consistency pass: added
   `ca:two-loop-ir-pole-consistency-gate` after the one-loop
   virtual-to-observable assembly block.  The new test records the recursive

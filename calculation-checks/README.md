@@ -3029,8 +3029,9 @@ Current checks:
   lower-sector masters before IBP and rejecting same-maximal-cut but
   different-lower-sector representatives, the dual-contour master-coefficient
   extraction gate with non-dual, contact-omission, and surface-pollution
-  negative controls, the master-discontinuity closure gate comparing
-  transported master jumps with physical Cutkosky channel data and rejecting
+  negative controls, the master-discontinuity closure gate comparing an
+  independently computed scalar-bubble state-sum/phase-space Cutkosky datum
+  with transported master jumps and rejecting self-defined physical data,
   raw-contour, Euclidean-value, wrong-sheet, omitted-lower-sector, and
   subtraction-branch shortcuts, the two-master
   threshold-mixing/monodromy and regular-boundary negative controls, the

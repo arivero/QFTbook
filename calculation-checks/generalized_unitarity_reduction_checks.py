@@ -21,7 +21,8 @@ finite triple-cut triangle projection after known box residues have been
 subtracted, a finite two-master threshold-mixing model, a two-letter
 master-transport model with boundary and branch negative controls, a physical
 master-discontinuity closure gate comparing transported master jumps with
-Cutkosky channel data, the finite
+Cutkosky channel data, including a separate two-particle phase-space
+state-sum computation for the scalar bubble, the finite
 Laurent-pole bookkeeping that turns a reconstructed virtual amplitude into a finite
 observable only after infrared subtraction, real radiation, scheme transport,
 and the unresolved measurement cell have been assembled, and the two-loop
@@ -73,9 +74,9 @@ exact rational projection of parent-topology contact terms into lower sectors
 after propagator cancellation and before IBP master projection;
 exact finite inversion of a contour/master pairing matrix, with surface and
 lower-sector pollution subtracted before coefficient extraction;
-exact finite matching of a physical Cutkosky channel datum against extracted
-coefficients times transported master discontinuities, plus lower-sector and
-subtraction jumps;
+exact finite matching of a physical Cutkosky channel datum computed from the
+state sum and phase-space normalization against extracted coefficients times
+transported master discontinuities, plus lower-sector and subtraction jumps;
 spinor-bracket exponent ledgers for little-group weights and dimensions; and
 a finite four-gluon helicity enumeration for all-plus two-particle cuts;
 finite topology-signature checks for maximal versus two-particle cuts in the
@@ -133,6 +134,8 @@ parent-cut-only sector projection when lower sectors are not scaleless,
 non-dual or surface-polluted contour coefficient extraction,
 raw-contour, Euclidean-value, wrong-sheet, and omitted-lower-sector shortcuts
 in physical master-discontinuity closure,
+and rejects defining the physical cut by the reconstructed discontinuity
+instead of by the state sum,
 homogeneous one-master shortcuts for the equal-mass bubble threshold family,
 Euclidean branch reuse above the massive two-particle threshold,
 logarithmic one-master shortcuts for the sunrise elliptic maximal cut,
@@ -392,6 +395,19 @@ def channel_cuts(coefficients: dict[str, Fraction]) -> tuple[Fraction, Fraction,
     return tuple(cuts)
 
 
+def massless_two_body_phase_space_times_pi() -> Fraction:
+    """Return pi * integral dPhi_2 for two ordered massless particles in D=4."""
+
+    # In the center-of-mass frame,
+    #   dPhi_2 = (2pi)^4/(2pi)^6 * int d^3k/(4|k|^2)
+    #            delta(sqrt{s} - 2|k|)
+    #          = 1/(4pi^2) * pi * 1/2 = 1/(8pi).
+    # Multiplying by pi leaves the exact rational coefficient used below.
+    prefactor_after_angular_integration = Fraction(1, 4)
+    energy_delta_jacobian = Fraction(1, 2)
+    return prefactor_after_angular_integration * energy_delta_jacobian
+
+
 def check_phi4_cut_reconstruction() -> None:
     lam = Fraction(5, 3)
     tree = -lam
@@ -400,6 +416,11 @@ def check_phi4_cut_reconstruction() -> None:
     # Strip the common i/(8 pi) factor from the massless two-body phase-space
     # discontinuity.  The cut-normalized bubble has unit signature in these
     # units, so the coefficient is read directly.
+    assert_equal(
+        "massless two-body phase-space normalization",
+        massless_two_body_phase_space_times_pi(),
+        Fraction(1, 8),
+    )
     expected_channel_cut = identical_state_factor * tree * tree
     expected_coeff = lam * lam / 2
     assert_equal("identical-state cut coefficient", expected_channel_cut, expected_coeff)
@@ -1889,19 +1910,73 @@ def check_dual_contour_master_coefficient_extraction() -> None:
 
 
 def check_master_discontinuity_closure_gate() -> None:
-    coefficients = [Fraction(7, 11), -Fraction(5, 13)]
-    master_discontinuity = [Fraction(3, 17), Fraction(4, 19)]
+    lam = Fraction(7, 5)
+    tree_amplitude = -lam
+    identical_state_factor = Fraction(1, 2)
+    phase_space = massless_two_body_phase_space_times_pi()
+
+    # Physical side: compute the s-channel Cutkosky datum from the unordered
+    # identical-particle state sum.  A common factor i/pi is stripped.
+    scalar_physical_cut_datum = (
+        identical_state_factor
+        * tree_amplitude
+        * tree_amplitude
+        * phase_space
+    )
+
+    # Master side: transport the cut-normalized bubble to the physical sheet,
+    # then multiply by the independently reconstructed bubble coefficient.
+    bubble_coefficient = lam * lam / 2
+    bubble_master_discontinuity = phase_space
+    scalar_reconstructed_discontinuity = bubble_coefficient * bubble_master_discontinuity
+    assert_equal(
+        "physical state-sum cut equals transported bubble-master jump",
+        scalar_reconstructed_discontinuity,
+        scalar_physical_cut_datum,
+    )
+
+    ordered_state_sum = tree_amplitude * tree_amplitude * phase_space
+    assert_true(
+        "ordered state sum misses identical-particle symmetry factor",
+        ordered_state_sum != scalar_physical_cut_datum,
+    )
+
+    wrong_bubble_jump = phase_space / 2
+    wrong_reconstruction = bubble_coefficient * wrong_bubble_jump
+    wrong_self_defined_physical_cut = wrong_reconstruction
+    assert_equal(
+        "self-defined physical cut would hide wrong master jump",
+        wrong_reconstruction,
+        wrong_self_defined_physical_cut,
+    )
+    assert_true(
+        "independent state-sum datum rejects wrong master jump",
+        wrong_self_defined_physical_cut != scalar_physical_cut_datum,
+    )
+
+    local_uv_counterterm_discontinuity = Fraction(0)
+    assert_equal(
+        "local UV counterterm contributes no channel discontinuity",
+        scalar_physical_cut_datum + local_uv_counterterm_discontinuity,
+        scalar_physical_cut_datum,
+    )
+
+    coefficients = [bubble_coefficient, Fraction(3, 17)]
+    master_discontinuity = [bubble_master_discontinuity, Fraction(0)]
     lower_sector_discontinuity = -Fraction(2, 23)
     subtraction_discontinuity = Fraction(1, 29)
-
+    physical_cut_datum = (
+        scalar_physical_cut_datum
+        + lower_sector_discontinuity
+        + subtraction_discontinuity
+    )
     reconstructed_discontinuity = (
         dot(coefficients, master_discontinuity)
         + lower_sector_discontinuity
         + subtraction_discontinuity
     )
-    physical_cut_datum = reconstructed_discontinuity
     assert_equal(
-        "physical Cutkosky channel closure after master transport",
+        "full channel closure includes lower sector and subtraction jumps",
         reconstructed_discontinuity,
         physical_cut_datum,
     )
@@ -1956,13 +2031,6 @@ def check_master_discontinuity_closure_gate() -> None:
     assert_true(
         "subtraction branch must be transported with the amplitude",
         untransported_subtraction != physical_cut_datum,
-    )
-
-    local_uv_counterterm_discontinuity = Fraction(0)
-    assert_equal(
-        "local UV counterterm contributes no channel discontinuity",
-        physical_cut_datum + local_uv_counterterm_discontinuity,
-        physical_cut_datum,
     )
 
     coefficient_errors = [Fraction(1, 101), Fraction(1, 103)]
