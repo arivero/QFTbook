@@ -1164,6 +1164,112 @@ unscreened theory and need not be represented by any finite invertible matrix
 on a common Hilbert-space shell.  The soft-sector calculations below make this
 failure explicit.
 
+\subsection{Endpoint Renormalization and Dressed External Residues}
+
+The overlap matrix \(z_a{}^\lambda(p)\) is not the residue of a bare local
+field.  It is the residue of a renormalized nonlocal charged coordinate.  For
+a Wilson-line or Coulombic coordinate, the renormalization includes the local
+charged field, the charged endpoint of the dressing, any line self-energy
+subtractions belonging to the chosen regulator, and cusp or corner
+renormalizations whenever the dressing geometry has a nonsmooth join.  These
+factors are part of the external coordinate used by dressed LSZ.
+
+Fix one charged shell and one asymptotic flux block.  Suppose that the same
+finite family of renormalized dressed coordinates is described at two
+renormalization scales by an invertible matrix
+\[
+  R_{\mu'\mu}(p,\Gamma):
+  \qquad
+  \Psi_{\alpha}^{(\mu')}
+  =
+  \sum_a
+  R_{\mu'\mu,\alpha}{}^{a}(p,\Gamma)\Psi_a^{(\mu)} .
+\]
+Then the one-particle overlaps and pole Gram matrix transform as
+\begin{equation}
+  z^{(\mu')}=R_{\mu'\mu}z^{(\mu)},
+  \qquad
+  Z^{(\mu')}=R_{\mu'\mu}Z^{(\mu)}R_{\mu'\mu}^{\dagger},
+  \qquad
+  L^{(\mu')}=L^{(\mu)}R_{\mu'\mu}^{-1}.
+  \label{eq:dressed-lsz-finite-renormalization-coordinate}
+\end{equation}
+For an \(n\)-leg dressed correlator residue tensor this means
+\begin{equation}
+  \mathcal H_{a_1\cdots a_n}^{(\mu')}
+  =
+  (R_{1,\mu'\mu})_{a_1}{}^{b_1}\cdots
+  (R_{n,\mu'\mu})_{a_n}{}^{b_n}
+  \mathcal H_{b_1\cdots b_n}^{(\mu)} ,
+  \label{eq:dressed-lsz-renormalized-residue-tensor}
+\end{equation}
+with one finite renormalization matrix for each external dressed coordinate.
+Combining \eqref{eq:dressed-lsz-finite-renormalization-coordinate} and
+\eqref{eq:dressed-lsz-renormalized-residue-tensor} gives
+\[
+  L_1^{(\mu')}\cdots L_n^{(\mu')}
+  \mathcal H^{(\mu')}
+  =
+  L_1^{(\mu)}\cdots L_n^{(\mu)}
+  \mathcal H^{(\mu)} .
+\]
+Thus the normalized external charged coefficient is independent of the
+chosen finite endpoint/cusp renormalization only after the left inverses are
+renormalized with the same nonlocal operator data as the residue tensor.
+
+In differential form, let
+\[
+  \Gamma_{\ell}^{\Psi}
+  =
+  \mu\frac{\dd R_{\ell,\mu\mu_0}}{\dd\mu}R_{\ell,\mu\mu_0}^{-1}
+\]
+be the anomalous-dimension matrix of the \(\ell\)-th dressed external
+coordinate within the fixed flux block.  It contains the matter-field
+contribution, endpoint and cusp contributions of the Wilson-line dressing,
+and possible finite-dimensional mixing among dressed coordinates with the
+same charge, spin, mass, and asymptotic flux.  The residue data obey the
+coordinate equations
+\begin{equation}
+  \mu\frac{\dd z_\ell}{\dd\mu}=\Gamma_\ell^\Psi z_\ell,
+  \qquad
+  \mu\frac{\dd L_\ell}{\dd\mu}=-L_\ell\Gamma_\ell^\Psi,
+  \label{eq:dressed-lsz-overlap-left-inverse-rg}
+\end{equation}
+and
+\begin{equation}
+  \mu\frac{\dd}{\dd\mu}
+  \mathcal H_{a_1\cdots a_n}
+  =
+  \sum_{\ell=1}^{n}
+  (\Gamma_\ell^\Psi)_{a_\ell}{}^{b}
+  \mathcal H_{a_1\cdots a_{\ell-1}b a_{\ell+1}\cdots a_n}.
+  \label{eq:dressed-lsz-residue-tensor-rg}
+\end{equation}
+Equations
+\eqref{eq:dressed-lsz-overlap-left-inverse-rg}--\eqref{eq:dressed-lsz-residue-tensor-rg}
+imply
+\[
+  \mu\frac{\dd}{\dd\mu}
+  \left(
+    L_1\cdots L_n\mathcal H
+  \right)
+  =0 .
+\]
+This is the precise residue-level meaning of the statement that
+\(Z_{\rm dressed}\) is different from the local matter-field \(Z_\psi\).
+Using \(Z_\psi\) alone while changing the endpoint or cusp renormalization of
+the Wilson-line coordinate leaves an uncanceled external factor.  That error
+is not repaired by an inclusive photon sum or by a detector projection; it is
+a mismatch in the charged operator whose residue is being extracted.
+
+The same equations also delimit what is and is not a path-independence
+statement.  A compact same-flux deformation of the dressing may change the
+renormalized coordinates by a finite matrix of the form above, and then it is
+absorbed by the left inverses.  A change of asymptotic ray, Coulomb tail, or
+angular flux sector is not a finite \(R_{\mu'\mu}\) inside one block.  It
+changes the asymptotic representation data and has to be compared by the
+flux-sector and soft-representation analysis below.
+
 \subsection{Wilson-Line Covariance and Boundary Charge}
 
 The sign and orientation in

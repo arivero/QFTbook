@@ -39,6 +39,9 @@ resonances.
 - `E_{q,v}(n)`: boosted Coulomb angular flux density on the celestial sphere.
 - `mathfrak F`, `mathfrak F'`: angular Gauss-law flux characters used to
   project dressed LSZ residues onto matching charged superselection blocks.
+- `R_{mu'mu}`, `Gamma_Psi`: finite endpoint/cusp renormalization matrix and
+  anomalous-dimension matrix for a renormalized dressed external coordinate
+  inside one fixed charged shell and flux block.
 - `F_{q,v,lambda,Lambda}`: finite-cutoff soft coherent profile determined by
   the charged velocity.
 - `A(v,w)`: positive angular coefficient controlling the infrared logarithm
@@ -114,6 +117,13 @@ resonances.
   dressing-coordinate changes preserve the extracted residue.  The text
   explicitly separates this coordinate statement from changes of asymptotic
   Gauss-law flux.
+- Adds the endpoint/cusp renormalization ledger for dressed external
+  residues: \(z\), \(Z\), \(L\), and multi-leg residue tensors transform by
+  the same finite renormalization matrices attached to the nonlocal charged
+  operator, the differential anomalous-dimension equations cancel after
+  left-inverse extraction, and using only the local matter-field
+  normalization is identified as an external-residue error rather than an
+  infrared or detector effect.
 - Derives the abelian Wilson-line boundary-charge transformation and the
   nonabelian parallel-transporter transformation law.
 - Adds the boundary-charge Ward selection rule for dressed correlators:
@@ -264,6 +274,11 @@ resonances.
   strong-continuity behavior on coherent vectors, as well as the
   finite-dimensional left-inverse algebra for dressed charged LSZ residues
   and its invariance under finite dressing-coordinate changes.  It now also
+  checks endpoint/cusp renormalization of dressed external residues: finite
+  renormalization matrices preserve one-leg and two-leg extracted
+  coefficients when the left inverses transform with the residue tensors, the
+  infinitesimal RG derivative cancels exactly after extraction, and a
+  matter-field-only normalization fails as a negative control.  It now also
   checks the boundary-charge selection rule for abelian dressed correlators
   and elementary \(SU(2)\) endpoint singlet channels.  It now also verifies
   that boundary-charge neutrality is weaker than flux-sector triviality:
@@ -409,6 +424,15 @@ resonances.
   sectors contribute as orthogonal alternatives rather than coherently summed
   amplitudes.  The companion check verifies the finite coherent and
   coefficientwise identities.
+- 2026-06-06 #527 endpoint/cusp residue-renormalization pass: inserted a
+  residue-level RG bridge after the dressed-residue coordinate algebra.  The
+  new subsection makes \(Z_{\rm dressed}\) concrete as the renormalization of
+  the nonlocal charged coordinate, including endpoint and cusp factors, and
+  shows that only the matched transformation of \(z\), \(Z\), \(L\), and the
+  external residue tensor leaves the physical charged coefficient invariant.
+  The companion check includes a matter-field-only normalization negative
+  control, keeping the pass on external-state physics rather than abstract
+  charged-coordinate bookkeeping.
 - 2026-06-01 #527 continuation: added finite many-body Dollard bookkeeping
   after the one-pair Coulomb-tail calculation.  The new paragraph defines the
   creator/adjoint signs, the pairwise derivative of the comparison phase, the

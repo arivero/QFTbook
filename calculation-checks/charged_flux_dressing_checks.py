@@ -53,6 +53,10 @@ def inverse_2x2(matrix: tuple[tuple[Fraction, Fraction], tuple[Fraction, Fractio
     return ((d / determinant, -b / determinant), (-c / determinant, a / determinant))
 
 
+def diag_matrix(entries: tuple[Fraction, ...]) -> tuple[tuple[Fraction, ...], ...]:
+    return tuple(tuple(entries[i] if i == j else Fraction(0) for j in range(len(entries))) for i in range(len(entries)))
+
+
 def dot_mostly_plus(a: tuple[float, float, float, float], b: tuple[float, float, float, float]) -> float:
     return -a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3]
 
@@ -977,6 +981,131 @@ def check_dressed_lsz_residue_coordinates() -> None:
     )
 
 
+def extract_two_leg_residue(
+    left_inverse: tuple[Fraction, ...],
+    residue: tuple[tuple[Fraction, ...], ...],
+    right_inverse: tuple[Fraction, ...],
+) -> Fraction:
+    return sum(
+        left_inverse[i] * right_inverse[j] * residue[i][j]
+        for i in range(len(left_inverse))
+        for j in range(len(right_inverse))
+    )
+
+
+def check_endpoint_cusp_renormalized_residue_flow() -> None:
+    """Check finite endpoint/cusp renormalization in dressed LSZ residues."""
+
+    z_left = (Fraction(2), Fraction(3))
+    left_inverse_left = (Fraction(1, 5), Fraction(1, 5))
+    amplitude = Fraction(17, 11)
+    assert_equal(
+        "left inverse normalizes the original dressed overlap",
+        sum(left_inverse_left[a] * z_left[a] for a in range(2)),
+        Fraction(1),
+    )
+
+    endpoint_cusp_flow_left = diag_matrix((Fraction(5, 3), Fraction(7, 4)))
+    endpoint_cusp_flow_left_inverse = diag_matrix((Fraction(3, 5), Fraction(4, 7)))
+    renormalized_z_left = mat_vec(endpoint_cusp_flow_left, z_left)
+    renormalized_left_inverse_left = row_mat(left_inverse_left, endpoint_cusp_flow_left_inverse)
+    one_leg_residue = tuple(amplitude * z for z in z_left)
+    renormalized_one_leg_residue = mat_vec(endpoint_cusp_flow_left, one_leg_residue)
+
+    assert_equal(
+        "endpoint/cusp-renormalized left inverse normalizes the overlap",
+        sum(renormalized_left_inverse_left[a] * renormalized_z_left[a] for a in range(2)),
+        Fraction(1),
+    )
+    assert_equal(
+        "endpoint/cusp finite renormalization preserves extracted one-leg amplitude",
+        sum(renormalized_left_inverse_left[a] * renormalized_one_leg_residue[a] for a in range(2)),
+        amplitude,
+    )
+    assert_equal(
+        "renormalized pole Gram matrix is R Z R^T",
+        mat_mul(
+            mat_mul(endpoint_cusp_flow_left, outer(z_left, z_left)),
+            transpose(endpoint_cusp_flow_left),
+        ),
+        outer(renormalized_z_left, renormalized_z_left),
+    )
+
+    matter_only_inverse = diag_matrix((Fraction(3, 5), Fraction(3, 5)))
+    matter_only_left_inverse = row_mat(left_inverse_left, matter_only_inverse)
+    assert_equal(
+        "matter-only normalization does not normalize endpoint/cusp overlap",
+        sum(matter_only_left_inverse[a] * renormalized_z_left[a] for a in range(2)),
+        Fraction(103, 100),
+    )
+    assert_equal(
+        "matter-only normalization gives the wrong dressed amplitude",
+        sum(matter_only_left_inverse[a] * renormalized_one_leg_residue[a] for a in range(2)) == amplitude,
+        False,
+    )
+
+    coordinate_change = ((Fraction(1), Fraction(1)), (Fraction(0), Fraction(1)))
+    combined_change = mat_mul(coordinate_change, endpoint_cusp_flow_left)
+    combined_change_inverse = mat_mul(endpoint_cusp_flow_left_inverse, inverse_2x2(coordinate_change))
+    changed_z = mat_vec(combined_change, z_left)
+    changed_left_inverse = row_mat(left_inverse_left, combined_change_inverse)
+    changed_residue = mat_vec(combined_change, one_leg_residue)
+    assert_equal(
+        "finite coordinate change after endpoint/cusp flow preserves extraction",
+        sum(changed_left_inverse[a] * changed_residue[a] for a in range(2)),
+        amplitude,
+    )
+    assert_equal(
+        "combined finite change normalizes the changed overlap",
+        sum(changed_left_inverse[a] * changed_z[a] for a in range(2)),
+        Fraction(1),
+    )
+
+    z_right = (Fraction(1), Fraction(-2), Fraction(4))
+    left_inverse_right = (Fraction(1), Fraction(0), Fraction(0))
+    assert_equal(
+        "right inverse normalizes the original dressed overlap",
+        sum(left_inverse_right[a] * z_right[a] for a in range(3)),
+        Fraction(1),
+    )
+    endpoint_cusp_flow_right = diag_matrix((Fraction(4, 5), Fraction(9, 7), Fraction(5, 2)))
+    endpoint_cusp_flow_right_inverse = diag_matrix((Fraction(5, 4), Fraction(7, 9), Fraction(2, 5)))
+    residue_tensor = tensor_outer_2(z_left, z_right, amplitude)
+    renormalized_residue_tensor = mat_mul(
+        mat_mul(endpoint_cusp_flow_left, residue_tensor),
+        transpose(endpoint_cusp_flow_right),
+    )
+    renormalized_left_inverse_right = row_mat(left_inverse_right, endpoint_cusp_flow_right_inverse)
+    assert_equal(
+        "multi-leg endpoint/cusp residue flow preserves extracted coefficient",
+        extract_two_leg_residue(
+            renormalized_left_inverse_left,
+            renormalized_residue_tensor,
+            renormalized_left_inverse_right,
+        ),
+        amplitude,
+    )
+
+    gamma_left = diag_matrix((Fraction(1, 3), Fraction(-2, 5)))
+    gamma_right = diag_matrix((Fraction(2, 7), Fraction(-1, 11), Fraction(3, 13)))
+    d_left_inverse = tuple(-entry for entry in row_mat(left_inverse_left, gamma_left))
+    d_right_inverse = tuple(-entry for entry in row_mat(left_inverse_right, gamma_right))
+    d_residue_tensor = tuple(
+        tuple(
+            mat_mul(gamma_left, residue_tensor)[i][j]
+            + mat_mul(residue_tensor, transpose(gamma_right))[i][j]
+            for j in range(len(z_right))
+        )
+        for i in range(len(z_left))
+    )
+    rg_derivative = (
+        extract_two_leg_residue(d_left_inverse, residue_tensor, left_inverse_right)
+        + extract_two_leg_residue(left_inverse_left, d_residue_tensor, left_inverse_right)
+        + extract_two_leg_residue(left_inverse_left, residue_tensor, d_right_inverse)
+    )
+    assert_equal("dressed external RG flow cancels after left-inverse extraction", rg_derivative, Fraction(0))
+
+
 def tensor_outer_2(
     left: tuple[Fraction, ...], right: tuple[Fraction, ...], coefficient: Fraction
 ) -> tuple[tuple[Fraction, ...], ...]:
@@ -1257,6 +1386,7 @@ def main() -> None:
     check_hilbert_soft_change_inner_equivalence()
     check_detector_inclusive_soft_projection()
     check_dressed_lsz_residue_coordinates()
+    check_endpoint_cusp_renormalized_residue_flow()
     check_dressed_correlator_reduction_interface()
     check_flux_sector_projection_in_dressed_lsz()
     check_boundary_charge_selection_rules()

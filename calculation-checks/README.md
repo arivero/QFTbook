@@ -1020,7 +1020,13 @@ Current checks:
   transformations.  The same script checks the finite
   left-inverse algebra of dressed LSZ residues: the pole residue is a Gram
   matrix of charged one-particle overlaps, and finite dressing-coordinate
-  changes leave the extracted amplitude invariant.  It also checks the
+  changes leave the extracted amplitude invariant.  It also checks endpoint
+  and cusp renormalization of dressed external residues: finite
+  renormalization matrices send \(z\), \(Z\), \(L\), and multi-leg residue
+  tensors through the declared coordinate laws, the extracted charged
+  coefficient is RG-invariant after the left inverses are renormalized, and a
+  matter-field-only normalization is rejected as a negative control.  It also
+  checks the
   dressed-correlator reduction interface in a finite model: simultaneous
   simple external-shell poles survive the multi-leg residue extraction,
   missing external poles and contact terms are less singular, higher poles
