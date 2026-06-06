@@ -21,7 +21,8 @@ Jacobi-repair condition under which a common color-null surface direction is
 also a double-copy null direction against a Jacobi-satisfying second copy.
 It also checks a
 finite triple-cut triangle projection after known box residues have been
-subtracted, a finite two-master threshold-mixing model, a two-letter
+subtracted, a finite double-cut bubble projection after known box and triangle
+double-cut shadows have been subtracted, a finite two-master threshold-mixing model, a two-letter
 master-transport model with boundary and branch negative controls, a physical
 master-discontinuity closure gate comparing transported master jumps with
 Cutkosky channel data, including a separate two-particle phase-space
@@ -59,7 +60,9 @@ to cuts and color-weighted gauge integration while changing a naive
 double-copy pairing, while a common Jacobi-repair direction is double-copy
 null only when the second numerator copy is Jacobi-satisfying, and the
 triple-cut triangle projection isolates the triangle coefficient only after
-known box residues have been subtracted.  The
+known box residues have been subtracted, and the double-cut bubble projection
+isolates the bubble coefficient only after higher-topology shadows have been
+subtracted and the normalized two-particle angular projection is used.  The
 one-loop reconstruction package is checked as an ordered
 data package separating cuts, representative choice, rational/regulator data,
 reduction, boundary/branch data, subtraction, and observable assembly.
@@ -93,6 +96,9 @@ N=4 MHV box reconstruction and a finite on-shell-supermultiplet state count;
 Laurent-polynomial arithmetic for triple-cut triangle projection after
 known box subtraction, including contour-average and partial-subtraction
 negative controls;
+polynomial angular-moment arithmetic for double-cut bubble projection after
+known box and triangle subtraction, including raw-average,
+partial-subtraction, and point-sampling negative controls;
 finite spinor-bracket power counting and helicity-cut enumeration for the
 five-gluon all-plus rational template;
 exact Laurent bookkeeping for the dimension-shifted mu_perp^4 box residue,
@@ -136,7 +142,9 @@ pairing, verifies that a common Jacobi repair is not double-copy null against
 a defective second copy and that sampled cuts do not prove the full Jacobi
 defect is absent, verifies that the raw triple-cut constant can mix a triangle
 coefficient with constant parts of known box residues and that omitting one
-box subtraction leaves a wrong triangle coefficient, and rejects virtual-only
+box subtraction leaves a wrong triangle coefficient, verifies that the raw
+double-cut average can mix a bubble coefficient with higher-topology shadows
+and that point-sampling the cut is not the bubble projection, and rejects virtual-only
 pole cancellation,
 omitted rational finite
 remainders, one-cut-only finite-box deformations, missing finite-box boundary
@@ -1158,6 +1166,125 @@ def check_triple_cut_triangle_projection_after_box_subtraction() -> None:
         "nonzero Laurent powers remain invisible to constant projection",
         constant_projection(reparametrized_spurious),
         Fraction(0),
+    )
+
+
+def check_double_cut_bubble_projection_after_higher_subtraction() -> None:
+    def poly_add_int(
+        left: dict[int, Fraction],
+        right: dict[int, Fraction],
+    ) -> dict[int, Fraction]:
+        result = dict(left)
+        for power, coeff in right.items():
+            result[power] = result.get(power, Fraction(0)) + coeff
+            if result[power] == 0:
+                del result[power]
+        return result
+
+    def poly_scale_int(scale: Fraction, poly: dict[int, Fraction]) -> dict[int, Fraction]:
+        return {
+            power: scale * coeff
+            for power, coeff in poly.items()
+            if scale * coeff
+        }
+
+    def angular_average_monomial(power: int) -> Fraction:
+        if power % 2:
+            return Fraction(0)
+        return Fraction(1, power + 1)
+
+    def bubble_projection(poly: dict[int, Fraction]) -> Fraction:
+        return sum(
+            coeff * angular_average_monomial(power)
+            for power, coeff in poly.items()
+        )
+
+    bubble_coefficient = Fraction(9, 5)
+    bubble_residue = {0: Fraction(1)}
+    zero_average_harmonics = {
+        2: Fraction(6, 7),
+        4: -Fraction(5, 3),
+        0: Fraction(1, 21),
+    }
+    assert_equal(
+        "double-cut non-bubble harmonics have zero angular average",
+        bubble_projection(zero_average_harmonics),
+        Fraction(0),
+    )
+
+    higher_topology_data = [
+        (
+            Fraction(4, 9),
+            {
+                0: Fraction(5, 6),
+                1: Fraction(-3, 8),
+                2: Fraction(7, 10),
+            },
+        ),
+        (
+            -Fraction(7, 11),
+            {
+                0: Fraction(-2, 5),
+                2: Fraction(9, 14),
+                3: Fraction(5, 12),
+            },
+        ),
+    ]
+
+    raw_double_cut = poly_add_int(
+        poly_scale_int(bubble_coefficient, bubble_residue),
+        zero_average_harmonics,
+    )
+    known_higher_shadow: dict[int, Fraction] = {}
+    for coefficient, residue in higher_topology_data:
+        contribution = poly_scale_int(coefficient, residue)
+        raw_double_cut = poly_add_int(raw_double_cut, contribution)
+        known_higher_shadow = poly_add_int(known_higher_shadow, contribution)
+
+    higher_average = sum(
+        coefficient * bubble_projection(residue)
+        for coefficient, residue in higher_topology_data
+    )
+    raw_average = bubble_projection(raw_double_cut)
+    assert_equal(
+        "double-cut raw average contains higher-topology shadows",
+        raw_average,
+        bubble_coefficient + higher_average,
+    )
+    assert_true(
+        "raw double-cut average is not the bubble coefficient",
+        raw_average != bubble_coefficient,
+    )
+
+    post_higher_double_cut = poly_add_int(
+        raw_double_cut,
+        poly_scale_int(Fraction(-1), known_higher_shadow),
+    )
+    assert_equal(
+        "post-subtraction double-cut bubble projection",
+        bubble_projection(post_higher_double_cut),
+        bubble_coefficient,
+    )
+
+    partial_subtraction = poly_add_int(
+        raw_double_cut,
+        poly_scale_int(-higher_topology_data[0][0], higher_topology_data[0][1]),
+    )
+    assert_true(
+        "omitting a known higher-topology double-cut shadow leaves wrong bubble coefficient",
+        bubble_projection(partial_subtraction) != bubble_coefficient,
+    )
+
+    point_sample_at_zero = post_higher_double_cut.get(0, Fraction(0))
+    assert_true(
+        "point-sampling a double cut is not angular projection",
+        point_sample_at_zero != bubble_coefficient,
+    )
+
+    wrong_projection = sum(raw_double_cut.values(), Fraction(0))
+    assert_true(
+        "wrong double-cut measure changes bubble projection",
+        wrong_projection != raw_average,
     )
 
 
@@ -2884,6 +3011,7 @@ def main() -> None:
     check_mu4_dimension_shift_rational_residue()
     check_n4_mhv_quadruple_cut_reconstruction()
     check_triple_cut_triangle_projection_after_box_subtraction()
+    check_double_cut_bubble_projection_after_higher_subtraction()
     check_five_gluon_all_plus_rational_template()
     check_four_point_color_kinematics_gateway()
     check_loop_level_color_kinematics_surface_obstruction()

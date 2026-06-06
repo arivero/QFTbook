@@ -2361,6 +2361,53 @@ not an independent physical discontinuity and not a complete one-loop
 amplitude by itself.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Bubble coefficient from a subtracted double cut]
+\label{ca:double-cut-bubble-projection}
+The bubble step is the same hierarchy one level lower.  Fix a two-propagator
+channel \(D_0=D_1=0\), and let \(\Sigma_{01}\) be the residual on-shell
+two-particle cut surface in the declared regulator and branch.  Let
+\(C_{01}(\omega)\) be the full double cut of the one-loop integrand on this
+surface, including the tree state sum and numerator representative.  The
+boxes and triangles whose denominator sets contain \(\{0,1\}\) have already
+been fixed by their maximal and triple cuts; denote their double-cut residues
+by \(R_h(\omega)\) and coefficients by \(c_h\).
+
+Choose the bubble master in the \(01\) sector so that its subtracted double
+cut has unit normalized average.  In a physical two-particle channel the
+projection is the angular average with the same phase-space branch used in
+\eqref{eq:two-body-phase-space-four-d}; for an algebraic generalized cut it is
+the corresponding contour projection on the residual cut surface.  We write
+\begin{equation}
+  \Pi_{\rm bub}f
+  =
+  \frac{1}{\Omega_{01}}
+  \int_{\Sigma_{01}} f(\omega)\,\dd\Omega_{01}(\omega)
+  \label{eq:double-cut-bubble-projection-average}
+\end{equation}
+for this normalized projection.  If the chosen surface terms and non-bubble
+angular harmonics have zero \(\Pi_{\rm bub}\)-projection, then
+\begin{equation}
+  c_{01}
+  =
+  \Pi_{\rm bub}\!\left[
+    C_{01}(\omega)
+    -
+    \sum_{h\supset\{0,1\},\ |h|\ge3} c_h R_h(\omega)
+  \right].
+  \label{eq:double-cut-bubble-coefficient-after-subtractions}
+\end{equation}
+
+This formula is deliberately not a pointwise statement on the cut.  A box or
+triangle can have a nonzero double-cut average; an angular harmonic can vanish
+after averaging while changing any chosen cut point; and contact terms
+proportional to \(D_0\) or \(D_1\) disappear from the parent cut while feeding
+lower sectors after propagator cancellation.  Thus the physical two-particle
+discontinuity fixes the bubble coefficient only after the higher-topology
+shadows have been subtracted, the state-sum/phase-space normalization has been
+declared, and the reduction datum has specified which lower sectors are
+scaleless, retained, or supplied with separate boundary data.
+\end{controlledapproximation}
+
 \subsection{A Complete Scalar Four-Point Reconstruction}
 \label{subsec:scalar-four-point-generalized-unitarity}
 

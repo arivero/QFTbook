@@ -37,7 +37,8 @@
   comparison datum with generalized-gauge negative controls, a loop-level
   Jacobi-repair condition for double-copy null directions, a solved finite two-scale
   massless box master with fixed \(r_\Gamma\) normalization, pole subtraction,
-  sector-resolved dilogarithm boundary, and branch data, the bubble
+  sector-resolved dilogarithm boundary, and branch data, the double-cut bubble
+  projection after higher-topology shadow subtraction, the bubble
   IBP/differential equation master calculation, an equal-mass bubble threshold
   family with lower tadpole master and physical branch data, a two-loop
   equal-mass sunrise maximal-cut curve exposing the elliptic-period
@@ -152,6 +153,7 @@
 | \(B(Q^2)\), \(\widehat B(x)\) | Euclidean bubble master and its four-dimensional cut-normalized physical continuation |
 | \(I_{a,b}(Q^2)\) | Euclidean one-loop bubble integral family used for IBP reduction |
 | \(z\), \(F_m(z)\), \(T_m\) | equal-mass bubble threshold variable \(Q^2/(4m^2)\), finite nonlocal bubble part, and normalized lower tadpole master |
+| \(C_{01}(\omega),R_h(\omega),\Pi_{\rm bub}\) | double-cut residue on a residual two-particle cut surface, known box/triangle shadows visible on the same double cut, and the normalized bubble angular/contour projection |
 | \(r,E_r,P_r,\Delta_r\) | equal-mass sunrise threshold variable \(s/m^2\), maximal-cut elliptic curve, affine cubic, and eliminated quartic |
 | \(D_{\rm ff}(x),N_j(x),X_p\) | finite-field master-coefficient reconstruction denominator, cleared numerator, and good modular sample set for the dimensionless kinematic coordinate \(x=t/s\) |
 | \(\Delta_{\chi;\eta}\vec J\), \(\mathcal U_{\chi;\eta}\), \(E_{\chi;\eta}\) | stripped physical-channel master jump, Cutkosky channel datum, and residual in the master-discontinuity closure comparison |
@@ -228,6 +230,10 @@
   declared scalar-integral normalizations, and subtraction of higher-topology
   contributions before lower-topology coefficients are read from triple and
   double cuts.
+- The double-cut bubble projection assumes the same state sum, branch, and
+  two-particle phase-space or contour measure as the declared cut; boxes and
+  triangles visible on the same double cut must be subtracted before the
+  normalized bubble average is read.
 - The massless \(\lambda\phi^4\) example uses the interaction
   \(-\lambda\phi^4/4!\), identical unordered intermediate scalar states, and
   the cut-normalized bubble \(\widehat B=B/(16\pi^2)\), for which
@@ -517,6 +523,18 @@
   the box subtraction the triple and double cuts have no polynomial
   remainder and no rational remnant in this declared \(\mathcal N=4\)
   theory.
+- A bubble coefficient is read from the normalized two-particle projection
+  only after known box and triangle shadows on the same double cut have been
+  subtracted:
+  \[
+    c_{01}=
+    \Pi_{\rm bub}\!\left[
+      C_{01}-
+      \sum_{h\supset\{0,1\},\, |h|\ge 3}c_hR_h
+    \right].
+  \]
+  A raw double-cut average, a single cut point, or a parent cut with
+  unspecified lower sectors is not yet a bubble coefficient.
 - Pure Yang--Mills all-plus is the rational negative control:
   four-dimensional two-particle cuts of
   \(A_4^{(1)}(1^+,2^+,3^+,4^+)\) vanish by the tree helicity selection rule,
@@ -931,6 +949,14 @@
   script checks the Laurent constant projection, raw-constant contamination,
   post-box subtraction, omitted-box negative control, wrong-box-normalization
   negative control, and spurious nonzero-Laurent-power cancellation.
+- 2026-06-06 issue #769 double-cut bubble-projection pass: added
+  `ca:double-cut-bubble-projection` after the triple-cut projection block.
+  The pass completes the one-loop coefficient hierarchy by showing that a
+  bubble coefficient is the normalized two-particle angular/contour projection
+  only after known box and triangle shadows on the same double cut have been
+  subtracted.  The companion check verifies the projection using exact angular
+  moments and rejects raw double-cut averages, partial higher-topology
+  subtraction, point-sampling, and wrong-measure shortcuts.
 - 2026-06-05 issue #769 scalar-renormalization closure pass: extended the
   massless \(\lambda\phi^4\) cut reconstruction through the local
   UV-subtraction stage.  The manuscript now displays the crossed-channel
