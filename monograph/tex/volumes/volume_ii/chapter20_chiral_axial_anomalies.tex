@@ -4597,6 +4597,93 @@ and is absorbed into the higher-loop correction multiplying
 fixes scale dependence, while the constant term is set by the actual
 regularized determinant and measure normalization.
 
+\begin{controlledapproximation}[One-instanton source-density assembly]
+\label{ca:one-instanton-source-density-assembly}
+Equation~\eqref{eq:one-instanton-universal-density} is the universal
+one-loop density spine.  It becomes a source coefficient only after the
+fermion zero modes, the finite light-fermion determinant factor, and the
+selected source or operator projection have been paired in the same regulator.
+Write the paired Euclidean source factor for a channel \(\mathcal X\) as
+\[
+  \mathcal Z_{\mathcal X}^{0}(z;\mu)\,
+  \mathcal P_{\mathcal X}^{E}(z;\mu),
+  \qquad z=(a,\rho,U),
+\]
+where \(\mathcal Z_{\mathcal X}^{0}\) is the zero-mode Berezin coefficient and
+\(\mathcal P_{\mathcal X}^{E}\) denotes any remaining Euclidean source,
+spin-color, or OPE projection before analytic continuation.  At one-loop
+logarithmic accuracy the retained Euclidean \(Q=1\) source density has the
+form
+\begin{equation}
+  \begin{aligned}
+  \dd\mathcal A_{1,\mathcal X}^{E}(z;\mu)
+  &=
+  C_{\mathcal S,N_c,N_f}
+  \left(\frac{8\pi^2}{g_{\rm ht}^2(\mu)}\right)^{2N_c}
+  \mu^{b_0}\,
+  \ee^{-8\pi^2/g_{\rm ht}^2(\mu)+\ii\theta}        \\
+  &\quad\times
+  \rho^{\,b_0-5}\,
+  \mathcal R_{\rm f}^{\mathcal S}(z;\mu)\,
+  \mathcal Z_{\mathcal X}^{0}(z;\mu)\,
+  \mathcal P_{\mathcal X}^{E}(z;\mu)\,
+  \dd^4a\,\dd\rho\,\dd\Omega_{N_c}.
+  \end{aligned}
+  \label{eq:one-instanton-source-density-assembly}
+\end{equation}
+The power of \(\rho\) in a physical source channel is therefore not read from
+the ADHM cone measure alone.  If, on a chosen small-size face,
+\[
+  \mathcal R_{\rm f}^{\mathcal S}\,
+  \mathcal Z_{\mathcal X}^{0}\,
+  \mathcal P_{\mathcal X}^{E}
+  =
+  \rho^{\beta_{\mathcal X}}
+  \bigl(Z_{\mathcal X}^{(0)}(a,U;\mu)+O(\rho^\delta)\bigr),
+\]
+then the local size power is the one in
+\eqref{eq:one-instanton-boundary-exponent-estimate},
+\(\rho^{b_0+\beta_{\mathcal X}-5}\dd\rho\).  The exponent
+\(\beta_{\mathcal X}\) is source data: it comes from zero-mode wavefunctions,
+mass or source insertions, nonzero-mode light-fermion normalization, and the
+selected projection, not from the classical moduli space by itself.
+
+Two elementary calibrations are useful.  For mass saturation of \(N_f\)
+fundamental Dirac flavors, \(M^0=\rho M\), so
+\[
+  \det M^0=\rho^{N_f}\det M,
+  \qquad \beta_{\rm mass}=N_f .
+\]
+For the slowly varying local \(N_f=2\) four-source coefficient in the
+'t Hooft vertex, the zero-mode bilinear coordinate has
+\begin{equation}
+  B^0_{ff'}=\rho^3 B_{ff'}+\cdots,
+  \qquad
+  \det B^0=\rho^6\det B+\cdots,
+  \qquad \beta_{4{\rm src}}=6 .
+  \label{eq:local-four-source-zero-mode-power}
+\end{equation}
+Thus in \(SU(3)\) QCD with \(N_f=2\), where \(b_0=29/3\), the local
+four-source size density behaves as
+\begin{equation}
+  \rho^{\,29/3+6-5}\,\dd\rho
+  =
+  \rho^{32/3}\,\dd\rho
+  =
+  \rho^{35/3}\,\dd\log\rho .
+  \label{eq:su3-nf2-local-four-source-size-power}
+\end{equation}
+This is the slow-source local vertex power before hard external form factors
+or physical infrared screening are used.  Replacing it by the
+mass-saturated power \(\rho^{29/3+2-5}\dd\rho\), or by the classical
+collective-coordinate density alone, changes the source coefficient.  The
+later hard-window estimates keep the individual zero-mode form factors instead
+of making the local replacement
+\eqref{eq:local-four-source-zero-mode-power}; that is precisely why the
+large-\(\rho\) endpoint of a 't Hooft-style four-point amplitude is a
+fluctuation/source problem rather than a moduli-space problem.
+\end{controlledapproximation}
+
 \begin{proposition}[Pure-gauge Pauli--Villars determinant constant]
 \label{prop:pure-gauge-pv-instanton-determinant-constant}
 In pure \(SU(N)\) Yang--Mills, \(N\geq2\), use the common half-trace

@@ -30,6 +30,11 @@ relations
     source matching, endpoint control, and physical projection as distinct
     load-bearing stages, and the finite-regulator amplitude pipeline realizes
     the same ordering
+    the universal one-instanton density becomes a source coefficient only after
+    the zero-mode/source degree, finite light-fermion determinant factor, and
+    external projection are paired; for SU(3), Nf=2 the slow local four-source
+    coefficient has rho^(32/3) d rho, not the mass-saturated or moduli-only
+    power
     the finite fermion block determinant separates the nonzero-mode spectral
     determinant from the zero-mode Schur/Berezin determinant
     finite source-frame changes multiply the zero-mode determinant by
@@ -297,7 +302,9 @@ mistaken for the physical observable after bridge residuals, omitted
 endpoint/sector budgets, the top Berezin coefficient mistaken for the
 connected four-source kernel when lower source terms are present, and signed
 physical residual cancellation, and a source-dependent Schur correction
-mistaken for source-independent determinant normalization.
+mistaken for source-independent determinant normalization, mass-saturated
+zero-mode powers substituted for differentiated four-source powers, and
+the ADHM cone density substituted for the assembled source density.
 Scope boundary: a pass checks finite algebra and normalization interfaces; it
 does not prove dilute-gas validity, large-size control, uniform semiclassical
 remainders, or physical hadronic matrix elements.
@@ -709,6 +716,106 @@ def check_one_instanton_density_scaling() -> None:
         # beta=-b0 g^3/(16*pi^2) gives the leading RG derivative alpha-b0.
         leading_rg_derivative = alpha - b0
         assert_equal(f"one-loop RG exponent SU({n_c}) Nf={n_f}", leading_rg_derivative, 0)
+
+
+def check_one_instanton_source_density_assembly() -> None:
+    # The universal density supplies rho^(b0-5) d rho.  A source coefficient
+    # gets its final size power only after zero-mode/source factors and finite
+    # light-fermion determinant conventions have been paired with it.
+    def beta0(n_c: int, n_f: int) -> Fraction:
+        return Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+
+    def source_density_power(
+        n_c: int,
+        n_f: int,
+        zero_mode_source_degree: Fraction,
+    ) -> Fraction:
+        return beta0(n_c, n_f) + zero_mode_source_degree - 5
+
+    n_c = 3
+    n_f = 2
+    b0 = beta0(n_c, n_f)
+    assert_equal("SU3 Nf2 source-density beta0", b0, Fraction(29, 3))
+
+    mass_saturated_degree = Fraction(n_f)
+    local_bilinear_degree = Fraction(3)
+    local_four_source_degree = 2 * local_bilinear_degree
+    assert_equal(
+        "Nf2 mass-saturated zero-mode degree",
+        mass_saturated_degree,
+        Fraction(2),
+    )
+    assert_equal(
+        "Nf2 local four-source zero-mode degree",
+        local_four_source_degree,
+        Fraction(6),
+    )
+
+    mass_saturated_power = source_density_power(n_c, n_f, mass_saturated_degree)
+    local_four_source_power = source_density_power(n_c, n_f, local_four_source_degree)
+    assert_equal(
+        "SU3 Nf2 mass-saturated density power",
+        mass_saturated_power,
+        Fraction(20, 3),
+    )
+    assert_equal(
+        "SU3 Nf2 local four-source density power",
+        local_four_source_power,
+        Fraction(32, 3),
+    )
+    assert_equal(
+        "SU3 Nf2 local four-source log-shell power",
+        local_four_source_power + 1,
+        Fraction(35, 3),
+    )
+
+    # Setting mu=Q and s=Q rho turns Q^b0 rho^(b0+1) d rho into Q^(-2)
+    # s^(b0+1) d s for the slow local four-source coefficient.
+    q_power_from_change_of_variables = b0 - (local_four_source_power + 1)
+    assert_equal(
+        "local four-source source coefficient has Q^-2 dimension",
+        q_power_from_change_of_variables,
+        -2,
+    )
+
+    # Negative controls.  Mass saturation and differentiated four-source
+    # extraction have different zero-mode degrees, and the classical ADHM cone
+    # shell rho^(4Nc-5) is not the source-density power after determinants.
+    assert_equal(
+        "mass saturation is not the differentiated four-source source power",
+        mass_saturated_power == local_four_source_power,
+        False,
+    )
+    collective_cone_shell_power = Fraction(4 * n_c - 5)
+    universal_uninserted_power = source_density_power(n_c, n_f, Fraction(0))
+    assert_equal("SU3 ADHM cone shell power", collective_cone_shell_power, Fraction(7))
+    assert_equal("SU3 Nf2 uninserted universal density power", universal_uninserted_power, Fraction(14, 3))
+    assert_equal(
+        "ADHM cone density alone is not the assembled universal source density",
+        collective_cone_shell_power == universal_uninserted_power,
+        False,
+    )
+
+    individual_hard_slot_tail_degree = Fraction(-3)
+    hard_four_slot_large_rho_power = (
+        local_four_source_power
+        + 4 * individual_hard_slot_tail_degree
+    )
+    assert_equal(
+        "SU3 Nf2 hard four-slot large-rho power",
+        hard_four_slot_large_rho_power,
+        Fraction(-4, 3),
+    )
+    assert_equal(
+        "local four-source coefficient without hard form factors has no large-rho suppression",
+        local_four_source_power < -1,
+        False,
+    )
+    assert_equal(
+        "individual hard form factors supply a distinct endpoint test",
+        hard_four_slot_large_rho_power < -1,
+        True,
+    )
 
 
 def check_pure_gauge_pv_determinant_constant() -> None:
@@ -6217,6 +6324,7 @@ def main() -> None:
     check_radial_integrals_and_actions()
     check_radial_cumulative_profile()
     check_one_instanton_density_scaling()
+    check_one_instanton_source_density_assembly()
     check_pure_gauge_pv_determinant_constant()
     check_small_instanton_boundary_exponent_criterion()
     check_general_adhm_quotient_dimension()

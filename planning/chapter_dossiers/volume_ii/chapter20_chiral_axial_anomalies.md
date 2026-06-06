@@ -381,6 +381,7 @@
 | \(\mathcal D_A\) | finite singlet-axial Ward vector \(4\partial_\theta+2p\partial_s-2s\partial_p\) acting on the two-flavor local instanton source coordinates |
 | \(F_\Delta,\mathsf S_A[F]\) | average diagonal value of a tested susceptibility kernel and the propagated/spectral color-singlet two-point contribution kept separate from the local instanton contact term |
 | \(J_{ff'},J^0_{ff'},\mathcal V_{\rm inst}^0\) | renormalized chiral scalar source coordinate, its zero-mode projection, and the zero-mode source functional used to state the mass/source RG transport of the instanton vertex |
+| \(\dd\mathcal A_{1,\mathcal X}^{E},\mathcal P_{\mathcal X}^{E},\beta_{\mathcal X}\) | retained Euclidean one-instanton source density, Euclidean source/projection factor, and source-channel small-size degree used to assemble the universal density into a source coefficient |
 | \(K_{\mathcal X}^{\rm win},J_{\mathcal X},M_{\mathcal X},\kappa_{\mathcal X}\) | retained one-instanton channel kernel, signed window integral, absolute window mass, and noncancellation margin used to test RG/scheme residuals for a physical channel |
 | \(\bar\chi_A,\chi_B\) | odd generating coordinates for differentiated external fermion slots in the instanton zero-mode sector |
 | \(R_{Af}(z),L_{fB}(z)\) | right-slot and left-slot zero-mode overlap matrices whose differentiated coefficient is \(\det R\,\det L\) |
@@ -1045,6 +1046,16 @@
   \]
   up to the finite determinant/orientation-volume constant and higher-loop
   corrections in the chosen scheme.
+- The universal one-instanton density becomes a Euclidean source coefficient
+  only after the finite light-fermion determinant factor, zero-mode Berezin
+  coefficient, and selected Euclidean projection have been paired.  If this
+  paired source factor has small-size degree \(\beta_{\mathcal X}\), the local
+  size power is \(\rho^{b_0+\beta_{\mathcal X}-5}\dd\rho\).  For
+  \(SU(3)\), \(N_f=2\), mass saturation gives degree \(2\) and density power
+  \(20/3\), while the slowly varying local four-source coefficient has
+  \(B^0=\rho^3B+\cdots\), degree \(6\), and density power
+  \(\rho^{32/3}\dd\rho=\rho^{35/3}\dd\log\rho\).  This is a source-density
+  statement, not a hard-momentum endpoint-control statement.
 - In pure \(SU(N)\) Yang-Mills with the Pauli-Villars convention and
   orientation orbit integrated in the corresponding Haar normalization, that
   finite one-loop constant is
@@ -1899,3 +1910,13 @@
   bound.  The BPST companion checks exact overlap division only after pole
   isolation, excited-state leakage majorants, vanishing-overlap failure, and
   the improvement of the bound as the source/sink pole windows are lengthened.
+- 2026-06-05 issue #597 source-density assembly pass: added
+  `ca:one-instanton-source-density-assembly` after the universal
+  one-instanton density.  The pass bridges the universal density to a
+  Euclidean source coefficient by pairing the finite light-fermion
+  determinant, zero-mode/source degree, and source/projection factor; for
+  \(SU(3)\), \(N_f=2\) it distinguishes the mass-saturated power \(20/3\)
+  from the local four-source power \(32/3\), and leaves hard form-factor
+  endpoint control to the later hard-window estimates.  The BPST companion
+  verifies the source-degree arithmetic and rejects mass-saturated or
+  moduli-only shortcuts.

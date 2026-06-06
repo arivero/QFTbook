@@ -531,6 +531,9 @@ Current checks:
   scale-invariant \(\dd^4a\,\dd\rho/\rho^5\) factor, zero-mode \(g\)-power,
   one-loop \((\mu\rho)^{b_0}\) RG exponent, the heat-kernel origin of the
   \(b_0\) logarithm from vector-plus-ghost and Dirac matter coefficients, the
+  source-density assembly that combines the universal density with zero-mode
+  source powers and rejects mass-saturated or moduli-only shortcuts for the
+  \(SU(3)\), \(N_f=2\) four-source coefficient, the
   cutoff-to-renormalized-scale cancellation in the instanton exponential, the
   small-instanton
   boundary-exponent threshold \(b_0+\beta_{\mathcal X}>4\), the general
