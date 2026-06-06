@@ -45,6 +45,10 @@ Target claims:
   nonzero-mode fluctuation quotient separates the Gaussian source mean from
   its covariance with the same interaction weight that defines the determinant
   normalization.
+- `ca:instanton-first-source-cumulant-normal-modes`: a linear normal-mode
+  source deformation has zero Gaussian mean but contributes to the instanton
+  source amplitude through its Wick covariance with the cubic fluctuation
+  action; this term is not a source-independent determinant constant.
 - `ca:instanton-hard-amplitude-assembly-ledger`: the hard channel must assemble
   the determinant, source-fluctuation, zero-mode/source, and physical-projection
   factors in the same kernel, with absolute control unless a noncancellation
@@ -100,6 +104,7 @@ Independent construction:
   finite color two-frame Haar projectors,
   the Bessel-product tail cancellation for an individual zero-mode slot,
   finite Gaussian source-quotient covariance identities,
+  Wick-paired first source cumulants from cubic normal-mode interactions,
   multiplicative hard-amplitude assembly bounds on signed windows,
   finite observable-handoff comparisons for theta, U(1)_A, and real-time
   axial channels,
@@ -177,7 +182,9 @@ Negative controls:
   Jacobian, raw gauge-vertical tangents used before horizontal projection, a
   determinant used where the functional measure requires a square-root
   determinant, a vacuum determinant calibration substituted for a
-  source-fluctuation quotient, a relative quotient formed after zero-mode
+  source-fluctuation quotient, a zero cubic interaction used to erase a
+  linear-source cumulant, a source-dependent cubic covariance absorbed into a
+  universal determinant constant, a relative quotient formed after zero-mode
   rank loss, a
   determinant-only assembled amplitude, signed-window relative error control
   without a noncancellation margin, a reference calibration with omitted
@@ -1061,6 +1068,132 @@ def check_nonzero_mode_source_fluctuation_quotient() -> None:
         "rank-lost zero-mode channel has no relative fluctuation quotient",
         relative_quotient_defined,
         False,
+    )
+
+
+def check_first_source_cumulant_from_normal_modes() -> None:
+    covariance: Matrix2 = (
+        (Fraction(2), Fraction(1, 3)),
+        (Fraction(1, 3), Fraction(3)),
+    )
+    linear_source = (Fraction(2, 5), -Fraction(3, 7))
+    quadratic_source: Matrix2 = (
+        (Fraction(1, 4), Fraction(1, 6)),
+        (Fraction(1, 6), -Fraction(1, 5)),
+    )
+    cubic_action = {
+        (0, 0, 0): Fraction(1, 3),
+        (0, 0, 1): Fraction(1, 5),
+        (0, 1, 0): Fraction(1, 5),
+        (1, 0, 0): Fraction(1, 5),
+        (0, 1, 1): -Fraction(2, 7),
+        (1, 0, 1): -Fraction(2, 7),
+        (1, 1, 0): -Fraction(2, 7),
+        (1, 1, 1): Fraction(1, 9),
+    }
+
+    def c(index_a: int, index_b: int) -> Fraction:
+        return covariance[index_a][index_b]
+
+    def t(index_a: int, index_b: int, index_c: int) -> Fraction:
+        return cubic_action[(index_a, index_b, index_c)]
+
+    def wick4(i: int, a: int, b: int, c_index: int) -> Fraction:
+        return (
+            c(i, a) * c(b, c_index)
+            + c(i, b) * c(a, c_index)
+            + c(i, c_index) * c(a, b)
+        )
+
+    gaussian_quadratic_mean = Fraction(1, 2) * sum(
+        quadratic_source[a][b] * covariance[a][b]
+        for a in range(2)
+        for b in range(2)
+    )
+    direct_linear_cubic_covariance = Fraction(1, 6) * sum(
+        linear_source[i]
+        * t(a, b, c_index)
+        * wick4(i, a, b, c_index)
+        for i in range(2)
+        for a in range(2)
+        for b in range(2)
+        for c_index in range(2)
+    )
+    symmetric_cubic_contraction = Fraction(1, 2) * sum(
+        linear_source[i]
+        * t(a, b, c_index)
+        * covariance[i][a]
+        * covariance[b][c_index]
+        for i in range(2)
+        for a in range(2)
+        for b in range(2)
+        for c_index in range(2)
+    )
+    assert_equal(
+        "symmetric cubic action reduces the Wick-pairing source cumulant",
+        direct_linear_cubic_covariance,
+        symmetric_cubic_contraction,
+    )
+
+    first_source_cumulant = (
+        gaussian_quadratic_mean
+        - direct_linear_cubic_covariance
+    )
+    assert_equal(
+        "first source cumulant from normal-mode cubic interaction",
+        first_source_cumulant,
+        Fraction(14867, 44100),
+    )
+    assert_not_equal(
+        "linear normal source has zero Gaussian mean but nonzero cubic covariance",
+        direct_linear_cubic_covariance,
+        Fraction(0),
+    )
+    assert_not_equal(
+        "quadratic Gaussian trace alone misses the cubic source cumulant",
+        gaussian_quadratic_mean,
+        first_source_cumulant,
+    )
+
+    zero_cubic_shortcut = gaussian_quadratic_mean
+    assert_not_equal(
+        "setting the cubic normal action to zero erases source response",
+        zero_cubic_shortcut,
+        first_source_cumulant,
+    )
+
+    determinant_constant = Fraction(11, 13)
+    source_channel_value = determinant_constant * (1 + first_source_cumulant)
+    determinant_only_value = determinant_constant
+    assert_not_equal(
+        "source-dependent cumulant cannot be absorbed into a universal determinant",
+        determinant_only_value,
+        source_channel_value,
+    )
+
+    kernel_cells = [Fraction(2, 3), -Fraction(1, 5), Fraction(3, 10)]
+    cumulant_remainders = [Fraction(1, 100), -Fraction(1, 80), Fraction(1, 120)]
+    exact_window_shift = sum(
+        cell * remainder
+        for cell, remainder in zip(kernel_cells, cumulant_remainders)
+    )
+    absolute_cumulant_budget = sum(
+        abs(cell) * abs(remainder)
+        for cell, remainder in zip(kernel_cells, cumulant_remainders)
+    )
+    assert_leq(
+        "normal-mode source cumulant absolute window budget",
+        abs(exact_window_shift),
+        absolute_cumulant_budget,
+    )
+    signed_remainder_budget = (
+        abs(sum(cumulant_remainders, Fraction(0)))
+        * abs(sum(kernel_cells, Fraction(0)))
+    )
+    assert_equal(
+        "signed cumulant remainder cancellation underbudgets the window",
+        signed_remainder_budget < abs(exact_window_shift),
+        True,
     )
 
 
@@ -2313,6 +2446,7 @@ def main() -> None:
     check_hard_color_orientation_haar_tensor()
     check_individual_zero_mode_slot_tail_from_bessel_products()
     check_nonzero_mode_source_fluctuation_quotient()
+    check_first_source_cumulant_from_normal_modes()
     check_hard_amplitude_assembly_bound()
     check_hard_reference_channel_calibration()
     check_observable_handoff_map()

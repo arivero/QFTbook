@@ -110,6 +110,10 @@
   and covariance identity, including the quadratic source trace correction
   `1/2 Tr(QC)` and the absolute bound
   `epsilon_U + M_U M_V / d_0`.
+- `ca:instanton-first-source-cumulant-normal-modes`: first explicit
+  normal-mode source cumulant; a linear source deformation has zero Gaussian
+  mean but contributes through Wick covariance with the cubic fluctuation
+  action, so it is not a source-independent determinant constant.
 - `sec:instanton-hard-amplitude-assembly`: recombines the hard source kernel,
   finite determinant normalization, nonzero-mode source quotient,
   zero-mode/source stability, and physical projection into one regulated
@@ -205,6 +209,12 @@
   even after the Gaussian determinant is normalized, the selected hard source
   has a mean and a covariance with nonzero-mode interactions.  A vacuum
   determinant constant alone cannot control a four-source amplitude.
+- The first source-cumulant block makes that statement constructive: the
+  linear normal-mode deformation of the source has zero Gaussian mean, but the
+  cubic fluctuation action produces a Wick-paired contribution
+  `-1/2 l_i T_abc C_ia C_bc`.  This is exactly the kind of fluctuation
+  response that is invisible in moduli-space or determinant-only
+  presentations.
 - The assembled hard-channel formula prevents the chapter from becoming a list
   of adjacent checkpoints.  It places the determinant scheme constant, hard
   zero-mode slots, nonzero-mode source quotient, source-frame stability, and
@@ -295,6 +305,9 @@
   verifies the finite Gaussian nonzero-mode source quotient covariance
   identity, the quadratic trace correction, absolute window propagation, and
   rank-loss rejection,
+  verifies the first Wick-paired source cumulant from a linear normal-mode
+  source deformation and cubic fluctuation action, rejecting zero-cubic,
+  determinant-only, and signed-remainder shortcuts,
   verifies the assembled hard-amplitude product bound and rejects
   determinant-only assembly or signed-window relative control without a
   noncancellation margin,

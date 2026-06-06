@@ -1232,14 +1232,67 @@ coordinate; the fluctuation contribution must be kept as an absolute source
 residual in \eqref{eq:instanton-physical-channel-residual-budget}.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[First source cumulant from normal modes]
+\label{ca:instanton-first-source-cumulant-normal-modes}
+The term hidden most easily in a determinant-only treatment is the first
+source cumulant.  Keep the same zero-mode-deleted Gaussian covariance
+\(C_{ab}\), and suppose the normal-mode source variation and interaction begin
+as
+\[
+  U=\ell_a\eta_a+\frac12Q_{ab}\eta_a\eta_b+O(\eta^3),
+  \qquad
+  V_3=\frac{1}{3!}T_{abc}\eta_a\eta_b\eta_c .
+\]
+The tensor \(T\) is the cubic variation of the regulated action in the
+horizontal normal coordinates.  To first source-dependent order in this
+finite chart,
+\begin{equation}
+\begin{aligned}
+  \mathcal R_{\rm fluc}-1
+  &=
+  \frac12Q_{ab}C_{ab}
+  -
+  \frac{1}{3!}\ell_iT_{abc}
+  \bigl(
+    C_{ia}C_{bc}+C_{ib}C_{ac}+C_{ic}C_{ab}
+  \bigr)
+  +R_{\rm cum}                                      \\
+  &=
+  \frac12\operatorname{Tr}(QC)
+  -
+  \frac12\ell_iT_{abc}C_{ia}C_{bc}
+  +R_{\rm cum},
+\end{aligned}
+  \label{eq:instanton-first-source-cumulant-normal}
+\end{equation}
+where the second line uses the symmetry of the cubic action tensor.  Thus the
+linear source deformation \(\ell_a\eta_a\), although it has zero Gaussian
+mean, becomes a physical amplitude correction through its covariance with the
+cubic fluctuation action.  It is source-dependent amplitude data beyond the
+vacuum determinant normalization \(D_z\).
+
+If the retained cumulant remainder obeys
+\(|R_{\rm cum}(z;\mathcal J)|\le B_{\rm cum}(z;\mathcal J)\), then its
+contribution to the hard source window is controlled by
+\[
+  \int_{\mathcal W}
+  |K_0(z;\mathcal J)|\,B_{\rm cum}(z;\mathcal J)\,\dd z .
+\]
+The negative controls are again physical: setting \(T=0\) because the
+determinant has already been normalized drops a real source response; using
+unprojected normal coordinates mixes this cumulant with gauge zero modes; and
+absorbing the term into \(C_{\mathcal S}\) turns a source-dependent correction
+into a false universal prefactor.
+\end{controlledapproximation}
+
 Thus a hard instanton amplitude has three separate fluctuation entries.  The
 universal logarithmic determinant supplies the \((\mu\rho)^{b_0}\) density
 factor.  The finite determinant constant fixes a scheme-dependent Gaussian
 normalization.  The quotient
 \eqref{eq:instanton-physical-source-fluctuation-quotient} tests the selected
-source under that Gaussian and its interaction remainders.  Collapsing these
-three entries into a single ``measure prefactor'' loses the amplitude
-calculation.
+source under that Gaussian and its interaction remainders, including cumulants
+such as \eqref{eq:instanton-first-source-cumulant-normal}.  Collapsing these
+entries into a single ``measure prefactor'' loses the amplitude calculation.
 
 \section{The Hard Channel As An Assembled Amplitude}
 \label{sec:instanton-hard-amplitude-assembly}

@@ -820,6 +820,8 @@ Current checks:
   the two-term hard-window tail subtraction with leading \(R^{-1/3}\) and
   subleading \(R^{-7/3}\) endpoint pieces,
   the finite Gaussian nonzero-mode source quotient and its covariance identity,
+  the Wick-paired first source cumulant showing how a linear normal-mode
+  source deformation couples to the cubic fluctuation action,
   the assembled hard-amplitude product bound with absolute signed-window
   control, the hard reference-channel calibration which fixes only a
   same-frame finite determinant constant and propagates reference residuals by
