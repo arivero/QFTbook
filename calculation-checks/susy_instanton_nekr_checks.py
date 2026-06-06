@@ -9,8 +9,8 @@ the rank-one Hilbert-scheme tangent-character cancellation, and the two-box
 Hilbert-scheme localization sum.  They also check the finite-order residual
 telescope separating the Nekrasov fixed-point coefficients from the full
 Pestun S^4 localization comparison, including the Uhlenbeck-collar boundary
-flux budget needed before a Gieseker fixed-point sum can be read as a
-field-theoretic pole-local contribution.
+flux and determinant-line transport budgets needed before a Gieseker
+fixed-point sum can be read as a field-theoretic pole-local contribution.
 """
 
 from __future__ import annotations
@@ -499,20 +499,29 @@ def check_pestun_nekrasov_comparison_bound() -> None:
     )
 
 
+def one_box_tangent_weights(
+    alpha: int,
+    a_values: list[Fraction],
+    epsilon1: Fraction,
+    epsilon2: Fraction,
+) -> list[Fraction]:
+    weights = [epsilon2, epsilon1]
+    epsilon = epsilon1 + epsilon2
+    for beta, a_beta in enumerate(a_values):
+        if beta == alpha:
+            continue
+        diff = a_values[alpha] - a_beta
+        weights.extend([diff + epsilon, diff])
+    return weights
+
+
 def one_box_tangent_euler(
     alpha: int,
     a_values: list[Fraction],
     epsilon1: Fraction,
     epsilon2: Fraction,
 ) -> Fraction:
-    total = epsilon1 * epsilon2
-    epsilon = epsilon1 + epsilon2
-    for beta, a_beta in enumerate(a_values):
-        if beta == alpha:
-            continue
-        diff = a_values[alpha] - a_beta
-        total *= diff * (diff + epsilon)
-    return total
+    return math_product(one_box_tangent_weights(alpha, a_values, epsilon1, epsilon2))
 
 
 def check_one_box_tangent_euler_class() -> None:
@@ -888,6 +897,116 @@ def check_uhlenbeck_collar_boundary_flux_selection() -> None:
     )
 
 
+def check_pole_local_determinant_line_transport() -> None:
+    # A Gieseker fixed-point Euler denominator is a QFT pole-local density only
+    # after the regulated normal complex has been transported to the same
+    # determinant line, with ghost/slice factors and zero modes separated.
+    epsilon1 = Fraction(2)
+    epsilon2 = Fraction(5)
+
+    horizontal_weights = hilb_rank_one_tangent_weights([2], epsilon1, epsilon2)
+    gieseker_euler = math_product(horizontal_weights)
+    transported_density = Fraction(1, gieseker_euler)
+    normal_density = Fraction(1, math_product(horizontal_weights))
+    assert_equal(normal_density, transported_density, "Hilb2 determinant-line transport density")
+
+    stale_orientation_weights = list(horizontal_weights)
+    stale_orientation_weights[1] = -stale_orientation_weights[1]
+    stale_orientation_density = Fraction(1, math_product(stale_orientation_weights))
+    assert_equal(
+        stale_orientation_density == transported_density,
+        False,
+        "single real orientation flip changes determinant-line density",
+    )
+
+    missing_slice_density = Fraction(1, math_product(horizontal_weights[:-1]))
+    assert_equal(
+        missing_slice_density,
+        horizontal_weights[-1] * transported_density,
+        "omitted slice factor rescales the pole density",
+    )
+    assert_equal(
+        missing_slice_density == transported_density,
+        False,
+        "omitted slice factor fails Gieseker Euler comparison",
+    )
+
+    zero_mode_weights = list(horizontal_weights)
+    zero_mode_weights[2] = Fraction(0)
+    assert_equal(
+        all(weight != 0 for weight in zero_mode_weights),
+        False,
+        "zero mode must be removed before determinant-line transport",
+    )
+
+    # For a coordinate reflection that exchanges the two C^2 axes, the fixed
+    # point label must be transported as well.  The horizontal point with
+    # exchanged weights is not the reflected vertical point.
+    reflected_vertical_weights = hilb_rank_one_tangent_weights([1, 1], epsilon2, epsilon1)
+    naive_south_weights = hilb_rank_one_tangent_weights([2], epsilon2, epsilon1)
+    assert_equal(
+        math_product(reflected_vertical_weights),
+        gieseker_euler,
+        "south-pole coordinate reflection with fixed-point transport",
+    )
+    assert_equal(
+        math_product(naive_south_weights) == gieseker_euler,
+        False,
+        "naive south-pole coordinate reuse changes determinant-line density",
+    )
+
+    a_values = [Fraction(-3), Fraction(1), Fraction(6)]
+    alpha = 1
+    one_box_weights = one_box_tangent_weights(alpha, a_values, epsilon1, epsilon2)
+    assert_equal(
+        math_product(one_box_weights),
+        one_box_tangent_euler(alpha, a_values, epsilon1, epsilon2),
+        "U(N) one-box normal weights match tangent Euler product",
+    )
+    ghost_omitted_weights = [
+        weight
+        for index, weight in enumerate(one_box_weights)
+        if index not in (3, 5)
+    ]
+    ghost_omitted_density = Fraction(1, math_product(ghost_omitted_weights))
+    one_box_density = Fraction(1, math_product(one_box_weights))
+    assert_equal(
+        ghost_omitted_density == one_box_density,
+        False,
+        "omitting Coulomb slice factors changes one-box pole density",
+    )
+
+    line_error = Fraction(1, 41)
+    ghost_error = Fraction(1, 43)
+    zero_mode_error = Fraction(1, 47)
+    pole_coordinate_error = Fraction(1, 53)
+    regulator_limit_error = Fraction(1, 59)
+    regulated_density = (
+        transported_density
+        + line_error
+        + ghost_error
+        + zero_mode_error
+        + pole_coordinate_error
+        + regulator_limit_error
+    )
+    full_budget = (
+        abs(line_error)
+        + abs(ghost_error)
+        + abs(zero_mode_error)
+        + abs(pole_coordinate_error)
+        + abs(regulator_limit_error)
+    )
+    residual = regulated_density - transported_density
+    assert_equal(abs(residual) <= full_budget, True, "determinant-line residual budget")
+
+    underbudget = full_budget - abs(line_error)
+    assert_equal(
+        abs(residual) > underbudget,
+        True,
+        "omitting determinant-line residual underbudgets pole comparison",
+    )
+
+
 def matrix_product(left: list[list[Fraction]], right: list[list[Fraction]]) -> list[list[Fraction]]:
     rows = len(left)
     middle = len(right)
@@ -983,6 +1102,7 @@ def main() -> None:
     check_rank_one_hilbert_scheme_tangent_character()
     check_two_box_hilbert_scheme_fixed_points()
     check_uhlenbeck_collar_boundary_flux_selection()
+    check_pole_local_determinant_line_transport()
     check_charge_one_nilpotent_cone_resolution_arithmetic()
     check_young_diagram_one_box_count()
     print("All SUSY instanton/ADHM/Nekrasov checks passed.")

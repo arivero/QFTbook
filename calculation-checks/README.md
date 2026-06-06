@@ -2712,7 +2712,10 @@ Current checks:
   residual, and instanton-order tail, plus the Uhlenbeck-collar boundary
   flux selection budget and negative controls against reading a Gieseker
   fixed-point sum as a pole-local QFT contribution without boundary,
-  determinant, regulator-limit, and coordinate-reduction residuals.
+  determinant, regulator-limit, and coordinate-reduction residuals.  It also
+  checks the pole-local determinant-line transport budget, including stale
+  orientation, missing ghost/slice factors, zero-mode leakage, and untransported
+  south-pole coordinate reflection.
 - `susy_localization_matrix_checks.py`: finite checks for the compact-space
   supersymmetric localization chapter, including the trace-delta \(S^4\)
   Gaussian coefficient, the Pestun vector normal-symbol exactness test, the

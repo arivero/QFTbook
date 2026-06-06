@@ -77,6 +77,12 @@
   powers distinguished as vanishing, finite boundary data, and divergent
   obstruction.  The test records the finite bound needed to compare a
   regulated QFT pole contribution to a Gieseker/Nekrasov coefficient.
+- Pole-local determinant-line transport: the regulated nonzero-mode normal
+  \(Q_\delta\)-complex must be oriented and compared with
+  \(\det(E_{\rm matter})\otimes\det(T\mathfrak M^G)^{-1}\) before a Gieseker
+  Euler denominator can be read as a pole-local QFT density; the comparison
+  separates determinant-line, ghost/slice, zero-mode, coordinate, and regulator
+  residuals.
 - Open problem recording the missing continuum regulator theorem for
   Gieseker/Nekrasov selection in four-dimensional \(S^4\) localization.
 - Finite-order Nekrasov--Pestun comparison bound: the localized
@@ -165,6 +171,7 @@
 | \(\delta,\zeta_\delta,R_\delta\) | regulator parameter, positive ADHM moment-map parameter, and residual fixed-locus error in the Gieseker-selection datum |
 | \(A_Y(s),L_Y(s)\) | arm and relative leg lengths of a Young-diagram box |
 | \({\rm Hilb}^2(\mathbb C^2)\) | rank-one length-two Gieseker laboratory resolving the Uhlenbeck double-point sector |
+| \(\Phi_{\delta,\vec Y,p},\Delta_{\rm line},\Delta_{\rm gh},\Delta_{\rm zm},\Delta_{\rm coord},\Delta_{\rm lim}\) | pole-local determinant-line transport and its comparison residuals |
 | \(\ell(z)\) | round-\(S^3\) chiral determinant function |
 | \(s_b(x)\) | double sine function |
 | \(\mathfrak D_{S^3}\) | full round-\(S^3\) Chern-Simons-matter localization datum |
@@ -287,7 +294,12 @@
     Hilb\(^2(\mathbb C^2)\) laboratory, the two Gieseker fixed points over
     the single Uhlenbeck support cycle \(2[0]\) compute the resolved
     coefficient only after that boundary-flux statement has been supplied.
-22. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
+22. The pole-local determinant-line transport test makes the fixed-point
+    Euler denominator a QFT normal-Gaussian target: the regulated nonzero-mode
+    complex must be transported to the Gieseker tangent/matter determinant
+    line with orientation phase, ghost/slice factors, zero-mode split, pole
+    coordinate reflection, and regulator limit all in the same budget.
+23. The \(\mathcal N=4\) specialization cancels the \(H\)-factors and leaves a
    Gaussian matrix model with the Weyl/Vandermonde factor.  The chapter now
    defines the circular-loop Gaussian coupling, derives the exact finite-\(N\)
    Laguerre-polynomial Wilson-loop formula from the Hermite kernel, inserts
@@ -298,26 +310,26 @@
    \(2I_1(\sqrt{\lambda_{\rm circ}})/\sqrt{\lambda_{\rm circ}}\), and derives
    the Bessel algebra behind the Bremsstrahlung function from the protected
    circular-loop Ward identity.
-23. The \(S^3\) \(\mathcal N=2\) partition function is attached to a full
+24. The \(S^3\) \(\mathcal N=2\) partition function is attached to a full
     globally quantized Chern-Simons-matter datum \(\mathfrak D_{S^3}\), not to
     an arbitrary scalar \(k\) for an arbitrary compact group.
-24. Parity-anomaly cancellation is imposed before the localized formula is
+25. Parity-anomaly cancellation is imposed before the localized formula is
     declared: \(\mathcal K_{\rm eff}=\mathcal K_{\rm bare}
     +\frac12\sum_\psi\epsilon_\psi\mathcal K_\psi\) must lie in the allowed
     spin or non-spin level lattice, with background contact terms included.
-25. FI terms are defined only on \(\operatorname{Hom}(G,U(1))\), equivalently
+26. FI terms are defined only on \(\operatorname{Hom}(G,U(1))\), equivalently
     on Abelian center directions, and vanish on semisimple coroots.
-26. Gauge-gauge, gauge-flavor, flavor-flavor, \(R\)-background, gravitational,
+27. Gauge-gauge, gauge-flavor, flavor-flavor, \(R\)-background, gravitational,
     framing, and mixed determinant-sector Chern-Simons/contact coordinates are
     part of the localized answer rather than disposable phases.
-27. The round-\(S^3\) determinant can be written in \(\ell\)-function or
+28. The round-\(S^3\) determinant can be written in \(\ell\)-function or
     double-sine variables; the pole hyperplanes and JK chamber are part of the
     integration-cycle datum.
-28. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
+29. The \(U(1)_k\) \(S^3\) Fresnel integral follows from completing the square
    once the oscillatory contour is declared.
-29. The conjugate-chiral determinant identity gives
+30. The conjugate-chiral determinant identity gives
    \(1/(2\cosh\pi\sigma)\), whose integral over \(\mathbb R\) is \(1/2\).
-30. Contact terms and local curvature counterterms are QFT coordinates, not
+31. Contact terms and local curvature counterterms are QFT coordinates, not
     disposable normalizations.
 
 ## Calculation Checks
@@ -357,8 +369,10 @@
   one-instanton Nekrasov fixed-point sum used by the cross-referenced
   Seiberg-Witten chapter, plus the finite-order Nekrasov--Pestun comparison
   residual telescope and negative controls against north-pole-only,
-  determinant-omitted, south-pole-conjugation, pole-residual-omission, and
-  unresolved-Uhlenbeck-boundary shortcuts.
+  determinant-omitted, south-pole-conjugation, pole-residual-omission,
+  unresolved-Uhlenbeck-boundary shortcuts, and determinant-line transport
+  failures from stale orientation, missing ghost/slice factors, zero modes,
+  and untransported south-pole coordinates.
 
 ## Source Notes
 
@@ -448,3 +462,9 @@
   bounds in the Gieseker comparison, and uses the Hilb\(^2\) laboratory to
   reject treating a resolved fixed-point sum as a continuum QFT result by
   itself.
+- 2026-06-06 issue #629 pass: added the pole-local determinant-line transport
+  test.  The fixed-point Euler denominator is now framed as the target of a
+  regulated normal Gaussian with orientation phase, ghost/slice normalization,
+  zero-mode split, pole-coordinate reflection, and limiting residuals, closing
+  another common shortcut between Gieseker localization arithmetic and a QFT
+  instanton amplitude.

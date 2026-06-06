@@ -1597,6 +1597,93 @@ BV/Uhlenbeck-boundary problem hidden behind the usual shorthand
 ``insert the Nekrasov partition function''.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Pole-local determinant-line transport]
+\label{ca:pole-local-determinant-line-transport}
+The denominator
+\(e_T(T_{\vec Y}\mathfrak M_{k,N}^{G})\) in
+Definition~\ref{def:nekrasov-tangent-euler-class} becomes a QFT pole
+amplitude only after the regulated normal determinant line has been compared
+with the Gieseker fixed-point determinant line.  Fix a pole \(p\in S^4\), a
+charge \(k\), a Gieseker fixed point \(\vec Y\), and the matter index bundle
+\(E_{{\rm matter},\vec Y}\).  After the tangent zero modes, stabilizer
+directions, and gauge-volume directions have been split off, let
+\[
+  N^{\bullet,{\rm nz}}_{\delta,\vec Y,p}
+\]
+be the nonzero-mode \(Q_\delta\)-normal complex of the regulated
+four-dimensional field theory.  A determinant-line transport is an
+equivariant isomorphism, with orientation and phase convention,
+\begin{equation}
+  \Phi_{\delta,\vec Y,p}:
+  \operatorname{Ber}H^\bullet
+  (N^{\bullet,{\rm nz}}_{\delta,\vec Y,p})
+  \longrightarrow
+  \det(E_{{\rm matter},\vec Y})
+  \otimes
+  \det(T_{\vec Y}\mathfrak M_{k,N}^{G})^{-1},
+  \label{eq:pole-local-determinant-line-transport}
+\end{equation}
+together with a local counterterm coordinate \(C_{\delta,\vec Y,p}\).  In this
+coordinate the normal Gaussian density must satisfy
+\begin{equation}
+\begin{aligned}
+  Z^{\rm normal}_{\delta,\vec Y,p}
+  &-
+  \exp(C_{\delta,\vec Y,p})\,\omega_{\vec Y,p}\,
+  \frac{e_T(E_{{\rm matter},\vec Y})}
+       {e_T(T_{\vec Y}\mathfrak M_{k,N}^{G})}
+\\
+  &=
+  \Delta_{\rm line}
+  +\Delta_{\rm gh}
+  +\Delta_{\rm zm}
+  +\Delta_{\rm coord}
+  +\Delta_{\rm lim}.
+  \label{eq:pole-local-determinant-line-residuals}
+\end{aligned}
+\end{equation}
+Here \(\omega_{\vec Y,p}\) is the chosen real orientation or reflection phase.
+The five residuals record, respectively, the determinant-line comparison
+itself; gauge, ghost, and slice normalization; the separation of tangent and
+normal zero modes; the finite change from QFT pole coordinates to ADHM
+coordinates; and the regulator limit.  A finite pole-local comparison supplies
+absolute bounds
+\[
+  |\Delta_j|\le B_j,\qquad
+  j\in\{{\rm line},{\rm gh},{\rm zm},{\rm coord},{\rm lim}\},
+\]
+with all parameters in the same equivariant and local-counterterm convention.
+If one of the transported tangent weights vanishes, the determinant line above
+has not been formed; the zero-mode sector must be enlarged before an Euler
+denominator is written.
+
+The smallest resolved singular sector already tests this requirement.  At the
+horizontal fixed point \((2)\in{\rm Hilb}^2(\mathbb C^2)\), the tangent weights
+are
+\[
+  2\epsilon_2,\quad
+  \epsilon_1-\epsilon_2,\quad
+  \epsilon_2,\quad
+  \epsilon_1,
+\]
+so the Gieseker density is
+\[
+  \frac1{
+  2\epsilon_1\epsilon_2^2(\epsilon_1-\epsilon_2)} .
+\]
+A pole-local normal complex with these four transported nonzero weights gives
+the same density.  Flipping the orientation of one real determinant factor,
+omitting one gauge-slice or ghost factor, or leaving a zero weight inside the
+nonzero determinant changes the density or makes it undefined.  Likewise,
+when the south-pole reflection exchanges the two complex tangent axes, the
+transport must also act on the fixed-point label and determinant orientation:
+the horizontal partition with exchanged \((\epsilon_1,\epsilon_2)\) is not the
+same determinant-line element as the reflected vertical fixed point unless
+that identification is supplied.  The product of Young-diagram weights is
+therefore a target for the field-theoretic normal Gaussian, not a replacement
+for the ghost, zero-mode, phase, and pole-coordinate analysis.
+\end{controlledapproximation}
+
 \begin{openproblem}[Continuum regulator theorem for Gieseker selection]
 \label{op:susy-localization-gieseker-selection-theorem}
 Construct, for four-dimensional \(\mathcal N=2\) gauge theory on \(S^4\), a
