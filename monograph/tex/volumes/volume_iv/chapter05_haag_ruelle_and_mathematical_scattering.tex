@@ -3576,6 +3576,73 @@ that unresolved photons are summed inside the detector resolution, while
 different sharp flux sectors contribute as orthogonal alternatives unless the
 apparatus prepares and measures a coherent sector-changing observable.
 
+\begin{controlledapproximation}[Flux-cell detector response and charged hard coefficients]
+\label{ca:charged-flux-cell-detector-response}
+The last step in a charged scattering prediction is not the LSZ residue
+itself but the calibrated detector response to the flux-resolved probability.
+Fix a finite set \(S\) of sharp incoming/outgoing angular-flux alternatives
+which survive the selection rule
+\eqref{eq:dressed-lsz-flux-sector-selection}, and write
+\[
+  P_s
+  =
+  \left|\mathcal M_s\right|^2
+  \left(\frac{E_T}{M}\right)^{A_s}
+  F_s^{\rm finite},
+  \qquad s\in S,
+\]
+for the inclusive probability attached to the sharp alternative \(s\).  A
+finite-resolution apparatus reports detector cells \(c\in C\).  Its calibrated
+flux response is a stochastic matrix \(\mathsf R_{cs}\ge0\) with
+\(\sum_c\mathsf R_{cs}=1\).  After ordinary detector backgrounds \(B_c\) and a
+declared finite-window remainder \(r_c\), the measured rates have the form
+\begin{equation}
+  Y_c
+  =
+  \sum_{s\in S}\mathsf R_{cs}P_s
+  +
+  B_c
+  +
+  r_c .
+  \label{eq:charged-flux-detector-response-map}
+\end{equation}
+Thus detector coarse-graining is a positive linear map on probabilities, not
+a change of the amplitudes \(\mathcal M_s\).  If a calibrated left inverse
+\(\mathsf L\) is available on the retained sector space,
+\(\sum_c\mathsf L_{sc}\mathsf R_{cs'}=\delta_{ss'}\), then the reconstructed
+sharp probabilities obey
+\begin{equation}
+  \widehat P_s
+  =
+  \sum_c\mathsf L_{sc}(Y_c-B_c),
+  \qquad
+  |\widehat P_s-P_s|
+  \le
+  \sum_c|\mathsf L_{sc}|\,|r_c|.
+  \label{eq:charged-flux-detector-inversion-bound}
+\end{equation}
+The hard coefficient is then inferred only after the soft and detector
+normalizations are divided out:
+\begin{equation}
+  \left|\widehat{\mathcal M}_s\right|^2
+  =
+  \frac{\widehat P_s}
+       {(E_T/M)^{A_s}F_s^{\rm finite}} .
+  \label{eq:charged-flux-hard-coefficient-from-detector}
+\end{equation}
+If two sharp angular-flux alternatives have identical detector-response
+columns, no detector observable in this resolution class separates them; only
+their sum in the corresponding response direction is determined.  This is
+the finite-resolution version of the earlier flux-sector warning.  A detector
+which sees only total charge collapses all alternatives with the same
+zero-mode charge into the same column and therefore cannot reconstruct the
+angular-flux-resolved coefficient.  Replacing
+\eqref{eq:charged-flux-detector-response-map} by
+\(|\sum_s\mathcal M_s|^2\) is a different observable, requiring a coherent
+sector-changing preparation and readout rather than ordinary flux-cell
+detection.
+\end{controlledapproximation}
+
 \begin{openproblem}[Haag--Ruelle and LSZ for nonconfining dressed charged sectors]
 \label{op:haag-ruelle-lsz-dressed-charged-sectors}
 Construct a large-time scattering theory for nonconfining gauge-theory

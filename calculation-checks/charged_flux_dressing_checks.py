@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from check_utils import assert_close as _assert_close
 from check_utils import assert_gt as _assert_gt
+from check_utils import assert_leq as _assert_leq
 
 import cmath
 import math
@@ -18,6 +19,11 @@ def assert_close(name: str, got: complex | float, expected: complex | float, tol
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
         raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
+
+
+def assert_not_equal(name: str, got: object, unexpected: object) -> None:
+    if got == unexpected:
+        raise AssertionError(f"{name} failed: got unexpected value {got!r}")
 
 
 def mat_vec(matrix: tuple[tuple[Fraction, ...], ...], vector: tuple[Fraction, ...]) -> tuple[Fraction, ...]:
@@ -933,6 +939,68 @@ def check_detector_inclusive_soft_projection() -> None:
     )
 
 
+def check_flux_cell_detector_response_extraction() -> None:
+    """Check finite detector response for flux-resolved charged rates."""
+
+    true_probabilities = (Fraction(3, 7), Fraction(5, 11))
+    response = (
+        (Fraction(3, 4), Fraction(1, 5)),
+        (Fraction(1, 4), Fraction(4, 5)),
+    )
+    inverse_response = inverse_2x2(response)
+    observed = mat_vec(response, true_probabilities)
+    reconstructed = mat_vec(inverse_response, observed)
+    assert_equal("calibrated flux-cell response inversion", reconstructed, true_probabilities)
+
+    background = (Fraction(1, 13), Fraction(1, 17))
+    residual = (Fraction(1, 101), -Fraction(1, 137))
+    measured = tuple(observed[i] + background[i] + residual[i] for i in range(2))
+    background_subtracted = tuple(measured[i] - background[i] for i in range(2))
+    reconstructed_with_residual = mat_vec(inverse_response, background_subtracted)
+    reconstruction_error = tuple(reconstructed_with_residual[i] - true_probabilities[i] for i in range(2))
+    propagated_residual = mat_vec(inverse_response, residual)
+    assert_equal("detector residual propagates through response inverse", reconstruction_error, propagated_residual)
+
+    for row, error in zip(inverse_response, reconstruction_error):
+        row_budget = sum(abs(row[c]) * abs(residual[c]) for c in range(2))
+        _assert_leq("detector inverse residual budget", abs(error), row_budget, tol=Fraction(0))
+
+    uncalibrated_identity_estimate = background_subtracted
+    assert_not_equal(
+        "uncalibrated identity detector response biases sharp flux probabilities",
+        uncalibrated_identity_estimate,
+        true_probabilities,
+    )
+
+    soft_factor = Fraction(3, 5)
+    hard_coefficients_squared = tuple(probability / soft_factor for probability in true_probabilities)
+    assert_not_equal(
+        "omitting detector soft factor biases hard coefficient",
+        true_probabilities,
+        hard_coefficients_squared,
+    )
+
+    singular_response = (
+        (Fraction(1, 2), Fraction(1, 2)),
+        (Fraction(1, 2), Fraction(1, 2)),
+    )
+    alternative_probabilities = (Fraction(5, 11), Fraction(3, 7))
+    assert_equal(
+        "singular flux detector preserves only total probability",
+        mat_vec(singular_response, true_probabilities),
+        mat_vec(singular_response, alternative_probabilities),
+    )
+
+    sector_amplitudes = (Fraction(2), Fraction(1))
+    incoherent_probability = sum(amplitude * amplitude for amplitude in sector_amplitudes)
+    coherent_wrong_probability = sum(sector_amplitudes) ** 2
+    assert_not_equal(
+        "coherent flux-sector amplitude sum is not detector probability",
+        coherent_wrong_probability,
+        incoherent_probability,
+    )
+
+
 def check_dressed_lsz_residue_coordinates() -> None:
     """Check the finite coordinate algebra behind dressed charged LSZ residues."""
 
@@ -1385,6 +1453,7 @@ def main() -> None:
     check_weyl_characteristic_and_overlap_decay()
     check_hilbert_soft_change_inner_equivalence()
     check_detector_inclusive_soft_projection()
+    check_flux_cell_detector_response_extraction()
     check_dressed_lsz_residue_coordinates()
     check_endpoint_cusp_renormalized_residue_flow()
     check_dressed_correlator_reduction_interface()

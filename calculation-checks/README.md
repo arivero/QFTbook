@@ -1046,10 +1046,17 @@ Current checks:
   projection behind a flux-resolved dressed LSZ coefficient: the exact
   coefficientwise cancellation after summing unresolved photons, the finite
   coherent-vector identity that leaves only the resolved-window no-emission
-  factor, the vanishing of fixed photon-number terms along an infrared
-  sequence, and the incoherent addition of orthogonal flux-sector
-  alternatives inside one detector cell.
-  It also verifies the
+	  factor, the vanishing of fixed photon-number terms along an infrared
+	  sequence, and the incoherent addition of orthogonal flux-sector
+	  alternatives inside one detector cell.  It also checks finite flux-cell
+	  detector-response extraction: a calibrated stochastic response matrix and
+	  its left inverse reconstruct sharp flux probabilities, residuals propagate
+	  through the inverse with the declared absolute-row budget, uncalibrated or
+	  singular detector responses fail to recover angular-flux-resolved
+	  probabilities, omitting the soft detector factor biases the hard
+	  coefficient, and coherent amplitude summation is rejected as the wrong
+	  detector observable.
+	  It also verifies the
   finite boundary-charge Ward bookkeeping for dressed correlators: abelian
   signed charges must sum to zero in vacuum matrix elements, and elementary
   \(SU(2)\) endpoint representations contribute only through singlet channels.

@@ -53,6 +53,10 @@ resonances.
   leading soft mismatch profile, unresolved and resolved detector-energy
   projectors, and the Bloch--Nordsieck angular coefficient used to pass from
   a flux-resolved coefficient to a detector-inclusive probability.
+- `Y_c`, `mathsf R_{cs}`, `mathsf L_{sc}`, `B_c`, `r_c`: observed
+  flux-cell rate, calibrated stochastic flux-response matrix, response left
+  inverse, background rate, and finite-window residual used to extract sharp
+  flux probabilities before dividing out soft factors.
 - `h_{0,Lambda}`, `W(f)`, `sigma(f,g)`: fixed infrared-sensitive photon
   one-particle space, Weyl operator, and real symplectic form.
 - `D_{lambda,Lambda}`: difference between two finite-cutoff charged soft
@@ -245,6 +249,13 @@ resonances.
   \((E_T/M)^{A_{\beta\alpha}}\) at leading logarithmic order, and coarse
   angular-flux detector cells add probabilities over orthogonal flux sectors
   rather than amplitudes.
+- Adds the finite flux-cell response bridge after the inclusive probability
+  formula: observed detector rates are a calibrated stochastic linear response
+  on sharp flux probabilities plus backgrounds and residuals, a response left
+  inverse reconstructs sharp probabilities with an explicit residual bound,
+  and the hard charged coefficient is extracted only after the soft and
+  detector factors are divided out.  Identical response columns are recorded
+  as a physical detector degeneracy, not as coherent amplitude interference.
 - Restricts the dressed charged Haag--Ruelle/LSZ open problem explicitly to
   nonconfining charged sectors with finite-energy physical charged asymptotic
   data; in a confining phase the relevant asymptotic particles are neutral
@@ -312,7 +323,13 @@ resonances.
   coherent-vector identity leaving only the resolved-window no-emission
   factor, fixed photon-number decay along an infrared sequence, and
   incoherent addition of orthogonal flux-sector alternatives inside one
-  detector cell.
+  detector cell.  It now also checks finite flux-cell detector response:
+  calibrated stochastic inversion reconstructs sharp flux probabilities,
+  finite residuals obey the propagated inverse-row budget, uncalibrated and
+  singular responses are rejected as negative controls, the soft detector
+  factor is required before hard-coefficient extraction, and coherent
+  amplitude summation is the wrong observable for ordinary flux-cell
+  detection.
 - The direct-integral velocity-fiber proposition is purely algebraic and has
   no numerical companion: it is a decomposability statement for the
   representation of the Weyl algebra.
@@ -424,6 +441,15 @@ resonances.
   sectors contribute as orthogonal alternatives rather than coherently summed
   amplitudes.  The companion check verifies the finite coherent and
   coefficientwise identities.
+- 2026-06-06 #527 flux-cell detector response pass: added the detector-side
+  calibration bridge immediately after the detector-inclusive probability
+  proposition.  The controlled approximation writes observed cell rates as a
+  stochastic response matrix on sharp flux probabilities, with backgrounds,
+  residuals, a calibrated left inverse, and an explicit residual-propagation
+  bound before extracting the hard coefficient.  The companion check rejects
+  uncalibrated identity response, singular response columns, omitted soft
+  factors, and coherent flux-amplitude sums.  This is a physical-output pass,
+  not a closure of the nonperturbative charged Haag--Ruelle theorem.
 - 2026-06-06 #527 endpoint/cusp residue-renormalization pass: inserted a
   residue-level RG bridge after the dressed-residue coordinate algebra.  The
   new subsection makes \(Z_{\rm dressed}\) concrete as the renormalization of
