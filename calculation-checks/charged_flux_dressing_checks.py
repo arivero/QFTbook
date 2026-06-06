@@ -959,6 +959,101 @@ def check_soft_profile_velocity_separation() -> None:
     assert_close("soft coherent norm log prefactor", norm_difference, expected)
 
 
+def weighted_square_distance(
+    left: tuple[Fraction, ...],
+    right: tuple[Fraction, ...],
+    weights: tuple[Fraction, ...],
+) -> Fraction:
+    return sum(weight * (a - b) * (a - b) for a, b, weight in zip(left, right, weights))
+
+
+def check_ray_velocity_matching_gate() -> None:
+    """Check that a wrong asymptotic ray is not a finite charged coordinate change."""
+
+    angular_weights = (Fraction(2), Fraction(3), Fraction(5), Fraction(7))
+    velocity_matched_profile = (Fraction(1, 2), Fraction(-1, 3), Fraction(2, 5), Fraction(-1, 7))
+    same_ray_profile = velocity_matched_profile
+    wrong_ray_profile = (Fraction(2, 3), Fraction(-1, 5), Fraction(1, 4), Fraction(-2, 9))
+
+    matched_mismatch = weighted_square_distance(
+        velocity_matched_profile, same_ray_profile, angular_weights
+    )
+    wrong_ray_mismatch = weighted_square_distance(
+        velocity_matched_profile, wrong_ray_profile, angular_weights
+    )
+    assert_equal("velocity-matched ray has zero homogeneous soft mismatch", matched_mismatch, Fraction(0))
+    if wrong_ray_mismatch <= 0:
+        raise AssertionError("wrong ray should have a positive homogeneous soft mismatch")
+
+    previous_log_norm: Fraction | None = None
+    for logarithmic_window in (3, 6, 12):
+        log_norm = wrong_ray_mismatch * logarithmic_window
+        if previous_log_norm is not None and log_norm <= previous_log_norm:
+            raise AssertionError("wrong-ray soft norm should grow with the infrared logarithm")
+        previous_log_norm = log_norm
+
+    def dyadic_sum(start: int, term) -> Fraction:
+        return sum((term(n) for n in range(start, 2 * start)), Fraction(0))
+
+    for start in (32, 128, 512):
+        wrong_ray_tail = dyadic_sum(start, lambda n: wrong_ray_mismatch / n)
+        if wrong_ray_tail <= wrong_ray_mismatch / 2:
+            raise AssertionError("wrong-ray mismatch should leave a persistent dyadic log tail")
+
+    previous_compact_tail: Fraction | None = None
+    for start in (32, 128, 512):
+        compact_same_ray_tail = dyadic_sum(start, lambda n: wrong_ray_mismatch / (n * n))
+        if compact_same_ray_tail >= wrong_ray_mismatch / (start - 1):
+            raise AssertionError("compact same-ray deformation should have a summable derivative tail")
+        if previous_compact_tail is not None and compact_same_ray_tail >= previous_compact_tail:
+            raise AssertionError("compact same-ray deformation tails should decrease")
+        previous_compact_tail = compact_same_ray_tail
+
+    pairing_matrix = (
+        (Fraction(5), Fraction(1), Fraction(0), Fraction(2)),
+        (Fraction(1), Fraction(3), Fraction(1), Fraction(0)),
+        (Fraction(0), Fraction(1), Fraction(4), Fraction(1)),
+        (Fraction(2), Fraction(0), Fraction(1), Fraction(6)),
+    )
+    partner_flux = (Fraction(3), Fraction(-2), Fraction(5), Fraction(1))
+    matched_kappa = bilinear_pairing(velocity_matched_profile, pairing_matrix, partner_flux)
+    wrong_ray_kappa = bilinear_pairing(wrong_ray_profile, pairing_matrix, partner_flux)
+    coefficient_error = abs(wrong_ray_kappa - matched_kappa)
+    assert_not_equal("wrong ray changes the angular Dollard coefficient", wrong_ray_kappa, matched_kappa)
+    for start in (32, 128, 512):
+        coefficient_tail = dyadic_sum(start, lambda n: coefficient_error / n)
+        if coefficient_tail <= coefficient_error / 2:
+            raise AssertionError("wrong-ray Dollard coefficient should leave a dyadic 1/t tail")
+
+    hard_coefficient = Fraction(4, 9)
+    matched_soft_factor = Fraction(7, 5)
+    wrong_soft_factor = matched_soft_factor / (1 + wrong_ray_mismatch)
+    observed_boundary_value = hard_coefficient * matched_soft_factor
+    assert_equal(
+        "matched soft division extracts the hard charged coefficient",
+        observed_boundary_value / matched_soft_factor,
+        hard_coefficient,
+    )
+    assert_not_equal(
+        "wrong-ray soft division leaves a residual factor",
+        observed_boundary_value / wrong_soft_factor,
+        hard_coefficient,
+    )
+
+    total_charge_profile = sum(velocity_matched_profile, Fraction(0))
+    charge_only_profile = (total_charge_profile, Fraction(0), Fraction(0), Fraction(0))
+    assert_equal(
+        "charge-only shortcut preserves only the zero mode",
+        sum(charge_only_profile, Fraction(0)),
+        total_charge_profile,
+    )
+    assert_not_equal(
+        "charge-only shortcut does not determine the ray-matched pair coefficient",
+        bilinear_pairing(charge_only_profile, pairing_matrix, partner_flux),
+        matched_kappa,
+    )
+
+
 def inner_complex(a: tuple[complex, ...], b: tuple[complex, ...]) -> complex:
     return sum(x.conjugate() * y for x, y in zip(a, b))
 
@@ -1734,6 +1829,7 @@ def main() -> None:
     check_truncation_schedule_tail_uniformity()
     check_finite_energy_spectral_tightness_boundary()
     check_soft_profile_velocity_separation()
+    check_ray_velocity_matching_gate()
     check_weyl_characteristic_and_overlap_decay()
     check_hilbert_soft_change_inner_equivalence()
     check_detector_inclusive_soft_projection()

@@ -3221,6 +3221,69 @@ directions.  A Haag--Ruelle replacement for massless charged sectors must
 therefore build its asymptotic representation with the charged velocity and
 flux label included from the start.
 
+\begin{controlledapproximation}[Ray--velocity matching for charged external data]
+\label{ca:charged-ray-velocity-matching}
+In the finite-cutoff abelian model, an external massive charged packet with
+velocity support \(V\subset B_1(0)\) must be dressed by an asymptotic ray or
+Coulomb profile assigned over the same velocity cell.  Write this assignment
+as \(\Gamma(\mathbf v)\), and let its homogeneous soft profile be
+\(F_{q,\Gamma(\mathbf v),\lambda,\Lambda}\).  The admissible matching
+condition is
+\[
+  F_{q,\Gamma(\mathbf v),\lambda,\Lambda}
+  =
+  F_{q,\mathbf v,\lambda,\Lambda}
+  +
+  \Delta_{\mathbf v,\lambda,\Lambda},
+  \qquad
+  \sup_{\mathbf v\in V}
+  \limsup_{\lambda\downarrow0}
+  \|\Delta_{\mathbf v,\lambda,\Lambda}\|_{\mathfrak h_{\lambda,\Lambda}}
+  <\infty ,
+\]
+for each fixed ultraviolet window \(\Lambda\).  Thus compact changes of the
+path, or finite Hilbert soft reparametrizations inside one flux block, are
+allowed; replacing the velocity profile by a different asymptotic ray is not.
+
+Indeed, if the same packet velocity \(\mathbf v\) is divided by a dressing
+profile built from a different velocity \(\mathbf w\), then
+Proposition~\ref{prop:soft-coherent-velocity-separation} gives
+\[
+  \|F_{q,\mathbf v,\lambda,\Lambda}
+     -F_{q,\mathbf w,\lambda,\Lambda}\|^2
+  =
+  \frac{q^2}{2(2\pi)^3}
+  \log\frac{\Lambda}{\lambda}\,
+  \mathcal A(\mathbf v,\mathbf w),
+  \qquad
+  \mathcal A(\mathbf v,\mathbf w)>0 .
+\]
+The mismatch is therefore a new infrared sector, not a finite coordinate
+change of the external charged shell.  In the soft-subtracted boundary-value
+notation this says that the factor removed from a leg with momentum \(p\)
+must be the one with \(p^\mu=m u^\mu\):
+\[
+  \frac{p\cdot e_h(k)}{p\cdot k-\ii0}
+  =
+  \frac{u\cdot e_h(k)}{u\cdot k-\ii0}.
+\]
+Using another ray \(u'\) leaves a residual homogeneous \(1/r\) soft profile.
+In the Dollard comparison the same mistake appears as a nonzero limiting
+coefficient error \(\delta\kappa\), hence as an unremoved
+\(\delta\kappa\,\dd t/t\) phase derivative.  The large-time scalar products
+then retain the factor \(\exp(\ii\delta\kappa\log t)\), or the finite-cutoff
+coherent overlap vanishes as the infrared cutoff is removed.
+
+Consequently a dressed LSZ coordinate is not specified by charge and an
+arbitrary Wilson-line path alone.  For each charged external packet one must
+record the velocity cell, the associated angular flux character, and the
+matched asymptotic ray or Coulomb tail before applying the left inverse in
+\eqref{eq:dressed-lsz-flux-block-overlap}.  Negative tests are now precise:
+a fixed ray used for all charged momenta, a charge-only soft factor, or an
+\(R\)-matrix that mixes different asymptotic rays cannot be repaired by the
+same-flux coordinate algebra of \eqref{eq:dressed-lsz-left-inverse-residue}.
+\end{controlledapproximation}
+
 \subsection{Weyl Implementation and the Failure of a Common Photon Fock Space}
 
 The preceding norm calculation has an operator-algebraic meaning.  For

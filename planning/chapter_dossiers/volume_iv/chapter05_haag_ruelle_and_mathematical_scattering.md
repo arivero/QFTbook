@@ -46,6 +46,9 @@ resonances.
   the charged velocity.
 - `A(v,w)`: positive angular coefficient controlling the infrared logarithm
   in the norm difference between two charged soft profiles.
+- `Gamma(v)`: velocity-matched asymptotic Wilson-line ray or Coulomb-tail
+  assignment for a charged external packet; a wrong ray produces a new
+  homogeneous soft profile rather than a finite same-flux coordinate change.
 - `M^{mathfrak F',mathfrak F}_{beta alpha}`: flux-resolved charged
   coefficient extracted by the dressed LSZ interface for hard data
   `alpha -> beta`.
@@ -254,6 +257,12 @@ resonances.
   \(\log(\Lambda/\lambda)\mathcal A(v,w)\), with
   \(\mathcal A(v,w)>0\) off the diagonal; this gives the explicit
   finite-Fock calculation behind velocity-labelled charged sectors.
+- Adds the ray--velocity matching controlled approximation for charged
+  external data: the asymptotic Wilson-line ray or Coulomb tail assigned to a
+  massive charged packet must match the packet velocity cell up to a finite
+  Hilbert soft change.  A different ray leaves logarithmic soft-profile
+  growth, changes the Dollard coefficient, and prevents soft-subtracted
+  boundary values from extracting the hard charged coefficient.
 - Defines the finite-cutoff Weyl algebra, derives the coherent-state
   characteristic functional, and proves that the Weyl implementers changing
   between distinct charged velocities have no strong operator limit and no
@@ -305,6 +314,10 @@ resonances.
   decay of the log-subtracted Coulomb pair remainder on large dyadic time
   intervals, and sample positivity plus logarithmic normalization for the
   soft coherent velocity-separation coefficient.  It also checks the
+  ray--velocity matching gate: zero homogeneous mismatch for the matched ray,
+  logarithmic wrong-ray growth, wrong angular Dollard coefficient, wrong soft
+  division in hard-coefficient extraction, and negative controls for
+  charge-only and compact-deformation shortcuts.  It also checks the
   finite-dimensional Weyl/coherent characteristic functional and the monotone
   decay of the coherent overlap as the infrared cutoff is removed.  The same
   script now checks the finite Hilbert soft-coordinate transformation law and
@@ -494,6 +507,14 @@ resonances.
   The companion check includes a matter-field-only normalization negative
   control, keeping the pass on external-state physics rather than abstract
   charged-coordinate bookkeeping.
+- 2026-06-06 #527 ray--velocity matching pass: inserted a controlled
+  approximation after the soft coherent velocity-separation calculation.  The
+  new block makes the asymptotic Wilson-line ray part of the external
+  velocity/flux datum and rejects fixed-ray, charge-only, and cross-ray
+  coordinate shortcuts.  The companion finite check exercises wrong-ray
+  logarithmic growth, wrong Dollard coefficients, wrong soft division, and the
+  summability of compact same-ray deformations.  This is a physics-facing
+  extraction gate, not another abstract Wilson-line path-geometry cell.
 - 2026-06-01 #527 continuation: added finite many-body Dollard bookkeeping
   after the one-pair Coulomb-tail calculation.  The new paragraph defines the
   creator/adjoint signs, the pairwise derivative of the comparison phase, the

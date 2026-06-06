@@ -1075,6 +1075,11 @@ Current checks:
   pair/core \(L^1\) budget, while omitting one charged pair leaves a dyadic
   \(1/t\) obstruction and decaying same-flux coefficient errors remain
   summable.  It also checks
+  the ray--velocity matching gate for charged external data: a velocity-matched
+  ray has zero homogeneous mismatch, a wrong ray produces logarithmic soft-norm
+  growth, changes the angular Dollard coefficient, spoils hard-coefficient
+  extraction if the wrong soft factor is divided out, and cannot be replaced
+  by a charge-only profile or compact same-ray deformation.  It also checks
   the finite angular-flux pairing coefficient: the perturbation expansion is
   bilinear in the cell fluxes, same total charge need not determine the
   Dollard coefficient, a charge-only shortcut leaves a dyadic \(1/t\) tail,
