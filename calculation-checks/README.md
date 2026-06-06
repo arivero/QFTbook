@@ -342,7 +342,10 @@ Current checks:
   It also checks the additive dependency-budget arithmetic behind the common
   QCD factorization ladder, including the load-bearing boundary, Glauber, and
   projective-state terms for compact DIS, Drell--Yan/TMD, and small-\(x\)
-  JIMWLK variants.
+  JIMWLK variants, and exact endpoint-cell arithmetic for the tested DIS
+  threshold plus-distribution window, with negative controls against replacing
+  the plus prescription by an ordinary pole or replacing a threshold theorem by
+  the cusp term alone.
 - `qcd_cusp_large_spin_checks.py`: finite checks for the Volume II cusped
   Wilson-line/large-spin section, including the Euclidean cusp angular
   integral \(J(\phi)=\phi\cot\phi\), smooth-line subtraction, the Lorentzian

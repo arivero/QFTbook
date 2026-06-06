@@ -648,6 +648,14 @@ The chapter must define and derive:
       JIMWLK use different entries in this ladder, so finite checks of
       individual identities are explicitly inputs to, not replacements for,
       process-level factorization theorems.
+22bca. The DIS endpoint section now includes a tested threshold
+       plus-distribution window.  The distributions
+       \(D_k=[\log^k(1-x)/(1-x)]_+\) act on
+       \(\varphi(x)-\varphi(1)\), with explicit terminal-cell bounds and
+       Taylor coefficients for \(D_0\) and \(D_1\).  Large-\(N\) cusp moments
+       are recorded as moving-test-function probes, while a physical threshold
+       approximation still requires hard, jet, soft, evolution, contour, and
+       power-remainder data.
 22bd. The leading small-\(x\) inclusive-DIS dipole channel is now an
       instantiated measured-observable bridge rather than an abstract
       Wilson-line statement: the transverse/longitudinal photon wave-function
@@ -1324,3 +1332,13 @@ The chapter must define and derive:
   value.  The companion now derives \(\ell_{\zeta_A},\ell_{\zeta_B}\) from
   the declared \(\zeta\)-split and rejects the factor-two convention in a
   non-diagonal channel.
+- 2026-06-06 issue #630 DIS threshold test-window pass: added
+  `ca:qcd-dis-threshold-plus-distribution-window` to separate the
+  distributional cusp endpoint kernel from a full physical threshold theorem.
+  The text now shows the \(D_0,D_1\) terminal-cell bounds and Taylor
+  coefficients against measured test functions, explains why large-\(N\)
+  moments are a moving endpoint probe rather than compact-\(x\) uniformity, and
+  records the hard/jet/soft/evolution/contour/power data required by a genuine
+  threshold approximation.  `calculation-checks/qcd_dglap_checks.py` now
+  verifies the exact endpoint-cell arithmetic and rejects the ordinary-pole and
+  cusp-only shortcuts.

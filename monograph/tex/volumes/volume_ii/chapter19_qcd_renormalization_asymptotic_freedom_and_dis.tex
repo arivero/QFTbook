@@ -12661,6 +12661,87 @@ planar large-spin function in a special conformal theory.  The small-\(x\)
 limit is a different boundary of the same DIS observable and is not obtained
 by continuing the threshold expansion.
 
+\begin{controlledapproximation}[Tested DIS threshold plus-distribution window]
+\label{ca:qcd-dis-threshold-plus-distribution-window}
+Let
+\[
+  D_k(x):=\left[\frac{\log^k(1-x)}{1-x}\right]_+,\qquad k\ge0,
+\]
+so that, for a smooth test function \(\varphi\),
+\begin{equation}
+  \langle D_k,\varphi\rangle
+  =
+  \int_0^1
+  \frac{\log^k(1-x)}{1-x}
+  \bigl(\varphi(x)-\varphi(1)\bigr)\,\dd x .
+  \label{eq:qcd-dis-threshold-plus-action}
+\end{equation}
+The subtraction is the physical endpoint datum.  The cusp kernel sees the
+variation of the measured weight near \(x=1\), not the value of the inclusive
+bin at the elastic endpoint.  On a terminal cell \(1-\delta\le x\le1\), with
+\(0<\delta<1\),
+\begin{align}
+  \left|\int_{1-\delta}^1
+  \frac{\varphi(x)-\varphi(1)}{1-x}\,\dd x\right|
+  &\le
+  \|\varphi'\|_{L^\infty([1-\delta,1])}\,\delta,
+  \label{eq:qcd-dis-d0-terminal-bound}\\
+  \left|\int_{1-\delta}^1
+  \frac{\log(1-x)}{1-x}
+  \bigl(\varphi(x)-\varphi(1)\bigr)\,\dd x\right|
+  &\le
+  \|\varphi'\|_{L^\infty([1-\delta,1])}\,
+  \delta\bigl(1+|\log\delta|\bigr).
+  \label{eq:qcd-dis-d1-terminal-bound}
+\end{align}
+Equivalently, writing \(u=1-x\) and
+\(\varphi(1-u)=\varphi(1)-a_1u+a_2u^2+O(u^3)\), the terminal cell contributes
+\begin{align}
+  \langle D_0,\varphi\rangle_{\delta}
+  &=
+  -a_1\delta+\frac{a_2}{2}\delta^2+O(\delta^3),
+  \label{eq:qcd-dis-d0-terminal-taylor}\\
+  \langle D_1,\varphi\rangle_{\delta}
+  &=
+  -a_1\delta(\log\delta-1)
+  +\frac{a_2}{2}\delta^2\left(\log\delta-\frac12\right)
+  +O(\delta^3|\log\delta|).
+  \label{eq:qcd-dis-d1-terminal-taylor}
+\end{align}
+Thus the Mellin identity
+\[
+  \langle D_0,x^{N-1}\rangle=-H_{N-1}
+  =
+  -\log N-\gamma_{\rm E}+O(N^{-1})
+\]
+is a large-\(N\) probe of a moving family of test functions.  It is not a
+uniform consequence of the compact-\(x\) factorization statement on fixed test
+functions supported away from \(x=1\).
+
+A threshold theorem for DIS must therefore carry more data than the cusp
+coefficient.  A moment-space coordinate for the approximation datum is
+\begin{equation}
+  F_{i,N}^{\rm thr}(Q)
+  =
+  H_i(Q,\mu_h)\,
+  U_H\,
+  J_{i,N}(Q,\mu_j)\,
+  U_J\,
+  S_{i,N}(\mu_s)\,
+  U_S\,
+  f_N(\mu_f)
+  +R_{i,N}^{\rm thr},
+  \label{eq:qcd-dis-threshold-factorized-coordinate}
+\end{equation}
+where the hard current, final-state jet, soft Wilson-line matrix element,
+evolution kernels, Mellin-inversion contour or prescription, and remainder
+\(R_{i,N}^{\rm thr}\) are part of the approximation datum.  The cusp anomalous
+dimension controls the leading double-logarithmic evolution shared by these
+factors; it does not by itself determine the finite matching constants, the
+soft measurement convention, the prescription near the Landau boundary, or the
+power remainders such as \(1/N\) and \(N\Lambda_{\rm QCD}/Q\).
+\end{controlledapproximation}
+
 \section{\texorpdfstring{Small-\(x\) Boundary, Dipoles, and the BFKL Kernel}
 {Small-x Boundary, Dipoles, and the BFKL Kernel}}
 \label{sec:qcd-small-x-bfkl}
