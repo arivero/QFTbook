@@ -293,9 +293,104 @@ produce two rank conditions, one for the right-handed overlap matrix and one
 for the left-handed overlap matrix.  Only after these gates have been passed
 does the size integral define the hard coefficient.
 
+\begin{proposition}[Individual zero-mode slot in the hard channel]
+\label{prop:instanton-hard-individual-zero-mode-slot}
+The hard four-source channel uses the Fourier transform of individual BPST
+fermion zero modes.  In the singular-gauge slot normalization of
+Proposition~\ref{prop:instanton-individual-zero-mode-form-factor}, after the
+spin-color tensor and the adjacent amputation convention have been separated,
+the scalar slot profile is
+\begin{equation}
+  F_{\rm zm}(t)
+  =
+  -t\frac{\dd}{\dd t}
+  \bigl[I_0(t)K_0(t)-I_1(t)K_1(t)\bigr]
+  =
+  2t\bigl[I_0(t)K_1(t)-I_1(t)K_0(t)\bigr]
+  -2I_1(t)K_1(t),
+  \label{eq:instanton-physical-individual-slot-form-factor}
+\end{equation}
+where \(t=\rho |p|/2\).  It has local limit \(F_{\rm zm}(0)=1\), while
+\begin{equation}
+  F_{\rm zm}(t)
+  =
+  \frac{3}{4t^3}+O(t^{-5})
+  =
+  \frac{6}{(\rho |p|)^3}
+  +O((\rho |p|)^{-5}).
+  \label{eq:instanton-physical-individual-slot-tail}
+\end{equation}
+Thus, for four hard slots with \(|p_\ell|=c_\ell Q\) and \(s=Q\rho\),
+\begin{equation}
+  \prod_{\ell=1}^4 F_{\rm zm}(c_\ell s/2)
+  =
+  6^4
+  \left(\prod_{\ell=1}^4c_\ell^{-3}\right)
+  s^{-12}
+  +O(s^{-14})
+  \label{eq:instanton-physical-four-slot-product-tail}
+\end{equation}
+when the \(c_\ell\)'s are held fixed away from zero.  A fused bilinear-density
+source instead uses \(zK_1(z)\) and has exponential large-\(z\) decay.  The
+two source types therefore define different endpoint problems before any
+physical projection is taken.
+\end{proposition}
+
+\begin{proof}
+The first equality in
+\eqref{eq:instanton-physical-individual-slot-form-factor} is the
+singular-gauge Fourier transform of the normalized fundamental zero mode
+after its spin-color tensor has been factored out.  Differentiating
+\(\Phi(t)=I_0(t)K_0(t)-I_1(t)K_1(t)\), using
+\[
+  I_0'=I_1,\qquad
+  I_1'=I_0-\frac{I_1}{t},\qquad
+  K_0'=-K_1,\qquad
+  K_1'=-K_0-\frac{K_1}{t},
+\]
+gives the second expression in
+\eqref{eq:instanton-physical-individual-slot-form-factor}.  The small-\(t\)
+expansions \(I_0=1+O(t^2)\), \(I_1=t/2+O(t^3)\), and
+\(K_1=t^{-1}+O(t\log t)\) give \(F_{\rm zm}(0)=1\).
+
+For the hard endpoint, use the large-\(t\) products
+\[
+\begin{aligned}
+  I_0K_1
+  &=
+  \frac1{2t}
+  \left(1+\frac1{2t}+\frac{3}{16t^3}+O(t^{-5})\right),\\
+  I_1K_0
+  &=
+  \frac1{2t}
+  \left(1-\frac1{2t}-\frac{3}{16t^3}+O(t^{-5})\right),\\
+  I_1K_1
+  &=
+  \frac1{2t}
+  \left(1-\frac{3}{8t^2}+O(t^{-4})\right).
+\end{aligned}
+\]
+Then
+\[
+  2t(I_0K_1-I_1K_0)
+  =
+  \frac1t+\frac{3}{8t^3}+O(t^{-5}),
+  \qquad
+  2I_1K_1
+  =
+  \frac1t-\frac{3}{8t^3}+O(t^{-5}).
+\]
+The \(t^{-1}\) terms cancel in \(F_{\rm zm}\), leaving
+\(3/(4t^3)+O(t^{-5})\).  Substituting \(t=c_\ell s/2\) gives the
+single-slot coefficient \(6c_\ell^{-3}s^{-3}\), and multiplying the four
+fixed hard slots gives
+\eqref{eq:instanton-physical-four-slot-product-tail}.
+\end{proof}
+
 Let \(Q_\ell=c_\ell Q\), \(c_\ell>0\), be the four hard source scales, and let
-\(F_\ell(c_\ell Q\rho)\) denote the individual zero-mode form factor in the
-declared source normalization.  After the center delta, common determinant
+\(F_\ell(c_\ell Q\rho)\) denote the corresponding individual zero-mode slot
+form factor, including any bounded source-window factor in the declared
+source normalization.  After the center delta, common determinant
 constant, Haar contraction, amputation convention, and source-overlap
 determinants have been pulled into a prefactor \(\mathcal K_{\rm gate}\), the
 stripped one-instanton hard coefficient has the form
@@ -343,7 +438,8 @@ After \(s=Q\rho\), the hard coefficient carries the scale power
   \label{eq:instanton-hard-four-source-scale-power}
 \end{equation}
 which is the mass dimension of a four-fermion coefficient.  If all four
-individual zero-mode form factors have the large-\(s\) tail
+individual zero-mode form factors are the singular-gauge hard slots in
+Proposition~\ref{prop:instanton-hard-individual-zero-mode-slot}, so that
 \[
   F_\ell(c_\ell s)=6c_\ell^{-3}s^{-3}+O(s^{-5}),
 \]

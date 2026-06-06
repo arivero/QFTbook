@@ -770,6 +770,8 @@ Current checks:
   the one-loop density RG gate, the distinction between density-only,
   mass-saturated, and hard four-source size powers, finite determinant
   constant cancellation only in transported same-channel ratios,
+  the individual BPST zero-mode slot tail from the Bessel-product cancellation
+  \(F_{\rm zm}(cs/2)=6c^{-3}s^{-3}+O(s^{-5})\),
   the two-flavor \(\det(M+B)\) source/mass polynomial, the distinction between
   mass-saturated vacuum activity and the four-source coefficient,
   moduli-equivalent channels with different or zero amplitudes because of
@@ -779,8 +781,9 @@ Current checks:
   ratio controls, the retained-cell residual bound, and the \(2\times2\)
   source-determinant stability estimate, with negative controls for an
   off-diagonal determinant sign flip, moduli-only prediction, rank-one source
-  shortcut, determinant-only hard ratio, missing hard slot, one-number spectral
-  projection, and omitted external residual.
+  shortcut, fused-density endpoint substitution, unamputated residue
+  absorption, determinant-only hard ratio, missing hard slot, one-number
+  spectral projection, and omitted external residual.
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
   gauge-Higgs soliton and collective-coordinate section, including the
   Bogomolny and vortex square completions, the Prasad-Sommerfield profile

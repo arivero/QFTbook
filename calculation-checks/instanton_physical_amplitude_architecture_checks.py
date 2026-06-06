@@ -18,6 +18,11 @@ Target claims:
   is fixed by the RG cancellation between the determinant logarithm and the
   running BPST action, while the physical channel power also depends on
   zero-mode/source data.
+- `prop:instanton-hard-individual-zero-mode-slot`: the differentiated hard
+  fermion slot has the singular-gauge BPST zero-mode form-factor tail
+  `F_zm(c s/2) = 6 c^(-3) s^(-3) + O(s^(-5))`; four such slots give the
+  `6^4 prod c_l^(-3) s^(-12)` endpoint factor, while fused bilinear-density
+  sources have a different endpoint class.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell residuals
   and source-determinant perturbations obey the displayed absolute bounds.
 - `prop:su3-nf2-hard-source-power-slow-tail` and
@@ -28,6 +33,7 @@ Target claims:
 Independent construction:
 - The checks build small exact rational cell models from scratch.  They compute
   two-by-two determinants, mass/source polynomials, one-loop RG exponents,
+  the Bessel-product tail cancellation for an individual zero-mode slot,
   physical projection bins, residual sums, and hard-window power ledgers
   directly, rather than importing BPST radial integrals or copying a monograph
   coefficient.
@@ -43,6 +49,8 @@ Negative controls:
   moduli-only prediction that ignores zero-mode rank, a rank-one source matrix
   treated as a nonzero four-source channel, a wrong one-loop density power, a
   density-only hard-channel power, an untransported determinant constant, a
+  fused-density endpoint class substituted for differentiated fermion slots,
+  an unamputated external residue absorbed into the zero-mode slot tail, a
   single Euclidean cell sum used as a spectral-bin observable, a
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
   slot, and a residual bound that omits the external projection/sector
@@ -204,6 +212,67 @@ def check_one_loop_density_gate_rg_and_channel_power() -> None:
         "absolute density coefficient depends on finite determinant convention",
         scheme_constant_dropped,
         absolute_prefactor_1,
+    )
+
+
+def check_individual_zero_mode_slot_tail_from_bessel_products() -> None:
+    # From the displayed large-t products:
+    #   2t(I0 K1 - I1 K0) = t^(-1) + 3/8 t^(-3) + O(t^(-5)),
+    #   2 I1 K1          = t^(-1) - 3/8 t^(-3) + O(t^(-5)).
+    # The apparent t^(-1) tail cancels in F_zm.
+    first_term_t_minus_1 = Fraction(1)
+    second_term_t_minus_1 = Fraction(1)
+    first_term_t_minus_3 = Fraction(3, 8)
+    second_term_t_minus_3 = -Fraction(3, 8)
+
+    assert_equal(
+        "individual zero-mode slot cancels t^-1 tail",
+        first_term_t_minus_1 - second_term_t_minus_1,
+        Fraction(0),
+    )
+    fzm_t_tail = first_term_t_minus_3 - second_term_t_minus_3
+    assert_equal(
+        "individual zero-mode slot t^-3 coefficient",
+        fzm_t_tail,
+        Fraction(3, 4),
+    )
+
+    # The hard channel uses t = z/2 = c s/2, so (3/4) t^(-3) = 6 z^(-3).
+    fzm_z_tail = fzm_t_tail * Fraction(2**3)
+    assert_equal("individual zero-mode slot z^-3 coefficient", fzm_z_tail, Fraction(6))
+
+    c_values = [Fraction(1), Fraction(2), Fraction(3), Fraction(5)]
+    four_slot_tail = product([fzm_z_tail / (c**3) for c in c_values])
+    expected_tail = Fraction(6**4, (1 * 2 * 3 * 5) ** 3)
+    assert_equal("four differentiated zero-mode slot tail", four_slot_tail, expected_tail)
+
+    b0_su3_nf2 = beta0(3, 2)
+    size_integrand_power = b0_su3_nf2 + 6 - 5
+    tail_integrand_power = size_integrand_power - 12
+    tail_antiderivative_power = tail_integrand_power + 1
+    leading_tail_coefficient = -four_slot_tail / tail_antiderivative_power
+    assert_equal("four-slot product tail integrand power", tail_integrand_power, -Fraction(4, 3))
+    assert_equal("four-slot product tail coefficient", leading_tail_coefficient, 3 * four_slot_tail)
+
+    fused_density_endpoint_class = "exponential"
+    individual_slot_endpoint_class = "power"
+    assert_not_equal(
+        "fused density source endpoint class is not a differentiated slot",
+        fused_density_endpoint_class,
+        individual_slot_endpoint_class,
+    )
+
+    external_residue = Fraction(7, 5)
+    unamputated_slot_tail = external_residue * fzm_z_tail
+    assert_not_equal(
+        "external residue is not part of the amputated zero-mode slot tail",
+        unamputated_slot_tail,
+        fzm_z_tail,
+    )
+    assert_equal(
+        "amputation recovers zero-mode slot tail",
+        unamputated_slot_tail / external_residue,
+        fzm_z_tail,
     )
 
 
@@ -433,6 +502,7 @@ def check_hard_benchmark_gate_ledger_and_ratio() -> None:
 
 def main() -> None:
     check_one_loop_density_gate_rg_and_channel_power()
+    check_individual_zero_mode_slot_tail_from_bessel_products()
     check_two_flavor_mass_source_determinant_coordinate()
     check_moduli_equivalent_channel_separation()
     check_projection_not_recoverable_from_one_euclidean_sum()

@@ -45,6 +45,10 @@
 - `sec:instanton-hard-four-fermion-benchmark`: hard two-flavor four-source
   benchmark, organized as center, Haar, zero-mode-rank, amputation,
   size-window, and physical-projection gates.
+- `prop:instanton-hard-individual-zero-mode-slot`: derives the individual
+  singular-gauge BPST zero-mode slot profile used by the hard four-source
+  amplitude, including `F_zm(0)=1`, the `6 (rho |p|)^(-3)` tail, and the
+  four-slot product `6^4 prod c_l^(-3) s^(-12)`.
 - `prop:su3-nf2-hard-source-power-slow-tail`: derives the SU(3), `N_f=2`
   hard four-source powers `rho^(32/3) d rho`,
   `Lambda_ht^(29/3) Q^(-35/3)`, and the slow `R^(-1/3)` large-size tail.
@@ -76,6 +80,11 @@
   four-source channel: center conservation, shared Haar projection, two
   zero-mode source determinants, amputation, hard form factors, and endpoint
   tails must all be part of the coefficient before a scale law is quoted.
+- The individual-slot form-factor block opens one of the hard channel's
+  previously compressed inputs: the endpoint tail comes from the cancellation
+  of the apparent `t^(-1)` terms in the BPST zero-mode Bessel products, giving
+  the differentiated-slot power tail rather than the fused-density exponential
+  source class.
 - The `Q^(-35/3)` hard-scale behavior is tied to `b0=29/3` and four individual
   hard zero-mode form factors.  The large-size endpoint is convergent but slow,
   with a retained-tail majorant of order `R^(-1/3)`, so a window/stability
@@ -99,6 +108,9 @@
   off-diagonal sign, separates mass-saturated and four-source coordinates,
   verifies the one-loop density RG gate and the distinction between
   density-only, mass-saturated, and hard four-source size powers,
+  derives the individual zero-mode slot tail coefficient from the Bessel
+  product cancellation and rejects fused-density endpoint substitution or
+  hidden unamputated residues,
   builds moduli-equivalent finite cell channels with different or vanishing
   amplitudes, constructs a same-Euclidean-sum/different-projection ambiguity,
   checks the SU(3), `N_f=2` hard four-source scale and tail powers, validates
@@ -127,3 +139,7 @@
   explains why the density contains fluctuation data and why the hard
   four-source channel still needs zero-mode/source powers, endpoint windows,
   and scheme transport before the amplitude is defined.
+- 2026-06-06 individual-slot form-factor pass: expanded the hard benchmark by
+  deriving the BPST zero-mode slot tail in the physical-amplitude chapter and
+  pairing it with a focused companion check.  This is amplitude/source
+  machinery, not a moduli-space refinement.
