@@ -244,6 +244,79 @@ projection have been transported.  A computation which keeps
 \(\mathcal B_{\mathcal C}^{\rho}\) has not computed the channel amplitude.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Zero-mode Jacobian gate]
+\label{ca:instanton-collective-jacobian-gauge-slice}
+The collective measure is also a fluctuation calculation, not a dimension
+count.  Choose a finite regulator and a local slice through the instanton
+orbit.  For coordinates \(q^i\) on the retained chart, let
+\[
+  \psi_i(z)
+  =
+  \Pi_z^{\perp}
+  \frac{\partial A_z}{\partial q^i},
+  \qquad i=1,\ldots,m,
+\]
+be the horizontal zero-mode representatives after infinitesimal gauge
+directions and any residual stabilizer have been removed.  The bosonic
+zero-mode metric in the same action and counterterm convention is
+\begin{equation}
+  \mathcal G_{ij}^{0}(z)
+  =
+  \frac{1}{g_{\rm ht}^2(\mu)}
+  \langle \psi_i(z),\psi_j(z)\rangle_{\Lambda}
+  +\mathcal G^{\rm ct}_{ij}(z).
+  \label{eq:instanton-zero-mode-gram-metric}
+\end{equation}
+If the path-integral measure is written in orthonormal zero-mode
+coefficients \(c_r\), the zero-mode replacement is
+\begin{equation}
+  \prod_{r=1}^{m}\frac{\dd c_r}{\sqrt{2\pi}}
+  \quad\rightsquigarrow\quad
+  \frac{\sqrt{\det\mathcal G^{0}(z)}}{(2\pi)^{m/2}\mathcal V_{\rm stab}(z)}
+  \prod_{i=1}^{m}\dd q^i .
+  \label{eq:instanton-zero-mode-jacobian-replacement}
+\end{equation}
+Here \(\mathcal V_{\rm stab}\) is the finite residual gauge stabilizer or
+quotient volume in the chosen slice.  For a charge-one \(SU(N_c)\) BPST
+channel this is the origin of the bosonic factor
+\[
+  \frac{\dd^4a\,\dd\rho}{\rho^5}\,
+  \dd\Omega_{N_c}\,
+  \left(\frac{8\pi^2}{g_{\rm ht}^2(\mu)}\right)^{2N_c}
+  \mathcal J_{\rm fin}^{0}(\rho,\Omega),
+\]
+before the zero-mode-deleted determinant and the source channel are
+inserted.  The number \(4N_c\) fixes only how many zero-mode factors appear;
+it does not determine the \(\rho^{-5}\) density, the orientation quotient, or
+the finite normalization.
+
+This replacement is a physical-amplitude normalization because it multiplies
+the same source kernel that is later amputated and projected.  Let
+\(\mathcal G=\mathcal G^{0}+\delta\mathcal G\) be the metric actually used in
+the retained regulator window, and set
+\[
+  E=(\mathcal G^{0})^{-1}\delta\mathcal G,\qquad
+  \|E\|\le r<1
+\]
+for any submultiplicative matrix norm.  Then
+\begin{equation}
+  \left|
+  \frac{\sqrt{\det\mathcal G}}{\sqrt{\det\mathcal G^{0}}}
+  -1
+  \right|
+  \le
+  \exp\!\left(\frac{mr}{2(1-r)}\right)-1 .
+  \label{eq:instanton-zero-mode-jacobian-stability}
+\end{equation}
+Thus a same-density statement must transport the gauge slice, the Gram
+determinant, the residual stabilizer, and the source frame.  Using raw
+\(\partial_iA_z\) vectors before horizontal projection includes pure-gauge
+directions; replacing \(\sqrt{\det\mathcal G}\) by \(\det\mathcal G\) gives
+the wrong functional-measure power; and counting zero modes cannot determine
+whether the selected fermion source determinant or physical projection
+vanishes.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Proper-time determinant log inside a source
 channel]
 \label{ca:instanton-proper-time-determinant-channel}

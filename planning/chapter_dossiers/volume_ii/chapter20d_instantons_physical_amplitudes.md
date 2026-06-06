@@ -52,6 +52,11 @@
   density power is fixed by the one-loop RG cancellation, while the channel
   size power also depends on zero-mode/source data such as mass saturation or
   hard external source differentiation.
+- `ca:instanton-collective-jacobian-gauge-slice`: gauge-sliced
+  collective-coordinate Jacobian block; the bosonic measure is the square root
+  of the horizontal zero-mode Gram determinant, divided by the residual
+  stabilizer quotient, with a finite metric-stability bound before the source
+  channel is interpreted.
 - `ca:instanton-proper-time-determinant-channel`: derives the
   zero-mode-deleted proper-time determinant logarithm inside a source channel,
   with boson inverse-square-root, ghost determinant, Dirac fermion determinant,
@@ -167,6 +172,13 @@
   of `(mu rho)^b0`, the finite determinant constant, and the added
   zero-mode/source power `beta_C` that turns a density into a channel
   integrand.
+- The collective-coordinate Jacobian block opens the path-integral measure
+  step behind the BPST density.  It derives the bosonic measure from
+  horizontal zero-mode representatives and the square root of their Gram
+  determinant, keeps the residual stabilizer quotient visible, and gives a
+  perturbative stability bound.  This blocks dimension-only zero-mode
+  counting, raw gauge-vertical tangents, and using `det G` where the
+  functional measure supplies `sqrt(det G)`.
 - The proper-time determinant-channel block opens the compressed fluctuation
   step behind that density: the zero-mode-deleted boson, ghost, fermion, and
   counterterm logarithms must assemble to `b0`, and the leftover determinant
@@ -268,6 +280,9 @@
   wrong off-diagonal sign, separates mass-saturated and four-source coordinates,
   verifies the one-loop density RG cancellation and the distinction between
   density-only, mass-saturated, and hard four-source size powers,
+  verifies the gauge-sliced zero-mode Gram determinant, square-root collective
+  Jacobian, stabilizer quotient, action-normalization scaling, raw-gauge
+  negative control, and finite Gram-perturbation stability bound,
   verifies the proper-time determinant-log channel window, including the
   boson/ghost/fermion weights, counterterm conversion to `b0`, absolute
   determinant residual bound, and rank-killed source negative control,

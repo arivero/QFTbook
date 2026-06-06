@@ -806,6 +806,9 @@ Current checks:
   the one-loop density RG cancellation, the distinction between density-only,
   mass-saturated, and hard four-source size powers, finite determinant
   constant cancellation only in transported same-channel ratios,
+  the gauge-sliced zero-mode Gram determinant, square-root collective
+  Jacobian, residual stabilizer quotient, action-normalization scaling, and
+  finite Gram-perturbation stability bound,
   the proper-time determinant-log channel window with boson/ghost/fermion
   weights, counterterm conversion, absolute residual control, and rank-killed
   source negative control,

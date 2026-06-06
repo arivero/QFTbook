@@ -24,6 +24,10 @@ Target claims:
   is fixed by the RG cancellation between the determinant logarithm and the
   running BPST action, while the physical channel power also depends on
   zero-mode/source data.
+- `ca:instanton-collective-jacobian-gauge-slice`: the bosonic
+  collective-coordinate measure is the square root of the gauge-sliced
+  zero-mode Gram determinant, with residual stabilizer and metric stability
+  transported before the source channel is interpreted.
 - `ca:instanton-proper-time-determinant-channel`: the proper-time fluctuation
   log contributes to a source channel through weighted zero-mode-deleted
   boson, ghost, fermion, and counterterm coefficients; the resulting
@@ -91,6 +95,7 @@ Independent construction:
   source-functional route orderings,
   two-by-two determinants, mass/source polynomials, one-loop RG exponents,
   running collective zero-mode Jacobian ratios,
+  gauge-sliced zero-mode Gram determinants,
   weighted proper-time determinant logarithms,
   finite color two-frame Haar projectors,
   the Bessel-product tail cancellation for an individual zero-mode slot,
@@ -125,7 +130,8 @@ Independent verification route:
 Convention dependencies:
 - The evidence uses the monograph half-trace Yang-Mills coupling coordinate,
   the \(SU(3)\), \(N_f=2\) hard-source convention, Dirac fundamental
-  determinants rather than Pfaffian half-bookkeeping, singular-gauge BPST
+  determinants rather than Pfaffian half-bookkeeping, coefficient measures
+  normalized by `dc/sqrt(2*pi)` for bosonic zero modes, singular-gauge BPST
   zero-mode slots, normalized Haar orientation measure, and the chapter's
   separation between Euclidean source kernels and physical pole/spectral/OPE
   projections.
@@ -167,8 +173,12 @@ Negative controls:
   Haar antisymmetric two-frame projection, a
   fused-density endpoint class substituted for differentiated fermion slots,
   an unamputated external residue absorbed into the zero-mode slot tail, a
-  vacuum determinant calibration substituted for a source-fluctuation
-  quotient, a relative quotient formed after zero-mode rank loss, a
+  dimension-only zero-mode count substituted for the collective-coordinate
+  Jacobian, raw gauge-vertical tangents used before horizontal projection, a
+  determinant used where the functional measure requires a square-root
+  determinant, a vacuum determinant calibration substituted for a
+  source-fluctuation quotient, a relative quotient formed after zero-mode
+  rank loss, a
   determinant-only assembled amplitude, signed-window relative error control
   without a noncancellation margin, a reference calibration with omitted
   source-fluctuation or physical-projection transport, a rank-lost reference
@@ -407,6 +417,141 @@ def check_source_functional_route_order() -> None:
         "raw Euclidean kernel shortcut misses physical projection",
         euclidean_kernel_shortcut,
         routed_coordinate,
+    )
+
+
+def check_collective_coordinate_zero_mode_jacobian() -> None:
+    Vector3 = tuple[Fraction, Fraction, Fraction]
+
+    def dot3(left: Vector3, right: Vector3) -> Fraction:
+        return sum(l * r for l, r in zip(left, right))
+
+    def horizontal(vector: Vector3) -> Vector3:
+        # Finite analogue of the gauge-slice projection: remove the vertical
+        # gauge direction before forming the collective-coordinate Gram metric.
+        return (vector[0], vector[1], Fraction(0))
+
+    def gram2(
+        first: Vector3,
+        second: Vector3,
+    ) -> Matrix2:
+        return (
+            (dot3(first, first), dot3(first, second)),
+            (dot3(second, first), dot3(second, second)),
+        )
+
+    def scale2(scalar: Fraction, matrix: Matrix2) -> Matrix2:
+        return tuple(
+            tuple(scalar * entry for entry in row)
+            for row in matrix
+        )  # type: ignore[return-value]
+
+    def row_sum_norm2(matrix: Matrix2) -> Fraction:
+        return max(sum(abs(entry) for entry in row) for row in matrix)
+
+    raw_tangent_a: Vector3 = (Fraction(2), Fraction(0), Fraction(1))
+    raw_tangent_b: Vector3 = (Fraction(1), Fraction(2), -Fraction(1))
+    horizontal_a = horizontal(raw_tangent_a)
+    horizontal_b = horizontal(raw_tangent_b)
+
+    horizontal_gram = gram2(horizontal_a, horizontal_b)
+    assert_equal(
+        "horizontal zero-mode Gram metric",
+        horizontal_gram,
+        ((Fraction(4), Fraction(2)), (Fraction(2), Fraction(5))),
+    )
+    gram_determinant = det2(horizontal_gram)
+    sqrt_gram_determinant = Fraction(4)
+    assert_equal(
+        "collective-coordinate Jacobian uses sqrt det Gram",
+        gram_determinant,
+        sqrt_gram_determinant * sqrt_gram_determinant,
+    )
+
+    dimension_only_weight = Fraction(1)
+    assert_not_equal(
+        "zero-mode dimension count misses the Gram Jacobian",
+        dimension_only_weight,
+        sqrt_gram_determinant,
+    )
+    assert_not_equal(
+        "det Gram is not the bosonic functional-measure Jacobian",
+        gram_determinant,
+        sqrt_gram_determinant,
+    )
+
+    raw_gram = gram2(raw_tangent_a, raw_tangent_b)
+    assert_not_equal(
+        "raw gauge-vertical tangents change the Gram determinant",
+        det2(raw_gram),
+        gram_determinant,
+    )
+
+    action_inner_product_factor = Fraction(5, 3)
+    scaled_gram = scale2(action_inner_product_factor, horizontal_gram)
+    assert_equal(
+        "action normalization scales the two-mode Jacobian",
+        det2(scaled_gram),
+        (action_inner_product_factor * sqrt_gram_determinant) ** 2,
+    )
+
+    stabilizer_volume = Fraction(2)
+    source_kernel = Fraction(7, 11)
+    channel_weight = sqrt_gram_determinant * source_kernel / stabilizer_volume
+    assert_not_equal(
+        "stabilizer quotient is part of the source-channel normalization",
+        sqrt_gram_determinant * source_kernel,
+        channel_weight,
+    )
+
+    delta_gram: Matrix2 = (
+        (Fraction(1, 20), -Fraction(1, 40)),
+        (-Fraction(1, 40), Fraction(1, 30)),
+    )
+    perturbed_gram = add2(horizontal_gram, delta_gram)
+    det_shift = det2(perturbed_gram) - gram_determinant
+    entry_bound = max_abs_entry(delta_gram)
+    det_shift_bound = (
+        (
+            abs(horizontal_gram[1][1])
+            + abs(horizontal_gram[0][0])
+            + abs(horizontal_gram[0][1])
+            + abs(horizontal_gram[1][0])
+        )
+        * entry_bound
+        + 2 * entry_bound * entry_bound
+    )
+    assert_leq(
+        "finite zero-mode Gram determinant perturbation bound",
+        abs(det_shift),
+        det_shift_bound,
+    )
+
+    sqrt_shift = abs(math.sqrt(float(det2(perturbed_gram))) - float(sqrt_gram_determinant))
+    assert_leq(
+        "finite zero-mode Jacobian square-root perturbation bound",
+        sqrt_shift,
+        float(det_shift_bound / sqrt_gram_determinant),
+    )
+
+    relative_metric_error = matmul2(inv2(horizontal_gram), delta_gram)
+    norm_bound = row_sum_norm2(relative_metric_error)
+    assert_lt_one = norm_bound < 1
+    assert_equal(
+        "retained Gram perturbation is inside the logarithmic stability domain",
+        assert_lt_one,
+        True,
+    )
+    relative_jacobian_error = (
+        math.sqrt(float(det2(perturbed_gram) / gram_determinant)) - 1.0
+    )
+    logarithmic_bound = math.exp(
+        float(Fraction(2) * norm_bound / (2 * (1 - norm_bound)))
+    ) - 1.0
+    assert_leq(
+        "zero-mode Jacobian logarithmic stability bound",
+        abs(relative_jacobian_error),
+        logarithmic_bound,
     )
 
 
@@ -2161,6 +2306,7 @@ def check_hard_benchmark_channel_comparison_and_ratio() -> None:
 
 def main() -> None:
     check_source_functional_route_order()
+    check_collective_coordinate_zero_mode_jacobian()
     check_one_loop_density_rg_and_channel_power()
     check_running_collective_jacobian_in_hard_coefficient()
     check_proper_time_determinant_log_channel_window()
