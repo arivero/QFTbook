@@ -195,7 +195,14 @@
     },
     {
       "path": "susy_2d_lg_glsm_checks.py",
-      "risk_class": "GLSM mirror/vortex amplitudes"
+      "risk_class": "GLSM mirror/vortex amplitudes",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "abelian GLSM charge matrix and FI-theta coordinate",
+        "Hori-Vafa periodic twisted-chiral variables",
+        "vortex determinant-line and zero-mode orientation",
+        "projective-space A-twisted observable coordinate"
+      ]
     },
     {
       "path": "generalized_unitarity_reduction_checks.py",

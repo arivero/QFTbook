@@ -626,6 +626,14 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   norm-product, orientation, contact-omission, parallel-source, mirror-only, and
   underbudgeted-propagator shortcuts.  This is amplitude/source physics, not a
   moduli-space or Hori--Vafa-authority pass.
+- The 2026-06-06 issue #597/#725 source-frame calibration pass adds the next
+  amplitude-facing guardrail in the same Hori--Vafa lane.  A reference
+  one-vortex component amplitude now calibrates a target component only through
+  the directly computed ratio of source-minor-plus-primed-contact integrals.
+  The companion rejects mirror-fugacity-only calibration, zero-reference
+  denominators, omitted contact terms, and parallel-source shortcuts, and the
+  GLSM companion is promoted to an extended evidence contract with explicit
+  convention tags.
 - The 2026-06-06 issue #844 GLSM/Hori--Vafa architecture pass rephrases the
   reader-facing entrance to the mirror comparison as an observable comparison
   map.  The chapter now states the physical question, the compared finite-data

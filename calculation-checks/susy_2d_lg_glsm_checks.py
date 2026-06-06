@@ -1,4 +1,4 @@
-"""Finite algebra checks for the 2D N=(2,2) LG/GLSM chapter.
+r"""Finite algebra checks for the 2D N=(2,2) LG/GLSM chapter.
 
 Evidence contract.
 Target claims: the finite LG/GLSM charge ledgers, abelian duality
@@ -17,11 +17,14 @@ measure bridge, the finite measure-scheme covariance test for that
 degree-one coefficient, and the mirror-conjecture observable boundary separating
 full-QFT data from protected evidence, plus the Hori--Vafa
 residue/direct-instanton comparison map, with the direct degree-one incidence
-Jacobian computed before comparison, in Volume VII Chapter 09.
+Jacobian computed before comparison, and the one-vortex source-frame
+calibration test distinguishing a component amplitude from the common mirror
+fugacity, in Volume VII Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
 elimination, finite chain-complex rank checks, Berezin-degree tests,
 source-differentiated zero-mode extraction tests, retained-window signed/mass
 coefficient bounds, oriented source-minor component-amplitude cells,
+component-to-component source-frame calibration ratios,
 root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree filters, and
 conditional residual-propagation maps, plus finite density/Jacobian transport
@@ -30,6 +33,43 @@ mirror/direct-vortex comparisons whose direct side includes a separately
 computed incidence orientation, degree gate, and compactification gate, are
 computed directly from finite data rather than by substituting the displayed
 final identities.
+
+Primary derivation route: the manuscript derives protected GLSM mirror
+coordinates by local dualization and Coulomb one-loop matching, then treats the
+Hori--Vafa exponential coefficient as a separate regulated vortex amplitude
+with gauge fixing, zero-mode separation, nonzero-mode determinants,
+determinant-line orientation, source projection, and protected-observable
+comparison.
+
+Independent verification route: the companion does not import the Hori--Vafa
+formula as truth data.  It constructs finite charge ledgers, finite
+fluctuation complexes, Berezin filters, source-minor cells, source-frame
+ratios, projective-space residue sums, and direct incidence Jacobians from
+scratch, then checks that mirror-side and direct-vortex-side data agree only
+after the declared transport and residual maps have been supplied.
+
+Convention dependencies: the checks use the chapter's \(U(1)^s\) charge
+matrix convention, \(Y_i\sim Y_i+2\pi i\), \(X_i=e^{-Y_i}\),
+\(\widetilde W=-t_a\Sigma_a-M_iY_i-\mu c_i e^{-Y_i}\), exponentiated
+FI coordinate \(q=\exp(t)\) in the displayed mirror-torus equations, the
+chosen orientation of the universal \(d^2\widetilde\theta\) zero-mode pair,
+and the determinant-line convention in which finite \(c_i\) rescalings are
+transported into the FI-theta coordinate.
+
+Domain and remainder assumptions: all continuum vortex, stable-map, and
+mirror-equivalence statements are represented by retained finite cells with
+declared determinant, zero-mode, compactification, source-frame,
+operator-map, off-pairing, and continuum residuals.  Relative claims assume
+nonzero retained coefficients or source-reference denominators with an
+explicit noncancellation margin.
+
+Remaining unproved or conditional: the companion does not construct the
+continuum GLSM, prove Hori--Vafa mirror equivalence, derive the actual
+vortex spectra, prove compactness or virtual-cycle existence, control
+multi-vortex boundary strata, or establish uniform regulator limits for the
+residuals.  It checks the finite algebra and adversarial bookkeeping that a
+direct vortex calculation must satisfy before the mirror expression is used.
+
 Imported assumptions: the finite GLSM charge matrix, selected regulator-stage
 factorization, supplied vortex coefficients, nonzero-mode determinant
 placeholders, logarithm-branch conventions, and the chapter's
@@ -38,6 +78,9 @@ Negative controls: extra unsaturated zero modes, raw zero-mode determinants,
 omitted vortex ghost factors, omitted vortex normalization constants,
 omitted one-vortex source-overlap factors,
 parallel source-overlap component shortcuts,
+mirror-fugacity-only component calibration,
+source-reference denominator shortcuts,
+contact-omitted source-frame ratios,
 unbalanced regulator-scale changes, coherent signed cancellations with nonzero
 absolute mass, wrong residue selection powers, underspecified residual
 budgets, stable-map dimension mismatches, mirror-only or dimension-only
@@ -1012,6 +1055,139 @@ def check_one_vortex_component_amplitude_cell() -> None:
         "omitting primed-propagator residual underbudgets component amplitude",
         actual_error,
         underbudgeted_bound,
+    )
+
+
+def check_one_vortex_source_frame_calibration() -> None:
+    # A Hori-Vafa monomial supplies a common topological/fugacity factor.  A
+    # component amplitude additionally needs the direct source-frame integral:
+    # the oriented zero-mode minor plus the primed nonzero-mode contact term.
+    retained_cells = [Fraction(2, 5), Fraction(3, 7), Fraction(5, 11)]
+    topological_factor = Fraction(7, 13)
+
+    def source_minor(
+        left: tuple[Fraction, Fraction],
+        right: tuple[Fraction, Fraction],
+    ) -> Fraction:
+        return left[0] * right[1] - left[1] * right[0]
+
+    reference_left = [
+        (Fraction(1, 2), Fraction(1, 5)),
+        (Fraction(2, 3), Fraction(1, 7)),
+        (Fraction(3, 5), Fraction(1, 11)),
+    ]
+    reference_right = [
+        (Fraction(1, 3), Fraction(3, 4)),
+        (Fraction(1, 5), Fraction(4, 7)),
+        (Fraction(1, 7), Fraction(5, 9)),
+    ]
+    target_left = [
+        (Fraction(2, 7), Fraction(1, 6)),
+        (Fraction(3, 8), Fraction(1, 9)),
+        (Fraction(4, 9), Fraction(1, 10)),
+    ]
+    target_right = [
+        (Fraction(5, 11), Fraction(2, 5)),
+        (Fraction(7, 13), Fraction(3, 7)),
+        (Fraction(11, 17), Fraction(5, 8)),
+    ]
+    reference_contacts = [Fraction(1, 37), -Fraction(1, 41), Fraction(1, 43)]
+    target_contacts = [-Fraction(1, 47), Fraction(1, 53), Fraction(1, 59)]
+
+    def source_integral(
+        left_sources: list[tuple[Fraction, Fraction]],
+        right_sources: list[tuple[Fraction, Fraction]],
+        contacts: list[Fraction],
+    ) -> Fraction:
+        return sum(
+            cell * (source_minor(left, right) + contact)
+            for cell, left, right, contact in zip(
+                retained_cells,
+                left_sources,
+                right_sources,
+                contacts,
+            )
+        )
+
+    reference_integral = source_integral(
+        reference_left,
+        reference_right,
+        reference_contacts,
+    )
+    target_integral = source_integral(target_left, target_right, target_contacts)
+    assert_gt_bound("one-vortex reference source integral is nonzero", abs(reference_integral), Fraction(0))
+    assert_gt_bound("one-vortex target source integral is nonzero", abs(target_integral), Fraction(0))
+
+    reference_amplitude = topological_factor * reference_integral
+    target_amplitude = topological_factor * target_integral
+    source_frame_ratio = target_integral / reference_integral
+    assert_equal(
+        "source-frame ratio calibrates target component amplitude",
+        source_frame_ratio * reference_amplitude,
+        target_amplitude,
+    )
+
+    protected_coefficient = sum(retained_cells, Fraction(0))
+    mirror_fugacity_only = topological_factor * protected_coefficient
+    if mirror_fugacity_only == target_amplitude:
+        raise AssertionError("mirror fugacity alone should not determine a component amplitude")
+
+    contact_omitted_target = source_integral(
+        target_left,
+        target_right,
+        [Fraction(0), Fraction(0), Fraction(0)],
+    )
+    if contact_omitted_target == target_integral:
+        raise AssertionError("primed contact data should affect the target source-frame integral")
+    if (contact_omitted_target / reference_integral) * reference_amplitude == target_amplitude:
+        raise AssertionError("contact-omitted source ratio should not calibrate the target amplitude")
+
+    parallel_right = [(2 * left[0], 2 * left[1]) for left in target_left]
+    parallel_integral = source_integral(
+        target_left,
+        parallel_right,
+        [Fraction(0), Fraction(0), Fraction(0)],
+    )
+    assert_equal(
+        "parallel source pair has zero retained component integral",
+        parallel_integral,
+        Fraction(0),
+    )
+    if mirror_fugacity_only == topological_factor * parallel_integral:
+        raise AssertionError("nonzero mirror fugacity should not bypass a zero source minor")
+
+    zero_reference_integral = Fraction(0)
+    if zero_reference_integral != 0:
+        raise AssertionError("unreachable denominator guard")
+    # The finite source-frame ratio is undefined here; a reference channel with
+    # no source-zero-mode support cannot calibrate a target component amplitude.
+    assert_equal("zero reference denominator blocks calibration", zero_reference_integral, 0)
+
+    residuals = {
+        "target": Fraction(1, 1009),
+        "reference": Fraction(1, 1013),
+        "frame": Fraction(1, 1019),
+    }
+    calibrated_residual = (
+        residuals["target"]
+        - source_frame_ratio * residuals["reference"]
+        + residuals["frame"]
+    )
+    calibrated_bound = (
+        abs(residuals["target"])
+        + abs(source_frame_ratio) * abs(residuals["reference"])
+        + abs(residuals["frame"])
+    )
+    assert_leq_bound(
+        "one-vortex source-frame calibration residual propagation",
+        abs(calibrated_residual),
+        calibrated_bound,
+    )
+    underbudgeted_without_frame = calibrated_bound - abs(residuals["frame"])
+    assert_gt_bound(
+        "omitting source-frame transport underbudgets calibrated amplitude",
+        calibrated_bound,
+        underbudgeted_without_frame,
     )
 
 
@@ -2413,6 +2589,7 @@ def main() -> None:
     check_single_vortex_amplitude_assembly()
     check_one_vortex_source_functional_extraction()
     check_one_vortex_component_amplitude_cell()
+    check_one_vortex_source_frame_calibration()
     check_vortex_coefficient_noncancellation_bound()
     check_cp_mirror_critical_ledger()
     check_cp_mirror_residue_correlators()

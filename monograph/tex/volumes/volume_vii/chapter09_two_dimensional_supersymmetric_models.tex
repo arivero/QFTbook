@@ -1455,6 +1455,78 @@ the operator coordinate changes \(\Delta_{AB}\); the mirror monomial fixes the
 topological factor but does not supply these component-source data.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Source-frame calibration of a one-vortex
+component amplitude]
+\label{ca:glsm-one-vortex-source-frame-calibration}
+The finite component cell also gives a useful calibration test.  Define the
+retained protected coefficient and the retained component source integrals by
+\[
+  C_\Lambda=\sum_{p\in P}K_p,\qquad
+  J_{AB,\Lambda}
+  =
+  \sum_{p\in P}K_p
+  \bigl(\Delta_{AB}(p)+C'_{AB}(p)\bigr).
+\]
+The Hori--Vafa monomial supplies the common topological factor
+\(e^{-Y_i}\) and, after the determinant normalization has been fixed, the
+coefficient \(C_\Lambda\).  A component amplitude is instead
+\[
+  A^{(1),{\rm ret}}_{AB,\Lambda}
+  =
+  e^{-Y_i}J_{AB,\Lambda}
+  =
+  e^{-Y_i}C_\Lambda\,s_{AB,\Lambda},
+  \qquad
+  s_{AB,\Lambda}:=\frac{J_{AB,\Lambda}}{C_\Lambda}
+\]
+when \(C_\Lambda\neq0\).  The number \(s_{AB,\Lambda}\) is a source-frame
+quantity: it is made from zero-mode overlaps and primed nonzero-mode contact
+terms in the same regulator.  It is not determined by the mirror fugacity.
+
+Suppose a reference source pair \(C,D\) has
+\(J_{CD,\Lambda}\neq0\).  At the retained level the target/source ratio is
+\begin{equation}
+  A^{(1),{\rm ret}}_{AB,\Lambda}
+  =
+  \frac{J_{AB,\Lambda}}{J_{CD,\Lambda}}\,
+  A^{(1),{\rm ret}}_{CD,\Lambda}.
+  \label{eq:glsm-one-vortex-source-frame-ratio}
+\end{equation}
+Thus a reference component measurement can calibrate the common vortex
+fugacity only after the direct source-frame ratio
+\(J_{AB,\Lambda}/J_{CD,\Lambda}\) has been computed.  If
+\(J_{CD,\Lambda}\) is small, the same noncancellation discipline as in
+Controlled Approximation~\ref{ca:glsm-vortex-coefficient-noncancellation} is
+needed for the reference channel.  With residuals
+\(|R_{AB,\Lambda}|\le B_{AB}\), \(|R_{CD,\Lambda}|\le B_{CD}\), and a
+source-frame transport error \(B_{\rm frame}\), the calibrated difference
+obeys
+\begin{equation}
+  \left|
+    A^{(1)}_{AB,\Lambda}
+    -
+    \frac{J_{AB,\Lambda}}{J_{CD,\Lambda}}
+    A^{(1)}_{CD,\Lambda}
+  \right|
+  \le
+  B_{AB}
+  +
+  \left|\frac{J_{AB,\Lambda}}{J_{CD,\Lambda}}\right|B_{CD}
+  +
+  B_{\rm frame}.
+  \label{eq:glsm-one-vortex-source-frame-calibration-bound}
+\end{equation}
+This equation is the two-dimensional analogue of the four-dimensional
+instanton lesson: the topological saddle and its collective-coordinate chart
+do not by themselves determine a physical amplitude.  A parallel source pair
+has \(J_{AB,\Lambda}=0\) when the primed contact term vanishes, even if
+\(C_\Lambda\) and the Hori--Vafa primitive monomial are nonzero.  Conversely,
+a nonzero \(C'_{AB}\) changes the component ratio without changing the
+protected twisted-superpotential coefficient.  Those data have to be
+calculated in the direct vortex fluctuation problem before the mirror
+expression is used as an amplitude statement.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Single-vortex coefficient noncancellation bound]
 \label{ca:glsm-vortex-coefficient-noncancellation}
 Fix a compact retained window

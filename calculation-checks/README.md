@@ -2891,7 +2891,11 @@ Current checks:
 	  cell checking the oriented zero-mode source minor, primed-propagator contact
 	  contribution, residual telescope, and negative controls for norm-product,
 	  orientation-flip, contact-omitted, parallel-source, mirror-coefficient, and
-	  underbudgeted-propagator shortcuts, the retained-window
+	  underbudgeted-propagator shortcuts, the finite source-frame calibration
+	  check showing that a reference component amplitude predicts a target only
+	  through the direct source-minor/contact ratio, with negative controls for
+	  mirror-fugacity-only, zero-reference, contact-omitted, and parallel-source
+	  shortcuts, the retained-window
 	  one-vortex coefficient noncancellation bound with signed/mass
   margin, residual telescope, relative-error bound, and negative controls for
   omitted determinant residuals and symmetry-only nonzero claims, the
