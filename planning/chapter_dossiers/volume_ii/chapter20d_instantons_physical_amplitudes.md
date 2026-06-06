@@ -114,6 +114,13 @@
   hard four-source kernel as a short-distance local four-fermion coefficient,
   with the dimensionless size split \(R\), boundary-flux flow, operator
   matching, physical matrix element, and long-size remainder kept separate.
+- `ca:instanton-wilsonian-matching-covariance`: finite Wilsonian matching
+  covariance for the instanton vertex.  The short instanton coefficient is a
+  row vector in a renormalized operator basis, while the physical contribution
+  is the paired coefficient/matrix-element coordinate plus the long-size shell
+  and bridge residuals.  The block shows finite scheme covariance and the
+  cancellation between boundary flux, anomalous-dimension transport, and the
+  long-size remainder.
 - `sec:instanton-normal-fluctuation-source-data`: local amplitude-facing block
   separating the determinant normalization of nonzero modes from the
   fluctuation average of the selected source insertion.
@@ -297,6 +304,11 @@
   flow, the long-size tail cancels that flow in the completed split, and the
   physical observable still needs the renormalized four-fermion matrix element
   plus matching, infrared, projection, and sector residuals.
+- The Wilsonian matching covariance block keeps the instanton vertex from
+  being overread as a scheme-independent number.  Coefficients, operator
+  matrix elements, anomalous-dimension transport, boundary flux, and long-size
+  shell form one finite matching coordinate; changing only the coefficient or
+  moving the size boundary without the long shell changes the physical claim.
 - The finite-cell control model records why residuals such as source rank,
   endpoint, spectral projection, cut, infrared, and scheme transport are
   load-bearing.  Dropping them changes the physical claim.
@@ -382,8 +394,9 @@
   checks the SU(3), `N_f=2` hard four-source scale and tail powers, verifies
   the two-term hard-window endpoint subtraction, validates the hard channel
   comparison and same-theory ratio residual bound, verifies the
-  hard-kernel Wilsonian OPE boundary flow and long-size tail budget, and checks
-  the finite residual and determinant-stability bounds.
+  hard-kernel Wilsonian OPE boundary flow, finite matching scheme covariance,
+  anomalous-dimension/boundary-flux cancellation, and long-size tail budget,
+  and checks the finite residual and determinant-stability bounds.
 - `calculation-checks/bpst_instanton_normalization_checks.py` remains the
   larger companion for the full BPST normalization, determinant, hard-window,
   tail-subtraction, Wilsonian, dilute-gas, and thermal instanton machinery.
@@ -479,6 +492,15 @@
   dimensionless size split, boundary flux, long-size remainder, operator
   matching, and physical matrix element are named.  This prevents using the
   hard source coefficient as a direct hadronic amplitude.
+- 2026-06-06 Wilsonian matching covariance pass: added
+  `ca:instanton-wilsonian-matching-covariance` inside the hard Wilsonian OPE
+  section.  The pass makes the instanton vertex a renormalized
+  coefficient/operator/matrix-element coordinate: finite operator-basis
+  mixing transforms \(C^{<}\) and \(\langle O\rangle\) inversely, while the
+  moving size boundary cancels only after the long-size shell and
+  anomalous-dimension transport are included.  The companion check rejects
+  coefficient-only scheme changes and omitted long-shell residuals.  This is a
+  physical-amplitude matching pass, not a moduli-space or ADHM expansion.
 - 2026-06-06 hard-window tail-subtraction pass: added
   `ca:instanton-hard-window-tail-subtraction` after the hard-source slow-tail
   proposition.  The pass opens the endpoint control inside the hard

@@ -1242,6 +1242,96 @@ operator-coordinate transport.  Changing the local operator basis changes
 \(Z_4\), \(C_4^{<}\), and the matrix element inversely, not the completed
 observable in \eqref{eq:instanton-hard-ope-physical-assembly}.
 
+\begin{controlledapproximation}[Wilsonian matching covariance for the
+instanton vertex]
+\label{ca:instanton-wilsonian-matching-covariance}
+The short coefficient in
+\eqref{eq:instanton-hard-short-ope-coefficient} is a coordinate on a local
+operator space.  Let \(O_a(\mu)\) be the retained local operators with the
+spin, flavor, and color projection of the hard instanton source, let
+\(C_a^{<}(Q,R;\mu)\) be the corresponding row vector of short-size
+coefficients, and let
+\[
+  M_a(\mu)=\langle f|O_a(\mu)|i\rangle_{\rm phys}.
+\]
+The Wilsonian contribution to the physical observable is
+\begin{equation}
+  \mathcal A_{\rm loc}^{I}
+  =
+  C_a^{<}M_a .
+  \label{eq:instanton-wilsonian-local-pairing}
+\end{equation}
+A finite change of renormalized operator coordinates
+\[
+  O'_a=S_{ab}O_b,
+  \qquad S\in GL(r)
+\]
+acts as
+\begin{equation}
+  M'=SM,\qquad C'^{<}=C^{<}S^{-1},
+  \qquad
+  C'^{<}_{a}M'_a=C^{<}_{a}M_a .
+  \label{eq:instanton-wilsonian-scheme-covariance}
+\end{equation}
+Thus the instanton vertex coefficient by itself is scheme dependent.  The
+observable coordinate is the paired coefficient and matrix element, plus the
+long-size remainder and the bridge residuals in
+\eqref{eq:instanton-hard-ope-physical-assembly}.
+
+The same covariance controls the moving size boundary.  Suppose
+\(\Phi_a(R)\) is the boundary-flux row vector obtained by evaluating the
+hard instanton kernel on the shell \(s=R\), and let \(\gamma_{ab}\) be the
+anomalous-dimension matrix in the same operator basis.  A closed retained
+split has the finite-dimensional flow
+\begin{equation}
+  \partial_{\log\mu_I}C^{<}
+  =
+  -\Phi+C^{<}\gamma,
+  \qquad
+  \partial_{\log\mu_I}M
+  =
+  -\gamma M,
+  \qquad
+  \partial_{\log\mu_I}\mathcal A_{>}^{I}
+  =
+  \Phi_aM_a .
+  \label{eq:instanton-wilsonian-covariant-boundary-flow}
+\end{equation}
+Consequently
+\[
+  \partial_{\log\mu_I}
+  \bigl(C_a^{<}M_a+\mathcal A_{>}^{I}\bigr)
+  =
+  (-\Phi+C^{<}\gamma)M+C^{<}(-\gamma M)+\Phi M
+  =
+  0
+\]
+before residuals.  The boundary shell removed from the local coefficient is
+the shell added to the long-size remainder, while the anomalous-dimension
+terms cancel between coefficient and matrix element.
+
+In a truncated calculation write the three flow equations with residuals
+\(\delta C\), \(\delta M\), and \(\delta_>\).  With the vector \(1\)-norm for
+rows and the vector \(\infty\)-norm for columns,
+\begin{equation}
+  \left|
+  \partial_{\log\mu_I}\mathcal A_{\rm phys}^{I}
+  \right|
+  \le
+  \|\delta C\|_1\|M\|_{\infty}
+  +
+  \|C^{<}\|_1\|\delta M\|_{\infty}
+  +
+  |\delta_>| .
+  \label{eq:instanton-wilsonian-covariance-residual-bound}
+\end{equation}
+This is the finite matching version of the instanton-amplitude lesson.  A
+fixed short vertex under a moving size boundary, a diagonal rescaling used
+when the operators actually mix, or a short coefficient quoted without the
+renormalized matrix element and long-size shell gives a different QFT
+coordinate from the physical observable.
+\end{controlledapproximation}
+
 For the individual hard zero-mode slots of
 Proposition~\ref{prop:instanton-hard-individual-zero-mode-slot}, the omitted
 tail has the leading form

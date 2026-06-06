@@ -103,10 +103,11 @@ Target claims:
 - `ca:instanton-hard-window-tail-subtraction`: the hard four-source window is
   controlled as a core integral plus leading and subleading analytic endpoint
   tails, rather than as a formal size integral.
-- `sec:instanton-hard-wilsonian-ope-datum`: the hard source kernel becomes a
-  Wilsonian local four-fermion input only after a dimensionless size split,
-  boundary-flux flow, operator matching, long-size remainder, and physical
-  matrix element are supplied.
+- `sec:instanton-hard-wilsonian-ope-datum` and
+  `ca:instanton-wilsonian-matching-covariance`: the hard source kernel
+  becomes a Wilsonian local four-fermion input only after a dimensionless size
+  split, boundary-flux flow, operator matching, long-size remainder, physical
+  matrix element, and finite scheme-covariance transport are supplied.
 
 Independent construction:
 - The checks build small exact rational cell models from scratch.  They compute
@@ -131,7 +132,8 @@ Independent construction:
   chirality-source selection rules for the instanton zero-mode determinant,
   an amputated 't Hooft four-point assembly ledger,
   physical projection bins, residual sums, two-term hard-window endpoint
-  tail subtraction, and hard-window power checks
+  tail subtraction, Wilsonian coefficient/operator scheme covariance,
+  boundary-flux/anomalous-dimension cancellation, and hard-window power checks
   directly, rather than importing BPST radial integrals or copying a monograph
   coefficient.
 
@@ -234,7 +236,9 @@ Negative controls:
   slot, a leading-tail-only hard-window approximation, a fused-density
   endpoint substituted for differentiated slots, a fixed short-instanton
   vertex under a moving size boundary, a short
-  coefficient used as a physical amplitude, a full hard source coefficient
+  coefficient used as a physical amplitude, a finite scheme change applied to
+  coefficients without the operator matrix elements, a moving-boundary flow
+  with the long-size shell omitted, a full hard source coefficient
   used as a local OPE coefficient without the long-size matrix element, and a
   residual bound that omits the external projection/sector remainder.
 
@@ -2547,6 +2551,120 @@ def check_hard_wilsonian_ope_boundary_flow() -> None:
     )
 
 
+def check_wilsonian_matching_scheme_covariance() -> None:
+    Vector2 = tuple[Fraction, Fraction]
+
+    def dot(left: Vector2, right: Vector2) -> Fraction:
+        return left[0] * right[0] + left[1] * right[1]
+
+    def row_mat(row: Vector2, matrix: Matrix2) -> Vector2:
+        return (
+            row[0] * matrix[0][0] + row[1] * matrix[1][0],
+            row[0] * matrix[0][1] + row[1] * matrix[1][1],
+        )
+
+    def mat_vec(matrix: Matrix2, vector: Vector2) -> Vector2:
+        return (
+            matrix[0][0] * vector[0] + matrix[0][1] * vector[1],
+            matrix[1][0] * vector[0] + matrix[1][1] * vector[1],
+        )
+
+    def sub_vec(left: Vector2, right: Vector2) -> Vector2:
+        return (left[0] - right[0], left[1] - right[1])
+
+    def neg_vec(vector: Vector2) -> Vector2:
+        return (-vector[0], -vector[1])
+
+    short_coefficients: Vector2 = (Fraction(2, 5), -Fraction(1, 7))
+    matrix_elements: Vector2 = (Fraction(3, 11), Fraction(5, 13))
+    local_pairing = dot(short_coefficients, matrix_elements)
+
+    scheme: Matrix2 = ((Fraction(2), Fraction(1)), (Fraction(1), Fraction(1)))
+    inverse_scheme = inv2(scheme)
+    transformed_coefficients = row_mat(short_coefficients, inverse_scheme)
+    transformed_matrix_elements = mat_vec(scheme, matrix_elements)
+    assert_equal(
+        "Wilsonian coefficient/operator scheme covariance",
+        dot(transformed_coefficients, transformed_matrix_elements),
+        local_pairing,
+    )
+
+    diagonal_only_inverse: Matrix2 = (
+        (Fraction(1, 2), Fraction(0)),
+        (Fraction(0), Fraction(1)),
+    )
+    diagonal_shortcut = row_mat(short_coefficients, diagonal_only_inverse)
+    assert_not_equal(
+        "diagonal rescaling misses operator mixing in instanton matching",
+        dot(diagonal_shortcut, transformed_matrix_elements),
+        local_pairing,
+    )
+    assert_not_equal(
+        "short coefficient vector alone is scheme dependent",
+        transformed_coefficients,
+        short_coefficients,
+    )
+
+    boundary_flux: Vector2 = (Fraction(1, 17), -Fraction(2, 19))
+    anomalous_dimension: Matrix2 = (
+        (Fraction(1, 3), Fraction(1, 5)),
+        (-Fraction(2, 7), Fraction(1, 11)),
+    )
+    coefficient_flow = sub_vec(
+        row_mat(short_coefficients, anomalous_dimension),
+        boundary_flux,
+    )
+    matrix_element_flow = neg_vec(mat_vec(anomalous_dimension, matrix_elements))
+    long_tail_flow = dot(boundary_flux, matrix_elements)
+    completed_flow = (
+        dot(coefficient_flow, matrix_elements)
+        + dot(short_coefficients, matrix_element_flow)
+        + long_tail_flow
+    )
+    assert_equal(
+        "instanton Wilsonian boundary/anomalous-dimension flow cancels",
+        completed_flow,
+        Fraction(0),
+    )
+
+    local_only_flow = dot(coefficient_flow, matrix_elements) + dot(
+        short_coefficients,
+        matrix_element_flow,
+    )
+    assert_not_equal(
+        "omitting the long-size shell leaves moving-boundary flow",
+        local_only_flow,
+        Fraction(0),
+    )
+
+    coefficient_residual: Vector2 = (Fraction(1, 100), -Fraction(1, 120))
+    matrix_element_residual: Vector2 = (Fraction(1, 90), Fraction(1, 110))
+    long_tail_residual = Fraction(1, 30)
+    residual_flow = (
+        dot(coefficient_residual, matrix_elements)
+        + dot(short_coefficients, matrix_element_residual)
+        + long_tail_residual
+    )
+    residual_bound = (
+        (abs(coefficient_residual[0]) + abs(coefficient_residual[1]))
+        * max(abs(matrix_elements[0]), abs(matrix_elements[1]))
+        + (abs(short_coefficients[0]) + abs(short_coefficients[1]))
+        * max(abs(matrix_element_residual[0]), abs(matrix_element_residual[1]))
+        + abs(long_tail_residual)
+    )
+    assert_leq(
+        "instanton Wilsonian covariance residual bound",
+        float(abs(residual_flow)),
+        float(residual_bound),
+    )
+    underbudget_without_long_shell = residual_bound - abs(long_tail_residual)
+    assert_equal(
+        "omitting long-shell residual underbudgets Wilsonian matching",
+        abs(residual_flow) <= underbudget_without_long_shell,
+        False,
+    )
+
+
 def check_hard_benchmark_channel_comparison_and_ratio() -> None:
     center_delta_on_shell = Fraction(1)
     center_delta_off_shell = Fraction(0)
@@ -2781,6 +2899,7 @@ def main() -> None:
     check_su3_two_flavor_hard_source_power_and_tail()
     check_hard_window_tail_subtraction()
     check_hard_wilsonian_ope_boundary_flow()
+    check_wilsonian_matching_scheme_covariance()
     check_hard_benchmark_channel_comparison_and_ratio()
     check_thooft_four_point_amputated_assembly_gate()
     print("instanton physical amplitude architecture checks passed")

@@ -861,7 +861,9 @@ Current checks:
   \(Q^{-35/3}\) power-counting check with its running collective-coordinate
   factor and slow endpoint tail, hard benchmark channel comparison and ratio
   controls, the hard-kernel Wilsonian OPE boundary flow and long-size tail
-  budget, the retained-cell residual bound, and the \(2\times2\)
+  budget, the finite Wilsonian coefficient/operator scheme-covariance test
+  with boundary-flux/anomalous-dimension cancellation, the retained-cell
+  residual bound, and the \(2\times2\)
   source-determinant stability estimate, with negative controls for a
   source-functional route shortcut that replaces source differentiation by
   mass saturation, source-dependent fluctuation response by a determinant-only
@@ -889,8 +891,9 @@ Current checks:
   pair correction without disconnected subtraction, one-body sector budgets
   that omit pair leakage, determinant-only hard ratio, missing hard slot,
   fixed short-instanton vertices under moving size splits, short coefficients
-  used as physical amplitudes, one-number spectral projection, and omitted
-  external residual.
+  used as physical amplitudes, coefficient-only scheme changes, omitted
+  long-size-shell flow, one-number spectral projection, and omitted external
+  residual.
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
   gauge-Higgs soliton and collective-coordinate section, including the
   Bogomolny and vortex square completions, the Prasad-Sommerfield profile
