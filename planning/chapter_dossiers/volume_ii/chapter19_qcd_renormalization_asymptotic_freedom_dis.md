@@ -267,7 +267,9 @@ The chapter must define and derive:
   \(\chi(\gamma)=2\psi(1)-\psi(\gamma)-\psi(1-\gamma)\), TMDs as
   soft-subtracted transverse light-ray matrix elements with Collins--Soper
   rapidity evolution, a matched small-\(q_T\) tested spectrum with the \(Y\)-term
-  defined as fixed order minus the expanded TMD singular coordinate, Drell--Yan
+  defined as fixed order minus the expanded TMD singular coordinate and the
+  rapidity split checked in the convention
+  \(\ell_\zeta=\log\sqrt{\zeta}\), Drell--Yan
   as a timelike current-current Wightman tensor with an integrated two-PDF
   collinear factorization coordinate, transform-space two-leg RG cancellation,
   an explicit tested Wightman-to-factorization residual budget, past-pointing
@@ -1314,3 +1316,11 @@ The chapter must define and derive:
   `qcd_tmd_gpd_checks.py` now rejects unsubtracted fixed-order double counting,
   mismatched singular-subtraction schemes, and one-sided Collins--Soper
   cancellation shortcuts.
+- 2026-06-05 issue #842 TMD rapidity-split convention repair: corrected the
+  matched small-\(q_T\) window to use the chapter's declared
+  \(\ell_\zeta=\log\sqrt{\zeta}\) Collins--Soper coordinate.  With
+  \(\zeta_A=Q^2e^{2\eta}\), \(\zeta_B=Q^2e^{-2\eta}\), the derivative is
+  \(\partial_\eta\log(F_A F_B)=\mathcal D_i-\mathcal D_j\), not twice this
+  value.  The companion now derives \(\ell_{\zeta_A},\ell_{\zeta_B}\) from
+  the declared \(\zeta\)-split and rejects the factor-two convention in a
+  non-diagonal channel.

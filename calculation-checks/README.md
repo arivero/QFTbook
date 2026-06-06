@@ -395,9 +395,12 @@ Current checks:
 - `qcd_tmd_gpd_checks.py`: symbolic checks for the Volume II QCD TMD/GPD
   convention block, including Collins--Soper/UV integrability, finite TMD
   scheme-change covariance, fixed-product rapidity-scale cancellation in
-  two-hadron factorization, matched small-\(q_T\) \(Y\)-term subtraction
-  with double-counting and scheme-mismatch negative controls, and GPD
-  polynomiality from local twist-two contractions.
+  two-hadron factorization with the convention
+  \(\ell_\zeta=\log\sqrt{\zeta}\), the non-diagonal rapidity-split residual
+  \(\mathcal D_i-\mathcal D_j\) rather than \(2(\mathcal D_i-\mathcal D_j)\),
+  matched small-\(q_T\) \(Y\)-term subtraction with double-counting and
+  scheme-mismatch negative controls, and GPD polynomiality from local twist-two
+  contractions.
 - `qcd_quasi_pdf_matching_checks.py`: exact finite checks for the Volume II
   quasi-/pseudo-PDF block, including the large-momentum Fourier prefactor
   convention, cancellation of a multiplicative spatial-Wilson-line factor in a

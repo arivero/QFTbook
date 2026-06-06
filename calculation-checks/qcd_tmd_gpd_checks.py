@@ -7,7 +7,9 @@ The checks verify algebraic facts used in the monograph text:
    anomalous dimensions obey the displayed integrability relation.
 2. Finite TMD scheme changes preserve that relation.
 3. Holding zeta_A zeta_B fixed cancels the rapidity evolution of a product of
-   two TMDs with the same Collins-Soper kernel.
+   two TMDs with the same Collins-Soper kernel; with
+   ell_zeta=log sqrt(zeta), the non-diagonal rapidity-split residual is
+   D_i-D_j rather than 2(D_i-D_j).
 4. A tested small-q_T matched spectrum uses
    Y = fixed order - expanded TMD singular coordinate; adding fixed order
    without this subtraction double counts the singular terms, and evaluating
@@ -58,18 +60,50 @@ def check_collins_soper_integrability() -> None:
 
 
 def check_two_hadron_rapidity_cancellation() -> None:
-    t, kernel = sp.symbols("t kernel")
-    ell_zeta_a_0, ell_zeta_b_0 = sp.symbols("ell_zeta_a_0 ell_zeta_b_0")
-    ell_zeta_a = ell_zeta_a_0 + t
-    ell_zeta_b = ell_zeta_b_0 - t
+    eta, log_q2 = sp.symbols("eta log_q2")
+    kernel_a, kernel_b = sp.symbols("kernel_a kernel_b")
 
-    # The product constraint zeta_A zeta_B = Q^4 fixes
-    # ell_zeta_A + ell_zeta_B.  Differentiating log(F_A F_B) along this
-    # constraint gives D - D when both TMDs use the same soft kernel.
-    log_product_derivative = kernel * sp.diff(ell_zeta_a, t) + kernel * sp.diff(
-        ell_zeta_b, t
+    # The chapter declares ell_zeta = log sqrt(zeta).  Therefore the standard
+    # split zeta_A=Q^2 exp(2 eta), zeta_B=Q^2 exp(-2 eta) gives
+    # ell_zeta_A=log Q+eta and ell_zeta_B=log Q-eta.
+    log_zeta_a = log_q2 + 2 * eta
+    log_zeta_b = log_q2 - 2 * eta
+    ell_zeta_a = sp.Rational(1, 2) * log_zeta_a
+    ell_zeta_b = sp.Rational(1, 2) * log_zeta_b
+
+    assert_equal(
+        "ell_zeta_A rapidity derivative",
+        sp.diff(ell_zeta_a, eta),
+        1,
     )
-    assert_zero("fixed-product rapidity cancellation", log_product_derivative)
+    assert_equal(
+        "ell_zeta_B rapidity derivative",
+        sp.diff(ell_zeta_b, eta),
+        -1,
+    )
+    assert_zero(
+        "fixed-product rapidity-scale split",
+        sp.diff(log_zeta_a + log_zeta_b, eta),
+    )
+
+    rapidity_derivative = (
+        kernel_a * sp.diff(ell_zeta_a, eta)
+        + kernel_b * sp.diff(ell_zeta_b, eta)
+    )
+    assert_zero(
+        "TMD diagonal rapidity split cancellation",
+        rapidity_derivative.subs(kernel_b, kernel_a),
+    )
+    assert_zero(
+        "TMD rapidity split mismatch residual",
+        rapidity_derivative - (kernel_a - kernel_b),
+    )
+    if sp.simplify(rapidity_derivative - 2 * (kernel_a - kernel_b)) == 0:
+        raise AssertionError("factor-two convention should fail off the diagonal")
+    if sp.simplify(rapidity_derivative.subs(kernel_b, 0)) == 0:
+        raise AssertionError(
+            "dropping one Collins-Soper kernel should leave rapidity dependence"
+        )
 
 
 def check_tmd_y_term_matching_window() -> None:
@@ -106,25 +140,6 @@ def check_tmd_y_term_matching_window() -> None:
         "TMD mismatched singular subtraction leaves finite scheme residual",
         matched - mismatched_matched - delta,
     )
-
-    eta = sp.symbols("eta")
-    kernel_a, kernel_b = sp.symbols("kernel_a kernel_b")
-    ell_zeta_a = sp.symbols("ell_zeta_a_0") + 2 * eta
-    ell_zeta_b = sp.symbols("ell_zeta_b_0") - 2 * eta
-    rapidity_derivative = (
-        kernel_a * sp.diff(ell_zeta_a, eta)
-        + kernel_b * sp.diff(ell_zeta_b, eta)
-    )
-    assert_zero(
-        "TMD diagonal rapidity split cancellation",
-        rapidity_derivative.subs(kernel_b, kernel_a),
-    )
-    assert_zero(
-        "TMD rapidity split mismatch residual",
-        rapidity_derivative - 2 * (kernel_a - kernel_b),
-    )
-    if sp.simplify(rapidity_derivative.subs(kernel_b, 0)) == 0:
-        raise AssertionError("dropping one Collins-Soper kernel should leave rapidity dependence")
 
 
 def check_gpd_polynomiality_degree() -> None:

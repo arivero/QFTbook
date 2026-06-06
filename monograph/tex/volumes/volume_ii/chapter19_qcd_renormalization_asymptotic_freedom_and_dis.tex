@@ -11151,9 +11151,16 @@ This subtraction is load-bearing: omitting
 once in the resummed TMD coordinate and again inside \(\sigma_{\rm FO}^{(N)}\).
 
 Rapidity scale cancellation is part of the same tested statement.  Parametrize
-\(\zeta_A=Q^2\ee^{2\eta}\), \(\zeta_B=Q^2\ee^{-2\eta}\).  If the two incoming
-TMDs use the same Collins--Soper kernel in the color-singlet channel and the
-hard factor has no residual \(\eta\)-dependence, then
+\(\zeta_A=Q^2\ee^{2\eta}\), \(\zeta_B=Q^2\ee^{-2\eta}\).  With the convention
+\(\ell_\zeta=\log\sqrt{\zeta}\), this means
+\[
+  \ell_{\zeta_A}=\log Q+\eta,
+  \qquad
+  \ell_{\zeta_B}=\log Q-\eta .
+\]
+If the two incoming TMDs use the same Collins--Soper kernel in the
+color-singlet channel and the hard factor has no residual
+\(\eta\)-dependence, then
 \begin{equation}
   \partial_\eta
   \log\!\left[
@@ -11162,15 +11169,18 @@ hard factor has no residual \(\eta\)-dependence, then
     F_{j/B}(b_\perp;\mu,\zeta_B)
   \right]
   =
-  2\mathcal D_i(b_\perp;\mu)-2\mathcal D_j(b_\perp;\mu).
+  \mathcal D_i(b_\perp;\mu)-\mathcal D_j(b_\perp;\mu).
   \label{eq:qcd-tmd-rapidity-split-derivative}
 \end{equation}
-For the diagonal channel this vanishes.  In a mixing problem the corresponding
-statement is a cancellation of rapidity anomalous-dimension matrices in the
-paired hard/beam/soft coordinate.  If the kernels are mismatched, if the product
-\(\zeta_A\zeta_B=Q^4\) is not held fixed, or if the \(Y\)-term is evaluated in a
-different subtraction scheme, the residual rapidity dependence is a matching
-error, not a new physical dependence of the color-singlet spectrum.
+The factor is one, not two, because the Collins--Soper derivative above is with
+respect to \(\log\sqrt{\zeta}\).  For the diagonal channel
+\(\mathcal D_i=\mathcal D_j\) this vanishes.  In a mixing problem the
+corresponding statement is a cancellation of rapidity anomalous-dimension
+matrices in the paired hard/beam/soft coordinate.  If the kernels are
+mismatched, if the product \(\zeta_A\zeta_B=Q^4\) is not held fixed, or if the
+\(Y\)-term is evaluated in a different subtraction scheme, the residual
+rapidity dependence is a matching error, not a new physical dependence of the
+color-singlet spectrum.
 
 A theorem-level matched TMD prediction is the assertion that
 \begin{equation}
