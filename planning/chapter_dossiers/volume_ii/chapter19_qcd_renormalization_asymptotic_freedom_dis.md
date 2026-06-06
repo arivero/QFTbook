@@ -39,10 +39,12 @@
   measured-bin residual budget that fails if the large-\(b\) component is
   silently omitted.
 - `SRC-CHECK-EEC-TRACK`:
-  `calculation-checks/energy_correlator_track_checks.py` verifies the selected
-  calorimetric measure identities, track-function collinear moment ledger,
-  selected endpoint-atom gluing equations, and measured-EEC residual-budget
-  inequality.
+  `calculation-checks/energy_correlator_track_checks.py` verifies, under an
+  extended evidence contract, the selected calorimetric measure identities,
+  track-function collinear moment ledger, selected endpoint-atom gluing
+  equations, measured-EEC residual-budget inequality, detector
+  response/covariance transport, and a finite charged-bin negative control for
+  moment-truncated track models.
 - `SRC-CHECK-EEC-LIGHT-RAY`:
   `calculation-checks/energy_correlator_light_ray_ope_checks.py` verifies the
   small-angle endpoint plus/contact convention, finite light-ray
@@ -1018,6 +1020,12 @@ The chapter must define and derive:
   residual functional separating perturbative, endpoint, and hadronization
   errors.  Extended `calculation-checks/energy_correlator_track_checks.py`
   with selected endpoint-atom gluing and measured-residual finite checks.
+- 2026-06-06 issue #725/#526/#630 track measured-test pass: promoted
+  `calculation-checks/energy_correlator_track_checks.py` to an extended
+  evidence contract and added the finite charged-bin negative control for
+  moment-truncated track functions, matching the Ch19b residual
+  \(B_{\rm tr}^{(m)}(\mathcal F\,|\,C)\) on actual charged-track test
+  families and covariance vectors.
 - 2026-06-04 issue #519 back-to-back recoil-budget pass: upgraded the
   Sudakov endpoint from a scoped leading-log display to a tested recoil chart
   feeding the measured-EEC budget.  The manuscript now states the

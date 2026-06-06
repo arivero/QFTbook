@@ -1345,8 +1345,9 @@ Current checks:
   endpoint atoms, normalization, and residual budgets are transported with the
   open-angle chart, with negative controls for open-only and unnormalized
   comparisons.
-- `energy_correlator_track_checks.py`: exact rational checks for the
-  selected calorimetric measure and track-energy-correlator bookkeeping,
+- `energy_correlator_track_checks.py`: extended evidence-contract exact
+  rational checks for the selected calorimetric measure and
+  track-energy-correlator bookkeeping,
   including the selected EEC zeroth and first moment identities, selected
   contact weight, the binomial collinear track-function moment ledger, and
   the reduction of the separated track-EEC weight to \(2z(1-z)\) for the
@@ -1358,7 +1359,11 @@ Current checks:
   companion now verifies the measured EEC response/covariance contract:
   eventwise endpoint covariance repair, linear detector-response covariance
   transport, detector-noise budgeting, and negative controls against
-  mean-only endpoint repair.
+  mean-only endpoint repair.  It also checks a track-function truncation
+  negative control in which two honest probability measures on \([0,1]\)
+  match moments through cubic order and hence agree on low-degree polynomial
+  track-EEC tests, while disagreeing on a finite high charged-track bin and
+  its Bernoulli covariance.
 - `energy_correlator_sudakov_checks.py`: exact rational checks for the
   back-to-back EEC leading Sudakov factor, including
   \(\int_0^{L_b}u\,du=L_b^2/2\), the fixed-coupling differential equation for

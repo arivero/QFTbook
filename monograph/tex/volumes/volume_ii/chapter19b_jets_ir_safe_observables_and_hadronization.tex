@@ -3890,6 +3890,59 @@ are part of the definition of the lifted observable.  Omitting them, or
 replacing every track variable by its first moment, changes the observable
 whose short-distance coefficient is being computed.
 
+\begin{controlledapproximation}[Track-function truncation for measured tests]
+\label{ca:track-function-measured-test-budget}
+The moment formulae above are exact only for the displayed polynomial
+energy-measure tests.  A finite collider comparison normally reports
+histogram bins, trigger regions, ratios, or a detector-response vector.  These
+are tests on the random charged-track measure
+\[
+  \mu_{\rm tr}(X)=\sum_a X_aE_a\delta_{y_a},
+\]
+so they depend on the finite-bin law of the charged fractions.  If the full
+track coordinates \(T_i\) are replaced by a finite moment model
+\(\widehat T_i^{(m)}\) matched through moments \(0,\ldots,m\), then the
+missing track-distribution direction enters a declared measured test family
+\(\mathcal F\) through
+\begin{equation}
+  B_{\rm tr}^{(m)}(\mathcal F\,|\,C)
+  =
+  \sup_{\substack{\Phi\in\mathcal F\\ \|\Phi\|_{\mathcal F}\le1}}
+  \left|
+    \mathbb E_{T}\,
+    \Phi\!\left(\sum_a X_aE_a\delta_{y_a}\right)
+    -
+    \mathbb E_{\widehat T^{(m)}}\,
+    \Phi\!\left(\sum_a \widehat X_aE_a\delta_{y_a}\right)
+  \right| ,
+  \label{eq:track-function-measured-test-budget}
+\end{equation}
+where \(C=\{(i_a,E_a,y_a)\}\) is the retained short-distance configuration
+and the variables are independently drawn from the corresponding track
+coordinates in the finite lift.  For polynomial \(\Phi\) whose repeated-label
+blocks have size at most \(m\), moment matching can make
+\(B_{\rm tr}^{(m)}\) vanish.  For a charged-energy threshold, a finite
+histogram bin, or a response window with sharp edges, the same low moments do
+not determine the probability of the bin.
+
+The covariance part of a track-based measurement carries the same warning.  If
+\(X_\alpha(e)\) denotes the ideal finite test vector for event \(e\), replacing
+\(T_i\) by \(\widehat T_i^{(m)}\) changes not only \(\mathbb E[X_\alpha]\) but
+also
+\[
+  \Sigma^X_{\alpha\beta}
+  =
+  \mathbb E[(X_\alpha-\bar X_\alpha)(X_\beta-\bar X_\beta)] .
+\]
+Thus a track prediction compared with charged-track data must include, in the
+same convention as \eqref{eq:measured-eec-mean-covariance-contract}, both a
+mean residual \(B_{\rm tr}^{(m)}\) and the corresponding covariance residual
+on the reported test vectors.  A fitted average charged fraction, or even a
+finite list of matched moments, is a coordinate approximation to the
+nonperturbative track distribution; it is not by itself a prediction for all
+charged-track bins.
+\end{controlledapproximation}
+
 The same bookkeeping explains the collinear composition law behind
 \eqref{eq:paired-track-function-evolution}.  If a parent with energy \(E\)
 is resolved into daughters with energy fractions \(z\) and \(1-z\), then the

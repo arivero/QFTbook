@@ -1,28 +1,55 @@
 #!/usr/bin/env python3
 """Exact checks for track-energy correlator bookkeeping.
 
-Evidence contract:
-- Target claims: selected calorimetric measures, track-EEC moment identities,
+Evidence contract.
+Target claims: selected calorimetric measures, track-EEC moment identities,
   collinear track-function split moments, measured endpoint-atom gluing,
-  measured EEC moment closure, and the response/covariance contract in
-  ``ca:measured-eec-response-covariance-contract``.
-- Independent construction: all moments, endpoint corrections, ensemble
-  covariances, and response covariances are recomputed from finite event
-  samples using exact rational arithmetic rather than by substituting the
-  displayed manuscript equations as black boxes.
-- Imported assumptions: finite event ensembles, finite detector-test vectors,
+  measured EEC moment closure, the response/covariance contract in
+  ``ca:measured-eec-response-covariance-contract``, and the finite
+  track-function moment-truncation budget in
+  ``ca:track-function-measured-test-budget``.
+Independent construction: all moments, endpoint corrections, ensemble
+  covariances, response covariances, and charged-bin probabilities are
+  recomputed from finite event samples or finite probability measures using
+  exact rational arithmetic rather than by substituting displayed manuscript
+  equations as black boxes.
+Imported assumptions: finite event ensembles, finite detector-test vectors,
   linear detector response, zero-mean detector noise with a declared
-  conditional covariance, and the monograph's endpoint convention
+  conditional covariance, independent finite track-fraction variables for
+  resolved short-distance labels, and the monograph's endpoint convention
   ``zeta=+1`` for coincident detectors and ``zeta=-1`` for back-to-back
   atoms.
-- Negative controls: full-calorimeter endpoint atoms fail selected-energy
+Negative controls: full-calorimeter endpoint atoms fail selected-energy
   moments, zeroth-only repair fails first-moment closure, mean-only endpoint
-  repair misses covariance, and omitting detector noise underbudgets a
-  response covariance.
-- Scope boundary: these checks do not prove continuum light-ray OPE
-  convergence, perturbative factorization, detector calibration, or
-  nonperturbative QCD estimates; they verify the finite algebra that such
-  claims must satisfy.
+  repair misses covariance, omitting detector noise underbudgets a response
+  covariance, and moment-matched track functions pass low-degree polynomial
+  tests while failing finite charged-bin means and variances.
+Scope boundary: these checks do not prove continuum light-ray OPE
+  convergence, perturbative factorization, detector calibration, track
+  factorization, or nonperturbative QCD estimates; they verify the finite
+  algebra that such claims must satisfy.
+Primary derivation route: start from finite selected energy measures and
+  finite track-fraction probability laws, assemble endpoint atoms and
+  detector-response vectors event by event, and compute the induced means,
+  covariances, and test-family residuals directly.
+Independent verification route: recompute the same quantities through moment
+  identities, endpoint defect equations, covariance transport, and
+  moment-matched probability-law comparisons, then check that the two routes
+  agree only when the declared detector and track coordinates are retained.
+Convention dependencies: center-of-mass normalized energy fractions,
+  contact-inclusive EEC products in ``zeta=cos chi``, finite selected-track
+  weights before the opening-angle pushforward, independent track-function
+  variables per resolved label, and charged-bin tests in the track-fraction
+  coordinate ``x``.
+Domain and remainder assumptions: all probability measures are finite and
+  supported in ``[0,1]``; the response model is finite dimensional; the
+  track-lift checks address polynomial and finite-bin test families at fixed
+  short-distance data and leave perturbative, power, Glauber, calibration,
+  and continuum remainders as external inputs.
+Remaining unproved or conditional: the companion does not establish the
+  existence or universality of renormalized QCD track functions, their
+  perturbative kernels, continuum detector calibration, or a quantitative
+  nonperturbative track model for real collider data.
 """
 
 from fractions import Fraction
@@ -151,6 +178,14 @@ def split_moment(z, moments_j, moments_k, n):
     )
 
 
+def distribution_moment(dist, power):
+    return sum(point**power * weight for point, weight in dist.items())
+
+
+def threshold_probability(dist, threshold):
+    return sum(weight for point, weight in dist.items() if point >= threshold)
+
+
 def check_track_function_split_moments():
     z = Fraction(2, 5)
     moments_j = {
@@ -182,6 +217,81 @@ def check_track_function_split_moments():
     full_separated = 2 * z * (1 - z) * full[1] * full[1]
     assert_equal("full calorimeter separated weight", full_separated, 2 * z * (1 - z))
     assert_equal("full calorimeter second moment", split_moment(z, full, full, 2), Fraction(1))
+
+
+def check_moment_matched_track_functions_do_not_fix_charged_bins():
+    # Both probability laws live on the physical track-fraction interval and
+    # share the low moments seen by low-degree track-polynomial observables.
+    # Their finite charged-bin probabilities remain different.
+    support = [
+        Fraction(0),
+        Fraction(1, 4),
+        Fraction(1, 2),
+        Fraction(3, 4),
+        Fraction(1),
+    ]
+    base = {point: Fraction(1, 5) for point in support}
+    null_direction = {
+        Fraction(0): Fraction(1),
+        Fraction(1, 4): Fraction(-4),
+        Fraction(1, 2): Fraction(6),
+        Fraction(3, 4): Fraction(-4),
+        Fraction(1): Fraction(1),
+    }
+    epsilon = Fraction(1, 60)
+    track_a = {
+        point: base[point] + epsilon * null_direction[point]
+        for point in support
+    }
+    track_b = {
+        point: base[point] - epsilon * null_direction[point]
+        for point in support
+    }
+
+    assert_equal("track A normalization", distribution_moment(track_a, 0), Fraction(1))
+    assert_equal("track B normalization", distribution_moment(track_b, 0), Fraction(1))
+    assert_true(
+        "track laws are honest probability measures",
+        all(weight > 0 for weight in track_a.values())
+        and all(weight > 0 for weight in track_b.values()),
+    )
+
+    for power in range(4):
+        assert_equal(
+            f"moment-matched track law through degree {power}",
+            distribution_moment(track_a, power),
+            distribution_moment(track_b, power),
+        )
+
+    # A one-label two-point track EEC diagonal is a second-moment polynomial.
+    # It cannot distinguish the two laws.
+    energy = Fraction(5, 7)
+    diagonal_weight_a = energy**2 * distribution_moment(track_a, 2)
+    diagonal_weight_b = energy**2 * distribution_moment(track_b, 2)
+    assert_equal(
+        "moment-matched two-point track diagonal",
+        diagonal_weight_a,
+        diagonal_weight_b,
+    )
+
+    threshold = Fraction(3, 4)
+    bin_a = threshold_probability(track_a, threshold)
+    bin_b = threshold_probability(track_b, threshold)
+    assert_equal("track A high charged-bin probability", bin_a, Fraction(7, 20))
+    assert_equal("track B high charged-bin probability", bin_b, Fraction(9, 20))
+    assert_true("matched moments do not fix charged-bin mean", bin_a != bin_b)
+
+    variance_a = bin_a * (1 - bin_a)
+    variance_b = bin_b * (1 - bin_b)
+    assert_equal(
+        "charged-bin covariance residual",
+        abs(variance_b - variance_a),
+        Fraction(1, 50),
+    )
+    assert_true(
+        "matched moments do not fix charged-bin variance",
+        variance_a != variance_b,
+    )
 
 
 def check_selected_endpoint_atom_gluing():
@@ -498,6 +608,7 @@ def check_measured_eec_response_covariance_contract():
 def main():
     check_selected_measure_moments()
     check_track_function_split_moments()
+    check_moment_matched_track_functions_do_not_fix_charged_bins()
     check_selected_endpoint_atom_gluing()
     check_measured_eec_global_moment_closure_residual()
     check_measured_eec_residual_bound()

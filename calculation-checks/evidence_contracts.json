@@ -159,6 +159,17 @@
       ]
     },
     {
+      "path": "energy_correlator_track_checks.py",
+      "risk_class": "QCD selected-track energy-correlator detector algebra",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "contact-inclusive selected EEC moments in zeta=cos chi",
+        "finite selected-track weights before opening-angle pushforward",
+        "independent track-function variables for resolved collinear labels",
+        "charged-bin test and covariance residuals in track-fraction space"
+      ]
+    },
+    {
       "path": "scet_factorization_checks.py",
       "risk_class": "SCET/factorization proof-status boundary"
     },

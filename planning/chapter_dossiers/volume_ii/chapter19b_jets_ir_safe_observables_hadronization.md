@@ -144,6 +144,10 @@ The chapter establishes:
 - Definition `def:finite-track-observable-lift`, defining the finite lift of
   calorimetric energy polynomials to track-based observables by conditional
   expectation over track functions, including the diagonal moment terms;
+- controlled approximation `ca:track-function-measured-test-budget`, recording
+  the residual \(B_{\rm tr}^{(m)}(\mathcal F\,|\,C)\) when a finite
+  moment-matched track model is used for charged-track bins, thresholds, or
+  detector-response vectors;
 - a measure-theoretic formulation of energy correlators as continuous
   functionals of the calorimetric energy measure;
 - Lemma `lem:smeared-energy-correlator-continuity`, proving soft and
@@ -446,6 +450,11 @@ The chapter establishes:
      a sum over maps from detector slots to short-distance labels; each label
      appearing \(r\) times contributes \(m_i^{(r)}\).  Replacing every energy
      by the first charged fraction changes the observable.
+10d. A finite moment model for track functions controls only the declared
+     measured test family.  The residual
+     \(B_{\rm tr}^{(m)}(\mathcal F\,|\,C)\) records the difference between the
+     full track distribution and a moment-truncated model on charged-track
+     bins, threshold tests, response vectors, and their covariance data.
 11. Fragmentation functions are nonperturbative light-ray matrix elements with
     perturbative scale evolution; their finite-scale boundary data are not
     produced by fixed-order perturbation theory.
@@ -582,6 +591,14 @@ The chapter establishes:
   distinct, partial-diagonal, and full-diagonal terms.  The paired check now
   verifies a nontrivial three-point kernel by exact enumeration and catches
   the false first-moment replacement.
+- 2026-06-06 issue #725/#526/#630 track-function measured-test pass: added
+  `ca:track-function-measured-test-budget` so finite moment-matched track
+  models carry an explicit residual on the actual charged-track test family
+  and covariance vectors.  Promoted
+  `calculation-checks/energy_correlator_track_checks.py` to an extended
+  evidence contract with a probability-measure negative control: two track
+  laws on \([0,1]\) match low moments and low-degree track-EEC polynomials but
+  disagree on a finite high charged-track bin and its variance.
 - 2026-05-29 anti-wrapper pass: demoted the track-function normalization and
   first-moment proposition to a worked paragraph because the proof is the
   finite-kernel moment algebra; the substantive QFT datum remains the
