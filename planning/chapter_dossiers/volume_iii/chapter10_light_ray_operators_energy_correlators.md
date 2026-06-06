@@ -76,6 +76,10 @@ The chapter establishes:
 - the helicity \(2,1,0\) spectral decomposition of the stress-tensor
   detector quadratic form, and the conformal-collider inequalities as the
   nonnegativity of the three spectral eigenvalues;
+- the four-dimensional \(\mathcal N=1\) supersymmetric specialization
+  \(t_4=0\), \(t_2=6(1-a/c)\), converting the helicity inequalities into
+  \(1/2\le a/c\le 3/2\) with the free chiral and vector multiplets saturating
+  opposite endpoints;
 - the CFT energy-energy correlator and its relation to the QCD EEC;
 - the light-ray OPE theorem boundary for separated-angle detector products,
   now accompanied by the distributional proof mechanism: transverse detector
@@ -127,6 +131,7 @@ The chapter establishes:
 | \(x^\pm=x^0\pm x^1\), \(y\) | light-cone and transverse coordinates used in the modular proof mechanism |
 | \(R_f\), \(K_f\) | null-cut domain of dependence and its vacuum modular Hamiltonian |
 | \(t_2,t_4\) | parity-even four-dimensional stress-tensor three-point coordinates in conformal collider normalization |
+| \(a,c\) | four-dimensional trace-anomaly coefficients used in the \(\mathcal N=1\) supersymmetric collider specialization |
 | \(\mathcal V_2,\mathcal V_1,\mathcal V_0\) | helicity \(2,1,0\) subspaces of the symmetric traceless polarization space relative to a detector direction |
 | \(\lambda_2,\lambda_1,\lambda_0\) | detector quadratic-form eigenvalues in the helicity \(2,1,0\) sectors |
 | \(\mathrm{EEC}_\Psi(\chi)\) | normalized energy-energy correlator in state \(\Psi\) |
@@ -192,6 +197,11 @@ The chapter establishes:
    the detector quadratic form; these are precisely the displayed
    Hofman--Maldacena inequalities once the one-point function is put in
    \(t_2,t_4\) normal form.
+10a. In four-dimensional \(\mathcal N=1\) SCFTs, the supercurrent Ward
+     identity gives \(t_4=0\), \(t_2=6(1-a/c)\).  The same helicity
+     eigenvalues therefore become
+     \(2a/c-1\), \(2-a/c\), and \(3-2a/c\), yielding
+     \(1/2\le a/c\le3/2\) after the stress-tensor normalization is transported.
 11. The CFT EEC and the QCD EEC are the same detector construction with
    different dynamical state spaces.
 12. The convergent light-ray OPE is used with explicit Lorentzian CFT
@@ -274,9 +284,10 @@ The chapter establishes:
 - The finite helicity reduction of the four-dimensional collider bounds is
   checked by `calculation-checks/conformal_collider_checks.py`, together with
   the full helicity-projector spectral decomposition of a generic polarization,
-  the finite arithmetic for the light-transform homogeneity map, the null-cut
-  modular ANEC sign bookkeeping, and the transverse homogeneity ledger for
-  light-ray OPE coefficient distributions.
+  the \(\mathcal N=1\) supersymmetric \(a/c\) specialization and endpoint
+  multiplet checks, the finite arithmetic for the light-transform homogeneity
+  map, the null-cut modular ANEC sign bookkeeping, and the transverse
+  homogeneity ledger for light-ray OPE coefficient distributions.
 - The conformal-algebra sign convention behind the light transform is checked
   by `calculation-checks/conformal_light_transform_algebra_checks.py`, which
   verifies the Euclidean conformal Killing vector bracket table, the
@@ -287,6 +298,15 @@ The chapter establishes:
   three little-group sectors to a displayed orthogonal spectral decomposition
   of the detector quadratic form on the full symmetric-traceless polarization
   space.  The companion check verifies the generic rational decomposition.
+- 2026-06-06 issue #519 supersymmetric collider central-charge pass: added
+  the four-dimensional \(\mathcal N=1\) specialization
+  \(t_4=0,\ t_2=6(1-a/c)\) after the Hofman--Maldacena helicity inequalities.
+  The new paragraph converts the detector eigenvalues to
+  \(2a/c-1\), \(2-a/c\), and \(3-2a/c\), deriving
+  \(1/2\le a/c\le3/2\) and identifying the free chiral/vector endpoint
+  saturations.  The companion check verifies the rational map, the two endpoint
+  multiplets, and normalization mistakes that would hide the endpoint
+  saturations.
 - 2026-06-02 anti-wrapper follow-up: demoted the separate
   Hofman--Maldacena-inequalities proposition/proof shell.  The substantive
   result is the preceding spectral diagonalization; the inequalities are now

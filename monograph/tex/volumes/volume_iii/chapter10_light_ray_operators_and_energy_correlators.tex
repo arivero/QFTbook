@@ -1031,6 +1031,43 @@ Contact terms in the local \(\langle TTT\rangle\) Ward identities fix the
 normalization of the stress tensor and do not change separated-angle detector
 values after the state wavepacket and detector smearing have been specified.
 
+\paragraph{Supersymmetric central-charge specialization.}
+In a four-dimensional \(\mathcal N=1\) SCFT the stress tensor belongs to the
+supercurrent multiplet, so supersymmetric Ward identities reduce the
+parity-even stress-tensor three-point data to the two trace-anomaly
+coefficients \(a\) and \(c\).  In the collider normalization used in
+\eqref{eq:hm-energy-one-point}, the separated-angle stress-tensor flux
+coordinates are
+\begin{equation}
+  t_4=0,\qquad
+  t_2=6\left(1-\frac{a}{c}\right).
+  \label{eq:n1-susy-collider-central-charge-map}
+\end{equation}
+Here \(c>0\) is fixed by the stress-tensor two-point normalization.  Substituting
+\eqref{eq:n1-susy-collider-central-charge-map} into the three helicity
+eigenvalues \eqref{eq:hm-helicity-eigenvalues} gives
+\begin{equation}
+  \lambda_2=2\frac{a}{c}-1,\qquad
+  \lambda_1=2-\frac{a}{c},\qquad
+  \lambda_0=3-2\frac{a}{c}.
+  \label{eq:n1-susy-collider-helicity-eigenvalues}
+\end{equation}
+The middle inequality is then weaker than the two endpoint inequalities, and
+energy-detector positivity gives the familiar supersymmetric collider bound
+\begin{equation}
+  \frac12\leq\frac{a}{c}\leq\frac32 .
+  \label{eq:n1-susy-collider-ac-bound}
+\end{equation}
+This is the point at which the abstract detector positivity becomes a
+constraint on physical anomaly data.  The free chiral multiplet has
+\((a,c)=(1/48,1/24)\), hence \(a/c=1/2\) and saturates the helicity-two
+inequality.  The free vector multiplet has
+\((a,c)=(3/16,1/8)\), hence \(a/c=3/2\) and saturates the helicity-zero
+inequality.  Interacting theories need not sit at either endpoint, but they
+must transport the same stress-tensor normalization and supercurrent Ward
+identity before \eqref{eq:n1-susy-collider-ac-bound} can be compared across
+dual descriptions.
+
 \section{Energy-Energy Correlators in a CFT}
 
 For a state of sharp total energy \(Q\), the normalized energy-energy

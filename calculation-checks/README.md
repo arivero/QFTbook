@@ -1021,7 +1021,10 @@ Current checks:
   four-dimensional stress-tensor flux form, the helicity \(2,1,0\) reductions
   to the Hofman--Maldacena inequalities, the full helicity-projector spectral
   decomposition of the stress-tensor detector quadratic form, the vanishing
-  of the integrated \(t_2,t_4\) deformations, and the embedding-space
+  of the integrated \(t_2,t_4\) deformations, the \(\mathcal N=1\)
+  supersymmetric specialization \(t_4=0\), \(t_2=6(1-a/c)\) and
+  \(1/2\le a/c\le3/2\) central-charge bound with free chiral/vector endpoint
+  controls, and the embedding-space
   light-transform homogeneity map \((\Delta,J)\mapsto(1-J,1-\Delta)\), plus
   the null-cut modular-variation sign bookkeeping and entropy-squeeze
   inequality behind the modular ANEC route, and the transverse homogeneity

@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Finite checks for the ANEC and conformal-collider bounds section."""
+"""Finite checks for the ANEC and conformal-collider bounds section.
+
+The checks include the four-dimensional stress-tensor collider diagonalization
+and the N=1 supersymmetric specialization that converts the detector
+positivity inequalities into the central-charge bound 1/2 <= a/c <= 3/2.
+"""
 
 from __future__ import annotations
 
@@ -160,6 +165,55 @@ def check_helicity_projector_spectral_diagonalization() -> None:
     assert_equal("generic full flux polynomial", full_flux, (Fraction(54), Fraction(8), Fraction(44, 5)))
 
 
+def check_n1_susy_collider_central_charge_bound() -> None:
+    """Check the N=1 SCFT map from collider coordinates to a/c."""
+
+    def helicity_eigenvalues(t2: Fraction, t4: Fraction) -> tuple[Fraction, Fraction, Fraction]:
+        return (
+            1 - t2 / 3 - 2 * t4 / 15,
+            1 + t2 / 6 - 2 * t4 / 15,
+            1 + t2 / 3 + 8 * t4 / 15,
+        )
+
+    def susy_eigenvalues(a_over_c: Fraction) -> tuple[Fraction, Fraction, Fraction]:
+        t2 = 6 * (1 - a_over_c)
+        t4 = Fraction(0)
+        return helicity_eigenvalues(t2, t4)
+
+    samples = (
+        (Fraction(1, 2), (Fraction(0), Fraction(3, 2), Fraction(2))),
+        (Fraction(1), (Fraction(1), Fraction(1), Fraction(1))),
+        (Fraction(3, 2), (Fraction(2), Fraction(1, 2), Fraction(0))),
+        (Fraction(7, 6), (Fraction(4, 3), Fraction(5, 6), Fraction(2, 3))),
+    )
+    for a_over_c, expected in samples:
+        assert_equal("N=1 collider a/c eigenvalues", susy_eigenvalues(a_over_c), expected)
+
+    lower_outside = susy_eigenvalues(Fraction(49, 100))
+    upper_outside = susy_eigenvalues(Fraction(151, 100))
+    if all(value >= 0 for value in lower_outside):
+        raise AssertionError("a/c below 1/2 should violate helicity-two positivity")
+    if all(value >= 0 for value in upper_outside):
+        raise AssertionError("a/c above 3/2 should violate helicity-zero positivity")
+
+    free_chiral = (Fraction(1, 48), Fraction(1, 24))
+    free_vector = (Fraction(3, 16), Fraction(1, 8))
+    chiral_ratio = free_chiral[0] / free_chiral[1]
+    vector_ratio = free_vector[0] / free_vector[1]
+    assert_equal("free chiral a/c", chiral_ratio, Fraction(1, 2))
+    assert_equal("free vector a/c", vector_ratio, Fraction(3, 2))
+    assert_equal("free chiral saturates helicity two", susy_eigenvalues(chiral_ratio)[0], Fraction(0))
+    assert_equal("free vector saturates helicity zero", susy_eigenvalues(vector_ratio)[2], Fraction(0))
+
+    wrong_t2_normalization = 3 * (1 - chiral_ratio)
+    if helicity_eigenvalues(wrong_t2_normalization, Fraction(0))[0] == 0:
+        raise AssertionError("wrong t2 normalization should not reproduce chiral saturation")
+
+    wrong_nonzero_t4 = helicity_eigenvalues(6 * (1 - Fraction(1)), Fraction(1, 5))
+    if wrong_nonzero_t4 == (Fraction(1), Fraction(1), Fraction(1)):
+        raise AssertionError("N=1 identity point should require t4=0")
+
+
 def check_normalization_integrates_to_total_energy() -> None:
     """Check that the angular subtractions make t2 and t4 integrate to zero."""
 
@@ -268,6 +322,7 @@ def main() -> None:
     check_sphere_averages_for_traceless_tensor()
     check_helicity_bounds()
     check_helicity_projector_spectral_diagonalization()
+    check_n1_susy_collider_central_charge_bound()
     check_normalization_integrates_to_total_energy()
     check_light_transform_homogeneity_map()
     check_null_cut_modular_anec_sign_bookkeeping()
