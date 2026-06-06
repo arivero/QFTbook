@@ -373,13 +373,13 @@ def load_textual_factorization_review() -> list[dict[str, str]]:
 
 def factorization_ledger_block() -> str:
     text = read_repo_text(JETS_CHAPTER)
-    start_marker = r"\paragraph{Occurrence-level claim-status ledger for factorization uses.}"
+    start_marker = r"\paragraph{Reference map for factorization claims.}"
     end_marker = "Renormalization of the hard, jet, and soft functions gives evolution"
     try:
         start = text.index(start_marker)
         end = text.index(end_marker, start)
     except ValueError as exc:
-        raise AssertionError("factorization occurrence ledger block was not found") from exc
+        raise AssertionError("factorization occurrence reference-map block was not found") from exc
     return text[start:end]
 
 

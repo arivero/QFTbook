@@ -557,6 +557,37 @@ operator, representation, norm, estimate, pole assignment, root-count
 constraint, finite matrix, or reconstruction theorem.  Do not merely replace
 one decorative noun by another.
 
+## Claim Architecture and Observable Anchor Rule
+
+Every load-bearing development must expose the same reader-facing sequence:
+
+1. the physical question, observable, phenomenon, or construction at stake;
+2. the mathematical object being studied, such as an amplitude, correlator,
+   operator, measure, flow, state, algebra, or moduli coordinate;
+3. the assumptions and status: theorem, imported theorem, conditional result,
+   perturbative statement, controlled approximation, conjecture, or evidence;
+4. the derivation or construction actually performed in the chapter;
+5. the physical output predicted, reconstructed, bounded, or compared;
+6. the verification boundary, including what was independently checked and
+   what remains unproved.
+
+Use local frameworks only when they have a distinct technical role.  "Gate"
+means a necessary condition that blocks a named claim when it fails.  "Ledger"
+means a finite bookkeeping table whose entries are later used or checked.
+"Spine" or "ladder" may describe the chapter's logical order only when the
+surrounding text still states the physical question and output.  A "route
+datum" must name an actual reconstruction map and its topology.  Otherwise
+use ordinary names such as map, table, estimate, residual decomposition,
+comparison, or hypothesis.
+
+Error language must separate four statuses.  A decomposition identity is an
+exact rewriting.  A named error slot is only an obligation to control a term.
+An estimated residual has a stated estimate or measurement protocol.  A proved
+uniform bound has hypotheses, a norm or topology, and a displayed inequality.
+Do not call a decomposition or named slot an error estimate.  When a formal
+map has no presently controlled observable consequence, state that boundary
+plainly and present it as a construction program or hypothesis.
+
 ## Positive Formulation Rule
 
 The main text explains objects by their data, definitions, assumptions, and

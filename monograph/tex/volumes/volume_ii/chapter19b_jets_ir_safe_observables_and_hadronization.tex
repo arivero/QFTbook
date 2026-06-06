@@ -1283,13 +1283,16 @@ structure of the factorized approximation, not an optional convention added afte
 the formula has been written.
 \end{controlledapproximation}
 
-\paragraph{Occurrence-level claim-status ledger for factorization uses.}
-The table below refines the EFT prediction status ledger of
-Definition~\ref{def:eft-prediction-datum} at the level of manuscript formulae.
-It is the convention for every historical phrase such as ``factorization
-theorem'' in the surrounding QCD and jet material: a formula inherits the
-status in its own row unless a later local theorem supplies the missing
-regulator, Glauber, and remainder entries.
+\paragraph{Reference map for factorization claims.}
+The table below refines Definition~\ref{def:eft-prediction-datum} only for
+reader navigation.  Each row starts from a physical observable, names the
+regulated mathematical object used to approximate it, and then records the
+strongest local status of the displayed formula.  It is not independent
+evidence for any factorization theorem.  A named remainder is a residual slot
+until the cited row supplies an estimate or a uniform bound in the stated
+test-function topology.  A formula therefore inherits the status in its own row
+unless a later local theorem supplies the missing regulator, Glauber, and
+remainder entries.
 A row is included when the manuscript makes a process-level hard, collinear,
 soft, rapidity, Regge, or Abelian soft-factorization assertion for an
 observable.  Closely adjacent identities are grouped only when they are
@@ -1311,12 +1314,12 @@ power-remainder coordinates.
 \begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.25\textwidth}>{\raggedright\arraybackslash}p{0.71\textwidth}@{}}
 \hline
 \textbf{Manuscript label / source} &
-\textbf{Observable / regulator / strongest source / proof / Glauber / remainder}
+\textbf{Observable / regulator / source / status / Glauber / remainder}
 \\ \hline
 \endfirsthead
 \hline
 \textbf{Manuscript label / source} &
-\textbf{Observable / regulator / strongest source / proof / Glauber / remainder}
+\textbf{Observable / regulator / source / status / Glauber / remainder}
 \\ \hline
 \endhead
 \eqref{eq:jet-event-shape-factorization};
@@ -1469,10 +1472,11 @@ Observable: common dependency ladder used to audit QCD factorization
 statements against an exact color-singlet observable.  Regulator: the
 process-specific finite regulator, Wilson-line geometry, subtraction,
 rapidity, and continuum-limit data named by each later row.  Source: local
-comparison architecture.  Proof: checklist and error budget, not a theorem
-for any one process.  The DIS figure is grouped with this row and the DIS row
-below because it records the operator-coordinate source of the inclusive DIS
-factorization statement; it is not an independent proof of a power bound.
+comparison architecture.  Status: reference checklist and residual
+decomposition, not a theorem for any one process.  The DIS figure is grouped
+with this row and the DIS row below because it records the operator-coordinate
+source of the inclusive DIS factorization statement; it is not an independent
+proof of a power bound.
 Glauber: appears in the boundary term whenever the process probes it.
 Remainder: all rows must place their residuals inside
 \(\mathcal E_{\mathfrak P,Q}^{\rm fact}\) or state why the coordinate is only

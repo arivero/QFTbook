@@ -60,11 +60,11 @@ The chapter establishes:
   physical functional, factorized singular coordinate, endpoint parameter,
   topology, power remainder, perturbative truncation remainder, and finite
   transform-space scheme covariance all explicitly named;
-- an occurrence-level claim-status ledger for the factorization material,
-  tying concrete manuscript labels in SCET, soft drop, non-global logarithms,
-  EEC, DIS, Drell--Yan, TMD, small-\(x\), exclusive-pion, track, and
-  shape-function formulae to regulator, source, proof, Glauber, and remainder
-  status rather than to historical theorem labels;
+- a physical-observable reference map for the factorization material, tying
+  concrete manuscript labels in SCET, soft drop, non-global logarithms, EEC,
+  DIS, Drell--Yan, TMD, small-\(x\), exclusive-pion, track, and shape-function
+  formulae to regulator, source, status, Glauber, and remainder information
+  rather than to historical theorem labels;
 - a transform-space SCET renormalization-group transport datum for resummed
   singular coordinates, including hard/jet/soft anomalous-dimension
   consistency, evolution kernels from natural scales to a common scale, and
@@ -257,12 +257,15 @@ The chapter establishes:
      soft coordinates represent the same singular distribution only when the
      product of the finite factors is one; anomalous-dimension consistency is
      then preserved by the paired logarithmic shifts.
-8aca. The SCET/factorization claim-status ledger is now occurrence-level:
-      each concrete formula label records the observable, regulator or scheme,
-      strongest source used locally, actual proof status, Glauber status, and
-      remainder status.  A historical physics phrase such as "factorization
-      theorem" is not a proof-status certificate unless the dependency ladder
-      and observable-topology remainder are supplied at that occurrence.  The
+8aca. The SCET/factorization reference map is occurrence-level and
+      observable-first: each concrete formula label records the observable,
+      regulator or scheme, strongest source used locally, actual status,
+      Glauber status, and remainder status.  A historical physics phrase such
+      as "factorization theorem" is not a proof-status certificate unless the
+      dependency ladder and observable-topology remainder are supplied at that
+      occurrence.  The map is navigation, not independent evidence; a named
+      residual remains a slot until a cited row supplies an estimate or bound.
+      The
       2026-06-04 issue #828 pass expands the audit to the omitted
       triple-Regge, Abelian soft-QED, GPD/exclusive, and DIS-threshold
       boundary occurrences; it also classifies pole/residue, large-\(N_c\),
@@ -608,7 +611,7 @@ The chapter establishes:
   construction-overstating SCET language with conditional operator-coordinate
   language; added the fixed-regulator endpoint projection with a nonzero
   remainder and negative controls; added the factorization
-  claim-status ledger tying SCET, QCD factorization, soft-drop, non-global,
+  claim-status reference map tying SCET, QCD factorization, soft-drop, non-global,
   massive-vector, HQET/NRQCD, and thermal matching uses to explicit status
   categories; strengthened the finite Glauber obstruction with the two-state
   \((r_2-r_1)\sin^2\theta\) example; and promoted
@@ -621,7 +624,7 @@ The chapter establishes:
   one-gluon trace-zero negative control, two-gluon entangled color factor,
   same/opposite cut eikonal sign accounting, fixed-\(q_\perp\) transverse
   integral, and narrower surviving factorization statements; replaced the
-  broad claim-status ledger by an occurrence-level formula audit; and extended
+  broad claim-status block by an occurrence-level formula audit; and extended
   `calculation-checks/scet_factorization_checks.py` with finite SU(2)
   color/eikonal checks.  The integrated transverse check was added in the
   issue #826 pass below.
@@ -672,6 +675,12 @@ The chapter establishes:
   negative control for an in-scope semantic factorization assertion whose
   label and environment title lack the lexical trigger.  The massive-vector
   electroweak Sudakov chart now has its own ledger status.
+- 2026-06-06 issue #844 architecture pass: aligned the reader-facing
+  factorization table with the canonical claim architecture.  The table is now
+  introduced as a physical-observable reference map rather than independent
+  evidence, its heading uses "status" rather than "proof," and the common QCD
+  row distinguishes a residual decomposition from a proved process theorem or
+  power bound.
 - 2026-06-05 issue #817 endpoint-positive-case pass: replaced the generic
   one-dimensional endpoint lemma from the #783 proof-status pass with a
   regulated color-singlet one-emission endpoint observable.  The monograph now

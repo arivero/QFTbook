@@ -2820,7 +2820,7 @@ Current checks:
   hard-factor bounds, and sign-separated quadrature error, the triangular
   logarithmic phase-space
   area behind the massive-vector Sudakov chart, and source-derived guards for
-  the occurrence-level factorization ledger, scanning manuscript labels,
+  the occurrence-level factorization reference map, scanning manuscript labels,
   factorization-titled environments, captions, section/paragraph titles, and
   semantic prose windows around theorem-like environments.  Each lexical or
   promoted semantic candidate must be included, grouped, or excluded in
