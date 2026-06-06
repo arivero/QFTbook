@@ -40,9 +40,9 @@
   Adler--Bardeen proof.  The monograph text uses these as theorem-boundary
   controls while deriving the local cocycle/counterterm mechanism in its own
   notation.
-- The 2026-06-06 named-tool status pass adds
+- The 2026-06-06 named-tool scope pass adds
   `rem:chapter20-named-tool-status-ledger` near the chapter entrance.  It
-  states point-of-use status for the triangle anomaly, heat-kernel/Fujikawa
+  states the point-of-use role for the triangle anomaly, heat-kernel/Fujikawa
   measure trace, Atiyah--Singer and APS inputs, local BRST descent,
   Adler--Bardeen, theta sectors, BPST/ADHM instanton measure data, and
   't Hooft/instanton amplitude constructions.  This is a reader-facing
@@ -403,7 +403,7 @@
 | \(J_{ff'},J^0_{ff'},\mathcal V_{\rm inst}^0\) | renormalized chiral scalar source coordinate, its zero-mode projection, and the zero-mode source functional used to state the mass/source RG transport of the instanton vertex |
 | \(\dd\mathcal A_{1,\mathcal X}^{E},\mathcal P_{\mathcal X}^{E},\beta_{\mathcal X}\) | retained Euclidean one-instanton source density, Euclidean source/projection factor, and source-channel small-size degree used to assemble the universal density into a source coefficient |
 | \(K_{\mathcal X}^{\rm win},J_{\mathcal X},M_{\mathcal X},\kappa_{\mathcal X}\) | retained one-instanton channel kernel, signed window integral, absolute window mass, and noncancellation margin used to test RG/scheme residuals for a physical channel |
-| \(J_{1,\Lambda}^{\mathcal O},\mathcal D_{\rm cl},\mathcal J_{\rm coll},\mathcal W_{\rm nz},\mathcal Z_{\rm zm}^{\mathcal O},\mathcal M_{\rm src}^{\mathcal O},\mathcal B_\rho\) | canonical one-instanton amplitude skeleton: retained Euclidean source coefficient and its classical, collective, nonzero-mode, zero-mode, source-matching, and size-window factors |
+| \(J_{1,\Lambda}^{\mathcal O},\mathcal D_{\rm cl},\mathcal J_{\rm coll},\mathcal W_{\rm nz},\mathcal Z_{\rm zm}^{\mathcal O},\mathcal M_{\rm src}^{\mathcal O},\mathcal B_\rho\) | canonical one-instanton amplitude assembly: retained Euclidean source coefficient and its classical, collective, nonzero-mode, zero-mode, source-matching, and size-window factors |
 | \(\bar\chi_A,\chi_B\) | odd generating coordinates for differentiated external fermion slots in the instanton zero-mode sector |
 | \(R_{Af}(z),L_{fB}(z)\) | right-slot and left-slot zero-mode overlap matrices whose differentiated coefficient is \(\det R\,\det L\) |
 | \(G^{(4)}_{\eta,\Lambda,Q=1}\) | source-differentiated finite-regulator one-instanton contribution to the smeared four-fermion amplitude |
@@ -1829,22 +1829,22 @@
   `def:one-instanton-amplitude-datum` near the opening BPST discussion, so the
   section now declares the full finite-regulator datum
   `D_cl, D_coll, D_nz, D_zm, D_src, D_rho, D_phys` before entering the ADHM and
-  collective-coordinate details.  This front-loads the physics architecture:
-  BPST/ADHM data supply the classical and moduli gates only, while the
+  collective-coordinate details.  This front-loads the physical amplitude
+  order: BPST/ADHM data supply the classical and moduli inputs only, while the
   amplitude requires the nonzero-mode determinant, Berezin zero-mode
   saturation, source/state matching, size-boundary control, and physical
   projection in the same regulator.  The companion check
   `check_one_instanton_amplitude_datum_gate_spine()` verifies the ordered gate
   spine and rejects BPST/ADHM-only, omitted-gate, unsaturated-zero-mode, and
   Euclidean-equals-physical shortcuts.
-- 2026-06-06 issue #597 amplitude-skeleton coherence pass: added
+- 2026-06-06 issue #597 amplitude-assembly coherence pass: added
   `ca:one-instanton-amplitude-skeleton` immediately after the amplitude datum
   table, before the ADHM geometry begins.  The block writes the canonical
   finite-regulator source coefficient as the product/integral of classical
   exponential, collective Jacobian, nonzero-mode determinant, zero-mode
   Berezin coefficient, source matching, and size-window factor, then separates
   the physical map and internal/sector/physical/scheme residual groups.  This
-  is a flow repair: the reader sees the full amplitude architecture before the
+  is a flow repair: the reader sees the full amplitude order before the
   moduli-space analysis.  The BPST companion check now includes an explicit
   size-window stage and rejects a size-omitted amplitude shortcut.
 - 2026-06-05 issue #597 connected four-source extraction pass: added
@@ -2003,12 +2003,21 @@
   channel-specific estimates.  The BPST companion now routes RG transport,
   physical bridge, sector leakage, source-level assembly, observable assembly,
   and the four-fermion benchmark through a shared residual-majorant helper.
-- 2026-06-06 issue #755 named-tool status pass: added
+- 2026-06-06 issue #755 named-tool scope pass: added
   `rem:chapter20-named-tool-status-ledger` at the chapter entrance.  The pass
-  responds to the named-physics-theorem/status audit by making the framework,
-  imported theorem boundary, regulator/order-of-limits status, and remaining
+  responds to the named-physics-theorem/scope audit by making the framework,
+  imported theorem boundary, regulator/order-of-limits role, and remaining
   physical obligations explicit for anomaly and instanton names before they
   appear in the body.  This is a coherence/reader-experience repair, not a new
   instanton cell: it protects the existing amplitude architecture from being
   read as a theorem beyond its finite-regulator, source-window, spectral, IR,
   or LSZ hypotheses.
+- 2026-06-06 issue #755/#597 reader-surface cleanup: re-audited the Ch20
+  instanton/anomaly entrance after the heavy amplitude passes and removed
+  reader-facing process vocabulary from the TeX surface.  The named-tool
+  entrance now speaks of scope and point-of-use role rather than a status
+  ledger; the instanton entrance speaks of amplitude assembly and ordered
+  source/observable data rather than a spine or pipeline; and the local
+  two-flavor source proposition is titled as an axial Ward identity.  Labels
+  were kept stable to avoid cross-reference churn, and the physics equations
+  were unchanged.
