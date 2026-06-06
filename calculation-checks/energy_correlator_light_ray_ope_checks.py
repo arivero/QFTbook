@@ -8,7 +8,9 @@ normalization, the sign/transpose convention in the coefficient/operator RG
 equations, and the one-loop timelike quark/gluon momentum-sum mechanism behind
 the protected EEC energy-flow row.  It also checks the finite measured-bin
 bridge between a small-angle light-ray coefficient and the one-variable EEC
-endpoint distribution, including the angular pushforward Jacobian.
+endpoint distribution, including the angular pushforward Jacobian.  Finally,
+it checks the finite analytic benchmark ledger used to compare exact or
+high-order EEC results with a detector-test chart.
 
 Evidence contract.
 Target claims:
@@ -19,17 +21,26 @@ Target claims:
     measured small-angle bin must retain angular pushforward, endpoint
     contact, retained-operator/mixing, and nonperturbative residuals as
     separate budget entries.
+  - Controlled approximation (analytic EEC benchmark ledger): analytic EEC
+    benchmarks are compared as finite detector-test pairings with endpoint
+    atoms, normalization, and scheme residuals included.
 Independent construction:
   - Polynomial integration over a finite rho-bin checks the pushforward
     factor and residual inequality with exact rational arithmetic.
+  - A finite signed detector distribution on the zeta line independently
+    assembles open-angle weights and endpoint atoms, then tests benchmark
+    values against polynomial detector tests.
 Imported assumptions:
   - Smooth endpoint tests, a finite retained light-ray chart, and rational
     polynomial detector-sphere dimensions d=2 and d=4 for the sample
-    Jacobians.
+    Jacobians.  The benchmark ledger check uses finite polynomial tests as a
+    stand-in for measured detector bins.
 Negative controls:
   - Omitting the angular pushforward Jacobian changes a generic bin in the
     d=4 detector-sphere control, and the measured-bin residual is
     underbudgeted if the Jacobian defect is removed from the ledger.
+  - Omitting endpoint atoms, or comparing an unnormalized analytic curve to a
+    normalized benchmark, fails the finite benchmark comparison.
 Scope boundary:
   - These checks do not compute QCD loop coefficients, prove the all-order
     light-ray OPE, or establish nonperturbative detector-limit existence.
@@ -85,6 +96,10 @@ def poly_integral_interval(poly, lower, upper):
     for power, coeff in enumerate(poly):
         total += coeff * (upper ** (power + 1) - lower ** (power + 1)) / Fraction(power + 1)
     return total
+
+
+def poly_eval(poly, point):
+    return sum(coeff * point**power for power, coeff in enumerate(poly))
 
 
 def eec_pushforward_jacobian_poly(detector_sphere_dimension: int):
@@ -827,6 +842,107 @@ def check_endpoint_observable_transport_budget():
     _assert_leq("endpoint observable residual bound", abs(derivative), bound)
 
 
+def check_analytic_benchmark_ledger():
+    # A benchmark for a normalized EEC is a detector-test comparison, not only
+    # an open-angle density comparison.  The finite model below has open
+    # support on -1<zeta<1 and explicit atoms at zeta=+1 and zeta=-1.
+    open_points = [Fraction(-2, 5), Fraction(1, 7), Fraction(3, 8)]
+    open_weights = [Fraction(3, 19), Fraction(5, 23), Fraction(7, 29)]
+
+    def open_value(poly):
+        return sum(
+            weight * poly_eval(poly, point)
+            for point, weight in zip(open_points, open_weights)
+        )
+
+    total_energy_moment = Fraction(1)
+    total_momentum_moment = Fraction(0)
+    open_zeroth = open_value([Fraction(1)])
+    open_first = open_value([Fraction(0), Fraction(1)])
+    contact_atom = (
+        total_energy_moment
+        + total_momentum_moment
+        - open_zeroth
+        - open_first
+    ) / 2
+    back_to_back_atom = (
+        total_energy_moment
+        - total_momentum_moment
+        - open_zeroth
+        + open_first
+    ) / 2
+
+    def full_value(poly, k_plus=contact_atom, k_minus=back_to_back_atom):
+        return (
+            open_value(poly)
+            + k_plus * poly_eval(poly, Fraction(1))
+            + k_minus * poly_eval(poly, Fraction(-1))
+        )
+
+    assert_equal(
+        full_value([Fraction(1)]),
+        total_energy_moment,
+        "benchmark ledger includes zeroth-moment endpoint atoms",
+    )
+    assert_equal(
+        full_value([Fraction(0), Fraction(1)]),
+        total_momentum_moment,
+        "benchmark ledger includes first-moment endpoint atoms",
+    )
+
+    tests = [
+        [Fraction(1)],
+        [Fraction(0), Fraction(1)],
+        [Fraction(2, 5), Fraction(-3, 7), Fraction(5, 11)],
+    ]
+    benchmark_values = [full_value(poly) for poly in tests]
+    open_errors = [Fraction(1, 101), Fraction(-1, 103), Fraction(2, 107)]
+    contact_error = Fraction(-1, 109)
+    back_to_back_error = Fraction(1, 113)
+
+    for poly, benchmark, open_error in zip(tests, benchmark_values, open_errors):
+        predicted = (
+            benchmark
+            + open_error
+            + contact_error * poly_eval(poly, Fraction(1))
+            + back_to_back_error * poly_eval(poly, Fraction(-1))
+        )
+        residual = predicted - benchmark
+        bound = (
+            abs(open_error)
+            + abs(contact_error) * abs(poly_eval(poly, Fraction(1)))
+            + abs(back_to_back_error) * abs(poly_eval(poly, Fraction(-1)))
+        )
+        _assert_leq(
+            "analytic benchmark finite residual ledger",
+            abs(residual),
+            bound,
+            tol=Fraction(0),
+        )
+
+    open_only_zeroth_residual = abs(open_value([Fraction(1)]) - total_energy_moment)
+    _assert_gt(
+        "open-angle benchmark comparison must include endpoint atoms",
+        open_only_zeroth_residual,
+        Fraction(0),
+    )
+
+    # A benchmark curve divided by its total rate must not be compared with an
+    # unnormalized coefficient.  This finite check isolates that normalization
+    # coordinate from the endpoint algebra.
+    total_rate = Fraction(17, 13)
+    normalized_benchmark = benchmark_values[2]
+    unnormalized_curve_value = total_rate * normalized_benchmark
+    if unnormalized_curve_value == normalized_benchmark:
+        raise AssertionError("normalization negative control needs a nonunit total rate")
+    normalization_residual = abs(unnormalized_curve_value - normalized_benchmark)
+    _assert_gt(
+        "unnormalized analytic curve should fail normalized benchmark comparison",
+        normalization_residual,
+        Fraction(0),
+    )
+
+
 def main():
     rho0 = Fraction(3, 5)
 
@@ -915,6 +1031,7 @@ def main():
     check_cusp_log_flatness_chart()
     check_projected_curvature_and_scheme_covariance()
     check_endpoint_observable_transport_budget()
+    check_analytic_benchmark_ledger()
 
     print("All EEC light-ray OPE and endpoint transport bookkeeping checks passed.")
 

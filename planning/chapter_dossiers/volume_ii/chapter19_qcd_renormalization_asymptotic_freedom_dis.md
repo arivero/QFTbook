@@ -43,6 +43,12 @@
   calorimetric measure identities, track-function collinear moment ledger,
   selected endpoint-atom gluing equations, and measured-EEC residual-budget
   inequality.
+- `SRC-CHECK-EEC-LIGHT-RAY`:
+  `calculation-checks/energy_correlator_light_ray_ope_checks.py` verifies the
+  small-angle endpoint plus/contact convention, finite light-ray
+  coefficient/operator transport, protected moment rows, measured-bin
+  pushforward, endpoint observable residual budget, and analytic EEC benchmark
+  ledger.
 - `SRC-CHECK-QCD-CUSP-LARGE-SPIN`:
   `calculation-checks/qcd_cusp_large_spin_checks.py` verifies the Euclidean
   cusped-Wilson-line angular integral, smooth-line subtraction, Lorentzian
@@ -565,6 +571,15 @@ The chapter must define and derive:
       coefficients, and cusp-log flatness checks are separate layers and do not
       by themselves prove the all-order light-ray OPE/mixing theorem or the full
       endpoint-matched EEC prediction.
+19bh. Analytic EEC results enter the monograph as benchmark ledgers, not as
+      replacements for the detector construction.  A benchmark comparison must
+      declare the source and total-rate normalization, angular variable map,
+      detector tests, endpoint atoms, anomalous-dimension or matching rows,
+      and status of each input.  The finite comparison is a detector-test bound
+      with bulk, collinear, recoil, endpoint, nonperturbative, and scheme
+      residuals; conformal \(\mathcal N=4\) data test fixed-point light-ray
+      charts and do not become QCD predictions until running, timelike mixing,
+      hadronization or track data, and endpoint matching are supplied.
 19c. In the back-to-back endpoint, the impact-parameter factorization datum
      yields the leading fixed-coupling Sudakov factor
      \(W_{\rm LL}(b,Q)=W(b,\mu_b)
@@ -1393,3 +1408,12 @@ The chapter must define and derive:
   `calculation-checks/qcd_sum_rule_checks.py` now rejects dropping the
   zeroth-moment window residual and verifies the finite cancellation that can
   flatten a displayed curve by moving \(s_0\).
+- 2026-06-06 issue #519 analytic-benchmark pass: added
+  `ca:qcd-eec-analytic-benchmark-ledger` to connect the high-order and
+  conformal EEC literature to the chapter's detector-observable architecture.
+  The new block requires source normalization, angular-variable maps,
+  detector tests, endpoint atoms, scheme residuals, and nonperturbative or
+  track inputs before an analytic EEC result is used as a benchmark for a QCD
+  prediction.  Extended `energy_correlator_light_ray_ope_checks.py` with exact
+  finite benchmark-ledger checks and negative controls against open-angle-only
+  and unnormalized comparisons.

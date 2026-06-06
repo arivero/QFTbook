@@ -9989,6 +9989,86 @@ outside a purely perturbative endpoint chart; the corresponding term in
 explicit nonperturbative shape, fragmentation, or track-function input.
 \end{controlledapproximation}
 
+\paragraph{Analytic benchmark ledgers.}
+The modern energy-correlator literature supplies benchmark coordinates for
+the observable architecture above: collinear factorization and timelike
+anomalous-dimension data for the small-angle EEC
+\cite{DixonMoultZhu2019CollinearEEC}, conformal light-ray OPE and celestial
+block data at fixed points
+\cite{KologluKravchukSimmonsDuffinZhiboedov2019LightRayOPE}, correlation-
+function representations in \(\mathcal N=4\) super Yang--Mills
+\cite{BelitskyHoheneggerKorchemskySokatchevZhiboedov2013EventShapesN4,
+BelitskyHoheneggerKorchemskySokatchevZhiboedov2013EECN4,
+HennSokatchevYanZhiboedov2019EECNNLO}, high-order back-to-back QCD data
+\cite{EbertMistlbergerVita2020EECBackToBackN3LO}, and selected-track
+factorization data
+\cite{JaarsmaLiMoultWaalewijnZhu2023TrackEEC}.  The way to use these results
+in this monograph is not to replace the detector definition by a quoted
+formula, but to ask which finite detector tests, endpoint coefficients,
+moments, anomalous dimensions, and nonperturbative inputs the formula
+actually fixes.
+
+\begin{controlledapproximation}[Analytic EEC benchmark ledger]
+\label{ca:qcd-eec-analytic-benchmark-ledger}
+Fix the hadronic detector observable \(\mathcal O_\tau\) and a predicted
+chart of the form
+\eqref{eq:qcd-measured-eec-factorization-budget}.  An analytic EEC benchmark
+for that chart consists of:
+\begin{enumerate}
+  \item a source and normalization convention, for example a vector current
+  or Higgs source divided by the same total inclusive rate used in the
+  benchmark paper;
+  \item an angular variable map among
+  \(\zeta=\cos\chi\), \(z=(1-\zeta)/2\),
+  \(\rho=1-\zeta\), and \(q_T^2=Q^2(1+\zeta)/2\);
+  \item a finite list of detector tests
+  \(\mathcal T_{\rm bench}=\{\varphi_1,\ldots,\varphi_m\}\), including
+  endpoint tests when endpoint singularities or atoms are being checked;
+  \item benchmark values \(b_i\) for
+  \(\langle\mathcal O_\tau,\varphi_i\rangle\), or benchmark rows for
+  endpoint residues, anomalous dimensions, and matching constants that
+  determine those pairings in the same scheme;
+  \item a status label for each \(b_i\): exact detector identity,
+  fixed-order coefficient, resummed endpoint result, conformal fixed-point
+  datum, track-function input, or nonperturbative model parameter.
+\end{enumerate}
+The comparison is then a finite detector-test statement:
+\begin{equation}
+  \left|
+    \left\langle
+      \mathcal O_{\tau}^{\rm pred}-\mathcal O_{\tau}^{\rm bench},
+      \varphi_i
+    \right\rangle
+  \right|
+  \leq
+  \epsilon_{{\rm bulk},i}
+  +\epsilon_{{\rm coll},i}
+  +\epsilon_{{\rm rec},i}
+  +|\varphi_i(1)|\epsilon_{+,i}
+  +|\varphi_i(-1)|\epsilon_{-,i}
+  +\epsilon_{{\rm np},i}
+  +\epsilon_{{\rm scheme},i}.
+  \label{eq:qcd-eec-analytic-benchmark-ledger-bound}
+\end{equation}
+The scheme term includes changes of endpoint representative, finite
+light-ray basis, rapidity convention, generator normalization, and total-rate
+normalization.  The endpoint terms are present even when the plotted analytic
+answer is shown only for \(0<\chi<\pi\): a benchmark for the normalized EEC
+also tests the constant and first angular moments, so the contact and
+back-to-back atoms must be included or separately budgeted.
+
+The same ledger prevents over-transfer from conformal examples.  Results in
+\(\mathcal N=4\) super Yang--Mills are fixed-point light-ray benchmarks:
+they test the CFT endpoint chart, the light-ray OPE power structure, and
+where appropriate leading-transcendental projections.  They become QCD
+statements only after the running coupling, timelike mixing, beta-function
+terms, hadronization or track inputs, and endpoint matching have been supplied
+in the QCD chart.  Conversely, a high-order QCD back-to-back or collinear
+calculation is not a theorem about the full measured EEC until it has been
+glued to the separated-angle bulk and the endpoint atoms in the detector-test
+topology of \eqref{eq:qcd-measured-eec-residual-bound}.
+\end{controlledapproximation}
+
 \section{Current Correlators and the Hadronic Tensor}
 
 Deep inelastic scattering probes a hadron by a local current.  The process is

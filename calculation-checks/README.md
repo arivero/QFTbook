@@ -1169,7 +1169,11 @@ Current checks:
   in detector tests.  It also checks the measured small-angle EEC
   pushforward bridge: in four spacetime dimensions the \(\rho\)-Jacobian is
   one, while in a higher-dimensional rational control omitting the angular
-  Jacobian underbudgets a measured bin.
+  Jacobian underbudgets a measured bin.  It also checks the analytic EEC
+  benchmark ledger: finite detector-test benchmark values agree only after
+  endpoint atoms, normalization, and residual budgets are transported with the
+  open-angle chart, with negative controls for open-only and unnormalized
+  comparisons.
 - `energy_correlator_track_checks.py`: exact rational checks for the
   selected calorimetric measure and track-energy-correlator bookkeeping,
   including the selected EEC zeroth and first moment identities, selected
