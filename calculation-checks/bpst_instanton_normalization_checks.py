@@ -104,15 +104,13 @@ relations
     perturbative leakage, anti-instanton leakage, two-instanton leakage,
     IbarI amplitude-sector leakage, and higher-sector remainder enter an
     absolute majorant before a relative one-instanton claim is valid
-    a physical instanton observable requires an ordered assembly ladder:
-    Euclidean determinant/source/fluctuation/window residuals, sector
-    leakage, and continuation/projection/infrared/cut/scheme residuals all
-    enter before a finite instanton source coefficient is quoted as a
-    scattering, OPE, susceptibility, or rate contribution
-    a finite one-instanton amplitude error budget separates the leading
-    determinant/zero-mode/source density from determinant remainders,
-    zero-mode truncation, source matching, Schur corrections, and endpoint
-    tails; the collective-coordinate measure alone is not the amplitude
+    the reusable one-instanton amplitude error proposition separates the
+    leading determinant/zero-mode/source density from determinant,
+    source-fluctuation, zero-mode, matching, Schur, and endpoint residuals,
+    then adds sector, physical-bridge, and scheme majorants before a finite
+    instanton source coefficient is quoted as a scattering, OPE,
+    susceptibility, or rate contribution; the collective-coordinate measure
+    alone is not the amplitude
     source-dependent fluctuation cumulants around the instanton saddle refine
     the determinant residual in a selected amplitude; vacuum determinant
     calibration and signed cumulant cancellation are rejected as
@@ -152,11 +150,10 @@ relations
     source-conditioning matrices B^(-1) Delta B expose how a nearly rank-one
     hard source can amplify tiny overlap leakage into a determinant-relative
     error, separately from the BPST measure and determinant constant
-    the four-fermion instanton benchmark gate ledger keeps center momentum
-    conservation, classical/collective data, determinant normalization,
-    zero-mode saturation, Haar projection, amputation, source conditioning,
-    size-window control, sector isolation, physical projection, and scheme
-    transport together before comparing with a 't Hooft-style amplitude
+    the four-fermion instanton benchmark specialization keeps center momentum
+    conservation, shared Haar projection, amputation, source conditioning, and
+    size-window control attached to the canonical amplitude datum before
+    comparing with a 't Hooft-style amplitude
     a Wilsonian split of the instanton size integral has exact cancellation
     of the artificial factorization-scale boundary flux between the short
     instanton coefficient and the long-distance remainder
@@ -253,11 +250,12 @@ determinant-residual bounds, finite reference-amplitude calibration
 ratios, finite-scheme transport ratios, zero-mode overlap determinant-stability
 bounds, zero-mode source-conditioning matrices, Schwinger/Beta factorization
 of the fused-source Bessel Mellin integral, finite cumulant telescopes,
-coefficient/operator transport matrices, exact retained size-shell
-stationarity equations, finite amplitude-sector isolation telescopes, and
+coefficient/operator transport matrices, the reusable instanton residual
+majorant, exact retained size-shell stationarity equations, finite
+amplitude-sector isolation telescopes, and
 exact radial power-counting for two-body cluster relative-coordinate
 majorants, together with exact log-weight bookkeeping for the renormalized
-one-instanton channel ledger, finite pole-window source/sink spectral
+one-instanton channel transport, finite pole-window source/sink spectral
 projection checks, and exact finite cyclic convolution tests for the
 finite-momentum pi-delta source kernel.
 Imported assumptions: the BPST background and zero-mode formulas, one-loop
@@ -402,6 +400,66 @@ def product_fraction(values: list[Fraction]) -> Fraction:
     for value in values:
         result *= value
     return result
+
+
+def reusable_instanton_residual_bound(
+    internal_residuals: dict[str, Fraction],
+    *,
+    internal_majorants: dict[str, Fraction] | None = None,
+    map_norm: Fraction = Fraction(1),
+    sector_residual: Fraction = Fraction(0),
+    sector_majorant: Fraction | None = None,
+    physical_residual: Fraction = Fraction(0),
+    physical_majorant: Fraction | None = None,
+    scheme_residual: Fraction = Fraction(0),
+    scheme_majorant: Fraction | None = None,
+) -> tuple[Fraction, Fraction]:
+    if internal_majorants is None:
+        internal_majorants = {
+            name: abs(value) for name, value in internal_residuals.items()
+        }
+    assert_equal(
+        "reusable instanton internal residual keys",
+        set(internal_majorants),
+        set(internal_residuals),
+    )
+    for name, residual in internal_residuals.items():
+        if not abs(residual) <= internal_majorants[name]:
+            raise AssertionError(f"internal residual {name} exceeds its majorant")
+
+    sector_majorant = (
+        abs(sector_residual) if sector_majorant is None else sector_majorant
+    )
+    physical_majorant = (
+        abs(physical_residual) if physical_majorant is None else physical_majorant
+    )
+    scheme_majorant = (
+        abs(scheme_residual) if scheme_majorant is None else scheme_majorant
+    )
+    if not abs(sector_residual) <= sector_majorant:
+        raise AssertionError("sector residual exceeds reusable majorant")
+    if not abs(physical_residual) <= physical_majorant:
+        raise AssertionError("physical residual exceeds reusable majorant")
+    if not abs(scheme_residual) <= scheme_majorant:
+        raise AssertionError("scheme residual exceeds reusable majorant")
+
+    internal_total = sum(internal_residuals.values(), Fraction(0))
+    internal_bound = sum(internal_majorants.values(), Fraction(0))
+    total_residual = (
+        map_norm * internal_total
+        + sector_residual
+        + physical_residual
+        + scheme_residual
+    )
+    total_bound = (
+        map_norm * internal_bound
+        + sector_majorant
+        + physical_majorant
+        + scheme_majorant
+    )
+    if not abs(total_residual) <= total_bound:
+        raise AssertionError("reusable instanton residual bound failed")
+    return total_residual, total_bound
 
 
 ComplexFraction = tuple[Fraction, Fraction]
@@ -2257,7 +2315,7 @@ def check_instanton_mass_source_rg_transport() -> None:
 
 
 def check_one_instanton_channel_rg_ledger() -> None:
-    # The full channel ledger combines the universal density, the zero-mode
+    # The full channel transport combines the universal density, the zero-mode
     # source functional, and the external operator/projection normalization.
     # Each component has a nonzero log transport; the assembled channel is the
     # object with the declared Callan-Symanzik covariance.
@@ -2279,7 +2337,7 @@ def check_one_instanton_channel_rg_ledger() -> None:
     source_determinant_weight = -flavor_count * gamma_m
     finite_fermion_factor_weight = flavor_count * gamma_m
     assert_equal(
-        "source determinant and finite fermion factor cancel in channel ledger",
+        "source determinant and finite fermion factor cancel in channel transport",
         source_determinant_weight + finite_fermion_factor_weight,
         Fraction(0),
     )
@@ -2312,6 +2370,21 @@ def check_one_instanton_channel_rg_ledger() -> None:
     kappa = abs(retained_signed) / retained_mass
     eta = Fraction(1, 20)
     worst_signed_delta = eta * retained_mass
+    reusable_scheme_residual, reusable_scheme_bound = reusable_instanton_residual_bound(
+        {},
+        scheme_residual=worst_signed_delta,
+        scheme_majorant=eta * retained_mass,
+    )
+    assert_equal(
+        "channel RG transport supplies reusable scheme residual",
+        reusable_scheme_residual,
+        worst_signed_delta,
+    )
+    assert_equal(
+        "channel RG transport supplies reusable scheme majorant",
+        reusable_scheme_bound,
+        eta * retained_mass,
+    )
     assert_equal("channel RG ledger retained signed window", retained_signed, Fraction(17, 20))
     assert_equal("channel RG ledger retained absolute mass", retained_mass, Fraction(21, 20))
     assert_equal("channel RG ledger noncancellation margin", kappa, Fraction(17, 21))
@@ -3593,6 +3666,21 @@ def check_instanton_euclidean_to_physical_residual_budget() -> None:
         raise AssertionError("instanton physical residual budget accidentally collapsed")
 
     residual_bound = sum(abs(value) for value in residuals.values())
+    reusable_residual, reusable_bound = reusable_instanton_residual_bound(
+        {},
+        physical_residual=total_residual,
+        physical_majorant=residual_bound,
+    )
+    assert_equal(
+        "physical bridge enters reusable instanton budget",
+        reusable_residual,
+        total_residual,
+    )
+    assert_equal(
+        "physical bridge reusable majorant",
+        reusable_bound,
+        residual_bound,
+    )
     assert_equal(
         "instanton physical-amplitude residual bound",
         abs(physical_amplitude - leading_kernel_coordinate) <= residual_bound,
@@ -3785,6 +3873,13 @@ def check_one_instanton_sector_isolation_bound() -> None:
         )
         + higher_sector_remainder
     )
+    reusable_residual, reusable_bound = reusable_instanton_residual_bound(
+        {},
+        sector_residual=isolation_error,
+        sector_majorant=isolation_majorant,
+    )
+    assert_equal("sector isolation is reusable sector residual", reusable_residual, isolation_error)
+    assert_equal("sector isolation supplies reusable sector majorant", reusable_bound, isolation_majorant)
     assert_equal(
         "one-instanton sector-isolation majorant",
         abs(isolation_error) <= isolation_majorant,
@@ -3882,6 +3977,7 @@ def check_instanton_amplitude_error_budget() -> None:
 
     lead_cells = [Fraction(2, 7), Fraction(3, 11), Fraction(5, 13)]
     determinant_remainders = [Fraction(1, 10), Fraction(-1, 15), Fraction(1, 21)]
+    fluctuation_remainders = [Fraction(1, 25), Fraction(-1, 35), Fraction(1, 39)]
     zero_mode_remainders = [Fraction(1, 14), Fraction(0), Fraction(-1, 22)]
     source_matching_remainders = [Fraction(-1, 30), Fraction(1, 18), Fraction(1, 26)]
     schur_corrections = [Fraction(1, 200), Fraction(-1, 231), Fraction(1, 286)]
@@ -3894,6 +3990,7 @@ def check_instanton_amplitude_error_budget() -> None:
             * (
                 1
                 + determinant_remainders[index]
+                + fluctuation_remainders[index]
                 + zero_mode_remainders[index]
                 + source_matching_remainders[index]
             )
@@ -3904,6 +4001,10 @@ def check_instanton_amplitude_error_budget() -> None:
     determinant_residual = sum(
         lead * remainder
         for lead, remainder in zip(lead_cells, determinant_remainders)
+    )
+    fluctuation_residual = sum(
+        lead * remainder
+        for lead, remainder in zip(lead_cells, fluctuation_remainders)
     )
     zero_mode_residual = sum(
         lead * remainder
@@ -3923,6 +4024,7 @@ def check_instanton_amplitude_error_budget() -> None:
         (
             lead_amplitude
             + determinant_residual
+            + fluctuation_residual
             + zero_mode_residual
             + source_matching_residual
             + schur_residual
@@ -3935,6 +4037,7 @@ def check_instanton_amplitude_error_budget() -> None:
             abs(lead)
             * (
                 abs(determinant_remainders[index])
+                + abs(fluctuation_remainders[index])
                 + abs(zero_mode_remainders[index])
                 + abs(source_matching_remainders[index])
             )
@@ -3943,6 +4046,44 @@ def check_instanton_amplitude_error_budget() -> None:
         + sum(abs(correction) for correction in schur_corrections)
         + sum(abs(cell) for cell in endpoint_cells)
     )
+    internal_residuals = {
+        "determinant": determinant_residual,
+        "fluctuation": fluctuation_residual,
+        "zero_mode": zero_mode_residual,
+        "source_matching": source_matching_residual,
+        "schur": schur_residual,
+        "endpoint": endpoint_residual,
+    }
+    internal_majorants = {
+        "determinant": sum(
+            abs(lead) * abs(remainder)
+            for lead, remainder in zip(lead_cells, determinant_remainders)
+        ),
+        "fluctuation": sum(
+            abs(lead) * abs(remainder)
+            for lead, remainder in zip(lead_cells, fluctuation_remainders)
+        ),
+        "zero_mode": sum(
+            abs(lead) * abs(remainder)
+            for lead, remainder in zip(lead_cells, zero_mode_remainders)
+        ),
+        "source_matching": sum(
+            abs(lead) * abs(remainder)
+            for lead, remainder in zip(lead_cells, source_matching_remainders)
+        ),
+        "schur": sum(abs(correction) for correction in schur_corrections),
+        "endpoint": sum(abs(cell) for cell in endpoint_cells),
+    }
+    reusable_residual, reusable_bound = reusable_instanton_residual_bound(
+        internal_residuals,
+        internal_majorants=internal_majorants,
+    )
+    assert_equal(
+        "finite instanton amplitude reusable residual",
+        reusable_residual,
+        exact_amplitude - lead_amplitude,
+    )
+    assert_equal("finite instanton amplitude reusable bound", reusable_bound, error_bound)
     assert_equal(
         "finite instanton amplitude error bound dominates residual",
         abs(exact_amplitude - lead_amplitude) <= error_bound,
@@ -4067,23 +4208,36 @@ def check_instanton_observable_assembly_ladder() -> None:
     )
 
     window_mass = Fraction(3, 4)
-    deltas = {
-        "spectral_counterterm": Fraction(1, 60),
-        "source_fluctuation": Fraction(1, 70),
-        "zero_mode_rank": Fraction(1, 80),
-        "schur": Fraction(1, 90),
-        "endpoint": Fraction(1, 18),
-        "sector": Fraction(1, 20),
-        "continuation": Fraction(1, 75),
-        "projection": Fraction(1, 84),
-        "infrared": Fraction(1, 96),
-        "cut": Fraction(1, 108),
-        "scheme": Fraction(1, 120),
+    internal_residuals = {
+        "spectral_counterterm": window_mass * Fraction(1, 60),
+        "source_fluctuation": -window_mass * Fraction(1, 70),
+        "zero_mode_rank": window_mass * Fraction(1, 80),
+        "schur": -window_mass * Fraction(1, 90),
+        "endpoint": window_mass * Fraction(1, 18),
     }
-    residuals = {
-        name: window_mass * delta for name, delta in deltas.items()
+    internal_majorants = {name: abs(value) for name, value in internal_residuals.items()}
+    sector_residual = window_mass * Fraction(1, 20)
+    sector_majorant = abs(sector_residual)
+    physical_components = {
+        "continuation": window_mass * Fraction(1, 75),
+        "projection": -window_mass * Fraction(1, 84),
+        "infrared": window_mass * Fraction(1, 96),
+        "cut": -window_mass * Fraction(1, 108),
     }
-    residual_sum = sum(residuals.values(), Fraction(0))
+    physical_residual = sum(physical_components.values(), Fraction(0))
+    physical_majorant = sum(abs(value) for value in physical_components.values())
+    scheme_residual = window_mass * Fraction(1, 120)
+    scheme_majorant = abs(scheme_residual)
+    residual_sum, majorant = reusable_instanton_residual_bound(
+        internal_residuals,
+        internal_majorants=internal_majorants,
+        sector_residual=sector_residual,
+        sector_majorant=sector_majorant,
+        physical_residual=physical_residual,
+        physical_majorant=physical_majorant,
+        scheme_residual=scheme_residual,
+        scheme_majorant=scheme_majorant,
+    )
     exact_physical_observable = leading_physical_coordinate + residual_sum
 
     assert_equal(
@@ -4091,7 +4245,6 @@ def check_instanton_observable_assembly_ladder() -> None:
         exact_physical_observable,
         leading_physical_coordinate + residual_sum,
     )
-    majorant = window_mass * sum(deltas.values(), Fraction(0))
     assert_equal(
         "instanton observable assembly absolute bound",
         abs(exact_physical_observable - leading_physical_coordinate) <= majorant,
@@ -4114,7 +4267,7 @@ def check_instanton_observable_assembly_ladder() -> None:
     )
 
     omitted_endpoint_sector_bound = (
-        majorant - abs(residuals["endpoint"]) - abs(residuals["sector"])
+        majorant - internal_majorants["endpoint"] - sector_majorant
     )
     assert_equal(
         "omitting endpoint and sector budgets underbounds observable",
@@ -4881,27 +5034,25 @@ def check_four_source_instanton_source_conditioning() -> None:
 
 
 def check_thooft_four_fermion_benchmark_gate_ledger() -> None:
-    required_gates = {
-        "center",
+    datum_slots = {
         "classical_collective",
-        "determinant",
+        "nonzero_mode_determinant",
         "zero_mode_source",
-        "haar_projection",
-        "amputation",
-        "source_conditioning",
+        "source_matching",
         "size_window",
-        "sector_projection",
         "physical_projection",
-        "scheme_transport",
     }
-    supplied_gates = set(required_gates)
-    assert_equal("four-fermion benchmark supplies every gate", supplied_gates, required_gates)
-    for omitted_gate in sorted(required_gates):
-        assert_equal(
-            f"omitting benchmark gate {omitted_gate} is detected",
-            required_gates.issubset(supplied_gates - {omitted_gate}),
-            False,
-        )
+    benchmark_equalities = {
+        "center_delta",
+        "shared_haar_projection",
+        "source_rank_margin",
+        "amputation_convention",
+    }
+    assert_equal(
+        "benchmark requirements split into datum slots and special equalities",
+        datum_slots.isdisjoint(benchmark_equalities),
+        True,
+    )
 
     # A finite arithmetic model of the benchmark coefficient:
     # center delta (on shell), classical/collective weight, determinant,
@@ -4952,26 +5103,28 @@ def check_thooft_four_fermion_benchmark_gate_ledger() -> None:
     kappa_benchmark = abs(physical_benchmark) / benchmark_mass
     assert_equal("benchmark noncancellation margin", kappa_benchmark, Fraction(189, 407))
 
-    epsilons = {
-        "determinant": Fraction(1, 100),
-        "zero_mode_source": Fraction(1, 120),
-        "haar_projection": Fraction(1, 140),
-        "source_conditioning": Fraction(1, 160),
-        "size_window": Fraction(1, 90),
-        "sector_projection": Fraction(1, 150),
-        "physical_projection": Fraction(1, 110),
-        "scheme_transport": Fraction(1, 130),
+    internal_residuals = {
+        "determinant": benchmark_mass * Fraction(1, 500),
+        "zero_mode_source": -benchmark_mass * Fraction(1, 700),
+        "shared_haar_projection": benchmark_mass * Fraction(1, 900),
+        "source_conditioning": -benchmark_mass * Fraction(1, 1000),
+        "size_window": benchmark_mass * Fraction(1, 800),
     }
-    residual_sum = (
-        benchmark_mass * Fraction(1, 500)
-        - benchmark_mass * Fraction(1, 700)
-        + benchmark_mass * Fraction(1, 900)
+    internal_majorants = {name: abs(value) for name, value in internal_residuals.items()}
+    benchmark_residual, benchmark_bound = reusable_instanton_residual_bound(
+        internal_residuals,
+        internal_majorants=internal_majorants,
+        sector_residual=benchmark_mass * Fraction(1, 150),
+        sector_majorant=benchmark_mass * Fraction(1, 150),
+        physical_residual=-benchmark_mass * Fraction(1, 110),
+        physical_majorant=benchmark_mass * Fraction(1, 110),
+        scheme_residual=benchmark_mass * Fraction(1, 130),
+        scheme_majorant=benchmark_mass * Fraction(1, 130),
     )
-    epsilon_sum = sum(epsilons.values(), Fraction(0))
-    if not abs(residual_sum) <= benchmark_mass * epsilon_sum:
-        raise AssertionError("benchmark absolute residual ledger failed")
-    relative_residual = abs(residual_sum) / abs(physical_benchmark)
-    relative_bound = epsilon_sum / kappa_benchmark
+    if not abs(benchmark_residual) <= benchmark_bound:
+        raise AssertionError("benchmark absolute residual specialization failed")
+    relative_residual = abs(benchmark_residual) / abs(physical_benchmark)
+    relative_bound = benchmark_bound / (kappa_benchmark * benchmark_mass)
     if not relative_residual <= relative_bound:
         raise AssertionError("benchmark relative residual bound failed")
 

@@ -123,10 +123,11 @@
   the gauge-invariant source-projection and hadronic pole-residue layer:
   source-to-zero-mode overlaps multiply the hard kernel, while stable-hadron
   amplitudes require a separate spectral/LSZ extraction.  The
-  Euclidean-to-physical continuation adds the final bridge budget: the leading
-  instanton source kernel is separated from regulator, analytic-continuation,
-  spectral/LSZ, infrared, unitarity-cut, matching, and size-endpoint
-  residuals before any physical amplitude is claimed.  The unitarity-cut
+  Euclidean-to-physical continuation supplies the physical-bridge input to the
+  reusable amplitude proposition: the leading instanton source kernel is
+  separated from regulator, analytic-continuation, spectral/LSZ, infrared,
+  unitarity-cut, matching, and size-endpoint residuals before any physical
+  amplitude is claimed.  The unitarity-cut
   continuation sharpens the \(R_{\rm cut}\) coordinate by pairing the
   instanton source kernel with the conjugate anti-instanton kernel only after
   the inclusive rate has been expanded by amplitude sectors; lower-action
@@ -134,17 +135,17 @@
   theta-charge cancellation and doubled semiclassical action are asserted for
   the diagonal rate channel.  Final-state/relative \(I\bar I\) cut weights then
   sit under an explicit majorant bound.  The one-instanton isolation
-  continuation adds the corresponding amplitude-level bound: the
+  continuation adds the corresponding sector input: the
   retained \(Q=1\) coefficient is separated from same-sector residuals,
   perturbative leakage, anti-instanton leakage, two-instanton leakage,
   \(I\bar I\) amplitude-sector leakage, and higher-sector remainder before a
-  relative one-instanton amplitude claim is allowed.  The observable-assembly
-  continuation then collects those local bounds
-  into one ordered map from the finite Euclidean source coefficient to a
-  physical scattering, OPE, susceptibility, or rate contribution: internal
-  determinant/source/fluctuation/window errors, sector leakage, and
-  continuation/projection/IR/cut/scheme residuals are all required before the
-  retained instanton coefficient is quoted as an observable.
+  relative one-instanton amplitude claim is allowed.  The reusable
+  amplitude-error proposition now collects the internal Euclidean
+  determinant/source/fluctuation/window errors, sector leakage, physical
+  bridge, and scheme transport in one bound.  The observable-assembly
+  continuation reads that bound as the ordered map from the finite Euclidean
+  source coefficient to a physical scattering, OPE, susceptibility, or rate
+  contribution.
   The hard-amplitude
   continuation adds the
   \(N_f=2\) hard-momentum size window, where the same form factors give a
@@ -394,14 +395,14 @@
 | \(\mathfrak A_2^{\rm lin}(\rho,U;\{p_R,p_L\})\) | product of the right-slot and left-slot individual zero-mode form-factor determinants left after the instanton center phase is factored out |
 | \(U_i{}^\alpha\) | \(SU(2)\) instanton core-orientation matrix element whose Haar integral projects colored zero-mode slots onto invariant tensors |
 | \(A_{i_1i_2j_1j_2},B_{i_1i_2j_1j_2}\) | two invariant four-fundamental \(SU(2)\) tensors used in the shared-orientation Haar projector |
-| \(\mathcal K_{\rm ex},\mathcal K_{\rm lead},\mathcal C_{\rm pg}^{\mathcal S},R_{\rm det},R_{\rm zm},R_{\rm src},R_{\rm Schur},R_{\rm end}\) | exact and leading one-instanton source-amplitude densities, pure-gauge collective/determinant density, and the finite error-budget pieces for determinant, zero-mode/source, source matching, Schur, and endpoint residuals |
+| \(\mathcal K_{\rm ex},\mathcal K_{\rm lead},\mathcal C_{\rm pg}^{\mathcal S},R_{\rm det},R_{\rm fluc},R_{\rm zm},R_{\rm src},R_{\rm Schur},R_{\rm end}\) | exact and leading one-instanton source-amplitude densities, pure-gauge collective/determinant density, and the reusable source-level error-budget pieces for determinant, source fluctuation, zero-mode/source, source matching, Schur, and endpoint residuals |
 | \(\eta,\mathcal N_z,d\gamma_z,\mathcal R_{\rm fluc},C_1,C_2,R_{\ge3},\epsilon_{\rm fluc}\) | normal nonzero-mode fluctuation coordinate, Gaussian fluctuation measure, source-dependent fluctuation ratio, cumulant pieces, and fluctuation residual refining the instanton determinant error |
 | \(B^{\mathcal J}_{AB},\Phi^R,\Phi^L\) | color-singlet source-projected zero-mode matrix and source-to-zero-mode overlap maps used to match the auxiliary hard instanton kernel to gauge-invariant correlators |
 | \(G_I(T,t),Z_H,Z_{H'}',\Delta_H,\Delta_{H'},A_{H'\leftarrow H}^{I}\) | finite-volume hadronic pole-window data for extracting a selected color-singlet instanton matrix element from a source three-point function |
-| \(\mathcal A_{\rm phys}^{Q=1},\mathcal A_{\rm inst}^{\rm lead},R_{\rm reg},R_{\rm cont},R_{\rm spec},R_{\rm IR},R_{\rm cut},R_{\rm match},R_\rho\) | physical one-instanton amplitude coordinate, leading continued/projected instanton-kernel coordinate, and the residuals separating Euclidean source kernels from physical amplitudes |
+| \(\mathcal A_{\rm phys}^{Q=1},\mathcal A_{\rm inst}^{\rm lead},R_{\rm phys},R_{\rm reg},R_{\rm cont},R_{\rm spec},R_{\rm IR},R_{\rm cut},R_{\rm match},R_\rho\) | physical one-instanton amplitude coordinate, leading continued/projected instanton-kernel coordinate, and the physical-bridge residuals separating Euclidean source kernels from physical amplitudes |
 | \(A_I,A_{\bar I},\Gamma_{I\bar I},\mathcal C_{\rm cut},M^{(0)}_{I\bar I},\varepsilon_{\rm cut}\) | instanton and anti-instanton amplitude coordinates, paired inclusive cut/rate kernel, cut weight, absolute majorant, and cut residual used to turn a theta-charged amplitude kernel into a neutral spectral weight |
 | \(\Pi_{\mathcal O},J_I,M_I,\lambda_\alpha,M_\alpha,E_{\ge2},\kappa_I\) | selected source/charge/spectral projection, retained one-instanton coefficient, retained \(Q=1\) absolute mass, adjacent-sector leakage factors and majorants, higher-sector remainder, and noncancellation margin in the one-instanton isolation bound |
-| \(\mathfrak L_{\mathcal O},\kappa_{\mathcal O},R_{\rm sector},R_{\rm proj},R_{\rm scheme}\) | leading physical observable map, observable-level noncancellation margin, and the sector/projection/scheme residuals in the instanton observable assembly ladder |
+| \(\mathfrak L_{\mathcal O},B_{\rm int},B_{\rm sec},B_{\rm phys},B_{\rm scheme},\kappa_{\mathcal O}\) | leading physical observable map, reusable internal/sector/physical/scheme majorants, and the observable-level noncancellation margin in the instanton assembly map |
 | \(\mathcal I_{\rm hard}(Q),\mathcal J_{b_0}(\mathbf c;\mathcal F)\) | hard-momentum \(N_f=2\) instanton size factor and its dimensionless selected-form-factor integral |
 | \(\mathcal J_{b_0}^{\rm fus}(c)\) | exact equal-transfer fused bilinear-density hard size integral, evaluating the \(zK_1(z)\) source channel by a Gamma-function Mellin coefficient |
 | \(\mathfrak s_{\rm hard}(s),\Delta\) | hard instanton log-size shell density and its power-tail suppression exponent \(\Delta=\sigma-b_0-2\) |
@@ -1920,3 +1921,14 @@
   endpoint control to the later hard-window estimates.  The BPST companion
   verifies the source-degree arithmetic and rejects mass-saturated or
   moduli-only shortcuts.
+- 2026-06-05 issue #755 instanton amplitude-ledger consolidation: re-audited
+  the cluster from the one-instanton amplitude datum through the benchmark and
+  observable-assembly blocks for coherence drift.  The chapter now assigns
+  residual slots once next to `def:one-instanton-amplitude-datum`, upgrades
+  `prop:instanton-amplitude-assembly-error-budget` into the reusable error
+  proposition with the source-fluctuation residual and assembled
+  internal/sector/physical/scheme bound, and trims the channel-RG,
+  Euclidean-to-physical, sector-isolation, benchmark, and observable blocks to
+  channel-specific estimates.  The BPST companion now routes RG transport,
+  physical bridge, sector leakage, source-level assembly, observable assembly,
+  and the four-fermion benchmark through a shared residual-majorant helper.

@@ -3727,6 +3727,44 @@ infrared, unitarity-cut, thermal, or transport projection needed for the
 observable under discussion.
 \end{definition}
 
+The notation below uses this datum as the common spine.  Later channel
+estimates add only their channel-specific coefficient or majorant; the
+generic residual names are assigned once in the following table and in
+Proposition~\ref{prop:instanton-amplitude-assembly-error-budget}.
+\begin{center}
+\small
+\begin{tabular}{
+  >{\raggedright\arraybackslash}p{0.17\textwidth}
+  >{\raggedright\arraybackslash}p{0.41\textwidth}
+  >{\raggedright\arraybackslash}p{0.31\textwidth}}
+\hline
+Datum component & amplitude input & reusable residual slot \\
+\hline
+\(D_{\rm cl},D_{\rm coll}\)
+& saddle, theta phase, center/size/orientation chart, and Jacobian
+& normalization or scheme checks only \\
+\(D_{\rm nz}\)
+& pure-gauge, ghost, and light-fermion nonzero-mode determinants
+& \(R_{\rm det},R_{\rm fluc},R_{\rm Schur}\) \\
+\(D_{\rm zm}\)
+& Berezin saturation of the fermion zero modes by masses, sources, or
+insertions
+& \(R_{\rm zm},R_{\rm rank}\) \\
+\(D_{\rm src}\)
+& source typing, color-singlet/OPE matching, amputation, and hadron source
+overlaps
+& \(R_{\rm src},R_{\rm match}\) \\
+\(D_\rho\)
+& hard, screened, Wilsonian, or finite-volume size window and boundary control
+& \(R_{\rm end},R_\rho\) \\
+\(D_{\rm phys}\)
+& sector isolation, analytic continuation, pole/spectral/OPE projection,
+inclusive cuts, infrared data, and finite scheme transport
+& \(R_{\rm sec},R_{\rm phys},R_{\rm scheme}\) \\
+\hline
+\end{tabular}
+\end{center}
+
 The BPST connection in Lemma~\ref{lem:bpst-one-instanton-data} supplies
 \(D_{\rm cl}\), not the amplitude.  Its moduli and ADHM refinement supply
 \(D_{\rm coll}\), not the determinant, not the zero-mode source coefficient,
@@ -6142,7 +6180,7 @@ magnitude of \(M\).  The anomalous flavor-singlet chiral rotation changes
 \(\arg\det M\) and \(\theta\) in opposite directions.
 \end{proof}
 
-\begin{controlledapproximation}[Renormalized one-instanton channel ledger]
+\begin{controlledapproximation}[Renormalized one-instanton channel transport]
 \label{ca:one-instanton-channel-rg-ledger}
 Fix a finite one-instanton size/orientation window and a source or observable
 channel \(\mathcal X\).  After the finite-regulator determinant and zero-mode
@@ -6160,8 +6198,8 @@ written in the channel form
   X_{\mathcal S}=\frac{8\pi^2}{g_{\mathcal S}^2},
   \label{eq:one-instanton-channel-rg-ledger-kernel}
 \end{equation}
-up to the declared determinant, zero-mode, source-matching, endpoint, and
-projection residuals.  Here
+with residuals assigned to the datum slots in
+Definition~\ref{def:one-instanton-amplitude-datum}.  Here
 \(\mathcal V_{\rm inst}^{0}\) is the mass/source determinant functional in
 \eqref{eq:instanton-renormalized-source-functional}, while
 \(\mathcal P_{\mathcal X}\) denotes the external source, OPE, hadronic, or
@@ -6198,11 +6236,22 @@ Let
   \qquad
   \kappa_{\mathcal X}=\frac{|J_{\mathcal X}|}{M_{\mathcal X}} .
 \]
-If a finite scale or scheme transport leaves absolute logarithmic residuals
-\(\epsilon_{\rm univ},\epsilon_{\rm src},\epsilon_{\rm proj},\epsilon_{\rm end}\)
-in the universal density, source functional, projection coordinate, and
-window endpoint estimate, and if \(\kappa_{\mathcal X}>0\), then the retained
-signed channel obeys
+If a finite scale or scheme transport leaves pointwise logarithmic residuals in
+the universal density, source functional, projection coordinate, and endpoint
+estimate bounded by
+\(\epsilon_{\rm univ},\epsilon_{\rm src},\epsilon_{\rm proj},\epsilon_{\rm end}\),
+then the channel-specific contribution to the reusable scheme/error budget is
+\[
+  B_{\mathcal X}^{\rm RG}
+  =
+  M_{\mathcal X}
+  \left[
+    \exp(\epsilon_{\rm univ}+\epsilon_{\rm src}
+      +\epsilon_{\rm proj}+\epsilon_{\rm end})-1
+  \right].
+\]
+The retained signed channel has relative control only when
+\(\kappa_{\mathcal X}>0\):
 \begin{equation}
   \frac{|\Delta J_{\mathcal X}|}{|J_{\mathcal X}|}
   \le
@@ -6216,7 +6265,7 @@ The noncancellation margin is part of the amplitude statement.  A channel in
 which the retained signed integral is small can have good absolute control
 and poor relative control.
 
-This ledger also separates the renormalization scale \(\mu\) from the
+This transport also separates the renormalization scale \(\mu\) from the
 Wilsonian size-factorization scale \(\mu_I\) of
 ControlledApproximation~\ref{ca:short-instanton-ope-coefficient}.  Moving
 \(\mu\) transports coupling, determinant, source, and operator coordinates.
@@ -7537,12 +7586,13 @@ kernel cannot repair the source choice.
 \end{controlledapproximation}
 
 \begin{controlledapproximation}[Euclidean instanton kernel to physical
-amplitude]
+projection]
 \label{ca:instanton-euclidean-to-physical-amplitude-budget}
 Let \(G^{E,Q=1}_{\mathcal J,\Lambda}\) be the finite-regulator
 gauge-invariant Euclidean source correlator obtained from the one-instanton
 chart after zero modes, nonzero-mode determinants, source projections, and
-collective coordinates have all been paired.  Let
+collective coordinates have all been paired.  This is still a source
+coordinate.  Let
 \[
   \mathcal A_{\rm inst}^{\rm lead}
   =
@@ -7555,11 +7605,12 @@ declared leading instanton kernel, then analytically continuing on a specified
 sheet \(\mathcal S\), and finally applying the chosen physical projection:
 a stable-particle pole residue, an inclusive spectral weight, or a hard OPE
 coefficient.  The corresponding physical one-instanton contribution
-\(\mathcal A_{\rm phys}^{Q=1}\) differs from this coordinate by
+\(\mathcal A_{\rm phys}^{Q=1}\) differs from this coordinate by the
+\(D_{\rm phys}\) bridge residual
 \begin{equation}
-  \mathcal A_{\rm phys}^{Q=1}
-  -
-  \mathcal A_{\rm inst}^{\rm lead}
+  R_{\rm phys}
+  :=
+  \mathcal A_{\rm phys}^{Q=1}-\mathcal A_{\rm inst}^{\rm lead}
   =
   R_{\rm reg}
   +
@@ -7576,20 +7627,10 @@ coefficient.  The corresponding physical one-instanton contribution
   R_{\rho}.
   \label{eq:instanton-euclidean-to-physical-residual-budget}
 \end{equation}
-Here \(R_{\rm reg}\) records finite-volume, cutoff, and order-of-limits errors
-between the regulated Euclidean sector and its continuum source correlator;
-\(R_{\rm cont}\) records analytic-continuation and sheet choices, including
-thresholds and singularities crossed by the chosen continuation;
-\(R_{\rm spec}\) records the pole, spectral, or OPE projection error;
-\(R_{\rm IR}\) records confinement, massless radiation, inclusive-sum, or
-external Wilson-line data not contained in a colored partonic kernel;
-\(R_{\rm cut}\) records unitarity-cut and conjugate-sector effects, including
-instanton--anti-instanton sectors needed before an \(S\)-matrix statement can
-obey an optical theorem; \(R_{\rm match}\) records the matching from the
-chosen source family to the local operator or hadronic observable; and
-\(R_{\rho}\) is the remaining instanton-size endpoint and determinant-tail
-contribution after the selected hard, screened, or Wilsonian window has been
-declared.
+The components record the regulator and order-of-limits passage, the
+continuation sheet, the pole, spectral, or OPE projection, infrared or
+inclusive-sum data, cut and conjugate-sector completion, source matching, and
+size-endpoint control for the chosen hard, screened, or Wilsonian window.
 
 If on the selected kinematic window each residual satisfies
 \[
@@ -7598,7 +7639,9 @@ If on the selected kinematic window each residual satisfies
   \kappa\in
   \{{\rm reg},{\rm cont},{\rm spec},{\rm IR},{\rm cut},{\rm match},\rho\},
 \]
-then
+then \(B_{\rm phys}:=\sum_\kappa\varepsilon_\kappa\) is the physical-bridge
+majorant used by
+Proposition~\ref{prop:instanton-amplitude-assembly-error-budget}, and
 \begin{equation}
   \left|
   \mathcal A_{\rm phys}^{Q=1}
@@ -7609,12 +7652,10 @@ then
   \sum_\kappa\varepsilon_\kappa .
   \label{eq:instanton-physical-amplitude-residual-bound}
 \end{equation}
-The point is not to add another approximation.  It is to identify where the
-physics lives after the moduli-space and determinant calculation has been
-done.  In a weakly coupled Higgsed theory, a thermal screened regime, or a
-hard Euclidean OPE window, the physical projection and endpoint controls can
-sometimes be declared explicitly.  In confining zero-temperature QCD, a
-colored four-slot kernel is only a short-distance source coordinate until the
+In a weakly coupled Higgsed theory, a thermal screened regime, or a hard
+Euclidean OPE window, \(B_{\rm phys}\) can sometimes be computed inside the
+same semiclassical regime.  In confining zero-temperature QCD, a colored
+four-slot kernel remains a short-distance source coordinate until the
 gauge-invariant spectral or OPE projection and the long-size remainder have
 been supplied.
 \end{controlledapproximation}
@@ -7801,8 +7842,8 @@ the projected amplitude-sector expansion as
 Here \(A_{I\bar I}^{\rm amp}\) is an amplitude-sector contribution before
 forming an inclusive cut rate; it is not the diagonal rate term in
 \eqref{eq:instanton-cut-paired-rate-leading}.  Let \(J_I\) be the retained
-leading \(Q=1\) coefficient, obtained after the determinant, zero-mode,
-orientation, source, and size-window choices have all been made, and let
+leading \(Q=1\) coefficient associated to the datum
+\(\mathfrak I_{1,\Lambda}(\mathcal O)\), and let
 \(M_I\) be the absolute mass of that retained \(Q=1\) window.  Suppose
 \begin{equation}
   \left|\Pi_{\mathcal O}A_I-J_I\right|
@@ -7836,6 +7877,8 @@ coefficient by
   E_{\ge2}.
   \label{eq:instanton-one-sector-isolation-bound}
 \end{equation}
+The right-hand side is the sector majorant \(B_{\rm sec}\) used in the
+reusable amplitude proposition.
 If in addition the retained one-instanton coefficient has a noncancellation
 margin
 \[
@@ -7855,7 +7898,7 @@ sector coordinate until the sector projection and leakage bounds above have
 also been supplied.
 \end{controlledapproximation}
 
-\begin{proposition}[One-instanton amplitude assembly and error budget]
+\begin{proposition}[Reusable one-instanton amplitude error budget]
 \label{prop:instanton-amplitude-assembly-error-budget}
 Fix a finite-regulator \(Q=1\) chart and a gauge-invariant source channel.
 Let
@@ -7905,23 +7948,26 @@ Suppose that on \(\mathcal U_{\rm hard}\) the exact density decomposes as
   =
   \mathcal K_{\rm lead}
   \bigl(1+\varepsilon_{\rm det}
+          +\varepsilon_{\rm fluc}
           +\varepsilon_{\rm zm}
           +\varepsilon_{\rm src}\bigr)
   +\Delta_{\rm Schur},
   \label{eq:instanton-amplitude-error-density}
 \end{equation}
 where \(\varepsilon_{\rm det}\) records the higher-loop and finite determinant
-remainder after the chosen determinant convention, \(\varepsilon_{\rm zm}\)
-records the zero-mode projection or local-source truncation error,
-\(\varepsilon_{\rm src}\) records the color-singlet source-matching or
-hadronic/OPE matching remainder, and \(\Delta_{\rm Schur}\) records the
-finite nonzero-mode Schur correction from
+remainder after the chosen determinant convention, \(\varepsilon_{\rm fluc}\)
+records source-dependent nonzero-mode fluctuation cumulants not included in the
+Gaussian determinant, \(\varepsilon_{\rm zm}\) records the zero-mode projection
+or local-source truncation error, \(\varepsilon_{\rm src}\) records the
+color-singlet source-matching or hadronic/OPE matching remainder, and
+\(\Delta_{\rm Schur}\) records the finite nonzero-mode Schur correction from
 \eqref{eq:instanton-fermion-schur-factorization}.  Then
 \begin{equation}
   \mathcal A_{\Lambda,Q=1}^{\mathcal J}
   =
   \mathcal A_{\rm lead}^{\mathcal J}
-  +R_{\rm det}+R_{\rm zm}+R_{\rm src}+R_{\rm Schur}+R_{\rm end},
+  +R_{\rm det}+R_{\rm fluc}+R_{\rm zm}+R_{\rm src}
+  +R_{\rm Schur}+R_{\rm end},
   \label{eq:instanton-amplitude-error-decomposition}
 \end{equation}
 with
@@ -7947,6 +7993,7 @@ Moreover, whenever the right-hand side is absolutely integrable,
   |\mathcal K_{\rm lead}|
   \bigl(
     |\varepsilon_{\rm det}|
+    +|\varepsilon_{\rm fluc}|
     +|\varepsilon_{\rm zm}|
     +|\varepsilon_{\rm src}|
   \bigr)\,\dd z  \\
@@ -7958,11 +8005,41 @@ Moreover, whenever the right-hand side is absolutely integrable,
 \end{aligned}
   \label{eq:instanton-amplitude-error-bound}
 \end{equation}
+Call the right-hand side \(B_{\rm int}^{\mathcal J}\).  If the selected
+observable map has leading linear part \(\mathfrak L_{\mathcal O}\), absolute
+majorant norm \(\mathcal N_{\mathcal O}\), sector-isolation majorant
+\(B_{\rm sec}\), physical-bridge majorant \(B_{\rm phys}\), and scheme/RG
+transport majorant \(B_{\rm scheme}\), then the same finite-regulator
+normalization gives the reusable assembled estimate
+\begin{equation}
+  \left|
+    \mathcal O_{\rm phys}^{(Q=1)}
+    -
+    \mathfrak L_{\mathcal O}
+    [\mathcal A_{\rm lead}^{\mathcal J}]
+  \right|
+  \le
+  \mathcal N_{\mathcal O}B_{\rm int}^{\mathcal J}
+  +B_{\rm sec}+B_{\rm phys}+B_{\rm scheme}.
+  \label{eq:instanton-reusable-observable-error-bound}
+\end{equation}
+A relative statement additionally requires
+\[
+  \left|
+    \mathfrak L_{\mathcal O}
+    [\mathcal A_{\rm lead}^{\mathcal J}]
+  \right|
+  \ge
+  \kappa_{\mathcal O}M_{\mathcal O},
+  \qquad \kappa_{\mathcal O}>0,
+\]
+for the absolute mass \(M_{\mathcal O}\) used to normalize the displayed
+majorants.
 Thus replacing the finite-regulator instanton contribution by the local
 't Hooft operator, or by a hard source-amputated kernel, is justified only
-after the determinant remainder, zero-mode/source projection, matching
-remainder, Schur correction, and endpoint integral have all been controlled
-in the same scheme.
+after the determinant, source-fluctuation, zero-mode/source projection,
+matching, Schur, endpoint, sector, physical-projection, and scheme pieces have
+all been controlled in the same scheme.
 \end{proposition}
 
 \begin{proof}
@@ -7976,15 +8053,20 @@ Split the exact integral into the chosen hard/source domain and its complement:
 \]
 Substituting
 \eqref{eq:instanton-amplitude-error-density} on
-\(\mathcal U_{\rm hard}\) gives the five remainders in
+\(\mathcal U_{\rm hard}\) gives the six source-level remainders in
 \eqref{eq:instanton-amplitude-error-decomposition}.  The bound
 \eqref{eq:instanton-amplitude-error-bound} is the triangle inequality.  The
-content is the identification of the separate physical origins of the five
+observable bound
+\eqref{eq:instanton-reusable-observable-error-bound} applies the same triangle
+inequality after the declared linear physical map and adds the separately
+declared sector, bridge, and scheme majorants.  The content is the
+identification of the separate physical origins of the
 terms: collective-coordinate geometry supplies only \(\mathcal J_{\rm coll}\)
 or, equivalently, the collective part of
 \(\mathcal C_{\rm pg}^{\mathcal S}\) and the integration domain; the
-fluctuation determinant, light-fermion nonzero-mode factor, zero-mode source
-coefficient, source matching, and endpoint behavior are independent
+fluctuation determinant, source-dependent nonzero-mode cumulants, light-fermion
+nonzero-mode factor, zero-mode source coefficient, source matching, endpoint
+behavior, sector projection, and physical observable map are independent
 load-bearing inputs to the amplitude.
 \end{proof}
 
@@ -7997,7 +8079,7 @@ one-instanton calculation is deep precisely because it performs this whole
 assembly, rather than because it merely parametrizes the BPST collective
 coordinates.
 
-\begin{controlledapproximation}[Instanton benchmark gates]
+\begin{controlledapproximation}[Four-fermion benchmark]
 \label{ca:thooft-four-fermion-benchmark-gate-ledger}
 The source-amputated four-slot construction above gives a precise way to
 compare a finite-regulator calculation with the original one-instanton
@@ -8024,41 +8106,17 @@ single determinant constant or a local operator.  It is the window integral
 with the center delta, classical/collective density, nonzero-mode
 fluctuation determinant, shared orientation projector, amputated zero-mode
 overlap determinants, and size window all kept in the same normalization.
-The comparison package is the ordered list
-\begin{equation}
-  \mathfrak G_{\rm bench}
-  =
-  (G_{\rm cent},G_{\rm cl/coll},G_{\rm det},G_{\rm zm},
-   G_{\rm Haar},G_{\rm amp},G_{\rm cond},G_{\rho},G_{\rm sec},
-   G_{\rm phys},G_{\rm scheme}) .
-  \label{eq:thooft-benchmark-gate-list}
-\end{equation}
-Here \(G_{\rm cent}\) is the instanton-center integration and momentum
-conservation; \(G_{\rm cl/coll}\) is the classical weight and collective
-Jacobian; \(G_{\rm det}\) is the finite nonzero-mode determinant in the
-declared scheme; \(G_{\rm zm}\) is the Berezin zero-mode saturation by the
-selected source; \(G_{\rm Haar}\) is the shared color-orientation projection;
-\(G_{\rm amp}\) is external-leg amputation without deleting zero-mode form
-factors; \(G_{\rm cond}\) is the rank and conditioning margin for the right
-and left overlap matrices; \(G_\rho\) is the size-window and endpoint
-estimate; \(G_{\rm sec}\) isolates the \(Q=1\) sector from neighboring
-amplitude sectors; \(G_{\rm phys}\) is the LSZ, OPE, hadronic, or inclusive
-projection; and \(G_{\rm scheme}\) transports determinant, source, and
-operator normalizations together.
+Relative to the datum
+\(\mathfrak I_{1,\Lambda}(\mathcal O)\), this specialization adds only the
+benchmark-specific equalities: the center delta must put the four external
+slots on total momentum shell; the Haar factor must be the shared four-slot
+orientation projector; the right and left overlap determinants must have a
+rank margin; amputation must remove external pole residues without deleting
+the individual zero-mode form factors or the size integral; and the selected
+sector and physical projection must be the same ones used in the quoted
+observable.
 
-Suppose the exact selected contribution admits the decomposition
-\begin{equation}
-  \mathcal M_{\rm phys}^{Q=1}[\mathfrak h]
-  =
-  \mathfrak P_{\rm phys}\Pi_{Q=1}
-  B_{\rm bench}^{(4)}[\mathfrak h;R]
-  +
-  \sum_{\gamma\in\mathfrak G_{\rm bench}}R_\gamma,
-  \label{eq:thooft-benchmark-residual-decomposition}
-\end{equation}
-where \(\Pi_{Q=1}\) denotes the finite sector-isolation projection used in
-the chosen observable, all residuals are measured in the same source
-normalization, and let
+Let
 \[
   M_{\rm bench}
   =
@@ -8071,7 +8129,20 @@ normalization, and let
   \det L_{\mathfrak h}^{\rm amp}
   \right|.
 \]
-If \(|R_\gamma|\le\epsilon_\gamma M_{\rm bench}\) for every gate and
+be the corresponding absolute benchmark mass.  Suppose the reusable proposition
+assigns all internal, sector, physical-bridge, and scheme residuals for this
+comparison to a single majorant \(B_{\rm bench}\), so that
+\[
+  \mathcal M_{\rm phys}^{Q=1}[\mathfrak h]
+  =
+  \mathfrak P_{\rm phys}\Pi_{Q=1}
+  B_{\rm bench}^{(4)}[\mathfrak h;R]
+  +
+  R_{\rm bench},
+  \qquad
+  |R_{\rm bench}|\le B_{\rm bench}.
+\]
+If
 \[
   \left|
   \mathfrak P_{\rm phys}\Pi_{Q=1}
@@ -8095,109 +8166,63 @@ then
     B_{\rm bench}^{(4)}[\mathfrak h;R]
   \right|}
   \le
-  \frac{\sum_{\gamma}\epsilon_\gamma}{\kappa_{\rm bench}} .
+  \frac{B_{\rm bench}}{\kappa_{\rm bench}M_{\rm bench}} .
   \label{eq:thooft-benchmark-relative-bound}
 \end{equation}
 
-This ledger is a comparison protocol, not an additional assumption.  It says
-which equalities must be rechecked before a displayed local 't Hooft vertex,
-a Pauli--Villars determinant constant, or an ADHM measure formula is promoted
-to a benchmark four-fermion amplitude.  Keeping only
-\(G_{\rm cl/coll}\) and \(G_{\rm det}\) gives an instanton density, not a
-source amplitude.  Keeping the zero-mode determinant without
-\(G_{\rm cond}\) can leave a rank-one or ill-conditioned four-source
-projection.  Applying \(G_{\rm amp}\) removes external pole residues but not
-the individual zero-mode form factors or the size integral.  Finally,
-\(G_{\rm sec}\) and \(G_{\rm phys}\) are what turn the colored or
-gauge-invariant Euclidean source coefficient into a physical amplitude, OPE
-coefficient, spectral matrix element, or inclusive rate.  The depth of the
-instanton calculation lies in the successful simultaneous closure of these
-gates.
+This is a comparison protocol, not an additional layer of residual
+bookkeeping.  Keeping only the collective density and determinant gives an
+instanton density, not a source amplitude.  Keeping a formal zero-mode
+determinant without the rank margin can leave a rank-one four-source
+projection.  Applying amputation removes external pole residues but not the
+individual zero-mode form factors or the size integral.  The benchmark becomes
+a physical four-fermion amplitude only after the sector and physical projection
+majorants have been supplied in the same normalization.
 \end{controlledapproximation}
 
-\begin{controlledapproximation}[Instanton observable assembly ladder]
+\begin{controlledapproximation}[Instanton observable assembly map]
 \label{ca:instanton-observable-assembly-ladder}
-The preceding bounds address different layers of the same physical
-calculation.  To prevent the reader from mistaking them for independent
-annexes, fix a selected observable channel \(\mathcal O\), a source family
-\(\mathfrak h\), and a retained one-instanton window.  Let
-\[
-  J_I[\mathfrak h]
-\]
-be the leading finite-window coefficient after the collective-coordinate
-density, pure-gauge determinant convention, light-fermion nonzero-mode
-factor, source zero-mode determinant, orientation projection, and hard-size
-window have all been included.  Let \(M_I[\mathfrak h]\) be its absolute
-window mass.  The physical observable map is not the identity map on this
-Euclidean source coefficient.  It contains analytic continuation, LSZ or OPE
-projection, infrared or hadronic matching, possible inclusive cuts, and the
-sector projection used to isolate the \(Q=1\) amplitude coordinate.  Write its
-leading linear part as \(\mathfrak L_{\mathcal O}\).
-
-The finite-regulator statement has the form
+The preceding estimates are different inputs to the same map.  Fix a selected
+observable channel \(\mathcal O\), a source family \(\mathfrak h\), and a
+retained one-instanton window.  Let \(J_I[\mathfrak h]\) be the leading
+finite-window coefficient after all entries of
+\(\mathfrak I_{1,\Lambda}(\mathcal O)\) up through \(D_\rho\) have been
+assembled, and let \(\mathfrak L_{\mathcal O}\) be the leading physical
+projection on that source coefficient.  The observable-level statement is the
+specialization of
+\eqref{eq:instanton-reusable-observable-error-bound}:
 \begin{equation}
-\begin{aligned}
   \mathcal O_{\rm phys}^{(Q=1)}
-  &=
+  =
   \mathfrak L_{\mathcal O}\!\left[J_I[\mathfrak h]\right]
-  +R_{\rm spec}+R_{\rm fluc}+R_{\rm rank}+R_{\rm Schur}
-  +R_{\rm end}                                      \\
-  &\qquad{}
-  +R_{\rm sector}+R_{\rm cont}+R_{\rm proj}
-  +R_{\rm IR}+R_{\rm cut}+R_{\rm scheme}.
-\end{aligned}
+  +R_{\mathcal O}.
   \label{eq:instanton-observable-assembly-ladder}
 \end{equation}
-The first line is internal to the Euclidean instanton source integral.  It
-records determinant and counterterm remainders, source fluctuation cumulants,
-zero-mode rank or source-overlap loss, finite Schur complement corrections,
-and the omitted size or boundary tail.  The second line promotes that source
-coordinate to the declared physical observable.  It records leakage from
-neighboring amplitude sectors, continuation residuals, LSZ/OPE or hadronic
-projection errors, infrared and volume residuals, cut errors when a rate is
-formed, and finite scheme transport errors.
-
-If these residuals are bounded in the same source normalization by
-\[
-  |R_\alpha|\le\delta_\alpha M_I[\mathfrak h],
-  \qquad
-  \alpha\in
-  \{\mathrm{spec},\mathrm{fluc},\mathrm{rank},\mathrm{Schur},
-    \mathrm{end},\mathrm{sector},\mathrm{cont},\mathrm{proj},
-    \mathrm{IR},\mathrm{cut},\mathrm{scheme}\},
-\]
-then
+If \(B_{\rm int}^{\mathfrak h}\) bounds the Euclidean source integral and
+\(B_{\rm sec}\), \(B_{\rm phys}\), \(B_{\rm scheme}\) are the sector,
+physical-bridge, and scheme-transport majorants in the same normalization, then
 \begin{equation}
-  \left|
-  \mathcal O_{\rm phys}^{(Q=1)}
-  -
-  \mathfrak L_{\mathcal O}[J_I]
-  \right|
+  |R_{\mathcal O}|
   \le
-  M_I
-  \sum_\alpha\delta_\alpha .
+  \mathcal N_{\mathcal O}B_{\rm int}^{\mathfrak h}
+  +B_{\rm sec}+B_{\rm phys}+B_{\rm scheme}.
   \label{eq:instanton-observable-assembly-bound}
 \end{equation}
-A relative physical statement further requires a margin
+A relative physical statement further requires the noncancellation margin
 \[
-  |\mathfrak L_{\mathcal O}[J_I]|\ge\kappa_{\mathcal O} M_I,
+  |\mathfrak L_{\mathcal O}[J_I]|\ge\kappa_{\mathcal O} M_{\mathcal O},
   \qquad \kappa_{\mathcal O}>0.
 \]
-Only after this margin is present may one divide
-\eqref{eq:instanton-observable-assembly-bound} by the quoted leading
-observable.  Signed cancellation among the residuals, or between neighboring
-amplitude sectors, does not replace the absolute budget.
+Only after this margin is present may one divide by the quoted leading
+observable.  Signed cancellation among residuals, or between neighboring
+amplitude sectors, does not replace the absolute majorants.
 
-This ladder is the structural distinction between an instanton-moduli
-calculation and an instanton contribution to a QFT observable.  The moduli
-space supplies the variables and zero-mode Jacobian inside \(J_I\).  The
-fluctuation determinant, source stability, boundary estimates, sector
-projection, and physical observable map decide whether \(J_I\) is a
-controlled contribution to a scattering amplitude, an OPE coefficient, a
-susceptibility, or an inclusive rate.  The operations are deliberately ordered:
-one first assembles and bounds the finite source coefficient, then applies
-the physical projection and its own residual budget.  Reversing this order
-usually replaces a controlled amplitude calculation by a formal local vertex.
+This map is the structural distinction between an instanton-moduli calculation
+and an instanton contribution to a QFT observable.  The moduli space supplies
+variables and zero-mode Jacobians inside \(J_I\); fluctuation determinants,
+source stability, boundary estimates, sector projection, and the physical
+observable map decide whether \(J_I\) becomes a controlled scattering, OPE,
+susceptibility, or rate contribution.
 \end{controlledapproximation}
 
 \begin{controlledapproximation}[Source-dependent fluctuation bound]

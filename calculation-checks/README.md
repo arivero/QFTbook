@@ -610,27 +610,29 @@ Current checks:
   extraction which divides by source overlaps only after the selected pole has
   been isolated and bounds excited-state leakage by gap factors, the
   Euclidean-to-physical
-  instanton amplitude residual budget separating continuation, spectral/LSZ,
-  infrared, unitarity-cut, matching, and size-endpoint controls from the
-  leading source kernel, the instanton--anti-instanton cut-pairing check
+  instanton bridge feeding the reusable physical-residual slot with
+  continuation, spectral/LSZ, infrared, unitarity-cut, matching, and
+  size-endpoint controls, the instanton--anti-instanton cut-pairing check
   which distinguishes the theta-charged one-instanton amplitude coordinate
   from a neutral inclusive rate kernel, verifies the order-\(e^{-S_I}\)
   interference negative control before a selection rule is imposed, and bounds
-  the relative cut residual, the one-instanton sector-isolation bound
+  the relative cut residual, the one-instanton sector-isolation input
   separating the retained \(Q=1\) coefficient from same-sector residuals,
   perturbative leakage, anti-instanton leakage, two-instanton leakage,
-  \(I\bar I\) amplitude-sector leakage, and higher-sector remainders, with
+  \(I\bar I\) amplitude-sector leakage, and higher-sector remainders as the
+  reusable sector majorant, with
   negative controls for perturbative contamination, omitted neighboring-sector
   budgets, and signed adjacent-sector cancellation,
-  the finite one-instanton amplitude
-  error budget separating determinant, zero-mode/source, matching, Schur, and
-  endpoint residuals from the leading density, the source-dependent
+  the reusable finite one-instanton amplitude
+  error proposition separating determinant, source-fluctuation,
+  zero-mode/source, matching, Schur, and endpoint residuals from the leading
+  density and combining them with sector, physical-bridge, and scheme majorants,
+  the source-dependent
   fluctuation-cumulant bound which refines the determinant residual and
   rejects vacuum-determinant and signed-cancellation shortcuts, the
-  observable-assembly ladder which keeps Euclidean source-integral residuals,
-  sector leakage, and physical continuation/projection/IR/cut/scheme residuals
-  in one ordered residual ledger before a scattering, OPE, susceptibility, or rate
-  contribution is quoted, with negative controls against moduli-only,
+  observable-assembly map which reads the same reusable bound as the passage
+  from Euclidean source coefficient to scattering, OPE, susceptibility, or rate
+  contribution, with negative controls against moduli-only,
   Euclidean-equals-physical, omitted endpoint/sector, and signed-cancellation
   shortcuts, the hard-momentum
   size-window scaling
@@ -650,11 +652,10 @@ Current checks:
   through a rank-margin residual, the source-conditioning check using
   \(B^{-1}\Delta B\) to reject hard-support-only and unconditioned-overlap
   shortcuts for near-rank-one four-source projections, the four-fermion
-  instanton benchmark gate ledger which keeps center momentum conservation,
-  classical/collective data, determinant normalization, zero-mode saturation,
-  Haar projection, amputation, source conditioning, size-window control,
-  sector isolation, physical projection, and finite-scheme transport in one
-  adversarial comparison with a 't Hooft-style amplitude, the
+  instanton benchmark specialization which keeps center momentum conservation,
+  shared Haar projection, amputation, source conditioning, and size-window
+  control attached to the canonical amplitude datum in an adversarial comparison
+  with a 't Hooft-style amplitude, the
   mixed hard-source plus physical-screening log-shell equation
   \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\) with negative controls against
   hard-only and screening-only saddle substitutions, the
