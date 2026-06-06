@@ -20,6 +20,11 @@
   Virasoro/annulus kinematics, genus-zero diagonal sewing, rational
   Frobenius-module mechanisms, nonrational direct-integral/contour data, and
   the remaining all-surface analytic theorem boundary.
+- Adds a mid-chapter sewing-move ledger after the Liouville analytic datum,
+  classifying the diagonal annulus, Ising boundary-OPE, bulk-boundary/direct
+  sum, Liouville Plancherel/residue, and anomaly-line cells by the elementary
+  sewing moves they test and by the Hilbert-space, domain, metric, contour,
+  positivity, and determinant-line data still outside each local cell.
 - Adds a finite generated-sewing move graph and defect budget: local annulus,
   boundary-OPE, disk classifying, bulk-boundary, Frobenius/module, contour, and
   anomaly-line moves control all-surface decomposition independence only after
