@@ -1809,9 +1809,10 @@ Current checks:
   element, the mixed bra/ket product formula, the semi-local kinematic-pole
   residue, and the even/odd spectral-series majorants used in the separated
   Euclidean reconstruction estimate, plus the form-factor spectral
-  reconstruction-window residual ledger separating separated Euclidean tail
-  control from collision/contact extension, Lorentzian boundary values,
-  domains, locality, positivity, and sector completeness.
+  reconstruction-window residual ledger separating temporal-ray Euclidean tail
+  control, radial covariance on a separated annulus, and the invalid off-ray
+  real-vector damping formula from collision/contact extension, Lorentzian
+  boundary values, domains, locality, positivity, and sector completeness.
 - `finite_volume_form_factor_checks.py`: finite checks for the Volume VI
   finite-volume form-factor chapter, including the two-particle Gaudin
   determinant, cancellation of the Gaudin density between matrix elements and

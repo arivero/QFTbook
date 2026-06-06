@@ -7,7 +7,8 @@ form-factor normalization and local-reconstruction status claim, the
 two-particle Wightman/Euclidean kernel normalization, the Ising
 spin/twist product-family Watson, cyclicity, crossing, residue, and
 separated-series majorant claims, and the form-factor spectral reconstruction
-window that separates separated Euclidean convergence from Wightman
+window that reconstructs scalar separated Euclidean functions from the
+temporal ray by radial covariance and separates that first gate from Wightman
 boundary values, collision extensions, domains, locality, positivity, and
 sector completeness.
 Independent construction: the checks recompute exchange/cyclicity signs,
@@ -15,8 +16,9 @@ Cauchy-kernel orientation, two-particle invariant-mass and phase-space
 Jacobians, Bessel prefactors, finite Wick-degree support for the normal
 ordered quadratic Majorana energy density, explicit finite products for
 the spin/twist families, finite tail-majorant sums, residual-budget
-arithmetic, and Wightman-matrix positivity diagnostics rather than importing
-chapter display strings.
+arithmetic, radial-to-Cartesian annulus bounds, the bad off-ray real-vector
+Euclidean damping test, and Wightman-matrix positivity diagnostics rather than
+importing chapter display strings.
 Imported assumptions: the massive free-Majorana CAR construction supplies the
 Hilbert space, common finite-particle domain, positivity, locality of even
 Wick polynomials, and Fock completeness of the one-particle Majorana sector;
@@ -29,7 +31,8 @@ and a bootstrap-only local-field reconstruction overclaim with missing
 domain/locality/positivity/completeness inputs are rejected, as are the
 wrong spin-field monodromy and residue signs, omitted collision/locality
 residuals, signed residual cancellation, and diagonal separated positivity
-mistaken for full Wightman positivity.
+mistaken for full Wightman positivity, plus a spatial Euclidean separation
+inserted into the temporal-ray real mass-shell formula.
 Scope boundary: a pass checks finite algebra, normalization, and the
 free-field reconstruction interface for the displayed examples; it does not
 prove local reconstruction for an arbitrary interacting factorizing
@@ -366,9 +369,10 @@ def check_spin_spectral_series_majorants() -> None:
 
 def check_form_factor_spectral_reconstruction_window() -> None:
     # Finite analogue of the reconstruction-window ledger.  A separated
-    # Euclidean spectral majorant gives a real tail bound, but local-field
-    # reconstruction also needs collision, boundary-value, domain, locality,
-    # positivity, and completeness inputs.
+    # Euclidean temporal-ray spectral majorant gives a radial tail bound.  A
+    # Cartesian annulus C^q bound follows only after the radial extension step;
+    # local-field reconstruction still needs collision, boundary-value, domain,
+    # locality, positivity, and completeness inputs.
     particle_bounds = [
         Fraction(1, 2),
         Fraction(1, 6),
@@ -380,6 +384,45 @@ def check_form_factor_spectral_reconstruction_window() -> None:
     tail_bound = sum(particle_bounds[retained_order + 1 :], Fraction(0))
     actual_tail = Fraction(1, 140) + Fraction(1, 840)
     assert_true("finite spectral tail lies below declared majorant", actual_tail <= tail_bound)
+
+    radial_derivative_bounds = [
+        (Fraction(1, 2), Fraction(2, 3), Fraction(3, 4)),
+        (Fraction(1, 6), Fraction(1, 5), Fraction(1, 4)),
+        (Fraction(1, 24), Fraction(1, 30), Fraction(1, 36)),
+        (Fraction(1, 120), Fraction(1, 140), Fraction(1, 160)),
+        (Fraction(1, 720), Fraction(1, 840), Fraction(1, 960)),
+    ]
+    radial_tail = sum(
+        max(radial_derivative_bounds[n])
+        for n in range(retained_order + 1, len(radial_derivative_bounds))
+    )
+    radial_to_cartesian_constant = Fraction(5, 1)
+    cartesian_tail_bound = radial_to_cartesian_constant * radial_tail
+    assert_true(
+        "radial derivative majorants give annulus Cartesian tail bound",
+        actual_tail <= cartesian_tail_bound,
+    )
+
+    # The temporal-ray damping exp[-r m cosh(theta)] decays on both rapidity
+    # tails.  Treating p^E=(m cosh theta,m sinh theta) as a real Euclidean
+    # vector away from the temporal ray would give exp[-r m sinh(theta)] at a
+    # spatial separation and grows along theta -> -infinity.
+    r = 1.3
+    mass = 0.9
+    theta_left = -3.0
+    theta_far_left = -4.0
+    temporal_log_left = -r * mass * math.cosh(theta_left)
+    temporal_log_far_left = -r * mass * math.cosh(theta_far_left)
+    bad_spatial_log_left = -r * mass * math.sinh(theta_left)
+    bad_spatial_log_far_left = -r * mass * math.sinh(theta_far_left)
+    assert_true(
+        "temporal-ray Euclidean damping decays on the negative rapidity tail",
+        temporal_log_far_left < temporal_log_left,
+    )
+    assert_true(
+        "spatial real-vector Euclidean formula grows on the negative rapidity tail",
+        bad_spatial_log_far_left > bad_spatial_log_left,
+    )
 
     residuals = {
         "tail": actual_tail,

@@ -1081,38 +1081,58 @@ factorizing scattering datum, and fix a separated Euclidean window
   \{x_E:\ r_0\le |x_E|\le r_1\},
   \qquad 0<r_0<r_1<\infty .
 \]
-For a scalar channel, write the \(n\)-particle separated Euclidean term as
+For a scalar channel, first write the \(n\)-particle separated Euclidean term
+on the positive temporal ray, \(x_E=(r,0)\), as
 \begin{equation}
-  G_n^{\mathcal O}(x_E)
+  g_n^{\mathcal O}(r)
   =
   \frac1{n!}
   \sum_{a_1,\ldots,a_n}
   \int_{\R^n}\prod_{j=1}^n\frac{\dd\theta_j}{2\pi}\,
   \left|F^{\mathcal O}_{a_1\ldots a_n}(\theta)\right|^2
-  e^{-x_E\cdot_E\sum_j p_{a_j}^{E}(\theta_j)} .
+  \exp\!\left[-r\sum_{j=1}^{n}m_{a_j}\cosh\theta_j\right].
   \label{eq:form-factor-separated-euclidean-term}
 \end{equation}
-Here \(p^E(\theta)=(m\cosh\theta,m\sinh\theta)\) after choosing the
-Euclidean temporal ray and then rotating covariantly.  A separated Euclidean
-two-point function is controlled on \(\mathcal U_{r_0,r_1}\) if there are
-majorants \(B_{n,q}(r_0,r_1)\) such that, for each retained derivative order
-\(q\),
+This is the real damping formula.  It is not a formula with a real Euclidean
+mass-shell vector \(p^E(\theta)=(m\cosh\theta,m\sinh\theta)\) valid in every
+Euclidean direction.  For instance, at \(x_E=(0,r)\) that replacement would
+produce \(\exp[-rm\sinh\theta]\), which grows as \(\theta\to-\infty\).  The
+scalar separated function on the annulus is obtained instead by Euclidean
+covariance:
+\[
+  G_n^{\mathcal O}(x_E):=g_n^{\mathcal O}(|x_E|).
+\]
+A separated Euclidean two-point function is controlled on
+\(\mathcal U_{r_0,r_1}\) if there are radial majorants
+\(B_{n,s}^{\rm rad}(r_0,r_1)\) such that, for each retained derivative order
+\(0\le s\le q\),
 \begin{equation}
-  \sup_{x_E\in\mathcal U_{r_0,r_1}}
-  \left|\nabla_{x_E}^qG_n^{\mathcal O}(x_E)\right|
-  \le B_{n,q}(r_0,r_1),
+  \sup_{r_0\le r\le r_1}
+  \left|
+    \frac{\dd^s}{\dd r^s}g_n^{\mathcal O}(r)
+  \right|
+  \le B_{n,s}^{\rm rad}(r_0,r_1),
   \qquad
-  \sum_{n\ge0}B_{n,q}(r_0,r_1)<\infty .
+  \sum_{n\ge0}B_{n,s}^{\rm rad}(r_0,r_1)<\infty .
   \label{eq:form-factor-separated-majorant-condition}
 \end{equation}
-Then the Euclidean series defines a smooth separated function on that window,
-and its \(N\)-particle truncation has the explicit tail bound
+For \(r_0>0\), ordinary derivatives of a smooth radial function obey
+\[
+  \left\|\nabla_{x_E}^q h(|x_E|)\right\|_{L^\infty(\mathcal U_{r_0,r_1})}
+  \le
+  C_q(r_0)\max_{0\le s\le q}
+  \left\|h^{(s)}\right\|_{L^\infty([r_0,r_1])}.
+\]
+Thus the temporal-ray estimates imply a Cartesian \(C^q\) estimate on the
+annulus only after this radial-extension step.  The \(N\)-particle truncation
+has the explicit tail bound
 \begin{equation}
   \left\|
     G_{\mathcal O}^{E}-\sum_{n=0}^{N}G_n^{\mathcal O}
   \right\|_{C^q(\mathcal U_{r_0,r_1})}
   \le
-  \sum_{n>N}B_{n,q}(r_0,r_1).
+  C_q(r_0)
+  \sum_{n>N}\max_{0\le s\le q}B_{n,s}^{\rm rad}(r_0,r_1).
   \label{eq:form-factor-separated-tail-bound}
 \end{equation}
 This separated estimate is the first gate illustrated by the Ising product

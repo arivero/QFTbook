@@ -39,11 +39,12 @@
   diagonals, positivity/covariance/spectrum condition, spacelike
   local-commutativity or semi-locality, and sector completeness.
 - Reconstruction boundary for Wightman distributions from spectral series.
-- Form-factor spectral reconstruction window: a separated Euclidean
-  \(C^q\)-majorant condition, finite truncation tail bound, and Wightman
-  residual split separating high-particle tails, collision/contact extension,
-  Euclidean-to-Lorentzian boundary values, common domains, spacelike locality
-  or semi-locality, positivity, and finite-particle completeness.
+- Form-factor spectral reconstruction window: a temporal-ray separated
+  Euclidean majorant condition, radial Euclidean-covariant annulus extension,
+  finite truncation tail bound, and Wightman residual split separating
+  high-particle tails, collision/contact extension, Euclidean-to-Lorentzian
+  boundary values, common domains, spacelike locality or semi-locality,
+  positivity, and finite-particle completeness.
 
 ## Symbols
 
@@ -67,7 +68,7 @@
 | \(F_n^{\sigma_+}\) | even semi-local spin-field form-factor family |
 | \(F_n^\Sigma\) | odd Ising order/twist form-factor family |
 | \(I_m(r)\) | one-particle Euclidean majorant \(K_0(mr)/\pi\) for the free Majorana mass \(m\) |
-| \(B_{n,q}(r_0,r_1)\) | separated Euclidean majorants for the \(n\)-particle form-factor spectral term and its \(q\)-th derivatives |
+| \(B_{n,q}^{\rm rad}(r_0,r_1)\) | radial temporal-ray majorants for the \(n\)-particle form-factor spectral term and its \(q\)-th radial derivatives before Cartesian annulus extension |
 | \(R_{\rm tail},R_{\rm coll},R_{\rm bv},R_{\rm dom},R_{\rm loc},R_{\rm pos},R_{\rm comp}\) | residuals in the form-factor-to-Wightman reconstruction window |
 
 ## Claim Ledger
@@ -135,10 +136,14 @@
    convergence, locality, clustering, and Wightman domains remain theorem
    obligations.
 15. Separated Euclidean convergence is only the first reconstruction gate.
-   A claimed Wightman/local-observable reconstruction also needs a Lorentzian
-   boundary value, collision/contact extension, common operator domain,
-   spacelike locality or semi-locality estimate, full test-matrix positivity,
-   and finite-particle completeness on the claimed sector.
+   For scalar channels the real rapidity integral is first a temporal-ray
+   formula with damping \(e^{-r\sum m\cosh\theta}\); the annulus statement is a
+   radial Euclidean-covariant extension with standard radial-to-Cartesian
+   derivative bounds away from the origin.  A claimed Wightman/local-observable
+   reconstruction also needs a Lorentzian boundary value, collision/contact
+   extension, common operator domain, spacelike locality or semi-locality
+   estimate, full test-matrix positivity, and finite-particle completeness on
+   the claimed sector.
 
 ## Calculation Checks
 
@@ -192,6 +197,14 @@
   full positivity, and sector completeness.  The companion finite check
   rejects the common overread that exact bootstrap equations or diagonal
   separated positivity are enough to reconstruct a local field.
+- 2026-06-05 issue #843 temporal-ray reconstruction repair: corrected
+  `ca:form-factor-spectral-reconstruction-window` so the real spectral
+  integral is only the temporal-ray formula
+  \(e^{-r\sum_jm_j\cosh\theta_j}\).  The scalar annulus statement now comes
+  from Euclidean covariance, \(G_n(x_E)=g_n(|x_E|)\), plus radial-to-Cartesian
+  derivative bounds on \(r_0\le |x_E|\le r_1\).  The companion check rejects
+  the old off-ray real-vector replacement, whose spatial factor
+  \(e^{-rm\sinh\theta}\) grows on the negative rapidity tail.
 
 ## Figures
 
