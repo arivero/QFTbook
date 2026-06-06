@@ -27,6 +27,8 @@
   reduction, boundary/branch data, subtraction, and observable assembly,
   one-loop scalar-integral reconstruction, a complete massless
   \(\lambda\phi^4\) four-point cut reconstruction with negative controls,
+  a fixed-angle scalar cross-section endpoint with the crossed-log
+  renormalization-scale cancellation,
   a planar \(\mathcal N=4\)
   four-gluon MHV quadruple-cut reconstruction with explicit supermultiplet
   state sum and lower-topology negative control, a triple-cut triangle
@@ -158,6 +160,7 @@
 | \(R_n\) | rational term not fixed by a strictly four-dimensional cut analysis |
 | \(\mathcal P_n\) | local subtraction polynomial or scheme-dependent counterterm |
 | \(B(Q^2)\), \(\widehat B(x)\) | Euclidean bubble master and its four-dimensional cut-normalized physical continuation |
+| \(L_{\rm R}\), \(\kappa_{\rm id}\) | real fixed-angle scalar logarithm combination and identical-final-state counting factor in the scalar cross-section endpoint |
 | \(I_{a,b}(Q^2)\) | Euclidean one-loop bubble integral family used for IBP reduction |
 | \(z\), \(F_m(z)\), \(T_m\) | equal-mass bubble threshold variable \(Q^2/(4m^2)\), finite nonlocal bubble part, and normalized lower tadpole master |
 | \(C_{01}(\omega),R_h(\omega),\Pi_{\rm bub}\) | double-cut residue on a residual two-particle cut surface, known box/triangle shadows visible on the same double cut, and the normalized bubble angular/contour projection |
@@ -1111,6 +1114,15 @@
   omitted-subtraction, and self-defined-cut shortcuts while recording that a
   discontinuity test does not determine the additive Euclidean boundary
   constant needed for the finite hard remainder.
+- 2026-06-06 issue #769 scalar observable-endpoint pass: added
+  `ca:phi4-fixed-angle-cross-section-rg-check` after the scalar UV/running
+  block.  The pass carries the cut-reconstructed and renormalized massless
+  \(\lambda\phi^4\) four-point amplitude to a fixed-angle \(2\to2\) scattering
+  density, including identical-final-state counting, the physical
+  \(s\)-channel imaginary part, and the crossed-log cancellation of the
+  one-loop running.  The companion check verifies the exact rational
+  scale-derivative cancellation and rejects the s-channel-only observable
+  shortcut.
 - 2026-06-05 issue #755 named-tool role pass: added
   `rem:chapter06-named-tool-status-ledger` near the chapter entrance and
   tightened the generalized-unitarity opening.  The pass records which named

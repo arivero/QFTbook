@@ -45,9 +45,10 @@ Evidence contract.
 Target claims: the generalized-unitarity section of Volume II Chapter 6,
 especially the phi^4 cut reconstruction, the negative controls for incomplete
 cut sets, the MS pole/running extraction from the crossing-complete scalar
-amplitude, and four-dimensional blind spots, the bubble IBP identity, and the
-bubble numerator-reduction sector projection and bubble master differential
-equation, the equal-mass bubble threshold family, plus the finite two-scale
+amplitude, the fixed-angle scalar cross-section scale-cancellation check, and
+four-dimensional blind spots, the bubble IBP identity, and the bubble
+numerator-reduction sector projection and bubble master differential equation,
+the equal-mass bubble threshold family, plus the finite two-scale
 massless box master, the two-loop equal-mass sunrise elliptic maximal-cut
 data, the gauge-theory MHV
 box and all-plus rational-term comparison, the planar N=4 MHV quadruple-cut
@@ -77,7 +78,8 @@ numbers, a finite ordered gate/incidence model for the reconstruction package,
 an explicit identical-state symmetry factor, a nullspace model for
 local/rational terms invisible to four-dimensional cuts, exact rational
 pole-residue and beta-function coefficient bookkeeping for the scalar
-subtraction step, and exact rational
+subtraction step, exact rational fixed-angle cross-section scale-derivative
+bookkeeping for the crossed logarithms, and exact rational
 checks of the one-loop bubble IBP coefficients at several regulator values;
 exact rational projection of a bubble numerator into parent and lower sectors,
 including the parent-cut coefficient and vector Passarino-Veltman reduction;
@@ -168,8 +170,9 @@ have two negative helicities, up to parity.
 Negative controls: the script rejects an s-channel-only ansatz, verifies that
 local counterterms are invisible to cuts, and constructs two amplitudes with
 identical four-dimensional cuts but different D-dimensional rational probes;
-it rejects the one-channel scalar pole/beta shortcut and a cut-only attempt to
-fix finite subtraction constants;
+it rejects the one-channel scalar pole/beta shortcut, the single-channel
+fixed-angle cross-section scale-cancellation shortcut, and a cut-only attempt
+to fix finite subtraction constants;
 it also verifies that the all-plus one-loop rational structure is invisible
 to strict four-dimensional two-particle cuts but visible to a nonzero
 mu_perp^2 massive-scalar probe, verifies that an s-channel cut alone cannot
@@ -645,6 +648,84 @@ def check_phi4_ms_running_from_crossed_cuts() -> None:
     assert_true(
         "cut-only data cannot determine finite local subtraction",
         finite_subtraction_shift != 0 and channel_cuts(local_shift) == (0, 0, 0),
+    )
+
+
+def check_phi4_fixed_angle_cross_section_rg_cancellation() -> None:
+    # Work inside the square bracket of
+    # d sigma / d Omega = kappa_id [ ... ] / (64 pi^2 s), and strip the common
+    # 1/(16 pi^2) from the O(lambda^3) scale derivative.
+    lam = Fraction(5, 3)
+    tree = -lam
+    one_loop_real_log_coefficient = lam * lam / 2
+    interference_log_coefficient = 2 * tree * one_loop_real_log_coefficient
+    assert_equal(
+        "fixed-angle interference coefficient for LR",
+        interference_log_coefficient,
+        -lam**3,
+    )
+
+    # The physical s-channel imaginary part is present in the amplitude, but a
+    # real tree amplitude makes it invisible in the O(lambda^3) interference.
+    tree_imaginary_part = Fraction(0)
+    one_loop_s_channel_imaginary_coefficient = lam * lam / 2
+    assert_equal(
+        "s-channel imaginary part first enters the cross section at higher order",
+        2 * tree_imaginary_part * one_loop_s_channel_imaginary_coefficient,
+        Fraction(0),
+    )
+
+    beta_coefficient = 3 * lam * lam
+    born_running = 2 * lam * beta_coefficient
+    crossed_log_mu_derivative = 6
+    crossed_log_running = interference_log_coefficient * crossed_log_mu_derivative
+    assert_equal(
+        "crossed scalar logs cancel running of the fixed-angle Born density",
+        born_running + crossed_log_running,
+        Fraction(0),
+    )
+
+    for kappa_id in (Fraction(1), Fraction(1, 2)):
+        density_derivative = kappa_id * (born_running + crossed_log_running) / 64
+        assert_equal(
+            f"identical-particle counting factor {kappa_id} preserves RG cancellation",
+            density_derivative,
+            Fraction(0),
+        )
+
+    single_channel_log_running = interference_log_coefficient * 2
+    single_channel_residual = born_running + single_channel_log_running
+    assert_equal(
+        "single-channel fixed-angle residual in 1/(16pi^2) units",
+        single_channel_residual,
+        4 * lam**3,
+    )
+    assert_true(
+        "identical-particle counting cannot repair missing crossed logs",
+        Fraction(1, 2) * single_channel_residual != 0,
+    )
+
+    finite_subtraction_shift = Fraction(7, 11)
+    amplitude_shift = one_loop_real_log_coefficient * 3 * finite_subtraction_shift
+    finite_coupling_redefinition = amplitude_shift
+    tree_shift = -finite_coupling_redefinition
+    assert_equal(
+        "finite subtraction shift is absorbed before forming the observable",
+        amplitude_shift + tree_shift,
+        Fraction(0),
+    )
+    assert_equal(
+        "finite subtraction shift leaves the fixed-angle interference invariant",
+        2 * tree * (amplitude_shift + tree_shift),
+        Fraction(0),
+    )
+
+    quotient_born_density = lam * lam / 64
+    full_sphere_born_density = Fraction(1, 2) * lam * lam / 64
+    assert_equal(
+        "full-solid-angle identical final state is half the quotient density",
+        full_sphere_born_density,
+        quotient_born_density / 2,
     )
 
 
@@ -3645,6 +3726,7 @@ def check_two_loop_ir_pole_consistency_gate() -> None:
 def main() -> None:
     check_phi4_cut_reconstruction()
     check_phi4_ms_running_from_crossed_cuts()
+    check_phi4_fixed_angle_cross_section_rg_cancellation()
     check_one_loop_reconstruction_datum()
     check_four_dimensional_cut_blind_spot()
     check_gauge_theory_helicity_controls()
