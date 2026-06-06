@@ -14,8 +14,9 @@ Target claims:
   extraction data.
 - The finite bulk/sound spectral-window subsection separates the dissipative
   bulk-pressure source from raw trace and energy-density slopes, reconstructs
-  zeta from the sound attenuation only after the shear contribution is
-  subtracted, and keeps critical scalar weight outside the regular background.
+  zeta from the sound attenuation only after the shear and finite-density
+  conductive contributions are subtracted, and keeps critical scalar weight
+  outside the regular background.
 - The finite charge-diffusion spectral-window subsection reconstructs an
   intrinsic conductivity from a momentum-orthogonal density diffusion pole,
   keeps the susceptibility residue distinct from the pole width, and separates
@@ -34,8 +35,10 @@ Independent construction:
   kernel, generates spectral samples, solves for width and amplitude, and only
   then reconstructs eta.
 - For the bulk/sound window, constructs a finite scalar slope matrix, forms
-  the thermodynamically subtracted bulk source, and independently reconstructs
-  zeta from the longitudinal sound-pole attenuation.
+  the thermodynamically subtracted bulk source, derives the charged
+  longitudinal determinant from exact thermodynamic derivatives, and
+  reconstructs zeta from the sound-pole attenuation only after subtracting the
+  shear and conductive pieces.
 - For the charge-diffusion window, constructs the contact-subtracted retarded
   density kernel, generates spectral samples, solves for the diffusion width
   and susceptibility residue, and only then reconstructs the conductivity.
@@ -53,8 +56,8 @@ Negative controls:
 - Rejects wrong retarded spectral sign, width-only shear extraction, missing
   enthalpy-residue uncertainty, uncorrected regular-background contamination,
   raw trace-slope bulk extraction, sound-width-only bulk extraction, missing
-  shear subtraction, hidden near-critical scalar weight, charge-diffusion
-  width-only extraction, missing susceptibility uncertainty, raw-current
+  shear or conductive subtraction, hidden near-critical scalar weight,
+  charge-diffusion width-only extraction, missing susceptibility uncertainty, raw-current
   Drude contamination, incomplete transport closure data, mixed-state or
   mixed-frame transport assembly, incorrect Ward/contact signs, wrong
   center/fugacity periodicity, and gauge-charge neutrality shortcuts.
@@ -82,8 +85,8 @@ collective-mode counts, dense Fermi-surface stress scales,
 color-flavor-locked faithful-global-symmetry and anomaly-matching
 bookkeeping, hydrodynamic response-window bookkeeping, finite shear
 spectral-window extraction from a retarded hydrodynamic kernel,
-finite bulk/sound spectral-window extraction with thermodynamic and shear
-subtractions,
+finite bulk/sound spectral-window extraction with thermodynamic, shear, and
+finite-density conductive subtractions,
 finite charge-diffusion spectral-window extraction with susceptibility and
 Drude-sector separation,
 same-state QCD transport-closure bookkeeping,
@@ -105,6 +108,43 @@ def assert_equal(label, actual, expected):
 def assert_true(label, condition):
     if not condition:
         raise AssertionError(label)
+
+
+def charged_longitudinal_hydro_data(
+    d,
+    enthalpy,
+    baryon_density,
+    eta,
+    zeta,
+    conductivity,
+    beta1,
+    beta2,
+    alpha1,
+    alpha2,
+):
+    shear_prefactor = Fraction(2 * (d - 1), d)
+    shear_part = shear_prefactor * eta
+    gamma_viscous = (zeta + shear_part) / enthalpy
+    sound_speed_squared = beta1 + baryon_density * beta2 / enthalpy
+    determinant_omega2_coeff = gamma_viscous + conductivity * alpha2
+    determinant_k4_coeff = conductivity * (alpha1 * beta2 - alpha2 * beta1)
+    sound_attenuation = (
+        determinant_omega2_coeff
+        + determinant_k4_coeff / sound_speed_squared
+    )
+    conductive_attenuation = sound_attenuation - gamma_viscous
+    charge_diffusion = -determinant_k4_coeff / sound_speed_squared
+    return {
+        "shear_prefactor": shear_prefactor,
+        "shear_part": shear_part,
+        "gamma_viscous": gamma_viscous,
+        "cs2": sound_speed_squared,
+        "det_omega2_coeff": determinant_omega2_coeff,
+        "det_k4_coeff": determinant_k4_coeff,
+        "gamma_cond": conductive_attenuation,
+        "gamma_sound": sound_attenuation,
+        "charge_diffusion": charge_diffusion,
+    }
 
 
 def check_stefan_boltzmann_pressure():
@@ -825,21 +865,44 @@ def check_hydrodynamic_response_window_bookkeeping():
     # susceptibilities as input, while the pole claims require a separate
     # scaling-window residual estimate.
     d = 3
-    eta = Fraction(5, 7)
-    zeta = Fraction(2, 11)
-    enthalpy = Fraction(13, 5)
-    sigma_b = Fraction(23, 29)
-    chi_b = Fraction(17, 19)
+    eta = Fraction(3, 5)
+    zeta = Fraction(2, 7)
+    enthalpy = Fraction(4)
+    baryon_density = Fraction(2)
+    sigma_b = Fraction(3, 5)
+    beta1 = Fraction(1, 4)
+    beta2 = Fraction(1, 2)
+    alpha1 = Fraction(1, 3)
+    alpha2 = Fraction(1)
 
+    charged_sound = charged_longitudinal_hydro_data(
+        d,
+        enthalpy,
+        baryon_density,
+        eta,
+        zeta,
+        sigma_b,
+        beta1,
+        beta2,
+        alpha1,
+        alpha2,
+    )
     shear_diffusion = eta / enthalpy
-    baryon_diffusion = sigma_b / chi_b
-    sound_attenuation = (zeta + 2 * eta * Fraction(d - 1, d)) / enthalpy
+    baryon_diffusion = charged_sound["charge_diffusion"]
+    sound_attenuation = charged_sound["gamma_sound"]
+    neutral_sound_attenuation = charged_sound["gamma_viscous"]
 
     shear_spectral_slope = 2 * eta
     assert_equal("QCD shear Kubo spectral normalization", shear_spectral_slope / 2, eta)
-    assert_equal("QCD shear diffusion constant", shear_diffusion, Fraction(25, 91))
-    assert_equal("QCD decoupled baryon diffusion constant", baryon_diffusion, Fraction(437, 493))
-    assert_equal("QCD sound attenuation constant", sound_attenuation, Fraction(1310, 3003))
+    assert_equal("QCD shear diffusion constant", shear_diffusion, Fraction(3, 20))
+    assert_equal("QCD charged sound speed squared", charged_sound["cs2"], Fraction(1, 2))
+    assert_equal("QCD charged diffusion constant", baryon_diffusion, Fraction(1, 10))
+    assert_equal("QCD conductive sound attenuation", charged_sound["gamma_cond"], Fraction(1, 2))
+    assert_equal("QCD charged sound attenuation constant", sound_attenuation, Fraction(27, 35))
+    assert_true(
+        "QCD neutral sound formula misses finite-density conductive damping",
+        neutral_sound_attenuation != sound_attenuation,
+    )
 
     # At finite baryon density the raw baryon current overlaps with conserved
     # momentum.  The diffusion conductivity is extracted from the
@@ -1138,29 +1201,70 @@ def check_finite_bulk_sound_spectral_window():
         wrong_contact_sign_slope != zeta,
     )
 
-    # The sound pole gives Gamma_s.  Zeta follows only after multiplying by
-    # enthalpy and subtracting the shear part of the attenuation.
+    # The charged longitudinal determinant gives Gamma_s.  Zeta follows only
+    # after subtracting both the shear and conductive parts of the attenuation.
     d = 3
     enthalpy = Fraction(12)
+    baryon_density = Fraction(6)
     eta = Fraction(3, 2)
-    shear_prefactor = Fraction(2 * (d - 1), d)
-    shear_attenuation_part = shear_prefactor * eta
-    gamma_s = (zeta + shear_attenuation_part) / enthalpy
-    assert_equal("QCD sound attenuation coefficient", gamma_s, Fraction(3, 8))
+    conductivity = Fraction(3, 5)
+    beta1 = Fraction(1, 4)
+    beta2 = Fraction(1, 2)
+    alpha1 = Fraction(1, 3)
+    alpha2 = Fraction(1)
+    charged_sound = charged_longitudinal_hydro_data(
+        d,
+        enthalpy,
+        baryon_density,
+        eta,
+        zeta,
+        conductivity,
+        beta1,
+        beta2,
+        alpha1,
+        alpha2,
+    )
+    shear_prefactor = charged_sound["shear_prefactor"]
+    shear_attenuation_part = charged_sound["shear_part"]
+    gamma_viscous = charged_sound["gamma_viscous"]
+    gamma_cond = charged_sound["gamma_cond"]
+    gamma_s = charged_sound["gamma_sound"]
+    assert_equal("QCD charged sound speed squared", charged_sound["cs2"], Fraction(1, 2))
+    assert_equal("QCD viscous sound attenuation coefficient", gamma_viscous, Fraction(3, 8))
+    assert_equal("QCD conductive sound attenuation coefficient", gamma_cond, Fraction(1, 2))
+    assert_equal("QCD charged sound attenuation coefficient", gamma_s, Fraction(7, 8))
+    assert_equal(
+        "QCD charged determinant omega2 coefficient",
+        charged_sound["det_omega2_coeff"],
+        Fraction(39, 40),
+    )
+    assert_equal(
+        "QCD charged determinant k4 coefficient",
+        charged_sound["det_k4_coeff"],
+        -Fraction(1, 20),
+    )
+    assert_equal(
+        "QCD charged longitudinal diffusion coefficient",
+        charged_sound["charge_diffusion"],
+        Fraction(1, 10),
+    )
 
     k = Fraction(1, 5)
     sound_pole_real_part = sound_speed * k
     sound_pole_width = gamma_s * k * k / 2
     extracted_sound_speed_squared = (sound_pole_real_part / k) ** 2
     extracted_gamma_s = 2 * sound_pole_width / (k * k)
-    extracted_zeta = enthalpy * extracted_gamma_s - shear_attenuation_part
+    extracted_zeta = (
+        enthalpy * (extracted_gamma_s - gamma_cond)
+        - shear_attenuation_part
+    )
     assert_equal(
         "QCD sound pole recovers thermodynamic sound speed",
         extracted_sound_speed_squared,
         sound_speed_squared,
     )
     assert_equal(
-        "QCD sound pole with shear subtraction recovers zeta",
+        "QCD charged sound pole with shear and conductive subtraction recovers zeta",
         extracted_zeta,
         zeta,
     )
@@ -1172,10 +1276,38 @@ def check_finite_bulk_sound_spectral_window():
         "QCD sound attenuation must subtract shear contribution",
         enthalpy * extracted_gamma_s != zeta,
     )
+    neutral_formula_zeta = enthalpy * extracted_gamma_s - shear_attenuation_part
+    assert_true(
+        "QCD finite-density sound estimator must subtract conductive damping",
+        neutral_formula_zeta != zeta,
+    )
+    zero_density_conductive = (
+        conductivity
+        * beta2
+        * (alpha1 + Fraction(0) * alpha2 / enthalpy)
+        / (beta1 + Fraction(0) * beta2 / enthalpy)
+    )
+    charge_conjugation_conductive = (
+        conductivity
+        * Fraction(0)
+        * (alpha1 + baryon_density * alpha2 / enthalpy)
+        / charged_sound["cs2"]
+    )
+    assert_true(
+        "zero density alone does not remove conductive damping without decoupling",
+        zero_density_conductive != 0,
+    )
+    assert_equal(
+        "charge-conjugation decoupling removes conductive sound damping",
+        charge_conjugation_conductive,
+        0,
+    )
 
-    # Propagate independent sound-width, enthalpy, shear, dispersion,
-    # thermodynamic, background, critical, and continuum-window errors.
+    # Propagate independent sound-width, conductive, enthalpy, shear,
+    # dispersion, thermodynamic, background, critical, and continuum-window
+    # errors.
     delta_gamma_s = Fraction(1, 100)
+    delta_gamma_cond = Fraction(1, 125)
     delta_w = Fraction(1, 50)
     delta_eta = Fraction(1, 40)
     r_k3 = Fraction(1, 200)
@@ -1185,15 +1317,16 @@ def check_finite_bulk_sound_spectral_window():
     r_therm = Fraction(1, 600)
     residual_sum = r_k3 + r_reg + r_crit + r_cont + r_therm
     estimated_zeta = (
-        (enthalpy + delta_w) * (gamma_s + delta_gamma_s)
+        (enthalpy + delta_w)
+        * (gamma_s + delta_gamma_s - gamma_cond + delta_gamma_cond)
         - shear_prefactor * (eta - delta_eta)
         + residual_sum
     )
     exact_error = estimated_zeta - zeta
     residual_budget = (
-        enthalpy * delta_gamma_s
-        + gamma_s * delta_w
-        + delta_w * delta_gamma_s
+        enthalpy * (delta_gamma_s + delta_gamma_cond)
+        + gamma_viscous * delta_w
+        + delta_w * (delta_gamma_s + delta_gamma_cond)
         + shear_prefactor * delta_eta
         + residual_sum
     )
@@ -1201,18 +1334,30 @@ def check_finite_bulk_sound_spectral_window():
 
     missing_shear_uncertainty_budget = (
         enthalpy * delta_gamma_s
-        + gamma_s * delta_w
-        + delta_w * delta_gamma_s
+        + enthalpy * delta_gamma_cond
+        + gamma_viscous * delta_w
+        + delta_w * (delta_gamma_s + delta_gamma_cond)
         + residual_sum
     )
     assert_true(
         "QCD bulk/sound window must include shear uncertainty",
         exact_error > missing_shear_uncertainty_budget,
     )
-    missing_critical_budget = (
+    missing_conductive_uncertainty_budget = (
         enthalpy * delta_gamma_s
-        + gamma_s * delta_w
+        + gamma_viscous * delta_w
         + delta_w * delta_gamma_s
+        + shear_prefactor * delta_eta
+        + residual_sum
+    )
+    assert_true(
+        "QCD bulk/sound window must include conductive uncertainty",
+        exact_error > missing_conductive_uncertainty_budget,
+    )
+    missing_critical_budget = (
+        enthalpy * (delta_gamma_s + delta_gamma_cond)
+        + gamma_viscous * delta_w
+        + delta_w * (delta_gamma_s + delta_gamma_cond)
         + shear_prefactor * delta_eta
         + r_k3
         + r_reg
@@ -1222,6 +1367,18 @@ def check_finite_bulk_sound_spectral_window():
     assert_true(
         "QCD bulk/sound window must include scalar critical weight",
         exact_error > missing_critical_budget,
+    )
+
+    old_neutral_budget = (
+        enthalpy * delta_gamma_s
+        + gamma_viscous * delta_w
+        + delta_w * delta_gamma_s
+        + shear_prefactor * delta_eta
+        + residual_sum
+    )
+    assert_true(
+        "QCD old neutral bulk/sound budget undercounts charged sound error",
+        exact_error > old_neutral_budget,
     )
 
     # A scalar mode as narrow as the sound peak collides with the extraction
@@ -1391,28 +1548,50 @@ def check_qcd_transport_closure_window():
     # transport datum.  The calculation uses the same state, frame, enthalpy,
     # and subtraction convention in every channel.
     d = 3
-    enthalpy = Fraction(19, 5)
-    sound_speed_squared = Fraction(1, 4)
+    enthalpy = Fraction(4)
+    baryon_density = Fraction(2)
     eta = Fraction(7, 10)
     zeta = Fraction(3, 20)
-    susceptibility = Fraction(11, 6)
-    conductivity = Fraction(13, 17)
+    conductivity = Fraction(3, 5)
+    susceptibility = Fraction(6)
+    beta1 = Fraction(1, 4)
+    beta2 = Fraction(1, 2)
+    alpha1 = Fraction(1, 3)
+    alpha2 = Fraction(1)
     k_squared = Fraction(1, 49)
 
-    shear_prefactor = Fraction(2 * (d - 1), d)
+    charged_sound = charged_longitudinal_hydro_data(
+        d,
+        enthalpy,
+        baryon_density,
+        eta,
+        zeta,
+        conductivity,
+        beta1,
+        beta2,
+        alpha1,
+        alpha2,
+    )
+    shear_prefactor = charged_sound["shear_prefactor"]
     shear_diffusion = eta / enthalpy
-    charge_diffusion = conductivity / susceptibility
-    sound_attenuation = (zeta + shear_prefactor * eta) / enthalpy
+    charge_diffusion = charged_sound["charge_diffusion"]
+    sound_speed_squared = charged_sound["cs2"]
+    gamma_cond = charged_sound["gamma_cond"]
+    sound_attenuation = charged_sound["gamma_sound"]
 
     shear_width = shear_diffusion * k_squared
     charge_width = charge_diffusion * k_squared
     sound_half_width = sound_attenuation * k_squared / 2
-    assert_equal("QCD closure shear pole width", shear_width, Fraction(1, 266))
-    assert_equal("QCD closure charge pole width", charge_width, Fraction(78, 9163))
-    assert_equal("QCD closure sound half-width", sound_half_width, Fraction(65, 22344))
+    assert_equal("QCD closure shear pole width", shear_width, Fraction(1, 280))
+    assert_equal("QCD closure charge pole width", charge_width, Fraction(1, 490))
+    assert_equal("QCD closure conductive sound attenuation", gamma_cond, Fraction(1, 2))
+    assert_equal("QCD closure sound half-width", sound_half_width, Fraction(37, 4704))
 
     recovered_eta = enthalpy * shear_width / k_squared
-    recovered_zeta = enthalpy * sound_attenuation - shear_prefactor * eta
+    recovered_zeta = (
+        enthalpy * (sound_attenuation - gamma_cond)
+        - shear_prefactor * eta
+    )
     recovered_conductivity = susceptibility * charge_width / k_squared
     assert_equal("QCD closure recovers eta from common datum", recovered_eta, eta)
     assert_equal("QCD closure recovers zeta from common datum", recovered_zeta, zeta)
@@ -1424,7 +1603,12 @@ def check_qcd_transport_closure_window():
 
     required_keys = {
         "w",
+        "n",
         "cs2",
+        "beta1",
+        "beta2",
+        "alpha1",
+        "alpha2",
         "eta",
         "zeta",
         "chi_perp",
@@ -1432,7 +1616,12 @@ def check_qcd_transport_closure_window():
     }
     transport_datum = {
         "w": enthalpy,
+        "n": baryon_density,
         "cs2": sound_speed_squared,
+        "beta1": beta1,
+        "beta2": beta2,
+        "alpha1": alpha1,
+        "alpha2": alpha2,
         "eta": eta,
         "zeta": zeta,
         "chi_perp": susceptibility,
@@ -1447,6 +1636,12 @@ def check_qcd_transport_closure_window():
     assert_true(
         "QCD closure rejects missing bulk entry",
         not required_keys <= incomplete_datum.keys(),
+    )
+    missing_derivative_datum = dict(transport_datum)
+    missing_derivative_datum.pop("beta2")
+    assert_true(
+        "QCD closure rejects missing charged-sound derivative",
+        not required_keys <= missing_derivative_datum.keys(),
     )
 
     state_label = ("thermal-qcd", Fraction(3, 2), Fraction(1, 5), "Landau")
@@ -1474,8 +1669,16 @@ def check_qcd_transport_closure_window():
         "QCD closure rejects sound attenuation without shear subtraction",
         wrong_width_only_bulk != zeta,
     )
+    neutral_formula_bulk = enthalpy * sound_attenuation - shear_prefactor * eta
+    assert_true(
+        "QCD closure rejects finite-density sound attenuation without conductive subtraction",
+        neutral_formula_bulk != zeta,
+    )
     mixed_enthalpy = enthalpy + Fraction(1, 9)
-    mixed_state_zeta = mixed_enthalpy * sound_attenuation - shear_prefactor * eta
+    mixed_state_zeta = (
+        mixed_enthalpy * (sound_attenuation - gamma_cond)
+        - shear_prefactor * eta
+    )
     assert_true(
         "QCD closure rejects sound datum with mismatched enthalpy",
         mixed_state_zeta != zeta,
@@ -1507,6 +1710,7 @@ def check_qcd_transport_closure_window():
         "shear": Fraction(1, 200),
         "bulk": Fraction(1, 300),
         "charge": Fraction(1, 500),
+        "cond": Fraction(1, 600),
         "therm": Fraction(1, 700),
         "frame": Fraction(1, 1100),
         "cross": Fraction(1, 1300),
@@ -1522,6 +1726,10 @@ def check_qcd_transport_closure_window():
     assert_true(
         "QCD closure budget must include frame projection",
         manufactured_error > closure_budget - residuals["frame"],
+    )
+    assert_true(
+        "QCD closure budget must include conductive sound correction",
+        manufactured_error > closure_budget - residuals["cond"],
     )
     assert_true(
         "QCD closure budget must include charge-channel residual",

@@ -1844,9 +1844,22 @@ a decoupled baryon diffusion channel uses
   \omega_{\rm diff}=-\ii D_B k^2+O(k^4),
 \]
 while at nonzero density or with several conserved charges \(D_B\) is replaced
-by the relevant eigenvalue of \(\Sigma\,\chi^{-1}\) after the sound variables
-have been separated,
-and the sound channel uses
+by the relevant eigenvalue after the sound variables have been separated.  The
+same longitudinal matrix also changes the sound attenuation.  In a one-charge
+Landau-frame chart write
+\begin{equation}
+  \beta_1=\left(\frac{\partial p}{\partial\epsilon}\right)_{n_B},
+  \qquad
+  \beta_2=\left(\frac{\partial p}{\partial n_B}\right)_{\epsilon},
+  \qquad
+  \alpha_1=T\left(\frac{\partial(\mu_B/T)}{\partial\epsilon}\right)_{n_B},
+  \qquad
+  \alpha_2=T\left(\frac{\partial(\mu_B/T)}{\partial n_B}\right)_{\epsilon},
+  \label{eq:qcd-charged-sound-thermodynamic-derivatives}
+\end{equation}
+where the dissipative current is
+\(J_B^i=n_Bu^i-\Sigma_B^{\rm inc}T\,\partial_i(\mu_B/T)+O(\partial^2)\).
+Then the sound channel uses
 \[
   \omega_{\rm sound,\pm}
   =
@@ -1854,8 +1867,30 @@ and the sound channel uses
   -\frac{\ii}{2}\Gamma_s k^2
   +O(k^3),
   \qquad
-  \Gamma_s=\frac{\zeta+2\eta(d-1)/d}{w}.
+  c_s^2=\beta_1+\frac{n_B}{w}\beta_2,
 \]
+and
+\begin{equation}
+  \Gamma_s
+  =
+  \gamma_{\rm visc}
+  +
+  \Gamma_{\rm cond},
+  \qquad
+  \gamma_{\rm visc}
+  =
+  \frac{\zeta+2\eta(d-1)/d}{w},
+  \qquad
+  \Gamma_{\rm cond}
+  =
+  \frac{\Sigma_B^{\rm inc}\beta_2}{c_s^2}
+  \left(\alpha_1+\frac{n_B}{w}\alpha_2\right).
+  \label{eq:qcd-charged-sound-attenuation}
+\end{equation}
+For several charges this scalar expression is replaced by the corresponding
+charge block of the coupled longitudinal matrix.  The neutral formula is the
+special case in which the conductive term vanishes, for example by charge
+conjugation at \(\mu_B=0\).
 Here \(d\) is the number of spatial dimensions and \(c_s^2\) is computed from
 the QCD pressure with the stated thermodynamic constraint.  A bound such as
 \begin{equation}
@@ -2026,8 +2061,24 @@ from the subtracted matrix
 after the thermodynamic derivative used to define \(c_s^2\) has been stated.
 
 The same coefficient can be reached from the longitudinal sound pole only
-after the shear contribution has also been subtracted.  In the charge sector
-where the sound variables have been separated as above,
+after the shear and conductive contributions have also been subtracted.  In
+the one-charge notation of
+\eqref{eq:qcd-charged-sound-thermodynamic-derivatives}, the linearized
+Landau-frame longitudinal equations for momentum \(k\hat x\) are
+\begin{align}
+  \partial_t\delta\epsilon+\ii k\,\pi_\parallel&=0,
+  \nonumber\\
+  \partial_t\pi_\parallel
+  +\ii k\,\beta_1\delta\epsilon
+  +\ii k\,\beta_2\delta n_B
+  +\gamma_{\rm visc}k^2\pi_\parallel&=0,
+  \nonumber\\
+  \partial_t\delta n_B
+  +\ii k\,\frac{n_B}{w}\pi_\parallel
+  +\Sigma_B^{\rm inc}k^2(\alpha_1\delta\epsilon+\alpha_2\delta n_B)&=0.
+  \label{eq:qcd-charged-sound-linearized-matrix}
+\end{align}
+Their characteristic polynomial has the small-\(k\) roots
 \begin{equation}
   \omega_+(k)
   =
@@ -2036,11 +2087,13 @@ where the sound variables have been separated as above,
   \Gamma_s(k)=-\frac{2\,\operatorname{Im}\omega_+(k)}{k^2},
   \label{eq:qcd-sound-width-estimator}
 \end{equation}
-and the finite-\(k\) bulk estimate is
+with \(\Gamma_s\) as in \eqref{eq:qcd-charged-sound-attenuation}.  Therefore
+the finite-\(k\) bulk estimate at finite density is
 \begin{equation}
   \widehat\zeta_k
   =
-  \widehat w\,\widehat\Gamma_s(k)
+  \widehat w\,
+  \bigl(\widehat\Gamma_s(k)-\widehat\Gamma_{\rm cond}\bigr)
   -
   \frac{2(d-1)}{d}\,\widehat\eta .
   \label{eq:qcd-bulk-from-sound-estimator}
@@ -2048,15 +2101,19 @@ and the finite-\(k\) bulk estimate is
 Thus a plotted sound attenuation width is not a bulk-viscosity measurement by
 itself.  It becomes one only after the enthalpy \(w\), the shear viscosity
 \(\eta\), the sound-speed thermodynamic constraint, the charge-diffusion
-projection at finite density, and the \(O(k^3)\) dispersion remainder have
-all been supplied in the same QCD phase specification.  A response-window
+projection at finite density, the conductive attenuation
+\(\Gamma_{\rm cond}\), and the \(O(k^3)\) dispersion remainder have all been
+supplied in the same QCD phase specification.  At \(\mu_B=0\), or at a special
+decoupling point with \(\Gamma_{\rm cond}=0\),
+\eqref{eq:qcd-bulk-from-sound-estimator} reduces to the neutral-fluid
+estimator.  A response-window
 error budget has the form
 \begin{align}
   |\widehat\zeta_k-\zeta|
   &\le
-  w\,\delta\Gamma_s
-  +\Gamma_s\,\delta w
-  +\delta w\,\delta\Gamma_s
+  w\,(\delta\Gamma_s+\delta\Gamma_{\rm cond})
+  +(\Gamma_s-\Gamma_{\rm cond})\,\delta w
+  +\delta w\,(\delta\Gamma_s+\delta\Gamma_{\rm cond})
   +\frac{2(d-1)}d\,\delta\eta
   \nonumber\\
   &\quad
@@ -2067,14 +2124,16 @@ error budget has the form
   +R_{\rm therm},
   \label{eq:qcd-bulk-sound-error-budget}
 \end{align}
-where \(R_{k^3}\) is the finite-\(k\) dispersion error, \(R_{\rm reg}\) the
-analytic nonhydrodynamic background, \(R_{\rm crit}\) any extra scalar
-near-critical peak or cut, \(R_{\rm cont}\) the continuum and finite-volume
-subtraction remainder, and \(R_{\rm therm}\) the pressure-derivative error in
-\(c_s^2\), \(w\), and the bulk source.  The near-critical term is displayed
-separately because the QCD scalar channel is precisely where critical
-fluctuations can collide with the hydrodynamic sound window; such weight is
-not a harmless regular background.
+where \(\delta\Gamma_{\rm cond}\) includes the conductivity and thermodynamic
+derivative errors in \(\Sigma_B^{\rm inc}\), \(\alpha_{1,2}\), \(\beta_2\),
+\(n_B/w\), and \(c_s^2\).  Here \(R_{k^3}\) is the finite-\(k\) dispersion
+error, \(R_{\rm reg}\) the analytic nonhydrodynamic background,
+\(R_{\rm crit}\) any extra scalar near-critical peak or cut, \(R_{\rm cont}\)
+the continuum and finite-volume subtraction remainder, and \(R_{\rm therm}\)
+the pressure-derivative error in \(c_s^2\), \(w\), and the bulk source.  The
+near-critical term is displayed separately because the QCD scalar channel is
+precisely where critical fluctuations can collide with the hydrodynamic sound
+window; such weight is not a harmless regular background.
 \end{controlledapproximation}
 
 \begin{proposition}[Momentum-projected baryon diffusion current]
@@ -2286,8 +2345,8 @@ hydrodynamic frame.  The first-order datum is
   \mathfrak T_{\rm QCD}^{(1)}
   =
   \bigl(
-    w,\ c_s^2,\ \eta,\ \zeta,\ \chi^{\perp}_{ab},\
-    \Sigma_{ab}^{\rm inc}
+    w,\ n_B,\ c_s^2,\ \beta_{1,2},\ \alpha_{1,2},\
+    \eta,\ \zeta,\ \chi^{\perp}_{ab},\ \Sigma_{ab}^{\rm inc}
   \bigr)_{(T,\mu_B)},
   \qquad
   w=\epsilon+p ,
@@ -2300,16 +2359,28 @@ channels.  The same \(w\), \(c_s^2\), contact convention, and frame must be
 used in the shear peak, the scalar sound reconstruction, and the projected
 charge diffusion problem.
 
-For a retained charge eigenmode \(q\), the closure conditions are
+For a single retained baryon charge, the closure conditions are
 \begin{equation}
   D_\eta=\frac{\eta}{w},
   \qquad
-  \Gamma_s=\frac{\zeta+2(d-1)\eta/d}{w},
+  \Gamma_s
+  =
+  \frac{\zeta+2(d-1)\eta/d}{w}
+  +
+  \frac{\Sigma_B^{\rm inc}\beta_2}{c_s^2}
+  \left(\alpha_1+\frac{n_B}{w}\alpha_2\right),
   \qquad
-  D_q=\text{eigenvalue of }\Sigma^{\rm inc}\chi^{-1},
+  D_B
+  =
+  \frac{\Sigma_B^{\rm inc}(\alpha_2\beta_1-\alpha_1\beta_2)}
+       {c_s^2},
   \label{eq:qcd-transport-closure-diffusivities}
 \end{equation}
-and the pole statements in a common low-energy window are
+with the neutral formula recovered only when the second term in \(\Gamma_s\)
+vanishes.  With several conserved charges these scalar expressions are
+replaced by the sound and diffusion eigenvalues of the coupled longitudinal
+susceptibility-conductivity matrix.  The pole statements in a common
+low-energy window are
 \begin{align}
   \omega_{\rm shear}
   &=
@@ -2319,9 +2390,9 @@ and the pole statements in a common low-energy window are
   &=
   \pm c_s k-\frac{\ii}{2}\Gamma_s k^2+O(k^3),
   \nonumber\\
-  \omega_{\rm diff,q}
+  \omega_{\rm diff,B}
   &=
-  -\ii D_q k^2+O(k^4).
+  -\ii D_B k^2+O(k^4).
   \label{eq:qcd-transport-closure-poles}
 \end{align}
 The finite-window comparison must therefore carry a combined residual
@@ -2331,18 +2402,22 @@ The finite-window comparison must therefore carry a combined residual
   R_{\rm shear}
   +R_{\rm bulk}
   +R_{\rm charge}
+  +R_{\rm cond}
   +R_{\rm therm}
   +R_{\rm frame}
   +R_{\rm cross}
   +R_{\rm cont}.
   \label{eq:qcd-transport-closure-residual}
 \end{equation}
-Here \(R_{\rm cross}\) records the agreement of the thermodynamic state and
+Here \(R_{\rm cond}\) records the uncertainty in the finite-density conductive
+sound term, including the conductivity matrix and the thermodynamic derivative
+combination in \eqref{eq:qcd-charged-sound-attenuation}.  The term
+\(R_{\rm cross}\) records the agreement of the thermodynamic state and
 subtractions across channels, while \(R_{\rm frame}\) records the change from
 the microscopic current basis to the chosen Landau-frame or equivalent
 hydrodynamic variables.  A shear extraction plus a pressure curve does not
 determine bulk viscosity; a sound attenuation width gives \(\zeta\) only
-after the shear subtraction in
+after the shear and conductive subtractions in
 \eqref{eq:qcd-bulk-from-sound-estimator}; and a charge diffusion width gives
 \(\Sigma_q^{\rm inc}\) only after the susceptibility residue and
 momentum-projected current have been supplied.  Likewise, transport

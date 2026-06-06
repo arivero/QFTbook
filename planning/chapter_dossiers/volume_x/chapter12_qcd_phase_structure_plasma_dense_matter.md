@@ -217,9 +217,12 @@ GitHub issue #628.
 - Adds a finite bulk/sound spectral-window gate: the dissipative bulk source
   is `mathcal B=delta P_tr-c_s^2 delta T00`, the scalar slope is built from
   the pressure-energy matrix rather than the raw trace-trace slope, and the
-  sound-pole estimate `zeta=w Gamma_s-2(d-1) eta/d` is valid only after shear,
-  thermodynamic, charge-projection, finite-`k`, regular-background,
-  continuum, and critical scalar uncertainties are budgeted.
+  finite-density sound-pole estimate subtracts both viscous shear attenuation
+  and the conductive charged-sound contribution before extracting `zeta`.
+  The neutral formula is recorded only as the charge-decoupled special case.
+  Sound-width, enthalpy, shear, conductive, thermodynamic, charge-projection,
+  finite-`k`, regular-background, continuum, and critical scalar uncertainties
+  are budgeted.
 - Adds a finite charge-diffusion spectral window: after projecting away the
   convective momentum sector, an intrinsic conserved-charge conductivity is
   reconstructed from a density diffusion pole by combining the width
@@ -230,8 +233,9 @@ GitHub issue #628.
 - Adds a QCD transport-closure window: the shear, bulk/sound, and
   charge-diffusion spectral outputs are accepted as hydrodynamics only after
   they assemble into one same-state datum
-  `mathfrak T_QCD^(1)=(w,c_s^2,eta,zeta,chi_perp,Sigma_inc)`, with explicit
-  frame, thermodynamic, cross-channel, continuum, and channel residuals.
+  `mathfrak T_QCD^(1)=(w,n_B,c_s^2,beta,alpha,eta,zeta,chi_perp,Sigma_inc)`,
+  with explicit conductive-sound, frame, thermodynamic, cross-channel,
+  continuum, and channel residuals.
   This prevents a collection of channel-wise transport estimates from being
   mistaken for a physical QCD hydrodynamic response prediction.
 - Proves the origin of the finite-density sign problem from loss of
@@ -346,8 +350,9 @@ GitHub issue #628.
   coefficient bookkeeping, QCD hydrodynamic response-window,
   coupled-diffusion, finite shear spectral-window width/residue and
   background-error bookkeeping, finite bulk/sound spectral-window
-  thermodynamic-source subtraction, shear-subtraction, residual-budget, and
-  scalar critical-mode negative controls, finite charge-diffusion
+  thermodynamic-source subtraction, charged longitudinal determinant,
+  shear/conductive subtraction, residual-budget, and scalar critical-mode
+  negative controls, finite charge-diffusion
   spectral-window susceptibility-residue, width, regular-background,
   convective-Drude, and near-charge-mode negative controls,
   same-state QCD transport-closure window bookkeeping,
@@ -430,13 +435,14 @@ GitHub issue #628.
   treats bulk viscosity as a scalar response-extraction problem rather than a
   raw trace plot: it defines the subtracted bulk-pressure source
   `mathcal B=delta P_tr-c_s^2 delta T00`, records the finite slope-matrix
-  subtraction, derives the sound-pole estimator
-  `zeta=w Gamma_s-2(d-1) eta/d`, and displays a residual budget containing
-  sound-width, enthalpy, shear, finite-`k`, regular-background, continuum,
-  thermodynamic, and critical scalar errors.  `qcd_phase_checks.py` now
-  verifies the exact scalar-source subtraction and the independent sound-pole
-  reconstruction, while rejecting raw trace-slope, width-only, missing-shear,
-  and hidden-critical shortcuts.
+  subtraction, derives the sound-pole estimator with the finite-density
+  conductive attenuation subtracted, and displays a residual budget containing
+  sound-width, conductive, enthalpy, shear, finite-`k`, regular-background,
+  continuum, thermodynamic, and critical scalar errors.  `qcd_phase_checks.py`
+  now verifies the exact scalar-source subtraction and the charged sound-pole
+  reconstruction from the longitudinal determinant, while rejecting raw
+  trace-slope, width-only, missing-shear, missing-conductive, and
+  hidden-critical shortcuts.
 - 2026-06-06 issue #630 charge-diffusion spectral-window pass: added
   `ca:qcd-finite-charge-diffusion-spectral-window` after the
   momentum-projected baryon-current proposition.  The pass completes the
@@ -453,17 +459,28 @@ GitHub issue #628.
 - 2026-06-06 issue #630 transport-closure architecture pass: added
   `ca:qcd-transport-closure-window` after the shear, bulk/sound, and charge
   finite-window gates.  The new gate assembles
-  `mathfrak T_QCD^(1)=(w,c_s^2,eta,zeta,chi_perp,Sigma_inc)` at one thermal
-  state and frame, records the combined residual
-  `R_hydro=R_shear+R_bulk+R_charge+R_therm+R_frame+R_cross+R_cont`, and states
-  why shear-only, sound-width-only, charge-width-only, raw-current, and
+  `mathfrak T_QCD^(1)=(w,n_B,c_s^2,beta,alpha,eta,zeta,chi_perp,Sigma_inc)`
+  at one thermal state and frame, records the combined residual
+  `R_hydro=R_shear+R_bulk+R_charge+R_cond+R_therm+R_frame+R_cross+R_cont`, and
+  states why shear-only, sound-width-only, charge-width-only, raw-current, and
   mixed-state/mixed-frame transport assemblies do not constitute a QCD
   hydrodynamic prediction.  `qcd_phase_checks.py` now verifies the exact
-  same-state reconstruction of eta, zeta, and intrinsic conductivity from one
-  rational datum and rejects incomplete or cross-channel-inconsistent
-  assemblies.  This pass is an argument-architecture repair: it ties the
-  transport cells into a common QCD response datum rather than increasing
-  lemma density.
+  same-state reconstruction of eta, zeta, intrinsic conductivity, charged
+  sound attenuation, and longitudinal diffusion from one rational datum and
+  rejects incomplete, missing-derivative, missing-conductive, or
+  cross-channel-inconsistent assemblies.  This pass is an argument-architecture
+  repair: it ties the transport cells into a common QCD response datum rather
+  than increasing lemma density.
+- 2026-06-06 issue #630 charged-sound correction pass: re-audited the
+  finite-density transport closure after a review finding that the neutral
+  `Gamma_s=(zeta+2(d-1)eta/d)/w` formula had been used at nonzero baryon
+  density.  The live chapter now derives the one-charge Landau-frame
+  longitudinal matrix with `beta_1,beta_2,alpha_1,alpha_2`, displays
+  `Gamma_s=gamma_visc+Gamma_cond`, and uses
+  `zeta=w(Gamma_s-Gamma_cond)-2(d-1)eta/d` for the finite-density bulk
+  estimator.  The companion check derives `Gamma_cond` and the diffusion
+  eigenvalue from the determinant coefficients and rejects the old neutral
+  estimator as a finite-density bulk-viscosity extraction.
 - 2026-05-27 Roberge--Weiss pass: added the finite-regulator imaginary
   chemical-potential theorem, positivity statement for vectorlike pairs,
   Roberge--Weiss transition status remark, and exact angle-periodicity

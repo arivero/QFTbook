@@ -322,13 +322,14 @@ Current checks:
   spectral-window extraction from a retarded pole kernel, including two-sample
   width/amplitude reconstruction, regular-background bias/subtraction, and
   near-critical-mode negative controls, the finite bulk/sound spectral-window
-  extraction with thermodynamic source subtraction, shear subtraction,
-  residual budgeting, and scalar critical-mode negative controls, the finite
+  extraction with thermodynamic source subtraction, charged longitudinal
+  determinant coefficients, shear and conductive subtractions, residual
+  budgeting, and scalar critical-mode negative controls, the finite
   charge-diffusion spectral-window extraction with susceptibility-residue,
   width, regular-background, convective-Drude, and near-charge-mode negative
   controls, the same-state QCD transport-closure window rejecting incomplete
-  data, mixed phase/frame assembly, missing sound-shear subtraction, and raw
-  current conductivity shortcuts, the
+  data, missing charged-sound derivative data, mixed phase/frame assembly,
+  missing sound shear/conductive subtraction, and raw current conductivity shortcuts, the
   momentum-projected baryon current which removes the convective Drude sector
   at finite density, and the CFL Goldstone count.
 - `nonrelativistic_ng_counting_checks.py`: exact finite checks for the
