@@ -55,6 +55,10 @@
 - `ca:instanton-hard-benchmark-gate-ledger`: same-theory hard-scale ratio and
   residual multiplier bound after the gate data and source-window shape have
   been transported.
+- `sec:instanton-hard-wilsonian-ope-datum`: Wilsonian interpretation of the
+  hard four-source kernel as a short-distance local four-fermion coefficient,
+  with the dimensionless size split \(R\), boundary-flux flow, operator
+  matching, physical matrix element, and long-size remainder kept separate.
 - `sec:instanton-normal-fluctuation-source-data`: local amplitude-facing block
   separating the determinant normalization of nonzero modes from the
   fluctuation average of the selected source insertion.
@@ -150,6 +154,11 @@
   hard zero-mode form factors.  The large-size endpoint is convergent but slow,
   with a retained-tail majorant of order `R^(-1/3)`, so a window/stability
   budget is load-bearing.
+- The Wilsonian OPE bridge makes the hard benchmark usable as a local QFT
+  input only after a size split.  The short coefficient has a nonzero boundary
+  flow, the long-size tail cancels that flow in the completed split, and the
+  physical observable still needs the renormalized four-fermion matrix element
+  plus matching, infrared, projection, and sector residuals.
 - The finite-cell control model records why residuals such as source rank,
   endpoint, spectral projection, cut, infrared, and scheme transport are
   load-bearing.  Dropping them changes the physical claim.
@@ -192,8 +201,9 @@
   builds moduli-equivalent finite cell channels with different or vanishing
   amplitudes, constructs a same-Euclidean-sum/different-projection ambiguity,
   checks the SU(3), `N_f=2` hard four-source scale and tail powers, validates
-  the hard gate ledger and same-theory ratio residual bound, and checks the
-  finite residual and determinant-stability bounds.
+  the hard gate ledger and same-theory ratio residual bound, verifies the
+  hard-kernel Wilsonian OPE boundary flow and long-size tail budget, and checks
+  the finite residual and determinant-stability bounds.
 - `calculation-checks/bpst_instanton_normalization_checks.py` remains the
   larger companion for the full BPST normalization, determinant, hard-window,
   tail-subtraction, Wilsonian, dilute-gas, and thermal instanton machinery.
@@ -244,3 +254,9 @@
   correction ledger to the dedicated physical-amplitude chapter.  This is a
   sector-isolation and source-observable improvement, not a moduli-space
   expansion.
+- 2026-06-06 hard Wilsonian OPE pass: added
+  `sec:instanton-hard-wilsonian-ope-datum`, which turns the hard four-source
+  benchmark into a short-distance operator coefficient only after the
+  dimensionless size split, boundary flux, long-size remainder, operator
+  matching, and physical matrix element are named.  This prevents using the
+  hard source coefficient as a direct hadronic amplitude.

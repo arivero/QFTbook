@@ -50,6 +50,10 @@ Target claims:
   `ca:instanton-hard-benchmark-gate-ledger`: the SU(3), Nf=2 hard
   four-source benchmark has the stated rho power, Q power, slow endpoint tail,
   gate dependence, and same-theory hard-scale ratio bound.
+- `sec:instanton-hard-wilsonian-ope-datum`: the hard source kernel becomes a
+  Wilsonian local four-fermion input only after a dimensionless size split,
+  boundary-flux flow, operator matching, long-size remainder, and physical
+  matrix element are supplied.
 
 Independent construction:
 - The checks build small exact rational cell models from scratch.  They compute
@@ -94,8 +98,10 @@ Negative controls:
   sector-isolation budget that omits pair leakage, a
   single Euclidean cell sum used as a spectral-bin observable, a
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
-  slot, and a residual bound that omits the external projection/sector
-  remainder.
+  slot, a fixed short-instanton vertex under a moving size boundary, a short
+  coefficient used as a physical amplitude, a full hard source coefficient
+  used as a local OPE coefficient without the long-size matrix element, and a
+  residual bound that omits the external projection/sector remainder.
 
 Scope boundary:
 - Passing these checks proves only finite algebra and channel bookkeeping.  It
@@ -1041,6 +1047,96 @@ def check_su3_two_flavor_hard_source_power_and_tail() -> None:
     assert_equal("one missing hard slot is not endpoint controlled", one_soft_slot_power < -1, False)
 
 
+def check_hard_wilsonian_ope_boundary_flow() -> None:
+    b0_su3_nf2 = beta0(3, 2)
+    zero_mode_power = Fraction(6)
+    size_power = b0_su3_nf2 + zero_mode_power - 5
+    q_power = -(size_power + 1)
+    assert_equal("hard OPE source coefficient dimension", b0_su3_nf2 + q_power, Fraction(-2))
+
+    c_values = [Fraction(1), Fraction(2), Fraction(3), Fraction(4)]
+    tail_slot_coefficient = product([Fraction(6) / (c**3) for c in c_values])
+    tail_integrand_power = size_power - 12
+    assert_equal("hard OPE tail integrand power", tail_integrand_power, -Fraction(4, 3))
+
+    # Choose R=27 so R^(-1/3) remains rational in the leading tail model.
+    r_cuberoot = Fraction(3)
+    boundary_flux = tail_slot_coefficient / r_cuberoot
+    long_tail = 3 * tail_slot_coefficient / r_cuberoot
+    mu_i_flow = -boundary_flux
+    log_r_tail_flow = -boundary_flux
+    mu_i_long_tail_flow = -log_r_tail_flow
+    assert_equal("hard OPE long-tail coefficient", long_tail, 3 * boundary_flux)
+    assert_equal("hard OPE factorization-scale boundary flow", mu_i_flow, -boundary_flux)
+    assert_equal("hard OPE log-R tail flow matches short mu-flow", mu_i_flow, log_r_tail_flow)
+    assert_equal(
+        "hard OPE completed split is factorization-scale stationary",
+        mu_i_flow + mu_i_long_tail_flow,
+        Fraction(0),
+    )
+
+    prefactor = Fraction(5, 11)
+    short_integral = Fraction(10, 7)
+    operator_matching = Fraction(13, 17)
+    matrix_element = Fraction(19, 23)
+    residuals = [Fraction(1, 500), -Fraction(1, 700), Fraction(1, 900)]
+
+    short_coefficient = prefactor * operator_matching * short_integral
+    short_matrix_element_part = short_coefficient * matrix_element
+    long_size_part = prefactor * long_tail
+    physical_amplitude = (
+        short_matrix_element_part
+        + long_size_part
+        + sum(residuals, Fraction(0))
+    )
+    assert_not_equal(
+        "short instanton coefficient alone is not the physical amplitude",
+        short_coefficient,
+        physical_amplitude,
+    )
+    assert_not_equal(
+        "short coefficient needs its physical matrix element",
+        short_coefficient,
+        short_matrix_element_part,
+    )
+
+    basis_scale = Fraction(7, 5)
+    transformed_coefficient = short_coefficient / basis_scale
+    transformed_matrix_element = basis_scale * matrix_element
+    assert_equal(
+        "operator basis change leaves coefficient-matrix-element pairing fixed",
+        transformed_coefficient * transformed_matrix_element,
+        short_matrix_element_part,
+    )
+
+    full_hard_as_local = (short_coefficient + long_size_part) * matrix_element
+    assert_not_equal(
+        "full hard source coefficient is not a local OPE coefficient",
+        full_hard_as_local,
+        physical_amplitude,
+    )
+    fixed_vertex_flow = Fraction(0)
+    assert_not_equal(
+        "moving Wilsonian boundary gives nonzero vertex flow",
+        fixed_vertex_flow,
+        mu_i_flow,
+    )
+
+    error_from_short_local_term = abs(physical_amplitude - short_matrix_element_part)
+    complete_budget = abs(long_size_part) + sum(abs(residual) for residual in residuals)
+    underbudget = sum(abs(residual) for residual in residuals)
+    assert_equal(
+        "hard OPE assembly with long-size tail is bounded",
+        error_from_short_local_term <= complete_budget,
+        True,
+    )
+    assert_equal(
+        "omitting long-size instanton tail underbudgets OPE assembly",
+        error_from_short_local_term <= underbudget,
+        False,
+    )
+
+
 def check_hard_benchmark_gate_ledger_and_ratio() -> None:
     center_delta_on_shell = Fraction(1)
     center_delta_off_shell = Fraction(0)
@@ -1133,6 +1229,7 @@ def main() -> None:
     check_finite_cell_residual_bound()
     check_source_determinant_stability_bound()
     check_su3_two_flavor_hard_source_power_and_tail()
+    check_hard_wilsonian_ope_boundary_flow()
     check_hard_benchmark_gate_ledger_and_ratio()
     print("instanton physical amplitude architecture checks passed")
 

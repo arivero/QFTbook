@@ -547,6 +547,108 @@ unamputated external residues change the amplitude coordinate before the power
 law \((Q_2/Q_1)^{-35/3}\) can be tested.
 \end{controlledapproximation}
 
+\section{The Hard Kernel as a Wilsonian OPE Datum}
+\label{sec:instanton-hard-wilsonian-ope-datum}
+
+The hard coefficient in
+\eqref{eq:instanton-hard-four-source-coefficient} is still a source
+coefficient.  To use it as a local QFT input, one must decide which part of
+the size integral is short-distance and which part is left for the matrix
+element or the long-distance remainder.  This is the channel-level version of
+the Wilsonian split in
+Controlled Approximation~\ref{ca:short-instanton-ope-coefficient}.
+
+Fix a dimensionless size split \(R\) in the hard variable \(s=Q\rho\), and
+write
+\[
+  \rho_I=\frac{R}{Q},
+  \qquad
+  \mu_I=\frac{Q}{R}.
+\]
+Let \([O_4]_\mu\) be the renormalized local four-fermion operator obtained
+from the same spin, flavor, and color-orientation projection as the hard
+source channel.  The short-instanton coefficient is
+\begin{equation}
+  C_{4}^{<}(Q,R;\mu)
+  =
+  \ee^{\ii\theta}
+  \mathcal K_{\rm gate}\,
+  \Lambda_{\rm ht}^{29/3}\,
+  Q^{-35/3}
+  Z_{4}(R,\mu)
+  \int_0^{R}
+    s^{32/3}\prod_{\ell=1}^{4}F_\ell(c_\ell s)\,\dd s ,
+  \label{eq:instanton-hard-short-ope-coefficient}
+\end{equation}
+where \(Z_4(R,\mu)\) is the finite matching matrix element from the source
+projection to the chosen renormalized operator coordinate.  A physical
+hadronic or inclusive observable then has the form
+\begin{equation}
+  \mathcal A_{\rm phys}^{I}
+  =
+  C_{4}^{<}(Q,R;\mu)\,
+  \langle f|[O_4]_\mu|i\rangle_{\rm phys}
+  +
+  \mathcal A_{4}^{>}(Q,R)
+  +
+  R_{\rm match}+R_{\rm IR}+R_{\rm proj}+R_{\rm sec}.
+  \label{eq:instanton-hard-ope-physical-assembly}
+\end{equation}
+The first term is local only in the Wilsonian sense.  The second term is the
+same instanton source channel with \(\rho>\rho_I\), including whatever
+screening, confinement, finite-volume, or source-window mechanism controls
+that region.  The residuals record, respectively, operator matching, infrared
+completion, final physical projection, and sector isolation.  Thus
+\(C_4^{<}\) is not the physical amplitude unless the matrix element and the
+long-size/remainder terms have been supplied.
+
+The factorization-scale flow is a boundary flux of the same size integral:
+\begin{equation}
+  \partial_{\log\mu_I}C_4^{<}
+  =
+  -\ee^{\ii\theta}
+  \mathcal K_{\rm gate}
+  \Lambda_{\rm ht}^{29/3}
+  Q^{-35/3}
+  Z_{4}(R,\mu)\,
+  R^{35/3}\prod_{\ell=1}^{4}F_\ell(c_\ell R)
+  +
+  C_4^{<}\,\partial_{\log\mu_I}\log Z_4 .
+  \label{eq:instanton-hard-short-ope-boundary-flow}
+\end{equation}
+The first term is the explicit movement of the shell
+\(\rho=R/Q\) between coefficient and remainder; the second is ordinary
+operator-coordinate transport.  Changing the local operator basis changes
+\(Z_4\), \(C_4^{<}\), and the matrix element inversely, not the completed
+observable in \eqref{eq:instanton-hard-ope-physical-assembly}.
+
+For the individual hard zero-mode slots of
+Proposition~\ref{prop:instanton-hard-individual-zero-mode-slot}, the omitted
+tail has the leading form
+\begin{equation}
+  \mathcal A_{4}^{>}(Q,R)
+  =
+  \ee^{\ii\theta}
+  \mathcal K_{\rm gate}
+  \Lambda_{\rm ht}^{29/3}
+  Q^{-35/3}
+  \left[
+    3\,6^4
+    \left(\prod_{\ell=1}^{4}c_\ell^{-3}\right)R^{-1/3}
+    +O(R^{-7/3})
+  \right]
+  +R_{>}(Q,R).
+  \label{eq:instanton-hard-ope-long-tail}
+\end{equation}
+The small power \(R^{-1/3}\) is the warning sign.  A hard source suppresses the
+large-instanton endpoint, but it does so slowly for individual zero-mode
+slots.  A reliable local 't Hooft-operator statement must therefore choose
+\(R\), prove that the short coefficient is in the weak-size window, and keep
+the long-size tail or show that the physical observable suppresses it.  Using
+the full hard source coefficient as a local operator coefficient, or using the
+short coefficient as a physical amplitude, skips this Wilsonian boundary
+calculation.
+
 \section{Normal Fluctuations Are Source Data}
 \label{sec:instanton-normal-fluctuation-source-data}
 

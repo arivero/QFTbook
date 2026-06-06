@@ -789,7 +789,8 @@ Current checks:
   zero-mode source rank, finite-cell spectral/projection ambiguity after a
   single Euclidean source sum, the SU(3), \(N_f=2\) hard four-source
   \(Q^{-35/3}\) scale ledger and \(R^{-1/3}\) tail, hard benchmark gate and
-  ratio controls, the retained-cell residual bound, and the \(2\times2\)
+  ratio controls, the hard-kernel Wilsonian OPE boundary flow and long-size
+  tail budget, the retained-cell residual bound, and the \(2\times2\)
   source-determinant stability estimate, with negative controls for an
   off-diagonal determinant sign flip, moduli-only prediction, rank-one source
   shortcut, fused-density endpoint substitution, unamputated residue
@@ -804,7 +805,9 @@ Current checks:
   underbudgeted projection bridges, theta-curvature-only control of a neutral pair, connected
   pair correction without disconnected subtraction, one-body sector budgets
   that omit pair leakage, determinant-only hard ratio, missing hard slot,
-  one-number spectral projection, and omitted external residual.
+  fixed short-instanton vertices under moving size splits, short coefficients
+  used as physical amplitudes, one-number spectral projection, and omitted
+  external residual.
 - `soliton_collective_coordinate_checks.py`: symbolic finite checks for the
   gauge-Higgs soliton and collective-coordinate section, including the
   Bogomolny and vortex square completions, the Prasad-Sommerfield profile
