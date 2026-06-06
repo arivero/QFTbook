@@ -1872,6 +1872,68 @@ theorem in Hypothesis~\ref{hyp:forward-scalar-positivity-ledger} gives
   \ge0 .
 \label{eq:forward-scalar-positivity-bound}
 \end{equation}
+The coefficient also has a direct observable reading: it is a weighted moment
+of absorptive data.  On the right cut write \(s=\nu'+2m^2\), so that
+\(\dd\nu'=\dd s\), and define the positive absorptive cross-section measure
+for the subtracted observable by
+\[
+  \operatorname{Im}F(s-2m^2+\ii0)
+  =
+  \sqrt{s(s-4m^2)}\,\sigma_{\rm abs}^{\rm sub}(s),
+  \qquad s\ge4m^2 .
+\]
+When the subtraction removes only first-sheet pole terms with no support on the
+physical cut, \(\sigma_{\rm abs}^{\rm sub}\) is the ideal
+\(\sigma_{\rm tot}\) of Chapter~\ref{ch:volume-ii-07}.  If an infrared
+regulator, inclusive prescription, or long-distance subtraction has been used,
+\(\sigma_{\rm abs}^{\rm sub}\) denotes the corresponding positive absorptive
+measure for that same observable, not a different experimental object.
+Equation~\eqref{eq:forward-positivity-a2-sum-rule} becomes
+\begin{equation}
+  a_2
+  =
+  \frac{2}{\pi}
+  \int_{4m^2}^{\infty}
+  \dd s\,
+  \frac{\sqrt{s(s-4m^2)}\,\sigma_{\rm abs}^{\rm sub}(s)}
+       {(s-2m^2)^3}
+  +
+  c_\infty ,
+  \qquad
+  c_\infty=
+  \frac12\left.
+  \partial_\nu^2 C_\infty^{[2]}(\nu)\right|_{\nu=0}.
+\label{eq:forward-positivity-cross-section-moment}
+\end{equation}
+Thus a finite energy window already has a physical meaning.  For
+\(S_0>4m^2\) put
+\begin{equation}
+\begin{aligned}
+  B(S_0)
+  &:=
+  \frac{2}{\pi}
+  \int_{4m^2}^{S_0}
+  \dd s\,
+  \frac{\sqrt{s(s-4m^2)}\,\sigma_{\rm abs}^{\rm sub}(s)}
+       {(s-2m^2)^3},
+\\
+  T(S_0)
+  &:=
+  \frac{2}{\pi}
+  \int_{S_0}^{\infty}
+  \dd s\,
+  \frac{\sqrt{s(s-4m^2)}\,\sigma_{\rm abs}^{\rm sub}(s)}
+       {(s-2m^2)^3}.
+\end{aligned}
+\label{eq:forward-positivity-window-moment}
+\end{equation}
+With the contour term removed, \(a_2=B(S_0)+T(S_0)\) and
+\(T(S_0)\ge0\).  A measured or matched low-energy value of \(a_2\) below
+\(B(S_0)\) would therefore not be a small correction to the positivity proof:
+it would identify a wrong normalization, a missing subtraction or infrared
+prescription, a nonvanishing high-energy contour term, a failure of one of the
+analyticity/unitarity assumptions, or a mismatch between the EFT coefficient
+and the on-shell forward observable.
 The inequality is strict only if the subtracted amplitude has nonzero positive
 spectral weight in the relevant channel.  A free or specially decoupled sector
 can saturate it.

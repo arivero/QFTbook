@@ -209,6 +209,11 @@ The chapter must define and derive:
     the large contour vanishes;
   - the optical-theorem normalization that makes the absorptive part
     nonnegative;
+  - the conversion of \(a_2\) into a weighted cross-section moment
+    \(\int ds\,\sqrt{s(s-4m^2)}\sigma_{\rm abs}^{\rm sub}(s)/(s-2m^2)^3\),
+    with a finite-window lower bound \(B(S_0)\), positive tail \(T(S_0)\),
+    and the failure interpretation when a matched low-energy coefficient lies
+    below the measured window moment;
   - the map from the EFT low-energy coefficient to the on-shell forward
     amplitude coordinate \(\kappa_{\rm amp}\), with EOM and field-redefinition
     representatives killed only by the declared observable projection;
@@ -554,8 +559,11 @@ The chapter must define and derive:
      \(\nu=s-2m^2=0\), the twice-subtracted contour formula, the vanishing
      large-circle term, and the optical theorem imply
      \(a_2=(2/\pi)\int_{\nu_{\rm th}}^\infty
-     d\nu\,\operatorname{Im}\mathcal M_{\rm sub}/\nu^3\ge0\).  The bounded
-     coefficient is the projected amplitude coordinate
+     d\nu\,\operatorname{Im}\mathcal M_{\rm sub}/\nu^3\ge0\).  Equivalently it
+     is the weighted moment of the subtracted absorptive cross-section measure,
+     so any finite energy window gives a lower bound when the contour term is
+     absent and the tail remains positive.  The bounded coefficient is the
+     projected amplitude coordinate
      \(\kappa_{\rm amp}\), not an arbitrary Wilson coefficient in a redundant
      operator basis.
 19. Local field redefinitions are exact finite-regulator changes of variables
@@ -857,3 +865,14 @@ The chapter must define and derive:
   companion `calculation-checks/eft_prediction_calculus_checks.py` now verifies
   the finite normalization, pole-subtraction, contour, massless-pole, and
   basis-projection algebra.
+- 2026-06-06 issue #844 Wilsonian/positivity observable pass: connected the
+  formal forward coefficient to a finite-window cross-section moment.  The
+  manuscript now defines the subtracted absorptive measure
+  \(\sigma_{\rm abs}^{\rm sub}\), writes
+  \(a_2=\frac2\pi\int ds\,\sqrt{s(s-4m^2)}
+  \sigma_{\rm abs}^{\rm sub}(s)/(s-2m^2)^3+c_\infty\), splits a finite window
+  \(B(S_0)\) and positive tail \(T(S_0)\), and explains what a violation of the
+  lower bound would diagnose.  The companion check now verifies the
+  optical-theorem flux factor and finite-window split as a finite
+  normalization/regression check, not as an independent empirical scattering
+  construction.

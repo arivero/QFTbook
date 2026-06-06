@@ -805,9 +805,10 @@ Current checks:
   forward-positivity portion verifies the crossing-even twice-subtracted
   dispersion normalization with the factor of two from the two cuts,
   subtraction-polynomial independence of the second coefficient, explicit
-  stable-pole subtraction, large-contour and massless-forward-pole negative
-  controls, and the projection from redundant EFT basis coordinates to the
-  on-shell forward amplitude coefficient.
+  stable-pole subtraction, the conversion to a finite-window cross-section
+  moment with the optical-theorem flux factor, large-contour and
+  massless-forward-pole negative controls, and the projection from redundant
+  EFT basis coordinates to the on-shell forward amplitude coefficient.
 - `borel_laplace_checks.py`: exact checks for the Borel--Laplace and
   zero-dimensional quartic large-order section, including Gaussian moments,
   perturbative coefficients, the ratio

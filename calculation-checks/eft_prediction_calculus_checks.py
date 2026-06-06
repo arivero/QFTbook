@@ -31,9 +31,10 @@ Target claims:
 - For a crossing-even massive scalar forward amplitude, the twice-subtracted
   dispersion normalization gives
   \(a_2=(2/\pi)\int d\nu\,\operatorname{Im}F(\nu)/\nu^3\) when stable poles are
-  subtracted and the high-energy contour term vanishes.  The coefficient bounded
-  by positivity is the on-shell amplitude coordinate, not a redundant-basis
-  Wilson coordinate.
+  subtracted and the high-energy contour term vanishes.  The same coefficient is
+  a finite-window cross-section moment after the optical-theorem flux factor is
+  inserted.  The coefficient bounded by positivity is the on-shell amplitude
+  coordinate, not a redundant-basis Wilson coordinate.
 
 Independent construction:
 - The heavy-kernel identity is checked as an exact rational identity and as a
@@ -58,7 +59,8 @@ Independent construction:
   countershift under a changed evanescent representative.
 - The positivity check uses a finite positive spectral measure to verify the
   factor of two from the two cuts, stable-pole subtraction, subtraction
-  polynomial independence of \(a_2\), the explicit large-contour term, and the
+  polynomial independence of \(a_2\), the explicit large-contour term, the
+  conversion to a finite cross-section window plus positive tail, and the
   projection that kills EOM representatives only after imposing the on-shell
   external-state datum.
 
@@ -82,8 +84,9 @@ Imported assumptions:
   shift rather than a universal sign convention.
 - The forward-positivity check is a finite spectral-model normalization test,
   not a construction of the nonperturbative scattering amplitude.  It assumes
-  an already pole-subtracted crossing-even amplitude and encodes positive
-  absorptive weights by finite atoms.
+  an already pole-subtracted crossing-even amplitude, encodes positive
+  absorptive weights by finite atoms, and converts those atoms to finite
+  cross-section bins only as an optical-theorem normalization check.
 
 Negative controls:
 - Reversing the heavy-kernel remainder sign fails the exact identity.
@@ -107,8 +110,9 @@ Negative controls:
   that an unsubtracted stable pole shifts the Taylor coefficient, shows that a
   nonzero high-energy contour term can flip the sign despite positive cut
   weights, flags a massless forward pole as nonanalytic at the expansion point,
-  and verifies that an off-shell coefficient can depend on a redundant
-  representative even though the on-shell amplitude coefficient does not.
+  rejects an optical-theorem moment with the flux factor omitted, and verifies
+  that an off-shell coefficient can depend on a redundant representative even
+  though the on-shell amplitude coefficient does not.
 
 Scope boundary:
 - This script checks finite algebra and bookkeeping for the EFT prediction
@@ -572,6 +576,41 @@ def check_forward_positivity_dispersion_normalization() -> None:
     )
     assert_zero("forward positivity dispersion normalization", a2 - dispersive_a2)
     assert_gt("positive spectral weights give nonnegative a2", float(dispersive_a2), 0.0)
+
+    m2_value = sp.Integer(1)
+    s_points = tuple(point + 2 * m2_value for point in spectral_points)
+    optical_prefactors = tuple(sp.sqrt(s * (s - 4 * m2_value)) for s in s_points)
+    cross_section_bins = tuple(
+        sp.pi * weight / prefactor
+        for weight, prefactor in zip(spectral_weights, optical_prefactors)
+    )
+    cross_section_a2 = sum(
+        2 * prefactor * sigma_bin / (sp.pi * point**3)
+        for point, prefactor, sigma_bin in zip(spectral_points, optical_prefactors, cross_section_bins)
+    )
+    assert_zero("cross-section moment equals absorptive sum rule", cross_section_a2 - dispersive_a2)
+
+    window_contribution = sum(
+        2 * prefactor * sigma_bin / (sp.pi * point**3)
+        for point, prefactor, sigma_bin in zip(spectral_points[:2], optical_prefactors[:2], cross_section_bins[:2])
+    )
+    tail_contribution = cross_section_a2 - window_contribution
+    assert_gt("positive tail makes a finite window a lower bound", float(tail_contribution), 0.0)
+    observed_a2_below_window = window_contribution - sp.Rational(1, 10)
+    assert_gt(
+        "finite-window moment detects an incompatible low-energy coefficient",
+        float(window_contribution),
+        float(observed_a2_below_window),
+    )
+
+    missing_flux_moment = sum(
+        2 * sigma_bin / (sp.pi * point**3)
+        for point, sigma_bin in zip(spectral_points, cross_section_bins)
+    )
+    assert_nonzero(
+        "omitting the optical-theorem flux factor changes the cross-section moment",
+        cross_section_a2 - missing_flux_moment,
+    )
 
     one_cut_normalization = sum(
         weight / point**3
