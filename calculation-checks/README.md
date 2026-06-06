@@ -681,7 +681,10 @@ Current checks:
   instanton benchmark specialization which keeps center momentum conservation,
   shared Haar projection, amputation, source conditioning, and size-window
   control attached to the canonical amplitude datum in an adversarial comparison
-  with a 't Hooft-style amplitude, the
+  with a 't Hooft-style amplitude, the hard-scale benchmark ratio which cancels
+  the finite determinant constant and keeps the \(SU(3)\), \(N_f=2\)
+  \(\Lambda_{\rm ht}^{29/3}Q^{-35/3}\) power visible only when source shape,
+  conditioning, orientation, and size-window data are transported together, the
   mixed hard-source plus physical-screening log-shell equation
   \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\) with negative controls against
   hard-only and screening-only saddle substitutions, the

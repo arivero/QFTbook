@@ -8397,6 +8397,73 @@ a physical four-fermion amplitude only after the sector and physical projection
 majorants have been supplied in the same normalization.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Hard-scale benchmark ratio]
+\label{ca:thooft-hard-scale-benchmark-ratio}
+The benchmark in
+ControlledApproximation~\ref{ca:thooft-four-fermion-benchmark-gate-ledger}
+also gives a sharper diagnostic than a single quoted normalization.  Strip the
+center delta function and the fixed external source dimensions from
+\(B_{\rm bench}^{(4)}\), and choose a scaled hard source family
+\(\mathfrak h_Q\) whose dimensionless wave-packet shape and retained
+dimensionless window \(0<s=Q\rho<R\) are held fixed.  In the \(SU(3)\),
+\(N_f=2\) four-slot channel the assembled hard coefficient has the form
+\begin{equation}
+  \widehat B_{\rm bench}^{(4)}(Q;R)
+  =
+  C_{\mathcal S}\,
+  \Lambda_{\rm ht}^{\,b_0}\,
+  Q^{-(b_0+2)}\,
+  \mathcal H_{\mathfrak h}(R)\,
+  \bigl(1+\varepsilon_Q\bigr),
+  \qquad b_0=\frac{29}{3}.
+  \label{eq:thooft-hard-scale-benchmark-decomposition}
+\end{equation}
+Here \(C_{\mathcal S}\) contains the finite determinant and source-frame
+normalization in scheme \(\mathcal S\), while
+\(\mathcal H_{\mathfrak h}(R)\) is the dimensionless source, orientation,
+zero-mode, and size-window integral after the change of variables
+\(\rho=s/Q\).  The power \(Q^{-(b_0+2)}=Q^{-35/3}\) is therefore not the
+BPST measure by itself.  It is the result of combining the one-loop running
+density, the four zero-mode hard-source factors, the shared orientation
+projection, amputation, and the retained size window.
+
+For two hard scales \(Q_1,Q_2\) in the same source and determinant scheme,
+\begin{equation}
+  \frac{\widehat B_{\rm bench}^{(4)}(Q_2;R)}
+       {\widehat B_{\rm bench}^{(4)}(Q_1;R)}
+  =
+  \left(\frac{Q_2}{Q_1}\right)^{-(b_0+2)}
+  \frac{\mathcal H_{\mathfrak h_{Q_2}}(R)}
+       {\mathcal H_{\mathfrak h_{Q_1}}(R)}
+  \bigl(1+\delta_{21}\bigr),
+  \label{eq:thooft-hard-scale-benchmark-ratio}
+\end{equation}
+with
+\begin{equation}
+  |\delta_{21}|
+  \le
+  \frac{\epsilon_1+\epsilon_2}{1-\epsilon_1},
+  \qquad |\varepsilon_{Q_i}|\le \epsilon_i<1 .
+  \label{eq:thooft-hard-scale-ratio-residual}
+\end{equation}
+The determinant constant \(C_{\mathcal S}\) cancels from this ratio, so the
+test is sensitive to the physics which a constant cannot see: changes of
+source shape, loss of zero-mode rank, wrong orientation projection, endpoint
+tails, or a mismatch between the Euclidean source coefficient and the selected
+physical projection.
+
+Thus a hard instanton calculation should quote not only a local vertex
+coefficient but also the scale-ratio datum
+\eqref{eq:thooft-hard-scale-benchmark-ratio}.  If
+\(\mathcal H_{\mathfrak h_{Q_2}}=\mathcal H_{\mathfrak h_{Q_1}}\) up to the
+same controlled window residuals, the logarithmic slope is \(35/3\) in this
+channel.  If the dimensionless source or conditioning changes, the slope test
+has measured that change rather than the universal instanton power.  A fixed
+Wilsonian short-distance vertex, a determinant-only ratio, or a
+mass-saturated vacuum activity is therefore a different source coordinate from
+the hard four-fermion benchmark ratio.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Instanton observable assembly map]
 \label{ca:instanton-observable-assembly-ladder}
 The preceding estimates are different inputs to the same map.  Fix a selected

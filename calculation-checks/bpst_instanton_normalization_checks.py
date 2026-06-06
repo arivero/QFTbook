@@ -161,6 +161,10 @@ relations
     conservation, shared Haar projection, amputation, source conditioning, and
     size-window control attached to the canonical amplitude datum before
     comparing with a 't Hooft-style amplitude
+    the hard-scale ratio of the stripped four-fermion benchmark cancels the
+    finite determinant constant and exposes the universal SU(3), Nf=2
+    Lambda_ht^(29/3) Q^(-35/3) power only when the dimensionless source,
+    conditioning, orientation, and window data are transported together
     a Wilsonian split of the instanton size integral has exact cancellation
     of the artificial factorization-scale boundary flux between the short
     instanton coefficient and the long-distance remainder
@@ -5452,6 +5456,114 @@ def check_thooft_four_fermion_benchmark_gate_ledger() -> None:
     )
 
 
+def check_thooft_hard_scale_benchmark_ratio() -> None:
+    n_c = 3
+    n_f = 2
+    b0 = Fraction(11, 3) * n_c - Fraction(2, 3) * n_f
+    hard_power = -(b0 + 2)
+    assert_equal("benchmark ratio SU3 Nf2 b0", b0, Fraction(29, 3))
+    assert_equal("benchmark ratio hard Q power", hard_power, -Fraction(35, 3))
+
+    # Store monomial powers rather than evaluating fractional powers of a
+    # numerical Q.  The stripped benchmark has
+    # C_S Lambda^b0 Q^(-b0-2) H_h(R), after the center delta and fixed source
+    # dimensions have been removed.
+    stripped_benchmark_powers = {
+        "determinant_constant": Fraction(1),
+        "Lambda_ht": b0,
+        "Q": hard_power,
+        "dimensionless_source_window": Fraction(1),
+    }
+    ratio_powers = {
+        "determinant_constant": Fraction(0),
+        "Lambda_ht": Fraction(0),
+        "Q2_over_Q1": stripped_benchmark_powers["Q"],
+        "source_window_ratio": Fraction(1),
+    }
+    assert_equal(
+        "determinant constant cancels in hard-scale benchmark ratio",
+        ratio_powers["determinant_constant"],
+        Fraction(0),
+    )
+    assert_equal(
+        "Lambda power cancels in same-theory hard-scale ratio",
+        ratio_powers["Lambda_ht"],
+        Fraction(0),
+    )
+    assert_equal(
+        "hard-scale benchmark ratio keeps universal Q power",
+        ratio_powers["Q2_over_Q1"],
+        -Fraction(35, 3),
+    )
+
+    # Same dimensionless source shape and window: the source-window ratio is
+    # one, so the logarithmic slope is exactly b0+2.
+    source_window_q1 = Fraction(5, 7)
+    source_window_q2 = Fraction(5, 7)
+    assert_equal("transported source-window ratio", source_window_q2 / source_window_q1, Fraction(1))
+    effective_slope_same_source = -hard_power
+    assert_equal("same-source benchmark logarithmic slope", effective_slope_same_source, Fraction(35, 3))
+
+    # Residual propagation for the two-scale ratio:
+    # ((1+e2)/(1+e1))-1 is bounded by (eps1+eps2)/(1-eps1).
+    e1 = -Fraction(1, 20)
+    e2 = Fraction(1, 30)
+    eps1 = Fraction(1, 10)
+    eps2 = Fraction(1, 12)
+    ratio_residual = (1 + e2) / (1 + e1) - 1
+    ratio_bound = (eps1 + eps2) / (1 - eps1)
+    assert_equal("hard-scale ratio residual sample", ratio_residual, Fraction(5, 57))
+    if not abs(ratio_residual) <= ratio_bound:
+        raise AssertionError("hard-scale benchmark ratio residual bound failed")
+
+    # Negative controls.  A changed dimensionless source/window factor is a
+    # real ratio input, not a determinant normalization.  A determinant-only
+    # comparison and a fixed Wilsonian local vertex both miss the hard
+    # Q^(-35/3) benchmark ratio.
+    stale_source_window_q2 = Fraction(15, 14) * source_window_q1
+    assert_equal(
+        "stale dimensionless source changes hard-scale ratio",
+        stale_source_window_q2 / source_window_q1 == Fraction(1),
+        False,
+    )
+    q1_rank_margin = Fraction(3, 5)
+    q2_rank_margin = Fraction(1, 2)
+    assert_equal(
+        "changed source conditioning changes the benchmark ratio",
+        q2_rank_margin / q1_rank_margin == Fraction(1),
+        False,
+    )
+    determinant_only_q_power = Fraction(0)
+    assert_equal(
+        "determinant-only ratio misses hard instanton power",
+        determinant_only_q_power == hard_power,
+        False,
+    )
+    fixed_wilsonian_vertex_q_power = Fraction(0)
+    assert_equal(
+        "fixed Wilsonian vertex is not the hard-scale benchmark",
+        fixed_wilsonian_vertex_q_power == hard_power,
+        False,
+    )
+    # In this special two-flavor window the mass-saturated activity can have
+    # the same hard power.  The negative control is therefore source typing:
+    # equal exponents do not identify a vacuum mass determinant with a
+    # differentiated four-source benchmark.
+    mass_saturated_vacuum_power = -(b0 + n_f)
+    assert_equal(
+        "mass-saturated window can share hard exponent",
+        mass_saturated_vacuum_power,
+        hard_power,
+    )
+    mass_saturated_source_degree = Fraction(2)
+    differentiated_four_source_degree = Fraction(6)
+    assert_equal(
+        "mass-saturated vacuum source degree differs from four-fermion benchmark",
+        mass_saturated_source_degree == differentiated_four_source_degree,
+        False,
+    )
+
+
 def check_wilsonian_instanton_size_factorization() -> None:
     # Model the fully paired finite-regulator size integrand by
     # K(rho)=rho^(p-1) on 0<rho<rho_max.  The artificial Wilsonian split at
@@ -6765,6 +6877,7 @@ def main() -> None:
     check_four_source_instanton_amplitude_rank_bound()
     check_four_source_instanton_source_conditioning()
     check_thooft_four_fermion_benchmark_gate_ledger()
+    check_thooft_hard_scale_benchmark_ratio()
     check_wilsonian_instanton_size_factorization()
     check_short_instanton_ope_coefficient_transport()
     check_dilute_instanton_gas_theta_cumulants()

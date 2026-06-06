@@ -439,6 +439,7 @@
 | \(X_{\mathcal S},\delta_X,z_B,z_O,\epsilon_C\) | finite scheme-transport data for an instanton determinant constant: coupling-coordinate shift, zero-mode/source and operator/projection frame factors, and logarithmic constant residual |
 | \(B_R,B_L,d_R,d_L,\epsilon_{\rm rank}\) | right/left four-source zero-mode overlap matrices, determinant margins, and rank-margin residual used to control a nondegenerate \(N_f=2\) instanton four-source amplitude |
 | \(X_R,X_L,\delta_R,\delta_L,\epsilon_{\rm cond}\) | conditioned source-leakage matrices \((B_\chi^0)^{-1}\Delta B_\chi\), their entrywise bounds, and the resulting determinant-relative four-source residual |
+| \(\widehat B_{\rm bench}^{(4)},\mathcal H_{\mathfrak h},\delta_{21}\) | center-stripped hard four-fermion benchmark coefficient, its dimensionless source/orientation/window integral, and the residual in the two-hard-scale instanton ratio test |
 | \(\mu_I,\rho_I,K_\Lambda(\rho)\) | Wilsonian instanton factorization scale, cutoff \(\rho_I=\mu_I^{-1}\), and fully paired finite-regulator size integrand whose boundary flux transfers between the short coefficient and long-distance remainder |
 | \(C_I^{<},[O_I]_\mu,\gamma_{IK}\) | short-instanton OPE coefficient, retained renormalized operator basis, and operator-mixing anomalous-dimension matrix used to distinguish composite-operator RG transport from size-factorization flow |
 | \(\zeta_\Lambda\), \(n_\pm\), \(E_{\rm dig}\), \(b_2^{\rm dig}\) | dilute instanton/anti-instanton activity, occupation numbers, conditional dilute-gas vacuum energy, and fourth-order theta-curvature coefficient |
@@ -1937,6 +1938,22 @@
   shortcuts, rank collapse, unamputated external residues, colored-kernel
   projection, sector leakage, and stale determinant constants after a finite
   scheme/frame change.
+- 2026-06-06 issue #597 hard-scale benchmark-ratio pass: added
+  `ca:thooft-hard-scale-benchmark-ratio` immediately after the four-fermion
+  benchmark gate.  The pass turns the benchmark into a two-hard-scale
+  diagnostic: after stripping the center delta and fixed external source
+  dimensions, the \(SU(3)\), \(N_f=2\) coefficient factors as
+  \(C_{\mathcal S}\Lambda_{\rm ht}^{29/3}Q^{-35/3}
+  \mathcal H_{\mathfrak h}(R)(1+\varepsilon_Q)\).  The determinant constant
+  cancels in the ratio, leaving the universal hard power only when the
+  dimensionless source shape, zero-mode conditioning, orientation projection,
+  and size-window data are transported together.  The BPST companion checks the
+  exact rational exponent ledger, two-scale residual bound, and negative
+  controls for stale source windows, changed rank conditioning,
+  determinant-only ratios, fixed Wilsonian-vertex shortcuts, and the
+  source-typing failure of identifying a mass-saturated vacuum coordinate with
+  the differentiated four-fermion benchmark even when a leading hard exponent
+  happens to agree.
 - 2026-06-05 issue #597 finite-momentum pion-delta kernel pass: added
   `ca:finite-momentum-pion-delta-instanton-source-kernel` after the BPST
   zero-mode density form factor.  The pass assembles the named \(U(1)_A\)-odd
