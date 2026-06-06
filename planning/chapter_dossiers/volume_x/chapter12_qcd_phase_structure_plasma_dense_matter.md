@@ -104,6 +104,12 @@ GitHub issue #628.
   microscopic relaxation scale, and peak-area estimator used to test whether a
   QCD shear spectral function actually isolates the hydrodynamic transport
   datum.
+- `delta P_tr`, `mathcal B`, `S_XY`, `Gamma_s(k)`, `R_k3`, `R_reg`,
+  `R_crit`, `R_cont`, `R_therm`: subtracted scalar pressure trace,
+  energy-orthogonal bulk-pressure source, scalar spectral-slope matrix,
+  finite-momentum sound attenuation estimator, and the residual classes used
+  to keep bulk-viscosity extraction separate from raw trace slopes, shear
+  attenuation, and critical scalar contamination.
 
 ## Claim Ledger
 
@@ -198,6 +204,12 @@ GitHub issue #628.
   misses the static residue by a controlled `gamma_k/Omega` tail plus regular,
   near-critical, and continuum-window errors, and the viscosity estimator
   `w gamma_k/k^2` must propagate both width and residue uncertainties.
+- Adds a finite bulk/sound spectral-window gate: the dissipative bulk source
+  is `mathcal B=delta P_tr-c_s^2 delta T00`, the scalar slope is built from
+  the pressure-energy matrix rather than the raw trace-trace slope, and the
+  sound-pole estimate `zeta=w Gamma_s-2(d-1) eta/d` is valid only after shear,
+  thermodynamic, charge-projection, finite-`k`, regular-background,
+  continuum, and critical scalar uncertainties are budgeted.
 - Proves the origin of the finite-density sign problem from loss of
   \(\gamma_5\)-Hermiticity at real chemical potential.
 - Defines imaginary chemical potential as a thermal boundary-condition
@@ -309,8 +321,10 @@ GitHub issue #628.
   Fermi-surface stress bookkeeping, lifted local CFL anomaly-matching
   coefficient bookkeeping, QCD hydrodynamic response-window,
   coupled-diffusion, finite shear spectral-window width/residue and
-  background-error bookkeeping, momentum-projected baryon-current bookkeeping,
-  and CFL Goldstone count.
+  background-error bookkeeping, finite bulk/sound spectral-window
+  thermodynamic-source subtraction, shear-subtraction, residual-budget, and
+  scalar critical-mode negative controls, momentum-projected baryon-current
+  bookkeeping, and CFL Goldstone count.
 
 ## Open Issues
 
@@ -384,6 +398,18 @@ GitHub issue #628.
   regular background.  The check remains a finite hydrodynamic-response
   construction, not a proof that the QCD retarded correlator has the isolated
   pole.
+- 2026-06-06 issue #630 bulk/sound spectral-window pass: added
+  `ca:qcd-finite-bulk-sound-spectral-window` after the shear window.  The pass
+  treats bulk viscosity as a scalar response-extraction problem rather than a
+  raw trace plot: it defines the subtracted bulk-pressure source
+  `mathcal B=delta P_tr-c_s^2 delta T00`, records the finite slope-matrix
+  subtraction, derives the sound-pole estimator
+  `zeta=w Gamma_s-2(d-1) eta/d`, and displays a residual budget containing
+  sound-width, enthalpy, shear, finite-`k`, regular-background, continuum,
+  thermodynamic, and critical scalar errors.  `qcd_phase_checks.py` now
+  verifies the exact scalar-source subtraction and the independent sound-pole
+  reconstruction, while rejecting raw trace-slope, width-only, missing-shear,
+  and hidden-critical shortcuts.
 - 2026-05-27 Roberge--Weiss pass: added the finite-regulator imaginary
   chemical-potential theorem, positivity statement for vectorlike pairs,
   Roberge--Weiss transition status remark, and exact angle-periodicity

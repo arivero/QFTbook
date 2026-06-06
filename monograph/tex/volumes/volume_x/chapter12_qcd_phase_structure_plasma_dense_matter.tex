@@ -1976,6 +1976,107 @@ near-critical modes, long-time tails, Euclidean reconstruction prior, and
 continuum/finite-volume errors have been included in the window budget.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Finite bulk and sound spectral window]
+\label{ca:qcd-finite-bulk-sound-spectral-window}
+The scalar stress channel is subtler than the shear channel because the trace
+of the spatial stress is not itself the dissipative bulk-pressure operator.
+At fixed QCD thermodynamic constraint, write the fluctuation
+\(\delta T^{00}=T^{00}-\langle T^{00}\rangle\) and subtract the equilibrium
+pressure trace by
+\[
+  \delta P_{\rm tr}
+  =
+  \frac1d\bigl(T^i{}_i-\langle T^i{}_i\rangle\bigr).
+\]
+The bulk source which is orthogonal to the conserved energy density is
+\begin{equation}
+  \mathcal B
+  =
+  \delta P_{\rm tr}-c_s^2\,\delta T^{00},
+  \label{eq:qcd-bulk-subtracted-source}
+\end{equation}
+with the same contact-term convention and hydrodynamic frame as in
+\eqref{eq:qcd-hydro-response-comparison}.  The bulk-viscosity Kubo datum is
+therefore
+\begin{equation}
+  \zeta
+  =
+  \lim_{\omega\downarrow0}
+  \frac{1}{2\omega}\,
+  \rho_{\mathcal B\mathcal B}(\omega,\mathbf0),
+  \label{eq:qcd-bulk-subtracted-kubo}
+\end{equation}
+not the raw slope of the trace--trace correlator before the pressure,
+energy-density, and contact subtractions have been fixed.  Equivalently, in a
+finite spectral reconstruction the low-frequency scalar slope must be formed
+from the subtracted matrix
+\begin{equation}
+  S_{\mathcal B}
+  =
+  S_{PP}
+  -2c_s^2S_{PE}
+  +c_s^4S_{EE},
+  \qquad
+  S_{XY}
+  =
+  \lim_{\omega\downarrow0}
+  \frac{\rho_{XY}^{\rm sub}(\omega,\mathbf0)}{2\omega},
+  \label{eq:qcd-bulk-slope-subtraction}
+\end{equation}
+after the thermodynamic derivative used to define \(c_s^2\) has been stated.
+
+The same coefficient can be reached from the longitudinal sound pole only
+after the shear contribution has also been subtracted.  In the charge sector
+where the sound variables have been separated as above,
+\begin{equation}
+  \omega_+(k)
+  =
+  c_s k-\frac{\ii}{2}\Gamma_s k^2+O(k^3),
+  \qquad
+  \Gamma_s(k)=-\frac{2\,\operatorname{Im}\omega_+(k)}{k^2},
+  \label{eq:qcd-sound-width-estimator}
+\end{equation}
+and the finite-\(k\) bulk estimate is
+\begin{equation}
+  \widehat\zeta_k
+  =
+  \widehat w\,\widehat\Gamma_s(k)
+  -
+  \frac{2(d-1)}{d}\,\widehat\eta .
+  \label{eq:qcd-bulk-from-sound-estimator}
+\end{equation}
+Thus a plotted sound attenuation width is not a bulk-viscosity measurement by
+itself.  It becomes one only after the enthalpy \(w\), the shear viscosity
+\(\eta\), the sound-speed thermodynamic constraint, the charge-diffusion
+projection at finite density, and the \(O(k^3)\) dispersion remainder have
+all been supplied in the same QCD phase specification.  A response-window
+error budget has the form
+\begin{align}
+  |\widehat\zeta_k-\zeta|
+  &\le
+  w\,\delta\Gamma_s
+  +\Gamma_s\,\delta w
+  +\delta w\,\delta\Gamma_s
+  +\frac{2(d-1)}d\,\delta\eta
+  \nonumber\\
+  &\quad
+  +R_{k^3}
+  +R_{\rm reg}
+  +R_{\rm crit}
+  +R_{\rm cont}
+  +R_{\rm therm},
+  \label{eq:qcd-bulk-sound-error-budget}
+\end{align}
+where \(R_{k^3}\) is the finite-\(k\) dispersion error, \(R_{\rm reg}\) the
+analytic nonhydrodynamic background, \(R_{\rm crit}\) any extra scalar
+near-critical peak or cut, \(R_{\rm cont}\) the continuum and finite-volume
+subtraction remainder, and \(R_{\rm therm}\) the pressure-derivative error in
+\(c_s^2\), \(w\), and the bulk source.  The near-critical term is displayed
+separately because the QCD scalar channel is precisely where critical
+fluctuations can collide with the hydrodynamic sound window; such weight is
+not a harmless regular background.
+\end{controlledapproximation}
+
 \begin{proposition}[Momentum-projected baryon diffusion current]
 \label{prop:qcd-incoherent-baryon-current}
 In a translationally invariant QCD phase at nonzero baryon density, the raw

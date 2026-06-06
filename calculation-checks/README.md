@@ -321,9 +321,11 @@ Current checks:
   QCD shear, scalar and coupled diffusion, sound matching, the finite shear
   spectral-window extraction from a retarded pole kernel, including two-sample
   width/amplitude reconstruction, regular-background bias/subtraction, and
-  near-critical-mode negative controls, and the momentum-projected baryon
-  current which removes the convective Drude sector at finite density, and the
-  CFL Goldstone count.
+  near-critical-mode negative controls, the finite bulk/sound spectral-window
+  extraction with thermodynamic source subtraction, shear subtraction,
+  residual budgeting, and scalar critical-mode negative controls, and the
+  momentum-projected baryon current which removes the convective Drude sector
+  at finite density, and the CFL Goldstone count.
 - `nonrelativistic_ng_counting_checks.py`: exact finite checks for the
   non-Lorentz Nambu--Goldstone counting section, including antisymmetric
   commutator-density ranks, the Watanabe--Brauner/Watanabe--Murayama

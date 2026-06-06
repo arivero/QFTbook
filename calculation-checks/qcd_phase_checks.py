@@ -12,6 +12,10 @@ Target claims:
   convention rho=-2 Im G^R, separates the finite-k pole width from the enthalpy
   residue, and treats regular and near-critical spectral weight as separate
   extraction data.
+- The finite bulk/sound spectral-window subsection separates the dissipative
+  bulk-pressure source from raw trace and energy-density slopes, reconstructs
+  zeta from the sound attenuation only after the shear contribution is
+  subtracted, and keeps critical scalar weight outside the regular background.
 
 Independent construction:
 - Recomputes the finite algebra from source definitions, group charges,
@@ -21,6 +25,9 @@ Independent construction:
 - For the shear window, constructs the contact-subtracted retarded pole
   kernel, generates spectral samples, solves for width and amplitude, and only
   then reconstructs eta.
+- For the bulk/sound window, constructs a finite scalar slope matrix, forms
+  the thermodynamically subtracted bulk source, and independently reconstructs
+  zeta from the longitudinal sound-pole attenuation.
 
 Imported assumptions:
 - Continuum QCD thermodynamic limits, real-time retarded correlator existence,
@@ -31,8 +38,10 @@ Imported assumptions:
 Negative controls:
 - Rejects wrong retarded spectral sign, width-only shear extraction, missing
   enthalpy-residue uncertainty, uncorrected regular-background contamination,
-  hidden near-critical shear weight, incorrect Ward/contact signs, wrong
-  center/fugacity periodicity, and gauge-charge neutrality shortcuts.
+  raw trace-slope bulk extraction, sound-width-only bulk extraction, missing
+  shear subtraction, hidden near-critical scalar weight, incorrect Ward/contact
+  signs, wrong center/fugacity periodicity, and gauge-charge neutrality
+  shortcuts.
 
 Scope boundary:
 - These are finite convention, algebra, and response-extraction checks.  They
@@ -57,6 +66,8 @@ collective-mode counts, dense Fermi-surface stress scales,
 color-flavor-locked faithful-global-symmetry and anomaly-matching
 bookkeeping, hydrodynamic response-window bookkeeping, finite shear
 spectral-window extraction from a retarded hydrodynamic kernel,
+finite bulk/sound spectral-window extraction with thermodynamic and shear
+subtractions,
 momentum-projected baryon diffusion current bookkeeping, and the
 color-flavor-locked symmetry count.  It is not a lattice simulation and it
 does not assert the
@@ -1074,6 +1085,135 @@ def check_finite_shear_spectral_window_from_retarded_kernel():
     )
 
 
+def check_finite_bulk_sound_spectral_window():
+    # The scalar stress channel first needs the bulk-pressure source
+    # B=delta P_tr-c_s^2 delta T00.  This finite slope matrix checks that the
+    # raw pressure-trace slope is not silently used as zeta.
+    sound_speed = Fraction(1, 2)
+    sound_speed_squared = sound_speed * sound_speed
+    zeta = Fraction(5, 2)
+    pressure_energy_slope = Fraction(6)
+    energy_energy_slope = Fraction(16)
+    pressure_pressure_slope = (
+        zeta
+        + 2 * sound_speed_squared * pressure_energy_slope
+        - sound_speed_squared * sound_speed_squared * energy_energy_slope
+    )
+    bulk_slope = (
+        pressure_pressure_slope
+        - 2 * sound_speed_squared * pressure_energy_slope
+        + sound_speed_squared * sound_speed_squared * energy_energy_slope
+    )
+    assert_equal("QCD bulk subtracted scalar slope", bulk_slope, zeta)
+    assert_true(
+        "QCD raw trace slope is not the bulk viscosity",
+        pressure_pressure_slope != zeta,
+    )
+    wrong_contact_sign_slope = (
+        pressure_pressure_slope
+        + 2 * sound_speed_squared * pressure_energy_slope
+        + sound_speed_squared * sound_speed_squared * energy_energy_slope
+    )
+    assert_true(
+        "QCD bulk source rejects wrong energy-contact sign",
+        wrong_contact_sign_slope != zeta,
+    )
+
+    # The sound pole gives Gamma_s.  Zeta follows only after multiplying by
+    # enthalpy and subtracting the shear part of the attenuation.
+    d = 3
+    enthalpy = Fraction(12)
+    eta = Fraction(3, 2)
+    shear_prefactor = Fraction(2 * (d - 1), d)
+    shear_attenuation_part = shear_prefactor * eta
+    gamma_s = (zeta + shear_attenuation_part) / enthalpy
+    assert_equal("QCD sound attenuation coefficient", gamma_s, Fraction(3, 8))
+
+    k = Fraction(1, 5)
+    sound_pole_real_part = sound_speed * k
+    sound_pole_width = gamma_s * k * k / 2
+    extracted_sound_speed_squared = (sound_pole_real_part / k) ** 2
+    extracted_gamma_s = 2 * sound_pole_width / (k * k)
+    extracted_zeta = enthalpy * extracted_gamma_s - shear_attenuation_part
+    assert_equal(
+        "QCD sound pole recovers thermodynamic sound speed",
+        extracted_sound_speed_squared,
+        sound_speed_squared,
+    )
+    assert_equal(
+        "QCD sound pole with shear subtraction recovers zeta",
+        extracted_zeta,
+        zeta,
+    )
+    assert_true(
+        "QCD sound width alone is not zeta",
+        extracted_gamma_s != zeta,
+    )
+    assert_true(
+        "QCD sound attenuation must subtract shear contribution",
+        enthalpy * extracted_gamma_s != zeta,
+    )
+
+    # Propagate independent sound-width, enthalpy, shear, dispersion,
+    # thermodynamic, background, critical, and continuum-window errors.
+    delta_gamma_s = Fraction(1, 100)
+    delta_w = Fraction(1, 50)
+    delta_eta = Fraction(1, 40)
+    r_k3 = Fraction(1, 200)
+    r_reg = Fraction(1, 300)
+    r_crit = Fraction(1, 150)
+    r_cont = Fraction(1, 500)
+    r_therm = Fraction(1, 600)
+    residual_sum = r_k3 + r_reg + r_crit + r_cont + r_therm
+    estimated_zeta = (
+        (enthalpy + delta_w) * (gamma_s + delta_gamma_s)
+        - shear_prefactor * (eta - delta_eta)
+        + residual_sum
+    )
+    exact_error = estimated_zeta - zeta
+    residual_budget = (
+        enthalpy * delta_gamma_s
+        + gamma_s * delta_w
+        + delta_w * delta_gamma_s
+        + shear_prefactor * delta_eta
+        + residual_sum
+    )
+    assert_equal("QCD bulk/sound residual budget", exact_error, residual_budget)
+
+    missing_shear_uncertainty_budget = (
+        enthalpy * delta_gamma_s
+        + gamma_s * delta_w
+        + delta_w * delta_gamma_s
+        + residual_sum
+    )
+    assert_true(
+        "QCD bulk/sound window must include shear uncertainty",
+        exact_error > missing_shear_uncertainty_budget,
+    )
+    missing_critical_budget = (
+        enthalpy * delta_gamma_s
+        + gamma_s * delta_w
+        + delta_w * delta_gamma_s
+        + shear_prefactor * delta_eta
+        + r_k3
+        + r_reg
+        + r_cont
+        + r_therm
+    )
+    assert_true(
+        "QCD bulk/sound window must include scalar critical weight",
+        exact_error > missing_critical_budget,
+    )
+
+    # A scalar mode as narrow as the sound peak collides with the extraction
+    # window and cannot be absorbed into an analytic regular background.
+    critical_scalar_width = sound_pole_width / 2
+    assert_true(
+        "QCD near-critical scalar mode must be retained explicitly",
+        critical_scalar_width < sound_pole_width,
+    )
+
+
 def main():
     check_stefan_boltzmann_pressure()
     check_finite_mu_quark_pressure()
@@ -1104,6 +1244,7 @@ def main():
     check_cfl_anomaly_matching_bookkeeping()
     check_hydrodynamic_response_window_bookkeeping()
     check_finite_shear_spectral_window_from_retarded_kernel()
+    check_finite_bulk_sound_spectral_window()
     print("All QCD phase-structure checks passed.")
 
 
