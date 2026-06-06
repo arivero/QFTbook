@@ -3470,6 +3470,124 @@ of the local NLO coordinate.  The logarithm itself cannot be removed by a
 local counterterm because it is the long-distance contribution of pion
 propagation.
 
+\begin{controlledapproximation}[Pion-threshold projection of the chiral
+amplitude]
+\label{ca:chpt-pion-threshold-observable-projection}
+The local amplitude \(A(s,t,u)\) becomes a low-energy scattering prediction only
+after the external pion states, the isospin channel, and the partial-wave
+projection have been declared.  Use the equal-mass kinematics and normalization
+of Definition~\ref{def:qcd-pipi-isospin-amplitudes} and
+\eqref{eq:qcd-pipi-partial-wave-normalization}.  The \(S\)-wave scattering
+lengths are
+\[
+  a_0^I=t_0^I(4m_\pi^2),
+  \qquad I=0,2.
+\]
+The mass spurion in \(\mathcal L_2\) is part of this threshold observable.  At
+leading order
+\begin{equation}
+  A_2(s,t,u)
+  =
+  \frac{s-m_\pi^2}{f_\pi^2}
+  =
+  \frac{4(s-m_\pi^2)}{F_{\rm st}^2},
+  \qquad F_{\rm st}=2f_\pi .
+  \label{eq:chpt-massive-leading-pion-amplitude}
+\end{equation}
+Evaluating
+\[
+  T^0=3A(s,t,u)+A(t,s,u)+A(u,t,s),
+  \qquad
+  T^2=A(t,s,u)+A(u,t,s)
+\]
+at \(s=4m_\pi^2,\ t=u=0\) and projecting by
+\(\frac1{64\pi}\int_{-1}^{1}\dd z\) gives
+\begin{equation}
+  a_{0,\mathrm{LO}}^{0}
+  =
+  \frac{7m_\pi^2}{32\pi f_\pi^2}
+  =
+  \frac{7m_\pi^2}{8\pi F_{\rm st}^2},
+  \qquad
+  a_{0,\mathrm{LO}}^{2}
+  =
+  -\frac{m_\pi^2}{16\pi f_\pi^2}
+  =
+  -\frac{m_\pi^2}{4\pi F_{\rm st}^2}.
+  \label{eq:chpt-weinberg-threshold-scattering-lengths}
+\end{equation}
+Using the chiral-limit formula \(A=s/f_\pi^2\) at this physical threshold would
+instead give \(a_0^2=0\); the mass-spurion step is therefore part of the
+threshold observable.
+
+At \(O(p^4)\) the threshold coordinate separates into local, loop, and
+first-omitted pieces.  Projecting the displayed local \(C_4,C'_4\) representative
+to the same \(S\)-wave coordinates gives
+\begin{equation}
+  \begin{pmatrix}
+    a_0^0\\[1mm] a_0^2
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    \frac{7m_\pi^2}{8\pi F_{\rm st}^2}\\[1mm]
+    -\frac{m_\pi^2}{4\pi F_{\rm st}^2}
+  \end{pmatrix}
+  +
+  \frac{m_\pi^4}{\pi F_{\rm st}^4}
+  \begin{pmatrix}
+    -\frac34 & -\frac12\\[1mm]
+    0 & -\frac12
+  \end{pmatrix}
+  \begin{pmatrix}
+    C_4^r(\mu)\\[1mm] C_4^{\prime r}(\mu)
+  \end{pmatrix}
+  +
+  \begin{pmatrix}
+    \mathcal L_0^0(\mu)\\[1mm] \mathcal L_0^2(\mu)
+  \end{pmatrix}
+  +
+  \begin{pmatrix}
+    R_6^0\\[1mm] R_6^2
+  \end{pmatrix}.
+  \label{eq:chpt-threshold-lec-projection-map}
+\end{equation}
+Here \(\mathcal L_0^I(\mu)\) denotes the renormalized one-loop and mass-spurion
+\(O(p^4)\) projection in the same scheme, and \(R_6^I\) denotes the first omitted
+two-loop/\(\mathcal L_4\)-loop/\(\mathcal L_6\) contribution controlled by
+Controlled Approximation~\ref{ca:chiral-eft-truncation-seminorm}.  The finite
+local matrix in \eqref{eq:chpt-threshold-lec-projection-map} has determinant
+\(3/8\), so the two threshold channels can fit the two local representatives
+only after \(\mathcal L_0^I\) and the residual budget have been supplied.  If the
+scaled omitted vector
+\[
+  \Delta\mathbf a
+  =
+  \frac{\pi F_{\rm st}^4}{m_\pi^4}
+  \begin{pmatrix}
+    \delta\mathcal L_0^0+\delta R_6^0\\
+    \delta\mathcal L_0^2+\delta R_6^2
+  \end{pmatrix}
+\]
+is silently absorbed into the fitted local constants, then the induced shift
+obeys
+\begin{equation}
+  |\Delta C_4|
+  \le
+  \frac43\bigl(|\Delta a_0^0|+|\Delta a_0^2|\bigr),
+  \qquad
+  |\Delta C'_4|
+  \le
+  2|\Delta a_0^2|.
+  \label{eq:chpt-threshold-lec-residual-shift-bound}
+\end{equation}
+Thus a measured or lattice-determined scattering length is not evidence for the
+local chiral constants alone.  The physical comparison is the projected
+threshold observable with its loop convention, fitted local coordinates, and
+\(O(p^6)\) remainder; Roy coordinates and finite-volume lattice extractions in
+Section~\ref{subsec:qcd-light-meson-roy-coordinates} provide the corresponding
+nonperturbative threshold inputs.
+\end{controlledapproximation}
+
 \section{The Wess--Zumino--Witten Functional}
 
 The pion effective action must reproduce the global anomalies of the

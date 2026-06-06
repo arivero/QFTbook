@@ -1063,7 +1063,11 @@ Current checks:
   \(O(p^4)\) retained-versus-\(O(p^6)\) omitted truncation ledger, selected
   \(\Gamma_i\) entries, and the
   cancellation of the \(\mu\)-dependence in the two-flavor
-  \(M_\pi^2\) chiral logarithm by the running of \(l_3^r(\mu)\).
+  \(M_\pi^2\) chiral logarithm by the running of \(l_3^r(\mu)\).  It now also
+  projects the leading massive pion amplitude and the local \(C_4,C'_4\)
+  terms to the physical \(S\)-wave threshold coordinates \(a_0^0,a_0^2\),
+  rejecting the chiral-limit-at-threshold shortcut and under-subtracted local
+  constant fits.
 - `qed_form_factor_checks.py`: exact rational checks for the Volume I QED
   renormalization and form-factor chapter, including the photon
   vacuum-polarization pole coefficient, Ward organization \(Z_1=Z_\psi\),
