@@ -122,8 +122,8 @@ Independent construction:
   spectral-bin/Stieltjes comparisons, contact
   polynomial separation, and bridge residual telescopes,
   first connected instanton-pair source corrections,
-  neutral-pair lateral-prescription cancellation ledgers,
-  chirality-source selection gates for the instanton zero-mode determinant,
+  neutral-pair lateral-prescription cancellation coordinates,
+  chirality-source selection rules for the instanton zero-mode determinant,
   physical projection bins, residual sums, two-term hard-window endpoint
   tail subtraction, and hard-window power checks
   directly, rather than importing BPST radial integrals or copying a monograph
@@ -2211,17 +2211,17 @@ def check_chirality_source_selection_gate() -> None:
 
     q_plus_vertex = q_plus_amplitude(q_plus_slots, q_plus_source)
     assert_equal(
-        "Q=1 chirality gate keeps the anomalous hard source coordinate",
+        "Q=1 chirality selection keeps the anomalous hard source coordinate",
         q_plus_vertex,
         common_density_window * det2(q_plus_source),
     )
     assert_equal(
-        "Q=1 gate rejects the conjugate chirality coordinate",
+        "Q=1 selection rejects the conjugate chirality coordinate",
         q_plus_amplitude(q_minus_slots, q_minus_source),
         Fraction(0),
     )
     assert_equal(
-        "Q=1 gate rejects chirality-balanced four-source data",
+        "Q=1 selection rejects chirality-balanced four-source data",
         q_plus_amplitude(chirality_balanced_slots, q_plus_source),
         Fraction(0),
     )

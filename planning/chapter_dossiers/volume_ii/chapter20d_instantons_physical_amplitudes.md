@@ -39,7 +39,7 @@
   extraction by applying a declared source differential and projection to the
   finite source functional, with regulator, continuation, sector, endpoint,
   and matching residuals kept outside the source functional itself.
-- `ca:instanton-source-functional-route`: route-discipline block rejecting
+- `ca:instanton-source-functional-route`: route-to-amplitude block rejecting
   the three main shortcut reorderings: source differentiation replaced by mass
   saturation, determinant normalization substituted for source response, and
   a raw Euclidean source kernel read as a physical observable before
@@ -161,7 +161,7 @@
   hard source coefficient, theta curvature, \(U(1)_A\)-odd susceptibility
   kernel, and real-time axial relaxation rate.
 - `ca:instanton-observable-handoff-ledger`: finite-regulator observable-map
-  discipline: the one-instanton amplitude density must be projected to a named
+  statement: the one-instanton amplitude density must be projected to a named
   observable before its physical meaning is fixed.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell model
   proving the absolute residual bound and the two-by-two determinant stability
@@ -202,7 +202,7 @@
 - The two-flavor determinant calculation is the local algebra behind the
   distinction between a mass-saturated vacuum activity and a differentiated
   four-source 't Hooft amplitude.
-- The chirality-source gate turns that determinant into an anomalous
+- The chirality-source selection rule turns that determinant into an anomalous
   amplitude selection rule.  A nonzero determinant in the conjugate source
   block, a chirality-balanced four-source selection, or a mass-assisted
   coordinate cannot be relabelled as the \(Q=1\) hard 't Hooft vertex before
@@ -358,12 +358,12 @@
   curvature, same-charge second-harmonic data, zero-mode overlap survival, and
   pair residual control,
   verifies the neutral-pair valley prescription with exact rational
-  `(PV, ambiguity)` lateral ledgers, a source-projected residue, its
+  `(PV, ambiguity)` lateral coordinates, a source-projected residue, its
   perturbative lateral partner, same-coordinate ambiguity cancellation,
   residual-bound propagation, and negative controls for pair-only,
   principal-value-only, wrong-frame, and source-projection-omitted
   cancellations,
-  verifies the chirality-source selection gate with exact two-by-two
+  verifies the chirality-source selection rule with exact two-by-two
   determinant blocks, axial-weight counts, wrong-chirality and
   chirality-balanced negative controls, sector-mixing rejection, and a
   mass-assisted coordinate check,
@@ -456,7 +456,7 @@
   as a same-source-coordinate lateral-prescription issue and rejects
   pair-only, principal-value-only, wrong-frame, and source-projection-omitted
   ambiguity cancellations.
-- 2026-06-06 chirality-source gate pass: added
+- 2026-06-06 chirality-source selection pass: added
   `prop:instanton-chirality-source-selection-gate` after the two-flavor
   mass/source determinant coordinate.  The pass makes the hard \(Q=1\)
   't Hooft vertex an anomalous zero-mode source-selection statement, rejecting
@@ -490,6 +490,13 @@
   The edit keeps the hard instanton chapter oriented toward the physical
   calculation from fluctuation density through source channels to measured
   QFT observables, without adding another local instanton cell.
+- 2026-06-06 issue #597 coherence follow-up: re-audited the heavily edited
+  chapter surface after the later source, fluctuation, valley, and chirality
+  insertions.  The visible theorem/control titles now say source-functional
+  route to a physical amplitude, zero-mode Jacobian from a gauge slice, and
+  chirality-source selection rather than process-facing gate/discipline
+  language.  Stable labels were kept unchanged; the equations and evidence
+  checks are unchanged in substance.
 - 2026-06-06 source-functional route pass: inserted
   `sec:instanton-source-functional-route` at the chapter entrance.  The pass
   makes the finite-regulator source functional the first object and derives the

@@ -846,7 +846,7 @@ Current checks:
   source-projection-omitted cancellations,
   the two-flavor \(\det(M+B)\) source/mass polynomial, the distinction between
   mass-saturated vacuum activity and the four-source coefficient,
-  the chirality-source selection gate for the \(Q=1\) hard instanton vertex,
+  the chirality-source selection rule for the \(Q=1\) hard instanton vertex,
   including wrong-chirality, chirality-balanced, sector-mixed, and
   mass-assisted negative controls,
   moduli-equivalent channels with different or zero amplitudes because of
