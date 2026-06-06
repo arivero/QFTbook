@@ -31,6 +31,10 @@ Target claims:
   the determinant, source-fluctuation, zero-mode/source, and physical-projection
   factors in the same kernel, with absolute control unless a noncancellation
   margin is supplied.
+- `ca:instanton-observable-handoff-ledger`: the assembled instanton channel
+  must still be mapped to a named physical observable; hard source
+  coefficients, theta curvatures, U(1)_A susceptibility kernels, and real-time
+  axial relaxation rates are not interchangeable.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell residuals
   and source-determinant perturbations obey the displayed absolute bounds.
 - `prop:su3-nf2-hard-source-power-slow-tail` and
@@ -44,6 +48,8 @@ Independent construction:
   the Bessel-product tail cancellation for an individual zero-mode slot,
   finite Gaussian source-quotient covariance identities,
   multiplicative hard-amplitude assembly bounds on signed windows,
+  finite observable-handoff comparisons for theta, U(1)_A, and real-time
+  axial channels,
   physical projection bins, residual sums, and hard-window power ledgers
   directly, rather than importing BPST radial integrals or copying a monograph
   coefficient.
@@ -65,6 +71,10 @@ Negative controls:
   quotient, a relative quotient formed after zero-mode rank loss, a
   determinant-only assembled amplitude, signed-window relative error control
   without a noncancellation margin, a
+  hard source coefficient used as a theta susceptibility, a dilute
+  topological susceptibility used as a real-time rate, a dilute instanton
+  curvature substituted for Witten-Veneziano curvature without a comparison
+  budget, a
   single Euclidean cell sum used as a spectral-bin observable, a
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
   slot, and a residual bound that omits the external projection/sector
@@ -493,6 +503,92 @@ def check_hard_amplitude_assembly_ledger() -> None:
     )
 
 
+def check_observable_handoff_ledger() -> None:
+    hard_four_source_coefficient = Fraction(5, 7)
+    one_instanton_activity = Fraction(7, 13)
+    mass_factors = [Fraction(2, 3), Fraction(0), Fraction(11, 17)]
+    mass_saturated_vacuum_activity = one_instanton_activity * product(mass_factors)
+
+    assert_equal(
+        "massless flavor removes vacuum theta activity",
+        mass_saturated_vacuum_activity,
+        Fraction(0),
+    )
+    assert_not_equal(
+        "hard source coefficient is not vacuum theta curvature",
+        hard_four_source_coefficient,
+        mass_saturated_vacuum_activity,
+    )
+
+    zeta = Fraction(7, 13)
+    dilute_chi = 2 * zeta
+    fourth_theta_derivative = -2 * zeta
+    b2 = fourth_theta_derivative / (12 * dilute_chi)
+    assert_equal("dilute handoff topological susceptibility", dilute_chi, Fraction(14, 13))
+    assert_equal("dilute handoff b2 coefficient", b2, -Fraction(1, 12))
+
+    m = Fraction(1, 10)
+    singular_values = [Fraction(1, 5), Fraction(2, 5)]
+    u1a_splitting = sum(
+        4 * m * m / (m * m + singular * singular) ** 2
+        for singular in singular_values
+    )
+    assert_not_equal(
+        "U(1)_A zero-mode-zone kernel is not theta susceptibility",
+        u1a_splitting,
+        dilute_chi,
+    )
+
+    n_f = 2
+    gamma_cs_1 = Fraction(3, 11)
+    gamma_cs_2 = Fraction(5, 11)
+    chi5 = Fraction(7, 13)
+    temperature = Fraction(2)
+    axial_rate_1 = (2 * n_f) ** 2 * gamma_cs_1 / (2 * chi5 * temperature)
+    axial_rate_2 = (2 * n_f) ** 2 * gamma_cs_2 / (2 * chi5 * temperature)
+    assert_not_equal(
+        "theta susceptibility is not the real-time axial rate",
+        dilute_chi,
+        axial_rate_1,
+    )
+    assert_not_equal(
+        "same Euclidean susceptibility can have different retarded slopes",
+        axial_rate_1,
+        axial_rate_2,
+    )
+
+    chi_ym = Fraction(5, 7)
+    zeta_trial = Fraction(3, 10)
+    chi_inst = 2 * zeta_trial
+    n_f_wv = 3
+    z0 = Fraction(5, 4)
+    f_pi = Fraction(2)
+    mass_gap = (
+        2 * n_f_wv * abs(chi_ym - chi_inst)
+        / (z0 * f_pi * f_pi)
+    )
+    sufficient_curvature_budget = Fraction(1, 8)
+    insufficient_curvature_budget = Fraction(1, 10)
+    good_mass_budget = (
+        2 * n_f_wv * sufficient_curvature_budget
+        / (z0 * f_pi * f_pi)
+    )
+    bad_mass_budget = (
+        2 * n_f_wv * insufficient_curvature_budget
+        / (z0 * f_pi * f_pi)
+    )
+    assert_equal(
+        "same-scheme instanton/WV curvature budget can control mass gap",
+        mass_gap <= good_mass_budget,
+        True,
+    )
+    assert_equal(
+        "underbudgeted dilute curvature cannot replace WV input",
+        bad_mass_budget < mass_gap,
+        True,
+    )
+
+
 def check_two_flavor_mass_source_determinant_coordinate() -> None:
     m_u = Fraction(2, 5)
     m_d = Fraction(3, 7)
@@ -722,6 +818,7 @@ def main() -> None:
     check_individual_zero_mode_slot_tail_from_bessel_products()
     check_nonzero_mode_source_fluctuation_quotient()
     check_hard_amplitude_assembly_ledger()
+    check_observable_handoff_ledger()
     check_two_flavor_mass_source_determinant_coordinate()
     check_moduli_equivalent_channel_separation()
     check_projection_not_recoverable_from_one_euclidean_sum()

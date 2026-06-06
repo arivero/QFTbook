@@ -803,6 +803,95 @@ the same Haar-projected, amputated, windowed, and physically projected kernel.
 Changing any of those data changes the amplitude coordinate, even though the
 underlying instanton saddle is unchanged.
 
+\section{Observable Handoffs Are Not Interchangeable}
+\label{sec:instanton-observable-handoffs}
+
+The assembled coefficient in
+\eqref{eq:instanton-hard-assembled-channel} is still not a universal
+``instanton contribution.''  It is a coefficient in a chosen source and
+projection coordinate.  The same \(Q=\pm1\) saddle data can feed several
+different QFT observables only after different final maps have been applied.
+Those maps have different dimensions, positivity properties, and limiting
+procedures.
+
+\begin{controlledapproximation}[Observable handoff ledger]
+\label{ca:instanton-observable-handoff-ledger}
+Let \(\mathcal X_{+}\) be the finite-regulator \(Q=1\) one-instanton
+amplitude density after the collective density, nonzero-mode determinant,
+zero-mode saturation, source matching, and endpoint window have all been
+assembled.  Let \(\mathcal X_{-}\) be the corresponding anti-instanton
+density.  Four common handoffs are these.
+\begin{enumerate}[label=(\roman*)]
+\item A hard source coefficient extracts
+\(\mathfrak L_{\rm hard}[\mathcal X_+]\) and still needs the Haar projector,
+amputation convention, and spectral or OPE projection.
+\item A theta curvature extracts the vacuum activity
+\(\zeta_+\ee^{\ii\bar\theta}+\zeta_-\ee^{-\ii\bar\theta}\) and still needs
+zero-mode saturation and a cluster window.
+\item A \(U(1)_A\)-odd susceptibility extracts the zero-mode overlap singular
+values \(s_\alpha\) from an \(I\bar I\) ensemble and still needs the ensemble
+weight and the thermodynamic/chiral order of limits.
+\item A real-time axial relaxation rate extracts \(\Gamma_{\rm CS}\) from the
+retarded zero-frequency slope and still needs KMS continuation and the axial
+susceptibility.
+\end{enumerate}
+In a CP-symmetric dilute vacuum window, \(\zeta_+=\zeta_-=\zeta\) gives
+\[
+  \frac{Z_{\rm dig}(\bar\theta)}{Z_0}
+  =
+  \exp\!\left(2V_4\zeta\cos\bar\theta\right),
+  \qquad
+  \chi_{\rm top}^{\rm dig}=2\zeta,
+  \qquad
+  b_2^{\rm dig}=-\frac1{12},
+\]
+as in
+\eqref{eq:dilute-instanton-gas-partition}--\eqref{eq:dilute-instanton-gas-cumulants}.
+This handoff is a vacuum partition-function statement.  If one light Dirac
+flavor has an unsaturated zero mode, the corresponding mass-saturated vacuum
+activity is zero, even though a differentiated fermionic source coefficient
+such as \eqref{eq:instanton-hard-assembled-channel} can be nonzero.
+
+The \(U(1)_A\)-odd susceptibility handoff is different.  In an
+instanton--anti-instanton ensemble with zero-mode overlap singular values
+\(s_\alpha\), the zero-mode-zone contribution is governed by
+\[
+  \Delta_{\pi-\delta}^{\rm zm}(m)
+  =
+  4m^2\int_0^\infty
+  \frac{\rho_{\rm zm}(s)}{(m^2+s^2)^2}\,\dd s
+\]
+after the exact-topology density has been removed in the thermodynamic
+order of limits; see
+\eqref{eq:instanton-zero-mode-zone-u1a-kernel}.  It is controlled by the
+near-zero singular-value law, not by the one-body Poisson activity alone.
+Likewise the real-time axial relaxation handoff is
+\[
+  \gamma_5^{\rm top}
+  =
+  \frac{(2N_f)^2\Gamma_{\rm CS}}{2\chi_5T},
+\]
+as in \eqref{eq:qcd-massless-topological-axial-relaxation}; it needs the
+retarded Chern--Simons diffusion slope, not only the Euclidean theta
+curvature.
+
+Consequently a valid instanton calculation must name the handoff functional.
+A hard four-source coefficient is not a topological susceptibility; a
+Euclidean topological susceptibility is not a real-time sphaleron or axial
+relaxation rate; and a dilute instanton curvature is not the
+Witten--Veneziano pure-Yang--Mills curvature unless a same-scheme curvature
+comparison and the pseudoscalar pole-normalization residuals have also been
+supplied.
+\end{controlledapproximation}
+
+The physics content is the non-interchangeability.  The BPST saddle fixes the
+topological charge, the zero-mode chirality, and the local semiclassical
+weights.  The observable decides which part of that data survives: a
+differentiated source sees fermion zero-mode slots; a theta curvature sees a
+vacuum activity with all zero modes saturated; a \(U(1)_A\) susceptibility sees
+the near-zero spectrum of an ensemble; and a real-time rate sees a retarded
+low-frequency slope.
+
 \section{Finite-Cell Control Model}
 \label{sec:finite-cell-instanton-channel-control}
 

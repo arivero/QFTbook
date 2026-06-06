@@ -69,6 +69,12 @@
 - `ca:instanton-hard-amplitude-assembly-ledger`: assembled hard-amplitude
   absolute error bound, with noncancellation margin required before relative
   scale-law claims are allowed.
+- `sec:instanton-observable-handoffs`: physics handoff block distinguishing a
+  hard source coefficient, theta curvature, \(U(1)_A\)-odd susceptibility
+  kernel, and real-time axial relaxation rate.
+- `ca:instanton-observable-handoff-ledger`: finite-regulator observable map
+  discipline: the one-instanton amplitude density must be projected to a named
+  observable before its physical meaning is fixed.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell model
   proving the absolute residual bound and the two-by-two determinant stability
   estimate.
@@ -109,6 +115,11 @@
   projection mismatch in a single amplitude formula, with absolute
   signed-window control and an explicit noncancellation hypothesis for
   relative statements.
+- The observable-handoff block connects the dedicated instanton-amplitude
+  chapter back to the QCD theta and \(U(1)_A\) material without duplicating it:
+  a hard four-source coefficient, a dilute theta curvature, a zero-mode-zone
+  \(U(1)_A\)-odd kernel, and a real-time Chern--Simons diffusion rate are
+  separate final maps from the instanton-side data.
 - The `Q^(-35/3)` hard-scale behavior is tied to `b0=29/3` and four individual
   hard zero-mode form factors.  The large-size endpoint is convergent but slow,
   with a retained-tail majorant of order `R^(-1/3)`, so a window/stability
@@ -141,6 +152,9 @@
   verifies the assembled hard-amplitude product bound and rejects
   determinant-only assembly or signed-window relative control without a
   noncancellation margin,
+  verifies the observable-handoff distinction between hard source coefficients,
+  dilute theta curvature, \(U(1)_A\)-odd zero-mode-zone kernels, real-time
+  axial rates, and Witten--Veneziano curvature comparison budgets,
   builds moduli-equivalent finite cell channels with different or vanishing
   amplitudes, constructs a same-Euclidean-sum/different-projection ambiguity,
   checks the SU(3), `N_f=2` hard four-source scale and tail powers, validates
@@ -181,3 +195,7 @@
   formula and absolute error ledger, so the chapter now recombines the
   determinant, zero-mode/source, nonzero-mode source quotient, and physical
   projection data before quoting the hard coefficient.
+- 2026-06-06 observable-handoff pass: added a physics bridge from the assembled
+  instanton amplitude to QCD observables, explicitly separating hard source
+  coefficients, theta curvature, \(U(1)_A\)-odd susceptibility kernels, and
+  real-time axial relaxation rates.
