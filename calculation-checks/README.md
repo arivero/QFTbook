@@ -3158,7 +3158,8 @@ Current checks:
   transport, and residual comparison budget, the unresolved one-emission
   measurement-cell check with plus-distribution cancellation and negative
   controls for wrong subtraction measurements, frozen locally inclusive
-  measurements, and non-infrared-safe logarithmic weights, and the two-loop
+  measurements, finite-remainder-only reweighting after paired-measurement
+  pole cancellation, and non-infrared-safe logarithmic weights, and the two-loop
   infrared-pole consistency gate relating \(A^{(2)}\), \(I^{(1)}A^{(1)}\),
   \(I^{(2)}A^{(0)}\), the \(|F^{(1)}|^2\) hard contribution, and the NNLO
   observable residual budget.

@@ -4340,6 +4340,56 @@ cell over the soft, collinear, and overlap regions, with the factorization and
 rapidity-subtraction data required by the chosen observable.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Finite measurement dependence after pole
+cancellation]
+\label{ca:one-loop-measurement-dependence-after-cancellation}
+The previous cell also shows why pole cancellation is not the end of the
+physics.  Let \(W_A\) and \(W_B\) be two infrared-safe measurements in the same
+unresolved chart with the same reduced-event limit,
+\[
+  W_A(x,\zeta)=W_0(\zeta)+x\,A(x,\zeta),
+  \qquad
+  W_B(x,\zeta)=W_0(\zeta)+x\,B(x,\zeta).
+\]
+They have identical virtual poles and identical local counterevent weights,
+because the singular coefficient sees only \(W_0\).  Nevertheless the finite
+cell differs by
+\begin{equation}
+\begin{aligned}
+  \mathcal O_{\rm cell}^{(1)}[W_A]
+  -
+  \mathcal O_{\rm cell}^{(1)}[W_B]
+  &=
+  \int\dd\zeta\,S_0(\zeta)
+  \int_0^1\dd x\,
+    \frac{W_A(x,\zeta)-W_B(x,\zeta)}{x}  \\
+  &\quad
+  +
+  \mathcal R_{\rm fin}^{\rm nonsing}[W_A]
+  -
+  \mathcal R_{\rm fin}^{\rm nonsing}[W_B].
+\end{aligned}
+  \label{eq:one-loop-measurement-dependence-after-cancellation}
+\end{equation}
+For a local polynomial model
+\[
+  W_A=W_0+a_1x+a_2x^2,
+  \qquad
+  W_B=W_0+b_1x+b_2x^2,
+\]
+the singular chart alone contributes
+\[
+  \int\dd\zeta\,S_0(\zeta)
+  \left[(a_1-b_1)+\frac{a_2-b_2}{2}\right].
+\]
+Thus two observables can share the same finite virtual hard remainder, the
+same subtraction pole, and the same reduced Born weight while having different
+finite NLO answers.  The missing datum is not a more refined generalized cut;
+it is the real-emission measurement and subtraction map.  Reweighting a
+virtual amplitude by the reduced-event measurement is therefore a locally
+inclusive approximation, not an observable-level derivation.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Two-loop infrared-pole consistency test]
 \label{ca:two-loop-ir-pole-consistency-gate}
 At two loops the virtual reconstruction has a recursive infrared consistency

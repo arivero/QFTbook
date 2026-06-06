@@ -54,7 +54,8 @@
   finite-remainder/observable assembly, a production master-lane gate tying
   coefficient pairing, transported masters, physical channel closure, and
   finite observable assembly into one comparison, an unresolved one-emission
-  measurement cell with plus-distribution cancellation, and a two-loop infrared-pole
+  measurement cell with plus-distribution cancellation, a paired-measurement
+  finite-difference test after pole cancellation, and a two-loop infrared-pole
   consistency test linking
   \(A^{(2)}\), \(I^{(1)}A^{(1)}\), \(I^{(2)}A^{(0)}\), the lower-loop hard
   square, and the NNLO observable budget.
@@ -179,6 +180,7 @@
 | \(\mathcal F^{(1)}_\Lambda\) | finite one-loop hard remainder after subtracting \(\mathbf I^{(1)}_\Lambda\mathcal A^{(0)}_\Lambda\) |
 | \(\mathbf I^{(2)}_\Lambda\), \(\mathcal F^{(2)}_\Lambda\) | two-loop infrared subtraction operator and hard remainder defined recursively from \(\mathcal A^{(2)}-\mathbf I^{(1)}\mathcal A^{(1)}-\mathbf I^{(2)}\mathcal A^{(0)}\) |
 | \(x,\epsilon_{\rm ir},W(x,\zeta),W_0(\zeta)\) | unresolved one-emission coordinate, local analytic infrared regulator, measurement in the unresolved chart, and its reduced-event infrared-safe limit |
+| \(W_A,W_B,A(x,\zeta),B(x,\zeta)\) | paired infrared-safe measurements with the same reduced-event limit but different finite unresolved measurement dependence |
 | \(\mathcal R_\Lambda^{\rm sub}[W]\), \(\mathcal C_\Lambda^{\rm fact}[W]\) | real-emission/subtraction and factorization/matching pieces needed to assemble an infrared-safe observable for measurement \(W\) |
 | \(\mathcal R_\Lambda^{{\rm RV,sub}}[W]\), \(\mathcal R_\Lambda^{{\rm RR,sub}}[W]\) | NNLO real--virtual and double-real subtraction pieces paired with the same infrared subtraction convention |
 | \(B_{\rm state},B_{\rm coeff},B_{\rm master},B_{\rm sheet},B_{\rm sub}\) | state-sum/orientation, inverse-pairing, master-jump, sheet, and subtraction residuals in the physical channel-discontinuity closure |
@@ -1057,6 +1059,16 @@
   measurement in the counterevent, freezing the measurement to its locally
   inclusive value, dropping the real cell, and using a non-infrared-safe
   logarithmic weight.
+- 2026-06-06 issue #769 measurement-dependence-after-cancellation pass: added
+  `ca:one-loop-measurement-dependence-after-cancellation` after the
+  unresolved one-emission measurement cell.  The pass compares two
+  infrared-safe measurements with the same reduced-event value \(W_0\), showing
+  that the same virtual pole, local counterevent, and finite hard remainder
+  can still produce different finite observables through
+  \(\int (W_A-W_B)/x\).  The companion check uses exact rational polynomials
+  for the two measurements, verifies pole cancellation for both, computes the
+  finite paired difference, and rejects the locally inclusive and
+  finite-remainder-only shortcuts.
 - 2026-06-06 issue #769 production master-lane pass: added
   `ca:production-master-lane-observable-gate` after the two-letter transport
   audit.  The pass reorganizes the nearby loop-amplitude cells into one

@@ -33,7 +33,8 @@ master-coefficient reconstruction model with denominator clearing and
 validation controls, the finite Laurent-pole bookkeeping that turns a
 reconstructed virtual amplitude into a finite
 observable only after infrared subtraction, real radiation, scheme transport,
-and the unresolved measurement cell have been assembled, and the two-loop
+and the unresolved measurement cell have been assembled, including finite
+measurement dependence after pole cancellation, and the two-loop
 infrared-pole consistency gate relating
 `A^(2)`, `I^(1) A^(1)`, `I^(2) A^(0)`, and the NNLO finite
 observable.
@@ -119,8 +120,9 @@ fixed-normalization finite box checks, including pole-subtraction
 bookkeeping, polynomial log algebra, branch continuation, a sector-boundary
 quadrature, and a numerical dilogarithm-parameter integral independent of the
 encoded log-square answer; Laurent-pole arithmetic for virtual/real infrared
-cancellation, plus-distribution measurement cells, finite scheme transport, and
-two-loop recursive pole subtraction.
+cancellation, plus-distribution measurement cells, paired-measurement finite
+differences after pole cancellation, finite scheme transport, and two-loop
+recursive pole subtraction.
 Imported assumptions: dimensional regularization, the standard massless
 two-particle phase-space normalization with the common factor of pi stripped
 off, the Feynman-parameter gamma-function form of the bubble master, and the
@@ -174,9 +176,9 @@ maximal-cut-only multi-loop reconstruction when lower sectors carry scale,
 branch/path omission in a two-letter master transport, virtual-only
 observable assembly, untransported finite IR-scheme shifts, wrong unresolved
 subtraction measurements, frozen locally inclusive measurement shortcuts,
-non-infrared-safe logarithmic weights, two-loop remainder extraction that drops
-`I^(1) A^(1)`, and NNLO observable assembly that omits the `|F^(1)|^2` hard
-term.
+finite-remainder-only observable reweighting, non-infrared-safe logarithmic
+weights, two-loop remainder extraction that drops `I^(1) A^(1)`, and NNLO
+observable assembly that omits the `|F^(1)|^2` hard term.
 Scope boundary: a pass checks the finite reconstruction and reduction
 bookkeeping; it does not compute a nonabelian helicity amplitude from Feynman
 graphs, prove unitarity from Wightman axioms, solve general multi-loop
@@ -3038,6 +3040,89 @@ def check_unresolved_measurement_cell_assembly() -> None:
     )
 
 
+def check_measurement_dependence_after_pole_cancellation() -> None:
+    born_weight = Fraction(7, 5)
+    w0 = Fraction(3, 4)
+    virtual_finite = Fraction(11, 17)
+    nonsingular_real = Fraction(19, 23)
+
+    # W_A = w0 + a1 x + a2 x^2 and W_B = w0 + b1 x + b2 x^2.
+    a1 = -Fraction(2, 9)
+    a2 = Fraction(3, 11)
+    b1 = Fraction(1, 6)
+    b2 = -Fraction(5, 13)
+    plus_a = a1 + Fraction(1, 2) * a2
+    plus_b = b1 + Fraction(1, 2) * b2
+    assert_equal(
+        "paired measurement plus difference",
+        plus_a - plus_b,
+        -Fraction(155, 2574),
+    )
+
+    virtual_a = (
+        -born_weight * w0,
+        born_weight * virtual_finite * w0,
+    )
+    virtual_b = (
+        -born_weight * w0,
+        born_weight * virtual_finite * w0,
+    )
+    assert_equal(
+        "same reduced measurement gives same virtual pole and hard term",
+        virtual_a,
+        virtual_b,
+    )
+
+    real_a = (
+        born_weight * w0,
+        born_weight * plus_a + nonsingular_real,
+    )
+    real_b = (
+        born_weight * w0,
+        born_weight * plus_b + nonsingular_real,
+    )
+    assembled_a = laurent_add(virtual_a, real_a)
+    assembled_b = laurent_add(virtual_b, real_b)
+    assert_equal("measurement A pole cancellation", assembled_a[0], Fraction(0))
+    assert_equal("measurement B pole cancellation", assembled_b[0], Fraction(0))
+
+    expected_difference = born_weight * (plus_a - plus_b)
+    assert_equal(
+        "finite measurement difference after cancellation",
+        laurent_sub(assembled_a, assembled_b),
+        (Fraction(0), expected_difference),
+    )
+    assert_equal(
+        "finite measurement difference value",
+        expected_difference,
+        -Fraction(217, 2574),
+    )
+
+    frozen_a = laurent_add(virtual_a, (born_weight * w0, nonsingular_real))
+    frozen_b = laurent_add(virtual_b, (born_weight * w0, nonsingular_real))
+    assert_equal(
+        "locally inclusive shortcut erases paired finite difference",
+        frozen_a,
+        frozen_b,
+    )
+    assert_true(
+        "paired finite difference is physical unresolved information",
+        assembled_a != assembled_b,
+    )
+
+    finite_remainder_only_a = born_weight * virtual_finite * w0
+    finite_remainder_only_b = born_weight * virtual_finite * w0
+    assert_equal(
+        "same finite virtual hard remainder for paired measurements",
+        finite_remainder_only_a,
+        finite_remainder_only_b,
+    )
+    assert_true(
+        "finite hard remainder alone misses measurement dependence",
+        finite_remainder_only_a - finite_remainder_only_b != expected_difference,
+    )
+
+
 def check_two_loop_ir_pole_consistency_gate() -> None:
     tree = Fraction(3, 5)
     ir_one_loop = (Fraction(-7, 3), Fraction(5, 11))
@@ -3203,6 +3288,7 @@ def main() -> None:
     check_production_master_lane_observable_gate()
     check_virtual_to_observable_assembly()
     check_unresolved_measurement_cell_assembly()
+    check_measurement_dependence_after_pole_cancellation()
     check_two_loop_ir_pole_consistency_gate()
     print("All generalized unitarity and loop-reduction checks passed.")
 
