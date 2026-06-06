@@ -3134,7 +3134,11 @@ Current checks:
   subtraction-branch shortcuts, the two-master
   threshold-mixing/monodromy and regular-boundary negative controls, the
   two-letter master-transport check with noncommuting residues, branch/path
-  and cut-only boundary negative controls, plus the
+  and cut-only boundary negative controls, the production master-lane gate
+  composing coefficient extraction, transported masters, physical channel
+  closure, and infrared-safe observable assembly with raw-residue,
+  Euclidean-master, lower-sector, branch, and virtual-only negative controls,
+  plus the
   Laurent-pole virtual-to-observable assembly check separating the finite hard
   remainder, real-radiation/subtraction cancellation, finite IR-scheme
   transport, and residual comparison budget, the unresolved one-emission

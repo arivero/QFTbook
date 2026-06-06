@@ -23,8 +23,10 @@ It also checks a
 finite triple-cut triangle projection after known box residues have been
 subtracted, a finite double-cut bubble projection after known box and triangle
 double-cut shadows have been subtracted, a finite two-master threshold-mixing model, a two-letter
-master-transport model with boundary and branch negative controls, a physical
-master-discontinuity closure gate comparing transported master jumps with
+master-transport model with boundary and branch negative controls, a finite
+production master-lane gate that composes coefficient extraction, transported
+masters, physical channel closure, and infrared-safe observable assembly, and a
+physical master-discontinuity closure gate comparing transported master jumps with
 Cutkosky channel data, including a separate two-particle phase-space
 state-sum computation for the scalar bubble, a finite-field
 master-coefficient reconstruction model with denominator clearing and
@@ -110,6 +112,9 @@ a finite common-repair model for loop-level double-copy null directions;
 nilpotent rational matrix algebra for threshold monodromy and regular
 boundary constants; noncommuting two-letter residue algebra for first-order
 transport, path-order sensitivity, and cut-invisible boundary shifts;
+finite pairing-matrix inversion, master transport, lower-sector
+inhomogeneity, branch-jump, and Laurent-pole arithmetic for the
+production master lane from cut residues to a finite observable;
 fixed-normalization finite box checks, including pole-subtraction
 bookkeeping, polynomial log algebra, branch continuation, a sector-boundary
 quadrature, and a numerical dilogarithm-parameter integral independent of the
@@ -150,6 +155,8 @@ omitted rational finite
 remainders, one-cut-only finite-box deformations, missing finite-box boundary
 data, branch-label omission,
 diagonal one-master threshold shortcuts, cut-only boundary reconstruction,
+raw-cut-residue coefficient use, Euclidean-master shortcuts, lower-sector
+omission, branch-jump omission, virtual-only production-lane assembly,
 parent-cut-only sector projection when lower sectors are not scaleless,
 non-dual or surface-polluted contour coefficient extraction,
 finite-field polynomial fits that omit the declared denominator, bad primes
@@ -2692,6 +2699,171 @@ def check_two_letter_master_transport() -> None:
     )
 
 
+def check_production_master_lane_observable_gate() -> None:
+    pairing: Matrix = [
+        [Fraction(2), Fraction(1)],
+        [Fraction(1), Fraction(1)],
+    ]
+    pairing_inverse: Matrix = [
+        [Fraction(1), Fraction(-1)],
+        [Fraction(-1), Fraction(2)],
+    ]
+    master_coefficients = [Fraction(3, 4), Fraction(-2, 5)]
+    cut_residues = matrix_vector_mul(pairing, master_coefficients)
+    assert_equal(
+        "dual-contour cut residues in declared normalization",
+        cut_residues,
+        [Fraction(11, 10), Fraction(7, 20)],
+    )
+    reconstructed_coefficients = matrix_vector_mul(pairing_inverse, cut_residues)
+    assert_equal(
+        "production lane reconstructs master coefficients before evaluation",
+        reconstructed_coefficients,
+        master_coefficients,
+    )
+    assert_true(
+        "raw cut residues are not master coefficients",
+        cut_residues != master_coefficients,
+    )
+
+    a0: Matrix = [
+        [Fraction(0), Fraction(1)],
+        [Fraction(0), Fraction(0)],
+    ]
+    a1: Matrix = [
+        [Fraction(0), Fraction(0)],
+        [Fraction(1), Fraction(0)],
+    ]
+    epsilon = Fraction(1, 13)
+    l0 = Fraction(2, 3)
+    l1 = Fraction(-3, 5)
+    euclidean_boundary = [Fraction(5, 6), Fraction(7, 9)]
+    x_jump = vector_scale(epsilon, matrix_vector_mul(a0, euclidean_boundary))
+    one_minus_x_jump = vector_scale(epsilon, matrix_vector_mul(a1, euclidean_boundary))
+    branch_transport = vector_add(
+        vector_scale(l0, x_jump),
+        vector_scale(l1, one_minus_x_jump),
+    )
+    lower_sector_transport = [Fraction(1, 17), Fraction(-1, 19)]
+    transported_masters = vector_add(
+        vector_add(euclidean_boundary, branch_transport),
+        lower_sector_transport,
+    )
+
+    rational_remainder = Fraction(5, 23)
+    uv_counterterm = Fraction(-1, 29)
+    exact_virtual_hard = (
+        dot(reconstructed_coefficients, transported_masters)
+        + rational_remainder
+        + uv_counterterm
+    )
+    raw_residue_virtual = (
+        dot(cut_residues, transported_masters)
+        + rational_remainder
+        + uv_counterterm
+    )
+    assert_true(
+        "using raw cut residues as coefficients changes the hard function",
+        raw_residue_virtual != exact_virtual_hard,
+    )
+
+    euclidean_shortcut = (
+        dot(reconstructed_coefficients, euclidean_boundary)
+        + rational_remainder
+        + uv_counterterm
+    )
+    branchless_shortcut = (
+        dot(
+            reconstructed_coefficients,
+            vector_add(euclidean_boundary, lower_sector_transport),
+        )
+        + rational_remainder
+        + uv_counterterm
+    )
+    lowerless_shortcut = (
+        dot(
+            reconstructed_coefficients,
+            vector_add(euclidean_boundary, branch_transport),
+        )
+        + rational_remainder
+        + uv_counterterm
+    )
+    assert_true(
+        "Euclidean master reuse misses the physical hard function",
+        euclidean_shortcut != exact_virtual_hard,
+    )
+    assert_true(
+        "branch prescription is part of the hard function",
+        branchless_shortcut != exact_virtual_hard,
+    )
+    assert_true(
+        "lower-sector transport is part of the hard function",
+        lowerless_shortcut != exact_virtual_hard,
+    )
+
+    lower_sector_jump = [Fraction(1, 31), Fraction(-2, 37)]
+    physical_x_channel_jump = vector_add(x_jump, lower_sector_jump)
+    independent_cutkosky_datum = Fraction(40567, 447330)
+    assert_equal(
+        "transported masters reproduce independent physical x-channel jump",
+        dot(reconstructed_coefficients, physical_x_channel_jump),
+        independent_cutkosky_datum,
+    )
+    assert_true(
+        "omitting lower-sector jump spoils channel closure",
+        dot(reconstructed_coefficients, x_jump) != independent_cutkosky_datum,
+    )
+    assert_true(
+        "raw residues fail the physical channel comparison",
+        dot(cut_residues, physical_x_channel_jump) != independent_cutkosky_datum,
+    )
+
+    tree = Fraction(4, 3)
+    ir_operator = (Fraction(-7, 5), Fraction(2, 11))
+    virtual_amplitude = laurent_add(
+        laurent_scale(tree, ir_operator),
+        (Fraction(0), exact_virtual_hard),
+    )
+    virtual_contribution = laurent_scale(2 * tree, virtual_amplitude)
+    real_and_factorization = laurent_add(
+        laurent_scale(-2 * tree * tree, ir_operator),
+        (Fraction(0), Fraction(11, 17)),
+    )
+    assembled_observable = laurent_add(virtual_contribution, real_and_factorization)
+    expected_observable = (
+        Fraction(0),
+        2 * tree * exact_virtual_hard + Fraction(11, 17),
+    )
+    assert_equal(
+        "production lane assembles a finite infrared-safe observable",
+        assembled_observable,
+        expected_observable,
+    )
+    assert_true(
+        "virtual-only production lane still carries an infrared pole",
+        virtual_contribution[0] != 0,
+    )
+
+    residuals = {
+        "coefficient_pairing": abs(raw_residue_virtual - exact_virtual_hard),
+        "master_branch": abs(branchless_shortcut - exact_virtual_hard),
+        "lower_sector": abs(lowerless_shortcut - exact_virtual_hard),
+        "channel_closure": abs(
+            dot(reconstructed_coefficients, x_jump) - independent_cutkosky_datum
+        ),
+        "IR_real": abs(virtual_contribution[0]),
+        "measurement": Fraction(1, 137),
+    }
+    exact_defect = sum(residuals.values(), Fraction(0))
+    majorant = sum(abs(value) for value in residuals.values())
+    assert_equal("production lane residual telescope", exact_defect, majorant)
+    underbudget = majorant - residuals["master_branch"] - residuals["IR_real"]
+    assert_true(
+        "omitting branch and real-radiation residuals underbudgets production comparison",
+        exact_defect > underbudget,
+    )
+
+
 def check_virtual_to_observable_assembly() -> None:
     tree = Fraction(3, 2)
     ir_operator = (Fraction(-5, 3), Fraction(7, 11))
@@ -3028,6 +3200,7 @@ def main() -> None:
     check_branch_and_landau_ledger()
     check_two_master_threshold_mixing()
     check_two_letter_master_transport()
+    check_production_master_lane_observable_gate()
     check_virtual_to_observable_assembly()
     check_unresolved_measurement_cell_assembly()
     check_two_loop_ir_pole_consistency_gate()

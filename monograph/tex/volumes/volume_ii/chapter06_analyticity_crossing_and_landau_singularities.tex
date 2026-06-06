@@ -4022,6 +4022,130 @@ them silently turns a cut reconstruction into a stronger statement than the cut
 calculation has established.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Production master lane from cuts to a finite
+observable]
+\label{ca:production-master-lane-observable-gate}
+The finite threshold and two-letter models isolate failure modes, but an
+actual loop calculation has to make the whole evaluation chain commute.  After
+generalized cuts and contact subtractions have fixed a reduced sector, let
+\(\mathcal C_\rho\) be the declared cut or contour data and let
+\(\vec c=(c_1,\ldots,c_N)^{\mathsf T}\) be the coefficient vector of the
+chosen master basis.  The first nontrivial map is not
+\(\mathcal C_\rho\mapsto c_\rho\), but
+\begin{equation}
+  \mathcal C_\rho-\mathcal C_\rho^{\rm surf}
+  -\mathcal C_\rho^{\rm lower}
+  -\mathcal C_\rho^{\rm ev}
+  =
+  P_{\rho i}c_i ,
+  \qquad
+  \vec c=P^{-1}
+  \bigl(\vec{\mathcal C}-\vec{\mathcal C}^{\rm surf}
+  -\vec{\mathcal C}^{\rm lower}
+  -\vec{\mathcal C}^{\rm ev}\bigr),
+  \label{eq:production-master-coefficient-pairing}
+\end{equation}
+where \(P_{\rho i}\) is the pairing between the chosen master integrals and
+the chosen cuts or contours.  A leading singularity, a sampled generalized
+cut, or a finite-field numerator value becomes a master coefficient only after
+this pairing, its normalization, and the subtracted surface/lower/evanescent
+terms have been fixed.
+
+The second map is the physical evaluation of the master vector.  With the
+same notation as above,
+\begin{equation}
+  \vec J_\gamma(x_{\rm phys})
+  =
+  \mathcal U_\gamma \vec J_E
+  +
+  \int_\gamma \mathcal U_{\gamma[t,1]}\vec r(t),
+  \qquad
+  \mathcal U_\gamma=\mathcal P\exp\!\int_\gamma\Omega ,
+  \label{eq:production-master-transport}
+\end{equation}
+where \(\vec J_E\) is fixed at a Euclidean point, \(\vec r\) denotes lower
+sectors, and the path \(\gamma\) specifies the Feynman boundary value.  The
+virtual contribution of the sector is therefore
+\begin{equation}
+  \mathcal A_{\rm sec}^{\rm virt}(x_{\rm phys})
+  =
+  \vec c(x_{\rm phys})^{\mathsf T}\vec J_\gamma(x_{\rm phys})
+  +R_{\rm rat}(x_{\rm phys})+\mathcal P_{\rm UV}(x_{\rm phys}) .
+  \label{eq:production-master-virtual-sector}
+\end{equation}
+The rational/regulator term \(R_{\rm rat}\) and local ultraviolet polynomial
+\(\mathcal P_{\rm UV}\) are written explicitly because neither has to be
+visible in a strictly four-dimensional branch cut.
+
+This organization gives a practical channel-closure test.  For a physical
+channel \(\chi\), the transported masters must satisfy
+\begin{equation}
+  \operatorname{Disc}_{\chi}\mathcal A_{\rm sec}^{\rm virt}
+  =
+  \vec c_\chi^{\mathsf T}\Delta_\chi\vec J
+  +\Delta_\chi\vec c^{\mathsf T}\vec J_\gamma
+  +\Delta_\chi R_{\rm rat}
+  +\Delta_\chi \mathcal A_{\rm lower/sub},
+  \label{eq:production-master-channel-closure}
+\end{equation}
+and this number is compared with the independently normalized Cutkosky
+state-sum datum in that channel.  The comparison is circular if the right-hand
+side is used to define the physical cut.  It is informative only when the
+state sum, positive-energy branch, regulator, and subtraction convention are
+the same on both sides.
+
+A two-master finite model makes the bookkeeping visible.  Let
+\[
+  P=\begin{pmatrix}2&1\\1&1\end{pmatrix},
+  \qquad
+  \vec c=
+  \begin{pmatrix}3/4\\-2/5\end{pmatrix},
+  \qquad
+  \vec{\mathcal C}=P\vec c=
+  \begin{pmatrix}11/10\\7/20\end{pmatrix}.
+\]
+The raw cut data \((11/10,7/20)\) are not the coefficients
+\((3/4,-2/5)\); applying \(P^{-1}\) is part of the calculation.  If the
+master system uses the two residues in
+\eqref{eq:two-letter-master-transport-system}, a Euclidean boundary vector
+\(\vec J_E\), and path-labelled logarithmic transports
+\((L_0^\gamma,L_1^\gamma)\), then to first order
+\[
+  \vec J_\gamma
+  =
+  \vec J_E
+  +\epsilon(L_0^\gamma A_0+L_1^\gamma A_1)\vec J_E
+  +\vec J_{\rm lower}.
+\]
+Replacing \(\vec c\) by raw cut residues, replacing \(\vec J_\gamma\) by
+\(\vec J_E\), or dropping \(\vec J_{\rm lower}\) can preserve selected local
+checks while changing \(\mathcal A_{\rm sec}^{\rm virt}\).  The physical
+hard function is the paired, transported, branch-labelled, lower-sector
+completed object in \eqref{eq:production-master-virtual-sector}.
+
+Finally, the hard function is not yet a cross section or infrared-safe
+observable.  In a one-loop massless gauge-theory normalization the assembled
+quantity has the form
+\begin{equation}
+  \mathcal Q^{(1)}[W]
+  =
+  2\,\Re\,
+  \bigl\langle
+    \mathcal A^{(0)},
+    \mathcal A_{\rm rec}^{(1),{\rm virt}}
+    -\mathbf I^{(1)}\mathcal A^{(0)}
+  \bigr\rangle_W
+  +\mathcal R^{\rm sub}[W]+\mathcal C^{\rm fact}[W].
+  \label{eq:production-master-finite-observable}
+\end{equation}
+Thus a production-level loop result contains four logically separate
+closures: coefficient extraction, master transport with boundary and branch
+data, physical channel-discontinuity comparison, and real/factorization
+assembly.  Each closure has its own residual term in an error budget; a cut
+reconstruction that omits any of them is a virtual diagnostic, not a physical
+prediction.
+\end{controlledapproximation}
+
 \begin{warning}[What equality on cuts does and does not mean]
 \label{warn:cut-equality-integrand-reduction-boundary}
 Cut equality, integrand equality, equality modulo surface terms, equality

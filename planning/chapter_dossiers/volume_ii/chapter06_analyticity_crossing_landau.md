@@ -51,8 +51,10 @@
   channel data, and a two-stage master-integral layer: first a local two-master
   threshold block, then a two-letter transport audit exposing connection data,
   Euclidean boundary constants, branch/path prescriptions, lower sectors, the
-  finite-remainder/observable assembly, an unresolved one-emission measurement
-  cell with plus-distribution cancellation, and a two-loop infrared-pole
+  finite-remainder/observable assembly, a production master-lane gate tying
+  coefficient pairing, transported masters, physical channel closure, and
+  finite observable assembly into one comparison, an unresolved one-emission
+  measurement cell with plus-distribution cancellation, and a two-loop infrared-pole
   consistency test linking
   \(A^{(2)}\), \(I^{(1)}A^{(1)}\), \(I^{(2)}A^{(0)}\), the lower-loop hard
   square, and the NNLO observable budget.
@@ -160,6 +162,7 @@
 | \(\vec M\), \(A_T\), \(y_\gamma\) | local two-master threshold vector, nilpotent threshold residue, and sheet/path-labelled threshold coordinate in the multi-master differential-system model |
 | \(\vec J\), \(A_0,A_1\), \(L_0^\gamma,L_1^\gamma\) | two-letter master-transport vector, residue matrices, and path-labelled logarithmic transports in the finite master-system audit |
 | \(\Omega\), \(W_\alpha\), \(\mathcal U_\gamma\) | reduced master-integral connection, Landau-letter functions, and path-ordered transport from a Euclidean boundary point |
+| \(P_{\rho i}\), \(\mathcal C_\rho\), \(\vec c\) | production master-lane pairing between declared cuts or contours and master coefficients |
 | \(\mu_\perp^2\) | squared loop momentum in the \(-2\epsilon\)-dimensional complement, invisible on four-dimensional cuts |
 | \(I_4^{[\mu^4]}\) | massless scalar box with a \(\mu_\perp^4\) numerator, whose dimension shift gives the finite all-plus rational residue |
 | \(\eta_i^A,Q^{A\alpha}\) | \(\mathcal N=4\) on-shell superspace variables and supermomentum used in the MHV quadruple-cut state sum |
@@ -301,6 +304,11 @@
   noncommuting residues, branch/path prescriptions, and lower-sector residuals;
   it is not claimed to be an additional solved physical integral family beyond
   the explicit finite box master.
+- The production master-lane block assumes one fixed normalization for cuts,
+  master coefficients, transported master values, physical channel state sums,
+  and infrared subtraction.  It audits the composition of those maps into a
+  finite observable; it does not replace a full graph-level amplitude
+  calculation for an arbitrary process.
 - The finite-observable assembly assumes declared one- and two-loop infrared
   subtraction conventions, an infrared-safe measurement or matching target,
   and real-emission/factorization constructions using the same finite
@@ -1049,6 +1057,17 @@
   measurement in the counterevent, freezing the measurement to its locally
   inclusive value, dropping the real cell, and using a non-infrared-safe
   logarithmic weight.
+- 2026-06-06 issue #769 production master-lane pass: added
+  `ca:production-master-lane-observable-gate` after the two-letter transport
+  audit.  The pass reorganizes the nearby loop-amplitude cells into one
+  physics-facing evaluation lane: cut/contour data are first paired with a
+  master basis, transported masters are evaluated with Euclidean boundary and
+  branch data, the resulting discontinuity is compared with an independent
+  Cutkosky channel datum, and only then is the virtual hard function assembled
+  with real/factorization data into a finite observable.  The companion check
+  verifies that composition and rejects raw-residue coefficients,
+  Euclidean-master shortcuts, lower-sector omission, branch omission,
+  self-incomplete channel closure, and virtual-only observable assembly.
 - 2026-06-05 issue #755 named-tool role pass: added
   `rem:chapter06-named-tool-status-ledger` near the chapter entrance and
   tightened the generalized-unitarity opening.  The pass records which named
