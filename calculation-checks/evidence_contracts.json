@@ -8,6 +8,13 @@
     "Negative controls:",
     "Scope boundary:"
   ],
+  "extended_required_sections": [
+    "Primary derivation route:",
+    "Independent verification route:",
+    "Convention dependencies:",
+    "Domain and remainder assumptions:",
+    "Remaining unproved or conditional:"
+  ],
   "files": [
     {
       "path": "anomaly_matching_wzw_checks.py",
@@ -31,7 +38,14 @@
     },
     {
       "path": "instanton_physical_amplitude_architecture_checks.py",
-      "risk_class": "instanton physical-amplitude architecture"
+      "risk_class": "instanton physical-amplitude architecture",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "half-trace Yang-Mills action",
+        "Dirac determinant not Pfaffian",
+        "BPST singular-gauge zero modes",
+        "hard source and physical projection coordinates"
+      ]
     },
     {
       "path": "soliton_quantization_channel_checks.py",
@@ -87,7 +101,14 @@
     },
     {
       "path": "qcd_phase_checks.py",
-      "risk_class": "QCD thermodynamics and hydrodynamic response"
+      "risk_class": "QCD thermodynamics and hydrodynamic response",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "mostly-plus retarded response",
+        "rho=-2 Im G^R",
+        "Landau-frame one-charge hydrodynamics",
+        "baryon-source thermodynamic derivatives"
+      ]
     },
     {
       "path": "scet_factorization_checks.py",
@@ -163,7 +184,14 @@
     },
     {
       "path": "generalized_unitarity_reduction_checks.py",
-      "risk_class": "loop-amplitude reconstruction and integral reduction"
+      "risk_class": "loop-amplitude reconstruction and integral reduction",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "Cutkosky positive-energy state sum",
+        "stripped four-dimensional phase-space normalization",
+        "physical-sheet master discontinuities",
+        "cubic graph denominator convention"
+      ]
     },
     {
       "path": "weinberg_witten_helicity_checks.py",

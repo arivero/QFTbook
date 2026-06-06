@@ -1,4 +1,4 @@
-"""Finite checks for the instanton physical-amplitude architecture chapter.
+r"""Finite checks for the instanton physical-amplitude architecture chapter.
 
 Evidence contract.
 
@@ -90,6 +90,41 @@ Independent construction:
   tail subtraction, and hard-window power checks
   directly, rather than importing BPST radial integrals or copying a monograph
   coefficient.
+
+Primary derivation route:
+- The manuscript derives the channel formulas from the semiclassical
+  finite-regulator path-integral expansion: collective density, zero-mode
+  Berezin saturation, proper-time determinant logarithms, source insertion,
+  endpoint window, and physical projection are assembled in that order.
+
+Independent verification route:
+- The check does not recompute the continuum BPST integral.  It builds finite
+  algebraic source channels, exact two-by-two zero-mode source matrices,
+  finite Gaussian fluctuation quotients, finite pole/spectral projections, and
+  exact rational calibration windows.  These finite models are deliberately
+  chosen so rank loss, source quotient transport, physical projection, and
+  determinant normalization can be varied independently.
+
+Convention dependencies:
+- The evidence uses the monograph half-trace Yang-Mills coupling coordinate,
+  the \(SU(3)\), \(N_f=2\) hard-source convention, Dirac fundamental
+  determinants rather than Pfaffian half-bookkeeping, singular-gauge BPST
+  zero-mode slots, normalized Haar orientation measure, and the chapter's
+  separation between Euclidean source kernels and physical pole/spectral/OPE
+  projections.
+
+Domain and remainder assumptions:
+- All continuum estimates are represented by finite retained-window cells with
+  declared absolute residuals.  The checks assume a weak-size hard window,
+  fixed nonzero hard momentum ratios, a nonzero source-rank margin when a
+  relative statement is made, and separately budgeted endpoint, sector,
+  infrared, continuation, and projection errors.
+
+Remaining unproved or conditional:
+- The companion does not compute the continuum finite determinant constant,
+  prove convergence of the instanton size integral, prove a Lorentzian LSZ
+  theorem for the auxiliary kernel, construct a full dilute ensemble, or
+  validate any specific phenomenological instanton regime.
 
 Imported assumptions:
 - The finite model assumes that the continuum instanton window has already been

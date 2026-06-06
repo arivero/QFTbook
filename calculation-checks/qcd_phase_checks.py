@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Finite algebra checks for the QCD phase-structure chapter.
+r"""Finite algebra checks for the QCD phase-structure chapter.
 
 Evidence contract.
 
@@ -45,6 +45,43 @@ Independent construction:
 - For the closure window, reconstructs the shear, sound, and charge pole
   data from one rational transport datum and checks the combined residual
   ledger before accepting the hydrodynamic prediction.
+
+Primary derivation route:
+- The manuscript derives the transport windows from linearized real-time
+  hydrodynamics and thermodynamic source variables: retarded kernels are
+  written in a declared frame, spectral densities are extracted in the
+  \(\rho=-2\operatorname{Im}G^R\) convention, and viscosity or conductivity
+  coordinates are read from pole widths only after residues and subtraction
+  data are supplied.
+
+Independent verification route:
+- The companion constructs rational retarded kernels and longitudinal
+  determinant polynomials directly from thermodynamic data.  It then samples
+  spectral functions, solves for width/residue data, subtracts regular,
+  critical, shear, conductive, and Drude pieces, and reconstructs transport
+  coefficients from those generated response functions rather than assigning
+  the final transport formula as input.
+
+Convention dependencies:
+- The checks use the monograph mostly-plus real-time convention, the retarded
+  prescription with \(\rho=-2\operatorname{Im}G^R\), Landau-frame
+  one-charge hydrodynamics, baryon chemical-potential normalization
+  \(\mu_q=\mu_B/N_c\), finite thermodynamic derivatives
+  \(\beta_{1,2}\) and \(\alpha_{1,2}\), and the intrinsic conductivity
+  convention after convective current subtraction.
+
+Domain and remainder assumptions:
+- The response-window checks assume an isolated finite-\(k\) hydrodynamic pole
+  or coupled sound/diffusion eigenmode, finite susceptibility and enthalpy
+  residues, a contact-subtracted spectral window, and explicit majorants for
+  regular backgrounds, near-critical weight, finite-volume/continuation
+  errors, frame transport, and continuum remainders.
+
+Remaining unproved or conditional:
+- The companion does not prove that continuum QCD has the assumed isolated
+  poles in a given phase, does not simulate QCD, and does not establish the
+  existence, order, or universality class of any phase transition.  It checks
+  the convention and extraction algebra once those physics inputs are assumed.
 
 Imported assumptions:
 - Continuum QCD thermodynamic limits, real-time retarded correlator existence,

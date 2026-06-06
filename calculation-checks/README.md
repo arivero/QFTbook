@@ -42,13 +42,33 @@ docstring, the check summary below, or the paired planning dossier:
   thermodynamic-limit, reconstruction, sewing, positivity, or uniform-remainder
   claims.
 
+Extended manifest entries additionally require:
+
+- Primary derivation route: how the manuscript obtains the claim.
+- Independent verification route: the distinct check path, including what is
+  not copied from the target derivation.
+- Convention dependencies: sign, normalization, regulator, branch, state-sum,
+  frame, or source conventions that the check must share with the text.
+- Domain and remainder assumptions: finite/continuum, Euclidean/Lorentzian,
+  regulator, sample, window, and residual hypotheses under which the check is
+  meaningful.
+- Remaining unproved or conditional: the specific theorem, physical
+  amplitude, thermodynamic limit, analytic continuation, or phenomenological
+  statement that the check still does not establish.
+
+Extended entries in `evidence_contracts.json` must also declare
+`convention_tags`.  The audit rejects exact self-confirming assignments such
+as `physical_cut_datum = reconstructed_discontinuity` in manifest companions
+unless a line carries an explicit waiver.
+
 The first-wave high-risk manifest is `evidence_contracts.json`.  Audit it with:
 
 ```
 python3 tools/audit_calculation_evidence_contracts.py
 ```
 
-The audit enforces the five contract fields for manifest entries and prints a
+The audit enforces the base contract fields for manifest entries, plus the
+extended fields and convention tags for extended entries.  It also prints a
 non-blocking risk report for other calculation-check docstrings that mention
 continuum, theorem, reconstruction, sewing, positivity, anomaly, or related
 scope-sensitive terms.  Expanding that manifest is part of the continuing

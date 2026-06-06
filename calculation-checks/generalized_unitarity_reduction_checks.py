@@ -124,6 +124,35 @@ encoded log-square answer; Laurent-pole arithmetic for virtual/real infrared
 cancellation, plus-distribution measurement cells, paired-measurement finite
 differences after pole cancellation, finite scheme transport, and two-loop
 recursive pole subtraction.
+Primary derivation route: the manuscript route starts from Cutkosky
+discontinuities, generalized cuts and contours, numerator reduction, IBP and
+master-basis projection, master differential equations with physical branch
+data, and the assembly of virtual finite remainders with subtraction, real
+radiation, factorization, and measurement data.
+Independent verification route: the companion uses finite rational
+incidence/cut matrices, contour/master pairing inversions, finite-field
+interpolation from modular samples, an independent two-particle
+phase-space/state-sum evaluation for the scalar bubble, separate master-jump
+transport on the physical sheet, exact denominator-weighted Jacobi triplets,
+and generated measurement cells.  The physical discontinuity datum is
+computed from state sums rather than assigned from the reconstructed
+discontinuity.
+Convention dependencies: the checks use the monograph Cutkosky
+positive-energy state-sum normalization, the stripped four-dimensional
+massless two-particle phase-space convention, dimensional regularization with
+scaleless tadpoles set to zero, the physical-sheet +i0 branch choice for
+masters, and the cubic-graph denominator convention for loop Jacobi triplets.
+Domain and remainder assumptions: the finite checks assume the declared
+master basis, local numerator representatives, known lower-sector/scaleless
+status, finite IR subtraction convention, good finite-field primes and
+samples, and a fixed infrared-safe measurement.  Continuum analytic
+assumptions and omitted real/factorization residuals remain outside the
+finite algebra.
+Remaining unproved or conditional: the companion does not prove Wightman
+unitarity, compute a full nonabelian helicity amplitude from Feynman graphs,
+solve general multi-loop integral families, prove color-kinematics duality,
+or establish an infrared-safe collider observable without the separate
+real-radiation and factorization construction.
 Imported assumptions: dimensional regularization, the standard massless
 two-particle phase-space normalization with the common factor of pi stripped
 off, the Feynman-parameter gamma-function form of the bubble master, and the
