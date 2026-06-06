@@ -110,6 +110,11 @@ GitHub issue #628.
   finite-momentum sound attenuation estimator, and the residual classes used
   to keep bulk-viscosity extraction separate from raw trace slopes, shear
   attenuation, and critical scalar contamination.
+- `n_q`, `chi_q`, `Sigma_q^inc`, `D_q`, `gamma_q(k)`, `C_Omega(k)`:
+  momentum-orthogonal conserved-charge density, susceptibility, intrinsic
+  conductivity, diffusion constant, finite-momentum diffusion-pole width, and
+  finite-window susceptibility-residue estimator used to keep charge
+  conductivity separate from raw current Drude weight and width-only fits.
 
 ## Claim Ledger
 
@@ -210,6 +215,13 @@ GitHub issue #628.
   sound-pole estimate `zeta=w Gamma_s-2(d-1) eta/d` is valid only after shear,
   thermodynamic, charge-projection, finite-`k`, regular-background,
   continuum, and critical scalar uncertainties are budgeted.
+- Adds a finite charge-diffusion spectral window: after projecting away the
+  convective momentum sector, an intrinsic conserved-charge conductivity is
+  reconstructed from a density diffusion pole by combining the width
+  `gamma_q(k)=D_q k^2` with the susceptibility residue `chi_q`; raw current
+  Kubo slopes, width-only diffusion fits, sound-mixed density peaks, and
+  near-critical charge modes are not accepted as conductivity data unless the
+  corresponding residuals are separated.
 - Proves the origin of the finite-density sign problem from loss of
   \(\gamma_5\)-Hermiticity at real chemical potential.
 - Defines imaginary chemical potential as a thermal boundary-condition
@@ -323,8 +335,10 @@ GitHub issue #628.
   coupled-diffusion, finite shear spectral-window width/residue and
   background-error bookkeeping, finite bulk/sound spectral-window
   thermodynamic-source subtraction, shear-subtraction, residual-budget, and
-  scalar critical-mode negative controls, momentum-projected baryon-current
-  bookkeeping, and CFL Goldstone count.
+  scalar critical-mode negative controls, finite charge-diffusion
+  spectral-window susceptibility-residue, width, regular-background,
+  convective-Drude, and near-charge-mode negative controls,
+  momentum-projected baryon-current bookkeeping, and CFL Goldstone count.
 
 ## Open Issues
 
@@ -410,6 +424,19 @@ GitHub issue #628.
   verifies the exact scalar-source subtraction and the independent sound-pole
   reconstruction, while rejecting raw trace-slope, width-only, missing-shear,
   and hidden-critical shortcuts.
+- 2026-06-06 issue #630 charge-diffusion spectral-window pass: added
+  `ca:qcd-finite-charge-diffusion-spectral-window` after the
+  momentum-projected baryon-current proposition.  The pass completes the
+  first-order transport triad around the conserved-charge sector: the
+  monograph now removes the convective Drude component, constructs the
+  density diffusion pole, extracts the susceptibility residue and width in a
+  finite window, and propagates both into the intrinsic conductivity
+  `Sigma_q^inc=chi_q gamma_q/k^2`.  `qcd_phase_checks.py` now generates the
+  retarded density kernel, samples the spectral function, reconstructs the
+  diffusion width, susceptibility, and conductivity, and rejects width-only,
+  raw-current Drude, regular-background, missing-residue, and hidden
+  near-charge-mode shortcuts.  This is a physics-output transport pass, not a
+  new hydrodynamic notation layer.
 - 2026-05-27 Roberge--Weiss pass: added the finite-regulator imaginary
   chemical-potential theorem, positivity statement for vectorlike pairs,
   Roberge--Weiss transition status remark, and exact angle-periodicity

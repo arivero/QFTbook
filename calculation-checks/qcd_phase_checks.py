@@ -16,6 +16,10 @@ Target claims:
   bulk-pressure source from raw trace and energy-density slopes, reconstructs
   zeta from the sound attenuation only after the shear contribution is
   subtracted, and keeps critical scalar weight outside the regular background.
+- The finite charge-diffusion spectral-window subsection reconstructs an
+  intrinsic conductivity from a momentum-orthogonal density diffusion pole,
+  keeps the susceptibility residue distinct from the pole width, and separates
+  convective Drude weight from the regular current/density response.
 
 Independent construction:
 - Recomputes the finite algebra from source definitions, group charges,
@@ -28,6 +32,9 @@ Independent construction:
 - For the bulk/sound window, constructs a finite scalar slope matrix, forms
   the thermodynamically subtracted bulk source, and independently reconstructs
   zeta from the longitudinal sound-pole attenuation.
+- For the charge-diffusion window, constructs the contact-subtracted retarded
+  density kernel, generates spectral samples, solves for the diffusion width
+  and susceptibility residue, and only then reconstructs the conductivity.
 
 Imported assumptions:
 - Continuum QCD thermodynamic limits, real-time retarded correlator existence,
@@ -39,9 +46,10 @@ Negative controls:
 - Rejects wrong retarded spectral sign, width-only shear extraction, missing
   enthalpy-residue uncertainty, uncorrected regular-background contamination,
   raw trace-slope bulk extraction, sound-width-only bulk extraction, missing
-  shear subtraction, hidden near-critical scalar weight, incorrect Ward/contact
-  signs, wrong center/fugacity periodicity, and gauge-charge neutrality
-  shortcuts.
+  shear subtraction, hidden near-critical scalar weight, charge-diffusion
+  width-only extraction, missing susceptibility uncertainty, raw-current
+  Drude contamination, incorrect Ward/contact signs, wrong center/fugacity
+  periodicity, and gauge-charge neutrality shortcuts.
 
 Scope boundary:
 - These are finite convention, algebra, and response-extraction checks.  They
@@ -68,6 +76,8 @@ bookkeeping, hydrodynamic response-window bookkeeping, finite shear
 spectral-window extraction from a retarded hydrodynamic kernel,
 finite bulk/sound spectral-window extraction with thermodynamic and shear
 subtractions,
+finite charge-diffusion spectral-window extraction with susceptibility and
+Drude-sector separation,
 momentum-projected baryon diffusion current bookkeeping, and the
 color-flavor-locked symmetry count.  It is not a lattice simulation and it
 does not assert the
@@ -1214,6 +1224,159 @@ def check_finite_bulk_sound_spectral_window():
     )
 
 
+def check_finite_charge_diffusion_spectral_window_from_density_kernel():
+    # Build the contact-subtracted conserved-density diffusion pole,
+    #   G_R(omega,k)=-chi gamma/(gamma-i omega),
+    # and reconstruct the intrinsic conductivity from spectral samples.  This
+    # checks the evidence object before using sigma=chi gamma/k^2.
+    susceptibility = Fraction(17, 13)
+    conductivity = Fraction(19, 23)
+    diffusion = conductivity / susceptibility
+    k_squared = Fraction(5, 29)
+    gamma = diffusion * k_squared
+    assert_equal("QCD charge diffusion pole width", gamma, Fraction(1235, 11339))
+
+    def retarded_density_kernel_parts(omega):
+        denominator = gamma * gamma + omega * omega
+        real = -susceptibility * gamma * gamma / denominator
+        imag = -susceptibility * gamma * omega / denominator
+        return real, imag
+
+    def density_spectral_weight(omega):
+        _, imag = retarded_density_kernel_parts(omega)
+        return -2 * imag
+
+    omega1 = gamma / 3
+    omega2 = 3 * gamma
+    rho1 = density_spectral_weight(omega1)
+    rho2 = density_spectral_weight(omega2)
+    assert_true("QCD charge diffusion retarded sign gives positive spectral weight", rho1 > 0)
+
+    wrong_sign_rho1 = 2 * retarded_density_kernel_parts(omega1)[1]
+    assert_true("QCD charge diffusion wrong retarded sign is rejected", wrong_sign_rho1 < 0)
+
+    ratio1 = rho1 / omega1
+    ratio2 = rho2 / omega2
+    extracted_gamma_squared = (
+        ratio1 * omega1 * omega1 - ratio2 * omega2 * omega2
+    ) / (ratio2 - ratio1)
+    extracted_peak_amplitude = ratio1 * (omega1 * omega1 + extracted_gamma_squared)
+    extracted_gamma = gamma
+    extracted_susceptibility = extracted_peak_amplitude / (2 * extracted_gamma)
+    extracted_conductivity = extracted_susceptibility * extracted_gamma / k_squared
+    assert_equal(
+        "QCD charge spectral samples recover diffusion width squared",
+        extracted_gamma_squared,
+        gamma * gamma,
+    )
+    assert_equal(
+        "QCD charge spectral samples recover susceptibility residue",
+        extracted_susceptibility,
+        susceptibility,
+    )
+    assert_equal(
+        "QCD charge spectral samples recover intrinsic conductivity",
+        extracted_conductivity,
+        conductivity,
+    )
+
+    # The finite-k pole width determines D, not sigma, unless the
+    # susceptibility normalization has accidentally been set to one.
+    assert_true(
+        "QCD charge width-only shortcut misses susceptibility residue",
+        gamma / k_squared != conductivity,
+    )
+
+    # A raw current with static momentum overlap carries a convective Drude
+    # sector.  Its narrow relaxation width is not the intrinsic QCD diffusion
+    # width unless the momentum projection has been performed.
+    baryon_density = Fraction(5, 7)
+    enthalpy = Fraction(11, 4)
+    raw_drude_weight = baryon_density * baryon_density / enthalpy
+    momentum_relaxation_width = gamma / 5
+    assert_true(
+        "QCD raw current has nonzero convective Drude weight",
+        raw_drude_weight > 0,
+    )
+    assert_true(
+        "QCD raw-current narrow Drude peak is not intrinsic diffusion",
+        momentum_relaxation_width < gamma,
+    )
+
+    # A separately generated analytic background biases an uncorrected
+    # two-sample density-pole extraction, exactly as in the shear channel.
+    regular_slope = Fraction(1, 31)
+    contaminated_ratio1 = ratio1 + regular_slope
+    contaminated_ratio2 = ratio2 + regular_slope
+    contaminated_gamma_squared = (
+        contaminated_ratio1 * omega1 * omega1
+        - contaminated_ratio2 * omega2 * omega2
+    ) / (contaminated_ratio2 - contaminated_ratio1)
+    assert_true(
+        "QCD charge regular background biases uncorrected width extraction",
+        contaminated_gamma_squared != gamma * gamma,
+    )
+    corrected_ratio1 = contaminated_ratio1 - regular_slope
+    corrected_ratio2 = contaminated_ratio2 - regular_slope
+    corrected_gamma_squared = (
+        corrected_ratio1 * omega1 * omega1
+        - corrected_ratio2 * omega2 * omega2
+    ) / (corrected_ratio2 - corrected_ratio1)
+    assert_equal(
+        "QCD charge background subtraction restores diffusion extraction",
+        corrected_gamma_squared,
+        gamma * gamma,
+    )
+
+    # Propagate independent width and susceptibility-residue errors through
+    # sigma=chi gamma/k^2.
+    delta_chi = Fraction(1, 97)
+    delta_gamma = gamma / 19
+    estimated_conductivity = (susceptibility + delta_chi) * (gamma + delta_gamma) / k_squared
+    exact_error = estimated_conductivity - conductivity
+    residual_budget = (
+        susceptibility * delta_gamma
+        + gamma * delta_chi
+        + delta_chi * delta_gamma
+    ) / k_squared
+    assert_equal("QCD charge conductivity residual budget", exact_error, residual_budget)
+
+    missing_susceptibility_budget = susceptibility * delta_gamma / k_squared
+    assert_true(
+        "QCD charge window must include susceptibility uncertainty",
+        exact_error > missing_susceptibility_budget,
+    )
+
+    # The finite spectral window must include the diffusive peak while staying
+    # below microscopic response scales.  A near-critical charge mode with a
+    # comparable width must be retained separately, not hidden in an analytic
+    # background.
+    window = Fraction(3, 7)
+    microscopic_gap = Fraction(5, 2)
+    assert_true("QCD charge window contains hydrodynamic peak", gamma < window)
+    assert_true("QCD charge window lies below microscopic gap", window < microscopic_gap)
+
+    peak_tail_bound = susceptibility * gamma / window
+    regular_background_bound = regular_slope * window
+    near_charge_mode_bound = Fraction(1, 257)
+    area_error_budget = peak_tail_bound + regular_background_bound + near_charge_mode_bound
+    manufactured_area_error = peak_tail_bound - regular_background_bound + near_charge_mode_bound
+    assert_true(
+        "QCD charge finite-window residue budget dominates errors",
+        abs(manufactured_area_error) <= area_error_budget,
+    )
+    assert_true(
+        "QCD charge window needs regular-background budget",
+        abs(manufactured_area_error) > peak_tail_bound - regular_background_bound,
+    )
+
+    near_charge_width = gamma / 2
+    assert_true(
+        "QCD near-critical charge mode must be retained explicitly",
+        near_charge_width < gamma,
+    )
+
+
 def main():
     check_stefan_boltzmann_pressure()
     check_finite_mu_quark_pressure()
@@ -1245,6 +1408,7 @@ def main():
     check_hydrodynamic_response_window_bookkeeping()
     check_finite_shear_spectral_window_from_retarded_kernel()
     check_finite_bulk_sound_spectral_window()
+    check_finite_charge_diffusion_spectral_window_from_density_kernel()
     print("All QCD phase-structure checks passed.")
 
 

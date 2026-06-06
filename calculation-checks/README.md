@@ -323,7 +323,10 @@ Current checks:
   width/amplitude reconstruction, regular-background bias/subtraction, and
   near-critical-mode negative controls, the finite bulk/sound spectral-window
   extraction with thermodynamic source subtraction, shear subtraction,
-  residual budgeting, and scalar critical-mode negative controls, and the
+  residual budgeting, and scalar critical-mode negative controls, the finite
+  charge-diffusion spectral-window extraction with susceptibility-residue,
+  width, regular-background, convective-Drude, and near-charge-mode negative
+  controls, and the
   momentum-projected baryon current which removes the convective Drude sector
   at finite density, and the CFL Goldstone count.
 - `nonrelativistic_ng_counting_checks.py`: exact finite checks for the

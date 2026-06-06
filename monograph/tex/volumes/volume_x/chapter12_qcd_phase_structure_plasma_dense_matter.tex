@@ -2162,6 +2162,119 @@ sector, while the projected current is the object whose regular spectral
 slope can be matched to the diffusive hydrodynamic coefficient.
 \end{proof}
 
+\begin{controlledapproximation}[Finite charge diffusion spectral window]
+\label{ca:qcd-finite-charge-diffusion-spectral-window}
+After the convective current in
+Proposition~\ref{prop:qcd-incoherent-baryon-current} has been removed, a
+conserved charge conductivity can be tested in a finite density-response
+window.  Work first in one momentum-orthogonal charge eigenchannel.  Let
+\(\chi_q>0\) be the static susceptibility, \(\Sigma_q^{\rm inc}\) the
+intrinsic conductivity, and
+\[
+  D_q=\frac{\Sigma_q^{\rm inc}}{\chi_q},
+  \qquad
+  \gamma_q(k)=D_q k^2 .
+\]
+For a contact-subtracted density source with momentum
+\(\mathbf k=k\hat x\), an isolated diffusion pole has the retarded kernel
+\begin{equation}
+  G_{n_qn_q}^{R,{\rm pole}}(\omega,k)
+  =
+  -\frac{\chi_q\,\gamma_q(k)}{\gamma_q(k)-\ii\omega}.
+  \label{eq:qcd-charge-diffusion-retarded-pole}
+\end{equation}
+In the same \(\rho=-2\operatorname{Im}G^R\) convention as the shear window,
+\begin{equation}
+  \rho^{\rm hyd}_{n_qn_q}(\omega,k)
+  =
+  \frac{2\chi_q\,\gamma_q(k)\,\omega}
+       {\omega^2+\gamma_q(k)^2}.
+  \label{eq:qcd-charge-diffusion-spectral-peak}
+\end{equation}
+Thus the finite-\(k\) width determines \(D_q\), while the residue determines
+\(\chi_q\).  The conductivity is their product,
+\[
+  \Sigma_q^{\rm inc}=\chi_q\,\frac{\gamma_q(k)}{k^2},
+\]
+not the width by itself and not the raw current Kubo slope before momentum
+projection.
+
+A controlled finite-window extraction requires
+\begin{equation}
+  \gamma_q(k)\ll\Omega\ll \tau_{\rm micro}^{-1}
+  \label{eq:qcd-charge-diffusion-window-scale-separation}
+\end{equation}
+and a decomposition
+\begin{equation}
+  \rho^{\rm sub}_{n_qn_q}(\omega,k)
+  =
+  \rho^{\rm hyd}_{n_qn_q}(\omega,k)
+  +
+  \rho^{\rm reg}_{n_qn_q}(\omega,k)
+  +
+  \rho^{\rm near}_{n_qn_q}(\omega,k)
+  +
+  R^{(q)}_{\Omega,k}(\omega).
+  \label{eq:qcd-charge-diffusion-window-decomposition}
+\end{equation}
+Here \(\rho^{\rm reg}\) is analytic low-frequency weight,
+\(\rho^{\rm near}\) is any critical or long-time-tail charge mode in the same
+scaling window, and \(R^{(q)}_{\Omega,k}\) is the finite-volume,
+continuation, and continuum-window remainder.  The susceptibility residue is
+checked by
+\begin{equation}
+  \mathcal C_\Omega(k)
+  =
+  \frac1\pi\int_0^\Omega
+  \frac{\rho^{\rm sub}_{n_qn_q}(\omega,k)}{\omega}\,d\omega
+  =
+  \frac{2\chi_q}{\pi}
+  \arctan\!\left(\frac{\Omega}{\gamma_q(k)}\right)
+  +
+  R_C(\Omega,k),
+  \label{eq:qcd-charge-diffusion-window-area}
+\end{equation}
+so
+\begin{equation}
+  \left|\mathcal C_\Omega(k)-\chi_q\right|
+  \le
+  \frac{2\chi_q}{\pi}\frac{\gamma_q(k)}{\Omega}
+  +
+  \frac1\pi\int_0^\Omega
+  \frac{|\rho^{\rm reg}|+|\rho^{\rm near}|+|R^{(q)}_{\Omega,k}|}{\omega}\,
+  d\omega .
+  \label{eq:qcd-charge-diffusion-residue-bound}
+\end{equation}
+If the fitted width and residue are
+\(\widehat\gamma_q=\gamma_q+\delta\gamma_q\) and
+\(\widehat\chi_q=\chi_q+\delta\chi_q\), then
+\begin{equation}
+  \left|
+  \frac{\widehat\chi_q\,\widehat\gamma_q}{k^2}
+  -
+  \Sigma_q^{\rm inc}
+  \right|
+  \le
+  \frac{
+    \chi_q|\delta\gamma_q|
+    +
+    \gamma_q|\delta\chi_q|
+    +
+    |\delta\chi_q|\,|\delta\gamma_q|
+  }{k^2}
+  +
+  R_{\rm charge}.
+  \label{eq:qcd-charge-diffusion-conductivity-budget}
+\end{equation}
+For several exactly conserved charges, the same statement is applied after
+diagonalizing the momentum-orthogonal matrix
+\(\Sigma^{\rm inc}\chi^{-1}\) in the charge sector and after separating the
+sound variables at finite density.  Otherwise a longitudinal density peak can
+mix with sound, while a raw current correlator can contain the convective
+Drude contribution of the conserved momentum.  Neither effect is an intrinsic
+QCD charge-conductivity datum.
+\end{controlledapproximation}
+
 \begin{remark}[The \(\eta/s\) lower-bound claim]
 The value \(1/(4\pi)\) is an important result in a class of strongly coupled
 large-\(N\) theories with classical gravity duals.  It is not a theorem of
