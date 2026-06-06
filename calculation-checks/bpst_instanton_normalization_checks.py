@@ -94,6 +94,10 @@ relations
     after analytic continuation and pole/spectral/OPE projection; the bridge
     has independent regulator, continuation, spectral, infrared, unitarity-cut,
     matching, and size-endpoint residuals
+    the spectral projection of an instanton source correlator is a
+    discontinuity/bin functional, not a Euclidean Stieltjes value; contact
+    polynomials have no spectral discontinuity and one spacelike value cannot
+    determine a physical bin without an inversion/stability datum
     inclusive spectral weights and rates first expand by amplitude sectors:
     a nonzero perturbative sector produces an order e^(-S_I) interference
     term, while the diagonal IbarI contribution has doubled action and is
@@ -3800,6 +3804,88 @@ def check_instanton_euclidean_to_physical_residual_budget() -> None:
     )
 
 
+def check_instanton_spectral_continuation_gate() -> None:
+    def stieltjes_value(atoms: list[tuple[Fraction, Fraction]], q2: Fraction) -> Fraction:
+        return sum(weight / (mass2 + q2) for mass2, weight in atoms)
+
+    def spectral_bin(
+        atoms: list[tuple[Fraction, Fraction]],
+        lower: Fraction,
+        upper: Fraction,
+    ) -> Fraction:
+        return sum(weight for mass2, weight in atoms if lower <= mass2 <= upper)
+
+    atoms = [
+        (Fraction(1), Fraction(5, 6)),
+        (Fraction(4), Fraction(3, 5)),
+        (Fraction(9), Fraction(7, 10)),
+    ]
+    q2 = Fraction(2)
+    euclidean_value = stieltjes_value(atoms, q2)
+    selected_bin = spectral_bin(atoms, Fraction(3), Fraction(6))
+    assert_equal("instanton spectral bin weight", selected_bin, Fraction(3, 5))
+    assert_equal(
+        "Euclidean Stieltjes value is not the spectral bin",
+        euclidean_value == selected_bin,
+        False,
+    )
+
+    contact_polynomial = Fraction(11, 7) + Fraction(2, 9) * q2
+    assert_equal(
+        "contact polynomial changes spacelike source value",
+        euclidean_value + contact_polynomial == euclidean_value,
+        False,
+    )
+    assert_equal(
+        "contact polynomial has no separated spectral bin",
+        selected_bin,
+        spectral_bin(atoms, Fraction(3), Fraction(6)),
+    )
+
+    # A single Euclidean value does not determine the spectral bin.  These two
+    # positive spectral measures agree at Q_E^2=2 but put different weight in
+    # the low-energy bin.
+    spectral_a = [(Fraction(1), Fraction(1)), (Fraction(4), Fraction(1))]
+    spectral_b = [(Fraction(1), Fraction(13, 10)), (Fraction(4), Fraction(2, 5))]
+    assert_equal(
+        "distinct spectra share one Euclidean instanton source value",
+        stieltjes_value(spectral_a, q2),
+        stieltjes_value(spectral_b, q2),
+    )
+    assert_equal(
+        "shared Euclidean value hides different spectral bin",
+        spectral_bin(spectral_a, Fraction(0), Fraction(2))
+        == spectral_bin(spectral_b, Fraction(0), Fraction(2)),
+        False,
+    )
+    assert_equal(
+        "second Euclidean point detects the spectral ambiguity",
+        stieltjes_value(spectral_a, Fraction(5))
+        == stieltjes_value(spectral_b, Fraction(5)),
+        False,
+    )
+
+    leading_weight = selected_bin
+    residuals = {
+        "dispersion_tail": Fraction(1, 20),
+        "inverse_problem": Fraction(1, 30),
+        "contact_transport": Fraction(1, 42),
+        "unitarity_cut": Fraction(1, 56),
+        "infrared_projection": Fraction(1, 72),
+    }
+    exact_weight = leading_weight + sum(residuals.values(), Fraction(0))
+    spectral_majorant = sum(abs(value) for value in residuals.values())
+    if not abs(exact_weight - leading_weight) <= spectral_majorant:
+        raise AssertionError("instanton spectral projection residual bound failed")
+
+    underbudget = spectral_majorant - abs(residuals["inverse_problem"])
+    assert_equal(
+        "omitting inverse-problem residual underbudgets spectral projection",
+        abs(exact_weight - leading_weight) <= underbudget,
+        False,
+    )
+
+
 def check_instanton_unitarity_cut_pairing() -> None:
     instanton_charge = 1
     anti_instanton_charge = -1
@@ -6905,6 +6991,7 @@ def main() -> None:
     check_color_singlet_instanton_source_projection()
     check_instanton_hadronic_pole_window_projection()
     check_instanton_euclidean_to_physical_residual_budget()
+    check_instanton_spectral_continuation_gate()
     check_instanton_unitarity_cut_pairing()
     check_one_instanton_sector_isolation_bound()
     check_instanton_amplitude_error_budget()

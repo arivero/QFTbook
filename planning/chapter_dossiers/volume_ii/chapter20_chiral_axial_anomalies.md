@@ -1167,6 +1167,22 @@
   hadronic matching, nonzero-mode Schur corrections, and endpoint tails.  This
   makes precise that the collective-coordinate measure is only one input to the
   QFT amplitude.
+- The physical projection of an instanton source correlator now includes a
+  concrete spectral-continuation layer:
+  \[
+    G_I^E(Q_E^2)
+    =
+    P_N(Q_E^2)+
+    \int_{s_0}^{\infty}{\rho_I(s)\over s+Q_E^2}\,ds
+    +R_{\rm disp}(Q_E^2),
+    \qquad
+    W_{I,\Delta}=\int w_\Delta(s)\rho_I(s)\,ds .
+  \]
+  The local contact polynomial changes Euclidean source values but has no
+  separated discontinuity, and a physical bin/rate requires the chosen sheet,
+  subtraction transport, inverse-problem stability, cut completion, and infrared
+  projection residuals.  This prevents a finite spacelike instanton source
+  value from being read as an observable spectral weight.
 - The hard four-fermion instanton coefficient is now specialized to
   \(SU(3)\), \(N_f=2\) in the Pauli-Villars pure-gauge convention:
   \(b_0=29/3\), the collective prefactor is
@@ -2056,3 +2072,13 @@
   executable evidence with the Gram-inversion proof already present in the
   TeX and removes the copied-coefficient weakness noted for the instanton
   amplitude companion.
+- 2026-06-06 issue #597 spectral-continuation pass: added
+  `ca:instanton-spectral-continuation-source-correlator` after the generic
+  Euclidean-to-physical residual budget.  The new layer writes the dispersion
+  coordinate, separates contact polynomials from physical discontinuities, and
+  defines the spectral-bin functional whose residuals include dispersion,
+  inversion, contact/subtraction transport, cut completion, and infrared
+  projection.  The BPST companion checks that Euclidean Stieltjes values are not
+  spectral bins, that contact polynomials have no separated spectral weight, and
+  that one spacelike value cannot determine a physical bin without a separate
+  inversion/stability datum.

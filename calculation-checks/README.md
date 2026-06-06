@@ -638,7 +638,10 @@ Current checks:
   Euclidean-to-physical
   instanton bridge feeding the reusable physical-residual slot with
   continuation, spectral/LSZ, infrared, unitarity-cut, matching, and
-  size-endpoint controls, the instanton--anti-instanton cut-pairing check
+  size-endpoint controls, the spectral-continuation check which keeps Euclidean
+  Stieltjes source values, contact polynomials, discontinuities, and physical
+  spectral-bin functionals distinct and rejects one-spacelike-value inversion
+  shortcuts, the instanton--anti-instanton cut-pairing check
   which distinguishes the theta-charged one-instanton amplitude coordinate
   from a neutral inclusive rate kernel, verifies the order-\(e^{-S_I}\)
   interference negative control before a selection rule is imposed, and bounds

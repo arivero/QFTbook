@@ -7877,6 +7877,97 @@ gauge-invariant spectral or OPE projection and the long-size remainder have
 been supplied.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Spectral continuation for instanton source
+correlators]
+\label{ca:instanton-spectral-continuation-source-correlator}
+The spectral entry \(R_{\rm spec}\) in
+\eqref{eq:instanton-euclidean-to-physical-residual-budget} is a real physical
+operation, not a name for ``do analytic continuation.''  Suppose the
+one-instanton chart has produced a gauge-invariant Euclidean source correlator
+depending on a spacelike invariant \(Q_E^2>0\).  In a channel with a positive
+spectral variable \(s\), the finite-regulator continuation problem has the form
+\begin{equation}
+  G_{I,\Lambda}^{E}(Q_E^2)
+  =
+  P_{\Lambda,N}(Q_E^2)
+  +
+  \int_{s_0}^{\infty}
+  \frac{\rho_{I,\Lambda}(s)}{s+Q_E^2}\,\dd s
+  +
+  R_{\rm disp,\Lambda}(Q_E^2).
+  \label{eq:instanton-source-dispersion-coordinate}
+\end{equation}
+The polynomial \(P_{\Lambda,N}\) contains local source counterterms and contact
+subtractions.  It changes spacelike source values, but it has no separated
+physical discontinuity.  The spectral density coordinate is obtained only after
+choosing the physical sheet and the subtraction convention,
+\[
+  \rho_{I,\Lambda}(s)
+  =
+  \frac{1}{2\pi\ii}
+  \operatorname{Disc}_{s}
+  G_{I,\Lambda}^{R}(s),
+  \qquad s>s_0,
+\]
+up to the same regulator and continuation residuals.  A measured inclusive
+weight, or a finite energy bin in an infrared-deformed theory, is then the
+linear functional
+\begin{equation}
+  W_{I,\Delta}
+  =
+  \int_{s_0}^{\infty}w_\Delta(s)\rho_{I,\Lambda}(s)\,\dd s,
+  \qquad
+  0\le w_\Delta\le1,
+  \label{eq:instanton-spectral-projection-functional}
+\end{equation}
+not the Euclidean number
+\(G_{I,\Lambda}^{E}(Q_E^2)\).  Thus a finite set of spacelike instanton-source
+values can test the source coefficient, but it does not by itself determine the
+spectral bin unless the inverse problem, continuum tail, and subtraction
+conventions have been controlled.
+
+For a practical finite-window comparison, let \(W_{I,\Delta}^{\rm lead}\) be the
+spectral projection of the leading instanton density after the same
+continuation and subtraction choices.  Write
+\[
+  W_{I,\Delta}^{\rm phys}
+  =
+  W_{I,\Delta}^{\rm lead}
+  +
+  R_{\rm disp}
+  +
+  R_{\rm inv}
+  +
+  R_{\rm cont}
+  +
+  R_{\rm cut}
+  +
+  R_{\rm IR},
+\]
+where \(R_{\rm inv}\) measures the instability or finite-resolution error of
+recovering the relevant spectral weight from Euclidean data, \(R_{\rm cont}\)
+records contact/subtraction transport, and \(R_{\rm cut}\) records the
+unitarity-cut completion discussed below.  If
+\[
+  |R_\alpha|\le\varepsilon_\alpha,\qquad
+  \alpha\in\{{\rm disp},{\rm inv},{\rm cont},{\rm cut},{\rm IR}\},
+\]
+then
+\begin{equation}
+  |W_{I,\Delta}^{\rm phys}-W_{I,\Delta}^{\rm lead}|
+  \le
+  \varepsilon_{\rm disp}+\varepsilon_{\rm inv}+\varepsilon_{\rm cont}
+  +\varepsilon_{\rm cut}+\varepsilon_{\rm IR}.
+  \label{eq:instanton-spectral-projection-residual-bound}
+\end{equation}
+This is the dispersion-theoretic version of the same lesson as the
+four-fermion benchmark: the BPST saddle, collective density, determinant, and
+zero-mode source coefficient give a Euclidean source contribution.  A rate or
+spectral observable additionally requires the discontinuity, subtraction
+transport, inverse-problem stability, and cut projection in the same amplitude
+normalization.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Instanton cut pairing for inclusive rates]
 \label{ca:instanton-unitarity-cut-pairing}
 Stay in the source channel of
