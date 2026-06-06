@@ -4,8 +4,9 @@
 The script verifies finite algebra used in the QCD energy-correlator
 discussion: selected calorimetric measures, track-EEC moment identities, and
 the binomial moment ledger for a collinear track-function split.  It also
-checks the selected endpoint-atom gluing equations and the finite residual
-budget for a measured EEC prediction.
+checks the selected endpoint-atom gluing equations, the global moment-closure
+correction for a proposed measured EEC endpoint assembly, and the finite
+residual budget for a measured EEC prediction.
 """
 
 from fractions import Fraction
@@ -17,6 +18,11 @@ from check_utils import assert_leq as _assert_leq
 def assert_equal(name, actual, expected):
     if actual != expected:
         raise AssertionError(f"{name}: got {actual!r}, expected {expected!r}")
+
+
+def assert_true(name, condition):
+    if not condition:
+        raise AssertionError(name)
 
 
 def dot(u, v):
@@ -144,6 +150,86 @@ def check_selected_endpoint_atom_gluing():
     )
 
 
+def check_measured_eec_global_moment_closure_residual():
+    selected_energy_square = Fraction(17, 19)
+    selected_momentum_square = Fraction(5, 23)
+    open_zeroth = Fraction(2, 7)
+    open_first = Fraction(-1, 11)
+
+    proposed_contact_atom = Fraction(3, 13)
+    proposed_back_to_back_atom = Fraction(5, 17)
+    zeroth_defect = selected_energy_square - (
+        open_zeroth + proposed_contact_atom + proposed_back_to_back_atom
+    )
+    first_defect = selected_momentum_square - (
+        open_first + proposed_contact_atom - proposed_back_to_back_atom
+    )
+
+    contact_correction = (zeroth_defect + first_defect) / 2
+    back_to_back_correction = (zeroth_defect - first_defect) / 2
+    corrected_contact_atom = proposed_contact_atom + contact_correction
+    corrected_back_to_back_atom = proposed_back_to_back_atom + back_to_back_correction
+
+    assert_equal(
+        "global moment closure corrected zeroth moment",
+        open_zeroth + corrected_contact_atom + corrected_back_to_back_atom,
+        selected_energy_square,
+    )
+    assert_equal(
+        "global moment closure corrected first moment",
+        open_first + corrected_contact_atom - corrected_back_to_back_atom,
+        selected_momentum_square,
+    )
+
+    phi_plus = Fraction(2, 5)
+    phi_minus = Fraction(-3, 7)
+    endpoint_correction = (
+        contact_correction * phi_plus
+        + back_to_back_correction * phi_minus
+    )
+    endpoint_bound = (
+        abs(zeroth_defect + first_defect) * abs(phi_plus) / 2
+        + abs(zeroth_defect - first_defect) * abs(phi_minus) / 2
+    )
+    _assert_leq(
+        "global moment closure endpoint-test bound",
+        abs(endpoint_correction),
+        endpoint_bound,
+    )
+
+    zero_only_contact = proposed_contact_atom + zeroth_defect / 2
+    zero_only_back_to_back = proposed_back_to_back_atom + zeroth_defect / 2
+    assert_equal(
+        "zeroth-only correction repairs only the zeroth moment",
+        open_zeroth + zero_only_contact + zero_only_back_to_back,
+        selected_energy_square,
+    )
+    assert_equal(
+        "zeroth-only correction leaves first-moment defect",
+        selected_momentum_square - (
+            open_first + zero_only_contact - zero_only_back_to_back
+        ),
+        first_defect,
+    )
+    assert_true(
+        "zeroth-only correction is insufficient for selected EEC closure",
+        first_defect != 0,
+    )
+
+    full_contact_atom = (1 - open_zeroth - open_first) / 2
+    full_back_to_back_atom = (1 - open_zeroth + open_first) / 2
+    assert_true(
+        "full-calorimeter atoms fail selected zeroth moment",
+        open_zeroth + full_contact_atom + full_back_to_back_atom
+        != selected_energy_square,
+    )
+    assert_true(
+        "full-calorimeter atoms fail selected first moment",
+        open_first + full_contact_atom - full_back_to_back_atom
+        != selected_momentum_square,
+    )
+
+
 def check_measured_eec_residual_bound():
     # A finite detector-test residual is bounded by the sum of chart, endpoint,
     # and power/hadronization error budgets.  The signs can cancel in the
@@ -176,6 +262,7 @@ def main():
     check_selected_measure_moments()
     check_track_function_split_moments()
     check_selected_endpoint_atom_gluing()
+    check_measured_eec_global_moment_closure_residual()
     check_measured_eec_residual_bound()
     print("All track energy-correlator checks passed.")
 

@@ -1491,6 +1491,7 @@ compact-\(x\) higher-twist bound; threshold and small-\(x\) regions excluded.
 \\ \hline
 \eqref{eq:qcd-endpoint-kernel-cusp-coefficient};
 \eqref{eq:qcd-large-spin-dglap-cusp};
+\eqref{eq:qcd-dis-threshold-factorized-coordinate};
 Vol.~II Ch.~19 &
 Observable: DIS threshold boundary \(x_B\to1\) or large Mellin spin.  Regulator:
 renormalized light-ray cusp/eikonal operator and plus-distribution scheme.
@@ -3089,6 +3090,120 @@ statement about a measured detector functional.  A list of small-angle powers
 or anomalous dimensions becomes such a prediction only after the pushforward,
 endpoint contact transport, retained-operator residual, and finite-resolution
 binning have been supplied in the same convention.
+\end{controlledapproximation}
+
+\begin{controlledapproximation}[Measured EEC global moment closure]
+\label{ca:measured-eec-global-moment-closure}
+The local endpoint chart is not the whole measured EEC.  Small-angle and
+back-to-back factorizations can each be accurate in their own endpoint
+coordinates while their union fails the global detector moment identities.  The
+closure condition is elementary, but it is load-bearing because it ties the
+endpoint atoms to measured energy and momentum rather than to a convenient
+partonic normalization.
+
+Use the angular variable
+\(\zeta=\mathbf n_1\cdot\mathbf n_2\in[-1,1]\).  For an event with energy
+fractions \(z_r=E_r/Q\), directions \(\mathbf n_r\), and selector weights
+\(0\leq\omega_r\leq1\), define
+\begin{equation}
+  A_\omega
+  =
+  \left(\sum_r\omega_r z_r\right)^2,
+  \qquad
+  B_\omega
+  =
+  \left|\sum_r\omega_r z_r\mathbf n_r\right|^2 .
+  \label{eq:measured-eec-selected-moments}
+\end{equation}
+For a full calorimeter in the center-of-momentum frame,
+\(A_\omega=1\) and \(B_\omega=0\).  For tracks, flavor tags, fiducial regions,
+or any other selected-energy observable, \(A_\omega\) and \(B_\omega\) are
+measured inputs or ensemble averages; replacing them by the full-calorimeter
+values changes the observable.
+
+Let \(O_\omega^{\rm open}\) be the open-chart contribution on
+\(-1<\zeta<1\), after the separated-angle, small-angle, and back-to-back
+subtraction conventions have been chosen.  A contact-inclusive endpoint
+assembly has the form
+\begin{equation}
+  O_\omega^{\rm pred}
+  =
+  O_\omega^{\rm open}
+  +
+  K_+^\omega\,\delta(1-\zeta)
+  +
+  K_-^\omega\,\delta(1+\zeta)
+  +
+  \mathcal R_\omega ,
+  \label{eq:measured-eec-global-endpoint-decomposition}
+\end{equation}
+where \(K_+^\omega\) is the coincident-detector atom and \(K_-^\omega\) is the
+back-to-back atom.  Define the open moments
+\begin{equation}
+  I_0^\omega=\left\langle O_\omega^{\rm open},1\right\rangle,
+  \qquad
+  I_1^\omega=\left\langle O_\omega^{\rm open},\zeta\right\rangle .
+  \label{eq:measured-eec-open-moments}
+\end{equation}
+Moment closure requires
+\begin{equation}
+  I_0^\omega+K_+^\omega+K_-^\omega=A_\omega,
+  \qquad
+  I_1^\omega+K_+^\omega-K_-^\omega=B_\omega .
+  \label{eq:measured-eec-moment-closure-equations}
+\end{equation}
+Thus the endpoint atoms are not free matching constants:
+\begin{equation}
+  K_+^\omega
+  =
+  \frac12\left(A_\omega-I_0^\omega+B_\omega-I_1^\omega\right),
+  \qquad
+  K_-^\omega
+  =
+  \frac12\left(A_\omega-I_0^\omega-B_\omega+I_1^\omega\right).
+  \label{eq:measured-eec-endpoint-atom-solution}
+\end{equation}
+
+Equivalently, if a proposed short-distance assembly supplies
+\(\widehat I_a^\omega\) and \(\widehat K_\pm^\omega\), its global moment
+defects are
+\begin{equation}
+  R_0^\omega
+  =
+  A_\omega-\widehat I_0^\omega-\widehat K_+^\omega-\widehat K_-^\omega,
+  \qquad
+  R_1^\omega
+  =
+  B_\omega-\widehat I_1^\omega-\widehat K_+^\omega+\widehat K_-^\omega .
+  \label{eq:measured-eec-moment-defects}
+\end{equation}
+The unique endpoint-only correction that repairs both measured moments is
+\begin{equation}
+  \Delta K_+^\omega=\frac12(R_0^\omega+R_1^\omega),
+  \qquad
+  \Delta K_-^\omega=\frac12(R_0^\omega-R_1^\omega).
+  \label{eq:measured-eec-moment-closure-correction}
+\end{equation}
+For a detector test \(\varphi\), this correction obeys the finite bound
+\begin{equation}
+  \left|
+    \Delta K_+^\omega\varphi(1)
+    +
+    \Delta K_-^\omega\varphi(-1)
+  \right|
+  \leq
+  \frac12|R_0^\omega+R_1^\omega|\,|\varphi(1)|
+  +
+  \frac12|R_0^\omega-R_1^\omega|\,|\varphi(-1)| .
+  \label{eq:measured-eec-moment-closure-test-bound}
+\end{equation}
+If this correction is not imposed exactly, the residual ledger in
+\eqref{eq:finite-resolution-eec-observable-budget} and
+\eqref{eq:measured-small-angle-eec-budget} must include the corresponding
+moment-closure term.  This is a global statement in \(\zeta\): the small-angle
+light-ray OPE, the back-to-back recoil factorization, and the separated-angle
+bulk are physical detector predictions only after their endpoint atoms glue to
+the same measured \(A_\omega\) and \(B_\omega\).
 \end{controlledapproximation}
 
 \section{Shape Functions and Track Functions}

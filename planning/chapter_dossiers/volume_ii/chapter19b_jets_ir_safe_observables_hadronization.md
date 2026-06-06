@@ -168,6 +168,12 @@ The chapter establishes:
   retained light-ray operator residuals, matching residuals, and
   nonperturbative lift must be supplied before small-angle powers or anomalous
   dimensions become a physical EEC prediction;
+- controlled approximation `ca:measured-eec-global-moment-closure`, requiring
+  small-angle, back-to-back, and separated-angle EEC charts to glue to the same
+  measured selected-energy zeroth and first moment constraints.  The block
+  solves the coincident and back-to-back endpoint atoms from \(A_\omega\),
+  \(B_\omega\), and the open moments, and gives the finite endpoint-test bound
+  for repairing residual moment defects;
 - Definition `def:leading-shape-function-operator-datum`, defining the
   endpoint shape function as a renormalized Wilson-line measurement
   distribution paired with test functions, together with its normalization and
@@ -396,6 +402,12 @@ The chapter establishes:
       and paired with detector tests.  Omitted light-ray labels, non-flat
       mixing transport, endpoint matching, nonperturbative lifts, and binning
       errors remain explicit residuals.
+10ac. Local EEC endpoint charts must satisfy the global detector moment
+      identities.  For selected weights \(\omega_r\), the endpoint atoms are
+      fixed by the measured \(A_\omega=(\sum_r\omega_r z_r)^2\),
+      \(B_\omega=|\sum_r\omega_r z_r\mathbf n_r|^2\), and the open-chart
+      moments; full-calorimeter atoms or zeroth-moment-only repairs generally
+      give the wrong measured observable.
 10a. Shape functions are renormalized Wilson-line measurement coordinates.
      Their leading endpoint convolution preserves total weight and shifts the
      first event-shape moment by \(\Omega_1^e/Q\) only after the observable,
@@ -468,6 +480,13 @@ The chapter establishes:
   companion `energy_correlator_light_ray_ope_checks.py` now verifies the
   pushforward Jacobian and a negative control where omitting it underbudgets a
   measured bin.
+- 2026-06-06 issue #519 measured EEC moment-closure pass: added
+  `ca:measured-eec-global-moment-closure` so the local small-angle,
+  back-to-back, and separated-angle endpoint charts are required to satisfy the
+  same measured selected-energy zeroth and first moment identities.  The
+  companion `energy_correlator_track_checks.py` now verifies the endpoint-only
+  correction, its detector-test bound, and negative controls against
+  full-calorimeter atoms and zeroth-only repair.
 - 2026-05-26 issue #526 pass: corrected the soft-drop IRC classification by
   separating the \(\beta_{\rm SD}>0\) groomed-four-vector statement from the
   \(\beta_{\rm SD}=0\) collinear counterexample, and added

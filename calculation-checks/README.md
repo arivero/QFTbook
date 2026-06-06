@@ -1082,8 +1082,10 @@ Current checks:
   contact weight, the binomial collinear track-function moment ledger, and
   the reduction of the separated track-EEC weight to \(2z(1-z)\) for the
   full calorimeter.  It also checks the selected endpoint-atom gluing
-  equations for a measured EEC and the finite residual-budget inequality that
-  separates open-chart, endpoint-atom, and power/hadronization defects.
+  equations for a measured EEC, the global moment-closure correction and its
+  endpoint-test bound, negative controls against full-calorimeter atoms and
+  zeroth-only repair, and the finite residual-budget inequality that separates
+  open-chart, endpoint-atom, and power/hadronization defects.
 - `energy_correlator_sudakov_checks.py`: exact rational checks for the
   back-to-back EEC leading Sudakov factor, including
   \(\int_0^{L_b}u\,du=L_b^2/2\), the fixed-coupling differential equation for
