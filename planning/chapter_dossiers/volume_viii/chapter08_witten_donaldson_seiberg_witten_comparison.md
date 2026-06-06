@@ -98,25 +98,28 @@ gauge theory.
 - States the Witten simple-type comparison as a named central conjecture,
   with standard \(b_1=0\), odd \(b_2^+\ge3\), SW-simple-type, lift,
   orientation, point-normalization, compactification, and phase-admissibility
-  data.  The theorem-status ledger now separates the Feehan--Leness
+  data.  The theorem-status guide now separates the Feehan--Leness
   \(SO(3)\)-monopole theorem class (`c1^2 >= chi_h - 3` or abundance) from
   algebro-geometric projective-surface subclasses and from the stronger QFT
   Wilsonian/RG construction problem.
 - Adds an explicit comparison-architecture guide: the Donaldson
   moduli-space layer, cohomological localization layer, Coulomb-branch layer,
   and final Wilsonian gluing claim are now separated as a dependency ladder.
-  The simple-type formula also has a factor-origin ledger distinguishing the
+  The simple-type formula also has a factor-origin guide distinguishing the
   finite Donaldson exponential shape, SW labels/counts, contact Gaussian,
   determinant-line phase, universal constant, and chamber/\(u\)-plane
   boundary contribution.
-- Adds a finite comparison residual budget on Donaldson insertion test spaces:
+- Adds a finite comparison proof-obligation diagnostic on Donaldson insertion
+  test spaces:
   the discrepancy between a regulated UV Donaldson functional and the normalized
   SW comparison formula telescopes into \(R_Q\), \(R_{\rm RG}\), \(R_u\),
   \(R_{\rm sing}\), and \(R_{\rm norm}\).  These record, respectively,
   construction/\(Q\)-localization, Wilsonian-flow, \(u\)-plane splitting,
-  singular-fiber replacement, and contact/phase/constant normalization errors.
-  A theorem-level comparison must drive these residuals to zero compatibly as
-  the finite test space grows.
+  singular-fiber replacement, and contact/phase/constant normalization
+  differences.  The display is conditional propagation of supplied estimates,
+  not evidence that those estimates or intermediate QFT functionals have been
+  constructed.  A theorem-level comparison must drive these residuals to zero
+  compatibly as the finite test space grows.
 - Gives the normalization-sensitive \(u\)-plane integral data with
   \(A(u)^\chi B(u)^\sigma\), theta kernel, contact term, and a conditional
   boundary derivation of wall crossing; the wall-normal theta-kernel factor
@@ -145,9 +148,10 @@ gauge theory.
   Donaldson finite-exponential moment reconstruction, and the trace-delta
   instanton action coefficient, as well as the wall-normal sign jump and
   delta-sequence mass/concentration coefficients used in the \(u\)-plane
-  wall-crossing explanation.  It also checks the finite comparison residual
-  budget by exact telescoping and an \(\ell^1/\ell^\infty\) norm bound on a
-  sample Donaldson insertion test space.
+  wall-crossing explanation.  It also checks the finite comparison
+  proof-obligation map by exact telescoping and an \(\ell^1/\ell^\infty\)
+  norm propagation on a sample Donaldson insertion test space, with a negative
+  control showing that dropping one arrow changes the comparison target.
 
 ## Figure Ledger
 
@@ -210,7 +214,7 @@ the Abelian monopole theory.
   wall-boundary cancellation from Nekrasov/Gieseker resolved fixed-point
   integration.
 - 2026-06-03 comparison-residual-budget pass: added a finite test-space
-  residual budget for the Donaldson--SW comparison.  The chapter now states
+  residual diagnostic for the Donaldson--SW comparison.  The chapter now states
   that partial progress must bound the five residual functionals
   \(R_Q,R_{\rm RG},R_u,R_{\rm sing},R_{\rm norm}\), instead of treating the
   comparison formula as a monolithic black-box target; the companion script
@@ -222,3 +226,10 @@ the Abelian monopole theory.
   subclass boundary, and a separate QFT Wilsonian/RG open problem.  Also fixed
   the \(w\)-lift sentence so it no longer calls a lift/phase change a chamber
   change when \(b_2^+>1\).
+- 2026-06-06 issue #844 proof-obligation status pass: reworded the central
+  comparison surface from residual-budget language to a finite
+  proof-obligation diagnostic.  The monograph now states that the five
+  residual differences become estimates only after the intermediate QFT
+  functionals and same-regulator bounds are supplied.  The companion check was
+  renamed accordingly and now rejects dropping the singular-fiber replacement
+  arrow without changing the comparison target.

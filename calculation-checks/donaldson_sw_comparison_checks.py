@@ -675,11 +675,11 @@ def check_u_plane_wall_normal_delta_sequence() -> None:
     )
 
 
-def check_donaldson_sw_comparison_residual_budget() -> None:
+def check_donaldson_sw_comparison_proof_obligation_map() -> None:
     # A finite Donaldson insertion test space sees the comparison as a
-    # telescoping chain of linear functionals.  The individual residuals encode
-    # UV construction/Q-localization, Q-compatible RG flow, u-plane splitting,
-    # singular-fiber monopole replacement, and contact/phase normalization.
+    # telescoping chain of linear functionals.  This is a proof-obligation map:
+    # the differences become estimates only after the intermediate QFT
+    # functionals and the corresponding bounds have been constructed.
     comparison = [
         Fraction(5, 7),
         Fraction(-3, 11),
@@ -733,7 +733,7 @@ def check_donaldson_sw_comparison_residual_budget() -> None:
     assert_equal(
         vector_sub(uv, comparison),
         telescoped,
-        "Donaldson-SW comparison residuals telescope",
+        "Donaldson-SW comparison proof-obligation telescope",
     )
 
     test = [
@@ -756,7 +756,7 @@ def check_donaldson_sw_comparison_residual_budget() -> None:
     assert_equal(
         discrepancy,
         residual_sum,
-        "Donaldson-SW residual budget evaluates on finite tests",
+        "Donaldson-SW proof-obligation map evaluates on finite tests",
     )
 
     bound = sum(
@@ -769,7 +769,33 @@ def check_donaldson_sw_comparison_residual_budget() -> None:
             residual_norm,
         )
     )
-    _assert_leq("Donaldson-SW residual norm budget", abs(discrepancy), bound)
+    _assert_leq(
+        "Donaldson-SW conditional residual norm propagation",
+        abs(discrepancy),
+        bound,
+    )
+
+    omitted_singular = vector_add(
+        residual_q,
+        residual_rg,
+        residual_u_plane,
+        residual_norm,
+    )
+    omitted_discrepancy = dot(omitted_singular, test)
+    if omitted_discrepancy == discrepancy:
+        raise AssertionError(
+            "omitting the singular-fiber replacement difference should not "
+            "preserve the same finite-test discrepancy"
+        )
+
+    shifted_target = vector_add(comparison, residual_singular)
+    assert_equal(
+        vector_sub(uv, shifted_target),
+        omitted_singular,
+        "dropping one proof-obligation arrow changes the comparison target",
+    )
+    if shifted_target == comparison:
+        raise AssertionError("absorbed singular residual left the target unchanged")
 
     # If every comparison arrow is exact, the UV and SW functionals agree on
     # the finite test space.
@@ -814,7 +840,7 @@ def main() -> None:
     check_donaldson_blowup_cosh_bookkeeping()
     check_donaldson_exponential_moment_reconstruction()
     check_u_plane_wall_normal_delta_sequence()
-    check_donaldson_sw_comparison_residual_budget()
+    check_donaldson_sw_comparison_proof_obligation_map()
     check_trace_delta_action_normalization()
     print("Donaldson-Witten and Seiberg-Witten comparison checks passed.")
 

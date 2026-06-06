@@ -1854,9 +1854,11 @@ Current checks:
   distinguishing unparameterized, Picard-torus-parameterized, chamber-fixed,
   and invalid reducible/properness cases, Donaldson blow-up cosh/sinh parity
   coefficients after
-  the contact Gaussian, the finite comparison residual budget from UV
+  the contact Gaussian, the finite comparison proof-obligation map from UV
   localization through RG, \(u\)-plane splitting, singular-fiber replacement,
-  and normalization, and the trace-delta instanton-action coefficient.
+  and normalization, including a negative control showing that dropping one
+  arrow changes the comparison target, and the trace-delta instanton-action
+  coefficient.
 - `discrete_theta_terms_checks.py`: finite arithmetic checks for the discrete
   theta terms chapter, including the Pontryagin-square quadratic-refinement
   identity, oriented classification periodicity of the counterterm group,
