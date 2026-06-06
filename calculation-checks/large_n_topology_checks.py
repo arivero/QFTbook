@@ -9,6 +9,9 @@ The genus-truncation check below verifies only the finite arithmetic of a
 declared coefficient/remainder bound; it also includes a toy
 order-of-limits negative control showing why fixed-graph topology is not a
 continuum large-N theorem.
+The spectral-pole check verifies the finite moment bound used to separate
+large-N factorization from the additional spectral isolation and residue data
+needed to extract narrow meson and glueball poles.
 """
 
 from __future__ import annotations
@@ -191,6 +194,77 @@ def check_single_trace_and_quark_boundary_scaling() -> None:
         )
 
 
+def spectral_moments(spectrum: list[tuple[Fraction, Fraction]]) -> tuple[Fraction, Fraction, Fraction]:
+    """Return the first three moments of a positive finite spectral measure.
+
+    Each spectrum entry is ``(weight, s_value)``.  This finite model checks
+    only the algebra of the spectral-window estimates in the text; it is not a
+    model of continuum QCD.
+    """
+
+    moment_0 = sum(weight for weight, _ in spectrum)
+    moment_1 = sum(weight * s_value for weight, s_value in spectrum)
+    moment_2 = sum(weight * s_value * s_value for weight, s_value in spectrum)
+    return moment_0, moment_1, moment_2
+
+
+def check_large_n_spectral_pole_extraction_boundary() -> None:
+    pole_s = Fraction(4, 1)
+    pole_residue = Fraction(2, 1)
+    background_s = Fraction(25, 1)
+    delta_i = background_s - pole_s
+
+    for n_colors in range(4, 16):
+        epsilon = Fraction(1, n_colors * n_colors)
+        spectrum = [(pole_residue, pole_s), (epsilon, background_s)]
+        moment_0, moment_1, _ = spectral_moments(spectrum)
+        estimator = moment_1 / moment_0
+        exact_shift = estimator - pole_s
+        shift_bound = epsilon * delta_i / pole_residue
+
+        assert_equal(
+            f"spectral pole moment identity N={n_colors}",
+            exact_shift,
+            epsilon * delta_i / (pole_residue + epsilon),
+        )
+        assert_equal(
+            f"spectral pole moment bound N={n_colors}",
+            exact_shift <= shift_bound,
+            True,
+        )
+
+        # Without a residue lower bound independent of N, a parametrically
+        # small background can shift a moment estimator by order one.
+        marginal_residue = epsilon
+        marginal_spectrum = [(marginal_residue, pole_s), (epsilon, background_s)]
+        marginal_m0, marginal_m1, _ = spectral_moments(marginal_spectrum)
+        marginal_shift = marginal_m1 / marginal_m0 - pole_s
+        assert_equal(
+            f"spectral pole missing residue margin N={n_colors}",
+            marginal_shift,
+            delta_i / 2,
+        )
+
+    single_line = [(Fraction(1, 1), Fraction(4, 1))]
+    two_lines = [(Fraction(1, 2), Fraction(3, 1)), (Fraction(1, 2), Fraction(5, 1))]
+    single_m0, single_m1, single_m2 = spectral_moments(single_line)
+    two_m0, two_m1, two_m2 = spectral_moments(two_lines)
+    assert_equal("same zeroth moment need not identify a pole", single_m0, two_m0)
+    assert_equal("same first moment need not identify a pole", single_m1, two_m1)
+    assert_equal("second moment distinguishes different spectral support", single_m2 < two_m2, True)
+
+    meson_three_point_power = Fraction(1, 1) - Fraction(3, 2)
+    glueball_three_point_power = Fraction(2, 1) - Fraction(3, 1)
+    assert_equal("meson three-point amplitude power", meson_three_point_power, -Fraction(1, 2))
+    assert_equal("meson width power from squared coupling", 2 * meson_three_point_power, -Fraction(1, 1))
+    assert_equal("glueball three-point amplitude power", glueball_three_point_power, -Fraction(1, 1))
+    assert_equal(
+        "glueball width power from squared coupling",
+        2 * glueball_three_point_power,
+        -Fraction(2, 1),
+    )
+
+
 def center_phase_exponents(word: list[tuple[int, int]], dimensions: int) -> tuple[int, ...]:
     """Return the exponent of each independent EK center phase.
 
@@ -287,6 +361,7 @@ def main() -> None:
     check_genus_truncation_remainder_bound()
     check_half_trace_coupling_conversion()
     check_single_trace_and_quark_boundary_scaling()
+    check_large_n_spectral_pole_extraction_boundary()
     check_eguchi_kawai_center_selection()
     check_baryon_large_n_scaling()
     print("All large-N color-topology checks passed.")

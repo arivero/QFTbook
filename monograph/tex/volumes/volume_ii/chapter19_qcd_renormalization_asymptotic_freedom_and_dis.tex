@@ -1749,6 +1749,103 @@ consequence of the counting: it says that fluctuations of normalized
 single-trace observables are suppressed in the planar limit, provided the
 large-\(N_c\) limit of the regulated theory exists.
 
+\begin{controlledapproximation}[Large-\(N_c\) spectral pole
+datum]
+\label{ca:qcd-large-n-spectral-pole-extraction}
+The particle-spectrum interpretation of planar QCD requires spectral data in
+addition to color topology.  Let \(O\) be a gauge-invariant
+color-singlet operator in a fixed scalar channel, with the normalization used
+for the large-\(N_c\) counting above, and let \(G_{N_c}(Q^2)\) be its connected
+Euclidean two-point function at a fixed ultraviolet regulator and finite
+spatial volume.  Reflection positivity gives a positive spectral measure
+\(\mu_{N_c}\) for this channel,
+\begin{equation}
+  G_{N_c}(Q^2)
+  =
+  \int_0^\infty
+  \frac{\dd\mu_{N_c}(s)}{Q^2+s}
+  +
+  \text{local subtractions},
+  \label{eq:qcd-large-n-spectral-representation}
+\end{equation}
+where \(s\) is the invariant-mass variable after the usual projection onto
+zero spatial momentum or onto a chosen Lorentz channel.  The local
+subtractions are polynomial contact terms; they do not determine the
+long-distance particle poles.
+
+To claim that a planar single-trace channel contains an isolated hadron with
+mass \(m_a\) in a window \(I=[s_-,s_+]\), the following finite-regulator data
+are needed:
+\begin{equation}
+  \mu_{N_c}\!\restriction_I
+  =
+  Z_{a,N_c}\,\delta(s-m_{a,N_c}^2)
+  +
+  \nu_{a,N_c},
+  \qquad
+  Z_{a,N_c}\ge z_*>0,
+  \qquad
+  \nu_{a,N_c}(I)\le \epsilon_{N_c},
+  \label{eq:qcd-large-n-isolated-pole-datum}
+\end{equation}
+with a declared separation of \(I\) from other poles and thresholds.  The
+residue lower bound \(z_*\), the background bound \(\epsilon_{N_c}\), and the
+gap to the rest of the spectrum are independent inputs.  Large-\(N_c\)
+factorization constrains connected multipoint functions; it does not by
+itself supply the positive spectral measure, isolate the pole, or bound the
+continuum remainder in the window.
+
+The role of these extra data can be seen from the first two spectral moments
+on \(I\),
+\[
+  M_k(I)=\int_I s^k\,\dd\mu_{N_c}(s),
+  \qquad
+  \widehat s(I)=\frac{M_1(I)}{M_0(I)} .
+\]
+If \eqref{eq:qcd-large-n-isolated-pole-datum} holds and
+\(\Delta_I=\sup_{s\in I}|s-m_{a,N_c}^2|\), then positivity gives the finite
+bound
+\begin{equation}
+  \left|
+  \widehat s(I)-m_{a,N_c}^2
+  \right|
+  =
+  \frac{\left|\int_I(s-m_{a,N_c}^2)\,\dd\nu_{a,N_c}(s)\right|}
+       {Z_{a,N_c}+\nu_{a,N_c}(I)}
+  \le
+  \frac{\epsilon_{N_c}\Delta_I}{z_*}.
+  \label{eq:qcd-large-n-pole-moment-bound}
+\end{equation}
+Thus a suppressed spectral background becomes a controlled mass extraction
+only after the pole residue is bounded from below.  If the candidate pole
+residue is of the same order as the background, the moment shift can be
+order one even though the background is parametrically small in the overall
+large-\(N_c\) counting.  Conversely, a finite set of moments cannot identify a
+pole without the isolation datum: a single line at \(s=4\) and two equal lines
+at \(s=3\) and \(s=5\) have the same \(M_0\) and \(M_1\), but they describe
+different spectral support.
+
+The familiar narrow-resonance language has one more ingredient.  After
+analytic continuation in a channel where the resonance pole is separated from
+nearby thresholds, the decay width is controlled by the squared on-shell
+coupling, not by the two-point color power alone:
+\begin{equation}
+  g_{MMM}=O(N_c^{-1/2}),\qquad
+  \Gamma_M=O(N_c^{-1}),
+  \qquad
+  g_{GGG}=O(N_c^{-1}),\qquad
+  \Gamma_G=O(N_c^{-2}).
+  \label{eq:qcd-large-n-width-scaling}
+\end{equation}
+Here \(M\) denotes a meson in the fixed-\(N_f\) limit and \(G\) a glueball.
+Phase-space thresholds, mixing, and mass degeneracies have to be controlled
+separately.  This is the operational content behind the phrase ``large-\(N_c\)
+QCD has narrow mesons and glueballs'': it is a spectral and scattering
+assertion built on the planar counting, with ribbon topology supplying the
+allowed powers of \(1/N_c\) and the spectral data supplying the pole
+interpretation.
+\end{controlledapproximation}
+
 \subsection{Eguchi--Kawai Volume Reduction}
 \label{subsec:qcd-eguchi-kawai-volume-reduction}
 

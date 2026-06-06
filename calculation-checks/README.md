@@ -2122,9 +2122,12 @@ Current checks:
   \(N^{-2}\) suppression, the half-trace coupling conversion
   \(g_{\rm ht}^2=2g^2\), a finite genus-truncation remainder bound and
   order-of-limits negative control, normalized single-trace scaling, and
-  fixed-\(N_f\) versus Veneziano quark-boundary counting, Eguchi--Kawai
-  reduced-word center-charge selection, plus the displayed baryon Hartree
-  pair-counting and fixed-spin rotor \(1/N_c\) scaling.
+  finite spectral-pole extraction arithmetic for large-\(N_c\) meson/glueball
+  channels, including the residue-bound moment estimate, missing-residue
+  failure mode, finite-moment ambiguity, and width power counting, fixed-\(N_f\)
+  versus Veneziano quark-boundary counting, Eguchi--Kawai reduced-word
+  center-charge selection, plus the displayed baryon Hartree pair-counting and
+  fixed-spin rotor \(1/N_c\) scaling.
 - `lattice_continuum_bridge_checks.py`: exact finite checks for the
   Volume XI lattice-to-continuum local-QFT chapter, including cell-average
   test-function arithmetic, the finite-graph random-walk resolvent,

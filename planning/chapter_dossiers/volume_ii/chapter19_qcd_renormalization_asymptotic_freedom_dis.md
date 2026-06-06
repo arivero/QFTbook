@@ -132,8 +132,10 @@ The chapter must define and derive:
   \(N_c^{V-E+F}=N_c^{2-2h-b}\), the explicit planar-versus-one-handle
   theta-graph \(N_c^{-2}\) suppression, the regulated genus-truncation
   bound separating formal topology from a controlled observable
-  approximation, single-trace factorization, fixed-\(N_f\) and Veneziano
-  quark-boundary counting, and the leading
+  approximation, single-trace factorization, the spectral pole-extraction
+  boundary for reading normalized single-trace two-point functions as narrow
+  meson/glueball data, fixed-\(N_f\) and Veneziano quark-boundary counting,
+  and the leading
   large-\(N_c\) scaling of meson, glueball, baryon, and vacuum amplitudes,
   including baryon operator normalization, fixed-\(N_f\) order of limits,
   Hartree pair-counting, spin-flavor symmetry of the color-antisymmetric
@@ -366,16 +368,21 @@ The chapter must define and derive:
    same \(V,E\) and two different face counts, giving an \(N_c^{-2}\)
    nonplanar suppression at fixed \(\lambda\).
 12. Normalized single-trace adjoint observables factorize at large \(N_c\)
-   with connected two-point fluctuations of order \(N_c^{-2}\).  Fixed-flavor
-   quark loops are suppressed as additional boundaries, while Veneziano
-   scaling restores their leading order.  Meson, glueball, and baryon scaling
-   statements depend on separate spectral assumptions about the existence of
-   the corresponding color-singlet states.  Large-\(N_c\) baryons are treated
-   in the fixed-\(N_f\) limit with color-antisymmetric \(SU(N_c)\) operators;
-   the Hartree pair-counting gives \(M_B=O(N_c)\), collective rotor splittings
-   give \(\Delta M=O(N_c^{-1})\) at fixed spin, and contracted spin-flavor
-   symmetry is used only under the stated low-energy and confinement
-   hypotheses.
+   with connected two-point fluctuations of order \(N_c^{-2}\).  Reading a
+   two-point function as narrow meson/glueball pole data additionally requires
+   a positive spectral measure, an isolated-pole window, a residue lower bound,
+   a controlled continuum/background remainder, and separated thresholds; the
+   moment estimator obeys
+   \(|\widehat s-m_a^2|\le\epsilon_{N_c}\Delta_I/z_*\) only with those data.
+   Meson and glueball widths scale as \(O(N_c^{-1})\) and \(O(N_c^{-2})\)
+   after the corresponding on-shell couplings and analytic-continuation
+   assumptions are supplied.  Fixed-flavor quark loops are suppressed as
+   additional boundaries, while Veneziano scaling restores their leading
+   order.  Large-\(N_c\) baryons are treated in the fixed-\(N_f\) limit with
+   color-antisymmetric \(SU(N_c)\) operators; the Hartree pair-counting gives
+   \(M_B=O(N_c)\), collective rotor splittings give
+   \(\Delta M=O(N_c^{-1})\) at fixed spin, and contracted spin-flavor symmetry
+   is used only under the stated low-energy and confinement hypotheses.
 13. The QCD string is defined through line-operator/static-source sectors, not
     through perturbative colored fields.  Under the effective-string
     hypotheses that the only gapless worldsheet modes are the transverse
@@ -1347,6 +1354,16 @@ The chapter must define and derive:
   scaling, or QCD-string language is treated as a nonperturbative statement.
   `large_n_topology_checks.py` now verifies a finite genus-truncation
   bound and an order-of-limits negative control.
+- 2026-06-06 issue #630 large-\(N_c\) spectral-pole pass: added
+  `ca:qcd-large-n-spectral-pole-extraction`, which separates planar
+  factorization from the spectral data needed to extract actual narrow
+  meson/glueball poles.  The block records the Kallen-Lehmann channel measure,
+  the isolated-pole window, residue/background/gap requirements, the finite
+  moment bound \(|\widehat s-m_a^2|\le\epsilon_{N_c}\Delta_I/z_*\), the
+  finite-moment ambiguity negative control, and the meson/glueball width
+  scalings \(O(N_c^{-1})\) and \(O(N_c^{-2})\).  `large_n_topology_checks.py`
+  now verifies the pole-moment arithmetic, the missing-residue-margin failure
+  mode, finite-moment ambiguity, and the squared-coupling width powers.
 - 2026-06-04 issue #832 factorization-ledger source pass: the Ch.~19 DIS
   light-ray figure and `eq:qcd-common-factorization-budget` are now explicit
   ledger occurrences in Ch.~19b.  The figure is grouped as operator-coordinate
