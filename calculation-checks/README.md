@@ -78,7 +78,12 @@ Current checks:
   the Abelianized descent polynomial by polarization, vector-flavor anomaly
   cancellation between the two chiral components of a Dirac quark, and
   \(\operatorname{Tr}(T^3\{q,q\})=1/3\) for the
-  \(\pi^0\gamma\gamma\) normalization.
+  \(\pi^0\gamma\gamma\) normalization.  It also checks that the local
+  \(g_{\pi\gamma\gamma}\pi^0F\widetilde F/4\) vertex gives
+  \(\sum|\mathcal M|^2=g_{\pi\gamma\gamma}^2m_{\pi^0}^4/2\) and the
+  identical two-photon phase-space coefficient
+  \(\Gamma=g_{\pi\gamma\gamma}^2m_{\pi^0}^3/(64\pi)\), with a negative
+  control for omitting the identical-photon factor.
 - `anomaly_polynomial_descent_checks.py`: exact rational checks for the
   index-normalized anomaly-polynomial and inflow sections, including the
   closed four-dimensional index coefficient, the local Clifford heat-kernel

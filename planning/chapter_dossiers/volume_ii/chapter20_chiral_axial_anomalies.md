@@ -272,7 +272,11 @@
   unchanged.  The 2026-06-01 continuation adds the Abelianized cubic descent
   coordinate \(C_{abc}\lambda^aF^bF^c\) and verifies that the homogeneous cubic
   polynomial on commuting backgrounds recovers the symmetric tensor by
-  polarization.
+  polarization.  The 2026-06-06 continuation checks the Chapter 20 to Chapter
+  21 observable handoff for the neutral-pion two-photon amplitude: the
+  anomaly-matched \(g_{\pi\gamma\gamma}\) coefficient, the polarization-summed
+  tensor amplitude, and the identical-photon phase-space factor in the decay
+  width.
 - `calculation-checks/adler_bardeen_nonrenormalization_checks.py` checks the
   finite algebra supporting the Adler--Bardeen section: exact local
   counterterm/current-improvement directions project out of the anomaly
@@ -2021,3 +2025,9 @@
   two-flavor source proposition is titled as an axial Ward identity.  Labels
   were kept stable to avoid cross-reference churn, and the physics equations
   were unchanged.
+- 2026-06-06 issue #755 anomaly-observable handoff pass: tightened the closing
+  anomalous-pion-coupling paragraph so the local axial contact term is not
+  presented as an \(S\)-matrix element by itself.  The text now points to the
+  Chapter 21 WZW matching, pion pole normalization, tensor amplitude, and
+  two-photon phase-space calculation that turn the anomaly coefficient into
+  the leading \(\pi^0\to2\gamma\) width.

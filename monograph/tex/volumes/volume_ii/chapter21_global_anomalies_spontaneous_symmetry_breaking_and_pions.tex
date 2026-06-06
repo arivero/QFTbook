@@ -3951,13 +3951,50 @@ Writing
   \pi^0 F_{\mu\nu}\widetilde F^{\mu\nu}
 \]
 gives \(g_{\pi\gamma\gamma}=e^2/(4\pi^2f_\pi)=\alpha/(\pi f_\pi)\) for
-\(N_c=3\).  The corresponding decay rate is
-\[
+\(N_c=3\).
+
+\begin{controlledapproximation}[Neutral-pion two-photon width]
+\label{ca:neutral-pion-two-photon-width}
+At leading anomalous order, neglecting isospin-breaking pion mixing and higher
+derivative electromagnetic counterterms, the vertex above gives
+\begin{equation}
+  \mathcal M(\pi^0(p)\to\gamma(k_1,\varepsilon_1)\gamma(k_2,\varepsilon_2))
+  =
+  g_{\pi\gamma\gamma}\,
+  \epsilon_{\mu\nu\rho\sigma}\,
+  \varepsilon_1^\mu\varepsilon_2^\nu k_1^\rho k_2^\sigma .
+  \label{eq:pi-zero-two-photon-amplitude}
+\end{equation}
+Gauge invariance permits the polarization sum to be evaluated by replacing the
+photon polarization sums by \(-\eta_{\mu\nu}\).  With
+\(k_1^2=k_2^2=0\) and \(2k_1\cdot k_2=m_{\pi^0}^2\), this gives
+\begin{equation}
+  \sum_{\lambda_1,\lambda_2}|\mathcal M|^2
+  =
+  2g_{\pi\gamma\gamma}^2(k_1\cdot k_2)^2
+  =
+  \frac12 g_{\pi\gamma\gamma}^2m_{\pi^0}^4 .
+  \label{eq:pi-zero-two-photon-amplitude-square}
+\end{equation}
+The integrated two-body massless phase space is \(1/(8\pi)\); the two photons
+are identical, so the decay formula includes an additional factor \(1/2\):
+\begin{equation}
   \Gamma(\pi^0\to2\gamma)
   =
+  \frac1{2m_{\pi^0}}\frac12\frac1{8\pi}
+  \left(\frac12 g_{\pi\gamma\gamma}^2m_{\pi^0}^4\right)
+  =
+  \frac{g_{\pi\gamma\gamma}^2m_{\pi^0}^3}{64\pi}
+  =
   \frac{\alpha^2m_{\pi^0}^3}{64\pi^3f_\pi^2},
-\]
-in the convention for \(f_\pi\) used above.
+  \label{eq:pi-zero-two-photon-width}
+\end{equation}
+in the convention for \(f_\pi\) used above.  The width is therefore a
+low-energy anomaly-matching prediction after the pion pole normalization and
+electromagnetic background convention have been fixed; it is not an
+independent determination of \(f_\pi\) or of the nonanomalous chiral
+low-energy constants.
+\end{controlledapproximation}
 
 \section{Conceptual Output of the Gauge-Dynamics Sequence}
 

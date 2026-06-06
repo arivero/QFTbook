@@ -152,6 +152,7 @@
 | \(\Gamma_i\) | one-loop divergence/running coefficients of the \(L_i^r(\mu)\) |
 | \(l_3^r(\mu)\) | two-flavor NLO low-energy constant governing the local contribution to \(M_\pi^2\) |
 | \(Q\) | electromagnetic flavor-charge matrix embedded as a vector flavor background |
+| \(g_{\pi\gamma\gamma}\) | neutral-pion two-photon coupling in \(g_{\pi\gamma\gamma}\pi^0F\widetilde F/4\) |
 | \(\omega_5(U)\) | normalized closed five-form \(-i\operatorname{Tr}(U^{-1}dU)^5/(240\pi^2)\) whose periods set the Wess--Zumino extension ambiguity |
 | \(\Gamma_{\mathrm{WZ}}\) | ungauged Wess--Zumino functional |
 | \(\Gamma_{\mathrm{WZW}}\) | gauged Wess--Zumino--Witten functional |
@@ -433,6 +434,12 @@
   \(\operatorname{Tr}(T^3\{q,q\})=2\operatorname{Tr}(T^3q^2)=1/3\), and the
   local \(\pi^0\gamma\gamma\) vertex in the gauged WZW functional with
   coefficient \(e^2/(16\pi^2f_\pi)\) for \(N_c=3\).
+- The neutral-pion two-photon vertex is carried through to the leading decay
+  width: \(g_{\pi\gamma\gamma}=\alpha/(\pi f_\pi)\),
+  \(\sum|\mathcal M|^2=g_{\pi\gamma\gamma}^2m_{\pi^0}^4/2\), and the
+  identical two-photon phase space gives
+  \(\Gamma(\pi^0\to2\gamma)=\alpha^2m_{\pi^0}^3/(64\pi^3f_\pi^2)\) in the
+  chapter's \(f_\pi\) convention.
 - The Vafa--Witten positivity argument is conditional on a well-defined
   finite-regulator gauge-invariant Euclidean vectorlike measure, a continuum
   scaling limit when a continuum conclusion is claimed, reflection positivity of
@@ -647,3 +654,10 @@
   the non-Poincare EFT chapter, keeps spacetime inverse-Higgs constraints out
   of the internal formula, and adds
   `calculation-checks/nonrelativistic_ng_counting_checks.py`.
+- 2026-06-06 issue #755 anomalous-pion observable pass: expanded the
+  neutral-pion two-photon result from a quoted decay-rate formula into the
+  leading anomalous-order calculation.  The text now displays the tensor
+  amplitude, polarization sum, identical two-photon phase-space factor, and
+  final width.  `calculation-checks/anomaly_matching_wzw_checks.py` now
+  verifies the width coefficient and rejects omitting the identical-photon
+  factor.

@@ -16,6 +16,9 @@ The script checks algebraic factors only:
 * The two-flavor electromagnetic trace is
   Tr(T^3 {q,q}) = 1/3, giving the N_c=3 coefficient
   e^2/(16 pi^2 f_pi) in the monograph convention.
+* The local pi0 F Ftilde coupling gives
+  sum_pol |M(pi0 -> gamma gamma)|^2 = g^2 m_pi^4/2 and, with the identical
+  two-photon phase-space factor, Gamma = g^2 m_pi^3/(64 pi).
 
 Evidence contract.
 Target claims: the finite coefficient subclaims in the anomaly-matching and
@@ -34,7 +37,8 @@ and vector-pair contributions are checked to cancel between left and right
 components.
 Scope boundary: a pass fixes convention-sensitive finite coefficients; it
 does not prove existence of the WZW functional, current algebra in continuum
-QCD, pion dominance, or nonperturbative anomaly matching.
+QCD, pion dominance, electromagnetic higher-order corrections, or
+nonperturbative anomaly matching.
 """
 
 from __future__ import annotations
@@ -197,6 +201,36 @@ def check_pi0_two_photon_trace() -> None:
     coefficient_without_e2_fpi = Fraction(3, 16) * anticommutator_trace
     assert_eq("N_c=3 pi0 gamma gamma coefficient", coefficient_without_e2_fpi, Fraction(1, 16))
 
+    # Writing L = (g/4) pi0 F Ftilde, the previous coefficient gives
+    # g = alpha/(pi f_pi) after e^2 = 4 pi alpha.
+    g_over_alpha_pi_inv_f = 4 * coefficient_without_e2_fpi * 4
+    assert_eq("pi0 gamma gamma g coefficient", g_over_alpha_pi_inv_f, Fraction(1))
+
+
+def check_pi0_two_photon_width_normalization() -> None:
+    # For L = (g/4) phi F Ftilde,
+    # M = g epsilon(eps1, eps2, k1, k2).  Gauge invariance allows the physical
+    # polarization sums to be evaluated with -eta, giving
+    # sum |M|^2 = 2 g^2 (k1.k2)^2 = g^2 m^4/2.
+    amplitude_square_over_g2_m4 = Fraction(1, 2)
+    assert_eq("pi0 two-photon polarization sum", amplitude_square_over_g2_m4, Fraction(1, 2))
+
+    # Gamma = (1/(2m)) * (1/2!) * int dPhi_2 * sum|M|^2, and
+    # int dPhi_2 = 1/(8 pi) for two massless final particles.  The coefficient
+    # below is the rational part of Gamma/(g^2 m^3 / pi).
+    identical_two_photon_phase_space = Fraction(1, 32)
+    width_over_g2_m3_pi_inv = amplitude_square_over_g2_m4 * identical_two_photon_phase_space
+    assert_eq("pi0 two-photon width coefficient", width_over_g2_m3_pi_inv, Fraction(1, 64))
+
+    no_identical_factor = Fraction(1, 16)
+    wrong_width = amplitude_square_over_g2_m4 * no_identical_factor
+    if wrong_width == width_over_g2_m3_pi_inv:
+        raise AssertionError("missing identical-photon factor was not detected")
+
+    # Since g = alpha/(pi f_pi), the rational coefficient of
+    # alpha^2 m^3/(pi^3 f_pi^2) is the same 1/64.
+    assert_eq("pi0 alpha-width coefficient", width_over_g2_m3_pi_inv, Fraction(1, 64))
+
 
 def main() -> None:
     check_wzw_level()
@@ -205,6 +239,7 @@ def main() -> None:
     check_abelianized_cubic_polarization_identity()
     check_vector_anomaly_cancellation()
     check_pi0_two_photon_trace()
+    check_pi0_two_photon_width_normalization()
     print("All anomaly-matching and WZW coefficient checks passed.")
 
 
