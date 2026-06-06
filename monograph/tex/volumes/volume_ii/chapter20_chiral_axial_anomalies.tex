@@ -8376,6 +8376,117 @@ overlaps, fluctuation cumulants, endpoint tails, and physical projection
 residuals together.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Finite Gaussian source-insertion estimator]
+\label{ca:instanton-finite-gaussian-source-insertion}
+The previous bound can be made completely finite-dimensional before taking
+any continuum limit.  Fix a collective coordinate \(z\) and suppose the
+nonzero-mode determinant has already normalized the Gaussian measure
+\(d\gamma_z(\eta)\) on the normal fluctuation space.  Write the source factor
+relative to its saddle value as
+\[
+  \frac{\mathcal Z_z(\eta;\mathcal J)}
+       {\mathcal Z_z(0;\mathcal J)}
+  =
+  1+U_z(\eta;\mathcal J),
+  \qquad
+  U_z(0;\mathcal J)=0,
+\]
+and write \(V_z(\eta;g)\) for the interaction and counterterm remainder in
+the same normal coordinates.  If the source-independent determinant
+calibration keeps
+\[
+  D_z:=\left\langle \ee^{-V_z}\right\rangle_{\gamma_z}\ne0,
+\]
+then the source-dependent fluctuation quotient which multiplies the
+zero-mode determinant is
+\begin{equation}
+  \mathcal R_{\rm fluc}(z;\mathcal J)
+  =
+  \frac{
+    \left\langle
+      (1+U_z(\eta;\mathcal J))\ee^{-V_z(\eta;g)}
+    \right\rangle_{\gamma_z}
+  }{
+    D_z
+  } .
+  \label{eq:instanton-finite-source-fluctuation-quotient}
+\end{equation}
+This quotient satisfies the exact covariance identity
+\begin{equation}
+  \mathcal R_{\rm fluc}(z;\mathcal J)-1
+  =
+  \left\langle U_z\right\rangle_{\gamma_z}
+  +
+  \frac{
+    \left\langle
+      \bigl(U_z-\langle U_z\rangle_{\gamma_z}\bigr)
+      \bigl(\ee^{-V_z}-D_z\bigr)
+    \right\rangle_{\gamma_z}
+  }{
+    D_z
+  } .
+  \label{eq:instanton-source-determinant-covariance-identity}
+\end{equation}
+The first term is the Gaussian expectation of the selected source insertion.
+The second term is its covariance with the same nonzero-mode interactions
+whose source-independent average produced the determinant.  It is precisely
+the part lost if one replaces the source amplitude by a vacuum determinant
+constant.
+
+For example, if the retained source variation has the finite normal-mode
+expansion
+\begin{equation}
+  U_z(\eta;\mathcal J)
+  =
+  \ell_a(z;\mathcal J)\eta_a
+  +\frac12 Q_{ab}(z;\mathcal J)\eta_a\eta_b
+  +U_{\ge3,z}(\eta;\mathcal J),
+  \qquad
+  C_{ab}(z)=\langle\eta_a\eta_b\rangle_{\gamma_z},
+  \label{eq:instanton-finite-gaussian-source-quadratic}
+\end{equation}
+then the Gaussian part contributes
+\[
+  \left\langle U_z\right\rangle_{\gamma_z}
+  =
+  \frac12\operatorname{Tr}(Q_z C_z)
+  +
+  \left\langle U_{\ge3,z}\right\rangle_{\gamma_z},
+\]
+because the linear term has zero Gaussian mean.  Suppose, on the retained
+source and size window, that
+\[
+  |D_z|\ge d_0,\qquad
+  \left|\left\langle U_{\ge3,z}\right\rangle_{\gamma_z}\right|\le\epsilon_U,
+  \qquad
+  \|U_z-\langle U_z\rangle_{\gamma_z}\|_{L^2(\gamma_z)}\le M_U,
+  \qquad
+  \|\ee^{-V_z}-D_z\|_{L^2(\gamma_z)}\le M_V .
+\]
+Cauchy's inequality gives the usable finite bound
+\begin{equation}
+  \left|
+    \mathcal R_{\rm fluc}(z;\mathcal J)
+    -
+    1
+    -
+    \frac12\operatorname{Tr}(Q_zC_z)
+  \right|
+  \le
+  \epsilon_U+\frac{M_UM_V}{d_0}.
+  \label{eq:instanton-finite-gaussian-source-bound}
+\end{equation}
+Thus the determinant constant and the source insertion are tied by the same
+normal fluctuation measure but are not the same datum.  A four-point
+instanton amplitude needs the covariance term, the quadratic source trace, and
+the higher-source majorant in the same source normalization as the zero-mode
+determinant and the size integral.  If the saddle source factor
+\(\mathcal Z_z(0;\mathcal J)\) vanishes, the quotient
+\eqref{eq:instanton-finite-source-fluctuation-quotient} is not the right
+coordinate; the source contribution must be treated as an absolute insertion
+before forming any relative amplitude estimate.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Hard-momentum size window]
 \label{ca:hard-momentum-instanton-size-window}
 Consider the \(N_f=2\) source-amputated four-fermion kernel

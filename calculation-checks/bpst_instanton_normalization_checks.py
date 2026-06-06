@@ -115,6 +115,9 @@ relations
     the determinant residual in a selected amplitude; vacuum determinant
     calibration and signed cumulant cancellation are rejected as
     source-amplitude bounds
+    the finite Gaussian source-insertion estimator separates the source mean
+    and the covariance with nonzero-mode interactions; a source-independent
+    determinant average is not a four-source fluctuation quotient
     hard external momenta convert the Nf=2 four-fermion size integral into a
     Q^(-2) coefficient; fused bilinear density sources exponentially suppress
     the large-rho endpoint, while individual fermion slots obey the power test
@@ -292,7 +295,8 @@ point-split source response discarded by a contact-only shortcut,
 zero-momentum source normalization confused with finite-momentum smearing,
 hard-source suppression replaced by a local vertex norm,
 vacuum determinant calibration substituted for a source-dependent fluctuation
-bound, signed fluctuation-cumulant cancellations,
+bound, source-independent determinant averages substituted for source
+fluctuation quotients, signed fluctuation-cumulant cancellations,
 hard-only and screening-only shell substitutions in the mixed size-majorant
 problem, fused bilinear-density endpoint control mistaken for individual-slot
 four-fermion endpoint control, and separation of operator RG flow from the
@@ -4179,6 +4183,122 @@ def check_source_dependent_fluctuation_cumulant_bound() -> None:
         raise AssertionError("signed cancellation erased the absolute fluctuation budget")
 
 
+def check_finite_gaussian_source_insertion_estimator() -> None:
+    # After the source-independent determinant normalizes the nonzero-mode
+    # Gaussian, the selected source insertion still has its own mean and its
+    # own covariance with the same nonzero-mode interaction weight.
+    weights = [Fraction(1, 2), Fraction(1, 3), Fraction(1, 6)]
+    assert_equal(
+        "finite Gaussian source weights normalize",
+        sum(weights, Fraction(0)),
+        Fraction(1),
+    )
+
+    source_variation = [Fraction(1, 5), -Fraction(1, 7), Fraction(1, 11)]
+    interaction_weight = [Fraction(5, 6), Fraction(7, 5), Fraction(9, 8)]
+    determinant_average = sum(
+        weight * factor for weight, factor in zip(weights, interaction_weight)
+    )
+    source_mean = sum(
+        weight * variation
+        for weight, variation in zip(weights, source_variation)
+    )
+    numerator = sum(
+        weight * (1 + variation) * factor
+        for weight, variation, factor in zip(
+            weights,
+            source_variation,
+            interaction_weight,
+        )
+    )
+    fluctuation_quotient = numerator / determinant_average
+    covariance = sum(
+        weight
+        * (variation - source_mean)
+        * (factor - determinant_average)
+        for weight, variation, factor in zip(
+            weights,
+            source_variation,
+            interaction_weight,
+        )
+    )
+    assert_equal(
+        "finite source determinant covariance identity",
+        fluctuation_quotient - 1,
+        source_mean + covariance / determinant_average,
+    )
+    assert_equal(
+        "source-independent determinant average is not source quotient",
+        fluctuation_quotient == determinant_average,
+        False,
+    )
+
+    source_variance = sum(
+        weight * (variation - source_mean) ** 2
+        for weight, variation in zip(weights, source_variation)
+    )
+    interaction_variance = sum(
+        weight * (factor - determinant_average) ** 2
+        for weight, factor in zip(weights, interaction_weight)
+    )
+    assert_equal(
+        "finite source covariance obeys Cauchy bound",
+        covariance * covariance <= source_variance * interaction_variance,
+        True,
+    )
+    covariance_residual = covariance / determinant_average
+    assert_equal(
+        "finite fluctuation covariance residual bound",
+        covariance_residual * covariance_residual
+        <= source_variance * interaction_variance / determinant_average**2,
+        True,
+    )
+
+    constant_interaction = [determinant_average for _ in weights]
+    constant_quotient = sum(
+        weight * (1 + variation) * factor
+        for weight, variation, factor in zip(
+            weights,
+            source_variation,
+            constant_interaction,
+        )
+    ) / determinant_average
+    assert_equal(
+        "source mean survives a constant determinant weight",
+        constant_quotient,
+        1 + source_mean,
+    )
+    assert_equal(
+        "vacuum determinant calibration misses source mean",
+        constant_quotient == 1,
+        False,
+    )
+
+    # A quadratic source perturbation contributes the trace of the normal-mode
+    # covariance.  The linear source perturbation has zero Gaussian mean.
+    normal_covariance = [
+        [Fraction(2, 3), Fraction(1, 5)],
+        [Fraction(1, 5), Fraction(3, 4)],
+    ]
+    quadratic_source = [
+        [Fraction(1, 7), Fraction(2, 11)],
+        [Fraction(2, 11), -Fraction(1, 13)],
+    ]
+    linear_source = [Fraction(3, 17), -Fraction(5, 19)]
+    linear_mean = Fraction(0) * sum(linear_source, Fraction(0))
+    trace_qc = sum(
+        quadratic_source[a][b] * normal_covariance[b][a]
+        for a in range(2)
+        for b in range(2)
+    )
+    assert_equal("Gaussian linear source mean vanishes", linear_mean, Fraction(0))
+    assert_equal(
+        "quadratic source trace correction",
+        Fraction(1, 2) * trace_qc,
+        Fraction(6623, 120120),
+    )
+
+
 def check_instanton_observable_assembly_ladder() -> None:
     # The physical observable is not the collective-coordinate measure and not
     # even the Euclidean source coefficient.  It is obtained only after the
@@ -6603,6 +6723,7 @@ def main() -> None:
     check_one_instanton_sector_isolation_bound()
     check_instanton_amplitude_error_budget()
     check_source_dependent_fluctuation_cumulant_bound()
+    check_finite_gaussian_source_insertion_estimator()
     check_instanton_observable_assembly_ladder()
     check_hard_momentum_instanton_size_window()
     check_fused_source_hard_size_mellin_integral()

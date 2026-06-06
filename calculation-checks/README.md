@@ -634,7 +634,10 @@ Current checks:
   density and combining them with sector, physical-bridge, and scheme majorants,
   the source-dependent
   fluctuation-cumulant bound which refines the determinant residual and
-  rejects vacuum-determinant and signed-cancellation shortcuts, the
+  rejects vacuum-determinant and signed-cancellation shortcuts, the finite
+  Gaussian source-insertion estimator which separates the source mean and its
+  covariance with nonzero-mode interactions from the source-independent
+  determinant average, the
   observable-assembly map which reads the same reusable bound as the passage
   from Euclidean source coefficient to scattering, OPE, susceptibility, or rate
   contribution, with negative controls against moduli-only,

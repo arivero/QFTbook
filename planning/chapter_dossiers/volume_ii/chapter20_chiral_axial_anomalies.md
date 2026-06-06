@@ -411,6 +411,7 @@
 | \(A_{i_1i_2j_1j_2},B_{i_1i_2j_1j_2}\) | two invariant four-fundamental \(SU(2)\) tensors used in the shared-orientation Haar projector |
 | \(\mathcal K_{\rm ex},\mathcal K_{\rm lead},\mathcal C_{\rm pg}^{\mathcal S},R_{\rm det},R_{\rm fluc},R_{\rm zm},R_{\rm src},R_{\rm Schur},R_{\rm end}\) | exact and leading one-instanton source-amplitude densities, pure-gauge collective/determinant density, and the reusable source-level error-budget pieces for determinant, source fluctuation, zero-mode/source, source matching, Schur, and endpoint residuals |
 | \(\eta,\mathcal N_z,d\gamma_z,\mathcal R_{\rm fluc},C_1,C_2,R_{\ge3},\epsilon_{\rm fluc}\) | normal nonzero-mode fluctuation coordinate, Gaussian fluctuation measure, source-dependent fluctuation ratio, cumulant pieces, and fluctuation residual refining the instanton determinant error |
+| \(U_z,D_z,Q_z,C_z,M_U,M_V,d_0\) | finite Gaussian source-insertion estimator data: source variation, source-independent determinant average, quadratic source tensor, normal covariance, source and interaction fluctuation norms, and nonzero determinant floor |
 | \(B^{\mathcal J}_{AB},\Phi^R,\Phi^L\) | color-singlet source-projected zero-mode matrix and source-to-zero-mode overlap maps used to match the auxiliary hard instanton kernel to gauge-invariant correlators |
 | \(G_I(T,t),Z_H,Z_{H'}',\Delta_H,\Delta_{H'},A_{H'\leftarrow H}^{I}\) | finite-volume hadronic pole-window data for extracting a selected color-singlet instanton matrix element from a source three-point function |
 | \(\mathcal A_{\rm phys}^{Q=1},\mathcal A_{\rm inst}^{\rm lead},R_{\rm phys},R_{\rm reg},R_{\rm cont},R_{\rm spec},R_{\rm IR},R_{\rm cut},R_{\rm match},R_\rho\) | physical one-instanton amplitude coordinate, leading continued/projected instanton-kernel coordinate, and the physical-bridge residuals separating Euclidean source kernels from physical amplitudes |
@@ -1755,6 +1756,16 @@
   finite-window propagation through \(M_R\), and negative controls against
   replacing source fluctuation control by a vacuum determinant calibration or a
   signed cancellation.
+- 2026-06-06 issue #597 finite Gaussian source-insertion estimator pass:
+  added `ca:instanton-finite-gaussian-source-insertion`, turning the
+  source-dependent fluctuation quotient into an exact finite covariance
+  identity before any continuum limit.  The block separates the Gaussian
+  source mean, the covariance with nonzero-mode interactions, the quadratic
+  source trace \(\frac12\operatorname{Tr}(QC)\), and the higher-source
+  majorant, making explicit why a source-independent determinant average is
+  not the four-source amplitude quotient.  The BPST companion now verifies the
+  rational covariance identity, Cauchy bound, constant-determinant negative
+  control, and quadratic normal-mode trace correction.
 - 2026-06-04 issue #597 one-instanton isolation pass: added
   `ca:one-instanton-sector-isolation-bound`, which makes the selected
   amplitude-sector projection part of the instanton calculation.  The block
