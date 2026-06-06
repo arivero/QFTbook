@@ -74,6 +74,10 @@
       "risk_class": "QCD theta/Witten-Veneziano Ward identities"
     },
     {
+      "path": "qcd_phase_checks.py",
+      "risk_class": "QCD thermodynamics and hydrodynamic response"
+    },
+    {
       "path": "scet_factorization_checks.py",
       "risk_class": "SCET/factorization proof-status boundary"
     },

@@ -1877,7 +1877,17 @@ The response-window statement can be tested more directly in a finite
 frequency interval.  Let
 \(\pi_x=T^{0x}\) be a transverse momentum density and take momentum
 \(\mathbf k=k\hat y\).  If the shear pole is isolated in the QCD retarded
-kernel, the positive-frequency spectral density has the hydrodynamic peak
+kernel, the contact-subtracted pole part may be represented, in the
+\(\rho=-2\operatorname{Im}G^R\) convention of
+Chapter~\ref{ch:thermal-spectral-kubo-transport}, by
+\begin{equation}
+  G_{\pi_x\pi_x}^{R,{\rm pole}}(\omega,k)
+  =
+  -\frac{w\,\gamma_k}{\gamma_k-\ii\omega}.
+  \label{eq:qcd-shear-retarded-pole-kernel}
+\end{equation}
+Its pole lies at \(\omega=-\ii\gamma_k\).  The corresponding
+positive-frequency spectral density is
 \begin{equation}
   \rho^{\rm hyd}_{\pi_x\pi_x}(\omega,k)
   =
@@ -1887,7 +1897,11 @@ kernel, the positive-frequency spectral density has the hydrodynamic peak
   \label{eq:qcd-shear-hydro-spectral-peak}
 \end{equation}
 up to the contact subtraction and the same frame choice used in
-\eqref{eq:qcd-hydro-response-comparison}.  A finite spectral extraction is
+\eqref{eq:qcd-hydro-response-comparison}.
+Thus an extraction can be checked at the response-function level: the width is
+the pole location, the residue is the static momentum susceptibility \(w\), and
+the viscosity is reconstructed as \(w\gamma_k/k^2\).  A finite spectral
+extraction is
 therefore not the statement ``read off \(\eta\) from a plotted peak.''  It
 requires scales
 \begin{equation}

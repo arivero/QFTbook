@@ -372,6 +372,18 @@ GitHub issue #628.
   width-residue identity, rejects the width-only shortcut, checks the residual
   budget, and records negative controls for missing residue uncertainty and
   hidden near-critical spectral weight.
+- 2026-06-06 issue #725/#630 evidence-independence follow-up: strengthened the
+  finite shear companion from width/residue bookkeeping to a finite retarded
+  kernel construction.  The TeX now displays the contact-subtracted shear pole
+  kernel
+  \(G^R_{\pi_x\pi_x}=-w\gamma_k/(\gamma_k-\ii\omega)\), whose imaginary part
+  gives the spectral peak in the chapter's
+  \(\rho=-2\operatorname{Im}G^R\) convention.  The companion check now samples
+  that generated spectral function, solves for the width and amplitude, recovers
+  \(\eta\), and rejects an uncorrected extraction in the presence of a separate
+  regular background.  The check remains a finite hydrodynamic-response
+  construction, not a proof that the QCD retarded correlator has the isolated
+  pole.
 - 2026-05-27 Roberge--Weiss pass: added the finite-regulator imaginary
   chemical-potential theorem, positivity statement for vectorlike pairs,
   Roberge--Weiss transition status remark, and exact angle-periodicity

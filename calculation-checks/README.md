@@ -319,7 +319,8 @@ Current checks:
   collective-mode counts, dense Fermi-surface stress scales, lifted local CFL
   anomaly-matching coefficients, hydrodynamic response-window bookkeeping for
   QCD shear, scalar and coupled diffusion, sound matching, the finite shear
-  spectral-window width/residue estimator with regular-background and
+  spectral-window extraction from a retarded pole kernel, including two-sample
+  width/amplitude reconstruction, regular-background bias/subtraction, and
   near-critical-mode negative controls, and the momentum-projected baryon
   current which removes the convective Drude sector at finite density, and the
   CFL Goldstone count.

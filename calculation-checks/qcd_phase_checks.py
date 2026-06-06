@@ -1,6 +1,45 @@
 #!/usr/bin/env python3
 """Finite algebra checks for the QCD phase-structure chapter.
 
+Evidence contract.
+
+Target claims:
+- The Volume X QCD phase chapter uses consistent finite-regulator and
+  thermodynamic-source normalizations for pressure, baryon cumulants,
+  Polyakov-loop sources, chiral Ward identities, HTL screening, hydrodynamic
+  response windows, dense HDET/HDL coordinates, and CFL diagnostics.
+- The finite shear spectral-window subsection uses the retarded sign
+  convention rho=-2 Im G^R, separates the finite-k pole width from the enthalpy
+  residue, and treats regular and near-critical spectral weight as separate
+  extraction data.
+
+Independent construction:
+- Recomputes the finite algebra from source definitions, group charges,
+  finite matrices, rational hydrodynamic kernels, and exact color/flavor
+  arithmetic rather than reading the final displayed transport or phase
+  formula as input.
+- For the shear window, constructs the contact-subtracted retarded pole
+  kernel, generates spectral samples, solves for width and amplitude, and only
+  then reconstructs eta.
+
+Imported assumptions:
+- Continuum QCD thermodynamic limits, real-time retarded correlator existence,
+  isolated hydrodynamic poles, HTL/HDET weak-coupling domains, chiral
+  spectral-density hypotheses, and CFL phase realization are external physics
+  inputs declared in the chapter.
+
+Negative controls:
+- Rejects wrong retarded spectral sign, width-only shear extraction, missing
+  enthalpy-residue uncertainty, uncorrected regular-background contamination,
+  hidden near-critical shear weight, incorrect Ward/contact signs, wrong
+  center/fugacity periodicity, and gauge-charge neutrality shortcuts.
+
+Scope boundary:
+- These are finite convention, algebra, and response-extraction checks.  They
+  are not lattice simulations, continuum-limit proofs, QCD phase-transition
+  theorems, microscopic derivations of hydrodynamic poles, or evidence that
+  any named dense-QCD phase exists in continuum QCD.
+
 The script checks convention-sensitive numerical factors used in the
 Stefan--Boltzmann pressure, the Banks--Casher normalization, the Linde
 magnetic-scale estimate, finite-regulator source-curvature identities,
@@ -17,9 +56,10 @@ charges, rotated electromagnetic mass-matrix bookkeeping, screening and
 collective-mode counts, dense Fermi-surface stress scales,
 color-flavor-locked faithful-global-symmetry and anomaly-matching
 bookkeeping, hydrodynamic response-window bookkeeping, finite shear
-spectral-window extraction budgets, momentum-projected baryon diffusion
-current bookkeeping, and the color-flavor-locked symmetry count.  It is not a
-lattice simulation and it does not assert the
+spectral-window extraction from a retarded hydrodynamic kernel,
+momentum-projected baryon diffusion current bookkeeping, and the
+color-flavor-locked symmetry count.  It is not a lattice simulation and it
+does not assert the
 existence or order of any QCD phase transition.
 """
 
@@ -898,22 +938,82 @@ def check_hydrodynamic_response_window_bookkeeping():
     )
 
 
-def check_finite_shear_spectral_window_bookkeeping():
-    # A finite-k shear peak gives the diffusion constant through its width
-    # gamma_k=D_eta k^2 and the viscosity through eta=w gamma_k/k^2.
+def check_finite_shear_spectral_window_from_retarded_kernel():
+    # Build the contact-subtracted shear pole from a one-variable retarded
+    # hydrodynamic kernel,
+    #   G_R(omega,k)=-w gamma/(gamma-i omega).
+    # This constructs the spectral density before extracting eta; it does not
+    # define the physical datum from the final width-residue formula.
     enthalpy = Fraction(13, 5)
-    eta = Fraction(5, 7)
+    diffusion = Fraction(25, 91)
     k_squared = Fraction(3, 11)
-    diffusion = eta / enthalpy
     gamma = diffusion * k_squared
-    assert_equal("QCD shear spectral peak width", gamma, Fraction(75, 1001))
-    assert_equal("QCD shear width-residue estimator", enthalpy * gamma / k_squared, eta)
+    eta = enthalpy * diffusion
+    assert_equal("QCD shear retarded-pole width", gamma, Fraction(75, 1001))
+
+    def retarded_kernel_parts(omega):
+        denominator = gamma * gamma + omega * omega
+        real = -enthalpy * gamma * gamma / denominator
+        imag = -enthalpy * gamma * omega / denominator
+        return real, imag
+
+    def spectral_density(omega):
+        _, imag = retarded_kernel_parts(omega)
+        return -2 * imag
+
+    omega1 = gamma / 2
+    omega2 = 2 * gamma
+    rho1 = spectral_density(omega1)
+    rho2 = spectral_density(omega2)
+    assert_true("QCD shear retarded sign gives positive spectral weight", rho1 > 0)
+
+    wrong_sign_rho1 = 2 * retarded_kernel_parts(omega1)[1]
+    assert_true("QCD shear wrong retarded sign is rejected", wrong_sign_rho1 < 0)
+
+    ratio1 = rho1 / omega1
+    ratio2 = rho2 / omega2
+    extracted_gamma_squared = (
+        ratio1 * omega1 * omega1 - ratio2 * omega2 * omega2
+    ) / (ratio2 - ratio1)
+    extracted_peak_amplitude = ratio1 * (omega1 * omega1 + extracted_gamma_squared)
+    extracted_eta = extracted_peak_amplitude / (2 * k_squared)
+    assert_equal(
+        "QCD shear spectral samples recover pole width squared",
+        extracted_gamma_squared,
+        gamma * gamma,
+    )
+    assert_equal("QCD shear spectral samples recover eta", extracted_eta, eta)
 
     # The peak width alone is the diffusion constant, not the viscosity, unless
     # the enthalpy normalization has accidentally been set to one.
     assert_true(
-        "QCD shear width shortcut misses enthalpy residue",
+        "QCD shear spectral width shortcut misses enthalpy residue",
         gamma / k_squared != eta,
+    )
+
+    # A separately generated regular low-frequency background biases a naive
+    # two-sample Lorentzian extraction unless it is subtracted or budgeted.
+    regular_slope = Fraction(1, 17)
+    contaminated_ratio1 = ratio1 + regular_slope
+    contaminated_ratio2 = ratio2 + regular_slope
+    contaminated_gamma_squared = (
+        contaminated_ratio1 * omega1 * omega1
+        - contaminated_ratio2 * omega2 * omega2
+    ) / (contaminated_ratio2 - contaminated_ratio1)
+    assert_true(
+        "QCD shear regular background biases uncorrected width extraction",
+        contaminated_gamma_squared != gamma * gamma,
+    )
+    corrected_ratio1 = contaminated_ratio1 - regular_slope
+    corrected_ratio2 = contaminated_ratio2 - regular_slope
+    corrected_gamma_squared = (
+        corrected_ratio1 * omega1 * omega1
+        - corrected_ratio2 * omega2 * omega2
+    ) / (corrected_ratio2 - corrected_ratio1)
+    assert_equal(
+        "QCD shear background subtraction restores width extraction",
+        corrected_gamma_squared,
+        gamma * gamma,
     )
 
     # Propagate independent width and residue errors through eta=w gamma/k^2.
@@ -944,7 +1044,7 @@ def check_finite_shear_spectral_window_bookkeeping():
     assert_true("QCD shear window lies below microscopic gap", window < microscopic_gap)
 
     peak_tail_bound = enthalpy * gamma / window
-    regular_background_bound = Fraction(2, 17) * window
+    regular_background_bound = regular_slope * window
     near_critical_bound = Fraction(1, 211)
     area_error_budget = (
         peak_tail_bound
@@ -1003,7 +1103,7 @@ def main():
     check_cfl_screening_and_collective_counts()
     check_cfl_anomaly_matching_bookkeeping()
     check_hydrodynamic_response_window_bookkeeping()
-    check_finite_shear_spectral_window_bookkeeping()
+    check_finite_shear_spectral_window_from_retarded_kernel()
     print("All QCD phase-structure checks passed.")
 
 
