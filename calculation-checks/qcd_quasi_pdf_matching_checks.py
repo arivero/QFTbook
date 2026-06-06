@@ -10,26 +10,28 @@ The checks verify algebraic facts used in Volume II, Chapter 19:
 3. Finite light-ray scheme changes are absorbed by the inverse change of the
    matching kernel.
 4. Column-sum normalization of the matching kernel preserves quark number.
-5. Finite-momentum inverse matching of tested PDF bins requires a stable left
-   inverse and a residual budget; raw quasi-PDF bins are not PDF bins.
+5. Finite-momentum inverse matching of tested PDF bins requires a declared
+   primal/dual projection datum, a stable left inverse, and a residual budget;
+   raw quasi-PDF bins are not PDF bins.
 
 Evidence contract.
 Target claims: the Volume II QCD quasi-/pseudo-PDF section's Fourier
 normalization, reduced Ioffe-time cancellation, finite scheme covariance,
 charge-preserving matching, and finite-momentum inverse-matching residual
-bound for tested PDF bins.
+bound for tested PDF bins with a declared primal/dual finite projection.
 Independent construction: exact finite Fourier characters, rational
-renormalization factors, rational matching matrices, explicit left inverses,
-and finite residual vectors independent of the continuum LaMET derivation.
+renormalization factors, rational primal and dual bases, rational matching
+matrices, explicit left inverses, and finite residual vectors independent of
+the continuum LaMET derivation.
 Imported assumptions: existence of the renormalized spatial Wilson-line
 bilocal, existence of light-ray PDF matrix elements in a declared scheme, and
 the perturbative short-distance matching kernel are taken from the manuscript
 development and are not proved by this finite script.
 Negative controls: missing Fourier prefactor, uncancelled nonmultiplicative
 Wilson-line factors, wrong finite scheme transport, charge-nonpreserving
-column sums, raw quasi-bin reading, singular inverse matching, omitted
-finite-momentum residuals, and quasi-coordinate negativity overread as PDF
-negativity.
+column sums, nonorthogonal primal functions used as their own duals, raw
+quasi-bin reading, singular inverse matching, omitted finite-momentum
+residuals, and quasi-coordinate negativity overread as PDF negativity.
 Scope boundary: these are finite normalization and stability checks for the
 matching algebra.  They are not independent evidence for the continuum QCD
 large-momentum theorem, lattice continuum limit, infinite-volume limit, or
@@ -48,6 +50,15 @@ Matrix = list[list[Fraction]]
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+
+
+def assert_not_equal(name: str, got: object, unexpected: object) -> None:
+    if got == unexpected:
+        raise AssertionError(f"{name}: unexpectedly got {got!r}")
+
+
+def dot(left: Vector, right: Vector) -> Fraction:
+    return sum(left[index] * right[index] for index in range(len(left)))
 
 
 def matmul(left: Matrix, right: Matrix) -> Matrix:
@@ -202,6 +213,74 @@ def check_number_preserving_matching() -> None:
     assert_equal("quark number from quasi-PDF matching", sum(quasi), Fraction(1))
 
 
+def check_primal_dual_projection_matching_matrix() -> None:
+    # A nonorthogonal trial space needs separate reconstruction functions and
+    # coefficient functionals.  This is the finite analogue of projecting a
+    # light-ray distribution before applying the quasi-PDF matching kernel.
+    primals = [
+        [Fraction(1), Fraction(0)],
+        [Fraction(1), Fraction(1)],
+    ]
+    duals = [
+        [Fraction(1), Fraction(-1)],
+        [Fraction(0), Fraction(1)],
+    ]
+    for row, dual in enumerate(duals):
+        for col, primal in enumerate(primals):
+            expected = Fraction(1) if row == col else Fraction(0)
+            assert_equal(f"dual pairing {row},{col}", dot(dual, primal), expected)
+
+    gram = [[dot(left, right) for right in primals] for left in primals]
+    assert_not_equal("nonorthogonal primal Gram matrix", gram, identity_2x2())
+
+    pdf = [Fraction(5), Fraction(7)]
+    pdf_bins = [dot(dual, pdf) for dual in duals]
+    projected_pdf = [
+        sum(primals[col][row] * pdf_bins[col] for col in range(2))
+        for row in range(2)
+    ]
+    assert_equal("primal-dual projection reconstructs retained PDF", projected_pdf, pdf)
+
+    matching_kernel = [
+        [Fraction(2), Fraction(3)],
+        [Fraction(-1), Fraction(4)],
+    ]
+    matching = [
+        [dot(kernel_row, primal) for primal in primals]
+        for kernel_row in matching_kernel
+    ]
+    quasi_bins = matvec(matching_kernel, pdf)
+    assert_equal(
+        "finite matching matrix acts on primal reconstruction functions",
+        matvec(matching, pdf_bins),
+        quasi_bins,
+    )
+
+    self_dual_bins = [dot(primal, pdf) for primal in primals]
+    assert_equal(
+        "self-dual shortcut inserts the primal Gram matrix",
+        self_dual_bins,
+        matvec(gram, pdf_bins),
+    )
+
+    gram_corrected_matching = matmul(matching, inverse_2x2(gram))
+    assert_not_equal(
+        "nonorthogonal self-dual coordinates change the matching matrix",
+        gram_corrected_matching,
+        matching,
+    )
+    assert_equal(
+        "Gram-corrected self-dual coordinates recover quasi bins",
+        matvec(gram_corrected_matching, self_dual_bins),
+        quasi_bins,
+    )
+    assert_not_equal(
+        "using primals as their own duals gives wrong quasi bins",
+        matvec(matching, self_dual_bins),
+        quasi_bins,
+    )
+
+
 def check_finite_momentum_inverse_matching_extraction() -> None:
     matching = [
         [Fraction(5, 4), Fraction(1, 2)],
@@ -267,6 +346,7 @@ def main() -> None:
     check_reduced_pseudo_itd_cancellation()
     check_scheme_covariance()
     check_number_preserving_matching()
+    check_primal_dual_projection_matching_matrix()
     check_finite_momentum_inverse_matching_extraction()
     print("All QCD quasi-/pseudo-PDF matching checks passed.")
 

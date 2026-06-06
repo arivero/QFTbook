@@ -447,9 +447,11 @@ Current checks:
   quasi-/pseudo-PDF block, including the large-momentum Fourier prefactor
   convention, cancellation of a multiplicative spatial-Wilson-line factor in a
   reduced Ioffe-time ratio, finite matching-kernel scheme covariance, charge
-  preservation from matching-kernel column sums, and finite-momentum inverse
-  matching of tested PDF bins with stable-left-inverse, singular-matching,
-  residual-budget, and raw-quasi-coordinate negative controls.
+  preservation from matching-kernel column sums, the nonorthogonal
+  primal/dual projection datum for finite PDF coordinates, and finite-momentum
+  inverse matching of tested PDF bins with stable-left-inverse,
+  singular-matching, residual-budget, self-dual-shortcut, and
+  raw-quasi-coordinate negative controls.
 - `qcd_sum_rule_checks.py`: symbolic checks for the Volume II current
   sum-rule block, including the Borel transform of the dispersion kernel,
   annihilation of subtraction polynomials, inverse-power OPE terms, and the

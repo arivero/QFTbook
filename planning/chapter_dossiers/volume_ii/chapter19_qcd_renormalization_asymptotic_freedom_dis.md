@@ -718,10 +718,11 @@ The chapter must define and derive:
       finite-volume, and endpoint qualifications.  Finite scheme changes of
       light-ray PDFs act by inverse transformation on the matching kernel, and
       charge preservation is a column-sum condition on that kernel.  The
-      finite-momentum extraction now requires a tested matching matrix, stable
-      left inverse, omitted-test projection residual, power/regulator/window
-      residuals, and statistical error before Euclidean quasi data are read as
-      light-ray PDF bins.
+      finite-momentum extraction now requires a declared finite trial space
+      with primal reconstruction functions and dual coefficient functionals, a
+      tested matching matrix, stable left inverse, omitted-trial-space
+      residual, power/regulator/window residuals, and statistical error before
+      Euclidean quasi data are read as light-ray PDF bins.
 22cc. The small-\(x\) boundary is grounded in regulated Wilson-line dipole
       matrix elements rather than colored parton scattering states.  The
       leading fixed-coupling BFKL kernel is written with the monograph
@@ -1207,13 +1208,16 @@ The chapter must define and derive:
   `ca:qcd-quasi-pdf-finite-momentum-inverse-matching` after the finite
   matching-kernel scheme covariance paragraph.  The controlled approximation
   treats lattice quasi-/pseudo-PDF use as a finite inverse problem for smeared
-  PDF bins, with matching matrix \(A\), declared left inverse \(L\), omitted
-  light-ray test directions, finite-\(P_3\) power terms, regulator errors,
-  finite Wilson-line/Fourier-window residuals, and ensemble errors in one norm
-  bound.  The companion check `qcd_quasi_pdf_matching_checks.py` now carries an
-  evidence contract and verifies stable inverse matching, singular-matrix
-  rejection, residual-budget propagation, raw-quasi-coordinate rejection, and
-  the fact that quasi-coordinate negativity is not by itself PDF negativity.
+  PDF bins, with primal reconstruction functions \(\psi_\ell\), dual
+  coefficient functionals \(\phi^\ell\), matching matrix \(A\), declared left
+  inverse \(L\), omitted trial-space complement, finite-\(P_3\) power terms,
+  regulator errors, finite Wilson-line/Fourier-window residuals, and ensemble
+  errors in one norm bound.  The companion check
+  `qcd_quasi_pdf_matching_checks.py` now carries an evidence contract and
+  verifies the nonorthogonal primal/dual projection datum, stable inverse
+  matching, singular-matrix rejection, residual-budget propagation,
+  self-dual-shortcut rejection, raw-quasi-coordinate rejection, and the fact
+  that quasi-coordinate negativity is not by itself PDF negativity.
 - 2026-06-01 issue #630 PDF moment pass: added the local-moment extraction
   from the Wilson-line light-ray definitions, including the left-endpoint
   \(-i\overleftarrow D_n\) sign convention, the gluon \(1/x\) moment-index
