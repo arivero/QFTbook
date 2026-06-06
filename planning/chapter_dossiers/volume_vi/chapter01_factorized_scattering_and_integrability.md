@@ -57,12 +57,13 @@
   and the residual split separating wedge-generator, nuclearity,
   local-intersection, form-factor, domain/positivity, and completeness
   inputs before a local observable is claimed.
-- End-to-end route ledger for Volume VI reference paths: Ising energy,
-  sinh-Gordon wedge/local-net reconstruction, Lee--Yang TBA, and GHD Euler
-  cells.  The ledger names the on-shell, Hilbert-space, wedge, local-algebra,
-  form-factor/domain, thermodynamic/state, microscopic-operator, and physical
-  projection gates that must close before an exact formula is quoted as a
-  local, thermodynamic, hydrodynamic, or real-time transport QFT observable.
+- End-to-end observable reconstruction map for Volume VI reference paths:
+  Ising energy, sinh-Gordon wedge/local-net reconstruction, Lee--Yang TBA, and
+  GHD Euler cells.  The map names the on-shell, Hilbert-space, wedge,
+  local-algebra, form-factor/domain, thermodynamic/state, microscopic-operator,
+  and physical-projection checkpoints that must close before an exact formula is
+  quoted as a local, thermodynamic, hydrodynamic, or real-time transport QFT
+  observable.
 
 ## Symbols
 
@@ -86,8 +87,8 @@
 | \(\mathfrak A_S(\mathcal O)\) | double-cone local-algebra candidate, defined as an opposite-wedge intersection |
 | \(\Xi_{x,y}\) | modular nuclearity map used to test local-intersection phase space |
 | \(R_{\rm pfg},R_{\rm nuc},R_{\rm int},R_{\rm ff},R_{\rm dom},R_{\rm comp}\) | reconstruction residuals from wedge data to local observables |
-| \(\mathsf R=(\mathsf S,\mathsf H,\mathsf W,\mathsf O,\mathsf F,\mathsf T,\mathsf P)\) | end-to-end reconstruction route gates: scattering/Bethe datum, Hilbert space, wedge locality, local algebra, form-factor/domain package, thermodynamic or mirror state, and physical projection |
-| \(\varepsilon_{\mathsf S},\ldots,\varepsilon_{\mathsf P}\) | route-level residuals in the end-to-end reconstruction ledger |
+| \(\mathsf R=(\mathsf S,\mathsf H,\mathsf W,\mathsf O,\mathsf F,\mathsf T,\mathsf P)\) | end-to-end observable reconstruction checkpoints: scattering/Bethe datum, Hilbert space, wedge locality, local algebra, form-factor/domain package, thermodynamic or mirror state, and physical projection |
+| \(\varepsilon_{\mathsf S},\ldots,\varepsilon_{\mathsf P}\) | route-level residual slots or bounds in the observable reconstruction map; summable only after a common observable norm or topology and estimates have been supplied |
 
 ## Claim Ledger
 
@@ -119,14 +120,16 @@
    Yang--Baxter/ZF algebra controls the \(S\)-Fock coordinate, but modular
    nuclearity, nontrivial local intersections, form-factor convergence,
    domains/positivity, and completeness remain separate inputs.
-10. End-to-end reconstruction has route-dependent gates.  The Ising energy
-    route is theorem-level because the free Majorana CAR construction already
-    supplies the Hilbert space, local net, domains, positivity, and completeness;
-    the sinh-Gordon route remains conditional until nuclearity, local
-    intersections, point-field domains, and completeness are supplied; Lee--Yang
-    TBA and GHD certify thermodynamic, Euler-scale, or Drude coordinates only
-    under their own finite-volume, state-limit, microscopic-observable, Kubo,
-    and projection hypotheses.
+10. End-to-end reconstruction has route-dependent observable checkpoints.  The
+    Ising energy route is theorem-level because the free Majorana CAR
+    construction already supplies the Hilbert space, local net, domains,
+    positivity, and completeness; the sinh-Gordon route remains conditional
+    until nuclearity, local intersections, point-field domains, and completeness
+    are supplied; Lee--Yang TBA and GHD certify thermodynamic, Euler-scale, or
+    Drude coordinates only under their own finite-volume, state-limit,
+    microscopic-observable, Kubo, and projection hypotheses.  A named residual
+    slot is not a numerical estimate until a common observable norm/topology and
+    bound are supplied.
 
 ## Figures
 
@@ -164,3 +167,8 @@
 - 2026-06-05 GHD transport coherence hook: clarified in the route ledger that
   Drude/transport claims require a real-time KMS/Kubo gate in addition to the
   Euler GHD current coordinate.
+- 2026-06-06 issue #844 observable-map pass: renamed the end-to-end route
+  ledger as an observable reconstruction map, clarified that residual slots are
+  not summable estimates until common-norm bounds are supplied, and extended
+  `factorized_scattering_algebra_checks.py` with a negative control against
+  hiding nonzero projection residuals as irrelevant.

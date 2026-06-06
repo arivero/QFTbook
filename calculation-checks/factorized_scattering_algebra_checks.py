@@ -6,10 +6,10 @@ identities behind the rapidity invariant, Newton separation of rapidity
 multisets, chamber braid relations, the rational Yang--Baxter identity,
 scalar Watson-exchange bookkeeping, and the finite residual ledger separating
 S-Fock/ZF algebra from wedge-local and local-algebra reconstruction.  They
-also check the finite route-gate logic behind the end-to-end reconstruction
-ledger: exact scattering, exact TBA, or exact dressing data do not by
-themselves certify a local observable without the corresponding local-algebra,
-domain/completeness, state-limit, and projection gates.
+also check the finite checkpoint logic behind the end-to-end observable
+reconstruction map: exact scattering, exact TBA, or exact dressing data do not
+by themselves certify a local observable without the corresponding
+local-algebra, domain/completeness, state-limit, and projection checkpoints.
 
 Evidence contract.
 Target claims: rapidity convention, factorized chamber algebra, Watson
@@ -33,7 +33,8 @@ TBA endpoint data overread as a local trace operator, and exact GHD dressing
 overread as a microscopic current.
 Scope boundary: these checks verify finite algebra and reconstruction
 interfaces only; they do not prove modular nuclearity, nontrivial local
-intersections, form-factor convergence, or local-QFT completeness.
+intersections, form-factor convergence, common-norm residual estimates, or
+local-QFT completeness.
 """
 
 from fractions import Fraction
@@ -288,7 +289,21 @@ def route_certifies_thermodynamic_observable(gates: dict[str, bool]) -> bool:
     return all(gates.get(gate, False) for gate in required)
 
 
-def check_end_to_end_reconstruction_route_ledger():
+def residual_budget_is_estimate(
+    residuals: dict[str, Fraction],
+    statuses: dict[str, str],
+) -> bool:
+    admissible = {"exact_zero", "estimated", "bounded", "irrelevant"}
+    for name, residual in residuals.items():
+        status = statuses.get(name, "slot")
+        if status not in admissible:
+            return False
+        if status in {"exact_zero", "irrelevant"} and residual != 0:
+            return False
+    return True
+
+
+def check_end_to_end_observable_reconstruction_map():
     ising_energy_route = {
         "on_shell": True,
         "hilbert": True,
@@ -395,6 +410,40 @@ def check_end_to_end_reconstruction_route_ledger():
         "thermodynamic_state": Fraction(1, 200),
         "projection": Fraction(1, 240),
     }
+    residual_slots = {
+        "scattering": "exact_zero",
+        "hilbert": "exact_zero",
+        "wedge": "bounded",
+        "local_algebra": "slot",
+        "operator_domain": "slot",
+        "thermodynamic_state": "estimated",
+        "projection": "slot",
+    }
+    assert_equal(
+        residual_budget_is_estimate(route_residuals, residual_slots),
+        False,
+        "named residual slots are not summable route estimates",
+    )
+    residual_estimates = dict(residual_slots)
+    residual_estimates.update(
+        {
+            "local_algebra": "bounded",
+            "operator_domain": "estimated",
+            "projection": "bounded",
+        }
+    )
+    assert_equal(
+        residual_budget_is_estimate(route_residuals, residual_estimates),
+        True,
+        "bounded or estimated residuals form a summable route budget",
+    )
+    omitted_projection = dict(residual_estimates)
+    omitted_projection["projection"] = "irrelevant"
+    assert_equal(
+        residual_budget_is_estimate(route_residuals, omitted_projection),
+        False,
+        "nonzero projection residual cannot be hidden as irrelevant",
+    )
     exact_observable = Fraction(7, 5) + sum(route_residuals.values(), Fraction(0))
     retained_coordinate = Fraction(7, 5)
     route_budget = sum(abs(value) for value in route_residuals.values())
@@ -418,7 +467,7 @@ def main():
     check_rational_yang_baxter_identity()
     check_scalar_unitarity_and_watson_bookkeeping()
     check_wedge_local_reconstruction_residual_budget()
-    check_end_to_end_reconstruction_route_ledger()
+    check_end_to_end_observable_reconstruction_map()
     print("All factorized-scattering algebra checks passed.")
 
 

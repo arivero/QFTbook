@@ -323,11 +323,11 @@ have produced local observables or only a beautifully consistent scattering
 calculus.
 \end{controlledapproximation}
 
-\begin{controlledapproximation}[End-to-end reconstruction route ledger]
+\begin{controlledapproximation}[End-to-end observable reconstruction map]
 \label{ca:integrable-end-to-end-reconstruction-route-ledger}
 For a concrete integrable model, an ``exact solution'' in this volume means a
-route through specified gates, not a single formula.  The route datum is the
-ordered list
+map from exact data to a specified observable through stated checkpoints, not a
+single formula.  The route datum is the ordered reference map
 \[
   \mathsf R
   =
@@ -343,11 +343,14 @@ observable algebra, \(\mathsf F\) is the pointlike or smeared form-factor
 operator package with domains and convergence, \(\mathsf T\) is the
 thermodynamic or mirror-state limit, and \(\mathsf P\) is the physical
 projection to the observable being quoted.  A local-observable claim requires
-all gates on the path actually used by the observable.  A thermodynamic claim
-may bypass point fields only if its own finite-volume, Bethe--Yang, mirror,
-and state-limit hypotheses replace them.
+all checkpoints on the path actually used by the observable.  A thermodynamic
+claim may bypass point fields only if its own finite-volume, Bethe--Yang,
+mirror, and state-limit hypotheses replace them.  Thus \(\mathsf R\) records
+the physical output, the strongest supplied evidence at each checkpoint, and the
+precise places where an exact formula has not yet become a local,
+thermodynamic, hydrodynamic, or transport observable.
 
-The following four routes fix how later chapters should be read.
+The following four observable maps fix how later chapters should be read.
 \begin{enumerate}[label=\textnormal{(\alph*)}]
 \item \emph{Ising energy.}  The controlled output is the local Euclidean
 two-point function.  The free Majorana CAR construction supplies
@@ -386,8 +389,9 @@ identification, real-time Kubo limits for transport claims, and
 local-equilibrium control rather than Yang--Baxter algebra.
 
 If \(E_{\mathsf R}^{\rm obs}\) denotes the error in the target local or
-thermodynamic observable along a chosen route, the route ledger is used through
-the absolute budget
+thermodynamic observable along a chosen route, and if every retained residual
+has been represented in the same observable norm or topology, the reconstruction
+map is used through the absolute budget
 \begin{equation}
   |E_{\mathsf R}^{\rm obs}|
   \le
@@ -400,13 +404,17 @@ the absolute budget
   +\varepsilon_{\mathsf P},
   \label{eq:integrable-route-ledger-budget}
 \end{equation}
-with omitted gates assigned zero only when they are genuinely irrelevant to the
-observable's route, not when their analysis has merely been skipped.  Exact
-Yang--Baxter algebra sets \(\varepsilon_{\mathsf S}\) to zero; it says nothing
-about \(\varepsilon_{\mathsf O}\), \(\varepsilon_{\mathsf F}\), or
-\(\varepsilon_{\mathsf P}\).  Likewise an exact numerical TBA solution may set
-the retained \(\mathsf T\)-coordinate error to zero while leaving the local
-trace-operator or microscopic-current projection errors untouched.
+with omitted checkpoints assigned zero only when they are genuinely irrelevant
+to the observable's route, not when their analysis has merely been skipped.
+Before such an estimate is supplied, \(\varepsilon_{\mathsf S},\ldots,
+\varepsilon_{\mathsf P}\) are named residual slots, not numerical bounds; a slot
+marks where the physics still owes a construction or limiting argument.  Exact
+Yang--Baxter algebra sets the already-defined \(\varepsilon_{\mathsf S}\) to
+zero; it says nothing about \(\varepsilon_{\mathsf O}\),
+\(\varepsilon_{\mathsf F}\), or \(\varepsilon_{\mathsf P}\).  Likewise an exact
+numerical TBA solution may set the retained \(\mathsf T\)-coordinate error to
+zero while leaving the local trace-operator or microscopic-current projection
+errors untouched.
 \end{controlledapproximation}
 
 \section{Factorized Scattering Datum}
