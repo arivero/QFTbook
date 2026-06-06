@@ -825,7 +825,9 @@ Current checks:
   curvatures, \(U(1)_A\)-odd kernels, and real-time axial relaxation rates,
   the physical projection bridge from Euclidean source kernels to pole-window,
   spectral-bin, OPE, or inclusive coordinates, including contact-polynomial
-  separation and bridge residual budgets,
+  separation and bridge residual budgets, the mixed-source pole amputation
+  test showing that a four-source instanton window must be divided by the full
+  overlap matrices rather than by diagonal residues,
   the first connected instanton-pair source correction with disconnected
   subtraction, neutral-pair source visibility, same-charge second-harmonic
   data, zero-mode overlap survival, and pair residual control,
@@ -856,7 +858,8 @@ Current checks:
   susceptibilities, dilute curvatures used as real-time rates, dilute
   instanton curvature substituted for Witten--Veneziano input without a
   comparison budget, Euclidean source values used as physical pole or spectral
-  data, colored auxiliary kernels treated as standalone LSZ amplitudes,
+  data, diagonal-overlap division in a mixed source basis, colored auxiliary
+  kernels treated as standalone LSZ amplitudes,
   underbudgeted projection bridges, theta-curvature-only control of a neutral pair, connected
   pair correction without disconnected subtraction, one-body sector budgets
   that omit pair leakage, determinant-only hard ratio, missing hard slot,

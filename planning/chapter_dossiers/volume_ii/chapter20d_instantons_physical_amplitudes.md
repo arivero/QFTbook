@@ -123,6 +123,10 @@
   bound separating regulator transport, analytic continuation, pole/bin
   isolation, infrared completion, unitarity-cut normalization, matching, and
   endpoint control.
+- `ca:instanton-pole-normalized-four-source-extraction`: mixed-source pole
+  extraction block showing that a Euclidean four-source instanton window
+  becomes a matrix element only after full overlap-matrix amputation and a
+  pole-leakage residual bound.
 - `sec:instanton-first-cluster-amplitude-correction`: source-amplitude bridge
   from the assembled one-instanton coefficient to the first connected
   instanton-pair correction.
@@ -203,6 +207,12 @@
   OPE matching, colored auxiliary kernels, and bridge residuals, so a
   Euclidean source number cannot be relabelled as a scattering amplitude or
   spectral observable.
+- The pole-normalized four-source extraction block makes the stable-particle
+  projection more concrete: in a mixed source basis the physical instanton
+  matrix element is \(Z_f^{-1}\widetilde C^I(Z_i^\dagger)^{-1}\), not a raw
+  Euclidean kernel or a diagonal residue division.  Excited-state and
+  continuum leakage are amplified by the inverse overlap matrices, so pole
+  isolation is a physical part of the amplitude calculation.
 - The observable-map block connects the dedicated instanton-amplitude
   chapter back to the QCD theta and \(U(1)_A\) material without duplicating it:
   a hard four-source coefficient, a dilute theta curvature, a zero-mode-zone
@@ -274,6 +284,9 @@
   pole-window and spectral-bin coordinates, including contact-polynomial
   separation, one-Euclidean-value inversion failure, bridge residual control,
   and colored-kernel LSZ rejection,
+  verifies the mixed-source pole amputation formula and rejects raw-kernel
+  and diagonal-overlap shortcuts, rank-lost source bases, and determinant
+  constants used to absorb pole leakage,
   verifies the first connected instanton-pair source correction, including
   disconnected subtraction, neutral-pair source visibility despite zero theta
   curvature, same-charge second-harmonic data, zero-mode overlap survival, and
@@ -395,3 +408,9 @@
   fluctuation averaging, collective integration, and physical projection.  The
   companion check rejects the corresponding shortcut routes in finite
   arithmetic.
+- 2026-06-06 mixed-source pole extraction pass: added
+  `ca:instanton-pole-normalized-four-source-extraction` inside the physical
+  projection bridge.  The pass turns the stable-particle projection into an
+  explicit overlap-matrix amputation problem, so the hard instanton
+  four-source window becomes a physical matrix element only after source
+  mixing, pole residues, and excited-state leakage are controlled.

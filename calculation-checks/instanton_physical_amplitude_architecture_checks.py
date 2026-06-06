@@ -59,6 +59,10 @@ Target claims:
   pole, spectral-bin, OPE, or inclusive projection, with bridge residuals for
   regulator transport, continuation, pole/bin isolation, infrared completion,
   unitarity-cut normalization, matching, and endpoint control.
+- `ca:instanton-pole-normalized-four-source-extraction`: a pole-window
+  four-source kernel with a mixed source basis must be amputated by the full
+  source-overlap matrices, with excited-state and continuum leakage amplified
+  by the inverse overlap matrices.
 - `ca:instanton-first-cluster-amplitude-correction`: a first connected
   two-body correction to a source amplitude requires the disconnected one-body
   product subtraction, a source/projection-specific pair kernel, absolute pair
@@ -90,7 +94,8 @@ Independent construction:
   multiplicative hard-amplitude assembly bounds on signed windows,
   finite observable-handoff comparisons for theta, U(1)_A, and real-time
   axial channels,
-  pole-window extraction, spectral-bin/Stieltjes comparisons, contact
+  pole-window extraction, mixed-source matrix amputation,
+  spectral-bin/Stieltjes comparisons, contact
   polynomial separation, and bridge residual telescopes,
   first connected instanton-pair source corrections,
   physical projection bins, residual sums, two-term hard-window endpoint
@@ -167,6 +172,7 @@ Negative controls:
   topological susceptibility used as a real-time rate, a dilute instanton
   curvature substituted for Witten-Veneziano curvature without a comparison
   budget, a Euclidean source value used as a physical pole or spectral bin,
+  diagonal-overlap division substituted for mixed-source pole amputation,
   a colored auxiliary instanton kernel treated as a standalone LSZ amplitude,
   a bridge budget omitting the inverse-problem residual, a neutral pair
   controlled only by theta curvature, a disconnected
@@ -211,6 +217,20 @@ def add2(left: Matrix2, right: Matrix2) -> Matrix2:
     return (
         (left[0][0] + right[0][0], left[0][1] + right[0][1]),
         (left[1][0] + right[1][0], left[1][1] + right[1][1]),
+    )
+
+
+def sub2(left: Matrix2, right: Matrix2) -> Matrix2:
+    return (
+        (left[0][0] - right[0][0], left[0][1] - right[0][1]),
+        (left[1][0] - right[1][0], left[1][1] - right[1][1]),
+    )
+
+
+def transpose2(matrix: Matrix2) -> Matrix2:
+    return (
+        (matrix[0][0], matrix[1][0]),
+        (matrix[0][1], matrix[1][1]),
     )
 
 
@@ -1363,6 +1383,107 @@ def check_source_kernel_physical_projection_bridge() -> None:
     )
 
 
+def check_pole_normalized_four_source_matrix_extraction() -> None:
+    # Two mixed source bases for a selected incoming/outgoing pole subspace.
+    # The Euclidean four-source window contains the overlap matrices on both
+    # sides of the physical instanton matrix element.
+    source_overlap: Matrix2 = (
+        (Fraction(2), Fraction(1)),
+        (Fraction(1), Fraction(1)),
+    )
+    sink_overlap: Matrix2 = (
+        (Fraction(3), Fraction(1)),
+        (Fraction(1), Fraction(1)),
+    )
+    physical_matrix: Matrix2 = (
+        (Fraction(5, 7), -Fraction(2, 11)),
+        (Fraction(3, 13), Fraction(7, 17)),
+    )
+    source_adjoint = transpose2(source_overlap)
+
+    pole_window = matmul2(matmul2(sink_overlap, physical_matrix), source_adjoint)
+    recovered_matrix = matmul2(
+        matmul2(inv2(sink_overlap), pole_window),
+        inv2(source_adjoint),
+    )
+    assert_equal(
+        "mixed-source pole amputation recovers physical instanton matrix",
+        recovered_matrix,
+        physical_matrix,
+    )
+    assert_not_equal(
+        "raw four-source pole window is not the physical matrix element",
+        pole_window,
+        physical_matrix,
+    )
+
+    sink_diagonal_inverse: Matrix2 = (
+        (1 / sink_overlap[0][0], Fraction(0)),
+        (Fraction(0), 1 / sink_overlap[1][1]),
+    )
+    source_diagonal_inverse: Matrix2 = (
+        (1 / source_adjoint[0][0], Fraction(0)),
+        (Fraction(0), 1 / source_adjoint[1][1]),
+    )
+    diagonal_shortcut = matmul2(
+        matmul2(sink_diagonal_inverse, pole_window),
+        source_diagonal_inverse,
+    )
+    assert_not_equal(
+        "diagonal overlap division misses source mixing",
+        diagonal_shortcut,
+        physical_matrix,
+    )
+
+    pole_leakage: Matrix2 = (
+        (Fraction(1, 100), -Fraction(1, 120)),
+        (Fraction(1, 90), Fraction(1, 150)),
+    )
+    leaked_window = add2(pole_window, pole_leakage)
+    recovered_with_leakage = matmul2(
+        matmul2(inv2(sink_overlap), leaked_window),
+        inv2(source_adjoint),
+    )
+    recovered_error = sub2(recovered_with_leakage, physical_matrix)
+    propagated_error = matmul2(
+        matmul2(inv2(sink_overlap), pole_leakage),
+        inv2(source_adjoint),
+    )
+    assert_equal(
+        "mixed-source pole leakage propagates through inverse overlaps",
+        recovered_error,
+        propagated_error,
+    )
+    max_leakage = max_abs_entry(pole_leakage)
+    matrix_bound = (
+        Fraction(4)
+        * max_abs_entry(inv2(sink_overlap))
+        * max_leakage
+        * max_abs_entry(inv2(source_adjoint))
+    )
+    assert_leq(
+        "mixed-source pole amputation residual bound",
+        float(max_abs_entry(recovered_error)),
+        float(matrix_bound),
+    )
+
+    singular_source_overlap: Matrix2 = (
+        (Fraction(1), Fraction(2)),
+        (Fraction(2), Fraction(4)),
+    )
+    assert_equal(
+        "rank-lost source basis cannot define pole amputation",
+        det2(singular_source_overlap) != 0,
+        False,
+    )
+
+    assert_not_equal(
+        "excited-state leakage is not a determinant constant",
+        pole_leakage[0][0] / pole_window[0][0],
+        pole_leakage[0][1] / pole_window[0][1],
+    )
+
+
 def check_first_cluster_amplitude_correction() -> None:
     one_body_plus = Fraction(5, 11)
     one_body_minus = Fraction(7, 13)
@@ -1905,6 +2026,7 @@ def main() -> None:
     check_hard_reference_channel_calibration()
     check_observable_handoff_map()
     check_source_kernel_physical_projection_bridge()
+    check_pole_normalized_four_source_matrix_extraction()
     check_first_cluster_amplitude_correction()
     check_two_flavor_mass_source_determinant_coordinate()
     check_moduli_equivalent_channel_separation()

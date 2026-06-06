@@ -1517,6 +1517,71 @@ calculation, not a relabelling of the instanton density or the hard source
 kernel.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Pole-normalized four-source extraction with
+source mixing]
+\label{ca:instanton-pole-normalized-four-source-extraction}
+The pole map in
+\eqref{eq:instanton-hadronic-pole-window} is rarely a scalar division by one
+source overlap.  Choose finite source bases
+\(\{O_i^a\}_{a=1}^{r_i}\) and \(\{O_f^b\}_{b=1}^{r_f}\) for the selected
+incoming and outgoing gauge-invariant multiplets.  After the ordinary
+two-point functions have fixed the overlap matrices \(Z_i,Z_f\), strip the
+known exponential factors from the instanton four-source window and write
+\begin{equation}
+  \widetilde C_{ba}^{I}(T,t)
+  =
+  \bigl(Z_f\,M_{fi}^{I}\,Z_i^\dagger\bigr)_{ba}
+  +\mathcal E_{ba}^{I}(T,t).
+  \label{eq:instanton-pole-matrix-window}
+\end{equation}
+The matrix \(M_{fi}^{I}\) is the physical instanton contribution to the
+selected matrix element in this pole subspace.  It is not the raw Euclidean
+kernel \(\widetilde C^{I}\).  When \(Z_f\) and \(Z_i\) are invertible on the
+chosen source subspaces, the amputated extraction is
+\begin{equation}
+  \widehat M_{fi}^{I}
+  =
+  Z_f^{-1}\,\widetilde C^{I}\,(Z_i^\dagger)^{-1}.
+  \label{eq:instanton-pole-amputated-matrix}
+\end{equation}
+If either overlap matrix loses rank, the chosen source basis does not define
+this physical coordinate; one must change sources or keep the statement as a
+source-correlator estimate.
+
+Let \(\|\cdot\|_{\max}\) be the entrywise maximum norm and suppose
+\[
+  \|\mathcal E^{I}\|_{\max}\le\epsilon_{\rm pole},
+  \qquad
+  \|Z_f^{-1}\|_{\max}\le\kappa_f,
+  \qquad
+  \|(Z_i^\dagger)^{-1}\|_{\max}\le\kappa_i .
+\]
+Then
+\begin{equation}
+  \|
+  \widehat M_{fi}^{I}-M_{fi}^{I}
+  \|_{\max}
+  \le
+  r_f r_i\,\kappa_f\kappa_i\,\epsilon_{\rm pole}.
+  \label{eq:instanton-pole-amputation-error-bound}
+\end{equation}
+The factors \(r_f,r_i\) are just the finite matrix-multiplication loss in the
+entrywise norm.  They are the finite-dimensional trace of the same physical
+fact: source mixing and pole residues amplify excited-state and continuum
+leakage.
+
+This block is the pole analogue of the hard-source amputation in
+\eqref{eq:instanton-hard-assembled-channel}.  Dividing by only the diagonal
+entries of \(Z_i\) and \(Z_f\) gives the wrong result when the source basis
+mixes.  Treating \(\widetilde C^{I}\) itself as \(M_{fi}^{I}\) keeps source
+normalizations in the answer.  Absorbing \(\mathcal E^{I}\) into the
+determinant constant confuses excited-state, continuum, sector, and
+projection leakage with the one-loop fluctuation density.  Thus the
+four-source instanton coefficient becomes a hadronic matrix element only
+after matrix pole isolation, amputation, and the corresponding residual
+bound have been supplied.
+\end{controlledapproximation}
+
 \section{First Cluster Corrections Are Amplitude Data}
 \label{sec:instanton-first-cluster-amplitude-correction}
 
