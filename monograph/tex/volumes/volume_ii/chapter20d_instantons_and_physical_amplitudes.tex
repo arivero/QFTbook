@@ -1167,6 +1167,104 @@ window cancellation can make a tiny leading number even when the source,
 determinant, and projection errors are individually small.
 \end{controlledapproximation}
 
+The finite determinant constant in
+\eqref{eq:instanton-hard-assembled-channel} may be computed directly in a
+declared regulator, as in the density calculation of
+Chapter~\ref{ch:volume-ii-20}.  It may also be fixed by one reference
+amplitude.  That calibration is useful only if it is kept in its proper
+coordinate: it fixes one source-independent constant, not the source
+fluctuation quotient, not zero-mode rank, and not the final physical
+projection.
+
+\begin{controlledapproximation}[Reference-channel determinant calibration]
+\label{ca:instanton-hard-reference-channel-calibration}
+Fix the determinant scheme, source frame, amputation convention, hard-scale
+variable, and physical projection class.  Let
+\[
+  \mathfrak G(Q)
+  =
+  \ee^{\ii\theta}
+  \Gamma_{\rm coll}(Q)\Lambda_{\rm ht}^{29/3}Q^{-35/3}.
+\]
+For a finite family of source channels \(\mathcal C_\alpha\), suppose the
+retained leading integrals have been reduced to
+\begin{equation}
+  B_\alpha
+  =
+  \int_{\mathcal W}
+  K_\alpha^{0}(s,\Omega)\,\dd s\,\dd\Omega,
+  \qquad
+  M_\alpha
+  =
+  \int_{\mathcal W}
+  |K_\alpha^{0}(s,\Omega)|\,\dd s\,\dd\Omega,
+  \label{eq:instanton-hard-reference-channel-integrals}
+\end{equation}
+where \(K_\alpha^{0}\) includes the center constraint, Haar projection,
+zero-mode overlap determinants, declared leading source window, amputation
+residues, and leading physical projection for that channel.  All
+source-dependent fluctuation quotients, determinant-shape mismatches,
+endpoint tails not retained in \(K_\alpha^{0}\), and bridge errors are put in
+\(\Delta_\alpha\).  If
+\begin{equation}
+  A_\alpha^{\rm phys}
+  =
+  \mathfrak G(Q) C_{\mathcal S}B_\alpha+\Delta_\alpha,
+  \qquad
+  |\Delta_\alpha|\le E_\alpha,
+  \label{eq:instanton-hard-reference-family}
+\end{equation}
+and a reference channel satisfies
+\begin{equation}
+  A_0^{\rm phys}
+  =
+  \mathfrak G(Q) C_{\mathcal S}B_0+\Delta_0,
+  \qquad
+  B_0\ne0,\qquad |\Delta_0|\le E_0,
+  \label{eq:instanton-hard-reference-input}
+\end{equation}
+then the calibrated prediction for a target channel is
+\begin{equation}
+  \widehat A_\alpha^{\rm phys}
+  =
+  A_0^{\rm phys}\frac{B_\alpha}{B_0},
+  \label{eq:instanton-hard-reference-prediction}
+\end{equation}
+and the exact residual identity is
+\begin{equation}
+  A_\alpha^{\rm phys}-\widehat A_\alpha^{\rm phys}
+  =
+  \Delta_\alpha-\frac{B_\alpha}{B_0}\Delta_0,
+  \qquad
+  \left|
+  A_\alpha^{\rm phys}-\widehat A_\alpha^{\rm phys}
+  \right|
+  \le
+  E_\alpha+\left|\frac{B_\alpha}{B_0}\right|E_0 .
+  \label{eq:instanton-hard-reference-error}
+\end{equation}
+The ratio is usable only with a reference noncancellation margin
+\begin{equation}
+  \kappa_0=\frac{|B_0|}{M_0}>0,
+  \qquad
+  \left|\frac{B_\alpha}{B_0}\right|
+  \le
+  \frac{M_\alpha}{\kappa_0M_0}.
+  \label{eq:instanton-hard-reference-margin}
+\end{equation}
+
+The calibration has limited scope.  A reference channel with rank loss, a
+vanishing Haar projection, or a signed cancellation which makes \(\kappa_0\)
+tiny is a poor normalization coordinate.  If the target channel has a
+different source-fluctuation quotient or a different pole, spectral, or OPE
+projection and those factors have not been included in \(B_\alpha\), they
+remain in \(\Delta_\alpha\) outside the calibrated constant \(C_{\mathcal S}\).
+A reference amplitude therefore transports one finite determinant
+normalization across a declared same-frame source family; the Euclidean source
+kernel still reaches a physical observable only through the projection bridge
+below.
+\end{controlledapproximation}
+
 This assembly formula is the point at which the calculation becomes a
 physical amplitude.  Quoting the BPST density tests only the logarithmic
 fluctuation normalization.  Quoting the zero-mode determinant tests only chirality and

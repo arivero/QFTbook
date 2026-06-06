@@ -39,6 +39,11 @@ Target claims:
   the determinant, source-fluctuation, zero-mode/source, and physical-projection
   factors in the same kernel, with absolute control unless a noncancellation
   margin is supplied.
+- `ca:instanton-hard-reference-channel-calibration`: one reference physical
+  channel can calibrate only a same-frame finite determinant normalization;
+  reference residuals are amplified by the target/reference integral ratio,
+  and source-fluctuation or physical-projection data not included in the
+  retained integrals remain separate residuals.
 - `ca:instanton-observable-handoff-ledger`: the assembled instanton channel
   must still be mapped to a named physical observable; hard source
   coefficients, theta curvatures, U(1)_A susceptibility kernels, and real-time
@@ -109,7 +114,9 @@ Negative controls:
   vacuum determinant calibration substituted for a source-fluctuation
   quotient, a relative quotient formed after zero-mode rank loss, a
   determinant-only assembled amplitude, signed-window relative error control
-  without a noncancellation margin, a
+  without a noncancellation margin, a reference calibration with omitted
+  source-fluctuation or physical-projection transport, a rank-lost reference
+  channel used as a determinant normalization, a
   hard source coefficient used as a theta susceptibility, a dilute
   topological susceptibility used as a real-time rate, a dilute instanton
   curvature substituted for Witten-Veneziano curvature without a comparison
@@ -802,6 +809,135 @@ def check_hard_amplitude_assembly_bound() -> None:
         "untransported source quotient changes assembled hard ratio",
         transported_ratio_prefactor,
         Fraction(1),
+    )
+
+
+def check_hard_reference_channel_calibration() -> None:
+    universal_prefactor = Fraction(5, 7)
+    determinant_constant = Fraction(11, 13)
+
+    reference_cells = [Fraction(3, 5), -Fraction(1, 10), Fraction(7, 20)]
+    target_cells = [Fraction(2, 7), -Fraction(1, 8), Fraction(5, 11)]
+    b_ref = sum(reference_cells, Fraction(0))
+    b_target = sum(target_cells, Fraction(0))
+    m_ref = sum(abs(cell) for cell in reference_cells)
+    m_target = sum(abs(cell) for cell in target_cells)
+    kappa_ref = abs(b_ref) / m_ref
+
+    assert_equal("hard reference integral", b_ref, Fraction(17, 20))
+    assert_equal("hard reference absolute mass", m_ref, Fraction(21, 20))
+    assert_equal("hard reference noncancellation margin", kappa_ref, Fraction(17, 21))
+
+    reference_residual = Fraction(1, 50)
+    target_residual = -Fraction(1, 70)
+    reference_amplitude = universal_prefactor * determinant_constant * b_ref + reference_residual
+    target_amplitude = universal_prefactor * determinant_constant * b_target + target_residual
+    calibrated_prediction = reference_amplitude * b_target / b_ref
+
+    assert_equal(
+        "hard reference calibration residual identity",
+        target_amplitude - calibrated_prediction,
+        target_residual - reference_residual * b_target / b_ref,
+    )
+    calibration_bound = abs(target_residual) + abs(b_target / b_ref) * abs(reference_residual)
+    assert_equal(
+        "hard reference calibration residual bound",
+        abs(target_amplitude - calibrated_prediction) <= calibration_bound,
+        True,
+    )
+    assert_equal(
+        "hard reference calibration ratio margin",
+        abs(b_target / b_ref) <= m_target / (kappa_ref * m_ref),
+        True,
+    )
+
+    zero_residual_reference = universal_prefactor * determinant_constant * b_ref
+    assert_equal(
+        "hard reference calibration exact without residuals",
+        zero_residual_reference * b_target / b_ref,
+        universal_prefactor * determinant_constant * b_target,
+    )
+
+    source_quotient_ref = Fraction(21, 20)
+    source_quotient_target = Fraction(24, 25)
+    reference_with_source = (
+        universal_prefactor
+        * determinant_constant
+        * b_ref
+        * source_quotient_ref
+    )
+    target_with_source = (
+        universal_prefactor
+        * determinant_constant
+        * b_target
+        * source_quotient_target
+    )
+    omitted_source_prediction = reference_with_source * b_target / b_ref
+    transported_source_prediction = (
+        reference_with_source
+        * (b_target * source_quotient_target)
+        / (b_ref * source_quotient_ref)
+    )
+    assert_not_equal(
+        "reference calibration does not absorb target source quotient",
+        omitted_source_prediction,
+        target_with_source,
+    )
+    assert_equal(
+        "transported source quotient gives same-frame calibrated target",
+        transported_source_prediction,
+        target_with_source,
+    )
+
+    projection_ref = Fraction(7, 11)
+    projection_target = Fraction(5, 13)
+    reference_with_projection = (
+        universal_prefactor
+        * determinant_constant
+        * b_ref
+        * projection_ref
+    )
+    target_with_projection = (
+        universal_prefactor
+        * determinant_constant
+        * b_target
+        * projection_target
+    )
+    omitted_projection_prediction = reference_with_projection * b_target / b_ref
+    transported_projection_prediction = (
+        reference_with_projection
+        * (b_target * projection_target)
+        / (b_ref * projection_ref)
+    )
+    assert_not_equal(
+        "reference calibration does not absorb target physical projection",
+        omitted_projection_prediction,
+        target_with_projection,
+    )
+    assert_equal(
+        "transported physical projection gives calibrated target",
+        transported_projection_prediction,
+        target_with_projection,
+    )
+
+    rank_lost_reference = Fraction(0)
+    calibration_defined = rank_lost_reference != 0
+    assert_equal(
+        "rank-lost reference cannot calibrate determinant constant",
+        calibration_defined,
+        False,
+    )
+
+    canceled_reference_cells = [Fraction(1), -Fraction(99, 100)]
+    b_cancel = sum(canceled_reference_cells, Fraction(0))
+    m_cancel = sum(abs(cell) for cell in canceled_reference_cells)
+    kappa_cancel = abs(b_cancel) / m_cancel
+    assert_equal("canceled hard reference margin", kappa_cancel, Fraction(1, 199))
+    assert_equal(
+        "canceled hard reference amplifies residual",
+        abs(reference_residual * b_target / b_cancel)
+        > 50 * abs(reference_residual * b_target / b_ref),
+        True,
     )
 
 
@@ -1599,6 +1735,7 @@ def main() -> None:
     check_individual_zero_mode_slot_tail_from_bessel_products()
     check_nonzero_mode_source_fluctuation_quotient()
     check_hard_amplitude_assembly_bound()
+    check_hard_reference_channel_calibration()
     check_observable_handoff_map()
     check_source_kernel_physical_projection_bridge()
     check_first_cluster_amplitude_correction()

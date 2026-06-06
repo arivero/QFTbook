@@ -792,7 +792,9 @@ Current checks:
   subleading \(R^{-7/3}\) endpoint pieces,
   the finite Gaussian nonzero-mode source quotient and its covariance identity,
   the assembled hard-amplitude product bound with absolute signed-window
-  control,
+  control, the hard reference-channel calibration which fixes only a
+  same-frame finite determinant constant and propagates reference residuals by
+  the target/reference integral ratio,
   the observable-map distinction among hard source coefficients, theta
   curvatures, \(U(1)_A\)-odd kernels, and real-time axial relaxation rates,
   the physical projection bridge from Euclidean source kernels to pole-window,
@@ -817,7 +819,10 @@ Current checks:
   absorption, vacuum determinant calibration used as a source-fluctuation
   quotient, relative fluctuation division after rank loss, determinant-only
   assembled amplitudes, signed-window relative control without a
-  noncancellation margin, orientation-volume shortcuts, symmetric color
+  noncancellation margin, reference calibration with omitted
+  source-fluctuation or physical-projection transport, rank-lost or nearly
+  canceled reference channels used as determinant normalizations,
+  orientation-volume shortcuts, symmetric color
   sources treated as hard-channel amplitudes, hard source coefficients used as theta
   susceptibilities, dilute curvatures used as real-time rates, dilute
   instanton curvature substituted for Witten--Veneziano input without a

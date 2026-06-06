@@ -92,6 +92,10 @@
 - `ca:instanton-hard-amplitude-assembly-ledger`: assembled hard-amplitude
   absolute error bound, with noncancellation margin required before relative
   scale-law claims are allowed.
+- `ca:instanton-hard-reference-channel-calibration`: reference-channel
+  determinant calibration for the assembled hard amplitude; one physical
+  reference channel fixes only the same-frame finite determinant constant, with
+  reference residuals amplified by the target/reference integral ratio.
 - `sec:instanton-source-kernel-physical-projection`: projection bridge from an
   assembled Euclidean instanton source kernel to a physical pole, spectral,
   OPE, or inclusive observable coordinate.
@@ -162,6 +166,12 @@
   projection mismatch in a single amplitude formula, with absolute
   signed-window control and an explicit noncancellation hypothesis for
   relative statements.
+- The reference-channel calibration block gives the finite determinant
+  constant an amplitude-facing use without overclaiming it.  A reference
+  physical channel fixes one same-frame normalization; source-fluctuation
+  quotients, zero-mode rank, endpoint tails, and pole/spectral/OPE projection
+  data remain either inside the transported \(B_\alpha\) integral or in the
+  residual.
 - The physical projection bridge opens the last compressed step between a
   Euclidean instanton source coefficient and a physical claim.  It separates
   stable-particle pole extraction, spectral-bin/discontinuity functionals,
@@ -224,6 +234,10 @@
   verifies the assembled hard-amplitude product bound and rejects
   determinant-only assembly or signed-window relative control without a
   noncancellation margin,
+  verifies hard reference-channel determinant calibration, including residual
+  amplification by the target/reference ratio and negative controls for
+  omitted source-fluctuation transport, omitted physical-projection transport,
+  rank-lost references, and nearly canceled references,
   verifies the observable-map distinction between hard source coefficients,
   dilute theta curvature, \(U(1)_A\)-odd zero-mode-zone kernels, real-time
   axial rates, and Witten--Veneziano curvature comparison budgets,
@@ -296,6 +310,13 @@
   formula and absolute error bound, so the chapter now recombines the
   determinant, zero-mode/source, nonzero-mode source quotient, and physical
   projection data before quoting the hard coefficient.
+- 2026-06-06 hard reference-channel calibration pass: added a physical
+  amplitude calibration block after the assembled hard-channel bound.  The new
+  block uses one reference channel only to fix the same-frame determinant
+  constant and keeps source fluctuation, zero-mode rank, endpoint, and physical
+  projection data as transported integral data or residuals.  The companion
+  check rejects calibrations that try to absorb those channel-dependent
+  factors.
 - 2026-06-06 observable-map pass: added a physics bridge from the assembled
   instanton amplitude to QCD observables, explicitly separating hard source
   coefficients, theta curvature, \(U(1)_A\)-odd susceptibility kernels, and
