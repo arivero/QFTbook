@@ -3007,7 +3007,9 @@ Current checks:
   pseudo-threshold negative control, the multi-loop maximal-cut sector
   projection check showing that contact terms cancel propagators into
   lower-sector masters before IBP and rejecting same-maximal-cut but
-  different-lower-sector representatives, the two-master
+  different-lower-sector representatives, the dual-contour master-coefficient
+  extraction gate with non-dual, contact-omission, and surface-pollution
+  negative controls, the two-master
   threshold-mixing/monodromy and regular-boundary negative controls, the
   two-letter master-transport check with noncommuting residues, branch/path
   and cut-only boundary negative controls, plus the

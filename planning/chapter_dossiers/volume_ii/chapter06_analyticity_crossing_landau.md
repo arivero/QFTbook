@@ -42,10 +42,13 @@
   equal-mass sunrise maximal-cut curve exposing the elliptic-period
   obstruction and the physical \(s=9m^2\) threshold, a multi-loop
   maximal-cut sector-projection gate showing that contact terms cancel
-  propagators into lower sectors before IBP, and a two-stage master-integral
-  layer: first a local two-master threshold block, then a two-letter transport
-  audit exposing connection data, Euclidean boundary constants, branch/path
-  prescriptions, lower sectors, and the finite-remainder/observable assembly
+  propagators into lower sectors before IBP, a dual-contour coefficient
+  extraction gate turning cuts into master coefficients only after an invertible
+  contour/master pairing and contact subtraction, and a two-stage
+  master-integral layer: first a local two-master threshold block, then a
+  two-letter transport audit exposing connection data, Euclidean boundary
+  constants, branch/path prescriptions, lower sectors, and the
+  finite-remainder/observable assembly
   that separates reconstructed virtual amplitudes from infrared-safe physical
   observables, including a two-loop infrared-pole consistency gate linking
   \(A^{(2)}\), \(I^{(1)}A^{(1)}\), \(I^{(2)}A^{(0)}\), the lower-loop hard
@@ -261,6 +264,12 @@
   proportional to parent denominators cancel into lower topologies; it does
   not claim that those lower sectors vanish unless the reduced family and
   boundary convention prove them scaleless or absent.
+- The dual-contour master-coefficient extraction block is a finite
+  reduced-sector gate.  It assumes a declared master basis, enough contour or
+  cut functionals to make the pairing matrix invertible, and an independently
+  known subtraction vector for contact, surface, lower-sector, and regulator
+  residues; it does not identify raw leading singularities with physical master
+  coefficients without those hypotheses.
 - The two-letter master-transport model is a finite normalized sector used to
   audit the data needed after IBP closure.  It checks boundary constants,
   noncommuting residues, branch/path prescriptions, and lower-sector residuals;
@@ -918,6 +927,16 @@
   the same parent maximal cut but different lower-sector master projections,
   and rejects the shortcut that all lower sectors vanish when only some are
   scaleless.
+- 2026-06-06 issue #769 dual-contour coefficient-extraction pass: added
+  `ca:dual-contour-master-coefficient-extraction` after the sector-projection
+  gate.  The new architecture layer states the finite pairing matrix
+  \(P_{ij}=\mathcal C_i[M_j]\), the subtraction vector for surface, contact,
+  lower-sector, and regulator residues, the coefficient formula
+  \(c_j=\sum_i(P^{-1})_{ji}(\mathcal C_i[\mathcal I_{\rm red}]-b_i)\), and an
+  inverse-pairing error majorant.  The companion check verifies exact finite
+  coefficient extraction, rejects raw-contour and contact-omission shortcuts,
+  detects surface pollution, bounds propagated cut/contact errors, and confirms
+  that a rank-one contour pairing cannot distinguish two masters.
 - 2026-06-06 issue #769 two-loop IR-pole gate pass: added
   `ca:two-loop-ir-pole-consistency-gate` after the one-loop
   virtual-to-observable assembly block.  The new gate records the recursive

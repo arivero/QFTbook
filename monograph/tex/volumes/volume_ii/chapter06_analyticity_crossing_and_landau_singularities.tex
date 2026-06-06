@@ -3469,6 +3469,74 @@ coefficient'' is valid only after the lower-sector projections have been
 proved absent or have been included.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Dual-contour master coefficient extraction]
+\label{ca:dual-contour-master-coefficient-extraction}
+Sector projection becomes an actual coefficient extraction only after the cut
+functionals have been paired with the chosen master basis.  Let
+\(\mathcal V_\Gamma\) be a finite reduced sector in a fixed regulator, after
+the declared numerator ansatz has been reduced modulo the IBP surface terms
+and evanescent representatives that are known to integrate to zero in that
+sector.  Choose master representatives \(M_1,\ldots,M_m\) and contour or cut
+functionals \(\mathcal C_1,\ldots,\mathcal C_m\).  The latter may be
+ordinary leading-singularity contours, compact algebraic generalized cuts, or
+finite linear combinations of such probes.  Define the pairing matrix
+\begin{equation}
+  P_{ij}:=\mathcal C_i[M_j].
+  \label{eq:dual-contour-master-pairing}
+\end{equation}
+If \(P\) is invertible and if the remaining contact, lower-sector, surface,
+and regulator residues contribute a known vector \(b_i\) to the same
+functionals, then a reduced integrand
+\[
+  \mathcal I_{\rm red}
+  =
+  \sum_{j=1}^m c_jM_j+\mathcal S+\mathcal L+\mathcal E
+\]
+has coefficients
+\begin{equation}
+  c_j
+  =
+  \sum_{i=1}^m
+  (P^{-1})_{ji}
+  \left(
+    \mathcal C_i[\mathcal I_{\rm red}]-b_i
+  \right),
+  \qquad
+  b_i:=\mathcal C_i[\mathcal S+\mathcal L+\mathcal E].
+  \label{eq:dual-contour-master-coefficient}
+\end{equation}
+Thus the phrase ``the cut fixes the coefficient'' means that the chosen cuts
+are dual, in the finite pairing above, to the chosen master representatives
+after all non-master residues have either vanished on the contours or been
+subtracted.  A raw leading singularity is not a coefficient until the
+pairing matrix has been inverted.
+
+This is the coefficient-level analogue of the boundary cautions below.  If
+\(P\) is singular, the selected contours do not distinguish the retained
+masters.  If a surface term or lower-sector contact has
+\(\mathcal C_i[\mathcal S+\mathcal L+\mathcal E]\ne0\), it shifts the extracted
+coefficient unless it is included in \(b_i\).  If \(P\) is invertible but
+nearly singular in a numerical reconstruction, the inverse pairing amplifies
+cut errors.  For example, if
+\[
+  |\delta\mathcal C_i|\le e_i,\qquad
+  |\delta b_i|\le f_i ,
+\]
+then the coefficient error obeys the finite majorant
+\begin{equation}
+  |\delta c_j|
+  \le
+  \sum_{i=1}^m |(P^{-1})_{ji}|(e_i+f_i).
+  \label{eq:dual-contour-master-error-majorant}
+\end{equation}
+The point is physical rather than cosmetic: generalized cuts are algebraic
+probes of the integrand quotient, while the loop amplitude uses the master
+coefficients on a physical branch.  A unitarity-compatible reduction therefore
+has to publish the master basis, the contour pairing, the surface/contact
+kernel, and the conditioning or residual bound before its coefficients can be
+transported into the master differential system.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Two-master threshold mixing and boundary data]
 \label{ca:two-master-threshold-mixing}
 The one-master bubble can make the evaluation step look scalar, but physical

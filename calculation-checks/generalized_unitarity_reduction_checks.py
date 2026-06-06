@@ -11,7 +11,8 @@ family, including numerator sector projection and the
 equal-mass threshold family with its lower tadpole master and branch, the
 two-loop equal-mass sunrise maximal-cut curve with its elliptic discriminant
 and physical threshold, a multi-loop maximal-cut/contact-sector projection
-gate, and finite helicity, color, state-sum, and regulator bookkeeping for the
+gate, a dual-contour master-coefficient extraction gate, and finite helicity,
+color, state-sum, and regulator bookkeeping for the
 Yang-Mills MHV/all-plus control examples, including the planar N=4 MHV
 quadruple-cut reconstruction, the five-gluon all-plus rational template, and
 the four-point color-kinematics/double-copy gateway together with the
@@ -66,6 +67,8 @@ maximal cut, including the distinction between the physical threshold and the
 pseudo-threshold;
 exact rational projection of parent-topology contact terms into lower sectors
 after propagator cancellation and before IBP master projection;
+exact finite inversion of a contour/master pairing matrix, with surface and
+lower-sector pollution subtracted before coefficient extraction;
 spinor-bracket exponent ledgers for little-group weights and dimensions; and
 a finite four-gluon helicity enumeration for all-plus two-particle cuts;
 finite topology-signature checks for maximal versus two-particle cuts in the
@@ -119,6 +122,7 @@ remainders, one-cut-only finite-box deformations, missing finite-box boundary
 data, branch-label omission,
 diagonal one-master threshold shortcuts, cut-only boundary reconstruction,
 parent-cut-only sector projection when lower sectors are not scaleless,
+non-dual or surface-polluted contour coefficient extraction,
 homogeneous one-master shortcuts for the equal-mass bubble threshold family,
 Euclidean branch reuse above the massive two-particle threshold,
 logarithmic one-master shortcuts for the sunrise elliptic maximal cut,
@@ -1784,6 +1788,94 @@ def check_multi_loop_maximal_cut_sector_projection() -> None:
     )
 
 
+def check_dual_contour_master_coefficient_extraction() -> None:
+    pairing: Matrix = [
+        [Fraction(1), Fraction(2)],
+        [Fraction(3), Fraction(5)],
+    ]
+    determinant = pairing[0][0] * pairing[1][1] - pairing[0][1] * pairing[1][0]
+    assert_true("dual-contour pairing is invertible", determinant != 0)
+    inverse_pairing: Matrix = [
+        [pairing[1][1] / determinant, -pairing[0][1] / determinant],
+        [-pairing[1][0] / determinant, pairing[0][0] / determinant],
+    ]
+    assert_equal(
+        "inverse pairing matrix",
+        matrix_mul(inverse_pairing, pairing),
+        [[Fraction(1), Fraction(0)], [Fraction(0), Fraction(1)]],
+    )
+
+    master_coefficients = [Fraction(7, 11), -Fraction(5, 13)]
+    surface_kernel = [Fraction(0), Fraction(0)]
+    lower_sector_contact = [Fraction(3, 17), -Fraction(2, 19)]
+    contour_values = vector_add(
+        matrix_vector_mul(pairing, master_coefficients),
+        lower_sector_contact,
+    )
+    reconstructed = matrix_vector_mul(
+        inverse_pairing,
+        vector_sub(contour_values, vector_add(surface_kernel, lower_sector_contact)),
+    )
+    assert_equal("dual-contour coefficient extraction", reconstructed, master_coefficients)
+
+    raw_contour_shortcut = contour_values
+    assert_true(
+        "raw contour values are not master coefficients",
+        raw_contour_shortcut != master_coefficients,
+    )
+    omitted_contact = matrix_vector_mul(inverse_pairing, contour_values)
+    assert_true(
+        "omitting lower-sector contact shifts coefficients",
+        omitted_contact != master_coefficients,
+    )
+
+    polluted_surface = [Fraction(1, 23), Fraction(-1, 29)]
+    polluted_values = vector_add(contour_values, polluted_surface)
+    polluted_reconstruction = matrix_vector_mul(
+        inverse_pairing,
+        vector_sub(polluted_values, lower_sector_contact),
+    )
+    assert_true(
+        "surface-polluted contours shift extracted coefficients",
+        polluted_reconstruction != master_coefficients,
+    )
+    surface_shift = matrix_vector_mul(inverse_pairing, polluted_surface)
+    assert_equal(
+        "surface pollution coefficient shift",
+        vector_sub(polluted_reconstruction, master_coefficients),
+        surface_shift,
+    )
+
+    cut_errors = [Fraction(1, 101), Fraction(1, 103)]
+    contact_errors = [Fraction(1, 107), Fraction(1, 109)]
+    coefficient_error = matrix_vector_mul(
+        inverse_pairing,
+        vector_add(cut_errors, contact_errors),
+    )
+    row_majorants = [
+        sum(
+            abs(inverse_pairing[row][col]) * (cut_errors[col] + contact_errors[col])
+            for col in range(2)
+        )
+        for row in range(2)
+    ]
+    for index, error in enumerate(coefficient_error):
+        assert_true(
+            f"dual-contour error majorant {index}",
+            abs(error) <= row_majorants[index],
+        )
+
+    nondual_pairing: Matrix = [
+        [Fraction(1), Fraction(2)],
+        [Fraction(2), Fraction(4)],
+    ]
+    assert_equal(
+        "nondual contour pairing cannot distinguish two masters",
+        rank(nondual_pairing),
+        1,
+    )
+
+
 def check_branch_and_landau_ledger() -> None:
     # In the expansion
     #   Gamma(eps)[exp(i pi eps)-exp(-i pi eps)]/(16 pi^2),
@@ -2270,6 +2362,7 @@ def main() -> None:
     check_equal_mass_bubble_threshold_family()
     check_two_loop_sunrise_elliptic_maximal_cut()
     check_multi_loop_maximal_cut_sector_projection()
+    check_dual_contour_master_coefficient_extraction()
     check_branch_and_landau_ledger()
     check_two_master_threshold_mixing()
     check_two_letter_master_transport()
