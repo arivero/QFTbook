@@ -16,6 +16,10 @@ These checks verify the algebra used in Volume II, Chapter 19:
    the factor (s0 - m_eff^2).
 7. A pole plus finite low-energy remainder obeys the stated mass-estimator
    error bound, and the bound fails if the R0 remainder is silently dropped.
+8. The aggregate window residual in the zeroth moment must be propagated
+   through the logarithmic mass quotient.
+9. A flat mass curve obtained by retuning the continuum threshold is a
+   two-scale cancellation, not an independent plateau.
 """
 
 from __future__ import annotations
@@ -165,6 +169,57 @@ def check_pole_remainder_mass_bound() -> None:
     )
 
 
+def check_window_residual_mass_bound() -> None:
+    l0 = sp.Rational(9, 4)
+    l1 = sp.Rational(7, 3)
+    delta_l0 = sp.Rational(1, 20)
+    delta_l1 = sp.Rational(0)
+
+    retained_mass = l1 / l0
+    exact_mass = (l1 + delta_l1) / (l0 + delta_l0)
+    deviation = sp.Abs(sp.simplify(exact_mass - retained_mass))
+    bound = (sp.Abs(delta_l1) + sp.Abs(retained_mass) * sp.Abs(delta_l0)) / (
+        l0 - sp.Abs(delta_l0)
+    )
+    assert_true("window residual mass bound", sp.simplify(deviation <= bound))
+
+    missing_l0_bound = sp.Abs(delta_l1) / (l0 - sp.Abs(delta_l0))
+    assert_true(
+        "dropping the window L0 residual hides a mass shift",
+        sp.simplify(deviation > missing_l0_bound),
+    )
+
+
+def check_retuned_threshold_plateau_degeneracy() -> None:
+    l0 = sp.Rational(5, 2)
+    l1 = sp.Rational(7, 3)
+    l2 = sp.Rational(13, 4)
+    s0 = sp.Rational(11, 5)
+    boundary_weight = sp.Rational(13, 17)
+
+    m_eff_sq = l1 / l0
+    tau_derivative = -(l2 * l0 - l1**2) / l0**2
+    threshold_derivative = boundary_weight * (s0 - m_eff_sq) / l0
+
+    assert_true("nonzero tau slope before retuning", tau_derivative != 0)
+    assert_true(
+        "nonzero threshold sensitivity before retuning",
+        threshold_derivative != 0,
+    )
+
+    required_threshold_velocity = -tau_derivative / threshold_derivative
+    total_derivative = tau_derivative + required_threshold_velocity * threshold_derivative
+    assert_zero("retuned threshold can flatten the displayed curve", total_derivative)
+    assert_true(
+        "retuned plateau uses a moving threshold",
+        required_threshold_velocity != 0,
+    )
+    assert_true(
+        "fixed threshold curve is not flat",
+        tau_derivative != total_derivative,
+    )
+
+
 def main() -> None:
     check_borel_dispersion_kernel()
     check_polynomial_subtractions_are_killed()
@@ -173,6 +228,8 @@ def main() -> None:
     check_borel_plateau_variance_diagnostic()
     check_continuum_threshold_sensitivity()
     check_pole_remainder_mass_bound()
+    check_window_residual_mass_bound()
+    check_retuned_threshold_plateau_degeneracy()
     print("All QCD Borel/Laplace sum-rule checks passed.")
 
 

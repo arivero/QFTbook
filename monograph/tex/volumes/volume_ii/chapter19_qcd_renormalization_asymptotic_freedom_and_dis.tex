@@ -7500,6 +7500,108 @@ small visual slope in \(M^2\) is only a property of the chosen ansatz and
 threshold, not a controlled QCD statement about the hadron spectrum.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Two-scale SVZ extraction window]
+\label{ca:qcd-svz-two-scale-extraction-window}
+The preceding gate becomes an extraction, rather than a set of local
+diagnostics, only after the error components are propagated to the quoted
+spectral coordinate.  Let
+\(\Delta_k^{\rm win}(\tau,s_0)\) denote the aggregate difference between the
+exact low-energy moment and the retained continuum-subtracted OPE moment:
+\begin{equation}
+  \widehat{\mathcal L}_k(\tau,s_0)
+  =
+  \mathcal L_k^{(D_{\max})}(\tau,s_0)
+  +
+  \Delta_k^{\rm win}(\tau,s_0),
+  \qquad k=0,1 .
+  \label{eq:qcd-svz-window-moment-residuals}
+\end{equation}
+Here \(\Delta_k^{\rm win}\) includes the omitted OPE tail, perturbative
+truncation, continuum-duality error near the threshold, regulator or finite
+volume residue, and any positivity defect introduced by using a truncated
+coordinate for a positive spectral measure.  If
+\(\mathcal L_0^{(D_{\max})}>|\Delta_0^{\rm win}|\), then the exact and
+retained mass estimators obey
+\begin{equation}
+  \left|
+  \frac{\widehat{\mathcal L}_1}{\widehat{\mathcal L}_0}
+  -
+  \frac{\mathcal L_1^{(D_{\max})}}{\mathcal L_0^{(D_{\max})}}
+  \right|
+  \le
+  \frac{
+    |\Delta_1^{\rm win}|
+    +
+    |m_{\rm eff}^2|\,|\Delta_0^{\rm win}|
+  }{
+    \mathcal L_0^{(D_{\max})}-|\Delta_0^{\rm win}|
+  } .
+  \label{eq:qcd-svz-window-mass-residual-bound}
+\end{equation}
+Indeed, subtracting the two quotients gives
+\((\Delta_1^{\rm win}-m_{\rm eff}^2\Delta_0^{\rm win})/
+(\mathcal L_0^{(D_{\max})}+\Delta_0^{\rm win})\).  Thus the \(k=0\)
+moment error is as important as the \(k=1\) moment error: changing the
+normalization denominator moves the logarithmic mass even when the first
+moment error vanishes.
+
+Choose a reference squared scale \(\Lambda_J^2\) for the channel and local
+half-widths \(h_\tau,h_s\) inside the proposed rectangle
+\(I_\tau\times I_{s_0}\).  A finite two-scale window score may be taken to be
+\begin{equation}
+\begin{aligned}
+  \mathfrak E_{\rm SVZ}
+  :=
+  \sup_{I_\tau\times I_{s_0}}
+  \Bigg[
+  &\frac{
+    |\Delta_1^{\rm win}|
+    +
+    |m_{\rm eff}^2|\,|\Delta_0^{\rm win}|
+  }{
+    \bigl(\mathcal L_0^{(D_{\max})}-|\Delta_0^{\rm win}|\bigr)\Lambda_J^2
+  }
+\\
+  &+
+  \frac{h_\tau|\partial_\tau m_{\rm eff}^2|}{\Lambda_J^2}
+  +
+  \frac{h_s|\partial_{s_0}m_{\rm eff}^2|}{\Lambda_J^2}
+  +
+  \eta_{\rm pos}
+  \Bigg],
+\end{aligned}
+  \label{eq:qcd-svz-two-scale-window-score}
+\end{equation}
+where \(\eta_{\rm pos}\) records any normalized loss of positivity in the
+retained moment.  The exact choice of norm is part of the analysis, but it
+must have this structure: the OPE and continuum remainders are propagated
+through the quotient, and the two independent window directions are tested
+separately.  A quoted mass coordinate is then a pair consisting of a central
+point \((\tau_\ast,s_{0,\ast})\) and an uncertainty budget dominated by
+\(\Lambda_J^2\mathfrak E_{\rm SVZ}\), not just the value read from a graph.
+
+This two-scale requirement rules out a common false plateau.  If the threshold
+is allowed to move with \(\tau\), then along a chosen graph \(s_0=s_0(\tau)\)
+\begin{equation}
+  \frac{\dd}{\dd\tau}
+  m_{\rm eff}^2(\tau,s_0(\tau))
+  =
+  \partial_\tau m_{\rm eff}^2
+  +
+  s_0'(\tau)\,\partial_{s_0}m_{\rm eff}^2 .
+  \label{eq:qcd-svz-retuned-threshold-total-derivative}
+\end{equation}
+Whenever \(\partial_{s_0}m_{\rm eff}^2\ne0\), one can locally choose
+\(s_0'=-(\partial_\tau m_{\rm eff}^2)/
+(\partial_{s_0}m_{\rm eff}^2)\) and make the displayed derivative vanish.
+Flatness along that retuned path is therefore not an independent physical
+stability criterion.  It is acceptable only if the allowed threshold motion is
+fixed by external spectral information and its contribution is included in
+\eqref{eq:qcd-svz-two-scale-window-score}; otherwise the continuum threshold
+has been used to absorb the same spectral information the sum rule was meant
+to extract.
+\end{controlledapproximation}
+
 \section{Detector Observables and Energy Correlators}
 
 A nonperturbative formulation of high-energy QCD final states begins with
