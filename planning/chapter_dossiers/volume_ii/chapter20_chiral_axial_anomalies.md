@@ -228,8 +228,8 @@
   control, analytic continuation, and spectral/infrared/unitarity projection
   are kept as separate load-bearing stages.  The companion check verifies the
   finite stage product, the vanishing of an unsaturated zero-mode cell, the
-  failure of moduli-only or determinant-omitted shortcuts, source-frame
-  reshuffling invariance, and the residual telescope.
+  failure of moduli-only, determinant-omitted, or size-window-omitted
+  shortcuts, source-frame reshuffling invariance, and the residual telescope.
   The electroweak continuation then connects the zero-temperature
   't Hooft vertex to real-time \(B+L\) washout: the check verifies the
   \(\Delta B=\Delta L=N_g\Delta N_{\rm CS}\), \(B-L\)-conservation ledger and
@@ -398,6 +398,7 @@
 | \(J_{ff'},J^0_{ff'},\mathcal V_{\rm inst}^0\) | renormalized chiral scalar source coordinate, its zero-mode projection, and the zero-mode source functional used to state the mass/source RG transport of the instanton vertex |
 | \(\dd\mathcal A_{1,\mathcal X}^{E},\mathcal P_{\mathcal X}^{E},\beta_{\mathcal X}\) | retained Euclidean one-instanton source density, Euclidean source/projection factor, and source-channel small-size degree used to assemble the universal density into a source coefficient |
 | \(K_{\mathcal X}^{\rm win},J_{\mathcal X},M_{\mathcal X},\kappa_{\mathcal X}\) | retained one-instanton channel kernel, signed window integral, absolute window mass, and noncancellation margin used to test RG/scheme residuals for a physical channel |
+| \(J_{1,\Lambda}^{\mathcal O},\mathcal D_{\rm cl},\mathcal J_{\rm coll},\mathcal W_{\rm nz},\mathcal Z_{\rm zm}^{\mathcal O},\mathcal M_{\rm src}^{\mathcal O},\mathcal B_\rho\) | canonical one-instanton amplitude skeleton: retained Euclidean source coefficient and its classical, collective, nonzero-mode, zero-mode, source-matching, and size-window factors |
 | \(\bar\chi_A,\chi_B\) | odd generating coordinates for differentiated external fermion slots in the instanton zero-mode sector |
 | \(R_{Af}(z),L_{fB}(z)\) | right-slot and left-slot zero-mode overlap matrices whose differentiated coefficient is \(\det R\,\det L\) |
 | \(G^{(4)}_{\eta,\Lambda,Q=1}\) | source-differentiated finite-regulator one-instanton contribution to the smeared four-fermion amplitude |
@@ -1821,6 +1822,16 @@
   `check_one_instanton_amplitude_datum_gate_spine()` verifies the ordered gate
   spine and rejects BPST/ADHM-only, omitted-gate, unsaturated-zero-mode, and
   Euclidean-equals-physical shortcuts.
+- 2026-06-06 issue #597 amplitude-skeleton coherence pass: added
+  `ca:one-instanton-amplitude-skeleton` immediately after the amplitude datum
+  table, before the ADHM geometry begins.  The block writes the canonical
+  finite-regulator source coefficient as the product/integral of classical
+  exponential, collective Jacobian, nonzero-mode determinant, zero-mode
+  Berezin coefficient, source matching, and size-window factor, then separates
+  the physical map and internal/sector/physical/scheme residual groups.  This
+  is a flow repair: the reader sees the full amplitude architecture before the
+  moduli-space analysis.  The BPST companion check now includes an explicit
+  size-window stage and rejects a size-omitted amplitude shortcut.
 - 2026-06-05 issue #597 connected four-source extraction pass: added
   `prop:instanton-connected-four-source-extraction`, deriving the coefficient
   of the four-source monomial in `log Z_src` for a finite instanton source

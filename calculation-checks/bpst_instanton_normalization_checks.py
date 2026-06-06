@@ -1193,7 +1193,8 @@ def check_instanton_amplitude_pipeline_stage_bookkeeping() -> None:
     # A finite-regulator instanton chart reduces the amplitude integrand to
     # finitely many cells after a quadrature/discretization.  Each cell carries
     # distinct classical, collective-coordinate, nonzero-mode determinant,
-    # zero-mode/source, source-matching, and physical-projection data.
+    # zero-mode/source, source-matching, size-window, and physical-projection
+    # data.
     cells = [
         {
             "classical": Fraction(2, 3),
@@ -1201,6 +1202,7 @@ def check_instanton_amplitude_pipeline_stage_bookkeeping() -> None:
             "nonzero": Fraction(5, 7),
             "zero_mode": Fraction(7, 11),
             "source": Fraction(11, 13),
+            "size": Fraction(13, 17),
             "projection": Fraction(13, 17),
         },
         {
@@ -1209,6 +1211,7 @@ def check_instanton_amplitude_pipeline_stage_bookkeeping() -> None:
             "nonzero": Fraction(7, 10),
             "zero_mode": Fraction(0),
             "source": Fraction(11, 12),
+            "size": Fraction(17, 23),
             "projection": Fraction(2, 19),
         },
         {
@@ -1217,6 +1220,7 @@ def check_instanton_amplitude_pipeline_stage_bookkeeping() -> None:
             "nonzero": Fraction(11, 13),
             "zero_mode": Fraction(13, 17),
             "source": Fraction(17, 19),
+            "size": Fraction(19, 29),
             "projection": Fraction(19, 23),
         },
     ]
@@ -1229,6 +1233,7 @@ def check_instanton_amplitude_pipeline_stage_bookkeeping() -> None:
                 cell["nonzero"],
                 cell["zero_mode"],
                 cell["source"],
+                cell["size"],
             ]
         )
         for cell in cells
@@ -1245,6 +1250,7 @@ def check_instanton_amplitude_pipeline_stage_bookkeeping() -> None:
                 cell["nonzero"],
                 cell["zero_mode"],
                 cell["source"],
+                cell["size"],
                 cell["projection"],
             ]
         )
@@ -1265,7 +1271,24 @@ def check_instanton_amplitude_pipeline_stage_bookkeeping() -> None:
         cell["classical"] * cell["collective"] for cell in cells
     )
     determinant_omitted_coordinate = sum(
-        cell["classical"] * cell["collective"] * cell["zero_mode"] * cell["source"]
+        cell["classical"]
+        * cell["collective"]
+        * cell["zero_mode"]
+        * cell["source"]
+        * cell["size"]
+        for cell in cells
+    )
+    size_omitted_coordinate = sum(
+        product_fraction(
+            [
+                cell["classical"],
+                cell["collective"],
+                cell["nonzero"],
+                cell["zero_mode"],
+                cell["source"],
+                cell["projection"],
+            ]
+        )
         for cell in cells
     )
     assert_equal(
@@ -1276,6 +1299,11 @@ def check_instanton_amplitude_pipeline_stage_bookkeeping() -> None:
     assert_equal(
         "dropping the nonzero-mode determinant changes the instanton amplitude",
         determinant_omitted_coordinate == physical_from_pipeline,
+        False,
+    )
+    assert_equal(
+        "dropping the size-window factor changes the instanton amplitude",
+        size_omitted_coordinate == physical_from_pipeline,
         False,
     )
 
@@ -1292,6 +1320,7 @@ def check_instanton_amplitude_pipeline_stage_bookkeeping() -> None:
                 cell["nonzero"] * source_frame_scale**flavor_pairs,
                 cell["zero_mode"] / source_frame_scale**flavor_pairs,
                 cell["source"],
+                cell["size"],
                 cell["projection"],
             ]
         )

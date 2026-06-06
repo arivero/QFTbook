@@ -551,7 +551,8 @@ Current checks:
   one-instanton amplitude datum/gate spine, and the finite amplitude-pipeline
   stage product separating the classical weight, collective density,
   nonzero-mode determinant, zero-mode/source coefficient, source matching,
-  endpoint residuals, and physical projection, the zero-mode
+  size-window factor, endpoint residuals, and physical projection, with a
+  negative control for omitting the size-window stage, the zero-mode
   saturation coefficient that turns an instanton chart into a physical
   correlator contribution, including the two- and three-flavor 't Hooft
   determinants, the two-flavor scalar/pseudoscalar channel decomposition,
