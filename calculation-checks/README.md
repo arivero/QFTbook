@@ -1059,6 +1059,14 @@ Current checks:
   missing external poles and contact terms are less singular, higher poles
   are outside the declared interface, and finite same-flux coordinate changes
   on each external leg leave the extracted wave-map coefficient invariant.
+  It also checks the soft-subtracted boundary-value extraction of the hard
+  charged coefficient: after left-inverse contraction the boundary value
+  equals the amplitude soft factor times the hard coefficient, dividing by
+  that factor recovers the hard coefficient, shell/contact/threshold/schedule
+  residuals propagate through the declared absolute budget, unsubtracted
+  endpoint simple-pole contacts shift the coefficient, finite shell-window
+  threshold branches are not simple residues, and a wrong Dollard logarithmic
+  phase obstructs the boundary-value limit along dyadic times.
   It also checks the flux-sector projection required before dressed LSZ
   extraction: a pointwise-neutral opposite-charge pair is allowed in the
   vacuum flux block, a charge-neutral pair with distinct velocities is

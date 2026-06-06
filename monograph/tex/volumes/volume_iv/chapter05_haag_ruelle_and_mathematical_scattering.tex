@@ -2455,6 +2455,131 @@ replaced by a threshold coefficient in a velocity/flux representation; the
 same interface then has to be rewritten with the threshold functional in
 place of the mass-shell residue.
 
+\begin{controlledapproximation}[Soft-subtracted boundary-value extraction]
+\label{ca:dressed-boundary-value-hard-coefficient}
+In a screened theory, or at a positive infrared cutoff before the detector
+limit is taken, the correlator interface can be tested by a shell-window
+extraction which separates the hard charged coefficient from soft and
+endpoint data.  Let
+\(\Delta_\ell(p_\ell)=p_\ell^2+m_\ell^2-\ii0\), choose wave packets
+\(f_\delta\) supported in a simultaneous external-shell window of size
+\(\delta\), and define
+\begin{equation}
+  \widehat{\mathcal B}_{\mathbf L,\varepsilon,\lambda,T}(\delta)
+  =
+  \left\langle
+    f_\delta,\,
+    \left(\bigotimes_{\ell=1}^{N}L_\ell(p_\ell)\right)
+    \prod_{\ell=1}^{N}\Delta_\ell(p_\ell)\,
+    \widehat G_{\mathbf a;\mathbf L,\varepsilon,\lambda,T}^{\rm ren}
+  \right\rangle .
+  \label{eq:dressed-boundary-value-shell-functional}
+\end{equation}
+Here the renormalized finite-truncation correlator includes the endpoint,
+line, cusp, and local charged-field counterterms already declared in
+Hypothesis~\ref{hyp:dressed-correlator-wave-map-interface}, and \(T\) records
+the large-time comparison used to remove the Dollard phase.  A boundary-value
+extraction of the hard flux-resolved coefficient has the form
+\begin{equation}
+  \widehat{\mathcal B}_{\mathbf L,\varepsilon,\lambda,T}(\delta)
+  =
+  \mathcal S_{\lambda,E_T}^{\rm amp}\,
+  \ee^{\ii\Phi_{\Theta}(T)}
+  \mathcal M_{\beta\alpha}^{\mathfrak F',\mathfrak F}
+  +
+  r_{\rm sh}(\delta)
+  +
+  r_{\rm ct}(\varepsilon,L)
+  +
+  r_{\rm th}(\lambda,E_T,\delta)
+  +
+  r_{\rm sch}(L,T).
+  \label{eq:dressed-boundary-value-hard-plus-residuals}
+\end{equation}
+The amplitude soft factor
+\(\mathcal S_{\lambda,E_T}^{\rm amp}\) is the square root, with its finite
+matching phase, of the leading detector soft factor used below; at leading
+homogeneous order
+\[
+  \left|\mathcal S_{\lambda,E_T}^{\rm amp}\right|^2
+  =
+  \exp\{-\|P_{E_T,M}F_{\beta\alpha}\|^2\}.
+\]
+The phase \(\Phi_{\Theta}(T)\) is the phase determined by the same
+pair coefficients \(\kappa_{ij}\) that enter the charged Dollard--Cook
+package.  The residuals have distinct meanings: \(r_{\rm sh}\) is killed by
+the simultaneous shell limit, \(r_{\rm ct}\) is the remaining endpoint/cusp or
+collision contact contribution after the declared counterterms and
+lower-channel coordinates have been removed, \(r_{\rm th}\) is the finite
+soft-threshold remainder left by the cutoff and detector window, and
+\(r_{\rm sch}\) is the same-flux truncation-schedule error.
+
+If the estimates
+\[
+  \begin{aligned}
+    |r_{\rm sh}(\delta)|
+    &\le C_{\rm sh}\delta,
+    &
+    |r_{\rm ct}(\varepsilon,L)|
+    &\le C_{\rm ct}\rho_{\rm ct}(\varepsilon,L),
+    \\
+    |r_{\rm th}(\lambda,E_T,\delta)|
+    &\le C_{\rm th}\rho_{\rm th},
+    &
+    |r_{\rm sch}(L,T)|
+    &\le C_{\rm sch}\rho_{\rm sch}(L,T)
+  \end{aligned}
+\]
+hold in the chosen wave-packet topology, then
+\begin{equation}
+  \widehat{\mathcal M}_{\beta\alpha}^{\mathfrak F',\mathfrak F}
+  =
+  \left(\mathcal S_{\lambda,E_T}^{\rm amp}\right)^{-1}
+  \ee^{-\ii\Phi_\Theta(T)}
+  \widehat{\mathcal B}_{\mathbf L,\varepsilon,\lambda,T}(\delta)
+  \label{eq:dressed-boundary-value-hard-estimator}
+\end{equation}
+satisfies
+\begin{equation}
+  \left|
+    \widehat{\mathcal M}_{\beta\alpha}^{\mathfrak F',\mathfrak F}
+    -
+    \mathcal M_{\beta\alpha}^{\mathfrak F',\mathfrak F}
+  \right|
+  \le
+  \left|\mathcal S_{\lambda,E_T}^{\rm amp}\right|^{-1}
+  \left(
+    C_{\rm sh}\delta
+    +
+    C_{\rm ct}\rho_{\rm ct}
+    +
+    C_{\rm th}\rho_{\rm th}
+    +
+    C_{\rm sch}\rho_{\rm sch}
+  \right).
+  \label{eq:dressed-boundary-value-hard-estimator-bound}
+\end{equation}
+Thus the pole residue by itself is not yet the charged scattering amplitude:
+one first removes the long-range comparison phase and the finite soft factor,
+and only then takes the shell, endpoint, threshold, and schedule limits.
+
+This controlled approximation also gives the relevant negative tests.  If
+\(\mathcal S_{\lambda,E_T}^{\rm amp}\) is not divided out, the extracted
+quantity is the no-resolved-soft-photon boundary value, not the hard charged
+coefficient.  If the Dollard phase uses a coefficient
+\(\kappa_{ij}+\delta\kappa_{ij}\) with a nonzero limiting error, the
+remaining factor \(\exp(\ii\delta\kappa_{ij}\log T)\) has no boundary-value
+limit along large dyadic times.  If an endpoint or collision contact term has
+the same simultaneous simple-pole rank as the external residue and is neither
+absorbed into the renormalized dressed coordinate nor assigned to a
+lower-channel coordinate, it shifts
+\(\mathcal M_{\beta\alpha}^{\mathfrak F',\mathfrak F}\).  Finally, a
+soft-threshold branch term which is not less singular in the shell topology
+means the isolated-shell formula has failed; in massless QED the target must
+then be the flux-resolved threshold functional rather than
+\eqref{eq:dressed-boundary-value-hard-estimator}.
+\end{controlledapproximation}
+
 \subsection{Finite-Regulator Dressed LSZ}
 
 There is nevertheless a precise finite-regulator statement.  It is not the

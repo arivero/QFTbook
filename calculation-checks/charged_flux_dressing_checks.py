@@ -1427,6 +1427,117 @@ def check_dressed_correlator_reduction_interface() -> None:
     )
 
 
+def check_soft_subtracted_boundary_value_extraction() -> None:
+    """Check hard-coefficient extraction from a soft-subtracted boundary value."""
+
+    z_left = (Fraction(2), Fraction(-1))
+    z_right = (Fraction(3), Fraction(4), Fraction(-2))
+    left_inverse_left = (Fraction(1, 2), Fraction(0))
+    left_inverse_right = (Fraction(0), Fraction(0), Fraction(-1, 2))
+    hard_coefficient = Fraction(11, 7)
+    amplitude_soft_factor = Fraction(5, 8)
+
+    full_residue = tensor_outer_2(z_left, z_right, hard_coefficient)
+    soft_dressed_residue = tuple(
+        tuple(amplitude_soft_factor * entry for entry in row)
+        for row in full_residue
+    )
+    soft_dressed_boundary_value = extract_two_leg_residue(
+        left_inverse_left,
+        soft_dressed_residue,
+        left_inverse_right,
+    )
+    assert_equal(
+        "boundary value before soft subtraction is the soft-dressed coefficient",
+        soft_dressed_boundary_value,
+        amplitude_soft_factor * hard_coefficient,
+    )
+    assert_equal(
+        "soft-subtracted boundary value recovers the hard coefficient",
+        soft_dressed_boundary_value / amplitude_soft_factor,
+        hard_coefficient,
+    )
+    assert_not_equal(
+        "omitting the amplitude soft factor biases the hard coefficient",
+        soft_dressed_boundary_value,
+        hard_coefficient,
+    )
+
+    shell_residual = Fraction(1, 101)
+    contact_residual = -Fraction(1, 137)
+    threshold_residual = Fraction(1, 149)
+    schedule_residual = -Fraction(1, 173)
+    boundary_value_with_residuals = (
+        soft_dressed_boundary_value
+        + shell_residual
+        + contact_residual
+        + threshold_residual
+        + schedule_residual
+    )
+    extracted_with_residuals = boundary_value_with_residuals / amplitude_soft_factor
+    extraction_error = extracted_with_residuals - hard_coefficient
+    residual_budget = (
+        abs(shell_residual)
+        + abs(contact_residual)
+        + abs(threshold_residual)
+        + abs(schedule_residual)
+    ) / amplitude_soft_factor
+    _assert_leq(
+        "soft-subtracted boundary-value residual budget",
+        abs(extraction_error),
+        residual_budget,
+        tol=Fraction(0),
+    )
+
+    endpoint_simple_pole_shift = Fraction(2, 13)
+    shifted_boundary_value = soft_dressed_boundary_value + endpoint_simple_pole_shift
+    wrong_contact_extraction = shifted_boundary_value / amplitude_soft_factor
+    assert_not_equal(
+        "unsubtracted endpoint simple-pole contact shifts the extracted coefficient",
+        wrong_contact_extraction,
+        hard_coefficient,
+    )
+    corrected_contact_extraction = (
+        shifted_boundary_value - endpoint_simple_pole_shift
+    ) / amplitude_soft_factor
+    assert_equal(
+        "subtracting or absorbing endpoint contact restores the coefficient",
+        corrected_contact_extraction,
+        hard_coefficient,
+    )
+
+    threshold_strength = Fraction(3, 5)
+    apparent_threshold_early = (
+        soft_dressed_boundary_value + threshold_strength * Fraction(1, 8)
+    ) / amplitude_soft_factor
+    apparent_threshold_late = (
+        soft_dressed_boundary_value + threshold_strength * Fraction(1, 32)
+    ) / amplitude_soft_factor
+    assert_not_equal(
+        "finite shell-window threshold branch is not a shell residue",
+        apparent_threshold_early,
+        apparent_threshold_late,
+    )
+    _assert_gt(
+        "threshold branch contribution shrinks with the shell window",
+        abs(apparent_threshold_early - hard_coefficient),
+        abs(apparent_threshold_late - hard_coefficient),
+    )
+
+    # A wrong Dollard logarithmic coefficient prevents a boundary-value limit:
+    # along dyadic times the residual phase changes by a fixed nontrivial
+    # factor.
+    delta = math.pi / math.log(2.0)
+    for start in (32, 256, 2048):
+        boundary_start = complex(hard_coefficient) * cmath.exp(1j * delta * math.log(start))
+        boundary_double = complex(hard_coefficient) * cmath.exp(1j * delta * math.log(2 * start))
+        _assert_gt(
+            "wrong Dollard phase obstructs boundary-value extraction",
+            abs(boundary_double - boundary_start),
+            2.0,
+        )
+
+
 def sampled_signed_flux_profile(entries: tuple[tuple[Fraction, Fraction], ...]) -> tuple[Fraction, ...]:
     """Sample the signed angular flux profile at three axial test points."""
 
@@ -1630,6 +1741,7 @@ def main() -> None:
     check_dressed_lsz_residue_coordinates()
     check_endpoint_cusp_renormalized_residue_flow()
     check_dressed_correlator_reduction_interface()
+    check_soft_subtracted_boundary_value_extraction()
     check_flux_sector_projection_in_dressed_lsz()
     check_boundary_charge_selection_rules()
     check_compact_wilson_line_path_deformation()

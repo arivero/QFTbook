@@ -224,6 +224,15 @@ resonances.
   cusp, and collision contact terms, and covariance under finite same-flux
   coordinate changes.  It is explicitly a hypothesis naming the analytic
   burden, not a theorem about noncompact charged sectors.
+- Adds a soft-subtracted boundary-value extraction controlled approximation:
+  after left-inverse contraction of the simultaneous external-shell boundary
+  value, the amplitude soft factor and the Dollard comparison phase must be
+  removed before the hard flux-resolved charged coefficient is read off.  The
+  residual budget separates shell-window, endpoint/contact,
+  soft-threshold, and same-flux schedule errors; the negative tests reject
+  omitting the soft factor, using a wrong logarithmic Dollard coefficient,
+  treating an endpoint simple-pole contact as a new amplitude, or reading a
+  soft-threshold branch as an isolated shell residue.
 - Shows that compact abelian Wilson-line dressing changes with fixed
   asymptotic flux are field-strength surface insertions:
   \(\int_{\gamma'_R}A-\int_{\gamma_R}A=\int_{S_{\gamma',\gamma}}F\).
