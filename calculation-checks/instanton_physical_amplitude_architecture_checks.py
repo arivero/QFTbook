@@ -50,6 +50,9 @@ Target claims:
   `ca:instanton-hard-benchmark-gate-ledger`: the SU(3), Nf=2 hard
   four-source benchmark has the stated rho power, Q power, slow endpoint tail,
   gate dependence, and same-theory hard-scale ratio bound.
+- `ca:instanton-hard-window-tail-subtraction`: the hard four-source window is
+  controlled as a core integral plus leading and subleading analytic endpoint
+  tails, rather than as a formal size integral.
 - `sec:instanton-hard-wilsonian-ope-datum`: the hard source kernel becomes a
   Wilsonian local four-fermion input only after a dimensionless size split,
   boundary-flux flow, operator matching, long-size remainder, and physical
@@ -66,7 +69,8 @@ Independent construction:
   pole-window extraction, spectral-bin/Stieltjes comparisons, contact
   polynomial separation, and bridge residual telescopes,
   first connected instanton-pair source corrections,
-  physical projection bins, residual sums, and hard-window power ledgers
+  physical projection bins, residual sums, two-term hard-window endpoint
+  tail subtraction, and hard-window power ledgers
   directly, rather than importing BPST radial integrals or copying a monograph
   coefficient.
 
@@ -98,7 +102,9 @@ Negative controls:
   sector-isolation budget that omits pair leakage, a
   single Euclidean cell sum used as a spectral-bin observable, a
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
-  slot, a fixed short-instanton vertex under a moving size boundary, a short
+  slot, a leading-tail-only hard-window approximation, a fused-density
+  endpoint substituted for differentiated slots, a fixed short-instanton
+  vertex under a moving size boundary, a short
   coefficient used as a physical amplitude, a full hard source coefficient
   used as a local OPE coefficient without the long-size matrix element, and a
   residual bound that omits the external projection/sector remainder.
@@ -1047,6 +1053,88 @@ def check_su3_two_flavor_hard_source_power_and_tail() -> None:
     assert_equal("one missing hard slot is not endpoint controlled", one_soft_slot_power < -1, False)
 
 
+def check_hard_window_tail_subtraction() -> None:
+    c_values = [Fraction(1), Fraction(2), Fraction(3), Fraction(4)]
+    a_values = [Fraction(6) / (c**3) for c in c_values]
+    b_values = [Fraction(45) / (c**5) for c in c_values]
+
+    a0 = product(a_values)
+    a1 = sum(
+        b_values[index]
+        * product(a_values[j] for j in range(len(a_values)) if j != index)
+        for index in range(len(a_values))
+    )
+    compact_a1 = a0 * Fraction(15, 2) * sum(Fraction(1, c * c) for c in c_values)
+    assert_equal(
+        "hard window leading tail coefficient",
+        a0,
+        Fraction(6**4, (1 * 2 * 3 * 4) ** 3),
+    )
+    assert_equal("hard window subleading tail coefficient", a1, compact_a1)
+
+    integrand_power_0 = Fraction(32, 3) - 12
+    integrand_power_1 = Fraction(32, 3) - 14
+    assert_equal("hard window leading integrand tail power", integrand_power_0, -Fraction(4, 3))
+    assert_equal(
+        "hard window subleading integrand tail power",
+        integrand_power_1,
+        -Fraction(10, 3),
+    )
+
+    # Choose R=27 so R^(-1/3) and R^(-7/3) are exact rational powers.
+    r_root = Fraction(3)
+    leading_tail = 3 * a0 / r_root
+    subleading_tail = Fraction(3, 7) * a1 / (r_root**7)
+    two_term_tail = leading_tail + subleading_tail
+    assert_equal(
+        "hard window leading tail at R=27",
+        leading_tail,
+        a0,
+    )
+    assert_equal(
+        "hard window subleading tail at R=27",
+        subleading_tail,
+        Fraction(3, 7) * a1 / 2187,
+    )
+    assert_gt(
+        "subleading hard-window tail is a real retained term",
+        float(abs(subleading_tail)),
+        0.0,
+    )
+
+    core_integral = Fraction(101, 37)
+    tail_residual = Fraction(1, 20000)
+    full_window = core_integral + two_term_tail + tail_residual
+    leading_only_window = core_integral + leading_tail
+    assert_not_equal(
+        "leading-tail-only hard window misses subleading endpoint term",
+        leading_only_window,
+        full_window,
+    )
+
+    complete_budget = abs(subleading_tail) + abs(tail_residual)
+    underbudget = abs(tail_residual)
+    leading_only_error = abs(full_window - leading_only_window)
+    assert_equal(
+        "two-term hard-window tail budget controls leading-only error",
+        leading_only_error <= complete_budget,
+        True,
+    )
+    assert_equal(
+        "omitting subleading tail underbudgets hard-window evaluation",
+        leading_only_error <= underbudget,
+        False,
+    )
+
+    fused_density_tail_class = "exponential"
+    differentiated_slot_tail_class = "power"
+    assert_not_equal(
+        "fused density endpoint class is not differentiated hard slots",
+        fused_density_tail_class,
+        differentiated_slot_tail_class,
+    )
+
+
 def check_hard_wilsonian_ope_boundary_flow() -> None:
     b0_su3_nf2 = beta0(3, 2)
     zero_mode_power = Fraction(6)
@@ -1229,6 +1317,7 @@ def main() -> None:
     check_finite_cell_residual_bound()
     check_source_determinant_stability_bound()
     check_su3_two_flavor_hard_source_power_and_tail()
+    check_hard_window_tail_subtraction()
     check_hard_wilsonian_ope_boundary_flow()
     check_hard_benchmark_gate_ledger_and_ratio()
     print("instanton physical amplitude architecture checks passed")

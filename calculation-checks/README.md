@@ -771,7 +771,9 @@ Current checks:
   mass-saturated, and hard four-source size powers, finite determinant
   constant cancellation only in transported same-channel ratios,
   the individual BPST zero-mode slot tail from the Bessel-product cancellation
-  \(F_{\rm zm}(cs/2)=6c^{-3}s^{-3}+O(s^{-5})\),
+  \(F_{\rm zm}(cs/2)=6c^{-3}s^{-3}+45c^{-5}s^{-5}+O(s^{-7})\),
+  the two-term hard-window tail subtraction with leading \(R^{-1/3}\) and
+  subleading \(R^{-7/3}\) endpoint pieces,
   the finite Gaussian nonzero-mode source quotient and its covariance identity,
   the assembled hard-amplitude product ledger with absolute signed-window
   control,
@@ -788,12 +790,13 @@ Current checks:
   moduli-equivalent channels with different or zero amplitudes because of
   zero-mode source rank, finite-cell spectral/projection ambiguity after a
   single Euclidean source sum, the SU(3), \(N_f=2\) hard four-source
-  \(Q^{-35/3}\) scale ledger and \(R^{-1/3}\) tail, hard benchmark gate and
+  \(Q^{-35/3}\) scale ledger and slow endpoint tail, hard benchmark gate and
   ratio controls, the hard-kernel Wilsonian OPE boundary flow and long-size
   tail budget, the retained-cell residual bound, and the \(2\times2\)
   source-determinant stability estimate, with negative controls for an
   off-diagonal determinant sign flip, moduli-only prediction, rank-one source
-  shortcut, fused-density endpoint substitution, unamputated residue
+  shortcut, leading-tail-only hard-window approximation, fused-density endpoint
+  substitution, unamputated residue
   absorption, vacuum determinant calibration used as a source-fluctuation
   quotient, relative fluctuation division after rank loss, determinant-only
   assembled amplitudes, signed-window relative control without a

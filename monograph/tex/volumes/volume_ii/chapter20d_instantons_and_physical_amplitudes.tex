@@ -499,6 +499,70 @@ the leading endpoint power is \(s^{32/3-9}=s^{5/3}\), which is not integrable
 at infinity.
 \end{proof}
 
+\begin{controlledapproximation}[Tail-subtracted hard-window evaluation]
+\label{ca:instanton-hard-window-tail-subtraction}
+The slow \(R^{-1/3}\) endpoint in
+\eqref{eq:instanton-hard-four-source-slow-tail} is not a reason to abandon
+the hard benchmark; it is a reason to evaluate the benchmark as a
+tail-subtracted amplitude.  For the same singular-gauge differentiated slots,
+the next term in the large-\(s\) expansion is
+\begin{equation}
+  F_\ell(c_\ell s)
+  =
+  6c_\ell^{-3}s^{-3}
+  +
+  45c_\ell^{-5}s^{-5}
+  +O(s^{-7}).
+  \label{eq:instanton-hard-slot-two-term-tail}
+\end{equation}
+Set
+\[
+  A_0=6^4\prod_{\ell=1}^4c_\ell^{-3},
+  \qquad
+  A_1
+  =
+  45\,6^3
+  \sum_{m=1}^{4}
+  c_m^{-5}\prod_{\ell\ne m}c_\ell^{-3}.
+\]
+Then
+\begin{equation}
+  s^{32/3}\prod_{\ell=1}^4F_\ell(c_\ell s)
+  =
+  A_0s^{-4/3}+A_1s^{-10/3}+O(s^{-16/3}),
+  \label{eq:instanton-hard-window-two-term-integrand-tail}
+\end{equation}
+and the physical hard-window integral can be written as
+\begin{equation}
+\begin{aligned}
+  H(c_1,\ldots,c_4)
+  &=
+  \int_0^R
+    s^{32/3}\prod_{\ell=1}^{4}F_\ell(c_\ell s)\,\dd s       \\
+  &\quad
+  +3A_0R^{-1/3}
+  +\frac37A_1R^{-7/3}
+  +E_{\rm tail}(R),
+\end{aligned}
+  \label{eq:instanton-hard-window-tail-subtracted-integral}
+\end{equation}
+with \(E_{\rm tail}(R)=O(R^{-13/3})\) in a window where the
+\(O(s^{-7})\) remainder in \eqref{eq:instanton-hard-slot-two-term-tail} is
+uniform for the chosen ratios \(c_\ell\).  Thus the hard amplitude is not just
+a formal \(\rho\)-integral: the short numerical core, the leading endpoint
+tail, the subleading endpoint tail, and the residual estimate are four
+separate pieces of the physical coefficient.
+
+This calculation also shows what must not be done.  Dropping the
+\((3/7)A_1R^{-7/3}\) term is not a change of convention; it changes the
+retained hard-window coefficient at the same source normalization.  Replacing
+the differentiated zero-mode slots by a fused \(zK_1(z)\) density changes the
+endpoint class rather than improving the same integral.  Finally, no value of
+\(H\) by itself is an on-shell hadronic amplitude; it still has to be inserted
+into the assembled channel and then into the Wilsonian, pole, spectral, or
+inclusive projection described below.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Hard benchmark gate ledger]
 \label{ca:instanton-hard-benchmark-gate-ledger}
 A controlled comparison of two hard four-source instanton coefficients at

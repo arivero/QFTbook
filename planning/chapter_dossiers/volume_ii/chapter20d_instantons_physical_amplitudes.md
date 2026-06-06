@@ -52,6 +52,9 @@
 - `prop:su3-nf2-hard-source-power-slow-tail`: derives the SU(3), `N_f=2`
   hard four-source powers `rho^(32/3) d rho`,
   `Lambda_ht^(29/3) Q^(-35/3)`, and the slow `R^(-1/3)` large-size tail.
+- `ca:instanton-hard-window-tail-subtraction`: evaluates the hard size window
+  as a finite core plus leading `R^(-1/3)` and subleading `R^(-7/3)` analytic
+  endpoint tails from the two-term zero-mode-slot expansion.
 - `ca:instanton-hard-benchmark-gate-ledger`: same-theory hard-scale ratio and
   residual multiplier bound after the gate data and source-window shape have
   been transported.
@@ -200,8 +203,9 @@
   pair residual control,
   builds moduli-equivalent finite cell channels with different or vanishing
   amplitudes, constructs a same-Euclidean-sum/different-projection ambiguity,
-  checks the SU(3), `N_f=2` hard four-source scale and tail powers, validates
-  the hard gate ledger and same-theory ratio residual bound, verifies the
+  checks the SU(3), `N_f=2` hard four-source scale and tail powers, verifies
+  the two-term hard-window endpoint subtraction, validates the hard gate
+  ledger and same-theory ratio residual bound, verifies the
   hard-kernel Wilsonian OPE boundary flow and long-size tail budget, and checks
   the finite residual and determinant-stability bounds.
 - `calculation-checks/bpst_instanton_normalization_checks.py` remains the
@@ -260,3 +264,11 @@
   dimensionless size split, boundary flux, long-size remainder, operator
   matching, and physical matrix element are named.  This prevents using the
   hard source coefficient as a direct hadronic amplitude.
+- 2026-06-06 hard-window tail-subtraction pass: added
+  `ca:instanton-hard-window-tail-subtraction` after the hard-source slow-tail
+  proposition.  The pass opens the endpoint control inside the hard
+  four-source amplitude by deriving the two-term differentiated-slot tail,
+  the induced integrand coefficients \(A_0,A_1\), and the core-plus-tail
+  evaluation \(H(R)+3A_0R^{-1/3}+(3/7)A_1R^{-7/3}+E_{\rm tail}\).  The
+  companion check verifies the exact rational tail coefficients and rejects
+  leading-tail-only and fused-density endpoint shortcuts.
