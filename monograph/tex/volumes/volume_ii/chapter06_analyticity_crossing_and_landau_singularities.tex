@@ -4050,6 +4050,109 @@ them silently turns a cut reconstruction into a stronger statement than the cut
 calculation has established.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Symbol-level Steinmann check for transported
+masters]
+\label{ca:symbol-steinmann-transport-check}
+Canonical-form master equations often make loop amplitudes look like symbolic
+word problems.  That viewpoint is useful only after it is tied back to
+physical discontinuities.  Suppose a reduced master vector has, after lower
+sectors have been separated,
+\begin{equation}
+  \dd\vec J
+  =
+  \epsilon
+  \bigl(
+    R_I\,\dd\log W_I
+    +R_J\,\dd\log W_J
+    +R_K\,\dd\log W_K
+  \bigr)\vec J
+  +O(\epsilon^2),
+  \label{eq:symbol-steinmann-canonical-system}
+\end{equation}
+where \(W_I=0\), \(W_J=0\), and \(W_K=0\) are Landau-letter divisors
+associated with three physical channels.  Let \(\vec C\) be the Euclidean
+boundary vector and let the sector contribute
+\[
+  \mathcal A_{\rm sec}=\vec h^{\mathsf T}\vec J_\gamma+\cdots .
+\]
+With \((2\pi\ii)^2\epsilon^2\) stripped, the coefficient of the ordered
+symbol word \(W_I\otimes W_J\), equivalently the local ordered discontinuity
+obtained by crossing \(I\) and then \(J\), is
+\begin{equation}
+  \widehat{\operatorname{Disc}}_J
+  \widehat{\operatorname{Disc}}_I
+  \mathcal A_{\rm sec}
+  =
+  \vec h^{\mathsf T}R_JR_I\vec C ,
+  \qquad
+  \widehat{\operatorname{Disc}}_I
+  \widehat{\operatorname{Disc}}_J
+  \mathcal A_{\rm sec}
+  =
+  \vec h^{\mathsf T}R_IR_J\vec C .
+  \label{eq:symbol-steinmann-ordered-products}
+\end{equation}
+Thus a symbol entry is a physical sequential discontinuity only after the
+master basis, coefficient projection, Euclidean boundary constants, sheet, and
+lower-sector completion have already been fixed.
+
+A finite residue/projection model shows the check.  It is not being asserted
+as a global flat connection for an integral family; it isolates the ordered
+word information that must be tested after a genuine reduced connection and
+boundary-value problem have been constructed.  In the ordered basis
+\((e_1,\ldots,e_5)\), take \(\vec C=e_1\) and
+\(\vec h=e_2+e_3\), with nilpotent residues
+\[
+  R_I e_1=e_2,\qquad R_I e_3=e_5,\qquad
+  R_J e_1=e_3,\qquad R_J e_2=e_4,\qquad
+  R_K e_2=e_3,
+\]
+and all other displayed actions zero.  Then the two single cuts in the
+overlapping channels \(I,J\) are present,
+\[
+  \vec h^{\mathsf T}R_I\vec C=1,
+  \qquad
+  \vec h^{\mathsf T}R_J\vec C=1,
+\]
+but both ordered overlapping double cuts vanish,
+\begin{equation}
+  \vec h^{\mathsf T}R_JR_I\vec C=0,
+  \qquad
+  \vec h^{\mathsf T}R_IR_J\vec C=0 .
+  \label{eq:symbol-steinmann-overlap-zero-model}
+\end{equation}
+The compatible channel \(K\) is not constrained in the same way:
+\[
+  \vec h^{\mathsf T}R_KR_I\vec C=1 .
+\]
+This is the symbol-level shadow of
+Theorem~\ref{qthm:steinmann-overlapping-channel-relation}: overlapping
+sequential discontinuities are absent, while compatible sequential
+discontinuities may carry genuine double spectral weight.
+
+The negative control is equally important.  Replacing
+\(\vec h\) by
+\[
+  \vec h_{\rm bad}=e_2+e_3+e_4+e_5
+\]
+leaves the two single-channel cuts unchanged, since \(R_I\vec C=e_2\) and
+\(R_J\vec C=e_3\).  It nevertheless gives
+\[
+  \vec h_{\rm bad}^{\mathsf T}R_JR_I\vec C
+  =
+  \vec h_{\rm bad}^{\mathsf T}R_IR_J\vec C
+  =
+  1 .
+\]
+Thus agreement with all declared single cuts, or with the unordered set of
+letters in a symbol alphabet, does not enforce the causal Steinmann
+restriction.  A production loop-amplitude result that quotes symbol data must
+state whether overlapping ordered words have been removed by the physical
+coefficient projection and branch prescription, and it must still carry the
+rational, boundary-distribution, lower-sector, and regulator information that
+is invisible to a pure polylogarithmic symbol.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Production master lane from cuts to a finite
 observable]
 \label{ca:production-master-lane-observable-gate}

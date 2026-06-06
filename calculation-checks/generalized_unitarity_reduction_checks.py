@@ -24,6 +24,7 @@ finite triple-cut triangle projection after known box residues have been
 subtracted, a finite double-cut bubble projection after known box and triangle
 double-cut shadows have been subtracted, a finite two-master threshold-mixing model, a two-letter
 master-transport model with boundary and branch negative controls, a finite
+symbol-level Steinmann check for transported master words, a finite
 production master-lane gate that composes coefficient extraction, transported
 masters, physical channel closure, and infrared-safe observable assembly, and a
 physical master-discontinuity closure gate comparing transported master jumps with
@@ -113,7 +114,10 @@ color-kinematics gateway, a finite loop-Jacobi triplet surface-term model, and
 a finite common-repair model for loop-level double-copy null directions;
 nilpotent rational matrix algebra for threshold monodromy and regular
 boundary constants; noncommuting two-letter residue algebra for first-order
-transport, path-order sensitivity, and cut-invisible boundary shifts;
+transport, path-order sensitivity, and cut-invisible boundary shifts; finite
+canonical-form residue algebra checking that overlapping ordered symbol words
+vanish after the physical projection even when the single cuts survive, while
+compatible sequential words need not vanish;
 finite pairing-matrix inversion, master transport, lower-sector
 inhomogeneity, branch-jump, and Laurent-pole arithmetic for the
 production master lane from cut residues to a finite observable;
@@ -206,7 +210,8 @@ Euclidean branch reuse above the massive two-particle threshold,
 logarithmic one-master shortcuts for the sunrise elliptic maximal cut,
 maximal-cut-only multi-loop reconstruction when lower sectors carry scale,
 branch/path omission in a two-letter master transport, virtual-only
-observable assembly, untransported finite IR-scheme shifts, wrong unresolved
+observable assembly, single-cut-satisfied symbol projections that violate
+Steinmann ordered-word constraints, untransported finite IR-scheme shifts, wrong unresolved
 subtraction measurements, frozen locally inclusive measurement shortcuts,
 finite-remainder-only observable reweighting, non-infrared-safe logarithmic
 weights, two-loop remainder extraction that drops `I^(1) A^(1)`, and NNLO
@@ -2811,6 +2816,157 @@ def check_two_letter_master_transport() -> None:
     )
 
 
+def check_symbol_steinmann_transport_check() -> None:
+    r_i: Matrix = [
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(1), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(1), Fraction(0), Fraction(0)],
+    ]
+    r_j: Matrix = [
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(1), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(1), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+    ]
+    r_k: Matrix = [
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(1), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+    ]
+    zero5: Matrix = [[Fraction(0) for _ in range(5)] for _ in range(5)]
+    assert_equal(
+        "I-channel symbol residue is nilpotent",
+        matrix_mul(r_i, r_i),
+        zero5,
+    )
+    assert_equal(
+        "J-channel symbol residue is nilpotent",
+        matrix_mul(r_j, r_j),
+        zero5,
+    )
+    assert_equal(
+        "compatible-channel residue is nilpotent",
+        matrix_mul(r_k, r_k),
+        zero5,
+    )
+
+    boundary = [Fraction(1), Fraction(0), Fraction(0), Fraction(0), Fraction(0)]
+    physical_projection = [
+        Fraction(0),
+        Fraction(1),
+        Fraction(1),
+        Fraction(0),
+        Fraction(0),
+    ]
+    bad_projection = [
+        Fraction(0),
+        Fraction(1),
+        Fraction(1),
+        Fraction(1),
+        Fraction(1),
+    ]
+
+    i_single = matrix_vector_mul(r_i, boundary)
+    j_single = matrix_vector_mul(r_j, boundary)
+    assert_equal(
+        "I-channel single symbol discontinuity vector",
+        i_single,
+        [0, 1, 0, 0, 0],
+    )
+    assert_equal(
+        "J-channel single symbol discontinuity vector",
+        j_single,
+        [0, 0, 1, 0, 0],
+    )
+    assert_equal(
+        "physical projection keeps the I-channel single cut",
+        dot(physical_projection, i_single),
+        Fraction(1),
+    )
+    assert_equal(
+        "physical projection keeps the J-channel single cut",
+        dot(physical_projection, j_single),
+        Fraction(1),
+    )
+
+    ji_word = matrix_vector_mul(r_j, i_single)
+    ij_word = matrix_vector_mul(r_i, j_single)
+    assert_equal("ordered I-then-J symbol word", ji_word, [0, 0, 0, 1, 0])
+    assert_equal("ordered J-then-I symbol word", ij_word, [0, 0, 0, 0, 1])
+    assert_equal(
+        "Steinmann projection kills I then J overlapping word",
+        dot(physical_projection, ji_word),
+        Fraction(0),
+    )
+    assert_equal(
+        "Steinmann projection kills J then I overlapping word",
+        dot(physical_projection, ij_word),
+        Fraction(0),
+    )
+    assert_true(
+        "ordered overlapping words are distinct before projection",
+        vector_sub(ji_word, ij_word) != [Fraction(0)] * 5,
+    )
+
+    compatible_ki_word = matrix_vector_mul(r_k, i_single)
+    assert_equal(
+        "compatible K after I symbol word",
+        compatible_ki_word,
+        [0, 0, 1, 0, 0],
+    )
+    assert_equal(
+        "compatible sequential discontinuity can survive",
+        dot(physical_projection, compatible_ki_word),
+        Fraction(1),
+    )
+
+    assert_equal(
+        "bad projection preserves the I-channel single cut",
+        dot(bad_projection, i_single),
+        dot(physical_projection, i_single),
+    )
+    assert_equal(
+        "bad projection preserves the J-channel single cut",
+        dot(bad_projection, j_single),
+        dot(physical_projection, j_single),
+    )
+    assert_equal(
+        "single-cut-satisfied projection violates I then J Steinmann word",
+        dot(bad_projection, ji_word),
+        Fraction(1),
+    )
+    assert_equal(
+        "single-cut-satisfied projection violates J then I Steinmann word",
+        dot(bad_projection, ij_word),
+        Fraction(1),
+    )
+
+    residuals = {
+        "I_then_J_ordered_word": abs(dot(bad_projection, ji_word)),
+        "J_then_I_ordered_word": abs(dot(bad_projection, ij_word)),
+        "boundary_distribution": Fraction(1, 191),
+        "rational_prefactor": Fraction(1, 193),
+        "lower_sector_branch": Fraction(1, 197),
+    }
+    exact_defect = sum(residuals.values(), Fraction(0))
+    majorant = sum(abs(value) for value in residuals.values())
+    assert_true("symbol Steinmann residual bound", exact_defect <= majorant)
+    single_cut_budget = (
+        majorant
+        - residuals["I_then_J_ordered_word"]
+        - residuals["J_then_I_ordered_word"]
+    )
+    assert_true(
+        "single-cut validation underbudgets ordered symbol constraints",
+        exact_defect > single_cut_budget,
+    )
+
+
 def check_production_master_lane_observable_gate() -> None:
     pairing: Matrix = [
         [Fraction(2), Fraction(1)],
@@ -3395,6 +3551,7 @@ def main() -> None:
     check_branch_and_landau_ledger()
     check_two_master_threshold_mixing()
     check_two_letter_master_transport()
+    check_symbol_steinmann_transport_check()
     check_production_master_lane_observable_gate()
     check_virtual_to_observable_assembly()
     check_unresolved_measurement_cell_assembly()

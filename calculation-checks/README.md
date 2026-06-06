@@ -3249,7 +3249,10 @@ Current checks:
   subtraction-branch shortcuts, the two-master
   threshold-mixing/monodromy and regular-boundary negative controls, the
   two-letter master-transport check with noncommuting residues, branch/path
-  and cut-only boundary negative controls, the production master-lane gate
+  and cut-only boundary negative controls, the symbol-level Steinmann
+  transport check tying canonical-form ordered words to physical sequential
+  discontinuities, with compatible-channel survival and single-cut-satisfied
+  overlapping-word negative controls, the production master-lane gate
   composing coefficient extraction, transported masters, physical channel
   closure, and infrared-safe observable assembly with raw-residue,
   Euclidean-master, lower-sector, branch, and virtual-only negative controls,
