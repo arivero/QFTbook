@@ -1007,6 +1007,10 @@ Current checks:
   \(L^1\) residual, a wrong coefficient leaves a nonintegrable dyadic
   \(1/t\) tail, compact same-flux deformations alter only finite phases, and
   equal velocities lie outside the separated-pair estimate.  It also checks
+  the finite angular-flux pairing coefficient: the perturbation expansion is
+  bilinear in the cell fluxes, same total charge need not determine the
+  Dollard coefficient, a charge-only shortcut leaves a dyadic \(1/t\) tail,
+  and admissible same-flux coefficient errors are summable.  It also checks
   the scalar-product Cauchy criterion after Dollard subtraction: summable
   modified-Cook derivative tails give decreasing dyadic inner-product
   bounds, a wrong logarithmic coefficient leaves a persistent dyadic phase

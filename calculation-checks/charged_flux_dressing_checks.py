@@ -30,6 +30,16 @@ def mat_vec(matrix: tuple[tuple[Fraction, ...], ...], vector: tuple[Fraction, ..
     return tuple(sum(row[j] * vector[j] for j in range(len(vector))) for row in matrix)
 
 
+def bilinear_pairing(
+    left: tuple[Fraction, ...], matrix: tuple[tuple[Fraction, ...], ...], right: tuple[Fraction, ...]
+) -> Fraction:
+    return sum(left[i] * matrix[i][j] * right[j] for i in range(len(left)) for j in range(len(right)))
+
+
+def l1_norm(vector: tuple[Fraction, ...]) -> Fraction:
+    return sum(abs(entry) for entry in vector)
+
+
 def row_mat(row: tuple[Fraction, ...], matrix: tuple[tuple[Fraction, ...], ...]) -> tuple[Fraction, ...]:
     return tuple(sum(row[i] * matrix[i][j] for i in range(len(row))) for j in range(len(matrix[0])))
 
@@ -394,6 +404,90 @@ def check_pair_coefficient_residual_budget() -> None:
         catches_equal_velocity_error(),
         True,
     )
+
+
+def check_flux_pairing_dollard_coefficient_stability() -> None:
+    """Check extraction and stability of a finite angular-flux pairing coefficient."""
+
+    pairing_matrix = (
+        (Fraction(5), Fraction(1), Fraction(0)),
+        (Fraction(1), Fraction(3), Fraction(1)),
+        (Fraction(0), Fraction(1), Fraction(4)),
+    )
+    flux_i = (Fraction(2), Fraction(-1), Fraction(3))
+    flux_j = (Fraction(1), Fraction(4), Fraction(-2))
+    delta_i = (Fraction(1, 8), Fraction(-1, 10), Fraction(1, 12))
+    delta_j = (Fraction(-1, 9), Fraction(1, 7), Fraction(1, 11))
+
+    base_coefficient = bilinear_pairing(flux_i, pairing_matrix, flux_j)
+    perturbed_coefficient = bilinear_pairing(
+        tuple(flux_i[a] + delta_i[a] for a in range(len(flux_i))),
+        pairing_matrix,
+        tuple(flux_j[a] + delta_j[a] for a in range(len(flux_j))),
+    )
+    coefficient_error = perturbed_coefficient - base_coefficient
+    finite_cell_expansion = (
+        bilinear_pairing(delta_i, pairing_matrix, flux_j)
+        + bilinear_pairing(flux_i, pairing_matrix, delta_j)
+        + bilinear_pairing(delta_i, pairing_matrix, delta_j)
+    )
+    assert_equal(
+        "finite angular-flux coefficient perturbation expansion",
+        coefficient_error,
+        finite_cell_expansion,
+    )
+
+    max_pairing_entry = max(abs(entry) for row in pairing_matrix for entry in row)
+    stability_bound = max_pairing_entry * (
+        l1_norm(delta_i) * l1_norm(flux_j)
+        + l1_norm(flux_i) * l1_norm(delta_j)
+        + l1_norm(delta_i) * l1_norm(delta_j)
+    )
+    _assert_leq("angular-flux coefficient perturbation l1 bound", abs(coefficient_error), stability_bound)
+
+    same_charge_a = (Fraction(2), Fraction(0), Fraction(1))
+    same_charge_b = (Fraction(0), Fraction(2), Fraction(1))
+    probe_flux = (Fraction(1), Fraction(3), Fraction(0))
+    assert_equal("same total charge profiles", sum(same_charge_a), sum(same_charge_b))
+    charge_only_a = sum(same_charge_a) * sum(probe_flux)
+    charge_only_b = sum(same_charge_b) * sum(probe_flux)
+    assert_equal("charge-only coefficient cannot distinguish angular profiles", charge_only_a, charge_only_b)
+
+    angular_coefficient_a = bilinear_pairing(same_charge_a, pairing_matrix, probe_flux)
+    angular_coefficient_b = bilinear_pairing(same_charge_b, pairing_matrix, probe_flux)
+    assert_not_equal(
+        "angular-flux pairing distinguishes profiles with the same charge",
+        angular_coefficient_a,
+        angular_coefficient_b,
+    )
+
+    coefficient_mismatch = abs(angular_coefficient_b - angular_coefficient_a)
+    for start in (32, 128, 512):
+        dyadic_tail = sum((coefficient_mismatch / n for n in range(start, 2 * start)), Fraction(0))
+        if dyadic_tail <= Fraction(2):
+            raise AssertionError("charge-only angular-flux coefficient mismatch should leave a dyadic 1/t tail")
+
+    truncation_direction = (Fraction(1), Fraction(-1), Fraction(0))
+    previous_tail: Fraction | None = None
+    for start in (32, 128, 512):
+        decaying_tail = sum(
+            (
+                abs(
+                    bilinear_pairing(
+                        tuple(truncation_direction[a] / (n * n) for a in range(len(truncation_direction))),
+                        pairing_matrix,
+                        probe_flux,
+                    )
+                )
+                for n in range(start, 2 * start)
+            ),
+            Fraction(0),
+        )
+        if decaying_tail >= Fraction(2, start - 1):
+            raise AssertionError("admissible same-flux coefficient tails should be summable")
+        if previous_tail is not None and decaying_tail >= previous_tail:
+            raise AssertionError("admissible coefficient tails should decrease along dyadic windows")
+        previous_tail = decaying_tail
 
 
 def check_dollard_scalar_product_cauchy_criterion() -> None:
@@ -1444,6 +1538,7 @@ def main() -> None:
     check_many_body_dollard_phase_bookkeeping()
     check_modified_cook_integrability_bookkeeping()
     check_pair_coefficient_residual_budget()
+    check_flux_pairing_dollard_coefficient_stability()
     check_dollard_scalar_product_cauchy_criterion()
     check_asymptotic_null_quotient_wave_map_cell()
     check_same_flux_schedule_wave_map_invariance()

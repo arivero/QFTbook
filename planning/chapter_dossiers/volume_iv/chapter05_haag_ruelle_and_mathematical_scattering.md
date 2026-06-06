@@ -67,6 +67,9 @@ resonances.
   comparison phase, creator/adjoint orientation sign, effective pairwise
   long-range coefficient, and relative velocity in the Dollard/Faddeev-Kulish
   comparison calculation.
+- `F_i^a`, `mathsf B_{ij}^{ab}`, `delta kappa_P`: finite angular-flux cell
+  coordinates, the pair tail kernel on a finite angular partition, and the
+  resulting regulator/schedule error in the extracted Dollard coefficient.
 
 ## Claim Ledger
 
@@ -172,6 +175,14 @@ resonances.
   only through an \(L^1\) remainder.  Equal-velocity charged pairs are
   explicitly excluded from this datum and must be treated as charged clusters
   or separate infraparticle/bound-state sectors.
+- Refines the pair coefficient itself into an angular-flux extraction
+  problem: on finite angular partitions the candidate coefficient has the
+  form \(F_i^a\mathsf B_{ij}^{ab}F_j^b\), not merely a function of total
+  boundary charges, and the theorem must prove stable partition/refinement
+  and same-flux schedule limits.  The coefficient perturbation decomposes
+  into the two linear flux-error terms plus the quadratic error term; a
+  nonzero limiting coefficient mismatch remains a nonintegrable \(1/t\)
+  exchange error.
 - Adds the scalar-product Cauchy criterion for charged modified comparison
   vectors: uniform norm bounds and \(L^1\) modified-Cook derivative bounds
   imply Cauchy scalar products in the charged asymptotic representation,
@@ -296,6 +307,11 @@ resonances.
   opposite charges at the same velocity cancel the angular profile pointwise,
   whereas opposite charges at different velocities have vanishing total
   charge but a nonzero angular flux profile.  It now also verifies
+  the finite angular-flux pairing coefficient for the charged Dollard
+  comparison: the bilinear perturbation identity, the failure of total charge
+  to determine the coefficient, the dyadic \(1/t\) error left by a charge-only
+  shortcut, and the summability of admissible same-flux coefficient tails.  It
+  now also verifies
   the finite abelian Stokes bookkeeping for compact Wilson-line path
   deformations: the change of line integral is a curvature surface flux, and
   the associated surface factor carries no endpoint gauge charge.  It now
@@ -512,6 +528,16 @@ resonances.
   changes contribute only \(L^1\) derivatives and finite comparison phases.
   The charged-flux companion check now verifies this finite dyadic arithmetic
   and the equal-velocity boundary.
+- 2026-06-06 #527 angular-flux coefficient pass: refined the preceding
+  coefficient target into a finite angular-partition extraction problem.  The
+  text now records the finite-cell pairing
+  \(F_i^a\mathsf B_{ij}^{ab}F_j^b\), states why boundary charge alone cannot
+  determine the Dollard logarithm outside elementary scalar Coulomb
+  normalization, and records the coefficient-stability identity needed for
+  regulator and same-flux schedule control.  The companion check includes
+  exact perturbation arithmetic, a same-total-charge negative control, and
+  dyadic tests separating nonzero coefficient mismatch from summable
+  same-flux tails.
 - 2026-06-02 #527 scalar-product Cauchy pass: added the functional-analytic
   estimate that turns uniform bounds plus \(L^1\) modified-Cook derivative
   tails into Cauchy scalar products of charged comparison vectors.  The

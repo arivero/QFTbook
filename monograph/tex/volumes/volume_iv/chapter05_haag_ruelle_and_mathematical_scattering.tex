@@ -1773,6 +1773,54 @@ nonconfining gauge sector it is a matrix element, or sector label, of the
 asymptotic flux pairing; it is part of the representation-theoretic charged
 sector, not a parameter chosen after the scattering estimate is known.
 
+One concrete way to state the local extraction problem is to choose a finite
+angular partition \(\{\Delta_a\}\) of the large sphere and write
+\[
+  F_i^a=\Phi_\infty^{(i)}(\Delta_a),\qquad
+  F_j^b=\Phi_\infty^{(j)}(\Delta_b).
+\]
+The QFT estimate must then identify, after the velocity supports and dressing
+coordinates have been fixed, the finite-cell limits of a bilinear tail kernel
+\(\mathsf B_{ij}^{ab}\) such that
+\begin{equation}
+  \kappa_{\mathcal P}(\Gamma_i,\Gamma_j)
+  =
+  \sum_{a,b}F_i^a\,\mathsf B_{ij}^{ab}\,F_j^b
+  \longrightarrow
+  \kappa(\Gamma_i,\Gamma_j)
+  \label{eq:charged-angular-flux-pairing-coefficient}
+\end{equation}
+under refinement of the partition and admissible same-flux truncation
+schedules.  The zero mode
+\(\sum_a F_i^a\) is only the boundary charge.  It does not determine
+\eqref{eq:charged-angular-flux-pairing-coefficient} unless the sector has
+already collapsed to the elementary scalar Coulomb normalization.  Thus two
+charged coordinates with the same total charge but different limiting
+angular flux can have different Dollard logarithmic coefficients, and using a
+charge-only coefficient would leave a genuine long-range exchange error.
+
+The same finite-cell formulation gives the stability estimate that the
+large-time theorem must prove uniformly in the regulator.  If the angular
+fluxes are perturbed on the finite partition by
+\(\delta F_i,\delta F_j\), then
+\begin{align}
+  \delta\kappa_{\mathcal P}
+  &=
+  \langle \delta F_i,\mathsf B_{ij}F_j\rangle
+  +
+  \langle F_i,\mathsf B_{ij}\delta F_j\rangle
+  +
+  \langle \delta F_i,\mathsf B_{ij}\delta F_j\rangle ,
+  \label{eq:charged-flux-pairing-coefficient-stability}
+\end{align}
+with the obvious matrix notation on the finite partition.  A same-flux
+coordinate change is admissible for the pair estimate only when this
+coefficient error contributes an \(L^1\) derivative after the selected
+large-time schedule is applied.  A nonzero limiting
+\(\delta\kappa_{\mathcal P}\) is not a harmless finite renormalization: it
+multiplies the pair derivative by \(1/t\) and changes the asymptotic
+representation.
+
 This distinction is load-bearing.  Replacing \(\kappa\) by
 \(\kappa+\delta\kappa\) leaves an uncompensated
 \(\delta\kappa/(|u_{ij}|t)\) term in the Cook derivative, and this term is
