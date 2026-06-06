@@ -208,8 +208,13 @@
   mistaken for the full finite-temperature determinant.  The thermal-observable
   continuation then pushes that activity into
   \(\chi_{\rm top}^{T,{\rm dig}}=2\zeta_T\), \(b_2=-1/12\), and the
-  \(SU(3)\), \(N_f=2\) \(T^{-23/3}\) scaling law for the theta curvature,
-  with the determinant residual propagated to the susceptibility.  The
+  \(SU(3)\), \(N_f=2\) \(T^{-23/3}\) scaling law for the theta curvature, with
+  the determinant residual propagated to the susceptibility.  The
+  dynamical-theta continuation adds the source-curvature handoff
+  \(m_a^2=n_a^2\chi_{\rm br}/(Z_af_a^2)\): a pseudoscalar coupled through the
+  same renormalized theta coordinate inherits a branch susceptibility and
+  theta-cumulant self-couplings only after kinetic normalization, branch,
+  contact, mixing, and instanton-activity budgets have been supplied.  The
   instanton-liquid continuation then pushes the zero-mode overlap spectrum
   beyond the Banks--Casher condensate criterion into the \(U(1)_A\)-odd
   \(\pi-\delta\) susceptibility: the finite source-trace kernel is
@@ -1290,6 +1295,16 @@
   check now derives the Gaussian second/fourth moments, the slope extraction
   of \(\chi\), and negative controls for fixed-sector variance and omitted
   \(Q^2/(\chi V)\) bias.
+- 2026-06-06 issue #597 dynamical theta-source pass: added
+  `ca:dynamical-theta-source-axion-curvature` after the continuum
+  susceptibility definition.  The pass promotes the renormalized theta
+  coordinate to \(\bar\theta+n_a a/f_a\), derives the branch-curvature
+  relation \(m_a^2=n_a^2\chi_{\rm br}/(Z_af_a^2)\), records the theta-cumulant
+  quartic, and states why fixed topology, screened massless-QCD theta curvature,
+  or a dilute instanton activity without a same-scheme curvature budget cannot
+  be used as substitute inputs.  The theta/Witten--Veneziano companion now
+  verifies the Hessian, kinetic normalization, quartic, dilute-gas
+  specialization, and those negative controls exactly.
 - 2026-05-30 issue #696 dequote pass: converted the cubic gauge obstruction
   from a `quotedtheorem` to a local proposition with proof from the
   perturbative BRST bicomplex, descent of

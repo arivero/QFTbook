@@ -20,6 +20,10 @@ Target claims:
 - The physical singlet mass at the same order is a generalized eigenvalue:
   the singlet kinetic normalization, or equivalently F_0^2/f_pi^2, is an
   independent residual from the theta-potential curvature.
+- A dynamical pseudoscalar coupled only through the same renormalized theta
+  source has curvature n_a^2 chi/(Z_a f_a^2) on a selected branch; fixed
+  topology, screened massless-QCD theta curvature, and uncontrolled
+  dilute-instanton activity are not substitute inputs.
 - A dilute-instanton determinant curvature may be compared with the
   Witten-Veneziano pure-Yang-Mills curvature only after a same-scheme
   curvature-distance estimate and the pole-mass normalization/mixing residuals
@@ -32,6 +36,8 @@ Independent construction:
 - Derives fixed-topology sector weights and local-observable biases from the
   Gaussian Fourier saddle rather than estimating susceptibility inside a
   single fixed sector.
+- Differentiates a dynamical-theta source potential, including the kinetic
+  generalized-eigenvalue normalization and theta-cumulant self-couplings.
 - Differentiates the singlet local potential and all Hessians symbolically,
   then computes Schur complements and null-vector conditions from the matrices.
 - Computes the one-field and neutral two-field generalized eigenvalue
@@ -57,6 +63,10 @@ Negative controls:
   broken.
 - A nontrivial singlet kinetic residual rejects the shortcut which reads the
   physical eta_0 mass directly from the potential Hessian.
+- A nontrivial axion-source kinetic residual rejects the shortcut which reads a
+  physical curvature mass directly from the source potential Hessian; fixed
+  topology and screened massless-QCD theta curvature give zero in finite
+  negative controls.
 - Substituting the full massless-QCD susceptibility into the
   Witten-Veneziano mass relation, or replacing the pure-Yang-Mills curvature by
   the dilute-instanton activity without a sufficient curvature budget, is
@@ -277,6 +287,106 @@ def check_local_density_susceptibility_cumulant() -> None:
         "periodic double sum reduces to one-origin integral",
         periodic_double_sum,
         sum(periodic_connected),
+    )
+
+
+def check_dynamical_theta_source_curvature() -> None:
+    theta, a = sp.symbols("theta a")
+    chi, b2, n_a, f_a, z_a = sp.symbols("chi b2 n_a f_a z_a", positive=True)
+
+    theta_source = theta + n_a * a / f_a
+    branch_energy = (
+        sp.Rational(1, 2)
+        * chi
+        * theta_source**2
+        * (1 + b2 * theta_source**2)
+    )
+    axion_hessian = sp.diff(branch_energy, a, 2).subs({theta: 0, a: 0})
+    assert_zero(
+        "dynamical theta source Hessian",
+        axion_hessian - n_a**2 * chi / f_a**2,
+    )
+    physical_mass = sp.simplify(axion_hessian / z_a)
+    assert_zero(
+        "dynamical theta source generalized mass",
+        physical_mass - n_a**2 * chi / (z_a * f_a**2),
+    )
+    mixed_source_curvature = sp.diff(branch_energy, theta, a).subs({theta: 0, a: 0})
+    assert_zero(
+        "dynamical theta mixed source curvature",
+        mixed_source_curvature - n_a * chi / f_a,
+    )
+    axion_quartic = sp.diff(branch_energy, a, 4).subs({theta: 0, a: 0})
+    assert_zero(
+        "dynamical theta quartic cumulant",
+        axion_quartic - 12 * chi * b2 * n_a**4 / f_a**4,
+    )
+
+    zeta = sp.symbols("zeta", positive=True)
+    dilute_energy = 2 * zeta * (1 - sp.cos(theta_source))
+    dilute_chi = sp.diff(dilute_energy.subs(a, 0), theta, 2).subs(theta, 0)
+    assert_zero("dilute theta source susceptibility", dilute_chi - 2 * zeta)
+    dilute_axion_hessian = sp.diff(dilute_energy, a, 2).subs({theta: 0, a: 0})
+    assert_zero(
+        "dilute theta source axion curvature",
+        dilute_axion_hessian - 2 * zeta * n_a**2 / f_a**2,
+    )
+    dilute_b2 = (
+        sp.diff(dilute_energy.subs(a, 0), theta, 4).subs(theta, 0)
+        / (12 * dilute_chi)
+    )
+    assert_zero("dilute theta source b2", dilute_b2 + sp.Rational(1, 12))
+
+    values = {
+        chi: sp.Rational(7, 19),
+        b2: -sp.Rational(2, 23),
+        n_a: sp.Rational(3),
+        f_a: sp.Rational(5),
+        z_a: sp.Rational(11, 13),
+    }
+    require(
+        sp.simplify(axion_hessian.subs(values) - physical_mass.subs(values)) != 0,
+        "nontrivial Z_a should reject reading the Hessian as the physical mass",
+    )
+
+    screened_massless_qcd_mass = sp.Integer(0) * n_a**2 / (z_a * f_a**2)
+    assert_zero("screened full-QCD massless theta source curvature", screened_massless_qcd_mass)
+    require(
+        sp.simplify(screened_massless_qcd_mass.subs(values) - physical_mass.subs(values)) != 0,
+        "screened massless-QCD theta curvature should not replace branch curvature",
+    )
+
+    fixed_topology_variance = sp.Integer(0)
+    fixed_topology_mass = n_a**2 * fixed_topology_variance / (z_a * f_a**2)
+    require(
+        sp.simplify(fixed_topology_mass.subs(values) - physical_mass.subs(values)) != 0,
+        "fixed-topology sector variance should not supply axion curvature",
+    )
+
+    chi_target, zeta_trial, eps_chi = sp.symbols("chi_target zeta_trial eps_chi", positive=True)
+    target_mass = n_a**2 * chi_target / (z_a * f_a**2)
+    dilute_mass = n_a**2 * (2 * zeta_trial) / (z_a * f_a**2)
+    comparison_values = {
+        chi_target: sp.Rational(17, 19),
+        zeta_trial: sp.Rational(8, 19),
+        eps_chi: sp.Rational(1, 19),
+        n_a: sp.Rational(3),
+        f_a: sp.Rational(7),
+        z_a: sp.Rational(5, 4),
+    }
+    mass_gap = abs(sp.simplify((target_mass - dilute_mass).subs(comparison_values)))
+    curvature_budget = (
+        n_a**2
+        * eps_chi
+        / (z_a * f_a**2)
+    ).subs(comparison_values)
+    require(
+        mass_gap <= curvature_budget,
+        "same-scheme theta-curvature budget should bound dilute-source mass error",
+    )
+    require(
+        mass_gap > curvature_budget / 2,
+        "under-budgeted dilute theta activity should be rejected",
     )
 
 
@@ -909,6 +1019,7 @@ def main() -> None:
     check_finite_volume_cumulant_identity()
     check_finite_volume_theta_cumulant_hierarchy()
     check_local_density_susceptibility_cumulant()
+    check_dynamical_theta_source_curvature()
     check_fixed_topology_saddle_extraction()
     check_cp_symmetric_first_moment()
     check_anomaly_invariant_singlet_coordinate_and_mass_alignment()

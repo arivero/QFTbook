@@ -3215,6 +3215,97 @@ about the theory.  The use of \(\chi_{\rm YM}\) inside a chiral effective
 description with dynamical quarks is a further large-\(N_c\) matching
 assumption, developed in the next chapter.
 
+\begin{controlledapproximation}[Dynamical theta source and axion curvature]
+\label{ca:dynamical-theta-source-axion-curvature}
+The same distinction is needed when the theta parameter is promoted to a
+dynamical pseudoscalar source.  Let the renormalized topological density be
+coupled to
+\begin{equation}
+  \vartheta_a(x)
+  =
+  \bar\theta+\frac{n_a a(x)}{f_a},
+  \qquad
+  S_{\vartheta_a}^{\rm E}
+  \supset
+  \ii\int\dd^4x\,\vartheta_a(x)q_R(x),
+  \label{eq:dynamical-theta-source-coordinate}
+\end{equation}
+where \(n_a\) is the anomaly coefficient of the source, \(f_a\) fixes the
+periodic coordinate, and the kinetic term is
+\(\frac12 Z_a(\partial a)^2\) before the final canonical normalization.  For a
+constant mode \(a_0\) on a selected CP-even branch,
+\begin{equation}
+  E_{\rm br}(\vartheta)-E_{\rm br}(0)
+  =
+  \frac12\chi_{\rm br}\vartheta^2
+  \left(1+b_2^{\rm br}\vartheta^2+O(\vartheta^6)\right),
+  \qquad
+  \chi_{\rm br}>0 ,
+  \label{eq:branch-theta-expansion-for-axion}
+\end{equation}
+the local source effective potential has the form
+\begin{equation}
+  V_{\rm eff}(a_0)-V_{\rm eff}(0)
+  =
+  E_{\rm br}\!\left(\bar\theta+\frac{n_a a_0}{f_a}\right)
+  -E_{\rm br}(\bar\theta)
+  +R_{\partial a}+R_{\rm mix}+R_{\rm branch}+R_{\rm ct}.
+  \label{eq:dynamical-theta-effective-potential}
+\end{equation}
+Here \(R_{\partial a}\) contains derivative and nonconstant-mode terms,
+\(R_{\rm mix}\) contains mixing with any other light pseudoscalars,
+\(R_{\rm branch}\) records branch-crossing or finite-volume errors, and
+\(R_{\rm ct}\) records the theta-contact convention.  At a CP-even minimum
+\(\bar\theta+n_a a_0/f_a=0\), and after the nonconstant-mode and mixing
+remainders have been controlled, the curvature mass is therefore
+\begin{equation}
+  m_{a,{\rm curv}}^2
+  =
+  \frac1{Z_a}
+  \left.
+  \frac{\partial^2 V_{\rm eff}}{\partial a_0^2}
+  \right|_{\vartheta_a=0}
+  =
+  \frac{n_a^2}{Z_a f_a^2}\,\chi_{\rm br}
+  +
+  R_{m_a}.
+  \label{eq:axion-curvature-from-theta-susceptibility}
+\end{equation}
+The higher local self-couplings are the corresponding theta cumulants; for
+example
+\begin{equation}
+  \left.
+  \frac{\partial^4 V_{\rm eff}}{\partial a_0^4}
+  \right|_{\vartheta_a=0}
+  =
+  12\,\chi_{\rm br}b_2^{\rm br}
+  \left(\frac{n_a}{f_a}\right)^4
+  +
+  R_{\lambda_a}.
+  \label{eq:axion-quartic-from-theta-cumulant}
+\end{equation}
+
+The dilute specialization is conditional.  If a controlled instanton
+calculation supplies
+\begin{equation}
+  E_{\rm dig}(\vartheta)-E_{\rm dig}(0)
+  =
+  2\zeta_{\rm dig}\left(1-\cos\vartheta\right),
+  \label{eq:dilute-gas-axion-source-potential}
+\end{equation}
+then \(\chi_{\rm br}=2\zeta_{\rm dig}\), \(b_2^{\rm br}=-1/12\), and
+\(m_{a,{\rm curv}}^2=2n_a^2\zeta_{\rm dig}/(Z_af_a^2)\) only within the
+finite determinant, zero-mode, infrared, cluster, branch, and contact-term
+window already used to define the same activity.  In confining low-temperature
+QCD the input in \eqref{eq:axion-curvature-from-theta-susceptibility} is instead
+the selected renormalized theta curvature; the instanton moduli measure alone
+does not determine the physical source curvature.  A fixed-topology sector has
+zero internal charge variance, and a full massless-QCD theta coordinate that is
+screened by a dynamical quark has a zero Schur complement.  Neither object may
+be substituted for the branch susceptibility without the corresponding
+branch-reconstruction or explicit-mass/source calculation.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Fixed-topology extraction and bias]
 \label{ca:fixed-topology-theta-extraction}
 The sector weights themselves carry physical information, but a simulation or

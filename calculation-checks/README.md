@@ -436,9 +436,13 @@ Current checks:
   susceptibility cumulant identity, the finite-regulator theta-cumulant
   hierarchy through \(b_2,b_4\) with the local theta-counterterm derivative
   shifts, the finite-regulator local-density double-sum form with its
-  contact-term convention, the fixed-topology Gaussian sector-weight saddle,
-  quartic correction, slope extraction of \(\chi\), and local-observable
-  \(Q^2/(\chi V)\) bias with fixed-sector variance and omitted-bias negative
+  contact-term convention, the dynamical-theta/axion-source curvature gate
+  \(n_a^2\chi/(Z_af_a^2)\) with theta-cumulant self-couplings and negative
+  controls for fixed topology, screened massless-QCD curvature, omitted kinetic
+  normalization, and under-budgeted dilute-instanton activity, the
+  fixed-topology Gaussian sector-weight saddle, quartic correction, slope
+  extraction of \(\chi\), and local-observable \(Q^2/(\chi V)\) bias with
+  fixed-sector variance and omitted-bias negative
   controls, CP-symmetric first moment, theta periodicity by branch relabeling,
   branch-mixture cluster covariance, thermodynamic branch selection,
   massless-quark theta screening, and the Witten--Veneziano mass coefficient.
