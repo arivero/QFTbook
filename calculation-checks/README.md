@@ -1904,7 +1904,12 @@ Current checks:
 - `gamma_trace_checks.py`: mostly-plus gamma-matrix conventions, \(\gamma_5\),
   the Weinberg/Wess-Bagger chiral phase comparison, the four-gamma trace, the
   two-dimensional chirality trace, and the anticommutator normalization used
-  in the nonabelian anomaly coefficient.
+  in the nonabelian anomaly coefficient.  Its extended evidence contract now
+  independently extracts the oriented four-dimensional epsilon coefficient,
+  repeats the coefficient in the Wess-Bagger-related basis, and rejects a
+  flipped \(\gamma_5\) orientation, a four-dimensional two-plane shortcut for
+  the two-dimensional Dirac anomaly trace, and omission of the anticommutator
+  factor one half.
 - `spinor_convention_checks.py`: exact finite checks for the local
   spinor-convention section, including the mostly-plus Clifford algebra,
   Dirac-adjoint identities, spin-generator commutators, \(\gamma_5\) trace

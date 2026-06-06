@@ -25,6 +25,17 @@
       "risk_class": "anomaly descent"
     },
     {
+      "path": "gamma_trace_checks.py",
+      "risk_class": "gamma-trace and anomaly-normalization conventions",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "mostly-plus Clifford algebra and Dirac adjoint",
+        "gamma5=-i gamma0 gamma1 gamma2 gamma3",
+        "epsilon0123=+1 and epsilon01=+1 orientation choices",
+        "finite spin trace separated from regulator and Ward-identity data"
+      ]
+    },
+    {
       "path": "adler_bardeen_nonrenormalization_checks.py",
       "risk_class": "anomaly nonrenormalization"
     },

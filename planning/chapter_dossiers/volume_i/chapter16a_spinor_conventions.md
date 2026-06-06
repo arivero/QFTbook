@@ -107,8 +107,13 @@
 ## Calculation Checks
 
 - `calculation-checks/gamma_trace_checks.py` and
-  `calculation-checks/gamma_trace_checks.wl` check the pre-existing trace and
-  anomaly-normalization identities.
+  `calculation-checks/gamma_trace_checks.wl` check the trace and
+  anomaly-normalization convention identities.  The Python companion now
+  carries an extended evidence contract: it extracts the oriented
+  four-dimensional epsilon coefficient by antisymmetric projection, repeats it
+  in the Wess-Bagger-related basis, and rejects a flipped \(\gamma_5\) sign or
+  a four-dimensional two-plane shortcut for the two-dimensional Dirac anomaly
+  trace.
 - `calculation-checks/spinor_convention_checks.py` checks the complete finite
   algebra added in the 2026-05-27 formalization pass: Clifford algebra,
   beta-pairing, spin-generator commutators, \(\gamma_5\) trace, rho-block
@@ -151,3 +156,12 @@
   chapter identifies the quantum local current as a renormalized composite
   operator-valued distribution rather than treating normal ordering as a
   regulator-independent definition.
+- 2026-06-06 issue #725/#696 gamma-trace evidence-contract pass: added
+  `rem:finite-chiral-trace-scope` to make explicit that
+  \(\operatorname{tr}(\gamma_5\gamma^\mu\gamma^\nu\gamma^\rho\gamma^\sigma)\)
+  fixes only the finite spin-trace and orientation slot of later anomaly
+  formulae.  Regulator splitting, Ward identities, counterterm representative,
+  gauge-trace normalization, and loop or heat-kernel normalization remain
+  anomaly-chapter data.  The companion now rejects the common two-dimensional
+  shortcut obtained by restricting a four-dimensional block, which gives the
+  wrong finite trace normalization.

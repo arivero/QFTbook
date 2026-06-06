@@ -2090,3 +2090,13 @@
   companion now rejects a pure-power-only ratio, and the Ch20D architecture
   companion scans both chapters for the shared collective factor.  This is a
   coherence and normalization repair, not a tangential moduli-space expansion.
+- 2026-06-06 issue #725/#696 gamma-trace evidence-contract pass: promoted
+  `calculation-checks/gamma_trace_checks.py` to the extended evidence tier and
+  added the upstream spinor-convention remark
+  `rem:finite-chiral-trace-scope`.  The anomaly chapter continues to import
+  the finite \(\gamma_5\) trace as a convention slot only; regulator split,
+  preserved Ward identities, counterterm representative, gauge-trace
+  normalization, and loop or heat-kernel normalization remain part of the
+  anomaly calculation itself.  The companion now rejects a flipped
+  \(\gamma_5\) orientation and the four-dimensional two-plane shortcut for the
+  two-dimensional Dirac anomaly trace.
