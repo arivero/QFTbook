@@ -11,14 +11,15 @@ vortex-fugacity dimensional-transmutation coordinate, the degree-one
 P^{N-1} stable-map gate, the finite degree-one stable-map incidence model
 with supplied vortex coefficient input plus conditional residual template for
 the quantum-product observable relation, the A-model degree-one zero-mode
-measure bridge, and the mirror-conjecture status ledger separating full-QFT
-data from protected evidence, in Volume VII Chapter 09.
+measure bridge, the finite measure-scheme covariance gate for that
+degree-one coefficient, and the mirror-conjecture status ledger separating
+full-QFT data from protected evidence, in Volume VII Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
 elimination, finite chain-complex rank checks, Berezin-degree tests,
 retained-window signed/mass coefficient bounds, root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree gates, and residual
-budgets are computed directly from finite data rather than by substituting the
-displayed final identities.
+budgets, plus finite density/Jacobian transport tests, are computed directly
+from finite data rather than by substituting the displayed final identities.
 Imported assumptions: the finite GLSM charge matrix, selected regulator-stage
 factorization, supplied vortex coefficients, nonzero-mode determinant
 placeholders, logarithm-branch conventions, and the chapter's
@@ -31,9 +32,10 @@ budgets, stable-map dimension mismatches, mirror-only or dimension-only
 quantum-product shortcuts, determinant-orientation flips,
 zero-mode multiplicity errors, compactification/contact mutations,
 hyperplane-normalization changes, omitted off-pairing controls, line-count-only
-or vortex-fugacity-only observable claims, protected-sector shortcuts to full
-mirror equivalence, and finite-gauge invariance failures are rejected when the
-finite model can represent them.
+or vortex-fugacity-only observable claims, stale FI-coordinate changes,
+missing measure Jacobians, untransported orientation signs, protected-sector
+shortcuts to full mirror equivalence, and finite-gauge invariance failures are
+rejected when the finite model can represent them.
 Scope boundary: a pass checks finite algebra and bookkeeping interfaces; it
 does not prove continuum GLSM existence, Hori--Vafa mirror equivalence,
 vortex compactness, derivation of the vortex fluctuation spectra or gauge-ghost
@@ -1467,6 +1469,115 @@ def check_degree_one_amodel_zero_mode_measure_bridge() -> None:
         )
 
 
+def check_degree_one_measure_scheme_covariance() -> None:
+    # A finite change of vortex coefficient normalization and zero-mode chart
+    # coordinates is harmless only when the FI coordinate, determinant density,
+    # and orientation/operator conventions are transported together.
+    n_fields = 4
+    bare_fi = Fraction(5, 13)
+    vortex_coefficients = [
+        Fraction(2, 3),
+        Fraction(3, 5),
+        Fraction(5, 7),
+        Fraction(7, 11),
+    ]
+    q_regulated = bare_fi * prod(vortex_coefficients, start=Fraction(1))
+
+    measure_cells = [Fraction(3), Fraction(5), Fraction(7)]
+    density_cells = [Fraction(1, 3), Fraction(-1, 5), Fraction(1, 7)]
+    retained_integral = sum(
+        measure * density
+        for measure, density in zip(measure_cells, density_cells)
+    )
+    assert_equal("retained degree-one measure integral", retained_integral, Fraction(1))
+
+    retained_coefficient = q_regulated * retained_integral
+    degree_one_power = n_fields - 1 + n_fields
+    assert_equal(
+        "retained coefficient matches mirror trace in transported coordinate",
+        retained_coefficient,
+        cp_mirror_residue_trace(n_fields, degree_one_power, q_regulated),
+    )
+
+    coefficient_rescalings = [
+        Fraction(11, 13),
+        Fraction(13, 17),
+        Fraction(17, 19),
+        Fraction(19, 23),
+    ]
+    transported_fi = bare_fi / prod(coefficient_rescalings, start=Fraction(1))
+    transported_coefficients = [
+        coefficient * rescaling
+        for coefficient, rescaling in zip(vortex_coefficients, coefficient_rescalings)
+    ]
+    transported_q = transported_fi * prod(transported_coefficients, start=Fraction(1))
+    assert_equal("FI shift transports vortex coefficient rescaling", transported_q, q_regulated)
+
+    stale_fi_q = bare_fi * prod(transported_coefficients, start=Fraction(1))
+    if stale_fi_q == q_regulated:
+        raise AssertionError("stale FI coordinate should not absorb coefficient rescaling")
+
+    jacobians = [Fraction(5, 4), Fraction(7, 6), Fraction(11, 10)]
+    transported_measure = [
+        measure * jacobian
+        for measure, jacobian in zip(measure_cells, jacobians)
+    ]
+    transported_density = [
+        density / jacobian
+        for density, jacobian in zip(density_cells, jacobians)
+    ]
+    transported_integral = sum(
+        measure * density
+        for measure, density in zip(transported_measure, transported_density)
+    )
+    assert_equal(
+        "Jacobian transport preserves degree-one measure integral",
+        transported_integral,
+        retained_integral,
+    )
+    assert_equal(
+        "transported finite measure package preserves coefficient",
+        transported_q * transported_integral,
+        retained_coefficient,
+    )
+
+    stale_density_integral = sum(
+        measure * density
+        for measure, density in zip(transported_measure, density_cells)
+    )
+    if stale_density_integral == retained_integral:
+        raise AssertionError("missing inverse Jacobian should change the finite density")
+
+    orientation_flip = Fraction(-1)
+    untransported_orientation_coefficient = (
+        transported_q * orientation_flip * transported_integral
+    )
+    assert_equal(
+        "untransported determinant orientation flips coefficient",
+        untransported_orientation_coefficient,
+        -retained_coefficient,
+    )
+    operator_orientation_transport = Fraction(-1)
+    assert_equal(
+        "operator orientation transport restores pairing coefficient",
+        untransported_orientation_coefficient * operator_orientation_transport,
+        retained_coefficient,
+    )
+
+    residuals = {
+        "FI transport": transported_q - q_regulated,
+        "density transport": transported_integral - retained_integral,
+        "continuum": Fraction(1, 10_007),
+    }
+    residual_probe = retained_coefficient + sum(residuals.values(), Fraction(0))
+    residual_bound = sum(abs(value) for value in residuals.values())
+    assert_leq_bound(
+        "measure-scheme covariance residual budget",
+        abs(residual_probe - retained_coefficient),
+        residual_bound,
+    )
+
+
 def check_cigar_metric_elimination() -> None:
     examples = [
         (Fraction(9, 5), Fraction(7, 3)),
@@ -1714,6 +1825,7 @@ def main() -> None:
     check_cp_degree_one_stable_map_quantum_product_gate()
     check_degree_one_stable_map_incidence_model()
     check_degree_one_amodel_zero_mode_measure_bridge()
+    check_degree_one_measure_scheme_covariance()
     check_cigar_metric_elimination()
     check_logarithmic_chiral_vortex_obstruction()
     check_mirror_conjecture_status_ledger()

@@ -2616,7 +2616,10 @@ Current checks:
   dimension-only, and zero-mode-gate negative controls, the A-model
   degree-one zero-mode measure bridge checking Berezin top-degree saturation,
   determinant-line orientation, obstruction-factor omission, nonzero-mode
-  determinant cancellation, and residual underbudgeting, and the
+  determinant cancellation, and residual underbudgeting, the finite
+  measure-scheme covariance gate checking the simultaneous transport of
+  vortex coefficient normalizations, the FI coordinate, chart Jacobians,
+  determinant densities, and orientation/operator signs, and the
   classical cigar quotient metric obtained by eliminating the gauge field,
   the logarithmic-chiral vortex obstruction, the mirror-conjecture status
   ledger separating full GLSM/Hori--Vafa and cigar/Liouville QFT equivalence

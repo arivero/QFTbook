@@ -80,6 +80,10 @@ and
   three-point coefficient for the `P^{N-1}` quantum product, the line-count
   compactification/orientation residual, and off-pairing bounds needed before
   the product relation is a controlled A-twisted observable.
+- `Omega_{Lambda,1}`, `J_Lambda`, `r_i`: transported finite
+  degree-one instanton-measure density, retained-chart Jacobian, and finite
+  vortex-coefficient rescaling used to test scheme covariance of the
+  `P^{N-1}` degree-one observable.
 - `overline M_{0,3}(P^{N-1},d)`, `ev_j`, `I_d`: compactified genus-zero
   stable-map moduli space, evaluation maps, and A-model three-point invariant
   used in the direct `P^{N-1}` quantum-product gate.
@@ -278,6 +282,13 @@ and
   insertions `(H,H^{N-1},H^{N-1})` saturate the top zero-mode degree
   `2N-1`; orientation reversal, extra zero modes, or omitted obstruction data
   change or kill the coefficient.
+- Adds the finite measure-scheme covariance gate for that same degree-one
+  observable: rescaling the supplied vortex coefficients must be accompanied by
+  the inverse FI-coordinate shift, and changing the zero-mode chart density
+  must transport the inverse Jacobian through the nonzero-mode/Berezin density.
+  The retained coefficient is invariant only for the full package
+  `q_Lambda * int Omega_{Lambda,1}`; stale FI coordinates, missing Jacobians, or
+  untransported orientation signs are treated as real coefficient changes.
 - Derives the classical cigar quotient metric by solving the auxiliary
   constraint, gauge fixing the logarithmic chiral scalar, and eliminating the
   gauge field.
@@ -412,6 +423,11 @@ and
     comparison.  This makes clear that the stable-map incidence count and the
     Hori--Vafa residue are protected evidence only after the same regulator
     supplies the instanton measure and fermion-zero-mode saturation.
+  - the degree-one finite measure-scheme covariance gate: exact transport of
+    finite vortex-coefficient rescalings into the FI coordinate, retained-chart
+    Jacobian cancellation between the collective-coordinate measure and the
+    determinant/Berezin density, and negative controls for stale FI coordinates,
+    missing inverse Jacobians, and untransported orientation signs.
   - the cigar quotient metric coefficients after algebraic elimination of the
     gauge field.
   - the logarithmic-chiral vortex obstruction: a unit-norm charged section
@@ -513,3 +529,10 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   `c_i`, and the companion script rejects raw zero-mode determinants, omitted
   ghost factors, and residual-zero-mode shortcuts before the primitive mirror
   monomial is treated as a protected amplitude input.
+- The 2026-06-06 measure-scheme covariance pass re-audits the preceding
+  projective-space observable bridge against finite normalization changes:
+  the retained degree-one coefficient is invariant only when vortex
+  coefficient rescalings, the FI coordinate, chart Jacobians,
+  determinant/Berezin densities, and orientation/operator signs are transported
+  as one package.  This keeps the Appendix K/Hori--Vafa formula from hiding a
+  stale instanton-measure convention.

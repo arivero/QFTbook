@@ -1970,6 +1970,64 @@ determinant-line orientation, the compactification/contact prescription, and
 the operator map to \(H\).
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Finite measure-scheme covariance]
+\label{ca:cpn-degree-one-measure-scheme-covariance}
+The previous bridge has a further invariance test.  The finite objects
+\(c_{i,\Lambda}\), \(\dd\nu_{\Lambda,1}\),
+\(\mathcal W_{\Lambda,1}^{\rm nz}\), and
+\(\mathcal Z_{\Lambda,1}^{0}\) are not separately physical.  What can be
+compared with the mirror residue is the transported product
+\begin{equation}
+  C_{\Lambda,1}^{\rm ret}
+  =
+  q_\Lambda
+  \int_{\mathcal U_{\Lambda,1}}
+  \Omega_{\Lambda,1},
+  \qquad
+  q_\Lambda=\exp(t)\prod_{i=1}^N c_{i,\Lambda},
+  \qquad
+  \Omega_{\Lambda,1}
+  =
+  \mathcal W_{\Lambda,1}^{\rm nz}
+  \mathcal Z_{\Lambda,1}^{0}\dd\nu_{\Lambda,1}.
+  \label{eq:cpn-degree-one-retained-measure-package}
+\end{equation}
+Consider a finite change of regulator coordinates and determinant
+normalization in the degree-one sector.  Suppose
+\[
+  c'_{i,\Lambda}=r_i c_{i,\Lambda},\qquad
+  t'=t-\sum_{i=1}^N\log r_i,
+\]
+with fixed logarithm branches, and suppose on a retained chart
+\[
+  \dd\nu'_{\Lambda,1}=J_\Lambda\,\dd\nu_{\Lambda,1},
+  \qquad
+  \mathcal W_{\Lambda,1}^{\prime\,{\rm nz}}
+  \mathcal Z_{\Lambda,1}^{\prime\,0}
+  =
+  J_\Lambda^{-1}
+  \mathcal W_{\Lambda,1}^{\rm nz}
+  \mathcal Z_{\Lambda,1}^{0}
+\]
+as determinant-line densities in the same orientation convention.  Then
+\begin{equation}
+  q'_\Lambda=q_\Lambda,\qquad
+  \Omega'_{\Lambda,1}=\Omega_{\Lambda,1},\qquad
+  C_{\Lambda,1}^{\prime\,{\rm ret}}=C_{\Lambda,1}^{\rm ret}.
+  \label{eq:cpn-degree-one-measure-scheme-invariance}
+\end{equation}
+If the determinant-line orientation is reversed, the retained integral changes
+sign unless the virtual orientation and local-operator representative are
+transported with the same sign.  The distinction is substantive: an
+untransported sign, a stale FI coordinate, or a missing Jacobian changes the
+degree-one coefficient while leaving the formal Hori--Vafa root sum looking
+unchanged.  Thus the physical statement is not ``the mirror coordinate can
+absorb \(c_i\)'' by itself.  The required statement is covariance of the whole
+finite instanton-measure package
+\eqref{eq:cpn-degree-one-retained-measure-package} through the residual
+telescope below.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Degree-one stable-map incidence residual template]
 \label{ca:cpn-degree-one-vortex-observable-assembly}
 The degree-one product coefficient is a physical A-twisted observable only after

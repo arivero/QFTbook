@@ -500,13 +500,19 @@ Current Appendix K absorption:
   A-model stable-map gate for the `P^{N-1}` quantum product, deriving the
   degree-one dimension match and line count behind
   `I_1(H,H^{N-1},H^{N-1})=1` before identifying the mirror coordinate with
-  the physical \(q\).
+  the physical \(q\).  The follow-up measure-scheme covariance pass checks the
+  Appendix K warning about nontrivial dualization measure data by requiring the
+  vortex coefficients, FI coordinate, retained-chart Jacobian,
+  determinant/Berezin density, and orientation/operator sign to transport
+  together before a Hori--Vafa coordinate change is treated as physically
+  harmless.
 - Companion checks in `calculation-checks/susy_2d_lg_glsm_checks.py` now
   cover the finite algebra in the charged-dual elimination, FI shift,
   `P^{N-1}` critical ledger, cigar metric elimination, hypersurface
   adjunction/central-charge matching, residual finite-gauge invariant
   monomials, the Coulomb-coordinate signal, the vortex-to-observable
-  residual telescope, the degree-one stable-map quantum-product gate, and
+  residual telescope, the degree-one stable-map quantum-product gate, the
+  degree-one instanton-measure covariance gate, and
   the Fermat Wilsonian superpotential
   spurion-selection arithmetic.  The companion is now in the evidence-contract
   manifest because the mirror/vortex checks are load-bearing and
