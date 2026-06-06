@@ -40,6 +40,16 @@
   Adler--Bardeen proof.  The monograph text uses these as theorem-boundary
   controls while deriving the local cocycle/counterterm mechanism in its own
   notation.
+- The 2026-06-06 named-tool status pass adds
+  `rem:chapter20-named-tool-status-ledger` near the chapter entrance.  It
+  states point-of-use status for the triangle anomaly, heat-kernel/Fujikawa
+  measure trace, Atiyah--Singer and APS inputs, local BRST descent,
+  Adler--Bardeen, theta sectors, BPST/ADHM instanton measure data, and
+  't Hooft/instanton amplitude constructions.  This is a reader-facing
+  clarity repair: conventional names are not treated as rigor certificates,
+  while imported analytic theorems, local derivations, finite-regulator
+  approximations, and remaining physical projection obligations are separated
+  before the chapter uses the names.
 - Reader-facing bibliographic footnote added for the theorem-level analytic
   inputs: Atiyah--Singer, "The index of elliptic operators. I" for the closed
   spin Dirac index theorem, and Atiyah--Patodi--Singer, "Spectral asymmetry
@@ -1956,3 +1966,12 @@
   channel-specific estimates.  The BPST companion now routes RG transport,
   physical bridge, sector leakage, source-level assembly, observable assembly,
   and the four-fermion benchmark through a shared residual-majorant helper.
+- 2026-06-06 issue #755 named-tool status pass: added
+  `rem:chapter20-named-tool-status-ledger` at the chapter entrance.  The pass
+  responds to the named-physics-theorem/status audit by making the framework,
+  imported theorem boundary, regulator/order-of-limits status, and remaining
+  physical obligations explicit for anomaly and instanton names before they
+  appear in the body.  This is a coherence/reader-experience repair, not a new
+  instanton cell: it protects the existing amplitude architecture from being
+  read as a theorem beyond its finite-regulator, source-window, spectral, IR,
+  or LSZ hypotheses.
