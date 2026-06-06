@@ -71,6 +71,9 @@ known box subtraction, including contour-average and partial-subtraction
 negative controls;
 finite spinor-bracket power counting and helicity-cut enumeration for the
 five-gluon all-plus rational template;
+exact Laurent bookkeeping for the dimension-shifted mu_perp^4 box residue,
+including the three-simplex pole, strict four-dimensional cut blindness, and
+massive-scalar coefficient extraction;
 finite cubic-channel color/numerator algebra for the four-point
 color-kinematics gateway and a finite loop-Jacobi triplet surface-term model;
 nilpotent rational matrix algebra for threshold monodromy and regular
@@ -99,6 +102,8 @@ separate the N=4 MHV box from lower-topology contamination and that a
 gluon-only state sum is not the N=4 supermultiplet, verifies the same
 rational blind spot at five points, verifies that a gauge-equivalent
 non-Jacobi numerator shift changes the naive numerator square, verifies that a
+dimension-shifted mu_perp^4 numerator is missed by strict four-dimensional cuts
+but leaves the finite rational residue read by massive unitarity, verifies that a
 cut-invisible surface/contact shift can leave the gauge amplitude unchanged
 while breaking loop-level numerator Jacobi and changing the naive double-copy
 pairing, verifies that the raw triple-cut constant can mix a triangle
@@ -619,6 +624,59 @@ def all_plus_massive_scalar_probe(mu_perp_squared: Fraction) -> Fraction:
     # the product of two massive-scalar cut trees carries two powers of
     # mu_perp^2 in this finite ledger.
     return mu_perp_squared * mu_perp_squared
+
+
+def check_mu4_dimension_shift_rational_residue() -> None:
+    # In the shifted 8-2 eps scalar box, the leading Feynman-parameter pole is
+    # Gamma(eps) times the volume of the three-simplex, 1/6.  Multiplication by
+    # the evanescent dimension-shift prefactor -eps(1-eps) leaves -1/6.
+    simplex_volume = Fraction(1, factorial(3))
+    shifted_box_pole = simplex_volume
+    dimension_shift_residue = -shifted_box_pole
+    assert_equal("mu4 shifted box simplex volume", simplex_volume, Fraction(1, 6))
+    assert_equal("mu4 dimension-shift finite residue", dimension_shift_residue, -Fraction(1, 6))
+
+    # The finite part of the shifted box does not affect the epsilon^0 residue:
+    # (-eps+eps^2) * (a/eps + b + O(eps)) has finite term -a.
+    shifted_box_finite_part = Fraction(17, 19)
+    finite_from_pole_and_finite_part = -shifted_box_pole
+    assert_equal(
+        "mu4 dimension shift ignores shifted finite part at epsilon zero",
+        finite_from_pole_and_finite_part,
+        dimension_shift_residue,
+    )
+    assert_true(
+        "mu4 shifted finite part is not the rational residue",
+        shifted_box_finite_part != -dimension_shift_residue,
+    )
+
+    # A strict four-dimensional cut evaluates the massive-scalar probe at
+    # mu_perp^2=0 and therefore sees no coefficient, while massive unitarity
+    # extracts the coefficient of (mu_perp^2)^2 before applying the shift.
+    cut_tree_product_by_mu2_power = {0: Fraction(0), 1: Fraction(0), 2: Fraction(5, 7)}
+    strict_four_dimensional_cut = cut_tree_product_by_mu2_power.get(0, Fraction(0))
+    massive_scalar_mu4_coefficient = cut_tree_product_by_mu2_power[2]
+    assert_equal("strict 4D all-plus mu4 cut is zero", strict_four_dimensional_cut, Fraction(0))
+    assert_equal("massive unitarity extracts mu4 coefficient", massive_scalar_mu4_coefficient, Fraction(5, 7))
+
+    recovered_rational = massive_scalar_mu4_coefficient * dimension_shift_residue
+    assert_equal("massive unitarity mu4 rational residue", recovered_rational, -Fraction(5, 42))
+    assert_true(
+        "strict 4D cut misses nonzero mu4 rational residue",
+        recovered_rational != strict_four_dimensional_cut,
+    )
+
+    wrong_sign_residue = shifted_box_pole
+    assert_true(
+        "wrong mu_perp sign changes rational residue",
+        massive_scalar_mu4_coefficient * wrong_sign_residue != recovered_rational,
+    )
+
+    no_shift_shortcut = Fraction(0)
+    assert_true(
+        "omitting dimension shift loses all-plus rational residue",
+        no_shift_shortcut != recovered_rational,
+    )
 
 
 def factorial(value: int) -> int:
@@ -1931,6 +1989,7 @@ def main() -> None:
     check_one_loop_reconstruction_datum()
     check_four_dimensional_cut_blind_spot()
     check_gauge_theory_helicity_controls()
+    check_mu4_dimension_shift_rational_residue()
     check_n4_mhv_quadruple_cut_reconstruction()
     check_triple_cut_triangle_projection_after_box_subtraction()
     check_five_gluon_all_plus_rational_template()

@@ -2963,7 +2963,9 @@ Current checks:
   including the single-cut lower-topology negative control, the triple-cut
   triangle projection after known box-residue subtraction with raw and
   partial-subtraction negative controls, the five-gluon all-plus rational
-  template, the four-point color--kinematics/double-copy
+  template, the dimension-shifted \(\mu_\perp^4\) box residue \(-1/6\)
+  and massive-scalar coefficient extraction for the all-plus rational blind
+  spot, the four-point color--kinematics/double-copy
   gateway with the generalized-gauge non-Jacobi negative control, the one-loop
   color--kinematics surface-term obstruction showing that a cut-invisible
   gauge-null shift need not be double-copy null, the finite two-scale box

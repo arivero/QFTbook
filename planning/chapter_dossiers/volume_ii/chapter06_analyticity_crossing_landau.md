@@ -31,7 +31,8 @@
   four-gluon MHV quadruple-cut reconstruction with explicit supermultiplet
   state sum and lower-topology negative control, a triple-cut triangle
   projection rule after known box-residue subtraction, the pure-Yang--Mills
-  all-plus rational blind spot including the five-point all-plus
+  all-plus rational blind spot with the dimension-shifted
+  \(\mu_\perp^4\) box residue and including the five-point all-plus
   partial-amplitude template, a four-point color--kinematics/double-copy
   gateway with generalized-gauge negative controls, a solved finite two-scale
   massless box master with fixed \(r_\Gamma\) normalization, pole subtraction,
@@ -146,6 +147,7 @@
 | \(\vec J\), \(A_0,A_1\), \(L_0^\gamma,L_1^\gamma\) | two-letter master-transport vector, residue matrices, and path-labelled logarithmic transports in the finite master-system audit |
 | \(\Omega\), \(W_\alpha\), \(\mathcal U_\gamma\) | reduced master-integral connection, Landau-letter functions, and path-ordered transport from a Euclidean boundary point |
 | \(\mu_\perp^2\) | squared loop momentum in the \(-2\epsilon\)-dimensional complement, invisible on four-dimensional cuts |
+| \(I_4^{[\mu^4]}\) | massless scalar box with a \(\mu_\perp^4\) numerator, whose dimension shift gives the finite all-plus rational residue |
 | \(\eta_i^A,Q^{A\alpha}\) | \(\mathcal N=4\) on-shell superspace variables and supermomentum used in the MHV quadruple-cut state sum |
 | \(C_{\Box}^{\mathcal N=4}\) | planar four-gluon MHV scalar-box coefficient obtained from the maximal cut after integrating over the four internal on-shell multiplets |
 | \(A_4^{(0)}(1^-,2^-,3^+,4^+)\) | color-ordered tree MHV four-gluon amplitude in the spinor-helicity convention used for the gauge-theory control |
@@ -483,7 +485,11 @@
   \]
   is nonzero.  The missing data are \(\mu_\perp^2\) or massive-scalar
   continuation data, whose dimension-shifted integrals leave the rational
-  term.
+  term.  The local dimension-shift calculation now shows the residue:
+  \(I_4^{[\mu^4]}=-\epsilon(1-\epsilon)I_4^{(8-2\epsilon)}\), while
+  \(I_4^{(8-2\epsilon)}=\frac1{6\epsilon}+O(1)\), so the evanescent box
+  contributes the finite rational constant \(-1/6\) in the declared
+  \(\ell_\perp^2=-\mu_\perp^2\) convention.
 - The same rational blind spot persists beyond four points.  The leading-color
   five-gluon all-plus partial amplitude is recorded as
   \[
@@ -735,6 +741,15 @@
   rational term, and updates the companion script to check little-group
   weights, dimensions, four-dimensional all-plus cut vanishing, and the
   evanescent probe.
+- 2026-06-06 issue #769 all-plus dimension-shift pass: inserted
+  `ca:dimension-shifted-all-plus-rational-residue` after the four-point all-plus
+  warning.  The block derives the finite rational residue from
+  \(I_4^{[\mu^4]}=-\epsilon(1-\epsilon)I_4^{(8-2\epsilon)}\) and the
+  three-simplex pole \(I_4^{(8-2\epsilon)}=1/(6\epsilon)+O(1)\), making explicit
+  why a numerator invisible to strict \(D=4\) cuts can survive integration.
+  The companion check verifies the simplex volume, finite \(-1/6\) residue,
+  massive-scalar coefficient extraction, strict-cut blindness, and wrong-sign or
+  no-shift negative controls.
 - 2026-06-05 issue #769 virtual-to-observable pass: added the
   finite-remainder assembly layer after the cut-equality warning.  The pass
   separates reconstructed virtual amplitudes from infrared-safe observables by

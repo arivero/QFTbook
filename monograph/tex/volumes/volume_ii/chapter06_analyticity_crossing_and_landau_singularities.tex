@@ -2697,6 +2697,67 @@ term.  Equivalently, a massive four-dimensional continuation treats
 \(\mu_\perp^2\) as the mass of the cut scalar and reconstructs the same
 rational contribution.
 
+\begin{controlledapproximation}[Dimension-shifted all-plus rational residue]
+\label{ca:dimension-shifted-all-plus-rational-residue}
+Here is the elementary residue mechanism behind the preceding paragraph.  Use
+the same massless four-point scalar-box normalization as
+\eqref{eq:massless-scalar-box-normalization}, split
+\(\ell=\bar\ell+\ell_\perp\), and set
+\(\ell_\perp^2=-\mu_\perp^2\).  In the Euclidean region \(S=-s>0\),
+\(T=-t>0\), define the evanescent-numerator box
+\[
+  I_4^{[\mu^4]}(S,T)
+  =
+  \mu^{2\epsilon}
+  \int\frac{\dd^{4-2\epsilon}\ell}{\ii\pi^{2-\epsilon}}\,
+  \frac{\mu_\perp^4}{
+    \ell^2
+    (\ell+p_1)^2
+    (\ell+p_1+p_2)^2
+    (\ell-p_4)^2 } .
+\]
+Rotational integration in the \(-2\epsilon\)-dimensional complement gives the
+dimension-shift relation
+\begin{equation}
+  I_4^{[\mu^4]}(S,T)
+  =
+  -\epsilon(1-\epsilon)\,
+  I_4^{(8-2\epsilon)}(-S,-T),
+  \label{eq:mu4-box-dimension-shift}
+\end{equation}
+with the sign fixed by \(\ell_\perp^2=-\mu_\perp^2\).  The shifted scalar box
+has the Feynman-parameter form
+\begin{equation}
+  I_4^{(8-2\epsilon)}(-S,-T)
+  =
+  \Gamma(\epsilon)
+  \int_{\alpha_i\ge0}
+  \delta\!\left(1-\sum_{i=1}^4\alpha_i\right)
+  \bigl(S\alpha_1\alpha_3+T\alpha_2\alpha_4\bigr)^{-\epsilon}
+  \prod_{i=1}^4\dd\alpha_i .
+  \label{eq:shifted-box-simplex-pole}
+\end{equation}
+Since the volume of the three-simplex is \(1/6\),
+\[
+  I_4^{(8-2\epsilon)}(-S,-T)
+  =
+  \frac{1}{6\epsilon}+O(1),
+  \qquad
+  I_4^{[\mu^4]}(S,T)
+  =
+  -\frac16+O(\epsilon).
+\]
+Thus a numerator which vanishes pointwise on every strict four-dimensional cut
+can integrate to a finite, kinematics-independent rational residue.  In a
+massive four-dimensional unitarity computation this is the same operation in a
+different language: the cut scalar mass \(m_\mu^2\) records the
+\(\mu_\perp^2\) dependence of the cut trees, the coefficient of \(m_\mu^4\) is
+extracted, and the dimension-shift factor above supplies the finite box
+residue.  A strict \(D=4\) cut sets \(m_\mu^2=0\) before this coefficient is
+read and therefore proves only the vanishing of the branch-cut sector, not the
+vanishing of the amplitude.
+\end{controlledapproximation}
+
 Thus the distinction is physical.  Strict \(D=4\) generalized cuts determine
 the cut-constructible branch-cut sector; complete non-supersymmetric gauge
 amplitudes require \(D\)-dimensional information, massive unitarity, or an
