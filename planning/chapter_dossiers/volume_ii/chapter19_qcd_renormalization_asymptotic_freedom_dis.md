@@ -48,6 +48,12 @@
   cusped-Wilson-line angular integral, smooth-line subtraction, Lorentzian
   lightlike limit, \(D_0\) Mellin harmonic-number identity, large-spin sign,
   and trace-normalization invariance of \(g^2C_R\).
+- `SRC-CHECK-QCD-SUM-RULES`:
+  `calculation-checks/qcd_sum_rule_checks.py` verifies the Borel transform of
+  the subtracted dispersion kernel, subtraction-polynomial annihilation,
+  inverse-power OPE terms, the logarithmic mass estimator, the
+  plateau-variance identity, continuum-threshold sensitivity, and the
+  pole-remainder mass-estimator bound.
 
 ## Construction Task
 
@@ -286,7 +292,9 @@ The chapter must define and derive:
   including the subtracted dispersion representation, spacelike OPE input,
   Borel--Laplace functional, Borel transform of the dispersion kernel,
   inverse-power OPE terms, the controlled Borel-window datum, and the
-  logarithmic mass estimator as a spectral weighted average.
+  logarithmic mass estimator as a spectral weighted average, together with an
+  SVZ duality/stability gate separating OPE tails, continuum-threshold
+  sensitivity, plateau variance, positivity loss, and pole-remainder control.
 
 ## Claim Ledger
 
@@ -766,7 +774,10 @@ The chapter must define and derive:
     extraction is a controlled approximation only after the OPE truncation,
     spectral ansatz, and Borel-window error estimates are stated; the
     logarithmic mass estimator is exactly a weighted average over the retained
-    spectral atoms.
+    spectral atoms.  A credible SVZ extraction must also budget
+    continuum-threshold sensitivity, positivity loss from truncation, plateau
+    variance, and finite pole-remainder errors; a visual Borel plateau alone is
+    not a controlled QCD statement.
 
 ## Figure Requirements
 
@@ -1342,3 +1353,13 @@ The chapter must define and derive:
   threshold approximation.  `calculation-checks/qcd_dglap_checks.py` now
   verifies the exact endpoint-cell arithmetic and rejects the ordinary-pole and
   cusp-only shortcuts.
+- 2026-06-06 issue #630 SVZ duality/stability pass: added
+  `ca:qcd-svz-duality-stability-gate` to turn Borel-window language from a
+  visual plateau criterion into a finite physics extraction gate.  The new
+  block defines continuum-subtracted OPE moments, derives the
+  continuum-threshold derivative, identifies the plateau slope with a retained
+  spectral variance when positivity applies, and states a pole-remainder mass
+  bound.  `calculation-checks/qcd_sum_rule_checks.py` now verifies the
+  plateau-variance identity, threshold-sensitivity formula, and finite
+  pole-remainder bound, including a negative control for dropping the \(R_0\)
+  remainder.

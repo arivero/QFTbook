@@ -412,7 +412,9 @@ Current checks:
 - `qcd_sum_rule_checks.py`: symbolic checks for the Volume II current
   sum-rule block, including the Borel transform of the dispersion kernel,
   annihilation of subtraction polynomials, inverse-power OPE terms, and the
-  logarithmic Borel mass estimator as a spectral weighted average.
+  logarithmic Borel mass estimator as a spectral weighted average, together
+  with the plateau-variance diagnostic, continuum-threshold sensitivity, and
+  pole-remainder mass-estimator bound.
 - `qcd_exclusive_pion_checks.py`: exact rational checks for the Volume II
   exclusive-pion asymptotic-freedom section, including the asymptotic LCDA
   normalization, Gegenbauer normalization moments, the plus-prescribed

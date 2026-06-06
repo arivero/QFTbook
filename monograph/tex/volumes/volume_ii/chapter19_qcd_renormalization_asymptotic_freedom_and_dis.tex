@@ -7403,6 +7403,103 @@ model.  The object being computed remains the current correlator
 \eqref{eq:qcd-euclidean-current-correlator}; the extracted spectral parameters
 inherit all assumptions of the Borel window.
 
+\begin{controlledapproximation}[Duality and stability gate for SVZ extractions]
+\label{ca:qcd-svz-duality-stability-gate}
+Set \(\tau=1/M^2\).  After choosing a continuum threshold \(s_0\), the
+continuum-subtracted OPE moments used to quote a hadron mass are
+\begin{equation}
+  \mathcal L_k^{(D_{\max})}(\tau,s_0)
+  =
+  \int_{s_{\rm th}}^{s_0}
+  s^k \ee^{-\tau s}\rho_J^{\rm pert}(s;\mu)\,\dd s
+  +
+  \mathcal C_k^{(D_{\max})}(\tau,\mu),
+  \qquad k=0,1,\dots ,
+  \label{eq:qcd-svz-continuum-subtracted-moments}
+\end{equation}
+where \(\mathcal C_k^{(D_{\max})}\) denotes the Borel-transformed power
+corrections retained in the declared OPE truncation.  The quoted effective
+mass coordinate is
+\begin{equation}
+  m_{\rm eff}^2(\tau,s_0)
+  :=
+  \frac{\mathcal L_1^{(D_{\max})}(\tau,s_0)}
+       {\mathcal L_0^{(D_{\max})}(\tau,s_0)} .
+  \label{eq:qcd-svz-effective-mass-coordinate}
+\end{equation}
+A nonempty SVZ window is accepted only after the following finite controls are
+declared on the same rectangle
+\((\tau,s_0)\in I_\tau\times I_{s_0}\):
+\begin{enumerate}
+  \item \(\mathcal L_0^{(D_{\max})}>0\), together with a stated bound for any
+  loss of positivity caused by truncating a positive exact spectral measure;
+  \item an OPE-tail bound for the omitted operator dimensions and perturbative
+  orders in the Borel-transformed moments;
+  \item a continuum-duality remainder comparing the exact spectral weight above
+  and near \(s_0\) with the perturbative continuum model in the same moments;
+  \item a threshold-sensitivity budget for the allowed variation of \(s_0\);
+  \item a plateau-slope budget in \(\tau\), interpreted as a spectral-width
+  test rather than as a proof of a pole by itself.
+\end{enumerate}
+For the last two entries the finite formulas are part of the control.  If the
+power terms are independent of \(s_0\), then
+\begin{equation}
+  \partial_{s_0}m_{\rm eff}^2
+  =
+  \frac{\ee^{-\tau s_0}\rho_J^{\rm pert}(s_0;\mu)}
+       {\mathcal L_0^{(D_{\max})}(\tau,s_0)}
+  \left(s_0-m_{\rm eff}^2(\tau,s_0)\right).
+  \label{eq:qcd-svz-threshold-sensitivity}
+\end{equation}
+Thus a plateau obtained only by retuning \(s_0\) is not a stable mass
+extraction; it has used the continuum threshold as an additional dynamical
+fit coordinate.  If the retained moment is the Borel transform of a positive
+spectral measure, with
+\(\mathcal L_k=\int s^k e^{-\tau s}\dd\mu(s)\), then
+\begin{equation}
+  -\partial_\tau
+  \left(\frac{\mathcal L_1}{\mathcal L_0}\right)
+  =
+  \frac{\mathcal L_2\mathcal L_0-\mathcal L_1^2}{\mathcal L_0^2}
+  =
+  \operatorname{Var}_{\tau}(s)
+  \ge 0 .
+  \label{eq:qcd-svz-plateau-variance}
+\end{equation}
+Flatness therefore measures the variance of the retained spectral distribution,
+plus the declared OPE, continuum, threshold, and regulator remainders.  It is
+not an independent argument for single-state dominance.
+
+The pole-plus-continuum language has a precise finite form.  Suppose the exact
+low-energy moment in the window can be decomposed as
+\begin{equation}
+  \mathcal L_0^{\rm exact}
+  =
+  F_H\ee^{-\tau m_H^2}+R_0,
+  \qquad
+  \mathcal L_1^{\rm exact}
+  =
+  F_H m_H^2\ee^{-\tau m_H^2}+R_1 ,
+  \label{eq:qcd-svz-pole-remainder-moments}
+\end{equation}
+with \(F_H>0\).  If
+\(F_H\ee^{-\tau m_H^2}>|R_0|\), then the exact logarithmic estimator obeys
+\begin{equation}
+  \left|
+  \frac{\mathcal L_1^{\rm exact}}{\mathcal L_0^{\rm exact}}
+  -m_H^2
+  \right|
+  \le
+  \frac{|R_1|+m_H^2|R_0|}
+       {F_H\ee^{-\tau m_H^2}-|R_0|}.
+  \label{eq:qcd-svz-pole-remainder-bound}
+\end{equation}
+Equation~\eqref{eq:qcd-svz-pole-remainder-bound} is the finite version of the
+usual ``ground-state dominance'' sentence.  Without such a remainder bound, a
+small visual slope in \(M^2\) is only a property of the chosen ansatz and
+threshold, not a controlled QCD statement about the hadron spectrum.
+\end{controlledapproximation}
+
 \section{Detector Observables and Energy Correlators}
 
 A nonperturbative formulation of high-energy QCD final states begins with
