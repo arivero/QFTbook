@@ -918,6 +918,11 @@ Current checks:
   amplitude vector feeds a positive cut only through conjugate-sector pairing,
   the physical measurement matrix, source amputation, and quadratic residual
   propagation,
+  the same-coordinate amplitude-to-rate gate showing that an all-outgoing
+  source vector must be crossed, amputated, and physically projected before it
+  is squared or interfered with a reference amplitude, with exact negative
+  controls for unamputated source overlaps, wrong-channel references, linear
+  theta-charged sums, and omitted reference-vector residuals,
   the first connected instanton-pair source correction with disconnected
   subtraction, ordered-pair/Mayer symmetry-factor counting, neutral-pair
   source visibility, same-charge second-harmonic data, zero-mode overlap

@@ -1268,6 +1268,86 @@ two-flavor axial invariant.  If one omits the complementary mass \(m_d\), the
 zero-mode Berezin integral has not been saturated.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Same-coordinate amplitude-to-rate gate]
+\label{ca:instanton-same-coordinate-amplitude-rate-gate}
+The preceding crossed and mass-assisted channels are useful only if the last
+linear map is typed before the observable is formed.  Let
+\(\mathbf A_{\rm out}^{I}\) be the retained all-outgoing source vector obtained
+from \eqref{eq:instanton-thooft-four-point-amputated-assembly} in a finite
+source basis.  A physical channel vector has the form
+\begin{equation}
+  \mathbf a^{I}
+  =
+  P_{\rm phys}\,X_{\rm cr}\,\mathbf A_{\rm out}^{I}
+  +\delta\mathbf a,
+  \qquad
+  \|\delta\mathbf a\|_{\infty}\le\epsilon_a ,
+  \label{eq:instanton-same-coordinate-physical-vector}
+\end{equation}
+where \(X_{\rm cr}\) contains the slot crossing and LSZ residue convention and
+\(P_{\rm phys}\) contains the pole, OPE, spectral-bin, or infrared-safe
+inclusive projection.  The symbol \(\mathbf a^I\) lives in the physical
+external-state basis.  It is no longer the Euclidean source vector.
+
+A positive bin, cut, or rate is then
+\begin{equation}
+  \mathcal Q_I[W]
+  =
+  (\mathbf a^{I})^\dagger W\mathbf a^{I}
+  +R_Q,
+  \label{eq:instanton-same-coordinate-positive-rate}
+\end{equation}
+with \(W\ge0\) in the same physical basis.  The one-instanton phase cancels in
+this quadratic coordinate.  By contrast, a theta-linear term requires a
+reference amplitude \(\mathbf b\) in the same physical vector space:
+\begin{equation}
+  \mathcal I_I[\mathbf b,W]
+  =
+  2\Re\bigl(\mathbf b^\dagger W\mathbf a^{I}\bigr)
+  +R_I .
+  \label{eq:instanton-same-coordinate-interference}
+\end{equation}
+If the reference is chirality preserving when \(\mathbf a^I\) is chirality
+violating, or if it is expressed in a different source or pole basis, the
+interference is zero or undefined.  A formal scalar product written before the
+common projection has been supplied is not a physical interference term.
+
+The residual propagation is the vector version of
+\eqref{eq:instanton-mass-assisted-interference-bound}.  Suppose
+\[
+  \|\mathbf a^0\|_{\infty}\le M_a,\qquad
+  \|\mathbf b^0\|_{\infty}\le M_b,\qquad
+  \|\delta\mathbf a\|_{\infty}\le\epsilon_a,\qquad
+  \|\delta\mathbf b\|_{\infty}\le\epsilon_b,
+\]
+and \(\max_X\sum_Y|W_{XY}|\le L\) on an \(n\)-dimensional retained bin.  Then
+\begin{equation}
+  \left|
+  2\Re\bigl((\mathbf b^0+\delta\mathbf b)^\dagger
+  W(\mathbf a^0+\delta\mathbf a)\bigr)
+  -
+  2\Re\bigl((\mathbf b^0)^\dagger W\mathbf a^0\bigr)
+  \right|
+  \le
+  2nL\left(M_b\epsilon_a+M_a\epsilon_b+\epsilon_a\epsilon_b\right).
+  \label{eq:instanton-same-coordinate-interference-bound}
+\end{equation}
+A measurement-basis or completeness error adds its own absolute term.
+
+This gate prevents three common shortcuts.  Squaring the all-outgoing source
+coefficient computes
+\((\mathbf A_{\rm out}^{I})^\dagger W\mathbf A_{\rm out}^{I}\), not
+\eqref{eq:instanton-same-coordinate-positive-rate}, unless the full
+\(P_{\rm phys}X_{\rm cr}\) has already been absorbed into \(W\) and the
+residual \(\delta\mathbf a\).  Squaring an unamputated source vector computes
+\((Z\mathbf a^I)^\dagger W(Z\mathbf a^I)\), not the physical cut, unless the
+source-overlap matrix \(Z\) is the identity in the chosen basis.  Finally, a
+linear \(I+\bar I\) phase sum tests a charged source correlator; it becomes a
+positive rate only after the conjugate physical vector and the measurement
+matrix have been paired as in
+\eqref{eq:instanton-same-coordinate-positive-rate}.
+\end{controlledapproximation}
+
 \begin{proposition}[\(SU(3)\), \(N_f=2\) hard-source power and slow tail]
 \label{prop:su3-nf2-hard-source-power-slow-tail}
 In the preceding hard channel, \(b_0=29/3\).  The four differentiated

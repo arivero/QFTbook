@@ -149,6 +149,11 @@ Target claims:
   chirality-breaking reference amplitude carrying the conjugate `u` mass
   orientation; the retained phase is `theta + arg m_u + arg m_d` up to the
   channel phase.
+- `ca:instanton-same-coordinate-amplitude-rate-gate`: the all-outgoing
+  Euclidean source vector must be crossed, amputated, and projected into a
+  physical external-state basis before it is squared or interfered with a
+  reference amplitude; unamputated source overlaps, wrong-channel references,
+  and linear theta-charged sums are different coordinates.
 - `ca:instanton-hard-window-tail-subtraction`: the hard four-source window is
   controlled as a core integral plus leading and subleading analytic endpoint
   tails, rather than as a formal size integral.
@@ -205,6 +210,9 @@ Independent construction:
   crossed chiral `RR -> LL` channel extraction from the all-outgoing
   source kernel with formal theta-phase bookkeeping,
   mass-assisted two-source interference with exact formal mass/theta powers,
+  same-coordinate amplitude-to-rate typing with crossed/amputated vectors,
+  positive measurement matrices, same-channel interference, source-overlap
+  negative controls, and vector residual propagation,
   physical projection bins, residual sums, two-term hard-window endpoint
   tail subtraction, screened hard-size majorant-window stationarity,
   boundary/weak-coupling gates, actual-kernel counterexamples under the same
@@ -343,6 +351,12 @@ Negative controls:
   coordinate, a nonconjugated mass reference producing
   `theta - arg m_u + arg m_d`, or an interference residual budget with the
   reference-amplitude error removed,
+  an all-outgoing source vector squared before crossing/projection,
+  unamputated source overlaps used in a physical quadratic cut, a
+  wrong-channel reference amplitude interfered through a formal scalar
+  product, a linear theta-charged source sum treated as a positive rate, or
+  a same-channel vector interference residual budget with the reference-vector
+  error removed,
   single Euclidean cell sum used as a spectral-bin observable, a
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
   slot, a leading-tail-only hard-window approximation, hard-only or
@@ -5108,6 +5122,152 @@ def check_mass_assisted_theta_linear_interference_channel() -> None:
     assert_gt("d-channel mass-assisted coefficient is nonzero", d_mass_assisted, Fraction(0))
 
 
+def check_same_coordinate_amplitude_rate_gate() -> None:
+    def mat_vec(matrix: Matrix2, vector: tuple[Fraction, Fraction]) -> tuple[Fraction, Fraction]:
+        return (
+            matrix[0][0] * vector[0] + matrix[0][1] * vector[1],
+            matrix[1][0] * vector[0] + matrix[1][1] * vector[1],
+        )
+
+    def vec_add(
+        left: tuple[Fraction, Fraction],
+        right: tuple[Fraction, Fraction],
+    ) -> tuple[Fraction, Fraction]:
+        return (left[0] + right[0], left[1] + right[1])
+
+    def dot(left: tuple[Fraction, Fraction], right: tuple[Fraction, Fraction]) -> Fraction:
+        return left[0] * right[0] + left[1] * right[1]
+
+    def quad(vector: tuple[Fraction, Fraction], measurement: Matrix2) -> Fraction:
+        return dot(vector, mat_vec(measurement, vector))
+
+    all_outgoing_source = (Fraction(5, 7), Fraction(2, 3))
+    crossing_with_residues: Matrix2 = (
+        (Fraction(3, 5), Fraction(1, 7)),
+        (Fraction(2, 11), Fraction(5, 6)),
+    )
+    physical_projection: Matrix2 = (
+        (Fraction(4, 5), Fraction(1, 6)),
+        (Fraction(1, 5), Fraction(7, 8)),
+    )
+    measurement: Matrix2 = (
+        (Fraction(2), Fraction(1, 3)),
+        (Fraction(1, 3), Fraction(3)),
+    )
+
+    physical_map = matmul2(physical_projection, crossing_with_residues)
+    physical_vector = mat_vec(physical_map, all_outgoing_source)
+    physical_rate = quad(physical_vector, measurement)
+    raw_source_rate = quad(all_outgoing_source, measurement)
+    assert_not_equal(
+        "all-outgoing source vector cannot be squared as the physical rate",
+        raw_source_rate,
+        physical_rate,
+    )
+
+    folded_measurement = matmul2(
+        transpose2(physical_map),
+        matmul2(measurement, physical_map),
+    )
+    assert_equal(
+        "folding crossing and projection into W recovers the physical rate",
+        quad(all_outgoing_source, folded_measurement),
+        physical_rate,
+    )
+
+    source_overlap: Matrix2 = (
+        (Fraction(2), Fraction(1, 5)),
+        (Fraction(0), Fraction(3, 2)),
+    )
+    unamputated_vector = mat_vec(source_overlap, physical_vector)
+    unamputated_rate = quad(unamputated_vector, measurement)
+    assert_not_equal(
+        "unamputated source overlaps compute a different quadratic cut",
+        unamputated_rate,
+        physical_rate,
+    )
+
+    same_channel_reference = (Fraction(1, 4), Fraction(3, 10))
+    interference = 2 * dot(same_channel_reference, mat_vec(measurement, physical_vector))
+    assert_gt("same-coordinate interference is nonzero", interference, Fraction(0))
+
+    wrong_channel_reference = (Fraction(7, 17), Fraction(5, 19))
+    zero_selection: Matrix2 = (
+        (Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(0)),
+    )
+    formal_wrong_interference = 2 * dot(
+        wrong_channel_reference,
+        mat_vec(measurement, physical_vector),
+    )
+    retained_wrong_interference = 2 * dot(
+        wrong_channel_reference,
+        mat_vec(zero_selection, mat_vec(measurement, physical_vector)),
+    )
+    assert_equal(
+        "selection rule removes wrong-channel reference interference",
+        retained_wrong_interference,
+        Fraction(0),
+    )
+    assert_not_equal(
+        "formal wrong-channel scalar product is not the physical interference",
+        formal_wrong_interference,
+        retained_wrong_interference,
+    )
+
+    theta_neutral_rate = {0: physical_rate}
+    theta_charged_linear_sum = {
+        1: physical_vector[0] + physical_vector[1],
+        -1: physical_vector[0] + physical_vector[1],
+    }
+    theta_linear_interference = {
+        1: interference / 2,
+        -1: interference / 2,
+    }
+    assert_equal("positive rate keeps only theta-neutral power", set(theta_neutral_rate), {0})
+    assert_equal("linear sector sum remains theta charged", set(theta_charged_linear_sum), {-1, 1})
+    assert_equal("same-channel interference is theta linear", set(theta_linear_interference), {-1, 1})
+    assert_not_equal(
+        "linear theta-charged source sum is not the positive rate",
+        sum(theta_charged_linear_sum.values(), Fraction(0)),
+        theta_neutral_rate[0],
+    )
+
+    residual_measurement: Matrix2 = (
+        (Fraction(2), Fraction(1)),
+        (Fraction(1), Fraction(2)),
+    )
+    n_bins = 2
+    row_l1_bound = Fraction(3)
+    amp_bound = Fraction(1, 5)
+    ref_bound = Fraction(1, 7)
+    amp_error = Fraction(1, 100)
+    ref_error = Fraction(1, 120)
+    amp_leading = (amp_bound, amp_bound)
+    ref_leading = (ref_bound, ref_bound)
+    amp_shift = (amp_error, amp_error)
+    ref_shift = (ref_error, ref_error)
+    leading_interference = 2 * dot(ref_leading, mat_vec(residual_measurement, amp_leading))
+    shifted_interference = 2 * dot(
+        vec_add(ref_leading, ref_shift),
+        mat_vec(residual_measurement, vec_add(amp_leading, amp_shift)),
+    )
+    residual = shifted_interference - leading_interference
+    residual_bound = (
+        2
+        * n_bins
+        * row_l1_bound
+        * (ref_bound * amp_error + amp_bound * ref_error + ref_error * amp_error)
+    )
+    assert_equal("same-coordinate interference residual telescope", residual, residual_bound)
+    underbudget_without_reference = residual_bound - 2 * n_bins * row_l1_bound * amp_bound * ref_error
+    assert_equal(
+        "omitting reference-vector residual underbudgets same-channel interference",
+        residual <= underbudget_without_reference,
+        False,
+    )
+
+
 def main() -> None:
     check_source_functional_route_order()
     check_collective_coordinate_zero_mode_jacobian()
@@ -5149,6 +5309,7 @@ def main() -> None:
     check_thooft_four_point_amputated_assembly_gate()
     check_thooft_crossed_chiral_channel()
     check_mass_assisted_theta_linear_interference_channel()
+    check_same_coordinate_amplitude_rate_gate()
     print("instanton physical amplitude architecture checks passed")
 
 

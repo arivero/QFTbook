@@ -118,6 +118,18 @@
   zero-mode slots, nonzero-mode source quotient, external-leg amputation,
   physical projection, endpoint tail, and sector isolation all sit in one
   residual budget.
+- `ca:instanton-thooft-crossed-chiral-channel`: turns the all-outgoing
+  anomalous two-flavor source monomial into the crossed \(RR\to LL\)
+  scattering channel only after chirality selection, LSZ residues, and the
+  observable choice have been fixed.
+- `ca:instanton-mass-assisted-interference-channel`: extracts the
+  mass-assisted \(m_dB_{uu}\) two-source coordinate and pairs it only with a
+  same-basis chirality-breaking reference amplitude, keeping the axial-invariant
+  phase and residual budget explicit.
+- `ca:instanton-same-coordinate-amplitude-rate-gate`: requires the
+  all-outgoing Euclidean source vector to be crossed, amputated, and projected
+  into a physical external-state basis before it is squared or interfered with
+  a reference amplitude.
 - `prop:su3-nf2-hard-source-power-slow-tail`: derives the SU(3), `N_f=2`
   hard four-source powers `rho^(32/3) d rho`,
   `(8 pi^2/g_ht^2(Q))^6 Lambda_ht^(29/3) Q^(-35/3)`, and the slow
@@ -392,6 +404,11 @@
   only with a same-basis chirality-breaking \(\bar m_u\) reference, and keeps
   \(\theta+\arg m_u+\arg m_d\), source degree, complementary zero-mode
   saturation, and residual propagation as explicit physical checks.
+- The same-coordinate amplitude-to-rate gate consolidates the preceding
+  scattering-channel work into an end-to-end observable map.  It prevents a
+  Euclidean all-outgoing source coefficient, an unamputated source vector, a
+  same-channel interference term, and a positive cut from being treated as the
+  same number.
 - The observable-map block connects the dedicated instanton-amplitude
   chapter back to the QCD theta and \(U(1)_A\) material without duplicating it:
   a hard four-source coefficient, a dilute theta curvature, a zero-mode-zone
@@ -520,6 +537,10 @@
   amplitude vectors and rejects linear signed amplitude sums, unamputated
   source vectors, measurement omission, and unbudgeted quadratic residual
   propagation,
+  verifies the same-coordinate amplitude-to-rate gate with crossed/amputated
+  finite vectors, folded measurement matrices, unamputated source-overlap
+  negative controls, wrong-channel reference rejection, theta-power typing,
+  and exact vector interference residual propagation,
   verifies the first connected instanton-pair source correction, including
   disconnected subtraction, ordered-pair/Mayer symmetry-factor counting,
   neutral-pair source visibility despite zero theta curvature, same-charge
@@ -666,6 +687,15 @@
   The companion rejects mass-assisted channels used as four-source vertices,
   wrong same-flavor mass saturation, wrong source degree, chirality-preserving
   references, nonconjugated mass references, and omitted reference residuals.
+- 2026-06-07 issue #597 same-coordinate amplitude-to-rate pass: added
+  `ca:instanton-same-coordinate-amplitude-rate-gate` after the mass-assisted
+  interference block.  The pass makes the all-outgoing source vector,
+  crossing/amputation map, physical projection, positive measurement matrix,
+  and same-channel interference reference separate typed objects.  The
+  companion rejects squaring the Euclidean source vector, using unamputated
+  source overlaps in the cut, wrong-channel formal interference, linear
+  theta-charged sums used as rates, and vector-interference residual budgets
+  with the reference error removed.
 - 2026-06-07 issue #597 normal-propagator insertion pass: added
   `ca:instanton-normal-propagator-source-insertion` inside the
   normal-fluctuation section.  The pass makes an instanton-background
