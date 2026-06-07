@@ -1983,20 +1983,44 @@ comparison reads
 \label{eq:eft-forward-window-positivity-comparison}
 \end{equation}
 Here \(R_N^{(2)}\) is the Taylor-coefficient part of the named prediction
-remainder in Definition~\ref{def:eft-prediction-datum}.  The familiar
-coefficient sign is the special leading comparison
+remainder in Definition~\ref{def:eft-prediction-datum}.  The exact coefficient
+bounded by positivity is \(a_2-c_\infty\), not the retained coordinate by
+itself.  The derivative of the explicitly truncated four-derivative amplitude
+is instead
 \begin{equation}
+  \frac12\left.
+  \partial_\nu^2\mathcal M_{\rm sub,EFT}^{[4]}(\nu,0)
+  \right|_{\nu=0}
+  =
   \frac{\kappa_{\rm amp}}{\Lambda^4}
   =
-  \frac12\left.
-  \partial_\nu^2\mathcal M_{\rm sub,EFT}(\nu,0)
-  \right|_{\nu=0}
-  \ge0 ,
-\label{eq:eft-forward-kappa-positivity}
+  a_2-R_N^{(2)}
+  =
+  c_\infty+B(S_0)+T(S_0)-R_N^{(2)} .
+\label{eq:eft-forward-kappa-margin}
 \end{equation}
-when \(c_\infty=0\), the tail is positive, and the declared remainder is beyond
-the working precision.  The coefficient \(\kappa_{\rm amp}\) is an amplitude
-coordinate, not an arbitrary Wilson coefficient.  If a Lagrangian basis
+Thus, when \(c_\infty=0\), positivity of the unmeasured tail gives only the
+remainder-sensitive estimate
+\begin{equation}
+  \frac{\kappa_{\rm amp}}{\Lambda^4}
+  \ge
+  B(S_0)+\underline T(S_0)-|R_N^{(2)}|,
+  \qquad
+  0\le \underline T(S_0)\le T(S_0),
+\label{eq:eft-forward-kappa-margin-bound}
+\end{equation}
+where \(\underline T(S_0)=0\) is the bound available when no quantitative tail
+lower estimate is known.  A sign statement for the retained coefficient
+requires a declared margin,
+\[
+  B(S_0)+\underline T(S_0)>|R_N^{(2)}|,
+\]
+or a stronger replacement using the full tail or additional UV input.  Merely
+calling \(R_N^{(2)}\) higher order, or below a usual numerical precision, does
+not preserve the inequality near saturation: \(a_2=\epsilon>0\) and
+\(R_N^{(2)}=2\epsilon\) give a negative retained coefficient.  The coefficient
+\(\kappa_{\rm amp}\) is an amplitude coordinate, not an arbitrary Wilson
+coefficient.  If a Lagrangian basis
 contains
 \[
   \Delta\mathcal L

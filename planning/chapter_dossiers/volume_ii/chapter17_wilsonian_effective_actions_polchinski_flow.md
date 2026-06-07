@@ -894,3 +894,12 @@ The chapter must define and derive:
   the prediction remainder \(R_N^{(2)}\).  The companion check now rejects the
   shortcut that compares \(a_2\) with \(B(S_0)\) while retaining a contour
   coordinate.
+- 2026-06-06 issue #845 retained-coefficient margin pass: removed the
+  unconditional sign inference for the truncated four-derivative amplitude
+  coordinate.  The manuscript now states positivity for the exact observable
+  coefficient \(a_2-c_\infty\), writes
+  \(\kappa_{\rm amp}/\Lambda^4=a_2-R_N^{(2)}\), and requires a declared margin
+  \(B(S_0)+\underline T(S_0)>|R_N^{(2)}|\) before the retained coefficient sign
+  is inferred.  The companion check includes a near-saturated positive
+  \(a_2\) example whose retained coefficient is negative because the named
+  remainder is larger than the positivity margin.

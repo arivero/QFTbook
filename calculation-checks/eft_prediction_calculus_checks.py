@@ -35,7 +35,8 @@ Target claims:
   a finite-window cross-section moment after the optical-theorem flux factor is
   inserted, with observable residual
   \(a_2-c_\infty-B(S_0)=T(S_0)\ge0\).  The coefficient bounded by positivity is
-  the on-shell amplitude coordinate, not a redundant-basis Wilson coordinate.
+  the exact on-shell amplitude coordinate; a retained truncated coefficient
+  inherits a sign only after a quantitative remainder margin is declared.
 
 Independent construction:
 - The heavy-kernel identity is checked as an exact rational identity and as a
@@ -63,8 +64,9 @@ Independent construction:
   polynomial independence of \(a_2\), the explicit large-contour term, the
   conversion to a finite cross-section window plus positive tail, the
   subtraction of the contour coordinate in the finite-window residual, and the
-  projection that kills EOM representatives only after imposing the on-shell
-  external-state datum.
+  sign-preserving margin needed before a truncated coefficient is bounded.  It
+  also checks the projection that kills EOM representatives only after imposing
+  the on-shell external-state datum.
 
 Imported assumptions:
 - Euclidean low-energy kinematics with q^2 >= 0 and q^2 <= Q^2 << M^2.
@@ -117,6 +119,9 @@ Negative controls:
   with the flux factor omitted, and verifies that an off-shell coefficient can
   depend on a redundant representative even though the on-shell amplitude
   coefficient does not.
+- It rejects inferring the sign of a retained EFT coefficient from positive
+  exact \(a_2\) when the named coefficient remainder is larger than the
+  positivity margin.
 
 Scope boundary:
 - This script checks finite algebra and bookkeeping for the EFT prediction
@@ -680,6 +685,37 @@ def check_forward_positivity_dispersion_normalization() -> None:
         "finite-window shortcut fails when the contour coordinate is retained",
         0.0,
         float(actual_with_negative_window_contour - window_contribution),
+    )
+
+    exact_positive_a2 = sp.Rational(1, 100)
+    coefficient_remainder = sp.Rational(1, 50)
+    retained_kappa_over_lambda4 = exact_positive_a2 - coefficient_remainder
+    assert_gt(
+        "exact positivity can hold in a nearly saturated channel",
+        float(exact_positive_a2),
+        0.0,
+    )
+    assert_gt(
+        "retained coefficient can be negative when the remainder exceeds the margin",
+        0.0,
+        float(retained_kappa_over_lambda4),
+    )
+
+    finite_window_margin = sp.Rational(3, 20)
+    tail_lower_bound = sp.Rational(1, 20)
+    remainder_bound = sp.Rational(1, 10)
+    protected_lower_bound = finite_window_margin + tail_lower_bound - remainder_bound
+    assert_gt(
+        "declared positivity margin protects the retained coefficient sign",
+        float(protected_lower_bound),
+        0.0,
+    )
+
+    insufficient_margin_bound = finite_window_margin - coefficient_remainder * 8
+    assert_gt(
+        "working precision without a margin does not protect the retained sign",
+        0.0,
+        float(insufficient_margin_bound),
     )
 
     g_massless = sp.symbols("g_massless", nonzero=True)
