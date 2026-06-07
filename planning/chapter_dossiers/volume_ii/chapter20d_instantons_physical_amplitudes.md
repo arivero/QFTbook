@@ -137,7 +137,9 @@
   determinant response to a source/background perturbation, expressed through
   primed bosonic and fermionic resolvent traces on the zero-mode-deleted
   normal spaces, with the counterterm polynomial kept in the same regulator
-  coordinate.
+  coordinate.  The repaired form separates the exactly linear determinant
+  coordinate from a separately bounded cubic operator-family remainder when
+  the Hessian itself has nonlinear source dependence.
 - `ca:instanton-nonzero-mode-source-quotient`: finite Gaussian source quotient
   and covariance identity, including the quadratic source trace correction
   `1/2 Tr(QC)` and the absolute bound
@@ -263,8 +265,10 @@
   fluctuation calculation: once the source or background perturbs the
   quadratic normal operator, the determinant changes by primed resolvent
   traces with fixed bosonic/fermionic signs and counterterm coordinates.
-  Reintroducing zero modes by an arbitrary regulator, or calling the response
-  a determinant constant, changes the amplitude normalization.
+  Reintroducing zero modes by an arbitrary regulator, calling the response
+  a determinant constant, or using the exactly-linear log tail to bound an
+  untracked nonlinear Hessian perturbation changes the amplitude
+  normalization.
 - The normal-fluctuation source quotient opens the next compressed input:
   even after the Gaussian determinant is normalized, the selected hard source
   has a mean and a covariance with nonzero-mode interactions.  A vacuum
@@ -382,7 +386,8 @@
   hidden unamputated residues,
   verifies the primed determinant source-response expansion with bosonic and
   fermionic resolvent traces and rejects unprimed zero-mode-regulated traces,
-  wrong bosonic signs, and determinant-constant-only shortcuts,
+  wrong bosonic signs, determinant-constant-only shortcuts, and using an
+  exactly-linear log-tail bound for a nonzero cubic operator perturbation,
   verifies the amputated 't Hooft four-point assembly and rejects density-only
   shortcuts, rank-lost chiral source determinants, symmetric Haar sources,
   omitted nonzero-mode source quotients, unamputated source overlaps, and
@@ -502,6 +507,12 @@
   of the zero-mode-deleted determinant an explicit primed resolvent trace
   calculation, with companion checks rejecting unprimed zero-mode regulators,
   wrong bosonic determinant signs, and determinant-constant-only shortcuts.
+- 2026-06-06 primed determinant-response review repair: after fresh #597
+  review, separated the exactly linear retained determinant coordinate from a
+  cubic operator-family remainder.  The chapter now states that a nonlinear
+  Hessian term requires its own resolvent bound; the companion adds a nonzero
+  cubic perturbation negative control showing that the old linear tail bound
+  alone is insufficient.
 - 2026-06-06 normal-fluctuation source quotient pass: added the finite Gaussian
   source-fluctuation quotient to the physical-amplitude chapter, with companion
   checks rejecting replacement by a vacuum determinant constant.  This targets

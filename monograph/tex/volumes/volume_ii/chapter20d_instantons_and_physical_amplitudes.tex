@@ -1447,17 +1447,20 @@ Fix the finite regulator, the background gauge slice, and the subtraction
 scheme.  Let \(K_z\) be the bosonic Hessian on the horizontal normal space
 after collective and gauge zero modes have been removed, and let
 \(G_z=K_z^{-1}\) on that primed space.  Suppose a source or external
-background changes the quadratic normal action by
+background changes the retained quadratic normal action by the exactly linear
+operator family
 \[
-  K_z(\epsilon)=K_z+\epsilon R_z+O(\epsilon^3)
+  K_z^{\rm lin}(\epsilon)=K_z+\epsilon R_z
 \]
-with the \(O(\epsilon^2)\) local counterterm already separated.  The bosonic
-zero-mode-deleted determinant ratio is
+after the \(O(\epsilon^2)\) local counterterm and any higher source dependence
+of the Hessian have been moved to separately named counterterm or interaction
+coordinates.  The bosonic zero-mode-deleted determinant ratio in this linear
+determinant coordinate is
 \[
   \mathcal D_B(\epsilon)
   =
   \left[
-    \frac{\det{}'K_z(\epsilon)}{\det{}'K_z}
+    \frac{\det{}'K_z^{\rm lin}(\epsilon)}{\det{}'K_z}
   \right]^{-1/2}
   =
   \det{}'(1+\epsilon G_zR_z)^{-1/2}.
@@ -1470,7 +1473,7 @@ Hence
   +
   \frac{\epsilon^2}{4}
   \operatorname{Tr}'(G_zR_zG_zR_z)
-  +R_B^{(3)}(\epsilon).
+  +R_{B,{\rm lin}}^{(3)}(\epsilon).
   \label{eq:instanton-primed-boson-determinant-response}
 \end{equation}
 For a Dirac nonzero-mode block \(D_z(\epsilon)=D_z+\epsilon S_z\), with
@@ -1482,23 +1485,57 @@ For a Dirac nonzero-mode block \(D_z(\epsilon)=D_z+\epsilon S_z\), with
   -
   \frac{\epsilon^2}{2}
   \operatorname{Tr}'(G_z^{F}S_zG_z^{F}S_z)
-  +R_F^{(3)}(\epsilon).
+  +R_{F,{\rm lin}}^{(3)}(\epsilon).
   \label{eq:instanton-primed-fermion-determinant-response}
 \end{equation}
 The finite counterterm polynomial must be added in the same regulator
 coordinate; it is not a license to drop the primed traces.  If
 \(\|X_B\|<1\) and \(\|X_F\|<1\), where
 \(X_B=\epsilon G_zR_z\) and \(X_F=\epsilon G_z^{F}S_z\), then in the finite
-retained normal space the omitted logarithmic terms obey
+retained normal space the omitted logarithmic terms of the exactly linear
+operator families obey
 \[
-  |R_B^{(3)}|
+  |R_{B,{\rm lin}}^{(3)}|
   \le
   \frac{\|X_B\|_1\|X_B\|^2}{6(1-\|X_B\|)},
   \qquad
-  |R_F^{(3)}|
+  |R_{F,{\rm lin}}^{(3)}|
   \le
   \frac{\|X_F\|_1\|X_F\|^2}{3(1-\|X_F\|)} .
 \]
+If the actual regulated Hessian has a retained nonlinear part, for example
+\[
+  K_z^{\rm full}(\epsilon)
+  =
+  K_z+\epsilon R_z+\epsilon^3T_z(\epsilon),
+  \qquad
+  Y_B=\epsilon^3G_zT_z(\epsilon),
+\]
+then \eqref{eq:instanton-primed-boson-determinant-response} is still the
+linearized determinant response, but the full determinant has the additional
+operator-family remainder
+\[
+  R_{B,{\rm op}}(\epsilon)
+  =
+  -\frac12
+  \operatorname{Tr}'\log
+  \left[
+    1+(1+X_B)^{-1}Y_B
+  \right].
+\]
+When
+\(\|X_B\|<1\) and \(\|Y_B\|/(1-\|X_B\|)<1\),
+\[
+  |R_{B,{\rm op}}|
+  \le
+  \frac12
+  \frac{\|Y_B\|_1/(1-\|X_B\|)}
+       {1-\|Y_B\|/(1-\|X_B\|)} .
+\]
+The Dirac block has the same form without the factor \(1/2\) and with
+\(X_F,Y_F\) in the zero-mode-deleted fermion space.  Thus an \(O(\epsilon^3)\)
+operator perturbation is not controlled by the linear log-series bound; it is
+a separate source-response remainder.
 Thus the source response of the determinant is a primed resolvent
 calculation.  It is not fixed by the \(J=0\) determinant constant, by the
 dimension of the moduli space, or by an unprimed trace with an arbitrary

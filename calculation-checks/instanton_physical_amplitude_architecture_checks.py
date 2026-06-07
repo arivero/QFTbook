@@ -48,7 +48,8 @@ Target claims:
 - `ca:instanton-primed-determinant-source-response`: source perturbations of
   the zero-mode-deleted fluctuation determinant are primed resolvent trace
   calculations with boson/fermion signs and counterterm coordinates fixed in
-  the same regulator.
+  the same regulator; higher operator-family terms require a separate
+  resolvent remainder bound beyond the linear log-series tail.
 - `ca:instanton-first-source-cumulant-normal-modes`: a linear normal-mode
   source deformation has zero Gaussian mean but contributes to the instanton
   source amplitude through its Wick covariance with the cubic fluctuation
@@ -132,6 +133,7 @@ Independent construction:
   finite color two-frame Haar projectors,
   the Bessel-product tail cancellation for an individual zero-mode slot,
   primed determinant source-response coefficients from finite resolvents,
+  cubic operator-family determinant remainders,
   finite Gaussian source-quotient covariance identities,
   Wick-paired first source cumulants from cubic normal-mode interactions,
   multiplicative hard-amplitude assembly bounds on signed windows,
@@ -219,7 +221,8 @@ Negative controls:
   determinant used where the functional measure requires a square-root
   determinant, an unprimed trace with an arbitrary zero-mode regulator
   substituted for a primed determinant response, a wrong bosonic determinant
-  sign, a vacuum determinant calibration substituted for a
+  sign, a linear log-series tail used to bound a cubic operator-family
+  perturbation, a vacuum determinant calibration substituted for a
   source-fluctuation quotient, a zero cubic interaction used to erase a
   linear-source cumulant, a source-dependent cubic covariance absorbed into a
   universal determinant constant, a relative quotient formed after zero-mode
@@ -1100,6 +1103,12 @@ def check_individual_zero_mode_slot_tail_from_bessel_products() -> None:
 
 
 def check_primed_determinant_source_response() -> None:
+    def entry_l1(matrix: Matrix2) -> Fraction:
+        return sum(abs(entry) for row in matrix for entry in row)
+
+    def row_sum_norm(matrix: Matrix2) -> Fraction:
+        return max(sum(abs(entry) for entry in row) for row in matrix)
+
     boson_hessian: Matrix2 = (
         (Fraction(3), Fraction(1)),
         (Fraction(1), Fraction(2)),
@@ -1218,6 +1227,53 @@ def check_primed_determinant_source_response() -> None:
         "zero-mode-regulated trace is not the primed trace",
         unprimed_trace_a,
         boson_trace,
+    )
+
+    linear_x: Matrix2 = (
+        (Fraction(1, 10), Fraction(0)),
+        (Fraction(0), -Fraction(1, 20)),
+    )
+    cubic_y: Matrix2 = (
+        (Fraction(1, 5), Fraction(0)),
+        (Fraction(0), Fraction(0)),
+    )
+    linear_norm = row_sum_norm(linear_x)
+    cubic_norm = row_sum_norm(cubic_y)
+    linear_trace_norm = entry_l1(linear_x)
+    cubic_trace_norm = entry_l1(cubic_y)
+    linear_third_coefficient = -Fraction(1, 6) * trace2(
+        matmul2(matmul2(linear_x, linear_x), linear_x)
+    )
+    cubic_operator_third_coefficient = -Fraction(1, 2) * trace2(cubic_y)
+    full_third_coefficient = (
+        linear_third_coefficient + cubic_operator_third_coefficient
+    )
+    old_linear_tail_bound = (
+        linear_trace_norm
+        * linear_norm
+        * linear_norm
+        / (6 * (1 - linear_norm))
+    )
+    operator_remainder_bound = (
+        Fraction(1, 2)
+        * (cubic_trace_norm / (1 - linear_norm))
+        / (1 - cubic_norm / (1 - linear_norm))
+    )
+    assert_equal(
+        "cubic determinant perturbation stays inside resolvent domain",
+        cubic_norm / (1 - linear_norm) < 1,
+        True,
+    )
+    assert_equal(
+        "old linear determinant tail cannot bound cubic operator response",
+        abs(full_third_coefficient) <= old_linear_tail_bound,
+        False,
+    )
+    assert_equal(
+        "linear plus operator determinant remainder bounds cubic response",
+        abs(full_third_coefficient)
+        <= old_linear_tail_bound + operator_remainder_bound,
+        True,
     )
 
 

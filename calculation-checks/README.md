@@ -848,7 +848,9 @@ Current checks:
   the primed determinant source-response expansion with bosonic and fermionic
   resolvent traces, counterterm coordinates, and negative controls for
   unprimed zero-mode-regulated traces, wrong bosonic signs, and
-  determinant-constant-only shortcuts,
+  determinant-constant-only shortcuts, plus the cubic operator-family
+  remainder check showing that the linear log-series tail alone does not bound
+  a nonlinear Hessian perturbation,
   the amputated 't Hooft four-point assembly as a common-regulator product of
   density, Haar projection, chiral source determinants, individual zero-mode
   slots, nonzero-mode source quotient, amputation, physical projection, and
