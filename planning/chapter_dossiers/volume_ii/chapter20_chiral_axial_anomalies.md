@@ -2058,6 +2058,16 @@
   two-flavor source proposition is titled as an axial Ward identity.  Labels
   were kept stable to avoid cross-reference churn, and the physics equations
   were unchanged.
+- 2026-06-06 issue #755/#597 instanton input-surface pass: re-audited the
+  opening one-instanton assembly block against the moduli-vs-amplitude
+  concern.  The visible title and prose around
+  `def:one-instanton-amplitude-datum` now call the seven pieces ordered
+  amplitude inputs while keeping the label and equations stable; the adjacent
+  assembly block describes the finite-regulator object as a source
+  coefficient before physical projection.  The BPST/ADHM contribution is
+  described as the density part supplied by classical geometry, with the
+  determinant, Berezin saturation, source matching, size-window control, and
+  physical observable map still required before any amplitude claim.
 - 2026-06-06 issue #755 anomaly-observable handoff pass: tightened the closing
   anomalous-pion-coupling paragraph so the local axial contact term is not
   presented as an \(S\)-matrix element by itself.  The text now points to the
