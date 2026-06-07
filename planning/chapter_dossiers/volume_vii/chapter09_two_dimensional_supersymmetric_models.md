@@ -575,10 +575,11 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
 - The 2026-06-07 issue #847 determinant-sign re-audit corrects that branch
   pass: compact `T` periodicity tests integrality and `2 pi` normalization,
   but it cannot choose the determinant-log sign because both signs are
-  integral-period transports.  The monograph now traces the sign to the
-  component linear response of the massive chiral determinant and the
-  mass-phase Jacobian, while the companion rejects using branch monodromy as a
-  sign oracle.
+  integral-period transports.  The follow-up spectral/Fujikawa re-audit
+  replaces the previous assignment-style companion with a finite
+  gamma-matrix, determinant-trace, paired-fermion, and index-Jacobian model:
+  the real sign comes from the complex-scalar determinant response, while the
+  theta partner comes from the finite chiral trace `Tr gamma_* = Q k`.
 - The 2026-06-03 projective-space residue pass extends that scrutiny from
   mirror critical points to a protected observable: it computes the finite
   Hessian/residue trace behind the `P^{N-1}` A-model selection rule and records

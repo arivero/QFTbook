@@ -3154,26 +3154,71 @@ equivalently to first order in the background
 that is paired with the logarithmic FI-theta coordinate in the same component
 normalization as Remark~\ref{rem:glsm-compact-fi-theta-normalization}.  At
 \(\mathcal F_\Sigma=0\) the bosonic and fermionic determinants cancel.  The
-terms linear in a constant charge-\(Q\) Euclidean background may be normalized
-as
+gamma matrices and orientation are fixed by
+\[
+  \gamma^1=
+  \begin{pmatrix}0&1\\ 1&0\end{pmatrix},
+  \qquad
+  \gamma^2=
+  \begin{pmatrix}0&-\ii\\ \ii&0\end{pmatrix},
+  \qquad
+  \gamma_*=-\ii\gamma^1\gamma^2,
+  \qquad
+  \gamma^{12}=\frac12[\gamma^1,\gamma^2]=\ii\gamma_* .
+\]
+With this convention the terms linear in a constant charge-\(Q\) Euclidean
+background are
 \[
   \Delta_B
   =
   -\nabla_\mu\nabla_\mu+|M|^2
-  +QD+\cdots,
+  +QD,
   \qquad
   \mathcal D_F^\dagger\mathcal D_F
   =
   -\nabla_\mu\nabla_\mu+|M|^2
-  +Q\gamma^{12}F_{12}+\cdots ,
+  +Q\gamma^{12}F_{12}
+  +O(\nabla\sigma,D^2,F^2),
 \]
 where the omitted terms are either higher order in the slowly varying
 background or cancel inside the supersymmetric supertrace.  This formula is a
 component convention statement: reversing the top-component convention of
 \(\Sigma\), or the chirality convention in the massive fermion determinant,
 reverses the final holomorphic logarithm and must be accompanied by the
-corresponding change in all Coulomb equations.  With the convention above, the
-linear supertrace contains the real coefficient
+corresponding change in all Coulomb equations.
+
+The disputed real sign comes from differentiating the complex-scalar
+determinant, not from branch periodicity.  Let \(K_\Lambda\) be any finite
+gauge-covariant spectral cutoff for the scalar Laplacian, with eigenvalues
+\(\lambda_n\).  A complex scalar is two real scalar fields, so its determinant
+power is \(-\frac12-\frac12=-1\).  With the reference subtraction at \(\mu\),
+\[
+  \log Z_B^{\rm ren}(D)
+  =
+  -\sum_{\lambda_n\le\Lambda}
+  \left[
+  \log(\lambda_n+|M|^2+QD)
+  -
+  \log(\lambda_n+\mu^2+QD)
+  \right],
+\]
+and therefore
+\[
+  \left.
+  \frac{\partial\log Z_B^{\rm ren}}{\partial D}
+  \right|_{D=0}
+  =
+  -Q\sum_{\lambda_n\le\Lambda}
+  \left[
+  \frac1{\lambda_n+|M|^2}
+  -
+  \frac1{\lambda_n+\mu^2}
+  \right].
+\]
+The heat-kernel limit of the bracket is negative when \(|M|>\mu\), so the
+coefficient of \(QD\) is \(+\log(|M|/\mu)\) in the FI normalization used here.
+Equivalently, with the proper-time normalization below, the real supertrace
+contains the coefficient
 \[
   -\frac12\log\frac{\mu^2}{|M|^2}
   =
@@ -3202,12 +3247,39 @@ The equality follows by differentiating both sides with respect to
 \]
 Equation~\eqref{eq:abelian-glsm-proper-time-log} determines the real
 logarithm only after multiplication by the component response coefficient
-\(-1/2\).  The imaginary partner comes from the fermion-measure Jacobian in
-the same chirality convention: changing the phase of the mass by
-\(M\mapsto e^{\ii\alpha}M\) is removed by an axial rotation whose Jacobian
-shifts the theta coordinate by \(Q\alpha\), in the normalization in which the
-flux of a unit-charge \(U(1)\) bundle is integral.  Thus the component
-response and the anomaly combine into the holomorphic branch
+\(-1/2\).  That factor packages the complex-scalar determinant sign together
+with the conversion from
+\(\log(\mu^2/|M|^2)\) to \(\log(|M|/\mu)\) in the \(4\pi\) proper-time
+normalization.
+
+The \(F_{12}\) partner is a phase, not an independent real magnitude
+calculation.  In the nonzero spectrum of \(\mathcal D_F^\dagger\mathcal D_F\),
+states of opposite \(\gamma_*\)-chirality are paired, so the linear spin trace
+of \(Q\gamma^{12}F_{12}\) cancels in the determinant magnitude.  The remaining
+phase is the Fujikawa Jacobian.  In a background with
+\[
+  k=\frac1{2\pi}\int F\in\mathbb Z,
+\]
+the regulated chiral trace is
+\[
+  \operatorname{Tr}_{\rm reg}\gamma_*=Qk .
+\]
+If \(M=|M|e^{\ii\alpha}\), the axial rotation that makes the mass real acts on
+the two fermion measures with half-angle contributions whose sum is
+\[
+  \exp\{\ii\alpha\,Qk\}.
+\]
+Since the Euclidean theta weight in
+Remark~\ref{rem:glsm-compact-fi-theta-normalization} is
+\(\exp(\ii\theta k)\), the same calculation shifts the compact theta
+coordinate by
+\[
+  \theta\longmapsto\theta+Q\alpha .
+\]
+A one-sided measure, the opposite chirality convention, or an absolute-value
+determinant would give respectively a factor of \(1/2\), the opposite sign, or
+no theta shift.  Thus the component response and the Fujikawa Jacobian combine
+into the holomorphic branch
 \[
   Q\log\frac{M}{\mu}
   =

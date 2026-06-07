@@ -2969,9 +2969,11 @@ Current checks:
   momentum-winding/Legendre-Hessian inversion checks, plus the abelian GLSM
   Coulomb one-loop charge-exponent/vacuum-count ledger, the primitive of the
   Coulomb logarithmic derivative and its finite FI-coordinate shift under
-  determinant normalization changes, the Coulomb component-response sign check
-  which separates the proper-time real logarithm, the top-component response
-  coefficient, and the mass-phase Jacobian, the Coulomb branch-monodromy check
+  determinant normalization changes, the Coulomb spectral/Fujikawa
+  component-response sign check which constructs two-dimensional gamma
+  matrices, differentiates finite bosonic determinant traces, checks paired
+  fermion spin traces, and computes the mass-phase Jacobian from a finite
+  index, the Coulomb branch-monodromy check
   which transports logarithm-sheet shifts into integral \(T\)-periods while
   rejecting compact-periodicity-as-sign-oracle and absolute-value-only
   logarithm shortcuts, the compact FI-theta check that

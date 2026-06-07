@@ -8,7 +8,7 @@ normalization, compact FI-theta flux periodicity, common-flux rather than
 flavor-labelled vortex topology, one-vortex normal-mode interaction and original/dual-frame
 separation, one-vortex source-functional F-term extraction,
 one-vortex component-amplitude source-minor extraction,
-one-loop Coulomb component-response sign and monodromy bookkeeping,
+one-loop Coulomb spectral/Fujikawa component response and monodromy bookkeeping,
 single-vortex coefficient noncancellation bound,
 P^{N-1} mirror residue trace, and
 vortex-to-protected-observable proof-obligation map, together with the
@@ -30,8 +30,8 @@ coefficient bounds, oriented source-minor component-amplitude cells,
 component-to-component source-frame calibration ratios with supplied component
 and frame residuals,
 normal-mode cumulant factors and original-to-dual frame tags,
-formal one-loop component-response signs, logarithm branch shifts, and
-axial-monodromy ledgers,
+formal one-loop spectral component-response signs, finite gamma-matrix
+Fujikawa traces, logarithm branch shifts, and axial-monodromy ledgers,
 root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree filters, and
 conditional residual-propagation maps, plus finite density/Jacobian transport
@@ -94,7 +94,7 @@ original/dual frame substitutions,
 nonperiodic \(\exp(\tau)\) fugacities,
 flavor-labelled topological vortex sectors,
 using compact branch periodicity to choose the Coulomb determinant sign,
-wrong component-response signs,
+wrong component-response signs or Fujikawa factors,
 absolute-value-only Coulomb logarithms,
 parallel source-overlap component shortcuts,
 mirror-fugacity-only component calibration,
@@ -564,43 +564,172 @@ def check_abelian_coulomb_one_loop_primitive() -> None:
 
 
 def check_coulomb_component_response_selects_log_sign() -> None:
-    # The real proper-time subtraction alone gives
-    # log(mu^2/|M|^2)=-2 log(|M|/mu).  The component supertrace coefficient
-    # multiplying the top component of Sigma is the separate datum that turns
-    # this into the holomorphic derivative sign used by the chapter.
-    proper_time_real_log_units = Fraction(-2)
-    component_response_coefficient = -Fraction(1, 2)
-    determinant_log_sign = component_response_coefficient * proper_time_real_log_units
-    assert_equal(
-        "Coulomb component response selects chapter determinant sign",
-        determinant_log_sign,
-        Fraction(1),
-    )
+    def matmul(left: tuple[tuple[complex, complex], tuple[complex, complex]],
+               right: tuple[tuple[complex, complex], tuple[complex, complex]]
+               ) -> tuple[tuple[complex, complex], tuple[complex, complex]]:
+        return (
+            (
+                left[0][0] * right[0][0] + left[0][1] * right[1][0],
+                left[0][0] * right[0][1] + left[0][1] * right[1][1],
+            ),
+            (
+                left[1][0] * right[0][0] + left[1][1] * right[1][0],
+                left[1][0] * right[0][1] + left[1][1] * right[1][1],
+            ),
+        )
 
-    wrong_component_response_coefficient = Fraction(1, 2)
-    wrong_determinant_log_sign = (
-        wrong_component_response_coefficient * proper_time_real_log_units
+    def matscale(
+        scalar: complex,
+        matrix: tuple[tuple[complex, complex], tuple[complex, complex]],
+    ) -> tuple[tuple[complex, complex], tuple[complex, complex]]:
+        return (
+            (scalar * matrix[0][0], scalar * matrix[0][1]),
+            (scalar * matrix[1][0], scalar * matrix[1][1]),
+        )
+
+    def matadd(
+        left: tuple[tuple[complex, complex], tuple[complex, complex]],
+        right: tuple[tuple[complex, complex], tuple[complex, complex]],
+    ) -> tuple[tuple[complex, complex], tuple[complex, complex]]:
+        return (
+            (left[0][0] + right[0][0], left[0][1] + right[0][1]),
+            (left[1][0] + right[1][0], left[1][1] + right[1][1]),
+        )
+
+    gamma_1 = ((0j, 1 + 0j), (1 + 0j, 0j))
+    gamma_2 = ((0j, -1j), (1j, 0j))
+    identity = ((1 + 0j, 0j), (0j, 1 + 0j))
+    gamma_star = matscale(-1j, matmul(gamma_1, gamma_2))
+    gamma_12 = matscale(
+        Fraction(1, 2),
+        matadd(matmul(gamma_1, gamma_2), matscale(-1, matmul(gamma_2, gamma_1))),
+    )
+    assert_equal("two-dimensional gamma1 square", matmul(gamma_1, gamma_1), identity)
+    assert_equal("two-dimensional gamma2 square", matmul(gamma_2, gamma_2), identity)
+    assert_equal(
+        "two-dimensional chirality matrix",
+        gamma_star,
+        ((1 + 0j, 0j), (0j, -1 + 0j)),
     )
     assert_equal(
-        "opposite component response gives opposite determinant sign",
-        wrong_determinant_log_sign,
-        -Fraction(1),
+        "gamma12 equals i times chirality",
+        gamma_12,
+        matscale(1j, gamma_star),
     )
 
     charge = Fraction(3)
-    phase_rotation_units = Fraction(5)
-    theta_shift_units = charge * phase_rotation_units
-    holomorphic_phase_sign = theta_shift_units / (charge * phase_rotation_units)
+    mass_squared = Fraction(4)
+    reference_mass_squared = Fraction(1)
+    kinetic_spectrum = [Fraction(0), Fraction(2), Fraction(5)]
+    scalar_trace = sum(Fraction(1, lam + mass_squared) for lam in kinetic_spectrum)
+    scalar_reference_trace = sum(
+        Fraction(1, lam + reference_mass_squared) for lam in kinetic_spectrum
+    )
+
+    # A complex scalar is two real fields, hence two determinant powers -1/2.
+    # The finite D-response is obtained by differentiating those determinants;
+    # no target logarithm sign is inserted.
+    complex_scalar_power = -Fraction(1, 2) - Fraction(1, 2)
+    d_response = complex_scalar_power * charge * (
+        scalar_trace - scalar_reference_trace
+    )
+    determinant_log_sign = Fraction(1) if d_response > 0 else -Fraction(1)
     assert_equal(
-        "mass-phase Jacobian sign matches component response convention",
-        holomorphic_phase_sign,
+        "finite scalar determinant response selects chapter sign",
         determinant_log_sign,
+        Fraction(1),
+    )
+    wrong_bosonic_power = Fraction(1)
+    wrong_d_response = wrong_bosonic_power * charge * (
+        scalar_trace - scalar_reference_trace
+    )
+    assert_equal(
+        "wrong bosonic determinant power flips D response",
+        Fraction(1) if wrong_d_response > 0 else -Fraction(1),
+        -Fraction(1),
+    )
+    real_scalar_only_response = -Fraction(1, 2) * charge * (
+        scalar_trace - scalar_reference_trace
+    )
+    assert_equal(
+        "real-scalar-only shortcut misses complex-boson multiplicity",
+        real_scalar_only_response == d_response,
+        False,
+    )
+
+    paired_fermion_modes = [
+        (Fraction(2), Fraction(1)),
+        (Fraction(2), -Fraction(1)),
+        (Fraction(5), Fraction(1)),
+        (Fraction(5), -Fraction(1)),
+        (Fraction(9), Fraction(1)),
+        (Fraction(9), -Fraction(1)),
+    ]
+    fermion_spin_response = Fraction(1, 2) * charge * sum(
+        chirality
+        * (
+            Fraction(1, lam + mass_squared)
+            - Fraction(1, lam + reference_mass_squared)
+        )
+        for lam, chirality in paired_fermion_modes
+    )
+    assert_equal(
+        "paired nonzero fermion modes have no real F12 magnitude response",
+        fermion_spin_response,
+        Fraction(0),
+    )
+    unpaired_shortcut_response = Fraction(1, 2) * charge * sum(
+        (
+            Fraction(1, lam + mass_squared)
+            - Fraction(1, lam + reference_mass_squared)
+        )
+        for lam, chirality in paired_fermion_modes
+        if chirality > 0
+    )
+    assert_equal(
+        "unpaired chirality shortcut gives spurious F12 magnitude response",
+        unpaired_shortcut_response == fermion_spin_response,
+        False,
+    )
+
+    flux = Fraction(2)
+    positive_zero_modes = charge * flux
+    negative_zero_modes = Fraction(0)
+    nonzero_chiral_trace = sum(chirality for _, chirality in paired_fermion_modes)
+    fujikawa_index = positive_zero_modes - negative_zero_modes + nonzero_chiral_trace
+    assert_equal(
+        "finite Fujikawa trace equals charge times flux",
+        fujikawa_index,
+        charge * flux,
+    )
+
+    mass_phase = Fraction(5, 7)
+    left_measure_phase = Fraction(1, 2) * fujikawa_index * mass_phase
+    right_measure_phase = Fraction(1, 2) * fujikawa_index * mass_phase
+    jacobian_phase = left_measure_phase + right_measure_phase
+    theta_shift = jacobian_phase / flux
+    assert_equal(
+        "finite Fujikawa Jacobian gives theta shift Q alpha",
+        theta_shift,
+        charge * mass_phase,
+    )
+    one_measure_only_phase = left_measure_phase / flux
+    assert_equal(
+        "one-sided measure shortcut misses factor two",
+        one_measure_only_phase == theta_shift,
+        False,
+    )
+    wrong_chirality_phase = -jacobian_phase / flux
+    assert_equal(
+        "wrong chirality orientation flips mass-phase Jacobian",
+        wrong_chirality_phase == theta_shift,
+        False,
     )
 
     absolute_value_only_phase = Fraction(0)
     assert_equal(
         "absolute-value determinant cannot supply mass-phase Jacobian",
-        absolute_value_only_phase == theta_shift_units,
+        absolute_value_only_phase == jacobian_phase,
         False,
     )
 

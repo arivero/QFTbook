@@ -25,6 +25,14 @@
   does not claim full GLSM mirror equivalence, a continuum vortex
   compactness theorem, or a construction of the common-flux disorder operator.
 
+## Re-Audit Note
+
+- Superseded in the later 2026-06-07 spectral/Fujikawa re-audit on the
+  evidence-strength point: the previous companion separated response factors
+  but still assigned the `-1/2` scalar response and `Q alpha` Jacobian.  The
+  later pass computes those data in a finite gamma-matrix, determinant-trace,
+  paired-fermion, and index-Jacobian model.
+
 ## Verification
 
 - `python3 -m py_compile calculation-checks/susy_2d_lg_glsm_checks.py`
