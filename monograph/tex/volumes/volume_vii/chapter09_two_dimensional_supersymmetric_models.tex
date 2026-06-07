@@ -3202,6 +3202,73 @@ local on the Coulomb chart: it uses \(Q_i\sigma\neq0\), chooses logarithm
 branches, and says nothing by itself about vortex sectors, singular loci, or
 the existence of the infrared continuum QFT.
 
+\begin{controlledapproximation}[One-loop branch and monodromy ledger]
+\label{ca:glsm-coulomb-one-loop-branch-monodromy}
+The preceding determinant fixes more than the real logarithm.  It fixes the
+branch coordinate in which the one-loop term may be compared with the compact
+FI-theta variable.  Work on a simply connected Coulomb chart and choose
+branches
+\[
+  L_i(\Sigma)=\log_{\rm br}\frac{Q_i\Sigma}{\mu}.
+\]
+The determinant contribution to the derivative of the local twisted
+superpotential is
+\[
+  \partial_\Sigma\widetilde W_{\rm 1\text{-}loop}
+  =
+  \sum_i Q_iL_i(\Sigma).
+\]
+A branch change
+\[
+  L_i\longmapsto L_i+2\pi\ii n_i,
+  \qquad n_i\in\mathbb Z,
+\]
+changes the derivative by
+\[
+  2\pi\ii\sum_iQ_in_i .
+\]
+In the full Coulomb derivative
+\(-T+\sum_iQ_iL_i\), this is exactly an integral-period shift of the
+logarithmic FI coordinate,
+\begin{equation}
+  T\longmapsto T+2\pi\ii\sum_iQ_in_i .
+  \label{eq:glsm-coulomb-branch-fi-shift}
+\end{equation}
+Since the physical fugacity is \(q=\ee^T\), the shift
+\eqref{eq:glsm-coulomb-branch-fi-shift} leaves \(q\) invariant.  This is the
+local form of the compact theta-period test.  A formula written with
+\(\ee^\tau\), where \(\tau=\theta/(2\pi)+\ii r\), changes under the same
+integer branch move and therefore lies outside the Coulomb fugacity convention
+used here.
+
+Going once around \(\Sigma=0\) changes every \(L_i\) by \(2\pi\ii\).  The
+local determinant derivative therefore has monodromy
+\[
+  2\pi\ii\sum_iQ_i .
+\]
+This is the Coulomb-chart expression of the axial anomaly.  If
+\(\sum_iQ_i=0\), the determinant derivative is single-valued after returning
+to the same branch sheet.  If \(\sum_iQ_i\neq0\), the monodromy is compensated
+by the same integral-period shift of \(T\); the exponentiated coordinate
+\(\ee^T\) remains the compact gauge-flux fugacity.  Thus the branch data are
+part of the regulated determinant coordinate before any dual variables
+\(Y_i\) or primitive exponentials are introduced.
+
+The primitive inherits the same ledger.  Under a branch change it shifts by
+\[
+  \Delta\widetilde W_{\rm eff}
+  =
+  2\pi\ii\,\Sigma\sum_iQ_in_i,
+\]
+an affine term in \(\Sigma\), and that affine term is precisely the local FI
+coordinate shift in \eqref{eq:glsm-coulomb-branch-fi-shift}.  The real
+proper-time subtraction supplies \(\log|Q_i\sigma/\mu|\); the anomaly supplies
+the branch monodromy and theta-periodicity test.  Conversely, choosing the
+opposite sign for the determinant logarithm would require
+\(T\mapsto T-2\pi\ii\sum_iQ_in_i\), which contradicts the compact-flux
+normalization fixed in \eqref{eq:glsm-compact-flux-topological-weight}.
+\end{controlledapproximation}
+
 \paragraph{Coulomb critical equation.}
 Under Hypothesis~\ref{hyp:abelian-glsm-coulomb-one-loop-determinant}, the
 local Coulomb critical equation is
