@@ -66,7 +66,8 @@
         "retained hard-channel normal-source quotient",
         "fixed/running source RG channel transport",
         "typed smooth versus local Green insertions",
-        "spectral cutoff local Green matching"
+        "spectral cutoff local Green matching",
+        "overdetermined reference-channel determinant calibration"
       ]
     },
     {

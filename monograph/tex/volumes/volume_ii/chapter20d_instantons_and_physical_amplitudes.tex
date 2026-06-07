@@ -3080,6 +3080,97 @@ kernel still reaches a physical observable only through the projection bridge
 below.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Overdetermined reference-channel calibration]
+\label{ca:instanton-overdetermined-reference-channel-calibration}
+The preceding calibration should be falsifiable inside the same physical
+coordinate.  Take two reference channels \(r=0,1\) in the same determinant
+scheme, source frame, amputation convention, hard-scale variable, and physical
+projection class, with \(\mathfrak G(Q)\ne0\).  Suppose
+\begin{equation}
+  A_r^{\rm phys}
+  =
+  \mathfrak G(Q)C_{\mathcal S}B_r+\Delta_r,
+  \qquad
+  B_r\ne0,\qquad
+  |\Delta_r|\le E_r .
+  \label{eq:instanton-overdetermined-reference-family}
+\end{equation}
+Each reference extracts an apparent determinant constant
+\begin{equation}
+  \widehat C_r
+  =
+  \frac{A_r^{\rm phys}}{\mathfrak G(Q)B_r},
+  \qquad
+  \widehat C_r-C_{\mathcal S}
+  =
+  \frac{\Delta_r}{\mathfrak G(Q)B_r}.
+  \label{eq:instanton-reference-extracted-constant}
+\end{equation}
+Thus the two reference channels must obey the consistency inequality
+\begin{equation}
+  \left|\widehat C_0-\widehat C_1\right|
+  \le
+  \frac{1}{|\mathfrak G(Q)|}
+  \left(
+    \frac{E_0}{|B_0|}
+    +
+    \frac{E_1}{|B_1|}
+  \right).
+  \label{eq:instanton-reference-pair-consistency}
+\end{equation}
+If \(M_r\) denotes the absolute integral mass in
+\eqref{eq:instanton-hard-reference-channel-integrals}, this is usable only
+with the two noncancellation margins
+\begin{equation}
+  \kappa_r=\frac{|B_r|}{M_r}>0,
+  \qquad
+  \left|\widehat C_0-\widehat C_1\right|
+  \le
+  \frac{1}{|\mathfrak G(Q)|}
+  \left(
+    \frac{E_0}{\kappa_0M_0}
+    +
+    \frac{E_1}{\kappa_1M_1}
+  \right).
+  \label{eq:instanton-reference-margin-bound}
+\end{equation}
+
+This is a channel check, not a new determinant calculation.  If a reference
+amplitude actually has the form
+\begin{equation}
+  A_r^{\rm phys}
+  =
+  \mathfrak G(Q)C_{\mathcal S}B_rS_r\Pi_r+\Delta_r,
+  \label{eq:instanton-reference-omitted-source-projection}
+\end{equation}
+where \(S_r\) is a source-fluctuation quotient or source-basis transport and
+\(\Pi_r\) is a pole, spectral, OPE, or external-state projection factor, then
+dividing only by \(\mathfrak G(Q)B_r\) gives
+\begin{equation}
+  \widetilde C_r
+  =
+  C_{\mathcal S}S_r\Pi_r
+  +
+  \frac{\Delta_r}{\mathfrak G(Q)B_r},
+  \qquad
+  \widetilde C_0-\widetilde C_1
+  =
+  C_{\mathcal S}(S_0\Pi_0-S_1\Pi_1)
+  +
+  O\!\left(\frac{\Delta_0}{\mathfrak G B_0},
+           \frac{\Delta_1}{\mathfrak G B_1}\right).
+  \label{eq:instanton-reference-omitted-factor-drift}
+\end{equation}
+The pair test then fails for a physical reason unless the omitted
+source-projection product is the same in both references or its difference is
+entered explicitly in the residual budget.  Rank loss, a vanishing projection,
+and a nearly cancelled signed window similarly make the reference coordinate
+ill-conditioned before it can calibrate a universal finite determinant
+constant.  A successful pair test only supports same-frame transport within
+the declared reference family; it does not replace the regulated fluctuation
+measure computation, the source quotient, or the final physical projection.
+\end{controlledapproximation}
+
 \begin{remark}[Finite determinant scheme-transport architecture]
 \label{rem:instanton-finite-determinant-scheme-transport-architecture}
 The universal finite one-loop determinant and orientation constant is not an

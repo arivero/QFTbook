@@ -236,6 +236,11 @@
   determinant calibration for the assembled hard amplitude; one physical
   reference channel fixes only the same-frame finite determinant constant, with
   reference residuals amplified by the target/reference integral ratio.
+- `ca:instanton-overdetermined-reference-channel-calibration`: two
+  same-frame reference amplitudes extract apparent determinant constants and
+  must agree within the displayed residual and noncancellation-margin budget;
+  omitted source-fluctuation quotients or physical-projection factors appear as
+  channel-dependent drifts, not as universal determinant data.
 - `rem:instanton-finite-determinant-scheme-transport-architecture`: finite
   determinant scheme-transport architecture showing where a one-loop determinant
   constant is typed with the coupling/action conversion, running bosonic
@@ -506,6 +511,10 @@
   collective/determinant/source/normal-quotient/projection data in one exact
   rational coefficient; it rejects the corresponding mass saturation,
   determinant-only source-response, and raw Euclidean-kernel shortcuts.  It
+  now also checks the overdetermined reference-channel determinant calibration:
+  two same-frame reference amplitudes extract the same determinant constant
+  within residual and noncancellation-margin bounds, while omitted
+  source/projection factors become channel-dependent drifts.  The check
   also verifies the exact `det(M+B)` polynomial, rejects the
   wrong off-diagonal sign, separates mass-saturated and four-source coordinates,
   verifies the one-loop density RG cancellation and the distinction between

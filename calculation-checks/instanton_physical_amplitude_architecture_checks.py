@@ -87,6 +87,11 @@ Target claims:
   reference residuals are amplified by the target/reference integral ratio,
   and source-fluctuation or physical-projection data not included in the
   retained integrals remain separate residuals.
+- `ca:instanton-overdetermined-reference-channel-calibration`: two same-frame
+  reference channels must extract the same finite determinant constant within
+  the displayed residual and noncancellation-margin budget; omitted
+  source-fluctuation quotients or physical-projection factors appear as
+  channel-dependent drifts rather than as determinant normalizations.
 - `rem:instanton-finite-determinant-scheme-transport-architecture`: a finite
   one-loop determinant constant has a scheme-transport architecture involving
   the coupling/action conversion, running bosonic zero-mode power, and
@@ -2580,6 +2585,128 @@ def check_hard_reference_channel_calibration() -> None:
         "canceled hard reference amplifies residual",
         abs(reference_residual * b_target / b_cancel)
         > 50 * abs(reference_residual * b_target / b_ref),
+        True,
+    )
+
+
+def check_overdetermined_reference_channel_calibration() -> None:
+    universal_prefactor = Fraction(5, 7)
+    determinant_constant = Fraction(11, 13)
+
+    reference_0_cells = [Fraction(3, 5), -Fraction(1, 10), Fraction(7, 20)]
+    reference_1_cells = [Fraction(1, 3), Fraction(2, 5), -Fraction(1, 6)]
+    b_0 = sum(reference_0_cells, Fraction(0))
+    b_1 = sum(reference_1_cells, Fraction(0))
+    m_0 = sum(abs(cell) for cell in reference_0_cells)
+    m_1 = sum(abs(cell) for cell in reference_1_cells)
+    kappa_0 = abs(b_0) / m_0
+    kappa_1 = abs(b_1) / m_1
+
+    assert_equal("first overdetermined reference integral", b_0, Fraction(17, 20))
+    assert_equal("second overdetermined reference integral", b_1, Fraction(17, 30))
+    assert_equal("second overdetermined reference margin", kappa_1, Fraction(17, 27))
+
+    residual_0 = Fraction(1, 100)
+    residual_1 = -Fraction(1, 140)
+    amplitude_0 = universal_prefactor * determinant_constant * b_0 + residual_0
+    amplitude_1 = universal_prefactor * determinant_constant * b_1 + residual_1
+    extracted_0 = amplitude_0 / (universal_prefactor * b_0)
+    extracted_1 = amplitude_1 / (universal_prefactor * b_1)
+
+    assert_equal(
+        "first overdetermined reference extracts constant plus residual",
+        extracted_0 - determinant_constant,
+        residual_0 / (universal_prefactor * b_0),
+    )
+    assert_equal(
+        "second overdetermined reference extracts constant plus residual",
+        extracted_1 - determinant_constant,
+        residual_1 / (universal_prefactor * b_1),
+    )
+    pair_bound = (
+        abs(residual_0) / (abs(universal_prefactor) * abs(b_0))
+        + abs(residual_1) / (abs(universal_prefactor) * abs(b_1))
+    )
+    margin_bound = (
+        abs(residual_0) / (abs(universal_prefactor) * kappa_0 * m_0)
+        + abs(residual_1) / (abs(universal_prefactor) * kappa_1 * m_1)
+    )
+    assert_equal(
+        "overdetermined reference pair consistency bound",
+        abs(extracted_0 - extracted_1) <= pair_bound,
+        True,
+    )
+    assert_equal(
+        "overdetermined reference margin bound equals pair bound",
+        margin_bound,
+        pair_bound,
+    )
+
+    exact_0 = universal_prefactor * determinant_constant * b_0
+    exact_1 = universal_prefactor * determinant_constant * b_1
+    assert_equal(
+        "zero-residual overdetermined references extract same determinant",
+        exact_0 / (universal_prefactor * b_0),
+        exact_1 / (universal_prefactor * b_1),
+    )
+
+    source_quotient_0 = Fraction(21, 20)
+    source_quotient_1 = Fraction(24, 25)
+    projection_0 = Fraction(7, 11)
+    projection_1 = Fraction(5, 13)
+    channel_factor_0 = source_quotient_0 * projection_0
+    channel_factor_1 = source_quotient_1 * projection_1
+    amplitude_with_channel_0 = (
+        universal_prefactor * determinant_constant * b_0 * channel_factor_0
+    )
+    amplitude_with_channel_1 = (
+        universal_prefactor * determinant_constant * b_1 * channel_factor_1
+    )
+    wrongly_extracted_0 = amplitude_with_channel_0 / (universal_prefactor * b_0)
+    wrongly_extracted_1 = amplitude_with_channel_1 / (universal_prefactor * b_1)
+    assert_equal(
+        "omitted source/projection factors drift extracted constants",
+        wrongly_extracted_0 - wrongly_extracted_1,
+        determinant_constant * (channel_factor_0 - channel_factor_1),
+    )
+    assert_not_equal(
+        "overdetermined references reject channel factors as determinant data",
+        wrongly_extracted_0,
+        wrongly_extracted_1,
+    )
+    assert_equal(
+        "transported channel factors restore common determinant extraction",
+        amplitude_with_channel_0
+        / (universal_prefactor * b_0 * channel_factor_0),
+        amplitude_with_channel_1
+        / (universal_prefactor * b_1 * channel_factor_1),
+    )
+    assert_equal(
+        "omitted channel factors violate zero-residual pair budget",
+        abs(wrongly_extracted_0 - wrongly_extracted_1) <= Fraction(0),
+        False,
+    )
+
+    rank_lost_reference = Fraction(0)
+    assert_equal(
+        "rank-lost overdetermined reference cannot extract determinant constant",
+        rank_lost_reference != 0,
+        False,
+    )
+
+    canceled_reference_cells = [Fraction(1), -Fraction(99, 100)]
+    b_cancel = sum(canceled_reference_cells, Fraction(0))
+    m_cancel = sum(abs(cell) for cell in canceled_reference_cells)
+    kappa_cancel = abs(b_cancel) / m_cancel
+    assert_equal(
+        "canceled overdetermined reference margin",
+        kappa_cancel,
+        Fraction(1, 199),
+    )
+    assert_equal(
+        "canceled overdetermined reference amplifies extracted residual",
+        abs(residual_0 / (universal_prefactor * b_cancel))
+        > 50 * abs(residual_0 / (universal_prefactor * b_0)),
         True,
     )
 
@@ -6077,6 +6204,7 @@ def main() -> None:
     check_spectral_local_green_matching_source_classes()
     check_hard_amplitude_assembly_bound()
     check_hard_reference_channel_calibration()
+    check_overdetermined_reference_channel_calibration()
     check_finite_determinant_scheme_transport()
     check_finite_determinant_conversion_benchmark()
     check_observable_handoff_map()

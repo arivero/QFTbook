@@ -868,6 +868,10 @@ Current checks:
   the one-loop density RG cancellation, the distinction between density-only,
   mass-saturated, and hard four-source size powers, finite determinant
   constant cancellation only in transported same-channel ratios,
+  overdetermined reference-channel calibration which requires two same-frame
+  physical references to extract the same determinant constant within explicit
+  residual and noncancellation-margin budgets while rejecting omitted
+  source/projection factors as determinant data,
   the gauge-sliced zero-mode Gram determinant, square-root collective
   Jacobian, residual stabilizer quotient, action-normalization scaling, and
   finite Gram-perturbation stability bound,
