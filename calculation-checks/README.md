@@ -3572,7 +3572,12 @@ Current checks:
 	  pole cancellation, non-infrared-safe logarithmic weights, and the
 	  one-emission event-shape cumulant check deriving the
 	  \(-\frac12\log^2(1/\tau_0)\) Sudakov term while rejecting frozen,
-	  factorized-veto, and one-coordinate endpoint shortcuts, and the two-loop
+	  factorized-veto, and one-coordinate endpoint shortcuts, the differential
+	  event-shape plus-distribution check deriving
+	  \([\log(1/\tau)/\tau]_+\), its negative cumulant sign, and the virtual
+	  endpoint-delta cancellation while rejecting ordinary-density,
+	  frozen-measurement, one-coordinate, and omitted-virtual-delta shortcuts,
+	  and the two-loop
 	  infrared-pole consistency gate relating \(A^{(2)}\), \(I^{(1)}A^{(1)}\),
 	  \(I^{(2)}A^{(0)}\), the \(|F^{(1)}|^2\) hard contribution, and the NNLO
 	  observable residual budget.

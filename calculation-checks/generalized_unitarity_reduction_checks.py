@@ -46,7 +46,8 @@ coefficient for `SU(3)`,
 color-metric hard-function handoff, real radiation, scheme transport,
 and the unresolved measurement cell have been assembled, including finite
 measurement dependence after pole cancellation and the one-emission
-event-shape cumulant Sudakov logarithm, and the two-loop
+event-shape cumulant Sudakov logarithm, the corresponding finite
+plus-distribution density, and the two-loop
 infrared-pole consistency gate relating
 `A^(2)`, `I^(1) A^(1)`, `I^(2) A^(0)`, and the NNLO finite
 observable.
@@ -152,7 +153,8 @@ R-ratio closure from a normalized form-factor master and the integrated
 three-parton phase-space kernel, color-space metric and soft-operator
 transport under basis and finite-subtraction changes, plus-distribution measurement cells, paired-measurement finite
 differences after pole cancellation, a two-coordinate soft-collinear
-event-shape cumulant log ledger, finite scheme transport, and two-loop
+event-shape cumulant log ledger and its differential plus-prescription
+check, finite scheme transport, and two-loop
 recursive pole subtraction.
 Primary derivation route: the manuscript route starts from Cutkosky
 discontinuities, generalized cuts and contours, numerator reduction, IBP and
@@ -248,7 +250,9 @@ uncompensated finite color-space subtraction shifts, wrong unresolved
 subtraction measurements, frozen locally inclusive measurement shortcuts,
 finite-remainder-only observable reweighting, non-infrared-safe logarithmic
 weights, factorized-veto single-boundary poles, one-coordinate event-shape
-shortcuts that miss Sudakov double logarithms, two-loop remainder extraction
+shortcuts that miss Sudakov double logarithms, ordinary-density event-shape
+shortcuts with the wrong plus-distribution cumulant sign, omitted virtual
+delta poles in the differential distribution, two-loop remainder extraction
 that drops `I^(1) A^(1)`, and NNLO
 observable assembly that omits either the trace-basis all-plus rational hard
 square or the generic `|F^(1)|^2` hard term.
@@ -4796,6 +4800,125 @@ def check_one_emission_event_shape_cumulant_cell() -> None:
     )
 
 
+def check_one_emission_event_shape_plus_distribution() -> None:
+    born_weight = Fraction(7, 5)
+    reduced_measurement = Fraction(3, 4)
+    virtual_finite = Fraction(11, 17)
+    nonsingular_real = Fraction(19, 23)
+    singular_weight = born_weight * reduced_measurement
+
+    # A local differential distribution is encoded as
+    # (epsilon^-2 delta, finite delta, [1/tau]_+, [log(1/tau)/tau]_+).
+    ShapeDistribution = tuple[Fraction, Fraction, Fraction, Fraction]
+
+    def distribution_add(
+        left: ShapeDistribution,
+        right: ShapeDistribution,
+    ) -> ShapeDistribution:
+        return (
+            left[0] + right[0],
+            left[1] + right[1],
+            left[2] + right[2],
+            left[3] + right[3],
+        )
+
+    def cumulant_coefficients(distribution: ShapeDistribution) -> tuple[Fraction, Fraction, Fraction, Fraction]:
+        pole2_delta, finite_delta, plus_one_over_tau, plus_log_over_tau = distribution
+        # On [0, tau_0], [1/tau]_+ integrates to -L and
+        # [log(1/tau)/tau]_+ integrates to -L^2/2.
+        return (
+            pole2_delta,
+            finite_delta,
+            -plus_one_over_tau,
+            -Fraction(1, 2) * plus_log_over_tau,
+        )
+
+    virtual_delta: ShapeDistribution = (
+        -singular_weight,
+        singular_weight * virtual_finite,
+        Fraction(0),
+        Fraction(0),
+    )
+    real_density: ShapeDistribution = (
+        singular_weight,
+        nonsingular_real,
+        Fraction(0),
+        singular_weight,
+    )
+    finite_distribution = distribution_add(virtual_delta, real_density)
+    assert_equal(
+        "event-shape plus distribution cancels endpoint double pole",
+        finite_distribution[0],
+        Fraction(0),
+    )
+    assert_equal(
+        "event-shape differential Sudakov plus coefficient",
+        finite_distribution[3],
+        Fraction(21, 20),
+    )
+
+    expected_cumulant = (
+        Fraction(0),
+        singular_weight * virtual_finite + nonsingular_real,
+        Fraction(0),
+        -Fraction(21, 40),
+    )
+    assert_equal(
+        "event-shape plus distribution integrates to cumulant",
+        cumulant_coefficients(finite_distribution),
+        expected_cumulant,
+    )
+
+    ordinary_cutoff_cumulant = (
+        Fraction(0),
+        expected_cumulant[1],
+        Fraction(0),
+        Fraction(1, 2) * singular_weight,
+    )
+    assert_true(
+        "ordinary positive density has wrong finite cumulant sign",
+        ordinary_cutoff_cumulant != expected_cumulant,
+    )
+
+    omitted_virtual = cumulant_coefficients(real_density)
+    assert_true(
+        "omitting virtual delta leaves event-shape double pole",
+        omitted_virtual[0] != Fraction(0),
+    )
+
+    frozen_measurement_distribution = distribution_add(
+        virtual_delta,
+        (
+            singular_weight,
+            nonsingular_real,
+            Fraction(0),
+            Fraction(0),
+        ),
+    )
+    assert_equal(
+        "frozen measurement removes Sudakov plus distribution",
+        cumulant_coefficients(frozen_measurement_distribution)[3],
+        Fraction(0),
+    )
+
+    one_coordinate_endpoint_distribution: ShapeDistribution = (
+        Fraction(0),
+        expected_cumulant[1],
+        singular_weight,
+        Fraction(0),
+    )
+    one_coordinate_cumulant = cumulant_coefficients(one_coordinate_endpoint_distribution)
+    assert_true(
+        "one-coordinate plus distribution gives a single logarithm",
+        one_coordinate_cumulant != expected_cumulant,
+    )
+    assert_equal(
+        "one-coordinate endpoint has no Sudakov L squared coefficient",
+        one_coordinate_cumulant[3],
+        Fraction(0),
+    )
+
+
 def check_two_loop_ir_pole_consistency_gate() -> None:
     tree = Fraction(3, 5)
     ir_one_loop = (Fraction(-7, 3), Fraction(5, 11))
@@ -4969,6 +5092,7 @@ def main() -> None:
     check_unresolved_measurement_cell_assembly()
     check_measurement_dependence_after_pole_cancellation()
     check_one_emission_event_shape_cumulant_cell()
+    check_one_emission_event_shape_plus_distribution()
     check_two_loop_ir_pole_consistency_gate()
     print("All generalized unitarity and loop-reduction checks passed.")
 

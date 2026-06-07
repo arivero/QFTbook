@@ -68,7 +68,8 @@
   handoff recording the metric, basis, color-correlated real/soft operator, and
   finite-scheme transport needed for nonabelian production observables, an unresolved one-emission
   measurement cell with plus-distribution cancellation, a paired-measurement
-  finite-difference test after pole cancellation, and a two-loop infrared-pole
+  finite-difference test after pole cancellation, a one-emission event-shape
+  cumulant and its differential plus distribution, and a two-loop infrared-pole
   consistency test linking
   \(A^{(2)}\), \(I^{(1)}A^{(1)}\), \(I^{(2)}A^{(0)}\), the lower-loop hard
   square, and the NNLO observable budget.
@@ -201,6 +202,7 @@
 | \(x,\epsilon_{\rm ir},W(x,\zeta),W_0(\zeta)\) | unresolved one-emission coordinate, local analytic infrared regulator, measurement in the unresolved chart, and its reduced-event infrared-safe limit |
 | \(W_A,W_B,A(x,\zeta),B(x,\zeta)\) | paired infrared-safe measurements with the same reduced-event limit but different finite unresolved measurement dependence |
 | \(\alpha,\beta,\tau_0,L_0\) | soft-collinear coordinates for the one-emission event-shape cumulant, with \(\tau=\alpha\beta\) and \(L_0=\log(1/\tau_0)\) |
+| \(L_\tau,[L_\tau/\tau]_+\) | differential event-shape endpoint coordinate, with \(L_\tau=\log(1/\tau)\) and the plus prescription that integrates to \(-L_0^2/2\) on the cumulant window |
 | \(\mathcal R_\Lambda^{\rm sub}[W]\), \(\mathcal C_\Lambda^{\rm fact}[W]\) | real-emission/subtraction and factorization/matching pieces needed to assemble an infrared-safe observable for measurement \(W\) |
 | \(\mathcal R_\Lambda^{{\rm RV,sub}}[W]\), \(\mathcal R_\Lambda^{{\rm RR,sub}}[W]\) | NNLO real--virtual and double-real subtraction pieces paired with the same infrared subtraction convention |
 | \(B_{\rm state},B_{\rm coeff},B_{\rm master},B_{\rm sheet},B_{\rm sub}\) | state-sum/orientation, inverse-pairing, master-jump, sheet, and subtraction residuals in the physical channel-discontinuity closure |
@@ -336,6 +338,12 @@
   and real-emission/factorization constructions using the same finite
   subtraction convention as the virtual finite remainders.  It is a comparison
   datum for fixed-order observables, not a proof of all-order factorization.
+- The event-shape cumulant and differential plus-distribution blocks are local
+  soft-collinear singular-chart statements.  They fix the endpoint
+  measurement contribution that generalized unitarity and virtual master
+  reconstruction do not supply; they do not replace the hard, jet, soft,
+  overlap, nonsingular, recoil, and global-factorization data of a complete
+  event-shape distribution.
 - The vector-current \(R\)-ratio closure uses the standard massless
   one-loop current-form-factor and integrated \(q\bar q g\) coefficients in
   the \(a_s=\alpha_s/(2\pi)\), \(D=4-2\epsilon\), final-final antenna
@@ -1159,6 +1167,19 @@
   locally inclusive measurements, factorized endpoint vetoes that leave a
   logarithmic pole, and one-coordinate endpoint shortcuts that miss the double
   logarithm.
+- 2026-06-07 issue #769 differential event-shape distribution pass: added
+  `ca:one-loop-event-shape-plus-distribution` after the cumulant block.  The
+  pass differentiates the product-measurement cumulant to the endpoint
+  distribution
+  \(\epsilon_{\rm ir}^{-2}\delta(\tau)+[\log(1/\tau)/\tau]_+\), cancels the
+  double-pole delta against the virtual endpoint term, and explains why the
+  finite cumulant carries the negative plus-prescription sign
+  \(-\frac12\log^2(1/\tau_0)\).  The companion check encodes the endpoint
+  double-pole delta, finite delta, single-log plus distribution, and Sudakov
+  plus distribution separately, rejecting ordinary-density, omitted-virtual,
+  frozen-measurement, and one-coordinate endpoint shortcuts.  This remains a
+  local singular-chart observable cell, not a full event-shape factorization
+  theorem.
 - 2026-06-06 issue #769 production master-lane pass: added
   `ca:production-master-lane-observable-gate` after the two-letter transport
   audit.  The pass reorganizes the nearby loop-amplitude cells into one

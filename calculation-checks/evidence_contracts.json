@@ -348,7 +348,8 @@
         "color-space hard-function metric convention",
         "Fierz-generated SU(3) trace metric and crossed physical spinors",
         "inclusive vector-current R-ratio form-factor and phase-space normalization",
-        "one-emission event-shape cumulant with tau=alpha beta soft-collinear normalization"
+        "one-emission event-shape cumulant with tau=alpha beta soft-collinear normalization",
+        "differential event-shape plus distribution endpoint-delta cancellation"
       ]
     },
     {

@@ -5068,6 +5068,83 @@ the part that generalized unitarity alone cannot supply: the finite logarithm
 created by the real-emission measurement map.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Differential event-shape plus distribution]
+\label{ca:one-loop-event-shape-plus-distribution}
+The cumulant in
+ControlledApproximation~\ref{ca:one-loop-event-shape-cumulant-cell} is the
+integral of a distribution in the event-shape variable, not an ordinary
+positive density at \(\tau=0\).  Let \(L_\tau=\log(1/\tau)\).  Differentiating
+\eqref{eq:one-emission-event-shape-cumulant-integral} gives, on the interval
+\(0<\tau<1\),
+\[
+  \frac{\dd I_{\tau_0}}{\dd\tau_0}\bigg|_{\tau_0=\tau}
+  =
+  \tau^{-1+\epsilon_{\rm ir}}L_\tau .
+\]
+As a distribution on \([0,1]\),
+\begin{equation}
+  \tau^{-1+\epsilon_{\rm ir}}L_\tau
+  =
+  \frac1{\epsilon_{\rm ir}^2}\,\delta(\tau)
+  +
+  \left[\frac{L_\tau}{\tau}\right]_+
+  +O(\epsilon_{\rm ir}),
+  \label{eq:event-shape-real-density-plus-expansion}
+\end{equation}
+where
+\[
+  \int_0^1\dd\tau\,
+  \left[\frac{L_\tau}{\tau}\right]_+\varphi(\tau)
+  =
+  \int_0^1\dd\tau\,
+  \frac{L_\tau}{\tau}\,
+  \bigl(\varphi(\tau)-\varphi(0)\bigr)
+\]
+for test functions smooth at the endpoint.  The local virtual term supplies
+the opposite double-pole delta distribution.  Therefore the singular-chart
+part of the finite NLO distribution is
+\begin{equation}
+  \frac{\dd\mathcal O_{\rm sc}^{(1)}}{\dd\tau}
+  =
+  \int\dd\zeta\,S_0(\zeta)W_0(\zeta)
+  \left[
+    V_{\rm fin}(\zeta)\,\delta(\tau)
+    +
+    \left[\frac{L_\tau}{\tau}\right]_+
+  \right]
+  +
+  \frac{\dd\mathcal R_{{\rm sc},\rm fin}^{\rm nonsing}}{\dd\tau}.
+  \label{eq:event-shape-finite-plus-distribution}
+\end{equation}
+Integrating the plus distribution over the cumulant window gives
+\[
+  \int_0^{\tau_0}\dd\tau\,
+  \left[\frac{L_\tau}{\tau}\right]_+
+  =
+  -
+  \int_{\tau_0}^{1}\dd\tau\,\frac{L_\tau}{\tau}
+  =
+  -\frac12L_0^2,
+\]
+which recovers
+\eqref{eq:one-emission-event-shape-cumulant-cell}.
+
+This sign is a useful diagnostic.  The real-emission density before virtual
+subtraction is positive in the interior, but the finite distribution after
+pole cancellation is a plus distribution whose cumulant subtracts the
+unresolved endpoint from the full interval.  Treating \(L_\tau/\tau\) as an
+ordinary integrable function gives the wrong finite coordinate and no
+well-defined endpoint distribution.  Omitting the virtual delta leaves the
+double pole in \eqref{eq:event-shape-real-density-plus-expansion}.  Replacing
+the product measurement by a one-coordinate endpoint produces
+\([1/\tau]_+\), hence a single logarithm rather than the Sudakov double
+logarithm.  Freezing the measurement to the reduced event removes the plus
+distribution entirely.  Thus even after the virtual loop amplitude,
+master-integral branch, and finite hard remainder have been reconstructed, the
+differential observable still depends on the real-emission measurement map and
+its endpoint prescription.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Two-loop infrared-pole consistency test]
 \label{ca:two-loop-ir-pole-consistency-gate}
 At two loops the virtual reconstruction has a recursive infrared consistency
