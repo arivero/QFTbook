@@ -879,6 +879,9 @@ Current checks:
   the finite Gaussian nonzero-mode source quotient and its covariance identity,
   the Wick-paired first source cumulant showing how a linear normal-mode
   source deformation couples to the cubic fluctuation action,
+  the source-projected normal-propagator insertion together with its
+  subtracted Green-function matching coordinate, finite local counterterm
+  covariance, and residual budget,
   the assembled hard-amplitude product bound with absolute signed-window
   control, the hard reference-channel calibration which fixes only a
   same-frame finite determinant constant and propagates reference residuals by

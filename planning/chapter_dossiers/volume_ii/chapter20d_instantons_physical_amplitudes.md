@@ -153,6 +153,12 @@
   nonzero-mode propagation, with the zero-mode coefficient, primed propagator,
   full source-overlap amputation, determinant trace, and residual bound kept
   as distinct physical coordinates.
+- `ca:instanton-subtracted-normal-green-matching`: subtraction and matching
+  coordinate for the source-projected normal Green function.  The block
+  subtracts the free or parametrix hard-source piece, the logarithmic
+  heat-kernel local term, and the finite local counterterm in the same
+  projector/scheme as the determinant, then shows how finite local subtraction
+  shifts are compensated by the Wilsonian local coefficient.
 - `sec:instanton-hard-amplitude-assembly`: recombines the hard source kernel,
   finite determinant normalization, nonzero-mode source quotient,
   zero-mode/source stability, and physical projection into one regulated
@@ -294,6 +300,12 @@
   instanton-background propagator bilinear from the determinant constant, from
   a trace response, and from diagonal residue division; this is where extra
   external-state data enter beyond collective-coordinate integration.
+- The subtracted normal-Green block tightens that fluctuation input by fixing
+  its UV subtraction and finite matching coordinate.  The inserted Green
+  function is not usable as a physical source bilinear until the same
+  zero-mode projector, hard-source parametrix, logarithmic heat-kernel local
+  term, finite counterterm, and compensating local Wilsonian coefficient have
+  been supplied.
 - The assembled hard-channel formula prevents the chapter from becoming a list
   of adjacent checkpoints.  It places the determinant scheme constant, hard
   zero-mode slots, nonzero-mode source quotient, source-frame stability, and
@@ -436,6 +448,10 @@
   amputation and rejects determinant-only, unprimed zero-mode-regulated,
   trace-only, diagonal-amputation, rank-lost, and omitted-propagator-residual
   shortcuts,
+  verifies the subtracted normal-Green matching coordinate and rejects missing
+  projector, missing parametrix, missing logarithmic local subtraction,
+  trace-for-bilinear, wrong source-basis subtraction, uncompensated finite
+  local counterterm shifts, and underbudgeted local-matching residuals,
   verifies the assembled hard-amplitude product bound and rejects
   determinant-only assembly or signed-window relative control without a
   noncancellation margin,
@@ -618,6 +634,15 @@
   zero-mode determinant only afterward.  The companion rejects replacing this
   bilinear by a determinant constant, unprimed inverse, trace, diagonal residue
   division, or an underbudgeted propagator residual.
+- 2026-06-07 issue #597 subtracted normal-Green pass: added
+  `ca:instanton-subtracted-normal-green-matching` immediately after the
+  normal-propagator insertion block.  The pass turns the primed propagator
+  bilinear into a finite source coordinate by subtracting the hard-source
+  parametrix, logarithmic heat-kernel local term, and finite local counterterm
+  in the same projector/scheme as the determinant, with a compensating
+  Wilsonian coefficient shift.  The companion rejects unsubtracted,
+  unprojected, trace-only, wrong-basis, and uncompensated finite-local
+  subtraction shortcuts.
 - 2026-06-06 observable-map pass: added a physics bridge from the assembled
   instanton amplitude to QCD observables, explicitly separating hard source
   coefficients, theta curvature, \(U(1)_A\)-odd susceptibility kernels, and

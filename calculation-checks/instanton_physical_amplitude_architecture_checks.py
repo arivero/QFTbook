@@ -59,6 +59,10 @@ Target claims:
   amputated bilinear matrix element multiplied by the zero-mode coefficient;
   it is not a determinant constant, an unprimed zero-mode-regulated inverse,
   a trace response, or a diagonal residue division.
+- `ca:instanton-subtracted-normal-green-matching`: a normal Green-function
+  insertion is finite only after the same zero-mode projector, hard-source
+  parametrix subtraction, logarithmic heat-kernel counterterm, finite local
+  matching term, and compensating Wilsonian coefficient shift are supplied.
 - `ca:instanton-hard-amplitude-assembly-ledger`: the hard channel must assemble
   the determinant, source-fluctuation, zero-mode/source, and physical-projection
   factors in the same kernel, with absolute control unless a noncancellation
@@ -159,6 +163,8 @@ Independent construction:
   Wick-paired first source cumulants from cubic normal-mode interactions,
   source-projected normal propagator insertions with full source-overlap
   amputation and residual telescopes,
+  subtracted normal Green-function bilinears with finite local matching
+  covariance,
   multiplicative hard-amplitude assembly bounds on signed windows,
   finite determinant-scheme transport factors and an independently computed
   two-regulator determinant-density benchmark,
@@ -260,6 +266,9 @@ Negative controls:
   omitted propagator residual in a zero-mode-times-normal channel, a relative
   quotient formed after zero-mode
   rank loss, a
+  subtracted Green function formed without the projector, without the free
+  parametrix, without the logarithmic local term, or without the compensating
+  local Wilsonian coefficient shift, a
   determinant-only assembled amplitude, signed-window relative error control
   without a noncancellation margin, a reference calibration with omitted
   source-fluctuation or physical-projection transport, a rank-lost reference
@@ -1751,6 +1760,197 @@ def check_normal_propagator_source_insertion() -> None:
     assert_equal(
         "omitting normal-propagator residual underbudgets the channel",
         residual <= underbudget_without_propagator_error,
+        False,
+    )
+
+
+def check_subtracted_normal_green_function_matching() -> None:
+    Vector2 = tuple[Fraction, Fraction]
+
+    def matvec2(matrix: Matrix2, vector: Vector2) -> Vector2:
+        return (
+            matrix[0][0] * vector[0] + matrix[0][1] * vector[1],
+            matrix[1][0] * vector[0] + matrix[1][1] * vector[1],
+        )
+
+    def dot2(left: Vector2, right: Vector2) -> Fraction:
+        return left[0] * right[0] + left[1] * right[1]
+
+    def bilinear(matrix: Matrix2, left: Vector2, right: Vector2) -> Fraction:
+        return dot2(left, matvec2(matrix, right))
+
+    normal_projector: Matrix2 = (
+        (Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(1)),
+    )
+    source_out: Vector2 = (Fraction(2, 3), Fraction(5, 7))
+    source_in: Vector2 = (Fraction(3, 5), -Fraction(4, 9))
+    projected_out = matvec2(normal_projector, source_out)
+    projected_in = matvec2(normal_projector, source_in)
+
+    finite_green: Matrix2 = (
+        (Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(23, 29)),
+    )
+    free_parametrix: Matrix2 = (
+        (Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(5, 6)),
+    )
+    heat_kernel_local: Matrix2 = (
+        (Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(7, 10)),
+    )
+    finite_local: Matrix2 = (
+        (Fraction(0), Fraction(0)),
+        (Fraction(0), -Fraction(2, 15)),
+    )
+    log_lambda_over_mu = Fraction(3)
+    zero_mode_pollution: Matrix2 = (
+        (Fraction(101), Fraction(0)),
+        (Fraction(0), Fraction(0)),
+    )
+    raw_green = add2(
+        add2(
+            add2(finite_green, free_parametrix),
+            (
+                (log_lambda_over_mu * heat_kernel_local[0][0], Fraction(0)),
+                (Fraction(0), log_lambda_over_mu * heat_kernel_local[1][1]),
+            ),
+        ),
+        add2(finite_local, zero_mode_pollution),
+    )
+
+    raw_projected_bilinear = bilinear(raw_green, projected_out, projected_in)
+    free_bilinear = bilinear(free_parametrix, projected_out, projected_in)
+    heat_bilinear = log_lambda_over_mu * bilinear(
+        heat_kernel_local,
+        projected_out,
+        projected_in,
+    )
+    local_bilinear = bilinear(finite_local, projected_out, projected_in)
+    subtracted_green = raw_projected_bilinear - free_bilinear - heat_bilinear - local_bilinear
+    expected_subtracted = bilinear(finite_green, projected_out, projected_in)
+    assert_equal(
+        "subtracted normal Green coordinate keeps finite source bilinear",
+        subtracted_green,
+        expected_subtracted,
+    )
+
+    unsubtracted = raw_projected_bilinear
+    assert_not_equal(
+        "unsubtracted normal Green insertion keeps local regulator pieces",
+        unsubtracted,
+        subtracted_green,
+    )
+
+    unprojected_bilinear = bilinear(raw_green, source_out, source_in)
+    assert_not_equal(
+        "unprojected normal Green insertion depends on zero-mode regulator pollution",
+        unprojected_bilinear,
+        raw_projected_bilinear,
+    )
+
+    no_free_subtraction = raw_projected_bilinear - heat_bilinear - local_bilinear
+    assert_not_equal(
+        "missing free parametrix subtraction changes Green coordinate",
+        no_free_subtraction,
+        subtracted_green,
+    )
+
+    no_heat_subtraction = raw_projected_bilinear - free_bilinear - local_bilinear
+    assert_not_equal(
+        "missing logarithmic heat-kernel subtraction changes Green coordinate",
+        no_heat_subtraction,
+        subtracted_green,
+    )
+
+    trace_shortcut = trace2(finite_green)
+    assert_not_equal(
+        "determinant trace response is not the external-source Green bilinear",
+        trace_shortcut,
+        subtracted_green,
+    )
+
+    wrong_source_basis: Vector2 = (source_out[0], source_out[0] + source_out[1])
+    wrong_basis_subtraction = raw_projected_bilinear - bilinear(
+        free_parametrix,
+        matvec2(normal_projector, wrong_source_basis),
+        projected_in,
+    ) - heat_bilinear - local_bilinear
+    assert_not_equal(
+        "free subtraction in a different source basis changes the matched insertion",
+        wrong_basis_subtraction,
+        subtracted_green,
+    )
+
+    delta_local: Matrix2 = (
+        (Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(4, 11)),
+    )
+    delta_bilinear = bilinear(delta_local, projected_out, projected_in)
+    subtracted_prime = subtracted_green - delta_bilinear
+    local_coefficient = Fraction(7, 8)
+    zero_mode_source = Fraction(9, 10)
+    matched = zero_mode_source * (subtracted_green + local_coefficient)
+    matched_prime = zero_mode_source * (
+        subtracted_prime + local_coefficient + delta_bilinear
+    )
+    assert_equal(
+        "finite local Green subtraction is compensated by Wilsonian coefficient shift",
+        matched_prime,
+        matched,
+    )
+    unmatched_prime = zero_mode_source * (subtracted_prime + local_coefficient)
+    assert_not_equal(
+        "finite local subtraction shift without coefficient transport changes amplitude",
+        unmatched_prime,
+        matched,
+    )
+
+    norm_out = sum(abs(entry) for entry in source_out)
+    norm_in = sum(abs(entry) for entry in source_in)
+    e_projector = Fraction(1, 100)
+    e_parametrix = Fraction(1, 120)
+    e_heat = Fraction(1, 90)
+    e_local = Fraction(1, 40)
+    e_amputation = Fraction(1, 200)
+    residual = (
+        abs(zero_mode_source)
+        * (
+            e_projector * norm_out * norm_in
+            + e_parametrix
+            + abs(log_lambda_over_mu) * e_heat
+            + e_local
+        )
+        + e_amputation / 2
+    )
+    residual_bound = (
+        abs(zero_mode_source)
+        * (
+            e_projector * norm_out * norm_in
+            + e_parametrix
+            + abs(log_lambda_over_mu) * e_heat
+            + e_local
+        )
+        + e_amputation
+    )
+    assert_equal(
+        "subtracted Green residual includes projection, parametrix, heat, local, and amputation errors",
+        residual <= residual_bound,
+        True,
+    )
+    underbudget_without_local_matching = (
+        abs(zero_mode_source)
+        * (
+            e_projector * norm_out * norm_in
+            + e_parametrix
+            + abs(log_lambda_over_mu) * e_heat
+        )
+        + e_amputation
+    )
+    assert_equal(
+        "omitting finite local matching error underbudgets subtracted Green insertion",
+        residual <= underbudget_without_local_matching,
         False,
     )
 
@@ -4365,6 +4565,7 @@ def main() -> None:
     check_nonzero_mode_source_fluctuation_quotient()
     check_first_source_cumulant_from_normal_modes()
     check_normal_propagator_source_insertion()
+    check_subtracted_normal_green_function_matching()
     check_hard_amplitude_assembly_bound()
     check_hard_reference_channel_calibration()
     check_finite_determinant_scheme_transport()
