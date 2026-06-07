@@ -28,6 +28,17 @@ nonperturbative PDF existence, threshold resummation, or small-\(x\)
 factorization.  The monograph TeX carries only the physics statement; issue and
 quality-control bookkeeping remains in planning files.
 
+## Follow-up Re-audit
+
+Issue #844 review correctly identified that the residual display was a
+proof-obligation decomposition, not a controlled approximation.  The monograph
+block was therefore demoted to `rem:qcd-dis-measured-test-functional-map`.
+The companion target was likewise narrowed: it checks the finite row/PDF dual
+transport, measured-row negative control, endpoint-support boundary
+obligation, and finite-regulator soft/collinear balance, but it does not assign
+or certify the physical higher-twist, perturbative, boundary, or continuum
+residual estimates.
+
 ## Verification
 
 - `python3 -m py_compile calculation-checks/qcd_dglap_checks.py`

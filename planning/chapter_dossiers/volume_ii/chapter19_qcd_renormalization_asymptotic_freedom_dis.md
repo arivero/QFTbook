@@ -1422,6 +1422,15 @@ The chapter must define and derive:
   inclusivity or incoming-collinear PDF subtraction.  This remains finite
   observable-assembly algebra, not a proof of all-order DIS factorization or
   nonperturbative PDF existence.
+- 2026-06-06 issue #844 measured-DIS status re-audit: demoted the same block
+  to `rem:qcd-dis-measured-test-functional-map` after review found that the
+  residual display was a proof-obligation decomposition, not a controlled
+  approximation.  The companion now checks the constructed finite algebra
+  only: coefficient-row/PDF dual scheme transport, wrong-row rejection,
+  endpoint-support changes as boundary obligations, and finite-regulator
+  soft/collinear subtraction balance.  Higher-twist, perturbative,
+  boundary, and continuum estimates are explicitly marked as imported or
+  process-specific inputs rather than manufactured residual slots.
 - 2026-06-03 issue #630 factorization-architecture pass: inserted the common
   QCD factorization dependency ladder before the DIS hypothesis, organizing
   compact DIS, TMD/Drell--Yan, and small-\(x\)/JIMWLK claims as process

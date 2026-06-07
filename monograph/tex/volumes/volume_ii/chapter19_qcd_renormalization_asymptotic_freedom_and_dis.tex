@@ -11265,8 +11265,8 @@ renormalizes the PDF is part of the definition of the factorized hadronic
 observable.  The residual \(\mu\)-dependence of this subtraction is the
 DGLAP evolution below.
 
-\begin{controlledapproximation}[Measured DIS test functional]
-\label{ca:qcd-dis-measured-test-functional}
+\begin{remark}[Measured DIS proof-obligation map]
+\label{rem:qcd-dis-measured-test-functional-map}
 Fix the compact interval \(K\Subset(0,1)\), a smooth measured bin or weight
 \(\varphi\in C_c^\infty(K)\), a finite ultraviolet regulator, and one
 factorization scheme.  The tested exact structure function is the scalar
@@ -11286,33 +11286,54 @@ row functional on the same PDF coordinates,
   C_{i,a}\!\left(\frac{x_B}{z},\frac{Q}{\mu},g(\mu)\right)h(z).
   \label{eq:qcd-dis-measured-coefficient-row}
 \end{equation}
-A compact-\(x\) DIS prediction is the assembled tested statement
+A compact-\(x\) DIS prediction must compare this measured scalar with the
+leading-twist coefficient/PDF row plus separately controlled remainders.  The
+useful bookkeeping identity is the residual decomposition
 \begin{equation}
 \begin{aligned}
+  R_i^{\rm tot}[\varphi]
+  &:=
   F_{i,Q}^{\rm exact}[\varphi]
-  &=
+  -
   \sum_a C_{i,\varphi,a}^{(\mu)}[f_{a/H}(\,\cdot\,,\mu)]
-  +R_i^{\rm HT}[\varphi]
+  \\
+  &=
+  R_i^{\rm HT}[\varphi]
   +R_i^{\rm pert}[\varphi]
   +R_i^{\rm sub}[\varphi]
   +R_i^{\rm bdry}[\varphi]
-  +R_i^{\rm reg}[\varphi],
-  \\
-  \bigl|R_i^{\rm tot}[\varphi]\bigr|
-  &\le
-  \epsilon_i^{\rm HT}(\varphi)
-  +\epsilon_i^{\rm pert}(\varphi)
-  +\epsilon_i^{\rm sub}(\varphi)
-  +\epsilon_i^{\rm bdry}(\varphi)
-  +\epsilon_i^{\rm reg}(\varphi).
+  +R_i^{\rm reg}[\varphi].
 \end{aligned}
-  \label{eq:qcd-dis-measured-test-budget}
+  \label{eq:qcd-dis-measured-test-residual-decomposition}
 \end{equation}
 Here \(R^{\rm HT}\) is the higher-twist remainder, \(R^{\rm pert}\) the
 truncation error in coefficient and kernel transport, \(R^{\rm sub}\) the
 finite-regulator subtraction and soft/collinear matching residual,
 \(R^{\rm bdry}\) the leakage from threshold or small-\(x\) regions excluded by
 \(K\), and \(R^{\rm reg}\) the continuum and finite-volume limiting error.
+Equation~\eqref{eq:qcd-dis-measured-test-residual-decomposition} is not by
+itself a controlled approximation.  It becomes a bound only after one supplies
+component estimates in the same tested topology,
+\[
+  |R_i^\alpha[\varphi]|\le\epsilon_i^\alpha(\varphi),
+  \qquad
+  \alpha\in\{{\rm HT,pert,sub,bdry,reg}\},
+\]
+in which case the triangle inequality gives the conditional estimate
+\[
+  |R_i^{\rm tot}[\varphi]|
+  \le
+  \epsilon_i^{\rm HT}(\varphi)
+  +\epsilon_i^{\rm pert}(\varphi)
+  +\epsilon_i^{\rm sub}(\varphi)
+  +\epsilon_i^{\rm bdry}(\varphi)
+  +\epsilon_i^{\rm reg}(\varphi).
+\]
+In the present chapter the coefficient row, the light-ray PDF coordinate, the
+dual scheme transport, and the finite-regulator soft/collinear cancellation
+are the constructed algebraic pieces.  The higher-twist, perturbative,
+boundary, and continuum estimates are imported or process-specific analytic
+inputs; they are not proved by naming the residual slots.
 
 The row \eqref{eq:qcd-dis-measured-coefficient-row}, the light-ray PDF
 coordinate, and the subtraction scheme are one package.  If the PDF coordinate
@@ -11328,7 +11349,7 @@ same tested row.  Dropping the endpoint residual for a family of weights that
 approaches \(x_B=1\), or treating the PDF evolution alone as the measured
 observable, gives a coordinate calculation rather than a structure-function
 prediction.
-\end{controlledapproximation}
+\end{remark}
 
 The operator-coordinate RG equation
 \eqref{eq:qcd-light-ray-operator-dglap-rg} gives the evolution equation
