@@ -515,6 +515,7 @@ def check_higgs_branch_background_field_derivation_gate():
         "frame_connection_seagull_identity",
         "mass_curvature_ward_pairing",
         "supercharge_factorization",
+        "off_shell_row_completion",
         "gauge_parameter_cancellation",
         "dimension_reduction_audit",
     }
@@ -658,6 +659,12 @@ def check_higgs_branch_background_field_derivation_gate():
         "frame_connection_seagull_identity": "generated_from_operator_conjugation",
         "mass_curvature_ward_pairing": "matched_operator_vertices_required",
         "supercharge_factorization": "off_shell_heavy_complex_required",
+        "off_shell_row_completion": {
+            "kinetic_frame_rows",
+            "gauge_fixing_and_ghost_rows",
+            "moment_map_auxiliary_rows",
+            "yukawa_rows",
+        },
     }
     assert_equal(
         missing_slots(operator_blueprint),
@@ -737,6 +744,20 @@ def check_higgs_branch_background_field_derivation_gate():
             for row in range(len(left))
         ]
 
+    def zero_matrix(row_count, column_count):
+        return [
+            [Fraction(0) for _column in range(column_count)]
+            for _row in range(row_count)
+        ]
+
+    def matrix_sum(matrices):
+        if not matrices:
+            raise ValueError("matrix_sum requires at least one matrix")
+        total = zero_matrix(len(matrices[0]), len(matrices[0][0]))
+        for matrix in matrices:
+            total = matrix_add(total, matrix)
+        return total
+
     def scalar_multiply(scalar, matrix):
         return [[scalar * entry for entry in row] for row in matrix]
 
@@ -756,6 +777,15 @@ def check_higgs_branch_background_field_derivation_gate():
                 for column, entry in enumerate(entries)
             ]
             for row, _entry in enumerate(entries)
+        ]
+
+    def row_component(matrix, row_index):
+        return [
+            [
+                entry if row == row_index else Fraction(0)
+                for entry in matrix[row]
+            ]
+            for row in range(len(matrix))
         ]
 
     def commutator(left, right):
@@ -1017,6 +1047,103 @@ def check_higgs_branch_background_field_derivation_gate():
         omitted_contact_residual == 0,
         False,
         "dropping the square-completion contact breaks the Ward-paired trace-log",
+    )
+
+    row_completed_q0 = diagonal_matrix([Fraction(2), Fraction(3), Fraction(5)])
+    row_completed_q1 = [
+        [Fraction(1), Fraction(0), Fraction(1)],
+        [Fraction(0), Fraction(2), Fraction(1)],
+        [Fraction(1), Fraction(1), Fraction(0)],
+    ]
+    row_completed_q2 = [
+        [Fraction(0), Fraction(1), Fraction(0)],
+        [Fraction(1), Fraction(0), Fraction(2)],
+        [Fraction(2), Fraction(0), Fraction(1)],
+    ]
+    row_completed_inverse = diagonal_matrix(
+        [Fraction(1, 4), Fraction(1, 9), Fraction(1, 25)]
+    )
+    row_completed_boson = supercharge_factorized_vertices(
+        row_completed_q0, row_completed_q1, row_completed_q2, "boson"
+    )
+    row_completed_fermion = supercharge_factorized_vertices(
+        row_completed_q0, row_completed_q1, row_completed_q2, "fermion"
+    )
+    row_completed_boson_cell = trace_log_vertex_residual(
+        row_completed_inverse,
+        row_completed_boson["linear_vertex"],
+        row_completed_boson["seagull_vertex"],
+    )
+    row_completed_fermion_cell = trace_log_vertex_residual(
+        row_completed_inverse,
+        row_completed_fermion["linear_vertex"],
+        row_completed_fermion["seagull_vertex"],
+    )
+    assert_equal(
+        row_completed_boson_cell,
+        row_completed_fermion_cell,
+        "row-completed Q-complex pairs the full second trace-log variation",
+    )
+
+    row_square_contacts = [
+        scalar_multiply(
+            Fraction(2),
+            matrix_multiply(
+                matrix_transpose(row_component(row_completed_q1, row_index)),
+                row_component(row_completed_q1, row_index),
+            ),
+        )
+        for row_index in range(len(row_completed_q1))
+    ]
+    full_row_square_contact = scalar_multiply(
+        Fraction(2),
+        matrix_multiply(matrix_transpose(row_completed_q1), row_completed_q1),
+    )
+    assert_equal(
+        matrix_sum(row_square_contacts),
+        full_row_square_contact,
+        "row-local square contacts sum to the full bosonic seagull contact",
+    )
+
+    auxiliary_yukawa_row = 2
+    auxiliary_yukawa_contact = row_square_contacts[auxiliary_yukawa_row]
+    omitted_auxiliary_row_seagull = matrix_subtract(
+        row_completed_boson["seagull_vertex"],
+        auxiliary_yukawa_contact,
+    )
+    omitted_auxiliary_row_residual = (
+        Fraction(1, 2)
+        * trace_log_vertex_residual(
+            row_completed_inverse,
+            row_completed_boson["linear_vertex"],
+            omitted_auxiliary_row_seagull,
+        )
+        - Fraction(1, 2) * row_completed_fermion_cell
+    )
+    full_row_supertrace = (
+        Fraction(1, 2) * row_completed_boson_cell
+        - Fraction(1, 2) * row_completed_fermion_cell
+    )
+    expected_omitted_row_shift = (
+        -Fraction(1, 2)
+        * matrix_trace(
+            matrix_multiply(row_completed_inverse, auxiliary_yukawa_contact)
+        )
+    )
+    assert_equal(
+        full_row_supertrace,
+        Fraction(0),
+        "row-completed heavy complex cancels before component diagnostics",
+    )
+    assert_equal(
+        omitted_auxiliary_row_residual - full_row_supertrace,
+        expected_omitted_row_shift,
+        "dropping an auxiliary/Yukawa row contact gives the trace-log shift",
+    )
+    assert_equal(
+        omitted_auxiliary_row_residual == 0,
+        False,
+        "missing auxiliary/Yukawa row contact breaks the Higgs determinant pairing",
     )
 
     component_balance_4d = sum(old_component_ledger["component_weights"].values())

@@ -110,6 +110,13 @@ later lower-dimensional examples, protected sectors, and localization.
   `eq:higgs-branch-supercharge-factorized-supertrace`: off-shell heavy
   \(Q\)-complex mechanism generating the paired second-variation vertices and
   their determinant cancellation on the regulated nonzero spectrum.
+- `ex:higgs-branch-off-shell-row-completion`,
+  `eq:higgs-branch-row-completed-heavy-map`,
+  `eq:higgs-branch-row-completed-bosonic-vertices`,
+  `eq:higgs-branch-row-completed-fermionic-seagull`,
+  `eq:higgs-branch-row-contact-residual`: row-resolved construction criterion
+  for obtaining the Higgs heavy \(Q\)-complex from kinetic, gauge-fixing,
+  moment-map auxiliary, and Yukawa pieces of the quadratic Lagrangian.
 - `eq:higgs-branch-heavy-multiplet-balance-heuristic`: signed
   four-dimensional long-multiplet balance, retained only as a diagnostic for
   missing sectors after the Ward identity or trace-log calculation has supplied
@@ -201,10 +208,12 @@ later lower-dimensional examples, protected sectors, and localization.
   rank-one background-field construction specifies the trace-log coefficient,
   nonminimal gauge operator, Goldstone, ghost, seagull, fermion, auxiliary, and
   gauge-parameter data that an independent determinant proof would have to
-  evaluate.  The old massive-multiplet balance is retained only as a diagnostic
-  consistency check.  Global nonperturbative equality is retained only as an
-  additional continuum assertion after boundary and extra-light-sector
-  exclusions.
+  evaluate.  It further records the row-resolved off-shell assembly obligation
+  for the heavy \(Q\)-complex, including the trace-log residual caused by
+  dropping a gauge-fixing, auxiliary, or Yukawa square-completion contact.  The
+  old massive-multiplet balance is retained only as a diagnostic consistency
+  check.  Global nonperturbative equality is retained only as an additional
+  continuum assertion after boundary and extra-light-sector exclusions.
 - Adds the two-dimensional \(\mathcal N=(4,4)\) ADHM/D1--D5 gauge-theory
   example with adjoint and fundamental hypermultiplets, explicit complex and
   real moment maps, quotient, dimension count
@@ -246,8 +255,10 @@ later lower-dimensional examples, protected sectors, and localization.
   verifies the frame-connection seagull identity from operator conjugation,
   checks Ward-paired mass-curvature vertices with a mismatched-vertex negative
   control, checks supercharge-factorized heavy-block pairing with a
-  dropped-contact negative control, and rejects use of the four-dimensional
-  gauge-field entry in dimensionally reduced arguments,
+  dropped-contact negative control, checks row-resolved off-shell heavy-complex
+  assembly with a missing auxiliary/Yukawa contact negative control, and rejects
+  use of the four-dimensional gauge-field entry in dimensionally reduced
+  arguments,
   fixed-charge branch-EFT checks for global-form/Weyl charge labels, the
   supersymmetric chiral-branch Noether map and Routhian energy, transverse
   gap hierarchy, and the abstract large-\(\mu\) simultaneous-window scaling
@@ -334,3 +345,9 @@ local models.
   that the bosonic and fermionic second trace-log variations pair spectrally
   even when their vertex matrices differ, and that dropping the contact term
   leaves a residual.
+- 2026-06-07 issue #850 off-shell row-completion pass: added the row-resolved
+  construction criterion for obtaining the Higgs heavy \(Q\)-complex from the
+  kinetic, gauge-fixing/ghost, moment-map auxiliary, and Yukawa pieces of the
+  quadratic Lagrangian.  The companion now checks that row-local contacts sum to
+  the full \(2Q_1^\dagger Q_1\) seagull and that dropping an auxiliary/Yukawa row
+  contact gives the predicted trace-log residual.

@@ -1128,6 +1128,115 @@ complex.  A regulator or auxiliary elimination that changes the bosonic
 \(\Pi_{mn}^{\rm 1-loop}\).
 \end{example}
 
+\begin{example}[Off-shell row completion of the Higgs heavy complex]
+\label{ex:higgs-branch-off-shell-row-completion}
+The factorized identity is useful for the Higgs-metric calculation only after
+\({\mathcal Q}(s)\) has been assembled from the quadratic gauge-fixed
+Lagrangian.  In the rank-one patch, after the branch tangent has been separated
+from the massive fluctuations in an orthonormal frame adapted to \(q_B(s)\), the
+regulated first-order map is built row by row:
+\begin{equation}
+  {\mathcal Q}(s)
+  =
+  \begin{pmatrix}
+    {\mathcal Q}_{\rm kin}(s)\\
+    {\mathcal Q}_{\rm gf}(s)\\
+    {\mathcal Q}_{\rm mom}(s)\\
+    {\mathcal Q}_{\rm Yuk}(s)
+  \end{pmatrix}.
+  \label{eq:higgs-branch-row-completed-heavy-map}
+\end{equation}
+The kinetic rows come from the covariant scalar, vector, and fermion kinetic
+terms in the moving heavy frame.  The gauge-fixing rows come from the
+background-field \(R_\xi\) functional
+\[
+  {\mathcal F}
+  =
+  D_B^\mu a_\mu
+  -
+  \xi g\,{\rm Im}(\bar q_B\,\delta q_{\rm eat}),
+\]
+together with the corresponding ghost linearization.  The moment-map rows are
+the \(D,F\)-auxiliary square completions for the triplet moment-map fluctuation.
+The Yukawa rows are the heavy gaugino-hypermultiplet fermion couplings generated
+by the same background \(q_B(s)\).  These rows may be reorganized by field
+redefinitions, but they cannot be deleted without retaining their Schur-complement
+contact terms.
+
+Writing
+\[
+  {\mathcal Q}_r(s)
+  =
+  {\mathcal Q}_{r,0}
+  +
+  s{\mathcal Q}_{r,1}
+  +
+  \frac{s^2}{2}{\mathcal Q}_{r,2}
+  +
+  O(s^3)
+\]
+for the row indexed by \(r\), the bosonic operator and its generated tangent
+vertices are
+\begin{equation}
+\begin{aligned}
+  {\mathcal O}_B
+  &=
+  \sum_r{\mathcal Q}_r^\dagger{\mathcal Q}_r,\\
+  X_B
+  &=
+  \sum_r
+  \left(
+    {\mathcal Q}_{r,1}^\dagger{\mathcal Q}_{r,0}
+    +
+    {\mathcal Q}_{r,0}^\dagger{\mathcal Q}_{r,1}
+  \right),\\
+  Y_B
+  &=
+  \sum_r
+  \left(
+    {\mathcal Q}_{r,2}^\dagger{\mathcal Q}_{r,0}
+    +
+    2{\mathcal Q}_{r,1}^\dagger{\mathcal Q}_{r,1}
+    +
+    {\mathcal Q}_{r,0}^\dagger{\mathcal Q}_{r,2}
+  \right).
+  \label{eq:higgs-branch-row-completed-bosonic-vertices}
+\end{aligned}
+\end{equation}
+The fermionic square has the same information with row indices left visible,
+\begin{equation}
+  (Y_F)_{rs}
+  =
+  {\mathcal Q}_{r,2}{\mathcal Q}_{s,0}^\dagger
+  +
+  2{\mathcal Q}_{r,1}{\mathcal Q}_{s,1}^\dagger
+  +
+  {\mathcal Q}_{r,0}{\mathcal Q}_{s,2}^\dagger ,
+  \label{eq:higgs-branch-row-completed-fermionic-seagull}
+\end{equation}
+and similarly for \(X_F\).  Thus each row has a local square-completion contact
+\[
+  C_A
+  =
+  2\sum_{r\in A}{\mathcal Q}_{r,1}^\dagger{\mathcal Q}_{r,1}
+\]
+for any group \(A\) of gauge-fixing, moment-map, or Yukawa rows.  If those rows
+are integrated out before the determinant is written, their Schur complement
+must reproduce \(C_A\).  If the contact is simply dropped while the fermionic
+operator is kept fixed, the second variation changes by
+\begin{equation}
+  \Pi_{\rm dropped}-\Pi_{\rm full}
+  =
+  -\frac12\,{\rm Tr}({\mathcal O}_0^{-1}C_A).
+  \label{eq:higgs-branch-row-contact-residual}
+\end{equation}
+This is the component-level obstruction to treating the old long-multiplet
+balance as a proof.  The actual rank-one determinant has to show that the
+kinetic, gauge-fixing/ghost, moment-map auxiliary, and Yukawa rows assemble into
+one regulated complex before it invokes the cancellation in
+\eqref{eq:higgs-branch-supercharge-factorized-supertrace}.
+\end{example}
+
 After the Ward identity or an explicit evaluation of
 \eqref{eq:higgs-branch-background-field-trace-log} has paired these operators,
 one may record the residual long-multiplet balance as a quick diagnostic.  In a

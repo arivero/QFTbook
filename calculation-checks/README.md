@@ -3001,8 +3001,10 @@ Current checks:
   operators, verifies the frame-connection seagull/double-insertion identity
   from operator conjugation, checks Ward-paired mass-curvature vertices with a
   mismatched-vertex negative control, checks supercharge-factorized heavy-block
-  pairing with a dropped-contact negative control, and blocks reuse of the
-  four-dimensional gauge-field entry in reduced dimensions,
+  pairing with a dropped-contact negative control, checks row-resolved
+  off-shell assembly of the heavy \(Q\)-complex with a missing auxiliary/Yukawa
+  row-contact negative control, and blocks reuse of the four-dimensional
+  gauge-field entry in reduced dimensions,
   fixed-charge branch-EFT checks for torus/global-form/Weyl charge labels,
   the supersymmetric chiral-branch Noether map, Routhian energy, transverse
   gap hierarchy, and large-\(\mu\) simultaneous-window scaling condition,
