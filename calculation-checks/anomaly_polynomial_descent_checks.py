@@ -24,6 +24,9 @@ inflow sections:
   Cartan trace tensor to the effective-action coefficient;
 * the Abelianized Bardeen-Zumino improvement changes the Ward coefficient
   from the consistent value C to the covariant value 3C;
+* the Cartan source-contact handoff first projects a counterterm-shifted
+  consistent contact to the polarized class before applying the covariant
+  Bardeen-Zumino factor-three map;
 * the U(1)^3, mixed gravitational-U(1), and mixed nonabelian-U(1) sums for
   one Standard Model generation;
 * the SU(N) fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
@@ -38,7 +41,8 @@ Independent construction: exact rational expansion of the A-hat and Chern
 character terms, separate component/wedge normalization arithmetic, universal
 Chern-Simons coefficient sums, finite source-derivative polarization of the
 consistent Ward identity with an independently supplied anomaly normalization,
-and explicit finite charge traces.
+Cartan consistent-to-covariant source-contact handoff, and explicit finite
+charge traces.
 Imported assumptions: the anti-Hermitian Chern-Weil convention, the chapter's
 trace and epsilon normalizations, one-generation Standard Model charge
 assignment, and the stated representation convention for SU(N).
@@ -46,8 +50,9 @@ Negative controls: Abelianized counterterm shifts are tested to leave only the
 complete symmetric cubic coordinate invariant, a single-current Ward contact
 term is tested to remain counterterm-dependent, the raw trace tensor is tested
 not to equal the effective-action coefficient before the anomaly normalization
-is applied, and adjoint/fundamental/antifundamental SU(N) bookkeeping is
-checked in separate representations.
+is applied, applying the covariant factor of three to an unpolarized
+counterterm-shifted contact is rejected, and adjoint/fundamental/antifundamental
+SU(N) bookkeeping is checked in separate representations.
 Scope boundary: a pass checks finite descent and coefficient arithmetic; it
 does not prove the local BRST cohomology classification, the analytic index
 theorem, or existence of the regulated continuum chiral gauge theory.
@@ -360,6 +365,91 @@ def check_abelian_bardeen_zumino_factor() -> None:
     )
 
 
+def check_cartan_consistent_covariant_contact_handoff() -> None:
+    raw_h = {
+        (0, 1, 2): Fraction(-5, 7),
+        (0, 2, 1): Fraction(11, 5),
+        (1, 2, 0): Fraction(13, 6),
+        (1, 3, 2): Fraction(-17, 11),
+        (2, 3, 1): Fraction(19, 13),
+    }
+
+    def h(i: int, j: int, k: int) -> Fraction:
+        if i == j:
+            return Fraction(0)
+        if (i, j, k) in raw_h:
+            return raw_h[(i, j, k)]
+        if (j, i, k) in raw_h:
+            return -raw_h[(j, i, k)]
+        return Fraction(0)
+
+    def class_coordinate(i: int, j: int, k: int) -> Fraction:
+        return Fraction(
+            (i + 1) * (j + 1)
+            + (j + 1) * (k + 1)
+            + (k + 1) * (i + 1),
+            41,
+        )
+
+    def delta_c(i: int, j: int, k: int) -> Fraction:
+        return -Fraction(1, 2) * (h(i, j, k) + h(i, k, j))
+
+    def shifted_consistent(i: int, j: int, k: int) -> Fraction:
+        return class_coordinate(i, j, k) + delta_c(i, j, k)
+
+    def polarized_consistent(i: int, j: int, k: int) -> Fraction:
+        return (
+            shifted_consistent(i, j, k)
+            + shifted_consistent(j, i, k)
+            + shifted_consistent(k, i, j)
+        ) / 3
+
+    def bardeen_zumino_divergence(i: int, j: int, k: int) -> Fraction:
+        return 2 * polarized_consistent(i, j, k)
+
+    def covariant_ward_coefficient(i: int, j: int, k: int) -> Fraction:
+        return polarized_consistent(i, j, k) + bardeen_zumino_divergence(i, j, k)
+
+    for i in range(4):
+        for j in range(4):
+            for k in range(4):
+                assert_equal(
+                    f"Cartan handoff recovers polarized class before BZ map {i}{j}{k}",
+                    polarized_consistent(i, j, k),
+                    class_coordinate(i, j, k),
+                )
+                assert_equal(
+                    f"Cartan BZ divergence is twice the class {i}{j}{k}",
+                    bardeen_zumino_divergence(i, j, k),
+                    2 * class_coordinate(i, j, k),
+                )
+                assert_equal(
+                    f"Cartan covariant Ward coefficient is three times class {i}{j}{k}",
+                    covariant_ward_coefficient(i, j, k),
+                    3 * class_coordinate(i, j, k),
+                )
+                assert_equal(
+                    f"Cartan covariant source contact is six times class {i}{j}{k}",
+                    2 * covariant_ward_coefficient(i, j, k),
+                    6 * class_coordinate(i, j, k),
+                )
+
+    wrong_factor_on_unpolarized_contact = 3 * shifted_consistent(0, 1, 2)
+    correct_covariant_class = covariant_ward_coefficient(0, 1, 2)
+    assert_not_equal(
+        "covariant factor cannot be applied before consistent-contact polarization",
+        wrong_factor_on_unpolarized_contact,
+        correct_covariant_class,
+    )
+
+    one_unit_bz_shortcut = class_coordinate(0, 1, 2) + class_coordinate(0, 1, 2)
+    assert_not_equal(
+        "omitting one Bardeen-Zumino unit misses covariant factor three",
+        one_unit_bz_shortcut,
+        correct_covariant_class,
+    )
+
+
 def check_standard_model_hypercharge_sums() -> None:
     cubic = sum(su3 * su2 * y**3 for _, su3, su2, y in SM_FIELDS)
     linear = sum(su3 * su2 * y for _, su3, su2, y in SM_FIELDS)
@@ -394,6 +484,7 @@ def main() -> None:
     check_abelian_counterterm_symmetric_cubic_invariance()
     check_source_ward_contact_polarization()
     check_abelian_bardeen_zumino_factor()
+    check_cartan_consistent_covariant_contact_handoff()
     check_standard_model_hypercharge_sums()
     check_su_n_bookkeeping()
     print("All anomaly-polynomial and inflow coefficient checks passed.")

@@ -118,7 +118,10 @@ Current checks:
   counterterms while the completely symmetric effective-action coordinate is
   invariant and only then converts back to the raw Cartan trace tensor, the
   Abelianized Bardeen--Zumino factor turning the consistent coefficient \(C\) into the
-  covariant coefficient \(3C\), one-generation Standard Model hypercharge sums, and
+  covariant coefficient \(3C\), the Cartan source-contact handoff which first
+  projects a counterterm-shifted consistent contact to the polarized class
+  before applying the covariant-current factor-three map, one-generation
+  Standard Model hypercharge sums, and
   \(SU(N)\) fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
 - `adler_bardeen_nonrenormalization_checks.py`: exact rational checks for the
   Adler--Bardeen theorem-boundary section, including projection of local

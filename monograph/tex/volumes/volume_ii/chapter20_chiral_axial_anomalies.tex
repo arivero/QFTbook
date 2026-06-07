@@ -2737,6 +2737,90 @@ ordered polynomial in
 \eqref{eq:bardeen-zumino-current-component-derivative}; the covariant current
 transforms covariantly, but it is not in general the differential of a local
 effective action.
+
+\begin{proposition}[Cartan handoff from consistent contacts to covariant current]
+\label{prop:cartan-consistent-covariant-contact-handoff}
+Work in the Cartan source chart of
+Proposition~\ref{prop:source-ward-test-cubic-anomaly}.  Let
+\[
+  S_{ijk}:=C_{(ijk)}
+\]
+be the counterterm-invariant polarized consistent-anomaly coefficient in the
+Euclidean effective-action normalization.  The canonical symmetric consistent
+representative is
+\[
+  C_{i;jk}^{\rm can}=S_{ijk}.
+\]
+In this representative the Cartan Bardeen--Zumino current is
+\begin{equation}
+  \star J_{{\rm BZ},i}^{\rm can}
+  =
+  2S_{ijk}A^jF^k,
+  \qquad
+  \dd\star J_{{\rm BZ},i}^{\rm can}
+  =
+  2S_{ijk}F^jF^k .
+  \label{eq:cartan-bz-current-class-map}
+\end{equation}
+Consequently the covariant-current Ward representative in this Cartan chart
+has coefficient
+\begin{equation}
+  K_{i;jk}^{\rm cov}
+  =
+  C_{i;jk}^{\rm can}+2S_{ijk}
+  =
+  3S_{ijk},
+  \qquad
+  D_{i;jk}^{\rm cov}=2K_{i;jk}^{\rm cov}=6S_{ijk}
+  \label{eq:cartan-covariant-contact-factor-three}
+\end{equation}
+for the twice-differentiated source contact.
+
+If a local counterterm has put the consistent representative in the form
+\[
+  C_{i;jk}=S_{ijk}+\Delta C_{i;jk},
+  \qquad
+  \Delta C_{(ijk)}=0,
+\]
+then \(C_{i;jk}\) must first be projected back to \(S_{ijk}\) before applying
+\eqref{eq:cartan-covariant-contact-factor-three}.  Multiplying a single
+counterterm-dependent \(C_{i;jk}\) by three would produce a
+representative-dependent number.  The matched anomaly datum is therefore
+\[
+  S_{ijk}
+  \longmapsto
+  K_{i;jk}^{\rm cov}=3S_{ijk},
+\]
+not the isolated current contact
+\(D_{i;jk}=2C_{i;jk}\).  This is the source-contact version of the
+consistent-versus-covariant distinction: the consistent representative is the
+variation of \(W[A]\) and obeys Wess--Zumino integrability, while the covariant
+current is obtained only after the local Bardeen--Zumino improvement.
+\end{proposition}
+
+\begin{proof}
+The first equality in \eqref{eq:cartan-bz-current-class-map} is the
+Cartan restriction of \eqref{eq:bardeen-zumino-current-polynomial} after
+the invariant source class \(S_{ijk}\) has been selected.  Since the
+background is Abelianized, \(\dd F^k=0\) and
+\[
+  \dd(A^jF^k)=F^jF^k-A^j\dd F^k=F^jF^k .
+\]
+Thus the Bardeen--Zumino divergence contributes \(2S_{ijk}F^jF^k\).
+Adding this to the canonical consistent coefficient \(S_{ijk}\) gives the
+covariant coefficient \(3S_{ijk}\), and differentiating \(F^jF^k\) with
+respect to two source one-forms gives the extra factor \(2\) in
+\(D_{i;jk}^{\rm cov}\).
+
+For a counterterm-shifted representative, the preceding proposition gives
+\(\Delta C_{(ijk)}=0\).  Hence the individual current contact
+\(2C_{i;jk}\) can change, while \(S_{ijk}\) cannot.  The Bardeen--Zumino
+map is a map from the invariant class coordinate to a covariant-current
+representative; applying the factor of three to \(C_{i;jk}\) before this
+projection would depend on the counterterm used to display the consistent
+anomaly.
+\end{proof}
+
 For a set of Weyl fermions, sum \eqref{eq:bardeen-zumino-current-polynomial}
 over left-handed representations and subtract the corresponding right-handed
 representations, in parallel with the anomaly polynomial \(I_6\).

@@ -268,11 +268,12 @@
   symmetrization over \(i,j,k\) vanishes.  The 2026-06-07 source-Ward
   continuation differentiates the consistent anomaly with respect to two
   background sources: a single current contact \(D_{i;jk}=2C_{i;jk}\) remains
-  counterterm-dependent, while the fully polarized coordinate
-  \((D_{i;jk}+D_{j;ik}+D_{k;ij})/6\) recovers the normalized effective-action
-  cubic class.  The follow-up normalization repair keeps this coordinate
-  proportional to, but not literally equal to, the raw Cartan trace tensor until
-  the anomaly-polynomial factor \(\kappa_{\rm anom}\) is applied.
+  representative-dependent, while the polarized effective-action coordinate
+  \(C_{(ijk)}\) is counterterm invariant and converts to the raw Cartan trace
+  tensor only after the anomaly-polynomial normalization is applied.  The
+  2026-06-07 consistent-to-covariant continuation checks that a
+  counterterm-shifted contact must first be projected to \(C_{(ijk)}\) before
+  applying the Bardeen--Zumino factor-three map to the covariant current.
 - `calculation-checks/anomaly_matching_wzw_checks.py` also checks the finite
   Abelianized Bardeen-counterterm algebra used here: shifts of the local
   anomaly representative leave the completely symmetric descent coefficient
@@ -631,6 +632,12 @@
   \(\dd\star J_{\rm BZ}=2C F^2\).  The covariant Ward representative
   therefore has coefficient \(3C\).  This is a local current-representative
   calibration, not a second anomaly class.
+- `prop:cartan-consistent-covariant-contact-handoff`: in the Cartan
+  source-contact chart, the counterterm-invariant polarized class
+  \(S_{ijk}=C_{(ijk)}\) is first selected, then the Bardeen--Zumino divergence
+  contributes \(2S_{ijk}\) and the covariant current has coefficient
+  \(3S_{ijk}\); applying the factor of three to an unpolarized
+  counterterm-shifted contact is explicitly rejected.
 - A nonzero global-symmetry anomaly is data to be matched by the infrared
   theory, while a nonzero gauge anomaly obstructs the gauge theory.
 - The Adler--Bardeen result is now stated as a quoted local perturbative
@@ -1358,6 +1365,10 @@
   Abelianized factor-three check for the distinction between the consistent
   descent representative and the covariant current representative, and paired
   it with an exact rational calculation check.
+- 2026-06-07 issue #696 consistent-to-covariant contact pass: added the
+  Cartan source-contact handoff proposition and companion negative controls,
+  forcing the counterterm-shifted consistent contact to be polarized before
+  the covariant-current factor-three map is applied.
 - 2026-06-01 issue #701 warning-scope pass: added a convention warning at the
   start of the anomaly chapter tying anomaly signs and factors to the entire
   datum \((\bar\psi,\gamma_5,\epsilon^{0123},D_\mu,F_{\mu\nu},\operatorname{tr})\),
