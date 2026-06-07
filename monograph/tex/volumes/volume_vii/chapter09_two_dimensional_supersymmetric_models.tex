@@ -3463,6 +3463,54 @@ the direct instanton side must pass before the Hori--Vafa residue is used as a
 comparison.
 \end{example}
 
+\begin{example}[Evaluation-form Berezin Jacobian]
+\label{ex:cpn-degree-one-evaluation-berezin-jacobian}
+The Euler quotient gives the tangent zero modes, but the A-twisted insertions
+must still saturate their fermionic partners.  In the affine degree-one chart
+used above, set \(A_0=1\) and order the zero-mode one-forms as
+\[
+  \Omega_{\rm zm}
+  =
+  \psi_{A_1}\wedge\cdots\wedge\psi_{A_{N-1}}
+  \wedge\psi_{B_0}\wedge\psi_{B_1}
+  \wedge\cdots\wedge\psi_{B_{N-1}} .
+\]
+The point insertion at \([1:0]\) contributes
+\(\psi_{A_1}\wedge\cdots\wedge\psi_{A_{N-1}}\).  Use the oriented
+representative of the second point insertion that supplies
+\(\psi_{B_0}\) and \(\psi_{B_j}\) for \(j\ge2\).  The hyperplane
+\(X_1-X_0=0\) at \([1:1]\) pulls back to
+\[
+  h=(A_1+B_1)-(A_0+B_0),
+  \qquad
+  dh=\psi_{A_1}+\psi_{B_1}-\psi_{B_0}.
+\]
+Therefore the top Berezin coefficient is the determinant
+\begin{equation}
+  \det
+  \frac{\partial(A_1,\ldots,A_{N-1},B_0,h,B_2,\ldots,B_{N-1})}
+       {\partial(A_1,\ldots,A_{N-1},B_0,B_1,\ldots,B_{N-1})}
+  =
+  +1 .
+  \label{eq:cpn-degree-one-evaluation-berezin-jacobian}
+\end{equation}
+Equivalently, in the wedge product the \(\psi_{A_1}\) and
+\(\psi_{B_0}\) terms in \(dh\) repeat earlier factors and vanish; the
+\(\psi_{B_1}\) term supplies the missing zero-mode form with positive
+orientation.  This is the operator-insertion part of the instanton measure,
+not a property of the mirror root sum.
+
+Two failures are now visible at the level of the measure.  If the hyperplane
+representative is replaced by a form lying in the span of the two point
+insertions, the determinant in
+\eqref{eq:cpn-degree-one-evaluation-berezin-jacobian} vanishes: the Berezin
+measure is not saturated even though the image line still exists.  If the
+hyperplane representative is rescaled by \(\lambda\), the coefficient is
+multiplied by \(\lambda\).  Thus the direct A-model amplitude requires the
+operator normalization and evaluation-form orientation in the same regulator as
+the vortex determinant line.
+\end{example}
+
 \begin{remark}[Finite measure-scheme covariance]
 \label{rem:cpn-degree-one-measure-scheme-covariance}
 The previous bridge has a further invariance test.  The finite objects

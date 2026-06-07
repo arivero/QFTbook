@@ -155,6 +155,11 @@ and
   sequence quotient computing the `H^0(O(1)^N)/H^0(O)` tangent zero modes,
   determinant-line orientation, and paired nonzero-mode cancellation in the
   retained A-twisted window.
+- `ex:cpn-degree-one-evaluation-berezin-jacobian`,
+  `eq:cpn-degree-one-evaluation-berezin-jacobian`: evaluation-form Berezin
+  Jacobian for the degree-one `P^{N-1}` three-point insertion, showing how two
+  point insertions and one hyperplane insertion saturate the fermionic zero-mode
+  measure with coefficient `+1`.
 - `q_mir`, `I_{Lambda,1}`, `B_vort`, `B_I`, `B_q`, `B_off,a`:
   mirror-residue FI coordinate, retained finite degree-one instanton-measure
   integral, and residual majorants in the Hori--Vafa residue/direct-instanton
@@ -485,6 +490,12 @@ and
   tangent/fermion zero-mode quotient, removes the common homogeneous
   rescaling, fixes the complex determinant-line orientation, and keeps the
   paired nonzero-mode determinant ratio distinct from the incidence count.
+- Adds the degree-one evaluation-form Berezin-Jacobian calculation: in the same
+  affine stable-map chart, the two point insertions and the hyperplane
+  insertion are pulled back as zero-mode one-forms, and their top wedge has
+  determinant `+1`.  Duplicated/contact forms, hyperplane rescalings, and
+  orientation swaps change the A-twisted coefficient, so the line count is tied
+  to the operator representative and fermion measure.
 - Adds the finite measure-scheme covariance test for that same degree-one
   observable: rescaling the supplied vortex coefficients must be accompanied by
   the inverse FI-coordinate shift, and changing the zero-mode chart density
@@ -724,6 +735,11 @@ and
     nonzero-mode determinant cancellation, and rejects forgetting the common
     rescaling, flipping the determinant orientation, or omitting an obstruction
     Euler factor;
+  - the degree-one evaluation-form Berezin-Jacobian check: pulls the two point
+    insertions and one hyperplane insertion back to the Euler-oriented zero-mode
+    chart, computes the top wedge coefficient `+1`, and rejects duplicated
+    evaluation forms, hyperplane normalization changes, orientation swaps, and
+    missing forms;
   - the degree-one finite measure-scheme covariance test: exact transport of
     finite vortex-coefficient rescalings into the FI coordinate, retained-chart
     Jacobian cancellation between the collective-coordinate measure and the
@@ -1065,6 +1081,13 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   not a full continuum Hori--Vafa proof: it closes the common-rescaling,
   determinant-line-orientation, and paired-nonzero-mode cell while leaving the
   vortex-regulator limit and operator/source comparison as residual work.
+- The 2026-06-07 issue #847 evaluation-form follow-up adds the degree-one
+  `P^{N-1}` evaluation-form Berezin Jacobian.  The operator insertions now act
+  on the fermion zero modes explicitly: the two point constraints and one
+  hyperplane constraint have top wedge coefficient `+1` in the retained chart,
+  while duplicated forms, rescalings, and orientation swaps change or kill the
+  coefficient.  This deepens the direct instanton measure side without claiming
+  the continuum vortex-regulator theorem.
 - The 2026-06-07 issue #847 quotient global-form lattice pass makes that last
   boundary constructive.  The chapter now displays the cocharacter flux
   lattice, dual character lattice, FI-theta period lattice, and rank-one

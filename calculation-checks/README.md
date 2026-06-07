@@ -3148,6 +3148,10 @@ Current checks:
   Euler-sequence determinant-line check computing the \(H^0(\mathcal O(1)^N)/
   H^0(\mathcal O)\) tangent quotient, complex orientation, paired nonzero-mode
   cancellation, and unquotiented-zero-mode negative control, the finite
+  evaluation-form Berezin-Jacobian check computing the top zero-mode coefficient
+  of the two point insertions and one hyperplane insertion, with negative
+  controls for duplicated evaluation forms, hyperplane rescaling, orientation
+  swaps, and unsaturated zero modes, the finite
   measure-scheme covariance test checking the simultaneous transport of
   vortex coefficient normalizations, the FI coordinate, chart Jacobians,
   determinant densities, and orientation/operator signs, the Hori--Vafa

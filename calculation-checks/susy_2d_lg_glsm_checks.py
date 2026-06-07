@@ -22,8 +22,9 @@ vortex-fugacity dimensional-transmutation coordinate, the degree-one
 P^{N-1} stable-map computation, the finite degree-one stable-map incidence model
 with supplied vortex coefficient input plus conditional proof-obligation template for
 the quantum-product observable relation, the A-model degree-one zero-mode
-measure bridge, the finite measure-scheme covariance test for that
-degree-one coefficient, the mirror-conjecture observable boundary separating
+measure bridge, the degree-one evaluation-form Berezin Jacobian, the finite
+measure-scheme covariance test for that degree-one coefficient, the
+mirror-conjecture observable boundary separating
 full-QFT data from protected evidence, the full-action/IR-universality data
 boundary for mirror presentations, admissible mirror-datum and finite-volume
 noncompact spectral-domain gates, finite D-term RG Schur-complement
@@ -61,8 +62,9 @@ coefficient extraction, warning-clean flux-carrying magnetic-torus
 Wilson-overlap indices, heat-kernel Fujikawa traces, logarithm branch shifts, and
 axial-monodromy ledgers,
 root-of-unity residue sums,
-stable-map incidence Jacobians, A-model zero-mode degree filters, and
-conditional residual-propagation maps, full-action data-interface tests,
+stable-map incidence and evaluation-form Berezin Jacobians, A-model zero-mode
+degree filters, and conditional residual-propagation maps, full-action
+data-interface tests,
 finite Legendre-domain and boundary-term cells, finite-volume Robin
 self-adjoint-domain quantization tests, finite Schur-complement low-Hamiltonian
 and source-resolvent/source-metric comparisons for D-term RG transport, cigar central-charge and
@@ -174,7 +176,7 @@ absolute mass, wrong residue selection powers, underspecified residual
 budgets, stable-map dimension mismatches, mirror-only or dimension-only
 quantum-product shortcuts, determinant-orientation flips,
 zero-mode multiplicity errors, compactification/contact mutations,
-hyperplane-normalization changes, omitted off-pairing controls, line-count-only
+duplicated evaluation forms, hyperplane-normalization changes, omitted off-pairing controls, line-count-only
 or vortex-fugacity-only observable claims, stale FI-coordinate changes,
 missing measure Jacobians, untransported orientation signs, protected-sector
 shortcuts to full mirror equivalence, metric/dilaton representatives used as
@@ -3710,6 +3712,85 @@ def check_degree_one_cpn_euler_determinant_line() -> None:
         )
 
 
+def check_degree_one_cpn_evaluation_form_berezin_jacobian() -> None:
+    # The degree-one line count becomes an A-model amplitude only after the
+    # pulled-back evaluation forms saturate the fermionic zero-mode Berezin
+    # measure.  This finite chart computes that top coefficient directly.
+    for n_fields in range(2, 9):
+        variables = (
+            [("A", index) for index in range(1, n_fields)]
+            + [("B", index) for index in range(n_fields)]
+        )
+
+        def covector(entries: dict[tuple[str, int], Fraction]) -> list[Fraction]:
+            return [entries.get(variable, Fraction(0)) for variable in variables]
+
+        rows = [covector({("A", index): Fraction(1)}) for index in range(1, n_fields)]
+        rows.append(covector({("B", 0): Fraction(1)}))
+        hyperplane_row = covector(
+            {
+                ("A", 1): Fraction(1),
+                ("B", 1): Fraction(1),
+                ("B", 0): -Fraction(1),
+            }
+        )
+        rows.append(hyperplane_row)
+        rows.extend(
+            covector({("B", index): Fraction(1)})
+            for index in range(2, n_fields)
+        )
+        assert_equal(
+            f"CP^{n_fields - 1} evaluation-form Berezin Jacobian",
+            determinant_fraction(rows),
+            Fraction(1),
+        )
+        assert_equal(
+            f"CP^{n_fields - 1} evaluation forms saturate every zero mode",
+            rank_fraction(rows),
+            len(variables),
+        )
+
+        rescaling = Fraction(3)
+        rescaled_rows = [row[:] for row in rows]
+        rescaled_rows[n_fields] = [rescaling * entry for entry in hyperplane_row]
+        assert_equal(
+            "hyperplane representative normalization rescales the Berezin coefficient",
+            determinant_fraction(rescaled_rows),
+            rescaling,
+        )
+
+        duplicate_rows = [row[:] for row in rows]
+        duplicate_rows[n_fields] = covector({("A", 1): Fraction(1)})
+        assert_equal(
+            "duplicated evaluation form fails to saturate the Berezin measure",
+            determinant_fraction(duplicate_rows),
+            Fraction(0),
+        )
+        assert_equal(
+            "duplicated evaluation form drops the evaluation-map rank",
+            rank_fraction(duplicate_rows) < len(variables),
+            True,
+        )
+
+        swapped_rows = [row[:] for row in rows]
+        swapped_rows[n_fields - 1], swapped_rows[n_fields] = (
+            swapped_rows[n_fields],
+            swapped_rows[n_fields - 1],
+        )
+        assert_equal(
+            "evaluation-form orientation swap flips the A-model coefficient",
+            determinant_fraction(swapped_rows),
+            -Fraction(1),
+        )
+
+        missing_row_rank = rank_fraction(rows[:-1])
+        assert_equal(
+            "missing evaluation form leaves an unsaturated fermion zero mode",
+            missing_row_rank < len(variables),
+            True,
+        )
+
+
 def check_degree_one_measure_scheme_covariance() -> None:
     # A finite change of vortex coefficient normalization and zero-mode chart
     # coordinates is harmless only when the FI coordinate, determinant density,
@@ -6014,6 +6095,7 @@ def main() -> None:
     check_cp_degree_d_quantum_product_iteration()
     check_degree_one_amodel_zero_mode_measure_bridge()
     check_degree_one_cpn_euler_determinant_line()
+    check_degree_one_cpn_evaluation_form_berezin_jacobian()
     check_degree_one_measure_scheme_covariance()
     check_hori_vafa_residue_instanton_comparison_map()
     check_cigar_metric_elimination()
