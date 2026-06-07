@@ -876,9 +876,10 @@ Current checks:
   residual budget,
   the two-term hard-window tail subtraction with leading \(R^{-1/3}\) and
   subleading \(R^{-7/3}\) endpoint pieces, the screened hard-size
-  retained-window check which uses the \(35/3\) logarithmic shell power,
-  hard-source envelope, physical screening scale, and source/projection
-  residuals together,
+  majorant-window check which uses the \(35/3\) logarithmic shell power,
+  hard-source envelope, independently computed finite screening mass,
+  boundary and weak-coupling gates, actual-kernel counterexamples under the
+  same majorant, and source/projection residuals together,
   the finite Gaussian nonzero-mode source quotient and its covariance identity,
   the Wick-paired first source cumulant showing how a linear normal-mode
   source deformation couples to the cubic fluctuation action,
@@ -938,8 +939,10 @@ Current checks:
   Gaussian mean, or physical projection by a raw Euclidean kernel sum, an
   off-diagonal determinant sign flip, moduli-only prediction, rank-one source
   shortcut, leading-tail-only hard-window approximation, hard-only or
-  screening-only screened-window shells, a wrong \(d\rho\) power used as a
-  logarithmic shell power, moduli-only screened-tail bounds, fused-density
+  screening-only screened-window shells, treating the majorant shell as an
+  actual-amplitude peak without comparability, using an interior shell below
+  the long-size endpoint or outside weak coupling, a wrong \(d\rho\) power used
+  as a logarithmic shell power, moduli-only screened-tail bounds, fused-density
   endpoint substitution, unamputated residue
   absorption, vacuum determinant calibration used as a source-fluctuation
   quotient, relative fluctuation division after rank loss, determinant-only

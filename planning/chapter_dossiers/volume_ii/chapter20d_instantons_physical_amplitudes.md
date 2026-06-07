@@ -116,9 +116,11 @@
   as a finite core plus leading `R^(-1/3)` and subleading `R^(-7/3)` analytic
   endpoint tails from the two-term zero-mode-slot expansion.
 - `ca:instanton-hard-screened-retained-window`: adds the amplitude-level
-  retained-size diagnostic in which the hard-source envelope, physical
-  screening scale, logarithmic shell power, source/projection norms, and
-  long-size residuals are kept in one bound.
+  majorant-window diagnostic in which the hard-source envelope, physical
+  screening scale, logarithmic shell power, endpoint and weak-coupling gates,
+  source/projection norms, and long-size residuals are kept in one bound.  The
+  shell is explicitly not a physical amplitude peak unless a separate
+  comparability and noncancellation estimate is supplied.
 - `ca:instanton-hard-benchmark-gate-ledger`: same-theory hard-scale ratio and
   residual multiplier bound after the channel data and source-window shape have
   been transported.
@@ -638,16 +640,20 @@
   zero-mode determinant only afterward.  The companion rejects replacing this
   bilinear by a determinant constant, unprimed inverse, trace, diagonal residue
   division, or an underbudgeted propagator residual.
-- 2026-06-07 issue #597 screened retained-window pass: added
+- 2026-06-07 issue #597 screened retained-window pass, then re-audited after
+  the same-day review: added
   `ca:instanton-hard-screened-retained-window` after the hard-window
-  tail-subtraction block.  The pass converts the parent hard/screened shell
-  identity into a physical-amplitude diagnostic: the \(35/3\) logarithmic
-  shell power, hard source envelope, physical screening scale, source and
+  tail-subtraction block.  The re-audit narrows the claim to a screened
+  majorant-window diagnostic: the \(35/3\) logarithmic shell power, hard source
+  envelope, physical screening scale, endpoint/weak-coupling gates, source and
   projection norms, determinant/normal-mode/tail/projection residuals, and the
-  long-size integral all live in one bound.  The companion rejects hard-only,
-  screening-only, wrong-log-power, and moduli-only screened-tail shortcuts.
-  This addresses instanton amplitudes through fluctuation/source/projection
-  control, not moduli-space geometry.
+  long-size integral all live in one bound.  The companion now rejects
+  hard-only, screening-only, wrong-log-power, moduli-only screened-tail,
+  majorant-as-actual-peak, boundary-mislocated-shell, and weak-coupling-domain
+  shortcuts.  This addresses instanton amplitudes through
+  fluctuation/source/projection control, not moduli-space geometry, and it does
+  not claim an actual amplitude peak without comparability/noncancellation
+  data.
 - 2026-06-07 issue #597 subtracted normal-Green pass: added
   `ca:instanton-subtracted-normal-green-matching` immediately after the
   normal-propagator insertion block.  The pass turns the primed propagator

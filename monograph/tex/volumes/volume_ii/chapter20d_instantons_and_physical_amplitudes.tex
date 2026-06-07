@@ -1366,7 +1366,7 @@ into the assembled channel and then into the Wilsonian, pole, spectral, or
 inclusive projection described below.
 \end{controlledapproximation}
 
-\begin{controlledapproximation}[Screened hard-size amplitude window]
+\begin{controlledapproximation}[Screened hard-size majorant window]
 \label{ca:instanton-hard-screened-retained-window}
 The tail subtraction in
 \eqref{eq:instanton-hard-window-tail-subtracted-integral} controls the power
@@ -1376,17 +1376,23 @@ statement needs a channel-specific long-size mechanism from the same regulated
 observable: for example a Higgs scale, a thermal/medium scale, a finite-volume
 gap, a spectral-bin source envelope, or a Wilsonian matrix element estimate.
 
-Assume that, after the same color projection, source amputation, determinant
-normalization, and physical projection used in the hard four-source channel, the
-long-size part of a selected channel \(\mathcal C\) has the absolute majorant
+Fix the selected source windows \(U,V\), the color projection, the amputation
+map, and the determinant scheme before the final physical projection.  Let
+\(\mathcal K^{\rm pre}_{\mathcal C,\Lambda}(\rho;U,V)\) denote the resulting
+pre-projection radial kernel, and let \(P_{\rm phys}^{\mathcal C}\) be the
+linear projection to the declared physical coordinate.  Assume the source
+windows have dimensionless norm \(M_{\rm src}(\mathcal C)\), that
+\(\|P_{\rm phys}^{\mathcal C}\|=M_{\rm phys}(\mathcal C)\), and that the
+pre-projection kernel has the absolute majorant
 \begin{equation}
-  |\mathcal K_{\mathcal C}(\rho)|
+  |\mathcal K^{\rm pre}_{\mathcal C,\Lambda}(\rho;U,V)|
   \le
   K_{\mathcal C}\,
+  M_{\rm src}(\mathcal C)\,
   \rho^{A_{\mathcal C}-1}
   \exp[-d_{\mathcal C}Q\rho-m_{\rm scr}^2\rho^2],
   \qquad
-  A_{\mathcal C}>0,\quad d_{\mathcal C}>0 .
+  A_{\mathcal C}>1,\quad d_{\mathcal C}>0 .
   \label{eq:instanton-hard-screened-channel-majorant}
 \end{equation}
 Here \(A_{\mathcal C}\) is the logarithmic size-shell power before the
@@ -1416,13 +1422,57 @@ Its stationary point is fixed by the combined equation
         \sqrt{d_{\mathcal C}^{\,2}Q^2+8A_{\mathcal C}m_{\rm scr}^2}} .
   \label{eq:instanton-hard-screened-log-shell}
 \end{equation}
+This \(\rho_*\) is the stationary point of the majorizing envelope.  It is not,
+without more input, the peak of the physical kernel or the dominant instanton
+size in the amplitude.  A signed or complex source amplitude can obey
+\eqref{eq:instanton-hard-screened-channel-majorant} while vanishing by
+projection, oscillating through the shell, or concentrating near a boundary.
+To promote the envelope shell to a dominance statement one must add a
+channel-specific lower/comparability estimate, for example a positive spectral
+or rate density satisfying a lower bound on a window
+\(\mathcal W=[\rho_-,\rho_+]\), together with a quantified tail fraction outside
+\(\mathcal W\) and a noncancellation condition after \(P_{\rm phys}^{\mathcal C}\).
 The hard-only shell \(A_{\mathcal C}/(d_{\mathcal C}Q)\) and the
 screened-only shell \(\sqrt{A_{\mathcal C}/(2m_{\rm scr}^2)}\) are limiting
 checks on this equation, not substitutes for it.  Forgetting the passage from
 \(\dd\rho\) to \(\dd\log\rho\), replacing \(A_{\mathcal C}=35/3\) by
 \(32/3\) in the hard four-source channel, or dropping either the hard envelope
 or the physical screening scale moves the shell and changes the amplitude
-window.
+envelope window.
+
+The long-size lower endpoint and the semiclassical domain are separate gates.
+With \(\rho_0=R/Q\), an interior retained-window reading requires
+\[
+  \rho_0\le \rho_-<\rho_*<\rho_+,
+  \qquad
+  \Lambda_{\rm QCD}\rho_+\ll1
+\]
+or the corresponding weakly coupled Higgs/thermal regime that supplied
+\(m_{\rm scr}\).  If \(\rho_0\ge\rho_*\), the envelope is already past its
+logarithmic shell in the integration domain, and the estimate is controlled by
+the boundary rather than an interior saddle.  In that case, whenever
+\[
+  d_{\mathcal C}Q+2m_{\rm scr}^2\rho_0
+  -\frac{A_{\mathcal C}-1}{\rho_0}>0,
+\]
+convexity of
+\(
+d_{\mathcal C}Q\rho+m_{\rm scr}^2\rho^2-(A_{\mathcal C}-1)\log\rho
+\)
+gives the boundary tail bound
+\[
+  \int_{\rho_0}^{\infty}
+  \rho^{A_{\mathcal C}-1}
+  e^{-d_{\mathcal C}Q\rho-m_{\rm scr}^2\rho^2}\,\dd\rho
+  \le
+  \frac{
+  \rho_0^{A_{\mathcal C}-1}
+  e^{-d_{\mathcal C}Q\rho_0-m_{\rm scr}^2\rho_0^2}
+  }{
+  d_{\mathcal C}Q+2m_{\rm scr}^2\rho_0
+  -(A_{\mathcal C}-1)/\rho_0
+  } .
+\]
 
 Consequently the long-size contribution is controlled only after the source
 and projection norms are kept with the size estimate:
@@ -1442,10 +1492,12 @@ and projection norms are kept with the size estimate:
 \end{aligned}
   \label{eq:instanton-hard-screened-window-bound}
 \end{equation}
-This is the amplitude-level use of the screened shell.  It asks where the
-retained physical contribution lives after the fluctuation determinant, source
-window, and projection have supplied their data.  It is not a new moduli-space
-volume formula and it is not a phenomenological instanton regime by itself.
+This is the amplitude-level use of the screened majorant.  It asks which
+long-size region remains compatible with the hard source envelope, screening
+scale, weak-coupling domain, source norms, projection norm, and residual
+telescope.  It is not a new moduli-space volume formula, not a proof that the
+actual amplitude is concentrated at \(\rho_*\), and not a phenomenological
+instanton regime by itself.
 A 't Hooft-style four-point calculation must still exhibit the determinant,
 nonzero-mode source response, zero-mode slots, amputation, projection, and
 residuals in the common regulator before the screened window can be read as a

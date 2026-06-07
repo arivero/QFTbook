@@ -142,11 +142,12 @@ Target claims:
 - `ca:instanton-hard-window-tail-subtraction`: the hard four-source window is
   controlled as a core integral plus leading and subleading analytic endpoint
   tails, rather than as a formal size integral.
-- `ca:instanton-hard-screened-retained-window`: a screened hard-size amplitude
+- `ca:instanton-hard-screened-retained-window`: a screened hard-size majorant
   window uses the logarithmic shell power, the hard source envelope, the
-  physical screening scale, and the source/projection residual budget together;
-  hard-only, screening-only, moduli-only, and wrong `d rho` power substitutions
-  change the amplitude window.
+  physical screening scale, endpoint/weak-coupling gates, and the
+  source/projection residual budget together; the majorant shell is not a
+  physical amplitude peak unless comparability and noncancellation data are
+  also supplied.
 - `sec:instanton-hard-wilsonian-ope-datum` and
   `ca:instanton-wilsonian-matching-covariance`: the hard source kernel
   becomes a Wilsonian local four-fermion input only after a dimensionless size
@@ -189,9 +190,10 @@ Independent construction:
   source kernel with formal theta-phase bookkeeping,
   mass-assisted two-source interference with exact formal mass/theta powers,
   physical projection bins, residual sums, two-term hard-window endpoint
-  tail subtraction, screened hard-size retained-window stationarity and
-  source/projection residual budgets, Wilsonian coefficient/operator scheme
-  covariance,
+  tail subtraction, screened hard-size majorant-window stationarity,
+  boundary/weak-coupling gates, actual-kernel counterexamples under the same
+  majorant, source/projection residual budgets, Wilsonian
+  coefficient/operator scheme covariance,
   boundary-flux/anomalous-dimension cancellation, and hard-window power checks
   directly, rather than importing BPST radial integrals or copying a monograph
   coefficient.
@@ -324,7 +326,10 @@ Negative controls:
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
   slot, a leading-tail-only hard-window approximation, hard-only or
   screening-only shell substitutions, a moduli-only screened-window bound, a
-  wrong `d rho` power used as a logarithmic shell power, a fused-density
+  majorant-shell peak treated as an actual-amplitude peak without
+  comparability, an interior saddle used below the long-size endpoint or
+  outside the weak-coupling domain, a wrong `d rho` power used as a
+  logarithmic shell power, a fused-density
   endpoint substituted for differentiated slots, a fixed short-instanton
   vertex under a moving size boundary, a short
   coefficient used as a physical amplitude, a finite scheme change applied to
@@ -3774,16 +3779,30 @@ def check_hard_screened_retained_size_window() -> None:
         Fraction(35, 3),
     )
 
-    hard_envelope = Fraction(2)
-    rho_star = Fraction(3, 2)
-    screening_mass_squared = (
-        log_shell_power - hard_envelope * rho_star
-    ) / (2 * rho_star * rho_star)
+    hard_source_spectral_gaps = [Fraction(2), Fraction(7, 3), Fraction(3)]
+    hard_envelope = min(hard_source_spectral_gaps)
     assert_equal(
-        "screened hard-window exact mass choice",
+        "screened majorant hard envelope from finite source gaps",
+        hard_envelope,
+        Fraction(2),
+    )
+
+    # Derive the screening mass from independent finite medium data, rather
+    # than choosing the desired shell and solving backward for the mass.
+    screening_vector = [Fraction(2), Fraction(1)]
+    screening_eigenvalues = [Fraction(2), Fraction(44, 27)]
+    screening_norm = sum(value * value for value in screening_vector)
+    screening_mass_squared = sum(
+        value * value * eigenvalue
+        for value, eigenvalue in zip(screening_vector, screening_eigenvalues)
+    ) / screening_norm
+    assert_equal(
+        "screened majorant mass from finite screening Rayleigh quotient",
         screening_mass_squared,
         Fraction(52, 27),
     )
+
+    rho_star = Fraction(3, 2)
 
     def log_shell_derivative(
         shell_power: Fraction,
@@ -3798,7 +3817,7 @@ def check_hard_screened_retained_size_window() -> None:
         )
 
     assert_equal(
-        "screened hard-window mixed stationarity",
+        "screened majorant mixed stationarity",
         log_shell_derivative(
             log_shell_power,
             rho_star,
@@ -3808,7 +3827,7 @@ def check_hard_screened_retained_size_window() -> None:
         Fraction(0),
     )
     assert_gt(
-        "screened hard-window derivative before shell",
+        "screened majorant derivative before shell",
         log_shell_derivative(
             log_shell_power,
             Fraction(1),
@@ -3818,7 +3837,7 @@ def check_hard_screened_retained_size_window() -> None:
         Fraction(0),
     )
     assert_gt(
-        "screened hard-window derivative after shell has changed sign",
+        "screened majorant derivative after shell has changed sign",
         Fraction(0),
         log_shell_derivative(
             log_shell_power,
@@ -3831,12 +3850,12 @@ def check_hard_screened_retained_size_window() -> None:
     hard_only_shell = log_shell_power / hard_envelope
     screened_only_shell_squared = log_shell_power / (2 * screening_mass_squared)
     assert_equal(
-        "screened hard-window mixed shell below hard-only shell",
+        "screened majorant mixed shell below hard-only shell",
         rho_star < hard_only_shell,
         True,
     )
     assert_equal(
-        "screened hard-window mixed shell below screened-only shell",
+        "screened majorant mixed shell below screened-only shell",
         rho_star * rho_star < screened_only_shell_squared,
         True,
     )
@@ -3869,30 +3888,165 @@ def check_hard_screened_retained_size_window() -> None:
         -Fraction(1),
     )
 
+    lower_endpoint = Fraction(1)
+    window_low = Fraction(4, 3)
+    window_high = Fraction(5, 3)
+    weak_coupling_lambda = Fraction(1, 10)
+    weak_coupling_limit = Fraction(1, 4)
+    assert_equal(
+        "screened majorant interior shell lies above long-size endpoint",
+        lower_endpoint <= window_low < rho_star < window_high,
+        True,
+    )
+    assert_equal(
+        "screened majorant window stays in weak-coupling domain",
+        weak_coupling_lambda * window_high < weak_coupling_limit,
+        True,
+    )
+
+    boundary_endpoint = Fraction(2)
+    assert_equal(
+        "endpoint above shell is boundary controlled",
+        log_shell_derivative(
+            log_shell_power,
+            boundary_endpoint,
+            include_hard=True,
+            include_screening=True,
+        )
+        < 0,
+        True,
+    )
+    boundary_denominator = (
+        hard_envelope
+        + 2 * screening_mass_squared * boundary_endpoint
+        - (rho_density_power / boundary_endpoint)
+    )
+    assert_gt(
+        "boundary tail denominator is positive after the shell",
+        boundary_denominator,
+        Fraction(0),
+    )
+    assert_equal(
+        "interior shell cannot be used below the integration endpoint",
+        rho_star >= boundary_endpoint,
+        False,
+    )
+    bad_window_high = Fraction(4)
+    assert_equal(
+        "screened majorant rejects shells outside weak coupling",
+        weak_coupling_lambda * bad_window_high < weak_coupling_limit,
+        False,
+    )
+
+    majorant_bins = {
+        Fraction(1): Fraction(12),
+        rho_star: Fraction(20),
+        Fraction(2): Fraction(10),
+    }
+    concentrated_at_shell = {
+        Fraction(1): Fraction(0),
+        rho_star: Fraction(18),
+        Fraction(2): Fraction(0),
+    }
+    concentrated_at_boundary = {
+        Fraction(1): Fraction(10),
+        rho_star: Fraction(0),
+        Fraction(2): Fraction(8),
+    }
+    for rho, value in concentrated_at_shell.items():
+        assert_equal(
+            f"shell-concentrated kernel obeys majorant at rho={rho}",
+            value <= majorant_bins[rho],
+            True,
+        )
+    for rho, value in concentrated_at_boundary.items():
+        assert_equal(
+            f"boundary-concentrated kernel obeys same majorant at rho={rho}",
+            value <= majorant_bins[rho],
+            True,
+        )
+    shell_peak = max(concentrated_at_shell, key=concentrated_at_shell.get)
+    boundary_peak = max(concentrated_at_boundary, key=concentrated_at_boundary.get)
+    assert_equal(
+        "same majorant can allow an actual shell peak",
+        shell_peak,
+        rho_star,
+    )
+    assert_not_equal(
+        "same majorant can also allow a non-shell actual peak",
+        boundary_peak,
+        rho_star,
+    )
+
+    comparable_positive_kernel = {
+        Fraction(1): Fraction(6),
+        rho_star: Fraction(12),
+        Fraction(2): Fraction(4),
+    }
+    comparability_ratio = min(
+        comparable_positive_kernel[rho] / majorant_bins[rho]
+        for rho in majorant_bins
+    )
+    assert_gt(
+        "positive comparability ratio is extra data beyond the majorant",
+        comparability_ratio,
+        Fraction(0),
+    )
+    zero_at_shell_kernel = {
+        Fraction(1): Fraction(6),
+        rho_star: Fraction(0),
+        Fraction(2): Fraction(4),
+    }
+    zero_at_shell_ratio = min(
+        zero_at_shell_kernel[rho] / majorant_bins[rho] for rho in majorant_bins
+    )
+    assert_equal(
+        "majorant alone cannot supply noncancellation at the shell",
+        zero_at_shell_ratio,
+        Fraction(0),
+    )
+
     density_tail_bound = Fraction(1, 20)
+    actual_density_tail = Fraction(1, 30)
     source_norm = Fraction(7, 5)
     physical_projection_norm = Fraction(5, 6)
     screened_size_bound = (
         density_tail_bound * source_norm * physical_projection_norm
     )
+    actual_size_contribution = (
+        actual_density_tail * source_norm * physical_projection_norm
+    )
     determinant_residual = Fraction(1, 100)
     normal_mode_residual = Fraction(1, 120)
+    tail_residual = Fraction(1, 80)
     projection_residual = Fraction(1, 90)
+    actual_determinant_error = Fraction(1, 200)
+    actual_normal_mode_error = Fraction(1, 300)
+    actual_tail_error = Fraction(1, 500)
+    actual_projection_error = Fraction(1, 180)
     actual_long_size_remainder = (
+        actual_size_contribution
+        + actual_determinant_error
+        + actual_normal_mode_error
+        + actual_tail_error
+        + actual_projection_error
+    )
+    complete_bound = (
         screened_size_bound
         + determinant_residual
         + normal_mode_residual
+        + tail_residual
         + projection_residual
     )
-    complete_bound = actual_long_size_remainder
     underbudget_without_projection = (
         screened_size_bound
         + determinant_residual
         + normal_mode_residual
+        + tail_residual
     )
 
     assert_equal(
-        "screened hard-window bound keeps source and projection norms",
+        "screened majorant bound keeps source and projection norms",
         screened_size_bound,
         Fraction(7, 120),
     )
@@ -3902,13 +4056,13 @@ def check_hard_screened_retained_size_window() -> None:
         screened_size_bound,
     )
     assert_equal(
-        "screened hard-window residual budget controls the physical remainder",
+        "screened majorant residual budget controls the physical remainder",
         actual_long_size_remainder <= complete_bound,
         True,
     )
     assert_equal(
-        "omitting physical-projection residual underbudgets screened window",
-        actual_long_size_remainder <= underbudget_without_projection,
+        "omitting physical-projection residual underbudgets certified window",
+        complete_bound <= underbudget_without_projection,
         False,
     )
 
