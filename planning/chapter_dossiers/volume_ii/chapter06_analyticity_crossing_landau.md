@@ -836,6 +836,16 @@
   The companion check verifies the simplex volume, finite \(-1/6\) residue,
   massive-scalar coefficient extraction, strict-cut blindness, and wrong-sign or
   no-shift negative controls.
+- 2026-06-06 issue #769 all-plus hard-bin pass: inserted
+  `ca:all-plus-rational-hard-function-bin` after the five-point all-plus
+  rational amplitude.  The block places the all-plus rational finite remainder
+  in the hard-function assembly: the Born interference vanishes in that
+  helicity sector, while the lower-loop-squared finite hard contribution
+  \((R^{(1)})^\dagger G R^{(1)}\) survives and enters helicity-summed NNLO
+  hard functions before process-dependent real/factorization assembly.  The
+  companion check verifies identical strict \(D=4\) cut signatures, zero Born
+  interference, a nonzero color-metric hard square, and the strict-cut
+  shortcut that loses that finite hard contribution.
 - 2026-06-05 issue #769 virtual-to-observable pass: added the
   finite-remainder assembly layer after the cut-equality warning.  The pass
   separates reconstructed virtual amplitudes from infrared-safe observables by

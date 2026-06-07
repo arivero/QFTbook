@@ -2955,6 +2955,61 @@ described in
 ControlledApproximation~\ref{ca:one-loop-reconstruction-observable-assembly}.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[All-plus rational hard-function bin]
+\label{ca:all-plus-rational-hard-function-bin}
+The rational term just isolated is physically placed by the hard-function
+assembly, not by the branch-cut test alone.  Fix a helicity sector \(h\), a
+color basis, and the corresponding color Gram matrix \(G\).  After ultraviolet
+renormalization and infrared subtraction in one declared scheme, write the
+finite one-loop remainder as
+\[
+  F_h^{(1)}
+  =
+  F_{h,\mathrm{cut}}^{(1)}+R_h^{(1)},
+\]
+where \(F_{h,\mathrm{cut}}^{(1)}\) is the cut-constructible part and
+\(R_h^{(1)}\) is the rational/regulator contribution.  The one-loop hard
+interference and the lower-loop-squared virtual hard contribution are
+\begin{align}
+  H_h^{(1)}
+  &=
+  2\,\Re\!\left[
+    \bigl(A_h^{(0)}\bigr)^\dagger G F_h^{(1)}
+  \right],
+  \label{eq:one-loop-hard-interference-rational-split}\\
+  H_{h,\mathrm{virt}^2}^{(2)}
+  &=
+  \bigl(F_h^{(1)}\bigr)^\dagger G F_h^{(1)} .
+  \label{eq:one-loop-square-hard-rational-split}
+\end{align}
+For an all-plus gluon sector,
+\[
+  A_{+\cdots+}^{(0)}=0,\qquad
+  F_{+\cdots+,\mathrm{cut}}^{(1)}=0,\qquad
+  R_{+\cdots+}^{(1)}\ne0 .
+\]
+Thus
+\begin{equation}
+  H_{+\cdots+}^{(1)}=0,\qquad
+  H_{+\cdots+,\mathrm{virt}^2}^{(2)}
+  =
+  \bigl(R_{+\cdots+}^{(1)}\bigr)^\dagger
+  G
+  R_{+\cdots+}^{(1)} .
+  \label{eq:all-plus-rational-first-hard-bin}
+\end{equation}
+The absence of a Born interference term therefore records the power-counting
+position of the all-plus rational amplitude; it does not erase the amplitude
+from helicity-summed finite hard functions.  In a full NNLO observable this
+virtual-squared entry must still be combined with the process-dependent
+real-virtual, double-real, subtraction, and factorization pieces.  A strict
+four-dimensional cut shortcut which sets \(R_{+\cdots+}^{(1)}=0\) has the
+same all-plus branch-cut data, but it gives zero for
+\eqref{eq:all-plus-rational-first-hard-bin}.  That shortcut loses a finite
+hard contribution even though it passed every strict \(D=4\) cut in the
+helicity sector.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Four-point color--kinematics comparison datum]
 \label{ca:four-point-color-kinematics-gateway}
 Generalized unitarity reconstructs amplitudes from on-shell factorization
