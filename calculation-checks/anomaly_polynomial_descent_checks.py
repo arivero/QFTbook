@@ -20,7 +20,8 @@ inflow sections:
   coefficient of the anomaly;
 * source derivatives of the Abelianized consistent Ward identity recover the
   triple-current contact term, while complete polarization removes local
-  counterterm reshuffling;
+  counterterm reshuffling and preserves the normalization map from the raw
+  Cartan trace tensor to the effective-action coefficient;
 * the Abelianized Bardeen-Zumino improvement changes the Ward coefficient
   from the consistent value C to the covariant value 3C;
 * the U(1)^3, mixed gravitational-U(1), and mixed nonabelian-U(1) sums for
@@ -31,19 +32,22 @@ Evidence contract.
 Target claims: the anomaly-polynomial and descent coefficient subclaims in
 the Chapter 20 anomaly-polynomial section, including the index density,
 effective-action inflow conversion, Chern-Weil transgression, consistent and
-covariant coefficient relation, source-Ward contact polarization, and Standard
-Model anomaly sums.
+covariant coefficient relation, source-Ward contact polarization and
+normalization map, and Standard Model anomaly sums.
 Independent construction: exact rational expansion of the A-hat and Chern
 character terms, separate component/wedge normalization arithmetic, universal
 Chern-Simons coefficient sums, finite source-derivative polarization of the
-consistent Ward identity, and explicit finite charge traces.
+consistent Ward identity with an independently supplied anomaly normalization,
+and explicit finite charge traces.
 Imported assumptions: the anti-Hermitian Chern-Weil convention, the chapter's
 trace and epsilon normalizations, one-generation Standard Model charge
 assignment, and the stated representation convention for SU(N).
 Negative controls: Abelianized counterterm shifts are tested to leave only the
 complete symmetric cubic coordinate invariant, a single-current Ward contact
-term is tested to remain counterterm-dependent, and adjoint/fundamental/
-antifundamental SU(N) bookkeeping is checked in separate representations.
+term is tested to remain counterterm-dependent, the raw trace tensor is tested
+not to equal the effective-action coefficient before the anomaly normalization
+is applied, and adjoint/fundamental/antifundamental SU(N) bookkeeping is
+checked in separate representations.
 Scope boundary: a pass checks finite descent and coefficient arithmetic; it
 does not prove the local BRST cohomology classification, the analytic index
 theorem, or existence of the regulated continuum chiral gauge theory.
@@ -68,6 +72,11 @@ SM_FIELDS = [
 def assert_equal(name: str, value: Fraction, expected: Fraction) -> None:
     if value != expected:
         raise AssertionError(f"{name}: got {value}, expected {expected}")
+
+
+def assert_not_equal(name: str, value: Fraction, forbidden: Fraction) -> None:
+    if value == forbidden:
+        raise AssertionError(f"{name}: unexpectedly got forbidden value {forbidden}")
 
 
 def check_index_polynomial_expansion() -> None:
@@ -211,7 +220,7 @@ def check_abelian_counterterm_symmetric_cubic_invariance() -> None:
 
 
 def check_source_ward_contact_polarization() -> None:
-    """The physical source Ward contact term sees only the polarized class."""
+    """The source Ward contact recovers the normalized polarized class."""
 
     raw_h = {
         (0, 1, 2): Fraction(-5, 7),
@@ -230,8 +239,10 @@ def check_source_ward_contact_polarization() -> None:
             return -raw_h[(j, i, k)]
         return Fraction(0)
 
-    def symmetric_class(i: int, j: int, k: int) -> Fraction:
-        # A deterministic symmetric cubic coordinate on the Cartan source legs.
+    def raw_trace_tensor(i: int, j: int, k: int) -> Fraction:
+        # A deterministic symmetric raw Cartan trace tensor.  This is the
+        # group-theory tensor before multiplying by the anomaly-polynomial
+        # normalization that converts it to an effective-action coefficient.
         return Fraction(
             (i + 1) * (j + 1)
             + (j + 1) * (k + 1)
@@ -239,11 +250,16 @@ def check_source_ward_contact_polarization() -> None:
             37,
         )
 
+    anomaly_normalization = Fraction(5, 12)
+
+    def effective_cubic_class(i: int, j: int, k: int) -> Fraction:
+        return anomaly_normalization * raw_trace_tensor(i, j, k)
+
     def delta_c(i: int, j: int, k: int) -> Fraction:
         return -Fraction(1, 2) * (h(i, j, k) + h(i, k, j))
 
     def consistent_coefficient(i: int, j: int, k: int) -> Fraction:
-        return symmetric_class(i, j, k) + delta_c(i, j, k)
+        return effective_cubic_class(i, j, k) + delta_c(i, j, k)
 
     def ward_contact(i: int, j: int, k: int) -> Fraction:
         # Differentiating C_{i;jk} lambda^i F^j F^k with respect to two
@@ -257,6 +273,9 @@ def check_source_ward_contact_polarization() -> None:
             + ward_contact(k, i, j)
         ) / 6
 
+    def raw_trace_from_ward_contacts(i: int, j: int, k: int) -> Fraction:
+        return polarized_from_ward_contacts(i, j, k) / anomaly_normalization
+
     for i in range(4):
         for j in range(4):
             for k in range(4):
@@ -266,12 +285,29 @@ def check_source_ward_contact_polarization() -> None:
                     consistent_coefficient(i, k, j),
                 )
                 assert_equal(
-                    f"polarized source Ward contact recovers cubic class {i}{j}{k}",
+                    f"polarized source Ward contact recovers effective cubic class {i}{j}{k}",
                     polarized_from_ward_contacts(i, j, k),
-                    symmetric_class(i, j, k),
+                    effective_cubic_class(i, j, k),
+                )
+                assert_equal(
+                    f"normalization map recovers raw Cartan trace tensor {i}{j}{k}",
+                    raw_trace_from_ward_contacts(i, j, k),
+                    raw_trace_tensor(i, j, k),
                 )
 
-    single_contact_shift = ward_contact(0, 1, 2) - 2 * symmetric_class(0, 1, 2)
+    raw_effective_gap = raw_trace_tensor(0, 1, 2) - effective_cubic_class(0, 1, 2)
+    assert_equal(
+        "raw trace tensor is not the effective-action coefficient before normalization",
+        raw_effective_gap,
+        Fraction(77, 444),
+    )
+    assert_not_equal(
+        "raw trace/effective coefficient equality shortcut",
+        raw_trace_tensor(0, 1, 2),
+        effective_cubic_class(0, 1, 2),
+    )
+
+    single_contact_shift = ward_contact(0, 1, 2) - 2 * effective_cubic_class(0, 1, 2)
     assert_equal(
         "single current Ward contact changes under a local cubic counterterm",
         single_contact_shift,

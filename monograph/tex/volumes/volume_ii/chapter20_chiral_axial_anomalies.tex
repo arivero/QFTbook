@@ -1564,6 +1564,45 @@ this chart is
   \qquad C_{i;jk}=C_{i;kj}.
   \label{eq:cartan-source-anomaly-representative}
 \end{equation}
+Let
+\begin{equation}
+  \mathsf T_{ijk}
+  =
+  \sum_{\psi_L}\operatorname{tr}_{R_\psi}
+  \bigl(H_{(i}H_jH_{k)}\bigr)
+  -
+  \sum_{\psi_R}\operatorname{tr}_{R_\psi}
+  \bigl(H_{(i}H_jH_{k)}\bigr)
+  \label{eq:cartan-raw-cubic-trace-tensor}
+\end{equation}
+be the raw Cartan restriction of the symmetric cubic trace tensor.  In the
+Euclidean index normalization of
+\eqref{eq:index-polynomial-effective-action-normalization}, descent fixes the
+counterterm-invariant part of the effective-action coefficient to be
+\begin{equation}
+  C_{(ijk)}
+  =
+  \kappa_{\rm anom}\,\mathsf T_{ijk},
+  \qquad
+  \kappa_{\rm anom}
+  =
+  \frac{2\pi\ii}{6(2\pi)^3}
+  =
+  \frac{\ii}{24\pi^2}.
+  \label{eq:source-ward-cubic-normalization-map}
+\end{equation}
+Equivalently, if one uses the Cartan restriction of the cancellation tensor
+\[
+  \mathsf G_{i;jk}
+  :=
+  \sum_{\psi_L}\operatorname{tr}_{R_\psi}(H_i\{H_j,H_k\})
+  -
+  \sum_{\psi_R}\operatorname{tr}_{R_\psi}(H_i\{H_j,H_k\}),
+\]
+then \(\mathsf G_{i;jk}=2\mathsf T_{ijk}\) on the commuting chart and
+\(C_{(ijk)}=(\kappa_{\rm anom}/2)\mathsf G_{i;jk}\).  A different
+Hermitian/Lorentzian continuation changes the common factor multiplying all
+entries, not the invariant tensor direction or its vanishing.
 Let \(a^j,b^k\) be compactly supported source one-forms and set
 \(A=s\,a^jH_j+t\,b^kH_k\).  The corresponding second source derivative of
 the anomalous Ward identity is
@@ -1593,13 +1632,17 @@ currents.  The completely polarized coordinate
   D_{i;jk}:=2C_{i;jk},
   \label{eq:source-ward-polarized-cubic-coordinate}
 \end{equation}
-is unchanged by such counterterms and equals the Cartan restriction of the
-symmetric cubic tensor in
-\eqref{eq:gauge-anomaly-cancellation}.  Thus a nonzero
-\(C_{(ijk)}\) is the observable source-Ward obstruction carried by the cubic
-class.  For a dynamical gauge symmetry it obstructs the Slavnov--Taylor
-identity.  For a background global symmetry it is the local contact-term datum
-that must be reproduced by the infrared theory.
+is unchanged by such counterterms and is related to the Cartan restriction of
+the symmetric cubic trace tensor by
+\eqref{eq:source-ward-cubic-normalization-map}.  Thus a nonzero
+\(C_{(ijk)}\), or equivalently a nonzero raw tensor after the fixed
+normalization map is inverted, is the source-Ward class coordinate carried by
+the cubic anomaly.  For a dynamical gauge symmetry it obstructs the
+Slavnov--Taylor identity.  For a background global symmetry the
+scheme-independent class is the polarized local contact datum that must be
+reproduced by the infrared theory; an individual current contact before
+polarization is representative-dependent and is not a separated-point
+observable.
 \end{proposition}
 
 \begin{proof}
@@ -1633,11 +1676,14 @@ gives
   \Delta C_{i;jk}+\Delta C_{j;ik}+\Delta C_{k;ij}=0,
 \]
 because every term appears once with each sign.  Hence
-\(C_{(ijk)}\) is counterterm invariant.  The Cartan-restriction argument in
-the previous proof identifies this invariant polarized coordinate with the
-restriction of the invariant cubic polynomial
-\(\operatorname{tr}_R(\mathsf F^3)\).  Therefore it is the same local
-BRST class, read as a Ward identity for background-source correlators.
+\(C_{(ijk)}\) is counterterm invariant.  The normalization map
+\eqref{eq:source-ward-cubic-normalization-map} is the descent coefficient
+between the raw invariant polynomial
+\(\operatorname{tr}_R(\mathsf F^3)\) and the Euclidean effective-action Ward
+identity.  Therefore the polarized source contact and the raw Cartan trace
+tensor vanish together and carry the same local BRST class, but their numerical
+coefficients differ by the anomaly-polynomial normalization and by any common
+continuation convention chosen for the Ward identity.
 \end{proof}
 
 \section{Consistency Condition and Descent}

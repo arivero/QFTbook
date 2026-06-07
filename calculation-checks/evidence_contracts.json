@@ -24,7 +24,8 @@
       "path": "anomaly_polynomial_descent_checks.py",
       "risk_class": "anomaly descent",
       "convention_tags": [
-        "consistent source Ward identity contact-term polarization"
+        "consistent source Ward identity contact-term polarization",
+        "raw Cartan trace to effective-action coefficient normalization"
       ]
     },
     {

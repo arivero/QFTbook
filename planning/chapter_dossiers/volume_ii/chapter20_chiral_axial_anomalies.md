@@ -269,7 +269,10 @@
   continuation differentiates the consistent anomaly with respect to two
   background sources: a single current contact \(D_{i;jk}=2C_{i;jk}\) remains
   counterterm-dependent, while the fully polarized coordinate
-  \((D_{i;jk}+D_{j;ik}+D_{k;ij})/6\) recovers the invariant cubic class.
+  \((D_{i;jk}+D_{j;ik}+D_{k;ij})/6\) recovers the normalized effective-action
+  cubic class.  The follow-up normalization repair keeps this coordinate
+  proportional to, but not literally equal to, the raw Cartan trace tensor until
+  the anomaly-polynomial factor \(\kappa_{\rm anom}\) is applied.
 - `calculation-checks/anomaly_matching_wzw_checks.py` also checks the finite
   Abelianized Bardeen-counterterm algebra used here: shifts of the local
   anomaly representative leave the completely symmetric descent coefficient
@@ -366,7 +369,8 @@
 | \(W_X^{\mathrm{bulk}}\) | local five-dimensional Chern--Simons response whose boundary variation cancels the consistent anomaly |
 | \(\mathcal B(M)\) | background-field groupoid used to formulate finite anomaly-line transport |
 | \(C_\Lambda(g;B)\) | finite-regulator additive coordinate of anomaly-line transport under \(B\mapsto B^g\) |
-| \(C_{i;jk},D_{i;jk},C_{(ijk)}\) | Abelianized consistent anomaly coefficient, its source-Ward contact derivative, and the counterterm-invariant polarized cubic coordinate |
+| \(\mathsf T_{ijk},\mathsf G_{i;jk},\kappa_{\rm anom}\) | raw Cartan symmetric trace tensor, Cartan anticommutator cancellation tensor, and anomaly-polynomial normalization mapping trace data to the effective-action Ward coefficient |
+| \(C_{i;jk},D_{i;jk},C_{(ijk)}\) | Abelianized consistent anomaly coefficient, its source-Ward contact derivative, and the counterterm-invariant polarized effective-action cubic coordinate |
 | \(R_{\Lambda\to\Lambda'}\) | Wilsonian shell pushforward map between finite-regulator sections of the anomaly line |
 | \(d^{abc}\) | symmetric cubic gauge-anomaly tensor |
 | \(J_{\mathrm{cons}}\) | consistent current, \(\delta W/\delta A\) |
@@ -2134,3 +2138,12 @@
   coordinate invariant.  The anomaly-polynomial companion checks this finite
   contact-term polarization and rejects a single-current contact as a class
   coordinate.
+- 2026-06-07 issue #696 normalization re-audit: repaired
+  `prop:source-ward-test-cubic-anomaly` so the polarized source-Ward coordinate
+  is not identified literally with the raw group trace.  The TeX now displays
+  \(C_{(ijk)}=\kappa_{\rm anom}\mathsf T_{ijk}\), with
+  \(\kappa_{\rm anom}=2\pi i/[6(2\pi)^3]\) in the Euclidean index
+  normalization, and separately records the Cartan anticommutator tensor
+  \(\mathsf G_{i;jk}=2\mathsf T_{ijk}\).  The companion now has a negative
+  control rejecting the shortcut that equates raw trace and effective-action
+  coefficient before applying this normalization.
