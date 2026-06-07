@@ -27,7 +27,7 @@ degree-one coefficient, the mirror-conjecture observable boundary separating
 full-QFT data from protected evidence, the full-action/IR-universality data
 boundary for mirror presentations, admissible mirror-datum and finite-volume
 noncompact spectral-domain gates, finite D-term RG Schur-complement gates,
-finite operator/source matrix-element
+finite D-term RG source-metric transport gates, finite operator/source matrix-element
 obstructions, finite boundary-state/defect probe obstructions, and
 cigar/Liouville asymptotic deformation filters, pathwise fake-fixed-point
 gates, spectral-status cells,
@@ -61,7 +61,7 @@ stable-map incidence Jacobians, A-model zero-mode degree filters, and
 conditional residual-propagation maps, full-action data-interface tests,
 finite Legendre-domain and boundary-term cells, finite-volume Robin
 self-adjoint-domain quantization tests, finite Schur-complement low-Hamiltonian
-and source-resolvent comparisons for D-term RG transport, cigar central-charge and
+and source-resolvent/source-metric comparisons for D-term RG transport, cigar central-charge and
 effective-central-charge arithmetic, spectral-flow and field-identification
 arithmetic, Liouville marginality checks, half-line boundary-condition
 reflection diagnostics for noncompact D-term data, finite boundary-state
@@ -179,7 +179,8 @@ weights, protected-F-term-only deformation classifications that miss wall
 spectral response,
 protected-presentation-only D-term RG claims, Hamiltonian-only counterterm
 matching with omitted source renormalization, unweighted source transport
-shortcuts after high-mode elimination,
+shortcuts after high-mode elimination, one-source normalization shortcuts for
+multi-source correlators,
 boundary-state-blind annulus claims, protected-subspace-only defect claims,
 pathwise-continuity claims that carry only protected endpoint labels or local
 rigidity while dropping reflection phases, pole residues, boundary annuli, or
@@ -4220,6 +4221,103 @@ def check_full_mirror_dterm_rg_schur_gate() -> None:
         resolvent_a,
     )
 
+    second_source_low = Fraction(1, 3)
+    second_source_high = Fraction(3, 5)
+
+    def schur_source_pair(
+        coupling: Fraction,
+        renormalizations: tuple[Fraction, Fraction] = (Fraction(1), Fraction(1)),
+    ) -> tuple[Fraction, Fraction]:
+        first = renormalizations[0] * (
+            source_low
+            - coupling * source_high / (high_energy - comparison_energy)
+        )
+        second = renormalizations[1] * (
+            second_source_low
+            - coupling * second_source_high / (high_energy - comparison_energy)
+        )
+        return (first, second)
+
+    def source_metric(
+        effective_hamiltonian: Fraction,
+        effective_sources: tuple[Fraction, Fraction],
+    ) -> tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]:
+        denominator = effective_hamiltonian + probe_shift
+        return (
+            (
+                effective_sources[0] * effective_sources[0] / denominator,
+                effective_sources[0] * effective_sources[1] / denominator,
+            ),
+            (
+                effective_sources[1] * effective_sources[0] / denominator,
+                effective_sources[1] * effective_sources[1] / denominator,
+            ),
+        )
+
+    source_pair_a = schur_source_pair(coupling_a)
+    source_pair_b_one_source_matched = schur_source_pair(
+        coupling_b,
+        renormalizations=(source_renormalization_b, source_renormalization_b),
+    )
+    metric_a = source_metric(h_a, source_pair_a)
+    metric_b_one_source_matched = source_metric(
+        h_b_matched,
+        source_pair_b_one_source_matched,
+    )
+    assert_equal(
+        "D-term datum A second Schur source row",
+        source_pair_a[1],
+        Fraction(16, 75),
+    )
+    assert_equal(
+        "one-source normalization leaves second Schur source row shifted",
+        source_pair_b_one_source_matched[1],
+        Fraction(21, 200),
+    )
+    assert_equal(
+        "source metric mixed entry for mirror datum A",
+        metric_a[0][1],
+        Fraction(12, 175),
+    )
+    assert_equal(
+        "one-source normalization changes source metric mixed entry",
+        metric_b_one_source_matched[0][1],
+        Fraction(27, 800),
+    )
+    assert_equal(
+        "matching one source normalization does not match the source metric",
+        metric_b_one_source_matched == metric_a,
+        False,
+    )
+
+    second_source_renormalization_b = source_pair_a[1] / (
+        second_source_low
+        - coupling_b * second_source_high / (high_energy - comparison_energy)
+    )
+    source_pair_b_matched = schur_source_pair(
+        coupling_b,
+        renormalizations=(
+            source_renormalization_b,
+            second_source_renormalization_b,
+        ),
+    )
+    metric_b_matched = source_metric(h_b_matched, source_pair_b_matched)
+    assert_equal(
+        "full finite source-renormalization matrix matches source rows",
+        source_pair_b_matched,
+        source_pair_a,
+    )
+    assert_equal(
+        "full source transport matches the source two-point metric",
+        metric_b_matched,
+        metric_a,
+    )
+    assert_equal(
+        "required second source renormalization is independent data",
+        second_source_renormalization_b,
+        Fraction(16, 7),
+    )
+
     protected_presentation = {
         "same twisted F-term",
         "same periodic Y",
@@ -4230,6 +4328,7 @@ def check_full_mirror_dterm_rg_schur_gate() -> None:
         "counterterm transport",
         "source renormalization",
         "low source-resolvent comparison",
+        "multi-source metric transport",
     }
     assert_equal(
         "protected mirror presentation is not a D-term RG universality proof",
@@ -4257,6 +4356,18 @@ def check_full_mirror_dterm_rg_schur_gate() -> None:
     assert_equal(
         "omitting source-transport residual underbudgets Schur RG comparison",
         actual_residual <= hamiltonian_part,
+        False,
+    )
+
+    source_metric_residual = abs(metric_b_one_source_matched[0][1] - metric_a[0][1])
+    assert_equal(
+        "source-metric residual is nonzero after one-source matching",
+        source_metric_residual,
+        Fraction(39, 1120),
+    )
+    assert_equal(
+        "one-source residual budget misses mixed source-metric transport",
+        source_metric_residual == 0,
         False,
     )
 
@@ -5024,6 +5135,21 @@ def check_cigar_liouville_spectral_data_cell() -> None:
     def raw_nu(k_value: mp.mpf) -> mp.mpf:
         return mp.gamma(1 + 1 / k_value) / (mp.pi * mp.gamma(1 - 1 / k_value))
 
+    def raw_nu_interval_index(k_value: mp.mpf) -> int:
+        return int(mp.floor(1 / k_value))
+
+    def expected_raw_nu_sign(k_value: mp.mpf) -> int:
+        return -1 if raw_nu_interval_index(k_value) % 2 else 1
+
+    def positive_nu_scale(
+        k_value: mp.mpf,
+        *,
+        liouville_coupling_abs: mp.mpf = mp.mpf("1.3"),
+        radial_reference_origin: mp.mpf = mp.mpf("0.4"),
+    ) -> mp.mpf:
+        wall_scale = liouville_coupling_abs * mp.e ** (-mp.sqrt(k_value) * radial_reference_origin)
+        return wall_scale * abs(raw_nu(k_value))
+
     def raw_nu_is_finite(k_value: mp.mpf) -> bool:
         try:
             return bool(mp.isfinite(raw_nu(k_value)))
@@ -5037,6 +5163,7 @@ def check_cigar_liouville_spectral_data_cell() -> None:
         mbar_label: mp.mpf,
         *,
         include_nu: bool = True,
+        use_positive_nu: bool = True,
         include_j_plus_m_pole: bool = True,
     ) -> mp.mpc:
         delta = 2 * j_value - 1
@@ -5053,17 +5180,28 @@ def check_cigar_liouville_spectral_data_cell() -> None:
             * mp.gamma(-mbar_label - j_value + 1)
             * mp.gamma(delta)
         )
-        normalization = raw_nu(k_value) ** delta if include_nu else mp.mpf(1)
+        nu_scale = positive_nu_scale(k_value) if use_positive_nu else raw_nu(k_value)
+        normalization = nu_scale**delta if include_nu else mp.mpf(1)
         return normalization * numerator / denominator
 
     continuous_cases = [
         (mp.mpf("2.7"), mp.mpf("0.2"), mp.mpf("0"), mp.mpf("0")),
         (mp.mpf("3.5"), mp.mpf("0.7"), mp.mpf("0"), mp.mpf("0")),
         (mp.mpf("3.5"), mp.mpf("0.7"), mp.mpf("1.75"), mp.mpf("1.75")),
+        (mp.mpf("0.9"), mp.mpf("0.2"), mp.mpf("0"), mp.mpf("0")),
+        (mp.mpf("0.75"), mp.mpf("0.35"), mp.mpf("0"), mp.mpf("0")),
+        (mp.mpf("0.4"), mp.mpf("0.25"), mp.mpf("0"), mp.mpf("0")),
+        (mp.mpf("0.3"), mp.mpf("0.15"), mp.mpf("0"), mp.mpf("0")),
     ]
     for k_value, s_value, m_label, mbar_label in continuous_cases:
         j_value = mp.mpf("0.5") + 1j * s_value
         reflected_j = 1 - j_value
+        assert_equal(
+            "raw cigar nu sign follows the 1/n interval ledger",
+            mp.sign(raw_nu(k_value)),
+            expected_raw_nu_sign(k_value),
+        )
+        assert_equal("renormalized cigar nu scale is positive", positive_nu_scale(k_value) > 0, True)
         amplitude = reflection_amplitude(k_value, j_value, m_label, mbar_label)
         reflected_amplitude = reflection_amplitude(
             k_value,
@@ -5084,7 +5222,42 @@ def check_cigar_liouville_spectral_data_cell() -> None:
             mp.mpf("1e-40"),
         )
 
-    phase_k = mp.mpf("3.5")
+    bad_branch_k = mp.mpf("0.75")
+    bad_branch_s = mp.mpf("0.35")
+    bad_branch_j = mp.mpf("0.5") + 1j * bad_branch_s
+    bad_branch_amplitude = reflection_amplitude(
+        bad_branch_k,
+        bad_branch_j,
+        mp.mpf("0"),
+        mp.mpf("0"),
+        use_positive_nu=False,
+    )
+    assert_mp_close(
+        "principal power of negative raw nu damps the reflection modulus",
+        abs(bad_branch_amplitude),
+        mp.e ** (-2 * mp.pi * bad_branch_s),
+        mp.mpf("1e-40"),
+    )
+    assert_equal(
+        "raw negative nu principal branch is not a unitary reflection normalization",
+        abs(abs(bad_branch_amplitude) - 1) > mp.mpf("0.1"),
+        True,
+    )
+
+    branch_left = mp.mpf("0.74")
+    branch_right = mp.mpf("0.76")
+    branch_s = mp.mpf("0.11")
+    branch_delta = 2j * branch_s
+    branch_ratio = positive_nu_scale(branch_right) ** branch_delta / positive_nu_scale(branch_left) ** branch_delta
+    expected_branch_phase = 2 * branch_s * (mp.log(positive_nu_scale(branch_right)) - mp.log(positive_nu_scale(branch_left)))
+    assert_mp_close(
+        "positive nu branch is continuous inside a sign interval",
+        mp.arg(branch_ratio),
+        expected_branch_phase,
+        mp.mpf("1e-40"),
+    )
+
+    phase_k = mp.mpf("0.75")
     phase_s = mp.mpf("0.7")
     phase_h = mp.mpf("1e-5")
 
@@ -5113,7 +5286,7 @@ def check_cigar_liouville_spectral_data_cell() -> None:
     assert_mp_close(
         "nu(k) contributes the expected continuous reflection phase density",
         full_density - no_nu_density,
-        mp.log(raw_nu(phase_k)) / mp.pi,
+        mp.log(positive_nu_scale(phase_k)) / mp.pi,
         mp.mpf("1e-20"),
     )
     assert_equal(
@@ -5132,6 +5305,12 @@ def check_cigar_liouville_spectral_data_cell() -> None:
         raw_nu_is_finite(mp.mpf("1")),
         False,
     )
+    for pole_order in range(1, 6):
+        assert_equal(
+            f"raw k=1/{pole_order} reflection normalization needs a limiting prescription",
+            raw_nu_is_finite(mp.mpf(1) / pole_order),
+            False,
+        )
 
     pole_k = mp.mpf("3.7")
     pole_m = -mp.mpf(1) / 3
@@ -5139,7 +5318,7 @@ def check_cigar_liouville_spectral_data_cell() -> None:
     pole_j = -pole_m
     pole_delta = 2 * pole_j - 1
     pole_residue = (
-        raw_nu(pole_k) ** pole_delta
+        positive_nu_scale(pole_k) ** pole_delta
         * mp.gamma(1 - pole_delta / pole_k)
         * mp.gamma(pole_j - pole_mbar)
         * mp.gamma(-pole_delta)

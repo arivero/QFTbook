@@ -88,9 +88,10 @@ and
   separate mirror-data existence, D-term universality, and the actual duality
   claim.
 - `ca:glsm-mirror-dterm-rg-schur-gate`, `H_eff^M(E)`, `o_eff^M(E)`,
-  `B_RG(E)`: finite Wilsonian Schur-complement test for mirror `D`-term
-  universality, including high-mode elimination, counterterm transport, source
-  renormalization, and a source-resolvent residual bound.
+  `Gamma_{AB}^M(E,Omega)`, `B_RG(E)`: finite Wilsonian Schur-complement test
+  for mirror `D`-term universality, including high-mode elimination,
+  counterterm transport, source renormalization, source-resolvent bounds, and
+  source-metric residual bounds.
 - `rem:glsm-mirror-operator-source-data`: finite-volume operator/source
   warning that equal spectra and protected multiplication data do not
   determine local-source matrix elements or source-normalized correlators.
@@ -180,11 +181,12 @@ and
   variable, polar coordinate for the charged chiral scalar, angular
   coordinate, real and periodic parts of `P`, and cigar level parameter.
 - `conj:cigar-liouville-mirror-qft`, `C_cl`, `C_dual`, `C_vort`,
-  `C_spec`, `C_bdry`, `R(j,m,bar m;k)`: named full-QFT cigar/Liouville mirror
-  conjecture, the protected-data/proof-debt lanes separating
-  quotient/dualization/vortex checks from spectral-flow, continuous-spectrum,
-  defect, and boundary data, and the exact reflection-amplitude datum that a
-  full spectral comparison must reproduce.
+  `C_spec`, `C_bdry`, `R(j,m,bar m;k)`, `nu_raw(k)`,
+  `nu_+(k;mu,varrho_ref)`: named full-QFT cigar/Liouville mirror conjecture,
+  the protected-data/proof-debt lanes separating quotient/dualization/vortex
+  checks from spectral-flow, continuous-spectrum, defect, and boundary data,
+  and the exact reflection-amplitude datum that a full spectral comparison must
+  reproduce with a declared positive normalization scale.
 - `X_i`, `P`, `G_d`, `d`, `mu_d`: hypersurface GLSM fields, homogeneous
   polynomial, degree, and residual finite gauge group.
 - `H`, `Y_G`, `C_branch`, `T`: hyperplane Chern class on projective space,
@@ -707,7 +709,10 @@ and
     energies; a finite Schur-complement RG cell shows that high-mode
     Kahler/measure couplings shift both the retained Hamiltonian and source
     row, so Hamiltonian counterterms without source renormalization do not
-    match low source-resolvent observables; a fake-Liouville shortcut with
+    match low source-resolvent observables, and a two-source extension shows
+    that matching one source normalization still leaves the mixed source
+    metric wrong unless the full source-renormalization matrix is supplied; a
+    fake-Liouville shortcut with
     only the same F-term,
     asymptotics, and central charge is rejected without finite-field Kahler
     control, spectral measure, reflection amplitude, boundary conditions, and
@@ -726,9 +731,10 @@ and
     pathwise fake-Liouville exclusion gate comparing reflection phases, pole
     residues, boundary annuli, and source rows along a finite-regulator
     `kappa` path, and direct Gamma-function evaluation of the imported
-    reflection target: continuous unitarity, `R(j)R(1-j)=1`, the `nu(k)`
-    contribution to phase density, raw `k=1` normalization failure, and a
-    sample simple-pole residue.  The source spectral-resolution bridge checks
+    reflection target: continuous unitarity, `R(j)R(1-j)=1`, the positive
+    `nu_+(k)` contribution to phase density, the `nu_raw(k)` sign ledger on
+    intervals `(1/(n+1),1/n)`, sampled raw `k=1/n` normalization failures, and
+    a sample simple-pole residue.  The source spectral-resolution bridge checks
     that the phase-density derivative, source row, pole residue, and contact
     data enter Euclidean two-point observables, rejecting boundary-blind or
     reflection-only endpoint comparisons.
@@ -1007,11 +1013,13 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
 - The 2026-06-07 reflection/spectral follow-up replaces symbolic
   reflection-factor cancellation in the GLSM companion with direct evaluation
   of the imported cigar reflection amplitude.  It verifies continuous-series
-  unitarity and involution, extracts the `nu(k)` contribution to phase density,
-  rejects the raw special-level normalization at `k=1`, and checks a simple
-  gamma-pole residue against the analytic residue formula.  This is now
-  evidence for finite consequences of the displayed target, not a derivation of
-  the Liouville path integral normalization or the full continuous measure.
+  unitarity and involution, extracts the positive `nu_+(k)` contribution to
+  phase density, rejects the principal branch of negative `nu_raw(k)` below
+  `k=1`, samples the raw special-level normalization failures at `k=1/n`, and
+  checks a simple gamma-pole residue against the analytic residue formula.
+  This is now evidence for finite consequences of the displayed target, not a
+  derivation of the Liouville path integral normalization or the full
+  continuous measure.
 - The 2026-06-07 issue #848 noncompact `D`-term boundary pass adds a concrete
   half-line radial scattering diagnostic: a Robin wall parameter changes the
   reflection phase and continuous density while preserving unitary reflection
@@ -1031,6 +1039,13 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   different retained Hamiltonians and source rows until the counterterm and
   source renormalization are transported together.  The companion checks the
   resulting source-resolvent observable and rejects Hamiltonian-only matching.
+- The 2026-06-07 issue #848 source-metric D-term pass extends
+  `ca:glsm-mirror-dterm-rg-schur-gate`: with two source columns, the scalar
+  normalization that matches one operator leaves the mixed low-energy source
+  metric different.  The companion checks the mixed entry and verifies that
+  matching the full finite source-renormalization matrix, not only the
+  Hamiltonian or one source, is required before D-term changes are harmless for
+  source-normalized correlators.
 - The 2026-06-07 issue #848 operator/source pass adds
   `rem:glsm-mirror-operator-source-data` and a companion finite spectral
   obstruction: same Hamiltonian spectrum plus same protected multiplication is

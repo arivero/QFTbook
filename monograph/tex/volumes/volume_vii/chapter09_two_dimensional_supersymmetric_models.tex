@@ -1189,6 +1189,40 @@ source renormalization \(Z_O=9/8\) is supplied.  Thus finite-field \(D\)-term
 and measure choices are harmless only after their Schur complement, counterterm
 transport, and source transport have been checked in the same low-energy
 observable.
+
+For several local sources the transported object is a source metric, not a
+single number.  With source columns \(o_{\Lambda,A}\), define at the same
+finite regulator
+\begin{equation}
+  \Gamma_{AB}^{\mathfrak M}(E,\Omega)
+  =
+  \left\langle
+  o_{{\rm eff},A}^{\mathfrak M}(E),
+  \bigl(H_{\rm eff}^{\mathfrak M}(E)+\Omega\bigr)^{-1}
+  o_{{\rm eff},B}^{\mathfrak M}(E)
+  \right\rangle_P .
+  \label{eq:glsm-mirror-dterm-rg-source-metric}
+\end{equation}
+This is the finite low-energy two-point kernel measured by source derivatives
+of \(Z_\Lambda[J]\).  A scalar rescaling that matches one source does not
+transport \(\Gamma_{AB}\).  In the one-channel cell above, add a second source
+with \((o_P^{(2)},o_Q^{(2)})=(1/3,3/5)\).  The first datum gives
+\[
+  o_{{\rm eff},A}^{\mathfrak M}=\left(\frac9{10},\frac{16}{75}\right),
+\]
+whereas the second datum, after the Hamiltonian counterterm and after the
+scalar normalization \(Z_O=9/8\) that matches the first source, gives
+\[
+  o_{{\rm eff},A}^{\mathfrak M'}=
+  \left(\frac9{10},\frac{21}{200}\right).
+\]
+The mixed entry of \(\Gamma_{AB}(0,1)\) is therefore \(12/175\) for
+\(\mathfrak M\) and \(27/800\) for \(\mathfrak M'\).  A mirror universality
+claim must either provide the full finite source-renormalization matrix, or
+prove that the difference in
+\eqref{eq:glsm-mirror-dterm-rg-source-metric} is irrelevant in the scaling
+limit.  Matching only the protected superpotential, the Schur Hamiltonian, and
+one source normalization does not determine source-normalized correlators.
 \end{controlledapproximation}
 
 \begin{remark}[Operator sources are not fixed by the spectrum alone]
@@ -3968,21 +4002,44 @@ matched by the Liouville presentation.
 
 The reflection amplitude is part of the operator normalization.  With
 \(\delta=2j-1\),
-\begin{equation}
+\begin{align}
   R(j,m,\overline m;k)
-  =
-  \nu(k)^{\delta}
+  &=
+  \nu_+(k;\mu,\varrho_{\rm ref})^{\delta}
   \frac{
   \Gamma(1-\delta/k)\Gamma(j+m)\Gamma(j-\overline m)\Gamma(-\delta)}
   {\Gamma(1+\delta/k)\Gamma(m-j+1)
   \Gamma(-\overline m-j+1)\Gamma(\delta)},
-  \qquad
-  \nu(k)=\frac1\pi
+  \label{eq:n2-cigar-reflection-amplitude}\\
+  \nu_{\rm raw}(k)=\frac1\pi
   \frac{\Gamma(1+1/k)}{\Gamma(1-1/k)} .
-  \label{eq:n2-cigar-reflection-amplitude}
-\end{equation}
-For \(j=\frac12+\ii s\), \(s\in\mathbb R\), and generic positive \(k\) with the
-positive real branch of \(\nu(k)\), the gamma-function expression gives
+  \notag
+\end{align}
+Here the raw gamma ratio is meromorphic in \(k\).  On the open intervals
+\[
+  I_n=\left(\frac1{n+1},\frac1n\right),
+  \qquad n=0,1,2,\ldots ,
+\]
+where \(I_0=(1,\infty)\), one has
+\(\operatorname{sgn}\nu_{\rm raw}(k)=(-1)^n\); at the special levels
+\(k=1/n\) the denominator gamma factor has a pole, so the logarithm and complex
+power require a limiting or renormalized prescription.  The continuous
+unitary reflection phase must therefore be written with a positive scale, not
+with the principal complex power of a negative raw number.  In the asymptotic
+Liouville convention of \eqref{eq:n2-liouville-normalized-action}, a real
+zero-mode shift \(\varrho\mapsto\varrho+a\) sends the wall coefficient to
+\(|\mu|e^{-\sqrt{k}a}\).  Choosing the reference origin
+\(\varrho_{\rm ref}\), equivalently the additive dilaton constant, fixes the
+dimensionless positive wall scale
+\[
+  K_L=|\mu|e^{-\sqrt{k}\varrho_{\rm ref}},
+  \qquad
+  \nu_+(k;\mu,\varrho_{\rm ref})
+  =
+  K_L\,|\nu_{\rm raw}(k)|>0
+\]
+away from \(k=1/n\).  For \(j=\frac12+\ii s\), \(s\in\mathbb R\), and such a
+declared positive normalization, the gamma-function expression gives
 \[
   R(1-j,m,\overline m;k)=R(j,m,\overline m;k)^{-1},
   \qquad |R(j,m,\overline m;k)|=1
@@ -3995,15 +4052,19 @@ spectral data: its phase contributes to the radial density of states by
   \frac1{2\pi}\,\partial_s
   \arg R\!\left(\frac12+\ii s,m,\overline m;k\right).
 \]
-For example, the factor \(\nu(k)^{2\ii s}\) changes this density by
-\(\pi^{-1}\log\nu(k)\).  Omitting it can preserve \(|R|=1\) while changing the
-continuum normalization.  The poles similarly carry operator data.  If
+For example, after the positive scale has been fixed, the factor
+\(\nu_+(k;\mu,\varrho_{\rm ref})^{2\ii s}\) changes this density by
+\(\pi^{-1}\log\nu_+(k;\mu,\varrho_{\rm ref})\).  Omitting it can preserve
+\(|R|=1\) while changing the continuum normalization.  Using the principal
+power of a negative \(\nu_{\rm raw}\) is worse: it changes the modulus by an
+exponential damping factor and is not a continuous unitary branch.  The poles
+similarly carry operator data.  If
 \(j_0+m=-n\), \(n\in\mathbb Z_{\ge0}\), is a simple pole not colliding with
 another gamma factor, then with \(\delta_0=2j_0-1\)
 \[
   \operatorname*{Res}_{j=j_0} R(j,m,\overline m;k)
   =
-  \nu(k)^{\delta_0}
+  \nu_+(k;\mu,\varrho_{\rm ref})^{\delta_0}
   \frac{
   \Gamma(1-\delta_0/k)\Gamma(j_0-\overline m)\Gamma(-\delta_0)}
   {\Gamma(1+\delta_0/k)\Gamma(m-j_0+1)
@@ -4015,11 +4076,11 @@ discrete-state normalization on the Liouville side.
 
 In this chapter the displayed formula is still an imported normalization
 target, not yet a derivation from the Liouville path integral.  The constant
-\(\nu(k)\), the Liouville coupling \(\mu\), and the additive dilaton constant
-must be fixed in the same scheme; special levels where the gamma factors have
-zeros or poles, for instance \(k=1\), require a limiting or renormalized
-operator prescription before the preceding density and residue formulae are
-used.  The full continuous spectral measure, all pole residues,
+\(\nu_+(k;\mu,\varrho_{\rm ref})\), the Liouville coupling \(\mu\), and the
+additive dilaton constant must be fixed in the same scheme; all special levels
+\(k=1/n\), not only \(k=1\), require a limiting or renormalized operator
+prescription before the preceding density and residue formulae are used.  The
+full continuous spectral measure, all pole residues,
 spin-structure pairing, and the reflection relation
 \[
   \Psi_{j,m,\overline m}

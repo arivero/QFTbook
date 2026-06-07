@@ -3137,7 +3137,9 @@ Current checks:
   a finite D-term RG Schur-complement gate showing that high-mode
   Kahler/measure couplings shift the retained Hamiltonian and source row
   unless counterterm transport and source renormalization are checked in the
-  same low source-resolvent observable,
+  same low source-resolvent observable, extended to a two-source metric where
+  matching one source normalization still leaves the mixed source two-point
+  kernel wrong unless the full source-renormalization matrix is supplied,
   a finite operator/source obstruction showing that equal spectra and
   protected multiplication data do not fix Euclidean source two-point
   coefficients without source matrix elements and operator topology, a finite
@@ -3163,8 +3165,10 @@ Current checks:
   the twisted-chiral-to-ordinary-chiral bridge boundary, the
   Hori--Kapustin local-rigidity/global-uniqueness distinction, and direct
   Gamma-function evaluation of the imported reflection target for
-  continuous-series unitarity, phase-density normalization, raw special-level
-  failure, and a sample simple-pole residue, plus the hypersurface GLSM
+  continuous-series unitarity, below-one sign-interval branch control,
+  positive-scale phase-density normalization, all raw `k=1/n` special-level
+  failures sampled through `n=5`, and a sample simple-pole residue, plus the
+  hypersurface GLSM
   adjunction sign,
   Landau--Ginzburg/sigma-model central-charge matching condition, residual
   finite-gauge invariant Jacobi monomial count, and Coulomb-coordinate
