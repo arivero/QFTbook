@@ -106,6 +106,11 @@ and
   noncompact spectral-resolution coordinate for the cigar/Liouville comparison,
   assembling reflection phase density, reference Plancherel measure, source
   rows, pole residues, and contact terms into a Euclidean two-point observable.
+- `ca:cigar-liouville-asymptotic-deformation-filter`, `ell`, `g_a`,
+  `b_alpha`, `delta S`: asymptotic Liouville deformation classifier separating
+  the integer periodic protected `F`-term inventory from real `D`-term,
+  boundary-domain, and source/contact deformations that can move reflection
+  density, residues, annuli, or source rows.
 - `hat X_i`, `q_phys`, `R_{P^{N-1}}`, `H`: vortex-normalized mirror-torus
   coordinate, physical exponentiated FI coordinate after finite determinant
   normalization, normalized projective-space mirror residue trace, and
@@ -481,15 +486,18 @@ and
   amplitude `R(j,m,bar m;k)` as an imported normalization target together with
   its continuous phase-density and sample simple-residue consequences, the
   ordinary-chiral endpoint Liouville action with background-charge coupling,
-  and the Liouville exponential marginality check.  Full derivation of the
-  Liouville normalization, complete spectral measure, all pole-residue
-  normalization, operator completeness, finite-field rigidity, and
-  defect/boundary matching remain obligations.  The boundary/defect gate makes
-  that last obligation concrete through closed/open cylinder amplitudes, Cardy
-  residuals, defect-twined traces, and defect fusion data.  The pathwise
-  fake-fixed-point gate makes the Hori--Kapustin continuity obligation
-  concrete through finite-regulator spectral/source/boundary transport, rather
-  than local rigidity at a single endpoint.
+  the Liouville exponential marginality check, and an asymptotic deformation
+  filter showing that the primitive integer exponential is the only marginal
+  protected `F`-term while wall-domain and `D`-term/source deformations still
+  need spectral-response control.  Full derivation of the Liouville
+  normalization, complete spectral measure, all pole-residue normalization,
+  operator completeness, finite-field rigidity, and defect/boundary matching
+  remain obligations.  The boundary/defect gate makes that last obligation
+  concrete through closed/open cylinder amplitudes, Cardy residuals,
+  defect-twined traces, and defect fusion data.  The pathwise fake-fixed-point
+  gate makes the Hori--Kapustin continuity obligation concrete through
+  finite-regulator spectral/source/boundary transport, rather than local
+  rigidity at a single endpoint.
 - Defines abelian GLSM data with fields, integer charges, invariant
   superpotential, complexified FI-theta coordinate, gauge coupling, and
   regulator.
@@ -699,9 +707,11 @@ and
     coefficients require operator topology and an operator/state map.
   - the cigar/Liouville spectral-data cell: exact arithmetic for
     `c=3+6/k`, noncompact `c_eff=3`, Liouville exponential marginality,
-    spectral-flow momentum/winding integrality, the noncompact field
-    identification, rejection of metric-as-exact-QFT and rescaling-as-chiral-map
-    shortcuts, the Hori--Kapustin local/global rigidity boundary, the
+    asymptotic Liouville deformation filtering of integer periodic `F`-terms
+    versus wall-domain spectral response, spectral-flow momentum/winding
+    integrality, the noncompact field identification, rejection of
+    metric-as-exact-QFT and rescaling-as-chiral-map shortcuts, the
+    Hori--Kapustin local/global rigidity boundary, the
     pathwise fake-Liouville exclusion gate comparing reflection phases, pole
     residues, boundary annuli, and source rows along a finite-regulator
     `kappa` path, and direct Gamma-function evaluation of the imported
@@ -1036,3 +1046,11 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   Euclidean two-point function.  The companion integrates the finite window
   phase-density shift against source rows, then rejects boundary-blind
   measures, reflection-phase-only comparisons, and omitted pole residues.
+- The 2026-06-07 issue #848 asymptotic deformation-filter pass adds
+  `ca:cigar-liouville-asymptotic-deformation-filter`: the text classifies
+  integer `Y`-periodic Liouville `F`-term modes, identifies the primitive wall
+  as the unique marginal nonconstant protected exponential, rejects fractional
+  relevant modes without changed global data, and explains why `D`-term,
+  boundary-domain, and source/contact deformations still require spectral
+  response control.  The companion checks the mode weights, the dual-circle
+  contribution, and the nonzero Robin wall response in the continuous density.

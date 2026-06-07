@@ -322,7 +322,8 @@
         "common-flux operator-map status guard",
         "cigar/Liouville pathwise spectral-continuity fake-fixed-point gate",
         "cigar/Liouville source-normalized spectral-resolution bridge",
-        "N=2 cigar reflection Gamma-function normalization target"
+        "N=2 cigar reflection Gamma-function normalization target",
+        "N=2 Liouville asymptotic deformation filter"
       ]
     },
     {

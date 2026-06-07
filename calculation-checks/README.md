@@ -3138,6 +3138,11 @@ Current checks:
   boundary-state/defect probe showing that protected boundary charges and
   protected defect action do not fix annulus amplitudes or defect-twined
   traces,
+  an asymptotic Liouville deformation filter checking that integer
+  \(Y\)-periodic \(F\)-term modes have only the primitive marginal exponential
+  while fractional relevant modes are not single-valued, that omitting the
+  dual-circle contribution gives the wrong weight, and that wall-domain
+  deformations can still move the continuous reflection density,
   a pathwise fake-Liouville exclusion gate showing that protected endpoint
   labels and local rigidity can still hide jumps in reflection phases, pole
   residues, boundary annuli, or source rows unless the Hori--Kapustin

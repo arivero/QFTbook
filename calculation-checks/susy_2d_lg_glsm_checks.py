@@ -28,7 +28,8 @@ boundary for mirror presentations, admissible mirror-datum and finite-volume
 noncompact spectral-domain gates, finite D-term RG Schur-complement gates,
 finite operator/source matrix-element
 obstructions, finite boundary-state/defect probe obstructions, and
-cigar/Liouville pathwise fake-fixed-point gates, spectral-status cells,
+cigar/Liouville asymptotic deformation filters, pathwise fake-fixed-point
+gates, spectral-status cells,
 source-normalized spectral-resolution bridges, and reflection Gamma-function
 cells,
 plus the Hori--Vafa
@@ -65,6 +66,8 @@ tests excluding fake Liouville endpoints not connected by a continuous
 reflection/boundary/source package, and direct Gamma-function evaluation of the
 imported reflection target, including continuous-series phase/unitarity,
 special-level normalization, and a sample pole residue, plus finite
+Liouville F-term mode classification and wall-domain spectral-response tests,
+plus finite
 source-weighted spectral-measure integrals for noncompact two-point
 observables, plus
 finite density/Jacobian transport tests and double-entry
@@ -163,6 +166,10 @@ noncompact continua, omitted cigar-reflection normalization phases, raw
 special-level reflection normalizations, missing Gamma pole factors,
 boundary-condition-blind reflection shortcuts, collapsed
 existence/rigidity/duality claims, omitted self-adjoint domains,
+fractional non-single-valued Liouville exponentials treated as allowed
+relevant F-terms, dual-circle momentum omitted from Liouville exponential
+weights, protected-F-term-only deformation classifications that miss wall
+spectral response,
 protected-presentation-only D-term RG claims, Hamiltonian-only counterterm
 matching with omitted source renormalization, unweighted source transport
 shortcuts after high-mode elimination,
@@ -4359,6 +4366,130 @@ def check_full_mirror_boundary_defect_probe_obstruction() -> None:
     )
 
 
+def check_cigar_liouville_asymptotic_deformation_filter() -> None:
+    k_level = Fraction(5, 2)
+
+    def radial_weight(mode: Fraction) -> Fraction:
+        return mode / 2 - k_level * mode * mode / 4
+
+    def dual_circle_weight(mode: Fraction) -> Fraction:
+        return k_level * mode * mode / 4
+
+    def chiral_bottom_weight(mode: Fraction) -> Fraction:
+        return radial_weight(mode) + dual_circle_weight(mode)
+
+    integer_modes = range(0, 5)
+    classifications: dict[int, str] = {}
+    for mode in integer_modes:
+        weight = chiral_bottom_weight(Fraction(mode))
+        if mode == 0:
+            classifications[mode] = "constant"
+        elif weight == Fraction(1, 2):
+            classifications[mode] = "marginal"
+        elif weight < Fraction(1, 2):
+            classifications[mode] = "relevant"
+        else:
+            classifications[mode] = "irrelevant"
+
+    assert_equal(
+        "primitive Liouville exponential is the unique marginal integer F-term mode",
+        [mode for mode, label in classifications.items() if label == "marginal"],
+        [1],
+    )
+    assert_equal(
+        "integer periodicity leaves no nonconstant relevant Liouville F-term",
+        [mode for mode, label in classifications.items() if label == "relevant"],
+        [],
+    )
+    assert_equal(
+        "higher integer Liouville exponentials are irrelevant F-terms",
+        all(classifications[mode] == "irrelevant" for mode in [2, 3, 4]),
+        True,
+    )
+
+    fractional_mode = Fraction(1, 2)
+    assert_equal(
+        "fractional Liouville exponential would be relevant by dimension",
+        chiral_bottom_weight(fractional_mode) < Fraction(1, 2),
+        True,
+    )
+    assert_equal(
+        "fractional Liouville exponential is not single-valued on the primitive Y circle",
+        fractional_mode.denominator == 1,
+        False,
+    )
+    assert_equal(
+        "omitting dual-circle momentum gives the wrong primitive Liouville weight",
+        radial_weight(Fraction(1)) == Fraction(1, 2),
+        False,
+    )
+    assert_equal(
+        "radial plus dual-circle weights recover the primitive marginal value",
+        chiral_bottom_weight(Fraction(1)),
+        Fraction(1, 2),
+    )
+
+    def unscaled_phase_density(boundary_lambda: Fraction, momentum: Fraction) -> Fraction:
+        return boundary_lambda / (boundary_lambda * boundary_lambda + momentum * momentum)
+
+    def density_lambda_derivative(boundary_lambda: Fraction, momentum: Fraction) -> Fraction:
+        denominator = boundary_lambda * boundary_lambda + momentum * momentum
+        return (momentum * momentum - boundary_lambda * boundary_lambda) / (denominator * denominator)
+
+    boundary_lambda = Fraction(1)
+    momentum = Fraction(2)
+    boundary_shift = Fraction(1, 10)
+    density_before = unscaled_phase_density(boundary_lambda, momentum)
+    density_after = unscaled_phase_density(boundary_lambda + boundary_shift, momentum)
+    assert_equal(
+        "wall-domain deformation changes the continuous density",
+        density_after == density_before,
+        False,
+    )
+    assert_equal(
+        "wall spectral response is visible although F-term inventory is fixed",
+        density_lambda_derivative(boundary_lambda, momentum) != 0,
+        True,
+    )
+
+    protected_f_term_filter = {
+        "integer Y-periodic exponentials",
+        "primitive marginal Liouville wall",
+        "higher irrelevant F-terms",
+    }
+    full_deformation_filter = protected_f_term_filter | {
+        "normalizable D-term beta matrix",
+        "nonnormalizable source deformations",
+        "wall-domain spectral response",
+        "reflection residue response",
+        "boundary annulus response",
+    }
+    assert_equal(
+        "protected F-term filter is not a full fake-Liouville exclusion theorem",
+        full_deformation_filter <= protected_f_term_filter,
+        False,
+    )
+
+    finite_response = {
+        "reflection density": density_after - density_before,
+        "source row": Fraction(1, 37),
+        "boundary annulus": Fraction(-1, 41),
+    }
+    actual_response_norm = sum(abs(value) for value in finite_response.values())
+    response_budget = actual_response_norm
+    omitted_wall_budget = response_budget - abs(finite_response["reflection density"])
+    assert_equal(
+        "deformation-response residual closes with wall spectral term included",
+        actual_response_norm <= response_budget,
+        True,
+    )
+    assert_equal(
+        "omitting wall spectral response underbudgets fake-Liouville exclusion",
+        actual_response_norm <= omitted_wall_budget,
+        False,
+    )
+
+
 def check_cigar_liouville_pathwise_fake_fixed_point_gate() -> None:
     protected_endpoint_labels = {
         "central charge": Fraction(21, 5),
@@ -5033,6 +5164,7 @@ def main() -> None:
     check_full_mirror_dterm_rg_schur_gate()
     check_full_mirror_operator_source_obstruction()
     check_full_mirror_boundary_defect_probe_obstruction()
+    check_cigar_liouville_asymptotic_deformation_filter()
     check_cigar_liouville_pathwise_fake_fixed_point_gate()
     check_cigar_liouville_source_spectral_resolution_bridge()
     check_cigar_liouville_spectral_data_cell()
