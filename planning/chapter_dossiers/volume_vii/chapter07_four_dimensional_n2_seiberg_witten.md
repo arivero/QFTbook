@@ -13,11 +13,11 @@ Wilsonian dynamics are available for later use.
 - `G`, `g`, `r`: compact gauge group, Lie algebra, and rank.
 - `T`, `B`, `Delta`, `B^circ`: assumed four-dimensional `N=2` QFT,
   Coulomb branch, discriminant locus, and smooth Abelian locus in the
-  Seiberg-Witten Coulomb-branch datum.
-- `S_l`, `L_l`: pure `su(2)` microscopic global/line datum and its absolute
+  Seiberg-Witten Coulomb-branch input.
+- `S_l`, `L_l`: pure `su(2)` microscopic global/line input package and its absolute
   Wilson-'t Hooft line lattice, with `l in {SU(2), SO(3)+, SO(3)-}`.
 - `Gamma`, `<-,->`: electromagnetic charge local system and integral Dirac
-  pairing in the defining datum.
+  pairing in the defining structure.
 - `Gamma_part`: root-normalized local BPS-particle lattice with W-boson charge
   `(0,1)` and monopole charge `(1,0)`.
 - `phi`, `u_k`: vector-multiplet scalar and gauge-invariant Coulomb
@@ -32,8 +32,9 @@ Wilsonian dynamics are available for later use.
   and symplectic cycle basis.
 - `QFT-hypothesis`, `symmetry-derived`, `holomorphy-derived`,
   `special-geometry theorem`, `constraint-derived`, `consistency check`,
-  `central conjecture`, `status boundary`: argument-status labels used in the
-  Seiberg-Witten ledger.
+  `central conjecture`, `boundary statement`: argument roles used to separate
+  physical input, special-geometry calculation, and evidence for the
+  Seiberg-Witten identification.
 - `<delta,gamma>`: rank-one specialization of the antisymmetric Dirac
   pairing.
 - `Omega_C(gamma)`: protected one-particle BPS index in chamber `C`.
@@ -63,22 +64,27 @@ Wilsonian dynamics are available for later use.
 
 ## Claim Ledger
 
-- States the Seiberg-Witten Coulomb-branch datum as an upfront hypothesis:
+- States the Seiberg-Witten Coulomb-branch structure as an upfront hypothesis:
   assumed `N=2` local QFT, vacuum branch and discriminant, electromagnetic
   charge local system with Dirac pairing, period section, local prepotential,
   Abelian Wilsonian action, singularity data, BPS convention, and optional
   curve realization.
-- Defines the pure `su(2)` microscopic global/line datum
+- Defines the pure `su(2)` microscopic global/line input
   `def:pure-su2-sw-global-line-datum`, separating the local particle lattice
   from the absolute `SU(2)`, `SO(3)+`, and `SO(3)-` Wilson-'t Hooft line
   choices.  Records `theta ~ theta+2pi` for `SU(2)` and `theta ~ theta+4pi`
   for fixed `SO(3)_pm`, with `theta -> theta+2pi` exchanging the two `SO(3)`
   variants.
 - Adds central conjecture `conj:pure-su2-sw-low-energy-solution`: for a fixed
-  global/line datum, the pure `su(2)` continuum theory has Coulomb branch
+  global/line input, the pure `su(2)` continuum theory has Coulomb branch
   `C_u`, discriminant `{Lambda^2,-Lambda^2}`, two-derivative Abelian
   Wilsonian action encoded by the displayed SW curve and differential, and
-  protected prepotential data matching after scheme choice.
+  protected prepotential package matching after scheme choice.  The 2026-06-06
+  reader-surface pass adds the adjacent physical-output map: the supplied
+  curve and periods determine Abelian Wilsonian couplings, central charges,
+  BPS mass bounds, singular light charges, monodromies, and protected
+  prepotential coefficients, but not the microscopic Hilbert space, complete
+  BPS spectrum, or genuine line lattice by themselves.
 - Defines Coulomb-branch coordinates and repeats the monograph gauge-coupling
   convention at the first use of `N=2` gauge dynamics.
 - Defines special coordinates, the prepotential, electric-magnetic duality,
@@ -90,12 +96,12 @@ Wilsonian dynamics are available for later use.
   theta-angle coordinates.
 - Proves local existence of the prepotential from symmetry of the period
   coupling.
-- Defines the argument-status labels used for Seiberg-Witten reasoning and
-  classifies the pure `su(2)` construction by QFT hypotheses,
+- Defines the argument roles used for Seiberg-Witten reasoning and classifies
+  the pure `su(2)` construction by QFT hypotheses,
   symmetry-derived input, holomorphy-derived input, special-geometry
-  theorems, constraint-derived ansatz choices, consistency checks, and status
-  boundaries, with the exact SW-to-QFT identification now labeled as the
-  central conjecture.
+  theorems, constraint-derived ansatz choices, consistency checks, and
+  boundary statements, with the exact SW-to-QFT identification now labeled as
+  the central conjecture.
 - Defines the rank-one local BPS-particle electromagnetic pairing in the
   root-normalized W-boson convention and distinguishes it from the absolute
   `SU(2)`/`SO(3)` line lattice.
@@ -160,8 +166,9 @@ Wilsonian dynamics are available for later use.
   equality as a theorem-level obligation rather than inferred from monodromy.
 - Defines a local rank-one Argyres-Douglas cusp model
   `y^2=x^3+v x+u` with `lambda_AD=u dx/y`, proves the scaling dimensions
-  `[x]=2/5`, `[y]=3/5`, `[u]=6/5`, `[v]=4/5`, and records the status boundary
-  separating local special-geometry scaling from a full QFT construction.
+  `[x]=2/5`, `[y]=3/5`, `[u]=6/5`, `[v]=4/5`, and separates local
+  special-geometry scaling from the additional physical input needed for a
+  full QFT construction.
 - Explains, in prose, the rank-two symplectic-lattice obstruction to putting
   mutually nonlocal light charges into a single electric polarization.
 - Records the theorem boundary for turning Seiberg-Witten dynamics into a
@@ -196,7 +203,7 @@ Wilsonian dynamics are available for later use.
   local arXiv source payloads for the original Seiberg-Witten and
   Argyres-Douglas/Argyres-Plesser-Seiberg-Witten papers.  They are source
   leads and convention checks only; the chapter supplies its own definitions,
-  hypotheses, derivations, and status boundaries.
+  hypotheses, derivations, and boundary statements.
 - String compactification and superstring constructions are out of scope for
   this chapter and this monograph.
 
@@ -225,7 +232,17 @@ the elliptic curve cycle degeneration.
   scale normalization \(s=\Lambda^2\).  Added the corresponding finite
   arithmetic to `sw_su2_periods.py`.
 - 2026-06-05 issue #801 SW foundation split: added the pure `su(2)`
-  global/line datum and central low-energy SW conjecture, separated the local
+  global/line input and central low-energy SW conjecture, separated the local
   BPS-particle lattice from `SU(2)`/`SO(3)` absolute line choices, replaced the
   monodromy-derived spectrum phrasing by protected-index weak/strong chamber
   conjectural seeds, and recorded the KS wall-crossing product obligation.
+- 2026-06-06 issue #755/#626 SW physical-output surface pass: retitled the
+  visible pure `su(2)` global/line object as an input package, replaced the
+  argument-status surface by argument roles, and added a physical-output map
+  immediately after the central conjecture.  The chapter now says explicitly
+  that the supplied curve/period package computes Abelian Wilsonian couplings,
+  central charges and BPS mass bounds, singular light charges, monodromies,
+  and protected prepotential coefficients after scheme matching, while the
+  microscopic Hilbert space, BPS-spectrum completeness, genuine line lattice,
+  and full continuum construction remain outside the period calculation.
+  Labels and formulas were kept stable.

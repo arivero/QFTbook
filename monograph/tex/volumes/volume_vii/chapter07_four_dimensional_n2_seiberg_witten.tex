@@ -63,9 +63,9 @@ All dynamical conclusions in this chapter are conditional on the existence of
 is recorded in Open Problem~\ref{op:theorem-level-seiberg-witten-construction}.
 \end{hypothesis}
 
-\begin{definition}[Pure \(\mathfrak{su}(2)\) global and line datum]
+\begin{definition}[Pure \(\mathfrak{su}(2)\) global and line input]
 \label{def:pure-su2-sw-global-line-datum}
-A pure \(\mathfrak{su}(2)\) Seiberg--Witten microscopic datum is
+A pure \(\mathfrak{su}(2)\) Seiberg--Witten microscopic input package is
 \[
   \mathfrak S_\ell
   =
@@ -98,15 +98,15 @@ root-normalized local particle lattice
 \]
 so the massive \(W\)-boson has charge \(\gamma_W\).  This lattice records
 local particle charges and central charges.  The full absolute Wilson--'t Hooft
-line lattice is the separate datum \(\mathcal L_\ell\) above.
+line lattice is the separate choice \(\mathcal L_\ell\) above.
 \end{definition}
 
 \begin{conjecture}[Central conjecture: pure \(\mathfrak{su}(2)\) Seiberg--Witten solution]
 \label{conj:pure-su2-sw-low-energy-solution}
-Fix a datum \(\mathfrak S_\ell\) from
+Fix an input \(\mathfrak S_\ell\) from
 Definition~\ref{def:pure-su2-sw-global-line-datum}.  There exists a
 four-dimensional \(\mathcal N=2\) local QFT with that microscopic gauge algebra,
-global line datum, theta periodicity, and local chiral coordinate \(u\), whose
+global line choice, theta periodicity, and local chiral coordinate \(u\), whose
 Coulomb branch is
 \[
   \mathcal B=\mathbb C_u,\qquad
@@ -127,14 +127,21 @@ the singularities at \(u=\Lambda^2\) and \(u=-\Lambda^2\) contain light
 hypermultiplets of charges \((1,0)\) and \((1,-1)\), respectively, and the
 protected observables in the two-derivative sector, including the instanton
 prepotential coefficients after scheme matching, agree with this period
-datum.
+package.
 \end{conjecture}
 
-The conjecture is the QFT identification.  The special-geometry calculations
-below are exact once the curve, differential, periods, and charge lattice have
-been supplied; the finite monodromy products and instanton-coefficient matches
-are consistency checks of Conjecture~\ref{conj:pure-su2-sw-low-energy-solution},
-not a construction of the four-dimensional continuum QFT.
+The conjecture is the QFT identification, and it is the point at which the
+curve becomes a statement about physical low-energy observables.  Once the
+curve, differential, periods, charge lattice, and absolute line choice have
+been supplied, the special-geometry calculations below determine the Abelian
+Wilsonian couplings, central charges and BPS mass bounds, singular light
+charges and monodromies, and protected prepotential coefficients after scheme
+matching.  They do not by themselves construct the microscopic Hilbert space,
+prove completeness of the BPS spectrum, or select the genuine Wilson--'t Hooft
+line operators.  The ADHM/Nekrasov calculation later in the chapter is
+therefore used as a protected instanton-coefficient comparison with the same
+Wilsonian prepotential, not as a standalone derivation of all observables of
+the four-dimensional continuum QFT.
 
 \section{Coulomb-Branch Coordinates}
 
@@ -375,21 +382,20 @@ whose value is independent of the path in \(U\).  Then
 \(a_{D,I}=\partial\mathcal F/\partial a^I\).  The additive constant depends
 on the chosen base point \(a_\ast\) and has no physical content.
 
-\section{Argument Types And Charge-Monodromy Conventions}
+\section{Physical Inputs And Charge-Monodromy Conventions}
 \label{sec:sw-argument-types-charge-monodromy}
 
-The Seiberg-Witten construction mixes several kinds of reasoning.  In this
-chapter every load-bearing step is to be read with one of the following status
-labels.
+Several logically distinct inputs enter the Seiberg-Witten physics claim.  In
+this chapter each calculation should be read by the role it plays in the
+Wilsonian low-energy description.
 
-\begin{definition}[Argument-status labels for Seiberg-Witten theory]
+\begin{definition}[Argument roles for Seiberg-Witten theory]
 \label{def:sw-argument-status-labels}
-A statement in the rank-one Seiberg-Witten construction has one of these
-statuses.
+A statement in the rank-one Seiberg-Witten construction has one of these roles.
 \begin{enumerate}[label=\textnormal{(\roman*)}]
 \item \emph{Central conjecture}: the exact identification of a supplied
-  period datum with the low-energy Wilsonian physics of a specified
-  four-dimensional continuum QFT and absolute line datum.
+  period package with the low-energy Wilsonian physics of a specified
+  four-dimensional continuum QFT and absolute line choice.
 \item \emph{QFT-hypothesis}: an assumption about the existence of the
   four-dimensional continuum theory, its Coulomb-branch vacua, or its
   Wilsonian effective action.
@@ -405,7 +411,7 @@ statuses.
   the declared ansatz.
 \item \emph{Consistency check}: a nontrivial compatibility test, such as a
   monodromy product, Picard-Fuchs equation, or instanton coefficient match.
-\item \emph{Heuristic/status boundary}: a physical identification not derived
+\item \emph{Boundary statement}: a physical identification not derived
   from a complete regulator construction in this monograph.
 \end{enumerate}
 \end{definition}
@@ -423,7 +429,7 @@ genus-one ansatz.  The hypergeometric periods, Picard-Fuchs equation,
 finite-monodromy product, BPS mass vanishings, and Nekrasov coefficient are
 consistency checks.  The exact nonperturbative identification of these data
 with the low-energy dynamics of the four-dimensional continuum QFT is the
-central conjecture; the curve algebra supplies part of its evidence ledger.
+central conjecture; the curve algebra supplies part of its evidence.
 
 In rank one the local electromagnetic particle lattice used for central charges
 is
@@ -437,7 +443,7 @@ Definition~\ref{def:pure-su2-sw-global-line-datum}: \(n_e=1\) is the electric
 charge of the adjoint \(W\)-boson in the root normalization, and \(n_m=1\) is
 the smooth monopole charge that becomes light at the monopole point.  The
 choice of genuine Wilson--'t Hooft lines is not fixed by the Lie algebra
-\(\mathfrak{su}(2)\); it is the additional datum
+\(\mathfrak{su}(2)\); it is the additional choice
 \(\mathcal L_\ell\).  Thus the same local period curve can be paired with the
 \(SU(2)\), \(SO(3)_+\), or \(SO(3)_-\) absolute line lattice, with the theta
 periodicity stated in
@@ -1190,7 +1196,7 @@ There is therefore no local Abelian Lagrangian consisting of one vector
 multiplet coupled to two ordinary electric hypermultiplets.  The
 Seiberg-Witten interpretation is an interacting rank-one superconformal
 fixed point, usually called an Argyres-Douglas point.  The existence of the
-four-dimensional QFT fixed point is a status-boundary statement unless a
+four-dimensional QFT fixed point is a separate physical input unless a
 separate construction is supplied; the scaling dimensions below are
 consequences of the local special-geometry model.
 
@@ -1456,15 +1462,15 @@ transverse plane gives
 For \(n<0\), use the opposite square completion.  The two square terms vanish
 precisely when \eqref{eq:sw-local-vortex-equations} holds.
 
-\section{Status Boundary}
+\section{What Remains Outside The Period Calculation}
 
 The period construction determines an Abelian Wilsonian effective action only
 after the central QFT identification in
 Conjecture~\ref{conj:pure-su2-sw-low-energy-solution} is supplied.  The curve,
 Picard--Fuchs equation, Picard--Lefschetz monodromies, and Nekrasov coefficient
-matches are exact or finite checks of the supplied datum; they do not construct
-the four-dimensional continuum theory, fix an absolute line lattice by
-themselves, or prove the complete BPS-index spectrum.  The missing
+matches are exact or finite checks of the supplied curve-and-period package;
+they do not construct the four-dimensional continuum theory, fix an absolute
+line lattice by themselves, or prove the complete BPS-index spectrum.  The missing
 nonperturbative regulator for four-dimensional supersymmetric gauge theory
 remains part of the Wilsonian-scheme problem recorded in
 Chapter~\ref{ch:susy-four-dimensional-n1-gauge-dynamics}.
