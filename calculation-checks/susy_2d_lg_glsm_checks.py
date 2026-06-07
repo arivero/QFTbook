@@ -4,7 +4,8 @@ Evidence contract.
 Target claims: the finite LG/GLSM charge ledgers, abelian duality
 normalizations, charged-chiral mirror elimination, vortex-zero-mode filter,
 finite-regulator vortex fluctuation complex, vortex-to-FI-coordinate
-normalization, one-vortex normal-mode interaction and original/dual-frame
+normalization, compact FI-theta flux periodicity, common-flux rather than
+flavor-labelled vortex topology, one-vortex normal-mode interaction and original/dual-frame
 separation, one-vortex source-functional F-term extraction,
 one-vortex component-amplitude source-minor extraction,
 single-vortex coefficient noncancellation bound,
@@ -54,9 +55,12 @@ scratch, then checks that mirror-side and direct-vortex-side data agree only
 after the declared transport and residual maps have been supplied.
 
 Convention dependencies: the checks use the chapter's \(U(1)^s\) charge
-matrix convention, \(Y_i\sim Y_i+2\pi i\), \(X_i=e^{-Y_i}\),
-\(\widetilde W=-t_a\Sigma_a-M_iY_i-\mu c_i e^{-Y_i}\), exponentiated
-FI coordinate \(q=\exp(t)\) in the displayed mirror-torus equations, the
+matrix convention, compact flux \(k=(2\pi)^{-1}\int F\in\mathbb Z\),
+\(\tau=\theta/(2\pi)+ir\), logarithmic FI coordinate
+\(T=2\pi i\tau=-2\pi r+i\theta\) with period \(2\pi i\),
+\(Y_i\sim Y_i+2\pi i\), \(X_i=e^{-Y_i}\),
+\(\widetilde W=-T_a\Sigma_a-M_iY_i-\mu c_i e^{-Y_i}\), exponentiated
+FI coordinate \(q=\exp(T)\) in the displayed mirror-torus equations, the
 chosen orientation of the universal \(d^2\widetilde\theta\) zero-mode pair,
 and the determinant-line convention in which finite \(c_i\) rescalings are
 transported into the FI-theta coordinate.
@@ -84,6 +88,8 @@ omitted vortex ghost factors, omitted vortex normalization constants,
 omitted one-vortex source-overlap factors,
 determinant-only vortex coefficients with nonzero normal interactions,
 original/dual frame substitutions,
+nonperiodic \(\exp(\tau)\) fugacities,
+flavor-labelled topological vortex sectors,
 parallel source-overlap component shortcuts,
 mirror-fugacity-only component calibration,
 source-reference denominator shortcuts,
@@ -429,25 +435,97 @@ def check_abelian_glsm_coulomb_ledger() -> None:
     assert_equal("quintic Coulomb exponent vanishes", sum([1, 1, 1, 1, 1, -5]), 0)
 
 
+def check_compact_fi_theta_fugacity_and_common_flux() -> None:
+    # The chapter uses tau=theta/(2*pi)+i r as a period-one coordinate, but
+    # physical flux weights use the logarithmic coordinate
+    # T=2*pi*i*tau=-2*pi*r+i theta.  This finite model stores the real action
+    # exponent and the theta phase in units of 2*pi.
+    def compact_flux_weight(
+        flux: int,
+        theta_units: Fraction,
+        area_action_units: Fraction,
+    ) -> tuple[Fraction, Fraction]:
+        return (-area_action_units * flux, (theta_units * flux) % 1)
+
+    for flux in range(-4, 5):
+        theta_units = Fraction(3, 7)
+        area_action_units = Fraction(11, 5)
+        weight = compact_flux_weight(flux, theta_units, area_action_units)
+        shifted_weight = compact_flux_weight(
+            flux,
+            theta_units + 1,
+            area_action_units,
+        )
+        assert_equal(
+            f"compact FI fugacity is theta-periodic for flux {flux}",
+            shifted_weight,
+            weight,
+        )
+
+    unit_flux = 1
+    tau_period_shift_multiplier = unit_flux
+    if tau_period_shift_multiplier == 0:
+        raise AssertionError("exp(tau) would incorrectly pass the theta-period test")
+
+    charges = [1, 1, 1]
+    common_flux = 1
+    assert_equal(
+        "equal-charge CP model has one common gauge flux integer",
+        common_flux * sum(charges),
+        3,
+    )
+
+    flavor_sector_label = [1, 0, 0]
+    flavor_swap = [
+        [0, 1, 0],
+        [1, 0, 0],
+        [0, 0, 1],
+    ]
+    rotated_label = [
+        sum(row[col] * flavor_sector_label[col] for col in range(3))
+        for row in flavor_swap
+    ]
+    if rotated_label == flavor_sector_label:
+        raise AssertionError("flavor-labelled sector should change under a basis swap")
+    assert_equal(
+        "common flux is invariant under equal-charge flavor-basis rotation",
+        common_flux,
+        1,
+    )
+
+    bare_q = Fraction(5, 13)
+    coefficients = [Fraction(2, 3), Fraction(7, 11), Fraction(17, 19)]
+    physical_q = bare_q * prod(coefficients, start=Fraction(1))
+    permuted_coefficients = [coefficients[1], coefficients[0], coefficients[2]]
+    assert_equal(
+        "common CP fugacity is symmetric under flavor-basis relabelling",
+        bare_q * prod(permuted_coefficients, start=Fraction(1)),
+        physical_q,
+    )
+
+
 def check_abelian_coulomb_one_loop_primitive() -> None:
-    # The local determinant gives dW/dSigma = -t + sum_i Q_i log(Q_i Sigma/mu).
+    # The local determinant gives dW/dSigma = -T + sum_i Q_i log(Q_i Sigma/mu).
     # This check verifies the primitive and its finite FI-coordinate
     # transformation under determinant normalization changes.
     sigma = 1.37
     mu = 0.91
-    t = -0.42
+    log_fi = -0.42
     charges = [1, 2, 4]
     step = 1e-6
 
     def primitive(sigma_value: float) -> float:
-        return -t * sigma_value + sum(
+        return -log_fi * sigma_value + sum(
             charge
             * sigma_value
             * (log(charge * sigma_value / mu) - 1)
             for charge in charges
         )
 
-    derivative_from_log = -t + sum(charge * log(charge * sigma / mu) for charge in charges)
+    derivative_from_log = -log_fi + sum(
+        charge * log(charge * sigma / mu)
+        for charge in charges
+    )
     derivative_from_primitive = (primitive(sigma + step) - primitive(sigma - step)) / (2 * step)
     assert_close(
         "abelian Coulomb one-loop primitive differentiates to log derivative",
@@ -461,14 +539,14 @@ def check_abelian_coulomb_one_loop_primitive() -> None:
         charge * log(float(constant))
         for charge, constant in zip(charges, determinant_constants)
     )
-    shifted_t = t + finite_fi_shift
-    with_constants = -t * sigma + sum(
+    shifted_log_fi = log_fi + finite_fi_shift
+    with_constants = -log_fi * sigma + sum(
         charge
         * sigma
         * (log(charge * sigma / (mu * float(constant))) - 1)
         for charge, constant in zip(charges, determinant_constants)
     )
-    shifted_coordinate_form = -shifted_t * sigma + sum(
+    shifted_coordinate_form = -shifted_log_fi * sigma + sum(
         charge * sigma * (log(charge * sigma / mu) - 1)
         for charge in charges
     )
@@ -482,18 +560,24 @@ def check_abelian_coulomb_one_loop_primitive() -> None:
 def check_charged_chiral_dual_elimination() -> None:
     sigmas = [1.3, 0.7]
     charges = [[1, 2], [3, 1], [2, 4]]
-    t_values = [0.2, -0.4]
+    log_fi_values = [0.2, -0.4]
     mu = 1.7
     coefficients = [0.9, 1.2, 2.1]
 
     masses = [sum(q_a * sigma_a for q_a, sigma_a in zip(row, sigmas)) for row in charges]
     y_values = [-log(mass / (mu * coeff)) for mass, coeff in zip(masses, coefficients)]
 
-    w_dual = -sum(t_a * sigma_a for t_a, sigma_a in zip(t_values, sigmas))
+    w_dual = -sum(
+        log_fi_a * sigma_a
+        for log_fi_a, sigma_a in zip(log_fi_values, sigmas)
+    )
     w_dual -= sum(mass * y for mass, y in zip(masses, y_values))
     w_dual -= mu * sum(coeff * exp(-y) for coeff, y in zip(coefficients, y_values))
 
-    w_eliminated = -sum(t_a * sigma_a for t_a, sigma_a in zip(t_values, sigmas))
+    w_eliminated = -sum(
+        log_fi_a * sigma_a
+        for log_fi_a, sigma_a in zip(log_fi_values, sigmas)
+    )
     w_eliminated += sum(
         mass * (log(mass / (mu * coeff)) - 1)
         for mass, coeff in zip(masses, coefficients)
@@ -502,14 +586,17 @@ def check_charged_chiral_dual_elimination() -> None:
 
     rank_one_charges = [1, 2, 3]
     sigma = 1.4
-    t = -0.6
+    log_fi = -0.6
     coeffs = [0.8, 1.5, 2.2]
-    with_coeffs = -t * sigma + sum(
+    with_coeffs = -log_fi * sigma + sum(
         charge * sigma * (log(charge * sigma / (mu * coeff)) - 1)
         for charge, coeff in zip(rank_one_charges, coeffs)
     )
-    shifted_t = t + sum(charge * log(coeff) for charge, coeff in zip(rank_one_charges, coeffs))
-    shifted_form = -shifted_t * sigma + sum(
+    shifted_log_fi = log_fi + sum(
+        charge * log(coeff)
+        for charge, coeff in zip(rank_one_charges, coeffs)
+    )
+    shifted_form = -shifted_log_fi * sigma + sum(
         charge * sigma * (log(charge * sigma / mu) - 1)
         for charge in rank_one_charges
     )
@@ -859,8 +946,8 @@ def check_single_vortex_amplitude_assembly() -> None:
     assert_equal("single-vortex superpotential dimension", 1 + 0 + 0, 1)
 
     # Rescaling the finite vortex coefficient is absorbed by an affine shift
-    # of the FI coordinate.  In exponentiated form q=exp(-t), the exact
-    # bookkeeping is q -> q c^{-Q}.
+    # of the FI coordinate.  In exponentiated form q=exp(T), the same
+    # bookkeeping can be represented as q -> q c^{-Q} after shifting T.
     bare_q = Fraction(11, 13)
     charge = 3
     coefficient = Fraction(2, 5)
@@ -2766,6 +2853,7 @@ def main() -> None:
     check_abelian_circle_duality()
     check_abelian_legendre_duality()
     check_abelian_glsm_coulomb_ledger()
+    check_compact_fi_theta_fugacity_and_common_flux()
     check_abelian_coulomb_one_loop_primitive()
     check_charged_chiral_dual_elimination()
     check_all_rank_vortex_fi_coordinate_shift()

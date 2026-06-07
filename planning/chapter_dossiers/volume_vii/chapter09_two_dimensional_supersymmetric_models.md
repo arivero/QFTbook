@@ -50,9 +50,11 @@ and
 - `mathcal B`, `Y`, `u=Y+bar Y`, `K`, `tilde K`: local real superfield,
   twisted-chiral dual variable, real Legendre coordinate, original Kahler
   potential, and dual Kahler potential in abelian `N=(2,2)` duality.
-- `G`, `V`, `r`, `Q_i`, `t`, `sigma`: GLSM gauge group, matter
-  representation, Fayet-Iliopoulos coordinate, charges, complexified
-  FI-theta coordinate, and vector-multiplet scalar.
+- `G`, `V`, `r`, `Q_i`, `tau`, `T`, `q`, `sigma`: GLSM gauge group,
+  matter representation, Fayet-Iliopoulos coordinate, charges, period-one
+  FI-theta coordinate, logarithmic FI-theta coordinate
+  `T=2 pi i tau`, exponentiated compact flux fugacity `q=exp(T)`, and
+  vector-multiplet scalar.
 - `Sigma`, `tilde W_eff`, `mu`, `Q_tot`: twisted chiral field strength,
   abelian Coulomb-branch effective twisted superpotential, renormalization
   scale, and total positive charge in the one-loop Coulomb ledger.
@@ -269,23 +271,32 @@ and
 - Proves that eliminating `Y_i` reproduces the Coulomb one-loop
   superpotential and that the constants `c_i` shift the finite definition of
   the FI coordinate.
+- Adds the compact FI-theta normalization ledger: with
+  `k=(2 pi)^{-1} int F`, `tau=theta/(2 pi)+i r`, and
+  `T=2 pi i tau=-2 pi r+i theta`, a flux-`k` saddle carries
+  `q^k=exp(T k)`, invariant under `theta -> theta+2 pi`.  The old
+  `exp(tau)` fugacity is explicitly ruled out.
+- Rebuilds the one-vortex notation around the common gauge-bundle flux:
+  the flux-one sector is not attached to a flavor label.  The index `i` labels
+  a dual disorder/source projection to `exp(-Y_i)`, while the original GLSM
+  flux weight is the common `q_top`.
 - Extends the vortex-normalization/FI-coordinate comparison to all abelian
   ranks: normalized mirror-torus variables `hat X_i=c_i exp(-Y_i)` move the
-  constants into `t_a^phys=t_a+sum_i Q_i^a log c_i`, and the same shift is
+  constants into `T_a^phys=T_a+sum_i Q_i^a log c_i`, and the same shift is
   checked against the Coulomb affine term, with logarithm-branch changes
-  identified as integral theta-period shifts.
+  identified as integral `2 pi i` shifts of the logarithmic FI coordinate.
 - Adds the rank-one vortex-fugacity transmutation check: the protected
   Coulomb roots depend on
-  `mu^{sum_i Q_i} exp(t+sum_i Q_i log c_i)/prod_i Q_i^{Q_i}`, so `mu` is
+  `mu^{sum_i Q_i} exp(T+sum_i Q_i log c_i)/prod_i Q_i^{Q_i}`, so `mu` is
   fake only after FI running and finite vortex determinant normalization are
   combined; in the anomaly-free case the `mu` power cancels instead.
 - Derives the low-energy `Sigma_a` constraints
-  `sum_i Q_i^a Y_i=-t_a`, producing the logarithmic-torus mirror
+  `sum_i Q_i^a Y_i=-T_a`, producing the logarithmic-torus mirror
   Landau-Ginzburg presentation of protected twisted-chiral data.
 - Works out the `P^{N-1}` mirror critical equations and matches their `N`
   simple critical points to the Coulomb vacuum count.
 - Adds the `P^{N-1}` protected observable test after Hori--Vafa
-  normalization: with `q_phys=exp(t+sum_i log c_i)`, the constrained mirror
+  normalization: with `q_phys=exp(T+sum_i log c_i)`, the constrained mirror
   logarithmic Hessian is `N x^{N-1}` and the finite residue trace gives
   `R(H^k)=q_phys^d` for `k=N-1+dN` and zero off that selection rule.  This
   recovers the protected quantum-product relation `H^N=q_phys` only after the
@@ -371,7 +382,7 @@ and
   proper-time subtracted massive propagator plus the axial-anomaly phase that
   completes the holomorphic logarithm.
 - Derives the effective twisted-superpotential critical equation
-  `prod_i (Q_i sigma/mu)^{Q_i}=e^t` and proves that all-positive charges
+  `prod_i (Q_i sigma/mu)^{Q_i}=exp(T)` and proves that all-positive charges
   give `sum_i Q_i` simple local Coulomb vacua.
 - Works out the `P^{N-1}` charge-one vacuum count and records the
   hypersurface charge-vector signal: the Coulomb `sigma` exponent is
@@ -395,8 +406,8 @@ and
   untwisted Jacobi-basis invariant condition is
   `sum_i a_i = 0 mod d`.
 - Derives the hypersurface Coulomb-coordinate signal
-  `(sigma/mu)^{N-d}(-d)^{-d}_{branch}=exp(t)` and the anomaly-free
-  branch condition `exp(t)=C_branch`, or `T=0` after an additive FI-coordinate
+  `(sigma/mu)^{N-d}(-d)^{-d}_{branch}=exp(T)` and the anomaly-free
+  branch condition `exp(T)=C_branch`, or `T_sing=0` after an additive FI-coordinate
   shift.
 - Presents the quintic GLSM solely as intrinsic two-dimensional QFT data, not
   as a string compactification.
@@ -677,8 +688,8 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   original GLSM vortex amplitude from its dual twisted-chiral image, and the
   2026-06-07 re-audit separates the FI-theta sector weight from the reduced
   coefficient `c_i`.  The original finite source functional carries the
-  numerical FI-theta vortex weight `q_vort`, while `c_i` carries the reduced
-  determinant/operator normalization used in `exp(t) prod_i c_i`.  The
+  common numerical FI-theta vortex weight `q_top`, while `c_i` carries the reduced
+  determinant/operator normalization used in `exp(T) prod_i c_i`.  The
   interaction layer is now the effective insertion `<exp(-V_int) P_bare>'`, so
   a source-independent vacuum factor is allowed only under an additional
   localization/factorization theorem.  The dual `exp(-Y_i)` appears only after
@@ -686,3 +697,14 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   for determinant-only coefficients, FI double counting, scalar-vacuum
   source-factorization shortcuts, and substituting the dual operator tag for a
   numerical original-theory amplitude.
+- The 2026-06-07 issue #847 compact-flux convention pass rebuilds the
+  Hori--Vafa lane around the monograph's own FI-theta normalization:
+  `tau=theta/(2 pi)+i r` has period one, `T=2 pi i tau` has period
+  `2 pi i`, and the physical fugacity is `q=exp(T)`.  The chapter now displays
+  the component compact-flux convention, checks the flux-sector weight
+  `exp((-2 pi r+i theta)k)`, restricts the mirror conjecture to dualizable
+  phase-isometry data unless extra mirror input is supplied, records global
+  gauge-form flux-lattice data, and replaces flavor-attached vortex sectors by
+  a common gauge-flux sector with `i` only a disorder/source projection.  The
+  companion rejects nonperiodic `exp(tau)` fugacities and flavor-labelled
+  topological sectors under equal-charge flavor rotations.

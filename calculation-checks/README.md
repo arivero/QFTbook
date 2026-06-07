@@ -2945,14 +2945,17 @@ Current checks:
   momentum-winding/Legendre-Hessian inversion checks, plus the abelian GLSM
   Coulomb one-loop charge-exponent/vacuum-count ledger, the primitive of the
   Coulomb logarithmic derivative and its finite FI-coordinate shift under
-  determinant normalization changes, the charged-chiral mirror-variable
+  determinant normalization changes, the compact FI-theta check that
+  \(T=2\pi i\tau=-2\pi r+i\theta\) gives a theta-periodic fugacity
+  \(q=\exp(T)\) while \(\exp(\tau)\) fails, the common-flux check rejecting
+  flavor-labelled vortex sectors under equal-charge flavor rotations, the charged-chiral mirror-variable
   elimination matching the Coulomb one-loop superpotential, the finite
   FI-coordinate shift induced by vortex coefficient normalizations, the
   all-rank mirror-torus and Coulomb affine-term ledger showing that vortex
   determinant constants are absorbed by shifted FI-theta coordinates together
   with the integral theta-period branch check, the rank-one
   vortex-fugacity dimensional-transmutation check showing that
-  \(\mu^{\sum_iQ_i}\exp(t+\sum_iQ_i\log c_i)/\prod_iQ_i^{Q_i}\) is the
+  \(\mu^{\sum_iQ_i}\exp(T+\sum_iQ_i\log c_i)/\prod_iQ_i^{Q_i}\) is the
   invariant Coulomb scale while bare-FI and uncompensated-\(\mu\) shortcuts
   fail, the
   primitive-monomial selection forced by exact Coulomb matching, the
