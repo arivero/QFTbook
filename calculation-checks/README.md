@@ -3036,10 +3036,12 @@ Current checks:
   flavor-labelled vortex sectors under equal-charge flavor rotations, separating
   source-projected coefficients from a direct common observable amplitude,
   requiring an assembly map before a projected product is used as physical data,
-  adding a vortex-core disorder-insertion gate that checks finite angular
-  energy requires a scalar zero at a unit core, rejects the single-valued
-  logarithmic chart across the core, fixes the primitive `exp(-Y_i)` orientation,
-  and budgets the core-domain residual in the operator comparison,
+  adding a gauge-covariant vortex-core disorder-insertion gate that checks
+  large-gauge invariance of the covariant winding, separates smooth core
+  extension from singular holonomy cancellation, rejects the single-valued
+  logarithmic chart across the core, derives the primitive `exp(-Y_i)`
+  orientation from the excised-disk first-order boundary term, and budgets the
+  core-domain residual in the operator comparison,
   adding an operator-map status-guard span test in which primitive mirror rows
   miss a source-functional null direction visible to a tested observable, and
   rejecting ordinary \(U(1)\) product formulae on a quotient flux lattice,

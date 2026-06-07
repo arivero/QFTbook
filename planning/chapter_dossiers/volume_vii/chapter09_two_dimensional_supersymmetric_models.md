@@ -73,10 +73,11 @@ and
   GLSM/Hori--Vafa mirror conjecture, its observable comparison layers, and the
   separate continuum/operator/topological/background/singular-locus proof
   debts.
-- `ca:glsm-vortex-core-disorder-insertion`, `mathfrak V_{i,Lambda}`,
-  `C_{i,epsilon}`, `R^{core}_{i,Lambda}`: punctured-disk vortex-core disorder
-  insertion data, separating the finite-action scalar zero and logarithmic
-  monodromy from the later dual-frame monomial `e^{-Y_i}`.
+- `constr:glsm-vortex-core-disorder-datum`, `mathfrak V_{pi,Lambda}`,
+  `C_{pi,epsilon}`, `h_i(epsilon)`, `R^{core}_{pi,Lambda}`:
+  gauge-covariant punctured-disk vortex-core disorder data, separating smooth
+  extendable vortex cores from singular holonomy defects and from the later
+  dual-frame source-row monomial `sum_i pi_i e^{-Y_i}`.
 - `mathfrak M_Lambda`, `K_mir`, `D^mir_Lambda`, `C_ct`, `B_infty`,
   `G_glob`, `R_{Lambda->IR}`: full mirror-QFT datum separating the
   protected Hori--Vafa twisted-superpotential presentation from the mirror
@@ -587,12 +588,14 @@ and
     source-projection functionals compute projected coefficients and a direct
     common observable amplitude by separate routes, so arbitrary projected data
     or a bare projected product fail without an assembly map;
-  - the vortex-core disorder-insertion gate: finite angular energy requires a
-    charged-scalar zero at a unit core, the local logarithmic chart has
-    monodromy and cannot cross the core, the primitive dual monomial has the
-    chosen core orientation, flavor rotations permute source rows rather than
-    flux sectors, and the core-domain residual is a required operator-map
-    budget term;
+  - the vortex-core disorder-insertion gate: the covariant boundary period
+    `h_i=(2 pi)^{-1} int(d theta_i+Q_i A)` is invariant under large gauge
+    transformations, smooth core extension requires regular holonomy and an
+    integral divisor zero, singular holonomy cancellation is a separate defect
+    domain, the first-order boundary term on the excised disk gives the
+    primitive `exp(-Y_i)` orientation, flavor rotations act on source rows
+    rather than flux sectors, and the core-domain residual is a required
+    operator-map budget term;
   - quotient global-form flux/character lattice checks: for `U(1)/Z_n` the
     flux lattice contains `1/n`, the electric character lattice is `nZ`, the
     logarithmic FI period is `2 pi i n` in covering coordinates, cover-charge
@@ -1080,11 +1083,13 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   boundary-domain, and source/contact deformations still require spectral
   response control.  The companion checks the mode weights, the dual-circle
   contribution, and the nonzero Robin wall response in the continuous density.
-- The 2026-06-07 issue #847 vortex-core disorder pass adds
-  `ca:glsm-vortex-core-disorder-insertion`: the text defines the original
-  disorder insertion by a punctured-disk core boundary condition rather than by
-  the local `Phi_i=exp(Psi_i)` chart, derives the finite-action zero and
-  logarithmic monodromy obstruction, and states the residual core-domain
-  operator map to `exp(-Y_i)`.  The companion checks finite core energy,
-  monodromy, primitive dual orientation, flavor-row covariance, and the
-  necessity of the core-domain residual budget.
+- The 2026-06-07 issue #847 gauge-covariant vortex-core repair replaces the
+  earlier core block by `constr:glsm-vortex-core-disorder-datum`: the text
+  defines the original disorder insertion as a punctured-disk
+  principal-bundle/connection/section datum modulo gauge, distinguishes smooth
+  extendable cores from singular holonomy defects, derives the dual
+  `exp(-Y_i)` orientation from the excised-disk first-order boundary term, and
+  treats equal-charge labels as flavor/source rows rather than topological flux
+  sectors.  The companion checks large-gauge invariance, finite core energy,
+  singular-holonomy negative controls, projective flavor-row covariance, and
+  the core-domain and boundary-term residual budgets.

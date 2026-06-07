@@ -6,7 +6,7 @@ normalizations, charged-chiral mirror elimination, vortex-zero-mode filter,
 finite-regulator vortex fluctuation complex, vortex-to-FI-coordinate
 normalization, compact FI-theta flux periodicity, common-flux rather than
 flavor-labelled vortex topology, common-sector source-projection and
-product-assembly gates, vortex-core disorder insertion domains,
+product-assembly gates, gauge-covariant vortex-core disorder insertion domains,
 quotient global-form flux/character/theta-period
 restrictions, chiral-superpotential phase-isometry restrictions for abelian
 dualization,
@@ -47,9 +47,10 @@ and frame residuals,
 normal-mode cumulant factors and original-to-dual frame tags,
 common-sector source projections, independently projected common amplitudes,
 assembly-map mutation controls, operator-map status guards and span tests,
-vortex-core winding/zero-order finite-action filters, dual-disorder charge
-orientation checks, local-log-chart monodromy tests, core-domain residual
-budgets, quotient cocharacter-lattice and dual character-lattice filters with
+vortex-core covariant-winding/holonomy finite-action filters, first-order
+boundary-term dual-disorder orientation checks, local-log-chart monodromy
+tests, core-domain residual budgets, quotient cocharacter-lattice and dual
+character-lattice filters with
 theta-period tests,
 phase-isometry lattice tests for chiral superpotential monomials,
 one-loop gamma-matrix Hermiticity tests, signed-log determinant-density
@@ -142,8 +143,10 @@ source-functional null directions hidden from primitive projections but visible
 to the tested observable, residual-slot names promoted to a controlled
 operator-map estimate without component bounds, arbitrary projected
 coefficients, local logarithmic charts used across vortex cores,
-nonzero-core phase windings treated as finite action, wrong-orientation dual
-disorder monomials, core counterterms omitted from operator-map residuals,
+gauge-variant scalar winding used as a core label, singular holonomy
+cancellation treated as a smooth vortex saddle, nonzero-core covariant
+windings treated as finite action, wrong-orientation dual disorder monomials,
+core counterterms omitted from operator-map residuals,
 ordinary \(U(1)\) product formulae reused for
 quotient flux lattices, cover-charge-one matter treated as a quotient
 representation, ordinary \(2\pi i\) FI periods applied to fractional quotient
@@ -682,30 +685,93 @@ def check_compact_fi_theta_fugacity_and_common_flux() -> None:
 
 
 def check_vortex_core_disorder_insertion_gate() -> None:
-    def angular_energy_is_finite(zero_order: Fraction, winding: int) -> bool:
-        if winding == 0:
+    def covariant_winding(scalar_winding: Fraction, charge: int, holonomy: Fraction) -> Fraction:
+        return scalar_winding + charge * holonomy
+
+    def large_gauge_transform(
+        scalar_winding: Fraction,
+        holonomy: Fraction,
+        charge: int,
+        gauge_degree: int,
+    ) -> tuple[Fraction, Fraction]:
+        return (
+            scalar_winding + charge * gauge_degree,
+            holonomy - gauge_degree,
+        )
+
+    charge = 2
+    scalar_winding = Fraction(1)
+    holonomy = Fraction(1, 3)
+    transformed_winding, transformed_holonomy = large_gauge_transform(
+        scalar_winding,
+        holonomy,
+        charge,
+        1,
+    )
+    assert_equal(
+        "ordinary scalar winding changes under a large gauge transformation",
+        transformed_winding,
+        Fraction(3),
+    )
+    assert_equal(
+        "connection holonomy shifts under the same large gauge transformation",
+        transformed_holonomy,
+        Fraction(-2, 3),
+    )
+    assert_equal(
+        "covariant core winding is gauge invariant",
+        covariant_winding(transformed_winding, charge, transformed_holonomy),
+        covariant_winding(scalar_winding, charge, holonomy),
+    )
+
+    def angular_energy_is_finite(zero_order: Fraction, covariant_period: Fraction) -> bool:
+        if covariant_period == 0:
             return True
-        # For phi ~ r^a exp(i n varphi), the angular energy behaves as
-        # int_0^epsilon r^(2a-1) dr and is finite exactly when a > 0.
+        # For |D_phi s|^2/r^2 with |s| ~ r^a, the radial integral behaves as
+        # int_0^epsilon r^(2a-1) dr when the covariant period is nonzero.
         return zero_order > 0
 
+    smooth_unit_period = covariant_winding(Fraction(1), 1, Fraction(0))
     assert_equal(
-        "unit vortex core with a scalar zero has finite angular energy",
-        angular_energy_is_finite(Fraction(1), 1),
+        "smooth unit vortex core with a scalar zero has finite angular energy",
+        angular_energy_is_finite(Fraction(1), smooth_unit_period),
         True,
     )
     assert_equal(
-        "nonzero scalar core with unit winding has logarithmic angular divergence",
-        angular_energy_is_finite(Fraction(0), 1),
+        "nonzero scalar with nonzero covariant winding has logarithmic divergence",
+        angular_energy_is_finite(Fraction(0), smooth_unit_period),
         False,
     )
+
+    singular_cancelled_period = covariant_winding(Fraction(1), 1, Fraction(-1))
     assert_equal(
-        "unwound local chart has no angular core obstruction",
-        angular_energy_is_finite(Fraction(0), 0),
+        "singular holonomy can cancel scalar winding in the covariant period",
+        singular_cancelled_period,
+        Fraction(0),
+    )
+    assert_equal(
+        "cancelled covariant period is finite but is not a smooth vortex zero",
+        angular_energy_is_finite(Fraction(0), singular_cancelled_period),
         True,
     )
 
-    unit_core_winding = 1
+    def smooth_extension_order(scalar_winding: Fraction, holonomy: Fraction) -> Fraction | None:
+        if holonomy != 0 or scalar_winding.denominator != 1 or scalar_winding < 0:
+            return None
+        return scalar_winding
+
+    assert_equal(
+        "smooth core extension has integer divisor order in a regular gauge",
+        smooth_extension_order(Fraction(1), Fraction(0)),
+        Fraction(1),
+    )
+    assert_equal(
+        "singular holonomy cancellation is not a smooth core extension",
+        smooth_extension_order(Fraction(1), Fraction(-1)),
+        None,
+    )
+
+    unit_core_winding = smooth_unit_period
     log_chart_monodromy_units = unit_core_winding
     assert_equal(
         "local logarithmic chart is single-valued only in the unwound sector",
@@ -718,16 +784,39 @@ def check_vortex_core_disorder_insertion_gate() -> None:
         1,
     )
 
+    def first_order_boundary_action(covariant_period_ccw: Fraction) -> Fraction:
+        excised_boundary_period = -covariant_period_ccw
+        return -excised_boundary_period
+
+    def dual_weight_exponent(boundary_action_coefficient: Fraction) -> Fraction:
+        return -boundary_action_coefficient
+
+    primitive_boundary_action = first_order_boundary_action(unit_core_winding)
+    assert_equal(
+        "excised-disk first-order boundary action has the primitive positive sign",
+        primitive_boundary_action,
+        Fraction(1),
+    )
+    assert_equal(
+        "primitive positive core gives exp(-Y_i) in the Euclidean weight",
+        dual_weight_exponent(primitive_boundary_action),
+        Fraction(-1),
+    )
+    assert_equal(
+        "opposite core orientation gives exp(+Y_i)",
+        dual_weight_exponent(first_order_boundary_action(-unit_core_winding)),
+        Fraction(1),
+    )
+
     primitive_dual_monomial_charge = -1
     opposite_dual_monomial_charge = 1
 
     def core_winding_created_by_dual_monomial(dual_charge: int) -> int:
-        # The sign convention matches W_dual ... - mu c_i exp(-Y_i):
-        # exp(-Y_i) creates the positive primitive core orientation.
+        # The sign convention is the finite boundary-action result above.
         return -dual_charge
 
     assert_equal(
-        "primitive exp(-Y_i) creates the chosen unit core orientation",
+        "primitive exp(-Y_i) is the basis-row image of the chosen core orientation",
         core_winding_created_by_dual_monomial(primitive_dual_monomial_charge),
         unit_core_winding,
     )
@@ -763,6 +852,15 @@ def check_vortex_core_disorder_insertion_gate() -> None:
         swapped_core_coefficients,
         [core_coefficients[1], core_coefficients[0]],
     )
+    projective_orientation = [Fraction(2), Fraction(3)]
+    rescaled_orientation = [5 * value for value in projective_orientation]
+    orientation_row = [value / sum(projective_orientation) for value in projective_orientation]
+    rescaled_row = [value / sum(rescaled_orientation) for value in rescaled_orientation]
+    assert_equal(
+        "equal-charge core orientation is projective rather than a new flux sector",
+        rescaled_row,
+        orientation_row,
+    )
     common_gauge_flux_degree = 1
     assert_equal(
         "core projection label does not split the common gauge flux",
@@ -771,20 +869,29 @@ def check_vortex_core_disorder_insertion_gate() -> None:
     )
 
     residuals = {
-        "core-domain": Fraction(1, 101),
+        "principal-bundle core-domain": Fraction(1, 101),
+        "singular holonomy/domain": Fraction(1, 103),
         "local counterterm": Fraction(1, 103),
         "zero-mode boundary": Fraction(1, 107),
-        "source row": Fraction(1, 109),
-        "operator map": Fraction(1, 113),
-        "continuum": Fraction(1, 127),
+        "self-adjoint domain": Fraction(1, 109),
+        "first-order boundary term": Fraction(1, 113),
+        "source row": Fraction(1, 127),
+        "operator map": Fraction(1, 131),
+        "continuum": Fraction(1, 137),
     }
     full_bound = sum(residuals.values(), Fraction(0))
     actual_error = full_bound
     assert_equal("vortex-core disorder residual telescope", actual_error <= full_bound, True)
-    underbudget_without_core = full_bound - residuals["core-domain"]
+    underbudget_without_core = full_bound - residuals["principal-bundle core-domain"]
     assert_equal(
         "omitting core-domain residual underbudgets disorder-operator comparison",
         actual_error <= underbudget_without_core,
+        False,
+    )
+    underbudget_without_boundary_sign = full_bound - residuals["first-order boundary term"]
+    assert_equal(
+        "omitting first-order boundary sign underbudgets the exp(-Y_i) comparison",
+        actual_error <= underbudget_without_boundary_sign,
         False,
     )
 

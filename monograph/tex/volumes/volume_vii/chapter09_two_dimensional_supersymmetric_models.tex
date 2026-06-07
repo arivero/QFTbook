@@ -1806,88 +1806,151 @@ primitive harmonic once a nonzero coefficient is present.  Neither step proves
 that the regulated common vortex sector has exactly the two universal fermion
 zero modes or that its determinant line has been oriented consistently.
 
-\begin{controlledapproximation}[Vortex-core disorder insertion]
-\label{ca:glsm-vortex-core-disorder-insertion}
+\begin{construction}[Gauge-covariant vortex-core disorder datum]
+\label{constr:glsm-vortex-core-disorder-datum}
 The disorder operator represented in the mirror by \(e^{-Y_i}\) must be
-defined in a chart that sees the zero of the original charged field.  Work in a
-small disk \(D_\epsilon(z_0)\) around a proposed vortex insertion and remove
-the center.  On the punctured disk write, in a local trivialization,
+defined by gauge-covariant punctured-disk data, not by the local logarithmic
+chart alone.  Work in a small disk \(D_\epsilon(z_0)\) and remove the center.
+The datum on \(D_\epsilon^\times\) is a principal \(U(1)\)-bundle with
+connection \(A\), together with a section
 \[
-  \phi_i=\rho_i e^{\ii\vartheta_i}.
+  s_i\in\Gamma\!\left(D_\epsilon^\times,
+  P\times_{Q_i}\mathbb C\right),
 \]
-A smooth unit core has boundary degree
+modulo gauge transformations.  In a local frame write
+\(s_i=\rho_i e^{\ii\vartheta_i}\).  With the convention
+\(D\phi_i=(d+\ii Q_iA)\phi_i\), a gauge transformation by
+\(e^{\ii\chi}\) sends
+\[
+  \vartheta_i\mapsto\vartheta_i+Q_i\chi,\qquad
+  A\mapsto A-d\chi,
+\]
+so neither \(\oint d\vartheta_i\) nor the ordinary angular energy is a
+gauge-invariant core label.  The invariant boundary period is
 \begin{equation}
-  \frac1{2\pi}\oint_{\partial D_\epsilon}d\vartheta_i=1,
-  \qquad
-  \rho_i(r,\varphi)=r\,a(\varphi)+O(r^2),
-  \qquad a(\varphi)>0,
+  h_i(\epsilon)
+  =
+  \frac1{2\pi}
+  \oint_{\partial D_\epsilon}^{\rm ccw}
+  \bigl(d\vartheta_i+Q_iA\bigr).
+  \label{eq:glsm-vortex-core-covariant-winding}
+\end{equation}
+If
+\[
+  n_i=\frac1{2\pi}\oint d\vartheta_i,\qquad
+  a=\frac1{2\pi}\oint A,
+\]
+then a large gauge transformation of degree \(r\) changes
+\((n_i,a)\) to \((n_i+Q_ir,a-r)\), while
+\[
+  h_i=n_i+Q_ia
+\]
+is unchanged.
+
+There are two different local objects.  A smooth vortex saddle is required to
+extend across the disk as a smooth connection and a smooth section.  In a
+regular frame the small-circle holonomy tends to zero, and the section has a
+divisor order \(\ell_i\in\mathbb Z_{\ge0}\):
+\begin{equation}
+  h_i(\epsilon)\longrightarrow \ell_i,\qquad
+  \rho_i(r,\varphi)=r^{\ell_i}a(\varphi)+O(r^{\ell_i+1}),
+  \qquad a(\varphi)>0 .
   \label{eq:glsm-vortex-core-boundary-data}
 \end{equation}
-up to the sign fixed by the chosen vortex orientation.  The zero is not a
-minor regularity condition.  If \(\rho_i\) stayed nonzero at the center while
-\(\vartheta_i\) had degree one, then the angular part of the kinetic energy
-would contain
+For \(\ell_i>0\) the core has a scalar zero, and that zero is a domain
+condition for a smooth finite-action core.  The angular part of the covariant
+kinetic energy contains
 \[
-  \int_0^\epsilon r\,dr\,\frac{\rho_i(r)^2}{r^2},
+  \int_0^\epsilon r\,dr\,
+  \frac{\rho_i(r)^2}{r^2}\,
+  \left|\partial_\varphi\vartheta_i+Q_iA_\varphi\right|^2 .
 \]
-which diverges logarithmically.  If
-\(\rho_i(r)\sim r^a\), the angular integral is finite for \(a>0\).  Thus a
-finite-action vortex core lies outside the local chart
-\(\Phi_i=e^{\Psi_i}\): around \(\partial D_\epsilon\),
+If \(s_i\) stayed nonzero while the smooth core had \(h_i\ne0\), this integral
+would diverge logarithmically.  If \(\rho_i(r)\sim r^a\) with \(a>0\), it is
+finite.  Thus a smooth finite-action vortex core lies outside the local chart
+\(\Phi_i=e^{\Psi_i}\): in a regular frame around the core,
 \[
   \oint d\Psi_i
   =
   \oint d\log\phi_i
   =
-  2\pi\ii ,
+  2\pi\ii\,\ell_i ,
 \]
 so \(\Psi_i\) is neither single-valued on the punctured disk nor extendable
-through the core.
+through a nonzero divisor.
 
-The original regulated disorder insertion is therefore a boundary-condition
-definition, not an ordinary insertion of the dual monomial into the original
-field variables.  At cutoff scale the regulated expectation value is
+A singular disorder defect is different.  It may allow a nonextendable
+connection with a prescribed small-circle holonomy.  Such a holonomy can
+cancel the scalar winding in
+\eqref{eq:glsm-vortex-core-covariant-winding}, leaving finite covariant
+angular energy even when the section has no smooth zero.  That object is not a
+smooth Nielsen--Olesen or BPS vortex core.  It is a punctured-disk boundary
+condition and must specify its allowed connection singularity, local action
+subtraction, bosonic domain, fermion/self-adjoint domain, and source
+normalization.
+
+At cutoff scale the original regulated insertion is therefore
 \begin{equation}
-  \bigl\langle{\mathcal O}\,{\mathfrak V}_{i,\Lambda}(z_0)\bigr\rangle
+  \bigl\langle{\mathcal O}\,{\mathfrak V}_{\pi,\Lambda}(z_0)\bigr\rangle
   =
   \lim_{\epsilon\downarrow0}
-  Z_{i,\epsilon}^{\rm core}
-  \int_{\mathcal C_{i,\epsilon}}
+  Z_{\pi,\epsilon}^{\rm core}
+  \int_{\mathcal C_{\pi,\epsilon}}
   {\mathcal D}_{\Lambda}(A,\Phi,\cdots)\,
   e^{-S_\Lambda[A,\Phi,\cdots]}\,
   {\mathcal O}_{\Lambda},
   \label{eq:glsm-vortex-core-disorder-path-integral}
 \end{equation}
-where \(\mathcal C_{i,\epsilon}\) imposes the core boundary data
-\eqref{eq:glsm-vortex-core-boundary-data}, the corresponding common compact
-gauge-flux sector, the gauge transition function, and the fermion zero-mode
-boundary conditions.  The factor \(Z_{i,\epsilon}^{\rm core}\) is the local
-core counterterm and source normalization required for the \(\epsilon\to0\)
-limit.  In the compact scalar first-order duality, an exponential of the dual
-variable is precisely such a winding source: with the sign convention of
-\eqref{eq:glsm-hv-dual-twisted-superpotential}, the primitive dual monomial
-\(e^{-Y_i}\) creates the unit core orientation in
-\eqref{eq:glsm-vortex-core-boundary-data}.  The opposite monomial creates the
-opposite core orientation.
+where \(\mathcal C_{\pi,\epsilon}\) imposes the principal-bundle/connection
+datum, the covariant winding or singular-holonomy prescription, the common
+compact gauge-flux sector, and the fermion boundary conditions.  The label
+\(\pi\) is a source row.  For equal-charge fields it is a flavor-covariant
+vector or projective-orientation datum; a basis vector may select the
+\(i\)-th primitive row, but it is not an \(i\)-labelled topological flux
+sector.
 
-Consequently the operator comparison has one more local datum:
-\begin{equation}
-  U_\Lambda\bigl({\mathfrak V}_{i,\Lambda}(z_0)\bigr)
+The sign of the primitive dual monomial comes from the boundary term in the
+first-order compact-scalar dualization on the excised disk.  Let
+\[
+  H_i=d\vartheta_i+Q_iA .
+\]
+With the sign convention that produces
+\eqref{eq:glsm-hv-dual-twisted-superpotential}, integration by parts on
+\(\Sigma_\epsilon=\Sigma\setminus D_\epsilon(z_0)\) gives the local topological
+piece
+\[
+  S_{\rm fo}^{\rm top}
   =
-  Z^{\rm map}_{i,\Lambda}\,e^{-Y_i(z_0)}
+  \frac1{2\pi}\int_{\Sigma_\epsilon}dY_i\wedge H_i
+  -
+  \frac1{2\pi}\int_{\partial\Sigma_\epsilon}Y_iH_i .
+\]
+The boundary orientation of the excised disk is opposite to the
+counterclockwise orientation of \(\partial D_\epsilon\).  If \(Y_i\) is held
+constant at the core and the smooth primitive orientation has
+\(\frac1{2\pi}\oint_{\partial D_\epsilon}^{\rm ccw}H_i=1\), then the local
+boundary action is \(Y_i(z_0)\), and the Euclidean weight contributes
+\[
+  e^{-Y_i(z_0)} .
+\]
+The opposite core orientation gives \(e^{+Y_i(z_0)}\).  For a general source
+row \(\pi\), the dual-frame comparison therefore has the form
+\begin{equation}
+  U_\Lambda\bigl({\mathfrak V}_{\pi,\Lambda}(z_0)\bigr)
+  =
+  Z^{\rm map}_{\pi,\Lambda}\,
+  \sum_i\pi_i e^{-Y_i(z_0)}
   +
-  R^{\rm core}_{i,\Lambda}.
+  R^{\rm core}_{\pi,\Lambda}.
   \label{eq:glsm-vortex-core-disorder-map}
 \end{equation}
-The residual \(R^{\rm core}_{i,\Lambda}\) includes the punctured-disk
-boundary limit, local counterterm, zero-mode boundary condition, and
-source-row normalization.  It is independent of the Coulomb logarithm and of
-the compact FI period.  For equal-charge fields a flavor rotation permutes the
-rows \({\mathfrak V}_{i,\Lambda}\), while the gauge-flux degree in
-\eqref{eq:glsm-vortex-core-disorder-path-integral} remains common.  A
-controlled Hori--Vafa operator statement therefore needs this core-domain map
-in addition to the source-projection and determinant estimates below.
-\end{controlledapproximation}
+The residual \(R^{\rm core}_{\pi,\Lambda}\) records the punctured-disk
+boundary limit, any singular holonomy, local counterterms, choices of
+zero-mode and self-adjoint domains, first-order boundary normalization, and
+source-row normalization.  A Hori--Vafa operator statement therefore needs
+this core-domain map, together with the source-projection and determinant
+estimates below.
+\end{construction}
 
 At finite regulator this distinction is expressed by source projections on one
 common sector.  Let \({\mathcal A}_{1,\Lambda}\) denote the
