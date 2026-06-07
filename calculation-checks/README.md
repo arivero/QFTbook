@@ -2957,14 +2957,15 @@ Current checks:
   bookkeeping, saturated twisted-\(F\)-term zero modes, unsaturated-zero-mode
   vanishing, and FI-coordinate normalization shifts, the one-vortex
   original/dual-frame and normal-mode-interaction separation check rejecting
-  determinant-only coefficients and direct substitution of the dual
-  \(e^{-Y_i}\) operator for the numerical original GLSM fugacity, the
+  determinant-only coefficients, FI double counting inside `c_i`, and direct
+  substitution of the dual \(e^{-Y_i}\) operator for the numerical original
+  GLSM fugacity, the
   retained-window
   one-vortex source-functional extraction distinguishing the twisted
 	  \(F\)-term projection from zero-source component amplitudes and
 	  source-differentiated component amplitudes, with negative controls for
 	  moduli-only, ghost-omitted, determinant-only, mirror-only,
-	  source-overlap, normal-interaction, and
+	  source-overlap, normal-interaction, vacuum-scalar-factorization, and
 	  unsaturated-zero-mode shortcuts, the finite one-vortex component-amplitude
 	  cell checking the oriented zero-mode source minor, primed-propagator contact
 	  contribution, residual telescope, and negative controls for norm-product,
@@ -2977,8 +2978,10 @@ Current checks:
 	  zero-reference, contact-omitted, and parallel-source shortcuts, the
 	  retained-window
 	  one-vortex coefficient noncancellation bound with signed/mass
-  margin, residual telescope, relative-error bound, and negative controls for
-  omitted determinant residuals and symmetry-only nonzero claims, the
+  margin, reduced-original and mapped-dual residual telescopes, `Z_map`
+  relative-error bound, and negative controls for omitted determinant
+  residuals, FI double counting, frame-crossed targets, and symmetry-only
+  nonzero claims, the
   \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger and protected
   residue/quantum-product selection rule, the vortex-to-protected-observable
   proof-obligation telescope with negative controls for omitted vortex

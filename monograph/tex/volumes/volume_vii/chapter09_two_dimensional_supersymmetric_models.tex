@@ -1231,33 +1231,55 @@ the two universal fermion zero modes have been identified with
 \(d^2\widetilde\theta\), as filtered by
 Proposition~\ref{prop:glsm-vortex-zero-mode-filter}.  Let
 \(q^{\rm vort}_{i,\Lambda}\) be the numerical FI-theta weight of this
-charge-one sector in the original GLSM regulator.  Finally let
+charge-one sector in the original GLSM regulator.  This is the classical
+topological sector weight; it is not part of the finite determinant or
+operator normalization \(c_i\) that later appears in the mirror
+superpotential.  Finally let
 \[
-  \mathcal N^{\rm int}_{i,\Lambda}(z)
+  \mathcal P^{\rm eff}_{i,\Lambda}(z;\xi,\eta,\lambda,J)
   =
   \left\langle
     \exp\!\bigl[-V^{\rm int}_{i,\Lambda,z}(\varphi,\psi)\bigr]
+    \mathcal P^{\rm bare}_{\Lambda}
+      (z;\xi,\eta,\lambda,J;\varphi,\psi)
   \right\rangle'_{\Lambda,z}
 \]
-denote the primed normal-mode expectation of the cubic and higher interaction
-vertices after the Gaussian determinant, zero modes, and ghosts have been
-separated.  In a localization or protected large-FI window this factor may be
-proved to be \(1\), or \(1\) plus a controlled remainder; without that extra
-argument it is part of the coefficient.
-
-The original GLSM calculation determines the numerical charge-one coefficient
-\begin{equation}
-  c^{\rm orig}_{i,\Lambda}
+denote the primed normal-mode expectation of the bare zero-mode/source
+polynomial together with the cubic and higher interaction vertices after the
+Gaussian determinant, zero modes, and ghosts have been separated.  Its
+protected zero-mode projection is
+\[
+  \mathcal Z^{0,{\rm eff}}_{i,F,\Lambda}(z)
   =
-  \mu^{-1}q^{\rm vort}_{i,\Lambda}
+  \Bigl[
+    \mathcal P^{\rm eff}_{i,\Lambda}(z;\xi,\eta,0,0)
+  \Bigr]_{\xi_+\xi_-\,\eta_{\rm top}} .
+\]
+Only in a localization or protected large-FI window does this effective
+projection factor as a source-independent vacuum number
+\(\mathcal N^{\rm int}_{i,\Lambda}(z)\) times a Gaussian zero-mode polynomial.
+For generic normal-mode interactions, source insertions and interaction
+cumulants mix.
+
+After stripping off the classical FI-theta sector weight, the original GLSM
+calculation determines the reduced charge-one normalization
+\begin{equation}
+  \widehat c^{\rm orig}_{i,\Lambda}
+  =
+  \mu^{-1}
   \int_{\mathcal U_{i,1,\Lambda}}
   e^{-S^{\rm red}_{i,1,\Lambda}(z)}\,
   \mathcal W_{i,1,\Lambda}^{\rm nz}(z)\,
-  \mathcal N^{\rm int}_{i,\Lambda}(z)\,
-  \mathcal Z_{i,F,\Lambda}^{0}(z)\,
+  \mathcal Z^{0,{\rm eff}}_{i,F,\Lambda}(z)\,
   \dd\nu_{i,1,\Lambda}(z).
   \label{eq:glsm-single-vortex-original-coefficient-integral}
 \end{equation}
+The FI-weighted original-sector contribution is
+\(q^{\rm vort}_{i,\Lambda}\widehat c^{\rm orig}_{i,\Lambda}\).  Keeping this
+product distinct from \(\widehat c^{\rm orig}_{i,\Lambda}\) is essential:
+otherwise the same FI-theta weight is counted once in the original vortex
+sector and again when the Hori--Vafa constraint produces the exponentiated
+mirror coordinate.
 The dual Wilsonian statement is obtained only after the abelian dual
 operator map sends the charge-one vortex event to the twisted-chiral monomial
 \(e^{-Y_i}\).  In that dual frame the corresponding term is
@@ -1268,12 +1290,12 @@ operator map sends the charge-one vortex event to the twisted-chiral monomial
   \label{eq:glsm-single-vortex-superpotential-term}
 \end{equation}
 where \(c_{i,\Lambda}\) is the image of
-\(c^{\rm orig}_{i,\Lambda}\) in the same finite determinant, FI, and operator
-normalization convention.  Equivalently,
+\(\widehat c^{\rm orig}_{i,\Lambda}\) in the same finite determinant and
+operator normalization convention.  Equivalently,
 \begin{equation}
   c_{i,\Lambda}
   =
-  Z^{\rm map}_{i,\Lambda}\,c^{\rm orig}_{i,\Lambda},
+  Z^{\rm map}_{i,\Lambda}\,\widehat c^{\rm orig}_{i,\Lambda},
   \label{eq:glsm-single-vortex-coefficient-integral}
 \end{equation}
 with \(Z^{\rm map}_{i,\Lambda}=1\) only after the original and dual operator
@@ -1282,7 +1304,7 @@ frames have been normalized identically.  Here
 numerical FI-theta sector weight \(q^{\rm vort}_{i,\Lambda}\) displayed
 separately; \(e^{-Y_i}\) is not inserted into the original path integral.
 If additional fermion zero modes remain unsaturated, then
-\(\mathcal Z_{i,F,\Lambda}^{0}=0\) and this vortex sector supplies no
+\(\mathcal Z^{0,{\rm eff}}_{i,F,\Lambda}=0\) and this vortex sector supplies no
 twisted-superpotential term.  If the continuum limit of
 \eqref{eq:glsm-single-vortex-original-coefficient-integral} exists and is
 nonzero, and if the dual operator map has a matching continuum limit, then
@@ -1297,16 +1319,19 @@ Gaussian identity.  After the collective coordinates, gauge ghosts, and
 fermion zero modes are separated, the normal coordinates still carry the
 interaction \(V^{\rm int}_{i,\Lambda,z}\).  The Gaussian part supplies
 \(\mathcal W^{\rm nz}_{i,1,\Lambda}\), while the remaining normal-mode
-expectation supplies \(\mathcal N^{\rm int}_{i,\Lambda}\) or a separately
-bounded remainder.  Two universal fermion zero modes are precisely the
-superspace measure of a twisted \(F\)-term; every extra zero mode must be
-saturated by an insertion or lifted by an allowed deformation.  This gives
-\eqref{eq:glsm-single-vortex-original-coefficient-integral}.  Abelian
-dualization is then a second step: the dual periodic variable records vortex
-number, so the charge-one event maps to \(e^{-Y_i}\), and the period
-\(Y_i\sim Y_i+2\pi\ii\) fixes this monomial.  This produces
-\eqref{eq:glsm-single-vortex-superpotential-term} only after the finite
-operator-map factor in
+expectation acts on the source polynomial.  Two universal fermion zero modes
+are precisely the superspace measure of a twisted \(F\)-term; every extra zero
+mode must be saturated by an insertion or lifted by an allowed deformation.
+Extracting the \(\xi_+\xi_-\eta_{\rm top}\) coefficient gives
+\(\mathcal Z^{0,{\rm eff}}_{i,F,\Lambda}\) and hence
+\eqref{eq:glsm-single-vortex-original-coefficient-integral}.  The classical
+FI-theta factor \(q^{\rm vort}_{i,\Lambda}\) multiplies the original charge-one
+sector, but it is stripped before defining the finite determinant/operator
+normalization \(c_{i,\Lambda}\).  Abelian dualization is then a second step: the
+dual periodic variable records vortex number, so the charge-one event maps to
+\(e^{-Y_i}\), and the period \(Y_i\sim Y_i+2\pi\ii\) fixes this monomial.  This
+produces \eqref{eq:glsm-single-vortex-superpotential-term} only after the
+finite operator-map factor in
 \eqref{eq:glsm-single-vortex-coefficient-integral} has been fixed.
 Multiplying \(e^{-Y_i}\) by a nonzero finite constant rescales the dual
 coefficient, which is the same finite normalization freedom recorded above as
@@ -1316,15 +1341,16 @@ an affine shift of the FI-theta coordinate.
 Formula
 \eqref{eq:glsm-single-vortex-original-coefficient-integral} isolates the data
 hidden in the coefficient \(c_i\).  The original GLSM supplies a numerical
-sector weight and a normal-mode expectation; the dual frame supplies the
-operator \(e^{-Y_i}\).  The determinant ratio, the interaction cumulants or
-their localization proof, the orientation of the two universal fermion zero
-modes, the saturation of possible additional zero modes, and the boundary
-behavior of \(\mathcal U_{i,1,\Lambda}\) decide the value and possible
-vanishing of the coefficient.  Agreement with the Coulomb logarithm is then a
-protected consistency test: it fixes the primitive harmonic and exposes any
-finite FI-coordinate shift caused by determinant or operator-map
-normalization.
+sector weight, a determinant line, and a source-dependent normal-mode
+expectation; the dual frame supplies the operator \(e^{-Y_i}\).  The determinant
+ratio, the source-specific interaction cumulants or their localization proof,
+the orientation of the two universal fermion zero modes, the saturation of
+possible additional zero modes, and the boundary behavior of
+\(\mathcal U_{i,1,\Lambda}\) decide the value and possible vanishing of the
+reduced coefficient.  Agreement with the Coulomb logarithm is then a protected
+consistency test: it fixes the primitive harmonic and exposes any finite
+FI-coordinate shift caused by determinant or operator-map normalization,
+provided the FI-theta sector weight has not already been folded into \(c_i\).
 
 \begin{controlledapproximation}[One-vortex source functional and
 \(F\)-term extraction]
@@ -1345,31 +1371,36 @@ retained charge-one chart the source polynomial is written in finite stage form
   \int_{\mathcal U_{i,1,\Lambda}}
   e^{-S^{\rm red}_{i,1,\Lambda}(z)}
   \mathcal W^{\rm nz}_{i,1,\Lambda}(z)
-  \mathcal N^{\rm int}_{i,\Lambda}(z)
   \dd\nu_{i,1,\Lambda}(z)
   \int d\xi_+\,d\xi_-\,d\eta\,
-  \mathcal P_{\Lambda}(z;\xi,\eta,\lambda,J).
+  \mathcal P^{\rm eff}_{i,\Lambda}(z;\xi,\eta,\lambda,J).
   \label{eq:glsm-one-vortex-source-functional}
 \end{equation}
-The polynomial \(\mathcal P_\Lambda\) contains the zero-mode wavefunctions
-and the primed nonzero-mode propagators in the chosen source coordinates.
+The effective polynomial contains the zero-mode wavefunctions, the primed
+nonzero-mode propagators, and the source-dependent connected interaction
+cumulants in the chosen source coordinates.  Replacing it by a vacuum scalar
+times a Gaussian source polynomial is an extra theorem, not a definition.
 The Wilsonian twisted \(F\)-term projection is the coefficient of
 \(\xi_+\xi_-\) and of the top residual \(\eta\)-degree, with the
 \(\xi_\pm\) line normalized as the \(d^2\widetilde\theta\) measure:
 \begin{equation}
   c_{i,\Lambda}
   =
-  Z^{\rm map}_{i,\Lambda}\mu^{-1}q^{\rm vort}_{i,\Lambda}
+  Z^{\rm map}_{i,\Lambda}\mu^{-1}
   \int_{\mathcal U_{i,1,\Lambda}}
   e^{-S^{\rm red}_{i,1,\Lambda}(z)}
   \mathcal W^{\rm nz}_{i,1,\Lambda}(z)
-  \mathcal N^{\rm int}_{i,\Lambda}(z)
   \Bigl[
-    \mathcal P_\Lambda(z;\xi,\eta,0,0)
+    \mathcal P^{\rm eff}_{i,\Lambda}(z;\xi,\eta,0,0)
   \Bigr]_{\xi_+\xi_-\,\eta_{\rm top}}\,
   \dd\nu_{i,1,\Lambda}(z).
   \label{eq:glsm-one-vortex-fterm-projection}
 \end{equation}
+The FI-weighted coefficient in the original source functional is instead
+\(q^{\rm vort}_{i,\Lambda}\widehat c^{\rm orig}_{i,\Lambda}\).  Equation
+\eqref{eq:glsm-one-vortex-fterm-projection} is the reduced coefficient after
+the classical sector weight has been assigned to the vortex-number monomial and
+the FI constraint.
 The ordinary component functional at \(J=0\) is different: if the universal
 zero modes are not extracted into \(d^2\widetilde\theta\), the
 \(d\xi_+d\xi_-\) integral kills the uninserted component contribution.
@@ -1385,15 +1416,21 @@ Conversely, a two-source component amplitude is obtained by differentiating
   \int_{\mathcal U_{i,1,\Lambda}}
   e^{-S^{\rm red}_{i,1,\Lambda}(z)}
   \mathcal W^{\rm nz}_{i,1,\Lambda}(z)
-  \mathcal N^{\rm int}_{i,\Lambda}(z)
-  U_{+,\Lambda}(z)U_{-,\Lambda}(z)
-  \mathcal Z^{0,{\rm res}}_{i,F,\Lambda}(z)
+  \left[
+    \frac{\partial^2}
+      {\partial\lambda_+\partial\lambda_-}
+    \mathcal P^{\rm eff}_{i,\Lambda}(z;\xi,\eta,\lambda,J)
+  \right]_{\lambda=J=0;\,\eta_{\rm top}}
   \dd\nu_{i,1,\Lambda}(z),
   \label{eq:glsm-one-vortex-source-derivative}
 \end{equation}
-after residual zero modes are saturated.  The functions \(U_{\pm,\Lambda}\)
-are source-to-zero-mode overlaps.  They are part of the physical component
-amplitude and cannot be replaced by one unless the source normalization has
+after residual zero modes are saturated.  In the special Gaussian-factorized
+case the bracket reduces to
+\(\mathcal N^{\rm int}_{i,\Lambda}U_{+,\Lambda}U_{-,\Lambda}
+\mathcal Z^{0,{\rm res}}_{i,F,\Lambda}\), but generic higher vertices add
+source-dependent connected cumulants.  The functions \(U_{\pm,\Lambda}\) and
+those cumulants are part of the physical component amplitude and cannot be
+replaced by one unless the source normalization and interaction remainder have
 been transported to the same determinant-line convention as
 \eqref{eq:glsm-one-vortex-fterm-projection}.
 
@@ -1401,7 +1438,8 @@ Thus a direct instanton/source comparison has the residual form
 \begin{equation}
   A^{(1)}_{i,\Lambda}(\mathcal O)
   -
-  c^{\rm orig}_{i,\Lambda}I^{0}_{\mathcal O,\Lambda}
+  q^{\rm vort}_{i,\Lambda}
+  \widehat c^{\rm orig}_{i,\Lambda}I^{0}_{\mathcal O,\Lambda}
   =
   R_{\rm src}+R_{\rm prop}+R_{\rm det}
   +R_{\rm int}+R_{\rm zm}+R_{\rm cpt}+R_{\rm cont},
@@ -1419,7 +1457,8 @@ bounded by \(B_\alpha\), then
   \left|
   A^{(1)}_{i,\Lambda}(\mathcal O)
   -
-  c^{\rm orig}_{i,\Lambda}I^{0}_{\mathcal O,\Lambda}
+  q^{\rm vort}_{i,\Lambda}
+  \widehat c^{\rm orig}_{i,\Lambda}I^{0}_{\mathcal O,\Lambda}
   \right|
   \le
   B_{\rm src}+B_{\rm prop}+B_{\rm det}
@@ -1428,7 +1467,7 @@ bounded by \(B_\alpha\), then
 \end{equation}
 After the dual operator map, the corresponding dual-frame comparison replaces
 the numerical sector weight by the monomial \(e^{-Y_i}\) and transports
-\(c^{\rm orig}_{i,\Lambda}\) to \(c_{i,\Lambda}\).  Before that map has been
+\(\widehat c^{\rm orig}_{i,\Lambda}\) to \(c_{i,\Lambda}\).  Before that map has been
 fixed, inserting \(e^{-Y_i}\) into the original source functional is a frame
 substitution.  The collective-coordinate chart supplies only the bosonic
 integration variables.
@@ -1448,12 +1487,10 @@ only after the operator sources are projected onto the universal fermion
 zero-mode line.  Let a retained finite regulator replace
 \(\mathcal U_{i,1,\Lambda}\) by cells \(p\in P\) with positive weights
 \[
-  K_p
+  E_p
   =
   e^{-S^{\rm red}_{i,1,\Lambda}(p)}
   \mathcal W^{\rm nz}_{i,1,\Lambda}(p)
-  \mathcal N^{\rm int}_{i,\Lambda}(p)
-  \mathcal Z^{0,{\rm res}}_{i,F,\Lambda}(p)
   \nu_p .
 \]
 For two local component sources \(A,B\), write
@@ -1472,39 +1509,56 @@ of \(d\xi_+d\xi_-\) gives the oriented minor
   \label{eq:glsm-one-vortex-component-source-minor}
 \end{equation}
 not the product of norms and not the protected coefficient \(c_i\).  At this
-finite regulator the retained component amplitude is
+finite regulator the effective two-source insertion is
+\begin{equation}
+  \mathcal I^{\rm eff}_{AB,\Lambda}(p)
+  =
+  \left[
+    \frac{\partial^2}
+      {\partial J_A\partial J_B}
+    \mathcal P^{\rm eff}_{i,\Lambda}(p;\xi,\eta,\lambda,J)
+  \right]_{\lambda=J=0;\,\xi_+\xi_-\,\eta_{\rm top}} .
+  \label{eq:glsm-one-vortex-component-effective-insertion}
+\end{equation}
+Its Gaussian retained part is
+\(\mathcal Z^{0,{\rm res}}_{i,F,\Lambda}(p)
+(\Delta_{AB}(p)+C'_{AB}(p))\); generic normal-mode interactions add
+source-dependent connected cumulants to
+\(\mathcal I^{\rm eff}_{AB,\Lambda}\).  The retained component amplitude is
 \begin{equation}
   A^{(1)}_{AB,\Lambda}
   =
   q^{\rm vort}_{i,\Lambda}
   \sum_{p\in P}
-  K_p\,
-  \bigl(\Delta_{AB}(p)+C_{AB}^{\prime}(p)\bigr)
+  E_p\,
+  \mathcal I^{\rm eff}_{AB,\Lambda}(p)
   +
   R_{AB,\Lambda},
   \label{eq:glsm-one-vortex-component-cell-amplitude}
 \end{equation}
-where \(C'_{AB}\) is the primed nonzero-mode contact correction in the same
-determinant-line convention.  Its dual-frame image is obtained only after
-the charge-one event and local component sources are transported by the
+where the contact and interaction pieces are in the same determinant-line
+convention as the source coordinates.  Its dual-frame image is obtained only
+after the charge-one event and local component sources are transported by the
 operator map; in that frame the common monomial is \(e^{-Y_i}\).  The absolute
 residual is bounded by
 \begin{equation}
   |R_{AB,\Lambda}|
   \le
   B_{\rm src}+B_{\rm prop}+B_{\rm det}+B_{\rm zm}
-  +B_{\rm cpt}+B_{\rm op}+B_{\rm cont}.
+  +B_{\rm int}+B_{\rm cpt}+B_{\rm op}+B_{\rm cont}.
   \label{eq:glsm-one-vortex-component-cell-bound}
 \end{equation}
 Several shortcuts are now visibly wrong.  If \(u_A(p)\) and \(u_B(p)\) are
 parallel on every retained cell and \(C'_{AB}=0\), the component amplitude
 vanishes even when the protected vortex coefficient is nonzero.  If
 \(C'_{AB}\) is nonzero, it is a source-specific primed-propagator contribution
-and cannot be absorbed into the scalar coefficient \(c_i\).  Finally, changing
-the normalization of \(u_A,u_B\), the orientation of the zero-mode line, or
-the operator coordinate changes \(\Delta_{AB}\); the mirror monomial records
-the dual image of the sector but does not supply these original
-component-source data.
+and cannot be absorbed into the scalar coefficient \(c_i\).  If the connected
+interaction cumulant in
+\(\mathcal I^{\rm eff}_{AB,\Lambda}\) is nonzero, a single vacuum factor
+\(\mathcal N^{\rm int}\) also fails.  Finally, changing the normalization of
+\(u_A,u_B\), the orientation of the zero-mode line, or the operator coordinate
+changes \(\Delta_{AB}\); the mirror monomial records the dual image of the
+sector but does not supply these original component-source data.
 \end{controlledapproximation}
 
 \begin{remark}[Source-frame calibration of a one-vortex
@@ -1513,11 +1567,17 @@ component amplitude]
 The finite component cell also gives a useful calibration test.  Define the
 retained protected coefficient and the retained component source integrals by
 \[
-  C_\Lambda=\sum_{p\in P}K_p,\qquad
+  C_\Lambda
+  =
+  \sum_{p\in P}
+  E_p
+  \Bigl[
+    \mathcal P^{\rm eff}_{i,\Lambda}(p;\xi,\eta,0,0)
+  \Bigr]_{\xi_+\xi_-\,\eta_{\rm top}},
+  \qquad
   J_{AB,\Lambda}
   =
-  \sum_{p\in P}K_p
-  \bigl(\Delta_{AB}(p)+C'_{AB}(p)\bigr).
+  \sum_{p\in P}E_p\,\mathcal I^{\rm eff}_{AB,\Lambda}(p).
 \]
 The original retained component amplitude carries the numerical vortex-sector
 weight and the source integral:
@@ -1531,8 +1591,9 @@ weight and the source integral:
   s_{AB,\Lambda}:=\frac{J_{AB,\Lambda}}{C_\Lambda}
 \]
 when \(C_\Lambda\neq0\).  The number \(s_{AB,\Lambda}\) is a source-frame
-quantity: it is made from zero-mode overlaps and primed nonzero-mode contact
-terms in the same regulator.  It is not determined by the mirror fugacity.
+quantity: it is made from zero-mode overlaps, primed nonzero-mode contact
+terms, and source-dependent interaction cumulants in the same regulator.  It is
+not determined by the mirror fugacity.
 After the original-to-dual map is fixed, the same common sector factor is
 represented in the dual Wilsonian functional by \(e^{-Y_i}\); before that
 matching, replacing \(q^{\rm vort}_{i,\Lambda}\) by \(e^{-Y_i}\) is a frame
@@ -1589,26 +1650,24 @@ amplitude statement.
 \label{ca:glsm-vortex-coefficient-noncancellation}
 Fix a compact retained window
 \(\mathcal U_R\Subset \mathcal U_{i,1,\Lambda}\) in the regulated
-charge-one vortex chart and write the scalar integrand in
+charge-one vortex chart and write the reduced scalar integrand in
 \eqref{eq:glsm-single-vortex-original-coefficient-integral} as
 \[
-  K_{i,\Lambda}(z)
+  \widehat K_{i,\Lambda}(z)
   =
-  q^{\rm vort}_{i,\Lambda}
   e^{-S^{\rm red}_{i,1,\Lambda}(z)}
   \mathcal W_{i,1,\Lambda}^{\rm nz}(z)
-  \mathcal N^{\rm int}_{i,\Lambda}(z)
-  \mathcal Z_{i,F,\Lambda}^{0}(z).
+  \mathcal Z^{0,{\rm eff}}_{i,F,\Lambda}(z).
 \]
 Let
 \[
   C_R
   =
-  \mu^{-1}\int_{\mathcal U_R}K_{i,\Lambda}(z)\,\dd\nu_{i,1,\Lambda}(z),
+  \mu^{-1}\int_{\mathcal U_R}\widehat K_{i,\Lambda}(z)\,\dd\nu_{i,1,\Lambda}(z),
   \qquad
   M_R
   =
-  \mu^{-1}\int_{\mathcal U_R}|K_{i,\Lambda}(z)|\,\dd\nu_{i,1,\Lambda}(z),
+  \mu^{-1}\int_{\mathcal U_R}|\widehat K_{i,\Lambda}(z)|\,\dd\nu_{i,1,\Lambda}(z),
 \]
 and suppose \(M_R>0\) and
 \[
@@ -1617,44 +1676,63 @@ and suppose \(M_R>0\) and
 The number \(\kappa_R\) is the retained-window noncancellation margin: it
 measures how much of the absolute one-vortex mass survives the determinant
 phase, the orientation of the universal fermion-zero-mode line, and the
-residual Berezin coefficient.  Assume further that the omitted part of the
-vortex chart, the determinant comparison, the zero-mode/orientation
-identification, the compactification boundary, and the continuum comparison
-are bounded by
+source-effective residual Berezin coefficient.  Assume further that the
+omitted part of the vortex chart, the determinant comparison, the
+zero-mode/orientation identification, the compactification boundary, the
+operator-map normalization, and the continuum comparison are bounded by
 \[
   T_R,\quad
   \epsilon_{\rm det},\quad
   \epsilon_{\rm zm},\quad
   \epsilon_{\rm cpt},\quad
+  \epsilon_{\rm map},\quad
   \epsilon_{\rm cont}.
 \]
-Set \(c_i^\star=c_{i,\Lambda}\) for a fixed-regulator bound, with
-\(\epsilon_{\rm cont}=0\), and set \(c_i^\star=c_i\) when the continuum
-coefficient exists and the last comparison error is included.  Then
+For the reduced original coefficient,
 \begin{equation}
-  |c_i^\star-C_R|
+  |\widehat c^{\rm orig}_{i,\Lambda}-C_R|
   \le
   T_R+\epsilon_{\rm det}+\epsilon_{\rm zm}
-  +\epsilon_{\rm cpt}+\epsilon_{\rm cont}.
+  +\epsilon_{\rm cpt}.
   \label{eq:glsm-vortex-coefficient-noncancellation-bound}
 \end{equation}
-If the right-hand side of
-\eqref{eq:glsm-vortex-coefficient-noncancellation-bound} is strictly smaller
-than \(|C_R|\), then \(c_i^\star\neq0\); more quantitatively,
+The FI-weighted original amplitude has the same statement after multiplying
+both \(C_R\) and the right-hand side by
+\(|q^{\rm vort}_{i,\Lambda}|\), plus any separately declared FI-coordinate
+transport error.  For the dual-frame coefficient, the comparison target is
+\(Z^{\rm map}_{i,\Lambda}C_R\), not \(C_R\):
+\begin{equation}
+  |c_i^\star-Z^{\rm map}_{i,\Lambda}C_R|
+  \le
+  |Z^{\rm map}_{i,\Lambda}|
+  (T_R+\epsilon_{\rm det}+\epsilon_{\rm zm}+\epsilon_{\rm cpt})
+  +\epsilon_{\rm map}
+  +\epsilon_{\rm cont},
+  \label{eq:glsm-vortex-dual-coefficient-noncancellation-bound}
+\end{equation}
+where \(c_i^\star=c_{i,\Lambda}\) at fixed regulator with
+\(\epsilon_{\rm cont}=0\), and \(c_i^\star=c_i\) when the continuum coefficient
+exists and the last comparison error is included.  If
+\(Z^{\rm map}_{i,\Lambda}\neq0\) and the right-hand side of
+\eqref{eq:glsm-vortex-dual-coefficient-noncancellation-bound} is strictly
+smaller than \(|Z^{\rm map}_{i,\Lambda}C_R|\), then \(c_i^\star\neq0\); more
+quantitatively,
 \[
-  \frac{|c_i^\star-C_R|}{|C_R|}
+  \frac{|c_i^\star-Z^{\rm map}_{i,\Lambda}C_R|}
+       {|Z^{\rm map}_{i,\Lambda}C_R|}
   \le
   \frac{
-    T_R+\epsilon_{\rm det}+\epsilon_{\rm zm}
-    +\epsilon_{\rm cpt}+\epsilon_{\rm cont}
-  }{\kappa_R M_R}.
+    |Z^{\rm map}_{i,\Lambda}|
+    (T_R+\epsilon_{\rm det}+\epsilon_{\rm zm}+\epsilon_{\rm cpt})
+    +\epsilon_{\rm map}+\epsilon_{\rm cont}
+  }{|Z^{\rm map}_{i,\Lambda}|\kappa_R M_R}.
 \]
 This bound is stronger than charge matching, holomorphy, or the
 Coulomb logarithm alone.  Those inputs identify the allowed primitive
 monomial and its FI-coordinate normalization.  The bound is the
 amplitude-side statement that the regulated determinant line, zero-mode
-saturation, and boundary tail have not made the one-vortex coefficient
-cancel to zero.
+saturation, source-dependent interaction cumulants, map normalization, and
+boundary tail have not made the reduced one-vortex coefficient cancel to zero.
 \end{controlledapproximation}
 
 We now move from the \(D_{\rm vort}\) amplitude input to the \(D_{\rm pert}\)
@@ -2038,11 +2116,13 @@ is a protected A-twisted QFT correlator.
 \begin{remark}[From vortex coefficient to protected observable]
 \label{rem:glsm-vortex-to-observable-proof-obligation-map}
 In the charge-one \(\mathbb P^{N-1}\) GLSM, fix a finite supersymmetric
-regulator and let \(c^{\rm orig}_{i,\Lambda}\) be the regulated original-GLSM
-coefficients in
-\eqref{eq:glsm-single-vortex-original-coefficient-integral}.  After the
-original-to-dual operator map, write
-\(c_{i,\Lambda}=Z^{\rm map}_{i,\Lambda}c^{\rm orig}_{i,\Lambda}\).  Put
+regulator and let \(\widehat c^{\rm orig}_{i,\Lambda}\) be the reduced
+original-GLSM coefficients in
+\eqref{eq:glsm-single-vortex-original-coefficient-integral}, with the
+classical FI-theta sector weights divided out.  After the original-to-dual
+operator map, write
+\(c_{i,\Lambda}=Z^{\rm map}_{i,\Lambda}\widehat c^{\rm orig}_{i,\Lambda}\).
+Put
 \[
   q_\Lambda
   =
@@ -2234,11 +2314,14 @@ to a three-point A-twisted correlator in the stage form
   \label{eq:cpn-degree-one-amodel-zero-mode-integral}
 \end{equation}
 Here \(q_\Lambda=\exp(t)\prod_i c_{i,\Lambda}\) is the supplied
-vortex-normalized fugacity, \(\dd\nu_{\Lambda,1}\) is the bosonic
-collective-coordinate density after gauge quotient, \(\mathcal W_{\Lambda,1}^{\rm nz}\)
-is the nonzero-mode determinant-line element after the tangent zero modes have
-been removed, and \(\mathcal Z_{\Lambda,1}^{0}\) is the Berezin coefficient
-from the A-twisted fermion zero modes and the three operator insertions.
+vortex-normalized fugacity; the \(c_{i,\Lambda}\) are reduced
+determinant/operator normalizations and do not include the classical FI-theta
+sector weight already represented by \(\exp(t)\).  The density
+\(\dd\nu_{\Lambda,1}\) is the bosonic collective-coordinate density after gauge
+quotient, \(\mathcal W_{\Lambda,1}^{\rm nz}\) is the nonzero-mode
+determinant-line element after the tangent zero modes have been removed, and
+\(\mathcal Z_{\Lambda,1}^{0}\) is the Berezin coefficient from the A-twisted
+fermion zero modes and the three operator insertions.
 
 For a convex target such as \(\mathbb P^{N-1}\), the degree-one obstruction
 space \(H^1(\mathbb P^1,\phi^\ast T\mathbb P^{N-1})\) vanishes.  Thus, after
@@ -2351,8 +2434,10 @@ shared finite regulator, write
 \]
 and let \(C_{\Lambda,1}^{A}\) denote the direct degree-one coefficient for
 \(\langle H,H^{N-1},H^{N-1}\rangle\) in the same operator coordinate.  The
-mirror residue may be used as a check only through the double-entry
-comparison
+coordinate \(t_\Lambda\) carries the topological FI-theta sector weight, while
+the \(c_{i,\Lambda}\) carry only the reduced determinant and operator-map
+normalization.  The mirror residue may be used as a check only through the
+double-entry comparison
 \begin{equation}
   C_{\Lambda,1}^{A}
   -
@@ -2466,7 +2551,7 @@ the vortex normalization, determinant orientation, zero-mode integral,
 compactification contribution, and local-operator map have been tied to the
 same finite regulator.  The finite calculation in this paragraph deliberately
 does not compute that regulated vortex fluctuation problem.  It treats the
-charge-one vortex coefficients \(c_{i,\Lambda}\) as supplied input from a
+reduced charge-one vortex coefficients \(c_{i,\Lambda}\) as supplied input from a
 separate gauge-fixed construction in that regulator and checks only the
 stable-map incidence coordinate that the comparison must match.  If a diagonal
 spectral regulator has separately supplied the full gauge-matter deformation
@@ -2495,9 +2580,10 @@ the vortex coefficient.  Then
 \[
   q_\Lambda=\exp(t)\prod_{i=1}^N c_{i,\Lambda}
 \]
-is the supplied charge-one fugacity in that regulator.  What can be checked
-without a vortex determinant calculation is the stable-map incidence chart.  A
-degree-one map is written
+is the supplied charge-one fugacity in that regulator.  This convention puts
+the FI-theta sector weight in \(t\), not inside the \(c_{i,\Lambda}\).  What can
+be checked without a vortex determinant calculation is the stable-map incidence
+chart.  A degree-one map is written
 \[
   \Phi_i([u:v])=A_i u+B_i v,
   \qquad i=0,\ldots,N-1,

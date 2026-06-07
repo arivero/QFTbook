@@ -210,22 +210,25 @@ and
   protected dual twisted-superpotential datum with exponential
   `-mu c_i exp(-Y_i)`, while recording the vortex-term proof obligations
   left schematic in classic mirror-duality papers.
-- Identifies the coefficient `c_i` as the continuum limit of a regulated
-  charge-one vortex amplitude after the original-to-dual map: the original
-  GLSM side carries a numerical FI-theta sector weight, a nonzero-mode
-  determinant ratio, an interacting normal-mode expectation/cumulant factor,
-  two universal fermion zero modes forming the twisted `F`-term measure,
-  possible extra zero-mode saturation, and collective-coordinate integration;
-  the dual frame supplies the operator `exp(-Y_i)`.  This makes the
-  Hori--Vafa exponential term a rechecked amplitude datum in the chapter's
-  conventions rather than a scalar inserted into the original path integral.
+- Identifies the coefficient `c_i` as the continuum limit of the reduced
+  determinant/operator normalization after the classical FI-theta sector
+  weight has been divided out and the original-to-dual map has been fixed.  The
+  original GLSM amplitude carries the numerical FI-theta sector weight
+  separately, together with the nonzero-mode determinant ratio, the
+  source-dependent interacting normal-mode expectation, two universal fermion
+  zero modes forming the twisted `F`-term measure, possible extra zero-mode
+  saturation, and collective-coordinate integration; the dual frame supplies
+  the operator `exp(-Y_i)`.  This makes the Hori--Vafa exponential term a
+  rechecked amplitude datum in the chapter's conventions rather than a scalar
+  inserted into the original path integral.
 - Adds a one-vortex source-functional extraction bridge: the same regulated
   sector is written with bookkeeping sources for the two universal fermion
   zero modes, residual zero-mode coordinates, and local component sources.
-  The twisted `F`-term coefficient is the `xi_+ xi_- eta_top` coefficient,
-  while source-differentiated component amplitudes additionally carry
-  source-to-zero-mode overlaps, primed propagator contractions, source/operator
-  normalization, interacting normal-mode cumulants, and residual budgets.
+  The twisted `F`-term coefficient is the `xi_+ xi_- eta_top` coefficient of an
+  effective insertion `<exp(-V_int) P_bare>'`, while source-differentiated
+  component amplitudes additionally carry source-to-zero-mode overlaps, primed
+  propagator contractions, source/operator normalization, source-dependent
+  interacting normal-mode cumulants, and residual budgets.
   This separates the physical
   instanton amplitude from a moduli-space volume, Coulomb-logarithm match, or
   formal Hori--Vafa monomial.
@@ -236,12 +239,14 @@ and
   residual bound are kept outside the protected coefficient `c_i`.  Parallel
   source overlaps, source orientation changes, and omitted contact terms now
   have explicit physical consequences.
-- Adds the single-vortex coefficient noncancellation bound: after
-  choosing a retained compact vortex window, the signed coefficient `C_R`
-  must dominate the absolute one-vortex mass by a margin `kappa_R` and must
-  exceed the tail, determinant, zero-mode/orientation, compactification, and
-  continuum residual budget.  This separates the physical nonzero-amplitude
-  claim from charge matching, holomorphy, and Coulomb-logarithm matching.
+- Adds the single-vortex coefficient noncancellation bound: after choosing a
+  retained compact vortex window, the reduced signed coefficient `C_R` must
+  dominate the absolute one-vortex mass by a margin `kappa_R` and must exceed
+  the tail, determinant, zero-mode/orientation, and compactification residual
+  budget.  A dual-frame nonzero claim compares `Z_map C_R`, not `C_R`, and
+  includes map and continuum residuals.  This separates the physical
+  nonzero-amplitude claim from charge matching, holomorphy, and
+  Coulomb-logarithm matching.
 - Adds the vortex zero-mode filter for twisted `F`-terms: after the two
   universal fermion zero modes are identified with `d^2 theta_tilde`, the
   residual Berezin integral extracts the top residual Grassmann degree, so the
@@ -434,8 +439,9 @@ and
     vanishes before the two universal Grassmann zero modes are projected into
     the twisted `F`-term measure; normalized source differentiation recovers
     the coefficient, nontrivial source overlaps change component amplitudes,
-    and negative controls reject moduli-only, ghost-omitted, mirror-only, and
-    unsaturated residual-zero-mode shortcuts;
+    and negative controls reject moduli-only, ghost-omitted, mirror-only,
+    vacuum-scalar-only, determinant-only, and unsaturated residual-zero-mode
+    shortcuts;
   - the finite one-vortex component-amplitude cell: exact retained-cell
     assembly with the oriented universal-zero-mode source minor, a
     primed-propagator contact term, a residual telescope, and negative controls
@@ -444,8 +450,9 @@ and
     propagator residuals;
   - the single-vortex coefficient noncancellation bound: exact
     retained-window signed value, retained absolute mass, residual telescope,
-    signed-window domination over determinant/zero-mode/boundary/continuum
-    errors, relative-error budget, and negative controls rejecting both
+    signed-window domination over determinant/zero-mode/boundary errors, a
+    separate dual-frame `Z_map` residual budget, relative-error budget, and
+    negative controls rejecting both
     omitted determinant residuals and symmetry-only nonzero claims under
     coherent signed cancellation;
   - the `P^{N-1}` mirror critical-point simplicity ledger;
@@ -667,12 +674,15 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   that omitted gluing/off-pairing residuals, bare-FI powers, line-count-only
   products, and unsaturated zero-mode gates fail.
 - The 2026-06-06 issue #597 Hori--Vafa frame/interaction repair splits the
-  original GLSM vortex coefficient from its dual twisted-chiral image.  The
-  original finite source functional now carries the numerical FI-theta vortex
-  weight `q_vort`, the Gaussian determinant, and the interacting normal-mode
-  expectation `N_int`; the dual `exp(-Y_i)` appears only after the abelian
-  dual operator map.  The component and source-frame calibration cells now use
-  the original numerical fugacity and state the dual monomial as a matched
-  image.  The companion adds exact negative controls for determinant-only
-  coefficients with nonzero normal interactions and for substituting the dual
-  operator tag for a numerical original-theory amplitude.
+  original GLSM vortex amplitude from its dual twisted-chiral image, and the
+  2026-06-07 re-audit separates the FI-theta sector weight from the reduced
+  coefficient `c_i`.  The original finite source functional carries the
+  numerical FI-theta vortex weight `q_vort`, while `c_i` carries the reduced
+  determinant/operator normalization used in `exp(t) prod_i c_i`.  The
+  interaction layer is now the effective insertion `<exp(-V_int) P_bare>'`, so
+  a source-independent vacuum factor is allowed only under an additional
+  localization/factorization theorem.  The dual `exp(-Y_i)` appears only after
+  the abelian dual operator map.  The companion adds exact negative controls
+  for determinant-only coefficients, FI double counting, scalar-vacuum
+  source-factorization shortcuts, and substituting the dual operator tag for a
+  numerical original-theory amplitude.

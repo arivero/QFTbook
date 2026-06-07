@@ -891,28 +891,24 @@ def check_one_vortex_frame_and_normal_interaction_separation() -> None:
     original_vortex_fugacity = Fraction(7, 13)
     gaussian_determinant_density = Fraction(11, 17)
     zero_mode_coefficient = Fraction(5, 6)
-    original_coefficient = (
-        original_vortex_fugacity
-        * gaussian_determinant_density
+    reduced_original_coefficient = (
+        gaussian_determinant_density
         * normal_interaction_factor
         * zero_mode_coefficient
     )
-    determinant_only_coefficient = (
-        original_vortex_fugacity
-        * gaussian_determinant_density
-        * zero_mode_coefficient
+    original_sector_amplitude = original_vortex_fugacity * reduced_original_coefficient
+    determinant_only_reduced_coefficient = (
+        gaussian_determinant_density * zero_mode_coefficient
     )
-    if original_coefficient == determinant_only_coefficient:
+    if reduced_original_coefficient == determinant_only_reduced_coefficient:
         raise AssertionError("normal interaction should change determinant-only vortex coefficient")
 
     operator_map_normalization = Fraction(3, 5)
-    dual_coefficient = operator_map_normalization * original_coefficient
+    dual_coefficient = operator_map_normalization * reduced_original_coefficient
     assert_equal(
-        "dual coefficient is operator-map image of original coefficient",
+        "dual coefficient is operator-map image of reduced original coefficient",
         dual_coefficient,
-        Fraction(1, 1)
-        * operator_map_normalization
-        * original_coefficient,
+        Fraction(1, 1) * operator_map_normalization * reduced_original_coefficient,
     )
 
     original_frame = ("original_glsm", original_vortex_fugacity)
@@ -930,6 +926,16 @@ def check_one_vortex_frame_and_normal_interaction_separation() -> None:
     if frame_substituted_component == original_component:
         raise AssertionError("omitting original fugacity should change direct component amplitude")
 
+    bare_fi_coordinate = Fraction(5, 19)
+    correct_mirror_coordinate = bare_fi_coordinate * dual_coefficient
+    double_counted_mirror_coordinate = (
+        bare_fi_coordinate * operator_map_normalization * original_sector_amplitude
+    )
+    if double_counted_mirror_coordinate == correct_mirror_coordinate:
+        raise AssertionError(
+            "FI-theta sector weight should not be folded into c_i and counted again"
+        )
+
 
 def check_one_vortex_source_functional_extraction() -> None:
     # A finite retained chart for the source-functional version of the
@@ -939,7 +945,19 @@ def check_one_vortex_source_functional_extraction() -> None:
     reduced_classical_weights = [Fraction(2, 3), Fraction(5, 7), Fraction(11, 13)]
     collective_measure_cells = [Fraction(3, 5), Fraction(7, 11), Fraction(13, 17)]
     primed_nonzero_density = [Fraction(19, 23), Fraction(29, 31), Fraction(37, 41)]
-    normal_interaction_factors = [Fraction(31, 29), Fraction(37, 43), Fraction(41, 47)]
+    vacuum_interaction_factors = [Fraction(31, 29), Fraction(37, 43), Fraction(41, 47)]
+    source_dependent_interaction_corrections = [
+        Fraction(1, 97),
+        -Fraction(1, 101),
+        Fraction(1, 103),
+    ]
+    effective_f_term_insertions = [
+        vacuum + correction
+        for vacuum, correction in zip(
+            vacuum_interaction_factors,
+            source_dependent_interaction_corrections,
+        )
+    ]
     ghost_density = [Fraction(43, 47), Fraction(53, 59), Fraction(61, 67)]
     residual_zero_mode_gates = [Fraction(1), Fraction(1), Fraction(1)]
 
@@ -949,7 +967,7 @@ def check_one_vortex_source_functional_extraction() -> None:
             reduced_classical_weights,
             collective_measure_cells,
             primed_nonzero_density,
-            normal_interaction_factors,
+            effective_f_term_insertions,
             ghost_density,
             residual_zero_mode_gates,
         )
@@ -989,6 +1007,42 @@ def check_one_vortex_source_functional_extraction() -> None:
     if component_two_source_amplitude == retained_f_term_coefficient:
         raise AssertionError("nontrivial source overlaps should change the component amplitude")
 
+    vacuum_scalar_only_prediction = sum(
+        classical * measure * nonzero * vacuum * ghost * gate
+        for classical, measure, nonzero, vacuum, ghost, gate in zip(
+            reduced_classical_weights,
+            collective_measure_cells,
+            primed_nonzero_density,
+            vacuum_interaction_factors,
+            ghost_density,
+            residual_zero_mode_gates,
+        )
+    )
+    if vacuum_scalar_only_prediction == retained_f_term_coefficient:
+        raise AssertionError(
+            "vacuum interaction factor should not replace source-dependent cumulants"
+        )
+
+    gaussian_moments = {
+        2: Fraction(1, 5),
+        4: Fraction(3, 25),
+    }
+    interaction_strength = Fraction(2, 7)
+    source_quadratic_weight = Fraction(3, 11)
+    vacuum_factor = Fraction(1) - interaction_strength * gaussian_moments[2]
+    bare_source_expectation = Fraction(1) + source_quadratic_weight * gaussian_moments[2]
+    source_inserted_interaction = (
+        Fraction(1)
+        + source_quadratic_weight * gaussian_moments[2]
+        - interaction_strength * gaussian_moments[2]
+        - interaction_strength * source_quadratic_weight * gaussian_moments[4]
+    )
+    factorized_source_shortcut = vacuum_factor * bare_source_expectation
+    if factorized_source_shortcut == source_inserted_interaction:
+        raise AssertionError(
+            "interacting source expectation should not be a vacuum scalar times insertion"
+        )
+
     moduli_only_cells = [
         classical * measure
         for classical, measure in zip(reduced_classical_weights, collective_measure_cells)
@@ -1003,7 +1057,7 @@ def check_one_vortex_source_functional_extraction() -> None:
             reduced_classical_weights,
             collective_measure_cells,
             primed_nonzero_density,
-            normal_interaction_factors,
+            effective_f_term_insertions,
             residual_zero_mode_gates,
         )
     )
@@ -1313,19 +1367,27 @@ def check_vortex_coefficient_noncancellation_bound() -> None:
         Fraction(11, 15),
     )
 
+    original_vortex_fugacity = Fraction(7, 13)
+    operator_map_normalization = Fraction(5, 7)
+    original_sector_retained = original_vortex_fugacity * retained_signed
+    dual_retained = operator_map_normalization * retained_signed
+    if original_sector_retained == dual_retained:
+        raise AssertionError(
+            "original FI-weighted sector and dual mapped coefficient should be distinct data"
+        )
+
     residuals = {
         "tail": Fraction(1, 80),
         "determinant": Fraction(1, 90),
         "zero-mode orientation": Fraction(1, 100),
         "compactification boundary": Fraction(1, 110),
-        "continuum comparison": Fraction(1, 120),
     }
     total_residual_bound = sum(residuals.values(), Fraction(0))
-    bounded_coefficient = retained_signed + total_residual_bound
-    actual_error = abs(bounded_coefficient - retained_signed)
+    bounded_reduced_coefficient = retained_signed + total_residual_bound
+    actual_error = abs(bounded_reduced_coefficient - retained_signed)
 
     assert_equal(
-        "one-vortex coefficient residual telescope",
+        "one-vortex reduced coefficient residual telescope",
         actual_error,
         total_residual_bound,
     )
@@ -1339,6 +1401,35 @@ def check_vortex_coefficient_noncancellation_bound() -> None:
         total_residual_bound / (noncancellation_fraction * retained_mass),
         Fraction(1, 10),
     )
+
+    map_residual = Fraction(1, 130)
+    continuum_residual = Fraction(1, 140)
+    dual_bound = (
+        abs(operator_map_normalization) * total_residual_bound
+        + map_residual
+        + continuum_residual
+    )
+    dual_target = operator_map_normalization * retained_signed
+    dual_probe = dual_target + dual_bound
+    assert_equal(
+        "one-vortex dual coefficient includes operator-map residual",
+        abs(dual_probe - dual_target),
+        dual_bound,
+    )
+    assert_gt_bound(
+        "mapped one-vortex window dominates dual residuals",
+        abs(dual_target),
+        dual_bound,
+    )
+
+    wrong_dual_target = retained_signed
+    if wrong_dual_target == dual_target:
+        raise AssertionError("dual noncancellation target must include Z_map")
+    wrong_double_counted_dual_target = (
+        operator_map_normalization * original_sector_retained
+    )
+    if wrong_double_counted_dual_target == dual_target:
+        raise AssertionError("dual target should not include the original FI-theta weight")
 
     omitted_determinant_budget = total_residual_bound - residuals["determinant"]
     assert_gt_bound(
