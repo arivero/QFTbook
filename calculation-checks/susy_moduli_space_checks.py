@@ -3,8 +3,9 @@
 
 The quotient cells below verify finite algebra behind classical vacuum spaces.
 The Higgs-branch metric-protection cells are narrower Ward/counterterm
-bookkeeping: they test the local massive-multiplet cancellation and status
-boundaries used by the manuscript.  The D1-D5 bridge cells test the finite
+bookkeeping: they test theorem-status boundaries and reject component
+multiplicity ledgers as substitutes for a background-field determinant.  The
+D1-D5 bridge cells test the finite
 rank/flux/FI arithmetic behind the Higgs-versus-Coulomb branch distinction,
 not a construction of the continuum D1-D5 infrared CFT.
 """
@@ -366,28 +367,35 @@ def check_higgs_branch_metric_status_matrix():
 
     status = {
         "4d_N2": {
-            "local_metric": "perturbative_wilsonian",
+            "local_metric": "theorem_boundary_input",
             "global_metric": "conditional_continuum",
             "torsion_or_wz": "not_part_of_metric_statement",
         },
         "3d_N4": {
-            "local_metric": "perturbative_wilsonian",
+            "local_metric": "dimension_reduced_theorem_boundary_input",
             "global_metric": "conditional_continuum",
             "torsion_or_wz": "not_part_of_metric_statement",
         },
         "2d_N44": {
-            "local_metric": "perturbative_wilsonian",
+            "local_metric": "dimension_reduced_theorem_boundary_input",
             "global_metric": "conditional_continuum",
             "torsion_or_wz": "separate_two_dimensional_branch_datum",
         },
     }
 
-    for label, data in status.items():
+    assert_equal(
+        status["4d_N2"]["local_metric"],
+        "theorem_boundary_input",
+        "4d N=2 local Higgs metric status is a theorem boundary",
+    )
+    for label in ("3d_N4", "2d_N44"):
         assert_equal(
-            data["local_metric"],
-            "perturbative_wilsonian",
-            f"{label} local Higgs metric status",
+            status[label]["local_metric"],
+            "dimension_reduced_theorem_boundary_input",
+            f"{label} local Higgs metric status is dimension-specific",
         )
+
+    for label, data in status.items():
         assert_equal(
             data["global_metric"],
             "conditional_continuum",
@@ -467,73 +475,189 @@ def check_higgs_branch_counterterm_filter():
     )
 
 
-def check_higgs_branch_massive_multiplet_one_loop_cancellation():
-    """Finite determinant ledger for a fully Higgsed tangent metric counterterm."""
+def check_higgs_branch_background_field_derivation_gate():
+    """Reject multiplicity arithmetic as a Higgs-metric determinant proof."""
 
-    heat_kernel_unit = Fraction(5, 7)
-    tangent_vertex = Fraction(11, 13)
-    common_factor = heat_kernel_unit * tangent_vertex
-
-    contributions = {
-        "gauge_field": 4,
-        "complex_vector_scalar": 2,
-        "eaten_hyper_scalars": 4,
-        "faddeev_popov_ghosts": -2,
-        "auxiliary_contacts": 0,
-        "fermions": -8,
+    required_model = {
+        "dimension": 4,
+        "supersymmetry": "N=2",
+        "gauge_group": "U(1)",
+        "hypermultiplets": 2,
+        "fi_parameter": "positive",
+        "patch": "q_1_nonzero_Tstar_CP1",
+        "regulator": "supersymmetric_wilsonian",
+        "gauge": "background_R_xi",
     }
-    total_coefficient = sum(contributions.values())
     assert_equal(
-        total_coefficient,
+        required_model["patch"],
+        "q_1_nonzero_Tstar_CP1",
+        "explicit rank-one Higgs patch is specified",
+    )
+    assert_equal(
+        required_model["gauge"],
+        "background_R_xi",
+        "background-field gauge is specified",
+    )
+
+    required_slots = {
+        "model",
+        "dimension",
+        "regulator",
+        "gauge",
+        "quadratic_operators",
+        "linear_tangent_vertices",
+        "seagull_vertices",
+        "mixed_diagrams",
+        "ghosts",
+        "goldstones",
+        "fermions",
+        "auxiliary_contacts",
+        "gauge_parameter_cancellation",
+        "dimension_reduction_audit",
+    }
+
+    old_component_ledger = {
+        "model": required_model,
+        "dimension": 4,
+        "component_weights": {
+            "gauge_field": 4,
+            "complex_vector_scalar": 2,
+            "eaten_hyper_scalars": 4,
+            "faddeev_popov_ghosts": -2,
+            "auxiliary_contacts": 0,
+            "fermions": -8,
+        },
+    }
+
+    def missing_slots(record):
+        return sorted(required_slots - set(record))
+
+    assert_equal(
+        "quadratic_operators" in old_component_ledger,
+        False,
+        "old Higgs ledger has no generated fluctuation operators",
+    )
+    assert_equal(
+        missing_slots(old_component_ledger)[:3],
+        ["auxiliary_contacts", "dimension_reduction_audit", "fermions"],
+        "old Higgs ledger is rejected as an incomplete determinant derivation",
+    )
+
+    operator_blueprint = {
+        "model": required_model,
+        "dimension": 4,
+        "regulator": "supersymmetric_wilsonian",
+        "gauge": "background_R_xi",
+        "quadratic_operators": {
+            "nonminimal_gauge_operator",
+            "goldstone_operator",
+            "ghost_operator",
+            "vector_scalar_operator",
+            "radial_hyper_operator",
+            "fermion_dirac_operator",
+        },
+        "linear_tangent_vertices": {
+            "gauge_goldstone_tangent_vertex",
+            "scalar_connection_tangent_vertex",
+            "fermion_connection_tangent_vertex",
+        },
+        "seagull_vertices": {
+            "bosonic_tangent_seagull",
+            "ghost_tangent_seagull",
+            "fermion_tangent_seagull",
+        },
+        "mixed_diagrams": {
+            "gauge_goldstone_mixed_trace",
+            "scalar_tangent_double_insertion",
+            "fermion_tangent_double_insertion",
+        },
+        "ghosts": "included",
+        "goldstones": "included",
+        "fermions": "included",
+        "auxiliary_contacts": "included_or_integrated_with_contact_terms",
+        "dimension_reduction_audit": "dimension_specific",
+        # A toy exact ledger for xi-dependent terms in the generated trace-log
+        # classes.  The numbers are not the metric coefficient; they check that
+        # gauge-parameter dependence cannot be ignored.
+        "gauge_parameter_cancellation": {
+            "gauge_nonminimal": Fraction(3),
+            "goldstone": Fraction(1),
+            "ghost": Fraction(-2),
+            "fermion_auxiliary_contact": Fraction(-2),
+        },
+    }
+    assert_equal(
+        missing_slots(operator_blueprint),
+        [],
+        "operator blueprint has every background-field derivation slot",
+    )
+
+    def xi_residual(record):
+        return sum(record["gauge_parameter_cancellation"].values())
+
+    assert_equal(
+        xi_residual(operator_blueprint),
+        Fraction(0),
+        "full generated operator set cancels gauge-parameter dependence",
+    )
+
+    omitted_ghost = dict(operator_blueprint)
+    omitted_ghost["gauge_parameter_cancellation"] = dict(
+        operator_blueprint["gauge_parameter_cancellation"]
+    )
+    omitted_ghost["gauge_parameter_cancellation"]["ghost"] = Fraction(0)
+    assert_equal(
+        xi_residual(omitted_ghost) == 0,
+        False,
+        "omitting ghosts leaves a gauge-parameter residual",
+    )
+
+    omitted_goldstone = dict(operator_blueprint)
+    omitted_goldstone["gauge_parameter_cancellation"] = dict(
+        operator_blueprint["gauge_parameter_cancellation"]
+    )
+    omitted_goldstone["gauge_parameter_cancellation"]["goldstone"] = Fraction(0)
+    assert_equal(
+        xi_residual(omitted_goldstone) == 0,
+        False,
+        "omitting Goldstone/eaten-hyper data leaves a gauge-parameter residual",
+    )
+
+    component_balance_4d = sum(old_component_ledger["component_weights"].values())
+    assert_equal(
+        component_balance_4d,
         0,
-        "massive eight-supercharge multiplet tangent metric supertrace",
-    )
-    assert_equal(
-        common_factor * total_coefficient,
-        0,
-        "one-loop Higgs tangent metric coefficient cancels",
+        "four-dimensional long-multiplet balance is only a diagnostic",
     )
 
-    omitted_ghosts = dict(contributions)
-    omitted_ghosts["faddeev_popov_ghosts"] = 0
+    dimension_reduction = {
+        4: {"gauge_components": 4, "reduced_connection_scalars": 0},
+        3: {"gauge_components": 3, "reduced_connection_scalars": 1},
+        2: {"gauge_components": 2, "reduced_connection_scalars": 2},
+    }
+    for dimension, slots in dimension_reduction.items():
+        assert_equal(
+            slots["gauge_components"] + slots["reduced_connection_scalars"],
+            4,
+            f"{dimension}d reduction preserves four connection slots",
+        )
+    for dimension in (3, 2):
+        assert_equal(
+            old_component_ledger["component_weights"]["gauge_field"]
+            == dimension_reduction[dimension]["gauge_components"],
+            False,
+            f"{dimension}d Higgs metric audit rejects a fixed 4d gauge-field entry",
+        )
+
+    unacceptable_status = {
+        "component_multiplicity_proof",
+        "derived_perturbative_theorem_from_ledger",
+    }
+    chapter_status = "theorem_boundary_input_plus_background_field_obligation"
     assert_equal(
-        common_factor * sum(omitted_ghosts.values()) == 0,
+        chapter_status in unacceptable_status,
         False,
-        "omitting ghosts manufactures Higgs metric correction",
-    )
-
-    omitted_eaten_hyper = dict(contributions)
-    omitted_eaten_hyper["eaten_hyper_scalars"] = 0
-    assert_equal(
-        common_factor * sum(omitted_eaten_hyper.values()) == 0,
-        False,
-        "omitting eaten hypermultiplet partner breaks cancellation",
-    )
-
-    bosonic_degeneracy = (
-        contributions["gauge_field"]
-        + contributions["complex_vector_scalar"]
-        + contributions["eaten_hyper_scalars"]
-        + contributions["faddeev_popov_ghosts"]
-        + contributions["auxiliary_contacts"]
-    )
-    fermionic_degeneracy = -contributions["fermions"]
-    assert_equal(
-        bosonic_degeneracy,
-        fermionic_degeneracy,
-        "massive long multiplet boson/fermion degeneracy after ghosts",
-    )
-
-    split_boson_factor = Fraction(5, 7)
-    split_fermion_factor = Fraction(6, 7)
-    split_mass_coefficient = (
-        bosonic_degeneracy * split_boson_factor
-        - fermionic_degeneracy * split_fermion_factor
-    )
-    assert_equal(
-        split_mass_coefficient == 0,
-        False,
-        "mass splitting violates Ward-identity cancellation",
+        "chapter status does not promote the ledger to a proof",
     )
 
 
@@ -908,7 +1032,7 @@ def main():
     check_d1_d5_dimension_does_not_fix_bridge_flux()
     check_higgs_branch_metric_status_matrix()
     check_higgs_branch_counterterm_filter()
-    check_higgs_branch_massive_multiplet_one_loop_cancellation()
+    check_higgs_branch_background_field_derivation_gate()
     check_large_charge_torus_lattice_and_weyl_orbit()
     check_large_charge_branch_noether_and_routhian()
     check_large_charge_branch_transverse_window()

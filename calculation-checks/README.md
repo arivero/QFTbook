@@ -2994,18 +2994,20 @@ Current checks:
   Coulomb-lift trace bound, and same-Higgs-dimension/different-flux negative
   control,
   the Higgs-branch metric theorem-status matrix, counterterm filter with a
-  vector-spurion negative control, and the finite massive-multiplet
-  one-loop determinant cancellation for a fully Higgsed tangent metric
-  counterterm,
+  vector-spurion negative control, and a background-field derivation gate that
+  rejects bare component multiplicities, requires model/gauge/regulator and
+  generated-operator slots, checks ghost/Goldstone gauge-parameter
+  cancellation, and blocks reuse of the four-dimensional gauge-field entry in
+  reduced dimensions,
   fixed-charge branch-EFT checks for torus/global-form/Weyl charge labels,
   the supersymmetric chiral-branch Noether map, Routhian energy, transverse
   gap hierarchy, and large-\(\mu\) simultaneous-window scaling condition,
   plus the \(SU(2)\), \(N_f=2\) Plucker/Pfaffian quotient identity and
   dimension ledger, nonzero quantum-deformation smoothness test,
   diagonal-mass two-vacuum algebra, and holomorphic threshold scale matching.
-  The Higgs-metric cells are finite Ward/counterterm evidence and negative
-  controls; they do not construct the global continuum nonrenormalization
-  theorem.
+  The Higgs-metric cells are finite Ward/counterterm evidence, proof-status
+  gates, and negative controls; they do not construct the global continuum
+  nonrenormalization theorem or the missing trace-log determinant proof.
 - `susy_2d_lg_glsm_checks.py`: exact finite checks for the
   two-dimensional \(\mathcal N=(2,2)\) Landau--Ginzburg and GLSM chapter,
   including \(A\)-series quasihomogeneous charges and central charges,

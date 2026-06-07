@@ -82,16 +82,19 @@ later lower-dimensional examples, protected sectors, and localization.
   rank-one \(U(1)\) hypermultiplet Higgs branch as
   \(T^\ast\mathbb P^{N-1}\), including dimension, local coordinates, moment
   map solving, and one-form descent.
-- Smooth Wilsonian Higgs-branch protection statement: scoped smooth-stratum
-  metric-protection statement for eight-supercharge Lagrangian theories.
+- `hyp:smooth-higgs-branch-metric-protection`: theorem-boundary input for
+  smooth-stratum metric protection in eight-supercharge Lagrangian theories.
 - `Delta S_H^(2)`, `Delta g_mn(q)`: local two-derivative Higgs-branch metric
   counterterm test on a smooth fully Higgsed stratum.
 - `eq:higgs-branch-protected-quotient-metric`: local quotient-metric equality,
   explicitly separated from global nonperturbative continuum assertions.
-- `I_d(M) C_parallel`,
-  `eq:higgs-branch-heavy-multiplet-one-loop-cancellation`: common
-  heat-kernel/tangent factor and finite massive-long-multiplet determinant
-  ledger for the Higgs tangent metric cancellation.
+- `constr:higgs-branch-background-field-derivation-target`,
+  `eq:higgs-branch-background-field-trace-log`: explicit rank-one
+  background-field target for an actual Higgs-metric determinant calculation.
+- `eq:higgs-branch-heavy-multiplet-balance-heuristic`: signed
+  four-dimensional long-multiplet balance, retained only as a diagnostic for
+  missing sectors after the Ward identity or trace-log calculation has supplied
+  the real pairing.
 - `K`, `W`, `Q_1`, `Q_5`: vector spaces and ranks in the two-dimensional
   \(\mathcal N=(4,4)\) ADHM/D1--D5 gauge-theory example.
 - `B_1`, `B_2`, `I`, `J`: adjoint and fundamental hypermultiplet scalars in
@@ -170,15 +173,18 @@ later lower-dimensional examples, protected sectors, and localization.
   \(\zeta>0\), including the elementary real-moment representative,
   local cotangent coordinates, and preservation of the canonical holomorphic
   one-form on overlaps.
-- Replaces the vague protected-Higgs-metric sentence by a scoped mechanism:
-  local Wilsonian perturbative protection is tied to eight supercharges, a
-  smooth completely-Higgsed stratum, a transverse mass gap, and absence of
-  mixed/additional massless sectors; the counterterm filter classifies
-  coordinate changes, FI/mass transport, vector/coupling-spurion \(D\)-terms,
-  torsion/WZ terms, and singular/mixed-locus operators; the massive-multiplet
-  one-loop ledger includes gauge, scalar, eaten-hyper, ghost, auxiliary, and
-  fermion contributions.  Global nonperturbative equality is retained only as
-  an additional continuum assertion after boundary and extra-light-sector
+- Replaces the vague protected-Higgs-metric sentence by a scoped
+  theorem-boundary input: local Wilsonian protection is tied to eight
+  supercharges, a smooth completely-Higgsed stratum, a transverse mass gap, and
+  absence of mixed/additional massless sectors.  The counterterm filter
+  classifies coordinate changes, FI/mass transport, vector/coupling-spurion
+  \(D\)-terms, torsion/WZ terms, and singular/mixed-locus operators.  The
+  rank-one background-field construction specifies the trace-log coefficient,
+  nonminimal gauge operator, Goldstone, ghost, seagull, fermion, auxiliary, and
+  gauge-parameter data that an independent determinant proof would have to
+  evaluate.  The old massive-multiplet balance is retained only as a diagnostic
+  consistency check.  Global nonperturbative equality is retained only as an
+  additional continuum assertion after boundary and extra-light-sector
   exclusions.
 - Adds the two-dimensional \(\mathcal N=(4,4)\) ADHM/D1--D5 gauge-theory
   example with adjoint and fundamental hypermultiplets, explicit complex and
@@ -213,10 +219,12 @@ later lower-dimensional examples, protected sectors, and localization.
   \(H\)-flux, logarithmic radial throat floor, positive-FI Coulomb-lift trace
   bound, and the negative control that equal Higgs-branch dimension does not
   fix Coulomb-throat flux,
-  the Higgs-metric local/global/torsion status matrix, the two-derivative
-  counterterm filter with vector-spurion negative control, and the fully
-  Higgsed massive-multiplet one-loop cancellation with ghost/eaten-hyper/mass
-  splitting negative controls,
+  the Higgs-metric theorem-boundary/local/global/torsion status matrix, the
+  two-derivative counterterm filter with vector-spurion negative control, and
+  the background-field derivation gate that rejects bare component
+  multiplicities, requires model/gauge/regulator/operator slots, checks
+  gauge-parameter cancellation, and rejects use of the four-dimensional
+  gauge-field entry in dimensionally reduced arguments,
   fixed-charge branch-EFT checks for global-form/Weyl charge labels, the
   supersymmetric chiral-branch Noether map and Routhian energy, transverse
   gap hierarchy, and the abstract large-\(\mu\) simultaneous-window scaling
@@ -273,3 +281,10 @@ local models.
   bridge obligations to the symmetric-product blow-up tangent.  The pass keeps
   ADHM dimension, protected Higgs metric, Coulomb continuum, torsion flux, and
   IR CFT operator-map data separate.
+- 2026-06-07 issue #850 Higgs-metric background-field audit: demoted the
+  \(4+2+4-2-8\) cell from determinant proof to long-multiplet balance
+  diagnostic, introduced the smooth Higgs-branch protection hypothesis and the
+  rank-one trace-log derivation target, and updated the companion so component
+  multiplicities are rejected unless model, gauge, regulator, generated
+  operators, vertices, seagulls, ghosts, Goldstones, gauge-parameter
+  cancellation, and dimension-reduction slots are present.

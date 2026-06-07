@@ -726,23 +726,35 @@ Levi-Civita connection and curvature.  Thus a genuine metric counterterm is a
 local hyperk\"ahler deformation of the intrinsic metric on \(U\), not a change
 of source coordinate or wave-function representative.
 
-The Ward-identity input is local and uses the multiplet type of every
-background.  The massless coordinates on \(U\) sit in hypermultiplets, whereas
-gauge couplings, vector masses, and Coulomb coordinates sit in vector-multiplet
-backgrounds, and FI parameters sit in their corresponding triplet backgrounds.
-A two-derivative pure Higgs metric term must be an invariant made only from the
-massless hypermultiplet sigma-model fields.  Once a vector or coupling spurion
-is inserted, the \(SU(2)_R\) quantum numbers and eight-supercharge measure move
-the operator into a vector-sector term, a transport of the quotient level, or a
-higher-derivative correction.  Thus the all-order local perturbative question
-reduces to whether a massive long multiplet can leave an unpaired
-hypermultiplet tangent determinant; the background-field calculation below is
-the elementary rank-one form of that cancellation.
+\begin{hypothesis}[Smooth Higgs-branch metric-protection input]
+\label{hyp:smooth-higgs-branch-metric-protection}
+In a Wilsonian scheme preserving the eight supercharges, the relevant
+\(R\)-symmetry, locality on \(U\), and the transverse mass gap \(M_\perp\), a
+local pure-Higgs two-derivative counterterm on a smooth fully Higgsed stratum
+is cohomologous to a hypermultiplet coordinate change or to transport of the
+declared FI/mass parameters.  Equivalently, after those source coordinates have
+been matched, massive vector-sector and transverse-hypermultiplet loops do not
+deform the intrinsic hyperk\"ahler metric on \(U\).
+\end{hypothesis}
 
-The dimension-dependent theorem boundary used here is:
+This is the theorem-boundary input used in this chapter.  Component
+multiplicities, quotient dimension counts, and isolated heat-kernel traces are
+only consistency checks for the input.  The Ward-identity content is local and
+uses the multiplet type of every background.  The massless coordinates on \(U\)
+sit in hypermultiplets, whereas gauge couplings, vector masses, and Coulomb
+coordinates sit in vector-multiplet backgrounds, and FI parameters sit in their
+corresponding triplet backgrounds.  A two-derivative pure Higgs metric term
+must be an invariant made only from the massless hypermultiplet sigma-model
+fields.  Once a vector or coupling spurion is inserted, the \(R\)-symmetry
+quantum numbers and eight-supercharge measure move the operator into a
+vector-sector term, a transport of the quotient level, or a higher-derivative
+correction.
+
+The dimension-dependent reading of
+Hypothesis~\ref{hyp:smooth-higgs-branch-metric-protection} is:
 \begin{center}
 \begin{tabular}{@{}p{0.22\linewidth}p{0.64\linewidth}@{}}
-\textbf{dimension and algebra} & \textbf{local Wilsonian statement}\\ \hline
+\textbf{dimension and algebra} & \textbf{local Wilsonian status}\\ \hline
 \(4d\ \mathcal N=2\)
 & Perturbatively, in a regulator preserving the eight supercharges and
 \(SU(2)_R\), no local two-derivative counterterm depending on vector-multiplet
@@ -766,10 +778,10 @@ The global equality
   (g_{\mathcal X})_{{\rm HKQ}_{\zeta,G}}
   \label{eq:higgs-branch-protected-quotient-metric}
 \end{equation}
-is therefore a local perturbative theorem on a smooth fully Higgsed stratum,
-plus a separate nonperturbative continuum assertion when the same stratum is
-known not to receive extra light sectors, boundary degrees of freedom, or
-singular-throat contributions.
+is therefore a local theorem-boundary statement on a smooth fully Higgsed
+stratum, after source matching, plus a separate nonperturbative continuum
+assertion when the same stratum is known to avoid extra light sectors,
+boundary degrees of freedom, and singular-throat contributions.
 
 Here is the counterterm filter behind the local statement.  A Wilsonian
 two-derivative correction on \(U\) can only fall into one of the following
@@ -798,17 +810,75 @@ singular or mixed-branch operator
 & outside
 \end{tabular}
 \end{center}
-The only surviving two-derivative Higgs metric is the tree-level quotient
-metric, with the declared parameters transported to the Wilsonian scheme.  This
-is stronger than a dimension count of the quotient and weaker than a theorem
-about every point of the moduli space.
+The filter is necessary rather than sufficient.  It says which local
+functionals would count as intrinsic metric deformations; it does not evaluate
+the determinant that would be needed for an independent background-field proof.
 
-The background-field cancellation can be seen in a fully Higgsed rank-one
-patch.  A tangent fluctuation to \(U\) couples to a massive long
-eight-supercharge vector multiplet of mass \(M\).  In a supersymmetric
-background-field gauge the local heat-kernel coefficient multiplying
-\(\partial q\,\partial q\) has the common form \(I_d(M)C_{\parallel}\), and
-the field content contributes
+\begin{construction}[Rank-one background-field derivation target]
+\label{constr:higgs-branch-background-field-derivation-target}
+For an explicit perturbative calculation, fix a four-dimensional
+\(\mathcal N=2\) \(U(1)\) theory with two hypermultiplets, positive FI
+parameter \(\zeta\), and a smooth patch \(q_1\ne0\) of
+\(\{\mu_{\mathbb C}=0,\mu_{\mathbb R}=\zeta\}/U(1)\simeq T^\ast\mathbb P^1\).
+Choose a supersymmetric background-field \(R_\xi\) gauge about a slowly varying
+Higgs tangent background \(q_B(x)\).  The massive long multiplet has
+\(M^2=g^2\zeta\) at constant \(q_B\), but the two-derivative coefficient is
+the trace-log expansion
+\begin{equation}
+  \Pi_{mn}^{\rm 1-loop}
+  =
+  \left.
+  \frac12\,{\rm STr}\!
+  \left(
+    {\mathcal O}^{-1}{\mathcal V}_{mn}
+    -
+    {\mathcal O}^{-1}{\mathcal V}_{m}
+    {\mathcal O}^{-1}{\mathcal V}_{n}
+  \right)
+  \right|_{\partial q_B\,\partial q_B,\,{\rm local}},
+  \label{eq:higgs-branch-background-field-trace-log}
+\end{equation}
+where \({\mathcal V}_{m}\) are the vertices linear in
+\(\partial_\mu q_B^m\), and \({\mathcal V}_{mn}\) are seagull vertices
+quadratic in the slow background.  At the level needed to define the
+calculation, the component quadratic operator classes are
+\[
+\begin{aligned}
+  {\mathcal O}_{a}^{\mu\nu}
+  &=
+  (-D_B^2+M^2)\delta^{\mu\nu}
+  +(1-\xi^{-1})D_B^\mu D_B^\nu
+  +{\mathcal R}_{a}^{\mu\nu}[q_B,\partial q_B],\\
+  {\mathcal O}_{G}
+  &=
+  -D_B^2+\xi M^2+{\mathcal R}_{G}[q_B,\partial q_B],\\
+  {\mathcal O}_{c}
+  &=
+  -D_B^2+\xi M^2+{\mathcal R}_{c}[q_B,\partial q_B],\\
+  {\mathcal O}_{\phi,\rho}
+  &=
+  -D_B^2+M^2+{\mathcal R}_{\phi,\rho}[q_B,\partial q_B],\\
+  {\mathcal D}_{F}^{\,2}
+  &=
+  -D_B^2+M^2+{\mathcal R}_{F}[q_B,\partial q_B].
+\end{aligned}
+\]
+Here \(a_\mu\) is the gauge fluctuation, \(G\) the Goldstone/eaten
+hypermultiplet combination, \(c,\bar c\) the ghosts, \(\phi,\rho\) the vector
+scalar and radial hypermultiplet partners, and \({\mathcal D}_F\) the coupled
+fermion operator.  A complete calculation must keep the nonminimal
+\(D_B^\mu D_B^\nu\) term, the \(a_\mu\)-Goldstone mixing cancelled by the gauge
+condition, all seagulls in \({\mathcal V}_{mn}\), the ghost determinant, and
+the \(\xi\)-dependent cancellation before the limit of constant \(q_B\) is
+taken.  The same exercise in three or two dimensions has to be repeated after
+dimensional reduction, because gauge components, reduced vector scalars, and
+infrared/torsion data are different objects.
+\end{construction}
+
+After the Ward identity or an explicit evaluation of
+\eqref{eq:higgs-branch-background-field-trace-log} has paired these operators,
+one may record the residual long-multiplet balance as a quick diagnostic.  In a
+four-dimensional constant-mass patch the signed component balance is
 \begin{center}
 \begin{tabular}{@{}lrrrrrrr@{}}
 \textbf{component}
@@ -819,25 +889,26 @@ the field content contributes
 \end{tabular}
 \end{center}
 \begin{equation}
-  \Delta g_{\parallel}^{\rm 1-loop}
+  {\mathcal B}_{\rm long}^{4d}
   =
-  I_d(M)C_{\parallel}\,(4+2+4-2+0-8)
+  4+2+4-2+0-8
   =
   0 .
-  \label{eq:higgs-branch-heavy-multiplet-one-loop-cancellation}
+  \label{eq:higgs-branch-heavy-multiplet-balance-heuristic}
 \end{equation}
-The equality of the masses and tangent vertices in this bracket is the local
-Ward identity.  Omitting the ghost determinant, omitting the eaten
-hypermultiplet partner, or splitting the bosonic and fermionic masses is
-precisely how an apparent Higgs-metric counterterm is manufactured.  The
-calculation is local on \(U\); it does not control a point where the long
-multiplet becomes massless.
+This line computes only the signed long-multiplet balance.  It is useful for
+detecting missing ghosts, missing eaten partners, or mass splitting, but the
+vanishing of \(\Pi_{mn}^{\rm 1-loop}\) is a stronger statement about
+\eqref{eq:higgs-branch-background-field-trace-log}.  The calculation is local
+on \(U\); at a point where the long multiplet becomes massless, the branch EFT
+has changed.
 
 The theorem-status bookkeeping is therefore:
 \begin{center}
 \begin{tabular}{@{}lp{0.58\linewidth}@{}}
-\textbf{smooth Higgs stratum} & local perturbative metric protection by the
-counterterm filter and massive-multiplet cancellation above,\\[0.2em]
+\textbf{smooth Higgs stratum} & local metric protection by
+Hypothesis~\ref{hyp:smooth-higgs-branch-metric-protection}; the counterterm
+filter and long-multiplet balance are consistency tests,\\[0.2em]
 \textbf{coordinate representative} & scheme-dependent components of the same
 intrinsic metric,\\[0.2em]
 \textbf{global nonperturbative equality} & additional continuum assertion,
