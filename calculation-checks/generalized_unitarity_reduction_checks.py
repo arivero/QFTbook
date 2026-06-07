@@ -34,7 +34,8 @@ discontinuity closure check for the two-scale box master, a finite-field
 master-coefficient reconstruction model with denominator clearing and
 validation controls, the finite Laurent-pole bookkeeping that turns a
 reconstructed virtual amplitude into a finite
-observable only after infrared subtraction, real radiation, scheme transport,
+observable only after infrared subtraction, color-metric hard-function
+handoff, real radiation, scheme transport,
 and the unresolved measurement cell have been assembled, including finite
 measurement dependence after pole cancellation, and the two-loop
 infrared-pole consistency gate relating
@@ -129,7 +130,8 @@ bookkeeping, polynomial log algebra, branch continuation, a sector-boundary
 quadrature, a numerical dilogarithm-parameter integral independent of the
 encoded log-square answer, and physical channel-discontinuity closure against
 an independently normalized endpoint-log cut datum; Laurent-pole arithmetic for virtual/real infrared
-cancellation, plus-distribution measurement cells, paired-measurement finite
+cancellation, color-space metric and soft-operator transport under basis and
+finite-subtraction changes, plus-distribution measurement cells, paired-measurement finite
 differences after pole cancellation, finite scheme transport, and two-loop
 recursive pole subtraction.
 Primary derivation route: the manuscript route starts from Cutkosky
@@ -152,8 +154,8 @@ scaleless tadpoles set to zero, the physical-sheet +i0 branch choice for
 masters, and the cubic-graph denominator convention for loop Jacobi triplets.
 Domain and remainder assumptions: the finite checks assume the declared
 master basis, local numerator representatives, known lower-sector/scaleless
-status, finite IR subtraction convention, good finite-field primes and
-samples, and a fixed infrared-safe measurement.  Continuum analytic
+status, finite IR subtraction convention, color basis and metric, good
+finite-field primes and samples, and a fixed infrared-safe measurement.  Continuum analytic
 assumptions and omitted real/factorization residuals remain outside the
 finite algebra.
 Remaining unproved or conditional: the companion does not prove Wightman
@@ -216,7 +218,10 @@ logarithmic one-master shortcuts for the sunrise elliptic maximal cut,
 maximal-cut-only multi-loop reconstruction when lower sectors carry scale,
 branch/path omission in a two-letter master transport, virtual-only
 observable assembly, single-cut-satisfied symbol projections that violate
-Steinmann ordered-word constraints, untransported finite IR-scheme shifts, wrong unresolved
+Steinmann ordered-word constraints, untransported finite IR-scheme shifts,
+wrong color metrics after a basis change, untransported color-correlated soft
+operators, scalar Born-norm replacements for matrix color insertions,
+uncompensated finite color-space subtraction shifts, wrong unresolved
 subtraction measurements, frozen locally inclusive measurement shortcuts,
 finite-remainder-only observable reweighting, non-infrared-safe logarithmic
 weights, two-loop remainder extraction that drops `I^(1) A^(1)`, and NNLO
@@ -423,6 +428,13 @@ def matrix_sub(left: Matrix, right: Matrix) -> Matrix:
     return [
         [left[row][col] - right[row][col] for col in range(len(left[0]))]
         for row in range(len(left))
+    ]
+
+
+def matrix_transpose(matrix: Matrix) -> Matrix:
+    return [
+        [matrix[row][col] for row in range(len(matrix))]
+        for col in range(len(matrix[0]))
     ]
 
 
@@ -3425,6 +3437,150 @@ def check_virtual_to_observable_assembly() -> None:
     )
 
 
+def check_color_space_hard_function_handoff() -> None:
+    born = [Fraction(2), Fraction(-1)]
+    finite_remainder = [Fraction(3, 5), Fraction(7, 11)]
+    color_metric: Matrix = [
+        [Fraction(3), Fraction(1)],
+        [Fraction(1), Fraction(2)],
+    ]
+
+    def hard_interference(tree: Vector, remainder: Vector, metric: Matrix) -> Fraction:
+        return 2 * dot(tree, matrix_vector_mul(metric, remainder))
+
+    def color_correlated_term(
+        tree: Vector,
+        metric: Matrix,
+        operator: Matrix,
+    ) -> Fraction:
+        return dot(tree, matrix_vector_mul(metric, matrix_vector_mul(operator, tree)))
+
+    hard = hard_interference(born, finite_remainder, color_metric)
+    assert_equal(
+        "color metric forms the one-loop hard interference",
+        hard,
+        Fraction(6),
+    )
+
+    basis_change: Matrix = [
+        [Fraction(1), Fraction(2)],
+        [Fraction(0), Fraction(1)],
+    ]
+    inverse_basis_change: Matrix = [
+        [Fraction(1), Fraction(-2)],
+        [Fraction(0), Fraction(1)],
+    ]
+    transformed_born = matrix_vector_mul(basis_change, born)
+    transformed_remainder = matrix_vector_mul(basis_change, finite_remainder)
+    transformed_metric = matrix_mul(
+        matrix_transpose(inverse_basis_change),
+        matrix_mul(color_metric, inverse_basis_change),
+    )
+    assert_equal(
+        "transported color metric leaves hard interference invariant",
+        hard_interference(transformed_born, transformed_remainder, transformed_metric),
+        hard,
+    )
+    wrong_metric_hard = hard_interference(
+        transformed_born,
+        transformed_remainder,
+        color_metric,
+    )
+    assert_true(
+        "old color metric after a basis change changes the hard function",
+        wrong_metric_hard != hard,
+    )
+
+    soft_operator: Matrix = [
+        [Fraction(1, 5), Fraction(2, 7)],
+        [Fraction(-1, 3), Fraction(3, 11)],
+    ]
+    nonsingular_real = Fraction(5, 17)
+    color_correlated_real = (
+        color_correlated_term(born, color_metric, soft_operator)
+        + nonsingular_real
+    )
+    transformed_soft_operator = matrix_mul(
+        basis_change,
+        matrix_mul(soft_operator, inverse_basis_change),
+    )
+    assert_equal(
+        "transported color operator leaves real/soft contribution invariant",
+        color_correlated_term(
+            transformed_born,
+            transformed_metric,
+            transformed_soft_operator,
+        )
+        + nonsingular_real,
+        color_correlated_real,
+    )
+    untransported_soft_real = (
+        color_correlated_term(transformed_born, transformed_metric, soft_operator)
+        + nonsingular_real
+    )
+    assert_true(
+        "untransported color operator changes the real/soft contribution",
+        untransported_soft_real != color_correlated_real,
+    )
+
+    born_norm = dot(born, matrix_vector_mul(color_metric, born))
+    scalar_soft_shortcut = (
+        born_norm * (soft_operator[0][0] + soft_operator[1][1]) / 2
+        + nonsingular_real
+    )
+    assert_true(
+        "scalar Born-norm shortcut misses color-correlated insertion",
+        scalar_soft_shortcut != color_correlated_real,
+    )
+
+    observable = hard + color_correlated_real
+    finite_scheme_shift: Matrix = [
+        [Fraction(1, 3), Fraction(1, 5)],
+        [Fraction(-2, 7), Fraction(1, 11)],
+    ]
+    shifted_remainder = vector_sub(
+        finite_remainder,
+        matrix_vector_mul(finite_scheme_shift, born),
+    )
+    shifted_hard = hard_interference(born, shifted_remainder, color_metric)
+    scheme_compensation = hard - shifted_hard
+    assert_equal(
+        "finite color-space scheme shift is compensated by nonvirtual term",
+        shifted_hard + color_correlated_real + scheme_compensation,
+        observable,
+    )
+    assert_true(
+        "uncompensated finite color-space scheme shift changes observable",
+        shifted_hard + color_correlated_real != observable,
+    )
+
+    scalar_scheme_compensation = (
+        2
+        * born_norm
+        * (finite_scheme_shift[0][0] + finite_scheme_shift[1][1])
+        / 2
+    )
+    assert_true(
+        "scalar finite-scheme compensation is not the color-matrix transport",
+        scalar_scheme_compensation != scheme_compensation,
+    )
+
+    residuals = {
+        "metric": abs(wrong_metric_hard - hard),
+        "operator": abs(untransported_soft_real - color_correlated_real),
+        "scheme": abs(shifted_hard + color_correlated_real - observable),
+        "scalar_color": abs(scalar_soft_shortcut - color_correlated_real),
+    }
+    exact_defect = sum(residuals.values(), Fraction(0))
+    majorant = sum(abs(value) for value in residuals.values())
+    assert_equal("color-space hard handoff residual telescope", exact_defect, majorant)
+    underbudget = majorant - residuals["metric"] - residuals["scheme"]
+    assert_true(
+        "omitting color metric and scheme residuals underbudgets hard handoff",
+        exact_defect > underbudget,
+    )
+
+
 def check_unresolved_measurement_cell_assembly() -> None:
     born_weight = Fraction(3, 2)
     w0 = Fraction(5, 7)
@@ -3754,6 +3910,7 @@ def main() -> None:
     check_symbol_steinmann_transport_check()
     check_production_master_lane_observable_gate()
     check_virtual_to_observable_assembly()
+    check_color_space_hard_function_handoff()
     check_unresolved_measurement_cell_assembly()
     check_measurement_dependence_after_pole_cancellation()
     check_two_loop_ir_pole_consistency_gate()

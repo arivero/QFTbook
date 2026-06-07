@@ -59,7 +59,9 @@
   discontinuities and showing why single cuts do not enforce overlapping
   ordered-word constraints, a production master-lane gate tying
   coefficient pairing, transported masters, physical channel closure, and
-  finite observable assembly into one comparison, an unresolved one-emission
+  finite observable assembly into one comparison, a color-space hard-function
+  handoff recording the metric, basis, color-correlated real/soft operator, and
+  finite-scheme transport needed for nonabelian production observables, an unresolved one-emission
   measurement cell with plus-distribution cancellation, a paired-measurement
   finite-difference test after pole cancellation, and a two-loop infrared-pole
   consistency test linking
@@ -186,6 +188,7 @@
 | \(S_\alpha,\mathcal J\) | one-loop contact/IBP/evanescent surface numerator shift in a Jacobi graph triplet, its induced kinematic Jacobi defect, and the defect repaired by a common color-null surface direction when allowed |
 | \(\mathbf I^{(1)}_\Lambda\) | one-loop infrared subtraction operator used to define the finite remainder in a declared regulator and finite subtraction convention |
 | \(\mathcal F^{(1)}_\Lambda\) | finite one-loop hard remainder after subtracting \(\mathbf I^{(1)}_\Lambda\mathcal A^{(0)}_\Lambda\) |
+| \(e_I,\mathsf G_{IJ},\mathsf H^{(1)}_{IJ},\mathsf R_W,\Delta_{\rm fin}\) | color basis, color Gram matrix, one-loop hard matrix, color-correlated real/soft or factorization operator, and finite color-space subtraction shift in the hard-function handoff |
 | \(\mathbf I^{(2)}_\Lambda\), \(\mathcal F^{(2)}_\Lambda\) | two-loop infrared subtraction operator and hard remainder defined recursively from \(\mathcal A^{(2)}-\mathbf I^{(1)}\mathcal A^{(1)}-\mathbf I^{(2)}\mathcal A^{(0)}\) |
 | \(x,\epsilon_{\rm ir},W(x,\zeta),W_0(\zeta)\) | unresolved one-emission coordinate, local analytic infrared regulator, measurement in the unresolved chart, and its reduced-event infrared-safe limit |
 | \(W_A,W_B,A(x,\zeta),B(x,\zeta)\) | paired infrared-safe measurements with the same reduced-event limit but different finite unresolved measurement dependence |
@@ -324,6 +327,12 @@
   and real-emission/factorization constructions using the same finite
   subtraction convention as the virtual finite remainders.  It is a comparison
   datum for fixed-order observables, not a proof of all-order factorization.
+- The color-space hard-function handoff assumes a declared external color
+  basis, Gram metric, finite-remainder convention, and color-correlated
+  real/soft/factorization operator.  Basis changes and finite subtraction
+  changes must transport these objects together; the block does not compute a
+  full process-specific soft function or prove the associated factorization
+  theorem.
 - The Steinmann section assumes a declared boundary-value setting before the
   vanishing statement: connected time-ordered kernels or LSZ-reduced amplitudes
   with external pole/contact terms separated; selected channel boundary values
@@ -1061,6 +1070,16 @@
   two-loop Laurent pole extraction, rejects dropping
   \(\mathbf I^{(1)}\mathcal A^{(1)}\) or the \(|\mathcal F^{(1)}|^2\) hard term,
   and tests a two-loop residual budget.
+- 2026-06-06 issue #769 color-space hard-function handoff pass: added
+  `ca:color-space-hard-function-handoff` after the one-loop finite-observable
+  assembly and before the unresolved measurement cell.  The pass makes the
+  nonabelian production handoff explicit: a finite remainder is a color vector
+  that becomes a hard contribution only after the color Gram metric, basis
+  transport, color-correlated real/soft or factorization operator, and finite
+  IR-scheme transport are declared.  The companion check uses exact rational
+  matrices to verify basis invariance with transported metric/operator data and
+  rejects the old-metric, untransported-operator, scalar Born-norm, and
+  uncompensated finite color-subtraction shortcuts.
 - 2026-06-06 issue #769 unresolved measurement-cell pass: added
   `ca:one-loop-unresolved-measurement-cell` between the symbolic one-loop
   observable assembly and the two-loop IR-pole consistency test.  The pass expands the

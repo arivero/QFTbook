@@ -3365,7 +3365,10 @@ Current checks:
   plus the
   Laurent-pole virtual-to-observable assembly check separating the finite hard
   remainder, real-radiation/subtraction cancellation, finite IR-scheme
-  transport, and residual comparison budget, the unresolved one-emission
+  transport, and residual comparison budget, the color-space hard-function
+  handoff check with transported color metric, color-correlated real/soft
+  operator, finite scheme compensation, and scalar-shortcut negative controls,
+  the unresolved one-emission
   measurement-cell check with plus-distribution cancellation and negative
   controls for wrong subtraction measurements, frozen locally inclusive
   measurements, finite-remainder-only reweighting after paired-measurement

@@ -4537,6 +4537,85 @@ real/factorization term changes the finite number in
 \eqref{eq:one-loop-observable-from-finite-remainder}.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Color-space hard-function handoff]
+\label{ca:color-space-hard-function-handoff}
+For nonabelian production channels the bracket in
+\eqref{eq:one-loop-observable-from-finite-remainder} is itself part of the
+data.  Choose a color basis \(e_I\) for the external partonic channel and write
+the tree amplitude and finite remainder as vectors
+\(\mathcal A_I^{(0)}\) and \(\mathcal F_I^{(1)}\).  The color metric
+\[
+  \mathsf G_{IJ}:=\langle e_I,e_J\rangle_{\rm color}
+\]
+is not optional: it is the Gram matrix that turns the color-vector output of a
+loop reconstruction into the hard contribution used by a factorization
+formula.  For a Born measurement \(W_0\), the virtual hard interference is
+\begin{equation}
+  H_W^{(1)}
+  =
+  2\,\operatorname{Re}
+  \int\dd\Phi_B\,W_0(\Phi_B)\,
+  \mathcal A_I^{(0)\,*}(\Phi_B)\,
+  \mathsf G_{IJ}\,
+  \mathcal F_J^{(1)}(\Phi_B).
+  \label{eq:color-space-hard-interference}
+\end{equation}
+Equivalently, one may form the one-loop hard matrix
+\[
+  \mathsf H_{IJ}^{(1)}
+  =
+  \mathcal F_I^{(1)}\mathcal A_J^{(0)\,*}
+  +
+  \mathcal A_I^{(0)}\mathcal F_J^{(1)\,*},
+\]
+but a measured cross section still contracts this matrix with the appropriate
+soft, jet, beam, or measurement operator in the same color convention.
+
+A finite change of color basis \(\mathcal A'=S\mathcal A\) is harmless only if
+the metric and color operators are transported with it:
+\begin{equation}
+  \mathsf G'=S^{-\dagger}\mathsf G S^{-1},
+  \qquad
+  \mathsf R'_W=S\mathsf R_W S^{-1}.
+  \label{eq:color-space-basis-transport}
+\end{equation}
+Here \(\mathsf R_W\) denotes the color-correlated real/subtraction,
+soft-function, or factorization operator that acts on the Born color vector in
+the chosen observable.  Keeping the old metric after changing the vector
+coordinates changes
+\(\mathcal A^{(0)\,\dagger}\mathsf G\mathcal F^{(1)}\).  Keeping the old
+operator changes the color-correlated real or soft term.  Thus a table of
+finite remainders without the color metric, basis map, and soft/factorization
+operator convention is not yet a production prediction.
+
+The same bookkeeping is required for finite infrared-scheme changes.  If the
+finite part of the subtraction operator is changed by a color matrix
+\(\Delta_{\rm fin}\), then
+\[
+  \mathcal F^{(1)}
+  \longmapsto
+  \mathcal F^{(1)}-\Delta_{\rm fin}\mathcal A^{(0)}
+\]
+and the nonvirtual side must receive the compensating finite term
+\begin{equation}
+  \mathcal R_W^{\rm sub}+\mathcal C_W^{\rm fact}
+  \longmapsto
+  \mathcal R_W^{\rm sub}+\mathcal C_W^{\rm fact}
+  +
+  2\,\operatorname{Re}
+  \int\dd\Phi_B\,W_0\,
+  \mathcal A^{(0)\,\dagger}\mathsf G
+  \Delta_{\rm fin}\mathcal A^{(0)} .
+  \label{eq:color-space-finite-scheme-transport}
+\end{equation}
+In a one-dimensional color channel this reduces to the scalar scheme shift in
+\eqref{eq:one-loop-observable-from-finite-remainder}.  In a multicolor
+channel it is a matrix statement; replacing it by a scalar Born norm erases
+color correlations and generally gives the wrong finite observable.  This is
+the amplitude-side input to the QCD factorization coordinates of
+Chapter~\ref{ch:volume-ii-19}.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Unresolved one-emission measurement cell]
 \label{ca:one-loop-unresolved-measurement-cell}
 The symbol \(\mathcal R_\Lambda^{\rm sub}[W]\) in
