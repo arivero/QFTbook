@@ -1332,6 +1332,70 @@ monomials, and the residual mirror orbifold have been supplied.  This is a
 physical topological-sector condition, not a harmless rescaling of \(T\).
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Chiral-superpotential phase-isometry gate]
+\label{ca:glsm-chiral-superpotential-phase-isometry-gate}
+The dual variables \(Y_i\) are introduced by dualizing phase directions of the
+charged chiral fields.  A chiral superpotential is therefore admissible for the
+displayed abelian mirror formula only along the phase directions that it
+actually preserves.  Write
+\[
+  W_{\rm ch}(\Phi)
+  =
+  \sum_A \lambda_A\prod_{i=1}^m\Phi_i^{p_{Ai}},
+  \qquad p_{Ai}\in\mathbb Z_{\ge0}.
+\]
+Gauge invariance says
+\[
+  \sum_i p_{Ai}Q_i{}^a=0
+  \qquad\hbox{for every }A,a.
+\]
+The individual phase rotations used in the local dualization impose the
+separate condition below.  If
+\[
+  \Phi_i\longmapsto e^{\ii v_i\alpha}\Phi_i ,
+  \qquad v=(v_i)\in\mathbb Z^m,
+\]
+then the \(A\)-th monomial acquires the phase
+\[
+  \exp\!\left(\ii\alpha\sum_i p_{Ai}v_i\right).
+\]
+Thus the continuous phase lattice available to the first-order duality is
+\begin{equation}
+  \mathcal L_W
+  =
+  \left\{
+    v\in\mathbb Z^m\;\middle|\;
+    \sum_i p_{Ai}v_i=0\ \hbox{for every active monomial }A
+  \right\}.
+  \label{eq:glsm-superpotential-phase-isometry-lattice}
+\end{equation}
+Only directions in \(\mathcal L_W\), together with the gauge directions already
+accounted for by the \(\Sigma_a\) constraints, can be dualized by the displayed
+Legendre-transform argument.  If a monomial violates
+\eqref{eq:glsm-superpotential-phase-isometry-lattice}, then one must either
+treat \(\lambda_A\) as a background spurion and carry its charge into the mirror
+datum, or provide a separate mirror prescription for the broken-isometry
+interaction.
+
+For example, with charges \((1,1,-2)\) the monomial \(P X_1X_2\) is
+gauge-invariant:
+\[
+  (1,1,1)\cdot(1,1,-2)=0.
+\]
+But it is not invariant under the three individual phase rotations of
+\((X_1,X_2,P)\).  It preserves only the two-dimensional sublattice
+\[
+  v_1+v_2+v_P=0 .
+\]
+The relative phase \(X_1/X_2\) is dualizable, but a mirror formula that simply
+adds three unconstrained primitive variables \(Y_{X_1},Y_{X_2},Y_P\) and the
+terms \(-Q_i{}^a\Sigma_aY_i-\mu c_i e^{-Y_i}\) has not encoded the chiral
+superpotential \(P X_1X_2\).  Hypersurface GLSMs and other models with chiral
+superpotentials therefore require their own mirror interaction, orbifold, and
+operator-map data; they are not consequences of the bare abelian Hori--Vafa
+presentation by charge neutrality alone.
+\end{controlledapproximation}
+
 The local first-order functional for one charged chiral variable is the
 superspace analogue of the compact scalar construction.  Let \(B_i\) be a
 real superfield and set

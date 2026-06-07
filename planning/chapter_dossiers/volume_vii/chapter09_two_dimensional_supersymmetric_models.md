@@ -59,6 +59,8 @@ and
   gauge group and its dual electric character lattice.  These control allowed
   matter charges, dual exponentials, FI-theta periods, and residual mirror
   orbifolds.
+- `p_A`, `L_W`: chiral-superpotential monomial exponent vector and preserved
+  phase-isometry lattice available to abelian dualization.
 - `Sigma`, `tilde W_eff`, `mu`, `Q_tot`: twisted chiral field strength,
   abelian Coulomb-branch effective twisted superpotential, renormalization
   scale, and total positive charge in the one-loop Coulomb ledger.
@@ -555,6 +557,11 @@ and
     logarithmic FI period is `2 pi i n` in covering coordinates, cover-charge
     one is not allowed matter, and the residual mirror orbifold order cannot be
     dropped;
+  - chiral-superpotential phase-isometry checks: a gauge-neutral monomial
+    `P X_1 X_2` with charges `(1,1,-2)` preserves only the kernel
+    `v_1+v_2+v_P=0`, so charge neutrality alone cannot justify dualizing all
+    individual phases or using the bare Hori--Vafa variables without extra
+    spurion/mirror-interaction data;
   - charged-chiral mirror-variable elimination matching the Coulomb one-loop
     superpotential and the finite FI-coordinate shift induced by vortex
     coefficient normalizations;
@@ -884,6 +891,15 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   a common gauge-flux sector with `i` only a disorder/source projection.  The
   companion rejects nonperiodic `exp(tau)` fugacities and flavor-labelled
   topological sectors under equal-charge flavor rotations.
+- The 2026-06-07 issue #847 chiral-superpotential phase-isometry pass adds
+  `ca:glsm-chiral-superpotential-phase-isometry-gate` after the global-form
+  lattice gate.  The pass shows that gauge invariance
+  `sum_i p_Ai Q_i^a=0` does not imply preservation of the individual phase
+  rotations used in abelian dualization.  The companion check uses the
+  gauge-neutral monomial `P X_1 X_2` with charges `(1,1,-2)`, computes the
+  preserved rank-two phase lattice, rejects full individual phase dualization,
+  and requires explicit spurion or broken-isometry mirror data before the
+  superpotential can be folded into a mirror presentation.
 - The 2026-06-07 issue #847 twisted-`F` component bridge pass closes the
   remaining local-density normalization gap between the Coulomb determinant
   and the normalized twisted superpotential.  The chapter now records the

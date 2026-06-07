@@ -7,7 +7,8 @@ finite-regulator vortex fluctuation complex, vortex-to-FI-coordinate
 normalization, compact FI-theta flux periodicity, common-flux rather than
 flavor-labelled vortex topology, common-sector source-projection and
 product-assembly gates, quotient global-form flux/character/theta-period
-restrictions,
+restrictions, chiral-superpotential phase-isometry restrictions for abelian
+dualization,
 one-vortex normal-mode interaction and original/dual-frame
 separation, one-vortex source-functional F-term extraction,
 one-vortex component-amplitude source-minor extraction,
@@ -42,6 +43,7 @@ normal-mode cumulant factors and original-to-dual frame tags,
 common-sector source projections, independently projected common amplitudes,
 assembly-map mutation controls, operator-map diagnostic span tests, quotient
 cocharacter-lattice and dual character-lattice filters with theta-period tests,
+phase-isometry lattice tests for chiral superpotential monomials,
 one-loop gamma-matrix Hermiticity tests, signed-log determinant-density
 coefficient extraction, flux-carrying magnetic-torus Wilson-overlap
 indices, heat-kernel Fujikawa traces, logarithm branch shifts, and
@@ -87,7 +89,9 @@ matrix convention, compact flux \(k=(2\pi)^{-1}\int F\in\mathbb Z\),
 \(\widetilde W=-T_a\Sigma_a-M_iY_i-\mu c_i e^{-Y_i}\), exponentiated
 FI coordinate \(q=\exp(T)\) in the displayed mirror-torus equations, the
 distinction between the ordinary covering-torus lattice and a quotient
-cocharacter lattice, the
+cocharacter lattice, the condition that chiral superpotential monomials
+preserve the phase directions being dualized unless extra mirror/spurion data
+are supplied, the
 chosen orientation of the universal \(d^2\widetilde\theta\) zero-mode pair,
 and the determinant-line convention in which finite \(c_i\) rescalings are
 transported into the FI-theta coordinate.
@@ -125,6 +129,8 @@ quotient flux lattices, cover-charge-one matter treated as a quotient
 representation, ordinary \(2\pi i\) FI periods applied to fractional quotient
 fluxes, and quotient residual mirror orbifolds omitted from covering
 presentations,
+charge-neutral chiral superpotentials treated as preserving all individual
+phase isometries,
 using compact branch periodicity to choose the Coulomb determinant sign,
 wrong component-response signs or Fujikawa factors,
 absolute-value-only Coulomb logarithms,
@@ -856,6 +862,104 @@ def check_global_form_flux_character_lattice_gate() -> None:
     assert_equal(
         "ordinary covering theta period is not single-valued on quotient fluxes",
         Fraction(1, quotient_order) in set(wrong_topological_weights.values()),
+        True,
+    )
+
+
+def check_chiral_superpotential_phase_isometry_gate() -> None:
+    def rational_rows(rows: list[list[int]]) -> list[list[Fraction]]:
+        return [[Fraction(entry) for entry in row] for row in rows]
+
+    def dot(left: list[int], right: list[int]) -> int:
+        return sum(left_i * right_i for left_i, right_i in zip(left, right))
+
+    def preserves_direction(monomials: list[list[int]], direction: list[int]) -> bool:
+        return all(dot(monomial, direction) == 0 for monomial in monomials)
+
+    def preserves_all_directions(
+        monomials: list[list[int]],
+        directions: list[list[int]],
+    ) -> bool:
+        return all(preserves_direction(monomials, direction) for direction in directions)
+
+    charges = [1, 1, -2]
+    monomials = [[1, 1, 1]]  # P X_1 X_2 in cover-charge units.
+    individual_phase_directions = [
+        [1, 0, 0],
+        [0, 1, 0],
+        [0, 0, 1],
+    ]
+
+    assert_equal(
+        "gauge-neutral chiral monomial",
+        dot(monomials[0], charges),
+        0,
+    )
+    assert_equal(
+        "charge neutrality does not preserve individual phase dualizations",
+        preserves_all_directions(monomials, individual_phase_directions),
+        False,
+    )
+
+    phase_kernel_dimension = len(charges) - rank_fraction(rational_rows(monomials))
+    assert_equal(
+        "one active chiral monomial removes one continuous phase direction",
+        phase_kernel_dimension,
+        2,
+    )
+    full_individual_dualization_rank = rank_fraction(rational_rows(individual_phase_directions))
+    assert_equal(
+        "full individual phase dualization overcounts preserved isometries",
+        full_individual_dualization_rank > phase_kernel_dimension,
+        True,
+    )
+
+    preserved_relative_directions = [
+        [1, -1, 0],
+        [1, 0, -1],
+    ]
+    assert_equal(
+        "relative phase directions lie in the superpotential isometry lattice",
+        preserves_all_directions(monomials, preserved_relative_directions),
+        True,
+    )
+
+    charge_only_gate_accepts = dot(monomials[0], charges) == 0
+    phase_isometry_gate_accepts = preserves_all_directions(
+        monomials,
+        individual_phase_directions,
+    )
+    assert_equal(
+        "charge-only gate is too weak for Hori-Vafa dualization",
+        charge_only_gate_accepts and not phase_isometry_gate_accepts,
+        True,
+    )
+
+    broken_direction = individual_phase_directions[0]
+    spurion_charge = -dot(monomials[0], broken_direction)
+    assert_equal(
+        "spurion can restore broken Ward identity only as extra data",
+        dot(monomials[0], broken_direction) + spurion_charge,
+        0,
+    )
+    protected_hori_vafa_data = {
+        "periodic Y",
+        "linear Sigma Y",
+        "primitive exponentials",
+    }
+    required_broken_isometry_data = {
+        "chiral superpotential spurion charges",
+        "broken-isometry mirror interaction",
+    }
+    assert_equal(
+        "bare Hori-Vafa data omit broken chiral-superpotential isometry input",
+        required_broken_isometry_data <= protected_hori_vafa_data,
+        False,
+    )
+
+    assert_equal(
+        "zero chiral superpotential preserves the full phase lattice",
+        preserves_all_directions([], individual_phase_directions),
         True,
     )
 
@@ -4464,6 +4568,7 @@ def main() -> None:
     check_compact_fi_theta_fugacity_and_common_flux()
     check_common_flux_operator_map_diagnostic()
     check_global_form_flux_character_lattice_gate()
+    check_chiral_superpotential_phase_isometry_gate()
     check_abelian_coulomb_one_loop_primitive()
     check_coulomb_component_response_selects_log_sign()
     check_coulomb_one_loop_branch_monodromy()

@@ -3020,11 +3020,14 @@ Current checks:
   adding an operator-map diagnostic span test in which primitive mirror rows
   miss a source-functional null direction visible to a tested observable, and
   rejecting ordinary \(U(1)\) product formulae on a quotient flux lattice,
-  the global-form flux lattice gate which tests the quotient cocharacter
-  lattice, dual character lattice, enlarged theta-period lattice, forbidden
-  cover-charge-one matter, quotient-compatible \(\Sigma Y\) periods, and
-  residual mirror-orbifold order,
-  the charged-chiral mirror-variable
+	  the global-form flux lattice gate which tests the quotient cocharacter
+	  lattice, dual character lattice, enlarged theta-period lattice, forbidden
+	  cover-charge-one matter, quotient-compatible \(\Sigma Y\) periods, and
+	  residual mirror-orbifold order, the chiral-superpotential phase-isometry
+	  gate showing that gauge-neutral monomials need not preserve the individual
+	  phase rotations used in abelian dualization and rejecting bare Hori--Vafa
+	  data when broken-isometry spurion/mirror-interaction data are omitted,
+	  the charged-chiral mirror-variable
   elimination matching the Coulomb one-loop superpotential, the finite
   FI-coordinate shift induced by vortex coefficient normalizations, the
   all-rank mirror-torus and Coulomb affine-term ledger showing that vortex
