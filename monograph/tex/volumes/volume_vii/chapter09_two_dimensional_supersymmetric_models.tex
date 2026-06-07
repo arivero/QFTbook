@@ -1772,6 +1772,89 @@ primitive harmonic once a nonzero coefficient is present.  Neither step proves
 that the regulated common vortex sector has exactly the two universal fermion
 zero modes or that its determinant line has been oriented consistently.
 
+\begin{controlledapproximation}[Vortex-core disorder insertion]
+\label{ca:glsm-vortex-core-disorder-insertion}
+The disorder operator represented in the mirror by \(e^{-Y_i}\) must be
+defined in a chart that sees the zero of the original charged field.  Work in a
+small disk \(D_\epsilon(z_0)\) around a proposed vortex insertion and remove
+the center.  On the punctured disk write, in a local trivialization,
+\[
+  \phi_i=\rho_i e^{\ii\vartheta_i}.
+\]
+A smooth unit core has boundary degree
+\begin{equation}
+  \frac1{2\pi}\oint_{\partial D_\epsilon}d\vartheta_i=1,
+  \qquad
+  \rho_i(r,\varphi)=r\,a(\varphi)+O(r^2),
+  \qquad a(\varphi)>0,
+  \label{eq:glsm-vortex-core-boundary-data}
+\end{equation}
+up to the sign fixed by the chosen vortex orientation.  The zero is not a
+minor regularity condition.  If \(\rho_i\) stayed nonzero at the center while
+\(\vartheta_i\) had degree one, then the angular part of the kinetic energy
+would contain
+\[
+  \int_0^\epsilon r\,dr\,\frac{\rho_i(r)^2}{r^2},
+\]
+which diverges logarithmically.  If
+\(\rho_i(r)\sim r^a\), the angular integral is finite for \(a>0\).  Thus a
+finite-action vortex core lies outside the local chart
+\(\Phi_i=e^{\Psi_i}\): around \(\partial D_\epsilon\),
+\[
+  \oint d\Psi_i
+  =
+  \oint d\log\phi_i
+  =
+  2\pi\ii ,
+\]
+so \(\Psi_i\) is neither single-valued on the punctured disk nor extendable
+through the core.
+
+The original regulated disorder insertion is therefore a boundary-condition
+definition, not an ordinary insertion of the dual monomial into the original
+field variables.  At cutoff scale the regulated expectation value is
+\begin{equation}
+  \bigl\langle{\mathcal O}\,{\mathfrak V}_{i,\Lambda}(z_0)\bigr\rangle
+  =
+  \lim_{\epsilon\downarrow0}
+  Z_{i,\epsilon}^{\rm core}
+  \int_{\mathcal C_{i,\epsilon}}
+  {\mathcal D}_{\Lambda}(A,\Phi,\cdots)\,
+  e^{-S_\Lambda[A,\Phi,\cdots]}\,
+  {\mathcal O}_{\Lambda},
+  \label{eq:glsm-vortex-core-disorder-path-integral}
+\end{equation}
+where \(\mathcal C_{i,\epsilon}\) imposes the core boundary data
+\eqref{eq:glsm-vortex-core-boundary-data}, the corresponding common compact
+gauge-flux sector, the gauge transition function, and the fermion zero-mode
+boundary conditions.  The factor \(Z_{i,\epsilon}^{\rm core}\) is the local
+core counterterm and source normalization required for the \(\epsilon\to0\)
+limit.  In the compact scalar first-order duality, an exponential of the dual
+variable is precisely such a winding source: with the sign convention of
+\eqref{eq:glsm-hv-dual-twisted-superpotential}, the primitive dual monomial
+\(e^{-Y_i}\) creates the unit core orientation in
+\eqref{eq:glsm-vortex-core-boundary-data}.  The opposite monomial creates the
+opposite core orientation.
+
+Consequently the operator comparison has one more local datum:
+\begin{equation}
+  U_\Lambda\bigl({\mathfrak V}_{i,\Lambda}(z_0)\bigr)
+  =
+  Z^{\rm map}_{i,\Lambda}\,e^{-Y_i(z_0)}
+  +
+  R^{\rm core}_{i,\Lambda}.
+  \label{eq:glsm-vortex-core-disorder-map}
+\end{equation}
+The residual \(R^{\rm core}_{i,\Lambda}\) includes the punctured-disk
+boundary limit, local counterterm, zero-mode boundary condition, and
+source-row normalization.  It is independent of the Coulomb logarithm and of
+the compact FI period.  For equal-charge fields a flavor rotation permutes the
+rows \({\mathfrak V}_{i,\Lambda}\), while the gauge-flux degree in
+\eqref{eq:glsm-vortex-core-disorder-path-integral} remains common.  A
+controlled Hori--Vafa operator statement therefore needs this core-domain map
+in addition to the source-projection and determinant estimates below.
+\end{controlledapproximation}
+
 At finite regulator this distinction is expressed by source projections on one
 common sector.  Let \({\mathcal A}_{1,\Lambda}\) denote the
 FI-stripped charge-one source functional obtained by integrating over

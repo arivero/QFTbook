@@ -320,6 +320,7 @@
         "operator/source matrix-element comparison",
         "boundary-state and defect probe comparison",
         "common-flux operator-map status guard",
+        "vortex-core disorder insertion domain",
         "cigar/Liouville pathwise spectral-continuity fake-fixed-point gate",
         "cigar/Liouville source-normalized spectral-resolution bridge",
         "N=2 cigar reflection Gamma-function normalization target",

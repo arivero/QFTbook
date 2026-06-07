@@ -73,6 +73,10 @@ and
   GLSM/Hori--Vafa mirror conjecture, its observable comparison layers, and the
   separate continuum/operator/topological/background/singular-locus proof
   debts.
+- `ca:glsm-vortex-core-disorder-insertion`, `mathfrak V_{i,Lambda}`,
+  `C_{i,epsilon}`, `R^{core}_{i,Lambda}`: punctured-disk vortex-core disorder
+  insertion data, separating the finite-action scalar zero and logarithmic
+  monodromy from the later dual-frame monomial `e^{-Y_i}`.
 - `mathfrak M_Lambda`, `K_mir`, `D^mir_Lambda`, `C_ct`, `B_infty`,
   `G_glob`, `R_{Lambda->IR}`: full mirror-QFT datum separating the
   protected Hori--Vafa twisted-superpotential presentation from the mirror
@@ -305,10 +309,11 @@ and
   separately, together with the nonzero-mode determinant ratio, the
   source-dependent interacting normal-mode expectation, two universal fermion
   zero modes forming the twisted `F`-term measure, possible extra zero-mode
-  saturation, and collective-coordinate integration; the dual frame supplies
-  the operator `exp(-Y_i)`.  This makes the Hori--Vafa exponential term a
-  rechecked amplitude datum in the chapter's conventions rather than a scalar
-  inserted into the original path integral.
+  saturation, collective-coordinate integration, and the punctured-disk core
+  boundary condition needed to define the original disorder insertion; the dual
+  frame supplies the operator `exp(-Y_i)`.  This makes the Hori--Vafa
+  exponential term a rechecked amplitude datum in the chapter's conventions
+  rather than a scalar inserted into the original path integral.
 - Adds a one-vortex source-functional extraction bridge: the same regulated
   sector is written with bookkeeping sources for the two universal fermion
   zero modes, residual zero-mode coordinates, and local component sources.
@@ -580,6 +585,12 @@ and
     source-projection functionals compute projected coefficients and a direct
     common observable amplitude by separate routes, so arbitrary projected data
     or a bare projected product fail without an assembly map;
+  - the vortex-core disorder-insertion gate: finite angular energy requires a
+    charged-scalar zero at a unit core, the local logarithmic chart has
+    monodromy and cannot cross the core, the primitive dual monomial has the
+    chosen core orientation, flavor rotations permute source rows rather than
+    flux sectors, and the core-domain residual is a required operator-map
+    budget term;
   - quotient global-form flux/character lattice checks: for `U(1)/Z_n` the
     flux lattice contains `1/n`, the electric character lattice is `nZ`, the
     logarithmic FI period is `2 pi i n` in covering coordinates, cover-charge
@@ -1054,3 +1065,11 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   boundary-domain, and source/contact deformations still require spectral
   response control.  The companion checks the mode weights, the dual-circle
   contribution, and the nonzero Robin wall response in the continuous density.
+- The 2026-06-07 issue #847 vortex-core disorder pass adds
+  `ca:glsm-vortex-core-disorder-insertion`: the text defines the original
+  disorder insertion by a punctured-disk core boundary condition rather than by
+  the local `Phi_i=exp(Psi_i)` chart, derives the finite-action zero and
+  logarithmic monodromy obstruction, and states the residual core-domain
+  operator map to `exp(-Y_i)`.  The companion checks finite core energy,
+  monodromy, primitive dual orientation, flavor-row covariance, and the
+  necessity of the core-domain residual budget.

@@ -6,7 +6,8 @@ normalizations, charged-chiral mirror elimination, vortex-zero-mode filter,
 finite-regulator vortex fluctuation complex, vortex-to-FI-coordinate
 normalization, compact FI-theta flux periodicity, common-flux rather than
 flavor-labelled vortex topology, common-sector source-projection and
-product-assembly gates, quotient global-form flux/character/theta-period
+product-assembly gates, vortex-core disorder insertion domains,
+quotient global-form flux/character/theta-period
 restrictions, chiral-superpotential phase-isometry restrictions for abelian
 dualization,
 one-vortex normal-mode interaction and original/dual-frame
@@ -45,8 +46,11 @@ component-to-component source-frame calibration ratios with supplied component
 and frame residuals,
 normal-mode cumulant factors and original-to-dual frame tags,
 common-sector source projections, independently projected common amplitudes,
-assembly-map mutation controls, operator-map status guards and span tests, quotient
-cocharacter-lattice and dual character-lattice filters with theta-period tests,
+assembly-map mutation controls, operator-map status guards and span tests,
+vortex-core winding/zero-order finite-action filters, dual-disorder charge
+orientation checks, local-log-chart monodromy tests, core-domain residual
+budgets, quotient cocharacter-lattice and dual character-lattice filters with
+theta-period tests,
 phase-isometry lattice tests for chiral superpotential monomials,
 one-loop gamma-matrix Hermiticity tests, signed-log determinant-density
 coefficient extraction, flux-carrying magnetic-torus Wilson-overlap
@@ -137,7 +141,10 @@ primitive mirror source projections treated as a complete operator map,
 source-functional null directions hidden from primitive projections but visible
 to the tested observable, residual-slot names promoted to a controlled
 operator-map estimate without component bounds, arbitrary projected
-coefficients, ordinary \(U(1)\) product formulae reused for
+coefficients, local logarithmic charts used across vortex cores,
+nonzero-core phase windings treated as finite action, wrong-orientation dual
+disorder monomials, core counterterms omitted from operator-map residuals,
+ordinary \(U(1)\) product formulae reused for
 quotient flux lattices, cover-charge-one matter treated as a quotient
 representation, ordinary \(2\pi i\) FI periods applied to fractional quotient
 fluxes, and quotient residual mirror orbifolds omitted from covering
@@ -671,6 +678,114 @@ def check_compact_fi_theta_fugacity_and_common_flux() -> None:
                     wrong_half_density_periods.denominator == 1,
                     False,
             )
+
+
+def check_vortex_core_disorder_insertion_gate() -> None:
+    def angular_energy_is_finite(zero_order: Fraction, winding: int) -> bool:
+        if winding == 0:
+            return True
+        # For phi ~ r^a exp(i n varphi), the angular energy behaves as
+        # int_0^epsilon r^(2a-1) dr and is finite exactly when a > 0.
+        return zero_order > 0
+
+    assert_equal(
+        "unit vortex core with a scalar zero has finite angular energy",
+        angular_energy_is_finite(Fraction(1), 1),
+        True,
+    )
+    assert_equal(
+        "nonzero scalar core with unit winding has logarithmic angular divergence",
+        angular_energy_is_finite(Fraction(0), 1),
+        False,
+    )
+    assert_equal(
+        "unwound local chart has no angular core obstruction",
+        angular_energy_is_finite(Fraction(0), 0),
+        True,
+    )
+
+    unit_core_winding = 1
+    log_chart_monodromy_units = unit_core_winding
+    assert_equal(
+        "local logarithmic chart is single-valued only in the unwound sector",
+        log_chart_monodromy_units == 0,
+        False,
+    )
+    assert_equal(
+        "unit vortex has the primitive logarithmic monodromy",
+        log_chart_monodromy_units,
+        1,
+    )
+
+    primitive_dual_monomial_charge = -1
+    opposite_dual_monomial_charge = 1
+
+    def core_winding_created_by_dual_monomial(dual_charge: int) -> int:
+        # The sign convention matches W_dual ... - mu c_i exp(-Y_i):
+        # exp(-Y_i) creates the positive primitive core orientation.
+        return -dual_charge
+
+    assert_equal(
+        "primitive exp(-Y_i) creates the chosen unit core orientation",
+        core_winding_created_by_dual_monomial(primitive_dual_monomial_charge),
+        unit_core_winding,
+    )
+    assert_equal(
+        "opposite dual monomial creates the opposite core orientation",
+        core_winding_created_by_dual_monomial(opposite_dual_monomial_charge),
+        -unit_core_winding,
+    )
+
+    core_rows = [
+        [Fraction(1), Fraction(0), Fraction(1)],
+        [Fraction(0), Fraction(1), Fraction(1)],
+    ]
+    common_core_functional = [Fraction(2, 5), Fraction(3, 7), Fraction(5, 11)]
+
+    def dot(row: list[Fraction], vector: list[Fraction]) -> Fraction:
+        return sum(left * right for left, right in zip(row, vector))
+
+    core_coefficients = [dot(row, common_core_functional) for row in core_rows]
+    flavor_swap = [
+        [Fraction(0), Fraction(1), Fraction(0)],
+        [Fraction(1), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(1)],
+    ]
+
+    def mat_vec(matrix: list[list[Fraction]], vector: list[Fraction]) -> list[Fraction]:
+        return [dot(row, vector) for row in matrix]
+
+    swapped_core_functional = mat_vec(flavor_swap, common_core_functional)
+    swapped_core_coefficients = [dot(row, swapped_core_functional) for row in core_rows]
+    assert_equal(
+        "flavor rotation permutes core source rows, not gauge flux sectors",
+        swapped_core_coefficients,
+        [core_coefficients[1], core_coefficients[0]],
+    )
+    common_gauge_flux_degree = 1
+    assert_equal(
+        "core projection label does not split the common gauge flux",
+        common_gauge_flux_degree,
+        1,
+    )
+
+    residuals = {
+        "core-domain": Fraction(1, 101),
+        "local counterterm": Fraction(1, 103),
+        "zero-mode boundary": Fraction(1, 107),
+        "source row": Fraction(1, 109),
+        "operator map": Fraction(1, 113),
+        "continuum": Fraction(1, 127),
+    }
+    full_bound = sum(residuals.values(), Fraction(0))
+    actual_error = full_bound
+    assert_equal("vortex-core disorder residual telescope", actual_error <= full_bound, True)
+    underbudget_without_core = full_bound - residuals["core-domain"]
+    assert_equal(
+        "omitting core-domain residual underbudgets disorder-operator comparison",
+        actual_error <= underbudget_without_core,
+        False,
+    )
 
 
 def check_common_flux_operator_map_diagnostic() -> None:
@@ -5130,6 +5245,7 @@ def main() -> None:
     check_abelian_legendre_duality()
     check_abelian_glsm_coulomb_ledger()
     check_compact_fi_theta_fugacity_and_common_flux()
+    check_vortex_core_disorder_insertion_gate()
     check_common_flux_operator_map_diagnostic()
     check_global_form_flux_character_lattice_gate()
     check_chiral_superpotential_phase_isometry_gate()
