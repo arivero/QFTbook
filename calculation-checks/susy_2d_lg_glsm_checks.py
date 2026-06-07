@@ -516,6 +516,27 @@ def check_compact_fi_theta_fugacity_and_common_flux() -> None:
         physical_q,
     )
 
+    # The component of -Q Sigma Y couples Im(Y) to the same compact flux.  A
+    # Y -> Y + 2*pi*i period must shift the phase by an integer multiple of
+    # 2*pi*i for every integral flux and charge.  Reusing a 1/(4*pi) density
+    # normalization in this twisted-F component projection would fail this
+    # integer-period test for an odd charge-flux product.
+    for charge in [1, 2, -3]:
+        for flux in [-2, -1, 1, 3]:
+            phase_periods = charge * flux
+            assert_equal(
+                "Sigma-Y component period is integral on compact flux",
+                Fraction(phase_periods).denominator,
+                1,
+            )
+            wrong_half_density_periods = Fraction(charge * flux, 2)
+            if abs(charge * flux) % 2 == 1:
+                assert_equal(
+                    "half-density Sigma-Y normalization fails odd flux period",
+                    wrong_half_density_periods.denominator == 1,
+                    False,
+                )
+
 
 def check_abelian_coulomb_one_loop_primitive() -> None:
     # The local determinant gives dW/dSigma = -T + sum_i Q_i log(Q_i Sigma/mu).
@@ -709,16 +730,24 @@ def check_coulomb_component_response_selects_log_sign() -> None:
     )
 
     # In units of (4*pi)^(-1), the local two-dimensional integral obeys
-    # int [1/(p^2+M^2)-1/(p^2+mu^2)] = -log(M^2/mu^2).  The coefficient is
-    # extracted after dividing by the signed analytic logarithm, so it is
-    # independent of the chosen mass ordering and charge sign.
+    # int [1/(p^2+M^2)-1/(p^2+mu^2)] = -log(M^2/mu^2).  The twisted-F component
+    # projection instead carries (2*pi)^(-1) and the holomorphic coefficient
+    # Q log(M/mu).  The factor-of-two bridge is tested before the coefficient is
+    # extracted, and the extraction is independent of the chosen mass ordering
+    # and charge sign.
     complex_scalar_power = -Fraction(1, 2) - Fraction(1, 2)
+    determinant_density_denominator = 4
+    twisted_f_component_denominator = 2
+    density_to_twisted_factor = Fraction(
+        determinant_density_denominator,
+        twisted_f_component_denominator,
+    )
     kinematic_response_signs: set[int] = set()
     for charge_value in [Fraction(3), -Fraction(2)]:
-        for signed_log_units in [Fraction(5), -Fraction(7)]:
-            scalar_bracket_units = -signed_log_units
+        for signed_log_squared_units in [Fraction(5), -Fraction(7)]:
+            scalar_bracket_units = -signed_log_squared_units
             d_response_units = complex_scalar_power * charge_value * scalar_bracket_units
-            extracted_charge = d_response_units / signed_log_units
+            extracted_charge = d_response_units / signed_log_squared_units
             assert_equal(
                 "local determinant density extracts Q coefficient",
                 extracted_charge,
@@ -729,11 +758,28 @@ def check_coulomb_component_response_selects_log_sign() -> None:
                 extracted_charge / charge_value,
                 Fraction(1),
             )
-            twisted_f_density_units = charge_value * signed_log_units
+            analytic_log_units = signed_log_squared_units / 2
+            twisted_f_density_units = (
+                density_to_twisted_factor * charge_value * analytic_log_units
+            )
             assert_equal(
-                "1/(2 pi) twisted-F component normalization matches density",
+                "1/(2 pi) twisted-F bridge matches 1/(4 pi) determinant density",
                 d_response_units,
                 twisted_f_density_units,
+            )
+            wrong_twisted_measure_units = charge_value * analytic_log_units
+            assert_equal(
+                "using 1/(4 pi) again in the twisted-F projection misses factor two",
+                wrong_twisted_measure_units == d_response_units,
+                False,
+            )
+            squared_log_in_twisted_w_units = (
+                density_to_twisted_factor * charge_value * signed_log_squared_units
+            )
+            assert_equal(
+                "using log |M|^2 in the holomorphic coefficient double counts",
+                squared_log_in_twisted_w_units == d_response_units,
+                False,
             )
             kinematic_response_signs.add(sign(d_response_units))
 
@@ -743,7 +789,7 @@ def check_coulomb_component_response_selects_log_sign() -> None:
             )
             assert_equal(
                 "wrong bosonic determinant power gives opposite extracted coefficient",
-                wrong_response_units / signed_log_units == charge_value,
+                wrong_response_units / signed_log_squared_units == charge_value,
                 False,
             )
 

@@ -524,6 +524,89 @@ The expression \(\ee^\tau\) is therefore not a physical fugacity in this
 normalization.
 \end{remark}
 
+\begin{remark}[Twisted \(F\)-component normalization]
+\label{rem:glsm-twisted-f-component-normalization}
+The same compact convention fixes the superspace-to-component normalization used
+below.  We use Euclidean light-cone derivatives with
+\[
+  \{D_+,\overline D_+\}=2\ii\partial_+,\qquad
+  \{D_-,\overline D_-\}=2\ii\partial_-,
+  \qquad
+  \hbox{all other anticommutators zero}.
+\]
+The twisted chiral measure is ordered so that, for
+\(\widetilde\theta=(\theta^-,\overline\theta^+)\),
+\[
+  \int d^2\widetilde\theta\,
+  \theta^-\overline\theta^+=1 .
+\]
+In Wess--Zumino gauge, suppressing gaugino terms and derivative completions not
+needed for the constant-background projection,
+\[
+  V_{\rm WZ}
+  =
+  \theta^-\overline\theta^- A_-
+  +\theta^+\overline\theta^+ A_+
+  -\theta^-\overline\theta^+\sigma
+  -\theta^+\overline\theta^-\overline\sigma
+  +\theta^-\theta^+\overline\theta^-\overline\theta^+D+\cdots ,
+\]
+with \(F_{12}=\partial_1A_2-\partial_2A_1\) and orientation
+\(\dd x^1\wedge\dd x^2>0\).  The field strength used in this chapter is
+\begin{equation}
+  \Sigma=\overline D_+D_-V,
+  \qquad
+  \Sigma
+  =
+  \sigma+\cdots+
+  \theta^-\overline\theta^+\bigl(D+\ii F_{12}\bigr)+\cdots .
+  \label{eq:glsm-sigma-component-normalization}
+\end{equation}
+Thus the top component paired with a background variation of \(\Sigma\) is
+\(\delta D+\ii\delta F_{12}\).  The normalized twisted-\(F\) component
+projection is
+\begin{equation}
+  \delta{\mathcal I}_{\widetilde F}[\widetilde W]
+  =
+  \frac1{2\pi}
+  \int d^2x\,
+  \left[
+    \Re\left(
+      \frac{\partial\widetilde W}{\partial\Sigma}\right)\delta D
+    +\ii\,
+    \Im\left(
+      \frac{\partial\widetilde W}{\partial\Sigma}\right)
+    \delta F_{12}
+  \right],
+  \label{eq:glsm-twisted-f-component-pairing}
+\end{equation}
+with the c.c. term included in the displayed real and phase parts.  When
+\(\widetilde W_{\rm FI}=-T\Sigma\),
+\[
+  \frac{\partial\widetilde W_{\rm FI}}{\partial\Sigma}
+  =
+  -T=2\pi r-\ii\theta ,
+\]
+so the Euclidean FI component action contains
+\[
+  S_{E,{\rm FI}}^{\rm lin}
+  =
+  \int d^2x\, rD
+  -\frac{\ii\theta}{2\pi}\int F .
+\]
+Together with the \(D\)-contour and the Bogomolny completion this is the
+component origin of the compact flux weight
+\eqref{eq:glsm-compact-flux-topological-weight}.  Likewise, the local
+dualization term
+\(-Q\Sigma Y\) gives a dynamical theta angle: shifting
+\(Y\mapsto Y+2\pi\ii\) changes the \(F_{12}\) phase by an integral multiple of
+\(2\pi\ii k\) and hence leaves the path integral invariant.  The factor
+\(1/(2\pi)\) in
+\eqref{eq:glsm-twisted-f-component-pairing} is therefore fixed before the
+Coulomb determinant is evaluated; it is not a convention chosen after the
+momentum integral.
+\end{remark}
+
 The axial \(R\)-symmetry anomaly coefficient of this abelian presentation is
 \begin{equation}
   \mathcal A_A=\sum_{i=1}^m Q_i.
@@ -1104,7 +1187,8 @@ classical measure Jacobian.  In the quantum theory these become part of
 Definition~\ref{def:glsm-mirror-full-qft-datum}: the induced measure must
 reproduce the axial anomaly and must specify whether \(D\)-term integrations by
 parts have boundary contributions at \(U_i=0\) or at infinity.
-The superspace integration-by-parts identity in the present convention is
+The superspace integration-by-parts identity in the component convention of
+Remark~\ref{rem:glsm-twisted-f-component-normalization} is
 \begin{equation}
   \int d^4\theta\,V_a(Y_i+\overline Y_i)
   =
@@ -1123,6 +1207,21 @@ twisted \(F\)-term
 before any vortex effect is invoked.  This derivation fixes the charge
 matrix in the dual variables: the integer \(Q_i{}^a\) that couples
 \(\Phi_i\) to \(V_a\) is the same integer multiplying \(\Sigma_aY_i\).
+In components, if \(Y_i=y_i+\cdots+\theta^-\overline\theta^+G_i+\cdots\),
+the bosonic top component of \(-Q_i{}^a\Sigma_aY_i\) is
+\[
+  -Q_i{}^a
+  \left[
+    \sigma_aG_i
+    +y_i\bigl(D_a+\ii F_{a,12}\bigr)
+  \right],
+\]
+with the common \(1/(2\pi)\) component pairing of
+\eqref{eq:glsm-twisted-f-component-pairing}.  Thus
+\(\operatorname{Im}y_i\) is the dynamical theta angle for the same compact
+gauge flux that appeared in
+Remark~\ref{rem:glsm-compact-fi-theta-normalization}; there is no additional
+flavor-labelled flux lattice hiding inside the superspace notation.
 The FI term in the same superspace convention is
 \[
   -\int d^2\widetilde\theta\,T_a\Sigma_a+{\rm c.c.}
@@ -3526,28 +3625,34 @@ The equality follows by differentiating both sides with respect to
   =
   -\frac1{|M|^2}.
 \]
-The bridge from the local determinant density to the twisted superpotential is
-the component normalization
+Now apply the component pairing
+\eqref{eq:glsm-twisted-f-component-pairing}.  A one-loop determinant is a
+contribution to \(\log Z\), so its \(D\)-linear Wilsonian coefficient is read
+from the same normalized top-component projection with the determinant sign
+already contained in \(\log Z_B^{\rm ren}\).  If
 \[
-  \delta\log Z_{\widetilde W}
+  \Re\left(\frac{\partial\widetilde W_{\rm 1\text{-}loop}}
+    {\partial\Sigma}\right)
   =
-  \frac1{2\pi}\int d^2x\,
-  \Re\left[
-    \frac{\partial\widetilde W}{\partial\Sigma}\,\delta D
-  \right]
-  +\hbox{the corresponding }F_{12}\hbox{ phase term}.
+  Q\log\frac{|M|}{\mu},
 \]
-Thus
-\[
+then the \(D\)-density supplied by
+\eqref{eq:glsm-twisted-f-component-pairing} is
+\begin{equation}
   \frac1{2\pi}Q\log\frac{|M|}{\mu}
   =
-  \frac{Q}{4\pi}\log\frac{|M|^2}{\mu^2}
-\]
-is exactly the real part of
-\(Q\log(M/\mu)\) in
-\(\partial\widetilde W/\partial\Sigma\).  This extraction divides by the
-signed analytic logarithm; a one-point sign test with a chosen ordering of
-\(|M|\) and \(\mu\) would not determine the coefficient.
+  \frac{Q}{4\pi}\log\frac{|M|^2}{\mu^2},
+  \label{eq:glsm-determinant-density-to-twisted-f}
+\end{equation}
+exactly the local density in
+\eqref{eq:abelian-glsm-determinant-local-density}.  The factor \(1/(2\pi)\)
+is therefore the Berezin/component normalization fixed by the FI and
+\(-Q\Sigma Y\) terms, while the factor \(1/(4\pi)\) is the two-dimensional
+momentum density.  Using \(1/(4\pi)\) again in the twisted-\(F\) projection
+would miss a factor of two, and using \(\log|M|^2\) as the holomorphic
+coefficient would double count the complex logarithm.  This extraction divides
+by the signed analytic logarithm; a one-point sign test with a chosen ordering
+of \(|M|\) and \(\mu\) would not determine the coefficient.
 
 The \(F_{12}\) partner is a phase, not an independent real magnitude
 calculation.  In the nonzero spectrum of \(\mathcal D_F^\dagger\mathcal D_F\),

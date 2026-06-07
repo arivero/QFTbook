@@ -2973,9 +2973,12 @@ Current checks:
   response check which constructs two-dimensional gamma matrices, rejects the
   anti-Hermitian uncorrected Dirac-square curvature term, extracts the local
   determinant-density coefficient after division by the signed analytic
-  logarithm across charge and mass-order reversals, checks paired fermion spin
-  traces, and computes the mass-phase Jacobian from finite flux Dirac-complex
-  ranks and the same heat-kernel trace, the Coulomb branch-monodromy check
+  logarithm across charge and mass-order reversals, verifies the
+  \(1/(2\pi)\) twisted-\(F\) component bridge against the
+  \(1/(4\pi)\) determinant density while rejecting doubled-log and repeated-density
+  normalizations, checks the \(-Q\Sigma Y\) compact-flux period, checks paired
+  fermion spin traces, and computes the mass-phase Jacobian from finite flux
+  Dirac-complex ranks and the same heat-kernel trace, the Coulomb branch-monodromy check
   which transports logarithm-sheet shifts into integral \(T\)-periods while
   rejecting compact-periodicity-as-sign-oracle and absolute-value-only
   logarithm shortcuts, the compact FI-theta check that

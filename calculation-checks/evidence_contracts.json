@@ -300,6 +300,7 @@
       "contract_tier": "extended",
       "convention_tags": [
         "abelian GLSM charge matrix and FI-theta coordinate",
+        "twisted-F component and Berezin normalization",
         "Hori-Vafa periodic twisted-chiral variables",
         "vortex determinant-line and zero-mode orientation",
         "projective-space A-twisted observable coordinate"

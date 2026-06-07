@@ -794,3 +794,14 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   a common gauge-flux sector with `i` only a disorder/source projection.  The
   companion rejects nonperiodic `exp(tau)` fugacities and flavor-labelled
   topological sectors under equal-charge flavor rotations.
+- The 2026-06-07 issue #847 twisted-`F` component bridge pass closes the
+  remaining local-density normalization gap between the Coulomb determinant
+  and the normalized twisted superpotential.  The chapter now records the
+  `(2,2)` derivative algebra, ordered twisted Berezin measure, Wess--Zumino
+  vector representative, `Sigma=bar D_+ D_- V` top component
+  `D+iF_12`, component expansions of the FI and `-Q Sigma Y` terms, and the
+  exact relation
+  `(1/(2 pi)) Q log(|M|/mu) = (Q/(4 pi)) log(|M|^2/mu^2)`.  The companion
+  rejects repeated `1/(4 pi)` density normalization, doubled-log
+  holomorphic coefficients, and half-density `Sigma Y` compact-period
+  shortcuts.
