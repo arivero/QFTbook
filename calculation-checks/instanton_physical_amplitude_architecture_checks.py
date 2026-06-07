@@ -131,6 +131,10 @@ Target claims:
 - `prop:instanton-axial-ward-source-transport`: the Q=1 phase
   `exp(i theta)` and the two-flavor zero-mode source determinant must be
   transported together under the anomalous singlet axial Ward vector.
+- `ca:instanton-mass-source-rg-channel-transport`: the mass/source determinant
+  and finite light-fermion nonzero-mode determinant factor cancel only at
+  source-functional level; differentiated source coefficients require matching
+  renormalized source/operator projection flow.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell residuals
   and source-determinant perturbations obey the displayed absolute bounds.
 - `prop:su3-nf2-hard-source-power-slow-tail` and
@@ -226,6 +230,8 @@ Independent construction:
   neutral-pair lateral-prescription cancellation coordinates,
   chirality-source selection rules for the instanton zero-mode determinant,
   axial Ward transport of the theta phase with the complex source determinant,
+  mass/source RG weights for vacuum, mass-assisted, and hard four-source
+  coefficients paired with source/operator projection flows,
   an amputated 't Hooft four-point assembly ledger,
   crossed chiral `RR -> LL` channel extraction from the all-outgoing
   source kernel with formal theta-phase bookkeeping,
@@ -364,6 +370,9 @@ Negative controls:
   wrong-chirality determinants, chirality-balanced four-source selections, or
   mass-assisted source coordinates treated as the Q=1 hard 't Hooft vertex,
   source-only or theta-only axial rotations treated as Ward-invariant,
+  RG-invariant-density shortcuts that omit the mass/source determinant flow,
+  differentiated instanton coefficients used without the compensating source
+  or operator projection flow,
   an amputated four-point coefficient reduced to density-only data, a
   symmetric Haar source treated as nonzero, an omitted nonzero-mode source
   quotient, unamputated source overlaps read as a physical coefficient, or an
@@ -3989,6 +3998,101 @@ def check_axial_ward_source_transport() -> None:
     )
 
 
+def check_mass_source_rg_channel_transport() -> None:
+    gamma_m = Fraction(5, 13)
+    n_flavors = 2
+    finite_fermion_factor_weight = n_flavors * gamma_m
+
+    def differentiated_coefficient_weight(source_derivatives: int) -> Fraction:
+        mass_degree = n_flavors - source_derivatives
+        mass_source_weight = -mass_degree * gamma_m
+        return finite_fermion_factor_weight + mass_source_weight
+
+    for source_derivatives in range(n_flavors + 1):
+        coefficient_weight = differentiated_coefficient_weight(source_derivatives)
+        projection_weight = -source_derivatives * gamma_m
+        assert_equal(
+            f"{source_derivatives}-source instanton coefficient RG weight",
+            coefficient_weight,
+            source_derivatives * gamma_m,
+        )
+        assert_equal(
+            f"{source_derivatives}-source physical projection cancels RG weight",
+            coefficient_weight + projection_weight,
+            Fraction(0),
+        )
+
+    vacuum_mass_source_weight = -n_flavors * gamma_m
+    assert_equal(
+        "vacuum source functional RG cancellation",
+        finite_fermion_factor_weight + vacuum_mass_source_weight,
+        Fraction(0),
+    )
+    assert_not_equal(
+        "mass/source determinant alone is not the RG-covariant instanton vertex",
+        vacuum_mass_source_weight,
+        Fraction(0),
+    )
+
+    hard_source_weight = differentiated_coefficient_weight(2)
+    assert_not_equal(
+        "hard four-source coefficient is not RG invariant before projection",
+        hard_source_weight,
+        Fraction(0),
+    )
+    wrong_projection_sign = 2 * gamma_m
+    assert_not_equal(
+        "wrong-sign source projection doubles anomalous-dimension flow",
+        hard_source_weight + wrong_projection_sign,
+        Fraction(0),
+    )
+
+    finite_density_prefactor = Fraction(7, 11)
+    vacuum_coefficient = Fraction(3, 5)
+    hard_coefficient = Fraction(2, 7)
+    vacuum_reference = finite_density_prefactor * vacuum_coefficient
+    hard_channel = finite_density_prefactor * hard_coefficient
+    calibrated_from_vacuum_without_projection = (
+        vacuum_reference * hard_coefficient / vacuum_coefficient
+    )
+    hard_projection = Fraction(13, 17)
+    physical_hard_channel = hard_channel * hard_projection
+    assert_equal(
+        "vacuum calibration recovers only the unprojected hard coefficient",
+        calibrated_from_vacuum_without_projection,
+        hard_channel,
+    )
+    assert_not_equal(
+        "vacuum calibration is not the projected hard amplitude",
+        calibrated_from_vacuum_without_projection,
+        physical_hard_channel,
+    )
+
+    coefficient_residual = Fraction(1, 100)
+    projection_residual = Fraction(1, 90)
+    residual_flow = (
+        coefficient_residual * hard_projection
+        + hard_channel * projection_residual
+    )
+    residual_bound = (
+        abs(coefficient_residual) * abs(hard_projection)
+        + abs(hard_channel) * abs(projection_residual)
+    )
+    assert_equal(
+        "mass/source RG channel residual bound",
+        abs(residual_flow) <= residual_bound,
+        True,
+    )
+    underbudget_without_projection = (
+        residual_bound - abs(hard_channel) * abs(projection_residual)
+    )
+    assert_equal(
+        "omitting projection-flow residual underbudgets mass/source RG transport",
+        abs(residual_flow) <= underbudget_without_projection,
+        False,
+    )
+
+
 def check_moduli_equivalent_channel_separation() -> None:
     weights = [Fraction(1, 3), Fraction(2, 5), Fraction(7, 11)]
     determinants = [Fraction(13, 17), Fraction(19, 23), Fraction(29, 31)]
@@ -5813,6 +5917,7 @@ def main() -> None:
     check_two_flavor_mass_source_determinant_coordinate()
     check_chirality_source_selection_gate()
     check_axial_ward_source_transport()
+    check_mass_source_rg_channel_transport()
     check_moduli_equivalent_channel_separation()
     check_projection_not_recoverable_from_one_euclidean_sum()
     check_finite_cell_residual_bound()

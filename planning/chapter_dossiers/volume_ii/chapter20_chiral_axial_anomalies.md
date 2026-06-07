@@ -405,6 +405,7 @@
 | \(\mathcal D_A\) | finite singlet-axial Ward vector \(4\partial_\theta+2p\partial_s-2s\partial_p\) acting on the two-flavor local instanton source coordinates |
 | \(F_\Delta,\mathsf S_A[F]\) | average diagonal value of a tested susceptibility kernel and the propagated/spectral color-singlet two-point contribution kept separate from the local instanton contact term |
 | \(J_{ff'},J^0_{ff'},\mathcal V_{\rm inst}^0\) | renormalized chiral scalar source coordinate, its zero-mode projection, and the zero-mode source functional used to state the mass/source RG transport of the instanton vertex |
+| \(K_r,\mathfrak P_r,R_r^{\rm RG},R_{\mathfrak P}^{\rm RG}\) | differentiated instanton source coefficient, its paired renormalized source/operator projection, and residuals in the mass/source RG channel transport gate |
 | \(\dd\mathcal A_{1,\mathcal X}^{E},\mathcal P_{\mathcal X}^{E},\beta_{\mathcal X}\) | retained Euclidean one-instanton source density, Euclidean source/projection factor, and source-channel small-size degree used to assemble the universal density into a source coefficient |
 | \(K_{\mathcal X}^{\rm win},J_{\mathcal X},M_{\mathcal X},\kappa_{\mathcal X}\) | retained one-instanton channel kernel, signed window integral, absolute window mass, and noncancellation margin used to test RG/scheme residuals for a physical channel |
 | \(J_{1,\Lambda}^{\mathcal O},\mathcal D_{\rm cl},\mathcal J_{\rm coll},\mathcal W_{\rm nz},\mathcal Z_{\rm zm}^{\mathcal O},\mathcal M_{\rm src}^{\mathcal O},\mathcal B_\rho\) | canonical one-instanton amplitude assembly: retained Euclidean source coefficient and its classical, collective, nonzero-mode, zero-mode, source-matching, and size-window factors |
@@ -1584,6 +1585,15 @@
   check script verifies determinant homogeneity, anomalous-dimension
   cancellation, source-derivative covariance weights, and the invariance of
   \(\theta+\arg\det M\) under anomalous chiral rotations.
+- 2026-06-07 issue #597 mass/source channel RG pass: added
+  `ca:instanton-mass-source-rg-channel-transport` to the dedicated instanton
+  amplitude chapter.  It separates source-functional RG covariance from
+  differentiated channel coefficients: the finite light-fermion determinant
+  cancels the full zero-mode determinant flow before source differentiation,
+  but an \(r\)-source coefficient carries \(r\gamma_m\) until paired with the
+  renormalized source/operator projection.  The companion rejects
+  RG-invariant-density shortcuts and vacuum-reference calibrations used as
+  hard projected amplitudes.
 - 2026-06-03 issue #597/#630 amplitude-architecture pass: inserted
   `prop:instanton-amplitude-assembly-error-budget`, which decomposes the
   finite one-instanton source amplitude into the leading determinant/zero-mode

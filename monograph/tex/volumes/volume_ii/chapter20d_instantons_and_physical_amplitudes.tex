@@ -803,6 +803,87 @@ observable coordinate.  The Ward identity becomes a physical statement only
 after the projection map has also been named and transported in the same
 source convention.
 
+\begin{controlledapproximation}[Mass/source RG transport in an instanton channel]
+\label{ca:instanton-mass-source-rg-channel-transport}
+In the same finite source frame, write the zero-mode source coordinate as
+\[
+  C_{\rm zm}(\mu)=M(\mu)+J(\mu),
+\]
+where the scalar mass matrix and the chiral source matrix have the same
+renormalization convention.  Let the finite light-fermion nonzero-mode
+determinant factor obey
+\begin{equation}
+  \mu\frac{\dd}{\dd\mu}C_{\rm zm}=-\gamma_m C_{\rm zm},
+  \qquad
+  \mu\frac{\dd}{\dd\mu}\log \mathcal R_{\rm f}^{\mathcal S}
+  =N_f\gamma_m .
+  \label{eq:instanton-mass-source-rg-zero-mode-flow}
+\end{equation}
+Then the undifferentiated zero-mode source functional
+\begin{equation}
+  \mathcal V_{\rm inst}^{0}(\mu,J)
+  =
+  \mathcal R_{\rm f}^{\mathcal S}(\mu)\det C_{\rm zm}(\mu)
+  \label{eq:instanton-source-functional-rg-invariance}
+\end{equation}
+is RG covariant with zero anomalous dimension.  This cancellation is a
+statement about the fluctuation determinant and the zero-mode source
+determinant in a common regulator.  The BPST collective-coordinate measure
+alone leaves this cancellation without the required fluctuation data.
+
+The cancellation in
+\eqref{eq:instanton-source-functional-rg-invariance} must be applied before
+source differentiation.  Choose \(r\) renormalized source coordinates
+\(B_a(\mu)\) and define the differentiated coefficient
+\begin{equation}
+  K_r(\mu)
+  =
+  \mathcal R_{\rm f}^{\mathcal S}(\mu)
+  \left.
+  \frac{\partial^r}
+    {\partial\lambda_1\cdots\partial\lambda_r}
+  \det\!\left(M(\mu)+\sum_{a=1}^r\lambda_a B_a(\mu)\right)
+  \right|_{\lambda=0}.
+  \label{eq:instanton-mass-source-rg-differentiated-coefficient}
+\end{equation}
+If the selected minor has residual mass degree \(N_f-r\), then, up to the
+finite source-basis connection and explicit matching residual \(R_r^{\rm RG}\),
+\begin{equation}
+  \mu\frac{\dd}{\dd\mu}K_r
+  =
+  r\gamma_m K_r+R_r^{\rm RG}.
+  \label{eq:instanton-mass-source-rg-channel-flow}
+\end{equation}
+A differentiated instanton coefficient is therefore not a physical channel
+merely because the parent density in
+\eqref{eq:instanton-source-functional-rg-invariance} was invariant.  It must
+be paired with the renormalized source, operator, or external-state projection
+covector \(\mathfrak P_r(\mu)\) in the same channel, with
+\[
+  \mu\frac{\dd}{\dd\mu}\mathfrak P_r
+  =
+  -r\gamma_m\mathfrak P_r+R_{\mathfrak P}^{\rm RG},
+\]
+before the product \(\mathfrak P_r K_r\) is a candidate RG-stable amplitude
+coordinate.
+
+For two flavors this bookkeeping is visible in
+\[
+  \det(M+B)
+  =
+  m_um_d+m_uB_{dd}+m_dB_{uu}+B_{uu}B_{dd}-B_{ud}B_{du}.
+\]
+The vacuum coordinate \(r=0\) is made invariant by
+\(\mathcal R_{\rm f}^{\mathcal S}\).  The one-source term \(m_dB_{uu}\)
+carries \(+\gamma_m\) after the finite light-fermion determinant has been
+included.  The hard four-source coefficient
+\(B_{uu}B_{dd}-B_{ud}B_{du}\) carries \(+2\gamma_m\) until the
+renormalized two-source or four-external projection is transported with the
+opposite flow.  Thus the density power and the axial selection rule are still
+not the amplitude: the mass/source RG frame and the physical projection frame
+have to be paired.
+\end{controlledapproximation}
+
 \section{A Hard Four-Fermion Benchmark}
 \label{sec:instanton-hard-four-fermion-benchmark}
 

@@ -897,6 +897,10 @@ Current checks:
   quotient bridge which integrates the pointwise Gaussian source mean and cubic
   source-cumulant correction through the same signed hard measure as the
   zero-mode slots,
+  the mass/source RG channel-transport gate which pairs the finite
+  light-fermion determinant factor and differentiated zero-mode source
+  coefficient with the compensating renormalized source/operator projection
+  flow,
   the two-term hard-window tail subtraction with leading \(R^{-1/3}\) and
   subleading \(R^{-7/3}\) endpoint pieces, the screened hard-size
   majorant-window check which uses the \(35/3\) logarithmic shell power,
