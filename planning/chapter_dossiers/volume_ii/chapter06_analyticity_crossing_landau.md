@@ -200,6 +200,7 @@
 | \(\mathbf I^{(2)}_\Lambda\), \(\mathcal F^{(2)}_\Lambda\) | two-loop infrared subtraction operator and hard remainder defined recursively from \(\mathcal A^{(2)}-\mathbf I^{(1)}\mathcal A^{(1)}-\mathbf I^{(2)}\mathcal A^{(0)}\) |
 | \(x,\epsilon_{\rm ir},W(x,\zeta),W_0(\zeta)\) | unresolved one-emission coordinate, local analytic infrared regulator, measurement in the unresolved chart, and its reduced-event infrared-safe limit |
 | \(W_A,W_B,A(x,\zeta),B(x,\zeta)\) | paired infrared-safe measurements with the same reduced-event limit but different finite unresolved measurement dependence |
+| \(\alpha,\beta,\tau_0,L_0\) | soft-collinear coordinates for the one-emission event-shape cumulant, with \(\tau=\alpha\beta\) and \(L_0=\log(1/\tau_0)\) |
 | \(\mathcal R_\Lambda^{\rm sub}[W]\), \(\mathcal C_\Lambda^{\rm fact}[W]\) | real-emission/subtraction and factorization/matching pieces needed to assemble an infrared-safe observable for measurement \(W\) |
 | \(\mathcal R_\Lambda^{{\rm RV,sub}}[W]\), \(\mathcal R_\Lambda^{{\rm RR,sub}}[W]\) | NNLO real--virtual and double-real subtraction pieces paired with the same infrared subtraction convention |
 | \(B_{\rm state},B_{\rm coeff},B_{\rm master},B_{\rm sheet},B_{\rm sub}\) | state-sum/orientation, inverse-pairing, master-jump, sheet, and subtraction residuals in the physical channel-discontinuity closure |
@@ -1149,6 +1150,15 @@
   for the two measurements, verifies pole cancellation for both, computes the
   finite paired difference, and rejects the locally inclusive and
   finite-remainder-only shortcuts.
+- 2026-06-07 issue #769 event-shape cumulant pass: added
+  `ca:one-loop-event-shape-cumulant-cell` after the paired-measurement block.
+  The pass computes the soft-collinear phase-space integral for
+  \(\tau=\alpha\beta\) and \(\tau<\tau_0\), deriving the local
+  \(-\frac12\log^2(1/\tau_0)\) Sudakov term after pole cancellation.  The
+  companion check uses exact symbolic-log coefficients and rejects frozen
+  locally inclusive measurements, factorized endpoint vetoes that leave a
+  logarithmic pole, and one-coordinate endpoint shortcuts that miss the double
+  logarithm.
 - 2026-06-06 issue #769 production master-lane pass: added
   `ca:production-master-lane-observable-gate` after the two-letter transport
   audit.  The pass reorganizes the nearby loop-amplitude cells into one

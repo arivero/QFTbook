@@ -4994,6 +4994,80 @@ virtual amplitude by the reduced-event measurement is therefore a locally
 inclusive approximation, not an observable-level derivation.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[One-emission event-shape cumulant]
+\label{ca:one-loop-event-shape-cumulant-cell}
+For event shapes the measurement is not just a smooth weight multiplying a
+one-dimensional endpoint.  In a single soft-collinear chart let the leading-power
+contribution to a dimensionless additive event shape be
+\[
+  \tau(\alpha,\beta)=\alpha\beta,
+  \qquad
+  0<\alpha,\beta<1 ,
+\]
+where \(\alpha\) and \(\beta\) may be taken as light-cone energy and angle
+variables in the chart.  The singular measure has the local form
+\[
+  \dd\alpha\,\alpha^{-1+\epsilon_{\rm ir}}
+  \dd\beta\,\beta^{-1+\epsilon_{\rm ir}},
+\]
+and the cumulant \(\tau<\tau_0\), \(0<\tau_0<1\), inserts the measurement
+\[
+  W_{\tau_0}(\alpha,\beta,\zeta)
+  =
+  W_0(\zeta)\,\Theta(\tau_0-\alpha\beta).
+\]
+The reduced event still has the same Born weight \(W_0(\zeta)\), so the double
+infrared pole is the same as for the locally inclusive measurement.  The finite
+term, however, is a Sudakov logarithm.  With
+\(L_0=\log(1/\tau_0)\),
+\begin{equation}
+\begin{aligned}
+  I_{\tau_0}(\epsilon_{\rm ir})
+  &:=
+  \int_0^1\dd\alpha\,\alpha^{-1+\epsilon_{\rm ir}}
+  \int_0^1\dd\beta\,\beta^{-1+\epsilon_{\rm ir}}\,
+    \Theta(\tau_0-\alpha\beta) \\
+  &=
+  \frac{\tau_0^{\epsilon_{\rm ir}}}{\epsilon_{\rm ir}^2}
+  +
+  \frac{\tau_0^{\epsilon_{\rm ir}}}{\epsilon_{\rm ir}}
+    \log\frac1{\tau_0}
+  =
+  \frac1{\epsilon_{\rm ir}^2}
+  -
+  \frac12 L_0^2
+  +O(\epsilon_{\rm ir}) .
+\end{aligned}
+  \label{eq:one-emission-event-shape-cumulant-integral}
+\end{equation}
+Thus the local singular part of the NLO cumulant is
+\begin{equation}
+  \mathcal O_{\rm sc}^{(1)}(\tau<\tau_0)
+  =
+  \int\dd\zeta\,S_0(\zeta)W_0(\zeta)
+  \left[
+    V_{\rm fin}(\zeta)-\frac12 L_0^2
+  \right]
+  +
+  \mathcal R_{{\rm sc},\rm fin}^{\rm nonsing}(\tau<\tau_0).
+  \label{eq:one-emission-event-shape-cumulant-cell}
+\end{equation}
+The product constraint in
+\eqref{eq:one-emission-event-shape-cumulant-integral} is part of the observable.
+Replacing it by the independent endpoint veto
+\(\Theta(\sqrt{\tau_0}-\alpha)\Theta(\sqrt{\tau_0}-\beta)\) gives
+\(\tau_0^{\epsilon_{\rm ir}}/\epsilon_{\rm ir}^2
+=\epsilon_{\rm ir}^{-2}-L_0\epsilon_{\rm ir}^{-1}
++L_0^2/2+\cdots\), so a single-boundary logarithmic pole remains in this chart.
+Freezing the measurement to \(W_0\) cancels the poles but removes the
+\(-L_0^2/2\) term.  A one-coordinate endpoint model can at most produce a single
+logarithm; it does not reproduce the soft-collinear Sudakov double logarithm.
+The complete event-shape distribution still requires the hard, jet, soft,
+overlap, and nonsingular pieces of the chosen observable.  This local cell fixes
+the part that generalized unitarity alone cannot supply: the finite logarithm
+created by the real-emission measurement map.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Two-loop infrared-pole consistency test]
 \label{ca:two-loop-ir-pole-consistency-gate}
 At two loops the virtual reconstruction has a recursive infrared consistency

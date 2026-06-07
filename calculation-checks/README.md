@@ -3530,16 +3530,19 @@ Current checks:
   \(1+\alpha_s/\pi\) coefficient while rejecting cancellation-only
   \(\pm\pi^2/6\) splits, omitted Born-normalization factors, and undeclared
   \(O(\epsilon^2)\) normalizations, the color-space hard-function
-  handoff check with transported color metric, color-correlated real/soft
-  operator, finite scheme compensation, and scalar-shortcut negative controls,
-  the unresolved one-emission
-  measurement-cell check with plus-distribution cancellation and negative
-  controls for wrong subtraction measurements, frozen locally inclusive
-  measurements, finite-remainder-only reweighting after paired-measurement
-  pole cancellation, and non-infrared-safe logarithmic weights, and the two-loop
-  infrared-pole consistency gate relating \(A^{(2)}\), \(I^{(1)}A^{(1)}\),
-  \(I^{(2)}A^{(0)}\), the \(|F^{(1)}|^2\) hard contribution, and the NNLO
-  observable residual budget.
+	  handoff check with transported color metric, color-correlated real/soft
+	  operator, finite scheme compensation, and scalar-shortcut negative controls,
+	  the unresolved one-emission
+	  measurement-cell check with plus-distribution cancellation and negative
+	  controls for wrong subtraction measurements, frozen locally inclusive
+	  measurements, finite-remainder-only reweighting after paired-measurement
+	  pole cancellation, non-infrared-safe logarithmic weights, and the
+	  one-emission event-shape cumulant check deriving the
+	  \(-\frac12\log^2(1/\tau_0)\) Sudakov term while rejecting frozen,
+	  factorized-veto, and one-coordinate endpoint shortcuts, and the two-loop
+	  infrared-pole consistency gate relating \(A^{(2)}\), \(I^{(1)}A^{(1)}\),
+	  \(I^{(2)}A^{(0)}\), the \(|F^{(1)}|^2\) hard contribution, and the NNLO
+	  observable residual budget.
 - `tomita_standard_form_checks.py`: finite matrix checks for the
   Tomita--Takesaki and Connes-standard-form conventions, including the
   Tomita polar data on matrix units, commutant and modular-automorphism

@@ -45,7 +45,8 @@ the symbolic `pi^2` constants cancel to the physical `1 + alpha_s/pi`
 coefficient for `SU(3)`,
 color-metric hard-function handoff, real radiation, scheme transport,
 and the unresolved measurement cell have been assembled, including finite
-measurement dependence after pole cancellation, and the two-loop
+measurement dependence after pole cancellation and the one-emission
+event-shape cumulant Sudakov logarithm, and the two-loop
 infrared-pole consistency gate relating
 `A^(2)`, `I^(1) A^(1)`, `I^(2) A^(0)`, and the NNLO finite
 observable.
@@ -150,7 +151,8 @@ cancellation, exact symbolic-pi bookkeeping for the inclusive vector-current
 R-ratio closure from a normalized form-factor master and the integrated
 three-parton phase-space kernel, color-space metric and soft-operator
 transport under basis and finite-subtraction changes, plus-distribution measurement cells, paired-measurement finite
-differences after pole cancellation, finite scheme transport, and two-loop
+differences after pole cancellation, a two-coordinate soft-collinear
+event-shape cumulant log ledger, finite scheme transport, and two-loop
 recursive pole subtraction.
 Primary derivation route: the manuscript route starts from Cutkosky
 discontinuities, generalized cuts and contours, numerator reduction, IBP and
@@ -245,7 +247,9 @@ operators, scalar Born-norm replacements for matrix color insertions,
 uncompensated finite color-space subtraction shifts, wrong unresolved
 subtraction measurements, frozen locally inclusive measurement shortcuts,
 finite-remainder-only observable reweighting, non-infrared-safe logarithmic
-weights, two-loop remainder extraction that drops `I^(1) A^(1)`, and NNLO
+weights, factorized-veto single-boundary poles, one-coordinate event-shape
+shortcuts that miss Sudakov double logarithms, two-loop remainder extraction
+that drops `I^(1) A^(1)`, and NNLO
 observable assembly that omits either the trace-basis all-plus rational hard
 square or the generic `|F^(1)|^2` hard term.
 Scope boundary: a pass checks the finite reconstruction and reduction
@@ -382,6 +386,8 @@ BracketPowers = dict[tuple[int, int], int]
 Laurent = tuple[Fraction, Fraction]
 Laurent3 = tuple[Fraction, Fraction, Fraction]
 LaurentPi2 = tuple[Fraction, Fraction, Fraction, Fraction]
+# Coefficients of eps^-2, eps^-1, L/eps, finite, finite L, finite L^2.
+SudakovLogLaurent = tuple[Fraction, Fraction, Fraction, Fraction, Fraction, Fraction]
 Matrix = list[list[Fraction]]
 Vector = list[Fraction]
 LogPolynomial = dict[tuple[int, int], Fraction]
@@ -460,6 +466,20 @@ def laurent_pi2_sub(left: LaurentPi2, right: LaurentPi2) -> LaurentPi2:
 
 def laurent_pi2_scale(scale: Fraction, value: LaurentPi2) -> LaurentPi2:
     return (scale * value[0], scale * value[1], scale * value[2], scale * value[3])
+
+
+def sudakov_log_add(
+    left: SudakovLogLaurent,
+    right: SudakovLogLaurent,
+) -> SudakovLogLaurent:
+    return (
+        left[0] + right[0],
+        left[1] + right[1],
+        left[2] + right[2],
+        left[3] + right[3],
+        left[4] + right[4],
+        left[5] + right[5],
+    )
 
 
 def laurent_pi2_apply_eps_factor(
@@ -4671,6 +4691,111 @@ def check_measurement_dependence_after_pole_cancellation() -> None:
     )
 
 
+def check_one_emission_event_shape_cumulant_cell() -> None:
+    born_weight = Fraction(7, 5)
+    reduced_measurement = Fraction(3, 4)
+    virtual_finite = Fraction(11, 17)
+    nonsingular_real = Fraction(19, 23)
+    singular_weight = born_weight * reduced_measurement
+
+    virtual_cell: SudakovLogLaurent = (
+        -singular_weight,
+        Fraction(0),
+        Fraction(0),
+        singular_weight * virtual_finite,
+        Fraction(0),
+        Fraction(0),
+    )
+
+    # For tau = alpha beta and L = log(1/tau_0),
+    # int alpha^{-1+eps} beta^{-1+eps} Theta(tau_0-alpha beta)
+    #   = eps^{-2} - L^2/2 + O(eps).
+    real_cumulant_cell: SudakovLogLaurent = (
+        singular_weight,
+        Fraction(0),
+        Fraction(0),
+        nonsingular_real,
+        Fraction(0),
+        -Fraction(1, 2) * singular_weight,
+    )
+    assembled_cumulant = sudakov_log_add(virtual_cell, real_cumulant_cell)
+    expected_cumulant: SudakovLogLaurent = (
+        Fraction(0),
+        Fraction(0),
+        Fraction(0),
+        singular_weight * virtual_finite + nonsingular_real,
+        Fraction(0),
+        -Fraction(21, 40),
+    )
+    assert_equal(
+        "one-emission event-shape cumulant pole cancellation",
+        assembled_cumulant,
+        expected_cumulant,
+    )
+    assert_equal(
+        "one-emission event-shape Sudakov double-log coefficient",
+        assembled_cumulant[5],
+        -Fraction(21, 40),
+    )
+
+    frozen_real_cell: SudakovLogLaurent = (
+        singular_weight,
+        Fraction(0),
+        Fraction(0),
+        nonsingular_real,
+        Fraction(0),
+        Fraction(0),
+    )
+    frozen_cumulant = sudakov_log_add(virtual_cell, frozen_real_cell)
+    assert_equal(
+        "locally inclusive event-shape shortcut still cancels poles",
+        frozen_cumulant[:3],
+        (Fraction(0), Fraction(0), Fraction(0)),
+    )
+    assert_equal(
+        "locally inclusive event-shape shortcut erases Sudakov logarithm",
+        assembled_cumulant[5] - frozen_cumulant[5],
+        -Fraction(21, 40),
+    )
+
+    factorized_veto_real_cell: SudakovLogLaurent = (
+        singular_weight,
+        Fraction(0),
+        -singular_weight,
+        nonsingular_real,
+        Fraction(0),
+        Fraction(1, 2) * singular_weight,
+    )
+    factorized_veto = sudakov_log_add(virtual_cell, factorized_veto_real_cell)
+    assert_true(
+        "factorized endpoint veto leaves a single-boundary logarithmic pole",
+        factorized_veto[2] != 0,
+    )
+    assert_equal(
+        "factorized endpoint veto logarithmic pole coefficient",
+        factorized_veto[2],
+        -Fraction(21, 20),
+    )
+
+    one_coordinate_endpoint_shortcut: SudakovLogLaurent = (
+        Fraction(0),
+        Fraction(0),
+        Fraction(0),
+        expected_cumulant[3],
+        -singular_weight,
+        Fraction(0),
+    )
+    assert_true(
+        "one-coordinate endpoint shortcut misses the Sudakov double logarithm",
+        one_coordinate_endpoint_shortcut != expected_cumulant,
+    )
+    assert_equal(
+        "one-coordinate endpoint shortcut has no L-squared coefficient",
+        one_coordinate_endpoint_shortcut[5],
+        Fraction(0),
+    )
+
+
 def check_two_loop_ir_pole_consistency_gate() -> None:
     tree = Fraction(3, 5)
     ir_one_loop = (Fraction(-7, 3), Fraction(5, 11))
@@ -4843,6 +4968,7 @@ def main() -> None:
     check_color_space_hard_function_handoff()
     check_unresolved_measurement_cell_assembly()
     check_measurement_dependence_after_pole_cancellation()
+    check_one_emission_event_shape_cumulant_cell()
     check_two_loop_ir_pole_consistency_gate()
     print("All generalized unitarity and loop-reduction checks passed.")
 
