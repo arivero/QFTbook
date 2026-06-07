@@ -883,7 +883,9 @@ Current checks:
   mass-saturated vacuum activity and the four-source coefficient,
   the chirality-source selection rule for the \(Q=1\) hard instanton vertex,
   including wrong-chirality, chirality-balanced, sector-mixed, and
-  mass-assisted negative controls,
+  mass-assisted negative controls, the anomalous axial Ward transport which
+  cancels the source-determinant variation against the \(Q=1\) theta phase
+  and rejects source-only or theta-only rotations,
   moduli-equivalent channels with different or zero amplitudes because of
   zero-mode source rank, finite-cell spectral/projection ambiguity after a
   single Euclidean source sum, the SU(3), \(N_f=2\) hard four-source

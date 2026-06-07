@@ -630,6 +630,73 @@ receives the determinant, color-orientation, normal-fluctuation, endpoint, and
 physical-projection factors.  Reversing that order is a different physical
 calculation.
 
+\begin{proposition}[Axial Ward transport of the source determinant]
+\label{prop:instanton-axial-ward-source-transport}
+For \(N_f=2\), keep the \(Q=1\) source convention of
+Proposition~\ref{prop:instanton-chirality-source-selection-gate}, and write the
+zero-mode mass/source matrix as
+\[
+  C_{\rm zm}=S+\ii P ,
+\]
+where \(S\) and \(P\) are the scalar and pseudoscalar source matrices in the
+same finite-regulator source frame as
+Proposition~\ref{prop:two-flavor-instanton-source-ward-ledger}.  The singlet
+axial Ward vector acts on these source coordinates by
+\[
+  \delta_\alpha S=2\alpha P,\qquad
+  \delta_\alpha P=-2\alpha S,\qquad
+  \delta_\alpha\theta=4\alpha .
+\]
+Equivalently,
+\[
+  \mathcal V_A^{\rm src}C_{\rm zm}=-2\ii C_{\rm zm},
+  \qquad
+  \mathcal V_A\theta=4 .
+\]
+Then the \(Q=1\) zero-mode source factor is Ward-transported together with the
+instanton phase:
+\begin{equation}
+  \left(4\partial_\theta+\mathcal V_A^{\rm src}\right)
+  \left(\ee^{\ii\theta}\det C_{\rm zm}\right)=0 .
+  \label{eq:instanton-source-determinant-ward-transport}
+\end{equation}
+The anti-instanton sector obeys the conjugate identity with
+\(\ee^{-\ii\theta}\det C_{\rm zm}^{\dagger}\).
+\end{proposition}
+
+\begin{proof}
+The source variation gives
+\[
+  \delta_\alpha C_{\rm zm}
+  =
+  2\alpha P-2\ii\alpha S
+  =
+  -2\ii\alpha C_{\rm zm}.
+\]
+By multilinearity of the determinant,
+\[
+  \delta_\alpha\det C_{\rm zm}
+  =
+  -4\ii\alpha\,\det C_{\rm zm}
+\]
+for two flavors.  The anomalous phase varies as
+\(\delta_\alpha\ee^{\ii\theta}=4\ii\alpha\ee^{\ii\theta}\).  The two
+variations cancel, proving
+\eqref{eq:instanton-source-determinant-ward-transport}.  This is the
+source-determinant form of the local Ward identity proved in
+Proposition~\ref{prop:two-flavor-instanton-source-ward-ledger}.
+\end{proof}
+
+This proposition is not a new moduli-space statement.  It is the finite
+zero-mode algebra which keeps the theta phase, the mass/source determinant,
+and the chosen source frame on the same anomalous Ward orbit.  Rotating only
+the source determinant changes a charged hard coefficient; shifting only
+\(\theta\) changes the sector phase; and applying a fixed pole, OPE, or
+susceptibility projection after changing the source frame changes the
+observable coordinate.  The Ward identity becomes a physical statement only
+after the projection map has also been named and transported in the same
+source convention.
+
 \section{A Hard Four-Fermion Benchmark}
 \label{sec:instanton-hard-four-fermion-benchmark}
 

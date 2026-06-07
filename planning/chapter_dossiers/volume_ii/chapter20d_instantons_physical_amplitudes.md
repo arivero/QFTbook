@@ -82,6 +82,14 @@
   massless hard coefficient is supported on the anomalous
   \((n_L,n_R,\bar n_L,\bar n_R)=(N_f,0,0,N_f)\) source coordinate, with the
   \(Q=-1\) sector carrying the conjugate chirality coordinate.
+- `prop:instanton-axial-ward-source-transport`: finite source-determinant
+  Ward-transport statement for the \(Q=1\), \(N_f=2\) zero-mode block.  The
+  source matrix \(C_{\rm zm}=S+iP\) varies as
+  `V_A C_zm = -2 i C_zm`, the instanton phase varies by
+  `delta theta = 4 alpha`, and
+  `(4 partial_theta + V_A^src)(e^{i theta} det C_zm)=0`.  This connects the
+  chirality-selection rule to the parent Ch20 anomalous source-Ward ledger
+  before the hard benchmark is projected to a physical observable.
 - `sec:instanton-hard-four-fermion-benchmark`: hard two-flavor four-source
   benchmark, organized as center, Haar, zero-mode-rank, amputation,
   size-window, and physical-projection data.
@@ -222,6 +230,11 @@
   coordinate cannot be relabelled as the \(Q=1\) hard 't Hooft vertex before
   the size integral.  This keeps axial charge flow, source differentiation,
   and topological sector in the same finite zero-mode calculation.
+- The axial Ward transport proposition connects the zero-mode selection to the
+  anomaly/source-Ward machinery of Ch20.  The \(Q=1\) phase and the source
+  determinant are one Ward-transported coordinate; rotating only the
+  determinant, shifting only theta, or changing the source frame without
+  transporting the physical projection changes the amplitude claim.
 - The hard benchmark section moves beyond the local determinant to a physical
   four-source channel: center conservation, shared Haar projection, two
   zero-mode source determinants, amputation, hard form factors, and endpoint
@@ -390,6 +403,9 @@
   determinant blocks, axial-weight counts, wrong-chirality and
   chirality-balanced negative controls, sector-mixing rejection, and a
   mass-assisted coordinate check,
+  verifies axial Ward transport of the \(Q=1\) theta phase with the complex
+  two-flavor source determinant and rejects source-only, theta-only, and
+  wrong-sign theta rotations,
   builds moduli-equivalent finite cell channels with different or vanishing
   amplitudes, constructs a same-Euclidean-sum/different-projection ambiguity,
   checks the SU(3), `N_f=2` hard four-source scale and tail powers, verifies
@@ -494,6 +510,13 @@
   wrong-chirality determinants, chirality-balanced four-source selections,
   sector-mixed unlabeled determinants, and mass-assisted coordinates as
   substitutes for the massless hard vertex.
+- 2026-06-06 axial Ward transport pass: added
+  `prop:instanton-axial-ward-source-transport` after the chirality-source
+  selection proposition.  The pass ties the zero-mode source determinant to
+  the parent anomalous source-Ward convention: the source determinant and the
+  instanton theta phase are transported together before a hard, pole, OPE, or
+  susceptibility observable is projected.  The companion check rejects
+  source-only, theta-only, and wrong-sign theta transports.
 - 2026-06-06 hard Wilsonian OPE pass: added
   `sec:instanton-hard-wilsonian-ope-datum`, which turns the hard four-source
   benchmark into a short-distance operator coefficient only after the

@@ -90,6 +90,9 @@ Target claims:
   the chosen topological sector; a nonzero determinant in the conjugate block,
   a chirality-balanced four-source selection, or a mass-assisted coordinate
   is not the same physical amplitude.
+- `prop:instanton-axial-ward-source-transport`: the Q=1 phase
+  `exp(i theta)` and the two-flavor zero-mode source determinant must be
+  transported together under the anomalous singlet axial Ward vector.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell residuals
   and source-determinant perturbations obey the displayed absolute bounds.
 - `prop:su3-nf2-hard-source-power-slow-tail` and
@@ -133,6 +136,7 @@ Independent construction:
   ordered-pair versus unordered-pair combinatorics,
   neutral-pair lateral-prescription cancellation coordinates,
   chirality-source selection rules for the instanton zero-mode determinant,
+  axial Ward transport of the theta phase with the complex source determinant,
   an amputated 't Hooft four-point assembly ledger,
   physical projection bins, residual sums, two-term hard-window endpoint
   tail subtraction, Wilsonian coefficient/operator scheme covariance,
@@ -231,6 +235,7 @@ Negative controls:
   cancellation transported to a different source coordinate,
   wrong-chirality determinants, chirality-balanced four-source selections, or
   mass-assisted source coordinates treated as the Q=1 hard 't Hooft vertex,
+  source-only or theta-only axial rotations treated as Ward-invariant,
   an amputated four-point coefficient reduced to density-only data, a
   symmetric Haar source treated as nonzero, an omitted nonzero-mode source
   quotient, unamputated source overlaps read as a physical coefficient, or an
@@ -2408,6 +2413,126 @@ def check_chirality_source_selection_gate() -> None:
     )
 
 
+def check_axial_ward_source_transport() -> None:
+    scalar: Matrix2 = (
+        (Fraction(2, 3), Fraction(5, 7)),
+        (Fraction(11, 13), Fraction(17, 19)),
+    )
+    pseudoscalar: Matrix2 = (
+        (Fraction(3, 5), Fraction(-2, 11)),
+        (Fraction(7, 17), Fraction(13, 23)),
+    )
+
+    ComplexFraction = tuple[Fraction, Fraction]
+
+    def cadd(left: ComplexFraction, right: ComplexFraction) -> ComplexFraction:
+        return (left[0] + right[0], left[1] + right[1])
+
+    def csub(left: ComplexFraction, right: ComplexFraction) -> ComplexFraction:
+        return (left[0] - right[0], left[1] - right[1])
+
+    def cmul(left: ComplexFraction, right: ComplexFraction) -> ComplexFraction:
+        return (
+            left[0] * right[0] - left[1] * right[1],
+            left[0] * right[1] + left[1] * right[0],
+        )
+
+    def cscale(value: ComplexFraction, scale: Fraction) -> ComplexFraction:
+        return (scale * value[0], scale * value[1])
+
+    def imul(value: ComplexFraction) -> ComplexFraction:
+        return (-value[1], value[0])
+
+    def cconj(value: ComplexFraction) -> ComplexFraction:
+        return (value[0], -value[1])
+
+    def centry(
+        real: Matrix2,
+        imag: Matrix2,
+        row: int,
+        col: int,
+    ) -> ComplexFraction:
+        return (real[row][col], imag[row][col])
+
+    def cdet(real: Matrix2, imag: Matrix2) -> ComplexFraction:
+        return csub(
+            cmul(centry(real, imag, 0, 0), centry(real, imag, 1, 1)),
+            cmul(centry(real, imag, 0, 1), centry(real, imag, 1, 0)),
+        )
+
+    def det_variation(
+        real: Matrix2,
+        imag: Matrix2,
+        delta_real: Matrix2,
+        delta_imag: Matrix2,
+    ) -> ComplexFraction:
+        c00 = centry(real, imag, 0, 0)
+        c01 = centry(real, imag, 0, 1)
+        c10 = centry(real, imag, 1, 0)
+        c11 = centry(real, imag, 1, 1)
+        dc00 = centry(delta_real, delta_imag, 0, 0)
+        dc01 = centry(delta_real, delta_imag, 0, 1)
+        dc10 = centry(delta_real, delta_imag, 1, 0)
+        dc11 = centry(delta_real, delta_imag, 1, 1)
+        return csub(
+            cadd(cmul(dc00, c11), cmul(c00, dc11)),
+            cadd(cmul(dc01, c10), cmul(c01, dc10)),
+        )
+
+    delta_scalar: Matrix2 = (
+        (2 * pseudoscalar[0][0], 2 * pseudoscalar[0][1]),
+        (2 * pseudoscalar[1][0], 2 * pseudoscalar[1][1]),
+    )
+    delta_pseudoscalar: Matrix2 = (
+        (-2 * scalar[0][0], -2 * scalar[0][1]),
+        (-2 * scalar[1][0], -2 * scalar[1][1]),
+    )
+
+    determinant = cdet(scalar, pseudoscalar)
+    source_variation = det_variation(
+        scalar,
+        pseudoscalar,
+        delta_scalar,
+        delta_pseudoscalar,
+    )
+    expected_source_variation = cscale(imul(determinant), -4)
+    theta_variation = cscale(imul(determinant), 4)
+    assert_equal(
+        "two-flavor source determinant axial variation",
+        source_variation,
+        expected_source_variation,
+    )
+    assert_equal(
+        "Q=1 source determinant plus theta phase is Ward transported",
+        cadd(source_variation, theta_variation),
+        (Fraction(0), Fraction(0)),
+    )
+
+    anti_source_variation = cconj(source_variation)
+    anti_theta_variation = cscale(imul(cconj(determinant)), -4)
+    assert_equal(
+        "anti-instanton conjugate source determinant Ward transport",
+        cadd(anti_source_variation, anti_theta_variation),
+        (Fraction(0), Fraction(0)),
+    )
+    assert_not_equal(
+        "source-only axial rotation changes the charged hard coordinate",
+        source_variation,
+        (Fraction(0), Fraction(0)),
+    )
+    assert_not_equal(
+        "theta-only axial shift changes the sector phase",
+        theta_variation,
+        (Fraction(0), Fraction(0)),
+    )
+    wrong_theta_sign = cscale(imul(determinant), -4)
+    assert_not_equal(
+        "wrong theta-shift sign violates instanton Ward transport",
+        cadd(source_variation, wrong_theta_sign),
+        (Fraction(0), Fraction(0)),
+    )
+
+
 def check_moduli_equivalent_channel_separation() -> None:
     weights = [Fraction(1, 3), Fraction(2, 5), Fraction(7, 11)]
     determinants = [Fraction(13, 17), Fraction(19, 23), Fraction(29, 31)]
@@ -3035,6 +3160,7 @@ def main() -> None:
     check_neutral_pair_valley_prescription()
     check_two_flavor_mass_source_determinant_coordinate()
     check_chirality_source_selection_gate()
+    check_axial_ward_source_transport()
     check_moduli_equivalent_channel_separation()
     check_projection_not_recoverable_from_one_euclidean_sum()
     check_finite_cell_residual_bound()
