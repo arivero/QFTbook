@@ -3439,7 +3439,9 @@ Current checks:
   plus the
   Laurent-pole virtual-to-observable assembly check separating the finite hard
   remainder, real-radiation/subtraction cancellation, finite IR-scheme
-  transport, and residual comparison budget, the color-space hard-function
+  transport, and residual comparison budget, the inclusive vector-current
+  form-factor/R-ratio closure with exact pole, endpoint, and symbolic
+  \(\pi^2\) cancellation in the \(1+\alpha_s/\pi\) coefficient, the color-space hard-function
   handoff check with transported color metric, color-correlated real/soft
   operator, finite scheme compensation, and scalar-shortcut negative controls,
   the unresolved one-emission

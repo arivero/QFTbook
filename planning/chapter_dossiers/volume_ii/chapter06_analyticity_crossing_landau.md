@@ -59,7 +59,11 @@
   discontinuities and showing why single cuts do not enforce overlapping
   ordered-word constraints, a production master-lane gate tying
   coefficient pairing, transported masters, physical channel closure, and
-  finite observable assembly into one comparison, a color-space hard-function
+  finite observable assembly into one comparison, an inclusive vector-current
+  form-factor/R-ratio closure checking how the cut-reconstructed one-loop
+  virtual form factor, the integrated \(q\bar q g\) channel, and the finite
+  \(\pi^2\) constants assemble into \(1+\alpha_s/\pi\) for \(SU(3)\),
+  a color-space hard-function
   handoff recording the metric, basis, color-correlated real/soft operator, and
   finite-scheme transport needed for nonabelian production observables, an unresolved one-emission
   measurement cell with plus-distribution cancellation, a paired-measurement
@@ -188,6 +192,7 @@
 | \(S_\alpha,\mathcal J\) | one-loop contact/IBP/evanescent surface numerator shift in a Jacobi graph triplet, its induced kinematic Jacobi defect, and the defect repaired by a common color-null surface direction when allowed |
 | \(\mathbf I^{(1)}_\Lambda\) | one-loop infrared subtraction operator used to define the finite remainder in a declared regulator and finite subtraction convention |
 | \(\mathcal F^{(1)}_\Lambda\) | finite one-loop hard remainder after subtracting \(\mathbf I^{(1)}_\Lambda\mathcal A^{(0)}_\Lambda\) |
+| \(a_s,C_F,V_q^{(1)},R_{q\bar q g}^{(1)},R_q\) | vector-current \(R\)-ratio normalization data: \(a_s=\alpha_s/(2\pi)\), the quark color Casimir, the Born-normalized virtual form-factor interference, the integrated real three-parton channel, and the inclusive current ratio |
 | \(e_I,\mathsf G_{IJ},\mathsf H^{(1)}_{IJ},\mathsf R_W,\Delta_{\rm fin}\) | color basis, color Gram matrix, one-loop hard matrix, color-correlated real/soft or factorization operator, and finite color-space subtraction shift in the hard-function handoff |
 | \(\mathbf I^{(2)}_\Lambda\), \(\mathcal F^{(2)}_\Lambda\) | two-loop infrared subtraction operator and hard remainder defined recursively from \(\mathcal A^{(2)}-\mathbf I^{(1)}\mathcal A^{(1)}-\mathbf I^{(2)}\mathcal A^{(0)}\) |
 | \(x,\epsilon_{\rm ir},W(x,\zeta),W_0(\zeta)\) | unresolved one-emission coordinate, local analytic infrared regulator, measurement in the unresolved chart, and its reduced-event infrared-safe limit |
@@ -327,6 +332,10 @@
   and real-emission/factorization constructions using the same finite
   subtraction convention as the virtual finite remainders.  It is a comparison
   datum for fixed-order observables, not a proof of all-order factorization.
+- The vector-current \(R\)-ratio closure uses the standard massless
+  one-loop current-form-factor and integrated \(q\bar q g\) coefficients in
+  the \(a_s=\alpha_s/(2\pi)\), \(D=4-2\epsilon\) convention.  Differential
+  event shapes require the later measurement-cell/factorization machinery.
 - The color-space hard-function handoff assumes a declared external color
   basis, Gram metric, finite-remainder convention, and color-correlated
   real/soft/factorization operator.  Basis changes and finite subtraction
@@ -1144,6 +1153,16 @@
   verifies that composition and rejects raw-residue coefficients,
   Euclidean-master shortcuts, lower-sector omission, branch omission,
   self-incomplete channel closure, and virtual-only observable assembly.
+- 2026-06-07 issue #769 inclusive vector-current form-factor pass: inserted
+  `ca:inclusive-current-form-factor-ratio-closure` after the
+  virtual-to-observable assembly.  The block turns the abstract hard-plus-real
+  bookkeeping into the one-flavor massless vector-current \(R\)-ratio closure:
+  the cut-reconstructed one-loop virtual form-factor interference, the
+  integrated \(q\bar q g\) channel, and their endpoint/\(\pi^2\) constants
+  assemble to \(1+\alpha_s/\pi\) for \(SU(3)\).  The companion check keeps
+  \(1/\epsilon^2\), \(1/\epsilon\), rational finite, and \(\pi^2\) finite
+  pieces independent, then rejects virtual-only, omitted-endpoint,
+  wrong-sheet, and untransported finite-scheme shortcuts.
 - 2026-06-06 issue #769 symbol-level Steinmann transport pass: added
   `ca:symbol-steinmann-transport-check` between the two-letter transport audit
   and the production master lane.  The pass bridges the loop master-equation

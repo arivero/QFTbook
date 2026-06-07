@@ -37,8 +37,11 @@ discontinuity closure check for the two-scale box master, a finite-field
 master-coefficient reconstruction model with denominator clearing and
 validation controls, the finite Laurent-pole bookkeeping that turns a
 reconstructed virtual amplitude into a finite
-observable only after infrared subtraction, color-metric hard-function
-handoff, real radiation, scheme transport,
+observable only after infrared subtraction, an inclusive vector-current
+form-factor/R-ratio closure where the one-loop virtual poles, the integrated
+real `q qbar g` channel, and the symbolic `pi^2` constants cancel to the
+physical `1 + alpha_s/pi` coefficient for `SU(3)`,
+color-metric hard-function handoff, real radiation, scheme transport,
 and the unresolved measurement cell have been assembled, including finite
 measurement dependence after pole cancellation, and the two-loop
 infrared-pole consistency gate relating
@@ -141,7 +144,8 @@ bookkeeping, polynomial log algebra, branch continuation, a sector-boundary
 quadrature, a numerical dilogarithm-parameter integral independent of the
 encoded log-square answer, and physical channel-discontinuity closure against
 an independently normalized endpoint-log cut datum; Laurent-pole arithmetic for virtual/real infrared
-cancellation, color-space metric and soft-operator transport under basis and
+cancellation, exact symbolic-pi bookkeeping for the inclusive vector-current
+R-ratio closure, color-space metric and soft-operator transport under basis and
 finite-subtraction changes, plus-distribution measurement cells, paired-measurement finite
 differences after pole cancellation, finite scheme transport, and two-loop
 recursive pole subtraction.
@@ -374,6 +378,7 @@ BASIS = ("B_s", "B_t", "B_u", "local", "four_dimensional_rational_null")
 BracketPowers = dict[tuple[int, int], int]
 Laurent = tuple[Fraction, Fraction]
 Laurent3 = tuple[Fraction, Fraction, Fraction]
+LaurentPi2 = tuple[Fraction, Fraction, Fraction, Fraction]
 Matrix = list[list[Fraction]]
 Vector = list[Fraction]
 LogPolynomial = dict[tuple[int, int], Fraction]
@@ -430,6 +435,24 @@ def laurent3_sub(left: Laurent3, right: Laurent3) -> Laurent3:
 
 def laurent3_scale(scale: Fraction, value: Laurent3) -> Laurent3:
     return (scale * value[0], scale * value[1], scale * value[2])
+
+
+def laurent_pi2_add(left: LaurentPi2, right: LaurentPi2) -> LaurentPi2:
+    return (
+        left[0] + right[0],
+        left[1] + right[1],
+        left[2] + right[2],
+        left[3] + right[3],
+    )
+
+
+def laurent_pi2_sub(left: LaurentPi2, right: LaurentPi2) -> LaurentPi2:
+    return (
+        left[0] - right[0],
+        left[1] - right[1],
+        left[2] - right[2],
+        left[3] - right[3],
+    )
 
 
 def laurent_to_laurent3(value: Laurent) -> Laurent3:
@@ -4094,6 +4117,97 @@ def check_virtual_to_observable_assembly() -> None:
     )
 
 
+def check_inclusive_current_form_factor_r_ratio_closure() -> None:
+    # Coefficients are in the common a_s C_F normalization,
+    # a_s = alpha_s/(2 pi), for a single massless vector-current channel.
+    # A LaurentPi2 tuple stores eps^-2, eps^-1, finite rational, finite pi^2.
+    virtual_interference: LaurentPi2 = (
+        -Fraction(2),
+        -Fraction(3),
+        -Fraction(8),
+        Fraction(1, 6),
+    )
+    integrated_real: LaurentPi2 = (
+        Fraction(2),
+        Fraction(3),
+        Fraction(19, 2),
+        -Fraction(1, 6),
+    )
+    inclusive_coefficient = laurent_pi2_add(virtual_interference, integrated_real)
+    assert_equal(
+        "vector-current R-ratio pole and pi2 cancellation",
+        inclusive_coefficient,
+        (Fraction(0), Fraction(0), Fraction(3, 2), Fraction(0)),
+    )
+
+    c_f_su3 = Fraction(4, 3)
+    coefficient_in_alpha_s_over_2pi = c_f_su3 * inclusive_coefficient[2]
+    assert_equal(
+        "SU(3) inclusive R-ratio coefficient in alpha_s/(2pi)",
+        coefficient_in_alpha_s_over_2pi,
+        Fraction(2),
+    )
+    coefficient_in_alpha_s_over_pi = coefficient_in_alpha_s_over_2pi / 2
+    assert_equal(
+        "SU(3) inclusive R-ratio coefficient in alpha_s/pi",
+        coefficient_in_alpha_s_over_pi,
+        Fraction(1),
+    )
+
+    virtual_only = virtual_interference
+    assert_true(
+        "virtual current form factor alone still has infrared poles",
+        virtual_only[0] != 0 or virtual_only[1] != 0,
+    )
+    assert_true(
+        "finite hard form-factor term is not the inclusive R-ratio",
+        (virtual_only[2], virtual_only[3])
+        != (inclusive_coefficient[2], inclusive_coefficient[3]),
+    )
+
+    omitted_real_endpoint: LaurentPi2 = (
+        Fraction(2),
+        Fraction(3),
+        Fraction(9),
+        -Fraction(1, 6),
+    )
+    endpoint_shortcut = laurent_pi2_add(virtual_interference, omitted_real_endpoint)
+    assert_true(
+        "omitting the real endpoint finite cell changes the inclusive coefficient",
+        endpoint_shortcut != inclusive_coefficient,
+    )
+
+    wrong_real_sheet: LaurentPi2 = (
+        Fraction(2),
+        Fraction(3),
+        Fraction(19, 2),
+        Fraction(1, 6),
+    )
+    wrong_sheet_sum = laurent_pi2_add(virtual_interference, wrong_real_sheet)
+    assert_true(
+        "wrong real-emission analytic-continuation sign leaves pi2 residue",
+        wrong_sheet_sum[3] != Fraction(0),
+    )
+
+    finite_scheme_shift: LaurentPi2 = (
+        Fraction(0),
+        Fraction(0),
+        Fraction(5, 7),
+        -Fraction(1, 9),
+    )
+    shifted_virtual = laurent_pi2_sub(virtual_interference, finite_scheme_shift)
+    shifted_real = laurent_pi2_add(integrated_real, finite_scheme_shift)
+    assert_equal(
+        "finite IR-scheme transport preserves inclusive R-ratio",
+        laurent_pi2_add(shifted_virtual, shifted_real),
+        inclusive_coefficient,
+    )
+    assert_true(
+        "untransported finite scheme shift changes inclusive R-ratio",
+        laurent_pi2_add(shifted_virtual, integrated_real) != inclusive_coefficient,
+    )
+
+
 def check_color_space_hard_function_handoff() -> None:
     born = [Fraction(2), Fraction(-1)]
     finite_remainder = [Fraction(3, 5), Fraction(7, 11)]
@@ -4568,6 +4682,7 @@ def main() -> None:
     check_symbol_steinmann_transport_check()
     check_production_master_lane_observable_gate()
     check_virtual_to_observable_assembly()
+    check_inclusive_current_form_factor_r_ratio_closure()
     check_color_space_hard_function_handoff()
     check_unresolved_measurement_cell_assembly()
     check_measurement_dependence_after_pole_cancellation()

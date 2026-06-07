@@ -4663,6 +4663,77 @@ real/factorization term changes the finite number in
 \eqref{eq:one-loop-observable-from-finite-remainder}.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Inclusive vector-current form-factor closure]
+\label{ca:inclusive-current-form-factor-ratio-closure}
+A compact process-level test of the preceding bookkeeping is supplied by the
+massless vector-current channel behind the perturbative
+\(e^+e^-\) hadronic \(R\)-ratio.  Work with one massless quark flavor,
+divide by the Born color/spin-summed current cross section, and use
+\[
+  a_s:=\frac{\alpha_s}{2\pi},
+  \qquad
+  C_F=\frac{N_c^2-1}{2N_c},
+  \qquad
+  D=4-2\epsilon .
+\]
+The renormalized one-loop quark form factor, reconstructed from its
+cut-visible logarithmic master data together with the regulator and
+subtraction convention, contributes to the Born-normalized virtual
+interference as
+\begin{equation}
+  V_q^{(1)}
+  =
+  a_s C_F
+  \left(
+    -\frac{2}{\epsilon^2}
+    -\frac{3}{\epsilon}
+    -8+\frac{\pi^2}{6}
+  \right).
+  \label{eq:current-form-factor-virtual-interference}
+\end{equation}
+The physical inclusive coefficient also carries the real three-parton channel
+\(e^+e^-\to q\bar q g\).  In the matching
+normalization and with the same unresolved phase-space convention, the
+integrated real contribution is
+\begin{equation}
+  R_{q\bar q g}^{(1)}
+  =
+  a_s C_F
+  \left(
+    \frac{2}{\epsilon^2}
+    +\frac{3}{\epsilon}
+    +\frac{19}{2}-\frac{\pi^2}{6}
+  \right).
+  \label{eq:current-form-factor-real-channel}
+\end{equation}
+Adding \eqref{eq:current-form-factor-virtual-interference} and
+\eqref{eq:current-form-factor-real-channel} cancels the infrared poles and
+the timelike \(\pi^2\) constant:
+\begin{equation}
+  \frac{R_q}{R_q^{(0)}}
+  =
+  1+a_s C_F\,\frac32+O(a_s^2).
+  \label{eq:current-form-factor-r-ratio-closure}
+\end{equation}
+For \(N_c=3\), \(C_F=4/3\), so this is
+\[
+  \frac{R_q}{R_q^{(0)}}=1+\frac{\alpha_s}{\pi}+O(\alpha_s^2).
+\]
+The point of the example is the assembly, not the numerical fame of the
+coefficient.  The finite term \(-8+\pi^2/6\) in the virtual form factor is a
+hard-amplitude datum.  The endpoint finite term \(19/2-\pi^2/6\) belongs to
+the real unresolved integration.  Moving finite constants between the
+subtraction operator and the real channel is allowed only as a paired scheme
+change; moving the virtual remainder alone changes the finite observable.
+Thus a one-loop current form factor reconstructed from cuts becomes the
+inclusive \(R\)-ratio coefficient only after the real channel, phase-space
+normalization, and subtraction convention have been carried with it.  More
+differential jet and event-shape measurements replace
+\eqref{eq:current-form-factor-real-channel} by the measurement-dependent
+subtraction cells of Chapter~\ref{ch:volume-ii-19} and
+Chapter~\ref{ch:volume-ii-infrared-inclusive-qed}.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Color-space hard-function handoff]
 \label{ca:color-space-hard-function-handoff}
 For nonabelian production channels the bracket in
