@@ -4,8 +4,8 @@
 These checks accompany Volume VI, Chapter 1.  They verify finite algebraic
 identities behind the rapidity invariant, Newton separation of rapidity
 multisets, chamber braid relations, the rational Yang--Baxter identity,
-scalar Watson-exchange bookkeeping, and the finite residual ledger separating
-S-Fock/ZF algebra from wedge-local and local-algebra reconstruction.  They
+scalar Watson-exchange bookkeeping, and the finite proof-obligation map
+separating S-Fock/ZF algebra from wedge-local and local-algebra reconstruction.  They
 also check the finite checkpoint logic behind the end-to-end observable
 reconstruction map: exact scattering, exact TBA, or exact dressing data do not
 by themselves certify a local observable without the corresponding
@@ -13,16 +13,16 @@ local-algebra, domain/completeness, state-limit, and projection checkpoints.
 
 Evidence contract.
 Target claims: rapidity convention, factorized chamber algebra, Watson
-exchange, and the Chapter 1 reconstruction-budget claim that exact on-shell
+exchange, and the Chapter 1 reconstruction-map claim that exact on-shell
 algebra does not by itself construct double-cone local observables or complete
 the route from exact data to a physical local, thermodynamic, or hydrodynamic
 observable.
 Independent construction: rational arithmetic for rapidity invariants, Newton
 identities, finite braid/Yang--Baxter matrices, scalar exchange coefficients,
 finite local-intersection dimension proxies, nuclearity-norm proxies, and a
-residual telescope for wedge-to-local reconstruction, plus Boolean route gates
-and exact residual budgets for representative Ising, sinh-Gordon, TBA, and GHD
-routes.
+residual telescope for wedge-to-local reconstruction, plus Boolean route
+checkpoints and conditional residual propagation for representative Ising,
+sinh-Gordon, TBA, and GHD routes.
 Imported assumptions: the analytic S-matrix regularity, modular nuclearity,
 operator-domain, form-factor convergence, and completeness hypotheses stated
 in the chapter.
@@ -194,11 +194,11 @@ def local_intersection_dimension(right_wedge_dim: int, left_wedge_dim: int, obst
     return max(0, min(right_wedge_dim, left_wedge_dim) - obstruction_rank)
 
 
-def check_wedge_local_reconstruction_residual_budget():
-    # This finite model mirrors ControlledApproximation
+def check_wedge_local_reconstruction_proof_map():
+    # This finite model mirrors the proof-obligation map
     # ca:integrable-wedge-local-reconstruction-budget.  The leading S-Fock
-    # coordinate is kept separate from the analytic residuals that construct a
-    # local double-cone observable.
+    # coordinate is kept separate from the analytic obligations that construct
+    # a local double-cone observable.
     leading_s_fock_coordinate = Fraction(11, 7)
     residuals = {
         "pfg_domain": Fraction(1, 60),
@@ -450,7 +450,7 @@ def check_end_to_end_observable_reconstruction_map():
     assert_equal(
         abs(exact_observable - retained_coordinate) <= route_budget,
         True,
-        "integrable route residual budget",
+        "integrable route conditional residual propagation",
     )
     omitted_projection_budget = route_budget - route_residuals["projection"]
     assert_gt(
@@ -466,7 +466,7 @@ def main():
     check_chamber_groupoid_permutation_relations()
     check_rational_yang_baxter_identity()
     check_scalar_unitarity_and_watson_bookkeeping()
-    check_wedge_local_reconstruction_residual_budget()
+    check_wedge_local_reconstruction_proof_map()
     check_end_to_end_observable_reconstruction_map()
     print("All factorized-scattering algebra checks passed.")
 

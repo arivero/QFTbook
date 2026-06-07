@@ -78,7 +78,7 @@ Conversely, once the masses and the total invariant mass are fixed,
 \(\cosh(\theta_1-\theta_2)\) is fixed; the sign of
 \(\theta_1-\theta_2\) records the ordering of the two momenta.
 
-\section{Reconstruction Spine and Status Labels}
+\section{Reconstruction Map and Status Labels}
 \label{sec:integrable-reconstruction-spine}
 
 The exact data in this volume do not all have the same logical status.  A
@@ -87,7 +87,7 @@ on-shell scattering data.  A TBA equation is a thermodynamic or mirror-channel
 functional equation after Bethe--Yang quantization has been accepted.  A
 form-factor solution is a family of candidate local-operator matrix elements.
 None of these, by itself, is a constructed local quantum field theory.  The
-volume therefore uses a common dependency spine with two intertwined chains.
+volume therefore uses a common dependency map with two intertwined chains.
 The Hilbert-space chain runs from a local massive QFT with higher-spin charges
 to elastic factorized scattering, then to \(S\)-Fock/ZF data, wedge-local
 fields, local algebras, and finally local fields and Wightman functions.  The
@@ -199,7 +199,7 @@ form-factor solution to a local field, nor a TBA equation to a theorem about
 finite-size spectra, unless the missing Hilbert-space, convergence, and
 thermodynamic-limit assumptions have been supplied at the point of use.
 
-\begin{controlledapproximation}[Wedge-local reconstruction budget from an
+\begin{remark}[Wedge-local reconstruction proof-obligation map from an
 \(S\)-matrix]
 \label{ca:integrable-wedge-local-reconstruction-budget}
 Let \(S(\theta)\) be an elastic factorizing scattering function satisfying
@@ -251,7 +251,7 @@ chamber-extension algebra supply the on-shell \(S\)-Fock coordinate; the
 phase-space estimate is an additional local-observable input.
 
 Consequently an observable reconstructed from factorized scattering carries
-the residual budget
+the conditional residual decomposition
 \begin{equation}
 \begin{aligned}
   \mathcal W_{\rm loc}[\varphi]
@@ -302,14 +302,18 @@ then
   \right)\|\varphi\|_{\mathcal T}.
   \label{eq:integrable-local-reconstruction-residual-bound}
 \end{equation}
-This is a reconstruction budget, not another exact scattering identity.  The
+This is a proof-obligation map, not another exact scattering identity.  The
 rows of the status table enter at different places: Yang--Baxter and
 unitarity build the \(S\)-Fock coordinate; regular crossing and wedge-domain
 control build wedge generators; modular nuclearity makes
 \(\mathfrak A_S(\mathcal O)\) nontrivial; form-factor estimates construct
 pointlike or smeared local fields affiliated with that local algebra; and
 completeness identifies the resulting local observables with the intended
-QFT.
+QFT.  The displayed inequality has numerical content only after the six
+residuals are constructed or imported as estimates in one test-function
+topology.  Before that, the terms in
+\eqref{eq:integrable-local-reconstruction-residual-budget} are named analytic
+obligations.
 
 In the massive Ising model the same budget collapses because the local net is
 already supplied by the free Majorana field: the wedge and local algebras,
@@ -321,13 +325,13 @@ and completeness entries as separate analytic claims.  This distinction is
 the physics of reconstruction: it decides whether the exact on-shell data
 have produced local observables or only a beautifully consistent scattering
 calculus.
-\end{controlledapproximation}
+\end{remark}
 
-\begin{controlledapproximation}[End-to-end observable reconstruction map]
+\begin{remark}[End-to-end observable reconstruction map]
 \label{ca:integrable-end-to-end-reconstruction-route-ledger}
 For a concrete integrable model, an ``exact solution'' in this volume means a
 map from exact data to a specified observable through stated checkpoints, not a
-single formula.  The route datum is the ordered reference map
+single formula.  The route map is the ordered reference map
 \[
   \mathsf R
   =
@@ -352,27 +356,27 @@ thermodynamic, hydrodynamic, or transport observable.
 
 The following four observable maps fix how later chapters should be read.
 \begin{enumerate}[label=\textnormal{(\alph*)}]
-\item \emph{Ising energy.}  The controlled output is the local Euclidean
+\item \emph{Ising energy.}  The target output is the local Euclidean
 two-point function.  The free Majorana CAR construction supplies
 \(\mathsf H,\mathsf W,\mathsf O\), domains, positivity, and completeness; the
 two-particle form-factor formula is then a matrix-element calculation inside an
 already constructed local QFT.
-\item \emph{Sinh-Gordon wedge.}  The controlled output is a conditional local
+\item \emph{Sinh-Gordon wedge.}  The target output is a conditional local
 net.  A regular scalar \(S(\theta)\) supplies \(S\)-Fock and wedge-local fields
 under analyticity and crossing bounds, but \(\mathsf O\) requires modular
 nuclearity and point-field claims still require \(\mathsf F\) and completeness
 estimates.
-\item \emph{Lee--Yang TBA.}  The controlled output is a thermodynamic scaling
+\item \emph{Lee--Yang TBA.}  The target output is a thermodynamic scaling
 function.  The TBA equation gives a controlled thermodynamic coordinate only
 after finite-volume Bethe--Yang errors, contour and branch data, and state-limit
 hypotheses are supplied; equality of endpoint central charges is not a local
 trace-operator reconstruction.
-\item \emph{GHD cell.}  The controlled output is an Euler-scale density or
+\item \emph{GHD cell.}  The target output is an Euler-scale density or
 current.  Root-density continuity and dressing give the Euler candidate, but
 microscopic density and current operators, local-equilibrium formation,
 gradients, diffusion, and integrability-breaking residuals remain part of
 \(\mathsf P\).  Ballistic transport coefficients add a real-time KMS/Kubo
-gate: the dressed-current formula supplies the Drude coordinate only after the
+checkpoint: the dressed-current formula supplies the Drude coordinate only after the
 microscopic current and long-time limit have been identified.
 \end{enumerate}
 
@@ -391,7 +395,7 @@ local-equilibrium control rather than Yang--Baxter algebra.
 If \(E_{\mathsf R}^{\rm obs}\) denotes the error in the target local or
 thermodynamic observable along a chosen route, and if every retained residual
 has been represented in the same observable norm or topology, the reconstruction
-map is used through the absolute budget
+map is used through the conditional absolute propagation formula
 \begin{equation}
   |E_{\mathsf R}^{\rm obs}|
   \le
@@ -415,7 +419,7 @@ zero; it says nothing about \(\varepsilon_{\mathsf O}\),
 numerical TBA solution may set the retained \(\mathsf T\)-coordinate error to
 zero while leaving the local trace-operator or microscopic-current projection
 errors untouched.
-\end{controlledapproximation}
+\end{remark}
 
 \section{Factorized Scattering Datum}
 

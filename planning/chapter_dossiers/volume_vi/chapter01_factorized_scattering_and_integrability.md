@@ -7,7 +7,7 @@
 - Immediate predecessor: Volume II scattering and analytic structure.
 - Immediate successor: detailed two-dimensional integrable models, form
   factors, and thermodynamic Bethe ansatz.
-- Cross-volume role: supplies the Volume VI reconstruction-status spine that
+- Cross-volume role: supplies the Volume VI reconstruction-status map that
   separates on-shell exact data, Hilbert-space construction, local observables,
   TBA/mirror thermodynamics, and hydrodynamic limits.
 
@@ -38,7 +38,7 @@
   conditions.
 - Boundary between on-shell scattering data and reconstruction of local
   fields through form factors.
-- Volume-level reconstruction spine from local QFT with higher-spin charges to
+- Volume-level reconstruction map from local QFT with higher-spin charges to
   factorized scattering, \(S\)-Fock/ZF data, wedge-local fields, local
   algebras, local fields/Wightman functions, TBA, mirror finite-size data, and
   GHD.
@@ -52,7 +52,7 @@
   calibration; regular scalar factorizing models such as sinh-Gordon as
   conditional wedge-local/local-algebra constructions whose point-field
   form-factor completeness remains separate.
-- Wedge-local reconstruction budget: defines the double-cone candidate
+- Wedge-local reconstruction proof-obligation map: defines the double-cone candidate
   `A_S(O)=A_S(W_R+x) cap A_S(W_L+y)`, the modular-nuclearity map coordinate,
   and the residual split separating wedge-generator, nuclearity,
   local-intersection, form-factor, domain/positivity, and completeness
@@ -108,7 +108,7 @@
 6. Local QFT reconstruction from factorized \(S\)-matrices requires separate
    form-factor and locality analysis.
 7. Exact finite identities, TBA equations, and form-factor functional
-   equations occupy different locations in the reconstruction spine; finite
+   equations occupy different locations in the reconstruction map; finite
    calculation checks verify algebraic cells but do not prove local algebras,
    point-field domains, spectral convergence, or thermodynamic limits.
 8. Massive Ising and regular scalar factorizing models provide two calibration
@@ -145,30 +145,37 @@
   Added `calculation-checks/factorized_scattering_algebra_checks.py` for the
   rapidity-sign convention, Newton identities, braid relations, rational
   Yang--Baxter identity, scalar unitarity, and Watson coefficient bookkeeping.
-- 2026-06-03 reconstruction-spine pass: added a reader-facing status map for
+- 2026-06-03 reconstruction-map pass: added a reader-facing status map for
   the whole Volume VI exact-data-to-local-QFT chain.  The pass deliberately
   demotes finite checks and formal bootstrap/TBA equations to their proper
   evidence class unless the missing Hilbert-space, convergence, nuclearity,
   mirror-continuation, or hydrodynamic-limit assumptions are supplied.
 - 2026-06-04 wedge-local reconstruction pass: added the operational residual
-  budget from \(S\)-Fock/ZF data to double-cone local observables and
+  split from \(S\)-Fock/ZF data to double-cone local observables and
   registered `factorized_scattering_algebra_checks.py` as an evidence-contract
   companion.  The finite check verifies that exact scattering algebra does not
   erase modular-nuclearity or local-intersection residuals, and includes
   negative controls for empty local intersections and failed nuclearity
   proxies.
-- 2026-06-05 issue #728 route-ledger pass: added
-  `ca:integrable-end-to-end-reconstruction-route-ledger`, turning the
-  Volume VI reconstruction spine into explicit model routes for Ising,
+- 2026-06-05 issue #728 route-map pass: added the end-to-end observable
+  reconstruction map, turning the Volume VI reconstruction map into explicit
+  model routes for Ising,
   sinh-Gordon, Lee--Yang TBA, and GHD.  The companion check verifies the route
-  gate logic and negative controls against treating exact scattering, exact TBA
+  checkpoint logic and negative controls against treating exact scattering, exact TBA
   endpoints, or exact GHD dressing as local-observable or microscopic-current
   reconstruction.
-- 2026-06-05 GHD transport coherence hook: clarified in the route ledger that
-  Drude/transport claims require a real-time KMS/Kubo gate in addition to the
+- 2026-06-05 GHD transport coherence hook: clarified in the route map that
+  Drude/transport claims require a real-time KMS/Kubo checkpoint in addition to the
   Euler GHD current coordinate.
 - 2026-06-06 issue #844 observable-map pass: renamed the end-to-end route
   ledger as an observable reconstruction map, clarified that residual slots are
   not summable estimates until common-norm bounds are supplied, and extended
   `factorized_scattering_algebra_checks.py` with a negative control against
   hiding nonzero projection residuals as irrelevant.
+- 2026-06-06 issue #844 status-surface pass: demoted the wedge-local
+  reconstruction and end-to-end observable maps from controlled-approximation
+  surfaces to remarks.  The formulas are retained as proof-obligation and
+  conditional propagation maps: they classify where local-algebra,
+  nuclearity, form-factor, state-limit, and projection estimates enter a
+  physical observable, but they are not controlled estimates until those
+  estimates are supplied in a common topology.

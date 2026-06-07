@@ -2548,9 +2548,10 @@ Current checks:
   kinematics, Newton separation of rapidity multisets, chamber braid
   relations, the rational Yang--Baxter identity, scalar two-body unitarity,
   Watson-exchange coefficient bookkeeping, and the wedge-local to
-  double-cone-local reconstruction residual ledger which keeps exact S-Fock/ZF
-  algebra, modular nuclearity, local intersections, form-factor convergence,
-  operator domains, and completeness as separate load-bearing inputs.  It also
+  double-cone-local reconstruction proof-obligation map which keeps exact
+  S-Fock/ZF algebra, modular nuclearity, local intersections, form-factor
+  convergence, operator domains, and completeness as separate load-bearing
+  inputs.  It also
   checks the end-to-end observable reconstruction map for the Ising,
   sinh-Gordon, Lee--Yang TBA, and GHD routes: exact scattering/TBA/dressing data
   do not certify local or microscopic observables unless the local-algebra,
