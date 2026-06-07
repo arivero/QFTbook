@@ -26,11 +26,11 @@ measure bridge, the finite measure-scheme covariance test for that
 degree-one coefficient, the mirror-conjecture observable boundary separating
 full-QFT data from protected evidence, the full-action/IR-universality data
 boundary for mirror presentations, admissible mirror-datum and finite-volume
-noncompact spectral-domain gates, finite D-term RG Schur-complement gates,
-finite D-term RG source-metric transport gates, finite operator/source matrix-element
-obstructions, finite boundary-state/defect probe obstructions, and
-cigar/Liouville asymptotic deformation filters, pathwise fake-fixed-point
-gates, spectral-status cells,
+noncompact spectral-domain gates, finite D-term RG Schur-complement
+obligation checks, finite D-term RG source-metric transport checks, finite
+operator/source matrix-element obstructions, finite boundary-state/defect
+probe obstructions, and cigar/Liouville asymptotic deformation filters,
+pathwise fake-fixed-point obligation checks, spectral-status cells,
 source-normalized spectral-resolution bridges, and reflection Gamma-function
 cells,
 plus the Hori--Vafa

@@ -604,7 +604,14 @@ the triangle inequality" must not be presented as a proposition, theorem, or
 controlled approximation unless at least one nontrivial component estimate is
 constructed in the surrounding argument and every remaining term is explicitly
 classified as constructed, estimated, imported, conjectural, or open.  Pure
-telescoping displays belong in a proof-obligation map, conditional propagation
+finite laboratories, exact lattice data, diagnostic maps, and proof-obligation
+packages belong in examples, constructions, or remarks.  Use
+`controlledapproximation` only when the block declares the approximation
+regime or window, the norm or topology being controlled, the approximation
+parameter or limiting procedure, and a component estimate or residual budget.
+Titles with "gate", "map", "diagnostic", or "laboratory" are audited by
+`tools/audit_theorem_form.py` for those controls.  Pure telescoping displays
+belong in a proof-obligation map, conditional propagation
 template, remark, definition, or planning/dossier record.  The sum of named
 residual slots inherits the status of its weakest load-bearing component; it
 does not become a controlled error bound merely by being written as a normed

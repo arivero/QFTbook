@@ -1109,8 +1109,8 @@ supplies protected coordinates for these claims; it is not itself any one of
 the three claims.
 \end{definition}
 
-\begin{controlledapproximation}[D-term RG Schur-complement gate]
-\label{ca:glsm-mirror-dterm-rg-schur-gate}
+\begin{remark}[D-term Schur obligation]
+\label{rem:glsm-mirror-dterm-rg-schur-obligation}
 The universality part of
 Definition~\ref{def:glsm-admissible-mirror-datum} is a Wilsonian statement, not
 a slogan about \(D\)-terms.  A finite regulator can see the issue without any
@@ -1223,7 +1223,7 @@ prove that the difference in
 \eqref{eq:glsm-mirror-dterm-rg-source-metric} is irrelevant in the scaling
 limit.  Matching only the protected superpotential, the Schur Hamiltonian, and
 one source normalization does not determine source-normalized correlators.
-\end{controlledapproximation}
+\end{remark}
 
 \begin{remark}[Operator sources are not fixed by the spectrum alone]
 \label{rem:glsm-mirror-operator-source-data}
@@ -1256,8 +1256,8 @@ and chiral-ring identities are valuable tests of that map, not substitutes for
 it.
 \end{remark}
 
-\begin{controlledapproximation}[Boundary and defect comparison gate]
-\label{ca:glsm-mirror-boundary-defect-gate}
+\begin{remark}[Boundary and defect comparison obligation]
+\label{rem:glsm-mirror-boundary-defect-obligation}
 The topological and boundary part of a full mirror statement is another
 independent QFT probe.  In a finite cylinder regulator, a boundary condition
 \(B_\alpha\) is represented in the closed channel by a vector
@@ -1323,7 +1323,7 @@ respectively, boundary-state overlaps invisible to the tested local sources and
 defect actions invisible on the protected subspace.  Without this package,
 ``same superpotential'' and ``same protected local operators'' leave the
 boundary/defect sector of the mirror QFT unspecified.
-\end{controlledapproximation}
+\end{remark}
 
 The detailed comparison below is an observable comparison map for
 Conjecture~\ref{conj:abelian-glsm-hori-vafa-mirror-qft}.  The physical question
@@ -1381,9 +1381,9 @@ character lattice, and include the residual mirror orbifold.  Until that
 lattice datum is supplied, the displayed Hori--Vafa formula is a \(U(1)^s\)
 formula.
 
-\begin{controlledapproximation}[Global-form flux lattice gate for abelian
+\begin{construction}[Global-form flux lattice datum for abelian
 mirrors]
-\label{ca:glsm-global-form-flux-lattice-gate}
+\label{constr:glsm-global-form-flux-lattice-datum}
 This warning is not only a matter of notation.  Present the compact gauge
 torus as
 \[
@@ -1446,10 +1446,10 @@ is meaningful only after \(Q_i\in\Lambda_G^\vee\), \(T\in
 {\rm Hom}(\Lambda_G,\mathbb C/2\pi\ii\mathbb Z)\), the allowed exponential
 monomials, and the residual mirror orbifold have been supplied.  This is a
 physical topological-sector condition, not a harmless rescaling of \(T\).
-\end{controlledapproximation}
+\end{construction}
 
-\begin{controlledapproximation}[Chiral-superpotential phase-isometry gate]
-\label{ca:glsm-chiral-superpotential-phase-isometry-gate}
+\begin{construction}[Chiral-superpotential phase-isometry lattice]
+\label{constr:glsm-chiral-superpotential-phase-isometry-lattice}
 The dual variables \(Y_i\) are introduced by dualizing phase directions of the
 charged chiral fields.  A chiral superpotential is therefore admissible for the
 displayed abelian mirror formula only along the phase directions that it
@@ -1510,7 +1510,7 @@ superpotential \(P X_1X_2\).  Hypersurface GLSMs and other models with chiral
 superpotentials therefore require their own mirror interaction, orbifold, and
 operator-map data; they are not consequences of the bare abelian Hori--Vafa
 presentation by charge neutrality alone.
-\end{controlledapproximation}
+\end{construction}
 
 The local first-order functional for one charged chiral variable is the
 superspace analogue of the compact scalar construction.  Let \(B_i\) be a
@@ -3777,8 +3777,8 @@ below record the exact normalization targets that a full proof must hit; they
 are not consequences of the superpotential alone.
 For the boundary entry, the relevant targets are the annulus amplitudes,
 boundary-state one-point functions, defect-twined traces, and open-channel
-multiplicities of
-Controlled~Approximation~\ref{ca:glsm-mirror-boundary-defect-gate}, specialized
+multiplicities listed in
+Remark~\ref{rem:glsm-mirror-boundary-defect-obligation}, specialized
 to the cigar/Liouville Hilbert space and spin structures.
 
 Start with a \(U(1)\) vector multiplet \(V\), an ordinary chiral multiplet
@@ -4338,8 +4338,8 @@ factor contributes \(1/2-k/4\) and the dual-circle factor contributes
 This is why the integrated \(G_{-1/2}^+\overline G_{-1/2}^+\) deformation is
 marginal in the linear-dilaton normalization.
 
-\begin{controlledapproximation}[Asymptotic Liouville deformation filter]
-\label{ca:cigar-liouville-asymptotic-deformation-filter}
+\begin{construction}[Asymptotic Liouville deformation filter]
+\label{constr:cigar-liouville-asymptotic-deformation-filter}
 The first deformation classification near the Liouville end is a concrete
 calculation, not an appeal to the name of the superpotential.  Because
 \(Y\sim Y+2\pi\ii\) and \(Y=\sqrt{k}\mathcal Y\), a holomorphic exponential
@@ -4398,7 +4398,7 @@ for example through a finite-window response system
 \]
 The symbol \(\delta{\mathcal S}\) denotes the same spectral, boundary, and
 source data used in
-ControlledApproximation~\ref{ca:cigar-liouville-pathwise-fake-fixed-point-gate}.
+Remark~\ref{rem:cigar-liouville-pathwise-fake-fixed-point-obligation}.
 All allowed marginal or relevant directions must either be absent, redundant,
 or transported to zero with vanishing response in the target windows.
 
@@ -4418,7 +4418,7 @@ continuous spectral density while the periodic exponential inventory remains
 unchanged.  Excluding a fake Liouville endpoint therefore requires this
 deformation-response classification in addition to the statement that the
 primitive exponential is the only allowed protected \(F\)-term.
-\end{controlledapproximation}
+\end{construction}
 
 The Hori--Kapustin \(\kappa\)-deformation route is therefore best read here as
 a physical-continuity argument unless each global hypothesis is supplied.  One
@@ -4429,8 +4429,8 @@ control of nonnormalizable boundary deformations.  Local rigidity alone does
 not exclude a disconnected fake-Liouville fixed point with the same asymptotic
 superpotential.
 
-\begin{controlledapproximation}[Pathwise fake-Liouville exclusion gate]
-\label{ca:cigar-liouville-pathwise-fake-fixed-point-gate}
+\begin{remark}[Pathwise fake-Liouville exclusion obligation]
+\label{rem:cigar-liouville-pathwise-fake-fixed-point-obligation}
 To turn the preceding continuity argument into a QFT statement, one must
 transport more than protected endpoint labels.  Put the radial direction in a
 box of length \(L\), keep a UV cutoff \(\Lambda\), and let
@@ -4475,7 +4475,7 @@ and with no resonance pole crossing the chosen contours, no boundary condition
 leaving the self-adjoint domain, and no source vector leaving the operator
 topology being compared.
 
-This gate is stronger than local deformation rigidity.  The protected package
+This obligation is stronger than local deformation rigidity.  The protected package
 \[
   (c,\ Q,\ \widetilde W_{\rm Liouville},\
     K_{\rm asymp},\ H^1_{\rm def}=0)
@@ -4486,7 +4486,7 @@ boundary annulus amplitude, or a source matrix element.  Such a theory is the
 ``fake Liouville'' possibility.  It is excluded by a pathwise spectral,
 boundary, and source transport theorem, not by the absence of normalizable
 marginal tangent vectors at one endpoint.
-\end{controlledapproximation}
+\end{remark}
 
 The construction supplies a precise protected-data bridge:
 \[

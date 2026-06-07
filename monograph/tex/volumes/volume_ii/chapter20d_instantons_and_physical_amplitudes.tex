@@ -205,8 +205,8 @@ an observable map; \eqref{eq:instanton-source-functional-observable-extraction}
 is the physical claim.
 \end{controlledapproximation}
 
-\begin{controlledapproximation}[Finite source-functional amplitude laboratory]
-\label{ca:instanton-finite-source-functional-laboratory}
+\begin{example}[Finite source-functional amplitude laboratory]
+\label{ex:instanton-finite-source-functional-laboratory}
 A finite retained-window laboratory makes the same order visible in one
 amplitude coordinate.  Let \(c\) run through finitely many retained
 collective cells.  In cell \(c\), write \(\kappa_c\) for the collective
@@ -265,7 +265,7 @@ at most \(\kappa_c\), and perhaps \(\Delta_c^{\rm nz}\).  It has not yet
 computed the physical amplitude until the source determinant coordinate,
 normal-fluctuation response, and projection covector have also been supplied
 in the same channel.
-\end{controlledapproximation}
+\end{example}
 
 \section{The Density Normalization: Fluctuations Before Channels}
 \label{sec:instanton-density-gate}
@@ -803,8 +803,8 @@ observable coordinate.  The Ward identity becomes a physical statement only
 after the projection map has also been named and transported in the same
 source convention.
 
-\begin{controlledapproximation}[Mass/source RG transport in an instanton channel]
-\label{ca:instanton-mass-source-rg-channel-transport}
+\begin{construction}[Mass/source RG transport in an instanton channel]
+\label{constr:instanton-mass-source-rg-channel-transport}
 In the same finite source frame, write the zero-mode source coordinate as
 \[
   C_{\rm zm}(\mu)=M(\mu)+J(\mu),
@@ -935,7 +935,7 @@ in this source RG bookkeeping.  Thus the density power and the axial
 selection rule are still not the amplitude: the mass/source RG frame and the
 physical projection frame have to be paired without double-counting the
 running source directions.
-\end{controlledapproximation}
+\end{construction}
 
 \section{A Hard Four-Fermion Benchmark}
 \label{sec:instanton-hard-four-fermion-benchmark}
@@ -1357,9 +1357,9 @@ chiral processes.  Reading a chirality-balanced external process as a hard
 't Hooft amplitude sets the source determinant in the wrong coordinate.
 \end{controlledapproximation}
 
-\begin{controlledapproximation}[External helicity projection in the crossed
+\begin{construction}[External helicity projection in the crossed
 hard channel]
-\label{ca:instanton-crossed-helicity-projection-gate}
+\label{constr:instanton-crossed-helicity-projection}
 The crossed source kernel in
 \eqref{eq:instanton-thooft-crossed-channel-amplitude} still has to be
 evaluated on physical external Weyl spinors.  In the massless \(RR\to LL\)
@@ -1416,7 +1416,7 @@ wave-packet polarization tails, and the contraction
 \eqref{eq:instanton-crossed-helicity-factor}.  Dropping it turns the
 calculation back into a source-kernel coefficient, not a physical helicity
 amplitude.
-\end{controlledapproximation}
+\end{construction}
 
 \begin{controlledapproximation}[Mass-assisted interference channel]
 \label{ca:instanton-mass-assisted-interference-channel}
@@ -1507,8 +1507,8 @@ two-flavor axial invariant.  If one omits the complementary mass \(m_d\), the
 zero-mode Berezin integral has not been saturated.
 \end{controlledapproximation}
 
-\begin{controlledapproximation}[Same-coordinate amplitude-to-rate gate]
-\label{ca:instanton-same-coordinate-amplitude-rate-gate}
+\begin{remark}[Same-coordinate amplitude-to-rate obligation]
+\label{rem:instanton-same-coordinate-amplitude-rate-obligation}
 The preceding crossed and mass-assisted channels are useful only if the last
 linear map is typed before the observable is formed.  Let
 \(\mathbf A_{\rm out}^{I}\) be the retained all-outgoing source vector obtained
@@ -1573,7 +1573,7 @@ and \(\max_X\sum_Y|W_{XY}|\le L\) on an \(n\)-dimensional retained bin.  Then
 \end{equation}
 A measurement-basis or completeness error adds its own absolute term.
 
-This gate prevents three common shortcuts.  Squaring the all-outgoing source
+This obligation prevents three common shortcuts.  Squaring the all-outgoing source
 coefficient computes
 \((\mathbf A_{\rm out}^{I})^\dagger W\mathbf A_{\rm out}^{I}\), not
 \eqref{eq:instanton-same-coordinate-positive-rate}, unless the full
@@ -1585,7 +1585,7 @@ linear \(I+\bar I\) phase sum tests a charged source correlator; it becomes a
 positive rate only after the conjugate physical vector and the measurement
 matrix have been paired as in
 \eqref{eq:instanton-same-coordinate-positive-rate}.
-\end{controlledapproximation}
+\end{remark}
 
 \begin{proposition}[\(SU(3)\), \(N_f=2\) hard-source power and slow tail]
 \label{prop:su3-nf2-hard-source-power-slow-tail}

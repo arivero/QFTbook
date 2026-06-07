@@ -56,7 +56,7 @@
   saturation, determinant normalization substituted for source response, and
   a raw Euclidean source kernel read as a physical observable before
   projection.
-- `ca:instanton-finite-source-functional-laboratory`: finite retained-cell
+- `ex:instanton-finite-source-functional-laboratory`: finite retained-cell
   amplitude laboratory assembling collective weight, nonzero-mode determinant,
   differentiated zero-mode source coordinate, normal-mode covariance quotient,
   and physical projection in one coefficient, with the mass-saturation,
@@ -112,7 +112,7 @@
   `(4 partial_theta + V_A^src)(e^{i theta} det C_zm)=0`.  This connects the
   chirality-selection rule to the parent Ch20 anomalous source-Ward ledger
   before the hard benchmark is projected to a physical observable.
-- `ca:instanton-mass-source-rg-channel-transport`: separates the
+- `constr:instanton-mass-source-rg-channel-transport`: separates the
   source-functional RG cancellation from fixed-basis differentiated
   coefficients and from contractions with running physical source directions.
   The source-bundle connection is kept until the contraction is formed, so the
@@ -140,7 +140,7 @@
   anomalous two-flavor source monomial into the crossed \(RR\to LL\)
   scattering channel only after chirality selection, LSZ residues, and the
   observable choice have been fixed.
-- `ca:instanton-crossed-helicity-projection-gate`,
+- `constr:instanton-crossed-helicity-projection`,
   `eq:instanton-crossed-helicity-factor`, and
   `eq:instanton-crossed-helicity-amplitude`: project the crossed scalar
   hard-channel source coefficient onto fixed external Weyl spinors, keeping
@@ -159,7 +159,7 @@
   mass-assisted \(m_dB_{uu}\) two-source coordinate and pairs it only with a
   same-basis chirality-breaking reference amplitude, keeping the axial-invariant
   phase and residual budget explicit.
-- `ca:instanton-same-coordinate-amplitude-rate-gate`: requires the
+- `rem:instanton-same-coordinate-amplitude-rate-obligation`: requires the
   all-outgoing Euclidean source vector to be crossed, amputated, and projected
   into a physical external-state basis before it is squared or interfered with
   a reference amplitude.
@@ -444,7 +444,7 @@
   only with a same-basis chirality-breaking \(\bar m_u\) reference, and keeps
   \(\theta+\arg m_u+\arg m_d\), source degree, complementary zero-mode
   saturation, and residual propagation as explicit physical checks.
-- The same-coordinate amplitude-to-rate gate consolidates the preceding
+- The same-coordinate amplitude-to-rate obligation consolidates the preceding
   scattering-channel work into an end-to-end observable map.  It prevents a
   Euclidean all-outgoing source coefficient, an unamputated source vector, a
   same-channel interference term, and a positive cut from being treated as the
@@ -589,7 +589,7 @@
   amplitude vectors and rejects linear signed amplitude sums, unamputated
   source vectors, measurement omission, and unbudgeted quadratic residual
   propagation,
-  verifies the same-coordinate amplitude-to-rate gate with crossed/amputated
+  verifies the same-coordinate amplitude-to-rate obligation with crossed/amputated
   finite vectors, folded measurement matrices, unamputated source-overlap
   negative controls, wrong-channel reference rejection, theta-power typing,
   and exact vector interference residual propagation,
@@ -731,7 +731,7 @@
   channel, theta-charged linear sums read as rates, perturbative
   chirality-preserving references, and crossing-residual underbudgets.
 - 2026-06-07 issue #597 crossed helicity projection pass: added
-  `ca:instanton-crossed-helicity-projection-gate` after the crossed chiral
+  `constr:instanton-crossed-helicity-projection` after the crossed chiral
   channel.  The pass contracts the scalar crossed hard-channel coefficient
   with the external left/right Weyl spinors before calling it a fixed-helicity
   amplitude, and separates spin sums from scalar-coefficient squares.  The
@@ -766,7 +766,7 @@
   wrong same-flavor mass saturation, wrong source degree, chirality-preserving
   references, nonconjugated mass references, and omitted reference residuals.
 - 2026-06-07 issue #597 same-coordinate amplitude-to-rate pass: added
-  `ca:instanton-same-coordinate-amplitude-rate-gate` after the mass-assisted
+  `rem:instanton-same-coordinate-amplitude-rate-obligation` after the mass-assisted
   interference block.  The pass makes the all-outgoing source vector,
   crossing/amputation map, physical projection, positive measurement matrix,
   and same-channel interference reference separate typed objects.  The
@@ -916,7 +916,7 @@
   companion check rejects the corresponding shortcut routes in finite
   arithmetic.
 - 2026-06-07 finite source-functional laboratory pass: inserted
-  `ca:instanton-finite-source-functional-laboratory` immediately after the
+  `ex:instanton-finite-source-functional-laboratory` immediately after the
   route block.  The pass consolidates the amplitude architecture into one
   retained-cell coefficient with collective, determinant, zero-mode source,
   normal-fluctuation quotient, and physical projection factors.  The companion

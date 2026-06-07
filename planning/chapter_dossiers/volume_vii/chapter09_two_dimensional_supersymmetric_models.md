@@ -88,7 +88,7 @@ and
   continuous spectral measure, and noncompact wall reflection datum.  These
   separate mirror-data existence, D-term universality, and the actual duality
   claim.
-- `ca:glsm-mirror-dterm-rg-schur-gate`, `H_eff^M(E)`, `o_eff^M(E)`,
+- `rem:glsm-mirror-dterm-rg-schur-obligation`, `H_eff^M(E)`, `o_eff^M(E)`,
   `Gamma_{AB}^M(E,Omega)`, `B_RG(E)`: finite Wilsonian Schur-complement test
   for mirror `D`-term universality, including high-mode elimination,
   counterterm transport, source renormalization, source-resolvent bounds, and
@@ -96,12 +96,12 @@ and
 - `rem:glsm-mirror-operator-source-data`: finite-volume operator/source
   warning that equal spectra and protected multiplication data do not
   determine local-source matrix elements or source-normalized correlators.
-- `ca:glsm-mirror-boundary-defect-gate`, `Z^cl_{\alpha\beta,Lambda}`,
+- `rem:glsm-mirror-boundary-defect-obligation`, `Z^cl_{\alpha\beta,Lambda}`,
   `Z^op_{\alpha\beta,Lambda}`, `D_{r,Lambda}`, `Z_{r,Lambda}`:
   finite-regulator boundary-state and defect comparison data, including
   closed/open cylinder amplitudes, Cardy residuals, defect fusion, and
   defect-twined traces.
-- `ca:cigar-liouville-pathwise-fake-fixed-point-gate`,
+- `rem:cigar-liouville-pathwise-fake-fixed-point-obligation`,
   `S_{\Lambda,L}(kappa)`, `theta(s)`, `P_n`: finite-regulator
   cigar/Liouville pathwise transport package for energies, spectral
   projectors, reflection phases, pole residues, boundary annuli, source rows,
@@ -112,7 +112,7 @@ and
   noncompact spectral-resolution coordinate for the cigar/Liouville comparison,
   assembling reflection phase density, reference Plancherel measure, source
   rows, pole residues, and contact terms into a Euclidean two-point observable.
-- `ca:cigar-liouville-asymptotic-deformation-filter`, `ell`, `g_a`,
+- `constr:cigar-liouville-asymptotic-deformation-filter`, `ell`, `g_a`,
   `b_alpha`, `delta S`: asymptotic Liouville deformation classifier separating
   the integer periodic protected `F`-term inventory from real `D`-term,
   boundary-domain, and source/contact deformations that can move reflection
@@ -265,7 +265,7 @@ and
   full-QFT statement from the protected evidence lanes `D_loc`, `D_pert`,
   `D_vort`, and `D_obs`, and from the proof-debt lanes `E_cont`, `E_op`,
   `E_top`, `E_bg`, and `E_sing`.
-- Adds the global-form flux lattice gate for abelian mirrors.  The compact
+- Adds the global-form flux lattice datum for abelian mirrors.  The compact
   gauge torus is specified by its cocharacter lattice `Lambda_G`, fluxes lie in
   `Lambda_G`, charged fields and allowed mirror exponentials lie in
   `Lambda_G^vee`, and logarithmic FI periods are characters of `Lambda_G`.
@@ -500,10 +500,10 @@ and
   need spectral-response control.  Full derivation of the Liouville
   normalization, complete spectral measure, all pole-residue normalization,
   operator completeness, finite-field rigidity, and defect/boundary matching
-  remain obligations.  The boundary/defect gate makes that last obligation
+  remain obligations.  The boundary/defect obligation makes that last obligation
   concrete through closed/open cylinder amplitudes, Cardy residuals,
   defect-twined traces, and defect fusion data.  The pathwise fake-fixed-point
-  gate makes the Hori--Kapustin continuity obligation concrete through
+  obligation makes the Hori--Kapustin continuity obligation concrete through
   finite-regulator spectral/source/boundary transport, rather than local
   rigidity at a single endpoint.
 - Defines abelian GLSM data with fields, integer charges, invariant
@@ -732,7 +732,7 @@ and
     integrality, the noncompact field identification, rejection of
     metric-as-exact-QFT and rescaling-as-chiral-map shortcuts, the
     Hori--Kapustin local/global rigidity boundary, the
-    pathwise fake-Liouville exclusion gate comparing reflection phases, pole
+    pathwise fake-Liouville exclusion obligation comparing reflection phases, pole
     residues, boundary annuli, and source rows along a finite-regulator
     `kappa` path, and direct Gamma-function evaluation of the imported
     reflection target: continuous unitarity, `R(j)R(1-j)=1`, the positive
@@ -953,8 +953,8 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   companion rejects nonperiodic `exp(tau)` fugacities and flavor-labelled
   topological sectors under equal-charge flavor rotations.
 - The 2026-06-07 issue #847 chiral-superpotential phase-isometry pass adds
-  `ca:glsm-chiral-superpotential-phase-isometry-gate` after the global-form
-  lattice gate.  The pass shows that gauge invariance
+  `constr:glsm-chiral-superpotential-phase-isometry-lattice` after the global-form
+  lattice datum.  The pass shows that gauge invariance
   `sum_i p_Ai Q_i^a=0` does not imply preservation of the individual phase
   rotations used in abelian dualization.  The companion check uses the
   gauge-neutral monomial `P X_1 X_2` with charges `(1,1,-2)`, computes the
@@ -1038,13 +1038,13 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   regulated Hamiltonian energy levels, not only continuum phase-density
   bookkeeping.
 - The 2026-06-07 issue #848 D-term RG Schur-complement pass adds
-  `ca:glsm-mirror-dterm-rg-schur-gate`: a finite Wilsonian high-mode
+  `rem:glsm-mirror-dterm-rg-schur-obligation`: a finite Wilsonian high-mode
   elimination test in which two protected-equivalent mirror presentations have
   different retained Hamiltonians and source rows until the counterterm and
   source renormalization are transported together.  The companion checks the
   resulting source-resolvent observable and rejects Hamiltonian-only matching.
 - The 2026-06-07 issue #848 source-metric D-term pass extends
-  `ca:glsm-mirror-dterm-rg-schur-gate`: with two source columns, the scalar
+  `rem:glsm-mirror-dterm-rg-schur-obligation`: with two source columns, the scalar
   normalization that matches one operator leaves the mixed low-energy source
   metric different.  The companion checks the mixed entry and verifies that
   matching the full finite source-renormalization matrix, not only the
@@ -1057,14 +1057,14 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   operator/state completeness rather than another protected Hori--Vafa
   residue identity.
 - The 2026-06-07 issue #848 boundary/defect probe pass adds
-  `ca:glsm-mirror-boundary-defect-gate`: a finite cylinder-regulator
+  `rem:glsm-mirror-boundary-defect-obligation`: a finite cylinder-regulator
   comparison using boundary-state vectors, open-channel traces, Cardy residuals,
   defect operators, fusion residuals, and defect-twined traces.  The companion
   constructs protected-equivalent boundary and defect data that differ on
   annulus or twined-trace observables, rejecting protected-charge or
   protected-subspace shortcuts to the full topological sector map.
 - The 2026-06-07 issue #848 pathwise fake-fixed-point pass adds
-  `ca:cigar-liouville-pathwise-fake-fixed-point-gate`: a finite-regulator
+  `rem:cigar-liouville-pathwise-fake-fixed-point-obligation`: a finite-regulator
   continuity criterion for the Hori--Kapustin `kappa` route.  The companion
   constructs two protected-equivalent, locally rigid endpoints with equal
   finite energies but different reflection phases, pole residues, boundary
@@ -1077,7 +1077,7 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   phase-density shift against source rows, then rejects boundary-blind
   measures, reflection-phase-only comparisons, and omitted pole residues.
 - The 2026-06-07 issue #848 asymptotic deformation-filter pass adds
-  `ca:cigar-liouville-asymptotic-deformation-filter`: the text classifies
+  `constr:cigar-liouville-asymptotic-deformation-filter`: the text classifies
   integer `Y`-periodic Liouville `F`-term modes, identifies the primitive wall
   as the unique marginal nonconstant protected exponential, rejects fractional
   relevant modes without changed global data, and explains why `D`-term,

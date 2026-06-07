@@ -388,7 +388,7 @@ curvature, microscopic, and EFT scales.
   companion checks the finite mean, `1/N_sp` covariance, `1/N_sp^2` third
   cumulant, and negative controls for each false large-`N_sp` shortcut.
 - 2026-06-05 issue #729 Ward-completion laboratory: added
-  `ca:semiclassical-retained-ward-completion-laboratory`, a concrete
+  `ex:semiclassical-retained-ward-completion-laboratory`, a concrete
   two-coordinate retained source/noise model showing that a potential-only
   source can be repaired as a least-norm diagnostic but cannot be treated as
   the physical conserved stress source.  The paired finite check verifies the

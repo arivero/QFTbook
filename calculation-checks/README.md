@@ -887,7 +887,7 @@ Current checks:
   the amputated 't Hooft four-point assembly as a common-regulator product of
   density, Haar projection, chiral source determinants, individual zero-mode
   slots, nonzero-mode source quotient, amputation, physical projection, and
-  residual budget, the crossed hard-channel helicity-projection gate which
+  residual budget, the crossed hard-channel helicity-projection construction which
   evaluates the scalar \(RR\to LL\) source coefficient on external Weyl
   spinors before treating it as a fixed-helicity amplitude, rejecting
   collinear spinor bins, swapped antisymmetric Weyl slots, scalar-coefficient
@@ -899,7 +899,7 @@ Current checks:
   quotient bridge which integrates the pointwise Gaussian source mean and cubic
   source-cumulant correction through the same signed hard measure as the
   zero-mode slots,
-  the mass/source RG channel-transport gate which pairs the finite
+  the mass/source RG channel-transport construction which pairs the finite
   light-fermion determinant factor with fixed-basis differentiated source
   coefficients, running physical source contractions, and finite
   source-bundle connection cancellation tests,
@@ -938,7 +938,7 @@ Current checks:
   amplitude vector feeds a positive cut only through conjugate-sector pairing,
   the physical measurement matrix, source amputation, and quadratic residual
   propagation,
-  the same-coordinate amplitude-to-rate gate showing that an all-outgoing
+  the same-coordinate amplitude-to-rate obligation showing that an all-outgoing
   source vector must be crossed, amputated, and physically projected before it
   is squared or interfered with a reference amplitude, with exact negative
   controls for unamputated source overlaps, wrong-channel references, linear
@@ -3047,11 +3047,11 @@ Current checks:
   adding an operator-map status-guard span test in which primitive mirror rows
   miss a source-functional null direction visible to a tested observable, and
   rejecting ordinary \(U(1)\) product formulae on a quotient flux lattice,
-	  the global-form flux lattice gate which tests the quotient cocharacter
+	  the global-form flux lattice datum which tests the quotient cocharacter
 	  lattice, dual character lattice, enlarged theta-period lattice, forbidden
 	  cover-charge-one matter, quotient-compatible \(\Sigma Y\) periods, and
 	  residual mirror-orbifold order, the chiral-superpotential phase-isometry
-	  gate showing that gauge-neutral monomials need not preserve the individual
+	  lattice showing that gauge-neutral monomials need not preserve the individual
 	  phase rotations used in abelian dualization and rejecting bare Hori--Vafa
 	  data when broken-isometry spurion/mirror-interaction data are omitted,
 	  the charged-chiral mirror-variable
@@ -3138,7 +3138,7 @@ Current checks:
   finite-volume Robin quantization showing that the same wall datum changes
   the regulated radial Hamiltonian spectrum, the separation of admissible
   mirror-data existence, universality, and duality claims,
-  a finite D-term RG Schur-complement gate showing that high-mode
+  a finite D-term RG Schur-complement obligation showing that high-mode
   Kahler/measure couplings shift the retained Hamiltonian and source row
   unless counterterm transport and source renormalization are checked in the
   same low source-resolvent observable, extended to a two-source metric where
@@ -3155,7 +3155,7 @@ Current checks:
   while fractional relevant modes are not single-valued, that omitting the
   dual-circle contribution gives the wrong weight, and that wall-domain
   deformations can still move the continuous reflection density,
-  a pathwise fake-Liouville exclusion gate showing that protected endpoint
+  a pathwise fake-Liouville exclusion obligation showing that protected endpoint
   labels and local rigidity can still hide jumps in reflection phases, pole
   residues, boundary annuli, or source rows unless the Hori--Kapustin
   deformation carries a continuous finite-regulator spectral/source/boundary

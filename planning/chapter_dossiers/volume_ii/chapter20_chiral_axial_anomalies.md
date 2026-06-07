@@ -1591,7 +1591,7 @@
   cancellation, source-derivative covariance weights, and the invariance of
   \(\theta+\arg\det M\) under anomalous chiral rotations.
 - 2026-06-07 issue #597 mass/source channel RG pass: added
-  `ca:instanton-mass-source-rg-channel-transport` to the dedicated instanton
+  `constr:instanton-mass-source-rg-channel-transport` to the dedicated instanton
   amplitude chapter.  It separates source-functional RG covariance from
   differentiated channel coefficients: the finite light-fermion determinant
   cancels the full zero-mode determinant flow before source differentiation,

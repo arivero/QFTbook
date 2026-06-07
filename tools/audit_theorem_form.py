@@ -9,7 +9,10 @@ definition, since convention checks and definitional consequences must be
 written in prose or stated as separate theorem-family claims.
 
 It does not try to judge proof quality; it flags presentation patterns that
-create fake-looking proofs.
+create fake-looking proofs.  It also guards the custom
+``controlledapproximation`` environment from becoming a container for exact
+finite laboratories or proof-obligation maps: status-like titles must carry
+visible approximation controls and a component estimate.
 """
 
 from __future__ import annotations
@@ -27,6 +30,38 @@ THEOREM_ENV_RE = re.compile(
 
 STATEMENT_ENV_RE = re.compile(
     r"\\begin\{(assumption|hypothesis|theorem|proposition|lemma|corollary)\}(?:\[([^\]]*)\])?",
+)
+
+CONTROLLED_APPROX_ENV_RE = re.compile(
+    r"\\begin\{controlledapproximation\}(?:\[([^\]]*)\])?"
+    r"(.*?)\\end\{controlledapproximation\}",
+    re.DOTALL,
+)
+
+CONTROLLED_APPROX_STATUS_TITLE_RE = re.compile(
+    r"\b(gate|map|diagnostic|laboratory)\b",
+    re.IGNORECASE,
+)
+
+CONTROLLED_APPROX_CONTROL_RE = re.compile(
+    r"("
+    r"\\epsilon|\\varepsilon|\\delta|\\Lambda|"
+    r"\bregime\b|\bwindow\b|\bcutoff\b|\bregulator\b|"
+    r"\bretained\b|\bfinite\b|\blimit\b|\bparameter\b|"
+    r"\bscale\b|\btopology\b|\bnorm\b|\bas .*?\\to|"
+    r"\bD_\{\\max\}\b|\bs_0\b|\\tau|\bQ\s*\\ge"
+    r")",
+    re.IGNORECASE | re.DOTALL,
+)
+
+CONTROLLED_APPROX_ESTIMATE_RE = re.compile(
+    r"("
+    r"\\leq?|\\lesssim|\\to\s*0|O\(|o\(|"
+    r"\bbound(?:ed)?\b|\bestimate\b|\bresidual\b|\bremainder\b|"
+    r"\bmajorant\b|\bbudget\b|\berror\b|\btail\b|"
+    r"\bconverge[sd]?\b|\bvanish(?:es|ing)?\b"
+    r")",
+    re.IGNORECASE,
 )
 
 REVIEWED_ASSUMPTION_THEOREM_NEIGHBORS = {
@@ -792,6 +827,23 @@ def main() -> int:
                 line = text.count("\n", 0, match.start()) + 1
                 failures.append(
                     f"{path}:{line}: calculation-only wrapper {match.group(1)} [{title}]"
+                )
+
+        for match in CONTROLLED_APPROX_ENV_RE.finditer(text):
+            title = " ".join((match.group(1) or "").split())
+            if not title or not CONTROLLED_APPROX_STATUS_TITLE_RE.search(title):
+                continue
+            body = match.group(2)
+            missing: list[str] = []
+            if not CONTROLLED_APPROX_CONTROL_RE.search(body):
+                missing.append("regime/window/parameter")
+            if not CONTROLLED_APPROX_ESTIMATE_RE.search(body):
+                missing.append("component estimate")
+            if missing:
+                line = text.count("\n", 0, match.start()) + 1
+                failures.append(
+                    f"{path}:{line}: controlledapproximation [{title}] has "
+                    f"status-title vocabulary but lacks {', '.join(missing)}"
                 )
 
         lines = text.splitlines()

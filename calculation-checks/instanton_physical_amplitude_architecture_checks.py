@@ -9,7 +9,7 @@ Target claims:
   defines a finite-regulator source functional, and a physical amplitude is
   obtained only after source differentiation, source-dependent fluctuation
   averaging, collective integration, and the named physical projection.
-- `ca:instanton-finite-source-functional-laboratory`: a retained-cell
+- `ex:instanton-finite-source-functional-laboratory`: a retained-cell
   amplitude coordinate multiplies the collective weight, nonzero-mode
   determinant normalization, differentiated zero-mode source coordinate,
   normal-mode source quotient, and physical projection in one finite sum.
@@ -131,7 +131,7 @@ Target claims:
 - `prop:instanton-axial-ward-source-transport`: the Q=1 phase
   `exp(i theta)` and the two-flavor zero-mode source determinant must be
   transported together under the anomalous singlet axial Ward vector.
-- `ca:instanton-mass-source-rg-channel-transport`: the mass/source determinant
+- `constr:instanton-mass-source-rg-channel-transport`: the mass/source determinant
   and finite light-fermion nonzero-mode determinant factor cancel only at
   source-functional level; fixed-basis differentiated coefficients, running
   physical source contractions, and finite source-bundle connections have
@@ -153,7 +153,7 @@ Target claims:
   only after the anomalous chirality source monomial is selected, the barred
   slots are crossed with their LSZ residues, and the instanton/anti-instanton
   theta phases are read in a declared quadratic or interference observable.
-- `ca:instanton-crossed-helicity-projection-gate`: the crossed scalar source
+- `constr:instanton-crossed-helicity-projection`: the crossed scalar source
   kernel becomes a fixed-helicity physical amplitude only after the external
   Weyl spinors are contracted with the antisymmetric left and right spinor
   tensors in the same LSZ normalization.
@@ -173,7 +173,7 @@ Target claims:
   chirality-breaking reference amplitude carrying the conjugate `u` mass
   orientation; the retained phase is `theta + arg m_u + arg m_d` up to the
   channel phase.
-- `ca:instanton-same-coordinate-amplitude-rate-gate`: the all-outgoing
+- `rem:instanton-same-coordinate-amplitude-rate-obligation`: the all-outgoing
   Euclidean source vector must be crossed, amputated, and projected into a
   physical external-state basis before it is squared or interfered with a
   reference amplitude; unamputated source overlaps, wrong-channel references,
