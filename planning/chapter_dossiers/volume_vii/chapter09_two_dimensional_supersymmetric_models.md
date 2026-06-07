@@ -398,11 +398,15 @@ and
   classification, defects, boundaries, and contact terms.  The quotient metric,
   asymptotic dualization, ordinary chiral exponential, and logarithmic-vortex
   obstruction are recorded as `C_cl`, `C_dual`, and `C_vort` evidence.
-  The chapter now also records `C_spec` normalization targets: exact cigar
-  metric/dilaton, central charge `c=3+6/k`, continuous/discrete
-  `(j,m,bar m)` sectors, spectral-flow momentum/winding lattice, reflection
-  amplitude `R(j,m,bar m;k)`, the normalized asymptotic Liouville action, and
-  the Liouville exponential marginality check.  Full spectral measure,
+  The chapter now also records `C_spec` normalization targets: the
+  metric/dilaton as a large-level representative rather than exact finite-level
+  QFT data, central charge `c=3+6/k`, noncompact effective central charge,
+  continuous/discrete `(j,m,bar m)` sectors, the bosonic
+  `SL(2,R)_{k+2}` convention, spectral-flow momentum/winding lattice,
+  noncompact field identification, spin-structure pairing boundary, reflection
+  amplitude `R(j,m,bar m;k)` as an imported normalization target, the
+  ordinary-chiral endpoint Liouville action with background-charge coupling,
+  and the Liouville exponential marginality check.  Full spectral measure,
   pole-residue normalization, operator completeness, finite-field rigidity,
   and defect/boundary matching remain obligations.
 - Defines abelian GLSM data with fields, integer charges, invariant
@@ -581,9 +585,11 @@ and
     Kahler control, spectral measure, reflection amplitude, boundary
     conditions, and deformation classification.
   - the cigar/Liouville spectral-data cell: exact arithmetic for
-    `c=3+6/k`, Liouville exponential marginality, spectral-flow
-    momentum/winding integrality, and symbolic cancellation of the reflection
-    factors under `j -> 1-j`.
+    `c=3+6/k`, noncompact `c_eff=3`, Liouville exponential marginality,
+    spectral-flow momentum/winding integrality, the noncompact field
+    identification, rejection of metric-as-exact-QFT and rescaling-as-chiral-map
+    shortcuts, the Hori--Kapustin local/global rigidity boundary, and symbolic
+    cancellation of the imported reflection-target factors under `j -> 1-j`.
   - hypersurface adjunction signs, LG/sigma-model central-charge matching,
     residual finite-gauge invariant Jacobi monomial counting, and the
     Coulomb-coordinate singular-signal ledger.
@@ -640,11 +646,11 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   It imports and rechecks the stringbook floor in the chapter's conventions:
   charged-chiral dual domains and induced-measure obligations, the
   quantum-corrected mirror `D`-term/Kahler boundary, the intermediate
-  cigar-dual `D`-term action, exact cigar metric/dilaton and spectral labels,
-  reflection-amplitude normalization, and normalized Liouville action.  It
-  remains a partial #848 repair: full finite-field Kahler control, exact
-  spectral-measure/pole-residue matching, deformation rigidity, and boundary
-  state/defect matching remain open.
+  cigar-dual `D`-term action, cigar metric/dilaton representative versus exact
+  coset data, spectral labels, reflection-amplitude normalization, and
+  normalized Liouville action.  It remains a partial #848 repair: full
+  finite-field Kahler control, exact spectral-measure/pole-residue matching,
+  deformation rigidity, and boundary state/defect matching remain open.
 - The 2026-06-03 projective-space residue pass extends that scrutiny from
   mirror critical points to a protected observable: it computes the finite
   Hessian/residue trace behind the `P^{N-1}` A-model selection rule and records
@@ -805,3 +811,14 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   rejects repeated `1/(4 pi)` density normalization, doubled-log
   holomorphic coefficients, and half-density `Sigma Y` compact-period
   shortcuts.
+- The 2026-06-07 issue #848 cigar/Liouville re-audit corrects the endpoint
+  architecture after the external review: the GLSM dual variable is explicitly
+  kept twisted chiral until a separate mirror/T-duality automorphism is
+  supplied; the cigar metric/dilaton is downgraded to a scheme-dependent
+  sigma-model representative; exact finite-level data are assigned to the
+  supercoset spectrum, field identification, reflection, measure, and sewing
+  package; the ordinary-chiral Liouville action now includes the
+  background-charge curvature/source coupling; and the Hori--Kapustin
+  `kappa`-path is stated as a physical-continuity argument requiring global
+  hypotheses beyond local rigidity.  The companion checks the same boundaries
+  with finite negative controls.

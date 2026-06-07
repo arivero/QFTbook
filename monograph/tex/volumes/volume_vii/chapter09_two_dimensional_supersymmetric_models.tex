@@ -3287,14 +3287,21 @@ behavior
   \operatorname{Re}Y\to+\infty,
   \label{eq:n2-liouville-asymptotic-kahler}
 \end{equation}
-with the sign convention appropriate to twisted chiral superspace.  This is
-the \(\mathcal N=2\) Liouville presentation: an asymptotic cylinder
-coordinate \(Y\) together with the exponential twisted superpotential
-\eqref{eq:n2-liouville-twisted-superpotential}.
+with the sign convention appropriate to twisted chiral superspace.  At this
+stage \(Y\) is still a twisted chiral field.  Thus
+\eqref{eq:n2-liouville-twisted-superpotential} is the twisted-chiral
+Liouville presentation produced by the GLSM dualization, not yet the ordinary
+chiral Liouville action often used to describe the endpoint SCFT.  Passing to
+that endpoint presentation requires a mirror/T-duality automorphism that maps
+the twisted \(F\)-term measure to the ordinary chiral \(F\)-term measure, sends
+the periodic scalar and fermions to their Liouville variables, and transports
+the \(R\)-current, supercharges, and boundary conditions at the noncompact end.
+The rescaling \(Y=\sqrt{k}\mathcal Y\) below fixes normalization after this map;
+it is not by itself the chirality-changing step.
 
 The full cigar/Liouville comparison must also hit the exact spectral
 normalization.  In the coset convention compatible with the asymptotic
-cylinder, the exact cigar target data are
+cylinder, a standard large-level sigma-model representative is
 \begin{equation}
   ds^2_{\rm cig}
   =
@@ -3303,17 +3310,37 @@ cylinder, the exact cigar target data are
   \Phi_{\rm cig}=-\log\cosh r,
   \qquad
   \chi\sim\chi+2\pi ,
-  \label{eq:n2-cigar-exact-metric-dilaton}
+  \label{eq:n2-cigar-metric-dilaton-representative}
 \end{equation}
 so \(r\to\infty\) is a circle of radius \(\sqrt{k}\) together with a linear
-dilaton of background charge \(Q=1/\sqrt{k}\).  The central charge is
+dilaton of background charge \(Q=1/\sqrt{k}\).  This metric/dilaton pair is
+not the finite-level QFT datum by itself: away from the asymptotic region it is
+scheme- and field-redefinition-dependent, and the additive dilaton constant
+fixes the normalization of noncompact amplitudes.  The exact finite-level
+object is the noncompact supercoset with its Hilbert space, branching data,
+reflection relation, normalizability prescription, spin structures, and sewing
+constraints.  Its central charge is
 \begin{equation}
   c_{\rm cig}=c_{\rm Liouville}=3+\frac6k .
   \label{eq:n2-cigar-liouville-central-charge}
 \end{equation}
+The large value of \(c_{\rm cig}\) as \(k\to0\) is not a compact
+\(c\)-theorem paradox.  The noncompact theory has no normalizable conformally
+invariant vacuum; the bottom of the continuous spectrum in the zero
+momentum/winding sector has
+\[
+  h_{\min}=\frac1{4k},
+  \qquad
+  c_{\rm eff}=c_{\rm cig}-24h_{\min}=3,
+\]
+so finite-size state counting and vacuum normalizability are part of the
+comparison data.
+
 The continuous and discrete sectors are not visible in
-\(\widetilde W_{\rm Liouville}\) alone.  A coset primary is labelled by
-\((j,m,\overline m)\), with
+\(\widetilde W_{\rm Liouville}\) alone.  In the Volume~V convention the
+supersymmetric \(SL(2,\mathbb R)_k/U(1)\) coset is built from bosonic
+\(\widehat{\mathfrak{sl}}(2,\mathbb R)_{k+2}\) primaries and two charged
+fermions.  A coset primary is labelled by \((j,m,\overline m)\), with
 \[
   h=\frac{-j(j-1)+m^2}{k},
   \qquad
@@ -3346,6 +3373,21 @@ and winding are
   \label{eq:n2-cigar-spectral-flow-momentum-winding}
 \end{equation}
 so the flowed sector condition is \(w\in\mathbb Z\).
+The noncompact field identification extending the discrete range is
+\begin{equation}
+  \Psi^{sl,(\eta,\overline\eta)}_{j,m,\overline m}
+  \simeq
+  \Psi^{sl,(\eta+1,\overline\eta+1)}
+       _{\frac{k+2}{2}-j,\,
+         m-\frac{k+2}{2},\,\overline m-\frac{k+2}{2}} .
+  \label{eq:n2-cigar-noncompact-field-identification}
+\end{equation}
+It preserves the exact circle momentum \(n\) and changes the winding
+representative by an integral unit.  There is no independent identification
+with opposite left/right spectral-flow shifts: that shortcut would change the
+exact momentum sector.  The spin-structure choice and modular left-right
+pairing determine which flowed sectors occur in the Hilbert space and must be
+matched by the Liouville presentation.
 
 The reflection amplitude is part of the operator normalization.  With
 \(\delta=2j-1\),
@@ -3364,7 +3406,13 @@ The reflection amplitude is part of the operator normalization.  With
 \end{equation}
 For \(j=\frac12+\ii s\) this is the scattering phase relating the two
 asymptotic radial waves, and its poles encode the discrete normalizable
-states.  The continuous spectral measure, the pole residues, and the
+states.  In this chapter the displayed formula is an imported normalization
+target, not yet a derivation from the Liouville path integral.  The constant
+\(\nu(k)\), the Liouville coupling \(\mu\), and the additive dilaton constant
+must be fixed in the same scheme; special levels where the gamma factors have
+zeros or poles, for instance \(k=1\), require a limiting or renormalized
+operator prescription.  The continuous spectral measure, the pole residues,
+spin-structure pairing, and the
 reflection relation
 \[
   \Psi_{j,m,\overline m}
@@ -3376,7 +3424,7 @@ same exponential but a different finite-field \(K(Y,\overline Y)\) is a
 different theory unless this spectral package and the allowed deformation
 classification agree.
 
-In the asymptotic Liouville variables write
+In the asymptotic Liouville target variables write
 \[
   Y=\sqrt{k}\,{\mathcal Y},
   \qquad
@@ -3384,11 +3432,12 @@ In the asymptotic Liouville variables write
   \qquad
   \widetilde y\sim\widetilde y+\frac{2\pi}{\sqrt{k}} .
 \]
-The normalized \(\mathcal N=2\) Liouville action at the endpoint has the
-asymptotic superspace form
-\begin{equation}
-  S_L
-  =
+After the mirror/T-duality automorphism described above has been supplied, the
+ordinary chiral endpoint presentation has the flat-worldsheet asymptotic
+superspace form
+\begin{align}
+  S_L^{\rm flat}
+  &=
   \int d^2z
   \left[
   -\frac1{8\pi}\int d^4\theta\,{\mathcal Y}\overline{\mathcal Y}
@@ -3398,13 +3447,45 @@ asymptotic superspace form
   \overline\mu\int d^2\overline\theta\,
   e^{-\sqrt{k}\overline{\mathcal Y}}
   \right],
-  \label{eq:n2-liouville-normalized-action}
-\end{equation}
-together with the background charge \(Q=1/\sqrt{k}\).  The exponential has
+  \label{eq:n2-liouville-normalized-action}\\
+  S_L^{\rm bg}
+  &=
+  \frac{Q}{8\pi}\int d^2z\,\sqrt h\,\mathcal R^{(2)}\varrho,
+  \qquad
+  Q=\frac1{\sqrt{k}} .
+  \label{eq:n2-liouville-background-charge}
+\end{align}
+The flat superspace action alone hides the background charge.  In the
+asymptotic convention used here, the curvature coupling fixes the improvement
+terms in the generators:
+\[
+  T_{\rm asymp}=T_{\rm free}-Q\,\partial^2\varrho,
+  \qquad
+  J_R=J_R^{\rm ferm}+2\ii Q\,\partial\widetilde y,
+\]
+with the corresponding derivative terms in \(G^\pm\).  The exponential has
 left and right weight \(1/2\) before the two supercharges act: the radial
 factor contributes \(1/2-k/4\) and the dual-circle factor contributes
-\(k/4\).  This is why the integrated \(G_{-1/2}^+\overline G_{-1/2}^+\)
-deformation is marginal in the linear-dilaton normalization.
+\(k/4\).  Equivalently, its component wall contains the asymptotic interaction
+\[
+  \Delta S_{\rm wall}
+  =
+  \int d^2z\,
+  \mu\bigl(k\lambda^+\widetilde\lambda^+
+  +\sqrt{k}F\bigr)e^{-\sqrt{k}(\varrho+\ii\widetilde y)}
+  +\text{c.c.}
+\]
+This is why the integrated \(G_{-1/2}^+\overline G_{-1/2}^+\) deformation is
+marginal in the linear-dilaton normalization.
+
+The Hori--Kapustin \(\kappa\)-deformation route is therefore best read here as
+a physical-continuity argument unless each global hypothesis is supplied.  One
+needs existence of the fixed point along the \(\kappa\)-path, continuity of the
+noncompact spectrum and boundary conditions, absence of bifurcation or phase
+transition, local rigidity against normalizable marginal deformations, and
+control of nonnormalizable boundary deformations.  Local rigidity alone does
+not exclude a disconnected fake-Liouville fixed point with the same asymptotic
+superpotential.
 
 The construction supplies a precise protected-data bridge:
 \[
@@ -3414,7 +3495,7 @@ The construction supplies a precise protected-data bridge:
   +\text{IR vector constraint}
   \\
   &\hspace{3em}\Longrightarrow
-  \mathcal N=2\ \text{Liouville data}.
+  \mathcal N=2\ \text{protected Liouville \(F\)-term/asymptotics}.
   \end{aligned}
 \]
 This is the \(C_{\rm cl}\), \(C_{\rm dual}\), and \(C_{\rm vort}\) evidence

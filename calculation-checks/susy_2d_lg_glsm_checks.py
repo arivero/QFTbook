@@ -20,7 +20,7 @@ the quantum-product observable relation, the A-model degree-one zero-mode
 measure bridge, the finite measure-scheme covariance test for that
 degree-one coefficient, the mirror-conjecture observable boundary separating
 full-QFT data from protected evidence, the full-action/IR-universality data
-boundary for mirror presentations, and cigar/Liouville spectral-data cells,
+boundary for mirror presentations, and cigar/Liouville spectral-status cells,
 plus the Hori--Vafa
 residue/direct-instanton comparison map, with the direct degree-one incidence
 Jacobian computed before comparison, and the one-vortex source-frame
@@ -40,8 +40,9 @@ root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree filters, and
 conditional residual-propagation maps, full-action data-interface tests,
 finite Legendre-domain and boundary-term cells, cigar central-charge and
-spectral-flow arithmetic, Liouville marginality checks, symbolic reflection
-factor involution, plus finite density/Jacobian transport tests and double-entry
+effective-central-charge arithmetic, spectral-flow and field-identification
+arithmetic, Liouville marginality checks, and symbolic imported
+reflection-target bookkeeping, plus finite density/Jacobian transport tests and double-entry
 mirror/direct-vortex comparisons whose direct side includes a separately
 computed incidence orientation, degree gate, and compactification gate, are
 computed directly from finite data rather than by substituting the displayed
@@ -114,7 +115,10 @@ zero-mode multiplicity errors, compactification/contact mutations,
 hyperplane-normalization changes, omitted off-pairing controls, line-count-only
 or vortex-fugacity-only observable claims, stale FI-coordinate changes,
 missing measure Jacobians, untransported orientation signs, protected-sector
-shortcuts to full mirror equivalence, and finite-gauge invariance failures are
+shortcuts to full mirror equivalence, metric/dilaton representatives used as
+exact finite-level QFT data, rescalings used as chirality-changing mirror maps,
+local-rigidity shortcuts to global uniqueness, compact c-theorem shortcuts in
+noncompact continua, and finite-gauge invariance failures are
 rejected when the finite model can represent them; the Hori--Vafa residue alone
 is also rejected as a substitute for the direct incidence/vortex measure package,
 operator map, and off-pairing controls.
@@ -123,7 +127,10 @@ does not prove continuum GLSM existence, Hori--Vafa mirror equivalence,
 vortex compactness, derivation of the vortex fluctuation spectra or gauge-ghost
 complex, determinant nonvanishing beyond the supplied finite input,
 virtual-cycle construction, uniform remainder estimates, or the component
-estimates in the vortex-to-observable proof-obligation map.
+estimates in the vortex-to-observable proof-obligation map.  The cigar
+reflection formula is treated as imported target bookkeeping here; the
+companion does not derive its Liouville normalization, continuous measure,
+special-level limits, or pole residues.
 """
 
 from __future__ import annotations
@@ -3299,6 +3306,17 @@ def check_cigar_liouville_spectral_data_cell() -> None:
         background_charge_squared = Fraction(1, k_level)
         central_charge = Fraction(3) + 6 * background_charge_squared
         assert_equal("N=2 cigar/Liouville central charge", central_charge, 3 + Fraction(6, 1) / k_level)
+        continuum_threshold_weight = Fraction(1, 4) / k_level
+        assert_equal(
+            "noncompact cigar effective central charge stays finite",
+            central_charge - 24 * continuum_threshold_weight,
+            Fraction(3),
+        )
+        assert_equal(
+            "compact c-theorem shortcut is invalid for noncompact cigar continuum",
+            central_charge <= Fraction(3),
+            False,
+        )
 
         liouville_radial_weight = Fraction(1, 2) - k_level / 4
         liouville_dual_circle_weight = k_level / 4
@@ -3326,6 +3344,97 @@ def check_cigar_liouville_spectral_data_cell() -> None:
     winding = (m + eta + mbar + etabar) / k_level
     assert_equal("spectral-flow momentum is integral in selected sector", n_momentum.denominator, 1)
     assert_equal("spectral-flow winding is integral in selected sector", winding.denominator, 1)
+
+    def momentum_winding(
+        m_label: Fraction,
+        mbar_label: Fraction,
+        eta_label: Fraction,
+        etabar_label: Fraction,
+    ) -> tuple[Fraction, Fraction]:
+        return (
+            m_label + eta_label - mbar_label - etabar_label,
+            (m_label + eta_label + mbar_label + etabar_label) / k_level,
+        )
+
+    field_identification_shift = (k_level + 2) / 2
+    identified_momentum, identified_winding = momentum_winding(
+        m - field_identification_shift,
+        mbar - field_identification_shift,
+        eta + 1,
+        etabar + 1,
+    )
+    assert_equal(
+        "noncompact field identification preserves exact circle momentum",
+        identified_momentum,
+        n_momentum,
+    )
+    assert_equal(
+        "noncompact field identification shifts winding representative integrally",
+        identified_winding - winding,
+        -1,
+    )
+    opposite_flow_momentum, _ = momentum_winding(m, mbar, eta + 1, etabar - 1)
+    assert_equal(
+        "opposite left/right flow is not a noncompact field identification",
+        opposite_flow_momentum == n_momentum,
+        False,
+    )
+
+    exact_cigar_qft_data = {
+        "coset Hilbert space",
+        "bosonic SL(2,R)_{k+2} branching",
+        "field identification",
+        "spin-structure pairing",
+        "reflection amplitude",
+        "spectral measure",
+        "pole residues",
+        "sewing constraints",
+    }
+    semiclassical_metric_data = {
+        "metric representative",
+        "dilaton representative",
+        "asymptotic radius",
+        "asymptotic background charge",
+    }
+    assert_equal(
+        "metric/dilaton representative is not exact finite-level QFT data",
+        exact_cigar_qft_data <= semiclassical_metric_data,
+        False,
+    )
+
+    ordinary_chiral_bridge_required = {
+        "twisted-to-chiral mirror automorphism",
+        "fermion map",
+        "supercharge map",
+        "R-current improvement",
+        "F-term measure transport",
+        "noncompact boundary transport",
+    }
+    mere_rescaling = {"Y=sqrt(k)Y_chiral"}
+    assert_equal(
+        "Liouville chiral presentation is not obtained by rescaling alone",
+        ordinary_chiral_bridge_required <= mere_rescaling,
+        False,
+    )
+
+    local_hori_kapustin_inputs = {
+        "same twisted F-term",
+        "same asymptotic Kahler potential",
+        "same central charge",
+        "local rigidity",
+    }
+    global_hori_kapustin_inputs = local_hori_kapustin_inputs | {
+        "fixed point exists along kappa path",
+        "continuous noncompact spectrum",
+        "no bifurcation",
+        "no phase transition",
+        "boundary deformations controlled",
+    }
+    assert_equal(
+        "local Hori-Kapustin rigidity is not global uniqueness",
+        global_hori_kapustin_inputs <= local_hori_kapustin_inputs,
+        False,
+    )
 
     def reflection_factors(delta_sign: int) -> Counter[str]:
         factors: Counter[str] = Counter()
@@ -3358,7 +3467,7 @@ def check_cigar_liouville_spectral_data_cell() -> None:
         }
     )
     assert_equal(
-        "symbolic cigar reflection relation R(j)R(1-j)=1",
+        "symbolic imported cigar reflection target R(j)R(1-j)=1",
         reflection_product,
         Counter(),
     )

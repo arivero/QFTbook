@@ -3069,9 +3069,12 @@ Current checks:
   operator/state map, and spectral measure, a finite charged-chiral
   Legendre-domain cell showing the \(Y+\overline Y>0\) singular boundary and
   noncompact \(D\)-term boundary contribution, and cigar/Liouville spectral
-  data cells checking \(c=3+6/k\), Liouville exponential marginality,
-  spectral-flow momentum/winding arithmetic, and symbolic reflection
-  involution, plus the hypersurface GLSM
+  data cells checking \(c=3+6/k\), finite noncompact \(c_{\rm eff}=3\),
+  Liouville exponential marginality, spectral-flow momentum/winding arithmetic,
+  the noncompact field identification, metric/dilaton-versus-exact-QFT status,
+  the twisted-chiral-to-ordinary-chiral bridge boundary, the
+  Hori--Kapustin local-rigidity/global-uniqueness distinction, and symbolic
+  imported reflection-target involution, plus the hypersurface GLSM
   adjunction sign,
   Landau--Ginzburg/sigma-model central-charge matching condition, residual
   finite-gauge invariant Jacobi monomial count, and Coulomb-coordinate
