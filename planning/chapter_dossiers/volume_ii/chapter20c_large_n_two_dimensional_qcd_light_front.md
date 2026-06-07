@@ -61,13 +61,13 @@ The chapter establishes:
   endpoint weights, the associated nonnegative self-adjoint mass operator, and
   compact resolvent/discrete spectrum for \(\gamma_2>0\);
 - the finite DLCQ matrix and its exact quadratic-form identity;
-- a controlled-approximation block stating the data needed before finite DLCQ
-  eigenvalues become continuum meson-mass claims;
-- controlled approximation
-  `ca:qcd2-dlcq-current-correlator-residue-contract`, which upgrades the
-  finite DLCQ output from masses alone to current correlators by requiring the
-  source vectors, spectral residues, source normalization, and residue
-  extrapolation data;
+- a remark stating the data needed before finite DLCQ eigenvalues become
+  continuum meson-mass claims;
+- remark `rem:qcd2-dlcq-current-correlator-residue-map`, which upgrades the
+  finite DLCQ output from masses alone to a finite current spectral measure by
+  requiring the source vectors, spectral residues, source normalization, and
+  residue extrapolation data, without claiming continuum controlled
+  approximation status;
 - a positive scope section identifying exactly what the two-dimensional
   large-\(N_c\) construction establishes.
 
@@ -130,8 +130,10 @@ The chapter establishes:
 ## Audit Notes
 
 - 2026-06-06 issue #596/#725 DLCQ current-residue pass: added
-  `ca:qcd2-dlcq-current-correlator-residue-contract` so the large-\(N_c\)
-  two-dimensional QCD chapter distinguishes finite meson masses from the
-  source spectral measure that determines current correlators and residues.
-  Promoted `calculation-checks/thooft_model_checks.py` to an extended
-  evidence contract with a fixed-spectrum/different-residue negative control.
+  `ca:qcd2-dlcq-current-correlator-residue-contract`, later re-audited for
+  #844 as `rem:qcd2-dlcq-current-correlator-residue-map`, so the
+  large-\(N_c\) two-dimensional QCD chapter distinguishes finite meson masses
+  from the source spectral measure that determines current correlators and
+  residues.  Promoted `calculation-checks/thooft_model_checks.py` to an
+  extended evidence contract with a fixed-spectrum/different-residue negative
+  control.

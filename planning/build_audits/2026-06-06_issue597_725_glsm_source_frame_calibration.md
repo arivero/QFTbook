@@ -34,3 +34,12 @@ Re-audit notes:
   TeX; issue/process notes remain in planning and dossiers.
 - Hori--Vafa remains a protected-data benchmark, not an authority substituted
   for the direct vortex calculation.
+
+Follow-up re-audit:
+- Issue #844 review correctly identified that the source-frame ratio is exact
+  finite retained algebra and that the displayed amplitude inequality is
+  conditional on separately supplied target, reference, and frame estimates.
+  The monograph surface was demoted to
+  `rem:glsm-one-vortex-source-frame-calibration-map`; the companion remains a
+  finite proof-obligation check, not a controlled-QFT estimate of the vortex
+  determinant/source-frame error.

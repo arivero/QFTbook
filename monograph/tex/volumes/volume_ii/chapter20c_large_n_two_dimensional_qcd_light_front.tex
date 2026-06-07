@@ -706,7 +706,7 @@ off-diagonal matrix elements.  In the massless case, the constant vector is
 an exact zero mode of the kernel part at every \(K\), matching the continuum
 constant solution.
 
-\begin{controlledapproximation}[DLCQ use of the 't Hooft equation]
+\begin{remark}[DLCQ use of the 't Hooft equation]
 A DLCQ calculation of two-dimensional large-\(N_c\) QCD must state the
 harmonic resolution \(K\), the treatment of zero modes, the endpoint mass
 coordinate, the coefficient \(\gamma_2\) and its matching to
@@ -715,10 +715,10 @@ extrapolation model for \(K\to\infty\).  A finite eigenvalue of
 \eqref{eq:qcd2-thooft-dlcq-matrix} is an eigenvalue of a regulated
 matrix; it becomes a continuum meson mass only after these convergence data
 are supplied.
-\end{controlledapproximation}
+\end{remark}
 
-\begin{controlledapproximation}[DLCQ current correlators and residues]
-\label{ca:qcd2-dlcq-current-correlator-residue-contract}
+\begin{remark}[DLCQ current spectral measures and residues]
+\label{rem:qcd2-dlcq-current-correlator-residue-map}
 The physical output of the large-\(N_c\) model is often a current correlator
 or form-factor residue, not only a list of mass eigenvalues.  At finite
 resolution, a color-singlet source \(J_\alpha\) is represented by a vector
@@ -744,7 +744,10 @@ representation
   \label{eq:qcd2-dlcq-current-spectral-measure}
 \end{equation}
 The underlying spectral measure depends on the source vectors, through the
-displayed overlaps.
+displayed overlaps.  Equation~\eqref{eq:qcd2-dlcq-current-spectral-measure}
+is an exact finite-dimensional resolvent identity.  Continuum control requires
+the additional source, renormalization, endpoint, pole-window, spectral-weight,
+and \(K\to\infty\) data listed below.
 The finite decay-constant or current-residue datum is therefore
 \[
   f_{K,r}^{(\alpha)}=s_{K,\alpha}\!\cdot u_{K,r},
@@ -764,7 +767,7 @@ an extrapolation error for the spectral weights
 \(|s_{K,\alpha}\!\cdot u_{K,r}|^2\).  The mass equation supplies the meson
 locations; the current source supplies the residues with which those mesons
 appear in a physical correlator.
-\end{controlledapproximation}
+\end{remark}
 
 The companion script
 \[

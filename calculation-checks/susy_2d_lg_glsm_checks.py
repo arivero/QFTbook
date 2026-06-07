@@ -19,13 +19,14 @@ degree-one coefficient, and the mirror-conjecture observable boundary separating
 full-QFT data from protected evidence, plus the Hori--Vafa
 residue/direct-instanton comparison map, with the direct degree-one incidence
 Jacobian computed before comparison, and the one-vortex source-frame
-calibration test distinguishing a component amplitude from the common mirror
-fugacity, in Volume VII Chapter 09.
+calibration proof-obligation map distinguishing a component amplitude from the
+common mirror fugacity, in Volume VII Chapter 09.
 Independent construction: exact rational charge arithmetic, determinant
 elimination, finite chain-complex rank checks, Berezin-degree tests,
 source-differentiated zero-mode extraction tests, retained-window signed/mass
 coefficient bounds, oriented source-minor component-amplitude cells,
-component-to-component source-frame calibration ratios,
+component-to-component source-frame calibration ratios with supplied component
+and frame residuals,
 normal-mode cumulant factors and original-to-dual frame tags,
 root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree filters, and

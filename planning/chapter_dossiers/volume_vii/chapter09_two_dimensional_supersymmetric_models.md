@@ -638,6 +638,11 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   denominators, omitted contact terms, and parallel-source shortcuts, and the
   GLSM companion is promoted to an extended evidence contract with explicit
   convention tags.
+- The 2026-06-06 issue #844 source-frame status re-audit demotes that
+  calibration surface to `rem:glsm-one-vortex-source-frame-calibration-map`.
+  The retained ratio is exact finite algebra; the physical amplitude estimate
+  is conditional on separately supplied target, reference, and source-frame
+  transport bounds in one regulator convention.
 - The 2026-06-06 issue #844 GLSM/Hori--Vafa architecture pass rephrases the
   reader-facing entrance to the mirror comparison as an observable comparison
   map.  The chapter now states the physical question, the compared finite-data

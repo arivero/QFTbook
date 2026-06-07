@@ -495,7 +495,9 @@ Current checks:
   constant zero mode, the endpoint-exponent small-mass expansion in the
   subtracted finite-part convention, the finite-form monotonicity shadow of
   the closed continuum quadratic-form construction, and the finite
-  current-correlator spectral-measure identity.  It includes a negative
+  current-correlator spectral-measure identity.  The current-residue block is
+  an exact finite resolvent/spectral-source map, not a continuum controlled
+  approximation.  It includes a negative
   control where two finite mass matrices have the same eigenvalues but
   different current-source residues, so the current correlator changes even
   though the regulated meson masses do not.
@@ -2968,10 +2970,12 @@ Current checks:
 	  contribution, residual telescope, and negative controls for norm-product,
 	  orientation-flip, contact-omitted, parallel-source, mirror-coefficient, and
 	  underbudgeted-propagator shortcuts, the finite source-frame calibration
-	  check showing that a reference component amplitude predicts a target only
-	  through the direct source-minor/contact ratio, with negative controls for
-	  mirror-fugacity-only, dual-operator-tag, zero-reference,
-	  contact-omitted, and parallel-source shortcuts, the retained-window
+	  proof-obligation check showing that a reference component amplitude
+	  predicts a target only through the direct source-minor/contact ratio once
+	  component and frame residual estimates are separately supplied, with
+	  negative controls for mirror-fugacity-only, dual-operator-tag,
+	  zero-reference, contact-omitted, and parallel-source shortcuts, the
+	  retained-window
 	  one-vortex coefficient noncancellation bound with signed/mass
   margin, residual telescope, relative-error bound, and negative controls for
   omitted determinant residuals and symmetry-only nonzero claims, the

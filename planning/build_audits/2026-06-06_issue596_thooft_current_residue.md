@@ -21,6 +21,15 @@
 - Monograph hygiene: issue numbers and process language stay in planning
   files, not in the TeX.
 
+## Follow-up Re-audit
+
+Issue #844 review correctly identified that the finite current-residue block
+is an exact finite resolvent/spectral-measure map, not a controlled
+approximation to the continuum current correlator.  The monograph surface was
+therefore demoted to `rem:qcd2-dlcq-current-correlator-residue-map`, and the
+companion evidence contract now describes exact finite spectral-source
+bookkeeping rather than a continuum approximation estimate.
+
 ## Verification Target
 
 - Focused `thooft_model_checks.py` run and py_compile.

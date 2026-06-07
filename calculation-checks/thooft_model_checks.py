@@ -5,8 +5,8 @@ Evidence contract.
 Target claims: the trace-delta color normalization, subtracted 't Hooft
   kernel sign, finite DLCQ quadratic-form identity, positivity and massless
   zero-mode checks, endpoint exponent small-mass expansion, finite-form
-  monotonicity shadow, and the finite current-residue contract in
-  ``ca:qcd2-dlcq-current-correlator-residue-contract``.
+  monotonicity shadow, and the finite current-residue map in
+  ``rem:qcd2-dlcq-current-correlator-residue-map``.
 Independent construction: all finite matrices, quadratic forms, endpoint
   series, finite spectral measures, and source resolvents are constructed
   directly with exact rational arithmetic rather than by substituting the
@@ -23,7 +23,8 @@ Negative controls: the script rejects the trace-half color normalization,
 Scope boundary: these checks do not prove continuum DLCQ convergence,
   completeness of the light-front Hilbert space, a four-dimensional QCD
   statement, or numerical accuracy for a chosen extrapolation; they verify the
-  finite algebra and spectral-source bookkeeping that such claims must carry.
+  exact finite resolvent algebra and spectral-source bookkeeping that such
+  claims must carry.
 Primary derivation route: derive the finite regulator matrix from the
   subtracted kernel, compute its quadratic form, then assemble finite current
   correlators from eigenvalues together with source-vector residues.

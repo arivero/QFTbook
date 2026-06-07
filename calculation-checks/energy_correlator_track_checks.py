@@ -6,8 +6,8 @@ Target claims: selected calorimetric measures, track-EEC moment identities,
   collinear track-function split moments, measured endpoint-atom gluing,
   measured EEC moment closure, the response/covariance contract in
   ``ca:measured-eec-response-covariance-contract``, and the finite
-  track-function moment-truncation budget in
-  ``ca:track-function-measured-test-budget``.
+  track-function measured-test warning in
+  ``rem:track-function-measured-test-warning``.
 Independent construction: all moments, endpoint corrections, ensemble
   covariances, response covariances, and charged-bin probabilities are
   recomputed from finite event samples or finite probability measures using
@@ -26,8 +26,9 @@ Negative controls: full-calorimeter endpoint atoms fail selected-energy
   tests while failing finite charged-bin means and variances.
 Scope boundary: these checks do not prove continuum light-ray OPE
   convergence, perturbative factorization, detector calibration, track
-  factorization, or nonperturbative QCD estimates; they verify the finite
-  algebra that such claims must satisfy.
+  factorization, a quantitative moment-problem estimate, or nonperturbative
+  QCD estimates; they verify the finite algebra and non-identifiability
+  warning that such claims must satisfy.
 Primary derivation route: start from finite selected energy measures and
   finite track-fraction probability laws, assemble endpoint atoms and
   detector-response vectors event by event, and compute the induced means,

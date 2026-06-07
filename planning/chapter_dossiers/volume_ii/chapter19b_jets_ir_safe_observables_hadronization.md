@@ -144,10 +144,11 @@ The chapter establishes:
 - Definition `def:finite-track-observable-lift`, defining the finite lift of
   calorimetric energy polynomials to track-based observables by conditional
   expectation over track functions, including the diagonal moment terms;
-- controlled approximation `ca:track-function-measured-test-budget`, recording
-  the residual \(B_{\rm tr}^{(m)}(\mathcal F\,|\,C)\) when a finite
+- remark `rem:track-function-measured-test-warning`, recording the measured
+  discrepancy \(B_{\rm tr}^{(m)}(\mathcal F\,|\,C)\) when a finite
   moment-matched track model is used for charged-track bins, thresholds, or
-  detector-response vectors;
+  detector-response vectors; the block is a non-identifiability warning unless
+  a metric-determining test class and quantitative moment estimate are supplied;
 - a measure-theoretic formulation of energy correlators as continuous
   functionals of the calorimetric energy measure;
 - Lemma `lem:smeared-energy-correlator-continuity`, proving soft and
@@ -593,9 +594,10 @@ The chapter establishes:
   verifies a nontrivial three-point kernel by exact enumeration and catches
   the false first-moment replacement.
 - 2026-06-06 issue #725/#526/#630 track-function measured-test pass: added
-  `ca:track-function-measured-test-budget` so finite moment-matched track
-  models carry an explicit residual on the actual charged-track test family
-  and covariance vectors.  Promoted
+  `ca:track-function-measured-test-budget`, later re-audited for #844 as
+  `rem:track-function-measured-test-warning`, so finite moment-matched track
+  models carry an explicit discrepancy on the actual charged-track test family
+  and covariance vectors without claiming a controlled approximation.  Promoted
   `calculation-checks/energy_correlator_track_checks.py` to an extended
   evidence contract with a probability-measure negative control: two track
   laws on \([0,1]\) match low moments and low-degree track-EEC polynomials but

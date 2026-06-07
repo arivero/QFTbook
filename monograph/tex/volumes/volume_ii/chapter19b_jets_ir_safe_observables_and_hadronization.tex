@@ -3895,8 +3895,8 @@ are part of the definition of the lifted observable.  Omitting them, or
 replacing every track variable by its first moment, changes the observable
 whose short-distance coefficient is being computed.
 
-\begin{controlledapproximation}[Track-function truncation for measured tests]
-\label{ca:track-function-measured-test-budget}
+\begin{remark}[Track-function truncation for measured tests]
+\label{rem:track-function-measured-test-warning}
 The moment formulae above are exact only for the displayed polynomial
 energy-measure tests.  A finite collider comparison normally reports
 histogram bins, trigger regions, ratios, or a detector-response vector.  These
@@ -3924,7 +3924,10 @@ missing track-distribution direction enters a declared measured test family
 \end{equation}
 where \(C=\{(i_a,E_a,y_a)\}\) is the retained short-distance configuration
 and the variables are independently drawn from the corresponding track
-coordinates in the finite lift.  For polynomial \(\Phi\) whose repeated-label
+coordinates in the finite lift.  This display defines a measured-test
+discrepancy; it is not a controlled approximation unless one also supplies a
+metric-determining test class and a quantitative estimate of the moment
+truncation in that topology.  For polynomial \(\Phi\) whose repeated-label
 blocks have size at most \(m\), moment matching can make
 \(B_{\rm tr}^{(m)}\) vanish.  For a charged-energy threshold, a finite
 histogram bin, or a response window with sharp edges, the same low moments do
@@ -3946,7 +3949,7 @@ on the reported test vectors.  A fitted average charged fraction, or even a
 finite list of matched moments, is a coordinate approximation to the
 nonperturbative track distribution; it is not by itself a prediction for all
 charged-track bins.
-\end{controlledapproximation}
+\end{remark}
 
 The same bookkeeping explains the collinear composition law behind
 \eqref{eq:paired-track-function-evolution}.  If a parent with energy \(E\)
