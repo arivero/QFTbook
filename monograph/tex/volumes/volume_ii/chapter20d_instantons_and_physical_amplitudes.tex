@@ -1366,6 +1366,92 @@ into the assembled channel and then into the Wilsonian, pole, spectral, or
 inclusive projection described below.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Screened hard-size amplitude window]
+\label{ca:instanton-hard-screened-retained-window}
+The tail subtraction in
+\eqref{eq:instanton-hard-window-tail-subtracted-integral} controls the power
+endpoint of the differentiated zero-mode slots.  It does not, by itself, show
+that the retained instanton sizes dominate a physical amplitude.  Such a
+statement needs a channel-specific long-size mechanism from the same regulated
+observable: for example a Higgs scale, a thermal/medium scale, a finite-volume
+gap, a spectral-bin source envelope, or a Wilsonian matrix element estimate.
+
+Assume that, after the same color projection, source amputation, determinant
+normalization, and physical projection used in the hard four-source channel, the
+long-size part of a selected channel \(\mathcal C\) has the absolute majorant
+\begin{equation}
+  |\mathcal K_{\mathcal C}(\rho)|
+  \le
+  K_{\mathcal C}\,
+  \rho^{A_{\mathcal C}-1}
+  \exp[-d_{\mathcal C}Q\rho-m_{\rm scr}^2\rho^2],
+  \qquad
+  A_{\mathcal C}>0,\quad d_{\mathcal C}>0 .
+  \label{eq:instanton-hard-screened-channel-majorant}
+\end{equation}
+Here \(A_{\mathcal C}\) is the logarithmic size-shell power before the
+exponential factors.  For the raw \(SU(3)\), \(N_f=2\) hard four-source density
+before the large-\(s\) zero-mode tails are inserted,
+\(\rho^{32/3}\dd\rho=\rho^{35/3}\dd\log\rho\), so
+\(A_{\mathcal C}=35/3\).  After the four individual singular-gauge tails have
+been inserted, the endpoint shell has power \(-1/3\), and the right tool is the
+tail-subtracted evaluation above, not a positive saddle estimate.  The
+coefficient \(d_{\mathcal C}Q\) is a proven hard-source envelope for the
+selected source/projection window; it is not supplied by the BPST moduli
+measure alone.  Likewise \(m_{\rm scr}\) is a physical screening scale in the
+same regulated problem, not a hand cutoff placed on the size integral.
+
+The logarithmic shell of the majorant is
+\[
+  \rho^{A_{\mathcal C}}
+  \exp[-d_{\mathcal C}Q\rho-m_{\rm scr}^2\rho^2]\,\dd\log\rho .
+\]
+Its stationary point is fixed by the combined equation
+\begin{equation}
+  2m_{\rm scr}^2\rho_*^2+d_{\mathcal C}Q\rho_*-A_{\mathcal C}=0,
+  \qquad
+  \rho_*=
+  \frac{2A_{\mathcal C}}
+       {d_{\mathcal C}Q+
+        \sqrt{d_{\mathcal C}^{\,2}Q^2+8A_{\mathcal C}m_{\rm scr}^2}} .
+  \label{eq:instanton-hard-screened-log-shell}
+\end{equation}
+The hard-only shell \(A_{\mathcal C}/(d_{\mathcal C}Q)\) and the
+screened-only shell \(\sqrt{A_{\mathcal C}/(2m_{\rm scr}^2)}\) are limiting
+checks on this equation, not substitutes for it.  Forgetting the passage from
+\(\dd\rho\) to \(\dd\log\rho\), replacing \(A_{\mathcal C}=35/3\) by
+\(32/3\) in the hard four-source channel, or dropping either the hard envelope
+or the physical screening scale moves the shell and changes the amplitude
+window.
+
+Consequently the long-size contribution is controlled only after the source
+and projection norms are kept with the size estimate:
+\begin{equation}
+\begin{aligned}
+  |\mathcal A^I_{\mathcal C,>}(Q,R)|
+  &\le
+  K_{\mathcal C}\,
+  M_{\rm src}(\mathcal C)\,
+  M_{\rm phys}(\mathcal C)
+  \int_{R/Q}^{\infty}
+    \rho^{A_{\mathcal C}-1}
+    e^{-d_{\mathcal C}Q\rho-m_{\rm scr}^2\rho^2}
+    \,\dd\rho                                      \\
+  &\quad
+  +E_{\rm det}^{>}+E_{\rm nm}^{>}+E_{\rm tail}^{>}+E_{\rm phys}^{>} .
+\end{aligned}
+  \label{eq:instanton-hard-screened-window-bound}
+\end{equation}
+This is the amplitude-level use of the screened shell.  It asks where the
+retained physical contribution lives after the fluctuation determinant, source
+window, and projection have supplied their data.  It is not a new moduli-space
+volume formula and it is not a phenomenological instanton regime by itself.
+A 't Hooft-style four-point calculation must still exhibit the determinant,
+nonzero-mode source response, zero-mode slots, amputation, projection, and
+residuals in the common regulator before the screened window can be read as a
+physical amplitude contribution.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Hard benchmark channel comparison]
 \label{ca:instanton-hard-benchmark-gate-ledger}
 A controlled comparison of two hard four-source instanton coefficients at

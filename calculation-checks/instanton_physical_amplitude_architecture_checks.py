@@ -142,6 +142,11 @@ Target claims:
 - `ca:instanton-hard-window-tail-subtraction`: the hard four-source window is
   controlled as a core integral plus leading and subleading analytic endpoint
   tails, rather than as a formal size integral.
+- `ca:instanton-hard-screened-retained-window`: a screened hard-size amplitude
+  window uses the logarithmic shell power, the hard source envelope, the
+  physical screening scale, and the source/projection residual budget together;
+  hard-only, screening-only, moduli-only, and wrong `d rho` power substitutions
+  change the amplitude window.
 - `sec:instanton-hard-wilsonian-ope-datum` and
   `ca:instanton-wilsonian-matching-covariance`: the hard source kernel
   becomes a Wilsonian local four-fermion input only after a dimensionless size
@@ -184,7 +189,9 @@ Independent construction:
   source kernel with formal theta-phase bookkeeping,
   mass-assisted two-source interference with exact formal mass/theta powers,
   physical projection bins, residual sums, two-term hard-window endpoint
-  tail subtraction, Wilsonian coefficient/operator scheme covariance,
+  tail subtraction, screened hard-size retained-window stationarity and
+  source/projection residual budgets, Wilsonian coefficient/operator scheme
+  covariance,
   boundary-flux/anomalous-dimension cancellation, and hard-window power checks
   directly, rather than importing BPST radial integrals or copying a monograph
   coefficient.
@@ -315,7 +322,9 @@ Negative controls:
   reference-amplitude error removed,
   single Euclidean cell sum used as a spectral-bin observable, a
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
-  slot, a leading-tail-only hard-window approximation, a fused-density
+  slot, a leading-tail-only hard-window approximation, hard-only or
+  screening-only shell substitutions, a moduli-only screened-window bound, a
+  wrong `d rho` power used as a logarithmic shell power, a fused-density
   endpoint substituted for differentiated slots, a fixed short-instanton
   vertex under a moving size boundary, a short
   coefficient used as a physical amplitude, a finite scheme change applied to
@@ -3747,6 +3756,163 @@ def check_hard_window_tail_subtraction() -> None:
     )
 
 
+def check_hard_screened_retained_size_window() -> None:
+    b0_su3_nf2 = beta0(3, 2)
+    zero_mode_power = Fraction(6)
+    measure_power = Fraction(-5)
+    rho_density_power = b0_su3_nf2 + zero_mode_power + measure_power
+    log_shell_power = rho_density_power + 1
+
+    assert_equal(
+        "screened hard-window density power",
+        rho_density_power,
+        Fraction(32, 3),
+    )
+    assert_equal(
+        "screened hard-window logarithmic shell power",
+        log_shell_power,
+        Fraction(35, 3),
+    )
+
+    hard_envelope = Fraction(2)
+    rho_star = Fraction(3, 2)
+    screening_mass_squared = (
+        log_shell_power - hard_envelope * rho_star
+    ) / (2 * rho_star * rho_star)
+    assert_equal(
+        "screened hard-window exact mass choice",
+        screening_mass_squared,
+        Fraction(52, 27),
+    )
+
+    def log_shell_derivative(
+        shell_power: Fraction,
+        rho: Fraction,
+        include_hard: bool,
+        include_screening: bool,
+    ) -> Fraction:
+        return (
+            shell_power
+            - (hard_envelope * rho if include_hard else 0)
+            - (2 * screening_mass_squared * rho * rho if include_screening else 0)
+        )
+
+    assert_equal(
+        "screened hard-window mixed stationarity",
+        log_shell_derivative(
+            log_shell_power,
+            rho_star,
+            include_hard=True,
+            include_screening=True,
+        ),
+        Fraction(0),
+    )
+    assert_gt(
+        "screened hard-window derivative before shell",
+        log_shell_derivative(
+            log_shell_power,
+            Fraction(1),
+            include_hard=True,
+            include_screening=True,
+        ),
+        Fraction(0),
+    )
+    assert_gt(
+        "screened hard-window derivative after shell has changed sign",
+        Fraction(0),
+        log_shell_derivative(
+            log_shell_power,
+            Fraction(2),
+            include_hard=True,
+            include_screening=True,
+        ),
+    )
+
+    hard_only_shell = log_shell_power / hard_envelope
+    screened_only_shell_squared = log_shell_power / (2 * screening_mass_squared)
+    assert_equal(
+        "screened hard-window mixed shell below hard-only shell",
+        rho_star < hard_only_shell,
+        True,
+    )
+    assert_equal(
+        "screened hard-window mixed shell below screened-only shell",
+        rho_star * rho_star < screened_only_shell_squared,
+        True,
+    )
+    assert_not_equal(
+        "hard-only shell is not stationary with screening present",
+        log_shell_derivative(
+            log_shell_power,
+            hard_only_shell,
+            include_hard=True,
+            include_screening=True,
+        ),
+        Fraction(0),
+    )
+    screened_only_shortcut_residual_squared = (
+        hard_envelope * hard_envelope * screened_only_shell_squared
+    )
+    assert_gt(
+        "screened-only shell has a nonzero hard-envelope residual",
+        screened_only_shortcut_residual_squared,
+        Fraction(0),
+    )
+    assert_equal(
+        "using d rho power misses the d log rho shell",
+        log_shell_derivative(
+            rho_density_power,
+            rho_star,
+            include_hard=True,
+            include_screening=True,
+        ),
+        -Fraction(1),
+    )
+
+    density_tail_bound = Fraction(1, 20)
+    source_norm = Fraction(7, 5)
+    physical_projection_norm = Fraction(5, 6)
+    screened_size_bound = (
+        density_tail_bound * source_norm * physical_projection_norm
+    )
+    determinant_residual = Fraction(1, 100)
+    normal_mode_residual = Fraction(1, 120)
+    projection_residual = Fraction(1, 90)
+    actual_long_size_remainder = (
+        screened_size_bound
+        + determinant_residual
+        + normal_mode_residual
+        + projection_residual
+    )
+    complete_bound = actual_long_size_remainder
+    underbudget_without_projection = (
+        screened_size_bound
+        + determinant_residual
+        + normal_mode_residual
+    )
+
+    assert_equal(
+        "screened hard-window bound keeps source and projection norms",
+        screened_size_bound,
+        Fraction(7, 120),
+    )
+    assert_not_equal(
+        "moduli-only screened tail is not the physical long-size bound",
+        density_tail_bound,
+        screened_size_bound,
+    )
+    assert_equal(
+        "screened hard-window residual budget controls the physical remainder",
+        actual_long_size_remainder <= complete_bound,
+        True,
+    )
+    assert_equal(
+        "omitting physical-projection residual underbudgets screened window",
+        actual_long_size_remainder <= underbudget_without_projection,
+        False,
+    )
+
+
 def check_hard_wilsonian_ope_boundary_flow() -> None:
     b0_su3_nf2 = beta0(3, 2)
     zero_mode_power = Fraction(6)
@@ -4585,6 +4751,7 @@ def main() -> None:
     check_source_determinant_stability_bound()
     check_su3_two_flavor_hard_source_power_and_tail()
     check_hard_window_tail_subtraction()
+    check_hard_screened_retained_size_window()
     check_hard_wilsonian_ope_boundary_flow()
     check_wilsonian_matching_scheme_covariance()
     check_hard_benchmark_channel_comparison_and_ratio()
