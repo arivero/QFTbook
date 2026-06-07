@@ -1223,6 +1223,67 @@ chiral processes.  Reading a chirality-balanced external process as a hard
 't Hooft amplitude sets the source determinant in the wrong coordinate.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[External helicity projection in the crossed
+hard channel]
+\label{ca:instanton-crossed-helicity-projection-gate}
+The crossed source kernel in
+\eqref{eq:instanton-thooft-crossed-channel-amplitude} still has to be
+evaluated on physical external Weyl spinors.  In the massless \(RR\to LL\)
+channel write the outgoing left-handed spinors as
+\(\lambda_{1,\alpha}\), \(\lambda_{2,\beta}\) and the crossed incoming
+right-handed spinors as \(\widetilde\lambda_{3,\dot\alpha}\),
+\(\widetilde\lambda_{4,\dot\beta}\), all in the same LSZ normalization used
+in \(X_{\rm cr}\).  The helicity projection of the local zero-mode tensor is
+\begin{equation}
+  \mathsf H_{\rm hel}(1_L,2_L;3_R,4_R)
+  =
+  \epsilon^{\alpha\beta}\lambda_{1,\alpha}\lambda_{2,\beta}\,
+  \epsilon^{\dot\alpha\dot\beta}
+  \widetilde\lambda_{3,\dot\alpha}\widetilde\lambda_{4,\dot\beta}.
+  \label{eq:instanton-crossed-helicity-factor}
+\end{equation}
+Thus the fixed-helicity physical channel is represented in this basis as
+\begin{equation}
+  \mathcal M_I^{RR\to LL}
+  =
+  \ee^{\ii\theta}\,
+  C_I^{RR\to LL}\,
+  \mathsf H_{\rm hel}(1_L,2_L;3_R,4_R)
+  +R_{\rm hel},
+  \label{eq:instanton-crossed-helicity-amplitude}
+\end{equation}
+where \(C_I^{RR\to LL}\) contains the density, Haar projection, source
+determinants, zero-mode form factors, normal-source quotient, crossing
+residues, and size-window convention already assembled above.
+
+The spinor factor is part of the external-state projection.  If
+\(\lambda_1\) and \(\lambda_2\) are proportional, or if
+\(\widetilde\lambda_3\) and \(\widetilde\lambda_4\) are proportional, the
+fixed-helicity amplitude vanishes in that bin even though
+\(C_I^{RR\to LL}\) can be nonzero.  Interchanging the two left-handed slots or
+the two right-handed slots changes the sign of
+\(\mathsf H_{\rm hel}\), so the flavor/color orientation convention and the
+external-state ordering must be transported together.  A spin-summed rate or
+an inclusive bin replaces
+\(|\mathsf H_{\rm hel}|^2\) by the corresponding positive sum over the
+declared external basis and phase-space measure; it is not obtained by
+squaring the scalar coefficient \(C_I^{RR\to LL}\) alone.
+
+The residual budget for a fixed helicity bin therefore refines
+\eqref{eq:instanton-thooft-four-point-bound} by adding an external-state term,
+\[
+  |R_{\rm hel}|
+  \le
+  B_{\rm dens}+B_{\rm slot}+B_{\rm Haar}+B_{\rm src}
+  +B_{\rm nz-src}+B_{\rm cr}+B_{\rm hel}+B_{\rm tail}+B_{\rm proj}+B_{\rm sec}.
+\]
+The term \(B_{\rm hel}\) records LSZ spinor normalization, crossing signs,
+wave-packet polarization tails, and the contraction
+\eqref{eq:instanton-crossed-helicity-factor}.  Dropping it turns the
+calculation back into a source-kernel coefficient, not a physical helicity
+amplitude.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Mass-assisted interference channel]
 \label{ca:instanton-mass-assisted-interference-channel}
 The mixed terms in

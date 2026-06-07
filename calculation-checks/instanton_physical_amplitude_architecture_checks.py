@@ -148,6 +148,10 @@ Target claims:
   only after the anomalous chirality source monomial is selected, the barred
   slots are crossed with their LSZ residues, and the instanton/anti-instanton
   theta phases are read in a declared quadratic or interference observable.
+- `ca:instanton-crossed-helicity-projection-gate`: the crossed scalar source
+  kernel becomes a fixed-helicity physical amplitude only after the external
+  Weyl spinors are contracted with the antisymmetric left and right spinor
+  tensors in the same LSZ normalization.
 - `ca:instanton-mass-assisted-interference-channel`: a theta-linear physical
   observable arises only when a mass-assisted one-instanton two-source
   channel, such as `m_d B_uu`, is interfered with a same-basis
@@ -215,6 +219,7 @@ Independent construction:
   an amputated 't Hooft four-point assembly ledger,
   crossed chiral `RR -> LL` channel extraction from the all-outgoing
   source kernel with formal theta-phase bookkeeping,
+  crossed hard-channel helicity projections from finite two-component spinors,
   mass-assisted two-source interference with exact formal mass/theta powers,
   same-coordinate amplitude-to-rate typing with crossed/amputated vectors,
   positive measurement matrices, same-channel interference, source-overlap
@@ -354,6 +359,11 @@ Negative controls:
   positive rate, a chirality-preserving perturbative reference used despite
   the selection rule, or a crossed-channel residual budget with the crossing
   term removed,
+  a scalar crossed hard coefficient treated as a fixed-helicity amplitude,
+  collinear external spinors treated as nonzero in the helicity bin, swapped
+  external Weyl slots used without the antisymmetric sign, a scalar coefficient
+  squared as a spin-summed rate without helicity/phase-space weights, or a
+  helicity residual budget with the external-state term removed,
   a mass-assisted two-source channel used as the massless four-source
   vertex, a wrong same-flavor mass used to saturate the complementary
   zero modes, a reference amplitude in the wrong source degree or chirality
@@ -5077,6 +5087,113 @@ def check_thooft_crossed_chiral_channel() -> None:
     )
 
 
+def check_crossed_hard_helicity_projection_gate() -> None:
+    Vec2 = tuple[Fraction, Fraction]
+
+    def bracket(left: Vec2, right: Vec2) -> Fraction:
+        return left[0] * right[1] - left[1] * right[0]
+
+    density = Fraction(11, 13)
+    haar_projection = Fraction(2, 7)
+    zero_mode_source = Fraction(70)
+    slot_product = Fraction(5, 9)
+    crossing_residue = Fraction(17, 29)
+    normal_source = Fraction(21, 20)
+    scalar_crossed_kernel = product(
+        [
+            density,
+            haar_projection,
+            zero_mode_source,
+            slot_product,
+            crossing_residue,
+            normal_source,
+        ]
+    )
+    assert_gt("crossed scalar hard source coefficient is nonzero", scalar_crossed_kernel, 0)
+
+    left_u: Vec2 = (Fraction(1), Fraction(2))
+    left_d: Vec2 = (Fraction(3), Fraction(5))
+    right_u: Vec2 = (Fraction(2), Fraction(1))
+    right_d: Vec2 = (Fraction(5), Fraction(3))
+    left_factor = bracket(left_u, left_d)
+    right_factor = bracket(right_u, right_d)
+    helicity_factor = left_factor * right_factor
+    physical_helicity_amplitude = scalar_crossed_kernel * helicity_factor
+    assert_equal("left-handed external spinor determinant", left_factor, Fraction(-1))
+    assert_equal("right-handed external spinor determinant", right_factor, Fraction(1))
+    assert_not_equal(
+        "scalar crossed source coefficient is not the fixed-helicity amplitude",
+        scalar_crossed_kernel,
+        physical_helicity_amplitude,
+    )
+
+    collinear_left_d: Vec2 = (Fraction(2), Fraction(4))
+    collinear_helicity_factor = bracket(left_u, collinear_left_d) * right_factor
+    assert_equal(
+        "collinear external Weyl spinors kill the fixed-helicity bin",
+        scalar_crossed_kernel * collinear_helicity_factor,
+        Fraction(0),
+    )
+    assert_not_equal(
+        "nonzero scalar source kernel cannot revive a zero helicity projection",
+        scalar_crossed_kernel,
+        scalar_crossed_kernel * collinear_helicity_factor,
+    )
+
+    swapped_left_factor = bracket(left_d, left_u)
+    swapped_amplitude = scalar_crossed_kernel * swapped_left_factor * right_factor
+    assert_equal("swapping left Weyl slots flips the helicity sign", swapped_amplitude, -physical_helicity_amplitude)
+    assert_not_equal(
+        "external-state ordering sign is not optional",
+        swapped_amplitude,
+        physical_helicity_amplitude,
+    )
+
+    second_helicity_factor = Fraction(3, 2)
+    phase_space_weights = (Fraction(1, 2), Fraction(3, 5))
+    spin_summed_rate = (
+        phase_space_weights[0] * physical_helicity_amplitude * physical_helicity_amplitude
+        + phase_space_weights[1]
+        * scalar_crossed_kernel
+        * second_helicity_factor
+        * scalar_crossed_kernel
+        * second_helicity_factor
+    )
+    scalar_squared_shortcut = scalar_crossed_kernel * scalar_crossed_kernel
+    assert_not_equal(
+        "spin-summed rate is not the scalar hard coefficient squared",
+        spin_summed_rate,
+        scalar_squared_shortcut,
+    )
+    assert_gt("positive helicity-bin rate is nonnegative", spin_summed_rate, 0)
+
+    residuals = {
+        "assembly": Fraction(1, 120),
+        "crossing": Fraction(1, 330),
+        "helicity": Fraction(1, 370),
+        "projection": Fraction(1, 420),
+    }
+    residual_sum = sum(residuals.values(), Fraction(0))
+    residual_budget = sum(abs(value) for value in residuals.values())
+    shifted_amplitude = physical_helicity_amplitude + residual_sum
+    assert_equal(
+        "fixed-helicity residual telescope",
+        shifted_amplitude - physical_helicity_amplitude,
+        residual_sum,
+    )
+    assert_equal(
+        "fixed-helicity residual bound",
+        abs(shifted_amplitude - physical_helicity_amplitude) <= residual_budget,
+        True,
+    )
+    underbudget_without_helicity = residual_budget - abs(residuals["helicity"])
+    assert_equal(
+        "omitting helicity residual underbudgets physical external-state projection",
+        abs(shifted_amplitude - physical_helicity_amplitude) <= underbudget_without_helicity,
+        False,
+    )
+
+
 def check_mass_assisted_theta_linear_interference_channel() -> None:
     q_plus_mass_assisted_u = ("u_L", "ubar_R")
     q_plus_four_source = ("u_L", "d_L", "ubar_R", "dbar_R")
@@ -5449,6 +5566,7 @@ def main() -> None:
     check_hard_benchmark_channel_comparison_and_ratio()
     check_thooft_four_point_amputated_assembly_gate()
     check_thooft_crossed_chiral_channel()
+    check_crossed_hard_helicity_projection_gate()
     check_mass_assisted_theta_linear_interference_channel()
     check_same_coordinate_amplitude_rate_gate()
     print("instanton physical amplitude architecture checks passed")

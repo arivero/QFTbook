@@ -134,6 +134,12 @@
   anomalous two-flavor source monomial into the crossed \(RR\to LL\)
   scattering channel only after chirality selection, LSZ residues, and the
   observable choice have been fixed.
+- `ca:instanton-crossed-helicity-projection-gate`,
+  `eq:instanton-crossed-helicity-factor`, and
+  `eq:instanton-crossed-helicity-amplitude`: project the crossed scalar
+  hard-channel source coefficient onto fixed external Weyl spinors, keeping
+  antisymmetric left/right spinor contractions, slot-order signs, spin-sum
+  coordinates, and a helicity residual separate from the scalar coefficient.
 - `ca:instanton-mass-assisted-interference-channel`: extracts the
   mass-assisted \(m_dB_{uu}\) two-source coordinate and pairs it only with a
   same-basis chirality-breaking reference amplitude, keeping the axial-invariant
@@ -509,6 +515,11 @@
   shortcuts, rank-lost chiral source determinants, symmetric Haar sources,
   omitted nonzero-mode source quotients, unamputated source overlaps, and
   underbudgeted physical-projection residuals,
+  verifies the crossed hard-channel helicity projection and rejects treating
+  the scalar crossed coefficient as a fixed-helicity amplitude, collinear
+  external spinor bins with nonzero scalar kernels, swapped antisymmetric Weyl
+  slots, scalar-coefficient squares used as spin-summed rates, and omitted
+  helicity residuals,
   verifies the finite Gaussian nonzero-mode source quotient covariance
   identity, the quadratic trace correction, absolute window propagation, and
   rank-loss rejection,
@@ -699,6 +710,14 @@
   amplitudes, conjugate anti-instanton chirality inserted into the same
   channel, theta-charged linear sums read as rates, perturbative
   chirality-preserving references, and crossing-residual underbudgets.
+- 2026-06-07 issue #597 crossed helicity projection pass: added
+  `ca:instanton-crossed-helicity-projection-gate` after the crossed chiral
+  channel.  The pass contracts the scalar crossed hard-channel coefficient
+  with the external left/right Weyl spinors before calling it a fixed-helicity
+  amplitude, and separates spin sums from scalar-coefficient squares.  The
+  companion rejects nonzero scalar kernels used as helicity amplitudes,
+  collinear spinor bins, swapped antisymmetric Weyl slots, spin-sum shortcuts,
+  and omitted helicity residuals.
 - 2026-06-07 issue #597 mass-assisted interference pass: added
   `ca:instanton-mass-assisted-interference-channel` after the crossed chiral
   channel.  The pass turns the two-source determinant coordinate \(m_dB_{uu}\)
