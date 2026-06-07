@@ -59,6 +59,9 @@ and
   gauge group and its dual electric character lattice.  These control allowed
   matter charges, dual exponentials, FI-theta periods, and residual mirror
   orbifolds.
+- `Delta T^phys`: FI-character shift induced by changing branches of
+  `log c_i`; it must lie in `2 pi i Lambda_G^vee` so that every compact flux
+  in `Lambda_G` sees only an integral theta-period phase.
 - `p_A`, `L_W`: chiral-superpotential monomial exponent vector and preserved
   phase-isometry lattice available to abelian dualization.
 - `Sigma`, `tilde W_eff`, `mu`, `Q_tot`: twisted chiral field strength,
@@ -408,6 +411,10 @@ and
   constants into `T_a^phys=T_a+sum_i Q_i^a log c_i`, and the same shift is
   checked against the Coulomb affine term, with logarithm-branch changes
   identified as integral `2 pi i` shifts of the logarithmic FI coordinate.
+  The follow-on FI-character proposition checks the same branch shifts against
+  the declared compact flux lattice, so the normalization constants are
+  harmless scheme data only when the charge rows are characters of
+  `Lambda_G`.
 - Adds the rank-one vortex-fugacity transmutation check: the protected
   Coulomb roots depend on
   `mu^{sum_i Q_i} exp(T+sum_i Q_i log c_i)/prod_i Q_i^{Q_i}`, so `mu` is
@@ -1039,6 +1046,12 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   `U(1)/Z_n` obstruction.  The companion checks fractional quotient fluxes,
   forbidden cover-charge-one matter, enlarged FI periods, quotient-compatible
   `Sigma Y` periods, and residual mirror-orbifold order.
+- The 2026-06-07 issue #847 vortex-normalization FI-character pass adds
+  `prop:glsm-vortex-normalization-fi-character`.  Branch choices in
+  `log c_i` now change `T^phys` by an explicit character
+  `2 pi i sum_i n_i Q_i`, and the companion rejects the shortcut of testing
+  this only on the covering lattice instead of on the actual compact flux
+  lattice.
 - The 2026-06-07 issue #848 cigar/Liouville re-audit corrects the endpoint
   architecture after the external review: the GLSM dual variable is explicitly
   kept twisted chiral until a separate mirror/T-duality automorphism is

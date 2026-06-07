@@ -50,7 +50,8 @@ assembly-map mutation controls, operator-map status guards and span tests,
 vortex-core covariant-winding/holonomy finite-action filters, first-order
 boundary-term dual-disorder orientation checks, local-log-chart monodromy
 tests, core-domain residual budgets, quotient cocharacter-lattice and dual
-character-lattice filters with
+character-lattice filters with all-rank FI-character branch-shift gates for
+vortex normalization constants and
 theta-period tests,
 phase-isometry lattice tests for chiral superpotential monomials,
 one-loop gamma-matrix Hermiticity tests, signed-log determinant-density
@@ -152,6 +153,8 @@ quotient flux lattices, cover-charge-one matter treated as a quotient
 representation, ordinary \(2\pi i\) FI periods applied to fractional quotient
 fluxes, and quotient residual mirror orbifolds omitted from covering
 presentations,
+vortex-normalization branch shifts tested only on the covering lattice instead
+of the declared compact flux lattice,
 charge-neutral chiral superpotentials treated as preserving all individual
 phase isometries,
 using compact branch periodicity to choose the Coulomb determinant sign,
@@ -1866,6 +1869,78 @@ def check_all_rank_vortex_fi_coordinate_shift() -> None:
         "all-rank formula restricts to rank-one FI shift",
         sum(charge * ell for charge, ell in zip(rank_one_charges, rank_one_logs)),
         Fraction(1123, 60),
+    )
+
+
+def check_vortex_normalization_fi_character_gate() -> None:
+    flux_lattice = [
+        [Fraction(a, 2), Fraction(b, 3)]
+        for a in range(-3, 4)
+        for b in range(-3, 4)
+    ]
+    character_charges = [
+        [2, 3],
+        [4, -6],
+        [-2, 9],
+        [6, 0],
+    ]
+    branch_shifts = [1, -2, 3, -1]
+
+    def dot(row: list[int], flux: list[Fraction]) -> Fraction:
+        return sum(
+            (Fraction(charge) * component for charge, component in zip(row, flux)),
+            Fraction(0),
+        )
+
+    assert_equal(
+        "vortex-normalization charges pair integrally with quotient flux lattice",
+        all(
+            dot(charge_row, flux).denominator == 1
+            for charge_row in character_charges
+            for flux in flux_lattice
+        ),
+        True,
+    )
+
+    branch_character = [
+        sum(shift * row[a] for shift, row in zip(branch_shifts, character_charges))
+        for a in range(2)
+    ]
+    assert_equal(
+        "vortex-normalization branch shift lands in quotient character lattice",
+        all(dot(branch_character, flux).denominator == 1 for flux in flux_lattice),
+        True,
+    )
+
+    minimal_flux_phase_units = dot(branch_character, [Fraction(1, 2), Fraction(1, 3)])
+    assert_equal(
+        "minimal quotient flux sees only an integral FI-character branch phase",
+        minimal_flux_phase_units.denominator,
+        1,
+    )
+
+    forbidden_cover_charge = [1, 0]
+    cover_flux_lattice = [
+        [Fraction(a), Fraction(b)]
+        for a in range(-3, 4)
+        for b in range(-3, 4)
+    ]
+    assert_equal(
+        "cover lattice can hide a forbidden quotient charge",
+        all(dot(forbidden_cover_charge, flux).denominator == 1 for flux in cover_flux_lattice),
+        True,
+    )
+    assert_equal(
+        "forbidden cover charge fails on the actual quotient flux lattice",
+        all(dot(forbidden_cover_charge, flux).denominator == 1 for flux in flux_lattice),
+        False,
+    )
+
+    ordinary_period_shift = [1, 0]
+    assert_equal(
+        "ordinary covering FI period is not a quotient FI character",
+        all(dot(ordinary_period_shift, flux).denominator == 1 for flux in flux_lattice),
+        False,
     )
 
 
@@ -5661,6 +5736,7 @@ def main() -> None:
     check_coulomb_one_loop_branch_monodromy()
     check_charged_chiral_dual_elimination()
     check_all_rank_vortex_fi_coordinate_shift()
+    check_vortex_normalization_fi_character_gate()
     check_vortex_fugacity_dimensional_transmutation()
     check_mirror_primitive_monomial_selection()
     check_vortex_zero_mode_filter()

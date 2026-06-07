@@ -2792,6 +2792,53 @@ which is an integral theta-period shift.  The exponentiated constraints
 \eqref{eq:glsm-all-rank-vortex-normalized-constraints} are therefore the
 branch-independent protected statement.
 
+\begin{proposition}[Vortex normalizations as FI characters]
+\label{prop:glsm-vortex-normalization-fi-character}
+Let the compact abelian gauge group have cocharacter lattice
+\(\Lambda_G\) as in
+Construction~\ref{constr:glsm-global-form-flux-lattice-datum}, and assume
+that every charge row \(Q_i\) is a character in \(\Lambda_G^\vee\).  Under a
+branch change
+\[
+  \log c_i\longmapsto \log c_i+2\pi\ii n_i,
+  \qquad n_i\in\mathbb Z ,
+\]
+the shifted FI coordinate changes by
+\begin{equation}
+  \Delta T^{\rm phys}
+  =
+  2\pi\ii\sum_i n_i Q_i
+  \in 2\pi\ii\,\Lambda_G^\vee .
+  \label{eq:glsm-vortex-normalization-fi-character-shift}
+\end{equation}
+Hence for every compact flux \(k\in\Lambda_G\),
+\begin{equation}
+  \exp\langle T^{\rm phys}+\Delta T^{\rm phys},k\rangle
+  =
+  \exp\langle T^{\rm phys},k\rangle .
+  \label{eq:glsm-vortex-normalization-character-invariance}
+\end{equation}
+The finite constants \(c_i\) are therefore removable normalization data only
+after the charge rows have been checked as characters of the declared flux
+lattice.  If a covering-torus charge vector not lying in
+\(\Lambda_G^\vee\) is inserted into the same formula, or if the flux lattice is
+silently replaced by the covering lattice, the branch shift may produce a
+nontrivial phase in a genuine compact topological sector.
+\end{proposition}
+
+\begin{proof}
+Since \(\Lambda_G^\vee\) is an abelian group, the integer combination
+\(\sum_i n_iQ_i\) again belongs to \(\Lambda_G^\vee\).  By definition of the
+dual lattice, \(\langle \sum_i n_iQ_i,k\rangle\in\mathbb Z\) for every
+\(k\in\Lambda_G\).  Pairing
+\eqref{eq:glsm-vortex-normalization-fi-character-shift} with \(k\) therefore
+changes the exponent by an integer multiple of \(2\pi\ii\), which proves
+\eqref{eq:glsm-vortex-normalization-character-invariance}.  The final
+warning is the contrapositive: if the putative charge row is not a character,
+there exists an allowed compact flux on which the same branch change is
+visible.
+\end{proof}
+
 \begin{controlledapproximation}[Vortex fugacity and dimensional transmutation]
 \label{ca:glsm-vortex-fugacity-transmutation}
 For a rank-one abelian GLSM with nonzero charges \(Q_i\), put

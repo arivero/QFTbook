@@ -3079,7 +3079,10 @@ Current checks:
   FI-coordinate shift induced by vortex coefficient normalizations, the
   all-rank mirror-torus and Coulomb affine-term ledger showing that vortex
   determinant constants are absorbed by shifted FI-theta coordinates together
-  with the integral theta-period branch check, the rank-one
+  with the integral theta-period branch check, the quotient-lattice
+  FI-character gate showing that branch changes of \(\log c_i\) pair
+  trivially with every allowed compact flux only when the charge rows are
+  characters of the declared flux lattice, the rank-one
   vortex-fugacity dimensional-transmutation check showing that
   \(\mu^{\sum_iQ_i}\exp(T+\sum_iQ_i\log c_i)/\prod_iQ_i^{Q_i}\) is the
   invariant Coulomb scale while bare-FI and uncompensated-\(\mu\) shortcuts
