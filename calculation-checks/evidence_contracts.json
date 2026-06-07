@@ -306,6 +306,17 @@
       ]
     },
     {
+      "path": "nlsm_weyl_anomaly_checks.py",
+      "risk_class": "NLSM Weyl-anomaly beta-function boundary",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "one-loop alpha-prime normalization",
+        "H=dB torsion convention",
+        "string-frame dilaton variation",
+        "hatted beta representatives modulo target diffeomorphism and B-gauge directions"
+      ]
+    },
+    {
       "path": "generalized_unitarity_reduction_checks.py",
       "risk_class": "loop-amplitude reconstruction and integral reduction",
       "contract_tier": "extended",

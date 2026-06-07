@@ -1,5 +1,87 @@
 #!/usr/bin/env python3
-"""Coefficient checks for one-loop NLSM Weyl-anomaly bookkeeping."""
+r"""Evidence contract.
+
+Target claims:
+- In the two-dimensional nonlinear sigma model, the one-loop hatted
+  Weyl-anomaly representatives for \(G\), \(B\), and \(\Phi\) have the
+  coefficients displayed in Volume V, Chapter 11: the \(H^2\) metric term,
+  the \(B\)-field divergence, the dilaton-gradient redundant direction, the
+  string-frame trace/scalar split, the flat linear-dilaton critical constant,
+  the heterotic Bianchi coefficient, the torsionful \(R^-+2\nabla^-\nabla\Phi\)
+  package, and the local \(d^2=0\) Bianchi preservation of \(\beta^H\).
+- The check also targets the boundary between coordinate beta functions and
+  local Weyl-anomaly representatives: conformality is read from the hatted
+  package modulo target diffeomorphisms, \(B\)-field gauge transformations, and
+  the scalar Weyl-anomaly condition, not from a bare coordinate beta component
+  alone.
+
+Independent construction:
+- The coefficients are recomputed from independent finite arithmetic routes:
+  variation of the string-frame functional, integration by parts in the
+  \(B\)-field variation, local worldsheet tadpole/bubble prefactors,
+  linear-dilaton central-charge arithmetic, heterotic source normalization,
+  torsionful connection expansion, and an explicit finite exterior-square
+  cancellation.
+- The coordinate-versus-hatted boundary is checked by assembling a finite
+  representative package whose coordinate beta components are nonzero, whose
+  redundant Lie/gauge pieces cancel them in the hatted tensor representatives,
+  and whose scalar anomaly is kept as an independent condition.
+
+Imported assumptions:
+- The script uses the one-loop large-radius \(\alpha'\) normalization and the
+  Chapter 11 convention \(H=dB\), string-frame action
+  \(R+4|\nabla\Phi|^2-H^2/12\), and torsionful connection
+  \(\Gamma^-=\Gamma-H/2\).
+- It assumes dimensional-regularization/minimal-subtraction pole
+  normalizations already derived in the chapter and checks only the finite
+  rational coefficient bookkeeping in that convention.
+
+Negative controls:
+- The finite representative package rejects treating nonzero coordinate beta
+  components as invariant obstructions after the necessary redundant
+  diffeomorphism and \(B\)-gauge pieces are supplied.
+- It rejects omitting the exact \(B\)-gauge piece in the hatted
+  antisymmetric representative.
+- It rejects using vanishing tensor representatives as a full conformality
+  test when the scalar Weyl-anomaly coefficient remains nonzero.
+
+Scope boundary:
+- This companion checks finite local coefficient arithmetic and representative
+  bookkeeping.  It does not prove existence of a nonperturbative sigma-model
+  CFT, convergence of the \(\alpha'\) expansion, global gerbe quantization,
+  all-order Weyl invariance, exact coset conformality, or mirror equivalence.
+
+Primary derivation route:
+- The manuscript derivation runs through the background-field pole, the
+  string-frame target functional, redundant target-space directions, and the
+  torsionful connection package in Volume V, Chapter 11.
+
+Independent verification route:
+- The script recomputes each load-bearing coefficient from a separate finite
+  normalization or variation identity and adds adversarial representative
+  packages that would pass a coordinate-beta-only check while failing the
+  hatted/scalar Weyl-anomaly package.
+
+Convention dependencies:
+- One-loop \(\alpha'\) normalization of the NLSM action.
+- \(H=dB\) with the \(H^2\) Lagrangian coefficient \(-1/12\).
+- String-frame dilaton weight \(\sqrt G e^{-2\Phi}\).
+- Torsionful connection convention \(\Gamma^-=\Gamma-H/2\).
+- Hatted Weyl-anomaly representatives modulo target diffeomorphism and
+  \(B\)-field gauge directions.
+
+Domain and remainder assumptions:
+- All claims checked here are first-order large-radius statements in a local
+  target patch with smooth fields and compact support or compact target-space
+  boundary conditions for integrations by parts.
+- Higher-loop terms, finite scheme changes, global sectors, and exact CFT data
+  are outside the finite coefficient checks.
+
+Remaining unproved or conditional:
+- Nonperturbative sigma-model existence, all-order beta functions, regulator
+  removal, exact coset spectra, and worldsheet-instanton or mirror-equivalence
+  claims require additional arguments and are not certified by this file.
+"""
 
 from __future__ import annotations
 
@@ -9,6 +91,11 @@ from fractions import Fraction
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+
+
+def assert_not_equal(name: str, got: object, forbidden: object) -> None:
+    if got == forbidden:
+        raise AssertionError(f"{name}: got forbidden value {forbidden!r}")
 
 
 def check_h_squared_variation_coefficients() -> None:
@@ -215,6 +302,58 @@ def check_exterior_square_zero_for_h_beta() -> None:
     assert_equal("d squared beta^B cancellation", cancelled, {})
 
 
+def check_hatted_representative_not_coordinate_beta_shortcut() -> None:
+    beta_g_coordinate = {
+        "xx": Fraction(5, 7),
+        "yy": Fraction(-2, 3),
+        "xy": Fraction(1, 11),
+    }
+    lie_w_g = {
+        component: -coefficient
+        for component, coefficient in beta_g_coordinate.items()
+    }
+    hatted_g = {
+        component: beta_g_coordinate[component] + lie_w_g[component]
+        for component in beta_g_coordinate
+    }
+    assert_equal("redundant vector cancels hatted metric representative", hatted_g, {
+        "xx": 0,
+        "yy": 0,
+        "xy": 0,
+    })
+    assert_not_equal(
+        "coordinate metric beta can be nonzero when hatted beta vanishes",
+        tuple(beta_g_coordinate.values()),
+        (0, 0, 0),
+    )
+
+    beta_b_coordinate = Fraction(7, 12)
+    lie_w_b_non_gauge = Fraction(-1, 3)
+    exact_b_gauge_piece = -(beta_b_coordinate + lie_w_b_non_gauge)
+    hatted_b = beta_b_coordinate + lie_w_b_non_gauge + exact_b_gauge_piece
+    assert_equal("hatted B representative includes the exact gauge piece", hatted_b, 0)
+    assert_not_equal(
+        "omitting B gauge representative leaves a false obstruction",
+        beta_b_coordinate + lie_w_b_non_gauge,
+        0,
+    )
+
+    scalar_weyl_anomaly = Fraction(1, 5)
+    tensor_representatives_vanish = (
+        all(value == 0 for value in hatted_g.values()) and hatted_b == 0
+    )
+    assert_equal(
+        "tensor Weyl representatives vanish in the finite package",
+        tensor_representatives_vanish,
+        True,
+    )
+    assert_not_equal(
+        "vanishing tensor representatives do not force scalar Weyl anomaly to vanish",
+        scalar_weyl_anomaly,
+        0,
+    )
+
+
 def main() -> None:
     check_h_squared_variation_coefficients()
     check_worldsheet_h_flux_pole_coefficients()
@@ -224,6 +363,7 @@ def main() -> None:
     check_heterotic_gauge_dilaton_redundant_direction()
     check_torsionful_connection_package()
     check_exterior_square_zero_for_h_beta()
+    check_hatted_representative_not_coordinate_beta_shortcut()
     print("All NLSM Weyl-anomaly coefficient checks passed.")
 
 

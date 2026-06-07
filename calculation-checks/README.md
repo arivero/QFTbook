@@ -2666,14 +2666,18 @@ Current checks:
   NLSM finite-scheme-redefinition law
   \(\beta'=\beta+[\beta,F]+O(F^2)\), including the sign of the beta-vector
   Lie bracket in a two-coupling model.
-- `nlsm_weyl_anomaly_checks.py`: exact rational checks for one-loop NLSM
-  Weyl-anomaly bookkeeping, including the \(H^2\) metric and \(B\)-field
-  variation coefficients, the local worldsheet tadpole and bubble origins of
-  the \(H\)-dependent counterterms, the full string-frame metric trace split and
-  scalar dilaton variation, linear-dilaton central-charge condition,
-  heterotic Green--Schwarz coefficient, heterotic gauge/dilaton redundant
-  direction, torsionful Ricci package, and local \(\dd^2=0\) preservation of
-  the \(H\)-beta Bianchi identity.
+- `nlsm_weyl_anomaly_checks.py`: extended evidence-contract exact rational
+  checks for one-loop NLSM Weyl-anomaly bookkeeping, including the \(H^2\)
+  metric and \(B\)-field variation coefficients, the local worldsheet tadpole
+  and bubble origins of the \(H\)-dependent counterterms, the full string-frame
+  metric trace split and scalar dilaton variation, linear-dilaton
+  central-charge condition, heterotic Green--Schwarz coefficient, heterotic
+  gauge/dilaton redundant direction, torsionful Ricci package, and local
+  \(\dd^2=0\) preservation of the \(H\)-beta Bianchi identity.  It also checks
+  an adversarial coordinate-versus-hatted representative package: nonzero
+  coordinate beta components can cancel after target-diffeomorphism and
+  \(B\)-gauge pieces are supplied, while vanishing tensor representatives do
+  not by themselves remove the scalar Weyl anomaly.
 - `nonequilibrium_open_system_checks.py`: finite checks for the Volume X
   nonequilibrium steady-state and open-system chapter, including reservoir
   entropy production, finite local-detailed-balance entropy splitting,

@@ -421,15 +421,19 @@ coordinates define one full CFT in a common normalization.
   cell-regulated Euler-characteristic determinant ledger, plus the
   constant-curvature specialization of the two-loop metric coefficient and
   radius/coupling beta functions for spherical and hyperbolic signs.
-- `calculation-checks/nlsm_weyl_anomaly_checks.py` verifies the rational
-  coefficient bookkeeping for the one-loop \(H^2\) metric variation,
+- `calculation-checks/nlsm_weyl_anomaly_checks.py` carries an extended
+  evidence contract and verifies the rational coefficient bookkeeping for the
+  one-loop \(H^2\) metric variation,
   the local background-field tadpole and bubble origins of the
   \(H\)-dependent minimal-subtraction counterterms,
   the full string-frame metric trace decomposition and scalar dilaton
   variation, \(B\)-field integration by parts, linear-dilaton central
   charge, heterotic Bianchi coefficient, heterotic gauge/dilaton redundant
   direction, torsionful one-loop Ricci package, and local `d^2=0`
-  preservation of the `H` beta Bianchi identity.
+  preservation of the `H` beta Bianchi identity.  It also rejects the
+  coordinate-beta shortcut: hatted tensor Weyl representatives require the
+  target-diffeomorphism and \(B\)-gauge pieces, and vanishing tensor
+  representatives still leave the scalar Weyl-anomaly condition to check.
 - `calculation-checks/nlsm_scheme_redefinition_checks.py` verifies the sign
   and order of the finite-scheme-redefinition bracket
   `beta' = beta + [beta,F]` in a finite polynomial two-coupling model.
@@ -513,3 +517,8 @@ coordinates define one full CFT in a common normalization.
   form to derivational prose.  The double-pole coefficient, OPE exponent, and
   statement that the analytic coefficient is not fixed by the ledger remain
   unchanged; only the theorem-family wrapper was removed.
+- 2026-06-06 issue #725 NLSM Weyl-anomaly evidence-contract pass: promoted the
+  companion to an extended evidence contract and added a finite adversarial
+  representative package showing that coordinate beta components, hatted Weyl
+  representatives, \(B\)-gauge redundancy, and the scalar Weyl anomaly are
+  distinct pieces of the physical conformality test.
