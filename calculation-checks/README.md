@@ -2954,6 +2954,10 @@ Current checks:
   dimension and cotangent-transition algebra for \(T^\ast\mathbb P^{N-1}\),
   the two-dimensional \(\mathcal N=(4,4)\) ADHM/D1--D5 Higgs-branch
   dimension ledger and positive-FI exclusion of the empty-framing boundary,
+  the D1--D5 rank-one Coulomb throat harmonic \(r^{-2}\) metric coefficient,
+  normalized \(H\)-flux, logarithmic radial throat floor, positive-FI
+  Coulomb-lift trace bound, and same-Higgs-dimension/different-flux negative
+  control,
   the Higgs-branch metric theorem-status matrix, counterterm filter with a
   vector-spurion negative control, and the finite massive-multiplet
   one-loop determinant cancellation for a fully Higgsed tangent metric

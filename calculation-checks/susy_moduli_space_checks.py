@@ -4,8 +4,9 @@
 The quotient cells below verify finite algebra behind classical vacuum spaces.
 The Higgs-branch metric-protection cells are narrower Ward/counterterm
 bookkeeping: they test the local massive-multiplet cancellation and status
-boundaries used by the manuscript, not a construction of the continuum
-nonrenormalization theorem.
+boundaries used by the manuscript.  The D1-D5 bridge cells test the finite
+rank/flux/FI arithmetic behind the Higgs-versus-Coulomb branch distinction,
+not a construction of the continuum D1-D5 infrared CFT.
 """
 
 from fractions import Fraction
@@ -245,6 +246,119 @@ def check_d1_d5_positive_fi_excludes_empty_framing_boundary():
             False,
             "D1-D5 ADHM positive FI excludes I=J=0 boundary",
         )
+
+
+def check_d1_d5_coulomb_throat_metric_flux():
+    """Check the rank-one D1-D5 Coulomb throat harmonic metric and flux."""
+
+    def radial_laplacian_r4_power(power: int, coefficient: Fraction) -> Fraction:
+        # For f(r)=coefficient*r^power in four real dimensions,
+        # Delta f = coefficient*power*(power+2)*r^(power-2).
+        return coefficient * power * (power + 2)
+
+    for q5 in range(1, 10):
+        throat_coefficient = Fraction(q5, 2)
+        h_infinity = Fraction(3, 7)
+
+        assert_equal(
+            radial_laplacian_r4_power(-2, throat_coefficient),
+            0,
+            "D1-D5 Coulomb r^-2 harmonic metric coefficient",
+        )
+        assert_equal(
+            radial_laplacian_r4_power(0, h_infinity),
+            0,
+            "D1-D5 Coulomb constant metric coefficient is harmonic",
+        )
+
+        normalized_h_flux = 2 * throat_coefficient
+        assert_equal(
+            normalized_h_flux,
+            q5,
+            "D1-D5 Coulomb torsion flux normalized by S^3 volume",
+        )
+
+        missing_torsion_flux = 0
+        assert_equal(
+            missing_torsion_flux == q5,
+            False,
+            "D1-D5 metric-only shortcut misses H-flux",
+        )
+
+        for dyadic_power in range(1, 8):
+            r_squared = Fraction(1, 4**dyadic_power)
+            log_radial_metric = h_infinity * r_squared + throat_coefficient
+            assert_equal(
+                log_radial_metric >= throat_coefficient,
+                True,
+                "D1-D5 logarithmic radial metric has positive throat floor",
+            )
+
+        wrong_three_dimensional_coulomb_tail = radial_laplacian_r4_power(
+            -1,
+            throat_coefficient,
+        )
+        assert_equal(
+            wrong_three_dimensional_coulomb_tail == 0,
+            False,
+            "D1-D5 four-transverse-dimensional throat is not a 1/r tail",
+        )
+
+
+def check_d1_d5_positive_fi_coulomb_lift_bound():
+    """Check the trace lower bound lifting the empty-framing Coulomb locus."""
+
+    for q1 in range(1, 9):
+        zeta = Fraction(q1 + 1, q1 + 4)
+        gauge_coupling_squared = Fraction(2 * q1 + 3, q1 + 5)
+
+        trace_defect = -zeta * q1
+        frobenius_lower_bound = trace_defect * trace_defect / q1
+        assert_equal(
+            frobenius_lower_bound,
+            q1 * zeta * zeta,
+            "D1-D5 positive FI Coulomb-lift trace lower bound",
+        )
+
+        potential_lower_bound = gauge_coupling_squared * frobenius_lower_bound / 2
+        assert_equal(
+            potential_lower_bound > 0,
+            True,
+            "D1-D5 positive FI gives positive empty-framing potential",
+        )
+
+        zero_fi_lower_bound = Fraction(0)
+        assert_equal(
+            zero_fi_lower_bound < frobenius_lower_bound,
+            True,
+            "D1-D5 zero-FI boundary lacks the positive trace obstruction",
+        )
+
+
+def check_d1_d5_dimension_does_not_fix_bridge_flux():
+    """Same Higgs dimension can carry different Coulomb-throat flux data."""
+
+    first_pair = (1, 6)
+    second_pair = (2, 3)
+
+    def higgs_dimension(pair: tuple[int, int]) -> int:
+        q1, q5 = pair
+        return 4 * q1 * q5
+
+    def coulomb_flux(pair: tuple[int, int]) -> int:
+        _, q5 = pair
+        return q5
+
+    assert_equal(
+        higgs_dimension(first_pair),
+        higgs_dimension(second_pair),
+        "D1-D5 equal product gives equal Higgs-branch dimension",
+    )
+    assert_equal(
+        coulomb_flux(first_pair) == coulomb_flux(second_pair),
+        False,
+        "D1-D5 Higgs dimension alone does not fix Coulomb H-flux",
+    )
 
 
 def check_higgs_branch_metric_status_matrix():
@@ -789,6 +903,9 @@ def main():
     check_rank_one_hyperkahler_cotangent_transition()
     check_d1_d5_adhm_higgs_branch_dimension()
     check_d1_d5_positive_fi_excludes_empty_framing_boundary()
+    check_d1_d5_coulomb_throat_metric_flux()
+    check_d1_d5_positive_fi_coulomb_lift_bound()
+    check_d1_d5_dimension_does_not_fix_bridge_flux()
     check_higgs_branch_metric_status_matrix()
     check_higgs_branch_counterterm_filter()
     check_higgs_branch_massive_multiplet_one_loop_cancellation()

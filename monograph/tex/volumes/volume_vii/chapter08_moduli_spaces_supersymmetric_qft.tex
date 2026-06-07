@@ -1050,6 +1050,94 @@ two-derivative metric on the smooth Higgs stratum, with torsion and Wess--Zumino
 data declared separately if they are present.
 \end{example}
 
+\begin{remark}[D1--D5 throat bridge]
+\label{rem:d1-d5-coulomb-throat-higgs-bridge}
+The same two-dimensional gauge theory also supplies the QFT bridge that ADHM
+alone does not give.  It connects the Higgs quotient to the symmetric product
+CFT point.  In a rank-one Coulomb chart, the vector multiplet has scalars
+\(\vec X\in\mathbb R^4\), with \(r=|\vec X|\).  The \(Q_5\) charged
+hypermultiplets then have masses proportional to \(r\).
+
+One-loop integration of those hypers in the \(\mathcal N=(4,4)\) branch EFT
+gives the Coulomb sigma-model datum
+\begin{equation}
+  ds_C^2=h(r)\,d\vec X^{\,2},
+  \qquad
+  h(r)=h_\infty+\frac{Q_5}{2r^2},
+  \qquad
+  H=-\ast_4 dh .
+  \label{eq:d1-d5-coulomb-throat-metric-flux}
+\end{equation}
+The normalization is chosen so that
+\begin{equation}
+  \Delta_{\mathbb R^4}h=0\quad (r>0),
+  \qquad
+  \frac{1}{2\pi^2}\int_{S_r^3}H=Q_5 .
+  \label{eq:d1-d5-coulomb-hflux-quantization}
+\end{equation}
+Near \(r=0\), the metric in the logarithmic radial coordinate
+\(t=\log r\) has
+\[
+  h(r)\,r^2\longrightarrow \frac{Q_5}{2},
+\]
+so the Coulomb branch develops an infinite throat rather than an ordinary
+finite-distance endpoint.  This is precisely the kind of branch datum that is
+not contained in the hyperk\"ahler quotient
+\eqref{eq:d1-d5-adhm-higgs-quotient}: it is a quantum vector-multiplet metric
+plus torsion flux, not a protected Higgs metric.
+
+The FI deformation is the gauge-theory mechanism that removes this Coulomb
+continuum from the supersymmetric vacuum problem.  Schematically,
+\[
+  V_\zeta
+  =
+  \frac{e_2^2}{2}\|\mu_{\mathbb R}-\zeta{\bf1}_K\|^2
+  +e_2^2\|\mu_{\mathbb C}\|^2
+  +r^2\bigl(\|I\|^2+\|J\|^2\bigr)+\cdots .
+\]
+At the empty-framing Coulomb locus \(I=J=0\), the trace of the commutator
+part of \(\mu_{\mathbb R}\) is zero, while
+\(\operatorname{Tr}(\zeta{\bf1}_K)=\zeta Q_1\).  Hence
+\begin{equation}
+  \|\mu_{\mathbb R}-\zeta{\bf1}_K\|^2
+  \ge
+  \frac{|\operatorname{Tr}(\mu_{\mathbb R}-\zeta{\bf1}_K)|^2}{Q_1}
+  =
+  Q_1\zeta^2 ,
+  \label{eq:d1-d5-positive-fi-coulomb-lift-bound}
+\end{equation}
+so a positive FI parameter lifts the empty-framing Coulomb vacuum before any
+Higgs-branch quotient metric is interpreted as an infrared CFT metric.
+
+The proposed relation to the symmetric-product point is therefore a bridge
+between QFT data, not a dimension-count slogan.  A bridge datum must include
+at least:
+\[
+\begin{gathered}
+  \text{the \(\mathcal N=(4,4)\) gauge theory and FI path},\quad
+  \text{the protected Higgs metric on the smooth stratum},\\
+  \text{torsion/\(B\)-field and flux data},\quad
+  \text{the exclusion or decoupling of the Coulomb throat},\\
+  \text{an operator map to the symmetric-product blow-up tangent}
+  \quad
+  \text{of Construction~\ref{constr:n4-symmetric-product-two-cycle-marginal}}.
+\end{gathered}
+\]
+The equality
+\(\dim_{\mathbb R}\mathcal M_{Q_1,Q_5}=4Q_1Q_5\) and the symmetric-product
+local tangent count of
+\eqref{eq:n4-symprod-local-marginal-count} are necessary consistency checks.
+They are not sufficient: for example, different pairs \((Q_1,Q_5)\) can have
+the same product \(Q_1Q_5\) and hence the same Higgs-branch dimension while
+carrying different Coulomb-throat flux \(Q_5\).  The intrinsic D1--D5 QFT
+route is the conditional statement that after the positive-FI Higgs stratum is
+isolated, the branch sigma model flows to the same compact
+\(\mathcal N=(4,4)\) conformal family whose local symmetric-product tangent is
+constructed in Volume~V.  The noncompact throat, torsion flux, normalizable
+operator map, and global CFT identification group are part of that assertion,
+not consequences of the ADHM equations alone.
+\end{remark}
+
 \section{Singularities}
 
 A point \(p\in\mathcal M\) is singular when the low-energy description changes

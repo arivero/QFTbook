@@ -100,6 +100,17 @@ later lower-dimensional examples, protected sectors, and localization.
   `eq:d1-d5-adhm-real-moment`, and
   `eq:d1-d5-adhm-higgs-quotient`: complex moment map, real moment map, and
   Higgs-branch quotient for the \(\mathcal N=(4,4)\) ADHM gauge theory.
+- `rem:d1-d5-coulomb-throat-higgs-bridge`: intrinsic QFT bridge datum between
+  the D1--D5 gauge theory and the symmetric-product CFT tangent, separating
+  protected Higgs metric data from the quantum-corrected Coulomb throat,
+  torsion flux, positive-FI lifting, operator-map, and global CFT
+  identification obligations.
+- `eq:d1-d5-coulomb-throat-metric-flux`: rank-one Coulomb branch metric and
+  torsion package \(h(r)=h_\infty+Q_5/(2r^2)\), \(H=-\ast_4dh\).
+- `eq:d1-d5-coulomb-hflux-quantization`: harmonicity away from the origin and
+  normalized \(S^3\) flux \(Q_5\).
+- `eq:d1-d5-positive-fi-coulomb-lift-bound`: trace lower bound showing that a
+  positive FI parameter lifts the empty-framing Coulomb vacuum.
 
 ## Claim Ledger
 
@@ -174,6 +185,14 @@ later lower-dimensional examples, protected sectors, and localization.
   real moment maps, quotient, dimension count
   \(\dim_{\mathbb R}\mathcal M=4Q_1Q_5\), and the QFT interpretation of the
   protected two-derivative Higgs-branch sigma-model metric.
+- Adds the D1--D5 QFT bridge beyond the ADHM endpoint: the rank-one Coulomb
+  branch has a one-loop harmonic \(r^{-2}\) metric coefficient, quantized
+  torsion flux, and an infinite logarithmic throat, while positive FI data
+  lift the empty-framing Coulomb locus by a trace lower bound.  The bridge to
+  the symmetric-product CFT is explicitly conditional on throat decoupling,
+  torsion/\(B\)-field data, a normalizable operator map to the blow-up tangent,
+  and global CFT identifications; dimension matching is kept as a necessary
+  check rather than a proof.
 - Records boundary cases: the \(\zeta=0\), \(I=J=0\), commuting-\(B\) locus
   meets small-instanton/Coulomb directions and invalidates the smooth-stratum
   sigma-model closure; Coulomb-branch vector-multiplet metrics can receive
@@ -190,6 +209,10 @@ later lower-dimensional examples, protected sectors, and localization.
   descent, and cotangent transition algebra for \(T^\ast\mathbb P^{N-1}\),
   the two-dimensional \(\mathcal N=(4,4)\) ADHM/D1--D5 dimension ledger and
   positive-FI exclusion of the \(I=J=0\) boundary,
+  the rank-one D1--D5 Coulomb harmonic metric coefficient, normalized
+  \(H\)-flux, logarithmic radial throat floor, positive-FI Coulomb-lift trace
+  bound, and the negative control that equal Higgs-branch dimension does not
+  fix Coulomb-throat flux,
   the Higgs-metric local/global/torsion status matrix, the two-derivative
   counterterm filter with vector-spurion negative control, and the fully
   Higgsed massive-multiplet one-loop cancellation with ghost/eaten-hyper/mass
@@ -245,3 +268,8 @@ local models.
   \(2d\ \mathcal N=(4,4)\) theorem boundaries, added a background-field
   massive-multiplet determinant cancellation, and preserved the boundary that
   quotient evidence is not a global continuum proof.
+- 2026-06-07 issue #594 D1--D5 QFT bridge pass: added the rank-one Coulomb
+  throat metric/torsion package, positive-FI Coulomb-lift bound, and explicit
+  bridge obligations to the symmetric-product blow-up tangent.  The pass keeps
+  ADHM dimension, protected Higgs metric, Coulomb continuum, torsion flux, and
+  IR CFT operator-map data separate.
