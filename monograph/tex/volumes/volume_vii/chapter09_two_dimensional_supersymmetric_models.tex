@@ -890,28 +890,88 @@ For \(G=U(1)^s/\Gamma\), the allowed fluxes are the cocharacter lattice
 \(\Lambda_G\subset \mathbb R^s\), the theta angles are characters of
 \(\Lambda_G\), and the mirror periodicities, allowed exponentials, and any
 residual mirror orbifold are part of the same global-form datum.
-Let the proposed mirror be the periodic twisted-chiral Landau--Ginzburg
-presentation with variables
+Let a proposed mirror be a regulated twisted-chiral theory whose field
+content includes variables
 \[
   Y_i\sim Y_i+2\pi\ii,\qquad \Sigma_a,
 \]
 global identifications induced by \(G\), vortex-normalization constants
-\(c_i\), and twisted superpotential of the form
+\(c_i\), a mirror \(D\)-term/Kahler functional
+\(K_{\rm mir}^{(\Lambda)}(Y,\overline Y,\Sigma,\overline\Sigma)\), a
+path-integral measure \({\mathcal D}_{\Lambda}^{\rm mir}\), counterterm and
+background-field coordinates, noncompact boundary conditions, and twisted
+superpotential of the form
 \eqref{eq:glsm-hv-dual-twisted-superpotential}, with the same spin structures
-and background fields.
+and background fields.  If the data
+\[
+  \bigl(
+  K_{\rm mir}^{(\Lambda)},
+  {\mathcal D}_{\Lambda}^{\rm mir},
+  \hbox{counterterms},
+  \hbox{global/orbifold data},
+  \hbox{boundary conditions at infinity}
+  \bigr)
+\]
+are not specified, the displayed Hori--Vafa superpotential is only a
+protected twisted-\(F\)-term presentation, not a definition of the mirror QFT.
 
-The conjecture asserts an equivalence of the continuum theories in that
-chamber after compatible regulator limits: their Hilbert spaces on circles
-and Hamiltonians agree, their local operator algebras and OPEs are identified,
-their A- and B-twisted sectors, pairings, partition functions, and correlation
-functions agree including background-field contact terms, and the equivalence
-respects line defects, boundary conditions, topological sectors, theta
-periods, RG endpoints, and global gauge data.  Equalities of twisted chiral
-rings, Coulomb-branch critical equations, mirror residues, and protected
-A-twisted correlators are consequences or evidence for this statement only
-after their regulator, operator-map, determinant, and compactification data
-have been supplied.
+The conjecture asserts an equivalence of infrared endpoints
+\[
+  {\rm IR}\bigl({\mathcal T}_{\rm GLSM}^{(\Lambda)}\bigr)
+  \simeq
+  {\rm IR}\bigl({\mathcal T}_{\rm mir}^{(\Lambda)}
+  [K_{\rm mir},{\mathcal D}^{\rm mir},\widetilde W_{\rm dual}]\bigr)
+\]
+after compatible regulator limits in that chamber.  In this sense their
+Hilbert spaces on circles and Hamiltonians agree, their local operator
+algebras and OPEs are identified, their A- and B-twisted sectors, pairings,
+partition functions, and correlation functions agree including
+background-field contact terms, and the equivalence respects line defects,
+boundary conditions, topological sectors, theta periods, RG endpoints, and
+global gauge data.  Equalities of twisted chiral rings, Coulomb-branch
+critical equations, mirror residues, and protected A-twisted correlators are
+consequences or evidence for this infrared statement only after their
+regulator, operator-map, determinant, \(D\)-term, measure, and
+compactification data have been supplied.
 \end{conjecture}
+
+\begin{definition}[Full mirror datum versus protected presentation]
+\label{def:glsm-mirror-full-qft-datum}
+For an abelian GLSM mirror, call
+\[
+  (Y_i,\Sigma_a,\widetilde W_{\rm dual})
+\]
+with periodic \(Y_i\) and the charge-linear terms
+\(-Q_i{}^a\Sigma_aY_i\) the protected mirror presentation.  A full mirror-QFT
+datum is the larger package
+\[
+  \mathfrak M_\Lambda
+  =
+  \left(
+  K_{\rm mir}^{(\Lambda)},
+  {\mathcal D}^{\rm mir}_{\Lambda},
+  \widetilde W_{\rm dual}^{(\Lambda)},
+  C_{\rm ct}^{(\Lambda)},
+  B_{\infty}^{(\Lambda)},
+  {\mathcal G}_{\rm glob}^{(\Lambda)},
+  R_{\Lambda\to{\rm IR}}
+  \right).
+\]
+Here \(C_{\rm ct}^{(\Lambda)}\) records local counterterm coordinates,
+\(B_{\infty}^{(\Lambda)}\) records boundary conditions and allowed integrations
+by parts at noncompact or singular ends of field space,
+\({\mathcal G}_{\rm glob}^{(\Lambda)}\) records residual orbifolds, spin
+structures, theta characters, and background fields, and
+\(R_{\Lambda\to{\rm IR}}\) is the Wilsonian scaling map used to compare
+operators and states.  Two choices of \(K_{\rm mir}\) with the same
+\(\widetilde W_{\rm dual}\) are physically interchangeable only after a
+universality or rigidity statement shows that their difference is irrelevant,
+redundant, or attracted to the same infrared fixed point with the same
+boundary functional \(B_\infty\).  On a noncompact mirror, an integration by
+parts that discards a \(D\)-term is valid only when its boundary contribution
+at every end has been shown to vanish or has been included as a source/contact
+term.
+\end{definition}
 
 The detailed comparison below is an observable comparison map for
 Conjecture~\ref{conj:abelian-glsm-hori-vafa-mirror-qft}.  The physical question
@@ -1019,6 +1079,31 @@ linear \(V_aU_i\) term
 \[
   Q_i{}^a\int d^2x\,d^4\theta\,V_a(Y_i+\overline Y_i).
 \]
+Up to affine \(D\)-terms, which change only local counterterm coordinates in
+this chart, the classical dual Legendre potential is
+\begin{equation}
+  K_{i,{\rm dual}}^{\rm cl}(U_i)
+  =
+  -\frac12 U_i\log\frac{U_i}{2},
+  \qquad
+  U_i=Y_i+\overline Y_i>0 .
+  \label{eq:glsm-charged-chiral-dual-classical-kahler}
+\end{equation}
+Because the sign of a twisted-chiral \(D\)-term is opposite to the sign of an
+ordinary chiral \(D\)-term in the component kinetic convention, the kinetic
+coefficient is proportional to
+\[
+  \frac1{2U_i}.
+\]
+Thus the dual coordinate lives on a half-cylinder with a singular boundary at
+\(U_i=0\), while \(U_i\to+\infty\) is the weak-coupling cylindrical end.  The
+classical first-order manipulation therefore supplies not only a holomorphic
+coordinate \(X_i=e^{-Y_i}\), but also a domain, a singular boundary, and a
+classical measure Jacobian.  In the quantum theory these become part of
+\(\mathfrak M_\Lambda\) in
+Definition~\ref{def:glsm-mirror-full-qft-datum}: the induced measure must
+reproduce the axial anomaly and must specify whether \(D\)-term integrations by
+parts have boundary contributions at \(U_i=0\) or at infinity.
 The superspace integration-by-parts identity in the present convention is
 \begin{equation}
   \int d^4\theta\,V_a(Y_i+\overline Y_i)
@@ -1129,12 +1214,17 @@ therefore forces \(X_i(M_i)=M_i/(\mu c_i)\) on the branch.  Substituting into
 up to an irrelevant additive constant.  Thus the primitive monomial
 \(-\mu c_i e^{-Y_i}\) is singled out by the combination of periodicity,
 regularity at the weak-coupling end, and exact Coulomb-branch matching.  This
-argument is not a construction of the amplitude.  It reduces the
+argument is not a construction of the amplitude and not a construction of the
+mirror \(D\)-term.  It reduces the
 nonperturbative theorem boundary to the following sharp questions: construct
 the single-vortex sector in the chosen regulator, prove that its fermion zero
 modes leave precisely the twisted \(F\)-term measure, prove
 \(c_i\neq0\), and justify that possible higher connected harmonics do not
-contribute in the protected coordinate being matched.
+contribute in the protected coordinate being matched.  The separate full-QFT
+boundary is to identify the quantum-corrected \(K_{\rm mir}\), induced
+measure, allowed \(D\)-term deformations, and noncompact boundary conditions
+well enough to show that the protected presentation flows to the claimed
+infrared theory.
 
 The next two propositions and the retained-window bound supply the
 \(D_{\rm vort}\) part of the observable comparison map for
@@ -2880,24 +2970,27 @@ Fix a level \(k>0\) in the conventions used below, a spin structure, \(R\)-
 and flavor-background fields, contact-term conventions, and a continuum
 definition of the axial \(\mathcal N=2\) cigar coset
 \(SL(2,\mathbb R)_k/U(1)\) or of the logarithmic-chiral GLSM flowing to it.
-Fix also the \(\mathcal N=2\) Liouville theory with the corresponding
-linear-dilaton/background-charge convention, periodic twisted chiral
-coordinate, exponential twisted superpotential, and the same background data.
+Fix also a regulated \(\mathcal N=2\) Liouville theory with the corresponding
+linear-dilaton/background-charge convention, periodic chiral or twisted-chiral
+coordinate, exponential interaction, \(D\)-term/Kahler normalization,
+functional measure, noncompact boundary conditions at the Liouville wall and
+weak-coupling end, and the same background data.
 
-The conjecture asserts an equivalence of the two continuum QFTs: the
-Hamiltonians and \(\mathcal N=2\) superconformal generators agree under a
-unitary map of Hilbert spaces; spectral-flow sectors, spin structures, and
-discrete and continuous representations are matched; normalizable states,
-nonnormalizable source operators, reflection amplitudes, local OPEs,
-partition functions, and correlation functions are identified with their
-contact terms; and the equivalence respects topological twists, defects,
-branes, and boundary states.  The semiclassical quotient metric, the
-asymptotic dualization, the single exponential from the ordinary charged
-chiral multiplet, and the absence of a smooth logarithmic-chiral vortex
-exponential are evidence for this statement.  They leave separate continuum
-obligations: the continuous-spectrum measure, operator completeness,
-strong-coupling control at the cigar tip or Liouville wall, and the
-defect/boundary matching.
+The conjecture asserts an equivalence of the infrared endpoints of these
+regulated theories.  At the endpoint the Hamiltonians and \(\mathcal N=2\)
+superconformal generators agree under a unitary map of Hilbert spaces;
+spectral-flow sectors, spin structures, and discrete and continuous
+representations are matched; normalizable states, nonnormalizable source
+operators, reflection amplitudes, local OPEs, partition functions, and
+correlation functions are identified with their contact terms; and the
+equivalence respects topological twists, defects, branes, and boundary states.
+The semiclassical quotient metric, the asymptotic dualization, the single
+exponential from the ordinary charged chiral multiplet, and the absence of a
+smooth logarithmic-chiral vortex exponential are evidence for this statement.
+They leave separate continuum obligations: the continuous-spectrum measure,
+operator completeness, strong-coupling control at the cigar tip or Liouville
+wall, finite-field \(D\)-term/Kahler control, classification of allowed
+symmetry-preserving deformations, and the defect/boundary matching.
 \end{conjecture}
 
 For Conjecture~\ref{conj:cigar-liouville-mirror-qft}, the checks in this
@@ -2911,7 +3004,9 @@ section form the following protected-data and proof-debt ledger:
     C_{\rm bdry} &:& \hbox{defect, brane, boundary-state, and contact-term matching}.
   \end{array}
 \]
-Only the first three entries are calculated in this chapter.
+The first three entries are protected construction data.  The spectral entries
+below record the exact normalization targets that a full proof must hit; they
+are not consequences of the superpotential alone.
 
 Start with a \(U(1)\) vector multiplet \(V\), an ordinary chiral multiplet
 \(\Phi\) of charge \(1\), and a logarithmic chiral multiplet
@@ -3028,6 +3123,34 @@ winding.  Allowing singular \(P\)-fields would be a different defect
 insertion, not the smooth finite-action vortex sector used to generate
 twisted \(F\)-terms.
 
+The dual \(D\)-term before the vector constraint is just as important as the
+twisted superpotential.  Eliminating the real first-order fields gives, up to
+affine \(D\)-terms and the common normalization convention of the previous
+section,
+\begin{equation}
+  S_{\rm dual}^{D}
+  =
+  -\frac1{4\pi}
+  \int d^2z\,d^4\theta
+  \left[
+  -\frac1{g^2}\overline\Sigma\Sigma
+  -\frac12(Y+\overline Y)\log(Y+\overline Y)
+  -\frac1{2k}\overline Y_PY_P
+  \right]
+  +
+  S_{\Sigma(Y+Y_P)} .
+  \label{eq:cigar-liouville-intermediate-dual-dterm}
+\end{equation}
+The term \(S_{\Sigma(Y+Y_P)}\) is the twisted \(F\)-term linear in
+\(\Sigma(Y+Y_P)\) displayed below.  Equation
+\eqref{eq:cigar-liouville-intermediate-dual-dterm} records the full-action
+data that the exponential alone cannot provide: the ordinary charged chiral
+again produces the singular half-cylinder metric in \(Y+\overline Y>0\), while
+the logarithmic chiral produces a quadratic dual \(D\)-term for \(Y_P\).  After
+the vector constraint \(Y_P=-Y\), quantum corrections replace the displayed
+classical expression by an effective \(K(Y,\overline Y)\).  The finite-field
+part of this \(K\) is not determined by the protected twisted \(F\)-term.
+
 In the convention compatible with
 \eqref{eq:glsm-hv-dual-twisted-superpotential}, the
 low-energy twisted superpotential has the form
@@ -3070,6 +3193,120 @@ the \(\mathcal N=2\) Liouville presentation: an asymptotic cylinder
 coordinate \(Y\) together with the exponential twisted superpotential
 \eqref{eq:n2-liouville-twisted-superpotential}.
 
+The full cigar/Liouville comparison must also hit the exact spectral
+normalization.  In the coset convention compatible with the asymptotic
+cylinder, the exact cigar target data are
+\begin{equation}
+  ds^2_{\rm cig}
+  =
+  k\left(dr^2+\tanh^2 r\,d\chi^2\right),
+  \qquad
+  \Phi_{\rm cig}=-\log\cosh r,
+  \qquad
+  \chi\sim\chi+2\pi ,
+  \label{eq:n2-cigar-exact-metric-dilaton}
+\end{equation}
+so \(r\to\infty\) is a circle of radius \(\sqrt{k}\) together with a linear
+dilaton of background charge \(Q=1/\sqrt{k}\).  The central charge is
+\begin{equation}
+  c_{\rm cig}=c_{\rm Liouville}=3+\frac6k .
+  \label{eq:n2-cigar-liouville-central-charge}
+\end{equation}
+The continuous and discrete sectors are not visible in
+\(\widetilde W_{\rm Liouville}\) alone.  A coset primary is labelled by
+\((j,m,\overline m)\), with
+\[
+  h=\frac{-j(j-1)+m^2}{k},
+  \qquad
+  q=\frac{2m}{k},
+  \qquad
+  \overline h=\frac{-j(j-1)+\overline m^2}{k},
+  \qquad
+  \overline q=\frac{2\overline m}{k}.
+\]
+The continuous series has \(j=\frac12+\ii s\), \(s\in\mathbb R_{\ge0}\),
+with \(m-\overline m\in\mathbb Z\) and \(m+\overline m\in k\mathbb Z\);
+the discrete series lies at
+\[
+  \frac12<j<\frac{k+1}{2}
+\]
+with \(m,\overline m\) in the corresponding highest- or lowest-weight towers.
+Spectral flow by \((\eta,\overline\eta)\in\frac12\mathbb Z^2\) sends
+\[
+  h\mapsto
+  \frac{-j(j-1)+(m+\eta)^2}{k}+\frac{\eta^2}{2},
+  \qquad
+  q\mapsto\frac{2(m+\eta)}{k}+\eta,
+\]
+and similarly on the right.  In the asymptotic circle variables the momentum
+and winding are
+\begin{equation}
+  n=m+\eta-\overline m-\overline\eta,
+  \qquad
+  w=\frac{m+\eta+\overline m+\overline\eta}{k},
+  \label{eq:n2-cigar-spectral-flow-momentum-winding}
+\end{equation}
+so the flowed sector condition is \(w\in\mathbb Z\).
+
+The reflection amplitude is part of the operator normalization.  With
+\(\delta=2j-1\),
+\begin{equation}
+  R(j,m,\overline m;k)
+  =
+  \nu(k)^{\delta}
+  \frac{
+  \Gamma(1-\delta/k)\Gamma(j+m)\Gamma(j-\overline m)\Gamma(-\delta)}
+  {\Gamma(1+\delta/k)\Gamma(m-j+1)
+  \Gamma(-\overline m-j+1)\Gamma(\delta)},
+  \qquad
+  \nu(k)=\frac1\pi
+  \frac{\Gamma(1+1/k)}{\Gamma(1-1/k)} .
+  \label{eq:n2-cigar-reflection-amplitude}
+\end{equation}
+For \(j=\frac12+\ii s\) this is the scattering phase relating the two
+asymptotic radial waves, and its poles encode the discrete normalizable
+states.  The continuous spectral measure, the pole residues, and the
+reflection relation
+\[
+  \Psi_{j,m,\overline m}
+  =
+  R(j,m,\overline m;k)\Psi_{1-j,m,\overline m}
+\]
+are therefore \(C_{\rm spec}\) data.  A candidate Liouville action with the
+same exponential but a different finite-field \(K(Y,\overline Y)\) is a
+different theory unless this spectral package and the allowed deformation
+classification agree.
+
+In the asymptotic Liouville variables write
+\[
+  Y=\sqrt{k}\,{\mathcal Y},
+  \qquad
+  {\mathcal Y}=\varrho+\ii\widetilde y+\hbox{fermions},
+  \qquad
+  \widetilde y\sim\widetilde y+\frac{2\pi}{\sqrt{k}} .
+\]
+The normalized \(\mathcal N=2\) Liouville action at the endpoint has the
+asymptotic superspace form
+\begin{equation}
+  S_L
+  =
+  \int d^2z
+  \left[
+  -\frac1{8\pi}\int d^4\theta\,{\mathcal Y}\overline{\mathcal Y}
+  +
+  \mu\int d^2\theta\,e^{-\sqrt{k}{\mathcal Y}}
+  +
+  \overline\mu\int d^2\overline\theta\,
+  e^{-\sqrt{k}\overline{\mathcal Y}}
+  \right],
+  \label{eq:n2-liouville-normalized-action}
+\end{equation}
+together with the background charge \(Q=1/\sqrt{k}\).  The exponential has
+left and right weight \(1/2\) before the two supercharges act: the radial
+factor contributes \(1/2-k/4\) and the dual-circle factor contributes
+\(k/4\).  This is why the integrated \(G_{-1/2}^+\overline G_{-1/2}^+\)
+deformation is marginal in the linear-dilaton normalization.
+
 The construction supplies a precise protected-data bridge:
 \[
   \begin{aligned}
@@ -3082,12 +3319,16 @@ The construction supplies a precise protected-data bridge:
   \end{aligned}
 \]
 This is the \(C_{\rm cl}\), \(C_{\rm dual}\), and \(C_{\rm vort}\) evidence
-lane for Conjecture~\ref{conj:cigar-liouville-mirror-qft}.  It identifies
-the asymptotic variables and the protected Liouville superpotential, while
-the equality of continuum Hilbert spaces, local algebras,
-\(\mathcal N=2\) generators, defect categories, spectral-flow sectors, and
-continuous-spectrum measures remains in the \(C_{\rm spec}\) and
-\(C_{\rm bdry}\) obligations.  The semiclassical quotient metric
+lane for Conjecture~\ref{conj:cigar-liouville-mirror-qft}, supplemented by a
+\(C_{\rm spec}\) normalization target.  It identifies the asymptotic variables,
+the protected Liouville superpotential, the exact coset spectral labels, and
+the reflection-amplitude data that the infrared equivalence must reproduce.
+It still does not prove equality of continuum Hilbert spaces, local algebras,
+\(\mathcal N=2\) generators, defect categories, full continuous-spectrum
+measure, pole-residue normalization, or boundary states.  Those remain
+\(C_{\rm spec}\) and \(C_{\rm bdry}\) obligations, together with the rigidity
+statement excluding a different finite-field \(K(Y,\overline Y)\) with the
+same asymptotics and superpotential.  The semiclassical quotient metric
 \eqref{eq:cigar-glsm-classical-quotient-metric} is a coordinate on the
 asymptotic target geometry rather than a construction of the full cigar QFT.
 
@@ -3167,25 +3408,58 @@ gamma matrices and orientation are fixed by
   \gamma^{12}=\frac12[\gamma^1,\gamma^2]=\ii\gamma_* .
 \]
 With this convention the terms linear in a constant charge-\(Q\) Euclidean
-background are
+background follow from the quadratic charged-chiral action
 \[
-  \Delta_B
+  S_{\Phi}^{(2)}
   =
-  -\nabla_\mu\nabla_\mu+|M|^2
-  +QD,
+  \int d^2x\,
+  \left[
+    \overline\phi
+    \bigl(-\nabla_\mu\nabla_\mu+|M|^2+QD\bigr)\phi
+    +
+    \overline\psi\,\mathcal D_F\psi
+    +
+    \overline{\mathcal F}_\phi{\mathcal F}_\phi
+  \right],
   \qquad
+  \nabla_\mu=\partial_\mu+\ii Q A_\mu ,
+\]
+with
+\[
+  P_\pm=\frac12(1\pm\gamma_*),
+  \qquad
+  \mathcal D_F=\gamma^\mu\nabla_\mu+M P_+ +\overline M P_- .
+\]
+For constant \(M\) and slowly varying gauge field,
+\([\nabla_1,\nabla_2]=\ii QF_{12}\), and the relevant second-order operators
+are
+\[
+  \begin{aligned}
+  \Delta_B
+  &=
+  -\nabla_\mu\nabla_\mu+|M|^2+QD,
+  \\
   \mathcal D_F^\dagger\mathcal D_F
-  =
+  &=
   -\nabla_\mu\nabla_\mu+|M|^2
-  +Q\gamma^{12}F_{12}
-  +O(\nabla\sigma,D^2,F^2),
+  -\ii Q\gamma^{12}F_{12}
+  +O(\nabla\sigma,D^2,F^2)
+  \\
+  &=
+  -\nabla_\mu\nabla_\mu+|M|^2
+  +Q\gamma_*F_{12}
+  +O(\nabla\sigma,D^2,F^2).
+  \end{aligned}
 \]
 where the omitted terms are either higher order in the slowly varying
-background or cancel inside the supersymmetric supertrace.  This formula is a
-component convention statement: reversing the top-component convention of
-\(\Sigma\), or the chirality convention in the massive fermion determinant,
-reverses the final holomorphic logarithm and must be accompanied by the
-corresponding change in all Coulomb equations.
+background or cancel inside the supersymmetric supertrace.  The curvature
+term is Hermitian.  The expression \(Q\gamma^{12}F_{12}\) without the factor
+\(-\ii\) would be anti-Hermitian for real \(F_{12}\) and is not the positive
+operator used here.  This formula is a component convention statement:
+reversing the top-component convention of \(\Sigma\), or the chirality
+convention in the massive fermion determinant, reverses the final holomorphic
+logarithm and must be accompanied by the corresponding change in all Coulomb
+equations.
 
 The disputed real sign comes from differentiating the complex-scalar
 determinant, not from branch periodicity.  Let \(K_\Lambda\) be any finite
@@ -3215,23 +3489,30 @@ and therefore
   \frac1{\lambda_n+\mu^2}
   \right].
 \]
-The heat-kernel limit of the bracket is negative when \(|M|>\mu\), so the
-coefficient of \(QD\) is \(+\log(|M|/\mu)\) in the FI normalization used here.
-Equivalently, with the proper-time normalization below, the real supertrace
-contains the coefficient
-\[
-  -\frac12\log\frac{\mu^2}{|M|^2}
-  =
-  \log\frac{|M|}{\mu}.
-\]
-The proper-time subtraction giving the displayed logarithm is
+Per unit area, the heat-kernel limit is the two-dimensional momentum integral
 \begin{equation}
-  4\pi
+  \left.
+  \frac1{{\rm Vol}}\,
+  \frac{\partial\log Z_B^{\rm ren}}{\partial D}
+  \right|_{D=0}
+  =
+  -Q\int\frac{d^2p}{(2\pi)^2}
+  \left[
+    \frac1{p^2+|M|^2}
+    -
+    \frac1{p^2+\mu^2}
+  \right]
+  =
+  \frac{Q}{4\pi}\log\frac{|M|^2}{\mu^2}.
+  \label{eq:abelian-glsm-determinant-local-density}
+\end{equation}
+Equivalently,
+\begin{equation}
   \int_0^\infty
   \frac{\dd s}{4\pi s}\,
   \bigl(e^{-s|M|^2}-e^{-s\mu^2}\bigr)
   =
-  \log\frac{\mu^2}{|M|^2}.
+  \frac1{4\pi}\log\frac{\mu^2}{|M|^2}.
   \label{eq:abelian-glsm-proper-time-log}
 \end{equation}
 The equality follows by differentiating both sides with respect to
@@ -3245,28 +3526,56 @@ The equality follows by differentiating both sides with respect to
   =
   -\frac1{|M|^2}.
 \]
-Equation~\eqref{eq:abelian-glsm-proper-time-log} determines the real
-logarithm only after multiplication by the component response coefficient
-\(-1/2\).  That factor packages the complex-scalar determinant sign together
-with the conversion from
-\(\log(\mu^2/|M|^2)\) to \(\log(|M|/\mu)\) in the \(4\pi\) proper-time
-normalization.
+The bridge from the local determinant density to the twisted superpotential is
+the component normalization
+\[
+  \delta\log Z_{\widetilde W}
+  =
+  \frac1{2\pi}\int d^2x\,
+  \Re\left[
+    \frac{\partial\widetilde W}{\partial\Sigma}\,\delta D
+  \right]
+  +\hbox{the corresponding }F_{12}\hbox{ phase term}.
+\]
+Thus
+\[
+  \frac1{2\pi}Q\log\frac{|M|}{\mu}
+  =
+  \frac{Q}{4\pi}\log\frac{|M|^2}{\mu^2}
+\]
+is exactly the real part of
+\(Q\log(M/\mu)\) in
+\(\partial\widetilde W/\partial\Sigma\).  This extraction divides by the
+signed analytic logarithm; a one-point sign test with a chosen ordering of
+\(|M|\) and \(\mu\) would not determine the coefficient.
 
 The \(F_{12}\) partner is a phase, not an independent real magnitude
 calculation.  In the nonzero spectrum of \(\mathcal D_F^\dagger\mathcal D_F\),
 states of opposite \(\gamma_*\)-chirality are paired, so the linear spin trace
-of \(Q\gamma^{12}F_{12}\) cancels in the determinant magnitude.  The remaining
-phase is the Fujikawa Jacobian.  In a background with
+of \(Q\gamma_*F_{12}\) does not change the determinant magnitude.  The
+remaining phase is the Fujikawa Jacobian.  In a background with
 \[
   k=\frac1{2\pi}\int F\in\mathbb Z,
 \]
-the regulated chiral trace is
+the same Hermitian square gives the local heat-kernel trace
 \[
-  \operatorname{Tr}_{\rm reg}\gamma_*=Qk .
+  \operatorname{Tr}_{\rm reg}\gamma_*
+  =
+  \lim_{s\downarrow0}
+  \operatorname{Tr}\,
+  \gamma_*\exp\{-s(-\nabla^2+Q\gamma_*F_{12})\}
+  =
+  -\frac{Q}{2\pi}\int F
+  =
+  -Qk .
 \]
-If \(M=|M|e^{\ii\alpha}\), the axial rotation that makes the mass real acts on
-the two fermion measures with half-angle contributions whose sum is
+The sign is fixed by the \(\gamma_*\) convention above: for \(Qk>0\), the
+lowest Landau zero modes have negative \(\gamma_*\)-chirality.  If
+\(M=|M|e^{\ii\alpha}\), the axial rotation that makes the mass real is
+generated by \(-\gamma_*/2\), so the two half-angle measure contributions give
 \[
+  \exp\{-\ii\alpha\,\operatorname{Tr}_{\rm reg}\gamma_*\}
+  =
   \exp\{\ii\alpha\,Qk\}.
 \]
 Since the Euclidean theta weight in

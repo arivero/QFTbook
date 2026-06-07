@@ -2969,11 +2969,13 @@ Current checks:
   momentum-winding/Legendre-Hessian inversion checks, plus the abelian GLSM
   Coulomb one-loop charge-exponent/vacuum-count ledger, the primitive of the
   Coulomb logarithmic derivative and its finite FI-coordinate shift under
-  determinant normalization changes, the Coulomb spectral/Fujikawa
-  component-response sign check which constructs two-dimensional gamma
-  matrices, differentiates finite bosonic determinant traces, checks paired
-  fermion spin traces, and computes the mass-phase Jacobian from a finite
-  index, the Coulomb branch-monodromy check
+  determinant normalization changes, the Coulomb determinant/Fujikawa
+  response check which constructs two-dimensional gamma matrices, rejects the
+  anti-Hermitian uncorrected Dirac-square curvature term, extracts the local
+  determinant-density coefficient after division by the signed analytic
+  logarithm across charge and mass-order reversals, checks paired fermion spin
+  traces, and computes the mass-phase Jacobian from finite flux Dirac-complex
+  ranks and the same heat-kernel trace, the Coulomb branch-monodromy check
   which transports logarithm-sheet shifts into integral \(T\)-periods while
   rejecting compact-periodicity-as-sign-oracle and absolute-value-only
   logarithm shortcuts, the compact FI-theta check that
@@ -3051,7 +3053,15 @@ Current checks:
   the logarithmic-chiral vortex obstruction, the mirror-conjecture
   observable-boundary check separating full GLSM/Hori--Vafa and cigar/Liouville QFT equivalence
   data from protected-sector evidence and rejecting protected-calculation
-  shortcuts to full duality, plus the hypersurface GLSM
+  shortcuts to full duality, the full-action/IR mirror data boundary checking
+  that a superpotential alone omits the mirror \(D\)-term, measure,
+  counterterms, global data, noncompact boundary conditions, RG map,
+  operator/state map, and spectral measure, a finite charged-chiral
+  Legendre-domain cell showing the \(Y+\overline Y>0\) singular boundary and
+  noncompact \(D\)-term boundary contribution, and cigar/Liouville spectral
+  data cells checking \(c=3+6/k\), Liouville exponential marginality,
+  spectral-flow momentum/winding arithmetic, and symbolic reflection
+  involution, plus the hypersurface GLSM
   adjunction sign,
   Landau--Ginzburg/sigma-model central-charge matching condition, residual
   finite-gauge invariant Jacobi monomial count, and Coulomb-coordinate

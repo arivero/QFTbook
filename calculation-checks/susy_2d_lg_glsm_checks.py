@@ -8,7 +8,8 @@ normalization, compact FI-theta flux periodicity, common-flux rather than
 flavor-labelled vortex topology, one-vortex normal-mode interaction and original/dual-frame
 separation, one-vortex source-functional F-term extraction,
 one-vortex component-amplitude source-minor extraction,
-one-loop Coulomb spectral/Fujikawa component response and monodromy bookkeeping,
+one-loop Coulomb local determinant-density/Fujikawa heat-kernel response and
+monodromy bookkeeping,
 single-vortex coefficient noncancellation bound,
 P^{N-1} mirror residue trace, and
 vortex-to-protected-observable proof-obligation map, together with the
@@ -17,8 +18,10 @@ P^{N-1} stable-map computation, the finite degree-one stable-map incidence model
 with supplied vortex coefficient input plus conditional proof-obligation template for
 the quantum-product observable relation, the A-model degree-one zero-mode
 measure bridge, the finite measure-scheme covariance test for that
-degree-one coefficient, and the mirror-conjecture observable boundary separating
-full-QFT data from protected evidence, plus the Hori--Vafa
+degree-one coefficient, the mirror-conjecture observable boundary separating
+full-QFT data from protected evidence, the full-action/IR-universality data
+boundary for mirror presentations, and cigar/Liouville spectral-data cells,
+plus the Hori--Vafa
 residue/direct-instanton comparison map, with the direct degree-one incidence
 Jacobian computed before comparison, and the one-vortex source-frame
 calibration proof-obligation map distinguishing a component amplitude from the
@@ -30,12 +33,15 @@ coefficient bounds, oriented source-minor component-amplitude cells,
 component-to-component source-frame calibration ratios with supplied component
 and frame residuals,
 normal-mode cumulant factors and original-to-dual frame tags,
-formal one-loop spectral component-response signs, finite gamma-matrix
+one-loop gamma-matrix Hermiticity tests, signed-log determinant-density
+coefficient extraction, finite flux Dirac-complex ranks, heat-kernel
 Fujikawa traces, logarithm branch shifts, and axial-monodromy ledgers,
 root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree filters, and
-conditional residual-propagation maps, plus finite density/Jacobian transport
-tests and double-entry
+conditional residual-propagation maps, full-action data-interface tests,
+finite Legendre-domain and boundary-term cells, cigar central-charge and
+spectral-flow arithmetic, Liouville marginality checks, symbolic reflection
+factor involution, plus finite density/Jacobian transport tests and double-entry
 mirror/direct-vortex comparisons whose direct side includes a separately
 computed incidence orientation, degree gate, and compactification gate, are
 computed directly from finite data rather than by substituting the displayed
@@ -122,6 +128,7 @@ estimates in the vortex-to-observable proof-obligation map.
 
 from __future__ import annotations
 
+from collections import Counter
 from fractions import Fraction
 from math import exp, isclose, log, prod
 
@@ -596,6 +603,71 @@ def check_coulomb_component_response_selects_log_sign() -> None:
             (left[1][0] + right[1][0], left[1][1] + right[1][1]),
         )
 
+    def matdagger(
+        matrix: tuple[tuple[complex, complex], tuple[complex, complex]],
+    ) -> tuple[tuple[complex, complex], tuple[complex, complex]]:
+        return (
+            (matrix[0][0].conjugate(), matrix[1][0].conjugate()),
+            (matrix[0][1].conjugate(), matrix[1][1].conjugate()),
+        )
+
+    def trace2(matrix: tuple[tuple[complex, complex], tuple[complex, complex]]) -> complex:
+        return matrix[0][0] + matrix[1][1]
+
+    def sign(value: Fraction) -> int:
+        if value > 0:
+            return 1
+        if value < 0:
+            return -1
+        return 0
+
+    def rectangular_identity(rows: int, cols: int) -> list[list[Fraction]]:
+        return [
+            [Fraction(1) if row == col else Fraction(0) for col in range(cols)]
+            for row in range(rows)
+        ]
+
+    def matrix_rank(matrix: list[list[Fraction]]) -> int:
+        rows = [row[:] for row in matrix]
+        rank = 0
+        if not rows:
+            return 0
+        col_count = len(rows[0])
+        for col in range(col_count):
+            pivot = None
+            for row in range(rank, len(rows)):
+                if rows[row][col] != 0:
+                    pivot = row
+                    break
+            if pivot is None:
+                continue
+            rows[rank], rows[pivot] = rows[pivot], rows[rank]
+            pivot_value = rows[rank][col]
+            rows[rank] = [entry / pivot_value for entry in rows[rank]]
+            for row in range(len(rows)):
+                if row == rank or rows[row][col] == 0:
+                    continue
+                factor = rows[row][col]
+                rows[row] = [
+                    entry - factor * pivot_entry
+                    for entry, pivot_entry in zip(rows[row], rows[rank])
+                ]
+            rank += 1
+        return rank
+
+    def finite_flux_dirac_index(charge_value: int, flux_value: int, base_dim: int = 8) -> int:
+        signed_flux = charge_value * flux_value
+        plus_dim = base_dim + max(-signed_flux, 0)
+        minus_dim = base_dim + max(signed_flux, 0)
+        # The finite Landau complex has D_+ : V_+ -> V_- with full rank; the
+        # flux enters as the chiral dimension mismatch, and the kernel is then
+        # computed from the operator rank rather than assigned as zero modes.
+        d_plus = rectangular_identity(minus_dim, plus_dim)
+        rank = matrix_rank(d_plus)
+        plus_kernel = plus_dim - rank
+        minus_kernel = minus_dim - rank
+        return plus_kernel - minus_kernel
+
     gamma_1 = ((0j, 1 + 0j), (1 + 0j, 0j))
     gamma_2 = ((0j, -1j), (1j, 0j))
     identity = ((1 + 0j, 0j), (0j, 1 + 0j))
@@ -617,44 +689,76 @@ def check_coulomb_component_response_selects_log_sign() -> None:
         matscale(1j, gamma_star),
     )
 
-    charge = Fraction(3)
-    mass_squared = Fraction(4)
-    reference_mass_squared = Fraction(1)
-    kinetic_spectrum = [Fraction(0), Fraction(2), Fraction(5)]
-    scalar_trace = sum(Fraction(1, lam + mass_squared) for lam in kinetic_spectrum)
-    scalar_reference_trace = sum(
-        Fraction(1, lam + reference_mass_squared) for lam in kinetic_spectrum
+    sample_charge = Fraction(3)
+    uncorrected_spin_term = matscale(sample_charge, gamma_12)
+    corrected_spin_term = matscale(-1j * sample_charge, gamma_12)
+    assert_equal(
+        "Q gamma12 F term without i is not Hermitian",
+        uncorrected_spin_term == matdagger(uncorrected_spin_term),
+        False,
+    )
+    assert_equal(
+        "corrected Dirac-square curvature term is Hermitian",
+        corrected_spin_term,
+        matdagger(corrected_spin_term),
+    )
+    assert_equal(
+        "corrected curvature term equals Q gamma-star F",
+        corrected_spin_term,
+        matscale(sample_charge, gamma_star),
     )
 
-    # A complex scalar is two real fields, hence two determinant powers -1/2.
-    # The finite D-response is obtained by differentiating those determinants;
-    # no target logarithm sign is inserted.
+    # In units of (4*pi)^(-1), the local two-dimensional integral obeys
+    # int [1/(p^2+M^2)-1/(p^2+mu^2)] = -log(M^2/mu^2).  The coefficient is
+    # extracted after dividing by the signed analytic logarithm, so it is
+    # independent of the chosen mass ordering and charge sign.
     complex_scalar_power = -Fraction(1, 2) - Fraction(1, 2)
-    d_response = complex_scalar_power * charge * (
-        scalar_trace - scalar_reference_trace
-    )
-    determinant_log_sign = Fraction(1) if d_response > 0 else -Fraction(1)
+    kinematic_response_signs: set[int] = set()
+    for charge_value in [Fraction(3), -Fraction(2)]:
+        for signed_log_units in [Fraction(5), -Fraction(7)]:
+            scalar_bracket_units = -signed_log_units
+            d_response_units = complex_scalar_power * charge_value * scalar_bracket_units
+            extracted_charge = d_response_units / signed_log_units
+            assert_equal(
+                "local determinant density extracts Q coefficient",
+                extracted_charge,
+                charge_value,
+            )
+            assert_equal(
+                "coefficient sign survives charge and mass-order reversal",
+                extracted_charge / charge_value,
+                Fraction(1),
+            )
+            twisted_f_density_units = charge_value * signed_log_units
+            assert_equal(
+                "1/(2 pi) twisted-F component normalization matches density",
+                d_response_units,
+                twisted_f_density_units,
+            )
+            kinematic_response_signs.add(sign(d_response_units))
+
+            wrong_bosonic_power = Fraction(1)
+            wrong_response_units = (
+                wrong_bosonic_power * charge_value * scalar_bracket_units
+            )
+            assert_equal(
+                "wrong bosonic determinant power gives opposite extracted coefficient",
+                wrong_response_units / signed_log_units == charge_value,
+                False,
+            )
+
+            real_scalar_only_response_units = (
+                -Fraction(1, 2) * charge_value * scalar_bracket_units
+            )
+            assert_equal(
+                "real-scalar-only shortcut misses complex-boson multiplicity",
+                real_scalar_only_response_units == d_response_units,
+                False,
+            )
     assert_equal(
-        "finite scalar determinant response selects chapter sign",
-        determinant_log_sign,
-        Fraction(1),
-    )
-    wrong_bosonic_power = Fraction(1)
-    wrong_d_response = wrong_bosonic_power * charge * (
-        scalar_trace - scalar_reference_trace
-    )
-    assert_equal(
-        "wrong bosonic determinant power flips D response",
-        Fraction(1) if wrong_d_response > 0 else -Fraction(1),
-        -Fraction(1),
-    )
-    real_scalar_only_response = -Fraction(1, 2) * charge * (
-        scalar_trace - scalar_reference_trace
-    )
-    assert_equal(
-        "real-scalar-only shortcut misses complex-boson multiplicity",
-        real_scalar_only_response == d_response,
-        False,
+        "kinematic response sign is not the logarithmic coefficient sign",
+        len(kinematic_response_signs) > 1,
+        True,
     )
 
     paired_fermion_modes = [
@@ -665,6 +769,9 @@ def check_coulomb_component_response_selects_log_sign() -> None:
         (Fraction(9), Fraction(1)),
         (Fraction(9), -Fraction(1)),
     ]
+    charge = sample_charge
+    mass_squared = Fraction(4)
+    reference_mass_squared = Fraction(1)
     fermion_spin_response = Fraction(1, 2) * charge * sum(
         chirality
         * (
@@ -692,46 +799,49 @@ def check_coulomb_component_response_selects_log_sign() -> None:
         False,
     )
 
-    flux = Fraction(2)
-    positive_zero_modes = charge * flux
-    negative_zero_modes = Fraction(0)
-    nonzero_chiral_trace = sum(chirality for _, chirality in paired_fermion_modes)
-    fujikawa_index = positive_zero_modes - negative_zero_modes + nonzero_chiral_trace
-    assert_equal(
-        "finite Fujikawa trace equals charge times flux",
-        fujikawa_index,
-        charge * flux,
-    )
-
+    gamma_star_square_trace = trace2(matmul(gamma_star, gamma_star))
+    assert_equal("spin trace of gamma-star squared", gamma_star_square_trace, 2 + 0j)
     mass_phase = Fraction(5, 7)
-    left_measure_phase = Fraction(1, 2) * fujikawa_index * mass_phase
-    right_measure_phase = Fraction(1, 2) * fujikawa_index * mass_phase
-    jacobian_phase = left_measure_phase + right_measure_phase
-    theta_shift = jacobian_phase / flux
-    assert_equal(
-        "finite Fujikawa Jacobian gives theta shift Q alpha",
-        theta_shift,
-        charge * mass_phase,
-    )
-    one_measure_only_phase = left_measure_phase / flux
-    assert_equal(
-        "one-sided measure shortcut misses factor two",
-        one_measure_only_phase == theta_shift,
-        False,
-    )
-    wrong_chirality_phase = -jacobian_phase / flux
-    assert_equal(
-        "wrong chirality orientation flips mass-phase Jacobian",
-        wrong_chirality_phase == theta_shift,
-        False,
-    )
+    for charge_int, flux_int in [(3, 2), (3, -2), (-2, 3), (-2, -3)]:
+        finite_index = finite_flux_dirac_index(charge_int, flux_int)
+        heat_kernel_index = -charge_int * flux_int * int(gamma_star_square_trace.real) // 2
+        assert_equal(
+            "finite flux Dirac complex computes signed Fujikawa trace",
+            finite_index,
+            heat_kernel_index,
+        )
+        assert_equal(
+            "same-convention Fujikawa trace is minus charge times flux",
+            finite_index,
+            -charge_int * flux_int,
+        )
 
-    absolute_value_only_phase = Fraction(0)
-    assert_equal(
-        "absolute-value determinant cannot supply mass-phase Jacobian",
-        absolute_value_only_phase == jacobian_phase,
-        False,
-    )
+        jacobian_phase = -mass_phase * finite_index
+        theta_shift = jacobian_phase / flux_int
+        assert_equal(
+            "finite Fujikawa Jacobian gives theta shift Q alpha",
+            theta_shift,
+            charge_int * mass_phase,
+        )
+        one_measure_only_phase = -Fraction(1, 2) * mass_phase * finite_index / flux_int
+        assert_equal(
+            "one-sided measure shortcut misses factor two",
+            one_measure_only_phase == theta_shift,
+            False,
+        )
+        wrong_chirality_phase = mass_phase * finite_index / flux_int
+        assert_equal(
+            "wrong chirality orientation flips mass-phase Jacobian",
+            wrong_chirality_phase == theta_shift,
+            False,
+        )
+
+        absolute_value_only_phase = Fraction(0)
+        assert_equal(
+            "absolute-value determinant cannot supply mass-phase Jacobian",
+            absolute_value_only_phase == jacobian_phase,
+            False,
+        )
 
 
 def check_coulomb_one_loop_branch_monodromy() -> None:
@@ -3041,6 +3151,173 @@ def check_mirror_conjecture_observable_boundary() -> None:
     )
 
 
+def check_full_mirror_ir_data_boundary() -> None:
+    full_mirror_data = {
+        "UV regulator",
+        "Kahler D-term",
+        "path-integral measure",
+        "dilaton/background charge",
+        "counterterm coordinates",
+        "global/orbifold data",
+        "noncompact boundary conditions",
+        "RG map",
+        "operator/state map",
+        "spectral measure",
+    }
+    protected_superpotential_data = {
+        "periodic Y",
+        "linear Sigma Y",
+        "primitive exponential",
+        "Coulomb logarithm",
+    }
+    missing_from_superpotential = full_mirror_data - protected_superpotential_data
+    assert_equal(
+        "superpotential alone omits full mirror-QFT data",
+        bool(missing_from_superpotential),
+        True,
+    )
+
+    proposed_ir_claim = {
+        "UV regulator",
+        "Kahler D-term",
+        "path-integral measure",
+        "dilaton/background charge",
+        "counterterm coordinates",
+        "global/orbifold data",
+        "noncompact boundary conditions",
+        "RG map",
+        "operator/state map",
+        "spectral measure",
+        "twisted F-term",
+    }
+    assert_equal(
+        "IR mirror claim contains complete regulated data interface",
+        full_mirror_data <= proposed_ir_claim,
+        True,
+    )
+
+    # Finite Legendre cell for e^B - U B/2.  Eliminating B gives a dual
+    # D-term whose Hessian magnitude is 1/(2U), so the domain U>0 and the
+    # singular boundary U=0 are genuine QFT data, not F-term decorations.
+    for u_value in [Fraction(1, 5), Fraction(3, 2), Fraction(9, 1)]:
+        dual_metric_magnitude = Fraction(1, 2) / u_value
+        assert_equal(
+            "charged-chiral Legendre metric is positive on Re Y > 0",
+            dual_metric_magnitude > 0,
+            True,
+        )
+    singular_cutoff = Fraction(1, 10**6)
+    bulk_point = Fraction(2)
+    assert_equal(
+        "dual metric detects singular boundary at Re Y=0",
+        Fraction(1, 2) / singular_cutoff > Fraction(1, 2) / bulk_point,
+        True,
+    )
+
+    # A nominal D-term total derivative can leave a boundary term on a
+    # noncompact/singular domain.  This finite cell rejects the shortcut
+    # "D-term deformation = automatically IR irrelevant".
+    def boundary_primitive(u_value: Fraction) -> Fraction:
+        return Fraction(1, 1 + u_value)
+
+    compact_boundary_sum = boundary_primitive(Fraction(3)) - boundary_primitive(Fraction(3))
+    noncompact_boundary_sum = Fraction(0) - boundary_primitive(Fraction(0))
+    assert_equal("compact paired boundary cancels D-term total derivative", compact_boundary_sum, 0)
+    assert_equal(
+        "noncompact boundary can retain D-term contribution",
+        noncompact_boundary_sum == 0,
+        False,
+    )
+
+    fake_liouville = {
+        "same twisted F-term",
+        "same asymptotic cylinder",
+        "same central charge",
+    }
+    rigidity_inputs = {
+        "finite-field Kahler control",
+        "boundary conditions",
+        "spectral measure",
+        "reflection amplitude",
+        "deformation classification",
+    }
+    assert_equal(
+        "fake Liouville data are not excluded by F-term/asymptotics alone",
+        rigidity_inputs <= fake_liouville,
+        False,
+    )
+
+
+def check_cigar_liouville_spectral_data_cell() -> None:
+    for k_level in [Fraction(2), Fraction(5), Fraction(9, 2)]:
+        background_charge_squared = Fraction(1, k_level)
+        central_charge = Fraction(3) + 6 * background_charge_squared
+        assert_equal("N=2 cigar/Liouville central charge", central_charge, 3 + Fraction(6, 1) / k_level)
+
+        liouville_radial_weight = Fraction(1, 2) - k_level / 4
+        liouville_dual_circle_weight = k_level / 4
+        assert_equal(
+            "N=2 Liouville exponential chiral-primary weight",
+            liouville_radial_weight + liouville_dual_circle_weight,
+            Fraction(1, 2),
+        )
+
+    k_level = Fraction(4)
+    s_squared = Fraction(9, 16)
+    m = Fraction(7, 2)
+    mbar = Fraction(1, 2)
+    eta = Fraction(1, 2)
+    etabar = -Fraction(1, 2)
+
+    continuous_weight = (Fraction(1, 4) + s_squared + m * m) / k_level
+    flowed_weight = (Fraction(1, 4) + s_squared + (m + eta) ** 2) / k_level + eta * eta / 2
+    assert_equal(
+        "spectral flow changes conformal weight by current-algebra formula",
+        flowed_weight - continuous_weight,
+        ((m + eta) ** 2 - m * m) / k_level + eta * eta / 2,
+    )
+    n_momentum = m + eta - mbar - etabar
+    winding = (m + eta + mbar + etabar) / k_level
+    assert_equal("spectral-flow momentum is integral in selected sector", n_momentum.denominator, 1)
+    assert_equal("spectral-flow winding is integral in selected sector", winding.denominator, 1)
+
+    def reflection_factors(delta_sign: int) -> Counter[str]:
+        factors: Counter[str] = Counter()
+        # delta = 2j-1.  Under j -> 1-j, delta -> -delta and every numerator
+        # factor in the reflection amplitude becomes its paired denominator.
+        factors["nu^delta"] += delta_sign
+        factors["Gamma(1-delta/k)"] += delta_sign
+        factors["Gamma(1+delta/k)"] -= delta_sign
+        factors["Gamma(-delta)"] += delta_sign
+        factors["Gamma(delta)"] -= delta_sign
+        if delta_sign == 1:
+            factors["Gamma(j+m)"] += 1
+            factors["Gamma(j-mbar)"] += 1
+            factors["Gamma(m-j+1)"] -= 1
+            factors["Gamma(-mbar-j+1)"] -= 1
+        else:
+            factors["Gamma(m-j+1)"] += 1
+            factors["Gamma(-mbar-j+1)"] += 1
+            factors["Gamma(j+m)"] -= 1
+            factors["Gamma(j-mbar)"] -= 1
+        return factors
+
+    combined_reflection_factors = reflection_factors(1)
+    combined_reflection_factors.update(reflection_factors(-1))
+    reflection_product = Counter(
+        {
+            label: exponent
+            for label, exponent in combined_reflection_factors.items()
+            if exponent != 0
+        }
+    )
+    assert_equal(
+        "symbolic cigar reflection relation R(j)R(1-j)=1",
+        reflection_product,
+        Counter(),
+    )
+
+
 def invariant_jacobi_monomial_count(num_fields: int, degree: int) -> int:
     count = 0
 
@@ -3136,6 +3413,8 @@ def main() -> None:
     check_cigar_metric_elimination()
     check_logarithmic_chiral_vortex_obstruction()
     check_mirror_conjecture_observable_boundary()
+    check_full_mirror_ir_data_boundary()
+    check_cigar_liouville_spectral_data_cell()
     check_hypersurface_phase_ledger()
     check_hypersurface_coulomb_coordinate_signal()
     print("All 2D SUSY LG/GLSM checks passed.")

@@ -67,6 +67,11 @@ and
   GLSM/Hori--Vafa mirror conjecture, its observable comparison layers, and the
   separate continuum/operator/topological/background/singular-locus proof
   debts.
+- `mathfrak M_Lambda`, `K_mir`, `D^mir_Lambda`, `C_ct`, `B_infty`,
+  `G_glob`, `R_{Lambda->IR}`: full mirror-QFT datum separating the
+  protected Hori--Vafa twisted-superpotential presentation from the mirror
+  `D`-term/Kahler functional, functional measure, counterterms, noncompact
+  boundary conditions, global/orbifold data, and Wilsonian map to the IR.
 - `hat X_i`, `q_phys`, `R_{P^{N-1}}`, `H`: vortex-normalized mirror-torus
   coordinate, physical exponentiated FI coordinate after finite determinant
   normalization, normalized projective-space mirror residue trace, and
@@ -127,9 +132,11 @@ and
   variable, polar coordinate for the charged chiral scalar, angular
   coordinate, real and periodic parts of `P`, and cigar level parameter.
 - `conj:cigar-liouville-mirror-qft`, `C_cl`, `C_dual`, `C_vort`,
-  `C_spec`, `C_bdry`: named full-QFT cigar/Liouville mirror conjecture and
-  the protected-data/proof-debt lanes separating quotient/dualization/vortex
-  checks from spectral-flow, continuous-spectrum, defect, and boundary data.
+  `C_spec`, `C_bdry`, `R(j,m,bar m;k)`: named full-QFT cigar/Liouville mirror
+  conjecture, the protected-data/proof-debt lanes separating
+  quotient/dualization/vortex checks from spectral-flow, continuous-spectrum,
+  defect, and boundary data, and the exact reflection-amplitude datum that a
+  full spectral comparison must reproduce.
 - `X_i`, `P`, `G_d`, `d`, `mu_d`: hypersurface GLSM fields, homogeneous
   polynomial, degree, and residual finite gauge group.
 - `H`, `Y_G`, `C_branch`, `T`: hyperplane Chern class on projective space,
@@ -198,16 +205,31 @@ and
   separate vortex-instanton compactness/zero-mode/determinant proof.
 - States the named abelian GLSM/Hori--Vafa mirror QFT conjecture with charge
   matrix, FI-theta coordinate, global gauge form, spin/background data,
-  regulator, phase chamber, singular-locus exclusions, continuum Hilbert
-  spaces/Hamiltonians, local OPEs, A/B sectors and pairings, defects,
-  boundaries, topological sectors, contact terms, and RG endpoints.  The
-  chapter now separates this full-QFT statement from the protected evidence
-  lanes `D_loc`, `D_pert`, `D_vort`, and `D_obs`, and from the proof-debt
-  lanes `E_cont`, `E_op`, `E_top`, `E_bg`, and `E_sing`.
+  regulator, phase chamber, singular-locus exclusions, mirror `D`-term/Kahler
+  data, functional measure, counterterms, global/orbifold data, noncompact
+  boundary conditions, continuum Hilbert spaces/Hamiltonians, local OPEs, A/B
+  sectors and pairings, defects, boundaries, topological sectors, contact
+  terms, and RG endpoints.  The statement is now explicitly an equivalence of
+  infrared endpoints of regulated theories, and the chapter separates this
+  full-QFT statement from the protected evidence lanes `D_loc`, `D_pert`,
+  `D_vort`, and `D_obs`, and from the proof-debt lanes `E_cont`, `E_op`,
+  `E_top`, `E_bg`, and `E_sing`.
+- Defines the full mirror-QFT datum `mathfrak M_Lambda`, distinguishing the
+  protected Hori--Vafa presentation `(Y_i,Sigma_a,W_tilde_dual)` from the
+  mirror Kahler/D-term functional, induced measure, counterterms,
+  noncompact-boundary functional, global data, and Wilsonian map.  The chapter
+  now states that two mirror theories with the same twisted superpotential are
+  physically interchangeable only after a universality/rigidity statement and
+  boundary-term control.
 - Derives the first-order charged-chiral dualization with real superfield
   `B_i`, twisted-linear constraint, Legendre elimination, and the
   superspace integration-by-parts identity producing the linear
   `-Q_i^a Sigma_a Y_i` twisted `F`-term.
+- Records the charged-chiral dual `D`-term
+  `K_i^cl(U_i)=-1/2 U_i log(U_i/2)`, its `U_i=Y_i+bar Y_i>0` domain, the
+  singular boundary at `U_i=0`, the weak-coupling cylindrical end, and the
+  induced-measure/anomaly obligation.  This makes the local mirror coordinate
+  a full-action datum rather than only a holomorphic variable.
 - Defines the dual mass linear form `M_i(Sigma)=sum_a Q_i^a Sigma_a` and the
   protected dual twisted-superpotential datum with exponential
   `-mu c_i exp(-Y_i)`, while recording the vortex-term proof obligations
@@ -364,18 +386,25 @@ and
   dual variables `Y,Y_P`, the single exponential from the ordinary charged
   chiral multiplet, the finite topological obstruction to a smooth
   finite-action logarithmic-chiral vortex exponential,
-  the `Y+Y_P=0` vector constraint, the resulting `N=2` Liouville
-  superpotential, and the theorem-status boundary for full equality with the
-  cigar coset QFT.
+  the intermediate dual `D`-term action with
+  `-1/2(Y+bar Y)log(Y+bar Y)-1/(2k)bar Y_P Y_P`, the `Y+Y_P=0` vector
+  constraint, the resulting `N=2` Liouville superpotential, and the
+  theorem-status boundary for full equality with the cigar coset QFT.
 - States the named cigar/Liouville mirror QFT conjecture with level and
   background-charge conventions, spin structures, spectral-flow sectors,
   normalizable states, nonnormalizable sources, continuous-spectrum measure,
   local operator map, reflection amplitudes, Hilbert space, superconformal
-  generators, defects, boundaries, and contact terms.  The quotient metric,
+  generators, finite-field `D`-term/Kahler control, allowed-deformation
+  classification, defects, boundaries, and contact terms.  The quotient metric,
   asymptotic dualization, ordinary chiral exponential, and logarithmic-vortex
-  obstruction are recorded as `C_cl`, `C_dual`, and `C_vort` evidence, while
-  spectral/completeness and defect/boundary matching remain `C_spec` and
-  `C_bdry` obligations.
+  obstruction are recorded as `C_cl`, `C_dual`, and `C_vort` evidence.
+  The chapter now also records `C_spec` normalization targets: exact cigar
+  metric/dilaton, central charge `c=3+6/k`, continuous/discrete
+  `(j,m,bar m)` sectors, spectral-flow momentum/winding lattice, reflection
+  amplitude `R(j,m,bar m;k)`, the normalized asymptotic Liouville action, and
+  the Liouville exponential marginality check.  Full spectral measure,
+  pole-residue normalization, operator completeness, finite-field rigidity,
+  and defect/boundary matching remain obligations.
 - Defines abelian GLSM data with fields, integer charges, invariant
   superpotential, complexified FI-theta coordinate, gauge coupling, and
   regulator.
@@ -385,8 +414,13 @@ and
   including logarithm branches, regulator scheme, and exclusion of
   boundary/vortex/singular-locus contributions from the local determinant,
   and then derives the perturbative local determinant contribution from the
-  proper-time subtracted massive propagator plus the axial-anomaly phase that
-  completes the holomorphic logarithm.
+  complete charged-chiral quadratic action, the Hermitian corrected Dirac
+  square `D_F^dagger D_F=-nabla^2+|M|^2+Q gamma_* F_12+...`, the local
+  determinant density `Q/(4 pi) log(|M|^2/mu^2)`, and the `1/(2 pi)`
+  twisted-`F` component bridge that converts this density to the real part of
+  `Q log(M/mu)`.  The Fujikawa phase is tied to the same heat-kernel
+  convention: `Tr_reg gamma_*=-Q k`, and the mass-rotation generator
+  `-gamma_*/2` gives the theta shift `theta -> theta+Q alpha`.
 - Derives the effective twisted-superpotential critical equation
   `prod_i (Q_i sigma/mu)^{Q_i}=exp(T)` and proves that all-positive charges
   give `sum_i Q_i` simple local Coulomb vacua.
@@ -438,7 +472,11 @@ and
   - abelian GLSM Coulomb one-loop charge-exponent, positive-charge
     vacuum-count, hypersurface exponent/anomaly, quintic exponent-zero
     arithmetic, and the primitive of the Coulomb logarithmic derivative with
-    its finite FI-coordinate shift under determinant normalization changes.
+    its finite FI-coordinate shift under determinant normalization changes,
+    plus the Coulomb determinant/Fujikawa response cell checking the corrected
+    Hermitian Dirac square, signed-log coefficient extraction across charge
+    and mass-order reversals, paired nonzero fermion spin traces, finite flux
+    Dirac-complex ranks, heat-kernel chiral trace, and theta-shift Jacobian.
   - charged-chiral mirror-variable elimination matching the Coulomb one-loop
     superpotential and the finite FI-coordinate shift induced by vortex
     coefficient normalizations;
@@ -533,6 +571,19 @@ and
     Coulomb logarithms, vortex coefficients, mirror residues, stable-map
     incidence, quotient metrics, asymptotic dual variables, and vortex
     obstructions remain proper protected-evidence subsets.
+  - the full-action/IR mirror data boundary: a superpotential-only package is
+    checked to omit the mirror Kahler/D-term functional, measure, counterterms,
+    global/orbifold data, noncompact boundary conditions, RG map,
+    operator/state map, and spectral measure; a finite Legendre-domain cell
+    checks the `Y+bar Y>0` singular boundary and a noncompact `D`-term
+    boundary contribution; a fake-Liouville shortcut with only the same
+    F-term, asymptotics, and central charge is rejected without finite-field
+    Kahler control, spectral measure, reflection amplitude, boundary
+    conditions, and deformation classification.
+  - the cigar/Liouville spectral-data cell: exact arithmetic for
+    `c=3+6/k`, Liouville exponential marginality, spectral-flow
+    momentum/winding integrality, and symbolic cancellation of the reflection
+    factors under `j -> 1-j`.
   - hypersurface adjunction signs, LG/sigma-model central-charge matching,
     residual finite-gauge invariant Jacobi monomial counting, and the
     Coulomb-coordinate singular-signal ledger.
@@ -575,11 +626,25 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
 - The 2026-06-07 issue #847 determinant-sign re-audit corrects that branch
   pass: compact `T` periodicity tests integrality and `2 pi` normalization,
   but it cannot choose the determinant-log sign because both signs are
-  integral-period transports.  The follow-up spectral/Fujikawa re-audit
-  replaces the previous assignment-style companion with a finite
-  gamma-matrix, determinant-trace, paired-fermion, and index-Jacobian model:
-  the real sign comes from the complex-scalar determinant response, while the
-  theta partner comes from the finite chiral trace `Tr gamma_* = Q k`.
+  integral-period transports.  The follow-up determinant/Fujikawa re-audit
+  replaces the previous assignment-style companion with a convention-closed
+  gamma-matrix, Hermitian Dirac-square, determinant-density,
+  paired-fermion, finite-flux Dirac-complex, and heat-kernel model: the real
+  sign comes from the complex-scalar determinant density after division by the
+  signed analytic logarithm, while the theta partner comes from
+  `Tr_reg gamma_*=-Q k` together with the mass-rotation generator
+  `-gamma_*/2`.
+- The 2026-06-07 issue #848 full-action/IR-universality pass reformulates the
+  GLSM/Hori--Vafa and cigar/Liouville statements as IR equivalences of
+  regulated QFTs, not equivalences defined by a twisted superpotential alone.
+  It imports and rechecks the stringbook floor in the chapter's conventions:
+  charged-chiral dual domains and induced-measure obligations, the
+  quantum-corrected mirror `D`-term/Kahler boundary, the intermediate
+  cigar-dual `D`-term action, exact cigar metric/dilaton and spectral labels,
+  reflection-amplitude normalization, and normalized Liouville action.  It
+  remains a partial #848 repair: full finite-field Kahler control, exact
+  spectral-measure/pole-residue matching, deformation rigidity, and boundary
+  state/defect matching remain open.
 - The 2026-06-03 projective-space residue pass extends that scrutiny from
   mirror critical points to a protected observable: it computes the finite
   Hessian/residue trace behind the `P^{N-1}` A-model selection rule and records
