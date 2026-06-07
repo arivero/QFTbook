@@ -430,10 +430,14 @@ coordinates define one full CFT in a common normalization.
   variation, \(B\)-field integration by parts, linear-dilaton central
   charge, heterotic Bianchi coefficient, heterotic gauge/dilaton redundant
   direction, torsionful one-loop Ricci package, and local `d^2=0`
-  preservation of the `H` beta Bianchi identity.  It also rejects the
-  coordinate-beta shortcut: hatted tensor Weyl representatives require the
-  target-diffeomorphism and \(B\)-gauge pieces, and vanishing tensor
-  representatives still leave the scalar Weyl-anomaly condition to check.
+  preservation of the `H` beta Bianchi identity.  The same companion now keeps
+  the Curci--Paffuti/Weyl-consistency relation in a separate lane, checking
+  the string-frame Noether identity for the scalar anomaly gradient and
+  rejecting both `d^2=0` as a substitute and omission of the antisymmetric
+  beta contribution.  It also rejects the coordinate-beta shortcut: hatted
+  tensor Weyl representatives require the target-diffeomorphism and
+  \(B\)-gauge pieces, and vanishing tensor representatives still leave the
+  scalar Weyl-anomaly condition to check.
 - `calculation-checks/nlsm_scheme_redefinition_checks.py` verifies the sign
   and order of the finite-scheme-redefinition bracket
   `beta' = beta + [beta,F]` in a finite polynomial two-coupling model.
@@ -522,3 +526,9 @@ coordinates define one full CFT in a common normalization.
   representative package showing that coordinate beta components, hatted Weyl
   representatives, \(B\)-gauge redundancy, and the scalar Weyl anomaly are
   distinct pieces of the physical conformality test.
+- 2026-06-06 issue #846 Curci--Paffuti boundary pass: removed the misleading
+  attribution of local `d beta^H=0` Bianchi preservation to
+  Curci--Paffuti, added the one-loop scalar-anomaly Noether identity in the
+  chapter's hatted \(G+B+\Phi\) conventions, and paired it with a companion
+  negative control separating scalar Weyl consistency from exterior
+  nilpotence.

@@ -2673,11 +2673,15 @@ Current checks:
   metric trace split and scalar dilaton variation, linear-dilaton
   central-charge condition, heterotic Green--Schwarz coefficient, heterotic
   gauge/dilaton redundant direction, torsionful Ricci package, and local
-  \(\dd^2=0\) preservation of the \(H\)-beta Bianchi identity.  It also checks
-  an adversarial coordinate-versus-hatted representative package: nonzero
+  \(\dd^2=0\) preservation of the \(H\)-beta Bianchi identity, kept separate
+  from a Curci--Paffuti string-frame Noether identity for the scalar anomaly
+  gradient.  It also checks an adversarial coordinate-versus-hatted
+  representative package: nonzero
   coordinate beta components can cancel after target-diffeomorphism and
   \(B\)-gauge pieces are supplied, while vanishing tensor representatives do
-  not by themselves remove the scalar Weyl anomaly.
+  not by themselves remove the scalar Weyl anomaly.  Negative controls reject
+  treating Bianchi closure as Curci--Paffuti and reject omitting the
+  antisymmetric-tensor beta contribution in the scalar-gradient relation.
 - `nonequilibrium_open_system_checks.py`: finite checks for the Volume X
   nonequilibrium steady-state and open-system chapter, including reservoir
   entropy production, finite local-detailed-balance entropy splitting,

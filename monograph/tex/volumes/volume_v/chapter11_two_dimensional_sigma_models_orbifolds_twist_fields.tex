@@ -1092,10 +1092,10 @@ Equivalently,
 \end{align}
 The exterior derivative of the antisymmetric beta representative is a
 three-form beta tensor for \(H\), and it automatically obeys
-\(\dd\beta^H=0\).  This is the one-loop seed of the Curci--Paffuti
-consistency condition: higher-loop representatives must be chosen so that
-target diffeomorphism invariance, \(B\)-field gauge invariance, and the
-Bianchi identity \(\dd H=0\) are preserved simultaneously.
+\(\dd\beta^H=0\).  This is the local Bianchi-preservation check for the
+\(H\)-flux representative under RG flow.  It is not the Curci--Paffuti
+Weyl-consistency relation; the latter relates the scalar Weyl-anomaly
+coefficient to the divergence of the tensor coefficients.
 \end{lemma}
 
 \begin{proof}
@@ -1141,6 +1141,70 @@ terms with the displayed Ricci tensor gives exactly
 \(\dd\beta^H=\dd^2\widehat\beta^B=0\); possible global gerbe data affect
 large gauge sectors, not this local identity.
 \end{proof}
+
+\begin{controlledapproximation}[Scalar Weyl consistency]
+\label{capprox:nlsm-curci-paffuti-boundary}
+In the one-loop scheme used above, the scalar anomaly combination whose
+fixed-point value is the central-charge shift is
+\begin{equation}
+  \mathcal C_\Phi
+  :=
+  \widehat\beta^\Phi-\frac14G^{ij}\widehat\beta^G_{ij}
+  =
+  \frac{D-26}{6}
+  -\frac{\alpha'}4 S_\Phi
+  +O(\alpha'^2),
+  \label{eq:nlsm-curci-paffuti-scalar-combination}
+\end{equation}
+with \(S_\Phi\) defined in
+\eqref{eq:nlsm-string-frame-scalar-e-tensor}.  The corresponding one-loop
+Curci--Paffuti/Weyl-consistency identity, in the hatted representative
+conventions of
+\eqref{eq:nlsm-one-loop-hatted-beta-g}--\eqref{eq:nlsm-one-loop-hatted-beta-b},
+is
+\begin{equation}
+  \nabla_i\mathcal C_\Phi
+  =
+  -\frac12\nabla^j\widehat\beta^G_{ij}
+  +(\nabla^j\Phi)\widehat\beta^G_{ij}
+  +\frac14H_i{}^{jk}\widehat\beta^B_{jk}
+  +O(\alpha'^2).
+  \label{eq:nlsm-curci-paffuti-one-loop}
+\end{equation}
+This is a relation among Weyl-anomaly representatives, not an exterior
+calculus identity for \(\beta^H\).  Its one-loop derivation is the Noether
+identity of the string-frame functional under compactly supported target
+diffeomorphisms, combined with \(B\)-field gauge invariance and
+\(\dd H=0\).  If
+\[
+  F_{ij}:=\nabla^kH_{kij}-2\nabla^k\Phi\,H_{kij}
+  =
+  -2\alpha'^{-1}\widehat\beta^B_{ij},
+  \qquad
+  E_{ij}:=\alpha'^{-1}\widehat\beta^G_{ij},
+\]
+then diffeomorphism invariance gives
+\begin{equation}
+  \frac12\nabla_iS_\Phi
+  =
+  \nabla^jE_{ij}
+  -2(\nabla^j\Phi)E_{ij}
+  +\frac14H_i{}^{jk}F_{jk}.
+  \label{eq:nlsm-string-frame-noether-identity}
+\end{equation}
+Equation~\eqref{eq:nlsm-curci-paffuti-one-loop} is just
+\eqref{eq:nlsm-string-frame-noether-identity} rewritten using
+\eqref{eq:nlsm-curci-paffuti-scalar-combination}.  Consequently, when the
+hatted metric and antisymmetric tensor Weyl representatives vanish,
+\(\nabla_i\mathcal C_\Phi=0\); since then
+\(G^{ij}\widehat\beta^G_{ij}=0\), the dilaton Weyl-anomaly coefficient
+\(\widehat\beta^\Phi\) itself is locally constant on target space.  Finite
+local redefinitions of \(G,B,\Phi\) move terms between the displayed
+representatives by lower-order equations of motion and redundant
+diffeomorphism or \(B\)-gauge directions, so the all-order theorem boundary
+must be stated scheme by scheme
+\cite{CurciPaffuti1987,SchnittgerEllwanger1992}.
+\end{controlledapproximation}
 
 \begin{controlledapproximation}[Two-loop metric beta tensor]
 \label{capprox:nlsm-two-loop-metric-beta}

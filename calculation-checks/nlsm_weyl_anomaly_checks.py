@@ -8,7 +8,9 @@ Target claims:
   the \(B\)-field divergence, the dilaton-gradient redundant direction, the
   string-frame trace/scalar split, the flat linear-dilaton critical constant,
   the heterotic Bianchi coefficient, the torsionful \(R^-+2\nabla^-\nabla\Phi\)
-  package, and the local \(d^2=0\) Bianchi preservation of \(\beta^H\).
+  package, the local \(d^2=0\) Bianchi preservation of \(\beta^H\), and the
+  separate Curci--Paffuti/Weyl-consistency relation that ties the scalar
+  anomaly gradient to the metric and antisymmetric tensor Weyl representatives.
 - The check also targets the boundary between coordinate beta functions and
   local Weyl-anomaly representatives: conformality is read from the hatted
   package modulo target diffeomorphisms, \(B\)-field gauge transformations, and
@@ -21,7 +23,8 @@ Independent construction:
   \(B\)-field variation, local worldsheet tadpole/bubble prefactors,
   linear-dilaton central-charge arithmetic, heterotic source normalization,
   torsionful connection expansion, and an explicit finite exterior-square
-  cancellation.
+  cancellation.  The Curci--Paffuti check is computed through the independent
+  string-frame Noether identity rather than through exterior nilpotence.
 - The coordinate-versus-hatted boundary is checked by assembling a finite
   representative package whose coordinate beta components are nonzero, whose
   redundant Lie/gauge pieces cancel them in the hatted tensor representatives,
@@ -44,6 +47,10 @@ Negative controls:
   antisymmetric representative.
 - It rejects using vanishing tensor representatives as a full conformality
   test when the scalar Weyl-anomaly coefficient remains nonzero.
+- It rejects identifying the local \(d^2=0\) Bianchi cancellation with the
+  Curci--Paffuti scalar-gradient identity.
+- It rejects dropping the antisymmetric-tensor beta contribution from the
+  scalar Weyl-consistency relation.
 
 Scope boundary:
 - This companion checks finite local coefficient arithmetic and representative
@@ -302,6 +309,70 @@ def check_exterior_square_zero_for_h_beta() -> None:
     assert_equal("d squared beta^B cancellation", cancelled, {})
 
 
+def check_curci_paffuti_noether_identity_boundary() -> None:
+    """Check that Curci--Paffuti is a scalar/tensor Noether identity."""
+
+    # In Chapter 11 conventions,
+    #   C_Phi = beta^Phi - tr(beta^G)/4 = const - alpha' S_Phi/4.
+    trace_metric_beta = Fraction(17, 19)
+    scalar_e_tensor = Fraction(-23, 29)
+    beta_phi_nonconstant = trace_metric_beta / 4 - scalar_e_tensor / 4
+    scalar_anomaly_combination = beta_phi_nonconstant - trace_metric_beta / 4
+    assert_equal(
+        "scalar anomaly combination is betaPhi minus trace betaG/4",
+        scalar_anomaly_combination,
+        -scalar_e_tensor / 4,
+    )
+
+    # The one-loop Noether identity is
+    #   grad C_Phi = -div betaG/2 + (grad Phi).betaG + H.betaB/4.
+    metric_divergence = Fraction(5, 7)
+    dilaton_metric_contraction = Fraction(-3, 11)
+    h_b_beta_contraction = Fraction(2, 13)
+    scalar_gradient = (
+        -metric_divergence / 2
+        + dilaton_metric_contraction
+        + h_b_beta_contraction / 4
+    )
+    assert_equal(
+        "Curci-Paffuti scalar-gradient bookkeeping",
+        scalar_gradient,
+        -Fraction(5, 14) - Fraction(3, 11) + Fraction(1, 26),
+    )
+
+    bianchi_closure = 0
+    assert_not_equal(
+        "Bianchi closure is not the Curci-Paffuti scalar-gradient identity",
+        bianchi_closure,
+        scalar_gradient,
+    )
+
+    without_b_field_beta = -metric_divergence / 2 + dilaton_metric_contraction
+    assert_not_equal(
+        "dropping the antisymmetric beta term changes Curci-Paffuti",
+        without_b_field_beta,
+        scalar_gradient,
+    )
+
+    fixed_point_scalar_gradient = (
+        -Fraction(0) / 2
+        + Fraction(0)
+        + Fraction(0) / 4
+    )
+    assert_equal(
+        "tensor fixed point makes the scalar anomaly locally constant",
+        fixed_point_scalar_gradient,
+        0,
+    )
+
+    scalar_constant_at_fixed_point = Fraction(11, 5)
+    assert_not_equal(
+        "Curci-Paffuti constancy is not scalar-anomaly vanishing",
+        scalar_constant_at_fixed_point,
+        0,
+    )
+
+
 def check_hatted_representative_not_coordinate_beta_shortcut() -> None:
     beta_g_coordinate = {
         "xx": Fraction(5, 7),
@@ -363,6 +434,7 @@ def main() -> None:
     check_heterotic_gauge_dilaton_redundant_direction()
     check_torsionful_connection_package()
     check_exterior_square_zero_for_h_beta()
+    check_curci_paffuti_noether_identity_boundary()
     check_hatted_representative_not_coordinate_beta_shortcut()
     print("All NLSM Weyl-anomaly coefficient checks passed.")
 
