@@ -4679,7 +4679,31 @@ divide by the Born color/spin-summed current cross section, and use
 The renormalized one-loop quark form factor, reconstructed from its
 cut-visible logarithmic master data together with the regulator and
 subtraction convention, contributes to the Born-normalized virtual
-interference as
+interference as follows.  We use the standard final-final
+quark--antiquark antenna convention in which the tree two-parton antenna is
+\({\cal A}_2^0=1\) and the common \(S_\epsilon\)/\(r_\Gamma\)-type loop and
+unresolved-phase-space factors are fixed together.  In that convention
+\cite{GehrmannDeRidderGehrmannGlover2005Antenna},
+\[
+  {\cal A}_2^1
+  =
+  s^{-\epsilon}
+  \left(
+    -\frac{1}{\epsilon^2}
+    -\frac{3}{2\epsilon}
+    -4+\frac{7\pi^2}{12}
+  \right)+O(\epsilon),
+  \qquad
+  {\cal A}_3^0
+  =
+  s^{-\epsilon}
+  \left(
+    \frac{1}{\epsilon^2}
+    +\frac{3}{2\epsilon}
+    +\frac{19}{4}-\frac{7\pi^2}{12}
+  \right)+O(\epsilon).
+\]
+The cross-section-level interference doubles these finite antenna cells, so
 \begin{equation}
   V_q^{(1)}
   =
@@ -4687,13 +4711,13 @@ interference as
   \left(
     -\frac{2}{\epsilon^2}
     -\frac{3}{\epsilon}
-    -8+\frac{\pi^2}{6}
+    -8+\frac{7\pi^2}{6}
   \right).
   \label{eq:current-form-factor-virtual-interference}
 \end{equation}
 The physical inclusive coefficient also carries the real three-parton channel
 \(e^+e^-\to q\bar q g\).  In the matching
-normalization and with the same unresolved phase-space convention, the
+antenna normalization and with the same unresolved phase-space convention, the
 integrated real contribution is
 \begin{equation}
   R_{q\bar q g}^{(1)}
@@ -4702,7 +4726,7 @@ integrated real contribution is
   \left(
     \frac{2}{\epsilon^2}
     +\frac{3}{\epsilon}
-    +\frac{19}{2}-\frac{\pi^2}{6}
+    +\frac{19}{2}-\frac{7\pi^2}{6}
   \right).
   \label{eq:current-form-factor-real-channel}
 \end{equation}
@@ -4720,11 +4744,16 @@ For \(N_c=3\), \(C_F=4/3\), so this is
   \frac{R_q}{R_q^{(0)}}=1+\frac{\alpha_s}{\pi}+O(\alpha_s^2).
 \]
 The point of the example is the assembly, not the numerical fame of the
-coefficient.  The finite term \(-8+\pi^2/6\) in the virtual form factor is a
-hard-amplitude datum.  The endpoint finite term \(19/2-\pi^2/6\) belongs to
-the real unresolved integration.  Moving finite constants between the
-subtraction operator and the real channel is allowed only as a paired scheme
-change; moving the virtual remainder alone changes the finite observable.
+coefficient.  The finite term \(-8+7\pi^2/6\) in the timelike virtual
+interference is a hard-amplitude datum in this declared final-final
+normalization.  The endpoint finite term \(19/2-7\pi^2/6\) belongs to the
+real unresolved integration.  Quoting the Euclidean or pre-timelike-continuation
+form-factor finite cell and then hand-adjusting the real term can preserve the
+final \(3/2\) sum, but it no longer displays the physical timelike virtual
+and real pieces in one source-normalized convention.  Moving finite constants
+between the subtraction operator and the real channel is allowed only as a
+paired scheme change; moving the virtual remainder alone changes the finite
+observable.
 Thus a one-loop current form factor reconstructed from cuts becomes the
 inclusive \(R\)-ratio coefficient only after the real channel, phase-space
 normalization, and subtraction convention have been carried with it.  More

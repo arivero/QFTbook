@@ -3463,8 +3463,13 @@ Current checks:
   Laurent-pole virtual-to-observable assembly check separating the finite hard
   remainder, real-radiation/subtraction cancellation, finite IR-scheme
   transport, and residual comparison budget, the inclusive vector-current
-  form-factor/R-ratio closure with exact pole, endpoint, and symbolic
-  \(\pi^2\) cancellation in the \(1+\alpha_s/\pi\) coefficient, the color-space hard-function
+  form-factor/R-ratio closure deriving the timelike virtual and integrated
+  real finite cells from the final-final antenna inputs
+  \(-4+7\pi^2/12\) and \(19/4-7\pi^2/12\), then checking exact pole,
+  endpoint, and symbolic \(\pi^2\) cancellation in the
+  \(1+\alpha_s/\pi\) coefficient while rejecting cancellation-only
+  \(\pm\pi^2/6\) splits without a declared \(O(\epsilon^2)\)
+  normalization, the color-space hard-function
   handoff check with transported color metric, color-correlated real/soft
   operator, finite scheme compensation, and scalar-shortcut negative controls,
   the unresolved one-emission

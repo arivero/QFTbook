@@ -61,8 +61,9 @@
   coefficient pairing, transported masters, physical channel closure, and
   finite observable assembly into one comparison, an inclusive vector-current
   form-factor/R-ratio closure checking how the cut-reconstructed one-loop
-  virtual form factor, the integrated \(q\bar q g\) channel, and the finite
-  \(\pi^2\) constants assemble into \(1+\alpha_s/\pi\) for \(SU(3)\),
+  virtual form factor, the integrated \(q\bar q g\) channel, and the
+  final-final antenna finite constants \(\pm 7\pi^2/6\) assemble into
+  \(1+\alpha_s/\pi\) for \(SU(3)\),
   a color-space hard-function
   handoff recording the metric, basis, color-correlated real/soft operator, and
   finite-scheme transport needed for nonabelian production observables, an unresolved one-emission
@@ -108,10 +109,12 @@
   Ussyukina--Davydychev,
   Passarino--Veltman,
   Chetyrkin--Tkachov, Tkachov, Kotikov, Gehrmann--Remiddi,
+  Gehrmann-De Ridder--Gehrmann--Glover,
   Laporta--Remiddi, and Adams--Bogner--Weinzierl form the source
   lineage for the generalized-unitarity, planar \(\mathcal N=4\) MHV
   quadruple-cut, rational-term, integrand-reduction, explicit box-function,
-  IBP, differential-equation, and sunrise elliptic-period bridge.
+  IBP, differential-equation, antenna-normalized \(R\)-ratio, and sunrise
+  elliptic-period bridge.
 - Bern--Carrasco--Johansson's tree-level amplitude relations and double-copy
   construction supply the source trace for the four-point
   color--kinematics comparison datum; the chapter uses them only as a scoped entry
@@ -334,8 +337,12 @@
   datum for fixed-order observables, not a proof of all-order factorization.
 - The vector-current \(R\)-ratio closure uses the standard massless
   one-loop current-form-factor and integrated \(q\bar q g\) coefficients in
-  the \(a_s=\alpha_s/(2\pi)\), \(D=4-2\epsilon\) convention.  Differential
-  event shapes require the later measurement-cell/factorization machinery.
+  the \(a_s=\alpha_s/(2\pi)\), \(D=4-2\epsilon\), final-final antenna
+  convention.  The displayed timelike virtual/real split is the doubled
+  antenna split \(-8+7\pi^2/6\) and \(19/2-7\pi^2/6\); a cancellation-only
+  \(\pm\pi^2/6\) pair would require an explicitly declared
+  \(O(\epsilon^2)\) common normalization and is not used.  Differential event
+  shapes require the later measurement-cell/factorization machinery.
 - The color-space hard-function handoff assumes a declared external color
   basis, Gram metric, finite-remainder convention, and color-correlated
   real/soft/factorization operator.  Basis changes and finite subtraction
@@ -1158,11 +1165,16 @@
   virtual-to-observable assembly.  The block turns the abstract hard-plus-real
   bookkeeping into the one-flavor massless vector-current \(R\)-ratio closure:
   the cut-reconstructed one-loop virtual form-factor interference, the
-  integrated \(q\bar q g\) channel, and their endpoint/\(\pi^2\) constants
-  assemble to \(1+\alpha_s/\pi\) for \(SU(3)\).  The companion check keeps
-  \(1/\epsilon^2\), \(1/\epsilon\), rational finite, and \(\pi^2\) finite
-  pieces independent, then rejects virtual-only, omitted-endpoint,
-  wrong-sheet, and untransported finite-scheme shortcuts.
+  integrated \(q\bar q g\) channel, and their final-final antenna
+  endpoint/\(\pi^2\) constants assemble to \(1+\alpha_s/\pi\) for \(SU(3)\).
+  Follow-up repaired the displayed timelike split from the cancellation-only
+  \(\pm\pi^2/6\) pair to the standard doubled antenna values
+  \(\pm 7\pi^2/6\).  The companion check keeps \(1/\epsilon^2\),
+  \(1/\epsilon\), rational finite, and \(\pi^2\) finite pieces independent,
+  derives the virtual and real cells from the antenna coefficients, and then
+  rejects virtual-only, omitted-endpoint, wrong-sheet, cancellation-only
+  split, undeclared \(O(\epsilon^2)\) normalization, and untransported
+  finite-scheme shortcuts.
 - 2026-06-06 issue #769 symbol-level Steinmann transport pass: added
   `ca:symbol-steinmann-transport-check` between the two-letter transport audit
   and the production master lane.  The pass bridges the loop master-equation

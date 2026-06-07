@@ -18,9 +18,9 @@
 - It keeps the cut-reconstructed one-loop virtual form-factor interference
   separate from the integrated real \(q\bar q g\) channel:
   \[
-    -2/\epsilon^2-3/\epsilon-8+\pi^2/6,
+    -2/\epsilon^2-3/\epsilon-8+7\pi^2/6,
     \qquad
-    2/\epsilon^2+3/\epsilon+19/2-\pi^2/6.
+    2/\epsilon^2+3/\epsilon+19/2-7\pi^2/6.
   \]
 - The assembled result gives \(1+a_s C_F\,3/2\), hence
   \(1+\alpha_s/\pi\) for \(SU(3)\), only after the real channel and
@@ -33,11 +33,20 @@
   finite terms separately.
 - Added `check_inclusive_current_form_factor_r_ratio_closure()`.
 - Positive checks:
+  - the Born-normalized virtual and real cells are derived by doubling the
+    final-final antenna coefficients \(-4+7\pi^2/12\) and
+    \(19/4-7\pi^2/12\), not by entering cancellation-ready tuple data;
   - double and single infrared poles cancel;
   - the \(\pi^2\) terms cancel symbolically;
   - the remaining coefficient is \(3/2\) in the \(a_s C_F\) normalization;
   - \(C_F=4/3\) converts this to the \(1+\alpha_s/\pi\) \(SU(3)\) coefficient.
 - Negative controls:
+  - the old cancellation-only \(\pm\pi^2/6\) split still gives the final
+    \(3/2\) coefficient but fails the source-normalized timelike antenna
+    split;
+  - an undeclared common \(1+(\pi^2/2)\epsilon^2\) normalization can
+    manufacture that old split through the double poles, so such shifts must
+    be declared rather than silently presented as physics;
   - virtual-only form factor still has infrared poles;
   - the finite virtual form-factor term is not the inclusive observable;
   - omitting the real endpoint finite cell changes the coefficient;
@@ -54,3 +63,17 @@
   chapters.
 - No planning, review, monitoring, or issue-directive language was inserted
   into the monograph TeX.
+
+## Follow-up Convention Repair
+
+- Re-audited the initial pass against the standard final-final
+  quark--antiquark antenna normalization of Gehrmann-De Ridder, Gehrmann, and
+  Glover, where the one-loop two-parton antenna has finite
+  \(-4+7\pi^2/12\) and the integrated tree three-parton antenna has finite
+  \(19/4-7\pi^2/12\).
+- The earlier \(\pm\pi^2/6\) split correctly canceled to the inclusive
+  \(R\)-ratio coefficient but did not display the physical timelike
+  virtual/real pieces in the declared convention.
+- The monograph now quotes the doubled antenna cells
+  \(-8+7\pi^2/6\) and \(19/2-7\pi^2/6\), cites the antenna source, and warns
+  that cancellation alone does not determine the split.

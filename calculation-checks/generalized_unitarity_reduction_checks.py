@@ -39,8 +39,9 @@ validation controls, the finite Laurent-pole bookkeeping that turns a
 reconstructed virtual amplitude into a finite
 observable only after infrared subtraction, an inclusive vector-current
 form-factor/R-ratio closure where the one-loop virtual poles, the integrated
-real `q qbar g` channel, and the symbolic `pi^2` constants cancel to the
-physical `1 + alpha_s/pi` coefficient for `SU(3)`,
+real `q qbar g` channel, and the symbolic `pi^2` constants are derived from
+the standard final-final antenna cells and cancel to the physical
+`1 + alpha_s/pi` coefficient for `SU(3)`,
 color-metric hard-function handoff, real radiation, scheme transport,
 and the unresolved measurement cell have been assembled, including finite
 measurement dependence after pole cancellation, and the two-loop
@@ -144,8 +145,8 @@ bookkeeping, polynomial log algebra, branch continuation, a sector-boundary
 quadrature, a numerical dilogarithm-parameter integral independent of the
 encoded log-square answer, and physical channel-discontinuity closure against
 an independently normalized endpoint-log cut datum; Laurent-pole arithmetic for virtual/real infrared
-cancellation, exact symbolic-pi bookkeeping for the inclusive vector-current
-R-ratio closure, color-space metric and soft-operator transport under basis and
+cancellation, antenna-derived exact symbolic-pi bookkeeping for the inclusive
+vector-current R-ratio closure, color-space metric and soft-operator transport under basis and
 finite-subtraction changes, plus-distribution measurement cells, paired-measurement finite
 differences after pole cancellation, finite scheme transport, and two-loop
 recursive pole subtraction.
@@ -453,6 +454,10 @@ def laurent_pi2_sub(left: LaurentPi2, right: LaurentPi2) -> LaurentPi2:
         left[2] - right[2],
         left[3] - right[3],
     )
+
+
+def laurent_pi2_scale(scale: Fraction, value: LaurentPi2) -> LaurentPi2:
+    return (scale * value[0], scale * value[1], scale * value[2], scale * value[3])
 
 
 def laurent_to_laurent3(value: Laurent) -> Laurent3:
@@ -4121,18 +4126,90 @@ def check_inclusive_current_form_factor_r_ratio_closure() -> None:
     # Coefficients are in the common a_s C_F normalization,
     # a_s = alpha_s/(2 pi), for a single massless vector-current channel.
     # A LaurentPi2 tuple stores eps^-2, eps^-1, finite rational, finite pi^2.
-    virtual_interference: LaurentPi2 = (
+    one_loop_two_parton_antenna: LaurentPi2 = (
+        -Fraction(1),
+        -Fraction(3, 2),
+        -Fraction(4),
+        Fraction(7, 12),
+    )
+    integrated_three_parton_antenna: LaurentPi2 = (
+        Fraction(1),
+        Fraction(3, 2),
+        Fraction(19, 4),
+        -Fraction(7, 12),
+    )
+    virtual_interference = laurent_pi2_scale(Fraction(2), one_loop_two_parton_antenna)
+    integrated_real = laurent_pi2_scale(Fraction(2), integrated_three_parton_antenna)
+    assert_equal(
+        "antenna-derived timelike virtual current split",
+        virtual_interference,
+        (
+            -Fraction(2),
+            -Fraction(3),
+            -Fraction(8),
+            Fraction(7, 6),
+        ),
+    )
+    assert_equal(
+        "antenna-derived integrated real current split",
+        integrated_real,
+        (
+            Fraction(2),
+            Fraction(3),
+            Fraction(19, 2),
+            -Fraction(7, 6),
+        ),
+    )
+
+    pre_timelike_or_renormalized_virtual: LaurentPi2 = (
         -Fraction(2),
         -Fraction(3),
         -Fraction(8),
         Fraction(1, 6),
     )
-    integrated_real: LaurentPi2 = (
+    hand_adjusted_real: LaurentPi2 = (
         Fraction(2),
         Fraction(3),
         Fraction(19, 2),
         -Fraction(1, 6),
     )
+    assert_equal(
+        "cancellation-only old split still gives the final R-ratio coefficient",
+        laurent_pi2_add(pre_timelike_or_renormalized_virtual, hand_adjusted_real),
+        laurent_pi2_add(virtual_interference, integrated_real),
+    )
+    assert_true(
+        "cancellation-only old virtual split fails antenna normalization",
+        pre_timelike_or_renormalized_virtual != virtual_interference,
+    )
+    assert_equal(
+        "timelike continuation shifts virtual finite pi2 coefficient by one unit",
+        virtual_interference[3] - pre_timelike_or_renormalized_virtual[3],
+        Fraction(1),
+    )
+    assert_equal(
+        "physical real antenna supplies the compensating pi2 finite cell",
+        integrated_real[3] - hand_adjusted_real[3],
+        -Fraction(1),
+    )
+
+    def apply_common_eps2_pi2_factor(value: LaurentPi2, coeff: Fraction) -> LaurentPi2:
+        # Multiplying by 1 + coeff*pi^2*epsilon^2 changes the finite pi^2 cell
+        # through the double pole.  This is a convention change, not physics.
+        return (value[0], value[1], value[2], value[3] + coeff * value[0])
+
+    convention_shift = Fraction(1, 2)
+    assert_equal(
+        "undeclared common eps2 normalization can manufacture old virtual split",
+        apply_common_eps2_pi2_factor(virtual_interference, convention_shift),
+        pre_timelike_or_renormalized_virtual,
+    )
+    assert_equal(
+        "undeclared common eps2 normalization can manufacture old real split",
+        apply_common_eps2_pi2_factor(integrated_real, convention_shift),
+        hand_adjusted_real,
+    )
+
     inclusive_coefficient = laurent_pi2_add(virtual_interference, integrated_real)
     assert_equal(
         "vector-current R-ratio pole and pi2 cancellation",
@@ -4169,7 +4246,7 @@ def check_inclusive_current_form_factor_r_ratio_closure() -> None:
         Fraction(2),
         Fraction(3),
         Fraction(9),
-        -Fraction(1, 6),
+        -Fraction(7, 6),
     )
     endpoint_shortcut = laurent_pi2_add(virtual_interference, omitted_real_endpoint)
     assert_true(
@@ -4181,7 +4258,7 @@ def check_inclusive_current_form_factor_r_ratio_closure() -> None:
         Fraction(2),
         Fraction(3),
         Fraction(19, 2),
-        Fraction(1, 6),
+        Fraction(7, 6),
     )
     wrong_sheet_sum = laurent_pi2_add(virtual_interference, wrong_real_sheet)
     assert_true(
