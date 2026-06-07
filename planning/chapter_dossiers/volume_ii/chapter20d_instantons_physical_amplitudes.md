@@ -741,6 +741,15 @@
   propagation all in one amplitude coordinate.  The companion rejects
   density-only, core-only, omitted-fluctuation, stripped-running,
   scalar-as-helicity, and residual-underbudget shortcuts.
+- 2026-06-07 issue #597 retained hard normal-source quotient pass: added
+  `ca:instanton-retained-hard-normal-source-quotient` after the retained-window
+  crossed hard-channel block.  The pass opens the nonzero-mode source quotient
+  inside \(C_I^{RR\to LL}\) as the pointwise Gaussian source mean plus the first
+  cubic source-cumulant correction, integrated against the same signed hard
+  measure as the zero-mode slots, Haar projection, amputation, crossing data,
+  running collective factor, and size-window tails.  The companion rejects
+  determinant-only, Gaussian-only, unweighted post-projection, and
+  omitted-cumulant residual shortcuts.
 - 2026-06-07 issue #597 mass-assisted interference pass: added
   `ca:instanton-mass-assisted-interference-channel` after the crossed chiral
   channel.  The pass turns the two-source determinant coordinate \(m_dB_{uu}\)

@@ -893,7 +893,10 @@ Current checks:
   retained-window crossed hard-channel amplitude assembly which combines the
   two-term size-window tail with source, Haar, nonzero-mode, amputation,
   crossing, running-collective, and helicity residual data before producing a
-  fixed external-state amplitude,
+  fixed external-state amplitude, the retained hard-channel normal-source
+  quotient bridge which integrates the pointwise Gaussian source mean and cubic
+  source-cumulant correction through the same signed hard measure as the
+  zero-mode slots,
   the two-term hard-window tail subtraction with leading \(R^{-1/3}\) and
   subleading \(R^{-7/3}\) endpoint pieces, the screened hard-size
   majorant-window check which uses the \(35/3\) logarithmic shell power,
@@ -973,6 +976,8 @@ Current checks:
   quotient, relative fluctuation division after rank loss, determinant-only
   four-point assembly, omitted nonzero-mode source quotient, symmetric Haar
   source shortcut, underbudgeted four-point projection residual,
+  determinant-only, Gaussian-only, or unweighted post-projection
+  normal-source quotients,
   determinant-only
   assembled amplitudes, signed-window relative control without a
   noncancellation margin, reference calibration with omitted

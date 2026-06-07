@@ -157,6 +157,11 @@ Target claims:
   tail-subtracted common-regulator size-window integral multiplied by the
   channel source, Haar, nonzero-mode, amputation, crossing, and running
   collective factors, with helicity residuals propagated afterward.
+- `ca:instanton-retained-hard-normal-source-quotient`: the nonzero-mode source
+  quotient in the retained crossed hard coefficient is the pointwise
+  source-selected Gaussian mean plus the first cubic source-cumulant
+  correction, integrated through the same signed hard measure as the zero-mode
+  slots.
 - `ca:instanton-mass-assisted-interference-channel`: a theta-linear physical
   observable arises only when a mass-assisted one-instanton two-source
   channel, such as `m_d B_uu`, is interfered with a same-basis
@@ -228,6 +233,8 @@ Independent construction:
   retained-window crossed hard-channel amplitude assembly from the two-term
   size-window tail, source/Haar/fluctuation/crossing data, and helicity
   residual propagation,
+  retained hard-channel normal-source quotients from pointwise Gaussian and
+  cubic-cumulant corrections integrated against a signed hard measure,
   mass-assisted two-source interference with exact formal mass/theta powers,
   same-coordinate amplitude-to-rate typing with crossed/amputated vectors,
   positive measurement matrices, same-channel interference, source-overlap
@@ -377,6 +384,9 @@ Negative controls:
   nonzero-mode source quotient, the hard scale dependence with the running
   collective factor stripped, or the retained scalar coefficient used as a
   fixed-helicity amplitude before spinor projection,
+  a retained hard-channel normal-source quotient replaced by the vacuum
+  determinant, by the Gaussian mean alone, by an unweighted post-projection
+  average, or by a residual budget with the cubic source cumulant omitted,
   a mass-assisted two-source channel used as the massless four-source
   vertex, a wrong same-flavor mass used to saturate the complementary
   zero modes, a reference amplitude in the wrong source degree or chirality
@@ -5348,6 +5358,101 @@ def check_size_integrated_crossed_hard_channel() -> None:
     )
 
 
+def check_retained_hard_channel_normal_source_quotient() -> None:
+    signed_hard_measure = [Fraction(3, 5), -Fraction(2, 7), Fraction(5, 11)]
+    gaussian_source_mean = [Fraction(1, 10), -Fraction(1, 12), Fraction(1, 14)]
+    cubic_source_cumulant = [
+        -Fraction(1, 15),
+        Fraction(1, 18),
+        Fraction(1, 20),
+    ]
+    quotient_remainder = [
+        Fraction(1, 200),
+        -Fraction(1, 300),
+        Fraction(1, 400),
+    ]
+
+    determinant_normalized = sum(signed_hard_measure, Fraction(0))
+    gaussian_only = sum(
+        weight * (1 + q2)
+        for weight, q2 in zip(signed_hard_measure, gaussian_source_mean)
+    )
+    retained_quotient = sum(
+        weight * (1 + q2 + q3)
+        for weight, q2, q3 in zip(
+            signed_hard_measure,
+            gaussian_source_mean,
+            cubic_source_cumulant,
+        )
+    )
+    exact_quotient = sum(
+        weight * (1 + q2 + q3 + remainder)
+        for weight, q2, q3, remainder in zip(
+            signed_hard_measure,
+            gaussian_source_mean,
+            cubic_source_cumulant,
+            quotient_remainder,
+        )
+    )
+    remainder_bound = sum(
+        abs(weight) * abs(remainder)
+        for weight, remainder in zip(signed_hard_measure, quotient_remainder)
+    )
+
+    assert_not_equal(
+        "retained hard channel is not determinant-normalized zero modes only",
+        retained_quotient,
+        determinant_normalized,
+    )
+    assert_not_equal(
+        "retained hard channel keeps the cubic source cumulant",
+        retained_quotient,
+        gaussian_only,
+    )
+    assert_equal(
+        "retained hard normal-source quotient residual bound",
+        abs(exact_quotient - retained_quotient) <= remainder_bound,
+        True,
+    )
+
+    unweighted_post_projection = determinant_normalized * (
+        1
+        + sum(
+            q2 + q3
+            for q2, q3 in zip(gaussian_source_mean, cubic_source_cumulant)
+        )
+        / len(signed_hard_measure)
+    )
+    assert_not_equal(
+        "unweighted post-projection quotient changes signed hard measure",
+        unweighted_post_projection,
+        retained_quotient,
+    )
+
+    determinant_prefactor = Fraction(13, 17)
+    physical_coefficient = determinant_prefactor * retained_quotient
+    determinant_only_coefficient = determinant_prefactor * determinant_normalized
+    gaussian_only_coefficient = determinant_prefactor * gaussian_only
+    assert_not_equal(
+        "physical hard coefficient includes pointwise normal-source quotient",
+        physical_coefficient,
+        determinant_only_coefficient,
+    )
+    assert_not_equal(
+        "physical hard coefficient includes cubic source-cumulant correction",
+        physical_coefficient,
+        gaussian_only_coefficient,
+    )
+
+    underbudget_without_cubic = remainder_bound
+    exact_gaussian_error = abs(exact_quotient - gaussian_only)
+    assert_equal(
+        "omitting cubic cumulant underbudgets retained normal-source quotient",
+        exact_gaussian_error <= underbudget_without_cubic,
+        False,
+    )
+
+
 def check_mass_assisted_theta_linear_interference_channel() -> None:
     q_plus_mass_assisted_u = ("u_L", "ubar_R")
     q_plus_four_source = ("u_L", "d_L", "ubar_R", "dbar_R")
@@ -5722,6 +5827,7 @@ def main() -> None:
     check_thooft_crossed_chiral_channel()
     check_crossed_hard_helicity_projection_gate()
     check_size_integrated_crossed_hard_channel()
+    check_retained_hard_channel_normal_source_quotient()
     check_mass_assisted_theta_linear_interference_channel()
     check_same_coordinate_amplitude_rate_gate()
     print("instanton physical amplitude architecture checks passed")

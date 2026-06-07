@@ -1689,6 +1689,82 @@ All three objects may use the same instanton moduli space, but they are not
 the same QFT amplitude.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Retained hard-channel normal-source quotient]
+\label{ca:instanton-retained-hard-normal-source-quotient}
+The factor \(\mathcal K_{\rm reg}^{RR\to LL}\) in
+\eqref{eq:instanton-size-integrated-crossed-coefficient} contains a
+nonzero-mode source quotient, not only a vacuum determinant.  On the retained
+hard window, keep the same zero-mode-deleted normal coordinates as in
+ControlledApproximation~\ref{ca:instanton-nonzero-mode-source-quotient}.  For a
+cell \(z=(a,\rho,\Omega)\), write
+\begin{equation}
+\begin{aligned}
+  \mathcal Q_{\rm nz}^{\rm src}(z)
+  &=
+  1+q_2(z)+q_3(z)+r_{\rm nz/src}(z),                 \\
+  q_2(z)
+  &:=
+  \frac12\operatorname{Tr}\bigl(Q_zC_z\bigr),        \\
+  q_3(z)
+  &:=
+  -\frac12\ell_i(z)T_{abc}(z)C_{ia}(z)C_{bc}(z).
+\end{aligned}
+  \label{eq:instanton-retained-hard-normal-source-quotient}
+\end{equation}
+Here \(Q_z\) is the quadratic source variation, \(C_z\) is the primed Gaussian
+normal covariance, \(\ell_z\) is the linear source variation, and \(T_z\) is the
+cubic fluctuation tensor of the same gauge-fixed action.  The term \(q_2\) is
+the Gaussian source mean, while \(q_3\) is the first source-dependent covariance
+with the cubic action.  Both are channel data: changing the external sources,
+the source window, or the physical projection changes them even if the BPST
+collective density and the vacuum determinant are unchanged.
+
+Let \(d\mu_R^{\rm hard}(z)\) be the signed retained hard measure with the
+center constraint, Haar projection, zero-mode source slots, amputation,
+crossing residues, running collective factor, and two-term size window included,
+but with \(\mathcal Q_{\rm nz}^{\rm src}\) removed.  Then the scalar coefficient
+entering \eqref{eq:instanton-size-integrated-helicity-amplitude} has the
+finite-window form
+\begin{equation}
+  C_{I,\Lambda,R}^{RR\to LL}
+  =
+  \mathcal N_{\rm det}
+  \int_{\mathcal W_R}
+  \bigl(1+q_2(z)+q_3(z)\bigr)\,
+  d\mu_R^{\rm hard}(z)
+  +R_{\rm nz/src}^{RR\to LL}.
+  \label{eq:instanton-retained-hard-normal-source-coefficient}
+\end{equation}
+The prefactor \(\mathcal N_{\rm det}\) contains only the source-independent
+determinant convention and the common normalization factors not already in
+\(d\mu_R^{\rm hard}\).  If
+\[
+  \int_{\mathcal W_R}|d\mu_R^{\rm hard}|\le M_R,
+  \qquad
+  |r_{\rm nz/src}(z)|\le\epsilon_{\rm nz/src},
+\]
+then
+\begin{equation}
+  |R_{\rm nz/src}^{RR\to LL}|
+  \le
+  |\mathcal N_{\rm det}|\,M_R\,\epsilon_{\rm nz/src}
+  +B_{\rm coord}+B_{\rm amp}+B_{\rm proj}+B_{\rm sec}.
+  \label{eq:instanton-retained-hard-normal-source-bound}
+\end{equation}
+The extra terms record normal-coordinate transport, source-overlap amputation,
+final projection, and sector isolation.
+
+This is where the physical amplitude differs most sharply from a moduli-space
+calculation.  Setting
+\(\mathcal Q_{\rm nz}^{\rm src}=1\) gives a determinant-normalized zero-mode
+answer.  Keeping \(q_2\) but dropping \(q_3\) assumes away the first
+source-cubic fluctuation covariance.  Replacing the pointwise quotient by an
+unweighted average after the signed size and orientation projection changes the
+observable coordinate.  A controlled hard-channel coefficient must carry the
+normal-source quotient through the same retained measure as the zero-mode slots,
+Haar projection, amputation, crossing, and endpoint tails.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Screened hard-size majorant window]
 \label{ca:instanton-hard-screened-retained-window}
 The tail subtraction in

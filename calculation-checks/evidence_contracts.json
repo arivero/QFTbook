@@ -59,6 +59,7 @@
         "named SU3 Nf2 hard-channel spine",
         "crossed hard-channel external Weyl helicity projection",
         "tail-subtracted retained-window hard-channel amplitude",
+        "retained hard-channel normal-source quotient",
         "typed smooth versus local Green insertions",
         "spectral cutoff local Green matching"
       ]
