@@ -9,6 +9,10 @@ Target claims:
   defines a finite-regulator source functional, and a physical amplitude is
   obtained only after source differentiation, source-dependent fluctuation
   averaging, collective integration, and the named physical projection.
+- `ca:instanton-finite-source-functional-laboratory`: a retained-cell
+  amplitude coordinate multiplies the collective weight, nonzero-mode
+  determinant normalization, differentiated zero-mode source coordinate,
+  normal-mode source quotient, and physical projection in one finite sum.
 - `def:instanton-physical-amplitude-channel` and
   `eq:instanton-physical-channel-functional`: the physical channel depends on
   the collective density, nonzero-mode determinant, zero-mode source
@@ -156,7 +160,9 @@ Target claims:
 
 Independent construction:
 - The checks build small exact rational cell models from scratch.  They compute
-  source-functional route orderings,
+  source-functional route orderings, a retained-cell finite amplitude
+  laboratory with collective, determinant, zero-mode source, normal-mode
+  covariance, and projection factors,
   two-by-two determinants, mass/source polynomials, one-loop RG exponents,
   running collective zero-mode Jacobian ratios,
   gauge-sliced zero-mode Gram determinants,
@@ -244,8 +250,9 @@ Imported assumptions:
 Negative controls:
 - The script rejects source-functional shortcuts that replace source
   differentiation by mass saturation, replace source-dependent normal
-  fluctuation response by a determinant-only Gaussian mean, or replace a
-  physical projection by a raw Euclidean source sum.  It also rejects a plus
+  fluctuation response by a determinant-only Gaussian mean, replace a
+  physical projection by a raw Euclidean source sum, or assemble the finite
+  retained-cell laboratory after any of those substitutions.  It also rejects a plus
   sign in the off-diagonal determinant term, a
   moduli-only prediction that ignores zero-mode rank, a rank-one source matrix
   treated as a nonzero four-source channel, a wrong one-loop density power, a
@@ -474,78 +481,127 @@ def check_source_functional_route_order() -> None:
     def average(values: list[Fraction]) -> Fraction:
         return sum(values, Fraction(0)) / len(values)
 
-    # A finite two-cell normal-fluctuation model.  The determinant normalizes
-    # the interaction weight, but the selected source insertion still has a
-    # covariance with that same weight.
-    source_insertion = [Fraction(6, 5), Fraction(9, 10)]
-    interaction_weight = [Fraction(3, 5), Fraction(5, 4)]
-    determinant_normalization = average(interaction_weight)
-    gaussian_source_mean = average(source_insertion)
-    interacting_source_response = (
-        average([src * weight for src, weight in zip(source_insertion, interaction_weight)])
-        / determinant_normalization
-    )
-    covariance = average(
-        [
-            (src - gaussian_source_mean) * (weight - determinant_normalization)
-            for src, weight in zip(source_insertion, interaction_weight)
-        ]
+    def source_response(
+        source_insertion: list[Fraction],
+        interaction_weight: list[Fraction],
+    ) -> tuple[Fraction, Fraction, Fraction, Fraction]:
+        determinant_normalization = average(interaction_weight)
+        gaussian_source_mean = average(source_insertion)
+        interacting_source_response = (
+            average(
+                [
+                    src * weight
+                    for src, weight in zip(source_insertion, interaction_weight)
+                ]
+            )
+            / determinant_normalization
+        )
+        covariance = average(
+            [
+                (src - gaussian_source_mean) * (weight - determinant_normalization)
+                for src, weight in zip(source_insertion, interaction_weight)
+            ]
+        )
+        return (
+            interacting_source_response,
+            gaussian_source_mean,
+            determinant_normalization,
+            covariance,
+        )
+
+    # A retained-cell source-functional laboratory.  Each cell carries a
+    # collective weight, a determinant normalization, a zero-mode source
+    # coordinate, a normal-fluctuation source quotient, and a physical
+    # projection.  The exact values below make these five factors independent.
+    retained_cells = [
+        (
+            "hard cell",
+            Fraction(1, 2),
+            Fraction(2, 3),
+            Fraction(1),
+            diagonal_four_source,
+            [Fraction(1), Fraction(2)],
+            [Fraction(1), Fraction(3)],
+        ),
+        (
+            "projected tail cell",
+            Fraction(1, 3),
+            Fraction(3, 5),
+            Fraction(1, 2),
+            diagonal_four_source,
+            [Fraction(2), Fraction(3)],
+            [Fraction(3), Fraction(1)],
+        ),
+    ]
+
+    routed_coordinate = Fraction(0)
+    determinant_only_source_shortcut = Fraction(0)
+    mass_saturation_shortcut = Fraction(0)
+    euclidean_kernel_shortcut = Fraction(0)
+
+    for (
+        cell_name,
+        collective_weight,
+        determinant_constant,
+        projection_weight,
+        zero_mode_source_coordinate,
+        source_insertion,
+        interaction_weight,
+    ) in retained_cells:
+        (
+            interacting_source_response,
+            gaussian_source_mean,
+            determinant_normalization,
+            covariance,
+        ) = source_response(source_insertion, interaction_weight)
+        assert_equal(
+            f"{cell_name} source-fluctuation covariance identity",
+            interacting_source_response - gaussian_source_mean,
+            covariance / determinant_normalization,
+        )
+        assert_not_equal(
+            f"{cell_name} determinant normalization alone does not fix source response",
+            interacting_source_response,
+            gaussian_source_mean,
+        )
+
+        common_weight = (
+            collective_weight * determinant_constant * zero_mode_source_coordinate
+        )
+        routed_coordinate += (
+            projection_weight * common_weight * interacting_source_response
+        )
+        determinant_only_source_shortcut += (
+            projection_weight * common_weight * gaussian_source_mean
+        )
+        mass_saturation_shortcut += (
+            projection_weight
+            * collective_weight
+            * determinant_constant
+            * vacuum_activity
+            * interacting_source_response
+        )
+        euclidean_kernel_shortcut += common_weight * interacting_source_response
+
+    assert_equal(
+        "finite retained-cell source-functional amplitude laboratory",
+        routed_coordinate,
+        Fraction(97, 120),
     )
     assert_equal(
-        "finite source-fluctuation covariance identity",
-        interacting_source_response - gaussian_source_mean,
-        covariance / determinant_normalization,
+        "determinant-only finite laboratory shortcut value",
+        determinant_only_source_shortcut,
+        Fraction(3, 4),
     )
-    assert_not_equal(
-        "determinant normalization alone does not fix source response",
-        interacting_source_response,
-        gaussian_source_mean,
+    assert_equal(
+        "mass-saturated finite laboratory shortcut value",
+        mass_saturation_shortcut,
+        Fraction(97, 20),
     )
-
-    # A physical projection is a map on the Euclidean kernel, not the raw cell
-    # sum.  The different value below is the finite analogue of pole/spectral
-    # or OPE projection data.
-    euclidean_kernel_cells = [Fraction(7), Fraction(-2), Fraction(5)]
-    projection_weights = [Fraction(1), Fraction(0), Fraction(1, 2)]
-    raw_euclidean_sum = sum(euclidean_kernel_cells, Fraction(0))
-    projected_kernel = sum(
-        weight * cell for weight, cell in zip(projection_weights, euclidean_kernel_cells)
-    )
-    assert_not_equal(
-        "raw Euclidean source sum is not the physical projection",
-        raw_euclidean_sum,
-        projected_kernel,
-    )
-
-    determinant_constant = Fraction(11, 13)
-    density_weight = Fraction(5, 7)
-    routed_coordinate = (
-        determinant_constant
-        * density_weight
-        * diagonal_four_source
-        * interacting_source_response
-        * projected_kernel
-    )
-    mass_saturation_shortcut = (
-        determinant_constant
-        * density_weight
-        * vacuum_activity
-        * interacting_source_response
-        * projected_kernel
-    )
-    determinant_only_source_shortcut = (
-        determinant_constant
-        * density_weight
-        * diagonal_four_source
-        * gaussian_source_mean
-        * projected_kernel
-    )
-    euclidean_kernel_shortcut = (
-        determinant_constant
-        * density_weight
-        * diagonal_four_source
-        * interacting_source_response
-        * raw_euclidean_sum
+    assert_equal(
+        "raw Euclidean finite laboratory shortcut value",
+        euclidean_kernel_shortcut,
+        Fraction(31, 30),
     )
 
     assert_not_equal(

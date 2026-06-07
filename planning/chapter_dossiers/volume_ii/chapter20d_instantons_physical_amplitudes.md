@@ -44,6 +44,16 @@
   saturation, determinant normalization substituted for source response, and
   a raw Euclidean source kernel read as a physical observable before
   projection.
+- `ca:instanton-finite-source-functional-laboratory`: finite retained-cell
+  amplitude laboratory assembling collective weight, nonzero-mode determinant,
+  differentiated zero-mode source coordinate, normal-mode covariance quotient,
+  and physical projection in one coefficient, with the mass-saturation,
+  determinant-only, and raw-Euclidean shortcuts kept as different finite
+  coordinates.
+- `eq:instanton-finite-source-functional-laboratory`: displayed finite
+  laboratory coefficient
+  `sum_c p_c kappa_c Delta_c^nz z_c R_c^src`, used as an order-of-operations
+  pressure test rather than as a continuum instanton theorem.
 - `sec:instanton-density-gate`: one-loop density normalization separating the
   collective-coordinate Jacobian, bosonic zero-mode normalization, running
   BPST action, zero-mode-deleted fluctuation determinant logarithm, and finite
@@ -234,6 +244,12 @@
   regulator and why the later density, zero-mode, normal-fluctuation,
   size-window, and projection blocks are parts of one amplitude extraction
   rather than adjacent facts about the BPST saddle.
+- The finite source-functional laboratory turns that route into a single
+  retained-cell amplitude coordinate.  This is the architecture repair called
+  for by the instanton depth concern: moduli or ADHM data can supply only the
+  collective side of the coefficient, while source determinant selection,
+  normal-mode fluctuation response, and physical projection remain separate
+  physical inputs.
 - The first substantive result is not an ADHM refinement.  It proves that the
   same collective-coordinate measure and nonzero-mode determinant convention
   can give different physical amplitudes once zero-mode source rank and
@@ -418,9 +434,12 @@
   carries the companion evidence contract.
 - The check verifies the source-functional route order by separating source
   differentiation, normal-fluctuation response, and physical projection before
-  any hard benchmark is interpreted; it rejects the corresponding mass
-  saturation, determinant-only source-response, and raw Euclidean-kernel
-  shortcuts.  It also verifies the exact `det(M+B)` polynomial, rejects the
+  any hard benchmark is interpreted.  The front check now also assembles a
+  retained-cell finite amplitude laboratory as
+  collective/determinant/source/normal-quotient/projection data in one exact
+  rational coefficient; it rejects the corresponding mass saturation,
+  determinant-only source-response, and raw Euclidean-kernel shortcuts.  It
+  also verifies the exact `det(M+B)` polynomial, rejects the
   wrong off-diagonal sign, separates mass-saturated and four-source coordinates,
   verifies the one-loop density RG cancellation and the distinction between
   density-only, mass-saturated, and hard four-source size powers,
@@ -756,6 +775,14 @@
   fluctuation averaging, collective integration, and physical projection.  The
   companion check rejects the corresponding shortcut routes in finite
   arithmetic.
+- 2026-06-07 finite source-functional laboratory pass: inserted
+  `ca:instanton-finite-source-functional-laboratory` immediately after the
+  route block.  The pass consolidates the amplitude architecture into one
+  retained-cell coefficient with collective, determinant, zero-mode source,
+  normal-fluctuation quotient, and physical projection factors.  The companion
+  exact-rational check verifies the resulting `97/120` laboratory coefficient
+  and keeps the mass-saturated, determinant-only, and raw-Euclidean shortcuts
+  as distinct finite values.
 - 2026-06-06 mixed-source pole extraction pass: added
   `ca:instanton-pole-normalized-four-source-extraction` inside the physical
   projection bridge.  The pass turns the stable-particle projection into an

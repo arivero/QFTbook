@@ -161,6 +161,68 @@ an observable map; \eqref{eq:instanton-source-functional-observable-extraction}
 is the physical claim.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Finite source-functional amplitude laboratory]
+\label{ca:instanton-finite-source-functional-laboratory}
+A finite retained-window laboratory makes the same order visible in one
+amplitude coordinate.  Let \(c\) run through finitely many retained
+collective cells.  In cell \(c\), write \(\kappa_c\) for the collective
+weight, \(\Delta_c^{\rm nz}\) for the zero-mode-deleted determinant
+normalization, \(z_c\) for the differentiated zero-mode Berezin coordinate,
+and \(p_c\) for the declared physical projection.  Let the normal fluctuation
+average be represented by two finite normal points \(\sigma=\pm\), with
+positive interaction weights \(r_{c\sigma}\) and source insertion values
+\(u_{c\sigma}\).  Define
+\[
+  D_c^{\rm nor}:=\frac{1}{2}\sum_{\sigma=\pm}r_{c\sigma},
+  \qquad
+  \bar U_c:=\frac{1}{2}\sum_{\sigma=\pm}u_{c\sigma},
+  \qquad
+  R_c^{\rm src}:=
+  \frac{
+    \sum_{\sigma=\pm}u_{c\sigma}r_{c\sigma}
+  }{
+    \sum_{\sigma=\pm}r_{c\sigma}
+  } .
+\]
+Equivalently,
+\[
+  R_c^{\rm src}
+  =
+  \bar U_c+
+  \frac{\operatorname{Cov}_c(U,r)}{D_c^{\rm nor}},
+  \qquad
+  \operatorname{Cov}_c(U,r)
+  :=
+  \frac{1}{2}\sum_{\sigma=\pm}
+  (u_{c\sigma}-\bar U_c)(r_{c\sigma}-D_c^{\rm nor}).
+\]
+The finite amplitude laboratory is then
+\begin{equation}
+  A_{\rm lab}
+  =
+  \sum_c
+  p_c\,\kappa_c\,\Delta_c^{\rm nz}\,z_c\,R_c^{\rm src}.
+  \label{eq:instanton-finite-source-functional-laboratory}
+\end{equation}
+The five factors have different physical origins: collective measure,
+nonzero-mode determinant, zero-mode source differentiation, normal-mode
+source response, and observable projection.  Replacing \(z_c\) by the
+mass-saturated activity \(m_um_d\), replacing \(R_c^{\rm src}\) by the
+Gaussian mean \(\bar U_c\), or dropping \(p_c\) gives respectively
+\[
+  A_{\rm mass},\qquad
+  A_{\rm det\text{-}only},\qquad
+  A_E,
+\]
+which are generally different finite numbers.  The laboratory is not a
+continuum proof of an instanton amplitude.  Its role is stricter and more
+basic: a calculation that supplies only an ADHM or BPST collective volume has
+at most \(\kappa_c\), and perhaps \(\Delta_c^{\rm nz}\).  It has not yet
+computed the physical amplitude until the source determinant coordinate,
+normal-fluctuation response, and projection covector have also been supplied
+in the same channel.
+\end{controlledapproximation}
+
 \section{The Density Normalization: Fluctuations Before Channels}
 \label{sec:instanton-density-gate}
 

@@ -849,7 +849,9 @@ Current checks:
   checks for the dedicated instanton physical-amplitude chapter, including
   the finite-regulator source-functional route from zero-mode source
   differentiation through source-dependent normal-fluctuation response to a
-  physical projection,
+  physical projection, including a retained-cell amplitude laboratory which
+  assembles collective, determinant, zero-mode source, normal-mode quotient,
+  and projection factors in one exact rational coefficient,
   the one-loop density RG cancellation, the distinction between density-only,
   mass-saturated, and hard four-source size powers, finite determinant
   constant cancellation only in transported same-channel ratios,
