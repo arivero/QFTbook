@@ -110,8 +110,9 @@
 - `ca:instanton-hard-benchmark-gate-ledger`: same-theory hard-scale ratio and
   residual multiplier bound after the channel data and source-window shape have
   been transported.
-- `sec:instanton-hard-wilsonian-ope-datum`: Wilsonian interpretation of the
-  hard four-source kernel as a short-distance local four-fermion coefficient,
+- `sec:instanton-hard-wilsonian-ope-datum`: Wilsonian OPE-input
+  interpretation of the hard four-source kernel as a short-distance local
+  four-fermion coefficient,
   with the dimensionless size split \(R\), boundary-flux flow, operator
   matching, physical matrix element, and long-size remainder kept separate.
 - `ca:instanton-wilsonian-matching-covariance`: finite Wilsonian matching
@@ -557,3 +558,10 @@
   explicit overlap-matrix amputation problem, so the hard instanton
   four-source window becomes a physical matrix element only after source
   mixing, pole residues, and excited-state leakage are controlled.
+- 2026-06-06 issue #597 chapter-order re-audit: corrected the opening
+  calculation-order paragraph so the source functional, not the one-loop
+  density, is the first object.  The visible section/control titles now say
+  Wilsonian OPE input and hard amplitude assembly control while stable labels
+  are preserved.  No formula, physics claim, or calculation companion changed;
+  this is a coherence repair enforcing the amplitude-first architecture after
+  the many later source, fluctuation, projection, and cluster insertions.

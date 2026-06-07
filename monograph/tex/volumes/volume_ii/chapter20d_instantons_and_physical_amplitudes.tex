@@ -19,15 +19,18 @@ their spectral projections differ.  These are not refinements of moduli-space
 geometry; they are the steps which turn a saddle contribution into a QFT
 amplitude.
 
-The chapter follows the order of that calculation.  First the one-loop
-density is separated into collective coordinates, zero-mode normalizations,
-nonzero-mode determinants, running-coupling conversion, and scheme constants.
-Next the channel supplies source ranks, amputation, endpoint windows, and a
-declared physical projection.  The hard \(SU(3)\), \(N_f=2\) benchmark then
-shows how zero-mode form factors, tail subtraction, and a Wilsonian size split
-enter one concrete coefficient.  Finally, normal-fluctuation source response,
-cluster corrections, and observable maps decide which part of the instanton
-ensemble is being measured.
+The chapter follows the order of that calculation.  The first object is the
+finite-regulator source functional: before an amplitude exists, the source
+derivatives, zero-mode Berezin coefficient, normal-fluctuation average, and
+collective integral must all be in the same channel.  The density
+normalization is then separated into collective coordinates, zero-mode
+normalizations, nonzero-mode determinants, running-coupling conversion, and
+scheme constants.  The channel supplies source ranks, amputation, endpoint
+windows, and a declared physical projection.  The hard \(SU(3)\), \(N_f=2\)
+benchmark then shows how zero-mode form factors, tail subtraction, and a
+Wilsonian size split enter one concrete coefficient.  Finally,
+normal-fluctuation source response, cluster corrections, and observable maps
+decide which part of the instanton ensemble is being measured.
 
 \section{The Source Functional Before the Amplitude}
 \label{sec:instanton-source-functional-route}
@@ -398,12 +401,13 @@ nonzero; it does not revive the channel amplitude.
 \section{The Channel Is Part of the Calculation}
 \label{sec:instanton-physical-amplitude-channel}
 
-The finite-regulator datum
-of Definition~\ref{def:one-instanton-amplitude-datum} is the local input for
-the present chapter.  We now package it as an observable channel.  This is a
-change of emphasis, not a new convention: the BPST/ADHM data select the
-domain of integration, while the channel records the determinant, zero-mode,
-source, endpoint, and physical-projection data which decide the amplitude.
+The finite-regulator inputs
+of Definition~\ref{def:one-instanton-amplitude-datum} are the local starting
+point for the present chapter.  We now package them as an observable channel.
+This is a change of emphasis, not a new convention: the BPST/ADHM data select
+the domain of integration, while the channel records the determinant,
+zero-mode, source, endpoint, and physical-projection data which decide the
+amplitude.
 
 \begin{definition}[Instanton physical-amplitude channel]
 \label{def:instanton-physical-amplitude-channel}
@@ -1165,7 +1169,7 @@ Jacobian, or unamputated external residues change the amplitude coordinate
 before the power law \((Q_2/Q_1)^{-35/3}\) can be tested modulo logarithms.
 \end{controlledapproximation}
 
-\section{The Hard Kernel as a Wilsonian OPE Datum}
+\section{The Hard Kernel as a Wilsonian OPE Input}
 \label{sec:instanton-hard-wilsonian-ope-datum}
 
 The hard coefficient in
@@ -1593,7 +1597,7 @@ scheme matching, \(\mathcal R_{\rm fluc}\) is the source-dependent quotient in
 The term \(R_{\rm ext}\) contains sector isolation, infrared, cut, endpoint,
 and continuum errors not represented by the retained window.
 
-\begin{controlledapproximation}[Hard amplitude assembly bound]
+\begin{controlledapproximation}[Hard amplitude assembly control]
 \label{ca:instanton-hard-amplitude-assembly-ledger}
 Let
 \begin{equation}
@@ -1824,7 +1828,7 @@ not a single spacelike Euclidean value.  Contact polynomials can change
 \(G_E^I(Q^2)\) while carrying no separated spectral weight in \(\Delta\), and
 two positive spectral measures can agree at one Euclidean point while giving
 different bin weights.  A physical spectral claim therefore needs an inversion
-or window-stability datum, not just a source-kernel number.
+or window-stability input, not just a source-kernel number.
 
 \begin{controlledapproximation}[Physical projection bridge for instanton
 source kernels]
@@ -2179,7 +2183,7 @@ whenever they describe one unordered physical molecule.
 
 \begin{controlledapproximation}[Neutral-pair valley prescription]
 \label{ca:instanton-neutral-pair-valley-prescription}
-The neutral \(I\bar I\) channel has an additional prescription datum.  In the
+The neutral \(I\bar I\) channel has an additional prescription input.  In the
 attractive relative quasi-zero-mode direction, a regulated valley coordinate
 \(r\) can produce a lateral value rather than an ordinary positive molecule
 integral.  For a selected source and projection coordinate, write the retained
