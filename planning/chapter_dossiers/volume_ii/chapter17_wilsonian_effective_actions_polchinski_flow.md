@@ -211,9 +211,11 @@ The chapter must define and derive:
     nonnegative;
   - the conversion of \(a_2\) into a weighted cross-section moment
     \(\int ds\,\sqrt{s(s-4m^2)}\sigma_{\rm abs}^{\rm sub}(s)/(s-2m^2)^3\),
-    with a finite-window lower bound \(B(S_0)\), positive tail \(T(S_0)\),
-    and the failure interpretation when a matched low-energy coefficient lies
-    below the measured window moment;
+    with a finite-window residual
+    \(a_2-c_\infty-B(S_0)=T(S_0)\), positive tail \(T(S_0)\), contour-status
+    bookkeeping, and the failure interpretation when a matched low-energy
+    coefficient lies below the measured window moment after the contour and
+    remainder accounting are fixed;
   - the map from the EFT low-energy coefficient to the on-shell forward
     amplitude coordinate \(\kappa_{\rm amp}\), with EOM and field-redefinition
     representatives killed only by the declared observable projection;
@@ -556,14 +558,14 @@ The chapter must define and derive:
 18a. The forward scalar positivity bound is a conditional statement about an
      already-defined on-shell amplitude observable.  After first-sheet stable
      poles and known infrared singularities are subtracted, crossing about
-     \(\nu=s-2m^2=0\), the twice-subtracted contour formula, the vanishing
-     large-circle term, and the optical theorem imply
+     \(\nu=s-2m^2=0\), the twice-subtracted contour formula, the declared
+     large-circle coordinate, and the optical theorem imply
      \(a_2=(2/\pi)\int_{\nu_{\rm th}}^\infty
-     d\nu\,\operatorname{Im}\mathcal M_{\rm sub}/\nu^3\ge0\).  Equivalently it
-     is the weighted moment of the subtracted absorptive cross-section measure,
-     so any finite energy window gives a lower bound when the contour term is
-     absent and the tail remains positive.  The bounded coefficient is the
-     projected amplitude coordinate
+     d\nu\,\operatorname{Im}\mathcal M_{\rm sub}/\nu^3+c_\infty\).
+     Equivalently it is the weighted moment of the subtracted absorptive
+     cross-section measure, so the finite-window comparison is the observable
+     residual \(a_2-c_\infty-B(S_0)=T(S_0)\ge0\).  The bounded coefficient is
+     the projected amplitude coordinate
      \(\kappa_{\rm amp}\), not an arbitrary Wilson coefficient in a redundant
      operator basis.
 19. Local field redefinitions are exact finite-regulator changes of variables
@@ -886,3 +888,9 @@ The chapter must define and derive:
   is observable problem, regulator/projection/matching inputs, named
   remainder, then conditional positivity.  This was a physics-architecture and
   prose-coherence repair, not a new lemma or formula annex.
+- 2026-06-06 issue #844 positivity residual re-audit: promoted the
+  finite-window comparison to the explicit observable residual
+  \(a_2-c_\infty-B(S_0)=T(S_0)\ge0\), and connected the EFT coefficient through
+  the prediction remainder \(R_N^{(2)}\).  The companion check now rejects the
+  shortcut that compares \(a_2\) with \(B(S_0)\) while retaining a contour
+  coordinate.

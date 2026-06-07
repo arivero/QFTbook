@@ -33,8 +33,9 @@ Target claims:
   \(a_2=(2/\pi)\int d\nu\,\operatorname{Im}F(\nu)/\nu^3\) when stable poles are
   subtracted and the high-energy contour term vanishes.  The same coefficient is
   a finite-window cross-section moment after the optical-theorem flux factor is
-  inserted.  The coefficient bounded by positivity is the on-shell amplitude
-  coordinate, not a redundant-basis Wilson coordinate.
+  inserted, with observable residual
+  \(a_2-c_\infty-B(S_0)=T(S_0)\ge0\).  The coefficient bounded by positivity is
+  the on-shell amplitude coordinate, not a redundant-basis Wilson coordinate.
 
 Independent construction:
 - The heavy-kernel identity is checked as an exact rational identity and as a
@@ -60,7 +61,8 @@ Independent construction:
 - The positivity check uses a finite positive spectral measure to verify the
   factor of two from the two cuts, stable-pole subtraction, subtraction
   polynomial independence of \(a_2\), the explicit large-contour term, the
-  conversion to a finite cross-section window plus positive tail, and the
+  conversion to a finite cross-section window plus positive tail, the
+  subtraction of the contour coordinate in the finite-window residual, and the
   projection that kills EOM representatives only after imposing the on-shell
   external-state datum.
 
@@ -109,10 +111,12 @@ Negative controls:
 - The positivity normalization check rejects the one-cut normalization, shows
   that an unsubtracted stable pole shifts the Taylor coefficient, shows that a
   nonzero high-energy contour term can flip the sign despite positive cut
-  weights, flags a massless forward pole as nonanalytic at the expansion point,
-  rejects an optical-theorem moment with the flux factor omitted, and verifies
-  that an off-shell coefficient can depend on a redundant representative even
-  though the on-shell amplitude coefficient does not.
+  weights, rejects a finite-window shortcut that compares \(a_2\) with
+  \(B(S_0)\) while retaining the contour coordinate, flags a massless forward
+  pole as nonanalytic at the expansion point, rejects an optical-theorem moment
+  with the flux factor omitted, and verifies that an off-shell coefficient can
+  depend on a redundant representative even though the on-shell amplitude
+  coefficient does not.
 
 Scope boundary:
 - This script checks finite algebra and bookkeeping for the EFT prediction
@@ -596,6 +600,10 @@ def check_forward_positivity_dispersion_normalization() -> None:
     )
     tail_contribution = cross_section_a2 - window_contribution
     assert_gt("positive tail makes a finite window a lower bound", float(tail_contribution), 0.0)
+    assert_zero(
+        "finite-window residual equals the positive tail after contour subtraction",
+        cross_section_a2 - window_contribution - tail_contribution,
+    )
     observed_a2_below_window = window_contribution - sp.Rational(1, 10)
     assert_gt(
         "finite-window moment detects an incompatible low-energy coefficient",
@@ -651,11 +659,27 @@ def check_forward_positivity_dispersion_normalization() -> None:
         "omitting a nonzero large-contour term breaks the sum rule",
         actual_a2_with_contour - dispersive_a2,
     )
+    assert_zero(
+        "finite-window residual subtracts the contour coordinate",
+        actual_a2_with_contour - contour_a2 - window_contribution - tail_contribution,
+    )
     negative_contour_value = -2 * dispersive_a2
     assert_gt(
         "large-contour term can flip the low-energy sign",
         0.0,
         float(dispersive_a2 + negative_contour_value),
+    )
+    negative_window_contour = -tail_contribution - sp.Rational(1, 10)
+    actual_with_negative_window_contour = dispersive_a2 + negative_window_contour
+    assert_gt(
+        "tail stays positive after the contour coordinate is subtracted",
+        float(actual_with_negative_window_contour - negative_window_contour - window_contribution),
+        0.0,
+    )
+    assert_gt(
+        "finite-window shortcut fails when the contour coordinate is retained",
+        0.0,
+        float(actual_with_negative_window_contour - window_contribution),
     )
 
     g_massless = sp.symbols("g_massless", nonzero=True)

@@ -1005,9 +1005,11 @@ Current checks:
   dispersion normalization with the factor of two from the two cuts,
   subtraction-polynomial independence of the second coefficient, explicit
   stable-pole subtraction, the conversion to a finite-window cross-section
-  moment with the optical-theorem flux factor, large-contour and
-  massless-forward-pole negative controls, and the projection from redundant
-  EFT basis coordinates to the on-shell forward amplitude coefficient.
+  moment with the optical-theorem flux factor, the residual
+  \(a_2-c_\infty-B(S_0)=T(S_0)\), large-contour and
+  massless-forward-pole negative controls, a finite-window shortcut rejection,
+  and the projection from redundant EFT basis coordinates to the on-shell
+  forward amplitude coefficient.
 - `borel_laplace_checks.py`: exact checks for the Borel--Laplace and
   zero-dimensional quartic large-order section, including Gaussian moments,
   perturbative coefficients, the ratio

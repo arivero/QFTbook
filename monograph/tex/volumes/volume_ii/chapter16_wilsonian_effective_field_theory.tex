@@ -1726,19 +1726,19 @@ matched observables are the basis-independent objects.
 \section{Conditional Positivity Bounds for EFT Amplitudes}
 \label{sec:eft-conditional-positivity-bounds}
 
-Positivity bounds are most useful when they are attached to a concrete
-low-energy scattering prediction.  They are not a new foundation for EFT and
-not evidence, by themselves, that a UV completion exists.  The EFT prediction
-specification of Definition~\ref{def:eft-prediction-datum} first chooses the
-observable: here an on-shell forward \(2\to2\) amplitude of an identical stable
-scalar of mass \(m\), with a specified infrared prescription and a low-energy
-expansion domain.  Only after that observable problem is fixed do analyticity,
-unitarity, and crossing become extra assumptions that can restrict the
-amplitude coefficient.
+Forward positivity enters this chapter as an observable-level consistency test
+for a low-energy scattering prediction.  It tests a matched amplitude
+coefficient in a stated UV-completion class.  The EFT prediction specification
+of Definition~\ref{def:eft-prediction-datum} first chooses the observable:
+here an on-shell forward \(2\to2\) amplitude of an identical stable scalar of
+mass \(m\), with a specified infrared prescription and a low-energy expansion
+domain.  Only after that observable problem is fixed do analyticity, unitarity,
+crossing, and boundedness restrict a coefficient whose physical meaning has
+already been declared.
 
-\begin{hypothesis}[Forward scalar positivity assumptions]
+\begin{hypothesis}[Forward scalar positivity observable data]
 \label{hyp:forward-scalar-positivity-ledger}
-The following assumptions are part of the claim, not background decoration.
+A positivity inference for this observable uses the following input data.
 \begin{enumerate}
   \item The scattering theory is Lorentz invariant, unitary, and crossing
   symmetric for the external scalar species, or comes with a stated
@@ -1932,14 +1932,29 @@ Thus a finite energy window already has a physical meaning.  For
 \end{aligned}
 \label{eq:forward-positivity-window-moment}
 \end{equation}
-With the contour term removed, \(a_2=B(S_0)+T(S_0)\) and
-\(T(S_0)\ge0\).  A measured or matched low-energy value of \(a_2\) below
-\(B(S_0)\) would therefore not be a small correction to the positivity proof:
-it would identify a wrong normalization, a missing subtraction or infrared
-prescription, a nonvanishing high-energy contour term, a failure of one of the
-analyticity/unitarity assumptions, or a mismatch between the EFT coefficient
-and the on-shell forward observable.
-The inequality is strict only if the subtracted amplitude has nonzero positive
+The finite-window comparison is therefore the residual identity
+\begin{equation}
+  \Delta_{\rm pos}(S_0)
+  :=
+  a_2-c_\infty-B(S_0)
+  =
+  T(S_0)
+  \ge0 .
+\label{eq:forward-positivity-window-residual}
+\end{equation}
+This is the observable map behind the sign statement.  The window value
+\(B(S_0)\) is measured or matched absorptive input in the same subtraction and
+infrared convention; \(T(S_0)\) is the positive but unmeasured high-energy
+tail; \(c_\infty\) is the declared large-contour coordinate.  When
+\(c_\infty=0\), \(B(S_0)\) is a lower bound for \(a_2\).  With a retained
+contour term, the lower bound applies to \(a_2-c_\infty\), and a comparison
+which uses \(B(S_0)\) alone has mixed two different observables.  A measured or
+matched low-energy value that makes
+\(\Delta_{\rm pos}(S_0)\) negative identifies a wrong normalization, a missing
+subtraction or infrared prescription, an incorrectly assigned high-energy
+contour term, a failure of one of the analyticity/unitarity assumptions, or a
+mismatch between the EFT coefficient and the on-shell forward observable.  The
+inequality is strict only if the subtracted amplitude has nonzero positive
 spectral weight in the relevant channel.  A free or specially decoupled sector
 can saturate it.
 
@@ -1956,8 +1971,20 @@ amplitude coordinate as
   O(\nu^4/\Lambda^8)
 \label{eq:eft-forward-amplitude-coordinate}
 \end{equation}
-inside the declared low-energy domain.  The positivity inference is the
-conditional statement
+inside the declared low-energy domain.  For a prediction datum whose full
+coefficient is
+\(a_2=\kappa_{\rm amp}/\Lambda^4+R_N^{(2)}\), the finite-window positivity
+comparison reads
+\begin{equation}
+  \frac{\kappa_{\rm amp}}{\Lambda^4}
+  -c_\infty-B(S_0)
+  =
+  T(S_0)-R_N^{(2)} .
+\label{eq:eft-forward-window-positivity-comparison}
+\end{equation}
+Here \(R_N^{(2)}\) is the Taylor-coefficient part of the named prediction
+remainder in Definition~\ref{def:eft-prediction-datum}.  The familiar
+coefficient sign is the special leading comparison
 \begin{equation}
   \frac{\kappa_{\rm amp}}{\Lambda^4}
   =
@@ -1967,9 +1994,10 @@ conditional statement
   \ge0 ,
 \label{eq:eft-forward-kappa-positivity}
 \end{equation}
-up to the named EFT remainder and the named high-energy contour status.  The
-coefficient \(\kappa_{\rm amp}\) is an amplitude coordinate, not an arbitrary
-Wilson coefficient.  If a Lagrangian basis contains
+when \(c_\infty=0\), the tail is positive, and the declared remainder is beyond
+the working precision.  The coefficient \(\kappa_{\rm amp}\) is an amplitude
+coordinate, not an arbitrary Wilson coefficient.  If a Lagrangian basis
+contains
 \[
   \Delta\mathcal L
   =
@@ -1994,7 +2022,7 @@ coordinates, but they do not change \(\kappa_{\rm amp}\).  Thus a sign bound on
 a basis coefficient is meaningful only after the map from that basis to the
 on-shell forward amplitude coefficient has been specified.
 
-\begin{remark}[Failure modes of the naive bound]
+\begin{remark}[Observable failure modes for scalar positivity]
 \label{rem:eft-positivity-failure-modes}
 Each missing entry in
 Hypothesis~\ref{hyp:forward-scalar-positivity-ledger} has a physical failure
@@ -2018,12 +2046,12 @@ mode.
   and infrared prescriptions.  They should be treated as new prediction data,
   not as automatic corollaries of the scalar forward formula.
 \end{enumerate}
-Consequently, a finite list of positive low-energy coefficients is necessary
-only within the stated UV-completion class and is never sufficient evidence
-that such a completion exists.
+Thus a finite list of positive low-energy coefficients supplies necessary
+conditions within the stated UV-completion class.  Existence of such a
+completion requires additional construction or input.
 \end{remark}
 
-\begin{remark}[Scope of the scalar positivity statement]
+\begin{remark}[Observable status of the scalar positivity statement]
 \label{rem:eft-positivity-status-ledger}
 The complex-analysis step from the cut contour to
 \eqref{eq:forward-positivity-a2-sum-rule} is exact once the analytic function,
@@ -2032,8 +2060,8 @@ nonnegative sign of the absorptive part is a Hilbert-space unitarity input via
 the optical theorem.  The use of the result as an EFT constraint is a
 conditional nonperturbative inference about a specified class of UV completions,
 while the projection from a Lagrangian basis to \(\kappa_{\rm amp}\) is a
-finite on-shell matching calculation.  None of these statements says that the
-EFT itself is defined by positivity bounds.
+finite on-shell matching calculation.  Together they supply a conditional
+observable consistency test for the already specified scattering prediction.
 \end{remark}
 
 \section{Fermi-Surface Effective Field Theory}
