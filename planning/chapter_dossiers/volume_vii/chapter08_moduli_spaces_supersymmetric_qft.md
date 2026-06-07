@@ -88,6 +88,12 @@ later lower-dimensional examples, protected sectors, and localization.
   counterterm test on a smooth fully Higgsed stratum.
 - `eq:higgs-branch-protected-quotient-metric`: local quotient-metric equality,
   explicitly separated from global nonperturbative continuum assertions.
+- `constr:higgs-branch-ward-counterterm-interface`,
+  `eq:higgs-branch-local-counterterm-cohomology`: local Ward/cohomology
+  interface for the smooth Higgs-metric theorem boundary, including typed
+  source multiplets, smooth-stratum locality, regulator preservation, and the
+  separation of symmetric metric data from vector, source-transport,
+  singular-locus, and torsion/WZ channels.
 - `constr:higgs-branch-background-field-derivation-target`,
   `eq:higgs-branch-background-field-trace-log`: explicit rank-one
   background-field target for an actual Higgs-metric determinant calculation.
@@ -224,7 +230,12 @@ later lower-dimensional examples, protected sectors, and localization.
   absence of mixed/additional massless sectors.  The counterterm filter
   classifies coordinate changes, FI/mass transport, vector/coupling-spurion
   \(D\)-terms, torsion/WZ terms, and singular/mixed-locus operators.  The
-  rank-one background-field construction specifies the trace-log coefficient,
+  Ward/local-counterterm interface states the exact cohomology vanishing a
+  proof or quoted theorem must supply, with typed source multiplets,
+  smooth-stratum locality, regulator preservation, and negative controls for
+  four-supercharge K\"ahler-term imports, vector-spurion erasure, singular
+  branches, and antisymmetric \(2d\) torsion data.  The rank-one
+  background-field construction specifies the trace-log coefficient,
   nonminimal gauge operator, Goldstone, ghost, seagull, fermion, auxiliary, and
   gauge-parameter data that an independent determinant proof would have to
   evaluate.  It further records the row-resolved off-shell assembly obligation
@@ -271,7 +282,11 @@ later lower-dimensional examples, protected sectors, and localization.
   fix Coulomb-throat flux,
   the Higgs-metric theorem-boundary/local/global/torsion status matrix, the
   two-derivative counterterm filter with vector-spurion negative control, and
-  the background-field derivation check that rejects bare component
+  the Ward/local-counterterm proof-interface classifier, which rejects
+  four-supercharge K\"ahler-term imports, vector-spurion type erasure,
+  singular-branch shortcuts, broken-regulator proofs, and antisymmetric
+  \(2d\) torsion-channel substitutions, and the background-field derivation
+  check that rejects bare component
   multiplicities, requires model/gauge/regulator/operator slots, derives the
   \(R_\xi\) longitudinal/Goldstone/ghost cancellation from generated operators,
   verifies the frame-connection seagull identity from operator conjugation,
@@ -390,6 +405,13 @@ local models.
   function and local moment conditions, and rejects unpaired regulator masses,
   tangent-dependent regulator vertices, and failure to project Higgs tangent
   zero modes before taking the heavy determinant.
+- 2026-06-07 issue #850 Ward/local-counterterm interface pass: added the local
+  cohomology proof interface for the smooth Higgs-metric theorem boundary,
+  clarifying exactly what an all-order Ward or harmonic/projective superspace
+  theorem must establish.  The companion now rejects four-supercharge
+  K\"ahler-term imports, vector-spurion erasure, singular-branch shortcuts,
+  broken-regulator proofs, and antisymmetric \(2d\) torsion-channel
+  substitutions.
 - 2026-06-07 issue #850 dimensional-reduction row audit: added the lower-dimensional
   split \(A_M=(A_\mu,\sigma_I)\), with \(4-d\) reduced vector-multiplet scalar
   rows and their contact \(C_{\rm red}^{(d)}\).  The companion now checks that

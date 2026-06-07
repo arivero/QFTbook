@@ -17,8 +17,9 @@ Negative controls: component-count-only Higgs metric proofs, vector-spurion
 metric shortcuts, omitted ghosts/Goldstones/longitudinal vectors, omitted
 seagulls, mismatched Ward vertices, dropped auxiliary/Yukawa contacts,
 unpaired dimension-reduced scalar contacts, covering four-dimensional
-component reuse, and unpaired regulator masses are rejected when represented
-by the finite model.
+component reuse, unpaired regulator masses, four-supercharge Kahler-term
+imports, singular-branch shortcuts, and antisymmetric two-dimensional torsion
+channels are rejected when represented by the finite model.
 Scope boundary: these checks do not prove a continuum Higgs-branch metric
 nonrenormalization theorem, construct the full gauge-fixed elliptic complex,
 establish all-order harmonic/projective superspace protection, or construct
@@ -495,6 +496,211 @@ def check_higgs_branch_counterterm_filter():
         wrong_shortcut_survivors,
         ["vector spurion D-term"],
         "negative-control vector-spurion shortcut would claim metric correction",
+    )
+
+
+def check_higgs_branch_ward_counterterm_interface():
+    """Audit the slots needed for a local eight-supercharge Ward proof."""
+
+    required_slots = {
+        "supercharges",
+        "r_symmetry_preserved",
+        "smooth_fully_higgsed_stratum",
+        "transverse_gap",
+        "source_multiplet_split",
+        "locality",
+        "two_derivative_order",
+        "cohomology_quotients",
+        "regulator_preserves_ward_data",
+    }
+    proof_interface = {
+        "supercharges": 8,
+        "r_symmetry_preserved": True,
+        "smooth_fully_higgsed_stratum": True,
+        "transverse_gap": True,
+        "source_multiplet_split": {
+            "hypermultiplet_coordinates",
+            "vector_multiplet_spurions",
+            "fi_triplet_sources",
+            "mass_backgrounds",
+        },
+        "locality": "on_smooth_stratum_U",
+        "two_derivative_order": True,
+        "cohomology_quotients": {
+            "hypermultiplet_field_redefinition",
+            "fi_or_mass_source_transport",
+            "Q_exact_local_functional",
+        },
+        "regulator_preserves_ward_data": True,
+    }
+
+    assert_equal(
+        sorted(required_slots - set(proof_interface)),
+        [],
+        "Higgs Ward proof interface carries every local-counterterm slot",
+    )
+    assert_equal(
+        "vector_multiplet_spurions"
+        in proof_interface["source_multiplet_split"],
+        True,
+        "source split keeps vector/coupling spurions separate from Higgs fields",
+    )
+
+    def classify_counterterm(candidate):
+        if not candidate["local_on_smooth_stratum"] or not candidate["gap"]:
+            return "outside_local_higgs_sigma_model"
+        if candidate["channel"] == "antisymmetric":
+            return "torsion_or_wz_channel"
+        if candidate["derivative_order"] != 2:
+            return "not_two_derivative_metric_order"
+        if (
+            candidate["supercharges"] != 8
+            or not candidate["r_symmetry_preserved"]
+            or not candidate["regulator_preserves_ward_data"]
+        ):
+            return "outside_eight_supercharge_ward_theorem"
+        source_types = set(candidate["source_types"])
+        if source_types & {"vector_multiplet", "gauge_coupling", "coulomb"}:
+            return "vector_sector_or_higher_derivative"
+        if source_types & {"fi_triplet", "mass_background"}:
+            return "source_transport_after_matching"
+        if candidate["cohomology_class"] in {
+            "hypermultiplet_field_redefinition",
+            "Q_exact_local_functional",
+        }:
+            return "coordinate_or_exact_representative"
+        if candidate["cohomology_class"] == "nontrivial_hypermetric":
+            return "new_intrinsic_higgs_metric"
+        raise ValueError(f"unknown cohomology class {candidate['cohomology_class']!r}")
+
+    valid_eight_supercharge_candidates = [
+        {
+            "name": "hypermultiplet coordinate representative",
+            "supercharges": 8,
+            "r_symmetry_preserved": True,
+            "regulator_preserves_ward_data": True,
+            "local_on_smooth_stratum": True,
+            "gap": True,
+            "channel": "symmetric",
+            "derivative_order": 2,
+            "source_types": {"hypermultiplet"},
+            "cohomology_class": "hypermultiplet_field_redefinition",
+        },
+        {
+            "name": "FI transport of quotient level",
+            "supercharges": 8,
+            "r_symmetry_preserved": True,
+            "regulator_preserves_ward_data": True,
+            "local_on_smooth_stratum": True,
+            "gap": True,
+            "channel": "symmetric",
+            "derivative_order": 2,
+            "source_types": {"hypermultiplet", "fi_triplet"},
+            "cohomology_class": "Q_exact_local_functional",
+        },
+        {
+            "name": "vector spurion local term",
+            "supercharges": 8,
+            "r_symmetry_preserved": True,
+            "regulator_preserves_ward_data": True,
+            "local_on_smooth_stratum": True,
+            "gap": True,
+            "channel": "symmetric",
+            "derivative_order": 2,
+            "source_types": {"hypermultiplet", "vector_multiplet"},
+            "cohomology_class": "nontrivial_hypermetric",
+        },
+    ]
+    assert_equal(
+        [
+            classify_counterterm(candidate)
+            for candidate in valid_eight_supercharge_candidates
+        ],
+        [
+            "coordinate_or_exact_representative",
+            "source_transport_after_matching",
+            "vector_sector_or_higher_derivative",
+        ],
+        "local Ward interface leaves no new intrinsic Higgs metric class",
+    )
+
+    four_supercharge_kahler_term = {
+        "name": "four-supercharge Kahler D-term",
+        "supercharges": 4,
+        "r_symmetry_preserved": True,
+        "regulator_preserves_ward_data": True,
+        "local_on_smooth_stratum": True,
+        "gap": True,
+        "channel": "symmetric",
+        "derivative_order": 2,
+        "source_types": {"chiral"},
+        "cohomology_class": "nontrivial_hypermetric",
+    }
+    assert_equal(
+        classify_counterterm(four_supercharge_kahler_term),
+        "outside_eight_supercharge_ward_theorem",
+        "four-supercharge Kahler renormalization cannot be imported as Higgs proof",
+    )
+
+    mislabelled_vector_spurion = dict(four_supercharge_kahler_term)
+    mislabelled_vector_spurion.update(
+        {
+            "name": "mislabelled vector spurion",
+            "supercharges": 8,
+            "source_types": {"hypermultiplet", "vector_multiplet"},
+        }
+    )
+    assert_equal(
+        classify_counterterm(mislabelled_vector_spurion),
+        "vector_sector_or_higher_derivative",
+        "typed source split blocks vector spurion from becoming a Higgs metric",
+    )
+    if_vector_type_is_erased = dict(mislabelled_vector_spurion)
+    if_vector_type_is_erased["source_types"] = {"hypermultiplet"}
+    assert_equal(
+        classify_counterterm(if_vector_type_is_erased),
+        "new_intrinsic_higgs_metric",
+        "erasing the source type would fake an intrinsic Higgs metric correction",
+    )
+
+    singular_branch_candidate = dict(if_vector_type_is_erased)
+    singular_branch_candidate.update(
+        {
+            "name": "singular branch light-sector shortcut",
+            "gap": False,
+            "local_on_smooth_stratum": False,
+        }
+    )
+    assert_equal(
+        classify_counterterm(singular_branch_candidate),
+        "outside_local_higgs_sigma_model",
+        "singular or mixed loci invalidate the smooth-stratum counterterm theorem",
+    )
+
+    two_dimensional_torsion = dict(if_vector_type_is_erased)
+    two_dimensional_torsion.update(
+        {
+            "name": "2d antisymmetric B/WZ channel",
+            "channel": "antisymmetric",
+        }
+    )
+    assert_equal(
+        classify_counterterm(two_dimensional_torsion),
+        "torsion_or_wz_channel",
+        "antisymmetric two-dimensional branch data are not Higgs metric data",
+    )
+
+    broken_regulator_candidate = dict(if_vector_type_is_erased)
+    broken_regulator_candidate.update(
+        {
+            "name": "regulator-broken Ward identity",
+            "regulator_preserves_ward_data": False,
+        }
+    )
+    assert_equal(
+        classify_counterterm(broken_regulator_candidate),
+        "outside_eight_supercharge_ward_theorem",
+        "a regulator that breaks the Ward data cannot prove metric protection",
     )
 
 
@@ -1907,6 +2113,7 @@ def main():
     check_d1_d5_dimension_does_not_fix_bridge_flux()
     check_higgs_branch_metric_status_matrix()
     check_higgs_branch_counterterm_filter()
+    check_higgs_branch_ward_counterterm_interface()
     check_higgs_branch_background_field_derivation_gate()
     check_large_charge_torus_lattice_and_weyl_orbit()
     check_large_charge_branch_noether_and_routhian()

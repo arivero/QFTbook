@@ -814,6 +814,47 @@ The filter is necessary rather than sufficient.  It says which local
 functionals would count as intrinsic metric deformations; it does not evaluate
 the determinant that would be needed for an independent background-field proof.
 
+\begin{construction}[Ward/local-counterterm proof interface]
+\label{constr:higgs-branch-ward-counterterm-interface}
+The all-order statement must be a local cohomology statement, not a component
+ledger.  Let \({\mathfrak F}^{(2)}_{H,U}\) be the space of local
+two-derivative Wilsonian functionals on the smooth stratum \(U\), completed by
+the fermion and auxiliary terms required by the eight supercharges and
+depending only on the massless hypermultiplet background after the FI and mass
+sources have been declared.  Quotient this space by hypermultiplet field
+redefinitions and by transport of the declared FI/mass coordinates.  The
+theorem one has to prove, or quote with its hypotheses, is the vanishing
+\begin{equation}
+  H^0_{Q,{\rm loc}}\!\left({\mathfrak F}^{(2)}_{H,U}\right)_{\rm intrinsic}
+  =
+  0 .
+  \label{eq:higgs-branch-local-counterterm-cohomology}
+\end{equation}
+Here \(Q\) denotes the preserved supercharge algebra together with the relevant
+\(R\)-symmetry Ward identities, and ``intrinsic'' means after source matching
+and coordinate changes have been removed.  Equation
+\eqref{eq:higgs-branch-local-counterterm-cohomology} is the precise local
+content of Hypothesis~\ref{hyp:smooth-higgs-branch-metric-protection}.
+
+This interface has four checks.  First, the proof has to keep the source
+multiplets typed: hypermultiplet coordinates, vector-multiplet or gauge
+coupling spurions, FI triplets, and mass backgrounds are not interchangeable.
+Second, it is local only on a fully Higgsed smooth stratum with a transverse
+gap; a singular or mixed locus changes the low-energy field content.  Third,
+the two-dimensional antisymmetric \(B\)/Wess--Zumino channel is not the
+symmetric Higgs metric channel.  Fourth, the regulator used in any determinant
+realization must preserve the same \(Q\) and \(R\)-symmetry data used in the
+cohomology statement.
+
+The rank-one trace-log construction below is therefore evidence for the local
+theorem in one model: it exhibits how the gauge-fixed heavy rows, contacts,
+zero-mode projection, and regulator can realize the cancellation.  It is not a
+substitute for \eqref{eq:higgs-branch-local-counterterm-cohomology}.  In a
+four-supercharge theory a local K\"ahler \(D\)-term can be a genuine metric
+renormalization; if such a term is imported into the eight-supercharge Higgs
+branch argument, the proof has silently changed the theory.
+\end{construction}
+
 \begin{construction}[Rank-one background-field derivation target]
 \label{constr:higgs-branch-background-field-derivation-target}
 For an explicit perturbative calculation, fix a four-dimensional
@@ -1501,7 +1542,9 @@ They require their own regulator and infrared analysis.  The metric-protection
 claim never follows from recycling the four-dimensional \(A_\mu\) row.
 \end{example}
 
-After the Ward identity or an explicit evaluation of
+After the local cohomology statement
+\eqref{eq:higgs-branch-local-counterterm-cohomology}, the corresponding Ward
+identity, or an explicit evaluation of
 \eqref{eq:higgs-branch-background-field-trace-log} has paired these operators,
 one may record the residual long-multiplet balance as a quick diagnostic.  In a
 four-dimensional constant-mass patch the signed component balance is
