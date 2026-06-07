@@ -113,9 +113,11 @@ Current checks:
   the \(n=2\) consistent-descent homotopy coefficients \(1\) and
   \(1/2\), the Abelian descent coefficient, invariance of the fully
   symmetric Cartan cubic anomaly coefficient under Abelianized cubic
-  counterterm shifts, the Abelianized Bardeen--Zumino factor turning the
-  consistent coefficient \(C\) into the covariant coefficient \(3C\),
-  one-generation Standard Model hypercharge sums, and
+  counterterm shifts, the source-Ward contact-term polarization showing that
+  individual current contacts move under local counterterms while the
+  completely symmetric cubic coordinate is invariant, the Abelianized
+  Bardeen--Zumino factor turning the consistent coefficient \(C\) into the
+  covariant coefficient \(3C\), one-generation Standard Model hypercharge sums, and
   \(SU(N)\) fundamental/antifundamental/adjoint cubic-anomaly bookkeeping.
 - `adler_bardeen_nonrenormalization_checks.py`: exact rational checks for the
   Adler--Bardeen theorem-boundary section, including projection of local

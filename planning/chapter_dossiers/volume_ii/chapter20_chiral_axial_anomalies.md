@@ -265,7 +265,11 @@
   counterterm test: a counterterm
   \(H_{ij,k}A^iA^jF^k/2\), \(H_{ij,k}=-H_{ji,k}\), changes
   \(C_{i;jk}\lambda^iF^jF^k\) only by a tensor whose complete
-  symmetrization over \(i,j,k\) vanishes.
+  symmetrization over \(i,j,k\) vanishes.  The 2026-06-07 source-Ward
+  continuation differentiates the consistent anomaly with respect to two
+  background sources: a single current contact \(D_{i;jk}=2C_{i;jk}\) remains
+  counterterm-dependent, while the fully polarized coordinate
+  \((D_{i;jk}+D_{j;ik}+D_{k;ij})/6\) recovers the invariant cubic class.
 - `calculation-checks/anomaly_matching_wzw_checks.py` also checks the finite
   Abelianized Bardeen-counterterm algebra used here: shifts of the local
   anomaly representative leave the completely symmetric descent coefficient
@@ -362,6 +366,7 @@
 | \(W_X^{\mathrm{bulk}}\) | local five-dimensional Chern--Simons response whose boundary variation cancels the consistent anomaly |
 | \(\mathcal B(M)\) | background-field groupoid used to formulate finite anomaly-line transport |
 | \(C_\Lambda(g;B)\) | finite-regulator additive coordinate of anomaly-line transport under \(B\mapsto B^g\) |
+| \(C_{i;jk},D_{i;jk},C_{(ijk)}\) | Abelianized consistent anomaly coefficient, its source-Ward contact derivative, and the counterterm-invariant polarized cubic coordinate |
 | \(R_{\Lambda\to\Lambda'}\) | Wilsonian shell pushforward map between finite-regulator sections of the anomaly line |
 | \(d^{abc}\) | symmetric cubic gauge-anomaly tensor |
 | \(J_{\mathrm{cons}}\) | consistent current, \(\delta W/\delta A\) |
@@ -2120,3 +2125,12 @@
   anomaly calculation itself.  The companion now rejects a flipped
   \(\gamma_5\) orientation and the four-dimensional two-plane shortcut for the
   two-dimensional Dirac anomaly trace.
+- 2026-06-07 issue #844/#696 source-Ward architecture pass: added
+  `prop:source-ward-test-cubic-anomaly` after the cubic gauge-obstruction
+  proof.  The text now reads the Abelianized descent coefficient as a
+  differentiated background-source Ward identity for the consistent
+  three-current contact term, then shows that local cubic counterterms move
+  individual current contacts while leaving the fully polarized cubic
+  coordinate invariant.  The anomaly-polynomial companion checks this finite
+  contact-term polarization and rejects a single-current contact as a class
+  coordinate.

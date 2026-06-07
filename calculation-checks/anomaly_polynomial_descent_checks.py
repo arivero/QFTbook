@@ -18,6 +18,9 @@ inflow sections:
 * the n=2 consistent-descent homotopy coefficients 1 and 1/2;
 * Abelianized cubic counterterms preserve the completely symmetric Cartan
   coefficient of the anomaly;
+* source derivatives of the Abelianized consistent Ward identity recover the
+  triple-current contact term, while complete polarization removes local
+  counterterm reshuffling;
 * the Abelianized Bardeen-Zumino improvement changes the Ward coefficient
   from the consistent value C to the covariant value 3C;
 * the U(1)^3, mixed gravitational-U(1), and mixed nonabelian-U(1) sums for
@@ -28,15 +31,18 @@ Evidence contract.
 Target claims: the anomaly-polynomial and descent coefficient subclaims in
 the Chapter 20 anomaly-polynomial section, including the index density,
 effective-action inflow conversion, Chern-Weil transgression, consistent and
-covariant coefficient relation, and Standard Model anomaly sums.
+covariant coefficient relation, source-Ward contact polarization, and Standard
+Model anomaly sums.
 Independent construction: exact rational expansion of the A-hat and Chern
 character terms, separate component/wedge normalization arithmetic, universal
-Chern-Simons coefficient sums, and explicit finite charge traces.
+Chern-Simons coefficient sums, finite source-derivative polarization of the
+consistent Ward identity, and explicit finite charge traces.
 Imported assumptions: the anti-Hermitian Chern-Weil convention, the chapter's
 trace and epsilon normalizations, one-generation Standard Model charge
 assignment, and the stated representation convention for SU(N).
 Negative controls: Abelianized counterterm shifts are tested to leave only the
-complete symmetric cubic coordinate invariant, and adjoint/fundamental/
+complete symmetric cubic coordinate invariant, a single-current Ward contact
+term is tested to remain counterterm-dependent, and adjoint/fundamental/
 antifundamental SU(N) bookkeeping is checked in separate representations.
 Scope boundary: a pass checks finite descent and coefficient arithmetic; it
 does not prove the local BRST cohomology classification, the analytic index
@@ -204,6 +210,94 @@ def check_abelian_counterterm_symmetric_cubic_invariance() -> None:
                 )
 
 
+def check_source_ward_contact_polarization() -> None:
+    """The physical source Ward contact term sees only the polarized class."""
+
+    raw_h = {
+        (0, 1, 2): Fraction(-5, 7),
+        (0, 2, 1): Fraction(11, 5),
+        (1, 2, 0): Fraction(13, 6),
+        (1, 3, 2): Fraction(-17, 11),
+        (2, 3, 1): Fraction(19, 13),
+    }
+
+    def h(i: int, j: int, k: int) -> Fraction:
+        if i == j:
+            return Fraction(0)
+        if (i, j, k) in raw_h:
+            return raw_h[(i, j, k)]
+        if (j, i, k) in raw_h:
+            return -raw_h[(j, i, k)]
+        return Fraction(0)
+
+    def symmetric_class(i: int, j: int, k: int) -> Fraction:
+        # A deterministic symmetric cubic coordinate on the Cartan source legs.
+        return Fraction(
+            (i + 1) * (j + 1)
+            + (j + 1) * (k + 1)
+            + (k + 1) * (i + 1),
+            37,
+        )
+
+    def delta_c(i: int, j: int, k: int) -> Fraction:
+        return -Fraction(1, 2) * (h(i, j, k) + h(i, k, j))
+
+    def consistent_coefficient(i: int, j: int, k: int) -> Fraction:
+        return symmetric_class(i, j, k) + delta_c(i, j, k)
+
+    def ward_contact(i: int, j: int, k: int) -> Fraction:
+        # Differentiating C_{i;jk} lambda^i F^j F^k with respect to two
+        # source one-forms gives two equal curvature orderings.
+        return 2 * consistent_coefficient(i, j, k)
+
+    def polarized_from_ward_contacts(i: int, j: int, k: int) -> Fraction:
+        return (
+            ward_contact(i, j, k)
+            + ward_contact(j, i, k)
+            + ward_contact(k, i, j)
+        ) / 6
+
+    for i in range(4):
+        for j in range(4):
+            for k in range(4):
+                assert_equal(
+                    f"consistent coefficient symmetric in source curvatures {i}{j}{k}",
+                    consistent_coefficient(i, j, k),
+                    consistent_coefficient(i, k, j),
+                )
+                assert_equal(
+                    f"polarized source Ward contact recovers cubic class {i}{j}{k}",
+                    polarized_from_ward_contacts(i, j, k),
+                    symmetric_class(i, j, k),
+                )
+
+    single_contact_shift = ward_contact(0, 1, 2) - 2 * symmetric_class(0, 1, 2)
+    assert_equal(
+        "single current Ward contact changes under a local cubic counterterm",
+        single_contact_shift,
+        Fraction(-52, 35),
+    )
+
+    def exact_ward_contact(i: int, j: int, k: int) -> Fraction:
+        return 2 * delta_c(i, j, k)
+
+    exact_polarized = (
+        exact_ward_contact(0, 1, 2)
+        + exact_ward_contact(1, 0, 2)
+        + exact_ward_contact(2, 0, 1)
+    ) / 6
+    assert_equal(
+        "counterterm-only source Ward contacts have zero polarized cubic class",
+        exact_polarized,
+        Fraction(0),
+    )
+    assert_equal(
+        "counterterm-only single Ward contact is not a class coordinate",
+        exact_ward_contact(0, 1, 2),
+        Fraction(-52, 35),
+    )
+
+
 def check_abelian_bardeen_zumino_factor() -> None:
     # On a one-generator commuting subspace, I_6=C F^3 has
     # I_5^(0)=C A F^2 and I_4^(1)=C lambda F^2.  The Bardeen-Zumino
@@ -262,6 +356,7 @@ def main() -> None:
     check_chern_weil_transgression_coefficients()
     check_consistent_descent_coefficients()
     check_abelian_counterterm_symmetric_cubic_invariance()
+    check_source_ward_contact_polarization()
     check_abelian_bardeen_zumino_factor()
     check_standard_model_hypercharge_sums()
     check_su_n_bookkeeping()

@@ -1551,6 +1551,95 @@ all-purpose nonperturbative existence theorem; it is the perturbative BRST
 consistency reduction in a specified gauge-fixed regularized framework.
 \end{proof}
 
+\begin{proposition}[Source Ward test for the cubic anomaly class]
+\label{prop:source-ward-test-cubic-anomaly}
+Restrict the background to a maximal-torus chart
+\(A=A^iH_i\), \(F^i=\dd A^i\), on a closed spacetime or with compactly
+supported sources.  Suppose the consistent local anomaly representative in
+this chart is
+\begin{equation}
+  \delta_{\lambda_i}W[A]
+  =
+  \int_M C_{i;jk}\,\lambda^i F^jF^k,
+  \qquad C_{i;jk}=C_{i;kj}.
+  \label{eq:cartan-source-anomaly-representative}
+\end{equation}
+Let \(a^j,b^k\) be compactly supported source one-forms and set
+\(A=s\,a^jH_j+t\,b^kH_k\).  The corresponding second source derivative of
+the anomalous Ward identity is
+\begin{equation}
+  \left.
+  \frac{\partial^2}{\partial s\,\partial t}
+  \delta_{\lambda_i}W[s\,a^jH_j+t\,b^kH_k]
+  \right|_{s=t=0}
+  =
+  2C_{i;jk}\int_M \lambda^i\,\dd a^j\,\dd b^k .
+  \label{eq:source-ward-cubic-contact-test}
+\end{equation}
+Equivalently, differentiating the generating functional with respect to
+three background sources gives the divergence/contact part of the consistent
+three-current correlator.  A local cubic counterterm may change the individual
+coefficient \(C_{i;jk}\), hence it may move this contact term among the three
+currents.  The completely polarized coordinate
+\begin{equation}
+  C_{(ijk)}
+  =
+  \frac13\bigl(C_{i;jk}+C_{j;ik}+C_{k;ij}\bigr)
+  =
+  \frac16\bigl(
+    D_{i;jk}+D_{j;ik}+D_{k;ij}
+  \bigr),
+  \qquad
+  D_{i;jk}:=2C_{i;jk},
+  \label{eq:source-ward-polarized-cubic-coordinate}
+\end{equation}
+is unchanged by such counterterms and equals the Cartan restriction of the
+symmetric cubic tensor in
+\eqref{eq:gauge-anomaly-cancellation}.  Thus a nonzero
+\(C_{(ijk)}\) is the observable source-Ward obstruction carried by the cubic
+class.  For a dynamical gauge symmetry it obstructs the Slavnov--Taylor
+identity.  For a background global symmetry it is the local contact-term datum
+that must be reproduced by the infrared theory.
+\end{proposition}
+
+\begin{proof}
+Equation~\eqref{eq:source-ward-cubic-contact-test} follows by differentiating
+\eqref{eq:cartan-source-anomaly-representative}.  Since the two curvatures
+are two-forms, they commute under the wedge product, and
+\[
+  \partial_s\partial_t(F^jF^k)\big|_{0}
+  =
+  \dd a^j\,\dd b^k+\dd b^k\,\dd a^j
+  =
+  2\,\dd a^j\,\dd b^k .
+\]
+The equality with the three-current Ward contact term is the source
+definition of renormalized current insertions: source derivatives of \(W[A]\)
+produce connected current correlators, while the gauge variation contracts one
+leg with \(D_\mu\lambda\) and, after integration by parts, records the
+divergence and its contact terms.
+
+The counterterm calculation in the proof of
+Proposition~\ref{prop:cubic-gauge-anomaly-obstruction} gives
+\[
+  \Delta C_{i;jk}
+  =
+  -\frac12\bigl(H_{ij,k}+H_{ik,j}\bigr),
+  \qquad H_{ij,k}=-H_{ji,k}.
+\]
+Adding the three cyclic choices of the current whose Ward identity is taken
+gives
+\[
+  \Delta C_{i;jk}+\Delta C_{j;ik}+\Delta C_{k;ij}=0,
+\]
+because every term appears once with each sign.  Hence
+\(C_{(ijk)}\) is counterterm invariant.  The Cartan-restriction argument in
+the previous proof identifies this invariant polarized coordinate with the
+restriction of the invariant cubic polynomial
+\(\operatorname{tr}_R(\mathsf F^3)\).  Therefore it is the same local
+BRST class, read as a Ward identity for background-source correlators.
+\end{proof}
+
 \section{Consistency Condition and Descent}
 
 The anomaly of a gauge symmetry is constrained before any coefficient is
