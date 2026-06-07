@@ -62,6 +62,10 @@ Target claims:
   reference residuals are amplified by the target/reference integral ratio,
   and source-fluctuation or physical-projection data not included in the
   retained integrals remain separate residuals.
+- `ca:instanton-finite-determinant-scheme-transport`: a finite one-loop
+  determinant constant transports between determinant schemes only together
+  with the coupling/action conversion, running bosonic zero-mode power,
+  orientation measure, source-frame determinant, and physical projection.
 - `ca:instanton-observable-handoff-ledger`: the assembled instanton channel
   must still be mapped to a named physical observable; hard source
   coefficients, theta curvatures, U(1)_A susceptibility kernels, and real-time
@@ -131,6 +135,7 @@ Independent construction:
   finite Gaussian source-quotient covariance identities,
   Wick-paired first source cumulants from cubic normal-mode interactions,
   multiplicative hard-amplitude assembly bounds on signed windows,
+  finite determinant-scheme transport factors,
   finite observable-handoff comparisons for theta, U(1)_A, and real-time
   axial channels,
   pole-window extraction, mixed-source matrix amputation,
@@ -222,7 +227,9 @@ Negative controls:
   determinant-only assembled amplitude, signed-window relative error control
   without a noncancellation margin, a reference calibration with omitted
   source-fluctuation or physical-projection transport, a rank-lost reference
-  channel used as a determinant normalization, a
+  channel used as a determinant normalization, a finite determinant constant
+  transported without the running zero-mode power, source determinant,
+  orientation measure, or physical projection, a
   hard source coefficient used as a theta susceptibility, a dilute
   topological susceptibility used as a real-time rate, a dilute instanton
   curvature substituted for Witten-Veneziano curvature without a comparison
@@ -1669,6 +1676,160 @@ def check_hard_reference_channel_calibration() -> None:
         abs(reference_residual * b_target / b_cancel)
         > 50 * abs(reference_residual * b_target / b_ref),
         True,
+    )
+
+
+def check_finite_determinant_scheme_transport() -> None:
+    n_colors = 3
+    x_scheme = Fraction(7, 5)
+    x_prime = Fraction(9, 4)
+    gamma_scheme = x_scheme ** (2 * n_colors)
+    gamma_prime = x_prime ** (2 * n_colors)
+
+    determinant_constant = Fraction(13, 17)
+    action_conversion = Fraction(5, 4)
+    orientation_conversion = Fraction(7, 9)
+    physical_projection_conversion = Fraction(6, 5)
+    source_frame_right: Matrix2 = (
+        (Fraction(2), Fraction(0)),
+        (Fraction(0), Fraction(3, 5)),
+    )
+    source_frame_left: Matrix2 = (
+        (Fraction(1, 2), Fraction(0)),
+        (Fraction(0), Fraction(5, 6)),
+    )
+    source_conversion = det2(source_frame_right) * det2(source_frame_left)
+    assert_equal("hard source-frame determinant conversion", source_conversion, Fraction(1, 2))
+
+    leading_window = Fraction(19, 23)
+    scheme_amplitude = determinant_constant * gamma_scheme * leading_window
+    transported_constant = (
+        determinant_constant
+        * action_conversion
+        * gamma_scheme
+        / gamma_prime
+        / (orientation_conversion * source_conversion * physical_projection_conversion)
+    )
+    transported_amplitude = (
+        transported_constant
+        * gamma_prime
+        / action_conversion
+        * orientation_conversion
+        * source_conversion
+        * physical_projection_conversion
+        * leading_window
+    )
+    assert_equal(
+        "finite determinant scheme transport preserves leading amplitude",
+        transported_amplitude,
+        scheme_amplitude,
+    )
+
+    constant_only_transport = (
+        determinant_constant
+        * gamma_prime
+        / action_conversion
+        * orientation_conversion
+        * source_conversion
+        * physical_projection_conversion
+        * leading_window
+    )
+    omitted_gamma_ratio = (
+        determinant_constant
+        * action_conversion
+        / (orientation_conversion * source_conversion * physical_projection_conversion)
+        * gamma_prime
+        / action_conversion
+        * orientation_conversion
+        * source_conversion
+        * physical_projection_conversion
+        * leading_window
+    )
+    omitted_source_conversion = (
+        determinant_constant
+        * action_conversion
+        * gamma_scheme
+        / gamma_prime
+        / (orientation_conversion * physical_projection_conversion)
+        * gamma_prime
+        / action_conversion
+        * orientation_conversion
+        * source_conversion
+        * physical_projection_conversion
+        * leading_window
+    )
+    omitted_projection_conversion = (
+        determinant_constant
+        * action_conversion
+        * gamma_scheme
+        / gamma_prime
+        / (orientation_conversion * source_conversion)
+        * gamma_prime
+        / action_conversion
+        * orientation_conversion
+        * source_conversion
+        * physical_projection_conversion
+        * leading_window
+    )
+
+    assert_not_equal(
+        "transporting finite determinant constant alone changes the amplitude",
+        constant_only_transport,
+        scheme_amplitude,
+    )
+    assert_not_equal(
+        "omitting running zero-mode power changes scheme transport",
+        omitted_gamma_ratio,
+        scheme_amplitude,
+    )
+    assert_not_equal(
+        "omitting source determinant conversion changes scheme transport",
+        omitted_source_conversion,
+        scheme_amplitude,
+    )
+    assert_not_equal(
+        "omitting physical projection conversion changes scheme transport",
+        omitted_projection_conversion,
+        scheme_amplitude,
+    )
+
+    declared_errors = [
+        Fraction(1, 20),
+        Fraction(1, 25),
+        Fraction(1, 30),
+        Fraction(1, 40),
+        Fraction(1, 50),
+        Fraction(1, 60),
+    ]
+    actual_errors = [
+        Fraction(1, 40),
+        -Fraction(1, 50),
+        Fraction(1, 90),
+        -Fraction(1, 120),
+        Fraction(1, 125),
+        -Fraction(1, 180),
+    ]
+    declared_multiplier = product([1 + error for error in declared_errors]) - 1
+    actual_multiplier = product([1 + error for error in actual_errors]) - 1
+    assert_leq(
+        "finite determinant scheme residual product bound",
+        abs(actual_multiplier * scheme_amplitude),
+        declared_multiplier * abs(scheme_amplitude),
+    )
+
+    underbudget_without_bridge = declared_multiplier * abs(scheme_amplitude)
+    bridge_residual = underbudget_without_bridge + Fraction(1, 70)
+    physical_difference = actual_multiplier * scheme_amplitude + bridge_residual
+    assert_equal(
+        "scheme transport bound needs bridge residual",
+        abs(physical_difference)
+        <= underbudget_without_bridge + bridge_residual,
+        True,
+    )
+    assert_equal(
+        "dropping bridge residual can underbudget scheme transport",
+        abs(physical_difference) <= underbudget_without_bridge,
+        False,
     )
 
 
@@ -3282,6 +3443,7 @@ def main() -> None:
     check_first_source_cumulant_from_normal_modes()
     check_hard_amplitude_assembly_bound()
     check_hard_reference_channel_calibration()
+    check_finite_determinant_scheme_transport()
     check_observable_handoff_map()
     check_source_kernel_physical_projection_bridge()
     check_pole_normalized_four_source_matrix_extraction()

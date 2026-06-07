@@ -1903,6 +1903,102 @@ kernel still reaches a physical observable only through the projection bridge
 below.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Finite determinant scheme transport]
+\label{ca:instanton-finite-determinant-scheme-transport}
+The finite one-loop determinant constant is not an invariant number by
+itself.  It is a coordinate in a determinant scheme together with a coupling
+coordinate, a zero-mode normalization, an orientation measure, a source
+frame, and a physical projection.  Fix a hard channel and compare two
+descriptions \({\mathcal S}\) and \({\mathcal S}'\) at the same hard scale
+\(Q\).  Write
+\[
+  X_{\mathcal S}(Q)=\frac{8\pi^2}{g_{\mathcal S}^2(Q)},
+  \qquad
+  \Gamma_{\mathcal S}(Q)=X_{\mathcal S}(Q)^{2N_c}.
+\]
+Suppose the same retained leading source window is described by finite
+conversion factors
+\[
+  \ee^{-X_{{\mathcal S}'}}=\lambda_{\rm act}^{-1}\ee^{-X_{\mathcal S}},
+  \qquad
+  \dd\Omega_{{\mathcal S}'}=\lambda_{\Omega}\dd\Omega_{\mathcal S},
+\]
+\[
+  \det B_R^{{\mathcal S}'}\det B_L^{{\mathcal S}'}
+  =
+  \lambda_{\rm src}\det B_R^{\mathcal S}\det B_L^{\mathcal S},
+  \qquad
+  \mathfrak L_{\rm phys}^{{\mathcal S}'}
+  =
+  \lambda_{\rm phys}\mathfrak L_{\rm phys}^{\mathcal S}.
+\]
+Here \(\lambda_{\rm src}\) is the determinant of the finite source-frame
+change seen by the two chiral zero-mode blocks; in a larger operator family it
+is replaced by the corresponding source/projection matrix acting on the
+retained coefficient vector.  Equality of the same leading physical amplitude
+then requires
+\begin{equation}
+  C_{{\mathcal S}'}
+  \Gamma_{{\mathcal S}'}(Q)
+  \lambda_{\rm act}^{-1}
+  \lambda_{\Omega}
+  \lambda_{\rm src}
+  \lambda_{\rm phys}
+  =
+  C_{\mathcal S}\Gamma_{\mathcal S}(Q),
+  \label{eq:instanton-finite-determinant-scheme-transport}
+\end{equation}
+or
+\begin{equation}
+  C_{{\mathcal S}'}
+  =
+  C_{\mathcal S}\,
+  \lambda_{\rm act}
+  \frac{\Gamma_{\mathcal S}(Q)}{\Gamma_{{\mathcal S}'}(Q)}
+  \bigl(
+    \lambda_{\Omega}\lambda_{\rm src}\lambda_{\rm phys}
+  \bigr)^{-1}.
+  \label{eq:instanton-finite-determinant-constant-transform}
+\end{equation}
+If only the coupling coordinate changes and
+\(X_{{\mathcal S}'}=X_{\mathcal S}+\kappa+O(g^2)\), then
+\(\lambda_{\rm act}=\ee^\kappa+O(g^2)\) and
+\(C_{{\mathcal S}'}=\ee^\kappa C_{\mathcal S}(1+O(g^2))\) at one-loop
+accuracy.  The exact finite-coordinate comparison, however, keeps the
+\(\Gamma_{\mathcal S}/\Gamma_{{\mathcal S}'}\) factor in
+\eqref{eq:instanton-finite-determinant-constant-transform}.  This is why a
+quoted Pauli--Villars or subtraction-scheme constant cannot be moved into a
+hard amplitude unless the coupling coordinate, bosonic zero-mode power,
+orientation normalization, source derivatives, and projection convention have
+also been moved.
+
+With imperfect transport, write every retained conversion factor as its
+declared value times \(1+\delta_y\), with
+\(|\delta_y|\le e_y<1\) for
+\[
+  y\in\{\Gamma,{\rm act},\Omega,{\rm src},{\rm phys},{\rm shape}\}.
+\]
+Then the same leading-window kernel has the multiplicative conversion
+residual
+\begin{equation}
+  \epsilon_{\rm sch}
+  =
+  \prod_y(1+e_y)-1,
+  \qquad
+  |\Delta A_{\rm sch}|
+  \le
+  |C_{\mathcal S}\Gamma_{\mathcal S}B_{\mathcal C}|\,
+  \epsilon_{\rm sch}
+  +R_{\rm bridge}.
+  \label{eq:instanton-finite-determinant-scheme-residual}
+\end{equation}
+The bridge term contains source-fluctuation, endpoint, sector, and physical
+projection mismatches not represented by the scalar conversion factors.  Thus
+scheme transport is still an amplitude calculation: moving only the
+determinant constant, only the running coupling, or only the source frame
+changes the QFT coordinate being compared.
+\end{controlledapproximation}
+
 This assembly formula is the point at which the calculation becomes a
 physical amplitude.  Quoting the BPST density tests only the logarithmic
 fluctuation normalization.  Quoting the zero-mode determinant tests only chirality and

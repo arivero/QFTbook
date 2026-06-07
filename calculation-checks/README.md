@@ -862,6 +862,9 @@ Current checks:
   control, the hard reference-channel calibration which fixes only a
   same-frame finite determinant constant and propagates reference residuals by
   the target/reference integral ratio,
+  the finite determinant scheme-transport check tying the determinant
+  constant to the coupling/action conversion, running zero-mode power,
+  source-frame determinant, orientation measure, and physical projection,
   the cross-chapter hard-scale benchmark regression that keeps
   \(\Gamma_{\rm coll}(Q)\) in both Ch20 and Ch20D,
   the observable-map distinction among hard source coefficients, theta

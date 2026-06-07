@@ -157,6 +157,12 @@
   determinant calibration for the assembled hard amplitude; one physical
   reference channel fixes only the same-frame finite determinant constant, with
   reference residuals amplified by the target/reference integral ratio.
+- `ca:instanton-finite-determinant-scheme-transport`: finite determinant
+  scheme-transport block showing that a one-loop determinant constant moves
+  between schemes only together with the coupling/action conversion, running
+  bosonic zero-mode power, orientation measure, source-frame determinant, and
+  physical projection; it also gives the multiplicative conversion residual
+  bound.
 - `sec:instanton-source-kernel-physical-projection`: projection bridge from an
   assembled Euclidean instanton source kernel to a physical pole, spectral,
   OPE, or inclusive observable coordinate.
@@ -281,6 +287,11 @@
   quotients, zero-mode rank, endpoint tails, and pole/spectral/OPE projection
   data remain either inside the transported \(B_\alpha\) integral or in the
   residual.
+- The finite determinant scheme-transport block makes the normalization
+  coordinate explicit.  A Pauli--Villars or subtraction-scheme constant cannot
+  be copied into a hard amplitude unless the coupling coordinate, collective
+  zero-mode power, orientation convention, source-frame determinant, and
+  physical projection are transported with it.
 - The physical projection bridge opens the last compressed step between a
   Euclidean instanton source coefficient and a physical claim.  It separates
   stable-particle pole extraction, spectral-bin/discontinuity functionals,
@@ -389,6 +400,10 @@
   amplification by the target/reference ratio and negative controls for
   omitted source-fluctuation transport, omitted physical-projection transport,
   rank-lost references, and nearly canceled references,
+  verifies finite determinant scheme transport, including the action/coupling
+  conversion, running zero-mode power, source-frame determinant, orientation
+  measure, physical projection, multiplicative residual bound, and negative
+  controls for determinant-constant-only transport,
   verifies the observable-map distinction between hard source coefficients,
   dilute theta curvature, \(U(1)_A\)-odd zero-mode-zone kernels, real-time
   axial rates, and Witten--Veneziano curvature comparison budgets,
@@ -502,6 +517,13 @@
   projection data as transported integral data or residuals.  The companion
   check rejects calibrations that try to absorb those channel-dependent
   factors.
+- 2026-06-06 finite determinant scheme-transport pass: added
+  `ca:instanton-finite-determinant-scheme-transport` after the reference
+  calibration block.  This pass treats the finite determinant constant as an
+  amplitude-scheme coordinate tied to the coupling/action conversion, running
+  zero-mode power, orientation measure, source-frame determinant, and physical
+  projection.  The companion exact-rational check rejects transporting the
+  constant without those factors.
 - 2026-06-06 observable-map pass: added a physics bridge from the assembled
   instanton amplitude to QCD observables, explicitly separating hard source
   coefficients, theta curvature, \(U(1)_A\)-odd susceptibility kernels, and
