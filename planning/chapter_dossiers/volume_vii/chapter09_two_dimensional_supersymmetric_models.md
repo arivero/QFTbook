@@ -521,9 +521,10 @@ and
   twisted-`F` component bridge that converts this density to the real part of
   `Q log(M/mu)`.  The Fujikawa phase is tied to the same heat-kernel
   convention: `Tr_reg gamma_*=-Q k`, with the finite companion now computing
-  the same sign from a flux-carrying magnetic-torus Wilson-overlap kernel
-  rather than an assigned chiral dimension mismatch; the mass-rotation
-  generator `-gamma_*/2` gives the theta shift `theta -> theta+Q alpha`.
+  the same sign from a warning-clean flux-carrying magnetic-torus
+  Wilson-overlap kernel rather than an assigned chiral dimension mismatch;
+  the mass-rotation generator `-gamma_*/2` gives the theta shift
+  `theta -> theta+Q alpha`.
 - Derives the effective twisted-superpotential critical equation
   `prod_i (Q_i sigma/mu)^{Q_i}=exp(T)` and proves that all-positive charges
   give `sum_i Q_i` simple local Coulomb vacua.
@@ -579,8 +580,8 @@ and
     plus the Coulomb determinant/Fujikawa response cell checking the corrected
     Hermitian Dirac square, signed-log coefficient extraction across charge
     and mass-order reversals, paired nonzero fermion spin traces, a
-    flux-carrying magnetic-torus Wilson-overlap index, heat-kernel chiral trace,
-    and theta-shift Jacobian;
+    warning-clean flux-carrying magnetic-torus Wilson-overlap index,
+    heat-kernel chiral trace, and theta-shift Jacobian;
   - compact FI-theta/common-flux checks: `T=2 pi i tau=-2 pi r+i theta`
     gives the theta-periodic flux weight `q=exp(T)` while the nonperiodic
     `exp(tau)` shortcut fails; equal-charge flavor rotations preserve the

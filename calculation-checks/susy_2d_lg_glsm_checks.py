@@ -54,8 +54,8 @@ character-lattice filters with
 theta-period tests,
 phase-isometry lattice tests for chiral superpotential monomials,
 one-loop gamma-matrix Hermiticity tests, signed-log determinant-density
-coefficient extraction, flux-carrying magnetic-torus Wilson-overlap
-indices, heat-kernel Fujikawa traces, logarithm branch shifts, and
+coefficient extraction, warning-clean flux-carrying magnetic-torus
+Wilson-overlap indices, heat-kernel Fujikawa traces, logarithm branch shifts, and
 axial-monodromy ledgers,
 root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree filters, and
@@ -215,6 +215,7 @@ checks the finite gates those claims must pass.
 
 from __future__ import annotations
 
+import warnings
 from fractions import Fraction
 from math import exp, isclose, log, pi, prod, tan
 
@@ -223,6 +224,8 @@ import numpy as np
 
 from check_utils import assert_array_close
 from check_utils import assert_finite
+from check_utils import assert_finite_array
+from check_utils import finite_matmul
 from check_utils import assert_gt as assert_gt_bound
 from check_utils import assert_leq as assert_leq_bound
 
@@ -1449,8 +1452,17 @@ def check_coulomb_component_response_selects_log_sign() -> None:
                             * np.conj(uy[x_coord, (y_coord - 1) % lattice_size])
                         )
 
-        gamma_star_lattice = np.kron(np.eye(site_count), gamma_star_np)
-        hermitian_kernel = gamma_star_lattice @ kernel
+        gamma_star_lattice = assert_finite_array(
+            "finite Wilson gamma-star lattice",
+            np.kron(np.eye(site_count), gamma_star_np),
+            ndim=2,
+        )
+        kernel = assert_finite_array("finite Wilson kernel input", kernel, ndim=2)
+        hermitian_kernel = finite_matmul(
+            "finite Wilson Hermitian overlap kernel",
+            gamma_star_lattice,
+            kernel,
+        )
         assert_array_close(
             "finite Wilson kernel is Hermitian in magnetic flux",
             hermitian_kernel,
@@ -1458,6 +1470,11 @@ def check_coulomb_component_response_selects_log_sign() -> None:
             tol=1e-12,
         )
         return hermitian_kernel
+
+    with warnings.catch_warnings():
+        warnings.simplefilter("error", RuntimeWarning)
+        warning_clean_kernel = hermitian_wilson_kernel(4, 1)
+    assert_finite_array("warning-clean overlap kernel", warning_clean_kernel, ndim=2)
 
     def finite_flux_overlap_index(charge_value: int, flux_value: int, lattice_size: int = 8) -> int:
         signed_flux = charge_value * flux_value
