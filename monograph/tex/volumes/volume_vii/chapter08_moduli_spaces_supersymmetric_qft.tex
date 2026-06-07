@@ -870,9 +870,11 @@ fermion operator.  A complete calculation must keep the nonminimal
 \(D_B^\mu D_B^\nu\) term, the \(a_\mu\)-Goldstone mixing cancelled by the gauge
 condition, all seagulls in \({\mathcal V}_{mn}\), the ghost determinant, and
 the \(\xi\)-dependent cancellation before the limit of constant \(q_B\) is
-taken.  The same exercise in three or two dimensions has to be repeated after
-dimensional reduction, because gauge components, reduced vector scalars, and
-infrared/torsion data are different objects.
+taken.  It must also exhibit the supersymmetric heavy complex, or an equivalent
+Ward identity, that pairs the tangent-dependent bosonic and fermionic
+fluctuation vertices.  The same exercise in three or two dimensions has to be
+repeated after dimensional reduction, because gauge components, reduced vector
+scalars, and infrared/torsion data are different objects.
 \end{construction}
 
 \begin{example}[\(R_\xi\) determinant split in the rank-one Higgs patch]
@@ -1037,6 +1039,93 @@ seagull or auxiliary contact shifts \(Y_B\), or a Yukawa/connection term shifts
 fluctuation, vector scalar, heavy fermions, and auxiliary contacts must be
 organized into these matched \(X,Y\) pairs before the residual
 \(\Pi_{mn}^{\rm 1-loop}\) can be declared zero.
+\end{example}
+
+\begin{example}[Supercharge factorization of the heavy determinant]
+\label{ex:higgs-branch-supercharge-factorization}
+The previous checkpoint names the \(X,Y\) vertices that must be paired.  The
+mechanism that can produce the pairing is the off-shell supersymmetric heavy
+complex.  Work on one regulated massive block after the zero modes tangent to
+the branch have been separated.  In a supersymmetric background-field gauge,
+with auxiliary fields kept until the quadratic operator is assembled and with a
+regulator preserving the chosen supercharge, the paired nonzero operators have
+the form
+\begin{equation}
+  {\mathcal O}_B(s)
+  =
+  {\mathcal Q}(s)^\dagger{\mathcal Q}(s),
+  \qquad
+  {\mathcal O}_F(s)
+  =
+  {\mathcal Q}(s){\mathcal Q}(s)^\dagger .
+  \label{eq:higgs-branch-supercharge-factorized-operators}
+\end{equation}
+Here \(s\) is again a coordinate along the slow Higgs tangent, and the finite
+notation stands for the regulated elliptic heavy complex on the nonzero
+spectrum.  If
+\[
+  {\mathcal Q}(s)
+  =
+  {\mathcal Q}_0+s{\mathcal Q}_1+\frac{s^2}{2}{\mathcal Q}_2+O(s^3),
+\]
+then expansion of \eqref{eq:higgs-branch-supercharge-factorized-operators}
+generates
+\begin{equation}
+\begin{aligned}
+  X_B
+  &=
+  {\mathcal Q}_1^\dagger{\mathcal Q}_0
+  +
+  {\mathcal Q}_0^\dagger{\mathcal Q}_1,
+  &
+  Y_B
+  &=
+  {\mathcal Q}_2^\dagger{\mathcal Q}_0
+  +
+  2{\mathcal Q}_1^\dagger{\mathcal Q}_1
+  +
+  {\mathcal Q}_0^\dagger{\mathcal Q}_2,\\
+  X_F
+  &=
+  {\mathcal Q}_1{\mathcal Q}_0^\dagger
+  +
+  {\mathcal Q}_0{\mathcal Q}_1^\dagger,
+  &
+  Y_F
+  &=
+  {\mathcal Q}_2{\mathcal Q}_0^\dagger
+  +
+  2{\mathcal Q}_1{\mathcal Q}_1^\dagger
+  +
+  {\mathcal Q}_0{\mathcal Q}_2^\dagger .
+  \label{eq:higgs-branch-supercharge-factorized-vertices}
+\end{aligned}
+\end{equation}
+The middle terms \(2{\mathcal Q}_1^\dagger{\mathcal Q}_1\) and
+\(2{\mathcal Q}_1{\mathcal Q}_1^\dagger\) are contact terms forced by squaring
+the same first-order operator.  They are the finite-block model for the scalar
+seagulls and auxiliary/Yukawa contacts that disappear if one writes only the
+linear tangent vertices.
+
+On the paired nonzero spectrum the determinants agree:
+\begin{equation}
+  \frac12\,\frac{d^2}{ds^2}{\rm Tr}\log
+  ({\mathcal Q}^\dagger{\mathcal Q})
+  -
+  \frac12\,\frac{d^2}{ds^2}{\rm Tr}\log
+  ({\mathcal Q}{\mathcal Q}^\dagger)
+  =
+  0 .
+  \label{eq:higgs-branch-supercharge-factorized-supertrace}
+\end{equation}
+Thus the matched-vertex assertion in
+\eqref{eq:higgs-branch-mass-curvature-ward-pair} is a spectral pairing
+statement for the regulated heavy \(Q\)-complex, rather than a component count.
+The rank-one Higgs calculation still has to obtain \({\mathcal Q}(s)\) from the
+gauge-fixed Lagrangian and show that the chosen regulator acts on this paired
+complex.  A regulator or auxiliary elimination that changes the bosonic
+\(Y_B\) contact without the corresponding fermionic \(Y_F\) contact would change
+\(\Pi_{mn}^{\rm 1-loop}\).
 \end{example}
 
 After the Ward identity or an explicit evaluation of

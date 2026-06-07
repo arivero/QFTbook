@@ -104,6 +104,12 @@ later lower-dimensional examples, protected sectors, and localization.
   `eq:higgs-branch-mass-curvature-ward-pair`: determinant-level \(X,Y\) vertex
   pairing test for mass-curvature, Yukawa/connection, and auxiliary-contact
   contributions after the pure moving-frame part has been removed.
+- `ex:higgs-branch-supercharge-factorization`,
+  `eq:higgs-branch-supercharge-factorized-operators`,
+  `eq:higgs-branch-supercharge-factorized-vertices`,
+  `eq:higgs-branch-supercharge-factorized-supertrace`: off-shell heavy
+  \(Q\)-complex mechanism generating the paired second-variation vertices and
+  their determinant cancellation on the regulated nonzero spectrum.
 - `eq:higgs-branch-heavy-multiplet-balance-heuristic`: signed
   four-dimensional long-multiplet balance, retained only as a diagnostic for
   missing sectors after the Ward identity or trace-log calculation has supplied
@@ -239,8 +245,9 @@ later lower-dimensional examples, protected sectors, and localization.
   \(R_\xi\) longitudinal/Goldstone/ghost cancellation from generated operators,
   verifies the frame-connection seagull identity from operator conjugation,
   checks Ward-paired mass-curvature vertices with a mismatched-vertex negative
-  control, and rejects use of the four-dimensional gauge-field entry in
-  dimensionally reduced arguments,
+  control, checks supercharge-factorized heavy-block pairing with a
+  dropped-contact negative control, and rejects use of the four-dimensional
+  gauge-field entry in dimensionally reduced arguments,
   fixed-charge branch-EFT checks for global-form/Weyl charge labels, the
   supersymmetric chiral-branch Noether map and Routhian energy, transverse
   gap hierarchy, and the abstract large-\(\mu\) simultaneous-window scaling
@@ -320,3 +327,10 @@ local models.
   removed.  The companion now checks that matched bosonic and squared-fermion
   mass-curvature cells cancel only after statistical Ward pairing, while an
   equal-count but mismatched vertex assignment leaves a nonzero residual.
+- 2026-06-07 issue #850 supercharge-factorization pass: added the off-shell
+  heavy \(Q\)-complex mechanism
+  \(O_B=Q^\dagger Q\), \(O_F=QQ^\dagger\), including the generated
+  \(X,Y\) vertices and square-completion contacts.  The companion now verifies
+  that the bosonic and fermionic second trace-log variations pair spectrally
+  even when their vertex matrices differ, and that dropping the contact term
+  leaves a residual.

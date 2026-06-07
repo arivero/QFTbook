@@ -3000,8 +3000,9 @@ Current checks:
   longitudinal/Goldstone/ghost determinant cancellation from generated
   operators, verifies the frame-connection seagull/double-insertion identity
   from operator conjugation, checks Ward-paired mass-curvature vertices with a
-  mismatched-vertex negative control, and blocks reuse of the four-dimensional
-  gauge-field entry in reduced dimensions,
+  mismatched-vertex negative control, checks supercharge-factorized heavy-block
+  pairing with a dropped-contact negative control, and blocks reuse of the
+  four-dimensional gauge-field entry in reduced dimensions,
   fixed-charge branch-EFT checks for torus/global-form/Weyl charge labels,
   the supersymmetric chiral-branch Noether map, Routhian energy, transverse
   gap hierarchy, and large-\(\mu\) simultaneous-window scaling condition,

@@ -514,6 +514,7 @@ def check_higgs_branch_background_field_derivation_gate():
         "auxiliary_contacts",
         "frame_connection_seagull_identity",
         "mass_curvature_ward_pairing",
+        "supercharge_factorization",
         "gauge_parameter_cancellation",
         "dimension_reduction_audit",
     }
@@ -656,6 +657,7 @@ def check_higgs_branch_background_field_derivation_gate():
         "gauge_parameter_cancellation": "generated_from_R_xi_spectrum",
         "frame_connection_seagull_identity": "generated_from_operator_conjugation",
         "mass_curvature_ward_pairing": "matched_operator_vertices_required",
+        "supercharge_factorization": "off_shell_heavy_complex_required",
     }
     assert_equal(
         missing_slots(operator_blueprint),
@@ -727,6 +729,21 @@ def check_higgs_branch_background_field_derivation_gate():
         return [
             [left[row][column] - right[row][column] for column in range(len(left[0]))]
             for row in range(len(left))
+        ]
+
+    def matrix_add(left, right):
+        return [
+            [left[row][column] + right[row][column] for column in range(len(left[0]))]
+            for row in range(len(left))
+        ]
+
+    def scalar_multiply(scalar, matrix):
+        return [[scalar * entry for entry in row] for row in matrix]
+
+    def matrix_transpose(matrix):
+        return [
+            [matrix[row][column] for row in range(len(matrix))]
+            for column in range(len(matrix[0]))
         ]
 
     def matrix_trace(matrix):
@@ -821,12 +838,6 @@ def check_higgs_branch_background_field_derivation_gate():
             )
         )
 
-    def add_matrix(left, right):
-        return [
-            [left[row][column] + right[row][column] for column in range(len(left[0]))]
-            for row in range(len(left))
-        ]
-
     matched_linear_vertex = [
         [Fraction(1), Fraction(1, 2)],
         [Fraction(1, 2), Fraction(3)],
@@ -872,7 +883,7 @@ def check_higgs_branch_background_field_derivation_gate():
         "each heavy block may be nonzero before the Ward-paired supertrace",
     )
 
-    mismatched_fermion_linear = add_matrix(
+    mismatched_fermion_linear = matrix_add(
         matched_linear_vertex,
         [[Fraction(0), Fraction(0)], [Fraction(0), Fraction(1)]],
     )
@@ -894,6 +905,118 @@ def check_higgs_branch_background_field_derivation_gate():
         mismatched_pair_residual == 0,
         False,
         "equal component weights do not cancel mismatched mass-curvature vertices",
+    )
+
+    def supercharge_factorized_vertices(supercharge_0, supercharge_1, supercharge_2, side):
+        q0_transpose = matrix_transpose(supercharge_0)
+        q1_transpose = matrix_transpose(supercharge_1)
+        q2_transpose = matrix_transpose(supercharge_2)
+        if side == "boson":
+            return {
+                "operator_0": matrix_multiply(q0_transpose, supercharge_0),
+                "linear_vertex": matrix_add(
+                    matrix_multiply(q1_transpose, supercharge_0),
+                    matrix_multiply(q0_transpose, supercharge_1),
+                ),
+                "seagull_vertex": matrix_add(
+                    matrix_add(
+                        matrix_multiply(q2_transpose, supercharge_0),
+                        scalar_multiply(
+                            Fraction(2),
+                            matrix_multiply(q1_transpose, supercharge_1),
+                        ),
+                    ),
+                    matrix_multiply(q0_transpose, supercharge_2),
+                ),
+            }
+        if side == "fermion":
+            return {
+                "operator_0": matrix_multiply(supercharge_0, q0_transpose),
+                "linear_vertex": matrix_add(
+                    matrix_multiply(supercharge_1, q0_transpose),
+                    matrix_multiply(supercharge_0, q1_transpose),
+                ),
+                "seagull_vertex": matrix_add(
+                    matrix_add(
+                        matrix_multiply(supercharge_2, q0_transpose),
+                        scalar_multiply(
+                            Fraction(2),
+                            matrix_multiply(supercharge_1, q1_transpose),
+                        ),
+                    ),
+                    matrix_multiply(supercharge_0, q2_transpose),
+                ),
+            }
+        raise ValueError(f"unknown factorized side {side!r}")
+
+    supercharge_0 = diagonal_matrix([Fraction(2), Fraction(3)])
+    supercharge_1 = [
+        [Fraction(1), Fraction(1)],
+        [Fraction(2), Fraction(0)],
+    ]
+    supercharge_2 = [
+        [Fraction(0), Fraction(1)],
+        [Fraction(1), Fraction(2)],
+    ]
+    factorized_inverse = diagonal_matrix([Fraction(1, 4), Fraction(1, 9)])
+    factorized_boson = supercharge_factorized_vertices(
+        supercharge_0, supercharge_1, supercharge_2, "boson"
+    )
+    factorized_fermion = supercharge_factorized_vertices(
+        supercharge_0, supercharge_1, supercharge_2, "fermion"
+    )
+    assert_equal(
+        factorized_boson["operator_0"],
+        factorized_fermion["operator_0"],
+        "paired heavy block starts from the same massive operator in this basis",
+    )
+    assert_equal(
+        factorized_boson["linear_vertex"] == factorized_fermion["linear_vertex"],
+        False,
+        "factorized boson and fermion vertices need not match as matrices",
+    )
+    factorized_boson_cell = trace_log_vertex_residual(
+        factorized_inverse,
+        factorized_boson["linear_vertex"],
+        factorized_boson["seagull_vertex"],
+    )
+    factorized_fermion_cell = trace_log_vertex_residual(
+        factorized_inverse,
+        factorized_fermion["linear_vertex"],
+        factorized_fermion["seagull_vertex"],
+    )
+    assert_equal(
+        factorized_boson_cell,
+        factorized_fermion_cell,
+        "Q-adjoint factorization pairs the full second trace-log variation",
+    )
+    assert_equal(
+        Fraction(1, 2) * factorized_boson_cell
+        - Fraction(1, 2) * factorized_fermion_cell,
+        Fraction(0),
+        "supercharge-factorized heavy determinant cancels after statistics",
+    )
+
+    omitted_square_contact = matrix_subtract(
+        factorized_boson["seagull_vertex"],
+        scalar_multiply(
+            Fraction(2),
+            matrix_multiply(matrix_transpose(supercharge_1), supercharge_1),
+        ),
+    )
+    omitted_contact_residual = (
+        Fraction(1, 2)
+        * trace_log_vertex_residual(
+            factorized_inverse,
+            factorized_boson["linear_vertex"],
+            omitted_square_contact,
+        )
+        - Fraction(1, 2) * factorized_fermion_cell
+    )
+    assert_equal(
+        omitted_contact_residual == 0,
+        False,
+        "dropping the square-completion contact breaks the Ward-paired trace-log",
     )
 
     component_balance_4d = sum(old_component_ledger["component_weights"].values())
