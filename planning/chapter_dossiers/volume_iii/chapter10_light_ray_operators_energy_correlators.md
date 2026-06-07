@@ -15,11 +15,17 @@
   correlations, used for the stress-tensor-state one-point energy flux normal
   form and the \(t_2,t_4\) positivity inequalities.
 - `SRC-EXTERNAL-ANEC-MODULAR`: Faulkner--Leigh--Parrikar--Wang's
-  deformed-half-space modular Hamiltonian proof of ANEC, used as the theorem
-  boundary for the relative-entropy monotonicity derivation.
+  deformed-half-space modular Hamiltonian proof of ANEC, used as a
+  route-scoped theorem boundary requiring regulator independence, Araki
+  relative entropy, collar removal, and common-domain control.
 - `SRC-EXTERNAL-ANEC-CAUSALITY`: Hartman--Kundu--Tajdini's Lorentzian
-  causality proof of ANEC, used as the theorem boundary for the Regge
-  analyticity sign argument.
+  causality proof of ANEC, used as the route-scoped theorem boundary for the
+  interacting/no-higher-spin light-cone-OPE and Regge analyticity sign
+  argument.
+- `SRC-EXTERNAL-NULL-CUT-MODULAR`: Casini--Teste--Torroba's null-plane
+  modular Hamiltonian and half-sided modular-inclusion analysis, used as the
+  theorem boundary for the exact null-cut modular-flow formula and sign
+  convention.
 - `SRC-EXTERNAL-LIGHT-RAY-OPE`: Kologlu--Kravchuk--Simmons-Duffin--Zhiboedov,
   used as theorem boundary for the convergent light-ray OPE under Lorentzian
   CFT hypotheses.
@@ -62,11 +68,16 @@ The chapter establishes:
   homogeneity map \((\Delta,J)\mapsto(1-J,1-\Delta)\), and the convention
   check tying this map to the Euclidean conformal charge algebra and the
   separate radial real form used for Gram matrices;
-- the smeared ANEC quadratic form \(\mathcal A_n(\varphi)\), its Lorentzian
-  CFT hypotheses, and the modular/causal proof mechanisms that fix the sign;
-- the one-sided null-cut modular-variation formulas for a deformed half-space
-  and its complement, together with the entropy-variation squeeze whose
-  compatibility gives the full null-generator ANEC inequality;
+- the smeared ANEC quadratic form \(\mathcal A_n(\varphi)\), its route-scoped
+  modular and causality theorem boundaries, and the explicit state/domain and
+  regulator assumptions needed before the sign may be used;
+- the algebraic local-von-Neumann-algebra notation for null cuts, replacing
+  sharp-region density matrices and local von Neumann entropies by Tomita
+  modular generators and Araki relative entropy;
+- the Casini--Teste--Torroba null-cut full-modular-generator formula, together
+  with the half-sided-inclusion sign calculation whose derivative yields the
+  full null-generator ANEC sign when the theorem package supplies the needed
+  domain and differentiability data;
 - the ANEC-to-detector bridge: positivity for smooth transverse null-plane
   tests must be supplemented by conformal null-infinity limiting and bounded
   extension to \(C(S^{D-2})\) before it becomes a statewise angular detector
@@ -133,7 +144,9 @@ The chapter establishes:
 | \(\varphi\) | compactly supported nonnegative test function on \(N_n\) |
 | \(\mathcal A_n(\varphi)\) | transversely smeared ANEC quadratic form |
 | \(x^\pm=x^0\pm x^1\), \(y\) | light-cone and transverse coordinates used in the modular proof mechanism |
-| \(R_f\), \(K_f\) | null-cut domain of dependence and its vacuum modular Hamiltonian |
+| \(R_f\), \(\mathfrak M_f\) | null-cut domain of dependence and its local von Neumann algebra |
+| \(\omega_0\), \(\omega_\Psi\) | vacuum and vector states used in Araki relative entropy |
+| \(\widehat K_f\), \(\widehat K_f^{\rm hor}\) | full Tomita modular generator and its null-horizon quadratic-form representative |
 | \(t_2,t_4\) | parity-even four-dimensional stress-tensor three-point coordinates in conformal collider normalization |
 | \(a,c\) | four-dimensional trace-anomaly coefficients used in the \(\mathcal N=1\) supersymmetric collider specialization |
 | \(\mathcal V_2,\mathcal V_1,\mathcal V_0\) | helicity \(2,1,0\) subspaces of the symmetric traceless polarization space relative to a detector direction |
@@ -185,13 +198,22 @@ The chapter establishes:
    obtained by the separate Lorentzian-to-radial generator map used in the
    Gram-matrix chapters.  Existence of the corresponding operator is kept
    separate as a Lorentzian analyticity/growth hypothesis.
-8. ANEC positivity is recorded as a theorem boundary with explicit
-   Lorentzian CFT hypotheses, a transversely smeared quadratic form, and the
-   modular/causal proof mechanisms stated at the level needed for collider
-   applications.  The modular route displays the region/complement
-   relative-entropy derivative inequalities and the common entropy-variation
-   squeeze, so the sign of the full null integral is not hidden in the phrase
-   "entropy variations cancel."
+8. ANEC positivity is recorded as a route-scoped theorem boundary with a
+   transversely smeared quadratic form.  The modular route requires Araki
+   relative entropy, regulator independence, null-cut shape derivatives,
+   collar removal, and common-domain control; the causality route requires the
+   interacting/no-higher-spin light-cone-OPE projection, convergence or
+   asymptotic control, Lorentzian analyticity, order-of-limits, and infrared
+   assumptions.  Generic analyticity language alone is not recorded as a
+   theorem.
+8a. The null-cut modular-flow formula is a separate
+    Casini--Teste--Torroba theorem boundary.  The chapter uses sharp local
+    von Neumann algebras, full Tomita modular generators, and Araki relative
+    entropy rather than finite-factor density-matrix formulas, regional
+    traces, or local von Neumann entropies.  The displayed sign calculation is
+    a full-modular half-sided-inclusion calculation; the finite-factor entropy
+    squeeze is retained only as a split-regulated mnemonic with its missing
+    assumptions listed.
 9. ANEC positivity for smooth transverse tests is not by itself a Borel
    detector-bin construction.  The chapter now requires the null-infinity
    limiting map and a bounded positive extension from smooth angular tests to
@@ -306,9 +328,11 @@ The chapter establishes:
   the \(\mathcal N=1\) supersymmetric \(a/c\) specialization and endpoint
   multiplet checks, adversarial controls showing that average-energy
   normalization and any two-helicity shortcut miss negative-flux polarizations,
-  the finite arithmetic for the light-transform homogeneity map, the null-cut
-  modular ANEC sign bookkeeping with a one-sided-cut counterexample, and the
-  transverse homogeneity ledger for light-ray OPE coefficient distributions.
+  the finite arithmetic for the light-transform homogeneity map, the
+  route-scoped ANEC/null-cut full-modular-generator sign bookkeeping with
+  one-sided-cut and unregulated sharp-density-matrix negative controls, and
+  the transverse homogeneity ledger for light-ray OPE coefficient
+  distributions.
 - The conformal-algebra sign convention behind the light transform is checked
   by `calculation-checks/conformal_light_transform_algebra_checks.py`, which
   verifies the Euclidean conformal Killing vector bracket table, the
@@ -333,9 +357,17 @@ The chapter establishes:
   adversarial finite controls for the two common shortcuts in this section:
   treating the fixed total energy as positivity, and checking only two of the
   three helicity sectors.  The pass also records the companion's imported
-  physics inputs: ANEC, the null-infinity/bounded-extension detector bridge,
-  the Wightman/Ward derivation of the \(t_2,t_4\) normal form, and the
-  \(\mathcal N=1\) supercurrent Ward identity.
+  physics inputs: route-scoped ANEC, the null-infinity/bounded-extension
+  detector bridge, the Wightman/Ward derivation of the \(t_2,t_4\) normal
+  form, and the \(\mathcal N=1\) supercurrent Ward identity.
+- 2026-06-06 issue #519 ANEC theorem-boundary repair: addressed a review
+  finding that the previous ANEC section overstated FLPW/HKT and used
+  sharp-region density-matrix language inconsistent with the AQFT chapters.
+  The chapter now separates route-scoped ANEC inputs, the
+  Casini--Teste--Torroba null-cut modular-flow theorem boundary, algebraic
+  local-von-Neumann-algebra notation, and the split-regulated status of the
+  entropy-squeeze mnemonic.  The conformal-collider companion rejects both
+  one-sided null-cut and unregulated sharp-density-matrix shortcuts.
 - 2026-06-02 anti-wrapper follow-up: demoted the separate
   Hofman--Maldacena-inequalities proposition/proof shell.  The substantive
   result is the preceding spectral diagonalization; the inequalities are now

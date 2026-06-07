@@ -1259,10 +1259,11 @@ Current checks:
   \(t_4=0\), \(t_2=6(1-a/c)\) and \(1/2\le a/c\le3/2\) central-charge bound
   with free chiral/vector endpoint controls, and the embedding-space
   light-transform homogeneity map \((\Delta,J)\mapsto(1-J,1-\Delta)\), plus
-  the null-cut modular-variation sign bookkeeping and entropy-squeeze
-  inequality behind the modular ANEC route, including a one-sided-cut negative
-  control, and the transverse homogeneity ledger for coefficient distributions
-  in the light-ray OPE.
+  the route-scoped ANEC theorem boundary, the Casini--Teste--Torroba null-cut
+  full-modular-generator sign bookkeeping, and negative controls against
+  one-sided null-cut and unregulated sharp-density-matrix shortcuts, plus the
+  transverse homogeneity ledger for coefficient distributions in the
+  light-ray OPE.
 - `conformal_light_transform_algebra_checks.py`: exact polynomial checks for
   the conformal-algebra convention behind the light transform, including the
   Euclidean conformal Killing vector bracket table, the charge sign conversion

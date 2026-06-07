@@ -8,33 +8,35 @@ positivity inequalities into the central-charge bound 1/2 <= a/c <= 3/2.
 Evidence contract.
 
 Target claims:
-  Volume III, Chapter 10 uses the modular ANEC sign convention, the
-  ANEC-to-detector positivity bridge, the Hofman--Maldacena stress-tensor
-  one-point normal form, the helicity-sector collider inequalities, the
-  four-dimensional N=1 superconformal a/c bound, and the light-transform
-  homogeneity map.
+  Volume III, Chapter 10 uses a route-scoped ANEC theorem boundary, the
+  null-cut full-modular-generator sign convention, the ANEC-to-detector
+  positivity bridge, the Hofman--Maldacena stress-tensor one-point normal
+  form, the helicity-sector collider inequalities, the four-dimensional N=1
+  superconformal a/c bound, and the light-transform homogeneity map.
 
 Independent construction:
   The checks rebuild the S^2 tensor averages from rotational moments,
   evaluate the detector quadratic form on explicit symmetric-traceless
   polarizations, decompose a generic polarization into SO(2) helicity sectors,
   recompute the N=1 endpoint eigenvalues from a/c data, and model the
-  null-cut entropy squeeze by finite signed atoms.  They do not import the
-  displayed inequalities as an assumed answer.
+  null-cut full modular generator by finite signed atoms.  They do not import
+  the displayed inequalities as an assumed answer.
 
 Imported assumptions:
-  The Lorentzian CFT hypotheses behind ANEC, the conformal map from a complete
-  null generator to null infinity, the bounded extension from smooth angular
-  tests to detector measures, the Wightman/ward-identity calculation of the
-  stress-tensor one-point normal form, and the N=1 supercurrent Ward identity
-  are imported physics inputs.
+  The route-specific Lorentzian CFT hypotheses behind ANEC, the
+  Casini-Teste-Torroba null-cut modular-flow theorem boundary, the conformal
+  map from a complete null generator to null infinity, the bounded extension
+  from smooth angular tests to detector measures, the Wightman/ward-identity
+  calculation of the stress-tensor one-point normal form, and the N=1
+  supercurrent Ward identity are imported physics inputs.
 
 Negative controls:
   The suite rejects total-energy normalization as a substitute for pointwise
   detector positivity, omitting any one of the three helicity-sector
   inequalities, a wrong N=1 t2 normalization, a nonzero t4 at the N=1 identity
-  point, and a one-sided modular-ANEC sign argument without the complementary
-  cut.
+  point, a one-sided null-cut sign argument that omits part of the complete
+  generator, and an unregulated sharp-density-matrix shortcut missing Araki,
+  collar-removal, and common-domain data.
 
 Scope boundary:
   These are exact finite checks of angular averages, polarization linear
@@ -44,32 +46,35 @@ Scope boundary:
   stress-tensor Wightman distribution.
 
 Primary derivation route:
-  The manuscript route first states ANEC as a Lorentzian CFT theorem boundary,
-  displays the region/complement modular squeeze, passes through the
+  The manuscript route first states ANEC as a route-scoped Lorentzian CFT
+  theorem boundary, records the null-cut modular-flow theorem boundary,
+  displays the full-modular-generator sign algebra, passes through the
   ANEC-to-detector bounded-extension bridge, derives the t2,t4 normal form for
   a stress-tensor collider state, and then diagonalizes the resulting
   quadratic form in helicity sectors.
 
 Independent verification route:
   The executable route starts from primitive rational matrices and finite
-  signed atoms.  It reconstructs the S^2 averages, obtains the helicity
-  eigenvalues by direct evaluation and by spectral recomposition of a generic
-  polarization, tests the collider positivity polytope against adversarial
-  shortcuts, and checks the N=1 a/c map at interior and endpoint samples.
+  signed atoms and a finite route-hypothesis checklist.  It reconstructs the
+  S^2 averages, obtains the helicity eigenvalues by direct evaluation and by
+  spectral recomposition of a generic polarization, tests the collider
+  positivity polytope against adversarial shortcuts, and checks the N=1 a/c map
+  at interior and endpoint samples.
 
 Convention dependencies:
   Four-dimensional parity-even stress-tensor collider coordinates t2,t4,
   total-energy normalization Q/(4*pi), SO(2) helicity sectors relative to a
   detector direction, S^2 moment normalizations 1/3 and 2/15, the null-cut
-  modular sign convention for x^+=f(y), and the N=1 convention
+  full-modular-generator sign convention for x^+=f(y), and the N=1 convention
   t4=0, t2=6(1-a/c).
 
 Domain and remainder assumptions:
-  The finite checks apply after wavepacket regularization, detector smearing,
-  null-infinity limiting, and bounded positive extension have been supplied.
-  The Lorentzian analytic/growth hypotheses, contact terms in detector
-  products, and separated-angle Wightman distribution calculation remain
-  external to this finite arithmetic.
+  The finite checks apply after the ANEC route hypotheses, wavepacket
+  regularization, detector smearing, null-infinity limiting, and bounded
+  positive extension have been supplied.  Regulator independence for the
+  modular route, the causality/OPE assumptions for the HKT route, contact terms
+  in detector products, and separated-angle Wightman distribution calculation
+  remain external to this finite arithmetic.
 
 Remaining unproved or conditional:
   ANEC itself, the existence and domain of light-ray operators in the stated
@@ -373,18 +378,21 @@ def check_light_transform_homogeneity_map() -> None:
 def check_null_cut_modular_anec_sign_bookkeeping() -> None:
     """Check the finite sign algebra in the modular route to ANEC.
 
-    The continuum proof uses one-sided relative-entropy monotonicity for a
-    null-cut region and its complement.  This finite check models only the
-    displayed derivative algebra: the right-cut modular derivative is
-    -int_0^infty phi T, the complementary derivative is
-    +int_{-infty}^0 phi T, and the common entropy derivative can be squeezed
-    between the two only when the full null integral is nonnegative.
+    The continuum theorem boundary uses the full modular generator of a
+    null-cut algebra, not a sharp-region density matrix.  This finite check
+    models only the displayed derivative algebra:
+      K_hat(s) = K_hat(0) - s * phi * int_{-infty}^infty T.
+    Positivity of the half-sided-inclusion difference K_hat(0)-K_hat(s)
+    therefore controls the complete null integral.  The older finite-factor
+    entropy squeeze is retained only as a regulated route mnemonic and is
+    rejected unless the route-hypothesis checklist is complete.
     """
 
     phi = Fraction(3, 2)
     epsilon = Fraction(1, 100)
     right_atoms = [(Fraction(1, 5), Fraction(-2, 3)), (Fraction(3, 5), Fraction(1, 3))]
     left_atoms = [(Fraction(-4, 5), Fraction(1, 6)), (Fraction(-1, 3), Fraction(1, 3))]
+    all_atoms = right_atoms + left_atoms
 
     def right_modular(s: Fraction) -> Fraction:
         return sum((x - s * phi) * stress for x, stress in right_atoms)
@@ -392,14 +400,54 @@ def check_null_cut_modular_anec_sign_bookkeeping() -> None:
     def complement_modular(s: Fraction) -> Fraction:
         return sum((s * phi - x) * stress for x, stress in left_atoms)
 
+    def full_modular(s: Fraction) -> Fraction:
+        return sum((x - s * phi) * stress for x, stress in all_atoms)
+
     right_integral = phi * sum(stress for _, stress in right_atoms)
     left_integral = phi * sum(stress for _, stress in left_atoms)
+    full_integral = right_integral + left_integral
     right_derivative = (right_modular(epsilon) - right_modular(Fraction(0))) / epsilon
     complement_derivative = (complement_modular(epsilon) - complement_modular(Fraction(0))) / epsilon
+    full_derivative = (full_modular(epsilon) - full_modular(Fraction(0))) / epsilon
+    inclusion_difference = full_modular(Fraction(0)) - full_modular(epsilon)
 
     assert_equal("right null-cut modular derivative sign", right_derivative, -right_integral)
     assert_equal("complement null-cut modular derivative sign", complement_derivative, left_integral)
+    assert_equal("full modular generator derivative sign", full_derivative, -full_integral)
+    assert_equal("half-sided inclusion difference", inclusion_difference, epsilon * full_integral)
+    if inclusion_difference < 0:
+        raise AssertionError("positive half-sided inclusion difference must control the full null integral")
 
+    required_route_data = {
+        "araki_relative_entropy",
+        "regulator_independence",
+        "collar_removal",
+        "common_stress_tensor_domain",
+        "right_cut_shape_derivative",
+        "complement_cut_shape_derivative",
+        "common_regulated_entropy_variation",
+    }
+    density_matrix_shortcut = {
+        "finite_factor_density_matrix",
+        "right_cut_shape_derivative",
+        "complement_cut_shape_derivative",
+        "common_regulated_entropy_variation",
+    }
+    if required_route_data <= density_matrix_shortcut:
+        raise AssertionError("unregulated density-matrix shortcut should not satisfy the modular ANEC route")
+    missing_shortcut_data = required_route_data - density_matrix_shortcut
+    assert_equal(
+        "density-matrix shortcut missing route data",
+        missing_shortcut_data,
+        {"araki_relative_entropy", "regulator_independence", "collar_removal", "common_stress_tensor_domain"},
+    )
+
+    completed_regulated_route = set(required_route_data)
+    if not required_route_data <= completed_regulated_route:
+        raise AssertionError("complete regulated route data should satisfy the modular ANEC checklist")
+
+    # This finite-factor squeeze checks only the algebra after all route
+    # hypotheses above have been supplied.
     entropy_derivative = Fraction(2, 3)
     region_relative_entropy_derivative = right_derivative - entropy_derivative
     complement_relative_entropy_derivative = complement_derivative - entropy_derivative
@@ -416,15 +464,12 @@ def check_null_cut_modular_anec_sign_bookkeeping() -> None:
     if lower_entropy_bound <= upper_entropy_bound:
         raise AssertionError("negative full null integral should make the entropy squeeze incompatible")
 
-    right_only_integral = Fraction(1, 3)
-    right_only_left_integral = Fraction(-2, 3)
-    right_only_entropy_derivative = -right_only_integral
-    if right_only_entropy_derivative < -right_only_integral:
-        raise AssertionError("right-cut monotonicity should give only the lower entropy bound")
-    if right_only_integral + right_only_left_integral >= 0:
-        raise AssertionError("one-sided example should still have negative full null integral")
-    if -right_only_integral <= right_only_left_integral:
-        raise AssertionError("complementary cut should reject the one-sided shortcut")
+    future_only_integral = Fraction(1, 3)
+    omitted_past_integral = Fraction(-2, 3)
+    if future_only_integral < 0:
+        raise AssertionError("future-only sample should look positive before the omitted piece is restored")
+    if future_only_integral + omitted_past_integral >= 0:
+        raise AssertionError("one-sided null-cut shortcut should still have negative full null integral")
 
 
 def check_light_ray_ope_transverse_scaling_bookkeeping() -> None:
