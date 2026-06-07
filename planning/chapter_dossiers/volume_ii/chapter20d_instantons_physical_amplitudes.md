@@ -333,6 +333,11 @@
   \(RR\to LL\) versus \(LL\to RR\) instanton/anti-instanton separation, and
   the quadratic or interference observable choice as distinct pieces of the
   physical amplitude calculation.
+- The mass-assisted interference block makes the theta-linear observable
+  claim concrete.  It extracts the \(m_dB_{uu}\) two-source channel, pairs it
+  only with a same-basis chirality-breaking \(\bar m_u\) reference, and keeps
+  \(\theta+\arg m_u+\arg m_d\), source degree, complementary zero-mode
+  saturation, and residual propagation as explicit physical checks.
 - The observable-map block connects the dedicated instanton-amplitude
   chapter back to the QCD theta and \(U(1)_A\) material without duplicating it:
   a hard four-source coefficient, a dilute theta curvature, a zero-mode-zone
@@ -581,6 +586,15 @@
   amplitudes, conjugate anti-instanton chirality inserted into the same
   channel, theta-charged linear sums read as rates, perturbative
   chirality-preserving references, and crossing-residual underbudgets.
+- 2026-06-07 issue #597 mass-assisted interference pass: added
+  `ca:instanton-mass-assisted-interference-channel` after the crossed chiral
+  channel.  The pass turns the two-source determinant coordinate \(m_dB_{uu}\)
+  into a same-channel \(u_R\to u_L\) interference calculation with a
+  chirality-breaking \(\bar m_u\) reference, giving the
+  \(\theta+\arg m_u+\arg m_d\) phase with a channel phase and residual bound.
+  The companion rejects mass-assisted channels used as four-source vertices,
+  wrong same-flavor mass saturation, wrong source degree, chirality-preserving
+  references, nonconjugated mass references, and omitted reference residuals.
 - 2026-06-06 observable-map pass: added a physics bridge from the assembled
   instanton amplitude to QCD observables, explicitly separating hard source
   coefficients, theta curvature, \(U(1)_A\)-odd susceptibility kernels, and

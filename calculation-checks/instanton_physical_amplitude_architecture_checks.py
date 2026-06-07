@@ -124,6 +124,12 @@ Target claims:
   only after the anomalous chirality source monomial is selected, the barred
   slots are crossed with their LSZ residues, and the instanton/anti-instanton
   theta phases are read in a declared quadratic or interference observable.
+- `ca:instanton-mass-assisted-interference-channel`: a theta-linear physical
+  observable arises only when a mass-assisted one-instanton two-source
+  channel, such as `m_d B_uu`, is interfered with a same-basis
+  chirality-breaking reference amplitude carrying the conjugate `u` mass
+  orientation; the retained phase is `theta + arg m_u + arg m_d` up to the
+  channel phase.
 - `ca:instanton-hard-window-tail-subtraction`: the hard four-source window is
   controlled as a core integral plus leading and subleading analytic endpoint
   tails, rather than as a formal size integral.
@@ -163,6 +169,7 @@ Independent construction:
   an amputated 't Hooft four-point assembly ledger,
   crossed chiral `RR -> LL` channel extraction from the all-outgoing
   source kernel with formal theta-phase bookkeeping,
+  mass-assisted two-source interference with exact formal mass/theta powers,
   physical projection bins, residual sums, two-term hard-window endpoint
   tail subtraction, Wilsonian coefficient/operator scheme covariance,
   boundary-flux/anomalous-dimension cancellation, and hard-window power checks
@@ -279,6 +286,12 @@ Negative controls:
   positive rate, a chirality-preserving perturbative reference used despite
   the selection rule, or a crossed-channel residual budget with the crossing
   term removed,
+  a mass-assisted two-source channel used as the massless four-source
+  vertex, a wrong same-flavor mass used to saturate the complementary
+  zero modes, a reference amplitude in the wrong source degree or chirality
+  coordinate, a nonconjugated mass reference producing
+  `theta - arg m_u + arg m_d`, or an interference residual budget with the
+  reference-amplitude error removed,
   single Euclidean cell sum used as a spectral-bin observable, a
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
   slot, a leading-tail-only hard-window approximation, a fused-density
@@ -3953,6 +3966,191 @@ def check_thooft_crossed_chiral_channel() -> None:
     )
 
 
+def check_mass_assisted_theta_linear_interference_channel() -> None:
+    q_plus_mass_assisted_u = ("u_L", "ubar_R")
+    q_plus_four_source = ("u_L", "d_L", "ubar_R", "dbar_R")
+    vacuum_coordinate: tuple[str, ...] = ()
+    assert_equal("mass-assisted u channel has two source slots", len(q_plus_mass_assisted_u), 2)
+    assert_equal("massless hard channel has four source slots", len(q_plus_four_source), 4)
+    assert_equal("vacuum coordinate has no source slots", len(vacuum_coordinate), 0)
+
+    density = Fraction(5, 11)
+    zero_mode_slot = Fraction(7, 13)
+    crossing_residue = Fraction(3, 5)
+    projection = Fraction(17, 19)
+    common_kernel = product([density, zero_mode_slot, crossing_residue, projection])
+
+    abs_m_u = Fraction(2, 5)
+    abs_m_d = Fraction(3, 7)
+    u_source_residue = Fraction(11, 13)
+    d_source_residue = Fraction(5, 17)
+    u_mass_assisted = common_kernel * abs_m_d * u_source_residue
+    d_mass_assisted = common_kernel * abs_m_u * d_source_residue
+    four_source_coefficient = common_kernel * u_source_residue * d_source_residue
+    vacuum_activity = common_kernel * abs_m_u * abs_m_d
+
+    assert_not_equal(
+        "mass-assisted u channel is not the four-source coefficient",
+        u_mass_assisted,
+        four_source_coefficient,
+    )
+    assert_not_equal(
+        "mass-assisted u channel is not the vacuum activity",
+        u_mass_assisted,
+        vacuum_activity,
+    )
+    wrong_same_flavor_mass = common_kernel * abs_m_u * u_source_residue
+    assert_not_equal(
+        "u channel requires complementary d-mass zero-mode saturation",
+        wrong_same_flavor_mass,
+        u_mass_assisted,
+    )
+    omitted_complementary_mass = common_kernel * u_source_residue
+    assert_not_equal(
+        "omitting the complementary mass leaves zero modes unsaturated",
+        omitted_complementary_mass,
+        u_mass_assisted,
+    )
+
+    PhaseKey = tuple[int, int, int]  # theta, arg(m_u), arg(m_d)
+    PhasePoly = dict[PhaseKey, Fraction]
+
+    def normalize(poly: PhasePoly) -> PhasePoly:
+        return {power: coeff for power, coeff in poly.items() if coeff != 0}
+
+    def phase_add(left: PhasePoly, right: PhasePoly) -> PhasePoly:
+        result = dict(left)
+        for power, coeff in right.items():
+            result[power] = result.get(power, Fraction(0)) + coeff
+        return normalize(result)
+
+    def phase_mul(left: PhasePoly, right: PhasePoly) -> PhasePoly:
+        result: PhasePoly = {}
+        for left_power, left_coeff in left.items():
+            for right_power, right_coeff in right.items():
+                power = tuple(a + b for a, b in zip(left_power, right_power))
+                result[power] = result.get(power, Fraction(0)) + left_coeff * right_coeff
+        return normalize(result)
+
+    def phase_conj(poly: PhasePoly) -> PhasePoly:
+        return normalize(
+            {
+                tuple(-entry for entry in power): coeff
+                for power, coeff in poly.items()
+            }
+        )
+
+    instanton_u: PhasePoly = {(1, 0, 1): u_mass_assisted}
+    reference_u: PhasePoly = {(0, -1, 0): abs_m_u * Fraction(23, 29)}
+    interference = phase_add(
+        phase_mul(phase_conj(reference_u), instanton_u),
+        phase_mul(phase_conj(instanton_u), reference_u),
+    )
+    assert_equal(
+        "mass-assisted interference carries theta plus both mass phases",
+        set(interference),
+        {(1, 1, 1), (-1, -1, -1)},
+    )
+    expected_interference_coeff = u_mass_assisted * abs_m_u * Fraction(23, 29)
+    assert_equal(
+        "mass-assisted interference coefficient",
+        interference[(1, 1, 1)],
+        expected_interference_coeff,
+    )
+    assert_equal(
+        "mass-assisted conjugate interference coefficient",
+        interference[(-1, -1, -1)],
+        expected_interference_coeff,
+    )
+
+    positive_rate = phase_mul(phase_conj(instanton_u), instanton_u)
+    assert_equal(
+        "mass-assisted positive rate is theta neutral",
+        positive_rate,
+        {(0, 0, 0): u_mass_assisted * u_mass_assisted},
+    )
+    assert_not_equal(
+        "theta-linear interference is not the positive rate",
+        set(interference),
+        set(positive_rate),
+    )
+
+    wrong_reference_u: PhasePoly = {(0, 1, 0): abs_m_u * Fraction(23, 29)}
+    wrong_interference = phase_add(
+        phase_mul(phase_conj(wrong_reference_u), instanton_u),
+        phase_mul(phase_conj(instanton_u), wrong_reference_u),
+    )
+    assert_equal(
+        "nonconjugated mass reference gives wrong phase powers",
+        set(wrong_interference),
+        {(1, -1, 1), (-1, 1, -1)},
+    )
+    assert_not_equal(
+        "wrong mass orientation is not the two-flavor axial invariant",
+        set(wrong_interference),
+        set(interference),
+    )
+
+    reference_source_degree = 2
+    reference_chirality_breaking = True
+    wrong_reference_source_degree = 4
+    chirality_preserving_reference = False
+    assert_equal(
+        "same-basis mass reference can interfere",
+        reference_source_degree == len(q_plus_mass_assisted_u) and reference_chirality_breaking,
+        True,
+    )
+    assert_equal(
+        "wrong source degree cannot interfere with mass-assisted channel",
+        wrong_reference_source_degree == len(q_plus_mass_assisted_u),
+        False,
+    )
+    assert_equal(
+        "chirality-preserving reference cannot interfere with mass-assisted channel",
+        chirality_preserving_reference,
+        False,
+    )
+
+    reference_leading = abs_m_u * Fraction(23, 29)
+    instanton_leading = u_mass_assisted
+    measurement = Fraction(7, 9)
+    instanton_error = Fraction(1, 100)
+    reference_error = Fraction(1, 120)
+    measurement_error = Fraction(1, 1000)
+    leading_interference = 2 * measurement * reference_leading * instanton_leading
+    shifted_interference = (
+        2
+        * measurement
+        * (reference_leading + reference_error)
+        * (instanton_leading + instanton_error)
+        + measurement_error
+    )
+    interference_residual = shifted_interference - leading_interference
+    residual_bound = (
+        2
+        * measurement
+        * (
+            reference_leading * instanton_error
+            + instanton_leading * reference_error
+            + reference_error * instanton_error
+        )
+        + measurement_error
+    )
+    assert_equal(
+        "mass-assisted interference residual telescope",
+        interference_residual,
+        residual_bound,
+    )
+    underbudget_without_reference = residual_bound - 2 * measurement * instanton_leading * reference_error
+    assert_equal(
+        "omitting reference residual underbudgets mass-assisted interference",
+        interference_residual <= underbudget_without_reference,
+        False,
+    )
+
+    assert_gt("d-channel mass-assisted coefficient is nonzero", d_mass_assisted, Fraction(0))
+
+
 def main() -> None:
     check_source_functional_route_order()
     check_collective_coordinate_zero_mode_jacobian()
@@ -3989,6 +4187,7 @@ def main() -> None:
     check_hard_benchmark_channel_comparison_and_ratio()
     check_thooft_four_point_amputated_assembly_gate()
     check_thooft_crossed_chiral_channel()
+    check_mass_assisted_theta_linear_interference_channel()
     print("instanton physical amplitude architecture checks passed")
 
 

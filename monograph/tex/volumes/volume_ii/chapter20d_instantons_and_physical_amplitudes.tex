@@ -1117,6 +1117,95 @@ chiral processes.  Reading a chirality-balanced external process as a hard
 't Hooft amplitude sets the source determinant in the wrong coordinate.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Mass-assisted interference channel]
+\label{ca:instanton-mass-assisted-interference-channel}
+The mixed terms in
+\eqref{eq:two-flavor-mass-source-determinant-polynomial} are the first place
+where the theta-charged instanton amplitude can meet an ordinary
+chirality-breaking reference in the same external channel.  Let
+\[
+  m_f=|m_f|\ee^{\ii\phi_f}
+\]
+be the complex mass coordinate in the same zero-mode block as
+Proposition~\ref{prop:two-flavor-source-mass-determinant-coordinate}.  The
+\(u\)-flavor two-source coordinate of the \(Q=1\) sector is the coefficient of
+\(B_{uu}\):
+\begin{equation}
+  \mathcal M_{I,u}^{R\to L}
+  =
+  \ee^{\ii\theta}\,
+  m_d\,K_{I,u}\,\Xi_u
+  +R_{I,u}.
+  \label{eq:instanton-mass-assisted-u-channel}
+\end{equation}
+Here \(m_d\) saturates the \(d\)-flavor zero modes, while \(B_{uu}\), after
+crossing, supplies the external \(u_R\to u_L\) state.  The analogous
+\(d\)-flavor channel has \(m_uB_{dd}\).  Neither channel is the massless
+four-source coefficient \(\det B\), and neither is the vacuum activity
+\(m_um_d\).
+
+Suppose a perturbative or long-distance chirality-breaking reference amplitude
+has been projected into the same \(u_R\to u_L\) basis:
+\begin{equation}
+  \mathcal M_{{\rm ref},u}^{R\to L}
+  =
+  \bar m_u\,K_{{\rm ref},u}
+  +R_{{\rm ref},u}.
+  \label{eq:instanton-mass-assisted-reference}
+\end{equation}
+The complex conjugate on \(m_u\) is a convention statement for this
+\(R\to L\) external orientation; reversing the external chirality reverses all
+conjugations.  In this convention the interference part of a same-basis
+measurement is
+\begin{equation}
+\begin{aligned}
+  \mathcal I_u
+  &:=
+  2\Re\left[
+    \overline{\mathcal M_{{\rm ref},u}^{R\to L}}\,
+    W_u\,
+    \mathcal M_{I,u}^{R\to L}
+  \right]                                                \\
+  &=
+  2|m_um_d|\,
+  |K_{{\rm ref},u}W_uK_{I,u}\Xi_u|\,
+  \cos\!\left(\theta+\phi_u+\phi_d+\delta_u\right)
+  +R_{{\rm int},u},
+  \label{eq:instanton-mass-assisted-interference}
+\end{aligned}
+\end{equation}
+where \(\delta_u=\arg(K_{I,u}\Xi_u)-\arg(K_{{\rm ref},u}W_u)\) is a physical
+channel phase fixed by the same projection and infrared convention.  Thus the
+theta-linear observable is not the massless instanton amplitude by itself.  It
+is a same-channel interference between a mass-assisted instanton coefficient
+and a chirality-breaking reference, and it carries the invariant phase
+\(\theta+\arg m_u+\arg m_d\) up to the channel phase \(\delta_u\).
+
+The residual is bounded in the same measurement norm:
+\begin{equation}
+  |R_{{\rm int},u}|
+  \le
+  2|W_u|\,
+  \left(
+    |\mathcal M_{{\rm ref},u}^{0}|B_{I,u}
+    +|\mathcal M_{I,u}^{0}|B_{{\rm ref},u}
+    +B_{{\rm ref},u}B_{I,u}
+  \right)
+  +B_{W,u}.
+  \label{eq:instanton-mass-assisted-interference-bound}
+\end{equation}
+The superscript \(0\) denotes the retained leading amplitudes in
+\eqref{eq:instanton-mass-assisted-u-channel} and
+\eqref{eq:instanton-mass-assisted-reference}.  The term \(B_{W,u}\) records
+measurement-basis and infrared-completeness errors.  If the reference
+amplitude preserves chirality, or if it is expressed in a different source
+basis, then the interference matrix element is not defined.  If one uses
+\(m_uK_{{\rm ref},u}\) instead of \(\bar m_uK_{{\rm ref},u}\) in this
+orientation, the phase becomes \(\theta-\phi_u+\phi_d\), which is not the
+two-flavor axial invariant.  If one omits the complementary mass \(m_d\), the
+zero-mode Berezin integral has not been saturated.
+\end{controlledapproximation}
+
 \begin{proposition}[\(SU(3)\), \(N_f=2\) hard-source power and slow tail]
 \label{prop:su3-nf2-hard-source-power-slow-tail}
 In the preceding hard channel, \(b_0=29/3\).  The four differentiated

@@ -765,7 +765,10 @@ Current checks:
   source kernel into an \(RR\to LL\) physical channel only after barred-slot
   crossing residues, keeps the anti-instanton as the conjugate \(LL\to RR\)
   channel, and rejects theta-charged linear sums or chirality-preserving
-  references as positive rates, the
+  references as positive rates, the mass-assisted theta-linear interference
+  channel which checks that \(m_dB_{uu}\) interferes only with a same-basis
+  chirality-breaking \(\bar m_u\) reference and carries
+  \(\theta+\arg m_u+\arg m_d\) rather than a wrong mass phase, the
   mixed hard-source plus physical-screening log-shell equation
   \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\) with negative controls against
   hard-only and screening-only saddle substitutions, the
