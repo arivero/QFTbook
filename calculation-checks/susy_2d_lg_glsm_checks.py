@@ -24,8 +24,9 @@ measure bridge, the finite measure-scheme covariance test for that
 degree-one coefficient, the mirror-conjecture observable boundary separating
 full-QFT data from protected evidence, the full-action/IR-universality data
 boundary for mirror presentations, admissible mirror-datum and finite-volume
-noncompact spectral-domain gates, and cigar/Liouville spectral-status and
-reflection Gamma-function cells,
+noncompact spectral-domain gates, finite operator/source matrix-element
+obstructions, and cigar/Liouville spectral-status and reflection Gamma-function
+cells,
 plus the Hori--Vafa
 residue/direct-instanton comparison map, with the direct degree-one incidence
 Jacobian computed before comparison, and the one-vortex source-frame
@@ -3748,6 +3749,83 @@ def check_full_mirror_ir_data_boundary() -> None:
     )
 
 
+def check_full_mirror_operator_source_obstruction() -> None:
+    # Equal Hamiltonian spectra and equal protected multiplication data do not
+    # determine source-normalized local operator matrix elements.  The finite
+    # spectral sum below is the regulator-level obstruction recorded in
+    # rem:glsm-mirror-operator-source-data.
+    spectrum_a = (Fraction(0), Fraction(3), Fraction(5))
+    spectrum_b = (Fraction(0), Fraction(3), Fraction(5))
+    protected_ring_a = {
+        "unit": Fraction(1),
+        "x^2": "q",
+        "trace(x)": Fraction(0),
+    }
+    protected_ring_b = dict(protected_ring_a)
+
+    assert_equal("candidate mirrors have the same finite spectrum", spectrum_a, spectrum_b)
+    assert_equal(
+        "candidate mirrors have the same protected ring data",
+        protected_ring_a,
+        protected_ring_b,
+    )
+
+    source_vector_a = (Fraction(0), Fraction(2, 3), Fraction(1, 5))
+    source_vector_b = (Fraction(0), Fraction(1, 3), Fraction(4, 5))
+    euclidean_weights = (Fraction(1), Fraction(1, 7), Fraction(1, 11))
+
+    def source_two_point(source_vector: tuple[Fraction, ...]) -> Fraction:
+        return sum(
+            coefficient * coefficient * weight
+            for coefficient, weight in zip(source_vector, euclidean_weights)
+        )
+
+    source_correlator_a = source_two_point(source_vector_a)
+    source_correlator_b = source_two_point(source_vector_b)
+    assert_equal(
+        "same spectrum and protected ring can hide different source correlators",
+        source_correlator_a == source_correlator_b,
+        False,
+    )
+
+    source_normalization = Fraction(3, 2)
+    transported_source_b = tuple(source_normalization * value for value in source_vector_b)
+    transported_correlator_b = source_two_point(transported_source_b)
+    assert_equal(
+        "source normalization rescales Euclidean matrix-element data",
+        transported_correlator_b,
+        source_normalization * source_normalization * source_correlator_b,
+    )
+
+    full_operator_claim = {
+        "same spectrum",
+        "same protected ring",
+        "operator/source matrix elements",
+        "source normalization",
+        "operator topology",
+    }
+    spectrum_ring_shortcut = {
+        "same spectrum",
+        "same protected ring",
+    }
+    assert_equal(
+        "spectrum plus protected ring is not a full operator/state map",
+        full_operator_claim <= spectrum_ring_shortcut,
+        False,
+    )
+
+    corrected_package = spectrum_ring_shortcut | {
+        "operator/source matrix elements",
+        "source normalization",
+        "operator topology",
+    }
+    assert_equal(
+        "adding source matrix data reaches the finite operator comparison package",
+        full_operator_claim <= corrected_package,
+        True,
+    )
+
+
 def check_cigar_liouville_spectral_data_cell() -> None:
     for k_level in [Fraction(2), Fraction(5), Fraction(9, 2)]:
         background_charge_squared = Fraction(1, k_level)
@@ -4149,6 +4227,7 @@ def main() -> None:
     check_logarithmic_chiral_vortex_obstruction()
     check_mirror_conjecture_observable_boundary()
     check_full_mirror_ir_data_boundary()
+    check_full_mirror_operator_source_obstruction()
     check_cigar_liouville_spectral_data_cell()
     check_hypersurface_phase_ledger()
     check_hypersurface_coulomb_coordinate_signal()

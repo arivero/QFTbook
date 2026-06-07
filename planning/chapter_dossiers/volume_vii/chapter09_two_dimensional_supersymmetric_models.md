@@ -81,6 +81,9 @@ and
   continuous spectral measure, and noncompact wall reflection datum.  These
   separate mirror-data existence, D-term universality, and the actual duality
   claim.
+- `rem:glsm-mirror-operator-source-data`: finite-volume operator/source
+  warning that equal spectra and protected multiplication data do not
+  determine local-source matrix elements or source-normalized correlators.
 - `hat X_i`, `q_phys`, `R_{P^{N-1}}`, `H`: vortex-normalized mirror-torus
   coordinate, physical exponentiated FI coordinate after finite determinant
   normalization, normalized projective-space mirror residue trace, and
@@ -244,6 +247,12 @@ and
   source contact terms.  The chapter now separates the existence of such a
   mirror datum, the universality/rigidity of choices of finite-field `K` and
   boundary data, and the final GLSM/mirror duality assertion.
+- Adds `rem:glsm-mirror-operator-source-data`: a finite-volume source
+  spectral formula showing that a Hamiltonian spectrum and protected
+  chiral-ring multiplication do not determine the matrix elements entering
+  source derivatives of the regulated generating functional.  The full mirror
+  datum must include operator topology, source normalization, and an
+  operator/state map.
 - Derives the first-order charged-chiral dualization with real superfield
   `B_i`, twisted-linear constraint, Legendre elimination, and the
   superspace integration-by-parts identity producing the linear
@@ -634,6 +643,10 @@ and
     asymptotics, and central charge is rejected without finite-field Kahler
     control, spectral measure, reflection amplitude, boundary conditions, and
     deformation classification.
+  - the full-mirror operator/source obstruction: equal finite spectra and
+    protected multiplication data are tested against different source-vector
+    matrix elements, showing that source-normalized Euclidean two-point
+    coefficients require operator topology and an operator/state map.
   - the cigar/Liouville spectral-data cell: exact arithmetic for
     `c=3+6/k`, noncompact `c_eff=3`, Liouville exponential marginality,
     spectral-flow momentum/winding integrality, the noncompact field
@@ -911,3 +924,9 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   quantization to show that omitted wall/self-adjoint-domain data change
   regulated Hamiltonian energy levels, not only continuum phase-density
   bookkeeping.
+- The 2026-06-07 issue #848 operator/source pass adds
+  `rem:glsm-mirror-operator-source-data` and a companion finite spectral
+  obstruction: same Hamiltonian spectrum plus same protected multiplication is
+  not enough to identify source-normalized local correlators.  This targets
+  operator/state completeness rather than another protected Hori--Vafa
+  residue identity.

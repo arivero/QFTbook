@@ -1109,6 +1109,37 @@ supplies protected coordinates for these claims; it is not itself any one of
 the three claims.
 \end{definition}
 
+\begin{remark}[Operator sources are not fixed by the spectrum alone]
+\label{rem:glsm-mirror-operator-source-data}
+The spectral-domain part of
+Definition~\ref{def:glsm-admissible-mirror-datum} is necessary, but it does
+not by itself identify the local QFT.  In a finite circle regulator, let
+\(H_\Lambda e_n=E_n e_n\) and let \({\mathcal O}_{\Lambda}\) be the
+renormalized source representative for a local operator.  The source
+two-point function contains the matrix-element data
+\[
+  G_{{\mathcal O},\Lambda}(\beta)
+  =
+  \langle e_0,
+    {\mathcal O}_{\Lambda}^{\dagger}
+    e^{-\beta(H_\Lambda-E_0)}
+    {\mathcal O}_{\Lambda}
+  e_0\rangle
+  =
+  \sum_n
+  |\langle e_n,{\mathcal O}_{\Lambda}e_0\rangle|^2
+  e^{-\beta(E_n-E_0)} .
+\]
+Two candidate mirrors can therefore have the same finite spectrum, the same
+protected chiral-ring multiplication, and the same asymptotic \(F\)-term data,
+while their source derivatives of \(Z_\Lambda[J]\) differ because the
+renormalized operator vector \({\mathcal O}_{\Lambda}e_0\) differs.  A mirror
+equivalence must supply the operator topology, source normalization, and
+operator/state map that transport these matrix elements.  Protected residues
+and chiral-ring identities are valuable tests of that map, not substitutes for
+it.
+\end{remark}
+
 The detailed comparison below is an observable comparison map for
 Conjecture~\ref{conj:abelian-glsm-hori-vafa-mirror-qft}.  The physical question
 is whether a protected GLSM correlator computed with a regulated vortex measure
