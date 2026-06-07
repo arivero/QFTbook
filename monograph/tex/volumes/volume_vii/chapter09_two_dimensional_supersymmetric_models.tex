@@ -1803,8 +1803,8 @@ that assembled projection and bounds the residuals.  Under a flavor basis
 change the projections \(\Pi_i\) transform, while the common sector
 \({\mathcal A}_{1,\Lambda}\) does not split into flavor-labelled flux sectors.
 
-\begin{controlledapproximation}[Common-flux operator-map residual diagnostic]
-\label{ca:glsm-common-flux-operator-map-diagnostic}
+\begin{remark}[Common-flux operator-map residual diagnostic]
+\label{rem:glsm-common-flux-operator-map-diagnostic}
 The preceding source-projection formula is still not the operator map.  A
 finite-regulator comparison with the primitive mirror operators must supply a
 linear source space \(V_{1,\Lambda}\), the common charge-one functional
@@ -1860,7 +1860,8 @@ If there is a retained direction
 \(\Pi_{\mathcal O,\Lambda}(v)\ne0\), then two common-flux functionals have the
 same primitive mirror coefficients and different observable amplitudes.  In
 that case \(\prod_i c_i^{Q_i{}^a}\) is a mirror/FI coordinate, not an
-observable amplitude.  A controlled comparison must therefore carry the bound
+observable amplitude.  A later controlled comparison theorem must therefore
+turn the residual names into estimates of the form
 \[
   |\Delta_{\mathcal O}|
   \le
@@ -1868,10 +1869,11 @@ observable amplitude.  A controlled comparison must therefore carry the bound
   +B_{\rm flav}+B_{\rm asm}+B_{\rm cont},
 \]
 where \(B_{\rm span}\) controls the failure of the primitive rows to span the
-observable row.  The continuum Hori--Vafa operator theorem is precisely the
-claim that this package exists, has the declared residuals, and survives the
-regulator limit in the chosen source topology.
-\end{controlledapproximation}
+observable row.  The displayed inequality is a target estimate only after
+those component bounds have been constructed in one source topology.  The
+continuum Hori--Vafa operator theorem is precisely the claim that this package
+exists, has the declared estimates, and survives the regulator limit.
+\end{remark}
 
 \begin{proposition}[Finite-regulator vortex fluctuation complex]
 \label{prop:glsm-vortex-fluctuation-complex}

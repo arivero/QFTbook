@@ -3034,7 +3034,7 @@ Current checks:
   flavor-labelled vortex sectors under equal-charge flavor rotations, separating
   source-projected coefficients from a direct common observable amplitude,
   requiring an assembly map before a projected product is used as physical data,
-  adding an operator-map diagnostic span test in which primitive mirror rows
+  adding an operator-map status-guard span test in which primitive mirror rows
   miss a source-functional null direction visible to a tested observable, and
   rejecting ordinary \(U(1)\) product formulae on a quotient flux lattice,
 	  the global-form flux lattice gate which tests the quotient cocharacter

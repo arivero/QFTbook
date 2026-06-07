@@ -373,13 +373,15 @@ and
   `prod_i c_i^{Q_i^a}`.  Such products are coordinate assemblies until a
   source-factorization or observable-comparison theorem supplies the assembly
   map and residual bounds.
-- Adds `ca:glsm-common-flux-operator-map-diagnostic`: a finite-regulator
+- Adds `rem:glsm-common-flux-operator-map-diagnostic`: a finite-regulator
   diagnostic for turning common-flux primitive projections into a mirror
   operator map.  It requires an original-to-dual source transport map,
   row-wise matrix-element comparisons for the `exp(-Y_i)` representatives,
   flavor covariance, an observable assembly row, and a span residual.  The
   block exhibits the failure mode where two common-flux functionals have the
-  same primitive projected `c_i` but differ on the tested observable.
+  same primitive projected `c_i` but differ on the tested observable.  The
+  status is a residual diagnostic, not a controlled estimate until component
+  bounds are supplied in one source topology.
 - Extends the vortex-normalization/FI-coordinate comparison to all abelian
   ranks: normalized mirror-torus variables `hat X_i=c_i exp(-Y_i)` move the
   constants into `T_a^phys=T_a+sum_i Q_i^a log c_i`, and the same shift is
@@ -950,13 +952,20 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   mirror-orbifold data are propagated.  The companion adds finite negative
   controls for arbitrary projected coefficients and quotient-lattice shortcuts.
 - The 2026-06-07 issue #847 common-flux operator-map diagnostic pass adds the
-  missing finite comparison gate after the source-projection paragraph.  It
+  missing finite comparison map after the source-projection paragraph.  It
   states that primitive mirror rows are not a continuum operator map unless an
   original-to-dual source transport, row-wise matrix-element comparison, flavor
   covariance, observable assembly row, and span residual are supplied.  The
   companion constructs two common source functionals with identical primitive
   projected coefficients and different observable amplitudes, rejecting the
   projected-product shortcut even when a one-point assembly fit exists.
+- The 2026-06-07 issue #844/#847 operator-map status re-audit demotes
+  `ca:glsm-common-flux-operator-map-diagnostic` to
+  `rem:glsm-common-flux-operator-map-diagnostic`.  The text now says the
+  residual inequality is a target estimate only after component bounds have
+  been constructed in one source topology.  The companion adds a status guard
+  rejecting promotion of residual slot names to a controlled estimate without
+  those component bounds.
 - The 2026-06-07 issue #847 quotient global-form lattice pass makes that last
   boundary constructive.  The chapter now displays the cocharacter flux
   lattice, dual character lattice, FI-theta period lattice, and rank-one

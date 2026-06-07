@@ -44,7 +44,7 @@ component-to-component source-frame calibration ratios with supplied component
 and frame residuals,
 normal-mode cumulant factors and original-to-dual frame tags,
 common-sector source projections, independently projected common amplitudes,
-assembly-map mutation controls, operator-map diagnostic span tests, quotient
+assembly-map mutation controls, operator-map status guards and span tests, quotient
 cocharacter-lattice and dual character-lattice filters with theta-period tests,
 phase-isometry lattice tests for chiral superpotential monomials,
 one-loop gamma-matrix Hermiticity tests, signed-log determinant-density
@@ -132,7 +132,9 @@ flavor-labelled topological vortex sectors,
 projected-coefficient products used as direct common-sector amplitudes,
 primitive mirror source projections treated as a complete operator map,
 source-functional null directions hidden from primitive projections but visible
-to the tested observable, arbitrary projected coefficients, ordinary \(U(1)\) product formulae reused for
+to the tested observable, residual-slot names promoted to a controlled
+operator-map estimate without component bounds, arbitrary projected
+coefficients, ordinary \(U(1)\) product formulae reused for
 quotient flux lattices, cover-charge-one matter treated as a quotient
 representation, ordinary \(2\pi i\) FI periods applied to fractional quotient
 fluxes, and quotient residual mirror orbifolds omitted from covering
@@ -770,6 +772,27 @@ def check_common_flux_operator_map_diagnostic() -> None:
         "assembly": Fraction(1, 233),
         "continuum": Fraction(1, 239),
     }
+    residual_slots = tuple(residuals)
+    residual_names_only = {slot: None for slot in residual_slots}
+    assert_equal(
+        "operator-map residual names alone are not a controlled estimate",
+        all(value is not None for value in residual_names_only.values()),
+        False,
+    )
+    supplied_component_estimates = residuals.copy()
+    assert_equal(
+        "operator-map estimate requires every component bound",
+        set(supplied_component_estimates) == set(residual_slots)
+        and all(bound >= 0 for bound in supplied_component_estimates.values()),
+        True,
+    )
+    missing_component_estimates = supplied_component_estimates.copy()
+    del missing_component_estimates["span"]
+    assert_equal(
+        "operator-map estimate fails with a missing span bound",
+        set(missing_component_estimates) == set(residual_slots),
+        False,
+    )
     full_bound = sum(residuals.values(), Fraction(0))
     actual_error = full_bound
     assert_equal("common-flux operator-map residual telescope", actual_error <= full_bound, True)
