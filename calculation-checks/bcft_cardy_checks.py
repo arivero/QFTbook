@@ -4,7 +4,8 @@
 Evidence contract.
 Target claims: the finite Cardy/Ishibashi coefficient, annulus, boundary OPE,
 the multiplicity-free scalar Cardy-Lewellen coordinate chart, the boundary
-observable dependency map, and elementary sewing subclaims in the BCFT chapter.
+observable output coordinates, the boundary observable dependency map, and
+elementary sewing subclaims in the BCFT chapter.
 Independent construction: exact Q(sqrt(2)) arithmetic, Laurent-polynomial
 character operations, finite annulus matrices, and explicit boundary-field
 counting are computed independently from the candidate Cardy labels.
@@ -13,9 +14,10 @@ boundary-label conventions, and finite character truncation used in the
 chapter's examples.
 Negative controls: inconsistent annulus multiplicities, wrong label
 identifications, boundary-changing channel counts, annulus-only
-reconstructions of boundary sewing, multiplication-only reconstructions of
-disk pairings, and a finite diagnostic in which boundary-field multiplicity
-differs from chiral fusion multiplicity are tested by exact constraints.
+reconstructions of disk response, boundary susceptibility, and sewing data,
+multiplication-only reconstructions of disk pairings, and a finite diagnostic
+in which boundary-field multiplicity differs from chiral fusion multiplicity
+are tested by exact constraints.
 Scope boundary: a pass checks finite rational-model bookkeeping; it does not
 prove the full Cardy-Lewellen sewing theorem, nonrational BCFT completeness,
 analytic convergence, non-multiplicity-free fusing matrices, or existence of a
@@ -1574,6 +1576,84 @@ def check_boundary_gradient_spectral_weight() -> None:
                 raise AssertionError("positive boundary gap produced nonpositive gradient weight")
 
 
+def check_boundary_observable_output_coordinates() -> None:
+    """Check that annulus, disk response, and susceptibility are separate.
+
+    The chapter opens with three observable coordinates: the open annulus
+    spectrum, the disk one-point response, and the boundary susceptibility
+    entering the g-gradient input.  This finite model keeps the annulus
+    spectrum fixed while changing source matrix elements, so the susceptibility
+    and disk response change even though the open graded dimensions do not.
+    """
+
+    annulus_spectrum = (
+        ("vacuum", Fraction(0), 1),
+        ("stabilizer", Fraction(1), 1),
+    )
+    semisimple_annulus = annulus_spectrum
+    nilpotent_shadow_annulus = annulus_spectrum
+    assert_equal(
+        "boundary observable samples have the same annulus coordinate",
+        semisimple_annulus,
+        nilpotent_shadow_annulus,
+    )
+
+    semisimple_disk_response = (Fraction(1), Fraction(1, 3))
+    deformed_disk_response = (Fraction(1), -Fraction(1, 3))
+    if semisimple_disk_response == deformed_disk_response:
+        raise AssertionError("annulus coordinate determined disk one-point response")
+
+    kappa_sq = Fraction(4)
+
+    def spectral_weight(gap: Fraction) -> Fraction:
+        return 2 * kappa_sq / (gap * (gap * gap + kappa_sq))
+
+    gaps = (Fraction(1), Fraction(3))
+    semisimple_matrix_elements = (Fraction(2), Fraction(1))
+    deformed_matrix_elements = (Fraction(1), Fraction(2))
+    semisimple_susceptibility = sum(
+        amplitude * spectral_weight(gap)
+        for amplitude, gap in zip(semisimple_matrix_elements, gaps)
+    )
+    deformed_susceptibility = sum(
+        amplitude * spectral_weight(gap)
+        for amplitude, gap in zip(deformed_matrix_elements, gaps)
+    )
+    assert_equal(
+        "boundary susceptibility sample A",
+        semisimple_susceptibility,
+        Fraction(664, 195),
+    )
+    assert_equal(
+        "boundary susceptibility sample B",
+        deformed_susceptibility,
+        Fraction(392, 195),
+    )
+    if semisimple_susceptibility == deformed_susceptibility:
+        raise AssertionError("annulus coordinate determined boundary susceptibility")
+
+    beta = Fraction(3, 7)
+    semisimple_entropy_velocity = -(beta * beta) * semisimple_susceptibility
+    deformed_entropy_velocity = -(beta * beta) * deformed_susceptibility
+    assert_equal(
+        "boundary gradient response depends on susceptibility data",
+        semisimple_entropy_velocity != deformed_entropy_velocity,
+        True,
+    )
+
+    annulus_only_susceptibility = Fraction(0)
+    assert_equal(
+        "annulus-only shortcut misses finite susceptibility",
+        annulus_only_susceptibility == semisimple_susceptibility,
+        False,
+    )
+    assert_equal(
+        "positive spectral weights make both retained susceptibilities positive",
+        semisimple_susceptibility > 0 and deformed_susceptibility > 0,
+        True,
+    )
+
+
 def check_boundary_gradient_monotonicity_from_metric() -> None:
     """Check the finite algebra of ds/dt = -B^T G B <= 0.
 
@@ -2280,6 +2360,7 @@ def main() -> None:
     check_bcft_observable_dependency_separation()
     check_boundary_entropy()
     check_boundary_gradient_spectral_weight()
+    check_boundary_observable_output_coordinates()
     check_boundary_gradient_monotonicity_from_metric()
     check_chan_paton_direct_sums()
     check_ising_boundary_changing_constants()
@@ -2301,7 +2382,7 @@ def main() -> None:
         "pointed-annulus-Fourier, pointed-boundary-OPE, "
         "pointed-stabilizer-slide, pointed-laboratory-unified, "
         "annulus-shadow-nonreconstruction, observable-dependency-separation, "
-        "boundary-observable-vector residual, "
+        "boundary-observable-vector residual, boundary-observable outputs, "
         "compact-boson, "
         "Liouville-boundary, continuous-annulus Plancherel, "
         "nonrational-pole-residue, bordered-sewing-budget, and "

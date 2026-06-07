@@ -73,6 +73,39 @@ domains for boundary fields, determinant-line compatibility, and sewing maps
 that make the finite rational and nonrational formulas part of one BCFT
 datum.
 
+\paragraph{Observable outputs before formal sewing.}
+The formal data should be read through the boundary observables they predict.
+Three output coordinates recur throughout the chapter:
+\begin{equation}
+\begin{aligned}
+  Z_{ab}^{\rm op}(q)
+  &=
+  \operatorname{Tr}_{\Hilb_{ab}}q^{L_0-c/24},                         \\
+  \langle\Phi_i(x+\ii y,x-\ii y)\rangle_{\mathbb H,a}
+  &=
+  U_i^a(2y)^{-2h_i},
+  \qquad \Phi_i\ \hbox{spinless},                                      \\
+  \mathcal G_a[\varphi]
+  &=
+  \frac12
+  \int_0^L\!\dd\tau_1
+  \int_0^L\!\dd\tau_2\,
+  K_L(\tau_1-\tau_2)
+  \langle\varphi(\tau_1)\varphi(\tau_2)\rangle^{\rm ren}_{c,a}.
+\end{aligned}
+  \label{eq:bcft-observable-output-coordinates}
+\end{equation}
+The first is the open-channel annulus spectrum, the second is the disk
+one-point response to a bulk source near the boundary, and the third is the
+renormalized boundary susceptibility which enters the boundary-entropy
+gradient formula after the Ward and contact-term hypotheses below are supplied.
+Agreement in the annulus coordinate alone is therefore not an observable-level
+BCFT comparison.  Two candidates can have the same graded open Hilbert spaces
+while their disk one-point coefficients, boundary two-point pairings, or
+gradient susceptibilities differ.  The finite rational and nonrational cells
+below are useful only insofar as they keep these observable coordinates tied to
+one common sewing datum.
+
 \paragraph{All-surface sewing as a generated compatibility problem.}
 The point of the local calculations below is not that a disk, an annulus, or a
 single four-boundary-field correlator is a BCFT by itself.  A bordered surface

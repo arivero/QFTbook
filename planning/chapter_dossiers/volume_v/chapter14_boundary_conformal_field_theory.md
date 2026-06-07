@@ -20,6 +20,10 @@
   Virasoro/annulus kinematics, genus-zero diagonal sewing, rational
   Frobenius-module mechanisms, nonrational direct-integral/contour data, and
   the remaining all-surface analytic theorem boundary.
+- Front-loads the observable outputs before the formal sewing graph:
+  open-channel annulus spectra, disk one-point response to bulk sources, and
+  boundary-gradient susceptibility are displayed as separate physical
+  coordinates that must come from one compatible boundary datum.
 - Adds a mid-chapter sewing-move ledger after the Liouville analytic datum,
   classifying the diagonal annulus, Ising boundary-OPE, bulk-boundary/direct
   sum, Liouville Plancherel/residue, and anomaly-line cells by the elementary
@@ -306,19 +310,24 @@
     carries separate chiral, open-sector, local-coordinate, pairing,
     generated-move, and anomaly-line residuals; annulus-only agreement is a
     selected shadow, not an observable-level construction.
-26. Local BCFT sewing cells imply all-surface decomposition independence only
+26. The chapter's opening observable coordinates separate the open annulus
+    partition function, disk one-point response, and boundary-gradient
+    susceptibility.  The same annulus spectrum can leave disk response and
+    boundary two-point matrix elements undetermined, so annulus matching is not
+    yet a physical boundary observable comparison.
+27. Local BCFT sewing cells imply all-surface decomposition independence only
     through a generated move graph: along a finite path, the total amplitude
     defect is bounded by the telescoping sum of local move defects propagated by
     later sewing transports.  Zero local defects plus closed-loop compatibility
     gives path independence on a connected move graph; analytic construction of
     the actual infinite-dimensional move graph remains a theorem boundary.
-27. Projective determinant-line factors in sewing are a separate obstruction
+28. Projective determinant-line factors in sewing are a separate obstruction
     from vector-valued local move defects.  On a finite move graph they can be
     removed by choosing vertex trivializations exactly when the edge scalars
     form a coboundary.  Scalar sewing independence after forgetting the line is
     governed by the total closed-loop transport \(\lambda_\ell T_\ell\), not by
     the scalar line phase alone.
-28. A full BCFT construction has a strict dependency order: closed/chiral
+29. A full BCFT construction has a strict dependency order: closed/chiral
     input, boundary Hilbert or spectral data, compatible physical observable
     coordinates (annulus spectra, disk one-point functions, bulk-boundary
     coefficients, boundary OPE tensors, classifying projectors, defect
@@ -356,6 +365,8 @@
   OPE multiplication, classifying idempotents, two-point pairings, and
   generated sewing are distinct required layers, including an assembled
   boundary-observable vector and residual budget,
+  the boundary-observable output check separating annulus spectra from disk
+  one-point response and boundary-gradient susceptibility,
   the boundary/chiral multiplicity-axis diagnostic separating boundary-field
   labels from chiral fusion-intertwiner labels, boundary entropy squares, Ising
   boundary-changing fusing constants and OPE powers, the finite Ising
@@ -572,6 +583,13 @@
   residuals.  This is an argument-architecture repair: it prevents local
   annulus or finite stabilizer cells from being read as an all-surface BCFT
   construction.
+- 2026-06-06 issue #844 BCFT observable-output front pass: added
+  `eq:bcft-observable-output-coordinates` near the chapter opening so the
+  reader sees the physical outputs before the generated sewing machinery:
+  annulus partition functions, disk one-point responses, and boundary-gradient
+  susceptibilities.  The companion check keeps the annulus spectrum fixed
+  while changing disk response and susceptibility, blocking an annulus-only
+  reading of boundary physics.
 - 2026-06-03 oriented Cardy annulus pass: replaced the real/self-conjugate
   annulus shorthand by the oriented coefficient
   `n_ab^k = sum_i conjugate(B_b^i) B_a^i S_ik = N_{k a}^b` and added a

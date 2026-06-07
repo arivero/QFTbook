@@ -1781,6 +1781,8 @@ Current checks:
   that annulus spectra, multiplication, pairings, and generated sewing are
   distinct required layers, including an assembled boundary-observable vector
   residual budget with chiral, open, local, pairing, move, and anomaly terms,
+  the boundary-observable output check separating open annulus spectra, disk
+  one-point response, and boundary-gradient susceptibility,
   the boundary/chiral multiplicity-axis diagnostic separating boundary-field
   labels from chiral fusion-intertwiner labels, boundary entropy squares,
   Chan--Paton direct sums, the positive spectral
