@@ -3008,8 +3008,11 @@ Current checks:
   requires typed source multiplets, smooth-stratum locality, a preserved
   eight-supercharge regulator, and symmetric metric-channel separation while
   rejecting four-supercharge K\"ahler-term imports, vector-spurion erasure,
-  singular-branch shortcuts, broken-regulator proofs, and two-dimensional
-  antisymmetric torsion-channel substitutions, the finite Higgs metric
+  singular-branch shortcuts, broken-regulator proofs, and metric-only
+  projections of torsionful two-dimensional \((4,4)\) data, a finite
+  torsion-boundary cell separating the torsion-free metric theorem from the
+  coupled HKT/bi-Hermitian \((\delta g,\delta B,\delta\Phi)\) target, the
+  finite Higgs metric
   two-jet projection that removes declared FI-source transport while rejecting
   point-metric-only matching and undeclared vector-spurion transport, and a
   background-field derivation check that
@@ -3027,10 +3030,10 @@ Current checks:
   omitting the generated row-contact seagull, checks that a paired
   Pauli--Villars/Wilsonian regulator uses the same spectral function on the
   nonzero \(Q\)-complex and rejects unpaired regulator masses,
-  tangent-dependent regulator vertices, and unprojected zero modes, verifies the reduced
-  vector-scalar row-contact residuals in 3d/2d, separates the
-  two-dimensional symmetric metric channel from the antisymmetric \(B/WZ\)
-  channel, and blocks reuse of the
+  tangent-dependent regulator vertices, and unprojected zero modes, verifies
+  the reduced vector-scalar row-contact residuals in 3d/2d, classifies the
+  two-dimensional torsion-free metric projection separately from the coupled
+  torsionful target, and blocks reuse of the
   four-dimensional gauge-field entry in reduced dimensions,
   fixed-charge branch-EFT checks for torus/global-form/Weyl charge labels,
   the supersymmetric chiral-branch Noether map, Routhian energy, transverse

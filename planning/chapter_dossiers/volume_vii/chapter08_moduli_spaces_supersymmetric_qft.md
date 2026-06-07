@@ -92,8 +92,10 @@ later lower-dimensional examples, protected sectors, and localization.
   `eq:higgs-branch-local-counterterm-cohomology`: local Ward/cohomology
   interface for the smooth Higgs-metric theorem boundary, including typed
   source multiplets, smooth-stratum locality, regulator preservation, and the
-  separation of symmetric metric data from vector, source-transport,
-  singular-locus, and torsion/WZ channels.
+  restriction of the pure metric target to the torsion-free class, with
+  torsionful \(2d\ \mathcal N=(4,4)\) data treated as a coupled
+  HKT/bi-Hermitian counterterm target rather than a separate antisymmetric
+  add-on.
 - `constr:higgs-branch-background-field-derivation-target`,
   `eq:higgs-branch-background-field-trace-log`: explicit rank-one
   background-field target for an actual Higgs-metric determinant calculation.
@@ -236,12 +238,14 @@ later lower-dimensional examples, protected sectors, and localization.
   supercharges, a smooth completely-Higgsed stratum, a transverse mass gap, and
   absence of mixed/additional massless sectors.  The counterterm filter
   classifies coordinate changes, FI/mass transport, vector/coupling-spurion
-  \(D\)-terms, torsion/WZ terms, and singular/mixed-locus operators.  The
-  Ward/local-counterterm interface states the exact cohomology vanishing a
-  proof or quoted theorem must supply, with typed source multiplets,
-  smooth-stratum locality, regulator preservation, and negative controls for
-  four-supercharge K\"ahler-term imports, vector-spurion erasure, singular
-  branches, and antisymmetric \(2d\) torsion data.  The rank-one
+  \(D\)-terms, torsionful \(2d\) \((4,4)\) target deformations, and
+  singular/mixed-locus operators.  The Ward/local-counterterm interface states
+  the exact cohomology vanishing a proof or quoted theorem must supply in the
+  torsion-free metric class, with typed source multiplets, smooth-stratum
+  locality, regulator preservation, and negative controls for four-supercharge
+  K\"ahler-term imports, vector-spurion erasure, singular branches, and
+  metric-only projections of coupled torsionful \(2d\) target data.  The
+  rank-one
   background-field construction specifies the trace-log coefficient,
   nonminimal gauge operator, Goldstone, ghost, seagull, fermion, auxiliary, and
   gauge-parameter data that an independent determinant proof would have to
@@ -295,8 +299,11 @@ later lower-dimensional examples, protected sectors, and localization.
   two-derivative counterterm filter with vector-spurion negative control, and
   the Ward/local-counterterm proof-interface classifier, which rejects
   four-supercharge K\"ahler-term imports, vector-spurion type erasure,
-  singular-branch shortcuts, broken-regulator proofs, and antisymmetric
-  \(2d\) torsion-channel substitutions, the Higgs metric two-jet projection
+  singular-branch shortcuts, broken-regulator proofs, and metric-only
+  projections of torsionful \(2d\ \mathcal N=(4,4)\) data, the finite
+  torsion-boundary cell separating the declared torsion-free metric theorem
+  from the coupled HKT/bi-Hermitian \((\delta g,\delta B,\delta\Phi)\)
+  counterterm target, the Higgs metric two-jet projection
   that removes declared FI-source transport while rejecting point-metric-only
   and undeclared-vector-spurion shortcuts, and the background-field derivation
   check that rejects bare component
@@ -310,10 +317,10 @@ later lower-dimensional examples, protected sectors, and localization.
   the rank-one row-Jacobian projector/zero-mode/contact identities from a
   fixed-norm Higgs background, checks paired regulator spectral functions on
   the nonzero \(Q\)-complex and rejects unpaired PV masses, tangent-dependent
-  regulator vertices, and unprojected zero modes, and rejects use of the four-dimensional
-  gauge-field entry in dimensionally reduced arguments by checking reduced
-  vector-scalar row contacts and the separate two-dimensional antisymmetric
-  \(B/WZ\) channel,
+  regulator vertices, and unprojected zero modes, and rejects use of the
+  four-dimensional gauge-field entry in dimensionally reduced arguments by
+  checking reduced vector-scalar row contacts and the separate torsion-free
+  versus torsionful \(2d\) target classification,
   fixed-charge branch-EFT checks for global-form/Weyl charge labels, the
   supersymmetric chiral-branch Noether map and Routhian energy, transverse
   gap hierarchy, and the abstract large-\(\mu\) simultaneous-window scaling
@@ -437,3 +444,10 @@ local models.
   rows and their contact \(C_{\rm red}^{(d)}\).  The companion now checks that
   omitting those rows in 3d/2d leaves a trace-log residual, while the symmetric
   2d metric channel is kept separate from an antisymmetric \(B/WZ\) channel.
+- 2026-06-07 issue #850 two-dimensional torsion-boundary pass: restricted the
+  displayed pure Higgs-metric theorem boundary to the torsion-free \((4,4)\)
+  class, and rewrote the torsionful case as a coupled HKT/bi-Hermitian local
+  counterterm problem for \((\delta g,\delta B,\delta\Phi)\) and the torsionful
+  connections.  The companion now rejects metric-only projection of a
+  torsionful \(2d\) kernel and records which D1--D5 statements use the
+  torsion-free Higgs metric rather than the Coulomb-throat/torsion package.

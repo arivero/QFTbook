@@ -5,7 +5,8 @@ Evidence contract.
 Target claims: Volume VII Chapter 08 quotient formulae, branch-EFT status
 boundaries, D1-D5 Higgs/Coulomb arithmetic, and the finite Higgs-metric
 background-field gates replacing component multiplicity ledgers, including the
-metric-kernel projection after source transport.
+metric-kernel projection after source transport and the two-dimensional
+torsion-free versus torsionful theorem boundary.
 Independent construction: exact rational invariant-ring, quotient-dimension,
 cotangent-transition, moment-map, determinant-row, trace-log, and regulator
 supertrace cells, together with a finite metric two-jet source-transport
@@ -21,8 +22,8 @@ seagulls, mismatched Ward vertices, dropped auxiliary/Yukawa contacts,
 unpaired dimension-reduced scalar contacts, covering four-dimensional
 component reuse, unpaired regulator masses, point-metric-only source matching,
 undeclared vector-spurion transport, four-supercharge Kahler-term imports,
-singular-branch shortcuts, and antisymmetric two-dimensional torsion channels
-are rejected when represented by the finite model.
+singular-branch shortcuts, and metric-only projections of torsionful
+two-dimensional (4,4) data are rejected when represented by the finite model.
 Scope boundary: these checks do not prove a continuum Higgs-branch metric
 nonrenormalization theorem, construct the full gauge-fixed elliptic complex,
 establish all-order harmonic/projective superspace protection, or construct
@@ -390,7 +391,7 @@ def check_d1_d5_dimension_does_not_fix_bridge_flux():
 
 
 def check_higgs_branch_metric_status_matrix():
-    """Separate local metric protection from global and torsion claims."""
+    """Separate local metric protection from global and torsionful claims."""
 
     status = {
         "4d_N2": {
@@ -403,10 +404,21 @@ def check_higgs_branch_metric_status_matrix():
             "global_metric": "conditional_continuum",
             "torsion_or_wz": "not_part_of_metric_statement",
         },
-        "2d_N44": {
+        "2d_N44_torsion_free": {
             "local_metric": "dimension_reduced_theorem_boundary_input",
             "global_metric": "conditional_continuum",
-            "torsion_or_wz": "separate_two_dimensional_branch_datum",
+            "torsion_or_wz": "excluded_by_declared_torsion_free_class",
+        },
+        "2d_N44_torsion_allowed": {
+            "local_metric": "not_a_pure_metric_theorem",
+            "global_metric": "conditional_continuum",
+            "torsion_or_wz": "coupled_hkt_or_bihermitian_target",
+            "required_counterterm_slots": {
+                "delta_g",
+                "delta_B",
+                "delta_Phi",
+                "torsionful_connections",
+            },
         },
     }
 
@@ -415,7 +427,7 @@ def check_higgs_branch_metric_status_matrix():
         "theorem_boundary_input",
         "4d N=2 local Higgs metric status is a theorem boundary",
     )
-    for label in ("3d_N4", "2d_N44"):
+    for label in ("3d_N4", "2d_N44_torsion_free"):
         assert_equal(
             status[label]["local_metric"],
             "dimension_reduced_theorem_boundary_input",
@@ -430,9 +442,15 @@ def check_higgs_branch_metric_status_matrix():
         )
 
     assert_equal(
-        status["2d_N44"]["torsion_or_wz"],
-        "separate_two_dimensional_branch_datum",
-        "2d (4,4) torsion/WZ is outside pure metric protection",
+        status["2d_N44_torsion_allowed"]["local_metric"],
+        "not_a_pure_metric_theorem",
+        "torsionful 2d (4,4) is not governed by a pure metric theorem",
+    )
+    assert_equal(
+        status["2d_N44_torsion_allowed"]["required_counterterm_slots"]
+        >= {"delta_g", "delta_B", "delta_Phi"},
+        True,
+        "torsionful 2d (4,4) requires coupled local counterterm slots",
     )
 
 
@@ -459,10 +477,11 @@ def check_higgs_branch_counterterm_filter():
             "new_quantum_metric": False,
         },
         {
-            "name": "torsion or WZ branch datum",
+            "name": "torsionful (4,4) branch deformation",
             "two_derivative": True,
             "intrinsic_metric": False,
             "new_quantum_metric": False,
+            "coupled_target": True,
         },
         {
             "name": "singular or mixed branch operator",
@@ -515,6 +534,7 @@ def check_higgs_branch_ward_counterterm_interface():
         "two_derivative_order",
         "cohomology_quotients",
         "regulator_preserves_ward_data",
+        "two_dimensional_torsion_policy",
     }
     proof_interface = {
         "supercharges": 8,
@@ -535,6 +555,10 @@ def check_higgs_branch_ward_counterterm_interface():
             "Q_exact_local_functional",
         },
         "regulator_preserves_ward_data": True,
+        "two_dimensional_torsion_policy": {
+            "torsion_free_metric_target",
+            "coupled_hkt_or_bihermitian_target_when_H_allowed",
+        },
     }
 
     assert_equal(
@@ -552,10 +576,20 @@ def check_higgs_branch_ward_counterterm_interface():
     def classify_counterterm(candidate):
         if not candidate["local_on_smooth_stratum"] or not candidate["gap"]:
             return "outside_local_higgs_sigma_model"
-        if candidate["channel"] == "antisymmetric":
-            return "torsion_or_wz_channel"
         if candidate["derivative_order"] != 2:
             return "not_two_derivative_metric_order"
+        if candidate.get("dimension") == 2 and candidate.get("torsion_allowed", False):
+            required_torsionful_slots = {
+                "delta_g",
+                "delta_B",
+                "delta_Phi",
+                "torsionful_connections",
+            }
+            if set(candidate.get("counterterm_slots", set())) >= required_torsionful_slots:
+                return "coupled_hkt_or_bihermitian_target"
+            return "incomplete_torsionful_2d_counterterm"
+        if candidate["channel"] == "antisymmetric":
+            return "outside_torsion_free_metric_theorem"
         if (
             candidate["supercharges"] != 8
             or not candidate["r_symmetry_preserved"]
@@ -683,14 +717,36 @@ def check_higgs_branch_ward_counterterm_interface():
     two_dimensional_torsion = dict(if_vector_type_is_erased)
     two_dimensional_torsion.update(
         {
-            "name": "2d antisymmetric B/WZ channel",
+            "name": "2d torsionful B/WZ projection",
+            "dimension": 2,
+            "torsion_allowed": True,
             "channel": "antisymmetric",
+            "counterterm_slots": {"delta_B"},
         }
     )
     assert_equal(
         classify_counterterm(two_dimensional_torsion),
-        "torsion_or_wz_channel",
-        "antisymmetric two-dimensional branch data are not Higgs metric data",
+        "incomplete_torsionful_2d_counterterm",
+        "2d torsionful data cannot be classified by the antisymmetric slot alone",
+    )
+
+    coupled_two_dimensional_torsion = dict(two_dimensional_torsion)
+    coupled_two_dimensional_torsion.update(
+        {
+            "name": "2d coupled HKT counterterm",
+            "channel": "coupled_torsionful",
+            "counterterm_slots": {
+                "delta_g",
+                "delta_B",
+                "delta_Phi",
+                "torsionful_connections",
+            },
+        }
+    )
+    assert_equal(
+        classify_counterterm(coupled_two_dimensional_torsion),
+        "coupled_hkt_or_bihermitian_target",
+        "torsionful 2d (4,4) counterterms are a coupled target, not a metric proof",
     )
 
     broken_regulator_candidate = dict(if_vector_type_is_erased)
@@ -704,6 +760,97 @@ def check_higgs_branch_ward_counterterm_interface():
         classify_counterterm(broken_regulator_candidate),
         "outside_eight_supercharge_ward_theorem",
         "a regulator that breaks the Ward data cannot prove metric protection",
+    )
+
+
+def check_higgs_branch_two_dimensional_torsion_boundary():
+    """Reject metric-only projections of torsionful 2d (4,4) target data."""
+
+    theorem_classes = {
+        "torsion_free_metric": {
+            "dimension": 2,
+            "H": Fraction(0),
+            "connection": "levi_civita",
+            "counterterm_slots": {"delta_g"},
+        },
+        "torsionful_target": {
+            "dimension": 2,
+            "H": "nonzero_allowed",
+            "connection": "torsionful_pm",
+            "counterterm_slots": {
+                "delta_g",
+                "delta_B",
+                "delta_Phi",
+                "delta_nabla_plus",
+                "delta_nabla_minus",
+            },
+        },
+    }
+    assert_equal(
+        theorem_classes["torsion_free_metric"]["connection"],
+        "levi_civita",
+        "torsion-free 2d (4,4) metric theorem uses the Levi-Civita connection",
+    )
+    assert_equal(
+        theorem_classes["torsionful_target"]["counterterm_slots"] > {"delta_g"},
+        True,
+        "torsionful 2d (4,4) target has more slots than the metric projection",
+    )
+
+    raw_two_index_kernel = {
+        "Pi_12": Fraction(7, 5),
+        "Pi_21": Fraction(3, 5),
+    }
+    raw_delta_g = (
+        raw_two_index_kernel["Pi_12"] + raw_two_index_kernel["Pi_21"]
+    ) / 2
+    raw_delta_B = (
+        raw_two_index_kernel["Pi_12"] - raw_two_index_kernel["Pi_21"]
+    ) / 2
+    assert_equal(
+        raw_delta_g,
+        Fraction(1),
+        "raw 2d trace-log kernel has a symmetric tensor component",
+    )
+    assert_equal(
+        raw_delta_B,
+        Fraction(2, 5),
+        "raw 2d trace-log kernel has a nonzero antisymmetric tensor component",
+    )
+
+    def torsionful_connection_variation(delta_g, delta_B):
+        return {
+            "delta_nabla_plus": delta_g + delta_B,
+            "delta_nabla_minus": delta_g - delta_B,
+        }
+
+    coupled_counterterm = {
+        "delta_g": raw_delta_g,
+        "delta_B": raw_delta_B,
+        "delta_Phi": Fraction(1, 7),
+        **torsionful_connection_variation(raw_delta_g, raw_delta_B),
+    }
+    assert_equal(
+        coupled_counterterm["delta_nabla_plus"]
+        == coupled_counterterm["delta_nabla_minus"],
+        False,
+        "nonzero torsion changes the two torsionful connections differently",
+    )
+
+    naive_metric_only_projection = {"delta_g": raw_delta_g}
+    missing_slots = sorted(
+        theorem_classes["torsionful_target"]["counterterm_slots"]
+        - set(naive_metric_only_projection)
+    )
+    assert_equal(
+        missing_slots,
+        ["delta_B", "delta_Phi", "delta_nabla_minus", "delta_nabla_plus"],
+        "metric-only projection drops required torsionful 2d counterterm slots",
+    )
+    assert_equal(
+        set(coupled_counterterm) >= theorem_classes["torsionful_target"]["counterterm_slots"],
+        True,
+        "coupled 2d torsionful target carries metric, B, dilaton, and connections",
     )
 
 
@@ -837,6 +984,7 @@ def check_higgs_branch_background_field_derivation_gate():
         "dimension_reduced_row_contacts",
         "gauge_parameter_cancellation",
         "dimension_reduction_audit",
+        "two_dimensional_torsion_classification",
     }
 
     old_component_ledger = {
@@ -998,6 +1146,9 @@ def check_higgs_branch_background_field_derivation_gate():
         },
         "regulator_supertrace_pairing": "same_pv_function_on_nonzero_Q_complex",
         "dimension_reduced_row_contacts": "reduced_vector_scalars_kept_as_rows",
+        "two_dimensional_torsion_classification": (
+            "torsion_free_metric_or_coupled_hkt_target"
+        ),
     }
     assert_equal(
         missing_slots(operator_blueprint),
@@ -1800,21 +1951,47 @@ def check_higgs_branch_background_field_derivation_gate():
         "Pi_12": Fraction(7, 5),
         "Pi_21": Fraction(3, 5),
     }
-    symmetric_metric_channel = (
+    raw_symmetric_part = (
         two_dimensional_kernel["Pi_12"] + two_dimensional_kernel["Pi_21"]
     ) / 2
-    antisymmetric_b_channel = (
+    raw_antisymmetric_part = (
         two_dimensional_kernel["Pi_12"] - two_dimensional_kernel["Pi_21"]
     ) / 2
     assert_equal(
-        symmetric_metric_channel,
+        raw_symmetric_part,
         Fraction(1),
-        "2d Higgs metric audit uses the symmetric two-derivative channel",
+        "2d raw trace-log kernel has a symmetric tensor component",
     )
     assert_equal(
-        antisymmetric_b_channel == 0,
+        raw_antisymmetric_part == 0,
         False,
-        "2d antisymmetric B/WZ channel is separate from metric protection",
+        "2d raw trace-log kernel may also carry a torsionful component",
+    )
+
+    torsionful_required_slots = {
+        "delta_g",
+        "delta_B",
+        "delta_Phi",
+        "delta_nabla_plus",
+        "delta_nabla_minus",
+    }
+    naive_two_dimensional_metric_projection = {"delta_g": raw_symmetric_part}
+    assert_equal(
+        sorted(torsionful_required_slots - set(naive_two_dimensional_metric_projection)),
+        ["delta_B", "delta_Phi", "delta_nabla_minus", "delta_nabla_plus"],
+        "2d torsionful branch data cannot be reduced to the symmetric kernel",
+    )
+    coupled_two_dimensional_deformation = {
+        "delta_g": raw_symmetric_part,
+        "delta_B": raw_antisymmetric_part,
+        "delta_Phi": Fraction(1, 11),
+        "delta_nabla_plus": raw_symmetric_part + raw_antisymmetric_part,
+        "delta_nabla_minus": raw_symmetric_part - raw_antisymmetric_part,
+    }
+    assert_equal(
+        set(coupled_two_dimensional_deformation) >= torsionful_required_slots,
+        True,
+        "2d torsionful determinant target carries the coupled (g,B,Phi) package",
     )
 
     unacceptable_status = {
@@ -2201,6 +2378,7 @@ def main():
     check_higgs_branch_metric_status_matrix()
     check_higgs_branch_counterterm_filter()
     check_higgs_branch_ward_counterterm_interface()
+    check_higgs_branch_two_dimensional_torsion_boundary()
     check_higgs_branch_metric_transport_projection()
     check_higgs_branch_background_field_derivation_gate()
     check_large_charge_torus_lattice_and_weyl_orbit()

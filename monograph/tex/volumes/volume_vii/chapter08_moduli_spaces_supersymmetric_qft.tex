@@ -720,21 +720,27 @@ hypermultiplets on \(U\), contains a metric counterterm
   \Delta g_{mn}(q)\,
   \partial_\mu q^m\partial^\mu q^n+\cdots .
 \]
-Eight supercharges require the completed two-derivative sigma model to have a
-hyperk\"ahler metric, with the fermion and auxiliary couplings fixed by the
-Levi-Civita connection and curvature.  Thus a genuine metric counterterm is a
-local hyperk\"ahler deformation of the intrinsic metric on \(U\), not a change
-of source coordinate or wave-function representative.
+Eight supercharges require the completed torsion-free two-derivative sigma
+model in \(4d\ \mathcal N=2\), \(3d\ \mathcal N=4\), or a declared
+torsion-free \(2d\ \mathcal N=(4,4)\) reduction to have a hyperk\"ahler metric,
+with the fermion and auxiliary couplings fixed by the Levi-Civita connection and
+curvature.  In a general two-dimensional \((4,4)\) sigma model with
+\(H=dB\), however, supersymmetry constrains \(g\) and \(H\) together through
+torsionful connections; the target is HKT or bi-Hermitian rather than
+hyperk\"ahler for the Levi-Civita connection.  Thus a genuine metric counterterm
+is a local deformation of the intrinsic torsion-free metric on \(U\), not a
+change of source coordinate or wave-function representative.
 
-\begin{hypothesis}[Smooth Higgs-branch metric-protection input]
+\begin{hypothesis}[Smooth torsion-free Higgs-branch metric-protection input]
 \label{hyp:smooth-higgs-branch-metric-protection}
 In a Wilsonian scheme preserving the eight supercharges, the relevant
-\(R\)-symmetry, locality on \(U\), and the transverse mass gap \(M_\perp\), a
-local pure-Higgs two-derivative counterterm on a smooth fully Higgsed stratum
-is cohomologous to a hypermultiplet coordinate change or to transport of the
-declared FI/mass parameters.  Equivalently, after those source coordinates have
-been matched, massive vector-sector and transverse-hypermultiplet loops do not
-deform the intrinsic hyperk\"ahler metric on \(U\).
+\(R\)-symmetry, locality on \(U\), the transverse mass gap \(M_\perp\), and in
+two dimensions a declared torsion-free \((4,4)\) hypermultiplet sigma-model
+class, a local pure-Higgs two-derivative counterterm on a smooth fully Higgsed
+stratum is cohomologous to a hypermultiplet coordinate change or to transport of
+the declared FI/mass parameters.  Equivalently, after those source coordinates
+have been matched, massive vector-sector and transverse-hypermultiplet loops do
+not deform the intrinsic hyperk\"ahler metric on \(U\).
 \end{hypothesis}
 
 This is the theorem-boundary input used in this chapter.  Component
@@ -749,6 +755,11 @@ fields.  Once a vector or coupling spurion is inserted, the \(R\)-symmetry
 quantum numbers and eight-supercharge measure move the operator into a
 vector-sector term, a transport of the quotient level, or a higher-derivative
 correction.
+If a two-dimensional \((4,4)\) branch allows torsion \(H=dB\), the theorem
+boundary is different: the local counterterm problem is the coupled deformation
+of \((g,B,\Phi)\), or of the equivalent source multiplets, preserving the
+torsionful \((4,4)\) connections.  Its metric projection is not governed by
+Hypothesis~\ref{hyp:smooth-higgs-branch-metric-protection}.
 
 The dimension-dependent reading of
 Hypothesis~\ref{hyp:smooth-higgs-branch-metric-protection} is:
@@ -765,10 +776,12 @@ or gauge-coupling spurions deforms the intrinsic Higgs metric on \(U\).\\[0.4em]
 backgrounds.  Monopole effects belong to the Coulomb-branch sector unless new
 massless fields meet \(U\).\\[0.4em]
 \(2d\ \mathcal N=(4,4)\)
-& The metric part of the two-derivative Higgs sigma model obeys the same
-hypermultiplet Ward identity.  Torsion, \(B\)-field, and Wess--Zumino data are
-separate two-dimensional couplings and are not fixed by the metric theorem
-unless a torsion-free \((4,4)\) multiplet and regulator have been specified.
+& In a declared torsion-free class, the same local metric statement is the
+dimensional reduction of the higher-dimensional hypermultiplet theorem.  If
+\(H=dB\) is allowed, the supersymmetric target data are coupled:
+\(g\), \(B\), and possible dilaton or source terms must satisfy the HKT or
+bi-Hermitian \((4,4)\) constraints together.  Symmetrizing a trace-log kernel is
+then only a raw tensor decomposition, not an independent metric theorem.
 \end{tabular}
 \end{center}
 The global equality
@@ -802,9 +815,10 @@ vector/coupling-spurion \(D\)-term
 identity it is a vector-sector or higher-derivative operator, not a pure Higgs
 metric deformation
 & no\\[0.3em]
-torsion or Wess--Zumino term
-& antisymmetric two-dimensional branch datum
-& outside\\[0.3em]
+torsionful two-dimensional \((4,4)\) deformation
+& coupled \((\delta g,\delta B,\delta\Phi)\) or source deformation constrained
+by torsionful target geometry, not an independent antisymmetric add-on
+& outside the torsion-free metric theorem\\[0.3em]
 singular or mixed-branch operator
 & requires light fields not present in the sigma model on \(U\)
 & outside
@@ -821,9 +835,11 @@ ledger.  Let \({\mathfrak F}^{(2)}_{H,U}\) be the space of local
 two-derivative Wilsonian functionals on the smooth stratum \(U\), completed by
 the fermion and auxiliary terms required by the eight supercharges and
 depending only on the massless hypermultiplet background after the FI and mass
-sources have been declared.  Quotient this space by hypermultiplet field
-redefinitions and by transport of the declared FI/mass coordinates.  The
-theorem one has to prove, or quote with its hypotheses, is the vanishing
+sources have been declared.  In two dimensions this space is the torsion-free
+subspace unless the \((4,4)\) multiplet and regulator explicitly include
+torsion.  Quotient this space by hypermultiplet field redefinitions and by
+transport of the declared FI/mass coordinates.  The theorem one has to prove,
+or quote with its hypotheses, is the vanishing
 \begin{equation}
   H^0_{Q,{\rm loc}}\!\left({\mathfrak F}^{(2)}_{H,U}\right)_{\rm intrinsic}
   =
@@ -840,11 +856,13 @@ This interface has four checks.  First, the proof has to keep the source
 multiplets typed: hypermultiplet coordinates, vector-multiplet or gauge
 coupling spurions, FI triplets, and mass backgrounds are not interchangeable.
 Second, it is local only on a fully Higgsed smooth stratum with a transverse
-gap; a singular or mixed locus changes the low-energy field content.  Third,
-the two-dimensional antisymmetric \(B\)/Wess--Zumino channel is not the
-symmetric Higgs metric channel.  Fourth, the regulator used in any determinant
-realization must preserve the same \(Q\) and \(R\)-symmetry data used in the
-cohomology statement.
+gap; a singular or mixed locus changes the low-energy field content.  Third, in
+two dimensions the torsion-free class must be declared.  If \(H=dB\) is allowed,
+the target of the proof is a coupled local deformation complex for
+\((g,B,\Phi)\) preserving the torsionful \((4,4)\) connections; projecting a
+generic kernel by index symmetry is not a supersymmetric classification.
+Fourth, the regulator used in any determinant realization must preserve the same
+\(Q\) and \(R\)-symmetry data used in the cohomology statement.
 
 The rank-one trace-log construction below is therefore evidence for the local
 theorem in one model: it exhibits how the gauge-fixed heavy rows, contacts,
@@ -1592,9 +1610,9 @@ a check that the field inventory has not changed after the row contacts in
 \eqref{eq:higgs-branch-reduced-scalar-row-contact} have been included.
 
 In \(3d\ \mathcal N=4\), the \(\sigma_I\) fields belong to the vector-multiplet
-sector separated by \(SU(2)_H\times SU(2)_C\).  In
-\(2d\ \mathcal N=(4,4)\), the symmetric Higgs metric counterterm is only the
-symmetrized part of the two-derivative kernel,
+sector separated by \(SU(2)_H\times SU(2)_C\).  In a torsion-free
+\(2d\ \mathcal N=(4,4)\) reduction, the raw two-index kernel may be decomposed
+as
 \[
   \Pi_{mn}^{(g)}
   =
@@ -1604,9 +1622,23 @@ symmetrized part of the two-derivative kernel,
   =
   \frac12(\Pi_{mn}-\Pi_{nm}),
 \]
-and possible \(B\)-field or Wess--Zumino data sit in the antisymmetric channel.
-They require their own regulator and infrared analysis.  The metric-protection
-claim never follows from recycling the four-dimensional \(A_\mu\) row.
+but only \(\Pi^{(g)}\) belongs to the torsion-free metric theorem.  If the
+two-dimensional branch allows \(H=dB\), the supersymmetric counterterm is instead
+a coupled package
+\[
+  \delta{\mathcal C}_{(4,4)}
+  =
+  (\delta g_{mn},\delta B_{mn},\delta\Phi;\delta\nabla^{(+)},
+  \delta\nabla^{(-)}),
+  \qquad
+  \nabla^{(\pm)}
+  =
+  \nabla^g\pm\frac12 g^{-1}H .
+\]
+A nonzero antisymmetric component is then not something to discard after
+symmetrization; it signals that the HKT or bi-Hermitian deformation complex has
+to be solved.  The metric-protection claim never follows from recycling the
+four-dimensional \(A_\mu\) row.
 \end{example}
 
 After the local cohomology statement
@@ -1837,12 +1869,13 @@ physical:
 \qquad
 \dim_{\mathbb R}\mathcal M_{Q_1,Q_5}=4Q_1Q_5 .
 \]
-On a smooth stable stratum where \(U(K)\) is completely broken, the
-two-derivative \(\mathcal N=(4,4)\) sigma-model metric is the quotient metric
-in the smooth Wilsonian protection statement above.  This is the
-protected Higgs-branch statement.  It is stronger than saying that the
-algebraic quotient has the ADHM equations, because it identifies the
-Wilsonian kinetic term of the massless QFT fields.  It is also weaker than a
+On a smooth stable stratum where \(U(K)\) is completely broken and the local
+Higgs-branch sigma model is taken in the torsion-free \((4,4)\) class, the
+two-derivative metric is the quotient metric in the smooth Wilsonian protection
+statement above.  This is the protected Higgs-branch metric statement.  It is
+stronger than saying that the algebraic quotient has the ADHM equations,
+because it identifies the Wilsonian kinetic term of the massless QFT fields.
+It is also weaker than a
 claim about every point of the quotient: when \(\zeta=0\), the locus
 \(I=J=0\) and commuting \(B_1,B_2\) meets the small-instanton and Coulomb
 directions, the gauge stabilizer can jump, and additional massless fields must
@@ -1852,9 +1885,11 @@ hypermultiplets changes the vector-multiplet metric, so the quotient
 calculation alone does not determine the full infrared geometry.
 Nor does the quotient metric by itself construct the noncompact throat, the
 boundary-condition data, or the interacting infrared SCFT.  Those require a
-separate continuum argument; the protected statement here is only the local
-two-derivative metric on the smooth Higgs stratum, with torsion and Wess--Zumino
-data declared separately if they are present.
+separate continuum argument.  The protected statement here is only the
+torsion-free local two-derivative metric on the smooth Higgs stratum.  Any
+\(B\)-field, Wess--Zumino term, or dilaton/source deformation belongs to the
+coupled two-dimensional \((4,4)\) target datum rather than to the pure metric
+theorem.
 \end{example}
 
 \begin{remark}[D1--D5 throat bridge]
