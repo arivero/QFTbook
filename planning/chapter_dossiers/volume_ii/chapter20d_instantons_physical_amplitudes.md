@@ -112,6 +112,12 @@
   `(4 partial_theta + V_A^src)(e^{i theta} det C_zm)=0`.  This connects the
   chirality-selection rule to the parent Ch20 anomalous source-Ward ledger
   before the hard benchmark is projected to a physical observable.
+- `ca:instanton-mass-source-rg-channel-transport`: separates the
+  source-functional RG cancellation from fixed-basis differentiated
+  coefficients and from contractions with running physical source directions.
+  The source-bundle connection is kept until the contraction is formed, so the
+  `+r gamma_m` law is attached only to fixed-coordinate components and is not
+  double-counted in physical source vectors.
 - `sec:instanton-hard-four-fermion-benchmark`: hard two-flavor four-source
   benchmark, organized as center, Haar, zero-mode-rank, amputation,
   size-window, and physical-projection data.

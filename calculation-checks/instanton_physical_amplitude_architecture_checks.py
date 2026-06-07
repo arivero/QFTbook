@@ -133,8 +133,9 @@ Target claims:
   transported together under the anomalous singlet axial Ward vector.
 - `ca:instanton-mass-source-rg-channel-transport`: the mass/source determinant
   and finite light-fermion nonzero-mode determinant factor cancel only at
-  source-functional level; differentiated source coefficients require matching
-  renormalized source/operator projection flow.
+  source-functional level; fixed-basis differentiated coefficients, running
+  physical source contractions, and finite source-bundle connections have
+  distinct RG transports.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell residuals
   and source-determinant perturbations obey the displayed absolute bounds.
 - `prop:su3-nf2-hard-source-power-slow-tail` and
@@ -230,8 +231,8 @@ Independent construction:
   neutral-pair lateral-prescription cancellation coordinates,
   chirality-source selection rules for the instanton zero-mode determinant,
   axial Ward transport of the theta phase with the complex source determinant,
-  mass/source RG weights for vacuum, mass-assisted, and hard four-source
-  coefficients paired with source/operator projection flows,
+  mass/source RG weights separated into fixed-basis coefficients, running
+  physical source contractions, and source-bundle connection cancellations,
   an amputated 't Hooft four-point assembly ledger,
   crossed chiral `RR -> LL` channel extraction from the all-outgoing
   source kernel with formal theta-phase bookkeeping,
@@ -4002,25 +4003,49 @@ def check_mass_source_rg_channel_transport() -> None:
     gamma_m = Fraction(5, 13)
     n_flavors = 2
     finite_fermion_factor_weight = n_flavors * gamma_m
+    running_source_vector_weight = -gamma_m
 
-    def differentiated_coefficient_weight(source_derivatives: int) -> Fraction:
+    def fixed_basis_component_weight(source_derivatives: int) -> Fraction:
         mass_degree = n_flavors - source_derivatives
         mass_source_weight = -mass_degree * gamma_m
         return finite_fermion_factor_weight + mass_source_weight
 
+    def running_source_contraction_weight(source_derivatives: int) -> Fraction:
+        determinant_derivative_weight = (
+            -(n_flavors - source_derivatives) * gamma_m
+            + source_derivatives * running_source_vector_weight
+        )
+        return finite_fermion_factor_weight + determinant_derivative_weight
+
     for source_derivatives in range(n_flavors + 1):
-        coefficient_weight = differentiated_coefficient_weight(source_derivatives)
+        coefficient_weight = fixed_basis_component_weight(source_derivatives)
         projection_weight = -source_derivatives * gamma_m
         assert_equal(
-            f"{source_derivatives}-source instanton coefficient RG weight",
+            f"{source_derivatives}-source fixed-basis coefficient RG weight",
             coefficient_weight,
             source_derivatives * gamma_m,
         )
         assert_equal(
-            f"{source_derivatives}-source physical projection cancels RG weight",
+            f"{source_derivatives}-source fixed-basis projection cancels RG weight",
             coefficient_weight + projection_weight,
             Fraction(0),
         )
+        assert_equal(
+            f"{source_derivatives}-source running-source contraction RG weight",
+            running_source_contraction_weight(source_derivatives),
+            Fraction(0),
+        )
+        if source_derivatives:
+            assert_not_equal(
+                f"{source_derivatives}-source old shortcut misreads running-source flow",
+                running_source_contraction_weight(source_derivatives),
+                source_derivatives * gamma_m,
+            )
+            assert_not_equal(
+                f"{source_derivatives}-source projection double-counts running sources",
+                running_source_contraction_weight(source_derivatives) + projection_weight,
+                Fraction(0),
+            )
 
     vacuum_mass_source_weight = -n_flavors * gamma_m
     assert_equal(
@@ -4034,9 +4059,32 @@ def check_mass_source_rg_channel_transport() -> None:
         Fraction(0),
     )
 
-    hard_source_weight = differentiated_coefficient_weight(2)
+    one_source_fixed_weight = fixed_basis_component_weight(1)
+    one_source_running_weight = one_source_fixed_weight + running_source_vector_weight
+    hard_source_weight = fixed_basis_component_weight(2)
+    hard_running_source_weight = hard_source_weight + 2 * running_source_vector_weight
+    assert_equal(
+        "two-flavor fixed-basis mass-assisted coefficient carries one source weight",
+        one_source_fixed_weight,
+        gamma_m,
+    )
+    assert_equal(
+        "two-flavor running mass-assisted source contraction is invariant",
+        one_source_running_weight,
+        Fraction(0),
+    )
+    assert_equal(
+        "two-flavor fixed-basis hard coefficient carries two source weights",
+        hard_source_weight,
+        2 * gamma_m,
+    )
+    assert_equal(
+        "two-flavor running hard source contraction is invariant",
+        hard_running_source_weight,
+        Fraction(0),
+    )
     assert_not_equal(
-        "hard four-source coefficient is not RG invariant before projection",
+        "hard fixed-basis coefficient is not RG invariant before projection",
         hard_source_weight,
         Fraction(0),
     )
@@ -4044,6 +4092,129 @@ def check_mass_source_rg_channel_transport() -> None:
     assert_not_equal(
         "wrong-sign source projection doubles anomalous-dimension flow",
         hard_source_weight + wrong_projection_sign,
+        Fraction(0),
+    )
+    assert_not_equal(
+        "old running-source hard-flow formula invents a spurious two-source weight",
+        hard_running_source_weight,
+        2 * gamma_m,
+    )
+
+    connection = [
+        [Fraction(0), Fraction(2, 7)],
+        [Fraction(-3, 11), Fraction(1, 5)],
+    ]
+    covector = [Fraction(3, 7), Fraction(-5, 11)]
+    source_vector = [Fraction(7, 13), Fraction(11, 17)]
+
+    def dot_cov_vec(cov: list[Fraction], vec: list[Fraction]) -> Fraction:
+        return sum(c * v for c, v in zip(cov, vec))
+
+    def covector_connection(cov: list[Fraction]) -> list[Fraction]:
+        return [
+            sum(connection[row][col] * cov[col] for col in range(2))
+            for row in range(2)
+        ]
+
+    def vector_connection(vec: list[Fraction]) -> list[Fraction]:
+        return [
+            -sum(connection[row][col] * vec[row] for row in range(2))
+            for col in range(2)
+        ]
+
+    covector_flow = [
+        gamma_m * covector[row] + covector_connection(covector)[row]
+        for row in range(2)
+    ]
+    source_vector_flow = [
+        -gamma_m * source_vector[col] + vector_connection(source_vector)[col]
+        for col in range(2)
+    ]
+    connected_one_source_flow = dot_cov_vec(covector_flow, source_vector) + dot_cov_vec(
+        covector,
+        source_vector_flow,
+    )
+    assert_equal(
+        "source-bundle connection cancels in one-source running contraction",
+        connected_one_source_flow,
+        Fraction(0),
+    )
+    missing_covector_connection_flow = dot_cov_vec(
+        [gamma_m * entry for entry in covector],
+        source_vector,
+    ) + dot_cov_vec(covector, source_vector_flow)
+    assert_not_equal(
+        "omitting fixed-basis covector connection spoils one-source transport",
+        missing_covector_connection_flow,
+        Fraction(0),
+    )
+
+    rank_two_tensor = [
+        [Fraction(1, 3), Fraction(-2, 5)],
+        [Fraction(3, 7), Fraction(5, 11)],
+    ]
+    source_vector_1 = [Fraction(2, 9), Fraction(5, 12)]
+    source_vector_2 = [Fraction(-7, 15), Fraction(4, 13)]
+
+    def tensor_contract(
+        tensor: list[list[Fraction]],
+        first: list[Fraction],
+        second: list[Fraction],
+    ) -> Fraction:
+        return sum(
+            tensor[row][col] * first[row] * second[col]
+            for row in range(2)
+            for col in range(2)
+        )
+
+    def tensor_connection(tensor: list[list[Fraction]]) -> list[list[Fraction]]:
+        return [
+            [
+                sum(connection[row][slot] * tensor[slot][col] for slot in range(2))
+                + sum(connection[col][slot] * tensor[row][slot] for slot in range(2))
+                for col in range(2)
+            ]
+            for row in range(2)
+        ]
+
+    tensor_conn = tensor_connection(rank_two_tensor)
+    tensor_flow = [
+        [
+            2 * gamma_m * rank_two_tensor[row][col] + tensor_conn[row][col]
+            for col in range(2)
+        ]
+        for row in range(2)
+    ]
+    source_vector_1_flow = [
+        -gamma_m * source_vector_1[col] + vector_connection(source_vector_1)[col]
+        for col in range(2)
+    ]
+    source_vector_2_flow = [
+        -gamma_m * source_vector_2[col] + vector_connection(source_vector_2)[col]
+        for col in range(2)
+    ]
+    connected_two_source_flow = (
+        tensor_contract(tensor_flow, source_vector_1, source_vector_2)
+        + tensor_contract(rank_two_tensor, source_vector_1_flow, source_vector_2)
+        + tensor_contract(rank_two_tensor, source_vector_1, source_vector_2_flow)
+    )
+    assert_equal(
+        "source-bundle connection cancels in two-source running contraction",
+        connected_two_source_flow,
+        Fraction(0),
+    )
+    tensor_flow_without_connection = [
+        [2 * gamma_m * rank_two_tensor[row][col] for col in range(2)]
+        for row in range(2)
+    ]
+    missing_tensor_connection_flow = (
+        tensor_contract(tensor_flow_without_connection, source_vector_1, source_vector_2)
+        + tensor_contract(rank_two_tensor, source_vector_1_flow, source_vector_2)
+        + tensor_contract(rank_two_tensor, source_vector_1, source_vector_2_flow)
+    )
+    assert_not_equal(
+        "omitting fixed-basis tensor connection spoils two-source transport",
+        missing_tensor_connection_flow,
         Fraction(0),
     )
 

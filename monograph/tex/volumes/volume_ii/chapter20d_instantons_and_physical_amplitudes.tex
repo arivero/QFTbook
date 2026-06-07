@@ -833,39 +833,83 @@ alone leaves this cancellation without the required fluctuation data.
 
 The cancellation in
 \eqref{eq:instanton-source-functional-rg-invariance} must be applied before
-source differentiation.  Choose \(r\) renormalized source coordinates
-\(B_a(\mu)\) and define the differentiated coefficient
+source differentiation, and the source frame has to be declared.  Let
+\(E_A(\mu)\) be a local basis for the finite zero-mode source matrix entries,
+so \(J=J^A E_A\), and write its finite source-bundle connection as
 \begin{equation}
-  K_r(\mu)
+  \mu\frac{\dd}{\dd\mu}E_A=\Gamma_A{}^B E_B,
+  \qquad
+  (\mu\nabla_\mu B)^A
+  =
+  \mu\frac{\dd B^A}{\dd\mu}+\Gamma_B{}^A B^B .
+  \label{eq:instanton-source-bundle-connection}
+\end{equation}
+A physical renormalized source direction then has
+\((\mu\nabla_\mu B_a)^A=-\gamma_m B_a^A\).  The object which carries the
+\(+r\gamma_m\) source anomalous dimension is not the contraction with these
+running vectors.  It is the fixed-coordinate coefficient tensor
+\begin{equation}
+  K^{\rm comp}_{A_1\cdots A_r}(\mu)
   =
   \mathcal R_{\rm f}^{\mathcal S}(\mu)
   \left.
   \frac{\partial^r}
-    {\partial\lambda_1\cdots\partial\lambda_r}
-  \det\!\left(M(\mu)+\sum_{a=1}^r\lambda_a B_a(\mu)\right)
-  \right|_{\lambda=0}.
+    {\partial J^{A_1}\cdots\partial J^{A_r}}
+  \det\!\left(M(\mu)+J^A E_A(\mu)\right)
+  \right|_{J=0},
   \label{eq:instanton-mass-source-rg-differentiated-coefficient}
 \end{equation}
+where the derivatives are with respect to fixed local coordinates \(J^A\).
 If the selected minor has residual mass degree \(N_f-r\), then, up to the
-finite source-basis connection and explicit matching residual \(R_r^{\rm RG}\),
+explicit matching residual \(R^{\rm RG}_{A_1\cdots A_r}\),
 \begin{equation}
-  \mu\frac{\dd}{\dd\mu}K_r
+  (\mu\nabla_\mu K^{\rm comp})_{A_1\cdots A_r}
   =
-  r\gamma_m K_r+R_r^{\rm RG}.
+  r\gamma_m K^{\rm comp}_{A_1\cdots A_r}
+  +R^{\rm RG}_{A_1\cdots A_r},
   \label{eq:instanton-mass-source-rg-channel-flow}
 \end{equation}
-A differentiated instanton coefficient is therefore not a physical channel
-merely because the parent density in
-\eqref{eq:instanton-source-functional-rg-invariance} was invariant.  It must
-be paired with the renormalized source, operator, or external-state projection
-covector \(\mathfrak P_r(\mu)\) in the same channel, with
+with
 \[
-  \mu\frac{\dd}{\dd\mu}\mathfrak P_r
+  (\mu\nabla_\mu K)_{A_1\cdots A_r}
   =
-  -r\gamma_m\mathfrak P_r+R_{\mathfrak P}^{\rm RG},
+  \mu\frac{\dd}{\dd\mu}K_{A_1\cdots A_r}
+  -\sum_{i=1}^r
+  \Gamma_{A_i}{}^B K_{A_1\cdots B\cdots A_r}.
 \]
-before the product \(\mathfrak P_r K_r\) is a candidate RG-stable amplitude
-coordinate.
+The contracted coefficient in running physical source directions is instead
+\begin{equation}
+  K^{\rm phys}[B_1,\ldots,B_r]
+  =
+  K^{\rm comp}_{A_1\cdots A_r}
+  B_1^{A_1}\cdots B_r^{A_r}
+  =
+  \mathcal R_{\rm f}^{\mathcal S}
+  \left.
+  \frac{\partial^r}
+    {\partial\lambda_1\cdots\partial\lambda_r}
+  \det\!\left(M+\sum_{a=1}^r\lambda_a B_a\right)
+  \right|_{\lambda=0}.
+  \label{eq:instanton-running-source-rg-contraction}
+\end{equation}
+Here the determinant derivative contains \(N_f-r\) running mass factors and
+\(r\) running source vectors, so it scales as \(-N_f\gamma_m\); the
+\(+N_f\gamma_m\) flow of \(\mathcal R_{\rm f}^{\mathcal S}\) makes
+\(K^{\rm phys}\) invariant, apart from the contracted residuals.  The
+\(+r\gamma_m\) law in
+\eqref{eq:instanton-mass-source-rg-channel-flow} is therefore a fixed-basis
+component statement.  A differentiated instanton coefficient is a candidate
+amplitude coordinate only after this choice is made: either contract
+\(K^{\rm comp}_{A_1\cdots A_r}\) with a transported projection vector
+\(\mathfrak P^{A_1\cdots A_r}\) obeying
+\[
+  (\mu\nabla_\mu\mathfrak P)^{A_1\cdots A_r}
+  =
+  -r\gamma_m\mathfrak P^{A_1\cdots A_r}
+  +R_{\mathfrak P}^{A_1\cdots A_r},
+\]
+or work directly with \(K^{\rm phys}[B_1,\ldots,B_r]\) and do not attach the
+source anomalous dimension a second time.
 
 For two flavors this bookkeeping is visible in
 \[
@@ -874,14 +918,23 @@ For two flavors this bookkeeping is visible in
   m_um_d+m_uB_{dd}+m_dB_{uu}+B_{uu}B_{dd}-B_{ud}B_{du}.
 \]
 The vacuum coordinate \(r=0\) is made invariant by
-\(\mathcal R_{\rm f}^{\mathcal S}\).  The one-source term \(m_dB_{uu}\)
-carries \(+\gamma_m\) after the finite light-fermion determinant has been
-included.  The hard four-source coefficient
-\(B_{uu}B_{dd}-B_{ud}B_{du}\) carries \(+2\gamma_m\) until the
-renormalized two-source or four-external projection is transported with the
-opposite flow.  Thus the density power and the axial selection rule are still
-not the amplitude: the mass/source RG frame and the physical projection frame
-have to be paired.
+\(\mathcal R_{\rm f}^{\mathcal S}\).  In a fixed source basis the component
+coefficients are
+\[
+  K^{\rm comp}_{uu}=\mathcal R_{\rm f}^{\mathcal S}m_d,\qquad
+  K^{\rm comp}_{dd}=\mathcal R_{\rm f}^{\mathcal S}m_u,\qquad
+  K^{\rm comp}_{uu,dd}=\mathcal R_{\rm f}^{\mathcal S},\qquad
+  K^{\rm comp}_{ud,du}=-\mathcal R_{\rm f}^{\mathcal S},
+\]
+with RG weights \(+\gamma_m,+\gamma_m,+2\gamma_m,+2\gamma_m\),
+respectively, before projection.  If instead the displayed \(B\) entries are
+running physical source components, then
+\(\mathcal R_{\rm f}^{\mathcal S}m_dB_{uu}\) and
+\(\mathcal R_{\rm f}^{\mathcal S}(B_{uu}B_{dd}-B_{ud}B_{du})\) are invariant
+in this source RG bookkeeping.  Thus the density power and the axial
+selection rule are still not the amplitude: the mass/source RG frame and the
+physical projection frame have to be paired without double-counting the
+running source directions.
 \end{controlledapproximation}
 
 \section{A Hard Four-Fermion Benchmark}
