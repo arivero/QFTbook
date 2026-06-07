@@ -1441,6 +1441,73 @@ instanton amplitude calculation is harder than a moduli-space calculation:
 the determinant of the Hessian and the fluctuation average of the source
 insertion are coupled through the same measure but are not the same number.
 
+\begin{controlledapproximation}[Primed determinant response to a source perturbation]
+\label{ca:instanton-primed-determinant-source-response}
+Fix the finite regulator, the background gauge slice, and the subtraction
+scheme.  Let \(K_z\) be the bosonic Hessian on the horizontal normal space
+after collective and gauge zero modes have been removed, and let
+\(G_z=K_z^{-1}\) on that primed space.  Suppose a source or external
+background changes the quadratic normal action by
+\[
+  K_z(\epsilon)=K_z+\epsilon R_z+O(\epsilon^3)
+\]
+with the \(O(\epsilon^2)\) local counterterm already separated.  The bosonic
+zero-mode-deleted determinant ratio is
+\[
+  \mathcal D_B(\epsilon)
+  =
+  \left[
+    \frac{\det{}'K_z(\epsilon)}{\det{}'K_z}
+  \right]^{-1/2}
+  =
+  \det{}'(1+\epsilon G_zR_z)^{-1/2}.
+\]
+Hence
+\begin{equation}
+  \log \mathcal D_B(\epsilon)
+  =
+  -\frac{\epsilon}{2}\operatorname{Tr}'(G_zR_z)
+  +
+  \frac{\epsilon^2}{4}
+  \operatorname{Tr}'(G_zR_zG_zR_z)
+  +R_B^{(3)}(\epsilon).
+  \label{eq:instanton-primed-boson-determinant-response}
+\end{equation}
+For a Dirac nonzero-mode block \(D_z(\epsilon)=D_z+\epsilon S_z\), with
+\(G_z^{F}=D_z^{-1}\) on the zero-mode-deleted fermion space,
+\begin{equation}
+  \log \mathcal D_F(\epsilon)
+  =
+  \epsilon\operatorname{Tr}'(G_z^{F}S_z)
+  -
+  \frac{\epsilon^2}{2}
+  \operatorname{Tr}'(G_z^{F}S_zG_z^{F}S_z)
+  +R_F^{(3)}(\epsilon).
+  \label{eq:instanton-primed-fermion-determinant-response}
+\end{equation}
+The finite counterterm polynomial must be added in the same regulator
+coordinate; it is not a license to drop the primed traces.  If
+\(\|X_B\|<1\) and \(\|X_F\|<1\), where
+\(X_B=\epsilon G_zR_z\) and \(X_F=\epsilon G_z^{F}S_z\), then in the finite
+retained normal space the omitted logarithmic terms obey
+\[
+  |R_B^{(3)}|
+  \le
+  \frac{\|X_B\|_1\|X_B\|^2}{6(1-\|X_B\|)},
+  \qquad
+  |R_F^{(3)}|
+  \le
+  \frac{\|X_F\|_1\|X_F\|^2}{3(1-\|X_F\|)} .
+\]
+Thus the source response of the determinant is a primed resolvent
+calculation.  It is not fixed by the \(J=0\) determinant constant, by the
+dimension of the moduli space, or by an unprimed trace with an arbitrary
+regulator placed on the zero modes.  The same prime, gauge slice, and
+counterterm convention must be used before this determinant response can be
+multiplied by the zero-mode source determinant or projected to a physical
+amplitude.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Nonzero-mode source quotient]
 \label{ca:instanton-nonzero-mode-source-quotient}
 Fix a retained instanton chart point \(z\), project out collective and gauge
@@ -1598,10 +1665,13 @@ absorbing the term into \(C_{\mathcal S}\) turns a source-dependent correction
 into a false universal prefactor.
 \end{controlledapproximation}
 
-Thus a hard instanton amplitude has three separate fluctuation entries.  The
+Thus a hard instanton amplitude has four separate fluctuation entries.  The
 universal logarithmic determinant supplies the \((\mu\rho)^{b_0}\) density
 factor.  The finite determinant constant fixes a scheme-dependent Gaussian
-normalization.  The quotient
+normalization.  The primed resolvent response
+\eqref{eq:instanton-primed-boson-determinant-response}--\eqref{eq:instanton-primed-fermion-determinant-response}
+records how the determinant itself changes under the selected source or
+background perturbation.  The quotient
 \eqref{eq:instanton-physical-source-fluctuation-quotient} tests the selected
 source under that Gaussian and its interaction remainders, including cumulants
 such as \eqref{eq:instanton-first-source-cumulant-normal}.  Collapsing these

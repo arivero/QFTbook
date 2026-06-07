@@ -845,6 +845,10 @@ Current checks:
   killing symmetric color-pair sources before the size integral,
   the individual BPST zero-mode slot tail from the Bessel-product cancellation
   \(F_{\rm zm}(cs/2)=6c^{-3}s^{-3}+45c^{-5}s^{-5}+O(s^{-7})\),
+  the primed determinant source-response expansion with bosonic and fermionic
+  resolvent traces, counterterm coordinates, and negative controls for
+  unprimed zero-mode-regulated traces, wrong bosonic signs, and
+  determinant-constant-only shortcuts,
   the amputated 't Hooft four-point assembly as a common-regulator product of
   density, Haar projection, chiral source determinants, individual zero-mode
   slots, nonzero-mode source quotient, amputation, physical projection, and

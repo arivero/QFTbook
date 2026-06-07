@@ -45,6 +45,10 @@ Target claims:
   nonzero-mode fluctuation quotient separates the Gaussian source mean from
   its covariance with the same interaction weight that defines the determinant
   normalization.
+- `ca:instanton-primed-determinant-source-response`: source perturbations of
+  the zero-mode-deleted fluctuation determinant are primed resolvent trace
+  calculations with boson/fermion signs and counterterm coordinates fixed in
+  the same regulator.
 - `ca:instanton-first-source-cumulant-normal-modes`: a linear normal-mode
   source deformation has zero Gaussian mean but contributes to the instanton
   source amplitude through its Wick covariance with the cubic fluctuation
@@ -123,6 +127,7 @@ Independent construction:
   weighted proper-time determinant logarithms,
   finite color two-frame Haar projectors,
   the Bessel-product tail cancellation for an individual zero-mode slot,
+  primed determinant source-response coefficients from finite resolvents,
   finite Gaussian source-quotient covariance identities,
   Wick-paired first source cumulants from cubic normal-mode interactions,
   multiplicative hard-amplitude assembly bounds on signed windows,
@@ -207,7 +212,9 @@ Negative controls:
   dimension-only zero-mode count substituted for the collective-coordinate
   Jacobian, raw gauge-vertical tangents used before horizontal projection, a
   determinant used where the functional measure requires a square-root
-  determinant, a vacuum determinant calibration substituted for a
+  determinant, an unprimed trace with an arbitrary zero-mode regulator
+  substituted for a primed determinant response, a wrong bosonic determinant
+  sign, a vacuum determinant calibration substituted for a
   source-fluctuation quotient, a zero cubic interaction used to erase a
   linear-source cumulant, a source-dependent cubic covariance absorbed into a
   universal determinant constant, a relative quotient formed after zero-mode
@@ -1082,6 +1089,128 @@ def check_individual_zero_mode_slot_tail_from_bessel_products() -> None:
         "amputation recovers zero-mode slot tail",
         unamputated_slot_tail / external_residue,
         fzm_z_tail,
+    )
+
+
+def check_primed_determinant_source_response() -> None:
+    boson_hessian: Matrix2 = (
+        (Fraction(3), Fraction(1)),
+        (Fraction(1), Fraction(2)),
+    )
+    boson_source: Matrix2 = (
+        (Fraction(1, 5), Fraction(2, 7)),
+        (Fraction(2, 7), Fraction(-1, 3)),
+    )
+    boson_resolvent = matmul2(inv2(boson_hessian), boson_source)
+    boson_trace = trace2(boson_resolvent)
+    boson_trace_square = trace2(matmul2(boson_resolvent, boson_resolvent))
+    boson_det_square = det2(boson_resolvent)
+
+    assert_equal(
+        "primed boson determinant polynomial uses resolvent traces",
+        boson_det_square,
+        Fraction(1, 2) * (boson_trace * boson_trace - boson_trace_square),
+    )
+    boson_ratio_first = -Fraction(1, 2) * boson_trace
+    boson_ratio_second = (
+        -Fraction(1, 2) * boson_det_square
+        + Fraction(3, 8) * boson_trace * boson_trace
+    )
+    boson_log_second_from_ratio = (
+        boson_ratio_second
+        - Fraction(1, 2) * boson_ratio_first * boson_ratio_first
+    )
+    assert_equal(
+        "bosonic determinant source log first coefficient",
+        boson_ratio_first,
+        -Fraction(1, 2) * boson_trace,
+    )
+    assert_equal(
+        "bosonic determinant source log second coefficient",
+        boson_log_second_from_ratio,
+        Fraction(1, 4) * boson_trace_square,
+    )
+
+    fermion_dirac: Matrix2 = (
+        (Fraction(2), Fraction(1)),
+        (Fraction(3), Fraction(5)),
+    )
+    fermion_source: Matrix2 = (
+        (Fraction(1, 4), Fraction(-1, 6)),
+        (Fraction(2, 9), Fraction(1, 7)),
+    )
+    fermion_resolvent = matmul2(inv2(fermion_dirac), fermion_source)
+    fermion_trace = trace2(fermion_resolvent)
+    fermion_trace_square = trace2(matmul2(fermion_resolvent, fermion_resolvent))
+    fermion_det_square = det2(fermion_resolvent)
+    fermion_log_second_from_det = (
+        fermion_det_square
+        - Fraction(1, 2) * fermion_trace * fermion_trace
+    )
+    assert_equal(
+        "fermion determinant source log first coefficient",
+        fermion_trace,
+        trace2(fermion_resolvent),
+    )
+    assert_equal(
+        "fermion determinant source log second coefficient",
+        fermion_log_second_from_det,
+        -Fraction(1, 2) * fermion_trace_square,
+    )
+
+    counterterm_first = Fraction(1, 11)
+    counterterm_second = Fraction(-2, 13)
+    combined_log_first = (
+        counterterm_first
+        - Fraction(1, 2) * boson_trace
+        + fermion_trace
+    )
+    combined_log_second = (
+        counterterm_second
+        + Fraction(1, 4) * boson_trace_square
+        - Fraction(1, 2) * fermion_trace_square
+    )
+    source_independent_counterterm_only = counterterm_first
+    assert_not_equal(
+        "source-independent determinant constant misses primed first response",
+        combined_log_first,
+        source_independent_counterterm_only,
+    )
+    wrong_boson_sign = (
+        counterterm_first
+        + Fraction(1, 2) * boson_trace
+        + fermion_trace
+    )
+    assert_not_equal(
+        "wrong bosonic determinant sign changes source response",
+        wrong_boson_sign,
+        combined_log_first,
+    )
+    determinant_constant_second_only = counterterm_second
+    assert_not_equal(
+        "second determinant response is not a scheme constant alone",
+        combined_log_second,
+        determinant_constant_second_only,
+    )
+
+    zero_mode_source_trace = Fraction(3, 17)
+    zero_mode_regulator_a = Fraction(1, 19)
+    zero_mode_regulator_b = Fraction(1, 23)
+    unprimed_trace_a = (
+        boson_trace + zero_mode_source_trace / zero_mode_regulator_a
+    )
+    unprimed_trace_b = (
+        boson_trace + zero_mode_source_trace / zero_mode_regulator_b
+    )
+    assert_not_equal(
+        "unprimed determinant trace depends on arbitrary zero-mode regulator",
+        unprimed_trace_a,
+        unprimed_trace_b,
+    )
+    assert_not_equal(
+        "zero-mode-regulated trace is not the primed trace",
+        unprimed_trace_a,
+        boson_trace,
     )
 
 
@@ -3148,6 +3277,7 @@ def main() -> None:
     check_proper_time_determinant_log_channel_window()
     check_hard_color_orientation_haar_tensor()
     check_individual_zero_mode_slot_tail_from_bessel_products()
+    check_primed_determinant_source_response()
     check_nonzero_mode_source_fluctuation_quotient()
     check_first_source_cumulant_from_normal_modes()
     check_hard_amplitude_assembly_bound()

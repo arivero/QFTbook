@@ -133,6 +133,11 @@
 - `sec:instanton-normal-fluctuation-source-data`: local amplitude-facing block
   separating the determinant normalization of nonzero modes from the
   fluctuation average of the selected source insertion.
+- `ca:instanton-primed-determinant-source-response`: finite-regulator
+  determinant response to a source/background perturbation, expressed through
+  primed bosonic and fermionic resolvent traces on the zero-mode-deleted
+  normal spaces, with the counterterm polynomial kept in the same regulator
+  coordinate.
 - `ca:instanton-nonzero-mode-source-quotient`: finite Gaussian source quotient
   and covariance identity, including the quadratic source trace correction
   `1/2 Tr(QC)` and the absolute bound
@@ -248,6 +253,12 @@
   of the apparent `t^(-1)` terms in the BPST zero-mode Bessel products, giving
   the differentiated-slot power tail rather than the fused-density exponential
   source class.
+- The primed determinant-response block opens a different piece of the
+  fluctuation calculation: once the source or background perturbs the
+  quadratic normal operator, the determinant changes by primed resolvent
+  traces with fixed bosonic/fermionic signs and counterterm coordinates.
+  Reintroducing zero modes by an arbitrary regulator, or calling the response
+  a determinant constant, changes the amplitude normalization.
 - The normal-fluctuation source quotient opens the next compressed input:
   even after the Gaussian determinant is normalized, the selected hard source
   has a mean and a covariance with nonzero-mode interactions.  A vacuum
@@ -358,6 +369,9 @@
   derives the individual zero-mode slot tail coefficient from the Bessel
   product cancellation and rejects fused-density endpoint substitution or
   hidden unamputated residues,
+  verifies the primed determinant source-response expansion with bosonic and
+  fermionic resolvent traces and rejects unprimed zero-mode-regulated traces,
+  wrong bosonic signs, and determinant-constant-only shortcuts,
   verifies the amputated 't Hooft four-point assembly and rejects density-only
   shortcuts, rank-lost chiral source determinants, symmetric Haar sources,
   omitted nonzero-mode source quotients, unamputated source overlaps, and
@@ -467,6 +481,12 @@
   deriving the BPST zero-mode slot tail in the physical-amplitude chapter and
   pairing it with a focused companion check.  This is amplitude/source
   machinery, not a moduli-space refinement.
+- 2026-06-06 primed determinant-response pass: added
+  `ca:instanton-primed-determinant-source-response` at the entrance to the
+  normal-fluctuation section.  The pass makes the source/background response
+  of the zero-mode-deleted determinant an explicit primed resolvent trace
+  calculation, with companion checks rejecting unprimed zero-mode regulators,
+  wrong bosonic determinant signs, and determinant-constant-only shortcuts.
 - 2026-06-06 normal-fluctuation source quotient pass: added the finite Gaussian
   source-fluctuation quotient to the physical-amplitude chapter, with companion
   checks rejecting replacement by a vacuum determinant constant.  This targets
