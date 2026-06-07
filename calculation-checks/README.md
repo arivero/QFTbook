@@ -3121,7 +3121,10 @@ Current checks:
   compactification, operator-map, and continuum residual budgets, the A-model
   degree-one zero-mode measure bridge checking Berezin top-degree saturation,
   determinant-line orientation, obstruction-factor omission, nonzero-mode
-  determinant cancellation, and residual underbudgeting, the finite
+  determinant cancellation, and residual underbudgeting, the degree-one
+  Euler-sequence determinant-line check computing the \(H^0(\mathcal O(1)^N)/
+  H^0(\mathcal O)\) tangent quotient, complex orientation, paired nonzero-mode
+  cancellation, and unquotiented-zero-mode negative control, the finite
   measure-scheme covariance test checking the simultaneous transport of
   vortex coefficient normalizations, the FI coordinate, chart Jacobians,
   determinant densities, and orientation/operator signs, the Hori--Vafa

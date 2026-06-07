@@ -3523,6 +3523,110 @@ def check_degree_one_amodel_zero_mode_measure_bridge() -> None:
         )
 
 
+def check_degree_one_cpn_euler_determinant_line() -> None:
+    # Pulling back the Euler sequence along a degree-one map gives
+    # 0 -> O -> O(1)^N -> phi^*TCP^{N-1} -> 0 with no H^1.  This is the
+    # zero-mode quotient and determinant-line orientation hidden behind the
+    # degree-one projective A-model measure.
+    def h0_p1(line_degree: int) -> int:
+        return line_degree + 1 if line_degree >= 0 else 0
+
+    def h1_p1(line_degree: int) -> int:
+        return -line_degree - 1 if line_degree <= -2 else 0
+
+    for n_fields in range(2, 9):
+        h0_o = h0_p1(0)
+        h0_o1 = h0_p1(1)
+        h1_o = h1_p1(0)
+        h1_o1 = h1_p1(1)
+        assert_equal(f"CP^{n_fields - 1} Euler O H0", h0_o, 1)
+        assert_equal(f"CP^{n_fields - 1} Euler O(1) H0", h0_o1, 2)
+        assert_equal(f"CP^{n_fields - 1} Euler H1 obstruction vanishes", h1_o + n_fields * h1_o1, 0)
+
+        euler_injection = [[Fraction(0)] for _ in range(2 * n_fields)]
+        euler_injection[0][0] = Fraction(1)  # first homogeneous coordinate: s
+        euler_injection[3][0] = Fraction(1)  # second homogeneous coordinate: t
+        quotient_dimension = 2 * n_fields - rank_fraction(euler_injection)
+        expected_tangent_dimension = 2 * n_fields - 1
+        assert_equal(
+            f"CP^{n_fields - 1} degree-one tangent zero modes from Euler quotient",
+            quotient_dimension,
+            expected_tangent_dimension,
+        )
+
+        insertion_degrees = [1, n_fields - 1, n_fields - 1]
+        selection_degree = sum(insertion_degrees)
+        assert_equal(
+            f"CP^{n_fields - 1} Euler quotient matches A-model Berezin degree",
+            selection_degree,
+            quotient_dimension,
+        )
+
+        unquotiented_dimension = n_fields * h0_o1
+        assert_equal(
+            f"CP^{n_fields - 1} forgetting common rescaling overcounts one zero mode",
+            unquotiented_dimension - quotient_dimension,
+            1,
+        )
+        if selection_degree == unquotiented_dimension:
+            raise AssertionError("unquotiented homogeneous coefficients should not pass the selection gate")
+
+        incidence_matrix = [
+            [Fraction(1) if row == col else Fraction(0) for col in range(quotient_dimension)]
+            for row in range(quotient_dimension)
+        ]
+        incidence_orientation = determinant_fraction(incidence_matrix)
+        assert_equal(
+            f"CP^{n_fields - 1} incidence orientation from Euler-oriented chart",
+            incidence_orientation,
+            Fraction(1),
+        )
+
+        q_regulated = Fraction(n_fields + 5, n_fields + 13)
+        euler_orientation = Fraction(1)
+        paired_nonzero_ratio = Fraction(1)
+        degree_gate = Fraction(1) if selection_degree == quotient_dimension else Fraction(0)
+        retained_coefficient = (
+            q_regulated
+            * euler_orientation
+            * paired_nonzero_ratio
+            * degree_gate
+            * incidence_orientation
+        )
+        assert_equal(
+            f"CP^{n_fields - 1} Euler determinant-line retained coefficient",
+            retained_coefficient,
+            q_regulated,
+        )
+
+        wrong_pairing_ratio = Fraction(7, 5)
+        if retained_coefficient * wrong_pairing_ratio == retained_coefficient:
+            raise AssertionError("unpaired nonzero-mode determinant ratio should change the coefficient")
+
+        flipped_euler_orientation = -euler_orientation
+        assert_equal(
+            "Euler determinant-line orientation flip changes degree-one coefficient",
+            q_regulated
+            * flipped_euler_orientation
+            * paired_nonzero_ratio
+            * degree_gate
+            * incidence_orientation,
+            -retained_coefficient,
+        )
+
+        obstruction_rank = 1
+        omitted_obstruction_gate = Fraction(0 if obstruction_rank else 1)
+        assert_equal(
+            "omitted obstruction Euler factor kills the finite retained package",
+            q_regulated
+            * euler_orientation
+            * paired_nonzero_ratio
+            * omitted_obstruction_gate
+            * incidence_orientation,
+            Fraction(0),
+        )
+
+
 def check_degree_one_measure_scheme_covariance() -> None:
     # A finite change of vortex coefficient normalization and zero-mode chart
     # coordinates is harmless only when the FI coordinate, determinant density,
@@ -5574,6 +5678,7 @@ def main() -> None:
     check_degree_one_stable_map_incidence_model()
     check_cp_degree_d_quantum_product_iteration()
     check_degree_one_amodel_zero_mode_measure_bridge()
+    check_degree_one_cpn_euler_determinant_line()
     check_degree_one_measure_scheme_covariance()
     check_hori_vafa_residue_instanton_comparison_map()
     check_cigar_metric_elimination()

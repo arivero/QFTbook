@@ -3292,6 +3292,77 @@ determinant-line orientation, the compactification/contact prescription, and
 the operator map to \(H\).
 \end{remark}
 
+\begin{example}[Degree-one projective determinant line from the Euler sequence]
+\label{ex:cpn-degree-one-euler-determinant-line}
+For the degree-one \(\mathbb P^{N-1}\) sector the zero-mode and orientation
+part of the preceding bridge is not a free normalization.  Let
+\(\phi:\mathbb P^1\to\mathbb P^{N-1}\) be a degree-one map.  Pulling back the
+Euler sequence gives
+\[
+  0\longrightarrow
+  \mathcal O_{\mathbb P^1}
+  \longrightarrow
+  \mathcal O_{\mathbb P^1}(1)^{\oplus N}
+  \longrightarrow
+  \phi^\ast T\mathbb P^{N-1}
+  \longrightarrow 0 .
+\]
+Since \(H^1(\mathbb P^1,\mathcal O)=H^1(\mathbb P^1,\mathcal O(1))=0\),
+cohomology gives the finite zero-mode quotient
+\begin{equation}
+  0\longrightarrow
+  H^0(\mathcal O)
+  \longrightarrow
+  H^0(\mathcal O(1))^{\oplus N}
+  \longrightarrow
+  H^0(\phi^\ast T\mathbb P^{N-1})
+  \longrightarrow 0,
+  \qquad
+  \dim_{\mathbb C}H^0(\phi^\ast T\mathbb P^{N-1})=2N-1 .
+  \label{eq:cpn-degree-one-euler-zero-mode-quotient}
+\end{equation}
+The first term is the common complex rescaling of the homogeneous
+polynomials.  Keeping it as a physical tangent direction would give \(2N\)
+complex zero modes and would miss the selection rule in
+\eqref{eq:cpn-degree-one-amodel-berezin-degree}.  The determinant line is
+therefore transported by the exact-sequence isomorphism
+\begin{equation}
+  \det H^0(\phi^\ast T\mathbb P^{N-1})
+  \cong
+  \det\!\left(H^0(\mathcal O(1))^{\oplus N}\right)
+  \otimes
+  \det H^0(\mathcal O)^{-1},
+  \label{eq:cpn-degree-one-euler-determinant-line}
+\end{equation}
+with the complex orientation inherited from the quotient.  In the A-twisted
+Gaussian normal directions the nonzero bosonic modes and their fermionic
+partners are paired by the local scalar supercharge, so their determinant
+ratio is \(1\) in this retained topological window.  A value different from
+\(1\) is not a harmless convention: it is an unpaired determinant-line
+residual and belongs in \(R_{\rm det}\).
+
+Thus the retained degree-one coefficient for
+\((H,H^{N-1},H^{N-1})\) has the finite form
+\[
+  q_\Lambda\,
+  {\rm or}_{\rm Euler}\,
+  {\mathcal W}^{\rm pair}_{\rm nz}\,
+  {\bf 1}_{\deg=2N-1}\,
+  I_{\rm inc},
+  \qquad
+  {\rm or}_{\rm Euler}=+1,\quad
+  {\mathcal W}^{\rm pair}_{\rm nz}=1,\quad
+  I_{\rm inc}=1 .
+\]
+The three factors have different origins: the Euler sequence removes the
+gauge-rescaling zero mode and fixes the determinant-line orientation, the
+paired normal complex supplies the nonzero-mode cancellation, and the incidence
+Jacobian supplies the line count.  This is still not a continuum vortex
+measure theorem; it is the finite zero-mode/determinant-line calculation that
+the direct instanton side must pass before the Hori--Vafa residue is used as a
+comparison.
+\end{example}
+
 \begin{remark}[Finite measure-scheme covariance]
 \label{rem:cpn-degree-one-measure-scheme-covariance}
 The previous bridge has a further invariance test.  The finite objects

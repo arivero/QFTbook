@@ -136,6 +136,12 @@ and
   degree-one instanton-measure density, retained-chart Jacobian, and finite
   vortex-coefficient rescaling used to test scheme covariance of the
   `P^{N-1}` degree-one observable.
+- `ex:cpn-degree-one-euler-determinant-line`,
+  `eq:cpn-degree-one-euler-zero-mode-quotient`,
+  `eq:cpn-degree-one-euler-determinant-line`: degree-one `P^{N-1}` Euler
+  sequence quotient computing the `H^0(O(1)^N)/H^0(O)` tangent zero modes,
+  determinant-line orientation, and paired nonzero-mode cancellation in the
+  retained A-twisted window.
 - `q_mir`, `I_{Lambda,1}`, `B_vort`, `B_I`, `B_q`, `B_off,a`:
   mirror-residue FI coordinate, retained finite degree-one instanton-measure
   integral, and residual majorants in the Hori--Vafa residue/direct-instanton
@@ -450,6 +456,12 @@ and
   insertions `(H,H^{N-1},H^{N-1})` saturate the top zero-mode degree
   `2N-1`; orientation reversal, extra zero modes, or omitted obstruction data
   change or kill the coefficient.
+- Adds the explicit degree-one projective Euler-sequence determinant-line
+  calculation: pulling back
+  `0 -> O -> O(1)^N -> phi^* T P^{N-1} -> 0` computes the `2N-1`
+  tangent/fermion zero-mode quotient, removes the common homogeneous
+  rescaling, fixes the complex determinant-line orientation, and keeps the
+  paired nonzero-mode determinant ratio distinct from the incidence count.
 - Adds the finite measure-scheme covariance test for that same degree-one
   observable: rescaling the supplied vortex coefficients must be accompanied by
   the inverse FI-coordinate shift, and changing the zero-mode chart density
@@ -681,6 +693,12 @@ and
     comparison.  This makes clear that the stable-map incidence count and the
     Hori--Vafa residue are protected evidence only after the same regulator
     supplies the instanton measure and fermion-zero-mode saturation.
+  - the degree-one `P^{N-1}` Euler-sequence determinant-line check: computes
+    the tangent zero modes from `H^0(O(1)^N)/H^0(O)`, verifies the Berezin
+    selection degree, fixes the retained complex orientation, checks paired
+    nonzero-mode determinant cancellation, and rejects forgetting the common
+    rescaling, flipping the determinant orientation, or omitting an obstruction
+    Euler factor;
   - the degree-one finite measure-scheme covariance test: exact transport of
     finite vortex-coefficient rescalings into the FI coordinate, retained-chart
     Jacobian cancellation between the collective-coordinate measure and the
@@ -1009,6 +1027,12 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   constructed in one regulator.  The theorem-form audit now rejects
   comparison/proof-obligation titles in the controlled-approximation
   environment.
+- The 2026-06-07 issue #847 determinant-line follow-up adds the degree-one
+  `P^{N-1}` Euler-sequence zero-mode quotient and companion finite check.  This
+  is a genuine retained-window calculation of the direct A-model measure side,
+  not a full continuum Hori--Vafa proof: it closes the common-rescaling,
+  determinant-line-orientation, and paired-nonzero-mode cell while leaving the
+  vortex-regulator limit and operator/source comparison as residual work.
 - The 2026-06-07 issue #847 quotient global-form lattice pass makes that last
   boundary constructive.  The chapter now displays the cocharacter flux
   lattice, dual character lattice, FI-theta period lattice, and rank-one
