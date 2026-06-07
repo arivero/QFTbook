@@ -3153,7 +3153,10 @@ Current checks:
   evaluation-form Berezin-Jacobian check computing the top zero-mode coefficient
   of the two point insertions and one hyperplane insertion, with negative
   controls for duplicated evaluation forms, hyperplane rescaling, orientation
-  swaps, and unsaturated zero modes, the finite
+  swaps, and unsaturated zero modes, the degree-one compactification/contact
+  gate checking the three boundary divisors where point or hyperplane insertions
+  collide, the canonical separated-evaluation convention, nonzero contact
+  counterterms, and the contact-omitted residual negative control, the finite
   measure-scheme covariance test checking the simultaneous transport of
   vortex coefficient normalizations, the FI coordinate, chart Jacobians,
   determinant densities, and orientation/operator signs, the Hori--Vafa

@@ -160,6 +160,13 @@ and
   Jacobian for the degree-one `P^{N-1}` three-point insertion, showing how two
   point insertions and one hyperplane insertion saturate the fermionic zero-mode
   measure with coefficient `+1`.
+- `ex:cpn-degree-one-compactification-contact-gate`,
+  `eq:cpn-degree-one-boundary-indicators`,
+  `eq:cpn-degree-one-compactification-contact-gate`: finite compactification
+  and contact-term gate for the degree-one `P^{N-1}` A-model coefficient,
+  checking the three stable-map boundary strata where point or hyperplane
+  insertions collide and separating the canonical zero-contact convention from
+  nonzero regulator contact counterterms.
 - `q_mir`, `I_{Lambda,1}`, `B_vort`, `B_I`, `B_q`, `B_off,a`:
   mirror-residue FI coordinate, retained finite degree-one instanton-measure
   integral, and residual majorants in the Hori--Vafa residue/direct-instanton

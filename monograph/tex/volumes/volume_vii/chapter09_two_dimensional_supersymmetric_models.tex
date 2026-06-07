@@ -3511,6 +3511,83 @@ operator normalization and evaluation-form orientation in the same regulator as
 the vortex determinant line.
 \end{example}
 
+\begin{example}[Degree-one compactification and contact gate]
+\label{ex:cpn-degree-one-compactification-contact-gate}
+The preceding Jacobian is still a bulk-chart calculation.  The compactified
+degree-one A-model integral also has to say what happens at the boundary
+divisors where a degree-zero component carries colliding marked points, and
+what local contact convention is used for coincident source insertions.
+Continue with the representatives
+\[
+  p_0=[1:0:\cdots:0],\qquad
+  p_1=[0:1:0:\cdots:0],\qquad
+  h=X_1-X_0 .
+\]
+In \(\overline{\mathcal M}_{0,3}(\mathbb P^{N-1},1)\) let
+\(\Delta_{23|1}\) denote the boundary stratum on which the two point
+insertions lie on a contracted component, and let \(\Delta_{12|3}\) and
+\(\Delta_{13|2}\) denote the analogous strata where the hyperplane insertion
+collides with \(p_0\) or \(p_1\).  Restricting the evaluation forms to these
+strata gives the finite boundary indicators
+\begin{equation}
+  \mathcal B_{23}
+  =
+  {\bf 1}_{p_0=p_1},
+  \qquad
+  \mathcal B_{12}
+  =
+  {\bf 1}_{h(p_0)=0},
+  \qquad
+  \mathcal B_{13}
+  =
+  {\bf 1}_{h(p_1)=0}.
+  \label{eq:cpn-degree-one-boundary-indicators}
+\end{equation}
+For the chosen separated representatives,
+\[
+  p_0\neq p_1,\qquad h(p_0)=-1,\qquad h(p_1)=1,
+\]
+so the three boundary restrictions vanish.  Thus the compactified finite
+stable-map contribution in this source scheme is
+\begin{equation}
+  I_{\Lambda,1}^{\rm cpt}
+  =
+  I_{\rm bulk}
+  +
+  \mathcal B_{12}
+  +
+  \mathcal B_{13}
+  +
+  \mathcal B_{23}
+  +
+  C_{12,\Lambda}^{\rm ct}
+  +
+  C_{13,\Lambda}^{\rm ct}
+  +
+  C_{23,\Lambda}^{\rm ct},
+  \qquad
+  I_{\rm bulk}=1 .
+  \label{eq:cpn-degree-one-compactification-contact-gate}
+\end{equation}
+The canonical separated-evaluation convention used in the retained chart sets
+\(C_{ab,\Lambda}^{\rm ct}=0\), hence
+\[
+  I_{\Lambda,1}^{\rm cpt}=1.
+\]
+
+The test is not tautological.  If the two point representatives are made equal,
+then \(\mathcal B_{23}=1\); if the hyperplane is changed to one containing
+\(p_0\), then \(\mathcal B_{12}=1\).  In either case the bulk determinant
+\eqref{eq:cpn-degree-one-evaluation-berezin-jacobian} is not the full
+compactified integral.  Likewise a regulator that introduces nonzero local
+contact counterterms \(C_{ab,\Lambda}^{\rm ct}\) changes the retained
+coefficient unless the same contact convention is transported to the mirror
+coordinate and to the operator map.  This is the finite compactification part of
+\(R_{\rm line}\): the line count \(1\) is a physical A-model coefficient only
+after boundary strata and contact terms have been shown to vanish in the chosen
+scheme or have been included explicitly.
+\end{example}
+
 \begin{remark}[Finite measure-scheme covariance]
 \label{rem:cpn-degree-one-measure-scheme-covariance}
 The previous bridge has a further invariance test.  The finite objects
@@ -3630,7 +3707,9 @@ together with the degree gate
 \]
 and the compactification gate excluding the boundary strata where the two
 point constraints collide or the hyperplane insertion contains one of them.
-Thus \(I_{\Lambda,1}=1+R_{\rm meas}\) only after the determinant-line
+Example~\ref{ex:cpn-degree-one-compactification-contact-gate} gives the
+corresponding finite boundary/contact test.  Thus
+\(I_{\Lambda,1}=1+R_{\rm meas}\) only after the determinant-line
 orientation, zero-mode measure, compactification/contact convention, and
 operator normalization have been transported to the same regulator.  The
 mirror root sum has no access to these signs and gates by itself.

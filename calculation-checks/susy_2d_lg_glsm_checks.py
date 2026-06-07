@@ -22,8 +22,9 @@ vortex-fugacity dimensional-transmutation coordinate, the degree-one
 P^{N-1} stable-map computation, the finite degree-one stable-map incidence model
 with supplied vortex coefficient input plus conditional proof-obligation template for
 the quantum-product observable relation, the A-model degree-one zero-mode
-measure bridge, the degree-one evaluation-form Berezin Jacobian, the finite
-measure-scheme covariance test for that degree-one coefficient, the
+measure bridge, the degree-one evaluation-form Berezin Jacobian, the
+degree-one compactification/contact gate, the finite measure-scheme covariance
+test for that degree-one coefficient, the
 mirror-conjecture observable boundary separating
 full-QFT data from protected evidence, the full-action/IR-universality data
 boundary for mirror presentations, admissible mirror-datum and finite-volume
@@ -85,7 +86,7 @@ observables, matrix source-measure Gram kernels with contact-patch negative
 controls, plus
 finite density/Jacobian transport tests and double-entry
 mirror/direct-vortex comparisons whose direct side includes a separately
-computed incidence orientation, degree gate, and compactification gate, are
+computed incidence orientation, degree gate, and compactification/contact gate, are
 computed directly from finite data rather than by substituting the displayed
 final identities.
 
@@ -3791,6 +3792,163 @@ def check_degree_one_cpn_evaluation_form_berezin_jacobian() -> None:
         )
 
 
+def check_degree_one_cpn_compactification_contact_gate() -> None:
+    # The bulk incidence/Berezin determinant becomes an A-model coefficient only
+    # after the compactified boundary strata and source-contact convention are
+    # fixed in the same regulator.
+    for n_fields in range(2, 9):
+        point_zero = [Fraction(1)] + [Fraction(0)] * (n_fields - 1)
+        point_one = [Fraction(0), Fraction(1)] + [Fraction(0)] * (n_fields - 2)
+        hyperplane = [Fraction(-1), Fraction(1)] + [Fraction(0)] * (n_fields - 2)
+
+        def linear_value(linear_form: list[Fraction], point: list[Fraction]) -> Fraction:
+            return sum(
+                coefficient * coordinate
+                for coefficient, coordinate in zip(linear_form, point)
+            )
+
+        def boundary_indicators(
+            first_point: list[Fraction],
+            second_point: list[Fraction],
+            hyperplane_form: list[Fraction],
+        ) -> dict[str, Fraction]:
+            return {
+                "point-point boundary": Fraction(1 if first_point == second_point else 0),
+                "hyperplane-first boundary": Fraction(
+                    1 if linear_value(hyperplane_form, first_point) == 0 else 0
+                ),
+                "hyperplane-second boundary": Fraction(
+                    1 if linear_value(hyperplane_form, second_point) == 0 else 0
+                ),
+            }
+
+        def compactified_integral(
+            first_point: list[Fraction],
+            second_point: list[Fraction],
+            hyperplane_form: list[Fraction],
+            contact_terms: dict[str, Fraction],
+        ) -> Fraction:
+            bulk_jacobian = Fraction(1)
+            return (
+                bulk_jacobian
+                + sum(
+                    boundary_indicators(first_point, second_point, hyperplane_form).values(),
+                    Fraction(0),
+                )
+                + sum(contact_terms.values(), Fraction(0))
+            )
+
+        zero_contacts = {
+            "contact-12": Fraction(0),
+            "contact-13": Fraction(0),
+            "contact-23": Fraction(0),
+        }
+        canonical_boundaries = boundary_indicators(point_zero, point_one, hyperplane)
+        assert_equal(
+            f"CP^{n_fields - 1} separated representatives avoid compactification boundaries",
+            canonical_boundaries,
+            {
+                "point-point boundary": Fraction(0),
+                "hyperplane-first boundary": Fraction(0),
+                "hyperplane-second boundary": Fraction(0),
+            },
+        )
+        retained_integral = compactified_integral(
+            point_zero,
+            point_one,
+            hyperplane,
+            zero_contacts,
+        )
+        assert_equal(
+            f"CP^{n_fields - 1} compactification/contact gate retains unit line count",
+            retained_integral,
+            Fraction(1),
+        )
+
+        q_regulated = Fraction(n_fields + 2, n_fields + 9)
+        assert_equal(
+            "compactified degree-one coefficient uses the same retained integral",
+            q_regulated * retained_integral,
+            q_regulated,
+        )
+
+        collided_points_integral = compactified_integral(
+            point_zero,
+            point_zero,
+            hyperplane,
+            zero_contacts,
+        )
+        assert_equal(
+            "point collision creates a compactification-boundary contribution",
+            collided_points_integral,
+            Fraction(2),
+        )
+        if collided_points_integral == retained_integral:
+            raise AssertionError("colliding point representatives should not reuse the bulk chart")
+
+        hyperplane_through_first = [Fraction(0), Fraction(1)] + [Fraction(0)] * (n_fields - 2)
+        assert_equal(
+            "mutated hyperplane contains the first point",
+            linear_value(hyperplane_through_first, point_zero),
+            Fraction(0),
+        )
+        hyperplane_boundary_integral = compactified_integral(
+            point_zero,
+            point_one,
+            hyperplane_through_first,
+            zero_contacts,
+        )
+        assert_equal(
+            "hyperplane-through-point representative creates a boundary contribution",
+            hyperplane_boundary_integral,
+            Fraction(2),
+        )
+
+        nonzero_contacts = {
+            "contact-12": Fraction(1, 17),
+            "contact-13": -Fraction(1, 19),
+            "contact-23": Fraction(1, 23),
+        }
+        contact_integral = compactified_integral(
+            point_zero,
+            point_one,
+            hyperplane,
+            nonzero_contacts,
+        )
+        omitted_contact_integral = compactified_integral(
+            point_zero,
+            point_one,
+            hyperplane,
+            zero_contacts,
+        )
+        assert_equal(
+            "declared contact convention shifts the retained degree-one integral",
+            contact_integral - omitted_contact_integral,
+            sum(nonzero_contacts.values(), Fraction(0)),
+        )
+        if contact_integral == omitted_contact_integral:
+            raise AssertionError("contact terms should be visible to the instanton coefficient")
+
+        residual_bounds = {
+            "boundary": abs(contact_integral - omitted_contact_integral) + Fraction(1, 10_000),
+            "operator": Fraction(1, 10_007),
+            "continuum": Fraction(1, 10_009),
+        }
+        actual_error = abs(q_regulated * (contact_integral - omitted_contact_integral))
+        full_bound = abs(q_regulated) * residual_bounds["boundary"]
+        assert_leq_bound(
+            "degree-one contact residual is budgeted before mirror comparison",
+            actual_error,
+            full_bound,
+        )
+        omitted_boundary_budget = full_bound - abs(q_regulated) * residual_bounds["boundary"]
+        assert_gt_bound(
+            "omitting contact residual underbudgets the degree-one coefficient",
+            actual_error,
+            omitted_boundary_budget,
+        )
+
+
 def check_degree_one_measure_scheme_covariance() -> None:
     # A finite change of vortex coefficient normalization and zero-mode chart
     # coordinates is harmless only when the FI coordinate, determinant density,
@@ -6096,6 +6254,7 @@ def main() -> None:
     check_degree_one_amodel_zero_mode_measure_bridge()
     check_degree_one_cpn_euler_determinant_line()
     check_degree_one_cpn_evaluation_form_berezin_jacobian()
+    check_degree_one_cpn_compactification_contact_gate()
     check_degree_one_measure_scheme_covariance()
     check_hori_vafa_residue_instanton_comparison_map()
     check_cigar_metric_elimination()
