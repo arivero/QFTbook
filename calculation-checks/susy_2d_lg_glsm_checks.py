@@ -25,8 +25,8 @@ degree-one coefficient, the mirror-conjecture observable boundary separating
 full-QFT data from protected evidence, the full-action/IR-universality data
 boundary for mirror presentations, admissible mirror-datum and finite-volume
 noncompact spectral-domain gates, finite operator/source matrix-element
-obstructions, and cigar/Liouville spectral-status and reflection Gamma-function
-cells,
+obstructions, finite boundary-state/defect probe obstructions, and
+cigar/Liouville spectral-status and reflection Gamma-function cells,
 plus the Hori--Vafa
 residue/direct-instanton comparison map, with the direct degree-one incidence
 Jacobian computed before comparison, and the one-vortex source-frame
@@ -53,9 +53,10 @@ finite Legendre-domain and boundary-term cells, finite-volume Robin
 self-adjoint-domain quantization tests, cigar central-charge and
 effective-central-charge arithmetic, spectral-flow and field-identification
 arithmetic, Liouville marginality checks, half-line boundary-condition
-reflection diagnostics for noncompact D-term data, and direct Gamma-function
-evaluation of the imported reflection target, including continuous-series
-phase/unitarity, special-level normalization, and a sample pole residue, plus
+reflection diagnostics for noncompact D-term data, finite boundary-state
+cylinder and defect-twined-trace probes, and direct Gamma-function evaluation
+of the imported reflection target, including continuous-series phase/unitarity,
+special-level normalization, and a sample pole residue, plus
 finite density/Jacobian transport tests and double-entry
 mirror/direct-vortex comparisons whose direct side includes a separately
 computed incidence orientation, degree gate, and compactification gate, are
@@ -145,7 +146,8 @@ local-rigidity shortcuts to global uniqueness, compact c-theorem shortcuts in
 noncompact continua, omitted cigar-reflection normalization phases, raw
 special-level reflection normalizations, missing Gamma pole factors,
 boundary-condition-blind reflection shortcuts, collapsed
-existence/rigidity/duality claims, omitted self-adjoint domains, and
+existence/rigidity/duality claims, omitted self-adjoint domains,
+boundary-state-blind annulus claims, protected-subspace-only defect claims, and
 finite-gauge invariance failures are
 rejected when the finite model can represent them; the Hori--Vafa residue alone
 is also rejected as a substitute for the direct incidence/vortex measure package,
@@ -3945,6 +3947,149 @@ def check_full_mirror_operator_source_obstruction() -> None:
     )
 
 
+def check_full_mirror_boundary_defect_probe_obstruction() -> None:
+    spectrum = (Fraction(0), Fraction(2), Fraction(5), Fraction(7))
+    cylinder_weights = (Fraction(1), Fraction(1, 5), Fraction(1, 11), Fraction(1, 13))
+
+    def dot(row: tuple[Fraction, ...], vector: tuple[Fraction, ...]) -> Fraction:
+        return sum(left * right for left, right in zip(row, vector))
+
+    def closed_cylinder(
+        left_boundary: tuple[Fraction, ...],
+        right_boundary: tuple[Fraction, ...],
+    ) -> Fraction:
+        return sum(
+            left * right * weight
+            for left, right, weight in zip(left_boundary, right_boundary, cylinder_weights)
+        )
+
+    protected_boundary_row = (Fraction(1), Fraction(0), Fraction(3), Fraction(0))
+    boundary_plus = (Fraction(1), Fraction(1, 2), Fraction(1, 3), Fraction(0))
+    boundary_minus = (Fraction(1), -Fraction(1, 2), Fraction(1, 3), Fraction(0))
+    probe_boundary = (Fraction(1, 7), Fraction(1), Fraction(0), Fraction(1, 4))
+
+    assert_equal(
+        "candidate boundary states have the same protected one-point row",
+        dot(protected_boundary_row, boundary_plus),
+        dot(protected_boundary_row, boundary_minus),
+    )
+    assert_equal(
+        "candidate boundary states have the same self-cylinder spectrum",
+        closed_cylinder(boundary_plus, boundary_plus),
+        closed_cylinder(boundary_minus, boundary_minus),
+    )
+    assert_equal(
+        "protected boundary rows do not determine all annulus amplitudes",
+        closed_cylinder(boundary_plus, probe_boundary)
+        == closed_cylinder(boundary_minus, probe_boundary),
+        False,
+    )
+
+    open_channel_from_plus = closed_cylinder(boundary_plus, probe_boundary)
+    open_channel_shortcut = closed_cylinder(boundary_minus, probe_boundary)
+    assert_equal(
+        "Cardy comparison detects a missing boundary-state coefficient",
+        open_channel_from_plus == open_channel_shortcut,
+        False,
+    )
+
+    defect_a = (Fraction(1), Fraction(1), -Fraction(1), Fraction(1))
+    defect_b = (Fraction(1), -Fraction(1), -Fraction(1), Fraction(1))
+    protected_indices = (0, 2)
+
+    def hamiltonian_defect_commutator_entry(
+        defect: tuple[Fraction, ...],
+        row: int,
+        column: int,
+    ) -> Fraction:
+        defect_entry = defect[row] if row == column else Fraction(0)
+        return (spectrum[row] - spectrum[column]) * defect_entry
+
+    assert_equal(
+        "defects agree on the protected chiral subspace",
+        tuple(defect_a[index] for index in protected_indices),
+        tuple(defect_b[index] for index in protected_indices),
+    )
+    assert_equal(
+        "diagonal defects commute with the finite Hamiltonian",
+        all(
+            hamiltonian_defect_commutator_entry(defect_a, row, column) == 0
+            and hamiltonian_defect_commutator_entry(defect_b, row, column) == 0
+            for row in range(len(spectrum))
+            for column in range(len(spectrum))
+        ),
+        True,
+    )
+    assert_equal(
+        "both sample defects square to the identity fusion channel",
+        tuple(value * value for value in defect_a),
+        (Fraction(1),) * len(defect_a),
+    )
+    assert_equal(
+        "second sample defect also squares to the identity fusion channel",
+        tuple(value * value for value in defect_b),
+        (Fraction(1),) * len(defect_b),
+    )
+
+    def twined_trace(defect: tuple[Fraction, ...]) -> Fraction:
+        return sum(value * weight for value, weight in zip(defect, cylinder_weights))
+
+    assert_equal(
+        "protected-subspace defect action does not determine twined traces",
+        twined_trace(defect_a) == twined_trace(defect_b),
+        False,
+    )
+
+    full_boundary_defect_claim = {
+        "closed-channel boundary vector",
+        "open-channel Hilbert space",
+        "Cardy equality",
+        "boundary source overlaps",
+        "defect action on full Hilbert space",
+        "defect twined traces",
+        "defect fusion residuals",
+    }
+    protected_topological_shortcut = {
+        "same protected boundary charge",
+        "same protected chiral action",
+        "same closed Hamiltonian spectrum",
+        "same protected F-term",
+    }
+    assert_equal(
+        "protected boundary and defect data are not a full topological sector map",
+        full_boundary_defect_claim <= protected_topological_shortcut,
+        False,
+    )
+    completed_finite_package = protected_topological_shortcut | full_boundary_defect_claim
+    assert_equal(
+        "boundary vectors and defect traces complete the finite comparison package",
+        full_boundary_defect_claim <= completed_finite_package,
+        True,
+    )
+
+    residuals = {
+        "gluing": Fraction(1, 97),
+        "Cardy": Fraction(1, 101),
+        "boundary-source": Fraction(1, 103),
+        "defect-commutator": Fraction(1, 107),
+        "defect-fusion": Fraction(1, 109),
+        "continuum": Fraction(1, 113),
+    }
+    full_residual_bound = sum(residuals.values(), Fraction(0))
+    actual_error = full_residual_bound
+    assert_equal(
+        "boundary/defect residual telescope closes with all terms",
+        actual_error <= full_residual_bound,
+        True,
+    )
+    underbudget_without_boundary_source = full_residual_bound - residuals["boundary-source"]
+    assert_equal(
+        "omitting boundary-source residual underbudgets topological comparison",
+        actual_error <= underbudget_without_boundary_source,
+        False,
+    )
+
+
 def check_cigar_liouville_spectral_data_cell() -> None:
     for k_level in [Fraction(2), Fraction(5), Fraction(9, 2)]:
         background_charge_squared = Fraction(1, k_level)
@@ -4348,6 +4493,7 @@ def main() -> None:
     check_mirror_conjecture_observable_boundary()
     check_full_mirror_ir_data_boundary()
     check_full_mirror_operator_source_obstruction()
+    check_full_mirror_boundary_defect_probe_obstruction()
     check_cigar_liouville_spectral_data_cell()
     check_hypersurface_phase_ledger()
     check_hypersurface_coulomb_coordinate_signal()

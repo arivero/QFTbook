@@ -312,6 +312,7 @@
         "noncompact D-term boundary reflection diagnostic",
         "finite-volume noncompact spectral-domain quantization",
         "operator/source matrix-element comparison",
+        "boundary-state and defect probe comparison",
         "common-flux operator-map diagnostic",
         "N=2 cigar reflection Gamma-function normalization target"
       ]

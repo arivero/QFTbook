@@ -84,6 +84,11 @@ and
 - `rem:glsm-mirror-operator-source-data`: finite-volume operator/source
   warning that equal spectra and protected multiplication data do not
   determine local-source matrix elements or source-normalized correlators.
+- `ca:glsm-mirror-boundary-defect-gate`, `Z^cl_{\alpha\beta,Lambda}`,
+  `Z^op_{\alpha\beta,Lambda}`, `D_{r,Lambda}`, `Z_{r,Lambda}`:
+  finite-regulator boundary-state and defect comparison data, including
+  closed/open cylinder amplitudes, Cardy residuals, defect fusion, and
+  defect-twined traces.
 - `hat X_i`, `q_phys`, `R_{P^{N-1}}`, `H`: vortex-normalized mirror-torus
   coordinate, physical exponentiated FI coordinate after finite determinant
   normalization, normalized projective-space mirror residue trace, and
@@ -460,7 +465,9 @@ and
   and the Liouville exponential marginality check.  Full derivation of the
   Liouville normalization, complete spectral measure, all pole-residue
   normalization, operator completeness, finite-field rigidity, and
-  defect/boundary matching remain obligations.
+  defect/boundary matching remain obligations.  The new boundary/defect gate
+  makes that last obligation concrete through closed/open cylinder amplitudes,
+  Cardy residuals, defect-twined traces, and defect fusion data.
 - Defines abelian GLSM data with fields, integer charges, invariant
   superpotential, complexified FI-theta coordinate, gauge coupling, and
   regulator.
@@ -950,3 +957,10 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   not enough to identify source-normalized local correlators.  This targets
   operator/state completeness rather than another protected Hori--Vafa
   residue identity.
+- The 2026-06-07 issue #848 boundary/defect probe pass adds
+  `ca:glsm-mirror-boundary-defect-gate`: a finite cylinder-regulator
+  comparison using boundary-state vectors, open-channel traces, Cardy residuals,
+  defect operators, fusion residuals, and defect-twined traces.  The companion
+  constructs protected-equivalent boundary and defect data that differ on
+  annulus or twined-trace observables, rejecting protected-charge or
+  protected-subspace shortcuts to the full topological sector map.

@@ -3110,7 +3110,10 @@ Current checks:
   mirror-data existence, universality, and duality claims,
   a finite operator/source obstruction showing that equal spectra and
   protected multiplication data do not fix Euclidean source two-point
-  coefficients without source matrix elements and operator topology,
+  coefficients without source matrix elements and operator topology, a finite
+  boundary-state/defect probe showing that protected boundary charges and
+  protected defect action do not fix annulus amplitudes or defect-twined
+  traces,
   Liouville exponential marginality, spectral-flow momentum/winding arithmetic,
   the noncompact field identification, metric/dilaton-versus-exact-QFT status,
   the twisted-chiral-to-ordinary-chiral bridge boundary, the

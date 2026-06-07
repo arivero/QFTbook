@@ -1140,6 +1140,75 @@ and chiral-ring identities are valuable tests of that map, not substitutes for
 it.
 \end{remark}
 
+\begin{controlledapproximation}[Boundary and defect comparison gate]
+\label{ca:glsm-mirror-boundary-defect-gate}
+The topological and boundary part of a full mirror statement is another
+independent QFT probe.  In a finite cylinder regulator, a boundary condition
+\(B_\alpha\) is represented in the closed channel by a vector
+\(|B_{\alpha,\Lambda}\rangle\) satisfying the regulated gluing equations for the
+chosen \(\mathcal N=2\) algebra up to a residual \(R_{\rm gluing}\).  Its
+cylinder amplitude is
+\begin{equation}
+  Z^{\rm cl}_{\alpha\beta,\Lambda}(\ell)
+  =
+  \langle B_{\alpha,\Lambda}|
+  e^{-\ell(H^{\rm cl}_\Lambda-c_\Lambda/12)}
+  |B_{\beta,\Lambda}\rangle .
+  \label{eq:glsm-boundary-closed-cylinder}
+\end{equation}
+The same datum must admit an open-channel description
+\begin{equation}
+  Z^{\rm op}_{\alpha\beta,\Lambda}(t)
+  =
+  \operatorname{Tr}_{\mathcal H^{\rm op}_{\alpha\beta,\Lambda}}
+  e^{-2\pi t(H^{\rm op}_{\alpha\beta,\Lambda}-c_\Lambda/24)}
+  \label{eq:glsm-boundary-open-cylinder}
+\end{equation}
+with the modular relation between \(t\) and \(\ell\), integral open
+multiplicities where the regulator has resolved the discrete channels, and a
+Cardy residual \(R_{\rm Cardy}\).  A boundary vector component can be orthogonal
+to every protected local source row already tested in the closed theory and
+still change \eqref{eq:glsm-boundary-closed-cylinder}.  Thus boundary states
+are not fixed by the Hamiltonian spectrum, the protected chiral ring, or the
+bulk source rows.
+
+Similarly, a topological defect line is represented by an operator
+\(D_{r,\Lambda}\) that commutes with the preserved stress tensor and
+supercharges up to a residual \(R_{\rm comm}\), has a fusion law
+\[
+  D_{r,\Lambda}D_{s,\Lambda}
+  =
+  \sum_u N_{rs}^{u}D_{u,\Lambda}+R^{\rm fus}_{rs,\Lambda},
+\]
+and has twined traces
+\[
+  Z_{r,\Lambda}(\beta)
+  =
+  \operatorname{Tr}_{\mathcal H_\Lambda}
+  \bigl(D_{r,\Lambda}e^{-\beta H_\Lambda}\bigr).
+\]
+Two defects may act identically on the protected chiral subspace while acting
+with different phases on non-BPS or continuous states, changing
+\(Z_{r,\Lambda}\) and the defect category seen by boundaries.  A regulated
+mirror comparison that includes boundaries and defects must therefore carry a
+bound of the form
+\[
+  |\Delta_{\alpha\beta r}|
+  \le
+  B_{\rm gluing}
+  +B_{\rm Cardy}
+  +B_{\rm bdry\text{-}src}
+  +B_{\rm def\text{-}comm}
+  +B_{\rm def\text{-}fus}
+  +B_{\rm cont}.
+\]
+The terms \(B_{\rm bdry\text{-}src}\) and \(B_{\rm def\text{-}fus}\) record,
+respectively, boundary-state overlaps invisible to the tested local sources and
+defect actions invisible on the protected subspace.  Without this package,
+``same superpotential'' and ``same protected local operators'' leave the
+boundary/defect sector of the mirror QFT unspecified.
+\end{controlledapproximation}
+
 The detailed comparison below is an observable comparison map for
 Conjecture~\ref{conj:abelian-glsm-hori-vafa-mirror-qft}.  The physical question
 is whether a protected GLSM correlator computed with a regulated vortex measure
@@ -3378,6 +3447,11 @@ section form the following protected-data and proof-debt ledger:
 The first three entries are protected construction data.  The spectral entries
 below record the exact normalization targets that a full proof must hit; they
 are not consequences of the superpotential alone.
+For the boundary entry, the relevant targets are the annulus amplitudes,
+boundary-state one-point functions, defect-twined traces, and open-channel
+multiplicities of
+Controlled~Approximation~\ref{ca:glsm-mirror-boundary-defect-gate}, specialized
+to the cigar/Liouville Hilbert space and spin structures.
 
 Start with a \(U(1)\) vector multiplet \(V\), an ordinary chiral multiplet
 \(\Phi\) of charge \(1\), and a logarithmic chiral multiplet
