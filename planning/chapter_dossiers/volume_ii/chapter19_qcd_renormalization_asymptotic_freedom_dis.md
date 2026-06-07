@@ -50,7 +50,7 @@
   small-angle endpoint plus/contact convention, finite light-ray
   coefficient/operator transport, protected moment rows, measured-bin
   pushforward, endpoint observable residual budget, and analytic EEC benchmark
-  ledger.
+  window.
 - `SRC-CHECK-QCD-CUSP-LARGE-SPIN`:
   `calculation-checks/qcd_cusp_large_spin_checks.py` verifies the Euclidean
   cusped-Wilson-line angular integral, smooth-line subtraction, Lorentzian
@@ -591,7 +591,7 @@ The chapter must define and derive:
       coefficients, and cusp-log flatness checks are separate layers and do not
       by themselves prove the all-order light-ray OPE/mixing theorem or the full
       endpoint-matched EEC prediction.
-19bh. Analytic EEC results enter the monograph as benchmark ledgers, not as
+19bh. Analytic EEC results enter the monograph as benchmark windows, not as
       replacements for the detector construction.  A benchmark comparison must
       declare the source and total-rate normalization, angular variable map,
       detector tests, endpoint atoms, anomalous-dimension or matching rows,
@@ -1525,11 +1525,18 @@ The chapter must define and derive:
   zeroth-moment window residual and verifies the finite cancellation that can
   flatten a displayed curve by moving \(s_0\).
 - 2026-06-06 issue #519 analytic-benchmark pass: added
-  `ca:qcd-eec-analytic-benchmark-ledger` to connect the high-order and
+  `ca:qcd-eec-analytic-benchmark-window` to connect the high-order and
   conformal EEC literature to the chapter's detector-observable architecture.
   The new block requires source normalization, angular-variable maps,
   detector tests, endpoint atoms, scheme residuals, and nonperturbative or
   track inputs before an analytic EEC result is used as a benchmark for a QCD
   prediction.  Extended `energy_correlator_light_ray_ope_checks.py` with exact
-  finite benchmark-ledger checks and negative controls against open-angle-only
+  finite benchmark-window checks and negative controls against open-angle-only
   and unnormalized comparisons.
+- 2026-06-07 issue #844/#630 analytic-benchmark window pass: re-audited the
+  EEC benchmark block under the canonical claim-architecture rule.  The visible
+  monograph title now says `benchmark window`, and the text makes angular
+  variable, source row, and total-rate normalization part of the measured
+  detector comparison rather than bookkeeping language.  The companion now
+  rejects wrong-variable and wrong-source finite detector tests in addition to
+  open-angle-only and unnormalized comparisons.

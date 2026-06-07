@@ -1445,9 +1445,10 @@ Current checks:
   pushforward bridge: in four spacetime dimensions the \(\rho\)-Jacobian is
   one, while in a higher-dimensional rational control omitting the angular
   Jacobian underbudgets a measured bin.  It also checks the analytic EEC
-  benchmark ledger: finite detector-test benchmark values agree only after
-  endpoint atoms, normalization, and residual budgets are transported with the
-  open-angle chart, with negative controls for open-only and unnormalized
+  benchmark window: finite detector-test benchmark values agree only after
+  endpoint atoms, angular-variable maps, source rows, normalization, and
+  residual budgets are transported with the open-angle chart, with negative
+  controls for open-only, wrong-variable, wrong-source, and unnormalized
   comparisons.
 - `energy_correlator_track_checks.py`: extended evidence-contract exact
   rational checks for the selected calorimetric measure and
