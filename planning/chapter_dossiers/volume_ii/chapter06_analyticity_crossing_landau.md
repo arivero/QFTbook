@@ -58,12 +58,12 @@
   check tying canonical-form ordered words to physical sequential
   discontinuities and showing why single cuts do not enforce overlapping
   ordered-word constraints, a production master-lane gate tying
-  coefficient pairing, transported masters, physical channel closure, and
-  finite observable assembly into one comparison, an inclusive vector-current
-  form-factor/R-ratio closure checking how the cut-reconstructed one-loop
-  virtual form factor, the integrated \(q\bar q g\) channel, and the
-  final-final antenna finite constants \(\pm 7\pi^2/6\) assemble into
-  \(1+\alpha_s/\pi\) for \(SU(3)\),
+    coefficient pairing, transported masters, physical channel closure, and
+    finite observable assembly into one comparison, an inclusive vector-current
+    form-factor/R-ratio closure deriving the timelike virtual cell from the
+    normalized one-loop form-factor master and deriving the integrated
+    \(q\bar q g\) channel from the \(D\)-dimensional simplex phase-space
+    kernel before assembling \(1+\alpha_s/\pi\) for \(SU(3)\),
   a color-space hard-function
   handoff recording the metric, basis, color-correlated real/soft operator, and
   finite-scheme transport needed for nonabelian production observables, an unresolved one-emission

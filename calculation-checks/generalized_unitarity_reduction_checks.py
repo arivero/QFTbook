@@ -38,10 +38,11 @@ master-coefficient reconstruction model with denominator clearing and
 validation controls, the finite Laurent-pole bookkeeping that turns a
 reconstructed virtual amplitude into a finite
 observable only after infrared subtraction, an inclusive vector-current
-form-factor/R-ratio closure where the one-loop virtual poles, the integrated
-real `q qbar g` channel, and the symbolic `pi^2` constants are derived from
-the standard final-final antenna cells and cancel to the physical
-`1 + alpha_s/pi` coefficient for `SU(3)`,
+form-factor/R-ratio closure where the one-loop virtual poles are derived from
+the normalized form-factor master plus timelike continuation, the integrated
+real `q qbar g` channel is derived from the simplex phase-space integral, and
+the symbolic `pi^2` constants cancel to the physical `1 + alpha_s/pi`
+coefficient for `SU(3)`,
 color-metric hard-function handoff, real radiation, scheme transport,
 and the unresolved measurement cell have been assembled, including finite
 measurement dependence after pole cancellation, and the two-loop
@@ -145,9 +146,10 @@ bookkeeping, polynomial log algebra, branch continuation, a sector-boundary
 quadrature, a numerical dilogarithm-parameter integral independent of the
 encoded log-square answer, and physical channel-discontinuity closure against
 an independently normalized endpoint-log cut datum; Laurent-pole arithmetic for virtual/real infrared
-cancellation, antenna-derived exact symbolic-pi bookkeeping for the inclusive
-vector-current R-ratio closure, color-space metric and soft-operator transport under basis and
-finite-subtraction changes, plus-distribution measurement cells, paired-measurement finite
+cancellation, exact symbolic-pi bookkeeping for the inclusive vector-current
+R-ratio closure from a normalized form-factor master and the integrated
+three-parton phase-space kernel, color-space metric and soft-operator
+transport under basis and finite-subtraction changes, plus-distribution measurement cells, paired-measurement finite
 differences after pole cancellation, finite scheme transport, and two-loop
 recursive pole subtraction.
 Primary derivation route: the manuscript route starts from Cutkosky
@@ -458,6 +460,24 @@ def laurent_pi2_sub(left: LaurentPi2, right: LaurentPi2) -> LaurentPi2:
 
 def laurent_pi2_scale(scale: Fraction, value: LaurentPi2) -> LaurentPi2:
     return (scale * value[0], scale * value[1], scale * value[2], scale * value[3])
+
+
+def laurent_pi2_apply_eps_factor(
+    value: LaurentPi2,
+    *,
+    eps1: Fraction = Fraction(0),
+    eps2: Fraction = Fraction(0),
+    eps2_pi2: Fraction = Fraction(0),
+) -> LaurentPi2:
+    """Multiply by 1 + eps1*epsilon + (eps2 + eps2_pi2*pi^2)*epsilon^2."""
+
+    pole2, pole1, finite_rational, finite_pi2 = value
+    return (
+        pole2,
+        pole1 + eps1 * pole2,
+        finite_rational + eps1 * pole1 + eps2 * pole2,
+        finite_pi2 + eps2_pi2 * pole2,
+    )
 
 
 def laurent_to_laurent3(value: Laurent) -> Laurent3:
@@ -4126,22 +4146,69 @@ def check_inclusive_current_form_factor_r_ratio_closure() -> None:
     # Coefficients are in the common a_s C_F normalization,
     # a_s = alpha_s/(2 pi), for a single massless vector-current channel.
     # A LaurentPi2 tuple stores eps^-2, eps^-1, finite rational, finite pi^2.
-    one_loop_two_parton_antenna: LaurentPi2 = (
+    # Virtual route.  The spacelike one-loop form-factor pole kernel is
+    # multiplied by r_Gamma = 1 - pi^2 epsilon^2/12 + ... .  The physical
+    # timelike interference also carries Re[(-s-i0)^(-epsilon)/s^(-epsilon)]
+    # = cos(pi epsilon) = 1 - pi^2 epsilon^2/2 + ... .
+    spacelike_form_factor_kernel: LaurentPi2 = (
         -Fraction(1),
         -Fraction(3, 2),
         -Fraction(4),
-        Fraction(7, 12),
+        Fraction(0),
     )
-    integrated_three_parton_antenna: LaurentPi2 = (
-        Fraction(1),
-        Fraction(3, 2),
-        Fraction(19, 4),
-        -Fraction(7, 12),
+    spacelike_two_parton_antenna = laurent_pi2_apply_eps_factor(
+        spacelike_form_factor_kernel,
+        eps2_pi2=-Fraction(1, 12),
     )
-    virtual_interference = laurent_pi2_scale(Fraction(2), one_loop_two_parton_antenna)
-    integrated_real = laurent_pi2_scale(Fraction(2), integrated_three_parton_antenna)
+    one_loop_two_parton_antenna = laurent_pi2_apply_eps_factor(
+        spacelike_two_parton_antenna,
+        eps2_pi2=-Fraction(1, 2),
+    )
     assert_equal(
-        "antenna-derived timelike virtual current split",
+        "spacelike form-factor master before timelike continuation",
+        spacelike_two_parton_antenna,
+        (-Fraction(1), -Fraction(3, 2), -Fraction(4), Fraction(1, 12)),
+    )
+    assert_equal(
+        "timelike continuation derives the virtual pi2 finite cell",
+        one_loop_two_parton_antenna,
+        (-Fraction(1), -Fraction(3, 2), -Fraction(4), Fraction(7, 12)),
+    )
+
+    # Real route.  For x=s_qg/s, y=s_qbar-g/s, z=1-x-y, the normalized
+    # q qbar g current kernel is 2 z/(x y) + x/y + y/x.  Reducing the three
+    # Dirichlet integrals by Gamma recurrences leaves the rational kernel below:
+    #   2(1-eps)/(eps^2(1-3 eps)) - 2(1-eps)/(eps(1-3 eps)).
+    soft_simplex = laurent_pi2_apply_eps_factor(
+        (Fraction(2), -Fraction(2), Fraction(0), Fraction(0)),
+        eps1=Fraction(3),
+        eps2=Fraction(9),
+    )
+    collinear_simplex = laurent_pi2_apply_eps_factor(
+        (Fraction(0), -Fraction(2), Fraction(2), Fraction(0)),
+        eps1=Fraction(3),
+        eps2=Fraction(9),
+    )
+    real_simplex_kernel = laurent_pi2_add(soft_simplex, collinear_simplex)
+    assert_equal(
+        "real-emission simplex kernel from q qbar g matrix element",
+        real_simplex_kernel,
+        (Fraction(2), Fraction(2), Fraction(8), Fraction(0)),
+    )
+    real_after_gamma_ratio = laurent_pi2_apply_eps_factor(
+        real_simplex_kernel,
+        eps2_pi2=-Fraction(7, 12),
+    )
+    integrated_real = laurent_pi2_apply_eps_factor(
+        real_after_gamma_ratio,
+        eps1=Fraction(1, 2),
+        eps2=Fraction(1, 4),
+    )
+    integrated_three_parton_antenna = laurent_pi2_scale(Fraction(1, 2), integrated_real)
+
+    virtual_interference = laurent_pi2_scale(Fraction(2), one_loop_two_parton_antenna)
+    assert_equal(
+        "master-derived timelike virtual current split",
         virtual_interference,
         (
             -Fraction(2),
@@ -4151,7 +4218,7 @@ def check_inclusive_current_form_factor_r_ratio_closure() -> None:
         ),
     )
     assert_equal(
-        "antenna-derived integrated real current split",
+        "phase-space-derived integrated real current split",
         integrated_real,
         (
             Fraction(2),
@@ -4160,12 +4227,25 @@ def check_inclusive_current_form_factor_r_ratio_closure() -> None:
             -Fraction(7, 6),
         ),
     )
+    assert_equal(
+        "derived final-final three-parton antenna cell",
+        integrated_three_parton_antenna,
+        (
+            Fraction(1),
+            Fraction(3, 2),
+            Fraction(19, 4),
+            -Fraction(7, 12),
+        ),
+    )
 
-    pre_timelike_or_renormalized_virtual: LaurentPi2 = (
-        -Fraction(2),
-        -Fraction(3),
-        -Fraction(8),
-        Fraction(1, 6),
+    wrong_real_measure = real_after_gamma_ratio
+    assert_true(
+        "omitting the D-dimensional Born normalization changes the real poles",
+        wrong_real_measure[:3] != integrated_real[:3],
+    )
+
+    pre_timelike_or_renormalized_virtual = laurent_pi2_scale(
+        Fraction(2), spacelike_two_parton_antenna
     )
     hand_adjusted_real: LaurentPi2 = (
         Fraction(2),
@@ -4196,7 +4276,7 @@ def check_inclusive_current_form_factor_r_ratio_closure() -> None:
     def apply_common_eps2_pi2_factor(value: LaurentPi2, coeff: Fraction) -> LaurentPi2:
         # Multiplying by 1 + coeff*pi^2*epsilon^2 changes the finite pi^2 cell
         # through the double pole.  This is a convention change, not physics.
-        return (value[0], value[1], value[2], value[3] + coeff * value[0])
+        return laurent_pi2_apply_eps_factor(value, eps2_pi2=coeff)
 
     convention_shift = Fraction(1, 2)
     assert_equal(

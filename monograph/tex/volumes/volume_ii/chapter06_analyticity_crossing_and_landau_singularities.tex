@@ -4682,28 +4682,42 @@ subtraction convention, contributes to the Born-normalized virtual
 interference as follows.  We use the standard final-final
 quark--antiquark antenna convention in which the tree two-parton antenna is
 \({\cal A}_2^0=1\) and the common \(S_\epsilon\)/\(r_\Gamma\)-type loop and
-unresolved-phase-space factors are fixed together.  In that convention
-\cite{GehrmannDeRidderGehrmannGlover2005Antenna},
+unresolved-phase-space factors are fixed together
+\cite{GehrmannDeRidderGehrmannGlover2005Antenna}.  The loop factor is
 \[
-  {\cal A}_2^1
+  r_\Gamma(\epsilon)
   =
-  s^{-\epsilon}
-  \left(
-    -\frac{1}{\epsilon^2}
-    -\frac{3}{2\epsilon}
-    -4+\frac{7\pi^2}{12}
-  \right)+O(\epsilon),
-  \qquad
-  {\cal A}_3^0
+  e^{\gamma_{\rm E}\epsilon}
+  \frac{\Gamma(1-\epsilon)^2\Gamma(1+\epsilon)}{\Gamma(1-2\epsilon)}
   =
-  s^{-\epsilon}
+  1-\frac{\pi^2}{12}\epsilon^2+O(\epsilon^3).
+\]
+Before timelike continuation the renormalized spacelike form-factor cell is
+\[
+  {\cal A}_{2,E}^1
+  =
+  -\,r_\Gamma(\epsilon)
   \left(
     \frac{1}{\epsilon^2}
     +\frac{3}{2\epsilon}
-    +\frac{19}{4}-\frac{7\pi^2}{12}
-  \right)+O(\epsilon).
+    +4
+  \right)
+  =
+  -\frac{1}{\epsilon^2}
+  -\frac{3}{2\epsilon}
+  -4+\frac{\pi^2}{12}+O(\epsilon).
 \]
-The cross-section-level interference doubles these finite antenna cells, so
+The physical \(s>0\) interference also takes the real part of
+\((-s-\ii0)^{-\epsilon}/s^{-\epsilon}\), namely
+\(\cos(\pi\epsilon)=1-\pi^2\epsilon^2/2+O(\epsilon^4)\).  Hence
+\[
+  {\cal A}_{2,\rm timelike}^1
+  =
+  -\frac{1}{\epsilon^2}
+  -\frac{3}{2\epsilon}
+  -4+\frac{7\pi^2}{12}+O(\epsilon).
+\]
+The virtual cross-section-level interference doubles this two-parton cell, so
 \begin{equation}
   V_q^{(1)}
   =
@@ -4716,9 +4730,29 @@ The cross-section-level interference doubles these finite antenna cells, so
   \label{eq:current-form-factor-virtual-interference}
 \end{equation}
 The physical inclusive coefficient also carries the real three-parton channel
-\(e^+e^-\to q\bar q g\).  In the matching
-antenna normalization and with the same unresolved phase-space convention, the
-integrated real contribution is
+\(e^+e^-\to q\bar q g\).  Set
+\[
+  x=\frac{s_{qg}}{s},\qquad
+  y=\frac{s_{\bar q g}}{s},\qquad
+  z=1-x-y,\qquad
+  \Delta_2=\{x,y\ge0,\ x+y\le1\}.
+\]
+In the same \(D\)-dimensional Born normalization, the real-emission kernel and
+unresolved phase space give
+\[
+  \frac{R_{q\bar q g}^{(1)}}{a_s C_F}
+  =
+  \frac{e^{\gamma_{\rm E}\epsilon}}
+       {(1-\epsilon/2)\Gamma(1-\epsilon)}
+  \int_{\Delta_2}\!
+    dx\,dy\,
+    x^{-\epsilon}y^{-\epsilon}z^{-\epsilon}
+    \left(
+      \frac{2z}{xy}+\frac{x}{y}+\frac{y}{x}
+    \right).
+\]
+Reducing the three simplex integrals to beta functions and expanding the
+Gamma ratios gives the matching integrated real contribution
 \begin{equation}
   R_{q\bar q g}^{(1)}
   =
