@@ -769,6 +769,11 @@ Current checks:
   channel which checks that \(m_dB_{uu}\) interferes only with a same-basis
   chirality-breaking \(\bar m_u\) reference and carries
   \(\theta+\arg m_u+\arg m_d\) rather than a wrong mass phase, the
+  normal-propagator source-insertion check which keeps a primed instanton
+  background Green operator, full source-overlap amputation, and the
+  zero-mode determinant in distinct coordinates, rejecting determinant-only,
+  unprimed, trace-only, diagonal-amputation, and omitted-propagator-residual
+  shortcuts, the
   mixed hard-source plus physical-screening log-shell equation
   \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\) with negative controls against
   hard-only and screening-only saddle substitutions, the

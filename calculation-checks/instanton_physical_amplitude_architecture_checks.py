@@ -54,6 +54,11 @@ Target claims:
   source deformation has zero Gaussian mean but contributes to the instanton
   source amplitude through its Wick covariance with the cubic fluctuation
   action; this term is not a source-independent determinant constant.
+- `ca:instanton-normal-propagator-source-insertion`: a nonzero-mode
+  propagator insertion in an instanton channel is a primed, source-projected,
+  amputated bilinear matrix element multiplied by the zero-mode coefficient;
+  it is not a determinant constant, an unprimed zero-mode-regulated inverse,
+  a trace response, or a diagonal residue division.
 - `ca:instanton-hard-amplitude-assembly-ledger`: the hard channel must assemble
   the determinant, source-fluctuation, zero-mode/source, and physical-projection
   factors in the same kernel, with absolute control unless a noncancellation
@@ -152,6 +157,8 @@ Independent construction:
   cubic operator-family determinant remainders,
   finite Gaussian source-quotient covariance identities,
   Wick-paired first source cumulants from cubic normal-mode interactions,
+  source-projected normal propagator insertions with full source-overlap
+  amputation and residual telescopes,
   multiplicative hard-amplitude assembly bounds on signed windows,
   finite determinant-scheme transport factors and an independently computed
   two-regulator determinant-density benchmark,
@@ -246,7 +253,12 @@ Negative controls:
   perturbation, a vacuum determinant calibration substituted for a
   source-fluctuation quotient, a zero cubic interaction used to erase a
   linear-source cumulant, a source-dependent cubic covariance absorbed into a
-  universal determinant constant, a relative quotient formed after zero-mode
+  universal determinant constant, a normal propagator insertion replaced by a
+  determinant constant, an unprimed zero-mode-regulated inverse used as a
+  channel propagator, a trace substituted for an external-source bilinear,
+  diagonal residue division substituted for a full source-overlap inverse, an
+  omitted propagator residual in a zero-mode-times-normal channel, a relative
+  quotient formed after zero-mode
   rank loss, a
   determinant-only assembled amplitude, signed-window relative error control
   without a noncancellation margin, a reference calibration with omitted
@@ -1551,6 +1563,195 @@ def check_first_source_cumulant_from_normal_modes() -> None:
         "signed cumulant remainder cancellation underbudgets the window",
         signed_remainder_budget < abs(exact_window_shift),
         True,
+    )
+
+
+def check_normal_propagator_source_insertion() -> None:
+    Vector2 = tuple[Fraction, Fraction]
+
+    def matvec2(matrix: Matrix2, vector: Vector2) -> Vector2:
+        return (
+            matrix[0][0] * vector[0] + matrix[0][1] * vector[1],
+            matrix[1][0] * vector[0] + matrix[1][1] * vector[1],
+        )
+
+    def dot2(left: Vector2, right: Vector2) -> Fraction:
+        return left[0] * right[0] + left[1] * right[1]
+
+    def scale_vec2(scalar: Fraction, vector: Vector2) -> Vector2:
+        return (scalar * vector[0], scalar * vector[1])
+
+    zero_mode_projector: Matrix2 = (
+        (Fraction(1), Fraction(0)),
+        (Fraction(0), Fraction(0)),
+    )
+    normal_projector: Matrix2 = (
+        (Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(1)),
+    )
+    assert_equal(
+        "zero and normal projectors are complementary",
+        add2(zero_mode_projector, normal_projector),
+        ((Fraction(1), Fraction(0)), (Fraction(0), Fraction(1))),
+    )
+
+    physical_out: Vector2 = (Fraction(3, 5), Fraction(7, 11))
+    physical_in: Vector2 = (Fraction(5, 13), -Fraction(2, 7))
+    residue_out = Fraction(3, 2)
+    residue_in = Fraction(5, 3)
+    overlap_out: Matrix2 = (
+        (Fraction(1), Fraction(1, 5)),
+        (Fraction(1, 7), Fraction(1)),
+    )
+    overlap_in: Matrix2 = (
+        (Fraction(1), -Fraction(1, 6)),
+        (Fraction(2, 9), Fraction(1)),
+    )
+    amputated_out = matvec2(inv2(overlap_out), scale_vec2(1 / residue_out, physical_out))
+    amputated_in = matvec2(inv2(overlap_in), scale_vec2(1 / residue_in, physical_in))
+
+    primed_green: Matrix2 = (
+        (Fraction(0), Fraction(0)),
+        (Fraction(0), Fraction(7, 5)),
+    )
+    projected_out = matvec2(normal_projector, amputated_out)
+    projected_in = matvec2(normal_projector, amputated_in)
+    normal_bilinear = dot2(projected_out, matvec2(primed_green, projected_in))
+    assert_not_equal(
+        "normal propagator insertion is source dependent",
+        normal_bilinear,
+        Fraction(0),
+    )
+
+    density_weight = Fraction(5, 7)
+    zero_mode_source = Fraction(2, 3)
+    determinant_constant = Fraction(11, 13)
+    instanton_channel = density_weight * zero_mode_source * normal_bilinear
+    moduli_determinant_only = density_weight * zero_mode_source * determinant_constant
+    assert_not_equal(
+        "moduli density and determinant constant do not supply normal propagator insertion",
+        moduli_determinant_only,
+        instanton_channel,
+    )
+
+    unprimed_green_a: Matrix2 = (
+        (Fraction(19), Fraction(0)),
+        (Fraction(0), Fraction(7, 5)),
+    )
+    unprimed_green_b: Matrix2 = (
+        (Fraction(23), Fraction(0)),
+        (Fraction(0), Fraction(7, 5)),
+    )
+    unprimed_bilinear_a = dot2(amputated_out, matvec2(unprimed_green_a, amputated_in))
+    unprimed_bilinear_b = dot2(amputated_out, matvec2(unprimed_green_b, amputated_in))
+    assert_not_equal(
+        "unprimed normal inverse depends on arbitrary zero-mode regulator",
+        unprimed_bilinear_a,
+        unprimed_bilinear_b,
+    )
+    assert_not_equal(
+        "unprimed zero-mode-regulated inverse is not the primed channel bilinear",
+        unprimed_bilinear_a,
+        normal_bilinear,
+    )
+
+    trace_response = trace2(primed_green)
+    assert_not_equal(
+        "trace response loses the external source vectors",
+        trace_response,
+        normal_bilinear,
+    )
+
+    diagonal_only_out: Vector2 = (
+        physical_out[0] / (residue_out * overlap_out[0][0]),
+        physical_out[1] / (residue_out * overlap_out[1][1]),
+    )
+    diagonal_only_in: Vector2 = (
+        physical_in[0] / (residue_in * overlap_in[0][0]),
+        physical_in[1] / (residue_in * overlap_in[1][1]),
+    )
+    diagonal_bilinear = dot2(
+        matvec2(normal_projector, diagonal_only_out),
+        matvec2(primed_green, matvec2(normal_projector, diagonal_only_in)),
+    )
+    assert_not_equal(
+        "diagonal residue division misses mixed source-overlap amputation",
+        diagonal_bilinear,
+        normal_bilinear,
+    )
+
+    zero_mode_rank_lost = Fraction(0)
+    relative_channel_defined = zero_mode_rank_lost != 0
+    assert_equal(
+        "rank-lost zero-mode block has no relative normal-propagator coordinate",
+        relative_channel_defined,
+        False,
+    )
+
+    density_cells = [Fraction(2, 3), Fraction(5, 7)]
+    zero_mode_cells = [Fraction(3, 5), -Fraction(1, 4)]
+    leading_propagator = [Fraction(7, 11), -Fraction(2, 13)]
+    density_errors = [Fraction(0), Fraction(0)]
+    zero_mode_errors = [Fraction(0), Fraction(0)]
+    propagator_errors = [Fraction(1, 50), -Fraction(1, 60)]
+    e_density = max(abs(error) for error in density_errors)
+    e_zero_mode = max(abs(error) for error in zero_mode_errors)
+    leading_window = sum(
+        density * zero_mode * prop
+        for density, zero_mode, prop in zip(
+            density_cells,
+            zero_mode_cells,
+            leading_propagator,
+        )
+    )
+    exact_window = sum(
+        density
+        * (1 + density_error)
+        * zero_mode
+        * (1 + zero_mode_error)
+        * (prop + prop_error)
+        for density, zero_mode, prop, density_error, zero_mode_error, prop_error in zip(
+            density_cells,
+            zero_mode_cells,
+            leading_propagator,
+            density_errors,
+            zero_mode_errors,
+            propagator_errors,
+        )
+    )
+    residual = abs(exact_window - leading_window)
+    propagator_bound = sum(
+        abs(density * zero_mode)
+        * (
+            (1 + e_density) * (1 + e_zero_mode) * abs(prop_error)
+            + abs(prop) * ((1 + e_density) * (1 + e_zero_mode) - 1)
+        )
+        for density, zero_mode, prop, prop_error in zip(
+            density_cells,
+            zero_mode_cells,
+            leading_propagator,
+            propagator_errors,
+        )
+    )
+    assert_equal(
+        "zero-mode times normal-propagator residual telescope",
+        residual <= propagator_bound,
+        True,
+    )
+    underbudget_without_propagator_error = sum(
+        abs(density * zero_mode)
+        * abs(prop)
+        * ((1 + e_density) * (1 + e_zero_mode) - 1)
+        for density, zero_mode, prop in zip(
+            density_cells,
+            zero_mode_cells,
+            leading_propagator,
+        )
+    )
+    assert_equal(
+        "omitting normal-propagator residual underbudgets the channel",
+        residual <= underbudget_without_propagator_error,
+        False,
     )
 
 
@@ -4163,6 +4364,7 @@ def main() -> None:
     check_primed_determinant_source_response()
     check_nonzero_mode_source_fluctuation_quotient()
     check_first_source_cumulant_from_normal_modes()
+    check_normal_propagator_source_insertion()
     check_hard_amplitude_assembly_bound()
     check_hard_reference_channel_calibration()
     check_finite_determinant_scheme_transport()

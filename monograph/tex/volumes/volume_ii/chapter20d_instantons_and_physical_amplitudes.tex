@@ -1882,7 +1882,102 @@ absorbing the term into \(C_{\mathcal S}\) turns a source-dependent correction
 into a false universal prefactor.
 \end{controlledapproximation}
 
-Thus a hard instanton amplitude has four separate fluctuation entries.  The
+\begin{controlledapproximation}[Normal propagator insertion]
+\label{ca:instanton-normal-propagator-source-insertion}
+The determinant and the source cumulants still do not exhaust the fluctuation
+calculation.  A channel with an additional chirality-preserving spectator
+pair, or with a bilinear probe of the gauge or matter fluctuation, asks for a
+matrix element of the zero-mode-deleted Green operator in the instanton
+background.  Fix a retained instanton chart point \(z=(a,\rho,\Omega)\), and
+let \(P_z^\perp\) be the orthogonal projection away from collective, gauge,
+and fermionic zero modes in the finite regulator.  If \(K_z\) is the
+quadratic normal operator and \(G_z'=P_z^\perp K_z^{-1}P_z^\perp\), define the
+source-projected normal propagator coordinate by
+\begin{equation}
+  \Pi_z^{\rm nz}(J_{\rm out},J_{\rm in})
+  =
+  \left\langle
+    P_z^\perp j_{\rm out}^{\rm amp},
+    G_z'\,
+    P_z^\perp j_{\rm in}^{\rm amp}
+  \right\rangle_z .
+  \label{eq:instanton-normal-propagator-projection}
+\end{equation}
+The amputated source coordinate is
+\[
+  j^{\rm amp}=S^{-1}L^{-1}j^{\rm phys},
+\]
+where \(S\) is the finite pole-overlap matrix and \(L\) is the residue
+factor in the same source basis used for the zero-mode slots.  The prime in
+\(G_z'\) fixes the channel coordinate: an unprimed inverse introduces
+arbitrary zero-mode regulator masses and changes the channel.
+
+For a hard zero-mode source block \(\mathcal Z_{\rm zm}^0(z;\mathcal J)\),
+the corresponding one-instanton coefficient has the retained form
+\begin{equation}
+  \mathcal A_{\rm zm+nz}^{I}
+  =
+  \ee^{\ii\theta}
+  \int_{\mathcal W}
+  D_z^{I}\,
+  \mathcal Z_{\rm zm}^0(z;\mathcal J)\,
+  \Pi_z^{\rm nz}(J_{\rm out},J_{\rm in})\,
+  \dd z
+  +R_{\rm zm+nz}.
+  \label{eq:instanton-zero-mode-normal-propagator-channel}
+\end{equation}
+This is the finite-regulator version of the step in the original instanton
+amplitude calculation where fluctuations around the saddle are integrated
+along with the collective coordinates.  The density \(D_z^{I}\) and the
+zero-mode source determinant are multiplicative weights.  The physical
+content of the spectator pair is the bilinear matrix element
+\(\Pi_z^{\rm nz}\), which depends on the external sources, amputation
+convention, and projection.  A determinant trace such as
+\(\operatorname{Tr}'(G_zR_z)\) is a vacuum-response coordinate; it is not the
+same datum as \(\langle j_{\rm out},G_z'j_{\rm in}\rangle\).
+
+Assume, on the retained window, that
+\[
+  D_z=D_z^0(1+\delta_D),\qquad
+  \mathcal Z_{\rm zm}=\mathcal Z_{\rm zm}^0(1+\delta_Z),
+  \qquad
+  |\delta_D|\le e_D,\quad |\delta_Z|\le e_Z,
+\]
+and that the amputated normal propagator projection satisfies
+\[
+  \Pi_z^{\rm nz}
+  =
+  \Pi_z^{0}+\Delta\Pi_z,\qquad
+  |\Delta\Pi_z|\le B_\Pi(z).
+\]
+Then the absolute channel error obeys
+\begin{equation}
+\begin{aligned}
+  |R_{\rm zm+nz}|
+  &\le
+  \int_{\mathcal W}
+  |D_z^0\mathcal Z_{\rm zm}^0|
+  \left[
+    (1+e_D)(1+e_Z)B_\Pi(z)
+    +|\Pi_z^0|
+      \bigl((1+e_D)(1+e_Z)-1\bigr)
+  \right]\dd z                                      \\
+  &\qquad{}+B_{\rm amp}+B_{\rm proj}+B_{\rm sec}.
+  \label{eq:instanton-normal-propagator-channel-bound}
+\end{aligned}
+\end{equation}
+The extra terms record pole-overlap inversion, final physical projection, and
+sector-isolation errors.  A moduli-space density times a determinant constant
+cannot supply \(\Pi_z^{\rm nz}\).  A diagonal residue division cannot replace
+the full source-overlap inverse.  A trace over \(G_z'\) loses the external
+source vectors.  If the selected zero-mode determinant loses rank, the whole
+relative channel coordinate in
+\eqref{eq:instanton-zero-mode-normal-propagator-channel} must again be
+treated as an absolute residual rather than as a small multiplicative
+correction.
+\end{controlledapproximation}
+
+Thus a hard instanton amplitude has several separate fluctuation entries.  The
 universal logarithmic determinant supplies the \((\mu\rho)^{b_0}\) density
 factor.  The finite determinant constant fixes a scheme-dependent Gaussian
 normalization.  The primed resolvent response
@@ -1891,8 +1986,12 @@ records how the determinant itself changes under the selected source or
 background perturbation.  The quotient
 \eqref{eq:instanton-physical-source-fluctuation-quotient} tests the selected
 source under that Gaussian and its interaction remainders, including cumulants
-such as \eqref{eq:instanton-first-source-cumulant-normal}.  Collapsing these
-entries into a single ``measure prefactor'' loses the amplitude calculation.
+such as \eqref{eq:instanton-first-source-cumulant-normal}.  The
+source-projected normal propagator
+\eqref{eq:instanton-normal-propagator-projection} supplies a further
+external-state-dependent fluctuation coordinate when the channel probes
+nonzero-mode propagation.  Collapsing these entries into a single ``measure
+prefactor'' loses the amplitude calculation.
 
 \section{The Hard Channel As An Assembled Amplitude}
 \label{sec:instanton-hard-amplitude-assembly}

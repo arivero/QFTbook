@@ -148,6 +148,11 @@
   normal-mode source cumulant; a linear source deformation has zero Gaussian
   mean but contributes through Wick covariance with the cubic fluctuation
   action, so it is not a source-independent determinant constant.
+- `ca:instanton-normal-propagator-source-insertion`: source-projected
+  zero-mode-deleted Green-operator insertion for channels that probe
+  nonzero-mode propagation, with the zero-mode coefficient, primed propagator,
+  full source-overlap amputation, determinant trace, and residual bound kept
+  as distinct physical coordinates.
 - `sec:instanton-hard-amplitude-assembly`: recombines the hard source kernel,
   finite determinant normalization, nonzero-mode source quotient,
   zero-mode/source stability, and physical projection into one regulated
@@ -284,6 +289,11 @@
   `-1/2 l_i T_abc C_ia C_bc`.  This is exactly the kind of fluctuation
   response that is invisible in moduli-space or determinant-only
   presentations.
+- The normal-propagator insertion block adds the source-facing Green-function
+  part of the fluctuation calculation.  It distinguishes the primed
+  instanton-background propagator bilinear from the determinant constant, from
+  a trace response, and from diagonal residue division; this is where extra
+  external-state data enter beyond collective-coordinate integration.
 - The assembled hard-channel formula prevents the chapter from becoming a list
   of adjacent checkpoints.  It places the determinant scheme constant, hard
   zero-mode slots, nonzero-mode source quotient, source-frame stability, and
@@ -422,6 +432,10 @@
   verifies the first Wick-paired source cumulant from a linear normal-mode
   source deformation and cubic fluctuation action, rejecting zero-cubic,
   determinant-only, and signed-remainder shortcuts,
+  verifies the normal-propagator source insertion with full source-overlap
+  amputation and rejects determinant-only, unprimed zero-mode-regulated,
+  trace-only, diagonal-amputation, rank-lost, and omitted-propagator-residual
+  shortcuts,
   verifies the assembled hard-amplitude product bound and rejects
   determinant-only assembly or signed-window relative control without a
   noncancellation margin,
@@ -595,6 +609,15 @@
   The companion rejects mass-assisted channels used as four-source vertices,
   wrong same-flavor mass saturation, wrong source degree, chirality-preserving
   references, nonconjugated mass references, and omitted reference residuals.
+- 2026-06-07 issue #597 normal-propagator insertion pass: added
+  `ca:instanton-normal-propagator-source-insertion` inside the
+  normal-fluctuation section.  The pass makes an instanton-background
+  nonzero-mode Green-function insertion part of the amplitude architecture:
+  source vectors are fully amputated through overlap matrices, projected away
+  from zero modes, paired with the primed Green operator, and multiplied by the
+  zero-mode determinant only afterward.  The companion rejects replacing this
+  bilinear by a determinant constant, unprimed inverse, trace, diagonal residue
+  division, or an underbudgeted propagator residual.
 - 2026-06-06 observable-map pass: added a physics bridge from the assembled
   instanton amplitude to QCD observables, explicitly separating hard source
   coefficients, theta curvature, \(U(1)_A\)-odd susceptibility kernels, and
