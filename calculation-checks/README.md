@@ -3077,8 +3077,10 @@ Current checks:
   Liouville exponential marginality, spectral-flow momentum/winding arithmetic,
   the noncompact field identification, metric/dilaton-versus-exact-QFT status,
   the twisted-chiral-to-ordinary-chiral bridge boundary, the
-  Hori--Kapustin local-rigidity/global-uniqueness distinction, and symbolic
-  imported reflection-target involution, plus the hypersurface GLSM
+  Hori--Kapustin local-rigidity/global-uniqueness distinction, and direct
+  Gamma-function evaluation of the imported reflection target for
+  continuous-series unitarity, phase-density normalization, raw special-level
+  failure, and a sample simple-pole residue, plus the hypersurface GLSM
   adjunction sign,
   Landau--Ginzburg/sigma-model central-charge matching condition, residual
   finite-gauge invariant Jacobi monomial count, and Coulomb-coordinate

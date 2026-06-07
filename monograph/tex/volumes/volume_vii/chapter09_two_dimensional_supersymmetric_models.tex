@@ -3455,16 +3455,46 @@ The reflection amplitude is part of the operator normalization.  With
   \frac{\Gamma(1+1/k)}{\Gamma(1-1/k)} .
   \label{eq:n2-cigar-reflection-amplitude}
 \end{equation}
-For \(j=\frac12+\ii s\) this is the scattering phase relating the two
-asymptotic radial waves, and its poles encode the discrete normalizable
-states.  In this chapter the displayed formula is an imported normalization
+For \(j=\frac12+\ii s\), \(s\in\mathbb R\), and generic positive \(k\) with the
+positive real branch of \(\nu(k)\), the gamma-function expression gives
+\[
+  R(1-j,m,\overline m;k)=R(j,m,\overline m;k)^{-1},
+  \qquad |R(j,m,\overline m;k)|=1
+\]
+in the continuous series.  The reflection target therefore carries dynamical
+spectral data: its phase contributes to the radial density of states by
+\[
+  \rho_{\rm refl}(s;m,\overline m)
+  =
+  \frac1{2\pi}\,\partial_s
+  \arg R\!\left(\frac12+\ii s,m,\overline m;k\right).
+\]
+For example, the factor \(\nu(k)^{2\ii s}\) changes this density by
+\(\pi^{-1}\log\nu(k)\).  Omitting it can preserve \(|R|=1\) while changing the
+continuum normalization.  The poles similarly carry operator data.  If
+\(j_0+m=-n\), \(n\in\mathbb Z_{\ge0}\), is a simple pole not colliding with
+another gamma factor, then with \(\delta_0=2j_0-1\)
+\[
+  \operatorname*{Res}_{j=j_0} R(j,m,\overline m;k)
+  =
+  \nu(k)^{\delta_0}
+  \frac{
+  \Gamma(1-\delta_0/k)\Gamma(j_0-\overline m)\Gamma(-\delta_0)}
+  {\Gamma(1+\delta_0/k)\Gamma(m-j_0+1)
+  \Gamma(-\overline m-j_0+1)\Gamma(\delta_0)}
+  \frac{(-1)^n}{n!}.
+\]
+Analogous residues come from the other gamma factors and must match the
+discrete-state normalization on the Liouville side.
+
+In this chapter the displayed formula is still an imported normalization
 target, not yet a derivation from the Liouville path integral.  The constant
 \(\nu(k)\), the Liouville coupling \(\mu\), and the additive dilaton constant
 must be fixed in the same scheme; special levels where the gamma factors have
 zeros or poles, for instance \(k=1\), require a limiting or renormalized
-operator prescription.  The continuous spectral measure, the pole residues,
-spin-structure pairing, and the
-reflection relation
+operator prescription before the preceding density and residue formulae are
+used.  The full continuous spectral measure, all pole residues,
+spin-structure pairing, and the reflection relation
 \[
   \Psi_{j,m,\overline m}
   =

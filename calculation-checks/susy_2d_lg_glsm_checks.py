@@ -22,7 +22,8 @@ the quantum-product observable relation, the A-model degree-one zero-mode
 measure bridge, the finite measure-scheme covariance test for that
 degree-one coefficient, the mirror-conjecture observable boundary separating
 full-QFT data from protected evidence, the full-action/IR-universality data
-boundary for mirror presentations, and cigar/Liouville spectral-status cells,
+boundary for mirror presentations, and cigar/Liouville spectral-status and
+reflection Gamma-function cells,
 plus the Hori--Vafa
 residue/direct-instanton comparison map, with the direct degree-one incidence
 Jacobian computed before comparison, and the one-vortex source-frame
@@ -45,8 +46,10 @@ stable-map incidence Jacobians, A-model zero-mode degree filters, and
 conditional residual-propagation maps, full-action data-interface tests,
 finite Legendre-domain and boundary-term cells, cigar central-charge and
 effective-central-charge arithmetic, spectral-flow and field-identification
-arithmetic, Liouville marginality checks, and symbolic imported
-reflection-target bookkeeping, plus finite density/Jacobian transport tests and double-entry
+arithmetic, Liouville marginality checks, and direct Gamma-function evaluation
+of the imported reflection target, including continuous-series phase/unitarity,
+special-level normalization, and a sample pole residue, plus finite
+density/Jacobian transport tests and double-entry
 mirror/direct-vortex comparisons whose direct side includes a separately
 computed incidence orientation, degree gate, and compactification gate, are
 computed directly from finite data rather than by substituting the displayed
@@ -125,7 +128,9 @@ missing measure Jacobians, untransported orientation signs, protected-sector
 shortcuts to full mirror equivalence, metric/dilaton representatives used as
 exact finite-level QFT data, rescalings used as chirality-changing mirror maps,
 local-rigidity shortcuts to global uniqueness, compact c-theorem shortcuts in
-noncompact continua, and finite-gauge invariance failures are
+noncompact continua, omitted cigar-reflection normalization phases, raw
+special-level reflection normalizations, missing Gamma pole factors, and
+finite-gauge invariance failures are
 rejected when the finite model can represent them; the Hori--Vafa residue alone
 is also rejected as a substitute for the direct incidence/vortex measure package,
 operator map, and off-pairing controls.
@@ -135,19 +140,24 @@ vortex compactness, derivation of the vortex fluctuation spectra or gauge-ghost
 complex, determinant nonvanishing beyond the supplied finite input,
 virtual-cycle construction, uniform remainder estimates, or the component
 estimates in the vortex-to-observable proof-obligation map.  The cigar
-reflection formula is treated as imported target bookkeeping here; the
-companion does not derive its Liouville normalization, continuous measure,
-special-level limits, or pole residues.  The common-flux source-projection cell
+reflection formula is still treated as an imported target formula here; the
+companion evaluates its Gamma-function consequences for sample continuous
+states, phase-density normalization, special levels, and simple residues, but
+does not derive the Liouville normalization, the full continuous measure, the
+special-level limiting prescription, or the pole spectrum.  The common-flux
+source-projection cell
 does not prove the continuum operator map or a source-factorization theorem; it
 checks the finite gates those claims must pass.
 """
 
 from __future__ import annotations
 
-from collections import Counter
 from fractions import Fraction
 from math import exp, isclose, log, prod
 
+import mpmath as mp
+
+from check_utils import assert_finite
 from check_utils import assert_gt as assert_gt_bound
 from check_utils import assert_leq as assert_leq_bound
 
@@ -3518,40 +3528,172 @@ def check_cigar_liouville_spectral_data_cell() -> None:
         False,
     )
 
-    def reflection_factors(delta_sign: int) -> Counter[str]:
-        factors: Counter[str] = Counter()
-        # delta = 2j-1.  Under j -> 1-j, delta -> -delta and every numerator
-        # factor in the reflection amplitude becomes its paired denominator.
-        factors["nu^delta"] += delta_sign
-        factors["Gamma(1-delta/k)"] += delta_sign
-        factors["Gamma(1+delta/k)"] -= delta_sign
-        factors["Gamma(-delta)"] += delta_sign
-        factors["Gamma(delta)"] -= delta_sign
-        if delta_sign == 1:
-            factors["Gamma(j+m)"] += 1
-            factors["Gamma(j-mbar)"] += 1
-            factors["Gamma(m-j+1)"] -= 1
-            factors["Gamma(-mbar-j+1)"] -= 1
-        else:
-            factors["Gamma(m-j+1)"] += 1
-            factors["Gamma(-mbar-j+1)"] += 1
-            factors["Gamma(j+m)"] -= 1
-            factors["Gamma(j-mbar)"] -= 1
-        return factors
+    mp.mp.dps = 60
 
-    combined_reflection_factors = reflection_factors(1)
-    combined_reflection_factors.update(reflection_factors(-1))
-    reflection_product = Counter(
-        {
-            label: exponent
-            for label, exponent in combined_reflection_factors.items()
-            if exponent != 0
-        }
+    def assert_mp_close(label: str, left: mp.mpc, right: mp.mpc, tol: mp.mpf) -> None:
+        assert_finite(f"{label} left", left)
+        assert_finite(f"{label} right", right)
+        assert_finite(f"{label} tolerance", tol)
+        if tol < 0:
+            raise AssertionError(f"{label} has negative tolerance: {tol!r}")
+        error = abs(left - right)
+        assert_finite(f"{label} error", error)
+        if error > tol:
+            raise AssertionError(f"{label} failed: {left!r} != {right!r}")
+
+    def raw_nu(k_value: mp.mpf) -> mp.mpf:
+        return mp.gamma(1 + 1 / k_value) / (mp.pi * mp.gamma(1 - 1 / k_value))
+
+    def raw_nu_is_finite(k_value: mp.mpf) -> bool:
+        try:
+            return bool(mp.isfinite(raw_nu(k_value)))
+        except ValueError:
+            return False
+
+    def reflection_amplitude(
+        k_value: mp.mpf,
+        j_value: mp.mpc,
+        m_label: mp.mpf,
+        mbar_label: mp.mpf,
+        *,
+        include_nu: bool = True,
+        include_j_plus_m_pole: bool = True,
+    ) -> mp.mpc:
+        delta = 2 * j_value - 1
+        numerator = (
+            mp.gamma(1 - delta / k_value)
+            * mp.gamma(j_value - mbar_label)
+            * mp.gamma(-delta)
+        )
+        if include_j_plus_m_pole:
+            numerator *= mp.gamma(j_value + m_label)
+        denominator = (
+            mp.gamma(1 + delta / k_value)
+            * mp.gamma(m_label - j_value + 1)
+            * mp.gamma(-mbar_label - j_value + 1)
+            * mp.gamma(delta)
+        )
+        normalization = raw_nu(k_value) ** delta if include_nu else mp.mpf(1)
+        return normalization * numerator / denominator
+
+    continuous_cases = [
+        (mp.mpf("2.7"), mp.mpf("0.2"), mp.mpf("0"), mp.mpf("0")),
+        (mp.mpf("3.5"), mp.mpf("0.7"), mp.mpf("0"), mp.mpf("0")),
+        (mp.mpf("3.5"), mp.mpf("0.7"), mp.mpf("1.75"), mp.mpf("1.75")),
+    ]
+    for k_value, s_value, m_label, mbar_label in continuous_cases:
+        j_value = mp.mpf("0.5") + 1j * s_value
+        reflected_j = 1 - j_value
+        amplitude = reflection_amplitude(k_value, j_value, m_label, mbar_label)
+        reflected_amplitude = reflection_amplitude(
+            k_value,
+            reflected_j,
+            m_label,
+            mbar_label,
+        )
+        assert_mp_close(
+            "continuous cigar reflection amplitude has unit modulus",
+            abs(amplitude),
+            mp.mpf(1),
+            mp.mpf("1e-40"),
+        )
+        assert_mp_close(
+            "evaluated cigar reflection target obeys R(j)R(1-j)=1",
+            amplitude * reflected_amplitude,
+            mp.mpf(1),
+            mp.mpf("1e-40"),
+        )
+
+    phase_k = mp.mpf("3.5")
+    phase_s = mp.mpf("0.7")
+    phase_h = mp.mpf("1e-5")
+
+    def reflection_phase_density(include_nu: bool) -> mp.mpf:
+        j_plus = mp.mpf("0.5") + 1j * (phase_s + phase_h)
+        j_minus = mp.mpf("0.5") + 1j * (phase_s - phase_h)
+        amplitude_plus = reflection_amplitude(
+            phase_k,
+            j_plus,
+            mp.mpf("0"),
+            mp.mpf("0"),
+            include_nu=include_nu,
+        )
+        amplitude_minus = reflection_amplitude(
+            phase_k,
+            j_minus,
+            mp.mpf("0"),
+            mp.mpf("0"),
+            include_nu=include_nu,
+        )
+        ratio = amplitude_plus / amplitude_minus
+        return mp.arg(ratio) / (2 * phase_h * 2 * mp.pi)
+
+    full_density = reflection_phase_density(include_nu=True)
+    no_nu_density = reflection_phase_density(include_nu=False)
+    assert_mp_close(
+        "nu(k) contributes the expected continuous reflection phase density",
+        full_density - no_nu_density,
+        mp.log(raw_nu(phase_k)) / mp.pi,
+        mp.mpf("1e-20"),
     )
     assert_equal(
-        "symbolic imported cigar reflection target R(j)R(1-j)=1",
-        reflection_product,
-        Counter(),
+        "omitting nu(k)^delta changes the continuous spectral phase density",
+        abs(full_density - no_nu_density) > mp.mpf("0.1"),
+        True,
+    )
+
+    assert_equal(
+        "generic reflection normalization is finite",
+        raw_nu_is_finite(mp.mpf("3.5")),
+        True,
+    )
+    assert_equal(
+        "raw k=1 reflection normalization needs a limiting prescription",
+        raw_nu_is_finite(mp.mpf("1")),
+        False,
+    )
+
+    pole_k = mp.mpf("3.7")
+    pole_m = -mp.mpf(1) / 3
+    pole_mbar = mp.mpf("0.2")
+    pole_j = -pole_m
+    pole_delta = 2 * pole_j - 1
+    pole_residue = (
+        raw_nu(pole_k) ** pole_delta
+        * mp.gamma(1 - pole_delta / pole_k)
+        * mp.gamma(pole_j - pole_mbar)
+        * mp.gamma(-pole_delta)
+        / (
+            mp.gamma(1 + pole_delta / pole_k)
+            * mp.gamma(pole_m - pole_j + 1)
+            * mp.gamma(-pole_mbar - pole_j + 1)
+            * mp.gamma(pole_delta)
+        )
+    )
+    pole_epsilon = mp.mpf("1e-9")
+    numerical_residue = pole_epsilon * reflection_amplitude(
+        pole_k,
+        pole_j + pole_epsilon,
+        pole_m,
+        pole_mbar,
+    )
+    assert_mp_close(
+        "sample cigar reflection pole residue follows from Gamma residue",
+        numerical_residue,
+        pole_residue,
+        mp.mpf("1e-7"),
+    )
+    missing_pole_residue = pole_epsilon * reflection_amplitude(
+        pole_k,
+        pole_j + pole_epsilon,
+        pole_m,
+        pole_mbar,
+        include_j_plus_m_pole=False,
+    )
+    assert_equal(
+        "missing Gamma(j+m) pole factor is rejected by residue check",
+        abs(missing_pole_residue) < mp.mpf("1e-7"),
+        True,
     )
 
 

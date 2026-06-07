@@ -410,11 +410,13 @@ and
   continuous/discrete `(j,m,bar m)` sectors, the bosonic
   `SL(2,R)_{k+2}` convention, spectral-flow momentum/winding lattice,
   noncompact field identification, spin-structure pairing boundary, reflection
-  amplitude `R(j,m,bar m;k)` as an imported normalization target, the
+  amplitude `R(j,m,bar m;k)` as an imported normalization target together with
+  its continuous phase-density and sample simple-residue consequences, the
   ordinary-chiral endpoint Liouville action with background-charge coupling,
-  and the Liouville exponential marginality check.  Full spectral measure,
-  pole-residue normalization, operator completeness, finite-field rigidity,
-  and defect/boundary matching remain obligations.
+  and the Liouville exponential marginality check.  Full derivation of the
+  Liouville normalization, complete spectral measure, all pole-residue
+  normalization, operator completeness, finite-field rigidity, and
+  defect/boundary matching remain obligations.
 - Defines abelian GLSM data with fields, integer charges, invariant
   superpotential, complexified FI-theta coordinate, gauge coupling, and
   regulator.
@@ -603,8 +605,10 @@ and
     `c=3+6/k`, noncompact `c_eff=3`, Liouville exponential marginality,
     spectral-flow momentum/winding integrality, the noncompact field
     identification, rejection of metric-as-exact-QFT and rescaling-as-chiral-map
-    shortcuts, the Hori--Kapustin local/global rigidity boundary, and symbolic
-    cancellation of the imported reflection-target factors under `j -> 1-j`.
+    shortcuts, the Hori--Kapustin local/global rigidity boundary, and direct
+    Gamma-function evaluation of the imported reflection target: continuous
+    unitarity, `R(j)R(1-j)=1`, the `nu(k)` contribution to phase density, raw
+    `k=1` normalization failure, and a sample simple-pole residue.
   - hypersurface adjunction signs, LG/sigma-model central-charge matching,
     residual finite-gauge invariant Jacobi monomial counting, and the
     Coulomb-coordinate singular-signal ledger.
@@ -847,3 +851,11 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   `kappa`-path is stated as a physical-continuity argument requiring global
   hypotheses beyond local rigidity.  The companion checks the same boundaries
   with finite negative controls.
+- The 2026-06-07 reflection/spectral follow-up replaces symbolic
+  reflection-factor cancellation in the GLSM companion with direct evaluation
+  of the imported cigar reflection amplitude.  It verifies continuous-series
+  unitarity and involution, extracts the `nu(k)` contribution to phase density,
+  rejects the raw special-level normalization at `k=1`, and checks a simple
+  gamma-pole residue against the analytic residue formula.  This is now
+  evidence for finite consequences of the displayed target, not a derivation of
+  the Liouville path integral normalization or the full continuous measure.
