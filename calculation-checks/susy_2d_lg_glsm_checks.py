@@ -27,7 +27,8 @@ full-QFT data from protected evidence, the full-action/IR-universality data
 boundary for mirror presentations, admissible mirror-datum and finite-volume
 noncompact spectral-domain gates, finite operator/source matrix-element
 obstructions, finite boundary-state/defect probe obstructions, and
-cigar/Liouville spectral-status and reflection Gamma-function cells,
+cigar/Liouville pathwise fake-fixed-point gates, spectral-status cells, and
+reflection Gamma-function cells,
 plus the Hori--Vafa
 residue/direct-instanton comparison map, with the direct degree-one incidence
 Jacobian computed before comparison, and the one-vortex source-frame
@@ -56,8 +57,10 @@ self-adjoint-domain quantization tests, cigar central-charge and
 effective-central-charge arithmetic, spectral-flow and field-identification
 arithmetic, Liouville marginality checks, half-line boundary-condition
 reflection diagnostics for noncompact D-term data, finite boundary-state
-cylinder and defect-twined-trace probes, and direct Gamma-function evaluation
-of the imported reflection target, including continuous-series phase/unitarity,
+cylinder and defect-twined-trace probes, pathwise spectral-signature transport
+tests excluding fake Liouville endpoints not connected by a continuous
+reflection/boundary/source package, and direct Gamma-function evaluation of the
+imported reflection target, including continuous-series phase/unitarity,
 special-level normalization, and a sample pole residue, plus
 finite density/Jacobian transport tests and double-entry
 mirror/direct-vortex comparisons whose direct side includes a separately
@@ -153,7 +156,10 @@ noncompact continua, omitted cigar-reflection normalization phases, raw
 special-level reflection normalizations, missing Gamma pole factors,
 boundary-condition-blind reflection shortcuts, collapsed
 existence/rigidity/duality claims, omitted self-adjoint domains,
-boundary-state-blind annulus claims, protected-subspace-only defect claims, and
+boundary-state-blind annulus claims, protected-subspace-only defect claims,
+pathwise-continuity claims that carry only protected endpoint labels or local
+rigidity while dropping reflection phases, pole residues, boundary annuli, or
+source rows, and
 finite-gauge invariance failures are
 rejected when the finite model can represent them; the Hori--Vafa residue alone
 is also rejected as a substitute for the direct incidence/vortex measure package,
@@ -4194,6 +4200,138 @@ def check_full_mirror_boundary_defect_probe_obstruction() -> None:
     )
 
 
+def check_cigar_liouville_pathwise_fake_fixed_point_gate() -> None:
+    protected_endpoint_labels = {
+        "central charge": Fraction(21, 5),
+        "background charge squared": Fraction(1, 5),
+        "Liouville F-term": "mu exp(-sqrt(k) Y)",
+        "asymptotic Kahler coefficient": Fraction(1, 40),
+        "normalizable marginal tangent dimension": 0,
+    }
+    endpoint_a_labels = dict(protected_endpoint_labels)
+    endpoint_b_labels = dict(protected_endpoint_labels)
+    assert_equal(
+        "candidate endpoints share protected Liouville labels",
+        endpoint_a_labels,
+        endpoint_b_labels,
+    )
+
+    deformation_hessian_diagonal = (Fraction(2), Fraction(5), Fraction(9))
+    assert_equal(
+        "local deformation complex has no zero tangent mode",
+        all(entry > 0 for entry in deformation_hessian_diagonal),
+        True,
+    )
+
+    signature_a = {
+        "finite energies": (Fraction(0), Fraction(3, 2), Fraction(7, 2)),
+        "reflection phase samples": (Fraction(1, 3), Fraction(2, 5), Fraction(1, 7)),
+        "pole residues": (Fraction(5, 8), -Fraction(3, 10)),
+        "boundary annuli": (Fraction(7, 13), Fraction(11, 17)),
+        "source row": (Fraction(2, 19), Fraction(3, 23), Fraction(5, 29)),
+    }
+    signature_b = {
+        "finite energies": signature_a["finite energies"],
+        "reflection phase samples": (Fraction(1, 3), Fraction(3, 5), Fraction(1, 7)),
+        "pole residues": (Fraction(5, 8), -Fraction(1, 10)),
+        "boundary annuli": (Fraction(7, 13), Fraction(13, 17)),
+        "source row": (Fraction(2, 19), Fraction(4, 23), Fraction(5, 29)),
+    }
+    assert_equal(
+        "same protected and local-rigid endpoint can differ in full QFT signature",
+        signature_a == signature_b,
+        False,
+    )
+
+    def max_signature_jump(
+        left: dict[str, tuple[Fraction, ...]],
+        right: dict[str, tuple[Fraction, ...]],
+        keys: tuple[str, ...],
+    ) -> Fraction:
+        return max(
+            abs(left_value - right_value)
+            for key in keys
+            for left_value, right_value in zip(left[key], right[key])
+        )
+
+    full_signature_keys = (
+        "reflection phase samples",
+        "pole residues",
+        "boundary annuli",
+        "source row",
+    )
+    signature_jump = max_signature_jump(signature_a, signature_b, full_signature_keys)
+    assert_equal(
+        "fake endpoint is visible to reflection, residue, boundary, or source rows",
+        signature_jump > 0,
+        True,
+    )
+
+    def discontinuous_path_signature(kappa: Fraction) -> dict[str, tuple[Fraction, ...]]:
+        return signature_a if kappa < Fraction(1, 2) else signature_b
+
+    kappa_left = Fraction(49, 100)
+    kappa_right = Fraction(51, 100)
+    lipschitz_constant = Fraction(1)
+    regulator_error = Fraction(1, 1000)
+    transport_budget = lipschitz_constant * (kappa_right - kappa_left) + regulator_error
+    path_jump = max_signature_jump(
+        discontinuous_path_signature(kappa_left),
+        discontinuous_path_signature(kappa_right),
+        full_signature_keys,
+    )
+    assert_equal(
+        "protected-label continuity can hide a spectral-signature jump",
+        path_jump <= transport_budget,
+        False,
+    )
+
+    smooth_signature_right = dict(signature_a)
+    smooth_signature_right["reflection phase samples"] = (
+        signature_a["reflection phase samples"][0],
+        signature_a["reflection phase samples"][1] + Fraction(1, 1000),
+        signature_a["reflection phase samples"][2],
+    )
+    smooth_jump = max_signature_jump(signature_a, smooth_signature_right, full_signature_keys)
+    assert_equal(
+        "small transported signature change fits the pathwise residual budget",
+        smooth_jump <= transport_budget,
+        True,
+    )
+
+    local_rigidity_package = {
+        "same central charge",
+        "same asymptotic Kahler coefficient",
+        "same Liouville F-term",
+        "no normalizable marginal tangent",
+    }
+    pathwise_transport_package = local_rigidity_package | {
+        "spectral projector transport",
+        "reflection phase transport",
+        "pole residue transport",
+        "boundary annulus transport",
+        "source-row transport",
+        "self-adjoint wall-domain transport",
+        "no bifurcation",
+        "no pole crossing",
+    }
+    assert_equal(
+        "local rigidity package is not the pathwise QFT transport theorem",
+        pathwise_transport_package <= local_rigidity_package,
+        False,
+    )
+    assert_equal(
+        "pathwise package contains the finite fake-endpoint detectors",
+        {
+            "reflection phase transport",
+            "pole residue transport",
+            "boundary annulus transport",
+            "source-row transport",
+        } <= pathwise_transport_package,
+        True,
+    )
+
+
 def check_cigar_liouville_spectral_data_cell() -> None:
     for k_level in [Fraction(2), Fraction(5), Fraction(9, 2)]:
         background_charge_squared = Fraction(1, k_level)
@@ -4599,6 +4737,7 @@ def main() -> None:
     check_full_mirror_ir_data_boundary()
     check_full_mirror_operator_source_obstruction()
     check_full_mirror_boundary_defect_probe_obstruction()
+    check_cigar_liouville_pathwise_fake_fixed_point_gate()
     check_cigar_liouville_spectral_data_cell()
     check_hypersurface_phase_ledger()
     check_hypersurface_coulomb_coordinate_signal()

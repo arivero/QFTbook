@@ -91,6 +91,12 @@ and
   finite-regulator boundary-state and defect comparison data, including
   closed/open cylinder amplitudes, Cardy residuals, defect fusion, and
   defect-twined traces.
+- `ca:cigar-liouville-pathwise-fake-fixed-point-gate`,
+  `S_{\Lambda,L}(kappa)`, `theta(s)`, `P_n`: finite-regulator
+  cigar/Liouville pathwise transport package for energies, spectral
+  projectors, reflection phases, pole residues, boundary annuli, source rows,
+  and noncompact wall domains; this separates local deformation rigidity from
+  global fake-fixed-point exclusion.
 - `hat X_i`, `q_phys`, `R_{P^{N-1}}`, `H`: vortex-normalized mirror-torus
   coordinate, physical exponentiated FI coordinate after finite determinant
   normalization, normalized projective-space mirror residue trace, and
@@ -467,9 +473,12 @@ and
   and the Liouville exponential marginality check.  Full derivation of the
   Liouville normalization, complete spectral measure, all pole-residue
   normalization, operator completeness, finite-field rigidity, and
-  defect/boundary matching remain obligations.  The new boundary/defect gate
-  makes that last obligation concrete through closed/open cylinder amplitudes,
-  Cardy residuals, defect-twined traces, and defect fusion data.
+  defect/boundary matching remain obligations.  The boundary/defect gate makes
+  that last obligation concrete through closed/open cylinder amplitudes, Cardy
+  residuals, defect-twined traces, and defect fusion data.  The pathwise
+  fake-fixed-point gate makes the Hori--Kapustin continuity obligation
+  concrete through finite-regulator spectral/source/boundary transport, rather
+  than local rigidity at a single endpoint.
 - Defines abelian GLSM data with fields, integer charges, invariant
   superpotential, complexified FI-theta coordinate, gauge coupling, and
   regulator.
@@ -677,10 +686,13 @@ and
     `c=3+6/k`, noncompact `c_eff=3`, Liouville exponential marginality,
     spectral-flow momentum/winding integrality, the noncompact field
     identification, rejection of metric-as-exact-QFT and rescaling-as-chiral-map
-    shortcuts, the Hori--Kapustin local/global rigidity boundary, and direct
-    Gamma-function evaluation of the imported reflection target: continuous
-    unitarity, `R(j)R(1-j)=1`, the `nu(k)` contribution to phase density, raw
-    `k=1` normalization failure, and a sample simple-pole residue.
+    shortcuts, the Hori--Kapustin local/global rigidity boundary, the
+    pathwise fake-Liouville exclusion gate comparing reflection phases, pole
+    residues, boundary annuli, and source rows along a finite-regulator
+    `kappa` path, and direct Gamma-function evaluation of the imported
+    reflection target: continuous unitarity, `R(j)R(1-j)=1`, the `nu(k)`
+    contribution to phase density, raw `k=1` normalization failure, and a
+    sample simple-pole residue.
   - hypersurface adjunction signs, LG/sigma-model central-charge matching,
     residual finite-gauge invariant Jacobi monomial counting, and the
     Coulomb-coordinate singular-signal ledger.
@@ -980,3 +992,10 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   constructs protected-equivalent boundary and defect data that differ on
   annulus or twined-trace observables, rejecting protected-charge or
   protected-subspace shortcuts to the full topological sector map.
+- The 2026-06-07 issue #848 pathwise fake-fixed-point pass adds
+  `ca:cigar-liouville-pathwise-fake-fixed-point-gate`: a finite-regulator
+  continuity criterion for the Hori--Kapustin `kappa` route.  The companion
+  constructs two protected-equivalent, locally rigid endpoints with equal
+  finite energies but different reflection phases, pole residues, boundary
+  annuli, and source rows, and rejects a discontinuous path that carries only
+  protected endpoint labels.

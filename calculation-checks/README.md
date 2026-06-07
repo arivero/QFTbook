@@ -3117,6 +3117,11 @@ Current checks:
   boundary-state/defect probe showing that protected boundary charges and
   protected defect action do not fix annulus amplitudes or defect-twined
   traces,
+  a pathwise fake-Liouville exclusion gate showing that protected endpoint
+  labels and local rigidity can still hide jumps in reflection phases, pole
+  residues, boundary annuli, or source rows unless the Hori--Kapustin
+  deformation carries a continuous finite-regulator spectral/source/boundary
+  transport package,
   Liouville exponential marginality, spectral-flow momentum/winding arithmetic,
   the noncompact field identification, metric/dilaton-versus-exact-QFT status,
   the twisted-chiral-to-ordinary-chiral bridge boundary, the

@@ -3994,6 +3994,65 @@ control of nonnormalizable boundary deformations.  Local rigidity alone does
 not exclude a disconnected fake-Liouville fixed point with the same asymptotic
 superpotential.
 
+\begin{controlledapproximation}[Pathwise fake-Liouville exclusion gate]
+\label{ca:cigar-liouville-pathwise-fake-fixed-point-gate}
+To turn the preceding continuity argument into a QFT statement, one must
+transport more than protected endpoint labels.  Put the radial direction in a
+box of length \(L\), keep a UV cutoff \(\Lambda\), and let
+\(\kappa\in[0,1]\) parametrize a proposed deformation from the weakly
+controlled presentation to the desired Liouville endpoint.  In a fixed
+energy/source window the transported datum has the form
+\[
+  \begin{aligned}
+  {\mathcal S}_{\Lambda,L}(\kappa)
+  =
+  \bigl(
+  &\{E_{n,\Lambda,L},P_{n,\Lambda,L}\}_{n\le N},
+    \{\theta_{\Lambda,L}(s_\ell)\}_{\ell\le M},
+    \{\operatorname*{Res}_{j_a}R_{\kappa}\}_{a\le A},
+  \\
+  &\{Z_{\alpha\beta,\Lambda,L}\}_{\alpha,\beta\le B},
+    \{{\mathcal O}_{A,\Lambda,L}e_{0,\Lambda,L}\}_{A\le C},
+    B_{\infty,\Lambda,L}
+  \bigr)(\kappa).
+  \end{aligned}
+\]
+where \(P_n\) are spectral projectors, \(\theta=\arg R\) is the reflection
+phase in the same normalization as \eqref{eq:n2-cigar-reflection-amplitude},
+\(Z_{\alpha\beta}\) are boundary cylinder amplitudes, and the last two entries
+record source vectors and the noncompact wall domain.  A pathwise proof must
+provide a matching of these entries and a residual estimate such as
+\begin{equation}
+  \begin{aligned}
+  &\|P_n(\kappa')-P_n(\kappa)\|
+  +|E_n(\kappa')-E_n(\kappa)|
+  +|\theta(s_\ell;\kappa')-\theta(s_\ell;\kappa)|\\
+  &\quad
+  +|\operatorname*{Res}_{j_a}R_{\kappa'}
+       -\operatorname*{Res}_{j_a}R_{\kappa}|
+  +|Z_{\alpha\beta}(\kappa')-Z_{\alpha\beta}(\kappa)|
+  \le C|\kappa'-\kappa|+\varepsilon_{\Lambda,L}
+  \end{aligned}
+  \label{eq:cigar-liouville-pathwise-spectral-transport}
+\end{equation}
+on each chart, with \(\varepsilon_{\Lambda,L}\to0\) in the continuum limit,
+and with no resonance pole crossing the chosen contours, no boundary condition
+leaving the self-adjoint domain, and no source vector leaving the operator
+topology being compared.
+
+This gate is stronger than local deformation rigidity.  The protected package
+\[
+  (c,\ Q,\ \widetilde W_{\rm Liouville},\
+    K_{\rm asymp},\ H^1_{\rm def}=0)
+\]
+can agree at two isolated endpoints while
+\({\mathcal S}_{\Lambda,L}\) differs in a reflection phase, a pole residue, a
+boundary annulus amplitude, or a source matrix element.  Such a theory is the
+``fake Liouville'' possibility.  It is excluded by a pathwise spectral,
+boundary, and source transport theorem, not by the absence of normalizable
+marginal tangent vectors at one endpoint.
+\end{controlledapproximation}
+
 The construction supplies a precise protected-data bridge:
 \[
   \begin{aligned}
