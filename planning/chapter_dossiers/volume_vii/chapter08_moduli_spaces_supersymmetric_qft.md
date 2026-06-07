@@ -124,6 +124,12 @@ later lower-dimensional examples, protected sectors, and localization.
   rank-one moment-map, gauge-fixing, complex-moment, and Yukawa rows,
   including the heavy projector, tangent zero-mode split, and row-contact
   seagull.
+- `ex:higgs-branch-regulator-compatible-heavy-complex`,
+  `eq:higgs-branch-regulated-heavy-supertrace`,
+  `eq:higgs-branch-regulated-heavy-supertrace-variation`: regulator action on
+  the nonzero Higgs heavy \(Q\)-complex, with paired Pauli--Villars/Wilsonian
+  spectral functions and explicit failure modes for unpaired regulator masses,
+  tangent-dependent regulator vertices, and unprojected zero modes.
 - `ex:higgs-branch-dimensional-reduction-row-audit`,
   `eq:higgs-branch-reduced-scalar-row-contact`,
   `eq:higgs-branch-reduced-scalar-contact-residual`,
@@ -274,7 +280,9 @@ later lower-dimensional examples, protected sectors, and localization.
   dropped-contact negative control, checks row-resolved off-shell heavy-complex
   assembly with a missing auxiliary/Yukawa contact negative control, derives
   the rank-one row-Jacobian projector/zero-mode/contact identities from a
-  fixed-norm Higgs background, and rejects use of the four-dimensional
+  fixed-norm Higgs background, checks paired regulator spectral functions on
+  the nonzero \(Q\)-complex and rejects unpaired PV masses, tangent-dependent
+  regulator vertices, and unprojected zero modes, and rejects use of the four-dimensional
   gauge-field entry in dimensionally reduced arguments by checking reduced
   vector-scalar row contacts and the separate two-dimensional antisymmetric
   \(B/WZ\) channel,
@@ -376,6 +384,12 @@ local models.
   checks the heavy projector, tangent zero-mode separation, constant nonzero
   row mass, and generated row-contact seagull, with a negative control for
   turning projector motion into fake mass curvature.
+- 2026-06-07 issue #850 regulator-compatible heavy-complex pass: added the
+  Pauli--Villars/Wilsonian regulator action on the nonzero Higgs heavy
+  \(Q\)-complex.  The companion now checks the paired regulator spectral
+  function and local moment conditions, and rejects unpaired regulator masses,
+  tangent-dependent regulator vertices, and failure to project Higgs tangent
+  zero modes before taking the heavy determinant.
 - 2026-06-07 issue #850 dimensional-reduction row audit: added the lower-dimensional
   split \(A_M=(A_\mu,\sigma_I)\), with \(4-d\) reduced vector-multiplet scalar
   rows and their contact \(C_{\rm red}^{(d)}\).  The companion now checks that

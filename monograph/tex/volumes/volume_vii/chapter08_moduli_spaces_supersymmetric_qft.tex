@@ -1329,6 +1329,78 @@ genuine variation of a nonzero mass or an unpaired auxiliary/Yukawa contact is
 introduced.
 \end{example}
 
+\begin{example}[Regulator-compatible heavy-complex supertrace]
+\label{ex:higgs-branch-regulator-compatible-heavy-complex}
+The row Jacobians above still have to be inserted into a regulator that acts on
+the same heavy complex.  On the nonzero spectrum of
+\({\mathcal Q}(s)\), choose a Wilsonian or Pauli--Villars regulator whose
+mass parameters are tangent-independent supersymmetric spurions and whose
+bosonic and fermionic regulator multiplets use the same function
+\[
+  F_\Lambda(\lambda)
+  =
+  \sum_{\alpha=0}^N \eta_\alpha
+  \log(\lambda+M_\alpha^2),
+  \qquad
+  \eta_0=1,\quad M_0=0 .
+\]
+The usual short-distance subtraction conditions are imposed on the same list
+of regulator multiplets, for example
+\[
+  \sum_\alpha\eta_\alpha=0,\qquad
+  \sum_\alpha\eta_\alpha M_\alpha^2=0
+\]
+at the level relevant for the local two-derivative coefficient.  The regulated
+heavy determinant cell is then
+\begin{equation}
+  \Gamma_{\Lambda,{\rm heavy}}(s)
+  =
+  \frac12{\rm Tr}_{B,{\rm nz}}
+    F_\Lambda({\mathcal Q}(s)^\dagger{\mathcal Q}(s))
+  -
+  \frac12{\rm Tr}_{F,{\rm nz}}
+    F_\Lambda({\mathcal Q}(s){\mathcal Q}(s)^\dagger).
+  \label{eq:higgs-branch-regulated-heavy-supertrace}
+\end{equation}
+Because the two nonzero spectra are identical, every paired eigenvalue
+\(\lambda_a(s)>0\) gives
+\[
+  \frac12F_\Lambda(\lambda_a(s))
+  -
+  \frac12F_\Lambda(\lambda_a(s))=0
+\]
+before expanding in the slow tangent.  Hence
+\begin{equation}
+  \left.\frac{d^2}{ds^2}
+  \Gamma_{\Lambda,{\rm heavy}}(s)\right|_{s=0}
+  =
+  0
+  \label{eq:higgs-branch-regulated-heavy-supertrace-variation}
+\end{equation}
+for the paired heavy block.  This is the regulator version of
+\eqref{eq:higgs-branch-supercharge-factorized-supertrace}: the cancellation is
+not a cancellation of bare component multiplicities, but a cancellation of the
+same regulated spectral function on the same nonzero supersymmetric complex.
+
+Three failures are now visible.  First, if tangent zero modes are not projected
+out before \(F_\Lambda\) is applied, the logarithm is not a local heavy-field
+determinant.  Second, if the bosonic and fermionic regulator masses differ,
+the second variation contains
+\[
+  \frac12\sum_a
+  \left.\frac{d^2}{ds^2}
+  \bigl(F_{\Lambda,B}(\lambda_a(s))
+        -F_{\Lambda,F}(\lambda_a(s))\bigr)\right|_{s=0},
+\]
+which is a regulator artifact in the Higgs metric.  Third, if a
+Pauli--Villars mass is allowed to depend on the Higgs coordinate without being
+part of the same supersymmetric source multiplet, the regulator itself has
+inserted a spurious background vertex.  A complete rank-one calculation must
+therefore specify the regulator as part of the heavy \(Q\)-complex and only
+then take the local trace-log coefficient in
+\eqref{eq:higgs-branch-background-field-trace-log}.
+\end{example}
+
 \begin{example}[Dimensional reduction of the Higgs heavy rows]
 \label{ex:higgs-branch-dimensional-reduction-row-audit}
 The row completion also explains why the same four-dimensional component table

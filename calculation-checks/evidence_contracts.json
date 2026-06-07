@@ -104,6 +104,15 @@
       "risk_class": "gauge-Higgs analytic corridor theorem boundary"
     },
     {
+      "path": "susy_moduli_space_checks.py",
+      "risk_class": "supersymmetric moduli-space and Higgs-metric theorem boundary",
+      "convention_tags": [
+        "smooth Higgs-branch metric theorem boundary",
+        "rank-one background-field heavy determinant gate",
+        "regulator-compatible heavy Q-complex supertrace"
+      ]
+    },
+    {
       "path": "kinetic_theory_checks.py",
       "risk_class": "Schwinger-Keldysh kinetic collision kernel"
     },

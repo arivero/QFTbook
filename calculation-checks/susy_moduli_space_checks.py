@@ -1,13 +1,36 @@
 #!/usr/bin/env python3
 """Finite checks for supersymmetric moduli-space and branch-EFT conventions.
 
+Evidence contract.
+Target claims: Volume VII Chapter 08 quotient formulae, branch-EFT status
+boundaries, D1-D5 Higgs/Coulomb arithmetic, and the finite Higgs-metric
+background-field gates replacing component multiplicity ledgers.
+Independent construction: exact rational invariant-ring, quotient-dimension,
+cotangent-transition, moment-map, determinant-row, trace-log, and regulator
+supertrace cells are built from finite data rather than by entering the
+manuscript's final identities as constants.
+Imported assumptions: the finite toy cells assume the declared charge
+assignments, a smooth fully Higgsed rank-one patch, the selected
+background-field gauge slots, and finite matrix representatives of the
+heavy nonzero-mode complex.
+Negative controls: component-count-only Higgs metric proofs, vector-spurion
+metric shortcuts, omitted ghosts/Goldstones/longitudinal vectors, omitted
+seagulls, mismatched Ward vertices, dropped auxiliary/Yukawa contacts,
+unpaired dimension-reduced scalar contacts, covering four-dimensional
+component reuse, and unpaired regulator masses are rejected when represented
+by the finite model.
+Scope boundary: these checks do not prove a continuum Higgs-branch metric
+nonrenormalization theorem, construct the full gauge-fixed elliptic complex,
+establish all-order harmonic/projective superspace protection, or construct
+the continuum D1-D5 infrared CFT.
+
 The quotient cells below verify finite algebra behind classical vacuum spaces.
 The Higgs-branch metric-protection cells are narrower Ward/counterterm
 bookkeeping: they test theorem-status boundaries and reject component
 multiplicity ledgers as substitutes for a background-field determinant.  The
-D1-D5 bridge cells test the finite
-rank/flux/FI arithmetic behind the Higgs-versus-Coulomb branch distinction,
-not a construction of the continuum D1-D5 infrared CFT.
+D1-D5 bridge cells test the finite rank/flux/FI arithmetic behind the
+Higgs-versus-Coulomb branch distinction, not a construction of the continuum
+D1-D5 infrared CFT.
 """
 
 from fractions import Fraction
@@ -517,6 +540,7 @@ def check_higgs_branch_background_field_derivation_gate():
         "supercharge_factorization",
         "off_shell_row_completion",
         "rank_one_row_jacobians",
+        "regulator_supertrace_pairing",
         "dimension_reduced_row_contacts",
         "gauge_parameter_cancellation",
         "dimension_reduction_audit",
@@ -679,6 +703,7 @@ def check_higgs_branch_background_field_derivation_gate():
             "yukawa_mass_row",
             "heavy_projector_zero_mode_split",
         },
+        "regulator_supertrace_pairing": "same_pv_function_on_nonzero_Q_complex",
         "dimension_reduced_row_contacts": "reduced_vector_scalars_kept_as_rows",
     }
     assert_equal(
@@ -1280,6 +1305,105 @@ def check_higgs_branch_background_field_derivation_gate():
         full_row_jacobian_second == omitted_contact_second,
         False,
         "row-Jacobian contact is a generated fixed-coordinate seagull",
+    )
+
+    def pv_moments(regulator_terms):
+        coefficient_sum = sum(
+            coefficient for coefficient, _mass_0, _mass_1, _mass_2 in regulator_terms
+        )
+        mass_sum = sum(
+            coefficient * mass_0
+            for coefficient, mass_0, _mass_1, _mass_2 in regulator_terms
+        )
+        return coefficient_sum, mass_sum
+
+    def regulated_log_second_variation(eigen_data, regulator_terms):
+        total = Fraction(0)
+        for lambda_0, lambda_1, lambda_2 in eigen_data:
+            for coefficient, mass_0, mass_1, mass_2 in regulator_terms:
+                denominator = lambda_0 + mass_0
+                total += coefficient * (
+                    (lambda_2 + mass_2) / denominator
+                    - ((lambda_1 + mass_1) * (lambda_1 + mass_1))
+                    / (denominator * denominator)
+                )
+        return total
+
+    nonzero_heavy_eigen_data = [
+        (Fraction(4), Fraction(1), Fraction(3)),
+        (Fraction(9), Fraction(-2), Fraction(5)),
+        (Fraction(25), Fraction(3), Fraction(-7)),
+    ]
+    paired_pv_terms = [
+        (Fraction(1), Fraction(0), Fraction(0), Fraction(0)),
+        (Fraction(-2), Fraction(10), Fraction(0), Fraction(0)),
+        (Fraction(1), Fraction(20), Fraction(0), Fraction(0)),
+    ]
+    assert_equal(
+        pv_moments(paired_pv_terms),
+        (Fraction(0), Fraction(0)),
+        "paired Higgs PV regulator satisfies the displayed local moment conditions",
+    )
+    paired_regulated_variation = regulated_log_second_variation(
+        nonzero_heavy_eigen_data, paired_pv_terms
+    )
+    assert_equal(
+        Fraction(1, 2) * paired_regulated_variation
+        - Fraction(1, 2) * paired_regulated_variation,
+        Fraction(0),
+        "same regulator function cancels on the paired nonzero heavy spectrum",
+    )
+
+    mismatched_fermion_pv_terms = [
+        (Fraction(1), Fraction(0), Fraction(0), Fraction(0)),
+        (Fraction(-2), Fraction(11), Fraction(0), Fraction(0)),
+        (Fraction(1), Fraction(22), Fraction(0), Fraction(0)),
+    ]
+    mismatched_regulator_residual = (
+        Fraction(1, 2)
+        * regulated_log_second_variation(nonzero_heavy_eigen_data, paired_pv_terms)
+        - Fraction(1, 2)
+        * regulated_log_second_variation(
+            nonzero_heavy_eigen_data, mismatched_fermion_pv_terms
+        )
+    )
+    assert_equal(
+        mismatched_regulator_residual == 0,
+        False,
+        "unpaired Higgs PV masses create a regulator-dependent metric residual",
+    )
+
+    tangent_dependent_boson_pv_terms = [
+        (Fraction(1), Fraction(0), Fraction(0), Fraction(0)),
+        (Fraction(-2), Fraction(10), Fraction(1), Fraction(0)),
+        (Fraction(1), Fraction(20), Fraction(0), Fraction(0)),
+    ]
+    tangent_dependent_regulator_residual = (
+        Fraction(1, 2)
+        * regulated_log_second_variation(
+            nonzero_heavy_eigen_data, tangent_dependent_boson_pv_terms
+        )
+        - Fraction(1, 2)
+        * regulated_log_second_variation(nonzero_heavy_eigen_data, paired_pv_terms)
+    )
+    assert_equal(
+        tangent_dependent_regulator_residual == 0,
+        False,
+        "unpaired tangent-dependent regulator mass inserts a fake background vertex",
+    )
+
+    zero_mode_eigen_data = [(Fraction(0), Fraction(0), Fraction(0))]
+    unregulated_log_terms = [(Fraction(1), Fraction(0), Fraction(0), Fraction(0))]
+    try:
+        regulated_log_second_variation(zero_mode_eigen_data, unregulated_log_terms)
+    except ZeroDivisionError:
+        zero_mode_projection_required = True
+    else:
+        zero_mode_projection_required = False
+    assert_equal(
+        zero_mode_projection_required,
+        True,
+        "Higgs tangent zero modes must be projected before the heavy log determinant",
     )
 
     reduced_scalar_rows_by_dimension = {

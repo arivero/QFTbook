@@ -3014,7 +3014,10 @@ Current checks:
   row-contact negative control, derives the rank-one moment-map,
   gauge-fixing, and Yukawa row Jacobians from a fixed-norm Higgs background,
   separates the heavy projector from the tangent zero mode, and rejects
-  omitting the generated row-contact seagull, verifies the reduced
+  omitting the generated row-contact seagull, checks that a paired
+  Pauli--Villars/Wilsonian regulator uses the same spectral function on the
+  nonzero \(Q\)-complex and rejects unpaired regulator masses,
+  tangent-dependent regulator vertices, and unprojected zero modes, verifies the reduced
   vector-scalar row-contact residuals in 3d/2d, separates the
   two-dimensional symmetric metric channel from the antisymmetric \(B/WZ\)
   channel, and blocks reuse of the
@@ -3027,7 +3030,7 @@ Current checks:
   diagonal-mass two-vacuum algebra, and holomorphic threshold scale matching.
   The Higgs-metric cells are finite Ward/counterterm evidence, proof-status
   gates, and negative controls; they do not construct the global continuum
-  nonrenormalization theorem or the missing trace-log determinant proof.
+  nonrenormalization theorem or the full continuum trace-log determinant proof.
 - `susy_2d_lg_glsm_checks.py`: exact finite checks for the
   two-dimensional \(\mathcal N=(2,2)\) Landau--Ginzburg and GLSM chapter,
   including \(A\)-series quasihomogeneous charges and central charges,
