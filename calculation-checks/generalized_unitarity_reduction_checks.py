@@ -14,9 +14,10 @@ and physical threshold, a multi-loop maximal-cut/contact-sector projection
 gate, a dual-contour master-coefficient extraction gate, and finite helicity,
 color, state-sum, and regulator bookkeeping for the
 Yang-Mills MHV/all-plus control examples, including the planar N=4 MHV
-quadruple-cut reconstruction, the five-gluon all-plus rational template, and
-the all-plus rational hard-function bin where the first finite hard
-contribution is the one-loop square rather than Born interference, and
+quadruple-cut reconstruction, the five-gluon leading-color all-plus rational
+template, and a four-gluon full-color trace-basis all-plus hard-function bin
+where the first finite hard contribution is the one-loop square rather than
+Born interference, and
 the four-point color-kinematics/double-copy gateway together with the
 one-loop surface-term obstruction to naive double copy and the local
 Jacobi-repair condition under which a common color-null surface direction is
@@ -60,9 +61,10 @@ threshold-mixing datum in a Fuchsian differential system, the two-letter
 transport/boundary audit for a reduced master sector, and the
 physical channel-discontinuity closure audit before the
 virtual-to-observable finite remainder assembly; additionally, the five-point
-all-plus rational amplitude has the correct little-group weights, mass
-dimension, cyclic term coverage, and strict four-dimensional cut
-invisibility, its all-plus hard-function contribution is placed in the
+leading-color all-plus rational partial amplitude has the correct
+little-group weights, mass dimension, cyclic term coverage, and strict
+four-dimensional cut invisibility, the four-gluon all-plus trace-basis
+amplitude-derived hard-function contribution is placed in the
 lower-loop-squared finite bin when the Born helicity amplitude vanishes, and
 the four-point color-kinematics gateway separates
 gauge-amplitude equivalence from Jacobi-compatible numerator data needed for
@@ -113,7 +115,10 @@ polynomial angular-moment arithmetic for double-cut bubble projection after
 known box and triangle subtraction, including raw-average,
 partial-subtraction, and point-sampling negative controls;
 finite spinor-bracket power counting and helicity-cut enumeration for the
-five-gluon all-plus rational template;
+five-gluon leading-color all-plus rational template; exact four-gluon
+trace-basis color contraction for the all-plus one-loop square, including the
+BDK double-trace permutation sum, an SU(3) trace relation, and transported
+color metric;
 exact Laurent bookkeeping for the dimension-shifted mu_perp^4 box residue,
 including the three-simplex pole, strict four-dimensional cut blindness, and
 massive-scalar coefficient extraction;
@@ -184,9 +189,10 @@ to strict four-dimensional two-particle cuts but visible to a nonzero
 mu_perp^2 massive-scalar probe, verifies that an s-channel cut alone cannot
 separate the N=4 MHV box from lower-topology contamination and that a
 gluon-only state sum is not the N=4 supermultiplet, verifies the same
-rational blind spot at five points, verifies that an all-plus rational
-finite remainder has zero Born interference but a nonzero color-metric
-one-loop-square hard contribution, verifies that a gauge-equivalent
+rational blind spot at five points, verifies that the four-gluon all-plus
+trace-basis finite remainder has zero Born interference but a nonzero
+color-metric one-loop-square hard contribution, and rejects an omitted
+subleading-color shortcut, verifies that a gauge-equivalent
 non-Jacobi numerator shift changes the naive numerator square, verifies that a
 dimension-shifted mu_perp^4 numerator is missed by strict four-dimensional cuts
 but leaves the finite rational residue read by massive unitarity, verifies that a
@@ -231,8 +237,8 @@ uncompensated finite color-space subtraction shifts, wrong unresolved
 subtraction measurements, frozen locally inclusive measurement shortcuts,
 finite-remainder-only observable reweighting, non-infrared-safe logarithmic
 weights, two-loop remainder extraction that drops `I^(1) A^(1)`, and NNLO
-observable assembly that omits either the all-plus rational hard square or the
-generic `|F^(1)|^2` hard term.
+observable assembly that omits either the trace-basis all-plus rational hard
+square or the generic `|F^(1)|^2` hard term.
 Scope boundary: a pass checks the finite reconstruction and reduction
 bookkeeping; it does not compute a nonabelian helicity amplitude from Feynman
 graphs, prove unitarity from Wightman axioms, solve general multi-loop
@@ -244,6 +250,7 @@ observables.
 from __future__ import annotations
 
 import math
+from itertools import permutations
 from fractions import Fraction
 
 
@@ -929,6 +936,31 @@ def all_plus_massive_scalar_probe(mu_perp_squared: Fraction) -> Fraction:
     return mu_perp_squared * mu_perp_squared
 
 
+SpinorTable = dict[int, tuple[Fraction, Fraction]]
+
+
+def spinor_bracket(spinors: SpinorTable, left: int, right: int) -> Fraction:
+    left_spinor = spinors[left]
+    right_spinor = spinors[right]
+    return left_spinor[0] * right_spinor[1] - left_spinor[1] * right_spinor[0]
+
+
+def four_point_all_plus_partial_ratio(
+    order: tuple[int, int, int, int],
+    angle_spinors: SpinorTable,
+    square_spinors: SpinorTable,
+) -> Fraction:
+    first, second, third, fourth = order
+    return (
+        spinor_bracket(square_spinors, first, second)
+        * spinor_bracket(square_spinors, third, fourth)
+        / (
+            spinor_bracket(angle_spinors, first, second)
+            * spinor_bracket(angle_spinors, third, fourth)
+        )
+    )
+
+
 def check_mu4_dimension_shift_rational_residue() -> None:
     # In the shifted 8-2 eps scalar box, the leading Feynman-parameter pole is
     # Gamma(eps) times the volume of the three-simplex, 1/6.  Multiplication by
@@ -1509,74 +1541,195 @@ def check_five_gluon_all_plus_rational_template() -> None:
 
 
 def check_all_plus_rational_hard_function_bin() -> None:
-    color_metric: Matrix = [
-        [Fraction(3), Fraction(1)],
-        [Fraction(1), Fraction(2)],
+    # Strip the common g^4 mu_R^{2 eps} C_rat factor.  The finite spinor sample
+    # satisfies sum_i lambda_i tilde_lambda_i = 0 exactly, so the BDK
+    # four-gluon all-plus ratio can be evaluated without assigning arbitrary
+    # color coordinates.
+    angle_spinors: SpinorTable = {
+        1: (Fraction(1), Fraction(0)),
+        2: (Fraction(0), Fraction(1)),
+        3: (Fraction(1), Fraction(2)),
+        4: (Fraction(3), Fraction(1)),
+    }
+    square_spinors: SpinorTable = {
+        1: (-Fraction(7), Fraction(0)),
+        2: (-Fraction(4), -Fraction(5)),
+        3: (Fraction(1), Fraction(3)),
+        4: (Fraction(2), -Fraction(1)),
+    }
+    momentum_entries = [
+        sum(
+            angle_spinors[leg][row] * square_spinors[leg][col]
+            for leg in (1, 2, 3, 4)
+        )
+        for row in (0, 1)
+        for col in (0, 1)
     ]
-    tree_all_plus: Vector = [Fraction(0), Fraction(0)]
-    strict_four_dimensional_cut_remainder: Vector = [Fraction(0), Fraction(0)]
-    rational_remainder: Vector = [Fraction(5, 42), -Fraction(1, 6)]
-    finite_remainder = vector_add(
-        strict_four_dimensional_cut_remainder,
-        rational_remainder,
-    )
+    assert_equal("four-gluon spinor sample conserves momentum", momentum_entries, [Fraction(0)] * 4)
 
-    strict_cut_signature_with_rational = tuple(strict_four_dimensional_cut_remainder)
-    strict_cut_signature_without_rational = (Fraction(0), Fraction(0))
+    single_trace_orders = [
+        (1, 2, 3, 4),
+        (1, 2, 4, 3),
+        (1, 3, 2, 4),
+        (1, 3, 4, 2),
+        (1, 4, 2, 3),
+        (1, 4, 3, 2),
+    ]
+    leading_partials = [
+        four_point_all_plus_partial_ratio(order, angle_spinors, square_spinors)
+        for order in single_trace_orders
+    ]
+    rational_ratio = Fraction(49)
     assert_equal(
-        "all-plus rational has same strict 4D cut signature",
-        strict_cut_signature_with_rational,
-        strict_cut_signature_without_rational,
+        "four-gluon all-plus leading partials at sample",
+        leading_partials,
+        [rational_ratio] * 6,
     )
 
+    def double_trace_coefficient(a: int, b: int, c: int, d: int) -> Fraction:
+        return sum(
+            four_point_all_plus_partial_ratio(order + (d,), angle_spinors, square_spinors)
+            for order in permutations((a, b, c))
+        )
+
+    double_trace_coefficients = [
+        double_trace_coefficient(1, 2, 3, 4),
+        double_trace_coefficient(1, 3, 2, 4),
+        double_trace_coefficient(1, 4, 2, 3),
+    ]
+    assert_equal(
+        "BDK four-point double-trace coefficients",
+        double_trace_coefficients,
+        [6 * rational_ratio] * 3,
+    )
+
+    # SU(3), fundamental normalization Tr(T^a T^b)=delta^{ab}/2.  The first
+    # six basis vectors are 3 Tr(T^{a_i}T^{a_j}T^{a_k}T^{a_l}) for the orders
+    # above; the last three are Tr(ij)Tr(kl) for 12|34, 13|24, and 14|23.
+    su3_trace_gram: Matrix = [
+        [Fraction(57, 2), -Fraction(3), -Fraction(3), -Fraction(3), -Fraction(3), Fraction(6), Fraction(4), -Fraction(1, 2), Fraction(4)],
+        [-Fraction(3), Fraction(57, 2), -Fraction(3), Fraction(6), -Fraction(3), -Fraction(3), Fraction(4), Fraction(4), -Fraction(1, 2)],
+        [-Fraction(3), -Fraction(3), Fraction(57, 2), -Fraction(3), Fraction(6), -Fraction(3), -Fraction(1, 2), Fraction(4), Fraction(4)],
+        [-Fraction(3), Fraction(6), -Fraction(3), Fraction(57, 2), -Fraction(3), -Fraction(3), Fraction(4), Fraction(4), -Fraction(1, 2)],
+        [-Fraction(3), -Fraction(3), Fraction(6), -Fraction(3), Fraction(57, 2), -Fraction(3), -Fraction(1, 2), Fraction(4), Fraction(4)],
+        [Fraction(6), -Fraction(3), -Fraction(3), -Fraction(3), -Fraction(3), Fraction(57, 2), Fraction(4), -Fraction(1, 2), Fraction(4)],
+        [Fraction(4), Fraction(4), -Fraction(1, 2), Fraction(4), -Fraction(1, 2), Fraction(4), Fraction(4), Fraction(1, 2), Fraction(1, 2)],
+        [-Fraction(1, 2), Fraction(4), Fraction(4), Fraction(4), Fraction(4), -Fraction(1, 2), Fraction(1, 2), Fraction(4), Fraction(1, 2)],
+        [Fraction(4), -Fraction(1, 2), Fraction(4), -Fraction(1, 2), Fraction(4), Fraction(4), Fraction(1, 2), Fraction(1, 2), Fraction(4)],
+    ]
+    su3_trace_relation = [-Fraction(1)] * 6 + [Fraction(3)] * 3
+    assert_equal(
+        "SU(3) four-trace relation is color-null",
+        matrix_vector_mul(su3_trace_gram, su3_trace_relation),
+        [Fraction(0)] * 9,
+    )
+
+    full_trace_coefficients = leading_partials + double_trace_coefficients
+    redundant_square = dot(
+        full_trace_coefficients,
+        matrix_vector_mul(su3_trace_gram, full_trace_coefficients),
+    )
+
+    # Eliminate the third double trace with
+    # D_{14|23}=(S_1+...+S_6)/3-D_{12|34}-D_{13|24}.
+    independent_metric = [row[:8] for row in su3_trace_gram[:8]]
+    independent_coefficients = [
+        full_trace_coefficients[index] + full_trace_coefficients[8] / 3
+        for index in range(6)
+    ] + [
+        full_trace_coefficients[6] - full_trace_coefficients[8],
+        full_trace_coefficients[7] - full_trace_coefficients[8],
+    ]
+    assert_equal(
+        "four-gluon all-plus independent trace coefficients",
+        independent_coefficients,
+        [3 * rational_ratio] * 6 + [Fraction(0), Fraction(0)],
+    )
+
+    tree_all_plus: Vector = [Fraction(0)] * 8
     born_interference = 2 * dot(
         tree_all_plus,
-        matrix_vector_mul(color_metric, finite_remainder),
+        matrix_vector_mul(independent_metric, independent_coefficients),
     )
-    assert_equal(
-        "all-plus rational has zero Born interference",
-        born_interference,
-        Fraction(0),
-    )
+    assert_equal("all-plus trace amplitude has zero Born interference", born_interference, Fraction(0))
 
     hard_square = dot(
-        finite_remainder,
-        matrix_vector_mul(color_metric, finite_remainder),
+        independent_coefficients,
+        matrix_vector_mul(independent_metric, independent_coefficients),
     )
-    assert_equal("all-plus rational hard square", hard_square, Fraction(103, 1764))
-    assert_true("all-plus rational hard square is finite and nonzero", hard_square > 0)
-
-    omitted_rational_square = dot(
-        strict_four_dimensional_cut_remainder,
-        matrix_vector_mul(color_metric, strict_four_dimensional_cut_remainder),
-    )
+    assert_equal("redundant and independent trace hard squares agree", redundant_square, hard_square)
+    assert_equal("four-gluon all-plus SU(3) hard square", hard_square, Fraction(2_917_215))
     assert_equal(
-        "strict-cut all-plus shortcut gives zero hard square",
-        omitted_rational_square,
-        Fraction(0),
+        "four-gluon all-plus SU(3) hard square formula",
+        hard_square,
+        Fraction(1215) * rational_ratio * rational_ratio,
     )
+
+    color_spin_averaged_square = hard_square / (4 * 8 * 8)
+    assert_equal(
+        "unpolarized 2-to-2 color-spin average convention",
+        color_spin_averaged_square,
+        Fraction(2_917_215, 256),
+    )
+
+    strict_cut_coefficients: Vector = [Fraction(0)] * 8
+    strict_cut_square = dot(
+        strict_cut_coefficients,
+        matrix_vector_mul(independent_metric, strict_cut_coefficients),
+    )
+    assert_equal("strict-cut all-plus shortcut gives zero hard square", strict_cut_square, Fraction(0))
     assert_true(
         "strict-cut all-plus shortcut loses finite hard contribution",
-        omitted_rational_square != hard_square,
+        strict_cut_square != hard_square,
     )
 
-    helicity_sum_without_all_plus = Fraction(13, 17)
-    helicity_sum_with_all_plus = helicity_sum_without_all_plus + hard_square
+    leading_color_only_coefficients = leading_partials + [Fraction(0), Fraction(0)]
+    leading_color_only_square = dot(
+        leading_color_only_coefficients,
+        matrix_vector_mul(independent_metric, leading_color_only_coefficients),
+    )
+    assert_equal("omitted subleading-color all-plus square", leading_color_only_square, Fraction(324_135))
     assert_true(
-        "helicity sum includes all-plus rational hard square",
-        helicity_sum_with_all_plus != helicity_sum_without_all_plus,
+        "omitting double traces changes the all-plus hard square",
+        leading_color_only_square != hard_square,
     )
 
-    mhv_tree: Vector = [Fraction(3, 5), -Fraction(2, 7)]
-    mhv_finite_remainder: Vector = [Fraction(11, 13), Fraction(1, 17)]
-    mhv_interference = 2 * dot(
-        mhv_tree,
-        matrix_vector_mul(color_metric, mhv_finite_remainder),
+    basis_transport: Matrix = [
+        [Fraction(1), Fraction(1), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(1), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(1), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(1), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(1), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(1), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(1), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(1)],
+    ]
+    inverse_basis_transport: Matrix = [
+        [Fraction(1), -Fraction(1), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(1), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(1), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(1), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(1), Fraction(0), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(1), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(1), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(1)],
+    ]
+    transported_coefficients = matrix_vector_mul(basis_transport, independent_coefficients)
+    transported_metric = matrix_mul(
+        matrix_transpose(inverse_basis_transport),
+        matrix_mul(independent_metric, inverse_basis_transport),
     )
-    assert_true(
-        "nonzero Born sector has one-loop hard interference",
-        mhv_interference != Fraction(0),
+    transported_square = dot(
+        transported_coefficients,
+        matrix_vector_mul(transported_metric, transported_coefficients),
     )
+    assert_equal("all-plus hard square survives basis transport", transported_square, hard_square)
+
+    old_metric_square = dot(
+        transported_coefficients,
+        matrix_vector_mul(independent_metric, transported_coefficients),
+    )
+    assert_true("old color metric after basis change alters hard square", old_metric_square != hard_square)
 
 
 def check_four_point_color_kinematics_gateway() -> None:

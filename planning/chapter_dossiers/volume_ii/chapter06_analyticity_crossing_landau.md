@@ -846,6 +846,18 @@
   companion check verifies identical strict \(D=4\) cut signatures, zero Born
   interference, a nonzero color-metric hard square, and the strict-cut
   shortcut that loses that finite hard contribution.
+- 2026-06-06 issue #769 all-plus color re-audit: tightened the same block after
+  review showed that the previous hard square jumped from a five-point
+  leading-color partial-amplitude template to full color-space language.  The
+  text now marks the five-point formula as a leading-color partial amplitude
+  only and carries the four-point all-plus example through the BDK trace
+  decomposition, the fixed double-trace permutation sum, the SU(3) trace
+  relation, the color Gram contraction
+  \(H_{++++,\mathrm{virt}^2}^{(2)}=1215|r|^2|g^4\mu_R^{2\epsilon}C_{\rm rat}|^2\),
+  spin/color averaging convention, and basis-transport check.  The companion no
+  longer uses an arbitrary positive matrix/vector pair; it derives the finite
+  trace coefficients from an on-shell spinor sample and rejects both strict-cut
+  and omitted-subleading-color shortcuts.
 - 2026-06-05 issue #769 virtual-to-observable pass: added the
   finite-remainder assembly layer after the cut-equality warning.  The pass
   separates reconstructed virtual amplitudes from infrared-safe observables by

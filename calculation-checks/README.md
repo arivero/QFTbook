@@ -3348,9 +3348,10 @@ Current checks:
   partial-subtraction negative controls, the double-cut bubble projection after
   known box/triangle double-cut-shadow subtraction with raw-average,
   partial-subtraction, point-sampling, and wrong-measure negative controls, the
-  five-gluon all-plus rational template, the all-plus rational
-  hard-function bin showing that the first finite hard contribution is the
-  one-loop square when the Born helicity amplitude vanishes, the
+  five-gluon leading-color all-plus rational template, the four-gluon
+  trace-basis all-plus hard-function bin showing that the first finite hard
+  contribution is the one-loop square when the Born helicity amplitude
+  vanishes, including the double-trace color negative control, the
   dimension-shifted
   \(\mu_\perp^4\) box residue \(-1/6\)
   and massive-scalar coefficient extraction for the all-plus rational blind

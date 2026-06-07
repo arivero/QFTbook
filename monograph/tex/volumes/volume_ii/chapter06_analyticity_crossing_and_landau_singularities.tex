@@ -2946,68 +2946,116 @@ the cut, like a massive scalar circulating in the loop.  The all-plus
 amplitude is then recovered from massive-scalar cut trees or, equivalently,
 from dimension-shifted integrals whose \(\mu_\perp^4\) numerators leave a
 finite term after integration.  Formula
-\eqref{eq:five-point-all-plus-rational-amplitude} is consequently a
-five-point nonabelian amplitude, not a local counterterm and not a
-four-dimensional cut-constructible branch function.  It is also not yet an
-infrared-safe observable; after the virtual partial amplitude is reconstructed
-one still has to apply the finite-remainder and real-radiation assembly
-described in
+\eqref{eq:five-point-all-plus-rational-amplitude} is consequently a genuine
+five-point leading-color partial amplitude, not a local counterterm and not a
+four-dimensional cut-constructible branch function.  It is not yet a
+color-summed hard contribution.  That stronger statement requires the full
+one-loop trace decomposition, including the subleading traces related to the
+leading-color partials, an independent color basis, the corresponding
+\(\mathrm{SU}(N_c)\) Gram matrix, and the same finite-remainder and
+real-radiation assembly described in
 ControlledApproximation~\ref{ca:one-loop-reconstruction-observable-assembly}.
 \end{controlledapproximation}
 
-\begin{controlledapproximation}[All-plus rational hard-function bin]
+\begin{controlledapproximation}[Four-point all-plus hard-function bin]
 \label{ca:all-plus-rational-hard-function-bin}
-The rational term just isolated is physically placed by the hard-function
-assembly, not by the branch-cut test alone.  Fix a helicity sector \(h\), a
-color basis, and the corresponding color Gram matrix \(G\).  After ultraviolet
-renormalization and infrared subtraction in one declared scheme, write the
-finite one-loop remainder as
-\[
-  F_h^{(1)}
+The color step can be carried out completely at four points.  Strip the common
+factor \(g^4\mu_R^{2\epsilon}C_{\rm rat}\) from
+\eqref{eq:all-plus-four-gluon-rational-control} and write the BDK one-loop
+trace decomposition as
+\begin{equation}
+  \mathcal A_4^{(1)}(++++)
   =
-  F_{h,\mathrm{cut}}^{(1)}+R_h^{(1)},
+  g^4\mu_R^{2\epsilon}C_{\rm rat}
+  \left[
+    \sum_{\sigma\in S_4/Z_4}
+      N_c\,\operatorname{Tr}(\sigma_1\sigma_2\sigma_3\sigma_4)\,\rho_\sigma
+    +
+    \sum_{ij|kl}
+      \operatorname{Tr}(i j)\operatorname{Tr}(k l)\,\rho_{ij|kl}^{(3)}
+  \right]+O(\epsilon),
+  \label{eq:four-point-all-plus-trace-decomposition}
+\end{equation}
+where
+\[
+  \rho_{1234}
+  =
+  \frac{[12][34]}{\langle12\rangle\langle34\rangle},
+  \qquad
+  \rho_{12|34}^{(3)}
+  =
+  \sum_{\pi\in S_3}\rho_{\pi(1)\pi(2)\pi(3)4},
 \]
-where \(F_{h,\mathrm{cut}}^{(1)}\) is the cut-constructible part and
-\(R_h^{(1)}\) is the rational/regulator contribution.  The one-loop hard
-interference and the lower-loop-squared virtual hard contribution are
+and the other double traces are obtained by relabelling.  Thus the
+subleading-color entries are not optional decoration; they are fixed by the
+same leading-color partials that supplied the rational term.
+
+For general \(N_c\) the same trace decomposition must be contracted with the
+corresponding trace Gram matrix.  The following numbers give the complete QCD
+\(\mathrm{SU}(3)\) contraction.  Use the fundamental normalization
+\[
+  \operatorname{Tr}(T^aT^b)=\frac{\delta^{ab}}{2}
+\]
+and define
+\[
+  S_\sigma:=3\,\operatorname{Tr}(T^{a_{\sigma_1}}T^{a_{\sigma_2}}
+                  T^{a_{\sigma_3}}T^{a_{\sigma_4}}),
+  \qquad
+  D_{ij|kl}:=\operatorname{Tr}(T^{a_i}T^{a_j})
+  \operatorname{Tr}(T^{a_k}T^{a_l}) .
+\]
+The exact trace contraction gives
+\[
+  \sum_{\sigma\in S_4/Z_4}S_\sigma
+  =
+  3\sum_{ij|kl}D_{ij|kl},
+  \qquad
+  \left\langle\sum_{\sigma}S_\sigma,\sum_{\tau}S_\tau\right\rangle_{\rm color}
+  =
+  135 .
+\]
+Four-point momentum conservation collapses the six ordered all-plus ratios to a
+common value \(r\).  The full trace vector is therefore
+\[
+  R_{++++}^{(1)}
+  =
+  3r\sum_{\sigma\in S_4/Z_4}S_\sigma
+\]
+after the trace relation is used.  The tree amplitude in this helicity sector
+vanishes, but the lower-loop-squared hard entry does not:
 \begin{align}
-  H_h^{(1)}
+  H_{++++}^{(1)}
   &=
   2\,\Re\!\left[
-    \bigl(A_h^{(0)}\bigr)^\dagger G F_h^{(1)}
-  \right],
-  \label{eq:one-loop-hard-interference-rational-split}\\
-  H_{h,\mathrm{virt}^2}^{(2)}
-  &=
-  \bigl(F_h^{(1)}\bigr)^\dagger G F_h^{(1)} .
-  \label{eq:one-loop-square-hard-rational-split}
-\end{align}
-For an all-plus gluon sector,
-\[
-  A_{+\cdots+}^{(0)}=0,\qquad
-  F_{+\cdots+,\mathrm{cut}}^{(1)}=0,\qquad
-  R_{+\cdots+}^{(1)}\ne0 .
-\]
-Thus
-\begin{equation}
-  H_{+\cdots+}^{(1)}=0,\qquad
-  H_{+\cdots+,\mathrm{virt}^2}^{(2)}
+    \bigl(A_{++++}^{(0)}\bigr)^\dagger G R_{++++}^{(1)}
+  \right]
   =
-  \bigl(R_{+\cdots+}^{(1)}\bigr)^\dagger
-  G
-  R_{+\cdots+}^{(1)} .
+  0,
+  \label{eq:all-plus-four-point-hard-interference}\\
+  H_{++++,\mathrm{virt}^2}^{(2)}
+  &=
+  \bigl(R_{++++}^{(1)}\bigr)^\dagger G R_{++++}^{(1)}
+  =
+  1215\,|r|^2\,|g^4\mu_R^{2\epsilon}C_{\rm rat}|^2 .
   \label{eq:all-plus-rational-first-hard-bin}
-\end{equation}
-The absence of a Born interference term therefore records the power-counting
-position of the all-plus rational amplitude; it does not erase the amplitude
-from helicity-summed finite hard functions.  In a full NNLO observable this
-virtual-squared entry must still be combined with the process-dependent
-real-virtual, double-real, subtraction, and factorization pieces.  A strict
-four-dimensional cut shortcut which sets \(R_{+\cdots+}^{(1)}=0\) has the
-same all-plus branch-cut data, but it gives zero for
-\eqref{eq:all-plus-rational-first-hard-bin}.  That shortcut loses a finite
-hard contribution even though it passed every strict \(D=4\) cut in the
-helicity sector.
+\end{align}
+Here the superscript \((2)\) denotes the perturbative coefficient order of the
+one-loop-square contribution, not a two-loop all-plus amplitude.  For an
+unpolarized \(2\to2\) gluon hard function one further divides the fixed-helicity
+color sum by \(4(N_c^2-1)^2\); the process-dependent real-virtual,
+double-real, subtraction, and factorization terms still have to be assembled in
+the same convention.  Rewriting the eight independent trace coordinates in a
+second basis leaves
+\eqref{eq:all-plus-rational-first-hard-bin} invariant only when the Gram matrix
+is transported as in
+\eqref{eq:color-space-basis-transport}; keeping the old metric changes the hard
+square.  A strict four-dimensional cut shortcut sets the rational trace vector
+to zero and gives zero for
+\eqref{eq:all-plus-rational-first-hard-bin}.  A leading-color-only shortcut
+keeps the single traces but omits the double-trace coefficients in
+\eqref{eq:four-point-all-plus-trace-decomposition}; it gives a different color
+norm.  Both shortcuts lose finite hard-function information even though the
+all-plus branch-cut data are unchanged.
 \end{controlledapproximation}
 
 \begin{controlledapproximation}[Four-point color--kinematics comparison datum]
