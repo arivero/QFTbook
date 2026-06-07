@@ -858,7 +858,10 @@ Current checks:
   differentiation through source-dependent normal-fluctuation response to a
   physical projection, including a retained-cell amplitude laboratory which
   assembles collective, determinant, zero-mode source, normal-mode quotient,
-  and projection factors in one exact rational coefficient,
+  and projection factors in one exact rational coefficient, a named hard
+  \(SU(3)\), \(N_f=2\) channel spine that keeps collective density,
+  zero-mode source selection, normal-source response, Haar/LSZ/size-window
+  transport, and final projection in order,
   the one-loop density RG cancellation, the distinction between density-only,
   mass-saturated, and hard four-source size powers, finite determinant
   constant cancellation only in transported same-channel ratios,

@@ -20,6 +20,10 @@
   determinant normalization, channel/source data, the hard \(SU(3)\),
   \(N_f=2\) benchmark and Wilsonian size split, to normal-fluctuation
   response, cluster corrections, and observable maps.
+- Front named-channel spine: the opening now keeps the \(SU(3)\), \(N_f=2\)
+  hard \(RR\to LL\) channel visible as a single end-to-end trace from
+  collective density to zero-mode source selection, normal-source response,
+  Haar/LSZ/size-window data, and final physical projection.
 
 ## Definitions And Results
 
@@ -39,6 +43,14 @@
   extraction by applying a declared source differential and projection to the
   finite source functional, with regulator, continuation, sector, endpoint,
   and matching residuals kept outside the source functional itself.
+- `rem:instanton-su3-nf2-hard-channel-spine`: front-of-chapter hard-channel
+  trace preventing the later instanton material from reading as adjacent
+  moduli, density, determinant, and projection cells.
+- `eq:instanton-su3-nf2-hard-channel-spine`: displayed ordered map
+  `collective density -> zero-mode source derivative -> normal-source response
+  -> Haar/LSZ/size window -> physical projection`, with a minimal residual
+  ledger
+  `B_coll+B_zm+B_nz/src+B_Haar/LSZ+B_rho-win+B_proj`.
 - `ca:instanton-source-functional-route`: route-to-amplitude block rejecting
   the three main shortcut reorderings: source differentiation replaced by mass
   saturation, determinant normalization substituted for source response, and
@@ -263,6 +275,11 @@
   regulator and why the later density, zero-mode, normal-fluctuation,
   size-window, and projection blocks are parts of one amplitude extraction
   rather than adjacent facts about the BPST saddle.
+- The named hard-channel spine is an architecture repair, not a new
+  moduli-space lemma.  It gives the \(SU(3)\), \(N_f=2\) hard channel a single
+  reader-facing trace before the chapter breaks the calculation into
+  determinants, source classes, normal modes, size windows, and observable
+  handoffs.
 - The finite source-functional laboratory turns that route into a single
   retained-cell amplitude coordinate.  This is the architecture repair called
   for by the instanton depth concern: moduli or ADHM data can supply only the

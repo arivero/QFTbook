@@ -13,6 +13,11 @@ Target claims:
   amplitude coordinate multiplies the collective weight, nonzero-mode
   determinant normalization, differentiated zero-mode source coordinate,
   normal-mode source quotient, and physical projection in one finite sum.
+- `rem:instanton-su3-nf2-hard-channel-spine` and
+  `eq:instanton-su3-nf2-hard-channel-spine`: the named hard
+  `SU(3)`, `N_f=2` channel keeps collective density, zero-mode source
+  selection, normal-fluctuation source response, Haar/LSZ/size-window data,
+  and the final physical projection in a fixed order.
 - `def:instanton-physical-amplitude-channel` and
   `eq:instanton-physical-channel-functional`: the physical channel depends on
   the collective density, nonzero-mode determinant, zero-mode source
@@ -171,9 +176,10 @@ Target claims:
 
 Independent construction:
 - The checks build small exact rational cell models from scratch.  They compute
-  source-functional route orderings, a retained-cell finite amplitude
-  laboratory with collective, determinant, zero-mode source, normal-mode
-  covariance, and projection factors,
+  source-functional route orderings, a named hard-channel spine with
+  collective, zero-mode, normal-source, Haar/LSZ, endpoint, and projection
+  stages, a retained-cell finite amplitude laboratory with collective,
+  determinant, zero-mode source, normal-mode covariance, and projection factors,
   two-by-two determinants, mass/source polynomials, one-loop RG exponents,
   running collective zero-mode Jacobian ratios,
   gauge-sliced zero-mode Gram determinants,
@@ -270,7 +276,10 @@ Negative controls:
   differentiation by mass saturation, replace source-dependent normal
   fluctuation response by a determinant-only Gaussian mean, replace a
   physical projection by a raw Euclidean source sum, or assemble the finite
-  retained-cell laboratory after any of those substitutions.  It also rejects a plus
+  retained-cell laboratory after any of those substitutions.  It rejects named
+  hard-channel shortcuts that keep only the moduli/density factor, omit
+  normal-source response, omit Haar/LSZ/size-window transport, or square the
+  linear amplitude before the physical projection.  It also rejects a plus
   sign in the off-diagonal determinant term, a
   moduli-only prediction that ignores zero-mode rank, a rank-one source matrix
   treated as a nonzero four-source channel, a wrong one-loop density power, a
@@ -646,6 +655,103 @@ def check_source_functional_route_order() -> None:
         "raw Euclidean kernel shortcut misses physical projection",
         euclidean_kernel_shortcut,
         routed_coordinate,
+    )
+
+
+def check_named_hard_channel_trace_spine() -> None:
+    physical_path = (
+        "monograph/tex/volumes/volume_ii/"
+        "chapter20d_instantons_and_physical_amplitudes.tex"
+    )
+    spine_context = label_context(
+        physical_path,
+        "rem:instanton-su3-nf2-hard-channel-spine",
+        before=300,
+        after=1900,
+    )
+    for name, needle in [
+        ("named spine exposes BPST/ADHM as collective data", "BPST/ADHM"),
+        ("named spine keeps normal-fluctuation response", "normal-fluctuation"),
+        ("named spine keeps physical projection", "\\Pi_{\\rm phys}"),
+        ("named spine keeps projection residual", "B_{\\rm proj}"),
+    ]:
+        assert_contains(name, spine_context, needle)
+
+    # Finite analogue of the named SU(3), N_f=2 hard channel trace.  The
+    # numerical choices are independent so each stage can be removed without
+    # accidentally preserving the final coordinate.
+    stage_factors = {
+        "collective_density": Fraction(5, 7),
+        "zero_mode_source": Fraction(3, 2),
+        "normal_source_response": Fraction(7, 6),
+        "haar_lsz_window": Fraction(4, 9),
+        "size_window": Fraction(11, 10),
+        "physical_projection": Fraction(2, 5),
+    }
+    hard_amplitude = product(list(stage_factors.values()))
+    assert_equal("named hard-channel linear amplitude", hard_amplitude, Fraction(11, 45))
+
+    moduli_density_only = stage_factors["collective_density"]
+    omitted_normal_response = hard_amplitude / stage_factors["normal_source_response"]
+    omitted_haar_lsz_window = hard_amplitude / stage_factors["haar_lsz_window"]
+    raw_euclidean_before_projection = hard_amplitude / stage_factors["physical_projection"]
+
+    assert_not_equal(
+        "named spine rejects moduli-density-only coordinate",
+        moduli_density_only,
+        hard_amplitude,
+    )
+    assert_not_equal(
+        "named spine rejects omitted normal-source response",
+        omitted_normal_response,
+        hard_amplitude,
+    )
+    assert_not_equal(
+        "named spine rejects omitted Haar/LSZ/size transport",
+        omitted_haar_lsz_window,
+        hard_amplitude,
+    )
+    assert_not_equal(
+        "named spine rejects raw Euclidean pre-projection coordinate",
+        raw_euclidean_before_projection,
+        hard_amplitude,
+    )
+
+    measurement_weight = Fraction(9, 8)
+    positive_rate_bin = measurement_weight * hard_amplitude * hard_amplitude
+    assert_equal("named hard-channel positive rate bin", positive_rate_bin, Fraction(121, 1800))
+    assert_not_equal(
+        "named spine rejects linear amplitude as positive rate",
+        hard_amplitude,
+        positive_rate_bin,
+    )
+
+    residuals = {
+        "collective": Fraction(1, 300),
+        "zero_mode": Fraction(1, 360),
+        "normal_source": Fraction(1, 420),
+        "haar_lsz": Fraction(1, 630),
+        "size_window": Fraction(1, 700),
+        "projection": Fraction(1, 840),
+    }
+    residual_budget = sum(residuals.values(), Fraction(0))
+    actual_extreme_residual = residual_budget
+    assert_equal(
+        "named hard-channel residual budget keeps all stages",
+        actual_extreme_residual <= residual_budget,
+        True,
+    )
+    underbudget_without_normal = residual_budget - residuals["normal_source"]
+    assert_equal(
+        "omitting normal-source residual underbudgets named spine",
+        actual_extreme_residual <= underbudget_without_normal,
+        False,
+    )
+    underbudget_without_projection = residual_budget - residuals["projection"]
+    assert_equal(
+        "omitting projection residual underbudgets named spine",
+        actual_extreme_residual <= underbudget_without_projection,
+        False,
     )
 
 
@@ -5304,6 +5410,7 @@ def check_same_coordinate_amplitude_rate_gate() -> None:
 
 def main() -> None:
     check_source_functional_route_order()
+    check_named_hard_channel_trace_spine()
     check_collective_coordinate_zero_mode_jacobian()
     check_one_loop_density_rg_and_channel_power()
     check_running_collective_jacobian_in_hard_coefficient()

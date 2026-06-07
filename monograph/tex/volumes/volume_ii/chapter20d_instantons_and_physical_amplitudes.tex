@@ -32,6 +32,50 @@ Wilsonian size split enter one concrete coefficient.  Finally,
 normal-fluctuation source response, cluster corrections, and observable maps
 decide which part of the instanton ensemble is being measured.
 
+\begin{remark}[Named hard-channel spine]
+\label{rem:instanton-su3-nf2-hard-channel-spine}
+For orientation, keep one channel in view: the two-flavor hard
+\(SU(3)\) instanton source which is later crossed to the \(RR\to LL\)
+four-fermion channel.  The calculation has the ordered spine
+\begin{equation}
+\begin{aligned}
+  \mathcal D_{\rm coll}(\rho)
+  &\xrightarrow{\mathsf D_J}
+  \mathcal D_{\rm coll}(\rho)\,
+  \mathcal Z_{\rm zm}^{RR\to LL}(\rho,p_i)\\
+  &\xrightarrow{\langle\,\cdot\,\rangle_{\gamma}^{\rm nz}}
+  \mathcal D_{\rm coll}(\rho)\,
+  \mathcal Z_{\rm zm}^{RR\to LL}(\rho,p_i)\,
+  \mathcal Q_{\rm nz}^{\rm src}(\rho,p_i)\\
+  &\xrightarrow{\hbox{\scriptsize Haar, LSZ, size window}}
+  C^I_{RR\to LL}(p_i;R,\Lambda)\\
+  &\xrightarrow{\Pi_{\rm phys}}
+  \mathcal A^I_{\mathcal O,\Lambda}
+  \quad\hbox{or}\quad
+  \mathcal O^I_\Lambda[W].
+\end{aligned}
+  \label{eq:instanton-su3-nf2-hard-channel-spine}
+\end{equation}
+The first factor contains the BPST/ADHM collective density, action, and
+regulator convention; it is only the collective side of the channel.  The
+first arrow is the zero-mode source derivative and chirality selection.  The
+second arrow is the normal-fluctuation source response, which is not fixed by
+the determinant constant alone.  The third arrow attaches the shared color
+orientation, center momentum, external residues, amputation convention, and
+retained size window.  The last arrow is the chosen physical map: a pole
+amplitude, a Wilsonian OPE row, an inclusive cut, a Euclidean susceptibility,
+or a real-time rate use different \(\Pi_{\rm phys}\).  The minimal residual
+ledger for this named channel is therefore
+\[
+  |\Delta_{\rm hard}|
+  \le
+  B_{\rm coll}+B_{\rm zm}+B_{\rm nz/src}
+  +B_{\rm Haar/LSZ}+B_{\rho{\rm -win}}+B_{\rm proj}.
+\]
+Omitting any one of these entries computes a different QFT coordinate, even
+if the underlying moduli space and one-loop density have not changed.
+\end{remark}
+
 \section{The Source Functional Before the Amplitude}
 \label{sec:instanton-source-functional-route}
 
