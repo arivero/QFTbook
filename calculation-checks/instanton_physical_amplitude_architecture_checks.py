@@ -64,9 +64,11 @@ Target claims:
   it is not a determinant constant, an unprimed zero-mode-regulated inverse,
   a trace response, or a diagonal residue division.
 - `ca:instanton-subtracted-normal-green-matching`: a normal Green-function
-  insertion is finite only after the same zero-mode projector, hard-source
-  parametrix subtraction, logarithmic heat-kernel counterterm, finite local
-  matching term, and compensating Wilsonian coefficient shift are supplied.
+  insertion must first declare its source/operator class.  Smooth smeared
+  source bilinears are distributional pairings, while local/composite or
+  background-subtracted source coordinates require the same zero-mode
+  projector, local parametrix, logarithmic heat-kernel counterterm, finite
+  local matching term, and compensating Wilsonian coefficient shift.
 - `ca:instanton-hard-amplitude-assembly-ledger`: the hard channel must assemble
   the determinant, source-fluctuation, zero-mode/source, and physical-projection
   factors in the same kernel, with absolute control unless a noncancellation
@@ -175,8 +177,9 @@ Independent construction:
   Wick-paired first source cumulants from cubic normal-mode interactions,
   source-projected normal propagator insertions with full source-overlap
   amputation and residual telescopes,
-  subtracted normal Green-function bilinears with finite local matching
-  covariance,
+  typed normal Green-function bilinears separating smooth source propagation
+  from local/composite matching, with finite local covariance and
+  Green-norm projector residuals,
   multiplicative hard-amplitude assembly bounds on signed windows,
   finite determinant-scheme transport factors and an independently computed
   two-regulator determinant-density benchmark,
@@ -1879,17 +1882,20 @@ def check_subtracted_normal_green_function_matching() -> None:
         (Fraction(101), Fraction(0)),
         (Fraction(0), Fraction(0)),
     )
+    log_heat: Matrix2 = (
+        (log_lambda_over_mu * heat_kernel_local[0][0], Fraction(0)),
+        (Fraction(0), log_lambda_over_mu * heat_kernel_local[1][1]),
+    )
+    smooth_green = add2(finite_green, free_parametrix)
     raw_green = add2(
         add2(
-            add2(finite_green, free_parametrix),
-            (
-                (log_lambda_over_mu * heat_kernel_local[0][0], Fraction(0)),
-                (Fraction(0), log_lambda_over_mu * heat_kernel_local[1][1]),
-            ),
+            smooth_green,
+            log_heat,
         ),
         add2(finite_local, zero_mode_pollution),
     )
 
+    smooth_projected_bilinear = bilinear(smooth_green, projected_out, projected_in)
     raw_projected_bilinear = bilinear(raw_green, projected_out, projected_in)
     free_bilinear = bilinear(free_parametrix, projected_out, projected_in)
     heat_bilinear = log_lambda_over_mu * bilinear(
@@ -1901,9 +1907,25 @@ def check_subtracted_normal_green_function_matching() -> None:
     subtracted_green = raw_projected_bilinear - free_bilinear - heat_bilinear - local_bilinear
     expected_subtracted = bilinear(finite_green, projected_out, projected_in)
     assert_equal(
+        "smooth source Green pairing keeps ordinary propagation",
+        smooth_projected_bilinear,
+        expected_subtracted + free_bilinear,
+    )
+    over_subtracted_smooth = smooth_projected_bilinear - free_bilinear
+    assert_not_equal(
+        "default free subtraction changes a smooth-source observable",
+        over_subtracted_smooth,
+        smooth_projected_bilinear,
+    )
+    assert_equal(
         "subtracted normal Green coordinate keeps finite source bilinear",
         subtracted_green,
         expected_subtracted,
+    )
+    assert_not_equal(
+        "local matched coordinate is not the smooth smeared source bilinear",
+        subtracted_green,
+        smooth_projected_bilinear,
     )
 
     unsubtracted = raw_projected_bilinear
@@ -1932,6 +1954,21 @@ def check_subtracted_normal_green_function_matching() -> None:
         "missing logarithmic heat-kernel subtraction changes Green coordinate",
         no_heat_subtraction,
         subtracted_green,
+    )
+
+    smooth_source_class = "smooth_smeared"
+    local_source_class = "local_composite"
+    background_difference_class = "background_minus_vacuum"
+    subtraction_classes = {local_source_class, background_difference_class}
+    assert_equal(
+        "smooth source class does not activate local subtraction package",
+        smooth_source_class in subtraction_classes,
+        False,
+    )
+    assert_equal(
+        "local source class activates local subtraction package",
+        local_source_class in subtraction_classes,
+        True,
     )
 
     trace_shortcut = trace2(finite_green)
@@ -1984,10 +2021,12 @@ def check_subtracted_normal_green_function_matching() -> None:
     e_heat = Fraction(1, 90)
     e_local = Fraction(1, 40)
     e_amputation = Fraction(1, 200)
+    m_green = Fraction(23, 20)
+    projector_residual = 2 * m_green * e_projector * norm_out * norm_in
     residual = (
         abs(zero_mode_source)
         * (
-            e_projector * norm_out * norm_in
+            projector_residual
             + e_parametrix
             + abs(log_lambda_over_mu) * e_heat
             + e_local
@@ -1997,7 +2036,7 @@ def check_subtracted_normal_green_function_matching() -> None:
     residual_bound = (
         abs(zero_mode_source)
         * (
-            e_projector * norm_out * norm_in
+            projector_residual
             + e_parametrix
             + abs(log_lambda_over_mu) * e_heat
             + e_local
@@ -2012,7 +2051,7 @@ def check_subtracted_normal_green_function_matching() -> None:
     underbudget_without_local_matching = (
         abs(zero_mode_source)
         * (
-            e_projector * norm_out * norm_in
+            projector_residual
             + e_parametrix
             + abs(log_lambda_over_mu) * e_heat
         )
@@ -2021,6 +2060,21 @@ def check_subtracted_normal_green_function_matching() -> None:
     assert_equal(
         "omitting finite local matching error underbudgets subtracted Green insertion",
         residual <= underbudget_without_local_matching,
+        False,
+    )
+    underbudget_without_resolvent_norm = (
+        abs(zero_mode_source)
+        * (
+            e_projector * norm_out * norm_in
+            + e_parametrix
+            + abs(log_lambda_over_mu) * e_heat
+            + e_local
+        )
+        + e_amputation
+    )
+    assert_equal(
+        "omitting the Green/resolvent norm underbudgets projector error",
+        residual <= underbudget_without_resolvent_norm,
         False,
     )
 

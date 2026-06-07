@@ -2181,13 +2181,30 @@ correction.
 channel]
 \label{ca:instanton-subtracted-normal-green-matching}
 The primed inverse in
-\eqref{eq:instanton-normal-propagator-projection} is not yet a regulator
-independent source insertion.  Its ultraviolet diagonal and local counterterm
-pieces have to be subtracted in the same scheme as the zero-mode-deleted
-determinant.  Fix a regulator \(\mathcal R\), a parametrix or free hard-source
-subtraction \(G_{0,z}^{\chi}\), and the local heat-kernel coefficient
-\(A_{1,z}\) in the same horizontal normal bundle.  The finite source
-coordinate is
+\eqref{eq:instanton-normal-propagator-projection} is a distributional Green
+kernel with the zero modes removed.  Before subtracting anything one must
+state which source/operator class is being computed.  For smooth compact
+external sources \(\mathcal U,\mathcal V\), the smeared pairing
+\[
+  \mathfrak G_{\mathcal R}^{\rm sm}
+  (z;\mathcal U,\mathcal V)
+  =
+  \langle \mathcal U_z,P_z^\perp G_{z,\mathcal R}P_z^\perp
+  \mathcal V_z\rangle
+\]
+is already the source bilinear in that regulator, after the same amputation
+and zero-mode projection as in
+\eqref{eq:instanton-normal-propagator-projection}.  A free Green function is
+not subtracted from this object unless the observable has been declared to be a
+background-minus-vacuum difference.  Otherwise the subtraction removes
+ordinary physical propagation.
+
+Additional UV matching data enter when the source coordinate is local:
+for example a point-supported hard source, a coincident composite operator, or
+the local part of a Wilsonian source product.  In that case fix a regulator
+\(\mathcal R\), a local diagonal parametrix or declared hard-source
+subtraction \(G_{0,z}^{\chi}\), and the heat-kernel coefficient \(A_{1,z}\) in
+the same horizontal normal bundle.  The finite local source coordinate is
 \begin{equation}
 \begin{aligned}
   \mathfrak G_{\mathcal R}^{\rm sub}
@@ -2203,7 +2220,11 @@ coordinate is
   \label{eq:instanton-subtracted-normal-green-coordinate}
 \end{equation}
 Here \(L_{\mathcal R,z}(\mu)\) is the finite local counterterm matrix which
-matches the source bilinear to the chosen renormalized operator coordinate.
+matches the local source bilinear to the chosen renormalized operator
+coordinate.  The brackets in
+\eqref{eq:instanton-subtracted-normal-green-coordinate} are the local pullback
+or declared hard-source pairing, not an instruction to subtract full
+nonlocal free propagation from an arbitrary smooth source bilinear.
 The same projector \(P_z^\perp\) used in the determinant must be used here;
 otherwise the subtraction leaves arbitrary zero-mode regulator masses in the
 external-source amplitude.
@@ -2234,28 +2255,33 @@ Gaussian normalization; it does not replace
 \eqref{eq:instanton-subtracted-normal-green-coordinate}, which is a bilinear
 between the actual external source vectors.
 
-If the projector, parametrix, heat-kernel coefficient, finite local matching,
-and source amputation have errors bounded by
-\(E_\perp,E_\chi,E_{1},E_L,E_{\rm amp}\), then on a retained window
+If the local projector, parametrix, heat-kernel coefficient, finite local
+matching, and source amputation have errors bounded by
+\(E_\perp,E_\chi^{\rm loc},E_{1}^{\rm loc},E_L^{\rm loc},E_{\rm amp}\), and
+if \(\|P_z^\perp G_{z,\mathcal R}P_z^\perp\|\le M_G\) on the retained normal
+space, then on a retained window
 \begin{equation}
   |R_{\mathfrak G}|
   \le
   |\mathcal Z_{\rm zm}^0|
   \bigl[
-    E_\perp\|\mathcal U\|\,\|\mathcal V\|
-    +E_\chi
-    +|\log(\Lambda/\mu)|E_1
-    +E_L
+    2M_G E_\perp\|\mathcal U\|\,\|\mathcal V\|
+    +E_\chi^{\rm loc}
+    +|\log(\Lambda/\mu)|E_1^{\rm loc}
+    +E_L^{\rm loc}
   \bigr]
   +E_{\rm amp}.
   \label{eq:instanton-subtracted-normal-green-residual-bound}
 \end{equation}
-An unsubtracted primed propagator, a free subtraction in a different source
-basis, a determinant trace in place of the bilinear, or a finite counterterm
-shift applied without the compensating local coefficient gives a different
-amplitude coordinate.  This is one of the concrete steps in the original
-instanton calculation where the fluctuation operator around the saddle, not
-just its determinant, enters the physical four-point kernel.
+For a smooth-source coordinate the local terms
+\(E_\chi^{\rm loc},E_1^{\rm loc},E_L^{\rm loc}\) are absent; for a local
+composite coordinate they are load-bearing.  A free subtraction applied to the
+wrong source class, a subtraction in a different source basis, a determinant
+trace in place of the bilinear, or a finite counterterm shift applied without
+the compensating local coefficient gives a different amplitude coordinate.
+This is one of the concrete steps in the original instanton calculation where
+the fluctuation operator around the saddle, not just its determinant, enters
+the physical four-point kernel.
 \end{controlledapproximation}
 
 Thus a hard instanton amplitude has several separate fluctuation entries.  The
