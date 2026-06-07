@@ -858,6 +858,17 @@
   longer uses an arbitrary positive matrix/vector pair; it derives the finite
   trace coefficients from an on-shell spinor sample and rejects both strict-cut
   and omitted-subleading-color shortcuts.
+- 2026-06-07 issue #769 all-plus evidence-independence pass: re-audited the
+  four-point trace-color hard bin against the follow-up review.  The TeX now
+  states the SU(3) Fierz reduction used to obtain the trace Gram entries and
+  the four-point momentum-conservation identity behind the common ordered
+  all-plus ratio.  The companion derives the nine-by-nine trace Gram matrix
+  from Fierz contractions, extracts the null relation by rational nullspace
+  reduction, derives the \(135\) single-trace norm and \(1215|r|^2\) hard
+  square from that construction, checks three independent exact on-shell
+  spinor samples, and adds a crossed real \(2\to2\) physical-region Hermitian
+  check of \(R^\dagger G R\).  The omitted-double-trace and stale-metric
+  negative controls remain active.
 - 2026-06-05 issue #769 virtual-to-observable pass: added the
   finite-remainder assembly layer after the cut-equality warning.  The pass
   separates reconstructed virtual amplitudes from infrared-safe observables by

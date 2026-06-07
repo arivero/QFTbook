@@ -117,8 +117,10 @@ partial-subtraction, and point-sampling negative controls;
 finite spinor-bracket power counting and helicity-cut enumeration for the
 five-gluon leading-color all-plus rational template; exact four-gluon
 trace-basis color contraction for the all-plus one-loop square, including the
-BDK double-trace permutation sum, an SU(3) trace relation, and transported
-color metric;
+BDK double-trace permutation sum, a Fierz-generated SU(3) trace Gram matrix,
+a rationally extracted trace relation, independent exact on-shell spinor
+samples, a crossed real physical-region Hermitian norm, and transported color
+metric;
 exact Laurent bookkeeping for the dimension-shifted mu_perp^4 box residue,
 including the three-simplex pole, strict four-dimensional cut blindness, and
 massive-scalar coefficient extraction;
@@ -276,6 +278,19 @@ def assert_close_float(name: str, value: float, expected: float, tol: float = 1.
         raise AssertionError(f"{name}: got {value:.16g}, expected {expected:.16g}")
 
 
+def assert_close_complex(
+    name: str,
+    value: complex,
+    expected: complex,
+    tol: float = 1.0e-10,
+) -> None:
+    distance = abs(value - expected)
+    if not math.isfinite(distance) or not math.isfinite(tol):
+        raise AssertionError(f"{name}: non-finite numerical comparison")
+    if distance > tol:
+        raise AssertionError(f"{name}: got {value!r}, expected {expected!r}")
+
+
 def simpson_integral(function, lower: float, upper: float, panels: int) -> float:
     if panels % 2:
         raise ValueError("Simpson integration needs an even number of panels")
@@ -362,6 +377,7 @@ Laurent3 = tuple[Fraction, Fraction, Fraction]
 Matrix = list[list[Fraction]]
 Vector = list[Fraction]
 LogPolynomial = dict[tuple[int, int], Fraction]
+FundamentalTraceFactor = tuple[int, str, str]
 
 
 def clean_poly(poly: LogPolynomial) -> LogPolynomial:
@@ -473,6 +489,223 @@ def vector_scale(scale: Fraction, vector: Vector) -> Vector:
 
 def dot(left: Vector, right: Vector) -> Fraction:
     return sum(left[index] * right[index] for index in range(len(left)))
+
+
+def rational_nullspace(matrix: Matrix) -> list[Vector]:
+    """Return a rational basis for the right nullspace."""
+    if not matrix:
+        return []
+    rows = [row[:] for row in matrix]
+    n_rows = len(rows)
+    n_cols = len(rows[0])
+    pivot_cols: list[int] = []
+    pivot_row = 0
+    for col in range(n_cols):
+        pivot = None
+        for row in range(pivot_row, n_rows):
+            if rows[row][col] != 0:
+                pivot = row
+                break
+        if pivot is None:
+            continue
+        rows[pivot_row], rows[pivot] = rows[pivot], rows[pivot_row]
+        pivot_value = rows[pivot_row][col]
+        rows[pivot_row] = [entry / pivot_value for entry in rows[pivot_row]]
+        for row in range(n_rows):
+            if row == pivot_row:
+                continue
+            factor = rows[row][col]
+            if factor:
+                rows[row] = [
+                    entry - factor * pivot_entry
+                    for entry, pivot_entry in zip(rows[row], rows[pivot_row])
+                ]
+        pivot_cols.append(col)
+        pivot_row += 1
+        if pivot_row == n_rows:
+            break
+
+    pivot_set = set(pivot_cols)
+    nullspace: list[Vector] = []
+    for free_col in range(n_cols):
+        if free_col in pivot_set:
+            continue
+        vector = [Fraction(0)] * n_cols
+        vector[free_col] = Fraction(1)
+        for row, pivot_col in enumerate(pivot_cols):
+            vector[pivot_col] = -rows[row][free_col]
+        nullspace.append(vector)
+    return nullspace
+
+
+def normalize_integer_vector(vector: Vector) -> Vector:
+    denominator_lcm = 1
+    for entry in vector:
+        denominator_lcm = math.lcm(denominator_lcm, entry.denominator)
+    integers = [
+        entry.numerator * (denominator_lcm // entry.denominator)
+        for entry in vector
+    ]
+    common = 0
+    for entry in integers:
+        common = math.gcd(common, abs(entry))
+    if common:
+        integers = [entry // common for entry in integers]
+    for entry in reversed(integers):
+        if entry != 0:
+            if entry < 0:
+                integers = [-value for value in integers]
+            break
+    return [Fraction(entry) for entry in integers]
+
+
+class UnionFind:
+    def __init__(self, variables: list[str]) -> None:
+        self.parents = {variable: variable for variable in variables}
+
+    def copy(self) -> "UnionFind":
+        clone = UnionFind([])
+        clone.parents = dict(self.parents)
+        return clone
+
+    def find(self, variable: str) -> str:
+        parent = self.parents[variable]
+        if parent != variable:
+            self.parents[variable] = self.find(parent)
+        return self.parents[variable]
+
+    def union(self, left: str, right: str) -> None:
+        left_root = self.find(left)
+        right_root = self.find(right)
+        if left_root != right_root:
+            self.parents[right_root] = left_root
+
+    def component_count(self) -> int:
+        return len({self.find(variable) for variable in self.parents})
+
+
+FOUR_POINT_SINGLE_TRACE_ORDERS = [
+    (1, 2, 3, 4),
+    (1, 2, 4, 3),
+    (1, 3, 2, 4),
+    (1, 3, 4, 2),
+    (1, 4, 2, 3),
+    (1, 4, 3, 2),
+]
+
+FOUR_POINT_DOUBLE_TRACE_SPLITS = [
+    ((1, 2), (3, 4)),
+    ((1, 3), (2, 4)),
+    ((1, 4), (2, 3)),
+]
+
+
+def fundamental_trace_factors(
+    prefix: str,
+    labels: tuple[int, ...],
+) -> list[FundamentalTraceFactor]:
+    return [
+        (label, f"{prefix}_{index}", f"{prefix}_{(index + 1) % len(labels)}")
+        for index, label in enumerate(labels)
+    ]
+
+
+def four_gluon_trace_tensor_factors(
+    basis_index: int,
+    side: str,
+    conjugate: bool = False,
+) -> tuple[Fraction, list[FundamentalTraceFactor]]:
+    if basis_index < len(FOUR_POINT_SINGLE_TRACE_ORDERS):
+        trace = FOUR_POINT_SINGLE_TRACE_ORDERS[basis_index]
+        if conjugate:
+            trace = tuple(reversed(trace))
+        return (
+            Fraction(3),
+            fundamental_trace_factors(f"{side}s{basis_index}t0", trace),
+        )
+
+    double_index = basis_index - len(FOUR_POINT_SINGLE_TRACE_ORDERS)
+    factors: list[FundamentalTraceFactor] = []
+    for trace_index, trace in enumerate(FOUR_POINT_DOUBLE_TRACE_SPLITS[double_index]):
+        if conjugate:
+            trace = tuple(reversed(trace))
+        factors.extend(
+            fundamental_trace_factors(
+                f"{side}d{double_index}t{trace_index}",
+                trace,
+            )
+        )
+    return Fraction(1), factors
+
+
+def su_n_fierz_trace_inner_product(
+    left_basis_index: int,
+    right_basis_index: int,
+    n_color: int,
+) -> Fraction:
+    left_coeff, left_factors = four_gluon_trace_tensor_factors(
+        left_basis_index,
+        "L",
+        conjugate=False,
+    )
+    right_coeff, right_factors = four_gluon_trace_tensor_factors(
+        right_basis_index,
+        "R",
+        conjugate=True,
+    )
+    variables = [
+        variable
+        for _, left_variable, right_variable in left_factors + right_factors
+        for variable in (left_variable, right_variable)
+    ]
+    terms = [(left_coeff * right_coeff, UnionFind(variables))]
+    left_by_label = {label: (left, right) for label, left, right in left_factors}
+    right_by_label = {label: (left, right) for label, left, right in right_factors}
+
+    for label in (1, 2, 3, 4):
+        left_row, left_col = left_by_label[label]
+        right_row, right_col = right_by_label[label]
+        next_terms: list[tuple[Fraction, UnionFind]] = []
+        for coeff, identifications in terms:
+            adjoint_exchange = identifications.copy()
+            adjoint_exchange.union(left_row, right_col)
+            adjoint_exchange.union(left_col, right_row)
+            next_terms.append((coeff * Fraction(1, 2), adjoint_exchange))
+
+            singlet_subtraction = identifications.copy()
+            singlet_subtraction.union(left_row, left_col)
+            singlet_subtraction.union(right_row, right_col)
+            next_terms.append(
+                (coeff * -Fraction(1, 2 * n_color), singlet_subtraction)
+            )
+        terms = next_terms
+
+    return sum(
+        coeff * Fraction(n_color ** identifications.component_count())
+        for coeff, identifications in terms
+    )
+
+
+def su3_trace_gram_from_fierz() -> Matrix:
+    basis_size = (
+        len(FOUR_POINT_SINGLE_TRACE_ORDERS)
+        + len(FOUR_POINT_DOUBLE_TRACE_SPLITS)
+    )
+    return [
+        [
+            su_n_fierz_trace_inner_product(row, col, n_color=3)
+            for col in range(basis_size)
+        ]
+        for row in range(basis_size)
+    ]
+
+
+def hermitian_quadratic_form(metric: Matrix, vector: list[complex]) -> complex:
+    return sum(
+        vector[row].conjugate() * complex(metric[row][col]) * vector[col]
+        for row in range(len(vector))
+        for col in range(len(vector))
+    )
 
 
 def mod_inverse(value: int, prime: int) -> int:
@@ -937,6 +1170,7 @@ def all_plus_massive_scalar_probe(mu_perp_squared: Fraction) -> Fraction:
 
 
 SpinorTable = dict[int, tuple[Fraction, Fraction]]
+ComplexSpinorTable = dict[int, tuple[complex, complex]]
 
 
 def spinor_bracket(spinors: SpinorTable, left: int, right: int) -> Fraction:
@@ -959,6 +1193,102 @@ def four_point_all_plus_partial_ratio(
             * spinor_bracket(angle_spinors, third, fourth)
         )
     )
+
+
+def four_point_on_shell_spinor_sample(
+    lambda_3: tuple[Fraction, Fraction],
+    lambda_4: tuple[Fraction, Fraction],
+    tilde_lambda_3: tuple[Fraction, Fraction],
+    tilde_lambda_4: tuple[Fraction, Fraction],
+) -> tuple[SpinorTable, SpinorTable]:
+    angle_spinors: SpinorTable = {
+        1: (Fraction(1), Fraction(0)),
+        2: (Fraction(0), Fraction(1)),
+        3: lambda_3,
+        4: lambda_4,
+    }
+    square_spinors: SpinorTable = {
+        3: tilde_lambda_3,
+        4: tilde_lambda_4,
+    }
+    square_spinors[1] = (
+        -(lambda_3[0] * tilde_lambda_3[0] + lambda_4[0] * tilde_lambda_4[0]),
+        -(lambda_3[0] * tilde_lambda_3[1] + lambda_4[0] * tilde_lambda_4[1]),
+    )
+    square_spinors[2] = (
+        -(lambda_3[1] * tilde_lambda_3[0] + lambda_4[1] * tilde_lambda_4[0]),
+        -(lambda_3[1] * tilde_lambda_3[1] + lambda_4[1] * tilde_lambda_4[1]),
+    )
+    return angle_spinors, square_spinors
+
+
+def complex_spinor_bracket(spinors: ComplexSpinorTable, left: int, right: int) -> complex:
+    left_spinor = spinors[left]
+    right_spinor = spinors[right]
+    return left_spinor[0] * right_spinor[1] - left_spinor[1] * right_spinor[0]
+
+
+def four_point_all_plus_partial_ratio_complex(
+    order: tuple[int, int, int, int],
+    angle_spinors: ComplexSpinorTable,
+    square_spinors: ComplexSpinorTable,
+) -> complex:
+    first, second, third, fourth = order
+    return (
+        complex_spinor_bracket(square_spinors, first, second)
+        * complex_spinor_bracket(square_spinors, third, fourth)
+        / (
+            complex_spinor_bracket(angle_spinors, first, second)
+            * complex_spinor_bracket(angle_spinors, third, fourth)
+        )
+    )
+
+
+def positive_energy_massless_spinors(
+    energy: float,
+    px: float,
+    py: float,
+    pz: float,
+) -> tuple[tuple[complex, complex], tuple[complex, complex]]:
+    if energy + pz > 1.0e-12:
+        scale = math.sqrt(energy + pz)
+        return (
+            (complex(scale), complex(px, py) / scale),
+            (complex(scale), complex(px, -py) / scale),
+        )
+    scale = math.sqrt(energy - pz)
+    return (
+        (complex(px, -py) / scale, complex(scale)),
+        (complex(px, py) / scale, complex(scale)),
+    )
+
+
+def physical_two_to_two_outgoing_spinors() -> tuple[ComplexSpinorTable, ComplexSpinorTable]:
+    energy = 1.0
+    theta = 1.1
+    phi = 0.7
+    outgoing_3 = (
+        energy,
+        energy * math.sin(theta) * math.cos(phi),
+        energy * math.sin(theta) * math.sin(phi),
+        energy * math.cos(theta),
+    )
+    outgoing_4 = (energy, -outgoing_3[1], -outgoing_3[2], -outgoing_3[3])
+    positive_energy_momenta = {
+        1: (energy, 0.0, 0.0, energy),
+        2: (energy, 0.0, 0.0, -energy),
+        3: outgoing_3,
+        4: outgoing_4,
+    }
+    crossed_incoming_signs = {1: -1.0, 2: -1.0, 3: 1.0, 4: 1.0}
+    angle_spinors: ComplexSpinorTable = {}
+    square_spinors: ComplexSpinorTable = {}
+    for leg, momentum in positive_energy_momenta.items():
+        angle, square = positive_energy_massless_spinors(*momentum)
+        angle_spinors[leg] = angle
+        sign = crossed_incoming_signs[leg]
+        square_spinors[leg] = (sign * square[0], sign * square[1])
+    return angle_spinors, square_spinors
 
 
 def check_mu4_dimension_shift_rational_residue() -> None:
@@ -1541,50 +1871,66 @@ def check_five_gluon_all_plus_rational_template() -> None:
 
 
 def check_all_plus_rational_hard_function_bin() -> None:
-    # Strip the common g^4 mu_R^{2 eps} C_rat factor.  The finite spinor sample
-    # satisfies sum_i lambda_i tilde_lambda_i = 0 exactly, so the BDK
-    # four-gluon all-plus ratio can be evaluated without assigning arbitrary
-    # color coordinates.
-    angle_spinors: SpinorTable = {
-        1: (Fraction(1), Fraction(0)),
-        2: (Fraction(0), Fraction(1)),
-        3: (Fraction(1), Fraction(2)),
-        4: (Fraction(3), Fraction(1)),
-    }
-    square_spinors: SpinorTable = {
-        1: (-Fraction(7), Fraction(0)),
-        2: (-Fraction(4), -Fraction(5)),
-        3: (Fraction(1), Fraction(3)),
-        4: (Fraction(2), -Fraction(1)),
-    }
-    momentum_entries = [
-        sum(
-            angle_spinors[leg][row] * square_spinors[leg][col]
-            for leg in (1, 2, 3, 4)
+    # Strip the common g^4 mu_R^{2 eps} C_rat factor.  The finite spinor
+    # samples are generated by solving sum_i lambda_i tilde_lambda_i=0 with
+    # lambda_1=(1,0), lambda_2=(0,1), not by assigning the common ratio.
+    exact_sample_data = [
+        ((1, 2), (3, 1), (1, 3), (2, -1), Fraction(49)),
+        ((2, 1), (1, 3), (4, -1), (-2, 5), Fraction(324)),
+        ((1, -1), (2, 5), (3, 2), (-1, 4), Fraction(196)),
+    ]
+    exact_samples: list[tuple[SpinorTable, SpinorTable]] = []
+    ratio_samples: list[Fraction] = []
+    for sample_index, (
+        lambda_3_raw,
+        lambda_4_raw,
+        tilde_lambda_3_raw,
+        tilde_lambda_4_raw,
+        expected_ratio,
+    ) in enumerate(exact_sample_data):
+        angle_spinors, square_spinors = four_point_on_shell_spinor_sample(
+            tuple(Fraction(entry) for entry in lambda_3_raw),
+            tuple(Fraction(entry) for entry in lambda_4_raw),
+            tuple(Fraction(entry) for entry in tilde_lambda_3_raw),
+            tuple(Fraction(entry) for entry in tilde_lambda_4_raw),
         )
-        for row in (0, 1)
-        for col in (0, 1)
-    ]
-    assert_equal("four-gluon spinor sample conserves momentum", momentum_entries, [Fraction(0)] * 4)
+        exact_samples.append((angle_spinors, square_spinors))
+        momentum_entries = [
+            sum(
+                angle_spinors[leg][row] * square_spinors[leg][col]
+                for leg in (1, 2, 3, 4)
+            )
+            for row in (0, 1)
+            for col in (0, 1)
+        ]
+        assert_equal(
+            f"four-gluon spinor sample {sample_index} conserves momentum",
+            momentum_entries,
+            [Fraction(0)] * 4,
+        )
+        leading_partials_at_sample = [
+            four_point_all_plus_partial_ratio(order, angle_spinors, square_spinors)
+            for order in FOUR_POINT_SINGLE_TRACE_ORDERS
+        ]
+        assert_equal(
+            f"four-gluon all-plus ordered ratios at sample {sample_index}",
+            leading_partials_at_sample,
+            [expected_ratio] * 6,
+        )
+        ratio_samples.append(leading_partials_at_sample[0])
 
-    single_trace_orders = [
-        (1, 2, 3, 4),
-        (1, 2, 4, 3),
-        (1, 3, 2, 4),
-        (1, 3, 4, 2),
-        (1, 4, 2, 3),
-        (1, 4, 3, 2),
-    ]
+    assert_equal(
+        "four-gluon independent on-shell ratio samples",
+        ratio_samples,
+        [Fraction(49), Fraction(324), Fraction(196)],
+    )
+
+    angle_spinors, square_spinors = exact_samples[0]
     leading_partials = [
         four_point_all_plus_partial_ratio(order, angle_spinors, square_spinors)
-        for order in single_trace_orders
+        for order in FOUR_POINT_SINGLE_TRACE_ORDERS
     ]
-    rational_ratio = Fraction(49)
-    assert_equal(
-        "four-gluon all-plus leading partials at sample",
-        leading_partials,
-        [rational_ratio] * 6,
-    )
+    rational_ratio = leading_partials[0]
 
     def double_trace_coefficient(a: int, b: int, c: int, d: int) -> Fraction:
         return sum(
@@ -1603,26 +1949,31 @@ def check_all_plus_rational_hard_function_bin() -> None:
         [6 * rational_ratio] * 3,
     )
 
-    # SU(3), fundamental normalization Tr(T^a T^b)=delta^{ab}/2.  The first
-    # six basis vectors are 3 Tr(T^{a_i}T^{a_j}T^{a_k}T^{a_l}) for the orders
-    # above; the last three are Tr(ij)Tr(kl) for 12|34, 13|24, and 14|23.
-    su3_trace_gram: Matrix = [
-        [Fraction(57, 2), -Fraction(3), -Fraction(3), -Fraction(3), -Fraction(3), Fraction(6), Fraction(4), -Fraction(1, 2), Fraction(4)],
-        [-Fraction(3), Fraction(57, 2), -Fraction(3), Fraction(6), -Fraction(3), -Fraction(3), Fraction(4), Fraction(4), -Fraction(1, 2)],
-        [-Fraction(3), -Fraction(3), Fraction(57, 2), -Fraction(3), Fraction(6), -Fraction(3), -Fraction(1, 2), Fraction(4), Fraction(4)],
-        [-Fraction(3), Fraction(6), -Fraction(3), Fraction(57, 2), -Fraction(3), -Fraction(3), Fraction(4), Fraction(4), -Fraction(1, 2)],
-        [-Fraction(3), -Fraction(3), Fraction(6), -Fraction(3), Fraction(57, 2), -Fraction(3), -Fraction(1, 2), Fraction(4), Fraction(4)],
-        [Fraction(6), -Fraction(3), -Fraction(3), -Fraction(3), -Fraction(3), Fraction(57, 2), Fraction(4), -Fraction(1, 2), Fraction(4)],
-        [Fraction(4), Fraction(4), -Fraction(1, 2), Fraction(4), -Fraction(1, 2), Fraction(4), Fraction(4), Fraction(1, 2), Fraction(1, 2)],
-        [-Fraction(1, 2), Fraction(4), Fraction(4), Fraction(4), Fraction(4), -Fraction(1, 2), Fraction(1, 2), Fraction(4), Fraction(1, 2)],
-        [Fraction(4), -Fraction(1, 2), Fraction(4), -Fraction(1, 2), Fraction(4), Fraction(4), Fraction(1, 2), Fraction(1, 2), Fraction(4)],
-    ]
-    su3_trace_relation = [-Fraction(1)] * 6 + [Fraction(3)] * 3
+    # SU(3), fundamental normalization Tr(T^a T^b)=delta^{ab}/2.  The Gram
+    # matrix is generated from the Fierz identity, with the second trace
+    # conjugated by trace reversal; no color entry is imported from the text.
+    su3_trace_gram = su3_trace_gram_from_fierz()
+    assert_equal("SU(3) Fierz trace Gram is Hermitian real", su3_trace_gram, matrix_transpose(su3_trace_gram))
+    assert_equal("SU(3) Fierz trace Gram rank", rank(su3_trace_gram), 8)
+    derived_nullspace = rational_nullspace(su3_trace_gram)
+    assert_equal("SU(3) Fierz trace nullspace dimension", len(derived_nullspace), 1)
+    su3_trace_relation = normalize_integer_vector(derived_nullspace[0])
+    assert_equal(
+        "SU(3) Fierz-derived four-trace relation",
+        su3_trace_relation,
+        [-Fraction(1)] * 6 + [Fraction(3)] * 3,
+    )
     assert_equal(
         "SU(3) four-trace relation is color-null",
         matrix_vector_mul(su3_trace_gram, su3_trace_relation),
         [Fraction(0)] * 9,
     )
+    sum_single_traces = [Fraction(1)] * 6 + [Fraction(0)] * 3
+    single_trace_sum_norm = dot(
+        sum_single_traces,
+        matrix_vector_mul(su3_trace_gram, sum_single_traces),
+    )
+    assert_equal("SU(3) Fierz-derived single-trace sum norm", single_trace_sum_norm, Fraction(135))
 
     full_trace_coefficients = leading_partials + double_trace_coefficients
     redundant_square = dot(
@@ -1692,6 +2043,81 @@ def check_all_plus_rational_hard_function_bin() -> None:
     assert_true(
         "omitting double traces changes the all-plus hard square",
         leading_color_only_square != hard_square,
+    )
+
+    physical_angle_spinors, physical_square_spinors = physical_two_to_two_outgoing_spinors()
+    crossing_signs = {1: -1.0, 2: -1.0, 3: 1.0, 4: 1.0}
+    for leg, sign in crossing_signs.items():
+        for component in (0, 1):
+            assert_close_complex(
+                f"physical 2-to-2 crossed conjugation leg {leg} component {component}",
+                physical_square_spinors[leg][component],
+                sign * physical_angle_spinors[leg][component].conjugate(),
+            )
+    for row in (0, 1):
+        for col in (0, 1):
+            assert_close_complex(
+                f"physical 2-to-2 outgoing momentum conservation {row}{col}",
+                sum(
+                    physical_angle_spinors[leg][row] * physical_square_spinors[leg][col]
+                    for leg in (1, 2, 3, 4)
+                ),
+                0.0 + 0.0j,
+            )
+    physical_leading_partials = [
+        four_point_all_plus_partial_ratio_complex(
+            order,
+            physical_angle_spinors,
+            physical_square_spinors,
+        )
+        for order in FOUR_POINT_SINGLE_TRACE_ORDERS
+    ]
+    physical_ratio = physical_leading_partials[0]
+    for index, ratio in enumerate(physical_leading_partials):
+        assert_close_complex(
+            f"physical 2-to-2 ordered all-plus ratio {index}",
+            ratio,
+            physical_ratio,
+        )
+
+    def double_trace_coefficient_complex(a: int, b: int, c: int, d: int) -> complex:
+        return sum(
+            four_point_all_plus_partial_ratio_complex(
+                order + (d,),
+                physical_angle_spinors,
+                physical_square_spinors,
+            )
+            for order in permutations((a, b, c))
+        )
+
+    physical_double_traces = [
+        double_trace_coefficient_complex(1, 2, 3, 4),
+        double_trace_coefficient_complex(1, 3, 2, 4),
+        double_trace_coefficient_complex(1, 4, 2, 3),
+    ]
+    for coefficient in physical_double_traces:
+        assert_close_complex(
+            "physical 2-to-2 BDK double trace coefficient",
+            coefficient,
+            6.0 * physical_ratio,
+        )
+    physical_full_coefficients = physical_leading_partials + physical_double_traces
+    physical_independent_coefficients = [
+        physical_full_coefficients[index] + physical_full_coefficients[8] / 3.0
+        for index in range(6)
+    ] + [
+        physical_full_coefficients[6] - physical_full_coefficients[8],
+        physical_full_coefficients[7] - physical_full_coefficients[8],
+    ]
+    physical_hard_square = hermitian_quadratic_form(
+        independent_metric,
+        physical_independent_coefficients,
+    )
+    assert_close_float("physical 2-to-2 all-plus ratio modulus", abs(physical_ratio) ** 2, 1.0)
+    assert_close_complex(
+        "physical 2-to-2 Hermitian all-plus hard square",
+        physical_hard_square,
+        complex(1215 * abs(physical_ratio) ** 2),
     )
 
     basis_transport: Matrix = [

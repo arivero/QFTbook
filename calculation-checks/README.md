@@ -3368,7 +3368,11 @@ Current checks:
   five-gluon leading-color all-plus rational template, the four-gluon
   trace-basis all-plus hard-function bin showing that the first finite hard
   contribution is the one-loop square when the Born helicity amplitude
-  vanishes, including the double-trace color negative control, the
+  vanishes, deriving the SU(3) trace Gram matrix from the Fierz identity,
+  extracting the trace null relation by rational nullspace reduction, checking
+  the ordered-ratio equality on independent on-shell spinor samples and in a
+  crossed real \(2\to2\) physical-region Hermitian norm, and retaining the
+  double-trace color and stale-metric negative controls, the
   dimension-shifted
   \(\mu_\perp^4\) box residue \(-1/6\)
   and massive-scalar coefficient extraction for the all-plus rational blind

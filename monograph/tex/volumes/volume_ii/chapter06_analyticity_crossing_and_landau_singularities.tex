@@ -2996,7 +2996,16 @@ corresponding trace Gram matrix.  The following numbers give the complete QCD
 \[
   \operatorname{Tr}(T^aT^b)=\frac{\delta^{ab}}{2}
 \]
-and define
+and the Fierz reduction
+\[
+  \sum_{a=1}^{8}T^a_{ij}T^a_{kl}
+  =
+  \frac12\left(\delta_{il}\delta_{jk}
+  -\frac13\delta_{ij}\delta_{kl}\right).
+\]
+Applying this identity to the nine trace tensors below, with the second trace
+reversed in the Hermitian color pairing, gives the Gram entries rather than
+postulating them.  Define
 \[
   S_\sigma:=3\,\operatorname{Tr}(T^{a_{\sigma_1}}T^{a_{\sigma_2}}
                   T^{a_{\sigma_3}}T^{a_{\sigma_4}}),
@@ -3014,7 +3023,17 @@ The exact trace contraction gives
   =
   135 .
 \]
-Four-point momentum conservation collapses the six ordered all-plus ratios to a
+On the open four-point kinematic set where the displayed spinor brackets do
+not vanish, momentum conservation gives
+\[
+  \frac{[12][34]}{\langle12\rangle\langle34\rangle}
+  =
+  \frac{[13][24]}{\langle13\rangle\langle24\rangle}
+  =
+  \frac{[14][23]}{\langle14\rangle\langle23\rangle},
+\]
+with the other three cyclic orderings differing only by paired sign reversals
+of the antisymmetric brackets.  Thus the six ordered all-plus ratios have a
 common value \(r\).  The full trace vector is therefore
 \[
   R_{++++}^{(1)}
@@ -3044,7 +3063,11 @@ one-loop-square contribution, not a two-loop all-plus amplitude.  For an
 unpolarized \(2\to2\) gluon hard function one further divides the fixed-helicity
 color sum by \(4(N_c^2-1)^2\); the process-dependent real-virtual,
 double-real, subtraction, and factorization terms still have to be assembled in
-the same convention.  Rewriting the eight independent trace coordinates in a
+the same convention.  In the real physical \(2\to2\) region, the two incoming
+momenta are crossed into the all-outgoing amplitude and the square spinors on
+those legs carry the corresponding minus sign relative to the conjugate angle
+spinors; the contraction above is therefore a Hermitian color norm.  Rewriting
+the eight independent trace coordinates in a
 second basis leaves
 \eqref{eq:all-plus-rational-first-hard-bin} invariant only when the Gram matrix
 is transported as in
