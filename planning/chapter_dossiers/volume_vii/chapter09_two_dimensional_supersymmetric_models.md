@@ -599,11 +599,13 @@ and
     checked to omit the mirror Kahler/D-term functional, measure, counterterms,
     global/orbifold data, noncompact boundary conditions, RG map,
     operator/state map, and spectral measure; a finite Legendre-domain cell
-    checks the `Y+bar Y>0` singular boundary and a noncompact `D`-term
-    boundary contribution; a fake-Liouville shortcut with only the same
-    F-term, asymptotics, and central charge is rejected without finite-field
-    Kahler control, spectral measure, reflection amplitude, boundary
-    conditions, and deformation classification.
+    checks the `Y+bar Y>0` singular boundary, a noncompact `D`-term
+    boundary contribution, and a half-line Robin reflection phase showing that
+    boundary data can change the continuous density while leaving the
+    asymptotic `F`-term package intact; a fake-Liouville shortcut with only
+    the same F-term, asymptotics, and central charge is rejected without
+    finite-field Kahler control, spectral measure, reflection amplitude,
+    boundary conditions, and deformation classification.
   - the cigar/Liouville spectral-data cell: exact arithmetic for
     `c=3+6/k`, noncompact `c_eff=3`, Liouville exponential marginality,
     spectral-flow momentum/winding integrality, the noncompact field
@@ -862,3 +864,10 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   gamma-pole residue against the analytic residue formula.  This is now
   evidence for finite consequences of the displayed target, not a derivation of
   the Liouville path integral normalization or the full continuous measure.
+- The 2026-06-07 issue #848 noncompact `D`-term boundary pass adds a concrete
+  half-line radial scattering diagnostic: a Robin wall parameter changes the
+  reflection phase and continuous density while preserving unitary reflection
+  and the same asymptotic `F`-term/central-charge package.  The chapter uses
+  this to explain why finite-field Kahler/measure and boundary data are part
+  of the cigar/Liouville QFT datum; the companion checks the boundary
+  condition and phase-density dependence directly.

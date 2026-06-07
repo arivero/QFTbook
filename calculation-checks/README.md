@@ -3075,6 +3075,8 @@ Current checks:
   Legendre-domain cell showing the \(Y+\overline Y>0\) singular boundary and
   noncompact \(D\)-term boundary contribution, and cigar/Liouville spectral
   data cells checking \(c=3+6/k\), finite noncompact \(c_{\rm eff}=3\),
+  a half-line Robin reflection diagnostic showing that boundary data can change
+  the continuous density while preserving the asymptotic \(F\)-term package,
   Liouville exponential marginality, spectral-flow momentum/winding arithmetic,
   the noncompact field identification, metric/dilaton-versus-exact-QFT status,
   the twisted-chiral-to-ordinary-chiral bridge boundary, the

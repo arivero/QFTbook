@@ -47,10 +47,11 @@ stable-map incidence Jacobians, A-model zero-mode degree filters, and
 conditional residual-propagation maps, full-action data-interface tests,
 finite Legendre-domain and boundary-term cells, cigar central-charge and
 effective-central-charge arithmetic, spectral-flow and field-identification
-arithmetic, Liouville marginality checks, and direct Gamma-function evaluation
-of the imported reflection target, including continuous-series phase/unitarity,
-special-level normalization, and a sample pole residue, plus finite
-density/Jacobian transport tests and double-entry
+arithmetic, Liouville marginality checks, half-line boundary-condition
+reflection diagnostics for noncompact D-term data, and direct Gamma-function
+evaluation of the imported reflection target, including continuous-series
+phase/unitarity, special-level normalization, and a sample pole residue, plus
+finite density/Jacobian transport tests and double-entry
 mirror/direct-vortex comparisons whose direct side includes a separately
 computed incidence orientation, degree gate, and compactification gate, are
 computed directly from finite data rather than by substituting the displayed
@@ -130,7 +131,8 @@ shortcuts to full mirror equivalence, metric/dilaton representatives used as
 exact finite-level QFT data, rescalings used as chirality-changing mirror maps,
 local-rigidity shortcuts to global uniqueness, compact c-theorem shortcuts in
 noncompact continua, omitted cigar-reflection normalization phases, raw
-special-level reflection normalizations, missing Gamma pole factors, and
+special-level reflection normalizations, missing Gamma pole factors,
+boundary-condition-blind reflection shortcuts, and
 finite-gauge invariance failures are
 rejected when the finite model can represent them; the Hori--Vafa residue alone
 is also rejected as a substitute for the direct incidence/vortex measure package,
@@ -3436,15 +3438,69 @@ def check_full_mirror_ir_data_boundary() -> None:
     # A nominal D-term total derivative can leave a boundary term on a
     # noncompact/singular domain.  This finite cell rejects the shortcut
     # "D-term deformation = automatically IR irrelevant".
-    def boundary_primitive(u_value: Fraction) -> Fraction:
+    def boundary_current(u_value: Fraction) -> Fraction:
         return Fraction(1, 1 + u_value)
 
-    compact_boundary_sum = boundary_primitive(Fraction(3)) - boundary_primitive(Fraction(3))
-    noncompact_boundary_sum = Fraction(0) - boundary_primitive(Fraction(0))
+    compact_boundary_sum = boundary_current(Fraction(3)) - boundary_current(Fraction(3))
+    noncompact_boundary_sum = Fraction(0) - boundary_current(Fraction(0))
     assert_equal("compact paired boundary cancels D-term total derivative", compact_boundary_sum, 0)
     assert_equal(
         "noncompact boundary can retain D-term contribution",
         noncompact_boundary_sum == 0,
+        False,
+    )
+
+    # A half-line radial channel makes the same boundary datum spectral.  With
+    # incoming wave exp(-ipr), reflected wave R exp(ipr), and Robin condition
+    # psi'(0)=lambda psi(0), the exact reflection factor is
+    # R_lambda=(lambda+ip)/(ip-lambda).  Its modulus is one for every real
+    # lambda, but its phase derivative changes the continuous density.
+    def robin_reflection(boundary_lambda: Fraction, momentum: Fraction) -> complex:
+        lam = float(boundary_lambda)
+        p = float(momentum)
+        return (lam + 1j * p) / (1j * p - lam)
+
+    def robin_residual(boundary_lambda: Fraction, momentum: Fraction) -> float:
+        lam = float(boundary_lambda)
+        p = float(momentum)
+        reflection = robin_reflection(boundary_lambda, momentum)
+        wave_at_wall = 1 + reflection
+        derivative_at_wall = -1j * p + 1j * p * reflection
+        return abs(derivative_at_wall - lam * wave_at_wall)
+
+    def unscaled_phase_density_shift(boundary_lambda: Fraction, momentum: Fraction) -> Fraction:
+        return boundary_lambda / (boundary_lambda * boundary_lambda + momentum * momentum)
+
+    radial_momentum = Fraction(3, 2)
+    reference_boundary = Fraction(0)
+    shifted_boundary = Fraction(2)
+    for boundary_lambda in [reference_boundary, shifted_boundary, -Fraction(1, 3)]:
+        reflection = robin_reflection(boundary_lambda, radial_momentum)
+        assert_close("half-line Robin reflection has unit modulus", abs(reflection), 1.0)
+        assert_leq_bound(
+            "half-line Robin reflection satisfies the boundary condition",
+            robin_residual(boundary_lambda, radial_momentum),
+            1e-12,
+        )
+    assert_equal(
+        "same asymptotic F-term data can have different boundary phase density",
+        unscaled_phase_density_shift(shifted_boundary, radial_momentum)
+        == unscaled_phase_density_shift(reference_boundary, radial_momentum),
+        False,
+    )
+    boundary_blind_spectral_package = {
+        "same twisted F-term",
+        "same asymptotic cylinder",
+        "same central charge",
+    }
+    boundary_sensitive_spectral_package = boundary_blind_spectral_package | {
+        "Robin wall parameter",
+        "radial reflection phase",
+        "continuous density shift",
+    }
+    assert_equal(
+        "boundary-blind Liouville data do not fix noncompact spectral density",
+        boundary_sensitive_spectral_package <= boundary_blind_spectral_package,
         False,
     )
 

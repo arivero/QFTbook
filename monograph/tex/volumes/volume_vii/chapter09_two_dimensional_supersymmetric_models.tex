@@ -3505,6 +3505,49 @@ same exponential but a different finite-field \(K(Y,\overline Y)\) is a
 different theory unless this spectral package and the allowed deformation
 classification agree.
 
+There is a concrete spectral diagnostic behind this warning.  After fixing the
+asymptotic circle quantum numbers, a continuous radial channel is a
+self-adjoint one-dimensional problem on a noncompact end, in the form
+\[
+  \left[
+    -\partial_\varrho^2
+    +\frac{Q^2}{4}
+    +V_{\rm wall}(\varrho)
+    +V_{K}(\varrho)
+  \right]\psi_p
+  =
+  \left(p^2+\frac{Q^2}{4}\right)\psi_p .
+\]
+The exponential wall supplies one part of the potential, but the finite-field
+Kahler/measure data determine both \(V_K\) and the self-adjoint boundary
+condition at the strong-coupling end.  Even the toy channel with
+\(V_{\rm wall}=V_K=0\) on \(\varrho\ge0\) and Robin condition
+\(\psi'(0)=\lambda\psi(0)\) has reflection amplitude
+\[
+  R_\lambda(p)
+  =
+  \frac{\lambda+\ii p}{\ii p-\lambda},
+  \qquad
+  |R_\lambda(p)|=1,
+\]
+and changes the continuum density by
+\[
+  \rho_\lambda(p)-\rho_0(p)
+  =
+  \frac1{2\pi}\partial_p\arg R_\lambda(p)
+  =
+  \frac{\lambda}{\pi(\lambda^2+p^2)} .
+\]
+Thus the asymptotic central charge, the exponential \(F\)-term, and unitarity
+of the reflection coefficient do not fix the spectral measure.  A total
+radial derivative in a \(D\)-term has the same obstruction:
+\(\int_0^\infty \partial_\varrho J\,d\varrho=J(\infty)-J(0)\), so it vanishes
+only after the boundary current at the Liouville wall is controlled or included
+as a contact/source term.  A full cigar/Liouville proof must therefore show
+that the actual finite-field \(K\), measure, and wall boundary condition flow
+to the same \(R(p)\) and pole residues, with the protected superpotential only
+one entry in the datum.
+
 In the asymptotic Liouville target variables write
 \[
   Y=\sqrt{k}\,{\mathcal Y},
