@@ -3388,8 +3388,8 @@ stable-map computation.  The mirror residue computes a protected finite trace, a
 the stable-map incidence chart computes a geometric count.  The A-twisted QFT
 correlator is obtained only after the same regulator supplies the
 vortex-normalized fugacity, the zero-mode Berezin measure, the nonzero-mode
-determinant-line orientation, the compactification/contact prescription, and
-the operator map to \(H\).
+determinant-line orientation, the stable-map representative/excess convention,
+any declared source-contact prescription, and the operator map to \(H\).
 \end{remark}
 
 \begin{example}[Degree-one projective determinant line from the Euler sequence]
@@ -3511,81 +3511,91 @@ operator normalization and evaluation-form orientation in the same regulator as
 the vortex determinant line.
 \end{example}
 
-\begin{example}[Degree-one compactification and contact gate]
-\label{ex:cpn-degree-one-compactification-contact-gate}
-The preceding Jacobian is still a bulk-chart calculation.  The compactified
-degree-one A-model integral also has to say what happens at the boundary
-divisors where a degree-zero component carries colliding marked points, and
-what local contact convention is used for coincident source insertions.
-Continue with the representatives
+\begin{example}[Degree-one representative independence and contact boundary]
+\label{ex:cpn-degree-one-representative-independence-gate}
+The preceding Jacobian is a transverse affine-chart calculation of the primary
+stable-map invariant
+\eqref{eq:cpn-degree-one-stable-map-line-count}.  The compactified invariant
+itself is not obtained by adding indicator-valued boundary terms to that chart.
+It is the evaluation-class pairing
+\[
+  I_1(H,H^{N-1},H^{N-1})
+  =
+  \int_{[\overline{\mathcal M}_{0,3}(\mathbb P^{N-1},1)]^{\rm vir}}
+  {\rm ev}_1^\ast H\,
+  {\rm ev}_2^\ast H^{N-1}\,
+  {\rm ev}_3^\ast H^{N-1},
+\]
+and depends only on the cohomology classes and the virtual/fundamental class.
+Continue with the transverse representatives
 \[
   p_0=[1:0:\cdots:0],\qquad
   p_1=[0:1:0:\cdots:0],\qquad
   h=X_1-X_0 .
 \]
-In \(\overline{\mathcal M}_{0,3}(\mathbb P^{N-1},1)\) let
-\(\Delta_{23|1}\) denote the boundary stratum on which the two point
-insertions lie on a contracted component, and let \(\Delta_{12|3}\) and
-\(\Delta_{13|2}\) denote the analogous strata where the hyperplane insertion
-collides with \(p_0\) or \(p_1\).  Restricting the evaluation forms to these
-strata gives the finite boundary indicators
+For these representatives the affine incidence locus is one reduced point and
+avoids the contracted-boundary strata on which a degree-zero component carries
+two colliding marked insertions.  Hence the transverse chart computes
 \begin{equation}
-  \mathcal B_{23}
-  =
-  {\bf 1}_{p_0=p_1},
-  \qquad
-  \mathcal B_{12}
-  =
-  {\bf 1}_{h(p_0)=0},
-  \qquad
-  \mathcal B_{13}
-  =
-  {\bf 1}_{h(p_1)=0}.
-  \label{eq:cpn-degree-one-boundary-indicators}
+  I_1(H,H^{N-1},H^{N-1})=1.
+  \label{eq:cpn-degree-one-primary-representative-independence}
 \end{equation}
-For the chosen separated representatives,
-\[
-  p_0\neq p_1,\qquad h(p_0)=-1,\qquad h(p_1)=1,
-\]
-so the three boundary restrictions vanish.  Thus the compactified finite
-stable-map contribution in this source scheme is
+
+If the two point representatives are moved to the same point, or if the
+hyperplane representative is moved through one of the point representatives,
+the chosen transverse affine count is no longer a valid computation of the
+primary invariant.  The correct operation is to deform the representatives back
+to a transverse cycle, or equivalently to compute the refined/excess
+intersection on
+\(\overline{\mathcal M}_{0,3}(\mathbb P^{N-1},1)\).  In either computation the
+primary invariant remains the same:
 \begin{equation}
-  I_{\Lambda,1}^{\rm cpt}
+  I_1(H,H^{N-1},H^{N-1})_{\rm transverse}
+  =
+  I_1(H,H^{N-1},H^{N-1})_{\rm refined/excess}
+  =
+  1 .
+  \label{eq:cpn-degree-one-excess-invariance}
+\end{equation}
+
+This gives an immediate negative test for source schemes.  The formula
+\begin{equation}
+  I_{\rm bool}
   =
   I_{\rm bulk}
-  +
-  \mathcal B_{12}
-  +
-  \mathcal B_{13}
-  +
-  \mathcal B_{23}
-  +
-  C_{12,\Lambda}^{\rm ct}
-  +
-  C_{13,\Lambda}^{\rm ct}
-  +
-  C_{23,\Lambda}^{\rm ct},
-  \qquad
-  I_{\rm bulk}=1 .
-  \label{eq:cpn-degree-one-compactification-contact-gate}
+  +{\bf 1}_{p_0=p_1}
+  +{\bf 1}_{h(p_0)=0}
+  +{\bf 1}_{h(p_1)=0},
+  \qquad I_{\rm bulk}=1,
+  \label{eq:cpn-degree-one-boolean-boundary-negative-control}
 \end{equation}
-The canonical separated-evaluation convention used in the retained chart sets
-\(C_{ab,\Lambda}^{\rm ct}=0\), hence
-\[
-  I_{\Lambda,1}^{\rm cpt}=1.
-\]
+is not a stable-map integral: it would make the primary invariant jump when
+cycle representatives are moved into non-transverse position.  Such a jump is a
+failure of the representative, not a new boundary contribution to the primary
+Gromov--Witten number.
 
-The test is not tautological.  If the two point representatives are made equal,
-then \(\mathcal B_{23}=1\); if the hyperplane is changed to one containing
-\(p_0\), then \(\mathcal B_{12}=1\).  In either case the bulk determinant
-\eqref{eq:cpn-degree-one-evaluation-berezin-jacobian} is not the full
-compactified integral.  Likewise a regulator that introduces nonzero local
-contact counterterms \(C_{ab,\Lambda}^{\rm ct}\) changes the retained
-coefficient unless the same contact convention is transported to the mirror
-coordinate and to the operator map.  This is the finite compactification part of
-\(R_{\rm line}\): the line count \(1\) is a physical A-model coefficient only
-after boundary strata and contact terms have been shown to vanish in the chosen
-scheme or have been included explicitly.
+Contact terms may still occur in a different physical observable.  If the
+regulated GLSM asks for a collision-sensitive composite source, a
+point-splitting prescription, or a locally renormalized product of A-model
+operators, then it must be named as a new source observable
+\(\mathcal J_{\Lambda}\), not as the primary invariant above.  Its degree-one
+coefficient has the finite-regulator decomposition
+\begin{equation}
+  \mathcal J_{\Lambda,1}
+  =
+  I_1(H,H^{N-1},H^{N-1})
+  +
+  C^{\rm src}_{\Lambda}
+  +
+  R^{\rm exc}_{\Lambda},
+  \label{eq:cpn-degree-one-source-contact-observable}
+\end{equation}
+where \(C^{\rm src}_{\Lambda}\) is a declared local source counterterm and
+\(R^{\rm exc}_{\Lambda}\) records the difference between the chosen
+point-splitting/excess prescription and the primary evaluation-class pullback.
+Only this separately defined source observable, if present, must transport its
+contact convention to the mirror coordinate and operator map.  The primary
+degree-one A-model coefficient remains \(1\).
 \end{example}
 
 \begin{remark}[Finite measure-scheme covariance]
@@ -3705,13 +3715,17 @@ together with the degree gate
 \[
   1+(N-1)+(N-1)=2N-1
 \]
-and the compactification gate excluding the boundary strata where the two
-point constraints collide or the hyperplane insertion contains one of them.
-Example~\ref{ex:cpn-degree-one-compactification-contact-gate} gives the
-corresponding finite boundary/contact test.  Thus
+and the transverse-representative condition that keeps the affine chart away
+from the boundary strata where the two point constraints collide or the
+hyperplane insertion contains one of them.
+Example~\ref{ex:cpn-degree-one-representative-independence-gate} explains how
+the compactified primary invariant stays representative-independent, and how a
+separate collision-sensitive source observable would have to be declared before
+contact terms can enter.  Thus
 \(I_{\Lambda,1}=1+R_{\rm meas}\) only after the determinant-line
-orientation, zero-mode measure, compactification/contact convention, and
-operator normalization have been transported to the same regulator.  The
+orientation, zero-mode measure, stable-map representative/excess convention,
+any declared source-contact prescription, and operator normalization have been
+transported to the same regulator.  The
 mirror root sum has no access to these signs and gates by itself.
 The term \(R_{\rm vort}\)
 compares the true regulated vortex coefficient with the supplied
@@ -3873,8 +3887,11 @@ hyperplane equation, the retained incidence calculation gives
 \end{equation}
 Changing the stable-map orientation, failing the GLSM zero-mode comparison,
 allowing the two point constraints to collide, letting the hyperplane pass
-through a point constraint, or rescaling the representative of \(H\) changes
-this retained value.
+through a point constraint, or rescaling a raw representative of \(H\) changes
+this retained affine-chart value.  It does not change the primary
+Gromov--Witten invariant; it means that the comparison has left the transverse
+representative used by the finite chart and must be recomputed by deformation,
+refined/excess intersection, or a separately defined source-contact observable.
 
 Let
 \[

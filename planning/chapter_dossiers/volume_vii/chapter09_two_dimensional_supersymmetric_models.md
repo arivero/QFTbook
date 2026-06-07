@@ -160,13 +160,15 @@ and
   Jacobian for the degree-one `P^{N-1}` three-point insertion, showing how two
   point insertions and one hyperplane insertion saturate the fermionic zero-mode
   measure with coefficient `+1`.
-- `ex:cpn-degree-one-compactification-contact-gate`,
-  `eq:cpn-degree-one-boundary-indicators`,
-  `eq:cpn-degree-one-compactification-contact-gate`: finite compactification
-  and contact-term gate for the degree-one `P^{N-1}` A-model coefficient,
-  checking the three stable-map boundary strata where point or hyperplane
-  insertions collide and separating the canonical zero-contact convention from
-  nonzero regulator contact counterterms.
+- `ex:cpn-degree-one-representative-independence-gate`,
+  `eq:cpn-degree-one-primary-representative-independence`,
+  `eq:cpn-degree-one-excess-invariance`,
+  `eq:cpn-degree-one-boolean-boundary-negative-control`,
+  `eq:cpn-degree-one-source-contact-observable`: representative-independence
+  gate for the degree-one `P^{N-1}` primary A-model coefficient.  The current
+  text treats non-transverse representatives by deformation or refined/excess
+  intersection, rejects Boolean boundary-indicator arithmetic, and separates
+  collision-sensitive source contacts from the primary invariant.
 - `q_mir`, `I_{Lambda,1}`, `B_vort`, `B_I`, `B_q`, `B_off,a`:
   mirror-residue FI coordinate, retained finite degree-one instanton-measure
   integral, and residual majorants in the Hori--Vafa residue/direct-instanton
@@ -458,14 +460,15 @@ and
   logarithmic Hessian is `N x^{N-1}` and the finite residue trace gives
   `R(H^k)=q_phys^d` for `k=N-1+dN` and zero off that selection rule.  This
   recovers the protected quantum-product relation `H^N=q_phys` only after the
-  vortex coefficient, determinant-line orientation, and A-twisted
-  compactification/contact data are fixed.
+  vortex coefficient, determinant-line orientation, stable-map
+  representative/excess convention, and any declared source-contact data are
+  fixed.
 - Adds the vortex-to-observable residual comparison: the regulated
   `P^{N-1}` A-twisted correlator is compared to the mirror residue through
-  separate coefficient, determinant, zero-mode, compactification/contact,
-  gluing, operator-map, and continuum residuals.  The chapter now makes the
-  nonzero vortex coefficient and the vanishing of those residuals the
-  load-bearing physics inputs before the finite Hori--Vafa residue identity is
+  separate coefficient, determinant, zero-mode, representative/excess,
+  source-contact, gluing, operator-map, and continuum residuals.  The chapter
+  now makes the nonzero vortex coefficient and the vanishing of those residuals
+  the load-bearing physics inputs before the finite Hori--Vafa residue identity is
   promoted to the quantum-product statement.
 - Adds the direct A-model stable-map computation for the `P^{N-1}` quantum product:
   the virtual dimension of `overline M_{0,3}(P^{N-1},d)` is `(N-1)+Nd`,
@@ -1212,3 +1215,12 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   sectors.  The companion checks large-gauge invariance, finite core energy,
   singular-holonomy negative controls, projective flavor-row covariance, and
   the core-domain and boundary-term residual budgets.
+- The 2026-06-07 issue #851 stable-map contact repair replaces the previous
+  Boolean compactification/contact formula by
+  `ex:cpn-degree-one-representative-independence-gate`.  The TeX now states
+  the primary invariant as the evaluation-class pairing on
+  `Mbar_{0,3}(P^{N-1},1)`, explains that coincident or non-transverse
+  representatives require deformation or refined/excess intersection rather
+  than an added indicator boundary term, and confines contact constants to
+  separately declared collision-sensitive source observables.  The companion
+  now treats the old indicator arithmetic as a failing negative control.
