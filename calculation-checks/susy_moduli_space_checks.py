@@ -516,6 +516,7 @@ def check_higgs_branch_background_field_derivation_gate():
         "mass_curvature_ward_pairing",
         "supercharge_factorization",
         "off_shell_row_completion",
+        "rank_one_row_jacobians",
         "dimension_reduced_row_contacts",
         "gauge_parameter_cancellation",
         "dimension_reduction_audit",
@@ -670,6 +671,13 @@ def check_higgs_branch_background_field_derivation_gate():
             "gauge_fixing_and_ghost_rows",
             "moment_map_auxiliary_rows",
             "yukawa_rows",
+        },
+        "rank_one_row_jacobians": {
+            "real_moment_map_row",
+            "complex_moment_map_rows",
+            "background_gauge_fixing_row",
+            "yukawa_mass_row",
+            "heavy_projector_zero_mode_split",
         },
         "dimension_reduced_row_contacts": "reduced_vector_scalars_kept_as_rows",
     }
@@ -1151,6 +1159,127 @@ def check_higgs_branch_background_field_derivation_gate():
         omitted_auxiliary_row_residual == 0,
         False,
         "missing auxiliary/Yukawa row contact breaks the Higgs determinant pairing",
+    )
+
+    def vector_dot(left, right):
+        return sum(left[index] * right[index] for index in range(len(left)))
+
+    def outer_product(left, right):
+        return [[left[row] * right[column] for column in range(len(right))] for row in range(len(left))]
+
+    def matrix_vector_multiply(matrix, vector):
+        return [
+            sum(matrix[row][column] * vector[column] for column in range(len(vector)))
+            for row in range(len(matrix))
+        ]
+
+    # Exact local row-Jacobian model for q_B(t) on a unit circle.  At t=0,
+    # q=(1,0), q'=(0,2), q''=(-4,0) for the rational parametrization
+    # q(t)=((1-t^2)/(1+t^2), 2t/(1+t^2)).
+    q_background = [Fraction(1), Fraction(0)]
+    q_tangent = [Fraction(0), Fraction(1)]
+    q_prime = [Fraction(0), Fraction(2)]
+    q_second = [Fraction(-4), Fraction(0)]
+    q_alt = [Fraction(3, 5), Fraction(4, 5)]
+    q_alt_tangent = [Fraction(-4, 5), Fraction(3, 5)]
+    assert_equal(vector_dot(q_background, q_background), Fraction(1), "rank-one Higgs row background has fixed norm")
+    assert_equal(vector_dot(q_background, q_prime), Fraction(0), "rank-one Higgs row tangent is quotient-horizontal")
+    assert_equal(
+        vector_dot(q_prime, q_prime) + vector_dot(q_background, q_second),
+        Fraction(0),
+        "rank-one Higgs row norm has zero second variation",
+    )
+
+    row_coefficients = {
+        "real_moment_map_row": Fraction(10, 3),
+        "complex_moment_map_real_row": Fraction(5, 3),
+        "complex_moment_map_imag_row": Fraction(5, 3),
+        "background_gauge_fixing_row": Fraction(7, 3),
+        "yukawa_mass_row": Fraction(10, 3),
+    }
+    for row_name, coefficient_squared in row_coefficients.items():
+        fixed_row_operator = scalar_multiply(
+            coefficient_squared,
+            outer_product(q_background, q_background),
+        )
+        alt_row_operator = scalar_multiply(
+            coefficient_squared,
+            outer_product(q_alt, q_alt),
+        )
+        row_space_mass = coefficient_squared * vector_dot(q_background, q_background)
+        alt_row_space_mass = coefficient_squared * vector_dot(q_alt, q_alt)
+        assert_equal(
+            row_space_mass,
+            alt_row_space_mass,
+            f"{row_name} has constant nonzero row-space mass",
+        )
+        assert_equal(
+            matrix_trace(fixed_row_operator),
+            row_space_mass,
+            f"{row_name} trace is the single heavy eigenvalue",
+        )
+        assert_equal(
+            matrix_multiply(fixed_row_operator, fixed_row_operator),
+            scalar_multiply(row_space_mass, fixed_row_operator),
+            f"{row_name} fixed-coordinate operator is a rank-one heavy projector",
+        )
+        assert_equal(
+            matrix_vector_multiply(fixed_row_operator, q_tangent),
+            [Fraction(0), Fraction(0)],
+            f"{row_name} annihilates the quotient tangent zero mode",
+        )
+        assert_equal(
+            matrix_vector_multiply(alt_row_operator, q_alt_tangent),
+            [Fraction(0), Fraction(0)],
+            f"{row_name} rotated projector still separates the tangent zero mode",
+        )
+        assert_equal(
+            fixed_row_operator == alt_row_operator,
+            False,
+            f"{row_name} fixed-coordinate operator moves by projector rotation",
+        )
+
+    representative_coefficient = row_coefficients["real_moment_map_row"]
+    full_row_jacobian_second = scalar_multiply(
+        representative_coefficient,
+        matrix_add(
+            matrix_add(
+                outer_product(q_second, q_background),
+                scalar_multiply(Fraction(2), outer_product(q_prime, q_prime)),
+            ),
+            outer_product(q_background, q_second),
+        ),
+    )
+    omitted_contact_second = scalar_multiply(
+        representative_coefficient,
+        matrix_add(
+            outer_product(q_second, q_background),
+            outer_product(q_background, q_second),
+        ),
+    )
+    row_space_second_full = representative_coefficient * (
+        vector_dot(q_second, q_background)
+        + 2 * vector_dot(q_prime, q_prime)
+        + vector_dot(q_background, q_second)
+    )
+    row_space_second_without_contact = representative_coefficient * (
+        vector_dot(q_second, q_background)
+        + vector_dot(q_background, q_second)
+    )
+    assert_equal(
+        row_space_second_full,
+        Fraction(0),
+        "rank-one component rows have no nonzero-mass curvature after contact completion",
+    )
+    assert_equal(
+        row_space_second_without_contact == 0,
+        False,
+        "omitting the row square-completion contact creates fake mass curvature",
+    )
+    assert_equal(
+        full_row_jacobian_second == omitted_contact_second,
+        False,
+        "row-Jacobian contact is a generated fixed-coordinate seagull",
     )
 
     reduced_scalar_rows_by_dimension = {

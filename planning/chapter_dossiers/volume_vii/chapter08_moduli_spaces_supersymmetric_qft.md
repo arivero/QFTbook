@@ -117,6 +117,13 @@ later lower-dimensional examples, protected sectors, and localization.
   `eq:higgs-branch-row-contact-residual`: row-resolved construction criterion
   for obtaining the Higgs heavy \(Q\)-complex from kinetic, gauge-fixing,
   moment-map auxiliary, and Yukawa pieces of the quadratic Lagrangian.
+- `ex:higgs-branch-rank-one-row-jacobians`,
+  `eq:higgs-branch-rank-one-row-jacobians`,
+  `eq:higgs-branch-row-projector-mass`,
+  `eq:higgs-branch-row-jacobian-contact`: component-Lagrangian origin of the
+  rank-one moment-map, gauge-fixing, complex-moment, and Yukawa rows,
+  including the heavy projector, tangent zero-mode split, and row-contact
+  seagull.
 - `ex:higgs-branch-dimensional-reduction-row-audit`,
   `eq:higgs-branch-reduced-scalar-row-contact`,
   `eq:higgs-branch-reduced-scalar-contact-residual`,
@@ -215,11 +222,14 @@ later lower-dimensional examples, protected sectors, and localization.
   nonminimal gauge operator, Goldstone, ghost, seagull, fermion, auxiliary, and
   gauge-parameter data that an independent determinant proof would have to
   evaluate.  It further records the row-resolved off-shell assembly obligation
-  for the heavy \(Q\)-complex, including the trace-log residual caused by
-  dropping a gauge-fixing, auxiliary, or Yukawa square-completion contact.  The
-  old massive-multiplet balance is retained only as a diagnostic consistency
-  check.  Global nonperturbative equality is retained only as an additional
-  continuum assertion after boundary and extra-light-sector exclusions.
+  for the heavy \(Q\)-complex, derives the rank-one moment-map, gauge-fixing,
+  complex-moment, and Yukawa row Jacobians from the component Lagrangian, and
+  separates the heavy row projector from the quotient tangent zero mode.  It
+  also records the trace-log residual caused by dropping a gauge-fixing,
+  auxiliary, Yukawa, or row-Jacobian square-completion contact.  The old
+  massive-multiplet balance is retained only as a diagnostic consistency check.
+  Global nonperturbative equality is retained only as an additional continuum
+  assertion after boundary and extra-light-sector exclusions.
 - Adds the two-dimensional \(\mathcal N=(4,4)\) ADHM/D1--D5 gauge-theory
   example with adjoint and fundamental hypermultiplets, explicit complex and
   real moment maps, quotient, dimension count
@@ -262,10 +272,12 @@ later lower-dimensional examples, protected sectors, and localization.
   checks Ward-paired mass-curvature vertices with a mismatched-vertex negative
   control, checks supercharge-factorized heavy-block pairing with a
   dropped-contact negative control, checks row-resolved off-shell heavy-complex
-  assembly with a missing auxiliary/Yukawa contact negative control, and rejects
-  use of the four-dimensional gauge-field entry in dimensionally reduced
-  arguments by checking reduced vector-scalar row contacts and the separate
-  two-dimensional antisymmetric \(B/WZ\) channel,
+  assembly with a missing auxiliary/Yukawa contact negative control, derives
+  the rank-one row-Jacobian projector/zero-mode/contact identities from a
+  fixed-norm Higgs background, and rejects use of the four-dimensional
+  gauge-field entry in dimensionally reduced arguments by checking reduced
+  vector-scalar row contacts and the separate two-dimensional antisymmetric
+  \(B/WZ\) channel,
   fixed-charge branch-EFT checks for global-form/Weyl charge labels, the
   supersymmetric chiral-branch Noether map and Routhian energy, transverse
   gap hierarchy, and the abstract large-\(\mu\) simultaneous-window scaling
@@ -358,6 +370,12 @@ local models.
   quadratic Lagrangian.  The companion now checks that row-local contacts sum to
   the full \(2Q_1^\dagger Q_1\) seagull and that dropping an auxiliary/Yukawa row
   contact gives the predicted trace-log residual.
+- 2026-06-07 issue #850 rank-one row-Jacobian pass: derived the real
+  moment-map, complex-moment, background-gauge-fixing, and Yukawa rows from the
+  rank-one component Lagrangian on a fixed-norm Higgs path.  The companion now
+  checks the heavy projector, tangent zero-mode separation, constant nonzero
+  row mass, and generated row-contact seagull, with a negative control for
+  turning projector motion into fake mass curvature.
 - 2026-06-07 issue #850 dimensional-reduction row audit: added the lower-dimensional
   split \(A_M=(A_\mu,\sigma_I)\), with \(4-d\) reduced vector-multiplet scalar
   rows and their contact \(C_{\rm red}^{(d)}\).  The companion now checks that
