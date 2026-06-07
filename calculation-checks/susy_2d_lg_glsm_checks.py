@@ -8,7 +8,7 @@ normalization, compact FI-theta flux periodicity, common-flux rather than
 flavor-labelled vortex topology, one-vortex normal-mode interaction and original/dual-frame
 separation, one-vortex source-functional F-term extraction,
 one-vortex component-amplitude source-minor extraction,
-one-loop Coulomb branch and monodromy bookkeeping,
+one-loop Coulomb component-response sign and monodromy bookkeeping,
 single-vortex coefficient noncancellation bound,
 P^{N-1} mirror residue trace, and
 vortex-to-protected-observable proof-obligation map, together with the
@@ -30,7 +30,8 @@ coefficient bounds, oriented source-minor component-amplitude cells,
 component-to-component source-frame calibration ratios with supplied component
 and frame residuals,
 normal-mode cumulant factors and original-to-dual frame tags,
-formal one-loop logarithm branch shifts and axial-monodromy ledgers,
+formal one-loop component-response signs, logarithm branch shifts, and
+axial-monodromy ledgers,
 root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree filters, and
 conditional residual-propagation maps, plus finite density/Jacobian transport
@@ -92,7 +93,8 @@ determinant-only vortex coefficients with nonzero normal interactions,
 original/dual frame substitutions,
 nonperiodic \(\exp(\tau)\) fugacities,
 flavor-labelled topological vortex sectors,
-wrong-sign Coulomb logarithm branch transport,
+using compact branch periodicity to choose the Coulomb determinant sign,
+wrong component-response signs,
 absolute-value-only Coulomb logarithms,
 parallel source-overlap component shortcuts,
 mirror-fugacity-only component calibration,
@@ -561,10 +563,52 @@ def check_abelian_coulomb_one_loop_primitive() -> None:
     )
 
 
+def check_coulomb_component_response_selects_log_sign() -> None:
+    # The real proper-time subtraction alone gives
+    # log(mu^2/|M|^2)=-2 log(|M|/mu).  The component supertrace coefficient
+    # multiplying the top component of Sigma is the separate datum that turns
+    # this into the holomorphic derivative sign used by the chapter.
+    proper_time_real_log_units = Fraction(-2)
+    component_response_coefficient = -Fraction(1, 2)
+    determinant_log_sign = component_response_coefficient * proper_time_real_log_units
+    assert_equal(
+        "Coulomb component response selects chapter determinant sign",
+        determinant_log_sign,
+        Fraction(1),
+    )
+
+    wrong_component_response_coefficient = Fraction(1, 2)
+    wrong_determinant_log_sign = (
+        wrong_component_response_coefficient * proper_time_real_log_units
+    )
+    assert_equal(
+        "opposite component response gives opposite determinant sign",
+        wrong_determinant_log_sign,
+        -Fraction(1),
+    )
+
+    charge = Fraction(3)
+    phase_rotation_units = Fraction(5)
+    theta_shift_units = charge * phase_rotation_units
+    holomorphic_phase_sign = theta_shift_units / (charge * phase_rotation_units)
+    assert_equal(
+        "mass-phase Jacobian sign matches component response convention",
+        holomorphic_phase_sign,
+        determinant_log_sign,
+    )
+
+    absolute_value_only_phase = Fraction(0)
+    assert_equal(
+        "absolute-value determinant cannot supply mass-phase Jacobian",
+        absolute_value_only_phase == theta_shift_units,
+        False,
+    )
+
+
 def check_coulomb_one_loop_branch_monodromy() -> None:
     # Store logarithm branch shifts in units of 2*pi*i.  The local one-loop
-    # derivative is -T + sum_i Q_i L_i, so changing L_i by n_i must be
-    # accompanied by T -> T + 2*pi*i sum_i Q_i n_i.
+    # derivative is -T + s_det sum_i Q_i L_i, so changing L_i by n_i must be
+    # accompanied by T -> T + s_det 2*pi*i sum_i Q_i n_i.
     charges = [2, -1, 3]
     branch_shifts = [1, -2, 4]
     determinant_branch_shift = sum(
@@ -577,17 +621,23 @@ def check_coulomb_one_loop_branch_monodromy() -> None:
     )
 
     derivative_before = Fraction(5, 7)
-    derivative_after_branch = derivative_before + determinant_branch_shift
-    derivative_after_fi_transport = derivative_after_branch - determinant_branch_shift
-    assert_equal(
-        "FI logarithmic period shift transports branch derivative",
-        derivative_after_fi_transport,
-        derivative_before,
-    )
+    for determinant_sign in [Fraction(1), -Fraction(1)]:
+        signed_shift = determinant_sign * determinant_branch_shift
+        derivative_after_branch = derivative_before + signed_shift
+        derivative_after_fi_transport = derivative_after_branch - signed_shift
+        assert_equal(
+            f"FI period transports branch derivative sign={determinant_sign}",
+            derivative_after_fi_transport,
+            derivative_before,
+        )
+        assert_equal(
+            f"exp(T) is invariant for either determinant sign={determinant_sign}",
+            signed_shift.denominator,
+            1,
+        )
 
-    wrong_sign_transport = derivative_after_branch + determinant_branch_shift
-    if wrong_sign_transport == derivative_before:
-        raise AssertionError("wrong-sign FI branch transport should not preserve derivative")
+    if determinant_branch_shift == 0:
+        raise AssertionError("sample should have a nonzero branch transport")
 
     # A full loop around Sigma=0 shifts every log by one sheet.  The coefficient
     # is the axial anomaly sum of charges.
@@ -615,6 +665,14 @@ def check_coulomb_one_loop_branch_monodromy() -> None:
     if q_period_shift == 0:
         raise AssertionError("exp(tau) shortcut would hide no branch transport in this sample")
 
+    branch_periodicity_accepts_plus = q_period_shift.denominator == 1
+    branch_periodicity_accepts_minus = (-q_period_shift).denominator == 1
+    assert_equal(
+        "compact branch periodicity cannot choose determinant sign",
+        branch_periodicity_accepts_plus and branch_periodicity_accepts_minus,
+        True,
+    )
+
     # Keeping only log|M| has no branch-sheet coordinate and therefore cannot
     # represent the anomaly monodromy.
     absolute_value_log_monodromy = 0
@@ -623,16 +681,6 @@ def check_coulomb_one_loop_branch_monodromy() -> None:
         absolute_value_log_monodromy == monodromy,
         False,
     )
-
-    proper_time_sign = -1
-    wrong_proper_time_sign = 1
-    assert_equal(
-        "proper-time subtraction derivative has the chapter sign",
-        proper_time_sign,
-        -1,
-    )
-    if wrong_proper_time_sign == proper_time_sign:
-        raise AssertionError("opposite real logarithm sign should change the determinant ledger")
 
 
 def check_charged_chiral_dual_elimination() -> None:
@@ -2933,6 +2981,7 @@ def main() -> None:
     check_abelian_glsm_coulomb_ledger()
     check_compact_fi_theta_fugacity_and_common_flux()
     check_abelian_coulomb_one_loop_primitive()
+    check_coulomb_component_response_selects_log_sign()
     check_coulomb_one_loop_branch_monodromy()
     check_charged_chiral_dual_elimination()
     check_all_rank_vortex_fi_coordinate_shift()

@@ -25,6 +25,13 @@
   not assert full GLSM mirror equivalence, continuum existence, or vortex
   compactness.
 
+## Re-Audit Note
+
+- Superseded in the later 2026-06-07 determinant-sign re-audit: compact
+  `T` periodicity checks integral branch transport for either determinant
+  sign and therefore cannot choose the sign.  The sign must be fixed by the
+  component determinant response and mass-phase Jacobian.
+
 ## Verification
 
 - `python3 -m py_compile calculation-checks/susy_2d_lg_glsm_checks.py`

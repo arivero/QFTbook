@@ -3114,8 +3114,11 @@ nonzero, and restrict to a simply connected branch of the region
 \]
 Assume a supersymmetric Wilsonian regulator preserving the twisted chiral
 field strength \(\Sigma\), the gauge symmetry, and the integer charge
-normalization.  The finite part of the massive chiral determinant is assumed
-to be represented by the local twisted superpotential
+normalization.  The sign of the determinant logarithm is part of the component
+linear-response calculation below; logarithm monodromy and compact theta
+periodicity test that sign after it is derived but do not determine it.  In
+the component convention used here, the finite part of the massive chiral
+determinant is assumed to be represented by the local twisted superpotential
 \begin{equation}
   \widetilde W_{\rm eff}(\Sigma)
   =
@@ -3144,11 +3147,39 @@ Coulomb-region complex mass is
 \]
 The local Wilsonian determinant is obtained by expanding the massive
 Gaussian path integral to first order in the top component of \(\Sigma\), or
-equivalently to first order in the background \(D+\ii F_{12}\) that couples
-to the FI-theta coordinate.  The bosonic and fermionic determinants cancel at
-zero background \(D+\ii F_{12}\); the uncancelled linear term is the massive
-propagator at coincident points.  With a proper-time subtraction at the
-reference mass \(\mu\),
+equivalently to first order in the background
+\[
+  \mathcal F_\Sigma=D+\ii F_{12}
+\]
+that is paired with the logarithmic FI-theta coordinate in the same component
+normalization as Remark~\ref{rem:glsm-compact-fi-theta-normalization}.  At
+\(\mathcal F_\Sigma=0\) the bosonic and fermionic determinants cancel.  The
+terms linear in a constant charge-\(Q\) Euclidean background may be normalized
+as
+\[
+  \Delta_B
+  =
+  -\nabla_\mu\nabla_\mu+|M|^2
+  +QD+\cdots,
+  \qquad
+  \mathcal D_F^\dagger\mathcal D_F
+  =
+  -\nabla_\mu\nabla_\mu+|M|^2
+  +Q\gamma^{12}F_{12}+\cdots ,
+\]
+where the omitted terms are either higher order in the slowly varying
+background or cancel inside the supersymmetric supertrace.  This formula is a
+component convention statement: reversing the top-component convention of
+\(\Sigma\), or the chirality convention in the massive fermion determinant,
+reverses the final holomorphic logarithm and must be accompanied by the
+corresponding change in all Coulomb equations.  With the convention above, the
+linear supertrace contains the real coefficient
+\[
+  -\frac12\log\frac{\mu^2}{|M|^2}
+  =
+  \log\frac{|M|}{\mu}.
+\]
+The proper-time subtraction giving the displayed logarithm is
 \begin{equation}
   4\pi
   \int_0^\infty
@@ -3170,13 +3201,13 @@ The equality follows by differentiating both sides with respect to
   -\frac1{|M|^2}.
 \]
 Equation~\eqref{eq:abelian-glsm-proper-time-log} determines the real
-logarithm in the finite FI shift.  Its imaginary partner is fixed by the
-two-dimensional axial anomaly: changing the phase of \(M\) by
-\(M\mapsto e^{\ii\alpha}M\) is a chiral rotation of a charge-\(Q\) massive
-multiplet and shifts the theta coordinate by \(Q\alpha\) in the same
-normalization in which the flux of a unit-charge \(U(1)\) bundle is integral.
-Thus the real subtraction and the anomaly combine into the holomorphic
-branch
+logarithm only after multiplication by the component response coefficient
+\(-1/2\).  The imaginary partner comes from the fermion-measure Jacobian in
+the same chirality convention: changing the phase of the mass by
+\(M\mapsto e^{\ii\alpha}M\) is removed by an axial rotation whose Jacobian
+shifts the theta coordinate by \(Q\alpha\), in the normalization in which the
+flux of a unit-charge \(U(1)\) bundle is integral.  Thus the component
+response and the anomaly combine into the holomorphic branch
 \[
   Q\log\frac{M}{\mu}
   =
@@ -3204,20 +3235,22 @@ the existence of the infrared continuum QFT.
 
 \begin{controlledapproximation}[One-loop branch and monodromy ledger]
 \label{ca:glsm-coulomb-one-loop-branch-monodromy}
-The preceding determinant fixes more than the real logarithm.  It fixes the
-branch coordinate in which the one-loop term may be compared with the compact
-FI-theta variable.  Work on a simply connected Coulomb chart and choose
-branches
+Once the component determinant response has fixed the sign of the logarithm,
+the branch ledger checks whether that sign is transported consistently by the
+compact FI-theta coordinate.  It is not an independent sign derivation.  Work
+on a simply connected Coulomb chart and choose branches
 \[
   L_i(\Sigma)=\log_{\rm br}\frac{Q_i\Sigma}{\mu}.
 \]
-The determinant contribution to the derivative of the local twisted
-superpotential is
+For a sign \(s_{\rm det}=\pm1\), the determinant contribution to the derivative
+of the local twisted superpotential would be
 \[
   \partial_\Sigma\widetilde W_{\rm 1\text{-}loop}
   =
-  \sum_i Q_iL_i(\Sigma).
+  s_{\rm det}\sum_i Q_iL_i(\Sigma).
 \]
+The component calculation above selects \(s_{\rm det}=+1\) in this chapter's
+convention.
 A branch change
 \[
   L_i\longmapsto L_i+2\pi\ii n_i,
@@ -3225,13 +3258,13 @@ A branch change
 \]
 changes the derivative by
 \[
-  2\pi\ii\sum_iQ_in_i .
+  s_{\rm det}\,2\pi\ii\sum_iQ_in_i .
 \]
 In the full Coulomb derivative
-\(-T+\sum_iQ_iL_i\), this is exactly an integral-period shift of the
+\(-T+s_{\rm det}\sum_iQ_iL_i\), this is exactly an integral-period shift of the
 logarithmic FI coordinate,
 \begin{equation}
-  T\longmapsto T+2\pi\ii\sum_iQ_in_i .
+  T\longmapsto T+s_{\rm det}\,2\pi\ii\sum_iQ_in_i .
   \label{eq:glsm-coulomb-branch-fi-shift}
 \end{equation}
 Since the physical fugacity is \(q=\ee^T\), the shift
@@ -3244,7 +3277,7 @@ used here.
 Going once around \(\Sigma=0\) changes every \(L_i\) by \(2\pi\ii\).  The
 local determinant derivative therefore has monodromy
 \[
-  2\pi\ii\sum_iQ_i .
+  s_{\rm det}\,2\pi\ii\sum_iQ_i .
 \]
 This is the Coulomb-chart expression of the axial anomaly.  If
 \(\sum_iQ_i=0\), the determinant derivative is single-valued after returning
@@ -3258,15 +3291,17 @@ The primitive inherits the same ledger.  Under a branch change it shifts by
 \[
   \Delta\widetilde W_{\rm eff}
   =
-  2\pi\ii\,\Sigma\sum_iQ_in_i,
+  s_{\rm det}\,2\pi\ii\,\Sigma\sum_iQ_in_i,
 \]
 an affine term in \(\Sigma\), and that affine term is precisely the local FI
-coordinate shift in \eqref{eq:glsm-coulomb-branch-fi-shift}.  The real
-proper-time subtraction supplies \(\log|Q_i\sigma/\mu|\); the anomaly supplies
-the branch monodromy and theta-periodicity test.  Conversely, choosing the
-opposite sign for the determinant logarithm would require
-\(T\mapsto T-2\pi\ii\sum_iQ_in_i\), which contradicts the compact-flux
-normalization fixed in \eqref{eq:glsm-compact-flux-topological-weight}.
+coordinate shift in \eqref{eq:glsm-coulomb-branch-fi-shift}.  Notice the
+important limitation: both signs give integral shifts of \(T\) and both leave
+\(\ee^T\) single-valued.  Compact flux normalization fixes the period and the
+\(2\pi\) factors; it does not by itself choose \(s_{\rm det}\).  The sign used
+in \eqref{eq:abelian-glsm-one-loop-derivative} is therefore traced to the
+component supertrace and mass-phase Jacobian above.  A calculation with
+\(s_{\rm det}=-1\) would be a different determinant-response convention, not a
+consequence of Hori--Vafa branch monodromy.
 \end{controlledapproximation}
 
 \paragraph{Coulomb critical equation.}

@@ -2966,9 +2966,12 @@ Current checks:
   momentum-winding/Legendre-Hessian inversion checks, plus the abelian GLSM
   Coulomb one-loop charge-exponent/vacuum-count ledger, the primitive of the
   Coulomb logarithmic derivative and its finite FI-coordinate shift under
-  determinant normalization changes, the Coulomb branch-monodromy check which
-  transports logarithm-sheet shifts into integral \(T\)-periods and rejects
-  wrong-sign or absolute-value-only logarithms, the compact FI-theta check that
+  determinant normalization changes, the Coulomb component-response sign check
+  which separates the proper-time real logarithm, the top-component response
+  coefficient, and the mass-phase Jacobian, the Coulomb branch-monodromy check
+  which transports logarithm-sheet shifts into integral \(T\)-periods while
+  rejecting compact-periodicity-as-sign-oracle and absolute-value-only
+  logarithm shortcuts, the compact FI-theta check that
   \(T=2\pi i\tau=-2\pi r+i\theta\) gives a theta-periodic fugacity
   \(q=\exp(T)\) while \(\exp(\tau)\) fails, the common-flux check rejecting
   flavor-labelled vortex sectors under equal-charge flavor rotations, the charged-chiral mirror-variable

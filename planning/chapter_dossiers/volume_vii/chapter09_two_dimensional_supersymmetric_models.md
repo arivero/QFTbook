@@ -272,10 +272,11 @@ and
   superpotential and that the constants `c_i` shift the finite definition of
   the FI coordinate.
 - Adds a one-loop branch/monodromy ledger before Hori--Vafa mirror constraints
-  are used: logarithm-sheet shifts of the Coulomb determinant are transported
-  into integral periods of the logarithmic FI coordinate `T`, the `Sigma=0`
-  monodromy is identified with `sum_i Q_i`, and wrong-sign or
-  absolute-value-only logarithms are rejected.
+  are used: the component determinant response selects the logarithm sign,
+  logarithm-sheet shifts of the Coulomb determinant are transported into
+  integral periods of the logarithmic FI coordinate `T`, the `Sigma=0`
+  monodromy is identified with `sum_i Q_i`, and compact-periodicity-as-sign
+  and absolute-value-only logarithm shortcuts are rejected.
 - Adds the compact FI-theta normalization ledger: with
   `k=(2 pi)^{-1} int F`, `tau=theta/(2 pi)+i r`, and
   `T=2 pi i tau=-2 pi r+i theta`, a flux-`k` saddle carries
@@ -571,6 +572,13 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   compact `T` period, and physical fugacity `exp(T)` part of the local
   Coulomb calculation itself, before any historical Hori--Vafa formula is
   compared.
+- The 2026-06-07 issue #847 determinant-sign re-audit corrects that branch
+  pass: compact `T` periodicity tests integrality and `2 pi` normalization,
+  but it cannot choose the determinant-log sign because both signs are
+  integral-period transports.  The monograph now traces the sign to the
+  component linear response of the massive chiral determinant and the
+  mass-phase Jacobian, while the companion rejects using branch monodromy as a
+  sign oracle.
 - The 2026-06-03 projective-space residue pass extends that scrutiny from
   mirror critical points to a protected observable: it computes the finite
   Hessian/residue trace behind the `P^{N-1}` A-model selection rule and records
