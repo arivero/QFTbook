@@ -2,17 +2,17 @@
 """Checks for Vol VI nested Bethe, QQ, Hirota, and SoV identities.
 
 Evidence contract.
-Target claim: the checks pair with the finite algebra and residual ledgers in
+Target claim: the checks pair with the finite algebra and residual maps in
 Volume VI, Chapter 5B: nested Cartan Bethe equations, QQ/Hirota algebra,
 finite SoV shifts, q-oscillator RLL conventions, and the finite
-SoV-to-spectral-trace residual decomposition.
+SoV-to-observable residual decomposition.
 Independent construction: identities are checked by determinant expansion,
 finite-difference recurrences, explicit finite-basis operator actions, and an
 independent finite spectral trace before comparison with the retained
 SoV-labeled approximant.
 Imported assumptions: finite-dimensional representations, simple spectra, the
 chapter's RTT and six-vertex normalizations, and exact rational toy
-Boltzmann/time weights for the residual-budget check.
+Boltzmann/time weights for the residual-map check.
 Negative controls: wrong gauge/trace omissions, missing spectral sectors, and
 wrong retained operator matrix elements are rejected.
 Scope boundary: these are convention and finite-residual checks; they do not
@@ -510,8 +510,8 @@ def check_qoscillator_l_operator_rll() -> None:
                 )
 
 
-def check_sov_spectral_trace_residual_budget() -> None:
-    """Check the finite SoV-to-observable residual telescope exactly."""
+def check_sov_spectral_trace_residual_map() -> None:
+    """Check the finite SoV-to-observable residual map exactly."""
 
     weights = [Fraction(5, 1), Fraction(3, 1), Fraction(2, 1)]
     time_kernel = [
@@ -564,23 +564,56 @@ def check_sov_spectral_trace_residual_budget() -> None:
     if r_comp != 0:
         raise AssertionError("complete finite SoV basis should have zero completion residual")
     if r_reg == 0 or r_tail == 0 or r_operator == 0:
-        raise AssertionError("residual budget accidentally collapsed")
+        raise AssertionError("residual map accidentally collapsed")
 
     incomplete_sov = spectral_trace(retained_states, matrix_element_sq)
     completion_residual = exact_chain - incomplete_sov
     if completion_residual == 0:
         raise AssertionError("negative control failed to detect incomplete SoV spectrum")
 
-    budget_bound = sum(abs(term) for term in (r_reg, r_comp, r_tail, r_operator, r_state))
+    residuals = {
+        "regulator": r_reg,
+        "completion": r_comp,
+        "spectral tail": r_tail,
+        "operator matrix element": r_operator,
+        "state replacement": r_state,
+    }
+    triangle_bound = sum(abs(term) for term in residuals.values())
     assert_leq(
-        "SoV residual triangle budget",
+        "SoV residual triangle inequality",
         abs(actual_error),
-        budget_bound,
+        triangle_bound,
         tol=Fraction(0, 1),
     )
 
-    omitted_tail_budget = sum(abs(term) for term in (r_reg, r_comp, r_operator))
-    assert_gt("omitted spectral tail underbudgets example", abs(actual_error), omitted_tail_budget)
+    omitted_tail_bound = sum(abs(term) for term in (r_reg, r_comp, r_operator))
+    assert_gt("omitted spectral tail understates example", abs(actual_error), omitted_tail_bound)
+
+    residual_status = {
+        "regulator": "named_difference",
+        "completion": "proved_zero",
+        "spectral tail": "named_difference",
+        "operator matrix element": "named_difference",
+        "state replacement": "proved_zero",
+    }
+
+    def is_controlled_approximation(status: dict[str, str]) -> bool:
+        acceptable = {"proved_zero", "derived_bound", "external_estimate"}
+        return all(
+            status[name] in acceptable
+            for name, value in residuals.items()
+            if value != 0
+        )
+
+    if is_controlled_approximation(residual_status):
+        raise AssertionError("named SoV residuals were promoted to controlled estimates")
+
+    controlled_status = {
+        name: ("proved_zero" if value == 0 else "derived_bound")
+        for name, value in residuals.items()
+    }
+    if not is_controlled_approximation(controlled_status):
+        raise AssertionError("derived component bounds should certify controlled status")
 
 
 def main() -> None:
@@ -594,7 +627,7 @@ def main() -> None:
     check_t_system_gauge_freedom()
     check_baxter_casoratian_transport()
     check_qoscillator_l_operator_rll()
-    check_sov_spectral_trace_residual_budget()
+    check_sov_spectral_trace_residual_map()
     print("All nested-integrability calculation checks passed.")
 
 

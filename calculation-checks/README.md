@@ -2369,9 +2369,10 @@ Current checks:
   Hirota-to-Y algebra, exact T-gauge covariance/Y-invariance, rank-one
   Baxter Casoratian transport for two finite-difference solutions, and the
   trigonometric rank-one q-oscillator local RLL identity in the chapter's
-  six-vertex normalization.  It also checks the finite SoV-to-spectral-trace
-  residual telescope, including a negative control where an omitted spectral
-  sector underbudgets the physical correlator error.
+  six-vertex normalization.  It also checks the finite SoV-to-observable
+  residual map, including a negative control where an omitted spectral sector
+  understates the finite example error and a status guard separating named
+  residual differences from independently derived physical estimates.
 - `planar_n4_integrability_checks.py`: finite checks for the Volume VII
   planar \(\mathcal N=4\) SYM integrability chapters, including cyclic
   one-loop Konishi Bethe roots, one-magnon XXX spectra, exact two-magnon BMN

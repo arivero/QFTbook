@@ -1204,8 +1204,8 @@ left and right eigenvectors supplied by the SoV resolution, with the two
 matrix elements replacing the absolute square.
 \end{proof}
 
-\begin{controlledapproximation}[SoV-to-observable reconstruction budget]
-\label{ca:sov-observable-reconstruction-budget}
+\begin{remark}[SoV-to-observable residual map]
+\label{rem:sov-observable-reconstruction-map}
 Fix a test norm for Euclidean correlators on a compact window in
 \((\tau,R)\).  Let \(G_{\rm phys}^{\mathcal O}\) be the target local-QFT
 correlator and let \(G_{L,\mathcal S}^{\rm SoV}\) be the correlator obtained
@@ -1217,7 +1217,7 @@ retained trace \(G_{L,\mathcal S}^{\rm SoV,*}\).  Let
 \(\widehat G_{L,\mathcal S}^{\rm SoV}\) be the retained SoV expression after
 the chosen operator matrix-element formulae have been used but before a TBA,
 mirror, generalized Gibbs, or hydrodynamic state replaces the finite trace.
-The difference decomposes as
+The residual map is the exact algebraic decomposition
 \begin{align}
   G_{\rm phys}^{\mathcal O}-G_{L,\mathcal S}^{\rm SoV}
   &=
@@ -1245,7 +1245,8 @@ The difference decomposes as
   \widehat G_{L,\mathcal S}^{\rm SoV}
   -G_{L,\mathcal S}^{\rm SoV}.\nonumber
 \end{align}
-If these five residuals obey
+It becomes an approximation estimate only after separate arguments bound the
+five residuals in the same norm:
 \[
   \|R_{\rm reg}\|\le\varepsilon_{\rm reg},\quad
   \|R_{\rm comp}\|\le\varepsilon_{\rm comp},\quad
@@ -1253,7 +1254,7 @@ If these five residuals obey
   \|R_O\|\le\varepsilon_O,\quad
   \|R_{\rm state}\|\le\varepsilon_{\rm state},
 \]
-then
+Only in that case does the triangle inequality give
 \begin{equation}
   \left\|
     G_{\rm phys}^{\mathcal O}-G_{L,\mathcal S}^{\rm SoV}
@@ -1264,22 +1265,26 @@ then
   +\varepsilon_{\rm tail}
   +\varepsilon_O
   +\varepsilon_{\rm state}.
-  \label{eq:sov-observable-reconstruction-budget-bound}
+  \label{eq:sov-observable-reconstruction-conditional-bound}
 \end{equation}
-\end{controlledapproximation}
+\end{remark}
 
-The status of the five terms is different.  Under
+The display above is therefore not a controlled approximation by itself; it is
+the coordinate system in which a controlled approximation would have to be
+proved.  The status of the five terms is different.  Under
 Proposition~\ref{prop:finite-chain-sov-spectral-trace} and the SoV measure
 identity, \(R_{\rm comp}=0\) is a finite-dimensional theorem.  The term
-\(R_{\rm tail}\) is a spectral truncation estimate.  The term \(R_O\) is the
-operator problem: eigenvalue data from \(Q\)-functions must be supplemented by
-form factors, determinant formulae, or direct SoV matrix elements for the
-specific local field being probed.  The terms \(R_{\rm reg}\) and
-\(R_{\rm state}\) are the physical bridge from the regulated chain to the
-continuum QFT state and local operator.  Thus the nested \(TQ\), \(QQ\), and
-SoV machinery supplies a complete finite spectral coordinate system only
-after its hypotheses are proved; local QFT amplitudes additionally require
-the regulator, tail, operator, and state residuals in
+\(R_{\rm tail}\) is a spectral truncation problem and is small only with a
+model-specific positivity, gap, decay, or thermodynamic-tail estimate.  The
+term \(R_O\) is the operator problem: eigenvalue data from \(Q\)-functions
+must be supplemented by form factors, determinant formulae, or direct SoV
+matrix elements for the specific local field being probed.  The terms
+\(R_{\rm reg}\) and \(R_{\rm state}\) are the physical bridge from the
+regulated chain to the continuum QFT state and local operator.  Thus the
+nested \(TQ\), \(QQ\), and SoV machinery supplies a complete finite spectral
+coordinate system only after its hypotheses are proved; local QFT amplitudes
+additionally require regulator convergence, tail bounds, operator
+reconstruction, and state-replacement estimates in the residuals of
 \eqref{eq:sov-observable-reconstruction-residual-decomposition}.
 
 \section{Continuum Status}
@@ -1293,7 +1298,7 @@ for the thermodynamic states under consideration, that local operators have
 controlled finite-volume matrix elements, and that the integral operators in
 the TBA equations have the required analytic and Fredholm properties.  These
 are model-dependent mathematical statements.  They are separate from the
-finite RTT algebra, and the residual budget
+finite RTT algebra, and the residual map
 \eqref{eq:sov-observable-reconstruction-residual-decomposition} records where
 each one enters a physical correlator.
 
