@@ -2999,7 +2999,8 @@ Current checks:
   generated-operator slots, derives the constant-background \(R_\xi\)
   longitudinal/Goldstone/ghost determinant cancellation from generated
   operators, verifies the frame-connection seagull/double-insertion identity
-  from operator conjugation, and blocks reuse of the four-dimensional
+  from operator conjugation, checks Ward-paired mass-curvature vertices with a
+  mismatched-vertex negative control, and blocks reuse of the four-dimensional
   gauge-field entry in reduced dimensions,
   fixed-charge branch-EFT checks for torus/global-form/Weyl charge labels,
   the supersymmetric chiral-branch Noether map, Routhian energy, transverse

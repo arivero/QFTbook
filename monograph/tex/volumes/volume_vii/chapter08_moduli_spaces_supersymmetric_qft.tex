@@ -985,6 +985,60 @@ supersymmetric Ward-pairing data.  An evaluation of
 \(\Pi_{mn}^{\rm 1-loop}\) has to sum those terms.
 \end{example}
 
+\begin{example}[Mass-curvature vertices and Ward pairing]
+\label{ex:higgs-branch-mass-curvature-ward-pair}
+After the pure frame-connection part has been removed, the next local datum is
+the generated vertex pair rather than a field count.  For a heavy bosonic block
+and the square of its fermionic partner write
+\[
+\begin{aligned}
+  {\mathcal O}_B(s)
+  &=
+  {\mathcal O}_0+sX_B+\frac{s^2}{2}Y_B+O(s^3),\\
+  {\mathcal D}_F(s)^2
+  &=
+  {\mathcal O}_0+sX_F+\frac{s^2}{2}Y_F+O(s^3).
+\end{aligned}
+\]
+Their contribution to the second variation of the one-loop determinant is
+\begin{equation}
+\begin{aligned}
+  \delta^2\Gamma_{B,F}
+  &=
+  \frac12\,{\rm Tr}\!
+  \left(
+    {\mathcal O}_0^{-1}Y_B
+    -
+    {\mathcal O}_0^{-1}X_B{\mathcal O}_0^{-1}X_B
+  \right)\\
+  &\quad
+  -
+  \frac12\,{\rm Tr}\!
+  \left(
+    {\mathcal O}_0^{-1}Y_F
+    -
+    {\mathcal O}_0^{-1}X_F{\mathcal O}_0^{-1}X_F
+  \right).
+  \label{eq:higgs-branch-mass-curvature-ward-pair}
+\end{aligned}
+\end{equation}
+The Ward-paired cancellation is the statement that the regulator and auxiliary
+completion identify the generated vertices,
+\[
+  X_B=X_F,\qquad Y_B=Y_F ,
+\]
+after all contact terms have been included.  Then
+\(\delta^2\Gamma_{B,F}=0\) for that paired heavy block.  This is the determinant-level
+replacement for the old multiplicity line: equal bosonic and fermionic
+dimensions would not cancel
+\eqref{eq:higgs-branch-mass-curvature-ward-pair} if, for example, the scalar
+seagull or auxiliary contact shifts \(Y_B\), or a Yukawa/connection term shifts
+\(X_F\).  In the rank-one Higgs calculation the radial hypermultiplet
+fluctuation, vector scalar, heavy fermions, and auxiliary contacts must be
+organized into these matched \(X,Y\) pairs before the residual
+\(\Pi_{mn}^{\rm 1-loop}\) can be declared zero.
+\end{example}
+
 After the Ward identity or an explicit evaluation of
 \eqref{eq:higgs-branch-background-field-trace-log} has paired these operators,
 one may record the residual long-multiplet balance as a quick diagnostic.  In a

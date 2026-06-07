@@ -513,6 +513,7 @@ def check_higgs_branch_background_field_derivation_gate():
         "fermions",
         "auxiliary_contacts",
         "frame_connection_seagull_identity",
+        "mass_curvature_ward_pairing",
         "gauge_parameter_cancellation",
         "dimension_reduction_audit",
     }
@@ -654,6 +655,7 @@ def check_higgs_branch_background_field_derivation_gate():
         },
         "gauge_parameter_cancellation": "generated_from_R_xi_spectrum",
         "frame_connection_seagull_identity": "generated_from_operator_conjugation",
+        "mass_curvature_ward_pairing": "matched_operator_vertices_required",
     }
     assert_equal(
         missing_slots(operator_blueprint),
@@ -803,6 +805,95 @@ def check_higgs_branch_background_field_derivation_gate():
         mass_curvature_residual,
         Fraction(1, 2),
         "a genuine mass-curvature term is not removed by frame conjugation",
+    )
+
+    def trace_log_vertex_residual(inverse_operator_0, linear_vertex, seagull_vertex):
+        return matrix_trace(
+            matrix_subtract(
+                matrix_multiply(inverse_operator_0, seagull_vertex),
+                matrix_multiply(
+                    matrix_multiply(
+                        matrix_multiply(inverse_operator_0, linear_vertex),
+                        inverse_operator_0,
+                    ),
+                    linear_vertex,
+                ),
+            )
+        )
+
+    def add_matrix(left, right):
+        return [
+            [left[row][column] + right[row][column] for column in range(len(left[0]))]
+            for row in range(len(left))
+        ]
+
+    matched_linear_vertex = [
+        [Fraction(1), Fraction(1, 2)],
+        [Fraction(1, 2), Fraction(3)],
+    ]
+    matched_seagull_vertex = [
+        [Fraction(5), Fraction(2)],
+        [Fraction(2), Fraction(7)],
+    ]
+    matched_operator = diagonal_matrix([Fraction(3), Fraction(7)])
+    inverse_matched_operator = diagonal_matrix([Fraction(1, 3), Fraction(1, 7)])
+    matched_trace_cell = trace_log_vertex_residual(
+        inverse_matched_operator, matched_linear_vertex, matched_seagull_vertex
+    )
+    ward_pair = {
+        "heavy_boson": {
+            "statistics_weight": Fraction(1, 2),
+            "linear_vertex": matched_linear_vertex,
+            "seagull_vertex": matched_seagull_vertex,
+        },
+        "squared_fermion": {
+            "statistics_weight": Fraction(-1, 2),
+            "linear_vertex": matched_linear_vertex,
+            "seagull_vertex": matched_seagull_vertex,
+        },
+    }
+    ward_pair_residual = sum(
+        block["statistics_weight"]
+        * trace_log_vertex_residual(
+            inverse_matched_operator,
+            block["linear_vertex"],
+            block["seagull_vertex"],
+        )
+        for block in ward_pair.values()
+    )
+    assert_equal(
+        ward_pair_residual,
+        Fraction(0),
+        "matched mass-curvature vertices cancel by Ward pairing",
+    )
+    assert_equal(
+        matched_trace_cell == 0,
+        False,
+        "each heavy block may be nonzero before the Ward-paired supertrace",
+    )
+
+    mismatched_fermion_linear = add_matrix(
+        matched_linear_vertex,
+        [[Fraction(0), Fraction(0)], [Fraction(0), Fraction(1)]],
+    )
+    mismatched_pair_residual = (
+        Fraction(1, 2)
+        * trace_log_vertex_residual(
+            inverse_matched_operator,
+            matched_linear_vertex,
+            matched_seagull_vertex,
+        )
+        - Fraction(1, 2)
+        * trace_log_vertex_residual(
+            inverse_matched_operator,
+            mismatched_fermion_linear,
+            matched_seagull_vertex,
+        )
+    )
+    assert_equal(
+        mismatched_pair_residual == 0,
+        False,
+        "equal component weights do not cancel mismatched mass-curvature vertices",
     )
 
     component_balance_4d = sum(old_component_ledger["component_weights"].values())

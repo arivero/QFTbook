@@ -100,6 +100,10 @@ later lower-dimensional examples, protected sectors, and localization.
   `eq:higgs-branch-frame-connection-seagull-identity`: generated
   seagull/double-insertion cancellation for the pure moving-frame part of the
   heavy Higgs fluctuation determinant.
+- `ex:higgs-branch-mass-curvature-ward-pair`,
+  `eq:higgs-branch-mass-curvature-ward-pair`: determinant-level \(X,Y\) vertex
+  pairing test for mass-curvature, Yukawa/connection, and auxiliary-contact
+  contributions after the pure moving-frame part has been removed.
 - `eq:higgs-branch-heavy-multiplet-balance-heuristic`: signed
   four-dimensional long-multiplet balance, retained only as a diagnostic for
   missing sectors after the Ward identity or trace-log calculation has supplied
@@ -233,9 +237,10 @@ later lower-dimensional examples, protected sectors, and localization.
   the background-field derivation check that rejects bare component
   multiplicities, requires model/gauge/regulator/operator slots, derives the
   \(R_\xi\) longitudinal/Goldstone/ghost cancellation from generated operators,
-  verifies the frame-connection seagull identity from operator conjugation, and
-  rejects use of the four-dimensional gauge-field entry in dimensionally reduced
-  arguments,
+  verifies the frame-connection seagull identity from operator conjugation,
+  checks Ward-paired mass-curvature vertices with a mismatched-vertex negative
+  control, and rejects use of the four-dimensional gauge-field entry in
+  dimensionally reduced arguments,
   fixed-charge branch-EFT checks for global-form/Weyl charge labels, the
   supersymmetric chiral-branch Noether map and Routhian energy, transverse
   gap hierarchy, and the abstract large-\(\mu\) simultaneous-window scaling
@@ -310,3 +315,8 @@ local models.
   \({\rm STr}(O^{-1}\ddot O-O^{-1}\dot O O^{-1}\dot O)=0\) for
   \(O(s)=U(s)O_0U(s)^{-1}\), and updated the companion so omitting the seagull
   or adding genuine mass curvature is detected by finite matrix checks.
+- 2026-06-07 issue #850 mass-curvature Ward-pair pass: added the determinant
+  \(X,Y\) vertex-pairing formula after the pure frame connection has been
+  removed.  The companion now checks that matched bosonic and squared-fermion
+  mass-curvature cells cancel only after statistical Ward pairing, while an
+  equal-count but mismatched vertex assignment leaves a nonzero residual.
