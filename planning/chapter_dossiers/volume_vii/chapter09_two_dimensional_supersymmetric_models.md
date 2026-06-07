@@ -97,6 +97,11 @@ and
   projectors, reflection phases, pole residues, boundary annuli, source rows,
   and noncompact wall domains; this separates local deformation rigidity from
   global fake-fixed-point exclusion.
+- `constr:cigar-liouville-source-spectral-resolution`,
+  `d\mu_{O,\alpha}`, `G_{O,\alpha}^{I}(\beta)`: source-normalized
+  noncompact spectral-resolution coordinate for the cigar/Liouville comparison,
+  assembling reflection phase density, reference Plancherel measure, source
+  rows, pole residues, and contact terms into a Euclidean two-point observable.
 - `hat X_i`, `q_phys`, `R_{P^{N-1}}`, `H`: vortex-normalized mirror-torus
   coordinate, physical exponentiated FI coordinate after finite determinant
   normalization, normalized projective-space mirror residue trace, and
@@ -692,7 +697,10 @@ and
     `kappa` path, and direct Gamma-function evaluation of the imported
     reflection target: continuous unitarity, `R(j)R(1-j)=1`, the `nu(k)`
     contribution to phase density, raw `k=1` normalization failure, and a
-    sample simple-pole residue.
+    sample simple-pole residue.  The source spectral-resolution bridge checks
+    that the phase-density derivative, source row, pole residue, and contact
+    data enter Euclidean two-point observables, rejecting boundary-blind or
+    reflection-only endpoint comparisons.
   - hypersurface adjunction signs, LG/sigma-model central-charge matching,
     residual finite-gauge invariant Jacobi monomial counting, and the
     Coulomb-coordinate singular-signal ledger.
@@ -999,3 +1007,9 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   finite energies but different reflection phases, pole residues, boundary
   annuli, and source rows, and rejects a discontinuous path that carries only
   protected endpoint labels.
+- The 2026-06-07 issue #848 source spectral-resolution pass adds
+  `constr:cigar-liouville-source-spectral-resolution`: a QFT-observable bridge
+  from reflection phase data to a source-normalized spectral measure and
+  Euclidean two-point function.  The companion integrates the finite window
+  phase-density shift against source rows, then rejects boundary-blind
+  measures, reflection-phase-only comparisons, and omitted pole residues.

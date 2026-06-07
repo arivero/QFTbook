@@ -3130,6 +3130,10 @@ Current checks:
   residues, boundary annuli, or source rows unless the Hori--Kapustin
   deformation carries a continuous finite-regulator spectral/source/boundary
   transport package,
+  a source-normalized noncompact spectral-resolution bridge checking that the
+  reflection phase-density shift, source row, pole residues, and contact data
+  enter Euclidean two-point observables and rejecting boundary-blind or
+  reflection-only comparisons,
   Liouville exponential marginality, spectral-flow momentum/winding arithmetic,
   the noncompact field identification, metric/dilaton-versus-exact-QFT status,
   the twisted-chiral-to-ordinary-chiral bridge boundary, the

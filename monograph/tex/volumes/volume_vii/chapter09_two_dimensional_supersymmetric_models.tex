@@ -3931,6 +3931,68 @@ then survives as the continuum phase density.  A mirror proposal that does not
 specify this self-adjoint domain has not specified the Hilbert space whose
 equality is being conjectured.
 
+\begin{construction}[Source spectral resolution]
+\label{constr:cigar-liouville-source-spectral-resolution}
+Fix one cigar/Liouville continuous-series channel, including the circle
+momentum, winding representative, spin structure, and left-right pairing.
+Let \(I\subset\mathbb R_{\ge0}\) be a compact momentum window with no pole
+crossing in the reflection normalization.  The finite-box roots are tested
+against the phase condition
+\[
+  2sL+\arg R\!\left(\frac12+\ii s,m,\overline m;k\right)
+  =(2n+1)\pi ,
+\]
+up to the far-wall convention.  The continuum object compared by a local
+source \(O\) is not the phase alone, but the source-normalized spectral
+measure
+\begin{equation}
+  d\mu_{O,\alpha}(s)
+  =
+  |A_{O,\alpha}(s)|^2
+  \left[
+    d\mu^{(0)}_{\alpha}(s)
+    +\frac1{2\pi}\partial_s
+      \arg R\!\left(\frac12+\ii s,m,\overline m;k\right)ds
+  \right]
+  +\sum_{b\in{\mathcal P}_\alpha}
+    |A_{O,\alpha,b}|^2\,{\mathcal R}_{\alpha,b}\,\delta(s-s_b).
+  \label{eq:cigar-liouville-source-spectral-measure}
+\end{equation}
+Here \(\alpha\) abbreviates the channel labels,
+\(d\mu^{(0)}_{\alpha}\) is the declared reference Plancherel measure in the
+same operator normalization, \(A_{O,\alpha}(s)\) is the continuum source row,
+and \({\mathcal R}_{\alpha,b}\) is the residue normalization of a discrete or
+resonant pole included in the chosen contour prescription.  In a finite-box
+regulator the matching condition is that, for every smooth test \(w\) supported
+in \(I\),
+\[
+  \sum_{s_{n,L}\in I}
+    w(s_{n,L})\,|A^{(L)}_{O,\alpha,n}|^2
+  \longrightarrow
+  \int_I w(s)\,d\mu_{O,\alpha}(s)
+\]
+after the reference volume normalization and contact counterterms have been
+fixed.  The Euclidean source two-point function in the same channel is then
+\begin{equation}
+  G_{O,\alpha}^{I}(\beta)
+  =
+  \int_I
+    \exp\!\left[-\beta\left(s^2+\frac{Q^2}{4}+E_\alpha^\perp\right)\right]
+    d\mu_{O,\alpha}(s)
+  +C_{O,\alpha}^{\rm ct}(\beta;I),
+  \label{eq:cigar-liouville-source-spectral-two-point}
+\end{equation}
+with \(E_\alpha^\perp\) the fixed angular/fermionic contribution and
+\(C^{\rm ct}\) the local contact piece.  Therefore a mirror endpoint with the
+same central charge, asymptotic Liouville exponential, and unitary reflection
+coefficient can still fail the QFT comparison if it changes
+\(\partial_s\arg R\), the source row \(A_{O,\alpha}\), a pole residue, or the
+contact term.  This is the first observable-level use of \(C_{\rm spec}\):
+reflection data, Plancherel normalization, residues, and operator sources must
+assemble into the same \(G_O(\beta)\), with the protected superpotential only
+one member of the comparison datum.
+\end{construction}
+
 In the asymptotic Liouville target variables write
 \[
   Y=\sqrt{k}\,{\mathcal Y},

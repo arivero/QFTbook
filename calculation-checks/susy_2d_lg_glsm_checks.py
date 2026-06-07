@@ -27,8 +27,9 @@ full-QFT data from protected evidence, the full-action/IR-universality data
 boundary for mirror presentations, admissible mirror-datum and finite-volume
 noncompact spectral-domain gates, finite operator/source matrix-element
 obstructions, finite boundary-state/defect probe obstructions, and
-cigar/Liouville pathwise fake-fixed-point gates, spectral-status cells, and
-reflection Gamma-function cells,
+cigar/Liouville pathwise fake-fixed-point gates, spectral-status cells,
+source-normalized spectral-resolution bridges, and reflection Gamma-function
+cells,
 plus the Hori--Vafa
 residue/direct-instanton comparison map, with the direct degree-one incidence
 Jacobian computed before comparison, and the one-vortex source-frame
@@ -61,7 +62,9 @@ cylinder and defect-twined-trace probes, pathwise spectral-signature transport
 tests excluding fake Liouville endpoints not connected by a continuous
 reflection/boundary/source package, and direct Gamma-function evaluation of the
 imported reflection target, including continuous-series phase/unitarity,
-special-level normalization, and a sample pole residue, plus
+special-level normalization, and a sample pole residue, plus finite
+source-weighted spectral-measure integrals for noncompact two-point
+observables, plus
 finite density/Jacobian transport tests and double-entry
 mirror/direct-vortex comparisons whose direct side includes a separately
 computed incidence orientation, degree gate, and compactification gate, are
@@ -159,6 +162,8 @@ existence/rigidity/duality claims, omitted self-adjoint domains,
 boundary-state-blind annulus claims, protected-subspace-only defect claims,
 pathwise-continuity claims that carry only protected endpoint labels or local
 rigidity while dropping reflection phases, pole residues, boundary annuli, or
+source rows, source-blind spectral measures, omitted pole-residue terms in
+source two-point functions, reflection-phase-only comparisons that ignore
 source rows, and
 finite-gauge invariance failures are
 rejected when the finite model can represent them; the Hori--Vafa residue alone
@@ -174,7 +179,10 @@ reflection formula is still treated as an imported target formula here; the
 companion evaluates its Gamma-function consequences for sample continuous
 states, phase-density normalization, special levels, and simple residues, but
 does not derive the Liouville normalization, the full continuous measure, the
-special-level limiting prescription, or the pole spectrum.  The common-flux
+special-level limiting prescription, or the pole spectrum.  The finite spectral
+resolution bridge checks how such imported spectral data would enter a
+source-normalized Euclidean observable; it does not derive the actual
+cigar/Liouville Plancherel measure or operator map.  The common-flux
 source-projection cell
 does not prove the continuum operator map or a source-factorization theorem; it
 checks the finite gates those claims must pass.
@@ -4329,6 +4337,142 @@ def check_cigar_liouville_pathwise_fake_fixed_point_gate() -> None:
             "source-row transport",
         } <= pathwise_transport_package,
         True,
+        )
+
+
+def check_cigar_liouville_source_spectral_resolution_bridge() -> None:
+    mp.mp.dps = 60
+
+    def assert_mp_close(label: str, left: mp.mpf, right: mp.mpf, tol: mp.mpf) -> None:
+        assert_finite(f"{label} left", left)
+        assert_finite(f"{label} right", right)
+        assert_finite(f"{label} tolerance", tol)
+        if tol < 0:
+            raise AssertionError(f"{label} has negative tolerance: {tol!r}")
+        error = abs(left - right)
+        assert_finite(f"{label} error", error)
+        if error > tol:
+            raise AssertionError(f"{label} failed: {left!r} != {right!r}")
+
+    wall_lambda = mp.mpf("1.25")
+    p_sample = mp.mpf("0.9")
+    h = mp.mpf("1e-6")
+
+    def robin_reflection(momentum: mp.mpf) -> mp.mpc:
+        return (wall_lambda + 1j * momentum) / (1j * momentum - wall_lambda)
+
+    def phase_density(momentum: mp.mpf) -> mp.mpf:
+        return wall_lambda / (mp.pi * (wall_lambda**2 + momentum**2))
+
+    finite_difference_density = mp.arg(
+        robin_reflection(p_sample + h) / robin_reflection(p_sample - h)
+    ) / (2 * h * 2 * mp.pi)
+    assert_mp_close(
+        "Robin reflection phase derivative gives the spectral-density shift",
+        finite_difference_density,
+        phase_density(p_sample),
+        mp.mpf("1e-12"),
+    )
+
+    box_length = mp.mpf("75")
+
+    def smooth_counting_coordinate(momentum: mp.mpf) -> mp.mpf:
+        return box_length * momentum / mp.pi + mp.arg(robin_reflection(momentum)) / (2 * mp.pi)
+
+    count_density = (
+        smooth_counting_coordinate(p_sample + h)
+        - smooth_counting_coordinate(p_sample - h)
+    ) / (2 * h)
+    assert_mp_close(
+        "finite-box counting derivative separates the volume density from reflection data",
+        count_density - box_length / mp.pi,
+        phase_density(p_sample),
+        mp.mpf("1e-12"),
+    )
+
+    p_left = mp.mpf("0.2")
+    p_right = mp.mpf("2.4")
+    window_density = mp.quad(lambda p: phase_density(p), [p_left, p_right])
+    analytic_window_density = (mp.atan(p_right / wall_lambda) - mp.atan(p_left / wall_lambda)) / mp.pi
+    assert_mp_close(
+        "integrated reflection density matches the phase-shift window",
+        window_density,
+        analytic_window_density,
+        mp.mpf("1e-50"),
+    )
+
+    beta = mp.mpf("0.7")
+    background_energy = mp.mpf("0.0625")
+    angular_energy = mp.mpf("0.3")
+
+    def source_row(momentum: mp.mpf) -> mp.mpf:
+        return (1 + momentum / 5) / (1 + momentum**2 / 3)
+
+    def deformed_source_row(momentum: mp.mpf) -> mp.mpf:
+        return source_row(momentum) * (1 + mp.mpf("0.2") * momentum / (1 + momentum))
+
+    def source_weighted_shift(source) -> mp.mpf:
+        return mp.quad(
+            lambda p: (
+                phase_density(p)
+                * source(p) ** 2
+                * mp.e ** (-beta * (p**2 + background_energy + angular_energy))
+            ),
+            [p_left, p_right],
+        )
+
+    observable_shift = source_weighted_shift(source_row)
+    if observable_shift <= mp.mpf("0.005"):
+        raise AssertionError(f"source-weighted spectral shift too small: {observable_shift!r}")
+
+    boundary_blind_shift = mp.mpf("0")
+    assert_equal(
+        "boundary-blind spectral package misses a nonzero source two-point contribution",
+        abs(observable_shift - boundary_blind_shift) > mp.mpf("0.005"),
+        True,
+    )
+
+    deformed_source_shift = source_weighted_shift(deformed_source_row)
+    assert_equal(
+        "same reflection phase with a different source row changes the Euclidean correlator",
+        abs(deformed_source_shift - observable_shift) > mp.mpf("0.003"),
+        True,
+    )
+
+    pole_residue_weight = mp.mpf("0.27")
+    pole_source_overlap = mp.mpf("0.8")
+    pole_momentum = mp.mpf("0.45")
+    pole_contribution = (
+        pole_residue_weight
+        * pole_source_overlap**2
+        * mp.e ** (-beta * (pole_momentum**2 + background_energy + angular_energy))
+    )
+    with_pole = observable_shift + pole_contribution
+    without_pole = observable_shift
+    assert_equal(
+        "omitting a pole residue changes the source-normalized spectral two-point function",
+        abs(with_pole - without_pole) > mp.mpf("0.05"),
+        True,
+    )
+
+    protected_endpoint_labels = {
+        "central charge",
+        "background charge",
+        "Liouville F-term",
+        "asymptotic Kahler coefficient",
+        "unitarity of reflection coefficient",
+    }
+    source_spectral_package = protected_endpoint_labels | {
+        "reflection phase derivative",
+        "reference Plancherel measure",
+        "source row",
+        "pole residues",
+        "contact terms",
+    }
+    assert_equal(
+        "protected Liouville labels do not determine the source-normalized spectral measure",
+        source_spectral_package <= protected_endpoint_labels,
+        False,
     )
 
 
@@ -4738,6 +4882,7 @@ def main() -> None:
     check_full_mirror_operator_source_obstruction()
     check_full_mirror_boundary_defect_probe_obstruction()
     check_cigar_liouville_pathwise_fake_fixed_point_gate()
+    check_cigar_liouville_source_spectral_resolution_bridge()
     check_cigar_liouville_spectral_data_cell()
     check_hypersurface_phase_ledger()
     check_hypersurface_coulomb_coordinate_signal()
