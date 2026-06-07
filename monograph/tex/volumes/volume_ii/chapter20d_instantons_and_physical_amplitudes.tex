@@ -2284,6 +2284,85 @@ the fluctuation operator around the saddle, not just its determinant, enters
 the physical four-point kernel.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Spectral cutoff test for local Green matching]
+\label{ca:instanton-spectral-local-green-matching-test}
+The preceding distinction can be tested without hiding the ultraviolet issue
+inside notation.  Fix one zero-mode-deleted normal operator \(K_z\) in
+background gauge, acting on the horizontal normal space with positive
+eigenpairs
+\[
+  K_ze_{j,z}=\lambda_{j,z}e_{j,z},
+  \qquad
+  0<\lambda_{1,z}\le\lambda_{2,z}\le\cdots .
+\]
+For smooth source vectors with coefficients
+\(U_j=\langle e_{j,z},\mathcal U_z\rangle\) and
+\(V_j=\langle e_{j,z},\mathcal V_z\rangle\), the cutoff pairing is
+\begin{equation}
+  \mathfrak G_{N}^{\rm sm}(z;\mathcal U,\mathcal V)
+  =
+  \sum_{j\le N}\frac{\overline{U_j}V_j}{\lambda_{j,z}} .
+  \label{eq:instanton-spectral-smooth-green-pairing}
+\end{equation}
+If the tail
+\(\sum_{j>N}|\overline{U_j}V_j|/\lambda_{j,z}\) is small in the chosen source
+norm, this is the regulated source bilinear.  There is no \(A_0N\) or
+\(A_1H_N\) term to subtract from it; imposing such a subtraction changes the
+observable.
+
+A local source coordinate is different.  Let \(\ell_{x,z}\) be a declared
+local pullback functional, such as the diagonal value of a hard-source or
+composite-operator coordinate after the spin, color, and density conventions
+have been fixed.  Group the nonzero modes into regulator shells \(S_n\), and
+suppose the local diagonal shell has the expansion
+\begin{equation}
+  \sum_{j\in S_n}
+  \frac{\overline{\ell_{x,z}(e_{j,z})}\ell_{x,z}(e_{j,z})}
+       {\lambda_{j,z}}
+  =
+  A_{0,z}(x)+\frac{A_{1,z}(x)}{n}+r_{n,z}(x),
+  \qquad
+  \sum_{n\ge1}|r_{n,z}(x)|<\infty .
+  \label{eq:instanton-spectral-local-shell-expansion}
+\end{equation}
+The cutoff local coordinate is then
+\[
+  \mathfrak G_N^{\rm loc}(z;x)
+  =
+  A_{0,z}(x)N+A_{1,z}(x)H_N
+  +\sum_{n\le N}r_{n,z}(x),
+  \qquad
+  H_N=\sum_{n=1}^{N}\frac1n .
+\]
+In this discrete regulator the matched local coordinate is
+\begin{equation}
+  \mathfrak G_{N,\mu}^{\rm ren}(z;x)
+  =
+  \mathfrak G_N^{\rm loc}(z;x)
+  -A_{0,z}(x)N-A_{1,z}(x)H_N
+  -L_{N,z}(x;\mu).
+  \label{eq:instanton-spectral-renormalized-local-green}
+\end{equation}
+Passing from \(H_N\) to \(\log(\Lambda/\mu)\) is a finite scheme change
+absorbed into \(L_{N,z}\).  The coefficients \(A_0,A_1\) are local
+heat-kernel or operator-mixing data of the chosen \(\ell_{x,z}\), not
+parameters inferred from the final finite answer.  With coefficient errors
+\(\delta A_0,\delta A_1,\delta L\), the retained residual obeys
+\begin{equation}
+  |R_N^{\rm loc}|
+  \le
+  N|\delta A_0|+H_N|\delta A_1|+|\delta L|
+  +\sum_{n>N}|r_{n,z}(x)|.
+  \label{eq:instanton-spectral-local-green-bound}
+\end{equation}
+Thus the same spectral regulator gives two different lessons.  Smooth
+external sources test propagation through the primed Green operator.  Local or
+coincident source coordinates test the heat-kernel subtraction and Wilsonian
+operator basis.  A four-point instanton amplitude has to say which of these it
+uses before any fluctuation determinant, source quotient, or physical
+projection can be interpreted.
+\end{controlledapproximation}
+
 Thus a hard instanton amplitude has several separate fluctuation entries.  The
 universal logarithmic determinant supplies the \((\mu\rho)^{b_0}\) density
 factor.  The finite determinant constant fixes a scheme-dependent Gaussian
@@ -2297,7 +2376,9 @@ such as \eqref{eq:instanton-first-source-cumulant-normal}.  The
 source-projected normal propagator
 \eqref{eq:instanton-normal-propagator-projection}, after the subtraction and
 local matching in
-\eqref{eq:instanton-subtracted-normal-green-coordinate}, supplies a further
+\eqref{eq:instanton-subtracted-normal-green-coordinate} and the
+source-class test in
+\eqref{eq:instanton-spectral-renormalized-local-green}, supplies a further
 external-state-dependent fluctuation coordinate when the channel probes
 nonzero-mode propagation.  Collapsing these entries into a single ``measure
 prefactor'' loses the amplitude calculation.

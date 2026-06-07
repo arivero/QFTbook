@@ -69,6 +69,10 @@ Target claims:
   background-subtracted source coordinates require the same zero-mode
   projector, local parametrix, logarithmic heat-kernel counterterm, finite
   local matching term, and compensating Wilsonian coefficient shift.
+- `ca:instanton-spectral-local-green-matching-test`: in a concrete spectral
+  cutoff model, smooth source pairings converge by source decay, whereas a
+  local diagonal source coordinate has independently extracted `A0 N` and
+  `A1 H_N` cutoff terms plus a finite local Wilsonian coordinate.
 - `ca:instanton-hard-amplitude-assembly-ledger`: the hard channel must assemble
   the determinant, source-fluctuation, zero-mode/source, and physical-projection
   factors in the same kernel, with absolute control unless a noncancellation
@@ -180,6 +184,9 @@ Independent construction:
   typed normal Green-function bilinears separating smooth source propagation
   from local/composite matching, with finite local covariance and
   Green-norm projector residuals,
+  a spectral cutoff model in which smooth source tails converge without local
+  subtraction while the local diagonal coordinate exposes independent
+  `A0 N`, `A1 H_N`, finite counterterm, and spectral-tail residuals,
   multiplicative hard-amplitude assembly bounds on signed windows,
   finite determinant-scheme transport factors and an independently computed
   two-regulator determinant-density benchmark,
@@ -287,7 +294,11 @@ Negative controls:
   rank loss, a
   subtracted Green function formed without the projector, without the free
   parametrix, without the logarithmic local term, or without the compensating
-  local Wilsonian coefficient shift, a
+  local Wilsonian coefficient shift, a smooth spectral source over-subtracted
+  by local shell terms, a local spectral coordinate used without extracting
+  the `A0`/`A1` shell data, a finite local counterterm omitted from the
+  matched coordinate, or a local spectral residual budget with the leading
+  shell-coefficient error removed, a
   determinant-only assembled amplitude, signed-window relative error control
   without a noncancellation margin, a reference calibration with omitted
   source-fluctuation or physical-projection transport, a rank-lost reference
@@ -2075,6 +2086,121 @@ def check_subtracted_normal_green_function_matching() -> None:
     assert_equal(
         "omitting the Green/resolvent norm underbudgets projector error",
         residual <= underbudget_without_resolvent_norm,
+        False,
+    )
+
+
+def check_spectral_local_green_matching_source_classes() -> None:
+    def harmonic(n_terms: int) -> Fraction:
+        return sum((Fraction(1, n) for n in range(1, n_terms + 1)), Fraction(0))
+
+    def smooth_pairing(n_terms: int) -> Fraction:
+        return sum(
+            (Fraction(2, n * (n + 1) * (n + 2)) for n in range(1, n_terms + 1)),
+            Fraction(0),
+        )
+
+    def smooth_tail(n_terms: int) -> Fraction:
+        return Fraction(1, (n_terms + 1) * (n_terms + 2))
+
+    a0 = Fraction(5, 3)
+    a1 = Fraction(7, 5)
+    finite_remainder_total = Fraction(11)
+    finite_counterterm = Fraction(2, 7)
+
+    def local_remainder_shell(shell: int) -> Fraction:
+        return finite_remainder_total / (shell * (shell + 1))
+
+    def local_shell(shell: int) -> Fraction:
+        return a0 + a1 / shell + local_remainder_shell(shell)
+
+    def raw_local_diagonal(n_terms: int) -> Fraction:
+        return sum((local_shell(n) for n in range(1, n_terms + 1)), Fraction(0))
+
+    def renormalized_local(n_terms: int) -> Fraction:
+        return raw_local_diagonal(n_terms) - a0 * n_terms - a1 * harmonic(n_terms) - finite_counterterm
+
+    smooth_eight = smooth_pairing(8)
+    smooth_sixteen = smooth_pairing(16)
+    assert_equal(
+        "smooth spectral pairing has telescoping tail",
+        smooth_eight + smooth_tail(8),
+        Fraction(1, 2),
+    )
+    assert_equal(
+        "smooth spectral pairing improves under cutoff refinement",
+        smooth_sixteen - smooth_eight,
+        smooth_tail(8) - smooth_tail(16),
+    )
+
+    over_subtracted_smooth_eight = smooth_eight - a0 * 8 - a1 * harmonic(8)
+    over_subtracted_smooth_sixteen = smooth_sixteen - a0 * 16 - a1 * harmonic(16)
+    assert_not_equal(
+        "local shell subtraction changes a smooth spectral source pairing",
+        over_subtracted_smooth_eight,
+        smooth_eight,
+    )
+    assert_gt(
+        "smooth over-subtraction grows with local cutoff volume",
+        abs(over_subtracted_smooth_sixteen),
+        abs(over_subtracted_smooth_eight),
+    )
+
+    local_eight = renormalized_local(8)
+    local_sixteen = renormalized_local(16)
+    expected_local_eight = finite_remainder_total * Fraction(8, 9) - finite_counterterm
+    expected_local_sixteen = finite_remainder_total * Fraction(16, 17) - finite_counterterm
+    assert_equal("renormalized local spectral coordinate at N=8", local_eight, expected_local_eight)
+    assert_equal("renormalized local spectral coordinate at N=16", local_sixteen, expected_local_sixteen)
+    assert_equal(
+        "local spectral tail is finite after A0/A1 subtraction",
+        finite_remainder_total - finite_counterterm - local_eight,
+        finite_remainder_total * Fraction(1, 9),
+    )
+    assert_gt(
+        "local matched coordinate stabilizes as cutoff grows",
+        abs(finite_remainder_total - finite_counterterm - local_eight),
+        abs(finite_remainder_total - finite_counterterm - local_sixteen),
+    )
+
+    raw_local_eight = raw_local_diagonal(8)
+    missing_a0 = raw_local_eight - a1 * harmonic(8) - finite_counterterm
+    missing_a1 = raw_local_eight - a0 * 8 - finite_counterterm
+    missing_counterterm = raw_local_eight - a0 * 8 - a1 * harmonic(8)
+    assert_not_equal("local spectral coordinate needs the A0 shell subtraction", missing_a0, local_eight)
+    assert_not_equal("local spectral coordinate needs the A1 harmonic subtraction", missing_a1, local_eight)
+    assert_not_equal("local spectral coordinate needs the finite local counterterm", missing_counterterm, local_eight)
+
+    shell = 12
+    extracted_a1_with_remainder = shell * (local_shell(shell) - a0)
+    assert_not_equal(
+        "finite shell remainder cannot be read as the heat-kernel A1 coefficient",
+        extracted_a1_with_remainder,
+        a1,
+    )
+    assert_equal(
+        "A1 is recovered only after the declared local remainder is separated",
+        shell * (local_shell(shell) - a0 - local_remainder_shell(shell)),
+        a1,
+    )
+
+    delta_a0 = Fraction(1, 50)
+    delta_a1 = -Fraction(1, 70)
+    delta_l = Fraction(1, 90)
+    cutoff = 12
+    shifted_local = (
+        raw_local_diagonal(cutoff)
+        - (a0 + delta_a0) * cutoff
+        - (a1 + delta_a1) * harmonic(cutoff)
+        - (finite_counterterm + delta_l)
+    )
+    local_error = abs(shifted_local - renormalized_local(cutoff))
+    local_error_bound = cutoff * abs(delta_a0) + harmonic(cutoff) * abs(delta_a1) + abs(delta_l)
+    assert_equal("spectral local matching residual bound", local_error <= local_error_bound, True)
+    underbudget_without_a0 = local_error_bound - cutoff * abs(delta_a0)
+    assert_equal(
+        "omitting A0 shell uncertainty underbudgets local spectral matching",
+        local_error <= underbudget_without_a0,
         False,
     )
 
@@ -4996,6 +5122,7 @@ def main() -> None:
     check_first_source_cumulant_from_normal_modes()
     check_normal_propagator_source_insertion()
     check_subtracted_normal_green_function_matching()
+    check_spectral_local_green_matching_source_classes()
     check_hard_amplitude_assembly_bound()
     check_hard_reference_channel_calibration()
     check_finite_determinant_scheme_transport()

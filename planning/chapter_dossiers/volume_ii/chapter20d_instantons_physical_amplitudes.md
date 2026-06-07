@@ -175,6 +175,11 @@
   coordinates require the declared local parametrix, logarithmic heat-kernel
   term, finite local counterterm, and compensating Wilsonian coefficient in
   the same projector/scheme as the determinant.
+- `ca:instanton-spectral-local-green-matching-test`: spectral-cutoff normal
+  mode model for the same distinction.  Smooth source coefficients converge by
+  source decay without local subtraction, while a local diagonal source
+  coordinate carries explicit `A0 N`, `A1 H_N`, finite counterterm, and
+  spectral-tail residual data.
 - `sec:instanton-hard-amplitude-assembly`: recombines the hard source kernel,
   finite determinant normalization, nonzero-mode source quotient,
   zero-mode/source stability, and physical projection into one regulated
@@ -328,6 +333,11 @@
   zero-mode projector, local parametrix, logarithmic heat-kernel term, finite
   counterterm, compensating Wilsonian coefficient, and Green-norm projector
   residual as separate data.
+- The spectral-cutoff normal-mode block makes that distinction testable.  It
+  gives a smooth source pairing with an explicitly summable tail, then a local
+  shell expansion whose `A0 N` and `A1 H_N` terms must be removed in a local
+  operator coordinate.  This prevents the companion from being merely a
+  circular subtraction template.
 - The assembled hard-channel formula prevents the chapter from becoming a list
   of adjacent checkpoints.  It places the determinant scheme constant, hard
   zero-mode slots, nonzero-mode source quotient, source-frame stability, and
@@ -478,6 +488,11 @@
   local subtraction, trace-for-bilinear, wrong source-basis subtraction,
   uncompensated finite local counterterm shifts, omitted Green/resolvent norm,
   and underbudgeted local-matching residuals,
+  verifies the spectral-cutoff local Green model and rejects applying local
+  shell subtraction to a smooth source, using the local coordinate without
+  `A0` or `A1` shell extraction, omitting the finite local counterterm,
+  reading finite shell remainder as the heat-kernel coefficient, and
+  underbudgeting leading shell-coefficient uncertainty,
   verifies the assembled hard-amplitude product bound and rejects
   determinant-only assembly or signed-window relative control without a
   noncancellation margin,
@@ -685,6 +700,12 @@
   source pairings by default.  The repaired version distinguishes smooth
   smeared source bilinears from local/composite and background-minus-vacuum
   coordinates, and adds the Green/resolvent norm to the projector-error budget.
+- 2026-06-07 issue #597 spectral local-Green evidence pass: added
+  `ca:instanton-spectral-local-green-matching-test` and strengthened the
+  companion with an exact spectral cutoff model.  The pass keeps the smooth
+  source pairing as a convergent primed Green bilinear, while the local
+  diagonal coordinate carries independently visible `A0 N`, `A1 H_N`, finite
+  counterterm, and shell-tail data.
 - 2026-06-06 observable-map pass: added a physics bridge from the assembled
   instanton amplitude to QCD observables, explicitly separating hard source
   coefficients, theta curvature, \(U(1)_A\)-odd susceptibility kernels, and

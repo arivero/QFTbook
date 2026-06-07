@@ -776,7 +776,11 @@ Current checks:
   shortcuts, the typed normal-Green matching check which distinguishes smooth
   smeared source pairings from local/composite or background-subtracted source
   coordinates, rejects default free-propagation subtraction for smooth sources,
-  and propagates projector error through a declared Green/resolvent norm, the
+  propagates projector error through a declared Green/resolvent norm, and
+  backs the local/source split with an exact spectral-cutoff model whose
+  smooth source tail converges without local subtraction while the local
+  diagonal coordinate exposes independent \(A_0N\), \(A_1H_N\), finite
+  counterterm, and shell-residual data, the
   mixed hard-source plus physical-screening log-shell equation
   \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\) with negative controls against
   hard-only and screening-only saddle substitutions, the
