@@ -337,6 +337,7 @@
         "finite D-term RG Schur-complement transport",
         "finite D-term RG source-metric transport",
         "operator/source matrix-element comparison",
+        "background-response and current-multiplet mirror datum",
         "boundary-state and defect probe comparison",
         "common-flux operator-map status guard",
         "gauge-covariant vortex-core disorder insertion domain",

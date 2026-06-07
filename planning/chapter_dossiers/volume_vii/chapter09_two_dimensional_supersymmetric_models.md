@@ -99,6 +99,11 @@ and
 - `rem:glsm-mirror-operator-source-data`: finite-volume operator/source
   warning that equal spectra and protected multiplication data do not
   determine local-source matrix elements or source-normalized correlators.
+- `rem:glsm-mirror-background-response-obligation`,
+  `G^{bg}_{AI,Lambda}`, `C^{bg}_{AI,Lambda}`,
+  `B^{bg}_{AI,Lambda}`: finite-regulator background-source response gate for
+  the stress-tensor multiplet, vector/axial current multiplets, gravitational
+  and `R`-current contact terms, and dilaton/background-charge couplings.
 - `rem:glsm-mirror-boundary-defect-obligation`, `Z^cl_{\alpha\beta,Lambda}`,
   `Z^op_{\alpha\beta,Lambda}`, `D_{r,Lambda}`, `Z_{r,Lambda}`:
   finite-regulator boundary-state and defect comparison data, including
@@ -301,6 +306,12 @@ and
   source derivatives of the regulated generating functional.  The full mirror
   datum must include operator topology, source normalization, and an
   operator/state map.
+- Adds `rem:glsm-mirror-background-response-obligation`: a finite
+  background-source kernel showing that stress-tensor, vector/axial
+  `R`-current, flavor-current, gravitational contact, and dilaton/background
+  charge responses are full-QFT data.  A flat source metric or a single
+  contact-patched background probe does not determine the generating
+  functional coupled to background fields.
 - Derives the first-order charged-chiral dualization with real superfield
   `B_i`, twisted-linear constraint, Legendre elimination, and the
   superspace integration-by-parts identity producing the linear
@@ -743,6 +754,10 @@ and
     match low source-resolvent observables, and a two-source extension shows
     that matching one source normalization still leaves the mixed source
     metric wrong unless the full source-renormalization matrix is supplied; a
+    finite background-response cell shows that matching the flat source metric
+    and patching one probe with a local contact term still leaves a wrong
+    stress-tensor/current row visible in a second mixed background-source
+    kernel; a
     fake-Liouville shortcut with
     only the same F-term,
     asymptotics, and central charge is rejected without finite-field Kahler
@@ -1105,6 +1120,13 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   not enough to identify source-normalized local correlators.  This targets
   operator/state completeness rather than another protected Hori--Vafa
   residue identity.
+- The 2026-06-07 issue #848 background-response pass adds
+  `rem:glsm-mirror-background-response-obligation` and a companion finite
+  mixed-kernel obstruction: the same flat source resolvent and protected
+  source projection can still carry a different stress-tensor/current row, and
+  a single local contact patch fails at a second Euclidean probe.  This makes
+  background geometry, `R`-symmetry sources, flavor sources, and
+  dilaton/background-charge couplings part of the full mirror-QFT datum.
 - The 2026-06-07 issue #848 boundary/defect probe pass adds
   `rem:glsm-mirror-boundary-defect-obligation`: a finite cylinder-regulator
   comparison using boundary-state vectors, open-channel traces, Cardy residuals,

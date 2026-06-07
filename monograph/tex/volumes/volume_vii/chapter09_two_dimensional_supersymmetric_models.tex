@@ -1256,6 +1256,59 @@ and chiral-ring identities are valuable tests of that map, not substitutes for
 it.
 \end{remark}
 
+\begin{remark}[Background response is part of the mirror datum]
+\label{rem:glsm-mirror-background-response-obligation}
+The preceding source tests still live in a flat cylinder.  A full
+two-dimensional QFT also has a response to background geometry and background
+flavor and \(R\)-symmetry gauge fields.  Thus the mirror datum must transport
+the stress-tensor multiplet, the vector and axial current multiplets, their
+improvement ambiguities, and the local gravitational, \(R\)-current, and
+flavor contact terms.  These are not determined by the twisted
+superpotential or by the flat-space spectrum.
+
+At finite regulator, write \(B_{\Lambda,A}\) for a renormalized background
+source insertion: for instance a metric variation, a vector or axial
+\(R\)-field variation, a flavor gauge-field variation, or the dilaton
+curvature coupling in a noncompact mirror.  For a local source
+\({\mathcal O}_{\Lambda,I}\), one of the regulator-level comparison kernels is
+\begin{equation}
+  G^{\rm bg}_{A I,\Lambda}(\beta)
+  =
+  \langle e_0,
+    B_{\Lambda,A}^{\dagger}
+    e^{-\beta(H_\Lambda-E_0)}
+    {\mathcal O}_{\Lambda,I}
+  e_0\rangle
+  +C^{\rm bg}_{A I,\Lambda},
+  \label{eq:glsm-mirror-background-source-kernel}
+\end{equation}
+together with the corresponding background-background kernels and Ward
+identities.  The contact term \(C^{\rm bg}_{A I,\Lambda}\) is local in the
+background fields and is scheme dependent, but the transported response
+class is not optional: after the scheme map is fixed, two mirrors that differ
+in \eqref{eq:glsm-mirror-background-source-kernel} differ as QFTs coupled to
+background fields.  For the cigar/Liouville comparison this is the same
+issue as carrying the background charge and curvature coupling alongside the
+exponential \(F\)-term.
+
+The finite comparison requirement can be recorded as
+\begin{equation}
+  \left|
+    G^{\rm bg,GLSM}_{A I,\Lambda}(\beta)
+    -
+    G^{\rm bg,mir}_{A I,\Lambda}(\beta)
+  \right|
+  \le
+  B^{\rm bg}_{A I,\Lambda}(\beta),
+  \label{eq:glsm-mirror-background-response-bound}
+\end{equation}
+where the budget includes the stress-tensor and current improvements,
+gravitational and \(R\)-current counterterms, source renormalization, and
+continuum regulator errors.  Matching the Schur Hamiltonian and the flat
+source metric \(\Gamma_{AB}\) is therefore still weaker than matching the
+current multiplet and background-coupled generating functional.
+\end{remark}
+
 \begin{remark}[Boundary and defect comparison obligation]
 \label{rem:glsm-mirror-boundary-defect-obligation}
 The topological and boundary part of a full mirror statement is another

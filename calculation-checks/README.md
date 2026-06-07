@@ -3182,6 +3182,9 @@ Current checks:
   a finite operator/source obstruction showing that equal spectra and
   protected multiplication data do not fix Euclidean source two-point
   coefficients without source matrix elements and operator topology, a finite
+  background-response obstruction showing that matching the flat source
+  metric and one contact-patched probe still does not determine the
+  stress-tensor/current rows or mixed background/source kernels, a finite
   boundary-state/defect probe showing that protected boundary charges and
   protected defect action do not fix annulus amplitudes or defect-twined
   traces,

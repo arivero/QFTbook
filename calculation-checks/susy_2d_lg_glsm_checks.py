@@ -28,7 +28,8 @@ full-QFT data from protected evidence, the full-action/IR-universality data
 boundary for mirror presentations, admissible mirror-datum and finite-volume
 noncompact spectral-domain gates, finite D-term RG Schur-complement
 obligation checks, finite D-term RG source-metric transport checks, finite
-operator/source matrix-element obstructions, finite boundary-state/defect
+operator/source matrix-element obstructions, finite background-response and
+current-multiplet transport obstructions, finite boundary-state/defect
 probe obstructions, and cigar/Liouville asymptotic deformation filters,
 pathwise fake-fixed-point obligation checks, spectral-status cells,
 source-normalized spectral-resolution bridges, and reflection Gamma-function
@@ -67,7 +68,9 @@ and source-resolvent/source-metric comparisons for D-term RG transport, cigar ce
 effective-central-charge arithmetic, spectral-flow and field-identification
 arithmetic, Liouville marginality checks, half-line boundary-condition
 reflection diagnostics for noncompact D-term data, finite boundary-state
-cylinder and defect-twined-trace probes, pathwise spectral-signature transport
+cylinder and defect-twined-trace probes, finite mixed background/source
+resolvent response tests for stress-tensor and current-multiplet data,
+pathwise spectral-signature transport
 tests excluding fake Liouville endpoints not connected by a continuous
 reflection/boundary/source package, and direct Gamma-function evaluation of the
 imported reflection target, including continuous-series phase/unitarity,
@@ -187,6 +190,8 @@ protected-presentation-only D-term RG claims, Hamiltonian-only counterterm
 matching with omitted source renormalization, unweighted source transport
 shortcuts after high-mode elimination, one-source normalization shortcuts for
 multi-source correlators,
+flat-source-only background-response shortcuts, single-contact patches for
+wrong stress-tensor/current rows,
 boundary-state-blind annulus claims, protected-subspace-only defect claims,
 pathwise-continuity claims that carry only protected endpoint labels or local
 rigidity while dropping reflection phases, pole residues, boundary annuli, or
@@ -4752,6 +4757,131 @@ def check_full_mirror_operator_source_obstruction() -> None:
     )
 
 
+def check_full_mirror_background_response_obstruction() -> None:
+    # Flat spectra and flat source two-point functions do not determine the
+    # stress-tensor/current multiplet or its local contact terms.  This is the
+    # finite kernel recorded in rem:glsm-mirror-background-response-obligation.
+    spectrum = (Fraction(0), Fraction(2), Fraction(5))
+    source_vector = (Fraction(0), Fraction(3), Fraction(2))
+    protected_indices = (1,)
+
+    background_row_a = (Fraction(0), Fraction(1), Fraction(4))
+    background_row_b = (Fraction(0), Fraction(1), Fraction(1))
+    contact_a = Fraction(1, 6)
+    contact_b = Fraction(1, 6)
+
+    def source_resolvent(shift: Fraction) -> Fraction:
+        return sum(
+            source_vector[index] * source_vector[index] / (spectrum[index] + shift)
+            for index in range(1, len(spectrum))
+        )
+
+    def mixed_background_source_response(
+        background_row: tuple[Fraction, ...],
+        contact: Fraction,
+        shift: Fraction,
+    ) -> Fraction:
+        return contact + sum(
+            background_row[index] * source_vector[index] / (spectrum[index] + shift)
+            for index in range(1, len(spectrum))
+        )
+
+    assert_equal(
+        "candidate mirrors have the same flat source resolvent",
+        source_resolvent(Fraction(1)),
+        Fraction(11, 3),
+    )
+    assert_equal(
+        "background rows agree on the protected source projection",
+        tuple(background_row_a[index] for index in protected_indices),
+        tuple(background_row_b[index] for index in protected_indices),
+    )
+
+    response_a = mixed_background_source_response(
+        background_row_a,
+        contact_a,
+        Fraction(1),
+    )
+    response_b = mixed_background_source_response(
+        background_row_b,
+        contact_b,
+        Fraction(1),
+    )
+    assert_equal("background/source response for datum A", response_a, Fraction(5, 2))
+    assert_equal("background/source response for datum B", response_b, Fraction(3, 2))
+    assert_equal(
+        "same flat source data can hide different background response",
+        response_a == response_b,
+        False,
+    )
+
+    patched_contact_b = contact_b + (response_a - response_b)
+    patched_response_b = mixed_background_source_response(
+        background_row_b,
+        patched_contact_b,
+        Fraction(1),
+    )
+    assert_equal(
+        "a local contact can match one background/source probe",
+        patched_response_b,
+        response_a,
+    )
+
+    shifted_response_a = mixed_background_source_response(
+        background_row_a,
+        contact_a,
+        Fraction(2),
+    )
+    shifted_patched_response_b = mixed_background_source_response(
+        background_row_b,
+        patched_contact_b,
+        Fraction(2),
+    )
+    assert_equal(
+        "wrong current row fails at a second Euclidean probe after contact patch",
+        shifted_patched_response_b == shifted_response_a,
+        False,
+    )
+    assert_equal(
+        "second-probe background/source response for datum A",
+        shifted_response_a,
+        Fraction(173, 84),
+    )
+    assert_equal(
+        "second-probe patched response for datum B",
+        shifted_patched_response_b,
+        Fraction(185, 84),
+    )
+
+    transported_response_b = mixed_background_source_response(
+        background_row_a,
+        contact_a,
+        Fraction(2),
+    )
+    assert_equal(
+        "transporting the full background row and contact matches the response",
+        transported_response_b,
+        shifted_response_a,
+    )
+
+    flat_source_package = {
+        "same spectrum",
+        "same flat source metric",
+        "same protected source projection",
+    }
+    full_background_package = flat_source_package | {
+        "stress-tensor row",
+        "R-current row",
+        "background contact terms",
+        "mixed background/source kernels",
+    }
+    assert_equal(
+        "flat source data are not a background-coupled mirror datum",
+        full_background_package <= flat_source_package,
+        False,
+    )
+
+
 def check_full_mirror_boundary_defect_probe_obstruction() -> None:
     spectrum = (Fraction(0), Fraction(2), Fraction(5), Fraction(7))
     cylinder_weights = (Fraction(1), Fraction(1, 5), Fraction(1, 11), Fraction(1, 13))
@@ -5763,6 +5893,7 @@ def main() -> None:
     check_full_mirror_ir_data_boundary()
     check_full_mirror_dterm_rg_schur_gate()
     check_full_mirror_operator_source_obstruction()
+    check_full_mirror_background_response_obstruction()
     check_full_mirror_boundary_defect_probe_obstruction()
     check_cigar_liouville_asymptotic_deformation_filter()
     check_cigar_liouville_pathwise_fake_fixed_point_gate()
