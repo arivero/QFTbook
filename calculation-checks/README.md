@@ -3577,11 +3577,13 @@ Current checks:
   form-factor/R-ratio closure deriving the timelike virtual cell from the
   normalized one-loop form-factor master and \(\cos(\pi\epsilon)\)
   continuation, deriving the integrated real cell from the
-  \(q\bar q g\) simplex phase-space kernel, then checking exact pole,
+  CDR \(q\bar q g\) matrix element, Born spin average, simplex phase-space
+  beta functions, and manuscript source formula, then checking exact pole,
   endpoint, and symbolic \(\pi^2\) cancellation in the
-  \(1+\alpha_s/\pi\) coefficient while rejecting cancellation-only
-  \(\pm\pi^2/6\) splits, omitted Born-normalization factors, and undeclared
-  \(O(\epsilon^2)\) normalizations, the color-space hard-function
+  \(1+\alpha_s/\pi\) coefficient while rejecting the old four-dimensional
+  simplex shortcut, cancellation-only \(\pm\pi^2/6\) splits, omitted
+  Born-normalization factors, and undeclared \(O(\epsilon^2)\)
+  normalizations, the color-space hard-function
 	  handoff check with transported color metric, color-correlated real/soft
 	  operator, finite scheme compensation, and scalar-shortcut negative controls,
 	  the unresolved one-emission

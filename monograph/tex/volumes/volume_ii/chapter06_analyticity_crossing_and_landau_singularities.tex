@@ -4730,29 +4730,85 @@ The virtual cross-section-level interference doubles this two-parton cell, so
   \label{eq:current-form-factor-virtual-interference}
 \end{equation}
 The physical inclusive coefficient also carries the real three-parton channel
-\(e^+e^-\to q\bar q g\).  Set
+\(e^+e^-\to q\bar q g\).  The \(D\)-dimensional spin algebra is part of the
+datum.  With labels \(1=q\), \(2=g\), \(3=\bar q\), \(d=4-2\epsilon\), and
+\(s_{123}=s_{12}+s_{23}+s_{13}\), the source-normalized tree current obeys
+\cite{GehrmannDeRidderGehrmannGlover2004TwoJet,GehrmannDeRidderGehrmannGlover2005Antenna}
+\[
+  \langle{\cal A}^{(0)}_{q\bar q g}|{\cal A}^{(0)}_{q\bar q g}\rangle
+  =
+  \frac{2(d-2)e^2N_c C_F Q_f^2 g_s^2}{s_{12}s_{23}}
+  \left(
+    (d-2)(s_{12}+s_{23})^2
+    +4(s_{13}s_{123}-s_{23}s_{12})
+  \right),
+\]
+while
+\[
+  \omega_0
+  =
+  \langle{\cal A}^{(0)}_{q\bar q}|{\cal A}^{(0)}_{q\bar q}\rangle
+  =
+  \frac{2}{3}e^2Q_f^2N_c(d-2)s_{123}.
+\]
+Thus the \(O(\epsilon)\) part of the real matrix element is not disposable
+when the endpoint finite term is wanted.  Set
 \[
   x=\frac{s_{qg}}{s},\qquad
   y=\frac{s_{\bar q g}}{s},\qquad
   z=1-x-y,\qquad
   \Delta_2=\{x,y\ge0,\ x+y\le1\}.
 \]
-In the same \(D\)-dimensional Born normalization, the real-emission kernel and
-unresolved phase space give
+In the same \(D\)-dimensional Born and antenna-phase-space normalization, the
+cross-section-level real-emission cell is
 \[
   \frac{R_{q\bar q g}^{(1)}}{a_s C_F}
   =
-  \frac{e^{\gamma_{\rm E}\epsilon}}
-       {(1-\epsilon/2)\Gamma(1-\epsilon)}
+  \frac{e^{\gamma_{\rm E}\epsilon}}{\Gamma(1-\epsilon)}
   \int_{\Delta_2}\!
     dx\,dy\,
     x^{-\epsilon}y^{-\epsilon}z^{-\epsilon}
     \left(
-      \frac{2z}{xy}+\frac{x}{y}+\frac{y}{x}
+      \frac{2z}{xy}
+      +(1-\epsilon)\left(\frac{x}{y}+\frac{y}{x}\right)
     \right).
 \]
-Reducing the three simplex integrals to beta functions and expanding the
-Gamma ratios gives the matching integrated real contribution
+The two beta reductions are then
+\[
+  I_{\rm soft}
+  =
+  2\int_{\Delta_2}dx\,dy\,
+    x^{-1-\epsilon}y^{-1-\epsilon}z^{1-\epsilon}
+  =
+  \frac{2\Gamma(-\epsilon)^2\Gamma(2-\epsilon)}
+       {\Gamma(2-3\epsilon)}
+\]
+and
+\[
+  I_{\rm coll}
+  =
+  2(1-\epsilon)
+  \int_{\Delta_2}dx\,dy\,
+    x^{1-\epsilon}y^{-1-\epsilon}z^{-\epsilon}
+  =
+  \frac{2(1-\epsilon)\Gamma(2-\epsilon)\Gamma(-\epsilon)
+        \Gamma(1-\epsilon)}
+       {\Gamma(3-3\epsilon)}.
+\]
+Equivalently,
+\[
+  \frac{e^{\gamma_{\rm E}\epsilon}}{\Gamma(1-\epsilon)}
+  (I_{\rm soft}+I_{\rm coll})
+  =
+  \frac{e^{\gamma_{\rm E}\epsilon}\Gamma(1-\epsilon)^2}
+       {\Gamma(2-3\epsilon)}
+  \left[
+    \frac{2(1-\epsilon)}{\epsilon^2}
+    -\frac{2(1-\epsilon)^2}{\epsilon(2-3\epsilon)}
+  \right].
+\]
+Expanding this literal source-normalized expression gives the integrated real
+contribution
 \begin{equation}
   R_{q\bar q g}^{(1)}
   =
@@ -4764,6 +4820,12 @@ Gamma ratios gives the matching integrated real contribution
   \right).
   \label{eq:current-form-factor-real-channel}
 \end{equation}
+A useful negative control is close at hand.  If one drops the evanescent
+\((1-\epsilon)\) in the collinear numerator and instead divides by the old
+spin-average shortcut \((1-\epsilon/2)\), the same beta integrals expand to
+\(2/\epsilon^2+4/\epsilon+21/2-7\pi^2/6+O(\epsilon)\).  That expression has
+the right double pole but the wrong single pole and endpoint constant; it is
+not the real channel in this convention.
 Adding \eqref{eq:current-form-factor-virtual-interference} and
 \eqref{eq:current-form-factor-real-channel} cancels the infrared poles and
 the timelike \(\pi^2\) constant:

@@ -348,10 +348,13 @@
   one-loop current-form-factor and integrated \(q\bar q g\) coefficients in
   the \(a_s=\alpha_s/(2\pi)\), \(D=4-2\epsilon\), final-final antenna
   convention.  The displayed timelike virtual/real split is the doubled
-  antenna split \(-8+7\pi^2/6\) and \(19/2-7\pi^2/6\); a cancellation-only
-  \(\pm\pi^2/6\) pair would require an explicitly declared
-  \(O(\epsilon^2)\) common normalization and is not used.  Differential event
-  shapes require the later measurement-cell/factorization machinery.
+  antenna split \(-8+7\pi^2/6\) and \(19/2-7\pi^2/6\), with the real cell
+  derived from the CDR \(q\bar q g\) matrix element, the Born spin average, and
+  the beta reductions of \(2z/(xy)+(1-\epsilon)(x/y+y/x)\).  A
+  four-dimensional-kernel shortcut with the old \((1-\epsilon/2)^{-1}\)
+  normalization gives \(2/\epsilon^2+4/\epsilon+21/2-7\pi^2/6\) and is
+  rejected.  Differential event shapes require the later
+  measurement-cell/factorization machinery.
 - The color-space hard-function handoff assumes a declared external color
   basis, Gram metric, finite-remainder convention, and color-correlated
   real/soft/factorization operator.  Basis changes and finite subtraction
@@ -1200,12 +1203,15 @@
   endpoint/\(\pi^2\) constants assemble to \(1+\alpha_s/\pi\) for \(SU(3)\).
   Follow-up repaired the displayed timelike split from the cancellation-only
   \(\pm\pi^2/6\) pair to the standard doubled antenna values
-  \(\pm 7\pi^2/6\).  The companion check keeps \(1/\epsilon^2\),
-  \(1/\epsilon\), rational finite, and \(\pi^2\) finite pieces independent,
-  derives the virtual and real cells from the antenna coefficients, and then
-  rejects virtual-only, omitted-endpoint, wrong-sheet, cancellation-only
-  split, undeclared \(O(\epsilon^2)\) normalization, and untransported
-  finite-scheme shortcuts.
+  \(\pm 7\pi^2/6\).  A later re-audit repaired the real-channel derivation
+  itself: the text now displays the CDR \(q\bar q g\) matrix element, Born spin
+  average, corrected \(D\)-dimensional kernel, and soft/collinear Gamma
+  denominators, while the companion expands that source formula and rejects the
+  old four-dimensional simplex shortcut.  The companion check keeps
+  \(1/\epsilon^2\), \(1/\epsilon\), rational finite, and \(\pi^2\) finite
+  pieces independent, then rejects virtual-only, omitted-endpoint, wrong-sheet,
+  cancellation-only split, undeclared \(O(\epsilon^2)\) normalization, and
+  untransported finite-scheme shortcuts.
 - 2026-06-06 issue #769 symbol-level Steinmann transport pass: added
   `ca:symbol-steinmann-transport-check` between the two-letter transport audit
   and the production master lane.  The pass bridges the loop master-equation

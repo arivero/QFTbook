@@ -269,6 +269,7 @@ from __future__ import annotations
 import math
 from itertools import permutations
 from fractions import Fraction
+from pathlib import Path
 
 
 def assert_equal(name: str, value: object, expected: object) -> None:
@@ -4199,32 +4200,58 @@ def check_inclusive_current_form_factor_r_ratio_closure() -> None:
         (-Fraction(1), -Fraction(3, 2), -Fraction(4), Fraction(7, 12)),
     )
 
-    # Real route.  For x=s_qg/s, y=s_qbar-g/s, z=1-x-y, the normalized
-    # q qbar g current kernel is 2 z/(x y) + x/y + y/x.  Reducing the three
-    # Dirichlet integrals by Gamma recurrences leaves the rational kernel below:
-    #   2(1-eps)/(eps^2(1-3 eps)) - 2(1-eps)/(eps(1-3 eps)).
-    soft_simplex = laurent_pi2_apply_eps_factor(
-        (Fraction(2), -Fraction(2), Fraction(0), Fraction(0)),
-        eps1=Fraction(3),
-        eps2=Fraction(9),
+    # Real route.  For x=s_qg/s, y=s_qbar-g/s, z=1-x-y, the CDR-normalized
+    # q qbar g current kernel is
+    #   2 z/(x y) + (1-eps) (x/y + y/x).
+    # The soft and collinear beta functions are reduced before expansion:
+    #   I_soft = 2 Gamma(-eps)^2 Gamma(2-eps)/Gamma(2-3 eps),
+    #   I_coll = 2(1-eps) Gamma(2-eps) Gamma(-eps) Gamma(1-eps)
+    #            / Gamma(3-3 eps).
+    # After extracting e^{gamma eps} Gamma(1-eps)^2/Gamma(2-3 eps), the
+    # rational kernel is
+    #   2(1-eps)/eps^2 - 2(1-eps)^2/(eps(2-3 eps)).
+    soft_beta_reduced: LaurentPi2 = (
+        Fraction(2),
+        -Fraction(2),
+        Fraction(0),
+        Fraction(0),
     )
-    collinear_simplex = laurent_pi2_apply_eps_factor(
-        (Fraction(0), -Fraction(2), Fraction(2), Fraction(0)),
-        eps1=Fraction(3),
-        eps2=Fraction(9),
+    collinear_beta_reduced: LaurentPi2 = (
+        Fraction(0),
+        -Fraction(1),
+        Fraction(1, 2),
+        Fraction(0),
     )
-    real_simplex_kernel = laurent_pi2_add(soft_simplex, collinear_simplex)
+    real_beta_kernel = laurent_pi2_add(soft_beta_reduced, collinear_beta_reduced)
     assert_equal(
-        "real-emission simplex kernel from q qbar g matrix element",
-        real_simplex_kernel,
-        (Fraction(2), Fraction(2), Fraction(8), Fraction(0)),
-    )
-    real_after_gamma_ratio = laurent_pi2_apply_eps_factor(
-        real_simplex_kernel,
-        eps2_pi2=-Fraction(7, 12),
+        "real-emission beta kernel from CDR q qbar g matrix element",
+        real_beta_kernel,
+        (Fraction(2), -Fraction(3), Fraction(1, 2), Fraction(0)),
     )
     integrated_real = laurent_pi2_apply_eps_factor(
-        real_after_gamma_ratio,
+        real_beta_kernel,
+        eps1=Fraction(3),
+        eps2=Fraction(9),
+        eps2_pi2=-Fraction(7, 12),
+    )
+
+    four_dimensional_collinear_beta: LaurentPi2 = (
+        Fraction(0),
+        -Fraction(1),
+        -Fraction(1, 2),
+        Fraction(0),
+    )
+    old_literal_beta_kernel = laurent_pi2_add(
+        soft_beta_reduced, four_dimensional_collinear_beta
+    )
+    old_literal_after_gamma_ratio = laurent_pi2_apply_eps_factor(
+        old_literal_beta_kernel,
+        eps1=Fraction(3),
+        eps2=Fraction(9),
+        eps2_pi2=-Fraction(7, 12),
+    )
+    old_literal_with_born_shortcut = laurent_pi2_apply_eps_factor(
+        old_literal_after_gamma_ratio,
         eps1=Fraction(1, 2),
         eps2=Fraction(1, 4),
     )
@@ -4252,6 +4279,20 @@ def check_inclusive_current_form_factor_r_ratio_closure() -> None:
         ),
     )
     assert_equal(
+        "literal four-dimensional simplex shortcut expands to the wrong cell",
+        old_literal_with_born_shortcut,
+        (
+            Fraction(2),
+            Fraction(4),
+            Fraction(21, 2),
+            -Fraction(7, 6),
+        ),
+    )
+    assert_true(
+        "manuscript real cell is not the old four-dimensional shortcut",
+        old_literal_with_born_shortcut != integrated_real,
+    )
+    assert_equal(
         "derived final-final three-parton antenna cell",
         integrated_three_parton_antenna,
         (
@@ -4262,10 +4303,33 @@ def check_inclusive_current_form_factor_r_ratio_closure() -> None:
         ),
     )
 
-    wrong_real_measure = real_after_gamma_ratio
+    wrong_real_measure = old_literal_after_gamma_ratio
     assert_true(
-        "omitting the D-dimensional Born normalization changes the real poles",
+        "using the old four-dimensional real kernel changes the real endpoint",
         wrong_real_measure[:3] != integrated_real[:3],
+    )
+
+    chapter06 = (
+        Path(__file__).resolve().parents[1]
+        / "monograph/tex/volumes/volume_ii/"
+        / "chapter06_analyticity_crossing_and_landau_singularities.tex"
+    )
+    chapter06_source = chapter06.read_text(encoding="utf-8")
+    for token in (
+        r"\frac{e^{\gamma_{\rm E}\epsilon}}{\Gamma(1-\epsilon)}",
+        r"(1-\epsilon)",
+        r"\frac{2z}{xy}",
+        r"\frac{x}{y}+\frac{y}{x}",
+        r"\Gamma(3-3\epsilon)",
+        r"\frac{19}{2}-\frac{7\pi^2}{6}",
+    ):
+        assert_true(
+            f"chapter 6 real-channel source contains {token}",
+            token in chapter06_source,
+        )
+    assert_true(
+        "chapter 6 real-channel source removed old Born shortcut",
+        r"(1-\epsilon/2)\Gamma(1-\epsilon)" not in chapter06_source,
     )
 
     pre_timelike_or_renormalized_virtual = laurent_pi2_scale(

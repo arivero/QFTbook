@@ -40,6 +40,21 @@ event-shape subtraction, higher-loop master solution, or all-orders
 factorization theorem.  It closes the specific evidence-independence gap for
 the `R`-ratio finite virtual/real cells.
 
+## Re-audit Correction
+
+The original version of this pass still treated the four-dimensional
+`2 z/(x y) + x/y + y/x` simplex kernel, together with an
+`(1-eps/2)^(-1)` Born-normalization shortcut, as if it were the literal
+all-epsilon real-channel formula.  Expanding that formula gives
+`2/eps^2 + 4/eps + 21/2 - 7*pi^2/6`, not the standard real cell.
+
+The repaired Chapter 6 block now displays the CDR tree current matrix element,
+the Born spin average, and the corrected source-normalized real kernel
+`2 z/(x y) + (1-eps)(x/y + y/x)` with prefactor
+`exp(gamma eps)/Gamma(1-eps)`.  The companion check expands the same
+soft/collinear Gamma functions and rejects the old four-dimensional shortcut
+as a negative control.
+
 ## Verification
 
 - `python3 -m py_compile calculation-checks/generalized_unitarity_reduction_checks.py`
