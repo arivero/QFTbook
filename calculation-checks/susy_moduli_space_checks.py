@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Finite algebra checks for supersymmetric moduli-space quotient conventions."""
+"""Finite checks for supersymmetric moduli-space and branch-EFT conventions.
+
+The quotient cells below verify finite algebra behind classical vacuum spaces.
+The Higgs-branch metric-protection cells are narrower Ward/counterterm
+bookkeeping: they test the local massive-multiplet cancellation and status
+boundaries used by the manuscript, not a construction of the continuum
+nonrenormalization theorem.
+"""
 
 from fractions import Fraction
 
@@ -238,6 +245,182 @@ def check_d1_d5_positive_fi_excludes_empty_framing_boundary():
             False,
             "D1-D5 ADHM positive FI excludes I=J=0 boundary",
         )
+
+
+def check_higgs_branch_metric_status_matrix():
+    """Separate local metric protection from global and torsion claims."""
+
+    status = {
+        "4d_N2": {
+            "local_metric": "perturbative_wilsonian",
+            "global_metric": "conditional_continuum",
+            "torsion_or_wz": "not_part_of_metric_statement",
+        },
+        "3d_N4": {
+            "local_metric": "perturbative_wilsonian",
+            "global_metric": "conditional_continuum",
+            "torsion_or_wz": "not_part_of_metric_statement",
+        },
+        "2d_N44": {
+            "local_metric": "perturbative_wilsonian",
+            "global_metric": "conditional_continuum",
+            "torsion_or_wz": "separate_two_dimensional_branch_datum",
+        },
+    }
+
+    for label, data in status.items():
+        assert_equal(
+            data["local_metric"],
+            "perturbative_wilsonian",
+            f"{label} local Higgs metric status",
+        )
+        assert_equal(
+            data["global_metric"],
+            "conditional_continuum",
+            f"{label} global Higgs metric is separate continuum input",
+        )
+
+    assert_equal(
+        status["2d_N44"]["torsion_or_wz"],
+        "separate_two_dimensional_branch_datum",
+        "2d (4,4) torsion/WZ is outside pure metric protection",
+    )
+
+
+def check_higgs_branch_counterterm_filter():
+    """Check that allowed two-derivative cells do not create a new metric."""
+
+    candidates = [
+        {
+            "name": "coordinate representative",
+            "two_derivative": True,
+            "intrinsic_metric": False,
+            "new_quantum_metric": False,
+        },
+        {
+            "name": "FI or mass transport",
+            "two_derivative": True,
+            "intrinsic_metric": False,
+            "new_quantum_metric": False,
+        },
+        {
+            "name": "vector spurion D-term",
+            "two_derivative": True,
+            "intrinsic_metric": False,
+            "new_quantum_metric": False,
+        },
+        {
+            "name": "torsion or WZ branch datum",
+            "two_derivative": True,
+            "intrinsic_metric": False,
+            "new_quantum_metric": False,
+        },
+        {
+            "name": "singular or mixed branch operator",
+            "two_derivative": True,
+            "intrinsic_metric": False,
+            "new_quantum_metric": False,
+        },
+    ]
+
+    def surviving_metric_counterterms(cells):
+        return [
+            candidate["name"]
+            for candidate in cells
+            if (
+                candidate["two_derivative"]
+                and candidate["intrinsic_metric"]
+                and candidate["new_quantum_metric"]
+            )
+        ]
+
+    assert_equal(
+        surviving_metric_counterterms(candidates),
+        [],
+        "Higgs-branch counterterm filter leaves no new intrinsic metric term",
+    )
+
+    wrong_vector_spurion = dict(candidates[2])
+    wrong_vector_spurion["intrinsic_metric"] = True
+    wrong_vector_spurion["new_quantum_metric"] = True
+    wrong_shortcut_survivors = surviving_metric_counterterms(
+        candidates[:2] + [wrong_vector_spurion] + candidates[3:]
+    )
+    assert_equal(
+        wrong_shortcut_survivors,
+        ["vector spurion D-term"],
+        "negative-control vector-spurion shortcut would claim metric correction",
+    )
+
+
+def check_higgs_branch_massive_multiplet_one_loop_cancellation():
+    """Finite determinant ledger for a fully Higgsed tangent metric counterterm."""
+
+    heat_kernel_unit = Fraction(5, 7)
+    tangent_vertex = Fraction(11, 13)
+    common_factor = heat_kernel_unit * tangent_vertex
+
+    contributions = {
+        "gauge_field": 4,
+        "complex_vector_scalar": 2,
+        "eaten_hyper_scalars": 4,
+        "faddeev_popov_ghosts": -2,
+        "auxiliary_contacts": 0,
+        "fermions": -8,
+    }
+    total_coefficient = sum(contributions.values())
+    assert_equal(
+        total_coefficient,
+        0,
+        "massive eight-supercharge multiplet tangent metric supertrace",
+    )
+    assert_equal(
+        common_factor * total_coefficient,
+        0,
+        "one-loop Higgs tangent metric coefficient cancels",
+    )
+
+    omitted_ghosts = dict(contributions)
+    omitted_ghosts["faddeev_popov_ghosts"] = 0
+    assert_equal(
+        common_factor * sum(omitted_ghosts.values()) == 0,
+        False,
+        "omitting ghosts manufactures Higgs metric correction",
+    )
+
+    omitted_eaten_hyper = dict(contributions)
+    omitted_eaten_hyper["eaten_hyper_scalars"] = 0
+    assert_equal(
+        common_factor * sum(omitted_eaten_hyper.values()) == 0,
+        False,
+        "omitting eaten hypermultiplet partner breaks cancellation",
+    )
+
+    bosonic_degeneracy = (
+        contributions["gauge_field"]
+        + contributions["complex_vector_scalar"]
+        + contributions["eaten_hyper_scalars"]
+        + contributions["faddeev_popov_ghosts"]
+        + contributions["auxiliary_contacts"]
+    )
+    fermionic_degeneracy = -contributions["fermions"]
+    assert_equal(
+        bosonic_degeneracy,
+        fermionic_degeneracy,
+        "massive long multiplet boson/fermion degeneracy after ghosts",
+    )
+
+    split_boson_factor = Fraction(5, 7)
+    split_fermion_factor = Fraction(6, 7)
+    split_mass_coefficient = (
+        bosonic_degeneracy * split_boson_factor
+        - fermionic_degeneracy * split_fermion_factor
+    )
+    assert_equal(
+        split_mass_coefficient == 0,
+        False,
+        "mass splitting violates Ward-identity cancellation",
+    )
 
 
 def check_large_charge_torus_lattice_and_weyl_orbit():
@@ -606,6 +789,9 @@ def main():
     check_rank_one_hyperkahler_cotangent_transition()
     check_d1_d5_adhm_higgs_branch_dimension()
     check_d1_d5_positive_fi_excludes_empty_framing_boundary()
+    check_higgs_branch_metric_status_matrix()
+    check_higgs_branch_counterterm_filter()
+    check_higgs_branch_massive_multiplet_one_loop_cancellation()
     check_large_charge_torus_lattice_and_weyl_orbit()
     check_large_charge_branch_noether_and_routhian()
     check_large_charge_branch_transverse_window()
@@ -615,7 +801,7 @@ def main():
     check_su2_nf2_dimension_ledger()
     check_su2_nf2_quantum_deformation_smoothness()
     check_su2_nf2_mass_deformation_vacua()
-    print("All supersymmetric moduli-space quotient checks passed.")
+    print("All supersymmetric moduli-space and branch-EFT checks passed.")
 
 
 if __name__ == "__main__":

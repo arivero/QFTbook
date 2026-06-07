@@ -2943,8 +2943,8 @@ Current checks:
   between ordinary-translation and covariant-translation forms, and the
   \(\mathcal N=2\) QCD cubic gauge contraction together with its
   \(2g_{\rm YM}^2\) \(F\)-term coefficient.
-- `susy_moduli_space_checks.py`: finite algebra checks for the Volume VII
-  supersymmetric moduli-space quotient conventions, including the
+- `susy_moduli_space_checks.py`: finite checks for the Volume VII
+  supersymmetric moduli-space and branch-EFT conventions, including the
   rank-one \(U(1)\) invariant ring
   \(\mathbb C[x,y]^{\mathbb C^\ast}=\mathbb C[xy]\), the matching
   real/complex quotient dimension count, the equivariance of an invariant
@@ -2952,12 +2952,19 @@ Current checks:
   dimension and cotangent-transition algebra for \(T^\ast\mathbb P^{N-1}\),
   the two-dimensional \(\mathcal N=(4,4)\) ADHM/D1--D5 Higgs-branch
   dimension ledger and positive-FI exclusion of the empty-framing boundary,
+  the Higgs-branch metric theorem-status matrix, counterterm filter with a
+  vector-spurion negative control, and the finite massive-multiplet
+  one-loop determinant cancellation for a fully Higgsed tangent metric
+  counterterm,
   fixed-charge branch-EFT checks for torus/global-form/Weyl charge labels,
   the supersymmetric chiral-branch Noether map, Routhian energy, transverse
   gap hierarchy, and large-\(\mu\) simultaneous-window scaling condition,
   plus the \(SU(2)\), \(N_f=2\) Plucker/Pfaffian quotient identity and
   dimension ledger, nonzero quantum-deformation smoothness test,
   diagonal-mass two-vacuum algebra, and holomorphic threshold scale matching.
+  The Higgs-metric cells are finite Ward/counterterm evidence and negative
+  controls; they do not construct the global continuum nonrenormalization
+  theorem.
 - `susy_2d_lg_glsm_checks.py`: exact finite checks for the
   two-dimensional \(\mathcal N=(2,2)\) Landau--Ginzburg and GLSM chapter,
   including \(A\)-series quasihomogeneous charges and central charges,

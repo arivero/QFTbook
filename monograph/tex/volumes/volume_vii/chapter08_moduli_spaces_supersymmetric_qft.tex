@@ -704,39 +704,144 @@ quantum corrections encoded by Seiberg-Witten periods.  The phrase protected
 Higgs-branch metric has a narrower meaning.
 
 \paragraph{Smooth Wilsonian Higgs-branch protection.}
-Let a Lagrangian theory with eight supercharges in dimension at most four have
-compact gauge group \(G\), hypermultiplet scalar space \(\mathcal X\), a
-supersymmetric regulator, and declared mass and FI parameters.  Let
+Let a Lagrangian theory with eight supercharges have compact gauge group
+\(G\), hypermultiplet scalar space \(\mathcal X\), a supersymmetric Wilsonian
+regulator, and declared mass and FI parameters.  Let
 \(U\subset\mathcal M_H^{\rm sm}\) be a smooth open stratum of the Higgs branch
 on which the gauge group is completely broken, vector multiplets and transverse
 hypermultiplets have a mass gap \(M_\perp\), and no mixed branch or additional
-massless sector meets \(U\).  The protected metric statement is the claim that
-the two-derivative Wilsonian effective action for momenta
-\(|p|\ll M_\perp\), restricted to \(U\), has target metric isometric to the
-hyperk\"ahler quotient metric induced from the ultraviolet hypermultiplet
-kinetic term,
+massless sector meets \(U\).  The local two-derivative question is whether the
+Wilsonian action for momenta \(|p|\ll M_\perp\), restricted to the massless
+hypermultiplets on \(U\), contains a metric counterterm
 \[
+  \Delta S^{(2)}_H
+  =
+  \frac12\int d^dx\,
+  \Delta g_{mn}(q)\,
+  \partial_\mu q^m\partial^\mu q^n+\cdots .
+\]
+Eight supercharges require the completed two-derivative sigma model to have a
+hyperk\"ahler metric, with the fermion and auxiliary couplings fixed by the
+Levi-Civita connection and curvature.  Thus a genuine metric counterterm is a
+local hyperk\"ahler deformation of the intrinsic metric on \(U\), not a change
+of source coordinate or wave-function representative.
+
+The Ward-identity input is local and uses the multiplet type of every
+background.  The massless coordinates on \(U\) sit in hypermultiplets, whereas
+gauge couplings, vector masses, and Coulomb coordinates sit in vector-multiplet
+backgrounds, and FI parameters sit in their corresponding triplet backgrounds.
+A two-derivative pure Higgs metric term must be an invariant made only from the
+massless hypermultiplet sigma-model fields.  Once a vector or coupling spurion
+is inserted, the \(SU(2)_R\) quantum numbers and eight-supercharge measure move
+the operator into a vector-sector term, a transport of the quotient level, or a
+higher-derivative correction.  Thus the all-order local perturbative question
+reduces to whether a massive long multiplet can leave an unpaired
+hypermultiplet tangent determinant; the background-field calculation below is
+the elementary rank-one form of that cancellation.
+
+The dimension-dependent theorem boundary used here is:
+\begin{center}
+\begin{tabular}{@{}p{0.22\linewidth}p{0.64\linewidth}@{}}
+\textbf{dimension and algebra} & \textbf{local Wilsonian statement}\\ \hline
+\(4d\ \mathcal N=2\)
+& Perturbatively, in a regulator preserving the eight supercharges and
+\(SU(2)_R\), no local two-derivative counterterm depending on vector-multiplet
+or gauge-coupling spurions deforms the intrinsic Higgs metric on \(U\).\\[0.4em]
+\(3d\ \mathcal N=4\)
+& The same local statement holds after dimensional reduction, with
+\(SU(2)_H\times SU(2)_C\) separating hypermultiplet and vector-multiplet
+backgrounds.  Monopole effects belong to the Coulomb-branch sector unless new
+massless fields meet \(U\).\\[0.4em]
+\(2d\ \mathcal N=(4,4)\)
+& The metric part of the two-derivative Higgs sigma model obeys the same
+hypermultiplet Ward identity.  Torsion, \(B\)-field, and Wess--Zumino data are
+separate two-dimensional couplings and are not fixed by the metric theorem
+unless a torsion-free \((4,4)\) multiplet and regulator have been specified.
+\end{tabular}
+\end{center}
+The global equality
+\begin{equation}
   g_H
   =
-  (g_{\mathcal X})_{{\rm HKQ}_{\zeta,G}} ,
-\]
-after the declared background parameters have been matched.  Holomorphic
-coordinates, source coordinates, and wave-function normalizations may change
-the components \(g_{i\bar j}\); the invariant statement is equality of the
-intrinsic hyperk\"ahler metric on \(U\).  In this monograph the local
-perturbative part is used as the eight-supercharge Wilsonian
-nonrenormalization theorem.  A global nonperturbative continuum equality is
-asserted only with the hypotheses above and only on smooth strata; singular
-points, mixed branches, incomplete quotients, accidental massless fields, and
-coordinate charts across such loci are outside the assertion.
+  (g_{\mathcal X})_{{\rm HKQ}_{\zeta,G}}
+  \label{eq:higgs-branch-protected-quotient-metric}
+\end{equation}
+is therefore a local perturbative theorem on a smooth fully Higgsed stratum,
+plus a separate nonperturbative continuum assertion when the same stratum is
+known not to receive extra light sectors, boundary degrees of freedom, or
+singular-throat contributions.
+
+Here is the counterterm filter behind the local statement.  A Wilsonian
+two-derivative correction on \(U\) can only fall into one of the following
+classes:
+\begin{center}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.24\linewidth}
+>{\raggedright\arraybackslash}p{0.44\linewidth}
+>{\raggedright\arraybackslash}p{0.22\linewidth}@{}}
+\textbf{candidate} & \textbf{effect} & \textbf{intrinsic metric?}\\ \hline
+hypermultiplet coordinate change
+& changes \(g_{i\bar j}\) in a chosen chart or source normalization
+& no\\[0.3em]
+FI or mass-parameter transport
+& moves the hyperk\"ahler quotient level or the chosen background
+& not after matching\\[0.3em]
+vector/coupling-spurion \(D\)-term
+& carries vector-multiplet or Coulomb data; by the eight-supercharge Ward
+identity it is a vector-sector or higher-derivative operator, not a pure Higgs
+metric deformation
+& no\\[0.3em]
+torsion or Wess--Zumino term
+& antisymmetric two-dimensional branch datum
+& outside\\[0.3em]
+singular or mixed-branch operator
+& requires light fields not present in the sigma model on \(U\)
+& outside
+\end{tabular}
+\end{center}
+The only surviving two-derivative Higgs metric is the tree-level quotient
+metric, with the declared parameters transported to the Wilsonian scheme.  This
+is stronger than a dimension count of the quotient and weaker than a theorem
+about every point of the moduli space.
+
+The background-field cancellation can be seen in a fully Higgsed rank-one
+patch.  A tangent fluctuation to \(U\) couples to a massive long
+eight-supercharge vector multiplet of mass \(M\).  In a supersymmetric
+background-field gauge the local heat-kernel coefficient multiplying
+\(\partial q\,\partial q\) has the common form \(I_d(M)C_{\parallel}\), and
+the field content contributes
+\begin{center}
+\begin{tabular}{@{}lrrrrrrr@{}}
+\textbf{component}
+& \(A_\mu\) & \(\phi_V\) & \(q_{\rm eaten}\)
+& \(c,\bar c\) & \(D\) & \(\psi\) & \textbf{sum}\\ \hline
+\textbf{coefficient}
+& \(4\) & \(2\) & \(4\) & \(-2\) & \(0\) & \(-8\) & \(0\)
+\end{tabular}
+\end{center}
+\begin{equation}
+  \Delta g_{\parallel}^{\rm 1-loop}
+  =
+  I_d(M)C_{\parallel}\,(4+2+4-2+0-8)
+  =
+  0 .
+  \label{eq:higgs-branch-heavy-multiplet-one-loop-cancellation}
+\end{equation}
+The equality of the masses and tangent vertices in this bracket is the local
+Ward identity.  Omitting the ghost determinant, omitting the eaten
+hypermultiplet partner, or splitting the bosonic and fermionic masses is
+precisely how an apparent Higgs-metric counterterm is manufactured.  The
+calculation is local on \(U\); it does not control a point where the long
+multiplet becomes massless.
 
 The theorem-status bookkeeping is therefore:
 \begin{center}
 \begin{tabular}{@{}lp{0.58\linewidth}@{}}
-\textbf{smooth Higgs stratum} & protected two-derivative metric under
-the smooth Wilsonian protection statement above,\\[0.2em]
+\textbf{smooth Higgs stratum} & local perturbative metric protection by the
+counterterm filter and massive-multiplet cancellation above,\\[0.2em]
 \textbf{coordinate representative} & scheme-dependent components of the same
 intrinsic metric,\\[0.2em]
+\textbf{global nonperturbative equality} & additional continuum assertion,
+valid only after singular, boundary, and mixed-branch sectors are excluded,\\[0.2em]
 \textbf{Coulomb branch} & quantum-corrected vector-multiplet metric in
 general,\\[0.2em]
 \textbf{singular or mixed locus} & new light fields; branch sigma-model metric
@@ -938,6 +1043,11 @@ be restored.  The Coulomb branch of the same two-dimensional gauge theory is a
 boundary case rather than another protected metric; integrating out
 hypermultiplets changes the vector-multiplet metric, so the quotient
 calculation alone does not determine the full infrared geometry.
+Nor does the quotient metric by itself construct the noncompact throat, the
+boundary-condition data, or the interacting infrared SCFT.  Those require a
+separate continuum argument; the protected statement here is only the local
+two-derivative metric on the smooth Higgs stratum, with torsion and Wess--Zumino
+data declared separately if they are present.
 \end{example}
 
 \section{Singularities}

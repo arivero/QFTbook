@@ -84,6 +84,14 @@ later lower-dimensional examples, protected sectors, and localization.
   map solving, and one-form descent.
 - Smooth Wilsonian Higgs-branch protection statement: scoped smooth-stratum
   metric-protection statement for eight-supercharge Lagrangian theories.
+- `Delta S_H^(2)`, `Delta g_mn(q)`: local two-derivative Higgs-branch metric
+  counterterm test on a smooth fully Higgsed stratum.
+- `eq:higgs-branch-protected-quotient-metric`: local quotient-metric equality,
+  explicitly separated from global nonperturbative continuum assertions.
+- `I_d(M) C_parallel`,
+  `eq:higgs-branch-heavy-multiplet-one-loop-cancellation`: common
+  heat-kernel/tangent factor and finite massive-long-multiplet determinant
+  ledger for the Higgs tangent metric cancellation.
 - `K`, `W`, `Q_1`, `Q_5`: vector spaces and ranks in the two-dimensional
   \(\mathcal N=(4,4)\) ADHM/D1--D5 gauge-theory example.
 - `B_1`, `B_2`, `I`, `J`: adjoint and fundamental hypermultiplet scalars in
@@ -151,12 +159,16 @@ later lower-dimensional examples, protected sectors, and localization.
   \(\zeta>0\), including the elementary real-moment representative,
   local cotangent coordinates, and preservation of the canonical holomorphic
   one-form on overlaps.
-- Replaces the vague protected-Higgs-metric sentence by a scoped
-  theorem-status ledger: local Wilsonian perturbative protection is tied to
-  eight supercharges, a smooth completely-Higgsed stratum, a transverse mass
-  gap, and absence of mixed/additional massless sectors; global
-  nonperturbative equality is asserted only under those hypotheses and as an
-  intrinsic metric statement, not as a coordinate-component statement.
+- Replaces the vague protected-Higgs-metric sentence by a scoped mechanism:
+  local Wilsonian perturbative protection is tied to eight supercharges, a
+  smooth completely-Higgsed stratum, a transverse mass gap, and absence of
+  mixed/additional massless sectors; the counterterm filter classifies
+  coordinate changes, FI/mass transport, vector/coupling-spurion \(D\)-terms,
+  torsion/WZ terms, and singular/mixed-locus operators; the massive-multiplet
+  one-loop ledger includes gauge, scalar, eaten-hyper, ghost, auxiliary, and
+  fermion contributions.  Global nonperturbative equality is retained only as
+  an additional continuum assertion after boundary and extra-light-sector
+  exclusions.
 - Adds the two-dimensional \(\mathcal N=(4,4)\) ADHM/D1--D5 gauge-theory
   example with adjoint and fundamental hypermultiplets, explicit complex and
   real moment maps, quotient, dimension count
@@ -178,6 +190,10 @@ later lower-dimensional examples, protected sectors, and localization.
   descent, and cotangent transition algebra for \(T^\ast\mathbb P^{N-1}\),
   the two-dimensional \(\mathcal N=(4,4)\) ADHM/D1--D5 dimension ledger and
   positive-FI exclusion of the \(I=J=0\) boundary,
+  the Higgs-metric local/global/torsion status matrix, the two-derivative
+  counterterm filter with vector-spurion negative control, and the fully
+  Higgsed massive-multiplet one-loop cancellation with ghost/eaten-hyper/mass
+  splitting negative controls,
   fixed-charge branch-EFT checks for global-form/Weyl charge labels, the
   supersymmetric chiral-branch Noether map and Routhian energy, transverse
   gap hierarchy, and the abstract large-\(\mu\) simultaneous-window scaling
@@ -223,3 +239,9 @@ local models.
   worked supersymmetric chiral-branch example showing the distinction
   between protected fixed-charge control and a generic non-BPS large-\(\mu\)
   expansion.
+- 2026-06-07 issue #849 Higgs-metric nonrenormalization pass: converted the
+  previous assertion into a local Ward/counterterm mechanism, separated
+  \(4d\ \mathcal N=2\), \(3d\ \mathcal N=4\), and
+  \(2d\ \mathcal N=(4,4)\) theorem boundaries, added a background-field
+  massive-multiplet determinant cancellation, and preserved the boundary that
+  quotient evidence is not a global continuum proof.
