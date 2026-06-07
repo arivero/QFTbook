@@ -1471,11 +1471,11 @@ track/fragmentation inputs.
 Figure~\ref{fig:qcd-dis-ope-light-ray-factorization};
 \eqref{eq:qcd-common-factorization-budget};
 Vol.~II Ch.~19 &
-Observable: common dependency ladder used to compare QCD factorization
+Observable: common comparison map used to compare QCD factorization
 statements against an exact color-singlet observable.  Regulator: the
 process-specific finite regulator, Wilson-line geometry, subtraction,
 rapidity, and continuum-limit data named by each later row.  Source: local
-comparison architecture.  Status: reference checklist and residual
+comparison map.  Status: reference map and residual
 decomposition, not a theorem for any one process.  The DIS figure is grouped
 with this row and the DIS row below because it records the operator-coordinate
 source of the inclusive DIS factorization statement; it is not an independent
@@ -1650,7 +1650,7 @@ factorizations, finite-range Gaussian decompositions, Monte Carlo
 conditional-probability factorizations, conformal and categorical algebraic
 decompositions, supersymmetric coset or Chern--Simons vector identities,
 quantum-spectral-curve gauge identities, and integrable factorized scattering
-are likewise outside this hard-process ledger.  None of these rows is
+are likewise outside this hard-process reference map.  None of these rows is
 assigned a QCD Glauber-cancellation or power-remainder coordinate merely
 because it contains the word ``factorization''.
 
@@ -2965,16 +2965,18 @@ data than the coordinate theorem.  It consists of:
   \item the nonperturbative lift required by the measurement, such as a shape,
   fragmentation, track, or hadronization coordinate rather than an implicit
   partonic final state;
-  \item an error ledger
+  \item an observable-error decomposition
   \[
     B_{\rm bin}+B_{\rm contact}+B_{\rm pert}
     +B_{\rm FG}+B_{\rm np}+B_{\rm track}+B_{\rm cont}
   \]
-  for detector binning, contact and endpoint conventions, perturbative
-  truncation, factorization or Glauber assumptions \(B_{\rm FG}\),
-  nonperturbative power
-  corrections, track or selected-energy lifts, and continuum/regulator
-  reconstruction.
+  in which \(B_{\rm bin}\) is the proved finite-resolution estimate from
+  \eqref{eq:finite-resolution-eec-lipschitz-bound}, \(B_{\rm contact}\)
+  records the chosen contact and endpoint convention, \(B_{\rm pert}\) is a
+  perturbative truncation estimate, \(B_{\rm FG}\) is the stated
+  factorization or Glauber hypothesis residual, \(B_{\rm np}\) and
+  \(B_{\rm track}\) are nonperturbative input uncertainties, and
+  \(B_{\rm cont}\) is the continuum/regulator reconstruction residual.
 \end{enumerate}
 The assembled claim is a tested functional inequality: for every detector
 test \(\varphi\) in the declared test space,

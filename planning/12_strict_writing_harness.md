@@ -533,6 +533,17 @@ checked, not as a synonym for discussion or list.  Prefer "checked" or
 "certified" and "certification" in reader-facing text unless a precise
 technical proof object and verifier are being discussed.
 
+Reader-facing claim architecture should be observable-first.  A load-bearing
+development should expose the physical question, mathematical object,
+assumptions/status, derivation, physical output, and verification boundary in
+that order unless the local proof genuinely requires another order.  Use
+"gate", "ledger", "spine", "ladder", "route", or "budget" only when the text
+has defined a distinct technical object with downstream use.  A displayed sum
+of residual terms must say whether each term is an identity, a named
+hypothesis, a measured or fitted input, an estimated residual, or a proved
+uniform bound.  If those classifications are not known, call the display a
+decomposition or proof-obligation map rather than an error estimate.
+
 Do not call a routine finite estimate a "certificate" unless a precise
 technical notion of certificate is defined and used, such as an SDP dual
 certificate, an interval-arithmetic proof object, an independently checkable

@@ -162,8 +162,9 @@ The chapter establishes:
   coordinate theorem into a detector-level prediction datum: binned positive
   energy measure, Lipschitz binning bound, contact and endpoint convention,
   short-distance coefficient chart, nonperturbative lift, and an explicit
-  residual ledger for binning, contact, perturbative, factorization/Glauber,
-  nonperturbative, track, and continuum/regulator errors;
+  observable-error decomposition for binning, contact, perturbative,
+  factorization/Glauber, nonperturbative, track, and continuum/regulator
+  errors;
 - controlled approximation
   `ca:measured-small-angle-eec-endpoint-chart`, spelling out the measured-bin
   interface between small-angle light-ray OPE coefficients and detector EEC
@@ -275,7 +276,7 @@ The chapter establishes:
       regulator or scheme, strongest source used locally, actual status,
       Glauber status, and remainder status.  A historical physics phrase such
       as "factorization theorem" is not a proof-status certificate unless the
-      dependency ladder and observable-topology remainder are supplied at that
+      dependency map and observable-topology remainder are supplied at that
       occurrence.  The map is navigation, not independent evidence; a named
       residual remains a slot until a cited row supplies an estimate or bound.
       The
@@ -283,7 +284,7 @@ The chapter establishes:
       triple-Regge, Abelian soft-QED, GPD/exclusive, and DIS-threshold
       boundary occurrences; it also classifies pole/residue, large-\(N_c\),
       spinor-helicity, pAQFT causal-factorization, and BV prefactorization
-      homonyms outside the QCD/SCET hard-process ledger.  The 2026-06-04
+      homonyms outside the QCD/SCET hard-process reference map.  The 2026-06-04
       issue #832 pass makes the audit source-derived: manuscript labels,
       factorization-titled environments, and captions containing
       "factorization" or "factorized" must appear in
@@ -297,7 +298,7 @@ The chapter establishes:
       conformal/categorical algebra, finite-range Gaussian decompositions,
       Monte Carlo conditional probabilities, split-property tensor
       factorization, and other non-QCD meanings are kept outside the
-      hard-process ledger by name.
+      hard-process reference map by name.
 8acaa. The finite non-global dipole evolution row is a soft-radiation/BMS
        coordinate, not a Glauber replacement.  Its nonlinear product term
        records correlated real--virtual soft radiation under a non-global
@@ -408,8 +409,8 @@ The chapter establishes:
       transported in the same convention as the short-distance chart.  The
       coordinate theorem supplies completeness of detector variables; dynamics
       enter through light-ray or hard/jet/soft coefficients,
-      nonperturbative lifts, and a residual ledger that includes detector
-      binning, contact, perturbative, factorization/Glauber,
+      nonperturbative lifts, and an observable-error decomposition that
+      includes detector binning, contact, perturbative, factorization/Glauber,
       nonperturbative, track, and continuum/regulator errors.
 10ab. A small-angle EEC endpoint prediction is not just a list of powers.
       The two-detector light-ray distribution must be pushed forward to
@@ -727,7 +728,13 @@ The chapter establishes:
   introduced as a physical-observable reference map rather than independent
   evidence, its heading uses "status" rather than "proof," and the common QCD
   row distinguishes a residual decomposition from a proved process theorem or
-  power bound.
+  power bound.  The 2026-06-06 continuation removed the remaining visible
+  "ladder/ledger" wording from the Ch19b factorization-reference surface and
+  reclassified the finite-resolution EEC residual display as an
+  observable-error decomposition: binning is a proved finite-resolution bound,
+  contact terms are conventions, perturbative and factorization/Glauber terms
+  are estimates or hypotheses, and nonperturbative/continuum terms are input
+  or reconstruction residuals.
 - 2026-06-06 issue #755/#630 reader-surface pass: re-audited the opening
   factorization-reference-map rows after the style-density scan identified a
   local concentration of status vocabulary.  The TeX now describes the same
