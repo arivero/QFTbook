@@ -36,7 +36,7 @@
   all-plus rational blind spot with the dimension-shifted
   \(\mu_\perp^4\) box residue and including the five-point all-plus
   partial-amplitude template, a four-point color--kinematics/double-copy
-  comparison datum with generalized-gauge negative controls, a loop-level
+  comparison construction with generalized-gauge negative controls, a loop-level
   Jacobi-repair condition for double-copy null directions, a solved finite two-scale
   massless box master with fixed \(r_\Gamma\) normalization, pole subtraction,
   sector-resolved dilogarithm boundary, branch data, and physical
@@ -118,7 +118,7 @@
   elliptic-period bridge.
 - Bern--Carrasco--Johansson's tree-level amplitude relations and double-copy
   construction supply the source trace for the four-point
-  color--kinematics comparison datum; the chapter uses them only as a scoped entry
+  color--kinematics comparison construction; the chapter uses them only as a scoped entry
   point, not as a proof of loop-level numerator representations.
 - Steinmann's original Wightman/retarded-commutator papers and the
   Stapp/Cahill--Stapp scattering-amplitude refinements are used as source
@@ -192,7 +192,7 @@
 | \(\operatorname{tr}_{-}(i j k l)\) | chiral spinor trace coordinate \(\langle i j\rangle[j k]\langle k l\rangle[l i]\) used in the five-point all-plus rational amplitude |
 | \(C_{\rm loop}\), \(C_{\rm rat}\), \(C_{5,\rm rat}\) | loop-normalization and all-plus rational-term constants, fixed only after color, particle-content, and loop-measure conventions are declared |
 | \(c_s,c_t,c_u\) | four-point cubic color factors satisfying the Lie-algebra Jacobi relation \(c_s+c_t+c_u=0\) |
-| \(n_s,n_t,n_u\), \(\widetilde n_i\) | four-point generalized kinematic numerators and the second numerator copy used in the color--kinematics/double-copy comparison datum |
+| \(n_s,n_t,n_u\), \(\widetilde n_i\) | four-point generalized kinematic numerators and the second numerator copy used in the color--kinematics/double-copy comparison construction |
 | \(S_\alpha,\mathcal J\) | one-loop contact/IBP/evanescent surface numerator shift in a Jacobi graph triplet, its induced kinematic Jacobi defect, and the defect repaired by a common color-null surface direction when allowed |
 | \(\mathbf I^{(1)}_\Lambda\) | one-loop infrared subtraction operator used to define the finite remainder in a declared regulator and finite subtraction convention |
 | \(\mathcal F^{(1)}_\Lambda\) | finite one-loop hard remainder after subtracting \(\mathbf I^{(1)}_\Lambda\mathcal A^{(0)}_\Lambda\) |
@@ -275,7 +275,7 @@
   uses the complete sixteen-state on-shell supermultiplet, not a gluon-only
   state sum.  Numerical all-plus coefficients are stated only up to the
   declared loop, color, and particle-content normalization.
-- The color--kinematics comparison datum is restricted to four massless adjoint
+- The color--kinematics comparison construction is restricted to four massless adjoint
   external particles at tree level, after contact terms have been absorbed
   into generalized cubic numerators.  It assumes \(s+t+u=0\), the color
   Jacobi relation, and a Jacobi-satisfying numerator representative.  The
@@ -617,7 +617,7 @@
   four-dimensional two-particle cuts still vanish by the tree helicity
   selection rule.  The missing input is again \(D\)-dimensional or
   massive-scalar unitarity data, not a local counterterm.
-- Four-point color--kinematics comparison datum: after the tree amplitude is written in
+- Four-point color--kinematics comparison construction: after the tree amplitude is written in
   cubic form,
   \[
     \mathcal A_4^{\rm YM}
@@ -987,7 +987,7 @@
   shortcuts underbudget the full reconstruction.
 - 2026-06-05 issue #769 loop-level color--kinematics obstruction pass: added
   `ca:loop-level-color-kinematics-surface-obstruction`, which promotes the
-  tree comparison datum into a one-loop representative-level warning.  The block shows
+  tree comparison construction into a one-loop representative-level warning.  The block shows
   that contact, evanescent, or IBP-surface numerator shifts can be invisible to
   selected cuts and color-weighted gauge integration while breaking the local
   numerator Jacobi identity and changing a naive double-copy pairing.  The

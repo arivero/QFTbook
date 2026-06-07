@@ -18,7 +18,7 @@ quadruple-cut reconstruction, the five-gluon leading-color all-plus rational
 template, and a four-gluon full-color trace-basis all-plus hard-function bin
 where the first finite hard contribution is the one-loop square rather than
 Born interference, and
-the four-point color-kinematics/double-copy gateway together with the
+the four-point color-kinematics/double-copy comparison together with the
 one-loop surface-term obstruction to naive double copy and the local
 Jacobi-repair condition under which a common color-null surface direction is
 also a double-copy null direction against a Jacobi-satisfying second copy.
@@ -64,7 +64,7 @@ massless box master, the two-loop equal-mass sunrise elliptic maximal-cut
 data, the gauge-theory MHV
 box and all-plus rational-term comparison, the planar N=4 MHV quadruple-cut
 state-sum accounting, the local two-master
-threshold-mixing datum in a Fuchsian differential system, the two-letter
+threshold-mixing model in a Fuchsian differential system, the two-letter
 transport/boundary audit for a reduced master sector, and the
 physical channel-discontinuity closure audit before the
 virtual-to-observable finite remainder assembly; additionally, the five-point
@@ -73,7 +73,7 @@ little-group weights, mass dimension, cyclic term coverage, and strict
 four-dimensional cut invisibility, the four-gluon all-plus trace-basis
 amplitude-derived hard-function contribution is placed in the
 lower-loop-squared finite bin when the Born helicity amplitude vanishes, and
-the four-point color-kinematics gateway separates
+the four-point color-kinematics comparison separates
 gauge-amplitude equivalence from Jacobi-compatible numerator data needed for
 the double copy, and a one-loop Jacobi triplet surface term can be invisible
 to cuts and color-weighted gauge integration while changing a naive
@@ -132,7 +132,7 @@ exact Laurent bookkeeping for the dimension-shifted mu_perp^4 box residue,
 including the three-simplex pole, strict four-dimensional cut blindness, and
 massive-scalar coefficient extraction;
 finite cubic-channel color/numerator algebra for the four-point
-color-kinematics gateway, a finite loop-Jacobi triplet surface-term model, and
+color-kinematics comparison, a finite loop-Jacobi triplet surface-term model, and
 a finite common-repair model for loop-level double-copy null directions;
 nilpotent rational matrix algebra for threshold monodromy and regular
 boundary constants; noncommuting two-letter residue algebra for first-order
@@ -2231,7 +2231,7 @@ def check_all_plus_rational_hard_function_bin() -> None:
     assert_true("old color metric after basis change alters hard square", old_metric_square != hard_square)
 
 
-def check_four_point_color_kinematics_gateway() -> None:
+def check_four_point_color_kinematics_comparison() -> None:
     s = Fraction(2)
     t = Fraction(3)
     u = Fraction(-5)
@@ -5132,7 +5132,7 @@ def main() -> None:
     check_double_cut_bubble_projection_after_higher_subtraction()
     check_five_gluon_all_plus_rational_template()
     check_all_plus_rational_hard_function_bin()
-    check_four_point_color_kinematics_gateway()
+    check_four_point_color_kinematics_comparison()
     check_loop_level_color_kinematics_surface_obstruction()
     check_loop_level_jacobi_repair_double_copy_null()
     check_finite_two_scale_box_master()

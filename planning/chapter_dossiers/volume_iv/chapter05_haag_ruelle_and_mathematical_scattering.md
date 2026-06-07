@@ -261,7 +261,7 @@ resonances.
   \(\mathcal A(v,w)>0\) off the diagonal; this gives the explicit
   finite-Fock calculation behind velocity-labelled charged sectors.
 - Adds the ray--velocity matching controlled approximation for charged
-  external data: the asymptotic Wilson-line ray or Coulomb tail assigned to a
+  external sectors: the asymptotic Wilson-line ray or Coulomb tail assigned to a
   massive charged packet must match the packet velocity cell up to a finite
   Hilbert soft change.  A different ray leaves logarithmic soft-profile
   growth, changes the Dollard coefficient, and prevents soft-subtracted
@@ -317,7 +317,7 @@ resonances.
   decay of the log-subtracted Coulomb pair remainder on large dyadic time
   intervals, and sample positivity plus logarithmic normalization for the
   soft coherent velocity-separation coefficient.  It also checks the
-  ray--velocity matching gate: zero homogeneous mismatch for the matched ray,
+  ray--velocity matching check: zero homogeneous mismatch for the matched ray,
   logarithmic wrong-ray growth, wrong angular Dollard coefficient, wrong soft
   division in hard-coefficient extraction, and negative controls for
   charge-only and compact-deformation shortcuts.  It also checks the

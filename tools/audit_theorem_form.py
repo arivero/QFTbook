@@ -11,9 +11,10 @@ written in prose or stated as separate theorem-family claims.
 It does not try to judge proof quality; it flags presentation patterns that
 create fake-looking proofs.  It also guards the custom
 ``controlledapproximation`` environment from becoming a container for exact
-finite laboratories or proof-obligation maps: status-like titles must carry
-visible approximation controls and a component estimate, while explicit
-comparison/proof-obligation titles are rejected in that environment.
+finite laboratories, data packages, or proof-obligation maps: status-like
+titles must carry visible approximation controls and a component estimate,
+while explicit comparison/proof-obligation/data-package titles are rejected in
+that environment.
 """
 
 from __future__ import annotations
@@ -45,7 +46,7 @@ CONTROLLED_APPROX_STATUS_TITLE_RE = re.compile(
 )
 
 CONTROLLED_APPROX_FORBIDDEN_TITLE_RE = re.compile(
-    r"\b(cross-check|proof-obligation|template)\b",
+    r"\b(cross-check|proof-obligation|template|datum|data)\b",
     re.IGNORECASE,
 )
 

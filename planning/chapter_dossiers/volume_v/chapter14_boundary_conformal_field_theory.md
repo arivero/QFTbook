@@ -575,7 +575,7 @@
   two-point observables, and the same multiplication can carry different disk
   pairing normalizations unless the Frobenius/two-point datum is fixed.
 - 2026-06-06 issue #625 BCFT observable-vector pass: added
-  `ca:bcft-boundary-observable-vector` after the annulus-shadow
+  `constr:bcft-boundary-observable-vector` after the annulus-shadow
   nonreconstruction diagnostic.  The pass packages annulus, disk,
   bulk-boundary, boundary-OPE, two-point, defect-endpoint, and closed-loop
   sewing outputs into one boundary-observable vector with separate chiral,

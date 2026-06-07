@@ -967,7 +967,7 @@ def weighted_square_distance(
     return sum(weight * (a - b) * (a - b) for a, b, weight in zip(left, right, weights))
 
 
-def check_ray_velocity_matching_gate() -> None:
+def check_ray_velocity_matching() -> None:
     """Check that a wrong asymptotic ray is not a finite charged coordinate change."""
 
     angular_weights = (Fraction(2), Fraction(3), Fraction(5), Fraction(7))
@@ -1872,7 +1872,7 @@ def main() -> None:
     check_truncation_schedule_tail_uniformity()
     check_finite_energy_spectral_tightness_boundary()
     check_soft_profile_velocity_separation()
-    check_ray_velocity_matching_gate()
+    check_ray_velocity_matching()
     check_weyl_characteristic_and_overlap_decay()
     check_hilbert_soft_change_inner_equivalence()
     check_detector_inclusive_soft_projection()

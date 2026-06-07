@@ -610,8 +610,11 @@ packages belong in examples, constructions, or remarks.  Use
 regime or window, the norm or topology being controlled, the approximation
 parameter or limiting procedure, and a component estimate or residual budget.
 Titles with "gate", "map", "diagnostic", "laboratory", or "ledger" are audited
-by `tools/audit_theorem_form.py` for those controls.  Pure telescoping displays
-belong in a proof-obligation map, conditional propagation
+by `tools/audit_theorem_form.py` for those controls.  Titles whose load-bearing
+noun is "data" or "datum" are rejected in `controlledapproximation`: exact data
+packages belong in constructions, examples, or remarks, while genuinely
+controlled material should name its regime, window, sector, or extraction
+problem.  Pure telescoping displays belong in a proof-obligation map, conditional propagation
 template, remark, definition, or planning/dossier record.  The sum of named
 residual slots inherits the status of its weakest load-bearing component; it
 does not become a controlled error bound merely by being written as a normed

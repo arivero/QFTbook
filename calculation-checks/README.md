@@ -1216,7 +1216,7 @@ Current checks:
   pair/core \(L^1\) budget, while omitting one charged pair leaves a dyadic
   \(1/t\) obstruction and decaying same-flux coefficient errors remain
   summable.  It also checks
-  the ray--velocity matching gate for charged external data: a velocity-matched
+  the ray--velocity matching check for charged external sectors: a velocity-matched
   ray has zero homogeneous mismatch, a wrong ray produces logarithmic soft-norm
   growth, changes the angular Dollard coefficient, spoils hard-coefficient
   extraction if the wrong soft factor is divided out, and cannot be replaced
@@ -3598,7 +3598,7 @@ Current checks:
   \(\mu_\perp^4\) box residue \(-1/6\)
   and massive-scalar coefficient extraction for the all-plus rational blind
   spot, the four-point color--kinematics/double-copy
-  gateway with the generalized-gauge non-Jacobi negative control, the one-loop
+  comparison with the generalized-gauge non-Jacobi negative control, the one-loop
   color--kinematics surface-term obstruction showing that a cut-invisible
   gauge-null shift need not be double-copy null, the denominator-aware
   Jacobi-repair condition showing that a common denominator-free shift fails

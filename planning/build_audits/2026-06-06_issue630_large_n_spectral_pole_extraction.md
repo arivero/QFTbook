@@ -38,7 +38,7 @@
 
 All selected checks passed.  Wolfram Language checks were not selected.  The
 first monograph build caught a single overfull box in the controlled-approximation
-title; the title was shortened to `Large-\(N_c\) spectral pole datum`, and the
+title; the title was shortened to `Large-\(N_c\) spectral pole window`, and the
 subsequent build/log scan was clean at 3452 pages.
 
 ## Re-audit Notes
