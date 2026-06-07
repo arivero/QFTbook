@@ -1776,8 +1776,8 @@ A positivity inference for this observable uses the following input data.
   contour is available.  Equivalently, the large-circle term in the Cauchy
   representation below either vanishes or is retained as an explicit
   \(C_\infty\) contribution.
-  \item The absorptive part on the physical cut is nonnegative by the optical
-  theorem:
+  \item The absorptive part on the physical cut of the observable to which the
+  dispersion relation is applied is nonnegative by the optical theorem:
   \[
     \operatorname{Im}\mathcal M(s+\ii0,0)
     =
@@ -1788,6 +1788,13 @@ A positivity inference for this observable uses the following input data.
   after the same pole and infrared subtractions have been accounted for.  The
   equality is the forward normalization derived in
   Chapter~\ref{ch:volume-ii-07}.
+  \item Any subtraction with support on the physical cut is part of the
+  observable definition and must come with its own positivity proof.  This can
+  happen because the subtraction removes only first-sheet poles or local terms
+  with no cut support, because the cut is split into positive spectral windows,
+  or because an inclusive/regulator construction has a Hilbert-space optical
+  theorem for the regulated observable.  A generic amplitude-level
+  long-distance subtraction is not enough: its discontinuity can be signed.
 \end{enumerate}
 \end{hypothesis}
 
@@ -1879,8 +1886,8 @@ theorem in Hypothesis~\ref{hyp:forward-scalar-positivity-ledger} gives
 \end{equation}
 The coefficient also has a direct observable reading: it is a weighted moment
 of absorptive data.  On the right cut write \(s=\nu'+2m^2\), so that
-\(\dd\nu'=\dd s\), and define the positive absorptive cross-section measure
-for the subtracted observable by
+\(\dd\nu'=\dd s\), and define the absorptive cross-section measure for the
+subtracted observable by
 \[
   \operatorname{Im}F(s-2m^2+\ii0)
   =
@@ -1889,10 +1896,28 @@ for the subtracted observable by
 \]
 When the subtraction removes only first-sheet pole terms with no support on the
 physical cut, \(\sigma_{\rm abs}^{\rm sub}\) is the ideal
-\(\sigma_{\rm tot}\) of Chapter~\ref{ch:volume-ii-07}.  If an infrared
-regulator, inclusive prescription, or long-distance subtraction has been used,
-\(\sigma_{\rm abs}^{\rm sub}\) denotes the corresponding positive absorptive
-measure for that same observable, not a different experimental object.
+\(\sigma_{\rm tot}\) of Chapter~\ref{ch:volume-ii-07}.  A positive
+spectral-window subtraction is a stronger statement:
+\[
+  \sqrt{s(s-4m^2)}\,\sigma_{\rm tot}(s)\,\dd s
+  =
+  \dd\mu_{\rm IR}(s)+\dd\mu_{\rm UV}(s),
+  \qquad
+  \dd\mu_{\rm IR},\dd\mu_{\rm UV}\ge0,
+\]
+and the retained subtracted measure is \(\dd\mu_{\rm UV}\).  An inclusive or
+regulated definition is also acceptable when its Hilbert-space sum over
+measured final states proves
+\[
+  \dd\mu_{\rm sub}(s)
+  :=
+  \sqrt{s(s-4m^2)}\,\sigma_{\rm abs}^{\rm sub}(s)\,\dd s
+  \ge0 .
+\]
+A generic long-distance amplitude subtraction with cut support does not supply
+this conclusion.  It may instead leave a signed measure
+\(\dd\mu_{\rm signed}=\dd\mu_+-\dd\mu_-\), and then the formula below remains a
+dispersion identity but no positivity inequality follows from the notation.
 Equation~\eqref{eq:forward-positivity-a2-sum-rule} becomes
 \begin{equation}
   a_2
@@ -1944,8 +1969,9 @@ The finite-window comparison is therefore the residual identity
 \end{equation}
 This is the observable map behind the sign statement.  The window value
 \(B(S_0)\) is measured or matched absorptive input in the same subtraction and
-infrared convention; \(T(S_0)\) is the positive but unmeasured high-energy
-tail; \(c_\infty\) is the declared large-contour coordinate.  When
+infrared convention; \(T(S_0)\) is the positive but unmeasured high-energy tail
+only under the positivity-preserving subtraction hypothesis above; \(c_\infty\)
+is the declared large-contour coordinate.  When
 \(c_\infty=0\), \(B(S_0)\) is a lower bound for \(a_2\).  With a retained
 contour term, the lower bound applies to \(a_2-c_\infty\), and a comparison
 which uses \(B(S_0)\) alone has mixed two different observables.  A measured or
@@ -2056,6 +2082,12 @@ mode.
   phase, or unresolved soft/collinear logarithm destroys the forward Taylor
   coefficient unless an infrared-regulated or inclusive observable and explicit
   subtraction prescription replace the naive amplitude.
+  \item A long-distance subtraction with support on the physical cut can destroy
+  positivity even when the unsubtracted total cross section is positive.  Unless
+  the subtraction is a positive spectral-window split or an inclusive/regulator
+  observable with its own optical theorem, the retained discontinuity is a
+  signed measure and cannot be inserted into
+  \eqref{eq:forward-positivity-window-residual} with \(T(S_0)\ge0\).
   \item An unstable external particle does not supply the isolated positive LSZ
   pole used in the optical-theorem normalization; a resonance amplitude can be a
   useful EFT object without being the object bounded by

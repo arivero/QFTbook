@@ -37,6 +37,10 @@ Target claims:
   \(a_2-c_\infty-B(S_0)=T(S_0)\ge0\).  The coefficient bounded by positivity is
   the exact on-shell amplitude coordinate; a retained truncated coefficient
   inherits a sign only after a quantitative remainder margin is declared.
+  Cut-supported subtractions preserve this sign only when they define a positive
+  spectral-window split or a regulated/inclusive observable with its own optical
+  theorem; a generic amplitude-level subtraction can leave a signed
+  discontinuity.
 
 Independent construction:
 - The heavy-kernel identity is checked as an exact rational identity and as a
@@ -65,8 +69,10 @@ Independent construction:
   conversion to a finite cross-section window plus positive tail, the
   subtraction of the contour coordinate in the finite-window residual, and the
   sign-preserving margin needed before a truncated coefficient is bounded.  It
-  also checks the projection that kills EOM representatives only after imposing
-  the on-shell external-state datum.
+  also checks a positive spectral-window subtraction, an inclusive
+  optical-theorem window, and a signed cut-subtraction negative control, and it
+  checks the projection that kills EOM representatives only after imposing the
+  on-shell external-state datum.
 
 Imported assumptions:
 - Euclidean low-energy kinematics with q^2 >= 0 and q^2 <= Q^2 << M^2.
@@ -90,7 +96,9 @@ Imported assumptions:
   not a construction of the nonperturbative scattering amplitude.  It assumes
   an already pole-subtracted crossing-even amplitude, encodes positive
   absorptive weights by finite atoms, and converts those atoms to finite
-  cross-section bins only as an optical-theorem normalization check.
+  cross-section bins only as an optical-theorem normalization check.  When a
+  subtraction changes the cut, positivity is imposed only for explicitly
+  positive retained weights or positive inclusive measurement weights.
 
 Negative controls:
 - Reversing the heavy-kernel remainder sign fails the exact identity.
@@ -121,7 +129,9 @@ Negative controls:
   coefficient does not.
 - It rejects inferring the sign of a retained EFT coefficient from positive
   exact \(a_2\) when the named coefficient remainder is larger than the
-  positivity margin.
+  positivity margin.  It also rejects treating a signed cut subtraction as a
+  positive absorptive cross section merely because the unsubtracted total
+  weights were positive.
 
 Scope boundary:
 - This script checks finite algebra and bookkeeping for the EFT prediction
@@ -614,6 +624,97 @@ def check_forward_positivity_dispersion_normalization() -> None:
         "finite-window moment detects an incompatible low-energy coefficient",
         float(window_contribution),
         float(observed_a2_below_window),
+    )
+
+    positive_ir_subtraction = (sp.Integer(1), sp.Integer(1), sp.Integer(2))
+    positive_retained_weights = tuple(
+        total - subtracted
+        for total, subtracted in zip(spectral_weights, positive_ir_subtraction)
+    )
+    positive_ir_moment = sum(
+        2 * weight / point**3
+        for point, weight in zip(spectral_points, positive_ir_subtraction)
+    )
+    positive_retained_moment = sum(
+        2 * weight / point**3
+        for point, weight in zip(spectral_points, positive_retained_weights)
+    )
+    for retained in positive_retained_weights:
+        assert_gt(
+            "positive spectral-window subtraction leaves nonnegative retained weights",
+            float(retained),
+            0.0,
+        )
+    assert_zero(
+        "positive spectral-window split reconstructs the total moment",
+        positive_ir_moment + positive_retained_moment - dispersive_a2,
+    )
+    assert_gt(
+        "positive retained spectral window preserves positivity",
+        float(positive_retained_moment),
+        0.0,
+    )
+
+    inclusive_efficiencies = (
+        sp.Rational(1, 2),
+        sp.Rational(2, 3),
+        sp.Rational(1, 5),
+    )
+    inclusive_weights = tuple(
+        efficiency * weight
+        for efficiency, weight in zip(inclusive_efficiencies, spectral_weights)
+    )
+    inclusive_moment = sum(
+        2 * weight / point**3
+        for point, weight in zip(spectral_points, inclusive_weights)
+    )
+    assert_gt(
+        "inclusive optical-theorem weights preserve the measured positivity",
+        float(inclusive_moment),
+        0.0,
+    )
+    wrong_signed_measurement = (
+        sp.Rational(1, 2),
+        -sp.Rational(20, 1),
+        sp.Rational(1, 5),
+    )
+    wrong_inclusive_moment = sum(
+        2 * efficiency * weight / point**3
+        for point, efficiency, weight in zip(
+            spectral_points,
+            wrong_signed_measurement,
+            spectral_weights,
+        )
+    )
+    assert_gt(
+        "signed measurement kernel is not an inclusive optical theorem",
+        0.0,
+        float(wrong_inclusive_moment),
+    )
+
+    oversubtracted_cut_weights = (sp.Integer(0), sp.Integer(33), sp.Integer(0))
+    signed_retained_weights = tuple(
+        total - subtracted
+        for total, subtracted in zip(spectral_weights, oversubtracted_cut_weights)
+    )
+    signed_subtracted_moment = sum(
+        2 * weight / point**3
+        for point, weight in zip(spectral_points, signed_retained_weights)
+    )
+    assert_gt(
+        "unsubtracted absorptive weights are positive before cut subtraction",
+        float(dispersive_a2),
+        0.0,
+    )
+    assert_gt(
+        "cut-supported oversubtraction leaves a signed retained discontinuity",
+        float(oversubtracted_cut_weights[1] - spectral_weights[1]),
+        0.0,
+    )
+    assert_gt(
+        "signed cut subtraction invalidates the positivity inference",
+        0.0,
+        float(signed_subtracted_moment),
     )
 
     missing_flux_moment = sum(

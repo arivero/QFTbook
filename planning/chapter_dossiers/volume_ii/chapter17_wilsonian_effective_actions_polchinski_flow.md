@@ -209,20 +209,26 @@ The chapter must define and derive:
     the large contour vanishes;
   - the optical-theorem normalization that makes the absorptive part
     nonnegative;
+  - the additional hypothesis that any cut-supported subtraction must preserve
+    a positive retained spectral measure, either by removing only no-cut
+    pole/local terms, by a positive spectral-window split, or by an
+    inclusive/regulator optical theorem;
   - the conversion of \(a_2\) into a weighted cross-section moment
     \(\int ds\,\sqrt{s(s-4m^2)}\sigma_{\rm abs}^{\rm sub}(s)/(s-2m^2)^3\),
     with a finite-window residual
-    \(a_2-c_\infty-B(S_0)=T(S_0)\), positive tail \(T(S_0)\), contour-status
-    bookkeeping, and the failure interpretation when a matched low-energy
-    coefficient lies below the measured window moment after the contour and
-    remainder accounting are fixed;
+    \(a_2-c_\infty-B(S_0)=T(S_0)\), positive tail \(T(S_0)\) only under that
+    positivity-preserving subtraction hypothesis, contour-status bookkeeping,
+    and the failure interpretation when a matched low-energy coefficient lies
+    below the measured window moment after the contour and remainder
+    accounting are fixed;
   - the map from the EFT low-energy coefficient to the on-shell forward
     amplitude coordinate \(\kappa_{\rm amp}\), with EOM and field-redefinition
     representatives killed only by the declared observable projection;
   - failure modes from massless \(t\)-channel exchange, IR logs,
-    photons/gravitons, unstable external particles, non-forward/spinning/gauge
-    extensions, insufficient high-energy boundedness, nonlocal UV behavior, and
-    EFTs without a local Poincare-invariant UV-completion map.
+    photons/gravitons, signed cut-supported subtractions, unstable external
+    particles, non-forward/spinning/gauge extensions, insufficient
+    high-energy boundedness, nonlocal UV behavior, and EFTs without a local
+    Poincare-invariant UV-completion map.
 - a general finite-density Fermi-surface EFT section with a finite-volume
   \(U(1)\)-charge setup, exact Green functions, density and Fermi-surface
   diagnostics, and a strict separation of thermodynamic, zero-temperature, and
@@ -563,9 +569,10 @@ The chapter must define and derive:
      \(a_2=(2/\pi)\int_{\nu_{\rm th}}^\infty
      d\nu\,\operatorname{Im}\mathcal M_{\rm sub}/\nu^3+c_\infty\).
      Equivalently it is the weighted moment of the subtracted absorptive
-     cross-section measure, so the finite-window comparison is the observable
-     residual \(a_2-c_\infty-B(S_0)=T(S_0)\ge0\).  The bounded coefficient is
-     the projected amplitude coordinate
+     cross-section measure, provided the subtraction preserves a positive cut
+     measure.  The finite-window comparison is then the observable residual
+     \(a_2-c_\infty-B(S_0)=T(S_0)\ge0\).  The bounded coefficient is the
+     projected amplitude coordinate
      \(\kappa_{\rm amp}\), not an arbitrary Wilson coefficient in a redundant
      operator basis.
 19. Local field redefinitions are exact finite-regulator changes of variables
@@ -903,3 +910,11 @@ The chapter must define and derive:
   is inferred.  The companion check includes a near-saturated positive
   \(a_2\) example whose retained coefficient is negative because the named
   remainder is larger than the positivity margin.
+- 2026-06-07 issue #844 subtracted-absorptive-measure pass: made positivity of
+  \(\sigma_{\rm abs}^{\rm sub}\) an explicit hypothesis, not a notation choice.
+  The text now separates no-cut pole/local subtractions, positive
+  spectral-window splits, inclusive/regulator observables with their own
+  optical theorem, and generic long-distance amplitude subtractions whose cut
+  discontinuity can be signed.  The companion check now verifies a positive
+  spectral split, a positive inclusive measurement window, and a signed
+  cut-oversubtraction negative control.

@@ -1017,7 +1017,9 @@ Current checks:
   moment with the optical-theorem flux factor, the residual
   \(a_2-c_\infty-B(S_0)=T(S_0)\), large-contour and
   massless-forward-pole negative controls, a finite-window shortcut rejection,
-  a retained-coefficient margin negative control, and the projection from
+  positive spectral-window and inclusive-measure subtraction checks, a signed
+  cut-subtraction negative control, a retained-coefficient margin negative
+  control, and the projection from
   redundant EFT basis coordinates to the on-shell forward amplitude
   coefficient.
 - `borel_laplace_checks.py`: exact checks for the Borel--Laplace and
