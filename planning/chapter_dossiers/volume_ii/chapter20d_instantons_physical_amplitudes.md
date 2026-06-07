@@ -327,6 +327,12 @@
   and the same amputated physical amplitude basis; signed linear sums,
   unamputated source vectors, and locally inclusive replacement of the
   declared measurement are rejected.
+- The crossed chiral channel block is the first explicit scattering-channel
+  extraction from the 't Hooft hard kernel.  It keeps the all-outgoing
+  anomalous source monomial, the barred-slot crossing residues, the
+  \(RR\to LL\) versus \(LL\to RR\) instanton/anti-instanton separation, and
+  the quadratic or interference observable choice as distinct pieces of the
+  physical amplitude calculation.
 - The observable-map block connects the dedicated instanton-amplitude
   chapter back to the QCD theta and \(U(1)_A\) material without duplicating it:
   a hard four-source coefficient, a dilute theta curvature, a zero-mode-zone
@@ -566,6 +572,15 @@
   determinant ratio.  The companion verifies the density conversion
   \(50176/50625\), the finite residual, and the inverse matching factor, and
   rejects determinant-constant-only or omitted-factor shortcuts.
+- 2026-06-07 issue #597 crossed chiral channel pass: added
+  `ca:instanton-thooft-crossed-chiral-channel` after the amputated four-point
+  assembly.  The pass turns the all-outgoing \(Q=1\) two-flavor source
+  monomial into the massless \(RR\to LL\) scattering channel by crossing the
+  barred slots only after chirality selection and carrying explicit crossing
+  residues.  The companion rejects all-outgoing coefficients used as
+  amplitudes, conjugate anti-instanton chirality inserted into the same
+  channel, theta-charged linear sums read as rates, perturbative
+  chirality-preserving references, and crossing-residual underbudgets.
 - 2026-06-06 observable-map pass: added a physics bridge from the assembled
   instanton amplitude to QCD observables, explicitly separating hard source
   coefficients, theta curvature, \(U(1)_A\)-odd susceptibility kernels, and

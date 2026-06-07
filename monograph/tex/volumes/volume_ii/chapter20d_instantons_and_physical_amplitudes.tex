@@ -1026,6 +1026,97 @@ zero.  The physical four-point claim is the assembled amplitude together with
 the residual bound.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Crossed chiral channel from the 't Hooft kernel]
+\label{ca:instanton-thooft-crossed-chiral-channel}
+The four-source kernel in
+ControlledApproximation~\ref{ca:instanton-thooft-four-point-amputated-assembly}
+is still an all-outgoing source coordinate.  A scattering channel is obtained
+only after the zero-mode chirality labels have first selected the source
+coefficient and the selected external slots have then been crossed with their
+LSZ residues.  In the \(Q=1\), \(N_f=2\) convention used above, the supported
+all-outgoing source monomial is
+\[
+  q_{L,u}(p_1)\,q_{L,d}(p_2)\,
+  \bar q_{R,u}(p_3)\,\bar q_{R,d}(p_4).
+\]
+Crossing the two barred slots, with \(p_3=-k_3\) and \(p_4=-k_4\), gives the
+chiral physical channel
+\begin{equation}
+  u_R(k_3)+d_R(k_4)
+  \longrightarrow
+  u_L(p_1)+d_L(p_2).
+  \label{eq:instanton-thooft-crossed-channel-process}
+\end{equation}
+Thus the physical channel is not obtained by erasing the all-outgoing labels.
+It is
+\begin{equation}
+  \mathcal M_I^{R R\to L L}
+  =
+  \Xi_{\rm cr}(k_3,k_4;p_1,p_2)\,
+  \mathcal A_{I}^{\rm all\text{-}out}
+       (p_1,p_2,-k_3,-k_4)
+  +R_{\rm cr},
+  \label{eq:instanton-thooft-crossed-channel-amplitude}
+\end{equation}
+where \(\Xi_{\rm cr}\) contains the spinor crossing signs, wave-packet
+normalizations, and pole residues in the same source basis used for
+amputation.  The amplitude inherits the phase and anomalous source selection
+\begin{equation}
+\begin{aligned}
+  \mathcal M_I^{R R\to L L}
+  &=
+  \ee^{\ii\theta}K_{R R\to L L}+R_{\rm cr},
+  \\
+  K_{R R\to L L}
+  &=
+  \Xi_{\rm cr}\,
+  \mathcal C_I\,
+  \det B_R\,\det B_L\,
+  \mathcal H_\Omega                                      \\
+  &\quad{}\times
+  \prod_{\ell=1}^{4}\Psi_\ell^{\rm amp}
+  \mathcal R_{\rm nz-src}\mathcal R_{\rm amp}\mathcal R_{\rm proj},
+  \label{eq:instanton-thooft-crossed-channel-kernel}
+\end{aligned}
+\end{equation}
+with the same density and size-window convention as
+\eqref{eq:instanton-thooft-four-point-amputated-assembly}.  The anti-instanton
+sector gives the conjugate chirality channel
+\[
+  u_L+d_L\longrightarrow u_R+d_R,
+  \qquad
+  \mathcal M_{\bar I}^{L L\to R R}
+  =
+  \ee^{-\ii\theta}K_{L L\to R R}^{\bar I}
+  +R_{\rm cr}^{\bar I}.
+\]
+For massless external quarks these are different chiral channels.  A
+perturbative amplitude that preserves chirality is not a reference amplitude in
+\eqref{eq:instanton-thooft-crossed-channel-process}; a linear
+\(I+\bar I\) sum is therefore not a positive rate and not an inclusive cut.
+The selected channel rate has the quadratic neutral pairing
+\begin{equation}
+  |\mathcal M_I^{R R\to L L}|^2
+  =
+  |K_{R R\to L L}|^2
+  +O(KR_{\rm cr})+O(R_{\rm cr}^2),
+  \label{eq:instanton-thooft-crossed-channel-rate}
+\end{equation}
+so the one-instanton \(\theta\)-phase cancels in the positive quadratic
+projection.  A \(\theta\)-linear observable requires a declared chirality
+breaking reference channel, mass insertion, or CP-paired comparison with its
+own projection and residual budget.
+
+Consequently the hard four-point calculation has three separate decisions:
+which all-outgoing anomalous source monomial is differentiated, which slots
+are crossed into the physical in-state, and which quadratic or interference
+observable is measured.  Crossing before the zero-mode chirality selection
+mixes the \(Q=1\) and \(Q=-1\) determinants.  Summing the instanton and
+anti-instanton amplitudes before specifying the measurement mixes conjugate
+chiral processes.  Reading a chirality-balanced external process as a hard
+'t Hooft amplitude sets the source determinant in the wrong coordinate.
+\end{controlledapproximation}
+
 \begin{proposition}[\(SU(3)\), \(N_f=2\) hard-source power and slow tail]
 \label{prop:su3-nf2-hard-source-power-slow-tail}
 In the preceding hard channel, \(b_0=29/3\).  The four differentiated

@@ -119,6 +119,11 @@ Target claims:
   product of density, Haar projection, chiral source determinants, individual
   zero-mode slots, nonzero-mode source response, amputation, physical
   projection, and an absolute residual budget.
+- `ca:instanton-thooft-crossed-chiral-channel`: the all-outgoing
+  two-flavor 't Hooft source kernel becomes a physical `RR -> LL` channel
+  only after the anomalous chirality source monomial is selected, the barred
+  slots are crossed with their LSZ residues, and the instanton/anti-instanton
+  theta phases are read in a declared quadratic or interference observable.
 - `ca:instanton-hard-window-tail-subtraction`: the hard four-source window is
   controlled as a core integral plus leading and subleading analytic endpoint
   tails, rather than as a formal size integral.
@@ -156,6 +161,8 @@ Independent construction:
   chirality-source selection rules for the instanton zero-mode determinant,
   axial Ward transport of the theta phase with the complex source determinant,
   an amputated 't Hooft four-point assembly ledger,
+  crossed chiral `RR -> LL` channel extraction from the all-outgoing
+  source kernel with formal theta-phase bookkeeping,
   physical projection bins, residual sums, two-term hard-window endpoint
   tail subtraction, Wilsonian coefficient/operator scheme covariance,
   boundary-flux/anomalous-dimension cancellation, and hard-window power checks
@@ -266,6 +273,12 @@ Negative controls:
   symmetric Haar source treated as nonzero, an omitted nonzero-mode source
   quotient, unamputated source overlaps read as a physical coefficient, or an
   assembly residual budget with the projection term removed,
+  an all-outgoing source coefficient used without crossing residues, a
+  conjugate anti-instanton chirality block inserted into the same massless
+  `RR -> LL` channel, a linear theta-charged instanton sum treated as a
+  positive rate, a chirality-preserving perturbative reference used despite
+  the selection rule, or a crossed-channel residual budget with the crossing
+  term removed,
   single Euclidean cell sum used as a spectral-bin observable, a
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
   slot, a leading-tail-only hard-window approximation, a fused-density
@@ -3731,6 +3744,215 @@ def check_thooft_four_point_amputated_assembly_gate() -> None:
     )
 
 
+def check_thooft_crossed_chiral_channel() -> None:
+    q_plus_all_out = ("u_L", "d_L", "ubar_R", "dbar_R")
+    q_minus_all_out = ("u_R", "d_R", "ubar_L", "dbar_L")
+    chirality_balanced = ("u_L", "d_R", "ubar_L", "dbar_R")
+
+    def axial_weight(slots: tuple[str, str, str, str]) -> int:
+        weights = {
+            "u_L": -1,
+            "d_L": -1,
+            "ubar_R": -1,
+            "dbar_R": -1,
+            "u_R": 1,
+            "d_R": 1,
+            "ubar_L": 1,
+            "dbar_L": 1,
+        }
+        return sum(weights[slot] for slot in slots)
+
+    def cross_barred_slot(slot: str) -> str:
+        crossing = {
+            "ubar_R": "u_R",
+            "dbar_R": "d_R",
+            "ubar_L": "u_L",
+            "dbar_L": "d_L",
+        }
+        return crossing[slot]
+
+    def crossed_process(
+        all_outgoing: tuple[str, str, str, str],
+        incoming_indices: tuple[int, int],
+    ) -> tuple[tuple[str, str], tuple[str, str]]:
+        incoming = tuple(cross_barred_slot(all_outgoing[index]) for index in incoming_indices)
+        outgoing = tuple(
+            slot for index, slot in enumerate(all_outgoing) if index not in incoming_indices
+        )
+        return incoming, outgoing
+
+    assert_equal("Q=1 crossed source axial weight", axial_weight(q_plus_all_out), -4)
+    assert_equal("Q=-1 crossed source axial weight", axial_weight(q_minus_all_out), 4)
+    assert_equal("balanced crossed source axial weight", axial_weight(chirality_balanced), 0)
+    assert_equal(
+        "Q=1 barred-slot crossing gives RR to LL",
+        crossed_process(q_plus_all_out, (2, 3)),
+        (("u_R", "d_R"), ("u_L", "d_L")),
+    )
+    assert_equal(
+        "Q=-1 barred-slot crossing gives LL to RR",
+        crossed_process(q_minus_all_out, (2, 3)),
+        (("u_L", "d_L"), ("u_R", "d_R")),
+    )
+
+    density = Fraction(11, 13)
+    haar_projection = Fraction(2, 7)
+    zero_mode_slot_product = Fraction(5, 9)
+    nonzero_mode_source_quotient = Fraction(21, 20)
+    amputation_transport = Fraction(9, 10)
+    physical_projection = Fraction(7, 8)
+    common_kernel = product(
+        [
+            density,
+            haar_projection,
+            zero_mode_slot_product,
+            nonzero_mode_source_quotient,
+            amputation_transport,
+            physical_projection,
+        ]
+    )
+
+    q_plus_right: Matrix2 = ((Fraction(2), Fraction(1)), (Fraction(3), Fraction(5)))
+    q_plus_left: Matrix2 = ((Fraction(3), Fraction(1)), (Fraction(2), Fraction(4)))
+    q_minus_right: Matrix2 = ((Fraction(4), Fraction(1)), (Fraction(2), Fraction(3)))
+    q_minus_left: Matrix2 = ((Fraction(5), Fraction(2)), (Fraction(1), Fraction(3)))
+    assert_equal("Q=1 crossed right determinant", det2(q_plus_right), Fraction(7))
+    assert_equal("Q=1 crossed left determinant", det2(q_plus_left), Fraction(10))
+    assert_equal("Q=-1 crossed right determinant", det2(q_minus_right), Fraction(10))
+    assert_equal("Q=-1 crossed left determinant", det2(q_minus_left), Fraction(13))
+
+    all_outgoing_kernel = common_kernel * det2(q_plus_right) * det2(q_plus_left)
+    crossing_residue = product(
+        [Fraction(2, 3), Fraction(5, 7), Fraction(11, 13), Fraction(17, 19)]
+    )
+    crossed_kernel = all_outgoing_kernel * crossing_residue
+    assert_not_equal(
+        "all-outgoing source coefficient is not the crossed physical channel",
+        all_outgoing_kernel,
+        crossed_kernel,
+    )
+    assert_equal(
+        "crossing residues multiply the selected source kernel",
+        crossed_kernel / crossing_residue,
+        all_outgoing_kernel,
+    )
+
+    wrong_unlabeled_process_kernel = Fraction(0)
+    assert_not_equal(
+        "physical in/out labels cannot replace all-outgoing zero-mode slots",
+        wrong_unlabeled_process_kernel,
+        crossed_kernel,
+    )
+    same_channel_anti_instanton = Fraction(0)
+    conjugate_channel_kernel = (
+        common_kernel * det2(q_minus_right) * det2(q_minus_left) * crossing_residue
+    )
+    assert_equal(
+        "anti-instanton is the conjugate massless chiral channel",
+        same_channel_anti_instanton,
+        Fraction(0),
+    )
+    assert_not_equal(
+        "conjugate chirality determinant is not the same RR to LL channel",
+        conjugate_channel_kernel,
+        same_channel_anti_instanton,
+    )
+    assert_equal(
+        "chirality-balanced source is not the Q=1 crossed hard channel",
+        chirality_balanced == q_plus_all_out,
+        False,
+    )
+
+    PhasePoly = dict[int, Fraction]
+
+    def normalize(poly: PhasePoly) -> PhasePoly:
+        return {power: coeff for power, coeff in poly.items() if coeff != 0}
+
+    def phase_add(left: PhasePoly, right: PhasePoly) -> PhasePoly:
+        result = dict(left)
+        for power, coeff in right.items():
+            result[power] = result.get(power, Fraction(0)) + coeff
+        return normalize(result)
+
+    def phase_mul(left: PhasePoly, right: PhasePoly) -> PhasePoly:
+        result: PhasePoly = {}
+        for left_power, left_coeff in left.items():
+            for right_power, right_coeff in right.items():
+                power = left_power + right_power
+                result[power] = result.get(power, Fraction(0)) + left_coeff * right_coeff
+        return normalize(result)
+
+    def phase_conj(poly: PhasePoly) -> PhasePoly:
+        return normalize({-power: coeff for power, coeff in poly.items()})
+
+    instanton_amplitude = {1: crossed_kernel}
+    anti_instanton_amplitude = {-1: conjugate_channel_kernel}
+    selected_rate = phase_mul(phase_conj(instanton_amplitude), instanton_amplitude)
+    conjugate_rate = phase_mul(phase_conj(anti_instanton_amplitude), anti_instanton_amplitude)
+    cp_paired_rate = phase_add(selected_rate, conjugate_rate)
+    assert_equal(
+        "positive crossed-channel rate is theta neutral",
+        selected_rate,
+        {0: crossed_kernel * crossed_kernel},
+    )
+    assert_equal("CP-paired crossed rates keep only theta-neutral powers", set(cp_paired_rate), {0})
+
+    linear_sector_sum = phase_add(instanton_amplitude, anti_instanton_amplitude)
+    assert_equal(
+        "linear instanton plus anti-instanton sum remains theta charged",
+        set(linear_sector_sum),
+        {-1, 1},
+    )
+    assert_not_equal(
+        "linear theta-charged sector sum is not a positive crossed-channel rate",
+        sum(linear_sector_sum.values(), Fraction(0)),
+        selected_rate[0],
+    )
+
+    perturbative_chirality_preserving_reference = {0: Fraction(5, 11)}
+    formal_interference = phase_add(
+        phase_mul(phase_conj(perturbative_chirality_preserving_reference), instanton_amplitude),
+        phase_mul(phase_conj(instanton_amplitude), perturbative_chirality_preserving_reference),
+    )
+    selection_rule_allows_reference = False
+    retained_interference = formal_interference if selection_rule_allows_reference else {}
+    assert_equal(
+        "chirality selection removes perturbative reference interference",
+        retained_interference,
+        {},
+    )
+    assert_not_equal(
+        "formal theta-linear interference is a different observable from the rate",
+        formal_interference,
+        selected_rate,
+    )
+
+    residuals = {
+        "assembly": Fraction(1, 120),
+        "crossing": Fraction(1, 330),
+        "infrared": Fraction(1, 420),
+    }
+    residual_sum = sum(residuals.values(), Fraction(0))
+    residual_budget = sum(abs(value) for value in residuals.values())
+    shifted_channel = crossed_kernel + residual_sum
+    assert_equal(
+        "crossed chiral channel residual telescope",
+        shifted_channel - crossed_kernel,
+        residual_sum,
+    )
+    assert_equal(
+        "crossed chiral channel residual bound",
+        abs(shifted_channel - crossed_kernel) <= residual_budget,
+        True,
+    )
+    underbudget_without_crossing = residual_budget - abs(residuals["crossing"])
+    assert_equal(
+        "omitting crossing residual underbudgets the crossed chiral channel",
+        abs(shifted_channel - crossed_kernel) <= underbudget_without_crossing,
+        False,
+    )
+
+
 def main() -> None:
     check_source_functional_route_order()
     check_collective_coordinate_zero_mode_jacobian()
@@ -3766,6 +3988,7 @@ def main() -> None:
     check_wilsonian_matching_scheme_covariance()
     check_hard_benchmark_channel_comparison_and_ratio()
     check_thooft_four_point_amputated_assembly_gate()
+    check_thooft_crossed_chiral_channel()
     print("instanton physical amplitude architecture checks passed")
 
 

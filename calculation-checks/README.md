@@ -760,7 +760,12 @@ Current checks:
   \((8\pi^2/g_{\rm ht}^2(Q))^6\) collective-coordinate factor and the
   \(SU(3)\), \(N_f=2\) \(\Lambda_{\rm ht}^{29/3}Q^{-35/3}\) power only when
   source shape, conditioning, orientation, and size-window data are transported
-  together, with a negative control for pure-power-only ratios, the
+  together, with a negative control for pure-power-only ratios, the crossed
+  chiral 't Hooft channel extraction which turns the all-outgoing two-flavor
+  source kernel into an \(RR\to LL\) physical channel only after barred-slot
+  crossing residues, keeps the anti-instanton as the conjugate \(LL\to RR\)
+  channel, and rejects theta-charged linear sums or chirality-preserving
+  references as positive rates, the
   mixed hard-source plus physical-screening log-shell equation
   \(2m_{\rm scr}^2\rho^2+dQ\rho-A=0\) with negative controls against
   hard-only and screening-only saddle substitutions, the
