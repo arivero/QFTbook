@@ -3009,6 +3009,10 @@ Current checks:
   source-projected coefficients from a direct common observable amplitude,
   requiring an assembly map before a projected product is used as physical data,
   and rejecting ordinary \(U(1)\) product formulae on a quotient flux lattice,
+  the global-form flux lattice gate which tests the quotient cocharacter
+  lattice, dual character lattice, enlarged theta-period lattice, forbidden
+  cover-charge-one matter, quotient-compatible \(\Sigma Y\) periods, and
+  residual mirror-orbifold order,
   the charged-chiral mirror-variable
   elimination matching the Coulomb one-loop superpotential, the finite
   FI-coordinate shift induced by vortex coefficient normalizations, the

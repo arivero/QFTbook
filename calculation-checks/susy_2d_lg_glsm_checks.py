@@ -6,7 +6,8 @@ normalizations, charged-chiral mirror elimination, vortex-zero-mode filter,
 finite-regulator vortex fluctuation complex, vortex-to-FI-coordinate
 normalization, compact FI-theta flux periodicity, common-flux rather than
 flavor-labelled vortex topology, common-sector source-projection and
-product-assembly gates, quotient-flux character restrictions,
+product-assembly gates, quotient global-form flux/character/theta-period
+restrictions,
 one-vortex normal-mode interaction and original/dual-frame
 separation, one-vortex source-functional F-term extraction,
 one-vortex component-amplitude source-minor extraction,
@@ -37,7 +38,8 @@ component-to-component source-frame calibration ratios with supplied component
 and frame residuals,
 normal-mode cumulant factors and original-to-dual frame tags,
 common-sector source projections, independently projected common amplitudes,
-assembly-map mutation controls, quotient-lattice character filters,
+assembly-map mutation controls, quotient cocharacter-lattice and dual
+character-lattice filters with theta-period tests,
 one-loop gamma-matrix Hermiticity tests, signed-log determinant-density
 coefficient extraction, flux-carrying magnetic-torus Wilson-overlap
 indices, heat-kernel Fujikawa traces, logarithm branch shifts, and
@@ -80,6 +82,8 @@ matrix convention, compact flux \(k=(2\pi)^{-1}\int F\in\mathbb Z\),
 \(Y_i\sim Y_i+2\pi i\), \(X_i=e^{-Y_i}\),
 \(\widetilde W=-T_a\Sigma_a-M_iY_i-\mu c_i e^{-Y_i}\), exponentiated
 FI coordinate \(q=\exp(T)\) in the displayed mirror-torus equations, the
+distinction between the ordinary covering-torus lattice and a quotient
+cocharacter lattice, the
 chosen orientation of the universal \(d^2\widetilde\theta\) zero-mode pair,
 and the determinant-line convention in which finite \(c_i\) rescalings are
 transported into the FI-theta coordinate.
@@ -111,7 +115,10 @@ nonperiodic \(\exp(\tau)\) fugacities,
 flavor-labelled topological vortex sectors,
 projected-coefficient products used as direct common-sector amplitudes,
 arbitrary projected coefficients, ordinary \(U(1)\) product formulae reused for
-quotient flux lattices,
+quotient flux lattices, cover-charge-one matter treated as a quotient
+representation, ordinary \(2\pi i\) FI periods applied to fractional quotient
+fluxes, and quotient residual mirror orbifolds omitted from covering
+presentations,
 using compact branch periodicity to choose the Coulomb determinant sign,
 wrong component-response signs or Fujikawa factors,
 absolute-value-only Coulomb logarithms,
@@ -602,24 +609,6 @@ def check_compact_fi_theta_fugacity_and_common_flux() -> None:
         direct_common_amplitude,
     )
 
-    quotient_flux_lattice = [2 * n for n in range(-2, 3)]
-    quotient_theta_character_denominator = 2
-    allowed_dual_charge = [
-        charge
-        for charge in [1, 2, 3, 4]
-        if charge % quotient_theta_character_denominator == 0
-    ]
-    assert_equal(
-        "quotient global form restricts allowed dual characters",
-        allowed_dual_charge,
-        [2, 4],
-    )
-    assert_equal(
-        "ordinary U(1) flux lattice is not the quotient flux lattice",
-        quotient_flux_lattice == list(range(-4, 5)),
-        False,
-    )
-
     # The component of -Q Sigma Y couples Im(Y) to the same compact flux.  A
     # Y -> Y + 2*pi*i period must shift the phase by an integer multiple of
     # 2*pi*i for every integral flux and charge.  Reusing a 1/(4*pi) density
@@ -639,7 +628,111 @@ def check_compact_fi_theta_fugacity_and_common_flux() -> None:
                     "half-density Sigma-Y normalization fails odd flux period",
                     wrong_half_density_periods.denominator == 1,
                     False,
-                )
+            )
+
+
+def check_global_form_flux_character_lattice_gate() -> None:
+    def quotient_flux_samples(order: int, radius: int = 2) -> list[Fraction]:
+        return [Fraction(m, order) for m in range(-radius * order, radius * order + 1)]
+
+    def is_character(charge: int, flux_lattice: list[Fraction]) -> bool:
+        return all((charge * flux).denominator == 1 for flux in flux_lattice)
+
+    def is_fi_period(shift_units: int, flux_lattice: list[Fraction]) -> bool:
+        return all((shift_units * flux).denominator == 1 for flux in flux_lattice)
+
+    for quotient_order in [2, 3, 5]:
+        flux_lattice = quotient_flux_samples(quotient_order)
+        ordinary_flux_lattice = [Fraction(k) for k in range(-2, 3)]
+        assert_equal(
+            f"U(1)/Z_{quotient_order} flux lattice contains fractional flux",
+            Fraction(1, quotient_order) in flux_lattice,
+            True,
+        )
+        assert_equal(
+            f"ordinary U(1) flux lattice is not U(1)/Z_{quotient_order} lattice",
+            flux_lattice == ordinary_flux_lattice,
+            False,
+        )
+
+        allowed_cover_charges = [
+            charge for charge in range(1, 3 * quotient_order + 1)
+            if is_character(charge, flux_lattice)
+        ]
+        assert_equal(
+            f"U(1)/Z_{quotient_order} character lattice is nZ in cover units",
+            allowed_cover_charges,
+            [quotient_order, 2 * quotient_order, 3 * quotient_order],
+        )
+        assert_equal(
+            f"cover charge one is not a quotient representation n={quotient_order}",
+            is_character(1, flux_lattice),
+            False,
+        )
+        assert_equal(
+            f"minimal quotient charge pairs integrally with all fluxes n={quotient_order}",
+            is_character(quotient_order, flux_lattice),
+            True,
+        )
+
+        assert_equal(
+            f"ordinary 2pi-i FI period fails minimal quotient flux n={quotient_order}",
+            is_fi_period(1, flux_lattice),
+            False,
+        )
+        assert_equal(
+            f"quotient FI period is 2pi-i times the character generator n={quotient_order}",
+            is_fi_period(quotient_order, flux_lattice),
+            True,
+        )
+        minimal_flux_phase_under_ordinary_period = Fraction(1, quotient_order)
+        assert_equal(
+            f"ordinary FI period gives nontrivial phase on minimal quotient flux n={quotient_order}",
+            minimal_flux_phase_under_ordinary_period.denominator,
+            quotient_order,
+        )
+
+        local_dual_charge = quotient_order
+        assert_equal(
+            f"Sigma-Y period is integral for quotient-allowed charge n={quotient_order}",
+            all((local_dual_charge * flux).denominator == 1 for flux in flux_lattice),
+            True,
+        )
+        assert_equal(
+            f"Sigma-Y period fails for forbidden cover charge one n={quotient_order}",
+            all((1 * flux).denominator == 1 for flux in flux_lattice),
+            False,
+        )
+
+        residual_mirror_orbifold_order = quotient_order
+        assert_equal(
+            f"cover presentation leaves finite mirror orbifold order n={quotient_order}",
+            residual_mirror_orbifold_order,
+            quotient_order,
+        )
+
+    quotient_order = 4
+    flux_lattice = quotient_flux_samples(quotient_order)
+    allowed_theta_shift = quotient_order
+    forbidden_theta_shift = 1
+    quotient_topological_weights = {
+        flux: (allowed_theta_shift * flux) % 1
+        for flux in flux_lattice
+    }
+    wrong_topological_weights = {
+        flux: (forbidden_theta_shift * flux) % 1
+        for flux in flux_lattice
+    }
+    assert_equal(
+        "quotient theta character is single-valued on every quotient flux",
+        set(quotient_topological_weights.values()),
+        {Fraction(0)},
+    )
+    assert_equal(
+        "ordinary covering theta period is not single-valued on quotient fluxes",
+        Fraction(1, quotient_order) in set(wrong_topological_weights.values()),
+        True,
+    )
 
 
 def check_abelian_coulomb_one_loop_primitive() -> None:
@@ -3895,6 +3988,7 @@ def main() -> None:
     check_abelian_legendre_duality()
     check_abelian_glsm_coulomb_ledger()
     check_compact_fi_theta_fugacity_and_common_flux()
+    check_global_form_flux_character_lattice_gate()
     check_abelian_coulomb_one_loop_primitive()
     check_coulomb_component_response_selects_log_sign()
     check_coulomb_one_loop_branch_monodromy()

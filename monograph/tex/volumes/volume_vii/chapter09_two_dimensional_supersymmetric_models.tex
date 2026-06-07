@@ -1112,6 +1112,73 @@ character lattice, and include the residual mirror orbifold.  Until that
 lattice datum is supplied, the displayed Hori--Vafa formula is a \(U(1)^s\)
 formula.
 
+\begin{controlledapproximation}[Global-form flux lattice gate for abelian
+mirrors]
+\label{ca:glsm-global-form-flux-lattice-gate}
+This warning is not only a matter of notation.  Present the compact gauge
+torus as
+\[
+  G=\mathbb R^s/(2\pi\Lambda_G),
+\]
+where \(\Lambda_G\) is the cocharacter lattice.  A principal \(G\)-bundle on a
+closed oriented surface has magnetic flux
+\[
+  k=\frac1{2\pi}\int_\Sigma F\in\Lambda_G .
+\]
+The electric character lattice is the dual lattice
+\begin{equation}
+  \Lambda_G^\vee
+  =
+  \{m\in(\mathbb R^s)^*\mid m(k)\in\mathbb Z
+    \hbox{ for every }k\in\Lambda_G\}.
+  \label{eq:glsm-global-form-character-lattice}
+\end{equation}
+Every charged chiral field and every allowed dual exponential must carry a
+character in \(\Lambda_G^\vee\).  The logarithmic FI coordinate is not just an
+element of \(\mathbb C^s\); it is a character of the flux lattice:
+\begin{equation}
+  \exp\langle T,k\rangle ,
+  \qquad
+  T\sim T+2\pi\ii\,m,\quad m\in\Lambda_G^\vee .
+  \label{eq:glsm-global-form-fi-character}
+\end{equation}
+These two lattices are what make the theta weight single-valued.  Replacing
+\(\Lambda_G\) by \(\mathbb Z^s\) changes the allowed bundles, the theta
+periods, and the mirror torus.
+
+For a rank-one illustration, write the covering coordinate so that the
+ordinary \(U(1)\) has \(\Lambda=\mathbb Z\).  If the physical gauge group is
+the quotient \(U(1)/\mathbb Z_n\), then
+\begin{equation}
+  \Lambda_G=\frac1n\mathbb Z,
+  \qquad
+  \Lambda_G^\vee=n\mathbb Z .
+  \label{eq:glsm-u1-zn-flux-character-lattices}
+\end{equation}
+Thus a cover-charge-one chiral multiplet is not a representation of this
+quotient group, the minimal flux is \(1/n\), and the logarithmic FI period is
+\[
+  T\sim T+2\pi\ii n
+\]
+in the covering coordinate.  A putative \(2\pi\ii\) period would change the
+weight of the minimal flux sector by \(\exp(2\pi\ii/n)\).  Conversely, a
+charge \(n\) field has integral pairing with every quotient flux, so the local
+dual coupling \(-n\Sigma Y\) and the exponential \(e^{-Y}\) are compatible
+with the quotient global form.  The quotient may also leave a finite mirror
+orbifold, controlled by the finite group
+\(\Lambda_G/\mathbb Z^s\) in a chosen covering presentation; its action on the
+dual torus is part of the mirror datum, not a convention one can recover from
+\(\widetilde W\) after the fact.
+
+Consequently the covering-torus constraints
+\(\sum_iQ_i{}^aY_i=-T_a\) and \(q=\exp(T)\) used below are valid only for the
+declared \(U(1)^s\) lattice.  For \(U(1)^s/\Gamma\), the same symbolic formula
+is meaningful only after \(Q_i\in\Lambda_G^\vee\), \(T\in
+{\rm Hom}(\Lambda_G,\mathbb C/2\pi\ii\mathbb Z)\), the allowed exponential
+monomials, and the residual mirror orbifold have been supplied.  This is a
+physical topological-sector condition, not a harmless rescaling of \(T\).
+\end{controlledapproximation}
+
 The local first-order functional for one charged chiral variable is the
 superspace analogue of the compact scalar construction.  Let \(B_i\) be a
 real superfield and set

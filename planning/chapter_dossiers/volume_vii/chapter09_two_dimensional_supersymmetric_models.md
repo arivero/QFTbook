@@ -55,6 +55,10 @@ and
   FI-theta coordinate, logarithmic FI-theta coordinate
   `T=2 pi i tau`, exponentiated compact flux fugacity `q=exp(T)`, and
   vector-multiplet scalar.
+- `Lambda_G`, `Lambda_G^vee`: cocharacter/flux lattice of an abelian quotient
+  gauge group and its dual electric character lattice.  These control allowed
+  matter charges, dual exponentials, FI-theta periods, and residual mirror
+  orbifolds.
 - `Sigma`, `tilde W_eff`, `mu`, `Q_tot`: twisted chiral field strength,
   abelian Coulomb-branch effective twisted superpotential, renormalization
   scale, and total positive charge in the one-loop Coulomb ledger.
@@ -214,6 +218,13 @@ and
   full-QFT statement from the protected evidence lanes `D_loc`, `D_pert`,
   `D_vort`, and `D_obs`, and from the proof-debt lanes `E_cont`, `E_op`,
   `E_top`, `E_bg`, and `E_sing`.
+- Adds the global-form flux lattice gate for abelian mirrors.  The compact
+  gauge torus is specified by its cocharacter lattice `Lambda_G`, fluxes lie in
+  `Lambda_G`, charged fields and allowed mirror exponentials lie in
+  `Lambda_G^vee`, and logarithmic FI periods are characters of `Lambda_G`.
+  The rank-one `U(1)/Z_n` example shows explicitly that cover-charge-one
+  matter, ordinary `2 pi i` FI periods, and covering-torus product constraints
+  cannot be reused without the quotient mirror orbifold.
 - Defines the full mirror-QFT datum `mathfrak M_Lambda`, distinguishing the
   protected Hori--Vafa presentation `(Y_i,Sigma_a,W_tilde_dual)` from the
   mirror Kahler/D-term functional, induced measure, counterterms,
@@ -498,9 +509,12 @@ and
     common gauge flux but not flavor-labelled topological sectors; finite
     source-projection functionals compute projected coefficients and a direct
     common observable amplitude by separate routes, so arbitrary projected data
-    or a bare projected product fail without an assembly map; a quotient
-    flux-lattice cell rejects reusing the ordinary `U(1)` product formula when
-    the allowed dual characters have changed;
+    or a bare projected product fail without an assembly map;
+  - quotient global-form flux/character lattice checks: for `U(1)/Z_n` the
+    flux lattice contains `1/n`, the electric character lattice is `nZ`, the
+    logarithmic FI period is `2 pi i n` in covering coordinates, cover-charge
+    one is not allowed matter, and the residual mirror orbifold order cannot be
+    dropped;
   - charged-chiral mirror-variable elimination matching the Coulomb one-loop
     superpotential and the finite FI-coordinate shift induced by vortex
     coefficient normalizations;
@@ -845,6 +859,12 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   `U(1)^s/Gamma` cocharacter, theta-character, dual-character, and residual
   mirror-orbifold data are propagated.  The companion adds finite negative
   controls for arbitrary projected coefficients and quotient-lattice shortcuts.
+- The 2026-06-07 issue #847 quotient global-form lattice pass makes that last
+  boundary constructive.  The chapter now displays the cocharacter flux
+  lattice, dual character lattice, FI-theta period lattice, and rank-one
+  `U(1)/Z_n` obstruction.  The companion checks fractional quotient fluxes,
+  forbidden cover-charge-one matter, enlarged FI periods, quotient-compatible
+  `Sigma Y` periods, and residual mirror-orbifold order.
 - The 2026-06-07 issue #848 cigar/Liouville re-audit corrects the endpoint
   architecture after the external review: the GLSM dual variable is explicitly
   kept twisted chiral until a separate mirror/T-duality automorphism is
