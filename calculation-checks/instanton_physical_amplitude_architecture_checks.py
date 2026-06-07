@@ -3193,6 +3193,114 @@ def check_observable_handoff_map() -> None:
         True,
     )
 
+    observable_requirements = {
+        "hard_source_amplitude": {
+            "source_rank",
+            "haar_or_gauge_projection",
+            "amputation_or_ope_matching",
+            "endpoint_window",
+            "physical_projection_residual",
+        },
+        "theta_curvature": {
+            "zero_mode_saturation",
+            "volume_normalization",
+            "cluster_window",
+            "same_scheme_theta_derivatives",
+        },
+        "u1a_odd_susceptibility": {
+            "zero_mode_overlap_spectrum",
+            "ensemble_weight",
+            "exact_topology_removal",
+            "thermodynamic_chiral_order",
+        },
+        "real_time_axial_relaxation": {
+            "retarded_cs_slope",
+            "kms_continuation",
+            "hydrodynamic_window",
+            "axial_susceptibility",
+        },
+    }
+
+    def missing_observable_slots(claim: str, supplied: set[str]) -> list[str]:
+        return sorted(observable_requirements[claim] - supplied)
+
+    hard_source_supplied = {
+        "source_rank",
+        "haar_or_gauge_projection",
+        "amputation_or_ope_matching",
+        "endpoint_window",
+        "physical_projection_residual",
+    }
+    assert_equal(
+        "hard source amplitude row has every declared physical slot",
+        missing_observable_slots("hard_source_amplitude", hard_source_supplied),
+        [],
+    )
+
+    density_only_slots = {"collective_density", "one_loop_determinant"}
+    assert_equal(
+        "density-only instanton data cannot certify a hard source amplitude",
+        missing_observable_slots("hard_source_amplitude", density_only_slots),
+        [
+            "amputation_or_ope_matching",
+            "endpoint_window",
+            "haar_or_gauge_projection",
+            "physical_projection_residual",
+            "source_rank",
+        ],
+    )
+
+    four_source_slots = {
+        "source_rank",
+        "haar_or_gauge_projection",
+        "amputation_or_ope_matching",
+        "endpoint_window",
+        "physical_projection_residual",
+    }
+    assert_equal(
+        "hard four-source coefficient is not a theta-curvature row",
+        missing_observable_slots("theta_curvature", four_source_slots),
+        [
+            "cluster_window",
+            "same_scheme_theta_derivatives",
+            "volume_normalization",
+            "zero_mode_saturation",
+        ],
+    )
+
+    dilute_theta_slots = {
+        "zero_mode_saturation",
+        "volume_normalization",
+        "cluster_window",
+        "same_scheme_theta_derivatives",
+    }
+    assert_equal(
+        "theta curvature row is complete only in its own physical coordinate",
+        missing_observable_slots("theta_curvature", dilute_theta_slots),
+        [],
+    )
+    assert_equal(
+        "theta curvature is not a real-time axial-relaxation row",
+        missing_observable_slots("real_time_axial_relaxation", dilute_theta_slots),
+        [
+            "axial_susceptibility",
+            "hydrodynamic_window",
+            "kms_continuation",
+            "retarded_cs_slope",
+        ],
+    )
+
+    u1a_slots_without_order = {
+        "zero_mode_overlap_spectrum",
+        "ensemble_weight",
+        "exact_topology_removal",
+    }
+    assert_equal(
+        "U(1)_A susceptibility needs the thermodynamic/chiral order of limits",
+        missing_observable_slots("u1a_odd_susceptibility", u1a_slots_without_order),
+        ["thermodynamic_chiral_order"],
+    )
+
     chi_ym = Fraction(5, 7)
     zeta_trial = Fraction(3, 10)
     chi_inst = 2 * zeta_trial

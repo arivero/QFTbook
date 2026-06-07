@@ -933,11 +933,15 @@ Current checks:
   separately as channel-vector data, the finite determinant conversion benchmark
   computing two regulator densities with action weight, orientation volume,
   zero-mode Jacobian, and determinant-ratio data before testing matching,
-  the cross-chapter hard-scale benchmark regression that keeps
-  \(\Gamma_{\rm coll}(Q)\) in both Ch20 and Ch20D,
-  the observable-map distinction among hard source coefficients, theta
-  curvatures, \(U(1)_A\)-odd kernels, and real-time axial relaxation rates,
-  the physical projection bridge from Euclidean source kernels to pole-window,
+	  the cross-chapter hard-scale benchmark regression that keeps
+	  \(\Gamma_{\rm coll}(Q)\) in both Ch20 and Ch20D,
+	  the observable-map distinction among hard source coefficients, theta
+	  curvatures, \(U(1)_A\)-odd kernels, and real-time axial relaxation rates,
+	  with a finite physical-coordinate requirement classifier rejecting
+	  density-only hard amplitudes, hard-source data used as theta curvature,
+	  theta curvature used as a real-time rate, and \(U(1)_A\) susceptibility
+	  claims with the thermodynamic/chiral order of limits omitted,
+	  the physical projection bridge from Euclidean source kernels to pole-window,
   spectral-bin, OPE, or inclusive coordinates, including contact-polynomial
   separation and bridge residual budgets, the mixed-source pole amputation
   test showing that a four-source instanton window must be divided by the full

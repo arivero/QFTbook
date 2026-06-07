@@ -287,7 +287,10 @@
   status statement: the one-instanton amplitude density must be projected to a
   named observable before its physical meaning is fixed; the map itself is not
   a controlled approximation until the selected row supplies projection,
-  positivity or continuation data, and a residual budget.
+  positivity or continuation data, and a residual budget.  The preceding
+  physical-coordinate checklist records the required entries for hard source
+  amplitudes, theta curvature, \(U(1)_A\)-odd susceptibility, and real-time
+  axial relaxation.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell model
   proving the absolute residual bound and the two-by-two determinant stability
   estimate.
@@ -588,7 +591,9 @@
   dilute theta curvature, \(U(1)_A\)-odd zero-mode-zone kernels, real-time
   axial rates, and Witten--Veneziano curvature comparison budgets, including
   a status guard that prevents the map itself from being promoted to a
-  controlled estimate without row-wise projection budgets,
+  controlled estimate without row-wise projection budgets and a
+  physical-coordinate requirement classifier that rejects density-only,
+  wrong-row, and missing-order-of-limits substitutions,
   verifies the physical projection bridge from Euclidean source kernels to
   pole-window and spectral-bin coordinates, including contact-polynomial
   separation, one-Euclidean-value inversion failure, bridge residual control,
@@ -956,3 +961,11 @@
   are preserved.  No formula, physics claim, or calculation companion changed;
   this is a coherence repair enforcing the amplitude-first architecture after
   the many later source, fluctuation, projection, and cluster insertions.
+- 2026-06-07 issue #597 observable-coordinate coherence pass: added the final
+  physical-coordinate checklist in the observable-map section, naming the required
+  entries for hard amplitudes, theta curvature, \(U(1)_A\)-odd susceptibility, and
+  real-time axial relaxation.  The companion now rejects using density-only
+  instanton data as a hard amplitude, hard source data as theta curvature, theta
+  curvature as a real-time rate, or a \(U(1)_A\) claim without the order of
+  limits.  This is a physical-output architecture repair, not a new
+  moduli-space cell.
