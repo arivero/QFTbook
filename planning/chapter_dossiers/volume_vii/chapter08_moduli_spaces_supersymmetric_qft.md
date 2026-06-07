@@ -96,6 +96,10 @@ later lower-dimensional examples, protected sectors, and localization.
   `eq:higgs-branch-rxi-xi-sector-cancellation`: constant-background
   \(R_\xi\) determinant split deriving the longitudinal-vector, Goldstone, and
   ghost gauge-parameter cancellation before the tangent-vertex calculation.
+- `ex:higgs-branch-frame-connection-seagull`,
+  `eq:higgs-branch-frame-connection-seagull-identity`: generated
+  seagull/double-insertion cancellation for the pure moving-frame part of the
+  heavy Higgs fluctuation determinant.
 - `eq:higgs-branch-heavy-multiplet-balance-heuristic`: signed
   four-dimensional long-multiplet balance, retained only as a diagnostic for
   missing sectors after the Ward identity or trace-log calculation has supplied
@@ -229,8 +233,9 @@ later lower-dimensional examples, protected sectors, and localization.
   the background-field derivation check that rejects bare component
   multiplicities, requires model/gauge/regulator/operator slots, derives the
   \(R_\xi\) longitudinal/Goldstone/ghost cancellation from generated operators,
-  and rejects use of the four-dimensional gauge-field entry in dimensionally
-  reduced arguments,
+  verifies the frame-connection seagull identity from operator conjugation, and
+  rejects use of the four-dimensional gauge-field entry in dimensionally reduced
+  arguments,
   fixed-charge branch-EFT checks for global-form/Weyl charge labels, the
   supersymmetric chiral-branch Noether map and Routhian energy, transverse
   gap hierarchy, and the abstract large-\(\mu\) simultaneous-window scaling
@@ -300,3 +305,8 @@ local models.
   operators.  The companion now generates the dimension-specific spectrum and
   determinant weights from field type and mode count instead of accepting a
   hand-entered cancellation ledger.
+- 2026-06-07 issue #850 frame-connection seagull pass: added the pure
+  moving-frame trace-log identity
+  \({\rm STr}(O^{-1}\ddot O-O^{-1}\dot O O^{-1}\dot O)=0\) for
+  \(O(s)=U(s)O_0U(s)^{-1}\), and updated the companion so omitting the seagull
+  or adding genuine mass curvature is detected by finite matrix checks.

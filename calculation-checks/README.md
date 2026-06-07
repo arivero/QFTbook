@@ -2998,8 +2998,9 @@ Current checks:
   rejects bare component multiplicities, requires model/gauge/regulator and
   generated-operator slots, derives the constant-background \(R_\xi\)
   longitudinal/Goldstone/ghost determinant cancellation from generated
-  operators, and blocks reuse of the four-dimensional gauge-field entry in
-  reduced dimensions,
+  operators, verifies the frame-connection seagull/double-insertion identity
+  from operator conjugation, and blocks reuse of the four-dimensional
+  gauge-field entry in reduced dimensions,
   fixed-charge branch-EFT checks for torus/global-form/Weyl charge labels,
   the supersymmetric chiral-branch Noether map, Routhian energy, transverse
   gap hierarchy, and large-\(\mu\) simultaneous-window scaling condition,

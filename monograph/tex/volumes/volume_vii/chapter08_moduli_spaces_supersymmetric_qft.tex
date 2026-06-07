@@ -937,6 +937,54 @@ two-dimensional calculation must still be supplemented by its separate
 torsion/\(B\)-field and infrared regulator analysis.
 \end{example}
 
+\begin{example}[Frame-connection seagulls in the Higgs determinant]
+\label{ex:higgs-branch-frame-connection-seagull}
+The next checkpoint concerns the part of
+\eqref{eq:higgs-branch-background-field-trace-log} generated only by changing
+the orthonormal frame of massive fluctuations as the Higgs tangent moves.  Let
+\({\mathcal H}_{\rm heavy}\) be one regulated heavy block, with the grading kept
+fixed.  Suppose that along a path \(q_B(s)\) the corresponding quadratic
+operator is only conjugated,
+\[
+  {\mathcal O}(s)=U(s){\mathcal O}_0U(s)^{-1},\qquad U(0)=1,
+\]
+and put \(T=\dot U(0)\).  Then
+\[
+  \dot{\mathcal O}=[T,{\mathcal O}_0],
+  \qquad
+  \ddot{\mathcal O}=[T,[T,{\mathcal O}_0]] .
+\]
+The second-order trace-log contribution from this pure frame connection is
+\begin{equation}
+  \frac12\,{\rm STr}\!
+  \left(
+    {\mathcal O}_0^{-1}\ddot{\mathcal O}
+    -
+    {\mathcal O}_0^{-1}\dot{\mathcal O}\,
+    {\mathcal O}_0^{-1}\dot{\mathcal O}
+  \right)
+  =
+  \frac12\,\left.\frac{d^2}{ds^2}{\rm STr}\log{\mathcal O}(s)\right|_{s=0}
+  =
+  0 .
+  \label{eq:higgs-branch-frame-connection-seagull-identity}
+\end{equation}
+Thus the seagull \(\ddot{\mathcal O}\) and the double insertion
+\(\dot{\mathcal O}\dot{\mathcal O}\) are not optional bookkeeping choices; they
+are the two Taylor coefficients of the same covariant fluctuation operator.  In
+the rank-one Higgs patch, the fixed-norm flavor rotation of the heavy
+Goldstone/radial/vector-scalar/fermion frame has exactly this form before the
+genuine curvature of the mass matrix is included.  Dropping the seagull would
+manufacture a spurious Higgs-metric term even though the regulated determinant
+has merely been written in a moving basis.
+
+Equation~\eqref{eq:higgs-branch-frame-connection-seagull-identity} closes the
+pure-frame part of the trace-log.  The non-frame pieces of the remainders in
+the operators above carry the mass-curvature, auxiliary-contact, and
+supersymmetric Ward-pairing data.  An evaluation of
+\(\Pi_{mn}^{\rm 1-loop}\) has to sum those terms.
+\end{example}
+
 After the Ward identity or an explicit evaluation of
 \eqref{eq:higgs-branch-background-field-trace-log} has paired these operators,
 one may record the residual long-multiplet balance as a quick diagnostic.  In a
