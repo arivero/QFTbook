@@ -3094,6 +3094,9 @@ Current checks:
   data cells checking \(c=3+6/k\), finite noncompact \(c_{\rm eff}=3\),
   a half-line Robin reflection diagnostic showing that boundary data can change
   the continuous density while preserving the asymptotic \(F\)-term package,
+  finite-volume Robin quantization showing that the same wall datum changes
+  the regulated radial Hamiltonian spectrum, the separation of admissible
+  mirror-data existence, universality, and duality claims,
   Liouville exponential marginality, spectral-flow momentum/winding arithmetic,
   the noncompact field identification, metric/dilaton-versus-exact-QFT status,
   the twisted-chiral-to-ordinary-chiral bridge boundary, the

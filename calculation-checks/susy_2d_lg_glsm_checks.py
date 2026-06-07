@@ -23,7 +23,8 @@ the quantum-product observable relation, the A-model degree-one zero-mode
 measure bridge, the finite measure-scheme covariance test for that
 degree-one coefficient, the mirror-conjecture observable boundary separating
 full-QFT data from protected evidence, the full-action/IR-universality data
-boundary for mirror presentations, and cigar/Liouville spectral-status and
+boundary for mirror presentations, admissible mirror-datum and finite-volume
+noncompact spectral-domain gates, and cigar/Liouville spectral-status and
 reflection Gamma-function cells,
 plus the Hori--Vafa
 residue/direct-instanton comparison map, with the direct degree-one incidence
@@ -47,7 +48,8 @@ axial-monodromy ledgers,
 root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree filters, and
 conditional residual-propagation maps, full-action data-interface tests,
-finite Legendre-domain and boundary-term cells, cigar central-charge and
+finite Legendre-domain and boundary-term cells, finite-volume Robin
+self-adjoint-domain quantization tests, cigar central-charge and
 effective-central-charge arithmetic, spectral-flow and field-identification
 arithmetic, Liouville marginality checks, half-line boundary-condition
 reflection diagnostics for noncompact D-term data, and direct Gamma-function
@@ -139,7 +141,8 @@ exact finite-level QFT data, rescalings used as chirality-changing mirror maps,
 local-rigidity shortcuts to global uniqueness, compact c-theorem shortcuts in
 noncompact continua, omitted cigar-reflection normalization phases, raw
 special-level reflection normalizations, missing Gamma pole factors,
-boundary-condition-blind reflection shortcuts, and
+boundary-condition-blind reflection shortcuts, collapsed
+existence/rigidity/duality claims, omitted self-adjoint domains, and
 finite-gauge invariance failures are
 rejected when the finite model can represent them; the Hori--Vafa residue alone
 is also rejected as a substitute for the direct incidence/vortex measure package,
@@ -163,7 +166,7 @@ checks the finite gates those claims must pass.
 from __future__ import annotations
 
 from fractions import Fraction
-from math import exp, isclose, log, prod
+from math import exp, isclose, log, pi, prod, tan
 
 import mpmath as mp
 import numpy as np
@@ -3509,6 +3512,66 @@ def check_full_mirror_ir_data_boundary() -> None:
         full_mirror_data <= proposed_ir_claim,
         True,
     )
+    admissible_mirror_datum = proposed_ir_claim | {
+        "cutoff functional integral",
+        "self-adjoint Hamiltonian domain",
+        "renormalized operator topology",
+        "reflection phase",
+        "pole residues",
+        "source contact terms",
+    }
+    protected_formula_only = {
+        "periodic Y",
+        "linear Sigma Y",
+        "primitive exponential",
+        "Coulomb logarithm",
+    }
+    assert_equal(
+        "admissible mirror datum contains domain and spectral normalization data",
+        {
+            "cutoff functional integral",
+            "self-adjoint Hamiltonian domain",
+            "renormalized operator topology",
+            "reflection phase",
+            "pole residues",
+            "source contact terms",
+        } <= admissible_mirror_datum,
+        True,
+    )
+    assert_equal(
+        "protected Hori-Vafa presentation is not an admissible full mirror datum",
+        admissible_mirror_datum <= protected_formula_only,
+        False,
+    )
+    claim_ladder = {
+        "existence": {"admissible mirror datum exists"},
+        "universality": {
+            "admissible mirror datum exists",
+            "regulated path",
+            "no phase transition",
+            "no spectral bifurcation",
+            "matched boundary currents",
+            "matched reflection phase",
+            "matched pole residues",
+        },
+        "duality": {
+            "admissible mirror datum exists",
+            "GLSM IR endpoint",
+            "mirror IR endpoint",
+            "operator/state map",
+            "defect and boundary map",
+        },
+    }
+    assert_equal(
+        "existence of mirror data is not the universality statement",
+        claim_ladder["existence"] == claim_ladder["universality"],
+        False,
+    )
+    assert_equal(
+        "universality data are not the same as the GLSM duality claim",
+        claim_ladder["universality"] == claim_ladder["duality"],
+        False,
+    )
 
     # Finite Legendre cell for e^B - U B/2.  Eliminating B gives a dual
     # D-term whose Hessian magnitude is 1/(2U), so the domain U>0 and the
@@ -3594,6 +3657,75 @@ def check_full_mirror_ir_data_boundary() -> None:
     assert_equal(
         "boundary-blind Liouville data do not fix noncompact spectral density",
         boundary_sensitive_spectral_package <= boundary_blind_spectral_package,
+        False,
+    )
+
+    # The same self-adjoint wall datum changes a finite-volume Hamiltonian.
+    # Put the radial channel on [0,L], impose psi(L)=0, and impose
+    # psi'(0)=lambda psi(0) at the Liouville wall.  Then
+    # tan(p L) = -p/lambda for lambda != 0, while lambda=0 gives
+    # p L = (n+1/2) pi.  These roots are cutoff spectra, not notation.
+    def robin_box_root(boundary_lambda: Fraction, length: Fraction, level: int) -> float:
+        if boundary_lambda == 0:
+            return (level + 0.5) * pi / float(length)
+        lam = float(boundary_lambda)
+        ell = float(length)
+        left = (level + 0.5) * pi / ell + 1e-12
+        right = (level + 1.0) * pi / ell - 1e-12
+
+        def quantization_function(momentum: float) -> float:
+            return tan(momentum * ell) + momentum / lam
+
+        left_value = quantization_function(left)
+        right_value = quantization_function(right)
+        if not (left_value < 0 < right_value):
+            raise AssertionError(
+                "Robin finite-volume root bracket failed: "
+                f"{left_value!r}, {right_value!r}"
+            )
+        for _ in range(100):
+            midpoint = 0.5 * (left + right)
+            mid_value = quantization_function(midpoint)
+            if mid_value < 0:
+                left = midpoint
+            else:
+                right = midpoint
+        return 0.5 * (left + right)
+
+    box_length = Fraction(7)
+    wall_charge = Fraction(2)
+    background_charge_squared = Fraction(1, 5)
+    neumann_roots = [robin_box_root(Fraction(0), box_length, level) for level in range(3)]
+    robin_roots = [robin_box_root(wall_charge, box_length, level) for level in range(3)]
+    assert_equal(
+        "Robin wall changes finite-volume radial momenta",
+        all(abs(robin - neu) > 1e-3 for robin, neu in zip(robin_roots, neumann_roots)),
+        True,
+    )
+    neumann_energies = [
+        root * root + float(background_charge_squared) / 4 for root in neumann_roots
+    ]
+    robin_energies = [
+        root * root + float(background_charge_squared) / 4 for root in robin_roots
+    ]
+    assert_equal(
+        "self-adjoint wall datum changes the regulated Hamiltonian spectrum",
+        all(abs(robin - neu) > 1e-4 for robin, neu in zip(robin_energies, neumann_energies)),
+        True,
+    )
+    boundary_blind_hamiltonian_claim = {
+        "same asymptotic F-term",
+        "same background charge",
+        "same wall exponential",
+    }
+    boundary_sensitive_hamiltonian_claim = boundary_blind_hamiltonian_claim | {
+        "self-adjoint wall domain",
+        "finite-volume radial roots",
+        "continuum phase density",
+    }
+    assert_equal(
+        "same asymptotic Liouville data do not determine the Hamiltonian domain",
+        boundary_sensitive_hamiltonian_claim <= boundary_blind_hamiltonian_claim,
         False,
     )
 

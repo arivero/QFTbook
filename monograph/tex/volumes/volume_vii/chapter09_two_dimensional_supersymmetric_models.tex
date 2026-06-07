@@ -1056,6 +1056,59 @@ at every end has been shown to vanish or has been included as a source/contact
 term.
 \end{definition}
 
+\begin{definition}[Admissible mirror datum and the IR-equivalence ladder]
+\label{def:glsm-admissible-mirror-datum}
+The package \(\mathfrak M_\Lambda\) is an admissible mirror datum only after
+the symbols in Definition~\ref{def:glsm-mirror-full-qft-datum} have been
+realized as cutoff QFT data.  Concretely, for every cutoff scale \(\Lambda\)
+one must have a regulated functional integral
+\[
+  Z_{\Lambda}^{\rm mir}[J]
+  =
+  \int_{B_\infty^{(\Lambda)}}{\mathcal D}^{\rm mir}_{\Lambda}\Phi\,
+  \exp\left(
+    -S_{\Lambda,D}^{\rm mir}[\Phi;K_{\rm mir},C_{\rm ct}]
+    -S_{\Lambda,F}^{\rm mir}[\Phi;\widetilde W_{\rm dual}]
+    +J_A{\mathcal O}_{A,\Lambda}
+  \right),
+\]
+together with a self-adjoint Hamiltonian on the circle, a dense domain fixed by
+the noncompact boundary functional \(B_\infty^{(\Lambda)}\), and a renormalized
+operator map
+\[
+  {\mathcal O}_{A}^{\rm IR}
+  =
+  \lim_{\Lambda\to\infty}
+  Z_A(\Lambda)\,{\mathcal O}_{A,\Lambda}
+\]
+in the topology used to compare correlation functions.  For a noncompact
+target this includes the spectral resolution
+\[
+  {\mathcal H}_{\rm IR}
+  =
+  \int_{\mathcal C}^{\oplus} d\mu_{\rm cont}(\alpha)\,
+  {\mathcal H}_{\alpha}
+  \oplus
+  \bigoplus_{\beta\in{\mathcal D}}{\mathcal H}_{\beta},
+\]
+the reflection relation identifying the two asymptotic bases, the residue
+normalization of discrete states, and the contact terms carried by
+nonnormalizable sources.  These are QFT data, not decorations of
+\(\widetilde W\).
+
+There are then three distinct claims.  The existence claim says that an
+admissible mirror datum with the protected presentation exists.  The
+universality claim says that two admissible data with the same protected
+presentation define the same IR theory only when a regulated path between them
+keeps the relevant/marginal couplings fixed, has no phase transition or
+spectral bifurcation, preserves the reflection phase and pole residues, and
+makes every discarded \(D\)-term boundary current vanish or appear as a
+matched source term.  The duality claim identifies the IR endpoint of the
+original GLSM with that admissible mirror endpoint.  A Hori--Vafa formula
+supplies protected coordinates for these claims; it is not itself any one of
+the three claims.
+\end{definition}
+
 The detailed comparison below is an observable comparison map for
 Conjecture~\ref{conj:abelian-glsm-hori-vafa-mirror-qft}.  The physical question
 is whether a protected GLSM correlator computed with a regulated vortex measure
@@ -3614,6 +3667,30 @@ as a contact/source term.  A full cigar/Liouville proof must therefore show
 that the actual finite-field \(K\), measure, and wall boundary condition flow
 to the same \(R(p)\) and pole residues, with the protected superpotential only
 one entry in the datum.
+
+The same point appears in a finite-volume Hamiltonian regulator.  Put the
+radial channel on \(0\le\varrho\le L\), impose
+\(\psi(L)=0\) at the far wall, and keep the same Robin condition at the
+Liouville wall.  Then the momenta solve
+\begin{equation}
+  -p\cos(pL)=\lambda\sin(pL),
+  \qquad
+  E_n(L)=p_n(L)^2+\frac{Q^2}{4}.
+  \label{eq:liouville-robin-finite-volume-quantization}
+\end{equation}
+For \(\lambda=0\) this gives \(p_nL=(n+\tfrac12)\pi\), while a nonzero
+\(\lambda\) shifts every root before the limit \(L\to\infty\).  Equivalently,
+the large-\(L\) root-counting function contains
+\[
+  N_\lambda(p;L)
+  =
+  \frac{Lp}{\pi}
+  +\frac1{2\pi}\arg R_\lambda(p)+O(L^{-1}).
+\]
+Thus the boundary functional changes the regulated Hamiltonian spectrum and
+then survives as the continuum phase density.  A mirror proposal that does not
+specify this self-adjoint domain has not specified the Hilbert space whose
+equality is being conjectured.
 
 In the asymptotic Liouville target variables write
 \[

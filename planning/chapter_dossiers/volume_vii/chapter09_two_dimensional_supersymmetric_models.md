@@ -76,6 +76,11 @@ and
   protected Hori--Vafa twisted-superpotential presentation from the mirror
   `D`-term/Kahler functional, functional measure, counterterms, noncompact
   boundary conditions, global/orbifold data, and Wilsonian map to the IR.
+- `Z^mir_Lambda[J]`, `H_IR`, `mu_cont`, `R_lambda(p)`: admissible mirror
+  cutoff functional integral, infrared Hilbert-space/spectral resolution,
+  continuous spectral measure, and noncompact wall reflection datum.  These
+  separate mirror-data existence, D-term universality, and the actual duality
+  claim.
 - `hat X_i`, `q_phys`, `R_{P^{N-1}}`, `H`: vortex-normalized mirror-torus
   coordinate, physical exponentiated FI coordinate after finite determinant
   normalization, normalized projective-space mirror residue trace, and
@@ -232,6 +237,13 @@ and
   now states that two mirror theories with the same twisted superpotential are
   physically interchangeable only after a universality/rigidity statement and
   boundary-term control.
+- Adds the admissible-mirror datum and IR-equivalence ladder:
+  `mathfrak M_Lambda` must be realized as a regulated path integral with a
+  self-adjoint Hamiltonian domain, renormalized operator topology, noncompact
+  spectral resolution, reflection relation, pole-residue normalization, and
+  source contact terms.  The chapter now separates the existence of such a
+  mirror datum, the universality/rigidity of choices of finite-field `K` and
+  boundary data, and the final GLSM/mirror duality assertion.
 - Derives the first-order charged-chiral dualization with real superfield
   `B_i`, twisted-linear constraint, Legendre elimination, and the
   superspace integration-by-parts identity producing the linear
@@ -616,10 +628,12 @@ and
     checks the `Y+bar Y>0` singular boundary, a noncompact `D`-term
     boundary contribution, and a half-line Robin reflection phase showing that
     boundary data can change the continuous density while leaving the
-    asymptotic `F`-term package intact; a fake-Liouville shortcut with only
-    the same F-term, asymptotics, and central charge is rejected without
-    finite-field Kahler control, spectral measure, reflection amplitude,
-    boundary conditions, and deformation classification.
+    asymptotic `F`-term package intact; the same Robin datum is checked in a
+    finite radial box where it shifts the Hamiltonian eigenmomenta and
+    energies; a fake-Liouville shortcut with only the same F-term,
+    asymptotics, and central charge is rejected without finite-field Kahler
+    control, spectral measure, reflection amplitude, boundary conditions, and
+    deformation classification.
   - the cigar/Liouville spectral-data cell: exact arithmetic for
     `c=3+6/k`, noncompact `c_eff=3`, Liouville exponential marginality,
     spectral-flow momentum/winding integrality, the noncompact field
@@ -891,3 +905,9 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   this to explain why finite-field Kahler/measure and boundary data are part
   of the cigar/Liouville QFT datum; the companion checks the boundary
   condition and phase-density dependence directly.
+- The 2026-06-07 issue #848 admissible mirror spectral-domain pass turns the
+  full datum interface into a cutoff-QFT admissibility condition and separates
+  existence, universality, and duality claims.  It adds finite-volume Robin
+  quantization to show that omitted wall/self-adjoint-domain data change
+  regulated Hamiltonian energy levels, not only continuum phase-density
+  bookkeeping.
