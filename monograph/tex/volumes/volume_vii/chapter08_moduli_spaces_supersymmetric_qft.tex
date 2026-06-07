@@ -1442,6 +1442,73 @@ then take the local trace-log coefficient in
 \eqref{eq:higgs-branch-background-field-trace-log}.
 \end{example}
 
+\begin{example}[Metric extraction after source transport]
+\label{ex:higgs-branch-metric-transport-projection}
+The regulated heavy determinant in
+\eqref{eq:higgs-branch-regulated-heavy-supertrace} is still one step away from
+an intrinsic Higgs-metric statement.  Its two-derivative output is a local
+symmetric kernel
+\begin{equation}
+  \Delta\Gamma_{\Lambda,H}^{(2)}
+  =
+  \frac12\int d^dx\,
+  \Pi_{\Lambda,mn}(q)\,
+  \partial_\mu q^m\partial^\mu q^n ,
+  \label{eq:higgs-branch-metric-kernel-output}
+\end{equation}
+and the intrinsic part is obtained only after quotienting by hypermultiplet
+field redefinitions and by the declared FI/mass source transport:
+\begin{equation}
+  [\Pi_\Lambda]_{\rm int}
+  \in
+  \frac{J^2{\rm Sym}^2T^\ast U}
+       {J^2\{\mathcal L_v g_H\}
+        +
+        {\rm span}\{J^2(\partial_{\lambda^A}g_H)\}} .
+  \label{eq:higgs-branch-metric-kernel-quotient}
+\end{equation}
+Here \(J^2\) denotes the local two-jet needed to test the metric and curvature
+channel at the chosen point of the smooth stratum.  Thus a nonzero
+\(\Pi_{\Lambda,mn}\) is not automatically a new Higgs metric, and a zero
+component supertrace is not by itself enough: the determinant must land in the
+redundant subspace displayed in
+\eqref{eq:higgs-branch-metric-kernel-quotient}.
+
+In the rank-one quotient this can be checked on the zero-cotangent
+\(\mathbb P^1\) slice.  After fixing the normal-coordinate representative at
+\(z=0\), write \(r=|z|^2\).  The quotient metric restricts to
+\[
+  g_\zeta
+  =
+  \zeta(1+r)^{-2}\,dz\,d\bar z
+  =
+  \zeta(1-2r+3r^2+O(r^3))\,dz\,d\bar z .
+\]
+The FI-source direction in this two-jet is therefore
+\begin{equation}
+  J^2(\partial_\zeta g_\zeta)=(1,-2,3).
+  \label{eq:higgs-branch-cp1-slice-source-jet}
+\end{equation}
+If the trace-log kernel produces
+\[
+  J^2\Pi_\Lambda=a(1,-2,3),
+\]
+then it is only a transport of the quotient level \(\zeta\), not a new local
+metric.  If instead
+\begin{equation}
+  J^2\Pi_\Lambda=a(1,-2,3)+(0,0,\varepsilon),
+  \qquad \varepsilon\ne0,
+  \label{eq:higgs-branch-intrinsic-jet-residual}
+\end{equation}
+the point metric and the long-multiplet inventory can still look harmless, but
+the curvature two-jet contains an intrinsic residual.  This is the local
+observable the Ward/cohomology theorem must kill.  The background-field
+calculation is therefore complete only after it has projected its
+\(\Pi_{\Lambda,mn}\) through
+\eqref{eq:higgs-branch-metric-kernel-quotient}; otherwise one has checked a
+determinant identity without extracting the branch sigma-model datum.
+\end{example}
+
 \begin{example}[Dimensional reduction of the Higgs heavy rows]
 \label{ex:higgs-branch-dimensional-reduction-row-audit}
 The row completion also explains why the same four-dimensional component table

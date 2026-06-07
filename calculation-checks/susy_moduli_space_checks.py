@@ -4,11 +4,13 @@
 Evidence contract.
 Target claims: Volume VII Chapter 08 quotient formulae, branch-EFT status
 boundaries, D1-D5 Higgs/Coulomb arithmetic, and the finite Higgs-metric
-background-field gates replacing component multiplicity ledgers.
+background-field gates replacing component multiplicity ledgers, including the
+metric-kernel projection after source transport.
 Independent construction: exact rational invariant-ring, quotient-dimension,
 cotangent-transition, moment-map, determinant-row, trace-log, and regulator
-supertrace cells are built from finite data rather than by entering the
-manuscript's final identities as constants.
+supertrace cells, together with a finite metric two-jet source-transport
+projection, are built from finite data rather than by entering the manuscript's
+final identities as constants.
 Imported assumptions: the finite toy cells assume the declared charge
 assignments, a smooth fully Higgsed rank-one patch, the selected
 background-field gauge slots, and finite matrix representatives of the
@@ -17,9 +19,10 @@ Negative controls: component-count-only Higgs metric proofs, vector-spurion
 metric shortcuts, omitted ghosts/Goldstones/longitudinal vectors, omitted
 seagulls, mismatched Ward vertices, dropped auxiliary/Yukawa contacts,
 unpaired dimension-reduced scalar contacts, covering four-dimensional
-component reuse, unpaired regulator masses, four-supercharge Kahler-term
-imports, singular-branch shortcuts, and antisymmetric two-dimensional torsion
-channels are rejected when represented by the finite model.
+component reuse, unpaired regulator masses, point-metric-only source matching,
+undeclared vector-spurion transport, four-supercharge Kahler-term imports,
+singular-branch shortcuts, and antisymmetric two-dimensional torsion channels
+are rejected when represented by the finite model.
 Scope boundary: these checks do not prove a continuum Higgs-branch metric
 nonrenormalization theorem, construct the full gauge-fixed elliptic complex,
 establish all-order harmonic/projective superspace protection, or construct
@@ -701,6 +704,90 @@ def check_higgs_branch_ward_counterterm_interface():
         classify_counterterm(broken_regulator_candidate),
         "outside_eight_supercharge_ward_theorem",
         "a regulator that breaks the Ward data cannot prove metric protection",
+    )
+
+
+def check_higgs_branch_metric_transport_projection():
+    """Project a finite Higgs metric two-jet modulo declared source transport."""
+
+    # On the zero-cotangent CP^1 slice of the rank-one quotient,
+    # g_zeta = zeta * (1 + r)^(-2) has two-jet zeta * (1, -2, 3).
+    # The source direction is generated from the quotient metric, not entered as
+    # an arbitrary cancellation coefficient.
+    def quotient_metric_two_jet(zeta):
+        return (zeta, -2 * zeta, 3 * zeta)
+
+    def scale_jet(coefficient, jet):
+        return tuple(coefficient * entry for entry in jet)
+
+    def subtract_jets(left, right):
+        return tuple(left[index] - right[index] for index in range(len(left)))
+
+    zeta = Fraction(5, 2)
+    source_shift = Fraction(3, 7)
+    source_jet = subtract_jets(
+        quotient_metric_two_jet(zeta + source_shift),
+        quotient_metric_two_jet(zeta),
+    )
+    unit_fi_source_jet = (Fraction(1), Fraction(-2), Fraction(3))
+    assert_equal(
+        source_jet,
+        scale_jet(source_shift, unit_fi_source_jet),
+        "rank-one quotient metric generates the FI source two-jet",
+    )
+
+    declared_source_jets = {"fi_triplet": unit_fi_source_jet}
+
+    def residual_after_declared_transport(jet, source_name):
+        if source_name not in declared_source_jets:
+            return jet
+        source = declared_source_jets[source_name]
+        if source[0] == 0:
+            raise ValueError("source jet must move the point metric in this gauge")
+        coefficient = jet[0] / source[0]
+        transported = scale_jet(coefficient, source)
+        return subtract_jets(jet, transported)
+
+    transported_kernel = scale_jet(Fraction(11, 5), unit_fi_source_jet)
+    assert_equal(
+        residual_after_declared_transport(transported_kernel, "fi_triplet"),
+        (Fraction(0), Fraction(0), Fraction(0)),
+        "FI-transported Higgs metric two-jet has no intrinsic residual",
+    )
+
+    curvature_residual = (Fraction(0), Fraction(0), Fraction(4, 9))
+    fake_intrinsic_kernel = tuple(
+        transported_kernel[index] + curvature_residual[index]
+        for index in range(len(transported_kernel))
+    )
+    assert_equal(
+        residual_after_declared_transport(fake_intrinsic_kernel, "fi_triplet"),
+        curvature_residual,
+        "wrong curvature two-jet survives source transport",
+    )
+    assert_equal(
+        fake_intrinsic_kernel[0] == transported_kernel[0],
+        True,
+        "point-metric matching alone cannot detect the intrinsic jet residual",
+    )
+
+    old_component_balance = 4 + 2 + 4 - 2 + 0 - 8
+    assert_equal(
+        old_component_balance,
+        0,
+        "old long-multiplet balance is only a signed inventory",
+    )
+    assert_equal(
+        residual_after_declared_transport(fake_intrinsic_kernel, "fi_triplet")
+        == (Fraction(0), Fraction(0), Fraction(0)),
+        False,
+        "zero component balance does not imply zero intrinsic metric residual",
+    )
+    assert_equal(
+        residual_after_declared_transport(transported_kernel, "vector_multiplet")
+        == (Fraction(0), Fraction(0), Fraction(0)),
+        False,
+        "undeclared vector-spurion transport cannot remove a Higgs metric kernel",
     )
 
 
@@ -2114,6 +2201,7 @@ def main():
     check_higgs_branch_metric_status_matrix()
     check_higgs_branch_counterterm_filter()
     check_higgs_branch_ward_counterterm_interface()
+    check_higgs_branch_metric_transport_projection()
     check_higgs_branch_background_field_derivation_gate()
     check_large_charge_torus_lattice_and_weyl_orbit()
     check_large_charge_branch_noether_and_routhian()

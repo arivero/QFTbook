@@ -3007,8 +3007,10 @@ Current checks:
   eight-supercharge regulator, and symmetric metric-channel separation while
   rejecting four-supercharge K\"ahler-term imports, vector-spurion erasure,
   singular-branch shortcuts, broken-regulator proofs, and two-dimensional
-  antisymmetric torsion-channel substitutions, and a background-field
-  derivation check that
+  antisymmetric torsion-channel substitutions, the finite Higgs metric
+  two-jet projection that removes declared FI-source transport while rejecting
+  point-metric-only matching and undeclared vector-spurion transport, and a
+  background-field derivation check that
   rejects bare component multiplicities, requires model/gauge/regulator and
   generated-operator slots, derives the constant-background \(R_\xi\)
   longitudinal/Goldstone/ghost determinant cancellation from generated

@@ -136,6 +136,13 @@ later lower-dimensional examples, protected sectors, and localization.
   the nonzero Higgs heavy \(Q\)-complex, with paired Pauli--Villars/Wilsonian
   spectral functions and explicit failure modes for unpaired regulator masses,
   tangent-dependent regulator vertices, and unprojected zero modes.
+- `ex:higgs-branch-metric-transport-projection`,
+  `eq:higgs-branch-metric-kernel-output`,
+  `eq:higgs-branch-metric-kernel-quotient`,
+  `eq:higgs-branch-cp1-slice-source-jet`,
+  `eq:higgs-branch-intrinsic-jet-residual`: extraction of the local symmetric
+  Higgs metric kernel from the regulated trace-log after quotienting by
+  hypermultiplet coordinate changes and declared FI/mass source transport.
 - `ex:higgs-branch-dimensional-reduction-row-audit`,
   `eq:higgs-branch-reduced-scalar-row-contact`,
   `eq:higgs-branch-reduced-scalar-contact-residual`,
@@ -245,8 +252,12 @@ later lower-dimensional examples, protected sectors, and localization.
   also records the trace-log residual caused by dropping a gauge-fixing,
   auxiliary, Yukawa, or row-Jacobian square-completion contact.  The old
   massive-multiplet balance is retained only as a diagnostic consistency check.
-  Global nonperturbative equality is retained only as an additional continuum
-  assertion after boundary and extra-light-sector exclusions.
+  The metric-extraction gate projects the trace-log kernel through the local
+  two-jet quotient by field redefinitions and FI/mass source transport, showing
+  that point-metric agreement or a zero component balance does not by itself
+  remove an intrinsic curvature residual.  Global nonperturbative equality is
+  retained only as an additional continuum assertion after boundary and
+  extra-light-sector exclusions.
 - Adds the two-dimensional \(\mathcal N=(4,4)\) ADHM/D1--D5 gauge-theory
   example with adjoint and fundamental hypermultiplets, explicit complex and
   real moment maps, quotient, dimension count
@@ -285,7 +296,9 @@ later lower-dimensional examples, protected sectors, and localization.
   the Ward/local-counterterm proof-interface classifier, which rejects
   four-supercharge K\"ahler-term imports, vector-spurion type erasure,
   singular-branch shortcuts, broken-regulator proofs, and antisymmetric
-  \(2d\) torsion-channel substitutions, and the background-field derivation
+  \(2d\) torsion-channel substitutions, the Higgs metric two-jet projection
+  that removes declared FI-source transport while rejecting point-metric-only
+  and undeclared-vector-spurion shortcuts, and the background-field derivation
   check that rejects bare component
   multiplicities, requires model/gauge/regulator/operator slots, derives the
   \(R_\xi\) longitudinal/Goldstone/ghost cancellation from generated operators,
@@ -405,6 +418,13 @@ local models.
   function and local moment conditions, and rejects unpaired regulator masses,
   tangent-dependent regulator vertices, and failure to project Higgs tangent
   zero modes before taking the heavy determinant.
+- 2026-06-07 issue #850 metric-transport projection pass: added the
+  trace-log-to-branch-metric extraction gate.  The new block defines the local
+  two-jet quotient by hypermultiplet field redefinitions and FI/mass source
+  transport, then checks the rank-one zero-cotangent `P^1` slice where
+  `J^2(partial_zeta g)=(1,-2,3)`.  The companion rejects point-metric-only
+  matching, zero component-balance shortcuts, and undeclared vector-spurion
+  transport.
 - 2026-06-07 issue #850 Ward/local-counterterm interface pass: added the local
   cohomology proof interface for the smooth Higgs-metric theorem boundary,
   clarifying exactly what an all-order Ward or harmonic/projective superspace
