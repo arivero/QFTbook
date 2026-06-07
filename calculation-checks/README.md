@@ -2994,10 +2994,11 @@ Current checks:
   Coulomb-lift trace bound, and same-Higgs-dimension/different-flux negative
   control,
   the Higgs-branch metric theorem-status matrix, counterterm filter with a
-  vector-spurion negative control, and a background-field derivation gate that
+  vector-spurion negative control, and a background-field derivation check that
   rejects bare component multiplicities, requires model/gauge/regulator and
-  generated-operator slots, checks ghost/Goldstone gauge-parameter
-  cancellation, and blocks reuse of the four-dimensional gauge-field entry in
+  generated-operator slots, derives the constant-background \(R_\xi\)
+  longitudinal/Goldstone/ghost determinant cancellation from generated
+  operators, and blocks reuse of the four-dimensional gauge-field entry in
   reduced dimensions,
   fixed-charge branch-EFT checks for torus/global-form/Weyl charge labels,
   the supersymmetric chiral-branch Noether map, Routhian energy, transverse

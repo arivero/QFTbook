@@ -91,6 +91,11 @@ later lower-dimensional examples, protected sectors, and localization.
 - `constr:higgs-branch-background-field-derivation-target`,
   `eq:higgs-branch-background-field-trace-log`: explicit rank-one
   background-field target for an actual Higgs-metric determinant calculation.
+- `ex:higgs-branch-rxi-determinant-split`,
+  `eq:higgs-branch-rxi-gauge-vector-split`,
+  `eq:higgs-branch-rxi-xi-sector-cancellation`: constant-background
+  \(R_\xi\) determinant split deriving the longitudinal-vector, Goldstone, and
+  ghost gauge-parameter cancellation before the tangent-vertex calculation.
 - `eq:higgs-branch-heavy-multiplet-balance-heuristic`: signed
   four-dimensional long-multiplet balance, retained only as a diagnostic for
   missing sectors after the Ward identity or trace-log calculation has supplied
@@ -221,10 +226,11 @@ later lower-dimensional examples, protected sectors, and localization.
   fix Coulomb-throat flux,
   the Higgs-metric theorem-boundary/local/global/torsion status matrix, the
   two-derivative counterterm filter with vector-spurion negative control, and
-  the background-field derivation gate that rejects bare component
-  multiplicities, requires model/gauge/regulator/operator slots, checks
-  gauge-parameter cancellation, and rejects use of the four-dimensional
-  gauge-field entry in dimensionally reduced arguments,
+  the background-field derivation check that rejects bare component
+  multiplicities, requires model/gauge/regulator/operator slots, derives the
+  \(R_\xi\) longitudinal/Goldstone/ghost cancellation from generated operators,
+  and rejects use of the four-dimensional gauge-field entry in dimensionally
+  reduced arguments,
   fixed-charge branch-EFT checks for global-form/Weyl charge labels, the
   supersymmetric chiral-branch Noether map and Routhian energy, transverse
   gap hierarchy, and the abstract large-\(\mu\) simultaneous-window scaling
@@ -288,3 +294,9 @@ local models.
   multiplicities are rejected unless model, gauge, regulator, generated
   operators, vertices, seagulls, ghosts, Goldstones, gauge-parameter
   cancellation, and dimension-reduction slots are present.
+- 2026-06-07 issue #850 \(R_\xi\) determinant split pass: added the
+  constant-background vector projector factorization and derived the
+  longitudinal-vector/Goldstone/ghost cancellation from the gauge-fixed
+  operators.  The companion now generates the dimension-specific spectrum and
+  determinant weights from field type and mode count instead of accepting a
+  hand-entered cancellation ledger.

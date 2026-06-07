@@ -543,6 +543,77 @@ def check_higgs_branch_background_field_derivation_gate():
         "old Higgs ledger is rejected as an incomplete determinant derivation",
     )
 
+    xi_operator = "p2+xi*M2"
+    higgs_mass_operator = "p2+M2"
+
+    def determinant_weight(field_kind, modes):
+        if field_kind == "real_boson":
+            return Fraction(modes, 2)
+        if field_kind == "complex_grassmann_ghost_pair":
+            return -Fraction(modes)
+        raise ValueError(f"unknown determinant field kind {field_kind!r}")
+
+    def constant_background_spectrum(dimension):
+        """Generate the R_xi trace-log sectors from the split operators."""
+
+        if dimension not in {2, 3, 4}:
+            raise ValueError("Higgs metric audit only covers 2d, 3d, and 4d")
+
+        sectors = [
+            {
+                "sector": "gauge_transverse",
+                "origin": "gauge_connection",
+                "operator": higgs_mass_operator,
+                "field_kind": "real_boson",
+                "modes": dimension - 1,
+            },
+            {
+                "sector": "gauge_longitudinal",
+                "origin": "gauge_connection",
+                "operator": xi_operator,
+                "field_kind": "real_boson",
+                "modes": 1,
+            },
+            {
+                "sector": "goldstone",
+                "origin": "eaten_hypermultiplet",
+                "operator": xi_operator,
+                "field_kind": "real_boson",
+                "modes": 1,
+            },
+            {
+                "sector": "ghost_pair",
+                "origin": "faddeev_popov",
+                "operator": xi_operator,
+                "field_kind": "complex_grassmann_ghost_pair",
+                "modes": 1,
+            },
+        ]
+        reduced_connection_scalars = 4 - dimension
+        if reduced_connection_scalars:
+            sectors.append(
+                {
+                    "sector": "reduced_connection_scalars",
+                    "origin": "gauge_connection",
+                    "operator": higgs_mass_operator,
+                    "field_kind": "real_boson",
+                    "modes": reduced_connection_scalars,
+                }
+            )
+
+        for sector in sectors:
+            sector["trace_log_weight"] = determinant_weight(
+                sector["field_kind"], sector["modes"]
+            )
+        return sectors
+
+    def trace_log_weight(spectrum, operator):
+        return sum(
+            sector["trace_log_weight"]
+            for sector in spectrum
+            if sector["operator"] == operator
+        )
+
     operator_blueprint = {
         "model": required_model,
         "dimension": 4,
@@ -576,15 +647,11 @@ def check_higgs_branch_background_field_derivation_gate():
         "fermions": "included",
         "auxiliary_contacts": "included_or_integrated_with_contact_terms",
         "dimension_reduction_audit": "dimension_specific",
-        # A toy exact ledger for xi-dependent terms in the generated trace-log
-        # classes.  The numbers are not the metric coefficient; they check that
-        # gauge-parameter dependence cannot be ignored.
-        "gauge_parameter_cancellation": {
-            "gauge_nonminimal": Fraction(3),
-            "goldstone": Fraction(1),
-            "ghost": Fraction(-2),
-            "fermion_auxiliary_contact": Fraction(-2),
+        "constant_background_spectrum": {
+            dimension: constant_background_spectrum(dimension)
+            for dimension in (4, 3, 2)
         },
+        "gauge_parameter_cancellation": "generated_from_R_xi_spectrum",
     }
     assert_equal(
         missing_slots(operator_blueprint),
@@ -592,35 +659,55 @@ def check_higgs_branch_background_field_derivation_gate():
         "operator blueprint has every background-field derivation slot",
     )
 
-    def xi_residual(record):
-        return sum(record["gauge_parameter_cancellation"].values())
+    for dimension, spectrum in operator_blueprint[
+        "constant_background_spectrum"
+    ].items():
+        sectors = {sector["sector"]: sector for sector in spectrum}
+        assert_equal(
+            sectors["gauge_transverse"]["modes"],
+            dimension - 1,
+            f"{dimension}d R_xi vector split generates transverse modes",
+        )
+        for sector_name in ("gauge_longitudinal", "goldstone", "ghost_pair"):
+            assert_equal(
+                sectors[sector_name]["operator"],
+                xi_operator,
+                f"{dimension}d {sector_name} carries the same xi operator",
+            )
+        assert_equal(
+            trace_log_weight(spectrum, xi_operator),
+            Fraction(0),
+            f"{dimension}d generated R_xi spectrum cancels xi trace-log weight",
+        )
 
-    assert_equal(
-        xi_residual(operator_blueprint),
-        Fraction(0),
-        "full generated operator set cancels gauge-parameter dependence",
-    )
+    def omit_sector(spectrum, sector_name):
+        return [sector for sector in spectrum if sector["sector"] != sector_name]
 
-    omitted_ghost = dict(operator_blueprint)
-    omitted_ghost["gauge_parameter_cancellation"] = dict(
-        operator_blueprint["gauge_parameter_cancellation"]
-    )
-    omitted_ghost["gauge_parameter_cancellation"]["ghost"] = Fraction(0)
+    four_dimensional_spectrum = operator_blueprint["constant_background_spectrum"][4]
     assert_equal(
-        xi_residual(omitted_ghost) == 0,
+        trace_log_weight(
+            omit_sector(four_dimensional_spectrum, "ghost_pair"), xi_operator
+        )
+        == 0,
         False,
         "omitting ghosts leaves a gauge-parameter residual",
     )
-
-    omitted_goldstone = dict(operator_blueprint)
-    omitted_goldstone["gauge_parameter_cancellation"] = dict(
-        operator_blueprint["gauge_parameter_cancellation"]
-    )
-    omitted_goldstone["gauge_parameter_cancellation"]["goldstone"] = Fraction(0)
     assert_equal(
-        xi_residual(omitted_goldstone) == 0,
+        trace_log_weight(
+            omit_sector(four_dimensional_spectrum, "goldstone"), xi_operator
+        )
+        == 0,
         False,
         "omitting Goldstone/eaten-hyper data leaves a gauge-parameter residual",
+    )
+    assert_equal(
+        trace_log_weight(
+            omit_sector(four_dimensional_spectrum, "gauge_longitudinal"),
+            xi_operator,
+        )
+        == 0,
+        False,
+        "omitting the nonminimal longitudinal vector leaves a residual",
     )
 
     component_balance_4d = sum(old_component_ledger["component_weights"].values())
@@ -630,24 +717,39 @@ def check_higgs_branch_background_field_derivation_gate():
         "four-dimensional long-multiplet balance is only a diagnostic",
     )
 
-    dimension_reduction = {
-        4: {"gauge_components": 4, "reduced_connection_scalars": 0},
-        3: {"gauge_components": 3, "reduced_connection_scalars": 1},
-        2: {"gauge_components": 2, "reduced_connection_scalars": 2},
-    }
-    for dimension, slots in dimension_reduction.items():
+    for dimension, spectrum in operator_blueprint[
+        "constant_background_spectrum"
+    ].items():
+        vector_components = sum(
+            sector["modes"]
+            for sector in spectrum
+            if sector["sector"] in {"gauge_transverse", "gauge_longitudinal"}
+        )
+        reduced_connection_scalars = sum(
+            sector["modes"]
+            for sector in spectrum
+            if sector["sector"] == "reduced_connection_scalars"
+        )
         assert_equal(
-            slots["gauge_components"] + slots["reduced_connection_scalars"],
+            vector_components,
+            dimension,
+            f"{dimension}d generated vector split has dimension-specific slots",
+        )
+        assert_equal(
+            vector_components + reduced_connection_scalars,
             4,
             f"{dimension}d reduction preserves four connection slots",
         )
-    for dimension in (3, 2):
-        assert_equal(
-            old_component_ledger["component_weights"]["gauge_field"]
-            == dimension_reduction[dimension]["gauge_components"],
-            False,
-            f"{dimension}d Higgs metric audit rejects a fixed 4d gauge-field entry",
-        )
+        if dimension != 4:
+            assert_equal(
+                old_component_ledger["component_weights"]["gauge_field"]
+                == vector_components,
+                False,
+                (
+                    f"{dimension}d Higgs metric audit rejects a fixed 4d "
+                    "gauge-field entry"
+                ),
+            )
 
     unacceptable_status = {
         "component_multiplicity_proof",
