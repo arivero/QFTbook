@@ -1940,8 +1940,8 @@ kernel still reaches a physical observable only through the projection bridge
 below.
 \end{controlledapproximation}
 
-\begin{controlledapproximation}[Finite determinant scheme transport]
-\label{ca:instanton-finite-determinant-scheme-transport}
+\begin{remark}[Finite determinant scheme-transport architecture]
+\label{rem:instanton-finite-determinant-scheme-transport-architecture}
 The universal finite one-loop determinant and orientation constant is not an
 invariant number by itself, but its transformation is narrower than a full
 amplitude transformation.  It belongs to the regulator, coupling coordinate,
@@ -2025,6 +2025,16 @@ orientation normalization have been moved, and unless the separate
 source/projection covariance \eqref{eq:instanton-source-projection-covariance}
 has been checked for the channel being projected.
 
+This paragraph is an architecture identity, not a determinant conversion by
+itself.  The numbers \(\lambda_{\rm act}\), \(\lambda_\Omega\), and
+\(\Gamma_{\mathcal S}/\Gamma_{{\mathcal S}'}\) have evidentiary force only
+after the two regulated fluctuation measures have both been computed.  A
+companion calculation which chooses these multipliers and then defines
+\(C_{{\mathcal S}'}^{\rm inst}\) from
+\eqref{eq:instanton-finite-determinant-constant-transform} tests covariance
+typing, but it has not computed a Pauli--Villars-to-\(\overline{\rm MS}\), or
+any other named continuum, determinant conversion.
+
 With imperfect universal transport, write every determinant-density conversion
 factor as its declared value times \(1+\delta_y\), with
 \(|\delta_y|\le e_y<1\) for
@@ -2064,6 +2074,124 @@ mismatches not represented by the finite channel vector.  Thus scheme transport
 is still an amplitude calculation: moving only the determinant constant, only
 the running coupling, or a source frame without its contragredient projection
 changes the QFT coordinate being compared.
+\end{remark}
+
+\begin{controlledapproximation}[Finite determinant conversion benchmark]
+\label{ca:instanton-finite-determinant-conversion-benchmark}
+The finite-regulator test required by the preceding architecture starts before
+any source projection.  For a determinant regulator \(\mathcal R\), define the
+retained universal density by
+\begin{equation}
+  \mathcal D_{\mathcal R}(Q)
+  =
+  a_{\mathcal R}\,
+  x_{\mathcal R}^{2N_c}\,
+  \Omega_{\mathcal R}\,
+  J_{\mathcal R}^{0}\,
+  \frac{
+    \det{}'D_{F,\mathcal R}\,
+    \det{}'M_{{\rm gh},\mathcal R}
+  }{
+    \bigl(\det{}'H_{B,\mathcal R}\bigr)^{1/2}
+  },
+  \qquad
+  a_{\mathcal R}=\ee^{-X_{\mathcal R}(Q)} .
+  \label{eq:instanton-finite-determinant-benchmark-density}
+\end{equation}
+The factors are read before any channel source is projected: \(a_{\mathcal R}\)
+is the finite action weight, \(x_{\mathcal R}^{2N_c}\) is the running
+collective-coordinate power, \(\Omega_{\mathcal R}\) is the orientation-volume
+normalization, \(J_{\mathcal R}^{0}\) is the bosonic zero-mode Jacobian, and
+the determinant ratio is zero-mode deleted in the same gauge slice.
+
+Take \(N_c=2\) and the following two finite regulators:
+\[
+\begin{array}{c|ccccc}
+\mathcal R
+& a_{\mathcal R}
+& x_{\mathcal R}
+& \Omega_{\mathcal R}
+& J_{\mathcal R}^{0}
+& (\det{}'D_F,\det{}'M_{\rm gh},(\det{}'H_B)^{1/2})
+\\ \hline
+\mathcal S
+& \frac23
+& \frac32
+& \frac57
+& \frac54
+& (2,2,4)
+\\
+\mathcal S'
+& \frac35
+& \frac43
+& \frac78
+& 1
+& (3,3,5).
+\end{array}
+\]
+Thus
+\[
+  C_{\mathcal S}^{\rm det}=\frac54,
+  \qquad
+  C_{{\mathcal S}'}^{\rm det}=\frac95,
+  \qquad
+  \Gamma_{\mathcal S}=\left(\frac32\right)^4,
+  \qquad
+  \Gamma_{{\mathcal S}'}=\left(\frac43\right)^4 .
+\]
+The independently computed density conversion is
+\begin{equation}
+  K_{\mathcal S\to{\mathcal S}'}
+  =
+  \frac{\mathcal D_{{\mathcal S}'}}{\mathcal D_{\mathcal S}}
+  =
+  \frac{50176}{50625}.
+  \label{eq:instanton-finite-determinant-benchmark-ratio}
+\end{equation}
+The architecture factors in
+\eqref{eq:instanton-finite-determinant-constant-transform} are
+\[
+  \lambda_{\rm act}=\frac{10}{9},
+  \qquad
+  \lambda_\Omega=\frac{49}{40},
+  \qquad
+  \frac{\Gamma_{\mathcal S}}{\Gamma_{{\mathcal S}'}}
+  =
+  \frac{6561}{4096}.
+\]
+They would transport \(C_{\mathcal S}^{\rm det}\) to
+\[
+  C_{{\mathcal S}'}^{\rm tr}
+  =
+  \frac{91125}{50176}.
+\]
+The independently computed determinant constant in \(\mathcal S'\) is
+\(9/5\), and therefore
+\[
+  \frac{C_{{\mathcal S}'}^{\rm det}}{C_{{\mathcal S}'}^{\rm tr}}
+  =
+  \frac{50176}{50625}
+  =
+  K_{\mathcal S\to{\mathcal S}'} .
+\]
+This is a finite conversion calculation, not a tautological definition of
+\(C_{{\mathcal S}'}\).  If \(\mathcal S\) and \(\mathcal S'\) are asserted to
+represent the same renormalized instanton amplitude in the same source channel,
+then the remaining matching factor must be the inverse of
+\eqref{eq:instanton-finite-determinant-benchmark-ratio}, or the difference must
+be carried as a bridge residual:
+\begin{equation}
+  \Delta_{\rm bench}
+  =
+  B_{\mathcal C}
+  \bigl(\mathcal D_{{\mathcal S}'}-\mathcal D_{\mathcal S}\bigr).
+  \label{eq:instanton-finite-determinant-benchmark-residual}
+\end{equation}
+Omitting the action weight, running zero-mode power, zero-mode Jacobian,
+orientation volume, or zero-mode-deleted determinant ratio changes
+\eqref{eq:instanton-finite-determinant-benchmark-ratio}.  A quoted continuum
+scheme constant closes the same question only after its own two regulated
+measures have been defined at this level of detail.
 \end{controlledapproximation}
 
 This assembly formula is the point at which the calculation becomes a

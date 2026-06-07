@@ -63,11 +63,15 @@ Target claims:
   reference residuals are amplified by the target/reference integral ratio,
   and source-fluctuation or physical-projection data not included in the
   retained integrals remain separate residuals.
-- `ca:instanton-finite-determinant-scheme-transport`: a finite one-loop
-  determinant constant transports between determinant schemes with the
-  coupling/action conversion, running bosonic zero-mode power, and orientation
-  measure.  Source and physical-projection data are transported separately as
-  channel vectors and covectors.
+- `rem:instanton-finite-determinant-scheme-transport-architecture`: a finite
+  one-loop determinant constant has a scheme-transport architecture involving
+  the coupling/action conversion, running bosonic zero-mode power, and
+  orientation measure.  Source and physical-projection data are transported
+  separately as channel vectors and covectors; this is a covariance typing
+  check, not an independent determinant-conversion computation.
+- `ca:instanton-finite-determinant-conversion-benchmark`: two finite regulated
+  determinant densities are computed independently before their conversion
+  ratio, residual, and inverse matching factor are tested.
 - `ca:instanton-observable-handoff-ledger`: the assembled instanton channel
   must still be mapped to a named physical observable; hard source
   coefficients, theta curvatures, U(1)_A susceptibility kernels, and real-time
@@ -138,7 +142,8 @@ Independent construction:
   finite Gaussian source-quotient covariance identities,
   Wick-paired first source cumulants from cubic normal-mode interactions,
   multiplicative hard-amplitude assembly bounds on signed windows,
-  finite determinant-scheme transport factors,
+  finite determinant-scheme transport factors and an independently computed
+  two-regulator determinant-density benchmark,
   finite observable-handoff comparisons for theta, U(1)_A, and real-time
   axial channels,
   pole-window extraction, mixed-source matrix amputation,
@@ -189,9 +194,10 @@ Domain and remainder assumptions:
 
 Remaining unproved or conditional:
 - The companion does not compute the continuum finite determinant constant,
-  prove convergence of the instanton size integral, prove a Lorentzian LSZ
-  theorem for the auxiliary kernel, construct a full dilute ensemble, or
-  validate any specific phenomenological instanton regime.
+  convert Pauli--Villars to \(\overline{\rm MS}\), prove convergence of the
+  instanton size integral, prove a Lorentzian LSZ theorem for the auxiliary
+  kernel, construct a full dilute ensemble, or validate any specific
+  phenomenological instanton regime.
 
 Imported assumptions:
 - The finite model assumes that the continuum instanton window has already been
@@ -234,6 +240,8 @@ Negative controls:
   channel used as a determinant normalization, source/projection matrices
   absorbed into a universal determinant constant, a finite determinant constant
   transported without the running zero-mode power or orientation measure, a
+  determinant conversion inferred from a chosen transport constant rather than
+  independently computed regulator densities, a
   hard source coefficient used as a theta susceptibility, a dilute
   topological susceptibility used as a real-time rate, a dilute instanton
   curvature substituted for Witten-Veneziano curvature without a comparison
@@ -1945,6 +1953,188 @@ def check_finite_determinant_scheme_transport() -> None:
     )
 
 
+def check_finite_determinant_conversion_benchmark() -> None:
+    def density_components(
+        data: dict[str, Fraction],
+        n_colors: int,
+    ) -> tuple[Fraction, Fraction, Fraction]:
+        determinant_constant = (
+            data["zero_mode_jacobian"]
+            * data["fermion_det"]
+            * data["ghost_det"]
+            / data["sqrt_boson_det"]
+        )
+        gamma = data["x"] ** (2 * n_colors)
+        density = (
+            data["action_weight"]
+            * gamma
+            * data["orientation_volume"]
+            * determinant_constant
+        )
+        return determinant_constant, gamma, density
+
+    n_colors = 2
+    scheme = {
+        "action_weight": Fraction(2, 3),
+        "x": Fraction(3, 2),
+        "orientation_volume": Fraction(5, 7),
+        "zero_mode_jacobian": Fraction(5, 4),
+        "fermion_det": Fraction(2),
+        "ghost_det": Fraction(2),
+        "sqrt_boson_det": Fraction(4),
+    }
+    scheme_prime = {
+        "action_weight": Fraction(3, 5),
+        "x": Fraction(4, 3),
+        "orientation_volume": Fraction(7, 8),
+        "zero_mode_jacobian": Fraction(1),
+        "fermion_det": Fraction(3),
+        "ghost_det": Fraction(3),
+        "sqrt_boson_det": Fraction(5),
+    }
+
+    det_scheme, gamma_scheme, density_scheme = density_components(
+        scheme,
+        n_colors,
+    )
+    det_prime, gamma_prime, density_prime = density_components(
+        scheme_prime,
+        n_colors,
+    )
+
+    assert_equal("finite benchmark determinant constant S", det_scheme, Fraction(5, 4))
+    assert_equal(
+        "finite benchmark determinant constant S prime",
+        det_prime,
+        Fraction(9, 5),
+    )
+    assert_equal("finite benchmark running power S", gamma_scheme, Fraction(81, 16))
+    assert_equal("finite benchmark running power S prime", gamma_prime, Fraction(256, 81))
+    assert_equal(
+        "finite benchmark density conversion",
+        density_prime / density_scheme,
+        Fraction(50176, 50625),
+    )
+
+    action_conversion = scheme["action_weight"] / scheme_prime["action_weight"]
+    orientation_conversion = (
+        scheme_prime["orientation_volume"] / scheme["orientation_volume"]
+    )
+    transported_prime_constant = (
+        det_scheme
+        * action_conversion
+        * gamma_scheme
+        / gamma_prime
+        / orientation_conversion
+    )
+    assert_equal(
+        "finite benchmark action conversion",
+        action_conversion,
+        Fraction(10, 9),
+    )
+    assert_equal(
+        "finite benchmark orientation conversion",
+        orientation_conversion,
+        Fraction(49, 40),
+    )
+    assert_equal(
+        "finite benchmark gamma ratio",
+        gamma_scheme / gamma_prime,
+        Fraction(6561, 4096),
+    )
+    assert_equal(
+        "transport architecture constant before benchmark comparison",
+        transported_prime_constant,
+        Fraction(91125, 50176),
+    )
+    assert_not_equal(
+        "transport architecture constant is not the independently computed constant",
+        transported_prime_constant,
+        det_prime,
+    )
+    assert_equal(
+        "independently computed constant reveals finite conversion ratio",
+        det_prime / transported_prime_constant,
+        Fraction(50176, 50625),
+    )
+
+    channel_kernel = Fraction(11, 13)
+    amplitude_scheme = density_scheme * channel_kernel
+    amplitude_prime = density_prime * channel_kernel
+    benchmark_residual = amplitude_prime - amplitude_scheme
+    matching_factor = density_scheme / density_prime
+    assert_equal(
+        "finite benchmark source-channel residual",
+        benchmark_residual,
+        -Fraction(4939, 218400),
+    )
+    assert_equal(
+        "inverse finite matching factor",
+        matching_factor,
+        Fraction(50625, 50176),
+    )
+    assert_equal(
+        "inverse finite matching restores same-channel amplitude",
+        matching_factor * amplitude_prime,
+        amplitude_scheme,
+    )
+
+    full_conversion = density_prime / density_scheme
+    negative_controls = {
+        "constant-only determinant ratio misses full finite conversion":
+            det_prime / det_scheme,
+        "omitting action weight changes finite determinant conversion":
+            (gamma_prime * scheme_prime["orientation_volume"] * det_prime)
+            / (gamma_scheme * scheme["orientation_volume"] * det_scheme),
+        "omitting running zero-mode power changes finite determinant conversion":
+            (
+                scheme_prime["action_weight"]
+                * scheme_prime["orientation_volume"]
+                * det_prime
+            )
+            / (
+                scheme["action_weight"]
+                * scheme["orientation_volume"]
+                * det_scheme
+            ),
+        "omitting orientation volume changes finite determinant conversion":
+            (scheme_prime["action_weight"] * gamma_prime * det_prime)
+            / (scheme["action_weight"] * gamma_scheme * det_scheme),
+        "omitting zero-mode jacobian changes finite determinant conversion":
+            (
+                scheme_prime["action_weight"]
+                * gamma_prime
+                * scheme_prime["orientation_volume"]
+                * scheme_prime["fermion_det"]
+                * scheme_prime["ghost_det"]
+                / scheme_prime["sqrt_boson_det"]
+            )
+            / (
+                scheme["action_weight"]
+                * gamma_scheme
+                * scheme["orientation_volume"]
+                * scheme["fermion_det"]
+                * scheme["ghost_det"]
+                / scheme["sqrt_boson_det"]
+            ),
+        "omitting determinant ratio changes finite determinant conversion":
+            (
+                scheme_prime["action_weight"]
+                * gamma_prime
+                * scheme_prime["orientation_volume"]
+                * scheme_prime["zero_mode_jacobian"]
+            )
+            / (
+                scheme["action_weight"]
+                * gamma_scheme
+                * scheme["orientation_volume"]
+                * scheme["zero_mode_jacobian"]
+            ),
+    }
+    for name, shortcut in negative_controls.items():
+        assert_not_equal(name, shortcut, full_conversion)
+
+
 def check_observable_handoff_map() -> None:
     hard_four_source_coefficient = Fraction(5, 7)
     one_instanton_activity = Fraction(7, 13)
@@ -3556,6 +3746,7 @@ def main() -> None:
     check_hard_amplitude_assembly_bound()
     check_hard_reference_channel_calibration()
     check_finite_determinant_scheme_transport()
+    check_finite_determinant_conversion_benchmark()
     check_observable_handoff_map()
     check_source_kernel_physical_projection_bridge()
     check_pole_normalized_four_source_matrix_extraction()

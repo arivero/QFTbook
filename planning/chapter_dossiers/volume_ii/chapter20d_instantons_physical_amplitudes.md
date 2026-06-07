@@ -159,12 +159,17 @@
   determinant calibration for the assembled hard amplitude; one physical
   reference channel fixes only the same-frame finite determinant constant, with
   reference residuals amplified by the target/reference integral ratio.
-- `ca:instanton-finite-determinant-scheme-transport`: finite determinant
-  scheme-transport block showing that a one-loop determinant constant moves
-  between schemes with the coupling/action conversion, running bosonic
+- `rem:instanton-finite-determinant-scheme-transport-architecture`: finite
+  determinant scheme-transport architecture showing where a one-loop determinant
+  constant is typed with the coupling/action conversion, running bosonic
   zero-mode power, and orientation measure.  Source-frame and physical
   projection data are channel vectors/covectors, not part of the universal
   determinant constant.
+- `ca:instanton-finite-determinant-conversion-benchmark`: finite-regulator
+  benchmark computing two determinant densities before source projection.  The
+  check retains the action weight, running zero-mode power, orientation volume,
+  bosonic zero-mode Jacobian, and zero-mode-deleted determinant ratio before
+  testing the conversion ratio, residual, and inverse matching factor.
 - `sec:instanton-source-kernel-physical-projection`: projection bridge from an
   assembled Euclidean instanton source kernel to a physical pole, spectral,
   OPE, or inclusive observable coordinate.
@@ -291,11 +296,19 @@
   quotients, zero-mode rank, endpoint tails, and pole/spectral/OPE projection
   data remain either inside the transported \(B_\alpha\) integral or in the
   residual.
-- The finite determinant scheme-transport block makes the normalization
-  coordinate explicit.  A Pauli--Villars or subtraction-scheme constant cannot
-  be copied into a hard amplitude unless the coupling coordinate, collective
-  zero-mode power, and orientation convention are transported, and unless the
-  source/projection covariance is checked separately in the target channel.
+- The finite determinant scheme-transport architecture makes the normalization
+  coordinate explicit but does not by itself compute a named determinant
+  conversion.  A Pauli--Villars or subtraction-scheme constant cannot be copied
+  into a hard amplitude unless the coupling coordinate, collective zero-mode
+  power, and orientation convention are transported, unless the two regulated
+  fluctuation measures have both been computed, and unless source/projection
+  covariance is checked separately in the target channel.
+- The finite determinant conversion benchmark supplies that missing type of
+  evidence in a controlled finite model: two regulator densities are computed
+  from their action weights, \(x^{2N_c}\) powers, orientation volumes,
+  zero-mode Jacobians, and zero-mode-deleted determinant ratios.  The resulting
+  conversion \(50176/50625\) is not defined by the transport equation; it is
+  measured first, then used to test the residual or inverse matching factor.
 - The physical projection bridge opens the last compressed step between a
   Euclidean instanton source coefficient and a physical claim.  It separates
   stable-particle pole extraction, spectral-bin/discontinuity functionals,
@@ -405,10 +418,12 @@
   amplification by the target/reference ratio and negative controls for
   omitted source-fluctuation transport, omitted physical-projection transport,
   rank-lost references, and nearly canceled references,
-  verifies finite determinant scheme transport, including the action/coupling
-  conversion, running zero-mode power, orientation measure, channel-vector
-  source/projection covariance, channel residual bound, and negative controls
-  for determinant-constant-only transport,
+  verifies finite determinant scheme-transport architecture, including the
+  action/coupling conversion, running zero-mode power, orientation measure,
+  channel-vector source/projection covariance, channel residual bound, and
+  negative controls for determinant-constant-only transport; it also verifies a
+  finite determinant conversion benchmark in which two regulator densities are
+  computed independently before testing the density ratio and inverse matching,
   verifies the observable-map distinction between hard source coefficients,
   dilute theta curvature, \(U(1)_A\)-odd zero-mode-zone kernels, real-time
   axial rates, and Witten--Veneziano curvature comparison budgets,
@@ -529,12 +544,13 @@
   check rejects calibrations that try to absorb those channel-dependent
   factors.
 - 2026-06-06 finite determinant scheme-transport pass: added
-  `ca:instanton-finite-determinant-scheme-transport` after the reference
-  calibration block.  This pass treats the finite determinant constant as an
-  amplitude-scheme coordinate tied to the coupling/action conversion, running
-  zero-mode power, and orientation measure, while source-frame and physical
-  projection data are channel maps.  The companion exact-rational check rejects
-  transporting the constant without the universal factors.
+  the block now recorded as
+  `rem:instanton-finite-determinant-scheme-transport-architecture` after the
+  reference calibration block.  This pass treats the finite determinant constant
+  as an amplitude-scheme coordinate tied to the coupling/action conversion,
+  running zero-mode power, and orientation measure, while source-frame and
+  physical projection data are channel maps.  The companion exact-rational check
+  rejects transporting the constant without the universal factors.
 - 2026-06-06 issue #597 scheme-transport re-audit: corrected the transport
   block so source/projection changes cannot be absorbed into
   \(C_{\mathcal S}^{\rm inst}\).  The manuscript now separates the universal
@@ -542,6 +558,14 @@
   \(\mathbf cT^{-1}T\mathbf m=\mathbf c\mathbf m\), and the companion rejects a
   source/projection leakage scalar calibrated in one channel as a false
   universal determinant normalization.
+- 2026-06-07 issue #597 finite determinant conversion benchmark: demoted the
+  old determinant transport block to an architecture remark and added
+  `ca:instanton-finite-determinant-conversion-benchmark`.  The new benchmark
+  computes two finite regulated densities before source projection, including
+  action weight, \(x^{2N_c}\), orientation volume, zero-mode Jacobian, and
+  determinant ratio.  The companion verifies the density conversion
+  \(50176/50625\), the finite residual, and the inverse matching factor, and
+  rejects determinant-constant-only or omitted-factor shortcuts.
 - 2026-06-06 observable-map pass: added a physics bridge from the assembled
   instanton amplitude to QCD observables, explicitly separating hard source
   coefficients, theta curvature, \(U(1)_A\)-odd susceptibility kernels, and

@@ -741,10 +741,12 @@ Current checks:
   window budget, the finite-window hard-coefficient bound requiring an
   absolute error budget, a tail majorant, and a noncancellation margin
   \(|J_R|/M_R\) before a relative instanton coefficient is quoted, the
-  finite-scheme transport bound showing how instanton determinant
-  constants compensate coupling-coordinate shifts, running zero-mode powers, and
-  orientation conventions while source/operator frames and physical projections
-  transport separately as channel data, the
+  finite-scheme transport architecture showing how instanton determinant
+  constants are typed with coupling-coordinate shifts, running zero-mode powers,
+  and orientation conventions while source/operator frames and physical
+  projections transport separately as channel data, the finite determinant
+  conversion benchmark which computes two regulator densities before testing the
+  density ratio and inverse matching factor, the
   four-source amplitude rank-and-error bound requiring nondegenerate right/left
   zero-mode overlap determinants and propagating entrywise overlap errors
   through a rank-margin residual, the source-conditioning check using
@@ -868,10 +870,12 @@ Current checks:
   control, the hard reference-channel calibration which fixes only a
   same-frame finite determinant constant and propagates reference residuals by
   the target/reference integral ratio,
-  the finite determinant scheme-transport check tying the universal determinant
-  constant to the coupling/action conversion, running zero-mode power, and
-  orientation measure, with source/projection covariance checked separately as
-  channel-vector data,
+  the finite determinant scheme-transport architecture check tying the universal
+  determinant constant to the coupling/action conversion, running zero-mode
+  power, and orientation measure, with source/projection covariance checked
+  separately as channel-vector data, the finite determinant conversion benchmark
+  computing two regulator densities with action weight, orientation volume,
+  zero-mode Jacobian, and determinant-ratio data before testing matching,
   the cross-chapter hard-scale benchmark regression that keeps
   \(\Gamma_{\rm coll}(Q)\) in both Ch20 and Ch20D,
   the observable-map distinction among hard source coefficients, theta
