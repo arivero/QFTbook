@@ -1613,6 +1613,82 @@ into the assembled channel and then into the Wilsonian, pole, spectral, or
 inclusive projection described below.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[Retained-window crossed hard-channel amplitude]
+\label{ca:instanton-size-integrated-crossed-hard-channel}
+The scalar coefficient \(C_I^{RR\to LL}\) in
+\eqref{eq:instanton-crossed-helicity-amplitude} is the output of the
+common-regulator size integral, not a name for the BPST density alone.  After
+the source ranks, color orientation, normal-source quotient, amputation,
+crossing residues, and source-window shape have been fixed in the same
+convention, write the retained scalar hard coefficient as
+\begin{equation}
+  C_{I,\Lambda,R}^{RR\to LL}(Q)
+  =
+  \mathcal K_{\rm reg}^{RR\to LL}\,
+  \Gamma_{\rm coll}(Q)\,
+  \Lambda_{\rm ht}^{29/3}\,
+  Q^{-35/3}\,
+  H_R^{(2)}(c_1,\ldots,c_4)
+  +R_C.
+  \label{eq:instanton-size-integrated-crossed-coefficient}
+\end{equation}
+Here the retained two-term size window is
+\begin{equation}
+  H_R^{(2)}(c_1,\ldots,c_4)
+  :=
+  \int_0^R
+    s^{32/3}\prod_{\ell=1}^{4}F_\ell(c_\ell s)\,\dd s
+  +3A_0R^{-1/3}
+  +\frac37A_1R^{-7/3}.
+  \label{eq:instanton-size-integrated-tail-window}
+\end{equation}
+The prefactor \(\mathcal K_{\rm reg}^{RR\to LL}\) includes the center
+delta, the finite determinant convention, the zero-mode source determinants,
+the Haar tensor, the nonzero-mode source quotient, the external-leg
+amputation convention, and the crossing residue, all before the final
+external spinors are contracted.  The two tail terms in
+\eqref{eq:instanton-size-integrated-tail-window} are the same retained
+endpoint data as in
+\eqref{eq:instanton-hard-window-tail-subtracted-integral}; they are not
+optional improvements to a density integral.
+
+The fixed-helicity amplitude obtained from this retained coefficient is
+\begin{equation}
+  \mathcal M_{I,\Lambda,R}^{RR\to LL}
+  =
+  \ee^{\ii\theta}\,
+  C_{I,\Lambda,R}^{RR\to LL}(Q)\,
+  \mathsf H_{\rm hel}(1_L,2_L;3_R,4_R)
+  +R_M .
+  \label{eq:instanton-size-integrated-helicity-amplitude}
+\end{equation}
+If \(C^0\) and \(H_{\rm hel}^0\) denote the retained scalar coefficient and
+spinor contraction, and if
+\[
+  |R_C|\le B_C,\qquad
+  |\delta H_{\rm hel}|\le B_{\rm hel},
+\]
+then in the same external-state norm
+\begin{equation}
+  |R_M|
+  \le
+  |H_{\rm hel}^0|B_C
+  +|C^0|B_{\rm hel}
+  +B_CB_{\rm hel}
+  +B_{\rm proj}+B_{\rm sec}.
+  \label{eq:instanton-size-integrated-helicity-bound}
+\end{equation}
+Here \(B_C\) contains the density, determinant, zero-mode source, Haar,
+normal-source quotient, amputation, crossing, and hard-window endpoint
+errors.  Equation~\eqref{eq:instanton-size-integrated-helicity-bound} is the
+place where the size-window calculation becomes a physical external-state
+statement.  Dropping \(H_R^{(2)}\) returns a pre-window source coefficient;
+dropping the nonzero-mode source quotient returns a determinant-normalized
+zero-mode answer; dropping the helicity term returns a scalar crossed kernel.
+All three objects may use the same instanton moduli space, but they are not
+the same QFT amplitude.
+\end{controlledapproximation}
+
 \begin{controlledapproximation}[Screened hard-size majorant window]
 \label{ca:instanton-hard-screened-retained-window}
 The tail subtraction in

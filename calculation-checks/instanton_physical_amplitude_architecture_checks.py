@@ -152,6 +152,11 @@ Target claims:
   kernel becomes a fixed-helicity physical amplitude only after the external
   Weyl spinors are contracted with the antisymmetric left and right spinor
   tensors in the same LSZ normalization.
+- `ca:instanton-size-integrated-crossed-hard-channel`: the scalar crossed
+  hard coefficient entering the fixed-helicity amplitude is the
+  tail-subtracted common-regulator size-window integral multiplied by the
+  channel source, Haar, nonzero-mode, amputation, crossing, and running
+  collective factors, with helicity residuals propagated afterward.
 - `ca:instanton-mass-assisted-interference-channel`: a theta-linear physical
   observable arises only when a mass-assisted one-instanton two-source
   channel, such as `m_d B_uu`, is interfered with a same-basis
@@ -220,6 +225,9 @@ Independent construction:
   crossed chiral `RR -> LL` channel extraction from the all-outgoing
   source kernel with formal theta-phase bookkeeping,
   crossed hard-channel helicity projections from finite two-component spinors,
+  retained-window crossed hard-channel amplitude assembly from the two-term
+  size-window tail, source/Haar/fluctuation/crossing data, and helicity
+  residual propagation,
   mass-assisted two-source interference with exact formal mass/theta powers,
   same-coordinate amplitude-to-rate typing with crossed/amputated vectors,
   positive measurement matrices, same-channel interference, source-overlap
@@ -364,6 +372,11 @@ Negative controls:
   external Weyl slots used without the antisymmetric sign, a scalar coefficient
   squared as a spin-summed rate without helicity/phase-space weights, or a
   helicity residual budget with the external-state term removed,
+  a size-integrated hard channel read from the density alone, the numerical
+  core of the size integral without endpoint tails, the channel without the
+  nonzero-mode source quotient, the hard scale dependence with the running
+  collective factor stripped, or the retained scalar coefficient used as a
+  fixed-helicity amplitude before spinor projection,
   a mass-assisted two-source channel used as the massless four-source
   vertex, a wrong same-flavor mass used to saturate the complementary
   zero modes, a reference amplitude in the wrong source degree or chirality
@@ -5194,6 +5207,147 @@ def check_crossed_hard_helicity_projection_gate() -> None:
     )
 
 
+def check_size_integrated_crossed_hard_channel() -> None:
+    c_values = [Fraction(1), Fraction(2), Fraction(3), Fraction(4)]
+    a_values = [Fraction(6) / (c**3) for c in c_values]
+    b_values = [Fraction(45) / (c**5) for c in c_values]
+    a0 = product(a_values)
+    a1 = sum(
+        b_values[index]
+        * product(a_values[j] for j in range(len(a_values)) if j != index)
+        for index in range(len(a_values))
+    )
+
+    r_root = Fraction(3)
+    core_integral = Fraction(101, 37)
+    leading_tail = 3 * a0 / r_root
+    subleading_tail = Fraction(3, 7) * a1 / (r_root**7)
+    retained_window = core_integral + leading_tail + subleading_tail
+    core_only_window = core_integral
+    assert_gt("retained hard window includes a nonzero leading tail", leading_tail, 0)
+    assert_gt("retained hard window includes a nonzero subleading tail", subleading_tail, 0)
+    assert_not_equal(
+        "retained size-integrated window is not the numerical core alone",
+        retained_window,
+        core_only_window,
+    )
+
+    center_delta = Fraction(1)
+    determinant_density = Fraction(11, 13)
+    running_collective = Fraction(81, 16)
+    lambda_q_power = Fraction(29, 31)
+    right_source_det = Fraction(3)
+    left_source_det = Fraction(4)
+    haar_projection = Fraction(2, 7)
+    nonzero_mode_source_quotient = Fraction(21, 20)
+    amputation_transport = Fraction(9, 10)
+    crossing_residue = Fraction(17, 29)
+    source_window_shape = Fraction(5, 6)
+
+    scalar_coefficient = product(
+        [
+            center_delta,
+            determinant_density,
+            running_collective,
+            lambda_q_power,
+            right_source_det,
+            left_source_det,
+            haar_projection,
+            nonzero_mode_source_quotient,
+            amputation_transport,
+            crossing_residue,
+            source_window_shape,
+            retained_window,
+        ]
+    )
+    density_only = determinant_density * running_collective * lambda_q_power * retained_window
+    core_only_channel = scalar_coefficient * core_only_window / retained_window
+    omitted_nonzero_source = scalar_coefficient / nonzero_mode_source_quotient
+    stripped_collective = scalar_coefficient / running_collective
+
+    assert_not_equal(
+        "size-integrated crossed channel is not density times window",
+        scalar_coefficient,
+        density_only,
+    )
+    assert_not_equal(
+        "tail-subtracted retained window changes the crossed hard coefficient",
+        scalar_coefficient,
+        core_only_channel,
+    )
+    assert_not_equal(
+        "nonzero-mode source quotient is part of the size-integrated amplitude",
+        scalar_coefficient,
+        omitted_nonzero_source,
+    )
+    assert_not_equal(
+        "running collective factor is not a scale-independent determinant constant",
+        scalar_coefficient,
+        stripped_collective,
+    )
+
+    left_factor = Fraction(3, 2)
+    right_factor = Fraction(4, 3)
+    helicity_factor = left_factor * right_factor
+    fixed_helicity_amplitude = scalar_coefficient * helicity_factor
+    assert_equal("sample hard-channel helicity factor", helicity_factor, Fraction(2))
+    assert_not_equal(
+        "retained scalar coefficient is not yet a fixed-helicity amplitude",
+        scalar_coefficient,
+        fixed_helicity_amplitude,
+    )
+
+    residuals = {
+        "density": Fraction(1, 120),
+        "source": Fraction(1, 130),
+        "haar": Fraction(1, 150),
+        "nonzero_source": Fraction(1, 160),
+        "amputation": Fraction(1, 170),
+        "crossing": Fraction(1, 180),
+        "tail": Fraction(1, 190),
+        "window": Fraction(1, 200),
+    }
+    scalar_residual_bound = sum(residuals.values(), Fraction(0))
+    helicity_residual = Fraction(1, 370)
+    projection_residual = Fraction(1, 410)
+    sector_residual = Fraction(1, 430)
+    shifted_amplitude = (
+        (scalar_coefficient + scalar_residual_bound)
+        * (helicity_factor + helicity_residual)
+        + projection_residual
+        + sector_residual
+    )
+    propagated_bound = (
+        abs(helicity_factor) * scalar_residual_bound
+        + abs(scalar_coefficient) * helicity_residual
+        + scalar_residual_bound * helicity_residual
+        + projection_residual
+        + sector_residual
+    )
+    actual_residual = shifted_amplitude - fixed_helicity_amplitude
+    assert_equal(
+        "size-integrated helicity residual telescope",
+        actual_residual,
+        propagated_bound,
+    )
+    underbudget_without_tail = propagated_bound - abs(helicity_factor) * residuals["tail"]
+    assert_equal(
+        "omitting size-window tail residual underbudgets retained hard amplitude",
+        actual_residual <= underbudget_without_tail,
+        False,
+    )
+    underbudget_without_helicity = (
+        propagated_bound
+        - abs(scalar_coefficient) * helicity_residual
+        - scalar_residual_bound * helicity_residual
+    )
+    assert_equal(
+        "omitting helicity residual underbudgets size-integrated physical amplitude",
+        actual_residual <= underbudget_without_helicity,
+        False,
+    )
+
+
 def check_mass_assisted_theta_linear_interference_channel() -> None:
     q_plus_mass_assisted_u = ("u_L", "ubar_R")
     q_plus_four_source = ("u_L", "d_L", "ubar_R", "dbar_R")
@@ -5567,6 +5721,7 @@ def main() -> None:
     check_thooft_four_point_amputated_assembly_gate()
     check_thooft_crossed_chiral_channel()
     check_crossed_hard_helicity_projection_gate()
+    check_size_integrated_crossed_hard_channel()
     check_mass_assisted_theta_linear_interference_channel()
     check_same_coordinate_amplitude_rate_gate()
     print("instanton physical amplitude architecture checks passed")

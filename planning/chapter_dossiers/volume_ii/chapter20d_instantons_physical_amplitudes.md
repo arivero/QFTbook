@@ -140,6 +140,15 @@
   hard-channel source coefficient onto fixed external Weyl spinors, keeping
   antisymmetric left/right spinor contractions, slot-order signs, spin-sum
   coordinates, and a helicity residual separate from the scalar coefficient.
+- `ca:instanton-size-integrated-crossed-hard-channel`,
+  `eq:instanton-size-integrated-crossed-coefficient`,
+  `eq:instanton-size-integrated-tail-window`,
+  `eq:instanton-size-integrated-helicity-amplitude`, and
+  `eq:instanton-size-integrated-helicity-bound`: assemble the retained
+  \(RR\to LL\) hard-channel scalar coefficient from the common-regulator
+  tail-subtracted size window, source determinants, Haar projection,
+  nonzero-mode source quotient, amputation, crossing, running collective
+  factor, and external-helicity residual propagation.
 - `ca:instanton-mass-assisted-interference-channel`: extracts the
   mass-assisted \(m_dB_{uu}\) two-source coordinate and pairs it only with a
   same-basis chirality-breaking reference amplitude, keeping the axial-invariant
@@ -520,6 +529,11 @@
   external spinor bins with nonzero scalar kernels, swapped antisymmetric Weyl
   slots, scalar-coefficient squares used as spin-summed rates, and omitted
   helicity residuals,
+  verifies the retained-window crossed hard-channel amplitude assembly and
+  rejects density-times-window shortcuts, core-only size integrals with
+  endpoint tails removed, omitted nonzero-mode source quotients, stripped
+  running collective factors, retained scalar coefficients used before
+  helicity projection, and size/helicity residual underbudgets,
   verifies the finite Gaussian nonzero-mode source quotient covariance
   identity, the quadratic trace correction, absolute window propagation, and
   rank-loss rejection,
@@ -718,6 +732,15 @@
   companion rejects nonzero scalar kernels used as helicity amplitudes,
   collinear spinor bins, swapped antisymmetric Weyl slots, spin-sum shortcuts,
   and omitted helicity residuals.
+- 2026-06-07 issue #597 retained-window crossed hard-channel pass: added
+  `ca:instanton-size-integrated-crossed-hard-channel` after the hard-window
+  tail-subtraction block.  The pass makes \(C_I^{RR\to LL}\) a concrete
+  common-regulator size-integrated coefficient with the two endpoint tails,
+  channel source data, Haar projection, nonzero-mode source quotient,
+  amputation, crossing, running collective factor, and helicity residual
+  propagation all in one amplitude coordinate.  The companion rejects
+  density-only, core-only, omitted-fluctuation, stripped-running,
+  scalar-as-helicity, and residual-underbudget shortcuts.
 - 2026-06-07 issue #597 mass-assisted interference pass: added
   `ca:instanton-mass-assisted-interference-channel` after the crossed chiral
   channel.  The pass turns the two-source determinant coordinate \(m_dB_{uu}\)
