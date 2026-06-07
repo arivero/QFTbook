@@ -12839,7 +12839,7 @@ quotient pre-Hilbert spaces, and an isometry between dense pre-Hilbert spaces
 extends uniquely to a unitary between their Hilbert completions.
 \end{proof}
 
-\begin{quotedtheorem}[Renormalized dynamic \(\Phi^4_3\) theorem package]
+\begin{quotedtheorem}[Renormalized dynamic \(\Phi^4_3\) SPDE construction]
 \label{thm:renormalized-phi-four-three-spde-datum}
 Let the spatial manifold be a finite three-dimensional torus, let
 \(\xi_\epsilon=\rho_\epsilon\ast\xi\) be a smooth space-time mollification
@@ -12847,7 +12847,7 @@ of white noise, and fix the normalization of
 \eqref{eq:phi-four-three-renormalized-spde}.  In the BPHZ
 regularity-structure chart there are local constants
 \(C_{1,\epsilon}\), \(C_{2,\epsilon}\), and a finite mass coordinate
-\(c_{\rm fin}\), such that the following statements hold.
+\(c_{\rm fin}\), such that the following SPDE statements hold.
 \begin{enumerate}[label=(\roman*)]
   \item For each fixed \(\epsilon>0\) and smooth initial field, the cutoff
   equation \eqref{eq:phi-four-three-renormalized-spde} has a unique smooth
@@ -12864,20 +12864,46 @@ regularity-structure chart there are local constants
   equation in its finite-cutoff Gibbs law gives stationary solutions, and
   every limiting stationary law is invariant for the limiting Markov
   semigroup.
-  \item In a common finite-volume regulator and renormalization chart, this
-  invariant law has the same Schwinger moments as the constructive
-  \(\Phi^4_3\) Euclidean measure with the same renormalized mass coordinate.
-  Equivalently, after the field and mass normalizations are matched, the
-  SPDE stationary construction and the constructive Euclidean construction
-  determine the same OS input hierarchy.
 \end{enumerate}
 \end{quotedtheorem}
 
-This renormalized \(\Phi^4_3\) SPDE theorem is a quoted theorem-boundary for
+The quoted theorem supplies the dynamic side of the construction: a
+renormalized Markov process and candidate stationary laws in the chosen BPHZ
+coordinate.  It does not, by itself, identify those laws with a constructive
+Euclidean \(\Phi^4_3\) measure or transfer OS positivity from a Euclidean
+regulator.  That comparison is a separate theorem-level input.
+
+\begin{hypothesis}[\(\Phi^4_3\) SPDE/constructive identification]
+\label{hyp:phi-four-three-spde-constructive-identification}
+There are finite-volume SPDE cutoff laws \(\mu_N^{\rm spde}\) and constructive
+Euclidean cutoff laws \(\mu_N^{\rm cons}\), placed in the same field
+normalization, mass coordinate, local-counterterm convention, and positive-time
+test-function algebra, such that the following hold.
+\begin{enumerate}[label=(\roman*)]
+\item The stationary SPDE cutoff laws converge to a limiting invariant law
+\(\mu_{\rm spde}\) and the constructive cutoff laws converge to a Euclidean
+measure \(\mu_{\rm cons}\) in a topology strong enough for bounded cylinder
+observables.
+\item For every finite positive-time polynomial window, the SPDE and
+constructive Schwinger moments agree in the limit after polynomial truncation
+tails and uniform-integrability errors are sent to zero.
+\item The constructive hierarchy supplies the OS positivity, Euclidean
+covariance, symmetry, Hermiticity, positive-time semigroup regularity, and
+growth inputs listed in
+Construction~\ref{con:spde-common-schwinger-hierarchy-comparison}.
+\end{enumerate}
+Under this additional input, the stationary-SPDE hierarchy and the
+constructive hierarchy determine the same OS input hierarchy by
+Construction~\ref{con:spde-common-schwinger-hierarchy-comparison}.  The
+hypothesis becomes available after the common-regulator comparison estimates
+in (i)--(iii) have been supplied.
+\end{hypothesis}
+
+This renormalized \(\Phi^4_3\) SPDE theorem is a quoted theorem boundary for
 the regularity-structures construction, not a proof completed here.  The
 quoted source lineage is Hairer's regularity-structures construction and the
 Hairer--Mourrat--Weber treatments of dynamic \(\Phi^4_3\) renormalization.
-The four clauses are logically distinct.  Local cutoff well-posedness is an
+The three SPDE clauses are logically distinct.  Local cutoff well-posedness is an
 ordinary smooth parabolic theorem.  Renormalized convergence is the singular
 SPDE theorem: one first builds the canonical model from the mollified noise;
 its negative tree components diverge as \(\epsilon\downarrow0\); the BPHZ
@@ -12896,10 +12922,12 @@ Theorem~\ref{thm:spde-compact-reconstruction}.  The explicit local term in
 equation, of the BPHZ action on the negative trees.  Invariant measures are
 identified by finite-cutoff stationarity, tightness, and convergence of
 stationary solutions.  Identification with the constructive Euclidean
-\(\Phi^4_3\) measure is still another step: both constructions must be placed
-in the same finite-volume cutoff chart, the mass and field coordinates must be
-matched, and equality of the limiting Schwinger moments must be proved.  Each
-sentence in this paragraph names a theorem-level estimate; none is to be
+\(\Phi^4_3\) measure is precisely
+Hypothesis~\ref{hyp:phi-four-three-spde-constructive-identification}: both
+constructions must be placed in the same finite-volume cutoff chart, the mass
+and field coordinates must be matched, and equality of the limiting Schwinger
+moments must be proved with enough tail control for the polynomial OS windows.
+Each sentence in this paragraph names a theorem-level estimate; none is to be
 treated as proved merely by being quoted.
 
 The proof boundary has narrowed.
@@ -13149,9 +13177,9 @@ chart.  For \(f\in\mathcal S(\R^d)\), write
 \[
   \Phi(f)(\varphi)=\varphi(f).
 \]
-The comparison datum needed for OS reconstruction is the equality of
+The comparison input needed for OS reconstruction is the equality of
 Schwinger hierarchies, not equality of auxiliary stochastic processes.  A
-precise sufficient datum is the following.
+precise sufficient input is the following.
 \begin{enumerate}[label=(\roman*)]
   \item For each \(n\), both moment functionals
   \[
@@ -13210,7 +13238,7 @@ Wightman distributions agree under the induced unitary identification.  If
 the comparison is first proved only for bounded cylinder functions, the
 bounded-to-polynomial passage must use the uniform-integrability and
 truncation criteria proved above; bounded-cylinder equality by itself supplies
-only the bounded part of the comparison datum.  Equality of probability laws
+only the bounded part of the comparison input.  Equality of probability laws
 is a stronger route to the same conclusion when a moment-determinacy theorem is
 available, but OS reconstruction uses the Schwinger hierarchy itself as its
 input.

@@ -1531,7 +1531,7 @@ Current checks:
   geometric factors used to pass from positive gap exponents to uniform and
   cutoff-increment kernel bounds, together with the one-loop relative-scale
   gap arithmetic for the local and off-diagonal sectors of the dynamic
-  \(\Phi^4_3\) prototype, the negative cubic drift ledger, and the sharp
+  \(\Phi^4_3\) prototype, the negative cubic drift coordinate list, and the sharp
   Fourier-cutoff shell counts for the one-loop coordinate \(C_1\), plus the
   dyadic block arithmetic proving logarithmic growth of the two-loop
   coordinate \(C_2\), the bounded dyadic shell increment for \(C_2\), and
@@ -1566,7 +1566,9 @@ Current checks:
   double-increment scale gains entering that bound, the OS-II reconstruction-growth
   bookkeeping that keeps reflected positive-time cylinder tests at linear
   seminorm order, the finite SPDE/constructive hierarchy-transfer check for
-  matching OS Gram forms and growth envelopes, the finite-volume
+  matching OS Gram forms and growth envelopes, the \(\Phi^4_3\)
+  SPDE/constructive status-split check that rejects treating common-regulator
+  Schwinger equality as a consequence of SPDE construction alone, the finite-volume
   \(\Phi^4_2\) route-identification normalization budget that keeps common
   unnormalized density limits from hiding partition-function errors, the
   finite-window OS defect

@@ -32,7 +32,7 @@ data.
 - `Xi`, `X`, `mathcal I`: noise symbol, stochastic convolution symbol, and
   heat-integration map in the dynamic \(\Phi^4_3\) homogeneity ledger.
 - `Y`: first nonlinear response \(\mathcal I(X^3)\) in the drift-level
-  negative homogeneity ledger for dynamic \(\Phi^4_3\).
+  negative homogeneity coordinate list for dynamic \(\Phi^4_3\).
 - `e_n`, `M`, `C_1(M)`, `S_r`: Fourier mode, sharp spatial cutoff, one-loop
   local coordinate, and \(\ell^\infty\)-shell used in the explicit
   one-loop growth calculation.
@@ -597,10 +597,12 @@ data.
   a dyadic wavelet construction and separate coarse/fine scale estimates.
 - Presents the renormalized `Phi^4_3` dynamic equation at cutoff with
   one-loop and two-loop local counterterm constants; the quoted theorem now
-  separates local cutoff well-posedness, BPHZ-renormalized convergence,
-  invariant-law construction, and identification with the constructive
-  Euclidean \(\Phi^4_3\) measure after matching regulator and local
-  coordinates.
+  contains only the SPDE-side construction statements: local cutoff
+  well-posedness, BPHZ-renormalized convergence, and invariant-law
+  construction.  Identification with the constructive Euclidean
+  \(\Phi^4_3\) measure is a separate common-regulator comparison hypothesis
+  requiring matched field/mass coordinates, Schwinger-moment equality, and
+  polynomial-window tail control.
 - Proves the finite-cutoff algebraic local-counterterm calculation for
   dynamic \(\Phi^4_3\): the one-loop Wick contraction gives
   \(-3\lambda C_{1,\epsilon}X_\epsilon\), the non-nested two-loop local
@@ -616,7 +618,7 @@ data.
   \((9/2)\lambda_{\rm dyn}^2C_{2,\epsilon}-c_{\rm fin}/2\); matching this to
   the constructive sunset coordinate is the remaining common-chart theorem
   input rather than a raw-drift comparison.
-- Proves the drift-level negative homogeneity ledger for the first nonlinear
+- Proves the drift-level negative homogeneity coordinate list for the first nonlinear
   dynamic \(\Phi^4_3\) expansion: for \(0<\kappa<1/14\), the negative cubic
   drift monomials are exactly \(X^3\) and \(X^2\mathcal I(X^3)\), while
   \(X\mathcal I(X^3)^2\) and \(\mathcal I(X^3)^3\) have positive
@@ -1537,3 +1539,15 @@ data maps.
   a companion exact arithmetic check for the normalized density comparison
   budget so partition-function convergence cannot be hidden under an
   unnormalized density comparison.
+- 2026-06-07 issue #844/#755 status-architecture pass: split the dynamic
+  \(\Phi^4_3\) quoted theorem boundary from the common-regulator constructive
+  identification input.  Before the pass, the quoted theorem included equality
+  of SPDE stationary Schwinger moments with the constructive Euclidean measure,
+  while the following prose correctly said that this equality remained a
+  separate comparison theorem.  After the pass, the quoted theorem contains
+  only the SPDE construction clauses, and
+  `hyp:phi-four-three-spde-constructive-identification` records the separate
+  field/mass-chart, bounded-cylinder, polynomial-tail, Schwinger-equality, and
+  constructive-OS inputs.  The companion now rejects treating the SPDE theorem
+  alone as a constructive hierarchy identification.  The full BPHZ model
+  estimates, common-regulator comparison, and OS assembly remain open.

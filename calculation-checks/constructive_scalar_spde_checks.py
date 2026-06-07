@@ -2732,6 +2732,47 @@ def check_spde_constructive_hierarchy_transfer_arithmetic():
         _assert_leq("SPDE hierarchy growth transfer", abs(spde_moments[n]), envelope)
 
 
+def check_phi43_spde_constructive_status_split():
+    # The quoted dynamic Phi4_3 SPDE theorem supplies the SPDE construction
+    # side.  Equality with a constructive Euclidean hierarchy is a separate
+    # common-regulator comparison input, not a consequence of those SPDE slots.
+    spde_construction_slots = {
+        "smooth_cutoff_well_posedness",
+        "bphz_model_convergence",
+        "global_markov_invariant_law",
+    }
+    comparison_slots = {
+        "common_field_mass_chart",
+        "bounded_cylinder_limit",
+        "polynomial_tail_uniform_integrability",
+        "schwinger_moment_equality",
+        "constructive_os_growth_inputs",
+    }
+
+    def missing_os_identification_slots(supplied):
+        return comparison_slots - supplied
+
+    if not missing_os_identification_slots(spde_construction_slots):
+        raise AssertionError("SPDE theorem alone certified constructive hierarchy")
+
+    complete_supplied = spde_construction_slots | comparison_slots
+    if missing_os_identification_slots(complete_supplied):
+        raise AssertionError("complete common-regulator comparison was rejected")
+
+    overpromoted_theorem = spde_construction_slots | {"schwinger_moment_equality"}
+    if "common_field_mass_chart" in overpromoted_theorem:
+        raise AssertionError("unexpected common chart in overpromoted sample")
+    missing = missing_os_identification_slots(overpromoted_theorem)
+    for required in {
+        "common_field_mass_chart",
+        "bounded_cylinder_limit",
+        "polynomial_tail_uniform_integrability",
+        "constructive_os_growth_inputs",
+    }:
+        if required not in missing:
+            raise AssertionError("status split failed to retain comparison slot")
+
+
 def check_spde_finite_window_os_defect_budget_arithmetic():
     # Proposition spde-finite-window-os-assembly-defect-budget: entrywise
     # convergence of an M-observable OS Gram window costs M epsilon in the
@@ -3134,6 +3175,7 @@ def main():
     check_phi4_two_finite_volume_route_identification_arithmetic()
     check_spde_os_reconstruction_growth_arithmetic()
     check_spde_constructive_hierarchy_transfer_arithmetic()
+    check_phi43_spde_constructive_status_split()
     check_spde_finite_window_os_defect_budget_arithmetic()
     check_spde_finite_rate_assembly_schedule_arithmetic()
     check_spde_phase_cell_cross_route_budget_arithmetic()
@@ -3141,7 +3183,7 @@ def main():
     check_dpd_low_mode_energy_forcing_arithmetic()
     check_dpd_high_frequency_tail_global_continuity_budget()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, vacuum-coordinate, negative-ledger, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, X2Y high-chaos edge/cutoff arithmetic, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, model phase-cell budget, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, Phi4_2 finite-volume route identification, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, finite-window OS defect, finite-rate assembly schedule, cross-route phase-cell/SPDE budget, directed OS pre-Hilbert comparison, DPD low-mode energy forcing, high-frequency tail global-continuity budget, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, vacuum-coordinate, negative-sector bookkeeping, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, model phase-cell budget, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, Phi4_2 finite-volume route identification, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, Phi4_3 SPDE/constructive status split, finite-window OS defect, finite-rate assembly schedule, cross-route phase-cell/SPDE budget, directed OS pre-Hilbert comparison, DPD low-mode energy forcing, high-frequency tail global-continuity budget, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":

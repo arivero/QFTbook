@@ -271,7 +271,10 @@
     },
     {
       "path": "constructive_scalar_spde_checks.py",
-      "risk_class": "constructive/SPDE reconstruction"
+      "risk_class": "constructive/SPDE reconstruction",
+      "convention_tags": [
+        "dynamic Phi4_3 SPDE theorem separated from common-regulator constructive identification"
+      ]
     },
     {
       "path": "eta_global_anomaly_checks.py",
