@@ -3142,7 +3142,10 @@ Current checks:
   relative-error bound, and negative controls for omitted determinant
   residuals, FI double counting, frame-crossed targets, and symmetry-only
   nonzero claims, the
-  \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger and protected
+  \(\mathbb P^{N-1}\) mirror critical-point simplicity ledger, the exact
+  FI-transport check requiring the first CP root equation and degree-one
+  residue trace to use \(q_{\rm phys}=\exp(T)\prod_i c_i\) rather than an
+  untransported bare \(\exp(T)\), and the protected
   residue/quantum-product selection rule, the vortex-to-protected-observable
   proof-obligation telescope with negative controls for omitted vortex
   coefficients, unsaturated zero modes, and underbudgeted comparison residuals, the

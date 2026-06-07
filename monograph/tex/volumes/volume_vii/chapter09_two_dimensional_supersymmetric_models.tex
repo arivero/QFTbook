@@ -2992,33 +2992,48 @@ The constraint \eqref{eq:glsm-hv-sigma-constraint} is
 \[
   Y_1+\cdots+Y_N=-T .
 \]
-Set \(X_i=e^{-Y_i}\).  Then
+If the primitive vortex coefficients are \(c_i\), the mirror variables used by
+the critical equations are the transported torus coordinates
 \[
-  X_1\cdots X_N=\ee^T .
+  \widehat X_i=c_i e^{-Y_i},
+  \qquad
+  q_{\rm phys}=\ee^T\prod_{i=1}^Nc_i .
 \]
-For \(c_i=1\), the constrained twisted superpotential is proportional to
+Then
 \[
-  X_1+\cdots+X_N
+  \widehat X_1\cdots\widehat X_N=q_{\rm phys}.
 \]
-on the algebraic torus with fixed product \(\ee^T\).  Eliminating
+The constrained twisted superpotential is proportional to
 \[
-  X_N=\frac{\ee^T}{X_1\cdots X_{N-1}}
+  \widehat X_1+\cdots+\widehat X_N
+\]
+on the algebraic torus with fixed product \(q_{\rm phys}\).  Eliminating
+\[
+  \widehat X_N
+  =
+  \frac{q_{\rm phys}}{\widehat X_1\cdots\widehat X_{N-1}}
 \]
 gives the critical equations
 \[
-  X_a=\frac{\ee^T}{X_1\cdots X_{N-1}},
+  \widehat X_a
+  =
+  \frac{q_{\rm phys}}{\widehat X_1\cdots\widehat X_{N-1}},
   \qquad a=1,\ldots,N-1.
 \]
-Thus all \(X_i\) are equal and
+Thus all \(\widehat X_i\) are equal and
 \[
-  X_i^N=\ee^T.
+  \widehat X_i^N=q_{\rm phys}.
 \]
-For \(\ee^T\neq0\) there are \(N\) simple critical points, in agreement with
-the Coulomb-branch vacuum count in
-Example~\ref{ex:cpn-glsm-coulomb-vacua}.  The agreement is algebraic; it is
-the protected finite calculation that a full path-integral equivalence must
-reproduce after its regulator, local operators, and topological sectors have
-been specified.
+For \(q_{\rm phys}\neq0\) there are \(N\) simple critical points, in agreement
+with the Coulomb-branch vacuum count in
+Example~\ref{ex:cpn-glsm-coulomb-vacua}.  If all \(c_i=1\), this reduces to the
+bare \(\ee^T\) chart.  After a finite vortex-determinant or operator-map
+renormalization, continuing to use \(\ee^T\) in this root equation is an
+untransported coordinate: it moves the protected roots and the residue trace,
+even though the formal number of roots stays \(N\).  The agreement is
+algebraic; it is the protected finite calculation that a full path-integral
+equivalence must reproduce after its regulator, local operators, and
+topological sectors have been specified.
 \end{example}
 
 \begin{proposition}[\(\mathbb P^{N-1}\) mirror residue and the quantum-product test]
@@ -3648,9 +3663,9 @@ as determinant-line densities in the same orientation convention.  Then
 If the determinant-line orientation is reversed, the retained integral changes
 sign unless the virtual orientation and local-operator representative are
 transported with the same sign.  The distinction is substantive: an
-untransported sign, a stale FI coordinate, or a missing Jacobian changes the
-degree-one coefficient while leaving the formal Hori--Vafa root sum looking
-unchanged.  Thus the physical statement is not ``the mirror coordinate can
+untransported sign, an untransported FI coordinate, or a missing Jacobian
+changes the degree-one coefficient while leaving the formal Hori--Vafa root sum
+looking unchanged.  Thus the physical statement is not ``the mirror coordinate can
 absorb \(c_i\)'' by itself.  The required statement is covariance of the whole
 finite instanton-measure package
 \eqref{eq:cpn-degree-one-retained-measure-package} through the residual

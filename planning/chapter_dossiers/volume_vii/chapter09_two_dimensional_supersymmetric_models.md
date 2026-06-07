@@ -702,7 +702,10 @@ and
     negative controls rejecting both
     omitted determinant residuals and symmetry-only nonzero claims under
     coherent signed cancellation;
-  - the `P^{N-1}` mirror critical-point simplicity ledger;
+  - the `P^{N-1}` mirror critical-point simplicity ledger and FI-transport
+    check: the first CP root equation and degree-one residue trace use the
+    transported `q_phys=exp(T) prod_i c_i`, while a stale bare `exp(T)` fails
+    after vortex-determinant/operator coefficient rescaling;
   - the `P^{N-1}` mirror residue/quantum-product test: exact Hessian
     determinant, root-of-unity selection rule, `R(H^{N-1+dN})=q_phys^d`,
     off-selection vanishing, and the trace recurrence equivalent to
@@ -1231,3 +1234,11 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   than an added indicator boundary term, and confines contact constants to
   separately declared collision-sensitive source observables.  The companion
   now treats the old indicator arithmetic as a failing negative control.
+- The 2026-06-07 issue #847 CP critical-coordinate transport pass updates the
+  first `P^{N-1}` Hori-Vafa critical-point example so the algebraic torus uses
+  `hat X_i=c_i exp(-Y_i)` and `q_phys=exp(T) prod_i c_i` from the start.  This
+  keeps the root equation, the degree-one residue trace, and the later
+  quantum-product check in the same transported determinant/operator
+  normalization.  The companion adds an exact negative control in which the
+  formal root count remains unchanged but a stale bare `exp(T)` moves the root
+  product and the protected degree-one trace.

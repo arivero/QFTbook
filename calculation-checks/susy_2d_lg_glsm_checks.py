@@ -2852,6 +2852,59 @@ def check_cp_mirror_critical_ledger() -> None:
             raise AssertionError("CP mirror critical Hessian should be nonzero")
 
 
+def check_cp_mirror_critical_fi_transport() -> None:
+    # The first CP^{N-1} mirror root equation must use the transported mirror
+    # coordinate q_phys=e^T prod_i c_i.  An untransported bare e^T has the same
+    # formal root count but the wrong root product and residue trace.
+    for n_fields in range(2, 8):
+        bare_fi = Fraction(n_fields + 2, 2 * n_fields + 5)
+        coefficients = [
+            Fraction(index + 2, index + 3)
+            for index in range(n_fields)
+        ]
+        physical_q = bare_fi * prod(coefficients, start=Fraction(1))
+        assert_equal(
+            f"CP^{n_fields - 1} transported critical product",
+            physical_q,
+            bare_fi * prod(coefficients, start=Fraction(1)),
+        )
+        if physical_q == bare_fi:
+            raise AssertionError("sample coefficients should visibly move the FI coordinate")
+
+        top_power = n_fields - 1
+        degree_one_power = top_power + n_fields
+        assert_equal(
+            f"CP^{n_fields - 1} normalized top trace is coordinate-independent",
+            cp_mirror_residue_trace(n_fields, top_power, physical_q),
+            Fraction(1),
+        )
+        assert_equal(
+            f"CP^{n_fields - 1} degree-one trace uses transported q",
+            cp_mirror_residue_trace(n_fields, degree_one_power, physical_q),
+            physical_q,
+        )
+        if cp_mirror_residue_trace(n_fields, degree_one_power, bare_fi) == physical_q:
+            raise AssertionError("bare FI coordinate should not survive vortex-coefficient transport")
+
+        rescalings = [
+            Fraction(2 * index + 5, 2 * index + 7)
+            for index in range(n_fields)
+        ]
+        transported_bare_fi = bare_fi / prod(rescalings, start=Fraction(1))
+        transported_coefficients = [
+            coefficient * rescaling
+            for coefficient, rescaling in zip(coefficients, rescalings)
+        ]
+        assert_equal(
+            f"CP^{n_fields - 1} FI transport preserves q_phys",
+            transported_bare_fi * prod(transported_coefficients, start=Fraction(1)),
+            physical_q,
+        )
+        untransported_q = bare_fi * prod(transported_coefficients, start=Fraction(1))
+        if untransported_q == physical_q:
+            raise AssertionError("untransported bare FI should move CP critical roots")
+
+
 def nth_root_power_sum(n_fields: int, exponent: int, q_value: Fraction) -> Fraction:
     if exponent % n_fields != 0:
         return Fraction(0)
@@ -6318,6 +6371,7 @@ def main() -> None:
     check_one_vortex_source_frame_calibration()
     check_vortex_coefficient_noncancellation_bound()
     check_cp_mirror_critical_ledger()
+    check_cp_mirror_critical_fi_transport()
     check_cp_mirror_residue_correlators()
     check_vortex_to_observable_proof_obligation_map()
     check_cp_degree_one_stable_map_quantum_product_gate()
