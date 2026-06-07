@@ -12,7 +12,8 @@ It does not try to judge proof quality; it flags presentation patterns that
 create fake-looking proofs.  It also guards the custom
 ``controlledapproximation`` environment from becoming a container for exact
 finite laboratories or proof-obligation maps: status-like titles must carry
-visible approximation controls and a component estimate.
+visible approximation controls and a component estimate, while explicit
+comparison/proof-obligation titles are rejected in that environment.
 """
 
 from __future__ import annotations
@@ -40,6 +41,11 @@ CONTROLLED_APPROX_ENV_RE = re.compile(
 
 CONTROLLED_APPROX_STATUS_TITLE_RE = re.compile(
     r"\b(gate|map|diagnostic|laboratory|ledger)\b",
+    re.IGNORECASE,
+)
+
+CONTROLLED_APPROX_FORBIDDEN_TITLE_RE = re.compile(
+    r"\b(cross-check|proof-obligation|template)\b",
     re.IGNORECASE,
 )
 
@@ -831,7 +837,16 @@ def main() -> int:
 
         for match in CONTROLLED_APPROX_ENV_RE.finditer(text):
             title = " ".join((match.group(1) or "").split())
-            if not title or not CONTROLLED_APPROX_STATUS_TITLE_RE.search(title):
+            if not title:
+                continue
+            if CONTROLLED_APPROX_FORBIDDEN_TITLE_RE.search(title):
+                line = text.count("\n", 0, match.start()) + 1
+                failures.append(
+                    f"{path}:{line}: controlledapproximation [{title}] has "
+                    "comparison/proof-obligation title vocabulary"
+                )
+                continue
+            if not CONTROLLED_APPROX_STATUS_TITLE_RE.search(title):
                 continue
             body = match.group(2)
             missing: list[str] = []

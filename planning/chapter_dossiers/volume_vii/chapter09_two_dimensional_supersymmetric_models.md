@@ -999,6 +999,16 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   been constructed in one source topology.  The companion adds a status guard
   rejecting promotion of residual slot names to a controlled estimate without
   those component bounds.
+- The 2026-06-07 issue #844/#847 projective-instanton status re-audit demotes
+  the degree-one A-model zero-mode bridge, finite measure-scheme covariance,
+  Hori--Vafa residue/direct-instanton cross-check, and degree-`d` projective
+  instanton iteration from `controlledapproximation` blocks to remarks.  Their
+  residual telescopes and finite incidence/covariance checks remain, but they
+  are explicitly comparison architecture until the determinant-line,
+  zero-mode, compactification, operator-map, and continuum estimates are
+  constructed in one regulator.  The theorem-form audit now rejects
+  comparison/proof-obligation titles in the controlled-approximation
+  environment.
 - The 2026-06-07 issue #847 quotient global-form lattice pass makes that last
   boundary constructive.  The chapter now displays the cocharacter flux
   lattice, dual character lattice, FI-theta period lattice, and rank-one
