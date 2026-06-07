@@ -1237,6 +1237,106 @@ one regulated complex before it invokes the cancellation in
 \eqref{eq:higgs-branch-supercharge-factorized-supertrace}.
 \end{example}
 
+\begin{example}[Dimensional reduction of the Higgs heavy rows]
+\label{ex:higgs-branch-dimensional-reduction-row-audit}
+The row completion also explains why the same four-dimensional component table
+cannot be reused unchanged in lower dimensions.  Reduce the rank-one
+calculation on \(4-d\) flat directions and restrict to backgrounds independent
+of those directions.  The four-dimensional connection decomposes as
+\[
+  A_M=(A_\mu,\sigma_I),
+  \qquad
+  \mu=1,\ldots,d,\quad I=1,\ldots,4-d .
+\]
+At a constant Higgs background the gauge-fixed \(d\)-dimensional connection
+keeps the split
+\[
+  {\mathcal O}_{a,d}^{\mu\nu}(p)
+  =
+  (p_d^2+M^2)P_{T,d}^{\mu\nu}
+  +
+  \xi^{-1}(p_d^2+\xi M^2)P_{L,d}^{\mu\nu},
+\]
+while each reduced connection scalar has
+\[
+  {\mathcal O}_{\sigma_I}(p)=p_d^2+M^2 .
+\]
+The \(\xi\)-dependent determinant still cancels dimension by dimension,
+\[
+  \frac12\log(p_d^2+\xi M^2)
+  +
+  \frac12\log(p_d^2+\xi M^2)
+  -
+  \log(p_d^2+\xi M^2)
+  =
+  0,
+\]
+but the remaining \(4-d\) fields are not longitudinal gauge modes.  They are
+reduced vector-multiplet scalars and their tangent vertices must be paired in
+the lower-dimensional heavy complex.
+
+In row language this means that the reduced theory has extra rows
+\[
+  {\mathcal Q}_{\sigma_I}(s)
+  =
+  {\mathcal Q}_{\sigma_I,0}
+  +
+  s{\mathcal Q}_{\sigma_I,1}
+  +
+  \frac{s^2}{2}{\mathcal Q}_{\sigma_I,2}
+  +
+  O(s^3),
+  \qquad I=1,\ldots,4-d .
+\]
+Their square-completion contribution is
+\begin{equation}
+  C_{\rm red}^{(d)}
+  =
+  2\sum_{I=1}^{4-d}
+  {\mathcal Q}_{\sigma_I,1}^\dagger{\mathcal Q}_{\sigma_I,1}.
+  \label{eq:higgs-branch-reduced-scalar-row-contact}
+\end{equation}
+If the reduced scalars are hidden inside a four-dimensional gauge-field entry
+and their contact is dropped, the local second variation shifts by
+\begin{equation}
+  \Pi_{\rm omit\,red}^{(d)}-\Pi_{\rm full}^{(d)}
+  =
+  -\frac12{\rm Tr}
+  \left({\mathcal O}_0^{-1}C_{\rm red}^{(d)}\right).
+  \label{eq:higgs-branch-reduced-scalar-contact-residual}
+\end{equation}
+Thus the dimensionally reduced diagnostic count is at most
+\begin{equation}
+  {\mathcal B}_{\rm long}^{d}
+  =
+  d+(4-d)+2+4-2-8
+  =
+  0,
+  \label{eq:higgs-branch-d-dimensional-balance-diagnostic}
+\end{equation}
+where the first term is the \(d\)-dimensional connection and the second is the
+reduced scalar package.  The equality is not the determinant calculation.  It is
+a check that the field inventory has not changed after the row contacts in
+\eqref{eq:higgs-branch-reduced-scalar-row-contact} have been included.
+
+In \(3d\ \mathcal N=4\), the \(\sigma_I\) fields belong to the vector-multiplet
+sector separated by \(SU(2)_H\times SU(2)_C\).  In
+\(2d\ \mathcal N=(4,4)\), the symmetric Higgs metric counterterm is only the
+symmetrized part of the two-derivative kernel,
+\[
+  \Pi_{mn}^{(g)}
+  =
+  \frac12(\Pi_{mn}+\Pi_{nm}),
+  \qquad
+  \Pi_{mn}^{(B)}
+  =
+  \frac12(\Pi_{mn}-\Pi_{nm}),
+\]
+and possible \(B\)-field or Wess--Zumino data sit in the antisymmetric channel.
+They require their own regulator and infrared analysis.  The metric-protection
+claim never follows from recycling the four-dimensional \(A_\mu\) row.
+\end{example}
+
 After the Ward identity or an explicit evaluation of
 \eqref{eq:higgs-branch-background-field-trace-log} has paired these operators,
 one may record the residual long-multiplet balance as a quick diagnostic.  In a

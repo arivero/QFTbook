@@ -516,6 +516,7 @@ def check_higgs_branch_background_field_derivation_gate():
         "mass_curvature_ward_pairing",
         "supercharge_factorization",
         "off_shell_row_completion",
+        "dimension_reduced_row_contacts",
         "gauge_parameter_cancellation",
         "dimension_reduction_audit",
     }
@@ -542,8 +543,13 @@ def check_higgs_branch_background_field_derivation_gate():
         "old Higgs ledger has no generated fluctuation operators",
     )
     assert_equal(
-        missing_slots(old_component_ledger)[:3],
-        ["auxiliary_contacts", "dimension_reduction_audit", "fermions"],
+        missing_slots(old_component_ledger)[:4],
+        [
+            "auxiliary_contacts",
+            "dimension_reduced_row_contacts",
+            "dimension_reduction_audit",
+            "fermions",
+        ],
         "old Higgs ledger is rejected as an incomplete determinant derivation",
     )
 
@@ -665,6 +671,7 @@ def check_higgs_branch_background_field_derivation_gate():
             "moment_map_auxiliary_rows",
             "yukawa_rows",
         },
+        "dimension_reduced_row_contacts": "reduced_vector_scalars_kept_as_rows",
     }
     assert_equal(
         missing_slots(operator_blueprint),
@@ -1146,6 +1153,48 @@ def check_higgs_branch_background_field_derivation_gate():
         "missing auxiliary/Yukawa row contact breaks the Higgs determinant pairing",
     )
 
+    reduced_scalar_rows_by_dimension = {
+        4: set(),
+        3: {0},
+        2: {0, 1},
+    }
+    reduced_row_contact_by_dimension = {}
+    for dimension, reduced_rows in reduced_scalar_rows_by_dimension.items():
+        if reduced_rows:
+            reduced_contact = matrix_sum(
+                [row_square_contacts[row_index] for row_index in sorted(reduced_rows)]
+            )
+        else:
+            reduced_contact = zero_matrix(
+                len(full_row_square_contact), len(full_row_square_contact[0])
+            )
+        reduced_row_contact_by_dimension[dimension] = reduced_contact
+        omitted_reduced_shift = (
+            -Fraction(1, 2)
+            * matrix_trace(matrix_multiply(row_completed_inverse, reduced_contact))
+        )
+        if dimension == 4:
+            assert_equal(
+                omitted_reduced_shift,
+                Fraction(0),
+                "4d has no reduced connection-scalar row contact",
+            )
+        else:
+            assert_equal(
+                omitted_reduced_shift == 0,
+                False,
+                (
+                    f"{dimension}d omitting reduced vector-scalar rows leaves "
+                    "a trace-log contact residual"
+                ),
+            )
+
+    assert_equal(
+        reduced_row_contact_by_dimension[2] == reduced_row_contact_by_dimension[3],
+        False,
+        "2d and 3d reduced scalar row contacts are dimension-specific",
+    )
+
     component_balance_4d = sum(old_component_ledger["component_weights"].values())
     assert_equal(
         component_balance_4d,
@@ -1186,6 +1235,41 @@ def check_higgs_branch_background_field_derivation_gate():
                     "gauge-field entry"
                 ),
             )
+        dimension_balance = (
+            vector_components
+            + reduced_connection_scalars
+            + old_component_ledger["component_weights"]["complex_vector_scalar"]
+            + old_component_ledger["component_weights"]["eaten_hyper_scalars"]
+            + old_component_ledger["component_weights"]["faddeev_popov_ghosts"]
+            + old_component_ledger["component_weights"]["auxiliary_contacts"]
+            + old_component_ledger["component_weights"]["fermions"]
+        )
+        assert_equal(
+            dimension_balance,
+            0,
+            f"{dimension}d diagnostic balance separates vector and reduced scalar slots",
+        )
+
+    two_dimensional_kernel = {
+        "Pi_12": Fraction(7, 5),
+        "Pi_21": Fraction(3, 5),
+    }
+    symmetric_metric_channel = (
+        two_dimensional_kernel["Pi_12"] + two_dimensional_kernel["Pi_21"]
+    ) / 2
+    antisymmetric_b_channel = (
+        two_dimensional_kernel["Pi_12"] - two_dimensional_kernel["Pi_21"]
+    ) / 2
+    assert_equal(
+        symmetric_metric_channel,
+        Fraction(1),
+        "2d Higgs metric audit uses the symmetric two-derivative channel",
+    )
+    assert_equal(
+        antisymmetric_b_channel == 0,
+        False,
+        "2d antisymmetric B/WZ channel is separate from metric protection",
+    )
 
     unacceptable_status = {
         "component_multiplicity_proof",

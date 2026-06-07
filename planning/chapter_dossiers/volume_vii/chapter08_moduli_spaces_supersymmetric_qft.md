@@ -117,6 +117,12 @@ later lower-dimensional examples, protected sectors, and localization.
   `eq:higgs-branch-row-contact-residual`: row-resolved construction criterion
   for obtaining the Higgs heavy \(Q\)-complex from kinetic, gauge-fixing,
   moment-map auxiliary, and Yukawa pieces of the quadratic Lagrangian.
+- `ex:higgs-branch-dimensional-reduction-row-audit`,
+  `eq:higgs-branch-reduced-scalar-row-contact`,
+  `eq:higgs-branch-reduced-scalar-contact-residual`,
+  `eq:higgs-branch-d-dimensional-balance-diagnostic`: dimensional-reduction
+  audit separating \(d\)-dimensional connection modes from reduced
+  vector-multiplet scalar rows and their contact residuals.
 - `eq:higgs-branch-heavy-multiplet-balance-heuristic`: signed
   four-dimensional long-multiplet balance, retained only as a diagnostic for
   missing sectors after the Ward identity or trace-log calculation has supplied
@@ -258,7 +264,8 @@ later lower-dimensional examples, protected sectors, and localization.
   dropped-contact negative control, checks row-resolved off-shell heavy-complex
   assembly with a missing auxiliary/Yukawa contact negative control, and rejects
   use of the four-dimensional gauge-field entry in dimensionally reduced
-  arguments,
+  arguments by checking reduced vector-scalar row contacts and the separate
+  two-dimensional antisymmetric \(B/WZ\) channel,
   fixed-charge branch-EFT checks for global-form/Weyl charge labels, the
   supersymmetric chiral-branch Noether map and Routhian energy, transverse
   gap hierarchy, and the abstract large-\(\mu\) simultaneous-window scaling
@@ -351,3 +358,8 @@ local models.
   quadratic Lagrangian.  The companion now checks that row-local contacts sum to
   the full \(2Q_1^\dagger Q_1\) seagull and that dropping an auxiliary/Yukawa row
   contact gives the predicted trace-log residual.
+- 2026-06-07 issue #850 dimensional-reduction row audit: added the lower-dimensional
+  split \(A_M=(A_\mu,\sigma_I)\), with \(4-d\) reduced vector-multiplet scalar
+  rows and their contact \(C_{\rm red}^{(d)}\).  The companion now checks that
+  omitting those rows in 3d/2d leaves a trace-log residual, while the symmetric
+  2d metric channel is kept separate from an antisymmetric \(B/WZ\) channel.

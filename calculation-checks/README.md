@@ -3004,8 +3004,10 @@ Current checks:
   mismatched-vertex negative control, checks supercharge-factorized heavy-block
   pairing with a dropped-contact negative control, checks row-resolved
   off-shell assembly of the heavy \(Q\)-complex with a missing auxiliary/Yukawa
-  row-contact negative control, and blocks reuse of the four-dimensional
-  gauge-field entry in reduced dimensions,
+  row-contact negative control, verifies the reduced vector-scalar row-contact
+  residuals in 3d/2d, separates the two-dimensional symmetric metric channel
+  from the antisymmetric \(B/WZ\) channel, and blocks reuse of the
+  four-dimensional gauge-field entry in reduced dimensions,
   fixed-charge branch-EFT checks for torus/global-form/Weyl charge labels,
   the supersymmetric chiral-branch Noether map, Routhian energy, transverse
   gap hierarchy, and large-\(\mu\) simultaneous-window scaling condition,
