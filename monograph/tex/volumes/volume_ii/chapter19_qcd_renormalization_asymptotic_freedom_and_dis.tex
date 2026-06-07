@@ -11265,6 +11265,71 @@ renormalizes the PDF is part of the definition of the factorized hadronic
 observable.  The residual \(\mu\)-dependence of this subtraction is the
 DGLAP evolution below.
 
+\begin{controlledapproximation}[Measured DIS test functional]
+\label{ca:qcd-dis-measured-test-functional}
+Fix the compact interval \(K\Subset(0,1)\), a smooth measured bin or weight
+\(\varphi\in C_c^\infty(K)\), a finite ultraviolet regulator, and one
+factorization scheme.  The tested exact structure function is the scalar
+coordinate
+\[
+  F_{i,Q}^{\rm exact}[\varphi]
+  :=
+  \left\langle F_i(\,\cdot\,,Q),\varphi\right\rangle .
+\]
+The coefficient functions in \eqref{eq:dis-factorization} then determine a
+row functional on the same PDF coordinates,
+\begin{equation}
+  C_{i,\varphi,a}^{(\mu)}[h]
+  :=
+  \int_K\dd x_B\,\varphi(x_B)
+  \int_{x_B}^1\frac{\dd z}{z}\,
+  C_{i,a}\!\left(\frac{x_B}{z},\frac{Q}{\mu},g(\mu)\right)h(z).
+  \label{eq:qcd-dis-measured-coefficient-row}
+\end{equation}
+A compact-\(x\) DIS prediction is the assembled tested statement
+\begin{equation}
+\begin{aligned}
+  F_{i,Q}^{\rm exact}[\varphi]
+  &=
+  \sum_a C_{i,\varphi,a}^{(\mu)}[f_{a/H}(\,\cdot\,,\mu)]
+  +R_i^{\rm HT}[\varphi]
+  +R_i^{\rm pert}[\varphi]
+  +R_i^{\rm sub}[\varphi]
+  +R_i^{\rm bdry}[\varphi]
+  +R_i^{\rm reg}[\varphi],
+  \\
+  \bigl|R_i^{\rm tot}[\varphi]\bigr|
+  &\le
+  \epsilon_i^{\rm HT}(\varphi)
+  +\epsilon_i^{\rm pert}(\varphi)
+  +\epsilon_i^{\rm sub}(\varphi)
+  +\epsilon_i^{\rm bdry}(\varphi)
+  +\epsilon_i^{\rm reg}(\varphi).
+\end{aligned}
+  \label{eq:qcd-dis-measured-test-budget}
+\end{equation}
+Here \(R^{\rm HT}\) is the higher-twist remainder, \(R^{\rm pert}\) the
+truncation error in coefficient and kernel transport, \(R^{\rm sub}\) the
+finite-regulator subtraction and soft/collinear matching residual,
+\(R^{\rm bdry}\) the leakage from threshold or small-\(x\) regions excluded by
+\(K\), and \(R^{\rm reg}\) the continuum and finite-volume limiting error.
+
+The row \eqref{eq:qcd-dis-measured-coefficient-row}, the light-ray PDF
+coordinate, and the subtraction scheme are one package.  If the PDF coordinate
+is changed by a finite convolutional scheme map, the row must transform by the
+dual inverse map as in the DGLAP transport below.  If the measured weight
+\(\varphi\) is replaced by a different weight \(\widetilde\varphi\), the
+leading row itself changes; the difference
+\(\sum_a(C_{i,\varphi,a}^{(\mu)}-C_{i,\widetilde\varphi,a}^{(\mu)})[f_{a/H}]\)
+is not a DGLAP remainder.  Likewise, final-state soft cancellation in the
+inclusive Wightman tensor and incoming-collinear absorption into the
+Wilson-line PDF have to be realized in the same regulator and paired with the
+same tested row.  Dropping the endpoint residual for a family of weights that
+approaches \(x_B=1\), or treating the PDF evolution alone as the measured
+observable, gives a coordinate calculation rather than a structure-function
+prediction.
+\end{controlledapproximation}
+
 The operator-coordinate RG equation
 \eqref{eq:qcd-light-ray-operator-dglap-rg} gives the evolution equation
 \begin{equation}

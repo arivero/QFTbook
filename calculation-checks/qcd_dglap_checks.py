@@ -8,8 +8,8 @@ Target claims:
   DGLAP kernels, the plus-distribution convention, quark-number and momentum
   sum rules, light-ray moment signs, coefficient/PDF RG cancellation,
   scheme-covariant DGLAP moment transport, the common QCD factorization
-  dependency budget, and the endpoint test-function boundary for DIS threshold
-  claims.
+  dependency budget, the measured DIS test-functional assembly, and the
+  endpoint test-function boundary for DIS threshold claims.
 
 Independent construction:
   The checks compute plus-distribution moments from the defining test-function
@@ -29,8 +29,11 @@ Negative controls:
   The suite rejects replacing the plus distribution by an unsubtracted
   endpoint pole, dropping jet/soft/boundary entries from a threshold or
   factorization budget, transforming PDFs without the dual coefficient row,
-  using the wrong coefficient-side scheme map, and omitting the Sdot S^{-1}
-  term in a scale-dependent finite scheme change.
+  using the wrong coefficient-side scheme map, using a coefficient row for a
+  different measured DIS weight, omitting the endpoint boundary residual,
+  omitting either the inclusive final-state soft cancellation or the incoming
+  collinear PDF subtraction, and omitting the Sdot S^{-1} term in a
+  scale-dependent finite scheme change.
 
 Scope boundary:
   These are exact finite convention, conservation, and factorized-coordinate
@@ -48,7 +51,9 @@ Independent verification route:
   The executable route starts from finite rational test functions, splitting
   moments, matrix rows/vectors, and finite scheme maps; it independently checks
   conservation laws, observable RG cancellation, and scheme covariance in that
-  primitive finite algebra.
+  primitive finite algebra.  The measured-DIS check separately assembles the
+  scalar tested structure function from a coefficient row, PDF vector,
+  subtraction balance, and named residuals.
 
 Convention dependencies:
   Trace-delta Yang-Mills generators, P=(g^2/(8*pi^2))P^(0), D0=(1/(1-x))_+,
@@ -528,6 +533,87 @@ def check_common_factorization_dependency_budget() -> None:
         previous_budget = scheduled_budget
 
 
+def check_measured_dis_test_functional_assembly() -> None:
+    # Finite rational model of ca:qcd-dis-measured-test-functional.  The
+    # coefficient row is already paired with the measured compact-x test
+    # function, so changing the row is changing the measured observable
+    # coordinate rather than evolving the same PDF differently.
+    pdf = [Fraction(5, 7), Fraction(2, 7)]
+    coefficient_phi = [Fraction(3, 2), Fraction(-4, 9)]
+    coefficient_tilde_phi = [Fraction(1, 2), Fraction(5, 3)]
+
+    leading_phi = dot(coefficient_phi, pdf)
+    assert_equal("measured DIS leading scalar", leading_phi, Fraction(17, 18))
+
+    residuals = {
+        "higher_twist": Fraction(1, 40),
+        "perturbative": Fraction(1, 50),
+        "subtraction": Fraction(1, 60),
+        "boundary": Fraction(1, 70),
+        "regulator": Fraction(1, 80),
+    }
+    residual_budget = dependency_budget(residuals)
+    exact_tested_scalar = leading_phi + residual_budget
+    factorized_tested_scalar = leading_phi
+    assert_equal(
+        "measured DIS named-residual propagation",
+        exact_tested_scalar - factorized_tested_scalar,
+        residual_budget,
+    )
+    assert_true(
+        "measured DIS residual is within its named budget",
+        abs(exact_tested_scalar - factorized_tested_scalar) <= residual_budget,
+    )
+
+    wrong_row_shift = dot(coefficient_tilde_phi, pdf) - leading_phi
+    assert_equal("wrong measured-row shift", wrong_row_shift, Fraction(-1, 9))
+    assert_true(
+        "different measured row is not a DGLAP remainder",
+        wrong_row_shift != 0,
+    )
+    assert_true(
+        "wrong measured row can exceed the endpoint slot",
+        abs(wrong_row_shift) > residuals["boundary"],
+    )
+
+    no_boundary_budget = residual_budget - residuals["boundary"]
+    no_boundary_scalar = leading_phi + no_boundary_budget
+    assert_equal(
+        "omitted DIS boundary residual",
+        exact_tested_scalar - no_boundary_scalar,
+        residuals["boundary"],
+    )
+    assert_true(
+        "compact-x boundary exclusion is load-bearing for the tested scalar",
+        exact_tested_scalar != no_boundary_scalar,
+    )
+
+    # The singular-log coefficients stand for the same finite-regulator
+    # subtraction balance: inclusive final-state soft cancellation is distinct
+    # from incoming-collinear absorption into the Wilson-line PDF.
+    soft_virtual = Fraction(3, 11)
+    soft_real_inclusive = Fraction(-3, 11)
+    incoming_collinear = Fraction(5, 13)
+    pdf_counterterm = Fraction(-5, 13)
+    total_singular_log = (
+        soft_virtual + soft_real_inclusive + incoming_collinear + pdf_counterterm
+    )
+    assert_equal("measured DIS soft-collinear subtraction balance", total_singular_log, Fraction(0))
+    assert_true(
+        "omitting inclusive real soft cancellation leaves a singular row",
+        soft_virtual + incoming_collinear + pdf_counterterm != 0,
+    )
+    assert_true(
+        "omitting incoming-collinear PDF subtraction leaves a singular row",
+        soft_virtual + soft_real_inclusive + incoming_collinear != 0,
+    )
+    wrong_pdf_counterterm = Fraction(-4, 13)
+    assert_true(
+        "subtraction must be in the same regulator coordinate",
+        soft_virtual + soft_real_inclusive + incoming_collinear + wrong_pdf_counterterm != 0,
+    )
+
+
 def main() -> None:
     check_plus_distribution_monomials()
     check_threshold_test_function_window()
@@ -537,10 +623,12 @@ def main() -> None:
     check_factorized_rg_cancellation()
     check_scheme_covariant_dglap_moment_transport()
     check_common_factorization_dependency_budget()
+    check_measured_dis_test_functional_assembly()
     print(
         "All QCD DGLAP plus-distribution, sum-rule, "
         "cusp-normalization, light-ray moment, RG-cancellation, "
-        "scheme-transport, factorization-budget, and DIS threshold-window checks passed."
+        "scheme-transport, factorization-budget, measured-DIS, "
+        "and DIS threshold-window checks passed."
     )
 
 

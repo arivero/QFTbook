@@ -280,7 +280,10 @@ The chapter must define and derive:
   separating exact observables, operator coordinates, subtractions,
   coefficients, scale transport, boundary mechanisms, remainders, and limiting
   statements, factorization assumptions with a compact-\(x_B\)
-  distributional power-remainder bound, the replacement of abelian
+  distributional power-remainder bound, the measured compact-DIS test
+  functional that assembles the coefficient row, PDF coordinate, subtraction
+  balance, endpoint residual, and regulator residual into one color-singlet
+  structure-function scalar, the replacement of abelian
   Bloch--Nordsieck cancellation by nonabelian PDF renormalization for incoming
   colored partons, unambiguous \(D_0\)-based DGLAP kernels, number and momentum
   sum-rule checks in prose rather than proposition form, the small-\(x\)
@@ -696,6 +699,17 @@ The chapter must define and derive:
       JIMWLK use different entries in this ladder, so finite checks of
       individual identities are explicitly inputs to, not replacements for,
       process-level factorization theorems.
+22bcb. The compact-DIS block now includes a measured test-functional
+       assembly.  A physical structure-function prediction is the scalar
+       \(F_{i,Q}^{\rm exact}[\varphi]\) paired with a measured
+       compact-\(x\) weight, the dual coefficient row acting on the same
+       light-ray PDF coordinate, and named higher-twist, perturbative,
+       subtraction, boundary, and regulator residuals.  Final-state soft
+       inclusivity and incoming-collinear PDF subtraction are separated inside
+       one finite-regulator scheme.  Changing the measured row, dropping the
+       endpoint residual, or evolving the PDF without the dual coefficient row
+       is recorded as a coordinate mismatch, not as a physical scaling
+       violation.
 22bca. The DIS endpoint section now includes a tested threshold
        plus-distribution window.  The distributions
        \(D_k=[\log^k(1-x)/(1-x)]_+\) act on
@@ -1397,6 +1411,17 @@ The chapter must define and derive:
   \(f'=Sf\), \(C'=CS^{-1}\), and
   \(P'=SPS^{-1}+(\mu\partial_\mu S)S^{-1}\), with negative controls for
   PDF-only, wrong-side coefficient, and similarity-only shortcuts.
+- 2026-06-06 issue #630 measured-DIS test-functional pass: added
+  `ca:qcd-dis-measured-test-functional`, which makes compact-DIS prediction a
+  tested color-singlet scalar rather than a PDF-only evolution statement.  The
+  text now requires the same measured weight, coefficient row, light-ray PDF
+  coordinate, finite-regulator subtraction balance, endpoint exclusion, and
+  regulator residual to be assembled together.  `qcd_dglap_checks.py` now
+  includes exact negative controls for using the wrong measured row, omitting
+  the endpoint boundary residual, and omitting either final-state soft
+  inclusivity or incoming-collinear PDF subtraction.  This remains finite
+  observable-assembly algebra, not a proof of all-order DIS factorization or
+  nonperturbative PDF existence.
 - 2026-06-03 issue #630 factorization-architecture pass: inserted the common
   QCD factorization dependency ladder before the DIS hypothesis, organizing
   compact DIS, TMD/Drell--Yan, and small-\(x\)/JIMWLK claims as process

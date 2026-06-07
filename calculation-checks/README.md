@@ -394,7 +394,11 @@ Current checks:
   JIMWLK variants, and exact endpoint-cell arithmetic for the tested DIS
   threshold plus-distribution window, with negative controls against replacing
   the plus prescription by an ordinary pole or replacing a threshold theorem by
-  the cusp term alone.
+  the cusp term alone.  The measured-DIS test-functional check verifies that
+  the coefficient row, PDF vector, endpoint residual, and finite-regulator
+  soft/collinear subtraction balance are assembled as one tested scalar, and
+  rejects using a row for a different measured weight or omitting the
+  endpoint/PDF-subtraction pieces.
 - `qcd_cusp_large_spin_checks.py`: finite checks for the Volume II cusped
   Wilson-line/large-spin section, including the Euclidean cusp angular
   integral \(J(\phi)=\phi\cot\phi\), smooth-line subtraction, the Lorentzian
