@@ -244,9 +244,11 @@
 - `sec:instanton-observable-handoffs`: physical observable-map block distinguishing a
   hard source coefficient, theta curvature, \(U(1)_A\)-odd susceptibility
   kernel, and real-time axial relaxation rate.
-- `ca:instanton-observable-handoff-ledger`: finite-regulator observable-map
-  statement: the one-instanton amplitude density must be projected to a named
-  observable before its physical meaning is fixed.
+- `rem:instanton-observable-handoff-map`: finite-regulator observable-map
+  status statement: the one-instanton amplitude density must be projected to a
+  named observable before its physical meaning is fixed; the map itself is not
+  a controlled approximation until the selected row supplies projection,
+  positivity or continuation data, and a residual budget.
 - `ca:finite-cell-instanton-channel-control`: finite retained-cell model
   proving the absolute residual bound and the two-by-two determinant stability
   estimate.
@@ -525,7 +527,9 @@
   computed independently before testing the density ratio and inverse matching,
   verifies the observable-map distinction between hard source coefficients,
   dilute theta curvature, \(U(1)_A\)-odd zero-mode-zone kernels, real-time
-  axial rates, and Witten--Veneziano curvature comparison budgets,
+  axial rates, and Witten--Veneziano curvature comparison budgets, including
+  a status guard that prevents the map itself from being promoted to a
+  controlled estimate without row-wise projection budgets,
   verifies the physical projection bridge from Euclidean source kernels to
   pole-window and spectral-bin coordinates, including contact-polynomial
   separation, one-Euclidean-value inversion failure, bridge residual control,
@@ -736,6 +740,14 @@
   source pairing as a convergent primed Green bilinear, while the local
   diagonal coordinate carries independently visible `A0 N`, `A1 H_N`, finite
   counterterm, and shell-tail data.
+- 2026-06-07 issue #597/#844 observable-map status re-audit: demoted the
+  observable-map block from a controlled approximation to
+  `rem:instanton-observable-handoff-map`.  The companion now verifies that
+  hard source coefficients, theta curvature, \(U(1)_A\)-odd zero-mode-zone
+  kernels, and real-time axial rates are distinct final physical coordinates,
+  while raw map obligations are not controlled estimates until row-wise
+  projection, positivity or continuation data, and residual budgets are
+  supplied.
 - 2026-06-06 observable-map pass: added a physics bridge from the assembled
   instanton amplitude to QCD observables, explicitly separating hard source
   coefficients, theta curvature, \(U(1)_A\)-odd susceptibility kernels, and

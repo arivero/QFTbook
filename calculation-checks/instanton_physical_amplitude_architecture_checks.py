@@ -91,7 +91,7 @@ Target claims:
 - `ca:instanton-finite-determinant-conversion-benchmark`: two finite regulated
   determinant densities are computed independently before their conversion
   ratio, residual, and inverse matching factor are tested.
-- `ca:instanton-observable-handoff-ledger`: the assembled instanton channel
+- `rem:instanton-observable-handoff-map`: the assembled instanton channel
   must still be mapped to a named physical observable; hard source
   coefficients, theta curvatures, U(1)_A susceptibility kernels, and real-time
   axial relaxation rates are not interchangeable.
@@ -195,7 +195,7 @@ Independent construction:
   multiplicative hard-amplitude assembly bounds on signed windows,
   finite determinant-scheme transport factors and an independently computed
   two-regulator determinant-density benchmark,
-  finite observable-handoff comparisons for theta, U(1)_A, and real-time
+  finite observable-map status comparisons for theta, U(1)_A, and real-time
   axial channels,
   pole-window extraction, mixed-source matrix amputation,
   quadratic inclusive-cut projections from physical amplitude vectors,
@@ -2878,6 +2878,40 @@ def check_observable_handoff_map() -> None:
         "same Euclidean susceptibility can have different retarded slopes",
         axial_rate_1,
         axial_rate_2,
+    )
+
+    observable_map_status = {
+        "hard source coefficient": "projection_obligation",
+        "theta curvature": "zero_mode_saturation_obligation",
+        "U(1)_A susceptibility": "ensemble_spectral_obligation",
+        "real-time axial rate": "retarded_continuation_obligation",
+    }
+
+    def certifies_controlled_observable_estimate(
+        status: dict[str, str],
+    ) -> bool:
+        acceptable = {
+            "proved_identity",
+            "derived_bound",
+            "external_estimate",
+            "same_scheme_projection_bound",
+        }
+        return all(value in acceptable for value in status.values())
+
+    assert_equal(
+        "observable map status is not a controlled estimate",
+        certifies_controlled_observable_estimate(observable_map_status),
+        False,
+    )
+
+    certified_status = {
+        name: "same_scheme_projection_bound"
+        for name in observable_map_status
+    }
+    assert_equal(
+        "row-wise projection budgets can certify observable estimates",
+        certifies_controlled_observable_estimate(certified_status),
+        True,
     )
 
     chi_ym = Fraction(5, 7)
