@@ -39,7 +39,7 @@ CONTROLLED_APPROX_ENV_RE = re.compile(
 )
 
 CONTROLLED_APPROX_STATUS_TITLE_RE = re.compile(
-    r"\b(gate|map|diagnostic|laboratory)\b",
+    r"\b(gate|map|diagnostic|laboratory|ledger)\b",
     re.IGNORECASE,
 )
 

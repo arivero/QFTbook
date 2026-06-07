@@ -365,12 +365,14 @@ and
 - Proves that eliminating `Y_i` reproduces the Coulomb one-loop
   superpotential and that the constants `c_i` shift the finite definition of
   the FI coordinate.
-- Adds a one-loop branch/monodromy ledger before Hori--Vafa mirror constraints
-  are used: the component determinant response selects the logarithm sign,
-  logarithm-sheet shifts of the Coulomb determinant are transported into
-  integral periods of the logarithmic FI coordinate `T`, the `Sigma=0`
-  monodromy is identified with `sum_i Q_i`, and compact-periodicity-as-sign
-  and absolute-value-only logarithm shortcuts are rejected.
+- Adds one-loop branch/monodromy bookkeeping before Hori--Vafa mirror
+  constraints are used: the component determinant response selects the
+  logarithm sign, logarithm-sheet shifts of the Coulomb determinant are
+  transported into integral periods of the logarithmic FI coordinate `T`, the
+  `Sigma=0` monodromy is identified with `sum_i Q_i`, and
+  compact-periodicity-as-sign and absolute-value-only logarithm shortcuts are
+  rejected.  This is an exact convention-control remark, not a controlled
+  approximation.
 - Adds the compact FI-theta normalization ledger: with
   `k=(2 pi)^{-1} int F`, `tau=theta/(2 pi)+i r`, and
   `T=2 pi i tau=-2 pi r+i theta`, a flux-`k` saddle carries
@@ -776,7 +778,7 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   checks the associated logarithm-branch theta periodicity.
 - The 2026-06-07 Hori--Vafa one-loop branch pass strengthens the remaining
   sign/normalization chain by adding
-  `ca:glsm-coulomb-one-loop-branch-monodromy` before the Coulomb critical
+  `rem:glsm-coulomb-one-loop-branch-monodromy` before the Coulomb critical
   equation.  The pass makes the determinant branch sheet, axial monodromy,
   compact `T` period, and physical fugacity `exp(T)` part of the local
   Coulomb calculation itself, before any historical Hori--Vafa formula is

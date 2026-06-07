@@ -609,8 +609,8 @@ packages belong in examples, constructions, or remarks.  Use
 `controlledapproximation` only when the block declares the approximation
 regime or window, the norm or topology being controlled, the approximation
 parameter or limiting procedure, and a component estimate or residual budget.
-Titles with "gate", "map", "diagnostic", or "laboratory" are audited by
-`tools/audit_theorem_form.py` for those controls.  Pure telescoping displays
+Titles with "gate", "map", "diagnostic", "laboratory", or "ledger" are audited
+by `tools/audit_theorem_form.py` for those controls.  Pure telescoping displays
 belong in a proof-obligation map, conditional propagation
 template, remark, definition, or planning/dossier record.  The sum of named
 residual slots inherits the status of its weakest load-bearing component; it
