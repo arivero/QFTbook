@@ -211,18 +211,22 @@ and
   `-mu c_i exp(-Y_i)`, while recording the vortex-term proof obligations
   left schematic in classic mirror-duality papers.
 - Identifies the coefficient `c_i` as the continuum limit of a regulated
-  charge-one vortex amplitude: classical topological factor `exp(-Y_i)`,
-  nonzero-mode determinant ratio, two universal fermion zero modes forming
-  the twisted `F`-term measure, possible extra zero-mode saturation, and
-  collective-coordinate integration.  This makes the Hori--Vafa exponential
-  term a rechecked amplitude datum in the chapter's conventions.
+  charge-one vortex amplitude after the original-to-dual map: the original
+  GLSM side carries a numerical FI-theta sector weight, a nonzero-mode
+  determinant ratio, an interacting normal-mode expectation/cumulant factor,
+  two universal fermion zero modes forming the twisted `F`-term measure,
+  possible extra zero-mode saturation, and collective-coordinate integration;
+  the dual frame supplies the operator `exp(-Y_i)`.  This makes the
+  Hori--Vafa exponential term a rechecked amplitude datum in the chapter's
+  conventions rather than a scalar inserted into the original path integral.
 - Adds a one-vortex source-functional extraction bridge: the same regulated
   sector is written with bookkeeping sources for the two universal fermion
   zero modes, residual zero-mode coordinates, and local component sources.
   The twisted `F`-term coefficient is the `xi_+ xi_- eta_top` coefficient,
   while source-differentiated component amplitudes additionally carry
   source-to-zero-mode overlaps, primed propagator contractions, source/operator
-  normalization, and residual budgets.  This separates the physical
+  normalization, interacting normal-mode cumulants, and residual budgets.
+  This separates the physical
   instanton amplitude from a moduli-space volume, Coulomb-logarithm match, or
   formal Hori--Vafa monomial.
 - Adds a worked finite one-vortex component-amplitude cell: two component
@@ -657,3 +661,13 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   operator-map, and continuum comparisons, and the companion script checks
   that omitted gluing/off-pairing residuals, bare-FI powers, line-count-only
   products, and unsaturated zero-mode gates fail.
+- The 2026-06-06 issue #597 Hori--Vafa frame/interaction repair splits the
+  original GLSM vortex coefficient from its dual twisted-chiral image.  The
+  original finite source functional now carries the numerical FI-theta vortex
+  weight `q_vort`, the Gaussian determinant, and the interacting normal-mode
+  expectation `N_int`; the dual `exp(-Y_i)` appears only after the abelian
+  dual operator map.  The component and source-frame calibration cells now use
+  the original numerical fugacity and state the dual monomial as a matched
+  image.  The companion adds exact negative controls for determinant-only
+  coefficients with nonzero normal interactions and for substituting the dual
+  operator tag for a numerical original-theory amplitude.

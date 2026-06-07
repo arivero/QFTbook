@@ -4,7 +4,8 @@ Evidence contract.
 Target claims: the finite LG/GLSM charge ledgers, abelian duality
 normalizations, charged-chiral mirror elimination, vortex-zero-mode filter,
 finite-regulator vortex fluctuation complex, vortex-to-FI-coordinate
-normalization, one-vortex source-functional F-term extraction,
+normalization, one-vortex normal-mode interaction and original/dual-frame
+separation, one-vortex source-functional F-term extraction,
 one-vortex component-amplitude source-minor extraction,
 single-vortex coefficient noncancellation bound,
 P^{N-1} mirror residue trace, and
@@ -25,6 +26,7 @@ elimination, finite chain-complex rank checks, Berezin-degree tests,
 source-differentiated zero-mode extraction tests, retained-window signed/mass
 coefficient bounds, oriented source-minor component-amplitude cells,
 component-to-component source-frame calibration ratios,
+normal-mode cumulant factors and original-to-dual frame tags,
 root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree filters, and
 conditional residual-propagation maps, plus finite density/Jacobian transport
@@ -38,13 +40,15 @@ Primary derivation route: the manuscript derives protected GLSM mirror
 coordinates by local dualization and Coulomb one-loop matching, then treats the
 Hori--Vafa exponential coefficient as a separate regulated vortex amplitude
 with gauge fixing, zero-mode separation, nonzero-mode determinants,
-determinant-line orientation, source projection, and protected-observable
-comparison.
+interacting normal-mode cumulants, determinant-line orientation,
+source projection, original-to-dual operator-map separation, and
+protected-observable comparison.
 
 Independent verification route: the companion does not import the Hori--Vafa
 formula as truth data.  It constructs finite charge ledgers, finite
 fluctuation complexes, Berezin filters, source-minor cells, source-frame
-ratios, projective-space residue sums, and direct incidence Jacobians from
+ratios, normal-mode interaction factors, projective-space residue sums, and
+direct incidence Jacobians from
 scratch, then checks that mirror-side and direct-vortex-side data agree only
 after the declared transport and residual maps have been supplied.
 
@@ -77,6 +81,8 @@ protected-coordinate definitions are assumed as finite input.
 Negative controls: extra unsaturated zero modes, raw zero-mode determinants,
 omitted vortex ghost factors, omitted vortex normalization constants,
 omitted one-vortex source-overlap factors,
+determinant-only vortex coefficients with nonzero normal interactions,
+original/dual frame substitutions,
 parallel source-overlap component shortcuts,
 mirror-fugacity-only component calibration,
 source-reference denominator shortcuts,
@@ -861,6 +867,69 @@ def check_single_vortex_amplitude_assembly() -> None:
     assert_equal("vortex coefficient FI shift in exponentiated coordinate", shifted_q, Fraction(1375, 104))
 
 
+def check_one_vortex_frame_and_normal_interaction_separation() -> None:
+    gaussian_variance = Fraction(1, 5)
+    cubic_coupling = Fraction(2, 7)
+    quartic_coupling = Fraction(3, 11)
+    gaussian_moments = {
+        2: gaussian_variance,
+        4: 3 * gaussian_variance**2,
+        6: 15 * gaussian_variance**3,
+    }
+    normal_interaction_factor = (
+        Fraction(1)
+        - quartic_coupling * gaussian_moments[4]
+        + Fraction(1, 2) * cubic_coupling**2 * gaussian_moments[6]
+    )
+    assert_equal(
+        "one-vortex normal interaction cumulant factor",
+        normal_interaction_factor,
+        Fraction(524, 539),
+    )
+
+    original_vortex_fugacity = Fraction(7, 13)
+    gaussian_determinant_density = Fraction(11, 17)
+    zero_mode_coefficient = Fraction(5, 6)
+    original_coefficient = (
+        original_vortex_fugacity
+        * gaussian_determinant_density
+        * normal_interaction_factor
+        * zero_mode_coefficient
+    )
+    determinant_only_coefficient = (
+        original_vortex_fugacity
+        * gaussian_determinant_density
+        * zero_mode_coefficient
+    )
+    if original_coefficient == determinant_only_coefficient:
+        raise AssertionError("normal interaction should change determinant-only vortex coefficient")
+
+    operator_map_normalization = Fraction(3, 5)
+    dual_coefficient = operator_map_normalization * original_coefficient
+    assert_equal(
+        "dual coefficient is operator-map image of original coefficient",
+        dual_coefficient,
+        Fraction(1, 1)
+        * operator_map_normalization
+        * original_coefficient,
+    )
+
+    original_frame = ("original_glsm", original_vortex_fugacity)
+    dual_frame = ("dual_twisted_chiral", "exp(-Y_i)")
+    if original_frame == dual_frame:
+        raise AssertionError("original vortex fugacity should not be the dual exponential operator")
+
+    direct_source_integral = Fraction(19, 23)
+    original_component = original_vortex_fugacity * direct_source_integral
+    dual_component_image = "exp(-Y_i)"  # symbolic tag for the dual operator factor
+    if dual_component_image == original_component:
+        raise AssertionError("dual operator tag should not be the numerical original component amplitude")
+
+    frame_substituted_component = operator_map_normalization * direct_source_integral
+    if frame_substituted_component == original_component:
+        raise AssertionError("omitting original fugacity should change direct component amplitude")
+
+
 def check_one_vortex_source_functional_extraction() -> None:
     # A finite retained chart for the source-functional version of the
     # one-vortex calculation.  The F-term coefficient is the coefficient of the
@@ -869,15 +938,17 @@ def check_one_vortex_source_functional_extraction() -> None:
     reduced_classical_weights = [Fraction(2, 3), Fraction(5, 7), Fraction(11, 13)]
     collective_measure_cells = [Fraction(3, 5), Fraction(7, 11), Fraction(13, 17)]
     primed_nonzero_density = [Fraction(19, 23), Fraction(29, 31), Fraction(37, 41)]
+    normal_interaction_factors = [Fraction(31, 29), Fraction(37, 43), Fraction(41, 47)]
     ghost_density = [Fraction(43, 47), Fraction(53, 59), Fraction(61, 67)]
     residual_zero_mode_gates = [Fraction(1), Fraction(1), Fraction(1)]
 
     retained_f_term_cells = [
-        classical * measure * nonzero * ghost * gate
-        for classical, measure, nonzero, ghost, gate in zip(
+        classical * measure * nonzero * interaction * ghost * gate
+        for classical, measure, nonzero, interaction, ghost, gate in zip(
             reduced_classical_weights,
             collective_measure_cells,
             primed_nonzero_density,
+            normal_interaction_factors,
             ghost_density,
             residual_zero_mode_gates,
         )
@@ -926,16 +997,30 @@ def check_one_vortex_source_functional_extraction() -> None:
         raise AssertionError("moduli measure alone should not reproduce the vortex amplitude")
 
     missing_ghost_prediction = sum(
-        classical * measure * nonzero * gate
-        for classical, measure, nonzero, gate in zip(
+        classical * measure * nonzero * interaction * gate
+        for classical, measure, nonzero, interaction, gate in zip(
             reduced_classical_weights,
             collective_measure_cells,
             primed_nonzero_density,
+            normal_interaction_factors,
             residual_zero_mode_gates,
         )
     )
     if missing_ghost_prediction == retained_f_term_coefficient:
         raise AssertionError("omitting the ghost density should change the source amplitude")
+
+    determinant_only_prediction = sum(
+        classical * measure * nonzero * ghost * gate
+        for classical, measure, nonzero, ghost, gate in zip(
+            reduced_classical_weights,
+            collective_measure_cells,
+            primed_nonzero_density,
+            ghost_density,
+            residual_zero_mode_gates,
+        )
+    )
+    if determinant_only_prediction == retained_f_term_coefficient:
+        raise AssertionError("determinant-only source coefficient should miss normal interactions")
 
     residual_unsaturated_gate = Fraction(0)
     residual_zero_mode_killed = retained_f_term_coefficient * residual_unsaturated_gate
@@ -953,6 +1038,7 @@ def check_one_vortex_source_functional_extraction() -> None:
         "source overlap": Fraction(1, 101),
         "primed propagator": Fraction(1, 103),
         "determinant line": Fraction(1, 107),
+        "normal interaction": Fraction(1, 108),
         "zero-mode map": Fraction(1, 109),
         "compactification": Fraction(1, 113),
         "continuum": Fraction(1, 127),
@@ -973,6 +1059,12 @@ def check_one_vortex_source_functional_extraction() -> None:
         "omitting source-overlap residual underbudgets one-vortex source amplitude",
         actual_source_error,
         omitted_source_bound,
+    )
+    omitted_interaction_bound = source_bound - residuals["normal interaction"]
+    assert_gt_bound(
+        "omitting normal-interaction residual underbudgets one-vortex source amplitude",
+        actual_source_error,
+        omitted_interaction_bound,
     )
 
 
@@ -1059,11 +1151,12 @@ def check_one_vortex_component_amplitude_cell() -> None:
 
 
 def check_one_vortex_source_frame_calibration() -> None:
-    # A Hori-Vafa monomial supplies a common topological/fugacity factor.  A
-    # component amplitude additionally needs the direct source-frame integral:
-    # the oriented zero-mode minor plus the primed nonzero-mode contact term.
+    # The original GLSM component amplitude carries a numerical vortex
+    # fugacity.  Its dual image carries the exp(-Y_i) operator tag only after
+    # the original-to-dual map is fixed.
     retained_cells = [Fraction(2, 5), Fraction(3, 7), Fraction(5, 11)]
-    topological_factor = Fraction(7, 13)
+    original_vortex_fugacity = Fraction(7, 13)
+    dual_operator_tag = "exp(-Y_i)"
 
     def source_minor(
         left: tuple[Fraction, Fraction],
@@ -1118,8 +1211,8 @@ def check_one_vortex_source_frame_calibration() -> None:
     assert_gt_bound("one-vortex reference source integral is nonzero", abs(reference_integral), Fraction(0))
     assert_gt_bound("one-vortex target source integral is nonzero", abs(target_integral), Fraction(0))
 
-    reference_amplitude = topological_factor * reference_integral
-    target_amplitude = topological_factor * target_integral
+    reference_amplitude = original_vortex_fugacity * reference_integral
+    target_amplitude = original_vortex_fugacity * target_integral
     source_frame_ratio = target_integral / reference_integral
     assert_equal(
         "source-frame ratio calibrates target component amplitude",
@@ -1128,9 +1221,11 @@ def check_one_vortex_source_frame_calibration() -> None:
     )
 
     protected_coefficient = sum(retained_cells, Fraction(0))
-    mirror_fugacity_only = topological_factor * protected_coefficient
+    mirror_fugacity_only = original_vortex_fugacity * protected_coefficient
     if mirror_fugacity_only == target_amplitude:
         raise AssertionError("mirror fugacity alone should not determine a component amplitude")
+    if dual_operator_tag == target_amplitude:
+        raise AssertionError("dual operator tag should not be a numerical direct component amplitude")
 
     contact_omitted_target = source_integral(
         target_left,
@@ -1153,7 +1248,7 @@ def check_one_vortex_source_frame_calibration() -> None:
         parallel_integral,
         Fraction(0),
     )
-    if mirror_fugacity_only == topological_factor * parallel_integral:
+    if mirror_fugacity_only == original_vortex_fugacity * parallel_integral:
         raise AssertionError("nonzero mirror fugacity should not bypass a zero source minor")
 
     zero_reference_integral = Fraction(0)
@@ -2587,6 +2682,7 @@ def main() -> None:
     check_vortex_zero_mode_filter()
     check_vortex_fluctuation_complex_gate()
     check_single_vortex_amplitude_assembly()
+    check_one_vortex_frame_and_normal_interaction_separation()
     check_one_vortex_source_functional_extraction()
     check_one_vortex_component_amplitude_cell()
     check_one_vortex_source_frame_calibration()

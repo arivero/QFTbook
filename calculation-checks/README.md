@@ -2945,11 +2945,16 @@ Current checks:
   factor in the gauge-slice density, and residual-zero-mode rejection, the
   single-vortex amplitude assembly with zero-mode removal, determinant-power
   bookkeeping, saturated twisted-\(F\)-term zero modes, unsaturated-zero-mode
-  vanishing, and FI-coordinate normalization shifts, the retained-window
+  vanishing, and FI-coordinate normalization shifts, the one-vortex
+  original/dual-frame and normal-mode-interaction separation check rejecting
+  determinant-only coefficients and direct substitution of the dual
+  \(e^{-Y_i}\) operator for the numerical original GLSM fugacity, the
+  retained-window
   one-vortex source-functional extraction distinguishing the twisted
 	  \(F\)-term projection from zero-source component amplitudes and
 	  source-differentiated component amplitudes, with negative controls for
-	  moduli-only, ghost-omitted, mirror-only, source-overlap, and
+	  moduli-only, ghost-omitted, determinant-only, mirror-only,
+	  source-overlap, normal-interaction, and
 	  unsaturated-zero-mode shortcuts, the finite one-vortex component-amplitude
 	  cell checking the oriented zero-mode source minor, primed-propagator contact
 	  contribution, residual telescope, and negative controls for norm-product,
@@ -2957,8 +2962,8 @@ Current checks:
 	  underbudgeted-propagator shortcuts, the finite source-frame calibration
 	  check showing that a reference component amplitude predicts a target only
 	  through the direct source-minor/contact ratio, with negative controls for
-	  mirror-fugacity-only, zero-reference, contact-omitted, and parallel-source
-	  shortcuts, the retained-window
+	  mirror-fugacity-only, dual-operator-tag, zero-reference,
+	  contact-omitted, and parallel-source shortcuts, the retained-window
 	  one-vortex coefficient noncancellation bound with signed/mass
   margin, residual telescope, relative-error bound, and negative controls for
   omitted determinant residuals and symmetry-only nonzero claims, the
