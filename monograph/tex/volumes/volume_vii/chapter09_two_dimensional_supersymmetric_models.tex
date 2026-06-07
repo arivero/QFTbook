@@ -1588,6 +1588,76 @@ that assembled projection and bounds the residuals.  Under a flavor basis
 change the projections \(\Pi_i\) transform, while the common sector
 \({\mathcal A}_{1,\Lambda}\) does not split into flavor-labelled flux sectors.
 
+\begin{controlledapproximation}[Common-flux operator-map residual diagnostic]
+\label{ca:glsm-common-flux-operator-map-diagnostic}
+The preceding source-projection formula is still not the operator map.  A
+finite-regulator comparison with the primitive mirror operators must supply a
+linear source space \(V_{1,\Lambda}\), the common charge-one functional
+\({\mathcal A}_{1,\Lambda}\in V_{1,\Lambda}\), original source rows
+\(\pi_{i,\Lambda}\), dual source rows \(\widetilde\pi_{i,\Lambda}\), and an
+operator transport map
+\[
+  U_\Lambda:V_{1,\Lambda}\longrightarrow \widetilde V_{1,\Lambda}
+\]
+such that
+\begin{equation}
+  \pi_{i,\Lambda}({\mathcal A}_{1,\Lambda})
+  =
+  \widetilde\pi_{i,\Lambda}
+  \bigl(U_\Lambda{\mathcal A}_{1,\Lambda}\bigr)
+  +R_{i,\Lambda}^{\rm op}.
+  \label{eq:glsm-common-flux-operator-map-row}
+\end{equation}
+The row \(\widetilde\pi_i\) is the regulated source representative of the
+dual monomial \(e^{-Y_i}\).  Equation
+\eqref{eq:glsm-common-flux-operator-map-row} is an independent
+matrix-element statement; compact flux periodicity and the Coulomb logarithmic
+saddle term fix separate parts of the comparison.
+For equal-charge fields it must also be covariant under the flavor action:
+\[
+  U_\Lambda\,\rho_{\rm orig}(g)
+  =
+  \rho_{\rm mir}(g)\,U_\Lambda,
+  \qquad
+  \pi_{i,\Lambda}\rho_{\rm orig}(g)
+  =
+  \sum_j \rho_{ij}^{\vee}(g)\,\pi_{j,\Lambda}.
+\]
+
+The same diagnostic has to say which physical observable is being compared.
+For an observable row \(\Pi_{\mathcal O,\Lambda}\), the projected coefficients
+\(\{\widehat c_{i,\Lambda}^{\rm orig}\}\) determine
+\(C_{\mathcal O,\Lambda}^{(1)}\) only if an assembly map
+\(\mathfrak A_{\mathcal O,\Lambda}\) is supplied with
+\begin{equation}
+  \Pi_{\mathcal O,\Lambda}({\mathcal A}_{1,\Lambda})
+  =
+  \mathfrak A_{\mathcal O,\Lambda}
+  \bigl(
+    \widehat c_{1,\Lambda}^{\rm orig},\ldots,
+    \widehat c_{m,\Lambda}^{\rm orig}
+  \bigr)
+  +R_{\mathcal O,\Lambda}^{\rm asm}.
+  \label{eq:glsm-common-flux-observable-assembly-row}
+\end{equation}
+If there is a retained direction
+\(v\in\bigcap_i\ker\pi_{i,\Lambda}\) but
+\(\Pi_{\mathcal O,\Lambda}(v)\ne0\), then two common-flux functionals have the
+same primitive mirror coefficients and different observable amplitudes.  In
+that case \(\prod_i c_i^{Q_i{}^a}\) is a mirror/FI coordinate, not an
+observable amplitude.  A controlled comparison must therefore carry the bound
+\[
+  |\Delta_{\mathcal O}|
+  \le
+  B_{\rm op}+B_{\rm src}+B_{\rm span}
+  +B_{\rm flav}+B_{\rm asm}+B_{\rm cont},
+\]
+where \(B_{\rm span}\) controls the failure of the primitive rows to span the
+observable row.  The continuum Hori--Vafa operator theorem is precisely the
+claim that this package exists, has the declared residuals, and survives the
+regulator limit in the chosen source topology.
+\end{controlledapproximation}
+
 \begin{proposition}[Finite-regulator vortex fluctuation complex]
 \label{prop:glsm-vortex-fluctuation-complex}
 At a charge-one vortex saddle \(z\), the coefficient \(c_i\) is controlled by

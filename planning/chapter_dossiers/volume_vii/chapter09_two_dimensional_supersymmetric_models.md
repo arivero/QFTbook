@@ -107,6 +107,11 @@ and
   mirror-residue FI coordinate, retained finite degree-one instanton-measure
   integral, and residual majorants in the Hori--Vafa residue/direct-instanton
   comparison map.
+- `V_{1,Lambda}`, `U_Lambda`, `pi_i`, `tilde pi_i`, `Pi_O`,
+  `B_span`: finite common-flux source space, original-to-dual operator
+  transport map, primitive original and mirror source rows, tested observable
+  row, and residual controlling whether primitive mirror rows span the
+  observable being compared.
 - `overline M_{0,3}(P^{N-1},d)`, `ev_j`, `I_d`: compactified genus-zero
   stable-map moduli space, evaluation maps, and A-model three-point invariant
   used in the direct `P^{N-1}` quantum-product computation.
@@ -346,6 +351,13 @@ and
   `prod_i c_i^{Q_i^a}`.  Such products are coordinate assemblies until a
   source-factorization or observable-comparison theorem supplies the assembly
   map and residual bounds.
+- Adds `ca:glsm-common-flux-operator-map-diagnostic`: a finite-regulator
+  diagnostic for turning common-flux primitive projections into a mirror
+  operator map.  It requires an original-to-dual source transport map,
+  row-wise matrix-element comparisons for the `exp(-Y_i)` representatives,
+  flavor covariance, an observable assembly row, and a span residual.  The
+  block exhibits the failure mode where two common-flux functionals have the
+  same primitive projected `c_i` but differ on the tested observable.
 - Extends the vortex-normalization/FI-coordinate comparison to all abelian
   ranks: normalized mirror-torus variables `hat X_i=c_i exp(-Y_i)` move the
   constants into `T_a^phys=T_a+sum_i Q_i^a log c_i`, and the same shift is
@@ -886,6 +898,14 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   `U(1)^s/Gamma` cocharacter, theta-character, dual-character, and residual
   mirror-orbifold data are propagated.  The companion adds finite negative
   controls for arbitrary projected coefficients and quotient-lattice shortcuts.
+- The 2026-06-07 issue #847 common-flux operator-map diagnostic pass adds the
+  missing finite comparison gate after the source-projection paragraph.  It
+  states that primitive mirror rows are not a continuum operator map unless an
+  original-to-dual source transport, row-wise matrix-element comparison, flavor
+  covariance, observable assembly row, and span residual are supplied.  The
+  companion constructs two common source functionals with identical primitive
+  projected coefficients and different observable amplitudes, rejecting the
+  projected-product shortcut even when a one-point assembly fit exists.
 - The 2026-06-07 issue #847 quotient global-form lattice pass makes that last
   boundary constructive.  The chapter now displays the cocharacter flux
   lattice, dual character lattice, FI-theta period lattice, and rank-one

@@ -40,8 +40,8 @@ component-to-component source-frame calibration ratios with supplied component
 and frame residuals,
 normal-mode cumulant factors and original-to-dual frame tags,
 common-sector source projections, independently projected common amplitudes,
-assembly-map mutation controls, quotient cocharacter-lattice and dual
-character-lattice filters with theta-period tests,
+assembly-map mutation controls, operator-map diagnostic span tests, quotient
+cocharacter-lattice and dual character-lattice filters with theta-period tests,
 one-loop gamma-matrix Hermiticity tests, signed-log determinant-density
 coefficient extraction, flux-carrying magnetic-torus Wilson-overlap
 indices, heat-kernel Fujikawa traces, logarithm branch shifts, and
@@ -117,7 +117,9 @@ original/dual frame substitutions,
 nonperiodic \(\exp(\tau)\) fugacities,
 flavor-labelled topological vortex sectors,
 projected-coefficient products used as direct common-sector amplitudes,
-arbitrary projected coefficients, ordinary \(U(1)\) product formulae reused for
+primitive mirror source projections treated as a complete operator map,
+source-functional null directions hidden from primitive projections but visible
+to the tested observable, arbitrary projected coefficients, ordinary \(U(1)\) product formulae reused for
 quotient flux lattices, cover-charge-one matter treated as a quotient
 representation, ordinary \(2\pi i\) FI periods applied to fractional quotient
 fluxes, and quotient residual mirror orbifolds omitted from covering
@@ -633,6 +635,123 @@ def check_compact_fi_theta_fugacity_and_common_flux() -> None:
                     wrong_half_density_periods.denominator == 1,
                     False,
             )
+
+
+def check_common_flux_operator_map_diagnostic() -> None:
+    def dot(row: list[Fraction], vector: list[Fraction]) -> Fraction:
+        return sum(weight * value for weight, value in zip(row, vector))
+
+    def mat_vec(matrix: list[list[Fraction]], vector: list[Fraction]) -> list[Fraction]:
+        return [dot(row, vector) for row in matrix]
+
+    def matmul(left: list[list[Fraction]], right: list[list[Fraction]]) -> list[list[Fraction]]:
+        right_columns = [list(column) for column in zip(*right)]
+        return [[dot(row, column) for column in right_columns] for row in left]
+
+    common_functional = [Fraction(2, 3), Fraction(1, 5), Fraction(3, 7)]
+    primitive_rows = [
+        [Fraction(1), Fraction(0), Fraction(1)],
+        [Fraction(0), Fraction(1), Fraction(1)],
+    ]
+    dual_rows = [row[:] for row in primitive_rows]
+    operator_map = [
+        [Fraction(1), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(1), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(1)],
+    ]
+    transported = mat_vec(operator_map, common_functional)
+    original_coefficients = [dot(row, common_functional) for row in primitive_rows]
+    dual_coefficients = [dot(row, transported) for row in dual_rows]
+    assert_equal(
+        "operator-map rows compare source matrix elements",
+        dual_coefficients,
+        original_coefficients,
+    )
+
+    flavor_swap = [
+        [Fraction(0), Fraction(1), Fraction(0)],
+        [Fraction(1), Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(0), Fraction(1)],
+    ]
+    assert_equal(
+        "identity operator map is flavor covariant in the equal-charge cell",
+        matmul(operator_map, flavor_swap),
+        matmul(flavor_swap, operator_map),
+    )
+    swapped_functional = mat_vec(flavor_swap, common_functional)
+    swapped_coefficients = [dot(row, swapped_functional) for row in primitive_rows]
+    assert_equal(
+        "flavor action permutes primitive source projections",
+        swapped_coefficients,
+        [original_coefficients[1], original_coefficients[0]],
+    )
+
+    primitive_null = [Fraction(1), Fraction(1), -Fraction(1)]
+    assert_equal(
+        "primitive mirror rows have a retained null direction",
+        [dot(row, primitive_null) for row in primitive_rows],
+        [Fraction(0), Fraction(0)],
+    )
+    observable_row = [Fraction(1), Fraction(2), Fraction(0)]
+    assert_equal(
+        "tested observable sees the primitive-row null direction",
+        dot(observable_row, primitive_null),
+        Fraction(3),
+    )
+    shifted_functional = [
+        value + Fraction(1, 10) * null_value
+        for value, null_value in zip(common_functional, primitive_null)
+    ]
+    assert_equal(
+        "primitive projections cannot distinguish shifted common functional",
+        [dot(row, shifted_functional) for row in primitive_rows],
+        original_coefficients,
+    )
+    original_observable = dot(observable_row, common_functional)
+    shifted_observable = dot(observable_row, shifted_functional)
+    assert_equal(
+        "observable amplitude changes along primitive-row null direction",
+        shifted_observable - original_observable,
+        Fraction(3, 10),
+    )
+
+    primitive_rank = rank_fraction(primitive_rows)
+    augmented_rank = rank_fraction(primitive_rows + [observable_row])
+    assert_equal(
+        "observable row is not spanned by primitive mirror source rows",
+        augmented_rank > primitive_rank,
+        True,
+    )
+    projected_product = prod(original_coefficients, start=Fraction(1))
+    assembly_for_one_functional = original_observable / projected_product
+    assert_equal(
+        "single-point assembly can fit one common functional",
+        assembly_for_one_functional * projected_product,
+        original_observable,
+    )
+    assert_equal(
+        "same projected product fails shifted observable without span data",
+        assembly_for_one_functional * projected_product == shifted_observable,
+        False,
+    )
+
+    residuals = {
+        "operator": Fraction(1, 211),
+        "source": Fraction(1, 223),
+        "span": Fraction(1, 227),
+        "flavor": Fraction(1, 229),
+        "assembly": Fraction(1, 233),
+        "continuum": Fraction(1, 239),
+    }
+    full_bound = sum(residuals.values(), Fraction(0))
+    actual_error = full_bound
+    assert_equal("common-flux operator-map residual telescope", actual_error <= full_bound, True)
+    underbudget_without_span = full_bound - residuals["span"]
+    assert_equal(
+        "omitting row-span residual underbudgets operator-map diagnostic",
+        actual_error <= underbudget_without_span,
+        False,
+    )
 
 
 def check_global_form_flux_character_lattice_gate() -> None:
@@ -4198,6 +4317,7 @@ def main() -> None:
     check_abelian_legendre_duality()
     check_abelian_glsm_coulomb_ledger()
     check_compact_fi_theta_fugacity_and_common_flux()
+    check_common_flux_operator_map_diagnostic()
     check_global_form_flux_character_lattice_gate()
     check_abelian_coulomb_one_loop_primitive()
     check_coulomb_component_response_selects_log_sign()
