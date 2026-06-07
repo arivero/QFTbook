@@ -65,6 +65,7 @@
         "crossed hard-channel external Weyl helicity projection",
         "tail-subtracted retained-window hard-channel amplitude",
         "retained hard-channel normal-source quotient",
+        "same-coordinate amplitude-to-rate residual propagation",
         "fixed/running source RG channel transport",
         "typed smooth versus local Green insertions",
         "spectral cutoff local Green matching",

@@ -182,7 +182,8 @@ Target claims:
   Euclidean source vector must be crossed, amputated, and projected into a
   physical external-state basis before it is squared or interfered with a
   reference amplitude; unamputated source overlaps, wrong-channel references,
-  and linear theta-charged sums are different coordinates.
+  linear theta-charged sums, and positive-rate or interference residual
+  underbudgets are different coordinates.
 - `ca:instanton-hard-window-tail-subtraction`: the hard four-source window is
   controlled as a core integral plus leading and subleading analytic endpoint
   tails, rather than as a formal size integral.
@@ -250,7 +251,8 @@ Independent construction:
   mass-assisted two-source interference with exact formal mass/theta powers,
   same-coordinate amplitude-to-rate typing with crossed/amputated vectors,
   positive measurement matrices, same-channel interference, source-overlap
-  negative controls, and vector residual propagation,
+  negative controls, positive-rate residual budgets, and vector residual
+  propagation,
   physical projection bins, residual sums, two-term hard-window endpoint
   tail subtraction, screened hard-size majorant-window stationarity,
   boundary/weak-coupling gates, actual-kernel counterexamples under the same
@@ -412,8 +414,9 @@ Negative controls:
   unamputated source overlaps used in a physical quadratic cut, a
   wrong-channel reference amplitude interfered through a formal scalar
   product, a linear theta-charged source sum treated as a positive rate, or
-  a same-channel vector interference residual budget with the reference-vector
-  error removed,
+  a positive-rate residual budget with the amplitude or measurement error
+  removed, or a same-channel vector interference residual budget with the
+  reference-vector error removed,
   single Euclidean cell sum used as a spectral-bin observable, a
   determinant-only hard-scale ratio, a hard benchmark with a missing hard
   slot, a leading-tail-only hard-window approximation, hard-only or
@@ -6165,6 +6168,37 @@ def check_same_coordinate_amplitude_rate_gate() -> None:
     ref_leading = (ref_bound, ref_bound)
     amp_shift = (amp_error, amp_error)
     ref_shift = (ref_error, ref_error)
+    measurement_error = Fraction(1, 1000)
+    leading_rate = quad(amp_leading, residual_measurement)
+    shifted_rate = (
+        quad(vec_add(amp_leading, amp_shift), residual_measurement)
+        + measurement_error
+    )
+    rate_residual = shifted_rate - leading_rate
+    rate_residual_bound = (
+        n_bins * row_l1_bound * (2 * amp_bound * amp_error + amp_error * amp_error)
+        + measurement_error
+    )
+    assert_equal(
+        "same-coordinate positive-rate residual telescope",
+        rate_residual,
+        rate_residual_bound,
+    )
+    underbudget_without_amplitude = rate_residual_bound - (
+        n_bins * row_l1_bound * (2 * amp_bound * amp_error + amp_error * amp_error)
+    )
+    assert_equal(
+        "omitting amplitude residual underbudgets positive cut",
+        rate_residual <= underbudget_without_amplitude,
+        False,
+    )
+    underbudget_without_measurement = rate_residual_bound - measurement_error
+    assert_equal(
+        "omitting measurement residual underbudgets positive cut",
+        rate_residual <= underbudget_without_measurement,
+        False,
+    )
+
     leading_interference = 2 * dot(ref_leading, mat_vec(residual_measurement, amp_leading))
     shifted_interference = 2 * dot(
         vec_add(ref_leading, ref_shift),

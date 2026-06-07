@@ -1551,15 +1551,34 @@ violating, or if it is expressed in a different source or pole basis, the
 interference is zero or undefined.  A formal scalar product written before the
 common projection has been supplied is not a physical interference term.
 
-The residual propagation is the vector version of
-\eqref{eq:instanton-mass-assisted-interference-bound}.  Suppose
+The residual propagation must be specified before the observable claim, rather
+than appended after the phase discussion.  Suppose
 \[
   \|\mathbf a^0\|_{\infty}\le M_a,\qquad
   \|\mathbf b^0\|_{\infty}\le M_b,\qquad
   \|\delta\mathbf a\|_{\infty}\le\epsilon_a,\qquad
   \|\delta\mathbf b\|_{\infty}\le\epsilon_b,
 \]
-and \(\max_X\sum_Y|W_{XY}|\le L\) on an \(n\)-dimensional retained bin.  Then
+and \(\max_X\sum_Y|W_{XY}|\le L\) on an \(n\)-dimensional retained bin, with
+\(W\) Hermitian.  If \(B_Q\) bounds the absolute measurement-basis,
+completeness, and binning error not already included in \(\delta\mathbf a\),
+then the positive cut obeys
+\begin{equation}
+  \left|
+  (\mathbf a^0+\delta\mathbf a)^\dagger
+  W(\mathbf a^0+\delta\mathbf a)
+  -
+  (\mathbf a^0)^\dagger W\mathbf a^0
+  \right|
+  \le
+  nL\left(2M_a\epsilon_a+\epsilon_a^2\right)+B_Q .
+  \label{eq:instanton-same-coordinate-positive-rate-bound}
+\end{equation}
+Thus \(R_Q\) in \eqref{eq:instanton-same-coordinate-positive-rate} is a
+budgeted term.  It cannot be dropped merely because the one-instanton phase
+cancels in the quadratic pairing.  The theta-linear residual is the vector
+version of \eqref{eq:instanton-mass-assisted-interference-bound}.  With an
+additional absolute measurement/completeness error \(B_I\),
 \begin{equation}
   \left|
   2\Re\bigl((\mathbf b^0+\delta\mathbf b)^\dagger
@@ -1568,10 +1587,9 @@ and \(\max_X\sum_Y|W_{XY}|\le L\) on an \(n\)-dimensional retained bin.  Then
   2\Re\bigl((\mathbf b^0)^\dagger W\mathbf a^0\bigr)
   \right|
   \le
-  2nL\left(M_b\epsilon_a+M_a\epsilon_b+\epsilon_a\epsilon_b\right).
+  2nL\left(M_b\epsilon_a+M_a\epsilon_b+\epsilon_a\epsilon_b\right)+B_I .
   \label{eq:instanton-same-coordinate-interference-bound}
 \end{equation}
-A measurement-basis or completeness error adds its own absolute term.
 
 This obligation prevents three common shortcuts.  Squaring the all-outgoing source
 coefficient computes

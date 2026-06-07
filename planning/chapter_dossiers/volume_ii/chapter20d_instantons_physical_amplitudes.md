@@ -162,7 +162,8 @@
 - `rem:instanton-same-coordinate-amplitude-rate-obligation`: requires the
   all-outgoing Euclidean source vector to be crossed, amputated, and projected
   into a physical external-state basis before it is squared or interfered with
-  a reference amplitude.
+  a reference amplitude, with positive-rate and theta-linear residual budgets
+  retained in that same basis.
 - `prop:su3-nf2-hard-source-power-slow-tail`: derives the SU(3), `N_f=2`
   hard four-source powers `rho^(32/3) d rho`,
   `(8 pi^2/g_ht^2(Q))^6 Lambda_ht^(29/3) Q^(-35/3)`, and the slow
@@ -453,7 +454,8 @@
   scattering-channel work into an end-to-end observable map.  It prevents a
   Euclidean all-outgoing source coefficient, an unamputated source vector, a
   same-channel interference term, and a positive cut from being treated as the
-  same number.
+  same number, and it makes the positive-rate remainder \(R_Q\) a controlled
+  bound rather than a symbol appended after theta-phase cancellation.
 - The observable-map block connects the dedicated instanton-amplitude
   chapter back to the QCD theta and \(U(1)_A\) material without duplicating it:
   a hard four-source coefficient, a dilute theta curvature, a zero-mode-zone
@@ -601,7 +603,8 @@
   verifies the same-coordinate amplitude-to-rate obligation with crossed/amputated
   finite vectors, folded measurement matrices, unamputated source-overlap
   negative controls, wrong-channel reference rejection, theta-power typing,
-  and exact vector interference residual propagation,
+  exact positive-rate residual propagation, and exact vector interference
+  residual propagation,
   verifies the first connected instanton-pair source correction, including
   disconnected subtraction, ordered-pair/Mayer symmetry-factor counting,
   neutral-pair source visibility despite zero theta curvature, same-charge
@@ -783,6 +786,14 @@
   source overlaps in the cut, wrong-channel formal interference, linear
   theta-charged sums used as rates, and vector-interference residual budgets
   with the reference error removed.
+- 2026-06-07 issue #597 positive-rate residual pass: strengthened
+  `rem:instanton-same-coordinate-amplitude-rate-obligation` by adding the
+  explicit bound
+  `n L (2 M_a epsilon_a + epsilon_a^2) + B_Q` for the physical positive cut.
+  The companion now checks the bound exactly in a two-bin measurement model
+  and rejects rate budgets that omit either the amplitude/projection residual
+  or the measurement/completeness residual.  This is an observable handoff
+  improvement, not a moduli-space enlargement.
 - 2026-06-07 issue #597 normal-propagator insertion pass: added
   `ca:instanton-normal-propagator-source-insertion` inside the
   normal-fluctuation section.  The pass makes an instanton-background
