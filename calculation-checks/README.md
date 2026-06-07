@@ -2991,7 +2991,11 @@ Current checks:
   logarithm shortcuts, the compact FI-theta check that
   \(T=2\pi i\tau=-2\pi r+i\theta\) gives a theta-periodic fugacity
   \(q=\exp(T)\) while \(\exp(\tau)\) fails, the common-flux check rejecting
-  flavor-labelled vortex sectors under equal-charge flavor rotations, the charged-chiral mirror-variable
+  flavor-labelled vortex sectors under equal-charge flavor rotations, separating
+  source-projected coefficients from a direct common observable amplitude,
+  requiring an assembly map before a projected product is used as physical data,
+  and rejecting ordinary \(U(1)\) product formulae on a quotient flux lattice,
+  the charged-chiral mirror-variable
   elimination matching the Coulomb one-loop superpotential, the finite
   FI-coordinate shift induced by vortex coefficient normalizations, the
   all-rank mirror-torus and Coulomb affine-term ledger showing that vortex

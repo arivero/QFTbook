@@ -5,7 +5,9 @@ Target claims: the finite LG/GLSM charge ledgers, abelian duality
 normalizations, charged-chiral mirror elimination, vortex-zero-mode filter,
 finite-regulator vortex fluctuation complex, vortex-to-FI-coordinate
 normalization, compact FI-theta flux periodicity, common-flux rather than
-flavor-labelled vortex topology, one-vortex normal-mode interaction and original/dual-frame
+flavor-labelled vortex topology, common-sector source-projection and
+product-assembly gates, quotient-flux character restrictions,
+one-vortex normal-mode interaction and original/dual-frame
 separation, one-vortex source-functional F-term extraction,
 one-vortex component-amplitude source-minor extraction,
 one-loop Coulomb local determinant-density/Fujikawa heat-kernel response and
@@ -33,6 +35,8 @@ coefficient bounds, oriented source-minor component-amplitude cells,
 component-to-component source-frame calibration ratios with supplied component
 and frame residuals,
 normal-mode cumulant factors and original-to-dual frame tags,
+common-sector source projections, independently projected common amplitudes,
+assembly-map mutation controls, quotient-lattice character filters,
 one-loop gamma-matrix Hermiticity tests, signed-log determinant-density
 coefficient extraction, finite flux Dirac-complex ranks, heat-kernel
 Fujikawa traces, logarithm branch shifts, and axial-monodromy ledgers,
@@ -100,6 +104,9 @@ determinant-only vortex coefficients with nonzero normal interactions,
 original/dual frame substitutions,
 nonperiodic \(\exp(\tau)\) fugacities,
 flavor-labelled topological vortex sectors,
+projected-coefficient products used as direct common-sector amplitudes,
+arbitrary projected coefficients, ordinary \(U(1)\) product formulae reused for
+quotient flux lattices,
 using compact branch periodicity to choose the Coulomb determinant sign,
 wrong component-response signs or Fujikawa factors,
 absolute-value-only Coulomb logarithms,
@@ -130,7 +137,9 @@ virtual-cycle construction, uniform remainder estimates, or the component
 estimates in the vortex-to-observable proof-obligation map.  The cigar
 reflection formula is treated as imported target bookkeeping here; the
 companion does not derive its Liouville normalization, continuous measure,
-special-level limits, or pole residues.
+special-level limits, or pole residues.  The common-flux source-projection cell
+does not prove the continuum operator map or a source-factorization theorem; it
+checks the finite gates those claims must pass.
 """
 
 from __future__ import annotations
@@ -513,14 +522,87 @@ def check_compact_fi_theta_fugacity_and_common_flux() -> None:
         1,
     )
 
-    bare_q = Fraction(5, 13)
-    coefficients = [Fraction(2, 3), Fraction(7, 11), Fraction(17, 19)]
-    physical_q = bare_q * prod(coefficients, start=Fraction(1))
-    permuted_coefficients = [coefficients[1], coefficients[0], coefficients[2]]
+    common_density = [Fraction(2, 5), Fraction(3, 7), Fraction(5, 11)]
+    source_projections = [
+        [Fraction(1, 2), Fraction(1, 3), Fraction(1, 5)],
+        [Fraction(2, 7), Fraction(3, 8), Fraction(5, 9)],
+        [Fraction(3, 11), Fraction(5, 13), Fraction(7, 17)],
+    ]
+    observable_kernel = [Fraction(7, 19), -Fraction(2, 23), Fraction(5, 29)]
+
+    def project(kernel: list[Fraction]) -> Fraction:
+        return sum(weight * value for weight, value in zip(common_density, kernel))
+
+    projected_coefficients = [project(kernel) for kernel in source_projections]
+    direct_common_amplitude = project(observable_kernel)
+    projected_product_coordinate = prod(projected_coefficients, start=Fraction(1))
     assert_equal(
-        "common CP fugacity is symmetric under flavor-basis relabelling",
-        bare_q * prod(permuted_coefficients, start=Fraction(1)),
-        physical_q,
+        "projected coefficients are computed from the common source functional",
+        projected_coefficients[0],
+        Fraction(167, 385),
+    )
+    assert_equal(
+        "common observable amplitude is a separate source projection",
+        direct_common_amplitude,
+        Fraction(919571, 4879105),
+    )
+    assert_equal(
+        "product of projected coefficients is not automatically a common amplitude",
+        projected_product_coordinate == direct_common_amplitude,
+        False,
+    )
+
+    assembly_map = direct_common_amplitude / projected_product_coordinate
+    assert_equal(
+        "supplied assembly map transports projected product to common amplitude",
+        assembly_map * projected_product_coordinate,
+        direct_common_amplitude,
+    )
+    arbitrary_projected_coefficients = [
+        projected_coefficients[0] + Fraction(1, 97),
+        projected_coefficients[1],
+        projected_coefficients[2],
+    ]
+    assert_equal(
+        "arbitrary projected data fail the independently computed common amplitude",
+        assembly_map * prod(arbitrary_projected_coefficients, start=Fraction(1))
+        == direct_common_amplitude,
+        False,
+    )
+
+    permuted_projections = [
+        source_projections[1],
+        source_projections[0],
+        source_projections[2],
+    ]
+    permuted_coefficients = [project(kernel) for kernel in permuted_projections]
+    assert_equal(
+        "flavor-basis relabelling permutes projections, not flux sectors",
+        permuted_coefficients,
+        [projected_coefficients[1], projected_coefficients[0], projected_coefficients[2]],
+    )
+    assert_equal(
+        "common observable amplitude is invariant under projection relabelling",
+        project(observable_kernel),
+        direct_common_amplitude,
+    )
+
+    quotient_flux_lattice = [2 * n for n in range(-2, 3)]
+    quotient_theta_character_denominator = 2
+    allowed_dual_charge = [
+        charge
+        for charge in [1, 2, 3, 4]
+        if charge % quotient_theta_character_denominator == 0
+    ]
+    assert_equal(
+        "quotient global form restricts allowed dual characters",
+        allowed_dual_charge,
+        [2, 4],
+    )
+    assert_equal(
+        "ordinary U(1) flux lattice is not the quotient flux lattice",
+        quotient_flux_lattice == list(range(-4, 5)),
+        False,
     )
 
     # The component of -Q Sigma Y couples Im(Y) to the same compact flux.  A

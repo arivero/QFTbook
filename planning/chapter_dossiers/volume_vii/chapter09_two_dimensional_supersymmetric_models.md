@@ -307,7 +307,13 @@ and
 - Rebuilds the one-vortex notation around the common gauge-bundle flux:
   the flux-one sector is not attached to a flavor label.  The index `i` labels
   a dual disorder/source projection to `exp(-Y_i)`, while the original GLSM
-  flux weight is the common `q_top`.
+  flux weight is the common `q_top`.  The source-projection interface now writes
+  `hat c_i^orig=Pi_i(A_{1,Lambda})` for projections of one FI-stripped common
+  sector and separates physical observable projections
+  `C_O^{(1)}=Pi_O(A_{1,Lambda})` from mirror-coordinate products
+  `prod_i c_i^{Q_i^a}`.  Such products are coordinate assemblies until a
+  source-factorization or observable-comparison theorem supplies the assembly
+  map and residual bounds.
 - Extends the vortex-normalization/FI-coordinate comparison to all abelian
   ranks: normalized mirror-torus variables `hat X_i=c_i exp(-Y_i)` move the
   constants into `T_a^phys=T_a+sum_i Q_i^a log c_i`, and the same shift is
@@ -480,7 +486,16 @@ and
     plus the Coulomb determinant/Fujikawa response cell checking the corrected
     Hermitian Dirac square, signed-log coefficient extraction across charge
     and mass-order reversals, paired nonzero fermion spin traces, finite flux
-    Dirac-complex ranks, heat-kernel chiral trace, and theta-shift Jacobian.
+    Dirac-complex ranks, heat-kernel chiral trace, and theta-shift Jacobian;
+  - compact FI-theta/common-flux checks: `T=2 pi i tau=-2 pi r+i theta`
+    gives the theta-periodic flux weight `q=exp(T)` while the nonperiodic
+    `exp(tau)` shortcut fails; equal-charge flavor rotations preserve the
+    common gauge flux but not flavor-labelled topological sectors; finite
+    source-projection functionals compute projected coefficients and a direct
+    common observable amplitude by separate routes, so arbitrary projected data
+    or a bare projected product fail without an assembly map; a quotient
+    flux-lattice cell rejects reusing the ordinary `U(1)` product formula when
+    the allowed dual characters have changed;
   - charged-chiral mirror-variable elimination matching the Coulomb one-loop
     superpotential and the finite FI-coordinate shift induced by vortex
     coefficient normalizations;
@@ -811,6 +826,16 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   rejects repeated `1/(4 pi)` density normalization, doubled-log
   holomorphic coefficients, and half-density `Sigma Y` compact-period
   shortcuts.
+- The 2026-06-07 issue #847 common-flux source-projection pass tightens the
+  physical operator-map boundary: the original rank-one flux event is one
+  common gauge-bundle sector, while `i` labels a source/disorder projection.
+  The chapter now distinguishes projected coefficients from a direct common
+  observable amplitude, marks `exp(T) prod_i c_i^{Q_i}` as a mirror-coordinate
+  assembly rather than a direct original-sector amplitude, and restricts the
+  displayed product formulae to the ordinary `U(1)^s` flux lattice unless the
+  `U(1)^s/Gamma` cocharacter, theta-character, dual-character, and residual
+  mirror-orbifold data are propagated.  The companion adds finite negative
+  controls for arbitrary projected coefficients and quotient-lattice shortcuts.
 - The 2026-06-07 issue #848 cigar/Liouville re-audit corrects the endpoint
   architecture after the external review: the GLSM dual variable is explicitly
   kept twisted chiral until a separate mirror/T-duality automorphism is

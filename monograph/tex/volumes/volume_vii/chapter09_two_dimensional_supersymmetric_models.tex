@@ -1102,7 +1102,15 @@ variable
 \[
   Y_i\sim Y_i+2\pi\ii .
 \]
-Repeated abelian gauge indices are summed in this section.
+Repeated abelian gauge indices are summed in this section.  Thus the explicit
+formulae below are in the ordinary \(U(1)^s\) covering-torus convention with
+flux lattice \(\mathbb Z^s\).  For \(U(1)^s/\Gamma\) they are not obtained by
+formal reuse of the same product constraints: one must replace \(\mathbb Z^s\)
+by the cocharacter lattice \(\Lambda_G\), make the theta character a character
+of \(\Lambda_G\), restrict the allowed dual exponentials to the corresponding
+character lattice, and include the residual mirror orbifold.  Until that
+lattice datum is supplied, the displayed Hori--Vafa formula is a \(U(1)^s\)
+formula.
 
 The local first-order functional for one charged chiral variable is the
 superspace analogue of the compact scalar construction.  Let \(B_i\) be a
@@ -1397,6 +1405,37 @@ sector with that primitive mirror monomial.  Coulomb matching fixes the
 primitive harmonic once a nonzero coefficient is present.  Neither step proves
 that the regulated common vortex sector has exactly the two universal fermion
 zero modes or that its determinant line has been oriented consistently.
+
+At finite regulator this distinction is expressed by source projections on one
+common sector.  Let \({\mathcal A}_{1,\Lambda}\) denote the
+FI-stripped charge-one source functional obtained by integrating over
+\(\mathcal U_{1,\Lambda}\), with the gauge orbit, collective coordinates,
+ghosts, and universal fermion zero modes already separated.  The
+\(i\)-labelled reduced coefficient is a linear projection
+\begin{equation}
+  \widehat c^{\rm orig}_{i,\Lambda}
+  =
+  \Pi_{i,\Lambda}\bigl({\mathcal A}_{1,\Lambda}\bigr),
+  \label{eq:glsm-common-flux-source-projection}
+\end{equation}
+where \(\Pi_{i,\Lambda}\) is fixed by the source that will be transported to
+the dual disorder operator \(e^{-Y_i}\).  A physical component or A-twisted
+observable uses, in general, a different projection
+\[
+  C_{\mathcal O,\Lambda}^{(1)}
+  =
+  \Pi_{\mathcal O,\Lambda}\bigl({\mathcal A}_{1,\Lambda}\bigr).
+\]
+Thus the list of numbers
+\(\widehat c^{\rm orig}_{1,\Lambda},\ldots,\widehat c^{\rm orig}_{m,\Lambda}\)
+is not itself a construction of a common original-sector amplitude.  In
+particular, a product such as \(\prod_i c_{i,\Lambda}^{Q_i{}^a}\) is a
+mirror-coordinate assembly after the operator map has been fixed; it is not the
+amplitude of one gauge-flux event unless an additional source-factorization or
+observable-comparison theorem identifies \(\Pi_{\mathcal O,\Lambda}\) with
+that assembled projection and bounds the residuals.  Under a flavor basis
+change the projections \(\Pi_i\) transform, while the common sector
+\({\mathcal A}_{1,\Lambda}\) does not split into flavor-labelled flux sectors.
 
 \begin{proposition}[Finite-regulator vortex fluctuation complex]
 \label{prop:glsm-vortex-fluctuation-complex}
@@ -2081,6 +2120,13 @@ replace
   T_a+\sum_{i=1}^m Q_i{}^a\log c_i .
   \label{eq:glsm-all-rank-vortex-fi-shift}
 \end{equation}
+These equations define the normalized mirror torus and the affine FI-theta
+coordinate used by protected Coulomb/residue calculations.  They do not say
+that the original GLSM has \(m\) flavor-labelled degree-one flux events, nor do
+they identify \(\exp(T_a)\prod_i c_i^{Q_i{}^a}\) with a direct
+source-differentiated amplitude.  That identification belongs to the
+observable layer and must pass the projection interface
+\eqref{eq:glsm-common-flux-source-projection}.
 \end{proposition}
 
 \begin{proof}
@@ -2268,6 +2314,11 @@ and write
   \neq0 .
   \label{eq:cpn-hv-physical-q}
 \end{equation}
+Here \(q_{\rm phys}\) is the mirror/FI coordinate after determinant and
+operator normalizations have been transported into the logarithmic torus.  It
+is not, by definition, the direct amplitude of a single common original flux
+sector.  The latter must be computed with the source projections and residual
+budgets above, and only then compared with the quantum-product observable.
 On the logarithmic torus
 \[
   \prod_{i=1}^N\widehat X_i=q_{\rm phys},
