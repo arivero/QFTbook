@@ -251,11 +251,14 @@ later lower-dimensional examples, protected sectors, and localization.
   gauge-parameter data that an independent determinant proof would have to
   evaluate.  It further records the row-resolved off-shell assembly obligation
   for the heavy \(Q\)-complex, derives the rank-one moment-map, gauge-fixing,
-  complex-moment, and Yukawa row Jacobians from the component Lagrangian, and
-  separates the heavy row projector from the quotient tangent zero mode.  It
-  also records the trace-log residual caused by dropping a gauge-fixing,
-  auxiliary, Yukawa, or row-Jacobian square-completion contact.  The old
-  massive-multiplet balance is retained only as a diagnostic consistency check.
+	  complex-moment, and Yukawa row Jacobians from the component Lagrangian, and
+	  separates the heavy row projector from the quotient tangent zero mode.  It
+	  now assembles the gauge map, background \(R_\xi\) adjoint row, ghost
+	  operator, moment-map/Yukawa rows, and nonzero-heavy projection into one
+	  gauge-fixed package before the regulator is applied.  It also records the
+	  trace-log residual caused by dropping a gauge-fixing, auxiliary, Yukawa, or
+	  row-Jacobian square-completion contact.  The old massive-multiplet balance is
+	  retained only as a diagnostic consistency check.
   The metric-extraction gate projects the trace-log kernel through the local
   two-jet quotient by field redefinitions and FI/mass source transport, showing
   that point-metric agreement or a zero component balance does not by itself
@@ -313,11 +316,14 @@ later lower-dimensional examples, protected sectors, and localization.
   checks Ward-paired mass-curvature vertices with a mismatched-vertex negative
   control, checks supercharge-factorized heavy-block pairing with a
   dropped-contact negative control, checks row-resolved off-shell heavy-complex
-  assembly with a missing auxiliary/Yukawa contact negative control, derives
-  the rank-one row-Jacobian projector/zero-mode/contact identities from a
-  fixed-norm Higgs background, checks paired regulator spectral functions on
-  the nonzero \(Q\)-complex and rejects unpaired PV masses, tangent-dependent
-  regulator vertices, and unprojected zero modes, and rejects use of the
+	  assembly with a missing auxiliary/Yukawa contact negative control, derives
+	  the rank-one row-Jacobian projector/zero-mode/contact identities from a
+	  fixed-norm Higgs background, checks the gauge-fixed heavy package by deriving
+	  the ghost symbol from the gauge map and gauge-fixing row, projecting away the
+	  tangent zero mode, and rejecting mismatched ghost rows and missing heavy
+	  rows, checks paired regulator spectral functions on the nonzero
+	  \(Q\)-complex and rejects unpaired PV masses, tangent-dependent regulator
+	  vertices, and unprojected zero modes, and rejects use of the
   four-dimensional gauge-field entry in dimensionally reduced arguments by
   checking reduced vector-scalar row contacts and the separate torsion-free
   versus torsionful \(2d\) target classification,

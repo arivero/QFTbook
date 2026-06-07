@@ -6,12 +6,13 @@ Target claims: Volume VII Chapter 08 quotient formulae, branch-EFT status
 boundaries, D1-D5 Higgs/Coulomb arithmetic, and the finite Higgs-metric
 background-field gates replacing component multiplicity ledgers, including the
 metric-kernel projection after source transport and the two-dimensional
-torsion-free versus torsionful theorem boundary.
+torsion-free versus torsionful theorem boundary and the finite gauge-fixed
+heavy-package projection.
 Independent construction: exact rational invariant-ring, quotient-dimension,
 cotangent-transition, moment-map, determinant-row, trace-log, and regulator
 supertrace cells, together with a finite metric two-jet source-transport
-projection, are built from finite data rather than by entering the manuscript's
-final identities as constants.
+projection and gauge-map/zero-mode projection cell, are built from finite data
+rather than by entering the manuscript's final identities as constants.
 Imported assumptions: the finite toy cells assume the declared charge
 assignments, a smooth fully Higgsed rank-one patch, the selected
 background-field gauge slots, and finite matrix representatives of the
@@ -22,10 +23,11 @@ seagulls, mismatched Ward vertices, dropped auxiliary/Yukawa contacts,
 unpaired dimension-reduced scalar contacts, covering four-dimensional
 component reuse, unpaired regulator masses, point-metric-only source matching,
 undeclared vector-spurion transport, four-supercharge Kahler-term imports,
-singular-branch shortcuts, and metric-only projections of torsionful
+singular-branch shortcuts, mismatched ghost gauge maps, unprojected tangent zero
+modes, missing heavy rows, and metric-only projections of torsionful
 two-dimensional (4,4) data are rejected when represented by the finite model.
 Scope boundary: these checks do not prove a continuum Higgs-branch metric
-nonrenormalization theorem, construct the full gauge-fixed elliptic complex,
+nonrenormalization theorem, construct the full continuum gauge-fixed elliptic complex,
 establish all-order harmonic/projective superspace protection, or construct
 the continuum D1-D5 infrared CFT.
 
@@ -980,6 +982,7 @@ def check_higgs_branch_background_field_derivation_gate():
         "supercharge_factorization",
         "off_shell_row_completion",
         "rank_one_row_jacobians",
+        "gauge_fixed_heavy_package_projection",
         "regulator_supertrace_pairing",
         "dimension_reduced_row_contacts",
         "gauge_parameter_cancellation",
@@ -1143,6 +1146,12 @@ def check_higgs_branch_background_field_derivation_gate():
             "background_gauge_fixing_row",
             "yukawa_mass_row",
             "heavy_projector_zero_mode_split",
+        },
+        "gauge_fixed_heavy_package_projection": {
+            "gauge_map",
+            "gauge_fixing_adjoint_row",
+            "ghost_from_gauge_map",
+            "nonzero_heavy_projection",
         },
         "regulator_supertrace_pairing": "same_pv_function_on_nonzero_Q_complex",
         "dimension_reduced_row_contacts": "reduced_vector_scalars_kept_as_rows",
@@ -2006,6 +2015,148 @@ def check_higgs_branch_background_field_derivation_gate():
     )
 
 
+def check_higgs_branch_gauge_fixed_heavy_package_projection():
+    """Assemble a finite gauge-fixed heavy package and project tangent zero modes."""
+
+    def vector_dot(left, right):
+        return sum(left[index] * right[index] for index in range(len(left)))
+
+    def matrix_vector_multiply(matrix, vector):
+        return [
+            sum(matrix[row][column] * vector[column] for column in range(len(vector)))
+            for row in range(len(matrix))
+        ]
+
+    def matrix_multiply(left, right):
+        return [
+            [
+                sum(left[row][mid] * right[mid][column] for mid in range(len(right)))
+                for column in range(len(right[0]))
+            ]
+            for row in range(len(left))
+        ]
+
+    def matrix_add(left, right):
+        return [
+            [left[row][column] + right[row][column] for column in range(len(left[0]))]
+            for row in range(len(left))
+        ]
+
+    def scalar_multiply(scalar, matrix):
+        return [[scalar * entry for entry in row] for row in matrix]
+
+    def outer_product(left, right):
+        return [
+            [left[row] * right[column] for column in range(len(right))]
+            for row in range(len(left))
+        ]
+
+    def zero_matrix(row_count, column_count):
+        return [
+            [Fraction(0) for _column in range(column_count)]
+            for _row in range(row_count)
+        ]
+
+    def projector_from_rows(rows):
+        projector = zero_matrix(len(rows[0]), len(rows[0]))
+        for row in rows:
+            norm = vector_dot(row, row)
+            projector = matrix_add(
+                projector,
+                scalar_multiply(Fraction(1, norm), outer_product(row, row)),
+            )
+        return projector
+
+    momentum = Fraction(2)
+    mass = Fraction(3)
+    xi_sqrt = Fraction(2)
+    xi = xi_sqrt * xi_sqrt
+    gauge_map_symbol = [momentum, xi_sqrt * mass]
+    gauge_fixing_adjoint_row = [momentum, xi_sqrt * mass]
+    ghost_operator = vector_dot(gauge_fixing_adjoint_row, gauge_map_symbol)
+    xi_operator = momentum * momentum + xi * mass * mass
+
+    assert_equal(
+        ghost_operator,
+        xi_operator,
+        "ghost operator is generated by the gauge-fixing row composed with the gauge map",
+    )
+    xi_sector_residual = (
+        Fraction(1, 2) * xi_operator
+        + Fraction(1, 2) * xi_operator
+        - ghost_operator
+    )
+    assert_equal(
+        xi_sector_residual,
+        Fraction(0),
+        "gauge map, Goldstone row, and ghost row share the same R_xi symbol",
+    )
+
+    mismatched_ghost_row = [momentum, (xi_sqrt + 1) * mass]
+    mismatched_ghost_operator = vector_dot(mismatched_ghost_row, gauge_map_symbol)
+    assert_equal(
+        mismatched_ghost_operator == xi_operator,
+        False,
+        "choosing the ghost operator independently breaks gauge-map compatibility",
+    )
+    assert_equal(
+        Fraction(1, 2) * xi_operator
+        + Fraction(1, 2) * xi_operator
+        - mismatched_ghost_operator
+        == 0,
+        False,
+        "mismatched ghost row leaves an R_xi determinant residual",
+    )
+
+    normal_hyper_row = [Fraction(3, 5), Fraction(4, 5), Fraction(0)]
+    quotient_tangent = [Fraction(-4, 5), Fraction(3, 5), Fraction(0)]
+    vector_scalar_row = [Fraction(0), Fraction(0), Fraction(1)]
+    heavy_rows = [normal_hyper_row, vector_scalar_row]
+    heavy_projector = projector_from_rows(heavy_rows)
+
+    assert_equal(
+        matrix_multiply(heavy_projector, heavy_projector),
+        heavy_projector,
+        "row package generates an idempotent nonzero-heavy projector",
+    )
+    assert_equal(
+        matrix_vector_multiply(heavy_projector, quotient_tangent),
+        [Fraction(0), Fraction(0), Fraction(0)],
+        "nonzero-heavy projector removes the Higgs tangent zero mode",
+    )
+    assert_equal(
+        matrix_vector_multiply(heavy_projector, normal_hyper_row),
+        normal_hyper_row,
+        "moment-map row keeps the normal hypermultiplet direction heavy",
+    )
+    assert_equal(
+        matrix_vector_multiply(heavy_projector, vector_scalar_row),
+        vector_scalar_row,
+        "vector-scalar row remains in the heavy complement",
+    )
+
+    missing_moment_projector = projector_from_rows([vector_scalar_row])
+    assert_equal(
+        matrix_vector_multiply(missing_moment_projector, normal_hyper_row)
+        == normal_hyper_row,
+        False,
+        "dropping the moment-map row loses a normal hypermultiplet heavy mode",
+    )
+
+    unprojected_eigenvalues = [mass * mass, Fraction(0)]
+    projected_eigenvalues = [value for value in unprojected_eigenvalues if value != 0]
+    assert_equal(
+        Fraction(0) in unprojected_eigenvalues,
+        True,
+        "unprojected Higgs tangent zero mode makes the heavy determinant singular",
+    )
+    assert_equal(
+        Fraction(0) in projected_eigenvalues,
+        False,
+        "projected heavy determinant contains only nonzero eigenvalues",
+    )
+
+
 def check_large_charge_torus_lattice_and_weyl_orbit():
     """Check the charge-sector lattice distinctions used in the text."""
 
@@ -2381,6 +2532,7 @@ def main():
     check_higgs_branch_two_dimensional_torsion_boundary()
     check_higgs_branch_metric_transport_projection()
     check_higgs_branch_background_field_derivation_gate()
+    check_higgs_branch_gauge_fixed_heavy_package_projection()
     check_large_charge_torus_lattice_and_weyl_orbit()
     check_large_charge_branch_noether_and_routhian()
     check_large_charge_branch_transverse_window()

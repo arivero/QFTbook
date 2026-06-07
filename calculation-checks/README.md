@@ -3031,10 +3031,13 @@ Current checks:
   pairing with a dropped-contact negative control, checks row-resolved
   off-shell assembly of the heavy \(Q\)-complex with a missing auxiliary/Yukawa
   row-contact negative control, derives the rank-one moment-map,
-  gauge-fixing, and Yukawa row Jacobians from a fixed-norm Higgs background,
-  separates the heavy projector from the tangent zero mode, and rejects
-  omitting the generated row-contact seagull, checks that a paired
-  Pauli--Villars/Wilsonian regulator uses the same spectral function on the
+	  gauge-fixing, and Yukawa row Jacobians from a fixed-norm Higgs background,
+	  separates the heavy projector from the tangent zero mode, and rejects
+	  omitting the generated row-contact seagull, checks the finite gauge-fixed
+	  heavy package by deriving the ghost symbol from the gauge map and
+	  gauge-fixing adjoint, projecting away the tangent zero mode, and rejecting
+	  mismatched ghost rows and missing heavy rows, checks that a paired
+	  Pauli--Villars/Wilsonian regulator uses the same spectral function on the
   nonzero \(Q\)-complex and rejects unpaired regulator masses,
   tangent-dependent regulator vertices, and unprojected zero modes, verifies
   the reduced vector-scalar row-contact residuals in 3d/2d, classifies the
