@@ -1101,12 +1101,13 @@ admissible mirror datum with the protected presentation exists.  The
 universality claim says that two admissible data with the same protected
 presentation define the same IR theory only when a regulated path between them
 keeps the relevant/marginal couplings fixed, has no phase transition or
-spectral bifurcation, preserves the reflection phase and pole residues, and
-makes every discarded \(D\)-term boundary current vanish or appear as a
-matched source term.  The duality claim identifies the IR endpoint of the
-original GLSM with that admissible mirror endpoint.  A Hori--Vafa formula
-supplies protected coordinates for these claims; it is not itself any one of
-the three claims.
+spectral bifurcation, preserves the reflection phase, the positive source
+spectral measures, the normalizable bound-state norming constants, and the
+resonance continuation data, and makes every discarded \(D\)-term boundary
+current vanish or appear as a matched source term.  The duality claim
+identifies the IR endpoint of the original GLSM with that admissible mirror
+endpoint.  A Hori--Vafa formula supplies protected coordinates for these
+claims; it is not itself any one of the three claims.
 \end{definition}
 
 \begin{remark}[D-term Schur obligation]
@@ -4423,7 +4424,8 @@ declared positive normalization, the gamma-function expression gives
   \qquad |R(j,m,\overline m;k)|=1
 \]
 in the continuous series.  The reflection target therefore carries dynamical
-spectral data: its phase contributes to the radial density of states by
+spectral data: its phase contributes to the relative radial counting density,
+or spectral-shift distribution, by
 \[
   \rho_{\rm refl}(s;m,\overline m)
   =
@@ -4433,10 +4435,16 @@ spectral data: its phase contributes to the radial density of states by
 For example, after the positive scale has been fixed, the factor
 \(\nu_+(k;\mu,\varrho_{\rm ref})^{2\ii s}\) changes this density by
 \(\pi^{-1}\log\nu_+(k;\mu,\varrho_{\rm ref})\).  Omitting it can preserve
-\(|R|=1\) while changing the continuum normalization.  Using the principal
-power of a negative \(\nu_{\rm raw}\) is worse: it changes the modulus by an
-exponential damping factor and is not a continuous unitary branch.  The poles
-similarly carry operator data.  If
+\(|R|=1\) while changing the finite-volume root counting.  This signed
+phase derivative is not, by itself, a positive source spectral measure.  In a
+box normalization it must be combined with the normalization of the generalized
+eigenfunctions before any local-source two-point function is obtained.  Using
+the principal power of a negative \(\nu_{\rm raw}\) is worse: it changes the
+modulus by an exponential damping factor and is not a continuous unitary
+branch.
+
+The poles similarly carry operator data, but their spectral meaning is not
+automatic.  If
 \(j_0+m=-n\), \(n\in\mathbb Z_{\ge0}\), is a simple pole not colliding with
 another gamma factor, then with \(\delta_0=2j_0-1\)
 \[
@@ -4449,8 +4457,12 @@ another gamma factor, then with \(\delta_0=2j_0-1\)
   \Gamma(-\overline m-j_0+1)\Gamma(\delta_0)}
   \frac{(-1)^n}{n!}.
 \]
-Analogous residues come from the other gamma factors and must match the
-discrete-state normalization on the Liouville side.
+Analogous residues come from the other gamma factors.  Only poles that satisfy
+the normalizability and domain conditions of the self-adjoint radial Hamiltonian
+become Hilbert-space point masses, with positive norming constants in the
+spectral theorem.  Resonance poles of the analytically continued reflection
+amplitude or resolvent are instead poles of continued correlators; they are not
+positive delta masses on the real continuous spectrum.
 
 In this chapter the displayed formula is still an imported normalization
 target, not yet a derivation from the Liouville path integral.  The constant
@@ -4458,7 +4470,8 @@ target, not yet a derivation from the Liouville path integral.  The constant
 additive dilaton constant must be fixed in the same scheme; all special levels
 \(k=1/n\), not only \(k=1\), require a limiting or renormalized operator
 prescription before the preceding density and residue formulae are used.  The
-full continuous spectral measure, all pole residues,
+signed continuous counting density, the positive source/Plancherel measures,
+the normalizable-state norming constants, resonance continuation data,
 spin-structure pairing, and the reflection relation
 \[
   \Psi_{j,m,\overline m}
@@ -4510,8 +4523,9 @@ radial derivative in a \(D\)-term has the same obstruction:
 only after the boundary current at the Liouville wall is controlled or included
 as a contact/source term.  A full cigar/Liouville proof must therefore show
 that the actual finite-field \(K\), measure, and wall boundary condition flow
-to the same \(R(p)\) and pole residues, with the protected superpotential only
-one entry in the datum.
+to the same counting phase, positive source measures, normalizable bound-state
+norming constants, and resonance continuation, with the protected
+superpotential only one entry in the datum.
 
 The same point appears in a finite-volume Hamiltonian regulator.  Put the
 radial channel on \(0\le\varrho\le L\), impose
@@ -4548,55 +4562,95 @@ against the phase condition
   2sL+\arg R\!\left(\frac12+\ii s,m,\overline m;k\right)
   =(2n+1)\pi ,
 \]
-up to the far-wall convention.  The continuum object compared by a local
-source \(O\) is not the phase alone, but the source-normalized spectral
-measure
-\begin{equation}
-  d\mu_{O,\alpha}(s)
+up to the far-wall convention.  This determines the signed counting
+coordinate
+\[
+  {\mathcal N}_{\alpha,L}(s)
   =
-  |A_{O,\alpha}(s)|^2
+  \frac1{2\pi}\partial_s
   \left[
-    d\mu^{(0)}_{\alpha}(s)
-    +\frac1{2\pi}\partial_s
-      \arg R\!\left(\frac12+\ii s,m,\overline m;k\right)ds
+    2sL+\arg R\!\left(\frac12+\ii s,m,\overline m;k\right)
   \right]
-  +\sum_{b\in{\mathcal P}_\alpha}
-    |A_{O,\alpha,b}|^2\,{\mathcal R}_{\alpha,b}\,\delta(s-s_b).
+  +o(1),
+\]
+not a source spectral measure.  Let
+\(\varphi_{\alpha,n,L}\) be the \(L^2\)-normalized finite-box eigenfunctions
+and let
+\[
+  a^{(L)}_{O,\alpha,n}
+  =
+  \langle \varphi_{\alpha,n,L},O\Omega\rangle_L
+\]
+be the renormalized source overlap in the same box regulator.  The positive
+finite-box source measure is
+\[
+  d\mu^{(L)}_{O,\alpha}
+  =
+  \sum_{s_{n,L}\in I}
+  |a^{(L)}_{O,\alpha,n}|^2\,\delta_{s_{n,L}} .
+\]
+The continuum comparison is the weak limit of these positive measures.  In a
+Plancherel normalization with positive continuum measure \(d\nu_\alpha(s)\)
+and source row \(A_{O,\alpha}(s)\), this means
+\begin{equation}
+  d\mu^{\rm cont}_{O,\alpha}(s)
+  =
+  |A_{O,\alpha}(s)|^2\,d\nu_\alpha(s).
   \label{eq:cigar-liouville-source-spectral-measure}
 \end{equation}
-Here \(\alpha\) abbreviates the channel labels,
-\(d\mu^{(0)}_{\alpha}\) is the declared reference Plancherel measure in the
-same operator normalization, \(A_{O,\alpha}(s)\) is the continuum source row,
-and \({\mathcal R}_{\alpha,b}\) is the residue normalization of a discrete or
-resonant pole included in the chosen contour prescription.  In a finite-box
-regulator the matching condition is that, for every smooth test \(w\) supported
-in \(I\),
+Here \(\alpha\) abbreviates the channel labels.  If \(d\nu_\alpha\) has density
+\(\nu'_\alpha(s)\,ds\) on \(I\), the finite-box normalization must obey the
+local matching law
+\[
+  |a^{(L)}_{O,\alpha,n}|^2
+  =
+  \frac{|A_{O,\alpha}(s_{n,L})|^2
+    \nu'_\alpha(s_{n,L})}
+       {{\mathcal N}_{\alpha,L}(s_{n,L})}
+  +o({\mathcal N}_{\alpha,L}^{-1})
+\]
+uniformly on compact subwindows.  Thus the level density and the eigenfunction
+normalization transform together: one does not append
+\((2\pi)^{-1}\partial_s\arg R\,ds\) to a reference Plancherel measure and then
+multiply by an independently chosen source row.  For every smooth test \(w\)
+supported in \(I\),
 \[
   \sum_{s_{n,L}\in I}
-    w(s_{n,L})\,|A^{(L)}_{O,\alpha,n}|^2
+    w(s_{n,L})\,|a^{(L)}_{O,\alpha,n}|^2
   \longrightarrow
-  \int_I w(s)\,d\mu_{O,\alpha}(s)
+  \int_I w(s)\,d\mu^{\rm cont}_{O,\alpha}(s)
 \]
 after the reference volume normalization and contact counterterms have been
-fixed.  The Euclidean source two-point function in the same channel is then
+fixed.
+
+Normalizable discrete states are added as a separate energy sum.  If
+\({\mathcal B}_\alpha\) is the set of such states and
+\(Z_{O,\alpha,b}=\|P_{\alpha,b}O\Omega\|^2\ge0\), the Euclidean source
+two-point function in the same channel is
 \begin{equation}
   G_{O,\alpha}^{I}(\beta)
   =
   \int_I
     \exp\!\left[-\beta\left(s^2+\frac{Q^2}{4}+E_\alpha^\perp\right)\right]
-    d\mu_{O,\alpha}(s)
+    d\mu^{\rm cont}_{O,\alpha}(s)
+  +\sum_{b\in{\mathcal B}_\alpha}
+    e^{-\beta E_{\alpha,b}^{\rm disc}}\,Z_{O,\alpha,b}
   +C_{O,\alpha}^{\rm ct}(\beta;I),
   \label{eq:cigar-liouville-source-spectral-two-point}
 \end{equation}
 with \(E_\alpha^\perp\) the fixed angular/fermionic contribution and
-\(C^{\rm ct}\) the local contact piece.  Therefore a mirror endpoint with the
+\(C^{\rm ct}\) the local contact piece.  Resonance poles may contribute to a
+meromorphic continuation of this correlator, but not as positive spectral
+delta functions on the real \(s\)-axis.  Therefore a mirror endpoint with the
 same central charge, asymptotic Liouville exponential, and unitary reflection
-coefficient can still fail the QFT comparison if it changes
-\(\partial_s\arg R\), the source row \(A_{O,\alpha}\), a pole residue, or the
-contact term.  This is the first observable-level use of \(C_{\rm spec}\):
-reflection data, Plancherel normalization, residues, and operator sources must
-assemble into the same \(G_O(\beta)\), with the protected superpotential only
-one member of the comparison datum.
+coefficient can still fail the QFT comparison if it changes the finite-box
+normalization law, the positive Plancherel measure, the source row
+\(A_{O,\alpha}\), the normalizable bound-state norming constants, the
+resonance continuation, or the contact term.  This is the first
+observable-level use of \(C_{\rm spec}\): reflection data, Plancherel
+normalization, source overlaps, discrete Hilbert states, and analytic
+continuation data must assemble into the same \(G_O(\beta)\), with the
+protected superpotential only one member of the comparison datum.
 \end{construction}
 
 \begin{construction}[Matrix-valued spectral measure]
@@ -4604,33 +4658,29 @@ one member of the comparison datum.
 For local sources \(O_I\), use a matrix spectral measure in the same
 channel window \({\mathcal I}\):
 \begin{equation}
-  d\mu_{I J,\alpha}(s)
+  d\mu^{\rm cont}_{I J,\alpha}(s)
   =
   A_{I,\alpha}(s)^*A_{J,\alpha}(s)
-  d\mu_{\alpha}^{\rm cont}(s)
-  +
-  \sum_{b\in{\mathcal P}_\alpha}
-  A_{I,\alpha,b}^*A_{J,\alpha,b}
-  {\mathcal R}_{\alpha,b}\,\delta(s-s_b).
+  d\nu_{\alpha}(s).
   \label{eq:cigar-liouville-matrix-spectral-measure}
 \end{equation}
-Here
+This is a positive matrix measure because it is the Gram measure of source
+rows against the positive Plancherel measure.  Normalizable discrete states
+produce a separate positive matrix
 \[
-  d\mu_{\alpha}^{\rm cont}(s)
+  Z_{I J,\alpha,b}
   =
-  d\mu_\alpha^{(0)}(s)
-  +
-  \frac1{2\pi}\partial_s
-  \arg R\!\left(\frac12+\ii s,m,\overline m;k\right)ds
+  \langle O_I\Omega,P_{\alpha,b}O_J\Omega\rangle .
 \]
-after the reference normalization and contact scheme have been fixed.  For
-any test function \(f\) in the Euclidean functional calculus of the radial
+For any test function \(f\) in the Euclidean functional calculus of the radial
 Hamiltonian, the observable source matrix is
 \begin{equation}
   G^{f,{\mathcal I}}_{I J,\alpha}
   =
   \int_{\mathcal I} f\!\left(s^2+\frac{Q^2}{4}+E_\alpha^\perp\right)
-    d\mu_{I J,\alpha}(s)
+    d\mu^{\rm cont}_{I J,\alpha}(s)
+  +\sum_{b\in{\mathcal B}_\alpha}
+    f(E_{\alpha,b}^{\rm disc})Z_{I J,\alpha,b}
   +C^{f,{\mathcal I}}_{I J,\alpha}.
   \label{eq:cigar-liouville-matrix-spectral-kernel}
 \end{equation}

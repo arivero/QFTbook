@@ -34,8 +34,8 @@ operator/source matrix-element obstructions, finite background-response and
 current-multiplet transport obstructions, finite boundary-state/defect
 probe obstructions, and cigar/Liouville asymptotic deformation filters,
 pathwise fake-fixed-point obligation checks, spectral-status cells,
-source-normalized spectral-resolution bridges, matrix-valued spectral-measure
-gates, and reflection Gamma-function
+positive source spectral-resolution bridges, matrix-valued spectral-measure
+completeness checks, and reflection Gamma-function
 cells,
 plus the Hori--Vafa
 residue/direct-instanton comparison map, with the direct degree-one incidence
@@ -200,11 +200,12 @@ flat-source-only background-response shortcuts, single-contact patches for
 wrong stress-tensor/current rows,
 boundary-state-blind annulus claims, protected-subspace-only defect claims,
 pathwise-continuity claims that carry only protected endpoint labels or local
-rigidity while dropping reflection phases, pole residues, boundary annuli, or
-source rows, source-blind spectral measures, omitted pole-residue terms in
-source two-point functions, reflection-phase-only comparisons that ignore
-source rows, one-source matrix-measure shortcuts, one-test contact patches,
-and
+rigidity while dropping reflection phases, positive source measures,
+normalizable bound-state norming constants, resonance continuation, boundary
+annuli, or source rows, source-blind spectral measures, old additive
+phase-density source-measure formulae, omitted bound-state terms in source
+two-point functions, reflection-phase-only comparisons that ignore source
+rows, one-source matrix-measure shortcuts, one-test contact patches, and
 finite-gauge invariance failures are
 rejected when the finite model can represent them; the Hori--Vafa residue alone
 is also rejected as a substitute for the direct incidence/vortex measure package,
@@ -218,11 +219,12 @@ estimates in the vortex-to-observable proof-obligation map.  The cigar
 reflection formula is still treated as an imported target formula here; the
 companion evaluates its Gamma-function consequences for sample continuous
 states, phase-density normalization, special levels, and simple residues, but
-does not derive the Liouville normalization, the full continuous measure, the
-special-level limiting prescription, or the pole spectrum.  The finite spectral
-resolution bridge checks how such imported spectral data would enter a
-source-normalized Euclidean observable; it does not derive the actual
-cigar/Liouville Plancherel measure or operator map.  The common-flux
+does not derive the Liouville normalization, the full positive Plancherel
+measure, the special-level limiting prescription, or the pole spectrum.  The
+finite spectral-resolution bridge checks how finite-box normalization, positive
+source measures, normalizable bound states, and resonance continuation enter a
+Euclidean observable; it does not derive the actual cigar/Liouville Plancherel
+measure or operator map.  The common-flux
 source-projection cell
 does not prove the continuum operator map or a source-factorization theorem; it
 checks the finite gates those claims must pass.
@@ -4481,7 +4483,9 @@ def check_full_mirror_ir_data_boundary() -> None:
         "self-adjoint Hamiltonian domain",
         "renormalized operator topology",
         "reflection phase",
-        "pole residues",
+        "positive source spectral measure",
+        "normalizable bound-state norming constants",
+        "resonance continuation",
         "source contact terms",
     }
     protected_formula_only = {
@@ -4497,7 +4501,9 @@ def check_full_mirror_ir_data_boundary() -> None:
             "self-adjoint Hamiltonian domain",
             "renormalized operator topology",
             "reflection phase",
-            "pole residues",
+            "positive source spectral measure",
+            "normalizable bound-state norming constants",
+            "resonance continuation",
             "source contact terms",
         } <= admissible_mirror_datum,
         True,
@@ -4516,7 +4522,9 @@ def check_full_mirror_ir_data_boundary() -> None:
             "no spectral bifurcation",
             "matched boundary currents",
             "matched reflection phase",
-            "matched pole residues",
+            "matched positive source spectral measure",
+            "matched normalizable bound-state norming constants",
+            "matched resonance continuation",
         },
         "duality": {
             "admissible mirror datum exists",
@@ -5601,64 +5609,100 @@ def check_cigar_liouville_source_spectral_resolution_bridge() -> None:
     window_density = mp.quad(lambda p: phase_density(p), [p_left, p_right])
     analytic_window_density = (mp.atan(p_right / wall_lambda) - mp.atan(p_left / wall_lambda)) / mp.pi
     assert_mp_close(
-        "integrated reflection density matches the phase-shift window",
+        "integrated reflection density matches the signed phase-shift window",
         window_density,
         analytic_window_density,
         mp.mpf("1e-50"),
     )
 
-    beta = mp.mpf("0.7")
-    background_energy = mp.mpf("0.0625")
-    angular_energy = mp.mpf("0.3")
+    def signed_phase_density(boundary_lambda: mp.mpf, momentum: mp.mpf) -> mp.mpf:
+        return boundary_lambda / (mp.pi * (boundary_lambda**2 + momentum**2))
 
-    def source_row(momentum: mp.mpf) -> mp.mpf:
-        return (1 + momentum / 5) / (1 + momentum**2 / 3)
-
-    def deformed_source_row(momentum: mp.mpf) -> mp.mpf:
-        return source_row(momentum) * (1 + mp.mpf("0.2") * momentum / (1 + momentum))
-
-    def source_weighted_shift(source) -> mp.mpf:
-        return mp.quad(
-            lambda p: (
-                phase_density(p)
-                * source(p) ** 2
-                * mp.e ** (-beta * (p**2 + background_energy + angular_energy))
-            ),
-            [p_left, p_right],
-        )
-
-    observable_shift = source_weighted_shift(source_row)
-    if observable_shift <= mp.mpf("0.005"):
-        raise AssertionError(f"source-weighted spectral shift too small: {observable_shift!r}")
-
-    boundary_blind_shift = mp.mpf("0")
+    small_reference_density = mp.mpf("0.05")
+    old_additive_density = small_reference_density + signed_phase_density(-wall_lambda, p_sample)
     assert_equal(
-        "boundary-blind spectral package misses a nonzero source two-point contribution",
-        abs(observable_shift - boundary_blind_shift) > mp.mpf("0.005"),
+        "old additive phase-density rule can fail positivity",
+        old_additive_density < 0,
         True,
     )
 
-    deformed_source_shift = source_weighted_shift(deformed_source_row)
+    # In a finite box the root-counting density and eigenfunction
+    # normalization cancel in the sum-to-integral limit.  The positive
+    # continuum source measure is the Plancherel/source Gram measure, not an
+    # independent source row multiplied by a signed spectral-shift density.
+    counting_density = (Fraction(12), Fraction(15), Fraction(10))
+    positive_plancherel_density = (Fraction(5), Fraction(7), Fraction(11))
+    source_row = (Fraction(2), Fraction(3), Fraction(1))
+    heat_test = (Fraction(1, 2), Fraction(1, 3), Fraction(1, 5))
+    finite_box_overlap_sq = tuple(
+        row**2 * density / count
+        for row, density, count in zip(source_row, positive_plancherel_density, counting_density)
+    )
+    finite_box_sum = sum(
+        count * overlap * test
+        for count, overlap, test in zip(counting_density, finite_box_overlap_sq, heat_test)
+    )
+    continuum_source_sum = sum(
+        density * row**2 * test
+        for density, row, test in zip(positive_plancherel_density, source_row, heat_test)
+    )
     assert_equal(
-        "same reflection phase with a different source row changes the Euclidean correlator",
-        abs(deformed_source_shift - observable_shift) > mp.mpf("0.003"),
-        True,
+        "finite-box normalization and level density combine to the positive source measure",
+        finite_box_sum,
+        continuum_source_sum,
     )
 
-    pole_residue_weight = mp.mpf("0.27")
-    pole_source_overlap = mp.mpf("0.8")
-    pole_momentum = mp.mpf("0.45")
-    pole_contribution = (
-        pole_residue_weight
-        * pole_source_overlap**2
-        * mp.e ** (-beta * (pole_momentum**2 + background_energy + angular_energy))
+    signed_shift_density = (Fraction(1, 2), -Fraction(8), Fraction(1, 4))
+    old_additive_weights = tuple(
+        density + shift
+        for density, shift in zip(positive_plancherel_density, signed_shift_density)
     )
-    with_pole = observable_shift + pole_contribution
-    without_pole = observable_shift
     assert_equal(
-        "omitting a pole residue changes the source-normalized spectral two-point function",
-        abs(with_pole - without_pole) > mp.mpf("0.05"),
+        "signed spectral-shift slots are not positive Plancherel weights",
+        any(weight < 0 for weight in old_additive_weights),
         True,
+    )
+    wrong_additive_sum = sum(
+        weight * row**2 * test
+        for weight, row, test in zip(old_additive_weights, source_row, heat_test)
+    )
+    assert_equal(
+        "additive phase-density formula is not the source spectral theorem",
+        wrong_additive_sum == continuum_source_sum,
+        False,
+    )
+
+    deformed_source_row = (Fraction(2), Fraction(4), Fraction(1))
+    deformed_source_sum = sum(
+        density * row**2 * test
+        for density, row, test in zip(positive_plancherel_density, deformed_source_row, heat_test)
+    )
+    assert_equal(
+        "same counting phase with a different source row changes the Euclidean correlator",
+        deformed_source_sum == continuum_source_sum,
+        False,
+    )
+
+    bound_state_norming_constant = Fraction(9, 25)
+    bound_state_heat_weight = Fraction(3, 7)
+    bound_state_contribution = bound_state_norming_constant * bound_state_heat_weight
+    assert_equal(
+        "normalizable discrete state contributes a separate positive energy mass",
+        bound_state_contribution > 0,
+        True,
+    )
+    assert_equal(
+        "omitting a normalizable bound-state norming constant changes the source two-point function",
+        continuum_source_sum + bound_state_contribution == continuum_source_sum,
+        False,
+    )
+
+    resonance_residue = -Fraction(2, 5)
+    fake_resonance_delta_mass = resonance_residue * Fraction(4, 9)
+    assert_equal(
+        "resonance residue is not an admissible positive Hilbert spectral delta mass",
+        fake_resonance_delta_mass >= 0,
+        False,
     )
 
     protected_endpoint_labels = {
@@ -5669,23 +5713,26 @@ def check_cigar_liouville_source_spectral_resolution_bridge() -> None:
         "unitarity of reflection coefficient",
     }
     source_spectral_package = protected_endpoint_labels | {
-        "reflection phase derivative",
-        "reference Plancherel measure",
+        "finite-box counting phase",
+        "finite-box normalization law",
+        "positive Plancherel measure",
         "source row",
-        "pole residues",
+        "normalizable bound-state norming constants",
+        "resonance analytic continuation",
         "contact terms",
     }
     assert_equal(
-        "protected Liouville labels do not determine the source-normalized spectral measure",
+        "protected Liouville labels do not determine the positive source spectral measure",
         source_spectral_package <= protected_endpoint_labels,
         False,
     )
 
 
-def check_cigar_liouville_matrix_spectral_measure_gate() -> None:
+def check_cigar_liouville_matrix_spectral_measure_completeness() -> None:
     # A reflection phase and one source-normalized probe do not determine the
-    # matrix-valued spectral measure for a family of local sources.  This is
-    # the finite gate recorded in constr:cigar-liouville-matrix-spectral-measure.
+    # positive matrix-valued spectral measure for a family of local sources.
+    # This is the finite check recorded in
+    # constr:cigar-liouville-matrix-spectral-measure.
     measure_a = (Fraction(2), Fraction(3), Fraction(5))
     measure_b = (Fraction(2), Fraction(3), Fraction(8))
     source_rows = (
@@ -5792,17 +5839,18 @@ def check_cigar_liouville_matrix_spectral_measure_gate() -> None:
 
     protected_spectral_package = {
         "same central charge",
-        "same reflection phase",
+        "same counting phase",
         "same first source probe",
     }
     matrix_measure_package = protected_spectral_package | {
-        "matrix Plancherel weights",
+        "positive matrix Plancherel weights",
         "all source rows",
-        "pole norming constants",
+        "normalizable bound-state norming constants",
+        "resonance continuation outside the positive measure",
         "multi-test contact scheme",
     }
     assert_equal(
-        "one-source spectral data are not the matrix-valued Plancherel measure",
+        "one-source spectral data are not the positive matrix-valued Plancherel measure",
         matrix_measure_package <= protected_spectral_package,
         False,
     )
@@ -5893,8 +5941,9 @@ def check_cigar_liouville_spectral_data_cell() -> None:
         "field identification",
         "spin-structure pairing",
         "reflection amplitude",
-        "spectral measure",
-        "pole residues",
+        "positive source spectral measure",
+        "normalizable bound-state norming constants",
+        "resonance continuation",
         "sewing constraints",
     }
     semiclassical_metric_data = {
@@ -6291,7 +6340,7 @@ def main() -> None:
     check_cigar_liouville_asymptotic_deformation_filter()
     check_cigar_liouville_pathwise_fake_fixed_point_gate()
     check_cigar_liouville_source_spectral_resolution_bridge()
-    check_cigar_liouville_matrix_spectral_measure_gate()
+    check_cigar_liouville_matrix_spectral_measure_completeness()
     check_cigar_liouville_spectral_data_cell()
     check_hypersurface_phase_ledger()
     check_hypersurface_coulomb_coordinate_signal()

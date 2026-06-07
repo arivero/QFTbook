@@ -3211,12 +3211,13 @@ Current checks:
   residues, boundary annuli, or source rows unless the Hori--Kapustin
   deformation carries a continuous finite-regulator spectral/source/boundary
   transport package,
-  a source-normalized noncompact spectral-resolution bridge checking that the
-  reflection phase-density shift, source row, pole residues, and contact data
-  enter Euclidean two-point observables and rejecting boundary-blind or
-  reflection-only comparisons, a matrix-valued spectral-measure gate showing
+  a noncompact source spectral-resolution bridge checking that the reflection
+  phase derivative is a signed finite-volume counting diagnostic, while the
+  positive source measure is the finite-box normalized Plancherel/source Gram
+  limit with separate normalizable bound-state masses and resonance
+  continuation data, a matrix-valued spectral-measure completeness check showing
   that one matched source entry and one contact-patched heat-kernel probe do
-  not determine the multi-source Plancherel/source Gram matrix,
+  not determine the positive multi-source Plancherel/source Gram matrix,
   Liouville exponential marginality, spectral-flow momentum/winding arithmetic,
   the noncompact field identification, metric/dilaton-versus-exact-QFT status,
   the twisted-chiral-to-ordinary-chiral bridge boundary, the

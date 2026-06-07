@@ -116,15 +116,16 @@ and
   and noncompact wall domains; this separates local deformation rigidity from
   global fake-fixed-point exclusion.
 - `constr:cigar-liouville-source-spectral-resolution`,
-  `d\mu_{O,\alpha}`, `G_{O,\alpha}^{I}(\beta)`: source-normalized
+  `d\mu^{cont}_{O,\alpha}`, `G_{O,\alpha}^{I}(\beta)`: positive source
   noncompact spectral-resolution coordinate for the cigar/Liouville comparison,
-  assembling reflection phase density, reference Plancherel measure, source
-  rows, pole residues, and contact terms into a Euclidean two-point observable.
+  separating signed reflection phase/counting density from the finite-box
+  normalized Plancherel/source Gram measure, normalizable bound states,
+  resonance continuation, and contact terms in a Euclidean two-point observable.
 - `constr:cigar-liouville-matrix-spectral-measure`,
-  `d\mu_{IJ,\alpha}`, `G^{f,\mathcal I}_{IJ,\alpha}`: matrix-valued continuous and
-  pole spectral measure for a family of local sources, including Plancherel
-  weights, source rows, pole norming constants, positivity, and contact
-  scheme data.
+  `d\mu^{cont}_{IJ,\alpha}`, `G^{f,\mathcal I}_{IJ,\alpha}`: positive
+  matrix-valued continuous spectral measure for a family of local sources,
+  including Plancherel weights, source rows, normalizable bound-state norming
+  constants, resonance continuation, positivity, and contact scheme data.
 - `constr:cigar-liouville-asymptotic-deformation-filter`, `ell`, `g_a`,
   `b_alpha`, `delta S`: asymptotic Liouville deformation classifier separating
   the integer periodic protected `F`-term inventory from real `D`-term,
@@ -550,9 +551,10 @@ and
   `SL(2,R)_{k+2}` convention, spectral-flow momentum/winding lattice,
   noncompact field identification, spin-structure pairing boundary, reflection
   amplitude `R(j,m,bar m;k)` as an imported normalization target together with
-  its continuous phase-density and sample simple-residue consequences, the
-  matrix-valued source spectral measure needed to compare Plancherel weights
-  and pole norming constants across a family of local sources, the
+  its signed continuous phase-density and sample simple-residue consequences,
+  the positive matrix-valued source spectral measure needed to compare
+  Plancherel weights, finite-box normalization, normalizable-state norming
+  constants, and resonance continuation across a family of local sources, the
   ordinary-chiral endpoint Liouville action with background-charge coupling,
   the Liouville exponential marginality check, and an asymptotic deformation
   filter showing that the primitive integer exponential is the only marginal
@@ -814,12 +816,13 @@ and
     `nu_+(k)` contribution to phase density, the `nu_raw(k)` sign ledger on
     intervals `(1/(n+1),1/n)`, sampled raw `k=1/n` normalization failures, and
     a sample simple-pole residue.  The source spectral-resolution bridge checks
-    that the phase-density derivative, source row, pole residue, and contact
-    data enter Euclidean two-point observables, rejecting boundary-blind or
-    reflection-only endpoint comparisons.  The matrix spectral-measure gate
-    checks a two-source Gram kernel where one source and one contact-patched
-    heat-kernel probe agree while a second Euclidean test still detects the
-    wrong Plancherel/source measure.
+    that the phase-density derivative is only a signed counting diagnostic and
+    that finite-box normalization, positive Plancherel/source weights,
+    normalizable bound-state masses, resonance continuation, and contact data
+    enter Euclidean two-point observables.  The matrix spectral-measure
+    completeness check uses a two-source Gram kernel where one source and one
+    contact-patched heat-kernel probe agree while a second Euclidean test still
+    detects the wrong positive Plancherel/source measure.
   - hypersurface adjunction signs, LG/sigma-model central-charge matching,
     residual finite-gauge invariant Jacobi monomial counting, and the
     Coulomb-coordinate singular-signal ledger.
@@ -1184,19 +1187,23 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   finite energies but different reflection phases, pole residues, boundary
   annuli, and source rows, and rejects a discontinuous path that carries only
   protected endpoint labels.
-- The 2026-06-07 issue #848 source spectral-resolution pass adds
-  `constr:cigar-liouville-source-spectral-resolution`: a QFT-observable bridge
-  from reflection phase data to a source-normalized spectral measure and
-  Euclidean two-point function.  The companion integrates the finite window
-  phase-density shift against source rows, then rejects boundary-blind
-  measures, reflection-phase-only comparisons, and omitted pole residues.
-- The 2026-06-07 issue #848 matrix spectral-measure pass adds
+- The 2026-06-07 issue #848 source spectral-resolution pass added
+  `constr:cigar-liouville-source-spectral-resolution` as a QFT-observable
+  bridge, but it initially overidentified the signed reflection phase density
+  with a positive source measure.
+- The 2026-06-07 issue #848 matrix spectral-measure pass added
   `constr:cigar-liouville-matrix-spectral-measure`: the spectral comparison is
   upgraded from one source two-point function to a positive matrix-valued
-  Plancherel/source measure for local source families.  The companion checks a
-  finite three-bin continuous window where the first source and mixed entry
-  match, a contact patch fixes one second-source probe, and a second
-  heat-kernel test still detects the wrong spectral weight.
+  Plancherel/source measure for local source families.
+- The 2026-06-07 issue #852 spectral-theorem repair corrects both constructions:
+  finite-volume `partial_s arg R` is now a signed counting/spectral-shift
+  diagnostic, while the positive source measure is the weak limit of normalized
+  finite-box source overlaps, equivalently a Plancherel/source Gram measure.
+  Normalizable discrete states are separate positive energy masses; resonance
+  poles live in analytic continuations of resolvents/correlators, not as
+  Hilbert-space delta masses.  The companion now treats the old additive
+  phase-density formula as a positivity-failing negative control and keeps the
+  finite matrix check as a positive Gram-measure completeness test.
 - The 2026-06-07 issue #848 asymptotic deformation-filter pass adds
   `constr:cigar-liouville-asymptotic-deformation-filter`: the text classifies
   integer `Y`-periodic Liouville `F`-term modes, identifies the primitive wall
