@@ -4455,6 +4455,77 @@ assemble into the same \(G_O(\beta)\), with the protected superpotential only
 one member of the comparison datum.
 \end{construction}
 
+\begin{construction}[Matrix-valued spectral measure]
+\label{constr:cigar-liouville-matrix-spectral-measure}
+For local sources \(O_I\), use a matrix spectral measure in the same
+channel window \({\mathcal I}\):
+\begin{equation}
+  d\mu_{I J,\alpha}(s)
+  =
+  A_{I,\alpha}(s)^*A_{J,\alpha}(s)
+  d\mu_{\alpha}^{\rm cont}(s)
+  +
+  \sum_{b\in{\mathcal P}_\alpha}
+  A_{I,\alpha,b}^*A_{J,\alpha,b}
+  {\mathcal R}_{\alpha,b}\,\delta(s-s_b).
+  \label{eq:cigar-liouville-matrix-spectral-measure}
+\end{equation}
+Here
+\[
+  d\mu_{\alpha}^{\rm cont}(s)
+  =
+  d\mu_\alpha^{(0)}(s)
+  +
+  \frac1{2\pi}\partial_s
+  \arg R\!\left(\frac12+\ii s,m,\overline m;k\right)ds
+\]
+after the reference normalization and contact scheme have been fixed.  For
+any test function \(f\) in the Euclidean functional calculus of the radial
+Hamiltonian, the observable source matrix is
+\begin{equation}
+  G^{f,{\mathcal I}}_{I J,\alpha}
+  =
+  \int_{\mathcal I} f\!\left(s^2+\frac{Q^2}{4}+E_\alpha^\perp\right)
+    d\mu_{I J,\alpha}(s)
+  +C^{f,{\mathcal I}}_{I J,\alpha}.
+  \label{eq:cigar-liouville-matrix-spectral-kernel}
+\end{equation}
+The positivity condition is that
+\(\sum_{I,J}\overline c_I G^{f,{\mathcal I}}_{I J,\alpha}c_J\ge0\) whenever
+\(f\ge0\), modulo null source combinations that vanish in the Hilbert space.
+The full operator/state comparison must transport this matrix measure, not
+just the scalar reflection phase.
+
+A finite three-bin cell shows why.  Let the retained continuous weights be
+\[
+  \mu_A=(2,3,5),\qquad \mu_B=(2,3,8)
+\]
+and take source rows
+\[
+  A_1=(1,1,0),\qquad A_2=(0,1,1).
+\]
+For the heat-kernel test \(f=(1/2,1/3,1/5)\), the first-source and mixed
+entries agree:
+\[
+  G^A_{11}=G^B_{11}=2,\qquad G^A_{12}=G^B_{12}=1.
+\]
+The second-source entry differs:
+\[
+  G^A_{22}=2,\qquad G^B_{22}=\frac{13}{5}.
+\]
+A local contact shift \(-3/5\) in the \(22\) entry can match this one test.
+For the second test \(f'=(1/3,1/4,1/6)\), the same contact gives
+\[
+  G^{A,f'}_{22}=\frac{19}{12},\qquad
+  G^{B,f'}_{22}-\frac35=\frac{89}{60},
+\]
+leaving a discrepancy \(1/10\).  Thus a scalar phase density, one source
+normalization, and one contact convention do not determine the source
+spectral measure.  A full cigar/Liouville mirror proof must compare the
+matrix-valued Plancherel measure, source rows, pole norming constants, and
+contact terms in one scheme.
+\end{construction}
+
 In the asymptotic Liouville target variables write
 \[
   Y=\sqrt{k}\,{\mathcal Y},

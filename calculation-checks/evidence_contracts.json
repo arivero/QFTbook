@@ -344,6 +344,7 @@
         "excised-disk first-order boundary term for dual disorder orientation",
         "cigar/Liouville pathwise spectral-continuity fake-fixed-point obligation",
         "cigar/Liouville source-normalized spectral-resolution bridge",
+        "cigar/Liouville matrix spectral-measure completeness gate",
         "N=2 cigar reflection Gamma-function normalization target",
         "N=2 cigar reflection positive-scale branch domain",
         "N=2 Liouville asymptotic deformation filter"

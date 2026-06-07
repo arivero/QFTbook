@@ -120,6 +120,11 @@ and
   noncompact spectral-resolution coordinate for the cigar/Liouville comparison,
   assembling reflection phase density, reference Plancherel measure, source
   rows, pole residues, and contact terms into a Euclidean two-point observable.
+- `constr:cigar-liouville-matrix-spectral-measure`,
+  `d\mu_{IJ,\alpha}`, `G^{f,\mathcal I}_{IJ,\alpha}`: matrix-valued continuous and
+  pole spectral measure for a family of local sources, including Plancherel
+  weights, source rows, pole norming constants, positivity, and contact
+  scheme data.
 - `constr:cigar-liouville-asymptotic-deformation-filter`, `ell`, `g_a`,
   `b_alpha`, `delta S`: asymptotic Liouville deformation classifier separating
   the integer periodic protected `F`-term inventory from real `D`-term,
@@ -525,6 +530,8 @@ and
   noncompact field identification, spin-structure pairing boundary, reflection
   amplitude `R(j,m,bar m;k)` as an imported normalization target together with
   its continuous phase-density and sample simple-residue consequences, the
+  matrix-valued source spectral measure needed to compare Plancherel weights
+  and pole norming constants across a family of local sources, the
   ordinary-chiral endpoint Liouville action with background-charge coupling,
   the Liouville exponential marginality check, and an asymptotic deformation
   filter showing that the primitive integer exponential is the only marginal
@@ -783,7 +790,10 @@ and
     a sample simple-pole residue.  The source spectral-resolution bridge checks
     that the phase-density derivative, source row, pole residue, and contact
     data enter Euclidean two-point observables, rejecting boundary-blind or
-    reflection-only endpoint comparisons.
+    reflection-only endpoint comparisons.  The matrix spectral-measure gate
+    checks a two-source Gram kernel where one source and one contact-patched
+    heat-kernel probe agree while a second Euclidean test still detects the
+    wrong Plancherel/source measure.
   - hypersurface adjunction signs, LG/sigma-model central-charge matching,
     residual finite-gauge invariant Jacobi monomial counting, and the
     Coulomb-coordinate singular-signal ledger.
@@ -1147,6 +1157,13 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   Euclidean two-point function.  The companion integrates the finite window
   phase-density shift against source rows, then rejects boundary-blind
   measures, reflection-phase-only comparisons, and omitted pole residues.
+- The 2026-06-07 issue #848 matrix spectral-measure pass adds
+  `constr:cigar-liouville-matrix-spectral-measure`: the spectral comparison is
+  upgraded from one source two-point function to a positive matrix-valued
+  Plancherel/source measure for local source families.  The companion checks a
+  finite three-bin continuous window where the first source and mixed entry
+  match, a contact patch fixes one second-source probe, and a second
+  heat-kernel test still detects the wrong spectral weight.
 - The 2026-06-07 issue #848 asymptotic deformation-filter pass adds
   `constr:cigar-liouville-asymptotic-deformation-filter`: the text classifies
   integer `Y`-periodic Liouville `F`-term modes, identifies the primitive wall

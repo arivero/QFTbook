@@ -3201,7 +3201,9 @@ Current checks:
   a source-normalized noncompact spectral-resolution bridge checking that the
   reflection phase-density shift, source row, pole residues, and contact data
   enter Euclidean two-point observables and rejecting boundary-blind or
-  reflection-only comparisons,
+  reflection-only comparisons, a matrix-valued spectral-measure gate showing
+  that one matched source entry and one contact-patched heat-kernel probe do
+  not determine the multi-source Plancherel/source Gram matrix,
   Liouville exponential marginality, spectral-flow momentum/winding arithmetic,
   the noncompact field identification, metric/dilaton-versus-exact-QFT status,
   the twisted-chiral-to-ordinary-chiral bridge boundary, the

@@ -32,7 +32,8 @@ operator/source matrix-element obstructions, finite background-response and
 current-multiplet transport obstructions, finite boundary-state/defect
 probe obstructions, and cigar/Liouville asymptotic deformation filters,
 pathwise fake-fixed-point obligation checks, spectral-status cells,
-source-normalized spectral-resolution bridges, and reflection Gamma-function
+source-normalized spectral-resolution bridges, matrix-valued spectral-measure
+gates, and reflection Gamma-function
 cells,
 plus the Hori--Vafa
 residue/direct-instanton comparison map, with the direct degree-one incidence
@@ -78,7 +79,8 @@ special-level normalization, and a sample pole residue, plus finite
 Liouville F-term mode classification and wall-domain spectral-response tests,
 plus finite
 source-weighted spectral-measure integrals for noncompact two-point
-observables, plus
+observables, matrix source-measure Gram kernels with contact-patch negative
+controls, plus
 finite density/Jacobian transport tests and double-entry
 mirror/direct-vortex comparisons whose direct side includes a separately
 computed incidence orientation, degree gate, and compactification gate, are
@@ -197,7 +199,8 @@ pathwise-continuity claims that carry only protected endpoint labels or local
 rigidity while dropping reflection phases, pole residues, boundary annuli, or
 source rows, source-blind spectral measures, omitted pole-residue terms in
 source two-point functions, reflection-phase-only comparisons that ignore
-source rows, and
+source rows, one-source matrix-measure shortcuts, one-test contact patches,
+and
 finite-gauge invariance failures are
 rejected when the finite model can represent them; the Hori--Vafa residue alone
 is also rejected as a substitute for the direct incidence/vortex measure package,
@@ -5417,6 +5420,132 @@ def check_cigar_liouville_source_spectral_resolution_bridge() -> None:
     )
 
 
+def check_cigar_liouville_matrix_spectral_measure_gate() -> None:
+    # A reflection phase and one source-normalized probe do not determine the
+    # matrix-valued spectral measure for a family of local sources.  This is
+    # the finite gate recorded in constr:cigar-liouville-matrix-spectral-measure.
+    measure_a = (Fraction(2), Fraction(3), Fraction(5))
+    measure_b = (Fraction(2), Fraction(3), Fraction(8))
+    source_rows = (
+        (Fraction(1), Fraction(1), Fraction(0)),
+        (Fraction(0), Fraction(1), Fraction(1)),
+    )
+    heat_test = (Fraction(1, 2), Fraction(1, 3), Fraction(1, 5))
+    second_heat_test = (Fraction(1, 3), Fraction(1, 4), Fraction(1, 6))
+
+    def gram_entry(
+        measure: tuple[Fraction, ...],
+        test: tuple[Fraction, ...],
+        left_source: tuple[Fraction, ...],
+        right_source: tuple[Fraction, ...],
+        contact: Fraction = Fraction(0),
+    ) -> Fraction:
+        return contact + sum(
+            weight * test_value * left * right
+            for weight, test_value, left, right in zip(
+                measure,
+                test,
+                left_source,
+                right_source,
+            )
+        )
+
+    def gram_matrix(
+        measure: tuple[Fraction, ...],
+        test: tuple[Fraction, ...],
+        contact_22: Fraction = Fraction(0),
+    ) -> tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]:
+        return (
+            (
+                gram_entry(measure, test, source_rows[0], source_rows[0]),
+                gram_entry(measure, test, source_rows[0], source_rows[1]),
+            ),
+            (
+                gram_entry(measure, test, source_rows[1], source_rows[0]),
+                gram_entry(
+                    measure,
+                    test,
+                    source_rows[1],
+                    source_rows[1],
+                    contact=contact_22,
+                ),
+            ),
+        )
+
+    gram_a = gram_matrix(measure_a, heat_test)
+    gram_b = gram_matrix(measure_b, heat_test)
+    assert_equal("matrix spectral measure first source agrees", gram_a[0][0], Fraction(2))
+    assert_equal("matrix spectral measure mixed entry agrees", gram_a[0][1], Fraction(1))
+    assert_equal(
+        "same phase and first source do not determine second-source spectral weight",
+        gram_b[1][1] == gram_a[1][1],
+        False,
+    )
+    assert_equal("datum A second-source entry", gram_a[1][1], Fraction(2))
+    assert_equal("datum B second-source entry", gram_b[1][1], Fraction(13, 5))
+
+    contact_patch = gram_a[1][1] - gram_b[1][1]
+    patched_gram_b = gram_matrix(measure_b, heat_test, contact_22=contact_patch)
+    assert_equal(
+        "one contact patch can match one second-source heat-kernel test",
+        patched_gram_b[1][1],
+        gram_a[1][1],
+    )
+
+    second_gram_a = gram_matrix(measure_a, second_heat_test)
+    second_patched_gram_b = gram_matrix(
+        measure_b,
+        second_heat_test,
+        contact_22=contact_patch,
+    )
+    assert_equal(
+        "same contact patch fails another Euclidean spectral probe",
+        second_patched_gram_b[1][1] == second_gram_a[1][1],
+        False,
+    )
+    assert_equal("second heat-kernel datum A entry", second_gram_a[1][1], Fraction(19, 12))
+    assert_equal(
+        "second heat-kernel patched datum B entry",
+        second_patched_gram_b[1][1],
+        Fraction(89, 60),
+    )
+    assert_equal(
+        "remaining matrix-measure discrepancy after contact patch",
+        abs(second_patched_gram_b[1][1] - second_gram_a[1][1]),
+        Fraction(1, 10),
+    )
+
+    for left, right in [(Fraction(1), Fraction(0)), (Fraction(0), Fraction(1)), (Fraction(2), -Fraction(1))]:
+        quadratic_form = (
+            left * left * gram_a[0][0]
+            + left * right * gram_a[0][1]
+            + right * left * gram_a[1][0]
+            + right * right * gram_a[1][1]
+        )
+        assert_equal(
+            "finite matrix spectral measure is positive on source combinations",
+            quadratic_form >= 0,
+            True,
+        )
+
+    protected_spectral_package = {
+        "same central charge",
+        "same reflection phase",
+        "same first source probe",
+    }
+    matrix_measure_package = protected_spectral_package | {
+        "matrix Plancherel weights",
+        "all source rows",
+        "pole norming constants",
+        "multi-test contact scheme",
+    }
+    assert_equal(
+        "one-source spectral data are not the matrix-valued Plancherel measure",
+        matrix_measure_package <= protected_spectral_package,
+        False,
+    )
+
+
 def check_cigar_liouville_spectral_data_cell() -> None:
     for k_level in [Fraction(2), Fraction(5), Fraction(9, 2)]:
         background_charge_squared = Fraction(1, k_level)
@@ -5898,6 +6027,7 @@ def main() -> None:
     check_cigar_liouville_asymptotic_deformation_filter()
     check_cigar_liouville_pathwise_fake_fixed_point_gate()
     check_cigar_liouville_source_spectral_resolution_bridge()
+    check_cigar_liouville_matrix_spectral_measure_gate()
     check_cigar_liouville_spectral_data_cell()
     check_hypersurface_phase_ledger()
     check_hypersurface_coulomb_coordinate_signal()
