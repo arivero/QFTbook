@@ -39,8 +39,9 @@ normal-mode cumulant factors and original-to-dual frame tags,
 common-sector source projections, independently projected common amplitudes,
 assembly-map mutation controls, quotient-lattice character filters,
 one-loop gamma-matrix Hermiticity tests, signed-log determinant-density
-coefficient extraction, finite flux Dirac-complex ranks, heat-kernel
-Fujikawa traces, logarithm branch shifts, and axial-monodromy ledgers,
+coefficient extraction, flux-carrying magnetic-torus Wilson-overlap
+indices, heat-kernel Fujikawa traces, logarithm branch shifts, and
+axial-monodromy ledgers,
 root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree filters, and
 conditional residual-propagation maps, full-action data-interface tests,
@@ -156,7 +157,9 @@ from fractions import Fraction
 from math import exp, isclose, log, prod
 
 import mpmath as mp
+import numpy as np
 
+from check_utils import assert_array_close
 from check_utils import assert_finite
 from check_utils import assert_gt as assert_gt_bound
 from check_utils import assert_leq as assert_leq_bound
@@ -741,53 +744,6 @@ def check_coulomb_component_response_selects_log_sign() -> None:
             return -1
         return 0
 
-    def rectangular_identity(rows: int, cols: int) -> list[list[Fraction]]:
-        return [
-            [Fraction(1) if row == col else Fraction(0) for col in range(cols)]
-            for row in range(rows)
-        ]
-
-    def matrix_rank(matrix: list[list[Fraction]]) -> int:
-        rows = [row[:] for row in matrix]
-        rank = 0
-        if not rows:
-            return 0
-        col_count = len(rows[0])
-        for col in range(col_count):
-            pivot = None
-            for row in range(rank, len(rows)):
-                if rows[row][col] != 0:
-                    pivot = row
-                    break
-            if pivot is None:
-                continue
-            rows[rank], rows[pivot] = rows[pivot], rows[rank]
-            pivot_value = rows[rank][col]
-            rows[rank] = [entry / pivot_value for entry in rows[rank]]
-            for row in range(len(rows)):
-                if row == rank or rows[row][col] == 0:
-                    continue
-                factor = rows[row][col]
-                rows[row] = [
-                    entry - factor * pivot_entry
-                    for entry, pivot_entry in zip(rows[row], rows[rank])
-                ]
-            rank += 1
-        return rank
-
-    def finite_flux_dirac_index(charge_value: int, flux_value: int, base_dim: int = 8) -> int:
-        signed_flux = charge_value * flux_value
-        plus_dim = base_dim + max(-signed_flux, 0)
-        minus_dim = base_dim + max(signed_flux, 0)
-        # The finite Landau complex has D_+ : V_+ -> V_- with full rank; the
-        # flux enters as the chiral dimension mismatch, and the kernel is then
-        # computed from the operator rank rather than assigned as zero modes.
-        d_plus = rectangular_identity(minus_dim, plus_dim)
-        rank = matrix_rank(d_plus)
-        plus_kernel = plus_dim - rank
-        minus_kernel = minus_dim - rank
-        return plus_kernel - minus_kernel
-
     gamma_1 = ((0j, 1 + 0j), (1 + 0j, 0j))
     gamma_2 = ((0j, -1j), (1j, 0j))
     identity = ((1 + 0j, 0j), (0j, 1 + 0j))
@@ -808,6 +764,121 @@ def check_coulomb_component_response_selects_log_sign() -> None:
         gamma_12,
         matscale(1j, gamma_star),
     )
+
+    def magnetic_torus_links(lattice_size: int, flux_units: int) -> tuple[np.ndarray, np.ndarray]:
+        ux = np.empty((lattice_size, lattice_size), dtype=complex)
+        uy = np.ones((lattice_size, lattice_size), dtype=complex)
+        for x_coord in range(lattice_size):
+            for y_coord in range(lattice_size):
+                ux[x_coord, y_coord] = np.exp(
+                    -2j * np.pi * flux_units * y_coord / (lattice_size * lattice_size)
+                )
+                if y_coord == lattice_size - 1:
+                    uy[x_coord, y_coord] = np.exp(
+                        2j * np.pi * flux_units * x_coord / lattice_size
+                    )
+        return ux, uy
+
+    def plaquette_phases(ux: np.ndarray, uy: np.ndarray) -> np.ndarray:
+        lattice_size = ux.shape[0]
+        plaquettes = np.empty_like(ux)
+        for x_coord in range(lattice_size):
+            for y_coord in range(lattice_size):
+                plaquettes[x_coord, y_coord] = (
+                    ux[x_coord, y_coord]
+                    * uy[(x_coord + 1) % lattice_size, y_coord]
+                    * np.conj(ux[x_coord, (y_coord + 1) % lattice_size])
+                    * np.conj(uy[x_coord, y_coord])
+                )
+        return plaquettes
+
+    def hermitian_wilson_kernel(lattice_size: int, flux_units: int) -> np.ndarray:
+        ux, uy = magnetic_torus_links(lattice_size, flux_units)
+        expected_plaquette = np.full(
+            (lattice_size, lattice_size),
+            np.exp(2j * np.pi * flux_units / (lattice_size * lattice_size)),
+            dtype=complex,
+        )
+        assert_array_close(
+            "finite magnetic torus has uniform plaquette flux",
+            plaquette_phases(ux, uy),
+            expected_plaquette,
+            tol=1e-12,
+        )
+
+        gamma_1_np = np.array(gamma_1, dtype=complex)
+        gamma_2_np = np.array(gamma_2, dtype=complex)
+        gamma_star_np = np.array(gamma_star, dtype=complex)
+        spin_identity_np = np.eye(2)
+        site_count = lattice_size * lattice_size
+        matrix_size = 2 * site_count
+        wilson_mass = 1.0
+        wilson_r = 1.0
+        kernel = np.zeros((matrix_size, matrix_size), dtype=complex)
+
+        def index(x_coord: int, y_coord: int, spin: int) -> int:
+            return (
+                2 * ((x_coord % lattice_size) + lattice_size * (y_coord % lattice_size))
+                + spin
+            )
+
+        x_forward = wilson_r * spin_identity_np - gamma_1_np
+        x_backward = wilson_r * spin_identity_np + gamma_1_np
+        y_forward = wilson_r * spin_identity_np - gamma_2_np
+        y_backward = wilson_r * spin_identity_np + gamma_2_np
+
+        for x_coord in range(lattice_size):
+            for y_coord in range(lattice_size):
+                for spin in range(2):
+                    kernel[index(x_coord, y_coord, spin), index(x_coord, y_coord, spin)] += (
+                        2 * wilson_r - wilson_mass
+                    )
+                for spin_left in range(2):
+                    for spin_right in range(2):
+                        row = index(x_coord, y_coord, spin_left)
+                        kernel[row, index(x_coord + 1, y_coord, spin_right)] += (
+                            -0.5 * x_forward[spin_left, spin_right] * ux[x_coord, y_coord]
+                        )
+                        kernel[row, index(x_coord - 1, y_coord, spin_right)] += (
+                            -0.5
+                            * x_backward[spin_left, spin_right]
+                            * np.conj(ux[(x_coord - 1) % lattice_size, y_coord])
+                        )
+                        kernel[row, index(x_coord, y_coord + 1, spin_right)] += (
+                            -0.5 * y_forward[spin_left, spin_right] * uy[x_coord, y_coord]
+                        )
+                        kernel[row, index(x_coord, y_coord - 1, spin_right)] += (
+                            -0.5
+                            * y_backward[spin_left, spin_right]
+                            * np.conj(uy[x_coord, (y_coord - 1) % lattice_size])
+                        )
+
+        gamma_star_lattice = np.kron(np.eye(site_count), gamma_star_np)
+        hermitian_kernel = gamma_star_lattice @ kernel
+        assert_array_close(
+            "finite Wilson kernel is Hermitian in magnetic flux",
+            hermitian_kernel,
+            hermitian_kernel.conj().T,
+            tol=1e-12,
+        )
+        return hermitian_kernel
+
+    def finite_flux_overlap_index(charge_value: int, flux_value: int, lattice_size: int = 8) -> int:
+        signed_flux = charge_value * flux_value
+        hermitian_kernel = hermitian_wilson_kernel(lattice_size, signed_flux)
+        eigenvalues = np.linalg.eigvalsh(hermitian_kernel)
+        if not bool(np.all(np.isfinite(eigenvalues))):
+            raise AssertionError("finite Wilson-kernel spectrum contains nonfinite values")
+        spectral_gap = float(np.min(np.abs(eigenvalues)))
+        assert_gt_bound("finite Wilson kernel has an overlap sign-function gap", spectral_gap, 0.1)
+        index_value = -0.5 * float(np.sum(np.sign(eigenvalues)))
+        rounded_index = int(round(index_value))
+        assert_leq_bound(
+            "finite overlap index is integral",
+            abs(index_value - rounded_index),
+            1e-8,
+        )
+        return rounded_index
 
     sample_charge = Fraction(3)
     uncorrected_spin_term = matscale(sample_charge, gamma_12)
@@ -948,10 +1019,10 @@ def check_coulomb_component_response_selects_log_sign() -> None:
     assert_equal("spin trace of gamma-star squared", gamma_star_square_trace, 2 + 0j)
     mass_phase = Fraction(5, 7)
     for charge_int, flux_int in [(3, 2), (3, -2), (-2, 3), (-2, -3)]:
-        finite_index = finite_flux_dirac_index(charge_int, flux_int)
+        finite_index = finite_flux_overlap_index(charge_int, flux_int)
         heat_kernel_index = -charge_int * flux_int * int(gamma_star_square_trace.real) // 2
         assert_equal(
-            "finite flux Dirac complex computes signed Fujikawa trace",
+            "flux-carrying overlap kernel computes signed Fujikawa trace",
             finite_index,
             heat_kernel_index,
         )
@@ -987,6 +1058,9 @@ def check_coulomb_component_response_selects_log_sign() -> None:
             absolute_value_only_phase == jacobian_phase,
             False,
         )
+
+    trivial_flux_index = finite_flux_overlap_index(3, 0)
+    assert_equal("zero magnetic flux has vanishing overlap index", trivial_flux_index, 0)
 
 
 def check_coulomb_one_loop_branch_monodromy() -> None:

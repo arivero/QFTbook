@@ -3836,6 +3836,29 @@ the same Hermitian square gives the local heat-kernel trace
   =
   -Qk .
 \]
+The companion finite regulator realizes the same sign with an \(L\times L\)
+magnetic torus.  For flux \(Qk\) it uses link variables
+\[
+  U_x(x,y)=
+  \exp\!\left(-\frac{2\pi\ii\,Qk\,y}{L^2}\right),
+  \qquad
+  U_y(x,y)=
+  \begin{cases}
+    1,& y<L-1,\\
+    \exp\!\left(\frac{2\pi\ii\,Qk\,x}{L}\right),& y=L-1,
+  \end{cases}
+\]
+so every plaquette has phase \(\exp(2\pi\ii Qk/L^2)\).  With the Hermitian
+Wilson kernel \(H_W=\gamma_*(D_W-m)\), \(0<m<2\), the overlap index
+\[
+  \nu_{\rm ov}
+  =
+  -\frac12\operatorname{Tr}\operatorname{sign}(H_W)
+\]
+computes \(-Qk\) for the smooth finite-flux cells used here.  This finite
+operator model fixes the chirality and flux convention independently of any
+preassigned chiral dimension mismatch; the continuum index theorem is the
+regulator-independent statement behind the heat-kernel limit.
 The sign is fixed by the \(\gamma_*\) convention above: for \(Qk>0\), the
 lowest Landau zero modes have negative \(\gamma_*\)-chirality.  If
 \(M=|M|e^{\ii\alpha}\), the axial rotation that makes the mass real is

@@ -431,8 +431,10 @@ and
   determinant density `Q/(4 pi) log(|M|^2/mu^2)`, and the `1/(2 pi)`
   twisted-`F` component bridge that converts this density to the real part of
   `Q log(M/mu)`.  The Fujikawa phase is tied to the same heat-kernel
-  convention: `Tr_reg gamma_*=-Q k`, and the mass-rotation generator
-  `-gamma_*/2` gives the theta shift `theta -> theta+Q alpha`.
+  convention: `Tr_reg gamma_*=-Q k`, with the finite companion now computing
+  the same sign from a flux-carrying magnetic-torus Wilson-overlap kernel
+  rather than an assigned chiral dimension mismatch; the mass-rotation
+  generator `-gamma_*/2` gives the theta shift `theta -> theta+Q alpha`.
 - Derives the effective twisted-superpotential critical equation
   `prod_i (Q_i sigma/mu)^{Q_i}=exp(T)` and proves that all-positive charges
   give `sum_i Q_i` simple local Coulomb vacua.
@@ -487,8 +489,9 @@ and
     its finite FI-coordinate shift under determinant normalization changes,
     plus the Coulomb determinant/Fujikawa response cell checking the corrected
     Hermitian Dirac square, signed-log coefficient extraction across charge
-    and mass-order reversals, paired nonzero fermion spin traces, finite flux
-    Dirac-complex ranks, heat-kernel chiral trace, and theta-shift Jacobian;
+    and mass-order reversals, paired nonzero fermion spin traces, a
+    flux-carrying magnetic-torus Wilson-overlap index, heat-kernel chiral trace,
+    and theta-shift Jacobian;
   - compact FI-theta/common-flux checks: `T=2 pi i tau=-2 pi r+i theta`
     gives the theta-periodic flux weight `q=exp(T)` while the nonperiodic
     `exp(tau)` shortcut fails; equal-charge flavor rotations preserve the
@@ -653,8 +656,8 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   but it cannot choose the determinant-log sign because both signs are
   integral-period transports.  The follow-up determinant/Fujikawa re-audit
   replaces the previous assignment-style companion with a convention-closed
-  gamma-matrix, Hermitian Dirac-square, determinant-density,
-  paired-fermion, finite-flux Dirac-complex, and heat-kernel model: the real
+  gamma-matrix, Hermitian Dirac-square, determinant-density, paired-fermion,
+  finite-flux Wilson-overlap kernel, and heat-kernel model: the real
   sign comes from the complex-scalar determinant density after division by the
   signed analytic logarithm, while the theta partner comes from
   `Tr_reg gamma_*=-Q k` together with the mass-rotation generator

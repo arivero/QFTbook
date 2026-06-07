@@ -2984,8 +2984,9 @@ Current checks:
   \(1/(2\pi)\) twisted-\(F\) component bridge against the
   \(1/(4\pi)\) determinant density while rejecting doubled-log and repeated-density
   normalizations, checks the \(-Q\Sigma Y\) compact-flux period, checks paired
-  fermion spin traces, and computes the mass-phase Jacobian from finite flux
-  Dirac-complex ranks and the same heat-kernel trace, the Coulomb branch-monodromy check
+  fermion spin traces, and computes the mass-phase Jacobian from a
+  flux-carrying magnetic-torus Wilson-overlap kernel and the same heat-kernel
+  trace, the Coulomb branch-monodromy check
   which transports logarithm-sheet shifts into integral \(T\)-periods while
   rejecting compact-periodicity-as-sign-oracle and absolute-value-only
   logarithm shortcuts, the compact FI-theta check that
