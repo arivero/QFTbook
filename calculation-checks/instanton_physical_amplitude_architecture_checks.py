@@ -64,9 +64,10 @@ Target claims:
   and source-fluctuation or physical-projection data not included in the
   retained integrals remain separate residuals.
 - `ca:instanton-finite-determinant-scheme-transport`: a finite one-loop
-  determinant constant transports between determinant schemes only together
-  with the coupling/action conversion, running bosonic zero-mode power,
-  orientation measure, source-frame determinant, and physical projection.
+  determinant constant transports between determinant schemes with the
+  coupling/action conversion, running bosonic zero-mode power, and orientation
+  measure.  Source and physical-projection data are transported separately as
+  channel vectors and covectors.
 - `ca:instanton-observable-handoff-ledger`: the assembled instanton channel
   must still be mapped to a named physical observable; hard source
   coefficients, theta curvatures, U(1)_A susceptibility kernels, and real-time
@@ -230,9 +231,9 @@ Negative controls:
   determinant-only assembled amplitude, signed-window relative error control
   without a noncancellation margin, a reference calibration with omitted
   source-fluctuation or physical-projection transport, a rank-lost reference
-  channel used as a determinant normalization, a finite determinant constant
-  transported without the running zero-mode power, source determinant,
-  orientation measure, or physical projection, a
+  channel used as a determinant normalization, source/projection matrices
+  absorbed into a universal determinant constant, a finite determinant constant
+  transported without the running zero-mode power or orientation measure, a
   hard source coefficient used as a theta susceptibility, a dilute
   topological susceptibility used as a real-time rate, a dilute instanton
   curvature substituted for Witten-Veneziano curvature without a comparison
@@ -1736,6 +1737,30 @@ def check_hard_reference_channel_calibration() -> None:
 
 
 def check_finite_determinant_scheme_transport() -> None:
+    def row_times_matrix(
+        row: tuple[Fraction, Fraction],
+        matrix: Matrix2,
+    ) -> tuple[Fraction, Fraction]:
+        return (
+            row[0] * matrix[0][0] + row[1] * matrix[1][0],
+            row[0] * matrix[0][1] + row[1] * matrix[1][1],
+        )
+
+    def matrix_times_column(
+        matrix: Matrix2,
+        column: tuple[Fraction, Fraction],
+    ) -> tuple[Fraction, Fraction]:
+        return (
+            matrix[0][0] * column[0] + matrix[0][1] * column[1],
+            matrix[1][0] * column[0] + matrix[1][1] * column[1],
+        )
+
+    def dot(
+        row: tuple[Fraction, Fraction],
+        column: tuple[Fraction, Fraction],
+    ) -> Fraction:
+        return row[0] * column[0] + row[1] * column[1]
+
     n_colors = 3
     x_scheme = Fraction(7, 5)
     x_prime = Fraction(9, 4)
@@ -1745,38 +1770,42 @@ def check_finite_determinant_scheme_transport() -> None:
     determinant_constant = Fraction(13, 17)
     action_conversion = Fraction(5, 4)
     orientation_conversion = Fraction(7, 9)
-    physical_projection_conversion = Fraction(6, 5)
-    source_frame_right: Matrix2 = (
-        (Fraction(2), Fraction(0)),
-        (Fraction(0), Fraction(3, 5)),
-    )
-    source_frame_left: Matrix2 = (
-        (Fraction(1, 2), Fraction(0)),
-        (Fraction(0), Fraction(5, 6)),
-    )
-    source_conversion = det2(source_frame_right) * det2(source_frame_left)
-    assert_equal("hard source-frame determinant conversion", source_conversion, Fraction(1, 2))
 
-    leading_window = Fraction(19, 23)
-    scheme_amplitude = determinant_constant * gamma_scheme * leading_window
-    transported_constant = (
+    source_basis_change: Matrix2 = (
+        (Fraction(2), Fraction(1, 3)),
+        (Fraction(1, 5), Fraction(3, 2)),
+    )
+    source_coefficients = (Fraction(5, 7), Fraction(11, 13))
+    physical_projection = (Fraction(17, 19), Fraction(23, 29))
+    channel_kernel = dot(source_coefficients, physical_projection)
+    source_prime = row_times_matrix(
+        source_coefficients,
+        inv2(source_basis_change),
+    )
+    projection_prime = matrix_times_column(source_basis_change, physical_projection)
+    assert_equal(
+        "source/projection covariance is a channel-vector identity",
+        dot(source_prime, projection_prime),
+        channel_kernel,
+    )
+
+    scheme_amplitude = determinant_constant * gamma_scheme * channel_kernel
+    transported_instanton_constant = (
         determinant_constant
         * action_conversion
         * gamma_scheme
         / gamma_prime
-        / (orientation_conversion * source_conversion * physical_projection_conversion)
+        / orientation_conversion
     )
     transported_amplitude = (
-        transported_constant
+        transported_instanton_constant
         * gamma_prime
         / action_conversion
         * orientation_conversion
-        * source_conversion
-        * physical_projection_conversion
-        * leading_window
+        * dot(source_prime, projection_prime)
     )
     assert_equal(
-        "finite determinant scheme transport preserves leading amplitude",
+        "universal determinant transport plus channel covariance preserves amplitude",
         transported_amplitude,
         scheme_amplitude,
     )
@@ -1786,47 +1815,27 @@ def check_finite_determinant_scheme_transport() -> None:
         * gamma_prime
         / action_conversion
         * orientation_conversion
-        * source_conversion
-        * physical_projection_conversion
-        * leading_window
+        * dot(source_prime, projection_prime)
     )
     omitted_gamma_ratio = (
         determinant_constant
         * action_conversion
-        / (orientation_conversion * source_conversion * physical_projection_conversion)
         * gamma_prime
         / action_conversion
         * orientation_conversion
-        * source_conversion
-        * physical_projection_conversion
-        * leading_window
+        * dot(source_prime, projection_prime)
     )
-    omitted_source_conversion = (
+    omitted_orientation_conversion = (
         determinant_constant
         * action_conversion
         * gamma_scheme
         / gamma_prime
-        / (orientation_conversion * physical_projection_conversion)
         * gamma_prime
         / action_conversion
         * orientation_conversion
-        * source_conversion
-        * physical_projection_conversion
-        * leading_window
+        * dot(source_prime, projection_prime)
     )
-    omitted_projection_conversion = (
-        determinant_constant
-        * action_conversion
-        * gamma_scheme
-        / gamma_prime
-        / (orientation_conversion * source_conversion)
-        * gamma_prime
-        / action_conversion
-        * orientation_conversion
-        * source_conversion
-        * physical_projection_conversion
-        * leading_window
-    )
+    unpaired_source_transform = dot(source_prime, physical_projection)
 
     assert_not_equal(
         "transporting finite determinant constant alone changes the amplitude",
@@ -1839,43 +1848,90 @@ def check_finite_determinant_scheme_transport() -> None:
         scheme_amplitude,
     )
     assert_not_equal(
-        "omitting source determinant conversion changes scheme transport",
-        omitted_source_conversion,
+        "omitting orientation measure changes determinant transport",
+        omitted_orientation_conversion,
         scheme_amplitude,
     )
     assert_not_equal(
-        "omitting physical projection conversion changes scheme transport",
-        omitted_projection_conversion,
+        "source basis change without projection transport changes the channel",
+        transported_instanton_constant
+        * gamma_prime
+        / action_conversion
+        * orientation_conversion
+        * unpaired_source_transform,
         scheme_amplitude,
     )
 
-    declared_errors = [
+    target_source_coefficients = (Fraction(2, 5), Fraction(7, 11))
+    target_projection = (Fraction(13, 17), Fraction(19, 31))
+    target_kernel = dot(target_source_coefficients, target_projection)
+    target_source_prime = row_times_matrix(
+        target_source_coefficients,
+        inv2(source_basis_change),
+    )
+    target_projection_prime = matrix_times_column(
+        source_basis_change,
+        target_projection,
+    )
+    assert_equal(
+        "second channel source/projection covariance",
+        dot(target_source_prime, target_projection_prime),
+        target_kernel,
+    )
+
+    reference_leak = unpaired_source_transform / channel_kernel
+    bad_reference_absorbed_constant = transported_instanton_constant / reference_leak
+    target_with_reference_absorbed_constant = (
+        bad_reference_absorbed_constant
+        * gamma_prime
+        / action_conversion
+        * orientation_conversion
+        * dot(target_source_prime, target_projection)
+    )
+    assert_not_equal(
+        "source/projection leakage calibrated in one channel is not universal",
+        target_with_reference_absorbed_constant,
+        determinant_constant * gamma_scheme * target_kernel,
+    )
+
+    declared_universal_errors = [
         Fraction(1, 20),
         Fraction(1, 25),
         Fraction(1, 30),
-        Fraction(1, 40),
-        Fraction(1, 50),
-        Fraction(1, 60),
     ]
-    actual_errors = [
+    actual_universal_errors = [
         Fraction(1, 40),
         -Fraction(1, 50),
         Fraction(1, 90),
-        -Fraction(1, 120),
-        Fraction(1, 125),
-        -Fraction(1, 180),
     ]
-    declared_multiplier = product([1 + error for error in declared_errors]) - 1
-    actual_multiplier = product([1 + error for error in actual_errors]) - 1
+    declared_multiplier = product(
+        [1 + error for error in declared_universal_errors]
+    ) - 1
+    actual_multiplier = product(
+        [1 + error for error in actual_universal_errors]
+    ) - 1
+    declared_channel_residual = abs(channel_kernel) / 40
+    actual_channel_residual = -declared_channel_residual / 2
     assert_leq(
-        "finite determinant scheme residual product bound",
-        abs(actual_multiplier * scheme_amplitude),
-        declared_multiplier * abs(scheme_amplitude),
+        "finite determinant scheme residual separates universal and channel errors",
+        abs(
+            actual_multiplier * scheme_amplitude
+            + determinant_constant * gamma_scheme * actual_channel_residual
+        ),
+        declared_multiplier * abs(scheme_amplitude)
+        + abs(determinant_constant * gamma_scheme) * declared_channel_residual,
     )
 
-    underbudget_without_bridge = declared_multiplier * abs(scheme_amplitude)
+    underbudget_without_bridge = (
+        declared_multiplier * abs(scheme_amplitude)
+        + abs(determinant_constant * gamma_scheme) * declared_channel_residual
+    )
     bridge_residual = underbudget_without_bridge + Fraction(1, 70)
-    physical_difference = actual_multiplier * scheme_amplitude + bridge_residual
+    physical_difference = (
+        actual_multiplier * scheme_amplitude
+        + determinant_constant * gamma_scheme * actual_channel_residual
+        + bridge_residual
+    )
     assert_equal(
         "scheme transport bound needs bridge residual",
         abs(physical_difference)

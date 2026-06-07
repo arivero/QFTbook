@@ -1942,24 +1942,60 @@ below.
 
 \begin{controlledapproximation}[Finite determinant scheme transport]
 \label{ca:instanton-finite-determinant-scheme-transport}
-The finite one-loop determinant constant is not an invariant number by
-itself.  It is a coordinate in a determinant scheme together with a coupling
-coordinate, a zero-mode normalization, an orientation measure, a source
-frame, and a physical projection.  Fix a hard channel and compare two
-descriptions \({\mathcal S}\) and \({\mathcal S}'\) at the same hard scale
-\(Q\).  Write
+The universal finite one-loop determinant and orientation constant is not an
+invariant number by itself, but its transformation is narrower than a full
+amplitude transformation.  It belongs to the regulator, coupling coordinate,
+bosonic zero-mode normalization, and orientation-measure convention.  It does
+not absorb the source basis or the physical projection.  Compare two
+determinant descriptions \({\mathcal S}\) and \({\mathcal S}'\) at the same hard
+scale \(Q\), and write
 \[
   X_{\mathcal S}(Q)=\frac{8\pi^2}{g_{\mathcal S}^2(Q)},
   \qquad
   \Gamma_{\mathcal S}(Q)=X_{\mathcal S}(Q)^{2N_c}.
 \]
-Suppose the same retained leading source window is described by finite
-conversion factors
+Suppose the universal density factors are related by
 \[
   \ee^{-X_{{\mathcal S}'}}=\lambda_{\rm act}^{-1}\ee^{-X_{\mathcal S}},
   \qquad
   \dd\Omega_{{\mathcal S}'}=\lambda_{\Omega}\dd\Omega_{\mathcal S},
 \]
+\[
+  C_{{\mathcal S}'}^{\rm inst}
+  \Gamma_{{\mathcal S}'}(Q)
+  \lambda_{\rm act}^{-1}
+  \lambda_{\Omega}
+  =
+  C_{\mathcal S}^{\rm inst}\Gamma_{\mathcal S}(Q).
+\]
+Equivalently,
+\begin{equation}
+  C_{{\mathcal S}'}^{\rm inst}
+  =
+  C_{\mathcal S}^{\rm inst}\,
+  \lambda_{\rm act}
+  \frac{\Gamma_{\mathcal S}(Q)}{\Gamma_{{\mathcal S}'}(Q)}
+  \lambda_{\Omega}^{-1}.
+  \label{eq:instanton-finite-determinant-constant-transform}
+\end{equation}
+No source determinant or projection factor appears in
+\eqref{eq:instanton-finite-determinant-constant-transform}.  Those factors act
+on the channel vector.  For a finite family of retained operators, let
+\(\mathbf c_{\mathcal S}\) be the row of zero-mode/source coefficients and
+\(\mathbf m_{\mathcal S}\) the column of physical matrix elements or projection
+data.  If the operator/source basis is changed by
+\(\mathbf O_{{\mathcal S}'}=T\mathbf O_{\mathcal S}\), then
+\begin{equation}
+  \mathbf c_{{\mathcal S}'}=\mathbf c_{\mathcal S}T^{-1},
+  \qquad
+  \mathbf m_{{\mathcal S}'}=T\mathbf m_{\mathcal S},
+  \qquad
+  \mathbf c_{{\mathcal S}'}\mathbf m_{{\mathcal S}'}
+  =
+  \mathbf c_{\mathcal S}\mathbf m_{\mathcal S}.
+  \label{eq:instanton-source-projection-covariance}
+\end{equation}
+The one-channel shorthand
 \[
   \det B_R^{{\mathcal S}'}\det B_L^{{\mathcal S}'}
   =
@@ -1969,70 +2005,64 @@ conversion factors
   =
   \lambda_{\rm phys}\mathfrak L_{\rm phys}^{\mathcal S}.
 \]
-Here \(\lambda_{\rm src}\) is the determinant of the finite source-frame
-change seen by the two chiral zero-mode blocks; in a larger operator family it
-is replaced by the corresponding source/projection matrix acting on the
-retained coefficient vector.  Equality of the same leading physical amplitude
-then requires
-\begin{equation}
-  C_{{\mathcal S}'}
-  \Gamma_{{\mathcal S}'}(Q)
-  \lambda_{\rm act}^{-1}
-  \lambda_{\Omega}
-  \lambda_{\rm src}
-  \lambda_{\rm phys}
-  =
-  C_{\mathcal S}\Gamma_{\mathcal S}(Q),
-  \label{eq:instanton-finite-determinant-scheme-transport}
-\end{equation}
-or
-\begin{equation}
-  C_{{\mathcal S}'}
-  =
-  C_{\mathcal S}\,
-  \lambda_{\rm act}
-  \frac{\Gamma_{\mathcal S}(Q)}{\Gamma_{{\mathcal S}'}(Q)}
-  \bigl(
-    \lambda_{\Omega}\lambda_{\rm src}\lambda_{\rm phys}
-  \bigr)^{-1}.
-  \label{eq:instanton-finite-determinant-constant-transform}
-\end{equation}
+is therefore a statement about a full channel coefficient, not about the
+universal determinant constant.  In more than one channel the two displayed
+scalars are matrices or covectors, and absorbing them into
+\(C_{\mathcal S}^{\rm inst}\) would make a source-independent determinant
+number depend on the channel chosen for calibration.
+
 If only the coupling coordinate changes and
 \(X_{{\mathcal S}'}=X_{\mathcal S}+\kappa+O(g^2)\), then
 \(\lambda_{\rm act}=\ee^\kappa+O(g^2)\) and
-\(C_{{\mathcal S}'}=\ee^\kappa C_{\mathcal S}(1+O(g^2))\) at one-loop
-accuracy.  The exact finite-coordinate comparison, however, keeps the
+\(C_{{\mathcal S}'}^{\rm inst}=\ee^\kappa C_{\mathcal S}^{\rm inst}(1+O(g^2))\)
+at one-loop accuracy when the orientation convention is unchanged.  The exact
+finite-coordinate comparison, however, keeps the
 \(\Gamma_{\mathcal S}/\Gamma_{{\mathcal S}'}\) factor in
 \eqref{eq:instanton-finite-determinant-constant-transform}.  This is why a
 quoted Pauli--Villars or subtraction-scheme constant cannot be moved into a
-hard amplitude unless the coupling coordinate, bosonic zero-mode power,
-orientation normalization, source derivatives, and projection convention have
-also been moved.
+hard amplitude unless the coupling coordinate, bosonic zero-mode power, and
+orientation normalization have been moved, and unless the separate
+source/projection covariance \eqref{eq:instanton-source-projection-covariance}
+has been checked for the channel being projected.
 
-With imperfect transport, write every retained conversion factor as its
-declared value times \(1+\delta_y\), with
+With imperfect universal transport, write every determinant-density conversion
+factor as its declared value times \(1+\delta_y\), with
 \(|\delta_y|\le e_y<1\) for
 \[
-  y\in\{\Gamma,{\rm act},\Omega,{\rm src},{\rm phys},{\rm shape}\}.
+  y\in\{\Gamma,{\rm act},\Omega\}.
 \]
-Then the same leading-window kernel has the multiplicative conversion
-residual
+Let \(B_{\mathcal C}^{\mathcal S}=\mathbf c_{\mathcal S}\mathbf m_{\mathcal S}\)
+denote the retained channel kernel, including the declared source window and
+physical projection, and suppose the source/projection/shape transport obeys
+\[
+  \left|
+  B_{\mathcal C}^{{\mathcal S}'}-B_{\mathcal C}^{\mathcal S}
+  \right|
+  \le E_{\mathcal C}^{\rm ch}.
+\]
+Then the same leading-window amplitude has the residual bound
 \begin{equation}
+  \begin{aligned}
   \epsilon_{\rm sch}
   =
   \prod_y(1+e_y)-1,
   \qquad
   |\Delta A_{\rm sch}|
   \le
-  |C_{\mathcal S}\Gamma_{\mathcal S}B_{\mathcal C}|\,
+  |C_{\mathcal S}^{\rm inst}\Gamma_{\mathcal S}
+  B_{\mathcal C}^{\mathcal S}|\,
   \epsilon_{\rm sch}
+  +
+  |C_{\mathcal S}^{\rm inst}\Gamma_{\mathcal S}|\,
+  E_{\mathcal C}^{\rm ch}
   +R_{\rm bridge}.
+  \end{aligned}
   \label{eq:instanton-finite-determinant-scheme-residual}
 \end{equation}
-The bridge term contains source-fluctuation, endpoint, sector, and physical
-projection mismatches not represented by the scalar conversion factors.  Thus
-scheme transport is still an amplitude calculation: moving only the
-determinant constant, only the running coupling, or only the source frame
+The bridge term contains source-fluctuation, endpoint, sector, and continuation
+mismatches not represented by the finite channel vector.  Thus scheme transport
+is still an amplitude calculation: moving only the determinant constant, only
+the running coupling, or a source frame without its contragredient projection
 changes the QFT coordinate being compared.
 \end{controlledapproximation}
 
