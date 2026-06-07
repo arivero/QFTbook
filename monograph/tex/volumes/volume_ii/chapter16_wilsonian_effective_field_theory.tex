@@ -1316,7 +1316,7 @@ finite-coordinate continuum-limit theorem below.
 This gives one structural input for effective field theory: irrelevant
 coordinates can be suppressed in a normed low-energy chart.  It is not yet an
 EFT prediction.  A prediction also needs an observable, a domain, matching and
-renormalization data, an infrared prescription, and a stated status for the
+renormalization inputs, an infrared prescription, and a stated meaning for the
 discarded terms.
 
 \section{What an EFT Prediction Contains}
@@ -1324,12 +1324,12 @@ discarded terms.
 
 The slogan ``write the most general Lagrangian'' is useful only after it is
 embedded in a prediction problem.  The local action is one coordinate choice
-inside a larger datum.
+inside a larger prediction specification.
 
-\begin{definition}[EFT prediction datum]
+\begin{definition}[EFT prediction specification]
 \label{def:eft-prediction-datum}
-An EFT prediction datum for an observable class \(\mathcal R\) on a kinematic
-domain \(\mathcal D\) consists of:
+An EFT prediction specification for an observable class \(\mathcal R\) on a
+kinematic domain \(\mathcal D\) consists of:
 \begin{enumerate}
   \item the observables to be predicted, for example smeared correlators,
   inclusive rates, finite-volume energies, or scattering functionals, together
@@ -1343,7 +1343,7 @@ domain \(\mathcal D\) consists of:
   \item the retained field variables, symmetries, gauge or BRST/BV data when
   present, and the regulated local operator module through the target order,
   including evanescent representatives before four-dimensional projection;
-  the datum must also specify which integration-by-parts identities,
+  the specification must also state which integration-by-parts identities,
   source-aware equations-of-motion or field-redefinition maps, BRST/BV
   cohomology reductions, and boundary/defect/edge operator sectors are valid
   for the chosen observables and regulator;
@@ -1368,10 +1368,12 @@ Given such data, an \(N\)-th order EFT prediction has the form
   r\in\mathcal R,\quad d\in\mathcal D,
   \label{eq:eft-prediction-output-remainder}
 \end{equation}
-where \(R_N\) is not a decorative symbol.  It is an exact finite-regulator
-remainder, a fixed-order perturbative remainder, an asymptotic remainder in a
-specified regime, a nonperturbative bound in a specified topology, a
-conditional inference from high-scale assumptions, or a heuristic size prior.
+where \(R_N\) is not a decorative symbol.  It is the part of the physical
+prediction not computed by the retained EFT expression: an exact
+finite-regulator remainder, a fixed-order perturbative remainder, an
+asymptotic remainder in a specified regime, a nonperturbative bound in a
+specified topology, a conditional inference from high-scale assumptions, or a
+heuristic size prior.
 \end{definition}
 
 The operator-space entry in this definition is not a single universal
@@ -1407,8 +1409,9 @@ may choose a linear splitting and coordinates
   \mathcal V_{\partial}^{[N]},
 \]
 but this is a scheme-dependent coordinate choice, not a canonical
-decomposition of the regulated local module.  The prediction datum supplies the
-projection and equivalence maps appropriate to the observable problem.
+decomposition of the regulated local module.  The prediction specification
+supplies the projection and equivalence maps appropriate to the observable
+problem.
 Integration by parts is a quotient only after the boundary class and contact
 terms have been fixed.  Boundary operators are part of the physical basis
 whenever the manifold has a physical boundary, a defect, edge modes, boundary
@@ -1589,7 +1592,7 @@ minimal counterterm matrix
   \frac{C_Eu}{\epsilon}\,E_{16}.
   \label{eq:eft-evanescent-counterterm-matrix}
 \end{equation}
-This is a different datum from
+This is a different finite-regulator input from
 \eqref{eq:eft-evanescent-concrete-pole}: the residue \(u\) is the pole of the
 renormalized \(E_{16}\)-insertion graph, not the \(2/d\) residue of the
 preceding \(Q\)-insertion graph.  Projecting the renormalized amplitude gives
@@ -1639,9 +1642,9 @@ scheme-dependent.  The order of operations is identical: define the projection,
 evaluate the regulated graph, subtract in the regulated basis, then project
 and compensate finite representative changes.
 
-This datum is the Wilsonian form of the operational EFT viewpoint: the local
-operators allowed by the symmetries must be paired with a power counting,
-matching or coefficient input, and an observable range
+This specification is the Wilsonian form of the operational EFT viewpoint: the
+local operators allowed by the symmetries must be paired with a power
+counting, matching or coefficient input, and an observable range
 \cite{Weinberg1979PhenomenologicalLagrangians,Georgi1993EffectiveFieldTheory,
 AdamsEtAl2006IRObstruction}.
 This definition separates several claims that are often conflated.
@@ -1654,9 +1657,9 @@ positivity constraints derived from additional high-energy assumptions, such
 as the dispersion-theory hypotheses of Chapter~\ref{ch:volume-ii-07}, are
 therefore conditional restrictions on coefficients, not the definition of the
 EFT; matching and the error statement remain separate entries of the
-prediction datum.
+prediction specification.
 
-The status of \(R_N\) should be named in the text whenever a calculation is
+The meaning of \(R_N\) should be named in the text whenever a calculation is
 used.  The useful categories are:
 \begin{enumerate}
   \item exact finite-regulator identity;
@@ -1666,7 +1669,8 @@ used.  The useful categories are:
   \item conditional inference from UV assumptions;
   \item heuristic coefficient-size estimate.
 \end{enumerate}
-Power counting belongs to the same datum.  A filtration is predictive only if
+Power counting belongs to the same prediction specification.  A filtration is
+predictive only if
 counterterms generated by retained interactions close within the retained
 filtration through the target order, logarithms and mixing are transported by
 the RG without lowering the declared order, the coefficient-size assumptions
@@ -1686,7 +1690,7 @@ projection of every graph built from \(w\le N\) vertices lands again in
 nonrelativistic, large-\(N\), or chiral regions are simultaneously present,
 the map \(w\) must be replaced by the corresponding multi-index order and the
 observable domain \(\mathcal D\) must say which scaling regime is being used.
-The SCET factorization datum in
+The SCET factorization hypothesis in
 Hypothesis~\ref{hyp:leading-power-scet-factorization} and the distributional
 estimate in
 Controlled Approximation~\ref{ca:scet-distributional-factorization-estimate}
@@ -1725,13 +1729,14 @@ matched observables are the basis-independent objects.
 Positivity bounds are most useful when they are attached to a concrete
 low-energy scattering prediction.  They are not a new foundation for EFT and
 not evidence, by themselves, that a UV completion exists.  The EFT prediction
-datum of Definition~\ref{def:eft-prediction-datum} first chooses the observable:
-here an on-shell forward \(2\to2\) amplitude of an identical stable scalar of
-mass \(m\), with a specified infrared prescription and a low-energy expansion
-domain.  Only after that datum is fixed do analyticity, unitarity, and crossing
-become extra assumptions that can restrict the observable amplitude coefficient.
+specification of Definition~\ref{def:eft-prediction-datum} first chooses the
+observable: here an on-shell forward \(2\to2\) amplitude of an identical stable
+scalar of mass \(m\), with a specified infrared prescription and a low-energy
+expansion domain.  Only after that observable problem is fixed do analyticity,
+unitarity, and crossing become extra assumptions that can restrict the
+amplitude coefficient.
 
-\begin{hypothesis}[Forward scalar positivity ledger]
+\begin{hypothesis}[Forward scalar positivity assumptions]
 \label{hyp:forward-scalar-positivity-ledger}
 The following assumptions are part of the claim, not background decoration.
 \begin{enumerate}
@@ -2018,7 +2023,7 @@ only within the stated UV-completion class and is never sufficient evidence
 that such a completion exists.
 \end{remark}
 
-\begin{remark}[Status of the scalar positivity statement]
+\begin{remark}[Scope of the scalar positivity statement]
 \label{rem:eft-positivity-status-ledger}
 The complex-analysis step from the cut contour to
 \eqref{eq:forward-positivity-a2-sum-rule} is exact once the analytic function,
@@ -2040,7 +2045,7 @@ surface in momentum space.  The Wilsonian lesson of this chapter still applies,
 but the coordinate chart is different: normal residual momenta and frequency
 are scaled, tangential coordinates label nearby points on the Fermi surface,
 and only special four-fermion kinematics have logarithmic phase space.  This
-section records the general finite-density EFT datum behind the
+section records the general finite-density EFT setup behind the
 Shankar--Polchinski patch-RG analysis
 \cite{Polchinski1992FermiSurface,Shankar1994RGFermiLiquid} and used later in
 the dense QCD discussion of
@@ -2048,13 +2053,13 @@ Section~\ref{sec:qcd-high-density-effective-theory}; dense QCD then adds gauge
 fields, hard-dense-loop response, color pairing, and the non-Fermi-liquid
 self-energy of Section~\ref{sec:qcd-non-fermi-liquid-self-energy}.
 
-\begin{definition}[Finite-regulator finite-density datum]
+\begin{definition}[Finite-regulator finite-density setup]
 \label{def:finite-density-fermi-regulator-datum}
 Fix a spatial dimension \(d\), a periodic box
 \(\Omega_L=\prod_i(\mathbb Z/L_i\mathbb Z)\), and a finite set of allowed
 momenta \(K_{\Lambda,L}\).  Let \(c_{k\alpha}\) be fermion modes, where
 \(\alpha\) is a finite spin, flavor, or band label.  A finite-regulator
-finite-density datum consists of:
+finite-density setup consists of:
 \begin{enumerate}
   \item a self-adjoint Hamiltonian \(H_{\Lambda,L}\), invariant under a conserved
   \(U(1)\) charge
@@ -2104,13 +2109,14 @@ finite-density datum consists of:
 \end{enumerate}
 \end{definition}
 
-The limit order is part of the datum.  A common Fermi-liquid construction first
+The limit order is part of the setup.  A common Fermi-liquid construction first
 keeps \(L,\beta,\Lambda\) finite, then takes the thermodynamic limit, then
 \(T=\beta^{-1}\downarrow0\), and only then asks for the low-frequency and
 low-residual-momentum asymptotics of retarded correlators.  Static
 thermodynamic limits and dynamic response limits need not commute.  Thus a
 compressibility, a zero-sound response, and an on-shell lifetime are different
-observables in the sense of Definition~\ref{def:eft-prediction-datum}, even
+observables in the sense of the prediction specification in
+Definition~\ref{def:eft-prediction-datum}, even
 when the same Landau parameter appears in their leading formulae.
 
 \begin{definition}[Patch cover of a smooth Fermi surface]
@@ -2903,11 +2909,11 @@ third term is the first generated operator outside the declared truncation:
   \int\dd^4x\,\phi^8
 \]
 in the bare one-loop functional.  This pole is a counterterm-closure signal,
-not a finite prediction error.  The renormalized prediction datum declared
-above is constructed only through canonical excess two: through
+not a finite prediction error.  The renormalized prediction specification
+declared above is constructed only through canonical excess two: through
 \((L,k)\leq(1,2)\), all poles generated by retained vertices are absorbed by
 retained coordinates, while the displayed \(\phi^8\) pole marks the first
-counterterm needed to extend the datum to \(k=4\).  If one chooses that
+counterterm needed to extend the specification to \(k=4\).  If one chooses that
 extension and writes
 \[
   V_{k\le4}(\phi)\supset

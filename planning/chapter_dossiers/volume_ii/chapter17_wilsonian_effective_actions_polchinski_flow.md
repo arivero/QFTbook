@@ -172,7 +172,7 @@ The chapter must define and derive:
   zero set a \(C^k\) embedded Banach submanifold of codimension equal to the
   number of relevant coordinates; the dossier records this as an
   implicit-function consequence, not as an independent QFT theorem;
-- an operational EFT-prediction datum that includes the observable class,
+- an operational EFT-prediction specification that includes the observable class,
   kinematic domain, high-scale or bottom-up input, regulator/renormalization
   prescription, retained field/symmetry data, a regulated operator module
   with observable-dependent equivalence/projection maps, expansion parameters,
@@ -192,8 +192,8 @@ The chapter must define and derive:
   the resulting warning that EOM operators may be removed from an on-shell
   matched basis only with the corresponding source/observable transformation;
 - a conditional forward scalar positivity section, built after the EFT
-  prediction datum rather than before it, including:
-  - an assumption ledger for Lorentz invariance or an equivalent macrocausal
+  prediction specification rather than before it, including:
+  - an assumption list for Lorentz invariance or an equivalent macrocausal
     substitute, unitarity, crossing, locality, mass gap, stable external
     particles, first-sheet analyticity, real analyticity, polynomial
     boundedness/subtractions, and explicit subtraction or regulation of
@@ -222,7 +222,7 @@ The chapter must define and derive:
     extensions, insufficient high-energy boundedness, nonlocal UV behavior, and
     EFTs without a local Poincare-invariant UV-completion map.
 - a general finite-density Fermi-surface EFT section with a finite-volume
-  \(U(1)\)-charge datum, exact Green functions, density and Fermi-surface
+  \(U(1)\)-charge setup, exact Green functions, density and Fermi-surface
   diagnostics, and a strict separation of thermodynamic, zero-temperature, and
   low-frequency limits;
 - a smooth patch cover of a Fermi surface with partition-of-unity fields,
@@ -271,7 +271,7 @@ The chapter must define and derive:
   \(\phi^6/\mathcal M^2\), with a one-loop background-field pole calculation
   showing closure through canonical excess two and the first omitted
   \(\phi^8/\mathcal M^4\) operator identified as the counterterm needed to
-  extend the renormalized datum to canonical excess four, with its
+  extend the renormalized specification to canonical excess four, with its
   Wilson-coefficient dimension kept separate from external-momentum powers;
 - a same-EFT local field redefinition
   \(\phi=\psi+a\psi^3/\mathcal M^2\), carrying the action, regulator
@@ -545,9 +545,9 @@ The chapter must define and derive:
     exact Wilsonian computation by generated vertices and low-mode
     integration; in a finite low-momentum projection their Taylor expansion is
     part of the local matching map.
-17. An EFT prediction is a datum for observables, not merely a local
-    Lagrangian or a list of operators.  The reader-facing output must be an
-    observable approximation plus a named remainder status.
+17. An EFT prediction is a specification of an observable problem, not merely a
+    local Lagrangian or a list of operators.  The reader-facing output must be
+    an observable approximation plus a named remainder meaning.
 18. Top-down EFTs use a specified high-scale model and matching map; bottom-up
     EFTs use coefficients fixed by data or other nonperturbative input and
     need not have a local Lorentz-invariant UV completion.  Analyticity and
@@ -575,7 +575,7 @@ The chapter must define and derive:
     boundary/defect sectors; a direct-sum coordinate split is a noncanonical
     scheme choice; BRST-exact terms require an anomaly-free physical cohomology
     setting; and boundary terms remain physical whenever boundary, defect, edge,
-    charge, or boundary-observable data are part of the datum.
+    charge, or boundary-observable data are part of the setup.
 21. The concrete \(E_{16}=O_3-16Q\) example has
     \(\Pi_QO_3=(16-4\epsilon)Q\), hence \(\Pi_QE_{16}=-4\epsilon Q\), in the
     open-spinor NDR projection; the closed-trace Gram pairing would give
@@ -591,9 +591,9 @@ The chapter must define and derive:
     \(\delta{\cal L}_{\rm ct}^{(E)}=C_EuE_{16}/\epsilon\); projecting the
     renormalized amplitude gives \(C_Q^{\rm phys}=C_Q-4C_Eu\), with finite
     countershifts under \(E_{16}\mapsto O_3-(16+\alpha\epsilon)Q\).
-22. Power counting is a closure and error ledger: logs and anomalous-dimension
+22. Power counting is a closure and error organization: logs and anomalous-dimension
     mixing do not lower the declared order, and new kinematic regions require
-    new expansion parameters or a changed prediction datum.
+    new expansion parameters or a changed prediction specification.
 23. In the heavy-light scalar model, tree-level heavy exchange gives an exact
     nonlocal \(K_M^{-1}\) kernel whose derivative expansion has a concrete
     \(Q/M\) remainder away from thresholds.
@@ -771,8 +771,9 @@ The chapter must define and derive:
   gives the constant-field local-potential projection, and separates this
   infrared-regulated 1PI flow from the Wilson-Polchinski Wilsonian action
   flow.
-- 2026-06-04 issue #782 pass: added the operational EFT-prediction datum,
-  claim-status ledger, bottom-up/top-down distinction, source-aware
+- 2026-06-04 issue #782 pass: added the operational EFT-prediction
+  specification, remainder classification, bottom-up/top-down distinction,
+  source-aware
   field-redefinition identity, power-counting closure criterion, and a
   heavy-light scalar matching section with tree-level nonlocal kernel
   expansion, one-loop hard threshold matching, RG matching-scale cancellation,
@@ -780,7 +781,8 @@ The chapter must define and derive:
   `calculation-checks/eft_prediction_calculus_checks.py` to verify the heavy
   kernel expansion, threshold-log cancellation, and the initial
   field-redefinition/source algebra; issue #823 replaced the formal
-  residual-ledger part with the concrete one-loop scalar EFT closure example.
+  remainder-classification block with the concrete one-loop scalar EFT closure
+  example.
 - 2026-06-04 issue #823 pass: replaced the formal power-counting and Gaussian
   field-redefinition evidence with a concrete scalar EFT calculation.  The
   chapter now derives the one-loop poles from \((V''(\phi))^2\), shows
@@ -797,7 +799,7 @@ The chapter must define and derive:
   contractions controlled by loops, light masses, and scheme-dependent
   counterterms.
 - 2026-06-04 issue #824 pass: replaced the unconditional operator quotient in
-  the EFT prediction datum with a regulated operator module plus
+  the EFT prediction specification with a regulated operator module plus
   observable-dependent equivalence/projection maps.  The chapter now keeps
   evanescent representatives through one-loop mixing and matching, states the
   hypotheses for EOM and BRST-exact removal, retains boundary/defect/edge
@@ -841,7 +843,7 @@ The chapter must define and derive:
   of only differentiating a symbolic threshold-log coordinate.
 - 2026-06-05 issue #784 pass: added the general finite-density
   Fermi-surface EFT section.  The new section is architecture-first: finite
-  \(U(1)\) regulator datum and exact Green functions; patch cover, no
+  \(U(1)\) regulator setup and exact Green functions; patch cover, no
   double-counting, scaling, curvature window, and density/compressibility
   matching; generic/forward/Cooper channel separation; one-loop Cooper shell
   calculation with explicit remainder and BCS eigenvalue instability scale;
@@ -855,10 +857,11 @@ The chapter must define and derive:
   IX Chapter 7, preserving the distinction between Fermi-volume counting and
   gapped-phase constraints.
 - 2026-06-05 issue #779 pass: added the conditional forward scalar positivity
-  section after the EFT prediction datum and field-redefinition discussion.
-  The new section starts from an observable amplitude, states the assumption
-  ledger, derives the twice-subtracted forward dispersion relation with both
-  cuts, subtraction constants, pole subtraction, and a large-contour term,
+  section after the EFT prediction specification and field-redefinition
+  discussion.  The new section starts from an observable amplitude, states the
+  assumption list, derives the twice-subtracted forward dispersion relation
+  with both cuts, subtraction constants, pole subtraction, and a large-contour
+  term,
   folds the identical-scalar cuts to obtain the \(2/\pi\) coefficient sum rule,
   uses the optical theorem for positivity, projects the EFT coefficient modulo
   EOM/field-redefinition representatives, and records failure modes.  The
@@ -876,3 +879,10 @@ The chapter must define and derive:
   optical-theorem flux factor and finite-window split as a finite
   normalization/regression check, not as an independent empirical scattering
   construction.
+- 2026-06-06 issue #755/#844/#505 coherence pass: re-audited the reader-facing
+  EFT-prediction and positivity surface after the calculation additions.  The
+  manuscript now uses visible "prediction specification", "assumptions", and
+  "scope" language while preserving stable labels and all equations; the flow
+  is observable problem, regulator/projection/matching inputs, named
+  remainder, then conditional positivity.  This was a physics-architecture and
+  prose-coherence repair, not a new lemma or formula annex.
