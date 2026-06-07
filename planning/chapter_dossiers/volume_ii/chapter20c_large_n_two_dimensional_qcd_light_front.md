@@ -63,6 +63,11 @@ The chapter establishes:
 - the finite DLCQ matrix and its exact quadratic-form identity;
 - a controlled-approximation block stating the data needed before finite DLCQ
   eigenvalues become continuum meson-mass claims;
+- controlled approximation
+  `ca:qcd2-dlcq-current-correlator-residue-contract`, which upgrades the
+  finite DLCQ output from masses alone to current correlators by requiring the
+  source vectors, spectral residues, source normalization, and residue
+  extrapolation data;
 - a positive scope section identifying exactly what the two-dimensional
   large-\(N_c\) construction establishes.
 
@@ -91,14 +96,21 @@ The chapter establishes:
 10. DLCQ matrix eigenvalues are finite-regulator spectral data until zero-mode,
    endpoint-mass, coefficient-matching, and \(K\to\infty\) convergence data are
    supplied.
+11. Current correlators and decay-constant residues require finite source
+    vectors and eigenvector overlaps.  Two finite regulators can have the same
+    mass eigenvalues but different source residues, so the spectrum alone is
+    not the meson observable.
 
 ## Calculation Checks
 
-- `calculation-checks/thooft_model_checks.py` verifies trace-delta color
-  normalization, the finite DLCQ quadratic-form identity, positivity in a
-  positive endpoint-mass sample, the exact massless constant zero mode of
-  the subtracted finite kernel, the endpoint-exponent small-mass expansion,
-  and the finite-form monotonicity shadow of the closed continuum form.
+- `calculation-checks/thooft_model_checks.py` verifies, under an extended
+  evidence contract, trace-delta color normalization, the finite DLCQ
+  quadratic-form identity, positivity in a positive endpoint-mass sample, the
+  exact massless constant zero mode of the subtracted finite kernel, the
+  endpoint-exponent small-mass expansion, the finite-form monotonicity shadow
+  of the closed continuum form, and the current-correlator spectral-measure
+  identity.  The companion includes a negative control where fixed finite
+  eigenvalues leave current-source residues and Euclidean correlators changed.
 
 ## Figure Requirements
 
@@ -114,3 +126,12 @@ The chapter establishes:
   general large-\(N_c\) discussion in the four-dimensional QCD chapter.
 - Develop the separate 3D Chern--Simons--matter light-front planar solution
   required by issue #596.
+
+## Audit Notes
+
+- 2026-06-06 issue #596/#725 DLCQ current-residue pass: added
+  `ca:qcd2-dlcq-current-correlator-residue-contract` so the large-\(N_c\)
+  two-dimensional QCD chapter distinguishes finite meson masses from the
+  source spectral measure that determines current correlators and residues.
+  Promoted `calculation-checks/thooft_model_checks.py` to an extended
+  evidence contract with a fixed-spectrum/different-residue negative control.

@@ -200,6 +200,17 @@
       ]
     },
     {
+      "path": "thooft_model_checks.py",
+      "risk_class": "large-N two-dimensional QCD light-front spectrum and current residues",
+      "contract_tier": "extended",
+      "convention_tags": [
+        "trace-delta SU(N) generators",
+        "subtracted principal-value 't Hooft kernel",
+        "DLCQ grid x_n=n/K with zero-mode sector separated",
+        "current residues from finite source-vector spectral measures"
+      ]
+    },
+    {
       "path": "cft_higher_genus_sewing_checks.py",
       "risk_class": "CFT sewing"
     },

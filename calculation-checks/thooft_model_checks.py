@@ -1,16 +1,46 @@
 #!/usr/bin/env python3
 """Exact finite checks for the large-N two-dimensional QCD chapter.
 
-The chapter uses the subtracted 't Hooft kernel
-
-    PV int (phi(x)-phi(y))/(x-y)^2 dy
-
-and its DLCQ finite matrix. These checks use rational arithmetic to verify
-the color normalization, the finite quadratic-form identity, positivity in a
-sample positive-mass case, the exact constant zero mode in the massless
-subtracted kernel, the endpoint-exponent small-mass expansion in the
-subtracted finite-part convention, and finite-form monotonicity shadows of
-the continuum closed-form spectral construction.
+Evidence contract.
+Target claims: the trace-delta color normalization, subtracted 't Hooft
+  kernel sign, finite DLCQ quadratic-form identity, positivity and massless
+  zero-mode checks, endpoint exponent small-mass expansion, finite-form
+  monotonicity shadow, and the finite current-residue contract in
+  ``ca:qcd2-dlcq-current-correlator-residue-contract``.
+Independent construction: all finite matrices, quadratic forms, endpoint
+  series, finite spectral measures, and source resolvents are constructed
+  directly with exact rational arithmetic rather than by substituting the
+  displayed manuscript equations as black boxes.
+Imported assumptions: finite harmonic resolution, zero-mode-free light-front
+  regulator, subtracted principal-value convention, positive endpoint masses
+  where positivity is asserted, Euclidean current tests with ``Q^2`` away from
+  the finite spectrum, and declared finite current/source vectors.
+Negative controls: the script rejects the trace-half color normalization,
+  wrong off-diagonal kernel sign, positivity without endpoint or kernel data,
+  a massless zero mode for a non-subtracted kernel, endpoint-series
+  coefficient mistakes, and the shortcut that finite eigenvalues alone
+  determine current correlator residues.
+Scope boundary: these checks do not prove continuum DLCQ convergence,
+  completeness of the light-front Hilbert space, a four-dimensional QCD
+  statement, or numerical accuracy for a chosen extrapolation; they verify the
+  finite algebra and spectral-source bookkeeping that such claims must carry.
+Primary derivation route: derive the finite regulator matrix from the
+  subtracted kernel, compute its quadratic form, then assemble finite current
+  correlators from eigenvalues together with source-vector residues.
+Independent verification route: compare matrix quadratic forms against the
+  displayed positive sums and compare source resolvents against independently
+  computed spectral weights; rotate a finite matrix by an exact orthogonal
+  transformation to keep eigenvalues fixed while changing source residues.
+Convention dependencies: trace-delta generators, ``gamma_2`` as the displayed
+  subtracted-kernel coefficient, grid points ``x_n=n/K``, real finite DLCQ
+  eigenvectors normalized in the Euclidean dot product, and Euclidean
+  correlators written as ``s^T(M_K^2+Q^2)^{-1}s``.
+Domain and remainder assumptions: all matrix checks are finite dimensional;
+  continuum statements require separate zero-mode, endpoint, coefficient,
+  source-normalization, and ``K -> infinity`` residual data.
+Remaining unproved or conditional: the companion does not establish the
+  continuum 't Hooft spectrum, decay constants, current renormalization, or
+  the 3D Chern-Simons-matter light-front solution requested elsewhere.
 """
 
 from fractions import Fraction
@@ -83,6 +113,58 @@ def matrix_vector(matrix, vector):
         sum(matrix[i][j] * vector[j] for j in range(len(vector)))
         for i in range(len(vector))
     ]
+
+
+def dot(left, right):
+    return sum(a * b for a, b in zip(left, right))
+
+
+def transpose2(matrix):
+    return ((matrix[0][0], matrix[1][0]), (matrix[0][1], matrix[1][1]))
+
+
+def matmul2(left, right):
+    return (
+        (
+            left[0][0] * right[0][0] + left[0][1] * right[1][0],
+            left[0][0] * right[0][1] + left[0][1] * right[1][1],
+        ),
+        (
+            left[1][0] * right[0][0] + left[1][1] * right[1][0],
+            left[1][0] * right[0][1] + left[1][1] * right[1][1],
+        ),
+    )
+
+
+def matrix_vector2(matrix, vector):
+    return (
+        matrix[0][0] * vector[0] + matrix[0][1] * vector[1],
+        matrix[1][0] * vector[0] + matrix[1][1] * vector[1],
+    )
+
+
+def inverse2(matrix):
+    det = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+    return (
+        (matrix[1][1] / det, -matrix[0][1] / det),
+        (-matrix[1][0] / det, matrix[0][0] / det),
+    )
+
+
+def shifted_resolvent_pairing2(matrix, source, q2):
+    shifted = (
+        (matrix[0][0] + q2, matrix[0][1]),
+        (matrix[1][0], matrix[1][1] + q2),
+    )
+    return dot(source, matrix_vector2(inverse2(shifted), source))
+
+
+def trace2(matrix):
+    return matrix[0][0] + matrix[1][1]
+
+
+def det2(matrix):
+    return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
 
 
 def check_dlcq_quadratic_form_identity():
@@ -176,6 +258,53 @@ def check_finite_form_monotonicity_shadow():
     assert_true("finite form monotonicity positivity", diff > 0)
 
 
+def check_current_correlator_needs_source_residues():
+    # Two finite DLCQ mass matrices can have the same eigenvalues while a
+    # declared current source couples to their eigenvectors with different
+    # residues.  The current correlator is therefore a spectral measure, not a
+    # list of masses by itself.
+    eigenvalues = (Fraction(2), Fraction(5))
+    diagonal = ((eigenvalues[0], Fraction(0)), (Fraction(0), eigenvalues[1]))
+    rotation = ((Fraction(3, 5), Fraction(4, 5)), (Fraction(-4, 5), Fraction(3, 5)))
+    rotated = matmul2(matmul2(rotation, diagonal), transpose2(rotation))
+    source = (Fraction(1), Fraction(0))
+    q2 = Fraction(1)
+
+    assert_equal("same finite spectrum trace", trace2(rotated), trace2(diagonal))
+    assert_equal("same finite spectrum determinant", det2(rotated), det2(diagonal))
+
+    diagonal_weights = (Fraction(1), Fraction(0))
+    rotated_weights = (rotation[0][0] ** 2, rotation[0][1] ** 2)
+    assert_equal("rotated residue sum", sum(rotated_weights), dot(source, source))
+
+    diagonal_correlator = shifted_resolvent_pairing2(diagonal, source, q2)
+    diagonal_spectral = sum(
+        weight / (eigenvalue + q2)
+        for weight, eigenvalue in zip(diagonal_weights, eigenvalues)
+    )
+    rotated_correlator = shifted_resolvent_pairing2(rotated, source, q2)
+    rotated_spectral = sum(
+        weight / (eigenvalue + q2)
+        for weight, eigenvalue in zip(rotated_weights, eigenvalues)
+    )
+
+    assert_equal("diagonal source spectral representation", diagonal_correlator, diagonal_spectral)
+    assert_equal("rotated source spectral representation", rotated_correlator, rotated_spectral)
+    assert_equal("diagonal current correlator", diagonal_correlator, Fraction(1, 3))
+    assert_equal("rotated current correlator", rotated_correlator, Fraction(17, 75))
+    assert_true(
+        "finite eigenvalues alone do not determine current residues",
+        diagonal_correlator != rotated_correlator,
+    )
+
+    scaled_source = (Fraction(2), Fraction(0))
+    assert_equal(
+        "source normalization scales current residue quadratically",
+        shifted_resolvent_pairing2(rotated, scaled_source, q2),
+        4 * rotated_correlator,
+    )
+
+
 def main():
     check_trace_delta_color_normalization()
     check_dlcq_quadratic_form_identity()
@@ -183,6 +312,7 @@ def main():
     check_massless_constant_zero_mode()
     check_endpoint_exponent_series()
     check_finite_form_monotonicity_shadow()
+    check_current_correlator_needs_source_residues()
     print("All large-N two-dimensional QCD checks passed.")
 
 

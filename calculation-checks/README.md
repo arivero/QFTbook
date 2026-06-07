@@ -482,13 +482,18 @@ Current checks:
   leading ERBL kernel eigenvalue normalization, leading ERBL anomalous
   dimensions, and trace-delta versus half-trace conversion for the charged
   pion form-factor coefficient.
-- `thooft_model_checks.py`: exact rational checks for the Volume II
-  large-\(N\) two-dimensional QCD chapter, including trace-delta color
+- `thooft_model_checks.py`: extended evidence-contract exact rational checks
+  for the Volume II large-\(N\) two-dimensional QCD chapter, including
+  trace-delta color
   normalization, the finite DLCQ quadratic-form identity for the subtracted
   't Hooft kernel, positivity with positive endpoint masses, the massless
   constant zero mode, the endpoint-exponent small-mass expansion in the
-  subtracted finite-part convention, and the finite-form monotonicity shadow
-  of the closed continuum quadratic-form construction.
+  subtracted finite-part convention, the finite-form monotonicity shadow of
+  the closed continuum quadratic-form construction, and the finite
+  current-correlator spectral-measure identity.  It includes a negative
+  control where two finite mass matrices have the same eigenvalues but
+  different current-source residues, so the current correlator changes even
+  though the regulated meson masses do not.
 - `qcd_theta_witten_veneziano_checks.py`: exact checks for the Volume II theta
   and singlet-axial discussion, including the finite-volume topological
   susceptibility cumulant identity, the finite-regulator theta-cumulant

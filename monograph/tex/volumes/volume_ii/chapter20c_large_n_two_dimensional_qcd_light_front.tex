@@ -717,13 +717,66 @@ matrix; it becomes a continuum meson mass only after these convergence data
 are supplied.
 \end{controlledapproximation}
 
+\begin{controlledapproximation}[DLCQ current correlators and residues]
+\label{ca:qcd2-dlcq-current-correlator-residue-contract}
+The physical output of the large-\(N_c\) model is often a current correlator
+or form-factor residue, not only a list of mass eigenvalues.  At finite
+resolution, a color-singlet source \(J_\alpha\) is represented by a vector
+\(s_{K,\alpha}\in\mathbb R^{K-1}\) in the same wavefunction normalization as
+\eqref{eq:qcd2-thooft-dlcq-quadratic-form}.  If
+\[
+  M_K^2 u_{K,r}=\lambda_{K,r}u_{K,r},
+  \qquad
+  u_{K,r}^Tu_{K,s}=\delta_{rs},
+\]
+then the finite Euclidean current two-point function has the finite spectral
+representation
+\begin{equation}
+  \Pi_{K,\alpha\beta}(Q^2)
+  =
+  s_{K,\alpha}^{T}(M_K^2+Q^2)^{-1}s_{K,\beta}
+  =
+  \sum_r
+  \frac{
+    (s_{K,\alpha}\!\cdot u_{K,r})
+    (s_{K,\beta}\!\cdot u_{K,r})
+  }{\lambda_{K,r}+Q^2}.
+  \label{eq:qcd2-dlcq-current-spectral-measure}
+\end{equation}
+The underlying spectral measure depends on the source vectors, through the
+displayed overlaps.
+The finite decay-constant or current-residue datum is therefore
+\[
+  f_{K,r}^{(\alpha)}=s_{K,\alpha}\!\cdot u_{K,r},
+\]
+together with the normalization and renormalization convention for
+\(J_\alpha\).  Two regulated matrices can have the same eigenvalues and
+different vectors \(u_{K,r}\) relative to the same source; their
+\(\Pi_{K,\alpha\beta}\) and residues then differ.  Conversely, rescaling the
+source normalization rescales the residues and the correlator without moving
+the finite masses.
+
+A continuum current-correlator claim must therefore transport more data than
+the spectral convergence of \(M_K^2\).  It requires convergence of the source
+vectors \(s_{K,\alpha}\), current renormalization and endpoint behavior in the
+same finite-part convention, pole or Euclidean momentum-window residuals, and
+an extrapolation error for the spectral weights
+\(|s_{K,\alpha}\!\cdot u_{K,r}|^2\).  The mass equation supplies the meson
+locations; the current source supplies the residues with which those mesons
+appear in a physical correlator.
+\end{controlledapproximation}
+
 The companion script
 \[
   \texttt{calculation-checks/thooft\_model\_checks.py}
 \]
 verifies the finite color normalization, the quadratic-form identity
 \eqref{eq:qcd2-thooft-dlcq-quadratic-form}, positivity for positive endpoint
-masses, and the exact massless constant zero mode of the subtracted kernel.
+masses, the exact massless constant zero mode of the subtracted kernel, and
+the finite source-residue identity
+\eqref{eq:qcd2-dlcq-current-spectral-measure}.  It also includes a negative
+control in which two finite matrices have the same eigenvalues but different
+current-source residues.
 
 \section{\texorpdfstring{Scope of the Two-Dimensional Large-\(N_c\) Construction}{Scope of the Two-Dimensional Large-Nc Construction}}
 
