@@ -728,6 +728,15 @@ The chapter establishes:
   evidence, its heading uses "status" rather than "proof," and the common QCD
   row distinguishes a residual decomposition from a proved process theorem or
   power bound.
+- 2026-06-06 issue #755/#630 reader-surface pass: re-audited the opening
+  factorization-reference-map rows after the style-density scan identified a
+  local concentration of status vocabulary.  The TeX now describes the same
+  observable/regulator/Glauber/remainder information in direct reader-facing
+  language: operator packages rather than repeated local data labels,
+  candidate distributions rather than unexplained coordinates, explicit
+  Glauber choices rather than residual slots, and soft-drop/recoil structures
+  rather than internal bookkeeping terms.  This is a coherence repair only;
+  labels, formulas, and claim status were kept stable.
 - 2026-06-05 issue #817 endpoint-positive-case pass: replaced the generic
   one-dimensional endpoint lemma from the #783 proof-status pass with a
   regulated color-singlet one-emission endpoint observable.  The monograph now
