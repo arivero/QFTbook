@@ -315,6 +315,7 @@
         "chiral superpotential phase-isometry gate for abelian dualization",
         "noncompact D-term boundary reflection diagnostic",
         "finite-volume noncompact spectral-domain quantization",
+        "finite D-term RG Schur-complement transport",
         "operator/source matrix-element comparison",
         "boundary-state and defect probe comparison",
         "common-flux operator-map diagnostic",

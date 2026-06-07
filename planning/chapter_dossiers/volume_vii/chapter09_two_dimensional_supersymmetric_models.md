@@ -83,6 +83,10 @@ and
   continuous spectral measure, and noncompact wall reflection datum.  These
   separate mirror-data existence, D-term universality, and the actual duality
   claim.
+- `ca:glsm-mirror-dterm-rg-schur-gate`, `H_eff^M(E)`, `o_eff^M(E)`,
+  `B_RG(E)`: finite Wilsonian Schur-complement test for mirror `D`-term
+  universality, including high-mode elimination, counterterm transport, source
+  renormalization, and a source-resolvent residual bound.
 - `rem:glsm-mirror-operator-source-data`: finite-volume operator/source
   warning that equal spectra and protected multiplication data do not
   determine local-source matrix elements or source-normalized correlators.
@@ -679,7 +683,11 @@ and
     boundary data can change the continuous density while leaving the
     asymptotic `F`-term package intact; the same Robin datum is checked in a
     finite radial box where it shifts the Hamiltonian eigenmomenta and
-    energies; a fake-Liouville shortcut with only the same F-term,
+    energies; a finite Schur-complement RG cell shows that high-mode
+    Kahler/measure couplings shift both the retained Hamiltonian and source
+    row, so Hamiltonian counterterms without source renormalization do not
+    match low source-resolvent observables; a fake-Liouville shortcut with
+    only the same F-term,
     asymptotics, and central charge is rejected without finite-field Kahler
     control, spectral measure, reflection amplitude, boundary conditions, and
     deformation classification.
@@ -987,6 +995,12 @@ chambers, LG critical loci, and quotient diagrams for simple toric examples.
   quantization to show that omitted wall/self-adjoint-domain data change
   regulated Hamiltonian energy levels, not only continuum phase-density
   bookkeeping.
+- The 2026-06-07 issue #848 D-term RG Schur-complement pass adds
+  `ca:glsm-mirror-dterm-rg-schur-gate`: a finite Wilsonian high-mode
+  elimination test in which two protected-equivalent mirror presentations have
+  different retained Hamiltonians and source rows until the counterterm and
+  source renormalization are transported together.  The companion checks the
+  resulting source-resolvent observable and rejects Hamiltonian-only matching.
 - The 2026-06-07 issue #848 operator/source pass adds
   `rem:glsm-mirror-operator-source-data` and a companion finite spectral
   obstruction: same Hamiltonian spectrum plus same protected multiplication is

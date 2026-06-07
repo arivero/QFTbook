@@ -1109,6 +1109,88 @@ supplies protected coordinates for these claims; it is not itself any one of
 the three claims.
 \end{definition}
 
+\begin{controlledapproximation}[D-term RG Schur-complement gate]
+\label{ca:glsm-mirror-dterm-rg-schur-gate}
+The universality part of
+Definition~\ref{def:glsm-admissible-mirror-datum} is a Wilsonian statement, not
+a slogan about \(D\)-terms.  A finite regulator can see the issue without any
+continuum analysis.  Split the mirror Hilbert space into retained and eliminated
+subspaces,
+\[
+  {\mathcal H}_\Lambda=P{\mathcal H}_\Lambda\oplus Q{\mathcal H}_\Lambda,
+\]
+where \(P\) contains the low states and source rows used in the comparison.
+For a candidate mirror datum \(\mathfrak M_\Lambda\), write the finite
+Hamiltonian and a source vector in block form
+\[
+  H_\Lambda=
+  \begin{pmatrix}
+  H_{PP}&H_{PQ}\\
+  H_{QP}&H_{QQ}
+  \end{pmatrix},
+  \qquad
+  o_\Lambda=o_P\oplus o_Q .
+\]
+At a comparison energy \(E\) below the eliminated spectrum, integrating out the
+high block gives the Feshbach--Schur data
+\begin{align}
+  H_{\rm eff}^{\mathfrak M}(E)
+  &=
+  H_{PP}+C_{\rm ct}
+  -H_{PQ}(H_{QQ}-E)^{-1}H_{QP},
+  \label{eq:glsm-mirror-dterm-rg-schur-hamiltonian}\\
+  o_{\rm eff}^{\mathfrak M}(E)
+  &=
+  Z_O\left(
+    o_P-H_{PQ}(H_{QQ}-E)^{-1}o_Q
+  \right).
+  \label{eq:glsm-mirror-dterm-rg-schur-source}
+\end{align}
+The counterterm \(C_{\rm ct}\) and source renormalization \(Z_O\) are part of
+the RG map \(R_{\Lambda\to{\rm IR}}\).  The protected mirror presentation fixes
+neither the high-mode coupling \(H_{PQ}\) induced by finite-field Kahler/measure
+data nor the eliminated source component \(o_Q\).
+
+A same-endpoint claim for two admissible data \(\mathfrak M_\Lambda\) and
+\(\mathfrak M'_\Lambda\) must therefore supply an isometry or source
+identification \(U_P\) on the retained space and a bound
+\begin{equation}
+  \left\|
+  H_{\rm eff}^{\mathfrak M}(E)
+  -
+  U_P^{-1}H_{\rm eff}^{\mathfrak M'}(E)U_P
+  \right\|
+  +
+  \left\|
+  o_{\rm eff}^{\mathfrak M}(E)
+  -
+  U_P^{-1}o_{\rm eff}^{\mathfrak M'}(E)
+  \right\|
+  \le B_{\rm RG}(E).
+  \label{eq:glsm-mirror-dterm-rg-schur-bound}
+\end{equation}
+For example, in a one-channel finite cell with the same protected low block
+\(H_{PP}=2\), the same eliminated energy \(H_{QQ}=5\), and comparison energy
+\(E=0\), the high-mode couplings \(H_{PQ}=1\) and \(H_{PQ}=2\) give
+\[
+  H_{\rm eff}=2-\frac15=\frac95,
+  \qquad
+  H'_{\rm eff}=2-\frac45=\frac65 .
+\]
+They are not the same low Hamiltonian until a counterterm \(C_{\rm ct}=3/5\) is
+included.  With \(o_P=1\) and \(o_Q=1/2\), the source vectors are
+\[
+  o_{\rm eff}=\frac9{10},\qquad
+  o'_{\rm eff}=\frac45 ,
+\]
+so even after the Hamiltonian counterterm, the source two-point resolvent
+\(|o_{\rm eff}|^2(H_{\rm eff}+1)^{-1}\) is not matched unless the separate
+source renormalization \(Z_O=9/8\) is supplied.  Thus finite-field \(D\)-term
+and measure choices are harmless only after their Schur complement, counterterm
+transport, and source transport have been checked in the same low-energy
+observable.
+\end{controlledapproximation}
+
 \begin{remark}[Operator sources are not fixed by the spectrum alone]
 \label{rem:glsm-mirror-operator-source-data}
 The spectral-domain part of

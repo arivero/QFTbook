@@ -25,7 +25,8 @@ measure bridge, the finite measure-scheme covariance test for that
 degree-one coefficient, the mirror-conjecture observable boundary separating
 full-QFT data from protected evidence, the full-action/IR-universality data
 boundary for mirror presentations, admissible mirror-datum and finite-volume
-noncompact spectral-domain gates, finite operator/source matrix-element
+noncompact spectral-domain gates, finite D-term RG Schur-complement gates,
+finite operator/source matrix-element
 obstructions, finite boundary-state/defect probe obstructions, and
 cigar/Liouville pathwise fake-fixed-point gates, spectral-status cells,
 source-normalized spectral-resolution bridges, and reflection Gamma-function
@@ -54,7 +55,8 @@ root-of-unity residue sums,
 stable-map incidence Jacobians, A-model zero-mode degree filters, and
 conditional residual-propagation maps, full-action data-interface tests,
 finite Legendre-domain and boundary-term cells, finite-volume Robin
-self-adjoint-domain quantization tests, cigar central-charge and
+self-adjoint-domain quantization tests, finite Schur-complement low-Hamiltonian
+and source-resolvent comparisons for D-term RG transport, cigar central-charge and
 effective-central-charge arithmetic, spectral-flow and field-identification
 arithmetic, Liouville marginality checks, half-line boundary-condition
 reflection diagnostics for noncompact D-term data, finite boundary-state
@@ -159,6 +161,9 @@ noncompact continua, omitted cigar-reflection normalization phases, raw
 special-level reflection normalizations, missing Gamma pole factors,
 boundary-condition-blind reflection shortcuts, collapsed
 existence/rigidity/duality claims, omitted self-adjoint domains,
+protected-presentation-only D-term RG claims, Hamiltonian-only counterterm
+matching with omitted source renormalization, unweighted source transport
+shortcuts after high-mode elimination,
 boundary-state-blind annulus claims, protected-subspace-only defect claims,
 pathwise-continuity claims that carry only protected endpoint labels or local
 rigidity while dropping reflection phases, pole residues, boundary annuli, or
@@ -3988,6 +3993,129 @@ def check_full_mirror_ir_data_boundary() -> None:
     )
 
 
+def check_full_mirror_dterm_rg_schur_gate() -> None:
+    h_low = Fraction(2)
+    high_energy = Fraction(5)
+    comparison_energy = Fraction(0)
+    source_low = Fraction(1)
+    source_high = Fraction(1, 2)
+    probe_shift = Fraction(1)
+
+    def schur_hamiltonian(
+        coupling: Fraction,
+        counterterm: Fraction = Fraction(0),
+    ) -> Fraction:
+        return (
+            h_low
+            + counterterm
+            - coupling * coupling / (high_energy - comparison_energy)
+        )
+
+    def schur_source(
+        coupling: Fraction,
+        source_renormalization: Fraction = Fraction(1),
+    ) -> Fraction:
+        return source_renormalization * (
+            source_low
+            - coupling * source_high / (high_energy - comparison_energy)
+        )
+
+    def source_resolvent(
+        effective_hamiltonian: Fraction,
+        effective_source: Fraction,
+    ) -> Fraction:
+        return effective_source * effective_source / (effective_hamiltonian + probe_shift)
+
+    coupling_a = Fraction(1)
+    coupling_b = Fraction(2)
+    h_a = schur_hamiltonian(coupling_a)
+    h_b_unmatched = schur_hamiltonian(coupling_b)
+    assert_equal("finite Schur Hamiltonian for mirror datum A", h_a, Fraction(9, 5))
+    assert_equal("finite Schur Hamiltonian for mirror datum B", h_b_unmatched, Fraction(6, 5))
+    assert_equal(
+        "same protected low block does not fix D-term high-mode Schur shift",
+        h_a == h_b_unmatched,
+        False,
+    )
+
+    counterterm_b = h_a - h_b_unmatched
+    h_b_matched = schur_hamiltonian(coupling_b, counterterm=counterterm_b)
+    assert_equal("counterterm matches the retained low Hamiltonian", h_b_matched, h_a)
+
+    source_a = schur_source(coupling_a)
+    source_b_unmatched = schur_source(coupling_b)
+    assert_equal("finite Schur source for mirror datum A", source_a, Fraction(9, 10))
+    assert_equal("finite Schur source for mirror datum B", source_b_unmatched, Fraction(4, 5))
+    assert_equal(
+        "Hamiltonian counterterm alone does not match source row",
+        source_a == source_b_unmatched,
+        False,
+    )
+
+    source_renormalization_b = source_a / source_b_unmatched
+    source_b_matched = schur_source(
+        coupling_b,
+        source_renormalization=source_renormalization_b,
+    )
+    assert_equal("source renormalization matches Schur source row", source_b_matched, source_a)
+    assert_equal("required finite source renormalization", source_renormalization_b, Fraction(9, 8))
+
+    resolvent_a = source_resolvent(h_a, source_a)
+    resolvent_b_hamiltonian_only = source_resolvent(h_b_matched, source_b_unmatched)
+    resolvent_b_matched = source_resolvent(h_b_matched, source_b_matched)
+    assert_equal("source-normalized low resolvent for datum A", resolvent_a, Fraction(81, 280))
+    assert_equal(
+        "Hamiltonian-only RG matching changes source two-point resolvent",
+        resolvent_b_hamiltonian_only == resolvent_a,
+        False,
+    )
+    assert_equal(
+        "counterterm plus source transport matches low source resolvent",
+        resolvent_b_matched,
+        resolvent_a,
+    )
+
+    protected_presentation = {
+        "same twisted F-term",
+        "same periodic Y",
+        "same protected low block",
+    }
+    rg_schur_package = protected_presentation | {
+        "high-mode Schur complement",
+        "counterterm transport",
+        "source renormalization",
+        "low source-resolvent comparison",
+    }
+    assert_equal(
+        "protected mirror presentation is not a D-term RG universality proof",
+        rg_schur_package <= protected_presentation,
+        False,
+    )
+
+    delta_h = Fraction(1, 100)
+    delta_o = Fraction(1, 80)
+    denominator = h_a + probe_shift
+    shifted_resolvent = source_resolvent(h_a + delta_h, source_a + delta_o)
+    actual_residual = abs(shifted_resolvent - resolvent_a)
+    source_part = (2 * abs(source_a) * delta_o + delta_o * delta_o) / (
+        denominator - abs(delta_h)
+    )
+    hamiltonian_part = source_a * source_a * abs(delta_h) / (
+        denominator * (denominator - abs(delta_h))
+    )
+    residual_bound = source_part + hamiltonian_part
+    assert_equal(
+        "D-term RG Schur source-resolvent residual bound",
+        actual_residual <= residual_bound,
+        True,
+    )
+    assert_equal(
+        "omitting source-transport residual underbudgets Schur RG comparison",
+        actual_residual <= hamiltonian_part,
+        False,
+    )
+
+
 def check_full_mirror_operator_source_obstruction() -> None:
     # Equal Hamiltonian spectra and equal protected multiplication data do not
     # determine source-normalized local operator matrix elements.  The finite
@@ -4879,6 +5007,7 @@ def main() -> None:
     check_logarithmic_chiral_vortex_obstruction()
     check_mirror_conjecture_observable_boundary()
     check_full_mirror_ir_data_boundary()
+    check_full_mirror_dterm_rg_schur_gate()
     check_full_mirror_operator_source_obstruction()
     check_full_mirror_boundary_defect_probe_obstruction()
     check_cigar_liouville_pathwise_fake_fixed_point_gate()

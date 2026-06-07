@@ -3124,6 +3124,10 @@ Current checks:
   finite-volume Robin quantization showing that the same wall datum changes
   the regulated radial Hamiltonian spectrum, the separation of admissible
   mirror-data existence, universality, and duality claims,
+  a finite D-term RG Schur-complement gate showing that high-mode
+  Kahler/measure couplings shift the retained Hamiltonian and source row
+  unless counterterm transport and source renormalization are checked in the
+  same low source-resolvent observable,
   a finite operator/source obstruction showing that equal spectra and
   protected multiplication data do not fix Euclidean source two-point
   coefficients without source matrix elements and operator topology, a finite
