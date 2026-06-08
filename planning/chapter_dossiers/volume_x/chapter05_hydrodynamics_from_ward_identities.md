@@ -35,10 +35,12 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
   hydrodynamic scaling window must also be retained.
 - Slow-sector completeness/complement-regularity controlled approximation:
   after projecting onto \(\mathcal E_{\rm slow}\) with the projector defined
-  by the thermodynamic inverse-response/memory pencil \(\mathcal A\), or by an
-  explicitly constructed effective generator \(\mathcal G\), the complement
-  block \(A_{ff}^{-1}\) and the slow Schur complement for that same pencil
-  must remain uniformly regular in the hydrodynamic scaling window.
+  by the thermodynamic response/inverse-response pair
+  \(\mathcal R:\mathcal J\to\mathcal O\),
+  \(\mathcal A:\mathcal O\to\mathcal J\), or by an explicitly constructed
+  effective generator \(\mathcal G\), the complement block \(A_{ff}^{-1}\)
+  and the slow Schur complement for that same inverse-response pencil must
+  remain uniformly regular in the hydrodynamic scaling window.
 - Mostly-plus projector \(\Delta^{\mu\nu}=\eta^{\mu\nu}+u^\mu u^\nu\).
 - Landau-frame condition \(u_\mu T^{\mu\nu}=-\varepsilon u^\nu\).
 - General hydrodynamic-frame decomposition and first-order frame
@@ -115,12 +117,15 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
 | \(v_T\) | shear-sector front speed \((D_\eta/\tau_\pi)^{1/2}\) |
 | \(\mathcal O_\lambda(\mathbf k)\) | regulated observable quotient after null vectors, Ward equivalences, and declared improvements |
 | \(\mathcal J_\lambda(\mathbf k)\) | source space paired contragrediently with \(\mathcal O_\lambda\) |
-| \(\chi_\lambda\) | susceptibility or Kubo-Mori pairing on \(\mathcal O_\lambda\), equivalently a map to \(\mathcal O_\lambda^*\) |
+| \(\mathcal R_\lambda(z,\mathbf k)\) | source-response map \(\mathcal J_\lambda\to\mathcal O_\lambda\) |
+| \(\chi_\lambda\) | static susceptibility \(\mathcal R_\lambda(0,\mathbf k):\mathcal J_\lambda\to\mathcal O_\lambda\), when the limit exists |
+| \(\mathsf G^{\rm KM}_\lambda\) | optional Kubo-Mori metric on observables, kept distinct from the source-response map until a source convention identifies the duals |
 | \(\mathcal L_{\rm mic}\) | exact finite-regulator Hamiltonian Liouvillian, used for Kubo-Mori projection but not identified with dissipative hydrodynamic poles |
-| \(\mathcal A_\lambda(z,\mathbf k)\) | thermodynamic inverse-response or memory pencil defining the slow window and Schur-complement test |
+| \(\mathcal A_\lambda(z,\mathbf k)\) | thermodynamic inverse-response or memory pencil \(\mathcal O_\lambda\to\mathcal J_\lambda\) defining the slow window and Schur-complement test |
 | \(\mathcal G_\lambda(\mathbf k)\) | optional effective dissipative generator constructed from \(\mathcal A_\lambda\) |
 | \(P_{\rm slow,\lambda}\) | projector onto the retained slow observable subspace, defined from the declared pencil or effective generator |
 | \(\mathcal E_{\rm slow}\) | retained slow spectral subspace in the declared scaling family |
+| \(\mathcal E_{\rm slow}^\vee\) | paired slow source subspace in the Schur decomposition, not an abstract observable dual |
 | \(A_{ff}^{-1}\) | complement inverse block appearing in the Schur complement after fast modes are integrated out |
 | \(\Gamma_\phi\) | sample nonconserved order-parameter relaxation rate in the omitted-mode negative control |
 
@@ -135,11 +140,15 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
 3. A constitutive relation is an asymptotic statement on hydrodynamic
    scaling families, not a finite-volume identity.
 4. The retained slow sector is a basis-invariant observable subspace paired
-   with a dual source space, not a list of preferred operator names, source
+   with a source space, not a list of preferred operator names, source
    directions, or diagonal relaxation entries.  Operator bases transform by
    \(M\), sources contragrediently by \(M^{-\mathsf T}\), and the
-   susceptibility/Kubo-Mori form transforms as the corresponding bilinear
-   pairing.  The normal-fluid chapters use
+   response and static susceptibility maps transform as
+   \(\mathcal R'=M\mathcal R M^{\mathsf T}\) and
+   \(\chi'=M\chi M^{\mathsf T}\), while the inverse-response pencil
+   transforms as \(\mathcal A'=M^{-\mathsf T}\mathcal A M^{-1}\).  Any
+   Kubo-Mori metric on observables is separate bilinear metric data.  The
+   normal-fluid chapters use
    \(\mathcal E_{\rm slow}^{\rm normal}
    =\operatorname{span}\{T^{00},T^{0i},J_A^0\}\), and this is valid only when
    no additional spectral direction, Jordan block, or continuum window enters
@@ -261,6 +270,13 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
   generator the object that defines the slow window.  The finite Hamiltonian
   Liouvillian is now explicitly only a microscopic projection tool unless an
   additional limit theorem identifies it with the dissipative spectrum.
+- 2026-06-08 issue #947 pass: corrected the response arrows so that
+  \(\mathcal R,\chi:\mathcal J\to\mathcal O\) and
+  \(\mathcal A:\mathcal O\to\mathcal J\), separated the Kubo-Mori observable
+  metric from the source-response susceptibility, and typed the Schur
+  complement as
+  \(\mathcal E_{\rm slow}\to\mathcal E_{\rm slow}^\vee\) rather than an
+  observable-to-\(\mathcal J^*\) map.
 - 2026-06-08 issue #942 synchronization: matched the entropy/Onsager
   discussion to Chapter 4's Hermitian dissipative conductivity projection,
   keeping antisymmetric Hall-type response outside the positive entropy
@@ -283,10 +299,16 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
   The issue #940 extension checks that diagonal entries of a non-normal
   relaxation matrix are basis dependent while the slow Riesz projector
   transforms covariantly, that sources must transform contragrediently to
-  observable basis changes, that a finite Hamiltonian Liouvillian has
-  oscillatory spectral lines rather than dissipative relaxation poles, and
-  that a continuum of relaxation rates whose lower edge scales to zero
-  produces branch-cut memory rather than a finite-pole correction.
+  observable basis changes, that the response/inverse-response pair obeys the
+  covariance laws
+  \(\mathcal R'=M\mathcal R M^{\mathsf T}\) and
+  \(\mathcal A'=M^{-\mathsf T}\mathcal A M^{-1}\), that the Schur complement
+  maps retained observables to retained paired sources while
+  \(\mathcal A:\mathcal O\to\mathcal J^*\) is rejected, that a finite
+  Hamiltonian Liouvillian has oscillatory spectral lines rather than
+  dissipative relaxation poles, and that a continuum of relaxation rates
+  whose lower edge scales to zero produces branch-cut memory rather than a
+  finite-pole correction.
 
 ## Figures
 

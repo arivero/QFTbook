@@ -2287,11 +2287,15 @@ Current checks:
   window rather than an analytic conserved-density-only correction.  It also
   checks that a non-normal two-mode relaxation matrix has basis-dependent
   diagonal entries while its slow Riesz projector transforms covariantly, that
-  sources transform contragrediently to observable basis changes, that a
-  finite Hamiltonian Liouvillian has oscillatory spectral lines rather than
-  dissipative hydrodynamic poles, and that a continuum of relaxation rates
-  whose lower edge scales to zero produces growing branch-cut memory rather
-  than a finite-pole correction.
+  sources transform contragrediently to observable basis changes, that the
+  response map sends sources to observables while the inverse-response pencil
+  sends observables to paired sources with the covariance laws
+  \(R'=MRM^{\mathsf T}\) and \(A'=M^{-\mathsf T}AM^{-1}\), that the retained
+  Schur complement maps slow observables to paired slow sources rather than
+  to an abstract dual-source space, that a finite Hamiltonian Liouvillian has
+  oscillatory spectral lines rather than dissipative hydrodynamic poles, and
+  that a continuum of relaxation rates whose lower edge scales to zero
+  produces growing branch-cut memory rather than a finite-pole correction.
 - `hydrodynamic_long_time_tail_checks.py`: finite checks for the Volume X
   hydrodynamic fluctuation chapter, including diffusive static covariance,
   the classical FDT relation, the finite bond-current contraction behind the

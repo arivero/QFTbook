@@ -127,19 +127,37 @@ Local contact terms are not quotient vectors in
 the source-response kernel, namely bilinear maps on
 \(\mathcal J_\lambda\) after the source convention has been chosen.
 
-The family also includes a susceptibility or Kubo--Mori pairing
-\(\chi_\lambda:\mathcal O_\lambda\to\mathcal O_\lambda^*\) and a declared
-thermodynamic-limit spectral datum.  This datum is either a Laplace-domain
+The family also includes a retarded source-response family
+\[
+  \mathcal R_\lambda(z,\mathbf k):
+  \mathcal J_\lambda(\mathbf k)\longrightarrow
+  \mathcal O_\lambda(\mathbf k),
+  \qquad \operatorname{Re}z>0,
+\]
+with static susceptibility
+\(\chi_\lambda(\mathbf k)=\mathcal R_\lambda(0,\mathbf k):
+\mathcal J_\lambda(\mathbf k)\to\mathcal O_\lambda(\mathbf k)\) in channels
+where this static limit exists.  A Kubo--Mori metric on observables is
+separate data, denoted
+\(\mathsf G^{\rm KM}_\lambda:\mathcal O_\lambda\to\mathcal O_\lambda^*\);
+it becomes a source-response map only after a source convention identifies
+the paired sources with the corresponding observable duals.  The declared
+thermodynamic-limit spectral datum is then either a Laplace-domain
 inverse-response or memory pencil
 \[
   \mathcal A_\lambda(z,\mathbf k):
   \mathcal O_\lambda(\mathbf k)\longrightarrow
-  \mathcal J_\lambda(\mathbf k)^*,
+  \mathcal J_\lambda(\mathbf k),
   \qquad \operatorname{Re}z>0,
 \]
-after the order of limits has been specified, or an effective dissipative
-generator constructed from such a pencil on a declared Banach or Hilbert
-space.  The exact finite-regulator Hamiltonian Liouvillian
+after the order of limits has been specified and on the subspace or quotient
+where the inverse-response relation is being asserted:
+\(\mathcal A_\lambda\mathcal R_\lambda=\mathrm{id}_{\mathcal J_\lambda}\)
+and
+\(\mathcal R_\lambda\mathcal A_\lambda=\mathrm{id}_{\mathcal O_\lambda}\)
+there.  Alternatively, the datum may be an effective dissipative generator
+constructed from such a pencil on a declared Banach or Hilbert space.  The
+exact finite-regulator Hamiltonian Liouvillian
 \(\mathcal L_{\rm mic}X=\ii[H_\lambda,X]\) may be used in the
 Kubo--Mori/Mori--Zwanzig projection of
 Chapter~\ref{ch:thermal-spectral-kubo-transport} to choose candidate slow
@@ -171,8 +189,18 @@ Under a nonsingular observable basis change \(O'=MO\), sources transform
 contragrediently, \(j'=M^{-\mathsf T}j\), so that the insertion
 \(\langle j,O\rangle\) is invariant.  Matrix representatives transform as
 \(\mathcal G'=M\mathcal G M^{-1}\), \(P'_{\rm slow}=MP_{\rm slow}M^{-1}\),
-and \(\chi'=M\chi M^{\mathsf T}\) when \(\chi\) is written as a bilinear
-Kubo--Mori pairing on observable basis vectors.  The subspace
+and, for the response and static susceptibility maps,
+\[
+  \mathcal R'=M\mathcal R M^{\mathsf T},
+  \qquad
+  \chi'=M\chi M^{\mathsf T},
+  \qquad
+  \mathcal A'=M^{-\mathsf T}\mathcal A M^{-1}.
+\]
+The Kubo--Mori metric \(\mathsf G^{\rm KM}\), if introduced, transforms as a
+bilinear form on observable arguments and is not the same arrow as
+\(\chi:\mathcal J\to\mathcal O\) until the source pairing has been fixed.  The
+subspace
 \(\mathcal E_{\rm slow,\lambda}\) is the invariant object.  Diagonal entries
 of a response, memory, or relaxation matrix do not define invariant
 relaxation rates.
@@ -257,15 +285,15 @@ thermodynamic pencil \(\mathcal A(z,\mathbf k)\), or to a constructed
 effective generator \(\mathcal G(\mathbf k)\) obtained from that pencil.  This
 projection is not the Riesz projection of the exact finite Hamiltonian
 Liouvillian unless an additional limit theorem identifies the two.  In the
-induced observable/dual-source decomposition
+induced observable/paired-source decomposition
 \[
   \mathcal O
   =
   \mathcal E_{\rm slow}\oplus \mathcal E_{\rm fast},
   \qquad
-  \mathcal J^*
+  \mathcal J
   =
-  \mathcal E_{\rm slow}^*\oplus\mathcal E_{\rm fast}^*,
+  \mathcal E_{\rm slow}^\vee\oplus\mathcal E_{\rm fast}^\vee,
   \qquad
   \mathcal A
   =
@@ -274,6 +302,15 @@ induced observable/dual-source decomposition
     A_{fs} & A_{ff}
   \end{pmatrix},
 \]
+where \(\mathcal E_{\rm slow}^\vee\) and
+\(\mathcal E_{\rm fast}^\vee\) are the paired source subspaces, not abstract
+observable duals.  Thus
+\[
+  A_{ss}:\mathcal E_{\rm slow}\to\mathcal E_{\rm slow}^\vee,\quad
+  A_{sf}:\mathcal E_{\rm fast}\to\mathcal E_{\rm slow}^\vee,\quad
+  A_{fs}:\mathcal E_{\rm slow}\to\mathcal E_{\rm fast}^\vee,\quad
+  A_{ff}:\mathcal E_{\rm fast}\to\mathcal E_{\rm fast}^\vee .
+\]
 integrating out the complement is the Schur-complement operation
 \begin{equation}
   \mathcal A_{\rm eff}
@@ -281,6 +318,11 @@ integrating out the complement is the Schur-complement operation
   A_{ss}-A_{sf}A_{ff}^{-1}A_{fs}.
   \label{eq:hydro-slow-sector-schur-complement}
 \end{equation}
+This is a map
+\(\mathcal E_{\rm slow}\to\mathcal E_{\rm slow}^\vee\).  Writing the
+inverse-response codomain as \(\mathcal J^*\) would reverse the source arrow
+and would make the retained Schur block an observable-to-dual-source object
+rather than an inverse source-response law.
 A local hydrodynamic truncation is controlled only if \(A_{ff}^{-1}\) and
 the Schur-complement coefficients remain uniformly bounded and expandable in
 \(\omega\) and \(\mathbf k\) throughout the scaling window, with a norm and

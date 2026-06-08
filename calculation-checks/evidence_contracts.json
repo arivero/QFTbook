@@ -217,6 +217,8 @@
         "non-normal diagonal relaxation rates are basis dependent",
         "slow Riesz projector transforms covariantly",
         "sources transform contragrediently to observable basis changes",
+        "response maps sources to observables and inverse response maps observables to paired sources",
+        "slow Schur complement maps retained observables to retained paired sources",
         "finite Hamiltonian Liouvillian is not a dissipative pole generator",
         "continuum lower edge entering hydrodynamic window is not a finite pole"
       ]

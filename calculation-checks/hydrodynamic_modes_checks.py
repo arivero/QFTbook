@@ -12,10 +12,11 @@ order parameter whose gap scales to zero produces a nonlocal memory
 denominator and cannot be absorbed into analytic normal-fluid coefficients;
 the retained slow sector is a basis-invariant spectral subspace rather than a
 list of diagonal operator rates; sources transform contragrediently to
-observable basis changes; the finite Hamiltonian Liouvillian has oscillatory
-spectral lines rather than dissipative relaxation rates; and a continuum lower
-edge entering the hydrodynamic window is a slow spectral channel, not a finite
-pole list.
+observable basis changes; response maps sources to observables while inverse
+response maps observables back to paired sources; the finite Hamiltonian
+Liouvillian has oscillatory spectral lines rather than dissipative relaxation
+rates; and a continuum lower edge entering the hydrodynamic window is a slow
+spectral channel, not a finite pole list.
 Independent construction: direct finite-dimensional algebra for the Ward
 identity modes, exact heat-kernel positivity away from the origin, explicit
 quadratic roots for boosted diffusion and MIS shear relaxation, an explicit
@@ -36,9 +37,10 @@ plane root is rejected, a causal relaxation model with superluminal shear
 front speed is rejected, an omitted order-parameter mode with a vanishing
 relaxation rate is rejected as an analytic conserved-density-only correction,
 diagonal entries of a mixed relaxation matrix are rejected as basis-invariant
-rates, same-way source and observable transformations are rejected, a finite
-Hamiltonian Liouvillian is rejected as a dissipative pole generator, a
-continuum of relaxation rates whose lower edge scales to zero is rejected as
+rates, same-way source and observable transformations are rejected, treating
+the inverse-response pencil as an observable-to-dual-source map is rejected,
+a finite Hamiltonian Liouvillian is rejected as a dissipative pole generator,
+a continuum of relaxation rates whose lower edge scales to zero is rejected as
 a finite-pole correction,
 and linear shear completion is not treated as a theorem for full nonlinear
 causal hydrodynamics.
@@ -66,6 +68,7 @@ def assert_equal(name: str, got, expected) -> None:
 
 
 Matrix2Q = tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]
+Arrow = tuple[str, str]
 
 
 def qmatmul(lhs: Matrix2Q, rhs: Matrix2Q) -> Matrix2Q:
@@ -635,6 +638,80 @@ def check_contragredient_source_observable_transform() -> None:
         raise AssertionError("same-way source transform should not preserve the source/observable pairing")
 
 
+def check_response_inverse_arrow_covariance_and_schur_typing() -> None:
+    observable_change: Matrix2Q = ((Fraction(2), Fraction(1)), (Fraction(1), Fraction(1)))
+    inverse_observable_change = qmatinv(observable_change)
+    source_change = qtranspose(inverse_observable_change)
+    identity: Matrix2Q = ((Fraction(1), Fraction(0)), (Fraction(0), Fraction(1)))
+
+    response: Matrix2Q = (
+        (Fraction(5, 2), Fraction(1, 3)),
+        (Fraction(-1, 4), Fraction(7, 5)),
+    )
+    inverse_response = qmatinv(response)
+
+    transformed_response = qmatmul(
+        qmatmul(observable_change, response),
+        qtranspose(observable_change),
+    )
+    transformed_inverse_response = qmatmul(
+        qmatmul(source_change, inverse_response),
+        inverse_observable_change,
+    )
+    assert_equal(
+        "transformed inverse response composes with transformed response on source space",
+        qmatmul(transformed_inverse_response, transformed_response),
+        identity,
+    )
+    assert_equal(
+        "transformed response composes with transformed inverse response on observable space",
+        qmatmul(transformed_response, transformed_inverse_response),
+        identity,
+    )
+
+    wrong_dual_source_inverse = qmatmul(
+        qmatmul(observable_change, inverse_response),
+        qtranspose(observable_change),
+    )
+    if qmatmul(wrong_dual_source_inverse, transformed_response) == identity:
+        raise AssertionError("inverse response should not transform like a source-to-observable response")
+
+    e_slow = "E_slow"
+    e_fast = "E_fast"
+    j_slow = "E_slow^vee"
+    j_fast = "E_fast^vee"
+    paired_source_codomain = {j_slow, j_fast}
+
+    def compose(after: Arrow, before: Arrow) -> Arrow:
+        if before[1] != after[0]:
+            raise AssertionError(f"ill-typed composition: {after!r} after {before!r}")
+        return (before[0], after[1])
+
+    def is_inverse_response_block(arrow: Arrow) -> bool:
+        return arrow[1] in paired_source_codomain
+
+    a_ss: Arrow = (e_slow, j_slow)
+    a_sf: Arrow = (e_fast, j_slow)
+    a_fs: Arrow = (e_slow, j_fast)
+    a_ff_inv: Arrow = (j_fast, e_fast)
+    schur_tail = compose(a_sf, compose(a_ff_inv, a_fs))
+    assert_equal("Schur tail maps retained observables to retained paired sources", schur_tail, a_ss)
+
+    inverse_response_pencil: Arrow = ("O", "J")
+    wrong_dual_source_pencil: Arrow = ("O", "J^*")
+    def accepts_inverse_response_pencil(arrow: Arrow) -> bool:
+        return arrow == inverse_response_pencil
+
+    if not accepts_inverse_response_pencil(("O", "J")):
+        raise AssertionError("inverse response must map observables to paired sources")
+    if accepts_inverse_response_pencil(wrong_dual_source_pencil):
+        raise AssertionError("A: O -> J^* should be rejected as the inverse-response convention")
+
+    wrong_dual_block: Arrow = (e_slow, "E_slow^*")
+    if is_inverse_response_block(wrong_dual_block):
+        raise AssertionError("observable-to-dual-source block should not type as inverse response")
+
+
 def check_finite_liouvillian_not_dissipative_generator() -> None:
     delta = Fraction(7, 5)
     liouvillian: Matrix2Q = ((Fraction(0), delta), (-delta, Fraction(0)))
@@ -697,6 +774,7 @@ def main() -> None:
     check_omitted_relaxational_mode_memory_negative_control()
     check_basis_invariant_slow_projector_negative_control()
     check_contragredient_source_observable_transform()
+    check_response_inverse_arrow_covariance_and_schur_typing()
     check_finite_liouvillian_not_dissipative_generator()
     check_continuum_slow_edge_memory_negative_control()
     print("All hydrodynamic Ward-identity mode checks passed.")
