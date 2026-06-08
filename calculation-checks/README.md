@@ -1427,9 +1427,11 @@ Current checks:
   treating ongoing production as a conserved fluid.  It also checks the finite
   FLRW produced-stress backreaction window: scheme transport of finite stress
   shifts, explicit vacuum/geometric/tail/gravitational error budgets, Hubble
-  drift with pressure work, the failure of number-density-only sources, and the
-  stress-noise budget needed before a deterministic semiclassical response is
-  trusted.
+  drift with pressure work, and the failure of number-density-only sources.  It
+  also checks the spacetime-smeared stress-noise diagnostic: compact normalized
+  spatial cells, time/volume scaling, pointlike-spatial and unnormalized
+  whole-slice negative controls, and retarded covariance pushforward before a
+  metric-noise tolerance is applied.
 - `energy_correlator_sum_rule_checks.py`: extended evidence-contract exact
   finite-event checks for the
   energy-energy-correlator zeroth and first moment sum rules and the

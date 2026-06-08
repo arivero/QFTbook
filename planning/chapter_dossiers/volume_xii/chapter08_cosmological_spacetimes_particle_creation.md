@@ -37,9 +37,11 @@ space, not as a slogan about ambiguity.
   production source \(a^{-d}\int\Omega_k\dot n_k\), and continuity residual
   for using produced stress as a backreaction input.
 - `C_d`, `Delta H_ret^2`, `B_vac`, `B_geom`, `B_tail`, `B_H`,
-  `B_cont`, `N_rho[f]`: homogeneous FLRW response coefficient, retained
-  produced Hubble-square coordinate, stress/gravity remainder budgets,
-  continuity budget, and stress-noise window for the backreaction diagnostic.
+  `B_cont`, `F_{f,L}`, `s_L`, `N_{rho,L}[f]`, `G_ret^* ell_H`: homogeneous
+  FLRW response coefficient, retained produced Hubble-square coordinate,
+  stress/gravity remainder budgets, continuity budget, compact stress-noise
+  test tensor, normalized spatial profile, smeared stress covariance, and
+  retarded metric-observable pullback for the backreaction diagnostic.
 
 ## Claim Ledger
 
@@ -87,7 +89,12 @@ space, not as a slogan about ambiguity.
 - Adds a finite FLRW produced-stress backreaction window:
   \(\Delta H_{\rm ret}^2=C_d\rho_n\) is admissible only after scheme transport,
   stress/gravity/tail remainder budgets, continuity residuals, drift control,
-  and stress-noise bounds are declared.
+  and stress-noise bounds are declared.  The stress-noise diagnostic is a
+  compact spacetime test-tensor covariance
+  \(N(F_{f,L},F_{f,L})\), with normalized spatial averaging, explicit time-scale,
+  spatial-scale, and volume dependence, Chapter 11 product-extension/Ward
+  conventions, and retarded metric-response pushforward before comparison with a
+  metric accuracy.
 - States the backreaction boundary: particle production is a diagnostic of a
   state, not a closed semiclassical Einstein equation.
 
@@ -107,7 +114,9 @@ space, not as a slogan about ambiguity.
   production as a conserved fluid.
   The same script now checks the finite backreaction-window budget, including
   scheme transport, tail/gravity remainders, pressure-dependent Hubble drift,
-  number-density-only failures, and stress-noise tolerances.
+  number-density-only failures, compact spacetime stress-noise smearing,
+  pointlike/whole-slice negative controls, and retarded metric-noise
+  tolerances.
 - Related scripts: `calculation-checks/point_splitting_stress_checks.py` for
   de Sitter stress-tensor/anomaly arithmetic and
   `calculation-checks/hawking_bogoliubov_checks.py` for the black-hole
@@ -169,3 +178,10 @@ timelike detector worldline sampling the two-point function.
   regression coverage for particle number, anomalous correlators, and in/out
   rephasing.  This is a phase-sensitive operator-coordinate repair; the real
   sudden-quench example remains only a normalization check.
+- 2026-06-08 issue #915 stress-noise pass: replaced the time-only
+  \(N_\rho[f]\) diagnostic by a compact spacetime stress test tensor
+  \(F_{f,L}=f(t)s_Lu\otimes u\), tied the covariance to the Chapter 11
+  unordered stress-product extension and Ward identities, declared the
+  time/spatial/volume scaling and infrared prescription, and required retarded
+  metric covariance pushforward before tolerance comparisons.  The companion
+  rejects pointlike spatial evaluation and unnormalized whole-slice smearing.

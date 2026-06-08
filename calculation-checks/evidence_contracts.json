@@ -222,7 +222,10 @@
         "inverse Bogoliubov matrix is separate from coefficient comparison",
         "alpha and beta rephase with theta_in-minus/out and theta_in-plus/out laws",
         "out anomalous correlator is alpha times conjugate beta",
-        "produced stress source requires pressure work and a^{-d} density scaling"
+        "produced stress source requires pressure work and a^{-d} density scaling",
+        "stress noise uses compact spacetime test tensors with normalized spatial averaging",
+        "pointlike spatial stress evaluation and unnormalized whole-slice smearing are rejected",
+        "metric noise is the retarded pushforward of stress covariance before tolerance comparison"
       ]
     },
     {

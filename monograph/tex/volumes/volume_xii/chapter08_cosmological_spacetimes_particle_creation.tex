@@ -1040,24 +1040,87 @@ massive produced quanta can have small pressure after production, but the
 pressure term is still the quantity that makes the stress tensor conserve
 correctly while the energy is redshifting.
 
-Finally the deterministic semiclassical response is a mean-field statement.
-For a smooth time window \(f\), let
+Finally the deterministic semiclassical response is a mean-field statement, so
+the stress fluctuation must be a smeared stress observable rather than a
+pointwise square.  Let \(u^\mu=\partial_t^\mu\) be the comoving unit vector,
+choose \(f_\tau\in C_c^\infty(I)\), and choose a smooth spatial averaging
+profile \(s_L\) on the constant-time slices with
 \begin{equation}
-  N_\rho[f]
+  \int_{\Sigma_t}\dd\Sigma_t\,s_L(t,\mathbf x)=1,
+  \qquad
+  \operatorname{diam}_{\rm phys}(\operatorname{supp}s_L)\le L .
+  \label{eq:cosmology-spatial-smearing-normalization}
+\end{equation}
+The retained density test tensor is
+\begin{equation}
+  F_{f_\tau,L}^{\mu\nu}(x)
   =
-  \frac12
-  \int dt\,dt'\,f(t)f(t')\,
-  \bigl\langle
-    \{\delta T_{tt}^{\rm ren}(t),\delta T_{tt}^{\rm ren}(t')\}
-  \bigr\rangle_{\!c}
+  f_\tau(t)s_L(t,\mathbf x)u^\mu u^\nu ,
+  \label{eq:cosmology-stress-noise-test-tensor}
+\end{equation}
+and the stress-noise diagnostic is the
+Chapter~\ref{ch:curved-semiclassical-backreaction} noise bilinear form
+\begin{equation}
+  N_{\rho,L}[f_\tau]
+  =
+  N(F_{f_\tau,L},F_{f_\tau,L})
+  =
+  \frac12\,
+  \omega\!\left(
+    \{\Delta T(F_{f_\tau,L}),\Delta T(F_{f_\tau,L})\}
+  \right).
   \label{eq:cosmology-produced-stress-noise}
 \end{equation}
-denote the retained homogeneous stress fluctuation after the same subtraction
-choice.  The semiclassical produced-source window requires the induced metric
-noise \(|C_d|\sqrt{N_\rho[f]}\), together with omitted noise budgets, to be
-below the requested accuracy for \(\Delta H^2\).  Number density alone fails
-this test because it does not determine energy, pressure, subtraction
-transport, or stress fluctuations.  Ignoring the mean-field noise is a different
+Here \(T(F)=\int_M\dd\operatorname{vol}_g\,F^{\mu\nu}T_{\mu\nu}^{\rm ren}\).
+The renormalized stress-product extension, positivity, and distributional Ward
+identities are exactly those of
+\eqref{eq:semiclassical-noise-bilinear-form}--\eqref{eq:semiclassical-noise-conservation};
+no independent time-ordered contact term is being added to the covariance.
+
+The labels \(\tau\), \(L\), and volume are part of the datum.  In a local
+finite-correlation model,
+\[
+  N_{\rho,L}[f_\tau]
+  \sim
+  \sigma_T^2
+  \int dt\, f_\tau(t)^2
+  \int_{\Sigma_t}\dd\Sigma_t\,s_L(t,\mathbf x)^2
+  \sim
+  \frac{\sigma_T^2}{\tau\,V_L},
+  \qquad V_L\sim L^{d-1}.
+\]
+Thus a normalized average over a larger cell suppresses the density variance,
+whereas the unnormalized whole-slice integral carries a volume factor.  On a
+noncompact homogeneous slice the infrared prescription is: work first in a
+finite box or compact averaging cell with \(\int s_L=1\), compute the density
+covariance, and only then take a thermodynamic or \(L\to\infty\) limit if the
+limit exists.  A time smearing at a fixed spatial point corresponds to replacing
+\(s_L\) by a delta distribution; it is not an admissible input to
+\eqref{eq:cosmology-produced-stress-noise} unless a separate ultraviolet limit
+of the renormalized product has been proved.
+
+The comparison with metric accuracy is made only after the retarded
+gravitational response has acted on the source covariance.  If \(\ell_H\) is the
+chosen gauge-fixed or gauge-invariant metric observable, then
+\begin{equation}
+  \operatorname{Var}_\omega(\ell_H(h))
+  =
+  N(\mathcal G_{\rm ret}^*\ell_H,\mathcal G_{\rm ret}^*\ell_H)
+  +B_{\rm noise}^{2},
+  \label{eq:cosmology-retarded-metric-noise}
+\end{equation}
+where \(B_{\rm noise}\) bounds omitted stress sectors, response tails, and
+state-transport residuals.  Only in a reduced homogeneous window where
+\(\mathcal G_{\rm ret}^*\ell_H=C_dF_{f_\tau,L}+R_\ell\) with
+\(\|R_\ell\|_N\le B_{\rm ret}\) may one use the scalar estimate
+\[
+  \sqrt{\operatorname{Var}_\omega(\ell_H(h))}
+  \le
+  |C_d|\sqrt{N_{\rho,L}[f_\tau]}+B_{\rm ret}+B_{\rm noise}.
+\]
+Number density alone fails this test because it does not determine energy,
+pressure, subtraction transport, spatial averaging, stress fluctuations, or the
+retarded metric pushforward.  Ignoring the mean-field noise is a different
 approximation, valid only after its own bound.
 
 This window is deliberately finite and diagnostic.  It is a controlled route

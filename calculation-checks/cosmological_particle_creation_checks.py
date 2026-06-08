@@ -8,12 +8,14 @@ Target claims:
   conventions, de Sitter index arithmetic, Bogoliubov normalization and
   phase-sensitive annihilator transformations, detector positivity,
   produced-stress source coordinates, pressure work, Friedmann response
-  coefficients, and a finite backreaction-window budget.
+  coefficients, compact spacetime stress-noise smearing, retarded metric-noise
+  pushforward, and a finite backreaction-window budget.
 
 Independent construction:
 - The checks use finite mode sums, exact rational complex two-mode
-  Bogoliubov matrices, direct coefficient comparison, and retained FLRW
-  stress-source samples rather than copying the prose formulae.
+  Bogoliubov matrices, direct coefficient comparison, retained FLRW
+  stress-source samples, and finite cell-averaged covariance matrices rather
+  than copying the prose formulae.
 
 Imported assumptions:
 - The free scalar mode equation, adiabatic/asymptotic particle basis,
@@ -24,13 +26,14 @@ Negative controls:
 - Wrong scale-factor powers, missing pressure work, treating ongoing
   production as a conserved fluid, untransported scheme shifts, omitted
   tail/noise budgets, number-density-only sources, zero-particle source
-  shortcuts, the old conjugated-alpha annihilator rule, and real-quench-only
+  shortcuts, pointlike spatial stress-noise evaluation, unnormalized whole-slice
+  smearing, the old conjugated-alpha annihilator rule, and real-quench-only
   Bogoliubov tests are rejected.
 
 Scope boundary:
-- Passing this file checks finite stress-source and Bogoliubov bookkeeping; it
-  does not prove interacting cosmological QFT, full adiabatic subtraction, or
-  nonlinear semiclassical existence.
+- Passing this file checks finite stress-source, stress-noise, response, and
+  Bogoliubov bookkeeping; it does not prove interacting cosmological QFT, full
+  adiabatic subtraction, or nonlinear semiclassical existence.
 """
 
 from __future__ import annotations
@@ -490,27 +493,125 @@ def check_cosmological_backreaction_window() -> None:
         False,
     )
 
-    density_noise = Fraction(1, 1600)
-    omitted_noise_budget = Fraction(1, 6400)
-    metric_noise_variance = (
-        friedmann_coefficient * friedmann_coefficient * density_noise
-        + omitted_noise_budget
-    )
-    window_tolerance_squared = Fraction(1, 2500)
-    overoptimistic_tolerance_squared = Fraction(1, 10000)
     assert_equal(
-        "stress-noise budget fits declared window",
-        metric_noise_variance <= window_tolerance_squared,
-        True,
+        "retained mean response is not the full backreaction coordinate",
+        retained_delta_hubble_squared == full_delta_hubble_squared,
+        False,
+    )
+
+
+def check_spacetime_smeared_stress_noise_response() -> None:
+    time_width = Fraction(5)
+    physical_cell_volume = Fraction(8)
+    local_noise_density = Fraction(3)
+
+    normalized_cell_variance = local_noise_density / (
+        time_width * physical_cell_volume
     )
     assert_equal(
-        "mean-only noise estimate misses stress fluctuations",
-        Fraction(0) == metric_noise_variance,
+        "normalized spacetime cell stress-noise variance",
+        normalized_cell_variance,
+        Fraction(3, 40),
+    )
+
+    shorter_time_width = Fraction(5, 2)
+    shorter_time_variance = local_noise_density / (
+        shorter_time_width * physical_cell_volume
+    )
+    assert_equal(
+        "shorter time smearing increases variance",
+        shorter_time_variance,
+        2 * normalized_cell_variance,
+    )
+
+    larger_cell_volume = Fraction(32)
+    larger_cell_variance = local_noise_density / (
+        time_width * larger_cell_volume
+    )
+    assert_equal(
+        "larger normalized spatial cell suppresses density variance",
+        larger_cell_variance,
+        normalized_cell_variance / 4,
+    )
+
+    ultraviolet_cell_volume = Fraction(1, 64)
+    pointlike_spatial_variance = local_noise_density / (
+        time_width * ultraviolet_cell_volume
+    )
+    assert_equal(
+        "pointlike spatial evaluation is not the finite cell diagnostic",
+        pointlike_spatial_variance == normalized_cell_variance,
         False,
     )
     assert_equal(
-        "overoptimistic deterministic tolerance fails noise check",
-        metric_noise_variance <= overoptimistic_tolerance_squared,
+        "pointlike spatial evaluation exceeds finite window",
+        pointlike_spatial_variance <= Fraction(1, 20),
+        False,
+    )
+
+    box_volume = Fraction(200)
+    unnormalized_whole_slice_variance = local_noise_density * box_volume / time_width
+    normalized_whole_slice_variance = local_noise_density / (time_width * box_volume)
+    assert_equal(
+        "normalized whole-box average has density variance",
+        normalized_whole_slice_variance,
+        Fraction(3, 1000),
+    )
+    assert_equal(
+        "unnormalized whole-slice integral carries volume factor",
+        unnormalized_whole_slice_variance == normalized_whole_slice_variance,
+        False,
+    )
+    assert_equal(
+        "unnormalized whole-slice variance grows with box volume",
+        unnormalized_whole_slice_variance > normalized_cell_variance,
+        True,
+    )
+
+    friedmann_coefficient = Fraction(1, 2)
+    response_tail_weight = Fraction(1, 5)
+    tail_variance = Fraction(1, 200)
+    density_tail_covariance = Fraction(1, 400)
+    retarded_metric_variance = (
+        friedmann_coefficient * friedmann_coefficient * normalized_cell_variance
+        + 2
+        * friedmann_coefficient
+        * response_tail_weight
+        * density_tail_covariance
+        + response_tail_weight * response_tail_weight * tail_variance
+    )
+    omitted_noise_budget = Fraction(1, 10000)
+    total_metric_variance = retarded_metric_variance + omitted_noise_budget
+    assert_equal(
+        "retarded metric-noise pushforward",
+        total_metric_variance,
+        Fraction(391, 20000),
+    )
+
+    scalar_density_only_variance = (
+        friedmann_coefficient * friedmann_coefficient * normalized_cell_variance
+    )
+    assert_equal(
+        "density-only scalar noise misses retarded tail covariance",
+        scalar_density_only_variance == total_metric_variance,
+        False,
+    )
+    assert_equal(
+        "mean-only metric estimate misses stress fluctuations",
+        Fraction(0) == total_metric_variance,
+        False,
+    )
+
+    window_tolerance_squared = Fraction(1, 50)
+    deterministic_tolerance_squared = Fraction(1, 100)
+    assert_equal(
+        "retarded stress-noise budget fits declared metric window",
+        total_metric_variance <= window_tolerance_squared,
+        True,
+    )
+    assert_equal(
+        "overoptimistic deterministic metric tolerance fails noise check",
+        total_metric_variance <= deterministic_tolerance_squared,
         False,
     )
 
@@ -526,6 +627,7 @@ def main() -> None:
     check_out_region_produced_stress_tensor()
     check_produced_stress_continuity_check()
     check_cosmological_backreaction_window()
+    check_spacetime_smeared_stress_noise_response()
     print("Cosmological particle-creation convention checks passed.")
 
 
