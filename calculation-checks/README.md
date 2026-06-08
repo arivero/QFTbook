@@ -2950,12 +2950,13 @@ Current checks:
   \(1/N_{\rm sp}\) source-noise and metric covariance, \(1/N_{\rm sp}^2\)
   third connected metric-source cumulant, and negative controls for fixed
   \(G_N\), coherent species noise, pair correlations, and wrong cumulant
-  suppression, the small-gain stability check for
-  the full retained backreaction operator with exact feedback inverse,
-  Ward-clean source/noise tests,
-  noise-amplification and missing-noise residual bounds, and negative controls
-  for singular feedback, overlarge feedback, unconserved inputs, and
-  conserved-but-unstable amplification, the nonlinear fixed-point chart
+	  suppression, the causal small-gain check for
+	  the full retained backreaction operator with exact feedback inverse,
+	  retarded finite Neumann support, Ward-clean source/noise tests,
+	  noise-amplification and missing-noise residual bounds, and negative controls
+	  for singular feedback, overlarge feedback, hidden upper-half-plane poles
+	  invisible to finite real-axis samples, unconserved inputs, and
+	  conserved-but-unstable amplification, the nonlinear fixed-point chart
   self-map, residual-Lipschitz contraction, correction, missing-noise, and
   stochastic validity budgets with negative controls for signed residual
   cancellation, omitted state transport, omitted residual variation, bounded

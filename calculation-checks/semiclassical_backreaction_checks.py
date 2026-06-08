@@ -26,7 +26,7 @@ noise package,
 the homogeneous FLRW interacting-source closure tying a time-dependent
 potential coordinate to the pressure, Friedmann/Raychaudhuri, and
 derivative-consistent stress-noise Ward data,
-the small-gain stability and fluctuation-validity check for the linearized
+the causal small-gain and fluctuation-validity check for the linearized
 interacting backreaction operator, the finite nonlinear fixed-point chart for
 the retained semiclassical equation,
 the retained metric-observable output layer including fluctuation bias,
@@ -65,8 +65,8 @@ homogeneous FLRW source/noise closure in which the correction pressure and
 state-transport terms make a time-dependent potential density compatible with
 both Friedmann and Raychaudhuri responses and with derivative-consistent
 Ward-clean Hubble noise, the
-small-gain feedback inverse and noise-amplification bound for the full retained
-backreaction operator, the finite nonlinear self-map/contraction and
+causal small-gain feedback inverse and noise-amplification bound for the full
+retained backreaction operator, the finite nonlinear self-map/contraction and
 mean/noise-validity budgets, including residual size and residual Lipschitz
 controls, for a retained backreaction chart, the retained
 metric-observable mean shift, quadratic fluctuation bias, covariance, and
@@ -88,7 +88,7 @@ unordered covariance positivity tests, Ward-clean local-contact counterexamples,
 finite typed Ward maps with nonzero response contact defects, finite
 full-Hessian gauge-null checks, finite influence-functional quadratic forms,
 retarded-support tests,
-fluctuation-dissipation ratios, small-gain inverses, response/noise bounds,
+fluctuation-dissipation ratios, causal small-gain inverses, response/noise bounds,
 FLRW pressure closures, Hubble-response consistency checks, derivative
 pushforwards for density noise, and Ward-clean homogeneous stress-noise
 covariances,
@@ -123,7 +123,8 @@ terms, c-number counterterms incorrectly added to connected noise, advanced
 response kernels, independent Ward-clean local contacts added directly to the
 noise covariance, independent noise spectra violating the KMS factor, and
 spurious closed-time-path h_c h_c terms are rejected, as are singular feedback
-operators, overlarge small-gain feedback, unconserved sources/noise, and
+operators, overlarge small-gain feedback, real-axis-only transfer functions with
+hidden upper-half-plane poles, unconserved sources/noise, and
 conserved-but-unstable retained data, signed nonlinear residual cancellations,
 time-dependent potential energy inserted without correction pressure,
 Friedmann/Raychaudhuri inconsistency, potential-only stochastic stress noise,
@@ -292,6 +293,14 @@ def frobenius_norm_sq(matrix: Matrix) -> Fraction:
 
 def quadratic_form(matrix: Matrix, column: Matrix) -> Fraction:
     return matmul(matmul(transpose(column), matrix), column)[0][0]
+
+
+def is_retarded_time_kernel(kernel: Matrix) -> bool:
+    return all(
+        kernel[row][col] == 0
+        for row in range(len(kernel))
+        for col in range(row + 1, len(kernel[0]))
+    )
 
 
 def poly_derivative(poly: Polynomial, axis: int) -> Polynomial:
@@ -1751,13 +1760,6 @@ def check_interacting_influence_functional_consistency() -> None:
         False,
     )
 
-    def is_retarded_time_kernel(kernel: Matrix) -> bool:
-        return all(
-            kernel[row][col] == 0
-            for row in range(len(kernel))
-            for col in range(row + 1, len(kernel[0]))
-        )
-
     retarded_time_kernel: Matrix = (
         (Fraction(1), Fraction(0), Fraction(0)),
         (Fraction(2), Fraction(3), Fraction(0)),
@@ -1813,6 +1815,28 @@ def check_backreaction_small_gain_stability() -> None:
         raise AssertionError("small-gain inverse should equal the exact full inverse")
     if matmul(full_operator, small_gain_inverse) != identity(2):
         raise AssertionError("full feedback inverse should invert D_full")
+
+    causal_free_inverse: Matrix = (
+        (Fraction(1), Fraction(0)),
+        (Fraction(1, 3), Fraction(1)),
+    )
+    causal_feedback: Matrix = (
+        (Fraction(1, 5), Fraction(0)),
+        (Fraction(1, 7), Fraction(1, 6)),
+    )
+    if not is_retarded_time_kernel(causal_free_inverse):
+        raise AssertionError("test free inverse should be a retarded kernel")
+    if not is_retarded_time_kernel(causal_feedback):
+        raise AssertionError("test feedback should be a retarded kernel")
+    causal_feedback_map = matmul(causal_free_inverse, causal_feedback)
+    causal_neumann_inverse = inverse2(matsub(identity(2), causal_feedback_map))
+    causal_full_inverse = matmul(causal_neumann_inverse, causal_free_inverse)
+    if not is_retarded_time_kernel(causal_feedback_map):
+        raise AssertionError("causal feedback map should remain retarded")
+    if not is_retarded_time_kernel(causal_full_inverse):
+        raise AssertionError("causal Neumann inverse should remain retarded")
+    if frobenius_norm_sq(causal_feedback_map) >= 1:
+        raise AssertionError("causal test feedback should satisfy small gain")
 
     certified_m0 = Fraction(1, 2)
     certified_eta = Fraction(1, 4)
@@ -1894,6 +1918,41 @@ def check_backreaction_small_gain_stability() -> None:
     large_feedback_map = matmul(gravitational_inverse, large_feedback)
     if frobenius_norm_sq(large_feedback_map) < Fraction(1):
         raise AssertionError("negative control should violate the small-gain hypothesis")
+
+    # Real-axis samples can all pass while a scalar transfer function has a
+    # hidden upper-half-plane pole.  With D0=1 and
+    # R(z)=lambda/(z-i gamma), real samples see |R(omega)|<1, but R is not a
+    # retarded Hardy function and D_full(z)=1-R(z) vanishes at
+    # z=lambda+i gamma.
+    lambda_feedback = Fraction(1)
+    hidden_pole_imaginary_part = Fraction(3)
+    sampled_frequencies = (Fraction(-5), Fraction(0), Fraction(5))
+    real_samples_pass = all(
+        lambda_feedback * lambda_feedback
+        < frequency * frequency
+        + hidden_pole_imaginary_part * hidden_pole_imaginary_part
+        for frequency in sampled_frequencies
+    )
+    real_boundary_invertible = all(
+        (frequency - lambda_feedback) * (frequency - lambda_feedback)
+        + hidden_pole_imaginary_part * hidden_pole_imaginary_part
+        > 0
+        for frequency in sampled_frequencies
+    )
+    real_axis_only_accepts = real_samples_pass and real_boundary_invertible
+    if not real_axis_only_accepts:
+        raise AssertionError("negative control setup should pass real-axis tests")
+    if hidden_pole_imaginary_part <= 0:
+        raise AssertionError("negative control should have an unstable pole")
+    unstable_growth_exponent = hidden_pole_imaginary_part
+    causal_classifier_accepts = (
+        real_axis_only_accepts
+        and unstable_growth_exponent <= 0
+    )
+    if causal_classifier_accepts:
+        raise AssertionError("negative control failed: real samples hid a Hardy pole")
+    if real_axis_only_accepts == causal_classifier_accepts:
+        raise AssertionError("negative control failed: causal test matched real sampling")
 
     unstable_operator: Matrix = (
         (Fraction(1, 50), Fraction(0)),

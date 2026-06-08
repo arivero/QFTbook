@@ -65,9 +65,10 @@ fluctuation data required for controlled backreaction.
 - `Gamma_IF`, `h_c`, `h_Delta`, `R_IF`: retained closed-time-path influence
   functional, average/difference metric perturbations, and the residual outside
   the quadratic interacting backreaction package.
-- `D_0`, `R^{ret}`, `D_full`, `eta_I`: the reduced gravitational/local-contact
-  operator, retained interacting stress-tensor feedback, full linearized
-  backreaction operator, and small-gain parameter on a frequency window.
+- `D_0`, `R^{ret}`, `D_full`, `M_{0,+}`, `eta_+`: the reduced
+  gravitational/local-contact operator, retained interacting stress-tensor
+  feedback, full linearized backreaction operator, causal upper-half-plane
+  inverse bound, and causal small-gain parameter.
 - `G_full`, `M_full`, `B_h(r_h)`, `C_2`, `L_st`, `epsilon_nl`,
   `kappa_nl`, `r_N`, `Delta_N(r_h)`: the full retained inverse and nonlinear
   finite-window chart data controlling the self-map, state transport, omitted
@@ -210,15 +211,18 @@ fluctuation data required for controlled backreaction.
   fluctuation-dissipation relation in stationary states; otherwise the Langevin
   noise and dissipative feedback have been assembled from different theories
   rather than from one interacting stress tensor.
-- Adds the retained small-gain stability layer for interacting backreaction:
+- Adds the retained causal small-gain layer for interacting backreaction:
   after the full source/noise/response package is fixed in one scheme, the
-  full linearized operator is `D_full=D_0-R^{ret}`.  A finite frequency window
-  is controlled when `D_0^{-1}` is bounded and
-  `eta_I=sup ||D_0^{-1}R^{ret}||<1`, giving the inverse
-  `(1-D_0^{-1}R^{ret})^{-1}D_0^{-1}` and explicit mean/noise amplification
-  bounds.  The layer also identifies physical failures: uncontrolled feedback,
-  upper-half-plane poles, Ward-clean noise amplified beyond the metric chart,
-  and missing-noise residuals not included in the covariance budget.
+  full linearized operator is `D_full=D_0-R^{ret}`.  A real-frequency
+  small-gain number is recorded only as a diagnostic.  The retarded inverse
+  claim requires `D_0^{-1}` and `R^{ret}` to be Hardy/causal upper-half-plane
+  data with no unstable poles and
+  `eta_+=sup_{Im z>0} ||D_0(z)^{-1}R^{ret}(z)||<1`, giving the analytic
+  Neumann inverse `(1-D_0^{-1}R^{ret})^{-1}D_0^{-1}` and explicit mean/noise
+  amplification bounds.  The layer also identifies physical failures:
+  uncontrolled causal feedback, upper-half-plane poles invisible to real-axis
+  samples, Ward-clean noise amplified beyond the metric chart, and missing
+  omitted-mode/noise residuals not included in the covariance budget.
 - Adds the nonlinear finite-window backreaction chart.  The retained equation
   is written as a Ward-clean fixed-point map
   `h=h_lin+G_full(Q_2(h,h)+S_st(h)+R_nl(h))`; the self-map and contraction
@@ -285,12 +289,13 @@ fluctuation data required for controlled backreaction.
   negative controls, the closed-time-path influence-package test tying mean
   source, contact-corrected retarded response, and connected noise to
   equal-branch normalization, retarded support, typed Ward identities,
-  positivity, and KMS/FDT compatibility, the small-gain
+  positivity, and KMS/FDT compatibility, the causal small-gain
   feedback inverse for the full retained backreaction operator,
   Ward-clean source/noise inputs, mean-response and noise-amplification
-  bounds, residual missing-noise trace propagation, and singular-feedback,
-  overlarge-feedback, unconserved-input, and conserved-but-unstable
-  amplification negative controls, the nonlinear fixed-point chart self-map,
+  bounds, residual missing-noise trace propagation, retarded finite Neumann
+  support, and singular-feedback, overlarge-feedback, hidden-upper-half-plane
+  pole, unconserved-input, and conserved-but-unstable amplification negative
+  controls, the nonlinear fixed-point chart self-map,
   residual-Lipschitz contraction, correction, Ward-clean nonlinear source,
   missing-noise, and
   stochastic validity budgets with negative controls for signed residual
@@ -514,3 +519,14 @@ curvature, microscopic, and EFT scales.
   old sign pattern.  Downstream uses of the \(\beta H^{(2)}\) term were audited
   as coordinate-level scheme-transport and response inputs using the corrected
   convention.
+- 2026-06-08 issue #920 causal small-gain pass: replaced the real-window
+  small-gain conclusion by a causal Hardy/upper-half-plane small-gain
+  hypothesis.  Real-frequency samples are now explicitly only diagnostics; the
+  retarded inverse follows from analytic Neumann convergence and the
+  Paley-Wiener/Hardy boundary-value theorem, with no unstable poles in the
+  reduced sector.  The text distinguishes forced-response/noise-pushforward
+  control from full initial-value stability and requires omitted-mode residual
+  budgets before retained covariance is interpreted physically.  The paired
+  finite check adds both a causal lower-triangular Neumann inverse and an
+  adversarial scalar transfer function whose real samples pass while an
+  upper-half-plane pole makes the evolution unstable.

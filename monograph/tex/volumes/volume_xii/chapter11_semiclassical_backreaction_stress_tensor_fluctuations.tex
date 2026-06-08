@@ -2201,7 +2201,7 @@ or supplies a Ward-clean noise with an unrelated retarded kernel, has not yet
 defined an interacting semiclassical backreaction datum.
 \end{controlledapproximation}
 
-\begin{controlledapproximation}[Backreaction small-gain stability]
+\begin{controlledapproximation}[Causal backreaction small-gain control]
 \label{ca:semiclassical-backreaction-small-gain-stability}
 The interacting package above is still only source data until the metric
 operator with stress-tensor feedback is controlled.  Work on one retained
@@ -2221,41 +2221,85 @@ and the sign convention of
   \mathsf D_0(\omega)-\mathsf R^{\rm ret}(\omega).
   \label{eq:semiclassical-full-feedback-operator}
 \end{equation}
-Assume that \(\mathsf D_0\) has a retarded inverse on the reduced sector and
-that, on \(I\),
-\begin{equation}
-  M_0
-  =
-  \sup_{\omega\in I}
-  \left\lVert
-    \mathsf D_0(\omega+\ii0)^{-1}
-  \right\rVert_2
-  <\infty,
-  \qquad
-  \eta_I
+The boundary-value estimate
+\[
+  \eta_{\partial I}
   =
   \sup_{\omega\in I}
   \left\lVert
     \mathsf D_0(\omega+\ii0)^{-1}
     \mathsf R^{\rm ret}(\omega+\ii0)
   \right\rVert_2
+\]
+is only a real-window diagnostic.  It can prove pointwise invertibility of
+sampled matrices on \(I\), but it does not by itself prove a causal inverse,
+exclude an upper-half-plane pole, or control the homogeneous initial-value
+problem.
+
+For a retained \emph{retarded} inverse, impose the small-gain estimate before
+taking the boundary value.  Let
+\(\Omega_+=\{z\in\mathbb C:\operatorname{Im}z>0\}\).  Assume that
+\(\mathsf D_0(z)^{-1}\) and \(\mathsf R^{\rm ret}(z)\) are operator-valued
+Hardy functions on \(\Omega_+\) in the reduced sector, with tempered boundary
+values, retarded inverse-Fourier/Laplace transforms, and no
+upper-half-plane poles after the cutoff-scale roots have been removed by the
+EFT reduction-of-order prescription.  Assume
+\begin{equation}
+  M_{0,+}
+  =
+  \sup_{z\in\Omega_+}
+  \left\lVert
+    \mathsf D_0(z)^{-1}
+  \right\rVert_2
+  <\infty,
+  \qquad
+  \eta_+
+  =
+  \sup_{z\in\Omega_+}
+  \left\lVert
+    \mathsf D_0(z)^{-1}
+    \mathsf R^{\rm ret}(z)
+  \right\rVert_2
   <1 .
   \label{eq:semiclassical-small-gain-hypothesis}
 \end{equation}
-Then the full retained inverse exists on the same window and is
+Then the full retained inverse exists as an upper-half-plane analytic Hardy
+function,
 \begin{equation}
-  \mathsf D_{\rm full}^{-1}
-  =
+\begin{aligned}
+  \mathsf D_{\rm full}(z)^{-1}
+  &=
   \left(
-    \mathbf 1-\mathsf D_0^{-1}\mathsf R^{\rm ret}
+    \mathbf 1-\mathsf D_0(z)^{-1}\mathsf R^{\rm ret}(z)
   \right)^{-1}
-  \mathsf D_0^{-1},
-  \qquad
-  \left\lVert\mathsf D_{\rm full}^{-1}\right\rVert_2
-  \le
-  \frac{M_0}{1-\eta_I}.
+  \mathsf D_0(z)^{-1}
+  \\
+  &=
+  \sum_{m\ge0}
+  \left(\mathsf D_0(z)^{-1}\mathsf R^{\rm ret}(z)\right)^m
+  \mathsf D_0(z)^{-1},
+  \\
+  \left\lVert\mathsf D_{\rm full}(z)^{-1}\right\rVert_2
+  &\le
+  \frac{M_{0,+}}{1-\eta_+}.
+\end{aligned}
   \label{eq:semiclassical-small-gain-inverse}
 \end{equation}
+The Neumann series converges normally in \(\Omega_+\), so it cannot generate an
+upper-half-plane pole.  The Hardy boundary-value theorem, equivalently the
+Paley--Wiener support theorem for the inverse Fourier--Laplace transform,
+therefore makes the boundary kernel retarded.  Real-frequency singular-value
+samples do not supply this support statement.
+
+If the analytic estimate is proved only in a tube above \(I\), the conclusion is
+only a windowed forced-response statement unless one separately excludes
+upper-half-plane poles elsewhere in the reduced sector and bounds the coupling
+to omitted modes.  A full initial-value stability statement also needs a
+homogeneous semigroup or energy estimate for the retained and omitted
+gravitational variables.  The small-gain bound below controls the retarded
+forced response and the stochastic pushforward in the declared sector; it is
+not, by itself, a global stability theorem for the full semiclassical PDE.
+
 For a Ward-clean interacting source and noise package,
 \[
   \mathsf B_T j^{\rm full}=0,\qquad
@@ -2279,11 +2323,11 @@ with
 \begin{equation}
   \lVert h^{\rm full}\rVert_2
   \le
-  \frac{M_0}{1-\eta_I}\lVert j^{\rm full}\rVert_2,
+  \frac{M_{0,+}}{1-\eta_+}\lVert j^{\rm full}\rVert_2,
   \qquad
   \operatorname{tr}\mathsf C_h^{\rm full}
   \le
-  \frac{M_0^2}{(1-\eta_I)^2}
+  \frac{M_{0,+}^2}{(1-\eta_+)^2}
   \operatorname{tr}\mathsf N^{\rm full}.
   \label{eq:semiclassical-small-gain-mean-noise-bound}
 \end{equation}
@@ -2293,15 +2337,19 @@ If a truncated calculation supplies only
 by the same expression with
 \(\operatorname{tr}\mathsf N^{\rm ret}+r_N\).  This is the place where a
 finite interacting example becomes a backreaction statement: the retarded
-feedback must be small enough, or otherwise explicitly invertible, in the
-same Ward-clean sector in which the mean source and connected noise are
-defined.
+feedback must be small enough in the causal norm, or otherwise explicitly
+invertible with an independently proved retarded inverse, in the same
+Ward-clean sector in which the mean source and connected noise are defined.
+If the projection discards modes, their source and noise leakage must be
+included as residual budgets before the retained covariance is interpreted as a
+physical metric-fluctuation bound.
 
 Failure of any part of this test has physical content.  If
-\(\eta_I\ge1\) and no sharper inverse estimate is supplied, the perturbative
-feedback expansion is not controlled.  If
+\(\eta_+\ge1\) and no sharper causal inverse estimate is supplied, the
+perturbative feedback expansion is not controlled.  If
 \(\mathsf D_{\rm full}^{-1}\) has an upper-half-plane pole, the retained
-background is linearly unstable in the semiclassical problem.  If
+background is linearly unstable in the semiclassical problem even if every
+sampled real-frequency matrix in \(I\) is invertible.  If
 \(\operatorname{tr}\mathsf C_h^{\rm full}\) is comparable to the square of
 the metric reference scale, or the induced curvature covariance is comparable
 to the square of the background curvature scale, the mean semiclassical
@@ -2326,7 +2374,7 @@ Ward-clean retained sector and write
   \qquad
   M_{\rm full}
   =
-  \frac{M_0}{1-\eta_I},
+  \frac{M_{0,+}}{1-\eta_+},
   \qquad
   h_{\rm lin}
   =
