@@ -211,7 +211,10 @@ fluctuation data required for controlled backreaction.
   after the full pressure and noise package is present.
 - Adds the closed-time-path consistency layer for the interacting package.  The
   retained quadratic influence functional in `h_Delta,h_c` has one mean source,
-  one retarded kernel, and one positive connected-noise covariance, with no
+  one retarded kernel, and one positive connected-noise covariance, with the
+  inverse-metric source coefficients `-1/2`, `-1/2`, and `i/8` displayed before
+  the Hubbard-Stratonovich representation.  The resulting stochastic source has
+  covariance exactly equal to the already-defined noise kernel, with no
   standalone `h_c h_c` term after equal-branch normalization.  The same package
   must satisfy retarded support, typed Ward identities for source/noise, the
   contact-corrected linearized Ward identity for response, the full-Hessian
@@ -526,6 +529,14 @@ curvature, microscopic, and EFT scales.
   metric-variation contact freedom is reserved for response/effective-action
   data.  The paired finite check rejects an independently added Ward-clean
   local noise contact that makes a positive covariance indefinite.
+- 2026-06-08 issue #919 CTP normalization pass: repaired the influence package
+  from the declared inverse-metric coupling `delta S_source=-(1/2) int h T`.
+  The chapter now derives the branch sources, the `-1/2` mean and response
+  terms, the `i/8` imaginary noise term, the Hubbard-Stratonovich identity with
+  covariance exactly `N`, and the Einstein-Langevin equation with the earlier
+  half-response convention.  The paired finite check rejects the previous unit
+  source coefficient, the factor-four noise coefficient, and the corresponding
+  four-times-noise stochastic covariance.
 - 2026-06-08 issue #922 typed Ward-response pass: repaired the response and
   influence-package architecture rather than adding another retained cell.  The
   chapter now derives the linearized diffeomorphism Ward identity with the

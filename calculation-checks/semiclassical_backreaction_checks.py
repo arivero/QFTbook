@@ -61,7 +61,8 @@ full interacting package algebra in which component cross-covariances and
 finite operator-mixing terms are required before Ward tests are applied to the
 noise and independently added local noise contacts are rejected, the
 closed-time-path package tests tying typed source/noise Ward identities,
-contact-corrected retarded response, retarded support, positivity, and
+source-coupling normalization, contact-corrected retarded response,
+Hubbard-Stratonovich noise normalization, retarded support, positivity, and
 fluctuation-dissipation compatibility together, the quotient-factorization
 criterion that makes a reduced stress response independent of metric-section
 choices, the
@@ -131,8 +132,10 @@ fluctuation budget, cutoff-scale higher-derivative roots,
 component-variance-only noise packages, missing finite-renormalization cross
 terms, c-number counterterms incorrectly added to connected noise, advanced
 response kernels, independent Ward-clean local contacts added directly to the
-noise covariance, independent noise spectra violating the KMS factor, and
-spurious closed-time-path h_c h_c terms are rejected, as are singular feedback
+noise covariance, closed-time-path source factors with the old sign and
+magnitude, factor-four noise normalizations, independent noise spectra
+violating the KMS factor, and spurious closed-time-path h_c h_c terms are
+rejected, as are singular feedback
 operators, overlarge small-gain feedback, real-axis-only transfer functions with
 hidden upper-half-plane poles, global bounded-Hardy tests applied to neutral
 boundary-pole propagation, unconserved sources/noise, and
@@ -291,6 +294,10 @@ def matsub(left: Matrix, right: Matrix) -> Matrix:
         tuple(left[row][col] - right[row][col] for col in range(len(left[0])))
         for row in range(len(left))
     )
+
+
+def matscale(scalar: Fraction, matrix: Matrix) -> Matrix:
+    return tuple(tuple(scalar * entry for entry in row) for row in matrix)
 
 
 def matsum(matrices: tuple[Matrix, ...]) -> Matrix:
@@ -1755,13 +1762,32 @@ def check_interacting_influence_functional_consistency() -> None:
 
     center: Matrix = ((Fraction(5),), (Fraction(7),))
     difference: Matrix = ((Fraction(1),), (Fraction(2),))
+    metric_source_coupling = Fraction(-1, 2)
+    noise_phase_coefficient = (
+        Fraction(1, 2) * metric_source_coupling * metric_source_coupling
+    )
+    assert_equal(
+        "inverse-metric CTP branch source coefficient",
+        metric_source_coupling,
+        Fraction(-1, 2),
+    )
+    assert_equal(
+        "CTP imaginary coefficient from source cumulant",
+        noise_phase_coefficient,
+        Fraction(1, 8),
+    )
 
     def influence_quadratic(h_delta: Matrix, h_center: Matrix) -> tuple[Fraction, Fraction]:
+        source_coordinate = matmul(transpose(h_delta), source)[0][0]
+        response_coordinate = matmul(
+            matmul(transpose(h_delta), retarded_response),
+            h_center,
+        )[0][0]
         real_part = (
-            matmul(transpose(h_delta), source)[0][0]
-            + matmul(matmul(transpose(h_delta), retarded_response), h_center)[0][0]
+            metric_source_coupling
+            * (source_coordinate + response_coordinate)
         )
-        imaginary_part = Fraction(1, 2) * quadratic_form(noise, h_delta)
+        imaginary_part = noise_phase_coefficient * quadratic_form(noise, h_delta)
         return real_part, imaginary_part
 
     assert_equal(
@@ -1770,8 +1796,67 @@ def check_interacting_influence_functional_consistency() -> None:
         (Fraction(0), Fraction(0)),
     )
     real_part, imaginary_part = influence_quadratic(difference, center)
-    assert_equal("interacting CTP real quadratic coordinate", real_part, Fraction(76, 5))
-    assert_equal("interacting CTP imaginary noise coordinate", imaginary_part, Fraction(9))
+    assert_equal(
+        "interacting CTP real quadratic coordinate",
+        real_part,
+        Fraction(-38, 5),
+    )
+    assert_equal(
+        "interacting CTP imaginary noise coordinate",
+        imaginary_part,
+        Fraction(9, 4),
+    )
+
+    source_coordinate = matmul(transpose(difference), source)[0][0]
+    response_coordinate = matmul(
+        matmul(transpose(difference), retarded_response),
+        center,
+    )[0][0]
+    old_unit_source_real_part = source_coordinate + response_coordinate
+    assert_equal(
+        "old unit CTP source coefficient is rejected",
+        old_unit_source_real_part == real_part,
+        False,
+    )
+    old_noise_imaginary_part = Fraction(1, 2) * quadratic_form(noise, difference)
+    assert_equal(
+        "old factor-four CTP noise coefficient is rejected",
+        old_noise_imaginary_part == imaginary_part,
+        False,
+    )
+
+    hs_covariance_multiplier = noise_phase_coefficient / (
+        Fraction(1, 2) * metric_source_coupling * metric_source_coupling
+    )
+    assert_equal(
+        "Hubbard-Stratonovich covariance is the raw noise kernel",
+        hs_covariance_multiplier,
+        Fraction(1),
+    )
+    old_hs_covariance_multiplier = Fraction(1, 2) / (
+        Fraction(1, 2) * metric_source_coupling * metric_source_coupling
+    )
+    assert_equal(
+        "old imaginary coefficient would give four times the noise covariance",
+        old_hs_covariance_multiplier,
+        Fraction(4),
+    )
+    assert_equal(
+        "old Hubbard-Stratonovich covariance is rejected",
+        old_hs_covariance_multiplier == Fraction(1),
+        False,
+    )
+
+    separated_commutator_response = matscale(Fraction(2), retarded_response)
+    assert_equal(
+        "retained response keeps the earlier one-half commutator convention",
+        matscale(Fraction(1, 2), separated_commutator_response),
+        retarded_response,
+    )
+    if separated_commutator_response == retarded_response:
+        raise AssertionError(
+            "negative control failed: raw commutator lost its half-response"
+        )
 
     h_c_only_term = quadratic_form(
         ((Fraction(1), Fraction(0)), (Fraction(0), Fraction(1))),

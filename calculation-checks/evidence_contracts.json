@@ -438,6 +438,7 @@
         "metric gauge null directions belong to the full semiclassical Hessian",
         "reduced stress response descends only after full metric-reduction kernel annihilation",
         "FLRW dot-density noise is derivative-consistent rather than independent",
+        "CTP inverse-metric source gives -1/2 linear and response terms and i/8 raw-noise term",
         "Ricci-squared H2 trace is plus 2 Box R in inverse-metric convention",
         "real-axis small gain is diagnostic without upper-half-plane causal control"
       ]

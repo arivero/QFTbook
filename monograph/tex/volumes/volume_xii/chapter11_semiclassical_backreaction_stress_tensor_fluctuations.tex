@@ -2089,19 +2089,32 @@ three independently fitted matrices.  On the retained sector write
   h_\Delta=h_+-h_- .
 \]
 After the state, product extension, local counterterms, and Ward reduction have
-all been fixed in the same prescription, the quadratic influence functional has
-the retained form
+all been fixed in the same prescription, the branch signs are already fixed by
+the inverse-metric source convention
+\eqref{eq:semiclassical-metric-source-coupling}.  On the retained sector,
+\[
+  \delta S_{\rm source}[h_+]-\delta S_{\rm source}[h_-]
+  =
+  -\frac12\int h_+^aT_a
+  +
+  \frac12\int h_-^aT_a,
+\]
+so the plus and minus CTP sources are
+\(J_+^a=-h_+^a/2\) and \(J_-^a=+h_-^a/2\).  Expanding
+\(e^{\ii\Gamma_{\rm IF}}\) in connected stress cumulants, and then rewriting in
+\((h_c,h_\Delta)\), gives the retained quadratic influence functional
 \begin{equation}
 \begin{aligned}
   \Gamma_{\rm IF}^{(2)}
   &=
+  -\frac12
   \int h_\Delta^a j_a^{\rm full}
-  +
+  -\frac12
   \int h_\Delta^a\,
        \mathsf R^{\rm ret}_{ab}\,
        h_c^b
   +
-  \frac{\ii}{2}
+  \frac{\ii}{8}
   \int h_\Delta^a\,
        \mathsf N_{ab}^{\rm full}\,
        h_\Delta^b
@@ -2109,13 +2122,21 @@ the retained form
 \end{aligned}
   \label{eq:semiclassical-ctp-influence-package}
 \end{equation}
-Here \(\mathsf R^{\rm ret}\) is shorthand, after choosing the retained
-metric/stress pairing, for the typed interacting stress-response map
+Here \(j^{\rm full}\) is the raw one-point stress coordinate,
+\(\mathsf N^{\rm full}\) is the raw symmetrized connected covariance from
+\eqref{eq:semiclassical-full-interacting-package}, and
+\(\mathsf R^{\rm ret}\) is the actual typed stress-response map
 \(\mathsf R^{\rm ret}_{Th}:V_h\to V_T\) used in
-\(\mathsf D_{\rm full}=\mathsf D_0-\mathsf R^{\rm ret}_{Th}\).  It includes
-the declared local metric-variation terms, and \(R_{\rm IF}\) is the residual
-from omitted products, higher cumulants, higher metric powers, and truncation
-outside the retained window.
+\(\mathsf D_{\rm full}=\mathsf D_0-\mathsf R^{\rm ret}_{Th}\).  Thus, if
+\(\Pi^{\rm ret}\) denotes only the separated commutator kernel before the
+source-coupling factor in \eqref{eq:semiclassical-linear-response}, then
+\(\mathsf R^{\rm ret}_{Th}=\frac12\Pi^{\rm ret}+\mathsf R^{\rm loc}_{Th}\).
+The factors in \eqref{eq:semiclassical-ctp-influence-package} are not hidden
+rescalings of \(j^{\rm full}\), \(\mathsf R^{\rm ret}\), or
+\(\mathsf N^{\rm full}\); they are the CTP consequence of
+\(\delta S_{\rm source}=-(1/2)\int hT\).  The residual \(R_{\rm IF}\) comes from
+omitted products, higher cumulants, higher metric powers, and truncation outside
+the retained window.
 
 The form \eqref{eq:semiclassical-ctp-influence-package} encodes four physical
 requirements.  First, normalization of the closed time path gives
@@ -2218,17 +2239,70 @@ enough: their spectral parts must be compatible with the same state.
 
 Once \eqref{eq:semiclassical-ctp-noise-positivity} holds, the
 Einstein--Langevin source is the Hubbard--Stratonovich representative of the
-imaginary part of \(\Gamma_{\rm IF}^{(2)}\):
+imaginary part of \(\Gamma_{\rm IF}^{(2)}\).  In a finite retained sector,
+modulo zero modes of the positive covariance,
+\begin{equation}
+  \exp\!\left[
+    -\frac18 h_\Delta^a\mathsf N^{\rm full}_{ab}h_\Delta^b
+  \right]
+  =
+  \int\dd\mu_{\mathsf N}(\xi)\,
+  \exp\!\left[
+    -\frac{\ii}{2}h_\Delta^a\xi_a
+  \right],
+  \qquad
+  \mathbb E_{\mathsf N}[\xi_a\xi_b]=\mathsf N^{\rm full}_{ab}.
+  \label{eq:semiclassical-ctp-hubbard-stratonovich}
+\end{equation}
+Equivalently, when \(\mathsf N\) is nondegenerate this is the Gaussian density
+with exponent
+\(-\frac12\xi_a(\mathsf N^{-1})^{ab}\xi_b\).  The stochastic real phase is
+therefore
+\begin{equation}
+  \Gamma_{\rm IF,\xi}^{(2),{\rm real}}
+  =
+  -\frac12\int h_\Delta^a
+  \left(
+    j_a^{\rm full}
+    +
+    \mathsf R^{\rm ret}_{ab}h_c^b
+    +
+    \xi_a
+  \right)
+  +R_{\rm IF}^{\rm real}.
+  \label{eq:semiclassical-ctp-stochastic-real-phase}
+\end{equation}
+Writing \(\mathsf E_g\) for the retained gravitational and local-contact side,
+varying the total CTP action with respect to \(h_\Delta\), and then setting
+\(h_\Delta=0\), gives
 \[
-  \langle\xi_a\xi_b\rangle=\mathsf N^{\rm full}_{ab}.
+  \mathsf E_g[h_c]
+  =
+  j^{\rm full}
+  +
+  \mathsf R^{\rm ret}h_c
+  +
+  \xi
+  +
+  \text{residual/contact terms}.
 \]
-The stochastic equation is therefore not an additional assumption placed on top
-of the interacting stress calculation.  It is the real-noise representation of
-the same influence functional whose real part supplies the mean source and the
-retarded dissipative kernel.  Any calculation that supplies \(j^{\rm full}\),
-\(\mathsf N^{\rm full}\), and \(\mathsf R^{\rm ret}\) from different schemes,
-or supplies a Ward-clean noise with an unrelated retarded kernel, has not yet
-defined an interacting semiclassical backreaction datum.
+Linearized about a mean background
+\(\mathsf E_g[0]=j^{\rm full}\), this is
+\[
+  (\mathsf D_g-\mathsf R^{\rm ret})h_c=\xi ,
+\]
+which is exactly the retained form of
+\eqref{eq:semiclassical-einstein-langevin}.  In unreduced notation the middle
+term is the earlier
+\((1/2)G^{\rm ret}\) stress response plus the declared local response, not a
+newly normalized noise or source.  The stochastic equation is therefore not an
+additional assumption placed on top of the interacting stress calculation.  It is
+the real-noise representation of the same influence functional whose real part
+supplies the mean source and the retarded dissipative kernel.  Any calculation
+that supplies \(j^{\rm full}\), \(\mathsf N^{\rm full}\), and
+\(\mathsf R^{\rm ret}\) from different schemes, or supplies a Ward-clean noise
+with an unrelated retarded kernel, has not yet defined an interacting
+semiclassical backreaction datum.
 \end{controlledapproximation}
 
 \begin{controlledapproximation}[Causal backreaction small-gain control]
@@ -2241,10 +2315,12 @@ reduction and reduction of order, before the nonlocal interacting
 stress-tensor response is fed back.  Let
 \(\mathsf R^{\rm ret}(\omega)\) denote the corresponding retained retarded
 stress response from the same package
-\eqref{eq:semiclassical-full-interacting-package}, with the factor \(1/2\)
-and the sign convention of
-\eqref{eq:semiclassical-retained-response-matrix} absorbed into
-\(\mathsf R^{\rm ret}\).  Thus
+\eqref{eq:semiclassical-full-interacting-package}.  This
+\(\mathsf R^{\rm ret}\) is the same stress-response map as in
+\eqref{eq:semiclassical-linear-response}: in terms of the separated commutator
+matrix it contains the factor \(1/2\) and the declared local response, while the
+CTP source coefficient \(-1/2\) in
+\eqref{eq:semiclassical-ctp-influence-package} is not absorbed into it.  Thus
 \begin{equation}
   \mathsf D_{\rm full}(\omega)
   =

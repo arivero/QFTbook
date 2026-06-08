@@ -2971,8 +2971,10 @@ Current checks:
   contacts rejected even though they can pass the Ward test, the
   closed-time-path influence-functional consistency checks tying the interacting
   mean source, contact-corrected retarded kernel, and connected noise to one
-  package with typed source/noise Ward identities, retarded support, noise
-  positivity, equal-branch normalization, and KMS/FDT compatibility, the
+  package with the inverse-metric `-1/2` source/response coefficients, the
+  `i/8` noise coefficient, Hubbard-Stratonovich covariance exactly equal to
+  the raw noise kernel, typed source/noise Ward identities, retarded support,
+  noise positivity, equal-branch normalization, and KMS/FDT compatibility, the
   reduced-response quotient-factorization check showing that gauge-image
   annihilation alone does not make \(p_T R^{\rm ret}_{Th}s_h\)
   section-independent when the metric-reduction kernel is larger than the
