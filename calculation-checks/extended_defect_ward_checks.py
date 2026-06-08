@@ -5,14 +5,16 @@ Evidence contract.
 Target claims: the finite higher-form Ward algebra in Volume IX, Chapter 2,
 including the local integer linking chart, the topology restrictions on global
 integer linking, the degree distinction between finite-background
-characteristic classes and operator holonomy data, torsion linking, and
+characteristic classes and operator holonomy data, the separation between
+background gauge cochains and closed symmetry parameters, torsion linking, and
 junction-charge conservation.
 Independent construction: exact arithmetic in finite cyclic groups, a homology
 model of nonbounding loops on T^3, an intersection-pairing model of
 bounding-chain ambiguity, local signed-crossing recovery of the integer
 meridian rule, finite degree-checked cochain evaluation, transgression of a
-defect class to a degree-p complement datum, and the lens-space torsion pairing
-a*b/n in Q/Z.
+defect class to a degree-p complement datum, a finite cochain Stokes model for
+background gauge covariance versus flat symmetry action, and the lens-space
+torsion pairing a*b/n in Q/Z.
 Imported assumptions: oriented closed manifolds for the global torsion-pairing
 model, the standard degree condition
 Tor H_{D-p-1}(M) x Tor H_p(M) -> Q/Z, and the use of finite homology models
@@ -22,7 +24,8 @@ bounding-chain integer-linking construction; two bounding chains whose
 difference has nonzero intersection with the charged cycle give different
 integers; a torsion pairing returns Q/Z data rather than canonical integers.
 Evaluating an H^{p+1} characteristic class directly on an H_p charged cycle is
-rejected as a degree error.
+rejected as a degree error.  A closed degree-p symmetry cocycle is rejected as a
+source of a nonzero background coboundary shift.
 Scope boundary: these checks do not prove Alexander duality, construct
 topological defect operators in a continuum QFT, or classify all possible
 global higher-form backgrounds.
@@ -263,6 +266,12 @@ def degree_checked_cochain_evaluation(
     return sum(bg * cyc for bg, cyc in zip(cochain, cycle, strict=True)) % n
 
 
+def delta_one_to_two(n: int, cochain: tuple[int, int, int]) -> tuple[int]:
+    # A finite CW model with two boundary 1-cells for one 2-cell and one
+    # independent loop 1-cell.  The loop component is invisible to delta.
+    return ((cochain[0] + cochain[1]) % n,)
+
+
 def check_background_characteristic_class_degree_not_operator_holonomy() -> None:
     p = 1
     n = 7
@@ -292,6 +301,86 @@ def check_background_characteristic_class_degree_not_operator_holonomy() -> None
         ),
         4 % n,
         "degree p+1 characteristic class evaluates on p+1 cycles",
+    )
+
+
+def check_background_gauge_cochain_separate_from_closed_symmetry_parameter() -> None:
+    n = 5
+    charge = 2
+
+    # A background gauge redundancy uses an arbitrary p-cochain.  This sample is
+    # not closed, so it shifts the cocycle representative by delta xi.
+    gauge_cochain = (1, 2, 0)
+    gauge_shift = delta_one_to_two(n, gauge_cochain)
+    assert_equal(gauge_shift, (3,), "nonclosed gauge cochain has nonzero coboundary")
+
+    background = (4,)
+    shifted_background = ((background[0] + gauge_shift[0]) % n,)
+    assert_equal(shifted_background, (2,), "background representative shifts by delta xi")
+
+    two_chain = (1,)
+    boundary_cycle = (1, 1, 0)
+    bulk_shift_exponent = charge * degree_checked_cochain_evaluation(
+        n,
+        cochain_degree=2,
+        cycle_dimension=2,
+        cochain=gauge_shift,
+        cycle=two_chain,
+    )
+    boundary_compensator_exponent = -charge * degree_checked_cochain_evaluation(
+        n,
+        cochain_degree=1,
+        cycle_dimension=1,
+        cochain=gauge_cochain,
+        cycle=boundary_cycle,
+    )
+    assert_equal(
+        (bulk_shift_exponent + boundary_compensator_exponent) % n,
+        0,
+        "charged insertion compensates background gauge cochain by Stokes",
+    )
+
+    before = charge * degree_checked_cochain_evaluation(
+        n,
+        cochain_degree=2,
+        cycle_dimension=2,
+        cochain=background,
+        cycle=two_chain,
+    )
+    after = (
+        charge
+        * degree_checked_cochain_evaluation(
+            n,
+            cochain_degree=2,
+            cycle_dimension=2,
+            cochain=shifted_background,
+            cycle=two_chain,
+        )
+        + boundary_compensator_exponent
+    )
+    assert_equal(
+        after % n,
+        before % n,
+        "background coupling plus charged operator is gauge covariant",
+    )
+
+    # A global higher-form symmetry at fixed background is closed.  It may act
+    # nontrivially on a nonbounding p-cycle, but its coboundary is zero.
+    symmetry_cocycle = (0, 0, 2)
+    symmetry_shift = delta_one_to_two(n, symmetry_cocycle)
+    loop_cycle = (0, 0, 1)
+    symmetry_phase = charge * degree_checked_cochain_evaluation(
+        n,
+        cochain_degree=1,
+        cycle_dimension=1,
+        cochain=symmetry_cocycle,
+        cycle=loop_cycle,
+    )
+    assert_equal(symmetry_shift, (0,), "closed symmetry cocycle leaves background fixed")
+    assert_equal(symmetry_phase % n, 4, "closed symmetry cocycle acts on charged p-cycle")
+    assert_true(
+        symmetry_shift != gauge_shift,
+        "closed symmetry cocycle must not masquerade as nonzero background gauge shift",
     )
 
 
@@ -380,6 +469,7 @@ def main() -> None:
     check_bounding_chain_ambiguity_requires_homology_condition()
     check_torsion_linking_pairing_is_q_mod_z()
     check_background_characteristic_class_degree_not_operator_holonomy()
+    check_background_gauge_cochain_separate_from_closed_symmetry_parameter()
     check_degree_p_holonomy_data_replaces_integer_linking()
     check_defect_transgression_yields_degree_p_action()
     check_junction_charge_conservation()

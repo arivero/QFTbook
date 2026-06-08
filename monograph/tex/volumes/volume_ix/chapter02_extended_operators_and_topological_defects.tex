@@ -384,13 +384,22 @@ differential-cohomology representative \(\check B\) with a declared
   \operatorname{Hol}_{\check B}(\Sigma)\in A,
   \qquad
   W_q(\Sigma)\mapsto
-  q\!\left(\operatorname{Hol}_{\check B}(\Sigma)\right)W_q(\Sigma),
+  q\!\left(\operatorname{Hol}_{\check B}(\Sigma)\right)W_q(\Sigma).
 \]
-or, for an ordinary symmetry transformation, a degree-\(p\) gauge parameter
-\(\lambda\in Z^p(M;A)\) with \(B\mapsto B+\delta\lambda\), acting by
+At the cochain level the background representative is a cocycle
+\(B\in Z^{p+1}(M;A)\), with gauge equivalence
+\(B\sim B+\delta\xi\) for an arbitrary degree-\(p\) cochain
+\(\xi\in C^p(M;A)\).  If the charged operator is described by a bounding-chain
+or trivialization coordinate, Stokes' formula gives the compensating phase
+\(q(\langle\xi,\Sigma\rangle)^{-1}\) under this gauge change, with the inverse
+fixed by the convention that the combined background coupling and operator
+insertion is gauge invariant.  This is different from a global higher-form
+symmetry transformation at fixed background: a flat parameter
+\(\alpha\in Z^p(M;A)\), modulo coboundaries, has \(\delta\alpha=0\) and acts by
 \[
   W_q(\Sigma)\mapsto
-  q\!\left(\langle\lambda,[\Sigma]\rangle\right)W_q(\Sigma).
+  q\!\left(\langle\alpha,[\Sigma]\rangle\right)W_q(\Sigma),
+  \qquad B\ \hbox{unchanged}.
 \]
 A codimension-\((p+1)\) symmetry defect is typed similarly: its relative or
 Thom class is degree \(p+1\), and a specified transgression, slant, cap, or

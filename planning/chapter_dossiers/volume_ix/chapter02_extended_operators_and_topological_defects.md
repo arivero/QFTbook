@@ -48,7 +48,9 @@ Source-File: monograph/tex/volumes/volume_ix/chapter02_extended_operators_and_to
 | \(\operatorname{Link}_{\rm loc}(N,\Sigma)\) | local or controlled-chart integer linking number |
 | \([B]\in H^{p+1}(M;A)\) | characteristic class of a finite \(p\)-form background, evaluable on \((p+1)\)-cycles |
 | \(\check B\) | cochain or differential-cohomology representative with declared \(p\)-cycle holonomy |
-| \(\lambda\in Z^p(M;A)\) | degree-\(p\) gauge/transgression datum acting on charged \(p\)-operators |
+| \(B\in Z^{p+1}(M;A)\) | cocycle representative of the finite \(p\)-form background before quotienting by coboundaries |
+| \(\xi\in C^p(M;A)\) | arbitrary background gauge cochain, with \(B\mapsto B+\delta\xi\) |
+| \(\alpha\in Z^p(M;A)\) | closed global higher-form symmetry parameter acting at fixed background |
 | \(\tau_a\) | relative/Thom class of a codimension-\((p+1)\) symmetry defect before transgression |
 | \(\lambda_{\rm tor}\) | torsion linking pairing with values in \(\mathbb Q/\mathbb Z\) |
 
@@ -70,8 +72,9 @@ Source-File: monograph/tex/volumes/volume_ix/chapter02_extended_operators_and_to
    bounding-chain chart whose ambiguity vanishes.  On general \(M\), the
    characteristic class \([B]\in H^{p+1}(M;A)\) is not evaluated directly on a
    charged \(p\)-cycle.  Operator phases use a declared \(p\)-cycle holonomy,
-   degree-\(p\) gauge parameter, or transgressed complement datum, with torsion
-   wrapping data valued in \(\mathbb Q/\mathbb Z\).
+   an arbitrary gauge cochain \(\xi\) for background-gauge covariance, a closed
+   fixed-background symmetry cocycle \(\alpha\), or a transgressed complement
+   datum, with torsion wrapping data valued in \(\mathbb Q/\mathbb Z\).
 8. Defect completion data record the genuine extended operators, boundaries,
    junctions, and fusion limits included in the theory.
 
@@ -83,8 +86,9 @@ Source-File: monograph/tex/volumes/volume_ix/chapter02_extended_operators_and_to
   integer recovery, nonbounding \(T^3\) loop and bounding-chain ambiguity
   negative controls, torsion \(\mathbb Q/\mathbb Z\) linking bilinearity, the
   degree/type rejection of \(H^{p+1}\) evaluation on an \(H_p\) cycle,
-  degree-\(p\) holonomy evaluation on noncontractible cycles, transgression of
-  a codimension-\((p+1)\) defect class to the local linking action, and junction
+  degree-\(p\) holonomy evaluation on noncontractible cycles, separation of
+  arbitrary gauge cochains from closed symmetry cocycles, transgression of a
+  codimension-\((p+1)\) defect class to the local linking action, and junction
   charge conservation.
 
 ## Audit Notes
@@ -98,9 +102,16 @@ Source-File: monograph/tex/volumes/volume_ix/chapter02_extended_operators_and_to
   and local meridian negative/positive controls.
 - 2026-06-08 issue #961 pass: corrected the global higher-form action typing.
   A background characteristic class \([B]\in H^{p+1}(M;A)\) is now separated
-  from evaluable \(p\)-cycle holonomy data, degree-\(p\) gauge parameters, and
+  from evaluable \(p\)-cycle holonomy data, degree-\(p\) action data, and
   transgressed defect-complement data.  The companion check rejects direct
   evaluation of an \(H^{p+1}\) class on an \(H_p\) charged cycle.
+- 2026-06-08 issue #964 cochain/cocycle split: separated the background gauge
+  cochain \(\xi\in C^p(M;A)\), which can have \(\delta\xi\ne0\) and shifts a
+  representative \(B\), from the closed global symmetry cocycle
+  \(\alpha\in Z^p(M;A)\), which has \(\delta\alpha=0\), leaves \(B\) fixed, and
+  acts on charged \(p\)-cycles by evaluation.  The companion now checks a finite
+  cochain Stokes covariance example and rejects treating a closed cocycle as a
+  nonzero background coboundary shift.
 
 ## Figures
 

@@ -2075,6 +2075,8 @@ Current checks:
   ambiguity negative controls, torsion \(\mathbb Q/\mathbb Z\) linking
   bilinearity, degree/type rejection of \(H^{p+1}\) evaluation on \(H_p\)
   charged cycles, degree-\(p\) holonomy evaluation on noncontractible cycles,
+  separation of arbitrary background gauge cochains from closed higher-form
+  symmetry cocycles, finite cochain Stokes covariance for charged insertions,
   transgression of a codimension-\((p+1)\) defect class to the local linking
   action, and junction charge conservation.
 - `categorical_defect_structure_checks.py`: exact finite checks for the
