@@ -740,7 +740,7 @@ analyses and by thermodynamic quasi-local-charge bounds on Drude weights
   \draw[decorate,decoration={brace,amplitude=4pt}]
     (-0.25,0.05) -- (-0.25,0.86);
   \node[anchor=east,fill=white,inner sep=1pt] at (-0.40,0.43)
-    {\(\lim_{\omega\downarrow0}\sigma^{\rm reg}\)};
+    {\(\lim_{\omega\downarrow0}\sigma^{{\rm diss},\rm reg}\)};
   \fill[blue!70!black] (0,1.43) circle (1.7pt);
   \fill[orange!85!black] (0,0.78) circle (1.7pt);
   \node[anchor=north] at (0,-0.12) {\(0\)};
@@ -752,7 +752,8 @@ analyses and by thermodynamic quasi-local-charge bounds on Drude weights
 after the thermodynamic limit, in the case with no singular-continuous
 remainder and with an absolutely continuous part admitting a finite
 zero-frequency limit.  The finite dc coefficient is the zero-frequency limit
-of the regular part \(\sigma^{\rm reg}\), equivalently the slope of
+of the regular dissipative part \(\sigma^{{\rm diss},\rm reg}\), equivalently
+the slope of
 \(\rho^{\rm reg}_{JJ}(\omega,\mathbf0)\) divided by \(2\omega\).  A Drude or
 superfluid weight is represented by the separate \(\delta(\omega)\) summand.}
 \label{fig:kubo-order-of-limits}
@@ -770,7 +771,10 @@ freedom in the channel under study.  Time evolution acts on this space by
   \qquad
   \mathcal L X=\ii[H_L,X],
 \]
-so that \(dX(t)/dt=\mathcal L X(t)\).  For linearly independent Hermitian
+so that \(dX(t)/dt=\mathcal L X(t)\).  This finite Hamiltonian Liouvillian
+has the almost-periodic spectral content of the regulated unitary theory; its
+Riesz projections are microscopic projection tools, not by themselves
+dissipative hydrodynamic relaxation poles.  For linearly independent Hermitian
 operators \(A_a\) with zero thermal expectation define the Kubo--Mori inner
 product
 \begin{equation}

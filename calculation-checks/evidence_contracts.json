@@ -189,6 +189,8 @@
         "retained hydrodynamic slow sector is a spectral subspace",
         "non-normal diagonal relaxation rates are basis dependent",
         "slow Riesz projector transforms covariantly",
+        "sources transform contragrediently to observable basis changes",
+        "finite Hamiltonian Liouvillian is not a dissipative pole generator",
         "continuum lower edge entering hydrodynamic window is not a finite pole"
       ]
     },

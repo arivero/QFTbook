@@ -26,18 +26,19 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
   asymptotic constitutive expansion after thermodynamic limit and declared
   contact-term subtraction.
 - Complete retained slow-sector datum \(\mathcal E_{\rm slow}\): a
-  basis-invariant spectral subspace of a quotient source/operator space, after
-  null directions, improvements, contacts, and Ward redundancies have been
-  removed.  Exact conserved-density directions are mandatory, but any
-  Goldstone, critical, quasihydrodynamic, kinetic, elastic, orientational, or
-  higher-form spectral direction or continuum window entering the declared
+  basis-invariant spectral subspace of a regulated observable quotient
+  \(\mathcal O_\lambda\), paired with a separate source space
+  \(\mathcal J_\lambda\).  Contact terms are response-kernel scheme data, not
+  quotient vectors.  Exact conserved-density directions are mandatory, but
+  any Goldstone, critical, quasihydrodynamic, kinetic, elastic, orientational,
+  or higher-form spectral direction or continuum window entering the declared
   hydrodynamic scaling window must also be retained.
 - Slow-sector completeness/complement-regularity controlled approximation:
-  after projecting onto \(\mathcal E_{\rm slow}\) with the Riesz or
-  spectral-window projector for the declared generator \(\mathcal L\), the
-  complement block \(A_{ff}^{-1}\) of the actual inverse-response or memory
-  operator \(\mathcal A\) and the slow Schur complement must remain uniformly
-  regular in the hydrodynamic scaling window.
+  after projecting onto \(\mathcal E_{\rm slow}\) with the projector defined
+  by the thermodynamic inverse-response/memory pencil \(\mathcal A\), or by an
+  explicitly constructed effective generator \(\mathcal G\), the complement
+  block \(A_{ff}^{-1}\) and the slow Schur complement for that same pencil
+  must remain uniformly regular in the hydrodynamic scaling window.
 - Mostly-plus projector \(\Delta^{\mu\nu}=\eta^{\mu\nu}+u^\mu u^\nu\).
 - Landau-frame condition \(u_\mu T^{\mu\nu}=-\varepsilon u^\nu\).
 - General hydrodynamic-frame decomposition and first-order frame
@@ -112,11 +113,13 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
 | \(\Pi\) | transient shear stress in the linear causal-completion example |
 | \(\tau_\pi\) | shear-stress relaxation time in the MIS example |
 | \(v_T\) | shear-sector front speed \((D_\eta/\tau_\pi)^{1/2}\) |
-| \(\mathcal V_\lambda(\mathbf k)\) | quotient source/operator space after null directions, improvements, contacts, and Ward redundancies |
-| \(\chi_\lambda\) | susceptibility or Kubo-Mori pairing on the quotient source/operator space |
-| \(\mathcal L_\lambda(\mathbf k)\) | declared relaxation, Liouvillian, or memory generator whose low spectral subspace defines the retained slow sector |
-| \(\mathcal A_\lambda(\omega,\mathbf k)\) | inverse-response or memory operator actually inverted after the slow spectral subspace has been chosen |
-| \(P_{\rm slow,\lambda}\) | Riesz or spectral-window projector onto the retained slow spectral subspace |
+| \(\mathcal O_\lambda(\mathbf k)\) | regulated observable quotient after null vectors, Ward equivalences, and declared improvements |
+| \(\mathcal J_\lambda(\mathbf k)\) | source space paired contragrediently with \(\mathcal O_\lambda\) |
+| \(\chi_\lambda\) | susceptibility or Kubo-Mori pairing on \(\mathcal O_\lambda\), equivalently a map to \(\mathcal O_\lambda^*\) |
+| \(\mathcal L_{\rm mic}\) | exact finite-regulator Hamiltonian Liouvillian, used for Kubo-Mori projection but not identified with dissipative hydrodynamic poles |
+| \(\mathcal A_\lambda(z,\mathbf k)\) | thermodynamic inverse-response or memory pencil defining the slow window and Schur-complement test |
+| \(\mathcal G_\lambda(\mathbf k)\) | optional effective dissipative generator constructed from \(\mathcal A_\lambda\) |
+| \(P_{\rm slow,\lambda}\) | projector onto the retained slow observable subspace, defined from the declared pencil or effective generator |
 | \(\mathcal E_{\rm slow}\) | retained slow spectral subspace in the declared scaling family |
 | \(A_{ff}^{-1}\) | complement inverse block appearing in the Schur complement after fast modes are integrated out |
 | \(\Gamma_\phi\) | sample nonconserved order-parameter relaxation rate in the omitted-mode negative control |
@@ -131,9 +134,12 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
    gauge/diffeomorphism invariance gives the source Ward identities.
 3. A constitutive relation is an asymptotic statement on hydrodynamic
    scaling families, not a finite-volume identity.
-4. The retained slow sector is a basis-invariant spectral subspace, not a
-   list of preferred operator names or diagonal relaxation entries.  The
-   normal-fluid chapters use
+4. The retained slow sector is a basis-invariant observable subspace paired
+   with a dual source space, not a list of preferred operator names, source
+   directions, or diagonal relaxation entries.  Operator bases transform by
+   \(M\), sources contragrediently by \(M^{-\mathsf T}\), and the
+   susceptibility/Kubo-Mori form transforms as the corresponding bilinear
+   pairing.  The normal-fluid chapters use
    \(\mathcal E_{\rm slow}^{\rm normal}
    =\operatorname{span}\{T^{00},T^{0i},J_A^0\}\), and this is valid only when
    no additional spectral direction, Jordan block, or continuum window enters
@@ -203,12 +209,15 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
     integrated out as a local analytic correction only when \(\Gamma_\phi\)
     remains outside the hydrodynamic scaling window.  If \(\Gamma_\phi\) scales
     to zero, the scalar belongs to \(\mathcal E_{\rm slow}\).  In a mixed
-    multi-field problem the invariant retained object is the
-    Riesz/spectral-window projector for the declared generator \(\mathcal L\),
-    while complement regularity is tested through the Schur complement of the
-    actual inverse-response or memory operator \(\mathcal A\); in a kinetic
-    continuum, a lower edge entering the
-    hydrodynamic window is a slow spectral channel rather than a finite pole.
+    multi-field problem the invariant retained object is the projector for the
+    declared thermodynamic pencil \(\mathcal A\), or for an effective
+    generator \(\mathcal G\) constructed from it, while complement regularity
+    is tested through the Schur complement of the same pencil; in a kinetic
+    continuum, a lower edge entering the hydrodynamic window is a slow
+    spectral channel rather than a finite pole.  The exact finite
+    Hamiltonian Liouvillian gives oscillatory lines and projection identities,
+    not dissipative relaxation eigenvalues before the thermodynamic/scaling
+    limit.
 22. Hydrodynamic correlator poles match the Kubo coefficients only after the
    thermodynamic and hydrodynamic scaling limits are specified.
 23. The microscopic QFT theorem boundary requires local equilibration,
@@ -238,11 +247,20 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
   ordinary normal fluid, added a complement-regularity hypothesis, and inserted
   the omitted-order-parameter memory-kernel negative control.
 - 2026-06-08 issue #940 pass: sharpened the slow-sector criterion from a
-  named-operator/scalar-rate set to a basis-invariant spectral subspace on a
-  quotient source/operator space, gave \(P_{\rm slow}\) a Riesz/window
-  construction for the declared generator, formulated complement regularity
-  through the Schur complement of the operator actually inverted, and added
-  operator-mixing and continuum lower-edge negative controls.
+  named-operator/scalar-rate set to a basis-invariant spectral subspace, gave
+  \(P_{\rm slow}\) a Riesz/window construction for the declared spectral
+  object, formulated complement regularity through the Schur complement of the
+  operator actually inverted, and added operator-mixing and continuum
+  lower-edge negative controls.  The #944 pass refines the spaces and
+  generator typing of this criterion.
+- 2026-06-08 issue #944 pass: separated regulated observable quotients from
+  paired source spaces, moved contact terms into response-kernel scheme data,
+  placed hydrodynamic fields in \(T\mathcal M_{\rm eq}\) with the
+  susceptibility/frame map to density fluctuations, and made the
+  thermodynamic memory/inverse-response pencil or a constructed effective
+  generator the object that defines the slow window.  The finite Hamiltonian
+  Liouvillian is now explicitly only a microscopic projection tool unless an
+  additional limit theorem identifies it with the dissipative spectrum.
 - 2026-06-08 issue #942 synchronization: matched the entropy/Onsager
   discussion to Chapter 4's Hermitian dissipative conductivity projection,
   keeping antisymmetric Hall-type response outside the positive entropy
@@ -264,9 +282,11 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
   nonlocal memory kernel rather than an analytic normal-fluid coefficient.
   The issue #940 extension checks that diagonal entries of a non-normal
   relaxation matrix are basis dependent while the slow Riesz projector
-  transforms covariantly, and that a continuum of relaxation rates whose lower
-  edge scales to zero produces branch-cut memory rather than a finite-pole
-  correction.
+  transforms covariantly, that sources must transform contragrediently to
+  observable basis changes, that a finite Hamiltonian Liouvillian has
+  oscillatory spectral lines rather than dissipative relaxation poles, and
+  that a continuum of relaxation rates whose lower edge scales to zero
+  produces branch-cut memory rather than a finite-pole correction.
 
 ## Figures
 

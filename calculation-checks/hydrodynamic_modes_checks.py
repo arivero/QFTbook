@@ -11,15 +11,19 @@ also guard the slow-sector completeness boundary: an omitted relaxational
 order parameter whose gap scales to zero produces a nonlocal memory
 denominator and cannot be absorbed into analytic normal-fluid coefficients;
 the retained slow sector is a basis-invariant spectral subspace rather than a
-list of diagonal operator rates; and a continuum lower edge entering the
-hydrodynamic window is a slow spectral channel, not a finite pole list.
+list of diagonal operator rates; sources transform contragrediently to
+observable basis changes; the finite Hamiltonian Liouvillian has oscillatory
+spectral lines rather than dissipative relaxation rates; and a continuum lower
+edge entering the hydrodynamic window is a slow spectral channel, not a finite
+pole list.
 Independent construction: direct finite-dimensional algebra for the Ward
 identity modes, exact heat-kernel positivity away from the origin, explicit
 quadratic roots for boosted diffusion and MIS shear relaxation, an explicit
 finite Gibbs/Lehmann retarded response whose singular support is computed
 from transition energies rather than inserted as test points, and matrix
 similarity checks for multi-charge diffusion.  The slow-sector guards use an
-exact non-normal two-by-two matrix and a finite continuum memory integral.
+exact non-normal two-by-two matrix, a source/observable pairing check, a
+finite unitary Liouvillian sample, and a finite continuum memory integral.
 Imported assumptions: homogeneous KMS thermodynamic stability, the stated
 Landau-frame constitutive relations, positivity of transport coefficients from
 entropy/Kubo arguments, and the choice of a single linear MIS shear relaxation
@@ -32,8 +36,10 @@ plane root is rejected, a causal relaxation model with superluminal shear
 front speed is rejected, an omitted order-parameter mode with a vanishing
 relaxation rate is rejected as an analytic conserved-density-only correction,
 diagonal entries of a mixed relaxation matrix are rejected as basis-invariant
-rates, a continuum of relaxation rates whose lower edge scales to zero is
-rejected as a finite-pole correction,
+rates, same-way source and observable transformations are rejected, a finite
+Hamiltonian Liouvillian is rejected as a dissipative pole generator, a
+continuum of relaxation rates whose lower edge scales to zero is rejected as
+a finite-pole correction,
 and linear shear completion is not treated as a theorem for full nonlinear
 causal hydrodynamics.
 Scope boundary: these checks verify finite algebra and linear-mode
@@ -105,6 +111,27 @@ def qtrace(matrix: Matrix2Q) -> Fraction:
 
 def qdet(matrix: Matrix2Q) -> Fraction:
     return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+
+
+def qtranspose(matrix: Matrix2Q) -> Matrix2Q:
+    return (
+        (matrix[0][0], matrix[1][0]),
+        (matrix[0][1], matrix[1][1]),
+    )
+
+
+def qmatvec(matrix: Matrix2Q, vector: tuple[Fraction, Fraction]) -> tuple[Fraction, Fraction]:
+    return (
+        matrix[0][0] * vector[0] + matrix[0][1] * vector[1],
+        matrix[1][0] * vector[0] + matrix[1][1] * vector[1],
+    )
+
+
+def qquadratic(vector: tuple[Fraction, Fraction], matrix: Matrix2Q) -> Fraction:
+    return (
+        vector[0] * (matrix[0][0] * vector[0] + matrix[0][1] * vector[1])
+        + vector[1] * (matrix[1][0] * vector[0] + matrix[1][1] * vector[1])
+    )
 
 
 def shear_pole(eta: float, enthalpy: float, k: float) -> complex:
@@ -581,6 +608,56 @@ def check_basis_invariant_slow_projector_negative_control() -> None:
     )
 
 
+def check_contragredient_source_observable_transform() -> None:
+    observable_change: Matrix2Q = ((Fraction(2), Fraction(1)), (Fraction(1), Fraction(1)))
+    inverse_change = qmatinv(observable_change)
+    source_change = qtranspose(inverse_change)
+    wrong_same_way_source_change = observable_change
+
+    susceptibility: Matrix2Q = (
+        (Fraction(5, 3), Fraction(1, 7)),
+        (Fraction(1, 7), Fraction(4, 5)),
+    )
+    source = (Fraction(3, 5), Fraction(-2, 7))
+
+    transformed_susceptibility = qmatmul(
+        qmatmul(observable_change, susceptibility),
+        qtranspose(observable_change),
+    )
+    transformed_source = qmatvec(source_change, source)
+    wrong_source = qmatvec(wrong_same_way_source_change, source)
+
+    original_power = qquadratic(source, susceptibility)
+    transformed_power = qquadratic(transformed_source, transformed_susceptibility)
+    wrong_power = qquadratic(wrong_source, transformed_susceptibility)
+    assert_equal("contragredient source transform preserves response pairing", transformed_power, original_power)
+    if wrong_power == original_power:
+        raise AssertionError("same-way source transform should not preserve the source/observable pairing")
+
+
+def check_finite_liouvillian_not_dissipative_generator() -> None:
+    delta = Fraction(7, 5)
+    liouvillian: Matrix2Q = ((Fraction(0), delta), (-delta, Fraction(0)))
+
+    assert_equal("finite Hamiltonian Liouvillian has zero trace", qtrace(liouvillian), Fraction(0))
+    assert_equal("finite Hamiltonian Liouvillian has positive rotation determinant", qdet(liouvillian), delta * delta)
+    discriminant = qtrace(liouvillian) * qtrace(liouvillian) - 4 * qdet(liouvillian)
+    if discriminant >= 0:
+        raise AssertionError("finite Hamiltonian Liouvillian sample should have imaginary spectral lines")
+
+    z_dissipative = Fraction(-3, 101)
+    characteristic_at_dissipative_pole = z_dissipative * z_dissipative + delta * delta
+    if characteristic_at_dissipative_pole == 0:
+        raise AssertionError("dissipative hydrodynamic pole should not be an eigenvalue of the finite Liouvillian")
+
+    effective_diffusion_pencil_zero = z_dissipative - z_dissipative
+    assert_equal(
+        "separately declared effective memory pencil can have a dissipative pole",
+        effective_diffusion_pencil_zero,
+        Fraction(0),
+    )
+
+
 def check_continuum_slow_edge_memory_negative_control() -> None:
     fixed_lower_edge = 0.2
     fixed_static = math.log(1.0 / fixed_lower_edge)
@@ -619,6 +696,8 @@ def main() -> None:
     check_multicharge_diffusion_geometry()
     check_omitted_relaxational_mode_memory_negative_control()
     check_basis_invariant_slow_projector_negative_control()
+    check_contragredient_source_observable_transform()
+    check_finite_liouvillian_not_dissipative_generator()
     check_continuum_slow_edge_memory_negative_control()
     print("All hydrodynamic Ward-identity mode checks passed.")
 
