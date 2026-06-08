@@ -1557,7 +1557,10 @@ Current checks:
   \(\Phi^4_3\) mass-coordinate translation between Euclidean action
   coefficients and SPDE drift coordinates, the vacuum-coordinate shift that
   leaves normalized Schwinger ratios and connected log ratios invariant while
-  changing pressure/free-energy densities with opposite signs, together with
+  changing pressure/free-energy densities with opposite signs, the
+  finite-volume \(P(\phi)_2\) boundary-covariance negative control,
+  rooted-versus-extensive log-partition bookkeeping, source-local cluster
+  bound, and scalar polymer-activity localization check, together with
   exact arithmetic for
   the abstract modelled-distribution fixed-point ball, contraction, and Picard
   tail estimates, the fixed-point-sector perturbation budget that transfers

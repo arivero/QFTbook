@@ -23,8 +23,12 @@ Source-File: monograph/tex/volumes/volume_xi/chapter02_constructive_scalar_model
   uniform exponential integrability of the finite-volume density.
 - Polymer activity norm, hard-core Ursell coefficients, Penrose tree-graph
   inequality, Kotecky--Preiss/Brydges--Kennedy rooted-tree convergence
-  criterion, finite source-derivative extraction of connected Schwinger
-  coefficients, and exponential clustering estimate.
+  criterion for scalarized activities, finite source-derivative extraction of
+  connected Schwinger coefficients, the extensive log-partition/rooted-bound
+  distinction, and exponential clustering estimate.
+- Boundary-comparison theorem for massive \(P(\phi)_2\): finite-volume
+  boundary choices can differ on interior test functions, while thermodynamic
+  boundary independence follows from cluster decay along a van Hove exhaustion.
 - Quoted massive \(P(\phi)_2\) OS-output theorem from the cluster expansion.
 - Corollary deriving a Hamiltonian mass gap from Euclidean exponential
   clustering through the OS spectral representation.
@@ -101,8 +105,10 @@ Source-File: monograph/tex/volumes/volume_xi/chapter02_constructive_scalar_model
 | \(p_\varepsilon(q)\) | finite-cutoff normal-ordered local \(\Phi^4_3\) polynomial |
 | \(A_\varepsilon,B_\varepsilon\) | quadratic-in-\(y=q^2\) coefficients of \(p_\varepsilon\) |
 | \(K(X,\phi)\) | polymer activity on the polymer \(X\) |
+| \(z(X)\) | scalar activity obtained from \(K(X,\phi)\) after fluctuation integration/localization |
 | \(b_\alpha(X)\) | finite source weight for an insertion supported near \(A_\alpha\), vanishing unless \(X\) meets the source neighbourhood |
 | \(\kappa(X)\) | numerical majorant for the polymer activity after large-field weighting |
+| \(\kappa_\partial^L(X)\) | boundary-marked activity-difference majorant with exponential distance-to-boundary decay |
 | \(\|K\|_{a,b}\) | schematic cluster norm with large-field weight |
 | \(K_j(X),\kappa_j(X)\) | scale-\(j\) polymer activity and numerical majorant |
 | \(L\) | phase-cell scale factor |
@@ -130,18 +136,27 @@ Source-File: monograph/tex/volumes/volume_xi/chapter02_constructive_scalar_model
    logarithmic covariance powers, hypercontractivity, and the quoted
    stability theorem.  The proof now displays how the subquadratic Sobolev
    bound combines with Fernique and Holder estimates to give uniform
-   integrability and convergence of normalized Schwinger functions.
+   integrability and convergence of normalized Schwinger functions for each
+   chosen finite-volume covariance.  It explicitly does not identify
+   Dirichlet, periodic, or other finite-volume covariance choices at fixed
+   volume.
 3. Cluster expansion convergence follows from a polymer smallness criterion:
    the proof now displays the Penrose tree-graph inequality, the rooted-tree
    recursion \(F_{N+1}(X)\le\exp(\sum_{Y\nsim X}\kappa(Y)F_N(Y))\), and the
    leftover exponential-weight argument producing clustering.  The chapter
    now also displays the finite source-derivative identity showing that
    connected Schwinger coefficients are sums over connected incompatibility
-   clusters meeting every source neighbourhood.
+   clusters meeting every source neighbourhood.  The scalar hard-core theorem
+   is separated from the field-dependent constructive activities by an
+   explicit scalarization/localization step; the log-partition absolute bound
+   is \(O(|\Lambda|)\), while rooted estimates, pressure densities, and
+   fixed-support source derivatives carry volume-uniform bounds.
 4. The cluster-expansion \(P(\phi)_2\) output theorem supplies the actual OS
    hierarchy: thermodynamic-limit Schwinger functions with covariance,
    symmetry, reflection positivity, regularity, OS growth, and exponential
-   clustering.
+   clustering.  Boundary independence is supplied by a separate massive
+   cluster-decay comparison theorem along a van Hove exhaustion, not by the
+   finite-volume UV argument.
 5. Exponential Euclidean clustering implies a Hamiltonian spectral gap after
    OS reconstruction by the Laplace-transform spectral-measure argument.
 6. Hamiltonian \(\phi^4_2\) construction rests on number-operator and
@@ -229,6 +244,8 @@ Source-File: monograph/tex/volumes/volume_xi/chapter02_constructive_scalar_model
   \(\Phi^4_3\) sunset combinatorics, finite-cutoff local stability bound,
   static-to-dynamic mass-coordinate translation, vacuum-coordinate partition
   and pressure/free-energy shift identities,
+  finite-volume \(P(\phi)_2\) boundary-covariance negative control,
+  rooted-versus-extensive polymer bookkeeping, scalar activity localization,
   multiscale phase-cell tail estimate, source-decorated Schwinger-seminorm
   variant, model-specific phase-cell derivation-budget arithmetic,
   connected-to-full partition growth bound, cross-route phase-cell/SPDE
@@ -266,6 +283,17 @@ Source-File: monograph/tex/volumes/volume_xi/chapter02_constructive_scalar_model
   terms of incompatibility paths between source neighbourhoods.  The
   companion check enumerates a finite hard-core polymer gas with and without
   a bridge polymer.
+- 2026-06-08 issue #894 pass: the chapter now separates fixed-volume
+  ultraviolet locality from thermodynamic boundary independence.  The
+  finite-volume theorem is stated for the chosen covariance and includes a free
+  Gaussian negative control showing that Dirichlet/periodic covariance choices
+  can differ on interior test functions.  The KP theorem is now explicitly a
+  scalar hard-core theorem applied after fluctuation integration/localization
+  of \(K(X,\phi)\) into \(z(X)\); its log-partition bound is extensive, while
+  rooted estimates, pressure density, and fixed-support source derivatives are
+  the volume-uniform objects.  A separate boundary-comparison theorem uses a
+  boundary-marked majorant \(\kappa_\partial^L(X)\) to give the decay estimate
+  needed for equality of thermodynamic Schwinger limits.
 - 2026-05-25 issue #555 pass: the cluster-expansion section now states the
   massive \(P(\phi)_2\) OS-output theorem and proves the mass-gap consequence
   from exponential Euclidean clustering by a spectral-measure

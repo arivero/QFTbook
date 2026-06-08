@@ -267,9 +267,23 @@ densities.  Finally, the smeared insertions
 \(\phi_\varepsilon(f_i)\) converge in every Gaussian \(L^q\) space, and
 Holder's inequality combines this convergence with the uniform exponential
 moments.  Therefore the normalized Schwinger functions have the stated
-finite-volume ultraviolet limits.  The argument is local in \(\Lambda\), so
-test functions supported away from the boundary are unaffected by the
-boundary condition used to define the finite covariance.
+finite-volume ultraviolet limits for the chosen finite-volume covariance.
+This qualifier is part of the theorem.  The ultraviolet argument uses the
+common logarithmic short-distance singularity; it does not identify distinct
+smooth completions of that singularity.  Already in the free massive Gaussian
+theory,
+\[
+  \mathbb E_{C_\Lambda^b}[\phi(f)^2]
+  -
+  \mathbb E_{C_\Lambda^{b'}}[\phi(f)^2]
+  =
+  \int f(x)\bigl(C_\Lambda^b(x,y)-C_\Lambda^{b'}(x,y)\bigr)
+    f(y)\,\dd^2x\,\dd^2y
+\]
+can be nonzero for \(f\) supported away from \(\partial\Lambda\), even though
+\(C_\Lambda^b-C_\Lambda^{b'}\) is smooth on the interior.  Boundary
+independence is therefore a thermodynamic-limit statement proved by massive
+decay and cluster estimates, not by fixed-volume ultraviolet locality.
 \end{proof}
 
 \section{Cluster Expansion and Infinite Volume}
@@ -374,15 +388,16 @@ side is at most \(\prod_{e\in E(T)}u_e\).  Summing over \(T\) proves
 \eqref{eq:constructive-tree-graph-inequality}.
 \end{proof}
 
-\begin{theorem}[Kotecky--Preiss/Brydges--Kennedy convergence criterion]
+\begin{theorem}[Scalar hard-core Kotecky--Preiss/Brydges--Kennedy criterion]
 \label{thm:constructive-kp-cluster-convergence}
-Let \(\mathcal P_\Lambda\) be the finite set of polymers contained in a
-finite cell region \(\Lambda\).  Let
+Let \(\mathcal P_\Lambda\) be the finite set of polymers contained in a finite
+cell region \(\Lambda\).  Let \(z(X)\in\C\) be scalar activities satisfying
+\(|z(X)|\leq\kappa(X)\), and let
 \[
-  Z_\Lambda(K)
+  Z_\Lambda(z)
   =
   \sum_{\mathcal X\subset\mathcal P_\Lambda\ {\rm pairwise\ compatible}}
-  \prod_{X\in\mathcal X}K(X)
+  \prod_{X\in\mathcal X}z(X)
 \]
 be the abstract hard-core polymer partition function.  Suppose there are
 numbers \(a>a'>0\) and \(\epsilon>0\) such that
@@ -402,16 +417,16 @@ constant defined by
 \]
 Then
 \begin{equation}
-  \log Z_\Lambda(K)
+  \log Z_\Lambda(z)
   =
   \sum_{n\geq1}\frac1{n!}
   \sum_{X_1,\ldots,X_n\in\mathcal P_\Lambda}
   \varphi_{\mathrm c}(X_1,\ldots,X_n)
-  \prod_{i=1}^nK(X_i)
+  \prod_{i=1}^nz(X_i)
   \label{eq:constructive-cluster-expansion}
 \end{equation}
-is absolutely convergent uniformly in \(\Lambda\).  More precisely, for each
-root polymer \(X_0\),
+is absolutely convergent for every finite \(\Lambda\).  The bound that is
+uniform in \(\Lambda\) is the rooted estimate: for each root polymer \(X_0\),
 \begin{equation}
   \sum_{n\geq1}\frac1{(n-1)!}
   \sum_{X_2,\ldots,X_n\in\mathcal P_\Lambda}
@@ -421,8 +436,31 @@ root polymer \(X_0\),
   e^{a'|X_0|}.
   \label{eq:constructive-rooted-tree-bound}
 \end{equation}
+Consequently the total absolute cluster sum is extensive rather than
+volume-uniform:
+\begin{equation}
+\begin{aligned}
+  &\sum_{n\geq1}\frac1{n!}
+  \sum_{X_1,\ldots,X_n\in\mathcal P_\Lambda}
+  |\varphi_{\mathrm c}(X_1,\ldots,X_n)|
+  \prod_{i=1}^n\kappa(X_i)                                      \\
+  &\qquad\leq
+  \sum_{X_0\in\mathcal P_\Lambda}\kappa(X_0)e^{a'|X_0|}
+  \leq
+  \epsilon |\Lambda|_{\rm cell}.
+\end{aligned}
+\label{eq:constructive-extensive-logz-bound}
+\end{equation}
+Thus \(|\Lambda|_{\rm cell}^{-1}\log Z_\Lambda(z)\) has a uniform absolute
+bound.  For translation-covariant bulk activities, the pressure density is
+obtained from the absolutely summable rooted series; boundary and corner
+clusters contribute \(o(|\Lambda_L|_{\rm cell})\) along any van Hove
+exhaustion \(\Lambda_L\uparrow\R^2\).  Source derivatives with sources
+supported in a fixed cell region are controlled by the same rooted bound and
+are therefore uniform in the volume once the source region lies inside
+\(\Lambda\).
 Consequently connected correlations of observables supported in separated
-regions \(A\) and \(B\), whose source activities obey the same local
+regions \(A\) and \(B\), whose scalarized source activities obey the same local
 majorant, satisfy
 \begin{equation}
   |\langle F_A G_B\rangle-\langle F_A\rangle\langle G_B\rangle|
@@ -442,8 +480,8 @@ coefficient \(\varphi_{\mathrm c}\) defined in
 \eqref{eq:constructive-ursell-coefficient}.  Equivalently, it is the formal
 Taylor expansion of the analytic branch of \(\log Z_\Lambda\) satisfying
 \(\log Z_\Lambda(0)=0\); the absolute convergence proved below is what makes
-this formal expansion a uniformly convergent function in the stated
-polydisc of activities.
+this formal expansion a convergent function for each finite \(\Lambda\), with
+rooted estimates whose constants do not depend on \(\Lambda\).
 
 Apply Lemma~\ref{lem:constructive-penrose-tree-graph-bound}.  Root each tree
 at the vertex carrying \(X_0\) and orient its edges away from the root.  Let
@@ -473,9 +511,31 @@ Assume inductively that \(F_N(Y)\leq e^{a'|Y|}\).  Since \(a>a'\),
 \end{equation}
 Thus \(F_{N+1}(X)\leq e^{a'|X|}\).  Letting \(N\to\infty\) proves
 \eqref{eq:constructive-rooted-tree-bound}.  Multiplying by the root
-majorant \(\kappa(X_0)\) and summing over \(X_0\) with
-\eqref{eq:constructive-kp-smallness} proves absolute convergence of
-\eqref{eq:constructive-cluster-expansion}.
+majorant \(\kappa(X_0)\) and summing over \(X_0\) gives
+\[
+  \sum_{X_0\in\mathcal P_\Lambda}\kappa(X_0)e^{a'|X_0|}
+  \leq
+  \sum_{\Delta_0\subset\Lambda}
+  \sum_{X_0\ni\Delta_0}\kappa(X_0)e^{a|X_0|}
+  \leq
+  \epsilon|\Lambda|_{\rm cell},
+\]
+which proves absolute convergence of
+\eqref{eq:constructive-cluster-expansion} and the extensive estimate
+\eqref{eq:constructive-extensive-logz-bound}.  The estimate scales with the
+number of cells; only the rooted series, pressure density, and fixed-support
+source derivatives are volume-uniform.
+
+For a translation-covariant infinite-volume activity, choose one root cell and
+sum the rooted absolutely convergent series over clusters whose marked root
+contains that cell, dividing by the finite number of possible marked cells in a
+polymer.  This gives the pressure-density coefficient.  In a van Hove
+exhaustion, clusters whose \(R_0\)-neighbourhood sees the boundary are bounded
+by the same rooted majorant times the number of cells in an \(O(R)\)-boundary
+collar; after division by \(|\Lambda_L|_{\rm cell}\) this contribution tends
+to zero.  If source derivatives are supported in a fixed cell set \(A\), every
+connected source cluster has a root in a finite enlargement of \(A\), so the
+rooted bound gives a constant independent of \(L\).
 
 For two separated observables, the connected part can only be produced by a
 connected cluster intersecting both supports.  Every such cluster contains a
@@ -502,16 +562,32 @@ supply \(C_{F,G}\).  This proves
 
 In the Glimm--Jaffe--Spencer \(P(\phi)_2\) construction, the activities
 \(K(X,\phi)\) arise by expanding around cell-local interaction pieces while
-retaining large-field regulators.  The theorem above is the abstract
-polymer estimate of Kotecky--Preiss and Brydges--Kennedy,\footnote{See
+retaining large-field regulators.  They are not yet the scalar activities
+\(z(X)\) in Theorem~\ref{thm:constructive-kp-cluster-convergence}.  One must
+first perform the fluctuation integration and localization step through maps
+\(\mathcal I_X\) satisfying
+\[
+  z(X)=\mathcal I_X K(X,\cdot),
+  \qquad
+  |z(X)|\leq\kappa(X),
+\]
+with the same kind of bound for source derivatives.  Equivalently one may use
+a Banach-valued cluster theorem whose norm reduces to the majorant
+\(\kappa(X)\).  What is not legitimate is to insert a field-dependent
+functional directly into the scalar hard-core partition function without this
+integration or Banach-space step.
+
+The theorem above is the abstract polymer estimate of Kotecky--Preiss and
+Brydges--Kennedy,\footnote{See
 R.~Kotecky and D.~Preiss, ``Cluster expansion for abstract polymer models,''
 \emph{Commun. Math. Phys.} 103 (1986), and D.~C. Brydges and T.~Kennedy,
 ``Mayer expansions and the Hamilton-Jacobi equation,'' \emph{J. Stat. Phys.}
 48 (1987).} written here in the hard-core finite-range form needed for the
 constructive scalar models.  It is not an optional heuristic: it is the
 analytic step that justifies taking \(\Lambda\uparrow\R^2\), proves
-exponential clustering in the massive phase, and gives uniform bounds on
-the Schwinger functions.
+exponential clustering in the massive phase, and gives uniform local/source
+bounds on the Schwinger functions.  The unnormalized logarithm itself remains
+an extensive quantity.
 
 \paragraph{Source derivatives and connected clusters.}
 The polymer estimate becomes a QFT statement only after one explains how
@@ -521,13 +597,13 @@ finite set of source labels.  For each \(\alpha\in\mathfrak S\), let
 test insertion and let \(b_\alpha(X)\) be a source weight that vanishes unless
 \(X\) meets \(A_\alpha\).  At finite volume set
 \[
-  K_\lambda(X)
+  z_\lambda(X)
   =
-  K(X)\exp\!\left(
+  z(X)\exp\!\left(
     \sum_{\alpha\in\mathfrak S}\lambda_\alpha b_\alpha(X)
   \right)
 \]
-and define \(Z_\Lambda(\lambda)\) by replacing \(K\) with \(K_\lambda\) in the
+and define \(Z_\Lambda(\lambda)\) by replacing \(z\) with \(z_\lambda\) in the
 hard-core partition function.  The connected source coefficient is the finite
 identity
 \[
@@ -538,7 +614,7 @@ identity
   \partial_{\lambda_{\alpha_m}}\log Z_\Lambda(\lambda)
   \right|_{\lambda=0}.
 \]
-Substituting \(K_\lambda\) into the absolutely convergent cluster expansion
+Substituting \(z_\lambda\) into the absolutely convergent cluster expansion
 gives
 \[
 \begin{aligned}
@@ -547,7 +623,7 @@ gives
   \sum_{n\geq1}\frac1{n!}
   \sum_{X_1,\ldots,X_n\in\mathcal P_\Lambda}
   \varphi_{\rm c}(X_1,\ldots,X_n)
-  \prod_{i=1}^nK(X_i)                                      \\
+  \prod_{i=1}^nz(X_i)                                      \\
   &\qquad\qquad\times
   \sum_{\tau:\{1,\ldots,m\}\to\{1,\ldots,n\}}
   \prod_{r=1}^m b_{\alpha_r}(X_{\tau(r)}).
@@ -566,6 +642,62 @@ expanding the regulated source functional together with the local interaction
 pieces; the cluster estimate controls the resulting connected Schwinger
 distributions after the finite-volume ultraviolet limit has already been
 taken.
+
+\begin{theorem}[Boundary comparison from massive cluster bounds]
+\label{thm:p-phi-two-boundary-comparison}
+Let \(\Lambda_L\uparrow\R^2\) be a van Hove exhaustion and let \(b,b'\) be two
+standard finite-volume covariance choices for massive \(P(\phi)_2\).  Assume:
+the finite-volume ultraviolet limit has been taken for each choice; the
+resulting scalarized bulk activities satisfy
+\eqref{eq:constructive-kp-smallness} with constants independent of \(L\);
+the difference between the two activity systems admits boundary-marked
+majorants \(\kappa_\partial^L(X)\) obeying
+\begin{equation}
+  \kappa_\partial^L(X)
+  \leq
+  \kappa(X)e^{-m_b\operatorname{dist}_{\rm cell}(X,\partial\Lambda_L)}
+  \label{eq:p-phi-two-boundary-marked-majorant}
+\end{equation}
+for some \(m_b>0\); and the source-decorated cluster estimate
+\eqref{eq:constructive-exponential-clustering-bound} holds with rate
+\(m_{\rm cl}>0\).  If \(f_1,\ldots,f_n\) are supported in a fixed compact set
+\(A\subset\R^2\), then for \(L\) large enough that \(A\subset\Lambda_L\),
+\begin{equation}
+  \left|
+    S_{\Lambda_L,n}^{b}(f_1,\ldots,f_n)
+    -
+    S_{\Lambda_L,n}^{b'}(f_1,\ldots,f_n)
+  \right|
+  \leq
+  C_{f_1,\ldots,f_n}
+  e^{-m_*\operatorname{dist}_{\rm cell}(A,\partial\Lambda_L)}
+  \label{eq:p-phi-two-boundary-comparison-decay}
+\end{equation}
+for some \(m_*>0\) determined by the cluster mass and the boundary-collar
+decay rate.  Hence the two boundary choices give the same infinite-volume
+Schwinger functions along the exhaustion.  No equality at fixed finite volume
+is asserted.
+\end{theorem}
+
+\begin{proof}
+After the ultraviolet limit, compare the two finite-volume polymer gases by
+separating the common bulk activities from one boundary-marked activity
+difference controlled by
+\eqref{eq:p-phi-two-boundary-marked-majorant}.  In the ratio or difference of
+source derivatives, every surviving connected cluster must contain the source
+neighbourhood of \(A\) and at least one boundary-marked polymer; clusters not
+connected to the sources cancel between numerator and denominator just as in
+the source derivative formula above.  If the marked polymer is near the
+boundary, the connecting incompatibility path has total polymer size at least
+a constant times \(\operatorname{dist}_{\rm cell}(A,\partial\Lambda_L)\).  If
+it lies in the interior, the boundary-marked majorant itself supplies the same
+kind of exponential penalty.  Combining this penalty with the unused
+exponential weight in the rooted estimate gives the factor on the right of
+\eqref{eq:p-phi-two-boundary-comparison-decay}.  The number of possible roots
+near \(A\) is fixed, so the prefactor depends on the test functions and on the
+source seminorms, but not on \(L\).  The right-hand side tends to zero along
+the van Hove exhaustion.
+\end{proof}
 
 \begin{quotedtheorem}[Massive \(P(\phi)_2\) OS output from the cluster expansion]
 \label{qthm:p-phi-two-cluster-os-output}
@@ -1216,8 +1348,10 @@ activities satisfy bounds of the type
 \end{equation}
 on scale \(j\), for positive \(\delta,\alpha\) in the constructed regime.
 
-Third, the cluster or phase-cell expansion is summed uniformly in the volume
-and cutoff.  The convergence criterion is the scale-dependent version of
+Third, the rooted and source-decorated cluster sums are bounded uniformly in
+the volume and cutoff, while vacuum log-partition sums remain extensive and
+are normalized only after passing to pressure densities.  The convergence
+criterion is the scale-dependent version of
 Theorem~\ref{thm:constructive-kp-cluster-convergence}.  It gives limits of
 connected Schwinger functions and exponential clustering.
 

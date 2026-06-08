@@ -861,6 +861,52 @@ def hard_core_source_derivatives(weights, incompatible_edges, left_source, right
     return z, z_left, z_right, z_left_right
 
 
+def invert_fraction_matrix(matrix):
+    n = len(matrix)
+    augmented = [
+        row[:] + [Fraction(1 if i == j else 0) for j in range(n)]
+        for i, row in enumerate(matrix)
+    ]
+    for col in range(n):
+        pivot = None
+        for row in range(col, n):
+            if augmented[row][col] != 0:
+                pivot = row
+                break
+        if pivot is None:
+            raise AssertionError("singular finite covariance matrix")
+        augmented[col], augmented[pivot] = augmented[pivot], augmented[col]
+        pivot_value = augmented[col][col]
+        augmented[col] = [entry / pivot_value for entry in augmented[col]]
+        for row in range(n):
+            if row == col:
+                continue
+            factor = augmented[row][col]
+            if factor == 0:
+                continue
+            augmented[row] = [
+                entry - factor * pivot_entry
+                for entry, pivot_entry in zip(augmented[row], augmented[col])
+            ]
+    return [row[n:] for row in augmented]
+
+
+def one_dimensional_massive_covariance(size, mass_squared, boundary):
+    matrix = [[Fraction(0) for _ in range(size)] for _ in range(size)]
+    for index in range(size):
+        matrix[index][index] = mass_squared + 2
+        if index > 0:
+            matrix[index][index - 1] = Fraction(-1)
+        if index + 1 < size:
+            matrix[index][index + 1] = Fraction(-1)
+    if boundary == "periodic":
+        matrix[0][size - 1] = Fraction(-1)
+        matrix[size - 1][0] = Fraction(-1)
+    elif boundary != "dirichlet":
+        raise AssertionError(f"unknown boundary condition {boundary!r}")
+    return invert_fraction_matrix(matrix)
+
+
 def check_finite_polymer_source_cumulant_factorization():
     # If two source neighbourhoods live in independent hard-core components,
     # log Z factorizes and the mixed source cumulant is exactly zero.
@@ -900,6 +946,107 @@ def check_finite_polymer_source_cumulant_factorization():
     )
     bridge_removed_cumulant = (z * z_lr - z_l * z_r) / (z * z)
     assert_equal(bridge_removed_cumulant, Fraction(0), "zero bridge source cumulant")
+
+
+def check_p_phi_two_boundary_cluster_bookkeeping():
+    # Massive finite-volume Green functions with different boundary conditions
+    # share the same local operator but differ at interior test functions.
+    size = 5
+    center = 2
+    dirichlet_covariance = one_dimensional_massive_covariance(
+        size, Fraction(1), "dirichlet"
+    )
+    periodic_covariance = one_dimensional_massive_covariance(
+        size, Fraction(1), "periodic"
+    )
+    interior_variance_difference = (
+        dirichlet_covariance[center][center] - periodic_covariance[center][center]
+    )
+    assert_equal(
+        dirichlet_covariance[center][center],
+        Fraction(4, 9),
+        "Dirichlet interior finite covariance",
+    )
+    assert_equal(
+        periodic_covariance[center][center],
+        Fraction(5, 11),
+        "periodic interior finite covariance",
+    )
+    assert_equal(
+        interior_variance_difference,
+        Fraction(-1, 99),
+        "finite-volume boundary covariance difference",
+    )
+    if interior_variance_difference == 0:
+        raise AssertionError("finite-volume boundary conditions were incorrectly identified")
+
+    # A rooted cluster estimate is uniform after a root is fixed; the absolute
+    # log-partition bound is extensive and becomes uniform only after division
+    # by the number of cells.
+    epsilon = Fraction(1, 13)
+    cell_count = 37
+    rooted_bound = epsilon
+    extensive_log_bound = epsilon * cell_count
+    assert_equal(rooted_bound, Fraction(1, 13), "rooted P(phi)_2 cluster bound")
+    assert_equal(
+        extensive_log_bound,
+        Fraction(37, 13),
+        "extensive P(phi)_2 log-partition bound",
+    )
+    assert_equal(
+        extensive_log_bound / cell_count,
+        epsilon,
+        "P(phi)_2 pressure-density bound",
+    )
+    if extensive_log_bound == rooted_bound:
+        raise AssertionError("extensive log Z was collapsed to a rooted bound")
+
+    # Fixed-support source derivatives sum roots only near the source, not over
+    # all cells in the box.
+    source_neighbourhood_cells = 3
+    local_source_bound = epsilon * source_neighbourhood_cells
+    larger_volume_cells = 101
+    assert_equal(
+        local_source_bound,
+        Fraction(3, 13),
+        "fixed-support source derivative cluster bound",
+    )
+    assert_equal(
+        local_source_bound,
+        epsilon * source_neighbourhood_cells,
+        "source bound independent of ambient volume",
+    )
+    if local_source_bound == epsilon * larger_volume_cells:
+        raise AssertionError("fixed source derivative was made volume-extensive")
+
+    # The scalar polymer theorem is applied only after integrating/localizing
+    # field-dependent activities into scalar activities with the same majorant.
+    field_activity_majorant = Fraction(7, 60)
+    fluctuation_integration_norm = Fraction(3, 5)
+    scalar_activity_bound = field_activity_majorant * fluctuation_integration_norm
+    assert_equal(
+        scalar_activity_bound,
+        Fraction(7, 100),
+        "scalarized P(phi)_2 polymer activity bound",
+    )
+    if not scalar_activity_bound <= field_activity_majorant:
+        raise AssertionError("scalarization failed to preserve the polymer majorant")
+
+    # Boundary comparison is a thermodynamic decay estimate: positive at finite
+    # distance, but decreasing exponentially as the source moves from the collar.
+    collar_prefactor = Fraction(5, 2)
+    decay_ratio = Fraction(1, 3)
+    finite_distance_bound = collar_prefactor * decay_ratio**4
+    farther_bound = collar_prefactor * decay_ratio**9
+    assert_equal(
+        finite_distance_bound,
+        Fraction(5, 162),
+        "finite-distance boundary comparison bound",
+    )
+    if finite_distance_bound == 0:
+        raise AssertionError("finite-volume boundary comparison was made exact")
+    if not farther_bound < finite_distance_bound:
+        raise AssertionError("boundary comparison does not decay with distance")
 
 
 def check_spde_ou_and_smoothing_normalizations():
@@ -3125,6 +3272,7 @@ def main():
     check_phi4_three_model_phase_cell_budget()
     check_phi4_three_connected_to_full_growth_bookkeeping()
     check_finite_polymer_source_cumulant_factorization()
+    check_p_phi_two_boundary_cluster_bookkeeping()
     check_spde_ou_and_smoothing_normalizations()
     check_phi4_two_path_space_increment_arithmetic()
     check_dpd_sobolev_fixed_point_exponents()
@@ -3183,7 +3331,7 @@ def main():
     check_dpd_low_mode_energy_forcing_arithmetic()
     check_dpd_high_frequency_tail_global_continuity_budget()
     check_rough_forcing_bootstrap_arithmetic()
-    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, vacuum-coordinate, negative-sector bookkeeping, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, model phase-cell budget, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, Phi4_2 finite-volume route identification, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, Phi4_3 SPDE/constructive status split, finite-window OS defect, finite-rate assembly schedule, cross-route phase-cell/SPDE budget, directed OS pre-Hilbert comparison, DPD low-mode energy forcing, high-frequency tail global-continuity budget, and rough-forcing bootstrap checks passed.")
+    print("All constructive scalar/SPDE Wick, chaos, finite-Langevin reversibility, dual-norm chaos, projective-kernel, Gaussian-coordinate, Gaussian-dual-wavelet, heat-reexpansion, nonlinear-coordinate, first-chaos-log, first-chaos cutoff shell, first-chaos parameter edge, covariance-double-increment, power-counting, DPD, Phi4_2-path-noise, Phi4_3-DPD-obstruction, reconstruction, BPHZ, static-dynamic coordinate, vacuum-coordinate, negative-sector bookkeeping, negative-coordinate-chart, C1-growth, C2-log-growth, C2-shell, two-loop-sector, fixed-point, polymer-source-cumulant, Pphi2 boundary/cluster bookkeeping, DPD energy closedness, DPD compactness, DPD distributional-limit, DPD Besov product, DPD Besov fixed-point, DPD Besov-energy compatibility, invariant-law identity, stationary-law coupling, stationary-law polynomial truncation, random-model convergence, dyadic-kernel, Taylor-gain, dyadic-net supremum, scale-summed-coordinate, scale-summed shell-separated cutoff, projective shell-separated coordinate, nonlinear Pi shell cutoff input, negative-sector model convergence, physical-parameter entropy, Gaussian negative Pi-coordinate input, Gamma heat-coordinate input, nonlinear Pi-coordinate kernel input, XY graph power-counting, X2Y high-chaos graph power-counting, XY scalar-tested slack, XY scalar edge, XY scalar cutoff shell, coordinate-to-model convergence, multiscale-sector, source-decorated phase-cell, model phase-cell budget, connected-to-full growth, one-loop relative-scale, Hilbert-scale tightness, Gaussian H-minus summability, Brascamp-Lieb H-minus, quartic-tail, regulator-comparison, Phi4_2 finite-volume route identification, SPDE-to-OS growth, SPDE/constructive hierarchy-transfer, Phi4_3 SPDE/constructive status split, finite-window OS defect, finite-rate assembly schedule, cross-route phase-cell/SPDE budget, directed OS pre-Hilbert comparison, DPD low-mode energy forcing, high-frequency tail global-continuity budget, and rough-forcing bootstrap checks passed.")
 
 
 if __name__ == "__main__":
