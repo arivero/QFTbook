@@ -430,18 +430,30 @@ The stated zero-frequency hypothesis is precisely the condition that this
 division is an ordinary distributional operation in the chosen window.
 \end{remark}
 
-For odd operators in a \(\mathbb Z_2\)-graded theory, the KMS boundary
-condition includes the parity sign obtained by moving an odd operator around
-the thermal circle.  The same proof gives
+For odd operators in a \(\mathbb Z_2\)-graded theory, the ordinary KMS
+condition on the field algebra does not add a minus sign to the unsigned
+unordered functions just defined:
+\[
+  G^>_{AB}(t)=\omega(A(t)B(0)),
+  \qquad
+  G^<_{AB}(t)=\omega(B(0)A(t)).
+\]
+On the common spectral support one still has
 \[
   \widetilde G^{<}_{AB}(\omega)
   =
-  -\ee^{-\beta\omega}\widetilde G^{>}_{AB}(\omega)
+  \ee^{-\beta\omega}\widetilde G^{>}_{AB}(\omega).
 \]
-for two odd operators in the convention where \(G^<\) is not itself graded by
-an additional sign.  Equivalently, one may absorb the sign into the definition
-of the fermionic lesser function.  The convention must be declared before
-writing Fermi factors.
+The familiar minus sign belongs either to a deliberately signed fermionic
+lesser convention, \(G^{<}_{F,\mathrm{sgn}}:=-G^<\), so that
+\[
+  \widetilde G^{<}_{F,\mathrm{sgn}}(\omega)
+  =
+  -\ee^{-\beta\omega}\widetilde G^{>}_{AB}(\omega),
+\]
+or to the Euclidean time-ordered fermion correlator, which is antiperiodic
+around the thermal circle.  These are distinct conventions; mixing them changes
+the occupation-number ratio.
 
 \section{Linear Response and Retarded Correlators}
 
@@ -468,20 +480,29 @@ Thus
 \]
 Stationarity of \(\omega\) gives
 \begin{equation}
+\begin{aligned}
   \delta\omega(A(t))
+  &=
+  -\int_{-\infty}^{t}\dd s\,f(s)\,
+  G^{R,\mathrm{comm}}_{AB}(t-s)
   =
   \int_{-\infty}^{t}\dd s\,f(s)\,
-  G^R_{AB}(t-s),
-  \qquad
-  G^R_{AB}(t)
-  =
-  -\ii\,\theta(t)\,\omega([A(t),B(0)]) .
+  K^R_{AB}(t-s),\\
+  G^{R,\mathrm{comm}}_{AB}(t)
+  &=
+  -\ii\,\theta(t)\,\omega([A(t),B(0)]),
+  \\
+  K^R_{AB}(t)
+  &=
+  \ii\,\theta(t)\,\omega([A(t),B(0)]) .
+\end{aligned}
   \label{eq:thermal-linear-response-retarded}
 \end{equation}
-The retarded distribution is causal: its support in the time variable lies in
-\(t\geq0\).  Consequently, under the usual polynomial-growth hypotheses for
-tempered distributions, its Fourier transform is the boundary value from the
-upper half \(\omega\)-plane.
+Thus for the source convention \(H_f=H-fB\) the physical response kernel is
+\(K^R=-G^{R,\mathrm{comm}}\).  The retarded commutator distribution is causal:
+its support in the time variable lies in \(t\geq0\).  Consequently, under the
+usual polynomial-growth hypotheses for tempered distributions, its Fourier
+transform is the boundary value from the upper half \(\omega\)-plane.
 
 Figure~\ref{fig:retarded-support} records the causal support property of the
 retarded response function, which is the input for its upper-half-plane
@@ -499,14 +520,15 @@ analytic Fourier transform.
   \draw[->,thick] (0,0.3) -- (0,1.0);
   \node[above] at (0,1.0) {source insertion};
 \end{tikzpicture}
-\caption{The retarded kernel is supported only after the source insertion.
+\caption{The retarded commutator kernel is supported only after the source insertion.
 This causal support, not Euclidean periodicity alone, is what gives the
 upper-half-plane analyticity of \(G^R(\omega)\).}
 \label{fig:retarded-support}
 \end{figure}
 
 For translation-invariant thermal QFT, the retarded two-point function of
-local densities is
+local densities is the same commutator-retarded kernel; when no source-sign
+ambiguity is present we write it simply as \(G^R\):
 \begin{equation}
   G^R_{AB}(\omega,\mathbf k)
   =

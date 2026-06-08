@@ -128,7 +128,12 @@
     },
     {
       "path": "finite_temperature_path_integral_checks.py",
-      "risk_class": "thermal Euclidean spectral reconstruction"
+      "risk_class": "thermal Euclidean spectral reconstruction",
+      "convention_tags": [
+        "hat rho=rho_comm/(2 pi)",
+        "retarded z-omega denominator",
+        "nonzero Matsubara GE=-GR"
+      ]
     },
     {
       "path": "eft_prediction_calculus_checks.py",
@@ -145,6 +150,7 @@
       "convention_tags": [
         "mostly-plus retarded response",
         "rho=-2 Im G^R",
+        "Euclidean kernel d omega/(2 pi) for rho",
         "Landau-frame one-charge hydrodynamics",
         "baryon-source thermodynamic derivatives"
       ]

@@ -398,9 +398,10 @@ zero-frequency contribution by
   \sum_{m,n:E_m=E_n}
   \ee^{-\beta E_n}A_{nm}B_{mn}.
 \]
-For the remaining transitions define the thermal spectral distribution
+For the remaining transitions define the measure-normalized thermal spectral
+distribution
 \begin{equation}
-  \rho_{AB}(\omega)
+  \widehat\rho_{AB}(\omega)
   =
   Z(\beta)^{-1}
   \sum_{m,n:E_m\neq E_n}
@@ -409,6 +410,11 @@ For the remaining transitions define the thermal spectral distribution
   \delta(\omega-(E_m-E_n)).
   \label{eq:thermal-spectral-distribution-finite-volume}
 \end{equation}
+In the real-time convention of
+Chapter~\ref{ch:thermal-spectral-kubo-transport}, this is
+\(\widehat\rho_{AB}=\rho^{\rm comm}_{AB}/(2\pi)\), where
+\(\rho^{\rm comm}\) is the Fourier transform of the commutator.  The notation
+keeps the \(2\pi\) in the Fourier inversion measure visible.
 Then
 \begin{equation}
   G_E^{AB}(\tau)
@@ -416,7 +422,7 @@ Then
   G^{AB}_0+
   \int_{\mathbb R}
   \frac{\ee^{-\omega\tau}}{1-\ee^{-\beta\omega}}\,
-  \rho_{AB}(\omega)\,d\omega ,
+  \widehat\rho_{AB}(\omega)\,d\omega ,
   \qquad 0<\tau<\beta .
   \label{eq:thermal-euclidean-spectral-representation}
 \end{equation}
@@ -448,7 +454,8 @@ Using \(\ee^{\ii\omega_\ell^{\rm B}\beta}=1\) in
   \beta G^{AB}_0\delta_{\ell 0}
   +
   \int_{\mathbb R}
-  \frac{\rho_{AB}(\omega)}{\omega-\ii\omega_\ell^{\rm B}}\,d\omega .
+  \frac{\widehat\rho_{AB}(\omega)}
+       {\omega-\ii\omega_\ell^{\rm B}}\,d\omega .
   \label{eq:matsubara-spectral-transform}
 \end{equation}
 For fermionic operators the graded spectral density and the denominator
@@ -456,24 +463,30 @@ For fermionic operators the graded spectral density and the denominator
 \(\ee^{\ii\omega_\ell^{\rm F}\beta}=-1\) gives the same Cauchy-transform
 form with \(\omega_\ell^{\rm F}\).
 
-The retarded correlator is the boundary value of a function obtained from
-the same spectral density,
+The commutator-retarded correlator is the boundary value of a function
+obtained from the same normalized spectral distribution,
 \[
-  G_R^{AB}(z)
+  G_R^{AB,\mathrm{comm}}(z)
   =
   \int_{\mathbb R}
-  \frac{\rho_{AB}(\omega)}{\omega-z}\,d\omega,
+  \frac{\widehat\rho_{AB}(\omega)}{z-\omega}\,d\omega,
   \qquad \operatorname{Im}z>0,
 \]
 under the growth and distributional hypotheses required for the integral.
+For every nonzero bosonic Matsubara frequency in this convention,
+\[
+  G_E^{AB}(\ii\omega_\ell^{\rm B})
+  =
+  -G_R^{AB,\mathrm{comm}}(\ii\omega_\ell^{\rm B}).
+\]
 Thus the rule
 \[
   \ii\omega_n\mapsto \omega+\ii0
 \]
-is a shorthand for a spectral reconstruction problem.  It is justified when
-the Euclidean data determine a spectral distribution with the stated
-analytic control; the discrete Matsubara values alone do not constitute such
-a proof.
+is a shorthand for a spectral reconstruction problem together with a declared
+Euclidean sign and \(2\pi\) normalization.  It is justified when the Euclidean
+data determine a spectral distribution with the stated analytic control; the
+discrete Matsubara values alone do not constitute such a proof.
 
 \section{Uniqueness, Stability, and Spectral Inference}
 \label{sec:thermal-euclidean-reconstruction-stability}

@@ -315,7 +315,10 @@ Current checks:
 - `kms_foundation_checks.py`: finite checks for the Volume X KMS-foundations
   chapter, including the finite Gibbs-trace KMS strip boundary condition,
   detailed balance, spectral reconstruction from \(\rho=G^>-G^<\), the
-  bosonic fluctuation--dissipation identity, and the
+  bosonic fluctuation--dissipation identity, the one-mode fermion check
+  separating unsigned KMS from the signed lesser propagator and Euclidean
+  antiperiodicity, the finite two-level source-impulse sign
+  \(K^R=-G^{R,\mathrm{comm}}\) for \(H-fB\), and the
   \(\rho=-2\operatorname{Im}G^R\) retarded-sign convention entering the shear
   Kubo formula, together with the shear, charge-diffusion, and sound pole
   locations used in the hydrodynamic-pole figure.
@@ -349,9 +352,9 @@ Current checks:
   collective-mode counts, dense Fermi-surface stress scales, lifted local CFL
   anomaly-matching coefficients, hydrodynamic response-window bookkeeping for
   QCD shear, scalar and coupled diffusion, sound matching,
-  Euclidean-to-retarded transport-extraction bookkeeping with contact
-  subtraction, UV-tail subtraction, one-sample degeneracy, and stability
-  budget negative controls, the finite shear
+  Euclidean-to-retarded transport-extraction bookkeeping with \(1/(2\pi)\)
+  spectral-kernel normalization, contact subtraction, UV-tail subtraction,
+  one-sample degeneracy, and stability budget negative controls, the finite shear
   spectral-window extraction from a retarded pole kernel, including two-sample
   width/amplitude reconstruction, regular-background bias/subtraction, and
   near-critical-mode negative controls, the finite bulk/sound spectral-window
@@ -1158,7 +1161,10 @@ Current checks:
   Matsubara boundary phases, the one-mode fermionic coherent-state trace
   identity with the chapter's Berezin sign convention, the finite-volume
   spectral representation of Euclidean correlators, the separate
-  zero-frequency degenerate term, the Matsubara Cauchy transform, and
+  zero-frequency degenerate term, the Matsubara Cauchy transform, the harmonic
+  oscillator \(2\pi\) conversion between \(\rho_{\rm comm}\) and
+  \(\widehat\rho\), the retarded \(z-\omega\) denominator, the nonzero
+  Matsubara relation \(G_E=-G^R\) in the chosen sign convention, and
   chemical-potential twist and imaginary-holonomy periodicity.  It also checks
   the explicit low-frequency positive spectral-slope family whose Euclidean
   transform is \(O(\epsilon)\) while its transport-channel slope remains fixed,

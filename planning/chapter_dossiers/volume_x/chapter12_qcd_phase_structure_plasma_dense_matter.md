@@ -99,12 +99,14 @@ GitHub issue #628.
   current, shear diffusion constant, projected baryon diffusion eigenvalue,
   and sound attenuation coefficient used in the microscopic response-window
   comparison.
-- `G_E,X`, `K_beta`, `C_E,X`, `L_i`, `a_alpha`, `M_i_alpha`,
-  `lambda_X`, `R_AC`: Euclidean channel correlator, thermal spectral kernel,
-  contact subtraction, Euclidean smearing/Matsubara functionals,
-  low-frequency spectral coordinates, finite inverse matrix, transport
-  spectral slope, and analytic-continuation residual used to distinguish
-  imaginary-time QCD data from real-time transport extraction.
+- `G_E,X`, `rho_X`, `hat rho_X`, `K_beta`, `C_E,X`, `L_i`, `a_alpha`,
+  `M_i_alpha`, `lambda_X`, `R_AC`: Euclidean channel correlator, real-time
+  commutator spectral density, measure-normalized spectral density
+  `hat rho_X=rho_X/(2*pi)`, thermal spectral kernel, contact subtraction,
+  Euclidean smearing/Matsubara functionals, low-frequency spectral coordinates,
+  finite inverse matrix, transport spectral slope, and analytic-continuation
+  residual used to distinguish imaginary-time QCD data from real-time transport
+  extraction.
 - `pi_x`, `gamma_k`, `Omega`, `tau_micro`, `A_Omega(k)`: transverse momentum
   density, finite-momentum shear-pole width, finite spectral-window cutoff,
   microscopic relaxation scale, and peak-area estimator used to test whether a
@@ -216,13 +218,15 @@ GitHub issue #628.
   `J_inc^i=J_B^i-(n_B/w)T^{0i}` needed to remove the convective Drude sector
   before identifying the intrinsic baryon-diffusion conductivity.
 - Adds a Euclidean-to-retarded transport-extraction map: finite Euclidean
-  correlator samples must be contact-subtracted, zero-mode-subtracted,
-  tail/OPE-subtracted, assigned to a declared low-frequency spectral class,
-  and passed through a stable inverse map with finite-volume, continuum,
-  ansatz, and analytic-continuation residuals before being accepted as a QCD
-  viscosity or conductivity.  This explicitly prevents midpoint correlators,
-  sparse Matsubara data, or Euclidean pole fits from being mistaken for
-  real-time transport coefficients.
+  correlator samples use \(d\omega/(2\pi)\) when written with
+  \(\rho=-2\operatorname{Im}G^R\), must be contact-subtracted,
+  zero-mode-subtracted, tail/OPE-subtracted, assigned to a declared
+  low-frequency spectral class, and passed through a stable inverse map with
+  finite-volume, continuum, ansatz, and analytic-continuation residuals before
+  being accepted as a QCD viscosity or conductivity.  This explicitly prevents
+  midpoint correlators, sparse Matsubara data, normalization-rescaled inverse
+  matrices, or Euclidean pole fits from being mistaken for real-time transport
+  coefficients.
 - Adds a finite shear spectral extraction window: the isolated hydrodynamic momentum
   peak has width `gamma_k=D_eta k^2` and residue `w`, the finite-window area
   misses the static residue by a controlled `gamma_k/Omega` tail plus regular,
@@ -362,8 +366,9 @@ GitHub issue #628.
   collective-mode count bookkeeping, dense
   Fermi-surface stress bookkeeping, lifted local CFL anomaly-matching
   coefficient bookkeeping, QCD hydrodynamic response-window,
-  coupled-diffusion, Euclidean-to-retarded transport-extraction contact,
-  UV-tail, one-sample, and stability-budget negative controls, finite shear
+  coupled-diffusion, Euclidean-to-retarded transport-extraction \(1/(2\pi)\)
+  kernel normalization, contact, UV-tail, one-sample, and stability-budget
+  negative controls, finite shear
   spectral-window width/residue and background-error bookkeeping,
   finite bulk/sound spectral-window
   thermodynamic-source subtraction, charged longitudinal determinant,
@@ -507,6 +512,12 @@ GitHub issue #628.
   companion check reconstructs a transport slope only after declared
   subtractions and rejects raw midpoint, one-sample, missing-contact,
   missing-tail, and missing-continuation shortcuts.
+- 2026-06-08 issue #882 QCD normalization re-audit: inserted the missing
+  \(d\omega/(2\pi)\) in the Euclidean spectral kernel, declared the equivalent
+  \(\widehat\rho_X=\rho_X/(2\pi)\) coordinate, and recorded that
+  \(M_{i\alpha}\) and its stability norm must be built in the same
+  normalization.  The companion check now rejects an inverse map that silently
+  absorbs the missing factor into the recovered transport slope.
 - 2026-05-27 Roberge--Weiss pass: added the finite-regulator imaginary
   chemical-potential theorem, positivity statement for vectorlike pairs,
   Roberge--Weiss transition status remark, and exact angle-periodicity

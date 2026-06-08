@@ -44,6 +44,57 @@ With this convention, a retarded distribution that obeys the required
 tempered-growth hypothesis is the boundary value of a function holomorphic
 for \(\operatorname{Im}\omega>0\).
 
+\paragraph{Canonical real-time convention ledger.}
+The following table is the convention package used in this chapter and, by
+reference, in the later thermal and QCD transport chapters.  The entries keep
+the commutator spectral density, the measure-normalized spectral distribution,
+and the source-response kernel distinct.
+\begin{center}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}p{0.71\linewidth}@{}}
+Fourier transform &
+\(\widetilde F(\omega)=\int_{\mathbb R}dt\,e^{\ii\omega t}F(t)\),
+\(F(t)=\int_{\mathbb R}\frac{d\omega}{2\pi}
+e^{-\ii\omega t}\widetilde F(\omega)\).\\[0.4em]
+Unsigned Wightman functions &
+\(G^>_{AB}(t)=\langle A(t)B(0)\rangle_\beta\),
+\(G^<_{AB}(t)=\langle B(0)A(t)\rangle_\beta\), with ordinary KMS
+\(\widetilde G^<_{AB}(\omega)=e^{-\beta\omega}
+\widetilde G^>_{AB}(\omega)\) on the common spectral support.\\[0.4em]
+Fermionic sign bookkeeping &
+For odd field-algebra elements the unsigned unordered functions above obey the
+same Boltzmann ratio.  A signed lesser propagator
+\(G^{<}_{F,\mathrm{sgn}}:=-G^<\), or the Euclidean time-ordered fermion
+correlator, carries the familiar minus sign; the latter is antiperiodic under
+\(\tau\mapsto\tau+\beta\).\\[0.4em]
+Spectral distributions &
+\(\rho^{\rm comm}_{AB}(\omega)=\widetilde G^>_{AB}(\omega)
+-\widetilde G^<_{AB}(\omega)\) is the Fourier transform of the commutator.
+The measure-normalized distribution is
+\(\widehat\rho_{AB}:=\rho^{\rm comm}_{AB}/(2\pi)\).\\[0.4em]
+Retarded commutator kernel &
+\(G^{R,\rm comm}_{AB}(t)=-\ii\theta(t)
+\langle[A(t),B(0)]\rangle_\beta\), and, up to real contact polynomials,
+\(G^{R,\rm comm}_{AB}(z)=
+\int_{\mathbb R}d\omega\,\widehat\rho_{AB}(\omega)/(z-\omega)\) for
+\(\operatorname{Im}z>0\).  Hence
+\(\rho^{\rm comm}_{AB}=-2\,\operatorname{Im}G^{R,\rm comm}_{AB}(\omega+\ii0)\).\\[0.4em]
+Source response &
+For \(H=H_0-h_BB\),
+\(\delta\langle A\rangle=K^R_{AB}*h_B\) with
+\(K^R_{AB}=\ii\theta(t)\langle[A(t),B(0)]\rangle_\beta
+=-G^{R,\rm comm}_{AB}\).\\[0.4em]
+Euclidean transform &
+For nonzero bosonic Matsubara frequency,
+\(G_E(i\omega_n)=
+\int_{\mathbb R}d\omega\,\widehat\rho_{AB}(\omega)/
+(\omega-i\omega_n)\), so with this retarded sign
+\(G_E(i\omega_n)=-G^{R,\rm comm}_{AB}(i\omega_n)\).  A
+positive-frequency Euclidean kernel written with
+\(\rho^{\rm comm}\) carries the measure \(d\omega/(2\pi)\).
+\end{tabular}
+\end{center}
+
 \paragraph{Finite-volume Lehmann representation.}
 Work in a finite spatial volume.  Let \(H|n\rangle=E_n|n\rangle\), let
 \(Z=\sum_n e^{-\beta E_n}<\infty\), and let \(A_{\mathbf k}\) obey

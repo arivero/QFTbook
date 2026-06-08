@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from check_utils import assert_close as _assert_close
+from check_utils import assert_close as _assert_close, assert_finite
 
 import cmath
 import math
@@ -16,6 +16,19 @@ def assert_close(name: str, got: complex | float, expected: complex | float, tol
 def matmul(a: list[list[complex]], b: list[list[complex]]) -> list[list[complex]]:
     size = len(a)
     return [[sum(a[i][k] * b[k][j] for k in range(size)) for j in range(size)] for i in range(size)]
+
+
+def matadd(a: list[list[complex]], b: list[list[complex]]) -> list[list[complex]]:
+    size = len(a)
+    return [[a[i][j] + b[i][j] for j in range(size)] for i in range(size)]
+
+
+def matscale(scalar: complex, a: list[list[complex]]) -> list[list[complex]]:
+    return [[scalar * entry for entry in row] for row in a]
+
+
+def commutator(a: list[list[complex]], b: list[list[complex]]) -> list[list[complex]]:
+    return matadd(matmul(a, b), matscale(-1.0, matmul(b, a)))
 
 
 def alpha(matrix: list[list[complex]], energies: list[float], z: complex) -> list[list[complex]]:
@@ -117,6 +130,89 @@ def check_bosonic_fluctuation_dissipation() -> None:
         assert_close(f"bosonic FDT omega={omega}", sym, 0.5 * coth * rho)
 
 
+def check_one_mode_unsigned_fermion_kms_and_euclidean_antiperiodicity() -> None:
+    beta = 1.3
+    epsilon = 0.8
+    boltzmann_ratio = math.exp(-beta * epsilon)
+    n_fermi = boltzmann_ratio / (1.0 + boltzmann_ratio)
+
+    greater_weight = 1.0 - n_fermi
+    unsigned_lesser_weight = n_fermi
+    assert_close(
+        "unsigned one-mode fermion KMS ratio",
+        unsigned_lesser_weight,
+        boltzmann_ratio * greater_weight,
+    )
+    assert_finite("one-mode fermion Boltzmann ratio", boltzmann_ratio)
+    assert_finite("one-mode fermion greater weight", greater_weight)
+    assert_finite("one-mode fermion unsigned lesser weight", unsigned_lesser_weight)
+    if abs(unsigned_lesser_weight + boltzmann_ratio * greater_weight) < 1.0e-12:
+        raise AssertionError("unsigned fermion lesser function should not include the signed-propagator minus")
+
+    signed_lesser_weight = -unsigned_lesser_weight
+    assert_close(
+        "signed one-mode fermion lesser ratio",
+        signed_lesser_weight,
+        -boltzmann_ratio * greater_weight,
+    )
+
+    tau = 0.37 * beta
+    positive_branch = greater_weight * math.exp(-epsilon * tau)
+    shifted_tau = tau - beta
+    negative_branch = -n_fermi * math.exp(-epsilon * shifted_tau)
+    assert_close(
+        "fermionic Euclidean time-ordered antiperiodicity",
+        negative_branch,
+        -positive_branch,
+    )
+
+
+def check_source_response_sign_for_h_minus_f_b() -> None:
+    beta = 0.9
+    epsilon = 1.4
+    energies = [0.0, epsilon]
+    source_operator = [[0j, 1.0], [1.0, 0j]]
+    measured_operator = [[0j, -1j], [1j, 0j]]
+    time = 0.41
+    impulse = 1.0e-6
+
+    evolved_measured = alpha(measured_operator, energies, time)
+    response_commutator = gibbs_expectation(
+        commutator(evolved_measured, source_operator),
+        energies,
+        beta,
+    )
+    physical_response_kernel = 1j * response_commutator
+    commutator_retarded_kernel = -1j * response_commutator
+
+    def perturbed_expectation(coupling: float) -> complex:
+        cosine = math.cos(coupling)
+        sine = math.sin(coupling)
+        unitary = [[cosine, 1j * sine], [1j * sine, cosine]]
+        inverse_unitary = [[cosine, -1j * sine], [-1j * sine, cosine]]
+        perturbed_operator = matmul(inverse_unitary, matmul(evolved_measured, unitary))
+        return gibbs_expectation(perturbed_operator, energies, beta)
+
+    finite_difference = (
+        perturbed_expectation(impulse) - perturbed_expectation(-impulse)
+    ) / (2.0 * impulse)
+    assert_close(
+        "source derivative equals K^R for H-fB",
+        finite_difference,
+        physical_response_kernel,
+        tol=2.0e-8,
+    )
+    assert_close(
+        "source response kernel is minus commutator-retarded kernel",
+        physical_response_kernel,
+        -commutator_retarded_kernel,
+    )
+    assert_finite("source-response finite difference", finite_difference)
+    assert_finite("source-response commutator-retarded kernel", commutator_retarded_kernel)
+    if abs(finite_difference - commutator_retarded_kernel) < 1.0e-7:
+        raise AssertionError("H-fB response should not equal the commutator-retarded kernel without the minus")
+
+
 def check_retarded_sign_and_shear_slope() -> None:
     eta = 0.73
     tau = 1.4
@@ -197,6 +293,8 @@ def main() -> None:
     check_finite_trace_kms_boundary()
     check_detailed_balance_and_spectral_reconstruction()
     check_bosonic_fluctuation_dissipation()
+    check_one_mode_unsigned_fermion_kms_and_euclidean_antiperiodicity()
+    check_source_response_sign_for_h_minus_f_b()
     check_retarded_sign_and_shear_slope()
     check_hydrodynamic_pole_locations_for_figure()
     print("All KMS foundation checks passed.")

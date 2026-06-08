@@ -11,6 +11,10 @@
 ## Definitions And Results
 
 - Retarded thermal correlator.
+- Canonical real-time convention ledger covering Fourier transforms,
+  unsigned/signed Wightman functions, \(\rho_{\rm comm}\),
+  \(\widehat\rho=\rho_{\rm comm}/(2\pi)\), \(G^{R,\rm comm}\), \(K^R\),
+  and the Euclidean continuation sign.
 - Spectral density and finite-volume spectral representation.
 - Finite-volume Lehmann representation with explicit Boltzmann weights and
   distributional positivity \(\omega\rho_{AA}\ge0\).
@@ -46,11 +50,12 @@
 | Symbol | Meaning |
 | --- | --- |
 | \(\rho_\beta\) | KMS state at inverse temperature \(\beta\) |
-| \(G^R_{AB}\) | retarded correlator |
-| \(\rho_{AB}\) | spectral density |
+| \(G^{R,\mathrm{comm}}_{AB}\), \(G^R_{AB}\) | commutator-retarded correlator; the shorter form is used in the chapter once the convention table is declared |
+| \(K^R_{AB}\) | source-response kernel for \(H=H_0-h_BB\), equal to \(-G^{R,\mathrm{comm}}_{AB}\) |
+| \(\rho^{\rm comm}_{AB}\), \(\rho_{AB}\) | commutator spectral density with \(\rho=-2\operatorname{Im}G^R\); the shorter form is used after the table |
+| \(\widehat\rho_{AB}\) | measure-normalized spectral distribution \(\rho^{\rm comm}_{AB}/(2\pi)\) |
 | \(G^{\rm sym}_{AB}\) | symmetrized correlator |
 | \(K_{ij}\) | full transverse current response kernel, including contact terms, defined by \(\langle J_i\rangle=-K_{ij}A_j\) |
-| \(K^R_{AB}\) | source-response kernel for \(H=H_0-h_BB\), equal to \(-G^R_{AB}\) in the chapter's commutator-retarded convention |
 | \(C_{AB}\) | local source-contact contribution to a response kernel |
 | \(I_i\), \(\bar I_i\) | total current and connected total current in finite volume |
 | \(Q_a\), \(C_{ab}\), \(v_{ia}\) | conserved operators, symmetrized covariance, and current-charge overlap |
@@ -68,43 +73,47 @@
 
 ## Claim Ledger
 
-1. The Schwinger--Keldysh branch difference gives the causal
+1. The chapter is the canonical owner of the Volume X real-time convention
+   package: unsigned Wightman KMS, signed fermion lesser convention,
+   \(\rho_{\rm comm}\) versus \(\widehat\rho\), retarded \(z-\omega\)
+   denominator, and Euclidean \(G_E=-G^R\) sign at nonzero Matsubara frequency.
+2. The Schwinger--Keldysh branch difference gives the causal
    source-response commutator; with the convention \(H=H_0-h_BB\), this
    kernel is the negative of the chapter's commutator-retarded function
    \(G^R=-i\Theta\langle[A,B]\rangle\).
-2. In finite volume, inserting energy eigenstates gives the Lehmann
+3. In finite volume, inserting energy eigenstates gives the Lehmann
    representation for \(G^>\) and \(\rho\); for Hermitian operators it implies
    \(\omega\rho_{AA}\ge0\).
-3. With the chapter's Fourier and retarded-sign conventions,
+4. With the chapter's Fourier and retarded-sign conventions,
    \(\rho_{AA}=-2\operatorname{Im}G^R_{AA}\) for the nonlocal part of the
    response; the substantive assumption is the thermodynamic tempered
    boundary value and the separation of real contact polynomials.
-4. KMS implies detailed balance and the fluctuation--dissipation relation.
-5. Local source contacts are part of the full background response but not of
+5. KMS implies detailed balance and the fluctuation--dissipation relation.
+6. Local source contacts are part of the full background response but not of
    the commutator spectral measure at nonzero frequency.
-6. A transport coefficient requires a declared thermodynamic and
+7. A transport coefficient requires a declared thermodynamic and
    zero-frequency order of limits.
-7. Conserved charges with nonzero current overlap give a positive
+8. Conserved charges with nonzero current overlap give a positive
    zero-frequency singular sector bounded by the Mazur projection; this is
    separated from the finite dissipative dc slope.
-8. At finite regulator, the Kubo--Mori projection gives an exact
+9. At finite regulator, the Kubo--Mori projection gives an exact
    Mori--Zwanzig block identity for chosen slow coordinates.  This identity
    is algebraic and does not by itself imply transport.
-9. A diffusion or viscosity coefficient arises from a further theorem
+10. A diffusion or viscosity coefficient arises from a further theorem
    boundary: thermodynamic limit, decay of projected kernels, controlled
    \(k\to0\) scaling, and removal of Drude sectors must turn the exact
    memory equation into a local low-frequency closure.
-10. Conductivity and viscosity are low-frequency spectral slopes after contact
+11. Conductivity and viscosity are low-frequency spectral slopes after contact
    terms, Drude weights, order of limits, and conserved-density mixings are
    specified.
-11. Euclidean data and admissible fixed finite smooth sum rules whose real
+12. Euclidean data and admissible fixed finite smooth sum rules whose real
    weights have finite reference moments and admit the Chapter 2 away-from-zero
    compensator system constrain smeared spectral integrals; they do not stably
    determine the transport slope without additional real-time input, priors, or
    a controlled model class.
-12. Subtracted dispersion relations require large-\(\omega\) control and an
+13. Subtracted dispersion relations require large-\(\omega\) control and an
    explicit declaration of contact terms.
-13. Hydrodynamic control requires additional analyticity, clustering,
+14. Hydrodynamic control requires additional analyticity, clustering,
    equilibration, and limit-exchange hypotheses.
 
 ## Calculation Checks
@@ -116,6 +125,11 @@
   the finite Mazur projection/Drude-weight normalization.  It also checks a
   two-dimensional finite-regulator Mori--Zwanzig identity and its
   Laplace-space Schur complement.
+- The #882 canonical convention ledger is also guarded by
+  `calculation-checks/kms_foundation_checks.py` and
+  `calculation-checks/finite_temperature_path_integral_checks.py`, which test
+  the fermionic lesser sign, \(H-hB\) source-response sign, \(2\pi\)
+  normalization, and retarded denominator.
 
 ## Figures
 
@@ -164,3 +178,7 @@
   finite real family, finite reference moments are part of the datum, and
   restricted compensator independence alone does not certify finite sum-rule
   values.
+- 2026-06-08 issue #882 convention-owner pass: added the compact real-time
+  convention ledger and synchronized it with Chapters 1, 2, and 12.  The pass
+  is a convention and architecture repair supporting later transport physics,
+  not an additional lemma-density expansion.

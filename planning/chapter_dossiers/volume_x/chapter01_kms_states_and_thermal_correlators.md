@@ -29,12 +29,15 @@
   declared.
 - Fourier convention for thermal correlators.
 - Thermal greater/lesser functions and finite-volume spectral detailed
-  balance.
+  balance, with unsigned fermionic unordered functions obeying the ordinary
+  Boltzmann ratio and the signed lesser/Euclidean antiperiodic conventions
+  separated explicitly.
 - Spectral distribution \(\rho=G^>-G^<\), reconstruction of \(G^\gtrless\)
   away from zero-frequency singular sectors, and bosonic
   fluctuation--dissipation.
 - Linear response from first-order interaction-picture evolution.
-- Retarded correlator, causal support, and
+- Retarded commutator correlator, source-response kernel
+  \(K^R=-G^{R,\mathrm{comm}}\) for \(H-fB\), causal support, and
   \(\rho=-2\operatorname{Im}G^R\) sign convention.
 - Conserved densities, homogeneous thermal one-point functions, hydrodynamic
   state-family input, derivative expansion, and shear Kubo formula.
@@ -51,8 +54,10 @@
 | \(S_\beta\) | KMS strip \(0<\operatorname{Im}z<\beta\) |
 | \(F_{A,B}\) | KMS strip function |
 | \(G^>,G^<\) | thermal Wightman functions |
+| \(G^{<}_{F,\mathrm{sgn}}\) | signed fermionic lesser convention, \(-G^<\) relative to the unsigned unordered function |
 | \(\rho_{AB}\) | thermal spectral distribution |
-| \(G^R\) | retarded correlator |
+| \(G^{R,\mathrm{comm}}\), \(G^R\) | commutator-retarded correlator; the shorter \(G^R\) is used when no source-sign ambiguity is present |
+| \(K^R_{AB}\) | physical source-response kernel for \(H_f=H-fB\), equal to \(-G^{R,\mathrm{comm}}_{AB}\) |
 | \(T^{\mu\nu}\), \(J_A^\mu\) | conserved stress tensor and currents |
 | \(u^\mu,T,\mu_A\) | velocity, temperature, and chemical potentials |
 | \(\varepsilon,p,n_A\) | energy density, pressure, and charge density |
@@ -68,13 +73,15 @@
 3. Entire analytic elements are norm dense by Gaussian smearing.
 4. Finite-volume Gibbs traces satisfy KMS by a direct energy-basis proof.
 5. Detailed balance follows from KMS and is verified explicitly by
-   finite-volume spectral sums.
+   finite-volume spectral sums; no extra minus appears in the unsigned
+   unordered fermionic lesser function.
 6. The spectral density reconstructs greater/lesser functions only after
    zero-frequency singular sectors are separated.
 7. Bosonic fluctuation--dissipation is an algebraic consequence of detailed
    balance.
 8. Retarded response follows from the first-order source expansion and is
-   causal by construction.
+   causal by construction; for \(H_f=H-fB\) the response kernel is
+   \(K^R=-G^{R,\mathrm{comm}}\).
 9. Transport coefficients are QFT correlator limits only when the relevant
    zero-frequency limits exist.
 10. Hydrodynamic fields arise from conserved-density state families and
@@ -91,8 +98,10 @@
 
 - `calculation-checks/kms_foundation_checks.py` verifies the finite
   Gibbs-trace KMS boundary condition, detailed balance, spectral
-  reconstruction, bosonic fluctuation--dissipation, and the retarded-sign
-  convention in the shear Kubo formula.
+  reconstruction, bosonic fluctuation--dissipation, the one-mode fermionic
+  unsigned/signed lesser distinction and Euclidean antiperiodicity, the
+  two-level source-impulse sign \(K^R=-G^{R,\mathrm{comm}}\), and the
+  retarded-sign convention in the shear Kubo formula.
 
 ## Recent Architectural Passes
 
@@ -103,3 +112,8 @@
   chapters, and records the theorem-boundary rule that finite cells or
   numerical evidence do not become continuum QFT claims without declared
   limits, topology, locality/positivity, and reconstruction/comparison data.
+- 2026-06-08 issue #882 convention re-audit: corrected the \(H-fB\)
+  source-response sign, separated unsigned fermionic KMS from the signed lesser
+  and Euclidean antiperiodic conventions, and added exact finite regressions.
+  This is convention infrastructure for later physics-output derivations, not
+  a standalone depth-pass-B advance.

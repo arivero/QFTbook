@@ -13,9 +13,10 @@ Target claims:
   residue, and treats regular and near-critical spectral weight as separate
   extraction data.
 - The Euclidean-to-retarded transport-extraction subsection requires
-  Euclidean samples to be contact-subtracted, tail-subtracted, and passed
-  through a declared spectral inverse with a stability budget before they are
-  accepted as QCD viscosities or conductivities.
+  Euclidean samples to be normalized with the \(d\omega/(2\pi)\) kernel when
+  \(\rho=-2\operatorname{Im}G^R\), contact-subtracted, tail-subtracted, and
+  passed through a declared spectral inverse with a stability budget before
+  they are accepted as QCD viscosities or conductivities.
 - The finite bulk/sound spectral-window subsection separates the dissipative
   bulk-pressure source from raw trace and energy-density slopes, reconstructs
   zeta from the sound attenuation only after the shear and finite-density
@@ -39,9 +40,11 @@ Independent construction:
   kernel, generates spectral samples, solves for width and amplitude, and only
   then reconstructs eta.
 - For the Euclidean-to-retarded extraction window, constructs finite
-  Euclidean linear functionals from low-frequency spectral coordinates,
-  contact moments, and UV-tail moments, then reconstructs the transport
-  coordinate only after the declared subtractions and inverse map are applied.
+  Euclidean linear functionals from measure-normalized low-frequency spectral
+  coordinates, checks the \(1/(2\pi)\) conversion from commutator-density
+  coordinates, adds contact moments and UV-tail moments, then reconstructs the
+  transport coordinate only after the declared subtractions and inverse map are
+  applied.
 - For the bulk/sound window, constructs a finite scalar slope matrix, forms
   the thermodynamically subtracted bulk source, derives the charged
   longitudinal determinant from exact thermodynamic derivatives, and
@@ -70,8 +73,9 @@ Independent verification route:
   critical, shear, conductive, and Drude pieces, and reconstructs transport
   coefficients from those generated response functions rather than assigning
   the final transport formula as input.  The Euclidean check constructs the
-  imaginary-time data with independent contact and UV-tail moments before
-  applying the declared inverse.
+  imaginary-time data with the same \(d\omega/(2\pi)\) normalization used for
+  \(\rho=-2\operatorname{Im}G^R\), then adds independent contact and UV-tail
+  moments before applying the declared inverse.
 
 Convention dependencies:
 - The checks use the monograph mostly-plus real-time convention, the retarded
@@ -81,8 +85,8 @@ Convention dependencies:
   \(\beta_{1,2}\) and \(\alpha_{1,2}\), and the intrinsic conductivity
   convention after convective current subtraction.  Euclidean spectral
   reconstruction uses the positive-frequency thermal kernel
-  \(K_\beta(\tau,\omega)\) and does not identify raw Euclidean moments with
-  real-time slopes.
+  \(K_\beta(\tau,\omega)\) with \(d\omega/(2\pi)\) when written in terms of
+  \(\rho\), and does not identify raw Euclidean moments with real-time slopes.
 
 Domain and remainder assumptions:
 - The response-window checks assume an isolated finite-\(k\) hydrodynamic pole
@@ -105,7 +109,8 @@ Imported assumptions:
   inputs declared in the chapter.
 
 Negative controls:
-- Rejects wrong retarded spectral sign, width-only shear extraction, missing
+- Rejects wrong retarded spectral sign, missing Euclidean \(1/(2\pi)\)
+  spectral-kernel normalization, width-only shear extraction, missing
   enthalpy-residue uncertainty, uncorrected regular-background contamination,
   raw Euclidean midpoint transport extraction, one-sample Euclidean spectral
   inversion, missing Euclidean contact subtraction, missing UV-tail
@@ -139,8 +144,9 @@ charges, rotated electromagnetic mass-matrix bookkeeping, screening and
 collective-mode counts, dense Fermi-surface stress scales,
 color-flavor-locked faithful-global-symmetry and anomaly-matching
 bookkeeping, hydrodynamic response-window bookkeeping,
-Euclidean-to-retarded transport-extraction bookkeeping with contact, UV-tail,
-one-sample, and stability-budget negative controls, finite shear
+Euclidean-to-retarded transport-extraction bookkeeping with \(1/(2\pi)\)
+kernel normalization, contact, UV-tail, one-sample, and stability-budget
+negative controls, finite shear
 spectral-window extraction from a retarded hydrodynamic kernel,
 finite bulk/sound spectral-window extraction with thermodynamic, shear, and
 finite-density conductive subtractions,
@@ -1118,11 +1124,24 @@ def check_euclidean_to_retarded_transport_extraction():
         return abs(row[0]) * abs(vector[0]) + abs(row[1]) * abs(vector[1])
 
     euclidean_kernel = ((Fraction(2), Fraction(1)), (Fraction(1), Fraction(3)))
+    two_pi_normalization = Fraction(44, 7)
     spectral_coords = (Fraction(3, 5), Fraction(2, 7))
+    commutator_spectral_coords = tuple(
+        two_pi_normalization * coord for coord in spectral_coords
+    )
     contact_moments = (Fraction(5), -Fraction(2))
     uv_tail_moments = (Fraction(1, 11), -Fraction(1, 13))
 
     low_frequency_moments = matvec_2(euclidean_kernel, spectral_coords)
+    commutator_density_moments = matvec_2(euclidean_kernel, commutator_spectral_coords)
+    normalized_commutator_density_moments = tuple(
+        moment / two_pi_normalization for moment in commutator_density_moments
+    )
+    assert_equal(
+        "QCD Euclidean kernel includes 1/(2 pi) for rho_comm",
+        normalized_commutator_density_moments,
+        low_frequency_moments,
+    )
     euclidean_moments = vec_add(
         low_frequency_moments,
         contact_moments,
@@ -1136,6 +1155,16 @@ def check_euclidean_to_retarded_transport_extraction():
             (Fraction(3, 5), -Fraction(1, 5)),
             (-Fraction(1, 5), Fraction(2, 5)),
         ),
+    )
+    omitted_two_pi_slope = matvec_2(inverse_kernel, commutator_density_moments)[0]
+    assert_equal(
+        "QCD omitted Euclidean 2 pi normalization rescales slope",
+        omitted_two_pi_slope,
+        two_pi_normalization * spectral_coords[0],
+    )
+    assert_true(
+        "QCD transport inverse must not absorb missing 2 pi normalization silently",
+        omitted_two_pi_slope != spectral_coords[0],
     )
 
     contact_subtracted_moments = vec_sub(euclidean_moments, contact_moments)

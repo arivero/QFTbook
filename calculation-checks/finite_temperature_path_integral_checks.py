@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
-"""Finite checks for thermal path-integral conventions.
+r"""Finite checks for thermal path-integral conventions.
 
 Evidence contract.
 Target claims: circle eigenvalue quantization, finite-volume spectral
 representation of Euclidean correlators, the separate zero mode, Matsubara
-Cauchy transforms, chemical-potential twist bookkeeping, and the
+Cauchy transforms, the \(2\pi\) conversion between the commutator spectral
+density and the measure-normalized Euclidean spectral distribution, the
+retarded \(z-\omega\) denominator convention, chemical-potential twist
+bookkeeping, and the
 Euclidean-to-real-time reconstruction instability example in Volume X
 Chapter 2.
 Independent construction: direct finite Gibbs sums, direct Matsubara
@@ -20,14 +23,16 @@ Imported assumptions: the finite-regulator Gibbs trace, the bosonic spectral
 kernel stated in the chapter, positivity of Hermitian positive-frequency
 spectral weights, and the use of Euclidean norms as data-error topology.
 Negative controls: the Euclidean zero mode is not inferred from the
-commutator spectral density, finite Matsubara values are not accepted as
-stable spectral reconstruction, small Euclidean error is not accepted as
-control of the low-frequency transport-channel slope, and a nonintegrable
-constant spectral floor is not used to preserve positivity.  An adversarial
-weight pair whose restrictions agree on the allowed compensator region is
-rejected as outside the compensator hypothesis, and a restricted-independent
-pair with a divergent moment against C exp(-omega) is rejected as outside the
-finite-reference-moment hypothesis.
+commutator spectral density, the retarded transform is not written with the
+\(\omega-z\) denominator, the positive-frequency Euclidean kernel does not
+drop the \(1/(2\pi)\) factor when it uses \(\rho_{\rm comm}\), finite
+Matsubara values are not accepted as stable spectral reconstruction, small
+Euclidean error is not accepted as control of the low-frequency
+transport-channel slope, and a nonintegrable constant spectral floor is not
+used to preserve positivity.  An adversarial weight pair whose restrictions
+agree on the allowed compensator region is rejected as outside the compensator
+hypothesis, and a restricted-independent pair with a divergent moment against
+C exp(-omega) is rejected as outside the finite-reference-moment hypothesis.
 The singular endpoint weight 1/omega is rejected even though it is smooth on
 (0,infinity): its low-frequency bump moment diverges and the natural adapted
 reference loses the required positive lower bound at zero.
@@ -189,6 +194,10 @@ def cauchy_matsubara_transform(atoms: list[tuple[float, complex]], matsubara_fre
     return sum(weight / (omega - 1j * matsubara_frequency) for omega, weight in atoms)
 
 
+def retarded_cauchy_transform(atoms: list[tuple[float, complex]], z: complex) -> complex:
+    return sum(weight / (z - omega) for omega, weight in atoms)
+
+
 def euclidean_transport_kernel(beta: float, tau: float, omega: float) -> float:
     """Kernel multiplying sigma(omega)=rho(omega)/(2 omega) for omega>0."""
 
@@ -249,6 +258,61 @@ def check_bosonic_spectral_representation() -> None:
         0.0,
         "constant spectral term has no nonzero Matsubara coefficient",
     )
+
+
+def check_harmonic_oscillator_spectral_normalization_and_continuation() -> None:
+    beta = 1.6
+    frequency = 0.9
+    tau = 0.43
+    two_pi = 2.0 * math.pi
+    hat_weight = 1.0 / (2.0 * frequency)
+    atoms = [(frequency, hat_weight), (-frequency, -hat_weight)]
+    commutator_weights = [(omega, two_pi * weight) for omega, weight in atoms]
+
+    for (_, comm_weight), (_, normalized_weight) in zip(commutator_weights, atoms):
+        assert_close(
+            comm_weight / two_pi,
+            normalized_weight,
+            "commutator spectral density converts to hat rho by 2 pi",
+        )
+
+    kernel = math.cosh(frequency * (0.5 * beta - tau)) / math.sinh(0.5 * beta * frequency)
+    euclidean_from_atoms = spectral_euclidean_correlator(atoms, beta, tau)
+    euclidean_from_comm_density = commutator_weights[0][1] * kernel / two_pi
+    assert_close(
+        euclidean_from_atoms,
+        euclidean_from_comm_density,
+        "harmonic oscillator Euclidean kernel uses d omega over 2 pi with rho_comm",
+    )
+    omitted_two_pi = commutator_weights[0][1] * kernel
+    assert_close(
+        omitted_two_pi / two_pi,
+        euclidean_from_atoms,
+        "omitted 2 pi rescales the oscillator Euclidean kernel",
+    )
+    assert_finite("oscillator Euclidean value from atoms", euclidean_from_atoms)
+    assert_finite("oscillator omitted two pi value", omitted_two_pi)
+    if abs(omitted_two_pi - euclidean_from_atoms) < 1.0e-10:
+        raise AssertionError("positive-frequency kernel should not omit the 1/(2 pi) factor")
+
+    matsubara = 4.0 * math.pi / beta
+    euclidean_matsubara = cauchy_matsubara_transform(atoms, matsubara)
+    retarded_at_matsubara = retarded_cauchy_transform(atoms, 1j * matsubara)
+    assert_close(
+        euclidean_matsubara,
+        -retarded_at_matsubara,
+        "nonzero Matsubara value is minus the retarded Cauchy transform",
+    )
+    wrong_retarded_denominator = sum(weight / (omega - 1j * matsubara) for omega, weight in atoms)
+    assert_close(
+        wrong_retarded_denominator,
+        euclidean_matsubara,
+        "omega minus z denominator reproduces Euclidean sign, not retarded sign",
+    )
+    assert_finite("oscillator retarded Cauchy value", retarded_at_matsubara)
+    assert_finite("oscillator wrong retarded denominator value", wrong_retarded_denominator)
+    if abs(wrong_retarded_denominator - retarded_at_matsubara) < 1.0e-10:
+        raise AssertionError("retarded transform must use the z-omega denominator")
 
 
 def check_low_frequency_transport_instability() -> None:
@@ -600,6 +664,7 @@ def main() -> None:
     check_matsubara_boundary_phases()
     check_one_mode_fermionic_trace_identity()
     check_bosonic_spectral_representation()
+    check_harmonic_oscillator_spectral_normalization_and_continuation()
     check_low_frequency_transport_instability()
     check_finite_sum_rule_preserving_instability()
     check_adversarial_weights_need_restricted_independence()

@@ -1916,7 +1916,7 @@ terms, the positive-frequency spectral representation has the form
 \begin{equation}
   G_{E,X}(\tau,\mathbf k)-G_{0,X}-C_{E,X}(\tau,\mathbf k)
   =
-  \int_0^\infty d\omega\,
+  \int_0^\infty \frac{d\omega}{2\pi}\,
   \rho_X(\omega,\mathbf k)K_\beta(\tau,\omega),
   \qquad
   K_\beta(\tau,\omega)
@@ -1924,6 +1924,11 @@ terms, the positive-frequency spectral representation has the form
   \frac{\cosh[\omega(\beta/2-\tau)]}{\sinh(\beta\omega/2)} .
   \label{eq:qcd-euclidean-spectral-kernel}
 \end{equation}
+Equivalently, one may write the same kernel with
+\(\widehat\rho_X:=\rho_X/(2\pi)\) and the measure \(d\omega\).  The
+normalization is part of the inverse problem: omitting the \(1/(2\pi)\) factor
+rescales every matrix element that connects Euclidean data to the real-time
+Kubo slope.
 The transport coordinate in this channel is a low-frequency real-time slope,
 for example
 \[
@@ -1954,6 +1959,12 @@ subtraction,
   \lambda_X=\ell_X(a).
   \label{eq:qcd-euclidean-inverse-transport-map}
 \end{equation}
+Here \(M_{i\alpha}\) is constructed using the same normalized measure as
+\eqref{eq:qcd-euclidean-spectral-kernel}.  If the coordinates \(a_\alpha\)
+parametrize \(\rho_X\) rather than \(\widehat\rho_X\), the factor
+\(1/(2\pi)\) is included in \(M_{i\alpha}\); if they parametrize
+\(\widehat\rho_X\), it is absorbed into \(a_\alpha\).  The stability norm below
+must be computed in that same coordinate system.
 An accepted transport extraction supplies a reconstruction map
 \(\widehat a=\mathcal I_X(g)\), a stability norm, and a residual estimate
 \begin{equation}
