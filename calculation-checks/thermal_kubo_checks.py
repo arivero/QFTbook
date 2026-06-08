@@ -12,12 +12,12 @@ term, finite Mazur projection algebra, and a two-dimensional Mori-Zwanzig
 Schur-complement model.  The conductivity-sector checks separate Hermitian
 dissipation from a real antisymmetric Hall block.  The Mazur/Drude checks use
 an Abel-switched source response for the zero-Liouville current covariance,
-an H=0 conserved-current negative control, a static-versus-dynamical
-conserved-current split, a finite oscillatory negative control, and a
-polynomial ultraviolet-tail control to separate source-derived Drude residues
-and filtered Cesaro/Abel zero-frequency projections from unproved
-commutator-FDT, pointwise, static-equilibrium, unfiltered continuum, or
-sign-changing-filter positivity claims.
+an H=0 conserved-current negative control, an explicit tight-binding
+periodic-twist/open-boundary comparison, a finite oscillatory negative
+control, and a polynomial ultraviolet-tail control to separate source-derived
+Drude residues and filtered Cesaro/Abel zero-frequency projections from
+unproved commutator-FDT, pointwise, static-equilibrium, unfiltered continuum,
+or sign-changing-filter positivity claims.
 Imported assumptions: the thermal KMS condition, finite-volume linear
 response, and the interpretation of real local source contacts as contact
 terms outside the nonzero-frequency commutator spectral measure.
@@ -32,7 +32,10 @@ Drude limit, an equilibrium static pure-gauge cancellation is not identified
 with the Abel dynamical kernel, and a locally finite low-frequency measure
 with a polynomial ultraviolet tail is not accepted as supporting unfiltered
 dominated convergence; sign-changing or complex compact filters are rejected
-when the proof claims a positive filtered measure.
+when the proof claims a positive filtered measure.  The open-boundary
+finite-size Drude atom is not accepted as the periodic twist/Kohn route: the
+former vanishes at every finite size in the tight-binding check while regular
+peaks collapse toward zero with increasing size.
 Scope boundary: these checks do not prove hydrodynamic closure, continuum
 limit exchange, or Euclidean analytic-continuation stability.
 """
@@ -56,6 +59,10 @@ def matmul(a: list[list[complex]], b: list[list[complex]]) -> list[list[complex]
 def matadd(a: list[list[complex]], b: list[list[complex]]) -> list[list[complex]]:
     size = len(a)
     return [[a[i][j] + b[i][j] for j in range(size)] for i in range(size)]
+
+
+def matcomm(a: list[list[complex]], b: list[list[complex]]) -> list[list[complex]]:
+    return matadd(matmul(a, b), matscale(-1.0, matmul(b, a)))
 
 
 def matscale(c: complex, a: list[list[complex]]) -> list[list[complex]]:
@@ -352,35 +359,176 @@ def check_commutator_fdt_loses_exact_zero_mode() -> None:
         raise AssertionError("commutator FDT incorrectly reconstructed the exact zero-mode atom")
 
 
-def check_static_dynamic_split_for_conserved_free_current() -> None:
-    beta = 1.6
-    zero_mode_covariance = 0.43
-    commutator_spectral_atom = 0.0
+def check_periodic_twist_and_open_boundary_drude_routes() -> None:
+    beta = 1.3
+    hopping = 1.0
 
-    dynamical_contact_kernel = beta * zero_mode_covariance
-    reequilibrated_state_derivative = -dynamical_contact_kernel
-    equilibrium_static_kernel = dynamical_contact_kernel + reequilibrated_state_derivative
+    def thermal_weights(energies: list[float]) -> list[float]:
+        shifted = [energy - min(energies) for energy in energies]
+        raw = [math.exp(-beta * energy) for energy in shifted]
+        total = sum(raw)
+        return [weight / total for weight in raw]
 
-    assert_close("conserved current has zero commutator spectral atom", commutator_spectral_atom, 0.0)
-    assert_close("equilibrium pure-gauge derivative cancels after reequilibration", equilibrium_static_kernel, 0.0)
-    assert dynamical_contact_kernel > 0.0
+    def periodic_levels(length: int, twist: float) -> list[tuple[float, float]]:
+        levels = []
+        for mode in range(length):
+            momentum = 2.0 * math.pi * mode / length + twist / length
+            energy = -2.0 * hopping * math.cos(momentum)
+            current = -(2.0 * hopping / length) * math.sin(momentum)
+            levels.append((energy, current))
+        return levels
 
-    for epsilon in (0.4, 0.2, 0.1, 0.05):
-        abel_conductivity = beta * zero_mode_covariance / epsilon
-        dynamical_abel_kernel = epsilon * abel_conductivity
-        assert_close(
-            "dynamical Abel kernel keeps conserved-current contact",
-            dynamical_abel_kernel,
-            dynamical_contact_kernel,
+    def periodic_current_expectation(length: int, twist: float) -> float:
+        levels = periodic_levels(length, twist)
+        weights = thermal_weights([energy for energy, _current in levels])
+        return sum(weight * current for weight, (_energy, current) in zip(weights, levels, strict=True))
+
+    periodic_length = 6
+    twist_step = 1.0e-4
+    periodic_levels_at_zero = periodic_levels(periodic_length, 0.0)
+    periodic_weights = thermal_weights([energy for energy, _current in periodic_levels_at_zero])
+    periodic_mean_current = sum(
+        weight * current
+        for weight, (_energy, current) in zip(periodic_weights, periodic_levels_at_zero, strict=True)
+    )
+    periodic_zero_atom = sum(
+        weight * (current - periodic_mean_current) ** 2
+        for weight, (_energy, current) in zip(periodic_weights, periodic_levels_at_zero, strict=True)
+    ) / periodic_length
+    periodic_static_kernel = -(
+        periodic_current_expectation(periodic_length, twist_step)
+        - periodic_current_expectation(periodic_length, -twist_step)
+    ) / (2.0 * twist_step * periodic_length)
+
+    assert periodic_zero_atom > 0.0
+    assert abs(periodic_static_kernel) > 1.0e-5
+
+    def open_energies(length: int) -> list[float]:
+        return [
+            -2.0 * hopping * math.cos(math.pi * (mode + 1) / (length + 1))
+            for mode in range(length)
+        ]
+
+    def open_vector(length: int, mode: int, bond_phase: float = 0.0) -> list[complex]:
+        momentum = math.pi * (mode + 1) / (length + 1)
+        norm = math.sqrt(2.0 / (length + 1))
+        return [
+            norm
+            * math.sin(momentum * (site + 1))
+            * complex(math.cos(bond_phase * site), math.sin(bond_phase * site))
+            for site in range(length)
+        ]
+
+    def zero_matrix(size: int) -> list[list[complex]]:
+        return [[0j for _col in range(size)] for _row in range(size)]
+
+    def open_hamiltonian_matrix(length: int, bond_phase: float = 0.0) -> list[list[complex]]:
+        matrix = zero_matrix(length)
+        phase = complex(math.cos(bond_phase), math.sin(bond_phase))
+        for site in range(length - 1):
+            matrix[site + 1][site] = -hopping * phase
+            matrix[site][site + 1] = -hopping * phase.conjugate()
+        return matrix
+
+    def open_current_matrix(length: int, bond_phase: float = 0.0) -> list[list[complex]]:
+        matrix = zero_matrix(length)
+        phase = complex(math.cos(bond_phase), math.sin(bond_phase))
+        for site in range(length - 1):
+            matrix[site + 1][site] = 1j * hopping * phase
+            matrix[site][site + 1] = -1j * hopping * phase.conjugate()
+        return matrix
+
+    def open_contact_matrix(length: int, bond_phase: float = 0.0) -> list[list[complex]]:
+        matrix = zero_matrix(length)
+        phase = complex(math.cos(bond_phase), math.sin(bond_phase))
+        for site in range(length - 1):
+            matrix[site + 1][site] = -hopping * phase
+            matrix[site][site + 1] = -hopping * phase.conjugate()
+        return matrix
+
+    def position_matrix(length: int) -> list[list[complex]]:
+        matrix = zero_matrix(length)
+        for site in range(length):
+            matrix[site][site] = site + 0j
+        return matrix
+
+    def matrix_element(vector_l: list[complex], matrix: list[list[complex]], vector_r: list[complex]) -> complex:
+        return sum(
+            vector_l[row].conjugate() * matrix[row][col] * vector_r[col]
+            for row in range(len(vector_l))
+            for col in range(len(vector_r))
         )
-        assert_close(
-            "static-dynamic zero-mode mismatch is Kubo-Mori covariance",
-            dynamical_abel_kernel - equilibrium_static_kernel,
-            beta * zero_mode_covariance,
+
+    open_length = 10
+    open_hamiltonian = open_hamiltonian_matrix(open_length)
+    open_position = position_matrix(open_length)
+    current_from_commutator = matscale(1j, matcomm(open_hamiltonian, open_position))
+    direct_open_current = open_current_matrix(open_length)
+    commutator_error = sum(
+        abs(current_from_commutator[row][col] - direct_open_current[row][col]) ** 2
+        for row in range(open_length)
+        for col in range(open_length)
+    )
+    assert_close("open current is i[H,X]", math.sqrt(commutator_error), 0.0)
+
+    open_weights = thermal_weights(open_energies(open_length))
+    open_current = open_current_matrix(open_length)
+    open_diagonal_currents = [
+        matrix_element(open_vector(open_length, mode), open_current, open_vector(open_length, mode)).real
+        for mode in range(open_length)
+    ]
+    open_zero_atom = sum(weight * current * current for weight, current in zip(open_weights, open_diagonal_currents, strict=True))
+    assert_close("finite open-boundary exact zero-frequency atom vanishes", open_zero_atom, 0.0)
+
+    def open_current_expectation(length: int, bond_phase: float) -> float:
+        weights = thermal_weights(open_energies(length))
+        current = open_current_matrix(length, bond_phase)
+        return sum(
+            weight
+            * matrix_element(open_vector(length, mode, bond_phase), current, open_vector(length, mode, bond_phase)).real
+            for mode, weight in enumerate(weights)
         )
 
-    if abs(commutator_spectral_atom - dynamical_contact_kernel) < 1.0e-12:
-        raise AssertionError("zero commutator response was confused with the dynamical Drude kernel")
+    phase_step = 1.0e-5
+    open_static_derivative = (
+        open_current_expectation(open_length, phase_step)
+        - open_current_expectation(open_length, -phase_step)
+    ) / (2.0 * phase_step)
+    open_contact_expectation = sum(
+        weight
+        * matrix_element(
+            open_vector(open_length, mode),
+            open_contact_matrix(open_length),
+            open_vector(open_length, mode),
+        ).real
+        for mode, weight in enumerate(open_weights)
+    )
+    assert_close("open pure-gauge equilibrium current derivative vanishes", open_static_derivative, 0.0, tol=2.0e-9)
+    assert abs(open_contact_expectation) > 0.1
+
+    def lowest_open_transition(length: int) -> tuple[float, float]:
+        energies = open_energies(length)
+        weights = thermal_weights(energies)
+        current = open_current_matrix(length)
+        best_frequency = math.inf
+        best_weight = 0.0
+        vectors = [open_vector(length, mode) for mode in range(length)]
+        for left in range(length):
+            for right in range(left + 1, length):
+                element = matrix_element(vectors[left], current, vectors[right])
+                spectral_weight = 0.5 * (weights[left] + weights[right]) * abs(element) ** 2 / length
+                if spectral_weight > 1.0e-12:
+                    frequency = abs(energies[right] - energies[left])
+                    if frequency < best_frequency:
+                        best_frequency = frequency
+                        best_weight = spectral_weight
+        return best_frequency, best_weight
+
+    open_transitions = [lowest_open_transition(length) for length in (12, 24, 48)]
+    open_frequencies = [frequency for frequency, _weight in open_transitions]
+    assert open_frequencies[0] > open_frequencies[1] > open_frequencies[2]
+    assert open_frequencies[2] < 0.4 * open_frequencies[0]
+    assert all(weight > 0.0 for _frequency, weight in open_transitions)
 
 
 def check_cesaro_abel_not_pointwise_negative_control() -> None:
@@ -620,7 +768,7 @@ def main() -> None:
     check_diamagnetic_contact_response_convention()
     check_mazur_projection_and_drude_weight()
     check_commutator_fdt_loses_exact_zero_mode()
-    check_static_dynamic_split_for_conserved_free_current()
+    check_periodic_twist_and_open_boundary_drude_routes()
     check_cesaro_abel_not_pointwise_negative_control()
     check_filtered_drude_rejects_uncontrolled_uv_tail()
     check_filtered_drude_cutoff_positivity_contract()

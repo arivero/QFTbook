@@ -46,6 +46,11 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   equilibrium static vector-potential derivative and the dynamical Abel
   retarded kernel, not by setting the same zero-frequency kernel to zero or by
   dividing the commutator spectral density by \(\omega\).
+  The finite source-response identity is separated from boundary-condition
+  routes: periodic uniform vector potentials are holonomy/twist sources, open
+  finite systems with \(I=\ii[H,X]\) have no exact zero-Liouville current atom,
+  and open-boundary Drude weights, when present, arise from finite-frequency
+  spectral weight collapsing toward zero with volume.
   The static pure-gauge cancellation is restricted to contractible uniform
   sources with no background holonomy sector and no superfluid/superconducting
   stiffness response.
@@ -146,9 +151,14 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
    vector-potential derivative, a distinct dynamical retarded/Abel kernel, the
    identity that their zero-mode mismatch is \(\beta A^{(0)}\), and convergence
    of the resulting residues into the Hermitian dissipative conductivity
-   measure.  The pure-gauge static cancellation applies only for contractible
-   uniform sources with the declared topology/boundary conditions and does not
-   include torus holonomy or superfluid/Meissner stiffness sectors.
+   measure.  This construction is not a boundary-condition theorem by itself:
+   periodic twists may carry finite Kohn-type curvature because the source is a
+   holonomy, while open finite systems with \(I=\ii[H,X]\) have
+   \(P_0 I=0\) and any thermodynamic Drude weight must be recovered through
+   spectral collapse or a separate bulk-measure comparison theorem.  The
+   pure-gauge static cancellation applies only for contractible uniform sources
+   with the declared topology/boundary conditions and does not include torus
+   holonomy or superfluid/Meissner stiffness sectors.
    Cesaro/Abel extraction is a filtered low-frequency theorem with a real,
    even, nonnegative cutoff bounded by one and equal to one near zero, unless a
    globally finite regulated or spacetime-smeared measure has been supplied;
@@ -198,10 +208,11 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   block from the positive measure; the finite Mazur projection and
   Abel-switched source-response residue for a current with conserved overlap;
   an \(H=0\) conserved-current negative control where the commutator spectral
-  density vanishes although the symmetrized zero atom is nonzero; a
-  conserved-current static/dynamical split where the equilibrium static
-  derivative cancels only after re-equilibration while the Abel dynamical
-  kernel keeps the \(\beta A^{(0)}\) residue; an oscillatory
+  density vanishes although the symmetrized zero atom is nonzero; an explicit
+  tight-binding comparison in which a periodic twist has nonzero zero-mode
+  covariance and nonzero static twist curvature, while an open finite chain
+  realizes \(I=\ii[H,X]\), has vanishing exact zero-frequency current atom, and
+  has its lowest current-carrying transition move toward zero with length; an oscillatory
   \(C(t)=C_0+\cos\Omega t\) negative control where Cesaro and Abel averages
   isolate \(C_0\) but no pointwise long-time limit exists; a
   polynomial ultraviolet-tail negative control showing why the Drude
@@ -299,3 +310,10 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   filtered measure, recorded that sign-changing or complex filters need a
   separate total-variation proof, and added a regression rejecting such
   filters under the positivity-preserving theorem contract.
+- 2026-06-08 issue #952 pass: split the Drude normalization identity from the
+  regulator routes.  Periodic uniform vector potentials are treated as
+  holonomy/twist sources with possible Kohn curvature; open finite systems with
+  \(I=\ii[H,X]\) have no exact zero-Liouville current atom, so open-boundary
+  Drude weights must come from spectral collapse or a bulk comparison theorem.
+  The companion check is now an explicit tight-binding periodic/open
+  comparison instead of a conserved-current self-confirmation.

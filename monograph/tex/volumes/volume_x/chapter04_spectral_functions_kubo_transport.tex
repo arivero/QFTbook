@@ -604,10 +604,10 @@ summand, while \(\sigma^{{\rm diss},\rm reg}\) is the locally integrable part
 used in the finite dc limit.  Figure~\ref{fig:kubo-order-of-limits} records
 this order-of-limits prescription.
 
-\begin{proposition}[Static-dynamical split in the zero-mode Drude normalization]
+\begin{proposition}[Static-dynamical Drude split]
 \label{prop:kubo-zero-mode-drude-normalization}
-Fix a finite-volume regulated system with a uniform vector-potential source
-coupled to the total current,
+Fix a finite-volume regulator with a uniform vector-potential source coupled
+to the total current,
 \[
   H(A)=H(0)-A_iI_i+O(A^2),
 \]
@@ -633,30 +633,26 @@ the dynamical retarded vector-potential kernel
   \qquad \operatorname{Re}z>0 ,
   \label{eq:kubo-dynamical-vector-potential-kernel}
 \end{equation}
-where the initial state is the \(A=0\) Gibbs state.  Assume the declared
-gauge/contact prescription and spatial topology make a constant vector
-potential a contractible pure-gauge direction, with no background holonomy
-sector and no stiffness response, so that
-\begin{equation}
-  \mathcal K^{\rm eq}_{ij,V}=0 .
-  \label{eq:kubo-equilibrium-static-puregauge-cancellation}
-\end{equation}
-This hypothesis is an isothermal equilibrium derivative.  It is not the
-assertion that the Abel boundary value of
-\eqref{eq:kubo-dynamical-vector-potential-kernel} vanishes.  On a spatial
-torus a uniform \(A\) can be a holonomy rather than a contractible gauge
-direction, and in a superfluid or superconducting phase the transverse static
-response can contain a genuine stiffness or Meissner term; those sectors are
-separate from the normal ballistic Drude atom below.
+where the initial state is the \(A=0\) Gibbs state.  No pure-gauge assumption
+is made in this identity: \(\mathcal K^{\rm eq}\) may vanish, may be a
+finite-size twist curvature, or may contain a separately declared stiffness
+sector, depending on topology and boundary conditions.
 
 Let \(E_j(t)=E_j e^{\epsilon t}\) be an Abel-switched electric field observed
 at \(t=0\), and choose \(A_j(t)\) with \(E_j=-\dot A_j\) and
-\(A_j(-\infty)=0\).  Define the Abel vector-potential kernel by
-\[
+\(A_j(-\infty)=0\).  The Abel electric-field experiment computes the
+finite-size mismatch between the dynamical vector-potential boundary value and
+the re-equilibrated static kernel:
+\begin{equation}
   K^{\rm dyn,Abel}_{ij,V}(\epsilon)
+  -
+  \mathcal K^{\rm eq}_{ij,V}
   :=
   \epsilon\,\sigma^{(\epsilon)}_{ij,V}.
-\]
+  \label{eq:kubo-abel-vector-potential-mismatch-definition}
+\end{equation}
+In a route where \(\mathcal K^{\rm eq}_{ij,V}=0\), this reduces to the common
+pure-gauge notation \(K^{\rm dyn,Abel}=\epsilon\sigma^{(\epsilon)}\).
 With the
 Kubo--Mori product
 \[
@@ -707,10 +703,20 @@ then
   \beta A^{(0)}_{ij,V}
   \label{eq:kubo-static-dynamic-zero-mode-mismatch}
 \end{equation}
-in the Hermitian dissipative sector.  Consequently, if the chosen
-thermodynamic limit sends these Abel residues and the finite-volume
-zero-mode covariances to a locally finite conductivity measure, the
-thermodynamic singular part is
+in the Hermitian dissipative sector.  Equivalently, the finite-volume
+dynamical Abel boundary value splits as
+\[
+  \lim_{\epsilon\downarrow0}
+  K^{\rm dyn,Abel,diss}_{ij,V}(\epsilon)
+  =
+  \mathcal K^{\rm eq,diss}_{ij,V}
+  +
+  \beta A^{(0)}_{ij,V}.
+\]
+Consequently, if a specified thermodynamic route sends these Abel residues
+and finite-volume zero-mode covariances to a locally finite conductivity
+measure, the exact-zero-mode contribution to the thermodynamic singular part
+is
 \begin{equation}
   d\mu^{\sigma,\rm diss}_{ij}
   \supset
@@ -724,7 +730,8 @@ limit.  It is the quantified mismatch between the equilibrium static
 derivative and the dynamical retarded zero-mode boundary value, not a residue
 obtained after setting that same dynamical kernel to zero, and it is not
 obtained by reconstructing a missing zero atom from
-\(\rho_{JJ}(\omega)/(2\omega)\).
+\(\rho_{JJ}(\omega)/(2\omega)\).  The proposition does not assert that every
+standard finite-volume boundary condition has a nonzero \(A^{(0)}_{ij,V}\).
 \end{proposition}
 
 \begin{proof}
@@ -737,12 +744,14 @@ The finite-volume KMS identity gives
 \]
 The source-response kernel for \(A_j\) is this commutator kernel plus the
 local response contact.  Integrating by parts against \(A_j(t-\tau)\)
-produces a boundary/contact contribution: this is the equilibrium static
-derivative \(\mathcal K^{\rm eq}_{ij,V}\) when the source and Gibbs state are
-varied together.  The pure-gauge hypothesis
-\eqref{eq:kubo-equilibrium-static-puregauge-cancellation} cancels that
-isothermal derivative.  The dynamical Abel experiment instead holds the
-initial state fixed and uses \(E_j=-\dot A_j\), leaving
+produces a boundary/contact contribution to the full equilibrium source
+derivative equal to \(-\mathcal K^{\rm eq}_{ij,V}\) with the sign convention
+of \eqref{eq:kubo-equilibrium-static-conductivity-kernel}.  Passing to the
+conductivity kernel \(K^{\rm cond}=-\mathcal K^{\rm full}\) gives the
+\(+\mathcal K^{\rm eq}_{ij,V}\) term in
+\eqref{eq:kubo-static-dynamic-zero-mode-mismatch}.  The dynamical Abel
+experiment instead holds the initial state fixed and uses
+\(E_j=-\dot A_j\), leaving
 \eqref{eq:kubo-abel-source-response-conductivity} for the electric-field
 response.  The zero-Liouville component of \(C^{\rm KM}_{ij,V}(t)\) is the
 constant matrix \(A^{(0)}_{ij,V}\), because on \(\ker[H,\cdot]\) the
@@ -755,6 +764,72 @@ value of \((\epsilon-\ii\omega)^{-1}\) has Hermitian real part
 precisely the measure atom in
 \eqref{eq:kubo-source-response-drude-normalization}.
 \end{proof}
+
+\begin{proposition}[Boundary-condition routes to a Drude atom]
+\label{prop:kubo-boundary-condition-drude-routes}
+The finite identity in
+Proposition~\ref{prop:kubo-zero-mode-drude-normalization} has distinct
+nonempty regulator routes.
+\begin{enumerate}
+\item In a periodic system, a uniform vector potential is a holonomy or twist.
+  The finite static curvature \(\mathcal K^{\rm eq}_{V}\) is not assumed to
+  vanish; it is the setting of Kohn-type twist stiffness and finite-size
+  Drude response.  A normal ballistic Drude atom, a superfluid or Meissner
+  stiffness, and a reactive Hall or magnetization term are separate
+  low-frequency objects and must be named before comparing limits.
+\item In an open finite system with a position operator \(X_j\) and current
+  \(I_j=\ii[H,X_j]\), the exact finite-volume zero-Liouville current
+  projection vanishes:
+  \[
+    P_0\bar I_j=0,\qquad A^{(0)}_{ij,V}=0 .
+  \]
+  A nonzero open-boundary thermodynamic Drude weight, when it exists, is
+  therefore not the ordinary limit of finite exact zero-frequency atoms.  It
+  comes from regular finite-frequency spectral weight whose characteristic
+  frequencies collapse toward zero as the volume grows
+  \cite{RigolShastry2008OpenDrude,BellomiaResta2020OpenDrude}.
+\item In a bulk conductivity route, one first constructs the thermodynamic
+  Hermitian dissipative conductivity measure for local current densities,
+  with contacts, stiffness sectors, and boundary artifacts separated, and only
+  then takes the zero-frequency distributional limit.  Agreement with a
+  periodic twist route or an open spectral-collapse route is an additional
+  comparison theorem: it requires common current normalization, tightness of
+  low-frequency spectral weight, and control of the order of limits
+  \(V\to\infty\), \(\epsilon\downarrow0\), and \(\omega\downarrow0\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The periodic statement is the topology distinction: the source changes the
+holonomy and is not a contractible gauge transformation.  For the open
+statement, if \(|a\rangle\) and \(|b\rangle\) lie in the same exact energy
+block, then
+\[
+  \langle a|I_j|b\rangle
+  =
+  \ii(E_a-E_b)\langle a|X_j|b\rangle
+  =
+  0 .
+\]
+Thus the zero-Liouville projection of the current vanishes at every finite
+open volume.  The remaining statements are order-of-limits hypotheses:
+spectral weight at \(\omega\ne0\) can move toward zero with volume, while a
+fixed finite-volume zero atom remains absent.
+\end{proof}
+
+For contractible open-boundary vector-potential sources one may have the
+isothermal pure-gauge cancellation
+\begin{equation}
+  \mathcal K^{\rm eq}_{ij,V}=0 ,
+  \label{eq:kubo-equilibrium-static-puregauge-cancellation}
+\end{equation}
+but then Proposition~\ref{prop:kubo-boundary-condition-drude-routes} shows
+that the finite exact zero-mode atom is not the generic open-boundary route
+to a bulk Drude weight.  Conversely, on a periodic torus the twist route can
+have finite exact zero-mode response, but \(\mathcal K^{\rm eq}_{ij,V}\) is a
+holonomy curvature rather than a contractible pure-gauge cancellation.  The
+two routes can agree only after the thermodynamic comparison hypotheses have
+been proved.
 
 The finite Mazur matrix \(A^{(0)}_{ij,V}\) and the thermodynamic Drude atom
 are connected only after the zero-mode source-response limit is supplied.  If
@@ -771,8 +846,10 @@ measure, then for every real vector \(u_i\)
   \label{eq:kubo-mazur-drude-liminf-bound}
 \end{equation}
 Without this convergence hypothesis, the finite-volume result remains a
-lower bound on a finite-volume Cesaro projection.  It is not a pointwise
-long-time theorem.
+lower bound on a finite-volume Cesaro projection.  In the open-boundary
+spectral-collapse route the finite exact atom can vanish for every volume,
+so the thermodynamic Drude weight, if present, is supplied by a different
+order of limits.  None of these statements is a pointwise long-time theorem.
 
 \begin{proposition}[Filtered Drude, Cesaro, Abel, and pointwise limits]
 \label{prop:kubo-drude-time-domain-equivalences}
