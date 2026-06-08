@@ -2354,14 +2354,16 @@ Current checks:
   `qft_scripts/su3_topological_charge_diagnostics_hdf5.py`, verifying
   oriented plaquette conventions, clover-field anti-Hermiticity and
   antisymmetry, vanishing on the cold configuration, gauge invariance of
-  \(Q_{\rm clover}\) and the clover action density, and the
+  \(Q_{\rm clover}\) and the clover action density, the anti-Hermitian
+  Chern--Weil sign convention, and the
   sampler-to-flow-to-topology HDF5 pipeline.  The public runner supplies the
   canonical `QFT_PYTHON` interpreter for the subprocess HDF5 leg.
 - `lattice_gradient_flow_checks.py`: exact finite checks for the Volume XI
   Wilson-flow section, including negative-gradient monotonicity, adjoint
   norm invariance, linearized heat-kernel damping, the \(w_0\) scale
-  derivative, and the factor two in the Chern--Weil variation of
-  \(\operatorname{tr}(F\wedge F)\).
+  derivative, coupled-action flow-time rescaling, anti-Hermitian sign and
+  clover-scaling bookkeeping, and the factor two in the Chern--Weil variation
+  of \(\operatorname{tr}(F\wedge F)\).
 - `gauge_action_improvement_checks.py`: exact arithmetic checks for the
   Volume XI tree-level improved gauge-action section, including rectangle
   flux moments, the equations \(c_0+8c_1=1\) and \(c_0+20c_1=0\), and the
@@ -2373,8 +2375,10 @@ Current checks:
 - `lattice_perturbation_tadpole_checks.py`: exact finite checks for the
   Volume XI lattice perturbative-coordinate section, including inversion of
   the tree-level gauge-fixed lattice kernel, the \(\widehat p^2\) expansion
-  coefficient \(-1/12\), and the plaquette tadpole/boosted-coupling
-  bookkeeping.
+  coefficient \(-1/12\), connection/canonical quadratic-coefficient
+  conversion, rejection of the hybrid canonical-link plus connection-kernel
+  convention, center-versus-corner plaquette remainder orders, and the
+  plaquette tadpole/boosted-coupling bookkeeping.
 - `autocorrelation_resampling_checks.py`: finite checks for
   `qft_scripts/autocorrelation_resampling.py`, verifying block means,
   blocked standard errors, delete-one-block jackknife errors, biased

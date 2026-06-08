@@ -80,6 +80,42 @@ def check_flow_scale_derivative() -> None:
     require(f > 0 and w0_operator > 0, "test flowed scale function should be positive")
 
 
+def check_coupled_action_flow_time_rescaling() -> None:
+    gradient = Fraction(11, 13)
+    g0_squared = Fraction(5, 7)
+    coupled_gradient = gradient / g0_squared
+    coupled_time = Fraction(3, 17)
+    normalized_time = coupled_time / g0_squared
+
+    coupled_displacement = -coupled_time * coupled_gradient
+    normalized_displacement = -normalized_time * gradient
+    require(
+        coupled_displacement == normalized_displacement,
+        "coupled Wilson action should rescale the normalized flow time by g0^{-2}",
+    )
+
+
+def check_antihermitian_sign_and_clover_scaling() -> None:
+    hermitian_trace_square = Fraction(19, 23)
+    antihermitian_trace_square = -hermitian_trace_square
+    g0 = Fraction(5, 7)
+    a = Fraction(1, 11)
+
+    positive_action_density = -antihermitian_trace_square / (4 * g0 * g0)
+    connection_action_density = hermitian_trace_square / (4 * g0 * g0)
+    require(
+        positive_action_density == connection_action_density,
+        "anti-Hermitian action needs the minus trace sign",
+    )
+
+    clover_product_scale = (g0 * a * a) ** 2
+    canonical_product_scale = g0 * g0 * a**4
+    require(
+        clover_product_scale == canonical_product_scale,
+        "canonical clover density should carry g0^2 a^4",
+    )
+
+
 def check_chern_weil_variation_factor() -> None:
     """Check the factor two in delta tr(F wedge F)=2 tr(delta F wedge F)."""
 
@@ -98,6 +134,8 @@ def main() -> None:
     check_conjugation_norm_invariance()
     check_heat_kernel_mode_damping()
     check_flow_scale_derivative()
+    check_coupled_action_flow_time_rescaling()
+    check_antihermitian_sign_and_clover_scaling()
     check_chern_weil_variation_factor()
     print("All lattice gradient-flow checks passed.")
 

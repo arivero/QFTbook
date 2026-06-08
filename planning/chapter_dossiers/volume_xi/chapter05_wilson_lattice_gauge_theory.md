@@ -29,7 +29,10 @@ Source-File: monograph/tex/volumes/volume_xi/chapter05_wilson_lattice_gauge_theo
 - \(SU(N)\), \(N\ge3\), fundamental Wilson-weight normalization:
   \(d\langle N^{-1}\operatorname{Re}\operatorname{Tr}U_p\rangle/d\beta
   |_{\beta=0}=1/(2N^2)\), hence \(1/18\) for \(SU(3)\).
-- Continuum expansion of plaquette holonomy.
+- Continuum expansion of plaquette holonomy, including the explicit
+  anti-Hermitian connection, Hermitian connection-normalized field, and
+  canonical-field chart, the positive anti-Hermitian action sign, and the
+  plaquette-center remainder convention.
 - Plaquette-plus-rectangle improved gauge actions, including the finite
   regulator meaning of action improvement, the tree-level Symanzik
   coefficients \(c_1=-1/12,c_0=5/3\), the Iwasaki normalization convention,
@@ -38,8 +41,9 @@ Source-File: monograph/tex/volumes/volume_xi/chapter05_wilson_lattice_gauge_theo
   APE preprojection, polar \(SU(N)\) projection equivariance, stout smearing,
   and the locality/scheme status of iterated smearing.
 - Lattice perturbative coordinates around the trivial connection, including
-  the trace-delta coupling convention \(\beta=N/g_0^2\), the quadratic Wilson
-  kernel, covariant gauge fixing, the tree-level propagator, lattice momentum
+  the trace-delta coupling convention \(\beta=N/g_0^2\), the canonical-field
+  quadratic Wilson kernel, covariant gauge fixing, the tree-level propagator,
+  the placement of \(g_0\) in cubic/quartic vertices, lattice momentum
   artifacts, and plaquette tadpole normalization as a finite coordinate
   convention.
 - Wilson loop operators.
@@ -55,18 +59,20 @@ Source-File: monograph/tex/volumes/volume_xi/chapter05_wilson_lattice_gauge_theo
   a companion GEVP analysis script.
 - Wilson/gradient flow as a finite-dimensional ODE on the compact link
   manifold, including link-gradient definition, global existence,
-  gauge covariance, action monotonicity, continuum linearized heat-kernel
-  smoothing, flowed energy-density scale coordinates \(t_0,w_0\), and the
-  distinction between geometric/index topological charge definitions and
-  numerical flow plateaux.
+  gauge covariance, action monotonicity, coupling-induced flow-time rescaling,
+  continuum linearized heat-kernel smoothing, flowed energy-density scale
+  coordinates \(t_0,w_0\), and the distinction between geometric/index
+  topological charge definitions and numerical flow plateaux.
 - Explicit finite \(SU(3)\) Wilson-score gradient calculation, including the
   staple formula, anti-Hermitian traceless projection, monotonicity identity
   for the normalized plaquette score, and an HDF5 companion flow script for
   saved finite configurations.  The finite derivative check is recorded as
   worked prose rather than theorem-family content.
 - Clover curvature and clover topological-charge diagnostics, with oriented
-  plaquette conventions, gauge-invariance proof, admissibility-distance
-  diagnostic, and an HDF5 companion script for raw or flowed configurations.
+  plaquette conventions, the anti-Hermitian Chern--Weil sign, the
+  dimensionless clover-to-canonical matching factor, gauge-invariance proof,
+  admissibility-distance diagnostic, and an HDF5 companion script for raw or
+  flowed configurations.
 - Reflection positivity and transfer-matrix statement.
 - Fermion and chiral-gauge-theory regulator boundary.
 
@@ -76,6 +82,8 @@ Source-File: monograph/tex/volumes/volume_xi/chapter05_wilson_lattice_gauge_theo
 | --- | --- |
 | \(U_\mu(x)\) | gauge link variable |
 | \(U_{\mu\nu}(x)\) | plaquette holonomy |
+| \(\mathcal A_\mu,A_\mu^{\rm conn},A_\mu^{\rm can}\) | anti-Hermitian link-log connection, Hermitian connection-normalized field, and canonical field |
+| \(\mathcal F_{\mu\nu},F_{\mu\nu}^{\rm conn},F_{\mu\nu}^{\rm can}\) | corresponding curvature coordinates |
 | \(S_W\) | Wilson lattice action |
 | \(\beta\) | lattice gauge coupling parameter |
 | \(W_R(C)\) | Wilson loop in representation \(R\) |
@@ -120,8 +128,10 @@ Source-File: monograph/tex/volumes/volume_xi/chapter05_wilson_lattice_gauge_theo
 
 1. Wilson lattice gauge theory is a gauge-invariant compact group integral at
    finite cutoff.
-2. The plaquette expansion matches the continuum Yang--Mills action after
-   fixing trace normalization.
+2. The centered plaquette expansion matches the positive continuum
+   Yang--Mills action after fixing the trace normalization and the
+   connection/canonical chart; a corner expansion only gives a local \(O(a^5)\)
+   trace remainder before summed total-derivative handling.
 3. Wilson loops are finite-regulator gauge-invariant line probes.
 4. The finite \(\mathbb Z_2\) character expansion is an exact surface
    representation at finite cutoff: \(Z\) sums closed plaquette surfaces and
@@ -155,11 +165,14 @@ Source-File: monograph/tex/volumes/volume_xi/chapter05_wilson_lattice_gauge_theo
     smearing gives a smooth \(SU(N)\)-valued gauge-covariant link map because
     its algebra element is anti-Hermitian, traceless, and transforms by
     endpoint conjugation.
-13. The Wilson action with \(\beta=N/g_0^2\) has tree-level quadratic kernel
+13. In canonical perturbative coordinates, the Wilson action with
+    \(\beta=N/g_0^2\) has tree-level quadratic kernel
     \(K_{\mu\nu}^{(\xi)}=\delta_{\mu\nu}\widehat p^2
     -(1-\xi^{-1})\widehat p_\mu\widehat p_\nu\) after covariant gauge fixing,
     with inverse \(D_{\mu\nu}=\widehat p^{-2}[\delta_{\mu\nu}
-    -(1-\xi)\widehat p_\mu\widehat p_\nu/\widehat p^2]\).
+    -(1-\xi)\widehat p_\mu\widehat p_\nu/\widehat p^2]\); connection
+    coordinates instead carry \(g_0^{-2}\) in the kernel and \(g_0^2\) in the
+    propagator, while \(g_0\) enters canonical interaction vertices.
 14. The lattice momentum obeys
     \(\widehat p^2=p^2-\frac{a^2}{12}\sum_\mu p_\mu^4+O(a^4p^6)\), giving an
     explicit tree-level cutoff artifact.
@@ -187,22 +200,27 @@ Source-File: monograph/tex/volumes/volume_xi/chapter05_wilson_lattice_gauge_theo
    covariance, and the chain rule gives
    \(\frac{d}{dt}S(V_t)=-\sum_\ell\|\nabla_\ell S(V_t)\|^2\).
 20. Positive physical flow time damps ultraviolet Fourier modes in the
-   linearized continuum equation, but flowed scale coordinates and topological
-   charge plateaux acquire continuum meaning only after a scaling trajectory
-   and a regulator-level topological-charge definition are specified.
-21. Smooth continuum gradient flow preserves the Chern--Weil charge on a fixed
-   bundle because \(\frac{d}{dt}\operatorname{tr}(F\wedge F)\) is an exact
-   differential.
+   linearized continuum equation.  Multiplying the pure-gauge action by its
+   coupling prefactor rescales the normalized flow-time coordinate by
+   \(g_0^{-2}\); flowed scale coordinates and topological charge plateaux
+   acquire continuum meaning only after a scaling trajectory and a
+   regulator-level topological-charge definition are specified.
+21. Smooth continuum gradient flow preserves the anti-Hermitian Chern--Weil
+   charge on a fixed bundle because
+   \(\frac{d}{dt}\operatorname{tr}(F\wedge F)\) is an exact differential.
 22. For finite \(SU(3)\) Wilson links, the force
     \(Z_\mu(x;U)=-\frac13[U_\mu(x)C_\mu(x;U)]_{\mathfrak{su}(3)}\) is the
     left-gradient of the normalized plaquette score \(Q\), and the normalized
     score-flow equation satisfies
     \(\frac{d}{dt}Q(V_t)=\sum_{x,\mu}\|Z_\mu(x;V_t)\|^2\ge0\).
 23. The clover curvature \(F_{\mu\nu}^{\rm cl}\) transforms by conjugation at
-    its base point, so \(Q_{\rm clover}\), \(e_{\rm clover}\), and
-    \(\max_p\|1-U_p\|\) are gauge-invariant finite-regulator diagnostics.
-    They are not integer topological charges without a separate admissible
-    geometric or index-theoretic construction.
+    its base point and begins as
+    \(a^2\mathcal F_{\mu\nu}=-ig_0a^2F_{\mu\nu}^{\rm can}\) in the canonical
+    chart, so \(Q_{\rm clover}\), \(e_{\rm clover}\), and
+    \(\max_p\|1-U_p\|\) are gauge-invariant finite-regulator diagnostics with
+    the anti-Hermitian Chern--Weil sign.  They are not integer topological
+    charges without a separate admissible geometric or index-theoretic
+    construction.
 24. Chiral gauge theories require additional determinant-phase and anomaly
    control beyond the vectorlike Wilson action.
 
@@ -242,8 +260,10 @@ Source-File: monograph/tex/volumes/volume_xi/chapter05_wilson_lattice_gauge_theo
   surface counts, and the finite entropy-bound arithmetic.
 - `calculation-checks/lattice_gradient_flow_checks.py` verifies the
   negative-gradient monotonicity identity, adjoint norm covariance,
-  linearized heat-kernel damping, the \(w_0\) derivative convention, and the
-  Chern--Weil variation factor used in the Wilson-flow section.
+  linearized heat-kernel damping, the \(w_0\) derivative convention,
+  coupled-action flow-time rescaling, anti-Hermitian sign and clover-scaling
+  bookkeeping, and the Chern--Weil variation factor used in the Wilson-flow
+  section.
 - `calculation-checks/su3_wilson_flow_checks.py` verifies the explicit
   finite \(SU(3)\) Wilson-score gradient by directional derivatives, one-step
   gauge covariance, small-step monotonicity, group preservation, HDF5
@@ -254,8 +274,9 @@ Source-File: monograph/tex/volumes/volume_xi/chapter05_wilson_lattice_gauge_theo
   layout.
 - `calculation-checks/su3_topological_charge_diagnostics_checks.py` verifies
   oriented plaquette conventions, cold-configuration vanishing, clover-field
-  anti-Hermiticity/tracelessness/antisymmetry, gauge invariance of the
-  diagnostics, and the sampler-to-flow-to-topology HDF5 pipeline.
+  anti-Hermiticity/tracelessness/antisymmetry, the anti-Hermitian
+  Chern--Weil sign, gauge invariance of the diagnostics, and the
+  sampler-to-flow-to-topology HDF5 pipeline.
 - `calculation-checks/gauge_action_improvement_checks.py` verifies the
   plaquette-plus-rectangle tree-level improvement arithmetic: rectangle flux
   moments, \(c_0+8c_1=1\), \(c_0+20c_1=0\), and the normalization convention
@@ -265,7 +286,10 @@ Source-File: monograph/tex/volumes/volume_xi/chapter05_wilson_lattice_gauge_theo
   endpoint-conjugation covariance of the stout algebra element.
 - `calculation-checks/lattice_perturbation_tadpole_checks.py` verifies the
   tree-level gauge-fixed kernel inverse, the \(\widehat p^2\) expansion
-  coefficient, and tadpole-normalization bookkeeping.
+  coefficient, connection/canonical quadratic-coefficient conversion, rejection
+  of the hybrid \(U=\exp(-ig_0aA)\) plus \(g_0^{-2}(\partial A)^2\)
+  convention, center-versus-corner plaquette remainder orders, and
+  tadpole-normalization bookkeeping.
 - `calculation-checks/static_potential_analysis_checks.py` verifies the
   static-potential companion script on synthetic area-plus-perimeter
   Wilson-loop data, including elementary ratio-error propagation and
@@ -334,3 +358,11 @@ Source-File: monograph/tex/volumes/volume_xi/chapter05_wilson_lattice_gauge_theo
 - 2026-06-03 issue #631 pass: added the static-source variational matrix GEVP
   for smeared/path-varied spatial transporters at fixed separation, plus
   theorem-anchored script and exact rational calculation checks.
+- 2026-06-08 issue #895 scope pass: separated the anti-Hermitian
+  connection-log, Hermitian connection-normalized, and canonical gauge-field
+  charts throughout the continuum expansion, perturbative kernel, vertices,
+  Wilson-flow time coordinate, and clover/topology diagnostics.  The chapter
+  now uses the positive anti-Hermitian action sign, reserves the local
+  \(O(a^6)\) plaquette trace remainder for the centered expansion, and records
+  finite checks rejecting the hybrid canonical-link plus connection-kernel
+  convention.

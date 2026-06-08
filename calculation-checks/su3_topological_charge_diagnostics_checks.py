@@ -95,6 +95,34 @@ def check_clover_field_quality_and_antisymmetry(su3, topology) -> None:
             )
 
 
+def check_antihermitian_chern_weil_sign(topology) -> None:
+    x_field = np.diag([1j, -1j, 0.0]).astype(np.complex128)
+    y_field = np.diag([2j, -2j, 0.0]).astype(np.complex128)
+    zero = np.zeros((3, 3), dtype=np.complex128)
+    positive_pair_fields = {
+        (0, 1): x_field,
+        (2, 3): y_field,
+    }
+    original = topology.clover_field_strength
+
+    def fake_clover_field(_links, _site, mu: int, nu: int) -> np.ndarray:
+        if mu < nu:
+            return positive_pair_fields.get((mu, nu), zero)
+        return -positive_pair_fields.get((nu, mu), zero)
+
+    topology.clover_field_strength = fake_clover_field
+    try:
+        dummy_links = np.zeros((1, 1, 1, 1, 4, 3, 3), dtype=np.complex128)
+        density = topology.local_q_density(dummy_links, (0, 0, 0, 0))
+    finally:
+        topology.clover_field_strength = original
+
+    require(
+        density > 0.0,
+        "anti-Hermitian Chern-Weil convention should include the minus sign",
+    )
+
+
 def check_gauge_invariance(su3, topology) -> None:
     rng = np.random.default_rng(271828)
     links = su3.hot_links(2, rng)
@@ -104,8 +132,18 @@ def check_gauge_invariance(su3, topology) -> None:
     transformed = su3.gauge_transform(links, gauges)
     q_density, action_density = topology.diagnostic_arrays(links)
     q_density_g, action_density_g = topology.diagnostic_arrays(transformed)
-    assert_close("clover topological charge gauge invariance", float(np.sum(q_density)), float(np.sum(q_density_g)), tol=1.0e-10)
-    assert_close("clover action-density gauge invariance", float(np.mean(action_density)), float(np.mean(action_density_g)), tol=1.0e-10)
+    assert_close(
+        "clover topological charge gauge invariance",
+        float(np.sum(q_density)),
+        float(np.sum(q_density_g)),
+        tol=1.0e-10,
+    )
+    assert_close(
+        "clover action-density gauge invariance",
+        float(np.mean(action_density)),
+        float(np.mean(action_density_g)),
+        tol=1.0e-10,
+    )
     assert_close(
         "plaquette admissibility diagnostic gauge invariance",
         topology.max_plaquette_deviation(links),
@@ -218,6 +256,7 @@ def main() -> None:
     check_oriented_plaquette_conventions(su3, topology)
     check_cold_configuration_zero(su3, topology)
     check_clover_field_quality_and_antisymmetry(su3, topology)
+    check_antihermitian_chern_weil_sign(topology)
     check_gauge_invariance(su3, topology)
     check_hdf5_pipeline()
     print("All SU(3) topological-diagnostic HDF5 checks passed.")

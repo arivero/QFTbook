@@ -399,15 +399,58 @@ surface entropy.
 
 \section{Continuum Expansion}
 
-For a smooth continuum connection \(A_\mu(x)\), set
+There are two useful continuum coordinates near the identity, and the coupling
+must not be moved between them silently.  Let
+\(\mathcal A_\mu\in\mathfrak{su}(N)\) be the anti-Hermitian connection
+appearing directly in the link logarithm:
 \[
-  U_\mu(x)=\exp(a A_\mu(x)).
+  U_\mu(x)=\exp(a\mathcal A_\mu(x)).
 \]
-The plaquette has expansion
+If \(A_\mu^{\rm conn}\) and \(A_\mu^{\rm can}\) are Hermitian
+connection-normalized and canonical fields in the trace convention
+\(\operatorname{tr}(t^at^b)=\delta^{ab}\), the chart is
+\begin{equation}
+  \mathcal A_\mu=-\ii A_\mu^{\rm conn}
+  =-\ii g_0 A_\mu^{\rm can},
+  \qquad
+  F_{\mu\nu}^{\rm conn}=g_0F_{\mu\nu}^{\rm can}.
+  \label{eq:lattice-connection-canonical-chart}
+\end{equation}
+The canonical curvature includes the coupling in its nonlinear term:
+\[
+  F_{\mu\nu}^{\rm can}
+  =
+  \partial_\mu A_\nu^{\rm can}-\partial_\nu A_\mu^{\rm can}
+  -\ii g_0[A_\mu^{\rm can},A_\nu^{\rm can}].
+\]
+Equivalently, the anti-Hermitian curvature is
+\(\mathcal F_{\mu\nu}=-\ii F_{\mu\nu}^{\rm conn}
+=-\ii g_0F_{\mu\nu}^{\rm can}\).
+
+With the ordinary matrix trace, \(\operatorname{tr}(\mathcal F_{\mu\nu}
+\mathcal F_{\mu\nu})\le0\).  The positive Euclidean action is therefore
+\begin{equation}
+  S_E
+  =
+  -\frac{1}{4g_0^2}\int d^Dx\,
+  \operatorname{tr}(\mathcal F_{\mu\nu}\mathcal F_{\mu\nu})
+  =
+  \frac{1}{4g_0^2}\int d^Dx\,
+  \operatorname{tr}(F_{\mu\nu}^{\rm conn}F_{\mu\nu}^{\rm conn})
+  =
+  \frac14\int d^Dx\,
+  \operatorname{tr}(F_{\mu\nu}^{\rm can}F_{\mu\nu}^{\rm can}).
+  \label{eq:lattice-ym-action-connection-canonical-forms}
+\end{equation}
+The last form is coupling-free only in the quadratic kernel; the interaction
+vertices are inside \(F_{\mu\nu}^{\rm can}\).
+
+For a smooth anti-Hermitian connection and plaquette center
+\(x_c=x+\frac a2(\widehat\mu+\widehat\nu)\), the centered expansion is
 \[
   U_{\mu\nu}(x)
   =
-  \exp\!\left(a^2F_{\mu\nu}(x)+O(a^3)\right).
+  \exp\!\left(a^2\mathcal F_{\mu\nu}(x_c)+O(a^4)\right).
 \]
 If the representation trace obeys
 \[
@@ -418,14 +461,15 @@ then
   1-\frac{1}{\dim R}\operatorname{Re}\operatorname{Tr}_R U_{\mu\nu}
   =
   -\frac{a^4\kappa_R}{2\dim R}
-  \operatorname{tr}(F_{\mu\nu}F_{\mu\nu})
-  +O(a^6)
+  \operatorname{tr}(\mathcal F_{\mu\nu}\mathcal F_{\mu\nu})(x_c)
+  +O(a^6).
 \]
-for anti-Hermitian \(A_\mu\).  Matching to
-\[
-  \frac{1}{4g^2}\int d^Dx\,\operatorname{tr}(F_{\mu\nu}F_{\mu\nu})
-\]
-fixes the relation between \(\beta\), \(g\), and the trace normalization.
+At a corner one only has
+\(U_{\mu\nu}(x)=\exp(a^2\mathcal F_{\mu\nu}(x)+O(a^3))\), so the local trace
+remainder is \(O(a^5)\) unless the summed total-derivative term is handled.
+Matching the centered expression to
+\eqref{eq:lattice-ym-action-connection-canonical-forms} fixes the relation
+between \(\beta\), \(g_0\), and the trace normalization.
 
 \section{Improved Gauge Actions at Tree Level}
 \label{sec:lattice-tree-level-improved-gauge-actions}
@@ -752,11 +796,16 @@ and write a link near the identity as
 \begin{equation}
   U_\mu(x)
   =
-  \exp\{-\ii g_0 a A_\mu(x+\tfrac a2\widehat\mu)\},
+  \exp\{-\ii g_0 a A_\mu^{\rm can}(x+\tfrac a2\widehat\mu)\},
   \qquad
-  A_\mu=A_\mu^a t^a .
+  A_\mu^{\rm can}=A_\mu^a t^a .
   \label{eq:lattice-link-perturbative-coordinate}
 \end{equation}
+This is the canonical chart in
+\eqref{eq:lattice-connection-canonical-chart}.  The corresponding
+connection-normalized Hermitian link coordinate would be
+\(A_\mu^{\rm conn}=g_0A_\mu^{\rm can}\) and
+\(U_\mu(x)=\exp\{-\ii aA_\mu^{\rm conn}(x+\frac a2\widehat\mu)\}\).
 With the Wilson action in the convention
 \begin{equation}
   S_W[U]
@@ -768,10 +817,28 @@ With the Wilson action in the convention
   \beta=\frac{N}{g_0^2},
   \label{eq:lattice-perturbative-wilson-beta}
 \end{equation}
-the parameter \(g_0\) is the lattice coupling coordinate matching the
-continuum trace-delta convention
-\(\frac{1}{4g_0^2}\int\operatorname{tr}(F_{\mu\nu}F_{\mu\nu})\) at tree
-level.
+the parameter \(g_0\) is the lattice coupling coordinate matching
+\eqref{eq:lattice-ym-action-connection-canonical-forms} at tree level.  In the
+canonical chart the factor \(g_0^{-2}\) in the connection action is cancelled
+by \(F_{\mu\nu}^{\rm conn}=g_0F_{\mu\nu}^{\rm can}\) in the quadratic term.
+The cubic and quartic vertices come from
+\[
+  F_{\mu\nu}^{\rm can}
+  =
+  f_{\mu\nu}^{\rm lin}
+  -\ii g_0[A_\mu^{\rm can},A_\nu^{\rm can}],
+\]
+so that
+\[
+  \frac14\operatorname{tr}(F_{\mu\nu}^{\rm can}F_{\mu\nu}^{\rm can})
+  =
+  \frac14\operatorname{tr}(f_{\mu\nu}^{\rm lin}f_{\mu\nu}^{\rm lin})
+  -\frac{\ii g_0}{2}
+  \operatorname{tr}\bigl(f_{\mu\nu}^{\rm lin}
+  [A_\mu^{\rm can},A_\nu^{\rm can}]\bigr)
+  -\frac{g_0^2}{4}
+  \operatorname{tr}\bigl([A_\mu^{\rm can},A_\nu^{\rm can}]^2\bigr).
+\]
 
 Let
 \[
@@ -781,21 +848,22 @@ be the forward difference.  The linearized lattice curvature is
 \begin{equation}
   f_{\mu\nu}(x)
   =
-  \nabla_\mu^+ A_\nu(x+\tfrac a2\widehat\nu)
+  \nabla_\mu^+ A_\nu^{\rm can}(x+\tfrac a2\widehat\nu)
   -
-  \nabla_\nu^+ A_\mu(x+\tfrac a2\widehat\mu).
+  \nabla_\nu^+ A_\mu^{\rm can}(x+\tfrac a2\widehat\mu).
   \label{eq:lattice-linearized-curvature}
 \end{equation}
 Expanding the plaquette gives
 \begin{equation}
   U_{\mu\nu}(x)
   =
-  \exp\{-\ii g_0 a^2 f_{\mu\nu}(x)+O(g_0a^3A,g_0^2a^3A^2)\}.
+  \exp\{-\ii g_0 a^2 f_{\mu\nu}(x)
+  +O(g_0a^3A^{\rm can},g_0^2a^3(A^{\rm can})^2)\}.
   \label{eq:lattice-plaquette-perturbative-expansion}
 \end{equation}
 Therefore the quadratic Wilson action is
 \begin{equation}
-  S_W^{(2)}[A]
+  S_W^{(2)}[A^{\rm can}]
   =
   \frac12
   \sum_x a^D\sum_{\mu<\nu}
@@ -862,6 +930,13 @@ with inverse on nonzero momenta
   \right].
   \label{eq:lattice-tree-propagator}
 \end{equation}
+Equations \eqref{eq:lattice-quadratic-wilson-action}--
+\eqref{eq:lattice-tree-propagator} are canonical-field formulae.  If one
+instead used \(A_\mu^{\rm conn}\) in
+\(U_\mu=\exp(-\ii aA_\mu^{\rm conn})\), the quadratic kernel would be
+multiplied by \(g_0^{-2}\) and the free propagator would be multiplied by
+\(g_0^2\).  The hybrid convention \(U_\mu=\exp(-\ii g_0aA_\mu)\) together with
+a \(g_0^{-2}(\partial A)^2\) quadratic term is not one of these two charts.
 As \(a\to0\) at fixed physical \(p\),
 \begin{equation}
   \widehat p^2
@@ -1524,8 +1599,15 @@ Thus the normalized finite \(SU(3)\) Wilson-flow equation used below is
   V_\mu(0,x)=U_\mu(x).
   \label{eq:su3-normalized-wilson-flow-force-ode}
 \end{equation}
-Including the gauge coupling in the action only rescales \(t\) in this
-finite pure-gauge flow.
+Including the gauge coupling in the action rescales the flow time in this
+finite pure-gauge flow.  For the usual \(SU(3)\) Wilson action
+\[
+  S_\beta(U)=\frac{\beta}{3}\bigl(6|\Lambda^0|-Q(U)\bigr),
+  \qquad \beta=\frac{3}{g_0^2},
+\]
+the gradient is \(\frac{\beta}{3}\) times the gradient of
+\(S_{\rm flow}\).  A trajectory at coupled-action time \(t\) is therefore the
+normalized-score trajectory at time \(\tau=(\beta/3)t=t/g_0^2\).
 
 \paragraph{Explicit \(SU(3)\) Wilson-score gradient.}
 For \(X\in\mathfrak{su}(3)\) and
@@ -1575,31 +1657,35 @@ Substituting \(X=Z_\mu(x;V_t)\) for every link gives the displayed
 monotonicity identity for \(Q\).
 
 The continuum reason that positive flow time is useful is already visible in
-the linearized equation.  Let \(B_\mu(t,x)\) be a smooth continuum connection
-and write its curvature as \(G_{\mu\nu}(t)\).  The Yang--Mills gradient flow is
+the linearized equation.  Let \(\mathcal B_\mu(t,x)\) be a smooth
+anti-Hermitian continuum connection and write its curvature as
+\(\mathcal G_{\mu\nu}(t)\).  The Yang--Mills gradient flow, in the flow-time
+coordinate that absorbs the overall \(g_0^{-2}\) action factor, is
 \begin{equation}
-  \partial_t B_\mu=D_\nu G_{\nu\mu},
+  \partial_t\mathcal B_\mu=D_\nu\mathcal G_{\nu\mu},
   \qquad
-  B_\mu(0,x)=A_\mu(x),
+  \mathcal B_\mu(0,x)=\mathcal A_\mu(x),
   \label{eq:continuum-gradient-flow}
 \end{equation}
-in the anti-Hermitian connection convention used in the lattice expansion.
-Linearizing about \(A_\mu=0\) gives
+in the connection convention used in the lattice expansion.  If one writes
+\(\mathcal B_\mu=-\ii g_0B_\mu^{\rm can}\), the same rescaled flow-time
+coordinate gives the canonical-field heat equation with \(g_0\) in the
+nonlinear terms.  Linearizing about \(\mathcal A_\mu=0\) gives
 \[
-  \partial_t B_\mu
+  \partial_t\mathcal B_\mu
   =
-  \partial^2B_\mu-\partial_\mu\partial_\nu B_\nu .
+  \partial^2\mathcal B_\mu-\partial_\mu\partial_\nu\mathcal B_\nu .
 \]
-In the transverse gauge \(\partial_\mu B_\mu=0\), a Fourier mode of momentum
-\(k\) is multiplied by \(e^{-tk^2}\).  Thus positive flow time damps momenta
-\(k^2\gg t^{-1}\), and the heat-kernel radius is of order \(\sqrt{8t}\) in
-four Euclidean dimensions.
+In the transverse gauge \(\partial_\mu\mathcal B_\mu=0\), a Fourier mode of
+momentum \(k\) is multiplied by \(e^{-tk^2}\).  Thus positive flow time damps
+momenta \(k^2\gg t^{-1}\), and the heat-kernel radius is of order
+\(\sqrt{8t}\) in four Euclidean dimensions.
 
 \begin{definition}[Flowed energy density and scale coordinates]
 \label{def:lattice-flowed-energy-scale}
-Let \(G_{\mu\nu}(t,x)\) be a chosen gauge-covariant lattice curvature
-constructed from the flowed links \(V_t\), for example the clover curvature.
-The flowed energy density is represented by
+Let \(G_{\mu\nu}(t,x)\) be a chosen gauge-covariant connection-normalized
+anti-Hermitian lattice curvature constructed from the flowed links \(V_t\), for
+example the clover curvature.  The flowed energy density is represented by
 \[
   E(t,x)=-\frac12\operatorname{tr}\bigl(G_{\mu\nu}(t,x)G_{\mu\nu}(t,x)\bigr),
 \]
@@ -1645,11 +1731,13 @@ principal \(SU(N)\)-bundle \(P_U\to T^4\).  The geometric topological charge is
 \[
   Q_{\rm geom}(U)
   =
-  \frac{1}{8\pi^2}\int_{T^4}\operatorname{tr}(F_{\widetilde A}\wedge
+  -\frac{1}{8\pi^2}\int_{T^4}\operatorname{tr}(F_{\widetilde A}\wedge
   F_{\widetilde A})
   \in\mathbb Z,
 \]
-where \(\widetilde A\) is any smooth connection on \(P_U\).  Independence of
+where \(\widetilde A\) is any smooth anti-Hermitian connection on \(P_U\).  The
+minus sign is the anti-Hermitian matrix-trace convention matching
+\eqref{eq:lattice-ym-action-connection-canonical-forms}.  Independence of
 \(\widetilde A\) is the Chern--Weil theorem; independence of the interpolation
 requires the stated admissibility construction and is part of the regulator
 datum.
@@ -1692,7 +1780,7 @@ the Chern--Weil density is
 \begin{equation}
   Q_{\rm clover}(U)
   =
-  \frac{1}{32\pi^2}
+  -\frac{1}{32\pi^2}
   \sum_x\sum_{\mu,\nu,\rho,\sigma=0}^3
   \epsilon_{\mu\nu\rho\sigma}
   \operatorname{Re}\operatorname{Tr}_3
@@ -1710,6 +1798,19 @@ The associated clover action-density diagnostic is
 \]
 These are gauge-invariant finite-regulator observables.  They are not, by
 themselves, an integer topological charge or a definition of a theta sector.
+When the links are in the canonical perturbative chart
+\eqref{eq:lattice-link-perturbative-coordinate}, the dimensionless clover
+curvature begins as
+\[
+  F_{\mu\nu}^{\rm cl}(x)
+  =
+  a^2\mathcal F_{\mu\nu}(x)+O(a^4)
+  =
+  -\ii g_0a^2F_{\mu\nu}^{\rm can}(x)+O(a^4).
+\]
+Thus a continuum-normalized action or topological density inferred from clover
+data must include the same connection-to-canonical matching factors as
+\eqref{eq:lattice-connection-canonical-chart}.
 \end{definition}
 
 \begin{remark}[Gauge invariance of the clover diagnostics]
@@ -1739,11 +1840,11 @@ base point.
 \end{remark}
 
 \paragraph{Continuum flow preserves Chern--Weil charge.}
-Let \(B(t)\) be a smooth one-parameter family of connections on a fixed
-principal \(SU(N)\)-bundle over a closed oriented four-manifold \(M\), with
-curvature \(G(t)\).  Then
+Let \(B(t)\) be a smooth one-parameter family of anti-Hermitian connections on
+a fixed principal \(SU(N)\)-bundle over a closed oriented four-manifold \(M\),
+with curvature \(G(t)\).  Then
 \[
-  Q(t)=\frac{1}{8\pi^2}\int_M\operatorname{tr}(G(t)\wedge G(t))
+  Q(t)=-\frac{1}{8\pi^2}\int_M\operatorname{tr}(G(t)\wedge G(t))
 \]
 is independent of \(t\).  In particular, smooth Yang--Mills gradient flow
 cannot change the bundle topological charge unless the flow leaves the smooth
@@ -1766,7 +1867,7 @@ Thus
 \[
   \frac{\dd Q}{\dd t}
   =
-  \frac{1}{4\pi^2}\int_M
+  -\frac{1}{4\pi^2}\int_M
   \dd\,\operatorname{tr}(\dot B\wedge G)
   =
   0

@@ -4,8 +4,8 @@
 The theorem anchor is Volume XI, Chapter 5: finite-lattice Wilson flow and
 topological charge.  The script computes the clover curvature diagnostic
 
-    Q_clover = (32*pi^2)^(-1) sum_x eps_{mu nu rho sigma}
-               Re Tr(F_mu_nu^clover(x) F_rho_sigma^clover(x))
+    Q_clover = -(32*pi^2)^(-1) sum_x eps_{mu nu rho sigma}
+                Re Tr(F_mu_nu^clover(x) F_rho_sigma^clover(x))
 
 from a finite periodic SU(3) configuration.  It can read the flowed-link
 checkpoint written by su3_wilson_flow_hdf5.py or the raw-link checkpoint
@@ -156,7 +156,7 @@ def local_q_density(links: np.ndarray, site: tuple[int, int, int, int]) -> float
                     eps = permutation_sign((mu, nu, rho, sigma))
                     if eps:
                         total += eps * float(np.real(np.trace(fields[(mu, nu)] @ fields[(rho, sigma)])))
-    return total / (32.0 * math.pi * math.pi)
+    return -total / (32.0 * math.pi * math.pi)
 
 
 def local_clover_action_density(links: np.ndarray, site: tuple[int, int, int, int]) -> float:
@@ -237,7 +237,11 @@ def load_links_from_hdf5(path: Path, requested_dataset: str) -> tuple[np.ndarray
 def initial_links(cfg: TopologyConfig) -> tuple[np.ndarray, str]:
     if cfg.input_hdf5 is not None:
         links, dataset = load_links_from_hdf5(cfg.input_hdf5, cfg.input_dataset)
-        require(links.shape == (cfg.L, cfg.L, cfg.L, cfg.L, su3.DIRECTIONS, su3.COLOR, su3.COLOR), "input shape does not match L")
+        require(
+            links.shape
+            == (cfg.L, cfg.L, cfg.L, cfg.L, su3.DIRECTIONS, su3.COLOR, su3.COLOR),
+            "input shape does not match L",
+        )
         return links, dataset
     rng = np.random.default_rng(cfg.seed)
     return su3.initial_links(cfg.L, cfg.start, rng), "generated/" + cfg.start
@@ -303,8 +307,14 @@ def result_to_json(result: TopologyResult) -> str:
 def run_smoke_test() -> None:
     cfg = TopologyConfig(L=2, seed=20260527, start="cold")
     result = run(cfg)
-    require(abs(result.q_clover) < 1.0e-12, "cold configuration should have zero clover charge")
-    require(abs(result.clover_action_density) < 1.0e-12, "cold configuration should have zero clover action density")
+    require(
+        abs(result.q_clover) < 1.0e-12,
+        "cold configuration should have zero clover charge",
+    )
+    require(
+        abs(result.clover_action_density) < 1.0e-12,
+        "cold configuration should have zero clover action density",
+    )
     require(result.max_plaquette_deviation < 1.0e-12, "cold plaquettes should be identity")
     require(result.max_clover_antihermitian_error < 1.0e-12, "clover field is not anti-Hermitian")
     require(result.max_clover_trace_abs < 1.0e-12, "clover field is not traceless")

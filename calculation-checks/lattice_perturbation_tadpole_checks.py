@@ -37,8 +37,14 @@ def check_tree_level_lattice_propagator_inverse() -> None:
 
     kernel = [[p2 * (trans[i][j] + long[i][j] / xi) for j in range(n)] for i in range(n)]
     propagator = [[(trans[i][j] + xi * long[i][j]) / p2 for j in range(n)] for i in range(n)]
-    require(matmul(kernel, propagator) == identity(n), "gauge-fixed kernel times propagator should be identity")
-    require(matmul(propagator, kernel) == identity(n), "propagator times gauge-fixed kernel should be identity")
+    require(
+        matmul(kernel, propagator) == identity(n),
+        "gauge-fixed kernel times propagator should be identity",
+    )
+    require(
+        matmul(propagator, kernel) == identity(n),
+        "propagator times gauge-fixed kernel should be identity",
+    )
 
 
 def check_lattice_hat_momentum_series() -> None:
@@ -54,6 +60,65 @@ def check_lattice_hat_momentum_series() -> None:
     require(coeff_y2 == 1, "hat momentum y^2 coefficient failed")
     require(coeff_y4 == Fraction(-1, 12), "hat momentum y^4 coefficient should be -1/12")
     require(coeff_y6 == Fraction(1, 360), "hat momentum y^6 coefficient should be 1/360")
+
+
+def check_connection_canonical_chart_coefficients() -> None:
+    g0 = Fraction(5, 7)
+    canonical_linear_field_scale = Fraction(1)
+    connection_linear_field_scale = g0 * canonical_linear_field_scale
+
+    canonical_quadratic = Fraction(1, 2) * canonical_linear_field_scale**2
+    connection_quadratic_after_chart = (
+        Fraction(1, 2)
+        * connection_linear_field_scale**2
+        / (g0 * g0)
+    )
+    hybrid_quadratic = Fraction(1, 2) * canonical_linear_field_scale**2 / (g0 * g0)
+
+    require(
+        connection_quadratic_after_chart == canonical_quadratic,
+        "connection-to-canonical chart should cancel the quadratic coupling",
+    )
+    require(
+        hybrid_quadratic != canonical_quadratic,
+        "hybrid U=exp(-ig0 a A) with g0^{-2}(dA)^2 should be rejected",
+    )
+
+    connection_kernel_factor = Fraction(1, 1) / (g0 * g0)
+    connection_propagator_factor = g0 * g0
+    canonical_kernel_factor = Fraction(1)
+    canonical_propagator_factor = Fraction(1)
+    require(
+        connection_kernel_factor * connection_propagator_factor == 1,
+        "connection kernel and propagator factors should be inverse",
+    )
+    require(
+        canonical_kernel_factor == canonical_propagator_factor,
+        "canonical free kernel and propagator should carry no coupling factor",
+    )
+
+    cubic_vertex_factor = g0 / 2
+    quartic_vertex_factor = g0 * g0 / 4
+    require(cubic_vertex_factor > 0, "canonical cubic vertex should carry g0")
+    require(quartic_vertex_factor > 0, "canonical quartic vertex should carry g0^2")
+
+
+def check_plaquette_remainder_orders() -> None:
+    leading_flux_order = 2
+    corner_correction_order = 3
+    centered_correction_order = 4
+
+    corner_trace_cross_order = leading_flux_order + corner_correction_order
+    centered_trace_cross_order = leading_flux_order + centered_correction_order
+
+    require(
+        corner_trace_cross_order == 5,
+        "corner plaquette expansion has a local O(a^5) trace cross term",
+    )
+    require(
+        centered_trace_cross_order == 6,
+        "centered plaquette expansion first allows an O(a^6) trace remainder",
+    )
 
 
 def check_tadpole_boosted_coupling_series() -> None:
@@ -73,6 +138,8 @@ def check_tadpole_boosted_coupling_series() -> None:
 def main() -> None:
     check_tree_level_lattice_propagator_inverse()
     check_lattice_hat_momentum_series()
+    check_connection_canonical_chart_coefficients()
+    check_plaquette_remainder_orders()
     check_tadpole_boosted_coupling_series()
     print("All lattice perturbation and tadpole-normalization checks passed.")
 
