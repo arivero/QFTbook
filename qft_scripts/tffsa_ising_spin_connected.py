@@ -1,19 +1,22 @@
 #!/usr/bin/env python3
-"""Finite TFFSA-style Ising spin-field connected-block benchmark.
+"""Finite NS/R TFFSA-style Ising spin-field sector benchmark.
 
-The finite-volume massive Ising theory has a free Majorana basis.  This
-script builds a small zero-momentum block consisting of the vacuum and
-two-particle states with rapidities (theta_n,-theta_n).  Off-diagonal spin
-matrix elements are assembled from the connected infinite-volume form factors
+The finite-volume massive Ising free-fermion Hilbert space is the direct sum
+of Neveu-Schwarz (NS) and Ramond (R) sectors.  The magnetic perturbation by
+the spin field maps NS states to R states and conversely.  This script builds
+a small zero-momentum NS/R sector block and keeps the spin perturbation in the
+off-diagonal sector blocks.
 
-    F_{2k}^sigma(theta_1,...,theta_{2k})
-      = sigma_bar i^k prod_{i<j} tanh((theta_i-theta_j)/2),
+Matrix elements use an asymptotic infinite-volume Ising spin form factor
 
-with the free Bethe-state density rho_I = prod_i m L cosh(theta_i).  The
-diagonal convention used here keeps the disconnected vacuum-expectation
-contribution sigma_bar and omits the singular diagonal connected finite part.
-Consequently this is a finite-regulator convention and normalization
-benchmark for TFFSA matrix assembly, not a production magnetic-Ising spectrum.
+    F_n^sigma(theta_1,...,theta_n)
+      = sigma_bar i^{floor(n/2)} prod_{i<j} tanh((theta_i-theta_j)/2),
+
+with the free Bethe-state density rho_I = prod_i m L cosh(theta_i).  Exact
+finite-volume TFFSA uses NS/R finite-size spin matrix elements and vacuum
+energies; the present script is a finite sector-structure and normalization
+benchmark with an exp(-mL) asymptotic error indicator, not a production
+magnetic-Ising spectrum.
 """
 
 from __future__ import annotations
@@ -28,9 +31,11 @@ import numpy as np
 
 
 @dataclass
-class PairState:
-    mode: float
-    theta: float
+class SectorState:
+    label: str
+    sector: str
+    parity: int
+    rapidities: tuple[float, ...]
     energy: float
     density: float
 
@@ -42,6 +47,7 @@ class RunConfig:
     circumference: float
     magnetic_coupling: float
     sigma_bar: float
+    mass_sign: int = 1
 
 
 def tanh_product(thetas: list[complex]) -> complex:
@@ -52,88 +58,155 @@ def tanh_product(thetas: list[complex]) -> complex:
     return value
 
 
-def spin_even_form_factor(thetas: list[complex], sigma_bar: float) -> complex:
+def spin_sector_form_factor(thetas: list[complex], sigma_bar: float) -> complex:
     n = len(thetas)
-    if n % 2 == 1:
-        return 0.0 + 0.0j
     return sigma_bar * (1j ** (n // 2)) * tanh_product(thetas)
 
 
-def pair_states(num_pairs: int, mass: float, circumference: float) -> list[PairState]:
+def required_fermion_parity(sector: str, mass_sign: int) -> int:
+    if sector == "NS":
+        return 0
+    if sector == "R":
+        return 1 if mass_sign >= 0 else 0
+    raise ValueError(f"unknown sector {sector!r}")
+
+
+def one_particle_data(mode: float, mass: float, circumference: float) -> tuple[float, float, float]:
+    momentum = 2.0 * math.pi * mode / circumference
+    theta = math.asinh(momentum / mass) if momentum != 0.0 else 0.0
+    omega = math.sqrt(momentum * momentum + mass * mass)
+    density = mass * circumference * math.cosh(theta)
+    return theta, omega, density
+
+
+def sector_basis(
+    num_pairs: int,
+    mass: float,
+    circumference: float,
+    mass_sign: int = 1,
+) -> list[SectorState]:
     if num_pairs < 0:
         raise ValueError("num_pairs must be nonnegative")
     if mass <= 0.0:
         raise ValueError("mass must be positive")
     if circumference <= 0.0:
         raise ValueError("circumference must be positive")
+    if mass_sign not in (-1, 1):
+        raise ValueError("mass_sign must be +1 or -1")
 
-    states: list[PairState] = []
+    states: list[SectorState] = [
+        SectorState(
+            label="NS:vac",
+            sector="NS",
+            parity=0,
+            rapidities=(),
+            energy=0.0,
+            density=1.0,
+        )
+    ]
     for n in range(num_pairs):
         mode = n + 0.5
-        momentum = 2.0 * math.pi * mode / circumference
-        theta = math.asinh(momentum / mass)
-        omega = math.sqrt(momentum * momentum + mass * mass)
-        density_one = mass * circumference * math.cosh(theta)
+        theta, omega, density_one = one_particle_data(mode, mass, circumference)
         states.append(
-            PairState(
-                mode=mode,
-                theta=theta,
+            SectorState(
+                label=f"NS:pair({mode:g})",
+                sector="NS",
+                parity=0,
+                rapidities=(theta, -theta),
                 energy=2.0 * omega,
                 density=density_one * density_one,
             )
         )
+
+    r_parity = required_fermion_parity("R", mass_sign)
+    if r_parity == 1:
+        theta_0, omega_0, density_0 = one_particle_data(0.0, mass, circumference)
+        states.append(
+            SectorState(
+                label="R:zero",
+                sector="R",
+                parity=1,
+                rapidities=(theta_0,),
+                energy=omega_0,
+                density=density_0,
+            )
+        )
+        for n in range(1, num_pairs + 1):
+            theta, omega, density_one = one_particle_data(float(n), mass, circumference)
+            states.append(
+                SectorState(
+                    label=f"R:zero+pair({n})",
+                    sector="R",
+                    parity=1,
+                    rapidities=(theta_0, theta, -theta),
+                    energy=omega_0 + 2.0 * omega,
+                    density=density_0 * density_one * density_one,
+                )
+            )
+    else:
+        states.append(
+            SectorState(
+                label="R:vac",
+                sector="R",
+                parity=0,
+                rapidities=(),
+                energy=0.0,
+                density=1.0,
+            )
+        )
+        for n in range(1, num_pairs + 1):
+            theta, omega, density_one = one_particle_data(float(n), mass, circumference)
+            states.append(
+                SectorState(
+                    label=f"R:pair({n})",
+                    sector="R",
+                    parity=0,
+                    rapidities=(theta, -theta),
+                    energy=2.0 * omega,
+                    density=density_one * density_one,
+                )
+            )
     return states
 
 
-def state_rapidities(state_index: int, states: list[PairState]) -> list[float]:
-    if state_index == 0:
-        return []
-    state = states[state_index - 1]
-    return [state.theta, -state.theta]
-
-
-def state_density(state_index: int, states: list[PairState]) -> float:
-    if state_index == 0:
-        return 1.0
-    return states[state_index - 1].density
-
-
-def connected_spin_matrix_element(
+def sector_spin_matrix_element(
     bra_index: int,
     ket_index: int,
-    states: list[PairState],
+    states: list[SectorState],
     sigma_bar: float,
 ) -> complex:
-    """Connected off-diagonal spin matrix element before the spatial integral."""
+    """Asymptotic cross-sector spin matrix element before spatial integration."""
 
-    if bra_index == ket_index:
-        return complex(sigma_bar)
+    bra = states[bra_index]
+    ket = states[ket_index]
+    if bra.sector == ket.sector:
+        return 0.0 + 0.0j
 
-    outgoing = state_rapidities(bra_index, states)
-    incoming = state_rapidities(ket_index, states)
+    outgoing = list(bra.rapidities)
+    incoming = list(ket.rapidities)
     crossed = [complex(theta, math.pi) for theta in outgoing] + [
         complex(theta) for theta in incoming
     ]
-    density = math.sqrt(
-        state_density(bra_index, states) * state_density(ket_index, states)
-    )
-    return spin_even_form_factor(crossed, sigma_bar) / density
+    density = math.sqrt(bra.density * ket.density)
+    return spin_sector_form_factor(crossed, sigma_bar) / density
+
+
+def finite_size_error_indicator(cfg: RunConfig) -> float:
+    return math.exp(-cfg.mass * cfg.circumference)
 
 
 def finite_matrix(cfg: RunConfig) -> np.ndarray:
-    states = pair_states(cfg.num_pairs, cfg.mass, cfg.circumference)
-    size = cfg.num_pairs + 1
+    states = sector_basis(cfg.num_pairs, cfg.mass, cfg.circumference, cfg.mass_sign)
+    size = len(states)
     matrix = np.zeros((size, size), dtype=complex)
     for i in range(size):
-        if i > 0:
-            matrix[i, i] = states[i - 1].energy
-        matrix[i, i] += cfg.magnetic_coupling * cfg.circumference * cfg.sigma_bar
+        matrix[i, i] = states[i].energy
     for i in range(size):
         for j in range(i + 1, size):
             value = (
                 cfg.magnetic_coupling
                 * cfg.circumference
-                * connected_spin_matrix_element(i, j, states, cfg.sigma_bar)
+                * sector_spin_matrix_element(i, j, states, cfg.sigma_bar)
             )
             matrix[i, j] = value
             matrix[j, i] = np.conjugate(value)
@@ -144,15 +217,36 @@ def run(cfg: RunConfig) -> dict[str, float | int | list[float]]:
     matrix = finite_matrix(cfg)
     hermiticity_error = float(np.max(np.abs(matrix - matrix.conjugate().T)))
     eigs = np.linalg.eigvalsh(matrix)
-    states = pair_states(cfg.num_pairs, cfg.mass, cfg.circumference)
-    free_energies = [0.0] + [state.energy for state in states]
+    states = sector_basis(cfg.num_pairs, cfg.mass, cfg.circumference, cfg.mass_sign)
+    h_zero = finite_matrix(
+        RunConfig(
+            num_pairs=cfg.num_pairs,
+            mass=cfg.mass,
+            circumference=cfg.circumference,
+            magnetic_coupling=0.0,
+            sigma_bar=cfg.sigma_bar,
+            mass_sign=cfg.mass_sign,
+        )
+    )
+    perturbation = matrix - h_zero
+    same_sector_mask = np.array(
+        [[states[i].sector == states[j].sector for j in range(len(states))] for i in range(len(states))]
+    )
+    same_sector_perturbation = np.where(same_sector_mask, perturbation, 0.0)
+    free_energies = [state.energy for state in states]
     return {
         "num_pairs": cfg.num_pairs,
         "mass": cfg.mass,
+        "mass_sign": cfg.mass_sign,
         "circumference": cfg.circumference,
         "magnetic_coupling": cfg.magnetic_coupling,
         "sigma_bar": cfg.sigma_bar,
         "hermiticity_error": hermiticity_error,
+        "ns_state_count": sum(1 for state in states if state.sector == "NS"),
+        "r_state_count": sum(1 for state in states if state.sector == "R"),
+        "same_sector_perturbation_max_abs": float(np.max(np.abs(same_sector_perturbation))),
+        "finite_size_error_indicator": finite_size_error_indicator(cfg),
+        "state_labels": [state.label for state in states[: min(8, len(states))]],
         "lowest_eigenvalues": [float(x) for x in eigs[: min(6, len(eigs))]],
         "free_energies": [float(x) for x in free_energies[: min(6, len(free_energies))]],
     }
@@ -165,6 +259,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--circumference", type=float, default=8.0)
     parser.add_argument("--magnetic-coupling", type=float, default=0.03)
     parser.add_argument("--sigma-bar", type=float, default=1.0)
+    parser.add_argument("--mass-sign", type=int, choices=[-1, 1], default=1)
     parser.add_argument("--smoke", action="store_true")
     return parser.parse_args()
 
@@ -177,16 +272,20 @@ def main() -> None:
         args.circumference = 7.0
         args.magnetic_coupling = 0.02
         args.sigma_bar = 1.0
+        args.mass_sign = 1
     cfg = RunConfig(
         num_pairs=args.num_pairs,
         mass=args.mass,
         circumference=args.circumference,
         magnetic_coupling=args.magnetic_coupling,
         sigma_bar=args.sigma_bar,
+        mass_sign=args.mass_sign,
     )
     result = run(cfg)
     if args.smoke and result["hermiticity_error"] > 1.0e-12:
         raise AssertionError("finite TFFSA block is not Hermitian")
+    if args.smoke and result["same_sector_perturbation_max_abs"] > 1.0e-12:
+        raise AssertionError("spin perturbation has same-sector entries")
     print(json.dumps(result, sort_keys=True))
 
 

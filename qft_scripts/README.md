@@ -201,13 +201,15 @@ independence.
   finite invariant-mass matrix from positive longitudinal parton partitions
   and a normal-ordered quartic operator; zero-mode constraints and
   \(K\to\infty\) counterterm extrapolation remain separate data.
-- `tffsa_ising_spin_connected.py`: finite zero-momentum TFFSA-style
-  connected-block benchmark for the massive Ising spin perturbation.  It
-  assembles off-diagonal form-factor matrix elements in a free-fermion basis
-  and declares its diagonal convention explicitly; it is not a production
-  magnetic-Ising spectrum calculation.
+- `tffsa_ising_spin_connected.py`: finite zero-momentum NS/R-sector
+  TFFSA-style benchmark for the massive Ising spin perturbation.  It assembles
+  a parity-projected Neveu-Schwarz plus Ramond free-fermion basis, includes the
+  Ramond zero mode in the positive-mass convention, keeps the spin perturbation
+  off-diagonal in the sector label, and reports the asymptotic \(e^{-mL}\)
+  finite-size indicator; it is not a production magnetic-Ising spectrum
+  calculation.
 - `tffsa_ising_spectral_flow.py`: finite spectral-flow diagnostic for the
-  connected Ising TFFSA block.  It diagonalizes the finite matrix on a grid of
+  NS/R Ising TFFSA block.  It diagonalizes the finite matrix on a grid of
   magnetic couplings and checks Hellmann-Feynman slopes against centered
   finite differences; it is a finite-matrix benchmark, not a continuum
   magnetic-Ising or \(E_8\) spectrum claim.

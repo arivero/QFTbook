@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Finite spectral-flow diagnostic for the Ising connected TFFSA block.
+"""Finite spectral-flow diagnostic for the Ising NS/R TFFSA block.
 
-The connected-block script builds a finite Hermitian matrix
+The NS/R sector script builds a finite Hermitian matrix
 
     H(h) = H_0 + h W
 
-for the zero-momentum massive-Ising spin perturbation in a declared
-finite-volume convention.  This companion diagonalizes H(h) on a small grid
-of magnetic couplings and compares finite-difference slopes with the
+for the zero-momentum massive-Ising spin perturbation, with W off-diagonal in
+the NS/R sector label.  This companion diagonalizes H(h) on a small grid of
+magnetic couplings and compares finite-difference slopes with the
 finite-dimensional Hellmann-Feynman derivative
 
     d lambda_a / dh = <u_a, W u_a>
@@ -44,6 +44,7 @@ def config_with_h(base: tffsa.RunConfig, magnetic_coupling: float) -> tffsa.RunC
         circumference=base.circumference,
         magnetic_coupling=magnetic_coupling,
         sigma_bar=base.sigma_bar,
+        mass_sign=base.mass_sign,
     )
 
 
@@ -117,6 +118,7 @@ def run(
     return {
         "num_pairs": base.num_pairs,
         "mass": base.mass,
+        "mass_sign": base.mass_sign,
         "circumference": base.circumference,
         "sigma_bar": base.sigma_bar,
         "h_values": [float(x) for x in h_values],
@@ -131,7 +133,7 @@ def run(
         "derivative_hermiticity_error": derivative_hermiticity_error,
         "minimum_gap_over_grid": minimum_gap,
         "interpretation": (
-            "finite connected-block spectral-flow diagnostic only; continuum "
+            "finite NS/R sector spectral-flow diagnostic only; continuum "
             "magnetic-Ising claims require cutoff and finite-volume estimates"
         ),
     }
@@ -143,6 +145,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--mass", type=float, default=1.0)
     parser.add_argument("--circumference", type=float, default=8.0)
     parser.add_argument("--sigma-bar", type=float, default=1.0)
+    parser.add_argument("--mass-sign", type=int, choices=[-1, 1], default=1)
     parser.add_argument("--h-values", default="-0.03,-0.015,0.0,0.015,0.03")
     parser.add_argument("--slope-at", type=float, default=0.02)
     parser.add_argument("--delta", type=float, default=1.0e-5)
@@ -157,6 +160,7 @@ def main() -> None:
         args.mass = 1.0
         args.circumference = 7.0
         args.sigma_bar = 1.0
+        args.mass_sign = 1
         args.h_values = "-0.02,-0.01,0.0,0.01,0.02"
         args.slope_at = 0.015
         args.delta = 1.0e-5
@@ -167,6 +171,7 @@ def main() -> None:
         circumference=args.circumference,
         magnetic_coupling=0.0,
         sigma_bar=args.sigma_bar,
+        mass_sign=args.mass_sign,
     )
     result = run(
         base=base,

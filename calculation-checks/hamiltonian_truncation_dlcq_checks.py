@@ -265,41 +265,83 @@ def check_phi4_dlcq_matrix() -> None:
     )
 
 
-def check_tffsa_connected_spin_block() -> None:
+def check_tffsa_ns_r_spin_block() -> None:
     cfg = tffsa.RunConfig(
         num_pairs=4,
         mass=1.0,
         circumference=7.0,
         magnetic_coupling=0.02,
         sigma_bar=1.3,
+        mass_sign=1,
     )
-    states = tffsa.pair_states(cfg.num_pairs, cfg.mass, cfg.circumference)
+    states = tffsa.sector_basis(cfg.num_pairs, cfg.mass, cfg.circumference, cfg.mass_sign)
     matrix = tffsa.finite_matrix(cfg)
     hermiticity_error = float(np.max(np.abs(matrix - matrix.conjugate().T)))
     assert_leq("TFFSA finite block Hermiticity", hermiticity_error, 1.0e-12)
 
-    theta = states[0].theta
-    density = states[0].density
-    expected_vacuum_pair = (
-        cfg.magnetic_coupling
-        * cfg.circumference
-        * 1j
-        * cfg.sigma_bar
-        * np.tanh(theta)
-        / np.sqrt(density)
+    h_zero = tffsa.finite_matrix(tffsa.RunConfig(
+        num_pairs=cfg.num_pairs,
+        mass=cfg.mass,
+        circumference=cfg.circumference,
+        magnetic_coupling=0.0,
+        sigma_bar=cfg.sigma_bar,
+        mass_sign=cfg.mass_sign,
+    ))
+    perturbation = matrix - h_zero
+    same_sector_entries = [
+        perturbation[i, j]
+        for i, bra in enumerate(states)
+        for j, ket in enumerate(states)
+        if bra.sector == ket.sector
+    ]
+    assert_leq(
+        "TFFSA spin perturbation has no same-sector entries",
+        float(np.max(np.abs(same_sector_entries))),
+        1.0e-12,
     )
-    assert_close("TFFSA vacuum-pair form factor", matrix[0, 1], expected_vacuum_pair)
 
-    theta_1 = states[0].theta
-    theta_2 = states[1].theta
-    crossed = [complex(theta_1, np.pi), complex(-theta_1, np.pi), theta_2, -theta_2]
-    expected_pair_pair = (
+    ns_vac_index = next(i for i, state in enumerate(states) if state.label == "NS:vac")
+    r_zero_index = next(i for i, state in enumerate(states) if state.label == "R:zero")
+    r_zero = states[r_zero_index]
+    expected_ns_vac_to_r_zero = (
         cfg.magnetic_coupling
         * cfg.circumference
-        * tffsa.spin_even_form_factor(crossed, cfg.sigma_bar)
-        / np.sqrt(states[0].density * states[1].density)
+        * cfg.sigma_bar
+        / np.sqrt(r_zero.density)
     )
-    assert_close("TFFSA pair-pair crossed form factor", matrix[1, 2], expected_pair_pair)
+    assert_close("TFFSA NS vacuum to R zero-mode form factor", matrix[ns_vac_index, r_zero_index], expected_ns_vac_to_r_zero)
+
+    ns_pair_index = next(i for i, state in enumerate(states) if state.label.startswith("NS:pair"))
+    r_pair_index = next(i for i, state in enumerate(states) if state.label.startswith("R:zero+pair"))
+    ns_pair = states[ns_pair_index]
+    r_pair = states[r_pair_index]
+    crossed = [complex(theta, np.pi) for theta in ns_pair.rapidities] + [
+        complex(theta) for theta in r_pair.rapidities
+    ]
+    expected_cross_sector_pair = (
+        cfg.magnetic_coupling
+        * cfg.circumference
+        * tffsa.spin_sector_form_factor(crossed, cfg.sigma_bar)
+        / np.sqrt(ns_pair.density * r_pair.density)
+    )
+    assert_close("TFFSA NS/R crossed sector form factor", matrix[ns_pair_index, r_pair_index], expected_cross_sector_pair)
+
+    negative_mass_states = tffsa.sector_basis(
+        cfg.num_pairs,
+        cfg.mass,
+        cfg.circumference,
+        mass_sign=-1,
+    )
+    assert_equal(
+        "positive-mass R sector uses odd parity",
+        {state.parity for state in states if state.sector == "R"},
+        {1},
+    )
+    assert_equal(
+        "negative-mass R sector uses even parity",
+        {state.parity for state in negative_mass_states if state.sector == "R"},
+        {0},
+    )
 
     free_cfg = tffsa.RunConfig(
         num_pairs=cfg.num_pairs,
@@ -307,9 +349,10 @@ def check_tffsa_connected_spin_block() -> None:
         circumference=cfg.circumference,
         magnetic_coupling=0.0,
         sigma_bar=cfg.sigma_bar,
+        mass_sign=cfg.mass_sign,
     )
     free_eigs = np.linalg.eigvalsh(tffsa.finite_matrix(free_cfg))
-    expected_free = np.array([0.0] + [state.energy for state in states])
+    expected_free = np.sort(np.array([state.energy for state in states]))
     assert_matrix_close("TFFSA zero-coupling spectrum", free_eigs, expected_free, tol=1.0e-12)
 
 
@@ -320,6 +363,7 @@ def check_tffsa_spectral_flow_derivatives() -> None:
         circumference=7.0,
         magnetic_coupling=0.0,
         sigma_bar=1.0,
+        mass_sign=1,
     )
     derivative = tffsa_flow.perturbation_matrix(base)
     matrix_plus = tffsa.finite_matrix(tffsa_flow.config_with_h(base, 0.125))
@@ -829,7 +873,7 @@ def main() -> None:
     check_sine_gordon_tcsa_vertex_assembly()
     check_phi4_hamiltonian_truncation_matrix()
     check_phi4_dlcq_matrix()
-    check_tffsa_connected_spin_block()
+    check_tffsa_ns_r_spin_block()
     check_tffsa_spectral_flow_derivatives()
     check_e8_ising_target_ratios()
     check_thooft_quadratic_form_identity()

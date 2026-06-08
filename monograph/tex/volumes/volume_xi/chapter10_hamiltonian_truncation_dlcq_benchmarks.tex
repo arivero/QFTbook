@@ -776,150 +776,202 @@ thermal deformation from the perturbation into the basis.  This can reduce
 cutoff sensitivity when the low-energy states are better approximated by
 massive fermion states than by a small number of conformal states.
 
-We now spell out the finite matrix.  Let \(\mathfrak s\) denote a fermion
-spin-structure sector on the circle, with allowed momenta
+We now spell out the finite matrix.  There are two fermion spin-structure
+sectors on the circle,
 \[
-  p_n=\frac{2\pi n}{L},\qquad n\in Q_{\mathfrak s},
+  Q_{\mathrm{NS}}=\mathbb Z+\frac12,\qquad
+  Q_{\mathrm R}=\mathbb Z .
 \]
-where \(Q_{\mathfrak s}\) is either \(\mathbb Z+\frac12\) or
-\(\mathbb Z\), depending on the sector.  A finite-volume rapidity
-\(\theta_n\) is defined by
-\[
-  p_n=m\sinh\theta_n,\qquad
-  \omega_n=m\cosh\theta_n .
-\]
-For a finite set \(I=\{n_1,\ldots,n_k\}\subset Q_{\mathfrak s}\), write
-\[
-  \ket{I}_{\mathfrak s}
+The Ramond sector contains the zero mode \(n=0\), and the physical finite
+free-fermion space is not a single-sector Fock space.  In the convention used
+below, write \(s_m=\operatorname{sgn}m\) while \(M=|m|>0\) enters the
+dispersion relation.  The parity projection is
+\begin{equation}
+  \pi_{\mathrm{NS}}(s_m)=0,\qquad
+  \pi_{\mathrm R}(+1)=1,\qquad
+  \pi_{\mathrm R}(-1)=0,
+  \label{eq:ising-tffsa-sector-parity-convention}
+\end{equation}
+where \(0\) means even fermion number and \(1\) means odd fermion number.  Thus
+the finite basis is drawn from
+\begin{equation}
+  \Hilb_{\rm FF}^{(s_m)}(L,E_{\rm cut})
   =
-  a_{n_1}^\dagger\cdots a_{n_k}^\dagger\ket{0}_{\mathfrak s},
+  \left(
+    \mathcal F_{\mathrm{NS}}^{\pi_{\mathrm{NS}}(s_m)}
+    \oplus
+    \mathcal F_{\mathrm R}^{\pi_{\mathrm R}(s_m)}
+  \right)_{\le E_{\rm cut}} .
+  \label{eq:ising-tffsa-ns-r-finite-space}
+\end{equation}
+The sector vacuum energies
+\(E_{\mathrm{NS}}^{\rm vac}(L,M)\) and
+\(E_{\mathrm R}^{\rm vac}(L,M)\) are part of the finite-volume convention; a
+production calculation must either use the exact finite-volume Ising
+expressions or state the subtraction being made.  For a sector
+\(\alpha\in\{\mathrm{NS},\mathrm R\}\), the allowed momenta are
+\[
+  p_n=\frac{2\pi n}{L},\qquad n\in Q_\alpha,
+\]
+and the finite-volume rapidity \(\theta_n\) is defined by
+\[
+  p_n=M\sinh\theta_n,\qquad
+  \omega_n=M\cosh\theta_n .
+\]
+For a finite set \(I=\{n_1,\ldots,n_k\}\subset Q_\alpha\), write
+\[
+  \ket{I}_{\alpha}
+  =
+  a_{n_1,\alpha}^\dagger\cdots a_{n_k,\alpha}^\dagger
+  \ket{0}_{\alpha},
   \qquad
-  E_I^{(0)}(L)=E_{\mathfrak s}^{\rm vac}(L)+\sum_{n\in I}\omega_n,
+  E_{I,\alpha}^{(0)}(L)=E_{\alpha}^{\rm vac}(L,M)+\sum_{n\in I}\omega_n,
   \qquad
   P_I=\sum_{n\in I}p_n .
 \]
-The TFFSA cutoff is an energy cutoff in this massive basis:
-\[
-  \Hilb_{\rm FF}(L,E_{\rm cut})
-  =
-  \operatorname{span}\{\ket{I}_{\mathfrak s}:E_I^{(0)}(L)\le E_{\rm cut}\}.
-\]
 The diagonal part of \(H_{\rm Maj}(m,L)\) is exact in this basis.  The
-nontrivial matrix is the spin perturbation.
+nontrivial matrix is the spin perturbation, which changes the spin structure.
 
-\begin{definition}[TFFSA spin matrix element]
+\begin{definition}[NS/R TFFSA spin matrix element]
 \label{def:tffsa-spin-matrix-element}
-For two finite-volume fermion states \(I,J\), the connected infinite-volume
-asymptotic spin matrix element is
+For finite-volume fermion states \(\ket{I}_\alpha\) and \(\ket{J}_\beta\),
+the magnetic perturbation matrix is sector off-diagonal:
+\[
+  W_{I_\alpha,J_\beta}=0\qquad(\alpha=\beta).
+\]
+For \(\alpha\ne\beta\), a declared finite-volume prescription has the form
 \begin{equation}
-  V_{IJ}^{\rm conn}
+  W_{I_\alpha,J_\beta}
   =
-  hL\,\delta_{P_I,P_J}\,
+  \delta_{P_I,P_J}\,
   \frac{
-    F_{\rm conn}^{\sigma}(\{\theta_i:i\in I\}\mid \{\theta_j:j\in J\})
+    F_{\alpha\to\beta,L}^{\sigma}(I\mid J)
   }{
     \sqrt{\rho_I\rho_J}
   },
   \qquad
-  \rho_I=\prod_{i\in I}mL\cosh\theta_i .
-  \label{eq:tffsa-connected-spin-matrix-element}
+  \rho_I=\prod_{i\in I}ML\cosh\theta_i .
+  \label{eq:tffsa-ns-r-spin-matrix-element}
 \end{equation}
-Here \(F_{\rm conn}^{\sigma}\) is the crossed spin-field form factor derived
-in Chapter~\ref{ch:integrable-form-factor-bootstrap-local-operators}, and
-\(\rho_I\) is the free Bethe-state density of states.  The full finite-volume
-matrix element also contains disconnected contraction terms when \(I\) and
-\(J\) share rapidities, and exponentially small finite-size corrections of
-order \(e^{-mL}\) in a massive theory.  A numerical TFFSA scheme must specify
-whether it uses exact finite-volume Ising form factors, the asymptotic formula
-\eqref{eq:tffsa-connected-spin-matrix-element}, or a hybrid prescription.
+The exact finite-volume Ising formula includes the NS/R spin-field dressing
+factors, the sector vacuum-energy convention, and the separate treatment of
+diagonal or shared-rapidity limits.  The asymptotic large-\(ML\) replacement is
+\[
+  F_{\alpha\to\beta,L}^{\sigma}(I\mid J)
+  =
+  F_\infty^\sigma
+  \bigl(
+    \{\theta_i+\ii\pi:i\in I\},
+    \{\theta_j:j\in J\}
+  \bigr)
+  +O(e^{-ML})
+\]
+away from crossed singular limits.  A numerical TFFSA scheme must therefore
+specify whether it uses exact finite-volume Ising spin matrix elements, this
+asymptotic density-dressed formula with an \(e^{-ML}\) error estimate, or a
+hybrid prescription.
 \end{definition}
 
 This definition makes the status of the computation explicit.  At fixed
 \((L,E_{\rm cut})\), after all matrix elements have been declared, TFFSA is
 ordinary finite-dimensional spectral theory.  The physical assertions concern
 the removal or extrapolation of the cutoff and, if
-\eqref{eq:tffsa-connected-spin-matrix-element} is used, the large-\(mL\)
+\eqref{eq:tffsa-ns-r-spin-matrix-element} is used, the large-\(ML\)
 control of the finite-volume form-factor approximation.
 
-\begin{definition}[Zero-momentum connected TFFSA block]
-\label{def:zero-momentum-connected-tffsa-block}
-Fix \(m>0\), \(L>0\), an integer \(N_{\rm pair}\geq0\), a spin-field
-normalization \(\bar\sigma\), and a magnetic coupling \(h\).  For
+\begin{definition}[Zero-momentum NS/R TFFSA sector block]
+\label{def:zero-momentum-ns-r-tffsa-block}
+Fix \(M>0\), \(L>0\), an integer \(N_{\rm pair}\geq0\), a mass sign
+\(s_m=\pm1\), a spin-field normalization \(\bar\sigma\), and a magnetic
+coupling \(h\).  The executable benchmark subtracts sector vacuum constants
+and keeps the following zero-momentum states.  In the NS sector,
 \[
   r_n=n+\frac12,\qquad
   p_n=\frac{2\pi r_n}{L},\qquad
-  p_n=m\sinh\theta_n,\qquad
-  \omega_n=m\cosh\theta_n ,
+  p_n=M\sinh\theta_n,\qquad
+  \omega_n=M\cosh\theta_n ,
   \quad n=0,\ldots,N_{\rm pair}-1,
 \]
-let
+and
 \[
-  \ket{0},\qquad
-  \ket{n}:=\ket{\theta_n,-\theta_n},\quad
+  \ket{\mathrm{NS};0},\qquad
+  \ket{\mathrm{NS};n}:=\ket{\theta_n,-\theta_n}_{\mathrm{NS}},\quad
   n=0,\ldots,N_{\rm pair}-1,
 \]
-be the finite zero-total-momentum basis consisting of the vacuum and
-two-particle pairs.  Set
+are retained.  If \(s_m=+1\), the Ramond parity is odd, so the benchmark keeps
+the zero-mode state and zero-mode-plus-pair states
 \[
-  \rho_n=(mL\cosh\theta_n)^2 .
+  \ket{\mathrm R;0}:=\ket{0}_{\mathrm R},\qquad
+  \ket{\mathrm R;n}:=\ket{0,\vartheta_n,-\vartheta_n}_{\mathrm R},
+  \quad n=1,\ldots,N_{\rm pair},
 \]
-The connected-block TFFSA matrix is the Hermitian
-\((N_{\rm pair}+1)\times(N_{\rm pair}+1)\) matrix
+where
 \[
-  H_{ij}=E_i^{(0)}\delta_{ij}+hL\,V_{ij},
+  q_n=\frac{2\pi n}{L},\qquad q_n=M\sinh\vartheta_n .
 \]
-where \(E_0^{(0)}=0\), \(E_n^{(0)}=2\omega_n\) for \(n\geq1\), and
+If \(s_m=-1\), the Ramond parity is even, so the benchmark keeps the Ramond
+vacuum and integer two-particle pairs instead.  The zero-mode density factor,
+when present, is \(ML\).
+
+Let \(\mathcal B\) be the ordered list of these states, with sector label
+\(\alpha(a)\), rapidity multiset \(\Theta_a\), free energy \(E_a^{(0)}\),
+and density \(\rho_a=\prod_{\theta\in\Theta_a}ML\cosh\theta\).  The benchmark
+Hamiltonian is the Hermitian matrix
 \[
-  V_{ii}=\bar\sigma .
+  H_{ab}=E_a^{(0)}\delta_{ab}+hL\,W_{ab},
 \]
-For \(i<j\), \(V_{ij}\) is defined by the crossed connected form factor
+where
+\[
+  W_{ab}=0\quad\hbox{if }\alpha(a)=\alpha(b),
+\]
+and for \(\alpha(a)\ne\alpha(b)\)
 \begin{equation}
-  V_{ij}
+  W_{ab}
   =
   \frac{
-    F_{\rm conn}^{\sigma}(
-      \{\theta_a+\ii\pi:a\in I_i\}\mid \{\theta_b:b\in I_j\})
+    F_\infty^\sigma(
+      \{\theta+\ii\pi:\theta\in\Theta_a\},
+      \{\eta:\eta\in\Theta_b\})
   }{
-    \sqrt{\rho_i\rho_j}
+    \sqrt{\rho_a\rho_b}
   },
   \qquad
-  V_{ji}=\overline{V_{ij}},
-  \label{eq:zero-momentum-tffsa-block}
+  W_{ba}=\overline{W_{ab}} .
+  \label{eq:zero-momentum-ns-r-tffsa-block}
 \end{equation}
-with \(\rho_0=1\) and \(I_0=\varnothing\).  The diagonal convention
-\(V_{ii}=\bar\sigma\) keeps only the disconnected vacuum-expectation
-contribution.  The omitted diagonal connected finite parts are singular
-crossed limits and require a separate diagonal finite-volume prescription.
+The form factor used in the public check is
+\[
+  F_\infty^\sigma(\theta_1,\ldots,\theta_k)
+  =
+  \bar\sigma\,\ii^{\lfloor k/2\rfloor}
+  \prod_{i<j}\tanh\frac{\theta_i-\theta_j}{2}.
+\]
+Thus the finite check is an asymptotic NS/R sector-structure benchmark with
+declared density dressing and \(O(e^{-ML})\) finite-size status.  It is not the
+exact Fonseca--Zamolodchikov finite-volume TFFSA matrix.
 \end{definition}
 
-\begin{remark}[Connected TFFSA block]
-\label{rem:zero-momentum-connected-tffsa-hermitian}
-The matrix in Definition~\ref{def:zero-momentum-connected-tffsa-block} is
-Hermitian.  If \(h=0\), its eigenvalues are
-\[
-  0,\quad 2\omega_0,\quad 2\omega_1,\quad\ldots,\quad
-  2\omega_{N_{\rm pair}-1}.
-\]
-The diagonal entries \(E_i^{(0)}+hL\bar\sigma\) are real.  For \(i<j\) the
-lower-triangular entry is defined to be \(\overline{V_{ij}}\), hence
-\[
-  H_{ji}=hL\,\overline{V_{ij}}=\overline{hL\,V_{ij}}=\overline{H_{ij}}
-\]
-for real \(h\) and \(L\).  Thus \(H^\dagger=H\).  At \(h=0\), all
-off-diagonal entries vanish and the matrix is diagonal with the displayed
-free finite-volume energies.
+\begin{remark}[NS/R TFFSA block]
+\label{rem:zero-momentum-ns-r-tffsa-hermitian}
+The matrix in Definition~\ref{def:zero-momentum-ns-r-tffsa-block} is Hermitian.
+The perturbation has no same-sector entries, so there is no universal diagonal
+spin-field expectation \(W_{aa}=\bar\sigma\).  At \(h=0\), all off-diagonal
+entries vanish and the eigenvalues are precisely the retained free energies
+\(\{E_a^{(0)}:a\in\mathcal B\}\), including the Ramond zero-mode energy in the
+odd-Ramond projection.
 \end{remark}
 
 The script
 \[
   \texttt{qft\_scripts/tffsa\_ising\_spin\_connected.py}
 \]
-implements Definition~\ref{def:zero-momentum-connected-tffsa-block}.  It
-checks Hermiticity in smoke mode and prints the finite eigenvalues together
-with the corresponding free energies.  The purpose is to make the
-form-factor normalization, density factors, and diagonal convention
-executable.  It is not a claim that the small connected block is the full
-magnetic-Ising spectrum.
+implements Definition~\ref{def:zero-momentum-ns-r-tffsa-block}.  It checks
+Hermiticity, verifies that the magnetic perturbation has zero same-sector
+entries, prints the NS/R state counts, and reports the asymptotic finite-size
+indicator \(e^{-ML}\).  The purpose is to make the sector projection,
+Ramond zero mode, form-factor normalization, and density factors executable.
+It is not a claim that the small asymptotic block is the full magnetic-Ising
+spectrum.
 
 \begin{lemma}[Finite TFFSA spectral-flow derivative]
 \label{lem:finite-tffsa-hellmann-feynman}
@@ -1000,10 +1052,10 @@ their normalized eigenvectors form an orthonormal basis, so
 \]
 \end{proof}
 
-For the connected Ising TFFSA block,
+For the NS/R Ising TFFSA sector block,
 \eqref{eq:finite-affine-hermitian-flow} is exactly the finite matrix
 \[
-  H(h)=H_0+hL\,V .
+  H(h)=H_0+hL\,W .
 \]
 The companion script
 \[
@@ -1014,9 +1066,10 @@ diagonalizes this finite block on a small grid of \(h\)-values and checks
 differences at a point where the finite spectrum is separated.  This is a
 useful nonintegrable benchmark because it checks the actual finite spectral
 flow generated by spin-field form factors.  It remains a finite-matrix
-check: comparison with the continuum magnetic-Ising spectrum requires
-the cutoff, finite-volume, diagonal-form-factor, and counterterm estimates
-described around \eqref{eq:tffsa-connected-spin-matrix-element}.
+check: comparison with the continuum magnetic-Ising spectrum requires the
+finite-volume spin-matrix-element, sector-vacuum-energy, cutoff, and
+counterterm estimates described around
+\eqref{eq:tffsa-ns-r-spin-matrix-element}.
 
 \subsection{\texorpdfstring{Exact \(E_8\) Target Data For Magnetic-Ising Benchmarks}{Exact E8 Target Data For Magnetic-Ising Benchmarks}}
 \label{subsec:e8-ising-target-data}
@@ -1293,7 +1346,7 @@ verifies the finite residual bound
 \eqref{eq:residual-distance-to-spectrum}, the projector leakage estimate
 \eqref{eq:finite-projector-leakage-bound}, the Feshbach determinant identity
 behind \eqref{eq:feshbach-schur-truncation-effective-hamiltonian}, the
-Ising-energy Bogoliubov benchmark, the connected Ising TFFSA block
+Ising-energy Bogoliubov benchmark, the NS/R Ising TFFSA block
 normalization, the finite Ising TFFSA spectral-flow derivative identity, the
 \(E_8\) magnetic-Ising target-ratio Perron--Frobenius check, the finite
 large-\(N\) QCD DLCQ quadratic-form identity, and the exact-intercept cases
@@ -2780,7 +2833,7 @@ Euclidean side contains finite Ising, scalar \(\phi^4\), \(\mathbb Z_2\),
 static-potential, Wilson-flow, smearing, topological-charge, HMC/RHMC, and
 glueball-GEVP diagnostics.  The Hamiltonian side contains exactly solvable
 Ising thermal truncation, compact-boson sine-Gordon vertex assembly,
-nonintegrable scalar \(\phi^4\) truncation, connected Ising TFFSA blocks,
+nonintegrable scalar \(\phi^4\) truncation, NS/R Ising TFFSA blocks,
 spectral-flow diagnostics, and the exact \(E_8\) target table.  The
 light-front side contains scalar \(\phi^4\) DLCQ, the large-\(N\)
 two-dimensional QCD matrix, and a large-\(K\) extrapolation diagnostic.  The
@@ -2863,7 +2916,7 @@ production ensemble or a continuum-determinant limit.
 
 \item[Hamiltonian truncation and TCSA/TFFSA matrices.]
 The Ising energy benchmark, sine-Gordon zero-mode, sine-Gordon oscillator
-vertex, scalar \(\phi^4\) truncation, connected Ising TFFSA,
+vertex, scalar \(\phi^4\) truncation, NS/R Ising TFFSA,
 TFFSA spectral-flow, and \(E_8\) target-data scripts compute finite matrices
 or exact finite target data.  Their checks are finite Hermiticity,
 selection rules, normal-ordering conventions, residual or spectral-flow
@@ -2900,10 +2953,11 @@ mathematical object visible before the reader interprets any number produced
 by a public script.
 
 For the magnetic Ising theory, the present public scripts deliberately stop
-at finite checks: the TFFSA connected-block matrix fixes the spin-field
-normalization convention, the spectral-flow script checks finite
-Hellmann--Feynman slopes, and the \(E_8\) script fixes the continuum target
-mass-ratio table.  A full comparison between a finite TCSA/TFFSA spectrum,
+at finite checks: the TFFSA NS/R sector matrix fixes the spin-field
+normalization convention and the sector-off-diagonal perturbation rule, the
+spectral-flow script checks finite Hellmann--Feynman slopes, and the \(E_8\)
+script fixes the continuum target mass-ratio table.  A full comparison
+between a finite TCSA/TFFSA spectrum,
 Euclidean lattice correlators, and the exact \(E_8\) masses still requires a
 declared finite-volume convention, cutoff counterterms, extrapolation
 envelopes, and comparison estimates in the sense of

@@ -35,8 +35,10 @@ numerics.
   Fourier-mode, particle-number, total-momentum, occupation-number,
   momentum, frequency, finite free-field, and normal-ordered quartic
   interaction coordinates in the scalar \(\phi^4\) truncation benchmark.
-- `Q_s`, `theta_n`, `rho_I`: finite-volume fermion momentum set, rapidity,
-  and free Bethe-state density used in the TFFSA spin matrix element.
+- `Q_NS`, `Q_R`, `alpha`, `s_m`, `pi_alpha`, `theta_n`, `rho_I`:
+  finite-volume Neveu-Schwarz/Ramond fermion momentum sets, sector label, mass
+  sign, parity projection, rapidity, and free Bethe-state density used in the
+  TFFSA spin matrix element.
 - `H(h)`, `W`, `lambda_*(h)`, `g`: finite affine Hermitian spectral-flow
   family, perturbing matrix, simple eigenvalue branch, and finite spectral gap
   used in the Hellmann-Feynman derivative check.
@@ -143,12 +145,14 @@ numerics.
 - Defines the TFFSA reorganization in which the thermal deformation is
   treated exactly as a massive Majorana Hamiltonian and the spin perturbation
   is represented by finite-volume spin-field form factors.
-- States the connected TFFSA spin matrix element with momentum conservation,
-  free Bethe-state density \(\rho_I=\prod_i mL\cosh\theta_i\), disconnected
-  contraction caveats, and finite-size correction status.
-- Defines a zero-momentum connected TFFSA block with vacuum and
-  two-particle-pair states, declares the diagonal vacuum-expectation
-  convention, and proves Hermiticity plus the zero-coupling free spectrum.
+- States the NS/R TFFSA spin matrix element with momentum conservation,
+  free Bethe-state density \(\rho_I=\prod_i ML\cosh\theta_i\), sector
+  off-diagonality of the spin perturbation, exact finite-volume/dressing
+  caveats, and asymptotic \(e^{-ML}\) finite-size status.
+- Defines a zero-momentum NS/R TFFSA sector block with the
+  mass-sign-dependent parity projection, the Ramond zero mode in the
+  positive-mass convention, no same-sector spin entries, and Hermiticity plus
+  the zero-coupling free spectrum.
 - Proves the finite Hellmann-Feynman spectral-flow derivative formula for a
   simple eigenvalue of an affine finite Hermitian matrix family, including the
   resolvent-gap hypothesis and the trace identity for the sum of slopes.
@@ -270,17 +274,18 @@ numerics.
   lattice analysis functionals, HMC/RHMC and Markov-chain diagnostics,
   Hamiltonian truncation/TCSA/TFFSA matrices, DLCQ finite matrices,
   extrapolation/manifest tools, and cluster sweep wrappers.
-- Records the current magnetic-Ising benchmark status: finite TFFSA block,
-  spectral-flow, and exact \(E_8\) target scripts are finite checks, not
-  yet a full continuum comparison without cutoff counterterms and
-  extrapolation envelopes.
+- Records the current magnetic-Ising benchmark status: finite NS/R TFFSA
+  sector block, spectral-flow, and exact \(E_8\) target scripts are finite
+  checks, not yet a full continuum comparison without exact finite-volume spin
+  matrix elements, cutoff counterterms, and extrapolation envelopes.
 - Records benchmark requirements for truncation methods.
 - Connects the chapter to `planning/14_code_policy.md`,
   `qft_scripts/tcsa_ising_energy_benchmark.py`,
   `qft_scripts/phi4_hamiltonian_truncation.py`,
-  `qft_scripts/phi4_dlcq.py`,
-  `qft_scripts/thooft_dlcq.py`, `qft_scripts/thooft_dlcq_extrapolation.py`,
-  and `tools/run_qft_scripts_smoke.sh`.
+  `qft_scripts/phi4_dlcq.py`, `qft_scripts/tffsa_ising_spin_connected.py`,
+  `qft_scripts/tffsa_ising_spectral_flow.py`, `qft_scripts/thooft_dlcq.py`,
+  `qft_scripts/thooft_dlcq_extrapolation.py`, and
+  `tools/run_qft_scripts_smoke.sh`.
 
 ## Figure Ledger
 
@@ -312,10 +317,12 @@ plots.
   checks finite Hermiticity, and reports the lowest finite invariant masses
   without asserting a continuum spectrum.
 - `qft_scripts/tffsa_ising_spin_connected.py --smoke`: builds the finite
-  zero-momentum connected Ising spin-field TFFSA block, checks Hermiticity,
-  and reports the finite eigenvalues and free energies.
+  zero-momentum NS/R Ising spin-field TFFSA sector block, checks Hermiticity
+  and absence of same-sector spin perturbation entries, and reports the finite
+  eigenvalues, free energies, sector counts, state labels, and asymptotic
+  finite-size indicator.
 - `qft_scripts/tffsa_ising_spectral_flow.py --smoke`: diagonalizes the finite
-  connected Ising TFFSA block across a small magnetic-coupling grid and checks
+  NS/R Ising TFFSA block across a small magnetic-coupling grid and checks
   Hellmann-Feynman slopes against centered finite differences at a separated
   finite spectral point.
 - `qft_scripts/e8_ising_mass_ratios.py --smoke`: prints the exact \(E_8\)
@@ -355,8 +362,9 @@ plots.
   sine-Gordon oscillator vertex assembly, the scalar
   \(\phi^4\) normal-ordered truncation basis and zero-mode matrix element,
   the scalar \(\phi^4\) DLCQ harmonic-resolution basis and quartic matrix
-  elements, connected Ising TFFSA block normalization, finite Ising TFFSA
-  spectral-flow derivative identities, the \(E_8\) target-ratio
+  elements, NS/R Ising TFFSA sector projection and cross-sector normalization,
+  finite Ising TFFSA spectral-flow derivative identities, the \(E_8\)
+  target-ratio
   Perron--Frobenius check, finite large-`K` fit algebra, finite residual
   bounds, spectral-projector leakage, the Feshbach determinant
   identity, and the
@@ -430,3 +438,9 @@ plots.
   explicitly identifies the pairwise consistency inequality as finite
   arithmetic on declared coordinates and error envelopes, not as evidence
   that any continuum QFT limit or common target observable has been proved.
+- 2026-06-08 issue #899 re-audit: replaced the old single-sector connected
+  Ising TFFSA block and universal diagonal spin-entry convention with the
+  NS/R sector architecture required by the magnetic perturbation.  The public
+  check now exercises mass-sign parity projection, the Ramond zero mode, zero
+  same-sector spin entries, cross-sector density-dressed form factors, and the
+  explicit \(e^{-ML}\) status of the asymptotic finite-volume approximation.

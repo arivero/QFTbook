@@ -1205,8 +1205,9 @@ Current checks:
   \(1+1\)-dimensional scalar \(\phi^4\) truncation basis and zero-mode matrix
   element, the scalar \(\phi^4\) DLCQ harmonic-resolution basis and
   convention-sensitive quartic matrix elements, the large-\(N\)
-  two-dimensional QCD DLCQ quadratic-form identity, connected Ising TFFSA
-  spin-block normalization, the \(E_8\) magnetic-Ising target-ratio
+  two-dimensional QCD DLCQ quadratic-form identity, NS/R Ising TFFSA
+  spin-block sector projection and cross-sector normalization, the \(E_8\)
+  magnetic-Ising target-ratio
   Perron--Frobenius check, light-front metric and mass-shell bookkeeping,
   the one-particle measure Jacobian, residual-to-spectrum bound,
   spectral-projector leakage control, the finite Feshbach determinant
