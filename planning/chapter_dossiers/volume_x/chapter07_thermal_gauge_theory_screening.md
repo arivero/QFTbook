@@ -14,13 +14,19 @@ theories before kinetic theory and anomalous transport.
 - `O_0(x)`, `M_alpha`: static projection and screening masses.
 - `T_R`, `C_A`: group invariants in the monograph trace convention.
 - `m_D`, `m_E`: perturbative Debye mass and matched electric mass parameter.
+- `mathcal A_mu`, `mathcal F_mu nu`: connection-normalized gauge field and
+  curvature used in the Yang--Mills action, EQCD, Wilson lines, and Polyakov
+  holonomies.
+- `a_mu=mathcal A_mu/g`, `f_mu nu=mathcal F_mu nu/g`: canonical soft gauge
+  potential and curvature used for real-time HTL source response.
 - `v^\mu`, `W(x,v)`, `K_R^{\mu\nu}`: unit hard-particle velocity, adjoint
-  HTL auxiliary field, and retarded induced-current kernel whose static
-  electric component is the Debye coefficient.
+  HTL auxiliary field, and canonical-source retarded induced-current kernel
+  whose static electric component is the Debye coefficient.
 - `n_B`, `n_F`: Bose and Fermi occupation functions used in the
   susceptibility derivation of the one-loop Debye coefficient.
-- `A_0`, `A_i`, `g_3^2`: temporal scalar, spatial gauge field, and
-  three-dimensional coupling.
+- `g_3^2=g^2T`: connection-normalized three-dimensional coupling; the
+  three-dimensional EQCD zero-mode correlator of `mathcal A_0` carries
+  `g_3^2/(k^2+m_E^2)`.
 - `P(x)`, `C_R`, `C_{R\bar R}`, `F_Q`, `Delta F_{R\bar R}`:
   Polyakov loop, one-line expectation, neutral pair correlator, static
   external-charge free energy, and line-renormalization-independent pair
@@ -51,13 +57,18 @@ theories before kinetic theory and anomalous transport.
   `<S''>` in addition to the connected product of first variations; the
   determinant calculation then computes the coefficient through thermal
   susceptibility integrals and background-field vector-minus-ghost counting.
+- Separates connection-source and canonical-source Debye curvatures:
+  varying with respect to `mathcal A_0` gives `chi=m_D^2/g^2`, while varying
+  with respect to `a_0=mathcal A_0/g` gives the canonical HTL polarization
+  `m_D^2`.
 - Records the convention distinction that a complex scalar in representation
   `R` contributes `g^2 T^2 T_R/3`, while one real scalar degree in a real
   representation contributes `g^2 T^2 T_R/6`.
 - Adds the HTL bridge from static Debye matching to the conserved retarded
   induced-current response: the chapter derives the covariant auxiliary-field
-  conservation law, the linear retarded angular kernel, its transversality,
-  and the zero-frequency static electric limit.
+  conservation law in canonical variables, the linear retarded angular kernel,
+  its transversality, the zero-frequency static electric limit, and the
+  conversion to connection-source current `j_mathcal A=j_a/g`.
 - Separates electric matching from nonperturbative magnetic screening in the
   dimensionally reduced theory.
 - Defines the separately traced Polyakov-pair observable as color averaged,
@@ -74,6 +85,10 @@ theories before kinetic theory and anomalous transport.
   static operator basis, a truncation/remainder status, and explicit failure
   modes from holonomy-shifted light modes, strong coupling near transitions,
   imaginary chemical potentials, or additional light scalars.
+- Carries the connection/canonical conversion through EQCD kinetic and mass
+  terms, the static longitudinal propagator normalization, `g_3^2=g^2T`, and
+  the Polyakov holonomy exponent
+  `P exp(int mathcal A_0)=P exp(g int a_0)`.
 
 ## Figure Ledger
 
@@ -87,12 +102,14 @@ circle, a Polyakov loop pair, and the hierarchy of static scales
   Yukawa/Bessel asymptotic powers, the transverse-projected pole residue, and
   the trace-convention conversion of the Debye coefficient; the
   second-background-variation contact/seagull ledger; the HTL angular kernel's
-  transversality and static-limit algebra; color-averaged versus singlet
-  Polyakov-channel weights and cyclic-loop renormalization extras; the exact
-  finite algebra by which Polyakov-loop pair ratios and static forces cancel
-  line self-energies, including the zero-one-point center-symmetric domain
-  distinction; and the finite hierarchy/exceptions logic behind local EQCD
-  matching.
+  transversality and static-limit algebra; the exact connection/canonical
+  conversion under `mathcal A=ga` for the kinetic term, Debye mass term,
+  one-particle-irreducible kernel, static propagator, induced current, and
+  holonomy exponent; color-averaged versus singlet Polyakov-channel weights and
+  cyclic-loop renormalization extras; the exact finite algebra by which
+  Polyakov-loop pair ratios and static forces cancel line self-energies,
+  including the zero-one-point center-symmetric domain distinction; and the
+  finite hierarchy/exceptions logic behind local EQCD matching.
 
 ## Audit Notes
 
@@ -121,3 +138,8 @@ circle, a Polyakov loop pair, and the hierarchy of static scales
   second variation including contact/seagull terms, and upgraded EQCD from a
   distance-only statement to a controlled local matching approximation with
   hard-gap, weak-coupling, holonomy, operator-basis, and remainder hypotheses.
+- 2026-06-08 issue #885 pass: separated connection-normalized
+  `mathcal A_mu` from canonical `a_mu`, made the Debye curvature conversion
+  explicit, rewrote the HTL bridge as a canonical-source response, carried the
+  conversion through EQCD and Polyakov holonomy conventions, and added an exact
+  finite regression check for the normalization chain.

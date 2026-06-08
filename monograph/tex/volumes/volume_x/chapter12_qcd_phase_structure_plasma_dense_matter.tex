@@ -1455,6 +1455,12 @@ for QCD without scalars.  For \(SU(N_c)\) with
 \[
   C_A=2N_c,\qquad T_{\square}=1.
 \]
+That chapter keeps \(\mathcal A_\mu\) for the connection and
+\(a_\mu=\mathcal A_\mu/g\) for the canonical soft source.  The static
+connection-source curvature is \(m_D^2/g^2\), whereas the canonical
+polarization is \(m_D^2\).  In this section \(a_\mu\) is used for HTL
+real-time response and hard-particle energy shifts; Polyakov holonomies remain
+connection-normalized.
 The scale \(gT\) is electric.  It must be resummed in static longitudinal
 propagators before a weak-coupling expansion of many thermal quantities is
 well-defined.
@@ -1502,12 +1508,15 @@ and hence
 \]
 To leading static order the longitudinal electric propagator is screened as
 \[
-  D_{00}^{ab}(0,\mathbf k)
+  D_{00,a}^{ab}(0,\mathbf k)
   =
   \frac{\delta^{ab}}{\mathbf k^2+m_D^2},
 \]
-with the understanding that this formula is the static electric HTL limit,
-not a gauge-invariant definition of a particle pole.
+for the canonical four-dimensional Matsubara propagator.  With a connection
+source the same denominator appears with the numerator multiplied by \(g^2\),
+or by \(g_3^2=g^2T\) in the three-dimensional static EQCD path-integral
+normalization.  This formula is the static electric HTL limit, not a
+gauge-invariant definition of a particle pole.
 
 The statement is a color-susceptibility calculation for hard particles.
 Let a hard excitation of momentum \(p=|\mathbf p|\) and color weight \(w\)
@@ -1570,6 +1579,9 @@ The resummed static longitudinal propagator is the geometric series obtained
 by inserting this static self-energy into the soft electric propagator.  The
 derivation has used only the HTL separation between hard loop momentum and
 soft external field; it does not determine the magnetic sector.
+For later use in the phase-structure discussion, we record the same canonical
+HTL response as Lemma~\ref{lem:thermal-screening-htl-static-limit} in QCD
+notation.
 
 \begin{definition}[Retarded HTL induced-current kernel]
 \label{def:qcd-retarded-htl-induced-current-kernel}
@@ -1584,9 +1596,9 @@ metric and \(K=(\omega,\mathbf k)\).  Let
 The retarded HTL induced-current kernel is the distribution
 \(\mathcal K_R^{\mu\nu,ab}(\omega,\mathbf k)\) defined by
 \[
-  j^\mu_a(\omega,\mathbf k)
+  j_a^\mu(\omega,\mathbf k)
   =
-  \mathcal K_R^{\mu\nu,ab}(\omega,\mathbf k)A_\nu^b(\omega,\mathbf k),
+  \mathcal K_R^{\mu\nu,ab}(\omega,\mathbf k)a_\nu^b(\omega,\mathbf k),
 \]
 where
 \[
@@ -1608,20 +1620,22 @@ kernel is normalized so that
   \mathcal K_R^{00,ab}(0,\mathbf k)=\delta^{ab}m_D^2,
 \]
 matching the static HTL calculation above.
+The connection-source kernel is \(\mathcal K_R/g^2\), and the source currents
+are related by \(j_{\mathcal A}^\mu=j_a^\mu/g\).
 \end{definition}
 
 \paragraph{Gauge-covariant HTL equations and transversality.}
 Let \(W_a(x,\mathbf v)\) be an adjoint auxiliary field on spacetime times the
 unit velocity sphere.  The gauge-covariant linear-response equations
 \[
-  (v\cdot D)W(x,\mathbf v)=v^iF_{i0}(x),\qquad
-  j^\mu(x)=m_D^2\int_{\mathbf v}v^\mu W(x,\mathbf v),
+  (v\cdot D_a)W(x,\mathbf v)=v^if_{i0}(x),\qquad
+  j_a^\mu(x)=m_D^2\int_{\mathbf v}v^\mu W(x,\mathbf v),
 \]
-where \(D\) is the adjoint covariant derivative, are covariantly conserved:
+where \(D_a=\partial+g[a,\cdot]\), are covariantly conserved:
 \[
-  D_\mu j^\mu=0.
+  D_{a,\mu}j_a^\mu=0.
 \]
-Linearizing around \(A_\mu=0\) and imposing the retarded prescription gives
+Linearizing around \(a_\mu=0\) and imposing the retarded prescription gives
 the kernel of Definition~\ref{def:qcd-retarded-htl-induced-current-kernel}.
 Consequently, in momentum space,
 \[
@@ -1635,31 +1649,31 @@ The verification is explicit.
 The auxiliary field \(W\) transforms in the adjoint representation.  Applying
 the covariant divergence to the current gives
 \[
-  D_\mu j^\mu
+  D_{a,\mu}j_a^\mu
   =
-  m_D^2\int_{\mathbf v}(v\cdot D)W
+  m_D^2\int_{\mathbf v}(v\cdot D_a)W
   =
-  m_D^2\int_{\mathbf v}v^iF_{i0}.
+  m_D^2\int_{\mathbf v}v^if_{i0}.
 \]
-Since \(F_{i0}\) is independent of \(\mathbf v\) and
+Since \(f_{i0}\) is independent of \(\mathbf v\) and
 \(\int_{\mathbf v}v^i=0\), the right side vanishes.  This proves covariant
 current conservation before choosing a gauge.
 
 For the linearized kernel, take fields proportional to
 \(\exp(-i\omega t+i\mathbf k\cdot\mathbf x)\).  The retarded solution of
-\((\partial_t+\mathbf v\cdot\nabla)W=v^iF_{i0}\) is
+\((\partial_t+\mathbf v\cdot\nabla)W=v^if_{i0}\) is
 \[
   W(K,\mathbf v)
   =
-  -\,\frac{\mathbf v\cdot\mathbf k\,A_0(K)
-  +\omega\,v^iA_i(K)}
+  -\,\frac{\mathbf v\cdot\mathbf k\,a_0(K)
+  +\omega\,v^ia_i(K)}
   {\omega-\mathbf v\cdot\mathbf k+i0},
 \]
-using \(F_{i0}=\partial_iA_0-\partial_0A_i\).  Inserting this solution into
-\(j^\mu=m_D^2\int_{\mathbf v}v^\mu W\) and using
+using \(f_{i0}=\partial_ia_0-\partial_0a_i\) at linear order.  Inserting this
+solution into \(j_a^\mu=m_D^2\int_{\mathbf v}v^\mu W\) and using
 \(\int_{\mathbf v}v^i=0\) gives
 \[
-  j^\mu
+  j_a^\mu
   =
   m_D^2\left[
     \delta^\mu_0\delta^\nu_0
@@ -1667,7 +1681,7 @@ using \(F_{i0}=\partial_iA_0-\partial_0A_i\).  Inserting this solution into
     \omega\int_{\mathbf v}
     \frac{v^\mu v^\nu}
     {\omega-\mathbf v\cdot\mathbf k+i0}
-  \right]A_\nu,
+  \right]a_\nu,
 \]
 which is precisely the stated kernel, with the color factor
 \(\delta^{ab}\) restored.

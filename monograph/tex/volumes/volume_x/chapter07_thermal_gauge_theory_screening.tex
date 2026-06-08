@@ -10,9 +10,22 @@ the number of spatial dimensions, so the thermal Euclidean spacetime is
 coupling and trace conventions are those of the gauge chapters: the
 Yang--Mills action is written with
 \[
-  \frac{1}{4g^2}\operatorname{tr}(F_{\mu\nu}F^{\mu\nu}),
+  \frac{1}{4g^2}\operatorname{tr}
+  (\mathcal F_{\mu\nu}\mathcal F^{\mu\nu}),
 \]
-and group invariants are computed using the same invariant bilinear form.
+where \(\mathcal A_\mu\) is the connection and
+\(\mathcal F=d\mathcal A+\mathcal A\wedge\mathcal A\).  The
+canonically normalized soft potential is
+\[
+  a_\mu=\mathcal A_\mu/g,\qquad
+  f_{\mu\nu}=\mathcal F_{\mu\nu}/g
+  =
+  \partial_\mu a_\nu-\partial_\nu a_\mu+g[a_\mu,a_\nu].
+\]
+Wilson and Polyakov lines use the connection \(\mathcal A_\mu\).  The
+real-time HTL response below is written for the canonical source \(a_\mu\)
+unless a connection source is explicitly named.  Group invariants are computed
+using the same invariant bilinear form throughout.
 
 \section{Static Correlators}
 
@@ -89,21 +102,21 @@ gauge-invariant static correlators, not of gauge-fixed propagator poles.
 
 \section{Electric Screening}
 
-In a weakly coupled high-temperature regime, the temporal gauge field \(A_0\)
-behaves in the static sector as an adjoint scalar.  The electric screening
-mass is defined perturbatively by the pole of the static longitudinal
-propagator, or nonperturbatively by the lowest gauge-invariant state in the
-electric channel after the relevant operator has been specified.
+In a weakly coupled high-temperature regime, the temporal connection
+\(\mathcal A_0\) behaves in the static sector as an adjoint scalar.  The
+electric screening mass is defined perturbatively by the pole of the static
+longitudinal propagator, or nonperturbatively by the lowest gauge-invariant
+state in the electric channel after the relevant operator has been specified.
 
 These two definitions should not be conflated.  The perturbative Debye mass
 is a matching coefficient of the static effective theory in a specified
 gauge, regulator, and operator convention.  A physical screening mass is
 extracted from a gauge-invariant static correlator, for example from
-operators built from \(A_0\) inside the dimensionally reduced theory or from
-renormalized Polyakov loops in the original thermal theory.  At weak coupling
-the Debye coefficient controls the electric scale \(gT\) and organizes the
-gauge-invariant spectrum, but the spectrum itself is defined by the transfer
-matrix construction above.
+operators built from \(\mathcal A_0\) inside the dimensionally reduced theory
+or from renormalized Polyakov loops in the original thermal theory.  At weak
+coupling the Debye coefficient controls the electric scale \(gT\) and
+organizes the gauge-invariant spectrum, but the spectrum itself is defined by
+the transfer matrix construction above.
 
 Choose a basis \(T^a_R\) for each representation \(R\) such that
 \[
@@ -179,29 +192,32 @@ Substitution gives
 
 \begin{lemma}[Background-field origin and coefficient of the Debye mass term]
 \label{lem:debye-mass-origin}
-At one loop, the static quadratic term for \(A_0\) in the dimensionally
-reduced action is the zero-frequency, zero-momentum second variation of the
-background-field effective action.  If \(S[A_0]\) is the Euclidean action in
-a fixed regulator and background-field gauge, then for a constant temporal
+At one loop, the static quadratic term for the temporal connection
+\(\mathcal A_0\) in the dimensionally reduced action is the zero-frequency,
+zero-momentum second variation of the background-field effective action.  If
+\(S[\mathcal A_0]\) is the Euclidean action in a fixed regulator and
+background-field gauge, then for a constant temporal
 background
 \begin{equation}
   \left.
-  \frac{\partial^2\Gamma[A_0]}{\partial A_0^a\partial A_0^b}
-  \right|_{A_0=0}
+  \frac{\partial^2\Gamma[\mathcal A_0]}
+  {\partial \mathcal A_0^a\partial \mathcal A_0^b}
+  \right|_{\mathcal A_0=0}
   =
   \left\langle
   \left.
-  \frac{\partial^2S[A_0]}{\partial A_0^a\partial A_0^b}
-  \right|_{A_0=0}
+  \frac{\partial^2S[\mathcal A_0]}
+  {\partial \mathcal A_0^a\partial \mathcal A_0^b}
+  \right|_{\mathcal A_0=0}
   \right\rangle
   -
   \left\langle
   \left.
-  \frac{\partial S[A_0]}{\partial A_0^a}
-  \right|_{A_0=0}
+  \frac{\partial S[\mathcal A_0]}{\partial \mathcal A_0^a}
+  \right|_{\mathcal A_0=0}
   \left.
-  \frac{\partial S[A_0]}{\partial A_0^b}
-  \right|_{A_0=0}
+  \frac{\partial S[\mathcal A_0]}{\partial \mathcal A_0^b}
+  \right|_{\mathcal A_0=0}
   \right\rangle_c .
   \label{eq:debye-background-second-variation}
 \end{equation}
@@ -212,42 +228,64 @@ second variation gives \eqref{eq:one-loop-debye-mass-general}.
 \end{lemma}
 
 \begin{proof}
-Let \(Z[A_0]=\int D\Phi\,\exp(-S[\Phi;A_0])\) and
-\(\Gamma[A_0]=-\log Z[A_0]\).  Differentiating \(\Gamma\) twice gives
+Let \(Z[\mathcal A_0]=\int D\Phi\,\exp(-S[\Phi;\mathcal A_0])\) and
+\(\Gamma[\mathcal A_0]=-\log Z[\mathcal A_0]\).  Differentiating
+\(\Gamma\) twice gives
 \eqref{eq:debye-background-second-variation}.  This is the precise object
-whose zero-momentum limit is matched to the \(A_0^2\) coefficient in the
-static effective theory.  Writing only a connected product of first
+whose zero-momentum limit is matched to the \(\mathcal A_0^2\) coefficient in
+the static effective theory.  Writing only a connected product of first
 variations is correct only for fields whose action is linear in the
 background being varied.  A complex scalar, for example, contains
 \[
   (D_0\phi)^\dagger D_0\phi
   \supset
-  A_0^aA_0^b\,\phi^\dagger T^aT^b\phi ,
+  \mathcal A_0^a\mathcal A_0^b\,\phi^\dagger T^aT^b\phi ,
 \]
 and the displayed term contributes to
-\(\partial^2S/\partial A_0^a\partial A_0^b\).  In the gauge sector the
-background-field vector operator, the gauge-fixing term, and the ghost
-operator contribute the analogous contact pieces.  The determinant
+\(\partial^2S/\partial \mathcal A_0^a\partial \mathcal A_0^b\).  In the
+gauge sector the background-field vector operator, the gauge-fixing term, and
+the ghost operator contribute the analogous contact pieces.  The determinant
 calculation below keeps all of them.
 
 For a translation-invariant unbroken thermal state,
 \eqref{eq:debye-background-second-variation} is diagonal in color and equals
 \(\beta V\,\chi\,\delta^{ab}\).  The coefficient \(\chi\) is the adjoint
 electric susceptibility.  The three-dimensional matching convention used
-below then sets \(m_D^2=g^2\chi\).
+below then sets \(m_D^2=g^2\chi\).  Equivalently,
+\begin{equation}
+  \frac{1}{\beta V}
+  \left.
+  \frac{\partial^2\Gamma}{\partial \mathcal A_0^a\partial \mathcal A_0^b}
+  \right|_{\mathcal A_0=0}
+  =
+  \chi\,\delta^{ab}
+  =
+  \frac{m_D^2}{g^2}\delta^{ab},
+  \qquad
+  \frac{1}{\beta V}
+  \left.
+  \frac{\partial^2\Gamma}{\partial a_0^a\partial a_0^b}
+  \right|_{a_0=0}
+  =
+  m_D^2\delta^{ab}.
+  \label{eq:debye-connection-canonical-second-variation}
+\end{equation}
+The first curvature is a connection-source susceptibility; the second is the
+canonical-source polarization used in the HTL response.
 
-A constant \(A_0=A_0^at^a\) shifts
+A constant \(\mathcal A_0=\mathcal A_0^at^a\) shifts
 the Matsubara frequencies exactly as an imaginary color chemical potential.
 For a weight \(w\) of a representation \(R\), the quadratic operator depends
 on
 \[
-  \omega_n\longmapsto \omega_n+w(A_0),
+  \omega_n\longmapsto \omega_n+w(\mathcal A_0),
 \]
 for bosons, with the analogous anti-periodic frequencies for fermions.  This
 statement can be checked directly from the covariant derivative
-\(D_0=\partial_\tau+\operatorname{ad}_{A_0}\), and then extended from a
-Cartan-valued \(A_0\) to arbitrary \(A_0\) by \(G\)-invariance of the
-quadratic form.  Expanding the shifted determinant is equivalent to
+\(D_0=\partial_\tau+\operatorname{ad}_{\mathcal A_0}\), and then extended from
+a Cartan-valued \(\mathcal A_0\) to arbitrary \(\mathcal A_0\) by
+\(G\)-invariance of the quadratic form.  Expanding the shifted determinant is
+equivalent to
 \eqref{eq:debye-background-second-variation}: the second derivative of the
 operator is the seagull term, and the product of two first derivatives is the
 ordinary insertion term.
@@ -277,8 +315,8 @@ particle-antiparticle pair give
   =
   \frac{4q^2}{T}\,n_F(E/T)(1-n_F(E/T)).
 \]
-After summing over weights, \(q^2\) is replaced by
-\(w^aw^bA_0^aA_0^b\), and
+After summing over weights, the quadratic source is
+\(w^aw^b\mathcal A_0^a\mathcal A_0^b\), and
 \(\sum_w w^aw^b=\operatorname{tr}_R(T^a_RT^b_R)=T_R\delta^{ab}\).
 
 A single real bosonic degree of freedom in a real representation therefore
@@ -309,10 +347,10 @@ the susceptibility calculation above, so
   \label{eq:debye-dirac-contribution}
 \end{equation}
 For gauge fields, use background-field gauge around the flat background
-\(A_0\).  Since the background field strength vanishes, the quadratic vector
-operator is \(-D^2\delta_{\mu\nu}\) and the ghost operator is \(-D^2\), both
-in the adjoint representation.  The one-loop contribution to the thermal
-free energy is therefore
+\(\mathcal A_0\).  Since the background field strength vanishes, the
+quadratic vector operator is \(-D^2\delta_{\mu\nu}\) and the ghost operator is
+\(-D^2\), both in the adjoint representation.  The one-loop contribution to
+the thermal free energy is therefore
 \[
   \frac12\operatorname{Tr}_{\rm adj,\,vec}\log(-D^2)
   -\operatorname{Tr}_{\rm adj,\,gh}\log(-D^2)
@@ -333,18 +371,23 @@ the periodic complex ghost pair.  Using \(T_{\rm adj}=C_A\), this gives
 \end{equation}
 
 The four-dimensional one-loop free-energy density contains
-\(\frac12\chi^{ab}A_0^aA_0^b\).  Multiplying by the thermal circle length
-\(\beta=1/T\) gives the three-dimensional effective action.  Since the
-static action is written as
+\[
+  \frac12\chi^{ab}\mathcal A_0^a\mathcal A_0^b
+  =
+  \frac12m_D^2 a_0^a a_0^b\delta^{ab}.
+\]
+Multiplying by the thermal circle length \(\beta=1/T\) gives the
+three-dimensional effective action.  Since the static action is written as
 \[
   \int\dd^3x\,
-  \frac{m_D^2}{2g_3^2}\operatorname{tr}(A_0^2),
+  \frac{m_D^2}{2g_3^2}\operatorname{tr}(\mathcal A_0^2),
   \qquad
   g_3^2=g^2T,
 \]
-and \(\operatorname{tr}(A_0^2)=\delta^{ab}A_0^aA_0^b\) in the default trace
-convention, matching gives \(m_D^2=g^2\chi\).  Adding the gauge, Dirac,
-complex-scalar, and real-scalar susceptibilities gives
+and \(\operatorname{tr}(\mathcal A_0^2)
+=\delta^{ab}\mathcal A_0^a\mathcal A_0^b\) in the default trace convention,
+matching gives \(m_D^2=g^2\chi\).  Adding the gauge, Dirac, complex-scalar,
+and real-scalar susceptibilities gives
 \eqref{eq:one-loop-debye-mass-general}.
 \end{proof}
 
@@ -379,7 +422,16 @@ With mostly-plus Lorentzian convention and
 \[
   K_\mu=(-\omega,\mathbf k),
 \]
-the retarded HTL induced-current kernel
+write the soft real-time field as the canonical potential \(a_\mu\), with
+\(D_{a,\mu}=\partial_\mu+g[a_\mu,\cdot]\).  The retarded HTL
+induced-current kernel is the canonical-source kernel defined by
+\[
+  j_a^\mu(\omega,\mathbf k)
+  =
+  \mathcal K_R^{\mu\nu,ab}(\omega,\mathbf k)
+  a_\nu^b(\omega,\mathbf k).
+\]
+It is
 \begin{equation}
   \mathcal K_R^{\mu\nu,ab}(\omega,\mathbf k)
   =
@@ -408,42 +460,47 @@ Thus the one-loop coefficient in
 \eqref{eq:one-loop-debye-mass-general} is the zero-frequency electric
 susceptibility of a conserved retarded response, not a gauge-field mass
 assigned independently of the response kernel.
+The same response differentiated with respect to the connection
+\(\mathcal A_\mu=ga_\mu\) has kernel \(\mathcal K_R/g^2\).  The corresponding
+source currents obey \(j_{\mathcal A}^\mu=j_a^\mu/g\), because
+\(\delta\Gamma=j_a^\mu\delta a_\mu
+=j_{\mathcal A}^\mu\delta\mathcal A_\mu\).
 \end{lemma}
 
 \begin{proof}
 The mechanism is most transparent in the gauge-covariant kinetic form.  Let
 \(W(x,\mathbf v)\) be an adjoint auxiliary field and set
 \[
-  (v\cdot D)W(x,\mathbf v)=v^iF_{i0}(x),\qquad
-  j^\mu(x)=m_D^2\int_{\mathbf v}v^\mu W(x,\mathbf v).
+  (v\cdot D_a)W(x,\mathbf v)=v^if_{i0}(x),\qquad
+  j_a^\mu(x)=m_D^2\int_{\mathbf v}v^\mu W(x,\mathbf v).
 \]
 The current is covariantly conserved before choosing a gauge:
 \[
-  D_\mu j^\mu
+  D_{a,\mu} j_a^\mu
   =
-  m_D^2\int_{\mathbf v}(v\cdot D)W
+  m_D^2\int_{\mathbf v}(v\cdot D_a)W
   =
-  m_D^2\int_{\mathbf v}v^iF_{i0}
+  m_D^2\int_{\mathbf v}v^if_{i0}
   =
   0,
 \]
-because \(F_{i0}\) is independent of \(\mathbf v\) and
+because \(f_{i0}\) is independent of \(\mathbf v\) and
 \(\int_{\mathbf v}v^i=0\).
 
-Linearize around \(A_\mu=0\) and take fields proportional to
+Linearize around \(a_\mu=0\) and take fields proportional to
 \(\exp(-i\omega t+i\mathbf k\cdot\mathbf x)\).  The retarded solution of
-\((\partial_t+\mathbf v\cdot\nabla)W=v^iF_{i0}\) is
+\((\partial_t+\mathbf v\cdot\nabla)W=v^if_{i0}\) is
 \[
   W(K,\mathbf v)
   =
-  -\,\frac{\mathbf v\cdot\mathbf k\,A_0(K)
-  +\omega\,v^iA_i(K)}
+  -\,\frac{\mathbf v\cdot\mathbf k\,a_0(K)
+  +\omega\,v^ia_i(K)}
   {\omega-\mathbf v\cdot\mathbf k+i0},
 \]
-where \(F_{i0}=\partial_iA_0-\partial_0A_i\).  Substitution in
-\(j^\mu=m_D^2\int_{\mathbf v}v^\mu W\) gives
+where \(f_{i0}=\partial_ia_0-\partial_0a_i\) at linear order.
+Substitution in \(j_a^\mu=m_D^2\int_{\mathbf v}v^\mu W\) gives
 \[
-  j^\mu
+  j_a^\mu
   =
   m_D^2\left[
     \delta^\mu_0\delta^\nu_0
@@ -451,9 +508,9 @@ where \(F_{i0}=\partial_iA_0-\partial_0A_i\).  Substitution in
     \omega\int_{\mathbf v}
     \frac{v^\mu v^\nu}
     {\omega-\mathbf v\cdot\mathbf k+i0}
-  \right]A_\nu .
+  \right]a_\nu .
 \]
-The \(A_0\) coefficient uses the identity
+The \(a_0\) coefficient uses the identity
 \[
   -\,\frac{\mathbf v\cdot\mathbf k}
   {\omega-\mathbf v\cdot\mathbf k+i0}
@@ -493,9 +550,10 @@ mass coefficient matched into the static effective theory.
 
 \section{Magnetic Sector}
 
-The spatial gauge fields \(A_i\) have no gauge-invariant local mass term in
-the dimensionally reduced action.  The high-temperature static magnetic
-sector is therefore a three-dimensional Yang--Mills theory with coupling
+The spatial connection components \(\mathcal A_i\) have no gauge-invariant
+local mass term in the dimensionally reduced action.  The high-temperature
+static magnetic sector is therefore a three-dimensional Yang--Mills theory
+with coupling
 \[
   g_3^2=g^2T
 \]
@@ -510,7 +568,11 @@ fields remain in the reduced action.
 The thermal Wilson line at spatial point \(\mathbf x\) is
 \[
   P(\mathbf x)=
-  \mathcal P\exp\!\left(\ii\int_0^\beta d\tau\,A_0(\tau,\mathbf x)\right).
+  \mathcal P\exp\!\left(\ii\int_0^\beta d\tau\,
+  \mathcal A_0(\tau,\mathbf x)\right)
+  =
+  \mathcal P\exp\!\left(\ii g\int_0^\beta d\tau\,
+  a_0(\tau,\mathbf x)\right).
 \]
 In a pure gauge theory, its trace in a representation charged under the center
 transforms under the center one-form symmetry wrapped on the thermal circle.
@@ -704,10 +766,11 @@ where \(M_{\rm hard}\) is a lower bound on the modes removed from the
 effective theory.  In the ordinary deconfined weak-coupling expansion those
 removed modes are the nonzero bosonic Matsubara modes and all thermal
 fermion modes; the retained light fields are the static spatial gauge field
-and the adjoint scalar \(A_0\).  The exact static functional obtained by
-integrating out the removed modes can be nonlocal.  The local EQCD action is
-the Taylor expansion of that functional in external static momenta and light
-fields, with a declared operator basis and a truncation order.
+and the adjoint scalar \(\mathcal A_0\), both connection-normalized in this
+paragraph.  The exact static functional obtained by integrating out the
+removed modes can be nonlocal.  The local EQCD action is the Taylor expansion
+of that functional in external static momenta and light fields, with a
+declared operator basis and a truncation order.
 
 In four spacetime dimensions the leading bosonic action begins as
 \[
@@ -715,15 +778,15 @@ In four spacetime dimensions the leading bosonic action begins as
   =
   \int d^3x\,
   \left[
-  \frac{1}{4g_3^2}\operatorname{tr}(F_{ij}F_{ij})
-  +\frac{1}{2g_3^2}\operatorname{tr}(D_iA_0D_iA_0)
-  +\frac{m_E^2}{2g_3^2}\operatorname{tr}(A_0^2)
-  +\lambda_E\,\operatorname{tr}(A_0^4)+\cdots
+  \frac{1}{4g_3^2}\operatorname{tr}(\mathcal F_{ij}\mathcal F_{ij})
+  +\frac{1}{2g_3^2}\operatorname{tr}(D_i\mathcal A_0D_i\mathcal A_0)
+  +\frac{m_E^2}{2g_3^2}\operatorname{tr}(\mathcal A_0^2)
+  +\lambda_{\mathcal A,E}\,\operatorname{tr}(\mathcal A_0^4)+\cdots
   \right].
 \]
-The coefficients \(g_3^2,m_E^2,\lambda_E,\ldots\) are fixed by matching in
-the same regulator and operator scheme as the original thermal theory, as in
-the dimensional-reduction matching programs of
+The coefficients \(g_3^2,m_E^2,\lambda_{\mathcal A,E},\ldots\) are fixed by
+matching in the same regulator and operator scheme as the original thermal
+theory, as in the dimensional-reduction matching programs of
 \cite{BraatenNieto1995EFTThermo,KajantieEtAl1996DimensionalReduction}.  If the
 operator basis is kept through order \(D_\ast\), the omitted terms are
 controlled only in the matching domain.  Their contribution to a static
@@ -738,13 +801,36 @@ powers of
 with scheme-dependent coefficients.  The magnetic sector of the
 three-dimensional theory still contains nonperturbative physics at the
 \(g_3^2\) scale.  EQCD locality does not remove that infrared problem.
+
+The quadratic connection-normalized EQCD action also fixes the static
+propagator conversion.  In the three-dimensional static path integral,
+\[
+  \left\langle
+  \mathcal A_0^a(\mathbf k)\mathcal A_0^b(-\mathbf k)
+  \right\rangle_{\rm EQCD}
+  =
+  \frac{g_3^2\delta^{ab}}{\mathbf k^2+m_E^2},
+  \qquad
+  g_3^2=g^2T.
+\]
+Since \(\mathcal A_0=ga_0\), the canonical static zero-mode correlator carries
+\[
+  \left\langle a_0^a(\mathbf k)a_0^b(-\mathbf k)\right\rangle_{\rm static}
+  =
+  \frac{T\delta^{ab}}{\mathbf k^2+m_E^2}
+\]
+in the three-dimensional path-integral normalization, while the corresponding
+four-dimensional Matsubara propagator convention removes this projection
+factor and has denominator \(\mathbf k^2+m_E^2\).  Thus the same Debye
+coefficient appears as \(m_E^2\) for \(a_0\) and as \(m_E^2/g^2\) for a
+connection-source second variation.
 \end{controlledapproximation}
 
 The hypothesis \(M_{\rm hard}\sim2\pi T\) includes a holonomy condition.  In
-a static diagonal background with eigenvalue differences \(\alpha(A_0)\), an
-adjoint mode has covariant Matsubara frequency
+a static diagonal background with eigenvalue differences
+\(\alpha(\mathcal A_0)\), an adjoint mode has covariant Matsubara frequency
 \[
-  2\pi nT+\alpha(A_0).
+  2\pi nT+\alpha(\mathcal A_0).
 \]
 If this quantity is small for some mode that was going to be integrated out,
 that mode is not hard and must either be retained or treated by a different

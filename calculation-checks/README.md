@@ -3668,7 +3668,10 @@ Current checks:
   one-loop Debye coefficient between half-trace and trace-delta generator
   normalizations, plus the second-background-variation contact/seagull
   bookkeeping and the HTL angular-kernel transversality and static-limit
-  algebra behind the Debye coefficient.  The same script checks
+  algebra behind the Debye coefficient.  It also checks the
+  connection/canonical conversion under \(\mathcal A=ga\) for the quadratic
+  kinetic term, Debye mass term, one-particle-irreducible kernel, static
+  propagator, induced current, and holonomy exponent.  The same script checks
   color-averaged versus singlet Polyakov-channel weights, cyclic-Wilson-loop
   renormalization extras, Polyakov-line self-energy cancellation in connected
   static-source pair ratios and source-pair forces, an explicit guard that the

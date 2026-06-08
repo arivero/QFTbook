@@ -42,12 +42,15 @@ GitHub issue #628.
 - `s`, `n_B`, `epsilon`, `c_s^2`: entropy density, baryon density, energy
   density, and adiabatic sound speed extracted from pressure derivatives.
 - `g_3^2=g^2T`, `m_D`: static magnetic coupling and Debye mass.
+- `mathcal A_mu`, `a_mu=mathcal A_mu/g`: connection-normalized thermal gauge
+  source and canonical HTL source imported from Chapter 7 for the
+  hard-thermal-loop subsection.
 - `C_A`, `T_R`, `I_B`, `I_F`: adjoint quadratic index, representation
   trace index, and the Bose/Fermi thermal susceptibility integrals entering
   the static HTL Debye mass.
 - `v^\mu=(1,mathbf v)`, `W_a(x,mathbf v)`, `mathcal K_R`: hard-particle
-  velocity vector, adjoint HTL auxiliary field, and retarded induced-current
-  kernel.
+  velocity vector, adjoint HTL auxiliary field, and canonical-source retarded
+  induced-current kernel.
 - `theta_q`, `theta_B`: imaginary quark and baryon chemical-potential
   angles, related by `theta_B=N_c theta_q`.
 - `x=mu_B/T`, `kappa_n^B`, `chi_n^B`, `R(T)`: dimensionless baryon source,
@@ -208,9 +211,14 @@ GitHub issue #628.
   monograph trace convention from hard-particle Bose/Fermi thermal integrals,
   including the \(SU(N_c)\) specialization
   `m_D^2=g^2T^2(2N_c/3+N_f/3)`.
+- Imports the Chapter 7 connection/canonical normalization split into the QCD
+  HTL discussion: `a_mu` is used for hard-particle shifts and real-time
+  response, while connection-source curvatures and propagators carry the
+  corresponding `g^2` or `g_3^2` factors.
 - Defines the retarded HTL induced-current kernel in the mostly-plus
-  convention, derives it from the gauge-covariant auxiliary kinetic equation
-  `(v.D)W=v^i F_{i0}`, proves transversality, and evaluates the longitudinal
+  convention, records it as the Chapter 7 canonical-source response in QCD
+  notation, derives it from the gauge-covariant auxiliary kinetic equation
+  `(v.D_a)W=v^i f_{i0}`, proves transversality, and evaluates the longitudinal
   angular integral with its Landau cut as worked prose rather than
   theorem-family content.
 - Defines transport coefficients through Kubo spectral limits rather than
@@ -386,6 +394,10 @@ GitHub issue #628.
   convective-Drude, and near-charge-mode negative controls,
   same-state QCD transport-closure window bookkeeping,
   momentum-projected baryon-current bookkeeping, and CFL Goldstone count.
+- `calculation-checks/thermal_screening_checks.py`: paired Chapter 7/12 guard
+  for issue #885, checking the connection/canonical HTL-Debye conversion under
+  `mathcal A=ga` through the quadratic action, 1PI kernel, static propagator,
+  induced current, and holonomy exponent.
 
 ## Open Issues
 
@@ -526,6 +538,11 @@ GitHub issue #628.
   \(M_{i\alpha}\) and its stability norm must be built in the same
   normalization.  The companion check now rejects an inverse map that silently
   absorbs the missing factor into the recovered transport slope.
+- 2026-06-08 issue #885 HTL connection/canonical pass: imported Chapter 7's
+  `mathcal A_mu` versus `a_mu` normalization split into the QCD HTL subsection,
+  labeled the static longitudinal propagator as canonical, converted the
+  retarded induced-current definition to the canonical source, and recorded
+  the connection-source kernel/current factors.
 - 2026-05-27 Roberge--Weiss pass: added the finite-regulator imaginary
   chemical-potential theorem, positivity statement for vectorlike pairs,
   Roberge--Weiss transition status remark, and exact angle-periodicity

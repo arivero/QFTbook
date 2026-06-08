@@ -8,9 +8,11 @@ bookkeeping, static-source line renormalization cancellation with its nonzero
 one-point domain, the second-background-variation contact term in Debye
 matching, and the conversion of the one-loop Debye coefficient between the
 monograph trace-delta convention and the common half-trace convention.  They
-also check the finite angular algebra behind the HTL bridge from static Debye
-matching to a transverse retarded response, and the finite hierarchy logic
-behind local EQCD matching.
+also check the connection/canonical conversion under mathcal A = g a through
+the Debye curvature, EQCD quadratic action, static propagator, induced current,
+and holonomy exponent; the finite angular algebra behind the HTL bridge from
+static Debye matching to a transverse retarded response; and the finite
+hierarchy logic behind local EQCD matching.
 """
 
 from __future__ import annotations
@@ -171,6 +173,90 @@ def check_htl_static_limit_and_transversality() -> None:
     assert_equal("static HTL 00 component", Fraction(1) - omega_prefactor_static, Fraction(1))
     assert_equal("static HTL 0x component", -omega_prefactor_static * avg_vx, Fraction(0))
     assert_equal("static HTL xx component", -omega_prefactor_static * avg_vx2, Fraction(0))
+
+
+def check_connection_canonical_debye_htl_conversion() -> None:
+    # Chapter 7 uses a connection-normalized Euclidean action and a canonical
+    # real-time HTL source.  Under mathcal A = g a, the connection-source
+    # curvature is m_D^2/g^2 while the canonical-source curvature is m_D^2.
+    g = Fraction(3, 2)
+    g2 = g * g
+    temperature = Fraction(5, 7)
+    beta = 1 / temperature
+    g3sq = g2 * temperature
+    m_d2 = Fraction(11, 13)
+    k2 = Fraction(17, 19)
+    a0_sq = Fraction(23, 29)
+    f_sq = Fraction(31, 37)
+
+    chi_connection = m_d2 / g2
+    assert_equal(
+        "connection susceptibility converts to canonical Debye kernel",
+        chi_connection * g2,
+        m_d2,
+    )
+
+    # Quadratic kinetic term: mathcal F = g f turns (1/4g^2) mathcal F^2 into
+    # the canonical (1/4) f^2 normalization.
+    connection_kinetic = (g2 * f_sq) / (4 * g2)
+    canonical_kinetic = f_sq / 4
+    assert_equal(
+        "connection kinetic term converts to canonical kinetic term",
+        connection_kinetic,
+        canonical_kinetic,
+    )
+
+    # Static mass term: beta * (chi/2) mathcal A_0^2 equals beta * m_D^2 a_0^2/2,
+    # and in three-dimensional connection-normalized EQCD it is
+    # m_D^2 mathcal A_0^2/(2 g_3^2).
+    mathcal_a0_sq = g2 * a0_sq
+    four_d_mass = beta * chi_connection * mathcal_a0_sq / 2
+    canonical_mass = beta * m_d2 * a0_sq / 2
+    eqcd_mass = m_d2 * mathcal_a0_sq / (2 * g3sq)
+    assert_equal(
+        "four-dimensional mass term converts to canonical field",
+        four_d_mass,
+        canonical_mass,
+    )
+    assert_equal("EQCD mass term includes static beta factor", eqcd_mass, canonical_mass)
+
+    canonical_1pi = k2 + m_d2
+    connection_1pi = canonical_1pi / g2
+    assert_equal("1PI kernel rescales by g squared", connection_1pi * g2, canonical_1pi)
+
+    canonical_propagator_4d = 1 / canonical_1pi
+    connection_propagator_4d = g2 / canonical_1pi
+    eqcd_connection_propagator = g3sq / canonical_1pi
+    static_zero_mode_canonical_propagator = temperature / canonical_1pi
+    assert_equal(
+        "four-dimensional connection propagator carries g squared",
+        connection_propagator_4d,
+        g2 * canonical_propagator_4d,
+    )
+    assert_equal(
+        "EQCD connection propagator carries g_3 squared",
+        eqcd_connection_propagator,
+        g2 * static_zero_mode_canonical_propagator,
+    )
+
+    # The source-current derivative also rescales: delta Gamma = j_a delta a =
+    # j_mathcalA delta mathcal A, so j_a = g j_mathcalA.
+    canonical_source = Fraction(41, 43)
+    connection_source = g * canonical_source
+    canonical_current = m_d2 * canonical_source
+    connection_current = chi_connection * connection_source
+    assert_equal(
+        "connection current converts to canonical current",
+        g * connection_current,
+        canonical_current,
+    )
+
+    line_length = Fraction(47, 53)
+    assert_equal(
+        "holonomy exponent uses connection or g times canonical field",
+        line_length * connection_source,
+        line_length * g * canonical_source,
+    )
 
 
 def check_static_source_line_renormalization_cancellation() -> None:
@@ -349,7 +435,7 @@ def check_eqcd_locality_hierarchy_and_exceptions() -> None:
     assert_equal("EQCD derivative remainder power", remainder, Fraction(1, 160000))
 
     # A holonomy can shift a nominal n=1 Matsubara mode to zero:
-    # omega_n + alpha(A0) = 1 - 1 in units of 2 pi T.
+    # omega_n + alpha(mathcal A0) = 1 - 1 in units of 2 pi T.
     shifted_hard_gap = Fraction(1) - Fraction(1)
     assert_equal(
         "holonomy-light mode rejects local hard-mode integration",
@@ -381,6 +467,7 @@ def main() -> None:
     check_debye_trace_convention_conversion()
     check_debye_second_variation_contact_terms()
     check_htl_static_limit_and_transversality()
+    check_connection_canonical_debye_htl_conversion()
     check_polyakov_channel_bookkeeping()
     check_static_source_line_renormalization_cancellation()
     check_static_source_ratio_domain_and_center_symmetric_force()
