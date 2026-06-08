@@ -30,6 +30,9 @@ Target claims:
   charge-diffusion outputs into a same-state first-order QCD hydrodynamic
   datum, rather than allowing channel-wise coefficients from different
   frames, states, or subtraction conventions to be combined.
+- The dense non-Fermi-liquid subsection keeps the fixed-order normal-state
+  logarithm, the formal gapless normal-phase residue limit, and the
+  color-superconducting gap cutoff as distinct pieces of physics.
 
 Independent construction:
 - Recomputes the finite algebra from source definitions, group charges,
@@ -120,8 +123,10 @@ Negative controls:
   charge-diffusion width-only extraction, missing susceptibility uncertainty, raw-current
   Drude contamination, incomplete transport closure data, mixed-state or
   mixed-frame transport assembly, treating the original CFL color-Cartan field
-  as a pure massive eigenfield after QED mixing, incorrect Ward/contact signs,
-  wrong center/fugacity periodicity, and gauge-charge neutrality shortcuts.
+  as a pure massive eigenfield after QED mixing, extrapolating the normal-state
+  non-Fermi-liquid residue through the color-superconducting gap, incorrect
+  Ward/contact signs, wrong center/fugacity periodicity, and gauge-charge
+  neutrality shortcuts.
 
 Scope boundary:
 - These are finite convention, algebra, and response-extraction checks.  They
@@ -137,8 +142,9 @@ low-temperature chiral effective theory coefficients, static HTL Debye-mass
 normalizations, retarded HTL angular-kernel bookkeeping, thermodynamic
 derivative identities, finite-regulator Polyakov-loop effective-measure
 bookkeeping, high-density Fermi-surface and HDL coefficient bookkeeping,
-non-Fermi-liquid self-energy coefficients, one-gluon exchange color factors
-for dense pairing, leading-log magnetic gap coefficient bookkeeping,
+non-Fermi-liquid self-energy coefficients and gap-hierarchy bookkeeping,
+one-gluon exchange color factors for dense pairing, leading-log magnetic gap
+coefficient bookkeeping,
 baryon-number cumulants, Roberge--Weiss periodicity bookkeeping, dense-matter
 neutrality constraints, color-flavor-locked gauge-invariant composite
 charges, rotated electromagnetic mass-matrix and pole-residue bookkeeping,
@@ -440,13 +446,75 @@ def check_dense_non_fermi_liquid_coefficients():
         nfl_coeff,
     )
 
-    # The residue is asymptotically inverse-logarithmic: at logarithmic size L
-    # the leading denominator is lambda_NFL * L.  Check the bookkeeping at an
-    # arbitrary rational L.
+    # In the formal gapless normal-phase auxiliary problem, the inverse-log
+    # residue bookkeeping has leading denominator lambda_NFL * L.  Check the
+    # algebra at an arbitrary rational L without asserting this is the paired
+    # QCD ground-state limit.
     logarithm = Fraction(9, 5)
     leading_denominator = nfl_coeff * logarithm
     leading_residue_times_denominator = leading_denominator / leading_denominator
-    assert_equal("non-Fermi-liquid inverse-log residue bookkeeping", leading_residue_times_denominator, Fraction(1))
+    assert_equal(
+        "formal normal-phase inverse-log residue bookkeeping",
+        leading_residue_times_denominator,
+        Fraction(1),
+    )
+
+
+def check_dense_nfl_gap_hierarchy():
+    # In SU(3) trace-delta convention
+    # lambda_NFL=(2/9) g^2/pi^2 and
+    # log(Lambda_M/Delta)= (3/2) pi^2/g + O(1).  At the gap, the normal-state
+    # logarithmic correction is therefore g/3, so the paired propagator cuts off
+    # the normal logarithm before it becomes order one.
+    lambda_nfl_coeff = Fraction(2, 9)
+    gap_log_coeff = Fraction(3, 2)
+    correction_at_gap_coeff = lambda_nfl_coeff * gap_log_coeff
+    assert_equal(
+        "NFL correction at magnetic gap is g/3",
+        correction_at_gap_coeff,
+        Fraction(1, 3),
+    )
+
+    weak_g = Fraction(1, 10)
+    correction_at_gap = correction_at_gap_coeff * weak_g
+    assert_true("NFL correction at gap remains perturbative", correction_at_gap < Fraction(1, 1))
+
+    # The formal normal-state scale is exp[-1/lambda_NFL]
+    # = exp[-(9/2) pi^2/g^2], while the magnetic gap is
+    # exp[-(3/2) pi^2/g].  Compare positive exponent coefficients at a weak
+    # rational coupling; the larger exponent is the smaller energy scale.
+    nfl_exponent_coeff = Fraction(1, 1) / lambda_nfl_coeff
+    formal_nfl_exponent = nfl_exponent_coeff / (weak_g * weak_g)
+    gap_exponent = gap_log_coeff / weak_g
+    assert_true(
+        "formal NFL scale lies below superconducting gap",
+        formal_nfl_exponent > gap_exponent,
+    )
+
+    exponent_separation = formal_nfl_exponent - gap_exponent
+    assert_true("NFL-gap hierarchy is parametrically large", exponent_separation > Fraction(1, weak_g))
+
+    # In Nambu-Gorkov variables the radial denominator acquires Delta^2, so
+    # the p0=0 paired denominator is nonzero and the gap, not |p0|, supplies the
+    # infrared scale in the logarithm.
+    delta = Fraction(1, 17)
+    q0 = Fraction(0)
+    ell_parallel = Fraction(0)
+    normal_radial_denominator = q0 * q0 + ell_parallel * ell_parallel
+    paired_radial_denominator = normal_radial_denominator + delta * delta
+    assert_equal(
+        "normal radial denominator is gapless at the Fermi surface",
+        normal_radial_denominator,
+        Fraction(0),
+    )
+    assert_true("paired radial denominator is cut off by Delta squared", paired_radial_denominator > 0)
+
+    below_gap_q0 = delta / 10
+    q_delta_squared = below_gap_q0 * below_gap_q0 + delta * delta
+    assert_true(
+        "paired infrared scale dominates below the gap",
+        q_delta_squared > below_gap_q0 * below_gap_q0,
+    )
 
 
 def check_source_curvature_susceptibility():
@@ -2072,6 +2140,7 @@ def main():
     check_polyakov_effective_measure_center_bookkeeping()
     check_high_density_fermi_surface_bookkeeping()
     check_dense_non_fermi_liquid_coefficients()
+    check_dense_nfl_gap_hierarchy()
     check_source_curvature_susceptibility()
     check_weiss_holonomy_potential_coefficients()
     check_chiral_ward_identity_normalization()

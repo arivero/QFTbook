@@ -56,10 +56,10 @@ GitHub issue #628.
   theory shell scale, patch quark field, and residual momentum components.
 - `N_ch(0)`, `Delta`: channel density of states at the Fermi surface and the
   superconducting gap entering the BCS logarithm.
-- `C_F`, `lambda_NFL`, `Lambda_NFL`, `Z(p0)`: trace-delta fundamental
-  Casimir, leading cold dense non-Fermi-liquid self-energy coefficient,
-  finite matching scale, and the logarithmic patch residue in the unpaired
-  high-density regime.
+- `C_F`, `lambda_NFL`, `Lambda_NFL`, `E_NFL`, `Z(p0)`: trace-delta
+  fundamental Casimir, leading cold dense non-Fermi-liquid self-energy
+  coefficient, finite matching scale, formal normal-state NFL scale, and the
+  gauge-covariant patch-field residue in its declared normal-state window.
 - `Pi_phys`, `G_Lambda(f)`, `Q_A`, `mu_A`: finite-regulator physical-state
   projector, Gauss-law generator, gauge-invariant global charges, and their
   thermodynamic sources.
@@ -281,8 +281,11 @@ GitHub issue #628.
 - Derives the leading cold dense non-Fermi-liquid quark self-energy from
   Landau-damped magnetic exchange in HDET, including the trace-delta
   coefficient `lambda_NFL=g^2 C_F/(12 pi^2)`, the `SU(3)` specialization
-  `2g^2/(9 pi^2)`, the collinear `1/3` logarithm, and the logarithmic
-  vanishing of the perturbative patch residue.
+  `2g^2/(9 pi^2)`, the collinear `1/3` logarithm, the fixed-order
+  normal-state window for the patch-field residue, the formal auxiliary
+  gapless scale `E_NFL ~ exp[-9 pi^2/(2g^2)]`, and the comparison showing
+  that the color-superconducting gap cuts off the normal logarithm while its
+  correction is still `g/3+...` at weak coupling.
 - Derives the BCS logarithm from the Fermi-surface shell as a controlled
   instability of a specified attractive channel, separating the universal
   logarithmic mechanism from the QCD-specific gap prefactor.
@@ -359,7 +362,8 @@ GitHub issue #628.
   derivative identities, Roberge--Weiss angle-periodicity bookkeeping,
   Polyakov-loop effective-measure center-charge bookkeeping,
   high-density Fermi-surface and dense-HDL coefficient bookkeeping,
-  dense non-Fermi-liquid self-energy coefficient bookkeeping,
+  dense non-Fermi-liquid self-energy coefficient and gap-hierarchy
+  bookkeeping,
   dense one-gluon-exchange color-factor bookkeeping,
   magnetic leading-log gap coefficient bookkeeping,
   baryon-number cumulants and radius estimators, dense neutrality
@@ -531,7 +535,14 @@ GitHub issue #628.
   and BCS logarithm derivation before the CFL order-parameter discussion.
 - 2026-05-27 non-Fermi-liquid pass: added the controlled HDL unpaired dense
   regime, the derivation of the \(ip_0\log(\Lambda_{\rm NFL}/|p_0|)\)
-  self-energy coefficient, and the logarithmic patch-residue consequence.
+  self-energy coefficient, and the first patch-residue bookkeeping entry later
+  restricted by the issue #891 NFL/gap audit.
+- 2026-06-08 issue #891 NFL/gap audit: replaced the open-ended patch-residue
+  endpoint with a fixed-order normal-state window, separated the formal
+  gapless normal-phase \(Z_{\rm normal}\to0\) limit from physical paired QCD,
+  compared \(E_{\rm NFL}\sim\exp[-9\pi^2/(2g^2)]\) with
+  \(\Delta\sim\exp[-3\pi^2/(2g)]\), and recorded the Nambu--Gorkov
+  \(\sqrt{q_0^2+\Delta^2}\) infrared cutoff.
 - 2026-05-27 neutrality pass: added the finite-regulator distinction between
   global charge sources and gauge constraints, the Gauss-law projector proof
   of zero color charge, the gauge-fixed temporal-background stationarity

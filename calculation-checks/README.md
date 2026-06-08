@@ -361,8 +361,9 @@ Current checks:
   angle-periodicity bookkeeping, Polyakov-loop effective-measure center-charge
   bookkeeping, high-density Fermi-surface density, dense HDL Debye-mass, and
   patch-curvature coefficients, dense non-Fermi-liquid self-energy
-  coefficients, one-gluon exchange color factors in dense pairing channels,
-  leading-log magnetic gap coefficient and exponent conversion,
+  coefficients and gap-hierarchy bookkeeping, one-gluon exchange color factors
+  in dense pairing channels, leading-log magnetic gap coefficient and exponent
+  conversion,
   baryon-number cumulants and radius estimators, CFL gauge-invariant
   composite charges, CFL faithful-global-symmetry center quotients,
   color-baryon lift obstruction cancellation, charge-two baryon-order
