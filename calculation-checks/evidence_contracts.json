@@ -405,7 +405,12 @@
     },
     {
       "path": "hawking_bogoliubov_checks.py",
-      "risk_class": "interacting horizon flux"
+      "risk_class": "interacting horizon flux",
+      "convention_tags": [
+        "j equals zero Hawking number packet is infrared divergent",
+        "low-frequency energy flux is separate from number flux",
+        "late-time packet remainders require global support and Fourier derivative bounds"
+      ]
     },
     {
       "path": "finite_volume_form_factor_checks.py",

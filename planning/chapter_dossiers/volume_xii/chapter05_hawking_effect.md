@@ -22,11 +22,19 @@ Source-File: monograph/tex/volumes/volume_xii/chapter05_hawking_effect.tex
   and affine past-null coordinate `v`.
 - Null-mode Klein-Gordon product and singular Bogoliubov coefficient
   calculation.
-- Wave-packet definition with frequency bin `j` and retarded-time bin `n`.
+- Wave-packet definition with frequency bin `j` and retarded-time bin `n`,
+  including one-particle orthonormality/completeness.
 - Late-time packet occupation controlled approximation giving the Planck-bin
-  average in the stationary late-time regime.
-- Closed-form Planck-bin average and regression check for the sign of the
-  logarithm.
+  average in the stationary late-time regime for number bins with positive
+  lower frequency.
+- Infrared split: the `j=0` massless number bin is logarithmically divergent,
+  while the corresponding energy-flux bin is finite after the extra factor of
+  `omega`.
+- Quantitative late-time packet estimate with a global tracing cutoff,
+  smooth positive-frequency packet windows, ray-map inverse error
+  `O(exp(-kappa u_n))`, and smooth-remainder Fourier derivative bounds.
+- Closed-form positive-lower-edge Planck-bin average and regression check for
+  the sign of the logarithm.
 - Two-dimensional stress-tensor flux from the Schwarzian derivative of the
   exponential ray-tracing map.
 - Trans-Planckian precursor-frequency estimate.
@@ -57,6 +65,7 @@ Source-File: monograph/tex/volumes/volume_xii/chapter05_hawking_effect.tex
 | `alpha_{omega omega'}, beta_{omega omega'}` | Bogoliubov coefficients between in and out modes |
 | `epsilon` | frequency-bin width for Hawking packets |
 | `p_{jn}^{out}` | outgoing wave packet localized in frequency bin `j` and time bin `n` |
+| `h_j`, `zeta`, `E(x)`, `r_omega` | smooth packet window, global past-null cutoff, inverse ray-map error, and smooth traced-mode remainder |
 | `p(u)` | ray-tracing function from `I^+` to `I^-` |
 | `{p,u}` | Schwarzian derivative |
 | `Gamma_l(omega)` | greybody transmission probability |
@@ -83,22 +92,29 @@ Source-File: monograph/tex/volumes/volume_xii/chapter05_hawking_effect.tex
 5. Continuous `|beta|^2` is not a particle number; Hawking quanta must be
    defined by wave-packet observables.
 6. The packet occupation tends to the Planck-bin average at late retarded
-   time.
-7. For a two-dimensional CFT, the exponential ray-tracing Schwarzian gives
+   time only for positive-lower-edge number bins or other infrared-safe
+   observables.
+7. The `j=0` sharp number packet is infrared divergent in the idealized
+   massless horizon calculation; energy flux remains finite because the
+   stress tensor supplies an extra factor of `omega`.
+8. The late-time remainder requires global support and Fourier derivative
+   hypotheses.  Local smoothness across the last escaping ray does not by
+   itself imply decay of the smooth contribution.
+9. For a two-dimensional CFT, the exponential ray-tracing Schwarzian gives
    `T_uu = c kappa^2/(48 pi)`, matching the chiral thermal flux.
-8. The trans-Planckian estimate is a domain-of-validity statement for the
+10. The trans-Planckian estimate is a domain-of-validity statement for the
    fixed-background continuum derivation.
-9. Greybody factors are exterior scattering data, separate from the universal
+11. Greybody factors are exterior scattering data, separate from the universal
    horizon Planck factor.
-10. In an interacting QFT, the universal thermal factor is a KMS
+12. In an interacting QFT, the universal thermal factor is a KMS
     spectral-density relation.  The flux at infinity also requires the
     interacting spectral density, channel basis, greybody propagation,
     stress-tensor conversion, and residual budget.
-11. The adiabatic mass-loss ODE is a controlled finite-window approximation
+13. The adiabatic mass-loss ODE is a controlled finite-window approximation
     only after the retained stress-flux luminosity, drift bound,
     state-transport error, gravitational EFT residual, quasi-stationary
     parameter, and integrated flux noise are all controlled.
-12. Semiclassical back-reaction requires additional hypotheses and is not a
+14. Semiclassical back-reaction requires additional hypotheses and is not a
     consequence of the fixed-background Hawking calculation alone.
 
 ## Calculation Ledger
@@ -106,12 +122,14 @@ Source-File: monograph/tex/volumes/volume_xii/chapter05_hawking_effect.tex
 - `calculation-checks/hawking_bogoliubov_checks.py` verifies the
   Gamma-function norm, thermal ratio, negative-frequency coefficient,
   continuum normalization density, wave-packet Planck-bin average,
-  exponential precursor blueshift, Schwarzian flux, chiral Planck flux, and
-  Schwarzschild temperature convention.  It also checks the interacting
-  horizon KMS spectral-density package, greybody-weighted retained flux,
-  residual-budget negative controls, stress-flux mass-loss bookkeeping, and
-  the flux-to-mass backreaction window with drift, quasi-stationary, noise,
-  and number-flux negative controls.
+  packet Fourier orthogonality/completeness, the `j=0` infrared number
+  divergence, finite low-frequency energy flux, exponential precursor
+  blueshift, ray-map/smooth-remainder late-time packet bounds, Schwarzian flux,
+  chiral Planck flux, and Schwarzschild temperature convention.  It also checks
+  the interacting horizon KMS spectral-density package, greybody-weighted
+  retained flux, residual-budget negative controls, stress-flux mass-loss
+  bookkeeping, and the flux-to-mass backreaction window with drift,
+  quasi-stationary, noise, and number-flux negative controls.
 
 ## Figures
 
@@ -135,3 +153,7 @@ Source-File: monograph/tex/volumes/volume_xii/chapter05_hawking_effect.tex
   Unruh-type horizon regularity input as the microlocal state condition, while
   separating fixed-background propagation from interacting pAQFT corrections
   and metric backreaction.
+- 2026-06-08 issue #908 infrared-packet pass: excluded the sharp `j=0` bin as
+  a finite number observable, separated number and energy-flux infrared
+  behavior, and replaced the unsupported smooth-remainder `o(1)` statement by
+  a global-cutoff and Fourier-derivative late-time packet estimate.

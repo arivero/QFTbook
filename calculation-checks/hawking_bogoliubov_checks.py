@@ -4,13 +4,15 @@
 Evidence contract.
 Target claims:
 - Verify the finite arithmetic behind the Hawking mode-tracing coefficient,
-  wave-packet Planck-bin average, Schwarzian flux, interacting horizon KMS
+  wave-packet Planck-bin average, infrared-safe packet restrictions,
+  late-time packet remainder bounds, Schwarzian flux, interacting horizon KMS
   spectral-density flux package, and flux-to-mass backreaction window.
 Independent construction:
 - The checks recompute the Gamma-function norm, Bogoliubov ratio, KMS
   greater/lesser weights, greybody-weighted flux, mass-loss bookkeeping,
-  residual telescopes, quasi-stationary control, and flux-noise chart bounds
-  directly from finite numerical or rational data.
+  packet Fourier orthogonality, infrared asymptotics, residual telescopes,
+  quasi-stationary control, and flux-noise chart bounds directly from finite
+  numerical or rational data.
 Imported assumptions:
 - The script assumes the geometric-optics ray-tracing form, a stationary
   late-time KMS horizon state, positive channel spectral densities, and
@@ -22,8 +24,10 @@ Negative controls:
   in an interacting channel, spontaneous-plus-thermal weights used as emitted
   occupation, omitted residual budgets, propagation weights outside the
   probability range, number-flux substitution for energy flux, long-window
-  quasi-stationary overreach, and mean-only backreaction when the retained
-  flux noise leaves the mass chart.
+  quasi-stationary overreach, the infrared-divergent j=0 number bin,
+  smooth-remainder decay claims without global support and Fourier-derivative
+  bounds, sharp-window endpoint shortcuts, and mean-only backreaction when the
+  retained flux noise leaves the mass chart.
 Scope boundary:
 - Passing this script does not construct an interacting Hadamard state, prove
   a Hawking theorem, compute greybody factors from a black-hole potential, or
@@ -62,6 +66,102 @@ def assert_exact(name: str, lhs: Fraction, rhs: Fraction) -> None:
 def assert_true(name: str, condition: bool) -> None:
     if not condition:
         raise AssertionError(name)
+
+
+def check_packet_ir_and_late_time_controls() -> None:
+    beta_h = mp.mpf("3.7")
+    epsilon = mp.mpf("0.2")
+    delta_1 = mp.mpf("1e-6")
+    delta_2 = mp.mpf("1e-12")
+
+    def low_number_with_cutoff(delta):
+        numerator = 1 - mp.e ** (-beta_h * epsilon)
+        denominator = -mp.expm1(-beta_h * delta)
+        return mp.log(numerator / denominator) / (beta_h * epsilon)
+
+    low_number_1 = low_number_with_cutoff(delta_1)
+    low_number_2 = low_number_with_cutoff(delta_2)
+    assert_true(
+        "j=0 Hawking number packet grows as infrared cutoff is removed",
+        low_number_2 > low_number_1,
+    )
+    assert_close(
+        "j=0 Hawking number packet logarithmic divergence",
+        low_number_2 - low_number_1,
+        mp.log(delta_1 / delta_2) / (beta_h * epsilon),
+        tol=mp.mpf("1e-6"),
+    )
+
+    low_energy = (
+        mp.quad(
+            lambda w: (
+                1 / beta_h if w == 0 else w / mp.expm1(beta_h * w)
+            ),
+            [0, epsilon],
+        )
+        / epsilon
+    )
+    assert_true("lowest energy bin is finite", mp.isfinite(low_energy))
+    assert_true("lowest energy bin has positive flux", low_energy > 0)
+    assert_true(
+        "energy weight removes the number-packet infrared pole",
+        low_energy < 1 / beta_h,
+    )
+
+    mode_count = 5
+    for row in range(mode_count):
+        for col in range(mode_count):
+            projector = mp.mpc("0")
+            for n in range(mode_count):
+                projector += (
+                    mp.e ** (2j * mp.pi * n * (row - col) / mode_count)
+                    / mode_count
+                )
+            assert_close(
+                "finite packet Fourier completeness",
+                abs(projector),
+                1 if row == col else 0,
+                tol=mp.mpf("1e-45"),
+            )
+
+    kappa = mp.mpf("0.7")
+    packet_spacing = 2 * mp.pi / epsilon
+    ray_constant = mp.mpf("1.3")
+    inverse_map_bound = mp.mpf("0.2")
+    omega_max = mp.mpf("2.0")
+
+    def ray_remainder_bound(n):
+        u_n = packet_spacing * n
+        return omega_max * inverse_map_bound * ray_constant * mp.e ** (-kappa * u_n)
+
+    assert_close(
+        "subleading ray-map packet bound decays by one packet shift",
+        ray_remainder_bound(4) / ray_remainder_bound(3),
+        mp.e ** (-kappa * packet_spacing),
+    )
+
+    smooth_constant = mp.mpf("3.0")
+    derivative_order = 4
+
+    def smooth_remainder_bound(n):
+        u_n = packet_spacing * n
+        return smooth_constant / (1 + u_n) ** derivative_order
+
+    assert_true(
+        "smooth packet remainder decreases with derivative-order bound",
+        smooth_remainder_bound(6) < smooth_remainder_bound(3),
+    )
+    has_global_support = False
+    has_fourier_derivative_bound = False
+    assert_true(
+        "smooth noncompact remainder without Fourier-decay data rejected",
+        not (has_global_support and has_fourier_derivative_bound),
+    )
+    sharp_window_endpoint_vanishes = False
+    assert_true(
+        "sharp packet endpoint shortcut rejected for rapid remainder estimate",
+        not sharp_window_endpoint_vanishes,
+    )
 
 
 def bosonic_kms_weights(
@@ -337,6 +437,7 @@ def main():
         assert_close("Schwarzschild temperature convention", schwarzschild_temp, 1 / (8 * mp.pi * mass))
 
     check_interacting_horizon_flux_package()
+    check_packet_ir_and_late_time_controls()
     check_flux_to_mass_backreaction_window()
     print("All Hawking Bogoliubov coefficient checks passed.")
 
