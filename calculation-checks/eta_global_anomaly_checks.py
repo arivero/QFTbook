@@ -7,8 +7,9 @@ Target claims:
     APS boundary-sign bookkeeping, determinant/Pfaffian line coordinate
     algebra, finite action-groupoid descent, Witten SU(2) trace-delta
     parity arithmetic, typed orientation/variance of Dai-Freed boundary
-    lines, and the finite phase algebra used by Dai-Freed gluing, graded
-    supertrace signs, boundary pairing, and intermediate-cut composition.
+    lines, adiabatic-limit Bismut-Freed holonomy with circle-spin signs, and
+    the finite phase algebra used by Dai-Freed gluing, graded supertrace
+    signs, boundary pairing, and intermediate-cut composition.
 
 Independent construction:
     The checks use exact integer, rational, and finite cyclic phase models
@@ -16,7 +17,9 @@ Independent construction:
     windows multiply by finite determinants, Pfaffians multiply by skew-block
     products, groupoid cocycles are evaluated on every finite arrow, and
     Dai-Freed line pairings are checked in additive U(1)-exponent
-    coordinates.
+    coordinates.  Adiabatic-limit tests use exact finite epsilon-dependent
+    correction terms whose epsilon-zero limit is compared across
+    reparametrizations.
 
 Imported assumptions:
     The script does not prove the APS Fredholm/heat-kernel theorem,
@@ -31,8 +34,9 @@ Negative controls:
     zero-mode exclusion in the APS half-cylinder convention, parity-changing
     Pfaffian sign crossings, rejection of the relative boundary-amplitude
     variance as a Dai-Freed inverse-line variance, ordinary contraction on an
-    odd determinant/Pfaffian superline, and nontrivial SU(2) mapping-torus
-    generator signs for odd trace-delta index.
+    odd determinant/Pfaffian superline, finite-metric eta phases before the
+    adiabatic limit, omission of the odd-index nonbounding-circle sign, and
+    nontrivial SU(2) mapping-torus generator signs for odd trace-delta index.
 
 Scope boundary:
     Passing this script verifies exact finite algebra and convention-sensitive
@@ -468,6 +472,127 @@ def check_cech_de_rham_line_holonomy_bookkeeping() -> None:
         mod_one(transformed_exponent),
         mod_one(original_exponent),
     )
+
+
+def finite_metric_eta_phase(
+    adiabatic_phase: Fraction,
+    epsilon: Fraction,
+    speed_profile: list[int],
+) -> Fraction:
+    """Toy finite-metric eta phase with parametrization-dependent correction."""
+
+    speed_correction = sum(Fraction(speed * speed) for speed in speed_profile)
+    return mod_one(adiabatic_phase + epsilon * speed_correction)
+
+
+def bismut_freed_det_holonomy_phase(
+    adiabatic_xi: Fraction,
+    index_parity: int,
+    circle_spin: str,
+) -> Fraction:
+    """U(1) exponent for determinant-line holonomy in the chapter convention."""
+
+    if circle_spin not in {"bounding", "nonbounding"}:
+        raise ValueError(f"unknown circle spin structure: {circle_spin}")
+    spin_sign = (
+        Fraction(index_parity % 2, 2)
+        if circle_spin == "nonbounding"
+        else Fraction(0)
+    )
+    return mod_one(-adiabatic_xi + spin_sign)
+
+
+def bismut_freed_inverse_det_holonomy_phase(
+    adiabatic_xi: Fraction,
+    index_parity: int,
+    circle_spin: str,
+) -> Fraction:
+    """U(1) exponent for inverse determinant-line holonomy."""
+
+    if circle_spin not in {"bounding", "nonbounding"}:
+        raise ValueError(f"unknown circle spin structure: {circle_spin}")
+    spin_sign = (
+        Fraction(index_parity % 2, 2)
+        if circle_spin == "nonbounding"
+        else Fraction(0)
+    )
+    return mod_one(adiabatic_xi + spin_sign)
+
+
+def check_bismut_freed_adiabatic_limit_and_spin_signs() -> None:
+    """Exact finite model for the adiabatic and circle-spin holonomy clauses."""
+
+    xi_samples = [Fraction(1, 7), Fraction(5, 12), Fraction(-3, 10)]
+    speed_profiles = [
+        [1, 1, 1],
+        [1, 2, 1],
+        [3, 1, 2],
+    ]
+    for adiabatic_phase in xi_samples:
+        for epsilon in [Fraction(1, 13), Fraction(1, 17), Fraction(1, 19)]:
+            reference = finite_metric_eta_phase(adiabatic_phase, Fraction(0), speed_profiles[0])
+            for first in speed_profiles:
+                for second in speed_profiles:
+                    first_finite = finite_metric_eta_phase(adiabatic_phase, epsilon, first)
+                    second_finite = finite_metric_eta_phase(adiabatic_phase, epsilon, second)
+                    if sum(speed * speed for speed in first) != sum(speed * speed for speed in second):
+                        assert_equal(
+                            "finite-metric eta phase can depend on parametrization "
+                            f"epsilon={epsilon} first={first} second={second}",
+                            first_finite == second_finite,
+                            False,
+                        )
+                    assert_equal(
+                        f"adiabatic eta phase reparametrization invariant profile={first}",
+                        finite_metric_eta_phase(adiabatic_phase, Fraction(0), first),
+                        reference,
+                    )
+
+    for adiabatic_xi in xi_samples:
+        for parity in [0, 1]:
+            det_bounding = bismut_freed_det_holonomy_phase(
+                adiabatic_xi,
+                parity,
+                "bounding",
+            )
+            inverse_bounding = bismut_freed_inverse_det_holonomy_phase(
+                adiabatic_xi,
+                parity,
+                "bounding",
+            )
+            assert_equal(
+                f"determinant/inverse determinant dualization bounding parity={parity}",
+                mod_one(det_bounding + inverse_bounding),
+                Fraction(0),
+            )
+
+            det_nonbounding = bismut_freed_det_holonomy_phase(
+                adiabatic_xi,
+                parity,
+                "nonbounding",
+            )
+            inverse_nonbounding = bismut_freed_inverse_det_holonomy_phase(
+                adiabatic_xi,
+                parity,
+                "nonbounding",
+            )
+            assert_equal(
+                f"determinant/inverse determinant dualization nonbounding parity={parity}",
+                mod_one(det_nonbounding + inverse_nonbounding),
+                Fraction(0),
+            )
+            assert_equal(
+                f"nonbounding circle equals bounding exactly for even index parity={parity}",
+                det_nonbounding == det_bounding,
+                parity == 0,
+            )
+            if parity == 1:
+                missing_spin_factor = det_bounding
+                assert_equal(
+                    "odd-index nonbounding circle sign is detected",
+                    missing_spin_factor == det_nonbounding,
+                    False,
+                )
 
 
 def check_dai_freed_gluing_phase_algebra() -> None:
@@ -1140,6 +1265,7 @@ def main() -> None:
     check_aps_half_cylinder_mode_selection()
     check_quillen_spectral_cut_transition_cocycle()
     check_cech_de_rham_line_holonomy_bookkeeping()
+    check_bismut_freed_adiabatic_limit_and_spin_signs()
     check_dai_freed_gluing_phase_algebra()
     check_dai_freed_boundary_pairing_cancels_cocycle()
     check_dai_freed_interface_orientation_variance()

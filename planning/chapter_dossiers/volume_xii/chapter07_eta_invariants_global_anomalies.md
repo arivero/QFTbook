@@ -21,7 +21,12 @@ global anomaly as an explicit mod-two-index example.
 - `Det D`, `Pf D`: determinant and Pfaffian lines over background-field space.
 - `p(Det D)`, `p_{\rm Pf}(Pf D)`: complex determinant superline parity
   \(\operatorname{Ind}D^+\bmod2\) and separate real Pfaffian mod-two parity.
-- `gamma`, `Y_gamma`: closed loop of backgrounds and its mapping torus.
+- `gamma`, `Y_gamma`, `g_{gamma,epsilon}`: closed loop of backgrounds, its
+  mapping torus, and the adiabatic metric
+  \(\epsilon^{-2}d\theta^2\oplus g^{T(Y_\gamma/S^1)}\).
+- `sigma_b`, `sigma_nb`, `B_{gamma,epsilon}^sigma`: bounding/nonbounding
+  circle spin structures and the corresponding odd-dimensional Dirac
+  operator on the adiabatic mapping torus.
 - `Ind_2(B_Y)`: mod-two index of the real/pseudoreal Dirac operator.
 - `R_j`, `n=2j`, `T_Delta(R_j)`: \(SU(2)\) isospin representation, doubled
   isospin, and trace-delta Dynkin index.
@@ -50,7 +55,13 @@ global anomaly as an explicit mod-two-index example.
 - Defines determinant-line fibers and states the Bismut--Freed holonomy
   theorem for mapping tori, with an expanded mechanism explaining local
   zeta-determinant charts, the Bismut--Freed connection, curvature as the
-  family index density, and holonomy as the adiabatic eta invariant.
+  family index density, and holonomy as the adiabatic eta invariant.  The
+  statement now includes the vertical family, horizontal distribution,
+  mapping-torus spin structure, metric family \(g_{\gamma,\epsilon}\),
+  determinant versus inverse-determinant exponent signs, the
+  bounding/nonbounding circle-spin cases, the odd-index supertrace sign, and
+  the separation between finite-metric eta phases and reparametrization
+  invariant holonomy.
 - Upgrades determinant-line gluing to the Dai--Freed/Freed superline
   convention: complex determinant lines have parity
   \(\operatorname{Ind}D^+\bmod2\), real Pfaffian lines have their own
@@ -148,7 +159,10 @@ global anomaly as an explicit mod-two-index example.
   identities, based-loop holonomy invariance, the stabilizer-character
   obstruction to descent, the constructive finite action-groupoid descent
   criterion, dual anomaly-line cancellation, nontrivial flat stabilizer
-  holonomy before cancellation, and the Quillen spectral-cut
+  holonomy before cancellation, Bismut--Freed adiabatic-limit holonomy,
+  determinant/inverse determinant exponent dualization, reparametrization
+  invariance only after the adiabatic limit, bounding/nonbounding circle-spin
+  signs, and the Quillen spectral-cut
   transition cocycle for determinant-line charts, the reduced-eta integer
   jump at a one-mode crossing, the finite \(U(1)\)-phase algebra behind
   Dai--Freed gluing, boundary-pairing anomaly cancellation, typed
@@ -159,6 +173,9 @@ global anomaly as an explicit mod-two-index example.
   regression with fixed tensor order, and a finite cochain Stokes model for
   the contractible-loop
   curvature-to-descent step.
+- It includes negative controls for finite-metric eta phases before the
+  adiabatic limit and for omitting the nonbounding-circle sign in odd vertical
+  index.
 - The same script now checks the Cech-de Rham local connection/transition
   algebra for determinant-line holonomy: \(a_j=a_i-df_{ij}\) on overlaps and
   invariance of the closed-loop exponent under frame changes
@@ -296,3 +313,12 @@ global anomaly as an explicit mod-two-index example.
   contribute the explicit minus sign.  The companion check now includes an
   odd-superline negative control and a fixed-order three-piece associativity
   regression.
+- 2026-06-08 adiabatic Bismut--Freed holonomy pass: replaced the finite
+  mapping-torus eta shortcut by the adiabatic-limit theorem with explicit
+  vertical family, horizontal distribution, circle spin structure, and
+  \(g_{\gamma,\epsilon}\).  The chapter now distinguishes determinant and
+  inverse determinant conventions, records the bounding/nonbounding circle
+  cases and odd-index sign, and states that finite-metric eta phases are not
+  reparametrization-invariant determinant-line holonomies.  The companion
+  check verifies the adiabatic reparametrization gate and the odd-index
+  missing-spin-sign negative control.

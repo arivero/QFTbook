@@ -279,7 +279,10 @@ Current checks:
   eigenvalue crossing, the finite skew-block Pfaffian orientation model,
   vanishing of the ordinary \(SU(2)\) cubic weight sum, the Quillen spectral-cut transition
   cocycle for determinant-line charts, the Cech-de Rham local
-  connection/transition bookkeeping behind determinant-line holonomy, dual
+  connection/transition bookkeeping behind determinant-line holonomy, the
+  Bismut--Freed adiabatic-limit holonomy convention, reparametrization
+  invariance after the adiabatic limit, determinant/inverse determinant
+  exponent dualization, bounding/nonbounding circle-spin signs, dual
   anomaly-line cancellation,
   nontrivial flat stabilizer holonomy before cancellation, stabilizer-character
   invariance under local frame changes, the single-orbit descent obstruction
@@ -287,7 +290,8 @@ Current checks:
   action-groupoid descent criterion from vanishing stabilizer character, and
   the finite \(U(1)\)-phase algebra of Dai--Freed gluing and boundary-pairing
   anomaly cancellation, plus graded determinant/Pfaffian supertrace signs,
-  the odd-index failure of ordinary contraction, and intermediate-cut frame
+  the odd-index failure of ordinary contraction, the odd-index missing
+  nonbounding-spin sign negative control, and intermediate-cut frame
   cancellation and three-piece associativity for composed inflow amplitudes,
   together with a finite cochain Stokes model for the
   contractible-loop step from

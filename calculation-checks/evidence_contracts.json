@@ -430,7 +430,11 @@
         "complex determinant line is a superline of Fredholm-index parity",
         "real Pfaffian line uses separate mod-two Fredholm parity",
         "Dai-Freed interface contraction is supertrace not ordinary evaluation",
-        "odd-index intermediate boundary contributes the explicit minus sign"
+        "odd-index intermediate boundary contributes the explicit minus sign",
+        "Bismut-Freed holonomy uses the adiabatic limit not a finite mapping-torus metric",
+        "determinant-line holonomy is dual to Freed's inverse determinant-line convention",
+        "bounding and nonbounding circle spin structures differ by the odd-index sign",
+        "finite-metric eta phases are not reparametrization-invariant holonomy data"
       ]
     },
     {

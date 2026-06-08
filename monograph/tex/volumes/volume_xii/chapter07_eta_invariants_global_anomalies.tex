@@ -346,31 +346,93 @@ complex superline bundle over \(\mathcal B\).  The regulated chiral fermion
 functional integral is a section of this superline, not a function, until a
 trivialization is chosen.
 
-Let \(\gamma:S^1\to\mathcal B\) be a loop of backgrounds.  The mapping torus
+Let \(\pi:\mathcal M\to\mathcal B\) denote the resulting family of closed
+even-dimensional spin manifolds with vertical metric, vertical spin
+structure, coupled bundle, and a chosen horizontal distribution.  In the
+present fixed-manifold background-field setting this family is often the
+product \(\mathcal B\times M\), but the horizontal distribution is still the
+geometric datum used to form the odd-dimensional Dirac operator along a path
+in \(\mathcal B\).
+
+Let \(\gamma:S^1\to\mathcal B\) be a loop of backgrounds.  Pulling the family
+back to the circle and gluing the ends gives the mapping torus
 \begin{equation}
   Y_\gamma
   =
-  ([0,1]\times M)/\bigl((1,x)\sim(0,x)\hbox{ using }\gamma\bigr)
+  \gamma^*\mathcal M
+  =
+  ([0,1]\times M)/\bigl((1,x)\sim(0,x)\hbox{ using }\gamma\bigr).
   \label{eq:mapping-torus-background-loop}
 \end{equation}
-is a closed odd-dimensional spin manifold with the induced bundle and
-connection.  The Dirac operator on \(Y_\gamma\) will be denoted
-\(B_{Y_\gamma}\).
+Choose a spin structure \(\sigma\) on the base circle.  Together with the
+vertical spin structure on \(T(Y_\gamma/S^1)\), it induces a spin structure
+on \(Y_\gamma\).  For \(\varepsilon>0\) set
+\begin{equation}
+  g_{\gamma,\varepsilon}
+  =
+  \varepsilon^{-2}d\theta^2
+  \oplus
+  g^{T(Y_\gamma/S^1)},
+  \label{eq:bismut-freed-adiabatic-metric}
+\end{equation}
+using the horizontal/vertical splitting.  Let
+\(B_{\gamma,\varepsilon}^{\sigma}\) denote the resulting odd Dirac operator
+on \(Y_\gamma\).  The unscaled eta invariant of an arbitrary metric on
+\(Y_\gamma\) is not the determinant-line holonomy; the holonomy is recovered
+only after the adiabatic limit \(\varepsilon\to0\).
 
 \begin{quotedtheorem}[Bismut--Freed holonomy formula]
 \label{qthm:bismut-freed-holonomy}
 \emph{Source trace.}  The determinant-line connection and eta-holonomy
-formula are the Bismut--Freed holonomy theorem in the Dirac-family case
-\cite{BismutFreed1986}.
+formula are the Bismut--Freed holonomy theorem in the Dirac-family case,
+with Freed's adiabatic-limit and circle-spin conventions made explicit
+\cite{BismutFreed1986,Freed1995DeterminantRevisited}.
 With the determinant-line and chirality conventions of
-\eqref{eq:det-line-fiber}, the natural Bismut--Freed connection on
-\(\operatorname{Det}D\) has holonomy
+\eqref{eq:det-line-fiber}, this is the dual of Freed's inverse determinant
+line \(L=(\operatorname{Det}D)^\vee\).  Dualizing the connection inverts its
+\(U(1)\) holonomy, so the eta exponent changes sign; the circle-spin factor
+\((-1)^{\operatorname{Ind}(D^+)}\) is unchanged because it is self-inverse.
+Thus the natural Bismut--Freed connection on \(\operatorname{Det}D\) has
+holonomy
 \begin{equation}
-  \operatorname{Hol}_\gamma(\operatorname{Det}D)
+  \operatorname{Hol}_{\gamma,\sigma}(\operatorname{Det}D)
   =
-  \exp\!\left(-2\pi\ii\,\xi(B_{Y_\gamma})\right).
+  \begin{cases}
+  \displaystyle
+  \lim_{\varepsilon\to0}
+  \exp\!\left(-2\pi\ii\,\xi(B_{\gamma,\varepsilon}^{\sigma_{\rm b}})\right),
+  & \sigma=\sigma_{\rm b},\\[3mm]
+  \displaystyle
+  (-1)^{\operatorname{Ind}(D^+)}
+  \lim_{\varepsilon\to0}
+  \exp\!\left(-2\pi\ii\,\xi(B_{\gamma,\varepsilon}^{\sigma_{\rm nb}})\right),
+  & \sigma=\sigma_{\rm nb},
+  \end{cases}
   \label{eq:bismut-freed-holonomy}
 \end{equation}
+where \(\sigma_{\rm b}\) is the bounding spin structure on the mapping
+circle and \(\sigma_{\rm nb}\) is the nonbounding spin structure.
+Equivalently, for the inverse determinant line, the exponent sign is
+reversed:
+\begin{equation}
+\begin{aligned}
+  \operatorname{Hol}_{\gamma,\sigma_{\rm b}}(L)
+  &=
+  \lim_{\varepsilon\to0}
+  \exp\!\left(2\pi\ii\,\xi(B_{\gamma,\varepsilon}^{\sigma_{\rm b}})\right),
+  \\
+  \operatorname{Hol}_{\gamma,\sigma_{\rm nb}}(L)
+  &=
+  (-1)^{\operatorname{Ind}(D^+)}
+  \lim_{\varepsilon\to0}
+  \exp\!\left(2\pi\ii\,\xi(B_{\gamma,\varepsilon}^{\sigma_{\rm nb}})\right).
+\end{aligned}
+  \label{eq:bismut-freed-inverse-holonomy}
+\end{equation}
+with the same adiabatic family.  The parity factor is the supertrace sign on
+the vertical determinant superline.  The limit is invariant under
+orientation-preserving reparametrization of \(\gamma\), while the finite
+\(\varepsilon\) eta phase need not be.
 Its curvature is the fiber integral over \(M\) of the degree
 \((\dim M+2)\) component of
 \(\widehat A(TM)\operatorname{ch}(E)\).
@@ -540,24 +602,25 @@ smooth local curvature, the finite spectral-flow jumps, and the
 mapping-torus eta phase are the curvature, transition, and holonomy data of
 the same determinant line.
 
-For a loop \(\gamma\), the holonomy problem is converted into an index problem
-on the odd-dimensional mapping torus \(Y_\gamma\).  One stretches the circle
-direction adiabatically.  The local curvature contribution becomes the
-transgression of the family index density, while the finite part left by the
-adiabatic limit is the reduced eta invariant of the Dirac operator on
-\(Y_\gamma\).  This is the content of
-\eqref{eq:bismut-freed-holonomy}.  Thus the local anomaly polynomial is the
-curvature of the anomaly line, and a global anomaly is the holonomy of the
-same line around a closed path in the background groupoid.  Cancellation of
-the local anomaly means that the total anomaly line is flat; cancellation of
-the global anomaly requires the holonomy of that flat line to be \(1\) on
-every closed loop.
+For a loop \(\gamma\), the holonomy problem is converted into an adiabatic
+index problem on the odd-dimensional mapping torus \(Y_\gamma\).  The local
+curvature contribution becomes the transgression of the family index density,
+while the nonlocal part left by the adiabatic limit is the reduced eta
+invariant in \eqref{eq:bismut-freed-holonomy}.  A finite-metric eta phase on
+the same mapping torus is an auxiliary Riemannian number; it can change when
+the loop is reparametrized and is not itself determinant-line transport.
+Thus the local anomaly polynomial is the curvature of the anomaly line, and
+a global anomaly is the adiabatic holonomy of the same line around a closed
+path in the background groupoid.  Cancellation of the local anomaly means
+that the total anomaly line is flat; cancellation of the global anomaly
+requires the holonomy of that flat line to be \(1\) on every closed loop.
 
 \paragraph{Finite gauge transformation as determinant-line transport.}
 Let \(g\) be a gauge transformation of a background bundle on \(M\), and let
 \(A_t\), \(0\leq t\leq1\), be a path from \(A\) to \(A^g\).  The ratio between
 the transported determinant at \(A^g\) and the determinant at \(A\) is
-computed by \eqref{eq:bismut-freed-holonomy} on the mapping torus
+computed by the adiabatic formula \eqref{eq:bismut-freed-holonomy} on the
+mapping torus
 \begin{equation}
   Y_g
   =
@@ -576,11 +639,12 @@ automorphism of the one-dimensional line \(\operatorname{Det}D_A\), so it is
 multiplication by a phase.  The corresponding closed path in the quotient
 background groupoid is represented geometrically by gluing the two ends of
 \([0,1]\times M\) with \(g\), namely by the mapping torus \(Y_g\).  The
-Bismut--Freed holonomy formula applied to this closed family gives
-\eqref{eq:bismut-freed-holonomy}.  A phase different from \(1\) means that
-the determinant vector changes when the same quotient background is described
-by the two representatives \(A\) and \(A^g\); hence the chiral fermion measure
-does not descend to a function on the quotient.
+Bismut--Freed holonomy formula applied with the adiabatic metric and the
+chosen circle spin structure gives \eqref{eq:bismut-freed-holonomy}.  A phase
+different from \(1\) means that the determinant vector changes when the same
+quotient background is described by the two representatives \(A\) and
+\(A^g\); hence the chiral fermion measure does not descend to a function on
+the quotient.
 
 \paragraph{Descent to the quotient background groupoid.}
 This last statement is the precise descent criterion for a global gauge
@@ -1445,17 +1509,19 @@ trivializations, as in \eqref{eq:dai-freed-filling-change-closed-phase}.
 For a contractible loop of background fields, the Dai--Freed holonomy reduces
 to the exponential of the descent integral determined by the local anomaly
 polynomial.  This statement is not an additional index theorem.  Once the
-Bismut--Freed curvature formula and the APS holonomy formula have been fixed
-with the conventions above, the remaining passage from global inflow to the
-local consistent anomaly is ordinary Stokes transgression in background-field
-space.
+Bismut--Freed curvature formula and the adiabatic holonomy formula have been
+fixed with the conventions above, the remaining passage from global inflow to
+the local consistent anomaly is ordinary Stokes transgression in
+background-field space.
 
 Let \(\mathcal B\) be a coordinate patch in the space of structured
 backgrounds and let \(\gamma=\partial\Sigma\) be an oriented contractible loop
 bounding a smooth two-chain \(\Sigma\subset\mathcal B\).  Write
 \(\Omega_{\mathrm{BF}}\) for the normalized curvature two-form of the
-Bismut--Freed connection, with the sign convention fixed by
-\eqref{eq:bismut-freed-holonomy}: for a disk contained in this patch,
+Bismut--Freed connection.  For the bounding circle spin structure induced
+from the disk, and with the determinant-line rather than inverse-line
+variance in \eqref{eq:bismut-freed-holonomy}, a disk contained in this patch
+satisfies
 \begin{equation}
   \operatorname{Hol}_{\gamma}(\operatorname{Det}D)
   =
