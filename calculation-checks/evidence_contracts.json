@@ -354,7 +354,8 @@
         "Drude atom normalized by Abel source response zero-mode residue",
         "Cesaro and Abel Drude projections are not pointwise long-time limits",
         "filtered low-frequency Drude extraction rejects uncontrolled UV tails",
-        "positive filtered Drude proof requires real nonnegative even cutoff bounded by one"
+        "positive filtered Drude proof requires real nonnegative even cutoff bounded by one",
+        "strict gap negative controls reject NaN and infinite inputs"
       ]
     },
     {

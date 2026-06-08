@@ -42,20 +42,41 @@ former vanishes at every finite size in the tight-binding check while regular
 peaks collapse toward zero with increasing size.  Evaluating the Fourier
 retarded transform at real epsilon, substituting isothermal curvature for
 adiabatic curvature, or dropping the switched-source endpoint/contact is also
-rejected.
+rejected.  Nonfinite values in strict gap predicates are rejected by shared
+assertion helpers rather than silently passing tolerance comparisons.
 Scope boundary: these checks do not prove hydrodynamic closure, continuum
 limit exchange, or Euclidean analytic-continuation stability.
 """
 
 from __future__ import annotations
 
-from check_utils import assert_close as _assert_close
+from check_utils import assert_close as _assert_close, assert_gt, assert_lt
 
 import math
 
 
 def assert_close(name: str, got: float, expected: float, tol: float = 1.0e-10) -> None:
     _assert_close(name, got, expected, tol=tol)
+
+
+def assert_distinct_by_gap(name: str, got: complex | float, forbidden: complex | float, tol: float) -> None:
+    assert_gt(name, abs(got - forbidden), tol)
+
+
+def check_strict_gap_assertion_rejects_nonfinite_values() -> None:
+    bad_values = (
+        math.nan,
+        math.inf,
+        -math.inf,
+        complex(math.nan, 0.0),
+        complex(0.0, math.inf),
+    )
+    for bad_value in bad_values:
+        try:
+            assert_distinct_by_gap("nonfinite strict gap negative control", bad_value, 0.0, 1.0e-12)
+        except AssertionError:
+            continue
+        raise AssertionError(f"nonfinite strict gap value was accepted: {bad_value!r}")
 
 
 def matmul(a: list[list[complex]], b: list[list[complex]]) -> list[list[complex]]:
@@ -236,8 +257,7 @@ def check_hall_block_is_not_positive_dissipative_measure() -> None:
     if entrywise_real_includes_hall[0][1] == 0.0 or entrywise_real_includes_hall[1][0] == 0.0:
         raise AssertionError("entrywise real conductivity should still contain the Hall block")
     nonsymmetric_minor = entrywise_real_includes_hall[0][1] - entrywise_real_includes_hall[1][0]
-    if abs(nonsymmetric_minor) <= hall:
-        raise AssertionError("entrywise real Hall block was incorrectly projected out")
+    assert_gt("entrywise real Hall block was incorrectly projected out", abs(nonsymmetric_minor), hall)
 
 
 def check_vector_potential_response_sign() -> None:
@@ -314,8 +334,12 @@ def check_fourier_laplace_abel_domain_relation() -> None:
             laplace_kernel.real,
         )
         assert_close("Laplace Abel imaginary part", fourier_abel_kernel.imag, 0.0)
-        if abs(wrong_real_frequency_kernel - laplace_kernel) < 1.0e-6:
-            raise AssertionError("Fourier kernel evaluated at real epsilon was accepted as the Abel kernel")
+        assert_distinct_by_gap(
+            "Fourier kernel evaluated at real epsilon was accepted as the Abel kernel",
+            wrong_real_frequency_kernel,
+            laplace_kernel,
+            1.0e-6,
+        )
 
 
 def check_switched_source_endpoint_and_contact_are_load_bearing() -> None:
@@ -342,15 +366,20 @@ def check_switched_source_endpoint_and_contact_are_load_bearing() -> None:
     without_endpoint_subtraction = dynamic_current_density / electric_field
     wrong_without_endpoint = epsilon * without_endpoint_subtraction
     expected_mismatch = dynamic_abel_kernel - isothermal_static_kernel
-    if abs(wrong_without_endpoint - expected_mismatch) < 1.0e-12:
-        raise AssertionError("integration-by-parts endpoint was silently dropped")
+    assert_distinct_by_gap(
+        "integration-by-parts endpoint was silently dropped",
+        wrong_without_endpoint,
+        expected_mismatch,
+        1.0e-12,
+    )
 
     contact_omitted_dynamic_kernel = noncontact_laplace_kernel
-    if abs(
-        (contact_omitted_dynamic_kernel - isothermal_static_kernel)
-        - (dynamic_abel_kernel - isothermal_static_kernel)
-    ) < 1.0e-12:
-        raise AssertionError("source contact omission did not change the Abel mismatch")
+    assert_distinct_by_gap(
+        "source contact omission did not change the Abel mismatch",
+        contact_omitted_dynamic_kernel - isothermal_static_kernel,
+        dynamic_abel_kernel - isothermal_static_kernel,
+        1.0e-12,
+    )
 
 
 def check_isothermal_not_adiabatic_twist_curvature() -> None:
@@ -378,14 +407,18 @@ def check_isothermal_not_adiabatic_twist_curvature() -> None:
     ) / volume
     isothermal_curvature = adiabatic_curvature - beta * slope_covariance / volume
 
-    assert isothermal_curvature < adiabatic_curvature
+    assert_lt("isothermal curvature is below adiabatic curvature", isothermal_curvature, adiabatic_curvature)
     assert_close(
         "isothermal curvature differs by diagonal-current covariance",
         adiabatic_curvature - isothermal_curvature,
         beta * slope_covariance / volume,
     )
-    if abs(isothermal_curvature - adiabatic_curvature) < 1.0e-12:
-        raise AssertionError("isothermal curvature was substituted for adiabatic Kohn curvature")
+    assert_distinct_by_gap(
+        "isothermal curvature was substituted for adiabatic Kohn curvature",
+        isothermal_curvature,
+        adiabatic_curvature,
+        1.0e-12,
+    )
 
 
 def check_bond_phase_total_twist_normalization() -> None:
@@ -514,8 +547,12 @@ def check_commutator_fdt_loses_exact_zero_mode() -> None:
     naive_drude_from_commutator_fdt = beta * commutator_zero_weight
     source_response_drude_residue = beta * sym_zero_atom
     assert source_response_drude_residue > 0.0
-    if abs(naive_drude_from_commutator_fdt - source_response_drude_residue) < 1.0e-12:
-        raise AssertionError("commutator FDT incorrectly reconstructed the exact zero-mode atom")
+    assert_distinct_by_gap(
+        "commutator FDT incorrectly reconstructed the exact zero-mode atom",
+        naive_drude_from_commutator_fdt,
+        source_response_drude_residue,
+        1.0e-12,
+    )
 
 
 def check_periodic_twist_and_open_boundary_drude_routes() -> None:
@@ -919,6 +956,7 @@ def check_mori_zwanzig_projection_identity() -> None:
 
 
 def main() -> None:
+    check_strict_gap_assertion_rejects_nonfinite_values()
     check_two_level_kms_and_fdt()
     check_retarded_sign_and_transport_slope()
     check_contact_term_does_not_change_spectral_slope()

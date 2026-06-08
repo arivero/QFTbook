@@ -3731,7 +3731,8 @@ Current checks:
   filters under the
   positive-measure proof, and the regular-versus-Drude decomposition used in
   the Kubo figure, together with a finite-dimensional Mori--Zwanzig projection
-  identity and its Laplace-space Schur-complement form.
+  identity and its Laplace-space Schur-complement form.  Strict gap
+  predicates in these negative controls also reject NaN and infinite inputs.
 - `thermal_screening_checks.py`: finite checks for the Volume X thermal
   gauge-screening chapter, including the \(d\)-dimensional Yukawa asymptotic
   power, the transverse-projected pole residue, and the conversion of the

@@ -238,7 +238,8 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   is used; a positivity-preserving cutoff contract rejecting sign-changing or
   complex filters unless a separate total-variation proof is supplied; and a
   two-dimensional finite-regulator Mori--Zwanzig identity with its
-  Laplace-space Schur complement.
+  Laplace-space Schur complement.  The strict gap negative controls use finite
+  assertion helpers and include NaN/infinite-input rejection samples.
 - The #882 canonical convention ledger is also guarded by
   `calculation-checks/kms_foundation_checks.py` and
   `calculation-checks/finite_temperature_path_integral_checks.py`, which test
