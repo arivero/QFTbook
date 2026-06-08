@@ -2932,8 +2932,9 @@ Current checks:
   retained interacting stress-tensor/noise package whose component
   cross-covariances and finite composite-operator-mixing cross terms are
   required before Ward-clean mean/noise data are fed into the metric response,
-  with c-number counterterm noise rejected even though it can pass the Ward
-  test, the closed-time-path influence-functional consistency checks tying the
+  with c-number counterterm noise and independent Ward-clean local noise
+  contacts rejected even though they can pass the Ward test, the
+  closed-time-path influence-functional consistency checks tying the
   interacting mean source, retarded kernel, and connected noise to one package
   with Ward identities, retarded support, noise positivity, equal-branch
   normalization, and KMS/FDT compatibility, the large-species semiclassical

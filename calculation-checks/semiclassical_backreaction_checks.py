@@ -16,9 +16,9 @@ source/noise coordinates,
 the finite retained Ward-completion laboratory connecting those diagnostics to
 metric response and missing-noise budgets,
 the full retained interacting stress-tensor/noise package with component
-cross-covariances and finite composite-operator mixing, the closed-time-path
-influence-functional consistency of the interacting mean, retarded response,
-and noise package,
+cross-covariances, finite composite-operator mixing, and rejection of
+independent local noise contacts, the closed-time-path influence-functional
+consistency of the interacting mean, retarded response, and noise package,
 the homogeneous FLRW interacting-source closure tying a time-dependent
 potential coordinate to the pressure, Friedmann/Raychaudhuri, and
 stress-noise Ward data,
@@ -50,8 +50,9 @@ and retained metric/noise pushforward to the missing interacting covariance,
 and the
 full interacting package algebra in which component cross-covariances and
 finite operator-mixing terms are required before Ward tests are applied to the
-noise, the closed-time-path package tests tying Ward identities, retarded
-support, positivity, and fluctuation-dissipation compatibility together, the
+noise and independently added local noise contacts are rejected, the
+closed-time-path package tests tying Ward identities, retarded support,
+positivity, and fluctuation-dissipation compatibility together, the
 homogeneous FLRW source/noise closure in which the correction pressure and
 state-transport terms make a time-dependent potential density compatible with
 both Friedmann and Raychaudhuri responses and with Ward-clean Hubble noise, the
@@ -72,6 +73,7 @@ covariances, explicit finite Ward repairs, Ward-reduced source responses,
 projected diagnostic covariances, missing Ward-clean fluctuation budgets,
 finite stress/gravity coordinate transports, linear local-response transports,
 c-number connected-noise cancellations,
+unordered covariance positivity tests, Ward-clean local-contact counterexamples,
 finite influence-functional quadratic forms, retarded-support tests,
 fluctuation-dissipation ratios, small-gain inverses, response/noise bounds,
 FLRW pressure closures, Hubble-response consistency checks, and Ward-clean
@@ -103,7 +105,8 @@ source to the metric response, and undercounting a Ward-clean missing-noise
 fluctuation budget, cutoff-scale higher-derivative roots,
 component-variance-only noise packages, missing finite-renormalization cross
 terms, c-number counterterms incorrectly added to connected noise, advanced
-response kernels, independent noise spectra violating the KMS factor, and
+response kernels, independent Ward-clean local contacts added directly to the
+noise covariance, independent noise spectra violating the KMS factor, and
 spurious closed-time-path h_c h_c terms are rejected, as are singular feedback
 operators, overlarge small-gain feedback, unconserved sources/noise, and
 conserved-but-unstable retained data, signed nonlinear residual cancellations,
@@ -142,8 +145,10 @@ observable laws.
 Convention dependencies: the gravitational equation convention is
 E_grav=<T_ren>; retained metric vectors use the same gauge/constraint
 reduction as the response operator; the observable Gaussian law is
-H=h_*+Z with covariance C_h; signal-to-noise means self-averaging or
-detectability, not stochastic-law validity.
+H=h_*+Z with covariance C_h; stress noise is an unordered covariance in the
+declared algebra/state, while time-ordered contact freedom belongs to response;
+signal-to-noise means self-averaging or detectability, not stochastic-law
+validity.
 Domain and remainder assumptions: finite retained sectors, positive covariance
 matrices, chart radii, residual Lipschitz constants, Gaussian tail or stopping
 budgets, and declared bounds for omitted connected noise and higher observable
@@ -1307,6 +1312,23 @@ def check_interacting_stress_tensor_noise_package() -> None:
     ]:
         if quadratic_form(full_noise, test_vector) < 0:
             raise AssertionError("full interacting noise should be positive semidefinite")
+
+    # An independently chosen local diagonal/contact term can obey the same
+    # finite Ward map and still destroy positivity.  It is therefore response
+    # data, not an adjustable covariance counterterm.
+    ward_clean_contact: Matrix = (
+        (Fraction(-16), Fraction(-16), Fraction(-16)),
+        (Fraction(-16), Fraction(-16), Fraction(-16)),
+        (Fraction(-16), Fraction(-16), Fraction(-16)),
+    )
+    if matmul(ward, ward_clean_contact) != zero_matrix(2, 3):
+        raise AssertionError("test local contact should be Ward-clean by rows")
+    if matmul(ward_clean_contact, transpose(ward)) != zero_matrix(3, 2):
+        raise AssertionError("test local contact should be Ward-clean by columns")
+    contact_shifted_noise = matadd(full_noise, ward_clean_contact)
+    physical_flux_test: Matrix = ((Fraction(1),), (Fraction(1),), (Fraction(1),))
+    if quadratic_form(contact_shifted_noise, physical_flux_test) >= 0:
+        raise AssertionError("negative control failed: arbitrary noise contact did not break positivity")
 
     state_mean: Matrix = ((Fraction(3),), (Fraction(5),))
     c_number_counterterm: Matrix = (

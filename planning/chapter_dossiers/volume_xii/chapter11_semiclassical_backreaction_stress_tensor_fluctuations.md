@@ -21,6 +21,8 @@ fluctuation data required for controlled backreaction.
   renormalization scheme, and initial/boundary data.
 - `G^{ret}_{mu nu,rho sigma}`: retarded stress-tensor response kernel.
 - `N_{mu nu,rho sigma}`: stress-tensor noise kernel.
+- `N(f,k)`, `star_{S,V}`: the unordered algebra covariance of centered
+  smeared stress observables and the interacting product used to define it.
 - `xi_{mu nu}`: classical stochastic source in the Einstein-Langevin
   approximation.
 - `L`: gauge-fixed linearized gravitational operator including local
@@ -96,9 +98,12 @@ fluctuation data required for controlled backreaction.
   metric, and formalizes the backreaction datum.
 - Derives the linear-response kernel from the retarded stress-tensor
   commutator plus local contact terms.
-- Defines the noise kernel as a renormalized symmetrized connected
-  stress-tensor two-point distribution, proves positivity on real test
-  tensors, and states the distributional conservation Ward identity.
+- Defines the noise kernel as the unordered symmetrized connected covariance
+  of already renormalized smeared stress observables in one algebra/state,
+  proves positivity on real test tensors, and obtains the bidistribution from
+  the continuity of that bilinear form.  Time-ordered contact freedom is kept
+  on the response/effective-action side; it is not an independent noise
+  covariance parameter.
 - Derives the KMS fluctuation-dissipation relation for stationary states.
 - Defines the Einstein-Langevin approximation as a Gaussian generalized
   random tensor with covariance \(N\), and gives the induced metric
@@ -159,12 +164,15 @@ fluctuation data required for controlled backreaction.
   stress noise, not by a potential-sector coordinate alone.
 - Adds the full retained interacting stress-tensor/noise package for
   backreaction.  A scheme-fixed `T_int^{S,V}` supplies the mean source,
-  connected symmetrized noise, and retarded response in one prescription.  If
+  unordered connected symmetrized noise, and retarded response in one
+  prescription.  If
   `T_int` is decomposed into potential, Bogoliubov, derivative, and counterterm
   components, the full noise is the double component-covariance sum
   `sum_{i,j} N(T^i,T^j)`, not the sum of separate component variances.  Local
   c-number curvature ambiguities shift the mean but not connected noise, while
   finite composite-operator mixing changes the noise through cross terms.
+  Independently adding a local contact directly to the noise is rejected even
+  when the contact is Ward-clean, because it can destroy positivity.
   Thus Ward-clean retained data are accepted as physical backreaction inputs
   only after the full pAQFT stress tensor and its renormalized products, or
   controlled residuals for the missing entries, have been supplied.  After the
@@ -251,6 +259,7 @@ fluctuation data required for controlled backreaction.
   retained interacting stress-tensor/noise package with component
   cross-covariances, finite composite-operator-mixing cross terms, and a
   c-number connected-noise negative control that can still pass the Ward test,
+  plus a Ward-clean local-contact negative control that destroys positivity,
   the homogeneous FLRW interacting closure with correction pressure,
   Friedmann/Raychaudhuri compatibility, Ward-clean stress noise, and
   potential-only source/noise negative controls,
@@ -459,3 +468,9 @@ curvature, microscopic, and EFT scales.
   stopped/global/conditional alternatives for out-of-chart remainders, and the
   distinction between stochastic-law validity and signal-to-noise
   self-averaging.
+- 2026-06-08 issue #923 noise/contact separation pass: repaired the noise
+  kernel and interacting package so stress noise is the unordered covariance of
+  centered stress observables in one declared algebra/state.  Time-ordered and
+  metric-variation contact freedom is reserved for response/effective-action
+  data.  The paired finite check rejects an independently added Ward-clean
+  local noise contact that makes a positive covariance indefinite.

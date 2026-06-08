@@ -581,8 +581,8 @@ the chosen metric perturbation prescription.
 
 \section{Noise Kernel}
 
-Stress-tensor fluctuations are encoded by the symmetrized connected
-two-point distribution
+Stress-tensor fluctuations are encoded by the unordered symmetrized connected
+two-point distribution of the already renormalized stress tensor:
 \begin{equation}
   N_{\mu\nu,\rho\sigma}(x,y)
   =
@@ -592,7 +592,20 @@ two-point distribution
   \right)_{\rm conn}.
   \label{eq:semiclassical-noise-kernel}
 \end{equation}
-Equivalently, for a real compactly supported test tensor \(f^{\mu\nu}\), set
+More invariantly, fix the algebra product in which the smeared stress tensor
+is an observable and define, for real compactly supported test tensors
+\(f,k\),
+\begin{equation}
+  N(f,k)
+  =
+  \frac12\,\omega\!\left(
+    \Delta T(f)\Delta T(k)+\Delta T(k)\Delta T(f)
+  \right),
+  \qquad
+  \Delta T(f)=T(f)-\omega(T(f))\mathbf 1 .
+  \label{eq:semiclassical-noise-bilinear-form}
+\end{equation}
+Equivalently, set
 \[
   T(f)=\int_M\dd\operatorname{vol}_g\,f^{\mu\nu}T_{\mu\nu}^{\rm ren}.
 \]
@@ -607,7 +620,14 @@ Then
   \label{eq:semiclassical-noise-positivity}
 \end{equation}
 Thus \(N\) is a positive semidefinite distributional covariance kernel on
-the real test-tensor space where the renormalized product is defined.
+the real test-tensor space where the unordered product of smeared stress
+observables is defined.  If the bilinear form
+\eqref{eq:semiclassical-noise-bilinear-form} is continuous on the chosen
+test-tensor topology, the Schwartz kernel theorem gives a unique
+bidistribution \(N_{\mu\nu,\rho\sigma}\).  Its wavefront and continuity domain
+are hypotheses or consequences of that algebra/state construction; they are
+not obtained by choosing an independent time-ordered extension at
+coincidence.
 
 Conservation is the distributional Ward identity
 \begin{equation}
@@ -616,12 +636,19 @@ Conservation is the distributional Ward identity
   \nabla_y^\rho N_{\mu\nu,\rho\sigma}(x,y)=0,
   \label{eq:semiclassical-noise-conservation}
 \end{equation}
-including diagonal contact terms fixed by the same local covariance
-conditions that define the stress-tensor product.  Away from the diagonal it
-follows immediately from
-\(\nabla^\mu T_{\mu\nu}^{\rm ren}=0\).  On the diagonal it is a condition on
-the renormalized composite product; it is imposed at the level of the local
-extension across coincident points.
+Away from the diagonal it follows immediately from
+\(\nabla^\mu T_{\mu\nu}^{\rm ren}=0\).  On the diagonal it is a property of
+the same unordered algebra product and state used in
+\eqref{eq:semiclassical-noise-bilinear-form}.  One must not add an
+independently chosen local term to \(N\) merely because a time-ordered product
+has Epstein--Glaser extension freedom: such a term changes variances and can
+destroy positivity.  C-number curvature ambiguities in
+\(T_{\mu\nu}^{\rm ren}\) cancel from \(\Delta T\); genuine finite operator
+mixing changes the stress observable itself and therefore changes \(N\) only
+through the covariance, cross-covariance, and Ward checks of that new
+observable.  The local metric-variation and time-ordered contact terms belong
+to the retarded response kernel and the gravitational effective action, not to
+an adjustable noise covariance.
 
 \section{Stationary States And Fluctuation--Dissipation}
 
@@ -1768,11 +1795,14 @@ package on this retained sector consists of the three objects
   &=
   \frac12\,
   \omega\!\left(
-    \left\{
-      \Delta T_{\rm int}^{\mathcal S,V}(\tau_a),
-      \Delta T_{\rm int}^{\mathcal S,V}(\tau_b)
-    \right\}
-  \right)_{\rm ren},\\
+    \Delta T_{\rm int}^{\mathcal S,V}(\tau_a)
+    \star_{\mathcal S,V}
+    \Delta T_{\rm int}^{\mathcal S,V}(\tau_b)
+    +
+    \Delta T_{\rm int}^{\mathcal S,V}(\tau_b)
+    \star_{\mathcal S,V}
+    \Delta T_{\rm int}^{\mathcal S,V}(\tau_a)
+  \right),\\
   \mathsf K_{ab}^{\rm ret}
   &=
   \ii\,\omega\!\left(
@@ -1785,15 +1815,19 @@ package on this retained sector consists of the three objects
 \end{aligned}
   \label{eq:semiclassical-full-interacting-package}
 \end{equation}
-Here
-\(\Delta T=T-\omega(T)\), the subscript ``ren'' means that the time-ordered
-and coincident-point extensions of the stress-tensor product have been fixed
-in the same prescription \(\mathcal S\), and
-\(\mathsf K^{\rm loc}\) contains the local metric-variation/contact terms
-which enter the linearized semiclassical equation.  The same renormalized
-operator-valued distribution \(T_{\rm int}^{\mathcal S,V}\) must be used in
-all three entries.  Otherwise the mean equation, the Einstein--Langevin noise,
-and the retarded response are coordinates from different theories.
+Here \(\Delta T=T-\omega(T)\), and
+\(\star_{\mathcal S,V}\) is the unordered interacting algebra product in the
+same scheme in which \(T_{\rm int}^{\mathcal S,V}\) is constructed.  The
+retarded response \(\mathsf K^{\rm ret}\) may contain local
+metric-variation/contact terms because it is a response/effective-action
+object.  The noise covariance \(\mathsf N^{\rm full}\) is not given an
+independent time-ordered contact parameter.  Any local term in the interacting
+noise must be derived from the chosen stress observable and unordered product,
+and must then pass positivity and Ward tests as a covariance.  The same
+renormalized operator-valued distribution \(T_{\rm int}^{\mathcal S,V}\) must
+be used in all three entries.  Otherwise the mean equation, the
+Einstein--Langevin noise, and the retarded response are coordinates from
+different theories.
 
 If, for bookkeeping, the interacting tensor is decomposed in one local chart as
 \[
