@@ -994,7 +994,9 @@ Current checks:
   absorption, vacuum determinant calibration used as a source-fluctuation
   quotient, relative fluctuation division after rank loss, determinant-only
   four-point assembly, omitted nonzero-mode source quotient, symmetric Haar
-  source shortcut, underbudgeted four-point projection residual,
+  source shortcut, underbudgeted four-point projection residual, a
+  determinant-only, \(q_2\)-only, unweighted, or source-frame-mismatched
+  normal-source quotient inserted into the 't Hooft hard measure,
   determinant-only, Gaussian-only, or unweighted post-projection
   normal-source quotients,
   determinant-only

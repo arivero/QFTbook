@@ -5,7 +5,7 @@ Evidence contract.
 Target claims:
 - `eq:instanton-source-functional-route`,
   `eq:instanton-source-functional-observable-extraction`, and
-  `ca:instanton-source-functional-route`: the one-instanton sector first
+  `constr:instanton-source-functional-route`: the one-instanton sector first
   defines a finite-regulator source functional, and a physical amplitude is
   obtained only after source differentiation, source-dependent fluctuation
   averaging, collective integration, and the named physical projection.
@@ -152,7 +152,10 @@ Target claims:
   four-source instanton Green-function contribution is a common-regulator
   product of density, Haar projection, chiral source determinants, individual
   zero-mode slots, nonzero-mode source response, amputation, physical
-  projection, and an absolute residual budget.
+  projection, and an absolute residual budget.  The source response is
+  inserted through the same signed retained measure as the zero-mode slots;
+  an unweighted source quotient or determinant-only replacement changes the
+  amplitude coordinate.
 - `ca:instanton-thooft-crossed-chiral-channel`: the all-outgoing
   two-flavor 't Hooft source kernel becomes a physical `RR -> LL` channel
   only after the anomalous chirality source monomial is selected, the barred
@@ -5414,6 +5417,83 @@ def check_thooft_four_point_amputated_assembly_gate() -> None:
     )
 
 
+def check_thooft_same_measure_normal_source_response() -> None:
+    # Signed retained cells model the Haar projection and hard size window after
+    # the center delta.  The normal-source quotient must be inserted in this
+    # same measure, not averaged separately from it.
+    retained_cells = [
+        (Fraction(5, 6), Fraction(1, 7), Fraction(-1, 14), Fraction(1, 100)),
+        (Fraction(-2, 5), Fraction(3, 20), Fraction(1, 10), Fraction(-1, 120)),
+        (Fraction(3, 10), Fraction(-1, 15), Fraction(1, 12), Fraction(1, 150)),
+    ]
+
+    determinant_normalized = sum(weight for weight, _, _, _ in retained_cells)
+    stopped_after_q23 = sum(
+        weight * (1 + q2 + q3) for weight, q2, q3, _ in retained_cells
+    )
+    full_same_measure = sum(
+        weight * (1 + q2 + q3 + remainder)
+        for weight, q2, q3, remainder in retained_cells
+    )
+    q2_only = sum(weight * (1 + q2) for weight, q2, _, _ in retained_cells)
+    unweighted_quotient = determinant_normalized * (
+        sum(1 + q2 + q3 for _, q2, q3, _ in retained_cells) / len(retained_cells)
+    )
+    shifted_source_frame = sum(
+        weight
+        * (
+            1
+            + retained_cells[(index + 1) % len(retained_cells)][1]
+            + retained_cells[(index + 1) % len(retained_cells)][2]
+        )
+        for index, (weight, _, _, _) in enumerate(retained_cells)
+    )
+
+    assert_equal(
+        "same-measure normal-source quotient through hard window",
+        stopped_after_q23,
+        Fraction(977, 1400),
+    )
+    assert_equal(
+        "same-measure normal-source quotient with remainder",
+        full_same_measure,
+        Fraction(7471, 10500),
+    )
+    assert_not_equal(
+        "determinant-normalized zero-mode answer misses normal-source quotient",
+        determinant_normalized,
+        stopped_after_q23,
+    )
+    assert_not_equal(
+        "q2-only source response misses first cubic covariance",
+        q2_only,
+        stopped_after_q23,
+    )
+    assert_not_equal(
+        "unweighted source quotient changes signed hard-window projection",
+        unweighted_quotient,
+        stopped_after_q23,
+    )
+    assert_not_equal(
+        "mismatched source-frame quotient changes hard amplitude coordinate",
+        shifted_source_frame,
+        stopped_after_q23,
+    )
+
+    epsilon = max(abs(remainder) for _, _, _, remainder in retained_cells)
+    hard_measure_mass = sum(abs(weight) for weight, _, _, _ in retained_cells)
+    assert_equal(
+        "same-measure normal-source absolute residual bound",
+        abs(full_same_measure - stopped_after_q23) <= epsilon * hard_measure_mass,
+        True,
+    )
+    assert_equal(
+        "omitted normal-source remainder is not a valid zero budget",
+        abs(full_same_measure - stopped_after_q23) <= Fraction(0),
+        False,
+    )
+
+
 def check_thooft_crossed_chiral_channel() -> None:
     q_plus_all_out = ("u_L", "d_L", "ubar_R", "dbar_R")
     q_minus_all_out = ("u_R", "d_R", "ubar_L", "dbar_L")
@@ -6370,6 +6450,7 @@ def main() -> None:
     check_wilsonian_matching_scheme_covariance()
     check_hard_benchmark_channel_comparison_and_ratio()
     check_thooft_four_point_amputated_assembly_gate()
+    check_thooft_same_measure_normal_source_response()
     check_thooft_crossed_chiral_channel()
     check_crossed_hard_helicity_projection_gate()
     check_size_integrated_crossed_hard_channel()

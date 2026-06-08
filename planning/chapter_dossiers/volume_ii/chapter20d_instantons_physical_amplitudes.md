@@ -51,7 +51,8 @@
   -> Haar/LSZ/size window -> physical projection`, with a minimal residual
   ledger
   `B_coll+B_zm+B_nz/src+B_Haar/LSZ+B_rho-win+B_proj`.
-- `ca:instanton-source-functional-route`: route-to-amplitude block rejecting
+- `constr:instanton-source-functional-route`: route-to-amplitude construction
+  rejecting
   the three main shortcut reorderings: source differentiation replaced by mass
   saturation, determinant normalization substituted for source response, and
   a raw Euclidean source kernel read as a physical observable before
@@ -136,6 +137,12 @@
   zero-mode slots, nonzero-mode source quotient, external-leg amputation,
   physical projection, endpoint tail, and sector isolation all sit in one
   residual budget.
+- `eq:instanton-thooft-four-point-same-measure-source-response` and
+  `eq:instanton-thooft-four-point-source-response-bound`: insert the
+  normal-mode source response through the same signed retained hard measure as
+  the zero-mode slots, Haar tensor, amputation, crossing, size window, and
+  projection, with the omitted normal-source remainder controlled only in the
+  absolute hard-measure norm unless a noncancellation margin is supplied.
 - `ca:instanton-thooft-crossed-chiral-channel`: turns the all-outgoing
   anomalous two-flavor source monomial into the crossed \(RR\to LL\)
   scattering channel only after chirality selection, LSZ residues, and the
@@ -773,6 +780,15 @@
   running collective factor, and size-window tails.  The companion rejects
   determinant-only, Gaussian-only, unweighted post-projection, and
   omitted-cumulant residual shortcuts.
+- 2026-06-07 issue #597/#844 same-measure 't Hooft assembly pass: changed the
+  front-door source-functional route from `controlledapproximation` to the
+  construction `constr:instanton-source-functional-route`, because it is an
+  extraction/provenance map rather than an approximation estimate.  The
+  amputated four-point block now carries the normal-source response as
+  `(1+q_2+q_3+r_nz/src)` inside the same signed retained hard measure, with an
+  absolute remainder bound.  The companion check rejects determinant-only,
+  `q_2`-only, unweighted quotient, mismatched-source-frame, and zero-residual
+  shortcuts.
 - 2026-06-07 issue #597 mass-assisted interference pass: added
   `ca:instanton-mass-assisted-interference-channel` after the crossed chiral
   channel.  The pass turns the two-source determinant coordinate \(m_dB_{uu}\)

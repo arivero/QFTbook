@@ -144,8 +144,8 @@ inclusive cut, or a Euclidean susceptibility functional.  The residual
 sector, endpoint, and matching errors that are invisible in the moduli
 measure.
 
-\begin{controlledapproximation}[Source-functional route to a physical amplitude]
-\label{ca:instanton-source-functional-route}
+\begin{construction}[Source-functional route to a physical amplitude]
+\label{constr:instanton-source-functional-route}
 The route
 \[
 \begin{aligned}
@@ -203,7 +203,7 @@ partonic kernel in a confining theory has no standalone LSZ residue.  Thus
 the object in \eqref{eq:instanton-source-functional-route} is the input to
 an observable map; \eqref{eq:instanton-source-functional-observable-extraction}
 is the physical claim.
-\end{controlledapproximation}
+\end{construction}
 
 \begin{example}[Finite source-functional amplitude laboratory]
 \label{ex:instanton-finite-source-functional-laboratory}
@@ -1218,6 +1218,58 @@ projection, the amputated zero-mode form factors, or the normal-fluctuation
 source quotient.  Conversely, the zero-mode determinant fixes the anomalous
 source selection but not the heat-kernel determinant, the finite orientation
 normalization, or the endpoint tail.
+
+After the center delta has been used, the source response has to be inserted
+with the same signed size-and-orientation measure as the zero-mode slots.  If
+\(z=(\rho,\Omega)\) and
+\(\dd\mu_{\rm hard}^{0}(z;\mathcal J)\) denotes the retained hard measure
+obtained from the density, Haar tensor, source determinants, individual
+zero-mode slots, amputation, crossing, and physical pre-projection data but
+with the nonzero-mode source quotient removed, the same calculation reads
+\begin{equation}
+  \mathcal A_{4,\Lambda}^{\rm amp}
+  =
+  \ee^{\ii\theta}
+  \int_{\mathcal W_\rho\times\Omega_3}
+  \bigl(1+q_2(z;\mathcal J)+q_3(z;\mathcal J)
+        +r_{\rm nz/src}(z;\mathcal J)\bigr)
+  \,\dd\mu_{\rm hard}^{0}(z;\mathcal J).
+  \label{eq:instanton-thooft-four-point-same-measure-source-response}
+\end{equation}
+Here \(q_2\) is the Gaussian quadratic-source mean and \(q_3\) is the first
+source-cubic covariance from the primed normal coordinates, as in
+ControlledApproximation~\ref{ca:instanton-retained-hard-normal-source-quotient}.
+The point of
+\eqref{eq:instanton-thooft-four-point-same-measure-source-response} is not a
+new factorization; it is the common-regulator provenance of the amplitude.
+Replacing the integrand by \(1\) gives the determinant-normalized zero-mode
+answer.  Multiplying a determinant constant by an unweighted average of
+\(1+q_2+q_3\) changes signed Haar and size-window cancellations.  Computing
+\(q_2\) or \(q_3\) in a different gauge slice or source frame changes the
+coordinate being projected.
+
+Thus, if the retained normal-source quotient is stopped after \(q_2+q_3\) and
+\(|r_{\rm nz/src}|\le\epsilon_{\rm nz/src}\) on the same window, the missing
+piece is controlled only in the absolute hard-measure norm:
+\begin{equation}
+  \left|
+    \mathcal A_{4,\Lambda}^{\rm amp}
+    -
+    \ee^{\ii\theta}
+    \int
+    (1+q_2+q_3)\,\dd\mu_{\rm hard}^{0}
+  \right|
+  \le
+  \epsilon_{\rm nz/src}
+  \int|\dd\mu_{\rm hard}^{0}|
+  +B_{\rm coord}+B_{\rm amp}+B_{\rm proj}+B_{\rm sec}.
+  \label{eq:instanton-thooft-four-point-source-response-bound}
+\end{equation}
+A relative statement needs a separate noncancellation margin for the displayed
+leading integral.  This is the amplitude-level work absent from a
+moduli-space calculation: the nonzero-mode fluctuation average is a
+source-dependent insertion in the same retained physical measure, with its own
+regulator, source-frame, and residual data.
 
 For a controlled channel write the comparison with the physical four-point
 coordinate as
