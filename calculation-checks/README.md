@@ -3662,10 +3662,12 @@ Current checks:
   conductivity-kernel contact sign, and the static diamagnetic cancellation.
   It also checks that real local contact terms do not change dissipative
   spectral slopes, the finite Mazur
-  projection/Drude-weight relation for a current with conserved overlap, and
-  the regular-versus-Drude decomposition used in the Kubo figure, together
-  with a finite-dimensional Mori--Zwanzig projection identity and its
-  Laplace-space Schur-complement form.
+  projection/Drude-atom relation for a current with conserved overlap, a
+  finite oscillatory negative control where Cesaro and Abel averages isolate
+  the zero-frequency component but the pointwise long-time limit does not
+  exist, and the regular-versus-Drude decomposition used in the Kubo figure,
+  together with a finite-dimensional Mori--Zwanzig projection identity and
+  its Laplace-space Schur-complement form.
 - `thermal_screening_checks.py`: finite checks for the Volume X thermal
   gauge-screening chapter, including the \(d\)-dimensional Yukawa asymptotic
   power, the transverse-projected pole residue, and the conversion of the

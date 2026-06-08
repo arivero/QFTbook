@@ -9,13 +9,17 @@ conductivity kernel.
 Independent construction: two-level Lehmann weights, finite retarded pole
 models, a minimally coupled charged oscillator with a diamagnetic contact
 term, finite Mazur projection algebra, and a two-dimensional Mori-Zwanzig
-Schur-complement model.
+Schur-complement model.  The Mazur/Drude check uses a finite oscillatory
+negative control to separate Cesaro and Abel zero-frequency projections from
+an unproved ordinary pointwise long-time limit.
 Imported assumptions: the thermal KMS condition, finite-volume linear
 response, and the interpretation of real local source contacts as contact
 terms outside the nonzero-frequency commutator spectral measure.
 Negative controls: the wrong contact sign leaves a spurious static
 conductivity kernel, real contact terms do not alter the dissipative spectral
-slope, and the Drude sector is separated from the regular dc slope.
+slope, the Drude sector is separated from the regular dc slope, and an
+oscillatory finite-volume correlator is not accepted as having a pointwise
+long-time Drude limit.
 Scope boundary: these checks do not prove hydrodynamic closure, continuum
 limit exchange, or Euclidean analytic-continuation stability.
 """
@@ -234,6 +238,35 @@ def check_mazur_projection_and_drude_weight() -> None:
     assert_close("Drude weight matches persistent symmetrized correlator", persistent_from_drude, expected_persistent)
 
 
+def check_cesaro_abel_not_pointwise_negative_control() -> None:
+    constant_component = 0.31
+    omega = 1.7
+
+    def correlation(time: float) -> float:
+        return constant_component + math.cos(omega * time)
+
+    for periods in (1, 3, 11):
+        time_window = 2.0 * math.pi * periods / omega
+        cesaro_average = constant_component + math.sin(omega * time_window) / (omega * time_window)
+        assert_close("Cesaro average over complete oscillation periods isolates zero-frequency atom", cesaro_average, constant_component)
+
+    for epsilon in (0.2, 0.1, 0.05):
+        abel_average = constant_component + epsilon * epsilon / (epsilon * epsilon + omega * omega)
+        assert abel_average > constant_component
+    small_epsilon = 1.0e-4
+    abel_small = constant_component + small_epsilon * small_epsilon / (small_epsilon * small_epsilon + omega * omega)
+    assert_close("Abel average isolates zero-frequency atom", abel_small, constant_component, tol=4.0e-9)
+
+    maxima_subsequence = [correlation(2.0 * math.pi * n / omega) for n in (5, 17, 41)]
+    minima_subsequence = [correlation((2 * n + 1) * math.pi / omega) for n in (5, 17, 41)]
+    for value in maxima_subsequence:
+        assert_close("oscillatory subsequence maximum persists", value, constant_component + 1.0)
+    for value in minima_subsequence:
+        assert_close("oscillatory subsequence minimum persists", value, constant_component - 1.0)
+    if not abs(maxima_subsequence[-1] - minima_subsequence[-1]) > 1.9:
+        raise AssertionError("oscillatory finite-volume correlator should not have a pointwise long-time limit")
+
+
 def check_regular_drude_decomposition_for_figure() -> None:
     sigma_dc = 0.64
     tau = 1.7
@@ -306,6 +339,7 @@ def main() -> None:
     check_vector_potential_response_sign()
     check_diamagnetic_contact_response_convention()
     check_mazur_projection_and_drude_weight()
+    check_cesaro_abel_not_pointwise_negative_control()
     check_regular_drude_decomposition_for_figure()
     check_mori_zwanzig_projection_identity()
     print("All thermal Kubo convention checks passed.")

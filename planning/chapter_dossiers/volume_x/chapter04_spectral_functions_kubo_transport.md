@@ -36,7 +36,14 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
 - Transport limit datum specifying regulator sequence, operator
   normalization, projection/contact prescription, and order of limits.
 - Zero-frequency singular sector and finite-volume Mazur projection for
-  conserved current overlap.
+  conserved current overlap, kept at the level of the Cesaro
+  zero-Liouvillian projection.
+- Thermodynamic Drude weight defined as the coefficient of the
+  zero-frequency atom in the conductivity measure, with Cesaro/Abel
+  time-domain equivalence and ordinary pointwise long-time equivalence stated
+  only under additional spectral-convergence and dephasing hypotheses.
+- Separation of a genuine Drude atom from singular-continuous response and
+  from absolutely continuous low-frequency tails without a finite dc limit.
 - Finite-regulator Kubo--Mori projection, Mori--Zwanzig memory identity, and
   the theorem boundary between exact projected dynamics and Markovian
   hydrodynamic closure.
@@ -66,8 +73,11 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
 | \(K^{\rm cond}_{ij}\) | transverse conductivity kernel defined by \(\langle J_i\rangle=-K^{\rm cond}_{ij}A_j\), equal to \(G^{R,\rm comm}_{J_iJ_j}-C^{\rm resp}_{ij}\) |
 | \(C^{\rm resp}_{AB}\) | local contact contribution to the full source-response derivative |
 | \(I_i\), \(\bar I_i\) | total current and connected total current in finite volume |
+| \(C_{ij,V}(t)\) | finite-volume connected symmetrized current autocorrelation |
 | \(Q_a\), \(C_{ab}\), \(v_{ia}\) | conserved operators, symmetrized covariance, and current-charge overlap |
-| \(D_{ij}\) | Drude-weight matrix in \(\operatorname{Re}\sigma_{ij}\) |
+| \(A^{(0)}_{ij,V}\) | finite-volume Cesaro projection onto the zero-Liouvillian current sector |
+| \(D_{ij}\) | thermodynamic Drude-weight matrix, defined by the zero-frequency atom of \(\operatorname{Re}\sigma_{ij}\) |
+| \(\mu^\sigma_{ij}\), \(\mu^{\rm sc}_{ij}\), \(\sigma^{\rm ac}_{ij}\) | thermodynamic conductivity measure, its singular-continuous part, and its absolutely continuous density |
 | \(\mathcal L\) | finite-regulator Liouville generator \(\mathcal L X=\ii[H_L,X]\) |
 | \((\cdot,\cdot)_\beta\) | Kubo--Mori inner product on the finite-regulator operator space |
 | \(P,Q\) | Kubo--Mori projection onto chosen slow operators and its complement |
@@ -107,8 +117,12 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
 7. A transport coefficient requires a declared thermodynamic and
    zero-frequency order of limits.
 8. Conserved charges with nonzero current overlap give a positive
-   zero-frequency singular sector bounded by the Mazur projection; this is
-   separated from the finite dissipative dc slope.
+   finite-volume zero-Liouvillian Cesaro projection bounded by the Mazur
+   matrix.  Identifying its thermodynamic limit with a Drude atom requires
+   spectral-measure convergence; identifying it with an ordinary pointwise
+   \(t\to\infty\) limit requires additional dephasing/mixing.  The Drude atom,
+   singular-continuous response, and regular dc slope are distinct
+   low-frequency objects.
 9. At finite regulator, the Kubo--Mori projection gives an exact
    Mori--Zwanzig block identity for chosen slow coordinates.  This identity
    is algebraic and does not by itself imply transport.
@@ -141,7 +155,9 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   also checks a minimally coupled charged oscillator with nonzero diamagnetic
   response contact, verifying the static full-response cancellation, the
   opposite contact sign in \(K^{\rm cond}\), and the unchanged spectral part;
-  the finite Mazur projection/Drude-weight normalization; and a
+  the finite Mazur projection/Drude-atom normalization; an oscillatory
+  \(C(t)=C_0+\cos\Omega t\) negative control where Cesaro and Abel averages
+  isolate \(C_0\) but no pointwise long-time limit exists; and a
   two-dimensional finite-regulator Mori--Zwanzig identity with its
   Laplace-space Schur complement.
 - The #882 canonical convention ledger is also guarded by
@@ -206,3 +222,8 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   defined \(K^{\rm cond}=-\mathcal K^{\rm full}\) for conductivity, and added
   a charged-oscillator diamagnetic contact example and check so the static
   response, conductivity kernel, and spectral part use one sign ledger.
+- 2026-06-08 issue #883 Mazur/Drude pass: removed the pointwise
+  \(t\to\infty\) Drude definition from the finite-volume Mazur proof, defined
+  the Drude weight as a thermodynamic zero-frequency atom, added Cesaro/Abel
+  equivalence only under stated spectral hypotheses, and guarded the
+  distinction with an oscillatory finite-system negative control.

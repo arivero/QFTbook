@@ -408,7 +408,16 @@ susceptibilities and dc conductivities use different zero-frequency limits.
 The most elementary obstruction to a finite dc coefficient is an exactly
 conserved operator that has nonzero overlap with the current.  Let \(I_i\) be
 the total current in direction \(i\) in finite volume \(V\), and let
-\(\bar I_i=I_i-\langle I_i\rangle_\beta\).  Suppose
+\(\bar I_i=I_i-\langle I_i\rangle_\beta\).  Write
+\begin{equation}
+  C_{ij,V}(t)
+  =
+  \frac1{2V}\left\langle
+    \{\bar I_i(t),\bar I_j(0)\}
+  \right\rangle_\beta
+  \label{eq:kubo-finite-current-correlation}
+\end{equation}
+for the connected symmetrized current correlator.  Suppose
 \(\{Q_a\}_{a=1}^N\) are Hermitian conserved operators with zero thermal
 expectation and positive covariance matrix
 \begin{equation}
@@ -447,9 +456,9 @@ satisfies
   u_i v_{ia}(C^{-1})^{ab}v_{jb}u_j .
   \label{eq:kubo-mazur-bound}
 \end{equation}
-If the right hand side has a nonzero thermodynamic limit, the conductivity
-has a zero-frequency singular contribution and the ordinary dc limit is not
-a finite dissipative number.
+The right hand side is a finite-volume lower bound on the zero-Liouville
+projection.  Promoting a nonzero thermodynamic limit of this bound to a
+Drude atom requires the spectral convergence hypotheses stated below.
 \end{lemma}
 
 \begin{proof}
@@ -477,38 +486,61 @@ at least
   =
   u_i v_{ia}(C^{-1})^{ab}v_{jb}u_j .
 \]
-If this quantity survives per unit volume as \(V\to\infty\), the symmetrized
-current spectrum contains a term
+Equivalently, if
 \begin{equation}
-  \frac{2\pi}{\beta}D_{ij}\delta(\omega),
-  \qquad
-  D_{ij}=\beta\lim_{t\to\infty}\lim_{V\to\infty}
-  \frac1{2V}\langle\{\bar I_i(t),\bar I_j(0)\}\rangle_\beta ,
-  \label{eq:kubo-drude-weight-definition}
+  A^{(0)}_{ij,V}
+  =
+  \lim_{T\to\infty}\frac1T\int_0^Tdt\,C_{ij,V}(t)
+  \label{eq:kubo-finite-volume-zero-liouville-average}
 \end{equation}
-in the convention of \eqref{eq:kubo-fluctuation-dissipation}.  Equivalently
-\(\operatorname{Re}\sigma_{ij}\) contains
-\(\pi D_{ij}\delta(\omega)\).  This is a singular transport sector, not the
-regular slope appearing in the finite dc Kubo formula.
+denotes the finite-volume zero-Liouville projection, then
+\(u_iA^{(0)}_{ij,V}u_j\) is bounded below by the right hand side of
+\eqref{eq:kubo-mazur-bound}.  This is exactly what the finite-volume Mazur
+argument proves.  It is a Cesaro projection onto \(\ker[H,\cdot]\), not an
+ordinary \(t\to\infty\) limit of \(C_{ij,V}(t)\).
 \end{proof}
 
 After the thermodynamic limit has been taken, the low-frequency real
-conductivity in a fixed tensor channel must be regarded as a distribution.
-The separation used below is
+conductivity in a fixed tensor channel must be regarded as a positive
+matrix-valued measure or distribution, not as an ordinary function.  The
+Drude weight is defined by the zero-frequency atom of this thermodynamic
+conductivity measure:
 \begin{equation}
-  \operatorname{Re}\sigma_{ij}(\omega)
-  =
-  \pi D_{ij}\delta(\omega)+\sigma^{\rm reg}_{ij}(\omega),
+  \operatorname{Re}\sigma_{ij}
+  \supset
+  \pi D_{ij}\delta_0,
   \qquad
+  D_{ij}
+  =
+  \frac1\pi\,\mu^\sigma_{ij}(\{0\}),
+  \label{eq:kubo-drude-weight-definition}
+\end{equation}
+where \(\mu^\sigma\) is the measure representing
+\(\operatorname{Re}\sigma\) after the thermodynamic limit and after the
+contact-term convention has been fixed.  More generally one should separate
+\begin{equation}
+  \mu^\sigma_{ij}
+  =
+  \pi D_{ij}\delta_0
+  +\mu^{\rm sc}_{ij}
+  +\sigma^{\rm ac}_{ij}(\omega)\,d\omega ,
+  \label{eq:kubo-drude-regular-decomposition}
+\end{equation}
+where \(\mu^{\rm sc}\) is any singular-continuous part and
+\(\sigma^{\rm ac}\) is the absolutely continuous density.  Only the atom in
+\eqref{eq:kubo-drude-weight-definition} is the Drude weight.  A
+singular-continuous component, or an absolutely continuous tail whose
+zero-frequency density has no finite limit, is an additional infrared
+singularity rather than a finite dissipative dc coefficient.  In the
+simplified case where the non-atomic part is represented near zero by a
+locally integrable density
+\[
   \sigma^{\rm reg}_{ij}(\omega)
   =
   \frac{1}{2\omega}\rho^{\rm reg}_{J_iJ_j}(\omega,\mathbf0)
   \quad(\omega\ne0),
-  \label{eq:kubo-drude-regular-decomposition}
-\end{equation}
-where \(D_{ij}\) is the Drude matrix produced by conserved projections and
-\(\sigma^{\rm reg}_{ij}\) is locally integrable near \(\omega=0\).  The
-ordinary dissipative dc coefficient is
+\]
+the ordinary dissipative dc coefficient is
 \begin{equation}
   \sigma^{\rm dc}_{ij}
   =
@@ -522,6 +554,95 @@ when this limit exists.  The singular term is a separate distributional
 summand, while \(\sigma^{\rm reg}\) is the locally integrable part used in the
 finite dc limit.  Figure~\ref{fig:kubo-order-of-limits} records this
 order-of-limits prescription.
+
+The finite Mazur matrix \(A^{(0)}_{ij,V}\) and the thermodynamic Drude atom
+are connected only after a spectral convergence statement is added.  If the
+finite-volume zero-frequency atoms converge to the zero-frequency atom of the
+thermodynamic conductivity measure in the declared limit, then for every real
+vector \(u_i\)
+\begin{equation}
+  u_iD_{ij}u_j
+  \geq
+  \beta\,
+  \liminf_{V\to\infty}
+  u_i v_{ia}(C^{-1})^{ab}v_{jb}u_j .
+  \label{eq:kubo-mazur-drude-liminf-bound}
+\end{equation}
+Without this convergence hypothesis, the finite-volume result remains a
+lower bound on a finite-volume Cesaro projection.  It is not a pointwise
+long-time theorem.
+
+\begin{proposition}[When Drude, Cesaro, Abel, and pointwise limits agree]
+\label{prop:kubo-drude-time-domain-equivalences}
+Let \(C_{ij}(t)\) be the thermodynamic connected symmetrized current
+correlator in a fixed tensor channel, represented near \(\omega=0\) by a
+finite positive matrix-valued spectral measure
+\[
+  C_{ij}(t)
+  =
+  A^{(0)}_{ij}
+  +
+  \int_{\omega\ne0}e^{-\ii\omega t}\,d\nu_{ij}(\omega),
+  \qquad
+  \nu_{ij}(\{0\})=0 .
+\]
+Then, for every real vector \(u_i\),
+\begin{align}
+  \lim_{T\to\infty}\frac1T\int_0^Tdt\,
+  u_iC_{ij}(t)u_j
+  &=
+  u_iA^{(0)}_{ij}u_j,
+  \label{eq:kubo-cesaro-drude-atom}\\
+  \lim_{\epsilon\downarrow0}
+  \epsilon\int_0^\infty dt\,e^{-\epsilon t}
+  u_iC_{ij}(t)u_j
+  &=
+  u_iA^{(0)}_{ij}u_j .
+  \label{eq:kubo-abel-drude-atom}
+\end{align}
+If, in addition, the nonzero-frequency part has a Fourier transform that
+vanishes as \(t\to\infty\) in this channel, then the ordinary pointwise limit
+\[
+  \lim_{t\to\infty}u_iC_{ij}(t)u_j
+  =
+  u_iA^{(0)}_{ij}u_j
+\]
+also exists.  A sufficient dephasing condition for the last statement is that
+the nonzero-frequency part be absolutely continuous with \(L^1\) density
+after exact nonzero-frequency atoms have been removed.  Under the
+fluctuation--dissipation normalization of
+\eqref{eq:kubo-fluctuation-dissipation}, the corresponding Drude matrix is
+\[
+  D_{ij}=\beta A^{(0)}_{ij}.
+\]
+\end{proposition}
+
+\begin{proof}
+Apply the scalar argument to \(u_iC_{ij}u_j\).  For the Cesaro limit the
+nonzero-frequency kernel is
+\[
+  \frac1T\int_0^Tdt\,e^{-\ii\omega t}
+  =
+  \frac{1-e^{-\ii\omega T}}{\ii\omega T},
+\]
+which tends to zero for \(\omega\ne0\) and is bounded by \(1\).  Dominated
+convergence against the finite measure \(u_i\nu_{ij}u_j\) gives
+\eqref{eq:kubo-cesaro-drude-atom}.  The Abel kernel is
+\[
+  \epsilon\int_0^\infty dt\,e^{-(\epsilon+\ii\omega)t}
+  =
+  \frac{\epsilon}{\epsilon+\ii\omega},
+\]
+again bounded by \(1\) and tending to zero away from the atom at the origin,
+which gives \eqref{eq:kubo-abel-drude-atom}.  The pointwise statement is the
+extra dephasing hypothesis; for an \(L^1\) density it is the
+Riemann--Lebesgue lemma.  Thus deriving a pointwise long-time limit requires
+a stronger mixing statement beyond the Mazur projection.
+\end{proof}
+
+This distinction is the one emphasized by finite-regulator Mazur/Suzuki
+analyses and by thermodynamic quasi-local-charge bounds on Drude weights
+\cite{DharKunduSaito2021MazurSuzuki,IlievskiProsen2013DrudeBounds}.
 
 \begin{figure}[H]
 \centering
@@ -555,12 +676,13 @@ order-of-limits prescription.
     {thermodynamic limit first; subtract \(\delta(\omega)\);
     then take the regular limit};
 \end{tikzpicture}
-\caption{Distributional low-frequency content of a conductivity after the
-thermodynamic limit.  The finite dc coefficient is the zero-frequency limit
+\caption{Simplified distributional low-frequency content of a conductivity
+after the thermodynamic limit, in the case with no singular-continuous
+remainder and with an absolutely continuous part admitting a finite
+zero-frequency limit.  The finite dc coefficient is the zero-frequency limit
 of the regular part \(\sigma^{\rm reg}\), equivalently the slope of
-\(\rho^{\rm reg}_{JJ}(\omega,\mathbf0)\) divided by \(2\omega\).  A Drude
-or superfluid weight is represented by the separate
-\(\delta(\omega)\) summand.}
+\(\rho^{\rm reg}_{JJ}(\omega,\mathbf0)\) divided by \(2\omega\).  A Drude or
+superfluid weight is represented by the separate \(\delta(\omega)\) summand.}
 \label{fig:kubo-order-of-limits}
 \end{figure}
 
