@@ -48,14 +48,21 @@ extension problem for Wick and time-ordered products.
   transports the covector.
 - Defines Wick products by point splitting and relates time-ordered products
   to local extensions across diagonals.
+- Separates a generic smooth Hadamard-coordinate change \(H\mapsto H+w\),
+  whose Wick-square shift is the smooth diagonal \(w(x,x)\), from the
+  stricter local covariant finite Wick-prescription freedom
+  \(c_1R+c_2m^2\) imposed only after covariance, scaling, and field-equation
+  conditions are chosen.
 
 ## Calculation Checks
 
 - `calculation-checks/microlocal_spectrum_checks.py`: verifies the
   mostly-plus future-covector convention, the Klein-Gordon Hamilton flow sign,
   the two-point graph covector pattern \((p,-p)\), the opposite-cone product
-  obstruction, and the diagonal coefficients in the four-dimensional
-  Hadamard recursion.
+  obstruction, the diagonal coefficients in the four-dimensional Hadamard
+  recursion, and the Wick-square distinction between a generic smooth
+  Hadamard-coordinate diagonal and local covariant finite-renormalization
+  freedom.
 
 ## Figure Ledger
 
@@ -71,3 +78,8 @@ space diagonals for time-ordered extensions.
   diagonal-extension problem are established before the chapters that consume
   them.  This is a dependency repair, not a new nonperturbative
   curved-spacetime QFT theorem.
+- 2026-06-08 issue #855 regression pass: corrected the Wick-products section
+  so it no longer identifies an arbitrary smooth Hadamard-coordinate diagonal
+  with the local covariant \(c_1R+c_2m^2\) Wick-square freedom.  The canonical
+  point-splitting and pAQFT chapters remain the detailed destinations for
+  prescription changes and interacting Wick-polynomial transport.

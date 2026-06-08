@@ -524,7 +524,7 @@ microlocal spectrum condition.
 
 \section{Wick Products}
 
-For a Hadamard state, define the Wick square by point splitting:
+For a Hadamard state, define a Wick-square coordinate by point splitting:
 \[
   :\!\phi^2\!:_H(f)
   =
@@ -532,8 +532,24 @@ For a Hadamard state, define the Wick square by point splitting:
   \lim_{y\to x}
   \bigl(\phi(x)\phi(y)-H(x,y)\mathbf 1\bigr)\,\dd\operatorname{vol}_g(x).
 \]
-Changing the parametrix scale or adding a smooth local bisolution changes the
-Wick square by a local curvature polynomial:
+This formula separates two operations which are often compressed in notation.
+If \(H'=H+w\), with \(w\) smooth near the diagonal, then
+\[
+  :\!\phi^2\!:_{H'}(f)
+  =
+  :\!\phi^2\!:_{H}(f)
+  -
+  \int_M f(x)w(x,x)\,\dd\operatorname{vol}_g(x)\,\mathbf 1 .
+\]
+The diagonal \(w(x,x)\) is a smooth function.  For a generic change of
+Hadamard coordinate it need not be a local curvature polynomial, and under
+the corresponding algebra isomorphism a transported state gives the same
+expectation value for the same abstract observable.
+
+A finite local Wick-renormalization change is a stricter comparison: it
+compares two locally covariant Wick prescriptions in a fixed physical state.
+Under the usual covariance, scaling-dimension, and field-equation conditions,
+the four-dimensional scalar Wick square has the finite prescription freedom
 \[
   :\!\phi^2\!:'_H
   =
@@ -541,8 +557,13 @@ Wick square by a local curvature polynomial:
   +
   c_1R+c_2m^2 .
 \]
-Thus the local covariant field is defined only after the finite local
-renormalization coordinates are specified.
+Thus the microlocal fact is the smooth diagonal shift \(w(x,x)\); the
+curvature polynomial is the additional local-covariant prescription freedom.
+Chapter~\ref{ch:point-splitting-stress-tensor-renormalization} gives the
+point-splitting version of this distinction, and
+Chapter~\ref{ch:curved-perturbative-algebraic-qft} tracks the same
+distinction through Hadamard-coordinate transport of interacting Wick
+polynomials.
 
 \section{Time-Ordered Products}
 

@@ -4,6 +4,39 @@
 The metric convention is mostly plus.  A causal covector is called future
 directed when its metric dual vector is future directed.  In flat coordinates
 this makes the positive-frequency covector (-E, p) future directed.
+
+Target claims:
+- `ch:curved-microlocal-spectrum-condition`: the mostly-plus
+  positive-frequency covector convention, Klein-Gordon Hamilton-flow sign,
+  Hadamard two-point graph covector pattern, product obstruction, Hadamard
+  recursion coefficients, and Wick-square distinction between a generic
+  smooth Hadamard-coordinate diagonal and local covariant finite Wick
+  prescription freedom.
+
+Independent construction:
+- The checks use finite covectors, exact rational Hadamard-coefficient
+  arithmetic, and a three-point retained spacetime sample.  The Wick-square
+  sample computes the diagonal shift from `H' = H + w` directly and then tests
+  whether the same arbitrary smooth diagonal can be fitted by
+  `a_m m^2 + a_R R(x)` without assuming that it can.
+
+Imported assumptions:
+- Mostly-plus metric signature; the scalar operator convention used in the
+  chapter; and the four-dimensional local-covariant Wick-square ansatz
+  `a_m m^2 + a_R R` when covariance, scaling, and field-equation conditions
+  are imposed.
+
+Negative controls:
+- The script rejects opposite-cone products, wrong diagonal-recursion
+  denominators, the wrong sign for a smooth Hadamard-coordinate shift, and the
+  shortcut that treats a generic smooth diagonal as local covariant
+  curvature/mass freedom.
+
+Scope boundary:
+- Passing this file checks convention-sensitive finite algebra.  It does not
+  prove the global microlocal spectrum theorem, construct Hadamard states, or
+  establish the full Hollands-Wald classification of local covariant Wick
+  polynomials.
 """
 
 from __future__ import annotations
@@ -22,6 +55,11 @@ def assert_close(got: float, expected: float, label: str, tol: float = 1e-12) ->
 def assert_equal(got: Fraction, expected: Fraction, label: str) -> None:
     if got != expected:
         raise AssertionError(f"{label}: got {got!r}, expected {expected!r}")
+
+
+def assert_not_equal(got: Fraction, forbidden: Fraction, label: str) -> None:
+    if got == forbidden:
+        raise AssertionError(f"{label}: forbidden shortcut unexpectedly matched {got!r}")
 
 
 def covector_square(k0: float, k1: float) -> float:
@@ -108,12 +146,62 @@ def check_hadamard_transport_coefficients() -> None:
         assert_equal(diag_coeff, expected, f"v_{j + 1} recursion denominator")
 
 
+def check_wick_square_coordinate_shift_vs_local_prescription() -> None:
+    weights = [Fraction(2), Fraction(3), Fraction(5)]
+    omega_minus_h = [Fraction(7, 3), Fraction(5, 2), Fraction(11, 4)]
+    smooth_diagonal = [Fraction(1, 6), Fraction(-2, 5), Fraction(3, 7)]
+
+    hprime_values = [value - shift for value, shift in zip(omega_minus_h, smooth_diagonal)]
+    smeared_h = sum(w * value for w, value in zip(weights, omega_minus_h))
+    smeared_hprime = sum(w * value for w, value in zip(weights, hprime_values))
+    expected_shift = -sum(w * shift for w, shift in zip(weights, smooth_diagonal))
+    assert_equal(
+        smeared_hprime - smeared_h,
+        expected_shift,
+        "Wick-square shift for H'=H+w",
+    )
+
+    wrong_sign_shift = sum(w * shift for w, shift in zip(weights, smooth_diagonal))
+    assert_not_equal(
+        smeared_hprime - smeared_h,
+        wrong_sign_shift,
+        "wrong sign for smooth Hadamard-coordinate shift",
+    )
+
+    mass_squared = Fraction(2)
+    scalar_curvature = [Fraction(0), Fraction(1), Fraction(2)]
+    arbitrary_smooth_diagonal = [Fraction(0), Fraction(1), Fraction(4)]
+
+    # Fit a_m m^2 + a_R R to the first two sample points.
+    a_m = arbitrary_smooth_diagonal[0] / mass_squared
+    a_r = arbitrary_smooth_diagonal[1] - arbitrary_smooth_diagonal[0]
+    predicted_third = a_m * mass_squared + a_r * scalar_curvature[2]
+    assert_not_equal(
+        predicted_third,
+        arbitrary_smooth_diagonal[2],
+        "generic smooth diagonal represented as local Wick freedom",
+    )
+
+    local_a_m = Fraction(3, 10)
+    local_a_r = Fraction(-1, 7)
+    local_covariant_shift = [
+        local_a_m * mass_squared + local_a_r * curvature
+        for curvature in scalar_curvature
+    ]
+    fitted_a_m = local_covariant_shift[0] / mass_squared
+    fitted_a_r = local_covariant_shift[1] - local_covariant_shift[0]
+    for curvature, expected in zip(scalar_curvature, local_covariant_shift):
+        got = fitted_a_m * mass_squared + fitted_a_r * curvature
+        assert_equal(got, expected, "local covariant Wick-square ansatz")
+
+
 def main() -> None:
     check_future_covector_convention()
     check_kg_hamilton_flow_is_future_null_for_positive_frequency()
     check_two_point_graph_sign_pattern()
     check_product_opposite_cone_obstruction()
     check_hadamard_transport_coefficients()
+    check_wick_square_coordinate_shift_vs_local_prescription()
     print("All microlocal spectrum convention checks passed.")
 
 
