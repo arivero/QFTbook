@@ -17,9 +17,9 @@ def assert_close(name: str, got: float, expected: float, tol: float = 1.0e-12) -
 
 def check_chiral_magnetic_coefficients() -> None:
     mu_v = 0.7
-    mu_a = 0.23
-    mu_r = mu_v + mu_a
-    mu_l = mu_v - mu_a
+    mu5_occ = 0.23
+    mu_r = mu_v + mu5_occ
+    mu_l = mu_v - mu5_occ
     pi2 = math.pi * math.pi
 
     right = mu_r / (4.0 * pi2)
@@ -27,20 +27,115 @@ def check_chiral_magnetic_coefficients() -> None:
     vector = right + left
     axial = right - left
 
-    assert_close("source-normalized vector CME", vector, mu_a / (2.0 * pi2))
+    assert_close("prepared-imbalance vector CME", vector, mu5_occ / (2.0 * pi2))
     assert_close("source-normalized axial CME", axial, mu_v / (2.0 * pi2))
 
     charge = 1.9
     physical_vector = charge * charge * vector
-    assert_close("electromagnetic CME charge factor", physical_vector, charge * charge * mu_a / (2.0 * pi2))
+    assert_close("electromagnetic CME charge factor", physical_vector, charge * charge * mu5_occ / (2.0 * pi2))
 
 
 def check_equilibrium_cs_variation() -> None:
-    mu_a = 0.41
+    a0_5 = 0.41
+    beta = 1.7
     pi2 = math.pi * math.pi
-    cs_coefficient = mu_a / (4.0 * pi2)
-    current_coefficient = 2.0 * cs_coefficient
-    assert_close("CS variation gives CME", current_coefficient, mu_a / (2.0 * pi2))
+    w3_cs_coefficient = -beta * a0_5 / (4.0 * pi2)
+    consistent_current_coefficient = (2.0 * w3_cs_coefficient) / beta
+    assert_close("source CS variation gives consistent current", consistent_current_coefficient, -a0_5 / (2.0 * pi2))
+
+
+def check_cme_current_representatives_and_protocols() -> None:
+    # Work in units of B/(2 pi^2).  The exact arithmetic catches three
+    # convention errors: dropping beta, identifying a source holonomy with an
+    # occupation imbalance, and labeling a variational source current as
+    # covariant without adding the Bardeen--Zumino polynomial.
+    axial_source = Fraction(7, 5)
+    occupation = Fraction(11, 13)
+    beta = Fraction(5, 3)
+    magnetic_field = Fraction(17, 19)
+
+    w3_cs_coefficient = -beta * axial_source / 2
+    source_consistent = (2 * w3_cs_coefficient / beta) * magnetic_field
+    expected_source_consistent = -axial_source * magnetic_field
+    if source_consistent != expected_source_consistent:
+        raise AssertionError(
+            f"source-only consistent CME current failed: {source_consistent} != {expected_source_consistent}"
+        )
+
+    raw_three_dimensional_variation = 2 * w3_cs_coefficient * magnetic_field
+    if raw_three_dimensional_variation == source_consistent:
+        raise AssertionError("thermal-circle beta factor did not affect the source-current normalization")
+
+    bz_shift = axial_source * magnetic_field
+    source_covariant = source_consistent + bz_shift
+    if source_covariant != 0:
+        raise AssertionError(f"source-only covariant CME current failed: {source_covariant} != 0")
+
+    total_consistent = occupation * magnetic_field + source_consistent
+    total_covariant = total_consistent + bz_shift
+    expected_consistent = (occupation - axial_source) * magnetic_field
+    expected_covariant = occupation * magnetic_field
+    if total_consistent != expected_consistent:
+        raise AssertionError(f"combined consistent CME ledger failed: {total_consistent} != {expected_consistent}")
+    if total_covariant != expected_covariant:
+        raise AssertionError(f"combined covariant CME ledger failed: {total_covariant} != {expected_covariant}")
+    if source_consistent == source_covariant:
+        raise AssertionError("variational source current was not separated from the covariant representative")
+
+
+def check_kubo_sign_from_source_hamiltonian() -> None:
+    def eps3(i: int, j: int, k: int) -> int:
+        if len({i, j, k}) < 3:
+            return 0
+        inversions = 0
+        values = [i, j, k]
+        for left in range(3):
+            for right in range(left + 1, 3):
+                if values[left] > values[right]:
+                    inversions += 1
+        return -1 if inversions % 2 else 1
+
+    wave_number = sp.Rational(5, 11)
+    xi_b = sp.Rational(3, 7)
+    direction = 2
+    retarded = [
+        [sp.I * xi_b * eps3(i, j, direction) * wave_number for j in range(3)]
+        for i in range(3)
+    ]
+    response = [[-retarded[i][j] for j in range(3)] for i in range(3)]
+    contracted_response = sum(eps3(i, j, direction) * response[i][j] for i in range(3) for j in range(3))
+    xi_from_response = sp.I * contracted_response / (2 * wave_number)
+    if sp.simplify(xi_from_response - xi_b) != 0:
+        raise AssertionError("Kubo response-kernel sign failed")
+
+    contracted_retarded = sum(eps3(i, j, direction) * retarded[i][j] for i in range(3) for j in range(3))
+    xi_from_retarded = -sp.I * contracted_retarded / (2 * wave_number)
+    if sp.simplify(xi_from_retarded - xi_b) != 0:
+        raise AssertionError("Kubo retarded-kernel sign failed")
+    wrong_plus_sign = sp.I * contracted_retarded / (2 * wave_number)
+    if sp.simplify(wrong_plus_sign - xi_b) == 0:
+        raise AssertionError("old plus-sign Kubo formula passed unexpectedly")
+
+
+def check_hydrostatic_magnetization_curl_has_no_periodic_net_current() -> None:
+    nx, ny = 4, 5
+    magnetization = [
+        [Fraction((x + 1) * (2 * y + 3), 17) for y in range(ny)]
+        for x in range(nx)
+    ]
+    total_jx = Fraction(0, 1)
+    total_jy = Fraction(0, 1)
+    for x in range(nx):
+        for y in range(ny):
+            total_jx += magnetization[x][y] - magnetization[x][(y - 1) % ny]
+            total_jy -= magnetization[x][y] - magnetization[(x - 1) % nx][y]
+    if total_jx != 0 or total_jy != 0:
+        raise AssertionError(f"periodic magnetization current had net flow: {(total_jx, total_jy)}")
+
+    uniform_transport = Fraction(3, 5)
+    net_transport = nx * ny * uniform_transport
+    if net_transport == 0:
+        raise AssertionError("uniform transport current was accidentally treated as a magnetization curl")
 
 
 def check_general_hydrostatic_cs_variation() -> None:
@@ -132,6 +227,9 @@ def check_entropy_force_sign_and_ideal_cancellation() -> None:
 def main() -> None:
     check_chiral_magnetic_coefficients()
     check_equilibrium_cs_variation()
+    check_cme_current_representatives_and_protocols()
+    check_kubo_sign_from_source_hamiltonian()
+    check_hydrostatic_magnetization_curl_has_no_periodic_net_current()
     check_general_hydrostatic_cs_variation()
     check_chiral_vortical_coefficients()
     check_entropy_force_sign_and_ideal_cancellation()

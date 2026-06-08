@@ -83,12 +83,15 @@ this directory should stay lightweight and reader-readable.
 Current checks:
 
 - `anomalous_transport_checks.py`: finite arithmetic checks for the chiral
-  magnetic and chiral vortical coefficients, including the equilibrium
-  Chern--Simons variation, the general hydrostatic Chern--Simons
-  source-variation algebra, the \(e^2q^2\) electromagnetic charge factor,
-  the cancellation of the Dirac vector-current \(T^2\) vortical term, and
-  the sign algebra plus ideal-fluid cancellation in the canonical entropy
-  divergence with an anomalous Ward identity.
+  magnetic and chiral vortical coefficients, including the thermal-circle
+  normalization and sign of the axial-source Chern--Simons variation, the
+  consistent/Bardeen--Zumino/covariant CME current ledger for simultaneous
+  prepared-imbalance and axial-source data, the Kubo sign following from
+  \(H=H_0-\int A_iJ^i\), periodic cancellation of magnetization curls, the
+  general hydrostatic Chern--Simons source-variation algebra, the \(e^2q^2\)
+  electromagnetic charge factor, the cancellation of the Dirac vector-current
+  \(T^2\) vortical term, and the sign algebra plus ideal-fluid cancellation in
+  the canonical entropy divergence with an anomalous Ward identity.
 - `anomaly_matching_wzw_checks.py`: exact rational checks for the anomaly
   matching and Wess--Zumino--Witten coefficient section, including
   \(n=N_c\) from matching the left-flavor anomaly, finite Wess--Zumino
