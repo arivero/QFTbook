@@ -82,8 +82,10 @@ GitHub issue #628.
 - `varphi_L`, `varphi_R`, `B_L`, `B_R`, `Sigma`: gauge-covariant
   antisymmetric CFL diquarks and the gauge-invariant baryon-superfluid and
   chiral composites used to diagnose the physical CFL symmetry realization.
-- `C_E`, `C_M`, `F_H`, `v_H`, `m_E`, `m_M`: gauge-invariant static
-  screening correlators and the low-energy CFL Higgs-screening coefficients.
+- `C_E`, `C_M`, `C_X^S`, `M_X^S`, `F_H`, `v_H`,
+  `M_E,quad`, `M_M,quad`: bare and renormalized gauge-invariant static
+  screening correlators, their scheme-dependent transfer-matrix exponents,
+  and the separate low-energy CFL Higgs quadratic curvature coefficients.
 - `F_pi`, `F_B`, `v_pi`, `v_B`, `phi_B`, `vartheta_B`: CFL chiral and
   baryon-superfluid collective-mode coefficients, local baryon coset angle,
   and the equivalent `2 phi_B` charge-two order-coordinate phase.
@@ -308,14 +310,15 @@ GitHub issue #628.
   datum, constructs gauge-invariant local and Wilson-line CFL diagnostics,
   proves the gauge-averaging statement excluding a gauge-covariant diquark
   one-point function as a physical local order parameter, defines
-  gauge-invariant static electric and magnetic screening exponents, derives
-  the CFL Higgs screening mass matrix from the trace-delta effective action,
-  derives the rotated electromagnetic photon-gluon mass matrix and its
-  exact null eigenvector, proves the physical Goldstone count, derives the
-  ideal CFL chiral-octet and baryon-phonon dispersions from the leading
-  low-energy action, and identifies the rotated unbroken electromagnetic
-  \(U(1)\) in the same transformation convention as the CFL orientation
-  field.
+  renormalized gauge-invariant static electric and magnetic screening
+  exponents with line/endpoint subtraction and transfer-matrix-sector data,
+  derives the separate CFL Higgs quadratic mass matrix from the trace-delta
+  effective action, derives the rotated electromagnetic photon-gluon mass
+  matrix, inverse field transformation, and color-Cartan pole content, proves
+  the physical Goldstone count, derives the ideal CFL chiral-octet and
+  baryon-phonon dispersions from the leading low-energy action, and identifies
+  the rotated unbroken electromagnetic \(U(1)\) in the same transformation
+  convention as the CFL orientation field.
 - Derives the faithful connected global symmetry used in the CFL anomaly
   discussion as
   `(SU(3)_L x SU(3)_R x U(1)_B)/Z_3^V`, explains why quark baryon charge
@@ -363,8 +366,8 @@ GitHub issue #628.
   bookkeeping, CFL gauge-invariant composite charge bookkeeping, CFL
   faithful-global-symmetry center quotients, color-baryon lift obstruction
   cancellation, charge-two order-parameter stabilizer bookkeeping, CFL rotated
-  electromagnetic mass-matrix bookkeeping, CFL screening-sector and
-  collective-mode count bookkeeping, dense
+  electromagnetic mass-matrix and pole-residue bookkeeping, CFL
+  screening-sector and collective-mode count bookkeeping, dense
   Fermi-surface stress bookkeeping, lifted local CFL anomaly-matching
   coefficient bookkeeping, QCD hydrodynamic response-window,
   coupled-diffusion, Euclidean-to-retarded transport-extraction \(1/(2\pi)\)
@@ -556,6 +559,13 @@ GitHub issue #628.
   photon-gluon mass matrix in ideal CFL, identified the massless rotated
   photon and screened orthogonal combination, and paired the statement with
   exact trace-delta charge and determinant checks.
+- 2026-06-08 issue #892 observable-screening audit: separated renormalized
+  Wilson-line field-strength screening exponents from the gauge-fixed CFL
+  Higgs quadratic curvatures, required line/endpoint subtraction and operator
+  matching before identifying either exponent with \(gF_H\), and added the
+  inverse rotated-QED transformation showing that the original color-Cartan
+  correlator contains both massless rotated-photon and massive rotated-gluon
+  pole residues.
 - 2026-06-04 chapter-spine pass: added an operational spine after the QCD
   phase specification and a closing bridge in the confinement-comparison
   section, so the chapter explicitly relates phase labels to pressure,

@@ -119,8 +119,9 @@ Negative controls:
   shear or conductive subtraction, hidden near-critical scalar weight,
   charge-diffusion width-only extraction, missing susceptibility uncertainty, raw-current
   Drude contamination, incomplete transport closure data, mixed-state or
-  mixed-frame transport assembly, incorrect Ward/contact signs, wrong
-  center/fugacity periodicity, and gauge-charge neutrality shortcuts.
+  mixed-frame transport assembly, treating the original CFL color-Cartan field
+  as a pure massive eigenfield after QED mixing, incorrect Ward/contact signs,
+  wrong center/fugacity periodicity, and gauge-charge neutrality shortcuts.
 
 Scope boundary:
 - These are finite convention, algebra, and response-extraction checks.  They
@@ -140,8 +141,8 @@ non-Fermi-liquid self-energy coefficients, one-gluon exchange color factors
 for dense pairing, leading-log magnetic gap coefficient bookkeeping,
 baryon-number cumulants, Roberge--Weiss periodicity bookkeeping, dense-matter
 neutrality constraints, color-flavor-locked gauge-invariant composite
-charges, rotated electromagnetic mass-matrix bookkeeping, screening and
-collective-mode counts, dense Fermi-surface stress scales,
+charges, rotated electromagnetic mass-matrix and pole-residue bookkeeping,
+screening and collective-mode counts, dense Fermi-surface stress scales,
 color-flavor-locked faithful-global-symmetry and anomaly-matching
 bookkeeping, hydrodynamic response-window bookkeeping,
 Euclidean-to-retarded transport-extraction bookkeeping with \(1/(2\pi)\)
@@ -816,14 +817,93 @@ def check_cfl_rotated_electromagnetic_mass_matrix():
 
     dim_su3 = 8
     unmixed_color_directions = dim_su3 - 1
-    screened_mixed_direction = 1
+    massive_rotated_photon_color_eigenchannel = 1
     massless_rotated_photon = 1
+    assert_equal("CFL unmixed massive color directions", unmixed_color_directions, 7)
     assert_equal(
-        "CFL color directions screened after QED mixing",
-        unmixed_color_directions + screened_mixed_direction,
-        8,
+        "CFL massive rotated photon-color eigenchannels",
+        massive_rotated_photon_color_eigenchannel,
+        1,
     )
     assert_equal("CFL unbroken rotated photon count", massless_rotated_photon, 1)
+
+    # Use rational g and e*q_Q values to check the pole algebra without
+    # radicals.  In the diagonal basis (tilde A, tilde G), the massless and
+    # massive residues are diag(1,0) and diag(0,1).  Transforming back to the
+    # original (a^Q,A) basis gives both poles in the a^Q correlator.
+    g = Fraction(5, 1)
+    e_q = Fraction(2, 1)
+    denominator = g * g + e_q * e_q
+    massless_residue_original = [
+        [e_q * e_q / denominator, e_q * g / denominator],
+        [e_q * g / denominator, g * g / denominator],
+    ]
+    massive_residue_original = [
+        [g * g / denominator, -e_q * g / denominator],
+        [-e_q * g / denominator, e_q * e_q / denominator],
+    ]
+    identity = [[Fraction(1), Fraction(0)], [Fraction(0), Fraction(1)]]
+    residue_sum = [
+        [
+            massless_residue_original[i][j] + massive_residue_original[i][j]
+            for j in range(2)
+        ]
+        for i in range(2)
+    ]
+    projector_product = [
+        [
+            sum(
+                massless_residue_original[i][k] * massive_residue_original[k][j]
+                for k in range(2)
+            )
+            for j in range(2)
+        ]
+        for i in range(2)
+    ]
+    zero_matrix = [[Fraction(0), Fraction(0)], [Fraction(0), Fraction(0)]]
+    assert_equal("CFL pole residue projectors sum to identity", residue_sum, identity)
+    assert_equal(
+        "CFL massless and massive pole projectors are orthogonal",
+        projector_product,
+        zero_matrix,
+    )
+    assert_equal(
+        "CFL original color Cartan massless-pole residue",
+        massless_residue_original[0][0],
+        Fraction(4, 29),
+    )
+    assert_equal(
+        "CFL original color Cartan massive-pole residue",
+        massive_residue_original[0][0],
+        Fraction(25, 29),
+    )
+    assert_true(
+        "CFL original color Cartan retains rotated-photon pole",
+        massless_residue_original[0][0] > 0,
+    )
+    assert_true(
+        "CFL original color Cartan retains massive rotated-gluon pole",
+        massive_residue_original[0][0] > 0,
+    )
+
+    rotated_basis_massless_residue = [
+        [Fraction(1), Fraction(0)],
+        [Fraction(0), Fraction(0)],
+    ]
+    rotated_basis_massive_residue = [
+        [Fraction(0), Fraction(0)],
+        [Fraction(0), Fraction(1)],
+    ]
+    assert_equal(
+        "CFL rotated massive gluon has no massless pole",
+        rotated_basis_massless_residue[1][1],
+        Fraction(0),
+    )
+    assert_equal(
+        "CFL rotated massive gluon has only massive pole",
+        rotated_basis_massive_residue[1][1],
+        Fraction(1),
+    )
 
 
 def check_dense_fermi_surface_stress_bookkeeping():
@@ -863,8 +943,9 @@ def check_dense_fermi_surface_stress_bookkeeping():
 
 
 def check_cfl_screening_and_collective_counts():
-    # In ideal CFL, SU(3)_color is completely Higgsed: the eight adjoint
-    # color directions are screened, while the physical gapless modes are the
+    # In ideal pure-color CFL, before dynamical electromagnetism is included,
+    # SU(3)_color is completely Higgsed: the eight adjoint color coordinates
+    # have massive quadratic response, while the physical gapless modes are the
     # chiral SU(3) octet plus the baryon U(1) phase.
     dim_su3 = 8
     screened_color_sectors = dim_su3
@@ -874,8 +955,9 @@ def check_cfl_screening_and_collective_counts():
     baryon_phonon_modes = 1
     assert_equal("CFL collective gapless modes", chiral_collective_modes + baryon_phonon_modes, 9)
 
-    # The trace-delta Higgs screening action gives m_E^2=g^2 F_H^2 and
-    # m_M^2=v_H^2 m_E^2; check only the symbolic rational prefactors.
+    # The trace-delta Higgs screening action gives
+    # M_E,quad^2=g^2 F_H^2 and M_M,quad^2=v_H^2 M_E,quad^2; check only the
+    # symbolic rational prefactors.
     electric_prefactor = Fraction(1, 1)
     magnetic_prefactor_without_velocity = Fraction(1, 1)
     assert_equal("CFL Higgs electric screening prefactor", electric_prefactor, Fraction(1, 1))

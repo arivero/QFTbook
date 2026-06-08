@@ -367,8 +367,9 @@ Current checks:
   composite charges, CFL faithful-global-symmetry center quotients,
   color-baryon lift obstruction cancellation, charge-two baryon-order
   stabilizer bookkeeping, dense neutrality bookkeeping, CFL rotated
-  electromagnetic mass-matrix bookkeeping, CFL screening-sector and
-  collective-mode counts, dense Fermi-surface stress scales, lifted local CFL
+  electromagnetic mass-matrix and pole-residue bookkeeping, CFL
+  screening-sector and collective-mode counts, dense Fermi-surface stress
+  scales, lifted local CFL
   anomaly-matching coefficients, hydrodynamic response-window bookkeeping for
   QCD shear, scalar and coupled diffusion, sound matching,
   Euclidean-to-retarded transport-extraction bookkeeping with \(1/(2\pi)\)

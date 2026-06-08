@@ -4389,20 +4389,41 @@ completed static electric and magnetic correlators
   r=|\mathbf x-\mathbf y|.
   \label{eq:qcd-cfl-screening-correlators}
 \end{equation}
-The static electric and magnetic screening exponents are the leading
-large-\(r\) exponential decay rates, when they exist after the
-thermodynamic and continuum limits,
+The displayed correlators are bare nonlocal composites.  A continuum
+screening observable must first specify an operator scheme
+\(\mathcal S\): the operator sector, the adjoint line representation, the path
+family \(\{\gamma_r\}\), the endpoint and field-strength renormalizations,
+and the subtraction or ratio used to remove the Wilson-line self-energy.  One
+convenient notation is
 \begin{equation}
-  m_E=-\lim_{r\to\infty}\frac1r\log |C_E(r;\gamma_r)|,
+  C_X^{\mathcal S}(r)
+  =
+  Z_{X,\rm end}^{-2}Z_{X,\mathfrak f}^{-2}
+  \exp\!\left[\delta m_{\rm line}\ell(\gamma_r)\right]\,
+  C_X^{\rm bare}(r;\gamma_r),
+  \qquad X=E,M,
+  \label{eq:qcd-cfl-renormalized-screening-correlator}
+\end{equation}
+with all factors evaluated in the chosen regulator and renormalization
+scheme.  Equivalently, one may divide by a reference Wilson-line observable
+with the same long segment.  What matters is that the line self-energy and
+endpoint factors are not left inside the extracted distance exponent.  The
+static electric and magnetic screening exponents are then the leading
+large-\(r\) exponential decay rates of the renormalized observables, when they
+exist after the thermodynamic and continuum limits,
+\begin{equation}
+  M_E^{\mathcal S}=-\lim_{r\to\infty}\frac1r\log |C_E^{\mathcal S}(r)|,
   \qquad
-  m_M=-\lim_{r\to\infty}\frac1r\log |C_M(r;\gamma_r)|,
+  M_M^{\mathcal S}=-\lim_{r\to\infty}\frac1r\log |C_M^{\mathcal S}(r)|,
   \label{eq:qcd-cfl-screening-exponents}
 \end{equation}
-for a specified family of paths \(\gamma_r\).  In weakly coupled phases
-these exponents are computed by a gauge-fixed long-distance effective
-action, but equations
-\eqref{eq:qcd-cfl-screening-correlators}--\eqref{eq:qcd-cfl-screening-exponents}
-are the gauge-invariant diagnostic.
+for the chosen scheme \(\mathcal S\).  Their transfer-matrix interpretation is
+the lowest state in the sector selected by the nonlocal operator: field
+strength insertions, adjoint static line, endpoint operators, and path family.
+That state can be a gluelump-like, static-source, multiparticle, or other
+composite screening state.  In weakly coupled phases a gauge-fixed
+long-distance effective action may be matched to these exponents, but the
+matching requires dynamical input beyond symmetry.
 \end{definition}
 
 \begin{controlledapproximation}[CFL Higgs screening effective action]
@@ -4438,21 +4459,27 @@ the dense medium.  Symmetry fixes the tensor structure of
 value of \(F_H\) or \(v_H\).
 \end{controlledapproximation}
 
-\paragraph{CFL Higgs screening mass matrix.}
-In the CFL Higgs-screening effective action, the color-flavor-locked
-background gives equal screening masses to all eight color gauge fields.  More
-precisely, within
+\paragraph{CFL Higgs quadratic mass matrix.}
+In the pure-color CFL Higgs-screening effective action, before dynamical QED
+mixing is included, the color-flavor-locked background gives equal quadratic
+curvatures to all eight color gauge-field coordinates.  More precisely, within
 Controlled Approximation~\ref{ca:qcd-cfl-higgs-screening-effective-action},
 one has
 \begin{equation}
-  (m_E^2)^{ab}=g^2F_H^2\,\delta^{ab},
+  (M_{E,\rm quad}^2)^{ab}=g^2F_H^2\,\delta^{ab},
   \qquad
-  (m_M^2)^{ab}=g^2F_H^2v_H^2\,\delta^{ab}.
+  (M_{M,\rm quad}^2)^{ab}=g^2F_H^2v_H^2\,\delta^{ab}.
   \label{eq:qcd-cfl-higgs-screening-masses}
 \end{equation}
-These masses are coefficients in the gauge-fixed quadratic effective action
-whose gauge-invariant content is the exponential screening described by
-Definition~\ref{def:qcd-gauge-invariant-static-screening}.
+These are coefficients in a gauge-fixed quadratic effective action.  They are
+not, by themselves, the gauge-invariant exponents
+\(M_E^{\mathcal S},M_M^{\mathcal S}\) of
+Definition~\ref{def:qcd-gauge-invariant-static-screening}.  Identifying a
+particular renormalized Wilson-line field-strength exponent with \(gF_H\) or
+\(gF_Hv_H\) requires a weak-coupling matching theorem for that operator scheme:
+the line and endpoint renormalizations must be subtracted, the operator must
+have nonzero overlap with the intended eigenchannel, and lower composite or
+static-source states must be excluded or accounted for.
 
 Use the gauge freedom to set \(U=1\) locally; this is unitary gauge for the
 Higgs-coordinate chart, not a definition of a gauge-invariant operator.
@@ -4545,10 +4572,44 @@ massive eigenvalue multiplied by \(v_H^2\).  The seven color directions
 orthogonal to \(\widehat Q\) retain the CFL Higgs screening masses in
 \eqref{eq:qcd-cfl-higgs-screening-masses}.
 
+The inverse transformation is
+\begin{equation}
+  A_\mu
+  =
+  \frac{g\widetilde A_\mu-e q_Q\widetilde G_\mu}
+       {\sqrt{g^2+e^2q_Q^2}},
+  \qquad
+  a_\mu^Q
+  =
+  \frac{e q_Q\widetilde A_\mu+g\widetilde G_\mu}
+       {\sqrt{g^2+e^2q_Q^2}}.
+  \label{eq:qcd-cfl-rotated-em-inverse}
+\end{equation}
+Thus the original color-Cartan coordinate \(a_\mu^Q\) is not a massive
+eigenfield when \(e\ne0\).  In the diagonal quadratic approximation,
+suppressing tensor projectors and contact terms,
+\begin{equation}
+  \langle a^Q a^Q\rangle
+  =
+  \frac{e^2q_Q^2}{g^2+e^2q_Q^2}
+  \langle\widetilde A\,\widetilde A\rangle
+  +
+  \frac{g^2}{g^2+e^2q_Q^2}
+  \langle\widetilde G\,\widetilde G\rangle .
+  \label{eq:qcd-cfl-color-cartan-pole-content}
+\end{equation}
+It therefore contains a long-range rotated-photon contribution as well as a
+massive rotated-gluon contribution.  Gauge-invariant observables that isolate
+these eigenchannels must be built for the rotated combinations, for example
+using the CFL orientation field or equivalent gauge-invariant composites,
+rather than by identifying the bare color-Cartan field-strength line
+correlator with a single quadratic eigenvalue.
+
 Thus ideal CFL is not a superconductor for the unbroken rotated
-\(U(1)\) gauge field.  It is a medium in which all eight color directions
-are screened, one of them after mixing with the ordinary photon, while the
-orthogonal photon-gluon combination remains long-ranged.
+\(U(1)\) gauge field.  Seven color directions orthogonal to \(\widehat Q\)
+have massive quadratic response, the orthogonal photon-color combination
+\(\widetilde G_\mu\) is massive, and the rotated photon
+\(\widetilde A_\mu\) is long-ranged.
 \end{proposition}
 
 \begin{proof}
