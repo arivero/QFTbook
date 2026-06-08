@@ -2367,17 +2367,21 @@ Current checks:
 - `kinetic_theory_checks.py`: finite algebra checks for the Volume X kinetic
   theory chapter, including the corrected collisionless/kinetic/hydrodynamic
   scale hierarchy, Bose/Fermi detailed balance, the H-theorem integrand, the
-  force-free quasiparticle drift projection from the Wigner-space mass-shell
-  bracket, local-equilibrium collision versus streaming separation, the
-  weak-scalar cut-sunset gain/loss products derived from the full
+  invariant mass-shell Jacobian and \(2E/Z\) shell projector, the force-free
+  quasiparticle drift projection from the Wigner-space mass-shell bracket,
+  transition-measure microreversibility, local-equilibrium collision versus
+  streaming separation, the weak-scalar cut-sunset gain/loss products derived
+  from the full
   positive/negative-energy real-scalar Wightman ansatz, the crossed
   \(2\to2\) momentum assignment, the sunset \(1/3!\) combinatorics, and the
-  kernel with \(|\mathcal M_{\phi\phi\to\phi\phi}|^2=\lambda_R^2\), exact
-  finite reversible-collision detailed balance, exact linearized rate and
-  collision-invariant algebra, linearized collision-operator positivity and
-  null vectors, dimensionful Markov-memory residual and noncancellation
-  bookkeeping, pinch-enhancement bookkeeping, and the relaxation-time
-  shear-viscosity integral.
+  full-product scalar kernel weight \(\lambda_R^2/4\), exact finite
+  reversible-collision detailed balance, exact linearized rate and
+  collision-invariant algebra, identical-final full-product versus quotient
+  measure equivalence, the factor-two negative control for outgoing
+  relabeling, linearized collision-operator positivity and null vectors,
+  dimensionful Markov-memory residual and noncancellation bookkeeping,
+  pinch-enhancement bookkeeping, and the relaxation-time shear-viscosity
+  integral.
 - `monte_carlo_sign_problem_checks.py`: exact finite checks for the Volume XI
   Monte Carlo and sign-problem chapter, including the finite-\(N\)
   autocorrelation variance identity, the reweighting identity, the

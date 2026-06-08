@@ -57,15 +57,27 @@ the positive-energy pole contribution when the spectral density has the form
   \label{eq:kinetic-narrow-spectral-form}
 \end{equation}
 with the off-shell remainder small in the topology used for the gradient
-expansion.  Equivalently, near \(p^0=E_a(\mathbf p)\),
+expansion.  The invariant delta function satisfies
+\[
+  \delta\!\left((p^0)^2-E_a(\mathbf p)^2\right)
+  =
+  \frac{1}{2E_a(\mathbf p)}
+  \left[\delta(p^0-E_a(\mathbf p))
+  +\delta(p^0+E_a(\mathbf p))\right],
+\]
+so, near \(p^0=E_a(\mathbf p)\),
 \[
   G^<_a(X,p)
   =
-  2\pi Z_a(X,\mathbf p)
+  \frac{2\pi Z_a(X,\mathbf p)}{2E_a(\mathbf p)}
   f_a(X,\mathbf p)
   \delta(p^0-E_a(\mathbf p))
   +\text{controlled off-shell remainder}.
 \]
+The factor \(1/(2E_a)\) is the mass-shell Jacobian.  Dropping it is a
+change of normalization from the invariant spectral residue to an
+equal-time density, and it must then be accompanied by compensating changes
+in the pole residue and in the collision projector.
 The pole approximation requires the spectral width to be small compared with
 the quasiparticle energy,
 \begin{equation}
@@ -149,7 +161,9 @@ where \(I^<\) is the collision functional and
 \end{equation}
 Use the positive-energy ansatz
 \begin{equation}
-  G^<(X,p)=2\pi Z(\mathbf p)f(X,\mathbf p)\delta(p^0-E(\mathbf p))
+  G^<(X,p)=
+  \frac{2\pi Z(\mathbf p)}{2E(\mathbf p)}
+  f(X,\mathbf p)\delta(p^0-E(\mathbf p))
   \label{eq:kinetic-positive-energy-lesser-ansatz}
 \end{equation}
 with \(Z\) independent of \(X\) at this order.  Terms from mean-field
@@ -174,7 +188,7 @@ with
 \begin{equation}
   \mathcal C[f](X,\mathbf p)
   =
-  \frac{1}{Z(\mathbf p)}
+  \frac{2E(\mathbf p)}{Z(\mathbf p)}
   \int_0^\infty\frac{dp^0}{2\pi}\,I^<[G](X,p).
   \label{eq:kinetic-projected-collision-functional}
 \end{equation}
@@ -192,16 +206,23 @@ Using \eqref{eq:kinetic-positive-energy-lesser-ansatz} and the
 \begin{equation}
   \frac12\{F,G^<\}_{\rm kin}
   =
-  2\pi Z(\mathbf p)
+  \frac{2\pi Z(\mathbf p)}{2E(\mathbf p)}
   \bigl(p^0\partial_t+\mathbf p\cdot\nabla_{\mathbf x}\bigr)
   f(X,\mathbf p)\,\delta(p^0-E(\mathbf p)).
   \label{eq:kinetic-projected-bracket-before-integral}
 \end{equation}
-Integrating over \(p^0>0\) and dividing by \(Z(\mathbf p)\) gives
+Integrating over \(p^0>0\) gives
+\[
+  \frac{Z(\mathbf p)}{2E(\mathbf p)}
+  \left(E(\mathbf p)\partial_tf+\mathbf p\cdot\nabla_{\mathbf x}f\right)
+  =
+  \int_0^\infty\frac{dp^0}{2\pi}I^<[G](X,p).
+\]
+Multiplying by \(2E(\mathbf p)/Z(\mathbf p)\) gives
 \begin{equation}
   E(\mathbf p)\partial_tf+\mathbf p\cdot\nabla_{\mathbf x}f
   =
-  \frac{1}{Z(\mathbf p)}
+  \frac{2E(\mathbf p)}{Z(\mathbf p)}
   \int_0^\infty\frac{dp^0}{2\pi}I^<[G](X,p),
   \label{eq:kinetic-projected-bracket-after-integral}
 \end{equation}
@@ -330,6 +351,10 @@ ansatz contains both energy signs:
   +\mathcal G^>_{\rm off}.
   \label{eq:kinetic-scalar-lesser-greater-on-shell}
 \end{align}
+The positive-energy branch of \(2\pi\delta(p^2-m_R^2)\) integrates to
+\(1/(2E)\), so the displayed scalar ansatz is the \(Z=1\) instance of the
+invariant pole convention above, not an equal-time convention with the
+Jacobian absorbed into \(f\).
 Thus, for \(p_i=(E_i,\mathbf p_i)\),
 \[
   \mathcal G^<(p_i)\leadsto f_i,\qquad
@@ -360,15 +385,17 @@ For example,
   \ \Longleftrightarrow\
   p_1+p_2=p_3+p_4 .
 \]
-The two other choices of the negative-energy line, together with the
-permutation of the two outgoing lines, cancel the \(1/3!\) in the sunset
-self-energy.  With the tree amplitude convention
+The two other choices of the negative-energy line turn the \(1/3!\) sunset
+factor into \(3/3!=1/2\).  The exchange \(p_3\leftrightarrow p_4\) is not a
+fourth Wick-contraction factor; it is the same final state represented twice
+by the ordered full-product measure \(d\Pi_3d\Pi_4\).  With the tree amplitude
+convention
 \(|\mathcal M_{\phi\phi\to\phi\phi}|^2=\lambda_R^2\), the physical-channel
-cut self-energies are therefore
+cut self-energies in this full-product convention are therefore
 \begin{align}
   \mathcal\Sigma^<(X,p_1)
   &=
-  \lambda_R^2
+  \frac{\lambda_R^2}{2}
   \int d\Pi_2d\Pi_3d\Pi_4\,
   (2\pi)^D\delta^{(D)}(p_1+p_2-p_3-p_4)
   \nonumber\\
@@ -377,7 +404,7 @@ cut self-energies are therefore
   \label{eq:kinetic-scalar-sigma-lesser-cut}\\
   \mathcal\Sigma^>(X,p_1)
   &=
-  \lambda_R^2
+  \frac{\lambda_R^2}{2}
   \int d\Pi_2d\Pi_3d\Pi_4\,
   (2\pi)^D\delta^{(D)}(p_1+p_2-p_3-p_4)
   \nonumber\\
@@ -394,14 +421,15 @@ ansatz would only produce all-positive cut momenta; it would not produce the
 crossed conservation law \(p_1+p_2=p_3+p_4\) or the two different gain/loss
 assignments.
 
-The displayed coefficient is the physical-channel tree weight in the
-scattering normalization of the previous volumes.  If the same phase space is
-implemented as an ordered duplicate sum for identical final particles, the
-usual identical-particle divisor \(1/S_{34}\) belongs to the channel weight;
-it must not be added a second time to the distribution algebra.  The residuals
-\(R_{\Sigma<,>}\) collect off-shell spectral tails, higher gradients, memory
-corrections, and connected correlation corrections not represented by the
-product of two-point functions.
+The displayed self-energy coefficient is the physical-channel tree weight
+with the identical-final-state divisor already included.  If the same phase
+space is instead implemented as a quotient by \(p_3\leftrightarrow p_4\), the
+finite divisor moves from the coefficient into the measure.  The product
+measure, the channel coefficient, and the later entropy symmetrization must
+be chosen as a single convention; the Bose factors do not repair a mismatch.
+The residuals \(R_{\Sigma<,>}\) collect off-shell spectral tails, higher
+gradients, memory corrections, and connected correlation corrections not
+represented by the product of two-point functions.
 
 Using
 \[
@@ -415,10 +443,9 @@ and the cut-normalized convention
 \begin{align}
   p_1^\mu\partial_\mu f_1
   &=
-  \frac12
+  \frac{\lambda_R^2}{4}
   \int d\Pi_2d\Pi_3d\Pi_4\,
   (2\pi)^D\delta^{(D)}(p_1+p_2-p_3-p_4)
-  \lambda_R^2
   \nonumber\\
   &\quad\times
   \Big[
@@ -429,13 +456,14 @@ and the cut-normalized convention
   +R_{\rm kin}.
   \label{eq:kinetic-scalar-derived-boltzmann-kernel}
 \end{align}
-The displayed \(1/2\) is the projection factor in the Kadanoff--Baym collision
-functional in the covariant convention \(p^\mu\partial_\mu f=\mathcal C[f]\);
-after division by \(E_1\) it becomes the coordinate-time prefactor
-\(1/(2E_1)\).  Identical-channel counting is fixed by the same
-physical-channel convention used for \(\lambda_R^2\); changing to an ordered
-channel convention moves the same finite factor into the channel weight, not
-into the Bose factors or the sign assignment.
+The displayed \(\lambda_R^2/4\) is the product of the sunset
+self-energy weight \(\lambda_R^2/2\) and the Kadanoff--Baym collision
+projection factor \(1/2\).  After division by \(E_1\), the coordinate-time
+prefactor is \(\lambda_R^2/(4E_1)\) in the same full-product convention.
+Changing to a quotient convention for identical final states moves the same
+finite factor into the transition measure; it must not be reintroduced
+through the sign assignment or through an additional ``outgoing
+permutation'' multiplier.
 
 \paragraph{Memory, closure, and secular terms.}
 The Markov step is a Taylor expansion of a memory integral, not the
@@ -569,14 +597,43 @@ For \(a(p_1)b(p_2)\to c(p_3)d(p_4)\), define
     -1,& a\ \text{fermionic}.
   \end{cases}
 \]
-The \(2\to2\) contribution to \(\mathcal C_a\) is
+For each physical channel choose a nonnegative transition weight
+\(\mathcal W_{ab;cd}(1,2;3,4)\) and write the covariant transition measure as
+\begin{equation}
+  d\Gamma_{ab;cd}(1;2,3,4)
+  =
+  d\Pi_b(p_2)d\Pi_c(p_3)d\Pi_d(p_4)\,
+  (2\pi)^D\delta^{(D)}(p_1+p_2-p_3-p_4)\,
+  \mathcal W_{ab;cd}(1,2;3,4).
+  \label{eq:kinetic-transition-measure}
+\end{equation}
+The weight includes the shell-projection factor appropriate to the covariant
+equation \(p^\mu\partial_\mu f=\mathcal C[f]\), spin and color sums or
+averages, identical-particle divisors, the ordered-versus-quotient convention
+for repeated final states, and the regulator or medium corrections that are
+kept at the kinetic scale.  In the scalar full-product convention derived
+above,
+\[
+  \mathcal W_{\phi\phi;\phi\phi}=\frac{\lambda_R^2}{4}.
+\]
+The channelwise detailed-balance and H-theorem statements below assume the
+microreversibility condition
+\begin{equation}
+  \mathcal W_{ab;cd}(1,2;3,4)
+  =
+  \mathcal W_{cd;ab}(3,4;1,2)
+  \label{eq:kinetic-transition-microreversibility}
+\end{equation}
+whenever both sides describe the same physical channel.  If a time-reversal
+violating theory or a coarse graining produces distinct forward and reverse
+weights, the collision operator must be written as a network of separately
+weighted gain and loss terms; the pairwise proof below is then replaced by a
+KMS/unitarity statement about the full network.
+With this convention, the \(2\to2\) contribution to \(\mathcal C_a\) is
 \begin{align}
   \mathcal C_a(p_1)
   &=
-  \frac12
-  \sum_{bcd}\int d\Pi_b(p_2)d\Pi_c(p_3)d\Pi_d(p_4)\,
-  (2\pi)^D\delta^{(D)}(p_1+p_2-p_3-p_4)
-  |\mathcal M_{ab\to cd}|^2
+  \sum_{bcd}\int d\Gamma_{ab;cd}(1;2,3,4)
   \nonumber\\
   &\quad\times
   \Big[
@@ -590,22 +647,13 @@ The \(2\to2\) contribution to \(\mathcal C_a\) is
   \Big].
   \label{eq:kinetic-2to2-collision}
 \end{align}
-The factor \(1/2\) converts the coordinate-time normalization to the
-covariant equation \eqref{eq:kinetic-covariant-boltzmann}; equivalently,
-\(C^{(t)}_a\) carries the familiar prefactor \(1/(2E_1)\).  The sum over
-\(b,c,d\) is a sum over physical channels.  If one instead sums over ordered
-duplicates of an identical final channel, the channel weight must include the
-corresponding divisor \(1/S_{cd}\).  In the scalar derivation
-\eqref{eq:kinetic-scalar-derived-boltzmann-kernel}, this convention is fixed
-by the cut-sunset channel weight
-\(|\mathcal M_{\phi\phi\to\phi\phi}|^2=\lambda_R^2\).
-
-The matrix element in \eqref{eq:kinetic-2to2-collision} is the on-shell
-scattering amplitude in the normalization of the scattering chapters, after
-the regulator and medium corrections relevant at the kinetic scale have been
-specified.  In gauge theories this last clause is essential because soft
-exchange and collinear splitting can contribute at the same parametric order
-as \(2\to2\) hard scattering.
+The sum over \(b,c,d\) is a sum over physical channels in the chosen measure
+convention.  When the weight is expressed in terms of an on-shell scattering
+amplitude, the amplitude is in the normalization of the scattering chapters
+and all finite symmetry and shell-projection factors remain part of
+\(\mathcal W\).  In gauge theories the regulator and medium clause is
+essential because soft exchange and collinear splitting can contribute at the
+same parametric order as hard \(2\to2\) scattering.
 
 \section{Detailed Balance}
 
@@ -647,10 +695,14 @@ This is an algebraic consequence of
 \eqref{eq:kinetic-one-plus-eta-f}: the exponential multiplying
 \(f_1f_2f_3f_4\) is the same on the two sides by energy-momentum and charge
 conservation.  Therefore the collision term vanishes pointwise for the local
-equilibrium form at each fixed \(X\).  Gradients do not make the local
-collision term nonzero; they make the streaming term
-\(p^\mu\partial_\mu f^{(0)}\) nonzero.  First-order hydrodynamics solves the
-linearized collision equation with this streaming term as the source.
+equilibrium form at each fixed \(X\) for the channelwise reversible kernel
+\eqref{eq:kinetic-2to2-collision}.  Gradients do not make the local collision
+term nonzero; they make the streaming term \(p^\mu\partial_\mu f^{(0)}\)
+nonzero.  First-order hydrodynamics solves the linearized collision equation
+with this streaming term as the source.  If gain and loss are assigned
+different transition weights, the vanishing statement is no longer a
+one-channel algebraic identity; it is a constraint on the full reaction
+network.
 
 \section{Kinetic Entropy and the H Theorem}
 
@@ -673,7 +725,9 @@ Using the Boltzmann equation,
   \log\!\left(\frac{f_a}{1+\eta_af_a}\right).
   \label{eq:kinetic-entropy-divergence-before-sym}
 \end{equation}
-For the \(2\to2\) kernel, symmetrizing over the four external legs gives
+For the \(2\to2\) kernel with nonnegative, microreversible transition measure
+\eqref{eq:kinetic-transition-measure}--\eqref{eq:kinetic-transition-microreversibility},
+symmetrizing over the four external legs gives
 \begin{align}
   \partial_\mu S^\mu_{\rm kin}
   &=
@@ -681,7 +735,7 @@ For the \(2\to2\) kernel, symmetrizing over the four external legs gives
   \sum_{abcd}\int
   d\Pi_1d\Pi_2d\Pi_3d\Pi_4\,
   (2\pi)^D\delta^{(D)}(p_1+p_2-p_3-p_4)
-  |\mathcal M_{ab\to cd}|^2
+  \mathcal W_{ab;cd}(1,2;3,4)
   \nonumber\\
   &\quad\times
   (X_{12\to34}-Y_{34\to12})
@@ -714,6 +768,8 @@ The kinetic stress tensor and conserved currents are
   \sum_a q_{A,a}\int 2d\Pi_a\,p^\mu f_a(X,\mathbf p).
   \label{eq:kinetic-current}
 \end{align}
+The same shell Jacobian is being used here as in the Wigner projection:
+\(2d\Pi_a\,p_a^0=d^d p/(2\pi)^d\) for the density components.
 Multiplying \eqref{eq:kinetic-covariant-boltzmann} by \(2p^\nu\) and
 integrating gives
 \[

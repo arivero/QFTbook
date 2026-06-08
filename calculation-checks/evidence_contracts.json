@@ -120,7 +120,15 @@
     },
     {
       "path": "kinetic_theory_checks.py",
-      "risk_class": "Schwinger-Keldysh kinetic collision kernel"
+      "risk_class": "Schwinger-Keldysh kinetic collision kernel",
+      "convention_tags": [
+        "invariant spectral pole carries 1/(2E)",
+        "positive-shell projector is 2E/Z",
+        "scalar sunset self-energy full-product weight lambda^2/2",
+        "scalar covariant collision full-product weight lambda^2/4",
+        "transition measure includes symmetry and shell-projection factors",
+        "channelwise H theorem assumes microreversibility"
+      ]
     },
     {
       "path": "hydrodynamic_modes_checks.py",
