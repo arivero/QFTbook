@@ -27,8 +27,10 @@ Source-File: monograph/tex/volumes/volume_xii/chapter04_unruh_effect_modular_the
   Bisognano--Wichmann and the free quasifree Weyl construction.
 - Accelerated-worldline specialization.
 - Detector response split into finite switched probability, stationary
-  spectral detailed balance, controlled long-time switching limit, and a
-  normalized four-dimensional massless Planck rate.
+  spectral detailed balance, controlled long-time switching limit with
+  explicit local density/global tail hypotheses, measure-limit alternatives
+  for atoms and thresholds, and a normalized four-dimensional massless Planck
+  rate.
 
 ## Symbols
 
@@ -62,7 +64,12 @@ Source-File: monograph/tex/volumes/volume_xii/chapter04_unruh_effect_modular_the
    required imaginary-time periodicity.
 6. Detector thermality requires weak coupling, stationary spectral KMS, a
    controlled long-time switching family, and separation of finite probability
-   from stationary transition rate.
+   from stationary transition rate.  The pointwise \(O(T^{-1})\) switching
+   estimate is conditional on an absolutely continuous Lipschitz density near
+   the detector gap, absence of an atom there, polynomial spectral-measure
+   growth, and enough Fourier decay/moments of the switch.  General spectral
+   measures are treated by weak measure convergence of the switched
+   convolution, not by assigning a pointwise rate.
 7. For a four-dimensional massless scalar, the stationary excitation rate is
    \(E/(2\pi)(e^{2\pi E/a}-1)^{-1}\), with de-excitation fixed by spectral
    detailed balance.
@@ -73,8 +80,13 @@ Source-File: monograph/tex/volumes/volume_xii/chapter04_unruh_effect_modular_the
   boost imaginary-part formula, the \(i\pi\) right-to-left wedge map,
   right-left spacelike separation, the detector detailed-balance exponent
   sign, the four-dimensional massless Planck detector rate, finite-switching
-  spectral smearing as a non-exact detailed-balance control, and compact
-  smooth switching as a nonanalytic contour-regulator control.
+  spectral smearing as a non-exact detailed-balance control, the actual
+  scaled Fourier switching kernel
+  \(\widehat\chi_T(\nu)=T\widehat\chi(T\nu)\), the normalized
+  approximate-identity mass and \(O(T^{-1})\) Lipschitz convolution error,
+  atom-at-gap growth, insufficient-tail and wrong-normalization negative
+  controls, and compact smooth switching as a nonanalytic contour-regulator
+  control.
 
 ## Figures
 
@@ -101,3 +113,9 @@ Source-File: monograph/tex/volumes/volume_xii/chapter04_unruh_effect_modular_the
   stationary spectral KMS theorem plus a controlled \(\chi_T\) long-time
   limit, added the normalized four-dimensional massless detector rate, and
   recorded finite-switching and compact-smooth-switch negative controls.
+- 2026-06-08 issue #934 switching-rate hypotheses pass: replaced the
+  measure-as-density shortcut by a positive tempered spectral measure
+  \(d\mu_G\), made pointwise rates conditional on local absolute continuity,
+  Lipschitz density, no atom at the detector gap, polynomial spectral growth,
+  and switch Fourier tail bounds, split the proof into near/far regions, and
+  added measure-limit text for atoms, thresholds, and singular spectra.

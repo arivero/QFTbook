@@ -178,6 +178,9 @@
         "distributional field KMS separated from bounded Weyl algebra KMS",
         "detector detailed balance is stationary spectral KMS",
         "finite switching is spectral smearing not exact detailed balance",
+        "pointwise switching-rate errors require local density and global spectral tail hypotheses",
+        "scaled switch kernel uses hat chi_T(nu)=T hat chi(T nu)",
+        "atoms at detector gaps are measure contributions not pointwise rates",
         "generic compact smooth switching is not a strip analytic regulator",
         "four-dimensional massless detector rate is Planck normalized"
       ]

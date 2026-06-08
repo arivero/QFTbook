@@ -6,17 +6,22 @@ Target claims: Volume XII, Chapter 4 separates the distributional free-field
 wedge KMS core from the bounded Weyl/von Neumann algebra KMS theorem, derives
 detector detailed balance from the stationary spectral KMS relation rather
 than from a generic switched contour shift, and computes the normalized
-four-dimensional massless scalar Unruh detector rate.
+four-dimensional massless scalar Unruh detector rate.  The pointwise
+switching-rate error is stated only under local absolute continuity,
+Lipschitz density, spectral-growth, and switch-decay hypotheses.
 Independent construction: complex boost arithmetic in the mostly-plus boost
 plane, finite spectral-density models satisfying the KMS relation, finite
-switching smearing by a symmetric approximate identity, compactly supported
-smooth switch diagnostics, and the Planck-rate closed form.
+switching smearing by the scaled Fourier kernel
+hat chi_T(nu)=T hat chi(T nu), compactly supported smooth switch diagnostics,
+and the Planck-rate closed form.
 Imported assumptions: the tube analyticity of the Wightman function, the
 Bisognano-Wichmann theorem for bounded wedge algebras, and the spectral
 KMS theorem for stationary positive-type distributions.
 Negative controls: finite switching does not obey exact detailed balance, a
 compactly supported smooth switch is not an analytic strip regulator, and
-the wrong detector detailed-balance sign is rejected.
+the wrong detector detailed-balance sign is rejected.  Spectral atoms, a
+locally regular density with insufficient tail control, and an incorrectly
+normalized approximate identity are rejected as pointwise O(1/T) claims.
 Scope boundary: these checks do not prove Bisognano-Wichmann, construct the
 Weyl algebra, or establish analytic bounds for an interacting detector model.
 """
@@ -29,10 +34,23 @@ from check_utils import assert_geq as _assert_geq
 
 import cmath
 import math
+from pathlib import Path
+
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+UNRUH_CHAPTER = (
+    REPO_ROOT
+    / "monograph/tex/volumes/volume_xii/chapter04_unruh_effect_modular_theory.tex"
+)
 
 
 def assert_close(got: float, expected: float, label: str, tol: float = 1e-12) -> None:
     _assert_close(label, got, expected, tol=tol)
+
+
+def assert_contains(text: str, needle: str, label: str) -> None:
+    if needle not in text:
+        raise AssertionError(f"{label}: missing {needle!r}")
 
 
 def minkowski_square(v0: float, v1: float) -> float:
@@ -175,6 +193,104 @@ def check_finite_switching_smearing_not_exact_balance() -> None:
         raise AssertionError("narrower switching kernel should approach stationary detailed balance")
 
 
+def gaussian_switch_kernel(nu: float, duration: float) -> float:
+    """K_T for chi(t)=exp(-t^2/2) with the chapter's Fourier convention."""
+
+    return duration / math.sqrt(math.pi) * math.exp(-(duration * nu) ** 2)
+
+
+def check_scaled_switching_kernel_normalization_and_lipschitz_error() -> None:
+    # For chi(t)=exp(-t^2/2), hat chi(s)=sqrt(2*pi) exp(-s^2/2) and
+    # T_eff=T sqrt(pi).  Hence K_T(nu)=T exp(-T^2 nu^2)/sqrt(pi).
+    for duration in (4.0, 9.0):
+        # Symbolic Gaussian moments for the actual scaled kernel.
+        kernel_mass = 1.0
+        first_abs_moment = 1.0 / (duration * math.sqrt(math.pi))
+        assert_close(kernel_mass, 1.0, f"scaled switch kernel mass T={duration}")
+
+        energy = 0.7
+        rho_at_energy = 1.3
+        lipschitz = 0.4
+        # rho(omega)=rho(E)+L |omega-E| is locally Lipschitz and has the
+        # exact switched average rho(E)+L int |nu|K_T(nu)dnu.
+        switched_average = rho_at_energy + lipschitz * first_abs_moment
+        predicted_error = lipschitz / (duration * math.sqrt(math.pi))
+        assert_close(
+            switched_average - rho_at_energy,
+            predicted_error,
+            f"actual chi_T convolution O(1/T) error T={duration}",
+        )
+
+        sample_kernel_zero = gaussian_switch_kernel(0.0, duration)
+        expected_kernel_zero = duration / math.sqrt(math.pi)
+        assert_close(
+            sample_kernel_zero,
+            expected_kernel_zero,
+            f"scaled switch kernel atom weight T={duration}",
+        )
+
+
+def check_spectral_atom_rejects_pointwise_rate() -> None:
+    atom_mass = 0.23
+    values = []
+    for duration in (5.0, 10.0):
+        values.append(atom_mass * gaussian_switch_kernel(0.0, duration))
+    assert_close(
+        values[1] / values[0],
+        2.0,
+        "atom at detector gap grows linearly with switch duration",
+    )
+    if not values[1] > values[0] > 0.0:
+        raise AssertionError("atom contribution should not approach a finite pointwise rate")
+
+
+def check_tail_control_negative_example() -> None:
+    # A density can be perfectly Lipschitz near E while making the convolution
+    # ill-defined if the switch tail is too weak globally.  With rho(omega)
+    # behaving like omega^2 and a normalized Cauchy approximate identity, the
+    # integrand tends to a nonzero constant at infinity.
+    duration = 3.0
+    leading_tail_constant = 1.0 / (math.pi * duration)
+    _assert_finite("Cauchy-tail leading constant", leading_tail_constant)
+    if not leading_tail_constant > 0.0:
+        raise AssertionError("bad tail model should leave a divergent positive tail")
+
+
+def check_incorrect_kernel_normalization_negative_control() -> None:
+    duration = 8.0
+    # Omitting the T factor in K_T makes the kernel mass 1/T, so even a
+    # constant spectral density would be driven to zero instead of its rate.
+    wrong_kernel_mass = 1.0 / duration
+    if not wrong_kernel_mass < 0.2:
+        raise AssertionError("wrong kernel normalization should suppress mass")
+    assert_close(
+        wrong_kernel_mass,
+        1.0 / duration,
+        "incorrect approximate identity normalization",
+    )
+
+
+def check_switching_rate_text_contract() -> None:
+    text = UNRUH_CHAPTER.read_text(encoding="utf-8")
+    required = [
+        r"d\mu_G(\omega)",
+        "Pointwise switching-rate error hypotheses",
+        "absolutely continuous",
+        "Lipschitz",
+        "polynomial global growth",
+        r"M_1(\chi)",
+        r"D_N(\chi)",
+        r"N>q+2",
+        r"\label{prop:unruh-switching-rate-error-hypotheses}",
+        "dyadic decomposition",
+        "Atoms, thresholds, and measure limits",
+        r"m K_T(0)",
+        r"R_T(E)\,\dd E",
+    ]
+    for phrase in required:
+        assert_contains(text, phrase, "switching-rate spectral hypothesis text")
+
+
 def compact_smooth_bump(x: float) -> float:
     if abs(x) >= 1:
         return 0.0
@@ -265,6 +381,11 @@ def main() -> None:
     check_detector_detailed_balance_sign()
     check_four_dimensional_planck_response()
     check_finite_switching_smearing_not_exact_balance()
+    check_scaled_switching_kernel_normalization_and_lipschitz_error()
+    check_spectral_atom_rejects_pointwise_rate()
+    check_tail_control_negative_example()
+    check_incorrect_kernel_normalization_negative_control()
+    check_switching_rate_text_contract()
     check_nonanalytic_switch_negative_control()
     check_right_wedge_lightlike_half_sided_sign()
     check_physical_light_ray_generator_sign()

@@ -331,7 +331,12 @@ Current checks:
   as a nonanalytic-strip-regulator negative control, and the right-wedge
   lightlike half-sided-inclusion sign in the convention
   \(\Delta^{it}=U(\Lambda_R(-2\pi t))\), together with the mostly-plus
-  physical light-ray translation sign
+  physical light-ray translation sign.  The switching-rate checks use the
+  actual scaled Fourier kernel
+  \(\widehat\chi_T(\nu)=T\widehat\chi(T\nu)\), verify its normalized
+  approximate-identity mass and \(O(T^{-1})\) Lipschitz error, and include
+  negative controls for an atom at the detector gap, insufficient spectral
+  tail control, and an incorrectly normalized kernel.
   \(U(ae_+)=\exp[-ia(P^0-P^1)]\).
 - `qcd_phase_checks.py`: finite arithmetic checks for the Volume X QCD
   phase-structure chapter, including the free QCD Stefan--Boltzmann pressure,

@@ -374,22 +374,30 @@ stationarity.
 
 \paragraph{Stationary spectral detailed balance.}
 Let \(G(u)=W(x(u),x(0))\) be the stationary two-point distribution along a
-time-translation orbit, and let
+time-translation orbit, and let its Fourier transform be the positive
+tempered spectral measure \(d\mu_G(\omega)\):
 \[
-  \dot P(E)=\widehat G(E)
+  d\mu_G(\omega)
   =
-  \int_{\mathbb R}e^{-\ii Eu}G(u)\,\dd u
+  \widehat G(\omega)
 \]
-denote its Fourier transform in the distributional sense.  The KMS boundary
-condition at inverse temperature \(\beta\) is equivalently the spectral
-relation
+in distributional notation.  A pointwise stationary rate
+\[
+  \dot P(E)=\rho_G(E)
+\]
+is defined only at energies where \(d\mu_G\) has an absolutely continuous
+density \(d\mu_G(\omega)=\rho_G(\omega)\,\dd\omega\) in a neighborhood of
+\(E\).  The KMS boundary condition at inverse temperature \(\beta\) is
+equivalently the spectral measure relation
 \begin{equation}
-  \widehat G(-E)=e^{\beta E}\widehat G(E),
-  \qquad E>0,
+  \mu_G(-B)
+  =
+  \int_B e^{\beta\omega}\,d\mu_G(\omega),
+  \qquad B\subset(0,\infty)\ \text{Borel},
   \label{eq:unruh-spectral-detailed-balance}
 \end{equation}
-for the positive-type spectral measure of \(G\).  Thus the stationary detector
-rates satisfy
+for the positive-type spectral measure of \(G\).  At energies where both
+pointwise densities exist, this gives the stationary detector-rate relation
 \[
   \dot P(-E)=e^{\beta E}\dot P(E).
 \]
@@ -412,9 +420,8 @@ can be written in spectral form as
   =
   \lambda^2
   \int_{\mathbb R}
-  \widehat G(\omega)\,
   \bigl|\widehat{\chi_T}(E-\omega)\bigr|^2
-  \frac{\dd\omega}{2\pi},
+  \frac{d\mu_G(\omega)}{2\pi},
   \label{eq:unruh-switched-response-spectral-convolution}
 \end{equation}
 whenever the right-hand side is defined by the positive spectral measure.
@@ -425,16 +432,135 @@ Since
   =
   \frac{|\widehat{\chi_T}(\nu)|^2}{2\pi T_{\rm eff}(T)}
 \]
-is an approximate identity.  If \(\widehat G\) is locally Lipschitz near
-\(E\) and the first moment of \(K_T\) is finite, then
+is an approximate identity:
+\[
+  \int_{\mathbb R}K_T(\nu)\,\dd\nu=1.
+\]
+The normalized switched response is therefore the measure convolution
+\[
+  R_T(E)
+  :=
+  \frac{P_{\chi_T}(E)}{\lambda^2T_{\rm eff}(T)}
+  =
+  \int_{\mathbb R}K_T(E-\omega)\,d\mu_G(\omega).
+\]
+
+\paragraph{Pointwise switching-rate error hypotheses.}
+Fix \(E\in\mathbb R\).  The pointwise error estimate below assumes the
+following data.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item There is \(r_E>0\) such that \(d\mu_G\) is absolutely continuous on
+\((E-r_E,E+r_E)\):
+\[
+  d\mu_G(\omega)=\rho_G(\omega)\,\dd\omega ,
+\]
+and \(\rho_G\) is Lipschitz there with constant \(L_E\).
+\item The spectral measure has polynomial global growth: for some
+\(C_G,q\ge0\),
+\[
+  \mu_G([-R,R])\le C_G(1+R)^q,
+  \qquad R\ge0 .
+\]
+\item The switch has the first approximate-identity moment
+\[
+  M_1(\chi)
+  :=
+  \frac{1}{2\pi\|\chi\|_2^2}
+  \int_{\mathbb R}|s|\,|\widehat\chi(s)|^2\,\dd s
+  <\infty ,
+\]
+and has enough Fourier decay for the spectral tail: for some
+\(N>q+2\),
+\[
+  D_N(\chi)
+  :=
+  \sup_{s\in\mathbb R}(1+|s|)^N|\widehat\chi(s)|^2
+  <\infty .
+\]
+\end{enumerate}
+Schwartz switches, including compactly supported smooth switches, satisfy
+the switch hypotheses for every \(N\).  The absolute continuity assumption
+excludes an atom at the detector gap \(E\).  To use detailed balance at both
+gaps, the same local density hypothesis must hold at \(E\) and at \(-E\).
+
+\begin{proposition}[Switching approximate identity with spectral tails]
+\label{prop:unruh-switching-rate-error-hypotheses}
+Under the pointwise switching-rate error hypotheses,
 \begin{equation}
   \frac{P_{\chi_T}(E)}{\lambda^2T_{\rm eff}(T)}
   =
-  \dot P(E)+O(T^{-1}).
+  \rho_G(E)+O(T^{-1}).
   \label{eq:unruh-switching-stationary-rate-limit}
 \end{equation}
-The same statement at \(-E\) gives detailed balance only after the
-\(T\to\infty\) limit.  A contour proof of
+The constant in the \(O(T^{-1})\) term depends on \(E,r_E,L_E,C_G,q\) and the
+displayed switch bounds, but not on \(T\).
+\end{proposition}
+
+\begin{proof}
+Write \(\nu=E-\omega\).  Plancherel gives the normalization of \(K_T\), and
+the first moment scales as
+\[
+  \int_{\mathbb R}|\nu|K_T(\nu)\,\dd\nu
+  =
+  \frac{M_1(\chi)}{T}.
+\]
+Split the response into \(|\nu|<r_E\) and \(|\nu|\ge r_E\).  On the near
+region the measure has density, so the difference from the pointwise rate is
+bounded by
+\[
+  \int_{|\nu|<r_E}
+  K_T(\nu)|\rho_G(E-\nu)-\rho_G(E)|\,\dd\nu
+  \le
+  \frac{L_E M_1(\chi)}{T}.
+\]
+
+Two tail terms remain: the missing Lebesgue mass of the approximate identity
+and the spectral measure outside the local density window.  The first is
+controlled directly by the Fourier decay of \(\widehat\chi\).  For the
+second, the bound \(D_N(\chi)<\infty\) gives
+\[
+  K_T(E-\omega)
+  \le
+  C_{\chi,N}\,T(1+T|E-\omega|)^{-N}.
+\]
+Since \(|E-\omega|\ge r_E\) on the tail and
+\(\mu_G([-R,R])\le C_G(1+R)^q\), a dyadic decomposition gives
+\[
+  \int_{|E-\omega|\ge r_E}
+  (1+|E-\omega|)^{-N}\,d\mu_G(\omega)
+  <\infty
+\]
+when \(N>q+2\).  Hence the spectral tail is \(O(T^{1-N})\), in particular
+\(O(T^{-1})\).  Combining the near bound with the two tail estimates proves
+\eqref{eq:unruh-switching-stationary-rate-limit}.
+\end{proof}
+
+\paragraph{Atoms, thresholds, and measure limits.}
+Without the pointwise switching-rate hypotheses, the convolution formula is
+still a measure statement, not a pointwise-rate theorem.  For test functions
+\(h\in C_c^\infty(\mathbb R)\),
+\[
+  \int h(E)R_T(E)\,\dd E
+  =
+  \int (h\ast K_T)(\omega)\,d\mu_G(\omega)
+  \longrightarrow
+  \int h(\omega)\,d\mu_G(\omega),
+\]
+so \(R_T(E)\,\dd E\) converges weakly to \(d\mu_G(E)\).  If
+\(d\mu_G\) has an atom \(m\delta_{E_0}\), then at the atom
+\[
+  R_T(E_0)\supset
+  m K_T(0)
+  =
+  m\,\frac{T|\widehat\chi(0)|^2}{2\pi\|\chi\|_2^2},
+\]
+which need not approach a finite pointwise rate.  Thresholds, singular
+continuous pieces, and discontinuous densities likewise require a
+distributional, averaged, or Lebesgue-point statement rather than the
+Lipschitz \(O(T^{-1})\) estimate above.  The same pointwise theorem applied
+at \(-E\) gives detailed balance only after the \(T\to\infty\) limit.
+
+A contour proof of
 \(\tau\mapsto\tau-\ii\beta\) requires the switching function to have a
 holomorphic strip extension with uniform bounds; generic compactly supported
 smooth functions and generic Schwartz functions supply no such strip
