@@ -412,7 +412,9 @@
       "convention_tags": [
         "relative S-matrix cutoff cocycle",
         "outside-past equality and outside-future conjugation",
-        "raw S(A) factorization rejected for overlapping background"
+        "raw S(A) factorization rejected for overlapping background",
+        "renormalized pAQFT QME uses local anomaly map not BV Laplacian",
+        "BV antibracket is transported by the renormalized time-ordered product"
       ]
     },
     {

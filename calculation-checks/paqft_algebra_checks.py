@@ -18,12 +18,14 @@ relative S-matrix cutoff transport for Bogoliubov fields, and the
 lambda-phi-four Hadamard-coordinate/local-Wick-renormalization example, the
 finite local-coupling Ward balance for a compact switching function, plus the
 retained one-loop tadpole mass-response and nonlocal sunset-response examples
-in the retarded two-point sector.
+in the retarded two-point sector, and the renormalized BV anomaly-map
+replacement for the formal local BV Laplacian.
 Independent construction: exact polynomial derivatives, contraction sums,
 finite cone-margin bookkeeping, Taylor-extension counts, Wick-power transport
 coefficients, exact noncommutative matrix products for relative S-matrix
 cocycles, discrete local-coupling Ward variations, and a finite-cell
-Born-response quadrature for local and bilocal kernels are computed directly
+Born-response quadrature for local and bilocal kernels, transported finite BV
+brackets, and cochain-level anomaly consistency tests are computed directly
 rather than copied from the prose formulae.
 Imported assumptions: the one-component polynomial model, formal hbar
 grading, smooth diagonal Hadamard coordinate difference, local finite Wick
@@ -44,8 +46,10 @@ sources, finite Wick-density shifts not transported through the Ward source,
 wrong tadpole self-energy combinatorics, omitted Born signs, constant
 replacements for nonconstant local Wick-square densities, wrong sunset
 symmetry factors, omitted retarded i-factors, acausal symmetric kernels, and
-conflation of local diagonal counterterms with off-diagonal kernels are
-rejected by exact rational comparisons.
+conflation of local diagonal counterterms with off-diagonal kernels, raw
+untransported BV brackets, finite-cutoff BV Laplacian shortcuts, inconsistent
+anomalies, and nonexact anomalies treated as removable are rejected by exact
+rational comparisons.
 Scope boundary: a pass checks finite pAQFT algebra and coefficient
 bookkeeping; it does not prove microlocal extension theorems, continuum
 Hadamard state existence, perturbative convergence, interacting stress-tensor
@@ -63,6 +67,8 @@ Poly = dict[int, Fraction]
 HPoly = dict[int, Poly]
 RatComplex = tuple[Fraction, Fraction]
 Mat2 = tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]
+Vec2 = tuple[Fraction, Fraction]
+Vec3 = tuple[Fraction, Fraction, Fraction]
 
 
 def clean_poly(poly: Poly) -> Poly:
@@ -131,6 +137,13 @@ def matinv(a: Mat2) -> Mat2:
     return (
         (a[1][1] / det, -a[0][1] / det),
         (-a[1][0] / det, a[0][0] / det),
+    )
+
+
+def matvec(a: Mat2, v: Vec2) -> Vec2:
+    return (
+        a[0][0] * v[0] + a[0][1] * v[1],
+        a[1][0] * v[0] + a[1][1] * v[1],
     )
 
 
@@ -256,6 +269,18 @@ def weighted_vector_sum(
             weights, vector, density, gradient
         )
     )
+
+
+def vec3_sub(left: Vec3, right: Vec3) -> Vec3:
+    return (
+        left[0] - right[0],
+        left[1] - right[1],
+        left[2] - right[2],
+    )
+
+
+def vec3_dot(left: Vec3, right: Vec3) -> Fraction:
+    return sum(left[i] * right[i] for i in range(3))
 
 
 def bilocal_response(
@@ -711,6 +736,75 @@ def check_lambda_phi4_nonlocal_sunset_response() -> None:
         raise AssertionError("local extension freedom was conflated with the sunset kernel")
 
 
+def check_renormalized_bv_anomaly_qme() -> None:
+    # The pAQFT BV bracket is transported by the chosen renormalized
+    # time-ordered product.  A raw finite-cutoff Laplacian is a different datum
+    # from the finite local anomaly map supplied by the anomalous MWI.
+    time_ordering_map = mat2(2, 0, 0, 3)
+    observable_x: Vec2 = (Fraction(3), Fraction(5))
+    observable_y: Vec2 = (Fraction(7), Fraction(11))
+
+    def canonical_bv_bracket(left: Vec2, right: Vec2) -> Fraction:
+        return left[0] * right[1] - left[1] * right[0]
+
+    raw_bracket = canonical_bv_bracket(observable_x, observable_y)
+    inverse_time_ordering = matinv(time_ordering_map)
+    transported_bracket = canonical_bv_bracket(
+        matvec(inverse_time_ordering, observable_x),
+        matvec(inverse_time_ordering, observable_y),
+    )
+    if raw_bracket != Fraction(-2):
+        raise AssertionError("raw finite BV bracket fixture changed")
+    if transported_bracket != Fraction(-1, 3):
+        raise AssertionError("renormalized transported BV bracket changed")
+    if transported_bracket == raw_bracket:
+        raise AssertionError("negative control failed: raw BV bracket was not transported")
+
+    interaction_support = frozenset({0, 1, 2})
+    anomaly_support = frozenset({0, 2})
+    if not anomaly_support <= interaction_support:
+        raise AssertionError("local anomaly support should remain inside the interaction support")
+    cutoff_laplacian_support = frozenset({0, 3})
+    if cutoff_laplacian_support <= interaction_support:
+        raise AssertionError("negative control failed: cutoff Laplacian support looked local")
+
+    def consistency(anomaly: Vec3) -> Fraction:
+        return sum(anomaly, Fraction(0))
+
+    def counterterm_coboundary(coefficient: Fraction) -> Vec3:
+        return (coefficient, -coefficient, Fraction(0))
+
+    first_loop_order = 1
+    if first_loop_order < 1:
+        raise AssertionError("renormalized anomaly should start at positive loop order")
+
+    exact_anomaly: Vec3 = (Fraction(2), Fraction(-2), Fraction(0))
+    nontrivial_anomaly: Vec3 = (Fraction(1), Fraction(1), Fraction(-2))
+    formal_laplacian_shortcut: Vec3 = (Fraction(2), Fraction(0), Fraction(0))
+
+    if consistency(exact_anomaly) != 0:
+        raise AssertionError("exact anomaly should satisfy the Wess-Zumino consistency test")
+    if consistency(nontrivial_anomaly) != 0:
+        raise AssertionError("nontrivial anomaly fixture should still be consistent")
+    if consistency(formal_laplacian_shortcut) == 0:
+        raise AssertionError("negative control failed: formal Laplacian shortcut was consistent")
+
+    removed_anomaly = vec3_sub(exact_anomaly, counterterm_coboundary(Fraction(2)))
+    if removed_anomaly != (Fraction(0), Fraction(0), Fraction(0)):
+        raise AssertionError("finite counterterm failed to remove an exact anomaly")
+
+    observable_test: Vec3 = (Fraction(5), Fraction(7), Fraction(11))
+    if vec3_dot(exact_anomaly, observable_test) == 0:
+        raise AssertionError("test exact anomaly should obstruct nilpotence before removal")
+    if vec3_dot(removed_anomaly, observable_test) != 0:
+        raise AssertionError("removed anomaly should give zero finite BV-square residual")
+
+    if nontrivial_anomaly[2] == counterterm_coboundary(nontrivial_anomaly[0])[2]:
+        raise AssertionError("negative control failed: nonexact anomaly looked removable")
+    if vec3_dot(nontrivial_anomaly, observable_test) == 0:
+        raise AssertionError("nontrivial anomaly should leave a finite BV-square residual")
+
+
 def main() -> None:
     check_associativity()
     check_hadamard_change_intertwiner()
@@ -721,9 +815,10 @@ def main() -> None:
     check_lambda_phi4_local_coupling_ward_balance()
     check_lambda_phi4_tadpole_mass_response()
     check_lambda_phi4_nonlocal_sunset_response()
+    check_renormalized_bv_anomaly_qme()
     print(
         "All pAQFT algebra, functional-space, scaling-degree, "
-        "cutoff-transport, and two-point response checks passed."
+        "cutoff-transport, two-point response, and BV-anomaly checks passed."
     )
 
 

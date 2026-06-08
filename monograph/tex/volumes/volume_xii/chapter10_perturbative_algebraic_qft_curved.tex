@@ -397,8 +397,10 @@ dependence on the background metric and couplings.  Field independence means
 that differentiating \(T_n\) with respect to the background field inserts the
 time-ordered derivative of the input local functionals.  Scaling degree
 bounds control the ultraviolet order of singularities.  Ward identities are
-the equations imposed by symmetries; for gauge theories they are properly
-encoded by the BV quantum master equation.
+the equations imposed by symmetries; for gauge theories the renormalized
+version is the anomalous Master Ward identity and the BV quantum master
+condition derived from it, not a bare coincident BV Laplacian on local
+functionals.
 
 The domain in \eqref{eq:paqft-time-ordered-products-maps} is deliberately
 local.  Epstein--Glaser renormalization constructs the extension of products
@@ -1153,26 +1155,110 @@ the Born sign.  The continuum distributional extension and the physical
 renormalization condition fixing
 \eqref{eq:paqft-sunset-local-extension-freedom} remain additional data.
 
-\section{Gauge Theories And The BV Condition}
+\section{Gauge Theories And The Renormalized BV Condition}
 
 The preceding scalar construction is not a foundation for gauge theory by
 itself.  A gauge-fixed perturbative algebra contains unphysical fields,
 ghosts, antifields, and a differential.  Consistency is the statement that
-the interacting quantum BV differential squares to zero, or equivalently
-that the renormalized time-ordered products can be chosen so that the
-quantum master equation holds:
+the interacting quantum BV differential squares to zero, but in local pAQFT
+this statement is not expressed by applying an ordinary BV Laplacian to a
+local action.  Three levels must be kept separate.
+
+First, in a finite-dimensional or finite-cutoff BV model with a chosen
+half-density, the operator \(\Delta_{\sigma_\Lambda}\) is a genuine
+second-order divergence operator and the regulated quantum master equation is
+the half-density equation of Chapter~\ref{ch:bv-master-formalism}.  Second,
+one may write the formal local expression
 \begin{equation}
   \frac12(S_{\rm BV},S_{\rm BV})-\ii\hbar\,\Delta_{\rm BV}S_{\rm BV}=0
-  \label{eq:paqft-bv-qme-curved}
+  \label{eq:paqft-formal-bv-laplacian-qme}
 \end{equation}
-in the renormalized algebra.  Here \((\,\cdot\,,\,\cdot\,)\) is the BV
-antibracket and \(\Delta_{\rm BV}\) denotes the renormalized second-order
-operator measuring the short-distance contraction of fields with antifields.
-The equation is not a slogan for gauge invariance.  It is the algebraic
-condition that the interacting BRST operator is a differential and that the
-physical algebra is its cohomology.  If the obstruction to solving
-\eqref{eq:paqft-bv-qme-curved} is a nontrivial local cohomology class, the
-theory has an anomaly in the chosen background and field content.
+on regularized or sufficiently regular functionals.  On local functionals in
+the continuum, however, the two functional derivatives in
+\(\Delta_{\rm BV}\) collide on the diagonal, so
+\eqref{eq:paqft-formal-bv-laplacian-qme} is only a mnemonic for the singular
+term that renormalization must replace.
+
+The renormalized pAQFT statement is different.  Choose a renormalization
+prescription \(R\) for the graded time-ordered products and write
+\(\mathcal T_R\) for the corresponding time-ordering map.  On the local and
+multilocal domain where \(\mathcal T_R^{-1}\) is defined order by order, the
+BV antibracket transported by the time-ordered product is
+\begin{equation}
+  \{X,Y\}_{T_R}
+  :=
+  \mathcal T_R
+  \left(
+    \{\mathcal T_R^{-1}X,\mathcal T_R^{-1}Y\}_{\rm BV}
+  \right).
+  \label{eq:paqft-transported-bv-antibracket}
+\end{equation}
+The anomalous Master Ward identity supplies a finite local anomaly map
+\(\mathcal A_R(F)\).  For a compactly supported BV interaction \(F\), including
+the gauge-fixing, ghost, and antifield terms, it has
+\[
+  \mathcal A_R(F)\in\hbar\,\mathcal F_{\rm loc}(M)[[\hbar]],
+  \qquad
+  \operatorname{supp}\mathcal A_R(F)\subset\operatorname{supp}F,
+\]
+with coefficients fixed by the same local, covariant time-ordered-product
+extension.  The factor \(\ii\hbar\) that multiplies the formal
+\(\Delta_{\rm BV}\) in
+\eqref{eq:paqft-formal-bv-laplacian-qme} is included in this definition of
+\(\mathcal A_R\).  The renormalized quantum master condition is therefore
+\begin{equation}
+  \mathcal Q_R(F)
+  :=
+  \frac12
+  \{S_0+F,S_0+F\}_{T_R}
+  -
+  \mathcal A_R(F)
+  =
+  0 .
+  \label{eq:paqft-renormalized-qme-anomaly}
+\end{equation}
+Here \(S_0\) is the free BV action and all products, brackets, and anomaly
+insertions are taken in the same prescription \(R\).  There is no separate
+operator \(\Delta_{\rm BV}\) on local functionals in
+\eqref{eq:paqft-renormalized-qme-anomaly}.
+
+With the same convention, the interacting quantum BV differential is
+\begin{equation}
+  \widehat s_{R,F}X
+  =
+  \{X,S_0+F\}_{T_R}
+  -
+  \mathcal A_{R,F}(X),
+  \label{eq:paqft-renormalized-quantum-bv-differential}
+\end{equation}
+where \(\mathcal A_{R,F}(X)\) is the local anomaly insertion appearing in the
+Master Ward identity with one observable \(X\).  The pAQFT BV construction
+proves, under the support and algebraic adiabatic-limit hypotheses of the
+relative \(S\)-matrix construction, that
+\(\widehat s_{R,F}\) intertwines with interacting fields and squares to zero
+when \(\mathcal Q_R(F)=0\)
+\cite{FredenhagenRejzner2013BVPerturbativeAQFT,Rejzner2011BVLocallyCovariant}.
+Only under those hypotheses is the physical interacting algebra identified with
+the cohomology of \(\widehat s_{R,F}\).
+
+The anomaly map also satisfies a consistency condition.  At the first
+nonvanishing loop order \(\ell\), the local term
+\(\mathcal A_R^{(\ell)}(F)\) is closed under the classical linearized BV
+differential
+\[
+  s_FX=\{X,S_0+F\}_{\rm BV}.
+\]
+A finite renormalization of \(T_R\), or an \(\hbar^\ell\)-order local
+counterterm \(B^{(\ell)}\) added to the action, shifts the anomaly by an
+\(s_F\)-exact local term at that order.  Thus an exact anomaly can be removed
+by changing the renormalization prescription or by adding higher-loop local
+terms to \(F\), while a nonzero class in the relevant local BV cohomology is a
+genuine gauge anomaly.  Beyond the first nonzero order, the full anomalous
+Master Ward identity gives the corresponding Wess--Zumino consistency cocycle
+\cite{BrunettiDuetschFredenhagenRejzner2022UAMWI}.  This is the renormalized
+version of the gauge consistency condition used here; the finite-regulator QME
+of Chapter~\ref{ch:bv-master-formalism} is a useful comparison, not the
+operator acting on pAQFT local functionals.
 
 \begin{openproblem}[Nonperturbative curved-background comparison]
 \label{op:nonperturbative-paqft-comparison}

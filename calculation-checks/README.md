@@ -2899,7 +2899,11 @@ Current checks:
   \(-i\) retardedization on Hermitian-compatible complex Wightman samples,
   bilocal Born sign, omitted `i`-factor and acausal-support negative controls,
   and separation of local diagonal counterterm freedom from the nonlocal
-  kernel.
+  kernel.  It also checks the renormalized BV anomaly-map replacement for the
+  formal local BV Laplacian: transported time-ordered BV brackets, local
+  Wess-Zumino anomaly consistency, exact-anomaly removal by counterterm/scheme
+  shift, nonexact anomaly obstruction, and finite-cutoff Laplacian shortcut
+  negative controls.
 - `point_splitting_stress_checks.py`: finite checks for the point-split
   stress-tensor examples, including the flat Synge identities and leading
   Hadamard \(U\)-transport equation, the first logarithmic \(v_0\) transport

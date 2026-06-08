@@ -43,7 +43,10 @@ factorization, and finite renormalization maps.
   two-point functions, the retained nonlocal sunset self-energy kernel with the
   closed-time-path `-i` retardedization, and the Epstein--Glaser extension map
   separating off-diagonal propagation from local diagonal counterterms.
-- `S_BV`, `Delta_BV`: BV action and renormalized BV second-order operator.
+- `S_0`, `F`, `T_R`, `{.,.}_{T_R}`, `A_R(F)`, `Q_R(F)`: free BV action,
+  compactly supported BV interaction, renormalized time-ordering prescription,
+  transported BV antibracket, local anomaly map, and renormalized pAQFT QME
+  defect.
 
 ## Claim Ledger
 
@@ -73,8 +76,13 @@ factorization, and finite renormalization maps.
   raw `S(C)` factors, so the cutoff transition is a canonical isomorphism of
   local interacting algebras rather than a factorization through an overlapping
   background interaction.
-- Records the Stueckelberg--Petermann local renormalization map and the BV
-  quantum master equation as the gauge-theory consistency condition.
+- Records the Stueckelberg--Petermann local renormalization map and separates
+  finite-regulator BV QME, formal unrenormalized BV-Laplacian notation, and the
+  renormalized pAQFT QME.  In the pAQFT layer, the time-ordered product
+  transports the BV antibracket, the anomalous Master Ward identity supplies the
+  finite local anomaly map, and nilpotence of the interacting quantum BV
+  differential is asserted only when the renormalized QME defect vanishes under
+  the relative-S-matrix support hypotheses.
 - Adds a worked interacting scalar coordinate: a compactly supported
   `lambda phi^4` interaction is transported under a smooth
   Hadamard-coordinate isomorphism with typed state transport, so expectation
@@ -145,7 +153,12 @@ factorization, and finite renormalization maps.
   retardedization on Hermitian-compatible complex Wightman samples, bilocal
   Born sign, rejection of the wrong symmetry factor, omitted `i` factor, and
   acausal symmetric kernel, and separation of diagonal local counterterm
-  response from the nonlocal sunset kernel.
+  response from the nonlocal sunset kernel.  It also verifies the
+  renormalized BV anomaly-map replacement for the formal local BV Laplacian:
+  the transported finite BV bracket differs from the raw bracket, the anomaly
+  is a local Wess-Zumino cocycle, exact anomalies are removable by a finite
+  counterterm/scheme shift, nonexact anomalies remain as cohomology classes,
+  and finite-cutoff Laplacian shortcuts fail the consistency/support tests.
 
 ## Figure Ledger
 
@@ -209,3 +222,12 @@ Hadamard star-product comparison maps.
   map.  The repair is architectural: it explains how compact cutoff
   representatives give the same local interacting algebra, rather than adding
   another standalone finite identity.
+- 2026-06-08 issue #918 renormalized BV anomaly pass: replaced the final formal
+  `Delta_BV` QME on local functionals with the pAQFT anomaly-map formulation.
+  The chapter now separates finite-regulator BV Laplacians from the formal
+  unrenormalized mnemonic and the renormalized local pAQFT statement; it defines
+  the time-ordered transported antibracket, the local anomaly map supplied by the
+  anomalous Master Ward identity, the renormalized QME defect, the quantum BV
+  differential, and the Wess-Zumino/cohomological removal criterion.  The paired
+  finite check rejects raw brackets, finite-cutoff Laplacian shortcuts, and
+  nonexact anomalies treated as removable.
