@@ -76,12 +76,19 @@ and contracts it to the level-\(2\) occupation cost in a two-state example.
 - `rho_i^T`, `q_ij^T`, `I_2.5`, `I_2`: empirical occupation, empirical
   jump flow, finite level-\(2.5\) empirical-flow cost, and contracted
   occupation cost.
-- `H_S`, `H_E`, `S_a`, `E_a`: system/environment Hamiltonians and couplings.
+- `H_lambda`, `H_S`, `H_E`, `S_a`, `E_a`, `V`: total
+  weak-coupling Hamiltonian, system/environment Hamiltonians, coupling
+  operators, and total interaction operator.
 - `gamma_ab(omega)`: bath spectral matrix.
 - `S_a(omega)`: Bohr-frequency component of a system coupling operator.
-- `L`, `L_alpha`: Markov generator and Lindblad jump operators; context
-  distinguishes this from the Onsager matrix.
-- `Gamma`, `H_eff`, `K_t`, `J`: total jump rate operator,
+- `Phi_lambda`, `tilde Phi_lambda`, `Psi_lambda`: microscopic reduced map,
+  reduced interaction-picture map with the free system rotation removed, and
+  slow-time van Hove map.
+- `L_0`, `Pi_sec`, `K`, `D`: free system Liouvillian, secular projection,
+  Davies interaction-picture generator, and dissipator.
+- `L`, `L_alpha`: Lindblad jump operators; context distinguishes `L` from
+  the Onsager matrix.
+- `Gamma`, `H_eff`, `N_t`, `J`: total jump rate operator,
   non-Hermitian effective Hamiltonian, no-jump map, and jump map in the
   finite-dimensional GKSL proof.
 - `S_IF`, `phi_r`, `phi_a`, `D_R`, `N`: influence functional, Keldysh
@@ -196,30 +203,38 @@ and contracts it to the level-\(2\) occupation cost in a two-state example.
     \(I_2(p)=(\sqrt{pa}-\sqrt{(1-p)b})^2\) for a two-state chain.
 22. In the weak-coupling Markovian limit, the bath spectral matrix
    \(\gamma_{ab}(\omega)\) is positive by the positive-type/Bochner
-   argument and yields the Davies/GKSL generator after the van Hove and
-   secular limits.
-23. The GKSL form preserves trace, preserves Hermiticity, and generates a
+   argument.  The microscopic convergence statement is for the reduced
+   interaction-picture maps
+   \(\widetilde\Phi_\lambda(\lambda^{-2}\tau)\), and the Davies generator is
+   \(\mathcal K=-i[H_{\rm LS},\cdot]+\mathcal D\) without an unscaled
+   \(H_S\) term.  The physical-time Schrödinger approximation is the separate
+   equation with \(H_S+\lambda^2H_{\rm LS}\) and \(\lambda^2\mathcal D\).
+23. Secularization is the projection onto the commutant of the free
+   Liouvillian \(\mathcal L_0=-i[H_S,\cdot]\); in Bohr-frequency notation it
+   keeps \(\omega=\omega'\), preserves degenerate-frequency matrix structure,
+   and gives \([H_S,H_{\rm LS}]=0\) in the standard Davies construction.
+24. The GKSL form preserves trace, preserves Hermiticity, and generates a
    completely positive semigroup; the proof diagonalizes the positive bath
    spectral matrices and constructs the finite-time map by the
    Dyson-Phillips jump expansion.
-24. KMS bath spectral functions obey detailed balance; the chapter verifies
+25. KMS bath spectral functions obey detailed balance; the chapter verifies
    the sign and index order by spectral resolution and applies the result to
    the Gibbs stationary ratio for a two-level system.
-25. The quadratic Schwinger-Keldysh influence action has explicitly defined
+26. The quadratic Schwinger-Keldysh influence action has explicitly defined
    retarded and noise kernels; KMS relates them by fluctuation-dissipation.
-26. At finite regulator, the Gaussian SK weight
+27. At finite regulator, the Gaussian SK weight
    \(\exp(i\phi_aE-\phi_aN\phi_a/2)\) is exactly the characteristic function
    of a real Gaussian noise vector with covariance \(N\).  Integrating the
    response variable imposes \(E(\phi_r)+\xi=0\), and for linear retarded
    \(E=K\phi_r-J\) the induced covariance is \(K^{-1}NK^{-T}\).
-27. For a Markovian relaxing hydrodynamic density, the Fokker-Planck
+28. For a Markovian relaxing hydrodynamic density, the Fokker-Planck
    stationary-current computation with the stationary Gaussian
    equilibrium weight fixes \(D_n=\gamma\chi T\) and hence
    \(\langle\xi\xi\rangle=2\gamma\chi T\,\delta\).
-28. Continuum QFT constructions must specify the order of long-time,
+29. Continuum QFT constructions must specify the order of long-time,
     thermodynamic, weak-coupling, Markovian, hydrodynamic, and continuum
     limits.
-29. The Doi--Peliti/MSRJD synthesis distinguishes continuous Gaussian
+30. The Doi--Peliti/MSRJD synthesis distinguishes continuous Gaussian
     stochastic fields from integer-occupation jump systems, and defines
     nonequilibrium scaling classes operationally by common continuum
     fixed-point data, relevant perturbations, and scaling correlation/response
@@ -249,9 +264,13 @@ and contracts it to the level-\(2\) occupation cost in a two-state example.
   generator for jump additives, and the finite-ring Gallavotti--Cohen
   similarity identity for entropy production.  It also verifies the
   empirical-flow level-\(2.5\) cost, its Radon--Nikodym sign, and the
-  two-state level-\(2\) contraction formula.  It also checks the finite
-  Schwinger-Keldysh Gaussian noise bridge and reconstructs the response-field
-  covariance \(K^{-1}NK^{-T}\).
+  two-state level-\(2\) contraction formula.  It also checks the two-level
+  Davies picture split among interaction-picture slow time, physical
+  Schrödinger time, and unrotated Schrödinger slow time, including rejection
+  of an unscaled \(H_S\) term in the interaction-picture limiting generator
+  and commutation of the secular Lamb shift with \(H_S\).  It also checks the
+  finite Schwinger-Keldysh Gaussian noise bridge and reconstructs the
+  response-field covariance \(K^{-1}NK^{-T}\).
 
 ## Figure Ledger
 
@@ -260,6 +279,14 @@ joining, Keldysh influence contours, and relaxation/noise flow diagrams.
 
 ## Audit Notes
 
+- 2026-06-08 issue #889 audit: separated the microscopic reduced map
+  \(\Phi_\lambda(t)\), the total interaction-picture density matrix, the
+  reduced rotating map \(\widetilde\Phi_\lambda(t)\), and the physical-time
+  Schrödinger approximation.  The Davies generator is now explicitly the
+  interaction-picture slow-time generator
+  \(-i[H_{\rm LS},\cdot]+\mathcal D\); the unrotated slow-time state carries
+  the \(\lambda^{-2}[H_S,\cdot]\) fast term and is not identified with the
+  limiting semigroup.
 - 2026-05-31 statmech crosswalk/#703 pass: added finite trajectory
   probability measures and fluctuation relations as regulator-level
   Radon--Nikodym identities, before any continuum QFT or Schwinger--Keldysh

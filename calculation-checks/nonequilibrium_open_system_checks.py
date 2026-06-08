@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from check_utils import assert_close as _assert_close
+from check_utils import assert_gt as _assert_gt
 
 import math
 from fractions import Fraction
@@ -11,6 +12,10 @@ from fractions import Fraction
 
 def assert_close(name: str, got: complex | float, expected: complex | float, tol: float = 1.0e-11) -> None:
     _assert_close(name, got, expected, tol=tol)
+
+
+def assert_gt(name: str, got: complex | float, bound: complex | float) -> None:
+    _assert_gt(name, got, bound)
 
 
 def matmul(a: list[list[complex]], b: list[list[complex]]) -> list[list[complex]]:
@@ -61,6 +66,53 @@ def check_gksl_trace_preservation() -> None:
         scale(-0.5, add(matmul(ldagl, rho), matmul(rho, ldagl))),
     )
     assert_close("single-jump trace preservation", trace(dissipator), 0.0)
+
+
+def check_davies_picture_scaling_two_level() -> None:
+    omega_0 = 2.3
+    lamb_shift_gap = 0.17
+    gamma_down = 0.41
+    gamma_up = 0.09
+    coherence = 0.31 - 0.22j
+    lam = 0.05
+
+    dephasing = 0.5 * (gamma_down + gamma_up)
+    interaction_slow = (-1j * lamb_shift_gap - dephasing) * coherence
+    bad_interaction_slow = (-1j * (omega_0 + lamb_shift_gap) - dephasing) * coherence
+    assert_gt(
+        "interaction-picture Davies generator rejects unscaled H_S",
+        abs(interaction_slow - bad_interaction_slow),
+        1.0e-12,
+    )
+
+    schrodinger_physical = (
+        -1j * (omega_0 + lam**2 * lamb_shift_gap) - lam**2 * dephasing
+    ) * coherence
+    expected_physical = -1j * omega_0 * coherence + lam**2 * interaction_slow
+    assert_close("Schrodinger physical-time weak-coupling scaling", schrodinger_physical, expected_physical)
+
+    schrodinger_slow = schrodinger_physical / lam**2
+    expected_slow = -1j * omega_0 / lam**2 * coherence + interaction_slow
+    assert_close("Schrodinger slow-time fast free term", schrodinger_slow, expected_slow)
+
+    smaller_lam = lam / 2.0
+    smaller_slow = (
+        -1j * (omega_0 + smaller_lam**2 * lamb_shift_gap) - smaller_lam**2 * dephasing
+    ) * coherence / smaller_lam**2
+    fast_ratio = abs((smaller_slow - interaction_slow) / (schrodinger_slow - interaction_slow))
+    assert_close("unrotated slow-time free term scales as lambda^-2", fast_ratio, 4.0)
+
+    # The secular Lamb shift is built from zero-net-Bohr-frequency products
+    # S(omega)^dagger S(omega), so it commutes with the bare two-level
+    # Hamiltonian even when the dissipative rates are nonzero.
+    excited_projector = [[0j, 0j], [0j, 1 + 0j]]
+    ground_projector = [[1 + 0j, 0j], [0j, 0j]]
+    h_system = [[0j, 0j], [0j, omega_0 + 0j]]
+    lamb_shift = add(scale(lamb_shift_gap, excited_projector), scale(-0.25 * lamb_shift_gap, ground_projector))
+    commutator = add(matmul(h_system, lamb_shift), scale(-1.0, matmul(lamb_shift, h_system)))
+    for i in range(2):
+        for j in range(2):
+            assert_close(f"secular Lamb shift commutes with H_S component {i}{j}", commutator[i][j], 0.0)
 
 
 def check_finite_local_detailed_balance_entropy() -> None:
@@ -660,6 +712,7 @@ def check_gaussian_influence_noise_bridge() -> None:
 def main() -> None:
     check_reservoir_entropy_production()
     check_gksl_trace_preservation()
+    check_davies_picture_scaling_two_level()
     check_finite_local_detailed_balance_entropy()
     check_jump_path_measure_ratio()
     check_discrete_jarzynski_identity()
@@ -675,7 +728,7 @@ def main() -> None:
     check_ou_einstein_relation()
     check_positive_noise_kernel()
     check_gaussian_influence_noise_bridge()
-    print("All nonequilibrium open-system checks, including finite coupled slow-variable data, passed.")
+    print("All nonequilibrium open-system checks, including finite coupled slow-variable and Davies picture data, passed.")
 
 
 if __name__ == "__main__":

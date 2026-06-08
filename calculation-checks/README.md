@@ -2891,9 +2891,13 @@ Current checks:
   Hamiltonian, the finite Feynman--Kac tilted generator for jump additives,
   the stationary finite-ring Gallavotti--Cohen similarity identity, the
   empirical-flow level-\(2.5\) cost and two-state level-\(2\) contraction,
-  GKSL trace preservation, KMS detailed balance for a two-level system,
-  Ornstein-Uhlenbeck noise normalization, positivity of a quadratic noise
-  kernel, and the finite Schwinger--Keldysh Gaussian noise bridge from the
+  the two-level Davies picture split among interaction-picture slow time,
+  physical Schrödinger time, and unrotated Schrödinger slow time, rejection of
+  an unscaled \(H_S\) term in the interaction-picture limiting generator,
+  commutation of the secular Lamb shift with \(H_S\), GKSL trace preservation,
+  KMS detailed balance for a two-level system, Ornstein-Uhlenbeck noise
+  normalization, positivity of a quadratic noise kernel, and the finite
+  Schwinger--Keldysh Gaussian noise bridge from the
   Hubbard--Stratonovich characteristic function to
   \(K^{-1}NK^{-T}\) response covariance.
 - `microlocal_spectrum_checks.py`: finite convention checks for the

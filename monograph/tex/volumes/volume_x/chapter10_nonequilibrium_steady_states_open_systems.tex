@@ -1552,13 +1552,13 @@ claim has not yet been mathematically formulated.
 
 Let a system Hilbert space couple to an environment by
 \begin{equation}
-  H=H_S+H_E+\lambda\sum_a S_a\otimes E_a .
+  H_\lambda=H_S+H_E+\lambda\sum_a S_a\otimes E_a .
   \label{eq:open-system-total-hamiltonian}
 \end{equation}
 We take \(S_a=S_a^\dagger\) and \(E_a=E_a^\dagger\); a non-Hermitian
 coupling is rewritten in this form by separating Hermitian and
 anti-Hermitian parts.  This convention fixes the adjoints in the spectral
-matrices below.
+matrices below.  Write \(V=\sum_aS_a\otimes E_a\).
 Assume the environment state \(\rho_E\) is stationary,
 \([H_E,\rho_E]=0\), and that connected environment correlators decay
 fast enough for their Fourier transforms to exist as positive matrices:
@@ -1605,44 +1605,135 @@ Bohr-frequency components
   P_\epsilon S_aP_{\epsilon'} .
   \label{eq:open-system-bohr-components}
 \end{equation}
+The microscopic object is first a reduced map, not a differential equation.
+For the product preparation used in this paragraph, set
+\begin{equation}
+  \Phi_\lambda(t)(\rho)
+  =
+  \operatorname{Tr}_E\!\left[
+    e^{-\ii tH_\lambda}
+    (\rho\otimes\rho_E)
+    e^{\ii tH_\lambda}
+  \right].
+  \label{eq:open-system-microscopic-reduced-map}
+\end{equation}
+Other preparations require a specified embedding of system states into
+system--environment states before the partial trace is taken.  The convergence
+theorem is a theorem about the corresponding family of maps.
+
+The interaction picture is the place where the van Hove limit has an ordinary
+slow-time limit.  Let \(H_0=H_S+H_E\),
+\[
+  \varrho_{\lambda,I}(t)
+  =
+  e^{\ii tH_0}\,
+  \varrho_\lambda(t)\,
+  e^{-\ii tH_0},
+  \qquad
+  V_I(t)=e^{\ii tH_0}Ve^{-\ii tH_0}.
+\]
+The exact interaction-picture integral equation is the equation for the total
+density matrix:
+\begin{equation}
+  \varrho_{\lambda,I}(t)
+  =
+  \varrho_{\lambda,I}(0)
+  -\ii\lambda\int_0^t ds\,
+  [V_I(s),\varrho_{\lambda,I}(s)] .
+  \label{eq:open-system-total-interaction-picture-integral}
+\end{equation}
+The reduced rotating map is obtained after the environment trace:
+\begin{equation}
+  \widetilde\Phi_\lambda(t)(\rho)
+  =
+  e^{\ii tH_S}\Phi_\lambda(t)(\rho)e^{-\ii tH_S}
+  =
+  \operatorname{Tr}_E\varrho_{\lambda,I}(t)
+  \quad
+  \text{for }\varrho_{\lambda,I}(0)=\rho\otimes\rho_E .
+  \label{eq:open-system-reduced-interaction-map}
+\end{equation}
+
 Under the weak-coupling scaling
 \[
   \lambda\to0,
   \qquad
   t=\lambda^{-2}\tau,
 \]
-the interaction-picture density matrix satisfies the integral equation
+the maps
 \[
-  \rho_I(t)
+  \Psi_\lambda(\tau)
   =
-  \rho_I(0)
-  -\ii\lambda\int_0^t ds\,[V_I(s),\rho_I(s)],
-  \qquad
-  V_I(s)=\sum_aS_a(s)\otimes E_a(s).
+  \widetilde\Phi_\lambda(\lambda^{-2}\tau)
 \]
-Expanding once more, tracing over the environment, assuming
+are the candidates for convergence.  Expanding
+\eqref{eq:open-system-total-interaction-picture-integral} once more, tracing
+over the environment, assuming
 \(\operatorname{Tr}_E(\rho_EE_a)=0\) after absorbing one-point terms into
 \(H_S\), and using fast decay of connected environment correlators gives a
 second-order memory integral.  The van Hove limit keeps
 \(\lambda^2t=\tau\) fixed.  Oscillatory factors
 \(e^{\ii(\omega-\omega')s}\) then project onto equal Bohr frequencies,
 while the time integral of the bath correlator supplies
-\(\gamma_{ab}(\omega)\) and its principal-value Hilbert transform.  For a
-finite-dimensional system with discrete Bohr spectrum, bounded system
-couplings, a stationary environment state, and absolutely integrable
-environment connected correlators with the mixing estimates needed to
-discard higher cumulants in the van Hove limit, this limit gives
+\(\gamma_{ab}(\omega)\) and its principal-value Hilbert transform.
+
+Equivalently, let \(\mathcal L_0(\rho)=-\ii[H_S,\rho]\).  Secularization is
+the projection of the second-order kernel onto the commutant of this free
+Liouvillian:
 \begin{equation}
-  \frac{d\rho_S}{d\tau}
+  \Pi_{\rm sec}\mathcal A
   =
-  \mathcal L(\rho_S),
+  \lim_{T\to\infty}
+  \frac1T\int_0^T ds\,
+  e^{-s\mathcal L_0}\mathcal A e^{s\mathcal L_0}.
+  \label{eq:open-system-secular-projection}
+\end{equation}
+In Bohr-frequency notation this is the rule \(\omega=\omega'\).  Degenerate
+transitions with the same Bohr frequency remain coupled through the matrix
+\(\gamma_{ab}(\omega)\); the projection removes only the oscillating blocks
+whose frequencies differ.  The principal-value matrices produce a Lamb shift
+of the form
+\[
+  H_{\rm LS}
+  =
+  \sum_{\omega,a,b}
+  h_{ab}(\omega)\,
+  S_a(\omega)^\dagger S_b(\omega),
+\]
+with \(h(\omega)=h(\omega)^\dagger\).  Since
+\(S_a(\omega)^\dagger S_b(\omega)\) has zero net Bohr frequency,
+\([H_S,H_{\rm LS}]=0\) in the standard secular Davies construction.
+
+For a finite-dimensional system with discrete Bohr spectrum, bounded system
+couplings, a stationary environment state, a specified initial embedding such
+as \(\rho\mapsto\rho\otimes\rho_E\), and reservoir mixing/correlation
+estimates strong enough to control the second-order memory term and discard
+higher cumulants, the reduced weak-coupling theorem has the form
+\begin{equation}
+  \sup_{0\le\tau\le T}
+  \left\lVert
+    \widetilde\Phi_\lambda(\lambda^{-2}\tau)
+    -
+    e^{\tau\mathcal K}
+  \right\rVert
+  \longrightarrow0
+  \qquad
+  (\lambda\to0)
+  \label{eq:open-system-davies-map-convergence}
+\end{equation}
+for each fixed \(T\), in the topology supplied by the microscopic theorem.
+The limiting interaction-picture slow state satisfies
+\begin{equation}
+  \frac{d\widetilde\rho}{d\tau}
+  =
+  \mathcal K(\widetilde\rho),
   \label{eq:open-system-markov-master-equation}
 \end{equation}
 where
 \begin{align}
-  \mathcal L(\rho)
+  \mathcal K(\rho)
   &=
-  -\ii[H_S+H_{\rm LS},\rho]
+  -\ii[H_{\rm LS},\rho]
   \nonumber\\
   &\quad+
   \sum_{\omega}\sum_{a,b}\gamma_{ab}(\omega)
@@ -1652,10 +1743,46 @@ where
   \right].
   \label{eq:open-system-davies-generator}
 \end{align}
-\(H_{\rm LS}\) is the Lamb-shift Hamiltonian from the principal-value part
-of the bath correlator.  The dissipative part has the GKSL form because each
-matrix \(\gamma_{ab}(\omega)\) is positive semidefinite and hence can be
-diagonalized into jump operators.
+\(H_S\) is absent from \(\mathcal K\) because the free system rotation was
+already removed in \eqref{eq:open-system-reduced-interaction-map}.  The
+dissipative part has the GKSL form because each matrix
+\(\gamma_{ab}(\omega)\) is positive semidefinite and hence can be diagonalized
+into jump operators.
+
+The corresponding physical-time Schrödinger-picture approximation is a
+different statement.  On intervals \(0\le t\le T/\lambda^2\), the same
+weak-coupling theorem gives
+\[
+  \Phi_\lambda(t)
+  =
+  \operatorname{Ad}_{e^{-\ii tH_S}}\,
+  e^{\lambda^2t\mathcal K}
+  +o(1)
+\]
+in the theorem topology.  The associated local equation is
+\begin{equation}
+  \frac{d\rho}{dt}
+  =
+  -\ii[H_S+\lambda^2H_{\rm LS},\rho]
+  +
+  \lambda^2\mathcal D(\rho)
+  +o(\lambda^2),
+  \label{eq:open-system-schrodinger-physical-time-master}
+\end{equation}
+where \(\mathcal D=\mathcal K+\ii[H_{\rm LS},\cdot]\).  If the unrotated
+Schrödinger state is instead differentiated with respect to the slow time
+\(\tau=\lambda^2t\), then
+\[
+  \frac{d\rho}{d\tau}
+  =
+  -\ii\lambda^{-2}[H_S,\rho]
+  -\ii[H_{\rm LS},\rho]
+  +\mathcal D(\rho)+o(1).
+\]
+Thus a generic unrotated state has a fast free rotation rather than a
+convergent slow-time limit; only the rotating interaction-picture map in
+\eqref{eq:open-system-davies-map-convergence} has the Davies semigroup as its
+limit.
 
 \begin{proposition}[Trace preservation and complete positivity]
 \label{prop:gksl-trace-cp}
@@ -1684,7 +1811,7 @@ Then the dissipator is a sum of standard Lindblad terms
   L_{\alpha\omega}\rho L_{\alpha\omega}^\dagger
   -\frac12\{L_{\alpha\omega}^\dagger L_{\alpha\omega},\rho\}.
 \]
-Set \(H=H_S+H_{\rm LS}\),
+Set \(H=H_{\rm LS}\),
 \[
   \Gamma=\sum_{\alpha,\omega}
   L_{\alpha\omega}^\dagger L_{\alpha\omega},
@@ -1693,7 +1820,7 @@ Set \(H=H_S+H_{\rm LS}\),
 \]
 and define the completely positive maps
 \[
-  \mathcal K_t(\rho)=
+  \mathcal N_t(\rho)=
   e^{-\ii H_{\rm eff}t}\rho e^{\ii H_{\rm eff}^\dagger t},
   \qquad
   \mathcal J(\rho)=
@@ -1704,24 +1831,24 @@ In finite dimension the Dyson--Phillips series
 \begin{align}
   T_t
   &=
-  \mathcal K_t
+  \mathcal N_t
   +
   \sum_{n\ge1}
   \int_{0<s_1<\cdots<s_n<t}
-  \mathcal K_{t-s_n}\mathcal J
-  \mathcal K_{s_n-s_{n-1}}\cdots
-  \mathcal J\mathcal K_{s_1}\,
+  \mathcal N_{t-s_n}\mathcal J
+  \mathcal N_{s_n-s_{n-1}}\cdots
+  \mathcal J\mathcal N_{s_1}\,
   ds_1\cdots ds_n
   \label{eq:open-system-gksl-dyson}
 \end{align}
 converges in operator norm on the trace-class matrices.  Each summand is
 completely positive, so \(T_t\) is completely positive.  Differentiating the
-series gives \(dT_t/dt=\mathcal L T_t=T_t\mathcal L\) and \(T_0=\id\).
-Since the trace of \(\mathcal L(\rho)\) vanishes for every \(\rho\),
+series gives \(dT_t/dt=\mathcal K T_t=T_t\mathcal K\) and \(T_0=\id\).
+Since the trace of \(\mathcal K(\rho)\) vanishes for every \(\rho\),
 \[
   \frac{d}{dt}\operatorname{Tr}T_t(\rho)
   =
-  \operatorname{Tr}\mathcal L(T_t(\rho))=0,
+  \operatorname{Tr}\mathcal K(T_t(\rho))=0,
 \]
 and therefore \(T_t\) is trace preserving.  This proves complete positivity
 and trace preservation for the semigroup generated by
