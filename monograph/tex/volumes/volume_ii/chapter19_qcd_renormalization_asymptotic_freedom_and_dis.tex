@@ -13993,8 +13993,8 @@ Thus continuum JIMWLK is a projective theorem about Wilson-line states and
 QCD factorization; the formal functional Hamiltonian names only the candidate
 cylinder generator.
 
-\begin{controlledapproximation}[Measured small-\(x\) observable map]
-\label{ca:qcd-small-x-measured-observable-map}
+\begin{remark}[Measured small-\(x\) observable interface]
+\label{rem:qcd-small-x-measured-observable-interface}
 The quantity compared with a DIS structure function, a diffractive cross
 section, or a forward-production bin is a tested color-singlet QCD functional
 rather than the Wilson-line state by itself.  Fix a compact small-\(x\)
@@ -14019,8 +14019,9 @@ corresponding jet, fragmentation, or diffractive projection.  The transverse
 Wilson-line evolution supplies only the target-side rapidity dependence in
 this coordinate.
 
-A controlled small-\(x\) prediction for the tested observable therefore
-consists of:
+The interface is not itself an approximation estimate.  It records the data
+which must be supplied before a Wilson-line calculation becomes a prediction
+for a measured QCD functional:
 \begin{enumerate}
   \item the exact finite-regulator definition of
   \(\mathfrak T_{Q,Y}[\varphi]\) in the measured channel;
@@ -14041,14 +14042,17 @@ consists of:
   measurements.
 \end{enumerate}
 The finite BFKL eigenvalue, the compact Wilson-line diffusion calculation, and
-the BK closure estimate are entries in this list.  They become physics
-predictions for the measured functional through the impact-factor map and the
-residual controls above.
-\end{controlledapproximation}
+the BK closure estimate are entries in this interface.  They become physics
+predictions for the measured functional only after the impact-factor map and
+the listed residual controls are supplied in the same measurement topology.  A
+residual name in the list is therefore a proof obligation until a process
+estimate, a regulator comparison, or an imported theorem supplies its norm and
+range.
+\end{remark}
 
 \begin{controlledapproximation}[Leading small-\(x\) inclusive DIS dipole channel]
 \label{ca:qcd-small-x-leading-dis-dipole-channel}
-For the inclusive virtual-photon channel the preceding abstract coordinate can
+For the inclusive virtual-photon channel the preceding interface coordinate can
 be made explicit at the leading \(q\bar q\) impact-factor level.  Write
 \[
   \mathbf x=\mathbf b+\frac{\mathbf r}{2},
@@ -14213,7 +14217,7 @@ Wilson-line geometry in transverse coordinate space.
 \begin{remark}[Measured small-\(x\) proof-obligation map]
 \label{rem:qcd-small-x-measured-proof-obligation-map}
 In the setting of
-Controlled Approximation~\ref{ca:qcd-small-x-measured-observable-map}, suppose
+Remark~\ref{rem:qcd-small-x-measured-observable-interface}, suppose
 the chosen finite approximation
 \(\mathcal A^{(m,n)}_{Q,Y}[\varphi]\) to
 \(\mathcal S^{\rm sx}_{Q,Y}[\varphi]\) satisfies the following residual

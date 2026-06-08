@@ -32,9 +32,12 @@ the pass are intentional:
 - `Duality and stability gate for SVZ extractions` declares a Borel window,
   OPE/duality/threshold controls, pole and residue remainders, and displayed
   bounds.
-- `Measured small-\(x\) observable map` declares the measured finite-regulator
-  functional, impact-factor matching, rapidity factorization topology, finite
-  `Q` and truncation remainders, and residual controls.
+- `Measured small-\(x\) observable map` was re-audited on 2026-06-08 and
+  superseded by `rem:qcd-small-x-measured-observable-interface`: the interface
+  names measured finite-regulator, impact-factor, rapidity, finite-`Q`,
+  truncation, and residual-control obligations, but the controlled
+  approximation status now belongs only to the adjacent leading inclusive-DIS
+  dipole channel that actually propagates component estimates.
 - `Instanton observable assembly map` declares a retained one-instanton
   window, physical projection, absolute residual bound, and noncancellation
   margin.

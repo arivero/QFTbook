@@ -5,8 +5,8 @@ Evidence contract.
 Target claims: the Volume II small-x section's trace-delta color convention,
 leading dipole/BFKL kernel normalization, finite Wilson-line/JIMWLK weak
 generator boundary, BK closure estimate, projective JIMWLK cylinder limit,
-measured small-x proof-obligation map, and leading inclusive DIS dipole
-observable channel.
+measured small-x observable interface, proof-obligation map, and leading
+inclusive DIS dipole observable channel.
 Independent construction: the checks rebuild the color-convention invariant
 from both trace-delta and half-trace coordinates, test transverse inversion
 covariance directly on rational points, recompute BFKL saddle constants from
@@ -23,7 +23,9 @@ rapidity, projective, evolution, closure, and power residuals.
 Negative controls: wrong trace-normalization transport, loss of inversion
 covariance, nondissipative Wilson-line modes, nonvanishing generator errors in
 the projective limit, omitted impact-factor or BK-closure residuals, missing
-photon-kernel weights, and the wrong rapidity-subtraction sign are rejected.
+component estimates while promoting the interface to a controlled
+approximation, missing photon-kernel weights, and the wrong
+rapidity-subtraction sign are rejected.
 Scope boundary: a pass verifies finite convention closure and independent
 finite-observable propagation; it does not prove continuum JIMWLK existence,
 derive small-x factorization for QCD, prove BK closure, or bound physical
@@ -63,9 +65,9 @@ the finite Wilson-line/Fokker-Planck algebra used as the JIMWLK theorem
 boundary, the finite BK-closure algebra/error estimate, and the projective
 cylinder-limit error budget for passing finite weak JIMWLK equations to a
 continuum Wilson-line state.  They also check the conditional residual
-propagation map that turns the Wilson-line state and impact factor into a
-tested measured small-x observable once component estimates have been supplied,
-and a finite leading-DIS dipole channel in which photon
+propagation interface that turns the Wilson-line state and impact factor into a
+tested measured small-x observable only once component estimates have been
+supplied, and a finite leading-DIS dipole channel in which photon
 wave-function weights propagate rapidity, BK-closure, and endpoint errors to
 the measured bin.
 """
@@ -400,7 +402,7 @@ def check_projective_jimwlk_cylinder_limit_budget() -> None:
 
 
 def check_small_x_measured_observable_proof_obligation_map() -> None:
-    """Check the finite proof-obligation map from QCD observable to CGC approximant."""
+    """Check the finite proof-obligation interface from QCD observable to CGC approximant."""
 
     exact_observable = Fraction(29, 17)
     residuals = {
@@ -411,6 +413,39 @@ def check_small_x_measured_observable_proof_obligation_map() -> None:
         "closure": Fraction(11, 401),
         "power": Fraction(13, 503),
     }
+    interface_status = {
+        "impact_factor": "named_slot",
+        "rapidity": "named_slot",
+        "projective": "estimated_component",
+        "evolution": "named_slot",
+        "closure": "estimated_component",
+        "power": "named_slot",
+    }
+
+    def missing_component_estimates(status: dict[str, str]) -> tuple[str, ...]:
+        return tuple(
+            sorted(
+                key
+                for key in residuals
+                if status[key] != "estimated_component"
+            )
+        )
+
+    assert_equal(
+        "measured small-x interface missing physical component estimates",
+        missing_component_estimates(interface_status),
+        ("evolution", "impact_factor", "power", "rapidity"),
+    )
+
+    complete_status = {
+        key: "estimated_component"
+        for key in residuals
+    }
+    assert_equal(
+        "measured small-x complete estimate status",
+        missing_component_estimates(complete_status),
+        (),
+    )
 
     wilson_coordinate = exact_observable - residuals["impact_factor"]
     rapidity_subtracted = wilson_coordinate - residuals["rapidity"]
@@ -683,7 +718,7 @@ def main() -> None:
     check_leading_dis_dipole_observable_channel()
     print(
         "All QCD small-x/BFKL, finite Wilson-line, BK-closure, "
-        "projective JIMWLK-limit, measured-observable proof-obligation map, "
+        "projective JIMWLK-limit, measured-observable interface/status, "
         "and leading DIS dipole-channel checks passed."
     )
 

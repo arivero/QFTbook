@@ -774,15 +774,20 @@ The chapter must define and derive:
        displayed weak-equation error budget separates this projective theorem
        from the finite BK closure estimate, which controls only one projected
        dipole subsystem.
-22ccf. The measured small-\(x\) prediction now has a separate observable-map
-       budget.  The exact tested DIS, diffractive, or forward-production
-       functional is compared with a Wilson-line coordinate only after
-       impact-factor matching, rapidity subtraction, projective regulator
-       removal, finite evolution/truncation, BK or moment-closure residuals,
-       and power remainders are supplied in the same measurement topology.
-       The companion finite check verifies the residual telescope and shows
-       that dropping the impact-factor or closure entry under-budgets the
-       example observable.
+22ccf. The measured small-\(x\) prediction now has a separate observable
+       interface, `rem:qcd-small-x-measured-observable-interface`.  The
+       exact tested DIS, diffractive, or forward-production functional is
+       compared with a Wilson-line coordinate only after impact-factor
+       matching, rapidity subtraction, projective regulator removal, finite
+       evolution/truncation, BK or moment-closure residuals, and power
+       remainders are supplied in the same measurement topology.  The
+       interface is not itself a controlled approximation; the following
+       leading inclusive-DIS dipole channel is the controlled block that
+       propagates photon-kernel, rapidity, BK, endpoint, and color-transparency
+       controls.  The companion finite check verifies the residual telescope
+       and shows that dropping the impact-factor or closure entry under-budgets
+       the example observable, while also rejecting promotion of the interface
+       when several component estimates remain named slots.
 22cd. Drell--Yan is formulated as a timelike current-current Wightman tensor
       between two hadron states.  The leading-power kinematic variables obey
       \(x_Ax_B=Q^2/s\) and \(y=\frac12\log(x_A/x_B)\).  When the lepton-pair
@@ -1540,3 +1545,15 @@ The chapter must define and derive:
   detector comparison rather than bookkeeping language.  The companion now
   rejects wrong-variable and wrong-source finite detector tests in addition to
   open-angle-only and unnormalized comparisons.
+- 2026-06-08 issue #844 small-\(x\) semantic-status pass: demoted the measured
+  small-\(x\) observable map from `controlledapproximation` to the remark
+  `rem:qcd-small-x-measured-observable-interface`.  The retained interface
+  states the measured color-singlet functional, Wilson-line coordinate,
+  impact-factor map, rapidity cancellation, projective state limit,
+  evolution/closure, and power-remainder obligations, but it no longer claims
+  controlled-approximation status until the process-specific component
+  estimates are supplied.  The adjacent
+  `ca:qcd-small-x-leading-dis-dipole-channel` remains the actual measured DIS
+  approximation window because it propagates photon-kernel weights,
+  rapidity-subtraction, BK error, endpoint primitives, and small-\(r\)
+  color-transparency input.

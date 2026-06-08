@@ -448,11 +448,13 @@ Current checks:
   state: representative consistency, the finite-step residual bound, a
   vanishing error schedule, and the obstruction caused by a nonvanishing
   generator error.  Finally, it checks the measured small-\(x\) observable
-  proof-obligation propagation map: impact-factor matching, rapidity
+  interface/proof-obligation propagation map: impact-factor matching, rapidity
   subtraction, projective regulator removal, evolution, closure, and power
   remainders add to the exact tested-observable mismatch once those component
-  estimates are supplied, and omitting either the impact-factor or BK-closure
-  entry under-budgets the finite example.  It
+  estimates are supplied; it rejects promoting the interface itself to a
+  controlled approximation while impact-factor, rapidity, evolution, and power
+  terms are still named slots, and omitting either the impact-factor or
+  BK-closure entry under-budgets the finite example.  It
   now also checks a leading inclusive-DIS dipole channel: the transverse and
   longitudinal photon-kernel spin factors are symmetric under
   \(z\leftrightarrow 1-z\), the BK dipole error is propagated through the
