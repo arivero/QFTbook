@@ -2467,6 +2467,37 @@ one-loop coordinate.  The existence and uniqueness of the infrared fixed
 point in the full interval require the nonperturbative input summarized in
 the status boundary below.
 
+\paragraph{Electric Gaussian endpoint from the first nonzero beta term.}
+At \(N_f=3N_c\), the one-loop coefficient \(b_0=3N_c-N_f\) vanishes, so the
+direction of the perturbative flow is not determined by \(b_0\) itself.  In
+the chapter's canonical coupling coordinate the weak-coupling matter
+anomalous dimension for SQCD with \(W=0\) is
+\begin{equation}
+  \gamma_Q(g)
+  =
+  -\frac{C_2(\mathbf N_c)}{8\pi^2}g^2+O(g^4),
+  \qquad
+  C_2(\mathbf N_c)=\frac{N_c^2-1}{2N_c}.
+  \label{eq:sqcd-one-loop-quark-gamma}
+\end{equation}
+Substituting this into the specialized NSVZ expression
+\eqref{eq:sqcd-nsvz-beta-specialized} gives, at \(N_f=3N_c\),
+\begin{equation}
+  \beta_g
+  =
+  \frac{3N_cC_2(\mathbf N_c)}{128\pi^4}g^5+O(g^7)
+  =
+  \frac{3(N_c^2-1)}{256\pi^4}g^5+O(g^7).
+  \label{eq:sqcd-electric-gaussian-edge-beta}
+\end{equation}
+Thus \(g=0\) is marginally irrelevant toward the infrared: lowering the
+renormalization scale drives a sufficiently small electric coupling back to
+zero.  This is the dynamical perturbative reason for calling \(N_f=3N_c\)
+the free electric Gaussian edge.  The equality of
+\eqref{eq:sqcd-free-field-a-comparison} with the free-field value at the same
+point is only kinematic anomaly arithmetic; it does not by itself determine
+the RG direction.
+
 \begin{hypothesis}[SCFT input used in bookkeeping]
 \label{hyp:n1-scft-bookkeeping-input}
 Whenever this chapter assigns a scaling dimension by
@@ -2844,8 +2875,83 @@ Here \(M^i{}_j\) is normalized as the electric composite
 \(\widetilde Q_jQ^i\), so it has engineering dimension two in the
 microscopic matching convention; \(\mu_*\) is a nonzero matching scale of
 dimension one.  Equivalently one may use the canonically normalized magnetic
-singlet \(M_{\mathrm{can}}=M/\mu_*\) and absorb \(\mu_*\) into the Yukawa
-coupling.  The displayed form keeps the operator map visible.
+singlet \(M_{\mathrm{can}}=M/\mu_*\) and write
+\begin{equation}
+  W_{\mathrm{mag}}
+  =
+  h\,M_{\mathrm{can}}{}^i{}_j q_i\widetilde q^j ,
+  \label{eq:sqcd-magnetic-canonical-yukawa}
+\end{equation}
+with a dimensionless Yukawa coordinate \(h\).  The displayed
+\(M q\widetilde q/\mu_*\) form keeps the operator map visible; the canonical
+form is the one used for perturbative RG statements.
+
+\paragraph{Magnetic gauge--Yukawa ultraviolet status.}
+Let \(t=\widetilde N_c=N_f-N_c\), let \(g_m\) be the magnetic canonical gauge
+coupling, and let
+\[
+  C_F^{(m)}=C_2(\mathbf{fund}_{SU(t)})=\frac{t^2-1}{2t},
+  \qquad
+  b_{0,m}=3t-N_f=2N_f-3N_c .
+\]
+In a mass-independent canonical scheme, the one-loop anomalous dimensions of
+the magnetic fields in the flavor-symmetric gauge--Yukawa chart are
+\begin{align}
+  \gamma_q=\gamma_{\widetilde q}
+  &=
+  \frac{1}{16\pi^2}
+  \left(N_f|h|^2-2C_F^{(m)}g_m^2\right)
+  +O(g_m^4,g_m^2|h|^2,|h|^4),
+  \label{eq:sqcd-magnetic-quark-gamma-one-loop}\\
+  \gamma_M
+  &=
+  \frac{1}{16\pi^2}
+  \left(t|h|^2\right)
+  +O(g_m^2|h|^2,|h|^4).
+  \label{eq:sqcd-magnetic-meson-gamma-one-loop}
+\end{align}
+The nonrenormalization theorem then gives
+\[
+  \frac{\beta_h}{h}
+  =
+  \frac12(\gamma_M+\gamma_q+\gamma_{\widetilde q}),
+\]
+so, to one loop,
+\begin{align}
+  \beta_{g_m^2}
+  &=
+  -\frac{b_{0,m}}{8\pi^2}g_m^4+\cdots,
+  \label{eq:sqcd-magnetic-gauge-beta-one-loop}\\
+  \beta_{|h|^2}
+  &=
+  \frac{|h|^2}{16\pi^2}
+  \left((2N_f+t)|h|^2-4C_F^{(m)}g_m^2\right)+\cdots .
+  \label{eq:sqcd-magnetic-yukawa-beta-one-loop}
+\end{align}
+For the ratio \(r=|h|^2/g_m^2\),
+\begin{equation}
+  \mu\frac{dr}{d\mu}
+  =
+  \frac{r g_m^2}{16\pi^2}
+  \left((2N_f+t)r+2b_{0,m}-4C_F^{(m)}\right)+\cdots .
+  \label{eq:sqcd-magnetic-yukawa-ratio-flow}
+\end{equation}
+In the free electric range \(N_f\ge 3N_c\), one has \(t\ge2N_c\), and
+\[
+  2b_{0,m}-4C_F^{(m)}
+  =
+  2(t-N_c)+\frac{2}{t}
+  >
+  0 .
+\]
+Therefore no positive nonzero weak-coupling ray makes both \(g_m\) and \(h\)
+asymptotically free in this range.  The line \(h=0\) is asymptotically free
+for the gauge sector, but it removes the superpotential that implements the
+Seiberg magnetic field identifications.  A magnetic description with nonzero
+matching \(h\) must therefore be treated as a Wilsonian theory with a finite
+matching cutoff and specified \(h\), or be supplied with additional
+ultraviolet completion data; magnetic gauge asymptotic freedom alone is not a
+UV definition of the full magnetic gauge--Yukawa Lagrangian.
 
 The fractional magnetic baryon charges are also shorthand for a representation
 of the same faithful group \eqref{eq:sqcd-faithful-flavor-baryon-group}, not
@@ -2878,12 +2984,19 @@ the following hypotheses are part of the statement.
   cutoff in the free magnetic subrange.
 \item For the free electric continuation \(N_f\ge 3N_c\), the electric
   variables require extra ultraviolet data.  At \(N_f=3N_c\) the electric
-  one-loop coefficient vanishes and the electric description is the Gaussian
-  edge of the asymptotically free family.  For \(N_f>3N_c\), the electric
+  one-loop coefficient vanishes, but the first nonzero term
+  \eqref{eq:sqcd-electric-gaussian-edge-beta} makes the electric coupling
+  marginally irrelevant toward the infrared; this is the Gaussian edge of the
+  free electric family.  For \(N_f>3N_c\), the electric
   Lagrangian is used either as a finite cutoff effective theory with cutoff
   \(\Lambda_{\rm el}\), as a theory supplied with a specified ultraviolet
-  completion, or as an emergent infrared coordinate system defined through the
-  asymptotically free magnetic theory.  In the finite cutoff formulation one
+  completion, or as an emergent infrared coordinate system defined through a
+  magnetic Wilsonian theory with matching scale and canonical Yukawa datum
+  \(h(\Lambda_{\rm mag})\).  The one-loop analysis
+  \eqref{eq:sqcd-magnetic-yukawa-ratio-flow} shows that the magnetic gauge
+  coupling may be asymptotically free while the full nonzero-\(h\)
+  gauge--Yukawa system is not thereby UV-completed.  In the finite cutoff
+  formulation one
   first takes the thermodynamic limit at fixed \(\Lambda_{\rm el}\), then the
   infrared limit of momenta, masses, and sources with all ratios
   \(p/\Lambda_{\rm el}\) tending to zero.  A subsequent
@@ -2965,14 +3078,17 @@ with the following calculations serving as evidence rather than proof.
 \label{conj:sqcd-free-electric-continuation}
 For \(N_f\ge 3N_c\) the electric variables define the free electric side of a
 separate continuation, rather than another instance of the continuum-pair
-statement above.  At \(N_f=3N_c\), the electric one-loop coefficient vanishes
-and the endpoint is treated as a Gaussian edge with the free electric
-dimensions and accidental currents included before any \(\Delta=\frac32R\)
+statement above.  At \(N_f=3N_c\), the endpoint is treated as a Gaussian edge
+because the first nonzero electric beta-function term
+\eqref{eq:sqcd-electric-gaussian-edge-beta} makes the small gauge coupling
+marginally irrelevant toward the infrared.  The free electric dimensions and
+accidental currents are included before any \(\Delta=\frac32R\)
 interpretation.  For \(N_f>3N_c\), any electric-side statement must use one of
 the ultraviolet choices in
 Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses}: finite cutoff electric
 EFT, specified ultraviolet completion, or electric fields as emergent
-infrared coordinates of the asymptotically free magnetic theory.  The
+infrared coordinates of a magnetic Wilsonian theory with an explicit
+nonzero-\(h\) matching cutoff or additional ultraviolet completion.  The
 continuation asserts matching only for the protected local sector declared in
 that hypothesis and after the limit order stated there.  A UV-complete
 electric continuum definition in this range, or a superconformal-dimension
@@ -3369,18 +3485,30 @@ upper endpoint by the electric loss of asymptotic freedom.
 \item[\(N_f=3N_c\).]
 Status: Gaussian electric edge of the asymptotically free family and boundary
 case of the free electric continuation.  The electric one-loop coefficient
-vanishes, the anomaly comparison
+vanishes, but the first nonzero electric beta-function term
+\eqref{eq:sqcd-electric-gaussian-edge-beta} is positive in the chapter's
+\(\beta_g=\mu\,dg/d\mu\) convention, so the small electric coupling is
+marginally irrelevant toward the infrared.  The anomaly comparison
 \eqref{eq:sqcd-free-field-a-comparison} has zero difference from the free
 electric value, and fixed-point dimension formulae are interpreted with the
 free electric variables and their accidental currents rather than as an
-interacting SCFT claim.
+interacting SCFT claim.  The magnetic gauge coupling is asymptotically free
+at this endpoint, but the canonical magnetic superpotential has no nonzero
+weak-coupling gauge--Yukawa asymptotically-free ray by
+\eqref{eq:sqcd-magnetic-yukawa-ratio-flow}; it is not a replacement
+derivation of the electric Gaussian edge.
 \item[\(N_f>3N_c\).]
 Status: strict free electric continuation.  The electric gauge coupling is
 infrared free in the perturbative Wilsonian sense, while the electric
 Lagrangian by itself is a finite cutoff EFT, a UV-completed theory, or an
-emergent infrared coordinate system supplied by the magnetic definition.  The
-phase entry therefore asserts only the protected low-energy sector specified
-in Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses}, with the order of
+emergent infrared coordinate system supplied by a magnetic Wilsonian
+definition with a declared matching cutoff and Yukawa value.  Magnetic gauge
+asymptotic freedom is not enough: for nonzero canonical \(h\), the one-loop
+system \eqref{eq:sqcd-magnetic-yukawa-beta-one-loop}--
+\eqref{eq:sqcd-magnetic-yukawa-ratio-flow} has a Yukawa UV obstruction rather
+than a positive nonzero asymptotically-free ray.  The phase entry therefore
+asserts only the protected low-energy sector specified in
+Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses}, with the order of
 thermodynamic, infrared, and cutoff limits stated there.  The same rank,
 charge, anomaly, NSVZ, and deformation arithmetic remains a consistency
 ledger, while the continuum-pair statement of

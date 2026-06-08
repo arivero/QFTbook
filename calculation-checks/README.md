@@ -3472,17 +3472,22 @@ Current checks:
   convention, magnetic gauge-\(R\) anomaly cancellation, magnetic
   superpotential dimension and \(R\)-charge, SQCD conformal-window
   central-charge and free-field \(a_{\mathrm{UV}}-a_{\mathrm{IR}}\)
-  comparison factorization, electric-magnetic local perturbative
-  anomaly-polynomial matching, mass and Higgs deformation rank/dimension/
-  \(R\)-charge tests, \(N_f=N_c+1\) confining-superpotential
-  dimension/\(R\)-charge checks, mass decoupling to the \(N_f=N_c\)
-  quantum-modified constraint, massive-SQCD elimination to pure-SYM branch
-  superpotentials, source identity, and mass-source/Konishi ledger, and the
-  conformal-window/free-phase inequalities.  The free-electric negative
-  control verifies that rank, charge, anomaly, and deformation arithmetic can
+  comparison factorization, the first nonzero \(N_f=3N_c\) electric
+  beta-function coefficient derived from the one-loop matter anomalous
+  dimension, the canonical magnetic gauge-Yukawa ratio flow after meson
+  normalization, electric-magnetic local perturbative anomaly-polynomial
+  matching, mass and Higgs deformation rank/dimension/\(R\)-charge tests,
+  \(N_f=N_c+1\) confining-superpotential dimension/\(R\)-charge checks, mass
+  decoupling to the \(N_f=N_c\) quantum-modified constraint, massive-SQCD
+  elimination to pure-SYM branch superpotentials, source identity, and
+  mass-source/Konishi ledger, and the conformal-window/free-phase
+  inequalities.  The free-electric negative controls verify that \(b_0=0\)
+  alone does not certify the Gaussian endpoint, that magnetic gauge
+  asymptotic freedom alone does not UV-complete the nonzero-Yukawa magnetic
+  theory, and that rank, charge, anomaly, and deformation arithmetic can
   continue to pass for \(N_f>3N_c\) while the standard continuum-pair
   statement and fixed-point dimension tests remain inadmissible without the
-  extra finite-cutoff, UV-completion, or emergent-magnetic definition data.
+  extra finite-cutoff, UV-completion, or magnetic matching data.
   These finite checks verify the displayed algebraic consistency conditions;
   they do not constitute a proof of Seiberg duality, of the existence of the
   infrared fixed points, or of a UV completion for the free-electric electric

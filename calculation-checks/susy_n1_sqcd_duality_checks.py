@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Exact convention checks for 4D N=1 SQCD duality and phase arithmetic.
 
+Evidence contract.
 Target claims: rank involution, baryon normalization, faithful
 flavor-baryon quotient arithmetic, local anomaly matching, deformation
 bookkeeping, conformal-window central-charge arithmetic, and the range ledger
@@ -8,13 +9,18 @@ for the standard Seiberg-duality statement versus the free-electric
 continuation.
 Independent construction: finite rational arithmetic for charges, anomaly
 coefficients, NSVZ numerators, dimensions, R-charges, and range inequalities.
+The range checks derive the first nonzero electric endpoint beta coefficient
+at N_f=3 N_c and the one-loop magnetic gauge-Yukawa ratio flow after
+canonical meson normalization.
 Imported assumptions: the field content and superpotential of the proposed
 magnetic description, the monograph gamma convention, and the stated
 continuum or finite-cutoff status of the SQCD range under discussion.
 Negative controls: algebraic matching beyond 3 Nc is required to pass as
 protected-sector consistency, but it must not admit the same continuum-pair
 claim or fixed-point dimension tests as the electric-asymptotically-free
-duality range.
+duality range; b0=0 alone does not certify the electric Gaussian edge, and
+magnetic gauge asymptotic freedom alone does not certify the full nonzero
+Yukawa magnetic UV theory.
 Scope boundary: these checks do not prove Seiberg duality, construct
 infrared fixed points, or supply a UV completion for a free-electric electric
 Lagrangian.
@@ -286,6 +292,86 @@ def check_conformal_window_central_charges():
                 assert_equal(a_difference, 0, "SQCD Gaussian edge a equality")
 
 
+def electric_gaussian_endpoint_coefficient(nc):
+    """Coefficient of g^5/pi^4 in beta_g at N_f=3 N_c.
+
+    The chapter convention is gamma_Q=d log Z_Q/d log mu and
+    gamma_Q= - C_F g^2/(8 pi^2)+O(g^4).  At N_f=3 N_c the NSVZ numerator is
+    3 N_c gamma_Q, so beta_g has a positive g^5 coefficient.
+    """
+
+    c_f = Fraction(nc * nc - 1, 2 * nc)
+    gamma_g2_coefficient = -c_f / 8
+    nsvz_numerator_g2_coefficient = 3 * nc * gamma_g2_coefficient
+    return -nsvz_numerator_g2_coefficient / 16
+
+
+def magnetic_gauge_yukawa_coefficients(nc, nf):
+    dual_nc = nf - nc
+    c_f_magnetic = Fraction(dual_nc * dual_nc - 1, 2 * dual_nc)
+    b0_magnetic = 3 * dual_nc - nf
+    yukawa_self_coefficient = 2 * nf + dual_nc
+    ratio_constant = 2 * b0_magnetic - 4 * c_f_magnetic
+    positive_nonzero_ray = ratio_constant < 0
+    fixed_ratio = None
+    if positive_nonzero_ray:
+        fixed_ratio = -ratio_constant / yukawa_self_coefficient
+    return {
+        "dual_nc": dual_nc,
+        "c_f_magnetic": c_f_magnetic,
+        "b0_magnetic": b0_magnetic,
+        "yukawa_self_coefficient": yukawa_self_coefficient,
+        "ratio_constant": ratio_constant,
+        "positive_nonzero_ray": positive_nonzero_ray,
+        "fixed_ratio": fixed_ratio,
+    }
+
+
+def check_electric_gaussian_endpoint_beta_coefficient():
+    for nc in range(2, 20):
+        b0 = 3 * nc - 3 * nc
+        assert_equal(b0, 0, "electric endpoint one-loop coefficient vanishes")
+
+        endpoint_coefficient = electric_gaussian_endpoint_coefficient(nc)
+        expected = Fraction(3 * (nc * nc - 1), 256)
+        assert_equal(endpoint_coefficient, expected, "electric endpoint g^5 beta coefficient")
+        if not endpoint_coefficient > 0:
+            raise AssertionError("electric endpoint should be marginally irrelevant toward the IR")
+
+        b0_only_coefficient = Fraction(0)
+        if b0_only_coefficient == endpoint_coefficient:
+            raise AssertionError("b0=0 alone incorrectly certified the Gaussian endpoint")
+
+
+def check_magnetic_gauge_yukawa_uv_status():
+    for nc in range(2, 20):
+        for nf in range(nc + 2, 5 * nc + 1):
+            coeffs = magnetic_gauge_yukawa_coefficients(nc, nf)
+            dual_nc = coeffs["dual_nc"]
+
+            assert_equal(dual_nc, nf - nc, "magnetic gauge rank in RG coefficients")
+            assert_equal(
+                coeffs["yukawa_self_coefficient"],
+                2 * nf + dual_nc,
+                "magnetic Yukawa self coefficient",
+            )
+
+            if nf >= 3 * nc:
+                if not coeffs["b0_magnetic"] > 0:
+                    raise AssertionError("free-electric magnetic gauge sector should be asymptotically free")
+                expected_ratio_constant = 2 * (dual_nc - nc) + Fraction(2, dual_nc)
+                assert_equal(
+                    coeffs["ratio_constant"],
+                    expected_ratio_constant,
+                    "magnetic free-electric ratio-flow constant",
+                )
+                if coeffs["positive_nonzero_ray"] or coeffs["fixed_ratio"] is not None:
+                    raise AssertionError("nonzero magnetic Yukawa was incorrectly accepted as an AF ray")
+            elif coeffs["positive_nonzero_ray"]:
+                if not coeffs["fixed_ratio"] > 0:
+                    raise AssertionError("positive magnetic gauge-Yukawa ray should have positive ratio")
+
+
 def check_duality_deformation_tests():
     for nc in range(2, 12):
         for nf in range(nc + 2, 5 * nc + 1):
@@ -518,6 +604,18 @@ def sqcd_range_status(nc, nf):
     electric_b0 = 3 * nc - nf
     magnetic_b0 = 3 * (nf - nc) - nf
     interacting = field_content and 2 * nf > 3 * nc and nf < 3 * nc
+    endpoint_coefficient_positive = nf == 3 * nc and electric_gaussian_endpoint_coefficient(nc) > 0
+    magnetic_yukawa = magnetic_gauge_yukawa_coefficients(nc, nf) if field_content else None
+    magnetic_nonzero_yukawa_af_ray = (
+        magnetic_yukawa["positive_nonzero_ray"] if magnetic_yukawa is not None else False
+    )
+    magnetic_h_zero_af_only = (
+        field_content
+        and nf >= 3 * nc
+        and magnetic_yukawa is not None
+        and magnetic_yukawa["b0_magnetic"] > 0
+        and not magnetic_nonzero_yukawa_af_ray
+    )
     return {
         "field_content_algebra": field_content,
         "standard_duality_range": field_content and nf < 3 * nc,
@@ -525,10 +623,14 @@ def sqcd_range_status(nc, nf):
         "lower_edge": field_content and 2 * nf == 3 * nc,
         "interacting_scft": interacting,
         "fixed_point_dimension_tests": interacting,
-        "gaussian_edge": field_content and nf == 3 * nc,
+        "gaussian_edge": field_content and endpoint_coefficient_positive,
+        "electric_endpoint_beta_positive": endpoint_coefficient_positive,
         "strict_free_electric": field_content and nf > 3 * nc,
         "free_electric_continuation": field_content and nf >= 3 * nc,
         "electric_uv_datum_required": field_content and nf > 3 * nc,
+        "magnetic_nonzero_yukawa_af_ray": magnetic_nonzero_yukawa_af_ray,
+        "magnetic_h_zero_af_only": magnetic_h_zero_af_only,
+        "magnetic_full_uv_datum_required": magnetic_h_zero_af_only,
         "electric_b0": electric_b0,
         "magnetic_b0": magnetic_b0,
     }
@@ -565,12 +667,18 @@ def check_phase_inequalities():
                     raise AssertionError("free electric continuation status failed")
                 if status["fixed_point_dimension_tests"]:
                     raise AssertionError("free electric range should not admit fixed-point dimension tests")
+                if status["magnetic_nonzero_yukawa_af_ray"] or not status["magnetic_full_uv_datum_required"]:
+                    raise AssertionError("free electric magnetic Yukawa UV status failed")
             elif phase == "Gaussian edge":
                 assert_equal(electric_b0, 0, "electric Gaussian edge b0")
+                if not status["electric_endpoint_beta_positive"]:
+                    raise AssertionError("Gaussian edge requires positive first nonzero beta coefficient")
                 if status["standard_duality_range"] or not status["gaussian_edge"]:
                     raise AssertionError("Gaussian edge should be separate from the standard duality range")
                 if status["fixed_point_dimension_tests"]:
                     raise AssertionError("Gaussian edge should not be an interacting fixed-point admission")
+                if status["magnetic_nonzero_yukawa_af_ray"] or not status["magnetic_h_zero_af_only"]:
+                    raise AssertionError("Gaussian edge should not infer nonzero magnetic Yukawa UV completion")
             elif phase == "lower edge":
                 assert_equal(meson_dimension, 1, "meson unitarity lower edge")
                 if not status["lower_edge"] or status["fixed_point_dimension_tests"]:
@@ -587,8 +695,12 @@ def check_free_electric_continuation_status_negative_control():
         assert status["strict_free_electric"]
         assert status["free_electric_continuation"]
         assert status["electric_uv_datum_required"]
+        assert status["magnetic_h_zero_af_only"]
+        assert status["magnetic_full_uv_datum_required"]
         if status["standard_duality_range"] or status["fixed_point_dimension_tests"]:
             raise AssertionError("free-electric arithmetic should not admit the standard continuum-pair claim")
+        if status["magnetic_nonzero_yukawa_af_ray"]:
+            raise AssertionError("magnetic gauge b0 alone incorrectly certified the nonzero-Yukawa UV theory")
 
         assert_equal(nf - dual_nc, nc, "free-electric rank algebra still passes")
         assert_equal(
@@ -609,6 +721,8 @@ def main():
     check_r_charges_superpotential_and_nsvz()
     check_local_anomaly_polynomial_matching()
     check_conformal_window_central_charges()
+    check_electric_gaussian_endpoint_beta_coefficient()
+    check_magnetic_gauge_yukawa_uv_status()
     check_duality_deformation_tests()
     check_sconfining_superpotential()
     check_quantum_modified_constraint_and_decoupling()

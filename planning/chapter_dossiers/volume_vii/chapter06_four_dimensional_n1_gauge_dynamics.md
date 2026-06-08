@@ -161,6 +161,8 @@ brane construction, or holographic interpretation is a premise of the chapter.
 - `mu_*`: dimension-one matching scale used when the magnetic singlet
   `M` is normalized as the electric composite `tilde Q Q`.
 - `W_mag=(1/mu_*) M q tilde q`: magnetic SQCD superpotential.
+- `M_can`, `h`: canonically normalized magnetic meson and dimensionless
+  magnetic Yukawa coupling used for gauge-Yukawa RG status.
 - `G_FB^SQCD`: faithful compact SQCD flavor-baryon group
   `(SU(N_f)_L x SU(N_f)_R x U(1)_B)/(Z_Nf^diag x Z_Nc^(B/gauge))`
   acting on gauge-invariant local operators, with admissible backgrounds
@@ -176,10 +178,11 @@ brane construction, or holographic interpretation is a premise of the chapter.
   qualifications, and the distinction between predicted full inflow agreement
   and the local perturbative anomaly-polynomial check actually displayed.
 - `conj:sqcd-free-electric-continuation`: separate conjectural continuation
-  for `N_f >= 3N_c`, with `N_f=3N_c` treated as a Gaussian edge and
-  strict `N_f>3N_c` requiring a finite-cutoff electric EFT, specified UV
-  completion, or emergent electric variables defined through the magnetic
-  continuum theory.
+  for `N_f >= 3N_c`, with `N_f=3N_c` treated as a Gaussian edge only after
+  the first nonzero electric beta coefficient is computed, and strict
+  `N_f>3N_c` requiring a finite-cutoff electric EFT, specified UV completion,
+  or emergent electric variables defined through a magnetic Wilsonian theory
+  with an explicit Yukawa/matching datum.
 - `par:sqcd-infrared-range-synthesis`: status-stratified SQCD infrared range
   synthesis; the electric-asymptotically-free duality range uses
   Seiberg-duality input, the free-electric range uses its separate
@@ -398,6 +401,11 @@ brane construction, or holographic interpretation is a premise of the chapter.
   stringbook `mathcal C` convention, NSVZ numerator cancellation at the
   candidate SQCD fixed point, and the meson unitarity-bound test for the
   lower edge of the conformal window.
+- Derives the electric `N_f=3N_c` Gaussian edge from the first nonzero
+  weak-coupling beta coefficient:
+  `beta_g=3(N_c^2-1)g^5/(256 pi^4)+O(g^7)` in the chapter convention, using
+  the one-loop SQCD matter anomalous dimension rather than the vanishing of
+  `b_0` or anomaly equality alone.
 - States an explicit hypothesis boundary for every later use of
   `Delta=3R/2`: existence of a unitary `N=1` SCFT, chiral-primary status,
   correct superconformal R-current after mixing, and no accidental symmetry
@@ -413,6 +421,12 @@ brane construction, or holographic interpretation is a premise of the chapter.
   content, magnetic rank `N_f-N_c`, baryon normalization, faithful compact
   flavor-baryon quotient, magnetic meson normalization, observable-sector
   scope, and the `M q tilde q / mu_*` superpotential.
+- Canonically normalizes the magnetic meson as `M_can=M/mu_*`, introduces the
+  dimensionless Yukawa coordinate `h`, and derives the one-loop magnetic
+  gauge-Yukawa beta system.  In the free-electric range `N_f>=3N_c`, the
+  ratio flow has no positive nonzero asymptotically-free ray, so nonzero `h`
+  is a finite matching-cutoff or UV-completion datum rather than a consequence
+  of magnetic gauge asymptotic freedom.
 - States `hyp:sqcd-ir-comparison-hypotheses`, separating continuum-limit,
   free-electric finite-cutoff/UV-completion/emergent-magnetic status,
   current-identification, faithful-background, R-current, observable-sector,
@@ -530,12 +544,16 @@ brane construction, or holographic interpretation is a premise of the chapter.
   superpotential dimension and \(R\)-charge, SQCD conformal-window
   central-charge and conditional free-field
   \(a_{\mathrm{UV}}-a_{\mathrm{IR}}\) comparison factorization,
+  the first nonzero electric `N_f=3N_c` endpoint beta coefficient,
+  canonical magnetic gauge-Yukawa beta coefficients and ratio-flow
+  obstruction for nonzero `h` in the free-electric range,
   local perturbative anomaly-polynomial matching,
   mass and Higgs deformation rank/dimension/`R`-charge tests,
   `N_f=N_c+1` confining-superpotential checks, mass decoupling to the
   `N_f=N_c` quantum-modified constraint, massive-SQCD-to-pure-SYM branch
   elimination, source-identity checks, mass-source/Konishi ledger checks,
-  and phase-window inequalities.
+  and phase-window inequalities with negative controls for `b_0=0` and
+  magnetic gauge-asymptotic-freedom shortcuts.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies exact rational
   arithmetic for the ADS instanton expansion: general ADS dimension and
   \(R\)-charge, `N_f=N_c-1` zero-mode counts, Higgs-patch
@@ -588,3 +606,9 @@ chiral-coordinate spaces with their assumptions and anomaly data.
   Gaussian edge, and added a calculation negative control showing that
   arithmetic matching beyond `3N_c` does not admit the standard continuum-pair
   or fixed-point-dimension claim.
+- 2026-06-08 issue #945 pass: derived the electric Gaussian endpoint from the
+  explicit `g^5` NSVZ coefficient, introduced the canonical magnetic
+  gauge-Yukawa coupling `h`, showed that magnetic gauge asymptotic freedom
+  does not UV-complete a nonzero-Yukawa magnetic theory in the free-electric
+  range, and replaced range-label checks with RG coefficient/ratio-flow
+  regressions.
