@@ -40,11 +40,16 @@ in this formula.  All traces in \(\operatorname{ch}(E)\) are traces in the
 fermion representation, not necessarily the trace used in the Yang-Mills
 kinetic term.
 
-The coupled Dirac operator is
+The Euclidean gamma matrices are Hermitian and obey
+\(\{\gamma^a,\gamma^b\}=2\delta^{ab}\).  For the metric spin connection and
+unitary bundle connection, the covariant derivatives are formally
+anti-self-adjoint on a closed manifold.  Thus the raw operator
+\(\gamma^\mu\nabla_\mu^{S\otimes E}\) is formally anti-self-adjoint.  The
+canonical self-adjoint Euclidean Dirac operator used in this chapter is
 \[
   D_A:\Gamma(S\otimes E)\longrightarrow\Gamma(S\otimes E),
   \qquad
-  D_A=\gamma^\mu\nabla_\mu^{S\otimes E}.
+  D_A=\ii\gamma^\mu\nabla_\mu^{S\otimes E}.
 \]
 With respect to chirality,
 \[
@@ -65,10 +70,55 @@ The analytic index is
 \end{equation}
 Because \(M\) is compact and \(D_A^+\) is elliptic, this is a finite integer.
 
+\begin{lemma}[Formal adjointness and domains]
+\label{lem:index-dirac-formal-adjointness}
+On \(C^\infty(M,S\otimes E)\),
+\[
+  \left(\gamma^\mu\nabla_\mu^{S\otimes E}\right)^\ast
+  =
+  -\gamma^\mu\nabla_\mu^{S\otimes E},
+  \qquad
+  D_A^\ast=D_A .
+\]
+The closure of \(D_A\) on \(L^2(M,S\otimes E)\) has domain
+\(H^1(M,S\otimes E)\) and is self-adjoint.  The chiral blocks satisfy
+\[
+  (D_A^+)^\ast=D_A^- ,
+  \qquad
+  (D_A^-)^\ast=D_A^+ ,
+\]
+with Sobolev domain \(H^1\) in the corresponding chiral bundle.
+\end{lemma}
+
+\begin{proof}
+Compatibility of the Levi-Civita, spin, and unitary bundle connections with
+the Hermitian inner products gives, for smooth compactly supported sections
+on the closed manifold,
+\[
+  \int_M\langle \phi,\nabla_\mu\psi\rangle\,d{\rm vol}_g
+  =
+  -\int_M\langle \nabla_\mu\phi,\psi\rangle\,d{\rm vol}_g
+\]
+after integrating the divergence
+\(\nabla_\mu\langle\phi,\psi\rangle\).  The gamma matrices are parallel and
+Hermitian, so moving \(\gamma^\mu\) across the inner product introduces no
+extra sign and the raw \(\gamma^\mu\nabla_\mu\) is formally
+anti-self-adjoint.  Multiplication by \(\ii\) makes \(D_A\) formally
+self-adjoint.  Elliptic self-adjointness on a compact manifold identifies the
+closed operator domain with \(H^1\); the chiral adjoint relation is the
+off-diagonal part of the same integration-by-parts identity.
+\end{proof}
+
 \section{McKean--Singer Supertrace}
 
 Let \(\Gamma\) denote the chirality operator, acting by \(+1\) on \(S^+\) and
-by \(-1\) on \(S^-\).  The heat operator \(e^{-tD_A^2}\) is trace class for
+by \(-1\) on \(S^-\).  The positive chiral Laplacians are
+\[
+  P_+=(D_A^+)^\ast D_A^+=D_A^-D_A^+,
+  \qquad
+  P_-=D_A^+(D_A^+)^\ast=D_A^+D_A^- .
+\]
+Equivalently, \(D_A^2=P_+\oplus P_-\), and \(e^{-tD_A^2}\) is trace class for
 \(t>0\).
 
 \begin{proposition}[McKean--Singer identity]
@@ -103,9 +153,9 @@ The inverse map on the \(\lambda\)-eigenspace is \(\lambda^{-1}D_A^-\), so the
 pairing preserves multiplicities.  Hence the positive eigenvalue
 contributions to
 \[
-  \operatorname{Tr}_{S^+}e^{-tD_A^-D_A^+}
+  \operatorname{Tr}_{S^+}e^{-tP_+}
   -
-  \operatorname{Tr}_{S^-}e^{-tD_A^+D_A^-}
+  \operatorname{Tr}_{S^-}e^{-tP_-}
 \]
 cancel term by term, with absolute convergence supplied by the heat trace.
 The zero eigenspaces are precisely \(\ker D_A^+\) and \(\ker D_A^-\).  Their
@@ -126,8 +176,7 @@ the heat kernel of \(D_A^2\).  We spell out the conventions because the same
 heat-kernel coefficients also enter point-splitting stress tensors and trace
 anomalies.
 
-Let \(c(e^a)=\gamma^a\) denote Clifford multiplication by an orthonormal
-coframe.  We use
+We use
 \[
   \gamma^{ab}:=\frac12[\gamma^a,\gamma^b],
   \qquad
@@ -137,19 +186,28 @@ The curvature of the spin connection is
 \[
   [\nabla_a^S,\nabla_b^S]
   =
-  \frac14 R_{ab cd}\gamma^{cd}.
+  -\frac14 R_{ab cd}\gamma^{cd}.
 \]
 
 \begin{lemma}[Lichnerowicz formula]
 \label{lem:index-lichnerowicz}
-For the coupled Dirac operator \(D_A=\gamma^a\nabla_a^{S\otimes E}\),
+For the self-adjoint coupled Dirac operator \(D_A\) defined above,
 \begin{equation}
   D_A^2
   =
   (\nabla^{S\otimes E})^\ast\nabla^{S\otimes E}
   +\frac14{\rm Scal}
-  +\frac12\gamma^{ab}F^E_{ab}.
+  -\frac12\gamma^{ab}F^E_{ab}.
   \label{eq:index-lichnerowicz}
+\end{equation}
+Equivalently, in the Laplace-type convention
+\(D_A^2=-(g^{ab}\nabla_a\nabla_b+\mathcal E_A)\),
+\begin{equation}
+  \mathcal E_A
+  =
+  -\frac14{\rm Scal}\,{\bf 1}_{S\otimes E}
+  +\frac12\gamma^{ab}F^E_{ab}.
+  \label{eq:index-dirac-laplace-endomorphism}
 \end{equation}
 \end{lemma}
 
@@ -160,7 +218,7 @@ connection on \(S\otimes E\).  Since the antisymmetric part of
 \(\gamma^a\gamma^b\) is \(\gamma^{ab}\),
 \[
 \begin{aligned}
-  D_A^2
+  -D_A^2
   &=
   \gamma^a\gamma^b\nabla_a\nabla_b                                      \\
   &=
@@ -173,16 +231,18 @@ connection on \(S\otimes E\).  Since the antisymmetric part of
 \]
 Restoring the Christoffel term away from the chosen normal frame gives the
 connection Laplacian \((\nabla^{S\otimes E})^\ast\nabla^{S\otimes E}\) in the
-sign convention of this chapter.  The curvature of the coupled connection is
+sign convention of this chapter after multiplying by the overall minus sign
+in \(D_A^2=-(\gamma^a\nabla_a)^2\).  The curvature of the coupled connection is
 \[
   [\nabla_a,\nabla_b]
   =
-  \frac14R_{ab cd}\gamma^{cd}+F^E_{ab}.
+  -\frac14R_{ab cd}\gamma^{cd}+F^E_{ab}.
 \]
 The \(E\)-bundle curvature therefore contributes
 \[
-  \frac12\gamma^{ab}F^E_{ab}.
+  -\frac12\gamma^{ab}F^E_{ab}
 \]
+to \(D_A^2\).
 The spin-curvature contribution is
 \[
   \frac12\gamma^{ab}\frac14R_{ab cd}\gamma^{cd}.
@@ -220,7 +280,9 @@ spin-curvature piece is
   \frac14{\rm Scal}.
 \]
 Combining the connection Laplacian, spin curvature, and bundle curvature gives
-\eqref{eq:index-lichnerowicz}.
+\eqref{eq:index-lichnerowicz}.  Moving the zero-order terms to the
+Laplace-type form \(D_A^2=-(\nabla^2+\mathcal E_A)\) gives
+\eqref{eq:index-dirac-laplace-endomorphism}.
 \end{proof}
 
 \begin{definition}[Laplace-type operator and heat coefficients]
@@ -390,7 +452,7 @@ operator
   \partial_{y^a}
   +\frac14 R_{ab}(p)y^b
   \right)^2
-  +\frac12\gamma^{ab}F^E_{ab}(p),
+  -\frac12\gamma^{ab}F^E_{ab}(p),
   \label{eq:index-getzler-model-operator}
 \end{equation}
 where \(R_{ab}(p)\) is viewed as the skew endomorphism of \(T_pM\) with
@@ -402,7 +464,7 @@ by the harmonic-oscillator determinant in \(H_p\).
 
 The heat kernel of \eqref{eq:index-getzler-model-operator} is the Mehler
 kernel for a constant magnetic oscillator, tensored with the finite
-endomorphism exponential \(\exp(-\frac12\gamma^{ab}F^E_{ab})\).  Diagonalizing
+endomorphism exponential \(\exp(+\frac12\gamma^{ab}F^E_{ab})\).  Diagonalizing
 the skew curvature into two-planes gives the pointwise supertrace
 \begin{equation}
   \lim_{t\to0^+}{\rm str}\,K_t(p,p)\,d{\rm vol}_g(p)

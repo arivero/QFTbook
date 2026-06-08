@@ -172,8 +172,10 @@ Current checks:
   \(\widehat A\)-genus expansion through degree eight, the four-dimensional
   \(\widehat A\,\operatorname{ch}\) index formula, trace-delta \(SU(N)\)
   instanton indices, the Abelian \(T^4\) flux index, the six-form
-  anomaly-polynomial coefficients, and the Dirac zero-mode selection-rule
-  count.
+  anomaly-polynomial coefficients, the Euclidean self-adjoint
+  \(\ii\gamma^\mu\nabla_\mu\) flat-torus Fourier convention, Lichnerowicz
+  versus Laplace-type endomorphism signs, and the Dirac zero-mode
+  selection-rule count.
 - `dhr_dr_reconstruction_checks.py`: finite algebra checks for the Volume IV
   Doplicher--Roberts reconstruction discussion, including pointed
   \(\mathbb Z/N\mathbb Z\) tensor automorphisms, root-of-unity fixed-degree

@@ -1044,11 +1044,19 @@ odd coefficients, not a Borel measure on a set of fermion fields.
 Work first on a compact Euclidean spin four-manifold, or in a finite box with
 elliptic boundary conditions, so that the Euclidean Dirac operator
 \[
-  \mathcal D_A=\gamma^\mu(\partial_\mu-\ii A_\mu)
+  \mathcal D_A
+  =
+  \ii\gamma^\mu\nabla_\mu^A,
+  \qquad
+  \nabla_\mu^A=\partial_\mu-\ii A_\mu,
 \]
 has a discrete \(L^2\)-orthonormal eigenbasis after the infrared regulator has
-been fixed.  The local formula obtained below is independent of this
-infrared auxiliary choice.  Let \(P_\Lambda\) be the spectral projection onto
+been fixed.  Here the Euclidean gamma matrices are Hermitian and \(A_\mu\) is
+Hermitian, so \(\nabla_\mu^A\) is formally anti-self-adjoint and
+\(\mathcal D_A\) is self-adjoint; the raw \(\gamma^\mu\nabla_\mu^A\) would be
+anti-self-adjoint and is not the operator used in the heat semigroup.  The
+local formula obtained below is independent of this infrared auxiliary
+choice.  Let \(P_\Lambda\) be the spectral projection onto
 the span
 \[
   V_\Lambda
@@ -1103,7 +1111,7 @@ calculation, by the smooth gauge-covariant spectral regulator
 \]
 This is the heat-kernel regulator of the Berezinian trace.  It introduces no
 regulator field; \(M\) is the ultraviolet scale in the heat semigroup of the
-elliptic operator \(\mathcal D_A^2\).  In the terminology of
+positive elliptic operator \(\mathcal D_A^2\).  In the terminology of
 Table~\ref{tab:regulator-integration-status-catalog}, this is a spectral
 regulator for an operator trace, not a Pauli--Villars auxiliary-field or
 determinant-ratio regulator.  The regulated logarithm used below is
@@ -1230,12 +1238,18 @@ coefficient can be checked locally, and this check fixes the convention used
 in the anomaly density.  Choose normal coordinates at a point \(x\), trivialize
 \(E_R\) so that the connection one-form vanishes at \(x\), and write
 \(\Gamma^{\mu\nu}=\frac12[\Gamma^\mu,\Gamma^\nu]\).  The gauge-curvature
-endomorphism in the square of the Dirac operator is
+part of the Laplace-type endomorphism
+\(\mathcal E_A\) in
+\(\mathcal D_A^2=-(\nabla^2+\mathcal E_A)\) is
 \[
   \mathcal E_F(x)
   =
   \frac12\Gamma^{\mu\nu}F_{R,\mu\nu}(x).
 \]
+Equivalently, the corresponding zero-order gauge term in
+\(\mathcal D_A^2\) itself has the opposite sign.  The heat coefficient uses
+\(\mathcal E_F\), which is the convention matched to
+Chapter~\ref{ch:curved-background-gauge-fields-index-theory}.
 Terms with fewer than four Clifford matrices have zero
 \(\Gamma_5\)-supertrace.  The first pure gauge term that survives in the
 diagonal heat-kernel parametrix is therefore

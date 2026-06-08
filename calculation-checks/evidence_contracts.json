@@ -30,6 +30,17 @@
       ]
     },
     {
+      "path": "background_index_theory_checks.py",
+      "risk_class": "background index-theory Dirac heat-kernel conventions",
+      "convention_tags": [
+        "Hermitian Euclidean gamma matrices require D=i gamma.nabla for self-adjointness",
+        "raw gamma.nabla is anti-self-adjoint and has negative Fourier square",
+        "Lichnerowicz zero-order terms have opposite signs from Laplace-type E slots",
+        "McKean-Singer uses positive chiral Laplacians",
+        "index density remains separate from determinant-line holonomy"
+      ]
+    },
+    {
       "path": "gamma_trace_checks.py",
       "risk_class": "gamma-trace and anomaly-normalization conventions",
       "contract_tier": "extended",
