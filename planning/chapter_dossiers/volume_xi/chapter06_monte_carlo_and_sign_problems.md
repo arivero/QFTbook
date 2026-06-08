@@ -184,8 +184,13 @@ and scaling-window inference.
   errors of smooth nonlinear observables, with Wilson-loop effective masses
   and Creutz ratios as the principal example.
 - Defines the average phase as \(Z/Z_R\), defines the finite-volume
-  free-energy difference \(\Delta f\), and proves the relative-variance lower
-  bound behind exponential phase-reweighting degradation.
+  free-energy difference \(\Delta f\), and proves the direct average-phase
+  relative-variance lower bound \(N\gtrsim |\langle e^{i\Theta}\rangle_R|^{-2}\).
+- Separates that denominator bound from self-normalized observable ratios by
+  deriving the joint numerator/denominator linearization with residual
+  \(e^{i\Theta}(O-\langle O\rangle)\), including the Markov-chain covariance
+  replacement and the need for an observable-specific noncancellation
+  hypothesis before asserting exponential cost for a particular observable.
 - Separates \(\gamma_5\)-Hermiticity, determinant reality, and positivity
   after even-degenerate or conjugate flavor pairing.
 - Separates finite-lattice numerical estimates from continuum QFT claims.
@@ -312,8 +317,10 @@ the exponential decay of average phase with volume.
   module as a companion-script regression.
 - `calculation-checks/monte_carlo_sign_problem_checks.py` verifies the
   finite-\(N\) autocorrelation variance identity, phase-reweighting identity,
-  average-phase relative-variance bound, and the determinant
-  reality/positivity distinction in finite examples.
+  direct average-phase relative-variance bound, self-normalized ratio residual
+  variance with \(O=1\) and phase-correlated negative controls, Markov residual
+  covariance bookkeeping, and the determinant reality/positivity distinction in
+  finite examples.
 - `calculation-checks/autocorrelation_resampling_checks.py` verifies the
   finite block means, blocked standard error, delete-one-block jackknife
   identity, biased autocovariances, and windowed \(\tau_{\rm int}\) used by
@@ -375,3 +382,9 @@ the exponential decay of average phase with volume.
   finite-cutoff invariance of the specified kernels remains in the preceding
   calculation; algorithmic performance, mixing, topological barriers, and
   continuum extrapolation remain separate evidence layers.
+- 2026-06-08 issue #897 scope pass: restricted the exponential sample lower
+  bound to direct average-phase estimation and added the self-normalized
+  ratio covariance formula.  The chapter now treats \(O=1\) and a
+  phase-correlated observable as negative controls against promoting the
+  denominator obstruction to a universal observable-variance theorem without an
+  explicit residual-noncancellation hypothesis.

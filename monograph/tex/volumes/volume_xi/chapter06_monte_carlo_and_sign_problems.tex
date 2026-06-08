@@ -1873,10 +1873,10 @@ and \(\Delta f\) is the real number defined by
   \Delta f=-\frac1V\log\left|\frac{Z}{Z_R}\right|.
   \label{eq:phase-quenched-free-energy-difference}
 \end{equation}
-Estimating a ratio with a denominator of this size requires a number of
-independent samples growing as \(\exp[2V\Delta f]\) for fixed relative error,
-unless the numerator and denominator are computed by a method that avoids
-phase reweighting.
+Direct relative estimation of this denominator is therefore the elementary
+average-phase obstruction.  A reweighted observable is a joint
+numerator/denominator estimator, and its variance must be analyzed with the
+covariance between the two sample means retained.
 
 \paragraph{Finite-volume phase-reweighting variance bound.}
 Let
@@ -1894,8 +1894,8 @@ satisfies
   \frac{1-|m|^2}{N|m|^2}.
   \label{eq:average-phase-relative-variance}
 \end{equation}
-Consequently, if \(|m|=\exp[-V\Delta f]\), any direct phase-reweighting
-estimation of the denominator with relative mean-square error at most
+Consequently, if \(|m|=\exp[-V\Delta f]\), any direct estimation of the
+average phase with relative mean-square error at most
 \(\delta^2\) requires
 \begin{equation}
   N\geq
@@ -1915,10 +1915,64 @@ Independence divides this variance by \(N\), proving
 \eqref{eq:average-phase-relative-variance}.  Substitution of
 \(|m|=e^{-V\Delta f}\) gives
 \eqref{eq:sign-problem-sample-lower-bound}.  The estimate concerns the
-denominator alone.  A ratio estimator for \(\langle O\rangle\) can have
-additional covariance between numerator and denominator, but it cannot remove
-the need to determine a denominator of exponentially small magnitude unless
-the method changes the representation of the finite-regulator integral.
+denominator alone.
+
+For the self-normalized observable ratio, set
+\[
+  X=Oe^{\ii\Theta},\qquad
+  Y=e^{\ii\Theta},\qquad
+  \mu_X=\langle X\rangle_R,\qquad
+  \mu_Y=m,\qquad
+  R=\frac{\mu_X}{\mu_Y}=\langle O\rangle .
+\]
+With independent samples and \(m\ne0\), define
+\(\widehat R_N=\overline X_N/\overline Y_N\).  Its delta-method linearization is
+\begin{equation}
+  \widehat R_N-R
+  =
+  \frac1m\,\frac1N
+  \sum_{j=1}^{N}
+  e^{\ii\Theta(\Phi_j)}\bigl(O(\Phi_j)-R\bigr)
+  +o_{\mathbb P}(N^{-1/2}),
+  \label{eq:phase-reweighting-ratio-linearization}
+\end{equation}
+This expansion is local at denominators near \(m\).  For independent samples,
+the leading mean-square fluctuation is therefore governed by
+\begin{equation}
+  \frac{1}{N|m|^2}
+  \operatorname{Var}_R\!\left(
+    e^{\ii\Theta}\bigl(O-\langle O\rangle\bigr)
+  \right),
+  \label{eq:phase-reweighting-ratio-variance}
+\end{equation}
+with the complex variance \(\operatorname{Var}(Z)=\mathbb E|Z-\mathbb EZ|^2\).
+An exponential-cost statement for a particular observable therefore needs a
+noncancellation hypothesis on the variance in
+\eqref{eq:phase-reweighting-ratio-variance}.  The denominator bound supplies
+only the direct average-phase obstruction.  The constant observable \(O=1\) is
+the useful negative control: whenever the sample denominator is nonzero, the
+self-normalized ratio is exactly \(1\), even if \(|m|\) is exponentially small.
+
+For Markov-chain samples, replace the independent variance in
+\eqref{eq:phase-reweighting-ratio-variance} by the covariance sum of the
+residual process
+\[
+  Z_j=e^{\ii\Theta(\Phi_j)}\bigl(O(\Phi_j)-R\bigr).
+\]
+At finite \(N\),
+\[
+  \operatorname{Var}(\widehat R_N)_{\rm lin}
+  =
+  \frac{1}{|m|^2N^2}
+  \sum_{r,s=1}^{N}
+  \operatorname{Cov}(Z_r,Z_s),
+\]
+with the Hermitian complex covariance convention.  Under stationarity and
+summable autocovariance this becomes the usual integrated-autocorrelation
+replacement for \(N\).  This separates four issues: the severity of the
+average-phase estimator, the variance of a chosen self-normalized observable,
+overlap or rare-event failures of the phase-quenched ensemble, and algorithms
+that change the representation or sampling measure.
 
 \section{Fermion Determinants}
 

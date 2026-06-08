@@ -4,7 +4,8 @@
 The script verifies algebra used in Volume XI, Chapter 6:
 
 * the exact finite-N Markov-chain autocorrelation variance identity;
-* the phase-reweighting identity and the average-phase relative variance;
+* the phase-reweighting identity, the average-phase relative variance, and
+  the residual covariance controlling self-normalized ratio estimators;
 * the distinction between gamma5-Hermiticity, determinant reality, and
   determinant positivity after flavor pairing.
 """
@@ -17,6 +18,10 @@ from fractions import Fraction
 def assert_equal(label: str, actual: object, expected: object) -> None:
     if actual != expected:
         raise AssertionError(f"{label}: expected {expected!r}, got {actual!r}")
+
+
+def weighted_mean(probabilities: list[Fraction], values: list[Fraction]) -> Fraction:
+    return sum(probability * value for probability, value in zip(probabilities, values))
 
 
 def matmul(left: list[list[Fraction]], right: list[list[Fraction]]) -> list[list[Fraction]]:
@@ -106,6 +111,109 @@ def check_phase_reweighting_identity_and_variance() -> None:
     assert_equal("sample lower bound at delta=1/2", required_samples, Fraction(96))
 
 
+def check_reweighted_ratio_residual_variance() -> None:
+    probabilities = [Fraction(3, 5), Fraction(2, 5)]
+    phases = [Fraction(1), Fraction(-1)]
+    average_phase = weighted_mean(probabilities, phases)
+    denominator_variance = weighted_mean(
+        probabilities,
+        [(phase - average_phase) ** 2 for phase in phases],
+    )
+
+    constant_observable = [Fraction(1), Fraction(1)]
+    constant_target = Fraction(1)
+    constant_residual = [
+        phase * (value - constant_target)
+        for phase, value in zip(phases, constant_observable)
+    ]
+    assert_equal(
+        "constant observable ratio residual",
+        weighted_mean(probabilities, constant_residual),
+        Fraction(0),
+    )
+    assert_equal(
+        "constant observable residual second moment",
+        weighted_mean(probabilities, [value * value for value in constant_residual]),
+        Fraction(0),
+    )
+    for plus_count, minus_count in [(3, 1), (5, 4), (8, 7)]:
+        denominator = plus_count - minus_count
+        if denominator == 0:
+            continue
+        numerator = plus_count * constant_observable[0] - minus_count * constant_observable[1]
+        assert_equal("constant self-normalized ratio", numerator / denominator, Fraction(1))
+
+    correlated_observable = [Fraction(1), Fraction(11, 10)]
+    correlated_numerator = weighted_mean(
+        probabilities,
+        [phase * value for phase, value in zip(phases, correlated_observable)],
+    )
+    correlated_target = correlated_numerator / average_phase
+    assert_equal("phase-correlated observable target", correlated_target, Fraction(4, 5))
+    correlated_residual = [
+        phase * (value - correlated_target)
+        for phase, value in zip(phases, correlated_observable)
+    ]
+    residual_second_moment = weighted_mean(
+        probabilities,
+        [value * value for value in correlated_residual],
+    )
+    assert_equal(
+        "phase-correlated residual mean",
+        weighted_mean(probabilities, correlated_residual),
+        Fraction(0),
+    )
+    assert_equal("phase-correlated residual second moment", residual_second_moment, Fraction(3, 50))
+    if not residual_second_moment < denominator_variance:
+        raise AssertionError(
+            "negative control failed: ratio residual was relabeled as denominator variance"
+        )
+
+
+def check_markov_ratio_residual_covariance() -> None:
+    transition = [
+        [Fraction(3, 4), Fraction(1, 4)],
+        [Fraction(1, 2), Fraction(1, 2)],
+    ]
+    stationary = [Fraction(2, 3), Fraction(1, 3)]
+    phases = [Fraction(1), Fraction(-1)]
+    observable = [Fraction(1), Fraction(11, 10)]
+    average_phase = weighted_mean(stationary, phases)
+    numerator = weighted_mean(
+        stationary,
+        [phase * value for phase, value in zip(phases, observable)],
+    )
+    target = numerator / average_phase
+    residual = [phase * (value - target) for phase, value in zip(phases, observable)]
+    assert_equal("Markov residual mean", weighted_mean(stationary, residual), Fraction(0))
+
+    def covariance(lag: int) -> Fraction:
+        power = matpow(transition, lag)
+        return sum(
+            stationary[i] * residual[i] * power[i][j] * residual[j]
+            for i in range(2)
+            for j in range(2)
+        )
+
+    sample_size = 6
+    exact_double_sum = Fraction(0)
+    for r in range(sample_size):
+        for s in range(sample_size):
+            exact_double_sum += covariance(abs(r - s))
+    exact_linearized_ratio_variance = exact_double_sum / (sample_size**2 * average_phase**2)
+
+    compressed = (
+        sample_size * covariance(0)
+        + 2
+        * sum((sample_size - lag) * covariance(lag) for lag in range(1, sample_size))
+    ) / (sample_size**2 * average_phase**2)
+    assert_equal(
+        "Markov ratio residual covariance sum",
+        compressed,
+        exact_linearized_ratio_variance,
+    )
+
+
 def check_gamma5_hermiticity_reality_not_positivity() -> None:
     # Gamma = diag(1,-1).  The matrix [[a,b],[-conj(b),d]] obeys
     # Gamma D Gamma = D^\dagger when a and d are real.
@@ -134,6 +242,8 @@ def check_gamma5_hermiticity_reality_not_positivity() -> None:
 def main() -> None:
     check_autocorrelation_variance_identity()
     check_phase_reweighting_identity_and_variance()
+    check_reweighted_ratio_residual_variance()
+    check_markov_ratio_residual_covariance()
     check_gamma5_hermiticity_reality_not_positivity()
     print("Monte Carlo sign-problem checks passed.")
 

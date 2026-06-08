@@ -2439,9 +2439,10 @@ Current checks:
 - `monte_carlo_sign_problem_checks.py`: exact finite checks for the Volume XI
   Monte Carlo and sign-problem chapter, including the finite-\(N\)
   autocorrelation variance identity, the reweighting identity, the
-  average-phase relative-variance bound, and the distinction between
-  \(\gamma_5\)-Hermiticity, determinant reality, and determinant positivity
-  after flavor pairing.
+  direct average-phase relative-variance bound, self-normalized ratio residual
+  variance with \(O=1\) and phase-correlated negative controls, Markov residual
+  covariance bookkeeping, and the distinction between \(\gamma_5\)-Hermiticity,
+  determinant reality, and determinant positivity after flavor pairing.
 - `large_n_topology_checks.py`: finite checks for the 't Hooft
   large-\(N\) section, including the \(SU(N)\) completeness relation in the
   monograph trace normalization, the planar-versus-one-handle theta-graph
