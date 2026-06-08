@@ -54,8 +54,8 @@
   channel data, and a two-stage master-integral layer: first a local two-master
   threshold block, then a two-letter transport audit exposing connection data,
   Euclidean boundary constants, branch/path prescriptions, lower sectors, the
-  finite-remainder/observable assembly, a symbol-level Steinmann transport
-  check tying canonical-form ordered words to physical sequential
+  finite-remainder/observable assembly, a Steinmann projection test for
+  transported master symbols tying canonical-form ordered words to physical sequential
   discontinuities and showing why single cuts do not enforce overlapping
   ordered-word constraints, a production master-lane gate tying
     coefficient pairing, transported masters, physical channel closure, and
@@ -179,7 +179,7 @@
 | \(\Delta_{\chi;\eta}\vec J\), \(\mathcal U_{\chi;\eta}\), \(E_{\chi;\eta}\) | stripped physical-channel master jump, Cutkosky channel datum, and residual in the master-discontinuity closure comparison |
 | \(\vec M\), \(A_T\), \(y_\gamma\) | local two-master threshold vector, nilpotent threshold residue, and sheet/path-labelled threshold coordinate in the multi-master differential-system model |
 | \(\vec J\), \(A_0,A_1\), \(L_0^\gamma,L_1^\gamma\) | two-letter master-transport vector, residue matrices, and path-labelled logarithmic transports in the finite master-system audit |
-| \(R_I,R_J,R_K\), \(\vec h\), \(\vec C\) | canonical-form residue matrices, physical coefficient projection, and Euclidean boundary vector in the symbol-level Steinmann transport check |
+| \(R_I,R_J,R_K\), \(\vec h\), \(\vec C\) | canonical-form residue matrices, physical coefficient projection, and Euclidean boundary vector in the Steinmann projection test for transported master symbols |
 | \(\Omega\), \(W_\alpha\), \(\mathcal U_\gamma\) | reduced master-integral connection, Landau-letter functions, and path-ordered transport from a Euclidean boundary point |
 | \(P_{\rho i}\), \(\mathcal C_\rho\), \(\vec c\) | production master-lane pairing between declared cuts or contours and master coefficients |
 | \(\mu_\perp^2\) | squared loop momentum in the \(-2\epsilon\)-dimensional complement, invisible on four-dimensional cuts |
@@ -1212,17 +1212,22 @@
   pieces independent, then rejects virtual-only, omitted-endpoint, wrong-sheet,
   cancellation-only split, undeclared \(O(\epsilon^2)\) normalization, and
   untransported finite-scheme shortcuts.
-- 2026-06-06 issue #769 symbol-level Steinmann transport pass: added
-  `ca:symbol-steinmann-transport-check` between the two-letter transport audit
-  and the production master lane.  The pass bridges the loop master-equation
-  material to the later Steinmann section: canonical-form ordered words are
-  interpreted as physical sequential discontinuities only after coefficient
-  projection, Euclidean boundary data, sheet, and lower-sector completion are
-  fixed.  The finite residue/projection model is not asserted as a global flat
-  integral-family connection; it keeps both overlapping single cuts nonzero
-  while killing both overlapping ordered double words, allows a compatible
-  sequential word to survive, and rejects a projection that preserves all
-  single cuts but violates the overlapping Steinmann ordered-word constraint.
+- 2026-06-06 issue #769 symbol-level Steinmann transport pass, re-audited
+  2026-06-07 for issue #844: the former controlled-approximation block is now
+  `constr:symbol-steinmann-projection-test` between the two-letter transport
+  audit and the production master lane.  The pass bridges the loop
+  master-equation material to the later Steinmann section: canonical-form
+  ordered words are interpreted as physical sequential discontinuities only
+  after the regulated amplitude or infrared-finite remainder, coefficient
+  projection, Euclidean boundary data, sheet, lower-sector completion, and
+  regulator/subtraction data are fixed.  The finite residue/projection model is
+  not asserted as a global flat integral-family connection or a controlled
+  approximation; it keeps both overlapping single cuts nonzero while killing
+  both overlapping ordered double words, allows a compatible sequential word to
+  survive, and rejects a projection that preserves all single cuts but violates
+  the overlapping Steinmann ordered-word constraint.  The companion now also
+  rejects a symbol-only budget that omits boundary-distribution,
+  rational-prefactor, lower-sector, and regulator/subtraction data.
 - 2026-06-06 issue #769 finite-box channel-discontinuity pass: added
   `ca:finite-box-channel-discontinuity-closure` after the physical branch of
   the two-scale finite box master.  The pass turns the branch formula into a

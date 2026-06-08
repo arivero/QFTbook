@@ -27,7 +27,7 @@ finite triple-cut triangle projection after known box residues have been
 subtracted, a finite double-cut bubble projection after known box and triangle
 double-cut shadows have been subtracted, a finite two-master threshold-mixing model, a two-letter
 master-transport model with boundary and branch negative controls, a finite
-symbol-level Steinmann check for transported master words, a finite
+Steinmann projection test for transported master symbols, a finite
 production master-lane gate that composes coefficient extraction, transported
 masters, physical channel closure, and infrared-safe observable assembly, and a
 physical master-discontinuity closure gate comparing transported master jumps with
@@ -137,7 +137,7 @@ a finite common-repair model for loop-level double-copy null directions;
 nilpotent rational matrix algebra for threshold monodromy and regular
 boundary constants; noncommuting two-letter residue algebra for first-order
 transport, path-order sensitivity, and cut-invisible boundary shifts; finite
-canonical-form residue algebra checking that overlapping ordered symbol words
+canonical-form residue algebra testing that overlapping ordered symbol words
 vanish after the physical projection even when the single cuts survive, while
 compatible sequential words need not vanish;
 finite pairing-matrix inversion, master transport, lower-sector
@@ -3756,7 +3756,7 @@ def check_two_letter_master_transport() -> None:
     )
 
 
-def check_symbol_steinmann_transport_check() -> None:
+def check_symbol_steinmann_projection_test() -> None:
     r_i: Matrix = [
         [Fraction(0), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
         [Fraction(1), Fraction(0), Fraction(0), Fraction(0), Fraction(0)],
@@ -3892,10 +3892,11 @@ def check_symbol_steinmann_transport_check() -> None:
         "boundary_distribution": Fraction(1, 191),
         "rational_prefactor": Fraction(1, 193),
         "lower_sector_branch": Fraction(1, 197),
+        "regulator_subtraction": Fraction(1, 199),
     }
     exact_defect = sum(residuals.values(), Fraction(0))
     majorant = sum(abs(value) for value in residuals.values())
-    assert_true("symbol Steinmann residual bound", exact_defect <= majorant)
+    assert_true("symbol Steinmann projection residual bound", exact_defect <= majorant)
     single_cut_budget = (
         majorant
         - residuals["I_then_J_ordered_word"]
@@ -3904,6 +3905,14 @@ def check_symbol_steinmann_transport_check() -> None:
     assert_true(
         "single-cut validation underbudgets ordered symbol constraints",
         exact_defect > single_cut_budget,
+    )
+    symbol_only_budget = (
+        residuals["I_then_J_ordered_word"]
+        + residuals["J_then_I_ordered_word"]
+    )
+    assert_true(
+        "symbol-only Steinmann test misses non-symbolic boundary data",
+        exact_defect > symbol_only_budget,
     )
 
 
@@ -5148,7 +5157,7 @@ def main() -> None:
     check_branch_and_landau_ledger()
     check_two_master_threshold_mixing()
     check_two_letter_master_transport()
-    check_symbol_steinmann_transport_check()
+    check_symbol_steinmann_projection_test()
     check_production_master_lane_observable_gate()
     check_virtual_to_observable_assembly()
     check_inclusive_current_form_factor_r_ratio_closure()

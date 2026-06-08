@@ -4310,13 +4310,21 @@ them silently turns a cut reconstruction into a stronger statement than the cut
 calculation has established.
 \end{controlledapproximation}
 
-\begin{controlledapproximation}[Symbol-level Steinmann check for transported
-masters]
-\label{ca:symbol-steinmann-transport-check}
 Canonical-form master equations often make loop amplitudes look like symbolic
-word problems.  That viewpoint is useful only after it is tied back to
-physical discontinuities.  Suppose a reduced master vector has, after lower
-sectors have been separated,
+word problems.  The physics extraction runs in the opposite direction.  One
+first fixes the regulated amplitude or infrared-finite remainder whose channel
+boundary values are being discussed; then one chooses the master basis,
+coefficient projection, Euclidean boundary constants, lower-sector completion,
+and Feynman sheet; only then may an ordered symbol word be interpreted as an
+ordered physical discontinuity.  The finite construction below is therefore not
+a controlled approximation to a loop integral.  It is the exact algebraic test
+that a transported symbol sector must pass after the causal
+Steinmann boundary-value setting of
+Section~\ref{sec:steinmann-sequential-discontinuities} has been supplied.
+
+\begin{construction}[Steinmann projection test for transported master symbols]
+\label{constr:symbol-steinmann-projection-test}
+Suppose a reduced master vector has, after lower sectors have been separated,
 \begin{equation}
   \dd\vec J
   =
@@ -4352,13 +4360,30 @@ obtained by crossing \(I\) and then \(J\), is
   \vec h^{\mathsf T}R_IR_J\vec C .
   \label{eq:symbol-steinmann-ordered-products}
 \end{equation}
-Thus a symbol entry is a physical sequential discontinuity only after the
-master basis, coefficient projection, Euclidean boundary constants, sheet, and
-lower-sector completion have already been fixed.
+Thus the ordered word \(W_I\otimes W_J\) is not itself a theorem about the
+amplitude.  It becomes the ordered physical discontinuity only for the completed
+sector
+\[
+  (F_\Lambda,\vec J,\vec h,\vec C,\gamma,\text{lower sectors},
+  \text{regulator/subtraction data}),
+\]
+with the channel representatives, sheet labels, and boundary values matching
+Definition~\ref{def:steinmann-channels-overlap-and-discontinuities}.  In that
+completed sector the Steinmann requirement for overlapping channels is the
+pair of scalar projection identities
+\begin{equation}
+  \vec h^{\mathsf T}R_JR_I\vec C=0,
+  \qquad
+  \vec h^{\mathsf T}R_IR_J\vec C=0 .
+  \label{eq:symbol-steinmann-projection-identities}
+\end{equation}
+It is a necessary polylogarithmic-symbol compatibility check for the declared
+channel boundary problem, not a replacement for the causal theorem or for the
+non-symbolic rational, boundary, and regulator terms.
 
-A finite residue/projection model shows the check.  It is not being asserted
-as a global flat connection for an integral family; it isolates the ordered
-word information that must be tested after a genuine reduced connection and
+A finite residue/projection model shows the test.  It is not being asserted as
+a global flat connection for an integral family; it isolates the ordered word
+information that must be tested after a genuine reduced connection and
 boundary-value problem have been constructed.  In the ordered basis
 \((e_1,\ldots,e_5)\), take \(\vec C=e_1\) and
 \(\vec h=e_2+e_3\), with nilpotent residues
@@ -4411,7 +4436,7 @@ state whether overlapping ordered words have been removed by the physical
 coefficient projection and branch prescription, and it must still carry the
 rational, boundary-distribution, lower-sector, and regulator information that
 is invisible to a pure polylogarithmic symbol.
-\end{controlledapproximation}
+\end{construction}
 
 \begin{controlledapproximation}[Production master lane from cuts to a finite
 observable]

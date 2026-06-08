@@ -2,8 +2,10 @@
 
 ## Scope
 
-- Added `ca:symbol-steinmann-transport-check` to Volume II Chapter 6 between
-  the two-letter master-transport audit and the production master lane.
+- Added a symbol-level Steinmann transport block to Volume II Chapter 6 between
+  the two-letter master-transport audit and the production master lane.  The
+  block was re-audited on 2026-06-07 and now appears as the construction
+  `constr:symbol-steinmann-projection-test`, not as a controlled approximation.
 - Added a companion exact-rational check in
   `calculation-checks/generalized_unitarity_reduction_checks.py`.
 - Updated the Chapter 6 dossier and calculation-check inventory.
