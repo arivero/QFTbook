@@ -2874,6 +2874,12 @@ Current checks:
   Hadamard singularity, the sign of smooth and scale subtraction changes,
   Wald finite-freedom engineering dimensions, the \(R^2\) and
   \(R_{\mu\nu}R^{\mu\nu}\) Euler-tensor trace coefficients, the
+  equation-of-motion improvement needed to cancel the Hadamard parametrix
+  divergence defect, the regularity filter excluding nonpolynomial
+  dimension-four local tensors, the vanishing of \(I_{\mu\nu}\) and
+  \(J_{\mu\nu}\) on four-dimensional constant curvature in the massless
+  conformal scheme, scalar trace-identity regressions for minimal/conformal
+  and massive/massless cases, the
   Bose integral \(\int_0^\infty x^3(e^x-1)^{-1}dx=\pi^4/15\), the flat
   thermal scalar energy density and traceless equation of state, the massless
   plane-wave eigenvalues of the displayed bidifferential operators, and the

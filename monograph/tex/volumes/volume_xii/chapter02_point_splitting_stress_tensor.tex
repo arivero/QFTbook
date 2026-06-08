@@ -56,9 +56,10 @@ In four dimensions, a Hadamard subtraction for \(P_M\) on
 where \(U_H=\Delta^{1/2}\), \(\Delta\) is the van Vleck determinant, and
 \(V_H\) is a smooth representative of the Hadamard coefficient whose jet at
 the diagonal is determined recursively by \(P_M\).  Different smooth
-representatives with the same jet, and additional smooth local biscalars
-added to the subtraction, change only the finite local subtraction datum;
-they are not part of the state.
+representatives with the same diagonal jet change no finite point-split
+quantity of bounded differential order.  Additional smooth local biscalars
+may be added only as locally covariant finite renormalizations; they are not
+part of the state.
 \end{definition}
 
 The word ``determined'' in
@@ -91,10 +92,14 @@ ordinary differential equations along the unique geodesic from \(y\) to
 \(x\).  Since the coefficient multiplying the unknown diagonal value at the
 \(j\)-th step is nonzero, the transport equation fixes \(v_j\) from lower
 coefficients.  A smooth \(V_H\) with this prescribed infinite jet exists by
-Borel's lemma.  Replacing this representative by another one with the same
-jet changes \(H_{\epsilon,\mu}\) by a smooth biscalar, because the difference
-is flat at the diagonal before multiplication by \(\log\sigma\); adding any
-allowed smooth local biscalar is precisely a finite renormalization choice.
+Borel's lemma.  A natural locally covariant subtraction requires, in addition,
+a rule compatible with metric embeddings and parameter dependence.  Replacing
+one extension by another one with the same jet changes \(H_{\epsilon,\mu}\) by
+a smooth biscalar flat at the diagonal before multiplication by
+\(\log\sigma\), so any point-split composite field using finitely many
+diagonal derivatives is unchanged.  A nonflat smooth addition is a genuine
+renormalization choice and must be built locally and covariantly from
+\(g_{\mu\nu}\), \(m^2\), \(\xi\), and their curvature data.
 
 \begin{lemma}[Leading Hadamard transport equation]
 \label{lem:leading-hadamard-transport-equation}
@@ -441,17 +446,26 @@ by applying a fixed local bidifferential operator to the smooth biscalar
   \label{eq:wald-type-conservation}
 \end{equation}
 for all Hadamard states in the declared state class.
-\item \emph{Metric dimension and almost homogeneous scaling.}  In local
-formulae we assign engineering dimensions
+\item \emph{Locality, weak regularity, and almost homogeneous scaling.}  In
+local formulae we assign engineering dimensions
 \begin{equation}
   [\nabla]=1,\qquad [m]=1,\qquad [R_{\mu\nu\rho\sigma}]=2,\qquad
   [g_{\mu\nu}]=0 .
   \label{eq:stress-tensor-engineering-dimensions}
 \end{equation}
-The state-independent local terms in \(T_{\mu\nu}^{\rm ren}\) have total
-dimension four.  A change of the Hadamard length scale is allowed to produce
-only local logarithmic terms of the same dimension; this is the curved-space
-form of the trace-anomaly ambiguity.
+The state-independent local terms in \(T_{\mu\nu}^{\rm ren}\) are natural
+tensors of total dimension four, depend smoothly on compactly supported
+metric perturbations and on the parameters \(m^2,\xi\), and scale almost
+homogeneously under constant rescalings of the metric, with only a finite
+logarithmic scaling defect.  These regularity hypotheses are part of the
+condition: dimension counting alone would allow, for fixed \(m>0\), tensors
+from nonpolynomial functionals such as
+\(\int\sqrt{|g|}\,m^4F(R/m^2)\).  Smooth parameter dependence at \(m^2=0\),
+local covariance, and almost homogeneous scaling reduce the allowed
+dimension-four local tensors to the finite list classified below.  A change
+of the Hadamard length scale is allowed to produce only local logarithmic
+terms of the same dimension; this is the curved-space form of the
+trace-anomaly ambiguity.
 \item \emph{Flat normalization.}  On Minkowski spacetime the massless
 vacuum expectation value is zero after the finite cosmological term is set
 to zero.
@@ -481,9 +495,11 @@ conditions.
   +C_{\mu\nu}[g](x),
   \label{eq:point-splitting-prescription-template}
 \end{equation}
-where \(\mathcal D_{\mu\nu}\) is the bidifferential operator obtained by
-polarizing the classical Hilbert stress tensor and \(C_{\mu\nu}[g]\) is a
-state-independent local curvature tensor.
+where \(\mathcal D_{\mu\nu}\) is the improved bidifferential operator
+displayed in
+\eqref{eq:point-split-stress-bidifferential-operator}, with
+\(\eta=\eta_4=1/3\), and \(C_{\mu\nu}[g]\) is a state-independent local
+curvature tensor.
 \item It is locally covariant: if \(\chi:(M,g)\to(N,h)\) is an admissible
 isometric embedding in the locally covariant category and
 \(\omega_N\) is a Hadamard state on \(N\), then the pullback state on \(M\)
@@ -507,6 +523,136 @@ that the Minkowski vacuum stress tensor vanishes when \(m=0\) and the finite
 cosmological term is set to zero.
 \end{enumerate}
 \end{definition}
+
+\subsection{The Conserved Bidifferential Prescription}
+
+Let \(x\) and \(y\) lie in a common normal neighborhood, and let
+\(g_\mu{}^{\mu'}(x,y)\) denote parallel transport of covectors from \(y\) to
+\(x\).  Primed indices are differentiated at \(y\) and then transported to
+\(x\).  For a smooth biscalar \(F\), put
+\[
+  F_{\rm s}(x,y)=\frac12\bigl(F(x,y)+F(y,x)\bigr),
+  \qquad
+  [A]_\Delta(x)=\lim_{y\to x}A(x,y).
+\]
+The polarized Hilbert tensor, including the classically vanishing
+equation-of-motion improvement, is
+\begin{equation}
+\begin{aligned}
+  \mathcal D^{(\eta)}_{\mu\nu}F
+  ={}&
+  \frac{1-2\xi}{2}
+  \left(
+    g_\nu{}^{\nu'}\nabla_\mu\nabla_{\nu'}
+    +g_\mu{}^{\mu'}\nabla_\nu\nabla_{\mu'}
+  \right)F_{\rm s} \\
+  &+
+  \left(2\xi-\frac12\right)
+  g_{\mu\nu}g^{\rho\sigma'}\nabla_\rho\nabla_{\sigma'}F_{\rm s} \\
+  &-\xi
+  \left(
+    \nabla_\mu\nabla_\nu
+    +g_\mu{}^{\mu'}g_\nu{}^{\nu'}\nabla_{\mu'}\nabla_{\nu'}
+  \right)F_{\rm s} \\
+  &+\xi g_{\mu\nu}
+  \left(\Box_x+\Box_y\right)F_{\rm s}
+  +\xi G_{\mu\nu}F_{\rm s}
+  -\frac12m^2g_{\mu\nu}F_{\rm s} \\
+  &+\frac{\eta}{2}g_{\mu\nu}
+  \left(P_{M,x}+P_{M,y}\right)F_{\rm s}.
+\end{aligned}
+  \label{eq:point-split-stress-bidifferential-operator}
+\end{equation}
+The last line is the point-split form of
+\(\eta g_{\mu\nu}\phi P_M\phi\).  It vanishes on classical solutions, but it
+does not vanish after subtracting a Hadamard parametrix because the parametrix
+is only a local parametrix, not an exact bisolution.
+
+\begin{proposition}[Parametrix defect and conservation repair]
+\label{prop:parametrix-defect-conservation-repair}
+In spacetime dimension \(D\), set
+\[
+  \eta_D=\frac{D}{2(D+2)} ,
+  \qquad\text{so in four dimensions}\qquad
+  \eta_4=\frac13 .
+\]
+For constant \(m^2\) and \(\xi\), the point-split prescription
+\begin{equation}
+  \omega(T_{\mu\nu}^{\rm ps})
+  =
+  \left[
+    \mathcal D_{\mu\nu}^{(\eta_4)}
+    \bigl(\omega_2-H_{\epsilon,\mu}\bigr)
+  \right]_\Delta
+  +C_{\mu\nu}^{\rm res}[g,m^2,\xi]
+  \label{eq:conserved-point-split-stress-prescription}
+\end{equation}
+is conserved whenever the residual local tensor
+\(C_{\mu\nu}^{\rm res}\) is conserved.  The residual tensor is then precisely
+the finite local freedom classified in
+Proposition~\ref{prop:finite-local-freedom-scalar-stress-tensor}.
+\end{proposition}
+
+\begin{proof}
+For a polarized classical product \(F(x,y)=\phi(x)\psi(y)\), the Hilbert
+identity gives
+\[
+  \nabla^\mu T_{\mu\nu}(\phi,\psi)
+  =
+  -\frac12\bigl((P_M\phi)\nabla_\nu\psi+(P_M\psi)\nabla_\nu\phi\bigr)
+\]
+when \(m^2\) and \(\xi\) are constant.  Rewriting this identity in
+point-split notation gives, for the operator without the last line of
+\eqref{eq:point-split-stress-bidifferential-operator},
+\begin{equation}
+  \nabla^\mu
+  \left[\mathcal D_{\mu\nu}^{(0)}F\right]_\Delta
+  =
+  -\frac12
+  \left[
+    g_\nu{}^{\nu'}\nabla_{\nu'}P_{M,x}F_{\rm s}
+    +\nabla_\nu P_{M,y}F_{\rm s}
+  \right]_\Delta .
+  \label{eq:naive-point-split-divergence-defect}
+\end{equation}
+Thus the naive point-split tensor is conserved on exact bisolutions, but it
+has a local divergence defect on
+\[
+  F_\omega=\omega_2-H_{\epsilon,\mu},
+  \qquad
+  P_{M,x}F_\omega=-P_{M,x}H_{\epsilon,\mu},\qquad
+  P_{M,y}F_\omega=-P_{M,y}H_{\epsilon,\mu}.
+\]
+The two displayed defects are smooth locally covariant biscalars determined
+by the Hadamard recursion.  They are the first unremoved regular terms of the
+local parametrix, not state-dependent data.
+
+The equation-of-motion improvement contributes
+\[
+  \frac{\eta}{2}\nabla_\nu
+  \left[
+    \left(P_{M,x}+P_{M,y}\right)F_{\rm s}
+  \right]_\Delta .
+\]
+The Hadamard coefficient identities for the locally constructed parametrix
+give the cancellation of
+\eqref{eq:naive-point-split-divergence-defect} precisely for
+\(\eta=\eta_D\).  This is the curved-spacetime point of the improvement:
+the classically zero tensor \(g_{\mu\nu}\phi P_M\phi\) repairs the quantum
+divergence produced by subtracting a local parametrix rather than an exact
+two-sided Green bisolution.  In the present four-dimensional chapter
+\(\eta_D=\eta_4=1/3\), so
+\[
+  \nabla^\mu
+  \left[
+    \mathcal D_{\mu\nu}^{(1/3)}
+    \bigl(\omega_2-H_{\epsilon,\mu}\bigr)
+  \right]_\Delta
+  =
+  0 .
+\]
+Adding a conserved residual local tensor preserves this Ward identity.
+\end{proof}
 
 \begin{proposition}[Finite local freedom of the scalar stress tensor]
 \label{prop:finite-local-freedom-scalar-stress-tensor}
@@ -558,6 +704,12 @@ conservation clause gives \(\nabla^\mu D_{\mu\nu}=0\).  The engineering
 dimension clause says that every monomial in \(D_{\mu\nu}\) has total dimension
 four, counting \(m\) as dimension one, \(g_{\mu\nu}\) as dimension zero, and
 each curvature tensor as dimension two.
+The weak-regularity and almost-homogeneous-scaling clauses are used here:
+they turn ``local covariant tensor'' into a finite natural polynomial in the
+metric jet and the parameters at this engineering dimension.  Without those
+clauses, dimension counting for fixed \(m>0\) would not rule out nonpolynomial
+families such as metric variations of
+\(\int\sqrt{|g|}\,m^4F(R/m^2)\).
 
 The dimension-four local covariant candidates split by powers of \(m\).  The
 only \(m^4\) tensor with two covariant indices and no derivatives is
@@ -733,32 +885,18 @@ Setting \(D=4\) gives
 \eqref{eq:curvature-squared-euler-tensor-traces}.
 \end{proof}
 
-\section{Stress Tensor by Bidifferential Operator}
+\section{Using the Bidifferential Operator}
 
-For the classical scalar action
-\[
-  S[\phi]
-  =
-  -\frac{1}{2}\int_M
-  \left(
-  \nabla_\mu\phi\nabla^\mu\phi
-  +m^2\phi^2+\xi R\phi^2
-  \right)d{\rm vol}_g
-\]
-in mostly-plus Lorentzian convention, the stress tensor is obtained by metric
-variation.  Quantum mechanically, define a bidifferential operator
-\(\mathcal D_{\mu\nu}(x,y)\) by polarizing the classical quadratic expression
-in two field arguments.  Then
-\[
-  \omega(T_{\mu\nu}(x))
-  =
-  \lim_{y\to x}
-  \mathcal D_{\mu\nu}(x,y)
-  \bigl(\omega_2(x,y)-H(x,y)\bigr)
-  +C_{\mu\nu}(x).
-\]
-The local tensor \(C_{\mu\nu}\) is the finite renormalization freedom
-classified in
+Equation~\eqref{eq:point-split-stress-bidifferential-operator} is the
+operator used in the examples below.  If the argument is a difference of two
+Hadamard two-point functions, it is a smooth bisolution and the
+equation-of-motion line contributes zero.  If the argument is
+\(\omega_2-H_{\epsilon,\mu}\), the same line is essential: it cancels the
+local parametrix defect described in
+Proposition~\ref{prop:parametrix-defect-conservation-repair}.  The remaining
+choice is the conserved residual local tensor in
+\eqref{eq:conserved-point-split-stress-prescription}, whose finite freedom is
+classified by
 Proposition~\ref{prop:finite-local-freedom-scalar-stress-tensor}.
 
 \section{Worked Flat-Space Computation}
@@ -946,9 +1084,14 @@ Consequently
   C=-\frac{H^4}{960\pi^2}.
 \]
 This calculation isolates the part fixed by local covariance, de Sitter
-invariance, and the anomaly normalization.  Massive fields, and schemes that
-allow additional dimension-four metric counterterms, shift \(C\) by finite
-local terms; the point-splitting prescription must state that choice.
+invariance, and the anomaly normalization.  In the massless conformal case,
+the classified four-parameter freedom does not shift this constant once the
+flat cosmological term has been set to zero: the \(m^4g_{\mu\nu}\) and
+\(m^2G_{\mu\nu}\) terms vanish, while \(I_{\mu\nu}\) and \(J_{\mu\nu}\) vanish
+on four-dimensional constant-curvature metrics.  Massive fields can shift
+\(C\) through the \(m\)-dependent local tensors, and any further shift would
+come from leaving the stated locally covariant, weakly regular,
+almost-homogeneous scaling class.
 
 \section{Conservation and Trace}
 
@@ -963,18 +1106,48 @@ chosen so that
 for all Hadamard states in the declared class.
 \end{definition}
 
-The trace has the form
-\[
+The trace convention is fixed by the classical Hilbert tensor, not by the
+anomaly example.  In \(D\) dimensions,
+\begin{equation}
+\begin{aligned}
+  T^\mu{}_\mu
+  ={}&
+  \left(1-\frac D2+2\xi(D-1)\right)(\nabla\phi)^2
+  +2\xi(D-1)\phi\Box_g\phi \\
+  &-\frac D2m^2\phi^2
+  +\xi\left(1-\frac D2\right)R\phi^2 .
+\end{aligned}
+  \label{eq:scalar-hilbert-trace-before-eom}
+\end{equation}
+Using \(P_M\phi=0\), equivalently
+\(\Box_g\phi=(m^2+\xi R)\phi\), and
+\(\Box_g\phi^2=2(\nabla\phi)^2+2\phi\Box_g\phi\), this becomes
+\begin{equation}
+  T^\mu{}_\mu
+  =
+  -m^2\phi^2
+  +(D-1)(\xi-\xi_c)\Box_g\phi^2,
+  \qquad
+  \xi_c=\frac{D-2}{4(D-1)} .
+  \label{eq:scalar-classical-trace-corrected}
+\end{equation}
+The corresponding renormalized composite identity is therefore
+\begin{equation}
   \omega(T^\mu{}_\mu)
   =
-  m^2\,\omega(:\!\Phi^2\!:)
-  +(\xi-\xi_c)\,\omega(\Box:\!\Phi^2\!:)
+  -m^2\,\omega(:\!\Phi^2\!:)
+  +(D-1)(\xi-\xi_c)\,
+    \omega(\Box_g:\!\Phi^2\!:)
   +\mathcal A[g,m,\xi],
-\]
-where \(\xi_c=(D-2)/(4D-4)\) and \(\mathcal A\) is a local curvature scalar
-determined up to the same finite renormalization freedom.  In the massless
-conformally coupled case, the state-dependent classical trace terms vanish
-and the remaining local term is the trace anomaly.
+  \label{eq:renormalized-scalar-trace-corrected}
+\end{equation}
+where \(\mathcal A\) is a local curvature scalar determined up to the same
+finite renormalization freedom.  It includes the local remnants of the
+parametrix equation-of-motion defect, contact terms in the composite
+equation of motion, and the trace variation of the chosen finite
+counterterms.  In the massless conformally coupled case, the state-dependent
+classical trace terms vanish and the remaining local term is the trace
+anomaly.
 
 \section{Relation to Flat-Space Composite Operators}
 

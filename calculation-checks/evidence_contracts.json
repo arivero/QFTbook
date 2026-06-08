@@ -146,6 +146,18 @@
       ]
     },
     {
+      "path": "point_splitting_stress_checks.py",
+      "risk_class": "point-split scalar stress tensor conservation and trace conventions",
+      "convention_tags": [
+        "Hadamard parametrix is local not exact bisolution",
+        "equation-of-motion improvement etaD repairs conservation defect",
+        "finite local freedom requires weak regularity and almost homogeneous scaling",
+        "scalar trace mass term is negative in mostly-plus convention",
+        "trace improvement coefficient is (D-1)(xi-xi_c)",
+        "I and J vanish on four-dimensional constant curvature"
+      ]
+    },
+    {
       "path": "finite_temperature_path_integral_checks.py",
       "risk_class": "thermal Euclidean spectral reconstruction",
       "convention_tags": [
