@@ -1412,9 +1412,13 @@ Current checks:
   Volume XII cosmological-particle-creation chapter, including the
   conformal-coupling cancellation in arbitrary dimension, de Sitter
   \(\nu\)-parameter arithmetic, sudden-quench Bogoliubov normalization, the
-  Riccati equation for a power-law adiabatic frequency, and finite positive
-  type of detector-response Gram forms.  It also checks the out-region
-  produced stress-tensor bridge from \(|\beta_k|^2\) to
+  complex two-mode Bogoliubov matrix, the transpose-not-adjoint annihilator
+  transformation, in/out rephasing covariance, and the phase-sensitive
+  anomalous correlator
+  \(\langle a_k^{\rm out}a_{-k}^{\rm out}\rangle=\alpha_k\overline{\beta_k}\).
+  It also checks the Riccati equation for a power-law adiabatic frequency and
+  finite positive type of detector-response Gram forms.  The same companion
+  checks the out-region produced stress-tensor bridge from \(|\beta_k|^2\) to
   \(a_+^{-d}\int \Omega_k^+|\beta_k|^2\), the pressure formula, the
   massless equation of state, and the homogeneous Friedmann response
   coefficient.  The same companion checks the finite continuity identity

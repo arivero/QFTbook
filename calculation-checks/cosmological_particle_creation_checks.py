@@ -1,20 +1,36 @@
 #!/usr/bin/env python3
 """Exact convention checks for cosmological particle-creation formulas.
 
-Evidence contract:
-  independent construction: finite mode sums for Robertson-Walker particle
-  diagnostics, stress-tensor source coordinates, pressure work, and Friedmann
-  response coefficients, including a finite backreaction-window budget;
-  imported assumptions: the free scalar mode equation, adiabatic/asymptotic
-  particle basis, and renormalized-stress subtraction scheme stated in the
-  chapter;
-  negative controls: wrong scale-factor powers, missing pressure work,
-  treating ongoing production as a conserved fluid, untransported scheme
-  shifts, omitted tail/noise budgets, number-density-only sources, and
-  zero-particle source checks;
-  scope boundary: these checks verify finite stress-source bookkeeping, not
-  interacting cosmological QFT, full adiabatic subtraction, or nonlinear
-  semiclassical existence.
+Evidence contract.
+
+Target claims:
+- `ch:cosmological-particle-creation`: Robertson-Walker scalar-mode
+  conventions, de Sitter index arithmetic, Bogoliubov normalization and
+  phase-sensitive annihilator transformations, detector positivity,
+  produced-stress source coordinates, pressure work, Friedmann response
+  coefficients, and a finite backreaction-window budget.
+
+Independent construction:
+- The checks use finite mode sums, exact rational complex two-mode
+  Bogoliubov matrices, direct coefficient comparison, and retained FLRW
+  stress-source samples rather than copying the prose formulae.
+
+Imported assumptions:
+- The free scalar mode equation, adiabatic/asymptotic particle basis,
+  finite-volume two-mode CCR, and renormalized-stress subtraction scheme
+  stated in the chapter.
+
+Negative controls:
+- Wrong scale-factor powers, missing pressure work, treating ongoing
+  production as a conserved fluid, untransported scheme shifts, omitted
+  tail/noise budgets, number-density-only sources, zero-particle source
+  shortcuts, the old conjugated-alpha annihilator rule, and real-quench-only
+  Bogoliubov tests are rejected.
+
+Scope boundary:
+- Passing this file checks finite stress-source and Bogoliubov bookkeeping; it
+  does not prove interacting cosmological QFT, full adiabatic subtraction, or
+  nonlinear semiclassical existence.
 """
 
 from __future__ import annotations
@@ -22,9 +38,53 @@ from __future__ import annotations
 from fractions import Fraction
 
 
+ComplexRat = tuple[Fraction, Fraction]
+Matrix2 = tuple[tuple[ComplexRat, ComplexRat], tuple[ComplexRat, ComplexRat]]
+
+
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
         raise AssertionError(f"{name}: got {got!r}, expected {expected!r}")
+
+
+def c(real: int | Fraction, imag: int | Fraction = 0) -> ComplexRat:
+    return (Fraction(real), Fraction(imag))
+
+
+def cadd(left: ComplexRat, right: ComplexRat) -> ComplexRat:
+    return (left[0] + right[0], left[1] + right[1])
+
+
+def cneg(value: ComplexRat) -> ComplexRat:
+    return (-value[0], -value[1])
+
+
+def cmul(left: ComplexRat, right: ComplexRat) -> ComplexRat:
+    return (
+        left[0] * right[0] - left[1] * right[1],
+        left[0] * right[1] + left[1] * right[0],
+    )
+
+
+def cconj(value: ComplexRat) -> ComplexRat:
+    return (value[0], -value[1])
+
+
+def cabs2(value: ComplexRat) -> Fraction:
+    return value[0] * value[0] + value[1] * value[1]
+
+
+def matmul(left: Matrix2, right: Matrix2) -> Matrix2:
+    return (
+        (
+            cadd(cmul(left[0][0], right[0][0]), cmul(left[0][1], right[1][0])),
+            cadd(cmul(left[0][0], right[0][1]), cmul(left[0][1], right[1][1])),
+        ),
+        (
+            cadd(cmul(left[1][0], right[0][0]), cmul(left[1][1], right[1][0])),
+            cadd(cmul(left[1][0], right[0][1]), cmul(left[1][1], right[1][1])),
+        ),
+    )
 
 
 def conformal_coupling(d: int) -> Fraction:
@@ -82,6 +142,67 @@ def check_sudden_quench_bogoliubov() -> None:
         alpha_squared = (omega_f + omega_i) ** 2 / (4 * omega_i * omega_f)
         beta_squared = (omega_f - omega_i) ** 2 / (4 * omega_i * omega_f)
         assert_equal(f"Bogoliubov normalization {omega_i}->{omega_f}", alpha_squared - beta_squared, 1)
+
+
+def check_complex_bogoliubov_annihilator_matrix() -> None:
+    alpha = c(Fraction(1), Fraction(4, 3))
+    beta = c(Fraction(20, 39), Fraction(16, 13))
+    assert_equal("complex Bogoliubov normalization", cabs2(alpha) - cabs2(beta), Fraction(1))
+
+    mode_matrix: Matrix2 = (
+        (alpha, beta),
+        (cconj(beta), cconj(alpha)),
+    )
+    inverse_mode_matrix: Matrix2 = (
+        (cconj(alpha), cneg(beta)),
+        (cneg(cconj(beta)), alpha),
+    )
+    identity: Matrix2 = ((c(1), c(0)), (c(0), c(1)))
+    assert_equal("mode matrix inverse", matmul(mode_matrix, inverse_mode_matrix), identity)
+    assert_equal("inverse mode matrix", matmul(inverse_mode_matrix, mode_matrix), identity)
+
+    # The field coefficient row satisfies a_out^T = a_in^T B, so the
+    # annihilator column transforms with B^T, not B^dagger or B^{-1}.
+    annihilator_matrix: Matrix2 = (
+        (alpha, cconj(beta)),
+        (beta, cconj(alpha)),
+    )
+    wrong_adjoint_first_coefficient = cconj(alpha)
+    assert_equal(
+        "complex alpha exposes old conjugation error",
+        annihilator_matrix[0][0] == wrong_adjoint_first_coefficient,
+        False,
+    )
+
+    particle_number = cabs2(annihilator_matrix[0][1])
+    assert_equal("out particle number from complex beta", particle_number, cabs2(beta))
+    anomalous_correlator = cmul(alpha, cconj(beta))
+    wrong_anomalous_correlator = cmul(cconj(alpha), cconj(beta))
+    assert_equal(
+        "complex anomalous correlator rejects conjugated alpha",
+        anomalous_correlator == wrong_anomalous_correlator,
+        False,
+    )
+    assert_equal(
+        "phase-sensitive anomalous correlator",
+        anomalous_correlator,
+        cmul(annihilator_matrix[0][0], annihilator_matrix[0][1]),
+    )
+
+    phase_in = c(Fraction(3, 5), Fraction(4, 5))
+    phase_out = c(Fraction(5, 13), -Fraction(12, 13))
+    alpha_rephased = cmul(cmul(phase_in, cconj(phase_out)), alpha)
+    beta_rephased = cmul(cmul(phase_in, phase_out), beta)
+    assert_equal(
+        "alpha rephasing keeps annihilator coefficient covariant",
+        cmul(alpha_rephased, cconj(phase_in)),
+        cmul(cconj(phase_out), alpha),
+    )
+    assert_equal(
+        "beta rephasing keeps creation coefficient covariant",
+        cmul(cconj(beta_rephased), phase_in),
+        cmul(cconj(phase_out), cconj(beta)),
+    )
 
 
 def check_adiabatic_riccati_power_law() -> None:
@@ -399,6 +520,7 @@ def main() -> None:
     check_de_sitter_nu_values()
     check_de_sitter_frequency_coefficient()
     check_sudden_quench_bogoliubov()
+    check_complex_bogoliubov_annihilator_matrix()
     check_adiabatic_riccati_power_law()
     check_detector_positive_type_finite_model()
     check_out_region_produced_stress_tensor()

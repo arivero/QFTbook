@@ -214,6 +214,18 @@
       ]
     },
     {
+      "path": "cosmological_particle_creation_checks.py",
+      "risk_class": "cosmological Bogoliubov transformations and produced-stress source",
+      "convention_tags": [
+        "in-out modes use B=[[alpha,beta],[conj beta,conj alpha]]",
+        "annihilator column transforms by B transpose not B adjoint",
+        "inverse Bogoliubov matrix is separate from coefficient comparison",
+        "alpha and beta rephase with theta_in-minus/out and theta_in-plus/out laws",
+        "out anomalous correlator is alpha times conjugate beta",
+        "produced stress source requires pressure work and a^{-d} density scaling"
+      ]
+    },
+    {
       "path": "finite_temperature_path_integral_checks.py",
       "risk_class": "thermal Euclidean spectral reconstruction",
       "convention_tags": [

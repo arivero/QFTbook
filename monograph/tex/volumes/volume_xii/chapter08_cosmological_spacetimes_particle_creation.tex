@@ -362,18 +362,6 @@ Then
   |\alpha_k|^2-|\beta_k|^2=1.
   \label{eq:cosmological-bogoliubov-normalization}
 \end{equation}
-If \(\ket{0,\mathrm{in}}\) is the in-vacuum, the expected out-particle number
-in the \(\mathbf k\)-mode is
-\begin{equation}
-  \langle0,\mathrm{in}|
-  a_{\mathbf k}^{\mathrm{out}\,*}a_{\mathbf k}^{\mathrm{out}}
-  |0,\mathrm{in}\rangle
-  =
-  |\beta_k|^2
-  \label{eq:cosmological-particle-number}
-\end{equation}
-in finite volume, with the usual delta-function density normalization in
-infinite volume.
 The Wronskian
 \[
   W(f,g)=f g'-f'g
@@ -396,6 +384,46 @@ Substitution of \eqref{eq:cosmological-bogoliubov-expansion} therefore gives
   \]
 which proves \eqref{eq:cosmological-bogoliubov-normalization}.
 
+Now keep the momentum-pair ordering fixed.  Put
+\[
+  \mathbf u_k^{\rm in/out}
+  =
+  \begin{pmatrix}
+    \chi_k^{\rm in/out}\\
+    \overline{\chi_k^{\rm in/out}}
+  \end{pmatrix},
+  \qquad
+  \mathbf a_{\mathbf k}^{\rm in/out}
+  =
+  \begin{pmatrix}
+    a_{\mathbf k}^{\rm in/out}\\
+    a_{-\mathbf k}^{\rm in/out\,*}
+  \end{pmatrix}.
+\]
+The mode relation and its complex conjugate are
+\begin{equation}
+  \mathbf u_k^{\rm in}
+  =
+  B_k\mathbf u_k^{\rm out},
+  \qquad
+  B_k=
+  \begin{pmatrix}
+    \alpha_k&\beta_k\\
+    \overline{\beta_k}&\overline{\alpha_k}
+  \end{pmatrix},
+  \qquad
+  B_k^{-1}=
+  \begin{pmatrix}
+    \overline{\alpha_k}&-\beta_k\\
+    -\overline{\beta_k}&\alpha_k
+  \end{pmatrix}.
+  \label{eq:cosmological-bogoliubov-mode-matrix}
+\end{equation}
+The inverse exists because
+\eqref{eq:cosmological-bogoliubov-normalization} gives
+\(\det B_k=1\).  The adjoint \(B_k^\dagger\) is not the inverse and is not the
+matrix which compares field-expansion coefficients.
+
 The field mode admits both decompositions
 \[
   \widehat\chi_{\mathbf k}
@@ -407,21 +435,93 @@ The field mode admits both decompositions
   a_{\mathbf k}^{\mathrm{in}}\chi_k^{\mathrm{in}}
   +
   a_{-\mathbf k}^{\mathrm{in}\,*}\overline{\chi_k^{\mathrm{in}}}.
-  \]
-Comparing coefficients gives
+\]
+Equivalently,
+\[
+  \widehat\chi_{\mathbf k}
+  =
+  \bigl(\mathbf a_{\mathbf k}^{\rm out}\bigr)^T
+  \mathbf u_k^{\rm out}
+  =
+  \bigl(\mathbf a_{\mathbf k}^{\rm in}\bigr)^T
+  B_k\mathbf u_k^{\rm out}.
+\]
+Thus the annihilator column transforms with the transpose of the mode matrix,
+not with its adjoint:
+\begin{equation}
+  \mathbf a_{\mathbf k}^{\rm out}
+  =
+  B_k^T\mathbf a_{\mathbf k}^{\rm in}
+  =
+  \begin{pmatrix}
+    \alpha_k&\overline{\beta_k}\\
+    \beta_k&\overline{\alpha_k}
+  \end{pmatrix}
+  \begin{pmatrix}
+    a_{\mathbf k}^{\rm in}\\
+    a_{-\mathbf k}^{\rm in\,*}
+  \end{pmatrix}.
+  \label{eq:cosmological-annihilator-matrix}
+\end{equation}
+The inverse operator relation is instead
+\[
+  \mathbf a_{\mathbf k}^{\rm in}
+  =
+  (B_k^{-1})^T\mathbf a_{\mathbf k}^{\rm out}.
+\]
+In particular,
 \begin{equation}
   a_{\mathbf k}^{\mathrm{out}}
   =
-  \overline{\alpha_k}\,a_{\mathbf k}^{\mathrm{in}}
+  \alpha_k\,a_{\mathbf k}^{\mathrm{in}}
   +
   \overline{\beta_k}\,a_{-\mathbf k}^{\mathrm{in}\,*},
   \label{eq:out-annihilator-in-terms-of-in}
 \end{equation}
 with the phase convention induced by
-\eqref{eq:cosmological-bogoliubov-expansion}.  Since
-\(a_{\mathbf k}^{\mathrm{in}}\ket{0,\mathrm{in}}=0\) and
-\([a_{-\mathbf k}^{\mathrm{in}},a_{-\mathbf k}^{\mathrm{in}\,*}]=1\) in
-finite volume, \eqref{eq:cosmological-particle-number} follows.
+\eqref{eq:cosmological-bogoliubov-expansion}.
+
+This convention is phase covariant.  If
+\[
+  \chi_k^{\rm in}\mapsto e^{\ii\theta_{\rm in}}\chi_k^{\rm in},
+  \qquad
+  \chi_k^{\rm out}\mapsto e^{\ii\theta_{\rm out}}\chi_k^{\rm out},
+\]
+then
+\[
+  \alpha_k\mapsto
+  e^{\ii(\theta_{\rm in}-\theta_{\rm out})}\alpha_k,
+  \qquad
+  \beta_k\mapsto
+  e^{\ii(\theta_{\rm in}+\theta_{\rm out})}\beta_k,
+\]
+while
+\[
+  a_{\mathbf k}^{\rm in/out}\mapsto
+  e^{-\ii\theta_{\rm in/out}}a_{\mathbf k}^{\rm in/out},
+  \qquad
+  a_{-\mathbf k}^{\rm in/out\,*}\mapsto
+  e^{\ii\theta_{\rm in/out}}a_{-\mathbf k}^{\rm in/out\,*}.
+\]
+Equation~\eqref{eq:out-annihilator-in-terms-of-in} is invariant under this
+joint rephasing.  In finite volume, the in-vacuum therefore gives
+\begin{align}
+  \langle0,\mathrm{in}|
+  a_{\mathbf k}^{\mathrm{out}\,*}a_{\mathbf k}^{\mathrm{out}}
+  |0,\mathrm{in}\rangle
+  &=
+  |\beta_k|^2,
+  \label{eq:cosmological-particle-number}\\
+  \langle0,\mathrm{in}|
+  a_{\mathbf k}^{\mathrm{out}}a_{-\mathbf k}^{\mathrm{out}}
+  |0,\mathrm{in}\rangle
+  &=
+  \alpha_k\overline{\beta_k}.
+  \label{eq:cosmological-anomalous-out-correlator}
+\end{align}
+The first line is insensitive to the phase of \(\alpha_k\); the anomalous
+out-correlator is not.  Infinite volume replaces these finite-mode
+expectations by the usual delta-function density normalizations.
 
 \begin{example}[Instantaneous frequency jump]
 \label{ex:instantaneous-frequency-jump}

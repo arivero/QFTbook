@@ -22,8 +22,9 @@ space, not as a slogan about ambiguity.
 - `p=(d-2)/2`, `xi_c`: rescaling exponent and conformal-coupling constant.
 - `S`, `sigma`, `J`, `H_J`, `F_J`: real solution space, symplectic form,
   compatible complex structure, one-particle Hilbert space, and Fock space.
-- `u_k^{in/out}`, `alpha_k`, `beta_k`: asymptotic modes and Bogoliubov
-  coefficients.
+- `u_k^{in/out}`, `alpha_k`, `beta_k`, `B_k`: asymptotic modes, Bogoliubov
+  coefficients, and the \(2\times2\) mode matrix
+  \(\begin{pmatrix}\alpha_k&\beta_k\\ \overline{\beta_k}&\overline{\alpha_k}\end{pmatrix}\).
 - `W_k`: adiabatic frequency in the WKB ansatz.
 - `P(E)`, `chi(tau)`, `W(x,x')`: detector response, switching function, and
   two-point function.
@@ -53,8 +54,13 @@ space, not as a slogan about ambiguity.
   by the two-mode squeezed-vacuum and infinite tensor-product argument, and
   separates the finite-volume unitary-equivalence condition from the
   noncompact momentum-space particle-density diagnostic.
-- Derives Bogoliubov normalization and the out-particle number in the
-  in-vacuum from the Wronskian and the annihilator transformation.
+- Derives Bogoliubov normalization, the annihilator transformation, and
+  phase-sensitive squeezed correlators from one explicit \(2\times2\) matrix:
+  the annihilator column transforms by \(B_k^T\), the inverse relation uses
+  \((B_k^{-1})^T\), and the adjoint is not the coefficient-comparison matrix.
+  It states the in/out mode rephasing law for \(\alpha_k\), \(\beta_k\), and
+  annihilators, then derives both \(\langle N_k^{\rm out}\rangle=|\beta_k|^2\)
+  and \(\langle a_k^{\rm out}a_{-k}^{\rm out}\rangle=\alpha_k\overline{\beta_k}\).
 - Gives the instantaneous frequency-jump example as a normalization check.
 - Derives the exact Riccati equation for the adiabatic frequency and records
   the second-order solution.
@@ -89,13 +95,16 @@ space, not as a slogan about ambiguity.
 
 - `calculation-checks/cosmological_particle_creation_checks.py` checks the
   conformal-coupling cancellation, de Sitter \(\nu\)-parameter arithmetic,
-  sudden-quench Bogoliubov normalization, a power-law adiabatic Riccati
-  identity, finite positive-type detector-response Gram forms, the out-region
-  produced energy/pressure formulas, the required \(a_+^{-d}\) scale-factor
-  power, the massless equation of state, and the Friedmann response
-  coefficient, plus the time-dependent produced-stress continuity identity
-  with negative controls against wrong pressure normalization, wrong
-  scale-factor power, and treating ongoing production as a conserved fluid.
+  sudden-quench Bogoliubov normalization, the complex two-mode Bogoliubov
+  matrix with genuinely complex \(\alpha\), the transpose-not-adjoint
+  annihilator transformation, rephasing covariance, anomalous out-correlator
+  phase, a power-law adiabatic Riccati identity, finite positive-type
+  detector-response Gram forms, the out-region produced energy/pressure
+  formulas, the required \(a_+^{-d}\) scale-factor power, the massless equation
+  of state, and the Friedmann response coefficient, plus the time-dependent
+  produced-stress continuity identity with negative controls against wrong
+  pressure normalization, wrong scale-factor power, and treating ongoing
+  production as a conserved fluid.
   The same script now checks the finite backreaction-window budget, including
   scheme transport, tail/gravity remainders, pressure-dependent Hubble drift,
   number-density-only failures, and stress-noise tolerances.
@@ -154,3 +163,9 @@ timelike detector worldline sampling the two-point function.
   identity is kept theorem-family visible; the surrounding use as a
   semiclassical source remains bounded by the later backreaction-window
   controlled approximation.
+- 2026-06-08 issue #916 Bogoliubov phase pass: replaced the conjugated-alpha
+  annihilator rule by a single \(2\times2\) mode-matrix derivation, separated
+  transpose, adjoint, and inverse operations, and added complex-alpha finite
+  regression coverage for particle number, anomalous correlators, and in/out
+  rephasing.  This is a phase-sensitive operator-coordinate repair; the real
+  sudden-quench example remains only a normalization check.
