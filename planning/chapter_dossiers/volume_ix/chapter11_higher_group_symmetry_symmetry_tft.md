@@ -111,7 +111,7 @@ of backgrounds, anomalies, gauging, and condensation.
   `Z_N` subgroup of the magnetic one-form symmetry with compact fields `b,c`,
   including the discrete-torsion choice and the compensating rational axial
   change of variables.
-- States the compact path-integral theorem for QED noninvertible chiral
+- Defines the compact path-integral construction of QED noninvertible chiral
   defects, including their action on local fermions, Wilson lines, and
   minimal 't Hooft lines, while separating this from a future fully axiomatic
   reconstruction of compact QED and its defect Hilbert spaces.
@@ -146,3 +146,8 @@ topological factor.
   defect-network mechanism under explicit anomaly-free topological-surface
   hypotheses; it does not claim that those symmetry surfaces have been
   constructed in every continuum Yang--Mills theory.
+- 2026-06-08 issue #844 semantic-status pass: reclassified the QED
+  noninvertible chiral defect block from `controlledapproximation` to
+  `construction`.  The block is a compact path-integral defect construction
+  under stated magnetic one-form-symmetry assumptions, not an approximation
+  estimate or a completed axiomatic reconstruction theorem.

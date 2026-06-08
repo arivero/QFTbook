@@ -369,3 +369,8 @@ the exponential decay of average phase with volume.
   produced per-chain summaries, while explicitly leaving chain independence,
   equilibration, target-measure equality, and scaling-window interpretation as
   separate evidence layers.
+- 2026-06-08 issue #844 semantic-status pass: demoted the subgroup-algorithm
+  status block from `controlledapproximation` to a remark.  Exact
+  finite-cutoff invariance of the specified kernels remains in the preceding
+  calculation; algorithmic performance, mixing, topological barriers, and
+  continuum extrapolation remain separate evidence layers.

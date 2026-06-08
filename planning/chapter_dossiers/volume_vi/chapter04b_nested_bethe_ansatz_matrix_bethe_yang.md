@@ -56,6 +56,10 @@
 6. Generic finite-chain completeness is an algebraic Bethe-algebra theorem at
    fixed \(L\), not evidence by itself for continuum QFT completeness or
    thermodynamic root-string control.
+7. The thermodynamic replacement of finite nested roots by ideal string
+   species is an explicit hypothesis, not a controlled approximation; it
+   requires control of deviations, holes, singular strings, and orders of
+   limits for the states being studied.
 
 ## Calculation Checks
 
@@ -83,3 +87,7 @@
   vectors, dimension count), while emphasizing that the homogeneous periodic
   limit, continuum matrix Bethe--Yang approximation, and thermodynamic string
   limit are separate hypotheses.
+- 2026-06-08 issue #844 semantic-status pass: reclassified the nested string
+  block from `controlledapproximation` to `hypothesis`.  The manuscript now
+  says directly that the string replacement is a thermodynamic input rather
+  than a derived approximation estimate.

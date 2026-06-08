@@ -132,7 +132,7 @@ timelike detector worldline sampling the two-point function.
   and tail/remainder data separate.
 - 2026-06-04 issue #729 produced-stress continuity pass: added
   `ca:cosmology-produced-stress-continuity`, deriving the finite continuity
-  check for time-dependent diagonal particle occupations.  The companion
+  identity for time-dependent diagonal particle occupations.  The companion
   verifies the pressure-work cancellation, the source term
   \(a^{-d}\int\Omega_k\dot n_k\), and negative controls against pressure,
   scale-factor, and conserved-fluid shortcuts.
@@ -147,3 +147,9 @@ timelike detector worldline sampling the two-point function.
   microlocal Hadamard state condition and the symplectic/complex-structure
   object it actually studies, while reserving renormalized source,
   interacting pAQFT, and backreaction claims for their stronger hypotheses.
+- 2026-06-08 issue #844 semantic-status pass: reclassified the produced-stress
+  continuity block from `controlledapproximation` to a proposition titled
+  "Continuity identity for produced stress".  The exact diagonal finite-window
+  identity is kept theorem-family visible; the surrounding use as a
+  semiclassical source remains bounded by the later backreaction-window
+  controlled approximation.

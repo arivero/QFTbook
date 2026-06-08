@@ -793,3 +793,8 @@ The chapter establishes:
   can match normalization, \(\Omega_1\), and \(\Omega_2\) and therefore agree
   on quadratic endpoint tests, while still giving different local endpoint-bin
   occupancies.
+- 2026-06-08 issue #844 semantic-status follow-up: updated the Drell--Yan
+  reference map so the integrated theorem-boundary checklist is cited as a
+  remark rather than as a controlled approximation.  This keeps the
+  factorization architecture from treating a proof-obligation list as a
+  component estimate.

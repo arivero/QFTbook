@@ -46,7 +46,13 @@ CONTROLLED_APPROX_STATUS_TITLE_RE = re.compile(
 )
 
 CONTROLLED_APPROX_FORBIDDEN_TITLE_RE = re.compile(
-    r"\b(cross-check|proof-obligation|template|datum|data)\b",
+    r"("
+    r"^Status of\b|"
+    r"\bhypothesis\b|"
+    r"\btheorem boundary\b|"
+    r"^What\b.*\bproves\b|"
+    r"\b(cross-check|proof-obligation|template|datum|data)\b"
+    r")",
     re.IGNORECASE,
 )
 
@@ -844,7 +850,7 @@ def main() -> int:
                 line = text.count("\n", 0, match.start()) + 1
                 failures.append(
                     f"{path}:{line}: controlledapproximation [{title}] has "
-                    "comparison/proof-obligation title vocabulary"
+                    "status/checklist/hypothesis title vocabulary"
                 )
                 continue
             if not CONTROLLED_APPROX_STATUS_TITLE_RE.search(title):

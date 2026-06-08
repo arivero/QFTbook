@@ -1557,3 +1557,10 @@ The chapter must define and derive:
   approximation window because it propagates photon-kernel weights,
   rapidity-subtraction, BK error, endpoint primitives, and small-\(r\)
   color-transparency input.
+- 2026-06-08 issue #844 semantic-status follow-up: demoted additional
+  status/checklist blocks that had been overpromoted to
+  `controlledapproximation`: Eguchi--Kawai status, the integrated
+  Drell--Yan theorem boundary, the finite Glauber calculation boundary, and
+  small-\(x\) resummation status are now remarks; the two-state mixing chart
+  is now a definition.  Stable labels were retained for cross-reference
+  continuity, while cross-reference prose now names the actual environment.

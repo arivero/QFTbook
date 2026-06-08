@@ -496,3 +496,8 @@
   Adler--Bardeen nonrenormalization feeds its local anomaly hypothesis for
   four-dimensional chiral Yang--Mills theories, while leaving global gauge
   anomalies and nonperturbative regulator construction outside the theorem.
+- 2026-06-08 issue #844 semantic-status pass: demoted the
+  Gribov--Zwanziger status block from `controlledapproximation` to a remark.
+  The text records what the finite-regulator Landau-gauge ansatz supplies and
+  what comparison to gauge-invariant Yang--Mills remains, but it no longer
+  advertises an approximation estimate where none is constructed.

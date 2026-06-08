@@ -87,8 +87,7 @@ symmetry.
   paragraph-level bootstrap consistency check.  The denominator zero analysis
   and \(Q=2,1,0\) block-unitarity identities remain in the text and in the
   paired calculation script, while the constructive local-QFT realization
-  question remains separated in the sausage bootstrap matching controlled
-  approximation.
+  question remains separated in the sausage bootstrap matching remark.
 - 2026-05-31 issue #691 continuation: demoted "Analytic uniqueness of a
   matched two-particle kernel" from proposition/proof form to an analytic
   matching paragraph.  The boundary-value uniqueness derivation remains
@@ -98,6 +97,11 @@ symmetry.
 - 2026-06-04 issue #770 re-audit: added the Coleman continuous-symmetry
   guardrail for the \(O(N)\), Gross--Neveu, and sigma-model families, while
   leaving discrete chiral phase-selection questions separate.
+- 2026-06-08 issue #844 semantic-status pass: demoted the projective
+  scattering, supercoset status, and sausage bootstrap matching blocks
+  from `controlledapproximation` to remarks.  They organize bootstrap and
+  regulator-realization obligations, but they do not yet provide component
+  error estimates.
 
 ## Figure Ledger
 
