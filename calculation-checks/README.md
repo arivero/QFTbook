@@ -2370,7 +2370,9 @@ Current checks:
 - `kinetic_theory_checks.py`: finite algebra checks for the Volume X kinetic
   theory chapter, including the corrected collisionless/kinetic/hydrodynamic
   scale hierarchy, Bose/Fermi detailed balance, the H-theorem integrand, the
-  invariant mass-shell Jacobian and \(2E/Z\) shell projector, the force-free
+  H-theorem prefactor derived from the \(2d\Pi\) entropy current and
+  transition-measure symmetrization, the invariant mass-shell Jacobian and
+  \(2E/Z\) shell projector, the force-free
   quasiparticle drift projection from the Wigner-space mass-shell bracket,
   transition-measure microreversibility, local-equilibrium collision versus
   streaming separation, the weak-scalar cut-sunset gain/loss products derived
@@ -2381,7 +2383,9 @@ Current checks:
   reversible-collision detailed balance, exact linearized rate and
   collision-invariant algebra, identical-final full-product versus quotient
   measure equivalence, the factor-two negative control for outgoing
-  relabeling, linearized collision-operator positivity and null vectors,
+  relabeling, rejection of the old \(1/4\) H-theorem prefactor while
+  preserving integrand positivity, linearized collision-operator positivity
+  and null vectors,
   dimensionful Markov-memory residual and noncancellation bookkeeping,
   pinch-enhancement bookkeeping, and the relaxation-time shear-viscosity
   integral.

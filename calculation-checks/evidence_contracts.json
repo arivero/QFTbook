@@ -126,6 +126,7 @@
         "positive-shell projector is 2E/Z",
         "scalar sunset self-energy full-product weight lambda^2/2",
         "scalar covariant collision full-product weight lambda^2/4",
+        "H theorem prefactor retains entropy-current factor 2",
         "transition measure includes symmetry and shell-projection factors",
         "channelwise H theorem assumes microreversibility"
       ]

@@ -79,7 +79,11 @@ transport coefficients arise from the inverse linearized collision operator.
    gradients source the streaming term, not the local collision term.
 7. The kinetic entropy current has nonnegative divergence for nonnegative,
    channelwise microreversible transition weights because the symmetrized
-   \(2\to2\) integrand is \((X-Y)\log(X/Y)\ge0\).  Nonmicroreversible
+   \(2\to2\) integrand is \((X-Y)\log(X/Y)\ge0\).  With the chapter's
+   \(2d\Pi\) entropy-current normalization and transition-measure convention,
+   the symmetrized continuum coefficient is \(1/2\); in the scalar
+   full-product convention \(\mathcal W=\lambda_R^2/4\), the ordered
+   four-particle coefficient is \(\lambda_R^2/8\).  Nonmicroreversible
    effective networks require a separate KMS/unitarity argument.
 8. Stress-tensor and current Ward identities are the collision-invariant
    moments of the Boltzmann equation.
@@ -135,6 +139,11 @@ transport coefficients arise from the inverse linearized collision operator.
   \(\lambda_R^2/2\) scalar self-energy weight, the \(\lambda_R^2/4\)
   covariant full-product collision weight, and an explicit transition measure
   whose channelwise H theorem assumes microreversibility.
+- 2026-06-08 issue #925 pass: corrected the symmetrized H-theorem coefficient
+  from \(1/4\) to \(1/2\) with the \(2d\Pi\) entropy-current factor retained,
+  stated that initial/final pair divisors are already part of the transition
+  weight or measure convention, and added the scalar \(\lambda_R^2/8\)
+  specialization plus a finite prefactor regression check.
 
 ## Calculation Checks
 
@@ -148,7 +157,8 @@ transport coefficients arise from the inverse linearized collision operator.
   normalization, full-product versus quotient identical-final measure
   equivalence, exact finite reversible-collision detailed balance, exact
   finite linearized-rate algebra, finite collision-invariant algebra,
-  linearized collision positivity and null vectors, dimensionful
+  the entropy-current-derived H-theorem prefactor with a rejected \(1/4\)
+  negative control, linearized collision positivity and null vectors, dimensionful
   Markov-memory and pinch-enhancement bookkeeping, and the relaxation-time
   shear-viscosity integral.
 

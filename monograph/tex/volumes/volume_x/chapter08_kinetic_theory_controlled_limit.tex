@@ -648,7 +648,11 @@ With this convention, the \(2\to2\) contribution to \(\mathcal C_a\) is
   \label{eq:kinetic-2to2-collision}
 \end{align}
 The sum over \(b,c,d\) is a sum over physical channels in the chosen measure
-convention.  When the weight is expressed in terms of an on-shell scattering
+convention.  If the initial or final pair is represented by a quotient rather
+than by the ordered product measure, the corresponding finite divisor is
+already included in \(\mathcal W\) or in the declared transition measure.
+The entropy symmetrization below introduces no further channel-counting
+divisor.  When the weight is expressed in terms of an on-shell scattering
 amplitude, the amplitude is in the normalization of the scattering chapters
 and all finite symmetry and shell-projection factors remain part of
 \(\mathcal W\).  In gauge theories the regulator and medium clause is
@@ -727,11 +731,40 @@ Using the Boltzmann equation,
 \end{equation}
 For the \(2\to2\) kernel with nonnegative, microreversible transition measure
 \eqref{eq:kinetic-transition-measure}--\eqref{eq:kinetic-transition-microreversibility},
-symmetrizing over the four external legs gives
+the overall coefficient follows from the same normalization.  Set
+\[
+  r_i=\frac{f_i}{1+\eta_i f_i}.
+\]
+For one physical channel, write
+\(X=X_{12\to34}\) and \(Y=Y_{34\to12}\).  Then
+\[
+  \partial_\mu S^\mu_{\rm kin}
+  =
+  2\int
+  d\Pi_1d\Pi_2d\Pi_3d\Pi_4\,
+  (2\pi)^D\delta^{(D)}(\cdots)
+  \mathcal W_{12;34}
+  (X-Y)\log r_1 ,
+\]
+where the factor \(2\) is the one in
+\eqref{eq:kinetic-entropy-divergence-before-sym}.  Incoming exchange,
+outgoing exchange, and \(12\leftrightarrow34\) microreversibility give the
+identity under the transition integral
+\[
+  \int \mathcal W(X-Y)\log r_1
+  =
+  \frac14\int \mathcal W(X-Y)
+  \log\!\left(\frac{r_1r_2}{r_3r_4}\right)
+  =
+  \frac14\int \mathcal W(X-Y)\log\!\left(\frac XY\right).
+\]
+Thus the four-leg symmetrization supplies \(1/4\), while the entropy current
+has already supplied the factor \(2\).  Symmetrizing over the external legs
+therefore gives
 \begin{align}
   \partial_\mu S^\mu_{\rm kin}
   &=
-  \frac14
+  \frac12
   \sum_{abcd}\int
   d\Pi_1d\Pi_2d\Pi_3d\Pi_4\,
   (2\pi)^D\delta^{(D)}(p_1+p_2-p_3-p_4)
@@ -742,6 +775,10 @@ symmetrizing over the four external legs gives
   \log\!\left(\frac{X_{12\to34}}{Y_{34\to12}}\right)\ge0.
   \label{eq:kinetic-h-theorem}
 \end{align}
+For the weak scalar full-product convention
+\(\mathcal W_{\phi\phi;\phi\phi}=\lambda_R^2/4\), the coefficient multiplying
+the ordered four-particle measure in
+\eqref{eq:kinetic-h-theorem} is therefore \(\lambda_R^2/8\).
 The inequality follows from
 \[
   (x-y)\log(x/y)\ge0
