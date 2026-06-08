@@ -147,23 +147,18 @@ the sine-Gordon one-loop soliton mass shift is
 \begin{equation}
   \Delta M_{\rm SG}^{(1)}
   =
-  \frac12
-  \int_{-\Lambda}^{\Lambda}
-  \frac{\dd k}{2\pi}\,
-  \sqrt{k^2+m^2}\,
-  \frac{\dd\delta}{\dd k}
-  +
-  \Delta M_{\rm ct}(\Lambda)
+  -\frac m2
+  -
+  \frac{1}{2\pi}
+  \int_0^\infty
+  \frac{k\,\dd k}{\sqrt{k^2+m^2}}\,
+  \left[
+    2\arctan(m/k)-\frac{2m}{k}
+  \right]
   =
   -\frac{m}{\pi},
   \label{eq:soliton-chapter-dhn-mass-shift}
 \end{equation}
-where
-\[
-  \Delta M_{\rm ct}(\Lambda)
-  =
-  \frac{m}{\pi}\operatorname{arsinh}(\Lambda/m)-\frac{m}{\pi}.
-\]
 Consequently
 \begin{equation}
   M_s
@@ -174,22 +169,22 @@ Consequently
 \end{proposition}
 
 \begin{proof}
-Substituting \eqref{eq:soliton-chapter-sg-phase-shift} into the continuum
-determinant comparison gives
+The detailed regulator calculation is
+Section~\ref{sec:sine-gordon-dhn-soliton-mass}.  The vacuum and soliton
+continuum modes are paired by mode number,
 \[
-  \frac12
-  \int_{-\Lambda}^{\Lambda}
-  \frac{\dd k}{2\pi}
-  \sqrt{k^2+m^2}
-  \left(-\frac{2m}{k^2+m^2}\right)
-  =
-  -\frac{m}{\pi}\operatorname{arsinh}(\Lambda/m).
+  k_nL=\pi n,\qquad q_nL+\delta(q_n)=\pi n,
 \]
-The counterterm displayed above is the same tadpole subtraction which defines
-the normal-ordered cosine.  The logarithmic cutoff term cancels, leaving the
-finite value \(-m/\pi\).  The translation zero mode is absent from the
-determinant because it was converted into the center coordinate in
-Proposition~\ref{prop:kink-center-collective-coordinate}.
+after combining the two parity channels into the total positive-momentum
+phase shift and using the branch \(\delta(0^+)=\pi\), \(\delta(\infty)=0\).
+Levinson's theorem accounts for the single translation zero mode; after that
+mode is removed from the determinant and integrated as the collective
+coordinate \(X\), the oscillator comparison contributes \((0-m)/2\).  The
+term \(2m/k\) in \eqref{eq:soliton-chapter-dhn-mass-shift} is the first Born
+phase shift of the fluctuation potential, and the no-tadpole counterterm
+cancels exactly that Born contribution.  Thus the finite \(-m/\pi\) is
+produced by the Born-subtracted determinant, not inserted into the
+counterterm.
 \end{proof}
 
 The finite term in \eqref{eq:soliton-chapter-dhn-mass-shift} is not a

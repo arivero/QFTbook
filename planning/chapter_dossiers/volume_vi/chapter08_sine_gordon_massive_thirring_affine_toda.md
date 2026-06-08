@@ -53,8 +53,10 @@ families.  This chapter supplies the first exact examples before the later
   Pöschl--Teller fluctuation operator, its zero mode and reflectionless
   continuum phase shift, and the DHN/Faddeev--Korepin one-loop correction
   \(M_s=8m/\beta^2-m/\pi+O(\beta^2m)\) in the paired normal-ordering
-  convention.  The text emphasizes that this is a fluctuation determinant and
-  counterterm calculation, not a moduli-coordinate calculation.
+  convention.  The text derives the finite term from mode-number matching,
+  zero-mode/Levinson bookkeeping, the first-Born no-tadpole subtraction, and
+  the finite Born-subtracted phase-shift integral, not from an assigned finite
+  counterterm.
 - Checks the same finite DHN mass shift against the exact breather spectrum:
   inserting \(M_s=8m/\beta^2-m/\pi+O(\beta^2m)\) into
   \(m_1=2M_s\sin(\pi\xi/2)\) cancels the \(O(\beta^2m)\) correction and gives
@@ -120,9 +122,12 @@ families.  This chapter supplies the first exact examples before the later
   direct and crossed poles, neutral-block residue signs, and breather-breather
   fusion mass formulae.  It also verifies the semiclassical soliton
   fluctuation calculation: kink trigonometry, Pöschl--Teller zero and
-  continuum modes, phase-shift derivative, cutoff/counterterm cancellation,
-  and the finite \(-m/\pi\) one-loop mass shift, with negative controls for
-  omitted counterterms, half phase shifts, and double-counted zero modes.  It
+  continuum modes, phase-shift derivative, first-Born phase from the
+  fluctuation-potential integral, the finite Born-subtracted determinant, and
+  the finite \(-m/\pi\) one-loop mass shift, with negative controls for
+  omitted surface terms, omitted/double-counted zero modes, unsubtracted Born
+  terms, inserted finite counterterms, and using the exact breather answer as
+  a counterterm definition.  It
   also verifies the weak-coupling breather-mass consistency check: the DHN
   finite shift cancels the \(O(\beta^2)\) term in \(m_{B_1}/m\), while the
   classical or half-shift choices fail.  It also verifies the \(A_r^{(1)}\)
@@ -182,3 +187,9 @@ first simply-laced examples.
   mass through \(O(\beta^2m)\).  This ties the fluctuation determinant to the
   physical on-shell spectrum rather than treating it as an isolated soliton
   correction.
+- 2026-06-08 issue #853: rebuilt the DHN one-loop mass derivation so the
+  finite \(-m/\pi\) term is not hidden in the counterterm.  The canonical
+  derivation now states the mode-number regulator, density shift, branch and
+  Levinson/zero-mode contribution, first-Born phase from
+  \(\int V_K=-4m\), no-tadpole subtraction, finite surface term, and exact
+  breather comparison as a posterior check.

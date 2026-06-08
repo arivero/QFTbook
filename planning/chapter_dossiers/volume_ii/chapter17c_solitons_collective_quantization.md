@@ -27,8 +27,9 @@
 - `sec:soliton-fluctuation-determinants-mass`: fluctuation determinant and
   physical mass layer.
 - `prop:soliton-chapter-dhn-mass-shift`: derives the sine-Gordon DHN
-  one-loop mass shift `-m/pi` from the phase-shift determinant plus the
-  normal-ordering counterterm.
+  one-loop mass shift `-m/pi` from the zero-mode/Levinson contribution and
+  the finite first-Born-subtracted phase-shift determinant, with the
+  no-tadpole counterterm cancelling only the Born/tadpole graph.
 - `sec:soliton-fermion-zero-modes-fractional-charge`: Jackiw-Rebbi zero-mode
   sector and half-charge coordinate.
 - `eq:soliton-chapter-jackiw-rebbi-kink-zero-mode`: normalized kink zero mode.
@@ -61,9 +62,9 @@
 - `calculation-checks/soliton_quantization_channel_checks.py` carries the
   companion evidence contract.
 - It checks the kink mass/zero-mode norm equality, finite zero-mode
-  projection, sine-Gordon phase-shift derivative, DHN cutoff/counterterm
-  cancellation, and Jackiw-Rebbi zero-mode normalization and half-charge
-  bookkeeping.
+  projection, sine-Gordon phase-shift derivative, first-Born phase from the
+  fluctuation-potential integral, the finite Born-subtracted DHN determinant,
+  and Jackiw-Rebbi zero-mode normalization and half-charge bookkeeping.
 
 ## Audit Notes
 
@@ -75,3 +76,8 @@
   after the new compiled chapter.
 - No directives, GitHub issue text, or process-monitoring language was inserted
   into monograph TeX.
+- 2026-06-08 issue #853: replaced the duplicated cutoff/counterterm algebra
+  by a concise cross-reference to the canonical Volume VI mode-number
+  derivation.  The chapter now states that \(-m/\pi\) is produced by the
+  Born-subtracted determinant and zero-mode bookkeeping, not inserted as a
+  finite counterterm.

@@ -3,9 +3,10 @@
 
 The checks also cover the semiclassical soliton fluctuation calculation:
 the classical kink profile, Pöschl-Teller fluctuation operator, reflectionless
-phase shift, DHN cutoff/counterterm cancellation, and the finite one-loop
-mass shift -m/pi.  The same finite shift is checked against the exact
-lightest-breather pole mass in the weak-coupling expansion.
+phase shift, first-Born no-tadpole subtraction, zero-mode/Levinson bookkeeping,
+and the finite one-loop mass shift -m/pi.  The same finite shift is checked
+against the exact lightest-breather pole mass in the weak-coupling expansion,
+but the breather spectrum is not used to define the counterterm.
 """
 
 from __future__ import annotations
@@ -30,6 +31,11 @@ def assert_close(name: str, got: complex | float, expected: complex | float, tol
 def assert_equal(name: str, got: object, expected: object) -> None:
     if got != expected:
         raise AssertionError(f"{name} failed: got {got!r}, expected {expected!r}")
+
+
+def assert_not_equal(name: str, got: object, forbidden: object) -> None:
+    if got == forbidden:
+        raise AssertionError(f"{name}: forbidden shortcut unexpectedly matched {got!r}")
 
 
 def matmul(a: ComplexMatrix, b: ComplexMatrix) -> ComplexMatrix:
@@ -308,39 +314,67 @@ def check_semiclassical_soliton_fluctuation_mass_shift() -> None:
         0,
     )
 
-    # With k=m q and L=Lambda/m, the continuum determinant comparison is
-    # -m/pi asinh(L).  The normal-ordering counterterm cancels the logarithmic
-    # cutoff dependence and leaves the DHN finite part -m/pi.
-    for cutoff_ratio in (0.7, 3.0, 25.0):
-        m = 1.9
-        continuum = -m / math.pi * math.asinh(cutoff_ratio)
-        counterterm = m / math.pi * math.asinh(cutoff_ratio) - m / math.pi
-        assert_close(
-            f"sine-Gordon DHN finite mass shift cutoff={cutoff_ratio}",
-            continuum + counterterm,
-            -m / math.pi,
-        )
+    k, m, length, radius, s = sp.symbols("k m length radius s", positive=True)
+    phase_shift = 2 * sp.atan(m / k)
+    density_shift = sp.diff(phase_shift / sp.pi, k)
+    assert_equal(
+        "sine-Gordon mode-number density shift",
+        sp.simplify(density_shift + 2 * m / (sp.pi * (k**2 + m**2))),
+        0,
+    )
 
-        no_counterterm = continuum
-        assert_gt(
-            "negative control: unrenormalized continuum shift differs",
-            abs(no_counterterm + m / math.pi),
-            1.0e-8,
-        )
+    shifted_momentum = k - phase_shift / length
+    vacuum_mode_number = length * k / sp.pi
+    soliton_mode_number = (length * shifted_momentum + phase_shift) / sp.pi
+    assert_equal("same-mode-number quantization shift", sp.expand(soliton_mode_number - vacuum_mode_number), 0)
 
-        half_phase_shift = continuum / 2.0 + counterterm
-        assert_gt(
-            "negative control: half phase shift differs",
-            abs(half_phase_shift + m / math.pi),
-            1.0e-8,
-        )
+    potential_integral = -4 * m
+    first_born = -potential_integral / (2 * k)
+    assert_equal("first Born phase from SG fluctuation potential", sp.simplify(first_born - 2 * m / k), 0)
 
-        counted_zero_mode = continuum + counterterm + m / 2.0
-        assert_gt(
-            "negative control: counted zero-mode oscillator differs",
-            abs(counted_zero_mode + m / math.pi),
-            1.0e-8,
-        )
+    dimensionless_delta = 2 * sp.atan(1 / s)
+    dimensionless_born = 2 / s
+    cutoff_integral = sp.sqrt(1 + radius**2) * 2 * sp.atan(1 / radius) - sp.pi
+    assert_equal(
+        "Born-subtracted phase integral limit",
+        sp.simplify(sp.limit(cutoff_integral, radius, sp.oo) - (2 - sp.pi)),
+        0,
+    )
+
+    derivative_of_integral = sp.diff(cutoff_integral.subs(radius, s), s)
+    integrand = s / sp.sqrt(1 + s**2) * (dimensionless_delta - dimensionless_born)
+    assert_equal("Born-subtracted integral primitive", sp.simplify(derivative_of_integral - integrand), 0)
+
+    finite_integral = m * (2 - sp.pi)
+    zero_mode_levinson = -m / 2
+    mass_shift = zero_mode_levinson - finite_integral / (2 * sp.pi)
+    assert_equal("DHN finite mass shift from determinant pieces", sp.simplify(mass_shift + m / sp.pi), 0)
+
+    omitted_surface_integral = -sp.pi * m
+    omitted_surface_shift = zero_mode_levinson - omitted_surface_integral / (2 * sp.pi)
+    assert_not_equal("negative control: omitted surface term", sp.simplify(omitted_surface_shift), -m / sp.pi)
+
+    omitted_zero_mode = -finite_integral / (2 * sp.pi)
+    double_counted_zero_mode = -m - finite_integral / (2 * sp.pi)
+    assert_not_equal("negative control: omitted zero-mode term", sp.simplify(omitted_zero_mode), -m / sp.pi)
+    assert_not_equal("negative control: counted zero-mode oscillator", sp.simplify(double_counted_zero_mode), -m / sp.pi)
+
+    raw_unsubtracted = -m / sp.pi * sp.asinh(radius)
+    assert_not_equal("negative control: first Born term unsubtracted", raw_unsubtracted, -m / sp.pi)
+
+    no_tadpole_finite_counterterm = sp.Integer(0)
+    inserted_finite_counterterm = -m / sp.pi
+    breather_defined_counterterm = -m / sp.pi
+    assert_not_equal(
+        "negative control: finite counterterm insertion",
+        inserted_finite_counterterm,
+        no_tadpole_finite_counterterm,
+    )
+    assert_not_equal(
+        "negative control: exact breather answer used as counterterm",
+        breather_defined_counterterm,
+        no_tadpole_finite_counterterm,
+    )
 
 
 def check_dhn_breather_mass_weak_coupling_consistency() -> None:

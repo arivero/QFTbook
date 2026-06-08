@@ -1037,11 +1037,14 @@ Current checks:
 - `soliton_quantization_channel_checks.py`: symbolic checks for the dedicated
   soliton collective-quantization chapter, including the dimensionless kink
   mass and translation-zero-mode norm \(4/3\), finite zero-mode projection and
-  idempotence, sine-Gordon phase-shift derivative, DHN cutoff/counterterm
-  cancellation leaving \(-m/\pi\), and Jackiw-Rebbi zero-mode normalization
-  and half-charge bookkeeping, with negative controls for the wrong zero-mode
-  norm, unprojected fluctuations, missing or half DHN counterterms,
-  nonnormalizable zero-mode component, and integer kink-sector charges.
+  idempotence, sine-Gordon phase-shift derivative, first-Born phase from the
+  fluctuation-potential integral, the Born-subtracted DHN determinant giving
+  \(-m/\pi\), and Jackiw-Rebbi zero-mode normalization and half-charge
+  bookkeeping, with negative controls for the wrong zero-mode norm,
+  unprojected fluctuations, omitted surface terms, omitted/double-counted zero
+  modes, unsubtracted Born terms, inserted finite counterterms,
+  breather-defined counterterms, nonnormalizable zero-mode component, and
+  integer kink-sector charges.
 - `monopole_dyon_sector_checks.py`: finite charge-sector checks for the
   dedicated monopole/dyon chapter, including Witten-effect cancellation in the
   DSZ pairing, half-DSZ field angular momentum, monopole-harmonic angular
@@ -2940,9 +2943,12 @@ Current checks:
   lightest-breather unitarity and crossing.  It also checks the
   semiclassical sine-Gordon soliton fluctuation calculation: the kink
   trigonometric identity, Pöschl--Teller zero and continuum modes, phase-shift
-  derivative, DHN cutoff/counterterm cancellation, the finite one-loop mass
-  shift \(-m/\pi\), and negative controls for omitted counterterms, half phase
-  shifts, and double-counted zero modes.  It also checks that this DHN finite
+  derivative, first-Born phase from the fluctuation-potential integral, the
+  finite Born-subtracted determinant, the finite one-loop mass shift
+  \(-m/\pi\), and negative controls for omitted surface terms,
+  omitted/double-counted zero modes, unsubtracted Born terms, inserted finite
+  counterterms, and breather-defined counterterms.  It also checks that this
+  DHN finite
   shift cancels the \(O(\beta^2)\) term in the exact lightest-breather pole
   mass, while the classical soliton mass or a half finite shift leaves the
   wrong weak-coupling mass coordinate.  It also checks the
