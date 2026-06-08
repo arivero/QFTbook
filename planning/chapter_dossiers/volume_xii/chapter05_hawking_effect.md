@@ -6,7 +6,9 @@
   backgrounds from horizon regularity, collapse ray tracing, wave-packet
   Bogoliubov mixing, and exterior propagation.
 - Immediate predecessor: Unruh effect and wedge modular theory.
-- Immediate successor: background gauge fields and index-theoretic anomalies.
+- Immediate successor: cosmological spacetimes and particle creation.
+- Later consumers: semiclassical backreaction and the separate
+  background-gauge/index-theory anomaly lane.
 
 ## Definitions And Results
 
@@ -127,3 +129,8 @@
   fixed-background-to-semiclassical interface by requiring mass-loss drift,
   state/gravity residuals, quasi-stationary control, and flux-noise chart
   control before an interacting horizon flux is read as an evaporating metric.
+- 2026-06-08 issue #729 printed-order pass: updated the source-position
+  dossier and added an opening TeX paragraph that identifies the Hadamard or
+  Unruh-type horizon regularity input as the microlocal state condition, while
+  separating fixed-background propagation from interacting pAQFT corrections
+  and metric backreaction.

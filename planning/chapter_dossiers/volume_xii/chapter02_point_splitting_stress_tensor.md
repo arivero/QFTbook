@@ -4,8 +4,10 @@
 
 - Role in the monograph: develop composite fields and stress tensors from
   Hadamard short-distance structure.
-- Immediate predecessor: locally covariant QFT and Hadamard states.
-- Immediate successor: trace anomalies, Unruh effect, and Hawking effect.
+- Printed predecessor: perturbative algebraic QFT on curved backgrounds.
+- Logical inputs: microlocal spectrum condition and locally covariant
+  Hadamard states.
+- Printed successor: trace anomalies and background variations.
 
 ## Definitions And Results
 
@@ -101,3 +103,11 @@
 - Point-splitting pair of nearby points in a normal neighborhood.
 - Bidifferential operator followed by diagonal limit.
 - Curvature-counterterm freedom diagram.
+
+## Audit Notes
+
+- 2026-06-08 issue #729 printed-order pass: rewrote the opening dependency
+  sentence so point splitting names its upstream microlocal inputs explicitly:
+  the Hadamard wavefront condition, local parametrix recursion, and product
+  criterion.  The chapter's status remains finite local composite-field and
+  stress-tensor renormalization, not a full interacting stress-tensor theorem.

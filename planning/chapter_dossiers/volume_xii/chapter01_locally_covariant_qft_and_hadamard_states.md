@@ -2,14 +2,15 @@
 
 ## Logical Role
 
-- Role in the monograph: open the curved-spacetime and background-field
-  volume with precise functorial foundations, the free Klein--Gordon model,
-  and the Hadamard state class used by point splitting and perturbative AQFT.
-- Immediate predecessor: flat-spacetime local QFT, algebraic nets, stress
-  tensors, anomalies, and thermal KMS theory.
-- Immediate successor: point-split stress tensor, trace anomalies, Unruh
-  effect, Hawking effect, microlocal spectrum condition, and perturbative
-  algebraic QFT on curved backgrounds.
+- Role in the monograph: after the microlocal spectrum-condition foundation,
+  give the functorial curved-spacetime framework, the free Klein--Gordon
+  model, and the Hadamard state class used by point splitting and
+  perturbative AQFT.
+- Printed predecessor: microlocal spectrum condition and Hadamard geometry.
+- Printed successor: perturbative algebraic QFT on curved backgrounds.
+- Downstream consumers: point-split stress tensors, trace anomalies, Unruh
+  effect, Hawking effect, cosmological particle creation, and semiclassical
+  backreaction.
 
 ## Definitions And Results
 
@@ -19,13 +20,13 @@
   theory, perturbative interacting theory, conditional semiclassical theory,
   and nonperturbative interacting curved QFT, with the input data and
   controlled outputs for each level.
-- Adds the explicit theorem-status spine for the volume: free locally
+- Adds the explicit claim-control spine for the volume: free locally
   covariant/Hadamard statements, point-split stress-tensor and anomaly
   statements, fixed-background thermal/Hawking/cosmological claims,
   perturbative interacting pAQFT fields, interacting composite stress
   tensors, conditional semiclassical Einstein--Langevin statements, and
-  nonperturbative interacting curved-QFT claims are separated by status and
-  by the missing physical inputs required to upgrade them.
+  nonperturbative interacting curved-QFT claims are separated by control level
+  and by the missing physical inputs required to strengthen them.
 - Defines a locally covariant QFT as a functor
   `A : Loc -> Alg_*` with injective algebra morphisms, Einstein causality,
   and the time-slice axiom.
@@ -74,7 +75,7 @@
 | \(\sigma(x,y)\) | Synge world function |
 | \(H_{\epsilon,\mu}\) | local Hadamard singular distribution |
 | \(U,V,W_\omega\) | Hadamard geometric coefficients and smooth state-dependent part |
-| status spine | volume-level classification of theorem, perturbative construction, conditional semiclassical framework, and open nonperturbative boundary |
+| claim-control spine | volume-level classification of theorem, perturbative construction, conditional semiclassical framework, and open nonperturbative boundary |
 
 ## Claim Ledger
 
@@ -97,7 +98,7 @@
 9. The volume's curved-spacetime claims are organized by control level: free
    fixed-background, perturbative interacting, conditional semiclassical, and
    nonperturbative/open.  Crossing levels requires additional hypotheses.
-10. The theorem-status matrix makes the cross-chapter spine explicit: fixed
+10. The claim-control matrix makes the cross-chapter spine explicit: fixed
     background thermal or particle-creation statements do not imply
     interacting horizon results, pAQFT order-by-order constructions do not
     provide nonperturbative state spaces, and finite response/noise checks
@@ -130,12 +131,17 @@
 ## Anti-Wrapper Audit
 
 - 2026-06-04: added the Volume XII control-level matrix for issue #729.  This
-  is architectural theorem-status content: it tells the reader which data
+  is architectural claim-control content: it tells the reader which data
   support free, perturbative interacting, conditional semiclassical, and
   nonperturbative claims, and prevents formal adjacent chapters from being
   read as one continuous theorem chain.
-- 2026-06-04: upgraded the control-level prose to an explicit theorem-status
+- 2026-06-04: upgraded the control-level prose to an explicit claim-control
   spine with point-of-use curved-spacetime references.  The matrix separates
   the strong fixed-background and pAQFT claims from conditional
   semiclassical/backreaction claims and from genuinely open nonperturbative
   interacting curved-QFT statements.
+- 2026-06-08 issue #729 printed-order pass: changed the dossier role from
+  opening the volume to following the microlocal foundation, and changed the
+  TeX cross-reference range to named chapter references.  The chapter remains
+  the locally covariant free-field/Hadamard model; it no longer has to carry
+  the wavefront-set foundation by abbreviation.

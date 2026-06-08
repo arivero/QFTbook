@@ -2,12 +2,14 @@
 
 ## Source Position
 
-Volume XII now adds time-dependent globally hyperbolic backgrounds after
-Hadamard states, stress tensors, trace anomalies, horizon effects,
-background gauge fields, index theory, and global anomalies.  The chapter
-develops cosmological particle creation as a precise relation between
-complex structures on the real symplectic solution space, not as a slogan
-about ambiguity.
+In the printed Volume XII order, time-dependent globally hyperbolic
+backgrounds follow the Unruh and Hawking fixed-background horizon material
+and precede semiclassical backreaction.  The chapter uses the microlocal
+Hadamard, locally covariant, point-splitting, and trace-anomaly foundations
+already established; the background-gauge/index-theory anomaly lane follows
+after backreaction.  The chapter develops cosmological particle creation as a
+precise relation between complex structures on the real symplectic solution
+space, not as a slogan about ambiguity.
 
 ## Notation Inventory
 
@@ -140,3 +142,8 @@ timelike detector worldline sampling the two-point function.
   stress/gravity/tail budgets, continuity/drift control, and stress-noise
   bounds are supplied.  The companion script verifies the same bookkeeping and
   negative controls.
+- 2026-06-08 issue #729 printed-order pass: updated the source-position
+  dossier and added an opening dependency map.  The chapter now names the
+  microlocal Hadamard state condition and the symplectic/complex-structure
+  object it actually studies, while reserving renormalized source,
+  interacting pAQFT, and backreaction claims for their stronger hypotheses.

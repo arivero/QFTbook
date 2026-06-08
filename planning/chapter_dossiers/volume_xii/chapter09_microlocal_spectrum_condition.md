@@ -2,9 +2,12 @@
 
 ## Source Position
 
-Volume XII now inserts the microlocal analytic machinery underlying Hadamard
-states, point splitting, time-ordered products, and locally covariant
-renormalization.
+Volume XII now opens its printed order with the microlocal analytic machinery
+underlying Hadamard states, point splitting, time-ordered products, and
+locally covariant renormalization.  The following chapters consume named
+results from this chapter: the product criterion, the microlocal Hadamard
+two-point condition, the Hadamard parametrix recursion, and the diagonal
+extension problem for Wick and time-ordered products.
 
 ## Notation Inventory
 
@@ -59,3 +62,12 @@ renormalization.
 No figure is included in this pass.  Future figures should include
 wavefront-set cones, null-geodesic cotangent transport, and configuration
 space diagonals for time-ordered extensions.
+
+## Anti-Wrapper Audit
+
+- 2026-06-08 issue #729 printed-order pass: moved this source file to the
+  front of the printed Volume XII sequence so the microlocal product
+  criterion, Hadamard wavefront condition, local parametrix recursion, and
+  diagonal-extension problem are established before the chapters that consume
+  them.  This is a dependency repair, not a new nonperturbative
+  curved-spacetime QFT theorem.

@@ -2,9 +2,11 @@
 
 ## Source Position
 
-This chapter follows perturbative algebraic QFT on curved backgrounds by
-turning the renormalized stress tensor into a source for geometry and by
-recording fluctuation data required for controlled backreaction.
+This chapter follows the fixed-background horizon and cosmological
+applications while consuming the earlier microlocal, locally covariant,
+pAQFT, point-splitting, and trace-anomaly machinery.  It turns the
+renormalized stress tensor into a source for geometry and records the
+fluctuation data required for controlled backreaction.
 
 ## Notation Inventory
 
@@ -425,9 +427,15 @@ curvature, microscopic, and EFT scales.
   corresponding Ward-clean stress-noise condition before Hubble noise is
   interpreted.
 - 2026-06-06 issue #844 semiclassical observable-map pass: replaced the
-  reader-facing status-machinery wording by a physics observable chain from
+  reader-facing control-level wording by a physics observable chain from
   locally covariant algebra/state/stress tensor through gravity coordinates,
   state transport, source/noise/response, mean metric/covariance, and retained
   observable output.  The paired finite check rejects the formal-equation-only,
   mean-only, noise-without-metric-covariance, wrong-order, and no-signal-to-noise
   shortcuts.
+- 2026-06-08 issue #729 printed-order pass: updated the source-position
+  dossier and added an opening dependency map that names the upstream
+  microlocal Hadamard state class, locally covariant algebra, pAQFT/free-field
+  composite-stress prescription, point-splitting choices, and anomaly
+  counterterm budget.  Backreaction remains conditional on joining those
+  inputs to gravitational EFT coordinates and a response/noise window.

@@ -72,3 +72,7 @@
   explicit theorem-boundary remark, and the chapter's proved content is the
   free scalar wedge-KMS theorem with its tube-analyticity and locality
   argument.
+- 2026-06-08 issue #729 printed-order pass: added an opening dependency
+  boundary distinguishing the fixed-background wedge-local AQFT theorem from
+  pAQFT interacting curved-spacetime constructions.  This keeps Unruh
+  thermality from being used as an unstated interacting horizon theorem.

@@ -2,9 +2,12 @@
 
 ## Source Position
 
-Volume XII follows the microlocal spectrum condition with perturbative
-algebraic QFT, the local curved-background perturbation framework built from
-Hadamard functions and causal factorization.
+In the printed Volume XII order, perturbative algebraic QFT follows the
+microlocal spectrum condition and the locally covariant free-field model,
+before the stress-tensor and anomaly applications.  The chapter is the local
+curved-background perturbation framework built from Hadamard functions,
+microcausal functionals, time-ordered products, causal factorization, and
+finite renormalization maps.
 
 ## Notation Inventory
 
@@ -167,3 +170,8 @@ Hadamard star-product comparison maps.
   devices with edge Ward sources, why finite density renormalizations must
   move with the stress prescription, and why backreaction needs a full
   conserved interacting stress tensor or a declared residual budget.
+- 2026-06-08 issue #729 printed-order pass: moved the pAQFT source file before
+  the stress-tensor and anomaly applications in the printed sequence.  Its
+  role is now visibly upstream of point splitting, trace-anomaly source
+  response, and semiclassical backreaction, while retaining the perturbative
+  theorem boundary.

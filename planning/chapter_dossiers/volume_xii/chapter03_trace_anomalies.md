@@ -6,8 +6,10 @@
   curved-background Weyl variations of the renormalized metric-source
   functional.
 - Immediate predecessor: point splitting and stress-tensor renormalization.
-- Immediate successor: Unruh/Hawking and index-theoretic anomaly chapters,
-  which use the same locally covariant background-variation discipline.
+- Immediate successor: Unruh/Hawking, cosmological particle creation, and
+  semiclassical backreaction, which use the same locally covariant
+  stress-source discipline.  The index-theoretic anomaly lane follows later as
+  a separate background-gauge-field block.
 
 ## Definitions And Results
 
@@ -84,3 +86,12 @@
 - No figure is included.  A later visual pass should add a local-cohomology
   diagram showing `W`, Weyl variation, Wess-Zumino consistency, and
   counterterm coboundaries.
+
+## Audit Notes
+
+- 2026-06-08 issue #729 printed-order pass: added a point-of-use dependency
+  paragraph tying the anomaly chapter to point-split stress tensors, finite
+  local counterterms, and the local Hadamard subtraction class.  The paragraph
+  also prevents the Weyl-response discussion from being read as a replacement
+  for the microlocal state condition or pAQFT interacting composite-field
+  construction.

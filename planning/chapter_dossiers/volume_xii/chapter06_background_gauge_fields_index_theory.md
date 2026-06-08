@@ -2,10 +2,11 @@
 
 ## Source Position
 
-This chapter follows Hawking radiation by returning to background geometric
-fields, now including gauge bundles.  It connects curved-background QFT,
-fermion determinants, zero-mode Berezin integrals, anomaly descent, and
-index-theoretic anomaly lines.
+This chapter opens the separate background-gauge/index-theory lane after the
+fixed-background and semiclassical-backreaction material.  It returns to
+background geometric fields, now including gauge bundles, and connects
+curved-background QFT, fermion determinants, zero-mode Berezin integrals,
+anomaly descent, and index-theoretic anomaly lines.
 
 ## Notation Inventory
 
@@ -73,6 +74,12 @@ flow from `I_{2n+2}` to descent.
 
 ## Anti-Wrapper Audit
 
+- 2026-06-08 issue #729 printed-order pass: updated the source-position
+  dossier so the index-theory lane begins after the fixed-background and
+  semiclassical-backreaction material, rather than interrupting the
+  microlocal-to-applications sequence.  The chapter remains the background
+  gauge field, zero-mode, descent, and determinant-line input for global
+  anomaly work.
 - 2026-05-29: expanded the McKean-Singer proof to state the elliptic spectral
   inputs, heat-trace absolute convergence, multiplicity-preserving nonzero
   spectral pairing, and zero-mode contribution to the analytic index.
