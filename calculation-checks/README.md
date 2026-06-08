@@ -2278,7 +2278,8 @@ Current checks:
   attenuation, entropy-production positivity for sample transport matrices,
   the sourceful ideal-Euler reduction of acceleration to thermodynamic force
   variables, the diffusion Einstein relation, the multi-charge susceptibility
-  geometry, the static limit of the density source-response pole, the
+  geometry, the static limit of the density source-response pole with its
+  zero-frequency-before-long-wavelength convention, the
   heat-kernel acausal-support diagnostic for first-order shear diffusion, the
   boosted high-\(k\) instability negative control for parabolic diffusion, and
   the retarded singularity taxonomy computed from a finite Gibbs/Lehmann
@@ -2292,9 +2293,13 @@ Current checks:
   window rather than an analytic conserved-density-only correction.  It also
   checks that a non-normal two-mode relaxation matrix has basis-dependent
   diagonal entries while its slow Riesz projector transforms covariantly, that
-  sources transform contragrediently to observable basis changes, that the
-  response map sends sources to observables while the inverse-response pencil
-  sends observables to paired sources with the covariance laws
+  sources transform contragrediently to observable basis changes, that
+  annihilator source subspaces transform covariantly and recover the same
+  finite Schur blocks, that degenerate source-observable pairings are rejected,
+  that the homogeneous dynamic conserved-density limit is not the
+  thermodynamic static susceptibility, that the response map sends sources to
+  observables while the inverse-response pencil sends observables to paired
+  sources with the covariance laws
   \(R'=MRM^{\mathsf T}\) and \(A'=M^{-\mathsf T}AM^{-1}\), that the retained
   Schur complement maps slow observables to paired slow sources rather than
   to an abstract dual-source space, that a finite Hamiltonian Liouvillian has

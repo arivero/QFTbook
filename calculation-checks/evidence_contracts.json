@@ -233,8 +233,12 @@
         "non-normal diagonal relaxation rates are basis dependent",
         "slow Riesz projector transforms covariantly",
         "sources transform contragrediently to observable basis changes",
+        "paired slow and fast source spaces are annihilators of the complementary observables",
+        "degenerate source-observable pairings do not induce source direct sums",
         "response maps sources to observables and inverse response maps observables to paired sources",
         "slow Schur complement maps retained observables to retained paired sources",
+        "thermodynamic susceptibility is an equilibrium source derivative",
+        "conserved-density static susceptibility uses zero-frequency before long-wavelength limit",
         "finite Hamiltonian Liouvillian is not a dissipative pole generator",
         "continuum lower edge entering hydrodynamic window is not a finite pole"
       ]

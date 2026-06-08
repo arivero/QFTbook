@@ -134,11 +134,37 @@ The family also includes a retarded source-response family
   \mathcal O_\lambda(\mathbf k),
   \qquad \operatorname{Re}z>0,
 \]
-with static susceptibility
-\(\chi_\lambda(\mathbf k)=\mathcal R_\lambda(0,\mathbf k):
-\mathcal J_\lambda(\mathbf k)\to\mathcal O_\lambda(\mathbf k)\) in channels
-where this static limit exists.  A Kubo--Mori metric on observables is
-separate data, denoted
+and an independently defined thermodynamic susceptibility.  For a static
+source direction \(j\in\mathcal J_\lambda(\mathbf k)\), after the
+thermodynamic limit and the declared contact convention,
+\begin{equation}
+  \chi^{\rm th}_\lambda(\mathbf k)j
+  =
+  \left.
+  \frac{d}{d\epsilon}
+  \langle O\rangle_{{\rm eq},\,\epsilon j,\lambda}(\mathbf k)
+  \right|_{\epsilon=0}
+  \in\mathcal O_\lambda(\mathbf k).
+  \label{eq:hydro-thermodynamic-susceptibility}
+\end{equation}
+This equilibrium derivative is the static susceptibility.  It agrees with the
+retarded source-response kernel only under an additional static-limit
+convention:
+\[
+  \chi^{\rm th}_\lambda(\mathbf k)
+  =
+  \mathcal R^{\rm stat}_\lambda(\mathbf k),
+  \qquad
+  \mathcal R^{\rm stat}_\lambda(\mathbf k)
+  =
+  \lim_{\eta\downarrow0}\mathcal R_\lambda(\eta,\mathbf k),
+\]
+with zero frequency taken before the long-wavelength limit, after subtraction
+of the same local contact terms, and on channels with no remaining zero-mode
+obstruction.  For conserved densities the opposite order,
+\(\mathbf k\to0\) before the zero-frequency boundary value, is a different
+dynamic response and need not equal \(\chi^{\rm th}\).  A Kubo--Mori metric on
+observables is separate data, denoted
 \(\mathsf G^{\rm KM}_\lambda:\mathcal O_\lambda\to\mathcal O_\lambda^*\);
 it becomes a source-response map only after a source convention identifies
 the paired sources with the corresponding observable duals.  The declared
@@ -189,7 +215,7 @@ Under a nonsingular observable basis change \(O'=MO\), sources transform
 contragrediently, \(j'=M^{-\mathsf T}j\), so that the insertion
 \(\langle j,O\rangle\) is invariant.  Matrix representatives transform as
 \(\mathcal G'=M\mathcal G M^{-1}\), \(P'_{\rm slow}=MP_{\rm slow}M^{-1}\),
-and, for the response and static susceptibility maps,
+and, for the response and thermodynamic susceptibility maps,
 \[
   \mathcal R'=M\mathcal R M^{\mathsf T},
   \qquad
@@ -285,7 +311,24 @@ thermodynamic pencil \(\mathcal A(z,\mathbf k)\), or to a constructed
 effective generator \(\mathcal G(\mathbf k)\) obtained from that pencil.  This
 projection is not the Riesz projection of the exact finite Hamiltonian
 Liouvillian unless an additional limit theorem identifies the two.  In the
-induced observable/paired-source decomposition
+following Schur statement the pairing
+\(\langle\,\cdot\,,\,\cdot\,\rangle:\mathcal J\times\mathcal O\to\mathbb C\)
+is assumed perfect at finite regulator.  In a Banach or Hilbert limit it is a
+continuous separating pairing with a chosen predual, and the observable split
+is a closed complemented split for which the annihilator source spaces below
+are also closed complements.  With
+\(\mathcal O=\mathcal E_{\rm slow}\oplus\mathcal E_{\rm fast}\), define
+\begin{equation}
+  \mathcal E_{\rm slow}^{\vee}
+  =
+  \{j\in\mathcal J:\langle j,\mathcal E_{\rm fast}\rangle=0\},
+  \qquad
+  \mathcal E_{\rm fast}^{\vee}
+  =
+  \{j\in\mathcal J:\langle j,\mathcal E_{\rm slow}\rangle=0\}.
+  \label{eq:hydro-source-annihilators}
+\end{equation}
+The induced observable/paired-source decomposition is therefore
 \[
   \mathcal O
   =
@@ -304,14 +347,17 @@ induced observable/paired-source decomposition
 \]
 where \(\mathcal E_{\rm slow}^\vee\) and
 \(\mathcal E_{\rm fast}^\vee\) are the paired source subspaces, not abstract
-observable duals.  Thus
+observable duals.  The displayed direct sum for \(\mathcal J\) is automatic
+for finite-dimensional perfect pairings but is an explicit topological
+hypothesis in infinite-dimensional settings.  Thus
 \[
   A_{ss}:\mathcal E_{\rm slow}\to\mathcal E_{\rm slow}^\vee,\quad
   A_{sf}:\mathcal E_{\rm fast}\to\mathcal E_{\rm slow}^\vee,\quad
   A_{fs}:\mathcal E_{\rm slow}\to\mathcal E_{\rm fast}^\vee,\quad
   A_{ff}:\mathcal E_{\rm fast}\to\mathcal E_{\rm fast}^\vee .
 \]
-integrating out the complement is the Schur-complement operation
+With these source blocks, integrating out the complement is the
+Schur-complement operation
 \begin{equation}
   \mathcal A_{\rm eff}
   =
@@ -953,6 +999,10 @@ equilibrium.  The constitutive relation gives
   \qquad
   \delta n=\chi\,\delta\mu .
 \]
+Here \(\chi\) is the thermodynamic derivative
+\(\partial n/\partial\mu\) at fixed \(T\) in the equilibrium ensemble.  It is
+not obtained by first setting \(\mathbf k=0\) in a dynamic conserved-density
+retarded function.
 Charge conservation gives
 \begin{equation}
   \partial_t\delta n-D\nabla^2\delta n=0,
@@ -1040,7 +1090,11 @@ At \(\omega=0\) and then \(k\to0\), the nonlocal term gives
 \]
 assuming \(\Sigma\) is invertible on the diffusive subspace.  This is the
 matrix version of the static susceptibility matching in
-\eqref{eq:hydro-density-retarded-diffusion}.
+\eqref{eq:hydro-density-retarded-diffusion}.  Reversing the order of limits
+sets the nonlocal diffusive term to zero before the conserved-density pole is
+resolved; the equilibrium susceptibility is therefore the
+\(\lim_{\mathbf k\to0}\lim_{\omega\to0}\) static-source convention, not an
+untyped evaluation at the point \((\omega,\mathbf k)=(0,\mathbf0)\).
 
 \section{Neutral Linearized Modes}
 
@@ -1312,7 +1366,8 @@ taken in the specified order.  For the source convention
 \(H=H_0-\int h\,n\), the density source-response kernel is the negative of
 the commutator-retarded function of
 Chapter~\ref{ch:thermal-spectral-kubo-transport}.  For a single diffusive
-charge with susceptibility \(\chi\), it has the universal long-wavelength
+charge with thermodynamic susceptibility \(\chi\), it has the universal
+long-wavelength
 form
 \begin{equation}
   K^R_{nn}(\omega,\mathbf k)
@@ -1322,11 +1377,14 @@ form
   +\text{terms analytic at }\omega,k=0 .
   \label{eq:hydro-density-retarded-diffusion}
 \end{equation}
-so that \(K^R_{nn}(0,\mathbf k\to0)=\chi\).  The pole
-is \(\omega=-\ii Dk^2\).  Taking \(\mathbf k\to0\) before
-\(\omega\to0\) removes the diffusive denominator; taking the hydrodynamic
-scaling limit \(\omega\sim k^2\) keeps it.  This is the same order-of-limits
-issue that appears in dc conductivity and static susceptibility.
+so that
+\(\lim_{\mathbf k\to0}\lim_{\omega\to0}K^R_{nn}(\omega,\mathbf k)=\chi\)
+after the stated contact convention.  The pole is \(\omega=-\ii Dk^2\).
+Taking \(\mathbf k\to0\) before \(\omega\to0\) removes the diffusive
+denominator and gives a different dynamic limit for the nonlocal term; taking
+the hydrodynamic scaling limit \(\omega\sim k^2\) keeps the pole resolved.
+This is the same order-of-limits issue that appears in dc conductivity and
+static susceptibility.
 
 In the shear channel, the momentum-density correlator has a pole at
 \eqref{eq:hydro-shear-pole}.  In the sound channel, the stress-tensor and

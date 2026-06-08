@@ -12,19 +12,24 @@ order parameter whose gap scales to zero produces a nonlocal memory
 denominator and cannot be absorbed into analytic normal-fluid coefficients;
 the retained slow sector is a basis-invariant spectral subspace rather than a
 list of diagonal operator rates; sources transform contragrediently to
-observable basis changes; response maps sources to observables while inverse
-response maps observables back to paired sources; the finite Hamiltonian
-Liouvillian has oscillatory spectral lines rather than dissipative relaxation
-rates; and a continuum lower edge entering the hydrodynamic window is a slow
-spectral channel, not a finite pole list.
+observable basis changes; paired slow/fast source spaces are annihilators
+for a perfect source-observable pairing; response maps sources to
+observables while inverse response maps observables back to paired sources;
+static susceptibility is an equilibrium source derivative whose equality
+with a retarded density response uses the zero-frequency-before-long-
+wavelength convention; the finite Hamiltonian Liouvillian has oscillatory
+spectral lines rather than dissipative relaxation rates; and a continuum
+lower edge entering the hydrodynamic window is a slow spectral channel, not
+a finite pole list.
 Independent construction: direct finite-dimensional algebra for the Ward
 identity modes, exact heat-kernel positivity away from the origin, explicit
 quadratic roots for boosted diffusion and MIS shear relaxation, an explicit
 finite Gibbs/Lehmann retarded response whose singular support is computed
 from transition energies rather than inserted as test points, and matrix
 similarity checks for multi-charge diffusion.  The slow-sector guards use an
-exact non-normal two-by-two matrix, a source/observable pairing check, a
-finite unitary Liouvillian sample, and a finite continuum memory integral.
+exact non-normal two-by-two matrix, source/observable pairing and
+annihilator checks, a finite unitary Liouvillian sample, and a finite
+continuum memory integral.
 Imported assumptions: homogeneous KMS thermodynamic stability, the stated
 Landau-frame constitutive relations, positivity of transport coefficients from
 entropy/Kubo arguments, and the choice of a single linear MIS shear relaxation
@@ -37,11 +42,13 @@ plane root is rejected, a causal relaxation model with superluminal shear
 front speed is rejected, an omitted order-parameter mode with a vanishing
 relaxation rate is rejected as an analytic conserved-density-only correction,
 diagonal entries of a mixed relaxation matrix are rejected as basis-invariant
-rates, same-way source and observable transformations are rejected, treating
-the inverse-response pencil as an observable-to-dual-source map is rejected,
-a finite Hamiltonian Liouvillian is rejected as a dissipative pole generator,
-a continuum of relaxation rates whose lower edge scales to zero is rejected as
-a finite-pole correction,
+rates, same-way source and observable transformations are rejected, a
+degenerate pairing is rejected as a source-splitting datum, treating the
+inverse-response pencil as an observable-to-dual-source map is rejected,
+taking the homogeneous dynamic conserved-density limit is rejected as the
+thermodynamic static susceptibility, a finite Hamiltonian Liouvillian is
+rejected as a dissipative pole generator, a continuum of relaxation rates
+whose lower edge scales to zero is rejected as a finite-pole correction,
 and linear shear completion is not treated as a theorem for full nonlinear
 causal hydrodynamics.
 Scope boundary: these checks verify finite algebra and linear-mode
@@ -51,7 +58,7 @@ well-posedness, or the complete BRSSS/MIS coefficient inequalities.
 
 from __future__ import annotations
 
-from check_utils import assert_close as _assert_close, assert_finite
+from check_utils import assert_close as _assert_close, assert_finite, assert_gt
 
 import cmath
 import math
@@ -128,6 +135,18 @@ def qmatvec(matrix: Matrix2Q, vector: tuple[Fraction, Fraction]) -> tuple[Fracti
         matrix[0][0] * vector[0] + matrix[0][1] * vector[1],
         matrix[1][0] * vector[0] + matrix[1][1] * vector[1],
     )
+
+
+def qdot(lhs: tuple[Fraction, Fraction], rhs: tuple[Fraction, Fraction]) -> Fraction:
+    return lhs[0] * rhs[0] + lhs[1] * rhs[1]
+
+
+def qpair(
+    pairing: Matrix2Q,
+    source: tuple[Fraction, Fraction],
+    observable: tuple[Fraction, Fraction],
+) -> Fraction:
+    return qdot(source, qmatvec(pairing, observable))
 
 
 def qquadratic(vector: tuple[Fraction, Fraction], matrix: Matrix2Q) -> Fraction:
@@ -522,6 +541,56 @@ def check_multicharge_diffusion_geometry() -> None:
     assert eigenvalues[1] >= 0.0
 
 
+def diffusive_density_response(chi: float, diffusion: float, omega: float, k_squared: float) -> complex:
+    denominator = diffusion * k_squared - 1j * omega
+    if denominator == 0:
+        raise ValueError("untyped zero-frequency/zero-momentum evaluation")
+    return chi * diffusion * k_squared / denominator
+
+
+def check_static_susceptibility_limit_order_negative_control() -> None:
+    # The thermodynamic susceptibility is the source derivative of an
+    # equilibrium density, not the value of a dynamic conserved-density
+    # correlator at an untyped origin.
+    chi_th = 1.9
+    density_offset = 0.4
+    source_step = 0.025
+    equilibrium_density_zero = density_offset
+    equilibrium_density_shifted = density_offset + chi_th * source_step
+    thermodynamic_derivative = (
+        equilibrium_density_shifted - equilibrium_density_zero
+    ) / source_step
+    assert_close("equilibrium source derivative defines chi_th", thermodynamic_derivative, chi_th)
+
+    diffusion = 0.37
+    k_squared = 0.011
+    static_order = diffusive_density_response(chi_th, diffusion, omega=0.0, k_squared=k_squared)
+    assert_close("zero-frequency-before-long-wavelength density response", static_order, chi_th)
+
+    dynamic_order = diffusive_density_response(chi_th, diffusion, omega=0.23, k_squared=0.0)
+    assert_close("homogeneous dynamic conserved-density response", dynamic_order, 0.0)
+    assert_gt(
+        "homogeneous dynamic response differs from thermodynamic chi",
+        abs(dynamic_order - chi_th),
+        1.0e-12,
+    )
+
+    scaled_omega = diffusion * k_squared
+    hydrodynamic_ray = diffusive_density_response(
+        chi_th,
+        diffusion,
+        omega=scaled_omega,
+        k_squared=k_squared,
+    )
+    expected_ray = chi_th / (1.0 - 1.0j)
+    assert_close("diffusive scaling ray keeps pole denominator", hydrodynamic_ray, expected_ray)
+    assert_gt(
+        "diffusive scaling ray differs from static susceptibility",
+        abs(hydrodynamic_ray - chi_th),
+        1.0e-12,
+    )
+
+
 def check_omitted_relaxational_mode_memory_negative_control() -> None:
     # Integrating out a nonconserved order parameter phi with
     # (-i omega + Gamma_phi + kappa k^2) phi = lambda X produces
@@ -589,8 +658,15 @@ def check_basis_invariant_slow_projector_negative_control() -> None:
     assert_equal("similarity preserves relaxation determinant", qdet(transformed), slow * fast)
     if transformed[0][0] == slow or transformed[1][1] == fast:
         raise AssertionError("diagonal relaxation entries should be basis dependent in the non-normal sample")
-    if min(abs(transformed[0][0]), abs(transformed[1][1])) < Fraction(1, 10):
-        raise AssertionError("basis-dependent diagonal heuristic should not reliably expose the slow rate")
+    diagonal_magnitude_bounds = (
+        abs(transformed[0][0]) >= Fraction(1, 10),
+        abs(transformed[1][1]) >= Fraction(1, 10),
+    )
+    assert_equal(
+        "basis-dependent diagonal heuristic should not reliably expose the slow rate",
+        diagonal_magnitude_bounds,
+        (True, True),
+    )
 
     identity: Matrix2Q = ((Fraction(1), Fraction(0)), (Fraction(0), Fraction(1)))
     slow_projector = qmatscale(
@@ -636,6 +712,97 @@ def check_contragredient_source_observable_transform() -> None:
     assert_equal("contragredient source transform preserves response pairing", transformed_power, original_power)
     if wrong_power == original_power:
         raise AssertionError("same-way source transform should not preserve the source/observable pairing")
+
+
+def check_annihilator_source_splitting_and_schur_blocks() -> None:
+    identity: Matrix2Q = ((Fraction(1), Fraction(0)), (Fraction(0), Fraction(1)))
+    e_slow = (Fraction(1), Fraction(0))
+    e_fast = (Fraction(0), Fraction(1))
+    j_slow = (Fraction(1), Fraction(0))
+    j_fast = (Fraction(0), Fraction(1))
+
+    assert_equal("slow source annihilates fast observable", qpair(identity, j_slow, e_fast), Fraction(0))
+    assert_equal("fast source annihilates slow observable", qpair(identity, j_fast, e_slow), Fraction(0))
+    if qpair(identity, j_slow, e_slow) == 0 or qpair(identity, j_fast, e_fast) == 0:
+        raise AssertionError("annihilator source should pair nontrivially with its retained observable")
+
+    observable_change: Matrix2Q = ((Fraction(2), Fraction(1)), (Fraction(1), Fraction(1)))
+    inverse_observable_change = qmatinv(observable_change)
+    source_change = qtranspose(inverse_observable_change)
+    transformed_slow = qmatvec(observable_change, e_slow)
+    transformed_fast = qmatvec(observable_change, e_fast)
+    transformed_j_slow = qmatvec(source_change, j_slow)
+    transformed_j_fast = qmatvec(source_change, j_fast)
+
+    assert_equal(
+        "transformed slow source annihilates transformed fast observable",
+        qpair(identity, transformed_j_slow, transformed_fast),
+        Fraction(0),
+    )
+    assert_equal(
+        "transformed fast source annihilates transformed slow observable",
+        qpair(identity, transformed_j_fast, transformed_slow),
+        Fraction(0),
+    )
+    if qpair(identity, transformed_j_slow, transformed_slow) == 0:
+        raise AssertionError("transformed slow source should not annihilate transformed slow observable")
+    if qpair(identity, transformed_j_fast, transformed_fast) == 0:
+        raise AssertionError("transformed fast source should not annihilate transformed fast observable")
+
+    inverse_response_blocks: Matrix2Q = (
+        (Fraction(5, 3), Fraction(2, 5)),
+        (Fraction(3, 7), Fraction(11, 13)),
+    )
+    schur_block = (
+        inverse_response_blocks[0][0]
+        - inverse_response_blocks[0][1]
+        * (Fraction(1) / inverse_response_blocks[1][1])
+        * inverse_response_blocks[1][0]
+    )
+    assert_equal("finite slow Schur block", schur_block, Fraction(1691, 1155))
+
+    transformed_inverse_response = qmatmul(
+        qmatmul(source_change, inverse_response_blocks),
+        inverse_observable_change,
+    )
+    transformed_blocks_in_annihilator_bases = qmatmul(
+        qmatmul(qmatinv(source_change), transformed_inverse_response),
+        observable_change,
+    )
+    assert_equal(
+        "annihilator bases recover inverse-response Schur blocks",
+        transformed_blocks_in_annihilator_bases,
+        inverse_response_blocks,
+    )
+
+    wrong_source_basis = observable_change
+    wrong_blocks = qmatmul(
+        qmatmul(qmatinv(wrong_source_basis), transformed_inverse_response),
+        observable_change,
+    )
+    if wrong_blocks == inverse_response_blocks:
+        raise AssertionError("same-way source basis should not recover the typed Schur blocks")
+
+
+def check_degenerate_pairing_rejects_induced_source_splitting() -> None:
+    degenerate_pairing: Matrix2Q = (
+        (Fraction(1), Fraction(0)),
+        (Fraction(0), Fraction(0)),
+    )
+    if qdet(degenerate_pairing) != 0:
+        raise AssertionError("sample pairing should be degenerate")
+
+    e_slow = (Fraction(1), Fraction(0))
+    e_fast = (Fraction(0), Fraction(1))
+    null_source = (Fraction(0), Fraction(1))
+    assert_equal("null source annihilates slow observable", qpair(degenerate_pairing, null_source, e_slow), Fraction(0))
+    assert_equal("null source annihilates fast observable", qpair(degenerate_pairing, null_source, e_fast), Fraction(0))
+
+    def accepts_source_splitting(pairing: Matrix2Q) -> bool:
+        return qdet(pairing) != 0
+
+    if accepts_source_splitting(degenerate_pairing):
+        raise AssertionError("degenerate source-observable pairing should not induce a source direct sum")
 
 
 def check_response_inverse_arrow_covariance_and_schur_typing() -> None:
@@ -756,8 +923,12 @@ def check_continuum_slow_edge_memory_negative_control() -> None:
         scaled_complex_memory.append(value)
     if not scaled_complex_memory[1].real > scaled_complex_memory[0].real:
         raise AssertionError("slow continuum edge should retain nonlocal logarithmic real part")
-    if abs(scaled_complex_memory[1].imag - scaled_complex_memory[0].imag) > 1.0e-3:
-        raise AssertionError("scaled continuum edge phase should approach a fixed branch-cut value")
+    assert_close(
+        "scaled continuum edge phase approaches a fixed branch-cut value",
+        scaled_complex_memory[1].imag,
+        scaled_complex_memory[0].imag,
+        tol=1.0e-3,
+    )
 
 
 def main() -> None:
@@ -771,9 +942,12 @@ def main() -> None:
     check_sourceful_euler_force_basis()
     check_diffusion_einstein_relation_and_pole()
     check_multicharge_diffusion_geometry()
+    check_static_susceptibility_limit_order_negative_control()
     check_omitted_relaxational_mode_memory_negative_control()
     check_basis_invariant_slow_projector_negative_control()
     check_contragredient_source_observable_transform()
+    check_annihilator_source_splitting_and_schur_blocks()
+    check_degenerate_pairing_rejects_induced_source_splitting()
     check_response_inverse_arrow_covariance_and_schur_typing()
     check_finite_liouvillian_not_dissipative_generator()
     check_continuum_slow_edge_memory_negative_control()

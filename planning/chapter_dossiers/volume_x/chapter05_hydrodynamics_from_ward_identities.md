@@ -33,6 +33,18 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
   any Goldstone, critical, quasihydrodynamic, kinetic, elastic, orientational,
   or higher-form spectral direction or continuum window entering the declared
   hydrodynamic scaling window must also be retained.
+- Paired slow/fast source subspaces are annihilators for the declared
+  source-observable pairing:
+  \(\mathcal E_{\rm slow}^\vee
+  =\{j:\langle j,\mathcal E_{\rm fast}\rangle=0\}\) and
+  \(\mathcal E_{\rm fast}^\vee
+  =\{j:\langle j,\mathcal E_{\rm slow}\rangle=0\}\).  The direct source sum is
+  automatic only for finite-dimensional perfect pairings; in Banach/Hilbert
+  limits it is an explicit closed-complement/predual hypothesis.
+- Thermodynamic susceptibility \(\chi^{\rm th}\) is defined as an equilibrium
+  static-source derivative before it is identified with a retarded
+  source-response limit.  For conserved densities the equality uses the
+  zero-frequency-before-long-wavelength convention with contact terms fixed.
 - Slow-sector completeness/complement-regularity controlled approximation:
   after projecting onto \(\mathcal E_{\rm slow}\) with the projector defined
   by the thermodynamic response/inverse-response pair
@@ -75,7 +87,9 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
   sheets.
 - Diffusive density source-response kernel
   \(K^R_{nn}=\chi Dk^2/(Dk^2-i\omega)+\text{analytic}\), with the sign
-  relation to the commutator-retarded convention stated explicitly.
+  relation to the commutator-retarded convention stated explicitly and with
+  \(\lim_{\mathbf k\to0}\lim_{\omega\to0}\) as the static susceptibility
+  convention.
 - Omitted-order-parameter memory-kernel negative control: integrating out a
   relaxational scalar gives
   \(-\lambda^2/(\Gamma_\phi+\kappa_\phi k^2-i\omega)\), which is analytic
@@ -118,14 +132,15 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
 | \(\mathcal O_\lambda(\mathbf k)\) | regulated observable quotient after null vectors, Ward equivalences, and declared improvements |
 | \(\mathcal J_\lambda(\mathbf k)\) | source space paired contragrediently with \(\mathcal O_\lambda\) |
 | \(\mathcal R_\lambda(z,\mathbf k)\) | source-response map \(\mathcal J_\lambda\to\mathcal O_\lambda\) |
-| \(\chi_\lambda\) | static susceptibility \(\mathcal R_\lambda(0,\mathbf k):\mathcal J_\lambda\to\mathcal O_\lambda\), when the limit exists |
+| \(\chi^{\rm th}_\lambda\) | thermodynamic static susceptibility \(\mathcal J_\lambda\to\mathcal O_\lambda\), defined by the equilibrium source derivative and identified with a retarded static limit only after declaring contact terms and order of limits |
 | \(\mathsf G^{\rm KM}_\lambda\) | optional Kubo-Mori metric on observables, kept distinct from the source-response map until a source convention identifies the duals |
 | \(\mathcal L_{\rm mic}\) | exact finite-regulator Hamiltonian Liouvillian, used for Kubo-Mori projection but not identified with dissipative hydrodynamic poles |
 | \(\mathcal A_\lambda(z,\mathbf k)\) | thermodynamic inverse-response or memory pencil \(\mathcal O_\lambda\to\mathcal J_\lambda\) defining the slow window and Schur-complement test |
 | \(\mathcal G_\lambda(\mathbf k)\) | optional effective dissipative generator constructed from \(\mathcal A_\lambda\) |
 | \(P_{\rm slow,\lambda}\) | projector onto the retained slow observable subspace, defined from the declared pencil or effective generator |
 | \(\mathcal E_{\rm slow}\) | retained slow spectral subspace in the declared scaling family |
-| \(\mathcal E_{\rm slow}^\vee\) | paired slow source subspace in the Schur decomposition, not an abstract observable dual |
+| \(\mathcal E_{\rm slow}^\vee\) | annihilator paired slow source subspace \(\{j:\langle j,\mathcal E_{\rm fast}\rangle=0\}\), not an abstract observable dual |
+| \(\mathcal E_{\rm fast}^\vee\) | annihilator paired fast source subspace \(\{j:\langle j,\mathcal E_{\rm slow}\rangle=0\}\) |
 | \(A_{ff}^{-1}\) | complement inverse block appearing in the Schur complement after fast modes are integrated out |
 | \(\Gamma_\phi\) | sample nonconserved order-parameter relaxation rate in the omitted-mode negative control |
 
@@ -143,12 +158,14 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
    with a source space, not a list of preferred operator names, source
    directions, or diagonal relaxation entries.  Operator bases transform by
    \(M\), sources contragrediently by \(M^{-\mathsf T}\), and the
-   response and static susceptibility maps transform as
+   response and thermodynamic susceptibility maps transform as
    \(\mathcal R'=M\mathcal R M^{\mathsf T}\) and
    \(\chi'=M\chi M^{\mathsf T}\), while the inverse-response pencil
    transforms as \(\mathcal A'=M^{-\mathsf T}\mathcal A M^{-1}\).  Any
    Kubo-Mori metric on observables is separate bilinear metric data.  The
-   normal-fluid chapters use
+   paired source blocks in the Schur complement are annihilators under a
+   perfect or declared topological source-observable pairing; a degenerate
+   pairing does not induce the source direct sum.  The normal-fluid chapters use
    \(\mathcal E_{\rm slow}^{\rm normal}
    =\operatorname{span}\{T^{00},T^{0i},J_A^0\}\), and this is valid only when
    no additional spectral direction, Jordan block, or continuum window enters
@@ -188,7 +205,11 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
     diffusion eigenvalues.
 15. The density source-response matrix is
     \(K^R_{n_An_B}=k^2(Dk^2-i\omega)^{-1}_{AC}\Sigma_{CB}\) up to analytic
-    contact terms, and its static limit is \(\chi_{AB}\).
+    contact terms.  Its thermodynamic static susceptibility is
+    \(\chi_{AB}\) only in the static-source order
+    \(\lim_{\mathbf k\to0}\lim_{\omega\to0}\); the opposite homogeneous
+    dynamic order can remove the diffusive denominator and does not define the
+    equilibrium susceptibility.
 16. Linearized neutral hydrodynamics gives shear diffusion
    \(\omega=-i\eta k^2/(\varepsilon+p)+\cdots\) and sound poles
    \[
@@ -277,6 +298,14 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
   complement as
   \(\mathcal E_{\rm slow}\to\mathcal E_{\rm slow}^\vee\) rather than an
   observable-to-\(\mathcal J^*\) map.
+- 2026-06-08 issue #960 pass: defined
+  \(\mathcal E_{\rm slow}^\vee\) and
+  \(\mathcal E_{\rm fast}^\vee\) as annihilator source subspaces under a
+  perfect or declared topological source-observable pairing, rejected
+  degenerate pairings as source-splitting data, and separated
+  \(\chi^{\rm th}\) as an equilibrium source derivative from the retarded
+  zero-frequency limit.  The static conserved-density convention is
+  \(\lim_{\mathbf k\to0}\lim_{\omega\to0}\), not an untyped origin value.
 - 2026-06-08 issue #942 synchronization: matched the entropy/Onsager
   discussion to Chapter 4's Hermitian dissipative conductivity projection,
   keeping antisymmetric Hall-type response outside the positive entropy
@@ -288,7 +317,8 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
   sound dispersion equations, the entropy-production positivity structure,
   the sourceful Euler thermodynamic-force reduction, the diffusion Einstein
   relation, the multi-charge susceptibility geometry, and the static limit of
-  the diffusive density source-response kernel.  It also checks the
+  the diffusive density source-response kernel with its order-of-limits
+  convention.  It also checks the
   first-order heat-kernel acausal-support diagnostic, boosted high-\(k\)
   instability negative control, the retarded singularity taxonomy through an
   explicit finite Gibbs/Lehmann construction, and the MIS shear relaxation
@@ -296,10 +326,14 @@ Source-File: monograph/tex/volumes/volume_x/chapter05_hydrodynamics_from_ward_id
   also checks the slow-sector completeness boundary by verifying that an
   omitted relaxational order parameter with a vanishing gap produces a
   nonlocal memory kernel rather than an analytic normal-fluid coefficient.
-  The issue #940 extension checks that diagonal entries of a non-normal
+  The issue #940/#960 extensions check that diagonal entries of a non-normal
   relaxation matrix are basis dependent while the slow Riesz projector
   transforms covariantly, that sources must transform contragrediently to
-  observable basis changes, that the response/inverse-response pair obeys the
+  observable basis changes, that annihilator source subspaces transform
+  covariantly and recover the same finite Schur blocks, that a degenerate
+  source-observable pairing is rejected, that the thermodynamic susceptibility
+  is an equilibrium source derivative rather than the homogeneous dynamic
+  conserved-density limit, and that the response/inverse-response pair obeys the
   covariance laws
   \(\mathcal R'=M\mathcal R M^{\mathsf T}\) and
   \(\mathcal A'=M^{-\mathsf T}\mathcal A M^{-1}\), that the Schur complement
