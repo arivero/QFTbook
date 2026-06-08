@@ -81,6 +81,10 @@ Source-File: monograph/tex/volumes/volume_xii/chapter03_trace_anomalies.tex
   heat-kernel curvature combination, the `R^2` Weyl variation, free-field
   `a,c` arithmetic, `N=4` `a=c`, constant-curvature identities, and the
   two-dimensional Wess-Zumino variation.
+- `calculation-checks/curvature_squared_euler_convention_checks.py` verifies
+  that the `R^2` Weyl coboundary used for the `b nabla^2 R` scheme coordinate
+  remains distinct from, and compatible with, the shared Ricci-squared
+  Euler-tensor basis used in point splitting and semiclassical transport.
 
 ## Figures
 
@@ -96,3 +100,7 @@ Source-File: monograph/tex/volumes/volume_xii/chapter03_trace_anomalies.tex
   also prevents the Weyl-response discussion from being read as a replacement
   for the microlocal state condition or pAQFT interacting composite-field
   construction.
+- 2026-06-08 issue #929 convention-audit pass: included the trace-anomaly
+  `R^2` Weyl-coboundary scheme coordinate in the shared curvature-squared
+  regression that now also checks point-splitting finite ambiguity and
+  semiclassical finite-scheme transport.

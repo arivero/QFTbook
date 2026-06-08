@@ -203,6 +203,12 @@ import cmath
 import math
 from fractions import Fraction
 
+from curvature_squared_euler_convention_checks import (
+    check_non_einstein_conformally_flat_h2_fixture,
+    check_ricci_squared_trace_and_weyl_variation,
+    ricci_squared_trace_box_coefficient,
+)
+
 
 Matrix = tuple[tuple[Fraction, ...], ...]
 MultiIndex = tuple[int, ...]
@@ -395,13 +401,13 @@ def check_curvature_squared_traces() -> None:
     # H^(2) = 2 R_mrns R^rs - 1/2 g_mn Ric^2
     #       - nabla_m nabla_n R + Box R_mn + 1/2 g_mn Box R.
     ricci2_coeff = 2 - dimension / 2
-    box_r_coeff_h2 = -1 + 1 + dimension / 2
+    box_r_coeff_h2 = ricci_squared_trace_box_coefficient()
     assert_close(ricci2_coeff, 0.0, "Ricci^2 trace algebra in D=4")
     assert_close(box_r_coeff_h2, 2.0, "H2 trace Box R coefficient")
 
     # For the un-halved action int sqrt(g) Ric^2, a Weyl variation
     # delta g^{mn} = -2 sigma g^{mn} gives -4 int sigma Box R.
-    h2_trace_box_r_coeff = Fraction(2)
+    h2_trace_box_r_coeff = ricci_squared_trace_box_coefficient()
     full_ricci_square_weyl_coeff = -2 * h2_trace_box_r_coeff
     assert_equal(
         "full Ricci-squared Weyl-variation coefficient",
@@ -413,6 +419,7 @@ def check_curvature_squared_traces() -> None:
         raise AssertionError(
             "negative control failed: old H2 signs passed Weyl variation"
         )
+    check_ricci_squared_trace_and_weyl_variation()
 
     # Linearized conformally flat fixture: g_mn = exp(2 sigma) delta_mn.
     # To first order in sigma, R_mn = -2 d_m d_n sigma - delta_mn Lap sigma
@@ -505,6 +512,7 @@ def check_curvature_squared_traces() -> None:
         trace_h2_linear,
         expected_trace_linear,
     )
+    check_non_einstein_conformally_flat_h2_fixture()
 
 
 def check_kms_fluctuation_dissipation() -> None:

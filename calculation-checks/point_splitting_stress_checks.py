@@ -13,16 +13,19 @@ Hadamard-recursion coefficients visible before the stress-tensor theorem
 boundary, downstream divergence-defect bookkeeping after the imported
 ``eta_D = D/[2(D+2)]`` theorem, dimension/regularity filters for local
 counterterms, text-contract checks for the quoted Moretti/Hollands-Wald
-status, constant-curvature reductions of the curvature-squared Euler tensors,
-and trace-identity regression cases.
+status, a shared cross-chapter Ricci-squared Euler-tensor convention,
+constant-curvature reductions of the curvature-squared Euler tensors, and
+trace-identity regression cases.
 Imported assumptions: the analytic Hadamard recursion and Moretti/Hollands-
 Wald conservation identity for the smooth parametrix defect.  The finite
 checks verify the algebraic shape and negative controls, not the microlocal
 existence theorem.
 Negative controls: the naive point-split operator with the improvement
 omitted is not conserved in the defect model, the old trace formula has the
-wrong massive minimal sign and wrong improvement coefficient, and dimension
-counting alone is not accepted as a proof of finite local freedom.
+wrong massive minimal sign and wrong improvement coefficient, the old
+Ricci-squared derivative signs fail the Weyl and non-Einstein conformally flat
+fixtures, and dimension counting alone is not accepted as a proof of finite
+local freedom.
 Scope boundary: these checks do not prove the analytic Hadamard coefficient
 identities, the Hollands-Wald classification theorem, or existence of
 operator-valued stress tensors on a common domain.
@@ -33,6 +36,13 @@ from pathlib import Path
 
 import mpmath as mp
 import sympy as sp
+
+from curvature_squared_euler_convention_checks import (
+    check_non_einstein_conformally_flat_h2_fixture,
+    check_ricci_squared_trace_and_weyl_variation,
+    r_squared_trace_box_coefficient,
+    ricci_squared_trace_box_coefficient,
+)
 
 
 mp.mp.dps = 60
@@ -170,14 +180,14 @@ def check_wald_finite_freedom_dimensions():
 def check_curvature_squared_euler_tensor_traces():
     dimension = 4
     r_squared_trace_coefficient = 2 - Fraction(dimension, 2)
-    r_squared_box_coefficient = 2 * dimension - 2
     ricci_squared_trace_coefficient = 2 - Fraction(dimension, 2)
-    ricci_squared_box_coefficient = -Fraction(dimension, 2)
 
     assert_equal("R^2 Euler tensor algebraic trace coefficient", r_squared_trace_coefficient, 0)
-    assert_equal("R^2 Euler tensor Box R trace coefficient", r_squared_box_coefficient, 6)
+    assert_equal("R^2 Euler tensor Box R trace coefficient", r_squared_trace_box_coefficient(), 6)
     assert_equal("Ricci^2 Euler tensor algebraic trace coefficient", ricci_squared_trace_coefficient, 0)
-    assert_equal("Ricci^2 Euler tensor Box R trace coefficient", ricci_squared_box_coefficient, -2)
+    assert_equal("Ricci^2 Euler tensor Box R trace coefficient", ricci_squared_trace_box_coefficient(), 2)
+    check_ricci_squared_trace_and_weyl_variation()
+    check_non_einstein_conformally_flat_h2_fixture()
 
 
 def check_point_split_conservation_improvement():

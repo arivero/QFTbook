@@ -16,7 +16,8 @@ fluctuation data required for controlled backreaction.
 - `E^{grav}_{mu nu}`: metric Euler tensor of the gravitational EFT action.
 - `G_N`, `Lambda`, `alpha`, `beta`: gravitational EFT coordinates.
 - `H^{(1)}_{mu nu}`, `H^{(2)}_{mu nu}`: metric variations of local curvature
-  actions.
+  actions; `H^{(2)}` is the same Ricci-squared tensor as `J` in the
+  point-splitting chapter.
 - `B`: backreaction datum including metric class, algebras, states,
   renormalization scheme, and initial/boundary data.
 - `G^{ret}_{mu nu,rho sigma}`: retarded stress-tensor response kernel.
@@ -98,7 +99,8 @@ fluctuation data required for controlled backreaction.
   earlier in Volume XII, gives the local variational calculation and trace
   checks in four dimensions, and fixes the Ricci-squared derivative signs by
   the Palatini/Weyl convention rather than by self-contraction of the displayed
-  formula.
+  formula.  The tensor \(H^{(2)}_{\mu\nu}\) is identified with
+  \(J_{\mu\nu}\) from the point-splitting finite-local-freedom basis.
 - Links the semiclassical Einstein equation to the Volume XII control-level
   classification and to the chapter's observable-output chain: all
   backreaction statements here are conditional semiclassical control until the
@@ -325,6 +327,9 @@ fluctuation data required for controlled backreaction.
   mislabeled as exact Gaussian laws, partial-covariance undercounting, and confusing noise domination
   with invalidity, and the low-energy root selected
   by reduction of order in a toy higher-derivative equation.
+- `calculation-checks/curvature_squared_euler_convention_checks.py`: verifies
+  the shared \(H^{(2)}_{\mu\nu}=J_{\mu\nu}\) convention with the
+  point-splitting chapter and the trace-anomaly \(R^2\) scheme coordinate.
 
 ## Figure Ledger
 
@@ -344,6 +349,12 @@ curvature, microscopic, and EFT scales.
   remain because they fix the gravitational EFT coordinates used in the
   semiclassical equation, but the theorem-level classification belongs to the
   point-splitting stress-tensor chapter.
+- 2026-06-08 issue #929 pass: added the explicit
+  \(H^{(2)}_{\mu\nu}=J_{\mu\nu}\) cross-reference back to the point-splitting
+  finite-local-freedom basis and moved the Ricci-squared sign regression into
+  a shared cross-chapter check.  The finite-scheme transport now uses the same
+  tensor basis as the point-splitting ambiguity and the trace-anomaly
+  \(R^2\)-coboundary coordinate audit.
 - 2026-06-03: added the finite response-window diagnostic for issue #729.  This
   is a physics-control insertion rather than a formal annex: it connects the
   semiclassical equation to bounded retarded response, absence of unstable

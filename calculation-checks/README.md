@@ -1619,6 +1619,15 @@ Current checks:
   finite-size endpoint variable and irrelevant correction, the physical
   finite-volume scaling variable, and finite Wick-subtraction
   contact-coordinate shifts.
+- `curvature_squared_euler_convention_checks.py`: cross-chapter convention
+  checks for Volume XII curvature-squared Euler tensors, including the shared
+  identification \(J_{\mu\nu}=H^{(2)}_{\mu\nu}\), the \(+2\Box R\)
+  Ricci-squared trace in the inverse-metric variation convention, the
+  un-halved Ricci-squared Weyl-variation coefficient, a non-Einstein
+  conformally flat derivative fixture rejecting the old derivative signs, and
+  a text contract tying the point-splitting finite ambiguity, trace-anomaly
+  \(R^2\) scheme coordinate, and semiclassical finite-scheme transport
+  together.
 - `rg_projection_checks.py`: exact rational checks for the Volume XI
   rigorous-RG projection-truncation section, including a spurious projected
   zero with no full fixed point and the finite-dimensional
@@ -2898,7 +2907,8 @@ Current checks:
   recursion through \(v_3\), state-difference cancellation of the common
   Hadamard singularity, the sign of smooth and scale subtraction changes,
   Wald finite-freedom engineering dimensions, the \(R^2\) and
-  \(R_{\mu\nu}R^{\mu\nu}\) Euler-tensor trace coefficients, the
+  \(R_{\mu\nu}R^{\mu\nu}\) Euler-tensor trace coefficients through the shared
+  cross-chapter convention fixture, the
   downstream equation-of-motion improvement regression after the imported
   Moretti Hadamard-coefficient theorem has reduced the parametrix divergence
   defect to one local covector, text-contract checks that the conservation
@@ -2921,8 +2931,9 @@ Current checks:
   massive-model string tension for integer probe charge.
 - `semiclassical_backreaction_checks.py`: finite checks for the semiclassical
   backreaction chapter, including four-dimensional traces of the
-  curvature-squared Euler tensors, the Ricci-squared \(H^{(2)}\) Weyl-variation
-  sign and a conformally flat derivative fixture rejecting the old sign pattern,
+  curvature-squared Euler tensors through the shared cross-chapter convention
+  fixture, the Ricci-squared \(H^{(2)}\) Weyl-variation sign and a conformally
+  flat derivative fixture rejecting the old sign pattern,
   the KMS fluctuation-dissipation factor, positivity of a finite noise covariance,
   the Einstein--Langevin
   pushforward covariance identity \(GNG^T\), exact retained-sector

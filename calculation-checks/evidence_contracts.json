@@ -172,7 +172,20 @@
         "finite local freedom requires weak regularity and almost homogeneous scaling",
         "scalar trace mass term is negative in mostly-plus convention",
         "trace improvement coefficient is (D-1)(xi-xi_c)",
+        "Ricci-squared J trace is plus 2 Box R in the shared inverse-metric convention",
         "I and J vanish on four-dimensional constant curvature"
+      ]
+    },
+    {
+      "path": "curvature_squared_euler_convention_checks.py",
+      "risk_class": "curvature-squared Euler tensor cross-chapter conventions",
+      "convention_tags": [
+        "Chapter 2 J equals Chapter 11 H2",
+        "Ricci-squared trace is plus 2 Box R in inverse-metric convention",
+        "old derivative signs fail Weyl variation",
+        "non-Einstein conformally flat fixture isolates derivative signs",
+        "R2 trace-anomaly scheme coordinate remains the b Box R coboundary",
+        "point-splitting finite ambiguity and semiclassical finite-scheme transport share one tensor basis"
       ]
     },
     {

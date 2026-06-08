@@ -38,6 +38,9 @@ Source-File: monograph/tex/volumes/volume_xii/chapter02_point_splitting_stress_t
   scaling to a finite natural polynomial, is
   \(a_0m^4g_{\mu\nu}+a_1m^2G_{\mu\nu}+a_2I_{\mu\nu}+a_3J_{\mu\nu}\), with
   \(I,J\) defined by metric variation of \(R^2\) and \(R_{\mu\nu}R^{\mu\nu}\).
+  The Ricci-squared tensor \(J_{\mu\nu}\) is the same tensor as
+  \(H^{(2)}_{\mu\nu}\) in the semiclassical backreaction chapter and has trace
+  \(+2\Box R\) in four dimensions in the shared inverse-metric convention.
 - Explicit flat-space computation: vacuum subtraction, thermal KMS remainder,
   point-split \(T_{00}\) and \(T_{ij}\), Stefan-Boltzmann energy density,
   and traceless equation of state.
@@ -64,7 +67,7 @@ Source-File: monograph/tex/volumes/volume_xii/chapter02_point_splitting_stress_t
 | \(:\!\Phi^2\!:\) | Wick square defined by point splitting |
 | \(\mathcal D_{\mu\nu}(x,y)\) | stress-tensor bidifferential operator |
 | \(C_{\mu\nu}\) | finite local curvature tensor freedom |
-| \(G_{\mu\nu},I_{\mu\nu},J_{\mu\nu}\) | Einstein tensor and independent curvature-variation tensors in the finite stress-tensor freedom |
+| \(G_{\mu\nu},I_{\mu\nu},J_{\mu\nu}\) | Einstein tensor and independent curvature-variation tensors in the finite stress-tensor freedom; \(J=H^{(2)}\) in the shared Volume XII convention |
 | \(\mathcal A[g,m,\xi]\) | local trace anomaly term |
 | \(\Delta W_\beta\) | smooth thermal two-point remainder \(W_\beta-W_0\) |
 | \(\rho_\beta,p_\beta\) | thermal energy density and pressure |
@@ -89,6 +92,9 @@ Source-File: monograph/tex/volumes/volume_xii/chapter02_point_splitting_stress_t
    \(m^4g_{\mu\nu}\), \(m^2G_{\mu\nu}\), \(I_{\mu\nu}\), and
    \(J_{\mu\nu}\).  Dimension counting alone would not exclude nonpolynomial
    local functionals and is not the classification proof.
+   The Ricci-squared Euler tensor is shared with Chapter 11:
+   \(J_{\mu\nu}=H^{(2)}_{\mu\nu}\), so the two chapters must carry the same
+   derivative signs and \(+2\Box R\) trace.
 6. In flat Minkowski space \(H_0=W_0\), so the point-split vacuum stress
    tensor vanishes once the finite cosmological term is set to zero.
 7. Applying the point-split stress operator to the smooth thermal remainder
@@ -122,6 +128,9 @@ Source-File: monograph/tex/volumes/volume_xii/chapter02_point_splitting_stress_t
   filter in the finite-local-freedom theorem, the
   constant-curvature vanishing of \(I_{\mu\nu},J_{\mu\nu}\), scalar trace
   convention regressions, and the de Sitter anomaly specialization.
+- `calculation-checks/curvature_squared_euler_convention_checks.py` verifies
+  the shared \(J_{\mu\nu}=H^{(2)}_{\mu\nu}\) Ricci-squared convention across
+  point splitting, trace anomalies, and semiclassical finite-scheme transport.
 
 ## Figures
 
@@ -149,3 +158,9 @@ Source-File: monograph/tex/volumes/volume_xii/chapter02_point_splitting_stress_t
   The monograph text now confines itself to convention translation,
   four-dimensional basis enumeration, and downstream stress-tensor
   consequences.
+- 2026-06-08 issue #929 pass: corrected the Ricci-squared Euler tensor to the
+  shared inverse-metric convention, \(J_{\mu\nu}=H^{(2)}_{\mu\nu}\), with
+  derivative signs \(-\nabla_\mu\nabla_\nu R+\Box R_{\mu\nu}
+  +\frac12g_{\mu\nu}\Box R\) and trace \(+2\Box R\).  Added a cross-chapter
+  regression tying this finite local ambiguity to the trace-anomaly \(R^2\)
+  scheme coordinate and the semiclassical finite-scheme transport basis.
