@@ -10,12 +10,15 @@ Source-File: monograph/tex/volumes/volume_xi/chapter03_lattice_reflection_positi
 
 ## Definitions And Results
 
-- Reflection-invariant lattice and positive-time algebra.
+- Reflection-invariant lattice, link-reflection scalar geometry, and
+  positive-time algebra.
 - Antilinear reflection operation \(\Theta\).
 - Lattice reflection positivity condition.
-- Nearest-neighbor scalar lattice measure.
-- Proof of reflection positivity by positive power-series expansion of
-  cross-plane kernels.
+- Nearest-neighbor scalar lattice measure with a polynomial form-domain and
+  crossing-kernel absolute-integrability hypothesis.
+- Proof of scalar reflection positivity by positive power-series expansion of
+  cross-plane kernels, with termwise integration justified by dominated
+  convergence and Fubini rather than monotone convergence.
 - Free lattice fermion reflection positivity for the mid-link reflection.
 - Failure of site and diagonal fermion reflections by two-point tests.
 - Staggered fermion reflection and Thirring interaction positivity for
@@ -41,6 +44,7 @@ Source-File: monograph/tex/volumes/volume_xi/chapter03_lattice_reflection_positi
 | \(\Theta\) | antilinear reflected action on functions |
 | \(d\mu\) | lattice probability measure |
 | \(S(\phi)\) | lattice scalar action |
+| \(d\nu_+\) | positive-half scalar measure after assigning non-crossing and crossing-square terms |
 | \(C_\mu\) | Euclidean Clifford matrices for lattice fermions |
 | \(\psi_A,\bar\psi^A\) | independent lattice Grassmann variables |
 | \(R\) | mid-link lattice reflection |
@@ -58,7 +62,11 @@ Source-File: monograph/tex/volumes/volume_xi/chapter03_lattice_reflection_positi
 1. Reflection positivity is a measure property relative to a reflection and a
    positive algebra.
 2. Nearest-neighbor scalar lattice actions with positive couplings are
-   reflection positive by explicit kernel expansion.
+   reflection positive by explicit kernel expansion for the antilinear
+   convention \(\langle\Theta F\,F\rangle\), not
+   \(\langle\overline{\Theta F}\,F\rangle\).  The statement is for link
+   reflection geometry and for the polynomial form domain supplied by the
+   declared moment/absolute-integrability hypotheses.
 3. The transfer-matrix Hilbert space is the quotient of \(\mathcal A_+\) by
    the null space of the reflection-positive form.
 4. Free nearest-neighbor lattice fermions require the mid-link reflection
@@ -83,10 +91,12 @@ Source-File: monograph/tex/volumes/volume_xi/chapter03_lattice_reflection_positi
 ## Calculation Checks
 
 - `calculation-checks/lattice_reflection_positivity_checks.py` verifies the
-  \(U(1)\) Fourier/Bessel positivity, the \(SU(2)\) Wilson coefficient
-  identity, reconstruction of sample Wilson weights from truncated positive
-  character expansions, and finite \(SU(2)\) tensor-product character
-  identities.
+  scalar antilinear form using the \(F=i\) constant test, rejects the
+  double-conjugated form, checks finite scalar crossing-kernel square and
+  domination arithmetic, and verifies the \(U(1)\) Fourier/Bessel positivity,
+  the \(SU(2)\) Wilson coefficient identity, reconstruction of sample Wilson
+  weights from truncated positive character expansions, and finite \(SU(2)\)
+  tensor-product character identities.
 
 ## Figures
 
@@ -98,4 +108,11 @@ Source-File: monograph/tex/volumes/volume_xi/chapter03_lattice_reflection_positi
 - 2026-05-29: expanded scalar reflection positivity to state the reflection
   invariance and finite-volume integrability hypotheses, then prove positivity
   by half-lattice factorization, nonnegative crossing-kernel expansion,
-  Fubini/monotone convergence, and a sum of reflected absolute squares.
+  Fubini/dominated-convergence control, and a sum of reflected absolute
+  squares.
+- 2026-06-08 issue #893 pass: corrected the scalar reflection-positive form to
+  \(\langle\Theta F\,F\rangle\) after \(\Theta\) is declared antilinear,
+  added the \(F=i\) convention test, restricted the displayed scalar proof to
+  link-reflection geometry, strengthened the polynomial domain hypotheses to
+  all moments plus crossing-kernel absolute integrability, and replaced the
+  monotone-convergence sentence by dominated convergence/Fubini.

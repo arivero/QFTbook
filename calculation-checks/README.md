@@ -2542,9 +2542,11 @@ Current checks:
   fermionic-product large-\(u\) coefficient, \(P\)-power charge gap, and
   physical characteristic-root assignment are independent data needed to
   recover \(J,\Delta,S\) from the compressed QSC package.
-- `lattice_reflection_positivity_checks.py`: finite character-expansion
-  checks for the Osterwalder-Seiler lattice reflection-positivity proof,
-  including \(U(1)\) Bessel/Fourier positivity, the \(SU(2)\) Wilson
+- `lattice_reflection_positivity_checks.py`: finite scalar-form and
+  character-expansion checks for lattice reflection positivity, including the
+  antilinear \(\Theta\) constant test \(F=i\), a double-conjugation negative
+  control, finite scalar crossing-kernel absolute-square and domination
+  arithmetic, \(U(1)\) Bessel/Fourier positivity, the \(SU(2)\) Wilson
   plaquette coefficient formula
   \(a_\ell=I_\ell-I_{\ell+2}=2(\ell+1)I_{\ell+1}/\beta\), and finite
   \(SU(2)\) tensor-product character multiplicities.
