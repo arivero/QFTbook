@@ -2273,7 +2273,11 @@ Current checks:
   checks the slow-sector completeness boundary by integrating out a sample
   relaxational order parameter and verifying that when its relaxation gap
   scales to zero, the induced memory kernel is nonlocal in the hydrodynamic
-  window rather than an analytic conserved-density-only correction.
+  window rather than an analytic conserved-density-only correction.  It also
+  checks that a non-normal two-mode relaxation matrix has basis-dependent
+  diagonal entries while its slow Riesz projector transforms covariantly, and
+  that a continuum of relaxation rates whose lower edge scales to zero
+  produces growing branch-cut memory rather than a finite-pole correction.
 - `hydrodynamic_long_time_tail_checks.py`: finite checks for the Volume X
   hydrodynamic fluctuation chapter, including diffusive static covariance,
   the classical FDT relation, the finite bond-current contraction behind the

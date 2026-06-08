@@ -184,7 +184,13 @@
     },
     {
       "path": "hydrodynamic_modes_checks.py",
-      "risk_class": "relativistic hydrodynamics causality"
+      "risk_class": "relativistic hydrodynamics causality",
+      "convention_tags": [
+        "retained hydrodynamic slow sector is a spectral subspace",
+        "non-normal diagonal relaxation rates are basis dependent",
+        "slow Riesz projector transforms covariantly",
+        "continuum lower edge entering hydrodynamic window is not a finite pole"
+      ]
     },
     {
       "path": "locally_covariant_kg_checks.py",

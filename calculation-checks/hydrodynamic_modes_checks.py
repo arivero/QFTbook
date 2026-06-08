@@ -9,13 +9,17 @@ high-k instability of the parabolic truncation, and the linear causal
 relaxation completion of the shear sector in Volume X Chapter 5.  The checks
 also guard the slow-sector completeness boundary: an omitted relaxational
 order parameter whose gap scales to zero produces a nonlocal memory
-denominator and cannot be absorbed into analytic normal-fluid coefficients.
+denominator and cannot be absorbed into analytic normal-fluid coefficients;
+the retained slow sector is a basis-invariant spectral subspace rather than a
+list of diagonal operator rates; and a continuum lower edge entering the
+hydrodynamic window is a slow spectral channel, not a finite pole list.
 Independent construction: direct finite-dimensional algebra for the Ward
 identity modes, exact heat-kernel positivity away from the origin, explicit
 quadratic roots for boosted diffusion and MIS shear relaxation, an explicit
 finite Gibbs/Lehmann retarded response whose singular support is computed
 from transition energies rather than inserted as test points, and matrix
-similarity checks for multi-charge diffusion.
+similarity checks for multi-charge diffusion.  The slow-sector guards use an
+exact non-normal two-by-two matrix and a finite continuum memory integral.
 Imported assumptions: homogeneous KMS thermodynamic stability, the stated
 Landau-frame constitutive relations, positivity of transport coefficients from
 entropy/Kubo arguments, and the choice of a single linear MIS shear relaxation
@@ -27,6 +31,9 @@ lower-half-plane damped poles, a denominator with an actual open-upper-half-
 plane root is rejected, a causal relaxation model with superluminal shear
 front speed is rejected, an omitted order-parameter mode with a vanishing
 relaxation rate is rejected as an analytic conserved-density-only correction,
+diagonal entries of a mixed relaxation matrix are rejected as basis-invariant
+rates, a continuum of relaxation rates whose lower edge scales to zero is
+rejected as a finite-pole correction,
 and linear shear completion is not treated as a theorem for full nonlinear
 causal hydrodynamics.
 Scope boundary: these checks verify finite algebra and linear-mode
@@ -50,6 +57,54 @@ def assert_close(name: str, got: complex | float, expected: complex | float, tol
 def assert_equal(name: str, got, expected) -> None:
     if got != expected:
         raise AssertionError(f"{name}: expected {expected!r}, got {got!r}")
+
+
+Matrix2Q = tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]
+
+
+def qmatmul(lhs: Matrix2Q, rhs: Matrix2Q) -> Matrix2Q:
+    return (
+        (
+            lhs[0][0] * rhs[0][0] + lhs[0][1] * rhs[1][0],
+            lhs[0][0] * rhs[0][1] + lhs[0][1] * rhs[1][1],
+        ),
+        (
+            lhs[1][0] * rhs[0][0] + lhs[1][1] * rhs[1][0],
+            lhs[1][0] * rhs[0][1] + lhs[1][1] * rhs[1][1],
+        ),
+    )
+
+
+def qmatadd(lhs: Matrix2Q, rhs: Matrix2Q) -> Matrix2Q:
+    return (
+        (lhs[0][0] + rhs[0][0], lhs[0][1] + rhs[0][1]),
+        (lhs[1][0] + rhs[1][0], lhs[1][1] + rhs[1][1]),
+    )
+
+
+def qmatscale(coeff: Fraction, matrix: Matrix2Q) -> Matrix2Q:
+    return (
+        (coeff * matrix[0][0], coeff * matrix[0][1]),
+        (coeff * matrix[1][0], coeff * matrix[1][1]),
+    )
+
+
+def qmatinv(matrix: Matrix2Q) -> Matrix2Q:
+    determinant = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
+    if determinant == 0:
+        raise ValueError("singular rational 2x2 matrix")
+    return (
+        (matrix[1][1] / determinant, -matrix[0][1] / determinant),
+        (-matrix[1][0] / determinant, matrix[0][0] / determinant),
+    )
+
+
+def qtrace(matrix: Matrix2Q) -> Fraction:
+    return matrix[0][0] + matrix[1][1]
+
+
+def qdet(matrix: Matrix2Q) -> Fraction:
+    return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
 
 
 def shear_pole(eta: float, enthalpy: float, k: float) -> complex:
@@ -491,6 +546,66 @@ def check_omitted_relaxational_mode_memory_negative_control() -> None:
     )
 
 
+def check_basis_invariant_slow_projector_negative_control() -> None:
+    slow = Fraction(1, 101)
+    fast = Fraction(5, 3)
+    mixing = Fraction(7, 5)
+    operator: Matrix2Q = ((slow, mixing), (Fraction(0), fast))
+    basis: Matrix2Q = ((Fraction(1), Fraction(2)), (Fraction(3), Fraction(5)))
+    basis_inv = qmatinv(basis)
+    transformed = qmatmul(qmatmul(basis_inv, operator), basis)
+
+    assert_equal("similarity preserves relaxation trace", qtrace(transformed), slow + fast)
+    assert_equal("similarity preserves relaxation determinant", qdet(transformed), slow * fast)
+    if transformed[0][0] == slow or transformed[1][1] == fast:
+        raise AssertionError("diagonal relaxation entries should be basis dependent in the non-normal sample")
+    if min(abs(transformed[0][0]), abs(transformed[1][1])) < Fraction(1, 10):
+        raise AssertionError("basis-dependent diagonal heuristic should not reliably expose the slow rate")
+
+    identity: Matrix2Q = ((Fraction(1), Fraction(0)), (Fraction(0), Fraction(1)))
+    slow_projector = qmatscale(
+        Fraction(1, 1) / (slow - fast),
+        qmatadd(operator, qmatscale(-fast, identity)),
+    )
+    transformed_projector = qmatscale(
+        Fraction(1, 1) / (slow - fast),
+        qmatadd(transformed, qmatscale(-fast, identity)),
+    )
+    covariant_projector = qmatmul(qmatmul(basis_inv, slow_projector), basis)
+    assert_equal("Riesz projector transforms covariantly", transformed_projector, covariant_projector)
+    assert_equal("slow Riesz projector is idempotent", qmatmul(slow_projector, slow_projector), slow_projector)
+    assert_equal(
+        "transformed slow Riesz projector is idempotent",
+        qmatmul(transformed_projector, transformed_projector),
+        transformed_projector,
+    )
+
+
+def check_continuum_slow_edge_memory_negative_control() -> None:
+    fixed_lower_edge = 0.2
+    fixed_static = math.log(1.0 / fixed_lower_edge)
+    fixed_first_derivative = 1.0 / fixed_lower_edge - 1.0
+    assert_close("fixed continuum edge has finite static memory", fixed_static, math.log(5.0))
+    assert_close("fixed continuum edge has finite derivative coefficient", fixed_first_derivative, 4.0)
+
+    epsilon_values = (1.0e-2, 1.0e-3)
+    slow_static = [math.log(1.0 / (epsilon * epsilon)) for epsilon in epsilon_values]
+    if not slow_static[1] > slow_static[0] > fixed_static:
+        raise AssertionError("continuum lower edge entering the slow window should produce growing memory")
+
+    omega0 = 0.7
+    scaled_complex_memory = []
+    for epsilon in epsilon_values:
+        lower_edge = epsilon * epsilon
+        omega = epsilon * epsilon * omega0
+        value = cmath.log((1.0 - 1j * omega) / (lower_edge - 1j * omega))
+        scaled_complex_memory.append(value)
+    if not scaled_complex_memory[1].real > scaled_complex_memory[0].real:
+        raise AssertionError("slow continuum edge should retain nonlocal logarithmic real part")
+    if abs(scaled_complex_memory[1].imag - scaled_complex_memory[0].imag) > 1.0e-3:
+        raise AssertionError("scaled continuum edge phase should approach a fixed branch-cut value")
+
+
 def main() -> None:
     check_shear_mode()
     check_first_order_shear_acausality()
@@ -503,6 +618,8 @@ def main() -> None:
     check_diffusion_einstein_relation_and_pole()
     check_multicharge_diffusion_geometry()
     check_omitted_relaxational_mode_memory_negative_control()
+    check_basis_invariant_slow_projector_negative_control()
+    check_continuum_slow_edge_memory_negative_control()
     print("All hydrodynamic Ward-identity mode checks passed.")
 
 

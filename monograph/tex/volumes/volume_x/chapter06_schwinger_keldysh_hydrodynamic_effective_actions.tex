@@ -677,17 +677,20 @@ been specified.
 
 \paragraph{Additional retained slow fields.}
 The phase fields above implement ordinary charge conservation.  They are not a
-template for every slow variable.  Each extra member of the retained slow
-sector requires its own \(r/a\) fields, source normalization, symmetry and
-frame data, response and noise kernels, dynamical KMS transformation, and
-positivity constraints.  A superfluid phase has a Josephson relation rather
-than a diffusion equation; a critical order parameter has a relaxational or
-mode-coupled kernel; a weakly broken charge has a small relaxation term; and a
-kinetic moment hierarchy has a collision operator whose small eigenvalues
-must be retained until a uniform gap appears.  Omitting such a field and
-trying to absorb it into local coefficients gives the memory denominator
-displayed in \eqref{eq:hydro-omitted-order-parameter-memory}, not a local SK
-hydrodynamic action for conserved densities alone.
+template for every slow variable.  An additional retained slow spectral
+subspace first requires a choice of coordinates or fields on that subspace;
+those coordinates then need their own \(r/a\) partners, source normalization,
+symmetry and frame data, response and noise kernels, dynamical KMS
+transformation, and positivity constraints.  A superfluid phase has a
+Josephson relation rather than a diffusion equation; a critical order
+parameter has a relaxational or mode-coupled kernel; a weakly broken charge has
+a small relaxation term; and a kinetic moment hierarchy has a collision
+operator whose small spectral window must be retained until a uniform gap
+appears.  Omitting such a subspace and trying to absorb it into local
+coefficients gives the memory denominator displayed in
+\eqref{eq:hydro-omitted-order-parameter-memory}, or its Schur-complement or
+continuum analogue, rather than a local SK hydrodynamic action for conserved
+densities alone.
 
 \section{The Microscopic Theorem Boundary}
 

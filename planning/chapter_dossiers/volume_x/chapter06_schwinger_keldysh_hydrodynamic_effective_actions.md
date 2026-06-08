@@ -9,7 +9,8 @@ the SK generating functional, unitarity normalization, SK reality,
 positivity, gauge-invariant hydrodynamic phase variables, KMS, noise, and
 matrix-valued hydrodynamic response kernels.
 The chapter is scoped to the ordinary normal-fluid retained sector; additional
-slow fields require additional doubled variables and kernels.
+slow spectral subspaces require coordinates with additional doubled variables
+and kernels.
 
 ## Notation Inventory
 
@@ -29,8 +30,9 @@ slow fields require additional doubled variables and kernels.
   function by source-coupling signs and local contact terms.
 - `xi_Ai`: stochastic current noise after Hubbard-Stratonovich
   transformation.
-- `S_slow`: declared retained slow sector inherited from Chapter 5; this
-  chapter treats the ordinary charge-diffusion member explicitly.
+- `E_slow`: declared retained slow spectral subspace inherited from
+  Chapter 5; this chapter treats the ordinary charge-diffusion coordinate
+  explicitly.
 
 ## Claim Ledger
 
@@ -64,9 +66,10 @@ slow fields require additional doubled variables and kernels.
 9. Classical dynamical KMS fixes the noise matrix to \(T\Sigma_{AB}\) by
    the finite algebra \(C_{AB}=\Sigma_{AB}/\beta\).
 10. The quadratic diffusion action is an ordinary normal-fluid construction;
-    every additional retained slow field requires its own \(r/a\) variables,
-    source normalization, symmetry/frame data, response and noise kernels,
-    dynamical KMS transformation, and positivity constraints.
+    every additional retained slow spectral subspace requires coordinates and
+    corresponding \(r/a\) variables, source normalization, symmetry/frame data,
+    response and noise kernels, dynamical KMS transformation, and positivity
+    constraints.
 11. A microscopic derivation remains an open theorem boundary requiring a
     controlled real-time hydrodynamic scaling limit of the KMS QFT, proof of
     completeness of the retained slow sector, and regularity of the omitted
@@ -91,6 +94,10 @@ slow fields require additional doubled variables and kernels.
   for any additional retained slow variable, and changed the microscopic
   theorem boundary from conserved-density-only nonanalyticity to slow-sector
   completeness plus complement regularity.
+- 2026-06-08 issue #940 consistency pass: synchronized the SK chapter with the
+  Chapter 5 basis-invariant slow-subspace definition, so additional slow data
+  are coordinates on a retained spectral subspace rather than invariant
+  operator-name members.
 
 ## Figure Ledger
 
