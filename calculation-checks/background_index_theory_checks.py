@@ -4,9 +4,10 @@
 Evidence contract.
 Target claims:
 - Verify the A-hat expansion, four-dimensional index coefficients,
-  trace-delta instanton indices, Abelian T4 flux index, anomaly-polynomial
-  descent coefficients, Dirac zero-mode selection rules, and the Euclidean
-  self-adjoint Dirac/heat-kernel convention.
+  trace-delta instanton indices, Abelian T2/T4 flux indices,
+  anomaly-polynomial descent coefficients, Dirac zero-mode selection rules,
+  radial-gauge homotopy signs, and the Euclidean self-adjoint
+  Dirac/heat-kernel convention.
 Independent construction:
 - The checks recompute all coefficients with rational arithmetic and use a
   finite Pauli-matrix Fourier model for the flat-torus Dirac operator.  The
@@ -19,7 +20,8 @@ Negative controls:
 - The checks detect using raw gamma^mu nabla_mu as a self-adjoint operator,
   omitting the factor i in the Euclidean Dirac operator, flipping the
   Lichnerowicz scalar-curvature sign, and confusing the zero-order term in
-  D^2 with the Laplace-type endomorphism E.
+  D^2 with the Laplace-type endomorphism E.  They also reject the old
+  radial-gauge bundle sign and spin-connection factor.
 Scope boundary:
 - Passing this script does not prove the local index theorem, Getzler
   rescaling, elliptic regularity, determinant-line triviality, or continuum
@@ -96,6 +98,26 @@ def check_lichnerowicz_and_laplace_type_signs() -> None:
     )
 
 
+def check_radial_gauge_homotopy_signs() -> None:
+    # In radial gauge A_a(x)=int_0^1 s x^b Omega_ba(sx) ds, hence the first
+    # coefficient is -Omega_ab x^b/2.  For the chapter's spin convention
+    # Omega^S_ab=-R_abcd gamma^cd/4 this gives +R_abcd x^b gamma^cd/8.
+    omega_ab = Fraction(10)
+    radial_coefficient = -omega_ab / 2
+    assert_equal("radial-gauge connection coefficient", radial_coefficient, Fraction(-5))
+    assert_not_equal("old radial-gauge bundle sign rejected", radial_coefficient, omega_ab / 2)
+
+    r_clifford_slot = Fraction(8)
+    spin_curvature_slot = -r_clifford_slot / 4
+    spin_connection_coefficient = -spin_curvature_slot / 2
+    assert_equal("spin radial-gauge coefficient", spin_connection_coefficient, Fraction(1))
+    assert_not_equal(
+        "old spin radial-gauge factor rejected",
+        spin_connection_coefficient,
+        r_clifford_slot / 4,
+    )
+
+
 def check_ahat_expansion_two_roots() -> None:
     # For formal curvature roots x,y,
     # prod_i (x_i/2)/sinh(x_i/2)
@@ -136,6 +158,14 @@ def check_trace_delta_su_n_indices() -> None:
     assert_equal("SU(2) fundamental BPST index", 1, 1)
     assert_equal("SU(2) adjoint BPST index", 4, 4)
     assert_equal("SU(3) adjoint BPST index", 6, 6)
+
+
+def check_abelian_t2_flux_index() -> None:
+    # On T^2, Ahat=1 and ch(L^q)=exp(q c1).  The index is int q c1.
+    for q in range(1, 5):
+        for magnetic_flux in range(-3, 4):
+            index = q * magnetic_flux
+            assert_equal("T2 Abelian line-bundle index", index, q * magnetic_flux)
 
 
 def check_abelian_t4_flux_index() -> None:
@@ -181,9 +211,11 @@ def check_dirac_selection_rule_count() -> None:
 def main() -> None:
     check_euclidean_dirac_self_adjoint_convention()
     check_lichnerowicz_and_laplace_type_signs()
+    check_radial_gauge_homotopy_signs()
     check_ahat_expansion_two_roots()
     check_four_dimensional_index_formula()
     check_trace_delta_su_n_indices()
+    check_abelian_t2_flux_index()
     check_abelian_t4_flux_index()
     check_six_form_anomaly_polynomial()
     check_dirac_selection_rule_count()

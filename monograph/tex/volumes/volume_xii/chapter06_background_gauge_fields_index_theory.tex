@@ -12,9 +12,9 @@ of a coupled Dirac operator; the QFT input is the Berezin integral over its
 zero modes and the determinant line of its nonzero modes.
 The source traces for the heat-kernel/index-theory line used here are
 Seeley, Gilkey, and Atiyah--Singer
-\cite{Seeley1967,Gilkey1984,AtiyahSinger1968}; the derivations below keep the
-local Clifford and Chern-Weil conventions explicit because these are the
-conventions later used in anomaly formulae.
+\cite{Seeley1967,Gilkey1984,AtiyahSinger1968}; the local checks below keep the
+Clifford and Chern-Weil conventions explicit because these are the conventions
+later used in anomaly formulae.
 
 \section{Spinors, Bundles, and Curvature Conventions}
 
@@ -398,12 +398,13 @@ Let \(R\) denote the Riemannian curvature two-form of \(TM\).  The
   1-\frac{p_1(TM)}{24}
   +\frac{7p_1(TM)^2-4p_2(TM)}{5760}+\cdots .
 \]
-The theorem below is the heat-kernel/Getzler route to the local
-Atiyah--Singer index formula \cite{AtiyahSinger1968,Gilkey1984}; its proof is
-included to fix the curvature and chirality normalization used by the anomaly
-polynomial later in the chapter.
+The theorem below is the local Atiyah--Singer index theorem
+\cite{AtiyahSinger1968,Gilkey1984}.  The standard proofs include the
+heat-kernel and Getzler-rescaling route; here it is used as an analytic theorem,
+while the surrounding paragraphs audit the convention-sensitive signs and
+normalizations needed by the anomaly polynomial later in the chapter.
 
-\begin{theorem}[Local index density by Getzler rescaling]
+\begin{quotedtheorem}[Local index density]
 \label{thm:index-atiyah-singer-local}
 For the chiral Dirac operator coupled to \(E\),
 \begin{equation}
@@ -419,83 +420,67 @@ Equivalently, the local heat-kernel density of the supertrace has
   =
   \left[\widehat A(TM)\operatorname{ch}(E)\right]_{2n}.
 \]
-\end{theorem}
+\end{quotedtheorem}
 
-\begin{proof}
-The McKean--Singer identity reduces the index to the small-\(t\) limit of the
-local supertrace.  Fix \(p\in M\).  Choose geodesic normal coordinates,
-synchronous orthonormal frame, and radial gauges for \(S\) and \(E\).  In these
-coordinates the Taylor expansions of the two connections begin with their
-curvatures:
+\begin{lemma}[Radial-gauge connection expansion]
+\label{lem:index-radial-gauge-expansion}
+Let \(\nabla_a=\partial_a+A_a\) be a connection in a coordinate ball centered
+at \(p\), with \(A_a(p)=0\), and impose radial gauge \(x^aA_a(x)=0\).  If
+\(\Omega_{ab}=[\nabla_a,\nabla_b]\), then
+\begin{equation}
+  A_a(x)
+  =
+  \int_0^1 s\,x^b\,\Omega_{ba}(sx)\,ds
+  =
+  -\frac12\,\Omega_{ab}(p)x^b+O(|x|^2).
+  \label{eq:index-radial-gauge-homotopy}
+\end{equation}
+For the spin and bundle connections in the convention of
+Lemma~\ref{lem:index-lichnerowicz},
 \begin{equation}
   \nabla_a^S
   =
-  \partial_a+\frac14 R_{ab cd}(p)x^b\gamma^{cd}+O(|x|^2),
+  \partial_a+\frac18R_{ab cd}(p)x^b\gamma^{cd}+O(|x|^2),
   \qquad
   \nabla_a^E
   =
-  \partial_a+\frac12F^E_{ab}(p)x^b+O(|x|^2).
+  \partial_a-\frac12F^E_{ab}(p)x^b+O(|x|^2).
   \label{eq:index-radial-gauge-expansion}
 \end{equation}
-Rescale \(x=t^{1/2}y\).  Under Getzler scaling the differential operator
-keeps the terms whose combined degree in \(t^{1/2}\), derivatives, and
-Clifford variables can contribute to the top Clifford degree \(2n\); all
-higher Taylor coefficients are suppressed by positive powers of \(t^{1/2}\)
-in the diagonal heat kernel.  Lemma
-\ref{lem:index-lichnerowicz} then gives the constant-curvature model
-operator
-\begin{equation}
-  H_p
-  =
-  -\sum_a
-  \left(
-  \partial_{y^a}
-  +\frac14 R_{ab}(p)y^b
-  \right)^2
-  -\frac12\gamma^{ab}F^E_{ab}(p),
-  \label{eq:index-getzler-model-operator}
-\end{equation}
-where \(R_{ab}(p)\) is viewed as the skew endomorphism of \(T_pM\) with
-matrix entries \(R_{ab cd}(p)\gamma^{cd}\) in the Clifford factor.  The
-ordinary scalar-curvature term in \eqref{eq:index-lichnerowicz} has Clifford
-degree \(0\), hence cannot by itself contribute to the supertrace in
-dimension \(2n\); the missing gravitational contribution is instead produced
-by the harmonic-oscillator determinant in \(H_p\).
+\end{lemma}
 
-The heat kernel of \eqref{eq:index-getzler-model-operator} is the Mehler
-kernel for a constant magnetic oscillator, tensored with the finite
-endomorphism exponential \(\exp(+\frac12\gamma^{ab}F^E_{ab})\).  Diagonalizing
-the skew curvature into two-planes gives the pointwise supertrace
-\begin{equation}
-  \lim_{t\to0^+}{\rm str}\,K_t(p,p)\,d{\rm vol}_g(p)
-  =
-  \left[
-  \det\nolimits^{1/2}
-  \left(\frac{R/4\pi}{\sinh(R/4\pi)}\right)
-  {\rm tr}_E
-  \exp\!\left(\frac{\ii F_E}{2\pi}\right)
-  \right]_{2n}.
-  \label{eq:index-getzler-mehler-density}
-\end{equation}
-The determinant factor is the product over the curvature two-planes of the
-Mehler ratio
+\begin{proof}
+Let \(\mathcal R=x^b\partial_b\) be the radial vector field.  In radial gauge,
+\(\iota_{\mathcal R}A=0\).  Cartan's formula for a connection gives
+\(\mathcal L_{\mathcal R}A
+=\iota_{\mathcal R}\Omega+D(\iota_{\mathcal R}A)
+=\iota_{\mathcal R}\Omega\).  In components,
 \[
-  \frac{u/2}{\sinh(u/2)},
+  \frac{d}{ds}\left(sA_a(sx)\right)
+  =
+  s\,x^b\,\Omega_{ba}(sx).
 \]
-with \(u\) the corresponding Chern-Weil curvature variable.  The Clifford
-supertrace extracts exactly the top exterior degree; lower Clifford degree
-terms vanish because \({\rm str}_S\) is zero away from degree \(2n\).  Equation
-\eqref{eq:index-getzler-mehler-density} is precisely
-\(\left[\widehat A(TM)\operatorname{ch}(E)\right]_{2n}\).  Integrating over
-\(M\) and using \eqref{eq:index-mckean-singer} proves
-\eqref{eq:index-atiyah-singer}.
+Integrating from \(s=0\) to \(s=1\) gives
+\eqref{eq:index-radial-gauge-homotopy}.  Since
+\(\Omega_{ba}=-\Omega_{ab}\), the first Taylor coefficient is
+\(-\frac12\Omega_{ab}x^b\).  Substituting
+\[
+  \Omega^S_{ab}=-\frac14R_{ab cd}\gamma^{cd},
+  \qquad
+  \Omega^E_{ab}=F^E_{ab}
+\]
+gives \eqref{eq:index-radial-gauge-expansion}.
 \end{proof}
 
 This theorem is a theorem of differential geometry, not an axiom of QFT.  The
-derivation above identifies which part is analytic heat-kernel control and
-which part is local Clifford/Chern-Weil algebra.  The QFT consequences below
-are then zero-mode selection rules, anomaly polynomials, determinant lines,
-and inflow.
+quoted analytic input supplies the small-time limit; the chapter keeps the
+operator convention, the radial-gauge signs, and the Chern-Weil normalizations
+visible because those are what enter zero-mode selection rules, anomaly
+polynomials, determinant lines, and inflow.  A full Getzler proof would still
+have to construct the rescaled symbol, the constant-curvature oscillator, the
+Mehler diagonal kernel, and the Clifford supertrace with all \(2\pi\) and
+orientation factors; those analytic steps are not compressed into this
+chapter.
 
 In four dimensions the formula becomes
 \begin{equation}
@@ -549,6 +534,21 @@ For an Abelian line bundle \(L^q\) of charge \(q\),
   \operatorname{ch}(L^q)=e^{q x},
   \qquad x=c_1(L).
 \]
+On \(T^2\), \(\widehat A(TT^2)=1\).  If
+\(\int_{T^2}x=m\), then
+\begin{equation}
+  \operatorname{Ind}(D_{L^q}^+)
+  =
+  \int_{T^2}q x
+  =
+  qm .
+  \label{eq:index-u1-t2-example}
+\end{equation}
+In curvature language, if \(F_E=-\ii B\,dx^1\wedge dx^2\) and
+\((2\pi)^{-1}\int_{T^2}B\,dx^1\,dx^2=m\), then
+\(\int_{T^2} \ii qF_E/(2\pi)=qm\), matching the Chern-Weil sign in
+\(\operatorname{ch}(L^q)\).
+
 On \(T^4\) with \(p_1(TT^4)=0\), take integral two-forms \(a,b\) with
 \[
   \int_{T^4}a\wedge b=1,

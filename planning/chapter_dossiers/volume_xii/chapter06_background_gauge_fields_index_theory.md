@@ -52,14 +52,15 @@ anomaly descent, and index-theoretic anomaly lines.
 5. Defines Laplace-type heat coefficients and displays the first
    Seeley-DeWitt coefficients `a_0`, `a_2`, `a_4` with their transport
    recursion origin.
-6. Replaces the quoted local index theorem by a Getzler-rescaling derivation
-   of the local density `Ahat(TM) ch(E)`.
+6. Quotes the local Atiyah-Singer index theorem as analytic input rather than
+   compressing a full Getzler proof, and keeps the radial-gauge homotopy signs
+   and Chern-Weil normalizations explicit.
 7. Derives the four-dimensional index formula
    `Ind D_A^+ = int(ch_2(E)-rank(E)p_1(TM)/24)`.
 8. Converts the instanton part to the monograph trace-delta normalization:
    `int ch_2(E_R)=T_Delta(R) k`.
 9. Works out `SU(N)` fundamental/adjoint instanton zero-mode indices and the
-   Abelian `T^4` flux index.
+   Abelian `T^2`/`T^4` flux indices.
 10. Proves the finite-dimensional Berezin zero-mode selection rule.
 11. Defines the anomaly polynomial and descent variation, with chirality-sign
    dependence stated explicitly.
@@ -70,10 +71,11 @@ anomaly descent, and index-theoretic anomaly lines.
 
 - `calculation-checks/background_index_theory_checks.py` verifies the
   `Ahat` expansion through degree eight, four-dimensional index coefficients,
-  trace-delta `SU(N)` instanton indices, Abelian `T^4` flux index, six-form
-  anomaly-polynomial coefficients, descent rational coefficients, the
-  Euclidean `i gamma.nabla` flat-torus Fourier convention, Lichnerowicz versus
-  Laplace-type endomorphism signs, and Dirac zero-mode selection-rule count.
+  trace-delta `SU(N)` instanton indices, Abelian `T^2`/`T^4` flux indices,
+  six-form anomaly-polynomial coefficients, descent rational coefficients, the
+  Euclidean `i gamma.nabla` flat-torus Fourier convention, radial-gauge
+  homotopy signs, Lichnerowicz versus Laplace-type endomorphism signs, and
+  Dirac zero-mode selection-rule count.
 - Existing related checks:
   `calculation-checks/anomaly_polynomial_descent_checks.py` and
   `calculation-checks/bpst_instanton_normalization_checks.py`.
@@ -104,3 +106,7 @@ flow from `I_{2n+2}` to descent.
   change and qualified the Volume VII two-dimensional GLSM fluctuation operator
   as a complex first-order operator whose heat kernel is taken through
   `D_F^dagger D_F`, not through raw `gamma^mu nabla_mu`.
+- 2026-06-08 issue #910 local-index proof audit: replaced the compressed
+  Getzler proof claim with a quoted local Atiyah-Singer theorem, corrected the
+  radial-gauge homotopy coefficients for the spin and bundle connections, and
+  added explicit `T^2` line-bundle and `T^4` product-flux convention checks.

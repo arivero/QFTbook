@@ -36,6 +36,8 @@
         "Hermitian Euclidean gamma matrices require D=i gamma.nabla for self-adjointness",
         "raw gamma.nabla is anti-self-adjoint and has negative Fourier square",
         "Lichnerowicz zero-order terms have opposite signs from Laplace-type E slots",
+        "radial-gauge homotopy gives -Omega_ab x^b/2 and spin coefficient R_abcd gamma^cd x^b/8",
+        "Abelian T2 and T4 flux examples fix Chern-Weil orientation signs",
         "McKean-Singer uses positive chiral Laplacians",
         "index density remains separate from determinant-line holonomy"
       ]
