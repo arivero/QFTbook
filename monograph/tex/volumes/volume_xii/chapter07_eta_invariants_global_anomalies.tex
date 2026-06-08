@@ -616,35 +616,72 @@ that the total anomaly line is flat; cancellation of the global anomaly
 requires the holonomy of that flat line to be \(1\) on every closed loop.
 
 \paragraph{Finite gauge transformation as determinant-line transport.}
-Let \(g\) be a gauge transformation of a background bundle on \(M\), and let
-\(A_t\), \(0\leq t\leq1\), be a path from \(A\) to \(A^g\).  The ratio between
-the transported determinant at \(A^g\) and the determinant at \(A\) is
-computed by the adiabatic formula \eqref{eq:bismut-freed-holonomy} on the
-mapping torus
+Let \(L=\operatorname{Det}D\) for the moment.  It carries two distinct pieces
+of structure.  First, covariance of the Dirac family under a gauge
+transformation \(g\) gives a canonical equivariant line map
+\[
+  \rho_g(A):L_A\longrightarrow L_{A^g},
+  \qquad
+  \rho_h(A^g)\rho_g(A)=\rho_{gh}(A).
+\]
+This map is functorial in the gauge action and is not chosen by selecting a
+path in background-field space.  Second, the Bismut--Freed connection gives
+parallel transport
+\[
+  P_\gamma:L_A\longrightarrow L_{A^g}
+\]
+along any path \(\gamma:[0,1]\to\mathcal B\) with
+\(\gamma(0)=A\) and \(\gamma(1)=A^g\).
+
+The closed loop in the quotient background stack is the pair
+\((\gamma,g)\), not the gauge arrow \(g\) alone.  With the orientation
+convention used here, its determinant-line phase is the endomorphism
+\begin{equation}
+  \Theta_A(\gamma,g)
+  =
+  \rho_g(A)^{-1}P_\gamma
+  \in\operatorname{Aut}(L_A)\cong\mathbb C^\times .
+  \label{eq:quotient-loop-phase-rho-transport}
+\end{equation}
+Geometrically the same quotient loop is represented by the mapping torus
 \begin{equation}
   Y_g
   =
   ([0,1]\times M)/\bigl((1,x)\sim(0,gx)\bigr).
   \label{eq:gauge-mapping-torus}
 \end{equation}
-If this phase is not \(1\), the chiral fermion measure does not descend to a
-function on the quotient by that gauge transformation.
-Parallel transport along \(A_t\) identifies
-\(\operatorname{Det}D_A\) with \(\operatorname{Det}D_{A^g}\) by the
-Bismut--Freed connection on the determinant line bundle over background
-fields.  The gauge transformation \(g\) gives a canonical pullback
-identification of \(D_{A^g}\) with \(D_A\), hence of their determinant lines.
-Composing the parallel transport with this gauge identification gives an
-automorphism of the one-dimensional line \(\operatorname{Det}D_A\), so it is
-multiplication by a phase.  The corresponding closed path in the quotient
-background groupoid is represented geometrically by gluing the two ends of
-\([0,1]\times M\) with \(g\), namely by the mapping torus \(Y_g\).  The
-Bismut--Freed holonomy formula applied with the adiabatic metric and the
-chosen circle spin structure gives \eqref{eq:bismut-freed-holonomy}.  A phase
-different from \(1\) means that the determinant vector changes when the same
-quotient background is described by the two representatives \(A\) and
-\(A^g\); hence the chiral fermion measure does not descend to a function on
-the quotient.
+The Bismut--Freed holonomy formula applied to this adiabatic mapping torus
+computes the scalar in \eqref{eq:quotient-loop-phase-rho-transport}, with the
+chosen circle spin structure and determinant-line variance fixed above.  A
+phase different from \(1\) means that Bismut--Freed transport and the
+canonical gauge identification disagree; hence the determinant vector is not
+a single-valued function on the quotient background stack.
+
+The separation between \(\rho\) and \(P_\gamma\) also gives the composition
+law.  If \(\delta\) is a path from \(A^g\) to \(A^{gh}\), then
+\(P_{\gamma*\delta}=P_\delta P_\gamma\) and
+\(\rho_{gh}(A)=\rho_h(A^g)\rho_g(A)\).  Therefore, as scalars on the
+one-dimensional fibers,
+\begin{equation}
+  \Theta_A(\gamma*\delta,gh)
+  =
+  \Theta_A(\gamma,g)\,
+  \Theta_{A^g}(\delta,h).
+  \label{eq:quotient-loop-phase-composition}
+\end{equation}
+If \(\gamma_0\) and \(\gamma_1\) are two paths from \(A\) to \(A^g\), then
+\(\rho_g(A)\) is unchanged, while
+\[
+  \Theta_A(\gamma_1,g)\Theta_A(\gamma_0,g)^{-1}
+\]
+is the Bismut--Freed holonomy around the closed path obtained by concatenating
+\(\gamma_0\) and \(\gamma_1\) with one orientation reversed, with orientation
+fixed by the displayed ratio.  For a contractible change swept out by a
+surface \(\Sigma\subset\mathcal B\), this ratio is controlled by the curvature
+integral
+\(\exp(2\pi\ii\int_\Sigma\Omega_{\mathrm{BF}})\).  After local anomaly
+cancellation the remaining line is flat, so the quotient-loop phase depends
+only on the corresponding homotopy class in the quotient stack.
 
 \paragraph{Descent to the quotient background groupoid.}
 This last statement is the precise descent criterion for a global gauge
@@ -659,21 +696,21 @@ whose objects are \(A\in\mathcal B\) and whose morphisms
   A\longrightarrow A^g
 \]
 are labelled by \(g\in\mathcal G\).  A fermion determinant line over this
-groupoid consists of a line \(L_A\) over every object together with
-isomorphisms
+action groupoid consists of a line \(L_A\) over every object together with
+the canonical gauge-equivariant isomorphisms
 \[
-  \Phi_g(A):L_A\longrightarrow L_{A^g}
+  \rho_g(A):L_A\longrightarrow L_{A^g}
 \]
-compatible with composition.  In the free chiral-fermion case, \(\Phi_g(A)\)
-is obtained by composing Bismut--Freed parallel transport along a path from
-\(A\) to \(A^g\) with the tautological pullback identification by \(g\).
-Changing the path changes the result by the holonomy of a closed loop, hence
-by an eta phase of the corresponding mapping torus.
+compatible with composition.  The Bismut--Freed connection is extra
+geometric structure on this equivariant line; its path transports are used to
+evaluate quotient-stack loops through
+\eqref{eq:quotient-loop-phase-rho-transport}, but they are not the strict
+action-groupoid morphisms.
 
 A partition function is a function on the quotient only after choosing
 nonzero vectors \(s_A\in L_A\) satisfying
 \begin{equation}
-  \Phi_g(A)s_A=s_{A^g}
+  \rho_g(A)s_A=s_{A^g}
   \qquad\hbox{for every }(A,g).
   \label{eq:anomaly-line-equivariant-trivialization}
 \end{equation}
@@ -682,7 +719,7 @@ by a \(U(1)\)-valued groupoid \(1\)-cocycle
 \[
   \alpha(A,g)\in U(1),
   \qquad
-  \Phi_g(A)e_A=\alpha(A,g)e_{A^g},
+  \rho_g(A)e_A=\alpha(A,g)e_{A^g},
 \]
 obeying
 \begin{equation}
@@ -697,11 +734,16 @@ A change of local trivialization \(e_A\mapsto\beta(A)e_A\) changes
   \label{eq:anomaly-line-groupoid-coboundary}
 \end{equation}
 Thus the obstruction is the cohomology class of this groupoid cocycle.  On a
-based loop \((A,g)\) with \(A^g=A\), the value \(\alpha(A,g)\) is invariant
-under \eqref{eq:anomaly-line-groupoid-coboundary}; it is exactly the holonomy
-computed by \eqref{eq:bismut-freed-holonomy} or by the mod-two Pfaffian
-formula below.  Tensoring independent fermion systems tensors their anomaly
-lines, so the cocycles multiply and the logarithmic anomaly exponents add.
+stabilizer arrow \(g\in\mathcal G_A\), the value \(\alpha(A,g)\) is
+invariant under \eqref{eq:anomaly-line-groupoid-coboundary}.  In the
+orientation convention of \eqref{eq:quotient-loop-phase-rho-transport}, the
+constant-path quotient-loop phase is its inverse.  Such stabilizer phases are
+important, but they are only special loops in the homotopy quotient: a
+general loop is a path \(\gamma:A\to A^g\) together with the endpoint gauge
+identification \(g\), and its phase also includes Bismut--Freed parallel
+transport along \(\gamma\).  Tensoring independent fermion systems tensors
+their anomaly lines, so the cocycles multiply and the logarithmic anomaly
+exponents add.
 
 This based-loop statement has a useful fixed-background form.  Let
 \[
@@ -721,9 +763,14 @@ because \(A^g=A\), so \(\chi_A\) is not changed by a local choice of frame.
 If an equivariant nonzero section \(s_A\) satisfying
 \eqref{eq:anomaly-line-equivariant-trivialization} exists, then
 \(\chi_A(g)=1\) for every stabilizer element.  The converse is a concrete
-descent theorem in the finite action-groupoid model.
+descent theorem in the finite flat action-groupoid model.
 
-\begin{proposition}[Finite action-groupoid descent criterion]
+The following proposition has this restricted scope: it is a finite
+algebraic model for a flat discrete reduction of the anomaly line, after the
+local Bismut--Freed curvature obstruction has been cancelled or otherwise
+removed.  It does not encode nonflat path holonomies before that reduction.
+
+\begin{proposition}[Finite flat action-groupoid descent criterion]
 \label{prop:finite-action-groupoid-descent-criterion}
 Let a finite group \(G\) act on a finite set \(\mathcal B_0\) of background
 representatives on the right, and write the action groupoid as
@@ -731,7 +778,7 @@ representatives on the right, and write the action groupoid as
 \[
   a(A,g)\in\mathbb R/\mathbb Z
 \]
-be an additive representative of a line cocycle,
+be an additive representative of a flat line cocycle,
 \begin{equation}
   a(A,gh)=a(A,g)+a(A^g,h).
   \label{eq:finite-action-groupoid-additive-cocycle}
@@ -751,7 +798,8 @@ if its stabilizer character vanishes on every orbit,
 \end{equation}
 Equivalently, the multiplicative line cocycle
 \(\alpha(A,g)=\exp(2\pi\ii a(A,g))\) is trivializable by a choice of local
-frames exactly when all based-loop holonomies are \(1\).
+frames exactly when all finite action-groupoid based-loop holonomies are
+\(1\).
 \end{proposition}
 
 \begin{proof}
@@ -782,15 +830,15 @@ multiplicative statement and matches the frame-change law
 \eqref{eq:anomaly-line-groupoid-coboundary}.
 \end{proof}
 
-This finite theorem is the algebraic core used by the smooth anomaly line.
-For connected transformations the Bismut--Freed curvature and the local
-descent calculation determine the infinitesimal part of \(a\).  After that
-curvature has been cancelled, the remaining flat line is detected on
-stabilizers and other closed loops by the eta or mod-two mapping-torus
-holonomy.  Thus a global anomaly may be found before considering arbitrary
-families: a nontrivial automorphism character of the anomaly line over one
-background already prevents the determinant or Pfaffian vector from being a
-function on the quotient stack of backgrounds.
+This finite theorem is the algebraic core of the flat descent problem, not a
+substitute for the smooth connection.  For connected transformations the
+Bismut--Freed curvature and the local descent calculation control how
+\(\Theta_A(\gamma,g)\) changes under contractible changes of \(\gamma\).
+Only after that curvature has been cancelled does the remaining flat line
+reduce to a discrete cocycle of the kind in the proposition.  A nontrivial
+stabilizer character at one background is already an obstruction, but it does
+not replace the need to test general quotient-stack loops when the homotopy
+quotient has closed paths not represented by stabilizer arrows.
 
 \paragraph{Dual anomaly lines and the cancellation criterion.}
 Let \(L\) be an anomaly line over \(\mathcal B//\mathcal G\).  Its dual line
@@ -798,12 +846,12 @@ Let \(L\) be an anomaly line over \(\mathcal B//\mathcal G\).  Its dual line
 \[
   L_A^\vee=\operatorname{Hom}(L_A,\mathbb C).
 \]
-If \(\Phi_g(A):L_A\to L_{A^g}\) is the transport of \(L\), then the transport
-of \(L^\vee\) is the inverse dual map
+If \(\rho_g(A):L_A\to L_{A^g}\) is the equivariant map of \(L\), then the
+equivariant map of \(L^\vee\) is the inverse dual map
 \[
-  \Phi_g^\vee(A)
+  \rho_g^\vee(A)
   =
-  \bigl(\Phi_g(A)^{-1}\bigr)^{*}
+  \bigl(\rho_g(A)^{-1}\bigr)^{*}
   :
   L_A^\vee\longrightarrow L_{A^g}^\vee .
 \]

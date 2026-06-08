@@ -286,8 +286,11 @@ Current checks:
   anomaly-line cancellation,
   nontrivial flat stabilizer holonomy before cancellation, stabilizer-character
   invariance under local frame changes, the single-orbit descent obstruction
-  from nontrivial stabilizer character, the constructive finite
-  action-groupoid descent criterion from vanishing stabilizer character, and
+  from nontrivial stabilizer character, the separation of canonical
+  gauge-equivariance maps from Bismut--Freed path transport, quotient-loop
+  phase composition as \(\rho_g^{-1}P_\gamma\), the constructive finite
+  flat action-groupoid descent criterion from vanishing stabilizer character,
+  and
   the finite \(U(1)\)-phase algebra of Dai--Freed gluing and boundary-pairing
   anomaly cancellation, plus graded determinant/Pfaffian supertrace signs,
   the odd-index failure of ordinary contraction, the odd-index missing

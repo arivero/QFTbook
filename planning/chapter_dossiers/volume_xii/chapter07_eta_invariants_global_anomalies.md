@@ -27,6 +27,9 @@ global anomaly as an explicit mod-two-index example.
 - `sigma_b`, `sigma_nb`, `B_{gamma,epsilon}^sigma`: bounding/nonbounding
   circle spin structures and the corresponding odd-dimensional Dirac
   operator on the adiabatic mapping torus.
+- `rho_g(A)`, `P_gamma`, `Theta_A(gamma,g)`: canonical gauge-equivariant
+  line map, Bismut--Freed path transport, and the quotient-loop phase
+  \(\rho_g(A)^{-1}P_\gamma\).
 - `Ind_2(B_Y)`: mod-two index of the real/pseudoreal Dirac operator.
 - `R_j`, `n=2j`, `T_Delta(R_j)`: \(SU(2)\) isospin representation, doubled
   isospin, and trace-delta Dynkin index.
@@ -81,14 +84,19 @@ global anomaly as an explicit mod-two-index example.
   determinant-line spectral-cut transition rule, explaining that local
   curvature, spectral-flow jumps, and mapping-torus eta phases are curvature,
   transition, and holonomy data of the same anomaly line.
-- Explains finite gauge-transformation phases as determinant-line holonomies,
-  as a direct application of the quoted Bismut--Freed holonomy theorem to the
-  mapping torus of the gauge transformation.
+- Separates finite gauge-transformation phases into the canonical
+  gauge-equivariant line map \(\rho_g(A):L_A\to L_{A^g}\), Bismut--Freed
+  path transport \(P_\gamma:L_A\to L_{A^g}\), and the quotient-stack loop
+  phase \(\Theta_A(\gamma,g)=\rho_g(A)^{-1}P_\gamma\).  The chapter proves
+  the path-concatenation composition law, explains how changing \(\gamma\)
+  changes \(\Theta\) by closed-loop holonomy, and records the curvature
+  control for contractible path changes.
 - Makes the descent criterion over the quotient background groupoid explicit:
-  determinant-line transport is a groupoid `1`-cocycle, changes of local
-  trivialization shift it by a coboundary, based-loop holonomies are
-  invariant, and a quotient-valued partition function exists only after an
-  equivariant trivialization of the anomaly line.
+  the strict groupoid `1`-cocycle is the gauge-equivariant structure
+  \(\rho\), not a path-dependent parallel transport.  Stabilizer characters
+  are special constant-path quotient loops, while general loops in the
+  homotopy quotient are pairs \((\gamma,g)\) with
+  \(\gamma(0)=A\), \(\gamma(1)=A^g\).
 - Adds the dual-line cancellation criterion: the dual anomaly line has the
   inverse groupoid cocycle, `L \otimes L^\vee` is trivialized by evaluation,
   and local curvature cancellation is weaker than global cancellation because
@@ -157,8 +165,10 @@ global anomaly as an explicit mod-two-index example.
   finite skew-block Pfaffian orientation model, cylinder congruence
   arithmetic, action-groupoid anomaly cocycle/coboundary
   identities, based-loop holonomy invariance, the stabilizer-character
-  obstruction to descent, the constructive finite action-groupoid descent
-  criterion, dual anomaly-line cancellation, nontrivial flat stabilizer
+  obstruction to descent, canonical \(\rho_g\) versus path-transport
+  separation, quotient-loop phase composition, the constructive finite flat
+  action-groupoid descent criterion, dual anomaly-line cancellation,
+  nontrivial flat stabilizer
   holonomy before cancellation, Bismut--Freed adiabatic-limit holonomy,
   determinant/inverse determinant exponent dualization, reparametrization
   invariance only after the adiabatic limit, bounding/nonbounding circle-spin
@@ -176,6 +186,9 @@ global anomaly as an explicit mod-two-index example.
 - It includes negative controls for finite-metric eta phases before the
   adiabatic limit and for omitting the nonbounding-circle sign in odd vertical
   index.
+- It includes a negative control against treating path-dependent
+  Bismut--Freed transport as the canonical gauge-equivariant action on the
+  line.
 - The same script now checks the Cech-de Rham local connection/transition
   algebra for determinant-line holonomy: \(a_j=a_i-df_{ij}\) on overlaps and
   invariance of the closed-loop exponent under frame changes
@@ -322,3 +335,13 @@ global anomaly as an explicit mod-two-index example.
   reparametrization-invariant determinant-line holonomies.  The companion
   check verifies the adiabatic reparametrization gate and the odd-index
   missing-spin-sign negative control.
+- 2026-06-08 quotient-loop equivariance pass: separated the canonical gauge
+  line action \(\rho_g(A)\) from Bismut--Freed path transport \(P_\gamma\).
+  The global anomaly phase is now the quotient-loop scalar
+  \(\rho_g(A)^{-1}P_\gamma\), with path concatenation, path-change holonomy,
+  and curvature-control statements spelled out.  The finite action-groupoid
+  descent proposition is explicitly restricted to the flat discrete reduction
+  after local curvature cancellation, and stabilizer characters are identified
+  as special loops rather than the whole homotopy-quotient problem.  The
+  companion check keeps \(\rho_g\) fixed while varying paths and verifies the
+  closed-loop holonomy difference.

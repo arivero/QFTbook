@@ -434,7 +434,11 @@
         "Bismut-Freed holonomy uses the adiabatic limit not a finite mapping-torus metric",
         "determinant-line holonomy is dual to Freed's inverse determinant-line convention",
         "bounding and nonbounding circle spin structures differ by the odd-index sign",
-        "finite-metric eta phases are not reparametrization-invariant holonomy data"
+        "finite-metric eta phases are not reparametrization-invariant holonomy data",
+        "canonical gauge equivariance rho_g is separate from Bismut-Freed path transport",
+        "quotient-stack loop phase is rho_g inverse composed with P_gamma",
+        "finite action-groupoid descent is only a flat discrete reduction",
+        "stabilizer characters are special loops not all homotopy-quotient loops"
       ]
     },
     {

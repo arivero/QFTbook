@@ -7,9 +7,10 @@ Target claims:
     APS boundary-sign bookkeeping, determinant/Pfaffian line coordinate
     algebra, finite action-groupoid descent, Witten SU(2) trace-delta
     parity arithmetic, typed orientation/variance of Dai-Freed boundary
-    lines, adiabatic-limit Bismut-Freed holonomy with circle-spin signs, and
-    the finite phase algebra used by Dai-Freed gluing, graded supertrace
-    signs, boundary pairing, and intermediate-cut composition.
+    lines, adiabatic-limit Bismut-Freed holonomy with circle-spin signs, the
+    separation of canonical gauge equivariance from Bismut-Freed path
+    transport, and the finite phase algebra used by Dai-Freed gluing, graded
+    supertrace signs, boundary pairing, and intermediate-cut composition.
 
 Independent construction:
     The checks use exact integer, rational, and finite cyclic phase models
@@ -19,7 +20,8 @@ Independent construction:
     Dai-Freed line pairings are checked in additive U(1)-exponent
     coordinates.  Adiabatic-limit tests use exact finite epsilon-dependent
     correction terms whose epsilon-zero limit is compared across
-    reparametrizations.
+    reparametrizations.  Quotient-loop tests use separate finite exponents
+    for the strict gauge map rho_g and the path transport P_gamma.
 
 Imported assumptions:
     The script does not prove the APS Fredholm/heat-kernel theorem,
@@ -36,7 +38,9 @@ Negative controls:
     variance as a Dai-Freed inverse-line variance, ordinary contraction on an
     odd determinant/Pfaffian superline, finite-metric eta phases before the
     adiabatic limit, omission of the odd-index nonbounding-circle sign, and
-    nontrivial SU(2) mapping-torus generator signs for odd trace-delta index.
+    path-dependent transport incorrectly treated as canonical gauge
+    equivariance, and nontrivial SU(2) mapping-torus generator signs for odd
+    trace-delta index.
 
 Scope boundary:
     Passing this script verifies exact finite algebra and convention-sensitive
@@ -899,8 +903,162 @@ def coboundary_shifted_exponent(a: int, g: int, orbit_size: int, phase_modulus: 
     ) % phase_modulus
 
 
+def gauge_frame_potential(a: int, phase_modulus: int) -> int:
+    return (7 * a * a + 3 * a + 2) % phase_modulus
+
+
+def gauge_equivariance_exponent(
+    a: int,
+    g: int,
+    orbit_size: int,
+    phase_modulus: int,
+) -> int:
+    """Strict gauge-equivariant line map rho_g(A) in a local frame."""
+
+    ag = orbit_action(a, g, orbit_size)
+    return (
+        gauge_frame_potential(ag, phase_modulus)
+        - gauge_frame_potential(a, phase_modulus)
+    ) % phase_modulus
+
+
+def quotient_loop_phase_exponent(
+    path_transport: int,
+    gauge_equivariance: int,
+    phase_modulus: int,
+) -> int:
+    """Additive exponent of rho_g(A)^(-1) P_gamma."""
+
+    return (path_transport - gauge_equivariance) % phase_modulus
+
+
 def inverse_line_exponent(exponent: int, phase_modulus: int) -> int:
     return (-exponent) % phase_modulus
+
+
+def check_gauge_equivariance_transport_separation() -> None:
+    """Separate canonical gauge maps from path-dependent quotient-loop phases."""
+
+    for orbit_size in range(2, 8):
+        for phase_modulus in range(2, 13):
+            for a in range(orbit_size):
+                for g in range(orbit_size):
+                    for h in range(orbit_size):
+                        gh = (g + h) % orbit_size
+                        ag = orbit_action(a, g, orbit_size)
+                        rho_gh = gauge_equivariance_exponent(
+                            a,
+                            gh,
+                            orbit_size,
+                            phase_modulus,
+                        )
+                        rho_g_then_h = (
+                            gauge_equivariance_exponent(
+                                a,
+                                g,
+                                orbit_size,
+                                phase_modulus,
+                            )
+                            + gauge_equivariance_exponent(
+                                ag,
+                                h,
+                                orbit_size,
+                                phase_modulus,
+                            )
+                        ) % phase_modulus
+                        assert_equal(
+                            "canonical gauge equivariance is a strict cocycle "
+                            f"orbit={orbit_size} phase={phase_modulus}",
+                            rho_gh,
+                            rho_g_then_h,
+                        )
+
+                        theta_gamma = (2 * a + g + 1) % phase_modulus
+                        theta_delta = (3 * ag + 2 * h + 2) % phase_modulus
+                        transport_gamma = (
+                            gauge_equivariance_exponent(
+                                a,
+                                g,
+                                orbit_size,
+                                phase_modulus,
+                            )
+                            + theta_gamma
+                        ) % phase_modulus
+                        transport_delta = (
+                            gauge_equivariance_exponent(
+                                ag,
+                                h,
+                                orbit_size,
+                                phase_modulus,
+                            )
+                            + theta_delta
+                        ) % phase_modulus
+                        concatenated_transport = (
+                            transport_gamma + transport_delta
+                        ) % phase_modulus
+                        concatenated_phase = quotient_loop_phase_exponent(
+                            concatenated_transport,
+                            rho_gh,
+                            phase_modulus,
+                        )
+                        assert_equal(
+                            "quotient-loop phases compose by path concatenation "
+                            f"orbit={orbit_size} phase={phase_modulus}",
+                            concatenated_phase,
+                            (theta_gamma + theta_delta) % phase_modulus,
+                        )
+
+                for g in range(1, orbit_size):
+                    rho = gauge_equivariance_exponent(
+                        a,
+                        g,
+                        orbit_size,
+                        phase_modulus,
+                    )
+                    theta0 = (5 * a + 2 * g + 1) % phase_modulus
+                    curvature_holonomy = 1
+                    theta1 = (theta0 + curvature_holonomy) % phase_modulus
+                    transport0 = (rho + theta0) % phase_modulus
+                    transport1 = (rho + theta1) % phase_modulus
+                    phase0 = quotient_loop_phase_exponent(
+                        transport0,
+                        rho,
+                        phase_modulus,
+                    )
+                    phase1 = quotient_loop_phase_exponent(
+                        transport1,
+                        rho,
+                        phase_modulus,
+                    )
+                    assert_equal(
+                        "rho_g is fixed while path transport changes "
+                        f"orbit={orbit_size} phase={phase_modulus}",
+                        gauge_equivariance_exponent(
+                            a,
+                            g,
+                            orbit_size,
+                            phase_modulus,
+                        ),
+                        rho,
+                    )
+                    assert_equal(
+                        "two quotient-loop phases differ by closed-loop holonomy "
+                        f"orbit={orbit_size} phase={phase_modulus}",
+                        (phase1 - phase0) % phase_modulus,
+                        curvature_holonomy,
+                    )
+                    assert_equal(
+                        "path-dependent transport is not the canonical rho map "
+                        f"orbit={orbit_size} phase={phase_modulus}",
+                        transport1 == transport0,
+                        False,
+                    )
+                    assert_equal(
+                        "non-stabilizer quotient loop still has an endpoint gauge map "
+                        f"orbit={orbit_size} phase={phase_modulus}",
+                        orbit_action(a, g, orbit_size) == a,
+                        False,
+                    )
 
 
 def check_action_groupoid_anomaly_cocycle_and_descent() -> None:
@@ -1272,6 +1430,7 @@ def main() -> None:
     check_dai_freed_interface_composition_frame_cancellation()
     check_dai_freed_superline_supertrace_signs()
     check_contractible_loop_curvature_stokes()
+    check_gauge_equivariance_transport_separation()
     check_action_groupoid_anomaly_cocycle_and_descent()
     check_dual_anomaly_line_cancellation()
     check_stabilizer_holonomy_character_obstruction()
