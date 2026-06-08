@@ -409,7 +409,10 @@
         "signal-to-noise is self-averaging and detectability not stochastic-law validity",
         "small Gaussian variance does not control rapidly growing nonlinear observable tails",
         "stress noise is unordered algebra covariance not time-ordered contact extension",
-        "independent Ward-clean local noise contacts can destroy positivity"
+        "independent Ward-clean local noise contacts can destroy positivity",
+        "linearized stress-response Ward identities include one-point/contact maps",
+        "metric gauge null directions belong to the full semiclassical Hessian",
+        "FLRW dot-density noise is derivative-consistent rather than independent"
       ]
     },
     {

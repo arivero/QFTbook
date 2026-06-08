@@ -9,8 +9,10 @@ large-species scaling of mean backreaction versus metric fluctuations, the
 large-species scaling of retained stress-source cumulants, the
 finite scheme-transport identity linking local stress-tensor curvature
 ambiguities to gravitational EFT coordinates, local linear response, and
-connected noise, the first-order lambda-phi-four potential-insertion source
-coordinate, the retained lambda-phi-four potential-noise coordinate using the
+connected noise, the typed linearized diffeomorphism Ward identity separating
+stress divergence, metric gauge, contact response, and the full semiclassical
+Hessian, the first-order lambda-phi-four potential-insertion source coordinate,
+the retained lambda-phi-four potential-noise coordinate using the
 full separated two-point function, retained Ward diagnostics for interacting
 source/noise coordinates,
 the finite retained Ward-completion laboratory connecting those diagnostics to
@@ -18,10 +20,11 @@ metric response and missing-noise budgets,
 the full retained interacting stress-tensor/noise package with component
 cross-covariances, finite composite-operator mixing, and rejection of
 independent local noise contacts, the closed-time-path influence-functional
-consistency of the interacting mean, retarded response, and noise package,
+consistency of the interacting mean, contact-corrected retarded response, and
+noise package,
 the homogeneous FLRW interacting-source closure tying a time-dependent
 potential coordinate to the pressure, Friedmann/Raychaudhuri, and
-stress-noise Ward data,
+derivative-consistent stress-noise Ward data,
 the small-gain stability and fluctuation-validity check for the linearized
 interacting backreaction operator, the finite nonlinear fixed-point chart for
 the retained semiclassical equation,
@@ -39,7 +42,9 @@ fluctuation-dissipation factors, noise-covariance positivity, retained
 metric-response bounds, the large-N_sp species scaling of the rescaled mean
 source, source-noise covariance, and higher connected stress-source cumulants,
 the finite scheme-transport invariance of the semiclassical residual and its
-linearized/contact/noise consequences,
+linearized/contact/noise consequences, the typed linearized stress-response
+Ward identity with a nonzero one-point/contact defect and full-Hessian gauge
+null direction,
 the lambda-phi-four potential-insertion source coordinate, the retained
 potential-noise Wick contraction with full separated two-point cross covariance
 and metric pushforward, the restricted
@@ -51,11 +56,13 @@ and the
 full interacting package algebra in which component cross-covariances and
 finite operator-mixing terms are required before Ward tests are applied to the
 noise and independently added local noise contacts are rejected, the
-closed-time-path package tests tying Ward identities, retarded support,
-positivity, and fluctuation-dissipation compatibility together, the
+closed-time-path package tests tying typed source/noise Ward identities,
+contact-corrected retarded response, retarded support, positivity, and
+fluctuation-dissipation compatibility together, the
 homogeneous FLRW source/noise closure in which the correction pressure and
 state-transport terms make a time-dependent potential density compatible with
-both Friedmann and Raychaudhuri responses and with Ward-clean Hubble noise, the
+both Friedmann and Raychaudhuri responses and with derivative-consistent
+Ward-clean Hubble noise, the
 small-gain feedback inverse and noise-amplification bound for the full retained
 backreaction operator, the finite nonlinear self-map/contraction and
 mean/noise-validity budgets, including residual size and residual Lipschitz
@@ -74,10 +81,13 @@ projected diagnostic covariances, missing Ward-clean fluctuation budgets,
 finite stress/gravity coordinate transports, linear local-response transports,
 c-number connected-noise cancellations,
 unordered covariance positivity tests, Ward-clean local-contact counterexamples,
-finite influence-functional quadratic forms, retarded-support tests,
+finite typed Ward maps with nonzero response contact defects, finite
+full-Hessian gauge-null checks, finite influence-functional quadratic forms,
+retarded-support tests,
 fluctuation-dissipation ratios, small-gain inverses, response/noise bounds,
-FLRW pressure closures, Hubble-response consistency checks, and Ward-clean
-homogeneous stress-noise covariances,
+FLRW pressure closures, Hubble-response consistency checks, derivative
+pushforwards for density noise, and Ward-clean homogeneous stress-noise
+covariances,
 species sums, 1/N_sp gravitational-coupling scaling, source-cumulant scaling,
 nonlinear fixed-point radii, residual size and residual Lipschitz
 budgets, state-transport Lipschitz constants, noise-validity inequalities, and
@@ -112,8 +122,9 @@ operators, overlarge small-gain feedback, unconserved sources/noise, and
 conserved-but-unstable retained data, signed nonlinear residual cancellations,
 time-dependent potential energy inserted without correction pressure,
 Friedmann/Raychaudhuri inconsistency, potential-only stochastic stress noise,
-and Hubble-noise estimates that ignore the Ward-clean pressure and derivative
-fluctuations,
+naive separated-response transversality, pure-gauge stress-response
+annihilation, independent dot-density noise, and Hubble-noise estimates that
+ignore the Ward-clean pressure and derivative fluctuations,
 omitted state-transport Lipschitz constants, omitted residual Lipschitz
 constants, bounded non-Lipschitz residuals with multiple fixed points, overlarge
 quadratic nonlinear feedback, linear-noise-only validity estimates,
@@ -626,6 +637,76 @@ def check_finite_scheme_transport_consistency() -> None:
         raise AssertionError("negative control failed: wrong c-number noise did not enlarge trace")
 
 
+def check_typed_linearized_diffeomorphism_ward_identity() -> None:
+    # Finite analogue of
+    # div(delta<T>[h]) + (delta div)_h <T> = 0.  The stress-divergence
+    # map, metric gauge generator, stress response, contact map, and full
+    # semiclassical Hessian have different domains.
+    stress_divergence: Matrix = ((Fraction(1), -Fraction(1)),)
+    metric_gauge_generator: Matrix = ((Fraction(1),), (Fraction(1),))
+    stress_response: Matrix = (
+        (Fraction(2), Fraction(0)),
+        (Fraction(0), Fraction(1)),
+    )
+
+    naive_response_divergence = matmul(stress_divergence, stress_response)
+    if naive_response_divergence == zero_matrix(1, 2):
+        raise AssertionError(
+            "negative control failed: separated stress response looked transverse"
+        )
+
+    one_point_contact = tuple(
+        tuple(-entry for entry in row) for row in naive_response_divergence
+    )
+    if matadd(naive_response_divergence, one_point_contact) != zero_matrix(1, 2):
+        raise AssertionError(
+            "typed linearized stress Ward identity should include contact map"
+        )
+
+    lie_stress_from_gauge = matmul(stress_response, metric_gauge_generator)
+    if lie_stress_from_gauge == zero_matrix(2, 1):
+        raise AssertionError(
+            "pure metric gauge should Lie-differentiate nonzero background stress"
+        )
+
+    gauge_ward_defect = matmul(stress_divergence, lie_stress_from_gauge)
+    gauge_contact = matmul(one_point_contact, metric_gauge_generator)
+    if matadd(gauge_ward_defect, gauge_contact) != zero_matrix(1, 1):
+        raise AssertionError(
+            "pure-gauge stress response should obey full linearized Ward identity"
+        )
+    if gauge_ward_defect == zero_matrix(1, 1):
+        raise AssertionError("negative control failed: naive pure-gauge stress response vanished")
+
+    full_hessian: Matrix = (
+        (Fraction(1), -Fraction(1)),
+        (-Fraction(1), Fraction(1)),
+    )
+    gravitational_hessian = matadd(full_hessian, stress_response)
+    if matmul(full_hessian, metric_gauge_generator) != zero_matrix(2, 1):
+        raise AssertionError(
+            "full semiclassical Hessian should kill metric gauge directions"
+        )
+    if matmul(stress_response, metric_gauge_generator) == zero_matrix(2, 1):
+        raise AssertionError("negative control failed: stress response alone killed metric gauge")
+    if matmul(gravitational_hessian, metric_gauge_generator) == zero_matrix(2, 1):
+        raise AssertionError("negative control failed: gravity side alone killed metric gauge")
+
+    source: Matrix = ((Fraction(3),), (Fraction(3),))
+    noise: Matrix = (
+        (Fraction(2), Fraction(2)),
+        (Fraction(2), Fraction(2)),
+    )
+    if matmul(stress_divergence, source) != zero_matrix(1, 1):
+        raise AssertionError(
+            "typed stress source should satisfy the stress-divergence Ward map"
+        )
+    if matmul(stress_divergence, noise) != zero_matrix(1, 2):
+        raise AssertionError("typed stress noise should have no longitudinal stress row")
+    if matmul(noise, transpose(stress_divergence)) != zero_matrix(2, 1):
+        raise AssertionError("typed stress noise should have no longitudinal stress column")
+
+
 def check_lambda_phi4_potential_source_coordinate() -> None:
     # Centered quasifree Wick combinatorics gives <Phi_H^4> = 3 Sigma^2.
     coupling = Fraction(4, 9)
@@ -1048,10 +1129,13 @@ def check_flrw_interacting_source_noise_closure() -> None:
     if det2(state_covariance) <= 0:
         raise AssertionError("test FLRW noise state covariance should be positive")
 
+    density_noise_map: Matrix = ((Fraction(1), Fraction(1)),)
+    density_derivative_map: Matrix = ((Fraction(0), -3 * hubble),)
+    pressure_noise_map: Matrix = ((Fraction(-1), Fraction(0)),)
     ward_clean_noise_map: Matrix = (
-        (Fraction(0), -3 * hubble),
-        (Fraction(1), Fraction(1)),
-        (Fraction(-1), Fraction(0)),
+        density_derivative_map[0],
+        density_noise_map[0],
+        pressure_noise_map[0],
     )
     if matmul(ward, ward_clean_noise_map) != zero_matrix(1, 2):
         raise AssertionError("FLRW stress-noise map should satisfy the Ward condition")
@@ -1066,6 +1150,37 @@ def check_flrw_interacting_source_noise_closure() -> None:
     )
     if full_noise != expected_full_noise:
         raise AssertionError("Ward-clean FLRW stress-noise covariance changed")
+
+    derivative_variance = matmul(
+        matmul(density_derivative_map, state_covariance),
+        transpose(density_derivative_map),
+    )[0][0]
+    derivative_density_covariance = matmul(
+        matmul(density_derivative_map, state_covariance),
+        transpose(density_noise_map),
+    )[0][0]
+    density_derivative_covariance = matmul(
+        matmul(density_noise_map, state_covariance),
+        transpose(density_derivative_map),
+    )[0][0]
+    if full_noise[0][0] != derivative_variance:
+        raise AssertionError(
+            "FLRW xi_dotrho variance should be the derivative pushforward"
+        )
+    if full_noise[0][1] != derivative_density_covariance:
+        raise AssertionError(
+            "FLRW dot-density/density covariance should be derivative-consistent"
+        )
+    if full_noise[1][0] != density_derivative_covariance:
+        raise AssertionError(
+            "FLRW density/dot-density covariance should be derivative-consistent"
+        )
+    independent_dotrho_variance = derivative_variance + Fraction(1)
+    if independent_dotrho_variance == derivative_variance:
+        raise AssertionError(
+            "negative control failed: independent xi_dotrho variance was invisible"
+        )
+
     if matmul(ward, full_noise) != zero_matrix(1, 3):
         raise AssertionError("FLRW stress noise should have no Ward row")
     if matmul(full_noise, transpose(ward)) != zero_matrix(3, 1):
@@ -1375,33 +1490,56 @@ def check_interacting_stress_tensor_noise_package() -> None:
 def check_interacting_influence_functional_consistency() -> None:
     # The mean source, retarded feedback kernel, and connected noise should be
     # derivative data of one retained closed-time-path influence functional.
-    ward: Matrix = ((Fraction(1), -Fraction(1)),)
+    # The stress Ward map is typed separately from the metric gauge generator.
+    stress_divergence: Matrix = ((Fraction(1), -Fraction(1)),)
+    metric_gauge_generator: Matrix = ((Fraction(1),), (Fraction(1),))
     source: Matrix = ((Fraction(3),), (Fraction(3),))
     retarded_response: Matrix = (
         (Fraction(1, 5), Fraction(1, 5)),
-        (Fraction(1, 5), Fraction(1, 5)),
+        (Fraction(1, 10), Fraction(1, 5)),
+    )
+    response_contact = tuple(
+        tuple(-entry for entry in row)
+        for row in matmul(stress_divergence, retarded_response)
     )
     noise: Matrix = (
         (Fraction(2), Fraction(2)),
         (Fraction(2), Fraction(2)),
     )
 
-    if matmul(ward, source) != zero_matrix(1, 1):
+    if matmul(stress_divergence, source) != zero_matrix(1, 1):
         raise AssertionError("interacting CTP source should be Ward-clean")
-    if matmul(ward, retarded_response) != zero_matrix(1, 2):
-        raise AssertionError("interacting CTP retarded kernel should have no longitudinal row")
-    if matmul(retarded_response, transpose(ward)) != zero_matrix(2, 1):
-        raise AssertionError("interacting CTP retarded kernel should have no longitudinal column")
-    if matmul(ward, noise) != zero_matrix(1, 2):
+    if matmul(stress_divergence, retarded_response) == zero_matrix(1, 2):
+        raise AssertionError(
+            "negative control failed: separated retarded response was transverse"
+        )
+    if matadd(
+        matmul(stress_divergence, retarded_response),
+        response_contact,
+    ) != zero_matrix(1, 2):
+        raise AssertionError(
+            "interacting CTP response should satisfy Ward identity with contacts"
+        )
+    lie_stress = matmul(retarded_response, metric_gauge_generator)
+    if lie_stress == zero_matrix(2, 1):
+        raise AssertionError("pure metric gauge should move nonzero background stress")
+    if matadd(
+        matmul(stress_divergence, lie_stress),
+        matmul(response_contact, metric_gauge_generator),
+    ) != zero_matrix(1, 1):
+        raise AssertionError(
+            "pure gauge response should include one-point/contact Ward term"
+        )
+    if matmul(stress_divergence, noise) != zero_matrix(1, 2):
         raise AssertionError("interacting CTP noise should have no longitudinal row")
-    if matmul(noise, transpose(ward)) != zero_matrix(2, 1):
+    if matmul(noise, transpose(stress_divergence)) != zero_matrix(2, 1):
         raise AssertionError("interacting CTP noise should have no longitudinal column")
 
     physical_test: Matrix = ((Fraction(2),), (Fraction(2),))
-    longitudinal_test: Matrix = ((Fraction(1),), (-Fraction(1),))
+    stress_longitudinal_test: Matrix = ((Fraction(1),), (-Fraction(1),))
     if quadratic_form(noise, physical_test) <= 0:
         raise AssertionError("interacting CTP noise should be positive on physical tests")
-    if quadratic_form(noise, longitudinal_test) != 0:
+    if quadratic_form(noise, stress_longitudinal_test) != 0:
         raise AssertionError("interacting CTP noise should vanish on pure Ward tests")
 
     center: Matrix = ((Fraction(5),), (Fraction(7),))
@@ -1420,13 +1558,8 @@ def check_interacting_influence_functional_consistency() -> None:
         influence_quadratic(zero_matrix(2, 1), center),
         (Fraction(0), Fraction(0)),
     )
-    assert_equal(
-        "pure Ward difference direction decouples from CTP package",
-        influence_quadratic(longitudinal_test, center),
-        (Fraction(0), Fraction(0)),
-    )
     real_part, imaginary_part = influence_quadratic(difference, center)
-    assert_equal("interacting CTP real quadratic coordinate", real_part, Fraction(81, 5))
+    assert_equal("interacting CTP real quadratic coordinate", real_part, Fraction(76, 5))
     assert_equal("interacting CTP imaginary noise coordinate", imaginary_part, Fraction(9))
 
     h_c_only_term = quadratic_form(
@@ -1994,6 +2127,7 @@ def main() -> None:
     check_large_species_semiclassical_scaling()
     check_finite_response_window_bounds()
     check_finite_scheme_transport_consistency()
+    check_typed_linearized_diffeomorphism_ward_identity()
     check_lambda_phi4_potential_source_coordinate()
     check_lambda_phi4_potential_noise_kernel()
     check_retained_interacting_source_ward_diagnostics()

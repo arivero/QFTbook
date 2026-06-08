@@ -46,11 +46,14 @@ fluctuation data required for controlled backreaction.
   Wick-coordinate remainder, full separated state two-point function, and
   finite retained potential-noise matrix for the second-order `lambda phi^4`
   stress-noise coordinate.
-- `B`, `P_{ker B}`, `j_min`, `k`, `N_diag`, `N_miss`, `N^{full}`: finite
-  retained Ward map, its least-norm diagnostic projector, the unresolved
+- `B_T`, `P_{ker B_T}`, `j_min`, `k`, `N_diag`, `N_miss`, `N^{full}`: finite
+  retained stress-divergence Ward map, its least-norm diagnostic projector, the unresolved
   conserved source component, the projected diagnostic covariance, the missing
   Ward-clean interacting covariance budget, and the full interacting noise
   covariance tested by the Ward identities.
+- `R^{ret}_{Th}`, `Q_T`, `G_h`, `D_sc`: typed retained stress response from
+  metric perturbations to stress coordinates, the one-point/contact Ward map,
+  the metric gauge generator, and the full linearized semiclassical Hessian.
 - `T_int^{S,V}`, `K^{ret}`, `N(T^i,T^j)`: the scheme-fixed interacting
   stress tensor, its retained retarded response kernel, and the component
   covariance/cross-covariance entries required to assemble full interacting
@@ -97,7 +100,12 @@ fluctuation data required for controlled backreaction.
 - Defines a semiclassical solution as a pair \((g,\omega)\), not merely a
   metric, and formalizes the backreaction datum.
 - Derives the linear-response kernel from the retarded stress-tensor
-  commutator plus local contact terms.
+  commutator plus local contact terms, then differentiates stress conservation
+  to obtain the typed linearized diffeomorphism Ward identity
+  `div delta<T>[h] + (delta div)_h <T> = 0`.  The response divergence includes
+  one-point stress and CTP contact terms; pure metric gauge perturbations
+  Lie-differentiate the background stress and are null only for the complete
+  semiclassical Hessian on a mean-equation background.
 - Defines the noise kernel as the unordered symmetrized connected covariance
   of already renormalized smeared stress observables in one algebra/state,
   proves positivity on real test tensors, and obtains the bidistribution from
@@ -142,10 +150,11 @@ fluctuation data required for controlled backreaction.
   source has divergence `-partial_nu rho_lambda` when the Wick-square
   coordinate varies, so the Bogoliubov/interacting-field correction and local
   contact/composite counterterms must supply the missing Ward term.  In the
-  retained response sector this is encoded by a finite Ward map `B`, the
-  condition `B j^{full}=0`, the least-norm diagnostic projector
-  `P_{ker B}=I-B^*(B B^*)^{-1}B`, and the general conserved source
-  `j^{full}=P_{ker B}j^{raw}+k`, `k in ker B`.  The physical source/noise are
+  retained response sector this is encoded by a finite stress-divergence Ward
+  map `B_T`, the condition `B_T j^{full}=0`, the least-norm diagnostic
+  projector `P_{ker B_T}=I-B_T^*(B_T B_T^*)^{-1}B_T`, and the general
+  conserved source `j^{full}=P_{ker B_T}j^{raw}+k`, `k in ker B_T`.  The
+  physical source/noise are
   the objects constructed by the full pAQFT renormalization procedure;
   projecting a partial source or partial covariance is recorded only as a
   diagnostic/model choice.  The section now cross-links this retained
@@ -153,7 +162,7 @@ fluctuation data required for controlled backreaction.
   nonconstant switching function is treated as an external coupling source
   rather than as a conserved stress tensor.
 - Adds a finite retained Ward-completion laboratory.  A two-coordinate retained
-  model with `B=(1,-1)` turns a nonconserved potential-only source
+  model with `B_T=(1,-1)` turns a nonconserved potential-only source
   `(3,1) rho_*` into the least-norm conserved diagnostic source
   `(2,2) rho_*`, but leaves the transverse conserved component to the full
   interacting stress-tensor construction.  The same example projects a
@@ -186,16 +195,20 @@ fluctuation data required for controlled backreaction.
   state-transport, derivative, and counterterm pieces must supply the
   correction pressure and density terms making the linearized Bianchi identity,
   Friedmann response, Raychaudhuri response, and stress-noise Ward identities
-  agree.  This turns the potential coordinate into a cosmological
-  backreaction datum only after the full pressure and noise package is present.
+  agree.  The dot-density noise coordinate is treated as the derivative of the
+  density noise, with derivative-consistency conditions on its covariance.  This
+  turns the potential coordinate into a cosmological backreaction datum only
+  after the full pressure and noise package is present.
 - Adds the closed-time-path consistency layer for the interacting package.  The
   retained quadratic influence functional in `h_Delta,h_c` has one mean source,
   one retarded kernel, and one positive connected-noise covariance, with no
   standalone `h_c h_c` term after equal-branch normalization.  The same package
-  must satisfy retarded support, Ward identities for source/response/noise, and
-  the KMS fluctuation-dissipation relation in stationary states; otherwise the
-  Langevin noise and dissipative feedback have been assembled from different
-  theories rather than from one interacting stress tensor.
+  must satisfy retarded support, typed Ward identities for source/noise, the
+  contact-corrected linearized Ward identity for response, the full-Hessian
+  gauge identity on the mean-equation background, and the KMS
+  fluctuation-dissipation relation in stationary states; otherwise the Langevin
+  noise and dissipative feedback have been assembled from different theories
+  rather than from one interacting stress tensor.
 - Adds the retained small-gain stability layer for interacting backreaction:
   after the full source/noise/response package is fixed in one scheme, the
   full linearized operator is `D_full=D_0-R^{ret}`.  A finite frequency window
@@ -245,10 +258,13 @@ fluctuation data required for controlled backreaction.
   counterterms and signed negative-density norm bounds, its retained response
   bound, the retained `lambda phi^4` potential-noise kernel with the
   connected Wick-four covariance using the full separated two-point function,
-  disconnected-subtraction, dropped-mixed-term, same-state Wick-coordinate,
-  smooth-remainder-only, and premature-real-part negative controls, quadratic
-  coupling scaling, positivity of the retained noise matrix, its
-  metric-covariance trace bound, the retained Ward-diagnostic projector for
+	  disconnected-subtraction, dropped-mixed-term, same-state Wick-coordinate,
+	  smooth-remainder-only, and premature-real-part negative controls, quadratic
+	  coupling scaling, positivity of the retained noise matrix, its
+	  metric-covariance trace bound, the typed linearized diffeomorphism Ward
+	  check with nonzero separated response divergence, one-point/contact
+	  cancellation, pure-gauge Lie-stress response, and full-Hessian gauge-null
+	  negative controls, the retained Ward-diagnostic projector for
   interacting source/noise coordinates with wrong-sign, transverse-ambiguity,
   projection-versus-physical-completion, projected-partial-noise versus
   full-noise, and unprojected-longitudinal-noise negative controls, the finite
@@ -258,14 +274,16 @@ fluctuation data required for controlled backreaction.
   full
   retained interacting stress-tensor/noise package with component
   cross-covariances, finite composite-operator-mixing cross terms, and a
-  c-number connected-noise negative control that can still pass the Ward test,
-  plus a Ward-clean local-contact negative control that destroys positivity,
-  the homogeneous FLRW interacting closure with correction pressure,
-  Friedmann/Raychaudhuri compatibility, Ward-clean stress noise, and
-  potential-only source/noise negative controls,
-  the closed-time-path influence-package test tying mean source, retarded
-  response, and connected noise to equal-branch normalization, retarded support,
-  Ward identities, positivity, and KMS/FDT compatibility, the small-gain
+	  c-number connected-noise negative control that can still pass the Ward test,
+	  plus a Ward-clean local-contact negative control that destroys positivity,
+	  the homogeneous FLRW interacting closure with correction pressure,
+	  Friedmann/Raychaudhuri compatibility, Ward-clean stress noise,
+	  derivative-consistent dot-density covariance, and potential-only
+	  source/noise negative controls,
+	  the closed-time-path influence-package test tying mean source,
+	  contact-corrected retarded response, and connected noise to equal-branch
+	  normalization, retarded support, typed Ward identities, positivity, and
+	  KMS/FDT compatibility, the small-gain
   feedback inverse for the full retained backreaction operator,
   Ward-clean source/noise inputs, mean-response and noise-amplification
   bounds, residual missing-noise trace propagation, and singular-feedback,
@@ -474,3 +492,13 @@ curvature, microscopic, and EFT scales.
   metric-variation contact freedom is reserved for response/effective-action
   data.  The paired finite check rejects an independently added Ward-clean
   local noise contact that makes a positive covariance indefinite.
+- 2026-06-08 issue #922 typed Ward-response pass: repaired the response and
+  influence-package architecture rather than adding another retained cell.  The
+  chapter now derives the linearized diffeomorphism Ward identity with the
+  connection variation of the background one-point stress, separates
+  `B_T:V_T -> V_{div T}` from the metric gauge generator and full
+  semiclassical Hessian, assigns gauge null directions to the complete
+  gravitational-plus-matter operator, and treats FLRW dot-density noise as a
+  derivative-consistent coordinate.  The paired finite check includes a
+  nonzero-background negative control where naive response transversality fails
+  but the contact-corrected Ward identity and full-Hessian gauge identity hold.

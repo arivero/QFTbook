@@ -563,6 +563,99 @@ diagonal ambiguity is exactly the local term
 \(\delta T_{\mu\nu}^{\rm loc}\).
 \end{proof}
 
+\paragraph{Linearized diffeomorphism Ward identity.}
+The response \eqref{eq:semiclassical-linear-response} is not, by itself, an
+ordinary transverse two-tensor distribution.  Let
+\[
+  \bar T_{\mu\nu}:=\langle T_{\mu\nu}^{\rm ren}\rangle_g,
+  \qquad
+  \mathcal R_{\mu\nu}[h]
+  :=
+  \frac12\int_M\dd\operatorname{vol}_g(y)\,
+  G^{\rm ret}_{\mu\nu,\rho\sigma}(x,y)h^{\rho\sigma}(y)
+  +
+  \delta T_{\mu\nu}^{\rm loc}[h]
+\]
+denote the metric derivative of the stress expectation in the fixed
+renormalization and state-transport prescription.  Varying
+\eqref{eq:semiclassical-stress-conservation} gives
+\begin{equation}
+  \nabla^\mu\mathcal R_{\mu\nu}[h]
+  +
+  \mathcal C_\nu[h;\bar T]
+  =
+  0,
+  \label{eq:semiclassical-linearized-stress-ward}
+\end{equation}
+where the one-point connection term is
+\begin{equation}
+\begin{aligned}
+  \mathcal C_\nu[h;\bar T]
+  &:=
+  h^{\mu\alpha}\nabla_\alpha\bar T_{\mu\nu}
+  -
+  g^{\mu\alpha}
+  (\delta_h\Gamma)^\lambda_{\alpha\mu}\bar T_{\lambda\nu}
+  -
+  g^{\mu\alpha}
+  (\delta_h\Gamma)^\lambda_{\alpha\nu}\bar T_{\mu\lambda},
+  \\
+  (\delta_h\Gamma)^\lambda_{\alpha\beta}
+  &:=
+  \frac12 g^{\lambda\kappa}
+  \left(
+    \nabla_\alpha\gamma_{\beta\kappa}
+    +
+    \nabla_\beta\gamma_{\alpha\kappa}
+    -
+    \nabla_\kappa\gamma_{\alpha\beta}
+  \right),
+  \qquad
+  \gamma_{\mu\nu}:=\delta g_{\mu\nu}
+  =
+  -g_{\mu\rho}g_{\nu\sigma}h^{\rho\sigma}.
+\end{aligned}
+  \label{eq:semiclassical-linearized-connection-contact}
+\end{equation}
+Thus the separated commutator in
+\eqref{eq:semiclassical-retarded-stress-kernel} need not obey
+\(\nabla^\mu G^{\rm ret}_{\mu\nu,\rho\sigma}=0\) as a distribution.  When the
+divergence hits the retarded step function, equal-time stress commutators and
+the extension of the time-ordered product to the diagonal produce precisely
+the contact terms included in \(\delta T^{\rm loc}\), while
+\(\mathcal C_\nu[h;\bar T]\) records the variation of the connection acting on
+the nonzero background one-point stress tensor.
+
+For a pure diffeomorphism perturbation, with the inverse-metric convention
+\(h^{\mu\nu}=\mathcal L_Xg^{\mu\nu}\), covariance says
+\begin{equation}
+  \mathcal R_{\mu\nu}[\mathcal L_X g]
+  =
+  \mathcal L_X\bar T_{\mu\nu},
+  \label{eq:semiclassical-pure-gauge-stress-response}
+\end{equation}
+not that the stress response vanishes.  The null direction belongs to the full
+semiclassical residual.  On a background satisfying
+\(E_{\mu\nu}^{\rm grav}[g]=\bar T_{\mu\nu}\), the complete linearized operator
+\[
+  \mathcal D_{\rm sc}h
+  :=
+  \delta E_{\mu\nu}^{\rm grav}[h]-\mathcal R_{\mu\nu}[h]
+\]
+obeys
+\begin{equation}
+  \mathcal D_{\rm sc}(\mathcal L_X g)
+  =
+  \mathcal L_X(E^{\rm grav}-\bar T)
+  =
+  0,
+  \label{eq:semiclassical-full-hessian-gauge-identity}
+\end{equation}
+modulo the chosen gauge fixing and constraint projection.  This is the
+diffeomorphism Ward identity relevant for backreaction: gauge degeneracy is a
+property of the combined gravitational-plus-matter Hessian, not of the
+separated retarded stress commutator.
+
 The linearized semiclassical equation is therefore
 \begin{equation}
   \delta E_{\mu\nu}^{\rm grav}[h]
@@ -1377,9 +1470,9 @@ Controlled Approximation~\ref{ca:semiclassical-finite-response-window} gives a
 compact way to keep this requirement visible.  Choose retained stress profiles
 \(\tau_{\mu\nu}^{(a)}\) dual to the source coordinates \(j_a\), and test the
 divergence against compact vector fields \(u_\alpha^\nu\).  This gives the
-finite Ward map
+stress-divergence Ward map
 \begin{equation}
-  (\mathsf B j)_\alpha
+  (\mathsf B_T j)_\alpha
   =
   \sum_a j_a
   \int_U
@@ -1387,9 +1480,13 @@ finite Ward map
   \,\dd\operatorname{vol}_g .
   \label{eq:semiclassical-retained-ward-map}
 \end{equation}
+The subscript is part of the retained datum:
+\(\mathsf B_T:V_T\to V_{\nabla T}\) maps stress-source coordinates to
+divergence tests.  It is not the metric gauge generator, not the gravitational
+constraint map, and not a right-null map for the retarded stress response.
 A retained source is admissible in the conserved backreaction sector only if
 \begin{equation}
-  \mathsf B j^{\rm full}=0,
+  \mathsf B_T j^{\rm full}=0,
   \qquad
   j^{\rm full}
   =
@@ -1401,33 +1498,33 @@ A retained source is admissible in the conserved backreaction sector only if
   \label{eq:semiclassical-retained-source-ward-condition}
 \end{equation}
 The retained Ward equation fixes the longitudinal part of the missing source
-coordinate.  In orthonormal retained coordinates, when \(\mathsf B\) has full
+coordinate.  In orthonormal retained coordinates, when \(\mathsf B_T\) has full
 row rank on the tested constraint subspace, one convenient particular
 longitudinal repair of a raw source coordinate is
 \begin{equation}
   c_{\rm min}
   =
   -
-  \mathsf B^*
-  \left(\mathsf B\mathsf B^*\right)^{-1}
-  \mathsf B j^{\rm raw},
+  \mathsf B_T^*
+  \left(\mathsf B_T\mathsf B_T^*\right)^{-1}
+  \mathsf B_T j^{\rm raw},
   \qquad
-  \mathsf P_{\ker \mathsf B}
+  \mathsf P_{\ker \mathsf B_T}
   =
-  \mathsf I-\mathsf B^*
-  \left(\mathsf B\mathsf B^*\right)^{-1}
-  \mathsf B,
+  \mathsf I-\mathsf B_T^*
+  \left(\mathsf B_T\mathsf B_T^*\right)^{-1}
+  \mathsf B_T,
   \qquad
   j_{\rm min}
   =
-  \mathsf P_{\ker \mathsf B}j^{\rm raw}.
+  \mathsf P_{\ker \mathsf B_T}j^{\rm raw}.
   \label{eq:semiclassical-retained-ward-projector}
 \end{equation}
 With non-orthonormal retained test functions the same formula is written with
 the corresponding Gram matrices inserted.  Equation
 \eqref{eq:semiclassical-retained-ward-projector} is a retained-sector
 diagnostic.  It detects a longitudinal violation such as
-\(\mathsf B j^{(\lambda,{\rm pot})}\ne0\), records a least-norm particular
+\(\mathsf B_T j^{(\lambda,{\rm pot})}\ne0\), records a least-norm particular
 repair of that violation, and exposes the transverse datum that the Ward
 identity leaves open:
 \begin{equation}
@@ -1435,7 +1532,7 @@ identity leaves open:
   =
   j_{\rm min}+k,
   \qquad
-  k\in\ker\mathsf B .
+  k\in\ker\mathsf B_T .
   \label{eq:semiclassical-retained-ward-transverse-freedom}
 \end{equation}
 The vector \(k\) is part of the interacting QFT data.  It is fixed, in the
@@ -1445,9 +1542,9 @@ Ward identities, and physical renormalization conditions.  The Euclidean
 least-norm retained vector \(j_{\rm min}\) is therefore a diagnostic or an
 explicit model choice inside the retained source space; the physical source is
 the \(j^{\rm full}\) obtained from the pAQFT construction and then tested by
-\(\mathsf B j^{\rm full}=0\).
+\(\mathsf B_T j^{\rm full}=0\).
 In the homogeneous special case \(\partial_\nu\rho_\lambda=0\), the retained
-potential coordinate is already in \(\ker\mathsf B\), which is why the
+potential coordinate is already in \(\ker\mathsf B_T\), which is why the
 cosmological-coordinate shift in
 \eqref{eq:semiclassical-interacting-lambda-shift} is a consistent scalar
 bookkeeping coordinate there.
@@ -1462,9 +1559,9 @@ noise kernel must obey the distributional Ward identities
 after the renormalized square of the interacting stress tensor has been fixed.
 In the retained sector this says
 \begin{equation}
-  \mathsf B\mathsf N^{\rm full}=0,
+  \mathsf B_T\mathsf N^{\rm full}=0,
   \qquad
-  \mathsf N^{\rm full}\mathsf B^*=0 .
+  \mathsf N^{\rm full}\mathsf B_T^*=0 .
   \label{eq:semiclassical-retained-noise-ward-condition}
 \end{equation}
 The full covariance includes all component covariances and cross-covariances:
@@ -1482,9 +1579,9 @@ The full covariance includes all component covariances and cross-covariances:
 If this full object has already been constructed and satisfies
 \eqref{eq:semiclassical-retained-noise-ward-condition}, then
 \begin{equation}
-  \mathsf P_{\ker \mathsf B}
+  \mathsf P_{\ker \mathsf B_T}
   \mathsf N^{\rm full}
-  \mathsf P_{\ker \mathsf B}^*
+  \mathsf P_{\ker \mathsf B_T}^*
   =
   \mathsf N^{\rm full}.
   \label{eq:semiclassical-retained-noise-ward-projection}
@@ -1625,6 +1722,29 @@ time cell, collect the stress-noise coordinates as
     1&3H&3H
   \end{pmatrix}.
 \]
+Here \(\xi_{\dot\rho}\) is not an independent random coordinate.  It is the
+distributional time derivative of the density noise in the same transported
+state and renormalization scheme.  At the covariance level the retained kernel
+must therefore satisfy, before the algebraic Ward test is applied,
+\begin{equation}
+  N_{\dot\rho,\rho}(t,t')
+  =
+  \partial_t N_{\rho,\rho}(t,t'),
+  \qquad
+  N_{\rho,\dot\rho}(t,t')
+  =
+  \partial_{t'} N_{\rho,\rho}(t,t'),
+  \qquad
+  N_{\dot\rho,\dot\rho}(t,t')
+  =
+  \partial_t\partial_{t'}N_{\rho,\rho}(t,t').
+  \label{eq:semiclassical-flrw-derivative-noise-consistency}
+\end{equation}
+Equivalently, in a finite time cell the rows and columns involving
+\(\xi_{\dot\rho}\) are obtained by pushing the density covariance through the
+retained derivative matrix.  A positive covariance for three formal variables
+\((\xi_{\dot\rho},\xi_\rho,\xi_p)\) is not yet a physical stress-noise
+covariance if these derivative identities fail.
 The Einstein--Langevin source covariance in this sector must satisfy
 \begin{equation}
   \mathsf B_{\rm FLRW}\mathsf N_\zeta=0,
@@ -1662,9 +1782,9 @@ Chapter~\ref{ch:curved-cosmological-spacetimes-particle-creation}.
 The warning above is not a formal nicety; it changes the metric source.  In a
 two-coordinate retained sector, take the single Ward test
 \[
-  \mathsf B=(1,-1),
+  \mathsf B_T=(1,-1),
   \qquad
-  \mathsf P_{\ker\mathsf B}
+  \mathsf P_{\ker\mathsf B_T}
   =
   \frac12
   \begin{pmatrix}
@@ -1683,7 +1803,7 @@ calculation gives
   \rho_*
   \binom{3}{1},
   \qquad
-  \mathsf B j^{\rm raw}=2\rho_*,
+  \mathsf B_T j^{\rm raw}=2\rho_*,
 \]
 then the least-norm Ward repair and the projected retained source are
 \begin{equation}
@@ -1694,7 +1814,7 @@ then the least-norm Ward repair and the projected retained source are
   \qquad
   j_{\rm min}
   =
-  \mathsf P_{\ker\mathsf B}j^{\rm raw}
+  \mathsf P_{\ker\mathsf B_T}j^{\rm raw}
   =
   \rho_*
   \binom{2}{2}.
@@ -1714,13 +1834,13 @@ source has the form
 where the coefficient \(k\) is fixed by the interacting stress-tensor
 construction and its renormalization conditions.  A transverse finite
 counterterm changes \(k\); it cannot cancel the longitudinal violation
-\(\mathsf B j^{\rm raw}=2\rho_*\).  With a Ward-reduced inverse acting on the
+\(\mathsf B_T j^{\rm raw}=2\rho_*\).  With a Ward-reduced inverse acting on the
 conserved line, for example
 \[
   \mathsf D^{-1}_{\rm red}
   =
   M_*
-  \mathsf P_{\ker\mathsf B},
+  \mathsf P_{\ker\mathsf B_T},
 \]
 the diagnostic retained response is
 \[
@@ -1748,8 +1868,8 @@ covariance is
 \begin{equation}
   \mathsf N_{\rm diag}
   =
-  \mathsf P_{\ker\mathsf B}\mathsf N^{\rm raw}
-  \mathsf P_{\ker\mathsf B}^*
+  \mathsf P_{\ker\mathsf B_T}\mathsf N^{\rm raw}
+  \mathsf P_{\ker\mathsf B_T}^*
   =
   \frac94\rho_*^2
   \begin{pmatrix}
@@ -1763,7 +1883,7 @@ least-norm retained model.  It is still not the full noise of the interacting
 stress tensor.  Missing Bogoliubov, derivative, contact, and finite-mixing
 terms can contribute an additional positive Ward-clean covariance
 \(\mathsf N_{\rm miss}\) with
-\(\mathsf B\mathsf N_{\rm miss}=0=\mathsf N_{\rm miss}\mathsf B^*\).  The
+\(\mathsf B_T\mathsf N_{\rm miss}=0=\mathsf N_{\rm miss}\mathsf B_T^*\).  The
 metric fluctuation budget must therefore use
 \[
   \mathsf C_h^{\rm full}
@@ -1865,15 +1985,15 @@ are the fluctuation analogue of the missing Bogoliubov/contact terms in the
 mean source equation, and they are required before the Ward test can be applied
 to the full noise:
 \begin{equation}
-  \mathsf B j^{\rm full}=0,
+  \mathsf B_T j^{\rm full}=0,
   \qquad
-  \mathsf B\mathsf N^{\rm full}=0,
+  \mathsf B_T\mathsf N^{\rm full}=0,
   \qquad
-  \mathsf N^{\rm full}\mathsf B^*=0 .
+  \mathsf N^{\rm full}\mathsf B_T^*=0 .
   \label{eq:semiclassical-full-package-ward-conditions}
 \end{equation}
 A projected partial covariance
-\(\mathsf P_{\ker\mathsf B}\mathsf N^{\rm pot}\mathsf P_{\ker\mathsf B}^*\)
+\(\mathsf P_{\ker\mathsf B_T}\mathsf N^{\rm pot}\mathsf P_{\ker\mathsf B_T}^*\)
 is therefore only a retained diagnostic or an explicit truncated model.  It is
 not the fluctuation input of the interacting semiclassical equation unless the
 omitted component covariances and cross-covariances have been proved to vanish
@@ -1967,8 +2087,10 @@ the retained form
 \end{aligned}
   \label{eq:semiclassical-ctp-influence-package}
 \end{equation}
-Here \(\mathsf R^{\rm ret}\) is the same interacting retarded stress response
-used in \(\mathsf D_{\rm full}=\mathsf D_0-\mathsf R^{\rm ret}\), including
+Here \(\mathsf R^{\rm ret}\) is shorthand, after choosing the retained
+metric/stress pairing, for the typed interacting stress-response map
+\(\mathsf R^{\rm ret}_{Th}:V_h\to V_T\) used in
+\(\mathsf D_{\rm full}=\mathsf D_0-\mathsf R^{\rm ret}_{Th}\).  It includes
 the declared local metric-variation terms, and \(R_{\rm IF}\) is the residual
 from omitted products, higher cumulants, higher metric powers, and truncation
 outside the retained window.
@@ -1986,16 +2108,61 @@ part is a covariance:
   \text{for every real retained test vector }v .
   \label{eq:semiclassical-ctp-noise-positivity}
 \end{equation}
-Fourth, diffeomorphism covariance acts on the whole package:
+Fourth, diffeomorphism covariance acts on typed maps, not on one universal
+matrix.  Let \(V_h\) be retained metric perturbations, \(V_T\) retained stress
+coordinates, \(V_{\nabla T}\) retained divergence tests, and \(V_X\) retained
+vector-field generators.  The stress-divergence map is
+\(\mathsf B_T:V_T\to V_{\nabla T}\), the metric gauge generator is
+\(\mathsf G_h:V_X\to V_h\), and the retained stress response is
+\(\mathsf R^{\rm ret}_{Th}:V_h\to V_T\).  The finite version of
+\eqref{eq:semiclassical-linearized-stress-ward} is
 \begin{equation}
-  \mathsf B j^{\rm full}=0,\qquad
-  \mathsf B\mathsf R^{\rm ret}=0,\qquad
-  \mathsf R^{\rm ret}\mathsf B^*=0,\qquad
-  \mathsf B\mathsf N^{\rm full}=0,\qquad
-  \mathsf N^{\rm full}\mathsf B^*=0
+  \mathsf B_T j^{\rm full}=0,\qquad
+  \mathsf B_T\mathsf N^{\rm full}=0,\qquad
+  \mathsf N^{\rm full}\mathsf B_T^*=0,\qquad
+  \mathsf B_T\mathsf R^{\rm ret}_{Th}
+  +
+  \mathsf Q_T=0,
   \label{eq:semiclassical-ctp-package-ward}
 \end{equation}
-after reduction to the retained Ward-clean sector.  In a stationary KMS state,
+where \(\mathsf Q_T:V_h\to V_{\nabla T}\) is the retained one-point/contact map
+coming from \(\mathcal C_\nu[h;\bar T]\), from derivatives of the retarded
+step function, and from equal-time stress commutators in the CTP product
+extension.  A pure metric gauge perturbation obeys
+\begin{equation}
+  \mathsf R^{\rm ret}_{Th}\mathsf G_h=\mathsf L_T,
+  \qquad
+  \mathsf D_{\rm sc}\mathsf G_h=0,
+  \qquad
+  \mathsf D_{\rm sc}:=\mathsf D_g-\mathsf R^{\rm ret}_{Th},
+  \label{eq:semiclassical-typed-gauge-response}
+\end{equation}
+where \(\mathsf L_T\) is the retained Lie derivative of the background
+one-point stress tensor and \(\mathsf D_g\) is the gravitational/local-contact
+metric Hessian in the same equation space.  Thus
+\(\mathsf R^{\rm ret}_{Th}\mathsf G_h\) is generally not zero when
+\(\bar T\ne0\); the gauge null vector is a null vector of the complete
+semiclassical Hessian on a mean-equation background.
+
+If a calculation wants ordinary reduced matrices, it must construct the
+quotient.  Choose a metric reduction \(q_h:V_h\to V_h^{\rm red}\) with
+\(\ker q_h\supset\operatorname{im}\mathsf G_h\), a section
+\(s_h:V_h^{\rm red}\to V_h\), and a stress projection
+\(p_T:V_T\to V_T^{\rm red}\) that kills the retained Lie-stress directions
+\(p_T\mathsf L_T=0\) and is used only after the local/contact term
+\(\mathsf Q_T\) has been included.  Then
+\begin{equation}
+  \mathsf R_{\rm red}^{\rm ret}
+  :=
+  p_T\mathsf R^{\rm ret}_{Th}s_h
+  \label{eq:semiclassical-reduced-response-definition}
+\end{equation}
+is independent of the representative of \(s_h\) precisely because
+\eqref{eq:semiclassical-typed-gauge-response} holds.  Only in such a
+constructed quotient, or in a special background where
+\(\mathsf Q_T=0=\mathsf L_T\) on the retained tests, does the tempting display
+\(\mathsf B_T\mathsf R^{\rm ret}_{Th}=0\) become a valid reduced statement.  In
+a stationary KMS state,
 the same package must also satisfy the fluctuation--dissipation relation
 \eqref{eq:semiclassical-fdt} for the interacting stress tensor in the chosen
 scheme.  Thus a positive noise matrix and a causal retarded matrix are not yet
@@ -2073,9 +2240,9 @@ Then the full retained inverse exists on the same window and is
 \end{equation}
 For a Ward-clean interacting source and noise package,
 \[
-  \mathsf B j^{\rm full}=0,\qquad
-  \mathsf B\mathsf N^{\rm full}=0,\qquad
-  \mathsf N^{\rm full}\mathsf B^*=0,
+  \mathsf B_T j^{\rm full}=0,\qquad
+  \mathsf B_T\mathsf N^{\rm full}=0,\qquad
+  \mathsf N^{\rm full}\mathsf B_T^*=0,
 \]
 the retained mean response and metric covariance obey
 \begin{equation}

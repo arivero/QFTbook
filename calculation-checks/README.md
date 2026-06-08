@@ -2920,7 +2920,10 @@ Current checks:
   covariance, disconnected-subtraction, dropped-mixed-term, same-state
   Wick-coordinate, smooth-remainder-only, and premature-real-part negative
   controls, quadratic coupling scaling, retained noise positivity, and its
-  metric-covariance trace bound, the retained Ward-diagnostic projector for
+  metric-covariance trace bound, the typed linearized diffeomorphism Ward check
+  in which a separated stress response has a nonzero divergence canceled by
+  one-point/contact terms while only the full semiclassical Hessian kills metric
+  gauge directions, the retained Ward-diagnostic projector for
   interacting source/noise coordinates with wrong-sign, transverse-ambiguity,
   projection-versus-physical-completion, projected-partial-noise versus
   full-noise, and unprojected-longitudinal-noise negative controls, the finite
@@ -2934,10 +2937,13 @@ Current checks:
   required before Ward-clean mean/noise data are fed into the metric response,
   with c-number counterterm noise and independent Ward-clean local noise
   contacts rejected even though they can pass the Ward test, the
-  closed-time-path influence-functional consistency checks tying the
-  interacting mean source, retarded kernel, and connected noise to one package
-  with Ward identities, retarded support, noise positivity, equal-branch
-  normalization, and KMS/FDT compatibility, the large-species semiclassical
+  closed-time-path influence-functional consistency checks tying the interacting
+  mean source, contact-corrected retarded kernel, and connected noise to one
+  package with typed source/noise Ward identities, retarded support, noise
+  positivity, equal-branch normalization, and KMS/FDT compatibility, the
+  homogeneous FLRW source/noise closure with correction pressure,
+  Friedmann/Raychaudhuri compatibility, and derivative-consistent dot-density
+  noise, the large-species semiclassical
   scaling window with finite mean source,
   \(1/N_{\rm sp}\) source-noise and metric covariance, \(1/N_{\rm sp}^2\)
   third connected metric-source cumulant, and negative controls for fixed
