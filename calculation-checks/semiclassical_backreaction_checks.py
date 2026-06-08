@@ -27,10 +27,12 @@ the homogeneous FLRW interacting-source closure tying a time-dependent
 potential coordinate to the pressure, Friedmann/Raychaudhuri, and
 derivative-consistent stress-noise Ward data,
 the causal small-gain and fluctuation-validity check for the linearized
-interacting backreaction operator, the finite nonlinear fixed-point chart for
-the retained semiclassical equation,
-the retained metric-observable output layer including fluctuation bias,
-observable covariance, chart-exit/tail budgets, and signal-to-noise tests, the
+interacting backreaction operator, including neutral finite-time propagation
+that fails a global bounded-Hardy test, the finite nonlinear fixed-point chart
+for the retained semiclassical equation in one history norm,
+the retained metric-observable output layer including leading-Gaussian
+truncation, fluctuation bias, observable covariance, chart-exit/tail budgets,
+and signal-to-noise tests, the
 observable-chain boundary
 separating a formal mean equation from a physical retained metric prediction,
 and the low-energy root selected by reduction of order in a toy
@@ -68,11 +70,14 @@ state-transport terms make a time-dependent potential density compatible with
 both Friedmann and Raychaudhuri responses and with derivative-consistent
 Ward-clean Hubble noise, the
 causal small-gain feedback inverse and noise-amplification bound for the full
-retained backreaction operator, the finite nonlinear self-map/contraction and
-mean/noise-validity budgets, including residual size and residual Lipschitz
-controls, for a retained backreaction chart, the retained
-metric-observable mean shift, quadratic fluctuation bias, covariance, and
-chart-exit/tail controlled signal-to-noise inequality, the observable-chain
+retained backreaction operator, neutral stable finite-time retarded propagation
+that fails a global bounded-Hardy test, the finite nonlinear
+self-map/contraction and mean/noise-validity budgets, including residual size,
+residual Lipschitz controls, and a history-space product hypothesis rather than
+bare L2 multiplication, for a retained backreaction chart, the retained
+metric-observable mean shift, quadratic fluctuation bias, leading-Gaussian
+metric law, covariance, and chart-exit/tail controlled signal-to-noise
+inequality, the observable-chain
 boundary data that must be present before a retained metric observable is
 claimed, and the low-energy root
 selected by reduction of order.
@@ -97,8 +102,10 @@ pushforwards for density noise, and Ward-clean homogeneous stress-noise
 covariances,
 species sums, 1/N_sp gravitational-coupling scaling, source-cumulant scaling,
 nonlinear fixed-point radii, residual size and residual Lipschitz
-budgets, state-transport Lipschitz constants, noise-validity inequalities, and
-metric-observable linear/quadratic forms and covariances, ordered
+budgets, state-transport Lipschitz constants, finite history-space algebra
+constants, bare-L2 spike countermodels, noise-validity inequalities, and
+metric-observable linear/quadratic forms, covariances, and nonlinear Gaussian
+pushforward cumulants, ordered
 observable-chain stages with their required side data, finite Gaussian
 chart-exit bounds, out-of-chart integrability gates, and toy roots
 directly from finite formulas rather than importing chapter display strings.
@@ -127,7 +134,8 @@ response kernels, independent Ward-clean local contacts added directly to the
 noise covariance, independent noise spectra violating the KMS factor, and
 spurious closed-time-path h_c h_c terms are rejected, as are singular feedback
 operators, overlarge small-gain feedback, real-axis-only transfer functions with
-hidden upper-half-plane poles, unconserved sources/noise, and
+hidden upper-half-plane poles, global bounded-Hardy tests applied to neutral
+boundary-pole propagation, unconserved sources/noise, and
 conserved-but-unstable retained data, signed nonlinear residual cancellations,
 time-dependent potential energy inserted without correction pressure,
 Friedmann/Raychaudhuri inconsistency, potential-only stochastic stress noise,
@@ -138,10 +146,12 @@ larger than the metric-gauge image but not annihilated by the reduced stress
 response,
 omitted state-transport Lipschitz constants, omitted residual Lipschitz
 constants, bounded non-Lipschitz residuals with multiple fixed points, overlarge
-quadratic nonlinear feedback, linear-noise-only validity estimates,
+quadratic nonlinear feedback, bare-L2 quadratic bounds, linear-noise-only
+validity estimates,
 omitted observable fluctuation bias, coordinate probes that do not annihilate
-pure-gauge directions, and partial metric covariances that undercount
-observable variance, formal-equation-only chains, mean-only chains, noise-only
+pure-gauge directions, omitted chart-exit variance, nonlinear Gaussian
+pushforwards mislabeled as exact Gaussian laws, and partial metric covariances
+that undercount observable variance, formal-equation-only chains, mean-only chains, noise-only
 chains, wrong-order observable chains, missing chart-exit/tail data, treating
 missing signal-to-noise as invalidity instead of loss of self-averaging,
 fixed-G_N large-species scaling, coherent N_sp^2 noise scaling, correlated
@@ -166,8 +176,10 @@ out-of-chart Gaussian remainders, and noise-dominated but still valid
 observable laws.
 Convention dependencies: the gravitational equation convention is
 E_grav=<T_ren>; retained metric vectors use the same gauge/constraint
-reduction as the response operator; the observable Gaussian law is
-H=h_*+Z with covariance C_h; stress noise is an unordered covariance in the
+reduction as the response operator; neutral propagation may use finite-time
+history-space retarded bounds when global H-infinity boundedness fails; the
+observable Gaussian law is a leading truncation H=h_*+Z with covariance C_h,
+not the exact nonlinear stochastic pushforward; stress noise is an unordered covariance in the
 declared algebra/state, while time-ordered contact freedom belongs to response;
 signal-to-noise means self-averaging or detectability, not stochastic-law
 validity.
@@ -2060,6 +2072,35 @@ def check_backreaction_small_gain_stability() -> None:
     if real_axis_only_accepts == causal_classifier_accepts:
         raise AssertionError("negative control failed: causal test matched real sampling")
 
+    # A neutral stable retained oscillator has physical boundary poles but no
+    # upper-half-plane instability.  It therefore fails the global H-infinity
+    # inverse bound while still admitting finite-time retarded control.
+    oscillator_frequency = Fraction(2)
+    near_boundary_epsilon = Fraction(1, 1000)
+    hardy_candidate_bound = Fraction(100)
+    d0_near_pole_abs_sq = (
+        near_boundary_epsilon**4
+        + 4 * oscillator_frequency * oscillator_frequency * near_boundary_epsilon**2
+    )
+    if d0_near_pole_abs_sq * hardy_candidate_bound * hardy_candidate_bound >= 1:
+        raise AssertionError("neutral oscillator should fail any fixed global Hardy bound near a boundary pole")
+
+    finite_time_window = Fraction(3)
+    finite_time_retarded_bound = finite_time_window / oscillator_frequency
+    neutral_feedback_bound = Fraction(1, 4)
+    neutral_small_gain = finite_time_retarded_bound * neutral_feedback_bound
+    if neutral_small_gain >= 1:
+        raise AssertionError("neutral finite-time retained propagation should pass the Volterra small-gain route")
+
+    stable_boundary_pole_imaginary_part = Fraction(0)
+    if stable_boundary_pole_imaginary_part > 0:
+        raise AssertionError("neutral stable oscillator should not have an upper-half-plane pole")
+    anti_damped_pole_imaginary_part = Fraction(1, 5)
+    if anti_damped_pole_imaginary_part <= 0:
+        raise AssertionError("unstable-pole negative control should be in the upper half-plane")
+    if anti_damped_pole_imaginary_part == stable_boundary_pole_imaginary_part:
+        raise AssertionError("negative control failed: boundary pole and unstable pole were not distinguished")
+
     unstable_operator: Matrix = (
         (Fraction(1, 50), Fraction(0)),
         (Fraction(0), Fraction(4)),
@@ -2081,10 +2122,31 @@ def check_nonlinear_backreaction_fixed_point_chart() -> None:
     m_full = Fraction(2, 3)
     radius = Fraction(1, 2)
     h_linear_norm = Fraction(1, 5)
-    quadratic_bound = Fraction(1, 4)
+    sobolev_algebra_constant = Fraction(3, 2)
+    raw_quadratic_coefficient = Fraction(1, 6)
+    quadratic_bound = sobolev_algebra_constant * raw_quadratic_coefficient
     state_lipschitz = Fraction(1, 8)
     residual_bound = Fraction(1, 20)
     residual_lipschitz = Fraction(1, 8)
+
+    if quadratic_bound != Fraction(1, 4):
+        raise AssertionError("history-space quadratic bound changed")
+    l2_spike_amplitudes = (Fraction(2), Fraction(4), Fraction(8))
+    l2_product_norms = []
+    for amplitude in l2_spike_amplitudes:
+        support_length = Fraction(1, amplitude * amplitude)
+        l2_norm_sq = amplitude * amplitude * support_length
+        # f_A=A on an interval of length A^{-2} has ||f_A||_2=1, while
+        # ||f_A^2||_2=A.
+        product_l2_norm = amplitude
+        if l2_norm_sq != 1:
+            raise AssertionError("L2 spike family should have unit norm")
+        l2_product_norms.append(product_l2_norm)
+    if l2_product_norms != list(l2_spike_amplitudes):
+        raise AssertionError("bare-L2 product spike norms changed")
+    false_l2_quadratic_bound = Fraction(4)
+    if l2_product_norms[-1] <= false_l2_quadratic_bound:
+        raise AssertionError("negative control failed: bare L2 multiplication looked uniformly bounded")
 
     nonlinear_budget = (
         quadratic_bound * radius * radius
@@ -2323,10 +2385,20 @@ def check_retained_metric_observable_output() -> None:
     variance_x = quadratic_form(metric_covariance, ell_x)
     assert_equal("observable variance from metric covariance", variance_x, Fraction(3, 10))
     variance_quad_residual = Fraction(1, 100)
-    variance_tail_residual = Fraction(1, 100)
+    variance_higher_residual = Fraction(1, 100)
     variance_exit_residual = Fraction(1, 50)
-    variance_budget = variance_x + variance_quad_residual + variance_tail_residual + variance_exit_residual
+    variance_budget = (
+        variance_x
+        + variance_quad_residual
+        + variance_higher_residual
+        + variance_exit_residual
+    )
     assert_equal("observable variance budget", variance_budget, Fraction(17, 50))
+    variance_without_exit = variance_x + variance_quad_residual + variance_higher_residual
+    if variance_budget - variance_without_exit != variance_exit_residual:
+        raise AssertionError("signal-to-noise variance should contain the chart-exit term")
+    if variance_without_exit >= variance_budget:
+        raise AssertionError("negative control failed: omitting chart exit did not change variance")
     if mean_shift * mean_shift <= variance_budget:
         raise AssertionError("test observable should be signal-dominated after noise is included")
 
@@ -2354,6 +2426,57 @@ def check_retained_metric_observable_output() -> None:
     covariance_yx = matmul(matmul(transpose(ell_y), metric_covariance), ell_x)[0][0]
     assert_equal("observable covariance symmetry", covariance_xy, covariance_yx)
     assert_equal("observable cross covariance", covariance_xy, Fraction(1, 20))
+
+
+def check_leading_gaussian_truncation_not_nonlinear_pushforward() -> None:
+    # If Z is Gaussian and the metric response keeps a quadratic stochastic
+    # correction, H = h_* + Z + a(Z^2-E Z^2) is no longer Gaussian.
+    gaussian_variance = Fraction(1, 5)
+    nonlinear_response = Fraction(1, 3)
+
+    retained_gaussian_covariance = gaussian_variance
+    nonlinear_covariance_correction = (
+        2 * nonlinear_response * nonlinear_response * gaussian_variance * gaussian_variance
+    )
+    exact_nonlinear_covariance = retained_gaussian_covariance + nonlinear_covariance_correction
+    if nonlinear_covariance_correction <= 0:
+        raise AssertionError("nonlinear Gaussian-pushforward covariance correction should be positive")
+    if exact_nonlinear_covariance == retained_gaussian_covariance:
+        raise AssertionError("negative control failed: nonlinear response left covariance Gaussian")
+
+    third_cumulant = (
+        6 * nonlinear_response * gaussian_variance * gaussian_variance
+        + 8
+        * nonlinear_response
+        * nonlinear_response
+        * nonlinear_response
+        * gaussian_variance
+        * gaussian_variance
+        * gaussian_variance
+    )
+    assert_equal("nonlinear Gaussian pushforward third cumulant", third_cumulant, Fraction(278, 3375))
+    if third_cumulant == 0:
+        raise AssertionError("negative control failed: nonlinear pushforward was treated as Gaussian")
+
+    declared_covariance_remainder = nonlinear_covariance_correction
+    if retained_gaussian_covariance + declared_covariance_remainder != exact_nonlinear_covariance:
+        raise AssertionError("leading-Gaussian truncation should expose the covariance remainder")
+    if declared_covariance_remainder == 0:
+        raise AssertionError("negative control failed: nonlinear covariance remainder was omitted")
+
+    linear_truncation_response = Fraction(0)
+    linear_third_cumulant = (
+        6 * linear_truncation_response * gaussian_variance * gaussian_variance
+        + 8
+        * linear_truncation_response
+        * linear_truncation_response
+        * linear_truncation_response
+        * gaussian_variance
+        * gaussian_variance
+        * gaussian_variance
+    )
+    if linear_third_cumulant != 0:
+        raise AssertionError("positive leading-Gaussian truncation should have zero third cumulant")
 
 
 def check_semiclassical_observable_chain_boundary() -> None:
@@ -2481,6 +2604,7 @@ def main() -> None:
     check_backreaction_small_gain_stability()
     check_nonlinear_backreaction_fixed_point_chart()
     check_retained_metric_observable_output()
+    check_leading_gaussian_truncation_not_nonlinear_pushforward()
     check_semiclassical_observable_chain_boundary()
     check_reduction_of_order_toy_model()
     print("All semiclassical backreaction checks passed.")

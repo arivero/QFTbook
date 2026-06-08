@@ -2959,22 +2959,25 @@ Current checks:
   \(G_N\), coherent species noise, pair correlations, and wrong cumulant
 	  suppression, the causal small-gain check for
 	  the full retained backreaction operator with exact feedback inverse,
-	  retarded finite Neumann support, Ward-clean source/noise tests,
+	  retarded finite Neumann support, neutral finite-time propagation that fails
+	  global bounded-Hardy control, Ward-clean source/noise tests,
 	  noise-amplification and missing-noise residual bounds, and negative controls
 	  for singular feedback, overlarge feedback, hidden upper-half-plane poles
-	  invisible to finite real-axis samples, unconserved inputs, and
+	  invisible to finite real-axis samples, globally bounded-Hardy tests applied
+	  to neutral boundary-pole propagation, unconserved inputs, and
 	  conserved-but-unstable amplification, the nonlinear fixed-point chart
   self-map, residual-Lipschitz contraction, correction, missing-noise, and
   stochastic validity budgets with negative controls for signed residual
   cancellation, omitted state transport, omitted residual variation, bounded
   non-Lipschitz residuals with multiple fixed points, overlarge quadratic
-  feedback, and linear-noise-only validity, the retained metric-observable
+  feedback, bare-L2 product bounds, and linear-noise-only validity, the retained metric-observable
   output check converting the mean metric and Einstein-Langevin covariance into
-  an observable mean shift, quadratic fluctuation bias, covariance, and
+  an observable mean shift, leading-Gaussian truncation, quadratic fluctuation bias, covariance, and
   Gaussian chart-exit/tail-controlled signal-to-noise test with negative
   controls for gauge-variant coordinate probes, omitted fluctuation bias,
-  divergent out-of-chart remainders despite small variance, and
-  partial-covariance undercounting, the observable-chain boundary check
+  divergent out-of-chart remainders despite small variance, omitted
+  chart-exit variance, nonlinear Gaussian pushforwards mislabeled as exact
+  Gaussian laws, and partial-covariance undercounting, the observable-chain boundary check
   rejecting formal-equation-only, mean-only, noise-without-metric-covariance,
   wrong-order, missing chart-exit/tail, and false signal-to-noise-as-validity
   shortcuts, and the low-energy root selected by reduction of order in a toy

@@ -2262,18 +2262,27 @@ sampled matrices on \(I\), but it does not by itself prove a causal inverse,
 exclude an upper-half-plane pole, or control the homogeneous initial-value
 problem.
 
-For a retained \emph{retarded} inverse, impose the small-gain estimate before
-taking the boundary value.  Let
-\(\Omega_+=\{z\in\mathbb C:\operatorname{Im}z>0\}\).  Assume that
-\(\mathsf D_0(z)^{-1}\) and \(\mathsf R^{\rm ret}(z)\) are operator-valued
-Hardy functions on \(\Omega_+\) in the reduced sector, with tempered boundary
-values, retarded inverse-Fourier/Laplace transforms, and no
-upper-half-plane poles after the cutoff-scale roots have been removed by the
-EFT reduction-of-order prescription.  Assume
+For a retained \emph{retarded} inverse, first choose the causal topology and
+the analytic domain.  The global upper-half-plane bound is a sufficient test
+for a strictly dissipative or exponentially stable transfer problem; it is not
+a test for every stable propagating retarded equation.  Let
+\(\mathcal U_{\rm EFT}\) be the declared complex-frequency domain in which the
+reduced gravitational EFT and the retained stress response have been matched,
+with \(|z|\) below the EFT cutoff and with the reduction-of-order prescription
+already used to remove cutoff-scale roots.  Put
+\[
+  \Omega_{\rm EFT,+}
+  =
+  \mathcal U_{\rm EFT}\cap\{z\in\mathbb C:\operatorname{Im}z>0\}.
+\]
+In the strictly dissipative route assume that \(\mathsf D_0(z)^{-1}\) and
+\(\mathsf R^{\rm ret}(z)\) are operator-valued Hardy functions on
+\(\Omega_{\rm EFT,+}\), with compatible boundary values in the retained sector,
+and assume
 \begin{equation}
   M_{0,+}
   =
-  \sup_{z\in\Omega_+}
+  \sup_{z\in\Omega_{\rm EFT,+}}
   \left\lVert
     \mathsf D_0(z)^{-1}
   \right\rVert_2
@@ -2281,7 +2290,7 @@ EFT reduction-of-order prescription.  Assume
   \qquad
   \eta_+
   =
-  \sup_{z\in\Omega_+}
+  \sup_{z\in\Omega_{\rm EFT,+}}
   \left\lVert
     \mathsf D_0(z)^{-1}
     \mathsf R^{\rm ret}(z)
@@ -2289,8 +2298,14 @@ EFT reduction-of-order prescription.  Assume
   <1 .
   \label{eq:semiclassical-small-gain-hypothesis}
 \end{equation}
-Then the full retained inverse exists as an upper-half-plane analytic Hardy
-function,
+on that domain.  If the domain is only a finite EFT tube, the conclusion is
+only a matched-domain forced-response statement until a separate contour,
+matching, or UV completion argument excludes upper-half-plane zeros of the
+reduced operator outside \(\mathcal U_{\rm EFT}\).  No conclusion below uses an
+uncontrolled supremum at arbitrarily large \(|z|\).
+
+Under the dissipative hypothesis the full retained inverse exists on
+\(\Omega_{\rm EFT,+}\) as the analytic Neumann inverse
 \begin{equation}
 \begin{aligned}
   \mathsf D_{\rm full}(z)^{-1}
@@ -2311,20 +2326,89 @@ function,
 \end{aligned}
   \label{eq:semiclassical-small-gain-inverse}
 \end{equation}
-The Neumann series converges normally in \(\Omega_+\), so it cannot generate an
-upper-half-plane pole.  The Hardy boundary-value theorem, equivalently the
-Paley--Wiener support theorem for the inverse Fourier--Laplace transform,
-therefore makes the boundary kernel retarded.  Real-frequency singular-value
-samples do not supply this support statement.
+The Neumann series converges normally in the declared domain, so it cannot
+generate a pole there.  When the Hardy data and pole-exclusion statement are
+global for the retained model, the Hardy boundary-value theorem, equivalently
+the Paley--Wiener support theorem for the inverse Fourier--Laplace transform,
+makes the boundary kernel retarded.  Real-frequency singular-value samples do
+not supply this support statement.
 
-If the analytic estimate is proved only in a tube above \(I\), the conclusion is
-only a windowed forced-response statement unless one separately excludes
-upper-half-plane poles elsewhere in the reduced sector and bounds the coupling
-to omitted modes.  A full initial-value stability statement also needs a
-homogeneous semigroup or energy estimate for the retained and omitted
-gravitational variables.  The small-gain bound below controls the retarded
-forced response and the stochastic pushforward in the declared sector; it is
-not, by itself, a global stability theorem for the full semiclassical PDE.
+Neutral stable propagation uses a different route.  A retained oscillator,
+wave packet, or graviton mode can have physical boundary poles on the real
+axis, such as \(D_0(z)=\omega_0^2-z^2\).  It has a retarded Green function and
+no upper-half-plane pole, but
+\(\sup_{\operatorname{Im}z>0}|D_0(z)^{-1}|=\infty\).  For such modes use a
+finite-time or weighted limiting-absorption estimate instead of the global
+bounded-Hardy norm.  On a finite response window \(I_\tau=[t_0,t_0+\tau]\),
+choose \(s>1/2\), a nonnegative time weight \(\gamma\), and the retained
+history spaces
+\begin{equation}
+  \mathcal X
+  =
+  H^s_\gamma(I_\tau;V_h),
+  \qquad
+  \mathcal Y
+  =
+  H^s_\gamma(I_\tau;V_T),
+  \label{eq:semiclassical-history-spaces}
+\end{equation}
+after gauge fixing, constraint reduction, and Ward projection.  Here \(V_h\)
+is the finite retained metric-coordinate space and \(V_T\) is the Ward-clean
+retained source/noise space.  The condition \(s>1/2\) is not decorative:
+in one time dimension it makes \(H^s(I_\tau)\) a Banach algebra, so products
+of retained metric histories can be bounded in the same norm.  Bare \(L^2\)
+would not support the quadratic estimate used below.
+
+Thus the stability vocabulary is layered.  Distributional retarded
+solvability means that the source has a causal Green function or Volterra
+solution operator.  Spectral stability of the retained linearized background
+excludes poles with \(\operatorname{Im}z>0\) but may allow physical boundary
+poles on the real axis.  Exponential or BIBO stability is stronger: it gives a
+bounded transfer norm in a half-plane or strip and is the natural setting for
+the global Hardy estimate.  The chapter uses whichever of these statements has
+actually been proved; it does not demote neutral propagation to instability
+merely because the global \(H^\infty\) norm diverges.
+
+Assume causal bounded maps
+\[
+  \mathcal G_0:\mathcal Y\to\mathcal X,
+  \qquad
+  \mathcal R:\mathcal X\to\mathcal Y,
+  \qquad
+  \lVert\mathcal G_0\rVert_{\mathcal Y\to\mathcal X}\le M_0^{\mathcal X\mathcal Y},
+  \qquad
+  \lVert\mathcal R\rVert_{\mathcal X\to\mathcal Y}\le L_{\mathcal R},
+\]
+with
+\begin{equation}
+  \eta_{\mathcal X}
+  =
+  M_0^{\mathcal X\mathcal Y}L_{\mathcal R}
+  <1 .
+  \label{eq:semiclassical-volterra-small-gain}
+\end{equation}
+Then the finite-window retarded inverse is the Volterra Neumann operator
+\begin{equation}
+  \mathcal G_{\rm full}
+  =
+  (\mathbf1-\mathcal G_0\mathcal R)^{-1}\mathcal G_0:
+  \mathcal Y\to\mathcal X,
+  \qquad
+  \lVert\mathcal G_{\rm full}\rVert_{\mathcal Y\to\mathcal X}
+  \le
+  M_{\rm full}
+  :=
+  \frac{M_0^{\mathcal X\mathcal Y}}{1-\eta_{\mathcal X}} .
+  \label{eq:semiclassical-volterra-retarded-inverse}
+\end{equation}
+In the dissipative Hardy route, \(M_{\rm full}=M_{0,+}/(1-\eta_+)\).  In the
+neutral finite-window route, \(M_{\rm full}\) is the Volterra or energy-estimate
+constant in \eqref{eq:semiclassical-volterra-retarded-inverse}.  A full
+initial-value stability statement still needs a homogeneous semigroup or energy
+estimate for the retained and omitted gravitational variables.  The bounds here
+control the retarded forced response and the stochastic pushforward in the
+declared sector; they are not, by themselves, a global stability theorem for
+the full semiclassical PDE.
 
 For a Ward-clean interacting source and noise package,
 \[
@@ -2336,27 +2420,42 @@ the retained mean response and metric covariance obey
 \begin{equation}
   h^{\rm full}
   =
-  \mathsf D_{\rm full}^{-1}j^{\rm full},
+  \mathcal G_{\rm full}j^{\rm full},
   \qquad
   \mathsf C_h^{\rm full}
   =
-  \mathsf D_{\rm full}^{-1}
+  \mathcal G_{\rm full}
   \mathsf N^{\rm full}
-  \mathsf D_{\rm full}^{-*},
+  \mathcal G_{\rm full}^{*},
   \label{eq:semiclassical-small-gain-response-covariance}
 \end{equation}
 with
 \begin{equation}
-  \lVert h^{\rm full}\rVert_2
+  \lVert h^{\rm full}\rVert_{\mathcal X}
   \le
-  \frac{M_{0,+}}{1-\eta_+}\lVert j^{\rm full}\rVert_2,
+  M_{\rm full}\lVert j^{\rm full}\rVert_{\mathcal Y},
   \qquad
   \operatorname{tr}\mathsf C_h^{\rm full}
   \le
-  \frac{M_{0,+}^2}{(1-\eta_+)^2}
+  M_{\rm full}^2
   \operatorname{tr}\mathsf N^{\rm full}.
   \label{eq:semiclassical-small-gain-mean-noise-bound}
 \end{equation}
+The trace in \eqref{eq:semiclassical-small-gain-mean-noise-bound} is a finite
+retained covariance trace, a finite-time/smeared covariance trace, or a
+trace-class operator trace in \(\mathcal Y\).  For stationary noise on an
+infinite time axis the physical statement is instead the spectral-density
+inequality
+\[
+  \mathsf C_h(\omega)
+  =
+  \mathcal G_{\rm full}(\omega)
+  \mathsf N(\omega)
+  \mathcal G_{\rm full}(\omega)^*,
+\]
+or the corresponding inequality after smearing in time.  These interpretations
+are not interchangeable; an infinite-time stationary covariance is not assumed
+to be trace class merely because a finite retained matrix has a trace.
 If a truncated calculation supplies only
 \(\mathsf N^{\rm ret}\) and a positive trace residual
 \(\operatorname{tr}\mathsf N^{\rm miss}\le r_N\), the last bound is replaced
@@ -2370,12 +2469,14 @@ If the projection discards modes, their source and noise leakage must be
 included as residual budgets before the retained covariance is interpreted as a
 physical metric-fluctuation bound.
 
-Failure of any part of this test has physical content.  If
-\(\eta_+\ge1\) and no sharper causal inverse estimate is supplied, the
-perturbative feedback expansion is not controlled.  If
-\(\mathsf D_{\rm full}^{-1}\) has an upper-half-plane pole, the retained
-background is linearly unstable in the semiclassical problem even if every
-sampled real-frequency matrix in \(I\) is invertible.  If
+Failure of any part of this test has physical content.  If the applicable
+small-gain parameter, \(\eta_+\) in the dissipative Hardy route or
+\(\eta_{\mathcal X}\) in the finite-window route, is at least one and no
+sharper causal inverse estimate is supplied, the perturbative feedback
+expansion is not controlled.  If the retained analytic operator has an
+upper-half-plane pole, the retained background is linearly unstable in the
+semiclassical problem even if every sampled real-frequency matrix in \(I\) is
+invertible.  If
 \(\operatorname{tr}\mathsf C_h^{\rm full}\) is comparable to the square of
 the metric reference scale, or the induced curvature covariance is comparable
 to the square of the background curvature scale, the mean semiclassical
@@ -2388,33 +2489,32 @@ chart.
 
 \begin{controlledapproximation}[Nonlinear finite-window backreaction chart]
 \label{ca:semiclassical-nonlinear-backreaction-chart}
-The small-gain test controls the linearized operator.  A semiclassical
-solution also needs a chart in which the nonlinear gravitational terms, the
-metric-dependence of the interacting state, and the omitted retained
-stress-tensor residuals stay inside the same response window.  Keep the
-Ward-clean retained sector and write
+The small-gain test controls the linearized operator in a declared causal
+history topology.  A semiclassical solution also needs a chart in which the
+nonlinear gravitational terms, the metric-dependence of the interacting state,
+and the omitted retained stress-tensor residuals stay inside the same response
+window.  Keep the Ward-clean retained sector and the history spaces
+\(\mathcal X,\mathcal Y\) of \eqref{eq:semiclassical-history-spaces}.  Write
 \[
-  \mathsf G_{\rm full}
-  =
-  \mathsf D_{\rm full}^{-1},
+  \mathcal G_{\rm full}:\mathcal Y\to\mathcal X,
   \qquad
-  M_{\rm full}
-  =
-  \frac{M_{0,+}}{1-\eta_+},
+  \lVert\mathcal G_{\rm full}\rVert_{\mathcal Y\to\mathcal X}
+  \le M_{\rm full},
   \qquad
   h_{\rm lin}
   =
-  \mathsf G_{\rm full}j^{\rm full}.
+  \mathcal G_{\rm full}j^{\rm full}\in\mathcal X .
 \]
 After gauge fixing, constraint reduction, and reduction of order, suppose the
 retained nonlinear equation in a ball
-\(B_h(r_h)=\{h:\lVert h\rVert\le r_h\}\) has the form
+\(B_{\mathcal X}(r_h)=\{h\in\mathcal X:\lVert h\rVert_{\mathcal X}\le r_h\}\)
+has the form
 \begin{equation}
   h=\Phi(h)
   =
   h_{\rm lin}
   +
-  \mathsf G_{\rm full}
+  \mathcal G_{\rm full}
   \left(
     \mathcal Q_2(h,h)+\mathcal S_{\rm st}(h)+\mathcal R_{\rm nl}(h)
   \right),
@@ -2424,43 +2524,60 @@ where \(\mathcal Q_2\) contains the retained quadratic metric terms and
 second metric variations of the source, \(\mathcal S_{\rm st}\) is the
 linearized state-transport contribution in the chosen Hadamard chart, and
 \(\mathcal R_{\rm nl}\) is the declared residual from omitted higher retained
-orders and unresolved stress-tensor products.  All three terms are required to
-land in the Ward-clean sector; otherwise the fixed-point problem has left the
-same constraint-reduced space in which
-\(\mathsf G_{\rm full}\) was estimated.
+orders and unresolved stress-tensor products.  They are typed maps
+\[
+  \mathcal Q_2:\mathcal X\times\mathcal X\to\mathcal Y,
+  \qquad
+  \mathcal S_{\rm st}:\mathcal X\to\mathcal Y,
+  \qquad
+  \mathcal R_{\rm nl}:\mathcal X\to\mathcal Y .
+\]
+All three terms are required to land in the Ward-clean source space
+\(\mathcal Y\); otherwise the fixed-point problem has left the same
+constraint-reduced space in which \(\mathcal G_{\rm full}\) was estimated.
+For the Sobolev choice above, the quadratic estimate below is an independent
+regularity hypothesis using the \(H^s\) Banach-algebra bound.  It would not
+follow from a bare \(L^2\)-in-time multiplier estimate.
 
-Assume that, for \(h,\tilde h\in B_h(r_h)\),
+Assume that, for \(h,\tilde h\in B_{\mathcal X}(r_h)\),
 \begin{equation}
 \begin{gathered}
-  \lVert\mathcal Q_2(h,h)\rVert\le C_2\lVert h\rVert^2,
+  \lVert\mathcal Q_2(h,h)\rVert_{\mathcal Y}
+  \le
+  C_2\lVert h\rVert_{\mathcal X}^2,
   \qquad
   \lVert
     \mathcal Q_2(h,h)-\mathcal Q_2(\tilde h,\tilde h)
-  \rVert
+  \rVert_{\mathcal Y}
   \le
-  2C_2r_h\lVert h-\tilde h\rVert,
+  2C_2r_h\lVert h-\tilde h\rVert_{\mathcal X},
   \\
-  \lVert\mathcal S_{\rm st}(h)\rVert\le L_{\rm st}\lVert h\rVert,
+  \lVert\mathcal S_{\rm st}(h)\rVert_{\mathcal Y}
+  \le
+  L_{\rm st}\lVert h\rVert_{\mathcal X},
   \qquad
   \lVert
     \mathcal S_{\rm st}(h)-\mathcal S_{\rm st}(\tilde h)
-  \rVert
+  \rVert_{\mathcal Y}
   \le
-  L_{\rm st}\lVert h-\tilde h\rVert,
+  L_{\rm st}\lVert h-\tilde h\rVert_{\mathcal X},
   \qquad
-  \sup_{B_h(r_h)}\lVert\mathcal R_{\rm nl}\rVert\le\epsilon_{\rm nl},
+  \sup_{B_{\mathcal X}(r_h)}
+  \lVert\mathcal R_{\rm nl}\rVert_{\mathcal Y}
+  \le
+  \epsilon_{\rm nl},
   \\
   \lVert
     \mathcal R_{\rm nl}(h)-\mathcal R_{\rm nl}(\tilde h)
-  \rVert
+  \rVert_{\mathcal Y}
   \le
-  L_{\rm R}\lVert h-\tilde h\rVert .
+  L_{\rm R}\lVert h-\tilde h\rVert_{\mathcal X} .
 \end{gathered}
   \label{eq:semiclassical-nonlinear-chart-bounds}
 \end{equation}
 Then the retained equation is controlled on this finite window when
 \begin{equation}
-  \lVert h_{\rm lin}\rVert
+  \lVert h_{\rm lin}\rVert_{\mathcal X}
   +
   M_{\rm full}
   \left(C_2r_h^2+L_{\rm st}r_h+\epsilon_{\rm nl}\right)
@@ -2481,10 +2598,11 @@ self-map estimate, not a contraction.  If the residual is an additive
 size bound is available, the finite chart must not claim Picard uniqueness
 without replacing the argument by separate compactness and continuity
 hypotheses.  Under the displayed contraction hypothesis the Picard sequence
-defined by \(\Phi\) converges to a unique retained solution in \(B_h(r_h)\), and
-the nonlinear correction to the linear response is bounded by
+defined by \(\Phi\) converges to a unique retained solution in
+\(B_{\mathcal X}(r_h)\), and the nonlinear correction to the linear response is
+bounded by
 \begin{equation}
-  \lVert h-h_{\rm lin}\rVert
+  \lVert h-h_{\rm lin}\rVert_{\mathcal X}
   \le
   \frac{
     M_{\rm full}\left(C_2r_h^2+L_{\rm st}r_h+\epsilon_{\rm nl}\right)
@@ -2520,7 +2638,7 @@ propagation estimates for the infinite-dimensional problem.
 A controlled backreaction calculation should end with an observable, not only
 with a small metric perturbation.  Let \(X\) be a gauge-invariant retained
 metric observable, or a gauge-fixed observable after the same constraint
-reduction used to define \(\mathsf G_{\rm full}\).  Examples are a smeared
+reduction used to define \(\mathcal G_{\rm full}\).  Examples are a smeared
 curvature scalar, a quasi-local mass coordinate, a horizon-area functional in
 the chosen perturbative chart, or the FLRW Hubble coordinate tested against
 the reduced Friedmann constraint.  In the retained chart write
@@ -2546,7 +2664,19 @@ not survived the gauge and constraint reduction is not an observable output of
 the calculation.
 
 The stochastic average needs one more datum: the probability law whose
-expectation is being taken.  In the retained finite vector space write
+expectation is being taken.  The law used here is a leading-Gaussian
+truncation, not the exact law of the nonlinear random fixed-point equation.
+First solve the deterministic nonlinear chart for \(h_*\).  Then linearize the
+stochastic equation about \(h_*\), choose the corresponding retarded operator
+\(\mathcal G_{*,{\rm ret}}:\mathcal Y\to\mathcal X\), and set
+\[
+  \mathsf C_h
+  =
+  \mathcal G_{*,{\rm ret}}\,
+  \mathsf N^{\rm ret}\,
+  \mathcal G_{*,{\rm ret}}^* .
+\]
+In the retained finite vector space the leading-Gaussian metric law is
 \begin{equation}
   H=h_*+Z,
   \qquad
@@ -2557,6 +2687,13 @@ expectation is being taken.  In the retained finite vector space write
   \mathcal E_h=\{H\notin B_h(r_h)\}.
   \label{eq:semiclassical-observable-gaussian-law}
 \end{equation}
+Nonlinear stochastic response, missing connected noise, and state-transport
+noise corrections are not hidden in the symbol \(\mathsf C_h\).  They are the
+separate retained-order remainders \(r_N^{(h)}\), \(r_X^{\rm higher}\), and
+\(r_{XY}^{\rm higher}\) below.  Keeping them as part of the probability law
+would require the non-Gaussian hierarchy or higher closed-time-path influence
+functional already separated in
+\eqref{eq:semiclassical-large-n-cumulants}.
 Then \(\mathcal E_h\subset\{\lVert Z\rVert>\rho_h\}\), so the local Taylor
 bound in \eqref{eq:semiclassical-observable-chart} controls an unstopped
 expectation only after the chart-exit probability and the out-of-chart
@@ -2588,10 +2725,11 @@ probability.
 
 Let \(h_*\) be the retained mean solution supplied by
 Controlled Approximation~\ref{ca:semiclassical-nonlinear-backreaction-chart}
-and let \(\mathsf C_h\) be the corresponding Einstein--Langevin metric
-covariance, including the missing-noise and nonlinear/state-transport budgets
-of \eqref{eq:semiclassical-nonlinear-noise-validity}.  To the same retained
-order, the mean observable shift is
+and let \(\mathsf C_h\) be the retained leading-Gaussian Einstein--Langevin
+metric covariance just defined.  Missing-noise and nonlinear/state-transport
+metric-law corrections from \eqref{eq:semiclassical-nonlinear-noise-validity}
+enter through the explicit remainders rather than through an undeclared
+covariance rescaling.  To the same retained order, the mean observable shift is
 \begin{equation}
 \begin{aligned}
   \Delta_X^{\rm mean}
@@ -2655,10 +2793,11 @@ uncertainty:
   |\Delta_X^{\rm mean}|
   \gg
   \sqrt{
-    \ell_X^a(\mathsf C_h)_{ab}\ell_X^b
-    +r_{XX}^{\rm quad}
-    +r_{XX}^{\rm tail}
-  } .
+	    \ell_X^a(\mathsf C_h)_{ab}\ell_X^b
+	    +r_{XX}^{\rm quad}
+	    +r_{XX}^{\rm higher}
+	    +r_{XX}^{\rm exit}
+	  } .
   \label{eq:semiclassical-observable-signal-to-noise}
 \end{equation}
 This inequality is not the validity criterion for the stochastic prediction.

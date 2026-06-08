@@ -68,21 +68,24 @@ fluctuation data required for controlled backreaction.
 - `Gamma_IF`, `h_c`, `h_Delta`, `R_IF`: retained closed-time-path influence
   functional, average/difference metric perturbations, and the residual outside
   the quadratic interacting backreaction package.
-- `D_0`, `R^{ret}`, `D_full`, `M_{0,+}`, `eta_+`: the reduced
-  gravitational/local-contact operator, retained interacting stress-tensor
-  feedback, full linearized backreaction operator, causal upper-half-plane
-  inverse bound, and causal small-gain parameter.
-- `G_full`, `M_full`, `B_h(r_h)`, `C_2`, `L_st`, `epsilon_nl`,
-  `kappa_nl`, `r_N`, `Delta_N(r_h)`: the full retained inverse and nonlinear
-  finite-window chart data controlling the self-map, state transport, omitted
-  residuals, contraction constant, and noise-validity budget.
+- `D_0`, `R^{ret}`, `D_full`, `Omega_EFT,+`, `M_{0,+}`, `eta_+`,
+  `eta_X`: the reduced gravitational/local-contact operator, retained
+  interacting stress-tensor feedback, full linearized backreaction operator,
+  declared EFT analytic domain, dissipative Hardy inverse/small-gain data, and
+  finite-window history-space small-gain parameter for neutral propagation.
+- `Xcal`, `Ycal`, `G_full`, `M_full`, `B_Xcal(r_h)`, `C_2`, `L_st`,
+  `epsilon_nl`, `kappa_nl`, `r_N`, `Delta_N(r_h)`: retained metric/source
+  history spaces, the full retained inverse and nonlinear finite-window chart
+  data controlling the self-map, state transport, omitted residuals,
+  contraction constant, and noise-validity budget.
 - `X`, `ell_X`, `Q^X`, `R_X`, `Delta_X^{mean}`: a retained metric observable,
   its linear and quadratic response in the same chart, its controlled
   remainder, and the observable mean shift after Einstein-Langevin metric
   fluctuations are included.
-- `H=h_*+Z`, `rho_h`, `E_h`, `r_X^{exit}`: the retained Gaussian metric
-  vector around the mean solution, its chart margin, chart-exit event, and the
-  out-of-chart observable budget needed before local Taylor control is averaged.
+- `H=h_*+Z`, `rho_h`, `E_h`, `r_X^{exit}`: the retained leading-Gaussian metric
+  vector around the deterministic nonlinear mean solution, its chart margin,
+  chart-exit event, and the out-of-chart observable budget needed before local
+  Taylor control is averaged.
 
 ## Claim Ledger
 
@@ -221,35 +224,35 @@ fluctuation data required for controlled backreaction.
 - Adds the retained causal small-gain layer for interacting backreaction:
   after the full source/noise/response package is fixed in one scheme, the
   full linearized operator is `D_full=D_0-R^{ret}`.  A real-frequency
-  small-gain number is recorded only as a diagnostic.  The retarded inverse
-  claim requires `D_0^{-1}` and `R^{ret}` to be Hardy/causal upper-half-plane
-  data with no unstable poles and
-  `eta_+=sup_{Im z>0} ||D_0(z)^{-1}R^{ret}(z)||<1`, giving the analytic
-  Neumann inverse `(1-D_0^{-1}R^{ret})^{-1}D_0^{-1}` and explicit mean/noise
-  amplification bounds.  The layer also identifies physical failures:
-  uncontrolled causal feedback, upper-half-plane poles invisible to real-axis
-  samples, Ward-clean noise amplified beyond the metric chart, and missing
-  omitted-mode/noise residuals not included in the covariance budget.
+  small-gain number is recorded only as a diagnostic.  The dissipative route
+  requires `D_0^{-1}` and `R^{ret}` to be Hardy/causal on a declared EFT
+  analytic domain, with no uncontrolled high-frequency conclusion and
+  `eta_+<1`.  Neutral stable propagation with physical real-axis boundary
+  poles uses a finite-window Volterra/energy estimate in named history spaces
+  instead.  Both routes produce a concrete `M_full` for the mean/noise
+  amplification bounds, and covariance traces are read only as finite,
+  smeared, trace-class, or spectral-density statements.
 - Adds the nonlinear finite-window backreaction chart.  The retained equation
   is written as a Ward-clean fixed-point map
-  `h=h_lin+G_full(Q_2(h,h)+S_st(h)+R_nl(h))`; the self-map and contraction
-  tests combine the linear small-gain bound with quadratic metric/source
-  feedback, state-transport Lipschitz control, omitted residual size, and
-  residual Lipschitz control.
+  `h=h_lin+G_full(Q_2(h,h)+S_st(h)+R_nl(h))` in one declared pair of history
+  spaces `Xcal,Ycal`; the self-map and contraction tests combine the linear
+  causal inverse bound with quadratic metric/source feedback, state-transport
+  Lipschitz control, omitted residual size, and residual Lipschitz control.
+  Bare `L^2` multiplier control is explicitly insufficient for the quadratic
+  product estimate.
   The same chart refines the stochastic validity condition by adding missing
   connected-noise trace and nonlinear/state-transport noise budgets before
   the metric fluctuations are compared with the chart radius.
 - Adds the retained metric-observable output layer.  A backreaction statement
-  now has to pass from the controlled mean metric and Einstein-Langevin
-  covariance to a gauge-invariant retained observable `X`: the text keeps the
-  linear response, quadratic deterministic response, fluctuation bias
-  `1/2 tr(Q^X C_h)`, observable covariance, Gaussian chart-exit probability,
-  out-of-chart tail/integrability budget, and signal-to-noise test in the same
-  Ward-clean chart.  This prevents a small coordinate perturbation, a local
-  Taylor remainder, or a partial projected covariance from being read as a
-  resolved physical semiclassical prediction.  Signal-to-noise is now a
-  self-averaging/detectability condition, not the validity condition for the
-  stochastic law.
+  now has to pass from the controlled deterministic mean metric and
+  leading-Gaussian Einstein-Langevin covariance to a gauge-invariant retained
+  observable `X`: the text keeps the linear response, quadratic deterministic
+  response, fluctuation bias `1/2 tr(Q^X C_h)`, observable covariance, Gaussian
+  chart-exit probability, out-of-chart tail/integrability budget, and
+  signal-to-noise test in the same Ward-clean chart.  The Gaussian law is a
+  stated truncation about `h_*`, not the exact nonlinear stochastic pushforward,
+  and the signal-to-noise denominator includes the declared quadratic, higher,
+  and chart-exit covariance budgets.
 - Records validity conditions and the EFT reduction-of-order treatment for
   higher-curvature terms.
 
@@ -303,20 +306,23 @@ fluctuation data required for controlled backreaction.
   feedback inverse for the full retained backreaction operator,
   Ward-clean source/noise inputs, mean-response and noise-amplification
   bounds, residual missing-noise trace propagation, retarded finite Neumann
-  support, and singular-feedback, overlarge-feedback, hidden-upper-half-plane
-  pole, unconserved-input, and conserved-but-unstable amplification negative
-  controls, the nonlinear fixed-point chart self-map,
+  support, neutral finite-window propagation that fails global bounded-Hardy
+  control, and singular-feedback, overlarge-feedback, hidden-upper-half-plane
+  pole, globally bounded-Hardy neutral-propagation, unconserved-input, and
+  conserved-but-unstable amplification negative controls, the nonlinear
+  fixed-point chart self-map,
   residual-Lipschitz contraction, correction, Ward-clean nonlinear source,
   missing-noise, and
   stochastic validity budgets with negative controls for signed residual
   cancellation, omitted state transport, omitted residual variation, bounded
   non-Lipschitz residuals with multiple fixed points, overlarge quadratic
-  feedback, and linear-noise-only validity, the retained metric-observable
+  feedback, bare-L2 product bounds, and linear-noise-only validity, the retained metric-observable
   output check that converts the mean metric and covariance to observable mean
-  shift, fluctuation bias, covariance, Gaussian chart-exit/tail budgets, and
+  shift, leading-Gaussian truncation, fluctuation bias, covariance, Gaussian chart-exit/tail budgets, and
   signal-to-noise with negative controls for gauge-variant coordinate probes,
   omitted fluctuation bias, divergent out-of-chart remainders despite small
-  variance, partial-covariance undercounting, and confusing noise domination
+  variance, omitted chart-exit variance, nonlinear Gaussian pushforwards
+  mislabeled as exact Gaussian laws, partial-covariance undercounting, and confusing noise domination
   with invalidity, and the low-energy root selected
   by reduction of order in a toy higher-derivative equation.
 
@@ -540,6 +546,17 @@ curvature, microscopic, and EFT scales.
   finite check adds both a causal lower-triangular Neumann inverse and an
   adversarial scalar transfer function whose real samples pass while an
   upper-half-plane pole makes the evolution unstable.
+- 2026-06-08 issues #937/#938/#935/#931 pass: repaired the Vol XII Ch11
+  backreaction architecture rather than adding another finite cell.  The
+  causal inverse layer now separates strictly dissipative bounded-Hardy control
+  from neutral finite-window retarded propagation, restricts complex-frequency
+  claims to a declared EFT domain, and types covariance traces as finite,
+  smeared, trace-class, or spectral-density statements.  The nonlinear chart
+  now uses named history spaces `Xcal,Ycal` with a product hypothesis, so the
+  fixed-point map no longer borrows a bare `L^2` multiplier norm.  The
+  observable law is explicitly the leading-Gaussian truncation about the
+  deterministic nonlinear mean, and the final signal-to-noise denominator uses
+  the declared higher and chart-exit covariance budgets.
 - 2026-06-08 issue #933 reduced-response descent pass: replaced the
   section-based reduced response claim by the universal factorization
   criterion `ker q_h <= ker(p_T R^{ret}_{Th})`.  The pure gauge quotient is
