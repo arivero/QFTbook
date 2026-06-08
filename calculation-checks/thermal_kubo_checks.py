@@ -12,10 +12,11 @@ term, finite Mazur projection algebra, and a two-dimensional Mori-Zwanzig
 Schur-complement model.  The conductivity-sector checks separate Hermitian
 dissipation from a real antisymmetric Hall block.  The Mazur/Drude checks use
 an Abel-switched source response for the zero-Liouville current covariance,
-an H=0 conserved-current negative control, a finite oscillatory negative
-control, and a polynomial ultraviolet-tail control to separate source-derived
-Drude residues and filtered Cesaro/Abel zero-frequency projections from
-unproved commutator-FDT, pointwise, or unfiltered continuum claims.
+an H=0 conserved-current negative control, a static-versus-dynamical
+conserved-current split, a finite oscillatory negative control, and a
+polynomial ultraviolet-tail control to separate source-derived Drude residues
+and filtered Cesaro/Abel zero-frequency projections from unproved
+commutator-FDT, pointwise, static-equilibrium, or unfiltered continuum claims.
 Imported assumptions: the thermal KMS condition, finite-volume linear
 response, and the interpretation of real local source contacts as contact
 terms outside the nonzero-frequency commutator spectral measure.
@@ -26,9 +27,10 @@ entrywise real measure, the Drude sector is separated from the regular dc
 slope, the commutator spectral density of an exact H=0 zero mode is not
 accepted as determining the symmetrized zero atom, an oscillatory
 finite-volume correlator is not accepted as having a pointwise long-time
-Drude limit, and a locally finite low-frequency measure with a polynomial
-ultraviolet tail is not accepted as supporting unfiltered dominated
-convergence.
+Drude limit, an equilibrium static pure-gauge cancellation is not identified
+with the Abel dynamical kernel, and a locally finite low-frequency measure
+with a polynomial ultraviolet tail is not accepted as supporting unfiltered
+dominated convergence.
 Scope boundary: these checks do not prove hydrodynamic closure, continuum
 limit exchange, or Euclidean analytic-continuation stability.
 """
@@ -348,6 +350,37 @@ def check_commutator_fdt_loses_exact_zero_mode() -> None:
         raise AssertionError("commutator FDT incorrectly reconstructed the exact zero-mode atom")
 
 
+def check_static_dynamic_split_for_conserved_free_current() -> None:
+    beta = 1.6
+    zero_mode_covariance = 0.43
+    commutator_spectral_atom = 0.0
+
+    dynamical_contact_kernel = beta * zero_mode_covariance
+    reequilibrated_state_derivative = -dynamical_contact_kernel
+    equilibrium_static_kernel = dynamical_contact_kernel + reequilibrated_state_derivative
+
+    assert_close("conserved current has zero commutator spectral atom", commutator_spectral_atom, 0.0)
+    assert_close("equilibrium pure-gauge derivative cancels after reequilibration", equilibrium_static_kernel, 0.0)
+    assert dynamical_contact_kernel > 0.0
+
+    for epsilon in (0.4, 0.2, 0.1, 0.05):
+        abel_conductivity = beta * zero_mode_covariance / epsilon
+        dynamical_abel_kernel = epsilon * abel_conductivity
+        assert_close(
+            "dynamical Abel kernel keeps conserved-current contact",
+            dynamical_abel_kernel,
+            dynamical_contact_kernel,
+        )
+        assert_close(
+            "static-dynamic zero-mode mismatch is Kubo-Mori covariance",
+            dynamical_abel_kernel - equilibrium_static_kernel,
+            beta * zero_mode_covariance,
+        )
+
+    if abs(commutator_spectral_atom - dynamical_contact_kernel) < 1.0e-12:
+        raise AssertionError("zero commutator response was confused with the dynamical Drude kernel")
+
+
 def check_cesaro_abel_not_pointwise_negative_control() -> None:
     constant_component = 0.31
     omega = 1.7
@@ -496,6 +529,7 @@ def main() -> None:
     check_diamagnetic_contact_response_convention()
     check_mazur_projection_and_drude_weight()
     check_commutator_fdt_loses_exact_zero_mode()
+    check_static_dynamic_split_for_conserved_free_current()
     check_cesaro_abel_not_pointwise_negative_control()
     check_filtered_drude_rejects_uncontrolled_uv_tail()
     check_regular_drude_decomposition_for_figure()

@@ -42,9 +42,13 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   zero-Liouvillian projection.
 - Thermodynamic Drude weight defined as the coefficient of the
   zero-frequency atom in the Hermitian dissipative conductivity measure; its
-  normalization \(D=\beta A^{(0)}\) is derived from the declared
-  finite-volume source-response/contact prescription and Abel zero-mode
-  residue, not by dividing the commutator spectral density by \(\omega\).
+  normalization \(D=\beta A^{(0)}\) is derived from the mismatch between the
+  equilibrium static vector-potential derivative and the dynamical Abel
+  retarded kernel, not by setting the same zero-frequency kernel to zero or by
+  dividing the commutator spectral density by \(\omega\).
+  The static pure-gauge cancellation is restricted to contractible uniform
+  sources with no background holonomy sector and no superfluid/superconducting
+  stiffness response.
   Cesaro/Abel time-domain equivalence is stated only for a compactly filtered
   locally finite low-frequency measure, or for a globally finite
   regulated/smeared measure, and ordinary pointwise long-time equivalence is
@@ -83,6 +87,8 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
 | \(\mathcal K^{\rm full}_{AB}\) | full source derivative \(\delta\langle A\rangle/\delta h_B=-G^{R,\rm comm}_{AB}+C^{\rm resp}_{AB}\) |
 | \(K^{\rm cond}_{ij}\) | transverse conductivity kernel defined by \(\langle J_i\rangle=-K^{\rm cond}_{ij}A_j\), equal to \(G^{R,\rm comm}_{J_iJ_j}-C^{\rm resp}_{ij}\) |
 | \(C^{\rm resp}_{AB}\) | local contact contribution to the full source-response derivative |
+| \(\mathcal K^{\rm eq}_{ij,V}\) | equilibrium/isothermal static conductivity kernel obtained by varying the time-independent vector-potential source and the Gibbs state together |
+| \(K^{\rm dyn}_{ij,V}(z)\), \(K^{\rm dyn,Abel}_{ij,V}(\epsilon)\) | dynamical retarded vector-potential kernel with the initial state fixed, and its Abel electric-field boundary kernel \(\epsilon\sigma^{(\epsilon)}\) |
 | \(I_i\), \(\bar I_i\) | total current and connected total current in finite volume |
 | \(C_{ij,V}(t)\) | finite-volume connected symmetrized current autocorrelation |
 | \(Q_a\), \(C_{ab}\), \(v_{ia}\) | conserved operators, symmetrized covariance, and current-charge overlap |
@@ -136,10 +142,13 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
 8. Conserved charges with nonzero current overlap give a positive
    finite-volume zero-Liouvillian Cesaro projection bounded by the Mazur
    matrix.  Identifying its thermodynamic limit with a Drude atom requires
-   the zero-mode source-response construction: static vector-potential
-   contact cancellation, an Abel-switched electric-field response, and
-   convergence of the resulting residues into the Hermitian dissipative
-   conductivity measure.
+   the zero-mode source-response construction: an equilibrium static
+   vector-potential derivative, a distinct dynamical retarded/Abel kernel, the
+   identity that their zero-mode mismatch is \(\beta A^{(0)}\), and convergence
+   of the resulting residues into the Hermitian dissipative conductivity
+   measure.  The pure-gauge static cancellation applies only for contractible
+   uniform sources with the declared topology/boundary conditions and does not
+   include torus holonomy or superfluid/Meissner stiffness sectors.
    Cesaro/Abel extraction is a filtered low-frequency theorem unless a
    globally finite regulated or spacetime-smeared measure has been supplied;
    removing the filter requires ultraviolet estimates and contact
@@ -186,9 +195,12 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   block from the positive measure; the finite Mazur projection and
   Abel-switched source-response residue for a current with conserved overlap;
   an \(H=0\) conserved-current negative control where the commutator spectral
-  density vanishes although the symmetrized zero atom is nonzero; an
-  oscillatory \(C(t)=C_0+\cos\Omega t\) negative control where Cesaro and Abel
-  averages isolate \(C_0\) but no pointwise long-time limit exists; a
+  density vanishes although the symmetrized zero atom is nonzero; a
+  conserved-current static/dynamical split where the equilibrium static
+  derivative cancels only after re-equilibration while the Abel dynamical
+  kernel keeps the \(\beta A^{(0)}\) residue; an oscillatory
+  \(C(t)=C_0+\cos\Omega t\) negative control where Cesaro and Abel averages
+  isolate \(C_0\) but no pointwise long-time limit exists; a
   polynomial ultraviolet-tail negative control showing why the Drude
   extraction is filtered, smeared, or regulated before dominated convergence
   is used; and a two-dimensional finite-regulator Mori--Zwanzig identity with
@@ -271,3 +283,9 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   source-response/contact derivation of \(D=\beta A^{(0)}\) through an
   Abel-switched electric-field residue, and guarded the bridge with an
   \(H=0\) conserved-current negative control.
+- 2026-06-08 issue #948 pass: separated the equilibrium/isothermal static
+  vector-potential derivative from the dynamical retarded Abel kernel, made
+  the Drude residue the \(\beta A^{(0)}\) mismatch between those limits,
+  stated the contractible-source topology and holonomy/stiffness exclusions,
+  and added a conserved-current regression showing static re-equilibration
+  cancellation with a nonzero dynamical Abel kernel.
