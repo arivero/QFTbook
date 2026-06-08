@@ -150,7 +150,8 @@
         "value-only comparison topology does not replace susceptibility control",
         "finite spectral-flow algebra remains separate from thermodynamic automorphic theorem",
         "fixed-local automorphic convergence does not transport growing-support extended data",
-        "gapped parameter value does not select a unique ground-state phase face"
+        "gapped parameter value does not select a unique ground-state phase face",
+        "selected ground-state faces require a spectral-flow-covariant selector"
       ]
     },
     {

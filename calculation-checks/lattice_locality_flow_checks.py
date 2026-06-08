@@ -12,7 +12,8 @@ diagnostics with continuous correlators or free energy but failed uniform
 stability.  A growing-support negative control separates pointwise convergence
 on every fixed local algebra from transport of boundary/logical/extended
 observable sequences.  A symmetry-breaking finite-band example separates a
-bare parameter value from the selected ground-state simplex or phase face.
+bare parameter value from the selected ground-state set or phase face and
+checks that selected-face transport needs a covariant selector.
 Imported assumptions: finite-dimensional local Hilbert spaces, the chapter's
 filter convention for quasi-adiabatic continuation, and the use of these
 finite checks as arithmetic companions to the imported thermodynamic
@@ -24,7 +25,9 @@ energy misses a divergent susceptibility; automorphisms can converge on every
 fixed local observable while a sequence whose support moves to the boundary or
 grows with the volume has no controlled transported limit; a gapped
 finite-volume ground band can contain two extremal branches, so the parameter
-value alone does not select a phase carrier.
+value alone does not select a phase carrier; the full ground-state set can be
+transported while a noncovariantly chosen endpoint face is not the image of the
+initial face.
 Scope boundary: these checks do not prove the infinite-volume
 Lieb-Robinson/spectral-flow theorem, establish a continuum gauge-theory phase
 equivalence, or classify gapless universality classes.
@@ -34,6 +37,7 @@ from __future__ import annotations
 
 from check_utils import assert_close as _assert_close
 
+import itertools
 import math
 
 
@@ -332,57 +336,110 @@ def check_fixed_local_convergence_does_not_transport_growing_support() -> None:
 
 
 def check_parameter_value_does_not_select_coexisting_phase_face() -> None:
-    """A gapped finite band can contain several thermodynamic branches."""
+    """Full band transport and selected-face transport are distinct claims."""
 
     coupling = 1.0
+    boundary_strength = 0.01
 
-    def periodic_ising_energy(length: int, spin: int) -> float:
-        return -coupling * length if spin in (-1, 1) else math.inf
+    def configurations(length: int) -> list[tuple[int, ...]]:
+        return list(itertools.product((-1, 1), repeat=length))
 
-    def first_domain_wall_energy(length: int) -> float:
-        # A periodic chain must create a pair of broken bonds.
-        return -coupling * (length - 4)
+    def periodic_ising_energy(config: tuple[int, ...]) -> float:
+        length = len(config)
+        return -coupling * sum(
+            config[site] * config[(site + 1) % length]
+            for site in range(length)
+        )
 
-    for length in range(6, 18):
-        plus_energy = periodic_ising_energy(length, 1)
-        minus_energy = periodic_ising_energy(length, -1)
-        gap_above_union = first_domain_wall_energy(length) - plus_energy
-        assert_close(
-            plus_energy,
-            minus_energy,
-            "coexisting Ising branches have the same finite-band energy",
+    def magnetization(config: tuple[int, ...]) -> float:
+        return sum(config) / len(config)
+
+    def boundary_selector_score(config: tuple[int, ...], boundary_spin: int) -> float:
+        # A vanishing boundary field selects a thermodynamic branch without
+        # changing the periodic bulk Hamiltonian used for the full band.
+        return boundary_strength * boundary_spin * sum(config)
+
+    def select_by_boundary(
+        ground_configs: list[tuple[int, ...]],
+        boundary_spin: int,
+    ) -> set[float]:
+        best_score = max(
+            boundary_selector_score(config, boundary_spin)
+            for config in ground_configs
+        )
+        return {
+            magnetization(config)
+            for config in ground_configs
+            if abs(boundary_selector_score(config, boundary_spin) - best_score) < 1.0e-12
+        }
+
+    for length in range(4, 9):
+        configs = configurations(length)
+        energies = {config: periodic_ising_energy(config) for config in configs}
+        ground_energy = min(energies.values())
+        ground_configs = [
+            config
+            for config, energy in energies.items()
+            if abs(energy - ground_energy) < 1.0e-12
+        ]
+        excited_energies = [
+            energy
+            for energy in energies.values()
+            if energy > ground_energy + 1.0e-12
+        ]
+        full_ground_set = {magnetization(config) for config in ground_configs}
+        gap_above_union = min(excited_energies) - ground_energy
+
+        assert_true(
+            full_ground_set == {-1.0, 1.0},
+            "periodic finite Ising band has exactly two extremal branches",
         )
         assert_close(
             gap_above_union,
             4.0 * coupling,
-            "positive gap above the union does not select a branch",
+            "positive gap above the full ground band does not select a branch",
+        )
+        assert_true(
+            select_by_boundary(ground_configs, 1) == {1.0},
+            "plus boundary selects plus face",
+        )
+        assert_true(
+            select_by_boundary(ground_configs, -1) == {-1.0},
+            "minus boundary selects minus face",
         )
 
-    plus_magnetization = 1.0
-    minus_magnetization = -1.0
-    symmetric_mixture_magnetization = 0.5 * (plus_magnetization + minus_magnetization)
+    plus_face = frozenset({1.0})
+    minus_face = frozenset({-1.0})
+    full_band_set = frozenset({-1.0, 1.0})
+
+    def spin_flip_state_set(states: frozenset[float]) -> frozenset[float]:
+        return frozenset(-state for state in states)
 
     assert_true(
-        abs(plus_magnetization - minus_magnetization) == 2.0,
-        "extremal branches are distinct local-state faces",
+        spin_flip_state_set(full_band_set) == full_band_set,
+        "BMNS-type full-set transport can hold setwise",
     )
+    assert_true(
+        spin_flip_state_set(plus_face) == minus_face,
+        "covariant selector transports plus face to minus face under spin flip",
+    )
+    noncovariant_endpoint_plus = plus_face
+    assert_true(
+        spin_flip_state_set(plus_face) != noncovariant_endpoint_plus,
+        "a noncovariantly chosen endpoint plus face is not the transported face",
+    )
+
+    plus_magnetization = next(iter(plus_face))
+    minus_magnetization = next(iter(minus_face))
+    symmetric_mixture_magnetization = 0.5 * (plus_magnetization + minus_magnetization)
     assert_close(
         symmetric_mixture_magnetization,
         0.0,
-        "the whole ground-state simplex is not an extremal branch",
+        "the whole ground-state convex set is not an extremal branch",
     )
-
-    identity_transport = {plus_magnetization, minus_magnetization}
-    spin_flip_transport = {-plus_magnetization, -minus_magnetization}
     assert_true(
-        identity_transport == spin_flip_transport,
-        "setwise transport of the full simplex does not identify its two faces",
-    )
-    selected_plus_face = frozenset({plus_magnetization})
-    selected_minus_face = frozenset({minus_magnetization})
-    assert_true(
-        selected_plus_face != selected_minus_face,
-        "a selected face is extra phase data beyond the parameter value",
+        plus_face != minus_face,
+        "a selected face is extra selector data beyond the parameter value",
     )
 
 

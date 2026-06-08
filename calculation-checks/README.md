@@ -2159,9 +2159,11 @@ Current checks:
 	  a value-only topology can miss a divergent susceptibility, together with a
 	  growing-support negative control where finite-volume automorphisms converge
 	  on every fixed local algebra but do not control a moving boundary or logical
-	  observable sequence, and a finite symmetry-breaking/coexistence control
-	  showing that a gapped parameter value with a multi-branch ground-state band
-	  does not select a unique phase face.
+	  observable sequence, and an explicit finite Ising Hamiltonian selector
+	  control showing that a gapped parameter value with a multi-branch
+	  ground-state band does not select a unique phase face, that the full
+	  ground-state set can transport setwise, and that plus/minus selected faces
+	  transport only with a covariant boundary selector.
 - `toric_code_logical_operator_checks.py`: finite Pauli and chain-complex
   checks for the gauge-theory phases chapter, including star/plaquette
   commutation, global stabilizer redundancies, the four-dimensional torus

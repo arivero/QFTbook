@@ -78,11 +78,34 @@ and isolated finite-volume spectral band \(P_n(p)\).  Let
 \(\mathcal S_p^{\rm band}\) be the weak-star compact convex set of
 thermodynamic limit points of finite-volume states whose density matrices are
 supported in \(P_n(p)\), restricted to the quasi-local algebra
-\(\mathcal A_{\mathrm{obs}}(p)\).  A Hamiltonian phase carrier is a declared
-weak-star closed face, component, extremal branch, representation class, or the
-whole simplex \(\mathfrak S_p\subseteq\mathcal S_p^{\rm band}\), together with
-the finite-volume band, boundary conditions, and limiting procedure that select
-it.
+\(\mathcal A_{\mathrm{obs}}(p)\).  A selected state carrier is a declared
+weak-star closed subset
+\[
+  \mathfrak T_p\subseteq\mathcal S_p^{\rm band},
+\]
+such as the whole band-selected set, a weak-star closed face, a connected
+component, or a specified family of extremal states.  A Hamiltonian phase datum
+consists of this state carrier together with the finite-volume band, boundary
+conditions, selector, and limiting procedure that choose it.
+
+The words naming subsets are not interchangeable.  A face
+\(F\subseteq\mathcal S_p^{\rm band}\) is a convex subset such that
+\(\lambda\omega_1+(1-\lambda)\omega_2\in F\), \(0<\lambda<1\), forces
+\(\omega_1,\omega_2\in F\).  An extremal state is an extreme point of the
+chosen convex state set; purity as a state on \(\mathcal A_{\mathrm{obs}}\) is
+stronger unless the ambient set is the full state space.  A factorial state is
+one whose GNS von Neumann algebra has factor center.  An ergodic state is
+ergodic only relative to a declared symmetry, translation, or dynamics action.
+The band-selected set is a weak-star compact convex set; it is called a
+simplex only when the required Choquet-decomposition hypotheses have been
+stated.
+
+Representation, sector, and boundary carriers are separate data.  A
+representation carrier, denoted \(\mathfrak R_p\), is a set of GNS
+quasi-equivalence classes, localized endomorphism sectors, field-algebra
+extensions, or boundary-net data.  It is not a subset of
+\(\mathcal S_p^{\rm band}\), although a selected state carrier can induce such
+representation data.
 
 The bare parameter value \(p\) is not the carrier.  At a symmetry-breaking or
 first-order coexistence point, \(\mathcal S_p^{\rm band}\) may contain several
@@ -94,9 +117,10 @@ component, or a unique phase label.
 \begin{definition}[Gapped regulated phase path]
 \label{def:gauge-theory-phase}
 \label{def:gapped-regulated-phase-equivalence}
-For a regulated Hamiltonian problem, two selected Hamiltonian phase carriers
-\(\mathfrak S_{p_0}\) and \(\mathfrak S_{p_1}\), with \(p_0,p_1\in\mathcal P\),
-are connected by a gapped regulated phase path when they can be joined by a path
+For a regulated Hamiltonian problem, two selected Hamiltonian phase data with
+state carriers \(\mathfrak T_{p_0}\) and \(\mathfrak T_{p_1}\), with
+\(p_0,p_1\in\mathcal P\), are connected by a gapped regulated phase path when
+they can be joined by a path
 \(s\mapsto \Phi_s\), \(s\in[0,1]\), of local interactions on an exhausting
 finite-volume sequence \(\Lambda_n\), with Hamiltonians
 \(H_n(s)=\sum_X\Phi_{n,s}(X)\), such that:
@@ -119,15 +143,16 @@ finite-volume sequence \(\Lambda_n\), with Hamiltonians
     \sigma(H_n(s))\setminus\sigma^{\mathrm{band}}_n(s)\bigr)\ge \gamma>0 ;
   \]
 \item the thermodynamic limit of the quasi-local observable system, the
-  finite-volume band-selected state sets, the selected carrier
-  \(\mathfrak S_s\), and the finite-volume restrictions of the interaction path
-  exist with the stated boundary convention and satisfy the Cauchy/locality
-  hypotheses of the imported automorphic-equivalence theorem.
+  finite-volume band-selected state sets \(\mathcal S_s^{\rm band}\), any
+  selected state carriers \(\mathfrak T_s\), any representation or sector
+  carriers \(\mathfrak R_s\), and the finite-volume restrictions of the
+  interaction path exist with the stated boundary convention and satisfy the
+  Cauchy/locality hypotheses of the imported automorphic-equivalence theorem.
 \end{enumerate}
 The definition names the path data and the selected state-space carrier.  It
 does not assume the quasi-local automorphism that the theorem below constructs,
-and it does not identify different faces lying in the same finite-volume
-spectral band.
+and it does not assume that independently chosen endpoint faces are transported
+images of one another.
 \end{definition}
 
 \begin{theorem}[Imported automorphic equivalence for a gapped path]
@@ -143,20 +168,66 @@ automorphism
   \longrightarrow \mathcal A_{\mathrm{obs}}(p_1)
 \]
 of the quasi-local observable algebra.  The induced dual map transports the
-selected infinite-volume ground-state carrier setwise:
+full band-selected infinite-volume ground-state set:
 \[
-  \mathfrak S_{p_1}
+  \mathcal S_{p_1}^{\rm band}
   =
-  \mathfrak S_{p_0}\circ \alpha_{1\leftarrow0}.
+  \bigl\{
+    \omega\circ\alpha_{1\leftarrow0}^{-1}
+    \;:\;
+    \omega\in\mathcal S_{p_0}^{\rm band}
+  \bigr\}.
 \]
-This is the BMNS setwise conclusion for the selected simplex or face; it does
-not say that all states inside one transported set are phases of one another.
+This is the BMNS setwise conclusion.  It does not transport an independently
+chosen face, branch, boundary-selected set, or representation class unless a
+separate selector theorem or definition supplies that covariance.  It also does
+not say that all states inside the transported set are phases of one another.
 If the path, observable system, and quasi-adiabatic generator are equivariant
 for a fixed declared symmetry or global-form action, the automorphism
 intertwines that action.  Symmetry may carry an extremal branch to another
 branch in the same orbit, but equivariant transport does not merge inequivalent
 coexisting phase faces.
 \end{theorem}
+
+\begin{proposition}[Selected state carriers require a covariant selector]
+\label{prop:selected-state-carrier-transport-selector}
+Let \(\mathfrak T_s\subseteq\mathcal S_s^{\rm band}\) be selected state
+carriers along a gapped path satisfying
+Theorem~\ref{thm:gapped-path-automorphic-equivalence-imported}.  The endpoint
+identity
+\[
+  \mathfrak T_{p_1}
+  =
+  \bigl\{
+    \omega\circ\alpha_{1\leftarrow0}^{-1}
+    \;:\;
+    \omega\in\mathfrak T_{p_0}
+  \bigr\}
+\]
+holds only if the selector is spectral-flow covariant.  This may be an
+additional theorem about finite-volume selected sets
+\(T_n(s)\), a covariantly transported order-parameter or source selector, a
+boundary-condition theorem showing that selected thermodynamic limits are
+carried by the cocycle, or the explicit definition of
+\(\mathfrak T_{p_1}\) as the automorphic image of \(\mathfrak T_{p_0}\).
+\end{proposition}
+
+\begin{proof}
+The imported theorem gives an affine weak-star homeomorphism from the full
+band-selected state set at \(p_0\) onto the full band-selected state set at
+\(p_1\).  Restricting a homeomorphism to a subset gives the displayed endpoint
+identity exactly when the endpoint subset is the image of the initial subset.
+Existence of selected subsets at every \(s\) does not imply this covariance.
+\end{proof}
+
+The dual of a \(C^*\)-automorphism preserves convexity, weak-star closedness,
+faces, connected components, and extreme points relative to the state set being
+transported.  It preserves purity as a state on the quasi-local algebra and
+factoriality of the GNS representation.  Ergodicity is preserved only for the
+declared action that the automorphism intertwines.  Representation carriers
+transport separately by composition of representations with the algebra
+isomorphism; this is a statement about \(\mathfrak R_p\), not about subsets
+of \(\mathcal S_p^{\rm band}\).
 
 The finite constructions in
 Section~\ref{sec:finite-regulator-locality-machinery-phase-stability} explain
@@ -232,16 +303,19 @@ hypotheses.
 \end{proof}
 
 With the declared problem fixed, gapped path equivalence is then generated by
-such paths and their automorphic outputs between compatible selected carriers:
-constant paths give reflexivity, reversing a path gives symmetry, and
-concatenating two uniformly controlled gapped paths gives transitivity with the
-smaller of the two positive gap bounds and the composed automorphism, provided
-the intermediate selected carrier is the same face or declared representation
-class.  Expectations of fixed local observables are transported consequences.
+such paths and their automorphic outputs between compatible full band-selected
+state sets.  For chosen faces or branches, the equivalence relation is generated
+only after a spectral-flow-covariant state selector has been supplied, as in
+Proposition~\ref{prop:selected-state-carrier-transport-selector}.  Constant
+paths give reflexivity, reversing a path gives symmetry, and concatenating two
+uniformly controlled gapped paths gives transitivity with the smaller of the
+two positive gap bounds and the composed automorphism, provided the intermediate
+state selector is the same transported selector.  Representation, sector, and
+boundary-net carriers require their own compatible transport statements.
+Expectations of fixed local observables are transported consequences.
 Susceptibilities, Kubo coefficients, Hall responses, defect responses, and
-nonlocal phase data are transported only under the additional
-carrier-specific derivative, contact, and limit-exchange hypotheses just
-stated.
+nonlocal phase data are transported only under the additional carrier-specific
+derivative, contact, and limit-exchange hypotheses just stated.
 
 \begin{definition}[Phase boundaries and gapless universality]
 \label{def:phase-boundary-gapless-universality}

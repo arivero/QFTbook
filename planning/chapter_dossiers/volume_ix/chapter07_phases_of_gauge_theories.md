@@ -29,11 +29,12 @@ and topological sectors fit together.
 - `SRC-EXTERNAL-GAPPED-AUTOMORPHIC-EQUIVALENCE`:
   Bachmann--Michalakis--Nachtergaele--Sims are used for the theorem-boundary
   statement that uniformly gapped local Hamiltonian paths yield quasi-local
-  spectral-flow automorphisms transporting the selected weak-star compact
-  ground-state set or face setwise.  The chapter derives only the finite
-  locality/spectral-flow mechanism and treats thermodynamic convergence as
-  imported theorem input; it does not identify all states in a coexisting
-  ground-state simplex with one another.
+  spectral-flow automorphisms transporting the full band-selected weak-star
+  compact ground-state set setwise.  Selected faces or branches require a
+  separate spectral-flow-covariant selector theorem or definition.  The chapter
+  derives only the finite locality/spectral-flow mechanism and treats
+  thermodynamic convergence as imported theorem input; it does not identify all
+  states in a coexisting ground-state set with one another.
 - `SRC-EXTERNAL-GAUGE-HIGGS-DIAGNOSTICS`: Fredenhagen--Marcu and
   Caudy--Greensite are used for charged-state/remnant-symmetry diagnostic
   context around the local analytic theorem.
@@ -45,12 +46,14 @@ and topological sectors fit together.
   sectors, boundary conditions, source functionals, and Euclidean data.
 - `omega`: thermodynamic-limit state on `A_obs`.
 - `P`: parameter domain of couplings and topological terms.
-- `S_p^band`, `frak S_p`: band-selected weak-star ground-state set and the
-  selected simplex/face/branch that is the Hamiltonian phase carrier.
+- `S_p^band`, `frak T_p`, `frak R_p`: band-selected weak-star compact convex
+  state set, selected state carrier subset, and separate representation/sector
+  carrier.
 - `alpha_{1<-0}`: quasi-local spectral-flow automorphism transporting the
-  declared observable algebra and selected ground-state carrier setwise; it is
-  the output of the imported automorphic-equivalence theorem, not a hypothesis
-  in the gapped path definition.
+  declared observable algebra and full band-selected ground-state set setwise;
+  selected faces require a covariant selector before they can be transported.
+  It is the output of the imported automorphic-equivalence theorem, not a
+  hypothesis in the gapped path definition.
 - `O_L`, `X_L`: increasing extended-operator family and its growing support,
   used only after a carrier topology and uniform estimates are declared.
 - `gamma`: volume-uniform positive gap lower bound in the gapped phase
@@ -126,12 +129,13 @@ and topological sectors fit together.
   criterion on selected Hamiltonian phase carriers, not bare parameter values:
   same phase requires a local Hamiltonian path with uniform locality bounds,
   sufficient \(s\)-regularity, fixed symmetry/global-form/boundary data, a
-  volume-uniform positive gap above the declared ground-state band, selected
-  weak-star ground-state simplex/face data, and controlled
+  volume-uniform positive gap above the declared ground-state band, full
+  band-selected weak-star compact state-set data, any selected state-carrier
+  selector, any separate representation/sector carrier, and controlled
   thermodynamic/Cauchy hypotheses.  The quasi-local spectral-flow automorphism
-  transporting the observable algebras and selected carrier setwise is the
+  transporting the observable algebras and full band-selected state set is the
   output of the imported automorphic-equivalence theorem; coexisting faces at
-  one Hamiltonian are not silently merged.
+  one Hamiltonian are transported only after a covariant selector is supplied.
 - Types extended phase diagnostics before transporting them: fixed finite
   loops are local-algebra elements; increasing loop/surface nets require a
   topology on renormalized asymptotics and uniform estimates; charged/disorder
@@ -238,9 +242,10 @@ and topological sectors fit together.
   continuous while a gap closes and that a value-only comparison topology can
   miss a divergent susceptibility, plus a growing-support negative control in
   which automorphisms converge on every fixed local algebra but fail to
-  transport a boundary/logical observable sequence, and a finite
-  symmetry-breaking/coexistence check where a positive gap above a two-branch
-  ground-state band does not make the parameter value a unique phase carrier.
+  transport a boundary/logical observable sequence, and an explicit finite
+  Ising Hamiltonian selector check where the full two-branch ground-state band
+  transports setwise but plus/minus selected faces transport only for a
+  covariant boundary selector.
 - `calculation-checks/toric_code_logical_operator_checks.py` verifies the
   finite one-form laboratory: star/plaquette commutation, stabilizer
   redundancies, ground-space dimension, logical line anticommutation,
@@ -301,7 +306,15 @@ screening quotient, condensate subgroup, and topological sector.
 - 2026-06-08 issues #953/#954 pass: reserved `A_obs` for bounded quasi-local
   observables, split sectors, boundary conditions, source/response data, and
   Euclidean reconstruction data into typed carriers, and reformulated gapped
-  phase equivalence on selected weak-star ground-state simplices/faces rather
-  than bare parameter values.  The BMNS theorem is now stated as setwise
-  transport of the selected carrier, and a finite coexistence check records why
-  a gapped multi-branch ground band does not select a unique phase face.
+  phase equivalence on selected weak-star ground-state carrier data rather than
+  bare parameter values.  A finite coexistence check records why a gapped
+  multi-branch ground band does not select a unique phase face.
+- 2026-06-08 issue #956 pass: tightened the BMNS theorem boundary to the full
+  band-selected weak-star compact state set and added a selected-carrier
+  proposition requiring a spectral-flow-covariant selector.  State subsets now
+  use `frak T_p`, representation/sector carriers use separate `frak R_p`, and
+  the text records which face/extremal/pure/factorial/ergodic properties are
+  preserved by a `C*`-automorphism.  The companion Ising check now enumerates a
+  finite Hamiltonian ground band, boundary-selected plus/minus faces, covariant
+  plus-to-minus transport under spin flip, and a noncovariant endpoint negative
+  control.
