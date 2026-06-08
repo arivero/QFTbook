@@ -9,10 +9,12 @@ classifies only weakly regular almost-homogeneous local freedom, computes the
 flat thermal stress tensor, fixes the de Sitter conformal-anomaly diagnostic,
 and uses the convention-correct scalar trace identity.
 Independent construction: symbolic flat Synge identities, exact rational
-Hadamard-recursion coefficients, finite divergence-defect bookkeeping for the
-``eta_D = D/[2(D+2)]`` improvement, dimension/regularity filters for local
-counterterms, constant-curvature reductions of the curvature-squared Euler
-tensors, and trace-identity regression cases.
+Hadamard-recursion coefficients visible before the stress-tensor theorem
+boundary, downstream divergence-defect bookkeeping after the imported
+``eta_D = D/[2(D+2)]`` theorem, dimension/regularity filters for local
+counterterms, text-contract checks for the quoted Moretti/Hollands-Wald
+status, constant-curvature reductions of the curvature-squared Euler tensors,
+and trace-identity regression cases.
 Imported assumptions: the analytic Hadamard recursion and Moretti/Hollands-
 Wald conservation identity for the smooth parametrix defect.  The finite
 checks verify the algebraic shape and negative controls, not the microlocal
@@ -27,12 +29,25 @@ operator-valued stress tensors on a common domain.
 """
 
 from fractions import Fraction
+from pathlib import Path
 
 import mpmath as mp
 import sympy as sp
 
 
 mp.mp.dps = 60
+REPO_ROOT = Path(__file__).resolve().parents[1]
+POINT_SPLITTING_CHAPTER = (
+    REPO_ROOT
+    / "monograph/tex/volumes/volume_xii/chapter02_point_splitting_stress_tensor.tex"
+)
+
+
+def assert_contains(text, phrase, context):
+    normalized_text = " ".join(text.split())
+    normalized_phrase = " ".join(phrase.split())
+    if phrase not in text and normalized_phrase not in normalized_text:
+        raise AssertionError(f"{context}: missing {phrase!r}")
 
 
 def assert_close(name, lhs, rhs, tol=mp.mpf("1e-45")):
@@ -170,10 +185,10 @@ def check_point_split_conservation_improvement():
     eta_d = Fraction(dimension, 2 * (dimension + 2))
     assert_equal("four-dimensional point-split improvement eta", eta_d, Fraction(1, 3))
 
-    # Finite model of the divergence identity after the Hadamard coefficient
-    # lemma has reduced the parametrix defect to one local covector.  The
-    # naive polarized Hilbert tensor leaves the displayed local defect; the
-    # eta_D equation-of-motion line cancels it.
+    # Downstream finite model after the imported Moretti theorem has reduced
+    # the analytic Hadamard-parametrix defect to one local covector.  This is
+    # a convention regression for the coefficient, not an independent proof of
+    # the Hadamard coincidence-limit theorem.
     parametrix_defect_gradient = Fraction(6)
     naive_divergence = -eta_d * parametrix_defect_gradient
     improved_divergence = naive_divergence + eta_d * parametrix_defect_gradient
@@ -185,6 +200,25 @@ def check_point_split_conservation_improvement():
     wrong_divergence = naive_divergence + wrong_eta * parametrix_defect_gradient
     if wrong_divergence == 0:
         raise AssertionError("wrong equation-of-motion coefficient accidentally conserved")
+
+
+def check_imported_theorem_text_contract():
+    text = POINT_SPLITTING_CHAPTER.read_text(encoding="utf-8")
+    required = [
+        r"\begin{quotedtheorem}[Moretti improved point-splitting conservation theorem]",
+        r"\eta_D=\frac{D}{2(D+2)}",
+        "truncation order high enough",
+        "coincidence-limit identities",
+        "short transport calculation above",
+        "Moretti2003StressEnergy",
+        r"\begin{quotedtheorem}[Hollands--Wald finite-renormalization theorem]",
+        "Peetre--Slovak/Hollands--Wald",
+        "finite natural",
+        "dimension count below is only the basis",
+        "dimension counting alone would allow",
+    ]
+    for phrase in required:
+        assert_contains(text, phrase, "point-splitting imported theorem contract")
 
 
 def check_local_freedom_regularity_filter():
@@ -268,6 +302,7 @@ def main():
     check_wald_finite_freedom_dimensions()
     check_curvature_squared_euler_tensor_traces()
     check_point_split_conservation_improvement()
+    check_imported_theorem_text_contract()
     check_local_freedom_regularity_filter()
     check_constant_curvature_finite_terms_vanish_massless()
     check_scalar_trace_identity_regressions()

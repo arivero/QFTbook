@@ -2894,9 +2894,12 @@ Current checks:
   Hadamard singularity, the sign of smooth and scale subtraction changes,
   Wald finite-freedom engineering dimensions, the \(R^2\) and
   \(R_{\mu\nu}R^{\mu\nu}\) Euler-tensor trace coefficients, the
-  equation-of-motion improvement needed to cancel the Hadamard parametrix
-  divergence defect, the regularity filter excluding nonpolynomial
-  dimension-four local tensors, the vanishing of \(I_{\mu\nu}\) and
+  downstream equation-of-motion improvement regression after the imported
+  Moretti Hadamard-coefficient theorem has reduced the parametrix divergence
+  defect to one local covector, text-contract checks that the conservation
+  and finite-freedom results are quoted Moretti/Hollands--Wald structural
+  theorems rather than locally derived lemmas, the regularity filter excluding
+  nonpolynomial dimension-four local tensors, the vanishing of \(I_{\mu\nu}\) and
   \(J_{\mu\nu}\) on four-dimensional constant curvature in the massless
   conformal scheme, scalar trace-identity regressions for minimal/conformal
   and massive/massless cases, the

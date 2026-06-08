@@ -164,7 +164,9 @@
       "risk_class": "point-split scalar stress tensor conservation and trace conventions",
       "convention_tags": [
         "Hadamard parametrix is local not exact bisolution",
-        "equation-of-motion improvement etaD repairs conservation defect",
+        "etaD conservation coefficient is imported from Moretti Hadamard-coefficient theorem",
+        "finite check is downstream coefficient regression not analytic Hadamard proof",
+        "finite local freedom is Hollands-Wald Peetre-Slovak theorem boundary",
         "finite local freedom requires weak regularity and almost homogeneous scaling",
         "scalar trace mass term is negative in mostly-plus convention",
         "trace improvement coefficient is (D-1)(xi-xi_c)",

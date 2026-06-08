@@ -54,6 +54,19 @@ bookkeeping.
   classification theorem remain theorem boundaries; the companion checks
   verify algebraic consequences and negative controls.
 
+## Follow-Up For Issue #932
+
+The chapter has now been corrected to make that boundary visible in the
+monograph text itself.  The \(\eta_D=D/[2(D+2)]\) conservation coefficient is
+quoted from Moretti's improved point-splitting theorem, including the
+Hadamard-parametrix truncation/regularity status needed for the differentiated
+diagonal limits.  The finite local freedom is quoted as a Hollands--Wald
+finite-renormalization theorem, with Peetre--Slovak-type locality and weak
+regularity doing the finite-jet reduction before the four-dimensional tensor
+basis is enumerated.  The calculation companion is therefore a convention and
+negative-control regression, not an independent proof of the analytic
+coefficient theorem.
+
 ## Verification
 
 - `python3 calculation-checks/point_splitting_stress_checks.py`

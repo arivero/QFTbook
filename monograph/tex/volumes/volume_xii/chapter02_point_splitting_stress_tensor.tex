@@ -568,34 +568,47 @@ The last line is the point-split form of
 does not vanish after subtracting a Hadamard parametrix because the parametrix
 is only a local parametrix, not an exact bisolution.
 
-\begin{proposition}[Parametrix defect and conservation repair]
+\begin{quotedtheorem}[Moretti improved point-splitting conservation theorem]
 \label{prop:parametrix-defect-conservation-repair}
-In spacetime dimension \(D\), set
+Let \(D>2\), let \(P_M=-\Box_g+m^2+\xi R[g]\) with constant \(m^2\) and
+constant \(\xi\), and let \(\omega\) be a Hadamard state on a smooth globally
+hyperbolic spacetime.  Choose the local Hadamard parametrix in the same
+normalization as Definition~\ref{def:local-hadamard-subtraction}, or
+equivalently Moretti's \(Z_n\) normalization, with truncation order high
+enough that the differentiated diagonal limits and one divergence exist
+(\(n\ge3\) suffices in four dimensions).  For the parallel-transported
+point-split Hilbert operator with the equation-of-motion ambiguity
+\(\eta g_{\mu\nu}\phi P_M\phi\), the averaged point-split stress tensor built
+from the nonambiguous local Hadamard parametrix is conserved if and only if
 \[
   \eta_D=\frac{D}{2(D+2)} ,
   \qquad\text{so in four dimensions}\qquad
   \eta_4=\frac13 .
 \]
-For constant \(m^2\) and \(\xi\), the point-split prescription
-\begin{equation}
-  \omega(T_{\mu\nu}^{\rm ps})
-  =
-  \left[
-    \mathcal D_{\mu\nu}^{(\eta_4)}
-    \bigl(\omega_2-H_{\epsilon,\mu}\bigr)
-  \right]_\Delta
-  +C_{\mu\nu}^{\rm res}[g,m^2,\xi]
-  \label{eq:conserved-point-split-stress-prescription}
-\end{equation}
-is conserved whenever the residual local tensor
-\(C_{\mu\nu}^{\rm res}\) is conserved.  The residual tensor is then precisely
-the finite local freedom classified in
-Proposition~\ref{prop:finite-local-freedom-scalar-stress-tensor}.
-\end{proposition}
+In even dimensions the trace contains the local Hadamard/Seeley--DeWitt
+coefficient, and changes of the Hadamard length scale add conserved local
+tensors of the same engineering dimension.
 
-\begin{proof}
-For a polarized classical product \(F(x,y)=\phi(x)\psi(y)\), the Hilbert
-identity gives
+This is an imported analytic theorem; the short transport calculation above
+only fixes the local notation.  In the notation of this chapter, it imports the
+coincidence-limit identities for \(P_{M,x}H\), \(P_{M,y}H\), and their first
+diagonal derivatives: the two smooth parametrix defects in
+\eqref{eq:naive-point-split-divergence-defect} combine to one locally
+covariant covector \(\mathcal K_\nu[H]\), the divergence of the last line of
+\eqref{eq:point-split-stress-bidifferential-operator} contributes
+\(\eta\,\mathcal K_\nu[H]\), and the Hadamard coefficient theorem fixes the
+naive coefficient to \(-\eta_D\).  We cite Moretti's improved point-splitting
+construction for this coefficient identity and conservation theorem, with the
+local Wick-product framework and finite renormalization setting supplied by
+Hollands--Wald
+\cite{Moretti2003StressEnergy,HollandsWald2001LocalWick,
+HollandsWald2005Conservation,HollandsWald2015QFCS}.
+\end{quotedtheorem}
+
+\paragraph{Convention translation.}
+The local algebra that is proved in this chapter is the convention
+translation around the imported theorem.  For a polarized classical product
+\(F(x,y)=\phi(x)\psi(y)\), the Hilbert identity gives
 \[
   \nabla^\mu T_{\mu\nu}(\phi,\psi)
   =
@@ -623,25 +636,23 @@ has a local divergence defect on
   P_{M,x}F_\omega=-P_{M,x}H_{\epsilon,\mu},\qquad
   P_{M,y}F_\omega=-P_{M,y}H_{\epsilon,\mu}.
 \]
-The two displayed defects are smooth locally covariant biscalars determined
-by the Hadamard recursion.  They are the first unremoved regular terms of the
-local parametrix, not state-dependent data.
+Those smooth local defects are determined by the Hadamard recursion, but the
+specific coincidence identity reducing their divergence to
+\(-\eta_D\mathcal K_\nu[H]\) is imported from the Moretti theorem boundary
+above.
 
-The equation-of-motion improvement contributes
-\[
-  \frac{\eta}{2}\nabla_\nu
+Consequently, in four dimensions the prescription
+\begin{equation}
+  \omega(T_{\mu\nu}^{\rm ps})
+  =
   \left[
-    \left(P_{M,x}+P_{M,y}\right)F_{\rm s}
-  \right]_\Delta .
-\]
-The Hadamard coefficient identities for the locally constructed parametrix
-give the cancellation of
-\eqref{eq:naive-point-split-divergence-defect} precisely for
-\(\eta=\eta_D\).  This is the curved-spacetime point of the improvement:
-the classically zero tensor \(g_{\mu\nu}\phi P_M\phi\) repairs the quantum
-divergence produced by subtracting a local parametrix rather than an exact
-two-sided Green bisolution.  In the present four-dimensional chapter
-\(\eta_D=\eta_4=1/3\), so
+    \mathcal D_{\mu\nu}^{(\eta_4)}
+    \bigl(\omega_2-H_{\epsilon,\mu}\bigr)
+  \right]_\Delta
+  +C_{\mu\nu}^{\rm res}[g,m^2,\xi]
+  \label{eq:conserved-point-split-stress-prescription}
+\end{equation}
+has the nonlocal state-dependent divergence removed:
 \[
   \nabla^\mu
   \left[
@@ -651,14 +662,22 @@ two-sided Green bisolution.  In the present four-dimensional chapter
   =
   0 .
 \]
-Adding a conserved residual local tensor preserves this Ward identity.
-\end{proof}
+It is therefore conserved whenever the residual local tensor
+\(C_{\mu\nu}^{\rm res}\) is conserved.  That residual tensor is precisely the
+finite local freedom classified in
+Proposition~\ref{prop:finite-local-freedom-scalar-stress-tensor}; adding it
+preserves the Ward identity.
 
-\begin{proposition}[Finite local freedom of the scalar stress tensor]
+\begin{quotedtheorem}[Hollands--Wald finite-renormalization theorem]
 \label{prop:finite-local-freedom-scalar-stress-tensor}
 Let \(T_{\mu\nu}\) and \(T'_{\mu\nu}\) be two prescriptions satisfying
-Definition~\ref{def:point-split-stress-tensor-prescription}.  In four
-dimensions their difference is state-independent and has the form
+Definition~\ref{def:point-split-stress-tensor-prescription}.  Their
+difference is state-independent by the state-dependence axiom.  The
+Peetre--Slovak/Hollands--Wald locality, weak-regularity, and almost
+homogeneous scaling theorem then reduces that difference to a finite natural
+polynomial in the metric jet, \(m^2\), and the dimensionless coupling \(\xi\),
+subject to conservation and the declared engineering dimension.  In four
+dimensions, for fixed \(\xi\), the difference has the form
 \begin{equation}
   T'_{\mu\nu}-T_{\mu\nu}
   =
@@ -689,28 +708,13 @@ and
   \label{eq:ij-curvature-tensors-definition}
 \end{equation}
 with compactly supported metric variations and boundary terms discarded.
-\end{proposition}
+This classification is a quoted structural theorem
+\cite{HollandsWald2001LocalWick,HollandsWald2005Conservation,
+HollandsWald2015QFCS}; the dimension count below is only the basis
+enumeration after that finite-jet/naturality theorem has been invoked.
+\end{quotedtheorem}
 
-\begin{proof}
-Set \(D_{\mu\nu}:=T'_{\mu\nu}-T_{\mu\nu}\).  The state-dependence clause in
-Definition~\ref{def:point-split-stress-tensor-prescription} implies that for
-any two Hadamard states \(\omega,\omega'\),
-\[
-  \omega(D_{\mu\nu})-\omega'(D_{\mu\nu})=0.
-\]
-Thus \(D_{\mu\nu}\) is a state-independent local covariant tensor constructed
-from \(g_{\mu\nu}\), the constant mass parameter \(m\), and curvature.  The
-conservation clause gives \(\nabla^\mu D_{\mu\nu}=0\).  The engineering
-dimension clause says that every monomial in \(D_{\mu\nu}\) has total dimension
-four, counting \(m\) as dimension one, \(g_{\mu\nu}\) as dimension zero, and
-each curvature tensor as dimension two.
-The weak-regularity and almost-homogeneous-scaling clauses are used here:
-they turn ``local covariant tensor'' into a finite natural polynomial in the
-metric jet and the parameters at this engineering dimension.  Without those
-clauses, dimension counting for fixed \(m>0\) would not rule out nonpolynomial
-families such as metric variations of
-\(\int\sqrt{|g|}\,m^4F(R/m^2)\).
-
+\paragraph{Basis enumeration after the theorem.}
 The dimension-four local covariant candidates split by powers of \(m\).  The
 only \(m^4\) tensor with two covariant indices and no derivatives is
 \(m^4g_{\mu\nu}\), and it is conserved because \(m\) is constant and
@@ -758,9 +762,8 @@ derivatives, such as
 occur exactly in the Euler derivatives just described; total derivative
 scalar counterterms give boundary contributions under compactly supported
 metric variations; and tensors with more curvatures or more derivatives have
-dimension larger than four.  Therefore \(D_{\mu\nu}\) has the displayed
-four-parameter form.
-\end{proof}
+dimension larger than four.  Thus the quoted finite-renormalization theorem
+specializes to the displayed four-parameter form.
 
 \begin{proposition}[Curvature-squared Euler tensors]
 \label{prop:curvature-squared-euler-tensors-point-splitting}
