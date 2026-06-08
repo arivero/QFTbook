@@ -41,6 +41,17 @@
       ]
     },
     {
+      "path": "trace_anomaly_checks.py",
+      "risk_class": "curved trace-anomaly heat-kernel conventions",
+      "convention_tags": [
+        "P=-(nabla^2+E) Lichnerowicz sign",
+        "spin-bundle curvature trace fixes Dirac a4",
+        "Maxwell one-form coefficient requires complex ghost-pair subtraction",
+        "Weyl local parity-even density is half Dirac but not a global determinant square root",
+        "a contributes to separated TTT data as well as trace-contact Ward identities"
+      ]
+    },
+    {
       "path": "adler_bardeen_nonrenormalization_checks.py",
       "risk_class": "anomaly nonrenormalization"
     },

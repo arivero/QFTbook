@@ -334,10 +334,12 @@ classification.
 
 The following computation gives a controlled derivation of the free-field
 entries in \eqref{eq:curved-four-dimensional-trace-anomaly}.  Let \(P\) be a
-positive Laplace-type operator on a vector bundle \(E\to M\), written
+positive Laplace-type operator on a vector bundle \(E\to M\), written as
 \[
   P=-(g^{\mu\nu}\nabla_\mu\nabla_\nu+\mathcal E).
 \]
+We use the standard local coefficient formula
+\cite{Seeley1967,Gilkey1984}.
 Let \(\Omega_{\mu\nu}=[\nabla_\mu,\nabla_\nu]\).  On a closed four-manifold,
 the local heat-kernel expansion is
 \[
@@ -367,9 +369,18 @@ The coefficient needed for the logarithmic Weyl response is
   +\nabla_\mu J^\mu .
   \label{eq:curved-heat-kernel-a4}
 \end{align}
-The divergent logarithmic term in \(\frac12\log\det P\) is proportional to
-\(\int{\rm tr}\,a_4(P)\).  For Grassmann fields and gauge fields one includes
-the corresponding minus signs, square-root factors, and ghost determinants.
+The local anomaly coefficient is the coefficient of the logarithmic Weyl
+response after the Weyl weight of the kinetic operator is varied.  In the
+normalization of \eqref{eq:curved-four-dimensional-trace-anomaly}, a real
+conformal scalar contributes \(+{\rm tr}\,a_4(P_\phi)\), a four-component
+Dirac field contributes \(-{\rm tr}\,a_4(P_{\mathcal D})\) to the
+parity-even local density, and the Feynman-gauge Maxwell field contributes
+\({\rm tr}\,a_4(P_1)-2{\rm tr}\,a_4(P_0)\).  These signs and multiplicities
+are the local Weyl-response ledger: they include the Grassmann sign, the
+two chiral blocks of a Dirac field, and the complex Faddeev--Popov ghost
+pair.  Zero modes, gauge volumes, topological sectors, and determinant-line
+phases are global data and are not part of the local UV density being matched
+to \(a\) and \(c\).
 
 For a real conformally coupled scalar in four dimensions,
 \[
@@ -418,27 +429,142 @@ Using
 \]
 with \(a=1/360\), \(c=1/120\), gives the same curvature combination.
 
-For the remaining free conformal fields, the same heat-kernel formula is
-applied to the squared Dirac operator and to the gauge-fixed Maxwell complex.
-The fermion sign and the vector ghost subtraction are part of the determinant
-calculation:
+For a four-component Dirac spinor, the Lichnerowicz formula in these
+conventions gives
 \[
-  \mathcal W_{\rm Dirac}
+  P_{\mathcal D}
   =
-  -\frac12\log\det P_{\mathcal D},
+  \mathcal D^2
+  =
+  -\nabla^2+\frac14R
+  =
+  -(\nabla^2+\mathcal E_{\mathcal D}),
   \qquad
-  \mathcal W_{\rm Maxwell}
-  =
-  \frac12\log\det P_1-\log\det P_0 .
+  \mathcal E_{\mathcal D}=-\frac14R\,\mathbf 1_S .
 \]
-Here
+The spin connection curvature is
 \[
-  P_{\mathcal D}=\mathcal D^2=-\nabla^2+\frac14R,
+  \Omega_{\mu\nu}^S
+  =
+  \frac14R_{\mu\nu ab}\gamma^{ab},
+  \qquad
+  \gamma^{ab}=\frac12[\gamma^a,\gamma^b],
 \]
-while \(P_1\) is the Hodge Laplacian on one-forms and \(P_0\) the scalar
-ghost Laplacian.  Gamma-matrix traces in the spin bundle and the
-one-form/ghost bundle traces reduce the logarithmic terms to the following
-table:
+and
+\[
+  {\rm tr}_S\mathbf 1=4,\qquad
+  {\rm tr}_S\mathcal E_{\mathcal D}=-R,\qquad
+  {\rm tr}_S\mathcal E_{\mathcal D}^2=\frac14R^2,
+\]
+\[
+  {\rm tr}_S(\Omega_{\mu\nu}^S\Omega^{S\,\mu\nu})
+  =
+  -\frac12R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma},
+  \qquad
+  {\rm tr}_S(\gamma^{ab}\gamma^{cd})
+  =
+  4(g^{ad}g^{bc}-g^{ac}g^{bd}).
+\]
+Substitution in \eqref{eq:curved-heat-kernel-a4} gives
+\[
+  {\rm tr}_S a_4(P_{\mathcal D})
+  =
+  \frac1{360}
+  \left(
+    -7R_{\mu\nu\rho\sigma}^2
+    -8R_{\mu\nu}^2
+    +5R^2
+  \right)
+  +\nabla_\mu J^\mu .
+\]
+The Dirac Grassmann measure therefore contributes the negative of this
+parity-even local density:
+\[
+  -{\rm tr}_S a_4(P_{\mathcal D})
+  =
+  \frac1{360}
+  \left(
+    7R_{\mu\nu\rho\sigma}^2
+    +8R_{\mu\nu}^2
+    -5R^2
+  \right)
+  =
+  c_DW^2-a_DE_4,
+\]
+with \(a_D=11/360\) and \(c_D=1/20\).  A Weyl fermion gives one half of this
+local parity-even coefficient.  That half-density is not a globally canonical
+square root of the Dirac determinant: the chiral determinant or Pfaffian is a
+section of a determinant line and can carry eta-invariant and gravitational
+phase data, treated in the global-anomaly chapters.
+
+For Maxwell theory use Lorenz gauge with gauge parameter \(\alpha=1\) on a
+closed four-manifold, and separate harmonic zero modes and the gauge-group
+volume.  The minimal one-form and ghost operators are
+\[
+  (P_1A)_\mu
+  =
+  -\nabla^2 A_\mu+R_\mu{}^\nu A_\nu,
+  \qquad
+  P_0=-\nabla^2 .
+\]
+Thus \((\mathcal E_1)_\mu{}^\nu=-R_\mu{}^\nu\), and the one-form bundle traces
+are
+\[
+  {\rm tr}_1\mathbf 1=4,\qquad
+  {\rm tr}_1\mathcal E_1=-R,\qquad
+  {\rm tr}_1\mathcal E_1^2=R_{\mu\nu}R^{\mu\nu},
+\]
+\[
+  {\rm tr}_1(\Omega_{\mu\nu}\Omega^{\mu\nu})
+  =
+  -R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}.
+\]
+Consequently
+\[
+  {\rm tr}_1a_4(P_1)
+  =
+  \frac1{360}
+  \left(
+    -22R_{\mu\nu\rho\sigma}^2
+    +172R_{\mu\nu}^2
+    -40R^2
+  \right)
+  +\nabla_\mu J^\mu ,
+\]
+while the scalar ghost operator has
+\[
+  {\rm tr}_0a_4(P_0)
+  =
+  \frac1{360}
+  \left(
+    2R_{\mu\nu\rho\sigma}^2
+    -2R_{\mu\nu}^2
+    +5R^2
+  \right)
+  +\nabla_\mu J^\mu .
+\]
+The complex Grassmann ghost pair gives the subtraction
+\[
+  {\rm tr}_1a_4(P_1)-2{\rm tr}_0a_4(P_0)
+  =
+  \frac1{360}
+  \left(
+    -26R_{\mu\nu\rho\sigma}^2
+    +176R_{\mu\nu}^2
+    -50R^2
+  \right)
+  =
+  c_vW^2-a_vE_4,
+\]
+with \(a_v=31/180\) and \(c_v=1/10\).  For \(\alpha\ne1\) the gauge-fixed
+operator is nonminimal; on the nonzero-mode Hodge decomposition its
+\(\alpha\)-dependence is confined to the longitudinal scalar block and is
+canceled by the same BRST ghost and gauge-volume normalization.  Direct
+nonminimal heat-kernel computations give the same local \(a,c\) density; the
+remaining zero-mode and topological factors are finite-dimensional global
+bookkeeping rather than new local curvature coefficients.
+
+Collecting the local parity-even coefficients,
 \[
 \begin{array}{c|cc}
 \text{free conformal field} & a & c\\ \hline
@@ -448,9 +574,9 @@ table:
 \text{Maxwell vector} & \frac{31}{180} & \frac{1}{10}
 \end{array}
 \]
-The Weyl fermion entries are half the Dirac entries.  The vector entries
-include the Faddeev-Popov ghost determinant and refer to the gauge-invariant
-stress tensor rather than the unconstrained one-form determinant alone.
+The vector entries include the Faddeev--Popov ghost determinant and refer to
+the gauge-invariant stress tensor rather than the unconstrained one-form
+determinant alone.
 
 \section{Example: N=4 Yang-Mills}
 
@@ -505,12 +631,17 @@ as one-point functions.  Functional differentiation of
   \mathcal A[g](x)
   +\text{index-variation contact terms}.
 \]
-At separated points in a flat conformal theory the trace vanishes.  The
-curvature anomaly records the contact distribution obtained by varying
-through curved backgrounds and then returning to flat space.  This is why
-the same coefficient \(c\) controls both the \(W^2\) anomaly and the
-normalization of the separated stress-tensor two-point function, whereas
-\(a\) first appears in genuinely three-stress-tensor contact data.
+At separated points in a flat conformal theory the trace of a single stress
+tensor vanishes, but the anomaly coefficients are not exhausted by contact
+terms.  The coefficient \(c\) controls the normalization of the separated
+stress-tensor two-point function and contributes to the separated
+three-stress-tensor tensor structures.  The coefficient \(a\) is independent
+separated \(TTT\) data as well; after metric variation of the Euler-density
+representative it also appears in the trace-contact Ward identities generated
+by coincident stress insertions.  Thus the curved-background anomaly is a
+source-functional way of packaging both separated conformal data and the
+contact distributions obtained by returning to flat space
+\cite{OsbornPetkou1994,AnselmiFreedmanGrisaruJohansen1998}.
 
 In the locally covariant language, the assignment
 \[

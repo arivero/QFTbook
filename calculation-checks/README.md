@@ -1832,11 +1832,14 @@ Current checks:
   cofinal directed-window schedule rather than on unrelated finite windows.
 - `trace_anomaly_checks.py`: exact finite checks for the Volume XII curved
   trace-anomaly chapter, including the conformal-scalar heat-kernel
-  curvature combination, the \(R^2\) Weyl-variation shift of the
-  \(\nabla^2R\) coefficient, free-field \(a,c\) entries, the
-  \(\mathcal N=4\) Yang--Mills \(a=c\) sum, constant-curvature
-  \(E_4,W^2\) identities, and the two-dimensional Wess--Zumino action
-  variation.
+  curvature combination, the Dirac spin-bundle \(a_4\) trace, the
+  Maxwell one-form minus complex-ghost-pair subtraction, the Weyl-versus-Dirac
+  local coefficient, negative controls for the wrong Lichnerowicz sign and
+  omitted ghosts, the \(R^2\) Weyl-variation shift of the \(\nabla^2R\)
+  coefficient, free-field \(a,c\) entries, the role of \(a\) in separated
+  \(TTT\) data as well as trace contacts, the \(\mathcal N=4\) Yang--Mills
+  \(a=c\) sum, constant-curvature \(E_4,W^2\) identities, and the
+  two-dimensional Wess--Zumino action variation.
 - `cft_anomaly_regression_checks.py`: finite arithmetic checks for the
   issue-#447 regression class: the \(\pi^0\to2\gamma\) anticommutator factor,
   the \(4/3\) identity-block cubic coefficient, the \(W=-\log Z\)

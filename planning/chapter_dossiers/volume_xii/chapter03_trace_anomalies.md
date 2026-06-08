@@ -24,13 +24,15 @@ Source-File: monograph/tex/volumes/volume_xii/chapter03_trace_anomalies.tex
 - Two-dimensional trace anomaly and Wess-Zumino action.
 - Four-dimensional `a,c,b` anomaly structure with explicit
   `E_4`, `W^2`, and `nabla^2 R` representatives.
-- Heat-kernel derivation for the conformal scalar and determinant-ledger
-  derivation for Dirac/Weyl fermions and Maxwell vectors.
+- Heat-kernel derivation for the conformal scalar, explicit Dirac
+  spin-bundle trace, Weyl local half-coefficient qualification, and Maxwell
+  one-form/ghost subtraction.
 - Free-field table for scalar, Weyl fermion, Dirac fermion, and Maxwell
   vector `a,c` coefficients.
 - `N=4` Yang-Mills check: `a=c=dim(G)/4`.
-- Contact-term interpretation of trace anomalies in stress-tensor Ward
-  identities.
+- Trace anomalies as both separated stress-tensor CFT data and contact terms
+  in curved-source Ward identities; `a` enters separated `TTT` and trace
+  contacts.
 - Nonperturbative open problem for trace anomalies from curved-background
   locally covariant QFT data.
 
@@ -52,6 +54,7 @@ Source-File: monograph/tex/volumes/volume_xii/chapter03_trace_anomalies.tex
 | `P` | Laplace-type operator |
 | `mathcal E` | endomorphism in `P=-(nabla^2+mathcal E)` |
 | `Omega_{mu nu}` | bundle curvature of the heat-kernel connection |
+| `P_D`, `P_1`, `P_0` | squared Dirac, one-form Hodge, and scalar ghost operators |
 
 ## Claim Ledger
 
@@ -69,18 +72,29 @@ Source-File: monograph/tex/volumes/volume_xii/chapter03_trace_anomalies.tex
    background-source terms when those sources are present.
 7. The conformal-scalar coefficients `a=1/360`, `c=1/120` follow directly
    from the `a_4` heat-kernel coefficient.
-8. The Dirac/Weyl/vector entries follow from the same heat-kernel formula
-   with spin-bundle traces and ghost/determinant signs.
-9. `N=4` Yang-Mills has `a=c=dim(G)/4` in the free-field normalization.
-10. Trace anomalies define contact terms in stress-tensor Ward identities,
-    not merely separated-point one-point functions.
+8. The Dirac entry follows from the Lichnerowicz endomorphism
+   `E_D=-R/4`, the spin-curvature trace
+   `tr Omega^2=-Riem^2/2`, and the Grassmann local Weyl-response sign.
+9. A Weyl fermion is half the local parity-even Dirac density, but this local
+   statement is not a globally canonical determinant/Pfaffian square root.
+10. The Maxwell entry follows in Lorenz gauge from the one-form Hodge
+    operator minus the complex Faddeev-Popov ghost pair; gauge parameter,
+    zero-mode, gauge-volume, and topological factors are separate from the
+    local UV coefficient.
+11. `N=4` Yang-Mills has `a=c=dim(G)/4` in the free-field normalization.
+12. Trace anomalies define separated stress-tensor data and contact terms in
+    stress-tensor Ward identities; in particular `a` enters separated `TTT`
+    and the trace-contact identities, not contact data alone.
 
 ## Calculation Ledger
 
 - `calculation-checks/trace_anomaly_checks.py` verifies the scalar
-  heat-kernel curvature combination, the `R^2` Weyl variation, free-field
-  `a,c` arithmetic, `N=4` `a=c`, constant-curvature identities, and the
-  two-dimensional Wess-Zumino variation.
+  heat-kernel curvature combination, Dirac spin-bundle `a_4` traces, Maxwell
+  one-form/ghost subtraction, Weyl-versus-Dirac local factors, wrong-sign and
+  omitted-ghost negative controls, the `R^2` Weyl variation, free-field `a,c`
+  arithmetic, the role of `a` in separated `TTT`, `N=4` `a=c`,
+  constant-curvature identities, and the two-dimensional Wess-Zumino
+  variation.
 - `calculation-checks/curvature_squared_euler_convention_checks.py` verifies
   that the `R^2` Weyl coboundary used for the `b nabla^2 R` scheme coordinate
   remains distinct from, and compatible with, the shared Ricci-squared
@@ -104,3 +118,7 @@ Source-File: monograph/tex/volumes/volume_xii/chapter03_trace_anomalies.tex
   `R^2` Weyl-coboundary scheme coordinate in the shared curvature-squared
   regression that now also checks point-splitting finite ambiguity and
   semiclassical finite-scheme transport.
+- 2026-06-08 issue #905 heat-kernel-depth pass: expanded the free-field table
+  derivation to show the Dirac spin trace, Maxwell one-form/ghost subtraction,
+  Weyl local half-density/global determinant-line boundary, and corrected the
+  role of `a` in separated `TTT` versus trace contacts.
