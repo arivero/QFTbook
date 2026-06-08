@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Convention checks for the microlocal spectrum chapter.
 
+Evidence contract.
+
 The metric convention is mostly plus.  A causal covector is called future
 directed when its metric dual vector is future directed.  In flat coordinates
 this makes the positive-frequency covector (-E, p) future directed.
@@ -8,16 +10,18 @@ this makes the positive-frequency covector (-E, p) future directed.
 Target claims:
 - `ch:curved-microlocal-spectrum-condition`: the mostly-plus
   positive-frequency covector convention, Klein-Gordon Hamilton-flow sign,
-  Hadamard two-point graph covector pattern, product obstruction, Hadamard
-  recursion coefficients, and Wick-square distinction between a generic
-  smooth Hadamard-coordinate diagonal and local covariant finite Wick
-  prescription freedom.
+  BFK paired-edge two-point graph covector pattern for both temporal
+  orderings, pullback/product graph-cone addition for quasifree Wick pairings,
+  product obstruction, Hadamard recursion coefficients, and Wick-square
+  distinction between a generic smooth Hadamard-coordinate diagonal and local
+  covariant finite Wick prescription freedom.
 
 Independent construction:
 - The checks use finite covectors, exact rational Hadamard-coefficient
-  arithmetic, and a three-point retained spacetime sample.  The Wick-square
-  sample computes the diagonal shift from `H' = H + w` directly and then tests
-  whether the same arbitrary smooth diagonal can be fitted by
+  arithmetic, a finite paired-edge graph model, and a three-point retained
+  spacetime sample.  The Wick-square sample computes the diagonal shift from
+  `H' = H + w` directly and then tests whether the same arbitrary smooth
+  diagonal can be fitted by
   `a_m m^2 + a_R R(x)` without assuming that it can.
 
 Imported assumptions:
@@ -30,7 +34,9 @@ Negative controls:
 - The script rejects opposite-cone products, wrong diagonal-recursion
   denominators, the wrong sign for a smooth Hadamard-coordinate shift, and the
   shortcut that treats a generic smooth diagonal as local covariant
-  curvature/mass freedom.
+  curvature/mass freedom.  It also rejects the one-way future-causal graph rule
+  for reversed temporal ordering and the conflation of a timelike causal edge
+  with the null-geodesic Hadamard wavefront set.
 
 Scope boundary:
 - Passing this file checks convention-sensitive finite algebra.  It does not
@@ -46,6 +52,10 @@ from check_utils import assert_close as _assert_close
 
 from fractions import Fraction
 import math
+
+
+Cov2 = tuple[Fraction, Fraction]
+GraphCovectors = tuple[Cov2, ...]
 
 
 def assert_close(got: float, expected: float, label: str, tol: float = 1e-12) -> None:
@@ -74,6 +84,63 @@ def sharp(k0: float, k1: float) -> tuple[float, float]:
 def hamilton_vector_for_kg(k0: float, k1: float) -> tuple[float, float]:
     # p=-k0^2+k1^2, so dx/ds = partial p / partial k.
     return (-2 * k0, 2 * k1)
+
+
+def cov_neg(covector: Cov2) -> Cov2:
+    return (-covector[0], -covector[1])
+
+
+def cov_add(left: Cov2, right: Cov2) -> Cov2:
+    return (left[0] + right[0], left[1] + right[1])
+
+
+def graph_covector_sum(left: GraphCovectors, right: GraphCovectors) -> GraphCovectors:
+    if len(left) != len(right):
+        raise AssertionError("graph covector tuples must live over the same vertex set")
+    return tuple(cov_add(a, b) for a, b in zip(left, right))
+
+
+def covector_square_exact(covector: Cov2) -> Fraction:
+    return -(covector[0] * covector[0]) + covector[1] * covector[1]
+
+
+def is_future_causal_covector(covector: Cov2) -> bool:
+    return covector[0] < 0 and covector_square_exact(covector) <= 0
+
+
+def is_null_covector(covector: Cov2) -> bool:
+    return covector_square_exact(covector) == 0
+
+
+def bfk_two_point_tuple(future_covector: Cov2) -> GraphCovectors:
+    if not is_future_causal_covector(future_covector):
+        raise AssertionError("BFK fixture expected a future causal covector")
+    return (future_covector, cov_neg(future_covector))
+
+
+def one_way_future_causal_tuple(
+    x1_time: Fraction,
+    x2_time: Fraction,
+    future_covector: Cov2,
+) -> GraphCovectors:
+    if x1_time <= x2_time:
+        return (future_covector, cov_neg(future_covector))
+    return (cov_neg(future_covector), future_covector)
+
+
+def pullback_pair_to_n_vertices(
+    vertex_count: int,
+    left: int,
+    right: int,
+    future_covector: Cov2,
+) -> GraphCovectors:
+    if left >= right:
+        raise AssertionError("Wick-pair labels should be ordered before pullback")
+    zero = (Fraction(0), Fraction(0))
+    covectors = [zero for _ in range(vertex_count)]
+    covectors[left] = future_covector
+    covectors[right] = cov_neg(future_covector)
+    return tuple(covectors)
 
 
 def check_future_covector_convention() -> None:
@@ -110,6 +177,67 @@ def check_two_point_graph_sign_pattern() -> None:
     total = (k1[0] + k2[0], k1[1] + k2[1])
     assert_close(total[0], 0.0, "two-point graph covector conservation time")
     assert_close(total[1], 0.0, "two-point graph covector conservation space")
+
+
+def check_bfk_paired_edge_temporal_ordering_and_variants() -> None:
+    future_null: Cov2 = (Fraction(-5), Fraction(5))
+    if not is_null_covector(future_null):
+        raise AssertionError("null Hadamard fixture changed")
+
+    bfk_when_x2_future = bfk_two_point_tuple(future_null)
+    bfk_when_x1_future = bfk_two_point_tuple(future_null)
+    expected = (future_null, cov_neg(future_null))
+    if bfk_when_x2_future != expected:
+        raise AssertionError("BFK paired-edge graph changed for ordinary temporal ordering")
+    if bfk_when_x1_future != expected:
+        raise AssertionError("BFK vertex-order rule should not flip under reversed temporal ordering")
+
+    wrong_reversed = one_way_future_causal_tuple(
+        x1_time=Fraction(1),
+        x2_time=Fraction(0),
+        future_covector=future_null,
+    )
+    if wrong_reversed == expected:
+        raise AssertionError("negative control failed: one-way future-causal rule matched BFK")
+    if is_future_causal_covector(wrong_reversed[0]):
+        raise AssertionError("reversed one-way rule should make the first Hadamard covector past directed")
+
+    future_timelike: Cov2 = (Fraction(-5), Fraction(3))
+    if not is_future_causal_covector(future_timelike):
+        raise AssertionError("timelike causal fixture changed")
+    if is_null_covector(future_timelike):
+        raise AssertionError("timelike negative-control fixture became null")
+    timelike_bfk_tuple = bfk_two_point_tuple(future_timelike)
+    if timelike_bfk_tuple[0] == future_null:
+        raise AssertionError("negative control failed: timelike edge looked like Hadamard null data")
+
+
+def check_quasifree_pullback_product_graph_closure() -> None:
+    p: Cov2 = (Fraction(-2), Fraction(2))
+    q: Cov2 = (Fraction(-3), Fraction(-3))
+    if not (is_null_covector(p) and is_null_covector(q)):
+        raise AssertionError("quasifree pullback null fixtures changed")
+
+    pair_13 = pullback_pair_to_n_vertices(4, 0, 2, p)
+    pair_24 = pullback_pair_to_n_vertices(4, 1, 3, q)
+    zero = (Fraction(0), Fraction(0))
+    if pair_13[1] != zero or pair_13[3] != zero:
+        raise AssertionError("pair pullback should be zero on spectator factors")
+    if pair_24[0] != zero or pair_24[2] != zero:
+        raise AssertionError("pair pullback should be zero on spectator factors")
+
+    product_sum = graph_covector_sum(pair_13, pair_24)
+    expected_product_sum: GraphCovectors = (p, q, cov_neg(p), cov_neg(q))
+    if product_sum != expected_product_sum:
+        raise AssertionError("product-theorem graph covector sum changed")
+
+    pair_12 = pullback_pair_to_n_vertices(3, 0, 1, p)
+    pair_13 = pullback_pair_to_n_vertices(3, 0, 2, q)
+    union_sum = graph_covector_sum(pair_12, pair_13)
+    if union_sum[0] != cov_add(p, q):
+        raise AssertionError("disjoint-union graph addition failed at the shared source")
+    if not is_future_causal_covector(union_sum[0]):
+        raise AssertionError("sum of future null outgoing covectors should remain future causal")
 
 
 def check_product_opposite_cone_obstruction() -> None:
@@ -199,10 +327,12 @@ def main() -> None:
     check_future_covector_convention()
     check_kg_hamilton_flow_is_future_null_for_positive_frequency()
     check_two_point_graph_sign_pattern()
+    check_bfk_paired_edge_temporal_ordering_and_variants()
+    check_quasifree_pullback_product_graph_closure()
     check_product_opposite_cone_obstruction()
     check_hadamard_transport_coefficients()
     check_wick_square_coordinate_shift_vs_local_prescription()
-    print("All microlocal spectrum convention checks passed.")
+    print("All microlocal spectrum convention and BFK graph-cone checks passed.")
 
 
 if __name__ == "__main__":

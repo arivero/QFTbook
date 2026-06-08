@@ -162,6 +162,17 @@
       ]
     },
     {
+      "path": "microlocal_spectrum_checks.py",
+      "risk_class": "microlocal spectrum graph cone and Hadamard wavefront conventions",
+      "convention_tags": [
+        "BFK muSC graph uses paired directed edges with inverse covectors",
+        "future direction is determined by vertex order not temporal order",
+        "Hadamard two-point cone is contained in Gamma2BFK but is not equal to it",
+        "quasifree proof uses pi_ij pullbacks before product-theorem covector sums",
+        "timelike causal edge is not Hadamard null wavefront data"
+      ]
+    },
+    {
       "path": "point_splitting_stress_checks.py",
       "risk_class": "point-split scalar stress tensor conservation and trace conventions",
       "convention_tags": [

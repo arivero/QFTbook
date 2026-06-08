@@ -160,29 +160,41 @@ transported covector.
 
 For non-Gaussian states, the two-point condition is not enough.  The
 curved-spacetime replacement of the Wightman spectral condition is a family
-of cone constraints on all \(n\)-point distributions.
+of cone constraints on all \(n\)-point distributions.  In this chapter
+\(\Gamma_n(M)\) means the original Brunetti--Fredenhagen--Koehler cone
+\cite{BrunettiFredenhagenKoehler1996}: the graph curves are piecewise smooth,
+and causal or lightlike replacements are strictly stronger variants, not the
+definition used unless explicitly named.
 
-\begin{definition}[Microlocal spectrum cone]
+\begin{definition}[BFK microlocal spectrum cone]
 \label{def:microlocal-spectrum-cone}
 Let \(x_1,\ldots,x_n\in M\).  A covector tuple
 \[
   (x_1,k_1;\ldots;x_n,k_n)\in T^*M^n\setminus0
 \]
-belongs to \(\Gamma_n(M)\) if there is a finite directed graph with vertex
-set \(\{1,\ldots,n\}\) such that each edge \(e:i\to j\) is assigned a
-future-directed causal covector field \(p_e\) parallel transported along a
-future-directed causal curve from \(x_i\) to \(x_j\), and
+belongs to \(\Gamma_n^{\rm BFK}(M)\) if there is a finite directed graph
+\(G\) with vertex set \(\{1,\ldots,n\}\), with every oriented edge \(e\)
+accompanied by its inverse edge \(e^{-1}\), and an immersion of \(G\) into
+\(M\) with the following data.  The vertex \(i\) is sent to \(x_i\).  An edge
+\(e:i\to j\) is sent to a piecewise smooth curve \(\gamma_e\) from \(x_i\) to
+\(x_j\), and \(e^{-1}\) is sent to the same curve with the inverse
+parametrization.  Along \(\gamma_e\) there is a covariantly constant causal
+covector field \(p_e\), with
+\[
+  p_{e^{-1}}=-p_e
+\]
+under the inverse-curve identification.  Future direction is assigned by the
+vertex labels: if \(e:i\to j\) and \(i<j\), then \(p_e\) is future directed.
+The covectors at the vertices are
 \begin{equation}
   k_i
   =
-  \sum_{e:i\to j}p_e(x_i)
-  -
-  \sum_{e:j\to i}p_e(x_i)
-  \qquad (i=1,\ldots,n).
+  \sum_{e:\,s(e)=i} p_e(x_i),
+  \qquad i=1,\ldots,n .
   \label{eq:microlocal-spectrum-graph-balance}
 \end{equation}
 The empty graph gives the zero tuple, which is omitted from
-\(T^*M^n\setminus0\).
+\(T^*M^n\setminus0\).  We write \(\Gamma_n(M)=\Gamma_n^{\rm BFK}(M)\) below.
 \end{definition}
 
 \begin{definition}[Microlocal spectrum condition for a state]
@@ -196,21 +208,64 @@ spectrum condition when all \(n\)-point distributions
 \]
 obey
 \begin{equation}
-  \operatorname{WF}(\omega_n)\subset\Gamma_n(M).
+  \operatorname{WF}(\omega_n)\subset\Gamma_n^{\rm BFK}(M).
   \label{eq:microlocal-spectrum-condition-all-n}
 \end{equation}
 \end{definition}
 
-For \(n=2\), a graph with one edge \(1\to2\) gives
+The relation with the Hadamard two-point cone is inclusion, not equality.
+Let
 \[
-  (k_1,k_2)=(p,-p),
+  \mathcal H_2^+
+  =
+  \{(x,k_x;y,-k_y):(x,k_x)\sim(y,k_y),\ k_x\in\overline V_+^*\}.
 \]
-which is the sign pattern in the Hadamard two-point condition.  For
-quasifree Hadamard states, Wick's theorem reduces every \(n\)-point
-distribution to a finite sum of products of two-point functions.  Applying
-Theorem~\ref{thm:microlocal-product-criterion} and the graph description
-above shows that the microlocal spectrum condition for all \(n\) follows
-from the two-point Hadamard condition.
+Then \(\mathcal H_2^+\subset\Gamma_2^{\rm BFK}(M)\), while
+\(\Gamma_2^{\rm BFK}(M)\) is larger because its graph curves are piecewise
+smooth and its covectors are causal rather than forced to be null-geodesic
+Hadamard covectors.  A causal-curve variant is still not the Hadamard
+wavefront set if it admits timelike covectors; a null-graph variant is a
+separate, stronger cone and must be named when used.
+
+The two temporal orderings of a null-related pair are worth spelling out.
+Let \(q_x\) be a future null covector at \(x\), and let \(q_y\) be its parallel
+transport along the null geodesic joining \(x\) and \(y\).  If \(x_2\) lies to
+the future of \(x_1\), the paired edges \(1\to2\) and \(2\to1\), with
+\(p_{1\to2}=q\) and \(p_{2\to1}=-q\), give
+\[
+  (k_1,k_2)=(q_{x_1},-q_{x_2}).
+\]
+If \(x_1\) lies to the future of \(x_2\), the same labelled edge \(1\to2\) is
+drawn along the oppositely oriented null curve, but the future direction of
+\(p_{1\to2}\) is still fixed by \(1<2\), not by the time order of the base
+points.  The balance again gives
+\[
+  (k_1,k_2)=(q_{x_1},-q_{x_2}).
+\]
+A one-way rule that only allowed a future-causal curve from the earlier
+spacetime point to the later one would instead use \(2\to1\) in the second
+case and produce \((-q_{x_1},q_{x_2})\), the opposite of the Hadamard
+two-point sign at the first vertex.
+
+For quasifree Hadamard states, Wick's theorem reduces every \(n\)-point
+distribution to a finite sum over pairings.  For a pair \(i<j\), let
+\(\pi_{ij}:M^n\to M^2\) be the projection onto the \(i\)-th and \(j\)-th
+factors.  Since \(\pi_{ij}\) is a submersion, the pullback theorem gives
+\[
+  \operatorname{WF}(\pi_{ij}^*\omega_2)
+  \subset
+  \{(x_1,0;\ldots;x_i,k_i;\ldots;x_j,k_j;\ldots;x_n,0):
+    (x_i,k_i;x_j,k_j)\in\operatorname{WF}(\omega_2)\}.
+\]
+Products attached to disjoint pairs exist by
+Theorem~\ref{thm:microlocal-product-criterion}, and their wavefront sets are
+contained in the sums of the pulled-back two-point cones.  Each summand is
+represented by the disjoint union of the BFK two-vertex graphs for the pairs.
+More generally, sums of \(\Gamma_n^{\rm BFK}\)-covectors are represented by
+disjoint union of the corresponding immersed graphs, so the graph cone is
+closed under the covector additions that appear in the product theorem.  This
+is the mechanism by which the two-point Hadamard condition implies the
+\(\mu\)SC for quasifree Hadamard states.
 
 \section{Hadamard Parametrix}
 

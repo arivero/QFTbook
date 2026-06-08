@@ -23,8 +23,12 @@ extension problem for Wick and time-ordered products.
   coefficients.
 - `H_epsilon`: local Hadamard singular distribution.
 - `p(x,k)`: principal symbol governing propagation of singularities.
-- `Gamma_n(M)`: graph-defined microlocal spectrum cone for \(n\)-point
-  distributions.
+- `Gamma_n^{BFK}(M)`, `Gamma_n(M)`: original
+  Brunetti--Fredenhagen--Koehler graph-defined microlocal spectrum cone for
+  \(n\)-point distributions; graph curves are piecewise smooth unless a
+  causal/null stronger variant is explicitly named.
+- `pi_ij`: projection \(M^n\to M^2\) used to pull a two-point distribution
+  back to the \(i,j\) factors in the quasifree proof.
 - `k^\sharp`: metric dual vector of a covector \(k\).
 
 ## Claim Ledger
@@ -35,9 +39,17 @@ extension problem for Wick and time-ordered products.
 - States the microlocal Hadamard two-point condition with null-geodesic
   cotangent relation, including the mostly-plus future-covector convention
   and the sign of the second covector.
-- Adds the higher microlocal spectrum cone \(\Gamma_n(M)\) and the
-  all-\(n\)-point microlocal spectrum condition; records why quasifree
-  Hadamard states satisfy it by Wick's theorem and the product criterion.
+- Adds the original BFK higher microlocal spectrum cone \(\Gamma_n(M)\):
+  paired directed edges, inverse curves/covectors, future direction determined
+  by vertex order, and vertex covectors obtained by summing outgoing edge
+  covectors.  It separates this cone from causal-curve and null-graph stronger
+  variants.
+- States that the Hadamard two-point wavefront set is contained in
+  \(\Gamma_2^{BFK}(M)\) but is not identified with it; both temporal orderings
+  of a null-related pair are worked out explicitly.
+- For quasifree Hadamard states, invokes the pullback theorem for
+  \(\pi_{ij}:M^n\to M^2\), then the product theorem and graph-cone closure
+  under covector sums via disjoint union of immersed graphs.
 - Defines the local Hadamard parametrix and derives its geometric
   coefficients: the transport equation for `U=Delta^{1/2}`, the complete
   recursion for `v_j`, the coincidence value of `v_0`, and the diagonal
@@ -59,11 +71,14 @@ extension problem for Wick and time-ordered products.
 
 - `calculation-checks/microlocal_spectrum_checks.py`: verifies the
   mostly-plus future-covector convention, the Klein-Gordon Hamilton flow sign,
-  the two-point graph covector pattern \((p,-p)\), the opposite-cone product
-  obstruction, the diagonal coefficients in the four-dimensional Hadamard
-  recursion, and the Wick-square distinction between a generic smooth
-  Hadamard-coordinate diagonal and local covariant finite-renormalization
-  freedom.
+  the BFK paired-edge two-point graph covector pattern \((p,-p)\) for both
+  temporal orderings, the pullback/product graph-cone addition mechanism for
+  quasifree Wick pairings, the opposite-cone product obstruction, the diagonal
+  coefficients in the four-dimensional Hadamard recursion, and the Wick-square
+  distinction between a generic smooth Hadamard-coordinate diagonal and local
+  covariant finite-renormalization freedom.  Negative controls reject the
+  one-way future-causal graph rule and timelike causal-edge/Hadamard-null
+  conflation.
 
 ## Figure Ledger
 
@@ -84,3 +99,9 @@ space diagonals for time-ordered extensions.
   with the local covariant \(c_1R+c_2m^2\) Wick-square freedom.  The canonical
   point-splitting and pAQFT chapters remain the detailed destinations for
   prescription changes and interacting Wick-polynomial transport.
+- 2026-06-08 issue #917 BFK graph-cone pass: replaced the one-way
+  future-causal graph definition by the primary-source BFK paired-edge cone,
+  restored the pullback/product structure of the quasifree argument, and
+  recorded the Hadamard two-point relation as inclusion rather than equality.
+  This is a foundational sign/architecture repair for the chapter, not a
+  tangential microlocal theorem expansion.
