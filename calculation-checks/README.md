@@ -2833,7 +2833,8 @@ Current checks:
   chapter, including Hadamard star-product associativity, the smooth
   Hadamard-change intertwiner, the finite functional-space margin budget
   separating pointwise microcausal pairings from equicausal closure,
-  scaling-degree ambiguity combinatorics, and the `lambda phi^4`
+  scaling-degree ambiguity combinatorics, relative S-matrix cutoff transport
+  with exact noncommutative cocycles, and the `lambda phi^4`
   Hadamard-coordinate and local Wick-renormalization example: the quartic
   tadpole coefficient, transported-state expectation
   invariance, the fixed-state Wick-square prescription shift,
@@ -2843,7 +2844,9 @@ Current checks:
   adversarial checks for the switching-edge Ward source, constant-switching
   limit, finite Wick-density source transport, density averaging,
   combinatorial factor, Born sign, finite Wick-square scheme shift,
-  nonconstant local tadpole density, and the off-diagonal sunset self-energy
+  nonconstant local tadpole density, raw cutoff factorization through an
+  overlapping background, raw-S-matrix conjugators in place of relative
+  cocycles, and the off-diagonal sunset self-energy
   response: the \(-\lambda^2/6\) kernel coefficient, causal support, the
   \(-i\) retardedization on Hermitian-compatible complex Wightman samples,
   bilocal Born sign, omitted `i`-factor and acausal-support negative controls,

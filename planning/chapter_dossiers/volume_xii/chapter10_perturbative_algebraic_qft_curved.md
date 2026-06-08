@@ -23,6 +23,9 @@ factorization, and finite renormalization maps.
 - `sd(t)`: scaling degree of a distribution near a diagonal.
 - `S(F)`, `S_V(F)`, `R_V(F)`: time-ordered exponential, relative S-matrix,
   and interacting Bogoliubov field.
+- `C=A+B`, `alpha_{V,B}`: compact cutoff difference split into future/past
+  one-sided pieces and the insertion-independent relative-cocycle transition
+  map between cutoff representatives.
 - `Z`: local renormalization map between time-ordered-product choices.
 - `V_{lambda,H}(g)`, `w_Delta`, `c`, `a_m`, `a_R`: compactly supported
   `lambda phi^4` interaction in a Hadamard Wick coordinate, smooth diagonal
@@ -63,7 +66,12 @@ factorization, and finite renormalization maps.
 - Explains Epstein--Glaser induction by causal factorization away from the
   total diagonal.
 - Defines interacting fields by the relative S-matrix and proves the causal
-  support statement for Bogoliubov fields.
+  support statement for Bogoliubov fields from generalized Bogoliubov
+  factorization.  The proof uses one-sided identities for changes outside the
+  causal past/future of the insertion and the relative cocycle `S_V(C)`, not
+  raw `S(C)` factors, so the cutoff transition is a canonical isomorphism of
+  local interacting algebras rather than a factorization through an overlapping
+  background interaction.
 - Records the Stueckelberg--Petermann local renormalization map and the BV
   quantum master equation as the gauge-theory consistency condition.
 - Adds a worked interacting scalar coordinate: a compactly supported
@@ -115,7 +123,8 @@ factorization, and finite renormalization maps.
   polynomial model of star-product associativity, the smooth-Hadamard-change
   intertwiner, a finite margin-budget distinction between pointwise
   microcausal pairings and equicausal closure, the combinatorics of
-  scaling-degree extension ambiguity, and the `lambda phi^4`
+  scaling-degree extension ambiguity, relative S-matrix cutoff transport in an
+  exact noncommutative matrix model, and the `lambda phi^4`
   Hadamard-coordinate/local-Wick-renormalization
   coefficients: quartic tadpole, vacuum term, transported-state expectation
   invariance, fixed-state Wick-square prescription shift, mass/curvature
@@ -123,8 +132,10 @@ factorization, and finite renormalization maps.
   balance for a compact switching function, including exact cancellation
   between metric and coupling variations, zero source for a constant switching
   function, finite Wick-density transport through the Ward source, and
-  negative controls for treating a compact switching edge as conserved or
-  averaging a nonconstant density.  It also checks the retained one-loop
+  negative controls for treating a compact switching edge as conserved,
+  averaging a nonconstant density, accepting raw cutoff factorization through
+  an overlapping background, or replacing the relative cocycle by a raw
+  S-matrix conjugator.  It also checks the retained one-loop
   tadpole mass response, including the `lambda Sigma/2` combinatorial factor,
   the inverse-operator Born sign, linearity in coupling/state Wick square,
   finite Wick-square scheme shifts, and rejection of constant averaging for a
@@ -191,3 +202,9 @@ Hadamard star-product comparison maps.
   local-polynomial subalgebra supplies it.  The pass marks arbitrary
   equicausal time-ordering beyond local/multilocal Epstein--Glaser inputs as
   an open extension question.
+- 2026-06-08 issue #856 cutoff-transport pass: replaced the raw
+  `S(A) S(V+F) S(B)` argument with generalized relative Bogoliubov
+  factorization, one-sided cutoff identities, and a relative-cocycle transition
+  map.  The repair is architectural: it explains how compact cutoff
+  representatives give the same local interacting algebra, rather than adding
+  another standalone finite identity.

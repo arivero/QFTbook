@@ -510,9 +510,10 @@ and any Ward identities.
 
 Let \(V\) be an interaction functional with compact time support.  The
 relative S-matrix is
-\[
+\begin{equation}
   S_V(F)=S(V)^{-1}\star S(V+F),
-\]
+  \label{eq:paqft-curved-relative-s-matrix}
+\end{equation}
 where
 \[
   S(F)=T\exp\!\left(\frac{\ii}{\hbar}F\right).
@@ -526,7 +527,45 @@ Bogoliubov derivative
   S_V(\lambda F)\right|_{\lambda=0}.
 \]
 Changing the time cutoff of \(V\) outside the causal domain of \(F\) gives
-isomorphic interacting algebras by causal factorization.
+isomorphic interacting algebras by causal factorization.  The useful form is
+the generalized Bogoliubov factorization identity for relative S-matrices:
+if \(\operatorname{supp}P\cap J_-(\operatorname{supp}Q)=\varnothing\), then
+\begin{equation}
+  S_V(P+G+Q)
+  =
+  S_V(P+G)\star S_V(G)^{-1}\star S_V(G+Q).
+  \label{eq:paqft-bogoliubov-factorization-relative}
+\end{equation}
+This is the algebraic adiabatic-limit mechanism of the local interacting net,
+as in the construction reviewed by Fredenhagen--Rejzner
+\cite[Sec.~4]{FredenhagenRejzner2015PerturbativeConstruction}.  Two
+one-sided consequences are load bearing.  If a cutoff change \(C\) is outside
+the causal past of \(F\),
+\[
+  \operatorname{supp}C\cap J_-(\operatorname{supp}F)=\varnothing,
+\]
+then
+\begin{equation}
+  S_{V+C}(F)=S_V(F).
+  \label{eq:paqft-cutoff-outside-past}
+\end{equation}
+Indeed, \eqref{eq:paqft-bogoliubov-factorization-relative} gives
+\(S_V(C+F)=S_V(C)\star S_V(F)\), and the factors \(S_V(C)\) cancel in the
+definition of \(S_{V+C}(F)\).  If \(C\) is outside the causal future of \(F\),
+\[
+  \operatorname{supp}C\cap J_+(\operatorname{supp}F)=\varnothing,
+\]
+then
+\begin{equation}
+  S_{V+C}(F)
+  =
+  S_V(C)^{-1}\star S_V(F)\star S_V(C).
+  \label{eq:paqft-cutoff-outside-future}
+\end{equation}
+Here \eqref{eq:paqft-bogoliubov-factorization-relative} gives
+\(S_V(F+C)=S_V(F)\star S_V(C)\).  Notice that the conjugating element is the
+relative cocycle \(S_V(C)\), not the raw formal S-matrix \(S(C)\); \(C\) may
+overlap the background interaction \(V\).
 
 \begin{proposition}[Causal support of the Bogoliubov field]
 \label{prop:paqft-bogoliubov-causal-support}
@@ -539,60 +578,56 @@ canonical relative \(S\)-matrix isomorphism of the two cutoff theories.
 \begin{proof}
 Let \(C=V'-V\).  By hypothesis \(C\) vanishes on a neighborhood of
 \(J(\operatorname{supp}F)\).  Choose two Cauchy surfaces, one to the past of
-\(\operatorname{supp}F\) and one to its future, both lying inside the region on
-which \(V=V'\) near the causal hull.  A smooth partition of unity in the
-corresponding time slabs decomposes
+\(\operatorname{supp}F\) and one to its future, both lying inside the region
+where \(V=V'\) near the causal hull.  A smooth partition of unity in the
+complement of that hull decomposes
 \[
   C=A+B,
 \]
-where \(\operatorname{supp}A\) is later than \(\operatorname{supp}F\) and
-\(\operatorname{supp}B\) is earlier than \(\operatorname{supp}F\).  The
-separation is meant in the causal sense used by the time-ordered products:
-every point of \(\operatorname{supp}A\) lies outside the causal past of
-\(\operatorname{supp}F\), and every point of \(\operatorname{supp}B\) lies
-outside its causal future, after the supports have been slightly enlarged to
-open neighborhoods.  Causal factorization gives
+with
 \[
-  S(V+A+B+\lambda F)
-  =
-  S(A)\star S(V+\lambda F)\star S(B)
+  \operatorname{supp}A\cap J_-(\operatorname{supp}F)=\varnothing,
+  \qquad
+  \operatorname{supp}B\cap J_+(\operatorname{supp}F)=\varnothing .
 \]
-in the corresponding ordered region, and similarly with \(\lambda=0\).
-Thus
+The future piece is removed first, using
+\eqref{eq:paqft-cutoff-outside-past} with background \(V+B\):
 \[
-  S(V')=S(A)\star S(V)\star S(B)
+  S_{V+B+A}(\lambda F)=S_{V+B}(\lambda F).
 \]
-and, using the inverse in the formal \(\star\)-algebra,
-\[
-  S(V')^{-1}
-  =
-  S(B)^{-1}\star S(V)^{-1}\star S(A)^{-1}.
-\]
-Substitution in
-\[
-  S_{V'}(\lambda F)=S(V')^{-1}\star S(V'+\lambda F)
-\]
-therefore gives
-\[
+The past piece is then handled by
+\eqref{eq:paqft-cutoff-outside-future}:
+\begin{equation}
   S_{V'}(\lambda F)
   =
-  S(B)^{-1}\star S_V(\lambda F)\star S(B).
-\]
-The conjugation
+  S_V(B)^{-1}\star S_V(\lambda F)\star S_V(B).
+  \label{eq:paqft-cutoff-transition-generator}
+\end{equation}
+Thus the cutoff change is implemented on the local generators by the
+insertion-independent relative-cocycle isomorphism
 \[
-  \alpha_B(X)=S(B)^{-1}\star X\star S(B)
+  \alpha_{V,B}(X)=S_V(B)^{-1}\star X\star S_V(B).
 \]
-is precisely the relative \(S\)-matrix isomorphism between the two time-cutoff
-choices in the causal domain of \(F\).  Differentiating the displayed identity
-at \(\lambda=0\) gives
+Differentiating \eqref{eq:paqft-cutoff-transition-generator} at
+\(\lambda=0\) gives
 \[
-  R_{V'}(F)=\alpha_B(R_V(F)),
+  R_{V'}(F)=\alpha_{V,B}(R_V(F)).
 \]
-which is the claimed canonical identification.  The construction is
-independent of the auxiliary partition because two choices differ by factors
-supported entirely in the past or future of \(\operatorname{supp}F\), and the
-same causal-factorization computation gives the corresponding inner
-identification.
+
+The auxiliary decomposition does not add data.  If a third cutoff \(W\) is
+inserted between \(V\) and \(V'\), the relative S-matrices obey the cocycle
+identity
+\[
+  S_V(D+E)=S_V(D)\star S_{V+D}(E),
+\]
+which is \eqref{eq:paqft-bogoliubov-factorization-relative} with no
+observable insertion.  Hence the transition \(V\to V'\) is the composition of
+the transitions \(V\to W\) and \(W\to V'\) on all generators supported in the
+chosen local region.  This is exactly the evaluation-map construction of the
+algebraic adiabatic limit: local algebras are represented by any compact
+cutoff agreeing with the physical interaction near
+\(J_+(\mathcal O)\cap J_-(\mathcal O)\), and the transition maps above are
+the canonical identifications between such representatives.
 \end{proof}
 
 \section{Renormalization Group}

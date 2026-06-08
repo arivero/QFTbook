@@ -13,14 +13,16 @@ Evidence contract.
 Target claims: the finite algebra subclaims in Volume XII Chapter 10,
 including Hadamard star-product associativity, smooth-Hadamard-change
 intertwining, the functional-space distinction between pointwise microcausal
-pairings and equicausal closure margins, scaling-degree ambiguity counts, and
-the lambda-phi-four Hadamard-coordinate/local-Wick-renormalization example,
-the finite local-coupling Ward balance for a compact switching function, plus
-the retained one-loop tadpole mass-response and nonlocal sunset-response
-examples in the retarded two-point sector.
+pairings and equicausal closure margins, scaling-degree ambiguity counts,
+relative S-matrix cutoff transport for Bogoliubov fields, and the
+lambda-phi-four Hadamard-coordinate/local-Wick-renormalization example, the
+finite local-coupling Ward balance for a compact switching function, plus the
+retained one-loop tadpole mass-response and nonlocal sunset-response examples
+in the retarded two-point sector.
 Independent construction: exact polynomial derivatives, contraction sums,
 finite cone-margin bookkeeping, Taylor-extension counts, Wick-power transport
-coefficients, discrete local-coupling Ward variations, and a finite-cell
+coefficients, exact noncommutative matrix products for relative S-matrix
+cocycles, discrete local-coupling Ward variations, and a finite-cell
 Born-response quadrature for local and bilocal kernels are computed directly
 rather than copied from the prose formulae.
 Imported assumptions: the one-component polynomial model, formal hbar
@@ -34,10 +36,12 @@ Negative controls: wrong scaling-degree uniqueness thresholds, missing
 quartic tadpole factors, omitted vacuum bubble terms, untyped
 coordinate-transport expectation shifts, incorrect mass/curvature coordinate
 factors, the shortcut from pointwise microcausal margins to closed
-star/Peierls algebra, compact switching functions incorrectly treated as
-conserved sources, constant replacements for nonconstant local coupling-density
-Ward sources, finite Wick-density shifts not transported through the Ward
-source, wrong tadpole self-energy combinatorics, omitted Born signs, constant
+star/Peierls algebra, raw factorization of cutoff pieces through an overlapping
+background interaction, raw-S-matrix conjugators in place of relative
+cocycles, compact switching functions incorrectly treated as conserved
+sources, constant replacements for nonconstant local coupling-density Ward
+sources, finite Wick-density shifts not transported through the Ward source,
+wrong tadpole self-energy combinatorics, omitted Born signs, constant
 replacements for nonconstant local Wick-square densities, wrong sunset
 symmetry factors, omitted retarded i-factors, acausal symmetric kernels, and
 conflation of local diagonal counterterms with off-diagonal kernels are
@@ -58,6 +62,7 @@ from math import comb, factorial
 Poly = dict[int, Fraction]
 HPoly = dict[int, Poly]
 RatComplex = tuple[Fraction, Fraction]
+Mat2 = tuple[tuple[Fraction, Fraction], tuple[Fraction, Fraction]]
 
 
 def clean_poly(poly: Poly) -> Poly:
@@ -88,6 +93,53 @@ def scale_hpoly(poly: HPoly, coeff: Fraction) -> HPoly:
         hpower: scale_poly(p, coeff)
         for hpower, p in poly.items()
     })
+
+
+def mat2(
+    a: int | Fraction,
+    b: int | Fraction,
+    c: int | Fraction,
+    d: int | Fraction,
+) -> Mat2:
+    return ((Fraction(a), Fraction(b)), (Fraction(c), Fraction(d)))
+
+
+def matmul(a: Mat2, b: Mat2) -> Mat2:
+    return (
+        (
+            a[0][0] * b[0][0] + a[0][1] * b[1][0],
+            a[0][0] * b[0][1] + a[0][1] * b[1][1],
+        ),
+        (
+            a[1][0] * b[0][0] + a[1][1] * b[1][0],
+            a[1][0] * b[0][1] + a[1][1] * b[1][1],
+        ),
+    )
+
+
+def matprod(*matrices: Mat2) -> Mat2:
+    out = mat2(1, 0, 0, 1)
+    for matrix in matrices:
+        out = matmul(out, matrix)
+    return out
+
+
+def matinv(a: Mat2) -> Mat2:
+    det = a[0][0] * a[1][1] - a[0][1] * a[1][0]
+    if det == 0:
+        raise AssertionError("matrix fixture must be invertible")
+    return (
+        (a[1][1] / det, -a[0][1] / det),
+        (-a[1][0] / det, a[0][0] / det),
+    )
+
+
+def rel_s(base: Mat2, total: Mat2) -> Mat2:
+    return matmul(matinv(base), total)
+
+
+def conjugate(cocycle: Mat2, observable: Mat2) -> Mat2:
+    return matprod(matinv(cocycle), observable, cocycle)
 
 
 def mul_poly(a: Poly, b: Poly) -> Poly:
@@ -282,6 +334,45 @@ def check_scaling_degree_ambiguity_count() -> None:
         raise AssertionError("logarithmic divergence should allow delta only")
     if ambiguity_count(4, 6) != 15:
         raise AssertionError("derivatives through order two in R^4 count 15")
+
+
+def check_relative_smatrix_cutoff_transport() -> None:
+    s_v = mat2(3, 1, 1, 1)
+    s_v_f = mat2(1, 2, 0, 1)
+    s_v_g = mat2(1, 0, 2, 1)
+    s_v_b1 = mat2(1, 1, 0, 1)
+    s_vb1_b2 = mat2(1, 0, 1, 1)
+    s_v_b = matmul(s_v_b1, s_vb1_b2)
+    s_vb_a = mat2(2, 1, 0, 1)
+
+    s_v_plus_b = matmul(s_v, s_v_b)
+    s_v_plus_bf = matprod(s_v, s_v_f, s_v_b)
+    past_transport = conjugate(s_v_b, s_v_f)
+    if rel_s(s_v_plus_b, s_v_plus_bf) != past_transport:
+        raise AssertionError("relative past-cutoff transport cocycle changed")
+
+    s_v_plus_ba = matprod(s_v, s_v_b, s_vb_a)
+    s_v_plus_baf = matprod(s_v, s_v_b, s_vb_a, matinv(s_v_b), s_v_f, s_v_b)
+    if rel_s(s_v_plus_ba, s_v_plus_baf) != past_transport:
+        raise AssertionError("future cutoff piece did not cancel before past transport")
+
+    second_transport = conjugate(s_v_b, s_v_g)
+    s_v_plus_bg = matprod(s_v, s_v_g, s_v_b)
+    if rel_s(s_v_plus_b, s_v_plus_bg) != second_transport:
+        raise AssertionError("cutoff transition should be independent of the insertion")
+
+    composed = conjugate(s_vb1_b2, conjugate(s_v_b1, s_v_f))
+    if composed != past_transport:
+        raise AssertionError("relative S-matrix cutoff transports failed to compose")
+
+    raw_a = mat2(1, 1, 1, 2)
+    raw_b = mat2(2, 0, 1, 1)
+    s_v_plus_f = matmul(s_v, s_v_f)
+    raw_factorized = matprod(raw_a, s_v_plus_f, raw_b)
+    if raw_factorized == s_v_plus_baf:
+        raise AssertionError("negative control failed: raw factorization survived")
+    if conjugate(raw_b, s_v_f) == past_transport:
+        raise AssertionError("negative control failed: raw conjugator matched relative cocycle")
 
 
 def check_lambda_phi4_hadamard_scheme_transport() -> None:
@@ -625,11 +716,15 @@ def main() -> None:
     check_hadamard_change_intertwiner()
     check_equicausal_margin_budget()
     check_scaling_degree_ambiguity_count()
+    check_relative_smatrix_cutoff_transport()
     check_lambda_phi4_hadamard_scheme_transport()
     check_lambda_phi4_local_coupling_ward_balance()
     check_lambda_phi4_tadpole_mass_response()
     check_lambda_phi4_nonlocal_sunset_response()
-    print("All pAQFT algebra, functional-space, scaling-degree, and two-point response checks passed.")
+    print(
+        "All pAQFT algebra, functional-space, scaling-degree, "
+        "cutoff-transport, and two-point response checks passed."
+    )
 
 
 if __name__ == "__main__":

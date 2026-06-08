@@ -315,7 +315,12 @@
     },
     {
       "path": "paqft_algebra_checks.py",
-      "risk_class": "curved pAQFT interactions"
+      "risk_class": "curved pAQFT interactions",
+      "convention_tags": [
+        "relative S-matrix cutoff cocycle",
+        "outside-past equality and outside-future conjugation",
+        "raw S(A) factorization rejected for overlapping background"
+      ]
     },
     {
       "path": "rg_short_range_reconstruction_checks.py",
