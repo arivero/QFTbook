@@ -26,6 +26,12 @@
   source-response sign separated from the commutator-retarded convention.
 - Separation between commutator correlators, local contact terms, and full
   background-source response kernels.
+- Single contact-sign convention:
+  \(\mathcal K^{\rm full}=-G^{R,\rm comm}+C^{\rm resp}\), while the
+  conductivity kernel defined by \(\langle J\rangle=-K^{\rm cond}A\) is
+  \(K^{\rm cond}=G^{R,\rm comm}-C^{\rm resp}\).
+- Regulated charged-oscillator diamagnetic contact example showing the static
+  paramagnetic--diamagnetic cancellation.
 - Transport limit datum specifying regulator sequence, operator
   normalization, projection/contact prescription, and order of limits.
 - Zero-frequency singular sector and finite-volume Mazur projection for
@@ -55,8 +61,9 @@
 | \(\rho^{\rm comm}_{AB}\), \(\rho_{AB}\) | commutator spectral density with \(\rho=-2\operatorname{Im}G^R\); the shorter form is used after the table |
 | \(\widehat\rho_{AB}\) | measure-normalized spectral distribution \(\rho^{\rm comm}_{AB}/(2\pi)\) |
 | \(G^{\rm sym}_{AB}\) | symmetrized correlator |
-| \(K_{ij}\) | full transverse current response kernel, including contact terms, defined by \(\langle J_i\rangle=-K_{ij}A_j\) |
-| \(C_{AB}\) | local source-contact contribution to a response kernel |
+| \(\mathcal K^{\rm full}_{AB}\) | full source derivative \(\delta\langle A\rangle/\delta h_B=-G^{R,\rm comm}_{AB}+C^{\rm resp}_{AB}\) |
+| \(K^{\rm cond}_{ij}\) | transverse conductivity kernel defined by \(\langle J_i\rangle=-K^{\rm cond}_{ij}A_j\), equal to \(G^{R,\rm comm}_{J_iJ_j}-C^{\rm resp}_{ij}\) |
+| \(C^{\rm resp}_{AB}\) | local contact contribution to the full source-response derivative |
 | \(I_i\), \(\bar I_i\) | total current and connected total current in finite volume |
 | \(Q_a\), \(C_{ab}\), \(v_{ia}\) | conserved operators, symmetrized covariance, and current-charge overlap |
 | \(D_{ij}\) | Drude-weight matrix in \(\operatorname{Re}\sigma_{ij}\) |
@@ -90,7 +97,12 @@
    boundary value and the separation of real contact polynomials.
 5. KMS implies detailed balance and the fluctuation--dissipation relation.
 6. Local source contacts are part of the full background response but not of
-   the commutator spectral measure at nonzero frequency.
+   the commutator spectral measure at nonzero frequency.  The contact sign is
+   fixed in the full response derivative
+   \(\mathcal K^{\rm full}=-G^{R,\rm comm}+C^{\rm resp}\); a kernel defined
+   with an additional minus sign, such as
+   \(\langle J\rangle=-K^{\rm cond}A\), carries the opposite contact
+   contribution.
 7. A transport coefficient requires a declared thermodynamic and
    zero-frequency order of limits.
 8. Conserved charges with nonzero current overlap give a positive
@@ -105,7 +117,10 @@
    memory equation into a local low-frequency closure.
 11. Conductivity and viscosity are low-frequency spectral slopes after contact
    terms, Drude weights, order of limits, and conserved-density mixings are
-   specified.
+   specified.  In the current channel
+   \(K^{\rm cond}=G^{R,\rm comm}-C^{\rm resp}\), so the diamagnetic contact
+   that cancels the static paramagnetic response has the sign opposite to its
+   full-response-derivative entry.
 12. Euclidean data and admissible fixed finite smooth sum rules whose real
    weights have finite reference moments and admit the Chapter 2 away-from-zero
    compensator system constrain smeared spectral integrals; they do not stably
@@ -121,9 +136,12 @@
 - `calculation-checks/thermal_kubo_checks.py` verifies the two-level
   detailed-balance and fluctuation--dissipation weights, the retarded sign
   \(\rho=-2\operatorname{Im}G^R\), the shear-viscosity spectral slope, and
-  invariance of dissipative spectral slopes under real contact terms, and
-  the finite Mazur projection/Drude-weight normalization.  It also checks a
-  two-dimensional finite-regulator Mori--Zwanzig identity and its
+  invariance of dissipative spectral slopes under real contact terms.  It
+  also checks a minimally coupled charged oscillator with nonzero diamagnetic
+  response contact, verifying the static full-response cancellation, the
+  opposite contact sign in \(K^{\rm cond}\), and the unchanged spectral part;
+  the finite Mazur projection/Drude-weight normalization; and a
+  two-dimensional finite-regulator Mori--Zwanzig identity with its
   Laplace-space Schur complement.
 - The #882 canonical convention ledger is also guarded by
   `calculation-checks/kms_foundation_checks.py` and
@@ -182,3 +200,8 @@
   convention ledger and synchronized it with Chapters 1, 2, and 12.  The pass
   is a convention and architecture repair supporting later transport physics,
   not an additional lemma-density expansion.
+- 2026-06-08 issue #926 contact-sign pass: replaced the ambiguous current
+  response contact \(C\) by \(C^{\rm resp}\) in the full source derivative,
+  defined \(K^{\rm cond}=-\mathcal K^{\rm full}\) for conductivity, and added
+  a charged-oscillator diamagnetic contact example and check so the static
+  response, conductivity kernel, and spectral part use one sign ledger.

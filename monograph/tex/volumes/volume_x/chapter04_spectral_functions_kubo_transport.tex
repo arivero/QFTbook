@@ -83,7 +83,11 @@ Source response &
 For \(H=H_0-h_BB\),
 \(\delta\langle A\rangle=K^R_{AB}*h_B\) with
 \(K^R_{AB}=\ii\theta(t)\langle[A(t),B(0)]\rangle_\beta
-=-G^{R,\rm comm}_{AB}\).\\[0.4em]
+=-G^{R,\rm comm}_{AB}\).  The full source derivative is
+\(\mathcal K^{\rm full}_{AB}:=\delta\langle A\rangle/\delta h_B
+=-G^{R,\rm comm}_{AB}+C^{\rm resp}_{AB}\), where
+\(C^{\rm resp}\) is the local response contact term in the same source
+convention.\\[0.4em]
 Euclidean transform &
 For nonzero bosonic Matsubara frequency,
 \(G_E(i\omega_n)=
@@ -301,16 +305,69 @@ source-sign convention.
 The commutator retarded function is not always the full response kernel to a
 background source.  If the operator itself depends on the source, or if the
 regulated generating functional contains local source counterterms, then
-\[
-  \delta\langle A\rangle
+\begin{equation}
+  \mathcal K^{\rm full}_{AB}
+  :=
+  \frac{\delta\langle A\rangle}{\delta h_B}
   =
-  (K^R_{AB}+C_{AB})\,h_B
+  K^R_{AB}+C^{\rm resp}_{AB}
+  =
+  -G^R_{AB}+C^{\rm resp}_{AB}
+  \label{eq:kubo-full-source-response-contact}
+\end{equation}
+in Fourier space.  Here \(C^{\rm resp}_{AB}(\omega,\mathbf k)\) is the local
+contact contribution to the \emph{full response derivative}; it is local in
+spacetime and therefore polynomial, or a distributional limit of
+polynomials, in \(\omega,\mathbf k\).  For gauge and metric sources these
+terms are not optional: they are fixed by Ward identities, equilibrium
+thermodynamics, and the chosen operator scheme.
+
+The sign in \eqref{eq:kubo-full-source-response-contact} is the ledger sign
+used below.  If a later section defines a kernel with an extra minus sign in
+the relation between source and induced one-point function, that later kernel
+inherits the opposite contact contribution.  The response contact
+\(C^{\rm resp}\) itself is not redefined.
+
+For example, a regulated nonrelativistic charged oscillator with a uniform
+external vector potential has
+\[
+  H(A)=\frac{(p-qA)^2}{2m}+\frac12m\Omega^2x^2
+  =
+  H(0)-A\,J_{\rm p}+\frac{q^2}{2m}A^2,
+  \qquad
+  J(A)=-\frac{\partial H(A)}{\partial A}
+  =J_{\rm p}-\frac{q^2}{m}A,
 \]
-in Fourier space, where \(C_{AB}(\omega,\mathbf k)\) is local in spacetime
-and therefore polynomial, or a distributional limit of polynomials, in
-\(\omega,\mathbf k\).  For gauge and metric sources these terms are not
-optional: they are fixed by Ward identities, equilibrium thermodynamics, and
-the chosen operator scheme.
+with \(J_{\rm p}=qp/m\).  Thus the full response contact is
+\[
+  C^{\rm resp}_{JJ}=-\frac{q^2}{m}.
+\]
+The commutator retarded function of \(J_{\rm p}\) is
+\[
+  G^{R,\rm comm}_{J_{\rm p}J_{\rm p}}(t)
+  =
+  -\frac{q^2\Omega}{m}\,\theta(t)\sin(\Omega t),
+  \qquad
+  G^{R,\rm comm}_{J_{\rm p}J_{\rm p}}(z)
+  =
+  \frac{q^2\Omega^2}{m(z^2-\Omega^2)}.
+\]
+At zero frequency \(G^{R,\rm comm}(0)=-q^2/m\), so the static full response
+to a pure uniform vector potential is
+\[
+  \mathcal K^{\rm full}_{JJ}(0)
+  =
+  -G^{R,\rm comm}(0)+C^{\rm resp}_{JJ}
+  =
+  \frac{q^2}{m}-\frac{q^2}{m}
+  =
+  0.
+\]
+This is the finite-regulator version of the paramagnetic--diamagnetic
+cancellation required by background-gauge invariance.  The same example also
+shows why the contact sign cannot be moved silently: reversing the contact in
+the conductivity kernel would leave a nonzero static kernel and hence a
+spurious \(1/\omega\) term in \(\sigma(\omega)\).
 
 The dissipative transport coefficient is extracted from the spectral slope
 of the nonlocal commutator part.  Real local contact terms can change static
@@ -825,23 +882,41 @@ For a conserved current \(J^\mu\) coupled to a background gauge field
   -\ii k_i A_0^{\rm ext}(\omega,\mathbf k).
 \]
 At zero spatial momentum and in a gauge with \(A_0^{\rm ext}=0\), define the
-full transverse response kernel \(K_{ij}\) by the conventional
+full transverse response derivative by
+\begin{equation}
+  \mathcal K^{\rm full}_{ij}
+  :=
+  \frac{\delta\langle J_i\rangle}{\delta A_j^{\rm ext}}
+  =
+  -G^{R,\rm comm}_{J_iJ_j}+C^{\rm resp}_{ij}.
+  \label{eq:kubo-current-full-response-contact}
+\end{equation}
+The conventional conductivity kernel \(K^{\rm cond}_{ij}\) uses the
 background-gauge-field sign
 \[
   \langle J_i(\omega)\rangle
   =
-  -K_{ij}(\omega,\mathbf0)A_j^{\rm ext}(\omega)
+  -K^{\rm cond}_{ij}(\omega,\mathbf0)A_j^{\rm ext}(\omega)
   =
   \sigma_{ij}(\omega)E_j(\omega).
 \]
 Thus
-\[
+\begin{equation}
   \sigma_{ij}(\omega)
   =
-  -\frac{1}{\ii\omega}K_{ij}(\omega,\mathbf0),
+  -\frac{1}{\ii\omega}K^{\rm cond}_{ij}(\omega,\mathbf0),
   \qquad
-  K_{ij}=G^R_{J_iJ_j}+C_{ij}.
-\]
+  K^{\rm cond}_{ij}
+  =
+  -\mathcal K^{\rm full}_{ij}
+  =
+  G^{R,\rm comm}_{J_iJ_j}-C^{\rm resp}_{ij}.
+  \label{eq:kubo-conductivity-kernel-contact-sign}
+\end{equation}
+The contact appearing here is the same response contact
+\(C^{\rm resp}_{ij}\) as in
+\eqref{eq:kubo-current-full-response-contact}; the minus sign comes only from
+the convention \(\langle J\rangle=-K^{\rm cond}A^{\rm ext}\).
 For \(\omega\ne0\), the dissipative real part is determined by the spectral
 density:
 \begin{equation}

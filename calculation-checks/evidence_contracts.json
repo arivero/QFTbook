@@ -178,6 +178,17 @@
       ]
     },
     {
+      "path": "thermal_kubo_checks.py",
+      "risk_class": "thermal Kubo response and contact-term conventions",
+      "convention_tags": [
+        "source response for H=H0-hB is -Gcomm plus Cresp",
+        "conductivity kernel is negative full current response",
+        "diamagnetic response contact has opposite sign in Kcond",
+        "real local contacts do not change nonzero-frequency spectral slope",
+        "Drude sector separated from regular dc slope"
+      ]
+    },
+    {
       "path": "eft_prediction_calculus_checks.py",
       "risk_class": "EFT prediction, decoupling, and positivity"
     },

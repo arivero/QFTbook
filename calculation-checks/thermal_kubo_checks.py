@@ -1,5 +1,24 @@
 #!/usr/bin/env python3
-"""Finite checks for the thermal Kubo and spectral-function conventions."""
+"""Finite checks for the thermal Kubo and spectral-function conventions.
+
+Evidence contract.
+Target claims: Volume X, Chapter 4 uses one retarded/source-response sign
+ledger, separates commutator spectral data from full source derivatives, and
+keeps the response-contact sign consistent when translating to the
+conductivity kernel.
+Independent construction: two-level Lehmann weights, finite retarded pole
+models, a minimally coupled charged oscillator with a diamagnetic contact
+term, finite Mazur projection algebra, and a two-dimensional Mori-Zwanzig
+Schur-complement model.
+Imported assumptions: the thermal KMS condition, finite-volume linear
+response, and the interpretation of real local source contacts as contact
+terms outside the nonzero-frequency commutator spectral measure.
+Negative controls: the wrong contact sign leaves a spurious static
+conductivity kernel, real contact terms do not alter the dissipative spectral
+slope, and the Drude sector is separated from the regular dc slope.
+Scope boundary: these checks do not prove hydrodynamic closure, continuum
+limit exchange, or Euclidean analytic-continuation stability.
+"""
 
 from __future__ import annotations
 
@@ -101,6 +120,12 @@ def retarded_shear_model(omega: float, eta: float, tau: float) -> complex:
     return (-1j * eta * omega) / (1.0 - 1j * omega * tau)
 
 
+def oscillator_paramagnetic_retarded(z: complex, charge: float, mass: float, frequency: float) -> complex:
+    """Retarded commutator kernel for J_p=q p/m in a charged oscillator."""
+
+    return charge * charge * frequency * frequency / (mass * (z * z - frequency * frequency))
+
+
 def check_retarded_sign_and_transport_slope() -> None:
     eta = 0.73
     tau = 1.9
@@ -135,6 +160,47 @@ def check_vector_potential_response_sign() -> None:
     response_kernel = retarded_shear_model(omega, sigma_dc, tau)
     conductivity = -response_kernel / (1j * omega)
     assert_close("positive conductivity from -K/(i omega)", conductivity.real, sigma_dc, tol=1.0e-7)
+
+
+def check_diamagnetic_contact_response_convention() -> None:
+    charge = 1.3
+    mass = 2.0
+    frequency = 0.7
+    response_contact = -(charge * charge) / mass
+
+    static_commutator_kernel = oscillator_paramagnetic_retarded(0.0, charge, mass, frequency).real
+    full_static_response = -static_commutator_kernel + response_contact
+    conductivity_static_kernel = static_commutator_kernel - response_contact
+    wrong_static_kernel = static_commutator_kernel + response_contact
+
+    assert_close(
+        "oscillator paramagnetic static kernel",
+        static_commutator_kernel,
+        -(charge * charge) / mass,
+    )
+    assert_close("full static vector-potential response cancels", full_static_response, 0.0)
+    assert_close("conductivity static kernel cancels", conductivity_static_kernel, 0.0)
+    assert_close("wrong contact sign leaves static kernel", wrong_static_kernel, 2.0 * response_contact)
+
+    z = 0.41 + 0.08j
+    nonlocal_kernel = oscillator_paramagnetic_retarded(z, charge, mass, frequency)
+    full_response = -nonlocal_kernel + response_contact
+    conductivity_kernel = nonlocal_kernel - response_contact
+    assert_close(
+        "conductivity kernel is negative full response",
+        (conductivity_kernel + full_response).real,
+        0.0,
+    )
+    assert_close(
+        "conductivity kernel is negative full response imaginary part",
+        (conductivity_kernel + full_response).imag,
+        0.0,
+    )
+    assert_close(
+        "conductivity kernel imaginary part is nonlocal spectral part",
+        conductivity_kernel.imag,
+        nonlocal_kernel.imag,
+    )
 
 
 def check_mazur_projection_and_drude_weight() -> None:
@@ -238,6 +304,7 @@ def main() -> None:
     check_retarded_sign_and_transport_slope()
     check_contact_term_does_not_change_spectral_slope()
     check_vector_potential_response_sign()
+    check_diamagnetic_contact_response_convention()
     check_mazur_projection_and_drude_weight()
     check_regular_drude_decomposition_for_figure()
     check_mori_zwanzig_projection_identity()

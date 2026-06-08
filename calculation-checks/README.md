@@ -3531,8 +3531,11 @@ Current checks:
   spectral-function conventions, including detailed balance and
   fluctuation--dissipation in a two-level system, the sign
   \(\rho=-2\operatorname{Im}G^R\), the shear-viscosity spectral slope, and
-  the vector-potential response sign, plus the fact that real local contact
-  terms do not change dissipative spectral slopes, the finite Mazur
+  the vector-potential response sign, plus a minimally coupled charged
+  oscillator check that fixes the full-response contact sign, the
+  conductivity-kernel contact sign, and the static diamagnetic cancellation.
+  It also checks that real local contact terms do not change dissipative
+  spectral slopes, the finite Mazur
   projection/Drude-weight relation for a current with conserved overlap, and
   the regular-versus-Drude decomposition used in the Kubo figure, together
   with a finite-dimensional Mori--Zwanzig projection identity and its
