@@ -3021,8 +3021,10 @@ Current checks:
   torsion-boundary cell separating the torsion-free metric theorem from the
   coupled HKT/bi-Hermitian \((\delta g,\delta B,\delta\Phi)\) target, the
   finite Higgs metric
-  two-jet projection that removes declared FI-source transport while rejecting
-  point-metric-only matching and undeclared vector-spurion transport, and a
+  two-jet projection that removes declared FI-source transport and
+  Higgs-coordinate field-redefinition directions while rejecting source-only
+  overcounting, point-metric-only matching, and undeclared vector-spurion
+  transport, and a
   background-field derivation check that
   rejects bare component multiplicities, requires model/gauge/regulator and
   generated-operator slots, derives the constant-background \(R_\xi\)

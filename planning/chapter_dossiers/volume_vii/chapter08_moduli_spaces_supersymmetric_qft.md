@@ -145,6 +145,11 @@ later lower-dimensional examples, protected sectors, and localization.
   `eq:higgs-branch-intrinsic-jet-residual`: extraction of the local symmetric
   Higgs metric kernel from the regulated trace-log after quotienting by
   hypermultiplet coordinate changes and declared FI/mass source transport.
+- `ex:higgs-branch-field-redefinition-two-jet-quotient`,
+  `eq:higgs-branch-field-redefinition-two-jet`,
+  `eq:higgs-branch-two-jet-intrinsic-residual`: rank-one two-jet calculation
+  of the local Higgs-coordinate Lie-derivative directions and the residual
+  curvature-channel invariant after source and field-redefinition quotienting.
 - `ex:higgs-branch-dimensional-reduction-row-audit`,
   `eq:higgs-branch-reduced-scalar-row-contact`,
   `eq:higgs-branch-reduced-scalar-contact-residual`,
@@ -260,11 +265,13 @@ later lower-dimensional examples, protected sectors, and localization.
 	  row-Jacobian square-completion contact.  The old massive-multiplet balance is
 	  retained only as a diagnostic consistency check.
   The metric-extraction gate projects the trace-log kernel through the local
-  two-jet quotient by field redefinitions and FI/mass source transport, showing
-  that point-metric agreement or a zero component balance does not by itself
-  remove an intrinsic curvature residual.  Global nonperturbative equality is
-  retained only as an additional continuum assertion after boundary and
-  extra-light-sector exclusions.
+  two-jet quotient by field redefinitions and FI/mass source transport, then
+  computes the rank-one field-redefinition directions explicitly.  This shows
+  that source-only projection can overcount a coordinate artifact, while
+  point-metric agreement or a zero component balance does not remove an
+  intrinsic curvature residual.  Global nonperturbative equality is retained
+  only as an additional continuum assertion after boundary and extra-light-sector
+  exclusions.
 - Adds the two-dimensional \(\mathcal N=(4,4)\) ADHM/D1--D5 gauge-theory
   example with adjoint and fundamental hypermultiplets, explicit complex and
   real moment maps, quotient, dimension count
@@ -438,6 +445,13 @@ local models.
   `J^2(partial_zeta g)=(1,-2,3)`.  The companion rejects point-metric-only
   matching, zero component-balance shortcuts, and undeclared vector-spurion
   transport.
+- 2026-06-08 issue #850 field-redefinition two-jet quotient pass: added the
+  rank-one local Higgs-coordinate vector field
+  `v^z=(a+b|z|^2)z` and its metric Lie-derivative two-jet
+  `(2a,-8a+4b,18a-12b)`.  The companion now quotients determinant kernels by
+  both the FI-source direction and the independent field-redefinition direction,
+  rejects source-only overcounting of coordinate artifacts, and keeps the
+  intrinsic residual `k_2+3k_1+3k_0`.
 - 2026-06-07 issue #850 Ward/local-counterterm interface pass: added the local
   cohomology proof interface for the smooth Higgs-metric theorem boundary,
   clarifying exactly what an all-order Ward or harmonic/projective superspace

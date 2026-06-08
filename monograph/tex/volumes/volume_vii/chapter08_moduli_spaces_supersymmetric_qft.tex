@@ -1629,6 +1629,66 @@ calculation is therefore complete only after it has projected its
 determinant identity without extracting the branch sigma-model datum.
 \end{example}
 
+\begin{example}[Two-jet quotient by Higgs field redefinitions]
+\label{ex:higgs-branch-field-redefinition-two-jet-quotient}
+The quotient in \eqref{eq:higgs-branch-metric-kernel-quotient} removes local
+hypermultiplet coordinate changes as well as source transport.  The rank-one
+\(\mathbb P^1\) slice gives a finite version of this subtraction.  Keep
+\(r=|z|^2\), and let a \(U(1)\)-invariant infinitesimal change of Higgs
+coordinate be
+\[
+  v^z=(a+br)z,\qquad v^{\bar z}=(a+br)\bar z .
+\]
+For
+\[
+  g_\zeta=\zeta(1-2r+3r^2+O(r^3))\,dz\,d\bar z,
+\]
+the Lie derivative has two-jet
+\begin{equation}
+  J^2(\mathcal L_v g_\zeta)
+  =
+  \zeta\,\bigl(2a,\,-8a+4b,\,18a-12b\bigr).
+  \label{eq:higgs-branch-field-redefinition-two-jet}
+\end{equation}
+Modulo the FI-source direction
+\[
+  S=J^2(\partial_\zeta g_\zeta)=(1,-2,3),
+\]
+the independent field-redefinition direction can be represented by
+\[
+  B_{\rm fr}=(0,4,-12).
+\]
+Thus a local trace-log output
+\[
+  K=(k_0,k_1,k_2)
+\]
+has, after source matching and Higgs-coordinate quotienting, the intrinsic
+two-jet representative
+\begin{equation}
+  K_{\rm int}
+  =
+  \bigl(0,0,k_2+3k_1+3k_0\bigr).
+  \label{eq:higgs-branch-two-jet-intrinsic-residual}
+\end{equation}
+Both \(S\) and \(B_{\rm fr}\) have zero residual in
+\eqref{eq:higgs-branch-two-jet-intrinsic-residual}.  Therefore a determinant
+kernel of the form
+\[
+  K=\alpha S+\beta B_{\rm fr}
+\]
+is a mixture of FI transport and a coordinate representative, while
+\[
+  K=\alpha S+\beta B_{\rm fr}+(0,0,\varepsilon)
+\]
+contains an intrinsic curvature-channel residual \(\varepsilon\).  A
+source-only subtraction would wrongly flag the \(\beta B_{\rm fr}\) term as a
+metric correction; a point-metric comparison would miss the
+\((0,0,\varepsilon)\) term.  The physical output of the heavy determinant is
+the residual class in
+\eqref{eq:higgs-branch-two-jet-intrinsic-residual}, not the unprojected
+two-jet coefficients.
+\end{example}
+
 \begin{example}[Dimensional reduction of the Higgs heavy rows]
 \label{ex:higgs-branch-dimensional-reduction-row-audit}
 The row completion also explains why the same four-dimensional component table

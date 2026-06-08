@@ -5,14 +5,15 @@ Evidence contract.
 Target claims: Volume VII Chapter 08 quotient formulae, branch-EFT status
 boundaries, D1-D5 Higgs/Coulomb arithmetic, and the finite Higgs-metric
 background-field gates replacing component multiplicity ledgers, including the
-metric-kernel projection after source transport and the two-dimensional
+metric-kernel projection after source and field-redefinition transport and the two-dimensional
 torsion-free versus torsionful theorem boundary and the finite gauge-fixed
 heavy-package projection.
 Independent construction: exact rational invariant-ring, quotient-dimension,
 cotangent-transition, moment-map, determinant-row, trace-log, and regulator
 supertrace cells, together with a finite metric two-jet source-transport
-projection and gauge-map/zero-mode projection cell, are built from finite data
-rather than by entering the manuscript's final identities as constants.
+and field-redefinition quotient projection and gauge-map/zero-mode projection
+cell, are built from finite data rather than by entering the manuscript's final
+identities as constants.
 Imported assumptions: the finite toy cells assume the declared charge
 assignments, a smooth fully Higgsed rank-one patch, the selected
 background-field gauge slots, and finite matrix representatives of the
@@ -22,7 +23,8 @@ metric shortcuts, omitted ghosts/Goldstones/longitudinal vectors, omitted
 seagulls, mismatched Ward vertices, dropped auxiliary/Yukawa contacts,
 unpaired dimension-reduced scalar contacts, covering four-dimensional
 component reuse, unpaired regulator masses, point-metric-only source matching,
-undeclared vector-spurion transport, four-supercharge Kahler-term imports,
+source-only field-redefinition overcounting, undeclared vector-spurion transport,
+four-supercharge Kahler-term imports,
 singular-branch shortcuts, mismatched ghost gauge maps, unprojected tangent zero
 modes, missing heavy rows, and metric-only projections of torsionful
 two-dimensional (4,4) data are rejected when represented by the finite model.
@@ -937,6 +939,117 @@ def check_higgs_branch_metric_transport_projection():
         == (Fraction(0), Fraction(0), Fraction(0)),
         False,
         "undeclared vector-spurion transport cannot remove a Higgs metric kernel",
+    )
+
+
+def check_higgs_branch_metric_two_jet_redefinition_quotient():
+    """Project a rank-one metric two-jet by source and field-redefinition data."""
+
+    source_jet = (Fraction(1), Fraction(-2), Fraction(3))
+
+    def lie_derivative_jet(a_coefficient, b_coefficient, zeta=Fraction(1)):
+        # For v^z = (a + b |z|^2) z and
+        # g_zeta = zeta (1 - 2r + 3r^2 + ...), r = |z|^2.
+        return (
+            zeta * 2 * a_coefficient,
+            zeta * (-8 * a_coefficient + 4 * b_coefficient),
+            zeta * (18 * a_coefficient - 12 * b_coefficient),
+        )
+
+    scale_direction = lie_derivative_jet(Fraction(1), Fraction(0))
+    radial_redefinition_jet = lie_derivative_jet(Fraction(0), Fraction(1))
+    assert_equal(
+        scale_direction,
+        (
+            2 * source_jet[0] - radial_redefinition_jet[0],
+            2 * source_jet[1] - radial_redefinition_jet[1],
+            2 * source_jet[2] - radial_redefinition_jet[2],
+        ),
+        "linear Higgs coordinate rescaling is source transport plus a field redefinition",
+    )
+    assert_equal(
+        radial_redefinition_jet,
+        (Fraction(0), Fraction(4), Fraction(-12)),
+        "rank-one radial Higgs redefinition has the displayed two-jet",
+    )
+
+    def add_jets(*jets):
+        return tuple(sum(jet[index] for jet in jets) for index in range(3))
+
+    def scale_jet(coefficient, jet):
+        return tuple(coefficient * entry for entry in jet)
+
+    def intrinsic_residual_scalar(jet):
+        return jet[2] + 3 * jet[1] + 3 * jet[0]
+
+    def residual_after_source_and_redefinition(jet):
+        source_coefficient = jet[0]
+        redefinition_coefficient = (jet[1] + 2 * jet[0]) / 4
+        removed = add_jets(
+            scale_jet(source_coefficient, source_jet),
+            scale_jet(redefinition_coefficient, radial_redefinition_jet),
+        )
+        return tuple(jet[index] - removed[index] for index in range(3))
+
+    for redundant_jet, label in (
+        (source_jet, "FI source two-jet"),
+        (radial_redefinition_jet, "Higgs coordinate-redefinition two-jet"),
+        (scale_direction, "linear-coordinate scale two-jet"),
+    ):
+        assert_equal(
+            intrinsic_residual_scalar(redundant_jet),
+            Fraction(0),
+            f"{label} has no intrinsic two-jet residual",
+        )
+        assert_equal(
+            residual_after_source_and_redefinition(redundant_jet),
+            (Fraction(0), Fraction(0), Fraction(0)),
+            f"{label} is quotiented before reading the Higgs metric",
+        )
+
+    source_transport = scale_jet(Fraction(5, 3), source_jet)
+    coordinate_artifact = scale_jet(Fraction(-7, 8), radial_redefinition_jet)
+    redundant_kernel = add_jets(source_transport, coordinate_artifact)
+    assert_equal(
+        residual_after_source_and_redefinition(redundant_kernel),
+        (Fraction(0), Fraction(0), Fraction(0)),
+        "source plus Higgs-coordinate transport has zero intrinsic residual",
+    )
+
+    def source_only_residual(jet):
+        source_coefficient = jet[0]
+        removed = scale_jet(source_coefficient, source_jet)
+        return tuple(jet[index] - removed[index] for index in range(3))
+
+    assert_equal(
+        source_only_residual(redundant_kernel) == (Fraction(0), Fraction(0), Fraction(0)),
+        False,
+        "source-only projection would overcount a Higgs coordinate artifact",
+    )
+
+    intrinsic_curvature_residual = (Fraction(0), Fraction(0), Fraction(5, 11))
+    intrinsic_kernel = add_jets(redundant_kernel, intrinsic_curvature_residual)
+    assert_equal(
+        residual_after_source_and_redefinition(intrinsic_kernel),
+        intrinsic_curvature_residual,
+        "curvature two-jet survives both source and field-redefinition quotienting",
+    )
+    assert_equal(
+        intrinsic_residual_scalar(intrinsic_kernel),
+        Fraction(5, 11),
+        "single scalar invariant detects the rank-one intrinsic metric residual",
+    )
+    point_and_slope_match = intrinsic_kernel[:2] == redundant_kernel[:2]
+    assert_equal(
+        point_and_slope_match,
+        True,
+        "point and first-slope matching can still miss the curvature residual",
+    )
+    assert_equal(
+        residual_after_source_and_redefinition(intrinsic_kernel)
+        == (Fraction(0), Fraction(0), Fraction(0)),
+        False,
+        "intrinsic Higgs metric residual is not removed by coordinate choices",
     )
 
 
@@ -2531,6 +2644,7 @@ def main():
     check_higgs_branch_ward_counterterm_interface()
     check_higgs_branch_two_dimensional_torsion_boundary()
     check_higgs_branch_metric_transport_projection()
+    check_higgs_branch_metric_two_jet_redefinition_quotient()
     check_higgs_branch_background_field_derivation_gate()
     check_higgs_branch_gauge_fixed_heavy_package_projection()
     check_large_charge_torus_lattice_and_weyl_orbit()
