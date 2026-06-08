@@ -7,14 +7,16 @@ Jacobian, force-free Wigner drift projection, scalar lambda-phi-four
 cut-sunset collision kernel derived from the full positive/negative-energy
 real-scalar Wightman ansatz, local equilibrium collision/streaming separation,
 finite collision algebra, linearized positivity, transition-measure
-microreversibility, physical-channel versus ordered-duplicate symmetry
-bookkeeping, the entropy-current H-theorem prefactor, dimensionful
+microreversibility, marked-leg exchange pushforwards, physical-channel versus
+ordered-duplicate symmetry bookkeeping, the entropy-current H-theorem
+prefactor, dimensionful
 Markov-memory residual bookkeeping, pinch enhancement, and relaxation-time
 shear example in Volume X Chapter 8.
 Independent construction: direct Poisson-bracket algebra, exact Bose/Fermi
 detailed-balance products, finite reversible-reaction arithmetic, explicit
 positive/negative-energy Wightman crossing enumeration for the scalar sunset
-self-energy, finite memory-kernel Taylor bounds, and elementary
+self-energy, finite marked-leg transition weights, finite memory-kernel
+Taylor bounds, and elementary
 retarded-advanced Lorentzian integrals.
 Imported assumptions: the Schwinger--Keldysh/2PI sunset truncation, the
 narrow quasiparticle ansatz, decay of connected initial correlations, and the
@@ -28,11 +30,12 @@ error bounds, ordered duplicate final channels are not counted without an
 identical-particle divisor, an outgoing p3/p4 relabeling is not counted as an
 extra sunset contraction, a positive-frequency-only Wightman ansatz cannot
 produce the crossed 2-to-2 cut, a channelwise H theorem is not inferred from
-nonmicroreversible transition weights, a relative Markov-memory statement is
-rejected when the zeroth moment cancels, and a bare perturbative term without
-width resummation is rejected on kinetic time scales, while the old
-factor-one-quarter H-theorem prefactor is rejected even though its integrand
-is positive.
+nonmicroreversible transition weights, forward/reverse weights without
+incoming/outgoing marked-leg exchange are not enough to justify the
+H-theorem symmetrization, a relative Markov-memory statement is rejected when
+the zeroth moment cancels, and a bare perturbative term without width
+resummation is rejected on kinetic time scales, while the old factor-one-quarter
+H-theorem prefactor is rejected even though its integrand is positive.
 Scope boundary: these checks verify finite normalization, algebra, and
 residual bookkeeping for the scalar weak-coupling derivation; they do not
 prove gauge-theory screening, collinear/LPM physics, a nonperturbative
@@ -101,6 +104,75 @@ def check_h_theorem_prefactor_from_entropy_current() -> None:
     r = [f_i / (1 + eta * f_i) for f_i, eta in zip(f, etas)]
     log_ratio = math.log(float((r[0] * r[1]) / (r[2] * r[3])))
 
+    def leg_exchange_compatible(marked_weights: tuple[Fraction, ...]) -> bool:
+        first = marked_weights[0]
+        return all(weight == first for weight in marked_weights)
+
+    def forward_reverse_compatible(marked_weights: tuple[Fraction, ...]) -> bool:
+        return (
+            marked_weights[0] == marked_weights[2]
+            and marked_weights[1] == marked_weights[3]
+        )
+
+    def require_leg_exchange_pushforwards(
+        marked_weights: tuple[Fraction, ...],
+    ) -> None:
+        if not leg_exchange_compatible(marked_weights):
+            raise AssertionError(
+                "marked-leg transition weights do not obey exchange pushforwards"
+            )
+
+    def entropy_log_coefficients(
+        marked_weights: tuple[Fraction, ...],
+    ) -> tuple[Fraction, Fraction, Fraction, Fraction]:
+        w1, w2, w3, w4 = marked_weights
+        return (
+            2 * net_loss * w1,
+            2 * net_loss * w2,
+            -2 * net_loss * w3,
+            -2 * net_loss * w4,
+        )
+
+    compatible_marked_weights = (
+        transition_weight,
+        transition_weight,
+        transition_weight,
+        transition_weight,
+    )
+    require_leg_exchange_pushforwards(compatible_marked_weights)
+    expected_log_coefficients = (
+        2 * net_loss * transition_weight,
+        2 * net_loss * transition_weight,
+        -2 * net_loss * transition_weight,
+        -2 * net_loss * transition_weight,
+    )
+    if entropy_log_coefficients(compatible_marked_weights) != expected_log_coefficients:
+        raise AssertionError("compatible marked-leg entropy coefficients changed")
+
+    forward_reverse_only_weights = (
+        transition_weight,
+        2 * transition_weight,
+        transition_weight,
+        2 * transition_weight,
+    )
+    if not forward_reverse_compatible(forward_reverse_only_weights):
+        raise AssertionError("negative-control weights should pass forward/reverse exchange")
+    try:
+        require_leg_exchange_pushforwards(forward_reverse_only_weights)
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError(
+            "negative control failed: forward/reverse symmetry implied leg exchange"
+        )
+    if (
+        entropy_log_coefficients(forward_reverse_only_weights)
+        == expected_log_coefficients
+    ):
+        raise AssertionError(
+            "negative control failed: unequal marked legs gave the symmetrized coefficients"
+        )
+
     collision_terms = [
         transition_weight * (gain - loss),
         transition_weight * (gain - loss),
@@ -112,8 +184,8 @@ def check_h_theorem_prefactor_from_entropy_current() -> None:
         for c_i, r_i in zip(collision_terms, r)
     )
 
-    # The symmetrized continuum integral contains the four representatives
-    # generated by incoming exchange and microreversibility.
+    # The symmetrized continuum integral is legal only after the marked-leg
+    # exchange pushforwards and forward/reverse microreversibility are imposed.
     ordered_orbit_integrand = 4.0 * float(transition_weight * net_loss) * log_ratio
     correct_symmetrized = 0.5 * ordered_orbit_integrand
     old_printed_prefactor = 0.25 * ordered_orbit_integrand

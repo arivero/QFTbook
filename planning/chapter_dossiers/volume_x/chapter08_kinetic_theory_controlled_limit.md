@@ -30,6 +30,9 @@ transport coefficients arise from the inverse linearized collision operator.
 - `C_a`, `C_a^(t)`: covariant and coordinate-time collision terms.
 - `W_ab;cd`: covariant transition weight including shell-projection,
   symmetry, ordered/quotient measure, spin/color, and regulator data.
+- `dmu_ab;cd`, `dnu_o`: ordered four-leg transition measure and unordered
+  physical reaction-orbit measure whose marked-leg marginals define the
+  species collision terms.
 - `M_ab_to_cd`: on-shell scattering amplitude in the scattering-volume
   normalization, before finite kinetic-convention factors are assigned to
   `W_ab;cd`.
@@ -78,9 +81,12 @@ transport coefficients arise from the inverse linearized collision operator.
    energy-momentum and charge conservation, proves detailed balance.
    The local-equilibrium collision term vanishes pointwise at fixed \(X\);
    gradients source the streaming term, not the local collision term.
-7. The kinetic entropy current has nonnegative divergence for nonnegative,
-   channelwise microreversible transition weights because the symmetrized
-   \(2\to2\) integrand is \((X-Y)\log(X/Y)\ge0\).  With the chapter's
+7. The kinetic entropy current has nonnegative divergence for nonnegative
+   transition measures satisfying both forward/reverse microreversibility and
+   marked-leg exchange pushforwards.  The latter identify the four
+   species-equation entropy contributions as marginals of one reaction measure;
+   then the symmetrized \(2\to2\) integrand is
+   \((X-Y)\log(X/Y)\ge0\).  With the chapter's
    \(2d\Pi\) entropy-current normalization and transition-measure convention,
    the symmetrized continuum coefficient is \(1/2\); in the scalar
    full-product convention \(\mathcal W=\lambda_R^2/4\), the ordered
@@ -145,12 +151,20 @@ transport coefficients arise from the inverse linearized collision operator.
   stated that initial/final pair divisors are already part of the transition
   weight or measure convention, and added the scalar \(\lambda_R^2/8\)
   specialization plus a finite prefactor regression check.
+- 2026-06-08 issue #936 pass: added the missing marked-leg exchange
+  hypotheses behind the H-theorem symmetrization.  The chapter now separates
+  identical-particle divisors in the channel measure, incoming/outgoing
+  marked-leg pushforwards used to combine the four entropy contributions, and
+  forward/reverse microreversibility used for the gain-loss pairing.  The
+  quotient-channel convention is described through unordered reaction-orbit
+  measures and stabilizer-corrected marked-leg marginals.
 
 ## Calculation Checks
 
 - `calculation-checks/kinetic_theory_checks.py` verifies the corrected scale
   hierarchy, detailed balance, the H-theorem integrand, invariant shell
-  Jacobian, \(2E/Z\) projector, transition-measure microreversibility,
+  Jacobian, \(2E/Z\) projector, transition-measure microreversibility and
+  marked-leg exchange compatibility,
   force-free quasiparticle drift projection, local-equilibrium
   collision-versus-streaming separation, the full Wightman energy-sign
   reversal, the crossed scalar cut-sunset gain/loss kernel, the
@@ -159,7 +173,8 @@ transport coefficients arise from the inverse linearized collision operator.
   equivalence, exact finite reversible-collision detailed balance, exact
   finite linearized-rate algebra, finite collision-invariant algebra,
   the entropy-current-derived H-theorem prefactor with a rejected \(1/4\)
-  negative control, linearized collision positivity and null vectors, dimensionful
+  negative control and a forward/reverse-only marked-weight negative control,
+  linearized collision positivity and null vectors, dimensionful
   Markov-memory and pinch-enhancement bookkeeping, and the relaxation-time
   shear-viscosity integral.
 

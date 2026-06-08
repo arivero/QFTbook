@@ -2374,7 +2374,8 @@ Current checks:
   transition-measure symmetrization, the invariant mass-shell Jacobian and
   \(2E/Z\) shell projector, the force-free
   quasiparticle drift projection from the Wigner-space mass-shell bracket,
-  transition-measure microreversibility, local-equilibrium collision versus
+  transition-measure microreversibility, marked-leg exchange compatibility for
+  the H-theorem symmetrization, local-equilibrium collision versus
   streaming separation, the weak-scalar cut-sunset gain/loss products derived
   from the full
   positive/negative-energy real-scalar Wightman ansatz, the crossed
@@ -2384,7 +2385,9 @@ Current checks:
   collision-invariant algebra, identical-final full-product versus quotient
   measure equivalence, the factor-two negative control for outgoing
   relabeling, rejection of the old \(1/4\) H-theorem prefactor while
-  preserving integrand positivity, linearized collision-operator positivity
+  preserving integrand positivity, rejection of forward/reverse-only marked
+  weights with unequal incoming/outgoing leg pushforwards, linearized
+  collision-operator positivity
   and null vectors,
   dimensionful Markov-memory residual and noncancellation bookkeeping,
   pinch-enhancement bookkeeping, and the relaxation-time shear-viscosity

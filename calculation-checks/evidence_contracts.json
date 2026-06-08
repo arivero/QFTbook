@@ -140,6 +140,7 @@
         "scalar covariant collision full-product weight lambda^2/4",
         "H theorem prefactor retains entropy-current factor 2",
         "transition measure includes symmetry and shell-projection factors",
+        "H theorem symmetrization requires marked-leg exchange pushforwards",
         "channelwise H theorem assumes microreversibility"
       ]
     },
