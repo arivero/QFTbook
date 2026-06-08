@@ -2864,11 +2864,34 @@ magnetic color bundle supplies the corresponding center cocycle.
 Whenever this section compares the electric and magnetic SQCD descriptions,
 the following hypotheses are part of the statement.
 \begin{enumerate}
-\item The electric and magnetic Lagrangians have continuum infrared limits in
-  a regulator preserving the gauge Ward identities, the listed flavor
-  symmetries, and enough supersymmetry for the Wilsonian chiral-coordinate
-  arguments of Chapters~\ref{ch:susy-wilsonian-schemes-exact-dynamics} and
-  \ref{ch:susy-nonrenormalization-holomorphy}.
+\item The regulator and ultraviolet status of each Lagrangian description are
+  part of the datum.  In the electric asymptotically free range
+  \(N_c+2\le N_f<3N_c\), the electric \(SU(N_c)\) theory is defined by a
+  continuum Wilsonian limit in a regulator preserving the gauge Ward
+  identities, the listed flavor symmetries, and enough supersymmetry for the
+  chiral-coordinate arguments of
+  Chapters~\ref{ch:susy-wilsonian-schemes-exact-dynamics} and
+  \ref{ch:susy-nonrenormalization-holomorphy}.  The magnetic description is
+  compared in the corresponding infrared window: as an asymptotically free
+  continuum theory in the interacting conformal subrange, and as an
+  infrared-free Wilsonian description with a declared matching scale and
+  cutoff in the free magnetic subrange.
+\item For the free electric continuation \(N_f\ge 3N_c\), the electric
+  variables require extra ultraviolet data.  At \(N_f=3N_c\) the electric
+  one-loop coefficient vanishes and the electric description is the Gaussian
+  edge of the asymptotically free family.  For \(N_f>3N_c\), the electric
+  Lagrangian is used either as a finite cutoff effective theory with cutoff
+  \(\Lambda_{\rm el}\), as a theory supplied with a specified ultraviolet
+  completion, or as an emergent infrared coordinate system defined through the
+  asymptotically free magnetic theory.  In the finite cutoff formulation one
+  first takes the thermodynamic limit at fixed \(\Lambda_{\rm el}\), then the
+  infrared limit of momenta, masses, and sources with all ratios
+  \(p/\Lambda_{\rm el}\) tending to zero.  A subsequent
+  \(\Lambda_{\rm el}\to\infty\) statement is admitted only for observables
+  whose low-energy limits are explicitly declared independent of the electric
+  ultraviolet completion; in this chapter those are the protected chiral
+  ring, local current-anomaly coefficients in the declared background class,
+  and holomorphic mass/Higgs deformation ledgers.
 \item The unbroken global currents and faithful compact flavor-baryon
   background group \eqref{eq:sqcd-faithful-flavor-baryon-group} are
   represented by the same infrared operators.  On liftable product
@@ -2914,11 +2937,12 @@ algebraic burden of the duality statement explicit.
 \begin{conjecture}[Central conjecture: Seiberg duality for SQCD]
 \label{conj:sqcd-seiberg-duality-central}
 For four-dimensional \(\mathcal N=1\) SQCD with gauge group \(SU(N_c)\),
-\(N_f\geq N_c+2\) flavors, zero tree superpotential, and the Wilsonian
-coordinate conventions of this chapter, the electric theory at the origin of
-the quantum moduli space is conjectured to have the same infrared QFT as the
-magnetic \(SU(N_f-N_c)\) theory with fields, faithful-background action, and
-superpotential displayed above.  The conjecture is made under
+\(N_c+2\leq N_f<3N_c\) flavors, zero tree superpotential, and the Wilsonian
+coordinate conventions of this chapter, the electric asymptotically free
+theory at the origin of the quantum moduli space is conjectured to have the
+same infrared QFT as the magnetic \(SU(N_f-N_c)\) theory with fields,
+faithful-background action, and superpotential displayed above.  The
+conjecture is made under
 Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses} and is a statement about
 the observable sector declared there: local gauge-invariant operators and
 correlators, the protected chiral ring after imposing \(F\)-term equations,
@@ -2928,17 +2952,39 @@ been declared.  It predicts equality of the full anomaly inflow class for the
 faithful background data, but the calculation below checks only the local
 perturbative anomaly-polynomial component.  In the interval
 \(\frac32N_c<N_f<3N_c\) the conjecture asserts a common interacting infrared
-SCFT; in the free electric and free magnetic ranges it is interpreted after
-including the appropriate free variables and accidental symmetries at the
-endpoint.  The historical proposal is Seiberg's electric--magnetic duality
-\cite{Seiberg1994}; the status in this chapter is central conjecture, with
-the following calculations serving as evidence rather than proof.
+SCFT.  In the free magnetic subrange \(N_c+2\leq N_f<\frac32N_c\), with the
+lower edge treated separately when \(2N_f=3N_c\), the conjecture asserts the
+infrared equivalence after the magnetic free variables, their accidental
+symmetries, and the magnetic Wilsonian cutoff have been included in the
+infrared datum.  The historical proposal is Seiberg's electric--magnetic
+duality \cite{Seiberg1994}; the status in this chapter is central conjecture,
+with the following calculations serving as evidence rather than proof.
 \end{conjecture}
 
-The monograph uses this central conjecture as the nonperturbative input for
-the SQCD phase diagram and then exposes the checks that make the statement
-sharp: faithful charge assignments, local anomaly-polynomial matching,
-deformation matching, and consistency with NSVZ fixed-point arithmetic.
+\begin{conjecture}[Free electric continuation]
+\label{conj:sqcd-free-electric-continuation}
+For \(N_f\ge 3N_c\) the electric variables define the free electric side of a
+separate continuation, rather than another instance of the continuum-pair
+statement above.  At \(N_f=3N_c\), the electric one-loop coefficient vanishes
+and the endpoint is treated as a Gaussian edge with the free electric
+dimensions and accidental currents included before any \(\Delta=\frac32R\)
+interpretation.  For \(N_f>3N_c\), any electric-side statement must use one of
+the ultraviolet choices in
+Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses}: finite cutoff electric
+EFT, specified ultraviolet completion, or electric fields as emergent
+infrared coordinates of the asymptotically free magnetic theory.  The
+continuation asserts matching only for the protected local sector declared in
+that hypothesis and after the limit order stated there.  A UV-complete
+electric continuum definition in this range, or a superconformal-dimension
+interpretation outside the interacting conformal window, requires additional
+input beyond the free electric continuation.
+\end{conjecture}
+
+The monograph uses the central conjecture and the free electric continuation
+as distinct nonperturbative inputs for the SQCD phase diagram and then exposes
+the checks that make each statement sharp: faithful charge assignments, local
+anomaly-polynomial matching, deformation matching, and consistency with NSVZ
+arithmetic in the range where that arithmetic has fixed-point status.
 
 \paragraph{Magnetic \(R\)-charge and NSVZ consistency.}
 With the magnetic charges displayed above, \(U(1)_R\) is free of
@@ -2987,8 +3033,11 @@ The magnetic NSVZ numerator is therefore
   0 .
 \]
 The electric numerator was checked in
-Section~\ref{sec:n1-superconformal-sqcd-bookkeeping}; both descriptions
-therefore pass the same fixed-point arithmetic.
+Section~\ref{sec:n1-superconformal-sqcd-bookkeeping}.  In the interacting
+window \(\frac32N_c<N_f<3N_c\), both descriptions therefore pass the same
+fixed-point arithmetic.  Outside that window the same equations remain
+algebraic checks on the charge assignments and superpotential, rather than
+admission tests for a common interacting fixed point.
 
 \paragraph{Local perturbative anomaly-polynomial matching.}
 \label{par:sqcd-seiberg-anomaly-matching}
@@ -3119,8 +3168,12 @@ and
   N_c^2-1-\frac{2N_c^4}{N_f^2}.
 \]
 This completes the displayed local anomaly-polynomial matching calculation,
-a necessary check on the central conjecture.  The comparison of all global
-anomalies on the nonliftable \(G_{FB}^{\rm SQCD}\)-backgrounds described in
+a necessary check on the central conjecture and on the free electric
+continuation.  Its validity at \(N_f\ge3N_c\) is algebraic evidence about the
+protected current sector, rather than evidence that the electric Lagrangian in
+that range has the same ultraviolet status as the asymptotically free
+electric theory.  The comparison of all global anomalies on the nonliftable
+\(G_{FB}^{\rm SQCD}\)-backgrounds described in
 \eqref{eq:sqcd-admissible-background-cocycles} and the choice of
 scheme-dependent local background counterterms remain separate compact
 background data.
@@ -3249,13 +3302,16 @@ logical status, not a single theorem with a uniform proof.  The
 \(N_f<N_c\) range follows from the ADS seed, holomorphic decoupling, and the
 displayed finite-dimensional elimination arguments.  The \(N_f=N_c\) and
 \(N_f=N_c+1\) entries use the quantum-modified and confining chiral-coordinate
-inputs stated earlier in the section.  The magnetic ranges
-\(N_f\geq N_c+2\) use the nonperturbative Seiberg-duality input of
+inputs stated earlier in the section.  The electric-asymptotically-free
+duality range \(N_c+2\leq N_f<3N_c\) uses the nonperturbative
+Seiberg-duality input of
 Conjecture~\ref{conj:sqcd-seiberg-duality-central} under
-Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses}.  The one-loop signs below
-are Wilsonian coordinate checks on the proposed infrared variables; by
-themselves they do not construct the continuum infrared fixed points or prove
-the electric-magnetic equivalence.
+Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses}.  The Gaussian edge and
+the strict free electric continuation use the separate status of
+Conjecture~\ref{conj:sqcd-free-electric-continuation}.  The one-loop signs
+below are Wilsonian coordinate checks on the proposed infrared variables; by
+themselves they supply necessary algebraic evidence rather than continuum
+infrared fixed points or electric-magnetic equivalence.
 \begin{description}
 \item[\(N_f<N_c\).]
 Status: ADS/holomorphic-decoupling result under the instanton and chiral
@@ -3294,20 +3350,42 @@ its one-loop coefficient is
   2N_f-3N_c<0 .
 \]
 The appropriate low-energy variables are the magnetic quarks, magnetic
-gluons, and meson singlets.
+gluons, and meson singlets.  The magnetic Lagrangian is used as the
+infrared-free Wilsonian description in the declared low-energy window, with
+the free-field accidental currents included in the infrared datum.
+\item[\(2N_f=3N_c\).]
+When this equality is compatible with integrality, the entry is the lower
+endpoint of the interacting-window bookkeeping and the upper endpoint of the
+free magnetic sign check.  The magnetic one-loop coefficient vanishes, the
+electric meson saturates the chiral unitarity bound, and the superconformal
+\(R\)-charge arithmetic alone no longer identifies an interacting fixed point
+without adding the accidental free-field current.
 \item[\(\frac32N_c<N_f<3N_c\).]
 Status: Seiberg-duality input plus SCFT-current and accidental-symmetry
 hypotheses.  Both electric and magnetic variables are asymptotically free and
 flow, under that input, to the same interacting nonabelian Coulomb-phase SCFT.
 The lower endpoint is detected by the electric meson unitarity bound, and the
 upper endpoint by the electric loss of asymptotic freedom.
-\item[\(N_f\geq3N_c\).]
-Status: perturbative electric infrared-freedom statement, with the marginal
-endpoint interpreted in the same Wilsonian coordinate convention.  The
-electric variables are in the free electric phase.  For \(N_f>3N_c\) the
-electric gauge coupling is infrared free in the usual perturbative sense; at
-\(N_f=3N_c\) the interacting Banks--Zaks fixed point has collided with the
-Gaussian endpoint in this table.
+\item[\(N_f=3N_c\).]
+Status: Gaussian electric edge of the asymptotically free family and boundary
+case of the free electric continuation.  The electric one-loop coefficient
+vanishes, the anomaly comparison
+\eqref{eq:sqcd-free-field-a-comparison} has zero difference from the free
+electric value, and fixed-point dimension formulae are interpreted with the
+free electric variables and their accidental currents rather than as an
+interacting SCFT claim.
+\item[\(N_f>3N_c\).]
+Status: strict free electric continuation.  The electric gauge coupling is
+infrared free in the perturbative Wilsonian sense, while the electric
+Lagrangian by itself is a finite cutoff EFT, a UV-completed theory, or an
+emergent infrared coordinate system supplied by the magnetic definition.  The
+phase entry therefore asserts only the protected low-energy sector specified
+in Hypothesis~\ref{hyp:sqcd-ir-comparison-hypotheses}, with the order of
+thermodynamic, infrared, and cutoff limits stated there.  The same rank,
+charge, anomaly, NSVZ, and deformation arithmetic remains a consistency
+ledger, while the continuum-pair statement of
+Conjecture~\ref{conj:sqcd-seiberg-duality-central} requires the separate
+range and ultraviolet hypotheses stated above.
 \end{description}
 
 \section{Klebanov--Witten Conifold SCFT}
@@ -3845,13 +3923,17 @@ matching as a weakly gauged flavor symmetry, and assumes that integrating out
 the mesons in the magnetic description is legitimate in the Wilsonian
 neighborhood being used.  These duality assumptions are the SQCD central
 conjecture of Conjecture~\ref{conj:sqcd-seiberg-duality-central}, applied
-with the neighboring gauge factor included in the declared background data.
+with the neighboring gauge factor included in the declared background data and
+with the dualized node inside the stated \(N_f\ge N_c+2\) range.  The
+near-end \(N_f=N_c+1\) case uses the separately stated confining
+chiral-coordinate input rather than the nonabelian magnetic duality
+conjecture.
 \end{hypothesis}
 
 \paragraph{Cascade rank step.}
 Assume the Seiberg-duality transformation for the first gauge factor while
 the second gauge factor is treated as a weakly gauged flavor symmetry during
-the dualization.  Then
+the dualization, and suppose first that \(N-M\ge2\).  Then
 \[
   SU(N+M)\times SU(N)
   \quad\longmapsto\quad
@@ -3970,8 +4052,11 @@ as a weakly gauged flavor symmetry during the matching.  The matching includes
 the faithful flavor-baryon background data inherited from the node, the
 declared \(R\)-current background convention, holomorphic scale coordinates,
 and the quartic superpotential after the massive mesons are eliminated.  It
-does not assert equality of all line/defect sectors or all quotient-background
-torsion anomalies unless those data are added to the SQCD conjecture.
+requires the node to lie in the SQCD range where that central conjecture is
+available; the \(N_f=N_c+1\) endpoint is instead governed by the confining
+chiral-coordinate input.  It does not assert equality of all line/defect
+sectors or all quotient-background torsion anomalies unless those data are
+added to the SQCD conjecture.
 \end{conjecture}
 
 This is a conditional use of the SQCD central conjecture, not an independent

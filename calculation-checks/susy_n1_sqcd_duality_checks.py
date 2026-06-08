@@ -1,5 +1,24 @@
 #!/usr/bin/env python3
-"""Exact convention checks for 4D N=1 SQCD duality and phase arithmetic."""
+"""Exact convention checks for 4D N=1 SQCD duality and phase arithmetic.
+
+Target claims: rank involution, baryon normalization, faithful
+flavor-baryon quotient arithmetic, local anomaly matching, deformation
+bookkeeping, conformal-window central-charge arithmetic, and the range ledger
+for the standard Seiberg-duality statement versus the free-electric
+continuation.
+Independent construction: finite rational arithmetic for charges, anomaly
+coefficients, NSVZ numerators, dimensions, R-charges, and range inequalities.
+Imported assumptions: the field content and superpotential of the proposed
+magnetic description, the monograph gamma convention, and the stated
+continuum or finite-cutoff status of the SQCD range under discussion.
+Negative controls: algebraic matching beyond 3 Nc is required to pass as
+protected-sector consistency, but it must not admit the same continuum-pair
+claim or fixed-point dimension tests as the electric-asymptotically-free
+duality range.
+Scope boundary: these checks do not prove Seiberg duality, construct
+infrared fixed points, or supply a UV completion for a free-electric electric
+Lagrangian.
+"""
 
 from fractions import Fraction
 
@@ -191,12 +210,12 @@ def check_r_charges_superpotential_and_nsvz():
             assert_equal(
                 3 * nc - nf * (1 - electric_gamma),
                 0,
-                "electric NSVZ numerator at candidate fixed point",
+                "electric NSVZ numerator algebraic zero",
             )
             assert_equal(
                 3 * dual_nc - nf * (1 - magnetic_gamma),
                 0,
-                "magnetic NSVZ numerator at candidate fixed point",
+                "magnetic NSVZ numerator algebraic zero",
             )
 
             magnetic_gauge_r_anomaly = (
@@ -494,10 +513,32 @@ def classify_phase(nc, nf):
     return "free electric"
 
 
+def sqcd_range_status(nc, nf):
+    field_content = nf >= nc + 2
+    electric_b0 = 3 * nc - nf
+    magnetic_b0 = 3 * (nf - nc) - nf
+    interacting = field_content and 2 * nf > 3 * nc and nf < 3 * nc
+    return {
+        "field_content_algebra": field_content,
+        "standard_duality_range": field_content and nf < 3 * nc,
+        "free_magnetic_wilsonian": field_content and 2 * nf < 3 * nc,
+        "lower_edge": field_content and 2 * nf == 3 * nc,
+        "interacting_scft": interacting,
+        "fixed_point_dimension_tests": interacting,
+        "gaussian_edge": field_content and nf == 3 * nc,
+        "strict_free_electric": field_content and nf > 3 * nc,
+        "free_electric_continuation": field_content and nf >= 3 * nc,
+        "electric_uv_datum_required": field_content and nf > 3 * nc,
+        "electric_b0": electric_b0,
+        "magnetic_b0": magnetic_b0,
+    }
+
+
 def check_phase_inequalities():
     for nc in range(2, 20):
         for nf in range(0, 5 * nc + 1):
             phase = classify_phase(nc, nf)
+            status = sqcd_range_status(nc, nf)
             electric_b0 = 3 * nc - nf
             meson_dimension = None if nf == 0 else 3 * Fraction(nf - nc, nf)
 
@@ -507,19 +548,58 @@ def check_phase_inequalities():
                     raise AssertionError("free magnetic phase has nonnegative magnetic b0")
                 if not (nf >= nc + 2 and nf < Fraction(3 * nc, 2)):
                     raise AssertionError("free magnetic phase inequality failed")
+                if not status["standard_duality_range"] or not status["free_magnetic_wilsonian"]:
+                    raise AssertionError("free magnetic status range failed")
             elif phase == "interacting conformal":
                 dual_b0 = 3 * (nf - nc) - nf
                 if not (electric_b0 > 0 and dual_b0 > 0):
                     raise AssertionError("conformal window asymptotic-freedom test failed")
                 if meson_dimension is None or meson_dimension <= 1:
                     raise AssertionError("conformal window meson unitarity test failed")
+                if not status["standard_duality_range"] or not status["fixed_point_dimension_tests"]:
+                    raise AssertionError("conformal-window fixed-point status failed")
             elif phase == "free electric":
                 if electric_b0 >= 0:
                     raise AssertionError("free electric phase has nonnegative electric b0")
+                if status["standard_duality_range"] or not status["electric_uv_datum_required"]:
+                    raise AssertionError("free electric continuation status failed")
+                if status["fixed_point_dimension_tests"]:
+                    raise AssertionError("free electric range should not admit fixed-point dimension tests")
             elif phase == "Gaussian edge":
                 assert_equal(electric_b0, 0, "electric Gaussian edge b0")
+                if status["standard_duality_range"] or not status["gaussian_edge"]:
+                    raise AssertionError("Gaussian edge should be separate from the standard duality range")
+                if status["fixed_point_dimension_tests"]:
+                    raise AssertionError("Gaussian edge should not be an interacting fixed-point admission")
             elif phase == "lower edge":
                 assert_equal(meson_dimension, 1, "meson unitarity lower edge")
+                if not status["lower_edge"] or status["fixed_point_dimension_tests"]:
+                    raise AssertionError("lower edge status should require accidental-current data")
+
+
+def check_free_electric_continuation_status_negative_control():
+    for nc in range(2, 12):
+        nf = 3 * nc + 1
+        status = sqcd_range_status(nc, nf)
+        dual_nc = nf - nc
+
+        assert status["field_content_algebra"]
+        assert status["strict_free_electric"]
+        assert status["free_electric_continuation"]
+        assert status["electric_uv_datum_required"]
+        if status["standard_duality_range"] or status["fixed_point_dimension_tests"]:
+            raise AssertionError("free-electric arithmetic should not admit the standard continuum-pair claim")
+
+        assert_equal(nf - dual_nc, nc, "free-electric rank algebra still passes")
+        assert_equal(
+            dual_nc * Fraction(nc, dual_nc),
+            nc,
+            "free-electric baryon-charge algebra still passes",
+        )
+        electric = electric_anomalies(nc, nf)
+        magnetic = magnetic_anomalies(nc, nf)
+        for key, value in electric.items():
+            assert_equal(magnetic[key], value, f"free-electric {key} anomaly algebra still passes")
 
 
 def main():
@@ -534,6 +614,7 @@ def main():
     check_quantum_modified_constraint_and_decoupling()
     check_massive_sqcd_to_pure_sym_decoupling()
     check_phase_inequalities()
+    check_free_electric_continuation_status_negative_control()
     print("All N=1 SQCD duality and phase checks passed.")
 
 

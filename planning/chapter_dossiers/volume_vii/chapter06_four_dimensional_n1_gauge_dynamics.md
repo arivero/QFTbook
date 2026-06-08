@@ -170,14 +170,21 @@ brane construction, or holographic interpretation is a premise of the chapter.
   observable-sector, chiral-coordinate, and deformation-matching assumptions
   needed before comparing electric and magnetic SQCD infrared limits.
 - `conj:sqcd-seiberg-duality-central`: central conjecture for SQCD Seiberg
-  duality, including electric/magnetic theories, faithful compact background
-  action, observable-sector scope, conformal/free-range qualifications, and
-  the distinction between predicted full inflow agreement and the local
-  perturbative anomaly-polynomial check actually displayed.
+  duality in the electric-asymptotically-free range
+  `N_c+2 <= N_f < 3N_c`, including electric/magnetic theories, faithful
+  compact background action, observable-sector scope, conformal/free-magnetic
+  qualifications, and the distinction between predicted full inflow agreement
+  and the local perturbative anomaly-polynomial check actually displayed.
+- `conj:sqcd-free-electric-continuation`: separate conjectural continuation
+  for `N_f >= 3N_c`, with `N_f=3N_c` treated as a Gaussian edge and
+  strict `N_f>3N_c` requiring a finite-cutoff electric EFT, specified UV
+  completion, or emergent electric variables defined through the magnetic
+  continuum theory.
 - `par:sqcd-infrared-range-synthesis`: status-stratified SQCD infrared range
-  synthesis; the magnetic ranges use Seiberg-duality input, while the lower
-  ranges use the separately stated ADS, quantum-modified, or confining
-  chiral-coordinate inputs.
+  synthesis; the electric-asymptotically-free duality range uses
+  Seiberg-duality input, the free-electric range uses its separate
+  continuation status, and the lower ranges use the separately stated ADS,
+  quantum-modified, or confining chiral-coordinate inputs.
 - SQCD mass/Higgs deformation tests: explicit consistency checks for the
   magnetic field content, including the boundary to the `N_f=N_c+1`
   confining description.
@@ -208,11 +215,12 @@ brane construction, or holographic interpretation is a premise of the chapter.
   `Delta=3R/2` as an infrared SCFT statement.
 - `hyp:kw-lagrangian-branch-assumptions`: KW Lagrangian, branch, and
   conformal-manifold assumptions.
-- `hyp:ks-cascade-input-assumptions`: Wilsonian, NSVZ, Seiberg-duality, and
-  meson-integration assumptions for the cascade.
+- `hyp:ks-cascade-input-assumptions`: Wilsonian, NSVZ, Seiberg-duality range,
+  confining-endpoint, and meson-integration assumptions for the cascade.
 - `conj:ks-seiberg-duality-cascade`: conditional cascade use of the SQCD
   central conjecture with the neighboring gauge factor treated as weakly
-  gauged flavor/background data.
+  gauged flavor/background data, restricted to nodes in the stated
+  nonabelian duality range.
 
 ## Claim Ledger
 
@@ -406,6 +414,7 @@ brane construction, or holographic interpretation is a premise of the chapter.
   flavor-baryon quotient, magnetic meson normalization, observable-sector
   scope, and the `M q tilde q / mu_*` superpotential.
 - States `hyp:sqcd-ir-comparison-hypotheses`, separating continuum-limit,
+  free-electric finite-cutoff/UV-completion/emergent-magnetic status,
   current-identification, faithful-background, R-current, observable-sector,
   chiral-sector, compact-background anomaly, and deformation-matching
   assumptions before any electric/magnetic equivalence is used.
@@ -434,8 +443,9 @@ brane construction, or holographic interpretation is a premise of the chapter.
   instanton calculation plus holomorphic decoupling, quantum-modified
   `N_f=N_c`, confining `N_f=N_c+1`, Seiberg-duality input for the free
   magnetic range and interacting conformal window under the central
-  conjecture, and perturbative electric infrared freedom in the free electric
-  range.
+  conjecture, `N_f=3N_c` as its own Gaussian edge, and strict `N_f>3N_c` as
+  a free-electric continuation with finite-cutoff/UV-completion/emergent
+  magnetic definition data rather than the same continuum-pair status.
 - Checks the `N_f=N_c+1` confining superpotential
   `(B M tilde B - det M)/Lambda_h^(2N_c-1)` by dimension and \(R\)-charge.
 - Defines the KW gauge theory field content, global symmetries, baryon-charge
@@ -481,8 +491,9 @@ brane construction, or holographic interpretation is a premise of the chapter.
   a quoted field-theoretic input.
 - States cascade assumptions explicitly: Wilsonian/NSVZ scheme, local
   numerator-sign interpretation, Seiberg duality for one strongly coupled
-  node with the other weakly gauged, and legitimacy of integrating out
-  massive mesons.
+  node with the other weakly gauged when \(N_f\ge N_c+2\), the separate
+  confining chiral-coordinate input at the \(N_f=N_c+1\) endpoint, and
+  legitimacy of integrating out massive mesons.
 
 ## Calculation Checks
 
@@ -570,3 +581,10 @@ chiral-coordinate spaces with their assumptions and anomaly data.
   quotient backgrounds, limited the displayed anomaly evidence to local
   perturbative anomaly-polynomial matching, and made the observable-sector
   scope visible for downstream phase and cascade uses.
+- 2026-06-08 issue #941 pass: separated the central SQCD duality conjecture
+  for `N_c+2 <= N_f < 3N_c` from the free-electric continuation at
+  `N_f >= 3N_c`, declared the finite-cutoff/UV-completion/emergent-magnetic
+  options and limit order for strict `N_f>3N_c`, isolated the `N_f=3N_c`
+  Gaussian edge, and added a calculation negative control showing that
+  arithmetic matching beyond `3N_c` does not admit the standard continuum-pair
+  or fixed-point-dimension claim.
