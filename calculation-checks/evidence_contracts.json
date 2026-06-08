@@ -122,6 +122,18 @@
       "risk_class": "finite lattice BRST topology"
     },
     {
+      "path": "lattice_fermion_chiral_checks.py",
+      "risk_class": "lattice fermion reflection positivity and overlap/domain-wall conventions",
+      "convention_tags": [
+        "bare Berezin top-coefficient extraction is not a positive monomial inner product",
+        "fermionic reflection positivity uses oriented homogeneous crossing kernels",
+        "Wilson r=1 mid-link positivity uses projector crossing coefficients",
+        "overlap Wilson height shift appears exactly once",
+        "overlap normalization uses rho over a for unit physical slope",
+        "finite domain-wall sign approximation requires a spectral gap"
+      ]
+    },
+    {
       "path": "lsmoh_flux_anomaly_checks.py",
       "risk_class": "lattice filling and anomaly constraints"
     },

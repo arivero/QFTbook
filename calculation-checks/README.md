@@ -2461,9 +2461,13 @@ Current checks:
 - `lattice_fermion_chiral_checks.py`: exact finite checks for the
   Volume XI lattice-fermion chapter, including naive-doubler chirality
   cancellation, Wilson corner-mass degeneracies, the Ginsparg-Wilson and
-  overlap-index algebra, Berezinian index normalization, reflection-positive
-  crossing-factor coefficients, Wilson reflection projectors, and staggered
-  phase signs.
+  overlap-index algebra, Berezinian index normalization, zero-mode chirality
+  equality for the Ginsparg-Wilson trace, exhaustive one- and two-link
+  Grassmann crossing-kernel Gram matrices with wrong-sign and wrong-phase
+  negative controls, Wilson \(r=1\) reflection projectors with an \(r=0\)
+  negative control, the overlap one-branch window and double-shift rejection,
+  finite-wall domain-wall sign-function convergence, and staggered phase
+  signs.
 - `nested_bethe_ansatz_checks.py`: finite algebra checks for the Volume VI
   algebraic and nested Bethe-ansatz chapters, including the rational
   Yang--Baxter equation, transfer-matrix commutativity, one-magnon spectra at
