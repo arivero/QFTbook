@@ -2984,6 +2984,79 @@ For the ratio \(r=|h|^2/g_m^2\),
   \left((2N_f+t)r+2b_{0,m}-4C_F^{(m)}\right)+\cdots .
   \label{eq:sqcd-magnetic-yukawa-ratio-flow}
 \end{equation}
+At the exact lower edge \(2N_f=3N_c\), write
+\[
+  N_c=2t,\qquad N_f=3t,\qquad \widetilde N_c=t .
+\]
+The case \(t=1\) is the \(N_f=N_c+1\) confining entry, not a nonabelian
+magnetic gauge theory, so the coupled lower-edge calculation begins at
+\(t\ge2\).  Here \(b_{0,m}=0\), so the one-loop gauge sign is silent.  Using
+the one-loop anomalous dimension \eqref{eq:sqcd-magnetic-quark-gamma-one-loop}
+in the NSVZ numerator, and then converting to the declared canonical
+coupling, gives the first nonzero homogeneous gauge beta function
+\begin{equation}
+  \beta_{g_m^2}
+  =
+  \frac{N_f g_m^4}{128\pi^4}
+  \left(2C_F^{(m)}g_m^2-N_f|h|^2\right)
+  +O\!\left((g_m^2+|h|^2)^4\right).
+  \label{eq:sqcd-lower-edge-magnetic-gauge-beta}
+\end{equation}
+The NSVZ denominator and analytic canonical-scheme changes are the identity
+at the Gaussian point to leading order.  They therefore do not change this
+first nonzero homogeneous term.  Combining
+\eqref{eq:sqcd-lower-edge-magnetic-gauge-beta} with
+\eqref{eq:sqcd-magnetic-yukawa-beta-one-loop}, define
+\[
+  r_Y
+  =
+  \frac{4C_F^{(m)}}{2N_f+t}
+  =
+  \frac{2(t^2-1)}{7t^2},
+  \qquad
+  r_g
+  =
+  \frac{2C_F^{(m)}}{N_f}
+  =
+  \frac{t^2-1}{3t^2}.
+\]
+Thus \(0<r_Y<r_g\), and the leading ratio flow at \(b_{0,m}=0\) is
+\[
+  \mu\frac{dr}{d\mu}
+  =
+  \frac{r g_m^2}{16\pi^2}(2N_f+t)(r-r_Y)
+  +O(g_m^4).
+\]
+The line \(h=0\) is an exact superpotential-off line.  The ray
+\(r=r_Y+O(g_m^2)\) is the superpotential-preserving weak-coupling separatrix;
+it is attractive toward the infrared and repulsive toward the ultraviolet in
+the ratio direction.  At leading order these are the only weak-coupling fixed
+ratio sets: for \(0<r<r_Y\) the ultraviolet flow drives \(r\) toward the
+superpotential-off line, while for \(r>r_Y\) it drives \(r\) away from the
+weak-coupling separatrix; reversing the flow toward the infrared brings both
+positive chambers toward \(r_Y\) until the perturbative description itself is
+left.  On this ray,
+\begin{equation}
+  \beta_{g_m^2}
+  =
+  \frac{N_f C_F^{(m)}}{448\pi^4}\,g_m^6
+  +O(g_m^8)
+  >
+  0 .
+  \label{eq:sqcd-lower-edge-magnetic-ray-beta}
+\end{equation}
+In the chapter convention this means that \(g_m\) and \(h\) are marginally
+irrelevant toward the infrared and flow to a Gaussian magnetic theory with
+logarithmic approach.  The lower edge is therefore a marginally free magnetic
+endpoint, not an interacting fixed point established by the meson
+unitarity-bound arithmetic.  The equality \(\Delta(M)=1\) identifies the
+accidental free chiral current that must be added to the infrared current
+ledger; it does not by itself determine the coupled magnetic quark-gluon
+sector.  Nor may one drop the Yukawa term from
+\eqref{eq:sqcd-lower-edge-magnetic-gauge-beta}: for \(r>r_g\) it reverses the
+leading gauge sign, and even on the separatrix it changes the first nonzero
+coefficient.
+
 In the free electric range \(N_f\ge 3N_c\), one has \(t\ge2N_c\), and
 \[
   2b_{0,m}-4C_F^{(m)}
@@ -3029,7 +3102,8 @@ the following hypotheses are part of the statement.
   compared in the corresponding infrared window: as an asymptotically free
   continuum theory in the interacting conformal subrange, and as an
   infrared-free Wilsonian description with a declared matching scale and
-  cutoff in the free magnetic subrange.
+  cutoff in the free magnetic subrange and at the marginal lower edge after
+  the coupled flow \eqref{eq:sqcd-lower-edge-magnetic-ray-beta}.
 \item For the free electric continuation \(N_f\ge 3N_c\), the electric
   variables require extra ultraviolet data.  At \(N_f=3N_c\) the electric
   one-loop coefficient vanishes, but the first nonzero term
@@ -3116,13 +3190,16 @@ been declared.  It predicts equality of the full anomaly inflow class for the
 faithful background data, but the calculation below checks only the local
 perturbative anomaly-polynomial component.  In the interval
 \(\frac32N_c<N_f<3N_c\) the conjecture asserts a common interacting infrared
-SCFT.  In the free magnetic subrange \(N_c+2\leq N_f<\frac32N_c\), with the
-lower edge treated separately when \(2N_f=3N_c\), the conjecture asserts the
-infrared equivalence after the magnetic free variables, their accidental
-symmetries, and the magnetic Wilsonian cutoff have been included in the
-infrared datum.  The historical proposal is Seiberg's electric--magnetic
-duality \cite{Seiberg1994}; the status in this chapter is central conjecture,
-with the following calculations serving as evidence rather than proof.
+SCFT.  In the free magnetic subrange \(N_c+2\leq N_f<\frac32N_c\), and at the
+nonabelian integral lower edge \(2N_f=3N_c\) after the coupled magnetic flow
+\eqref{eq:sqcd-lower-edge-magnetic-gauge-beta}--
+\eqref{eq:sqcd-lower-edge-magnetic-ray-beta} has been used, the conjecture
+asserts the infrared equivalence after the magnetic free variables, their
+accidental symmetries, and the magnetic Wilsonian cutoff have been included
+in the infrared datum.  The historical proposal is Seiberg's
+electric--magnetic duality \cite{Seiberg1994}; the status in this chapter is
+central conjecture, with the following calculations serving as evidence
+rather than proof.
 \end{conjecture}
 
 \begin{conjecture}[Free electric continuation]
@@ -3521,18 +3598,33 @@ gluons, and meson singlets.  The magnetic Lagrangian is used as the
 infrared-free Wilsonian description in the declared low-energy window, with
 the free-field accidental currents included in the infrared datum.
 \item[\(2N_f=3N_c\).]
-When this equality is compatible with integrality, the entry is the lower
-endpoint of the interacting-window bookkeeping and the upper endpoint of the
-free magnetic sign check.  The magnetic one-loop coefficient vanishes, the
-electric meson saturates the chiral unitarity bound, and the superconformal
-\(R\)-charge arithmetic alone no longer identifies an interacting fixed point
-without adding the accidental free-field current.
+When this equality is compatible with integrality and the magnetic gauge group
+is nontrivial, write \(N_c=2t,N_f=3t\) with \(t\ge2\).  This is the lower
+endpoint of the interacting-window bookkeeping and the marginal endpoint of
+the free magnetic description.  The vanishing magnetic one-loop coefficient
+is not a classification.  The coupled calculation
+\eqref{eq:sqcd-lower-edge-magnetic-gauge-beta}--
+\eqref{eq:sqcd-lower-edge-magnetic-ray-beta} has an infrared-attractive
+weak-coupling ratio
+\[
+  \frac{|h|^2}{g_m^2}
+  =
+  \frac{2(t^2-1)}{7t^2}+O(g_m^2),
+\]
+and along it the first nonzero gauge beta coefficient is positive.  Thus the
+endpoint is a marginally free magnetic edge with logarithmic running to the
+Gaussian magnetic variables, not an interacting fixed point proved by
+\(b_{0,\mathrm{mag}}=0\) or by \(\Delta(M)=1\).  After this RG status has been
+fixed, the electric meson saturation of the chiral unitarity bound supplies
+the accidental free chiral current in the infrared ledger.
 \item[\(\frac32N_c<N_f<3N_c\).]
 Status: Seiberg-duality input plus SCFT-current and accidental-symmetry
 hypotheses.  Both electric and magnetic variables are asymptotically free and
 flow, under that input, to the same interacting nonabelian Coulomb-phase SCFT.
-The lower endpoint is detected by the electric meson unitarity bound, and the
-upper endpoint by the electric loss of asymptotic freedom.
+The approach to the lower endpoint is signaled by the electric meson
+unitarity bound, but the exact endpoint classification is the coupled
+magnetic calculation in the previous item; the upper endpoint is detected by
+the electric loss of asymptotic freedom.
 \item[\(N_f=3N_c\).]
 Status: Gaussian electric edge of the asymptotically free family and boundary
 case of the free electric continuation.  The electric one-loop coefficient

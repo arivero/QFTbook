@@ -169,6 +169,10 @@ brane construction, or holographic interpretation is a premise of the chapter.
 - `M_can`, `q_can`, `tilde q_can`, `h_can`: canonically normalized magnetic
   fields and the derived canonical Yukawa coupling
   `h_can=lambda Z_M^(-1/2) Z_q^(-1/2) Z_tildeq^(-1/2)`.
+- `r_Y`: lower-edge magnetic Yukawa separatrix
+  `|h_can|^2/g_m^2=4 C_F^(m)/(2N_f+tilde N_c)`.
+- `r_g`: lower-edge ratio `2 C_F^(m)/N_f` where the first nonzero magnetic
+  gauge beta changes sign.
 - `G_FB^SQCD`: faithful compact SQCD flavor-baryon group
   `(SU(N_f)_L x SU(N_f)_R x U(1)_B)/(Z_Nf^diag x Z_Nc^(B/gauge))`
   acting on gauge-invariant local operators, with admissible backgrounds
@@ -436,6 +440,13 @@ brane construction, or holographic interpretation is a premise of the chapter.
   flow has no positive nonzero asymptotically-free ray, so nonzero `h_can` is a
   finite matching-cutoff or UV-completion datum rather than a consequence of
   magnetic gauge asymptotic freedom.
+- Derives the coupled magnetic lower-edge status at `2N_f=3N_c`: for
+  `N_c=2t`, `N_f=3t`, `t=tilde N_c>=2`, the first nonzero magnetic gauge beta
+  is proportional to `g_m^4(2 C_F^(m) g_m^2 - N_f |h_can|^2)`, the
+  superpotential-preserving ratio `r_Y=2(t^2-1)/(7t^2)` is IR-attractive, and
+  the gauge beta is positive along that ray.  The endpoint is therefore a
+  marginally free magnetic edge with logarithmic running, not an interacting
+  fixed point inferred from `b0_mag=0` or `Delta(M)=1`.
 - States `hyp:sqcd-ir-comparison-hypotheses`, separating continuum-limit,
   free-electric finite-cutoff/UV-completion/emergent-magnetic status,
   current-identification, faithful-background, R-current, observable-sector,
@@ -465,10 +476,11 @@ brane construction, or holographic interpretation is a premise of the chapter.
   with explicit logical status: ADS runaway from the direct `N_f=N_c-1`
   instanton calculation plus holomorphic decoupling, quantum-modified
   `N_f=N_c`, confining `N_f=N_c+1`, Seiberg-duality input for the free
-  magnetic range and interacting conformal window under the central
-  conjecture, `N_f=3N_c` as its own Gaussian edge, and strict `N_f>3N_c` as
-  a free-electric continuation with finite-cutoff/UV-completion/emergent
-  magnetic definition data rather than the same continuum-pair status.
+  magnetic range, the marginal lower edge, and interacting conformal window
+  under the central conjecture, `N_f=3N_c` as its own Gaussian edge, and
+  strict `N_f>3N_c` as a free-electric continuation with
+  finite-cutoff/UV-completion/emergent magnetic definition data rather than
+  the same continuum-pair status.
 - Checks the `N_f=N_c+1` confining superpotential
   `(B M tilde B - det M)/Lambda_h^(2N_c-1)` by dimension and \(R\)-charge.
 - Defines the KW gauge theory field content, global symmetries, baryon-charge
@@ -556,7 +568,10 @@ brane construction, or holographic interpretation is a premise of the chapter.
   the first nonzero electric `N_f=3N_c` endpoint beta coefficient,
   magnetic Kähler rescaling covariance for `h_can`, canonical magnetic
   gauge-Yukawa beta coefficients and ratio-flow obstruction for nonzero
-  `h_can` in the free-electric range,
+  `h_can` in the free-electric range, lower-edge magnetic coupled-flow
+  coefficients, the `r_Y` separatrix, marginally free magnetic classification,
+  and negative controls rejecting `b0_mag=0`, `Delta(M)=1`, and gauge-only
+  running as endpoint classifiers,
   local perturbative anomaly-polynomial matching,
   mass and Higgs deformation rank/dimension/`R`-charge tests,
   `N_f=N_c+1` confining-superpotential checks, mass decoupling to the
@@ -631,3 +646,11 @@ chiral-coordinate spaces with their assumptions and anomaly data.
   nonholomorphic full-action matching.  The SQCD companion check now includes a
   meson-wavefunction rescaling negative control rejecting automatic canonical
   normalization.
+- 2026-06-08 issue #958 pass: derived the exact lower-edge magnetic
+  gauge-Yukawa flow in the same canonical scheme.  The nonabelian integral
+  edge `N_c=2t`, `N_f=3t`, `t>=2`, has an IR-attractive
+  superpotential-preserving ratio `r_Y=2(t^2-1)/(7t^2)` and a positive first
+  nonzero gauge beta on that ray, so the endpoint is recorded as marginally
+  free magnetic with logarithmic running.  The meson unitarity saturation and
+  accidental current are now downstream consequences in the ledger, not the
+  endpoint classifier.

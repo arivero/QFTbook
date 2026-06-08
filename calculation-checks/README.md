@@ -3491,17 +3491,22 @@ Current checks:
   beta-function coefficient derived from the one-loop matter anomalous
   dimension, magnetic Kähler rescaling covariance for the canonical Yukawa
   coupling, the canonical magnetic gauge-Yukawa ratio flow after declared
-  Kähler normalization, electric-magnetic local perturbative anomaly-polynomial
-  matching, mass and Higgs deformation rank/dimension/\(R\)-charge tests,
+  Kähler normalization, the exact lower-edge \(2N_f=3N_c\) coupled magnetic
+  flow with the \(r_Y=|h_{\rm can}|^2/g_m^2\) separatrix and marginally free
+  magnetic classification, electric-magnetic local perturbative
+  anomaly-polynomial matching, mass and Higgs deformation
+  rank/dimension/\(R\)-charge tests,
   \(N_f=N_c+1\) confining-superpotential dimension/\(R\)-charge checks, mass
   decoupling to the \(N_f=N_c\) quantum-modified constraint, massive-SQCD
   elimination to pure-SYM branch superpotentials, source identity, and
   mass-source/Konishi ledger, and the conformal-window/free-phase
   inequalities.  The free-electric negative controls verify that \(b_0=0\)
-  alone does not certify the Gaussian endpoint, that \(M/\mu_*\) is not
-  automatically canonical without the meson Kähler factor, that magnetic gauge
-  asymptotic freedom alone does not UV-complete the nonzero-Yukawa magnetic
-  theory, and that rank, charge, anomaly, and deformation arithmetic can
+  alone does not certify the Gaussian endpoint, that lower-edge
+  \(b_{0,\mathrm{mag}}=0\), \(\Delta(M)=1\), and gauge-only running do not
+  classify the coupled magnetic endpoint, that \(M/\mu_*\) is not automatically
+  canonical without the meson Kähler factor, that magnetic gauge asymptotic
+  freedom alone does not UV-complete the nonzero-Yukawa magnetic theory, and
+  that rank, charge, anomaly, and deformation arithmetic can
   continue to pass for \(N_f>3N_c\) while the standard continuum-pair
   statement and fixed-point dimension tests remain inadmissible without the
   extra finite-cutoff, UV-completion, or magnetic matching data.
