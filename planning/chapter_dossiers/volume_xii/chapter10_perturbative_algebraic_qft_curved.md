@@ -6,14 +6,15 @@ In the printed Volume XII order, perturbative algebraic QFT follows the
 microlocal spectrum condition and the locally covariant free-field model,
 before the stress-tensor and anomaly applications.  The chapter is the local
 curved-background perturbation framework built from Hadamard functions,
-microcausal functionals, time-ordered products, causal factorization, and
-finite renormalization maps.
+local/equicausal functional-space control, time-ordered products, causal
+factorization, and finite renormalization maps.
 
 ## Notation Inventory
 
 - `E(M)`, `F^(n)`, `WF`: configuration space, functional derivatives, and
   wavefront sets.
-- `F_loc(M)`, `F_muc(M)`: local and microcausal functionals.
+- `F_loc(M)`, `F_muc(M)`, `F_ec(M)`: local, microcausal, and equicausal
+  functionals.
 - `H`, `star_H`, `Gamma_H`: Hadamard two-point function, star product, and
   contraction bidifferential.
 - `w`, `alpha_w`: smooth Hadamard difference and induced algebra isomorphism.
@@ -45,9 +46,15 @@ finite renormalization maps.
 - Defines Bastiani-smooth functionals, functional support, local
   jet-dependent functionals, and their diagonal functional derivatives.
 - Defines microcausal functionals through wavefront-set avoidance with the
-  future/past covector convention inherited from the microlocal chapter.
-- Defines the Hadamard star product, proves associativity by commuting
-  tensor-factor contractions, and derives the Peierls bracket commutator.
+  future/past covector convention inherited from the microlocal chapter, then
+  separates that pointwise pairing condition from equicausal closure in the
+  normal Hormander topology.
+- States the functional-space contract: Peierls bracket, star product, and
+  time-slice closure are asserted on the equicausal or explicitly
+  polynomial/local subspace, not on unrestricted microcausal functionals.
+- Defines the Hadamard star product on the equicausal domain, proves
+  associativity by commuting tensor-factor contractions, and derives the
+  Peierls bracket commutator.
 - Proves the smooth-Hadamard-change isomorphism by the second-order
   Laplacian product rule.
 - Defines time-ordered products as extensions from configuration space with
@@ -106,8 +113,10 @@ finite renormalization maps.
 
 - `calculation-checks/paqft_algebra_checks.py`: verifies the finite
   polynomial model of star-product associativity, the smooth-Hadamard-change
-  intertwiner, the combinatorics of scaling-degree extension ambiguity, and
-  the `lambda phi^4` Hadamard-coordinate/local-Wick-renormalization
+  intertwiner, a finite margin-budget distinction between pointwise
+  microcausal pairings and equicausal closure, the combinatorics of
+  scaling-degree extension ambiguity, and the `lambda phi^4`
+  Hadamard-coordinate/local-Wick-renormalization
   coefficients: quartic tadpole, vacuum term, transported-state expectation
   invariance, fixed-state Wick-square prescription shift, mass/curvature
   coordinate shifts, geometric-source coordinates, and the local-coupling Ward
@@ -175,3 +184,10 @@ Hadamard star-product comparison maps.
   role is now visibly upstream of point splitting, trace-anomaly source
   response, and semiclassical backreaction, while retaining the perturbative
   theorem boundary.
+- 2026-06-08 issue #854 functional-space pass: replaced the unrestricted
+  microcausal foundation with an equicausal/polynomial/local closure contract.
+  Microcausality remains the wavefront-set pairing test; Peierls/star/time-slice
+  closure is now asserted only where uniform equicontinuity data or the
+  local-polynomial subalgebra supplies it.  The pass marks arbitrary
+  equicausal time-ordering beyond local/multilocal Epstein--Glaser inputs as
+  an open extension question.

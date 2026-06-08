@@ -163,7 +163,11 @@ fluctuation data required for controlled backreaction.
   finite composite-operator mixing changes the noise through cross terms.
   Thus Ward-clean retained data are accepted as physical backreaction inputs
   only after the full pAQFT stress tensor and its renormalized products, or
-  controlled residuals for the missing entries, have been supplied.
+  controlled residuals for the missing entries, have been supplied.  After the
+  issue #854 correction this package also inherits the pAQFT functional-space
+  condition: local/equicausal closure is needed for Peierls/star/time-slice
+  operations, while bare microcausal admissibility is only a pointwise
+  pairing test.
 - Adds a homogeneous FLRW interacting source/noise closure.  A time-dependent
   `lambda phi^4` potential density has equation of state `p=-rho` but is not
   conserved when `dot rho_lambda` is nonzero; the Bogoliubov,

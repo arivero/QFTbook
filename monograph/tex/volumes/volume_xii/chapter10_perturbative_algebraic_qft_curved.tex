@@ -5,8 +5,16 @@
 
 This chapter develops perturbative algebraic QFT on curved backgrounds as a
 local construction of interacting fields from Hadamard two-point functions,
-microcausal functionals, time-ordered products, and causal factorization.
-The framework is perturbative, but its locality and covariance conditions are
+local functionals, controlled functional spaces, time-ordered products, and
+causal factorization.  The wavefront-set condition called microcausality is
+still essential: it is the local test that individual contractions with
+Hadamard kernels are defined.  The complete algebraic foundation also
+requires closure of the Peierls bracket, star product, and time-slice
+homotopy, which in turn needs uniform control of how the derivative kernels
+vary with the background field.  The equicausal class of
+Hawkins--Rejzner--Visser supplies that control
+\cite{HawkinsRejznerVisser2024Equicausal}.  The framework is perturbative,
+but its locality, covariance, and functional-space conditions are
 nonperturbative constraints on the allowed coefficients.
 
 \section{Functional Spaces And Supports}
@@ -83,7 +91,7 @@ both needed.  The jet formula is the geometric expression of locality; the
 diagonal-support formula is the microlocal expression used in
 renormalization.
 
-\section{Microcausal Functionals}
+\section{Microcausal And Equicausal Functionals}
 
 \begin{definition}[Microcausal functional]
 \label{def:paqft-microcausal-functional}
@@ -116,6 +124,83 @@ cone, the product criterion of
 Theorem~\ref{thm:microlocal-product-criterion} would fail when one contracts
 the variables against the Hadamard kernel.
 
+Microcausality is a pointwise condition in field space.  It says that each
+kernel \(F^{(n)}(\phi)\) has an allowed wavefront set, hence that a displayed
+contraction at that \(\phi\) is meaningful.  Closure demands the stronger
+statement that the contracted expression is again a Bastiani-smooth
+functional of \(\phi\), and that the class is stable under the Peierls
+bracket, under the star product, and under the homotopy used in the time-slice
+axiom.  The distinction is load bearing because a pAQFT observable is a
+functional, not just a value of a distributional pairing at one background
+field.
+
+Let \(\mathcal E'_{\Gamma,K}(M^n)\) denote compactly supported
+distributions on \(M^n\) with support in \(K\) and wavefront set contained in
+the closed cone \(\Gamma\), equipped with the normal
+H\"ormander topology described in
+Chapter~\ref{ch:curved-microlocal-spectrum-condition}.  A compactly
+supported smooth functional \(F\) is called equicausal if, for every
+\(\phi_0\in\mathcal E(M)\) and every \(n\), there are a neighborhood
+\(U\ni\phi_0\), a compact \(K\subset M^n\), and a closed cone
+\[
+  \Gamma_n
+  \subset
+  T^*M^n\setminus
+  \left((\overline V_+^*)^n\cup(\overline V_-^*)^n\right)
+\]
+such that
+\[
+  F^{(n)}(\phi)\in\mathcal E'_{\Gamma_n,K}(M^n),
+  \qquad \phi\in U,
+\]
+and the set
+\(\{F^{(n)}(\phi):\phi\in U\}\) is equicontinuous in that normal topology.
+The vector space of such functionals is denoted
+\(\mathcal F_{\rm ec}(M)\).
+
+The extra condition says that the singular directions stay uniformly away
+from the forbidden causal cones, and that the seminorms controlling the
+distributional kernels are bounded uniformly on a neighborhood in field
+space.  This is the missing ingredient in the naive microcausal story:
+one may perform the contraction and then differentiate, integrate over the
+homotopy parameter, or compose with other kernels without losing smoothness.
+The inclusions used below are
+\[
+  \mathcal F_{\rm loc}(M)
+  \subset
+  \mathcal F_{\rm ec}(M)
+  \subset
+  \mathcal F_{\mu{\rm c}}(M),
+\]
+and Wick polynomials and multilocal products generated from local
+functionals lie in \(\mathcal F_{\rm ec}(M)\).
+
+\begin{theorem}[Functional-space contract for curved pAQFT]
+\label{thm:paqft-functional-space-contract}
+On the equicausal class, the Peierls bracket and Hadamard star product close,
+and the free-theory Koszul complex satisfies the time-slice axiom.  Local
+functionals and Wick polynomials are equicausal.  The unrestricted
+microcausal class \(\mathcal F_{\mu{\rm c}}(M)\) is used here only as a
+wavefront-set pairing test unless a smaller polynomial, local, multilocal, or
+equicausal subspace is explicitly named.
+\end{theorem}
+
+\begin{proof}
+The product criterion gives pointwise distributional pairings from the
+microcausal cone condition.  Equicausality adds uniform cone separation and
+equicontinuity of the derivative kernels, so the same contractions define
+smooth functionals and the Leibniz rules used in the Peierls and star-product
+calculations are legitimate.  The same uniformity is preserved by the
+chain-homotopy operations that implement the time-slice axiom.  Local
+functionals have derivative kernels supported on diagonals with conormal
+wavefront sets uniformly separated from the all-future and all-past cones;
+Wick polynomials satisfy the same equicontinuity criterion.  These are the
+closure results of Hawkins--Rejzner--Visser
+\cite{HawkinsRejznerVisser2024Equicausal}.  Without the uniform step one has
+only legal pointwise pairings, and there are microcausal examples whose Peierls
+bracket fails to be a smooth functional.
+\end{proof}
+
 \section{Star Product}
 
 Choose a Hadamard two-point function \(H\) whose antisymmetric part is
@@ -123,7 +208,7 @@ Choose a Hadamard two-point function \(H\) whose antisymmetric part is
   H(x,y)-H(y,x)=\ii\Delta(x,y),
 \]
 where \(\Delta=\Delta_{\rm ret}-\Delta_{\rm adv}\) is the causal propagator
-of the Klein--Gordon operator.  For \(F,G\in\mathcal F_{\mu{\rm c}}(M)\),
+of the Klein--Gordon operator.  For \(F,G\in\mathcal F_{\rm ec}(M)\),
 define
 \begin{equation}
   F\star_H G
@@ -144,14 +229,17 @@ The \(n\)-th summand means
   \label{eq:paqft-star-product-kernel}
 \end{equation}
 with the integral interpreted as the pairing of distributions.  The
-microcausal cone condition and the Hadamard wavefront set make this pairing
-well-defined.  For polynomial functionals the sum is finite; in general the
-product is understood in the completed formal space
-\(\mathcal F_{\mu{\rm c}}(M)[[\hbar]]\) when the formal series is meaningful.
+microcausal cone condition and the Hadamard wavefront set make each pairing
+well-defined; equicausality is what makes the resulting expression a smooth
+functional and keeps it in the same class.  For polynomial local or
+multilocal functionals the sum is finite.  In general the product is a
+formal series in the completed equicausal space
+\(\mathcal F_{\rm ec}(M)[[\hbar]]\), order by order in \(\hbar\).
 
 \paragraph{Associativity and commutator.}
-The product \(\star_H\) is associative on polynomial microcausal
-functionals.  Its first-order commutator is
+The product \(\star_H\) is associative on the equicausal domain, with the
+polynomial local subalgebra giving the finite calculation used in most
+examples.  Its first-order commutator is
 \begin{equation}
   [F,G]_{\star_H}
   =
@@ -236,9 +324,9 @@ Let
 \[
   \Delta_w=\left\langle w,\frac{\delta^2}{\delta\phi^2}\right\rangle .
 \]
-Because \(w\) is smooth, \(\Delta_w\) maps microcausal polynomial
-functionals to microcausal polynomial functionals.  The second-order
-operator \(\Delta_w\) satisfies
+Because \(w\) is smooth, \(\Delta_w\) maps the polynomial local subalgebra,
+and more generally the equicausal domain order by order, to itself.  The
+second-order operator \(\Delta_w\) satisfies
 \begin{equation}
   \Delta_w(FG)
   =
@@ -289,7 +377,7 @@ A system of time-ordered products is a family of maps
 \begin{equation}
   T_n:\mathcal F_{\rm loc}(M)^{\otimes n}
   \longrightarrow
-  \mathcal F_{\mu{\rm c}}(M)[[\hbar]],
+  \mathcal F_{\rm ec}(M)[[\hbar]],
   \qquad n\ge1,
   \label{eq:paqft-time-ordered-products-maps}
 \end{equation}
@@ -311,6 +399,16 @@ time-ordered derivative of the input local functionals.  Scaling degree
 bounds control the ultraviolet order of singularities.  Ward identities are
 the equations imposed by symmetries; for gauge theories they are properly
 encoded by the BV quantum master equation.
+
+The domain in \eqref{eq:paqft-time-ordered-products-maps} is deliberately
+local.  Epstein--Glaser renormalization constructs the extension of products
+of local interactions and local fields; local and multilocal functionals are
+equicausal, so the resulting time-ordered products live in the same closed
+functional-space lane used by the star product.  A general time-ordering
+operator on arbitrary equicausal functionals is not assumed here; extending
+the Epstein--Glaser construction beyond the local/multilocal input class is
+an additional open problem, not a prerequisite for the worked local
+interacting examples below.
 
 \begin{theorem}[Extension with fixed scaling degree]
 \label{thm:paqft-extension-scaling-degree}

@@ -100,10 +100,12 @@
    nonperturbative/open.  Crossing levels requires additional hypotheses.
 10. The claim-control matrix makes the cross-chapter spine explicit: fixed
     background thermal or particle-creation statements do not imply
-    interacting horizon results, pAQFT order-by-order constructions do not
-    provide nonperturbative state spaces, and finite response/noise checks
-    become backreaction evidence only after the state, stress tensor,
-    response, stability, and EFT-reduction data are fixed together.
+    interacting horizon results, pAQFT order-by-order constructions now use
+    local/equicausal functional-space closure rather than unrestricted
+    microcausal functionals, they do not provide nonperturbative state spaces,
+    and finite response/noise checks become backreaction evidence only after
+    the state, stress tensor, response, stability, and EFT-reduction data are
+    fixed together.
 
 ## Calculation Checks
 
@@ -145,3 +147,8 @@
   TeX cross-reference range to named chapter references.  The chapter remains
   the locally covariant free-field/Hadamard model; it no longer has to carry
   the wavefront-set foundation by abbreviation.
+- 2026-06-08 issue #854 functional-space pass: updated the claim-control row
+  for perturbative interacting fields so it no longer says the construction is
+  based on unrestricted microcausal functionals.  Microcausality is recorded
+  as the pairing test; equicausal or explicit polynomial/local domains carry
+  the Peierls/star/time-slice closure claim.

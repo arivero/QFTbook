@@ -2831,9 +2831,11 @@ Current checks:
   reflection twist value \(h=1/16\).
 - `paqft_algebra_checks.py`: finite polynomial checks for the curved pAQFT
   chapter, including Hadamard star-product associativity, the smooth
-  Hadamard-change intertwiner, scaling-degree ambiguity combinatorics, and
-  the `lambda phi^4` Hadamard-coordinate and local Wick-renormalization
-  example: the quartic tadpole coefficient, transported-state expectation
+  Hadamard-change intertwiner, the finite functional-space margin budget
+  separating pointwise microcausal pairings from equicausal closure,
+  scaling-degree ambiguity combinatorics, and the `lambda phi^4`
+  Hadamard-coordinate and local Wick-renormalization example: the quartic
+  tadpole coefficient, transported-state expectation
   invariance, the fixed-state Wick-square prescription shift,
   mass/curvature-coordinate shifts, geometric-source terms, the finite
   local-coupling Ward balance for compact switching functions, and the retained

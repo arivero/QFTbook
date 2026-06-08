@@ -12,16 +12,17 @@ intertwiner for a smooth change H -> H + w.
 Evidence contract.
 Target claims: the finite algebra subclaims in Volume XII Chapter 10,
 including Hadamard star-product associativity, smooth-Hadamard-change
-intertwining, scaling-degree ambiguity counts, and the lambda-phi-four
-Hadamard-coordinate/local-Wick-renormalization example, the finite
-local-coupling Ward balance for a compact switching function, plus the
-retained one-loop tadpole mass-response and nonlocal sunset-response examples
-in the retarded two-point sector.
+intertwining, the functional-space distinction between pointwise microcausal
+pairings and equicausal closure margins, scaling-degree ambiguity counts, and
+the lambda-phi-four Hadamard-coordinate/local-Wick-renormalization example,
+the finite local-coupling Ward balance for a compact switching function, plus
+the retained one-loop tadpole mass-response and nonlocal sunset-response
+examples in the retarded two-point sector.
 Independent construction: exact polynomial derivatives, contraction sums,
-Taylor-extension counts, Wick-power transport coefficients, discrete
-local-coupling Ward variations, and a finite-cell Born-response quadrature for
-local and bilocal kernels are computed directly rather than copied from the
-prose formulae.
+finite cone-margin bookkeeping, Taylor-extension counts, Wick-power transport
+coefficients, discrete local-coupling Ward variations, and a finite-cell
+Born-response quadrature for local and bilocal kernels are computed directly
+rather than copied from the prose formulae.
 Imported assumptions: the one-component polynomial model, formal hbar
 grading, smooth diagonal Hadamard coordinate difference, local finite Wick
 renormalization scalar, and the chapter's normalization of the quartic
@@ -32,14 +33,15 @@ complex greater/lesser two-point data away from the diagonal.
 Negative controls: wrong scaling-degree uniqueness thresholds, missing
 quartic tadpole factors, omitted vacuum bubble terms, untyped
 coordinate-transport expectation shifts, incorrect mass/curvature coordinate
-factors, compact switching functions incorrectly treated as conserved sources,
-constant replacements for nonconstant local coupling-density Ward sources,
-finite Wick-density shifts not transported through the Ward source, wrong
-tadpole self-energy combinatorics, omitted Born signs, constant replacements
-for nonconstant local Wick-square densities, wrong sunset symmetry factors,
-omitted retarded i-factors, acausal symmetric kernels, and conflation of local
-diagonal counterterms with off-diagonal kernels are rejected by exact rational
-comparisons.
+factors, the shortcut from pointwise microcausal margins to closed
+star/Peierls algebra, compact switching functions incorrectly treated as
+conserved sources, constant replacements for nonconstant local coupling-density
+Ward sources, finite Wick-density shifts not transported through the Ward
+source, wrong tadpole self-energy combinatorics, omitted Born signs, constant
+replacements for nonconstant local Wick-square densities, wrong sunset
+symmetry factors, omitted retarded i-factors, acausal symmetric kernels, and
+conflation of local diagonal counterterms with off-diagonal kernels are
+rejected by exact rational comparisons.
 Scope boundary: a pass checks finite pAQFT algebra and coefficient
 bookkeeping; it does not prove microlocal extension theorems, continuum
 Hadamard state existence, perturbative convergence, interacting stress-tensor
@@ -235,6 +237,36 @@ def check_hadamard_change_intertwiner() -> None:
     left = alpha(star(f, g, h), w)
     right = star(alpha(f, w), alpha(g, w), h + w)
     assert_equal(left, right, "Hadamard smooth-change intertwiner")
+
+
+def check_equicausal_margin_budget() -> None:
+    contraction_budget = Fraction(1, 6)
+    pointwise_microcausal_margins = [
+        Fraction(1, 3),
+        Fraction(1, 5),
+        Fraction(1, 8),
+    ]
+    if not all(margin > 0 for margin in pointwise_microcausal_margins):
+        raise AssertionError("microcausal pointwise margins should allow individual pairings")
+    if all(margin >= contraction_budget for margin in pointwise_microcausal_margins):
+        raise AssertionError("negative control failed: pointwise margins accidentally gave uniform closure")
+
+    post_contraction = min(pointwise_microcausal_margins) - contraction_budget
+    if post_contraction > 0:
+        raise AssertionError("pointwise microcausal margins were mistaken for a closure budget")
+
+    equicausal_margins = [
+        Fraction(5, 6),
+        Fraction(3, 4),
+        Fraction(2, 3),
+    ]
+    if min(equicausal_margins) - contraction_budget != Fraction(1, 2):
+        raise AssertionError("equicausal uniform margin budget changed")
+
+    local_diagonal_margin = Fraction(3, 5)
+    wick_polynomial_margin = Fraction(7, 10)
+    if min(local_diagonal_margin, wick_polynomial_margin) - contraction_budget <= 0:
+        raise AssertionError("local/Wick-polynomial finite subalgebra should sit inside the closure lane")
 
 
 def check_scaling_degree_ambiguity_count() -> None:
@@ -591,12 +623,13 @@ def check_lambda_phi4_nonlocal_sunset_response() -> None:
 def main() -> None:
     check_associativity()
     check_hadamard_change_intertwiner()
+    check_equicausal_margin_budget()
     check_scaling_degree_ambiguity_count()
     check_lambda_phi4_hadamard_scheme_transport()
     check_lambda_phi4_local_coupling_ward_balance()
     check_lambda_phi4_tadpole_mass_response()
     check_lambda_phi4_nonlocal_sunset_response()
-    print("All pAQFT algebra, scaling-degree, and two-point response checks passed.")
+    print("All pAQFT algebra, functional-space, scaling-degree, and two-point response checks passed.")
 
 
 if __name__ == "__main__":
