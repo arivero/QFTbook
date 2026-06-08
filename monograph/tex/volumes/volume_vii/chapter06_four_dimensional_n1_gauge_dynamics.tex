@@ -2864,31 +2864,79 @@ coordinate \(M^i{}_j\) with the global charges
       & 0 & 2\left(1-\frac{N_c}{N_f}\right).
 \end{array}
 \]
-The magnetic superpotential is
+The magnetic holomorphic matching coordinate has superpotential
 \begin{equation}
   W_{\mathrm{mag}}
   =
-  \frac1{\mu_*}M^i{}_j q_i\widetilde q^j .
+  \frac{\lambda}{\mu_*}M^i{}_j q_i\widetilde q^j .
   \label{eq:sqcd-magnetic-superpotential}
 \end{equation}
 Here \(M^i{}_j\) is normalized as the electric composite
 \(\widetilde Q_jQ^i\), so it has engineering dimension two in the
 microscopic matching convention; \(\mu_*\) is a nonzero matching scale of
-dimension one.  Equivalently one may use the canonically normalized magnetic
-singlet \(M_{\mathrm{can}}=M/\mu_*\) and write
+dimension one, and \(\lambda\) is a dimensionless holomorphic coefficient.
+The often-used convention \(\lambda=1\) fixes a holomorphic coordinate; it does
+not fix the nonholomorphic metric on field space.
+
+A canonical gauge--Yukawa beta function requires a magnetic Wilsonian action,
+not just the chiral superpotential.  At a declared normalization scale \(\mu_0\)
+and in a declared mass-independent canonical scheme, write the quadratic
+magnetic Kähler terms as
+\begin{equation}
+  \int d^4\theta\left[
+    \frac{Z_M(\mu_0)}{|\mu_*|^2}
+    M^\dagger{}^j{}_i M^i{}_j
+    +
+    Z_q(\mu_0)\,q^\dagger e^{V_m}q
+    +
+    Z_{\widetilde q}(\mu_0)\,
+    \widetilde q^\dagger e^{-V_m}\widetilde q
+  \right].
+  \label{eq:sqcd-magnetic-kahler-normalization}
+\end{equation}
+In the flavor-symmetric chart \(Z_q=Z_{\widetilde q}\), but the common factor is
+still part of the full-action datum.  The dimension-one holomorphic coordinate
+\(M/\mu_*\) is canonical only when the meson wavefunction factor is also fixed
+to one in the chosen scheme.  In general the canonical fields at \(\mu_0\) are
+\begin{equation}
+  M_{\mathrm{can}}=Z_M(\mu_0)^{1/2}\frac{M}{\mu_*},\qquad
+  q_{\mathrm{can}}=Z_q(\mu_0)^{1/2}q,\qquad
+  \widetilde q_{\mathrm{can}}
+  =Z_{\widetilde q}(\mu_0)^{1/2}\widetilde q .
+  \label{eq:sqcd-magnetic-canonical-fields}
+\end{equation}
+Thus the canonical Yukawa coordinate is
+\begin{equation}
+  h_{\mathrm{can}}(\mu_0)
+  =
+  \lambda(\mu_0)\,
+  Z_M(\mu_0)^{-1/2}
+  Z_q(\mu_0)^{-1/2}
+  Z_{\widetilde q}(\mu_0)^{-1/2}.
+  \label{eq:sqcd-magnetic-canonical-yukawa-coupling}
+\end{equation}
+After this full-action normalization has been declared one may write
 \begin{equation}
   W_{\mathrm{mag}}
   =
-  h\,M_{\mathrm{can}}{}^i{}_j q_i\widetilde q^j ,
+  h_{\mathrm{can}}\,
+  M_{\mathrm{can}}{}^i{}_j
+  q_{\mathrm{can},i}\widetilde q_{\mathrm{can}}{}^j ,
   \label{eq:sqcd-magnetic-canonical-yukawa}
 \end{equation}
-with a dimensionless Yukawa coordinate \(h\).  The displayed
+with a dimensionless Yukawa coordinate.  The displayed holomorphic
 \(M q\widetilde q/\mu_*\) form keeps the operator map visible; the canonical
-form is the one used for perturbative RG statements.
+form is the one used for perturbative RG statements.  Seiberg-duality and
+chiral-ring data determine the holomorphic representation content and the
+allowed cubic term, but they do not determine the magnetic Kähler potential or
+the conversion from holomorphic matching variables to canonical running
+variables.  Changing \(Z_M\) at fixed \(\lambda,Z_q,Z_{\widetilde q}\) changes
+\(h_{\mathrm{can}}\); it is not a harmless rewriting of \(M/\mu_*\).
 
 \paragraph{Magnetic gauge--Yukawa ultraviolet status.}
 Let \(t=\widetilde N_c=N_f-N_c\), let \(g_m\) be the magnetic canonical gauge
-coupling, and let
+coupling, set \(h=h_{\mathrm{can}}\) in the canonical chart just declared, and
+let
 \[
   C_F^{(m)}=C_2(\mathbf{fund}_{SU(t)})=\frac{t^2-1}{2t},
   \qquad
@@ -2991,8 +3039,10 @@ the following hypotheses are part of the statement.
   Lagrangian is used either as a finite cutoff effective theory with cutoff
   \(\Lambda_{\rm el}\), as a theory supplied with a specified ultraviolet
   completion, or as an emergent infrared coordinate system defined through a
-  magnetic Wilsonian theory with matching scale and canonical Yukawa datum
-  \(h(\Lambda_{\rm mag})\).  The one-loop analysis
+  magnetic Wilsonian theory with matching scale, magnetic Kähler data
+  \(Z_M,Z_q,Z_{\widetilde q}\), holomorphic coefficient \(\lambda\), and the
+  derived canonical Yukawa datum \(h_{\mathrm{can}}(\Lambda_{\rm mag})\).
+  The one-loop analysis
   \eqref{eq:sqcd-magnetic-yukawa-ratio-flow} shows that the magnetic gauge
   coupling may be asymptotically free while the full nonzero-\(h\)
   gauge--Yukawa system is not thereby UV-completed.  In the finite cutoff
@@ -3039,8 +3089,9 @@ These assumptions are not justified by historical authority.  Their role is
 visible in the calculations below.  The magnetic rank and baryon charges are
 forced by the baryon map \(Q^{N_c}\leftrightarrow q^{\widetilde N_c}\);
 the meson singlet is forced because \(Q\widetilde Q\) is an independent
-electric chiral coordinate; the superpotential is the unique cubic chiral
-coupling with the displayed flavor charges and \(R\)-charge \(2\); the
+  electric chiral coordinate; the holomorphic superpotential is the unique
+  cubic chiral coupling with the displayed flavor charges and \(R\)-charge
+  \(2\), while its canonical coefficient requires the Kähler datum above; the
 magnetic gauge anomaly cancellation is a necessary consistency test; and the
 local anomaly-polynomial matching below tests the common infrared current
 algebra near the identity component of the background group.  These checks do

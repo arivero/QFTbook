@@ -160,9 +160,15 @@ brane construction, or holographic interpretation is a premise of the chapter.
   Seiberg's SQCD dual variables.
 - `mu_*`: dimension-one matching scale used when the magnetic singlet
   `M` is normalized as the electric composite `tilde Q Q`.
-- `W_mag=(1/mu_*) M q tilde q`: magnetic SQCD superpotential.
-- `M_can`, `h`: canonically normalized magnetic meson and dimensionless
-  magnetic Yukawa coupling used for gauge-Yukawa RG status.
+- `lambda`: holomorphic magnetic matching coefficient in
+  `W_mag=(lambda/mu_*) M q tilde q`.
+- `Z_M`, `Z_q`, `Z_tilde q`: nonholomorphic magnetic Kähler wavefunction data
+  needed before defining canonical magnetic fields.
+- `M/mu_*`: dimension-one holomorphic meson coordinate; it is not canonical
+  unless the Kähler metric has also been fixed.
+- `M_can`, `q_can`, `tilde q_can`, `h_can`: canonically normalized magnetic
+  fields and the derived canonical Yukawa coupling
+  `h_can=lambda Z_M^(-1/2) Z_q^(-1/2) Z_tildeq^(-1/2)`.
 - `G_FB^SQCD`: faithful compact SQCD flavor-baryon group
   `(SU(N_f)_L x SU(N_f)_R x U(1)_B)/(Z_Nf^diag x Z_Nc^(B/gauge))`
   acting on gauge-invariant local operators, with admissible backgrounds
@@ -182,7 +188,7 @@ brane construction, or holographic interpretation is a premise of the chapter.
   the first nonzero electric beta coefficient is computed, and strict
   `N_f>3N_c` requiring a finite-cutoff electric EFT, specified UV completion,
   or emergent electric variables defined through a magnetic Wilsonian theory
-  with an explicit Yukawa/matching datum.
+  with explicit Kähler, holomorphic matching, and canonical Yukawa data.
 - `par:sqcd-infrared-range-synthesis`: status-stratified SQCD infrared range
   synthesis; the electric-asymptotically-free duality range uses
   Seiberg-duality input, the free-electric range uses its separate
@@ -419,14 +425,17 @@ brane construction, or holographic interpretation is a premise of the chapter.
 - Adds the general SQCD Seiberg-duality ledger as a central conjecture rather
   than a citation-as-proof or theorem-shaped input: electric/magnetic field
   content, magnetic rank `N_f-N_c`, baryon normalization, faithful compact
-  flavor-baryon quotient, magnetic meson normalization, observable-sector
-  scope, and the `M q tilde q / mu_*` superpotential.
-- Canonically normalizes the magnetic meson as `M_can=M/mu_*`, introduces the
-  dimensionless Yukawa coordinate `h`, and derives the one-loop magnetic
-  gauge-Yukawa beta system.  In the free-electric range `N_f>=3N_c`, the
-  ratio flow has no positive nonzero asymptotically-free ray, so nonzero `h`
-  is a finite matching-cutoff or UV-completion datum rather than a consequence
-  of magnetic gauge asymptotic freedom.
+  flavor-baryon quotient, holomorphic magnetic meson matching coordinate,
+  observable-sector scope, and the `(lambda/mu_*) M q tilde q`
+  superpotential.
+- Defines the magnetic Kähler normalization before using canonical
+  gauge-Yukawa beta functions: `M/mu_*` only fixes engineering dimension,
+  while `Z_M`, `Z_q`, `Z_tilde q`, and `lambda` determine
+  `h_can`.  With this declared canonical chart, derives the one-loop magnetic
+  gauge-Yukawa beta system.  In the free-electric range `N_f>=3N_c`, the ratio
+  flow has no positive nonzero asymptotically-free ray, so nonzero `h_can` is a
+  finite matching-cutoff or UV-completion datum rather than a consequence of
+  magnetic gauge asymptotic freedom.
 - States `hyp:sqcd-ir-comparison-hypotheses`, separating continuum-limit,
   free-electric finite-cutoff/UV-completion/emergent-magnetic status,
   current-identification, faithful-background, R-current, observable-sector,
@@ -545,15 +554,17 @@ brane construction, or holographic interpretation is a premise of the chapter.
   central-charge and conditional free-field
   \(a_{\mathrm{UV}}-a_{\mathrm{IR}}\) comparison factorization,
   the first nonzero electric `N_f=3N_c` endpoint beta coefficient,
-  canonical magnetic gauge-Yukawa beta coefficients and ratio-flow
-  obstruction for nonzero `h` in the free-electric range,
+  magnetic Kähler rescaling covariance for `h_can`, canonical magnetic
+  gauge-Yukawa beta coefficients and ratio-flow obstruction for nonzero
+  `h_can` in the free-electric range,
   local perturbative anomaly-polynomial matching,
   mass and Higgs deformation rank/dimension/`R`-charge tests,
   `N_f=N_c+1` confining-superpotential checks, mass decoupling to the
   `N_f=N_c` quantum-modified constraint, massive-SQCD-to-pure-SYM branch
   elimination, source-identity checks, mass-source/Konishi ledger checks,
-  and phase-window inequalities with negative controls for `b_0=0` and
-  magnetic gauge-asymptotic-freedom shortcuts.
+  and phase-window inequalities with negative controls for `b_0=0`, automatic
+  `M/mu_*` canonical normalization, and magnetic gauge-asymptotic-freedom
+  shortcuts.
 - `calculation-checks/susy_instanton_nekr_checks.py` verifies exact rational
   arithmetic for the ADS instanton expansion: general ADS dimension and
   \(R\)-charge, `N_f=N_c-1` zero-mode counts, Higgs-patch
@@ -612,3 +623,11 @@ chiral-coordinate spaces with their assumptions and anomaly data.
   does not UV-complete a nonzero-Yukawa magnetic theory in the free-electric
   range, and replaced range-label checks with RG coefficient/ratio-flow
   regressions.
+- 2026-06-08 issue #950 pass: inserted the magnetic Kähler normalization datum
+  before the canonical magnetic gauge-Yukawa beta functions.  The text now
+  distinguishes the holomorphic dimension-one coordinate `M/mu_*` from the
+  canonical meson field, defines `h_can` from `lambda`, `Z_M`, `Z_q`, and
+  `Z_tilde q`, and states that Seiberg/chiral-ring data do not determine this
+  nonholomorphic full-action matching.  The SQCD companion check now includes a
+  meson-wavefunction rescaling negative control rejecting automatic canonical
+  normalization.

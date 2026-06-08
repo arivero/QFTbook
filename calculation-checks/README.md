@@ -3485,15 +3485,17 @@ Current checks:
   central-charge and free-field \(a_{\mathrm{UV}}-a_{\mathrm{IR}}\)
   comparison factorization, the first nonzero \(N_f=3N_c\) electric
   beta-function coefficient derived from the one-loop matter anomalous
-  dimension, the canonical magnetic gauge-Yukawa ratio flow after meson
-  normalization, electric-magnetic local perturbative anomaly-polynomial
+  dimension, magnetic Kähler rescaling covariance for the canonical Yukawa
+  coupling, the canonical magnetic gauge-Yukawa ratio flow after declared
+  Kähler normalization, electric-magnetic local perturbative anomaly-polynomial
   matching, mass and Higgs deformation rank/dimension/\(R\)-charge tests,
   \(N_f=N_c+1\) confining-superpotential dimension/\(R\)-charge checks, mass
   decoupling to the \(N_f=N_c\) quantum-modified constraint, massive-SQCD
   elimination to pure-SYM branch superpotentials, source identity, and
   mass-source/Konishi ledger, and the conformal-window/free-phase
   inequalities.  The free-electric negative controls verify that \(b_0=0\)
-  alone does not certify the Gaussian endpoint, that magnetic gauge
+  alone does not certify the Gaussian endpoint, that \(M/\mu_*\) is not
+  automatically canonical without the meson Kähler factor, that magnetic gauge
   asymptotic freedom alone does not UV-complete the nonzero-Yukawa magnetic
   theory, and that rank, charge, anomaly, and deformation arithmetic can
   continue to pass for \(N_f>3N_c\) while the standard continuum-pair

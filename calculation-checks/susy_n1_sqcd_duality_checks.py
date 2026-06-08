@@ -10,17 +10,20 @@ continuation.
 Independent construction: finite rational arithmetic for charges, anomaly
 coefficients, NSVZ numerators, dimensions, R-charges, and range inequalities.
 The range checks derive the first nonzero electric endpoint beta coefficient
-at N_f=3 N_c and the one-loop magnetic gauge-Yukawa ratio flow after
-canonical meson normalization.
-Imported assumptions: the field content and superpotential of the proposed
-magnetic description, the monograph gamma convention, and the stated
-continuum or finite-cutoff status of the SQCD range under discussion.
+at N_f=3 N_c and the one-loop magnetic gauge-Yukawa ratio flow after a
+declared magnetic Kähler normalization.
+Imported assumptions: the field content, magnetic Kähler datum, and
+superpotential of the proposed magnetic description, the monograph gamma
+convention, and the stated continuum or finite-cutoff status of the SQCD range
+under discussion.
 Negative controls: algebraic matching beyond 3 Nc is required to pass as
 protected-sector consistency, but it must not admit the same continuum-pair
 claim or fixed-point dimension tests as the electric-asymptotically-free
 duality range; b0=0 alone does not certify the electric Gaussian edge, and
 magnetic gauge asymptotic freedom alone does not certify the full nonzero
-Yukawa magnetic UV theory.
+Yukawa magnetic UV theory; treating M/mu_* as automatically canonical fails
+when the meson wavefunction factor is changed at fixed holomorphic
+coefficient.
 Scope boundary: these checks do not prove Seiberg duality, construct
 infrared fixed points, or supply a UV completion for a free-electric electric
 Lagrangian.
@@ -325,6 +328,65 @@ def magnetic_gauge_yukawa_coefficients(nc, nf):
         "positive_nonzero_ray": positive_nonzero_ray,
         "fixed_ratio": fixed_ratio,
     }
+
+
+def canonical_yukawa_squared(lambda_squared, z_meson, z_q, z_tilde_q):
+    return lambda_squared / (z_meson * z_q * z_tilde_q)
+
+
+def check_magnetic_kahler_rescaling_covariance():
+    samples = [
+        (Fraction(1), Fraction(4), Fraction(1), Fraction(1)),
+        (Fraction(9), Fraction(1), Fraction(9), Fraction(1)),
+        (Fraction(25), Fraction(4), Fraction(9), Fraction(16)),
+    ]
+    for lambda_squared, z_meson, z_q, z_tilde_q in samples:
+        h_squared = canonical_yukawa_squared(lambda_squared, z_meson, z_q, z_tilde_q)
+        assert_equal(
+            h_squared * z_meson * z_q * z_tilde_q,
+            lambda_squared,
+            "canonical Yukawa derives from holomorphic coefficient and Kähler metric",
+        )
+        if z_meson * z_q * z_tilde_q != 1 and h_squared == lambda_squared:
+            raise AssertionError("holomorphic coefficient was incorrectly treated as canonical")
+
+    fixed_lambda = Fraction(1)
+    canonical_at_unit_metric = canonical_yukawa_squared(
+        fixed_lambda,
+        Fraction(1),
+        Fraction(1),
+        Fraction(1),
+    )
+    canonical_after_meson_rescaling = canonical_yukawa_squared(
+        fixed_lambda,
+        Fraction(4),
+        Fraction(1),
+        Fraction(1),
+    )
+    assert_equal(
+        canonical_after_meson_rescaling,
+        Fraction(1, 4) * canonical_at_unit_metric,
+        "meson wavefunction rescaling changes the canonical Yukawa at fixed lambda",
+    )
+
+    naive_engineering_dimension_rule = fixed_lambda
+    if naive_engineering_dimension_rule == canonical_after_meson_rescaling:
+        raise AssertionError("M/mu_* was incorrectly accepted as automatic canonical normalization")
+
+    # In the flavor-symmetric magnetic chart Z_q=Z_tilde_q, but both factors
+    # still enter the physical canonical coupling.
+    z_quark = Fraction(3)
+    flavor_symmetric_h = canonical_yukawa_squared(
+        fixed_lambda,
+        Fraction(2),
+        z_quark,
+        z_quark,
+    )
+    assert_equal(
+        flavor_symmetric_h,
+        Fraction(1, 18),
+        "flavor-symmetric chart still contains both quark wavefunction factors",
+    )
 
 
 def check_electric_gaussian_endpoint_beta_coefficient():
@@ -721,6 +783,7 @@ def main():
     check_r_charges_superpotential_and_nsvz()
     check_local_anomaly_polynomial_matching()
     check_conformal_window_central_charges()
+    check_magnetic_kahler_rescaling_covariance()
     check_electric_gaussian_endpoint_beta_coefficient()
     check_magnetic_gauge_yukawa_uv_status()
     check_duality_deformation_tests()
