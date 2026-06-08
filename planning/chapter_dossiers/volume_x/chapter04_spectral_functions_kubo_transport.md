@@ -149,9 +149,12 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
    measure.  The pure-gauge static cancellation applies only for contractible
    uniform sources with the declared topology/boundary conditions and does not
    include torus holonomy or superfluid/Meissner stiffness sectors.
-   Cesaro/Abel extraction is a filtered low-frequency theorem unless a
+   Cesaro/Abel extraction is a filtered low-frequency theorem with a real,
+   even, nonnegative cutoff bounded by one and equal to one near zero, unless a
    globally finite regulated or spacetime-smeared measure has been supplied;
-   removing the filter requires ultraviolet estimates and contact
+   sign-changing or complex compact filters require a separate
+   finite-total-variation proof.
+   Removing the filter requires ultraviolet estimates and contact
    subtractions.  Identifying the atom with an ordinary pointwise
    \(t\to\infty\) limit requires additional dephasing/mixing.  The Drude atom,
    singular-continuous response, Hall/reactive response, and regular dc slope
@@ -203,8 +206,10 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   isolate \(C_0\) but no pointwise long-time limit exists; a
   polynomial ultraviolet-tail negative control showing why the Drude
   extraction is filtered, smeared, or regulated before dominated convergence
-  is used; and a two-dimensional finite-regulator Mori--Zwanzig identity with
-  its Laplace-space Schur complement.
+  is used; a positivity-preserving cutoff contract rejecting sign-changing or
+  complex filters unless a separate total-variation proof is supplied; and a
+  two-dimensional finite-regulator Mori--Zwanzig identity with its
+  Laplace-space Schur complement.
 - The #882 canonical convention ledger is also guarded by
   `calculation-checks/kms_foundation_checks.py` and
   `calculation-checks/finite_temperature_path_integral_checks.py`, which test
@@ -289,3 +294,8 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   stated the contractible-source topology and holonomy/stiffness exclusions,
   and added a conserved-current regression showing static re-equilibration
   cancellation with a nonzero dynamical Abel kernel.
+- 2026-06-08 issue #949 pass: tightened the filtered Drude theorem to real,
+  even, nonnegative compact cutoffs bounded by one before claiming a positive
+  filtered measure, recorded that sign-changing or complex filters need a
+  separate total-variation proof, and added a regression rejecting such
+  filters under the positivity-preserving theorem contract.

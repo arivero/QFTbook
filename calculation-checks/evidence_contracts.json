@@ -319,7 +319,8 @@
         "equilibrium static pure-gauge cancellation is not the dynamical Abel kernel",
         "Drude atom normalized by Abel source response zero-mode residue",
         "Cesaro and Abel Drude projections are not pointwise long-time limits",
-        "filtered low-frequency Drude extraction rejects uncontrolled UV tails"
+        "filtered low-frequency Drude extraction rejects uncontrolled UV tails",
+        "positive filtered Drude proof requires real nonnegative even cutoff bounded by one"
       ]
     },
     {

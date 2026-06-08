@@ -16,7 +16,8 @@ an H=0 conserved-current negative control, a static-versus-dynamical
 conserved-current split, a finite oscillatory negative control, and a
 polynomial ultraviolet-tail control to separate source-derived Drude residues
 and filtered Cesaro/Abel zero-frequency projections from unproved
-commutator-FDT, pointwise, static-equilibrium, or unfiltered continuum claims.
+commutator-FDT, pointwise, static-equilibrium, unfiltered continuum, or
+sign-changing-filter positivity claims.
 Imported assumptions: the thermal KMS condition, finite-volume linear
 response, and the interpretation of real local source contacts as contact
 terms outside the nonzero-frequency commutator spectral measure.
@@ -30,7 +31,8 @@ finite-volume correlator is not accepted as having a pointwise long-time
 Drude limit, an equilibrium static pure-gauge cancellation is not identified
 with the Abel dynamical kernel, and a locally finite low-frequency measure
 with a polynomial ultraviolet tail is not accepted as supporting unfiltered
-dominated convergence.
+dominated convergence; sign-changing or complex compact filters are rejected
+when the proof claims a positive filtered measure.
 Scope boundary: these checks do not prove hydrodynamic closure, continuum
 limit exchange, or Euclidean analytic-continuation stability.
 """
@@ -455,6 +457,95 @@ def check_filtered_drude_rejects_uncontrolled_uv_tail() -> None:
         raise AssertionError("polynomial UV tail should require smearing, cutoff, or subtraction")
 
 
+def check_filtered_drude_cutoff_positivity_contract() -> None:
+    spectral_weights = [(-2, 0.03), (-1, 0.05), (1, 0.05), (2, 0.03)]
+    positive_cutoff = {
+        -2: 0.0 + 0j,
+        -1: 0.5 + 0j,
+        0: 1.0 + 0j,
+        1: 0.5 + 0j,
+        2: 0.0 + 0j,
+    }
+    sign_changing_cutoff = {
+        -2: 0.0 + 0j,
+        -1: -0.25 + 0j,
+        0: 1.0 + 0j,
+        1: -0.25 + 0j,
+        2: 0.0 + 0j,
+    }
+    complex_cutoff = {
+        -2: 0.0 + 0j,
+        -1: 0.5 + 0j,
+        0: 1.0 + 0j,
+        1: 0.5 + 0.2j,
+        2: 0.0 + 0j,
+    }
+    overlarge_cutoff = {
+        -2: 0.0 + 0j,
+        -1: 1.5 + 0j,
+        0: 1.0 + 0j,
+        1: 1.5 + 0j,
+        2: 0.0 + 0j,
+    }
+
+    def is_positive_even_real_cutoff(
+        cutoff: dict[int, complex],
+        tolerance: float = 1.0e-12,
+    ) -> bool:
+        for omega, value in cutoff.items():
+            reflected = cutoff.get(-omega)
+            if reflected is None:
+                return False
+            if abs(value.imag) > tolerance or value.real < -tolerance:
+                return False
+            if value.real > 1.0 + tolerance:
+                return False
+            if abs(value - reflected) > tolerance:
+                return False
+        return True
+
+    def positive_filtered_weights(
+        cutoff: dict[int, complex],
+    ) -> list[tuple[int, float]]:
+        if not is_positive_even_real_cutoff(cutoff):
+            raise ValueError("positive-measure Drude proof needs a real nonnegative even cutoff")
+        filtered = []
+        for omega, weight in spectral_weights:
+            if omega not in cutoff:
+                raise ValueError("cutoff is not declared on the tested spectral support")
+            filtered.append((omega, weight * cutoff[omega].real))
+        return filtered
+
+    filtered_weights = positive_filtered_weights(positive_cutoff)
+    assert all(weight >= 0.0 for _omega, weight in filtered_weights)
+    assert sum(weight for _omega, weight in filtered_weights) <= sum(
+        weight for _omega, weight in spectral_weights
+    )
+
+    for bad_cutoff in (sign_changing_cutoff, complex_cutoff, overlarge_cutoff):
+        try:
+            positive_filtered_weights(bad_cutoff)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("bad cutoff was accepted as preserving positivity")
+
+    signed_filtered_weights = [
+        (omega, weight * sign_changing_cutoff[omega].real)
+        for omega, weight in spectral_weights
+    ]
+    assert any(weight < 0.0 for _omega, weight in signed_filtered_weights)
+
+    def finite_complex_total_variation(cutoff: dict[int, complex]) -> float:
+        return sum(weight * abs(cutoff[omega]) for omega, weight in spectral_weights)
+
+    complex_filtered_mass = sum(
+        weight * complex_cutoff[omega]
+        for omega, weight in spectral_weights
+    )
+    assert abs(complex_filtered_mass) <= finite_complex_total_variation(complex_cutoff)
+
+
 def check_regular_drude_decomposition_for_figure() -> None:
     sigma_dc = 0.64
     tau = 1.7
@@ -532,6 +623,7 @@ def main() -> None:
     check_static_dynamic_split_for_conserved_free_current()
     check_cesaro_abel_not_pointwise_negative_control()
     check_filtered_drude_rejects_uncontrolled_uv_tail()
+    check_filtered_drude_cutoff_positivity_contract()
     check_regular_drude_decomposition_for_figure()
     check_mori_zwanzig_projection_identity()
     print("All thermal Kubo convention checks passed.")

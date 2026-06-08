@@ -781,8 +781,9 @@ connected symmetrized current correlator in a fixed tensor channel.  Assume
 that, on some interval \(|\omega|<\Omega\), this distribution is represented
 by a locally finite positive Hermitian matrix-valued measure and that its
 zero-frequency atom is \(A^{(0)}_{ij}\delta_0\).  Let
-\(\chi\in C_c^\infty((-\Omega,\Omega))\) be equal to \(1\) on a neighborhood
-of \(0\), and define the filtered low-frequency correlator
+\(\chi\in C_c^\infty((-\Omega,\Omega);\mathbb R)\) be even, satisfy
+\(0\leq\chi\leq1\), and be equal to \(1\) on a neighborhood of \(0\).
+Define the filtered low-frequency correlator
 \[
   C^\chi_{ij}(t)
   =
@@ -823,13 +824,15 @@ If a regulator or spacetime smearing makes the full noncontact spectral
 measure globally finite, the same proof applies with \(\chi=1\).  Removing
 the cutoff, smearing, or regulator requires separate uniform ultraviolet
 estimates and contact-term subtractions; local low-frequency finiteness alone
-does not justify the unfiltered statement.
+does not justify the unfiltered statement.  A sign-changing or complex
+compact filter may still define a finite complex measure dominated by total
+variation, but it is not the positivity-preserving cutoff theorem stated here.
 \end{proposition}
 
 \begin{proof}
 Apply the scalar argument to
-\(\overline{u_i}C^\chi_{ij}u_j\).  The compact support of \(\chi\) and local
-finiteness make
+\(\overline{u_i}C^\chi_{ij}u_j\).  The reality and nonnegativity of \(\chi\),
+together with compact support and local finiteness, make
 \(\overline{u_i}\chi\,d\nu_{ij}u_j\) a finite positive measure on the
 nonzero-frequency support.  For the Cesaro limit the
 nonzero-frequency kernel is

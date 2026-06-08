@@ -3691,10 +3691,11 @@ Current checks:
   kernel, a finite oscillatory negative control where Cesaro and Abel averages
   isolate the zero-frequency component but the pointwise long-time limit does
   not exist, a polynomial ultraviolet-tail negative control showing why the
-  Drude extraction is filtered or regulated, and the regular-versus-Drude
-  decomposition used in the Kubo figure, together with a finite-dimensional
-  Mori--Zwanzig projection identity and its Laplace-space Schur-complement
-  form.
+  Drude extraction is filtered or regulated, a cutoff-positivity contract
+  rejecting sign-changing, complex, or overlarge filters under the
+  positive-measure proof, and the regular-versus-Drude decomposition used in
+  the Kubo figure, together with a finite-dimensional Mori--Zwanzig projection
+  identity and its Laplace-space Schur-complement form.
 - `thermal_screening_checks.py`: finite checks for the Volume X thermal
   gauge-screening chapter, including the \(d\)-dimensional Yukawa asymptotic
   power, the transverse-projected pole residue, and the conversion of the
