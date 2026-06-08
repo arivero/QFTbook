@@ -242,13 +242,31 @@ satisfies
   \rho_{AA}(\omega,\mathbf k).
   \label{eq:kubo-fluctuation-dissipation}
 \end{equation}
-The apparent singularity at \(\omega=0\) is interpreted distributionally:
-the product is meaningful when the small-\(\omega\) behavior of
-\(\rho_{AA}\) is specified.  In a diffusive or viscous channel,
-\(\rho_{AA}(\omega)=O(\omega)\), so the symmetrized noise has a finite
-zero-frequency limit.  If a ballistic channel produces a Drude delta
-function, this limit is a different observable and the dc transport
-coefficient is infinite rather than a finite number.
+Equation~\eqref{eq:kubo-fluctuation-dissipation} is a nonzero-frequency
+identity plus a convention for any extension through \(\omega=0\).  The KMS
+multiplier
+\((1-e^{-\beta\omega})\) in
+\eqref{eq:kubo-detailed-balance} vanishes at the origin, so the commutator
+spectral density forgets exact zero-energy matrix elements.  If
+\(P_0A\) is the component of \(A\) in the zero-Liouville subspace, the
+symmetrized correlator can contain
+\[
+  G^{\rm sym}_{AA}\supset 2\pi A^{(0)}\delta_0,
+  \qquad
+  A^{(0)}
+  =
+  \frac12\langle P_0A\,P_0A^\dagger+P_0A^\dagger P_0A\rangle_\beta ,
+\]
+while the corresponding contribution to \(\rho_{AA}\) is zero.  In the
+extreme finite example \(H=0\) and \(A=J=J^\dagger\) with
+\(\langle J\rangle_\beta=0\), one has
+\(\rho_{JJ}=0\) but
+\(G^{\rm sym}_{JJ}=2\pi\langle J^2\rangle_\beta\delta_0\).  Thus dividing the
+commutator spectral density by \(\omega\), or multiplying a conductivity
+measure by \(\omega\), is not injective at the Drude atom.  In diffusive or
+viscous channels with \(\rho_{AA}(\omega)=O(\omega)\) this caveat reduces to
+the usual finite noise limit; in a ballistic channel it is the mechanism
+behind an infinite dc conductivity.
 
 \section{Linear Response from the Closed Time Path}
 
@@ -586,11 +604,115 @@ summand, while \(\sigma^{{\rm diss},\rm reg}\) is the locally integrable part
 used in the finite dc limit.  Figure~\ref{fig:kubo-order-of-limits} records
 this order-of-limits prescription.
 
+\begin{proposition}[Zero-mode Drude normalization from source response]
+\label{prop:kubo-zero-mode-drude-normalization}
+Fix a finite-volume regulated system with a uniform vector-potential source
+coupled to the total current,
+\[
+  H(A)=H(0)-A_iI_i+O(A^2),
+\]
+and include the response contact \(C^{\rm resp}_{ij}\) in the full current
+derivative.  Assume the declared gauge/contact prescription cancels the
+static response to a pure uniform vector potential, so that the conductivity
+kernel \(K^{\rm cond}_{ij,V}(0)=0\) after the same subtraction used in
+\eqref{eq:kubo-conductivity-kernel-contact-sign}.  Let \(E_j(t)=E_j
+e^{\epsilon t}\) be an Abel-switched electric field observed at \(t=0\), and
+choose \(A_j(t)\) with \(E_j=-\dot A_j\) and \(A_j(-\infty)=0\).  With the
+Kubo--Mori product
+\[
+  (X,Y)_{\beta,{\rm KM}}
+  =
+  \frac1\beta\int_0^\beta d\lambda\,
+  \langle X^\dagger(-\ii\lambda)Y\rangle_\beta ,
+\]
+whose Hermitian part agrees with the symmetrized covariance on the
+zero-Liouville subspace,
+\[
+  C^{\rm KM}_{ij,V}(t)
+  =
+  \frac1V\,(\bar I_i(t),\bar I_j)_{\beta,{\rm KM}},
+\]
+finite-volume linear response gives the electric-field response
+\begin{equation}
+  \frac{\delta\langle I_i(0)\rangle}{V}
+  =
+  \sigma^{(\epsilon)}_{ij,V}E_j,
+  \qquad
+  \sigma^{(\epsilon)}_{ij,V}
+  =
+  \beta\int_0^\infty dt\,e^{-\epsilon t}C^{\rm KM}_{ij,V}(t).
+  \label{eq:kubo-abel-source-response-conductivity}
+\end{equation}
+If \(P_0\) denotes the exact finite-volume zero-Liouville projection and
+\begin{equation}
+  A^{(0)}_{ij,V}
+  =
+  \frac1{2V}
+  \left\langle
+    \{P_0\bar I_i,P_0\bar I_j\}
+  \right\rangle_\beta ,
+  \label{eq:kubo-zero-mode-current-covariance}
+\end{equation}
+then
+\begin{equation}
+  \lim_{\epsilon\downarrow0}
+  \epsilon\,\sigma^{(\epsilon),{\rm diss}}_{ij,V}
+  =
+  \beta A^{(0)}_{ij,V}
+  \label{eq:kubo-abel-source-drude-residue}
+\end{equation}
+in the Hermitian dissipative sector.  Consequently, if the chosen
+thermodynamic limit sends these Abel residues and the finite-volume
+zero-mode covariances to a locally finite conductivity measure, the
+thermodynamic singular part is
+\begin{equation}
+  d\mu^{\sigma,\rm diss}_{ij}
+  \supset
+  \pi\beta A^{(0)}_{ij}\delta_0,
+  \qquad
+  D_{ij}=\beta A^{(0)}_{ij}.
+  \label{eq:kubo-source-response-drude-normalization}
+\end{equation}
+This conclusion uses the source-response/contact prescription and the Abel
+limit; it is not obtained by reconstructing a missing zero atom from
+\(\rho_{JJ}(\omega)/(2\omega)\).
+\end{proposition}
+
+\begin{proof}
+The finite-volume KMS identity gives
+\[
+  \ii\langle[\bar I_i(t),\bar I_j(0)]\rangle_\beta
+  =
+  -\beta\,\partial_t
+  (\bar I_i(t),\bar I_j)_{\beta,{\rm KM}} .
+\]
+The source-response kernel for \(A_j\) is this commutator kernel plus the
+local response contact.  Integrating by parts against \(A_j(t-\tau)\) and
+using \(E_j=-\dot A_j\) produces a boundary term proportional to the static
+Kubo--Mori current covariance and a bulk term proportional to
+\(\int_0^\infty C^{\rm KM}(\tau)E(t-\tau)d\tau\).  The declared
+gauge/contact subtraction cancels the boundary term, exactly as in the
+finite charged-oscillator example above, leaving
+\eqref{eq:kubo-abel-source-response-conductivity} for the electric-field
+response.  The zero-Liouville component of \(C^{\rm KM}_{ij,V}(t)\) is the
+constant matrix \(A^{(0)}_{ij,V}\), because on \(\ker[H,\cdot]\) the
+Hermitian part of the Kubo--Mori product is the symmetrized covariance used
+in the dissipative sector.  Multiplying the Abel transform by \(\epsilon\)
+kills every finite
+nonzero-frequency oscillatory component and leaves
+\eqref{eq:kubo-abel-source-drude-residue}.  The retarded boundary value of
+\((\epsilon-\ii\omega)^{-1}\) has Hermitian real part
+\(\pi\delta(\omega)\); therefore a positive Abel residue
+\(\beta A^{(0)}\) is precisely the measure atom in
+\eqref{eq:kubo-source-response-drude-normalization}.
+\end{proof}
+
 The finite Mazur matrix \(A^{(0)}_{ij,V}\) and the thermodynamic Drude atom
-are connected only after a spectral convergence statement is added.  If the
-finite-volume zero-frequency atoms converge to the zero-frequency atom of the
-thermodynamic conductivity measure in the declared limit, then for every real
-vector \(u_i\)
+are connected only after the zero-mode source-response limit is supplied.  If
+the finite-volume zero-Liouville covariances converge through the framework
+of Proposition~\ref{prop:kubo-zero-mode-drude-normalization} to the
+zero-frequency atom of the thermodynamic Hermitian dissipative conductivity
+measure, then for every real vector \(u_i\)
 \begin{equation}
   u_iD_{ij}u_j
   \geq
@@ -644,12 +766,10 @@ filtered limit
 also exists.  A sufficient dephasing condition for the last statement is that
 the filtered nonzero-frequency part be absolutely continuous with \(L^1\)
 density after exact nonzero-frequency atoms have been removed.  Under the
-fluctuation--dissipation normalization of
-\eqref{eq:kubo-fluctuation-dissipation}, a zero-frequency atom \(A^{(0)}\) in
-the symmetrized correlator gives the dissipative conductivity Drude matrix
-\[
-  D_{ij}=\beta A^{(0)}_{ij}.
-\]
+zero-mode response hypotheses of
+Proposition~\ref{prop:kubo-zero-mode-drude-normalization}, the same atom is
+the current covariance that produces the dissipative conductivity Drude matrix
+\(D_{ij}=\beta A^{(0)}_{ij}\).
 If a regulator or spacetime smearing makes the full noncontact spectral
 measure globally finite, the same proof applies with \(\chi=1\).  Removing
 the cutoff, smearing, or regulator requires separate uniform ultraviolet
@@ -680,17 +800,14 @@ convergence against the filtered finite measure gives
 again bounded by \(1\) and tending to zero away from the atom at the origin,
 which gives \eqref{eq:kubo-abel-drude-atom}.  The pointwise statement is the
 extra dephasing hypothesis; for an \(L^1\) density it is the
-Riemann--Lebesgue lemma.  For the Drude normalization, test the singular
-fluctuation--dissipation relation against an even smooth approximate identity
-\(\eta_\lambda(\omega)\) shrinking to zero.  The regular relation combines
-\eqref{eq:kubo-fluctuation-dissipation} with
-\(d\mu^{\sigma,\rm diss}=\rho_{JJ}(\omega,\mathbf0)\,d\omega/(2\omega)\),
-and the factor
-\((\beta\omega/2)\coth(\beta\omega/2)\) tends to \(1\).  Thus a dissipative
-conductivity atom \(d\mu^{\sigma,\rm diss}\supset\pi D\delta_0\) contributes
-a symmetrized spectral atom \(2\pi D\delta_0/\beta\).  Since the inverse
-Fourier convention sends \(2\pi A^{(0)}\delta_0\) to the persistent constant
-\(A^{(0)}\), the coefficients obey \(D=\beta A^{(0)}\).
+Riemann--Lebesgue lemma.  The coefficient \(D=\beta A^{(0)}\), when it is
+claimed, comes from
+Proposition~\ref{prop:kubo-zero-mode-drude-normalization}; the present
+filtered theorem only identifies the zero atom in the symmetrized current
+measure.  The nonzero-frequency FDT relation determines the regular
+dissipative density away from the origin and does not invert the map
+\(d\mu^{\sigma,\rm diss}\mapsto 2\omega\,d\mu^{\sigma,\rm diss}\) on a
+\(\delta_0\) summand.
 Thus deriving a pointwise long-time limit requires a stronger mixing
 statement beyond the Mazur projection.
 \end{proof}
@@ -754,8 +871,10 @@ remainder and with an absolutely continuous part admitting a finite
 zero-frequency limit.  The finite dc coefficient is the zero-frequency limit
 of the regular dissipative part \(\sigma^{{\rm diss},\rm reg}\), equivalently
 the slope of
-\(\rho^{\rm reg}_{JJ}(\omega,\mathbf0)\) divided by \(2\omega\).  A Drude or
-superfluid weight is represented by the separate \(\delta(\omega)\) summand.}
+\(\rho^{\rm reg}_{JJ}(\omega,\mathbf0)\) divided by \(2\omega\) at nonzero
+frequency before taking the limit.  A Drude or superfluid weight is
+represented by the separate \(\delta(\omega)\) summand, whose normalization
+comes from the declared zero-mode source response.}
 \label{fig:kubo-order-of-limits}
 \end{figure}
 

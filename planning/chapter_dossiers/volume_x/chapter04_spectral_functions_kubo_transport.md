@@ -22,7 +22,9 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
 - Retarded spectral representation with the chapter's sign convention
   \(\rho=-2\operatorname{Im}G^R\), recorded as boundary-value convention
   rather than theorem-family content.
-- KMS fluctuation--dissipation relation.
+- KMS fluctuation--dissipation relation at nonzero frequency, with an
+  explicit warning that the commutator spectral density loses exact
+  zero-Liouvillian matrix elements.
 - Linear response from Schwinger--Keldysh contour difference, with the
   source-response sign separated from the commutator-retarded convention.
 - Separation between commutator correlators, local contact terms, and full
@@ -39,10 +41,13 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   conserved current overlap, kept at the level of the Cesaro
   zero-Liouvillian projection.
 - Thermodynamic Drude weight defined as the coefficient of the
-  zero-frequency atom in the Hermitian dissipative conductivity measure, with
-  Cesaro/Abel time-domain equivalence stated only for a compactly filtered
+  zero-frequency atom in the Hermitian dissipative conductivity measure; its
+  normalization \(D=\beta A^{(0)}\) is derived from the declared
+  finite-volume source-response/contact prescription and Abel zero-mode
+  residue, not by dividing the commutator spectral density by \(\omega\).
+  Cesaro/Abel time-domain equivalence is stated only for a compactly filtered
   locally finite low-frequency measure, or for a globally finite
-  regulated/smeared measure, and ordinary pointwise long-time equivalence
+  regulated/smeared measure, and ordinary pointwise long-time equivalence is
   stated only under additional spectral-convergence and dephasing hypotheses.
 - Explicit split between the positive Hermitian dissipative conductivity
   sector and Hall/reactive/contact terms; entrywise \(\operatorname{Re}\sigma\)
@@ -82,6 +87,7 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
 | \(C_{ij,V}(t)\) | finite-volume connected symmetrized current autocorrelation |
 | \(Q_a\), \(C_{ab}\), \(v_{ia}\) | conserved operators, symmetrized covariance, and current-charge overlap |
 | \(A^{(0)}_{ij,V}\) | finite-volume Cesaro projection onto the zero-Liouvillian current sector |
+| \(C^{\rm KM}_{ij,V}(t)\) | finite-volume Kubo--Mori current correlator entering the Abel electric-field response after static contact cancellation |
 | \(D_{ij}\) | thermodynamic Drude-weight matrix, defined by the zero-frequency atom of the Hermitian dissipative conductivity measure |
 | \(\sigma^{\rm diss}\), \(\sigma^{\rm react}\) | Hermitian dissipative and reactive conductivity sectors \((\sigma\pm\sigma^\dagger)/2\) |
 | \(\mu^{\sigma,\rm diss}_{ij}\), \(\mu^{\rm sc}_{ij}\), \(\sigma^{\rm ac}_{ij}\) | thermodynamic Hermitian dissipative conductivity measure, its singular-continuous part, and its absolutely continuous density |
@@ -113,7 +119,11 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
    \(\rho_{AA}=-2\operatorname{Im}G^R_{AA}\) for the nonlocal part of the
    response; the substantive assumption is the thermodynamic tempered
    boundary value and the separation of real contact polynomials.
-5. KMS implies detailed balance and the fluctuation--dissipation relation.
+5. KMS implies detailed balance and the fluctuation--dissipation relation at
+   nonzero frequency.  Exact zero-energy matrix elements can give a
+   symmetrized \(\delta_0\) atom while contributing no commutator spectral
+   atom, so the zero mode must be supplied by a separate response/contact
+   limit.
 6. Local source contacts are part of the full background response but not of
    the commutator spectral measure at nonzero frequency.  The contact sign is
    fixed in the full response derivative
@@ -126,7 +136,10 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
 8. Conserved charges with nonzero current overlap give a positive
    finite-volume zero-Liouvillian Cesaro projection bounded by the Mazur
    matrix.  Identifying its thermodynamic limit with a Drude atom requires
-   spectral-measure convergence into the Hermitian dissipative sector.
+   the zero-mode source-response construction: static vector-potential
+   contact cancellation, an Abel-switched electric-field response, and
+   convergence of the resulting residues into the Hermitian dissipative
+   conductivity measure.
    Cesaro/Abel extraction is a filtered low-frequency theorem unless a
    globally finite regulated or spacetime-smeared measure has been supplied;
    removing the filter requires ultraviolet estimates and contact
@@ -170,13 +183,16 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   response contact, verifying the static full-response cancellation, the
   opposite contact sign in \(K^{\rm cond}\), and the unchanged spectral part;
   the Hermitian dissipative projection that removes a real antisymmetric Hall
-  block from the positive measure; the finite Mazur projection/Drude-atom
-  normalization; an oscillatory \(C(t)=C_0+\cos\Omega t\) negative control
-  where Cesaro and Abel averages isolate \(C_0\) but no pointwise long-time
-  limit exists; a polynomial ultraviolet-tail negative control showing why
-  the Drude extraction is filtered, smeared, or regulated before dominated
-  convergence is used; and a two-dimensional finite-regulator Mori--Zwanzig
-  identity with its Laplace-space Schur complement.
+  block from the positive measure; the finite Mazur projection and
+  Abel-switched source-response residue for a current with conserved overlap;
+  an \(H=0\) conserved-current negative control where the commutator spectral
+  density vanishes although the symmetrized zero atom is nonzero; an
+  oscillatory \(C(t)=C_0+\cos\Omega t\) negative control where Cesaro and Abel
+  averages isolate \(C_0\) but no pointwise long-time limit exists; a
+  polynomial ultraviolet-tail negative control showing why the Drude
+  extraction is filtered, smeared, or regulated before dominated convergence
+  is used; and a two-dimensional finite-regulator Mori--Zwanzig identity with
+  its Laplace-space Schur complement.
 - The #882 canonical convention ledger is also guarded by
   `calculation-checks/kms_foundation_checks.py` and
   `calculation-checks/finite_temperature_path_integral_checks.py`, which test
@@ -250,3 +266,8 @@ Source-File: monograph/tex/volumes/volume_x/chapter04_spectral_functions_kubo_tr
   finite-measure Drude/Cesaro/Abel proposition by a compactly filtered
   low-frequency theorem with an explicit regulated/smeared alternative and a
   polynomial ultraviolet-tail negative control.
+- 2026-06-08 issue #946 pass: separated the nonzero-frequency commutator FDT
+  from exact zero-Liouvillian matrix elements, added the finite-volume
+  source-response/contact derivation of \(D=\beta A^{(0)}\) through an
+  Abel-switched electric-field residue, and guarded the bridge with an
+  \(H=0\) conserved-current negative control.

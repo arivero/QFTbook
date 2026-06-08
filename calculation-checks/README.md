@@ -3676,14 +3676,16 @@ Current checks:
   It also checks that real local contact terms do not change dissipative
   spectral slopes, that the Hermitian dissipative conductivity sector excludes
   a real antisymmetric Hall block even though entrywise real parts retain it,
-  the finite Mazur projection/Drude-atom relation for a current with
-  conserved overlap, a finite oscillatory negative control where Cesaro and
-  Abel averages isolate the zero-frequency component but the pointwise
-  long-time limit does not exist, a polynomial ultraviolet-tail negative
-  control showing why the Drude extraction is filtered or regulated, and the
-  regular-versus-Drude decomposition used in the Kubo figure, together with a
-  finite-dimensional Mori--Zwanzig projection identity and its Laplace-space
-  Schur-complement form.
+  the finite Mazur projection and the Abel-switched source-response residue
+  for a current with conserved overlap, an \(H=0\) conserved-current negative
+  control showing that the commutator spectral density can vanish while the
+  symmetrized zero atom is nonzero, a finite oscillatory negative control
+  where Cesaro and Abel averages isolate the zero-frequency component but the
+  pointwise long-time limit does not exist, a polynomial ultraviolet-tail
+  negative control showing why the Drude extraction is filtered or regulated,
+  and the regular-versus-Drude decomposition used in the Kubo figure, together
+  with a finite-dimensional Mori--Zwanzig projection identity and its
+  Laplace-space Schur-complement form.
 - `thermal_screening_checks.py`: finite checks for the Volume X thermal
   gauge-screening chapter, including the \(d\)-dimensional Yukawa asymptotic
   power, the transverse-projected pole residue, and the conversion of the

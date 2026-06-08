@@ -11,9 +11,11 @@ models, a minimally coupled charged oscillator with a diamagnetic contact
 term, finite Mazur projection algebra, and a two-dimensional Mori-Zwanzig
 Schur-complement model.  The conductivity-sector checks separate Hermitian
 dissipation from a real antisymmetric Hall block.  The Mazur/Drude checks use
-both a finite oscillatory negative control and a polynomial ultraviolet-tail
-control to separate filtered Cesaro/Abel zero-frequency projections from
-unproved pointwise or unfiltered continuum claims.
+an Abel-switched source response for the zero-Liouville current covariance,
+an H=0 conserved-current negative control, a finite oscillatory negative
+control, and a polynomial ultraviolet-tail control to separate source-derived
+Drude residues and filtered Cesaro/Abel zero-frequency projections from
+unproved commutator-FDT, pointwise, or unfiltered continuum claims.
 Imported assumptions: the thermal KMS condition, finite-volume linear
 response, and the interpretation of real local source contacts as contact
 terms outside the nonzero-frequency commutator spectral measure.
@@ -21,10 +23,12 @@ Negative controls: the wrong contact sign leaves a spurious static
 conductivity kernel, real contact terms do not alter the dissipative spectral
 Hermitian spectral slope, the Hall block is not accepted as a positive
 entrywise real measure, the Drude sector is separated from the regular dc
-slope, an oscillatory finite-volume correlator is not accepted as having a
-pointwise long-time Drude limit, and a locally finite low-frequency measure
-with a polynomial ultraviolet tail is not accepted as supporting unfiltered
-dominated convergence.
+slope, the commutator spectral density of an exact H=0 zero mode is not
+accepted as determining the symmetrized zero atom, an oscillatory
+finite-volume correlator is not accepted as having a pointwise long-time
+Drude limit, and a locally finite low-frequency measure with a polynomial
+ultraviolet tail is not accepted as supporting unfiltered dominated
+convergence.
 Scope boundary: these checks do not prove hydrodynamic closure, continuum
 limit exchange, or Euclidean analytic-continuation stability.
 """
@@ -292,11 +296,56 @@ def check_mazur_projection_and_drude_weight() -> None:
     expected_persistent = current_conserved_part * current_conserved_part * covariance
     assert_close("Mazur projection gives conserved current component", mazur_projection_norm, expected_persistent)
 
-    # In the chapter convention, a symmetrized zero-frequency term
-    # (2*pi/beta) D delta(omega) gives a persistent time-domain constant D/beta.
-    drude_weight = beta * expected_persistent
-    persistent_from_drude = drude_weight / beta
-    assert_close("Drude weight matches persistent symmetrized correlator", persistent_from_drude, expected_persistent)
+    oscillating_current = matscale(current_oscillating_part, SIGMA_X)
+    oscillating_covariance = sym_inner(oscillating_current, oscillating_current)
+
+    # Abel-switched electric-field response after the static vector-potential
+    # contact has been cancelled:
+    #   sigma_epsilon = beta int_0^infty exp(-epsilon t) C(t) dt.
+    # The zero-Liouville component contributes beta*A0/epsilon, while the
+    # finite-frequency oscillatory component contributes only an Abel-regular
+    # term beta*B*epsilon/(epsilon^2+gap^2).
+    residues = []
+    for epsilon in (0.4, 0.2, 0.1, 0.05):
+        source_conductivity = beta * (
+            expected_persistent / epsilon
+            + oscillating_covariance * epsilon / (epsilon * epsilon + gap * gap)
+        )
+        residues.append(epsilon * source_conductivity)
+    target_residue = beta * expected_persistent
+    assert residues[0] > residues[1] > residues[2] > target_residue
+    assert_close("Abel source response gives Drude residue", residues[-1], target_residue, tol=7.0e-4)
+
+
+def check_commutator_fdt_loses_exact_zero_mode() -> None:
+    beta = 1.4
+    volume = 3.0
+    rho = [[0.5 + 0j, 0j], [0j, 0.5 + 0j]]
+    conserved_current = SIGMA_Z
+
+    sym_zero_atom = (
+        thermal_expectation(
+            rho,
+            matadd(matmul(conserved_current, conserved_current), matmul(conserved_current, conserved_current)),
+        ).real
+        / (2.0 * volume)
+    )
+    commutator_zero_weight = thermal_expectation(
+        rho,
+        matadd(
+            matmul(conserved_current, conserved_current),
+            matscale(-1.0, matmul(conserved_current, conserved_current)),
+        ),
+    ).real
+
+    assert sym_zero_atom > 0.0
+    assert_close("H=0 conserved current has no commutator spectral atom", commutator_zero_weight, 0.0)
+
+    naive_drude_from_commutator_fdt = beta * commutator_zero_weight
+    source_response_drude_residue = beta * sym_zero_atom
+    assert source_response_drude_residue > 0.0
+    if abs(naive_drude_from_commutator_fdt - source_response_drude_residue) < 1.0e-12:
+        raise AssertionError("commutator FDT incorrectly reconstructed the exact zero-mode atom")
 
 
 def check_cesaro_abel_not_pointwise_negative_control() -> None:
@@ -446,6 +495,7 @@ def main() -> None:
     check_vector_potential_response_sign()
     check_diamagnetic_contact_response_convention()
     check_mazur_projection_and_drude_weight()
+    check_commutator_fdt_loses_exact_zero_mode()
     check_cesaro_abel_not_pointwise_negative_control()
     check_filtered_drude_rejects_uncontrolled_uv_tail()
     check_regular_drude_decomposition_for_figure()
